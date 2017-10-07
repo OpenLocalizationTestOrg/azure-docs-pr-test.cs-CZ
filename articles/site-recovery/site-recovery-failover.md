@@ -1,6 +1,6 @@
 ---
-title: "Převzetí služeb při selhání ve službě Site Recovery | Microsoft Docs"
-description: "Azure Site Recovery koordinuje replikaci, převzetí služeb při selhání a obnovení virtuálních počítačů a fyzických serverů. Další informace o převzetí služeb při selhání do Azure nebo do sekundárního datacentra."
+title: "aaaFailover ve službě Site Recovery | Microsoft Docs"
+description: "Azure Site Recovery koordinuje hello replikace, převzetí služeb při selhání a obnovení virtuálních počítačů a fyzických serverů. Další informace o převzetí služeb při selhání tooAzure nebo do sekundárního datacentra."
 services: site-recovery
 documentationcenter: 
 author: prateek9us
@@ -14,59 +14,59 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/04/2017
 ms.author: pratshar
-ms.openlocfilehash: ef586191f0b89dca89810644d45503fe42538635
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7cacea829d78bb7de2b2d67402291b472b10f023
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="failover-in-site-recovery"></a>Převzetí služeb při selhání v Site Recovery
-Tento článek popisuje, jak k převzetí služeb při selhání virtuálního počítače a fyzické servery, které se chránit pomocí Site Recovery.
+Tento článek popisuje, jak toofailover virtuálních počítačů a fyzických serverů chráněný pomocí Site Recovery.
 
 ## <a name="prerequisites"></a>Požadavky
-1. Před provedením převzetí služeb při selhání, proveďte [testovací převzetí služeb při selhání](site-recovery-test-failover-to-azure.md) zajistit, že vše funguje podle očekávání.
-1. [Příprava sítě](site-recovery-network-design.md) v cílovém umístění, před provedením převzetí služeb při selhání.  
+1. Před provedením převzetí služeb při selhání, proveďte [testovací převzetí služeb při selhání](site-recovery-test-failover-to-azure.md) tooensure, který všechno funguje podle očekávání.
+1. [Příprava hello sítě](site-recovery-network-design.md) v cílovém umístění, před provedením převzetí služeb při selhání.  
 
 
 ## <a name="run-a-failover"></a>Spuštění převzetí služeb při selhání
-Tento postup popisuje, jak spustit převzetí služeb při selhání pro [plán obnovení](site-recovery-create-recovery-plans.md). Případně můžete spustit převzetí služeb při selhání pro jeden virtuální počítač nebo z fyzického serveru **replikované položky** stránky
+Tento postup popisuje, jak toorun a převzetí služeb při selhání pro [plán obnovení](site-recovery-create-recovery-plans.md). Případně můžete spustit hello převzetí služeb při selhání pro jeden virtuální počítač nebo fyzický server z hello **replikované položky** stránky
 
 
 ![Převzetí služeb při selhání](./media/site-recovery-failover/Failover.png)
 
 1. Vyberte **plány obnovení** > *recoveryplan_name*. Klikněte na tlačítko **převzetí služeb při selhání**
-2. Na **převzetí služeb při selhání** obrazovku, vyberte **bod obnovení** k převzetí služeb při selhání. Můžete použít jednu z následujících možností:
-    1.  **Nejnovější** (výchozí): tuto možnost napřed zpracuje všechna data, která byl odeslán do služby Site Recovery k vytvoření bodu obnovení pro každý virtuální počítač před selhání je k němu. Tato možnost poskytuje nejnižší plánovaný bod obnovení (plánovaného bodu obnovení) jako virtuální počítač vytvořené po převzetí služeb při selhání se všechna data, která má nebyla replikována do služby Site Recovery, pokud bylo spuštěno převzetí služeb při selhání.
-    1.  **Nejnovější zpracované**: tuto možnost převezme všechny virtuální počítače v plánu obnovení do nejnovějšího bodu obnovení, který již byl zpracován službou Site Recovery. Při provádění převzetí služeb při selhání virtuálního počítače, časové razítko posledního bodu obnovení zpracování je také zobrazit. Při provádění převzetí služeb při selhání plánu obnovení, můžete přejít na virtuální počítač zvlášť a podívejte se na **body obnovení nejnovější** dlaždicí a získejte tyto informace. Jak je žádný čas strávený zpracování nezpracovaných dat, tato možnost nabízí nízkou možnost převzetí služeb při selhání RTO (plánovanou dobu obnovení).
-    1.  **Nejnovější aplikace konzistentní**: tuto možnost převezme všechny virtuální počítače v plánu obnovení do nejnovějšího bodu obnovení konzistentních s aplikací, který již byl zpracován službou Site Recovery. Při provádění převzetí služeb při selhání virtuálního počítače, je také zobrazit časové razítko bodu nejnovější obnovení konzistentních s aplikací. Při provádění převzetí služeb při selhání plánu obnovení, můžete přejít na virtuální počítač zvlášť a podívejte se na **body obnovení nejnovější** dlaždicí a získejte tyto informace.
-    1.  **Nejnovější více virtuálních počítačů zpracovat**: Tato možnost je dostupná jenom pro plány obnovení, které mají alespoň jeden virtuální počítač s konzistencí pro víc virtuálních počítačů na. Virtuální počítače, které jsou součástí replikační skupiny převzetí nejnovější běžné konzistentní obnovení více virtuálních počítačů bodu. Ostatní virtuální počítače převzetí služeb při selhání jejich nejnovějším zpracovaných bodem obnovení.  
-    1.  **Nejnovější více virtuálních počítačů konzistentní**: Tato možnost je dostupná jenom pro plány obnovení, které mají alespoň jeden virtuální počítač s ON konzistence více virtuálních počítačů. Virtuální počítače, které jsou součástí replikační skupiny převzetí nejnovější běžné konzistentní s aplikací obnovení více virtuálních počítačů bodu. Ostatní virtuální počítače převzetí služeb při selhání na jejich nejnovější bod obnovení konzistentních s aplikací.
-    1.  **Vlastní**: Pokud byste testovací převzetí služeb při selhání virtuálního počítače, pak můžete použít tuto možnost, převzetí služeb při selhání do bodu konkrétní obnovení.
+2. Na hello **převzetí služeb při selhání** obrazovku, vyberte **bod obnovení** toofailover k. Můžete použít jednu z hello následující možnosti:
+    1.  **Nejnovější** (výchozí): tuto možnost napřed zpracuje všechny hello data, která byla odeslaná tooSite obnovení služby toocreate bod obnovení pro každý virtuální počítač, než selhání tooit. Tato možnost poskytuje hello nejnižší plánovaný bod obnovení (plánovaného bodu obnovení) jako hello virtuálnímu počítači vytvořenému po převzetí služeb při selhání se všechna data hello které bylo replikované služby zotavení tooSite, kdy byla aktivována hello převzetí služeb při selhání.
+    1.  **Nejnovější zpracované**: tuto možnost převezme všechny virtuální počítače v hello obnovení plán toohello nejnovější bod obnovení, který již byl zpracován službou Site Recovery. Při provádění převzetí služeb při selhání virtuálního počítače, je také zobrazit časového razítka posledního bodu obnovení zpracování hello. Při provádění převzetí služeb při selhání plánu obnovení, můžete se vrátit tooindividual virtuálního počítače a podívejte se na **body obnovení nejnovější** dlaždici tooget tyto informace. Jak je žádný čas strávený tooprocess hello nezpracovaných dat, tato možnost nabízí možnost převzetí služeb při selhání, nízkou RTO (plánovanou dobu obnovení).
+    1.  **Nejnovější aplikace konzistentní**: tuto možnost převezme všechny virtuální počítače v hello obnovení plán toohello nejnovější aplikace konzistentní bod obnovení, který již byl zpracován službou Site Recovery. Při provádění převzetí služeb při selhání virtuálního počítače, je také zobrazit časové razítko poslední bod obnovení konzistentních s aplikací hello. Při provádění převzetí služeb při selhání plánu obnovení, můžete se vrátit tooindividual virtuálního počítače a podívejte se na **body obnovení nejnovější** dlaždici tooget tyto informace.
+    1.  **Nejnovější více virtuálních počítačů zpracovat**: Tato možnost je dostupná jenom pro plány obnovení, které mají alespoň jeden virtuální počítač s konzistencí pro víc virtuálních počítačů na. Virtuální počítače, které jsou součástí replikační skupiny převzetí služeb při selhání toohello nejnovější běžné více virtuálních počítačů konzistentní obnovení bodu. Ostatní virtuální počítače převzetí služeb při selhání tootheir nejnovější zpracované bod obnovení.  
+    1.  **Nejnovější více virtuálních počítačů konzistentní**: Tato možnost je dostupná jenom pro plány obnovení, které mají alespoň jeden virtuální počítač s ON konzistence více virtuálních počítačů. Virtuální počítače, které jsou součástí replikační skupiny převzetí služeb při selhání toohello nejnovější společný více virtuálních počítačů konzistentní s aplikací bod obnovení. Ostatní virtuální počítače převzetí služeb při selhání tootheir nejnovější konzistentní s aplikací bodu obnovení.
+    1.  **Vlastní**: Pokud byste testovací převzetí služeb při selhání virtuálního počítače, pak můžete použít tento bod obnovení konkrétní tooa toofailover možnost.
 
     > [!NOTE]
-    > Vyberte bod obnovení možnost je dostupná jenom při selhání do Azure.
+    > Hello možnost toochoose bod obnovení je k dispozici, pouze pokud jsou selhání tooAzure.
     >
     >
 
 
-1. Pokud některé virtuální počítače v plánu obnovení byly převzetí služeb při selhání při předchozím spuštění a teď virtuální počítače nejsou aktivní na zdrojovém i cílovém umístění, můžete použít **změnit směr** možnost rozhodnout, směr, ve kterém musí dojít převzetí služeb při selhání.
-1. Pokud jste selhání do Azure a je povolené šifrování dat pro cloud (platí jenom v případě, že uživatelé chrání virtuální počítače Hyper-v ze serveru VMM) v **šifrovací klíč** vyberte certifikát, který byl vydán, pokud povolíte šifrování dat během instalace na serveru VMM.
-1. Vyberte **vypnout počítač před zahájením převzetí služeb při selhání** Pokud chcete, aby Site Recovery se pokusit o proveďte vypnutí zdrojových virtuálních počítačích než převzetí služeb při selhání. Převzetí služeb při selhání pokračovat i v případě, že vypnutí selže.  
+1. Pokud některé hello virtuální počítače v plánu obnovení hello byly převzetí služeb při selhání při předchozím spuštění a nyní je na zdrojovém i cílovém umístění aktivní hello virtuálních počítačů, můžete použít **změnit směr** možnost toodecide hello směr v měly by proběhnout které převzetí hello.
+1. Pokud jste selhání tooAzure a je povolené šifrování dat pro cloud hello (platí jenom v případě, že uživatelé chrání virtuální počítače Hyper-v ze serveru VMM) v **šifrovací klíč** hello vyberte certifikát, který byl vydán, kdy jste Povolit šifrování dat během instalace na serveru VMM hello.
+1. Vyberte **vypnout počítač před zahájením převzetí služeb při selhání** Pokud chcete, aby Site Recovery tooattempt toodo hello vypnutí zdrojové virtuální počítače před spuštěním převzetí služeb při selhání. Převzetí služeb při selhání pokračovat i v případě, že vypnutí selže.  
 
     > [!NOTE]
-    > V případě virtuálních počítačů Hyper-v nastavení se tato možnost také pokusí synchronizovat místní data, která nebyla dosud odeslána do služby před spuštěním převzetí služeb při selhání.
+    > V případě virtuálních počítačů Hyper-v tato možnost také pokusí toosynchronize hello místní data, která nebyla ještě nebyly odeslány toohello služby před spuštěním převzetí služeb při selhání hello.
     >
     >
 
-1. Můžete sledovat průběh převzetí služeb při selhání **úlohy** stránky. I v případě, že během neplánované převzetí služeb při selhání dojít k chybám, plán obnovení běží, dokud se nedokončí.
-1. Po převzetí služeb při selhání ověřte tak, že přihlášení k ní virtuální počítač. Pokud chcete přejít jiný bod obnovení pro virtuální počítač, pak můžete použít **změnit bod obnovení** možnost.
-1. Jakmile budete spokojeni s neúspěšný přes virtuální počítač, můžete **potvrdit** převzetí služeb při selhání. To odstraní všechny body obnovení k dispozici ve službě a **změnit bod obnovení** možnost nadále již nebudou dostupné.
+1. Mohou sledovat průběh převzetí služeb při selhání hello na hello **úlohy** stránky. I v případě, že během neplánované převzetí služeb při selhání dojít k chybám, plán obnovení hello běží, dokud se nedokončí.
+1. Po převzetí služeb při selhání hello ověřte tak, že přihlášení tooit hello virtuálního počítače. Pokud chcete, aby toogo jiný bod obnovení pro hello virtuální počítač, pak můžete použít **změnit bod obnovení** možnost.
+1. Jakmile budete spokojeni s hello při selhání virtuálního počítače, můžete **potvrdit** hello převzetí služeb při selhání. To odstraní všechny hello body obnovení dostupné službou hello a **změnit bod obnovení** možnost nadále již nebudou dostupné.
 
 ## <a name="planned-failover"></a>Plánované převzetí služeb při selhání
-Kromě převzetí služeb při selhání Hyper-V virtuální počítače chráněné pomocí Site Recovery také podpora **plánované převzetí služeb při selhání**. Jde o nulové možnost převzetí služeb při selhání data ztráty. Když se aktivuje plánované převzetí služeb při selhání, nejprve vypnout zdrojový virtuální počítač, synchronizaci dat ještě k synchronizaci a pak se aktivuje převzetí služeb při selhání.
+Kromě převzetí služeb při selhání Hyper-V virtuální počítače chráněné pomocí Site Recovery také podpora **plánované převzetí služeb při selhání**. Jde o nulové možnost převzetí služeb při selhání data ztráty. Když se aktivuje plánované převzetí služeb při selhání, nejprve hello zdroje, které virtuální počítače jsou vypnuté, hello dat ještě toobe synchronizované se synchronizují a pak se aktivuje převzetí služeb při selhání.
 
 > [!NOTE]
-> Pokud jste převzetí služeb při selhání technologie Hyper-v virtuální počítače z jednoho místní lokality do jiné lokality v místě, vraťte zpět na primární místního serveru máte první **zpětně replikovat** virtuální počítač zpět do primární lokality a potom aktivovat převzetí služeb při selhání. Pokud se primární virtuální počítač není k dispozici, pak před spuštěním na **zpětně replikovat** máte virtuální počítač obnovit ze zálohy.   
+> Pokud jste převzetí služeb při selhání technologie Hyper-v virtuální počítače z jednoho místní lokality tooanother místní lokality, toocome back toohello primární místního serveru máte toofirst **zpětně replikovat** hello virtuální počítač zpět tooprimary lokality a potom aktivační události převzetí služeb při selhání. Pokud hello primární virtuální počítač není k dispozici, pak před spuštěním příliš**zpětně replikovat** máte toorestore hello virtuálního počítače ze zálohy.   
 >
 >
 
@@ -77,17 +77,17 @@ Kromě převzetí služeb při selhání Hyper-V virtuální počítače chrán�
 Když se aktivuje převzetí služeb při selhání, zahrnuje následující kroky:
 
 1. Kontrola předpokladů: Tento krok zajistí, že jsou splněny všechny podmínky požadované pro převzetí služeb při selhání
-1. Převzetí služeb při selhání: Tento krok zpracovává data a umožňuje připraven, aby virtuální počítač Azure můžete vytvořit mimo ho. Pokud jste vybrali **nejnovější** bodu obnovení, tento krok vytvoří bod obnovení z dat, který byl odeslán do služby.
-1. Začátek: Tento krok vytvoří virtuální počítač Azure pomocí dat, která zpracuje v předchozím kroku.
+1. Převzetí služeb při selhání: Tento krok zpracovává hello data a umožňuje připraven, aby virtuální počítač Azure můžete vytvořit mimo ho. Pokud jste vybrali **nejnovější** bodu obnovení, tento krok vytvoří bod obnovení z hello data, která byla odeslána toohello služby.
+1. Začátek: Tento krok vytvoří virtuální počítač Azure pomocí zpracování v předchozím kroku hello dat hello.
 
 > [!WARNING]
-> **Nemáte zrušit v průběhu převzetí služeb při selhání**: před zahájením převzetí služeb při selhání replikace pro virtuální počítač je zastavena. Pokud jste **zrušit** v průběhu úlohy zastaví převzetí služeb při selhání, ale virtuální počítač nespustí replikaci. Replikace se nedá spustit znovu.
+> **Nemáte zrušit v průběhu převzetí služeb při selhání**: před zahájením převzetí služeb při selhání replikace pro virtuální počítač hello je zastavena. Pokud jste **zrušit** v průběhu úlohy zastaví převzetí služeb při selhání, ale hello virtuální počítač nespustí tooreplicate. Replikace se nedá spustit znovu.
 >
 >
 
-## <a name="time-taken-for-failover-to-azure"></a>Čas potřebný pro převzetí služeb při selhání do Azure
+## <a name="time-taken-for-failover-tooazure"></a>Doba tooAzure převzetí služeb při selhání
 
-Převzetí služeb při selhání virtuálních počítačů v určitých případech vyžaduje velmi přechodný krok, který obvykle trvá přibližně 8 až 10 minut na dokončení. Těchto případech jsou jako následující:
+Převzetí služeb při selhání virtuálních počítačů v určitých případech vyžaduje velmi přechodný krok, který obvykle trvá přibližně 8 toocomplete too10 minut. Těchto případech jsou jako následující:
 
 * Virtuální počítače VMware pomocí služby mobility verze starší než 9.8
 * Fyzické servery 
@@ -101,23 +101,23 @@ Převzetí služeb při selhání virtuálních počítačů v určitých příp
     * ATAPI
 * Virtuální počítače VMware, které nemají služba DHCP povolena bez ohledu na to, jestli jsou pomocí protokolu DHCP nebo statické IP adresy
 
-Ve všech ostatních případech tento zprostředkující krok není povinný a čas potřebný převzetí služeb při selhání je výrazně nižší. 
+V hello všech ostatních případech tento zprostředkující krok není povinný a je výrazně nižší hello doba hello převzetí služeb při selhání. 
 
 
 
 
 
 ## <a name="using-scripts-in-failover"></a>Pomocí skriptů v převzetí služeb při selhání
-Můžete automatizovat některé akce přitom převzetí služeb při selhání. Můžete použít skripty nebo [runbooky služby Azure automation](site-recovery-runbook-automation.md) v [plány obnovení](site-recovery-create-recovery-plans.md) to provést.
+Můžete chtít tooautomate určité akce přitom převzetí služeb při selhání. Můžete použít skripty nebo [runbooky služby Azure automation](site-recovery-runbook-automation.md) v [plány obnovení](site-recovery-create-recovery-plans.md) toodo který.
 
 ## <a name="other-considerations"></a>Další důležité informace
-* **Písmeno jednotky** – Chcete-li zachovat písmeno na virtuální počítače po převzetí služeb při selhání můžete nastavit **zásada SAN** pro virtuální počítač **OnlineAll**. [Další informace](https://support.microsoft.com/en-us/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
+* **Písmeno jednotky** – písmeno jednotky hello tooretain na virtuální počítače po převzetí služeb při selhání můžete nastavit hello **zásada SAN** hello virtuální počítač příliš**OnlineAll**. [Přečtěte si další informace](https://support.microsoft.com/en-us/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
 
 
 
 ## <a name="next-steps"></a>Další kroky
-Jakmile budete mít převzetí služeb při selhání virtuálního počítače a místního datového centra je k dispozici, měli byste [ **znovu nastavit ochranu** ](site-recovery-how-to-reprotect.md) virtuálních počítačů VMware zpět do místního datového centra.
+Jakmile budete mít převzetí služeb při selhání virtuálního počítače a hello místního datového centra je k dispozici, měli byste [ **znovu nastavit ochranu** ](site-recovery-how-to-reprotect.md) zálohování virtuálních počítačů VMware toohello místního datového centra.
 
-Použití [ **plánované převzetí služeb při selhání** ](site-recovery-failback-from-azure-to-hyper-v.md) možnost k **navrácení služeb po obnovení** technologie Hyper-v virtuální počítače zpět do místní z Azure.
+Použití [ **plánované převzetí služeb při selhání** ](site-recovery-failback-from-azure-to-hyper-v.md) možnost příliš**navrácení služeb po obnovení** virtuální počítače Hyper-v zpátky tooon místní z Azure.
 
-Pokud se nezdařilo přes Hyper-v virtuální počítač do jiného místního datového centra spravované serverem VMM a je k dispozici primární datové centrum, potom použijte **zpětná replikace** možnost spustit replikaci zpět na primární datové centrum.
+Pokud se nezdařilo přes místní data tooanother virtuálního počítače technologie Hyper-v spravuje VMM server a hello primární datového centra center je k dispozici, pak použít **zpětná replikace** možnost toostart hello replikace zpět toohello primární datové centrum.

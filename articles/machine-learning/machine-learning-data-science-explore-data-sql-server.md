@@ -1,6 +1,6 @@
 ---
-title: "Zkoumat data v virtuálního počítače systému SQL Server na platformě Azure | Microsoft Docs"
-description: "Jak chcete dynamicky prozkoumávat data, která je uložená ve virtuálním počítači serveru SQL v Azure."
+title: "aaaExplore data v SQL serveru virtuálního počítače na Azure | Microsoft Docs"
+description: "Jak tooexplore data, která je uložená ve virtuálním počítači serveru SQL v Azure."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.openlocfilehash: a2be21ef15b9209db1e97150e0297558fa69a7be
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fcc449fc0d0e49be9b673cfb2de347cf44804017
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Zkoumání dat na virtuálním počítači s SQL Serverem v Azure
-Tento dokument popisuje, jak chcete dynamicky prozkoumávat data, která je uložená ve virtuálním počítači serveru SQL v Azure. Tento krok můžete provést pomocí dat wrangling pomocí SQL nebo pomocí programovacího jazyka jako Python.
+Tento dokument popisuje jak tooexplore data, která je uložená ve virtuálním počítači serveru SQL v Azure. Tento krok můžete provést pomocí dat wrangling pomocí SQL nebo pomocí programovacího jazyka jako Python.
 
-Následující **nabídky** odkazy na témata, které popisují, jak používat nástroje a prozkoumejte data z různých prostředích úložiště. Tato úloha je krok v procesu Cortana Analytics (CAP).
+Následující Hello **nabídky** odkazy tootopics, které popisují, jak toouse nástroje tooexplore data z různých prostředích úložiště. Tato úloha je krok v hello Cortana Analytics procesu (CAP).
 
 [!INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
 > [!NOTE]
-> Ukázkové příkazy SQL v tomto dokumentu předpokládají, že data jsou v systému SQL Server. Pokud tomu tak není, podívejte se na proces mapování cloudu dat vědecké účely se dozvíte, jak pro přesun dat do systému SQL Server.
+> Hello vzorové příkazy SQL v tomto dokumentu předpokládají, že data jsou v systému SQL Server. Pokud tomu tak není, podívejte toohello cloudu datové vědy proces mapy toolearn jak toomove vaše data tooSQL serveru.
 > 
 > 
 
 ## <a name="sql-dataexploration"></a>Prozkoumejte data SQL pomocí skriptů SQL
-Tady jsou několik ukázkové skripty SQL, které lze použít k prozkoumání datová úložiště v systému SQL Server.
+Tady jsou několik ukázkové skripty SQL, které se dají použít tooexplore datová úložiště v systému SQL Server.
 
-1. Získat počet připomínky za den
+1. Získat hello počet připomínky za den
    
     `SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)` 
-2. Získat úrovně ve sloupci kategorií
+2. Získat hello úrovně ve sloupci kategorií
    
     `select  distinct <column_name> from <databasename>`
-3. Získat počet úrovní v kombinaci dvou kategorií sloupců 
+3. Získat hello počet úrovní v kombinaci dvou kategorií sloupců 
    
     `select <column_a>, <column_b>,count(*) from <tablename> group by <column_a>, <column_b>`
-4. Získat distribuce pro číselné sloupce
+4. Získat hello distribuce pro číselné sloupce
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
 > [!NOTE]
-> Praktické příklad, můžete použít [datovou sadu NYC taxíkem](http://www.andresmh.com/nyctaxitrips/) a odkazovat na IPNB s názvem [NYC Data wrangling pomocí poznámkového bloku IPython a SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) pro návod začátku do konce.
+> Praktické příklad, můžete použít hello [datovou sadu NYC taxíkem](http://www.andresmh.com/nyctaxitrips/) a toohello IPNB s názvem [NYC Data wrangling pomocí poznámkového bloku IPython a SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) pro návod začátku do konce.
 > 
 > 
 
 ## <a name="python"></a>Prozkoumejte data SQL s Pythonem
-Používá Python a zkoumat data funkce generovat, když jsou data v systému SQL Server je podobná zpracování dat v Azure blob pomocí Python, jak je uvedeno v [procesu Azure Blob dat ve vašem prostředí vědecké účely data](machine-learning-data-science-process-data-blob.md). Data musí být vždycky načtená z databáze do pandas DataFrame a pak můžete další zpracování. Jsme dokumentů proces připojení k databázi a načítání dat do DataFrame v této části.
+Pomocí Python tooexplore data a vygenerovat funkce, když hello data jsou v systému SQL Server je podobná tooprocessing data v Azure blob pomocí Python, jak je uvedeno v [procesu Azure Blob dat ve vašem prostředí vědecké účely data](machine-learning-data-science-process-data-blob.md). Hello data musí načíst z databáze hello do pandas DataFrame toobe a pak můžete další zpracování. Jsme dokumentů hello proces připojení toohello databázi a načítání dat hello do hello DataFrame v této části.
 
-Následující formátu řetězce připojení slouží k připojení k databázi systému SQL Server z Pythonu pomocí pyodbc (servername nahraďte, dbname, uživatelské jméno a heslo s konkrétními hodnotami):
+Hello následující formátu řetězce připojení může být databáze systému SQL Server používané tooconnect tooa z Pythonu pomocí pyodbc (servername nahraďte, dbname, uživatelské jméno a heslo s konkrétními hodnotami):
 
-    #Set up the SQL Azure connection
+    #Set up hello SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-[Pandas knihovny](http://pandas.pydata.org/) v Pythonu poskytuje bohatou sadu datové struktury a nástrojů pro analýzu dat pro manipulaci s daty pro programování Python. Následující kód čte vráceny výsledky z databáze SQL serveru do rámečku Pandas dat:
+Hello [Pandas knihovny](http://pandas.pydata.org/) v Pythonu poskytuje bohatou sadu datové struktury a nástrojů pro analýzu dat pro manipulaci s daty pro programování Python. Hello následující kód čte vráceny výsledky hello do rámečku Pandas data z databáze SQL serveru:
 
-    # Query database and load the returned results in pandas data frame
+    # Query database and load hello returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
 
-Teď můžete pracovat s Pandas DataFrame jako popsané v tématu [procesu Azure Blob dat ve vašem prostředí vědecké účely data](machine-learning-data-science-process-data-blob.md).
+Teď můžete pracovat s hello Pandas DataFrame jako popsané v tématu hello [procesu Azure Blob dat ve vašem prostředí vědecké účely data](machine-learning-data-science-process-data-blob.md).
 
 ## <a name="cortana-analytics-process-in-action-example"></a>Proces Cortana analýzy v příkladu akce
-Příklad začátku do konce návod o procesu analýzy Cortana použití veřejné datové sady, naleznete v části [Team datové vědy procesu v akci: pomocí SQL serveru](machine-learning-data-science-process-sql-walkthrough.md).
+Příklad začátku do konce návod hello Cortana procesu analýzy použití veřejné datové sady, najdete v části [hello proces vědecké účely Team dat v akci: pomocí SQL serveru](machine-learning-data-science-process-sql-walkthrough.md).
 

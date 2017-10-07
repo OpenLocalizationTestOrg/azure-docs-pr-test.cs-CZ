@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric s úvodní API Management | Microsoft Docs"
-description: "Tento průvodce vám ukáže, jak rychle začít s Azure API Management a Service Fabric."
+title: "aaaAzure Service Fabric s úvodní API Management | Microsoft Docs"
+description: "Tento průvodce vám ukáže, jak tooquickly Začínáme s Azure API Management a Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/01/2017
 ms.author: vturecek
-ms.openlocfilehash: e9f44d8a43d274768f43261fea68f0da9c681ae1
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f76f3f39a92f89892d6a02ecaab1ec3d343fe2a0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="service-fabric-with-azure-api-management-quick-start"></a>Service Fabric s Azure API Management rychlý Start
 
-Tento průvodce vám ukáže postup nastavení Azure API Management s Service Fabric a konfigurace vašeho prvního rozhraní API operaci odesílat provoz do back endové služby v Service Fabric. Další informace o scénářích Azure API Management s Service Fabric najdete v tématu [přehled](service-fabric-api-management-overview.md) článku. 
+Tento průvodce vám ukáže, jak tooset až Azure API Management s Service Fabric a konfigurace vašeho prvního rozhraní API operaci toosend provoz tooback endové služby v Service Fabric. toolearn Další informace o službě Azure API Management scénáře s Service Fabric, najdete v části hello [přehled](service-fabric-api-management-overview.md) článku. 
 
-## <a name="deploy-api-management-and-service-fabric-to-azure"></a>Nasazení do Azure API Management a Service Fabric
+## <a name="deploy-api-management-and-service-fabric-tooazure"></a>Nasazení tooAzure API Management a Service Fabric
 
-Prvním krokem je k nasazení API Management a cluster Service Fabric na Azure ve sdílené virtuální síti. To umožňuje správu rozhraní API a komunikovat přímo s Service Fabric, aby mohl vykonávat zjišťování služby, řešení oddílu služby a předat dál provoz přímo do jakékoli back-end službu v Service Fabric.
+prvním krokem Hello je toodeploy API Management a tooAzure clusteru Service Fabric ve sdílené virtuální síti. To umožňuje API Management toocommunicate přímo pomocí Service Fabric, aby ho provádět zjišťování služby, řešení oddílu služby a předat dál provoz přímo tooany back-end služby v Service Fabric.
 
 ### <a name="topology"></a>topologie
 
-Tento průvodce nasadí do Azure, ve které jsou v podsítě ve stejné virtuální síti API Management a Service Fabric následující topologie:
+Tento průvodce nasadí hello následující topologie tooAzure, ve které jsou v podsítích v API Management a Service Fabric hello stejné virtuální síti:
 
  ![Popisek obrázku][sf-apim-topology-overview]
 
-Abyste mohli rychle začít, šablony správce prostředků slouží pro každého kroku nasazení:
+tooget rychle začít, šablony správce prostředků slouží pro každého kroku nasazení:
 
  - Topologie sítě:
     - [Network.JSON][network-arm]
@@ -46,11 +46,11 @@ Abyste mohli rychle začít, šablony správce prostředků slouží pro každé
     - [APIM.JSON][apim-arm]
     - [APIM.Parameters.JSON][apim-parameters-arm]
 
-### <a name="sign-in-to-azure-and-select-your-subscription"></a>Přihlaste se k Azure a vybrat své předplatné
+### <a name="sign-in-tooazure-and-select-your-subscription"></a>Přihlaste se tooAzure a vybrat své předplatné
 
-Tato příručka používá [prostředí Azure PowerShell][azure-powershell]. Když spustíte novou relaci prostředí PowerShell, přihlaste se k účtu Azure a vybrat své předplatné před spuštěním příkazů Azure.
+Tato příručka používá [prostředí Azure PowerShell][azure-powershell]. Po spuštění novou relaci prostředí PowerShell se přihlaste tooyour účet Azure a vybrat své předplatné před spuštěním příkazů Azure.
  
-Přihlaste se k účtu Azure:
+Přihlaste se tooyour účet Azure:
 
 ```powershell
 PS > Login-AzureRmAccount
@@ -71,42 +71,42 @@ Vytvořte novou skupinu prostředků pro vaše nasazení. Poskytněte název a u
 PS > New-AzureRmResourceGroup -Name <my-resource-group> -Location westus
 ```
 
-### <a name="deploy-the-network-topology"></a>Nasazení síťové topologie
+### <a name="deploy-hello-network-topology"></a>Nasazení hello síťové topologie
 
-Prvním krokem je nastavit topologie sítě, do které bude nasazen API Management a cluster Service Fabric. [Network.json] [ network-arm] šablony Resource Manageru nastaven tak, aby vytvořit virtuální síť (VNET) se dvěma podsítěmi a skupiny zabezpečení dvě sítě (NSG). 
+prvním krokem Hello je tooset až hello síťové topologie toowhich API Management a nasadí se cluster Service Fabric hello. Hello [network.json] [ network-arm] šablony Resource Manageru je nakonfigurované toocreate virtuální sítě (virtuální sítě) se dvěma podsítěmi a skupiny zabezpečení dvě sítě (NSG). 
 
-[Network.parameters.json] [ network-parameters-arm] soubor parametrů obsahuje názvy podsítí a skupin Nsg, které API Management a Service Fabric se nasadí do. Tato příručka hodnoty parametru není nutné změnit. Použití šablony API Management a služby Správce prostředků infrastruktury tyto hodnoty, takže pokud jsou upraveny zde, je třeba je změnit v jiných šablonách Resource Manageru odpovídajícím způsobem. 
+Hello [network.parameters.json] [ network-parameters-arm] soubor parametrů obsahuje názvy hello hello podsítě a skupin Nsg, které API Management a Service Fabric se nasadí do. Tato příručka hodnoty parametrů hello není nutné toobe změnit. API Management a služby Správce prostředků infrastruktury šablony Hello používají tyto hodnoty, pokud jsou upraveny zde, je nutné upravit je do jiné šablony Resource Manageru hello odpovídajícím způsobem. 
 
- 1. Stáhněte si následující soubor šablony a parametry Resource Manager:
+ 1. Stáhněte si následující soubor šablony a parametry Resource Manager hello:
 
     - [Network.JSON][network-arm]
     - [Network.Parameters.JSON][network-parameters-arm]
 
- 2. Použijte následující příkaz prostředí PowerShell pro nasazení Resource Manager soubory šablony a parametr pro nastavení sítě:
+ 2. Použijte následující prostředí PowerShell příkaz toodeploy hello Resource Manager šablony a parametr soubory pro nastavení sítě hello hello:
 
     ```powershell
     PS > New-AzureRmResourceGroupDeployment -ResourceGroupName <my-resource-group> -TemplateFile .\network.json -TemplateParameterFile .\network.parameters.json -Verbose
     ```
 
-### <a name="deploy-the-service-fabric-cluster"></a>Nasazení clusteru Service Fabric
+### <a name="deploy-hello-service-fabric-cluster"></a>Nasazení clusteru Service Fabric hello
 
-Po dokončení síťové prostředky nasazení, dalším krokem je k nasazení clusteru Service Fabric v podsíti virtuální sítě a NSG určené pro cluster Service Fabric. V tomto kurzu je předem nakonfigurovaný k použití názvy virtuální sítě, podsítě a NSG, které jste nastavili v předchozím kroku šablony služby Správce prostředků infrastruktury. 
+Po dokončení hello síťovým prostředkům nasazení, hello dalším krokem je toodeploy toohello clusteru Service Fabric virtuální sítě v podsíti hello a NSG určené pro cluster Service Fabric hello. V tomto kurzu Šablona služby Správce prostředků infrastruktury hello je předem nakonfigurovaný toouse hello názvy hello virtuální sítě, podsítě a NSG, které jste nastavili v předchozím kroku hello. 
 
-Šablony Resource Manageru clusteru Service Fabric je nakonfigurován k vytvoření clusteru s podporou zabezpečení s certifikát zabezpečení. Certifikát se používá k zabezpečení komunikace mezi uzly clusteru a ke správě přístupu uživatelů ke svému clusteru Service Fabric. API Management používá tento certifikát pro přístup ke službě názvy prostředků infrastruktury služby pro zjišťování služby.
+šablony Resource Manageru clusteru Service Fabric Hello je nakonfigurované toocreate zabezpečení clusteru se certifikát zabezpečení. certifikát Hello je použité toosecure komunikaci mezi uzly pro cluster a cluster Service Fabric tooyour přístup uživatele toomanage. API Management používá tento certifikát tooaccess hello Service Fabric Naming Service pro zjišťování služby.
 
 Tento krok vyžaduje použití certifikátu v Key Vault pro zabezpečení clusteru. Další informace o nastavení zabezpečení clusteru s Key Vault najdete v tématu [Tato příručka týkající se vytvoření clusteru v Azure pomocí Resource Manager](service-fabric-cluster-creation-via-arm.md)
 
 > [!NOTE]
-> Můžete přidat ověřování Azure Active Directory kromě certifikát používaný pro přístup ke clusteru. Azure Active Directory je doporučeným způsobem, jak spravovat přístup uživatelů k cluster Service Fabric, ale není nutné k dokončení tohoto kurzu. Certifikát je nutný v obou případech pro zabezpečení mezi uzly clusteru a pro ověřování Azure API Management, které aktuálně nepodporuje ověřování pomocí služby Azure Active Directory pro Service Fabric back-end.
+> Můžete přidat ověřování Azure Active Directory přidání toohello certifikát používaný pro přístup ke clusteru. Azure Active Directory je hello doporučená způsob toomanage uživatel přístup tooyour cluster Service Fabric, ale je v tomto kurzu není nutné toocomplete. Certifikát je nutný v obou případech pro zabezpečení mezi uzly clusteru a pro ověřování Azure API Management, které aktuálně nepodporuje ověřování pomocí služby Azure Active Directory pro Service Fabric back-end.
 
- 1. Stáhněte si následující soubor šablony a parametry Resource Manager:
+ 1. Stáhněte si následující soubor šablony a parametry Resource Manager hello:
  
     - [cluster.JSON][cluster-arm]
     - [cluster.Parameters.JSON][cluster-parameters-arm]
 
- 2. Vyplňte prázdné parametry v `cluster.parameters.json` soubor pro vaše nasazení, včetně [Key Vault informace](service-fabric-cluster-creation-via-arm.md#set-up-a-key-vault) pro váš cluster certifikát.
+ 2. Vyplňte hello prázdné parametry v hello `cluster.parameters.json` soubor pro vaše nasazení, včetně hello [Key Vault informace](service-fabric-cluster-creation-via-arm.md#set-up-a-key-vault) pro váš cluster certifikát.
 
- 3. Použijte následující příkaz prostředí PowerShell pro nasazení Resource Manager šablony a parametr soubory a vytvořte cluster Service Fabric:
+ 3. Použijte následující prostředí PowerShell příkaz toodeploy hello Resource Manager šablony a parametr soubory toocreate hello cluster Service Fabric hello:
 
     ```powershell
     PS > New-AzureRmResourceGroupDeployment -ResourceGroupName <my-resource-group> -TemplateFile .\cluster.json -TemplateParameterFile .\cluster.parameters.json -Verbose
@@ -114,18 +114,18 @@ Tento krok vyžaduje použití certifikátu v Key Vault pro zabezpečení cluste
 
 ### <a name="deploy-api-management"></a>Nasadit službu API Management
 
-Nakonec do virtuální sítě v podsíti nasazení API Management a NSG určená pro API Management. Nemusíte čekat na nasazení clusteru Service Fabric na Dokončit před nasazením API Management. 
+Nakonec nasazení API Management toohello virtuální sítě v podsíti hello a NSG určená pro API Management. Není nutné toowait pro toofinish nasazení clusteru Service Fabric hello před nasazením API Management. 
 
-V tomto kurzu šablony Resource Manageru rozhraní API Management je předem nakonfigurovaný použít názvy virtuální sítě, podsítě a NSG, které jste nastavili v předchozím kroku. 
+V tomto kurzu hello rozhraní API správy Resource Manager šablona je předem nakonfigurovaný toouse hello názvy hello virtuální sítě, podsítě a NSG, které jste nastavili v předchozím kroku hello. 
 
- 1. Stáhněte si následující soubor šablony a parametry Resource Manager:
+ 1. Stáhněte si následující soubor šablony a parametry Resource Manager hello:
  
     - [APIM.JSON][apim-arm]
     - [APIM.Parameters.JSON][apim-parameters-arm]
 
- 2. Vyplňte prázdné parametry v `apim.parameters.json` pro vaše nasazení.
+ 2. Vyplňte hello prázdné parametry v hello `apim.parameters.json` pro vaše nasazení.
 
- 3. Použijte následující příkaz prostředí PowerShell k nasazení Resource Manager soubory šablony a parametrů pro API Management:
+ 3. Použijte následující prostředí PowerShell příkaz toodeploy hello Resource Manager šablony a parametr soubory pro API Management hello:
 
     ```powershell
     PS > New-AzureRmResourceGroupDeployment -ResourceGroupName <my-resource-group> -TemplateFile .\apim.json -TemplateParameterFile .\apim.parameters.json -Verbose
@@ -133,43 +133,43 @@ V tomto kurzu šablony Resource Manageru rozhraní API Management je předem nak
 
 ## <a name="configure-api-management"></a>Konfigurace správy rozhraní API
 
-Jakmile cluster API Management a Service Fabric se nasazuje, můžete nakonfigurovat back-end Service Fabric ve službě API Management. Umožňuje vytvořit zásadu služby back-end, která odešle přenosů do clusteru Service Fabric.
+Jakmile cluster API Management a Service Fabric se nasazuje, můžete nakonfigurovat back-end Service Fabric ve službě API Management. To vám umožní toocreate zásadu služby back-end, která odešle cluster Service Fabric tooyour provoz.
 
 ### <a name="api-management-security"></a>Zabezpečení rozhraní API Management
 
-Konfigurace back-end Service Fabric, musíte nejprve konfigurovat nastavení zabezpečení rozhraní API správy. Chcete-li nakonfigurovat nastavení zabezpečení, přejděte do služby API Management na portálu Azure.
+tooconfigure hello Service Fabric back-end, musíte nejdřív nastavení zabezpečení tooconfigure API Management. nastavení zabezpečení tooconfigure, přejděte tooyour rozhraní API správy služby v hello portálu Azure.
 
-#### <a name="enable-the-api-management-rest-api"></a>Povolení správy rozhraní API REST API
+#### <a name="enable-hello-api-management-rest-api"></a>Povolit hello rozhraní API REST API pro správu
 
-Rozhraní API REST API správy je aktuálně jedinou možností, jak konfigurovat back-end službu. Prvním krokem je povolit rozhraní API REST API pro správu a zabezpečte ji.
+Hello rozhraní API REST API pro správu je aktuálně hello pouze způsob tooconfigure back-end službu. prvním krokem Hello je tooenable hello rozhraní API REST API pro správu a zabezpečte ji.
 
- 1. Ve službě API Management vyberte **rozhraní API pro správu - PREVIEW** pod **zabezpečení**.
- 2. Zkontrolujte **povolit rozhraní API REST API pro správu** zaškrtávací políčko.
- 3. Poznamenejte si adresu URL rozhraní API správy – Toto je adresa URL použijeme později nastavit back-end Service Fabric
- 4. Generovat **přístupový Token** tak, že vyberete datum vypršení platnosti a klíč, klikněte **generování** tlačítko ve spodní části stránky.
- 5. Kopírování **přístupový token** a uložte ho – použijeme ho v následujících krocích. Všimněte si, že se to neliší od primární klíč a sekundární klíč.
+ 1. V hello služba API Management, vyberte **rozhraní API pro správu - PREVIEW** pod **zabezpečení**.
+ 2. Zkontrolujte hello **povolit rozhraní API REST API pro správu** zaškrtávací políčko.
+ 3. Poznámka: adresa URL rozhraní API správy hello – Toto je adresa URL hello použijeme novější tooset až hello Service Fabric back-end
+ 4. Generovat **přístupový Token** výběrem datum vypršení platnosti a klíč klikněte hello **generování** tlačítko směrem k hello dolní části stránky hello.
+ 5. Kopírování hello **přístupový token** a uložte ho – použijeme ho v hello následující kroky. Všimněte si, že se to neliší od hello primární klíč a sekundární klíč.
 
 #### <a name="upload-a-service-fabric-client-certificate"></a>Nahrajte certifikát klienta Service Fabric
 
-API Management musí ověřit k vašemu clusteru Service Fabric pro zjišťování služby pomocí klientského certifikátu, který má přístup ke clusteru. Pro zjednodušení tento kurz používá stejný certifikát zadaný při vytváření clusteru Service Fabric, která ve výchozím nastavení může být použit pro přístup clusteru.
+API Management musí ověřit k vašemu clusteru Service Fabric pro zjišťování služby pomocí klientského certifikátu, který má přístup tooyour clusteru. Tento kurz používá pro jednoduchost, hello stejný certifikát zadaný při vytváření clusteru Service Fabric hello, který ve výchozím nastavení může být použité tooaccess vašeho clusteru.
 
- 1. Ve službě API Management vyberte **klientské certifikáty - PREVIEW** pod **zabezpečení**.
- 2. Klikněte **+ přidat** tlačítko
- 2. Vyberte privátní klíč souboru (.pfx) clusteru certifikátu, který jste zadali při vytváření clusteru Service Fabric, zadejte jeho název a zadejte heslo soukromého klíče.
-
-> [!NOTE]
-> Tento kurz používá stejný certifikát pro ověřování klientů a zabezpečení mezi uzly clusteru. Pokud nemáte nakonfigurovaná pro přístup k vaší cluster Service Fabric, můžete použít samostatné klientský certifikát.
-
-### <a name="configure-the-backend"></a>Konfigurace back-end
-
-Teď, když je nakonfigurovaná zabezpečení rozhraní API Management, můžete nakonfigurovat back-end Service Fabric. Cluster Service Fabric Service Fabric back-EndY, je back-end, nikoli konkrétní službu Service Fabric. To umožňuje jedna zásada směrování do více než jedna služba v clusteru.
-
-Tento krok vyžaduje přístupový token, který jste vygenerovali dříve a kryptografický otisk pro svůj cluster certifikát, který jste nahráli do rozhraní API správy v předchozím kroku.
+ 1. V hello služba API Management, vyberte **klientské certifikáty - PREVIEW** pod **zabezpečení**.
+ 2. Klikněte na tlačítko hello **+ přidat** tlačítko
+ 2. Vyberte hello soubor privátního klíče (.pfx) hello clusteru certifikátu, který jste zadali při vytváření clusteru Service Fabric, zadejte jeho název a zadejte heslo soukromého klíče hello.
 
 > [!NOTE]
-> Pokud jste použili samostatný klientský certifikát v předchozím kroku pro rozhraní API Management, musíte kryptografický otisk certifikátu klienta se kromě clusteru kryptografický otisk certifikátu v tomto kroku.
+> Tento kurz používá hello stejný certifikát pro klienta ověřování a clusteru mezi uzly zabezpečení. Pokud máte jeden nakonfigurované tooaccess cluster Service Fabric můžete použít samostatný klientský certifikát.
 
-Odeslání žádosti o následující HTTP PUT na adresu URL rozhraní API správy rozhraní API, že jste si předtím poznamenali při povolování REST API pro správu rozhraní API konfigurace back-end službu Service Fabric. Měli byste vidět `HTTP 201 Created` odpovědi při úspěšném provedení příkazu. Další informace o každé pole v rozhraní API pro správu [referenční dokumentace rozhraní API back-end](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#a-namebackenda-backend).
+### <a name="configure-hello-backend"></a>Konfigurace back-end hello
+
+Teď, když je nakonfigurovaná zabezpečení rozhraní API Management, můžete nakonfigurovat hello Service Fabric back-end. Pro Service Fabric back-EndY je cluster Service Fabric hello hello back-end, nikoli konkrétní službu Service Fabric. To umožňuje jedna zásada tooroute toomore než jedna služba v clusteru hello.
+
+Tento krok vyžaduje hello přístupový token, který jste vygenerovali dříve a hello kryptografický otisk certifikátu vašeho clusteru, že jste nahráli tooAPI správy v předchozím kroku hello.
+
+> [!NOTE]
+> Pokud samostatný klientský certifikát se používá v předchozím kroku hello pro API Management, musíte hello kryptografický otisk certifikátu klienta hello v přidání toohello clusteru kryptografický otisk certifikátu v tomto kroku.
+
+Odešlete hello následující požadavek HTTP PUT toohello rozhraní API správy rozhraní API adresu URL jste si předtím poznamenali při povolování hello rozhraní API REST API správy tooconfigure hello Service Fabric back-end službu. Měli byste vidět `HTTP 201 Created` odpovědi při úspěšném provedení příkazu hello. Další informace o každé pole, najdete v části hello API Management [referenční dokumentace rozhraní API back-end](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#a-namebackenda-backend).
 
 Příkaz HTTP a adresy URL:
 ```http
@@ -200,9 +200,9 @@ Text žádosti:
 }
 ```
 
-**Url** parametr tady je služba plně kvalifikovaný název služby v clusteru, všechny požadavky jsou směrovány do ve výchozím nastavení, pokud není zadán žádný název služby v zásadách back-end. Můžete použít název falešných služby, jako například "fabric: / falešných/služby" Pokud nemáte v úmyslu tak, aby měl záložní služby.
+Hello **url** parametr tady je služba plně kvalifikovaný název služby v clusteru, jsou všechny požadavky směrovány tooby výchozí, pokud není zadán žádný název služby v zásadách back-end. Můžete použít název falešných služby, jako například "fabric: / falešných/služby" Pokud nemáte v úmyslu toohave záložní služby.
 
-Odkazovat na rozhraní API pro správu [referenční dokumentace rozhraní API back-end](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#a-namebackenda-backend) další podrobnosti o každé pole.
+Odkazovat toohello API Management [referenční dokumentace rozhraní API back-end](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#a-namebackenda-backend) další podrobnosti o každé pole.
 
 #### <a name="example"></a>Příklad
 
@@ -229,11 +229,11 @@ Content-Type: application/json
 
 ## <a name="deploy-a-service-fabric-back-end-service"></a>Nasazení služby back-end Service Fabric
 
-Teď, když máte Service Fabric nakonfigurovaný jako back-end pro API Management, můžete vytvořit zásady back-end pro vaše rozhraní API, který odesílá data na vaše služby Service Fabric. Ale nejdřív je potřeba služby spuštěné v Service Fabric tak, aby přijímal požadavky.
+Teď, když máte hello Service Fabric nakonfigurovat jako back-end tooAPI správy, můžete vytvořit zásady back-end pro vaše rozhraní API, která odesílat provoz služby tooyour Service Fabric. Ale nejdřív je potřeba služby spuštěné v Service Fabric tooaccept požadavky.
 
 ### <a name="create-a-service-fabric-service-with-an-http-endpoint"></a>Vytvoření služby Service Fabric se koncový bod HTTP
 
-V tomto kurzu vytvoříme základní bezstavové ASP.NET Core spolehlivé služby pomocí výchozí šablona projektu webového rozhraní API. Tím se vytvoří koncový bod HTTP pro vaši službu, která budete vystavit pomocí Azure API Management:
+V tomto kurzu vytvoříme základní bezstavové ASP.NET Core spolehlivé služby pomocí hello výchozí šablona projektu webového rozhraní API. Tím se vytvoří koncový bod HTTP pro vaši službu, která budete vystavit pomocí Azure API Management:
 
 ```
 /api/values
@@ -244,10 +244,10 @@ Začněte tím, že [nastavení vývojového prostředí pro vývoj ASP.NET Core
 Až nastavíte vývojového prostředí Visual Studio spustíte jako správce a vytvoření služby ASP.NET Core:
 
  1. V sadě Visual Studio vyberte soubor -> Nový projekt.
- 2. Vyberte šablonu aplikace Service Fabric v cloudu a pojmenujte ji **"ApiApplication"**.
- 3. Vyberte šablonu služby ASP.NET Core a název projektu **"WebApiService"**.
- 4. Výběr šablony projektu webového rozhraní API ASP.NET Core 1.1.
- 5. Po vytvoření projektu otevřete `PackageRoot\ServiceManifest.xml` a odebrat `Port` atribut z prostředků konfigurace koncového bodu:
+ 2. Vyberte šablonu hello aplikace Service Fabric v cloudu a pojmenujte ji **"ApiApplication"**.
+ 3. Vyberte hello ASP.NET Core šablony služby a název projektu hello **"WebApiService"**.
+ 4. Výběr šablony projektu hello webové rozhraní API ASP.NET Core 1.1.
+ 5. Po vytvoření projektu hello otevřete `PackageRoot\ServiceManifest.xml` a odeberte hello `Port` atribut z hello koncový bod prostředků konfigurace:
  
     ```xml
     <Resources>
@@ -257,54 +257,54 @@ Až nastavíte vývojového prostředí Visual Studio spustíte jako správce a 
     </Resources>
     ```
 
-    To umožňuje Service Fabric zadejte port dynamicky z rozsahu portů aplikace, který jsme otevřít prostřednictvím skupinu zabezpečení sítě v šabloně Resource Manager clusteru, umožňuje provoz mají být předány z API Management.
+    To umožňuje Service Fabric toospecify port dynamicky z rozsahu portů aplikace hello, který jsme otevřít prostřednictvím hello skupinu zabezpečení sítě v modulu snap-in Šablony Resource Manageru clusteru hello povolení tooit tooflow provoz z API Management.
  
- 6. Stisknutím klávesy F5 ve Visual Studiu ověřte webové rozhraní API není k dispozici místně. 
+ 6. Stisknutím klávesy F5 ve Visual Studio tooverify hello webového rozhraní API není k dispozici místně. 
 
-    Otevřete Service Fabric Explorer a podrobnostem konkrétní instanci služby ASP.NET Core najdete v části Základní adresa služby naslouchá na. Přidat `/api/values` s jejím základem adresy a otevřete v prohlížeči. Tím se spustí metodu Get na ValuesController v šabloně webového rozhraní API. Vrátí výchozí odpovědi, které poskytuje šablony, pole JSON, který obsahuje dva řetězce:
+    Otevřete Service Fabric Explorer a rozbalení tooa konkrétní instanci hello ASP.NET Core toosee hello základní adresa hello služby naslouchá na. Přidat `/api/values` toohello základní adresa a otevřete v prohlížeči. Tím se spustí hello metodu Get na hello ValuesController v šabloně hello webového rozhraní API. Vrátí hello výchozí odpovědi, které poskytuje hello šablony, pole JSON, který obsahuje dva řetězce:
 
     ```json
     ["value1", "value2"]`
     ```
 
-    Toto je koncový bod, který budete vystavit přes správu rozhraní API v Azure.
+    Toto je hello koncový bod, který budete vystavit přes správu rozhraní API v Azure.
 
- 7. Nakonec nasazení aplikace na cluster v Azure. [Pomocí sady Visual Studio](service-fabric-publish-app-remote-cluster.md#to-publish-an-application-using-the-publish-service-fabric-application-dialog-box), klikněte pravým tlačítkem na projekt aplikace a vyberte **publikovat**. Zadejte svůj koncový bod clusteru (například `mycluster.westus.cloudapp.azure.com:19000`) k nasazení aplikace na cluster Service Fabric v Azure.
+ 7. Nakonec nasazení clusteru tooyour hello aplikace v Azure. [Pomocí sady Visual Studio](service-fabric-publish-app-remote-cluster.md#to-publish-an-application-using-the-publish-service-fabric-application-dialog-box), klikněte pravým tlačítkem na projekt aplikace hello a vyberte **publikovat**. Zadejte svůj koncový bod clusteru (například `mycluster.westus.cloudapp.azure.com:19000`) toodeploy hello aplikace tooyour Service Fabric cluster v Azure.
 
 Bezstavové služby ASP.NET Core s názvem `fabric:/ApiApplication/WebApiService` teď by měl být spuštěn v clusteru Service Fabric v Azure.
 
 ## <a name="create-an-api-operation"></a>Vytvoření operace rozhraní API
 
-Nyní je připraven k vytvoření operace ve službě API Management, který externí klienti používat pro komunikaci se službou ASP.NET Core bezstavové spuštěných v clusteru Service Fabric.
+Teď máme připraven toocreate operace ve službě API Management hello toocommunicate použití tohoto externích klientů s běžící v clusteru Service Fabric hello bezstavové služby ASP.NET Core.
 
- 1. Přihlaste se k portálu Azure a přejděte do vašeho nasazení služby API Management.
- 2. V okně služby API Management vyberte **rozhraní API – náhled**
- 3. Přidání nového rozhraní API kliknutím **prázdné API** pole a vyplníte dialogové okno:
+ 1. Přihlaste se toohello portál Azure a přejděte tooyour nasazení služby API Management.
+ 2. V okně služby API Management hello vyberte **rozhraní API – náhled**
+ 3. Přidání nového rozhraní API kliknutím hello **prázdné API** pole a vyplníte dialogové okno hello:
 
      - **Adresu URL webové služby**: pro Service Fabric back-EndY, není tato hodnota adresy URL používá. Zde můžete zadejte libovolnou hodnotu. V tomto kurzu použít: `http://servicefabric`.
      - **Název**: zadat libovolný název pro rozhraní API. V tomto kurzu použít `Service Fabric App`.
      - **Schéma adresy URL**: Vyberte HTTP, HTTPS nebo obě možnosti. V tomto kurzu použít `both`.
      - **Přípona adresy URL rozhraní API**: Zadejte příponu pro naše rozhraní API. V tomto kurzu použít `myapp`.
  
- 4. Po vytvoření rozhraní API klikněte na tlačítko **+ operace přidání** přidat front-end operace rozhraní API. Vyplňte hodnoty:
+ 4. Po vytvoření hello rozhraní API klikněte na tlačítko **+ operace přidání** operace tooadd front-endové rozhraní API. Vyplňte hodnoty hello:
     
-     - **Adresa URL**: vyberte `GET` a zadejte cestu adresy URL pro rozhraní API. V tomto kurzu použít `/api/values`.
+     - **Adresa URL**: vyberte `GET` a zadejte cestu adresy URL pro hello rozhraní API. V tomto kurzu použít `/api/values`.
      
-       Ve výchozím nastavení zadat cestu adresy URL zde bude zaslána cestu adresy URL back-end služby Service Fabric. Pokud používáte stejnou adresu URL cestu, zde která používá službu, v takovém případě `/api/values`, pak operaci funguje bez další úpravy. Můžete také určit cestu adresy URL tady, se liší od cesty URL používá váš back-end služby Service Fabric, v takovém případě bude také musíte zadat cestu přepisování v zásadě operaci později.
-     - **Zobrazovaný název**: zadat libovolný název pro rozhraní API. V tomto kurzu použít `Values`.
+       Ve výchozím nastavení zadat cestu adresy URL hello tady se cesty URL hello odesílají toohello back-end Service Fabric službu. Pokud používáte hello stejné cesty URL, zde kterou používá službu, v takovém případě `/api/values`, pak operaci hello funguje bez další úpravy. Můžete také určit cestu adresy URL tady, se liší od cesty URL hello používá váš back-end službu Service Fabric, v takovém případě budete také toospecify nutnost přepisu cestu v zásadě operaci později.
+     - **Zobrazovaný název**: zadat libovolný název pro rozhraní API hello. V tomto kurzu použít `Values`.
 
 ## <a name="configure-a-backend-policy"></a>Nakonfigurujte zásady back-end
 
-Zásady back-end sváže všechno, co společně. Toto je, kde můžete konfigurovat službě back-end Service Fabric, do které směrují požadavky. Tyto zásady můžete použít pro všechny operace rozhraní API. [Konfiguraci back-end pro Service Fabric](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#SetBackendService) poskytuje následující žádosti o směrování ovládací prvky: 
- - Služba instance výběru zadáním Service Fabric název instance služby, buď pevně zakódované (například `"fabric:/myapp/myservice"`) nebo vygenerovat z požadavku HTTP (například `"fabric:/myapp/users/" + context.Request.MatchedParameters["name"]`).
+zásady back-end Hello sváže všechno, co společně. Toto je, kde konfigurujete hello back-end Service Fabric, které směrují požadavky toowhich služby. Můžete provést tuto operaci zásad tooany rozhraní API. Hello [konfiguraci back-end pro Service Fabric](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#SetBackendService) poskytuje následujících hello požadavku směrování ovládací prvky: 
+ - Služba instance výběru zadáním Service Fabric název instance služby, buď pevně zakódované (například `"fabric:/myapp/myservice"`) nebo vygenerovat z požadavku hello HTTP (například `"fabric:/myapp/users/" + context.Request.MatchedParameters["name"]`).
  - Oddíl rozlišení vygenerováním klíč oddílu pomocí žádné schéma rozdělení oddílů Service Fabric.
  - Výběr repliky pro stavové služby.
- - Řešení opakování podmínky, které můžete určit podmínky pro přeložit umístění služby a odešlete žádost.
+ - Řešení opakujte podmínky, které vám umožňují toospecify hello podmínky pro přeložit umístění služby a odešlete žádost.
 
-V tomto kurzu vytvořte zásadu back-end, který směruje požadavky přímo na bezstavové služby ASP.NET Core dříve nasazené:
+V tomto kurzu vytvořte zásadu back-end trasy požadavky přímo toohello ASP.NET Core bezstavové služby dříve nasazené:
 
- 1. Vyberte a upravit **příchozí zásady** pro `Values` operaci klepnutím na ikonu pro úpravu a potom výběrem **zobrazení kódu**.
- 2. V editoru zásad kódu přidat `set-backend-service` zásad v části příchozí zásady, jak je vidět tady a klikněte na tlačítko **Uložit** tlačítko:
+ 1. Vyberte a upravit hello **příchozí zásady** pro hello `Values` operaci kliknutím na ikonu pro úpravu hello, a potom výběrem **zobrazení kódu**.
+ 2. V editoru kódu hello zásady, přidejte `set-backend-service` zásad v části příchozí zásady, jak je vidět tady a klikněte na tlačítko hello **Uložit** tlačítko:
     
     ```xml
     <policies>
@@ -324,33 +324,33 @@ V tomto kurzu vytvořte zásadu back-end, který směruje požadavky přímo na 
     </policies>
     ```
 
-Úplnou sadu atributů Service Fabric back-end zásady, najdete v části [dokumentace ke službě back endové rozhraní API Management](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#SetBackendService)
+Úplnou sadu atributů Service Fabric back-end zásady, najdete v části toohello [dokumentace ke službě back endové rozhraní API Management](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#SetBackendService)
 
-### <a name="add-the-api-to-a-product"></a>Přidání rozhraní API do produktu. 
+### <a name="add-hello-api-tooa-product"></a>Přidání produktu tooa hello rozhraní API. 
 
-Než bude možné volat rozhraní API, musí být přidané pro určitý produkt, kde můžete udělit přístup uživatelům. 
+Než bude možné volat rozhraní API hello, musí být přidané tooa produktu, kde můžete udělit přístup toousers. 
 
- 1. Ve službě API Management vyberte **produkty - PREVIEW**.
- 2. Ve výchozím nastavení, produkty dva poskytovatelé pro správu rozhraní API: úvodní a bez omezení. Vyberte neomezená produktu.
+ 1. V hello služba API Management, vyberte **produkty - PREVIEW**.
+ 2. Ve výchozím nastavení, produkty dva poskytovatelé pro správu rozhraní API: úvodní a bez omezení. Vyberte hello neomezená produktu.
  3. Vyberte rozhraní API.
- 4. Klikněte **+ přidat** tlačítko.
- 5. Vyberte `Service Fabric App` rozhraní API, které jste vytvořili v předchozích krocích a klikněte na **vyberte** tlačítko.
+ 4. Klikněte na tlačítko hello **+ přidat** tlačítko.
+ 5. Vyberte hello `Service Fabric App` rozhraní API, které jste vytvořili v předchozích krocích hello a klikněte na tlačítko hello **vyberte** tlačítko.
 
 ### <a name="test-it"></a>otestovat
 
-Nyní můžete zkusit odesílání požadavku do back-end služby v Service Fabric pomocí rozhraní API správy přímo z portálu Azure.
+Nyní můžete zkusit odesílání požadavku tooyour back-end služby v Service Fabric pomocí rozhraní API správy přímo z hello portálu Azure.
 
- 1. Ve službě API Management vyberte **API – PREVIEW**.
- 2. V `Service Fabric App` rozhraní API, které jste vytvořili v předchozím kroku, vyberte **Test** kartě.
- 3. Klikněte **odeslat** tlačítko poslat žádost o test ke službě back-end.
+ 1. V hello služba API Management, vyberte **API – PREVIEW**.
+ 2. V hello `Service Fabric App` rozhraní API, které jste vytvořili v předchozích krocích hello vyberte hello **Test** kartě.
+ 3. Klikněte na tlačítko hello **odeslat** toosend tlačítko test požadavek toohello back-end službu.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto okamžiku byste měli mít základní instalaci pomocí Service Fabric a API Management.
 
-Tento kurz používá ověřování basic uživatelů na základě certifikátů pro váš cluster Service Fabric si rychle nastavit. Pokročilejší ověřování uživatelů pro váš cluster Service Fabric je vhodnější s [ověřování Azure Active Directory](service-fabric-cluster-creation-via-arm.md#set-up-azure-active-directory-for-client-authentication). 
+Tento kurz používá ověřování basic uživatele na základě certifikátů pro váš tooget clusteru Service Fabric, kterou vytvoříte rychle. Pokročilejší ověřování uživatelů pro váš cluster Service Fabric je vhodnější s [ověřování Azure Active Directory](service-fabric-cluster-creation-via-arm.md#set-up-azure-active-directory-for-client-authentication). 
 
-Dále [vytvoření a konfigurace pokročilých nastavení produktu v Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-product-with-rules) Příprava aplikace pro provoz skutečném světě.
+Dále [vytvoření a konfigurace pokročilých nastavení produktu v Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-product-with-rules) tooprepare aplikace pro provoz skutečném světě.
 
 <!-- links -->
 [azure-powershell]:https://azure.microsoft.com/documentation/articles/powershell-install-configure/

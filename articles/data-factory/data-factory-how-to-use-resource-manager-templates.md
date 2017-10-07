@@ -1,6 +1,6 @@
 ---
-title: "Pomocí Správce prostředků šablony v datové továrně | Microsoft Docs"
-description: "Informace o vytváření a používání šablon Azure Resource Manageru k vytvoření entit služby Data Factory."
+title: "šablony Resource Manageru aaaUse v datové továrně | Microsoft Docs"
+description: "Zjistěte, jak toocreate a pomocí Azure Resource Manager šablony toocreate entit služby Data Factory."
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -14,45 +14,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
-ms.openlocfilehash: c3ea2c047434b5b5495f0ce85be9376a502e4962
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 60d5dbd29494420006aed6d5bd9a10a63c36bec3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-templates-to-create-azure-data-factory-entities"></a>Pomocí šablony můžete vytvořit entit služby Azure Data Factory
+# <a name="use-templates-toocreate-azure-data-factory-entities"></a>Používání šablon toocreate Azure Data Factory entit
 ## <a name="overview"></a>Přehled
-Při použití Azure Data Factory pro integraci vašim datovým potřebám sami zjistíte opakovaného použití stejného vzoru v různých prostředích nebo implementace pro stejnou úlohu opakovaně v rámci stejného řešení. Šablony vám pomohou implementovat a spravovat tyto scénáře snadno způsobem. Šablony v Azure Data Factory jsou ideální pro scénáře, které zahrnují – opětovné použití a opakování.
+Při použití Azure Data Factory pro integraci vašim datovým potřebám sami zjistíte opakovaného použití hello stejného vzoru různých prostředích nebo implementace hello stejná úloha opakovaně v rámci hello stejné řešení. Šablony vám pomohou implementovat a spravovat tyto scénáře snadno způsobem. Šablony v Azure Data Factory jsou ideální pro scénáře, které zahrnují – opětovné použití a opakování.
 
-Vezměte v úvahu situaci, kde může organizace má 10 výrobních závodech po celém světě. Protokoly z každého zařízení jsou uloženy v databázi systému SQL Server samostatný místní. Společnost chce sestavení jednoho datového skladu v cloudu pro ad-hoc analýzu. Také chce mít stejné logiky, která ale různé konfigurace pro vývoj, testování a provozním prostředí.
+Vezměte v úvahu hello situaci, kde může organizace má 10 výrobních závodech napříč hello, world. Hello protokoly z každého zařízení jsou uloženy v databázi systému SQL Server samostatný místní. Hello společnost chce toobuild jednoho datového skladu v cloudu hello ad-hoc analýzy. Je také chce toohave hello stejné logiky, která ale různé konfigurace pro vývoj, testování a provozním prostředí.
 
-V takovém případě musí opakovat ve stejném prostředí, ale s různými hodnotami mezi 10 datové továrny pro každého z výrobních závodů úlohu. Ve skutečnosti **opakování** je k dispozici. Ukázka umožňuje abstrakce tento obecný tok (to znamená, že stejné aktivity v každé služby data factory kanály), ale používá soubor samostatného parametru pro každého z výrobních závodů.
+V takovém případě úlohu potřebuje toobe opakuje uvnitř hello stejné prostředí, ale s různými hodnotami napříč hello 10 datové továrny pro každého z výrobních závodů. Ve skutečnosti **opakování** je k dispozici. Ukázka umožňuje hello abstrakce tento obecný tok (tedy kanálů s hello stejné aktivity v každém objektu pro vytváření dat), ale používá soubor samostatného parametru pro každého z výrobních závodů.
 
-Kromě toho, jak organizace chce nasadit tyto 10 datové továrny vícekrát různých prostředích, šablony můžete použít **– opětovné použití** s využitím soubory samostatného parametru pro vývoj, testování a provozním prostředí.
+Kromě toho, jak hello organizace přeje, aby toodeploy těchto 10 datové továrny vícekrát různých prostředích, šablony můžete použít **– opětovné použití** s využitím soubory samostatného parametru pro vývoj, testování, a provozní prostředí.
 
 ## <a name="templating-with-azure-resource-manager"></a>Ukázka s Azure Resource Manager
-[Šablony Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md#template-deployment) jsou skvělý způsob, jak dosáhnout ukázka v Azure Data Factory. Šablony Resource Manageru definovat infrastrukturu a konfiguraci řešení Azure prostřednictvím soubor JSON. Protože šablon Azure Resource Manageru pracovat se službami Azure všechny nebo většinu, je široce umožňuje snadno spravovat všechny prostředky vaše prostředky Azure. V tématu [šablon pro tvorbu Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) Další informace o šablonách Resource Manager obecně.
+[Šablony Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md#template-deployment) jsou ukázka tooachieve skvělý způsob, jak v Azure Data Factory. Šablony Resource Manageru definovat hello infrastruktury a konfigurace řešení Azure prostřednictvím soubor JSON. Protože šablon Azure Resource Manageru pracovat s všechny/většina služeb Azure, široce použitím tooeasily spravovat všechny prostředky vaše prostředky Azure. V tématu [šablon pro tvorbu Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) toolearn Další informace o obecně hello šablony Resource Manageru.
 
 ## <a name="tutorials"></a>Kurzy
-Najdete v následujících kurzech podrobné pokyny k vytvoření entit služby Data Factory pomocí šablony Resource Manageru:
+V tématu hello následující kurzy pro podrobné pokyny entit služby Data Factory toocreate pomocí šablony Resource Manageru:
 
-* [Kurz: Vytvoření kanálu ke zkopírování dat pomocí šablony Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
-* [Kurz: Vytvoření kanálu pro zpracování dat pomocí šablony Azure Resource Manager](data-factory-build-your-first-pipeline.md)
+* [Kurz: Vytvoření kanálu toocopy dat pomocí šablony Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+* [Kurz: Vytvoření kanálu tooprocess dat pomocí šablony Azure Resource Manager](data-factory-build-your-first-pipeline.md)
 
 ## <a name="data-factory-templates-on-github"></a>Data Factory šablony na Githubu
-Podívejte se na následující šablony Azure rychlý start na Githubu:
+Podívejte se na hello následující šablony Azure rychlý start na Githubu:
 
-* [Vytvoření Data factory ke zkopírování dat z Azure Blob Storage do Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy)
+* [Vytvoření objektu pro vytváření dat toocopy dat z Azure Blob Storage tooAzure databáze SQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy)
 * [Vytvoření služby Data factory s aktivitou Hive v clusteru Azure HDInsight](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation)
-* [Vytvoření Data factory ke zkopírování dat ze služby Salesforce do objektů BLOB služby Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy)
-* [Vytvoření objektu pro vytváření dat, který je zřetězený aktivity: kopíruje data ze serveru FTP do objektů BLOB služby Azure, vyvolá skriptu hive v clusteru HDInsight na vyžádání pro transformaci dat a zkopíruje výsledek do Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob)
+* [Vytvoření objektu pro vytváření dat toocopy dat ze služby Salesforce tooAzure objektů BLOB](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy)
+* [Vytvoření objektu pro vytváření dat, který je zřetězený aktivity: zkopíruje data ze serveru FTP tooAzure objekty BLOB, vyvolá skript hive na na vyžádání HDInsight clusteru tootransform hello data a zkopíruje výsledek do Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob)
 
-Nebojte se sdílet své šablony Azure Data Factory v [Azure rychlý start](https://azure.microsoft.com/documentation/templates/). Odkazovat [příspěvku průvodce](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE) při vývoji šablony, které je možné sdílet přes toto úložiště.
+Působí volné tooshare šablony Azure Data Factory v [Azure rychlý start](https://azure.microsoft.com/documentation/templates/). Odkazovat toohello [příspěvku průvodce](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE) při vývoji šablony, které je možné sdílet přes toto úložiště.
 
-Následující části obsahují podrobnosti o definice prostředků pro vytváření dat v šabloně Resource Manager.
+Hello následující části obsahují podrobné informace o definování prostředků pro vytváření dat v šabloně Resource Manager.
 
 ## <a name="defining-data-factory-resources-in-templates"></a>Definice prostředků pro vytváření dat v šablonách
-Je nejvyšší úrovně šablonu pro definování objekt pro vytváření dat:
+Hello nejvyšší úrovně šablonu pro definování objekt pro vytváření dat je:
 
 ```JSON
 "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -81,7 +81,7 @@ Je nejvyšší úrovně šablonu pro definování objekt pro vytváření dat:
 ```
 
 ### <a name="define-data-factory"></a>Definování datové továrny
-Datovou továrnu definujete v šabloně Resource Manageru, jak je znázorněno v následující ukázce:
+Objekt pro vytváření dat v šabloně Resource Manager hello definovat, jak je uvedeno v hello následující ukázka:
 
 ```JSON
 "resources": [
@@ -92,7 +92,7 @@ Datovou továrnu definujete v šabloně Resource Manageru, jak je znázorněno v
     "location": "East US"
 }
 ```
-DataFactoryName je definováno v "proměnné" jako:
+Hello dataFactoryName je definováno v "proměnné" jako:
 
 ```JSON
 "dataFactoryName": "[concat('<myDataFactoryName>', uniqueString(resourceGroup().id))]",
@@ -110,7 +110,7 @@ DataFactoryName je definováno v "proměnné" jako:
 }
 ```
 
-V tématu [propojená služba úložiště](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [propojené výpočetní služby](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) podrobnosti o vlastnostech JSON pro konkrétní propojené služby, které chcete nasadit. Parametr "dependsOn" Určuje název objektu pro vytváření dat odpovídající. V následující definici JSON je znázorněn příklad definování propojené služby pro Azure Storage:
+V tématu [propojená služba úložiště](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [propojené výpočetní služby](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) podrobné informace o vlastnostech JSON hello hello konkrétní propojené služby chcete toodeploy. parametr "dependsOn" Hello Určuje název objektu pro vytváření dat odpovídající hello. Příklad definování propojené služby pro Azure Storage je uveden v hello následující definici JSON:
 
 ### <a name="define-datasets"></a>Definování datové sady
 
@@ -126,7 +126,7 @@ V tématu [propojená služba úložiště](data-factory-azure-blob-connector.md
     ...
 }
 ```
-Odkazovat na [podporovanými úložišti dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) podrobné informace o vlastnostech JSON pro typ konkrétní datové sady, které chcete nasadit. Všimněte si, že parametr "dependsOn" Určuje název odpovídající objekt pro vytváření dat a úložiště propojená služba. V následující definici JSON je uveden příklad definování typu datovou sadu Azure blob Storage:
+Odkazovat příliš[podporovanými úložišti dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) podrobné informace o vlastnostech JSON hello pro typ konkrétní sady hello chcete toodeploy. Poznámka: hello "dependsOn" parametr určuje název odpovídajících dat hello tovární nastavení a úložiště propojené služby. Příklad definování typu datovou sadu Azure blob Storage je uveden v hello následující definici JSON:
 
 ```JSON
 "type": "datasets",
@@ -172,7 +172,7 @@ Odkazovat na [podporovanými úložišti dat](data-factory-data-movement-activit
 }
 ```
 
-Odkazovat na [definování kanály](data-factory-create-pipelines.md#pipeline-json) podrobné informace o vlastnostech JSON pro definování konkrétní kanálu a aktivity, které chcete nasadit. Poznámka: parametr "dependsOn" Určuje název objektu pro vytváření dat a všechny odpovídající propojené služby nebo datové sady. Příklad kanálu, který kopíruje data z Azure Blob Storage do Azure SQL Database je uveden v následujícím fragmentu kódu JSON:
+Odkazovat příliš[definování kanály](data-factory-create-pipelines.md#pipeline-json) pro informace o vlastnostech JSON hello k definování hello konkrétní kanálu a aktivity chcete toodeploy. Poznámka: hello "dependsOn" parametr určuje název objektu pro vytváření dat hello a všechny odpovídající propojené služby nebo datové sady. V následujícím fragmentu kódu JSON hello je uveden příklad kanálu, který kopíruje data z Azure Blob Storage tooAzure SQL Database:
 
 ```JSON
 "type": "datapipelines",
@@ -189,7 +189,7 @@ Odkazovat na [definování kanály](data-factory-create-pipelines.md#pipeline-js
     "activities": [
     {
         "name": "CopyFromAzureBlobToAzureSQL",
-        "description": "Copy data frm Azure blob to Azure SQL",
+        "description": "Copy data frm Azure blob tooAzure SQL",
         "type": "Copy",
         "inputs": [
             {
@@ -227,12 +227,12 @@ Odkazovat na [definování kanály](data-factory-create-pipelines.md#pipeline-js
 }
 ```
 ## <a name="parameterizing-data-factory-template"></a>Parametrizace šablony služby Data Factory
-Osvědčené postupy v Parametrizace, najdete v části [osvědčené postupy pro vytváření šablon Azure Resource Manager](../azure-resource-manager/resource-manager-template-best-practices.md#parameters) článku. Obecně platí, použití parametrů by měl být minimalizován, zejména v případě, že proměnné lze použít místo. Jenom zadejte parametry v následujících scénářích:
+Osvědčené postupy v Parametrizace, najdete v části [osvědčené postupy pro vytváření šablon Azure Resource Manager](../azure-resource-manager/resource-manager-template-best-practices.md#parameters) článku. Obecně platí, použití parametrů by měl být minimalizován, zejména v případě, že proměnné lze použít místo. Jenom zadejte parametry v hello následující scénáře:
 
 * Nastavení se liší podle prostředí (Příklad: vývoj, testování a provozním)
 * Tajné klíče (jako jsou hesla)
 
-Pokud potřebujete vyžádat tajné klíče z [Azure Key Vault](../key-vault/key-vault-get-started.md) při nasazení entit služby Azure Data Factory pomocí šablony, zadejte **trezoru klíčů** a **tajný název** jak je znázorněno v následujícím příkladu:
+Pokud potřebujete toopull tajné klíče z [Azure Key Vault](../key-vault/key-vault-get-started.md) při nasazení entit služby Azure Data Factory pomocí šablony, zadejte hello **trezoru klíčů** a **tajný název** jak je znázorněno v Hello následující ukázka:
 
 ```JSON
 "parameters": {
@@ -249,6 +249,6 @@ Pokud potřebujete vyžádat tajné klíče z [Azure Key Vault](../key-vault/key
 ```
 
 > [!NOTE]
-> Při exportu šablony pro existující datové továrny není aktuálně ještě podporovaná, je ve službě funguje.
+> Při exportu šablony pro existující datové továrny není aktuálně ještě podporovaná, je hello funguje.
 >
 >

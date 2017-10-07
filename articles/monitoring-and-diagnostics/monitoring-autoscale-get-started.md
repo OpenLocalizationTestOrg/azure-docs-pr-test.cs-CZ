@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s škálování v Azure | Microsoft Docs"
-description: "Informace o škálování prostředku v Azure."
+title: "aaaGet začít s škálování v Azure | Microsoft Docs"
+description: "Zjistěte, jak tooscale prostředku v Azure."
 author: rajram
 manager: rboucher
 editor: 
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: rajram
-ms.openlocfilehash: 68cb624b3ef4a77e7cfc949979e0b1949c2e5535
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 6b3c3f4529018dcaf9691c538fec63dfbb3cea06
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Začínáme s škálování v Azure
-Tento článek popisuje, jak nastavit nastavení automatického škálování prostředku na portálu Microsoft Azure.
+Tento článek popisuje, jak tooset nastavení automatického škálování prostředku v portálu Microsoft Azure hello.
 
-Azure monitorování škálování se vztahuje pouze na sady škálování virtuálního počítače, cloudové služby, plány služby Azure App Service a služby App Service Environment. 
+Azure monitorování škálování se vztahují pouze sady škálování počítače toovirtual, cloudové služby, plány služby Azure App Service a služby App Service Environment. 
 
-## <a name="discover-the-autoscale-settings-in-your-subscription"></a>Zjištění nastavení škálování v rámci vašeho předplatného
-Můžete zjistit všechny prostředky, na které se vztahuje v Azure monitorování škálování. Podrobný návod, pomocí následujících kroků:
+## <a name="discover-hello-autoscale-settings-in-your-subscription"></a>Zjištění nastavení automatického škálování hello v rámci vašeho předplatného
+Můžete zjistit všechny prostředky hello, na které se vztahuje v Azure monitorování škálování. Pomocí následujících kroků pro podrobný návod hello:
 
-1. Otevřete [portálu Azure.][1]
-2. Klikněte na ikonu monitorování Azure v levém podokně.
+1. Otevřete hello [portálu Azure.][1]
+2. Klikněte v levém podokně hello hello ikonu monitorování Azure.
   ![Otevřete Azure monitorování][2]
-3. Klikněte na tlačítko **škálování** zobrazíte všechny prostředky, na které se vztahuje, včetně jejich aktuálního stavu škálování škálování.
+3. Klikněte na tlačítko **škálování** tooview všechny hello prostředky pro škálování, které se vztahuje, včetně jejich aktuálního stavu škálování.
   ![Zjistit škálování v Azure monitorování][3]
 
-Můžete podokno filtru v horní části do oboru dolů v seznamu vyberte prostředky v určité skupiny zdrojů, konkrétní typy prostředků nebo konkrétní prostředek.
+V horní tooscope hello dolů hello seznamu tooselect prostředky v určité skupiny zdrojů, konkrétní typy prostředků nebo konkrétní prostředek, můžete použít podokno filtru hello.
 
-Pro každý prostředek zjistíte, aktuální počet instancí a stav automatického škálování. Stav škálování může být:
+Pro každý prostředek zjistíte hello aktuální počet instancí a stav automatického škálování hello. Hello stav škálování může být:
 
 - **Není nakonfigurováno**: jste nepovolili automatické škálování ještě pro tento prostředek.
 - **Povolit**: jste povolili automatické škálování pro tento prostředek.
@@ -44,84 +44,84 @@ Pro každý prostředek zjistíte, aktuální počet instancí a stav automatick
 
 ## <a name="create-your-first-autoscale-setting"></a>Vytvoření vaší první nastavení automatického škálování
 
-Pojďme se teď přejděte prostřednictvím jednoduchého podrobný návod k vytvoření vaší první nastavení automatického škálování.
+Pojďme nyní projít jednoduché podrobný návod toocreate vaše první nastavení automatického škálování.
 
-1. Otevřete **škálování** okno v Azure monitorování a vyberte prostředek, který chcete škálovat. (Plán služby App Service přidružených k webové aplikaci použít následující kroky. Můžete [vytvořte první webové aplikace ASP.NET v Azure během 5 minut.] [4])
-2. Všimněte si, že je aktuální počet instancí 1. Klikněte na tlačítko **povolit škálování**.
+1. Otevřete hello **škálování** okno v Azure monitorování a vyberte prostředek, který má tooscale. (hello následující kroky použít plán služby App Service přidružených k webové aplikaci. Můžete [vytvořte první webové aplikace ASP.NET v Azure během 5 minut.] [4])
+2. Všimněte si, že je aktuální počet instancí hello 1. Klikněte na tlačítko **povolit škálování**.
   ![Nastavení škálování pro novou webovou aplikaci][5]
-3. Zadejte název pro nastavení škálování a pak klikněte na tlačítko **přidat pravidlo**. Všimněte si, pravidlo možnosti škálování, které se otevřou jako kontext podokně na pravé straně. Ve výchozím nastavení nastaví tato možnost škálování vašeho počet instancí 1, pokud procento využití procesoru prostředku přesahuje 70 procent. Nechte na jeho výchozí hodnoty a klikněte na **přidat**.
+3. Zadejte název pro nastavení možností horizontálního rozšíření hello a pak klikněte na tlačítko **přidat pravidlo**. Všimněte si, možnosti hello škálování pravidlo, které se otevřou jako kontext podokně na pravé straně hello. Ve výchozím nastavení nastaví tato tooscale možnost hello instanci počet o 1, pokud hello procento využití procesoru hello prostředku přesahuje 70 procent. Nechte na jeho výchozí hodnoty a klikněte na **přidat**.
   ![Vytvoření nastavení škálování pro webovou aplikaci][6]
-4. Nyní jste vytvořili vaší první pravidlo škálování. Upozorňujeme, že UX doporučuje osvědčené postupy a uvádí, že "se doporučuje mít alespoň jeden škálování v pravidle." Postupujte následovně:
+4. Nyní jste vytvořili vaší první pravidlo škálování. Všimněte si, že hello UX doporučuje osvědčených postupů a informací, že "se doporučuje toohave alespoň jeden škálování v pravidle." toodo tak:
   
     a. Klikněte na tlačítko **přidat pravidlo**. 
 
-    b. Nastavit **operátor** k **menší než**.
+    b. Nastavit **operátor** příliš**menší než**.
 
-    c. Nastavit **prahová hodnota** k **20**.
+    c. Nastavit **prahová hodnota** příliš**20**.
 
-    d. Nastavit **operace** k **snížit počet podle**.
+    d. Nastavit **operace** příliš**snížit počet podle**.
 
    Teď byste měli mít nastavení škálování, měřítka na více systémů nebo měřítka v podle využití procesoru.
    ![Škálování podle využití procesoru][8]
 5. Klikněte na **Uložit**.
 
-Blahopřejeme! Nyní jste úspěšně vytvořili vaší první nastavení škálování chcete používat automatické škálování podle využití procesoru na základě vaší webové aplikace.
+Blahopřejeme! Nyní jste úspěšně vytvořili vaší první tooautoscale nastavení škálování webové aplikace podle využití procesoru.
 
 > [!NOTE] 
-> Stejný postup platí pro začít pracovat s škálovací sadu virtuálních počítačů nebo cloudu, služby rolí.
+> Hello stejné kroky jsou příslušné tooget začít s škálování virtuálních počítačů sady nebo cloudové služby role.
 
 ## <a name="other-considerations"></a>Další důležité informace
 ### <a name="scale-based-on-a-schedule"></a>Škálování podle plánu
-Kromě škálování podle využití procesoru můžete nastavit vaše škálování odlišně pro konkrétní dny v týdnu.
+Kromě toho tooscale podle využití procesoru, můžete nastavit vaše škálování odlišně pro konkrétní dny v týdnu hello.
 
 1. Klikněte na tlačítko **přidat podmínku škálování**.
-2. Nastavení režimu škálování a pravidel je stejná jako výchozí podmínku.
-3. Vyberte **opakujte konkrétní dny** pro plán.
-4. Vyberte dny a čas zahájení a ukončení kdy má být použita podmínka škálování.
+2. Nastavení škálování hello pravidla režimu a hello je hello stejné jako hello výchozí podmínku.
+3. Vyberte **opakujte konkrétní dny** hello plánu.
+4. Vyberte hello dny a čas zahájení a ukončení hello kdy má být použita podmínka škálování hello.
 
 ![Podmínka škálování podle plánu][9]
 ### <a name="scale-differently-on-specific-dates"></a>Jinak škálování na konkrétní kalendářní data
-Kromě škálování podle využití procesoru můžete nastavit vaše škálování odlišně pro konkrétní kalendářní data.
+Kromě toho tooscale podle využití procesoru, můžete nastavit vaše škálování odlišně pro konkrétní kalendářní data.
 
 1. Klikněte na tlačítko **přidat podmínku škálování**.
-2. Nastavení režimu škálování a pravidel je stejná jako výchozí podmínku.
-3. Vyberte **zadejte počáteční a koncové datum** pro plán.
-4. Vyberte počáteční a koncové datum a čas zahájení a ukončení kdy má být použita podmínka škálování.
+2. Nastavení škálování hello pravidla režimu a hello je hello stejné jako hello výchozí podmínku.
+3. Vyberte **zadejte počáteční a koncové datum** hello plánu.
+4. Vyberte hello počáteční a koncové datum a čas zahájení a ukončení hello kdy má být použita podmínka škálování hello.
 
 ![Škálování podmínky na základě dat][10]
 
-### <a name="view-the-scale-history-of-your-resource"></a>Zobrazení historie škálování prostředku
-Vždy, když prostředek je škálovat nahoru nebo dolů, se zaprotokoluje událost v protokolu aktivit. Můžete zobrazit historii škálování prostředku za posledních 24 hodin při přechodu **historie spouštění** kartě.
+### <a name="view-hello-scale-history-of-your-resource"></a>Zobrazit historii hello škálování prostředku
+Vždy, když prostředek je škálovat nahoru nebo dolů, je v protokolu aktivit hello zaprotokoluje událost. Můžete zobrazit historii hello škálování prostředku pro hello posledních 24 hodin přepnutím toohello **historie spouštění** kartě.
 
 ![Historie spouštění][11]
 
-Pokud chcete zobrazit historii dokončení škálování (po dobu 90 dnů), vyberte **kliknutím sem zobrazíte další podrobnosti**. Protokol aktivit otevře s škálování předem vybraná pro prostředek a kategorie.
+Pokud chcete, aby tooview hello dokončení škálování historie (pro až too90 dnů), vyberte **kliknutím sem toosee podrobnosti**. Protokol aktivit Hello otevře s škálování předem vybraná pro prostředek a kategorie.
 
-### <a name="view-the-scale-definition-of-your-resource"></a>Zobrazit definici škálování prostředku
-Při automatickém škálování je prostředek Azure Resource Manager. Definici škálování si můžete prohlédnout v JSON při přechodu **JSON** kartě.
+### <a name="view-hello-scale-definition-of-your-resource"></a>Zobrazení hello škálování definice prostředku
+Při automatickém škálování je prostředek Azure Resource Manager. Můžete zobrazit hello škálování definice ve formátu JSON přepínání toohello **JSON** kartě.
 
 ![Definice škálování][12]
 
 Můžete provádět změny v kódu JSON přímo, pokud je to nutné. Tyto změny se projeví po uložení je.
 
 ### <a name="disable-autoscale-and-manually-scale-your-instances"></a>Zakažte automatické škálování a ručně škálovat vaše instance
-Může být časy, kdy chcete zakázat aktuální nastavení škálování a ručně škálovat prostředek.
+Je možné doby kdy chcete toodisable vaše aktuální nastavení škálování a ručně škálovat prostředek.
 
-Klikněte **zakázat automatické škálování** tlačítka v horní části.
+Klikněte na tlačítko hello **zakázat automatické škálování** tlačítka v horní části hello.
 ![Zakázat automatické škálování][13]
 
 > [!NOTE] 
-> Tato možnost zakáže konfiguraci. Však můžete vrátit zpět k němu po znovu povolte automatické škálování. 
+> Tato možnost zakáže konfiguraci. Však můžete získat zpět tooit po znovu povolte automatické škálování. 
 
-Teď můžete nastavit počet instancí, které chcete škálovat ručně.
+Teď můžete nastavit hello počet instancí, které chcete tooscale toomanually.
 
 ![Ruční škálování sady][14]
 
-Můžete vždy se vrátit škálování kliknutím **povolit škálování** a potom **Uložit**.
+Kliknutím můžete kdykoli vrátit tooAutoscale **povolit škálování** a potom **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
-- [Vytvoření aktivity protokolu výstrahy monitorovat všechny operace škálování modul vaše předplatné](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [Vytvoření aktivity protokolu výstrahy monitorovat všechny neúspěšné operace škálování nebo škálovatelnou škálování na vaše předplatné](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+- [Vytvoření aktivity protokolu výstrahy toomonitor všechny operace škálování modul vaše předplatné](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
+- [Vytvoření aktivity protokolu výstrahy toomonitor všechny neúspěšné operace škálování nebo škálovatelnou škálování na vaše předplatné](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 
 <!--Reference-->
 [1]:https://portal.azure.com

@@ -1,6 +1,6 @@
 ---
-title: "Omezit přístup k obsahu Azure CDN podle země | Microsoft Docs"
-description: "Zjistěte, jak omezit přístup k vašemu obsahu Azure CDN pomocí funkce geograficky filtrování."
+title: "aaaRestrict obsahu Azure CDN podle země | Microsoft Docs"
+description: "Zjistěte, jak toorestrict přístupu k tooyour Azure CDN obsahu pomocí funkce filtrování geograficky hello."
 services: cdn
 documentationcenter: 
 author: lichard
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 30160088d9c770400f342e67527e1cf1cabc4f6b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ffdd994612b6c9cfbf1a6e29d260709b4afa86e1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>Omezit přístup k obsahu Azure CDN podle země
 
 ## <a name="overview"></a>Přehled
-Když si uživatel vyžádá obsah, ve výchozím nastavení, je zpracovat obsah bez ohledu na to, kde uživatel provedené této žádosti z. V některých případech můžete chtít omezit přístup k vašemu obsahu podle země. Toto téma vysvětluje, jak používat **filtrování geograficky** funkci chcete-li nakonfigurovat službu, kterou chcete povolit nebo blokovat přístup podle země.
+Když si uživatel vyžádá obsah, ve výchozím nastavení, hello obsahu obsluhovaného bez ohledu na to, kde uživatel hello provedené této žádosti z. V některých případech může být vhodné toorestrict přístup k obsahu tooyour podle země. Toto téma vysvětluje, jak toouse hello **filtrování geograficky** funkce v tooconfigure pořadí hello služby tooallow nebo blokování přístupu podle země.
 
 > [!IMPORTANT]
-> Verizon a Akamai produkty nabízí stejnou funkčnost geograficky filtrování, ale mají malý rozdíl v te země kódy, které podporují. Odkaz na rozdíly najdete v kroku 3.
+> Verizon a Akamai produkty Hello poskytují hello stejné funkce filtrování geograficky, ale mají malý rozdíl v kódy zemí te podporují. Najdete v kroku 3 rozdíly toohello odkaz.
 
 
-Informace o aspektech, které platí pro konfiguraci tohoto typu omezení najdete v tématu [aspekty](cdn-restrict-access-by-country.md#considerations) na konci tohoto tématu.  
+Informace o aspektech, které se vztahují tooconfiguring tento typ omezení, najdete v části hello [aspekty](cdn-restrict-access-by-country.md#considerations) části na konci hello hello tématu.  
 
 ![Filtrování podle země](./media/cdn-filtering/cdn-country-filtering-akamai.png)
 
-## <a name="step-1-define-the-directory-path"></a>Krok 1: Definování cesta k adresáři
-Vyberte koncový bod služby v rámci portálu a najít na kartě filtrování geograficky v levé navigaci k vyhledání této funkce.
+## <a name="step-1-define-hello-directory-path"></a>Krok 1: Definování cesta k adresáři hello
+Vyberte váš koncový bod hello portálu a najít hello filtrování geograficky karty v levé navigační toofind hello tuto funkci.
 
-Při konfiguraci filtr země, zadejte relativní cestu k umístění, do které se uživatelům povoluje nebo odepírá přístup. Filtrování geograficky můžete použít pro všechny soubory s "/" nebo vybrané složky zadáním cesty k adresáři "/ obrázky /". Můžete taky použít filtrování geograficky do jednoho souboru zadáním soubor a ponechat si do adresy koncové lomítko "/ obrazky/Mesto.png".
+Při konfiguraci země filtru, musíte zadat hello relativní cestu toohello umístění toowhich uživatelé se povoluje nebo odepírá přístup. Filtrování geograficky můžete použít pro všechny soubory s "/" nebo vybrané složky zadáním cesty k adresáři "/ obrázky /". Můžete taky použít geograficky filtrování tooa jedním souborem zadáním hello souboru a vynechala hello koncové lomítko "/ obrazky/Mesto.png".
 
 Příklad filtru cesta adresáře:
 
@@ -45,26 +45,26 @@ Příklad filtru cesta adresáře:
     /Photos/Strasbourg/
       /Photos/Strasbourg/city.png
 
-## <a name="step-2-define-the-action-block-or-allow"></a>Krok 2: Definování akce: blokování nebo povolení
-**Blokování:** uživatelů ze zadané zemí bude odepřen přístup k prostředkům vyžádaný z této cestě rekurzivní. Pokud pro toto umístění nebyly nakonfigurovány žádné jiné země možnosti filtrování, pak všichni ostatní uživatelé budou mít povolený přístup.
+## <a name="step-2-define-hello-action-block-or-allow"></a>Krok 2: Definování akce hello: blokování nebo povolení
+**Blokování:** uživatele z hello zadaný požadovaný z této cesty rekurzivní tooassets přístup bude odepřen zemích. Pokud pro toto umístění nebyly nakonfigurovány žádné jiné země možnosti filtrování, pak všichni ostatní uživatelé budou mít povolený přístup.
 
-**Povolit:** jen uživatelé ze zemí zadaný budou mít povolený přístup k prostředkům vyžádaný z této cestě rekurzivní.
+**Povolit:** jen uživatelé z hello zadaný zemích budou mít povolený přístup tooassets vyžádaný z této cestě rekurzivní.
 
-## <a name="step-3-define-the-countries"></a>Krok 3: Definování zemí
-Vyberte země, ve které chcete blokovat nebo povolit pro danou cestu. 
+## <a name="step-3-define-hello-countries"></a>Krok 3: Definování zemích hello
+Vyberte hello zemích, mají být tooblock nebo povolit pro cestu hello. 
 
-Například pravidlo blokování /Photos/Štrasburku/bude filtrovat soubory včetně:
+Například hello pravidlo blokování /Photos/Štrasburku/bude filtrovat soubory včetně:
 
     http://<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg
     http://<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg
 
 
 ### <a name="country-codes"></a>Kódy zemí
-**Filtrování geograficky** funkce používá k definování zemí, ze kterých se žádost o povolené nebo blokované pro zabezpečené adresář kódy zemí. Zjistíte, kódy zemí v [kódy zemí CDN Azure](https://msdn.microsoft.com/library/mt761717.aspx). 
+Hello **filtrování geograficky** funkce používá země kódy toodefine hello zemích ze kterých žádost povolené nebo blokované pro zabezpečené adresář. Zjistíte hello kódy zemí v [kódy zemí CDN Azure](https://msdn.microsoft.com/library/mt761717.aspx). 
 
 ## <a id="considerations"></a>Důležité informace
-* Verizon nebo několik minut s Akamai, změny ve vaší zemi filtrování k provedení změn konfigurace může trvat až 90 minut.
+* To může trvat až minut too90 Verizon nebo několik minut s Akamai, změny tooyour země filtrování konfigurace tootake vliv.
 * Tato funkce nepodporuje zástupné znaky (například ' *').
-* Konfigurace filtrování geograficky spojené s relativní cestou bude rekurzivně této cesty.
-* Pouze jedno pravidlo můžete použít stejné relativní cestu (nemůžete vytvořit více filtrů země, které odkazují na stejné relativní cestě. Do složky, ale může mít více filtrů země. Toto je vzhledem k povaze rekurzivní země filtrů. Jinými slovy podsložkou dříve nakonfigurované složky lze přiřadit jiné zemi filtru.
+* Hello filtrování geograficky konfigurace související s relativní cestou hello bude rekurzivně toothat cesta.
+* Pouze jedno pravidlo může být použité toohello stejné relativní cestě (nelze vytvořit více filtrů země tento bod toohello stejné relativní cestě. Do složky, ale může mít více filtrů země. Toto je z důvodu toohello rekurzivní povaha země filtry. Jinými slovy podsložkou dříve nakonfigurované složky lze přiřadit jiné zemi filtru.
 

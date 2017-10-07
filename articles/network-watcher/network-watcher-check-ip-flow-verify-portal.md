@@ -1,6 +1,6 @@
 ---
-title: "Ověřte provoz s IP Adresou sledovací proces sítě Azure tok ověření - portálu Azure | Microsoft Docs"
-description: "Tento článek popisuje, jak zkontrolovat, pokud je povolené nebo zakázané přenosy do nebo z virtuálního počítače"
+title: "Ověřte aaaVerify provoz s tokem IP sledovací proces sítě Azure - portálu Azure | Microsoft Docs"
+description: "Tento článek popisuje, jak toocheck Pokud tooor provoz z virtuálního počítače povolený nebo zakázaný"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 7db29c186cf6e6f3b40a680ab76f1d2763f806ba
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: abf639f36d32f3416dd927e66b635267b746e62f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="check-if-traffic-is-allowed-or-denied-to-or-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Zkontrolujte, jestli je provoz povolen nebo odepřen do nebo z virtuálního počítače s tok ověření IP součást sledovací proces sítě Azure
+# <a name="check-if-traffic-is-allowed-or-denied-tooor-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Zkontrolujte, zda je provoz povolen nebo odepřen tooor z virtuálního počítače s tok ověření IP a součást sledovací proces sítě Azure
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-check-ip-flow-verify-portal.md)
@@ -30,36 +30,36 @@ ms.lasthandoff: 07/11/2017
 > - [Rozhraní API Azure REST](network-watcher-check-ip-flow-verify-rest.md)
 
 
-Tok IP ověřte, že je funkce sledovací proces sítě, která vám umožní ověřit, pokud provoz je povolený do nebo z virtuálního počítače. Ověření lze spustit pro příchozí nebo odchozí provoz. Tento scénář je vhodný pro zjištění aktuálního stavu o tom, jestli virtuální počítač může kontaktovat na externí prostředek nebo jiný prostředek. Ověřte toku IP umožňuje ověřit, pokud vaše skupina zabezpečení sítě (NSG) pravidla jsou správně nakonfigurovány a vyřešit toky, kteří jsou Blokovaní pravidla NSG. Dalším důvodem pro použití IP tok ověření, je potřeba zajistit provoz, který chcete blokovat, je správně blokován nastavením NSG.
+Tok IP ověřte, že je funkce sledovací proces sítě, která umožňuje tooverify Pokud provoz je povolený tooor z virtuálního počítače. ověření Hello lze spustit pro příchozí nebo odchozí provoz. Tento scénář je užitečné tooget aktuálním stavu o tom, jestli virtuální počítač může kontaktovat tooan externí prostředek nebo jiný prostředek. Tok IP ověření může být použité tooverify, pokud vaše skupina zabezpečení sítě (NSG) pravidla jsou správně nakonfigurovány a řešení potíží s toky, kteří jsou Blokovaní pravidla NSG. Dalším důvodem pro použití IP tok ověření je tooensure přenosy, které chcete blokovat je správně blokován nastavením hello NSG.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento scénář předpokládá, že už jste udělali kroky v [vytvořit sledovací proces sítě](network-watcher-create.md) vytvořit sledovací proces sítě nebo máte existující instanci sledovací proces sítě. Tento scénář také předpokládá, že skupina prostředků se platný virtuální počítač existuje má být použit.
+Tento scénář předpokládá, že jste již provedli kroky hello v [vytvořit sledovací proces sítě](network-watcher-create.md) toocreate sledovací proces sítě nebo existující instanci sledovací proces sítě. scénář Hello také předpokládá, že skupina prostředků se platný virtuální počítač existuje toobe použít.
 
 ## <a name="scenario"></a>Scénář
 
-Tento scénář používá k ověření, pokud virtuální počítač může kontaktovat k jinému počítači přes port 443 tok ověření IP. Pokud je odepřená provoz, vrátí pravidlo zabezpečení, které je odepřen, aby provoz. Další informace o toku ověřte IP, navštivte [přehled tok ověření IP](network-watcher-ip-flow-verify-overview.md)
+Tento scénář používá tok ověření IP tooverify, pokud virtuální počítač může kontaktovat počítač tooanother přes port 443. Pokud je odepřená hello provoz, vrátí hello pravidlo zabezpečení, které je odepřen, aby provoz. toolearn Další informace o toku ověřit IP, navštivte [přehled tok ověření IP](network-watcher-ip-flow-verify-overview.md)
 
 ### <a name="run-ip-flow-verify"></a>Ověření spuštění toku IP
 
-Přejděte do vaší sledovací proces sítě a klikněte na tlačítko **IP tok ověření**. Vyberte virtuální počítač a chcete ověřit provoz z síťové rozhraní. Zadejte veškeré další filtrování informace a klikněte na tlačítko **zkontrolujte**.
+Přejděte tooyour sledovací proces sítě a klikněte na tlačítko **IP tok ověření**. Vyberte virtuální počítač hello a síťové rozhraní, které chcete tooverify provoz z. Zadejte veškeré další filtrování informace a klikněte na tlačítko **zkontrolujte**.
 
-Po kliknutí na tlačítko **zkontrolujte**, se kontroluje toku na základě kritérií, které jste zadali. Výsledkem je buď **povoleného přístupu** nebo **byl odepřen přístup**. Pokud byl odepřen přístup, je k dispozici skupina zabezpečení sítě (NSG) a zabezpečení pravidlo, které blokování provozu. Pokud odmítnutí provoz je očekávané chování, pravidlo bylo úspěšné.
+Po kliknutí na tlačítko **zkontrolujte**, se kontroluje hello toku na základě kritérií hello jste zadali. výsledek Hello je buď **povoleného přístupu** nebo **byl odepřen přístup**. Pokud byl odepřen přístup, hello skupina zabezpečení sítě (NSG) a pravidlo zabezpečení, která blokuje komunikaci, je k dispozici. Pokud hello odmítnutí provoz je očekávané chování, hello pravidlo bylo úspěšné.
 
 > [!NOTE]
-> Tok IP ověření vyžaduje, aby prostředků virtuálního počítače je přidělená.
+> Tok IP ověření vyžaduje, aby hello prostředků virtuálního počítače je přidělená.
 
-Jak je vidět na následujícím obrázku, byla povolena odchozí provoz HTTPS.
+Jak vidíte z hello následující bitové kopie, byla povolena hello odchozí komunikaci přes protokol HTTPS.
 
 ![tok IP ověřte – přehled][1]
 
-Jak je vidět na následujícím obrázku, provoz se změní na příchozí a příchozí port změnit tak, aby 123. Provoz je nyní odepřen, zprávy poskytnuté společně s pravidlo zabezpečení sítě skupiny a zabezpečení, odepřít provoz "Přístup byl odepřen".
+Jak je vidět v hello následující bitové kopie, provoz mění tooinbound a hello příchozí too123 port změnit. Provoz je nyní odepřen, uvítací zprávu "Přístup byl odepřen" je k dispozici společně s hello pravidla zabezpečení sítě skupiny a zabezpečení, zakážou provoz hello.
 
 ![výsledky toku IP][2]
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud je blokován provoz a neměl by být, najdete v části [spravovat skupiny zabezpečení sítě](../virtual-network/virtual-network-manage-nsg-arm-portal.md) sledovat pravidla zabezpečení sítě skupiny a zabezpečení, které jsou definovány.
+Pokud je blokován provoz a neměl by být, najdete v části [spravovat skupiny zabezpečení sítě](../virtual-network/virtual-network-manage-nsg-arm-portal.md) tootrack dolů hello pravidla zabezpečení sítě skupiny a zabezpečení, které jsou definovány.
 
 [1]: ./media/network-watcher-check-ip-flow-verify-portal/figure1.png
 [2]: ./media/network-watcher-check-ip-flow-verify-portal/figure2.png

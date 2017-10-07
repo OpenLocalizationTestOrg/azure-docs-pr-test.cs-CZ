@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace ke službě Azure BizTalk Services – kurzy | Dokumentace Microsoftu"
-description: "Podívejte se, jak jde pomocí BizTalk Services poskytovat integraci podnikových aplikací pro SAP, Oracle EBS, SQL Server a PeopleSoft spouštěných místně i v cloudu."
+title: "aaaAzure dokumentace služby Biztalk - kurzy | Microsoft Docs"
+description: "Zjistěte, jak toouse BizTalk services tooprovide cloudu tooon různými místy a pro integraci-obchodní aplikace pro SAP, Oracle EBS, SQL Server a PeopleSoft."
 services: biztalk-services
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 80b381d59e95297cf8d7616e6a2eb3186ab26a05
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 06411e211b987a96d4b79a93871e66157f7ecdb6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="biztalk-services-documentation"></a>Dokumentace ke službě BizTalk Services
 
-Podívejte se, jak jde pomocí BizTalk Services poskytovat integraci podnikových aplikací pro SAP, Oracle EBS, SQL Server a PeopleSoft spouštěných místně i v cloudu. Kurzy a další dokumentace ukazují, jak provádět integraci mezi podnikem a cloudem.
+Zjistěte, jak toouse BizTalk services tooprovide cloudu tooon různými místy a pro integraci-obchodní aplikace pro SAP, Oracle EBS, SQL Server a PeopleSoft. Kurzy a další dokumenty popisují, jak cloudové toointegrate hello enterprise a hello.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ Podívejte se, jak jde pomocí BizTalk Services poskytovat integraci podnikovýc
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme se službou BizTalk Services s využitím webu Azure Portal</h3>
+                        <h3>Začínáme s služby BizTalk Services pomocí hello portálu Azure</h3>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 ---
-title: "Sledovat a spravovat úlohy Stream Analytics v prostředí PowerShell | Microsoft Docs"
-description: "Naučte se používat rutiny prostředí Azure PowerShell a sledovat a spravovat úlohy Stream Analytics."
+title: "aaaMonitor a spravovat úlohy Stream Analytics v prostředí PowerShell | Microsoft Docs"
+description: "Zjistěte, jak Azure PowerShell a rutiny toomonitor toouse a spravovat úlohy Stream Analytics."
 keywords: "prostředí Azure powershell, rutin prostředí azure powershell, příkaz prostředí powershell, skriptů prostředí powershell"
 services: stream-analytics
 documentationcenter: 
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-ms.openlocfilehash: e3449ee90cc83c5e823e5948a2a2e7e633c454f1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 44abc82f1c44a5ebc1701badd6547b84dac239b6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Sledovat a spravovat úlohy Stream Analytics pomocí rutin prostředí Azure PowerShell
-Zjistěte, jak sledovat a spravovat prostředky Stream Analytics pomocí rutin prostředí Azure PowerShell a skriptů prostředí powershell, které jsou spouštěny základní úlohy Stream Analytics.
+Zjistěte, jak toomonitor a spravovat prostředky Stream Analytics s rutin prostředí Azure PowerShell a skriptů prostředí powershell, které jsou spouštěny základní úlohy Stream Analytics.
 
 ## <a name="prerequisites-for-running-azure-powershell-cmdlets-for-stream-analytics"></a>Požadavky pro spuštění rutiny prostředí Azure PowerShell pro Stream Analytics
-* Vytvořte skupinu prostředků Azure v rámci vašeho předplatného. Toto je ukázkový skript prostředí Azure PowerShell. Prostředí Azure PowerShell informace najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview);  
+* Vytvořte skupinu prostředků Azure v rámci vašeho předplatného. Následující Hello je ukázkový skript prostředí Azure PowerShell. Prostředí Azure PowerShell informace najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview);  
 
 Azure PowerShell 0.9.8:  
 
-         # Log in to your Azure account
+         # Log in tooyour Azure account
         Add-AzureAccount
 
-        # Select the Azure subscription you want to use to create the resource group if you have more than one subscription on your account.
+        # Select hello Azure subscription you want toouse toocreate hello resource group if you have more than one subscription on your account.
         Select-AzureSubscription -SubscriptionName <subscription name>
 
-        # If Stream Analytics has not been registered to the subscription, remove remark symbol below (#) to run the Register-AzureProvider cmdlet to register the provider namespace.
+        # If Stream Analytics has not been registered toohello subscription, remove remark symbol below (#) toorun hello Register-AzureProvider cmdlet tooregister hello provider namespace.
         #Register-AzureProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
 
         # Create an Azure resource group
@@ -43,13 +43,13 @@ Azure PowerShell 0.9.8:
 
 Azure PowerShell 1.0:  
 
-         # Log in to your Azure account
+         # Log in tooyour Azure account
         Login-AzureRmAccount
 
-        # Select the Azure subscription you want to use to create the resource group.
+        # Select hello Azure subscription you want toouse toocreate hello resource group.
         Get-AzureRmSubscription –SubscriptionName “your sub” | Select-AzureRmSubscription
 
-        # If Stream Analytics has not been registered to the subscription, remove remark symbol below (#) to run the Register-AzureProvider cmdlet to register the provider namespace.
+        # If Stream Analytics has not been registered toohello subscription, remove remark symbol below (#) toorun hello Register-AzureProvider cmdlet tooregister hello provider namespace.
         #Register-AzureRmResourceProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
 
         # Create an Azure resource group
@@ -58,16 +58,16 @@ Azure PowerShell 1.0:
 
 
 > [!NOTE]
-> Úlohy Stream Analytics vytvořené prostřednictvím kódu programu nemají povoleno ve výchozím nastavení monitorování.  Můžete ručně povolit monitorování na portálu Azure tak, že přejdete na stránku úlohy monitorování a kliknutím na tlačítko Povolit nebo to můžete udělat prostřednictvím kódu programu podle kroků v [Azure Stream Analytics – monitorování Stream Analytics úlohy programově](stream-analytics-monitor-jobs.md).
+> Úlohy Stream Analytics vytvořené prostřednictvím kódu programu nemají povoleno ve výchozím nastavení monitorování.  Můžete ručně povolit monitorování v hello portálu Azure tak, že přejdete na stránku toohello úlohy monitorování a kliknutím na tlačítko Povolit hello nebo můžete to provést prostřednictvím kódu programu podle následujících kroků hello nacházející se v [Azure Stream Analytics – monitorování datového proudu Analýza úlohy programově](stream-analytics-monitor-jobs.md).
 > 
 > 
 
 ## <a name="azure-powershell-cmdlets-for-stream-analytics"></a>Rutiny Azure PowerShell pro Stream Analytics
-Následující rutiny prostředí Azure PowerShell můžete použít ke sledování a správě úlohy Azure Stream Analytics. Všimněte si, že prostředí Azure PowerShell má různé verze. 
-**V uvedených příkladech je první příkaz pro prostředí Azure PowerShell 0.9.8, v druhém příkazu je pro Azure PowerShell 1.0.** Příkazy Azure PowerShell 1.0, bude mít vždy "AzureRM" v příkazu.
+Hello následující rutiny prostředí Azure PowerShell můžou být použité toomonitor a spravovat úlohy Azure Stream Analytics. Všimněte si, že prostředí Azure PowerShell má různé verze. 
+**V příkladech hello, ke kterému se první příkaz uvedené hello prostředí Azure PowerShell 0.9.8 druhý příkaz hello je pro Azure PowerShell 1.0.** příkazy Hello Azure PowerShell 1.0 bude mít vždy "AzureRM" v příkazu hello.
 
 ### <a name="get-azurestreamanalyticsjob--get-azurermstreamanalyticsjob"></a>Get-AzureStreamAnalyticsJob | Get-AzureRMStreamAnalyticsJob
-Zobrazí všechny úlohy služby Stream Analytics, které jsou definované v předplatného Azure nebo zadaná skupina prostředků, nebo získá úlohy informace o konkrétní úloze ve skupině prostředků.
+Zobrazí všechny úlohy služby Stream Analytics, které jsou definované v hello předplatného Azure nebo zadaná skupina prostředků, nebo získá úlohy informace o konkrétní úloze ve skupině prostředků.
 
 **Příklad 1**
 
@@ -79,7 +79,7 @@ Azure PowerShell 1.0:
 
     Get-AzureRMStreamAnalyticsJob
 
-Tento příkaz prostředí PowerShell vrátí informace o všechny úlohy služby Stream Analytics v rámci předplatného Azure.
+Tento příkaz prostředí PowerShell vrátí informace o všechny úlohy služby Stream Analytics hello hello předplatného Azure.
 
 **Příklad 2**
 
@@ -91,7 +91,7 @@ Azure PowerShell 1.0:
 
     Get-AzureRMStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US 
 
-Tento příkaz prostředí PowerShell vrátí informace o všechny úlohy služby Stream Analytics ve skupině prostředků StreamAnalytics výchozí střed USA.
+Tento příkaz prostředí PowerShell vrátí informace o všechny úlohy služby Stream Analytics hello ve skupině prostředků hello StreamAnalytics výchozí střed USA.
 
 **Příklad 3**
 
@@ -103,10 +103,10 @@ Azure PowerShell 1.0:
 
     Get-AzureRMStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob
 
-Tento příkaz prostředí PowerShell vrátí informace o úloze Stream Analytics StreamingJob ve skupině prostředků StreamAnalytics výchozí střed USA.
+Tento příkaz prostředí PowerShell vrátí informace o úloze Stream Analytics hello StreamingJob ve skupině prostředků hello StreamAnalytics výchozí střed USA.
 
 ### <a name="get-azurestreamanalyticsinput--get-azurermstreamanalyticsinput"></a>Get-AzureStreamAnalyticsInput | Get-AzureRMStreamAnalyticsInput
-Zobrazí seznam všech vstupních hodnot, které jsou definované v zadané úloze Stream Analytics, nebo získá informace o specifický vstup.
+Zobrazí seznam všech hello vstupních hodnot, které jsou definované v zadané úloze Stream Analytics, nebo získá informace o specifický vstup.
 
 **Příklad 1**
 
@@ -118,7 +118,7 @@ Azure PowerShell 1.0:
 
     Get-AzureRMStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob
 
-Tento příkaz prostředí PowerShell vrátí informace o všech vstupů definované v úloze StreamingJob.
+Tento příkaz prostředí PowerShell vrátí informace o všech vstupů hello definované v úloze hello StreamingJob.
 
 **Příklad 2**
 
@@ -130,10 +130,10 @@ Azure PowerShell 1.0:
 
     Get-AzureRMStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –Name EntryStream
 
-Tento příkaz prostředí PowerShell vrátí informace o vstup s názvem EntryStream definované v úloze StreamingJob.
+Tento příkaz prostředí PowerShell vrátí informace o hello vstup s názvem EntryStream definované v úloze hello StreamingJob.
 
 ### <a name="get-azurestreamanalyticsoutput--get-azurermstreamanalyticsoutput"></a>Get-AzureStreamAnalyticsOutput | Get-AzureRMStreamAnalyticsOutput
-Zobrazí seznam všech výstupů, které jsou definované v zadané úloze Stream Analytics, nebo získá informace o konkrétní výstup.
+Zobrazí seznam všech hello výstupů, které jsou definované v zadané úloze Stream Analytics, nebo získá informace o konkrétní výstup.
 
 **Příklad 1**
 
@@ -145,7 +145,7 @@ Azure PowerShell 1.0:
 
     Get-AzureRMStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob
 
-Tento příkaz prostředí PowerShell vrátí informace o výstupy definované v úloze StreamingJob.
+Tento příkaz prostředí PowerShell vrátí informace o definované v úloze hello StreamingJob výstupy hello.
 
 **Příklad 2**
 
@@ -157,10 +157,10 @@ Azure PowerShell 1.0:
 
     Get-AzureRMStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –Name Output
 
-Tento příkaz prostředí PowerShell vrátí informace o výstup s názvem definované v úloze StreamingJob výstup.
+Tento příkaz prostředí PowerShell vrátí informace o výstup hello s názvem definované v úloze hello StreamingJob výstup.
 
 ### <a name="get-azurestreamanalyticsquota--get-azurermstreamanalyticsquota"></a>Get-AzureStreamAnalyticsQuota | Get-AzureRMStreamAnalyticsQuota
-Získá informace o kvótu počtu jednotek v zadané oblasti streamování.
+Získá informace o hello kvótu počtu jednotek v zadané oblasti streamování.
 
 **Příklad 1**
 
@@ -172,7 +172,7 @@ Azure PowerShell 1.0:
 
     Get-AzureRMStreamAnalyticsQuota –Location "Central US" 
 
-Tento příkaz prostředí PowerShell vrátí informace o kvóta a využití jednotek streamování v oblasti, střed USA.
+Tento příkaz prostředí PowerShell vrátí informace o hello kvóta a využití jednotek streamování v oblasti hello střed USA.
 
 ### <a name="get-azurestreamanalyticstransformation--getazurermstreamanalyticstransformation"></a>Get-AzureStreamAnalyticsTransformation | GetAzureRMStreamAnalyticsTransformation
 Získá informace o konkrétní transformaci definované v úloze Stream Analytics.
@@ -187,18 +187,18 @@ Azure PowerShell 1.0:
 
     Get-AzureRMStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –Name StreamingJob
 
-Tento příkaz prostředí PowerShell vrátí informace o transformaci názvem StreamingJob v úloze StreamingJob.
+Tento příkaz prostředí PowerShell vrátí informace o transformaci hello názvem StreamingJob v úloze hello StreamingJob.
 
 ### <a name="new-azurestreamanalyticsinput--new-azurermstreamanalyticsinput"></a>Nové AzureStreamAnalyticsInput | Nové AzureRMStreamAnalyticsInput
 Vytvoří nový vstup v rámci úlohy Stream Analytics nebo aktualizuje existující zadaný vstup.
 
-Název vstupu mohou být zadané v souboru .json nebo na příkazovém řádku. Pokud jsou zadány oba název na příkazovém řádku musí být stejná jako ta, v souboru.
+Hello hello vstupu může být zadán název v souboru .json hello nebo na příkazovém řádku hello. Pokud jsou zadány oba název hello na příkazovém řádku hello musí být hello stejné jako hello, jeden v souboru hello.
 
-Pokud jste zadejte vstup, který již existuje a není zadán parametr-Force, rutina zobrazí dotaz, zda chcete nahradit existující vstup.
+Pokud zadáte vstup, který již existuje a není zadán hello – Force parametr rutiny hello zobrazí dotaz, zda tooreplace hello stávající vstup.
 
-Pokud zadáte – vynutit parametr a zadejte existující zadejte název, vstup se nahradí bez potvrzení.
+Pokud zadáte hello – Force parametr a zadejte existující zadejte název, vstup hello se nahradí bez potvrzení.
 
-Podrobné informace o struktuře souboru JSON a obsah, najdete v části [vytvořit vstup (Azure Stream Analytics)] [ msdn-rest-api-create-stream-analytics-input] části [datového proudu Analytics Management REST API referenční dokumentace knihovny][stream.analytics.rest.api.reference].
+Podrobné informace o struktuře souboru JSON hello a obsah, najdete v části toohello [vytvořit vstup (Azure Stream Analytics)] [ msdn-rest-api-create-stream-analytics-input] části hello [rozhraní API REST správy Stream Analytics Referenční dokumentace knihovny][stream.analytics.rest.api.reference].
 
 **Příklad 1**
 
@@ -210,7 +210,7 @@ Azure PowerShell 1.0:
 
     New-AzureRMStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –File "C:\Input.json" 
 
-Tento příkaz prostředí PowerShell vytvoří nový vstup ze souboru Input.json. Pokud stávající vstup se zadaným v souboru definice vstupní názvem je již definován, rutina zobrazí dotaz, zda chcete ho nahradit.
+Tento příkaz prostředí PowerShell vytvoří nový vstup z hello souboru Input.json. Pokud je již definován stávající vstup s názvem hello zadané v souboru definice vstupní hello, hello rutina požádá, jestli tooreplace ho.
 
 **Příklad 2**
 
@@ -222,7 +222,7 @@ Azure PowerShell 1.0:
 
     New-AzureRMStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –File "C:\Input.json" –Name EntryStream
 
-Tento příkaz prostředí PowerShell vytvoří nové vstup do úlohy názvem EntryStream. Pokud stávající vstup s tímto názvem je již definován, rutina zobrazí dotaz, zda chcete ho nahradit.
+Tento příkaz prostředí PowerShell vytvoří nový vstup v úloze hello názvem EntryStream. Pokud je již definován stávající vstup s tímto názvem, rutina hello požádá, jestli tooreplace ho.
 
 **Příklad 3**
 
@@ -234,18 +234,18 @@ Azure PowerShell 1.0:
 
     New-AzureRMStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –File "C:\Input.json" –Name EntryStream -Force
 
-Tento příkaz prostředí PowerShell nahradí definici existující vstupní zdroj s názvem EntryStream s definicí ze souboru.
+Tento příkaz prostředí PowerShell nahrazuje hello Definice hello existující vstupní zdroj volána EntryStream s hello definice ze souboru hello.
 
 ### <a name="new-azurestreamanalyticsjob--new-azurermstreamanalyticsjob"></a>Nové AzureStreamAnalyticsJob | Nové AzureRMStreamAnalyticsJob
-Vytvoří novou úlohu služby Stream Analytics v Microsoft Azure nebo aktualizuje definice existující zadanou úlohu.
+Vytvoří novou úlohu služby Stream Analytics v Microsoft Azure nebo aktualizuje definice hello existující zadanou úlohu.
 
-V souboru .json nebo na příkazovém řádku lze zadat název úlohy. Pokud jsou zadány oba název na příkazovém řádku musí být stejná jako ta, v souboru.
+v souboru .json hello nebo na příkazovém řádku hello může být zadán název Hello hello úlohy. Pokud jsou zadány oba název hello na příkazovém řádku hello musí být hello stejné jako hello, jeden v souboru hello.
 
-Pokud můžete zadat název úlohy, která již existuje a není zadán parametr-Force, rutina zobrazí dotaz, zda chcete nahradit existující úlohy.
+Pokud zadáte název úlohy, která již existuje a nezadávejte hello – Force parametr hello rutiny zobrazí dotaz, zda tooreplace hello existující úlohy.
 
-Pokud zadáte – vynutit parametr a zadejte název existující úlohy, definici úlohy se nahradí bez potvrzení.
+Pokud zadáte hello – Force parametr a zadejte název existující úlohy, definice úlohy hello se nahradí bez potvrzení.
 
-Podrobné informace o struktuře souboru JSON a obsah, najdete v části [vytvořit úlohy Stream Analytics] [ msdn-rest-api-create-stream-analytics-job] části [datového proudu Analytics Management REST API referenční dokumentace knihovny][stream.analytics.rest.api.reference].
+Podrobné informace o struktuře souboru JSON hello a obsah, najdete v části toohello [vytvořit úlohy Stream Analytics] [ msdn-rest-api-create-stream-analytics-job] části hello [referenční příručka Stream Analytics Management REST API Knihovna][stream.analytics.rest.api.reference].
 
 **Příklad 1**
 
@@ -257,7 +257,7 @@ Azure PowerShell 1.0:
 
     New-AzureRMStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\JobDefinition.json" 
 
-Tento příkaz prostředí PowerShell vytvoří novou úlohu z definice v JobDefinition.json. Pokud stávající úloze s názvem zadaným v souboru definice úlohy je již definován, rutina zobrazí dotaz, zda chcete ho nahradit.
+Tento příkaz prostředí PowerShell vytvoří novou úlohu z definice hello v JobDefinition.json. Pokud je již definován existující úlohy s názvem hello zadaný v souboru definice úlohy hello, hello rutina požádá, jestli tooreplace ho.
 
 **Příklad 2**
 
@@ -269,18 +269,18 @@ Azure PowerShell 1.0:
 
     New-AzureRMStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\JobDefinition.json" –Name StreamingJob -Force
 
-Tento příkaz prostředí PowerShell nahrazuje danou definici úlohy pro StreamingJob.
+Tento příkaz prostředí PowerShell nahrazuje hello definice úlohy pro StreamingJob.
 
 ### <a name="new-azurestreamanalyticsoutput--new-azurermstreamanalyticsoutput"></a>Nové AzureStreamAnalyticsOutput | Nové AzureRMStreamAnalyticsOutput
 Vytvoří nový výstupní v rámci úlohy Stream Analytics nebo aktualizuje existující výstup.  
 
-Název výstupu mohou být zadané v souboru .json nebo na příkazovém řádku. Pokud jsou zadány oba název na příkazovém řádku musí být stejná jako ta, v souboru.
+v souboru .json hello nebo na příkazovém řádku hello může být zadán název Hello hello výstupu. Pokud jsou zadány oba název hello na příkazovém řádku hello musí být hello stejné jako hello, jeden v souboru hello.
 
-Pokud zadejte výstup, který již existuje a není zadán parametr-Force, rutina zobrazí dotaz, zda chcete nahradit existující výstup.
+Zadáte-li výstupu, který již existuje a není zadán hello – Force parametr hello rutiny zobrazí dotaz, zda tooreplace hello existující výstup.
 
-Pokud zadáte – vynutit parametr a zadejte název existující výstup, výstup se nahradí bez potvrzení.
+Pokud zadáte hello – Force parametr a zadejte název existující výstup, výstup hello se nahradí bez potvrzení.
 
-Podrobné informace o struktuře souboru JSON a obsah, najdete v části [vytvoření výstupu (Azure Stream Analytics)] [ msdn-rest-api-create-stream-analytics-output] části [datového proudu Analytics Management REST API referenční dokumentace knihovny][stream.analytics.rest.api.reference].
+Podrobné informace o struktuře souboru JSON hello a obsah, najdete v části toohello [vytvoření výstupu (Azure Stream Analytics)] [ msdn-rest-api-create-stream-analytics-output] části hello [rozhraní API REST správy Stream Analytics Referenční dokumentace knihovny][stream.analytics.rest.api.reference].
 
 **Příklad 1**
 
@@ -292,7 +292,7 @@ Azure PowerShell 1.0:
 
     New-AzureRMStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Output.json" –JobName StreamingJob –Name output
 
-Tento příkaz prostředí PowerShell vytvoří nový výstupní názvem "výstupní" v úloze StreamingJob. Pokud existující výstup s tímto názvem je již definován, rutina zobrazí dotaz, zda chcete ho nahradit.
+Tento příkaz prostředí PowerShell vytvoří nový výstupní názvem "výstupní" v úloze hello StreamingJob. Pokud je již definován existující výstup s tímto názvem, rutina hello požádá, jestli tooreplace ho.
 
 **Příklad 2**
 
@@ -304,18 +304,18 @@ Azure PowerShell 1.0:
 
     New-AzureRMStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Output.json" –JobName StreamingJob –Name output -Force
 
-Tento příkaz prostředí PowerShell nahradí definici "výstupní" v úloze StreamingJob.
+Tento příkaz prostředí PowerShell nahrazuje definice hello "výstupní" v úloze hello StreamingJob.
 
 ### <a name="new-azurestreamanalyticstransformation--new-azurermstreamanalyticstransformation"></a>Nové AzureStreamAnalyticsTransformation | Nové AzureRMStreamAnalyticsTransformation
-Vytvoří nový transformaci v rámci úlohy Stream Analytics nebo aktualizuje existující transformace.
+Vytvoří nový transformaci v rámci úlohy Stream Analytics nebo aktualizuje existující transformace hello.
 
-V souboru .json nebo na příkazovém řádku, může být zadán název transformace. Pokud jsou zadány oba název na příkazovém řádku musí být stejná jako ta, v souboru.
+v souboru .json hello nebo na příkazovém řádku hello může být zadán název Hello hello transformace. Pokud jsou zadány oba název hello na příkazovém řádku hello musí být hello stejné jako hello, jeden v souboru hello.
 
-Pokud zadejte transformaci, která již existuje a není zadán parametr-Force, rutina zobrazí dotaz, zda chcete nahradit existující transformace.
+Pokud zadáte transformaci, která již existuje a není zadán hello – Force parametr hello rutiny zobrazí dotaz, zda tooreplace hello existující transformace.
 
-Pokud zadáte – vynutit parametr a zadejte název existující transformace, transformaci se nahradí bez potvrzení.
+Pokud zadáte hello – Force parametr a zadejte název existující transformace, hello transformace se nahradí bez potvrzení.
 
-Podrobné informace o struktuře souboru JSON a obsah, najdete v části [vytvořit transformaci (Azure Stream Analytics)] [ msdn-rest-api-create-stream-analytics-transformation] části [datového proudu Analytics Management REST API referenční dokumentace knihovny][stream.analytics.rest.api.reference].
+Podrobné informace o struktuře souboru JSON hello a obsah, najdete v části toohello [vytvořit transformaci (Azure Stream Analytics)] [ msdn-rest-api-create-stream-analytics-transformation] části hello [Stream Analytics správy Knihovna referenční dokumentace rozhraní API REST][stream.analytics.rest.api.reference].
 
 **Příklad 1**
 
@@ -327,7 +327,7 @@ Azure PowerShell 1.0:
 
     New-AzureRMStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Transformation.json" –JobName StreamingJob –Name StreamingJobTransform
 
-Tento příkaz prostředí PowerShell vytvoří nový transformace názvem StreamingJobTransform v úloze StreamingJob. Pokud s tímto názvem je již definován existující transformace, rutina zobrazí dotaz, zda chcete ho nahradit.
+Tento příkaz prostředí PowerShell vytvoří nový transformace názvem StreamingJobTransform v úloze hello StreamingJob. Pokud je již definován transformaci existující s tímto názvem, rutina hello požádá, jestli tooreplace ho.
 
 **Příklad 2**
 
@@ -339,11 +339,11 @@ Azure PowerShell 1.0:
 
     New-AzureRMStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Transformation.json" –JobName StreamingJob –Name StreamingJobTransform -Force
 
- Tento příkaz prostředí PowerShell nahrazuje definice StreamingJobTransform v úloze StreamingJob.
+ Tento příkaz prostředí PowerShell nahrazuje hello Definice StreamingJobTransform v úloze hello StreamingJob.
 
 ### <a name="remove-azurestreamanalyticsinput--remove-azurermstreamanalyticsinput"></a>Odebrat AzureStreamAnalyticsInput | Odebrat AzureRMStreamAnalyticsInput
 Asynchronně odstraní specifický vstup z úlohy Stream Analytics v Microsoft Azure.  
-Zadáte-li parametr-Force, odstraní se vstup bez potvrzení.
+Pokud zadáte hello – Force parametr hello vstup bude odstraněn bez potvrzení.
 
 **Příklad 1**
 
@@ -355,11 +355,11 @@ Azure PowerShell 1.0:
 
     Remove-AzureRMStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name EventStream
 
-Tento příkaz prostředí PowerShell odebere vstupní EventStream v úloze StreamingJob.  
+Tento příkaz prostředí PowerShell, že odebere hello vstupní EventStream v úloze hello StreamingJob.  
 
 ### <a name="remove-azurestreamanalyticsjob--remove-azurermstreamanalyticsjob"></a>Odebrat AzureStreamAnalyticsJob | Odebrat AzureRMStreamAnalyticsJob
 Asynchronně odstraní určité úlohy Stream Analytics v Microsoft Azure.  
-Zadáte-li parametr-Force, úloha se odstraní bez potvrzení.
+Pokud zadáte hello – Force parametr hello úlohy bude odstraněn bez potvrzení.
 
 **Příklad 1**
 
@@ -371,11 +371,11 @@ Azure PowerShell 1.0:
 
     Remove-AzureRMStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –Name StreamingJob 
 
-Tento příkaz prostředí PowerShell odebere úlohy StreamingJob.  
+Tento příkaz prostředí PowerShell odebere úlohy hello StreamingJob.  
 
 ### <a name="remove-azurestreamanalyticsoutput--remove-azurermstreamanalyticsoutput"></a>Odebrat AzureStreamAnalyticsOutput | Odebrat AzureRMStreamAnalyticsOutput
 Asynchronně odstraní konkrétní výstup z úlohy Stream Analytics v Microsoft Azure.  
-Zadáte-li parametr-Force, odstraní se výstup bez potvrzení.
+Pokud zadáte hello – Force parametr výstup hello bude odstraněn bez potvrzení.
 
 **Příklad 1**
 
@@ -387,7 +387,7 @@ Azure PowerShell 1.0:
 
     Remove-AzureRMStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name Output
 
-Tato odebere příkaz prostředí PowerShell výstup výstup do úlohy StreamingJob.  
+Toto prostředí PowerShell příkaz odebere hello výstup výstup do úlohy hello StreamingJob.  
 
 ### <a name="start-azurestreamanalyticsjob--start-azurermstreamanalyticsjob"></a>Spuštění AzureStreamAnalyticsJob | Počáteční AzureRMStreamAnalyticsJob
 Asynchronně nasadí a spustí úlohu služby Stream Analytics v Microsoft Azure.
@@ -402,10 +402,10 @@ Azure PowerShell 1.0:
 
     Start-AzureRMStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob -OutputStartMode CustomTime -OutputStartTime 2012-12-12T12:12:12Z
 
-Tento příkaz prostředí PowerShell spustí úlohu StreamingJob s časem zahájení vlastní výstup nastavená na 12 prosinec 2012 12:12:12 UTC.
+Tento příkaz prostředí PowerShell spustí hello úlohy StreamingJob s časem zahájení vlastní výstup nastavit tooDecember 12, 2012, 12:12:12 UTC.
 
 ### <a name="stop-azurestreamanalyticsjob--stop-azurermstreamanalyticsjob"></a>Stop-AzureStreamAnalyticsJob | Stop-AzureRMStreamAnalyticsJob
-Asynchronně Ukončí úlohu služby Stream Analytics z běžící v Microsoft Azure a zrušte přiděluje prostředky, které byly, který se používá. Definice úlohy a metadata bude stále k dispozici v rámci vašeho předplatného prostřednictvím portálu Azure a rozhraní API pro správu tak, aby úlohy můžete upravit a restartovat. Vám nebude nic účtováno pro úlohu v zastaveném stavu.
+Asynchronně Ukončí úlohu služby Stream Analytics z běžící v Microsoft Azure a zrušte přiděluje prostředky, které byly, který se používá. Hello definice úlohy a metadata bude stále k dispozici v rámci vašeho předplatného prostřednictvím hello portál Azure a rozhraní API pro správu tak, aby hello úlohy lze upravit a restartovat. Vám nebude nic účtováno pro úlohu ve stavu hello byla zastavena.
 
 **Příklad 1**
 
@@ -417,10 +417,10 @@ Azure PowerShell 1.0:
 
     Stop-AzureRMStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –Name StreamingJob 
 
-Tento příkaz prostředí PowerShell zastaví úlohu StreamingJob.  
+Tento příkaz prostředí PowerShell zastaví úlohu hello StreamingJob.  
 
 ### <a name="test-azurestreamanalyticsinput--test-azurermstreamanalyticsinput"></a>Test AzureStreamAnalyticsInput | Test AzureRMStreamAnalyticsInput
-Testuje schopnost Stream Analytics se připojit k zadaný vstup.
+Schopnost hello testy tooa tooconnect Stream Analytics zadán vstup.
 
 **Příklad 1**
 
@@ -432,10 +432,10 @@ Azure PowerShell 1.0:
 
     Test-AzureRMStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name EntryStream
 
-Tento příkaz prostředí PowerShell testů připojení stav vstupní EntryStream v StreamingJob.  
+Toto prostředí PowerShell příkaz testy hello stav připojení hello vstupní EntryStream v StreamingJob.  
 
 ### <a name="test-azurestreamanalyticsoutput--test-azurermstreamanalyticsoutput"></a>Test AzureStreamAnalyticsOutput | Test AzureRMStreamAnalyticsOutput
-Testuje schopnost Stream Analytics se připojit k zadaným výstupem.
+Schopnost hello testy tooa tooconnect Stream Analytics zadán výstup.
 
 **Příklad 1**
 
@@ -447,13 +447,13 @@ Azure PowerShell 1.0:
 
     Test-AzureRMStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name Output
 
-Tato testy příkaz prostředí PowerShell stav připojení výstupu výstup v StreamingJob.  
+Toto prostředí PowerShell příkaz testy hello stav připojení hello výstup výstupu v StreamingJob.  
 
 ## <a name="get-support"></a>Získat podporu
 Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics). 
 
 ## <a name="next-steps"></a>Další kroky
-* [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
+* [Úvod tooAzure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)

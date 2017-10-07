@@ -1,6 +1,6 @@
 ---
-title: "Šablona Azure Resource Manageru funkce – polí a objekty | Microsoft Docs"
-description: "Popisuje funkce pro použití v šablonu Azure Resource Manageru pro práci s pole a objekty."
+title: "šablony Resource Manageru aaaAzure funkce – polí a objekty | Microsoft Docs"
+description: "Popisuje funkce toouse hello v šablonu Azure Resource Manageru pro práci s pole a objekty."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: 0bd9ec41761c9ce575f3bcf4d1f8e8578b83e01c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e5f1a9b2a71039562eae7e48c2474a1fa59a7bea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Pole a objektu funkce pro šablony Azure Resource Manager 
 
@@ -42,20 +42,20 @@ Resource Manager poskytuje několik funkce pro práci s pole a objekty.
 * [proveďte](#take)
 * [sjednocení](#union)
 
-Pole hodnot řetězec oddělená hodnotu získáte v tématu [rozdělení](resource-group-template-functions-string.md#split).
+tooget pole hodnot řetězec oddělená hodnotu, najdete v části [rozdělení](resource-group-template-functions-string.md#split).
 
 <a id="array" />
 
 ## <a name="array"></a>Pole
 `array(convertToArray)`
 
-Převede hodnotu na pole.
+Převede pole tooan hodnota hello.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Ano |int, string, pole nebo objekt |Hodnota pro převod na pole. |
+| convertToArray |Ano |int, string, pole nebo objekt |Hello hodnotu tooconvert tooan pole. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -63,7 +63,7 @@ Pole.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje, jak chcete používat funkci pole s různými typy.
+Hello následující příklad ukazuje, jak toouse hello funkce pole s různými typy.
 
 ```json
 {
@@ -102,7 +102,7 @@ Následující příklad ukazuje, jak chcete používat funkci pole s různými 
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -115,22 +115,22 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="coalesce"></a>sloučení
 `coalesce(arg1, arg2, arg3, ...)`
 
-Vrátí první hodnotu než null z parametrů. Prázdné řetězce, prázdné pole a prázdné objekty nejsou null.
+Vrátí první hodnotu než null z hello parametry. Prázdné řetězce, prázdné pole a prázdné objekty nejsou null.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int, string, pole nebo objekt |První hodnota k testování pro hodnotu null. |
-| Další argumenty |Ne |int, string, pole nebo objekt |Další hodnoty, které chcete otestovat hodnotu null. |
+| arg1 |Ano |int, string, pole nebo objekt |Hello první hodnota tootest pro hodnotu null. |
+| Další argumenty |Ne |int, string, pole nebo objekt |Další hodnoty tootest pro hodnotu null. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Hodnota první parametry jinou hodnotu než null, což může být řetězec, int, pole nebo objekt. Hodnota Null, pokud jsou všechny parametry hodnotu null. 
+Hodnota Hello parametrů hello první jinou hodnotu než null, což může být řetězec, int, pole nebo objekt. Hodnota Null, pokud jsou všechny parametry hodnotu null. 
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje výstup z různých používá funkci coalesce.
+Hello následující příklad ukazuje výstup hello z různých používá funkci coalesce.
 
 ```json
 {
@@ -176,7 +176,7 @@ Následující příklad ukazuje výstup z různých používá funkci coalesce.
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -191,23 +191,23 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="concat"></a>concat
 `concat(arg1, arg2, arg3, ...)`
 
-Kombinuje několik polí a vrátí pole zřetězených nebo kombinuje více řetězcové hodnoty a vrací spojený řetězec. 
+Kombinuje více polí a vrátí hello zřetězených pole, nebo kombinuje více řetězcové hodnoty a vrátí hello zřetězených řetězec. 
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole nebo řetězec |První pole nebo řetězec pro zřetězení. |
+| arg1 |Ano |pole nebo řetězec |Hello první pole nebo řetězec pro zřetězení. |
 | Další argumenty |Ne |pole nebo řetězec |Další pole nebo řetězců v sekvenčním pořadí pro zřetězení. |
 
-Tato funkce může trvat libovolný počet argumentů a může přijímat řetězce nebo pole parametrů.
+Tato funkce může trvat libovolný počet argumentů a může přijímat řetězce nebo pole parametrů hello.
 
 ### <a name="return-value"></a>Návratová hodnota
 Řetězec nebo pole zřetězených hodnot.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje, jak kombinovat dvěma poli.
+Hello následující příklad ukazuje, jak maticových toocombine dva.
 
 ```json
 {
@@ -242,13 +242,13 @@ Následující příklad ukazuje, jak kombinovat dvěma poli.
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
 | Vrátí | Pole | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-Následující příklad ukazuje, jak kombinovat dvou řetězcových hodnot a vrátí spojený řetězec.
+Hello následující příklad ukazuje, jak toocombine dva řetězce hodnoty a vrátí spojený řetězec.
 
 ```json
 {
@@ -270,7 +270,7 @@ Následující příklad ukazuje, jak kombinovat dvou řetězcových hodnot a vr
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -287,16 +287,16 @@ Kontroluje, zda pole obsahuje hodnotu, objekt obsahuje klíč nebo řetězec obs
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| kontejner |Ano |pole, objekt nebo řetězec |Hodnota, která obsahuje hodnotu k vyhledání. |
-| itemToFind |Ano |řetězec nebo celá čísla |Hodnota k vyhledání. |
+| kontejner |Ano |pole, objekt nebo řetězec |Hello hodnotu, která obsahuje hodnotu toofind hello. |
+| itemToFind |Ano |řetězec nebo celá čísla |Hodnota toofind Hello. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-**Hodnota TRUE,** Pokud je položka, jinak hodnota **False**.
+**Hodnota TRUE,** Pokud je položka hello, jinak hodnota **False**.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje, jak používat s různými typy obsahuje:
+Hello následující příklad ukazuje, jak toouse obsahuje s různými typy:
 
 ```json
 {
@@ -347,7 +347,7 @@ Následující příklad ukazuje, jak používat s různými typy obsahuje:
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -363,14 +363,14 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="createarray"></a>createarray
 `createArray (arg1, arg2, arg3, ...)`
 
-Vytvoří pole parametrů.
+Vytvoří pole z hello parametry.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |Řetězec, celé číslo, pole nebo objekt |První hodnota v poli. |
-| Další argumenty |Ne |Řetězec, celé číslo, pole nebo objekt |Další hodnoty v poli. |
+| arg1 |Ano |Řetězec, celé číslo, pole nebo objekt |Hello první hodnotu v poli hello. |
+| Další argumenty |Ne |Řetězec, celé číslo, pole nebo objekt |Další hodnoty v poli hello. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -378,7 +378,7 @@ Pole.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje, jak používat createArray s různými typy:
+Následující příklad ukazuje, jak Hello toouse createArray s různými typy:
 
 ```json
 {
@@ -417,7 +417,7 @@ Následující příklad ukazuje, jak používat createArray s různými typy:
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -438,15 +438,15 @@ Určuje, zda je prázdný řetězec, objekt nebo pole.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Ano |pole, objekt nebo řetězec |Hodnota ke kontrole, jestli je prázdný. |
+| itemToTest |Ano |pole, objekt nebo řetězec |Hodnota toocheck Hello, pokud je prázdná. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **True** Pokud hodnota je prázdný, jinak hodnota **False**.
+Vrátí **True** Pokud hello hodnota je prázdný, jinak hodnota **False**.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ověří, zda jsou řetězec, objekt a pole prázdné.
+Následující ukázka Hello ověří, zda jsou řetězec, objekt a pole prázdné.
 
 ```json
 {
@@ -485,7 +485,7 @@ Následující příklad ověří, zda jsou řetězec, objekt a pole prázdné.
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -498,21 +498,21 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="first"></a>první
 `first(arg1)`
 
-Vrátí první prvek pole nebo první znak řetězce.
+Vrátí hello první prvek pole hello nebo první znak hello řetězce.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole nebo řetězec |Hodnota k načtení první element nebo znak. |
+| arg1 |Ano |pole nebo řetězec |Hello hodnota tooretrieve hello první prvek nebo znak. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Typ (řetězec, int, pole nebo objekt) první prvek pole nebo první znak řetězce.
+Hello typ (řetězec, int, pole nebo objekt) hello první prvek v poli, nebo první znak hello řetězce.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje, jak používat funkci první s řetězec a pole.
+Hello následující příklad ukazuje, jak toouse hello první funkce s řetězec a pole.
 
 ```json
 {
@@ -539,7 +539,7 @@ Následující příklad ukazuje, jak používat funkci první s řetězec a pol
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -551,23 +551,23 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="intersection"></a>průnik
 `intersection(arg1, arg2, arg3, ...)`
 
-Vrátí objekt s běžných elementech nebo jednoho pole z parametrů.
+Vrátí jeden pole nebo objekt s společné prvky hello z hello parametry.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |objekt nebo pole |První hodnota, kterou chcete použít pro hledání běžných elementech. |
-| arg2 |Ano |objekt nebo pole |Druhá hodnota, kterou chcete použít pro hledání běžných elementech. |
-| Další argumenty |Ne |objekt nebo pole |Další hodnoty, které chcete použít pro hledání běžných elementech. |
+| arg1 |Ano |objekt nebo pole |Hello první hodnota toouse pro hledání běžných elementech. |
+| arg2 |Ano |objekt nebo pole |Hello druhá hodnota toouse pro hledání běžných elementech. |
+| Další argumenty |Ne |objekt nebo pole |Další hodnoty toouse pro hledání běžných elementech. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Pole nebo objekt s běžných elementech.
+Pole nebo objekt s společné prvky hello.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje, jak použít průnik s pole a objekty:
+Následující příklad ukazuje, jak toouse průnik s maticových Hello a objekty:
 
 ```json
 {
@@ -606,7 +606,7 @@ Následující příklad ukazuje, jak použít průnik s pole a objekty:
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -623,16 +623,16 @@ Vrátí objekt JSON.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |Řetězec |Hodnota k převést na JSON. |
+| arg1 |Ano |Řetězec |tooJSON tooconvert hodnotu Hello. |
 
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Objekt JSON v zadaný řetězec nebo objekt prázdný při **null** je zadán.
+Zadaný objekt JSON Hello z hello řetězec nebo objekt prázdný při **null** je zadán.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje, jak použít průnik s pole a objekty:
+Následující příklad ukazuje, jak toouse průnik s maticových Hello a objekty:
 
 ```json
 {
@@ -653,7 +653,7 @@ Následující příklad ukazuje, jak použít průnik s pole a objekty:
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -665,21 +665,21 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="last"></a>poslední
 `last (arg1)`
 
-Vrátí poslední element pole nebo poslední znak řetězce.
+Vrátí hello posledním elementem pole hello nebo poslední znak hello řetězce.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole nebo řetězec |Hodnota k načtení poslední element nebo znak. |
+| arg1 |Ano |pole nebo řetězec |Hello hodnota tooretrieve hello poslední element nebo znak. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Typ (řetězec, int, pole nebo objekt) posledním prvkem v pole nebo poslední znak řetězce.
+Hello typ (řetězec, int, pole nebo objekt) hello posledním prvkem v matici, nebo poslední znak hello řetězce.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje, jak používat funkci naposledy s řetězec a pole.
+Hello následující příklad ukazuje, jak toouse hello poslední funkci s řetězec a pole.
 
 ```json
 {
@@ -706,7 +706,7 @@ Následující příklad ukazuje, jak používat funkci naposledy s řetězec a 
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -718,13 +718,13 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="length"></a>Délka
 `length(arg1)`
 
-Vrátí počet prvků pole nebo znaků v řetězci.
+Vrátí hello počet elementů pole nebo znaků v řetězci.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole nebo řetězec |Pole na použití pro získání počet elementů nebo řetězec Pokud chcete použít pro maximální počet znaků. |
+| arg1 |Ano |pole nebo řetězec |Hello toouse pole pro získání hello počet elementů nebo hello toouse řetězec pro získání hello počet znaků. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -732,7 +732,7 @@ Typ int.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje, jak používat délka s řetězec a pole:
+Následující příklad ukazuje, jak Hello toouse délka s řetězec a pole:
 
 ```json
 {
@@ -766,14 +766,14 @@ Následující příklad ukazuje, jak používat délka s řetězec a pole:
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
 | arrayLength | celá čísla | 3 |
 | stringLength | celá čísla | 13 |
 
-Tato funkce se pole vám pomůže při vytváření prostředků zadat počet opakování. V následujícím příkladu, parametr **siteNames** by odkazovat na pole názvů pro použití při vytváření webových serverů.
+Při vytváření prostředků, můžete použít tuto funkci s číslem pole toospecify hello iterací. V následujícím příkladu hello, hello parametr **siteNames** odkazovaly tooan pole názvy toouse při tvorbě webů hello.
 
 ```json
 "copy": {
@@ -789,21 +789,21 @@ Další informace o použití této funkce se pole najdete v tématu [vytvořit 
 ## <a name="min"></a>min
 `min(arg1)`
 
-Vrátí minimální hodnotu z pole celá čísla nebo seznam celých čísel oddělených čárkami.
+Vrátí hello minimální hodnota z pole celá čísla nebo seznam celých čísel oddělených čárkami.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole celá čísla nebo seznam celých čísel oddělených čárkou |Kolekce získat minimální hodnotu. |
+| arg1 |Ano |pole celá čísla nebo seznam celých čísel oddělených čárkou |Hello kolekce tooget hello minimální hodnota. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Typ int představující minimální hodnotu.
+Typ int představující hello minimální hodnotu.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje, jak použít min s pole a seznam celých čísel:
+Následující příklad ukazuje, jak Hello toouse min s pole a seznam celých čísel:
 
 ```json
 {
@@ -829,7 +829,7 @@ Následující příklad ukazuje, jak použít min s pole a seznam celých čís
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -841,21 +841,21 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="max"></a>maximální počet
 `max(arg1)`
 
-Vrací maximální hodnotu z pole celá čísla nebo seznam celých čísel oddělených čárkami.
+Vrátí hello maximální hodnota z pole celá čísla nebo seznam celých čísel oddělených čárkami.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole celá čísla nebo seznam celých čísel oddělených čárkou |Kolekce získat maximální hodnotu. |
+| arg1 |Ano |pole celá čísla nebo seznam celých čísel oddělených čárkou |Hello kolekce tooget hello maximální hodnota. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Typ int představující maximální hodnotu.
+Typ int představující hello maximální hodnotu.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje, jak použít maximum s pole a seznam celých čísel:
+Následující příklad ukazuje, jak Hello toouse maximální s pole a seznam celých čísel:
 
 ```json
 {
@@ -881,7 +881,7 @@ Následující příklad ukazuje, jak použít maximum s pole a seznam celých �
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -899,8 +899,8 @@ Vytvoří pole celých čísel od spuštění celé číslo a který obsahuje po
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| startingInteger |Ano |celá čísla |První celé číslo v poli. |
-| numberofElements |Ano |celá čísla |Počet celých čísel v poli. |
+| startingInteger |Ano |celá čísla |Hello první celé číslo v poli hello. |
+| numberofElements |Ano |celá čísla |Hello počet celých čísel v poli hello. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -908,7 +908,7 @@ Pole celých čísel.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje, jak používat funkci rozsahu:
+Hello následující příklad ukazuje, jak toouse hello rozsah funkce:
 
 ```json
 {
@@ -934,7 +934,7 @@ Následující příklad ukazuje, jak používat funkci rozsahu:
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -945,14 +945,14 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="skip"></a>Přeskočit
 `skip(originalValue, numberToSkip)`
 
-Vrátí pole s všechny elementy po zadaný počet v poli nebo vrátí řetězec s odebranými znaky po zadaný počet v řetězci.
+Vrátí pole s všechny elementy hello po zadaný počet v poli hello hello nebo vrátí řetězec s všechny znaky hello po hello zadaný počet v řetězci hello.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| původní hodnota |Ano |pole nebo řetězec |Pole nebo řetězec, který má používat pro přeskočení. |
-| numberToSkip |Ano |celá čísla |Počet elementů nebo znaků, které chcete vynechat. Pokud tato hodnota je 0 nebo menší, vrátí se všechny elementy nebo znaků v hodnotě. Pokud je větší než délka pole nebo řetězec, se vrátí prázdné pole nebo řetězec. |
+| původní hodnota |Ano |pole nebo řetězec |Hello toouse pro přeskočení pole nebo řetězec. |
+| numberToSkip |Ano |celá čísla |Hello počet tooskip elementy nebo znaky. Pokud tato hodnota je 0 nebo menší, všechny hello elementy nebo znaků hello hodnoty jsou vráceny. Pokud je větší než délka hello hello pole nebo řetězec, se vrátí prázdné pole nebo řetězec. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -960,7 +960,7 @@ Pole nebo řetězec.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad přeskočí zadaný počet elementů v poli a zadaný počet znaků v řetězci.
+Následující příklad přeskočí hello Hello zadaný počet prvků v poli hello a hello zadaný počet znaků v řetězci.
 
 ```json
 {
@@ -1002,7 +1002,7 @@ Následující příklad přeskočí zadaný počet elementů v poli a zadaný p
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -1014,14 +1014,14 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="take"></a>proveďte
 `take(originalValue, numberToTake)`
 
-Vrátí pole s zadaný počet elementů od začátku pole nebo řetězec s zadaný počet znaků od začátku řetězce.
+Vrátí pole s hello zadaný počet elementů od hello začátek hello pole nebo řetězec s hello zadaný počet znaků od začátku hello hello řetězce.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| původní hodnota |Ano |pole nebo řetězec |Pole nebo řetězec, který má trvat elementy ze. |
-| numberToTake |Ano |celá čísla |Počet elementů nebo znaků, který má trvat. Pokud tato hodnota je 0 nebo menší, se vrátí prázdné pole nebo řetězec. Pokud je větší než délka dané pole nebo řetězec, vrátí se všechny elementy ve pole nebo řetězec. |
+| původní hodnota |Ano |pole nebo řetězec |Hello pole nebo řetězec elementy hello tootake z. |
+| numberToTake |Ano |celá čísla |Hello počet tootake elementy nebo znaky. Pokud tato hodnota je 0 nebo menší, se vrátí prázdné pole nebo řetězec. Pokud je větší než délka hello hello zadané pole nebo řetězec, vrátí se všechny elementy hello ve hello pole nebo řetězec. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1029,7 +1029,7 @@ Pole nebo řetězec.
 
 ### <a name="example"></a>Příklad
 
-V následujícím příkladu má zadaný počet prvků z pole a znaků z řetězce.
+Následující příklad trvá hello Hello zadaný počet elementů od hello pole a znaků z řetězce.
 
 ```json
 {
@@ -1071,7 +1071,7 @@ V následujícím příkladu má zadaný počet prvků z pole a znaků z řetěz
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -1083,15 +1083,15 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="union"></a>sjednocení
 `union(arg1, arg2, arg3, ...)`
 
-Vrací jednu pole nebo objekt s všechny elementy z parametrů. Duplicitní hodnoty nebo klíče jsou jenom jednou zahrnuty.
+Vrátí jeden pole nebo objekt s všechny elementy z hello parametry. Duplicitní hodnoty nebo klíče jsou jenom jednou zahrnuty.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |objekt nebo pole |První hodnota má použít pro připojení elementy. |
-| arg2 |Ano |objekt nebo pole |Druhá hodnota má použít pro připojení elementy. |
-| Další argumenty |Ne |objekt nebo pole |Další hodnoty má použít pro připojení elementy. |
+| arg1 |Ano |objekt nebo pole |Hello první hodnota toouse pro připojení elementy. |
+| arg2 |Ano |objekt nebo pole |Hello druhá hodnota toouse pro připojení elementy. |
+| Další argumenty |Ne |objekt nebo pole |Další hodnoty toouse pro připojení elementy. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1099,7 +1099,7 @@ Pole nebo objekt.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje, jak použít sjednocení s pole a objekty:
+Následující příklad ukazuje, jak toouse sjednocení s maticových Hello a objekty:
 
 ```json
 {
@@ -1138,7 +1138,7 @@ Následující příklad ukazuje, jak použít sjednocení s pole a objekty:
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -1146,8 +1146,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | arrayOutput | Pole | ["1", "dva", "tři", "čtyři"] |
 
 ## <a name="next-steps"></a>Další kroky
-* Popis v částech šablonu Azure Resource Manager naleznete v tématu [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md).
-* Sloučit několik šablon, najdete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
-* K iteraci v zadaného počtu opakování při vytváření typu prostředku, najdete v části [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md).
-* Postup nasazení šablony, které jste vytvořili, najdete v sekci [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
+* Popis části hello šablonu Azure Resource Manager naleznete v tématu [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md).
+* toomerge několik šablon, najdete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
+* tooiterate zadaného počtu opakování při vytváření typu prostředku, najdete v části [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md).
+* toosee způsobu toodeploy hello šablony vytvoříte, najdete v [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
 

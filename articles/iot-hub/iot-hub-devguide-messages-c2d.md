@@ -1,6 +1,6 @@
 ---
-title: "Pochopení zasílání zpráv typu cloud zařízení Azure IoT Hub | Microsoft Docs"
-description: "Příručka vývojáře - použití službou IoT Hub zasílání zpráv typu cloud zařízení. Obsahuje informace o životní cyklus zpráv a možnosti konfigurace."
+title: "zasílání zpráv aaaUnderstand Azure IoT Hub cloud zařízení | Microsoft Docs"
+description: "Příručka vývojáře – jak toouse cloud zařízení zasílání zpráv službou IoT Hub. Obsahuje informace o životní cyklus zpráv hello a možnosti konfigurace."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -13,85 +13,85 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: dobett
-ms.openlocfilehash: 04ac46498c912b0503036f70b7f3d0e28e5a82b8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5c747b50163873d823556a8baa769c4b8f7f8c44
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Odesílání zpráv typu cloud zařízení ze služby IoT Hub
 
-Odesílat jednosměrný oznámení do aplikace zařízení z vaší back-end řešení, odesílání zpráv typu cloud zařízení z služby IoT hub na vaše zařízení. Informace dalších možností cloudu zařízení podporované službou IoT Hub, naleznete v [Cloud zařízení komunikace pokyny][lnk-c2d-guidance].
+toosend jednosměrný oznámení toohello zařízení aplikaci z back-end vašeho řešení, odesílání zpráv typu cloud zařízení ze zařízení IoT hub tooyour. Informace dalších možností cloudu zařízení podporované službou IoT Hub, naleznete v [Cloud zařízení komunikace pokyny][lnk-c2d-guidance].
 
-Odesílání zpráv typu cloud zařízení prostřednictvím koncového bodu služby přístupem (**/zprávy/devicebound**). Zařízení pak přijímá zprávy prostřednictvím koncového bodu konkrétní zařízení (**/devices/ {deviceId} / zprávy/devicebound**).
+Odesílání zpráv typu cloud zařízení prostřednictvím koncového bodu služby přístupem (**/zprávy/devicebound**). Zařízení pak přijímá zprávy hello prostřednictvím koncového bodu konkrétní zařízení (**/devices/ {deviceId} / zprávy/devicebound**).
 
-Každá zpráva cloud zařízení je zaměřený na jedno zařízení podle nastavení **k** vlastnost **/devices/ {deviceId} / zprávy/devicebound**.
+Každá zpráva cloud zařízení je zaměřený na jedno zařízení podle nastavení hello **k** vlastnost příliš**/devices/ {deviceId} / zprávy/devicebound**.
 
-Každá fronta zařízení obsahuje maximálně 50 zprávy typu cloud zařízení. Došlo k pokusu o odeslání zprávy na stejné zařízení dojde k chybě.
+Každá fronta zařízení obsahuje maximálně 50 zprávy typu cloud zařízení. Při operaci toosend další zprávy toohello stejného zařízení výsledkem chyba.
 
-## <a name="the-cloud-to-device-message-lifecycle"></a>Životní cyklus zpráv typu cloud zařízení
+## <a name="hello-cloud-to-device-message-lifecycle"></a>životní cyklus zpráv typu cloud zařízení Hello
 
-Pokud chcete zajistit doručení zpráv v aspoň jednou, trvá IoT Hub zpráv typu cloud zařízení ve frontách vázané na zařízení. Zařízení musí explicitně potvrdit *dokončení* pro IoT Hub je odebrat z fronty. Tento postup zaručuje odolnost proti připojení a selhání zařízení.
+doručení zpráv v aspoň jednou tooguarantee, IoT Hub trvá zpráv typu cloud zařízení ve frontách vázané na zařízení. Zařízení musí explicitně potvrdit *dokončení* pro tooremove IoT Hub je z fronty hello. Tento postup zaručuje odolnost proti připojení a selhání zařízení.
 
-Následující diagram znázorňuje stavu grafu životního cyklu zprávy typu cloud zařízení IoT hub.
+Hello následující obrázek znázorňuje grafu stavu hello životního cyklu zprávy typu cloud zařízení IoT Hub.
 
 ![Životní cyklus zpráv typu cloud zařízení][img-lifecycle]
 
-Pokud službu IoT Hub odešle zprávu do zařízení, služba nastaví stav zpráva **zařazených do fronty**. Když zařízení chce *přijímat* zprávu IoT Hub *zámky* zprávy (nastavením stavu na **neviditelná**), což umožňuje jiná vlákna v zařízení začít přijímat další zprávy. Po dokončení zpracování zpráv vlákno zařízení IoT Hub pomocí upozorní *dokončení* zprávy. IoT Hub poté nastaví stav na **dokončeno**.
+Když hello služby IoT Hub odešle zprávu tooa zařízení, služba hello nastaví stav zprávy hello příliš**zařazených do fronty**. Když chce zařízení příliš*přijímat* zprávu IoT Hub *zámky* uvítací zprávu (nastavením stavu hello příliš**neviditelná**), což umožňuje jiná vlákna na toostart zařízení hello přijetí další zprávy. Po dokončení vlákna zařízení hello zpracování zprávy upozorní IoT Hub pomocí *dokončení* uvítací zprávu. IoT Hub poté nastaví stav hello příliš**dokončeno**.
 
 Zařízení můžete také zvolit:
 
-* *Odmítnout* zpráva, což způsobí, že IoT Hub, která ji nastavte na **Deadlettered** stavu. Zařízení, která se připojují přes protokol MQTT nelze odmítnout zprávy typu cloud zařízení.
-* *Zrušte* zpráva, což způsobí, že IoT Hub uvést zprávy zpět do fronty, se stavem nastavena na **zařazených do fronty**.
+* *Odmítnout* uvítací zprávu, což způsobí, že tooset IoT Hub je toohello **Deadlettered** stavu. Zařízení, která se připojují přes hello MQTT protokol nelze odmítnout zprávy typu cloud zařízení.
+* *Zrušte* uvítací zprávu, což způsobí, že IoT Hub tooput uvítací zprávu zpět ve frontě hello, se stavem hello nastavit příliš**zařazených do fronty**.
 
-Vlákno může dojít k selhání zpracování zprávy bez upozornění služby IoT Hub. V takovém případě zprávy automaticky přechod z **neviditelná** stavu zpět **zařazených do fronty** stavu po *časový limit viditelnosti (nebo zámku)*. Výchozí hodnota tohoto limitu je jedna minuta.
+Vlákno se možná nepovede tooprocess zprávu bez upozornění služby IoT Hub. V takovém případě zprávy automaticky přechod z hello **neviditelná** stavu zpět toohello **zařazených do fronty** stavu po *časový limit viditelnosti (nebo zámku)*. Výchozí hodnota Hello tohoto limitu je jedna minuta.
 
-Zpráva může přecházet mezi **zařazených do fronty** a **neviditelná** stavy pro maximálně počet pokusů zadaný v **maximální počet doručení** vlastnost na IoT Hub. Po tomto počtu přechodů IoT Hub, nastaví stav zprávy **Deadlettered**. Podobně IoT Hub nastaví stav zprávu, která **Deadlettered** po jeho čas vypršení platnosti (viz [hodnota Time to live][lnk-ttl]).
+Zpráva může přecházet mezi hello **zařazených do fronty** a **neviditelná** stavy, maximálně hello zadaného v hello **maximální počet doručení** vlastnost na IoT Hub. Po tomto počtu přechodů IoT Hub nastaví hello stav uvítací zprávu příliš**Deadlettered**. Podobně se IoT Hub nastaví stav hello zprávy příliš**Deadlettered** po jeho čas vypršení platnosti (najdete v části [čas toolive][lnk-ttl]).
 
-[Odesílání zpráv typu cloud zařízení s centrem IoT] [ lnk-c2d-tutorial] ukazuje, jak k odesílání zpráv typu cloud zařízení z cloudu a přijímat na zařízení.
+Hello [jak toosend cloud zařízení zpráv službou IoT Hub] [ lnk-c2d-tutorial] se dozvíte, jak toosend zprávy typu cloud zařízení z hello cloud a přijímat na zařízení.
 
-Zařízení se obvykle dokončí zprávy typu cloud zařízení po ztrátě zprávy nemá vliv na aplikační logiku. Například pokud zařízení obsahuje trvalé obsahu zprávy místně nebo se úspěšně provést operace. Zpráva může mít také přechodný informace, jejichž ztrátě nebude mít vliv na funkci aplikace. V některých případech pro dlouhotrvající úlohy, můžete provést zpráv typu cloud zařízení po uložením popis úlohy v místním úložišti. Potom může upozornit back-end řešení s jeden nebo více zpráv typu zařízení cloud v různých fázích průběh úlohy.
+Obvykle se zařízení dokončí zprávy typu cloud zařízení po ztrátě hello uvítací zprávu nemá vliv na logiku aplikace hello. Pokud například zařízení hello obsahuje trvalé hello zpráva obsah místně nebo byl úspěšně proveden operace. Hello zpráva může mít také přechodný informace, jejichž ztrátě nebude mít vliv na funkci hello aplikace hello. V některých případech pro dlouhotrvající úlohy, můžete dokončit uvítací zprávu cloud zařízení po uložením hello popis úlohy v místním úložišti. Potom můžete v různých fázích průběh úlohy hello upozornit hello back-end řešení s jeden nebo více zpráv typu zařízení cloud.
 
-## <a name="message-expiration-time-to-live"></a>Vypršení platnosti zprávy (hodnota time to live)
+## <a name="message-expiration-time-toolive"></a>Vypršení platnosti zprávy (čas toolive)
 
-Všechny zprávy typu cloud zařízení mají čas vypršení platnosti. Momentálně je nastaven buď pomocí služby (v **ExpiryTimeUtc** vlastnost), nebo službou IoT Hub pomocí výchozího *hodnota time to live* zadán jako vlastnost IoT Hub. V tématu [možnosti konfigurace Cloud zařízení][lnk-c2d-configuration].
+Všechny zprávy typu cloud zařízení mají čas vypršení platnosti. Buď službou hello nastavení tato doba (v hello **ExpiryTimeUtc** vlastnost), nebo službou IoT Hub pomocí výchozí hello *čas toolive* zadán jako vlastnost IoT Hub. V tématu [možnosti konfigurace Cloud zařízení][lnk-c2d-configuration].
 
-Běžný způsob, jak využít výhod vypršení platnosti zprávy a vyhnout se odesílání zpráv do odpojeného zařízení, je nastavit krátké hodnota time to live hodnoty. Tento přístup dosáhne stejného výsledku jako zachování stavu připojení zařízení, aniž by byly efektivnější. Pokud budete požadovat potvrzení zprávy, IoT Hub vás upozorní, zařízení, která se může přijímat zprávy a zařízení, která nejsou v režimu online nebo se nezdařilo.
+Běžný způsob, tootake výhod zprávy vypršení platnosti a vyhnout odesílání zpráv toodisconnected zařízení, je tooset toolive hodnoty krátkou dobu. Tuto metodu lze dosáhnout hello stejný výsledek jako zachování hello stav připojení zařízení, aniž by byly efektivnější. Pokud budete požadovat potvrzení zprávy, IoT Hub vás upozorní, zařízení, která jsou možné tooreceive zprávy a zařízení, která nejsou v režimu online nebo se nezdařilo.
 
 ## <a name="message-feedback"></a>Zpráva zpětné vazby
 
-Při odesílání zpráv typu cloud zařízení služby může požádat o doručení zpráv zpětnou vazbu týkající se konečného stavu této zprávy.
+Při odeslání zprávy typu cloud zařízení, můžete žádost o služby hello hello doručování zpráv zpětnou vazbu týkající se hello konečného stavu této zprávy.
 
 | Vlastnost objektu ACK. | Chování |
 | ------------ | -------- |
-| **kladné** | IoT Hub generuje zprávu zpětné vazby, pokud a pouze v případě, cloud zařízení zpráva dorazila **dokončeno** stavu. |
-| **Záporná** | IoT Hub vytvoří zprávu zpětnou vazbu jenom v případě, dosáhne zpráv typu cloud zařízení **Deadlettered** stavu. |
+| **kladné** | IoT Hub generuje zprávu zpětné vazby, pokud a pouze v případě, hello cloud zařízení zpráva dorazila hello **dokončeno** stavu. |
+| **Záporná** | IoT Hub vytvoří zprávu zpětnou vazbu jenom v případě, zprávy typu cloud zařízení hello dosáhne hello **Deadlettered** stavu. |
 | **Úplná**     | IoT Hub vytvoří zprávu zpětné vazby v obou případech. |
 
-Pokud **Ack** je **úplné**a jste neobdrželi zprávu zpětné vazby, což znamená, že vypršela platnost zprávy zpětnou vazbu. Službu nelze vědět, co se stalo s původní zprávy. V praxi služby zkontrolujte, že zvládne zpracovat zpětné vazby než vyprší její platnost. Čas vypršení platnosti maximální dva dny, což umožňuje dostatek času na získat službu běží znovu Pokud dojde k chybě.
+Pokud **Ack** je **úplné**a jste neobdrželi zprávu zpětné vazby, což znamená, že vypršela platnost zprávy hello zpětnou vazbu. Služba Hello nemůže vědět, co se stalo toohello původní zprávy. V praxi služba zkontrolujte zpětnou vazbu hello ji může zpracovat, než vyprší její platnost. čas vypršení platnosti maximální Hello je dva dny, poskytuje dost času tooget hello spuštěna služba znovu Pokud dojde k chybě.
 
-Jak je popsáno v [koncové body][lnk-endpoints], IoT Hub zajišťuje zpětnou vazbu prostřednictvím koncový bod služby přístupem (**/messages/servicebound/feedback**) jako zprávy. Sémantika pro příjem zpětná vazba je stejný jako u zprávy typu cloud zařízení a mít stejný [životní cyklus zpráv][lnk-lifecycle]. Kdykoli je to možné, je zpracovat v dávce zpětnou vazbu zprávy do jedné zprávy v následujícím formátu:
+Jak je popsáno v [koncové body][lnk-endpoints], IoT Hub zajišťuje zpětnou vazbu prostřednictvím koncový bod služby přístupem (**/messages/servicebound/feedback**) jako zprávy. Hello sémantiku pro příjem zpětné vazby jsou hello stejné jako u zprávy typu cloud zařízení a mít stejný hello [životní cyklus zpráv][lnk-lifecycle]. Kdykoli je to možné, zpětná vazba zpráva v dávce do jedné zprávy s hello následující formát:
 
 | Vlastnost     | Popis |
 | ------------ | ----------- |
-| EnqueuedTime | Časové razítko označující, kdy byla zpráva vytvořena. |
+| EnqueuedTime | Časové razítko označující vytvoření uvítací zprávu. |
 | ID uživatele       | `{iot hub name}` |
 | Typ obsahu  | `application/vnd.microsoft.iothub.feedback.json` |
 
-Text je serializací JSON pole záznamů, každý s následujícími vlastnostmi:
+textu Hello je serializací JSON pole záznamů, každý s hello následující vlastnosti:
 
 | Vlastnost           | Popis |
 | ------------------ | ----------- |
-| EnqueuedTimeUtc    | Časové razítko označující, když se stalo výsledek zprávy. Například zařízení byla dokončena nebo zprávy s vypršenou platností. |
-| OriginalMessageId  | **MessageId** zprávy cloud zařízení, ke kterému má vztah tyto informace zpětnou vazbu. |
+| EnqueuedTimeUtc    | Časové razítko označující, kdy výsledek hello hello zprávy došlo. Například hello zařízení bylo dokončeno, nebo jeho platnost uvítací zprávu. |
+| OriginalMessageId  | **MessageId** hello zpráv typu cloud zařízení toowhich tato zpětná vazba informace týkají. |
 | statusCode         | Požadovaný řetězec. Použít v zpětnou vazbu zprávy generované IoT Hub. <br/> 'Success' <br/> "Platnost vypršela. <br/> 'DeliveryCountExceeded. <br/> 'Odmítnut. <br/> 'Vyprázdní. |
 | Popis        | Řetězce hodnoty pro **StatusCode**. |
-| ID zařízení           | **DeviceId** cílového zařízení, k němuž se vztahuje toto připomínek zprávy cloud zařízení. |
-| DeviceGenerationId | **DeviceGenerationId** cílového zařízení, k němuž se vztahuje toto připomínek zprávy cloud zařízení. |
+| ID zařízení           | **DeviceId** hello cílové zařízení z hello zpráv typu cloud zařízení toowhich tento připomínek souvisí. |
+| DeviceGenerationId | **DeviceGenerationId** hello cílové zařízení z hello zpráv typu cloud zařízení toowhich tento připomínek souvisí. |
 
-Musíte zadat službu **MessageId** zprávy typu cloud zařízení mohli ke korelaci jeho zpětnou vazbu s původní zprávy.
+musíte zadat Hello služby **MessageId** pro hello cloud zařízení zpráv možné toocorrelate toobe jeho zpětnou vazbu s hello původní zprávy.
 
-Následující příklad ukazuje textu zprávy zpětnou vazbu.
+Hello následující příklad ukazuje hello tělo zprávy zpětnou vazbu.
 
 ```json
 [
@@ -112,22 +112,22 @@ Následující příklad ukazuje textu zprávy zpětnou vazbu.
 
 ## <a name="cloud-to-device-configuration-options"></a>Možnosti konfigurace cloudu na zařízení
 
-Každý IoT hub zpřístupní následující možnosti konfigurace pro zasílání zpráv typu cloud zařízení:
+Každý IoT hub zpřístupní hello následující možnosti konfigurace pro zasílání zpráv typu cloud zařízení:
 
 | Vlastnost                  | Popis | Rozsah a výchozí |
 | ------------------------- | ----------- | ----------------- |
-| defaultTtlAsIso8601       | Výchozí hodnota TTL zprávy typu cloud zařízení. | Interval ISO_8601 až 2D (minimální 1 minutu). Výchozí hodnota: 1 hodina. |
-| maxDeliveryCount          | Doručení maximální počet pro fronty cloud zařízení na zařízení. | 1 až 100. Výchozí: 10. |
-| feedback.ttlAsIso8601     | Uchování pro zpětnou vazbu služby vázané zprávy. | Interval ISO_8601 až 2D (minimální 1 minutu). Výchozí hodnota: 1 hodina. |
-| feedback.maxDeliveryCount |Doručení maximální počet pro frontu zpětné vazby. | 1 až 100. Výchozí: 100. |
+| defaultTtlAsIso8601       | Výchozí hodnota TTL zprávy typu cloud zařízení. | Interval ISO_8601 až too2D (minimální 1 minutu). Výchozí hodnota: 1 hodina. |
+| maxDeliveryCount          | Doručení maximální počet pro fronty cloud zařízení na zařízení. | 1 too100. Výchozí: 10. |
+| feedback.ttlAsIso8601     | Uchování pro zpětnou vazbu služby vázané zprávy. | Interval ISO_8601 až too2D (minimální 1 minutu). Výchozí hodnota: 1 hodina. |
+| feedback.maxDeliveryCount |Doručení maximální počet pro frontu zpětné vazby. | 1 too100. Výchozí: 100. |
 
-Další informace o tom, jak nastavit tyto možnosti konfigurace najdete v tématu [centra IoT vytvořit][lnk-portal].
+Další informace o tom, jak tooset možnosti konfigurace, najdete v části [centra IoT vytvořit][lnk-portal].
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o sadách SDK, můžete použít pro příjem zpráv typu cloud zařízení najdete v tématu [SDK služby Azure IoT][lnk-sdks].
+Informace o sadách SDK, hello můžete používat tooreceive zprávy typu cloud zařízení najdete v tématu [SDK služby Azure IoT][lnk-sdks].
 
-Můžete vyzkoušet na přijímání zpráv typu cloud zařízení, najdete v článku [odeslat cloud zařízení] [ lnk-c2d-tutorial] kurzu.
+tootry na příjem zpráv typu cloud zařízení, najdete v části hello [odeslat cloud zařízení] [ lnk-c2d-tutorial] kurzu.
 
 [img-lifecycle]: ./media/iot-hub-devguide-messages-c2d/lifecycle.png
 

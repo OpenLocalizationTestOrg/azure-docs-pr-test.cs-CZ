@@ -1,6 +1,6 @@
 ---
-title: "Postup vyvolání ztrátě dat na služby prostředků infrastruktury služby | Microsoft Docs"
-description: "Popisuje způsob použití ztrátou dat rozhraní api"
+title: "aaaHow tooInvoke ztrátě dat na služby prostředků infrastruktury služby | Microsoft Docs"
+description: "Popisuje, jak toouse hello ztráty dat rozhraní api"
 services: service-fabric
 documentationcenter: .net
 author: LMWF
@@ -15,23 +15,23 @@ ms.workload: NA
 ms.date: 09/19/2016
 ms.author: lemai
 redirect_url: /azure/service-fabric/service-fabric-testability-overview
-ms.openlocfilehash: 0c4791e56f84d0df38783a13c8d8c564fd25f55f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 014c7ebfd2c42d79a5fe1802ecc3fa0c1f26f9d7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-invoke-data-loss-on-services"></a>Postup vyvolání ztrátě dat na služby
+# <a name="how-tooinvoke-data-loss-on-services"></a>Jak tooInvoke ztrátě dat na služby
 > [!WARNING]
-> Tento dokument popisují postup ke ztrátě dat v službách a by měla být používána opatrně.
+> Tento dokument popisuje jak toocause ztrátě dat v službách a mělo by se dát pozor.
 > 
 > 
 
 ## <a name="introduction"></a>Úvod
-Můžete vyvolat ztrátě dat v oddílu služby Service Fabric pomocí volání StartPartitionDataLossAsync().  Toto rozhraní api používá pro práci způsobí podmínky ztráty dat pravděpodobnost vkládání a služby Analysis Service.
+Můžete vyvolat ztrátě dat v oddílu služby Service Fabric pomocí volání StartPartitionDataLossAsync().  Toto rozhraní api používá hello pravděpodobnost vkládání a služby Analysis Service tooperform hello pracovní toocause data ztrátě podmínky.
 
-## <a name="using-the-fault-injection-and-analysis-service"></a>Pomocí vkládání odolnost a službu Analysis Services
-Pravděpodobnost vkládání a služby Analysis Service aktuálně podporuje následující rozhraní API v následující tabulce.  Na pravé straně grafu zobrazí odpovídající rutiny prostředí PowerShell.  Naleznete na webu msdn dokumentaci na každé rozhraní API pro další informace o každé z nich.
+## <a name="using-hello-fault-injection-and-analysis-service"></a>Pomocí hello pravděpodobnost vkládání a službu Analysis Services
+Hello pravděpodobnost vkládání a služby Analysis Service aktuálně podporuje hello následující rozhraní API v grafu hello níže.  Hello pravé straně hello graf zobrazuje hello odpovídající rutiny prostředí PowerShell.  Další informace o každé z nich naleznete v dokumentaci msdn toohello na každé rozhraní API.
 
 | ROZHRANÍ API JAZYKA C# | Rutiny prostředí PowerShell |
 | --- | ---:|
@@ -40,41 +40,41 @@ Pravděpodobnost vkládání a služby Analysis Service aktuálně podporuje ná
 | [StartPartitionRestartAsync][rp] |[Počáteční ServiceFabricPartitionRestart][psrp] |
 
 ## <a name="conceptual-overview-of-running-a-command"></a>Koncepční přehled spuštění příkazu
-Pravděpodobnost vkládání a služby Analysis Service používá model asynchronní, kde spustit příkaz s jedno rozhraní API, označuje jako rozhraní API "Start" v tomto dokumentu pak zkontroluje průběh tento příkaz pomocí "GetProgress" rozhraní API, dokud je dosaženo stavu terminálu, nebo ji zrušte.
-Spuštění příkazu, volání rozhraní API "Start" pro odpovídající rozhraní API.  Toto rozhraní API vrátí, když pravděpodobnost vkládání a služby Analysis Service přijal žádost.  Ale ho neindikuje, jak daleko je spustit příkaz, nebo i v případě, že má dosud spuštěna.  Chcete-li zkontrolovat průběh příkazu, volání rozhraní API, která odpovídá rozhraní API "Start" označovaly jako "GetProgress".  Rozhraní API "GetProgress" vrátí objekt označující aktuální stav příkazu uvnitř jeho vlastnost stavu.  Příkaz spustí po neomezenou dobu až:
+Hello pravděpodobnost vkládání a služby Analysis Service používá model asynchronní, kde spustit hello příkaz s jedno rozhraní API, označuje tooas hello "Start" rozhraní API v tomto dokumentu, pak průběh hello kontroly tento příkaz pomocí rozhraní API "GetProgress", dokud nedosáhne terminál stavu, nebo dokud ho zrušit.
+toostart příkazu volání rozhraní API "Start" hello pro hello odpovídající rozhraní API.  Toto rozhraní API vrátí, pokud hello pravděpodobnost vkládání a služby Analysis Service přijal žádost hello.  Ale ho neindikuje, jak daleko je spustit příkaz, nebo i v případě, že má dosud spuštěna.  V průběhu toocheck pořadí příkazu volejte hello "GetProgress" rozhraní API, která odpovídá dříve volat rozhraní API "Start" toohello.  Hello "GetProgress" rozhraní API vrátí objekt označující hello aktuální stav příkazu hello uvnitř jeho vlastnost stavu.  Příkaz spustí po neomezenou dobu až:
 
-1. Úspěšně dokončí.  Pokud v tomto případě zavoláte "GetProgress" na něm, stav průběhu objektu se dokončí.
-2. Ho dojde k závažné chybě.  Pokud v tomto případě zavoláte "GetProgress" na něm, dojde k chybě stav průběhu objektu
-3. Přes zrušíte [CancelTestCommandAsync] [ cancel] rozhraní API, nebo [Stop-ServiceFabricTestCommand] [ cancelps] rutiny prostředí PowerShell.  Pokud v tomto případě zavoláte "GetProgress" na něm, bude stav objektu průběh zrušeno nebo ForceCancelled, v závislosti na argument pro toto rozhraní API.  Najdete v dokumentaci k [CancelTestCommandAsync] [ cancel] další podrobnosti.
+1. Úspěšně dokončí.  Pokud v tomto případě zavoláte "GetProgress" na něm, stav objektu průběh hello se dokončí.
+2. Ho dojde k závažné chybě.  Pokud v tomto případě zavoláte "GetProgress" na něm, dojde k chybě stav objektu průběh hello
+3. Zrušení prostřednictvím hello [CancelTestCommandAsync] [ cancel] rozhraní API, nebo [Stop-ServiceFabricTestCommand] [ cancelps] rutiny prostředí PowerShell.  Pokud v tomto případě zavoláte "GetProgress" na něm, hello stav průběhu objektu bude zrušeno nebo ForceCancelled, v závislosti na argumentu toothat rozhraní API.  Naleznete v dokumentaci k hello [CancelTestCommandAsync] [ cancel] další podrobnosti.
 
 ## <a name="details-of-running-a-command"></a>Podrobnosti o spuštění příkazu
-Aby bylo možné spustit příkaz, volání rozhraní API spustit s očekávanou argumenty.  Všechna rozhraní API spustit mít argumentem Guid s názvem operationId.  Můžete měli sledovat určité operationId argument, protože se používá ke sledování průběhu tohoto příkazu.  Toto musí být předán do rozhraní API "GetProgress" Chcete-li sledovat průběh příkazu.  OperationId musí být jedinečný.
+V pořadí toostart příkaz volejte hello spustit rozhraní API s argumenty hello očekává.  Všechna rozhraní API spustit mít argumentem Guid s názvem operationId.  Jste měli udržování přehledu o hello operationId argument, protože se používá tootrack průběh tento příkaz.  Toto musí být předán do hello "GetProgress" rozhraní API v průběhu tootrack pořadí příkazu hello.  Hello operationId musí být jedinečný.
 
-Po úspěšném volání rozhraní API spustit, by měla být volána rozhraní API GetProgress ve smyčce, dokud se nedokončí objekt vrácený průběh stavu vlastnost.  Všechny [na FabricTransientException] [ fte] a OperationCanceledException je třeba opakovat.
-Příkaz se dosáhne stavu terminálu (dokončeno, Faulted nebo zrušeno), bude mít vlastnost výsledek vrácený průběh objektu Další informace.  Pokud je stav dokončeno, bude obsahovat Result.SelectedPartition.PartitionId id oddílu, který byl vybrán.  Result.Exception bude mít hodnotu null.  Pokud došlo k chybě v stav, Result.Exception bude mít z důvodu chyby vkládání a službu Analysis Services došlo k chybě příkazu.  Result.SelectedPartition.PartitionId bude mít id oddílu, který byl vybrán.  V některých případech nemusí příkaz dostatečně pokračovat výběr oddílu.  V takovém případě bude PartitionId 0.  Pokud byla zrušena, stav, Result.Exception bude mít hodnotu null.  Podobně jako případě Faulted Result.SelectedPartition.PartitionId bude mít id oddílu, který jste vybrali, ale pokud příkaz nedosáhne dostatečně Uděláte to tak, bude 0.  Také naleznete následující ukázka.
+Po úspěšném volání metody hello spustit API hello GetProgress rozhraní API by měla být volána ve smyčce, dokud hello vrátil průběh dokončení vlastnost stavu objektu.  Všechny [na FabricTransientException] [ fte] a OperationCanceledException je třeba opakovat.
+Příkaz hello se dosáhne stavu terminálu (dokončeno, Faulted nebo zrušeno), hello vrátit vlastnost výsledek průběh objektu bude mít další informace.  Pokud stav hello je dokončena, bude obsahovat Result.SelectedPartition.PartitionId hello id oddílu, který byl vybrán.  Result.Exception bude mít hodnotu null.  Pokud došlo k chybě v hello stavu, bude mít Result.Exception hello hello důvod selhání vkládání a příkaz hello službu Analysis Services došlo k chybě.  Result.SelectedPartition.PartitionId bude mít hello id oddílu, který byl vybrán.  V některých případech nemusí hello příkaz pokračovat daleko dostatek toochoose oddílu.  V takovém případě bude hello PartitionId 0.  Pokud stav hello byla zrušena, Result.Exception bude mít hodnotu null.  Podobně jako hello Faulted případ Result.SelectedPartition.PartitionId bude mít hello id oddílu, který jste vybrali, ale pokud příkaz hello nedosáhne daleko dostatek toodo tak, bude 0.  Následující ukázka toohello naleznete také.
 
-Následující ukázkový kód ukazuje, jak začít pak kontrola průběhu příkaz, který má za následek ztrátu dat do určitého oddílu.
+Hello následující ukázkový kód ukazuje, jak toostart pak kontrola průběhu ztrátu dat toocause příkaz do určitého oddílu.
 
 ```csharp
     static async Task PerformDataLossSample()
     {
-        // Create a unique operation id for the command below
+        // Create a unique operation id for hello command below
         Guid operationId = Guid.NewGuid();
 
-        // Note: Use the appropriate overload for your configuration
+        // Note: Use hello appropriate overload for your configuration
         FabricClient fabricClient = new FabricClient();
 
-        // The name of the target service
+        // hello name of hello target service
         Uri targetServiceName = new Uri("fabric:/MyService");
 
-        // The id of the target partition inside the target service
+        // hello id of hello target partition inside hello target service
         Guid targetPartitionId = new Guid("00000000-0000-0000-0000-000002233445");
 
         PartitionSelector partitionSelector = PartitionSelector.PartitionIdOf(targetServiceName, targetPartitionId);
 
-        // Start the command.  Retry OperationCanceledException and all FabricTransientException's.  Note when StartPartitionDataLossAsync completes
-        // successfully it only means the Fault Injection and Analysis Service has saved the intent to perform this work.  It does not say anything about the progress
-        // of the command.
+        // Start hello command.  Retry OperationCanceledException and all FabricTransientException's.  Note when StartPartitionDataLossAsync completes
+        // successfully it only means hello Fault Injection and Analysis Service has saved hello intent tooperform this work.  It does not say anything about hello progress
+        // of hello command.
         while (true)
         {
             try
@@ -94,8 +94,8 @@ Následující ukázkový kód ukazuje, jak začít pak kontrola průběhu pří
 
         PartitionDataLossProgress progress = null;
 
-        // Poll the progress using GetPartitionDataLossProgressAsync until it is either Completed or Faulted.  In this example, we're assuming
-        // the command won't be cancelled.        
+        // Poll hello progress using GetPartitionDataLossProgressAsync until it is either Completed or Faulted.  In this example, we're assuming
+        // hello command won't be cancelled.        
 
         while (true)
         {
@@ -116,13 +116,13 @@ Následující ukázkový kód ukazuje, jak začít pak kontrola průběhu pří
             {
                 Console.WriteLine("Command '{0}' completed successfully", operationId);
 
-                // In a terminal state .Result.SelectedPartition.PartitionId will have the chosen partition
+                // In a terminal state .Result.SelectedPartition.PartitionId will have hello chosen partition
                 Console.WriteLine("  Printing selected partition='{0}'", progress.Result.SelectedPartition.PartitionId);
                 break;
             }
             else if (progress.State == TestCommandProgressState.Faulted)
             {
-                // If State is Faulted, the progress object's Result property's Exception property will have the reason why.
+                // If State is Faulted, hello progress object's Result property's Exception property will have hello reason why.
                 Console.WriteLine("Command '{0}' failed with '{1}'", operationId, progress.Result.Exception);
                 break;
             }
@@ -136,26 +136,26 @@ Následující ukázkový kód ukazuje, jak začít pak kontrola průběhu pří
     }
 ```
 
-Následující ukázka ukazuje způsob použití partitionselector nejde zvolit náhodných oddílu určitou službu:
+Následující ukázka Hello ukazuje, jak toouse hello partitionselector nejde toochoose náhodných oddílu určitou službu:
 
 ```csharp
     static async Task PerformDataLossUseSelectorSample()
     {
-        // Create a unique operation id for the command below
+        // Create a unique operation id for hello command below
         Guid operationId = Guid.NewGuid();
 
-        // Note: Use the appropriate overload for your configuration
+        // Note: Use hello appropriate overload for your configuration
         FabricClient fabricClient = new FabricClient();
 
-        // The name of the target service
+        // hello name of hello target service
         Uri targetServiceName = new Uri("fabric:/SampleService ");
 
-        // Use a PartitionSelector that will have the Fault Injection and Analysis Service choose a random partition of “targetServiceName”
+        // Use a PartitionSelector that will have hello Fault Injection and Analysis Service choose a random partition of “targetServiceName”
         PartitionSelector partitionSelector = PartitionSelector.RandomOf(targetServiceName);
 
-        // Start the command.  Retry OperationCanceledException and all FabricTransientException's.  Note when StartPartitionDataLossAsync completes
-        // successfully it only means the Fault Injection and Analysis Service has saved the intent to perform this work.  It does not say anything about the progress
-        // of the command.
+        // Start hello command.  Retry OperationCanceledException and all FabricTransientException's.  Note when StartPartitionDataLossAsync completes
+        // successfully it only means hello Fault Injection and Analysis Service has saved hello intent tooperform this work.  It does not say anything about hello progress
+        // of hello command.
         while (true)
         {
             try
@@ -180,8 +180,8 @@ Následující ukázka ukazuje způsob použití partitionselector nejde zvolit 
 
         PartitionDataLossProgress progress = null;
 
-        // Poll the progress using GetPartitionDataLossProgressAsync until it is either Completed or Faulted.  In this example, we're assuming
-        // the command won't be cancelled.
+        // Poll hello progress using GetPartitionDataLossProgressAsync until it is either Completed or Faulted.  In this example, we're assuming
+        // hello command won't be cancelled.
 
         while (true)
         {
@@ -209,7 +209,7 @@ Následující ukázka ukazuje způsob použití partitionselector nejde zvolit 
             }
             else if (progress.State == TestCommandProgressState.Faulted)
             {
-                // If State is Faulted, the progress object's Result property's Exception property will have the reason why.
+                // If State is Faulted, hello progress object's Result property's Exception property will have hello reason why.
                 Console.WriteLine("Command '{0}' failed with '{1}', SelectedPartition {2}", operationId, progress.Result.Exception, progress.Result.SelectedPartition);
                 break;
             }
@@ -224,7 +224,7 @@ Následující ukázka ukazuje způsob použití partitionselector nejde zvolit 
 ```
 
 ## <a name="history-and-truncation"></a>Historie a zkrácení
-Poté, co příkaz dosáhne stavu terminálu, jeho metadata zůstane v pravděpodobnost vkládání a služby Analysis Service nějakou dobu, než bude odebrán ušetřit místo.  Pokud "GetProgress" je volána po odebrání pomocí operationId příkazu, vrátí FabricException s ErrorCode KeyNotFound.
+Po příkazu bylo dosaženo stavu terminálu, jeho metadata zůstane v hello pravděpodobnost vkládání a služby Analysis Service nějakou dobu, než bude odebrán toosave místa.  Pokud "GetProgress" je volána po odebrání pomocí hello operationId příkazu, vrátí FabricException s ErrorCode KeyNotFound.
 
 [dl]: https://msdn.microsoft.com/library/azure/mt693569.aspx
 [ql]: https://msdn.microsoft.com/library/azure/mt693558.aspx

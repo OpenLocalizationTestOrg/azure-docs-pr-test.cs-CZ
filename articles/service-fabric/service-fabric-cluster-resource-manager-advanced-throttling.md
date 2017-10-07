@@ -1,6 +1,6 @@
 ---
-title: "Omezení šířky pásma ve Správci prostředků clusteru Service Fabric | Microsoft Docs"
-description: "Informace o konfiguraci omezení poskytuje služby infrastruktury clusteru správce prostředků."
+title: "aaaThrottling ve Správci prostředků clusteru Service Fabric hello | Microsoft Docs"
+description: "Další omezení hello tooconfigure poskytované hello správce prostředků clusteru Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 1be0beaf2e199a9c384187efd80b33c7dab5e87c
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f418536911d3e3814e78a4d9f057dfb867ca7c63
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Omezení správce prostředků clusteru Service Fabric
-I v případě, že správce prostředků clusteru jste správně nakonfigurovaný, můžete získat dojde k narušení clusteru. Například může být současně uzel a selhání domény selhání - co by mohlo dojít, pokud, ke kterým došlo během upgradu? Správce prostředků clusteru se vždy pokusí opravit vše, využívání prostředků clusteru pokusu reorganizovat a opravte clusteru. Omezení zajišťuje backstop tak, aby cluster může používat prostředky na stabilizaci – uzly vraťte retušovat síťové oddíly, nasadí opravené bits.
+# <a name="throttling-hello-service-fabric-cluster-resource-manager"></a>Omezení hello správce prostředků clusteru Service Fabric
+I když jste nakonfigurovali hello správce prostředků clusteru správně, může získat dojde k narušení hello clusteru. Například může být současně uzel a selhání domény selhání - co by mohlo dojít, pokud, ke kterým došlo během upgradu? Hello clusteru Resource Manager vždy se pokusí toofix všechno využívání prostředků clusteru hello pokusu o tooreorganize a opravte hello clusteru. Omezení zajišťuje backstop tak, aby hello cluster může používat prostředky toostabilize – uzly hello vraťte, retušovat hello síťové oddíly, nasadí opravené bits.
 
-K usnadnění pomocí těchto nastavení neovlivní situacích, správce prostředků clusteru Service Fabric obsahuje několik omezení. Tato omezení jsou všechny bourací kladiva poměrně velké. Obecně se nesmí změnit bez pečlivé plánování a testování.
+toohelp pomocí těchto nastavení neovlivní situacích hello správce prostředků clusteru Service Fabric zahrnuje několik omezení. Tato omezení jsou všechny bourací kladiva poměrně velké. Obecně se nesmí změnit bez pečlivé plánování a testování.
 
-Pokud změníte omezení správce prostředků clusteru, by měl naladění očekávané skutečné zatížení. Můžete určit, že je potřeba mít některé omezení na místě, i v případě, znamená to, že cluster trvá déle stabilizovat v některých situacích. Testování je potřeba určit správné hodnoty pro omezení. Omezení musí být dostatečně vysoká, aby umožnit, aby cluster reagovat na změny v přiměřené době a nízké, aby se zabránilo ve skutečnosti příliš mnoho spotřeby prostředků. 
+Pokud změníte hello clusteru správce prostředků pro omezení, musí je ladit tooyour očekávané skutečné zátěže. Můžete určit, že potřebujete toohave některé omezí generovaný na místě, i v případě, znamená to, že hello clusteru trvá déle, toostabilize v některých situacích. Testování je požadovaná toodetermine hello správné hodnoty pro omezení. Omezení potřebovat toobe dostatečně vysoký tooallow hello clusteru toorespond toochanges v přiměřené době a dolní dostatek tooactually zabránit příliš mnoho spotřeby prostředků. 
 
-Ve většině případů jsme viděli zákazníkům použít omezení, byla úspěšně, protože již byly v prostředí omezené prostředků. Příkladem může být omezena šířka pásma sítě pro jednotlivé uzly nebo disky, které nejsou možné sestavit mnoho stavových repliky paralelně z důvodu omezení propustnosti. Bez omezení může operace zahlcovat těchto prostředků, způsobuje operací selhat nebo být pomalé. V těchto situacích zákazníci používají omezení a věděl, že se měla rozšíření množství času, by byly třeba clusteru dosáhnout stabilního stavu. Zákazníci také za to, že se může stát, že běží na nižší celkovou spolehlivost, zatímco se byly omezeny.
+Většinu času hello jsme viděli zákazníkům použít omezení, byla úspěšně, protože již byly v prostředí omezené prostředků. Některé příklady by byla omezena šířka pásma sítě pro jednotlivé uzly nebo disky, které nejsou možné toobuild mnoho stavových replik v paralelní z důvodu omezení toothroughput. Bez omezení může operace zahlcovat těchto prostředků, způsobuje operations toofail nebo pomalé. V těchto situacích zákazníků použít omezení a věděl, že se měla rozšíření hello množství času, které by byly třeba hello clusteru tooreach stabilního stavu. Zákazníci také za to, že se může stát, že běží na nižší celkovou spolehlivost, zatímco se byly omezeny.
 
 
-## <a name="configuring-the-throttles"></a>Konfigurace omezení
+## <a name="configuring-hello-throttles"></a>Konfigurace omezení hello
 
-Service Fabric má dva mechanismy pro omezení počtu pohybů typu repliky. Výchozí mechanismus, které existovaly před Service Fabric 5.7 představuje omezení jako absolutní počet přesune povoleny. Není to funguje pro clustery všech velikostí. Zejména u velkých clusterů výchozí hodnota může být příliš malá, výrazně zpomalení vyrovnávání i v případě, že je to nutné, přitom má neplatí v menší clustery. Tento mechanismus předchozí byla nahrazena na základě procenta omezení, která škáluje líp s dynamické clustery, ve kterých počet služeb a uzly pravidelně měnit.
+Service Fabric má dva mechanismy pro omezení počtu hello pohybů repliky. Hello výchozího mechanismu, který existoval Service Fabric 5.7 představuje omezení jako absolutní počet přesune povoleny. Není to funguje pro clustery všech velikostí. Konkrétně pro velkých clusterech hello výchozí hodnota může být příliš malá, výrazně zpomalení vyrovnávání i v případě, že je to nutné, přitom má neplatí v menší clustery. Tento mechanismus předchozí byla nahrazena na základě procenta omezení, která škáluje líp s dynamické clustery v číslo, které hello služeb a uzly pravidelně měnit.
 
-Omezení jsou založené na procento počet replik v clusterech. Povolit omezení Percetage na základě vyjádření pravidlo: "nepřesouvejte více než 10 % repliky v intervalu 10 minut", například.
+omezení Hello jsou založené na procento hello počet replik v clusterech hello. Omezení Percetage na základě povolení 5násobku pravidla hello: "nepřesouvejte více než 10 % repliky v intervalu 10 minut", například.
 
-Nastavení konfigurace na základě procenta omezení jsou:
+nastavení konfigurace Hello na základě procenta omezení jsou:
 
-  - GlobalMovementThrottleThresholdPercentage – maximální počet pohybů v clusteru povolené kdykoli, vyjádřené jako procento celkového počtu replik v clusteru. 0 znamená bez omezení. Výchozí hodnota je 0. Pokud toto nastavení a GlobalMovementThrottleThreshold jsou nastaveny, se používá více konzervativní limit.
-  - GlobalMovementThrottleThresholdPercentageForPlacement – maximální počet pohybů povolené během fáze umístění, vyjádřené jako procento celkového počtu replik v clusteru. 0 znamená bez omezení. Výchozí hodnota je 0. Pokud toto nastavení a GlobalMovementThrottleThresholdForPlacement jsou nastaveny, se používá více konzervativní limit.
-  - GlobalMovementThrottleThresholdPercentageForBalancing – maximální počet pohybů povolené vyrovnávání fázi, vyjádřené jako procento celkového počtu replik v clusteru. 0 znamená bez omezení. Výchozí hodnota je 0. Pokud toto nastavení a GlobalMovementThrottleThresholdForBalancing jsou nastaveny, se používá více konzervativní limit.
+  - GlobalMovementThrottleThresholdPercentage – maximální počet pohybů v clusteru povolené kdykoli, vyjádřené jako procento celkového počtu replik v clusteru hello. 0 znamená bez omezení. Hello výchozí hodnota je 0. Pokud toto nastavení a GlobalMovementThrottleThreshold jsou nastaveny, pak hello více konzervativní limit se používá.
+  - GlobalMovementThrottleThresholdPercentageForPlacement – maximální počet povolené fázi hello umístění, vyjádřené jako procento celkového počtu replik v clusteru hello pohybů typu. 0 znamená bez omezení. Hello výchozí hodnota je 0. Pokud toto nastavení a GlobalMovementThrottleThresholdForPlacement jsou nastaveny, pak hello více konzervativní limit se používá.
+  - GlobalMovementThrottleThresholdPercentageForBalancing – maximální počet povolených během hello vyrovnávání fáze, vyjádřené jako procento celkového počtu replik v clusteru hello pohybů typu. 0 znamená bez omezení. Hello výchozí hodnota je 0. Pokud toto nastavení a GlobalMovementThrottleThresholdForBalancing jsou nastaveny, pak hello více konzervativní limit se používá.
 
-Při zadávání procento omezení, zadáte jako hodnotu 0,05 5 %. Interval, ve kterém se řídí těchto omezení je GlobalMovementThrottleCountingInterval, které se určuje v sekundách.
+Při zadávání hello omezení procento, zadáte jako hodnotu 0,05 5 %. Hello interval, ve kterém se řídí těchto omezení je hello GlobalMovementThrottleCountingInterval, které se určuje v sekundách.
 
 
 ``` xml
@@ -83,13 +83,13 @@ pomocí souboru ClusterConfig.json pro samostatné nasazení nebo Template.json 
 ```
 
 ### <a name="default-count-based-throttles"></a>Výchozí počet na základě omezení
-Tyto informace jsou poskytovány v případě, že máte starší clustery nebo zachovat přitom tyto konfigurace clusterů, které od té doby byly upgradovány. Obecně se doporučuje, ty jsou nahrazeny výše na základě procenta omezení. Vzhledem k tomu, že ve výchozím nastavení vypnutá omezování na základě procenta, zůstanou tato omezení výchozí omezení pro cluster s podporou, dokud jsou zakázána a nahradí omezení na základě procenta. 
+Tyto informace jsou poskytovány v případě, že máte starší clustery nebo zachovat přitom tyto konfigurace clusterů, které od té doby byly upgradovány. Obecně se doporučuje, ty jsou nahrazeny hello na základě procenta omezení výše. Vzhledem k tomu, že ve výchozím nastavení vypnutá omezování na základě procenta, zůstanou tato omezení hello výchozí omezení pro cluster s podporou, dokud jsou zakázána a nahradí omezení na základě procenta hello. 
 
-  - GlobalMovementThrottleThreshold – toto nastavení určuje celkový počet pohybů v clusteru delší dobu. Množství času se zadávají v sekundách, jako GlobalMovementThrottleCountingInterval. Výchozí hodnota GlobalMovementThrottleThreshold je 1000 a výchozí hodnota GlobalMovementThrottleCountingInterval je 600.
-  - MovementPerPartitionThrottleThreshold – toto nastavení určuje celkový počet pohybů pro všechny služby oddíl delší dobu. Množství času se zadávají v sekundách, jako MovementPerPartitionThrottleCountingInterval. Výchozí hodnota MovementPerPartitionThrottleThreshold je 50 a výchozí hodnota MovementPerPartitionThrottleCountingInterval je 600.
+  - GlobalMovementThrottleThreshold – toto nastavení určuje celkový počet hello pohybů v clusteru hello delší dobu. Hello množství času se zadávají v sekundách jako hello GlobalMovementThrottleCountingInterval. hello GlobalMovementThrottleThreshold Hello výchozí hodnota je 1000 a výchozí hodnota hello hello GlobalMovementThrottleCountingInterval je 600.
+  - MovementPerPartitionThrottleThreshold – toto nastavení určuje celkový počet hello pohybů pro všechny služby oddíl delší dobu. Hello množství času se zadávají v sekundách jako hello MovementPerPartitionThrottleCountingInterval. hello MovementPerPartitionThrottleThreshold Hello výchozí hodnota je 50 a hello MovementPerPartitionThrottleCountingInterval hello výchozí hodnota je 600.
 
-Konfiguraci těchto omezení následující stejné jako omezení na základě procenta.
+Hello konfigurace těchto omezení způsobem hello stejný vzor jako procento na základě omezení hello.
 
 ## <a name="next-steps"></a>Další kroky
-- Chcete-li zjistit, o tom, jak správce prostředků clusteru spravuje a vyrovnává zatížení v clusteru, podívejte se na článek na [Vyrovnávání zatížení](service-fabric-cluster-resource-manager-balancing.md)
-- Správce prostředků clusteru má mnoho možností pro popis clusteru. Další informace o nich, projděte si tento článek na [popisující cluster Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)
+- toofind si o tom, jak hello správce prostředků clusteru spravuje a vyrovnává zatížení v clusteru hello, podívejte se na článek hello na [Vyrovnávání zatížení](service-fabric-cluster-resource-manager-balancing.md)
+- Hello správce prostředků clusteru má mnoho možností pro popisující hello clusteru. toofind Další informace o jejich, projděte si tento článek na [popisující cluster Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)

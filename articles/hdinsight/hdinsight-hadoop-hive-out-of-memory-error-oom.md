@@ -1,6 +1,6 @@
 ---
-title: "Opravte Hive nedostatek paměti v Azure HDInsight | Microsoft Docs"
-description: "Opravte Hive nedostatek paměti v HDInsight. Scénář zákazníka je dotaz napříč mnoha velké tabulky."
+title: "aaaFix Hive nedostatek paměti v Azure HDInsight | Microsoft Docs"
+description: "Opravte Hive nedostatek paměti v HDInsight. scénář zákazníka Hello je dotaz napříč mnoha velké tabulky."
 keywords: "Nedostatek paměti chyby, OOM, Hive nastavení"
 services: hdinsight
 documentationcenter: 
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/17/2017
 ms.author: jgao
-ms.openlocfilehash: da1247070ade11f78b505524f5e970e18eb16d10
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 00a12969322c1e74434ba6593ffd098f342edd84
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="fix-a-hive-out-of-memory-error-in-azure-hdinsight"></a>Opravte Hive nedostatek paměti v Azure HDInsight
 
-Zjistěte, jak opravit Hive nedostatek paměti při zpracování velkých tabulky nakonfigurováním nastavení paměti Hive.
+Zjistěte, jak toofix Hive nedostatek paměti při zpracování velkých tabulky nakonfigurováním nastavení paměti Hive.
 
 ## <a name="run-hive-query-against-large-tables"></a>Spusťte dotaz Hive na velké tabulky
 
@@ -48,16 +48,16 @@ Zákazník spustili dotazů Hive:
 
 Některé drobné odlišnosti tohoto dotazu:
 
-* T1 je alias na velkých tabulku tabulky1, který má spoustu typy sloupců řetězec.
+* T1 je alias tooa big tabulka, tabulky1, který má spoustu typy sloupců řetězec.
 * Ostatní tabulky není, jsou velký, ale máte mnoho sloupců.
 * Všechny tabulky jsou propojení mezi sebou, v některých případech s více sloupců v tabulky1 a ostatní.
 
-Dotaz Hive trvalo 26 minut na dokončení na 24 uzlu clusteru A3 HDInsight. Zákazník si všimli následující upozornění:
+dotaz Hive Hello trvalo toofinish 26 minut na clusteru A3 HDInsight 24 uzlu. Hello zákazníka upozornit hello následující upozornění:
 
     Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
     Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
 
-Pomocí modulu Tez. Stejný dotaz spustili 15 minut a pak vrátil následující chybovou zprávu:
+Pomocí modulu Tez hello. Hello stejný dotaz spustili 15 minut a pak vrátil hello následující chybě:
 
     Status: Failed
     Vertex failed, vertexName=Map 5, vertexId=vertex_1443634917922_0008_1_05, diagnostics=[Task failed, taskId=task_1443634917922_0008_1_05_000006, diagnostics=[TaskAttempt 0 failed, info=[Error: Failure while running task:java.lang.RuntimeException: java.lang.OutOfMemoryError: Java heap space
@@ -83,45 +83,45 @@ Pomocí modulu Tez. Stejný dotaz spustili 15 minut a pak vrátil následující
         at java.lang.Thread.run(Thread.java:745)
     Caused by: java.lang.OutOfMemoryError: Java heap space
 
-Chyba zůstává při použití větší virtuální počítač (například D12).
+Chyba Hello zůstává při použití větší virtuální počítač (například D12).
 
 
-## <a name="debug-the-out-of-memory-error"></a>Ladění mimo Chyba paměti
+## <a name="debug-hello-out-of-memory-error"></a>Ladění hello nedostatek paměti
 
-Jeden z problémů, příčinou chyba nedostatku paměti bylo nalezeno naše podporu a vývojové týmy společně [známý problém popsaný v Apache JIRA](https://issues.apache.org/jira/browse/HIVE-8306):
+Jedním z problémů hello způsobuje hello nedostatek paměti bylo nalezeno naše podporu a vývojové týmy společně [známý problém popsaný v hello Apache JIRA](https://issues.apache.org/jira/browse/HIVE-8306):
 
-    When hive.auto.convert.join.noconditionaltask = true we check noconditionaltask.size and if the sum  of tables sizes in the map join is less than noconditionaltask.size the plan would generate a Map join, the issue with this is that the calculation doesnt take into account the overhead introduced by different HashTable implementation as results if the sum of input sizes is smaller than the noconditionaltask size by a small margin queries will hit OOM.
+    When hive.auto.convert.join.noconditionaltask = true we check noconditionaltask.size and if hello sum  of tables sizes in hello map join is less than noconditionaltask.size hello plan would generate a Map join, hello issue with this is that hello calculation doesnt take into account hello overhead introduced by different HashTable implementation as results if hello sum of input sizes is smaller than hello noconditionaltask size by a small margin queries will hit OOM.
 
-**Hive.auto.convert.join.noconditionaltask** ve hive-site.xml souboru byla nastavena na **true**:
+Hello **hive.auto.convert.join.noconditionaltask** v hello hive-site.xml soubor byl nastaven příliš**true**:
 
     <property>
         <name>hive.auto.convert.join.noconditionaltask</name>
         <value>true</value>
         <description>
-              Whether Hive enables the optimization about converting common join into mapjoin based on the input file size.
-              If this parameter is on, and the sum of size for n-1 of the tables/partitions for a n-way join is smaller than the
-              specified size, the join is directly converted to a mapjoin (there is no conditional task).
+              Whether Hive enables hello optimization about converting common join into mapjoin based on hello input file size.
+              If this parameter is on, and hello sum of size for n-1 of hello tables/partitions for a n-way join is smaller than the
+              specified size, hello join is directly converted tooa mapjoin (there is no conditional task).
         </description>
       </property>
 
-Je pravděpodobné, mapy připojení byl příčinou haldy prostoru Java naše chyby paměti. Jak je popsáno v příspěvku na blogu [nastavení paměti Hadoop Yarn v HDInsight](http://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), při použití Tez je modul pro vykonání halda místo využité ve skutečnosti patří ke kontejneru Tez. Viz následující obrázek popisující paměti kontejneru Tez.
+Je pravděpodobné, spojení mapa byla hello příčinu hello Java haldy místo naše chyby paměti. Jak je popsáno v příspěvku blogu hello [nastavení paměti Hadoop Yarn v HDInsight](http://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), když modul pro spuštění je použité hello haldy místo využité Tez ve skutečnosti patří toohello Tez kontejneru. Viz následující obrázek popisující hello Tez kontejneru paměti hello.
 
 ![Diagram paměti kontejneru tez: Hive nedostatek paměti](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
-Jak v příspěvku blogu naznačuje, následující nastavení dva paměti definování paměti kontejner pro halda: **hive.tez.container.size** a **hive.tez.java.opts**. Z našich zkušeností se výjimka paměti neznamená, že velikost kontejneru je příliš malá. Znamená to, že velikost haldy Java (hive.tez.java.opts) je příliš malá. Proto vždy, když se zobrazí nedostatek paměti, můžete zkusit zvýšit **hive.tez.java.opts**. V případě potřeby budete možná muset zvýšit **hive.tez.container.size**. **Java.opts** nastavení by mělo být přibližně 80 % **container.size**.
+Jak hello příspěvku na blogu naznačuje, hello následující dvě nastavení paměti definování hello kontejneru paměti haldy hello: **hive.tez.container.size** a **hive.tez.java.opts**. Z našich zkušeností hello nedostatku paměti, neznamená, že velikost kontejneru hello je příliš malá. Znamená to, že hello velikost haldy Java (hive.tez.java.opts) je příliš malá. Proto vždy, když se zobrazí nedostatek paměti, můžete zkusit tooincrease **hive.tez.java.opts**. V případě potřeby můžete mít tooincrease **hive.tez.container.size**. Hello **java.opts** nastavení by mělo být přibližně 80 % **container.size**.
 
 > [!NOTE]
-> Nastavení **hive.tez.java.opts** musí být menší než **hive.tez.container.size**.
+> nastavení Hello **hive.tez.java.opts** musí být menší než **hive.tez.container.size**.
 > 
 > 
 
-D12 počítač obsahuje 28GB paměti, a proto jsme se rozhodli, přidělte 80 % java.opts pomocí kontejneru velikost 10 GB (10240MB):
+D12 počítač obsahuje 28GB paměti, a proto jsme se rozhodli toouse kontejneru velikost 10 GB (10240MB) a přiřaďte 80 % toojava.opts:
 
     SET hive.tez.container.size=10240
     SET hive.tez.java.opts=-Xmx8192m
 
-S novým nastavením dotaz byl úspěšně spuštěn v části 10 minut.
+Nové nastavení hello hello dotazu úspěšně spustil v části 10 minut.
 
 ## <a name="next-steps"></a>Další kroky
 
-Získávání chybu OOM není nutně znamenat, že velikost kontejneru je příliš malá. Místo toho by měl nakonfigurovat nastavení paměti, aby velikost haldy je vyšší a je alespoň 80 % velikost paměti kontejneru. Optimalizace dotazů Hive, najdete v části [optimalizovat Hive dotazy pro Hadoop v HDInsight](hdinsight-hadoop-optimize-hive-query.md).
+Získávání chybu OOM není nutně znamenat, že velikost kontejneru hello je příliš malá. Místo toho byste měli nakonfigurovat nastavení paměti hello tak, aby velikost haldy hello je vyšší a je alespoň 80 % velikosti paměti hello kontejneru. Optimalizace dotazů Hive, najdete v části [optimalizovat Hive dotazy pro Hadoop v HDInsight](hdinsight-hadoop-optimize-hive-query.md).

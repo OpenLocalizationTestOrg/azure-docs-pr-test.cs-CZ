@@ -1,5 +1,5 @@
 ---
-title: "Azure mřížky událostí zabezpečení a ověřování"
+title: "aaaAzure mřížky událostí zabezpečení a ověřování"
 description: "Popisuje mřížky událostí Azure a jeho koncepty."
 services: event-grid
 author: banisadr
@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: babanisa
-ms.openlocfilehash: b6e1c7587c0b47d04862b4850741aaa3b7d191a8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 74f692c7e3a30856c3a80cbbfe82a26bf4c1c9b5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-grid-security-and-authentication"></a>Události zabezpečení mřížky a ověřování 
 
@@ -24,47 +24,47 @@ Azure mřížky událostí má tři typy ověřování:
 
 ## <a name="webhook-event-delivery"></a>Události Webhooku doručení
 
-Webhook má jedna řada způsobů pro příjem událostí v reálném čase z Azure událostí mřížky.
+Webhooky jsou jedním z mnoha způsoby tooreceive události v reálném čase z Azure událostí mřížky.
 
-Pokaždé, když je připraven k dodání novou událost, odešle událost mřížky požadavek HTTP s vaší Webhooku s událostí v textu.
+Pokaždé, když je nový připravené toobe událostí doručit, odešle událost mřížky požadavek HTTP s tooyour Webhooku s hello událostí v textu hello.
 
-Při registraci svůj vlastní koncový bod Webhooku s událostí mřížky, odešle požadavek POST s kódem jednoduché ověření aby bylo možné prokázat vlastnictví koncový bod. Vaše aplikace musí odpovídat tak, že odezva zpět ověřovacího kódu. Událost mřížky nebude poskytovat události Webhooku koncových bodů, které nebyly předány ověření.
+Při registraci svůj vlastní koncový bod Webhooku s událostí mřížky, se vám pošle požadavek POST s kódem jednoduché ověření v pořadí tooprove koncový bod vlastnictví. Vaše aplikace musí toorespond podle zobrazování back hello ověřovacího kódu. Událost mřížky nebude poskytovat události tooWebHook koncových bodů, které nebyly hello ověření proběhlo úspěšně.
  
 ### <a name="validation-details"></a>Podrobnosti o ověření:
 
-* Během aktualizace vytvoření odběru událostí odešle událost mřížky "SubscriptionValidationEvent" událostí do cílového koncového bodu.
-* Události obsahuje hodnotu hlavičky "Ověření: typ události".
-* V textu události má stejné schéma jako ostatní události událostí mřížky.
-* Data události například zahrnuje vlastnost "ValidationCode" s náhodně generované řetězec "ValidationCode: acb13...".
+* V době hello aktualizace vytvoření odběru událostí odešle událost mřížky "SubscriptionValidationEvent" události toohello cílového koncového bodu.
+* Hello události obsahuje hodnotu hlavičky "Ověření: typ události".
+* textu Hello události má hello stejného schématu jako ostatní události událostí mřížky.
+* data události Hello například zahrnuje vlastnost "ValidationCode" s náhodně generované řetězec "ValidationCode: acb13...".
 
-Aby bylo možné prokázat vlastnictví koncový bod, vracení např kód ověření "ValidationResponse: acb13...".
+V modulu snap-in vlastnictví koncový bod tooprove pořadí odezvu back hello ověření kódu např "ValidationResponse: acb13...".
 
-Nakonec je důležité si uvědomit, mřížky událostí Azure podporuje pouze HTTPS webhooku koncové body.
+Nakonec je důležité toonote mřížky událostí Azure podporuje pouze HTTPS webhooku koncové body.
 ## <a name="event-subscription"></a>Odběru událostí
 
-K odběru události, musíte mít **Microsoft.EventGrid/EventSubscriptions/Write** oprávnění na požadovaný prostředek. Je nutné toto oprávnění, protože píšete nové předplatné v oboru prostředku. Požadovaný prostředek se liší v závislosti na tom, jestli se odběru tématu systému nebo vlastní heslo. Oba typy jsou popsané v této části.
+toosubscribe tooan událostí, musíte mít hello **Microsoft.EventGrid/EventSubscriptions/Write** požadováno oprávnění na hello prostředků. Je nutné toto oprávnění, protože píšete nové předplatné v oboru hello hello prostředku. Hello požadované liší v závislosti na tom, jestli se odběru tooa systému téma nebo vlastních prostředků. Oba typy jsou popsané v této části.
 
 ### <a name="system-topics-azure-service-publishers"></a>Témata týkající se systému (vydavateli služby Azure)
 
-Pro systém témata budete potřebovat oprávnění k zápisu nového odběru události v oboru prostředku publikování události. Formát prostředku není:`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
+Pro systém témata budete potřebovat oprávnění toowrite nové předplatné událostí v oboru hello hello prostředků publikování hello události. Formát Hello hello prostředku je:`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
 
-Například k odběru události na účet úložiště s názvem **UCET**, potřebujete oprávnění Microsoft.EventGrid/EventSubscriptions/Write na:`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
+Například toosubscribe tooan událostí na účet úložiště s názvem **UCET**, potřebujete oprávnění Microsoft.EventGrid/EventSubscriptions/Write hello na:`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
 
 ### <a name="custom-topics"></a>Vlastní témata
 
-Pro vlastní témata budete potřebovat oprávnění k zápisu nového odběru události v oboru tématu událostí mřížky. Formát prostředku není:`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
+Pro vlastní témata budete potřebovat oprávnění toowrite nové předplatné událostí v oboru hello hello mřížky události tématu. Formát Hello hello prostředku je:`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
 
-Například k odběru vlastní téma s názvem **mytopic**, potřebujete oprávnění Microsoft.EventGrid/EventSubscriptions/Write na:`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
+Například toosubscribe tooa vlastní téma s názvem **mytopic**, potřebujete oprávnění Microsoft.EventGrid/EventSubscriptions/Write hello na:`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
 
 ## <a name="topic-publishing"></a>Téma publikování
 
 Témata týkající se použití sdíleného přístupového podpisu (SAS) nebo ověření pomocí klíče. Doporučujeme, abyste SAS, ale ověření pomocí klíče poskytuje jednoduché programování a je kompatibilní s mnoha existující webhooku vydavatelů. 
 
-Můžete zahrnout ověřování hodnota v hlavičce protokolu HTTP. SAS, použijte **tokenu sas Æg** pro hodnotu hlavičky. Pro ověření pomocí klíče, použít **klíč sas Æg** pro hodnotu hlavičky.
+Můžete zahrnout hello ověřování hodnota v hlavičce protokolu HTTP hello. SAS, použijte **tokenu sas Æg** pro hodnotu hlavičky hello. Pro ověření pomocí klíče, použít **klíč sas Æg** pro hodnotu hlavičky hello.
 
 ### <a name="key-authentication"></a>Ověření pomocí klíče
 
-Ověření pomocí klíče je nejjednodušší formu ověřování. Použijte formát:`aeg-sas-key: <your key>`
+Ověření pomocí klíče je hello nejjednodušší formu ověření. Použijte formát hello:`aeg-sas-key: <your key>`
 
 Například předáte klíč se: 
 
@@ -74,11 +74,11 @@ aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
 
 ### <a name="sas-tokens"></a>Tokeny SAS
 
-Tokeny SAS pro událost mřížky zahrnují prostředku, čas vypršení platnosti a podpis. Formát tokenu SAS: `r={resource}&e={expiration}&s={signature}`.
+Tokeny SAS pro událost mřížky zahrnují hello prostředků, čas vypršení platnosti a podpis. Hello formát tokenu SAS hello je: `r={resource}&e={expiration}&s={signature}`.
 
-Prostředek je cesta k tématu, ke kterému jsou odesílání událostí. Například je cesta platná prostředku:`https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
+Hello prostředků je hello cesta pro téma toowhich hello odesílání událostí. Například je cesta platná prostředku:`https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
 
-Generování podpisu z klíče.
+Vygenerování hello podpisu z klíče.
 
 Například platná **tokenu sas Æg** hodnota je:
 
@@ -86,7 +86,7 @@ Například platná **tokenu sas Æg** hodnota je:
 aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2feventGrid%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=a4oNHpRZygINC%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
 ``` 
 
-Následující příklad vytvoří SAS token pro použití s mřížky událostí:
+Hello následující příklad vytvoří SAS token pro použití s mřížky událostí:
 
 ```cs
 static string BuildSharedAccessSignature(string resource, DateTime expirationUtc, string key)
@@ -112,11 +112,11 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 ## <a name="management-access-control"></a>Správa řízení přístupu
 
-Azure mřížky událostí můžete řídit úroveň přístupu k různým uživatelům dělat různé operace správy, jako je například seznam událostí odběry, vytvořte nové a generovat klíče. Událost mřížky využívá Azure na základě Role přístupu zkontrolujte (RBAC) pro tento.
+Azure mřížky událostí umožňuje vám toocontrol hello úroveň přístupu zadané toodifferent uživatelé toodo různé operace správy, jako je například seznam událostí odběry, vytvořit nové a generovat klíče. Událost mřížky využívá Azure na základě Role přístupu zkontrolujte (RBAC) pro tento.
 
 ### <a name="operation-types"></a>Typy operací
 
-Mřížky událostí Azure podporuje následující akce:
+Azure událostí mřížky podporuje hello následující akce:
 
 * Microsoft.EventGrid/*/read 
 * Microsoft.EventGrid/*/write 
@@ -125,15 +125,15 @@ Mřížky událostí Azure podporuje následující akce:
 * Microsoft.EventGrid/topics/listKeys/action 
 * Microsoft.EventGrid/topics/regenerateKey/action
 
-Vrátí poslední tři operace potenciálně tajné informace, který získá filtrován mimo normální operace čtení. Je osvědčeným postupem můžete omezit přístup na tyto operace. Můžete vytvořit vlastní role pomocí [prostředí Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md), [rozhraní příkazového řádku Azure (CLI)](../active-directory/role-based-access-control-manage-access-azure-cli.md)a [REST API](../active-directory/role-based-access-control-manage-access-rest.md).
+Hello poslední tři operace návratový potenciálně tajné informace, které získá filtrované mimo normální operace čtení. Je vhodné pro vás toorestrict přístup toothese operace. Můžete vytvořit vlastní role pomocí [prostředí Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md), [rozhraní příkazového řádku Azure (CLI)](../active-directory/role-based-access-control-manage-access-azure-cli.md)a hello [REST API](../active-directory/role-based-access-control-manage-access-rest.md).
 
 ### <a name="enforcing-role-based-access-check-rbac"></a>Vynucování Role na základě kontroly přístupu (RBAC)
 
-Použijte následující postup k vynucení RBAC pro různé uživatele:
+Použijte následující postup tooenforce RBAC pro různé uživatele hello:
 
 #### <a name="create-a-custom-role-definition-file-json"></a>Vytvořte soubor definice vlastních rolí (.json)
 
-Níže jsou uvedeny definice rolí událostí mřížky ukázka, která umožní uživatelům provádět různé sady akcí.
+Hello následují definice rolí událostí mřížky ukázkové, které uživatelům umožňují tooperform různé sady akcí.
 
 **EventGridReadOnlyRole.json**: Povolit jenom pro čtení jenom operace.
 ```json
@@ -196,18 +196,18 @@ Níže jsou uvedeny definice rolí událostí mřížky ukázka, která umožní
 } 
 ```
 
-#### <a name="install-and-login-to-azure-cli"></a>Instalace a přihlášení k rozhraní příkazového řádku Azure
+#### <a name="install-and-login-tooazure-cli"></a>Instalace a přihlášení tooAzure rozhraní příkazového řádku
 
-* Azure CLI verze 0.8.8 nebo novější. Nainstalujte nejnovější verzi a přidružit ho ke svému předplatnému Azure, najdete v tématu [instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md).
-* Azure Resource Manager v rozhraní příkazového řádku Azure. Přejděte na [pomocí rozhraní příkazového řádku Azure s Resource Managerem](../xplat-cli-azure-resource-manager.md) další podrobnosti.
+* Azure CLI verze 0.8.8 nebo novější. tooinstall hello nejnovější verzi a přidružit ho ke svému předplatnému Azure, najdete v části [instalace a konfigurace rozhraní příkazového řádku Azure hello](../cli-install-nodejs.md).
+* Azure Resource Manager v rozhraní příkazového řádku Azure. Přejděte příliš[hello pomocí rozhraní příkazového řádku Azure s hello Resource Manager](../xplat-cli-azure-resource-manager.md) další podrobnosti.
 
 #### <a name="create-a-custom-role"></a>Vytvořit vlastní roli
 
-Chcete-li vytvořit vlastní roli, použijte:
+toocreate vlastní roli, použijte:
 
     azure role create --inputfile <file path>
 
-#### <a name="assign-the-role-to-a-user"></a>Přiřazení role uživatele
+#### <a name="assign-hello-role-tooa-user"></a>Přiřadit uživatele tooa role hello
 
 
     azure role assignment create --signInName  <user email address> --roleName "<name of role>" --resourceGroup <resource group name>
@@ -215,4 +215,4 @@ Chcete-li vytvořit vlastní roli, použijte:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod k mřížce událostí, naleznete v části [o mřížky událostí](overview.md)
+* TooEvent Úvod mřížky, najdete v části [o mřížky událostí](overview.md)

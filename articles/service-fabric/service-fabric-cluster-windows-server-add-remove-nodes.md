@@ -1,6 +1,6 @@
 ---
-title: "Přidávat nebo odebírat uzly do clusteru Service Fabric samostatné | Microsoft Docs"
-description: "Naučte se přidávat nebo odebírat uzly do clusteru Azure Service Fabric na fyzický nebo virtuální počítač se systémem Windows Server, který může být místní nebo v jakékoli cloudu."
+title: "aaaAdd nebo odebrat uzly tooa samostatný cluster Service Fabric | Microsoft Docs"
+description: "Zjistěte, jak tooadd nebo odebrat uzly tooan Azure Service Fabric clusteru na fyzický nebo virtuální počítač se systémem Windows Server, který může být místní nebo v jakékoli cloudu."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 9c6035e97de38ff63ef074109afd9f3c7484f828
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 1da908ad9840faa052e0b4021bc2d4ce732b02bc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Přidávat nebo odebírat uzly do clusteru Service Fabric samostatné systémem Windows Server
-Až budete mít [vytvořen samostatný cluster Service Fabric na počítačích systému Windows Server](service-fabric-cluster-creation-for-windows-server.md), může vaše obchodní potřeby změnit a možná budete muset přidávat nebo odebírat uzly do clusteru. Tento článek obsahuje podrobné pokyny k dosažení tohoto cíle. Upozorňujeme, že přidat nebo odebrat uzel funkce není podporována v clusterech místní vývoj.
+# <a name="add-or-remove-nodes-tooa-standalone-service-fabric-cluster-running-on-windows-server"></a>Přidat nebo odebrat uzly tooa samostatný cluster Service Fabric systémem Windows Server
+Až budete mít [vytvořen samostatný cluster Service Fabric na počítačích systému Windows Server](service-fabric-cluster-creation-for-windows-server.md), může změnit obchodních potřeb a může být nutné tooadd nebo odebrat uzly tooyour clusteru. Tento článek obsahuje podrobné pokyny tooachieve to. Upozorňujeme, že přidat nebo odebrat uzel funkce není podporována v clusterech místní vývoj.
 
-## <a name="add-nodes-to-your-cluster"></a>Přidat uzly do clusteru
-1. Příprava virtuálního počítače nebo počítače, který chcete přidat do clusteru pomocí následujících kroků v [Příprava počítačů ke splnění předpokladů pro nasazení clusteru](service-fabric-cluster-creation-for-windows-server.md) části
-2. Identifikovat, které domény selhání a chcete přidat tento virtuální počítač nebo počítač k doméně pro upgrade
-3. Vzdálené plochy (RDP) do virtuálního počítače nebo počítač, který chcete přidat do clusteru
-4. Kopírování nebo [stáhnout samostatný balíček pro prostředky infrastruktury služby pro systém Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690) do virtuálního počítače nebo počítače a rozbalte balíček
-5. Spusťte prostředí Powershell se zvýšenými oprávněními a přejděte do umístění rozbalené balíčku
-6. Spustit *AddNode.ps1* skriptu s parametry popisující přidat nový uzel. Následující příklad přidá nový uzel s názvem VM5, s typem NodeType0 a IP adres 182.17.34.52, do UD1 a fd: / dc1/r0. *ExistingClusterConnectionEndPoint* je koncový bod připojení pro uzel již v existujícím clusteru, který může být IP adresa *žádné* uzlu v clusteru.
+## <a name="add-nodes-tooyour-cluster"></a>Přidat uzly clusteru tooyour
+1. Příprava hello virtuálního počítače nebo počítače chcete tooadd tooyour clusteru podle následujících kroků hello v hello [hello Příprava počítačů toomeet hello požadavky pro nasazení clusteru](service-fabric-cluster-creation-for-windows-server.md) části
+2. Identifikovat, které domény selhání a upgradu domény jsou probíhající tooadd tohoto virtuálního počítače nebo počítače.
+3. Vzdálené plochy (RDP) do virtuálního počítače nebo počítače, které chcete tooadd toohello cluster hello
+4. Kopírování nebo [stáhnout hello samostatný balíček pro Service Fabric pro systém Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690) toohello virtuálního počítače nebo počítače a rozbalte balíček hello
+5. Spusťte prostředí Powershell se zvýšenými oprávněními a přejděte toohello umístění rozbalené balíčku hello
+6. Spustit hello *AddNode.ps1* skriptu s parametry hello popisující nový uzel tooadd hello. Následující příklad Hello přidá nový uzel s názvem VM5, s typem NodeType0 a IP adres 182.17.34.52, do UD1 a fd: / dc1/r0. Hello *ExistingClusterConnectionEndPoint* je koncový bod připojení pro uzel již v hello stávajícího clusteru, může být IP adresa hello *žádné* uzlu v clusteru hello.
 
     ```
     .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -AcceptEULA
     ```
-    Po dokončení skriptu můžete zkontrolovat, zda byl přidán nový uzel spuštěním [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) rutiny.
+    Po dokončení skriptu hello můžete zkontrolovat, zda byl přidán nový uzel hello spuštěním hello [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) rutiny.
 
-7. K zachování konzistence napříč různými uzly v clusteru, je nutné inicializovat konfigurace upgradu. Spustit [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) získat nejnovější konfigurační soubor a přidejte uzlu nově přidané do části "Uzlů". Doporučujeme také mít vždy k dispozici v případě, že je potřeba provést redploy clusteru se stejnou konfigurací nejnovější konfigurace clusteru.
+7. tooensure konzistence mezi různými uzly v clusteru hello, je nutné inicializovat konfigurace upgradu. Spustit [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) tooget hello nejnovější konfigurační soubor a přidejte hello příliš nově přidaná uzlu část "Uzlů". Je také vhodné tooalways mít hello nejnovější konfigurace clusteru k dispozici v případě hello, je nutné, aby tooredploy cluster s hello stejnou konfiguraci.
 
     ```
         {
@@ -47,17 +47,17 @@ Až budete mít [vytvořen samostatný cluster Service Fabric na počítačích 
             "upgradeDomain": "UD1"
         }
     ```
-8. Spustit [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) spustíte upgrade.
+8. Spustit [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) toobegin hello upgradu.
 
     ```
-    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
+    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path tooConfiguration File>
 
     ```
-    Můžete sledovat průběh upgradu v Service Fabric Exploreru. Alternativně můžete spustit [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
+    Můžete sledovat průběh hello hello upgrade na Service Fabric Exploreru. Alternativně můžete spustit [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
 
-### <a name="add-nodes-to-clusters-configured-with-windows-security-using-gmsa"></a>Přidat uzly do clusterů, které jsou nakonfigurované pomocí gMSA zabezpečení systému Windows
+### <a name="add-nodes-tooclusters-configured-with-windows-security-using-gmsa"></a>Přidat uzly tooclusters nakonfigurováni pomocí gMSA zabezpečení systému Windows
 Pro clustery nakonfigurované skupiny spravované služby Account(gMSA) (https://technet.microsoft.com/library/hh831782.aspx) můžete přidat nový uzel pomocí konfigurace upgradu:
-1. Spustit [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) na žádném z existujících uzlů získat nejnovější konfigurační soubor a přidat podrobnosti o nový uzel, který chcete přidat v části "Uzlů". Zajistěte, aby byl nový uzel součástí stejného účtu skupiny spravované. Tento účet by měl být správce na všech počítačích.
+1. Spustit [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) na všech uzlech existujícího hello tooget hello nejnovější konfigurační soubor a přidat podrobnosti o novém uzlu hello chcete tooadd v části uzly"hello". Zajistěte, aby nový uzel hello je součástí systému hello stejné skupiny spravovaný účet. Tento účet by měl být správce na všech počítačích.
 
     ```
         {
@@ -68,21 +68,21 @@ Pro clustery nakonfigurované skupiny spravované služby Account(gMSA) (https:/
             "upgradeDomain": "UD1"
         }
     ```
-2. Spustit [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) spustíte upgrade.
+2. Spustit [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) toobegin hello upgradu.
 
     ```
-    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
+    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path tooConfiguration File>
     ```
-    Můžete sledovat průběh upgradu v Service Fabric Exploreru. Alternativně můžete spustit [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
+    Můžete sledovat průběh hello hello upgrade na Service Fabric Exploreru. Alternativně můžete spustit [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
 
-### <a name="add-node-types-to-your-cluster"></a>Přidat typy uzlů do clusteru
-Chcete-li přidat nového typu uzlu, změňte konfiguraci zahrnout nového typu uzlu v "NodeTypes" tématu v části "Vlastnosti" a začněte konfiguraci upgradovat pomocí [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps). Po dokončení upgradu, můžete přidat nové uzly do clusteru s tímto typem uzlu.
+### <a name="add-node-types-tooyour-cluster"></a>Přidání uzlu typy tooyour clusteru
+V pořadí tooadd nového typu uzlu, úpravě vaše konfigurace tooinclude hello nového typu uzlu v oddílu "NodeTypes" v části "Vlastnosti" a zahájit konfiguraci upgradovat pomocí [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps). Po dokončení upgradu hello můžete přidat nový cluster tooyour uzly s tímto typem uzlu.
 
 ## <a name="remove-nodes-from-your-cluster"></a>Odebrání uzlů z clusteru
-Uzel může být odebrán z clusteru pomocí konfigurace upgrade, následujícím způsobem:
+Uzel může být odebrán z clusteru pomocí upgrade konfigurace v hello následujícím způsobem:
 
-1. Spustit [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) získat nejnovější konfigurační soubor a *odebrat* uzlu z části "Uzlů".
-Parametr "NodesToBeRemoved" přidáte do části "Nastavení" v části "FabricSettings". "value" by měl být čárkami oddělený seznam názvů uzlu uzlů, které je třeba je odebrat.
+1. Spustit [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) tooget hello nejnovější konfigurační soubor a *odebrat* hello uzlu z části "Uzlů".
+Přidat hello "NodesToBeRemoved" parametr příliš "nastavení" tématu v části "FabricSettings". Hello "value" by měl být čárkami oddělený seznam názvů uzlu uzlů, které je třeba toobe odebrat.
 
     ```
          "fabricSettings": [
@@ -105,25 +105,25 @@ Parametr "NodesToBeRemoved" přidáte do části "Nastavení" v části "FabricS
             }
         ]
     ```
-2. Spustit [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) spustíte upgrade.
+2. Spustit [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) toobegin hello upgradu.
 
     ```
-    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
+    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path tooConfiguration File>
 
     ```
-    Můžete sledovat průběh upgradu v Service Fabric Exploreru. Alternativně můžete spustit [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
+    Můžete sledovat průběh hello hello upgrade na Service Fabric Exploreru. Alternativně můžete spustit [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
 
 > [!NOTE]
-> Odebrání uzlů může zahájit více upgradů. Některé uzly jsou označené jako `IsSeedNode=”true”` značky a lze identifikovat podle dotazování clusteru manifestu pomocí `Get-ServiceFabricClusterManifest`. Odebrání těchto uzlů může trvat déle než jiné, protože uzly počáteční hodnoty musí přesunout v těchto scénářích. Cluster musí zachovat minimálně 3 uzlů typu primárního uzlu.
+> Odebrání uzlů může zahájit více upgradů. Některé uzly jsou označené jako `IsSeedNode=”true”` značky a lze identifikovat podle dotazování hello clusteru manifestu pomocí `Get-ServiceFabricClusterManifest`. Odebrání těchto uzlů může trvat déle než jiné, vzhledem k tomu, že uzly počáteční hodnoty hello bude mít toobe přesunout v takových scénářů. Hello clusteru musí zachovat minimálně 3 uzlů typu primárního uzlu.
 > 
 > 
 
 ### <a name="remove-node-types-from-your-cluster"></a>Odebrat typy uzlů z clusteru
-Před odebráním typ uzlu, prosím Překontrolujte, pokud jsou všechny uzly odkazující na typ uzlu. Odeberte tyto uzly před odebráním odpovídající typ uzlu. Po odebrání všech odpovídajících uzlů můžete odebrat typ uzlu z clusteru konfigurace a zahájit konfiguraci upgradovat pomocí [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps).
+Před odebráním typ uzlu, prosím Překontrolujte, pokud jsou všechny uzly odkazující na typ uzlu hello. Odeberte tyto uzly před odebráním hello odpovídající typ uzlu. Po odebrání všech odpovídajících uzlů můžete odebrat hello NodeType z hello konfiguraci clusteru a zahájit konfiguraci upgradovat pomocí [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps).
 
 
 ### <a name="replace-primary-nodes-of-your-cluster"></a>Nahraďte primární uzlů ve vašem clusteru
-Nahrazení primární uzly by měl být provádí jeden uzel za druhým, místo odebráním a potom přidat v dávkách.
+nahrazení Hello primární uzlů musí být provádí jeden uzel za druhým, místo odebráním a potom přidat v dávkách.
 
 
 ## <a name="next-steps"></a>Další kroky

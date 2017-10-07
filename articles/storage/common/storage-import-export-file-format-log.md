@@ -1,6 +1,6 @@
 ---
-title: "Formát souboru protokolu Azure Import/Export | Microsoft Docs"
-description: "Další informace o formátu souborů protokolu, který je vytvořen při provádění kroků pro úlohu importu/exportu služby."
+title: "Formát souboru protokolu importu a exportu aaaAzure | Microsoft Docs"
+description: "Další informace o hello formát souborů protokolu hello vytvoří při provádění kroků pro úlohu importu/exportu služby."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,43 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 16234ccaf13ce1d85cfd207ed4734e683070faa6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 15a652455aa947922af0aa39ccefe68811a3db19
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Formát souboru protokolu služby sady Azure Import/Export
-Když službu Microsoft Azure Import/Export provede akci na disku jako součást úlohy importu nebo úlohy exportu, protokoly zapisují na blok objektů BLOB v účtu úložiště přidruženého k této úlohy.  
+Když hello služby Microsoft Azure Import/Export provede akci na disku jako součást úlohy importu nebo úlohy exportu, protokoly zapisují tooblock objekty BLOB v účtu úložiště hello přidruženého k této úlohy.  
   
-Existují dva protokoly, které lze zapisovat pomocí služby importu a exportu:  
+Existují dva protokoly, které může být naprogramovaný hello službu Import/Export:  
   
--   V případě chyby vždy generování protokolu chyb.  
+-   v případě hello chyby vždy generování Hello protokolu chyb.  
   
--   Úplné protokolování není ve výchozím nastavení povolené, ale lze ho zapnout nastavením `EnableVerboseLog` vlastnost [Put úlohy](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) nebo [vlastnosti úlohy aktualizace](/rest/api/storageimportexport/jobs#Jobs_Update) operaci.  
+-   Hello podrobného protokolování není ve výchozím nastavení povolené, ale lze ho zapnout pomocí nastavení hello `EnableVerboseLog` vlastnost [Put úlohy](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) nebo [vlastnosti úlohy aktualizace](/rest/api/storageimportexport/jobs#Jobs_Update) operaci.  
   
 ## <a name="log-file-location"></a>Umístění souboru protokolu  
-Protokoly se zapisují do bloku v kontejneru nebo virtuální adresář zadaný `ImportExportStatesPath` nastavení, které můžete nastavit `Put Job` operaci. Umístění, do které se zapisují protokoly závisí na tom, jak je ověřování zadaná pro úlohu, společně s hodnota zadaná pro `ImportExportStatesPath`. Ověření úlohy je možné zadat prostřednictvím klíč účtu úložiště nebo kontejneru SAS (sdílený přístupový podpis).  
+Hello se protokoly zapisují tooblock objekty BLOB v kontejneru hello nebo virtuální adresář zadaný hello `ImportExportStatesPath` nastavení, které můžete nastavit `Put Job` operaci. Hello umístění toowhich hello se protokoly zapisují závisí na tom, jak je zadán ověřování pro úlohu hello, společně s hello hodnota zadaná pro `ImportExportStatesPath`. Ověřování pro úlohu hello je možné zadat pomocí klíč účtu úložiště nebo kontejneru SAS (sdílený přístupový podpis).  
   
-Název kontejneru nebo virtuální adresář může být výchozí název `waimportexport`, nebo jiný kontejner nebo název virtuálního adresáře, který určíte.  
+Hello název kontejneru hello nebo virtuální adresář může být hello výchozí název `waimportexport`, nebo jiný kontejner nebo název virtuálního adresáře, který určíte.  
   
-Následující tabulka uvádí možné možnosti:  
+Následující tabulka Hello ukazuje hello způsobů:  
   
 |Metoda ověřování|Hodnota `ImportExportStatesPath`– Element|Umístění protokolu objektů BLOB|  
 |---------------------------|----------------------------------------------|---------------------------|  
-|Klíče účtu úložiště.|Výchozí hodnota|Kontejner s názvem `waimportexport`, což je výchozí kontejner. Například:<br /><br /> `https://myaccount.blob.core.windows.net/waimportexport`|  
-|Klíče účtu úložiště.|Uživatelem zadanou hodnotu|Kontejner s názvem uživatelem. Například:<br /><br /> `https://myaccount.blob.core.windows.net/mylogcontainer`|  
-|Sdíleného přístupového podpisu kontejneru|Výchozí hodnota|Virtuální adresář s názvem `waimportexport`, což je výchozí název, pod kontejnerem zadaný v SAS.<br /><br /> Například pokud SAS zadaná pro úlohu je `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, pak by byl umístění protokolu`https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport`|  
-|Sdíleného přístupového podpisu kontejneru|Uživatelem zadanou hodnotu|Virtuální adresář s názvem uživatelem pod kontejnerem zadaný v SAS.<br /><br /> Například pokud SAS zadaná pro úlohu je `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, a názvem zadaný virtuální adresář `mylogblobs`, pak by byl umístění protokolu `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs`.|  
+|Klíče účtu úložiště.|Výchozí hodnota|Kontejner s názvem `waimportexport`, což je výchozí kontejner hello. Například:<br /><br /> `https://myaccount.blob.core.windows.net/waimportexport`|  
+|Klíče účtu úložiště.|Uživatelem zadanou hodnotu|Kontejner s názvem uživatelem hello. Například:<br /><br /> `https://myaccount.blob.core.windows.net/mylogcontainer`|  
+|Sdíleného přístupového podpisu kontejneru|Výchozí hodnota|Virtuální adresář s názvem `waimportexport`, což je hello výchozí název, pod kontejnerem hello zadaný v hello SAS.<br /><br /> Například pokud hello SAS zadaná pro úlohu hello je `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, pak by byl umístění protokolu hello`https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport`|  
+|Sdíleného přístupového podpisu kontejneru|Uživatelem zadanou hodnotu|Virtuální adresář s názvem uživatelem hello pod kontejnerem hello zadaný v hello SAS.<br /><br /> Například pokud hello SAS zadaná pro úlohu hello je `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, a hello zadaný virtuální adresář název `mylogblobs`, pak by byl umístění protokolu hello `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs`.|  
   
-Je-li získat adresu URL pro podrobné protokoly a chyba pomocí volání [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operaci. Protokoly jsou k dispozici po dokončení zpracování jednotky.  
+Adresy URL hello hello chyba a podrobné protokoly můžete načíst pomocí volání hello [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operaci. Hello protokoly jsou k dispozici po dokončení zpracování jednotky hello.  
   
 ## <a name="log-file-format"></a>Formát souboru protokolu  
-Formát pro oba protokoly je stejný: Objekt blob, který obsahuje XML popisy událostí, které nastaly při kopírování objekty BLOB mezi pevného disku a účtu zákazníka.  
+Hello formát pro oba protokoly je hello stejné: Objekt blob, který obsahuje XML popis hello událostí, které došlo k chybě při kopírování objekty BLOB mezi hello pevný disk a účet hello zákazníka.  
   
-Úplné protokolování obsahuje kompletní informace o stavu operace kopírování pro každý objekt blob (pro úlohy importu) nebo soubor (pro úlohy exportu), zatímco v protokolu chyb obsahuje pouze informace pro objekty BLOB nebo soubory, které se vyskytly chyby při importu nebo exportu úloze.  
+Úplné protokolování Hello obsahuje kompletní informace o stavu hello hello kopírování pro každý objekt blob (pro úlohy importu) nebo soubor (pro úlohy exportu), zatímco hello chyba protokol obsahuje jenom hello informace pro objekty BLOB nebo soubory, které se vyskytly chyby během hello importovat nebo exportovat úlohy.  
   
-Formát podrobného protokolování jsou uvedeny níže. V protokolu chyb má stejnou strukturu, ale filtruje úspěšné operace.  
+Formát Hello podrobného protokolování jsou uvedeny níže. Protokol chyb Hello má hello stejné struktury, ale filtruje úspěšné operace.  
 
 ```xml
 <DriveLog Version="2014-11-01">  
@@ -104,162 +104,162 @@ properties-status ::=
 </Properties>  
 ```
 
-Následující tabulka popisuje prvky souboru protokolu.  
+Hello následující tabulka popisuje elementy hello hello souboru protokolu.  
   
 |XML Element|Typ|Popis|  
 |-----------------|----------|-----------------|  
 |`DriveLog`|XML Element|Představuje jednotku protokolu.|  
-|`Version`|Atribut, řetězec|Verze formátu protokolu.|  
-|`DriveId`|Řetězec|Sériové číslo hardwaru na jednotku.|  
-|`Status`|Řetězec|Stav zpracování jednotky. Najdete v článku `Drive Status Codes` tabulky níže Další informace.|  
+|`Version`|Atribut, řetězec|Hello verzi formátu protokolu hello.|  
+|`DriveId`|Řetězec|Hello jednotky hardwaru sériové číslo.|  
+|`Status`|Řetězec|Stav zpracování jednotky hello. V tématu hello `Drive Status Codes` tabulky níže Další informace.|  
 |`Blob`|Vnořené – element XML|Představuje objekt blob.|  
-|`Blob/BlobPath`|Řetězec|Identifikátor URI objektu blob.|  
-|`Blob/FilePath`|Řetězec|Relativní cesta k souboru na disku.|  
-|`Blob/Snapshot`|Data a času|Snímek aktuální verze objektu blob pro úlohu exportu.|  
-|`Blob/Length`|Integer|Celková délka objektu blob v bajtech.|  
-|`Blob/LastModified`|Data a času|Datum a čas poslední změny objektu blob, pro úlohu exportu.|  
-|`Blob/ImportDisposition`|Řetězec|Import dispozice objektu blob pro úlohu importu.|  
-|`Blob/ImportDisposition/@Status`|Atribut, řetězec|Stav importu dispozice.|  
+|`Blob/BlobPath`|Řetězec|identifikátor URI objektu hello blob Hello.|  
+|`Blob/FilePath`|Řetězec|Hello relativní cestu toohello soubor na disku hello.|  
+|`Blob/Snapshot`|Data a času|Hello snímek aktuální verze objektu blob hello pro úlohu exportu.|  
+|`Blob/Length`|Integer|Hello celková délka objektu blob hello v bajtech.|  
+|`Blob/LastModified`|Data a času|Hello datum a čas poslední změny tohoto objektu blob hello pro úlohu exportu.|  
+|`Blob/ImportDisposition`|Řetězec|Hello importovat dispozice hello objekt blob pro úlohu importu.|  
+|`Blob/ImportDisposition/@Status`|Atribut, řetězec|Stav Hello hello importovat dispozice.|  
 |`PageRangeList`|Vnořené – element XML|Představuje seznam rozsahů stránek pro objekt blob stránky.|  
 |`PageRange`|XML element|Představuje rozsahu stránek.|  
-|`PageRange/@Offset`|Atribut, celé číslo|Počáteční odsazení rozsahu stránek v objektu blob.|  
-|`PageRange/@Length`|Atribut, celé číslo|Délka v bajtech rozsahu stránek.|  
-|`PageRange/@Hash`|Atribut, řetězec|Kódováním Base16 hodnotu hash MD5 rozsahu stránek.|  
-|`PageRange/@Status`|Atribut, řetězec|Stav zpracování rozsahu stránek.|  
+|`PageRange/@Offset`|Atribut, celé číslo|Počáteční posun rozsahu stránku hello v objektu blob hello.|  
+|`PageRange/@Length`|Atribut, celé číslo|Délka v bajtech hello rozsahu stránek.|  
+|`PageRange/@Hash`|Atribut, řetězec|Kódováním Base16 hodnota hash MD5 rozsahu stránku hello.|  
+|`PageRange/@Status`|Atribut, řetězec|Stav zpracování hello rozsahu stránek.|  
 |`BlockList`|Vnořené – element XML|Představuje seznam bloků pro objekt blob bloku.|  
 |`Block`|XML element|Představuje blok.|  
-|`Block/@Offset`|Atribut, celé číslo|Počáteční odsazení v objektu blob bloku.|  
-|`Block/@Length`|Atribut, celé číslo|Délka v bajtech bloku.|  
-|`Block/@Id`|Atribut, řetězec|ID bloku.|  
-|`Block/@Hash`|Atribut, řetězec|Kódováním Base16 hodnota hash MD5 bloku.|  
-|`Block/@Status`|Atribut, řetězec|Stav zpracování bloku.|  
-|`Metadata`|Vnořené – element XML|Představuje metadata objektu blob.|  
-|`Metadata/@Status`|Atribut, řetězec|Stav zpracování metadata objektu blob.|  
-|`Metadata/GlobalPath`|Řetězec|Relativní cesta k souboru globální metadat.|  
-|`Metadata/GlobalPath/@Hash`|Atribut, řetězec|Kódováním Base16 hodnota hash MD5 globální metadata souboru.|  
-|`Metadata/Path`|Řetězec|Relativní cesta k souboru metadat.|  
-|`Metadata/Path/@Hash`|Atribut, řetězec|Kódováním Base16 hodnota hash MD5 souboru metadat.|  
-|`Properties`|Vnořené – element XML|Představuje vlastnosti objektů blob.|  
-|`Properties/@Status`|Atribut, řetězec|Stav zpracování objektu blob vlastnosti, například soubor nebyl nalezen, byla dokončena.|  
-|`Properties/GlobalPath`|Řetězec|Relativní cesta k souboru globální vlastnosti.|  
-|`Properties/GlobalPath/@Hash`|Atribut, řetězec|Kódováním Base16 hodnota hash MD5 globální vlastnosti souboru.|  
-|`Properties/Path`|Řetězec|Relativní cesta k souboru vlastnosti.|  
-|`Properties/Path/@Hash`|Atribut, řetězec|Kódováním Base16 hodnota hash MD5 souboru vlastnosti.|  
-|`Blob/Status`|Řetězec|Stav zpracování objektu blob.|  
+|`Block/@Offset`|Atribut, celé číslo|Počáteční odsazení hello blok v objektu blob hello.|  
+|`Block/@Length`|Atribut, celé číslo|Délka v bajtech hello bloku.|  
+|`Block/@Id`|Atribut, řetězec|ID bloku Hello.|  
+|`Block/@Hash`|Atribut, řetězec|Kódováním Base16 hodnota hash MD5 hello bloku.|  
+|`Block/@Status`|Atribut, řetězec|Stav zpracování hello bloku.|  
+|`Metadata`|Vnořené – element XML|Představuje metadata objektu blob hello.|  
+|`Metadata/@Status`|Atribut, řetězec|Stav zpracování hello metadata objektu blob.|  
+|`Metadata/GlobalPath`|Řetězec|Relativní cesta toohello globální metadata souboru.|  
+|`Metadata/GlobalPath/@Hash`|Atribut, řetězec|Kódováním Base16 hodnota hash MD5 hello globální metadata souboru.|  
+|`Metadata/Path`|Řetězec|Soubor metadat toohello relativní cestu.|  
+|`Metadata/Path/@Hash`|Atribut, řetězec|Kódováním Base16 hodnota hash MD5 hello metadata souboru.|  
+|`Properties`|Vnořené – element XML|Představuje vlastnosti objektu blob hello.|  
+|`Properties/@Status`|Atribut, řetězec|Stav zpracování hello vlastnosti objektů blob, například soubor nebyl nalezen, byla dokončena.|  
+|`Properties/GlobalPath`|Řetězec|Relativní cesta toohello globální vlastnosti souboru.|  
+|`Properties/GlobalPath/@Hash`|Atribut, řetězec|Kódováním Base16 hodnota hash MD5 hello globální vlastnosti souboru.|  
+|`Properties/Path`|Řetězec|Relativní cesta toohello vlastnosti souboru.|  
+|`Properties/Path/@Hash`|Atribut, řetězec|Kódováním Base16 hodnota hash MD5 hello vlastnosti souboru.|  
+|`Blob/Status`|Řetězec|Stav zpracování objektu blob hello.|  
   
 # <a name="drive-status-codes"></a>Jednotka stavové kódy  
-Následující tabulka uvádí stavové kódy pro zpracování na jednotku.  
+Hello následující tabulka uvádí hello stavové kódy pro zpracování na jednotku.  
   
 |Stavový kód|Popis|  
 |-----------------|-----------------|  
-|`Completed`|Jednotka dokončil zpracování bez chyb.|  
-|`CompletedWithWarnings`|Jednotka dokončení zpracování se upozornění v jedné nebo více objektů blob na import potížemi, zadaná pro objekty BLOB.|  
-|`CompletedWithErrors`|Jednotka bylo dokončeno s chybami v jedné nebo více objektů BLOB nebo bloků.|  
-|`DiskNotFound`|Žádný disk nachází na jednotce.|  
-|`VolumeNotNtfs`|První datový svazek na disku není ve formátu systému souborů NTFS.|  
-|`DiskOperationFailed`|Při provádění operací na jednotce došlo k neznámé chybě.|  
+|`Completed`|jednotka Hello dokončil zpracování bez chyb.|  
+|`CompletedWithWarnings`|jednotka Hello dokončení zpracování se upozornění v jedné nebo více objektů blob na potížemi import hello zadaný pro objekty BLOB hello.|  
+|`CompletedWithErrors`|jednotka Hello bylo dokončeno s chybami v jedné nebo více objektů BLOB nebo bloky.|  
+|`DiskNotFound`|Žádný disk nachází na jednotce hello.|  
+|`VolumeNotNtfs`|Hello první datový svazek na disku hello není ve formátu systému souborů NTFS.|  
+|`DiskOperationFailed`|Při provádění operací na jednotce hello došlo k neznámé chybě.|  
 |`BitLockerVolumeNotFound`|Nebyla nalezena žádná encryptable svazku Bitlockeru.|  
-|`BitLockerNotActivated`|Nástroj BitLocker není povolen ve svazku.|  
-|`BitLockerProtectorNotFound`|Ochranné zařízení klíče číselné heslo neexistuje na svazku.|  
-|`BitLockerKeyInvalid`|Číselné heslo zadané nelze svazek odemknout.|  
-|`BitLockerUnlockVolumeFailed`|Došlo k neznámé chybě došlo při pokusu o svazek odemknout.|  
+|`BitLockerNotActivated`|BitLocker není na svazku hello povolené.|  
+|`BitLockerProtectorNotFound`|ochranné zařízení klíče Hello číselné heslo na svazku hello neexistuje.|  
+|`BitLockerKeyInvalid`|Hello číselné heslo zadané nemůžete odemknout hello svazku.|  
+|`BitLockerUnlockVolumeFailed`|Došlo k neznámé chybě došlo při pokusu o toounlock hello svazku.|  
 |`BitLockerFailed`|Při provádění operací se BitLocker došlo k neznámé chybě.|  
-|`ManifestNameInvalid`|Název souboru manifestu je neplatný.|  
-|`ManifestNameTooLong`|Název souboru manifestu je příliš dlouhý.|  
-|`ManifestNotFound`|Soubor manifestu nebyl nalezen.|  
-|`ManifestAccessDenied`|Přístup k souboru manifestu byl odepřen.|  
-|`ManifestCorrupted`|Je poškozený soubor manifestu (obsah neodpovídá jeho hash).|  
-|`ManifestFormatInvalid`|Obsah manifestu neodpovídá požadovaný formát.|  
-|`ManifestDriveIdMismatch`|ID disku v souboru manifestu neodpovídá jeden pro čtení z disku.|  
-|`ReadManifestFailed`|Při čtení z manifestu došlo k chybě vstupně-výstupních operací disku.|  
-|`BlobListFormatInvalid`|Objekt blob seznamu objektů blob export neodpovídá požadovaný formát.|  
-|`BlobRequestForbidden`|Přístup k objektům BLOB v účtu úložiště je zakázán. Důvodem může být klíč účtu úložiště nejsou platné nebo sdíleného přístupového podpisu kontejneru.|  
-|`InternalError`|A při zpracování jednotce došlo k vnitřní chybě.|  
+|`ManifestNameInvalid`|Název souboru manifestu Hello je neplatný.|  
+|`ManifestNameTooLong`|Název souboru manifestu Hello je příliš dlouhý.|  
+|`ManifestNotFound`|Hello soubor manifestu nebyl nalezen.|  
+|`ManifestAccessDenied`|Soubor manifestu toohello přístup byl odepřen.|  
+|`ManifestCorrupted`|Hello souboru manifestu je poškozený (hello obsah neodpovídá jeho hash).|  
+|`ManifestFormatInvalid`|Obsah manifestu Hello nesplňuje požadovaný formát toohello.|  
+|`ManifestDriveIdMismatch`|Hello jednotku, kterou neodpovídá ID v souboru manifestu hello hello jeden pro čtení z disku hello.|  
+|`ReadManifestFailed`|Při čtení z manifestu hello došlo k vstupně-výstupních operací selhání disku.|  
+|`BlobListFormatInvalid`|Hello export objektů blob seznamu objektů blob nesplňuje požadovaný formát toohello.|  
+|`BlobRequestForbidden`|Přístup k objektům BLOB toohello v účtu úložiště hello je zakázáno. Může to být kvůli tooinvalid klíč účtu úložiště nebo sdíleného přístupového podpisu kontejneru.|  
+|`InternalError`|A při zpracování hello jednotce došlo k vnitřní chybě.|  
   
 ## <a name="blob-status-codes"></a>Objekt BLOB stavové kódy  
-Následující tabulka uvádí stavové kódy pro zpracování objektu blob.  
+Hello následující tabulka uvádí hello stavové kódy pro zpracování objektu blob.  
   
 |Stavový kód|Popis|  
 |-----------------|-----------------|  
-|`Completed`|Objekt blob se dokončil zpracování bez chyb.|  
-|`CompletedWithErrors`|Objekt blob se dokončil zpracování s chybami v jedné nebo více rozsahů stránek nebo bloky, metadata nebo vlastnosti.|  
-|`FileNameInvalid`|Název souboru je neplatný.|  
-|`FileNameTooLong`|Název souboru je příliš dlouhý.|  
-|`FileNotFound`|Soubor nebyl nalezen.|  
-|`FileAccessDenied`|Přístup k souboru byl odepřen.|  
-|`BlobRequestFailed`|Žádost o služby objektů Blob pro přístup k objektu blob se nezdařilo.|  
-|`BlobRequestForbidden`|Žádost o služby objektů Blob pro přístup k objektu blob je zakázáno. Důvodem může být klíč účtu úložiště nejsou platné nebo sdíleného přístupového podpisu kontejneru.|  
-|`RenameFailed`|Přejmenujte soubor (pro úlohy exportu) nebo objektu blob (pro úlohy importu) se nezdařilo.|  
-|`BlobUnexpectedChange`|S objektem blob (pro úlohy exportu) došlo k neočekávané chování.|  
-|`LeasePresent`|Není přítomen v objektu blob zapůjčení.|  
-|`IOFailed`|Při zpracování objektu blob došlo k chybě vstupně-výstupních operací disku nebo v síti.|  
-|`Failed`|Při zpracování objektu blob došlo k neznámé chybě.|  
+|`Completed`|Objekt blob Hello dokončil zpracování bez chyb.|  
+|`CompletedWithErrors`|Objekt blob Hello dokončil zpracování s chybami v jedné nebo více rozsahů stránek nebo bloky, metadata nebo vlastnosti.|  
+|`FileNameInvalid`|Název souboru Hello je neplatný.|  
+|`FileNameTooLong`|Název souboru Hello je příliš dlouhý.|  
+|`FileNotFound`|Hello soubor nebyl nalezen.|  
+|`FileAccessDenied`|Soubor toohello přístup byl odepřen.|  
+|`BlobRequestFailed`|požadavek na službu Blob Hello, že tooaccess hello objekt blob se nezdařilo.|  
+|`BlobRequestForbidden`|požadavek na službu Blob Hello, že tooaccess hello objektu blob je zakázán. Může to být kvůli tooinvalid klíč účtu úložiště nebo sdíleného přístupového podpisu kontejneru.|  
+|`RenameFailed`|Objekt blob hello toorename (pro úlohy importu) nebo soubor hello (pro úlohy exportu) se nezdařilo.|  
+|`BlobUnexpectedChange`|S objektem blob hello (pro úlohy exportu) došlo k neočekávané chování.|  
+|`LeasePresent`|Není přítomen u objektu blob hello zapůjčení.|  
+|`IOFailed`|Na disk nebo sítě vstupně-výstupních operací selhání došlo k chybě při zpracování objektu blob hello.|  
+|`Failed`|Při zpracování objektu blob hello došlo k neznámé chybě.|  
   
 ## <a name="import-disposition-status-codes"></a>Import dispozice stavové kódy  
-Následující tabulka uvádí stavové kódy pro řešení importu dispozice.  
+Hello následující tabulka uvádí hello stavové kódy pro řešení importu dispozice.  
   
 |Stavový kód|Popis|  
 |-----------------|-----------------|  
-|`Created`|Vytvořil se objekt blob.|  
-|`Renamed`|Objekt blob byl přejmenován na přejmenování import dispozice. `Blob/BlobPath` Element obsahuje identifikátor URI objektu blob přejmenovat.|  
-|`Skipped`|Objekt blob byl vynechán za `no-overwrite` importovat dispozice.|  
-|`Overwritten`|Objekt blob má přepsat existující objekt blob za `overwrite` importovat dispozice.|  
-|`Cancelled`|Předchozí selhání byla zastavena, další zpracování import dispozice.|  
+|`Created`|vytvořil se objekt blob Hello.|  
+|`Renamed`|Hello blob byl přejmenován na přejmenování import dispozice. Hello `Blob/BlobPath` element obsahuje hello identifikátor URI pro objekt blob hello přejmenovat.|  
+|`Skipped`|Objekt blob Hello byl vynechán za `no-overwrite` importovat dispozice.|  
+|`Overwritten`|Objekt blob Hello má přepsat existující objekt blob za `overwrite` importovat dispozice.|  
+|`Cancelled`|Předchozí selhání byla zastavena, další zpracování hello import dispozice.|  
   
 ## <a name="page-rangeblock-status-codes"></a>Stránka rozsah/blok stavové kódy  
-Následující tabulka uvádí stavové kódy pro zpracování stránky rozsah nebo blok.  
+Hello následující tabulka uvádí hello stavové kódy pro zpracování stránky rozsah nebo blok.  
   
 |Stavový kód|Popis|  
 |-----------------|-----------------|  
-|`Completed`|Stránka rozsah nebo blok dokončení zpracování bez chyb.|  
-|`Committed`|Blok potvrzeny, ale v bloku úplný seznam protože jiné bloky se nezdařily, nebo put samotný seznam úplné bloku nedošlo k chybě.|  
-|`Uncommitted`|Blok je odeslat, ale nikoli potvrdit.|  
-|`Corrupted`|Stránka rozsah nebo blok je poškozený (obsah neodpovídá jeho hash).|  
+|`Completed`|Hello stránky rozsah nebo blok dokončení zpracování bez chyb.|  
+|`Committed`|blok Hello potvrzeny, ale v hello úplné blokovaných protože jiné bloky se nezdařily, nebo put samotný seznam úplné bloku nedošlo k chybě.|  
+|`Uncommitted`|Hello bloku je odeslat, ale nikoli potvrdit.|  
+|`Corrupted`|Hello stránky rozsah nebo blok je poškozený (hello obsah neodpovídá jeho hash).|  
 |`FileUnexpectedEnd`|Byl nalezen neočekávaný konec souboru.|  
 |`BlobUnexpectedEnd`|Byl nalezen neočekávaný konec objektu blob.|  
-|`BlobRequestFailed`|Žádost o služby objektů Blob pro přístup k rozsahu stránek nebo bloku selhal.|  
-|`IOFailed`|Během zpracování stránky rozsah nebo blok došlo k chybě vstupně-výstupních operací disku nebo v síti.|  
-|`Failed`|Během zpracování stránky rozsah nebo blok došlo k neznámé chybě.|  
-|`Cancelled`|Předchozí selhání byla zastavena, další zpracování rozsahu stránek nebo bloku.|  
+|`BlobRequestFailed`|Hello žádost o služby objektů Blob, že tooaccess hello rozsahu stránek nebo bloku selhal.|  
+|`IOFailed`|Na disk nebo síťový vstupně-výstupní chybě došlo k chybě při zpracování hello stránky rozsah nebo blok.|  
+|`Failed`|Při zpracování hello stránky rozsah nebo blok došlo k neznámé chybě.|  
+|`Cancelled`|Předchozí selhání byla zastavena, další zpracování rozsahu stránek hello nebo bloku.|  
   
 ## <a name="metadata-status-codes"></a>Metadata stavové kódy  
-Následující tabulka uvádí stavové kódy pro zpracování metadata objektu blob.  
+Hello následující tabulka uvádí hello stavové kódy pro zpracování metadata objektu blob.  
   
 |Stavový kód|Popis|  
 |-----------------|-----------------|  
-|`Completed`|Metadata se dokončil zpracování bez chyb.|  
-|`FileNameInvalid`|Název souboru metadat je neplatná.|  
-|`FileNameTooLong`|Název souboru metadat je příliš dlouhý.|  
-|`FileNotFound`|Soubor metadat nebyl nalezen.|  
-|`FileAccessDenied`|Přístup k souboru metadat byl odepřen.|  
-|`Corrupted`|Je poškozený soubor metadat (obsah neodpovídá jeho hash).|  
-|`XmlReadFailed`|Metadata obsahu neodpovídá požadovaný formát.|  
-|`XmlWriteFailed`|Zápis metadata XML se nezdařila.|  
-|`BlobRequestFailed`|Žádost o služby objektů Blob přístup k metadatům se nezdařilo.|  
-|`IOFailed`|Při zpracování metadat došlo k chybě vstupně-výstupních operací disku nebo v síti.|  
-|`Failed`|Při zpracování metadat došlo k neznámé chybě.|  
-|`Cancelled`|Předchozí selhání byla zastavena, další zpracování metadat.|  
+|`Completed`|Hello metadata dokončil zpracování bez chyb.|  
+|`FileNameInvalid`|Název souboru metadat Hello je neplatný.|  
+|`FileNameTooLong`|Název souboru metadat Hello je příliš dlouhý.|  
+|`FileNotFound`|Soubor metadat Hello nebyla nalezena.|  
+|`FileAccessDenied`|Soubor metadat toohello přístup byl odepřen.|  
+|`Corrupted`|je poškozený soubor metadat Hello (hello obsah neodpovídá jeho hash).|  
+|`XmlReadFailed`|Hello metadata obsahu neodpovídá toohello požadovaný formát.|  
+|`XmlWriteFailed`|Zápis metadat hello XML se nezdařila.|  
+|`BlobRequestFailed`|Hello Blob žádosti o službu, že tooaccess hello metadat se nezdařila.|  
+|`IOFailed`|Při zpracování hello metadat došlo k chybě vstupně-výstupních operací disku nebo v síti.|  
+|`Failed`|Při zpracování metadat hello došlo k neznámé chybě.|  
+|`Cancelled`|Předchozí selhání byla zastavena, další zpracování hello metadat.|  
   
 ## <a name="properties-status-codes"></a>Vlastnosti stavové kódy  
-Následující tabulka uvádí stavové kódy pro zpracování vlastnosti objektů blob.  
+Hello následující tabulka uvádí hello stavové kódy pro zpracování vlastnosti objektů blob.  
   
 |Stavový kód|Popis|  
 |-----------------|-----------------|  
-|`Completed`|Vlastnosti dokončení zpracování bez chyb.|  
-|`FileNameInvalid`|Název vlastnosti souboru je neplatný.|  
-|`FileNameTooLong`|Název vlastnosti souboru je příliš dlouhý.|  
-|`FileNotFound`|Vlastnosti soubor nebyl nalezen.|  
-|`FileAccessDenied`|Byl odepřen přístup k vlastnosti souboru.|  
-|`Corrupted`|Vlastnosti soubor je poškozený (obsah neodpovídá jeho hash).|  
-|`XmlReadFailed`|Vlastnosti obsahu neodpovídá požadovaný formát.|  
-|`XmlWriteFailed`|Zápis vlastností XML se nezdařila.|  
-|`BlobRequestFailed`|Žádost o služby objektů Blob pro přístup k vlastnostem se nezdařilo.|  
-|`IOFailed`|Při zpracování vlastnosti došlo k chybě vstupně-výstupních operací disku nebo v síti.|  
-|`Failed`|Při zpracování vlastnosti došlo k neznámé chybě.|  
-|`Cancelled`|Předchozí selhání byla zastavena, další zpracování vlastností.|  
+|`Completed`|Vlastnosti Hello dokončení zpracování bez chyb.|  
+|`FileNameInvalid`|Název souboru Hello vlastnosti je neplatný.|  
+|`FileNameTooLong`|Název souboru vlastnosti Hello je příliš dlouhý.|  
+|`FileNotFound`|Hello vlastnosti soubor nebyl nalezen.|  
+|`FileAccessDenied`|Soubor vlastnosti toohello přístup byl odepřen.|  
+|`Corrupted`|Hello vlastnosti soubor je poškozený (hello obsah neodpovídá jeho hash).|  
+|`XmlReadFailed`|Hello vlastnosti obsah není v souladu s toohello požadovaný formát.|  
+|`XmlWriteFailed`|Zápis hello vlastnosti, které XML se nezdařila.|  
+|`BlobRequestFailed`|požadavek na službu Blob Hello, že tooaccess hello vlastnosti se nezdařilo.|  
+|`IOFailed`|Při zpracování hello vlastnosti došlo k chybě vstupně-výstupních operací disku nebo v síti.|  
+|`Failed`|Při zpracování hello vlastnosti došlo k neznámé chybě.|  
+|`Cancelled`|Předchozí selhání byla zastavena, další zpracování hello vlastností.|  
   
 ## <a name="sample-logs"></a>Ukázka protokoly  
-Následuje příklad podrobného protokolování.  
+Hello následuje příklad podrobného protokolování.  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -296,7 +296,7 @@ Následuje příklad podrobného protokolování.
 </DriveLog>  
 ```  
   
-Odpovídající protokolu chyb jsou uvedeny níže.  
+Protokol chyb odpovídající Hello je uveden níže.  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -315,7 +315,7 @@ Odpovídající protokolu chyb jsou uvedeny níže.
 </DriveLog>  
 ```
 
- Úlohy importu v protokolu chyb postupujte podle obsahuje chybu o soubor nebyl nalezen na disku pro import. Všimněte si, že je stav následující součásti `Cancelled`.  
+ Hello postupujte podle kroků v protokolu chyb úlohy importu obsahuje chybu o soubor nebyl nalezen na disku import hello. Upozorňujeme, že se stav hello následující součásti `Cancelled`.  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -338,7 +338,7 @@ Odpovídající protokolu chyb jsou uvedeny níže.
 </DriveLog>  
 ```
 
-Následující v protokolu chyb úlohy exportu označuje, že obsah objektu blob byla úspěšně zapsána na jednotku, ale, že došlo k chybě při exportu vlastnosti objektu blob.  
+Hello následující v protokolu chyb úlohy exportu označuje, že hello obsah objektu blob byla úspěšně zapsána toohello disku, ale, že došlo k chybě při exportu hello blob vlastnosti.  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  

@@ -1,6 +1,6 @@
 ---
-title: "Azure šifrování služby úložiště pomocí zákazníka spravované klíče v Azure Key Vault | Microsoft Docs"
-description: "Použít funkci šifrování služby úložiště Azure pro šifrování Azure Blob Storage na straně služby při ukládání dat a data dešifrovat při načítání dat pomocí zákazníka spravovaných klíčů."
+title: "aaaAzure šifrování služby úložiště pomocí zákazníka spravovaného klíče v Azure Key Vault | Microsoft Docs"
+description: "Použijte hello šifrování služby úložiště Azure funkce tooencrypt službě Azure Blob Storage na straně služby hello při ukládání dat hello a při načítání dat hello pomocí zákazníka spravovaných klíčů ho dešifrovat."
 services: storage
 documentationcenter: .net
 author: lakasa
@@ -14,49 +14,49 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: lakasa
-ms.openlocfilehash: b596cf1a98a9c6f42c3bbee9cc27608549e2b5ea
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 870cae2f258b356aa234f8bba65a023ac389be10
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování služby úložiště pomocí klíčů zákazníků spravované v Azure Key Vault
 
-Microsoft Azure se důrazně zavazuje pomáhá chránit a ochranu dat, aby splňovaly vaše organizace zabezpečení a dodržování předpisů závazky.  Jedním ze způsobů, budete moci chránit vaše data v klidovém stavu je použití šifrování služby úložiště (SSE), který automaticky při zápisu do úložiště data šifruje a dešifruje data při jeho načítání. Šifrování a dešifrování je automatické a zcela transparentní a používá 256 bitů [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), jednu z nejsilnějších bloku šifer k dispozici.
+Microsoft Azure je důrazně potvrdit toohelping chránit a chrání vaše data toomeet zabezpečení organizace a dodržování předpisů závazky.  Jedním ze způsobů, budete moci chránit vaše data v klidovém stavu je toouse šifrování služby úložiště (SSE), který automaticky šifruje vaše data při zápisu ho toostorage a při získávání ji dešifruje data. Hello šifrování a dešifrování je automatické a zcela transparentní a používá 256 bitů [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), jednu z nejsilnějších bloku hello šifer k dispozici.
 
-Spravované společností Microsoft šifrovací klíče můžete použít s SSE nebo můžete použít vlastní šifrovací klíče. Tento článek se mluvit o ty druhé. Další informace o používání klíčů spravovaný společností Microsoft nebo o SSE v obecné, najdete v tématu [šifrování služby úložiště pro Data v klidovém stavu](storage-service-encryption.md).
+Spravované společností Microsoft šifrovací klíče můžete použít s SSE nebo můžete použít vlastní šifrovací klíče. V tomto článku bude komunikovat o hello pozdější. Další informace o používání klíčů spravovaný společností Microsoft nebo o SSE v obecné, najdete v tématu [šifrování služby úložiště pro Data v klidovém stavu](storage-service-encryption.md).
 
-Pokud chcete zadat možnost používat vlastní šifrovací klíče, je integrovaná SSE pro úložiště objektů Blob trezoru službou klíč s Azure (AZURE). Můžete vytvořit vlastní šifrovací klíče a uložit je do službou AZURE nebo rozhraní API je službou AZURE můžete použít ke generování šifrovacích klíčů. Nejen službou AZURE umožňuje spravovat a řídit klíče, taky umožňuje auditovat vaše použití klíče. 
+možnost toouse hello tooprovide vlastní šifrovací klíče, SSE pro úložiště objektů Blob je integrovaná se trezor službou klíč Azure (AZURE). Můžete vytvořit vlastní šifrovací klíče a uložit je do službou AZURE, nebo můžete použít službou AZURE na rozhraní API toogenerate šifrovací klíče. Nejen se službou AZURE umožňují toomanage a řídit klíče, taky umožňuje vám tooaudit vaše použití klíče. 
 
-Proč byste se měli k vytvoření vlastních klíčů? Nabízí větší flexibilitu, včetně umožňuje vytvářet, otáčení, zakázat a definovat řízení přístupu a auditovat šifrovací klíče umožňuje chránit vaše data.
+Proč byste se měli toocreate vlastní klíče? Nabízí větší flexibilitu, včetně hello možnost toocreate, otáčení, zakázat a definovat řízení přístupu a tooaudit hello šifrovacích klíčů používaných tooprotect vaše data.
 
 ## <a name="sse-with-customer-managed-keys-preview"></a>SSE se customer preview spravovaných klíčů
 
-Tato funkce je aktuálně ve verzi Preview. Chcete-li tuto funkci používat, vytvořte nový účet úložiště. Můžete buď vytvořit nový trezor klíčů a klíč nebo můžete použít existující trezor klíčů a klíč. Účet úložiště a trezoru klíčů musí být ve stejné oblasti, ale mohou být v různých předplatných.
+Tato funkce je aktuálně ve verzi Preview. toouse tuto funkci, budete potřebovat toocreate nový účet úložiště. Můžete buď vytvořit nový trezor klíčů a klíč nebo můžete použít existující trezor klíčů a klíč. účet úložiště Hello a hello trezoru klíčů musí být v hello stejné oblasti, ale může být v různých předplatných.
 
-K účasti ve verzi preview prosím kontaktujte [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com). Poskytujeme speciálního odkazu k účasti ve verzi preview.
+Obraťte se prosím na tooparticipate ve verzi preview hello [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com). Poskytujeme tooparticipate speciálního odkazu ve verzi preview hello.
 
-Další informace naleznete [– nejčastější dotazy](#frequently-asked-questions-about-storage-service-encryption-for-data-at-rest).
+toolearn více, naleznete v toohello [– nejčastější dotazy](#frequently-asked-questions-about-storage-service-encryption-for-data-at-rest).
 
 > [!IMPORTANT]
-> Ve verzi Preview před podle kroků v tomto článku, musíte se přihlásit. Bez přístup s náhledem nebudete moci povolit tuto funkci na portálu.
+> Musíte se přihlásit hello preview předchozí toofollowing hello kroky v tomto článku. Bez přístupu preview, není možné tooenable se tato funkce portálu hello.
 
 ## <a name="getting-started"></a>Začínáme
 ## <a name="step-1-create-a-new-storage-accountstorage-create-storage-accountmd"></a>Krok 1: [vytvořit nový účet úložiště](storage-create-storage-account.md)
 
 ## <a name="step-2-enable-encryption"></a>Krok 2: Povolení šifrování
-Můžete povolit SSE pro účet úložiště pomocí [portál Azure](https://portal.azure.com). V okně nastavení pro účet úložiště vyhledejte v části služby objektů Blob, jak je znázorněno na obrázku níže a klikněte na šifrování.
+Můžete povolit SSE pro účet úložiště hello pomocí hello [portál Azure](https://portal.azure.com). V okně Nastavení hello pro účet úložiště hello vyhledejte hello části služby objektů Blob, jak je znázorněno na obrázku níže a klikněte na možnost šifrování.
 
 ![Možnost šifrování portálu snímek obrazovky zobrazující](./media/storage-service-encryption/image1.png)
 <br/>*Povolit SSE pro služby objektů Blob*
 
-Pokud chcete prostřednictvím kódu programu povolit nebo zakázat šifrování služby úložiště na účet úložiště, můžete použít [REST API služby Azure Storage prostředků zprostředkovatele](https://docs.microsoft.com/en-us/rest/api/storagerp/?redirectedfrom=MSDN), [prostředků zprostředkovatele Klientská knihovna pro úložiště pro .NET ](https://docs.microsoft.com/en-us/dotnet/api/?redirectedfrom=MSDN), [Prostředí azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azurermps-4.0.0), nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli).
+Chcete-li tooprogrammatically povolit nebo zakázat hello šifrování služby úložiště na účet úložiště, můžete použít hello [REST API služby Azure Storage prostředků zprostředkovatele](https://docs.microsoft.com/en-us/rest/api/storagerp/?redirectedfrom=MSDN), hello [knihovny klienta poskytovatele prostředků úložiště pro platformu .NET](https://docs.microsoft.com/en-us/dotnet/api/?redirectedfrom=MSDN), [prostředí Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azurermps-4.0.0), nebo hello [rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli).
 
-Na této obrazovce Pokud nevidíte zaškrtávací políčko "použití vlastní klíč", můžete nebylo schváleno ve verzi preview. Odešlete e-mail na adresu [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) a požádat o schválení.
+Na této obrazovce Pokud nevidíte políčko "použití vlastní klíč" hello, můžete nebylo schváleno hello preview. Pošlete prosím e-mail příliš[ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) a požádat o schválení.
 
 ![Portál snímek obrazovky zobrazující šifrování Preview](./media/storage-service-encryption-customer-managed-keys/ssecmk1.png)
 
-Ve výchozím nastavení použije SSE spravovaný Microsoftem klíče. Pokud chcete používat vlastní klíče, zaškrtněte políčko. Potom můžete buď zadat klíč identifikátor URI, nebo vybrat klíč a Key Vault z nástroje pro výběr.
+Ve výchozím nastavení použije SSE spravovaný Microsoftem klíče. toouse vlastní klíče, zaškrtněte políčko hello. Potom můžete buď zadat klíč identifikátor URI, nebo vybrat klíč a Key Vault z hello výběr.
 
 ## <a name="step-3-select-your-key"></a>Krok 3: Vyberte klíč
 
@@ -64,17 +64,17 @@ Ve výchozím nastavení použije SSE spravovaný Microsoftem klíče. Pokud chc
 
 ![Portál snímek obrazovky s šifrování s, zadejte možnost klíče uri](./media/storage-service-encryption-customer-managed-keys/ssecmk3.png)
 
-Pokud účet úložiště nemá přístup do služby Key Vault, můžete spustit následující příkaz pomocí Azure Powershell k udělení přístupu k účtům úložiště do požadované trezoru klíčů.
+Pokud účet úložiště hello nemá přístup k toohello Key Vault, můžete spustit hello následující příkaz, pomocí prostředí Azure Powershell toogrant toohello úložiště účty pro přístup k požadované toohello trezoru klíčů.
 
 ![Portál snímek obrazovky ukazující, přístup k trezoru klíčů odepřen](./media/storage-service-encryption-customer-managed-keys/ssecmk4.png)
 
-Můžete také udělit přístup prostřednictvím portálu Azure tak, že přejdete do Azure Key Vault na portálu Azure a udělení přístupu k účtu úložiště.
+Můžete také udělit přístup přes hello portálu Azure tak, že budete toohello Azure Key Vault v hello portál Azure a udělení přístupu k účtu úložiště toohello.
 
-## <a name="step-4-copy-data-to-storage-account"></a>Krok 4: Kopírování dat do účtu úložiště
-Pokud chcete k přenosu dat do nového účtu úložiště tak, aby se šifrují, získáte informace [krok 3 z Začínáme v šifrování služby úložiště pro Data v klidovém stavu](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption#step-3-copy-data-to-storage-account).
+## <a name="step-4-copy-data-toostorage-account"></a>Krok 4: Kopírování dat toostorage účtu
+Pokud chcete tootransfer dat do nového účtu úložiště, tak, aby se šifrují, naleznete příliš[krok 3 z Začínáme v šifrování služby úložiště pro Data v klidovém stavu](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption#step-3-copy-data-to-storage-account).
 
-## <a name="step-5-query-the-status-of-the-encrypted-data"></a>Krok 5: Dotaz na stav šifrovaná data
-Stav šifrovaných dat naleznete v dotazu [krok 4 z Začínáme v šifrování služby úložiště pro Data v klidovém stavu](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption#step-4-query-the-status-of-the-encrypted-data).
+## <a name="step-5-query-hello-status-of-hello-encrypted-data"></a>Krok 5: Stav hello dotazu hello šifrovaná data
+Stav hello tooquery hello zašifrovaná data naleznete příliš[krok 4 z Začínáme v šifrování služby úložiště pro Data v klidovém stavu](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption#step-4-query-the-status-of-the-encrypted-data).
 
 ## <a name="frequently-asked-questions-about-storage-service-encryption-for-data-at-rest"></a>Nejčastější dotazy o šifrování služby úložiště pro Data v klidovém stavu
 **Otázka: používám storage úrovně Premium; můžete použít SSE pomocí klíčů zákazníků spravovat?**
@@ -89,25 +89,25 @@ Odpověď: Ano.
 
 Odpověď: je s náklady související pro použití Azure Key Vault. Další podrobnosti najdete [klíč trezoru ceny](https://azure.microsoft.com/en-us/pricing/details/key-vault/). Není k dispozici pro použití SSE bez dalších nákladů.
 
-**Otázka: je možné odvolat přístup k šifrovacím klíčům?**
+**Otázka: je možné odvolat přístup toohello šifrovací klíče?**
 
-A: Ano, můžete kdykoli odvolat přístup. Existuje několik způsobů odvolat přístup k klíče. Naleznete [Azure Key Vault PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/?view=azurermps-4.0.0) a [příkazového řádku Azure Key Vault](https://docs.microsoft.com/en-us/cli/azure/keyvault) další podrobnosti. Odvolání přístupu bude efektivně blokovat přístup k všech objektů BLOB v účtu úložiště, protože účet šifrovací klíč je pravděpodobně nepřístupný úložiště Azure.
+A: Ano, můžete kdykoli odvolat přístup. Existuje několik způsobů toorevoke přístup tooyour klíče. Naleznete příliš[Azure Key Vault PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/?view=azurermps-4.0.0) a [příkazového řádku Azure Key Vault](https://docs.microsoft.com/en-us/cli/azure/keyvault) další podrobnosti. Odvolání přístupu efektivně blokuje přístup k objektům BLOB tooall v účtu úložiště hello jako hello účet šifrovací klíč je pravděpodobně nepřístupný úložiště Azure.
 
 **Otázka: je možné vytvořit účet úložiště a klíč v jiné oblasti?**
 
-A: účet úložiště a klíč nebo klíč trezoru Ne, musí být ve stejné oblasti. 
+Odpověď: Ne, hello účet úložiště a klíč nebo klíč trezoru toobe nutné v hello stejné oblasti. 
 
-**Otázka: je možné povolit SSE pomocí klíčů zákazníků spravované při vytváření účtu úložiště?**
+**Otázka: je možné povolit SSE pomocí klíčů zákazníků spravované při vytváření účtu úložiště hello?**
 
-Odpověď: Ne. Když povolíte SSE při vytváření účtu úložiště, můžete použít pouze spravovaný Microsoftem klíče. Pokud chcete použít klíče zákazníků spravované budete muset aktualizovat vlastnosti účtu úložiště. Můžete použít REST nebo jeden z knihovny klienta úložiště prostřednictvím kódu programu aktualizace účtu úložiště nebo aktualizovat vlastnosti účtu úložiště pomocí portálu Azure po vytvoření účtu.
+Odpověď: Ne. Když povolíte SSE při vytváření účtu úložiště hello, můžete použít pouze spravovaný Microsoftem klíče. Pokud chcete toouse zákazníka spravovaných klíčů budete potřebovat vlastnosti účtu úložiště tooupdate hello. Můžete použít REST nebo jeden z tooprogrammatically knihovny klienta úložiště hello aktualizovat účet úložiště, nebo aktualizovat vlastnosti účtu úložiště hello pomocí portálu Azure hello po vytvoření účtu hello.
 
 **Otázka: je možné zakázat šifrování, zatímco SSE pomocí zákazníka spravované klíče?**
 
-A: šifrování nelze zakázat Ne, zatímco SSE pomocí zákazníka spravované klíče. Můžete zakázat šifrování, musíte přejít na používání klíčů spravovaný Microsoftem. To provedete pomocí portálu Azure nebo Powershellu.
+A: šifrování nelze zakázat Ne, zatímco SSE pomocí zákazníka spravované klíče. toodisable šifrování, budete potřebovat tooswitch toousing spravovaný Microsoftem klíče. To provedete pomocí hello portál Azure nebo Powershellu.
 
 **Otázka: je SSE ve výchozím nastavení povolené, po vytvoření nového účtu úložiště?**
 
-Odpověď: SSE není povoleno ve výchozím nastavení; na portálu Azure můžete ji povolit. Můžete také prostřednictvím kódu programu povolit tuto funkci pomocí rozhraní REST API poskytovatele prostředků úložiště. 
+Odpověď: SSE není povoleno ve výchozím nastavení; můžete použít hello Azure portálu tooenable ho. Můžete také prostřednictvím kódu programu povolit tuto funkci pomocí hello REST API poskytovatele prostředků úložiště. 
 
 **Otázka: I nelze povolit šifrování na svůj účet úložiště.**
 
@@ -115,14 +115,14 @@ Odpověď: je účet správce prostředků úložiště? Klasické účty úlož
 
 **Otázka: je SSE s zákazníka spravované klíče je povolena pouze v určitých oblastí?**
 
-Odpověď: SSE je k dispozici v pouze určité oblasti pro úložiště objektů Blob pro tuto verzi Preview. E-mailem [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) ke kontrole dostupnosti a podrobnosti o verzi preview. 
+Odpověď: SSE je k dispozici v pouze určité oblasti pro úložiště objektů Blob pro tuto verzi Preview. E-mailem [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) toocheck dostupnosti a podrobnosti o verzi preview. 
 
-**Otázka: jak I contact někdo po jakýchkoli problémů nebo chcete poskytnout zpětnou vazbu?**
+**Otázka: jak I contact někdo po jakýchkoli problémů nebo slyšet tooprovide názor?**
 
-A: Obraťte se prosím na [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) pro veškeré problémy související s šifrování služby úložiště. 
+A: Obraťte se prosím na [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) pro všechny problémy související s tooStorage šifrování služby. 
 
 ## <a name="next-steps"></a>Další kroky
 
-*   Další informace o komplexní sadu zabezpečení možnosti, které pomáhají vývojářům vytvářet aplikace, zabezpečení, najdete v tématu [Průvodce zabezpečením úložiště](https://docs.microsoft.com/en-us/azure/storage/storage-security-guide).
+*   Další informace o komplexní sadu hello zabezpečení možnosti, které pomáhají vývojářům vytvářet aplikace, zabezpečení, prohlédněte si prosím hello [Průvodce zabezpečením úložiště](https://docs.microsoft.com/en-us/azure/storage/storage-security-guide).
 *   Souhrnné informace o Azure Key Vault naleznete v tématu [co je Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis)?
 *   Začínáme v Azure Key Vault, najdete v části [Začínáme s Azure Key Vault](../key-vault/key-vault-get-started.md).

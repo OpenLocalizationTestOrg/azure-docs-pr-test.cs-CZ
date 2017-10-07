@@ -1,6 +1,6 @@
 ---
-title: "Azure Mobile Engagement uživatelské rozhraní – nastavení"
-description: "Zjistěte, jak spravovat globální nastavení aplikace pomocí Azure Mobile Engagement"
+title: "aaaAzure Mobile Engagement uživatelské rozhraní – nastavení"
+description: "Zjistěte, jak toomanage hello globální nastavení aplikace pomocí Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,73 +14,73 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: af5c81df2b9f288161b38625d3ac2adde8fb195d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 02d4a36c591fc5e097410b7e931d1c9ce81d68d5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-manage-the-global-settings-of-your-application"></a>Jak spravovat globální nastavení aplikace
-**Nastavení** možnosti nabídky, které jsou k dispozici pro aplikací měnit, v závislosti na platformě aplikace a oprávnění, budete mít udělená pro aplikaci. Nastavení zahrnuje následující: Podrobnosti, projekty, nativní oznámení, rychlosti Push, značkou Tag (app-info) a komerční naléhavost. Možnost nabídky značky (informace o aplikaci) v části nastavení lze spravovat vaše aplikace (pomocí SDK) nebo váš back-end (pomocí rozhraní API pro zařízení). 
+# <a name="how-toomanage-hello-global-settings-of-your-application"></a>Jak toomanage hello globální nastavení aplikace
+Hello **nastavení** možnosti nabídky, které jsou k dispozici pro aplikací měnit, v závislosti na platformě hello hello aplikace a máte pro aplikace hello oprávnění hello. Nastavení zahrnuje následující hello: Podrobnosti, projekty, nativní oznámení, rychlosti Push, značkou Tag (app-info) a komerční naléhavost. Hello značky (informace o aplikaci) nabídky hello nastavení oddílu lze spravovat vaše aplikace (pomocí hello SDK) nebo váš back-end (pomocí hello Device API). 
 
 > [!NOTE]
-> Mnoho části **Mobile Engagement** portál obsahovat uživatelského rozhraní **zobrazit NÁPOVĚDU k** tlačítko. Chcete-li získat další kontextové informace o oddílu na toto tlačítko.
+> Mnoho oddílů hello **Mobile Engagement** portál uživatelského rozhraní obsahovat hello **zobrazit NÁPOVĚDU k** tlačítko. Stisknutím tohoto tlačítka tooget další kontextové informace o oddílu.
 > 
 > 
 
 ## <a name="details"></a>Podrobnosti
-Umožňuje změnit název a popis aplikace, zobrazte vlastník aplikace, a oprávnění vaší role. 
+Můžete toochange hello název a popis vaší aplikace, nadřazeného zobrazení hello aplikace, a oprávnění vaší role. 
 
-Konfigurace analýzy umožňuje zobrazit nebo změnit týdny spustit na den a čas uchování ve dnech po.
+Konfigurace analýzy vám umožní tooview nebo změňte hello den týdnů spustit na a hello dobu uchování ve dnech.
 
   ![settings1][46]
 
 ## <a name="projects"></a>Projekty
-Umožňuje vybrat všechny projekty, které má vaše aplikace se zobrazí v. 
+Umožňuje vám tooselect všechny projekty chcete tooappear vaší aplikace v. 
 
-Můžete taky vyhledat na projekt a zobrazit název, popis, vlastníka a oprávnění vaší role žádné projektu, který je součástí vaší aplikace.
+Můžete taky vyhledat projekt a zobrazení hello název, popis, vlastníka a oprávnění vaší role žádné projektu aplikace je součástí.
 
 Další informace najdete v tématu: [dokumentace uživatelského rozhraní – Domů][Link 13]
 
   ![settings3][48]
 
 ## <a name="native-push"></a>Nativního nabízení
-Můžete zaregistrovat nový certifikát nebo odstraňte a existujícího certifikátu pro použití nativního nabízení. Nativního nabízení umožňuje Azure Mobile Engagement k aplikaci kdykoli, i když není spuštěna. 
+Umožňuje vám tooregister nový certifikát nebo odstraňte a existující certifikát pro použití s nativního nabízení. Nativního nabízení umožňuje Azure Mobile Engagement toopush tooyour aplikaci kdykoli, i když není spuštěna. 
 
-Po zadání přihlašovacích údajů nebo certifikáty pro aspoň jednu službu s nativním nabízením, můžete vybrat "Kdykoliv" při vytváření kampaně Reach a použijte parametr "oznamovatelem" v rozhraní API PUSH.
+Po zadání přihlašovacích údajů nebo certifikáty pro aspoň jednu službu s nativním nabízením, můžete vybrat "Kdykoliv" při vytváření kampaně Reach a také použití hello "oznamovatelem" parametr v hello PUSH rozhraní API.
 
 ### <a name="apple-push-notification-service-apns"></a>Služby nabízených oznámení Apple (APNS)
-Pokud chcete umožnit nativní oznámení pomocí služby Apple Push Notification Service musíte zaregistrovat svůj certifikát. Musíte se k určení typu certifikátu jako vývoj (vývoj) nebo produkční (PRODUKČNÍMU). Pak bude nutné nahrajete certifikát a heslo.
+tooenable nativní oznámení pomocí služby Apple Push Notification Service hello budete potřebovat tooregister svůj certifikát. Budete potřebovat toospecify hello typu certifikátu jako vývoj (vývoj) nebo produkční (PRODUKČNÍMU). Bude nutné pak nahrajte certifikát a hello heslo.
 
-Další informace najdete v tématu: [dokumentaci k sadě SDK - iOS – postup přípravy aplikace pro Apple nabízená oznámení][Link 5]
+Další informace najdete v tématu: [dokumentaci k sadě SDK - iOS – jak tooPrepare aplikace pro Apple nabízená oznámení][Link 5]
 
 ![settings4][49]
 
 ### <a name="windows-push-notification-service-wpns"></a>Služba nabízených oznámení Windows (WPNS)
-Pokud chcete umožnit nativní oznámení pomocí Služby nabízených oznámení Windows, musíte zadat přihlašovací údaje pro vaši aplikaci. Budete potřebovat vaše identifikátor zabezpečení (SID) balíčku a tajný klíč.
+tooenable nativní oznámení pomocí služby oznámení Windows, je nutné zadat přihlašovací údaje pro vaši aplikaci. Budete potřebovat vaše identifikátor zabezpečení (SID) balíčku a tajný klíč.
 
 ![settings5][50]
 
 ### <a name="google-cloud-messaging-for-android-gcm"></a>Google Cloud Messaging pro Android (GCM)
-Pokud chcete umožnit nativní oznámení pomocí služby GCM, postupujte podle pokynů z Google. Pak musíte vložit jednoduchý klíče rozhraní API serveru nakonfigurovaný bez omezení IP adres. Vyžaduje integraci se sadou SDK pro Android v1.12.0 +.
+tooenable nativní oznámení pomocí služby GCM, budete potřebovat pokyny hello toofollow z Google. Pak musíte vložit jednoduchý klíče rozhraní API serveru nakonfigurovaný bez omezení IP adres. Vyžaduje integraci s hello SDK pro Android v1.12.0 +.
 
 Další informace naleznete v tématu: 
 
-* [Android SDK dokumentaci k integraci GCM][Link 5]
+* [SDK dokumentace Android jak tooIntegrate GCM][Link 5]
 * [Příručka vývojáře Google GCM](http://developer.android.com/guide/google/gcm/gs.html)
 
 ### <a name="amazon-device-messaging-for-android-adm"></a>Zasílání zpráv pro Android (ADM) zařízení Amazon
-Chcete-li umožnit nativní oznámení pomocí ADM, je nutné zadat Amazon <OAuth credentials> skládající se z ID klienta a tajný klíč klienta (vyžaduje integraci se sadou SDK pro Android v2.1.0 +).
+tooenable nativní oznámení pomocí služby ADM, je nutné zadat Amazon <OAuth credentials> skládající se z ID klienta a tajný klíč klienta (vyžaduje integraci se sadou SDK pro Android v2.1.0 +).
 
 Další informace naleznete v tématu: 
 
-* [Android SDK dokumentaci k integraci ADM][Link 5]
+* [SDK dokumentace Android jak tooIntegrate ADM][Link 5]
 * [ADM dokumentaci pro vývojáře Amazon](https://developer.amazon.com/sdk/adm/credentials.html#Getting)
 
 ![settings6][51]
 
 ## <a name="push-speed"></a>Rychlost nabízení
-Zobrazí aktuální rychlost nabízení svojí aplikace a umožňuje definovat rychlost nabízení svojí aplikace.
+Zobrazuje hello aktuální rychlost nabízení svojí aplikace a umožňuje vám toodefine hello rychlost nabízení svojí aplikace.
 
   ![settings7][52]
 

@@ -1,6 +1,6 @@
 ---
-title: "Migrace aplikací spravovaných Cache Service k Redis - Azure | Microsoft Docs"
-description: "Zjistěte, jak migrovat aplikací spravované služby mezipaměti a mezipaměť hostovaná v instanci Role na Azure Redis Cache"
+title: "aaaMigrate Služba mezipaměti spravovaných aplikací tooRedis - Azure | Microsoft Docs"
+description: "Zjistěte, jak toomigrate spravované služby mezipaměti a mezipaměti v roli aplikace tooAzure Redis Cache"
 services: redis-cache
 documentationcenter: na
 author: steved0x
@@ -14,78 +14,78 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: sdanie
-ms.openlocfilehash: 0fbfb945c66926794721f2ce8cc183dac51ecb27
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bd81722820acf0d2637828fbb6100c723aafeba5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="migrate-from-managed-cache-service-to-azure-redis-cache"></a>Migrovat na Azure Redis Cache z Managed Cache Service
-Migrace vaší aplikace, které používají Azure spravované mezipaměti Service k Azure Redis Cache lze provést s minimálními změnami k vaší aplikaci, v závislosti na spravované služby mezipaměti funkce, které používá aplikaci ukládání do mezipaměti. Když rozhraní API jsou přesně stejný jsou podobné a většinu váš stávající kód, který používá služba spravovaných mezipaměti pro přístup k mezipaměti lze opětovně použít s minimálními změnami. Toto téma ukazuje, jak chcete-li nezbytné konfigurace a změny aplikace k migraci aplikace spravované služby mezipaměti použití Azure Redis Cache a ukazuje, jak některé funkce Azure Redis Cache lze použít k implementaci funkce Managed Mezipaměť služby mezipaměti.
+# <a name="migrate-from-managed-cache-service-tooazure-redis-cache"></a>Migrace z tooAzure spravované služby mezipaměti Redis Cache
+Migrace vaší aplikace, které používají tooAzure služba spravovaných mezipaměti Azure Redis Cache lze provést s minimálními změnami tooyour aplikací, v závislosti na hello spravované služby mezipaměti funkce, které používá aplikaci ukládání do mezipaměti. Když hello rozhraní API jsou přesně hello stejné jsou podobné a většinu váš stávající kód, který používá služba spravovaných mezipaměti tooaccess mezipaměti lze opětovně použít s minimálními změnami. Toto téma ukazuje, jak toomake hello nezbytné konfigurace a aplikace se změní toomigrate toouse aplikace vaší spravovanou službu mezipaměti Azure Redis Cache a ukazuje, jak některých funkcí hello Azure Redis Cache lze použít tooimplement hello funkce Spravovat službu mezipaměti mezipaměti.
 
 >[!NOTE]
->Spravované služby mezipaměti a mezipaměť hostovaná v instanci Role byly [vyřazeno](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/) 30. listopadu 2016. Pokud máte všechna nasazení mezipaměť hostovaná v instanci Role, které chcete provést migraci na Azure Redis Cache, můžete podle kroků v tomto článku.
+>Spravované služby mezipaměti a mezipaměť hostovaná v instanci Role byly [vyřazeno](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/) 30. listopadu 2016. Pokud máte všechna nasazení mezipaměť hostovaná v instanci Role, které chcete toomigrate tooAzure Redis Cache, můžete provést hello kroky v tomto článku.
 
 ## <a name="migration-steps"></a>Kroky migrace
-Následující kroky jsou potřeba k migraci aplikace spravované služby mezipaměti použití Azure Redis Cache.
+Hello následující kroky jsou požadované toomigrate toouse aplikace spravovanou službu mezipaměti Azure Redis Cache.
 
-* Mapování funkce spravované služby mezipaměti na Azure Redis Cache
+* Mapování funkce tooAzure spravované služby mezipaměti Redis Cache
 * Vyberte nabídku mezipaměti
 * Vytvoření mezipaměti
-* Konfigurace klientů mezipaměti
-  * Odeberte konfiguraci Managed Cache Service
-  * Konfigurace klienta mezipaměti pomocí balíčku StackExchange.Redis NuGet
+* Konfigurace klientů mezipaměti hello
+  * Odebrat hello konfigurace služby spravované mezipaměti
+  * Konfigurace klienta mezipaměti pomocí hello balíček StackExchange.Redis NuGet
 * Migrace kódu spravované služby mezipaměti
-  * Připojení k mezipaměti pomocí ConnectionMultiplexer – třída
-  * Primitivní datové typy přístupu v mezipaměti
-  * Práce s objekty .NET v mezipaměti
-* Migrace stavu relace ASP.NET a ukládání výstupu do mezipaměti pro Azure Redis Cache 
+  * Připojit toohello mezipaměti pomocí hello ConnectionMultiplexer – třída
+  * Primitivní datové typy přístupu v mezipaměti hello
+  * Práce s objekty .NET v mezipaměti hello
+* Migrace stavu relace ASP.NET a ukládání výstupu do mezipaměti tooAzure Redis Cache 
 
-## <a name="map-managed-cache-service-features-to-azure-redis-cache"></a>Mapování funkce spravované služby mezipaměti na Azure Redis Cache
-Azure spravované Cache Service a Azure Redis Cache jsou podobné, ale některé z jejich funkcí implementovat různými způsoby. Tato část popisuje některé rozdíly a poskytuje pokyny k implementaci funkcí služby mezipaměti spravované ve službě Azure Redis Cache.
+## <a name="map-managed-cache-service-features-tooazure-redis-cache"></a>Mapování funkce tooAzure spravované služby mezipaměti Redis Cache
+Azure spravované Cache Service a Azure Redis Cache jsou podobné, ale některé z jejich funkcí implementovat různými způsoby. Tato část popisuje některé rozdíly hello a poskytuje pokyny k implementaci hello funkcí služby mezipaměti spravované ve službě Azure Redis Cache.
 
 | Spravované funkce Cache Service | Podpora spravovaného Cache Service | Podpora Azure Redis Cache |
 | --- | --- | --- |
-| Pojmenované mezipaměti |Výchozí mezipaměti je nakonfigurován, a v mezipaměti Standard a Premium lze nakonfigurovat nabídky až 9 další s názvem mezipaměti v případě potřeby. |Mezipamětí Azure Redis mít konfigurovat počet databází (výchozí 16), které lze použít k implementaci podobné funkce jako s názvem mezipamětí. Další informace najdete v tématu [Co jsou databáze Redis?](cache-faq.md#what-are-redis-databases) a [Výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration). |
-| Vysoká dostupnost |Poskytuje vysokou dostupnost pro položky v mezipaměti v mezipaměti nabídky Standard a Premium. Pokud jsou položky ztraceno v důsledku selhání, jsou stále k dispozici záložní kopie položek v mezipaměti. Zápis do mezipaměti v sekundární jsou vytvářeny synchronně. |Zajištění vysoké dostupnosti je k dispozici v Standard a Premium nabídky mezipaměti, které mají konfiguraci dva uzly primární/replika (pár primární/replika má každý horizontálního oddílu v mezipaměti Premium). Zápis do repliky jsou vytvářeny asynchronně. Další informace najdete v tématu [cenách Azure Redis Cache](https://azure.microsoft.com/pricing/details/cache/). |
-| Oznámení |Umožňuje klientům přijímat asynchronní upozornění, když celou řadu operace mezipaměti, ke kterým došlo u pojmenované mezipaměti. |Klientské aplikace můžete použít protokol pub nebo sub Redis nebo [oznámení Keyspace](cache-configure.md#keyspace-notifications-advanced-settings) k dosažení podobné funkce pro oznámení. |
-| Místní mezipaměť |Ukládá kopie v mezipaměti objektů místně na klientovi velmi rychlý přístup. |Klientské aplikace by bylo nutné implementovat tuto funkci pomocí slovníku nebo podobné datové struktury. |
-| Zásady vyřazení |Žádná nebo hodnoty nejdelšího Nepoužití. Výchozí zásada je hodnoty nejdelšího Nepoužití. |Azure Redis Cache podporuje tyto zásady vyřazení: volatile lru, allkeys lru, náhodné volatile, allkeys náhodné, volatile ttl, noeviction. Výchozí zásada je volatile hodnoty nejdelšího nepoužití. Další informace najdete v tématu [konfigurace serveru výchozí Redis](cache-configure.md#default-redis-server-configuration). |
-| Zásady vypršení platnosti |Výchozí zásady vypršení platnosti je absolutní a je výchozí interval vypršení platnosti je deset minut. Klouzavé a nikdy zásady jsou také k dispozici. |Ve výchozím nastavení nevyprší položky v mezipaměti, ale dá se vypršení platnosti na základě zápisu za použití mezipaměti sady přetížení. Další informace najdete v tématu [přidat a načtení objektů z mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#add-and-retrieve-objects-from-the-cache). |
-| Oblasti a označování |Oblasti jsou podskupiny pro položky v mezipaměti. Oblasti také podporují poznámky položek v mezipaměti s další popisné řetězce názvem značky. Oblasti podpory schopnost provádět operace hledání na všech položek s příznakem v této oblasti. Všechny položky v rámci oblasti se nacházejí v rámci jednoho uzlu clusteru mezipaměti. |Mezipaměť Redis systému se skládá z jednoho uzlu (Pokud je povolená clusteru Redis), nelze použít koncept oblastech spravovaných Cache Service. Při načítání klíče popisné značky umožní vkládán názvy klíčů a používá se k načtení položky později redis podporuje vyhledávání a operace zástupný znak. Příklad implementace označování řešení pomocí Redis, naleznete v části [implementace mezipaměť s Redisem označování](http://stackify.com/implementing-cache-tagging-redis/). |
-| Serializace |Managed Cache podporuje NetDataContractSerializer, BinaryFormatter a použití vlastních serializátorů. Výchozí hodnota je NetDataContractSerializer. |Je zodpovědností klientská aplikace k serializaci objektů .NET před uvedením do mezipaměti s výběru serializátoru až vývojář aplikace klienta. Další informace a ukázkový kód, najdete v části [práce s objekty .NET v mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache). |
-| Emulátor mezipaměti |Managed Cache poskytuje emulátoru místní mezipaměti. |Azure Redis Cache nemá emulátoru, ale můžete [místní spuštění MSOpenTech sestavení redis server.exe](cache-faq.md#cache-emulator) zajistit emulátoru prostředí. |
+| Pojmenované mezipaměti |Výchozí mezipaměti je nakonfigurován, a v hello lze nakonfigurovat Standard a Premium mezipaměti nabídek, až toonine další s názvem mezipaměti v případě potřeby. |Azure Redis Cache úrovní mít konfigurovat počet databází (výchozí 16), které se dají použít tooimplement, který ukládá do mezipaměti podobné funkce toonamed. Další informace najdete v tématu [Co jsou databáze Redis?](cache-faq.md#what-are-redis-databases) a [Výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration). |
+| Vysoká dostupnost |Poskytuje vysokou dostupnost pro položky v mezipaměti hello v mezipaměti nabídky hello Standard a Premium. Pokud jsou ztraceny z důvodu selhání tooa položky, jsou stále k dispozici záložní kopie hello položky v mezipaměti hello. Zapíše sekundární mezipaměti toohello probíhají synchronně. |Zajištění vysoké dostupnosti je k dispozici v hello Standard a Premium mezipaměti nabídky, které mají konfiguraci dva uzly primární/replika (pár primární/replika má každý horizontálního oddílu v mezipaměti Premium). Zápisy toohello repliky jsou vytvářeny asynchronně. Další informace najdete v tématu [cenách Azure Redis Cache](https://azure.microsoft.com/pricing/details/cache/). |
+| Oznámení |Umožňuje asynchronní oznámení, klienti tooreceive když celou řadu operace mezipaměti, ke kterým došlo u pojmenované mezipaměti. |Klientské aplikace můžete použít protokol pub nebo sub Redis nebo [oznámení Keyspace](cache-configure.md#keyspace-notifications-advanced-settings) tooachieve podobné toonotifications funkce. |
+| Místní mezipaměť |Ukládá kopie v mezipaměti objektů místně na klientovi hello velmi rychlý přístup. |Klientské aplikace potřebovat tooimplement tuto funkci pomocí slovníku nebo podobné datové struktury. |
+| Zásady vyřazení |Žádná nebo hodnoty nejdelšího Nepoužití. Výchozí zásada Hello je hodnoty nejdelšího Nepoužití. |Azure Redis Cache podporuje následující zásady vyřazení hello: volatile lru, allkeys lru, náhodné volatile, allkeys náhodné, volatile ttl, noeviction. Výchozí zásada Hello je volatile hodnoty nejdelšího nepoužití. Další informace najdete v tématu [konfigurace serveru výchozí Redis](cache-configure.md#default-redis-server-configuration). |
+| Zásady vypršení platnosti |interval vypršení platnosti výchozí hello je deset minut zásad vypršení platnosti výchozí Hello je absolutní. Klouzavé a nikdy zásady jsou také k dispozici. |Ve výchozím nastavení se položky v mezipaměti hello nevyprší, ale dá se vypršení platnosti na základě zápisu za použití mezipaměti sady přetížení. Další informace najdete v tématu [přidat a načtení objektů z mezipaměti hello](cache-dotnet-how-to-use-azure-redis-cache.md#add-and-retrieve-objects-from-the-cache). |
+| Oblasti a označování |Oblasti jsou podskupiny pro položky v mezipaměti. Oblasti také podporují hello poznámky položek v mezipaměti s další popisné řetězce názvem značky. Oblasti podpory hello možnost tooperform operace hledání na všech položek s příznakem v této oblasti. Všechny položky v rámci oblasti se nacházejí v rámci jednoho uzlu clusteru mezipaměti hello. |Mezipaměť Redis se skládá z jednoho uzlu (Pokud je povolená Redis clusteru) tak hello konceptu oblastech spravovaných Cache Service se nevztahuje. Při načítání klíče tak, aby popisné značky mohou být vloženy do hello názvy klíčů a později používá tooretrieve hello položky redis podporuje vyhledávání a operace zástupný znak. Příklad implementace označování řešení pomocí Redis, naleznete v části [implementace mezipaměť s Redisem označování](http://stackify.com/implementing-cache-tagging-redis/). |
+| Serializace |Managed Cache podporuje NetDataContractSerializer, BinaryFormatter a hello použití vlastní serializátorů. Výchozí hodnota Hello je NetDataContractSerializer. |Je zodpovědností hello objekty .NET hello klienta aplikace tooserialize před uvedením do mezipaměti hello hello vybíráte hello serializátor si vývojář aplikace klienta toohello. Další informace a ukázkový kód, najdete v části [práce s objekty .NET v mezipaměti hello](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache). |
+| Emulátor mezipaměti |Managed Cache poskytuje emulátoru místní mezipaměti. |Azure Redis Cache nemá emulátoru, ale můžete [místní spuštění sestavení MSOpenTech hello redis server.exe](cache-faq.md#cache-emulator) tooprovide emulátoru prostředí. |
 
 ## <a name="choose-a-cache-offering"></a>Vyberte nabídku mezipaměti
-Microsoft Azure Redis Cache je dostupná na následujících úrovních:
+Microsoft Azure Redis Cache je dostupná v hello následující úrovně:
 
-* **Basic** – jeden uzel. Více velikostí až do 53 GB.
-* **Standard** – dva uzly Primární/Replika. Více velikostí až do 53 GB. 99,9% SLA.
-* **Premium** – dva uzly Primární/Replika s až 10 horizontálními oddíly. Více velikostí od 6 GB do 530 GB. Všechny funkce úrovně Standard a navíc podpora [clusteru Redis](cache-how-to-premium-clustering.md), [trvalosti Redis](cache-how-to-premium-persistence.md) a [služby Azure Virtual Network](cache-how-to-premium-vnet.md). 99,9% SLA.
+* **Basic** – jeden uzel. Více velikostí až too53 GB.
+* **Standard** – dva uzly Primární/Replika. Více velikostí až too53 GB. 99,9% SLA.
+* **Premium** – dva uzly primární/replika s po až too10 horizontálních oddílů. Více velikosti od 6 GB too530 GB. Všechny funkce úrovně Standard a navíc podpora [clusteru Redis](cache-how-to-premium-clustering.md), [trvalosti Redis](cache-how-to-premium-persistence.md) a [služby Azure Virtual Network](cache-how-to-premium-vnet.md). 99,9% SLA.
 
-Každá úroveň se liší z hlediska funkcí a cen. Funkce jsou popsané dál v této příručce a další informace o cenách najdete v tématu [podrobnosti o cenách mezipaměti](https://azure.microsoft.com/pricing/details/cache/).
+Každá úroveň se liší z hlediska funkcí a cen. Hello funkce jsou popsané dál v této příručce a další informace o cenách najdete v tématu [podrobnosti o cenách mezipaměti](https://azure.microsoft.com/pricing/details/cache/).
 
-Výchozí bod pro migraci je vyberte velikost, která odpovídá velikosti předchozí mezipaměti spravovanou službu mezipaměti a pak škálovat nahoru nebo dolů v závislosti na požadavcích vaší aplikace. Další pokyny k výběru správné nabídky Azure Redis Cache, najdete v části [jaké mezipaměť Redis nabídky a velikosti použít?](cache-faq.md#what-redis-cache-offering-and-size-should-i-use).
+Počáteční bod pro migraci je toopick hello velikost, která odpovídá hello velikost předchozí mezipaměti spravované služby mezipaměti a pak škálovat nahoru nebo dolů v závislosti na požadavcích hello vaší aplikace. Další pokyny k výběru správné nabídky Azure Redis Cache hello, najdete v části [jaké mezipaměť Redis nabídky a velikosti použít?](cache-faq.md#what-redis-cache-offering-and-size-should-i-use).
 
 ## <a name="create-a-cache"></a>Vytvoření mezipaměti
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## <a name="configure-the-cache-clients"></a>Konfigurace klientů mezipaměti
-Jakmile mezipaměti je vytvořen a nakonfigurován, dalším krokem je odebrat konfiguraci spravované služby mezipaměti a přidat přidat konfigurace Azure Redis Cache a odkazuje tak, aby klienti mezipaměti přístup do mezipaměti.
+## <a name="configure-hello-cache-clients"></a>Konfigurace klientů mezipaměti hello
+Jakmile hello mezipaměti je vytvořen a nakonfigurován, hello dalším krokem je konfigurace spravované služby mezipaměti hello tooremove a přidejte hello přidat hello konfigurace Azure Redis Cache a reference, aby klienti mezipaměti mají přístup k mezipaměti hello.
 
-* Odeberte konfiguraci Managed Cache Service
-* Konfigurace klienta mezipaměti pomocí balíčku StackExchange.Redis NuGet
+* Odebrat hello konfigurace služby spravované mezipaměti
+* Konfigurace klienta mezipaměti pomocí hello balíček StackExchange.Redis NuGet
 
-### <a name="remove-the-managed-cache-service-configuration"></a>Odeberte konfiguraci Managed Cache Service
-Předtím, než je možné nakonfigurovat klientské aplikace pro Azure Redis Cache, existující konfigurace spravované služby mezipaměti a odkazy na sestavení musí být odebrány odinstalací balíčku NuGet pro spravované mezipaměti Service.
+### <a name="remove-hello-managed-cache-service-configuration"></a>Odebrat hello konfigurace služby spravované mezipaměti
+Před hello je možné nakonfigurovat klientské aplikace pro Azure Redis Cache, existující konfigurace spravované služby mezipaměti hello a odkazy na sestavení musí být odstraněn odinstalací balíčku NuGet pro spravované mezipaměti Service hello.
 
-Pro odinstalaci balíčku spravované mezipaměti Service NuGet, klikněte pravým tlačítkem na projekt klienta v **Průzkumníku řešení** a zvolte **spravovat balíčky NuGet**. Vyberte **nainstalované balíky** uzel a typ W**indowsAzure.Caching** do vyhledávacího pole nainstalované balíčky. Vyberte **Windows** **Azure Cache** (nebo **Windows** **ukládání do mezipaměti Azure** v závislosti na verzi balíčku NuGet), klikněte na tlačítko **Odinstalace**a potom klikněte na **Zavřít**.
+toouninstall hello balíčku NuGet pro spravované mezipaměti Service, klikněte pravým tlačítkem na projekt klienta hello v **Průzkumníku řešení** a zvolte **spravovat balíčky NuGet**. Vyberte hello **nainstalované balíky** uzel a typ W**indowsAzure.Caching** do hello nainstalováno vyhledávání balíčky pole. Vyberte **Windows** **Azure Cache** (nebo **Windows** **ukládání do mezipaměti Azure** v závislosti na verzi hello balíčku NuGet hello), klikněte na tlačítko  **Odinstalace**a potom klikněte na **Zavřít**.
 
 ![Odinstalace balíčku NuGet Azure Managed Cache Service](./media/cache-migrate-to-redis/IC757666.jpg)
 
-Odinstalace balíčku NuGet pro spravované mezipaměti Service odebere sestavení spravované služby mezipaměti a položky spravované služby mezipaměti v souboru app.config nebo web.config klientské aplikace. Protože některé vlastní nastavení nelze odebrat, při odinstalaci balíčku NuGet, otevřete soubor web.config nebo app.config a ujistěte se, že tyto prvky jsou zcela odebrána.
+Odinstalaci balíčku NuGet pro spravované mezipaměti Service hello odebere hello Služba mezipaměti spravovaných sestavení a hello spravované služby mezipaměti položky v hello app.config nebo web.config klientské aplikace hello. Protože některé vlastní nastavení nemusí být odebrány při odinstalaci hello balíček NuGet, otevřete soubor web.config nebo app.config a ujistěte se, že hello následující prvky jsou zcela odebrána.
 
-Ujistěte se, že `dataCacheClients` položka je odebrána z `configSections` elementu. Neodebírejte celý `configSections` element; odebrat jenom `dataCacheClients` položku, pokud je k dispozici.
+Ujistěte se, že hello `dataCacheClients` položka je odebrána z hello `configSections` elementu. Neodebírejte hello celý `configSections` element; právě odebrat hello `dataCacheClients` položku, pokud je k dispozici.
 
 ```xml
 <configSections>
@@ -94,17 +94,17 @@ Ujistěte se, že `dataCacheClients` položka je odebrána z `configSections` el
 </configSections>
 ```
 
-Ujistěte se, že `dataCacheClients` oddíl je odebrat. `dataCacheClients` Části bude vypadat podobně jako v následujícím příkladu.
+Ujistěte se, že hello `dataCacheClients` oddíl je odebrat. Hello `dataCacheClients` skupinový rámeček je podobné toohello následující ukázka.
 
 ```xml
 <dataCacheClients>
   <dataCacheClientname="default">
-    <!--To use the in-role flavor of Azure Cache, set identifier to be the cache cluster role name -->
-    <!--To use the Azure Managed Cache Service, set identifier to be the endpoint of the cache cluster -->
+    <!--toouse hello in-role flavor of Azure Cache, set identifier toobe hello cache cluster role name -->
+    <!--toouse hello Azure Managed Cache Service, set identifier toobe hello endpoint of hello cache cluster -->
     <autoDiscoverisEnabled="true"identifier="[Cache role name or Service Endpoint]"/>
 
     <!--<localCache isEnabled="true" sync="TimeoutBased" objectCount="100000" ttlValue="300" />-->
-    <!--Use this section to specify security settings for connecting to your cache. This section is not required if your cache is hosted on a role that is a part of your cloud service. -->
+    <!--Use this section toospecify security settings for connecting tooyour cache. This section is not required if your cache is hosted on a role that is a part of your cloud service. -->
     <!--<securityProperties mode="Message" sslEnabled="true">
       <messageSecurity authorizationInfo="[Authentication Key]" />
     </securityProperties>-->
@@ -112,31 +112,31 @@ Ujistěte se, že `dataCacheClients` oddíl je odebrat. `dataCacheClients` Čás
 </dataCacheClients>
 ```
 
-Odebraný konfiguraci spravované služby mezipaměti můžete nakonfigurovat klienta mezipaměti, jak je popsáno v následující části.
+Odebraný konfigurace hello spravované služby mezipaměti můžete nakonfigurovat hello mezipaměti klienta, jak je popsáno v následující části hello.
 
-### <a name="configure-a-cache-client-using-the-stackexchangeredis-nuget-package"></a>Konfigurace klienta mezipaměti pomocí balíčku StackExchange.Redis NuGet
+### <a name="configure-a-cache-client-using-hello-stackexchangeredis-nuget-package"></a>Konfigurace klienta mezipaměti pomocí hello balíček StackExchange.Redis NuGet
 [!INCLUDE [redis-cache-configure](../../includes/redis-cache-configure-stackexchange-redis-nuget.md)]
 
 ## <a name="migrate-managed-cache-service-code"></a>Migrace kódu spravované služby mezipaměti
-Rozhraní API pro klienta mezipaměti StackExchange.Redis se podobá mezipaměti služby spravovat. Tato část obsahuje přehled rozdíly.
+Hello rozhraní API pro klienta mezipaměti StackExchange.Redis hello je podobné toohello spravované mezipaměti služby. Tato část obsahuje přehled hello rozdíly.
 
-### <a name="connect-to-the-cache-using-the-connectionmultiplexer-class"></a>Připojení k mezipaměti pomocí ConnectionMultiplexer – třída
-Ve spravované službě mezipaměti byly připojení k mezipaměti zpracována `DataCacheFactory` a `DataCache` třídy. Ve službě Azure Redis Cache spravuje tato připojení `ConnectionMultiplexer` třídy.
+### <a name="connect-toohello-cache-using-hello-connectionmultiplexer-class"></a>Připojit toohello mezipaměti pomocí hello ConnectionMultiplexer – třída
+Ve spravované službě mezipaměti byly zpracovány mezipaměti toohello připojení pomocí hello `DataCacheFactory` a `DataCache` třídy. Tato připojení jsou ve službě Azure Redis Cache spravuje hello `ConnectionMultiplexer` třídy.
 
-Přidejte následující pomocí příkazu na začátek souboru, ve kterém chcete přístup do mezipaměti.
+Přidejte následující hello pomocí příkazu toohello začátek všechny soubory, ze kterého mají být tooaccess hello mezipaměti.
 
 ```c#
 using StackExchange.Redis
 ```
 
-Pokud se tento obor názvů se nevyřeší, ujistěte se, že jste přidali balíčku StackExchange.Redis NuGet jak je popsáno v [konfigurace klientů mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
+Pokud se tento obor názvů se nevyřeší, ujistěte se, že jste přidali hello balíčku StackExchange.Redis NuGet jak je popsáno v [konfigurace klientů mezipaměti hello](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 
 > [!NOTE]
-> Všimněte si, že klient StackExchange.Redis vyžaduje rozhraní .NET Framework 4 nebo vyšší.
+> Všimněte si, že hello klient StackExchange.Redis vyžaduje rozhraní .NET Framework 4 nebo vyšší.
 > 
 > 
 
-Pokud chcete připojit k instanci služby Azure Redis Cache, zavolejte statickou `ConnectionMultiplexer.Connect` metoda a předejte jí koncový bod a klíč. Jeden ze způsobů sdílení instance `ConnectionMultiplexer` v aplikaci je pomocí statické vlastnosti, která vrací připojenou instanci, podobně jako v následujícím příkladu.  Tento přístup poskytuje způsob inicializace jedné připojené instance `ConnectionMultiplexer`, který je bezpečný pro přístup z více vláken. V tomto příkladu `abortConnect` nastaven na hodnotu false, to znamená, že volání bude úspěšné i v případě, že nedojde k vytvoření připojení k mezipaměti. Klíčovou vlastností `ConnectionMultiplexer` je automatické obnovení připojení k mezipaměti po vyřešení problémů se sítí nebo jiných příčin.
+instanci Azure Redis Cache tooconnect tooan, statické hello volání `ConnectionMultiplexer.Connect` metoda a předejte jí koncový bod hello a klíč. Jeden ze způsobů toosharing `ConnectionMultiplexer` instance v aplikaci je toohave statické vlastnosti, která vrací připojenou instanci, podobně jako toohello následující ukázka. To poskytuje způsob vláken tooinitialize pouze jedné připojené `ConnectionMultiplexer` instance. V tomto příkladu `abortConnect` je sada toofalse, což znamená, že hello volání bude úspěšné i v případě, že nebude navázáno připojení toohello mezipaměti. Klíčovou vlastností `ConnectionMultiplexer` je, že automatické obnovení připojení toohello mezipaměti po vyřešení hello problém sítě nebo jiných příčin.
 
 ```c#
 private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
@@ -153,40 +153,40 @@ public static ConnectionMultiplexer Connection
 }
 ```
 
-Koncový bod mezipaměti, klíče a portů můžete získat **Redis Cache** okně instance mezipaměti. Další informace najdete v tématu [Redis Cache vlastnosti](cache-configure.md#properties).
+Hello koncový bod mezipaměti, klíče a portů můžete získat z hello **Redis Cache** okně instance mezipaměti. Další informace najdete v tématu [Redis Cache vlastnosti](cache-configure.md#properties).
 
-Po vytvoření připojení vrátíte odkaz na databázi mezipaměti Redis zavoláním `ConnectionMultiplexer.GetDatabase` metoda. Objekt vrácený metodou `GetDatabase` je prostý průchozí objekt a není nutné jej ukládat.
+Po navázání připojení hello vrátit databázi mezipaměti Redis toohello odkaz podle volání hello `ConnectionMultiplexer.GetDatabase` metoda. Hello objekt byl vrácen ze hello `GetDatabase` metoda je prostý průchozí objekt a není nutné toobe uložené.
 
 ```c#
 IDatabase cache = Connection.GetDatabase();
 
-// Perform cache operations using the cache object...
-// Simple put of integral data types into the cache
+// Perform cache operations using hello cache object...
+// Simple put of integral data types into hello cache
 cache.StringSet("key1", "value");
 cache.StringSet("key2", 25);
 
-// Simple get of data types from the cache
+// Simple get of data types from hello cache
 string key1 = cache.StringGet("key1");
 int key2 = (int)cache.StringGet("key2");
 ```
 
-Klient StackExchange.Redis používá `RedisKey` a `RedisValue` typy pro přístup k informacím a ukládání položek do mezipaměti. Tyto typy namapovat na nejvíce primitivní typy jazyka, včetně řetězec a často nepoužívají se přímo. Redis řetězce jsou nejzákladnější druh hodnotu Redis a může obsahovat mnoho typů dat, včetně serializovaných binární datové proudy, a při typ nemusí používat přímo, budete používat metody, které obsahují `String` v názvu. Pro většinu primitivní datové typy ukládat a načítat položky z mezipaměti pomocí `StringSet` a `StringGet` metody, pokud jsou kolekce nebo jiné datové typy Redis ukládání do mezipaměti. 
+Klient StackExchange.Redis Hello používá hello `RedisKey` a `RedisValue` typy pro přístup k informacím a ukládání položek v mezipaměti hello. Tyto typy namapovat na nejvíce primitivní typy jazyka, včetně řetězec a často nepoužívají se přímo. Redis řetězce jsou hello nejzákladnější druh hodnotu Redis a může obsahovat mnoho typů dat, včetně serializovaných binární datové proudy, a při hello typ nemusí používat přímo, budete používat metody, které obsahují `String` v názvu hello. Pro většinu primitivní datové typy slouží k ukládání a načítání položky z mezipaměti hello pomocí hello `StringSet` a `StringGet` metody, pokud jsou kolekce nebo jiné datové typy Redis ukládání do mezipaměti hello. 
 
-`StringSet`a `StringGet` jsou velmi podobné mezipaměti služba spravovaných `Put` a `Get` metody s jedním hlavní rozdíl, že před nastavování a získávání objekt .NET do mezipaměti musí serializovat nejdřív. 
+`StringSet`a `StringGet` jsou velmi podobné toohello spravované mezipaměti služby `Put` a `Get` metody s jedním hlavní rozdíl, že před nastavování a získávání objekt .NET do mezipaměti hello musí serializovat nejdřív. 
 
-Při volání metody `StringGet`, pokud objekt existuje, bude vrácen, a pokud ne, vrátí se hodnota null. V tomto případě můžete načíst hodnotu z požadovaného zdroje dat a uložit ji do mezipaměti pro pozdější použití. To se označuje jako princip s doplňováním mezipaměti.
+Při volání metody `StringGet`, pokud objekt hello existuje, bude vrácen, a pokud ne, vrátí se hodnota null. V takovém případě můžete načíst hodnotu hello z hello požadovaného zdroje dat a uložte ho hello mezipaměti pro pozdější použití. To se označuje jako hello doplňováním mezipaměti.
 
-Chcete-li zadat vypršení platnosti položky v mezipaměti, použijte parametr `TimeSpan` metody `StringSet`.
+toospecify hello vypršení platnosti položky v mezipaměti hello, použijte hello `TimeSpan` parametr `StringSet`.
 
 ```c#
 cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));
 ```
 
-Azure Redis Cache může pracovat s objekty .NET, jakož i primitivní datové typy, ale před objekt .NET můžete uložit do mezipaměti, musí být serializovány. To má na starosti vývojář aplikace. To dává flexibilní vývojáře při výběru serializátoru. Další informace a ukázkový kód, najdete v části [práce s objekty .NET v mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache).
+Azure Redis Cache může pracovat s objekty .NET, jakož i primitivní datové typy, ale před objekt .NET můžete uložit do mezipaměti, musí být serializovány. Toto je zodpovědností hello vývojář aplikace hello. To dává flexibilní vývojáře hello v hello volbu hello serializátor. Další informace a ukázkový kód, najdete v části [práce s objekty .NET v mezipaměti hello](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache).
 
-## <a name="migrate-aspnet-session-state-and-output-caching-to-azure-redis-cache"></a>Migrace stavu relace ASP.NET a ukládání výstupu do mezipaměti pro Azure Redis Cache
-Azure Redis Cache má zprostředkovatele pro stavu relace ASP.NET a stránky ukládání výstupu do mezipaměti. K migraci aplikace, který používá služba spravovaných mezipaměti verze těchto poskytovatelů, nejprve odeberte stávající části ze souboru web.config a pak nakonfigurujte Azure Redis Cache verze zprostředkovatele. Pokyny k používání Azure Redis Cache ASP.NET zprostředkovatele najdete v tématu [poskytovatele stavu relace ASP.NET pro Azure Redis Cache](cache-aspnet-session-state-provider.md) a [poskytovatel výstupní mezipaměti technologie ASP.NET pro Azure Redis Cache](cache-aspnet-output-cache-provider.md).
+## <a name="migrate-aspnet-session-state-and-output-caching-tooazure-redis-cache"></a>Migrace stavu relace ASP.NET a ukládání výstupu do mezipaměti tooAzure Redis Cache
+Azure Redis Cache má zprostředkovatele pro stavu relace ASP.NET a stránky ukládání výstupu do mezipaměti. toomigrate aplikace, který používá hello spravované služby mezipaměti verze těchto poskytovatelů, nejprve odeberte hello stávající části ze souboru web.config a pak nakonfigurujte hello Azure Redis Cache verze zprostředkovatelů hello. Pokyny týkající se použití hello poskytovatelů Azure Redis Cache ASP.NET, najdete v části [poskytovatele stavu relace ASP.NET pro Azure Redis Cache](cache-aspnet-session-state-provider.md) a [poskytovatel výstupní mezipaměti technologie ASP.NET pro Azure Redis Cache](cache-aspnet-output-cache-provider.md).
 
 ## <a name="next-steps"></a>Další kroky
-Prozkoumejte [dokumentace k Azure Redis Cache](https://azure.microsoft.com/documentation/services/cache/) pro kurzy, ukázky, videa a další.
+Prozkoumejte hello [dokumentace k Azure Redis Cache](https://azure.microsoft.com/documentation/services/cache/) pro kurzy, ukázky, videa a další.
 

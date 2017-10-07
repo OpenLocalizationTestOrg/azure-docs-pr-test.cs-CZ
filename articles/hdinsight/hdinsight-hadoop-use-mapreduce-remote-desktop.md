@@ -1,6 +1,6 @@
 ---
-title: "MapReduce a Vzdálená plocha s Hadoop v HDInsight - Azure | Microsoft Docs"
-description: "Naučte se používat vzdálené plochy pro připojení k systému Hadoop v HDInsight a spuštění úloh MapReduce."
+title: "aaaMapReduce a Vzdálená plocha s Hadoop v HDInsight - Azure | Microsoft Docs"
+description: "Zjistěte, jak tooHadoop tooconnect toouse vzdálené plochy na HDInsight a spuštění úloh MapReduce."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,71 +16,71 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: b56674857b013f9bb3d4dd4b6e97b34e0a97b1b2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: bdbbcf59ca86dd1b170471aa9e12334a04c23667
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-mapreduce-in-hadoop-on-hdinsight-with-remote-desktop"></a>Používání nástroje MapReduce v Hadoop v HDInsight pomocí vzdálené plochy
 [!INCLUDE [mapreduce-selector](../../includes/hdinsight-selector-use-mapreduce.md)]
 
-V tomto článku se dozvíte, jak se připojit k systému Hadoop v clusteru HDInsight pomocí vzdálené plochy a pak spusťte úloh MapReduce pomocí příkazu Hadoop.
+V tomto článku se dozvíte, jak clusteru tooconnect tooa Hadoop v HDInsight pomocí vzdálené plochy a potom spusťte úloh MapReduce pomocí příkazu Hadoop hello.
 
 > [!IMPORTANT]
-> Vzdálená plocha je dostupná pouze na clustery HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Vzdálená plocha je dostupná pouze na clustery HDInsight se systémem Windows. Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
-> HDInsight 3.4 nebo větší, projděte si téma [používání MapReduce s SSH](hdinsight-hadoop-use-mapreduce-ssh.md) informace o připojení ke clusteru HDInsight a spuštění úloh MapReduce.
+> HDInsight 3.4 nebo větší, projděte si téma [používání MapReduce s SSH](hdinsight-hadoop-use-mapreduce-ssh.md) informace o připojení toohello HDInsight cluster a spuštění úloh MapReduce.
 
 ## <a id="prereq"></a>Požadavky
-Pokud chcete provést kroky v tomto článku, budete potřebovat následující:
+toocomplete hello kroky v tomto článku, budete potřebovat následující hello:
 
 * Cluster HDInsight se systémem Windows (Hadoop v HDInsight)
 * Klientský počítač se systémem Windows 10, Windows 8 nebo Windows 7
 
 ## <a id="connect"></a>Připojit pomocí vzdálené plochy
-Povolení vzdálené plochy pro HDInsight cluster a pak připojit pomocí pokynů uvedených v [připojení ke clusterům HDInsight pomocí protokolu RDP](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
+Povolení vzdálené plochy pro hello HDInsight cluster a pak připojit tooit podle následujících pokynů hello [připojit pomocí protokolu RDP clustery tooHDInsight](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
 
-## <a id="hadoop"></a>Použijte příkaz Hadoop
-Když se připojíte k ploše pro HDInsight cluster, použijte následující kroky a spusťte úlohu MapReduce pomocí příkazu Hadoop:
+## <a id="hadoop"></a>Použijte příkaz Hadoop hello
+Pokud jste desktop připojený toohello pro hello HDInsight cluster, použijte následující kroky toorun úlohu MapReduce pomocí příkazu Hadoop hello hello:
 
-1. Z plochy HDInsight, spusťte **Hadoop příkazového řádku**. Otevře se nové příkazový řádek v **c:\apps\dist\hadoop-&lt;číslo verze >** adresáře.
+1. Z plochy hello HDInsight, spusťte hello **Hadoop příkazového řádku**. Otevře se nové příkazový řádek v hello **c:\apps\dist\hadoop-&lt;číslo verze >** adresáře.
 
    > [!NOTE]
-   > Číslo verze se změní, když se aktualizuje Hadoop. **HADOOP_HOME** proměnnou prostředí můžete použít k vyhledání cestu. Například `cd %HADOOP_HOME%` změny adresáře do adresáře Hadoop, aniž by bylo potřeba znát číslo verze.
+   > číslo verze Hello změní, když se aktualizuje Hadoop. Hello **HADOOP_HOME** proměnnou prostředí může být cesta použité toofind hello. Například `cd %HADOOP_HOME%` změny adresáře toohello Hadoop adresáři, aniž byste si číslo verze tooknow hello.
    >
    >
-2. Použít **Hadoop** příkazu Spustit úlohu MapReduce příklad, použijte následující příkaz:
+2. toouse hello **Hadoop** příkaz toorun úlohu MapReduce příklad, použijte následující příkaz hello:
 
         hadoop jar hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
 
-    Tím se spustí **wordcount** třídy, která je součástí **hadoop-mapreduce-examples.jar** soubor v aktuálním adresáři. Jako vstup, použije **wasb://example/data/gutenberg/davinci.txt** dokumentu a výstup je uložený v: **wasb: / / / Příklad/data/WordCountOutput**.
+    Tím se spustí hello **wordcount** třídy, která je součástí hello **hadoop-mapreduce-examples.jar** soubor v aktuálním adresáři hello. Jako vstup, používá hello **wasb://example/data/gutenberg/davinci.txt** dokumentu a výstup je uložený v: **wasb: / / / Příklad/data/WordCountOutput**.
 
    > [!NOTE]
-   > Další informace o této úlohy MapReduce a data příklad najdete v tématu <a href="hdinsight-use-mapreduce.md">použití MapReduce v HDInsight Hadoop</a>.
+   > Další informace týkající se těchto dat. MapReduce úlohy a hello příklad najdete v tématu <a href="hdinsight-use-mapreduce.md">použití MapReduce v HDInsight Hadoop</a>.
    >
    >
-3. Úloha vysílá podrobnosti, jako je zpracován a vrátí informace podobná následující po dokončení úlohy:
+3. Úloha Hello vysílá podrobnosti, jako je zpracován a vrátí informace podobné toohello následující po dokončení úlohy hello:
 
         File Input Format Counters
         Bytes Read=1395666
         File Output Format Counters
         Bytes Written=337623
-4. Po dokončení úlohy použijte následující příkaz k zobrazení seznamu výstupní soubory uložené v **wasb://example/data/WordCountOutput**:
+4. Po dokončení úlohy hello, použijte následující příkaz toolist hello výstupní soubory uložené v hello **wasb://example/data/WordCountOutput**:
 
         hadoop fs -ls wasb:///example/data/WordCountOutput
 
-    To by měl zobrazit dva soubory, **_SUCCESS** a **část r-00000**. **Část r-00000** soubor obsahuje výstup pro tuto úlohu.
+    To by měl zobrazit dva soubory, **_SUCCESS** a **část r-00000**. Hello **část r-00000** soubor obsahuje hello výstup pro tuto úlohu.
 
    > [!NOTE]
-   > Některé úlohy MapReduce může rozdělit do několika výsledky **část r-###** soubory. Pokud ano, použít ### příponu označte pořadí souborů.
+   > Některé úlohy MapReduce může rozdělit do několika hello výsledky **část r-###** soubory. Pokud ano, použít hello ### přípona tooindicate hello pořadí souborů hello.
    >
    >
-5. Chcete-li zobrazit výstup, použijte následující příkaz:
+5. tooview hello výstup hello použijte následující příkaz:
 
         hadoop fs -cat wasb:///example/data/WordCountOutput/part-r-00000
 
-    Zobrazí se seznam slova, která jsou součástí **wasb://example/data/gutenberg/davinci.txt** souboru, společně s počet jednotlivých slov došlo k chybě. Následuje příklad dat, která bude obsažená v souboru:
+    Zobrazí se seznam hello slova, které jsou obsaženy v hello **wasb://example/data/gutenberg/davinci.txt** souboru, společně s hello počet jednotlivých slov došlo k chybě. Hello tady je příklad hello dat, který bude obsažen v souboru hello:
 
         wreathed        3
         wreathing       1
@@ -91,7 +91,7 @@ Když se připojíte k ploše pro HDInsight cluster, použijte následující kr
         wriggling       1
 
 ## <a id="summary"></a>Shrnutí
-Jak vidíte, příkaz Hadoop poskytuje snadný způsob, jak spouštět úlohy MapReduce v clusteru HDInsight a pak zobrazit výstup úlohy.
+Jak vidíte, bude hello příkaz Hadoop na clusteru HDInsight a pak výstup úlohy hello zobrazení poskytuje snadný způsob toorun úloh MapReduce.
 
 ## <a id="nextsteps"></a>Další kroky
 Obecné informace o úloh MapReduce v HDInsight:

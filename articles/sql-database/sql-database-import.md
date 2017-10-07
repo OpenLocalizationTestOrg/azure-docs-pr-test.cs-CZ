@@ -1,5 +1,5 @@
 ---
-title: "Importovat soubor souboru BACPAC k vytvoření Azure SQL database | Microsoft Docs"
+title: aaaImport souboru BACPAC souboru toocreate Azure SQL database | Microsoft Docs
 description: "Vytvoření databáze SQL newAzure importováním souboru BACPAC souboru."
 services: sql-database
 documentationcenter: 
@@ -15,48 +15,48 @@ ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.openlocfilehash: 285e17ed6d0ce700cb518864df7a3b5f5e55bee5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0d5fc93acf27b79502969fcd6199d11161915b19
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>Importovat soubor souboru BACPAC pro novou databázi SQL Azure
+# <a name="import-a-bacpac-file-tooa-new-azure-sql-database"></a>Import soubor tooa souboru BACPAC novou databázi SQL Azure
 
-Pokud je třeba importovat databázi z archivu nebo při migraci z jiné platformy, můžete importovat schéma databáze a dat z [souboru BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) souboru. Soubor souboru BACPAC je soubor ZIP s příponou souboru BACPAC obsahující metadata a data z databáze systému SQL Server. Soubor souboru BACPAC lze importovat z Azure blob storage (pouze standardní úložiště) nebo z místního úložiště v místní umístění. Pokud chcete maximalizovat rychlost import, doporučujeme, abyste zadejte vyšší úrovně a výkonu úrovní služeb, jako je například P6 a pak škálovat podle potřeby až po úspěšném importu. Navíc úroveň kompatibility databáze po dokončení importu je založena na úroveň kompatibility zdrojové databáze. 
+Pokud potřebujete tooimport databázi z archivu nebo při migraci z jiné platformy, můžete importovat hello schéma databáze a dat z [souboru BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) souboru. Soubor souboru BACPAC je soubor ZIP s příponou souboru BACPAC obsahující hello metadata a data z databáze systému SQL Server. Soubor souboru BACPAC lze importovat z Azure blob storage (pouze standardní úložiště) nebo z místního úložiště v místní umístění. Rychlost importu hello toomaximize, doporučujeme zadat vyšší úrovně a výkonu úrovní služeb, jako je například P6 a pak vertikálně toodown podle potřeby po úspěšném importu hello. Navíc úroveň kompatibility databáze hello po importu hello je založena na úroveň kompatibility hello hello zdrojové databáze. 
 
 > [!IMPORTANT] 
-> Po dokončení migrace databáze do Azure SQL Database, můžete pracovat databázi na jeho aktuální úroveň kompatibility (úroveň 100 pro databázi AdventureWorks2008R2) nebo na vyšší úrovni. Další informace o důsledky a možnosti pro operační databázi na úrovni konkrétní kompatibility najdete v tématu [změnit úroveň kompatibility databáze](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). Viz také [ALTER DATABASE OBOR CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) informace o další úroveň databáze nastavení související s úrovní kompatibility.   >
+> Po dokončení migrace tooAzure vaší databáze SQL Database, můžete toooperate hello databáze na jeho aktuální úroveň kompatibility (úroveň 100 pro databázi AdventureWorks2008R2 hello) nebo na vyšší úrovni. Další informace o hello důsledky a možnosti pro operační databázi na úrovni konkrétní kompatibility najdete v tématu [změnit úroveň kompatibility databáze](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). Viz také [ALTER DATABASE OBOR CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) informace o další úroveň databáze nastavení související s toocompatibility úrovně.   >
 
 > [!NOTE]
-> K importu souboru BACPAC pro novou databázi, musíte nejdřív vytvoření logického serveru Azure SQL Database. Kurz ukazuje, jak migrovat databázi systému SQL Server do Azure SQL Database pomocí SQLPackage, najdete v části [migraci databáze systému SQL Server](sql-database-migrate-your-sql-server-database.md)
+> tooimport souboru BACPAC tooa novou databázi, musíte nejdřív vytvoření logického serveru Azure SQL Database. Kurz ukazuje, jak toomigrate systému SQL Server databáze tooAzure databáze SQL pomocí SQLPackage, najdete v tématu [migraci databáze systému SQL Server](sql-database-migrate-your-sql-server-database.md)
 >
 
 ## <a name="import-from-a-bacpac-file-using-azure-portal"></a>Import ze souboru BACPAC souboru pomocí portálu Azure
 
-Tento článek obsahuje pokyny pro vytvoření Azure SQL database ze souboru BACPAC souboru je uložen v pomocí úložiště objektů blob v Azure [portál Azure](https://portal.azure.com). Import pomocí webu Azure portal podporuje importem souboru souboru BACPAC z Azure blob storage.
+Tento článek obsahuje pokyny pro vytvoření Azure SQL database ze souboru BACPAC souboru je uložen v úložišti objektů blob v Azure pomocí hello [portál Azure](https://portal.azure.com). Import pomocí hello jenom portál Azure podporuje importem souboru souboru BACPAC z Azure blob storage.
 
-Chcete-li importovat databázi pomocí portálu Azure, otevřete stránku pro vaši databázi a klikněte na **importovat** na panelu nástrojů. Zadejte účet úložiště a kontejneru a vyberte soubor souboru BACPAC, který chcete importovat. Vyberte velikost novou databázi (obvykle stejné jako původní) a zadejte cíl pověření systému SQL Server.  
+hello tooimport databázi pomocí portálu Azure, otevřete hello stránky pro databázi a klikněte na tlačítko **Import** na panelu nástrojů hello. Zadejte hello účtu úložiště a kontejneru a vyberte soubor souboru BACPAC hello chcete tooimport. Vyberte velikost hello hello nové databáze (obvykle hello stejné jako původní) a zadejte přihlašovací údaje systému SQL Server cílového hello.  
 
    ![Import databáze.](./media/sql-database-import/import.png)
 
-Pokud chcete sledovat průběh operace importu, otevřete stránku pro logický server obsahující databáze importovaných. Přejděte dolů k položce **operace** a pak klikněte na **importu a exportu** historie.
+průběh hello toomonitor hello operace importu, otevřete stránku hello hello logický server obsahující hello importované databázi. Posuňte se dolů příliš**operace** a pak klikněte na **importu a exportu** historie.
 
-### <a name="monitor-the-progress-of-an-import-operation"></a>Sledujte průběh operace importu
+### <a name="monitor-hello-progress-of-an-import-operation"></a>Monitorování hello průběh operace importu
 
-Pokud chcete sledovat průběh operace importu, otevřete stránku pro logický server do které se importují databázi naimportována. Přejděte dolů k položce **operace** a pak klikněte na **importu a exportu** historie.
+průběh hello toomonitor hello operace importu, otevřete stránku hello hello logického serveru do které hello se importují databázi naimportována. Posuňte se dolů příliš**operace** a pak klikněte na **importu a exportu** historie.
    
    ![Import](./media/sql-database-import/import-history.png) ![stav importu](./media/sql-database-import/import-status.png)
 
-Chcete-li ověřit, databáze je za provozu na serveru, klikněte na tlačítko **databází SQL** a ověřte je nové databáze **Online**.
+tooverify hello databáze je na serveru hello za provozu, klikněte na tlačítko **databází SQL** a ověřte nové databáze hello **Online**.
 
 ## <a name="import-from-a-bacpac-file-using-sqlpackage"></a>Import ze souboru BACPAC souboru pomocí SQLPackage
 
-Import pomocí databáze SQL [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) nástroj příkazového řádku najdete v části [importovat parametry a vlastnosti](https://msdn.microsoft.com/library/hh550080.aspx#Import Parameters and Properties). Nástroj SQLPackage se dodává s nejnovější verze [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) a [SQL Server Data Tools pro sadu Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx), nebo si můžete stáhnout nejnovější verzi [SqlPackage ](https://www.microsoft.com/download/details.aspx?id=53876) přímo z webu Microsoft download center.
+tooimport SQL databáze pomocí hello [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) nástroj příkazového řádku najdete v části [importovat parametry a vlastnosti](https://msdn.microsoft.com/library/hh550080.aspx#Import Parameters and Properties). Hello SQLPackage nástroj se dodává s nejnovější verzí hello [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) a [SQL Server Data Tools pro sadu Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx), nebo můžete stáhnout nejnovější verzi hello [ SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) přímo z hello Microsoft služby Stažení softwaru.
 
-Doporučujeme použít nástroj SQLPackage pro škálování a výkon ve většině produkční prostředí. Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+Doporučujeme, abyste hello použití hello SQLPackage nástroj pro škálování a výkon ve většině produkční prostředí. SQL serveru poradní tým blog o migraci pomocí souboru BACPAC soubory, najdete v tématu [migrace ze systému SQL Server tooAzure databáze SQL pomocí souboru BACPAC souborů](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 
-Viz následující příkaz SQLPackage příklad skriptu pro import **AdventureWorks2008R2** databázi z místního úložiště do logického serveru Azure SQL Database, nazývá **mynewserver20170403** v tomto příkladu. Tento skript je ukázkou, vytvoření nové databáze názvem **myMigratedDatabase**, s vrstvy služby **Premium**a cíl služby z **P6**. Změňte tyto hodnoty v závislosti na vašem prostředí.
+Viz následující příkaz SQLPackage skriptu příklad, jak hello tooimport hello **AdventureWorks2008R2** databáze z místního úložiště tooan Azure SQL Database logického serveru, nazývá **mynewserver20170403** v tomto příkladu. Tento skript je ukázkou hello vytvoření nové databáze názvem **myMigratedDatabase**, s vrstvy služby **Premium**a cíl služby z **P6**. Tyto hodnoty změňte jako odpovídající tooyour prostředí.
 
 ```cmd
 SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.net;Initial Catalog=myMigratedDatabase;User Id=ServerAdmin;Password=<change_to_your_password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
@@ -65,10 +65,10 @@ SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.
    ![sqlpackage import](./media/sql-database-migrate-your-sql-server-database/sqlpackage-import.png)
 
 > [!IMPORTANT]
-> Logický server Azure SQL Database naslouchá na portu 1433. Pokud se pokoušíte připojovat k logickému serveru Azure SQL Database z oblasti za podnikovou bránou firewall, je třeba v podnikové brány firewall otevřít tento port, abyste se mohli úspěšně připojit.
+> Logický server Azure SQL Database naslouchá na portu 1433. Pokud se pokoušíte tooconnect tooan Azure SQL Database logického serveru z podniková brána firewall, musí být tento port otevřít v hello podniková brána firewall pro připojení je toosuccessfully.
 >
 
-Tento příklad ukazuje postup importování databáze pomocí SqlPackage.exe Universal ověřování služby Active Directory:
+Tento příklad ukazuje, jak tooimport a databáze pomocí SqlPackage.exe Universal ověřování služby Active Directory:
 
 ```cmd
 SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.database.windows.net /ua:True /tid:"apptest.onmicrosoft.com"
@@ -76,7 +76,7 @@ SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 
 ## <a name="import-from-a-bacpac-file-using-powershell"></a>Import ze souboru BACPAC souboru pomocí prostředí PowerShell
 
-Použití [New-AzureRmSqlDatabaseImport](/powershell/module/azurerm.sql/new-azurermsqldatabaseimport) rutiny import databáze žádost o službu Azure SQL Database. V závislosti na velikosti vaší databáze operace importu může trvat delší dobu.
+Použití hello [New-AzureRmSqlDatabaseImport](/powershell/module/azurerm.sql/new-azurermsqldatabaseimport) toosubmit rutiny požadavku toohello databáze import služby Azure SQL Database. V závislosti na velikosti hello vaší databáze hello operace importu může trvat některé toocomplete čas.
 
  ```powershell
  $importRequest = New-AzureRmSqlDatabaseImport -ResourceGroupName "myResourceGroup" `
@@ -93,7 +93,7 @@ Použití [New-AzureRmSqlDatabaseImport](/powershell/module/azurerm.sql/new-azur
 
  ```
 
-Chcete-li zkontrolovat stav pro žádost o import, použijte [Get-AzureRmSqlDatabaseImportExportStatus](/powershell/module/azurerm.sql/get-azurermsqldatabaseimportexportstatus) rutiny. Spuštění to hned po dokončení žádosti o obvykle vrátí **stav: InProgress**. Až se zobrazí **stav: úspěšné** dokončení importu.
+Stav hello toocheck hello žádost o import, použijte hello [Get-AzureRmSqlDatabaseImportExportStatus](/powershell/module/azurerm.sql/get-azurermsqldatabaseimportexportstatus) rutiny. Obvykle to spuštěna ihned po hello vrátí požadavku **stav: InProgress**. Až se zobrazí **stav: úspěšné** dokončení importu hello.
 
 ```powershell
 $importStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
@@ -112,9 +112,9 @@ $importStatus
 Jiný příklad skriptu najdete v tématu [Import databáze ze souboru BACPAC souboru](scripts/sql-database-import-from-bacpac-powershell.md).
 
 ## <a name="next-steps"></a>Další kroky
-* Informace o tom, k připojení a dotazování importované SQL Database, najdete v části [připojit k SQL Database přes SQL Server Management Studio a provedení ukázkového dotazu T-SQL](sql-database-connect-query-ssms.md).
-* Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
-* Informace celého systému SQL Server databáze procesu migrace, včetně doporučení výkonu, naleznete v [migrovat do databáze SQL serveru do Azure SQL Database](sql-database-cloud-migrate.md).
+* toolearn způsobu tooconnect tooand dotaz importované SQL Database, najdete v [připojení tooSQL databáze s SQL Server Management Studio a provedení ukázkového dotazu T-SQL](sql-database-connect-query-ssms.md).
+* SQL serveru poradní tým blog o migraci pomocí souboru BACPAC soubory, najdete v tématu [migrace ze systému SQL Server tooAzure databáze SQL pomocí souboru BACPAC souborů](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+* Informace hello celého systému SQL Server databáze procesu migrace, včetně doporučení výkonu, naleznete v [migrovat tooAzure databáze systému SQL Server databáze SQL](sql-database-cloud-migrate.md).
 
 
 

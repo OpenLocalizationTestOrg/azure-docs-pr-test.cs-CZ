@@ -1,5 +1,5 @@
 ---
-title: "Příklady Node.js pro Azure Cosmos DB | Microsoft Docs"
+title: "Příklady aaaNode.js pro Azure Cosmos DB | Microsoft Docs"
 description: "Pro běžné úlohy v Azure DB Cosmos, včetně operace CRUD najít příklady Node.js na githubu."
 keywords: "Příklady Node.js"
 services: cosmos-db
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: moderakh
-ms.openlocfilehash: 602615c2434b7ab11ec55f2427c76cf1730b1379
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 55c8ebb9ff425aeeaa49fd0738649d33556a1635
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cosmos-db-nodejs-examples"></a>Příklady Azure Cosmos DB Node.js
 > [!div class="op_single_selector"]
@@ -30,25 +30,25 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Ukázka řešení, která provádět operace CRUD a dalších běžných operací s prostředky Azure Cosmos DB jsou součástí [azure-documentdb-nodejs](https://github.com/Azure/azure-documentdb-node/tree/master/samples) úložiště GitHub. Tento článek obsahuje:
+Ukázka řešení, která provádět operace CRUD a dalších běžných operací s prostředky Azure Cosmos DB jsou součástí hello [azure-documentdb-nodejs](https://github.com/Azure/azure-documentdb-node/tree/master/samples) úložiště GitHub. Tento článek obsahuje:
 
-* Odkazy na úlohy v jednotlivých souborů projektu příklad Node.js.
-* Odkazy na související rozhraní API odkazovat na obsah.
+* Soubory projektu odkazy toohello úlohy v každé z příkladu Node.js hello.
+* Odkazy toohello související obsah referenční dokumentace rozhraní API.
 
 **Požadavky**
 
-1. Je třeba Azure účet, který chcete použít tyto příklady Node.js:
-   * Můžete si [otevřít účet Azure zdarma](https://azure.microsoft.com/pricing/free-trial/): Získáte kredity, které můžete použít k vyzkoušení placených služeb Azure. Až je vypotřebujete, můžete si účet nechat a dál používat bezplatné služby Azure, například Websites. Nikdy vám nebudeme účtovat žádné poplatky, pokud si sami nezměníte nastavení a nezačnete používat placené služby.
+1. Je třeba účtu Azure toouse tyto příklady Node.js:
+   * Můžete [zdarma otevřít účet Azure](https://azure.microsoft.com/pricing/free-trial/): získáte kredity, můžete použít tootry na placené služby Azure a i po jejich použití až můžete hello účet ponechat a používat bezplatné služby Azure, jako jsou weby. Platební karty nikdy odečte, není-li explicitně změnit nastavení a požádejte toobe účtovat.
      * Můžete [aktivovat výhody předplatitele Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/): Visual Studio vaše předplatné vám dává kredity každý měsíc, které můžete použít pro placené služby Azure.
-2. Musíte taky [Node.js SDK](documentdb-sdk-node.md).
+2. Musíte taky hello [Node.js SDK](documentdb-sdk-node.md).
    
    > [!NOTE]
-   > Každá ukázka je samostatný, nastaví sám a vyčistí po sám sebe. Jako takový ukázky vydat několik volání [DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createCollection). Pokaždé, když k tomu je vaše předplatné bude účtován na 1 hodinu využití na úroveň výkonu kolekce vytváří.
+   > Každá ukázka je samostatný, nastaví sám a vyčistí po sám sebe. Jako takový hello ukázky vydat více volání příliš[DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createCollection). Pokaždé, když k tomu je vaše předplatné bude účtován na 1 hodinu využití za hello úroveň výkonu kolekce hello vytváří.
    > 
    > 
 
 ## <a name="database-examples"></a>Příklady databáze
-[App.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/DatabaseManagement/app.js) soubor [DatabaseManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/DatabaseManagement) projektu ukazuje, jak provádět následující úlohy.
+Hello [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/DatabaseManagement/app.js) souboru hello [DatabaseManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/DatabaseManagement) projektu ukazuje, jak tooperform hello následující úlohy.
 
 | Úkol | API – referenční informace |
 | --- | --- |
@@ -59,7 +59,7 @@ Ukázka řešení, která provádět operace CRUD a dalších běžných operac�
 | [Odstranění databáze](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DatabaseManagement/app.js#L133-L144) |[DocumentClient.deleteDatabase](http://azure.github.io/azure-documentdb-node/DocumentClient.html#deleteDatabase) |
 
 ## <a name="collection-examples"></a>Příklady kolekce
-[App.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/CollectionManagement/app.js) soubor [CollectionManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/CollectionManagement) projektu ukazuje, jak provádět následující úlohy.
+Hello [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/CollectionManagement/app.js) souboru hello [CollectionManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/CollectionManagement) projektu ukazuje, jak tooperform hello následující úlohy.
 
 | Úkol | API – referenční informace |
 | --- | --- |
@@ -72,12 +72,12 @@ Ukázka řešení, která provádět operace CRUD a dalších běžných operac�
 | [Odstranit kolekci](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.CollectionManagement/app.js#L204-L215) |[DocumentClient.deleteCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#deleteCollection) |
 
 ## <a name="document-examples"></a>Příklady dokumentu
-[App.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/DocumentManagement/app.js) soubor [DocumentManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/DocumentManagement) projektu ukazuje, jak provádět následující úlohy.
+Hello [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/DocumentManagement/app.js) souboru hello [DocumentManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/DocumentManagement) projektu ukazuje, jak tooperform hello následující úlohy.
 
 | Úkol | API – referenční informace |
 | --- | --- |
 | [Vytváření dokumentů](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DocumentManagement/app.js#L153-L177) |[DocumentClient.createDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createDocument) |
-| [Čtení dokumentu kanálu pro kolekci](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DocumentManagement/app.js#L179-L189) |[DocumentClient.readDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#readDocument) |
+| [Čtení dokumentu hello kanálu pro kolekci](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DocumentManagement/app.js#L179-L189) |[DocumentClient.readDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#readDocument) |
 | [Čtení dokumentu podle ID](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DocumentManagement/app.js#L191-L201) |[DocumentClient.readDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#readDocument) |
 | [Dokument číst pouze v případě, že došlo ke změně dokumentu](https://github.com/Azure/azure-documentdb-node/blob/0778eadea7abb2af41e8c22a239dc872c584f421/samples/DocumentManagement/app.js#L79-L107) |[DocumentClient.readDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#readDocument)<br/>[RequestOptions.accessCondition](http://azure.github.io/azure-documentdb-node/global.html#RequestOptions) |
 | [Dotaz pro dokumenty](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DocumentManagement/app.js#L82-L110) |[DocumentClient.queryDocuments](http://azure.github.io/azure-documentdb-node/DocumentClient.html#queryDocuments) |
@@ -86,13 +86,13 @@ Ukázka řešení, která provádět operace CRUD a dalších běžných operac�
 | [Odstranění dokumentu](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DocumentManagement/app.js#L122-L133) |[DocumentClient.deleteDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#deleteDocument) |
 
 ## <a name="indexing-examples"></a>Příklady indexování
-[App.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/IndexManagement/app.js) soubor [IndexManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/IndexManagement) projektu ukazuje, jak provádět následující úlohy.
+Hello [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/IndexManagement/app.js) souboru hello [IndexManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/IndexManagement) projektu ukazuje, jak tooperform hello následující úlohy.
 
 | Úkol | API – referenční informace |
 | --- | --- |
 | [Vytvořte kolekci s výchozí indexování](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L657-L701) |[DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createCollection) |
 | [Ručně index určitého dokumentu](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L185-L238) |[RequestOptions.indexingDirective: "zahrnovat"](http://azure.github.io/azure-documentdb-node/global.html#RequestOptions) |
-| [Ručně vyloučit konkrétní dokumentu z indexu](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L120-L183) |[RequestOptions.indexingDirective: vyloučení](http://azure.github.io/azure-documentdb-node/global.html#RequestOptions) |
+| [Ručně vyloučit konkrétní dokumentu z indexu hello](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L120-L183) |[RequestOptions.indexingDirective: vyloučení](http://azure.github.io/azure-documentdb-node/global.html#RequestOptions) |
 | [Použít Opožděné indexování pro hromadný import nebo číst velkou kolekce](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L240-L269) |[IndexingMode.Lazy](http://azure.github.io/azure-documentdb-node/global.html#IndexingMode) |
 | [Indexování zahrnout konkrétních cest dokumentu](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L433-L444) |[IndexingPolicy.IncludedPaths](http://azure.github.io/azure-documentdb-node/global.html#IndexingPolicy) |
 | [Vyloučení určitých cest z indexování](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L427-L450) |[IndexingPolicy.ExcludedPath](http://azure.github.io/azure-documentdb-node/global.html#IndexingPolicy) |
@@ -103,7 +103,7 @@ Ukázka řešení, která provádět operace CRUD a dalších běžných operac�
 Další informace o indexování najdete v tématu [Azure DB Cosmos indexování zásady](indexing-policies.md).
 
 ## <a name="server-side-programming-examples"></a>Ukázky programování na straně serveru
-[App.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/ServerSideScripts/app.js) soubor [ServerSideScripts](https://github.com/Azure/azure-documentdb-node/tree/master/samples/ServerSideScripts) projektu ukazuje, jak provádět následující úlohy.
+Hello [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/ServerSideScripts/app.js) souboru hello [ServerSideScripts](https://github.com/Azure/azure-documentdb-node/tree/master/samples/ServerSideScripts) projektu ukazuje, jak tooperform hello následující úlohy.
 
 | Úkol | API – referenční informace |
 | --- | --- |
@@ -113,7 +113,7 @@ Další informace o indexování najdete v tématu [Azure DB Cosmos indexování
 Další informace o programování na straně serveru najdete v tématu [programování na straně serveru Azure Cosmos DB: uložené procedury, triggery databáze a UDF](programming.md).
 
 ## <a name="partitioning-examples"></a>Vytváření oddílů příklady
-[App.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/Partitioning/app.js) soubor [dělení](https://github.com/Azure/azure-documentdb-node/tree/master/samples/Partitioning) projektu ukazuje, jak provádět následující úlohy.
+Hello [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/Partitioning/app.js) souboru hello [dělení](https://github.com/Azure/azure-documentdb-node/tree/master/samples/Partitioning) projektu ukazuje, jak tooperform hello následující úlohy.
 
 | Úkol | API – referenční informace |
 | --- | --- |

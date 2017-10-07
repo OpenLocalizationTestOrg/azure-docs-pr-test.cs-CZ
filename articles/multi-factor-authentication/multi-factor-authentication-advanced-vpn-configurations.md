@@ -1,6 +1,6 @@
 ---
-title: "Složitější scénáře s vícefaktorovým Ověřováním Azure a sítě VPN třetí strany"
-description: "Krok za krokem konfigurace příručky pro Azure MFA integrovat s Cisco, Citrix a Juniper."
+title: "scénáře aaaAdvanced s vícefaktorovým Ověřováním Azure a sítě VPN třetí strany"
+description: "Krok za krokem konfigurace příručky pro Azure MFA toointegrate s Cisco, Citrix a Juniper."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/13/2017
 ms.author: kgremban
-ms.openlocfilehash: afdd80585889ecd9248399094e918fde611468cb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e23960ca4977cc01271f99fa2bec70449e9acfff
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="advanced-scenarios-with-azure-multi-factor-authentication-and-third-party-vpn-solutions"></a>Složitější scénáře s Azure Multi-Factor Authentication a řešení VPN jiných výrobců
-Azure Multi-Factor Authentication umožňuje bezproblémově připojit pomocí různých řešení VPN jiných výrobců. Tento článek se týká zařízení Cisco® ASA VPN, Citrix NetScaler SSL VPN zařízení a zařízení Juniper sítě zabezpečit přístup/Pulse Secure připojit zabezpečení SSL VPN. Jsme vytvořili konfigurace příručky k řešení těchto tří běžné zařízení, ale aplikace Multi-Factor Authentication Server může integrovat většina systémů, které pomocí protokolu RADIUS, protokolu LDAP, IIS nebo ověřování založené na deklaracích identity ve službě AD FS. Můžete najít další podrobnosti v [konfigurací MFA Server](multi-factor-authentication-get-started-server.md#next-steps).
+Můžete použít Azure Multi-Factor Authentication tooseamlessly připojit pomocí různých řešení VPN jiných výrobců. Tento článek se týká zařízení Cisco® ASA VPN, Citrix NetScaler SSL VPN zařízení a hello Juniper sítě zabezpečit přístup/Pulse Secure připojit zabezpečení SSL zařízení VPN. Jsme vytvořili tooaddress příručky konfigurace těchto tří běžné zařízení, ale aplikace Multi-Factor Authentication Server může integrovat většina systémů, které pomocí protokolu RADIUS, protokolu LDAP, IIS nebo ověřování založené na deklaracích tooAD služby FS. Můžete najít další podrobnosti v [konfigurací MFA Server](multi-factor-authentication-get-started-server.md#next-steps).
 
 ## <a name="cisco-asa-vpn-appliance-and-azure-multi-factor-authentication"></a>Zařízení Cisco ASA VPN a ověřování Azure Multi-Factor Authentication
-Vaše zařízení Cisco® ASA VPN zajistit další zabezpečení pro přihlášení Cisco AnyConnect® VPN a přístup k portálu se službou Azure Multi-Factor Authentication.  To lze provést pomocí protokolu RADIUS nebo LDAP.  Vyberte jednu z následujících způsobů stáhnout podrobnou konfiguraci podrobné příručky.
+Azure Multi-Factor Authentication se integruje s Cisco® ASA VPN zařízení tooprovide další zabezpečení pro přihlášení Cisco AnyConnect® VPN a přístup k portálu.  To lze provést pomocí buď hello protokol LDAP nebo RADIUS.  Vyberte jednu z hello následující toodownload hello podrobné krok za krokem konfigurace provede.
 
 | Průvodce konfigurací | Popis |
 | --- | --- |
@@ -32,7 +32,7 @@ Vaše zařízení Cisco® ASA VPN zajistit další zabezpečení pro přihláše
 | [Cisco ASA s Anyconnect VPN a Azure MFA konfigurací protokolu RADIUS](http://download.microsoft.com/download/4/5/7/4579C1CF-35B0-4FBE-8A1A-B49CB2CC0382/Cisco_ASA_Azure_MFA_RADIUS.docx) | Vaše zařízení Cisco ASA VPN integrovat Azure MFA pomocí protokolu RADIUS |
 
 ## <a name="citrix-netscaler-ssl-vpn-and-azure-multi-factor-authentication"></a>Citrix NetScaler SSL VPN a Azure Multi-Factor Authentication
-Azure Multi-Factor Authentication se integruje s vaší Citrix NetScaler SSL VPN zařízení k zajištění další zabezpečení pro přihlášení Citrix NetScaler SSL VPN a přístup k portálu.  To lze provést pomocí protokolu RADIUS nebo LDAP.  Vyberte jednu z následujících způsobů stáhnout podrobnou konfiguraci podrobné příručky.
+Azure Multi-Factor Authentication se integruje s Citrix NetScaler SSL VPN zařízení tooprovide další zabezpečení pro přihlášení Citrix NetScaler SSL VPN a přístup k portálu.  To lze provést pomocí buď hello protokol LDAP nebo RADIUS.  Vyberte jednu z hello následující toodownload hello podrobné krok za krokem konfigurace provede.
 
 | Průvodce konfigurací | Popis |
 | --- | --- |
@@ -40,7 +40,7 @@ Azure Multi-Factor Authentication se integruje s vaší Citrix NetScaler SSL VPN
 | [Konfigurace Citrix NetScaler SSL VPN a Azure MFA pro server RADIUS](http://download.microsoft.com/download/1/A/4/1A482764-4A63-45C2-A5EC-2B673ACCDD12/Citrix_NS_Azure_MFA_RADIUS.docx) | Vaše zařízení Citrix NetScaler SSL VPN integrovat Azure MFA pomocí protokolu RADIUS |
 
 ## <a name="juniperpulse-secure-ssl-vpn-appliance-and-azure-multi-factor-authentication"></a>Juniper/Pulse Secure SSL VPN zařízení a ověřování Azure Multi-Factor Authentication
-Azure Multi-Factor Authentication se integruje s vaší Juniper/Pulse Secure SSL VPN zařízení k zajištění další zabezpečení pro přihlášení Juniper/Pulse Secure SSL VPN a přístup k portálu.  To lze provést pomocí protokolu RADIUS nebo LDAP.  Vyberte jednu z následujících způsobů stáhnout podrobnou konfiguraci podrobné příručky.
+Azure Multi-Factor Authentication se integruje s Juniper/Pulse Secure SSL VPN zařízení tooprovide další zabezpečení pro přihlášení Juniper/Pulse Secure SSL VPN a přístup k portálu.  To lze provést pomocí buď hello protokol LDAP nebo RADIUS.  Vyberte jednu z hello následující toodownload hello podrobné krok za krokem konfigurace provede.
 
 | Průvodce konfigurací | Popis |
 | --- | --- |
@@ -49,6 +49,6 @@ Azure Multi-Factor Authentication se integruje s vaší Juniper/Pulse Secure SSL
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Posílení vaší stávající infrastruktury pro ověřování s příponou NPS pro Azure Multi-Factor Authentication](multi-factor-authentication-nps-extension.md)
+- [Posílení vaší stávající infrastruktury pro ověřování s hello NPS rozšíření pro Azure Multi-Factor Authentication](multi-factor-authentication-nps-extension.md)
 
 - [Konfigurace nastavení služby Azure Multi-Factor Authentication](multi-factor-authentication-whats-next.md)

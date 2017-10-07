@@ -1,6 +1,6 @@
 ---
-title: "Ověření Azure Active Directory - SQL Azure (přehled) | Microsoft Docs"
-description: "Další informace o tom, jak používat Azure Active Directory k ověřování připojení k SQL Database a SQL Data Warehouse"
+title: "ověření služby Active Directory aaaAzure - SQL Azure (přehled) | Microsoft Docs"
+description: "Další informace o tom toouse Azure Active Directory k ověřování připojení k SQL Database a SQL Data Warehouse"
 services: sql-database
 documentationcenter: 
 author: BYHAM
@@ -16,73 +16,73 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 08/11/2017
 ms.author: rickbyh
-ms.openlocfilehash: c83d482eaf476388a174dfb02ae6ef53ebe921bc
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 7a63a162653b65294e11d3fa5bf39c320e742854
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql-database-or-sql-data-warehouse"></a>Pomocí ověřování Azure Active Directory k ověřování připojení k SQL Database nebo SQL Data Warehouse
-Ověřování Azure Active Directory je mechanismus připojit k Microsoft Azure SQL Database a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) pomocí identit v Azure Active Directory (Azure AD). Při ověřování Azure AD můžete centrálně spravovat identity uživatelů, databáze a další služby Microsoftu v jednom centrálním místě. Centrální správa ID poskytuje jednotné místo pro správu uživatelů databáze a zjednodušuje správu oprávnění. Výhody patří:
+Ověřování Azure Active Directory je mechanismus připojující tooMicrosoft Azure SQL Database a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) pomocí identit v Azure Active Directory (Azure AD). Při ověřování Azure AD můžete centrálně spravovat hello identity uživatelů, databáze a další služby Microsoftu v jednom centrálním místě. Centrální správa ID umožňuje uživatelům toomanage databáze na jednom místě a zjednodušuje správu oprávnění. Například hello následující výhody:
 
-* Nabízí alternativu k ověřování serveru SQL Server.
-* Pomáhá zastavit šíření identit uživatelů mezi servery databáze.
+* Poskytuje alternativní tooSQL ověření serveru.
+* Pomáhá zastavit šíření hello identit uživatelů serverů databáze.
 * Umožňuje otočení heslo na jednom místě
 * Zákazníci můžete spravovat oprávnění databáze pomocí externí skupiny (AAD).
 * Ukládání hesel se může eliminovat tím, že umožňuje integrované ověřování systému Windows a jiných forem ověřování podporovaných službou Azure Active Directory.
-* K ověření identity na úrovni databáze používá Azure AD authentication uživatele databáze s omezením.
-* Azure AD podporuje ověřování na základě tokenu pro aplikace, připojení k databázi SQL.
+* Azure AD ověřování pomocí identity tooauthenticate uživatelé databáze s omezením na úrovni databáze hello.
+* Azure AD podporuje ověřování na základě tokenu pro připojování tooSQL databáze aplikace.
 * Ověřování služby Azure AD podporuje služby AD FS (federation domény) nebo ověřování nativní uživatele a heslo pro místní Azure Active Directory bez synchronizace domény.  
 * Azure AD podporuje připojení z SQL Server Management Studio, které používají Universal ověřování služby Active Directory, která zahrnuje Multi-Factor Authentication (MFA).  Vícefaktorové ověřování zahrnuje silné ověřování s celou řadu možností snadno ověření – telefonní hovor, textová zpráva, čipové karty s PIN kód nebo oznámení mobilní aplikace. Další informace najdete v tématu [SSMS podpora pro Azure AD MFA s SQL Database a SQL Data Warehouse](sql-database-ssms-mfa-authentication.md).  
 
 >  [!NOTE]  
->  Nepodporuje připojení k SQL Server běžící na virtuálním počítači Azure pomocí účtu Azure Active Directory. Místo toho používejte doménu účtu služby Active Directory.  
+>  Připojení tooSQL Server běžící na virtuálním počítači Azure se nepodporuje, pomocí účtu Azure Active Directory. Místo toho používejte doménu účtu služby Active Directory.  
 
-Postup konfigurace obsahuje následující kroky konfigurace a použití ověřování Azure Active Directory.
+kroky konfigurace Hello zahrnout hello následující tooconfigure postupy a pomocí ověřování Azure Active Directory.
 
 1. Vytvořit a naplnit Azure AD.
-2. Volitelné: Přidružení nebo změňte služby active directory, který je aktuálně přidružena předplatného Azure.
+2. Volitelné: Přidružení nebo změňte hello služby active directory, který je aktuálně přidružena předplatného Azure.
 3. Vytvoření správce Azure Active Directory pro server Azure SQL nebo [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
 4. Nakonfigurujte klientské počítače.
-5. Vytvořte uživatele databáze s omezením ve vaší databázi namapované na Azure AD identity.
-6. Připojení k vaší databázi pomocí identit Azure AD.
+5. Vytvořte uživatele databáze s omezením vaší databáze namapované tooAzure identit AD.
+6. Připojte databáze tooyour pomocí identit Azure AD.
 
 > [!NOTE]
-> Zjistěte, jak vytvořit a naplnit Azure AD a pak nakonfigurujte Azure AD s Azure SQL Database a SQL Data Warehouse, najdete v tématu [konfigurovat Azure AD s Azure SQL Database](sql-database-aad-authentication-configure.md).
+> toolearn jak toocreate a naplnit Azure AD a potom nakonfigurovat Azure AD s Azure SQL Database a SQL Data Warehouse, najdete v části [konfigurovat Azure AD s Azure SQL Database](sql-database-aad-authentication-configure.md).
 >
 
 ## <a name="trust-architecture"></a>Architektura vztahu důvěryhodnosti
-Následující diagram vysoké úrovně shrnuje architektuře řešení pomocí ověřování Azure AD s Azure SQL Database. Koncepty použity k SQL Data Warehouse. Pro podporu heslo nativní uživatele Azure AD, je považován za pouze část cloudu a Azure AD nebo Azure SQL Database. Pro podporu ověřování federovaném (nebo uživatele a heslo pro přihlašovací údaje systému Windows), se vyžaduje komunikaci se službou AD FS bloku. Šipky znamenat způsobů komunikace.
+Hello následující vysokoúrovňový diagram shrnuje architektury řešení hello používání ověřování Azure AD s Azure SQL Database. Hello koncepty použity tooSQL datového skladu. považuje za toosupport heslo nativní uživatele Azure AD, pouze hello cloudové části a Azure AD nebo Azure SQL Database. toosupport federovaný ověřování (nebo uživatele a heslo pro přihlašovací údaje systému Windows), je vyžadován hello komunikace se službou AD FS bloku. šipky Hello označují způsobů komunikace.
 
 ![diagram ověřování aad][1]
 
-Následující diagram označuje federace, důvěryhodnosti a vztahy hostování, které umožňují klientovi připojení k databázi odesláním token. Token ověření Azure AD a je důvěryhodný pro databázi. Odběratel 1 může představovat Azure Active Directory s nativní uživateli nebo Azure AD s federovanými uživateli. Odběratel 2 představuje možné řešení včetně importované uživatele; v tomto příkladu pocházejících z federované Azure Active Directory se službou AD FS se synchronizovat se službou Azure Active Directory. Je důležité si uvědomit, že přístup k databázi pomocí ověřování Azure AD vyžaduje, aby hostování předplatné přidružené ke službě Azure AD. Ve stejném předplatném musí použít k vytvoření SQL Server hostující Azure SQL Database nebo SQL Data Warehouse.
+Hello následující diagram označuje hello federace, důvěryhodnosti a hostitelské vztahy, které umožňují klientovi tooconnect tooa databáze odesláním token. Hello token ověření Azure AD a důvěřují hello databáze. Odběratel 1 může představovat Azure Active Directory s nativní uživateli nebo Azure AD s federovanými uživateli. Odběratel 2 představuje možné řešení včetně importované uživatele; v tomto příkladu pocházejících z federované Azure Active Directory se službou AD FS se synchronizovat se službou Azure Active Directory. Je důležité toounderstand, který přístup k databázi tooa pomocí ověřování Azure AD vyžaduje, že je tento hello hostování předplatné přidružené toohello Azure AD. Hello stejného předplatného musí být použité toocreate hello hostování hello systému SQL Server Azure SQL Database nebo SQL Data Warehouse.
 
 ![předplatné relace][2]
 
 ## <a name="administrator-structure"></a>Struktura správce
-Pokud používáte ověřování Azure AD, jsou dva účty správce pro server databáze SQL. původní správce systému SQL Server a správce Azure AD. Koncepty použity k SQL Data Warehouse. Pouze správce, které jsou založené na účet služby Azure AD můžete vytvořit první uživatel databáze Azure AD, které jsou obsažené v uživatelské databázi. Přihlášení správce Azure AD může být Azure Active Directory nebo skupině služby Azure AD. Pokud správce účtu skupiny, můžete použít kteréhokoli člena skupiny povolení více správců Azure AD pro instanci systému SQL Server. Pomocí účtu skupiny jako správce rozšiřuje možnosti správy tím, že můžete centrálně přidávat a odebírat členy skupiny ve službě Azure AD, aniž byste museli měnit uživatele a oprávnění v databázi SQL. Kdykoli se dá nakonfigurovat jenom jeden správce Azure AD (uživatele či skupinu).
+Pokud používáte ověřování Azure AD, jsou dva účty správce pro server SQL Database hello. Hello původní správce systému SQL Server a správce hello Azure AD. Hello koncepty použity tooSQL datového skladu. Pouze správce hello založené na účet služby Azure AD můžete vytvořit hello první uživatel databáze Azure AD, které jsou obsažené v uživatelské databázi. přihlášení správce Hello Azure AD může být Azure Active Directory nebo skupině služby Azure AD. Když správce hello je účet skupiny, může sloužit kteréhokoli člena skupiny povolení více správců Azure AD pro instanci systému SQL Server hello. Použití účtu skupiny jako správce rozšiřuje možnosti správy tím, že jste toocentrally přidávat a odebírat členy skupiny ve službě Azure AD beze změny hello uživatele nebo oprávnění v databázi SQL. Kdykoli se dá nakonfigurovat jenom jeden správce Azure AD (uživatele či skupinu).
 
 ![Struktura správce][3]
 
 ## <a name="permissions"></a>Oprávnění
-Chcete-li vytvořit nové uživatele, musíte mít `ALTER ANY USER` oprávnění v databázi. `ALTER ANY USER` Lze udělit oprávnění uživatelé databáze. `ALTER ANY USER` Oprávnění je také uchovávat účty správce serveru a uživatele databáze s `CONTROL ON DATABASE` nebo `ALTER ON DATABASE` oprávnění pro tuto databázi a členové `db_owner` role databáze.
+toocreate noví uživatelé, musí mít hello `ALTER ANY USER` oprávnění v databázi hello. Hello `ALTER ANY USER` oprávnění lze udělit tooany uživatele databáze. Hello `ALTER ANY USER` oprávnění je také držené hello účtů správce serveru a uživatele databáze s hello `CONTROL ON DATABASE` nebo `ALTER ON DATABASE` oprávnění pro tuto databázi a členové hello `db_owner` role databáze.
 
-Chcete-li vytvořit uživatele databáze s omezením v Azure SQL Database nebo SQL Data Warehouse, je nutné se připojit k databázi pomocí Azure AD identity. Vytvoření první databáze s omezením uživatele, je nutné připojit k databázi pomocí Správce Azure AD (který je vlastníkem databáze). Tento postup je znázorněn v kroku 4 a 5 níže. Ověřování služby Azure AD je možné, pokud správce Azure AD byl vytvořen pro server Azure SQL Database nebo SQL Data Warehouse. Pokud správce Azure Active Directory byla odebrána ze serveru, stávající uživatele Azure Active Directory vytvořili dříve v systému SQL Server můžete už připojení k databázi pomocí svých přihlašovacích údajů Azure Active Directory.
+toocreate uživatele databáze s omezením v Azure SQL Database nebo SQL Data Warehouse, je nutné připojit databázi toohello pomocí Azure AD identity. toocreate hello první databáze s omezením uživatele, je nutné připojit toohello databáze pomocí Správce Azure AD (který je hello vlastník databáze hello). Tento postup je znázorněn v kroku 4 a 5 níže. Ověřování služby Azure AD je možné, pokud byla vytvořena Dobrý den, správce Azure AD pro server Azure SQL Database nebo SQL Data Warehouse pouze. Pokud dobrý den, správce Azure Active Directory byla odebrána ze serveru hello, můžete stávající uživatele Azure Active Directory předtím vytvořili v systému SQL Server již připojit toohello databáze pomocí svých přihlašovacích údajů Azure Active Directory.
 
 ## <a name="azure-ad-features-and-limitations"></a>Funkce Azure AD a omezení
-Následující členy Azure AD může být zřízen v Azure SQL server nebo SQL Data Warehouse:
+v Azure SQL server nebo SQL Data Warehouse se dá zřídit Hello následující členy Azure AD:
 
-* Nativní členy: člen vytvořené ve službě Azure AD ve spravované doméně nebo v doméně zákazníka. Další informace najdete v tématu [přidat vlastní název domény do Azure AD](../active-directory/active-directory-add-domain.md).
+* Nativní členy: člen vytvořené ve službě Azure AD v hello spravované doméně nebo v doméně zákazníka. Další informace najdete v tématu [přidat vlastní tooAzure název domény AD](../active-directory/active-directory-add-domain.md).
 * Federované domény členy: člen vytvořené v Azure AD s federovanou doménu. Další informace najdete v tématu [Microsoft Azure teď podporuje federační službou Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/).
 * Importované členy z jiných Azure AD, kteří jsou členy nativní nebo federované domény.
 * Active Directory skupiny vytvořené jako skupin zabezpečení.
 
-Účty Microsoft (například outlook.com, hotmail.com, live.com) nebo jiné účty hosta (například gmail.com, yahoo.com) nejsou podporovány. Pokud se můžete přihlásit k [https://login.live.com](https://login.live.com) pomocí účtu a hesla, pak se pomocí účtu Microsoft, což není podporováno pro ověřování Azure AD pro databáze SQL Azure nebo Azure SQL Data Warehouse.
+Účty Microsoft (například outlook.com, hotmail.com, live.com) nebo jiné účty hosta (například gmail.com, yahoo.com) nejsou podporovány. Pokud se můžete přihlásit příliš[https://login.live.com](https://login.live.com) pomocí hello účtu a hesla, pak se pomocí účtu Microsoft, což není podporováno pro ověřování Azure AD pro databáze SQL Azure nebo Azure SQL Data Warehouse.
 
 ## <a name="connecting-using-azure-ad-identities"></a>Připojení pomocí identit Azure AD
 
-Ověřování Azure Active Directory podporuje tyto metody připojení k databázi pomocí Azure AD identity:
+Ověřování Azure Active Directory podporuje hello následující metody připojování tooa databáze pomocí Azure AD identity:
 
 * Pomocí integrovaného ověřování systému Windows
 * Pomocí služby Azure AD hlavní název a heslo
@@ -90,21 +90,21 @@ Ověřování Azure Active Directory podporuje tyto metody připojení k databá
 
 ### <a name="additional-considerations"></a>Další aspekty
 
-* K vylepšení možností správy, doporučujeme zřídit vyhrazené Azure AD jako správce.   
+* možnosti správy tooenhance, doporučujeme zřídit vyhrazené Azure AD jako správce.   
 * Pouze jeden správce Azure AD (uživatele či skupinu) lze nakonfigurovat pro server Azure SQL nebo Azure SQL Data Warehouse kdykoli.   
-* Pouze správce Azure AD pro SQL Server můžete nejprve připojit k serveru Azure SQL nebo Azure SQL Data Warehouse pomocí účtu Azure Active Directory. Správce služby Active Directory můžete nakonfigurovat další služby Azure AD databázi uživatelů.   
-* Doporučujeme nastavit časový limit připojení na 30 sekund.   
-* SQL Server 2016 Management Studio a SQL Server Data Tools pro Visual Studio 2015 (verze 14.0.60311.1April 2016 nebo novější) podporují ověřování Azure Active Directory. (Ověřování azure AD podporuje **zprostředkovatel dat .NET Framework pro SQL Server**; minimální verze rozhraní .NET Framework 4.6). Nejnovější verze těchto nástrojů a aplikací na datové vrstvě (DAC a .bacpac) proto můžete použít ověřování Azure AD.   
+* Pouze správce Azure AD pro SQL Server můžete nejprve připojit toohello server Azure SQL nebo Azure SQL Data Warehouse pomocí účtu Azure Active Directory. Správce služby Active Directory Hello můžete nakonfigurovat další služby Azure AD databázi uživatelů.   
+* Doporučujeme, abyste nastavení too30 hello připojení časový limit v sekundách.   
+* SQL Server 2016 Management Studio a SQL Server Data Tools pro Visual Studio 2015 (verze 14.0.60311.1April 2016 nebo novější) podporují ověřování Azure Active Directory. (Ověřování azure AD podporuje hello **zprostředkovatel dat .NET Framework pro SQL Server**; minimální verze rozhraní .NET Framework 4.6). Proto hello nejnovější verze těchto nástrojů a aplikací na datové vrstvě (DAC a .bacpac) můžete použít ověřování Azure AD.   
 * [ODBC verze 13.1](https://www.microsoft.com/download/details.aspx?id=53339) podporuje ověřování Azure Active Directory, ale `bcp.exe` nelze se připojit pomocí ověřování Azure Active Directory, protože používá poskytovatele starší ODBC.   
-* `sqlcmd`podporuje Azure Active Directory authentication počínaje 13.1 dostupné od verze [Download Center](http://go.microsoft.com/fwlink/?LinkID=825643).   
-* SQL Server Data Tools pro Visual Studio 2015 vyžaduje alespoň. dubna 2016 verzi nástroje Data (verze 14.0.60311.1). Aktuálně nejsou Azure AD uživatelům zobrazí v Průzkumníku objektů rozšíření SSDT. Jako alternativní řešení, zobrazit uživateli v [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx).   
-* [6.0 ovladač JDBC Microsoft pro systém SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) ověřování podporuje Azure AD. Další informace naleznete v [nastavení vlastnosti připojení](https://msdn.microsoft.com/library/ms378988.aspx).   
+* `sqlcmd`podporuje začátku ověřování Azure Active Directory s verzí 13.1 dostupné z hello [Download Center](http://go.microsoft.com/fwlink/?LinkID=825643).   
+* SQL Server Data Tools pro Visual Studio 2015 vyžaduje alespoň hello. dubna 2016 verzi hello nástrojů Data (verze 14.0.60311.1). Aktuálně nejsou Azure AD uživatelům zobrazí v Průzkumníku objektů rozšíření SSDT. Jako alternativní řešení, zobrazení hello uživatelů v [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx).   
+* [6.0 ovladač JDBC Microsoft pro systém SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) ověřování podporuje Azure AD. Další informace naleznete v [nastavení vlastnosti připojení hello](https://msdn.microsoft.com/library/ms378988.aspx).   
 * PolyBase se nemůže ověřit pomocí ověřování Azure AD.   
-* Ověřování služby Azure AD je podporováno pro databázi SQL pomocí portálu Azure **Import databáze** a **Export databáze** okna. Import a export pomocí ověřování Azure AD je podporováno také z příkaz prostředí PowerShell.   
+* Ověřování služby Azure AD podporuje pro databázi SQL hello portál Azure **Import databáze** a **Export databáze** okna. Import a export pomocí ověřování Azure AD je podporováno také z hello příkaz prostředí PowerShell.   
 * Ověřování služby Azure AD je podporováno pro databázi SQL a SQL Data Warehouse pomocí rozhraní příkazového řádku. Další informace najdete v tématu [konfigurovat a spravovat ověřování Azure Active Directory s SQL Database nebo SQL Data Warehouse](sql-database-aad-authentication-configure.md) a [SQL Server - az sql server](https://docs.microsoft.com/en-us/cli/azure/sql/server).
 
 ## <a name="next-steps"></a>Další kroky
-- Chcete-li zjistit, jak vytvořit a naplnit Azure AD a pak nastavte Azure AD s Azure SQL Database nebo Azure SQL Data Warehouse, přečtěte si téma [konfigurovat a spravovat ověřování Azure Active Directory s SQL Database nebo SQL Data Warehouse](sql-database-aad-authentication-configure.md).
+- toolearn jak toocreate a naplnit Azure AD a potom nakonfigurovat Azure AD s Azure SQL Database nebo Azure SQL Data Warehouse, najdete v části [konfigurovat a spravovat ověřování Azure Active Directory s SQL Database nebo SQL Data Warehouse](sql-database-aad-authentication-configure.md).
 - Přehled řízení a přístupu pro SQL Database najdete v tématu věnovaném [řízení a přístupu k SQL Database](sql-database-control-access.md).
 - Přehled přihlášení, uživatelů a databázových rolí ve službě SQL Database najdete v tématu věnovaném [přihlášením, uživatelům a databázovým rolím](sql-database-manage-logins.md).
 - Další informace o objektech zabezpečení databáze najdete v tématu [Objekty zabezpečení](https://msdn.microsoft.com/library/ms181127.aspx).

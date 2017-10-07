@@ -1,6 +1,6 @@
 ---
-title: "Úlohy zálohování Snapshot Manager zařízení StorSimple | Microsoft Docs"
-description: "Popisuje způsob použití modulu snap-in konzoly MMC StorSimple Snapshot Manager můžete zobrazit a spravovat naplánované, aktuálně spuštěné a dokončené úlohy zálohování."
+title: "úlohy zálohování aaaStorSimple Snapshot Manager | Microsoft Docs"
+description: "Popisuje, jak toouse hello tooview modul snap-in konzoly MMC Snapshot Manager zařízení StorSimple a spravovat naplánované, aktuálně spuštěné a dokončené úlohy zálohování."
 services: storsimple
 documentationcenter: NA
 author: SharS
@@ -14,76 +14,76 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.openlocfilehash: 03e306b62250f2bb033cc14e856a59760b5406c3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3dba0a2aa527d17d67130f537bcdce5722b05a76
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>Pomocí StorSimple Snapshot Manager můžete zobrazit a spravovat úlohy zálohování
+# <a name="use-storsimple-snapshot-manager-tooview-and-manage-backup-jobs"></a>Použít tooview Snapshot Manager zařízení StorSimple a spravovat úlohy zálohování
 
 ## <a name="overview"></a>Přehled
-**Úlohy** uzel v **oboru** podokně zobrazí **naplánovaná**, **posledních 24 hodin**, a **systémem** úlohy zálohování, které jste spustili interaktivně nebo nakonfigurované zásady. 
+Hello **úlohy** uzel v hello **oboru** podokně se zobrazují hello **naplánovaná**, **posledních 24 hodin**, a **systémem**úlohy, které jste spustili interaktivně nebo nakonfigurované zásady zálohování. 
 
-Tento kurz popisuje, jak můžete použít **úlohy** uzel k zobrazení informací o naplánované, poslední a aktuálně spuštěné úlohy zálohování. (Se zobrazí v seznamu úloh a odpovídající informace **výsledky** podokně.) Kromě toho můžete klikněte pravým tlačítkem na úlohu uvedené a najdete v části z kontextové nabídky, které jsou uvedeny dostupné akce.
+Tento kurz vysvětluje, jak je možné používat hello **úlohy** uzlu toodisplay informace o naplánované, poslední a aktuálně spuštěné úlohy zálohování. (hello seznam úloh a odpovídající informace se zobrazí v hello **výsledky** podokně.) Kromě toho můžete klikněte pravým tlačítkem na úlohu uvedené a najdete v části z kontextové nabídky, které jsou uvedeny dostupné akce.
 
 ## <a name="view-scheduled-jobs"></a>Zobrazit naplánované úlohy
-Následujícím postupem zobrazíte naplánované úlohy zálohování.
+Hello použijte následující postup tooview naplánovaných úlohách zálohování.
 
-#### <a name="to-view-scheduled-jobs"></a>Chcete-li zobrazit naplánované úlohy
-1. Klikněte na ikonu plochy spusťte StorSimple Snapshot Manager. 
-2. V **oboru** podokně rozbalte **úlohy** uzel a klikněte na tlačítko **naplánovaná**. Tyto informace se zobrazí v **výsledky** podokně:
+#### <a name="tooview-scheduled-jobs"></a>tooview naplánované úlohy
+1. Klikněte na ploše ikona toostart hello StorSimple Snapshot Manager. 
+2. V hello **oboru** podokně rozbalte hello **úlohy** uzel a klikněte na tlačítko **naplánovaná**. Hello následující informace se zobrazí v hello **výsledky** podokně:
    
-   * **Název** – název plánovaný snímek
-   * **Následně spusťte** – datum a čas na další plánovaný snímek
-   * **Poslední spuštění** – datum a čas poslední plánovaný snímek
+   * **Název** – hello název plánovaný snímek hello
+   * **Následně spusťte** – hello datum a čas hello další plánovaný snímek.
+   * **Poslední spuštění** – hello datum a čas poslední plánovaný snímek hello
      
      > [!NOTE]
-     > Pro jednorázové pouze snímky **další spuštění** a **poslední spuštění** budou stejné.
+     > Jednorázové pouze snímky hello **další spuštění** a **poslední spuštění** bude hello stejné.
      
      ![Naplánované úlohy zálohování](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_scheduled.png) 
-3. Chcete-li provádět další akce pro konkrétní úlohu, klikněte pravým tlačítkem na název úlohy v **výsledky** panelu a vyberte jednu z možností v nabídce.
+3. Další akce tooperform na konkrétní úlohy, klikněte pravým tlačítkem na název úlohy hello v hello **výsledky** panelu a vyberte z možností nabídky hello.
 
 ## <a name="view-recent-jobs"></a>Zobrazit nejnovější úlohy
-Následující postup použijte k zobrazení zálohování a obnovení úlohy, které byly dokončeny za posledních 24 hodin.
+Použijte hello následující postup tooview zálohování a obnovení úlohy, které byly dokončeny v hello posledních 24 hodin.
 
-#### <a name="to-view-recent-jobs"></a>Chcete-li zobrazit nejnovější úlohy
-1. Klikněte na ikonu plochy spusťte StorSimple Snapshot Manager.
-2. V **oboru** podokně rozbalte **úlohy** uzel a klikněte na tlačítko **posledních 24 hodin**. **Výsledky** podokně se zobrazují úloh zálohování za posledních 24 hodin (na maximálně 64 úlohy). Tyto informace se zobrazí v **výsledky** podokně, v závislosti na **zobrazení** možnosti můžete zadat:
+#### <a name="tooview-recent-jobs"></a>tooview posledních úloh
+1. Klikněte na ploše ikona toostart hello StorSimple Snapshot Manager.
+2. V hello **oboru** podokně rozbalte hello **úlohy** uzel a klikněte na tlačítko **posledních 24 hodin**. Hello **výsledky** podokně se zobrazí úlohy zálohování pro hello posledních 24 hodin (tooa maximálně 64 úlohy). Hello následující informace se zobrazí v hello **výsledky** podokně, v závislosti na hello **zobrazení** možnosti můžete zadat:
    
-   * **Název** – název plánovaný snímek.
-   * **Spuštění** – datum a čas zahájení snímku.
-   * **Zastavit** – datum a čas dokončení nebo byl ukončen snímku.
-   * **Uplynulý čas** – časového intervalu mezi **Začínáme** a **Zastaveno** časy.
-   * **Stav** – stav nedávno dokončené úlohy. **Úspěch** označuje, že záloha byla úspěšně vytvořena. **Se nezdařilo** označuje, že úloha nebyla úspěšně spuštěna.
-   * **Informace o** – příčinu selhání.
-   * **Zpracování bajtů (MB)** – množství dat ze skupiny svazek, který byl zpracován (v MB). 
+   * **Název** – hello název hello plánovaný snímek.
+   * **Spuštění** – hello datum a čas zahájení hello snímku.
+   * **Zastavit** – hello datum a čas dokončení nebo byl ukončen hello snímku.
+   * **Uplynulý čas** – hello množství času mezi hello **Začínáme** a **Zastaveno** časy.
+   * **Stav** – hello stav hello nedávném dokončení úlohy. **Úspěch** označuje zálohování hello byla úspěšně vytvořena. **Se nezdařilo** označuje, že hello úlohy nebyl úspěšně spuštěn.
+   * **Informace o** – hello důvodem selhání hello.
+   * **Zpracování bajtů (MB)** – hello množství dat ze skupiny hello svazek, který byl zpracován (v MB). 
      
-     ![Úlohy, které byly spuštěny za posledních 24 hodin](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png) 
-3. Chcete-li provádět další akce pro konkrétní úlohu, klikněte pravým tlačítkem na název úlohy v **výsledky** panelu a vyberte jednu z možností v nabídce.
+     ![Úlohy, které byly spuštěny v hello posledních 24 hodin](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png) 
+3. Další akce tooperform na konkrétní úlohy, klikněte pravým tlačítkem na název úlohy hello v hello **výsledky** panelu a vyberte z možností nabídky hello.
    
     ![Odstranit úlohu](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png)
 
 ## <a name="view-currently-running-jobs"></a>Zobrazit aktuálně spuštěné úlohy
-Použijte následující postup zobrazení úloh, které jsou aktuálně spuštěné.
+Použijte následující postup tooview úloh, které jsou aktuálně spuštěné hello.
 
-#### <a name="to-view-currently-running-jobs"></a>Chcete-li zobrazit aktuálně spuštěné úlohy
-1. Klikněte na ikonu plochy spusťte StorSimple Snapshot Manager.
-2. V **oboru** podokně rozbalte **úlohy** uzel a klikněte na tlačítko **systémem**. V závislosti na tom **zobrazení** určíte, následující informace se zobrazí v možnosti **výsledky** podokně:
+#### <a name="tooview-currently-running-jobs"></a>tooview aktuálně spuštěných úloh
+1. Klikněte na ploše ikona toostart hello StorSimple Snapshot Manager.
+2. V hello **oboru** podokně rozbalte hello **úlohy** uzel a klikněte na tlačítko **systémem**. V závislosti na hello **zobrazení** možnosti určíte, hello následující informace se zobrazí v hello **výsledky** podokně:
    
-   * **Název** – název plánovaný snímek.
-   * **Spuštění** – datum a čas zahájení snímku.
-   * **Kontrolní bod** – zálohy aktuální akce.
-   * **Stav** – o procentuální hodnotě dokončení.
-   * **Uplynulý čas** – množství času, který prošel od začátku zálohování. 
-   * **Průměrná propustnost (MB)** – poměr celkový počet bajtů dat, které zpracoval, celkový čas potřebný pro zpracování (MB).
+   * **Název** – hello název hello plánovaný snímek.
+   * **Spuštění** – hello datum a čas zahájení hello snímku.
+   * **Kontrolní bod** – hello aktuální akce hello zálohy.
+   * **Stav** – hello procentuální hodnotě dokončení.
+   * **Uplynulý čas** – hello množství času, který prošel od začátku hello zálohování. 
+   * **Průměrná propustnost (MB)** – poměr celkový počet bajtů toothat zpracování dat o celkový čas potřebný pro zpracování (MB).
    * **Zpracování bajtů (MB)** – celkový počet bajtů dat, zpracování (v MB).
-   * **(MB) zapsaných bajtů** – celkový počet bajtů zapsaných (v MB). Zahrnuje data, jakož i metadata a proto je obvykle větší než zpracovat bajtů.
+   * **(MB) zapsaných bajtů** – celkový počet bajtů zapsaných (v MB). Zahrnuje hello data a také hello metadata a proto je obvykle větší než hello zpracovat bajtů.
      
      ![Aktuálně spuštěné úlohy](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_running.png)
-3. Chcete-li provádět další akce pro konkrétní úlohu, klikněte pravým tlačítkem na název úlohy v **výsledky** panelu a vyberte jednu z možností v nabídce.
+3. Další akce tooperform na konkrétní úlohy, klikněte pravým tlačítkem na název úlohy hello v hello **výsledky** panelu a vyberte z možností nabídky hello.
 
 ## <a name="next-steps"></a>Další kroky
-* Zjistěte, jak [použít ke správě vašeho řešení StorSimple Snapshot Manager zařízení StorSimple](storsimple-snapshot-manager-admin.md).
-* Zjistěte, jak [StorSimple Snapshot Manager použít ke správě katalogu zálohování](storsimple-snapshot-manager-manage-backup-catalog.md).
+* Zjistěte, jak příliš[pomocí vašeho řešení StorSimple Snapshot Manager zařízení StorSimple tooadminister](storsimple-snapshot-manager-admin.md).
+* Zjistěte, jak příliš[používat katalog zálohování hello StorSimple Snapshot Manager toomanage](storsimple-snapshot-manager-manage-backup-catalog.md).
 

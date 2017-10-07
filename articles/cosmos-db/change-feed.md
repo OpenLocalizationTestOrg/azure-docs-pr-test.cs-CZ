@@ -1,6 +1,6 @@
 ---
-title: "Práce se změnami kanálu podpory v Azure Cosmos DB | Microsoft Docs"
-description: "Použijte Azure Cosmos DB změnu informačního kanálu podporu sledování změn v dokumentech a provádět na základě událostí zpracování jako aktivační události a průběžná aktualizace mezipaměti a analýzy systémy."
+title: "aaaWorking s hello změnu kanálu podpory v Azure Cosmos DB | Microsoft Docs"
+description: "Použití Azure Cosmos DB změnit informačního kanálu podporu tootrack změny v dokumentech a provádět na základě událostí zpracování jako aktivační události a průběžná aktualizace mezipaměti a analýzy systémy."
 keywords: "Změna kanálu"
 services: cosmos-db
 author: arramac
@@ -15,68 +15,68 @@ ms.devlang: rest-api
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: arramac
-ms.openlocfilehash: 160fbc98e0f3dcc7d17cbe0c7f7425811596a896
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a4dcf4ceb476e3e08266dbcdcbee1d75e1d1eed4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Práce se změnami kanálu podpory v Azure Cosmos DB
-[Azure Cosmos DB](../cosmos-db/introduction.md) je rychlého a flexibilní globálně replikované databáze služby, který slouží k ukládání velkých objemů dat transakcí a funkční s latencí předvídatelný jednociferné milisekund pro čtení a zápisu. Díky tomu dobře hodí pro IoT, hry, maloobchodní a provozní protokolování aplikace. Sledovat změny provedené v Azure Cosmos DB dat a aktualizovat materializovaným zobrazením, provádět analýzu v reálném čase, archivaci dat na studené úložiště a aktivovat oznámení na určité události na základě těchto změn je běžný vzor návrhu v těchto aplikacích. **Změnu kanálu podporu** v Azure Cosmos DB umožňuje vytvářet efektivní a škálovatelné řešení pro každou z těchto vzorků.
+# <a name="working-with-hello-change-feed-support-in-azure-cosmos-db"></a>Práce s hello změnu informačního kanálu podpory v Azure Cosmos DB
+[Azure Cosmos DB](../cosmos-db/introduction.md) je rychlého a flexibilní globálně replikované databáze služby, který slouží k ukládání velkých objemů dat transakcí a funkční s latencí předvídatelný jednociferné milisekund pro čtení a zápisu. Díky tomu dobře hodí pro IoT, hry, maloobchodní a provozní protokolování aplikace. Běžné vzoru návrhu v těchto aplikacích je tootrack změny provedené tooAzure dat Cosmos databáze a aktualizovat materializovaným zobrazením, provádět analýzu v reálném čase, archivace dat toocold úložiště a aktivovat oznámení na určité události na základě těchto změn. Hello **změnu kanálu podporu** v Azure Cosmos DB vám umožní toobuild efektivní a škálovatelné řešení pro každou z těchto vzorků.
 
-Změny kanálu podpory poskytuje Azure Cosmos DB seřazený seznam dokumenty v kolekci Azure Cosmos DB v pořadí, ve kterém byly upraveny. Tento informační kanál lze použít k naslouchání změny dat v rámci kolekce a provádět akce, jako:
+Změny kanálu podpory poskytuje Azure Cosmos DB seřazený seznam dokumenty v kolekci Azure Cosmos DB v hello pořadí, ve kterém byly upraveny. Tento informační kanál lze použít toolisten pro úpravy toodata v rámci kolekce hello a provádět akce, jako například:
 
-* Aktivovat volání rozhraní API, kdy je dokument vložit nebo úpravě
+* Aktivovat tooan volání rozhraní API, kdy je dokument vložit nebo úpravě
 * Na aktualizace provést zpracování v reálném čase (proud)
 * Synchronizaci dat s mezipaměti, vyhledávací web nebo datového skladu
 
-Změny v Azure Cosmos DB jsou nastavené jako trvalé může být zpracována asynchronně a distribuovaná do jednoho nebo více spotřebitelů pro paralelní zpracování. Podívejme se na rozhraní API pro změnu kanálu a jak je můžete použít k vytváření škálovatelné aplikace v reálném čase. Tento článek ukazuje, jak pracovat s Azure Cosmos DB změn kanálu a rozhraní API DocumentDB. 
+Změny v Azure Cosmos DB jsou nastavené jako trvalé může být zpracována asynchronně a distribuovaná do jednoho nebo více spotřebitelů pro paralelní zpracování. Podívejme se na hello rozhraní API pro změnu kanálu a jak lze využít toobuild škálovatelné aplikace v reálném čase. Tento článek ukazuje, jak změnit toowork s Azure Cosmos DB informační kanál a hello DocumentDB rozhraní API. 
 
-![Pomocí Azure Cosmos DB změnu kanálu power analýzu v reálném čase a událostmi řízené výpočetní scénáře](./media/change-feed/changefeedoverview.png)
+![Pomocí Azure Cosmos DB změnu kanálu toopower analýzu v reálném čase a událostmi řízené výpočetní scénáře](./media/change-feed/changefeedoverview.png)
 
 > [!NOTE]
-> Změna kanálu podpora je k dispozici pouze pro rozhraní API DocumentDB v tuto chvíli; rozhraní Graph API a rozhraní API tabulky nejsou aktuálně podporovány.
+> Změna kanálu podpora je k dispozici pouze pro hello DocumentDB rozhraní API v tuto chvíli; Hello rozhraní Graph API a rozhraní API tabulky nejsou aktuálně podporovány.
 
 ## <a name="use-cases-and-scenarios"></a>Případy použití a scénáře
-Změna kanálu umožňuje efektivní zpracování rozsáhlých datových sad k velkému počtu zápisy a nabízí alternativu k dotazování celé datové sady pro identifikaci, co se změnilo. Například můžete provádět následující úlohy efektivně:
+Změna kanálu umožňuje efektivní zpracování rozsáhlých datových sad k velkému počtu zápisy a nabízí tooidentify alternativní tooquerying celé datové sady, co se změnilo. Například můžete provádět následující úlohy efektivně hello:
 
 * Aktualizace mezipaměti, index vyhledávání nebo datového skladu s daty uloženými v databázi Azure Cosmos.
-* Aplikační úrovni využití dat vrstvení a archivaci, tedy ukládání "horkých dat." v Azure Cosmos DB a po určité době odstraněny "pomaleji přístupná data" k [Azure Blob Storage](../storage/common/storage-introduction.md) nebo [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md).
+* Využití dat vrstvení a archivaci úrovni aplikace, tedy ukládání "horkých dat." v Azure Cosmos DB a po určité době odstraněny "pomaleji přístupná data" příliš[Azure Blob Storage](../storage/common/storage-introduction.md) nebo [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md).
 * Implementace batch analytics na data pomocí [Apache Hadoop](run-hadoop-with-hdinsight.md).
 * Implementace [lambda kanály v Azure](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/) s Azure Cosmos DB. Azure Cosmos DB poskytuje řešení škálovatelná databáze, které může zpracovat přijímání a dotazů a implementovat lambda architektury s nízkou celkové náklady na vlastnictví. 
-* Provést nulové době migrací na jiný účet Azure Cosmos DB jiné schéma rozdělení oddílů.
+* Proveďte nulové době migrace tooanother účet Azure Cosmos DB jiné schéma rozdělení oddílů.
 
 **Lambda kanálů s Azure DB Cosmos pro přijímání a dotazů:**
 
 ![Azure Cosmos DB na základě lambda kanálu pro přijímání a dotazů](./media/change-feed/lambda.png)
 
-Můžete použít Azure Cosmos DB přijmout a ukládání dat události ze zařízení, senzorů, infrastruktury a aplikace a zpracování těchto událostí v reálném čase pomocí [Azure Stream Analytics](../stream-analytics/stream-analytics-documentdb-output.md), [Apache Storm](../hdinsight/hdinsight-storm-overview.md), nebo [Apache Spark](../hdinsight/hdinsight-apache-spark-overview.md). 
+Můžete použít Azure Cosmos DB tooreceive a ukládání dat události ze zařízení, senzorů, infrastruktury a aplikace a zpracování těchto událostí v reálném čase pomocí [Azure Stream Analytics](../stream-analytics/stream-analytics-documentdb-output.md), [Apache Storm](../hdinsight/hdinsight-storm-overview.md), nebo [Apache Spark](../hdinsight/hdinsight-apache-spark-overview.md). 
 
-V rámci vaší [bez serveru](http://azure.com/serverless) webových a mobilních aplikací, můžete sledovat události, jako jsou například změny do vašeho zákazníka profilu, předvolby nebo umístění pro spuštění určitých akcí, jako je odesílání nabízených oznámení do jejich zařízení pomocí [ Azure Functions](../azure-functions/functions-bindings-documentdb.md) nebo [aplikační služby](https://azure.microsoft.com/services/app-service/). Pokud používáte databázi Cosmos Azure k vytvoření hry, můžete, například použití změnit informačního kanálu v reálném čase tabulky podle skóre z dokončené hry implementovat.
+V rámci vaší [bez serveru](http://azure.com/serverless) webových a mobilních aplikací, můžete sledovat událostmi, jako je například zákazníka tooyour změny profilu, předvolby nebo umístění tootrigger určité akce, jako je odesílání nabízených oznámení tootheir zařízení pomocí [Azure Functions](../azure-functions/functions-bindings-documentdb.md) nebo [aplikační služby](https://azure.microsoft.com/services/app-service/). Pokud používáte Azure Cosmos DB toobuild hry, můžete vytvořit, například změna tooimplement informačního kanálu v reálném čase tabulky podle skóre z dokončené hry.
 
 ## <a name="how-change-feed-works-in-azure-cosmos-db"></a>Jak funguje změnu informační kanál v Azure Cosmos DB
-Azure Cosmos DB poskytuje možnost číst přírůstkové aktualizace provedené na kolekci Azure Cosmos DB. Tento informační kanál změnu má následující vlastnosti:
+Azure Cosmos DB poskytuje možnost tooincrementally hello číst aktualizace provedené tooan Azure Cosmos DB kolekce. Tento informační kanál změnu má hello následující vlastnosti:
 
 * Změny jsou trvalé v Azure Cosmos DB a může být zpracována asynchronně.
-* Jsou k dispozici okamžitě změnu kanálu změny do dokumentů v rámci kolekce.
-* Každé změně do dokumentu se zobrazí právě jednou v změnu kanálu a klienti spravovat své logiku vytváření kontrolních bodů. Knihovna informačního kanálu procesoru změn poskytuje automatické vytváření kontrolních bodů a "alespoň jednou" sémantiku.
-* Protokol změn je součástí pouze poslední změny u daného dokumentu. Přechodných změn nemusí být k dispozici.
-* Změna informačního kanálu je řazen u úpravy v rámci každé hodnotu klíče oddílu. Neexistuje žádné zaručenou objednávka napříč hodnoty klíč oddílu.
+* Toodocuments změny v kolekci jsou k dispozici okamžitě v kanálu změnu hello.
+* Každý dokument tooa změn se zobrazí právě jednou v kanálu změnu hello a klienti spravovat své logiku vytváření kontrolních bodů. Knihovna informačního kanálu procesoru změn Hello poskytuje automatické vytváření kontrolních bodů a "alespoň jednou" sémantiku.
+* Protokol změn hello je součástí pouze poslední změny hello u daného dokumentu. Přechodných změn nemusí být k dispozici.
+* informační kanál změnu Hello je řazen u úpravy v rámci každé hodnotu klíče oddílu. Neexistuje žádné zaručenou objednávka napříč hodnoty klíč oddílu.
 * Změny mohou být synchronizovány z jakékoli bodu v čase, tedy neexistuje žádné období uchovávání pevné dat, pro které jsou k dispozici změny.
-* Změny jsou k dispozici v bloky rozsahy klíčů oddílů. Tato možnost umožňuje změny z rozsáhlých kolekcí, které mají být zpracovány současně více příjemci nebo servery.
-* Aplikace může požadovat pro více informačních kanálů změnu současně na stejné kolekci.
+* Změny jsou k dispozici v bloky rozsahy klíčů oddílů. Tato možnost umožňuje změny z toobe rozsáhlých kolekcí, které jsou zpracovávány paralelně více příjemci nebo serverů.
+* Aplikace můžete žádost o změnu více informačních kanálů současně na hello stejné kolekci.
 
-Informační kanál Azure Cosmos DB změnu je povoleno ve výchozím nastavení pro všechny účty. Můžete použít vaše [zřízené propustnosti](request-units.md) ve vaší oblasti zápisu ani žádné [číst oblast](distribute-data-globally.md) číst z změnu kanálu, stejně jako všechny ostatní operace z Azure Cosmos DB. Informační kanál změnu zahrnuje vložení a operace aktualizace provedené na dokumenty v rámci kolekce. Můžete zaznamenat odstranění nastavením příznak "soft odstranění" v rámci dokumentů místo odstranění. Alternativně můžete nastavit konečný platnosti pro dokumentů prostřednictvím [TTL schopností](time-to-live.md), například 24 hodin a použití hodnota této vlastnosti k zachycení odstranění. S tímto řešením je nutné zpracovat změny v časovém intervalu kratší než doba TTL vypršení platnosti. Změna informačního kanálu je k dispozici pro každý oddíl klíče rozsahem v rámci kolekce dokumentů a proto mohou být distribuovány na jeden nebo více příjemce pro paralelní zpracování. 
+Informační kanál Azure Cosmos DB změnu je povoleno ve výchozím nastavení pro všechny účty. Můžete použít vaše [zřízené propustnosti](request-units.md) ve vaší oblasti zápisu ani žádné [číst oblast](distribute-data-globally.md) tooread z hello změnit informačního kanálu, stejně jako všechny ostatní operace z Azure Cosmos DB. informační kanál změnu Hello zahrnuje vložení a operace aktualizace provedené toodocuments v rámci kolekce hello. Můžete zaznamenat odstranění nastavením příznak "soft odstranění" v rámci dokumentů místo odstranění. Alternativně můžete nastavit konečný platnosti pro dokumentů prostřednictvím hello [TTL schopností](time-to-live.md)pro příklad, 24 hodin a použití hello hodnota této vlastnosti toocapture odstraní. Toto řešení máte tooprocess změny v časovém intervalu kratší než období platnosti TTL hello. informační kanál změnu Hello je k dispozici pro každý oddíl klíče rozsahem v rámci kolekce dokumentů hello a proto mohou být distribuovány na jeden nebo více příjemce pro paralelní zpracování. 
 
 ![Distribuované zpracování změn Azure Cosmos DB kanálu](./media/change-feed/changefeedvisual.png)
 
-Máte několik možností v tom, jak implementovat změnu kanálu v klientském kódu. Okamžitě následujících částech popisují, jak k implementaci změny kanálu pomocí rozhraní REST API Azure Cosmos DB a DocumentDB SDK. Ale pro aplikace .NET, doporučujeme používat novou [změnu kanálu procesoru knihovna](#change-feed-processor) pro zpracování události z změnu kanálu tak, jak zjednodušuje čtení změny mezi oddílů a umožňuje více podprocesů práce paralelní. 
+Máte několik možností v tom, jak implementovat změnu kanálu v klientském kódu. Hello částech, která okamžitě postupujte podle popisují, jak tooimplement hello změnu kanálu pomocí hello REST API služby Azure Cosmos DB a hello DocumentDB SDK. Ale pro aplikace .NET, doporučujeme používat hello nové [změnu kanálu procesoru knihovna](#change-feed-processor) pro zpracování událostí z hello změnit kanálu jako jeho zjednodušuje čtení změny mezi oddílů a umožňuje více podprocesů práce paralelní. 
 
-## <a id="rest-apis"></a>Práce s rozhraní REST API a DocumentDB SDK
-Azure Cosmos DB poskytuje elastické kontejnerů úložiště a propustnost názvem **kolekce**. Data v rámci kolekce je logicky seskupeny pomocí [oddílu klíče](partition-data.md) a výkon a škálovatelnost. Azure Cosmos DB poskytuje různé rozhraní API pro přístup k těmto datům, včetně vyhledávání podle ID (pro čtení nebo získat), dotazů a číst informační kanály (kontroly). Změna informačního kanálu je možné získat naplnění dva nové hlavičky požadavku k DocumentDB `ReadDocumentFeed` rozhraní API, může zpracovat paralelní napříč rozsahy klíčů oddílů.
+## <a id="rest-apis"></a>Práce s hello REST API a DocumentDB SDK
+Azure Cosmos DB poskytuje elastické kontejnerů úložiště a propustnost názvem **kolekce**. Data v rámci kolekce je logicky seskupeny pomocí [oddílu klíče](partition-data.md) a výkon a škálovatelnost. Azure Cosmos DB poskytuje různé rozhraní API pro přístup k těmto datům, včetně vyhledávání podle ID (pro čtení nebo získat), dotazů a číst informační kanály (kontroly). Hello změnu kanálu je možné získat naplnění dva nové žádosti o hlavičky toohello DocumentDB `ReadDocumentFeed` rozhraní API, může zpracovat paralelní napříč rozsahy klíčů oddílů.
 
 ### <a name="readdocumentfeed-api"></a>ReadDocumentFeed rozhraní API
-Podívejme se stručný v tom, jak funguje ReadDocumentFeed. Azure Cosmos DB podporuje čtení dokumentů v rámci kolekce prostřednictvím informačního kanálu `ReadDocumentFeed` rozhraní API. Například následující požadavek vrátí stránku dokumenty uvnitř `serverlogs` kolekce. 
+Podívejme se stručný v tom, jak funguje ReadDocumentFeed. Azure Cosmos DB podporuje čtení informačního kanálu dokumentů v rámci kolekce prostřednictvím hello `ReadDocumentFeed` rozhraní API. Například hello následující požadavek vrátí stránku dokumenty uvnitř hello `serverlogs` kolekce. 
 
     GET https://mydocumentdb.documents.azure.com/dbs/smalldb/colls/serverlogs HTTP/1.1
     x-ms-date: Tue, 22 Nov 2016 17:05:14 GMT
@@ -88,11 +88,11 @@ Podívejme se stručný v tom, jak funguje ReadDocumentFeed. Azure Cosmos DB pod
     Accept: application/json
     Host: mydocumentdb.documents.azure.com
 
-Výsledky mohou být omezeny pomocí `x-ms-max-item-count` záhlaví a čtení lze obnovit pomocí opětovným odesláním požadavek s `x-ms-continuation` záhlaví, vrátí se v předchozí odpovědi. Při provádění z jednoho klienta, `ReadDocumentFeed` iteruje výsledky napříč oddíly sériově. 
+Výsledky mohou být omezeny pomocí hello `x-ms-max-item-count` záhlaví a čtení lze obnovit pomocí opětovným odesláním požadavku hello s `x-ms-continuation` záhlaví, vrátí se v předchozí odpovědi hello. Při provádění z jednoho klienta, `ReadDocumentFeed` iteruje výsledky napříč oddíly sériově. 
 
 **Sériové čtení dokumentu kanálu**
 
-Můžete také načíst informační kanál dokumentů pomocí jedné z podporovaném [SDK služby Azure Cosmos DB](documentdb-sdk-dotnet.md). Například následující fragment kódu ukazuje způsob použití [ReadDocumentFeedAsync metoda](/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentfeedasync?view=azure-dotnet) v rozhraní .NET.
+Můžete také načíst informační kanál hello dokumentů pomocí jedné z hello podporované [SDK služby Azure Cosmos DB](documentdb-sdk-dotnet.md). Například hello následující fragment kódu ukazuje, jak toouse hello [ReadDocumentFeedAsync metoda](/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentfeedasync?view=azure-dotnet) v rozhraní .NET.
 
 ```csharp
 FeedResponse<dynamic> feedResponse = null;
@@ -104,17 +104,17 @@ while (feedResponse.ResponseContinuation != null);
 ```
 
 ### <a name="distributed-execution-of-readdocumentfeed"></a>Distribuované provádění ReadDocumentFeed
-Pro kolekce, které obsahují terabajtů dat nebo víc nebo ingestování velký objem aktualizací nemusí být praktické sériové provádění čtení kanálu z jednoho klientského počítače. Aby bylo možné podporovat scénáře velkých objemů dat, Azure Cosmos DB poskytuje rozhraní API pro distribuci `ReadDocumentFeed` volání transparentně napříč více klienta čtečky na příjemců. 
+Pro kolekce, které obsahují terabajtů dat nebo víc nebo ingestování velký objem aktualizací nemusí být praktické sériové provádění čtení kanálu z jednoho klientského počítače. V pořadí toosupport tyto scénáře velkých objemů dat, Azure Cosmos DB poskytuje rozhraní API toodistribute `ReadDocumentFeed` volání transparentně napříč více klienta čtečky na příjemců. 
 
 **Informační kanál pro distribuované čtení dokumentu**
 
-Zajistit škálovatelné zpracování přírůstkové změny Azure Cosmos DB podporuje model Škálováním na více systémů pro změnu kanálu rozhraní API založené na rozsahy klíčů oddílů.
+tooprovide škálovatelné zpracování přírůstkové změny, Azure Cosmos DB podporuje model Škálováním na více systémů pro změnu hello kanálu rozhraní API založené na rozsahy klíčů oddílů.
 
 * Můžete získat seznam oddílu rozsahy klíčů pro kolekci provádění `ReadPartitionKeyRanges` volání. 
-* Pro každý rozsah klíče oddílu můžete provádět `ReadDocumentFeed` čtení dokumentů pomocí klíčů oddílů v tomto rozsahu.
+* Pro každý rozsah klíče oddílu můžete provádět `ReadDocumentFeed` tooread dokumentů pomocí klíčů oddílů v tomto rozsahu.
 
 ### <a name="retrieving-partition-key-ranges-for-a-collection"></a>Načítání oblastí klíče oddílu pro kolekci
-Rozsahy klíčů oddílu můžete načíst tím, že požádá `pkranges` prostředků v rámci kolekce. Například následující požadavek načte seznam rozsahy klíče oddílu `serverlogs` kolekce:
+Rozsahy klíčů hello oddílu můžete načíst pomocí požadavku hello `pkranges` prostředků v rámci kolekce. Například hello následující požadavek načte seznam hello rozsahy klíčů oddílu pro hello `serverlogs` kolekce:
 
     GET https://querydemo.documents.azure.com/dbs/bigdb/colls/serverlogs/pkranges HTTP/1.1
     x-ms-date: Tue, 15 Nov 2016 07:26:51 GMT
@@ -124,7 +124,7 @@ Rozsahy klíčů oddílu můžete načíst tím, že požádá `pkranges` prost�
     Accept: application/json
     Host: querydemo.documents.azure.com
 
-Tento požadavek vrátí následující odpověď obsahující metadata o rozsahy klíče oddílu:
+Tento požadavek vrátí hello následující odpověď obsahující metadata o rozsahy klíčů oddílu hello:
 
     HTTP/1.1 200 Ok
     Content-Type: application/json
@@ -150,7 +150,7 @@ Tento požadavek vrátí následující odpověď obsahující metadata o rozsah
     }
 
 
-**Oddílu Vlastnosti klíčové oblasti**: každý rozsah klíče oddílů zahrnují metadata vlastnosti v následující tabulce:
+**Oddílu Vlastnosti klíčové oblasti**: každý oddíl klíče rozsah obsahuje vlastnosti metadat hello v hello následující tabulka:
 
 <table>
     <tr>
@@ -160,21 +160,21 @@ Tento požadavek vrátí následující odpověď obsahující metadata o rozsah
     <tr>
         <td>id</td>
         <td>
-            <p>ID pro rozsah klíče oddílu. Toto je stabilní a jedinečné ID v každé kolekci.</p>
-            <p>Musí být použít v následující volání ke čtení změny podle rozsahu klíče oddílu.</p>
+            <p>Hello ID pro rozsah klíče oddílu hello. Toto je stabilní a jedinečné ID v každé kolekci.</p>
+            <p>Musí být použít v hello následující volání tooread změny podle rozsahu klíče oddílu.</p>
         </td>
     </tr>
     <tr>
         <td>maxExclusive</td>
-        <td>Hodnota maximální oddílu hodnota hash klíče pro rozsah klíče oddílu. Pro interní použití.</td>
+        <td>Hodnota klíče hash Hello maximální oddílu pro rozsah klíče oddílu hello. Pro interní použití.</td>
     </tr>
     <tr>
         <td>minInclusive</td>
-        <td>Hodnota hash klíče minimální oddílu pro rozsah klíče oddílu. Pro interní použití.</td>
+        <td>Hello oddíl minimální hodnota hash klíče hodnotu rozsahu klíče oddílu hello. Pro interní použití.</td>
     </tr>       
 </table>
 
-To provedete pomocí jedné z podporovaném [SDK služby Azure Cosmos DB](documentdb-sdk-dotnet.md). Například následující fragment kódu ukazuje, jak načíst rozsahy klíčů oddílu v rozhraní .NET pomocí [ReadPartitionKeyRangeFeedAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync?view=azure-dotnet) metoda.
+To provedete pomocí jedné z hello podporované [SDK služby Azure Cosmos DB](documentdb-sdk-dotnet.md). Například hello následující fragment kódu ukazuje, jak klíč oddílu tooretrieve rozsahy v rozhraní .NET pomocí hello [ReadPartitionKeyRangeFeedAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync?view=azure-dotnet) metoda.
 
 ```csharp
 string pkRangesResponseContinuation = null;
@@ -192,18 +192,18 @@ do
 while (pkRangesResponseContinuation != null);
 ```
 
-Azure Cosmos DB podporuje načtení dokumentů na rozsah klíče oddílu pomocí nastavení volitelné `x-ms-documentdb-partitionkeyrangeid` záhlaví. 
+Azure Cosmos DB podporuje načtení dokumentů na rozsah klíče oddílu podle nastavení hello volitelné `x-ms-documentdb-partitionkeyrangeid` záhlaví. 
 
 ### <a name="performing-an-incremental-readdocumentfeed"></a>Provádění přírůstkové ReadDocumentFeed
-ReadDocumentFeed podporuje následující scénáře a úkoly pro přírůstkové zpracování změny v kolekcích Azure Cosmos DB:
+ReadDocumentFeed podporuje následující scénáře a úkoly pro přírůstkové zpracování změny v kolekcích Azure Cosmos DB hello:
 
-* Číst všechny změny do dokumentů od začátku, tedy z vytvoření kolekce.
-* Číst všechny změny pro budoucí aktualizace do dokumentů z aktuálního času nebo změny od čas zadaného uživatelem.
-* Číst všechny změny do dokumentů z verze logické kolekce (ETag). Kontrolní bod můžete uživatele podle vrácená značka ETag z přírůstkové žádostí kanálu pro čtení.
+* Číst všechny změny toodocuments od začátku hello, to znamená, od vytvoření kolekce.
+* Číst všechny změny toofuture aktualizace toodocuments z aktuální čas nebo změny od čas zadaného uživatelem.
+* Číst všechny změny toodocuments z verze logické kolekce hello (ETag). Můžete kontrolního bodu uživatele podle hello vrácená značka ETag přírůstkové požadavky kanálu pro čtení.
 
-Změny zahrnují vložení a aktualizace do dokumentů. Můžete zaznamenat odstranění, musí používat vlastnost "obnovitelného odstranění" v rámci dokumentů nebo použít [předdefinované vlastnosti TTL](time-to-live.md) signál čeká na odstranění v změn informačního kanálu.
+Hello změny zahrnují toodocuments operace INSERT a Update. Odstraní toocapture, musíte použít vlastnost "obnovitelného odstranění" v rámci dokumentů, nebo použijte hello [předdefinované vlastnosti TTL](time-to-live.md) toosignal čeká na odstranění ve hello změnit informačního kanálu.
 
-Následující tabulka uvádí [požadavku](/rest/api/documentdb/common-documentdb-rest-request-headers.md) a [hlavičky odpovědi](/rest/api/documentdb/common-documentdb-rest-response-headers.md) pro ReadDocumentFeed operace.
+Hello následující tabulky seznamy hello [požadavku](/rest/api/documentdb/common-documentdb-rest-request-headers.md) a [hlavičky odpovědi](/rest/api/documentdb/common-documentdb-rest-response-headers.md) pro ReadDocumentFeed operace.
 
 **Hlavičky požadavku pro přírůstkové ReadDocumentFeed**:
 
@@ -214,14 +214,14 @@ Následující tabulka uvádí [požadavku](/rest/api/documentdb/common-document
     </tr>
     <tr>
         <td>A ZASÍLÁNÍ RYCHLÝCH ZPRÁV</td>
-        <td>Musí být nastavena na "Přírůstkové informační kanál", nebo tento parametr vynechán jinak</td>
+        <td>Musí být nastaven příliš "Přírůstkové kanálu", nebo tento parametr vynechán jinak</td>
     </tr>
     <tr>
         <td>If-None-Match</td>
         <td>
-            <p>Žádné záhlaví: vrátí všechny změny od začátku (vytvoření kolekce)</p>
-            <p>"*": vrátí všechny nové změny dat v rámci kolekce</p>           
-            <p>&lt;Značka Etag&gt;: Pokud vrátí sadu do kolekce značka ETag, všechny změny provedené od této logické časové razítko</p>
+            <p>Žádné záhlaví: vrátí všechny změny z hello od (vytvoření kolekce)</p>
+            <p>"*": vrátí všechny nové toodata změny v kolekci hello</p>         
+            <p>&lt;Značka Etag&gt;: Pokud nastavit tooa kolekce značka ETag, vrátí všechny změny provedené od této logické časové razítko</p>
         </td>
     </tr>
     <tr>    
@@ -230,7 +230,7 @@ Následující tabulka uvádí [požadavku](/rest/api/documentdb/common-document
     </tr> 
     <tr>
         <td>x-ms-documentdb-partitionkeyrangeid</td>
-        <td>ID klíče rozsahu oddílu pro čtení dat</td>
+        <td>ID klíče rozsahu oddílu Hello pro čtení dat</td>
     </tr>
 </table>
 
@@ -243,13 +243,13 @@ Následující tabulka uvádí [požadavku](/rest/api/documentdb/common-document
     <tr>
         <td>Značka Etag</td>
         <td>
-            <p>Logické pořadové číslo (položky LSN) poslední dokumentu vrácený v odpovědi.</p>
+            <p>Hello logické pořadové číslo (položky LSN) poslední dokumentu vrácený v odpovědi hello.</p>
             <p>Přírůstkové ReadDocumentFeed můžete obnovit pomocí opětovným odesláním tuto hodnotu v If-None-Match.</p>
         </td>
     </tr>
 </table>
 
-Zde je ukázka požadavek na vrácení všechny přírůstkové změny v kolekci z logické verze nebo ETag `28535` a rozdělit na oddíly klíče rozsah = `16`:
+Tady je tooreturn požadavku ukázkové všechny přírůstkové změny v kolekci z ETag logické verze hello `28535` a rozdělit na oddíly klíče rozsah = `16`:
 
     GET https://mydocumentdb.documents.azure.com/dbs/bigdb/colls/bigcoll/docs HTTP/1.1
     x-ms-max-item-count: 1
@@ -262,14 +262,14 @@ Zde je ukázka požadavek na vrácení všechny přírůstkové změny v kolekci
     Accept: application/json
     Host: mydocumentdb.documents.azure.com
 
-Změny jsou seřazené podle času v rámci každé hodnotu klíče oddílu v rozsahu klíče oddílu. Neexistuje žádné zaručenou objednávka napříč hodnoty klíč oddílu. Pokud existují další výsledky, než lze zobrazit v jediné stránce, si můžete přečíst další stránky výsledků podle opětovným odesláním požadavek s `If-None-Match` záhlaví s hodnotou rovna `etag` z předchozí odpovědi. Pokud více dokumentů se přidají nebo aktualizují transakčně v rámci uložené procedury nebo aktivační událost, budou se všechny vrátí na jedné stránce odpovědi.
+Změny jsou seřazené podle času v rámci každé hodnotu klíče oddílu v rozsahu klíče oddílu hello. Neexistuje žádné zaručenou objednávka napříč hodnoty klíč oddílu. Pokud existují další výsledky, než lze zobrazit v jediné stránce, si můžete přečíst další stránky výsledků hello podle opětovným odesláním požadavku hello s hello `If-None-Match` hlavička s hodnota rovna toohello `etag` z předchozí odpovědi hello. Pokud více dokumentů se přidají nebo aktualizují transakčně v rámci uložené procedury nebo aktivační událost, budou všechny vrátí v rámci hello stejné stránky odpovědi.
 
 > [!NOTE]
-> S změnu kanálu, může získat více položek vrátí na stránce, než je zadáno v `x-ms-max-item-count` v případě více dokumentů, které se přidají nebo aktualizují v rámci uložené procedury nebo aktivační události. 
+> S změnu kanálu, může získat více položek vrátí na stránce, než je zadáno v `x-ms-max-item-count` v případě hello více dokumentů, které se přidají nebo aktualizují v rámci uložené procedury nebo aktivační události. 
 
-Když pomocí sady .NET SDK (1.17.0), nastavte hodnotu pole `StartTime` v `ChangeFeedOptions` přímo vrátit změněné dokumenty od `StartTime` při volání metody `CreateDocumentChangeFeedQuery`. Zadáním `If-Modified-Since` pomocí rozhraní REST API, vaši žádost o vrátí není dokumenty sami, ale spíš token pokračování nebo `etag` v hlavičce odpovědi. Vrátit zadaný čas, token pro pokračování změny dokumenty `etag` pak použije v další požadavek s `If-None-Match` vrátit skutečné dokumenty. 
+Pokud používáte hello .NET SDK (1.17.0), nastavte pole hello `StartTime` v `ChangeFeedOptions` toodirectly návratový změnit dokumenty od `StartTime` při volání metody `CreateDocumentChangeFeedQuery`. Zadáním `If-Modified-Since` pomocí hello REST API, vaši žádost o vrátí není hello dokumenty sami, ale spíš token pokračování hello nebo `etag` v hello hlavičky odpovědi. dokumenty hello tooreturn upravené hello zadaný čas, token pokračování hello `etag` pak použije v hello další žádosti se `If-None-Match` tooreturn hello skutečné dokumenty. 
 
-.NET SDK poskytuje [CreateDocumentChangeFeedQuery](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery?view=azure-dotnet) a [ChangeFeedOptions](/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) pomocné třídy pro přístup k změny provedené v kolekci. Následující fragment kódu ukazuje, jak načíst všechny změny od začátku pomocí sady .NET SDK z jednoho klienta.
+Hello .NET SDK poskytuje hello [CreateDocumentChangeFeedQuery](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery?view=azure-dotnet) a [ChangeFeedOptions](/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) pomocné rutiny třídy kolekce tooa tooaccess změny. Hello následující fragment kódu ukazuje, jak tooretrieve všechny změny ze začátku hello pomocí .NET SDK hello z jednoho klienta.
 
 ```csharp
 private async Task<Dictionary<string, string>> GetChanges(
@@ -322,20 +322,20 @@ private async Task<Dictionary<string, string>> GetChanges(
     return checkpoints;
 }
 ```
-A následující fragment kódu ukazuje, jak zpracovat změny v reálném čase s Azure DB Cosmos pomocí kanálu změnu podporu a předchozí funkce. První volání vrátí všechny dokumenty v kolekci, a druhá pouze vrátí vytvořili dva dokumenty, které byly vytvořeny od posledního kontrolního bodu.
+A hello následující fragment kódu ukazuje, jak tooprocess změny v reálném čase s Azure DB Cosmos pomocí hello změnu kanálu podporu a hello předcházející funkce. první volání Hello vrátí všechny dokumenty hello v kolekci hello a hello druhý pouze vrátí hello dva dokumenty vytvořené, které byly vytvořeny od posledního kontrolního bodu hello.
 
 ```csharp
-// Returns all documents in the collection.
+// Returns all documents in hello collection.
 Dictionary<string, string> checkpoints = await GetChanges(client, collection, new Dictionary<string, string>());
 
 await client.CreateDocumentAsync(collection, new DeviceReading { DeviceId = "xsensr-201", MetricType = "Temperature", Unit = "Celsius", MetricValue = 1000 });
 await client.CreateDocumentAsync(collection, new DeviceReading { DeviceId = "xsensr-212", MetricType = "Pressure", Unit = "psi", MetricValue = 1000 });
 
-// Returns only the two documents created above.
+// Returns only hello two documents created above.
 checkpoints = await GetChanges(client, collection, checkpoints);
 ```
 
-Můžete také filtrovat změnu kanálu pomocí logiky straně klienta se selektivně zpracovat události. Například zde je fragment kódu, který používá na straně klienta LINQ ke zpracování události změny pouze teploty ze senzorů zařízení.
+Můžete také filtrovat hello změnu kanálu pomocí události procesu tooselectively logiku na straně klienta. Například zde je fragment, používající klienta straně LINQ tooprocess jen teploty události změn ze senzorů zařízení.
 
 ```csharp
 FeedResponse<DeviceReading> readChangesResponse = query.ExecuteNextAsync<DeviceReading>().Result;
@@ -348,44 +348,44 @@ foreach (DeviceReading changedDocument in
 ```
 
 ## <a id="change-feed-processor"></a>Knihovna kanálu procesoru změn
-Další možností je použít [knihovny Azure Cosmos DB změnit kanálu procesoru](https://docs.microsoft.com/azure/cosmos-db/documentdb-sdk-dotnet-changefeed), který vám může pomoct snadno distribuovat zpracování z důvodu změny kanálu napříč více příjemců událostí. Knihovna je skvěle hodí k vytváření změnu kanálu čtečky na platformě .NET. Některé pracovní postupy, které by zjednodušit pomocí knihovně procesoru kanálu změn prostřednictvím metod obsažených v jiných SDK DB Cosmos patří: 
+Další možností je toouse hello [knihovny Azure Cosmos DB změnit kanálu procesoru](https://docs.microsoft.com/azure/cosmos-db/documentdb-sdk-dotnet-changefeed), který vám může pomoct snadno distribuovat zpracování z důvodu změny kanálu napříč více příjemců událostí. Knihovna Hello je skvěle hodí k vytváření změnu kanálu čtečky na platformě .NET hello. Některé pracovní postupy, které by zjednodušit pomocí knihovny změnu kanálu procesoru hello prostřednictvím metody hello součástí hello dalších sadách SDK DB Cosmos patří: 
 
 * Vyžádání aktualizace z změnu informačního kanálu, když data budou uložená napříč více oddílů
-* Přesunutí nebo replikaci dat z jedné kolekce do jiného
-* Paralelní provádění akcí, které jsou aktivovány aktualizace dat a změna kanálu 
+* Přesunutí nebo replikace dat z jedné kolekce tooanother
+* Paralelní provádění akcí aktivovány toodata aktualizace a změny kanálu 
 
-Zatímco pomocí rozhraní API v Cosmos SDK poskytuje přesné přístup k změnit informačního kanálu aktualizace v každém oddílu, pomocí knihovny změnit kanálu procesoru zjednodušuje čtení změny mezi oddílů a paralelně fungujících více vláken. Procesor kanálu změnu místo ručně čtení změny z každý kontejner a ukládání token pokračování pro každý oddíl, automaticky spravuje čtení změny napříč oddíly používající mechanismus zapůjčení.
+Při použití hello rozhraní API v hello Cosmos SDK poskytuje přesné přístup toochange kanálu aktualizace v každém oddílu, pomocí knihovny změnu kanálu procesoru hello zjednodušuje čtení změny mezi oddílů a paralelně fungujících více vláken. Místo ručně čtení změny z každý kontejner a ukládání token pokračování pro každý oddíl hello změnu kanálu procesoru automaticky spravuje čtení změny napříč oddíly používající mechanismus zapůjčení.
 
-Je k dispozici jako balíčku NuGet, knihovna: [Microsoft.Azure.Documents.ChangeFeedProcessor](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/) a ze zdrojového kódu jako Githubu [ukázka](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor). 
+Knihovna Hello je k dispozici jako balíčku NuGet: [Microsoft.Azure.Documents.ChangeFeedProcessor](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/) a ze zdrojového kódu jako Githubu [ukázka](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor). 
 
 ### <a name="understanding-change-feed-processor-library"></a>Principy změn kanálu procesoru knihovny 
 
-Existují čtyři hlavní součásti implementace změnu kanálu procesoru: monitorovaných kolekce, kolekce zapůjčení, procesoru hostitele a uživatelé. 
+Existují čtyři hlavní součásti implementace hello změnu kanálu procesoru: hello monitorovat kolekce, kolekce hello zapůjčení, hello procesoru hostitele a spotřebitelé hello. 
 
-**Monitorované kolekci:** monitorovaných kolekce je dat, ze které se generuje změnu informačního kanálu. Všechny operace INSERT a změny monitorovaných kolekce se projeví v informačním kanálu změnu kolekce. 
+**Monitorované kolekci:** hello monitorovat kolekce je hello dat, ze které hello se generuje změnu informačního kanálu. Jakékoli kolekce toohello monitorovat vložení a změny se projeví v kanálu změnu hello hello kolekce. 
 
-**Kolekce zapůjčení:** souřadnice kolekce zapůjčení zpracování změn kanálu napříč více pracovníků. Samostatné kolekce slouží k uložení zapůjčení jeden zapůjčení na jeden oddíl. Je výhodné pro uložení této kolekce zapůjčení na jiný účet s oblasti zápisu blíže k se spuštěným systémem změnu kanálu procesoru. Objekt zapůjčení obsahuje následující atributy: 
-* Vlastník: Určuje hostitele, který vlastní zapůjčení
-* Pokračování: Určuje pozici (token pokračování) v kanálu pro určitý oddíl změn
-* Časové razítko: Čas poslední zapůjčení byla aktualizována; časové razítko slouží ke kontrole, jestli zapůjčení je považována za ukončenou 
+**Kolekce zapůjčení:** hello souřadnice kolekce zapůjčení zpracování změn hello kanálu napříč více pracovníků. Samostatné kolekce je použité toostore hello zapůjčení jeden zapůjčení na jeden oddíl. Je výhodné toostore zápisu této kolekce zapůjčení na jiný účet s hello oblast blíže toowhere hello, které běží změnu kanálu procesoru. Objekt zapůjčení obsahuje hello následující atributy: 
+* Vlastník: Určuje hello hostitele, který vlastní zapůjčení hello
+* Pokračování: Určuje pozici hello (token pokračování) v kanálu pro určitý oddíl změn hello
+* Časové razítko: Čas poslední zapůjčení byla aktualizována; časové razítko Hello může být použité toocheck, zda text hello zapůjčení je považována za ukončenou 
 
-**Procesor hostitele:** každého hostitele Určuje, kolik oddíly procesu na základě kolik instancí hostitelů mají aktivní zapůjčení. 
-1.  Po spuštění hostitele získá zapůjčení vyrovnávat zatížení ve všech hostitelích. Hostitel pravidelně obnovuje zapůjčení, aby zůstala aktivní zapůjčení. 
-2.  Kontrolní body hostitele poslední token pokračování jeho zapůjčení pro každou přečíst. K zajištění bezpečnosti souběžnosti, zkontroluje hostitele ETag pro jednotlivé aktualizace zapůjčení. Jsou podporovány také další strategie kontrolního bodu.  
-3.  Při vypnutí počítače Hostitel uvolní všechny zapůjčení, ale zachová pokračování informace, takže ho můžete obnovit čtení z uložené kontrolního bodu později. 
+**Procesor hostitele:** každého hostitele Určuje, kolik tooprocess oddíly na základě kolik instancí hostitelů mají aktivní zapůjčení. 
+1.  Po spuštění hostitele získá zapůjčení toobalance hello zatížení ve všech hostitelích. Hostitel pravidelně obnovuje zapůjčení, aby zůstala aktivní zapůjčení. 
+2.  Hostitele kontrolní body hello poslední pokračovací token tooits zapůjčení pro každý čtení. tooensure souběžnosti zabezpečení, hostitel ověří hello ETag pro jednotlivé aktualizace zapůjčení. Jsou podporovány také další strategie kontrolního bodu.  
+3.  Při vypnutí počítače Hostitel uvolní všechny zapůjčení ale udržuje hello pokračování informace, takže ho můžete obnovit čtení z uložené kontrolního bodu hello později. 
 
-V tuto chvíli nemůže být větší než počet oddílů (zapůjčení) počtu hostitelů.
+V tuto chvíli nemůže být větší než hello počet oddílů (zapůjčení) hello počtu hostitelů.
 
-**Příjemci knihovny:** příjemci nebo pracovníci, jsou vláken, které provádějí změnu kanálu zpracování iniciovaná každého hostitele. Každý hostitel procesoru může mít více příjemců. Jednotliví spotřebitelé přečte změnu kanálu z oddílu, který je přiřazen k a upozorní jeho hostitel změny a platnost zapůjčení.
+**Příjemci knihovny:** příjemci nebo pracovníci, jsou vláken, které provádějí změnu hello kanálu zpracování iniciovaná každého hostitele. Každý hostitel procesoru může mít více příjemců. Každý příjemce čte hello změnu kanálu z hello oddílu je přiřazen tooand upozorní jeho hostitel změny a platnost zapůjčení.
 
-Abyste pochopili, jak tyto čtyři prvky změnu kanálu procesoru spolupracují, podíváme se na příklad na následujícím diagramu. Monitorované kolekci ukládá dokumenty a používá "city" jako klíč oddílu. Vidíte, že blue oddíl obsahuje dokumentů s poli "city" od "A-E" a tak dále. Existují dva hostitele, každý se dvěma spotřebiteli čtení ze čtyř oddílů souběžně. Šipky zobrazují příjemci čtení z na určité místo v změn informačního kanálu. Do prvního oddílu představuje tmavšího blue nepřečtená změny při světla blue představuje již čtení změny při změně kanálu. Hostitele použít k ukládání hodnotu "pokračování" ke sledování aktuální pozici čtení pro každý příjemce kolekci zapůjčení. 
+toofurther pochopit, jak tyto čtyři prvky změnu kanálu procesoru spolupracují, podíváme se na příklad v hello následující diagram. Hello monitorované kolekci úložiště dokumentů a jako klíč oddílu hello používá města"hello". Vidíte, že hello blue oddíl obsahuje dokumentů s hello pole "city" z "A-E" a tak dále. Existují dva hostitele, každý se dvěma spotřebiteli čtení z hello čtyřmi oddíly paralelně. Hello šipky zobrazují hello příjemci čtení z na určité místo v hello změnit informačního kanálu. V první oddíl hello představuje tmavšího blue hello nepřečtená změny při světla blue hello představuje hello již číst změny na změnu hello informačního kanálu. hello zapůjčení kolekce toostore zaznamenávat pro hodnotu tookeep "pokračování" hello aktuální pozici pro každý příjemce čtení nastavení používají hostitelé Hello. 
 
-![Pomocí Azure Cosmos DB změnu kanálu procesor hostitele](./media/change-feed/changefeedprocessornew.png)
+![Pomocí Azure Cosmos DB změnu hello kanálu procesor hostitele](./media/change-feed/changefeedprocessornew.png)
 
 ### <a name="using-change-feed-processor-library"></a>Pomocí změnu kanálu procesoru knihovny 
-V následující části vysvětluje, jak na používání knihovny změnu kanálu procesoru v kontextu replikace změn z kolekce zdrojové do cílové kolekce. Zde zdrojové kolekci je monitorované kolekci změnu kanálu procesor. 
+Hello následující část popisuje, jak toouse hello knihovny změnu kanálu procesoru v kontextu hello replikace změn z zdroj kolekce tooa cílové kolekce. Zde hello zdrojové kolekci je kolekce hello monitorovat procesor změnu informačního kanálu. 
 
-**Nainstalovat a zahrnout balíček NuGet procesoru kanálu změn** 
+**Nainstalovat a zahrnout balíček NuGet procesoru kanálu změnu hello** 
 
 Před instalací balíčku NuGet změnu kanálu procesoru, nejprve nainstalujte: 
 * Microsoft.Azure.DocumentDB, verze 1.13.1 nebo novější 
@@ -393,24 +393,24 @@ Před instalací balíčku NuGet změnu kanálu procesoru, nejprve nainstalujte:
 
 **Vytvoření monitorovaných, zapůjčení a cílové kolekce** 
 
-Chcete-li použít knihovna procesoru kanálu změn, musí být vytvořen před spuštěním procesor hostitel kolekci zapůjčení. Znovu doporučujeme uložit kolekci zapůjčení na jiný účet s oblastí zápisu blíže k se spuštěným systémem změnu kanálu procesoru. V tomto příkladu přesun dat potřebujeme vytvoření cílové kolekce před spuštěním změnu kanálu procesoru hostitele. Ukázkový kód jsme volat metodu helper k vytvoření monitorovaných, pronajaté, a cílové kolekce, pokud dosud neexistují. 
+V pořadí toouse hello knihovna procesoru kanálu změn musí kolekce zapůjčení hello toobe vytvořit před spuštěním hello procesor hostitel. Znovu doporučujeme uložit kolekci zapůjčení na jiný účet s co nejblíže toowhere hello oblast zápisu, že změna kanálu procesor běží. V tomto příkladu přesun dat potřebujeme toocreate hello cílové kolekce před spuštěním hello změnu kanálu procesoru hostitele. V ukázkovém kódu hello říkáme hello Pomocná metoda toocreate monitorovat pronajaté a cílové kolekce, pokud dosud neexistují. 
 
 > [!WARNING]
-> Vytvoření kolekce hradí, jako jsou rezervování propustnost pro aplikace komunikovat s Azure Cosmos DB. Další podrobnosti naleznete [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)
+> Vytvoření kolekce hradí, jako jsou rezervování propustnost pro hello toocommunicate aplikací s Azure Cosmos DB. Další podrobnosti naleznete na adrese hello [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)
 > 
 > 
 
 *Vytvoření procesor hostitele*
 
-`ChangeFeedProcessorHost` Třída poskytuje bezpečné pro přístup z více vláken, více procesů, bezpečné běhového prostředí pro implementace zpracovatelů událostí taky poskytuje možnost vytváření kontrolních bodů a oddíl správu zapůjčení. Použít `ChangeFeedProcessorHost` třídu, můžete implementovat `IChangeFeedObserver`. Toto rozhraní obsahuje tři metody:
+Hello `ChangeFeedProcessorHost` třída poskytuje bezpečné pro přístup z více vláken, více procesů, bezpečné běhového prostředí pro implementace zpracovatelů událostí taky poskytuje možnost vytváření kontrolních bodů a oddíl správu zapůjčení. toouse hello `ChangeFeedProcessorHost` třídu, můžete implementovat `IChangeFeedObserver`. Toto rozhraní obsahuje tři metody:
 
-* `OpenAsync`: Tato funkce je volána, když je otevřen pozorovatel změnu informačního kanálu. Ho můžete upravit tak, aby odpovídat určité akci, když je otevřen příjemce/pozorovatele.  
-* `CloseAsync`: Tato funkce je volána, když je ukončen informačního kanálu pozorovatel změnu. Může být upraven k provedení určité akce při zavření příjemce/pozorovatele.  
-* `ProcessChangesAsync`: Tato funkce je volána, když jsou k dispozici na změnu kanálu nové změny dokumentu. Může být upraven k provedení určité akce při každé změně kanálu aktualizace.  
+* `OpenAsync`: Tato funkce je volána, když je otevřen pozorovatel změnu informačního kanálu. Po otevření příjemce/pozorovatel může být upravený tooperform určité akce.  
+* `CloseAsync`: Tato funkce je volána, když je ukončen informačního kanálu pozorovatel změnu. Může být upravený tooperform určité akce při zavření příjemce/pozorovatele.  
+* `ProcessChangesAsync`: Tato funkce je volána, když jsou k dispozici na změnu kanálu nové změny dokumentu. Může to být upravené tooperform určité akce při každé aktualizaci změnu informačního kanálu.  
 
-V našem příkladu jsme toto rozhraní implementovat `IChangeFeedObserver` prostřednictvím `DocumentFeedObserver` třídy. Zde `ProcessChangesAsync` funkce upserts (aktualizace) dokumentu z změnu kanálu do cílové kolekce. V tomto příkladu je užitečná pro přesun dat z jedné kolekce do jiného, aby bylo možné změnit klíč oddílu datové sady. 
+V našem příkladu jsme implementovat rozhraní hello `IChangeFeedObserver` prostřednictvím hello `DocumentFeedObserver` třídy. Zde hello `ProcessChangesAsync` funkce upserts (aktualizace) dokumentu z změnu kanálu do hello cílové kolekce. V tomto příkladu je užitečná pro přesun dat z jedné kolekce tooanother v pořadí toochange hello klíč oddílu datové sady. 
 
-*Spuštění procesoru hostitele*
+*Spuštění hello procesor hostitele*
 
 Před zahájením zpracování událostí, jak změnit možnosti informačního kanálu a změnit možnosti informačního kanálu hostitele je možné upravit. 
 ```csharp
@@ -423,12 +423,12 @@ Před zahájením zpracování událostí, jak změnit možnosti informačního 
 
     ChangeFeedHostOptions feedHostOptions = new ChangeFeedHostOptions();
 
-    // ie. customizing lease renewal interval to 15 seconds
+    // ie. customizing lease renewal interval too15 seconds
     // can customize LeaseRenewInterval, LeaseAcquireInterval, LeaseExpirationInterval, FeedPollDelay 
     feedHostOptions.LeaseRenewInterval = TimeSpan.FromSeconds(15);
 
 ```
-V následujících tabulkách jsou shrnuté konkrétních polí, které se dají přizpůsobit. 
+Hello konkrétních polí, které se dají přizpůsobit jsou shrnuté v následujících tabulkách hello. 
 
 **Změna možností informačního kanálu**:
 <table>
@@ -438,23 +438,23 @@ V následujících tabulkách jsou shrnuté konkrétních polí, které se dají
     </tr>
     <tr>
         <td>MaxItemCount</td>
-        <td>Získá nebo nastaví maximální počet položek má být vrácen v operaci výčtu ve službě Azure Cosmos DB databáze.</td>
+        <td>Získá nebo nastaví maximální počet položek toobe, vrátí se v hello výčtu operace v hello služba databáze Azure Cosmos DB hello.</td>
     </tr>
     <tr>
         <td>PartitionKeyRangeId</td>
-        <td>Získá nebo nastaví id klíče rozsahu oddílu pro aktuální požadavek ve službě Azure Cosmos DB databáze.</td>
+        <td>Získá nebo nastaví id klíče rozsah hello oddílu pro aktuální požadavek hello v hello Azure Cosmos DB databáze služby.</td>
     </tr>
     <tr>
         <td>RequestContinuation</td>
-        <td>Získá nebo nastaví token pokračování požadavku ve službě Azure Cosmos DB databáze.</td>
+        <td>Získá nebo nastaví token pokračování požadavku hello v hello Azure Cosmos DB databáze služby.</td>
     </tr>
         <tr>
         <td>SessionToken</td>
-        <td>Získá nebo nastaví token relace pro použití s konzistence typu relace ve službě Azure Cosmos DB databáze.</td>
+        <td>Získá nebo nastaví token hello relace pro použití s konzistence typu relace v hello služba databáze Azure Cosmos DB.</td>
     </tr>
         <tr>
         <td>StartFromBeginning</td>
-        <td>Získá nebo nastaví, zda změna kanálu ve službě Azure Cosmos DB databáze by se měl spustit od začátku (true) nebo z aktuální (false). Ve výchozím nastavení spustí z aktuální (false).</td>
+        <td>Získá nebo nastaví, zda změna kanálu v hello Azure Cosmos DB databáze služby by se měl spustit z hello od (true) nebo aktuální (false). Ve výchozím nastavení spustí z aktuální (false).</td>
     </tr>
 </table>
 
@@ -468,49 +468,49 @@ V následujících tabulkách jsou shrnuté konkrétních polí, které se dají
     <tr>
         <td>LeaseRenewInterval</td>
         <td>Časový interval</td>
-        <td>Interval pro všechny zapůjčení pro oddíly, které jsou aktuálně uchovávat ChangeFeedEventHost instance.</td>
+        <td>Hello interval pro všechny zapůjčení pro oddíly, které jsou aktuálně držené hello ChangeFeedEventHost instance.</td>
     </tr>
     <tr>
         <td>LeaseAcquireInterval</td>
         <td>Časový interval</td>
-        <td>Interval, který ji úlohu k výpočtu, zda jsou oddíly rovnoměrně rozdělené mezi instancí známé hostitele.</td>
+        <td>interval tookick vypnout toocompute úloh Hello, zda oddíly jsou rovnoměrně rozdělené mezi instancí známé hostitele.</td>
     </tr>
     <tr>
         <td>LeaseExpirationInterval</td>
         <td>Časový interval</td>
-        <td>Interval, pro kterou je zapůjčení pořízené zapůjčení představující oddílu. Pokud během tohoto intervalu neobnovíte zapůjčení, vypršela platnost a vlastnictví oddílu přesune do jiné instance ChangeFeedEventHost.</td>
+        <td>Hello interval, pro které hello zapůjčení pořízené zapůjčení představující oddílu. Pokud během tohoto intervalu neobnovíte hello zapůjčení, vypršela platnost a vlastnictví hello oddílu přesune tooanother ChangeFeedEventHost instance.</td>
     </tr>
     <tr>
         <td>FeedPollDelay</td>
         <td>Časový interval</td>
-        <td>Zpoždění mezi dotazování oddíl pro nové změny na informačního kanálu, po všechny aktuální změny se nečekaně.</td>
+        <td>Hello zpoždění mezi dotazování oddíl pro nové změny na hello informačního kanálu, až se nečekaně všechny aktuální změny.</td>
     </tr>
     <tr>
         <td>CheckpointFrequency</td>
         <td>CheckpointFrequency</td>
-        <td>Četnost zapůjčení kontrolního bodu.</td>
+        <td>Hello frekvence toocheckpoint zapůjčení.</td>
     </tr>
     <tr>
         <td>MinPartitionCount</td>
         <td>celá čísla</td>
-        <td>Minimální počet pro hostitele.</td>
+        <td>počet oddílů minimální Hello hello hostitele.</td>
     </tr>
     <tr>
         <td>MaxPartitionCount</td>
         <td>celá čísla</td>
-        <td>Maximální počet oddílů, které hostitele může obsluhovat.</td>
+        <td>může sloužit Hello maximální počet oddílů hello hostitele.</td>
     </tr>
     <tr>
         <td>DiscardExistingLeases</td>
         <td>BOOL</td>
-        <td>Jestli se při spuštění hostitele, měla by být odstraněna všechna existující zapůjčení a hostitele by měla začít úplně od začátku.</td>
+        <td>Jestli na hello spusťte hello hostitele všechny existující zapůjčení, měl by být odstraněn a hello hostitele by měla začít úplně od začátku.</td>
     </tr>
 </table>
 
 
-Pokud chcete zahájit zpracování událostí, vytvořte instanci `ChangeFeedProcessorHost`, poskytnutím příslušných parametrů pro svoji kolekci Azure Cosmos DB. Potom zavolejte `RegisterObserverAsync` k registraci vašeho `IChangeFeedObserver` implementace (DocumentFeedObserver v tomto příkladu) s modulem runtime. V tomto okamžiku hostitel pokusí "zapůjčit" každý oddíl klíče rozsahu v Azure Cosmos DB kolekce s použitím "chamtivého" algoritmu. Tato zapůjčení poslední po stanovenou dobu a následně musí být obnovena. Jako nové uzly a instancí pracovního procesu, v takovém případě režimu online, se umístí své rezervace zapůjčení a průběhu času zatížení posune mezi uzly, protože každý hostitel bude snažit získat další zapůjčení. 
+zpracování událostí toostart doložit `ChangeFeedProcessorHost`, poskytuje hello příslušné parametry pro Azure Cosmos DB kolekce. Potom zavolejte `RegisterObserverAsync` tooregister vaše `IChangeFeedObserver` implementace (DocumentFeedObserver v tomto příkladu) s hello runtime. V tomto okamžiku hello hostitele pokusí tooacquire zapůjčení každých klíče rozsahu oddílu v kolekci Azure Cosmos DB hello použitím "chamtivého" algoritmu. Tato zapůjčení poslední po stanovenou dobu a následně musí být obnovena. Jako nové uzly a instancí pracovního procesu, v takovém případě režimu online, se umístí své rezervace zapůjčení a časem hello zatížení posune mezi uzly, protože každý hostitel pokusí tooacquire další zapůjčení. 
 
-V ukázkovém kódu používáme třídu objektů factory (DocumentFeedObserverFactory.cs) k vytvoření pozorovatele a `RegistObserverFactoryAsync` k registraci pozorovatele. 
+V ukázkovém kódu hello, budeme používat toocreate – třída (DocumentFeedObserverFactory.cs) objektu pro vytváření pozorovatel a hello `RegistObserverFactoryAsync` pozorovatel tooregister hello. 
 
 ```csharp
 using (DocumentClient destClient = new DocumentClient(destCollInfo.Uri, destCollInfo.MasterKey))
@@ -520,14 +520,14 @@ using (DocumentClient destClient = new DocumentClient(destCollInfo.Uri, destColl
 
         await host.RegisterObserverFactoryAsync(docObserverFactory);
 
-        Console.WriteLine("Running... Press enter to stop.");
+        Console.WriteLine("Running... Press enter toostop.");
         Console.ReadLine();
 
         await host.UnregisterObserversAsync();
     }
 ```
-Postupem času se dosáhne rovnováhy. Tato dynamická funkce umožňuje využití procesoru na základě automatického škálování má být použita k příjemce pro škálování nahoru a dolů. Pokud jsou k dispozici v Azure Cosmos DB s vyšší rychlostí než mohou příjemci zpracovat změny, zvýšení využití procesoru na spotřebitele slouží k dojít k automatickému škálování počtu instancí pracovních procesů.
+Postupem času se dosáhne rovnováhy. Tato dynamická funkce umožňuje na základě procesoru automatické škálování toobe použít tooconsumers pro škálování nahoru a dolů. Pokud jsou k dispozici v Azure Cosmos DB s vyšší rychlostí než mohou příjemci zpracovat změny, může být hello zvýšení využití procesoru na spotřebitele toocause použité k automatickému škálování počtu instancí pracovních procesů.
 
 ## <a name="next-steps"></a>Další kroky
-* Zkuste [Azure Cosmos DB změnu kanálu ukázky kódu na Githubu](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed)
-* Začínáme s kódování [SDK služby Azure Cosmos DB](documentdb-sdk-dotnet.md) nebo [REST API](/rest/api/documentdb/).
+* Zkuste hello [Azure Cosmos DB změnu kanálu ukázky kódu na Githubu](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed)
+* Začínáme s hello kódování [SDK služby Azure Cosmos DB](documentdb-sdk-dotnet.md) nebo hello [REST API](/rest/api/documentdb/).

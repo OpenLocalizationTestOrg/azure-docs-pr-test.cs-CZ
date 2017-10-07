@@ -1,6 +1,6 @@
 ---
-title: "Prozkoumejte data v úložišti objektů blob v Azure s Pandas | Microsoft Docs"
-description: "Jak chcete dynamicky prozkoumávat data, která je uložená v kontejneru objektů blob v Azure pomocí Pandas."
+title: aaaExplore dat v Azure blob storage s Pandas | Microsoft Docs
+description: "Jak tooexplore data uložená v Azure kontejner objektů blob pomocí Pandas."
 services: machine-learning,storage
 documentationcenter: 
 author: bradsev
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.openlocfilehash: e1b33b17270122a38228484a56c8324c5b4505a0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 28f3c0aebf2300006066c4b19dcb1f0a76a1deb2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Zkoumání dat ve službě Azure Blob Storage pomocí knihovny Pandas
-Tento dokument popisuje, jak chcete dynamicky prozkoumávat data, která je uložená v Azure blob kontejneru pomocí [Pandas](http://pandas.pydata.org/) balíček Python.
+Tento dokument popisuje, jak tooexplore data uložená v Azure blob pomocí kontejneru [Pandas](http://pandas.pydata.org/) balíček Python.
 
-Následující **nabídky** odkazy na témata, které popisují, jak používat nástroje a prozkoumejte data z různých prostředích úložiště. Tato úloha je krok v [proces vědecké účely dat]().
+Následující Hello **nabídky** odkazy tootopics, které popisují, jak toouse nástroje tooexplore data z různých prostředích úložiště. Tato úloha je krok v hello [proces vědecké účely dat]().
 
 [!INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
@@ -31,12 +31,12 @@ Následující **nabídky** odkazy na témata, které popisují, jak používat 
 Tento článek předpokládá, že máte:
 
 * Vytvořit účet úložiště Azure. Pokud budete potřebovat pokyny, najdete v části [vytvoření účtu úložiště Azure](../storage/common/storage-create-storage-account.md#create-a-storage-account)
-* Vaše data uložena v účtu úložiště objektů blob v Azure. Pokud budete potřebovat pokyny, najdete v části [přesun dat do a z Azure Storage](../storage/common/storage-moving-data.md)
+* Vaše data uložena v účtu úložiště objektů blob v Azure. Pokud budete potřebovat pokyny, najdete v části [tooand přesouvání dat z Azure Storage](../storage/common/storage-moving-data.md)
 
-## <a name="load-the-data-into-a-pandas-dataframe"></a>Načíst data do Pandas DataFrame
-Pokud chcete prozkoumat a manipulaci s datovou sadu, se musí nejprve stáhnout ze zdroje blob do místního souboru, který lze načíst v Pandas DataFrame. Tady jsou kroky provést tento postup:
+## <a name="load-hello-data-into-a-pandas-dataframe"></a>Načtení dat hello do Pandas DataFrame
+tooexplore a pracovat s datovou sadu, se musí nejprve stáhnout z hello objektů blob zdroj tooa místního souboru, které pak mohou být načteny v Pandas DataFrame. Zde jsou kroky toofollow hello pro tento postup:
 
-1. Stahování dat z Azure blob s následující ukázka kódu Pythonu pomocí služby objektů blob. Nahraďte konkrétní hodnoty proměnné v následujícím kódem: 
+1. Stáhněte si hello data z Azure blob s hello následující ukázka kódu Pythonu pro pomocí služby objektů blob. Nahraďte proměnnou hello v hello následující kód s konkrétními hodnotami: 
    
         from azure.storage.blob import BlobService
         import tables
@@ -52,52 +52,52 @@ Pokud chcete prozkoumat a manipulaci s datovou sadu, se musí nejprve stáhnout 
         blob_service=BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
         blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
         t2=time.time()
-        print(("It takes %s seconds to download "+blobname) % (t2 - t1))
-2. Načtení dat do data rámeček Pandas ze staženého souboru.
+        print(("It takes %s seconds toodownload "+blobname) % (t2 - t1))
+2. Čtení hello dat do data rámečku Pandas z hello stáhli soubor.
    
-        #LOCALFILE is the file path    
+        #LOCALFILE is hello file path    
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-Nyní jste připraveni k data prozkoumat a generování funkce pro tuto datovou sadu.
+Nyní jsou připravené tooexplore hello data a vygenerovat funkce pro tuto datovou sadu.
 
 ## <a name="blob-dataexploration"></a>Příklady zkoumání dat pomocí Pandas
-Tady je několik příkladů jak prozkoumat dat pomocí Pandas:
+Zde je několik příkladů způsoby tooexplore dat pomocí Pandas:
 
-1. Zkontrolujte **počet řádků a sloupců** 
+1. Zkontrolujte hello **počet řádků a sloupců** 
    
-        print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
-2. **Zkontrolujte** několik první nebo poslední **řádky** v datové sadě následující:
+        print 'hello size of hello data is: %d rows and  %d columns' % dataframe_blobdata.shape
+2. **Zkontrolujte** hello první nebo poslední několik **řádky** v hello následující datové sady:
    
         dataframe_blobdata.head(10)
    
         dataframe_blobdata.tail(10)
-3. Zkontrolujte **datový typ** každý sloupec byl importován jako pomocí následující vzorový kód
+3. Zkontrolujte hello **datový typ** každý sloupec byl importován jako pomocí hello následující ukázkový kód
    
         for col in dataframe_blobdata.columns:
             print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
-4. Zkontrolujte **základní statistiky** pro sloupce v datech nastavte takto
+4. Zkontrolujte hello **základní statistiky** pro hello sloupců v následujícím způsobem hello datové sady
    
         dataframe_blobdata.describe()
-5. Podívejte se na počet položek pro každou hodnotu sloupce následujícím způsobem
+5. Podívejte se na hello počet položek pro každou hodnotu sloupce následujícím způsobem
    
         dataframe_blobdata['<column_name>'].value_counts()
-6. **Počet chybějících hodnot** a skutečný počet položek v jednotlivých sloupcích pomocí následující vzorový kód
+6. **Počet chybějících hodnot** versus hello skutečný počet položek v jednotlivých sloupcích pomocí hello následující ukázkový kód
    
         miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
         print miss_num
-7. Pokud máte **chybějící hodnoty** pro konkrétní sloupec v datech, můžete jejich umístění následujícím způsobem:
+7. Pokud máte **chybějící hodnoty** pro konkrétní sloupec v hello data, můžete jejich umístění následujícím způsobem:
    
      dataframe_blobdata_noNA = dataframe_blobdata.dropna() dataframe_blobdata_noNA.shape
    
-   Jiný způsob, jak nahradit chybějící hodnoty je pomocí funkce režimu:
+   Jiný způsob tooreplace chybějící hodnoty je pomocí funkce režimu hello:
    
      dataframe_blobdata_mode = dataframe_blobdata.fillna ({< column_name >: .mode()[0]}) dataframe_blobdata ['< column_name >"]        
-8. Vytvoření **histogram** vykreslení pomocí proměnné počet přihrádek k vykreslení distribuce proměnné    
+8. Vytvoření **histogram** vykreslení pomocí proměnný počet přihrádek tooplot hello distribuční proměnné    
    
         dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
    
         np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
-9. Podívejte se na **korelací** mezi proměnné pomocí scatterplot nebo pomocí funkce integrované korelace
+9. Podívejte se na **korelací** mezi proměnné pomocí scatterplot nebo pomocí funkce integrované korelace hello
    
         #relationship between column_a and column_b using scatter plot
         plt.scatter(dataframe_blobdata['<column_a>'], dataframe_blobdata['<column_b>'])

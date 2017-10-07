@@ -1,6 +1,6 @@
 ---
-title: "Nainstalovat bránu dat místní | Microsoft Docs"
-description: "Zjistěte, jak nainstalovat a nakonfigurovat bránu místní data."
+title: "Brána dat místní aaaInstall | Microsoft Docs"
+description: "Zjistěte, jak tooinstall a konfigurace brány místní data."
 services: analysis-services
 documentationcenter: 
 author: minewiskan
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/22/2017
 ms.author: owend
-ms.openlocfilehash: 6ef296fb98478be9240f0231c8ad39cd2a0af995
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e2878bf765c82910d452ae2cdd9264a343ec1990
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Nainstalujte a nakonfigurujte bránu místní data
-Místní brána dat je potřeba při jeden nebo více serverů ve stejné oblasti Azure Analysis Services připojení ke zdrojům dat v místě. Další informace o bráně najdete v tématu [místní brána dat](analysis-services-gateway.md).
+Místní brána dat je potřeba při jeden nebo více serverů Azure Analysis Services v hello stejné oblasti připojení zdroje dat tooon místní. toolearn Další informace o bráně hello, najdete v části [místní brána dat](analysis-services-gateway.md).
 
 ## <a name="prerequisites"></a>Požadavky
 **Minimální požadavky:**
@@ -38,21 +38,21 @@ Místní brána dat je potřeba při jeden nebo více serverů ve stejné oblast
 
 **Důležité informace:**
 
-* Během instalace, při registraci brány na Azure je vybrán výchozí oblasti pro vaše předplatné. Můžete použít v jiné oblasti. Pokud máte servery ve více než jedné oblasti, je nutné nainstalovat bránu pro každou oblast. 
-* Brána nemůže být nainstalována na řadiči domény.
+* Během instalace, při registraci brány na Azure je vybrat hello výchozí oblast pro vaše předplatné. Můžete použít v jiné oblasti. Pokud máte servery ve více než jedné oblasti, je nutné nainstalovat bránu pro každou oblast. 
+* Brána Hello nemůže být nainstalována na řadiči domény.
 * V jednom počítači lze nainstalovat pouze jedna brána.
-* Bránu nainstalujte na počítač, který zůstává na a není přejít do režimu spánku.
-* Neinstalujte bránu v počítači se bezdrátově připojený k síti. Výkon může být snížena.
+* Hello bránu nainstalujte na počítač, který zůstává na a nepřekračuje toosleep.
+* Neinstalujte hello brány v síti bezdrátově připojených tooyour počítače. Výkon může být snížena.
 
 
 ## <a name="download"></a>Stahování
- [Stáhněte bránu](https://aka.ms/azureasgateway)
+ [Stáhnout hello brány](https://aka.ms/azureasgateway)
 
 ## <a name="install"></a>Instalace
 
 1. Spusťte instalační program.
 
-2. Vyberte umístění, přijměte podmínky a pak klikněte na tlačítko **nainstalovat**.
+2. Vyberte umístění, přijměte podmínky hello a pak klikněte na tlačítko **nainstalovat**.
 
    ![Nainstalujte umístění a licenční podmínky](media/analysis-services-gateway-install/aas-gateway-installer-accept.png)
 
@@ -60,27 +60,27 @@ Místní brána dat je potřeba při jeden nebo více serverů ve stejné oblast
 
    ![Vyberte typ brány](media/analysis-services-gateway-install/aas-gateway-installer-shared.png)
 
-4. Zadejte účet pro přihlášení k Azure. Účet musí být v vašeho klienta Azure Active Directory. Tento účet slouží pro správce brány. 
+4. Zadejte účtu toosign tooAzure. Hello účet musí být v vašeho klienta Azure Active Directory. Tento účet slouží pro hello Správce brány. 
 
-   ![Zadejte účet pro přihlášení k Azure](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
+   ![Zadejte účtu toosign v tooAzure](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
 
    > [!NOTE]
-   > Pokud se přihlásíte pomocí účtu domény, ji budou mapována na váš účet organizace v Azure AD. Váš účet organizace se použije jako správce brány.
+   > Pokud se přihlásíte pomocí účtu domény, bude namapované tooyour účet organizace v Azure AD. Váš účet organizace se použije jako správce brány hello hello.
 
 ## <a name="register"></a>Registrace
-Chcete-li vytvořit bránu prostředků v Azure, je nutné zaregistrovat místní instance, kterou jste nainstalovali s cloudové službě brány. 
+V pořadí toocreate brány prostředků v Azure je nutné zaregistrovat hello místní instance, které jste nainstalovali s hello cloudové službě brány. 
 
 1.  Vyberte **registrace nové brány na tomto počítači**.
 
     ![Registrace](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
-2. Zadejte název a obnovení klíče pro bránu. Ve výchozím nastavení brána používá výchozí oblasti vašeho předplatného. Pokud je nutné vybrat jiné oblasti, vyberte **změnu oblast**.
+2. Zadejte název a obnovení klíče pro bránu. Ve výchozím nastavení brána hello používá výchozí oblasti vašeho předplatného. Pokud potřebujete tooselect v jiné oblasti, vyberte **změnu oblast**.
 
    ![Registrace](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
 ## <a name="create-resource"></a>Vytvořte prostředek Azure brány
-Po instalaci a zaregistrovat bránu, musíte vytvořit prostředek brány ve vašem předplatném Azure. Přihlaste se k Azure pomocí stejného účtu, který jste použili při registraci brány.
+Po instalaci a zaregistrovat bránu, musíte toocreate brány prostředků ve vašem předplatném Azure. Přihlášení tooAzure s hello stejný účet, které jste použili při registraci brány hello.
 
 1. Na portálu Azure, klikněte na tlačítko **vytvoření nové služby** > **Enterprise integrace** > **místní brána dat** > **vytvořit**.
 
@@ -90,33 +90,33 @@ Po instalaci a zaregistrovat bránu, musíte vytvořit prostředek brány ve va�
 
     * **Název**: Zadejte název pro prostředek brány. 
 
-    * **Předplatné**: Vyberte předplatné Azure, které chcete přidružit k prostředku brány. 
-    Tento odběr musí být stejné předplatné, které jsou vaše servery v.
+    * **Předplatné**: Vyberte hello tooassociate předplatného Azure s vaší brány prostředků. 
+    Tento odběr musí být hello jsou vaše servery v rámci stejného předplatného.
    
-      Výchozí předplatné je založena na účet Azure, který jste použili k přihlášení.
+      výchozí předplatné Hello je založena na hello účet Azure, který jste použili toosign v.
 
     * **Skupina prostředků**: Vytvořte skupinu prostředků, nebo vyberte existující.
 
-    * **Umístění**: Vyberte oblast zaregistrovat bránu v.
+    * **Umístění**: zaregistrovat bránu v oblasti vyberte hello.
 
-    * **Název instalace**: Pokud vaše instalace brány již není vybrána, vyberte bránu zaregistrován. 
+    * **Název instalace**: Pokud vaše instalace brány již není vybrána, vyberte hello brána registrovaná. 
 
     Když jste hotovi, klikněte na tlačítko **vytvořit**.
 
-## <a name="connect-servers"></a>Připojte servery k prostředku brány
+## <a name="connect-servers"></a>Připojte prostředek brány toohello servery
 
 1. V přehledu vaší služby Azure Analysis Services serveru, klikněte na tlačítko **místní brána dat**.
 
-   ![Připojení serveru k bráně](media/analysis-services-gateway-install/aas-gateway-connect-server.png)
+   ![Připojit server toogateway](media/analysis-services-gateway-install/aas-gateway-connect-server.png)
 
-2. V **vyberte bránu místní Data připojit**, vyberte prostředek vaší brány a pak klikněte na tlačítko **připojit vybrané brány**.
+2. V **vyberte místní brána dat tooconnect**, vyberte prostředek vaší brány a pak klikněte na tlačítko **připojit vybrané brány**.
 
-   ![Připojení serveru k prostředku brány](media/analysis-services-gateway-install/aas-gateway-connect-resource.png)
+   ![Připojte server toogateway prostředek](media/analysis-services-gateway-install/aas-gateway-connect-resource.png)
 
     > [!NOTE]
-    > Pokud vaše brána v seznamu nezobrazí, je váš server pravděpodobně že není ve stejné oblasti jako oblast jste zadali při registraci brány. 
+    > Pokud vaše brána není uvedené v seznamu hello, váš server není pravděpodobné ve stejné oblasti jako hello oblasti, které jste zadali při registraci brány hello hello. 
 
-A je to. Pokud potřebujete otevřít porty nebo provést žádné řešení potíží, nezapomeňte se podívat [místní brána dat](analysis-services-gateway.md).
+A je to. Pokud třeba tooopen porty nebo provést žádné řešení potíží s, nebude se toocheck se [místní brána dat](analysis-services-gateway.md).
 
 ## <a name="next-steps"></a>Další kroky
 * [Správa služby Analysis Services](analysis-services-manage.md)   

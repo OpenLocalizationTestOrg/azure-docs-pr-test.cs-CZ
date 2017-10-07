@@ -1,5 +1,5 @@
 ---
-title: "Azure Cosmos DB: Příklady .NET pro rozhraní API DocumentDB | Microsoft Docs"
+title: "Azure Cosmos DB: Příklady .NET hello rozhraní API DocumentDB | Microsoft Docs"
 description: "Pro běžné úlohy v DocumentDB, včetně operace CRUD najít příklady C# .NET na githubu."
 keywords: "Příklad NoSQL"
 services: cosmos-db
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.openlocfilehash: 5f0a7f59c114ab65a19617a62d39dcfa93a25c00
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c731794274d9aecbb1366c8e0e36b7688ed4a531
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-net-examples-for-the-documentdb-api"></a>Azure Cosmos DB: Příklady .NET pro rozhraní API DocumentDB
+# <a name="azure-cosmos-db-net-examples-for-hello-documentdb-api"></a>Azure Cosmos DB: Příklady .NET hello DocumentDB rozhraní API
 > [!div class="op_single_selector"]
 > * [Příklady rozhraní .NET](documentdb-dotnet-samples.md)
 > * [Příklady Node.js](documentdb-nodejs-samples.md)
@@ -30,36 +30,36 @@ ms.lasthandoff: 08/18/2017
 > 
 > 
 
-Nejnovější ukázkové řešení, která provádět operace CRUD a dalších běžných operací s prostředky Azure Cosmos DB jsou součástí [azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples) úložiště GitHub. Tento článek obsahuje:
+Nejnovější ukázkové řešení, která provádět operace CRUD a dalších běžných operací s prostředky Azure Cosmos DB jsou součástí hello [azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples) úložiště GitHub. Tento článek obsahuje:
 
-* Odkazy na úlohy v jednotlivých souborů projektu příklad C#. 
-* Odkazy na související rozhraní API odkazovat na obsah.
+* Soubory projektu odkazy toohello úlohy v každé z hello příklad C#. 
+* Odkazy toohello související obsah referenční dokumentace rozhraní API.
 
 **Požadavky**
 
-1. Je třeba Azure účet, který chcete použít tyto příklady:
-   * Můžete si [otevřít účet Azure zdarma](https://azure.microsoft.com/pricing/free-trial/): Získáte kredity, které můžete použít k vyzkoušení placených služeb Azure. Až je vypotřebujete, můžete si účet nechat a dál používat bezplatné služby Azure, například Websites. Nikdy vám nebudeme účtovat žádné poplatky, pokud si sami nezměníte nastavení a nezačnete používat placené služby.
+1. Je třeba účtu Azure toouse tyto příklady:
+   * Můžete [zdarma otevřít účet Azure](https://azure.microsoft.com/pricing/free-trial/): získáte kredity, můžete použít tootry na placené služby Azure a i po jejich použití až můžete hello účet ponechat a používat bezplatné služby Azure, jako jsou weby. Platební karty nikdy odečte, není-li explicitně změnit nastavení a požádejte toobe účtovat.
      * Můžete [aktivovat výhody předplatitele Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/): Visual Studio vaše předplatné vám dává kredity každý měsíc, které můžete použít pro placené služby Azure.
-2. Musíte taky [balíček Microsoft.Azure.DocumentDB NuGet](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/). 
+2. Musíte taky hello [balíček Microsoft.Azure.DocumentDB NuGet](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/). 
 
 > [!NOTE]
-> Každá ukázka je samostatný, nastaví sám a vyčistí po sám sebe. Ukázky jako takový vydejte několik volání CreateDocumentCollectionAsync(). Pokaždé, když k tomu je vaše předplatné se fakturuje jednu hodinu využití na úroveň výkonu kolekce vytváří. 
+> Každá ukázka je samostatný, nastaví sám a vyčistí po sám sebe. Ukázky hello jako takový vydat tooCreateDocumentCollectionAsync() více volání. Pokaždé, když k tomu je vaše předplatné se fakturuje jednu hodinu využití za hello úroveň výkonu kolekce hello vytváří. 
 > 
 > 
 
 ## <a name="database-examples"></a>Příklady databáze
-[RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L72-L121) metoda v ukázkovém projektu DatabaseManagement ukazuje, jak provádět následující úlohy.
+Hello [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L72-L121) metoda hello ukázkovém projektu DatabaseManagement hello ukazuje, jak tooperform hello následující úlohy.
 
 | Úkol | API – referenční informace |
 | --- | --- |
 | [Vytvoření databáze](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L90) |[DocumentClient.CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) |
 | [Dotaz databáze](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L81) |[DocumentQueryable.CreateDatabaseQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createdatabasequery.aspx) |
 | [Čtení databáze podle Id](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L102) |[DocumentClient.ReadDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdatabaseasync.aspx) |
-| [Číst všechny databáze](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L108-L113) |[DocumentClient.ReadDatabaseFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdatabasefeedasync.aspx) |
+| [Číst všechny databáze hello](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L108-L113) |[DocumentClient.ReadDatabaseFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdatabasefeedasync.aspx) |
 | [Odstranění databáze](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L118) |[DocumentClient.DeleteDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.deletedatabaseasync.aspx) |
 
 ## <a name="collection-examples"></a>Příklady kolekce
-[RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/CollectionManagement/Program.cs#L96-L185) metoda ukázkový projekt CollectionManagement ukazuje, jak provést následující úlohy.
+Hello [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/CollectionManagement/Program.cs#L96-L185) metoda hello ukázkový CollectionManagement projekt ukazuje, jak toodo hello následující úlohy.
 
 | Úkol | API – referenční informace |
 | --- | --- |
@@ -67,17 +67,17 @@ Nejnovější ukázkové řešení, která provádět operace CRUD a dalších b
 | [Získat nakonfigurované výkonu kolekce](https://github.com/Azure/azure-documentdb-dotnet/blob/95521ff51ade486bb899d6913880995beaff58ce/samples/code-samples/CollectionManagement/Program.cs#L198) |[DocumentQueryable.CreateOfferQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createofferquery.aspx) |
 | [Změnit nakonfigurované výkonu kolekce](https://github.com/Azure/azure-documentdb-dotnet/blob/95521ff51ade486bb899d6913880995beaff58ce/samples/code-samples/CollectionManagement/Program.cs#L207) |[DocumentClient.ReplaceOfferAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replaceofferasync.aspx) |
 | [Získání kolekce podle Id](https://github.com/Azure/azure-documentdb-dotnet/blob/89670bc8aefd9bdd932db7f9b6d2fcb9b6acf35e/samples/code-samples/CollectionManagement/Program.cs#L153) |[DocumentClient.ReadDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync.aspx) |
-| [Číst všechny kolekce v databázi](https://github.com/Azure/azure-documentdb-dotnet/blob/89670bc8aefd9bdd932db7f9b6d2fcb9b6acf35e/samples/code-samples/CollectionManagement/Program.cs#L162) |[DocumentClient.ReadDocumentCollectionFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdocumentcollectionfeedasync.aspx) |
+| [Číst všechny kolekce hello v databázi](https://github.com/Azure/azure-documentdb-dotnet/blob/89670bc8aefd9bdd932db7f9b6d2fcb9b6acf35e/samples/code-samples/CollectionManagement/Program.cs#L162) |[DocumentClient.ReadDocumentCollectionFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdocumentcollectionfeedasync.aspx) |
 | [Odstranit kolekci](https://github.com/Azure/azure-documentdb-dotnet/blob/89670bc8aefd9bdd932db7f9b6d2fcb9b6acf35e/samples/code-samples/CollectionManagement/Program.cs#L175) |[DocumentClient.DeleteDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.deletedocumentcollectionasync.aspx) |
 
 ## <a name="document-examples"></a>Příklady dokumentu
-[RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L97-L102) metoda ukázkový projekt DocumentManagement ukazuje, jak provést následující úlohy.
+Hello [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L97-L102) metoda hello ukázkový DocumentManagement projekt ukazuje, jak toodo hello následující úlohy.
 
 | Úkol | API – referenční informace |
 | --- | --- |
 | [Vytvoření dokumentu](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L198) |[DocumentClient.CreateDocumentAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) |
 | [Čtení dokumentu podle Id](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L211) |[DocumentClient.ReadDocumentAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdocumentasync.aspx) |
-| [Číst všechny dokumenty v kolekci](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L227) |[DocumentClient.ReadDocumentFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdocumentfeedasync.aspx) |
+| [Číst všechny dokumenty hello v kolekci](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L227) |[DocumentClient.ReadDocumentFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdocumentfeedasync.aspx) |
 | [Dotaz pro dokumenty](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L248-L251) |[DocumentClient.CreateDocumentQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createdocumentquery.aspx) |
 | [Nahrazení dokumentu](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L263) |[DocumentClient.ReplaceDocumentAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replacedocumentasync.aspx) |
 | [Upsert dokumentu](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L300) |[DocumentClient.UpsertDocumentAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.upsertdocumentasync.aspx) |
@@ -87,14 +87,14 @@ Nejnovější ukázkové řešení, která provádět operace CRUD a dalších b
 | [Dokument číst pouze v případě, že došlo ke změně dokumentu](https://github.com/Azure/azure-documentdb-dotnet/blob/f2b11dec45a195ddeed333560ebba63055f5ed09/samples/code-samples/DocumentManagement/Program.cs#L442-L470) |[DocumentClient.AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx)<br>[Documents.Client.AccessConditionType](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accessconditiontype.aspx) |
 
 ## <a name="indexing-examples"></a>Příklady indexování
-[RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/ea8c977b9c2f37ddc2894911ec239907ab60e40a/samples/code-samples/IndexManagement/Program.cs#L89-L117) metoda ukázkový projekt IndexManagement ukazuje, jak provádět následující úlohy.
+Hello [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/ea8c977b9c2f37ddc2894911ec239907ab60e40a/samples/code-samples/IndexManagement/Program.cs#L89-L117) metoda hello ukázkový IndexManagement projekt ukazuje, jak tooperform hello následující úlohy.
 
 | Úkol | API – referenční informace |
 | --- | --- |
-| [Vyloučit dokumentu z indexu](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L125-L163) |[IndexingDirective.Exclude](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingdirective.aspx) |
+| [Vyloučit dokumentu z indexu hello](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L125-L163) |[IndexingDirective.Exclude](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingdirective.aspx) |
 | [Použít indexování ruční (namísto Automatická)](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L171-L209) |[IndexingPolicy.Automatic](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.automatic.aspx) |
 | [Použít indexování opožděné (namísto konzistentní)](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L221-L238) |[IndexingMode.Lazy](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.indexingmode.aspx#P:Microsoft.Azure.Documents.IndexingPolicy.IndexingMode) |
-| [Vyloučit z indexu zadaný dokument cesty](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L248-L297) |[IndexingPolicy.ExcludedPaths](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.excludedpaths.aspx) |
+| [Vyloučit cesty zadaný dokument od indexu hello](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L248-L297) |[IndexingPolicy.ExcludedPaths](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.excludedpaths.aspx) |
 | [Vynutit operaci prohledávání rozsah v cestě indexované hash](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L305-L340) |[FeedOptions.EnableScanInQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx) |
 | [Použít rozsah indexy na řetězce](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L342-L405) |[IndexingPolicy.IncludedPaths](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.includedpaths.aspx)<br>[RangeIndex](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.rangeindex.aspx) |
 | [Proveďte transformaci indexu](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L407-L464) |[ReplaceDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replacedocumentcollectionasync.aspx) |
@@ -102,7 +102,7 @@ Nejnovější ukázkové řešení, která provádět operace CRUD a dalších b
 Další informace o indexování najdete v tématu [Azure DB Cosmos indexování zásady](indexing-policies.md).
 
 ## <a name="geospatial-examples"></a>Příklady geoprostorové
-Ukázkový soubor geoprostorové, [azure-documentdb-dotnet/samples/code-samples/Geospatial/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs), ukazuje, jak provést následující úlohy.  
+Hello geoprostorové ukázkový soubor [azure-documentdb-dotnet/samples/code-samples/Geospatial/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs), ukazuje, jak toodo hello následující úlohy.  
 
 | Úkol | API – referenční informace |
 | --- | --- |
@@ -116,7 +116,7 @@ Ukázkový soubor geoprostorové, [azure-documentdb-dotnet/samples/code-samples/
 Další informace o práci s daty geoprostorové najdete v tématu [práci s daty geoprostorové v Azure Cosmos DB](geospatial.md).  
 
 ## <a name="query-examples"></a>Příklady dotazů
-Soubor dokumentu dotazů [azure-documentdb-dotnet/samples/code-samples/Queries/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs), ukazuje, jak provést každý z těchto úloh pomocí gramatiky dotazů SQL poskytovateli LINQ pomocí dotazu a s Lambda.
+soubor dokumentu Hello dotazů, [azure-documentdb-dotnet/samples/code-samples/Queries/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs), ukazuje, jak toodo Dobrý den následující úlohy pomocí modulu snap-in gramatiky dotazů SQL hello hello LINQ zprostředkovatele s dotazem a s Lambda.
 
 | Úkol | API – referenční informace |
 | --- | --- |
@@ -138,17 +138,17 @@ Soubor dokumentu dotazů [azure-documentdb-dotnet/samples/code-samples/Queries/P
 Další informace o vytváření dotazů najdete v tématu [dotazu SQL v Azure Cosmos DB](documentdb-sql-query.md).
 
 ## <a name="change-feed-examples"></a>Změna kanálu příklady 
-Změna kanálu ukázce [azure-documentdb-dotnet/samples/code-samples/ChangeFeed/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) ukazuje, jak provést následující úlohy. 
+Změna Hello kanálu ukázce [azure-documentdb-dotnet/samples/code-samples/ChangeFeed/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) ukazuje, jak toodo hello následující úlohy. 
 
 | Úkol | API – referenční informace |
 | --- | --- |
 | [Změna čtení kanálu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L132) |[DocumentClient.CreateDocumentChangeFeedQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) | 
 | [Čtení rozsahů klíče oddílu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L118) |[DocumentClient.ReadPartitionKeyRangeFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync.aspx) | 
 
-Změna kanálu ukázka procesoru: [změnit kanálu nástroj pro migraci](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool) ukazuje, jak změnu kanálu procesoru knihovny použít k replikaci dat do jiné kolekce Cosmos DB.   
+změnu Hello kanálu ukázka procesoru: [změnit kanálu nástroj pro migraci](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool) ukazuje, jak změnit toouse kanálu procesoru knihovny tooreplicate data tooanother Cosmos DB kolekce.   
 
 ## <a name="server-side-programming-examples"></a>Ukázky programování na straně serveru
-Soubor programování na straně serveru, [azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs), ukazuje, jak provést následující úlohy.
+souborů programování na straně serveru Hello, [azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs), ukazuje, jak toodo hello následující úlohy.
 
 | Úkol | API – referenční informace |
 | --- | --- |
@@ -163,7 +163,7 @@ Soubor programování na straně serveru, [azure-documentdb-dotnet/samples/code-
 Další informace o programování na straně serveru najdete v tématu [programování na straně serveru Azure Cosmos DB: uložené procedury, triggery databáze a UDF](programming.md).
 
 ## <a name="user-management-examples"></a>Příklady správy uživatelů
-Soubor sady management uživatele [azure-documentdb-dotnet/samples/code-samples/UserManagement/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/UserManagement/Program.cs), ukazuje, jak provést následující úlohy.
+soubor správu Hello uživatele, [azure-documentdb-dotnet/samples/code-samples/UserManagement/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/UserManagement/Program.cs), ukazuje, jak toodo hello následující úlohy.
 
 | Úkol | API – referenční informace |
 | --- | --- |

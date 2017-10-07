@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření vaší první virtuální počítač v testovacím prostředí v Azure DevTest Labs | Microsoft Docs"
-description: "Naučte se vytvořit svůj první virtuální počítač v testovacím prostředí v Azure DevTest Labs"
+title: "aaaCreate vaše první virtuální počítač v testovacím prostředí v Azure DevTest Labs | Microsoft Docs"
+description: "Zjistěte, jak toocreate prvním virtuálním počítači v testovacím prostředí v Azure DevTest Labs"
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: tomarcher
@@ -14,42 +14,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2017
 ms.author: tarcher
-ms.openlocfilehash: aa6b60b799e1e98815cf288d5612f98cd77cc00e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4c3257efca9be6fdd190eaac1db731464e07fcfd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-first-vm-in-a-lab-in-azure-devtest-labs"></a>Vytvoření vaší první virtuální počítač v testovacím prostředí v Azure DevTest Labs
 
-Pokud jste původně přístup DevTest Labs a chcete k vytvoření vašeho prvního virtuálního počítače, bude pravděpodobně uděláte pomocí předem načtený [image základní marketplace](devtest-lab-configure-marketplace-images.md). Později na taky budete moct vybrat z [vlastní image a vzorce](devtest-lab-add-vm.md) při vytváření více virtuálních počítačů. 
+Pokud jste původně přístup DevTest Labs a chcete toocreate vaše první virtuální počítač, bude pravděpodobně uděláte pomocí předem načtený [image základní marketplace](devtest-lab-configure-marketplace-images.md). Později na taky budete moct toochoose z [vlastní image a vzorce](devtest-lab-add-vm.md) při vytváření více virtuálních počítačů. 
 
-Tento kurz vás provede procesem přidání vaší první virtuální počítač do testovacího prostředí v DevTest Labs pomocí portálu Azure.
+Tento kurz vás provede pomocí hello Azure portálu tooadd první testovacího virtuálního počítače tooa prostředí v DevTest Labs.
 
-## <a name="steps-to-add-your-first-vm-to-a-lab-in-azure-devtest-labs"></a>Postup pro přidání do testovacího prostředí v Azure DevTest Labs vašeho prvního virtuálního počítače
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Vyberte **více služeb**a potom vyberte **DevTest Labs** ze seznamu.
-1. Ze seznamu labs vyberte testovací prostředí, ve kterém chcete vytvořit virtuální počítač.  
-1. V tomto prostředí **přehled** vyberte **+ přidat**.  
+## <a name="steps-tooadd-your-first-vm-tooa-lab-in-azure-devtest-labs"></a>Kroky tooadd první testovacího prostředí tooa virtuálních počítačů v Azure DevTest Labs
+1. Přihlaste se toohello [portál Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Vyberte **více služeb**a potom vyberte **DevTest Labs** hello seznamu.
+1. Ze seznamu hello labs vyberte hello testovacího prostředí, ve kterém chcete toocreate hello virtuálních počítačů.  
+1. V testovacím hello **přehled** vyberte **+ přidat**.  
 
     ![Virtuální počítač tlačítko Přidat](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
 
-1. Na **zvolte na základní** okně, vyberte bitovou kopii na trhu pro virtuální počítač.
-1. Na **virtuálního počítače** okno, zadejte název pro nový virtuální počítač **název virtuálního počítače** textového pole.
+1. Na hello **zvolte na základní** okně, vyberte bitovou kopii na trhu hello virtuálních počítačů.
+1. Na hello **virtuálního počítače** okno, zadejte název pro nový virtuální počítač hello v hello **název virtuálního počítače** textové pole.
 
     ![Okno prostředí virtuálních počítačů](./media/devtest-lab-add-vm/devtestlab-lab-add-first-vm.png)
 
-1. Zadejte **uživatelské jméno** , jsou udělena oprávnění správce na virtuálním počítači.  
-1. Zadejte heslo do textového pole s názvem bez přípony **zadejte hodnotu**.
-1. **Typ disku virtuálního počítače** určuje disku typů úložiště, které u virtuálních počítačů v testovacím prostředí.
-1. Vyberte **velikost virtuálního počítače** a vyberte jednu z předdefinovaných položky, které zadejte jader procesoru, velikosti paměti RAM a velikost pevného disku pro vytvoření virtuálního počítače.
-1. Vyberte **artefakty** a - ze seznamu artefaktů - vyberte a nakonfigurujte artefaktů, které chcete přidat do základní bitové kopie.
-    **Poznámka:** Pokud nepracovali DevTest Labs nebo konfigurace artefaktů, vyhledejte [přidat existující artefaktů pro virtuální počítač](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) části a vraťte se sem po dokončení.
-1. Vyberte **vytvořit** přidat zadaný virtuální počítač do testovacího prostředí.
+1. Zadejte **uživatelské jméno** , jsou udělena oprávnění správce na virtuálním počítači hello.  
+1. Zadejte heslo do hello textové pole s názvem bez přípony **zadejte hodnotu**.
+1. Hello **typ disku virtuálního počítače** Určuje, jaký typ úložiště disku je povoleno pro hello virtuálních počítačů v testovacím prostředí hello.
+1. Vyberte **velikost virtuálního počítače** a vyberte jednu z hello předdefinované položky, které zadejte hello jader procesoru, velikost paměti RAM a velikost pevného disku hello toocreate hello virtuálních počítačů.
+1. Vyberte **artefakty** a - z hello seznam artefakty - vyberte a nakonfigurujte hello artefakty, že chcete tooadd toohello základní image.
+    **Poznámka:** nové Labs tooDevTest nebo toohello konfigurace artefaktů, najdete v [přidat existující artefaktů tooa virtuálních počítačů](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) části a vraťte se sem po dokončení.
+1. Vyberte **vytvořit** tooadd hello zadaný testovacím toohello virtuálních počítačů.
 
-   V okně prostředí zobrazí stav vytváření Virtuálního počítače – nejprve jako **vytváření**, pak jako **systémem** po spuštění virtuálního počítače.
+   Hello testovacím zobrazuje hello stav vytvoření hello VM - nejprve jako **vytváření**, pak jako **systémem** po hello virtuálního počítače byla spuštěna.
 
 ## <a name="next-steps"></a>Další kroky
-* Po vytvoření virtuálního počítače, můžete připojit k virtuálnímu počítači tak, že vyberete **Connect** v okně Virtuálního počítače.
-* Podívejte se na [přidat virtuální počítač do testovacího prostředí](devtest-lab-add-vm.md) podrobnější informace o přidávání dalších virtuálních počítačů ve svém testovacím prostředí.
-* Prozkoumejte [Galerie šablon DevTest Labs Azure Resource Manager QuickStart](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates).
+* Jednou hello vytvořil virtuální počítač, můžete připojit toohello virtuálních počítačů tak, že vyberete **Connect** v okně hello Virtuálního počítače.
+* Podívejte se na [přidání testovacího prostředí virtuálních počítačů tooa](devtest-lab-add-vm.md) podrobnější informace o přidávání dalších virtuálních počítačů ve svém testovacím prostředí.
+* Prozkoumejte hello [Galerie šablon DevTest Labs Azure Resource Manager QuickStart](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates).

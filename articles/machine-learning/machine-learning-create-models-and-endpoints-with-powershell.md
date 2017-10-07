@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření více modelů z jednoho experimentu | Microsoft Docs"
-description: "Pomocí prostředí PowerShell vytvořit více modely Machine Learning a webové koncové body služby se stejným algoritmus, ale jiné školení datové sady."
+title: "aaaCreate více modely z jednoho experimentu | Microsoft Docs"
+description: "Pomocí prostředí PowerShell toocreate více modelů Machine Learning a webové služby koncové body pomocí hello stejný algoritmus ale jiné školení datové sady."
 services: machine-learning
 documentationcenter: 
 author: hning86
@@ -14,74 +14,74 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: garye;haining
-ms.openlocfilehash: 21d8c1ee0877df8d317d5a14131dc574fa5303c4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4a258a8ab26395d4169a058520151c860e16e169
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>Vytvoření mnoha modelů Machine Learning a koncových bodů webové služby z jednoho experimentu pomocí prostředí PowerShell
-Zde problém je běžný, machine learning: Chcete vytvořit mnoho modely, které mají stejný pracovní postup školení a použít stejný algoritmus, ale mít jiný školení datové sady jako vstup. Tento článek ukazuje, jak to udělat ve velkém měřítku v Azure Machine Learning Studio pomocí právě jeden experimentu.
+Zde problém je běžný, machine learning: Chcete toocreate mnoho modely, které mají hello stejný pracovní postup školení a použití hello stejný algoritmus, ale mají různé školení datové sady jako vstup. Tento článek ukazuje, jak toodo to škálované v Azure Machine Learning Studio pomocí právě jeden experimentu.
 
-Řekněme například, že vlastníte firma franšíza pronájem globální kolo. Budete chtít vytvořit regresní model k vyžádání pronájem na základě historických dat předpovědi. Máte 1000 pronájem umístění po celém světě a jste shromažďují datovou sadu pro každé umístění, která obsahuje důležité funkce, jako je například datum, čas, počasí a provoz, které jsou specifické pro každé umístění.
+Řekněme například, že vlastníte firma franšíza pronájem globální kolo. Chcete toobuild regresní model toopredict hello pronájem požadavek na základě historických dat. Máte 1000 pronájem umístění napříč hello, world a jste shromažďují datovou sadu pro každé umístění, která obsahuje důležité funkce, jako je například datum, čas, počasí a provoz, které jsou specifické tooeach umístění.
 
-Může natrénování modelu jednou pomocí sloučené verzi všechny datové sady ve všech umístěních. Ale protože každé z vašich lokalit má jedinečné prostředí, je vhodnější by k natrénování modelu regrese samostatně pomocí datovou sadu pro každé umístění. Tímto způsobem, každý trained model může vzít v úvahu velikosti jiné úložiště, svazku, geography, plnění, kolo friendly provoz prostředí *atd*.
+Může natrénování modelu jednou pomocí sloučené verze všech datových sad hello ve všech umístěních. Ale protože každé z vašich lokalit má jedinečné prostředí, je vhodnější by být tootrain regresní model samostatně pomocí hello datovou sadu pro každé umístění. Tímto způsobem do velikosti jiném úložišti hello účtů, svazku, geography, plnění, kolo friendly provoz prostředí, může trvat každý trained model *atd*.
 
-Který může být nejlepším přístupem, ale nechcete vytvořit 1000 experimenty školení v Azure Machine Learning s každé z nich představující jedinečné umístění. Kromě toho se čtenáře úloh, je také zdá se, že poměrně neefektivní vzhledem k tomu, že každý experiment by měla mít stejné komponenty s výjimkou školení datovou sadu.
+Který může být nejlepším postupem hello, ale nechcete, aby toocreate 1000 školení experimenty v Azure Machine Learning s každé z nich představující jedinečné umístění. Kromě toho se čtenáře úloh, je také zdá se, že poměrně neefektivní vzhledem k tomu, že každý experiment by měla mít všechny hello stejné komponenty s výjimkou hello školení datovou sadu.
 
-Naštěstí jsme se dá dosáhnout pomocí [Azure Machine Learning retraining API](machine-learning-retrain-models-programmatically.md) a automatizaci úloh s [Azure Machine Learning PowerShell](machine-learning-powershell-module.md).
-
-> [!NOTE]
-> Pokud chcete, aby naše ukázka rychleji probíhají rychleji, jsme budete snížit počet umístění z 1000 až 10. Ale stejné zásady a postupy platí pro 1 000 umístění. Jediným rozdílem je, pokud chcete cvičení z datových sad, 1 000 pravděpodobně chcete zamyslet nad paralelním spuštěním následujících skriptů prostředí PowerShell. Jak to provést, je nad rámec tohoto článku, ale můžete najít příklady prostředí PowerShell více vláken na Internetu.  
-> 
-> 
-
-## <a name="set-up-the-training-experiment"></a>Nastavit výukový experiment
-Vytvoříme použijte příklad [výukový experiment](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Training-Experiment-1) , jsme již jste vytvořili v [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com). Otevřete tento experiment v vaše [Azure Machine Learning Studio](https://studio.azureml.net) pracovního prostoru.
+Naštěstí jsme se dá dosáhnout pomocí hello [Azure Machine Learning retraining API](machine-learning-retrain-models-programmatically.md) a automatizace úkolů hello s [Azure Machine Learning PowerShell](machine-learning-powershell-module.md).
 
 > [!NOTE]
-> Aby bylo možné postupovat podle spolu se v tomto příkladu, můžete použít standardní pracovní prostor než volného prostoru. Jsme budete vytváření jeden koncový bod pro každého zákazníka – celkem 10 koncové body – a vzhledem k tomu, že je omezený na 3 koncové body volného prostoru, bude vyžadovat standardní pracovní prostor. Pokud máte pouze volného prostoru, stačí upravte skripty umožňující jenom 3 umístění níže.
+> toomake naše ukázka rychleji probíhají rychleji, jsme budete snížit hello počet umístění z 1 000 too10. Ale hello stejné zásady a postupy platí too1 000 umístění. Hello jediným rozdílem je, že pokud chcete, aby tootrain z 1 000 datových sad, budete ho zřejmě chtít toothink spuštěných hello následujících skriptů prostředí PowerShell paralelně. Jak toodo, který je mimo rozsah hello v tomto článku, ale najdete příklady prostředí PowerShell více vláken na hello Internetu.  
 > 
 > 
 
-Experiment používá **Import dat** modulu k importu datovou sadu školení *customer001.csv* z účtu úložiště Azure. Předpokládejme, jsme shromážděných z všech kolo pronájem umístění datové sady školení a je uložen ve stejném umístění úložiště objektů blob s názvy souborů od *rentalloc001.csv* k *rentalloc10.csv*.
+## <a name="set-up-hello-training-experiment"></a>Nastavit výukový experiment hello
+Vytvoříme toouse příklad [výukový experiment](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Training-Experiment-1) , jsme již jste vytvořili v hello [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com). Otevřete tento experiment v vaše [Azure Machine Learning Studio](https://studio.azureml.net) pracovního prostoru.
+
+> [!NOTE]
+> V pořadí toofollow spolu se v tomto příkladu můžete chtít toouse standardní pracovní prostor než volného prostoru. Jsme budete vytváření jeden koncový bod pro každého zákazníka – celkem 10 koncové body – a vzhledem k tomu, že volného prostoru je omezená too3 koncové body, které se vyžadují standardní pracovní prostor. Pokud máte pouze volného prostoru, stačí upravte skripty hello níže tooallow pro jenom 3 umístění.
+> 
+> 
+
+Hello experiment používá **importovat Data** modulu tooimport hello školení datovou sadu *customer001.csv* z účtu úložiště Azure. Předpokládejme, jsme shromážděných z všech kolo pronájem umístění datové sady školení a je uložen v hello stejné umístění úložiště blob s názvy souborů od *rentalloc001.csv* příliš*rentalloc10.csv* .
 
 ![Bitové kopie](./media/machine-learning-create-models-and-endpoints-with-powershell/reader-module.png)
 
-Všimněte si, že **výstup webové služby** modul byl přidán do **Train Model** modulu.
-Při nasazení tohoto experimentu jako webové služby, koncový bod přidružené že výstup vrátí trénovaného modelu ve formátu souboru .ilearner.
+Všimněte si, že **výstup webové služby** modulu přidala toohello **Train Model** modulu.
+Při nasazení tohoto experimentu jako webové služby, koncový bod hello přidružený tento výstup hello formát souboru .ilearner, vrátí hello trained model.
 
-Také Upozorňujeme, že jsme nastavit parametr webové služby pro adresu URL, **importovat Data** používá modul. To umožňuje nám jednotlivých školení datové sady pro trénování modelu pro každé umístění zadejte pomocí parametru.
-Existují jiné způsoby jsme může to provedli, například pomocí příkazu jazyka SQL s parametrem webové služby se získat data z databáze SQL Azure nebo jednoduše pomocí **vstup webové služby** modulu v datové sadě předat webovou službu.
+Všimněte si, že jsme nastavit parametr webové služby pro adresu URL hello této hello **importovat Data** používá modul. To umožňuje nám toouse hello parametr toospecify jednotlivých školení datové sady tootrain hello modelu pro každé umístění.
+Existují jiné způsoby jsme může to provedli, například pomocí příkazu jazyka SQL webové služby parametr tooget daty z databáze SQL Azure nebo jednoduše pomocí **vstup webové služby** toopass modulu v datové sadě toohello webové služby.
 
 ![Bitové kopie](./media/machine-learning-create-models-and-endpoints-with-powershell/web-service-output.png)
 
-Teď umožňuje spustit tento výukový experiment pomocí výchozí hodnota *rental001.csv* jako školení datovou sadu. Je-li zobrazit výstup **Evaluate** modulu (klikněte na výstup a vyberte **vizualizovat**), najdete v části se nám získat dostatečnou výkon *AUC* = 0.91. V tomto okamžiku je připraven k nasazení webové služby mimo tento výukový experiment.
+Teď umožňuje spustit tento výukový experiment s výchozí hodnotou hello *rental001.csv* jako hello školení datovou sadu. Při zobrazení hello výstup hello **Evaluate** modulu (klikněte na výstup hello a vyberte **vizualizovat**), najdete v části se nám získat dostatečnou výkon *AUC* = 0.91. V tomto okamžiku nám připravené toodeploy webová služba mimo tento výukový experiment.
 
-## <a name="deploy-the-training-and-scoring-web-services"></a>Nasazení školení a vyhodnocování webové služby
-Chcete-li nasadit webovou službu školení, klikněte na tlačítko **nastavit webové služby** tlačítko níže na plátno experimentu a vyberte **nasazení webové služby**. Volání této webové služby "" kolo pronájem školení".
+## <a name="deploy-hello-training-and-scoring-web-services"></a>Nasazení hello školení a vyhodnocování webové služby
+toodeploy hello cvičení webové služby, klikněte na tlačítko hello **nastavit webové služby** tlačítko pod plátnem experimentu hello a vyberte **nasazení webové služby**. Volání této webové služby "" kolo pronájem školení".
 
-Teď musíme nasazení vyhodnocování webové služby.
-K tomuto účelu můžete kliknete na **nastavit webové služby** níže na plátno a vyberte **webové služby prediktivní**. Tím se vytvoří vyhodnocování experimentu.
-Budeme potřebovat provádět několik menších úpravy, aby fungoval jako webovou službu, jako je například odebrání sloupce Popisek "cnt" ze vstupních dat a omezení výstup pouze id instance a odpovídající předpovědět hodnotu.
+Nyní potřebujeme toodeploy hello vyhodnocování webové služby.
+toodo toho jsme klikněte na tlačítko **nastavit webové služby** níže hello plátno a vyberte **webové služby prediktivní**. Tím se vytvoří vyhodnocování experimentu.
+Toomake potřebujeme pár menší úpravy toomake fungovat jako webovou službu, například odebráním hello popisek sloupce "cnt" hello vstupní data a omezení id instance hello tooonly výstup hello a odpovídající hello předpovědět hodnotu.
 
-Sami práci uložit, můžete jednoduše otevřít [prediktivní experiment](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Predicative-Experiment-1) v galerii, který je již připravena.
+toosave sami, které pracují, můžete jednoduše otevřít hello [prediktivní experiment](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Predicative-Experiment-1) v hello galerie, která je již připravena.
 
-Pokud chcete nasadit webovou službu, spustit prediktivní experiment a pak klikněte na **nasazení webové služby** tlačítko níže na plátno. Název vyhodnocování webové služby "Kolo pronájem vyhodnocování" ".
+toodeploy hello webové služby, spustit experiment prediktivní hello, pak klikněte na hello **nasazení webové služby** tlačítko pod plátnem hello. Název hello vyhodnocování webové služby "Kolo pronájem vyhodnocování" ".
 
 ## <a name="create-10-identical-web-service-endpoints-with-powershell"></a>Vytvoření 10 koncových bodů identické webové služby pomocí prostředí PowerShell
-Této webové služby se dodává s výchozí koncový bod. Ale ještě nejsme zajímat výchozí koncový bod vzhledem k tomu, že se nezdařila. Co je potřeba udělat je vytvoření 10 další koncové body, jeden pro každé umístění. Provedeme to pomocí prostředí PowerShell.
+Této webové služby se dodává s výchozí koncový bod. Ale ještě nejsme zajímat hello výchozí koncový bod vzhledem k tomu, že se nezdařila. Co potřebujeme toodo je toocreate 10 další koncové body, jeden pro každé umístění. Provedeme to pomocí prostředí PowerShell.
 
 Nejprve nastavíme naše prostředí PowerShell:
 
     Import-Module .\AzureMLPS.dll
-    # Assume the default configuration file exists and is properly set to point to the valid Workspace.
+    # Assume hello default configuration file exists and is properly set toopoint toohello valid Workspace.
     $scoringSvc = Get-AmlWebService | where Name -eq 'Bike Rental Scoring'
     $trainingSvc = Get-AmlWebService | where Name -eq 'Bike Rental Training'
 
-Potom spusťte následující příkaz Powershellu:
+Potom spusťte následující příkaz prostředí PowerShell hello:
 
-    # Create 10 endpoints on the scoring web service.
+    # Create 10 endpoints on hello scoring web service.
     For ($i = 1; $i -le 10; $i++){
         $seq = $i.ToString().PadLeft(3, '0');
         $endpointName = 'rentalloc' + $seq;
@@ -89,17 +89,17 @@ Potom spusťte následující příkaz Powershellu:
         Add-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -Description $endpointName     
     }
 
-Nyní vytvořili jsme 10 koncových bodů a všechny obsahují stejné trénovaného modelu trénink na *customer001.csv*. Můžete je zobrazit na portálu správy Azure.
+Nyní vytvořili jsme 10 koncových bodů a všechny obsahují hello stejný trained model trénink na *customer001.csv*. Můžete je zobrazit v hello portálu pro správu Azure.
 
 ![Bitové kopie](./media/machine-learning-create-models-and-endpoints-with-powershell/created-endpoints.png)
 
-## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>Aktualizovat koncové body používat samostatný školení datové sady pomocí prostředí PowerShell
-Dalším krokem je aktualizovat koncové body s modely, které jednoznačně trénink na jednotlivé data každého zákazníka. Nejprve musíme vytvořit z těchto modelů, ale **kolo pronájem školení** webové služby. Přejděte zpět do **kolo pronájem školení** webové služby. Je potřeba volat svůj koncový bod BES 10krát s datovými sadami 10 různých školení Chcete-li vytvořit 10 odlišnými modely. Použijeme **InovkeAmlWebServiceBESEndpoint** rutiny prostředí PowerShell k tomu.
+## <a name="update-hello-endpoints-toouse-separate-training-datasets-using-powershell"></a>Aktualizovat hello koncové body toouse samostatné školení datové sady pomocí prostředí PowerShell
+dalším krokem Hello je tooupdate hello koncových bodů s modely, které jednoznačně trénink na jednotlivé data každého zákazníka. Ale nejdřív potřebujeme tooproduce, tyto modely z hello **kolo pronájem školení** webové služby. Přejděte zpět toohello **kolo pronájem školení** webové služby. Potřebujeme toocall svůj koncový bod BES 10krát s 10 různých školení datové sady v různých modelech tooproduce 10 pořadí. Použijeme hello **InovkeAmlWebServiceBESEndpoint** toodo rutiny prostředí PowerShell to.
 
-Budete taky muset zadat přihlašovací údaje pro účet úložiště objektů blob do `$configContent`, a to, v polích `AccountName`, `AccountKey` a `RelativeLocation`. `AccountName` Může být jedna z vaší názvy účtů, jak je vidět **portálu pro správu Azure Classic** (*úložiště* karta). Když kliknete na účet úložiště jeho `AccountKey` naleznete stisknutím **spravovat přístupové klíče** tlačítko dole a kopírování *primární přístupový klíč*. `RelativeLocation` Je relativní úložiště cestu, kde bude uložena nový model. Například cesta `hai/retrain/bike_rental/` ve skriptu níže odkazuje na kontejner s názvem `hai`, a `/retrain/bike_rental/` obsahuje podsložky. V současné době nelze vytvořit podsložky prostřednictvím portálu uživatelského rozhraní, ale existují [několik Průzkumníci úložiště Azure](../storage/common/storage-explorers.md) které umožňují učinit. Doporučuje se vytvořit nový kontejner v úložišti pro uložení nové trénované modely (soubory .ilearner) následujícím způsobem: ze stránky úložiště, klikněte na **přidat** tlačítko dole a pojmenujte ji `retrain`. Souhrn potřebné změny, které níže uvedeném skriptu týkají `AccountName`, `AccountKey` a `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`).
+Budete také potřebovat tooprovide pověření pro účet úložiště objektů blob do `$configContent`, a to, v polích hello `AccountName`, `AccountKey` a `RelativeLocation`. Hello `AccountName` může být jedna z vaší názvy účtů, jak je vidět v hello **portálu pro správu Azure Classic** (*úložiště* karta). Když kliknete na účet úložiště jeho `AccountKey` získáte stisknutím hello **spravovat přístupové klíče** tlačítko v dolní části hello a kopírování hello *primární přístupový klíč*. Hello `RelativeLocation` je hello cesta relativní tooyour úložiště, kde bude uložena nový model. Například cesta hello `hai/retrain/bike_rental/` ve skriptu hello pod body tooa kontejner s názvem `hai`, a `/retrain/bike_rental/` obsahuje podsložky. V současné době nelze vytvořit podsložky prostřednictvím portálu hello uživatelského rozhraní, ale existují [několik Průzkumníci úložiště Azure](../storage/common/storage-explorers.md) , umožňují toodo tak. Doporučuje se vytvořit nový kontejner v vašeho úložiště toostore hello nové trénované modely (soubory .ilearner) následujícím způsobem: ze stránky úložiště, klikněte na hello **přidat** tlačítko dole v hello a pojmenujte ji `retrain`. Souhrnně níže hello potřebné změny toohello skriptu týkají příliš`AccountName`, `AccountKey` a `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`).
 
-    # Invoke the retraining API 10 times
-    # This is the default (and the only) endpoint on the training web service
+    # Invoke hello retraining API 10 times
+    # This is hello default (and hello only) endpoint on hello training web service
     $trainingSvcEp = (Get-AmlWebServiceEndpoint -WebServiceId $trainingSvc.Id)[0];
     $submitJobRequestUrl = $trainingSvcEp.ApiLocation + '/jobs?api-version=2.0';
     $apiKey = $trainingSvcEp.PrimaryKey;
@@ -112,15 +112,15 @@ Budete taky muset zadat přihlašovací údaje pro účet úložiště objektů 
     }
 
 > [!NOTE]
-> Koncový bod BES je jediný podporovaný režim pro tuto operaci. Záznamy o prostředku nelze použít pro vytvoření trénované modely.
+> Hello koncový bod BES je hello režimu podporovány pouze pro tuto operaci. Záznamy o prostředku nelze použít pro vytvoření trénované modely.
 > 
 > 
 
-Jak je uvedeno výše, namísto vytváření 10 různých BES úlohy konfigurace soubory json, jsme dynamicky místo toho vytvořte konfigurační řetězec a kanál, aby *jobConfigString* parametr  **InvokeAmlWebServceBESEndpoint** rutiny, protože je ve skutečnosti není potřeba zachovat kopii na disku.
+Jak je uvedeno výše, namísto vytváření 10 různých BES úlohy konfigurace soubory json, dynamicky místo vytvoření hello konfigurační řetězec a informačního kanálu toohello *jobConfigString* parametr hello  **InvokeAmlWebServceBESEndpoint** rutiny, protože je skutečně bez nutnosti tookeep kopii na disku.
 
-Pokud všechno proběhne správně, po chvíli se měl zobrazit 10 .ilearner souborů z *model001.ilearner* k *model010.ilearner*, v účtu úložiště Azure. Nyní je vše připraveno k aktualizaci naše 10 vyhodnocování koncových bodů webové služby pomocí těchto modelů pomocí **oprava AmlWebServiceEndpoint** rutiny prostředí PowerShell. Znovu si pamatujte, že jsme pouze oprava jiné než výchozí koncové body, které jsme prostřednictvím kódu programu vytvořili předtím.
+Pokud všechno proběhne správně, po chvíli se měl zobrazit 10 .ilearner souborů z *model001.ilearner* příliš*model010.ilearner*, v účtu úložiště Azure. Teď máme připraven tooupdate naše 10 vyhodnocování webové koncové body služby pomocí těchto modelů pomocí hello **oprava AmlWebServiceEndpoint** rutiny prostředí PowerShell. Znovu si pamatujte, že jsme pouze oprava koncové body hello jiné než výchozí, které jsme prostřednictvím kódu programu vytvořili předtím.
 
-    # Patch the 10 endpoints with respective .ilearner models
+    # Patch hello 10 endpoints with respective .ilearner models
     $baseLoc = 'http://bostonmtc.blob.core.windows.net/'
     $sasToken = '<my_blob_sas_token>'
     For ($i = 1; $i -le 10; $i++){
@@ -131,17 +131,17 @@ Pokud všechno proběhne správně, po chvíli se měl zobrazit 10 .ilearner sou
         Patch-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -ResourceName 'Bike Rental [trained model]' -BaseLocation $baseLoc -RelativeLocation $relativeLoc -SasBlobToken $sasToken
     }
 
-To měly být spuštěny docela rychle. Po dokončení provádění jsme budete úspěšně jste vytvořili 10 prediktivní koncových bodů webové služby, každý obsahující modulu trained model jednoznačně trénink na konkrétní datové sady do umístění pronájem, vše z jedné výukový experiment. Chcete-li to ověřit, můžete zkusit volání tyto koncové body pomocí **InvokeAmlWebServiceRRSEndpoint** rutinu a poskytovat jim se stejným vstupní data a byste měli očekávat zobrazte výsledky různých předpovědi vzhledem k tomu, že probíhá Trénink modely s jinou školení sad.
+To měly být spuštěny docela rychle. Po dokončení provádění hello jsme budete úspěšně jste vytvořili 10 koncových bodů prediktivní webové služby, každá obsahuje modulu trained model jednoznačně trénink na hello datovou sadu konkrétní tooa pronájem umístění, z jednoho výukový experiment. tooverify, můžete zkusit volání tyto koncové body pomocí hello **InvokeAmlWebServiceRRSEndpoint** rutinu a poskytovat jim hello stejné vstupní data a vzhledem k tomu, že jsou hello modely, které byste měli očekávat toosee různých předpovědi výsledky cvičení s jinou školení sad.
 
 ## <a name="full-powershell-script"></a>Úplné skript prostředí PowerShell
-Tady je seznam úplný zdrojový kód:
+Tady je seznam hello hello úplný zdrojový kód:
 
     Import-Module .\AzureMLPS.dll
-    # Assume the default configuration file exists and properly set to point to the valid workspace.
+    # Assume hello default configuration file exists and properly set toopoint toohello valid workspace.
     $scoringSvc = Get-AmlWebService | where Name -eq 'Bike Rental Scoring'
     $trainingSvc = Get-AmlWebService | where Name -eq 'Bike Rental Training'
 
-    # Create 10 endpoints on the scoring web service
+    # Create 10 endpoints on hello scoring web service
     For ($i = 1; $i -le 10; $i++){
         $seq = $i.ToString().PadLeft(3, '0');
         $endpointName = 'rentalloc' + $seq;
@@ -149,7 +149,7 @@ Tady je seznam úplný zdrojový kód:
         Add-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -Description $endpointName     
     }
 
-    # Invoke the retraining API 10 times to produce 10 regression models in .ilearner format
+    # Invoke hello retraining API 10 times tooproduce 10 regression models in .ilearner format
     $trainingSvcEp = (Get-AmlWebServiceEndpoint -WebServiceId $trainingSvc.Id)[0];
     $submitJobRequestUrl = $trainingSvcEp.ApiLocation + '/jobs?api-version=2.0';
     $apiKey = $trainingSvcEp.PrimaryKey;
@@ -161,7 +161,7 @@ Tady je seznam úplný zdrojový kód:
         Invoke-AmlWebServiceBESEndpoint -JobConfigString $configContent -SubmitJobRequestUrl $submitJobRequestUrl -ApiKey $apiKey
     }
 
-    # Patch the 10 endpoints with respective .ilearner models
+    # Patch hello 10 endpoints with respective .ilearner models
     $baseLoc = 'http://bostonmtc.blob.core.windows.net/'
     $sasToken = '?test'
     For ($i = 1; $i -le 10; $i++){

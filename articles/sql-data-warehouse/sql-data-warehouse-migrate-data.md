@@ -1,6 +1,6 @@
 ---
-title: Migrace dat do SQL Data Warehouse | Microsoft Docs
-description: "Tipy pro migraci dat do Azure SQL Data Warehouse na vývoj řešení."
+title: "aaaMigrate tooSQL vaše data datového skladu | Microsoft Docs"
+description: "Tipy pro migraci vaše data tooAzure SQL Data Warehouse na vývoj řešení."
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
@@ -15,140 +15,140 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 06/29/2017
 ms.author: joeyong;barbkess
-ms.openlocfilehash: dbdf1696cd169aa7e5e23f116027a1170347f4ea
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: fe4c6b7e82094c59c45e06be6da225fee1b707ba
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="migrate-your-data"></a>Migrace dat
-Data lze přesunout z různých zdrojů do SQL Data Warehouse pomocí různých nástrojů.  Kopírování ADF, SSIS a bcp můžete použít k dosažení tohoto cíle. Jako velikost dat zvyšuje však měli myslíte o rozdělení proces migrace dat do kroků. To nabízí možnost optimalizovat každý krok pro výkon i pro odolnost k zajištění smooth dat migrace.
+Data lze přesunout z různých zdrojů do SQL Data Warehouse pomocí různých nástrojů.  Kopírování ADF, SSIS a všechny bcp můžou být použité tooachieve tohoto cíle. Při rostoucí hello množství dat, musí však rozmyslete rozdělení hello proces migrace dat do kroků. To umožňuje hello možnost toooptimize každý krok pro výkon i pro odolnost tooensure smooth dat migrace.
 
-Tento článek popisuje nejprve jednoduché migrační scénáře ADF Copy, SSIS a bcp. Následně vypadá trochu hlouběji do jak lze optimalizovat migrace.
+Tento článek popisuje nejprve hello jednoduché migrační scénáře ADF Copy, SSIS a bcp. Následně vypadá trochu hlouběji do jak lze optimalizovat hello migrace.
 
 ## <a name="azure-data-factory-adf-copy"></a>Azure Data Factory (ADF) kopie
-[Kopírování ADF] [ ADF Copy] je součástí [Azure Data Factory][Azure Data Factory]. Kopírování ADF můžete exportovat data do plochých souborů, které se nacházejí v místním úložišti, do vzdáleného plochých souborů uchovávat v Azure blob storage nebo přímo do SQL Data Warehouse.
+[Kopírování ADF] [ ADF Copy] je součástí [Azure Data Factory][Azure Data Factory]. Můžete kopírovat ADF tooexport datové soubory tooflat umístěný v místním úložišti plochých souborů tooremote uchovávat v Azure blob storage nebo přímo do SQL Data Warehouse.
 
-Pokud vaše data se spustí v plochých souborů, pak budete nejprve muset před zahájením zatížení ho přenést do objektu blob úložiště Azure do SQL Data Warehouse. Jakmile se přenáší data do úložiště objektů blob v Azure můžete použít [ADF kopie] [ ADF Copy] znovu tak, aby nabízel data do SQL Data Warehouse.
+Pokud vaše data se spustí v plochých souborů, pak musíte nejdřív tootransfer se objekt blob úložiště tooAzure před zahájením zatížení do SQL Data Warehouse. Jakmile hello data se přenáší do úložiště objektů blob v Azure můžete toouse [ADF kopie] [ ADF Copy] znovu toopush hello dat do SQL Data Warehouse.
 
-PolyBase také nabízí možnost vysoce výkonné načítání data. Ale, která znamená, pomocí dvou nástrojů místo jeden. Pokud třeba nejlepší výkon použijte PolyBase. Pokud chcete prostředí jednotný nástroj (a data nejsou masivní) ADF je vaše odpověď.
+PolyBase také nabízí možnost vysoce výkonné pro načítání dat hello. Ale, která znamená, pomocí dvou nástrojů místo jeden. Pokud jste třeba nejlepší výkon hello pak pomocí funkce PolyBase. Pokud chcete, aby prostředí jednotný nástroj (a hello dat není masivní) ADF je vaše odpověď.
 
 
 > 
 > 
 
-Přejděte přes v následujícím článku pro některé dobře [ADF ukázky][ADF samples].
+HEAD přes toohello následujícího článku pro některé dobře [ADF ukázky][ADF samples].
 
 ## <a name="integration-services"></a>Integrační služby
-Integration Services (SSIS) je výkonný a flexibilní extrahovat transformace a načítání (ETL) nástroj, který podporuje komplexní pracovní postupy, transformaci dat a několik možností načítání data. Pomocí služby SSIS pouze k přenosu dat do Azure nebo v rámci širší migrace.
+Integration Services (SSIS) je výkonný a flexibilní extrahovat transformace a načítání (ETL) nástroj, který podporuje komplexní pracovní postupy, transformaci dat a několik možností načítání data. Použití služby SSIS toosimply přenos dat tooAzure nebo v rámci širší migrace.
 
 > [!NOTE]
-> SSIS můžete exportovat do UTF-8 bez značka pořadí bajtů v souboru. Ke konfiguraci to musíte nejdřív komponentu odvozených sloupců použijte k převedení dat znak v toku dat pomocí 65001 kódu stránky UTF-8. Jakmile sloupce, které byly převedeny, zapsat data do cílové adaptér plochý soubor zajistíte, že 65001 také byla vybrána jako znaková stránka pro soubor.
+> SSIS můžete exportovat tooUTF-8 bez hello značka pořadí bajtů v souboru hello. tooconfigure, to je nutné nejprve použít hello odvodit sloupec součástí tooconvert hello textová data v hello datového toku toouse hello 65001 UTF-8 znaková stránka. Jakmile byly převedeny hello sloupců, zapisovat hello data toohello plochý soubor cílový adaptér zajistit, že 65001 také byla vybrána jako hello znaková stránka pro soubor hello.
 > 
 > 
 
-SSIS se připojuje k SQL Data Warehouse stejně, jako by se připojit k nasazení systému SQL Server. Připojení však bude muset používat Správce připojení ADO.NET. Můžete také dbát na nakonfigurovat "použijte příkaz bulk insert Pokud je k dispozici" nastavení Maximalizovat propustnost. Podrobnosti najdete [ADO.NET cílový adaptér] [ ADO.NET destination adapter] článku Další informace o této vlastnosti
+SSIS připojí tooSQL datového skladu, stejně jako se bude připojovat tooa nasazení systému SQL Server. Připojení se ale potřebovat toobe Správci připojení ADO.NET. Můžete také dbát na tooconfigure hello "Použijte příkaz bulk insert Pokud je k dispozici" nastavení toomaximize propustnost. Naleznete toohello [ADO.NET cílový adaptér] [ ADO.NET destination adapter] článku toolearn Další informace o této vlastnosti
 
 > [!NOTE]
-> Připojení k Azure SQL Data Warehouse pomocí OLEDB není podporováno.
+> Připojení tooAzure SQL Data Warehouse pomocí OLEDB není podporováno.
 > 
 > 
 
-Kromě toho je vždy možnost, že balíček se pravděpodobně nezdaří z důvodu omezení nebo síťové problémy. Návrh balíčky, takže se můžete pokračovat v místě selhání bez opakovaného fungovat dokončení před selháním.
+Kromě toho je vždy hello možnost, že balíček může selhat z důvodu toothrottling nebo síťové problémy. Návrh balíčků tak, že lze obnovit v hello bodem selhání, bez opakovaného fungovat dokončení před selháním hello.
 
-Další informace naleznete [SSIS dokumentaci][SSIS documentation].
+Další informace naleznete hello [SSIS dokumentaci][SSIS documentation].
 
 ## <a name="bcp"></a>bcp
-BCP je nástroj příkazového řádku, která je určená pro export a import dat plochý soubor. Některé transformace může probíhat během exportu dat. K provedení jednoduché transformace pomocí dotazu a vyberte transformovat data. Po exportu plochých souborů pak dají načíst přímo do cílové databáze SQL Data Warehouse.
+BCP je nástroj příkazového řádku, která je určená pro export a import dat plochý soubor. Některé transformace může probíhat během exportu dat. jednoduché transformace tooperform pomocí dotazu tooselect a transformovat hello data. Po exportu, pak dají načíst přímo do databáze SQL Data Warehouse hello cíl hello hello plochých souborů.
 
 > [!NOTE]
-> Často je vhodné pro zapouzdření transformace použít při exportu dat v zobrazení ve zdrojovém systému. To zajišťuje, že se uchovávají logiku a proces opakovatelných.
+> Často je text hello tooencapsulate vhodné transformace použít během data exportovat v zobrazení zdroje systému hello. To zajišťuje, že se uchovávají hello logiku a hello proces opakovatelných.
 > 
 > 
 
 Výhody bcp jsou:
 
-* Jednoduchost. příkazy BCP jsou jednoduché sestavení a spuštění
-* Znovu spustit zatížení proces. Jednou exportovaný zatížení může být provedeny v libovolném počtu
+* Jednoduchost. příkazy BCP jsou jednoduché toobuild a provést
+* Znovu spustit zatížení proces. Jednou exportovaný hello zatížení může být provedeny v libovolném počtu
 
 Omezení bcp jsou:
 
 * BCP pracuje s tabulce pouze plochých souborů. Nefunguje s soubory, jako jsou xml nebo JSON
-* Funkce transformace dat jsou omezeny na fázi exportu a jsou jednoduché ve své podstatě
-* BCP nebyla přizpůsobena být robustní při načítání dat přes internet. Nestability sítě může způsobit chybu zatížení.
-* BCP spoléhá na schéma se nachází v cílové databázi před zatížení
+* Funkce transformace dat jsou omezené toohello export jenom stage a jednoduchý ve své podstatě
+* BCP nebyla přizpůsobena toobe robustní při načítání dat přes hello Internetu. Nestability sítě může způsobit chybu zatížení.
+* využívá BCP hello schématu aplikace hello cílové databáze předchozí toohello zatížení
 
-Další informace najdete v tématu [pomocí bcp k načtení dat do SQL Data Warehouse][Use bcp to load data into SQL Data Warehouse].
+Další informace najdete v tématu [pomocí bcp tooload dat do SQL Data Warehouse][Use bcp tooload data into SQL Data Warehouse].
 
 ## <a name="optimizing-data-migration"></a>Optimalizace migrace dat
 Proces migrace dat SQLDW můžete efektivně rozdělit na tři samostatné kroky:
 
 1. Export zdroje dat
-2. Přenos dat do Azure
-3. Načtení do cílové databáze SQLDW
+2. Přenos dat tooAzure
+3. Načtení do hello cílová SQLDW databáze
 
-Každý krok může jednotlivě optimalizovaný na vytváření robustní, znovu spustit a odolné migrace proces, který maximalizuje výkon při každém kroku.
+Každý krok může být jednotlivě optimalizované toocreate proces migrace robustní, znovu spustit a odolné, který maximalizuje výkon při každém kroku.
 
 ## <a name="optimizing-data-load"></a>Optimalizace načtení dat
-Prohlížení tyto v obráceném pořadí na chvíli; nejrychlejší způsob, jak načíst data je prostřednictvím PolyBase. Optimalizace pro proces zatížení PolyBase umístí požadavky na předchozí kroky proto je vhodné pro lepší vysvětlení předem. Jsou:
+Prohlížení tyto v obráceném pořadí na chvíli; Hello nejrychlejší způsob, jak tooload dat je prostřednictvím PolyBase. Optimalizace pro proces zatížení PolyBase umístí požadavky na hello předchozích kroků, je nejlepší toounderstand to předem. Jsou:
 
 1. Kódování dat souborů
 2. Formátu dat souborů
 3. Umístění datových souborů
 
 ### <a name="encoding"></a>Encoding
-PolyBase vyžaduje datové soubory ve formátu UTF-8 nebo UTF-16FE. 
+PolyBase vyžaduje toobe datové soubory ve formátu UTF-8 nebo UTF-16FE. 
 
 
 
 ### <a name="format-of-data-files"></a>Formátu dat souborů
-PolyBase vyžaduje pevnou řádek ukončovací \n nebo nový řádek. Tento standard musí odpovídat datové soubory. Nejsou k dispozici žádné omezení konců řetězec nebo sloupec.
+PolyBase vyžaduje pevnou řádek ukončovací \n nebo nový řádek. Datové soubory musí odpovídat toothis standard. Nejsou k dispozici žádné omezení konců řetězec nebo sloupec.
 
-Je nutné definovat všechny sloupce v souboru v rámci vaší externí tabulky v PolyBase. Ujistěte se, že všechny sloupce exportovaný jsou povinné a že typy v souladu s požadované standardy.
+Budete mít toodefine každý sloupec v souboru hello jako součást externí tabulku v PolyBase. Ujistěte se, že všechny sloupce exportovaný jsou povinné a že hello typy v souladu s toohello požadované standardy.
 
-Naleznete zpět [migrovat schéma] najdete v článku o podporované datové typy.
+Zpět naleznete toohello [migrovat schéma] najdete v článku o podporované datové typy.
 
 ### <a name="location-of-data-files"></a>Umístění datových souborů
-SQL Data Warehouse PolyBase používá k načtení dat z Azure Blob Storage výhradně. V důsledku toho data musí nejprve přenesení do úložiště objektů blob.
+SQL Data Warehouse používá výhradně PolyBase tooload dat z Azure Blob Storage. V důsledku toho hello dat musí nejprve přenesení do úložiště objektů blob.
 
 ## <a name="optimizing-data-transfer"></a>Optimalizace přenos dat
-Jedna z částí nejpomalejší migrace dat je přenos dat do Azure. Pouze šířku pásma sítě může být problém, ale také spolehlivost sítě může být vážnou překážkou průběh. Ve výchozím nastavení migraci dat do Azure se tak pravděpodobnost chyby přenosu, k nimž jsou to bude přiměřeně pravděpodobně přes internet. Tyto chyby však může vyžadovat opětovné odeslání celé nebo částečně data.
+Jedna z částí nejpomalejší hello migrace dat je hello přenos dat tooAzure hello. Pouze šířku pásma sítě může být problém, ale také spolehlivost sítě může být vážnou překážkou průběh. Ve výchozím nastavení je tooAzure přenášení dat přes internet proto hello případné chyby přenos, ke kterým dochází přiměřeně pravděpodobně hello. Tyto chyby však může vyžadovat opětovné odeslání celé nebo částečně toobe data.
 
-Naštěstí máte několik možností k dosažení vyšší rychlosti a odolnost proti tohoto procesu:
+Naštěstí máte několik možností tooimprove hello rychlost a pružnost tohoto procesu:
 
 ### <a name="expressrouteexpressroute"></a>[ExpressRoute][ExpressRoute]
-Možná budete chtít zvážit použití [ExpressRoute] [ ExpressRoute] pro urychlení přenosu. [ExpressRoute] [ ExpressRoute] vám poskytne vytvořené privátní připojení do Azure, připojení nepřenášejí prostřednictvím veřejného Internetu. Toto je rozhodně není povinný krok. Ale ho bude při předání dat do Azure z místního zlepšit propustnost nebo společném umístění.
+Může být vhodné pomocí tooconsider [ExpressRoute] [ ExpressRoute] toospeed až hello přenosu. [ExpressRoute] [ ExpressRoute] poskytuje vám tooAzure vytvořeného privátní připojení tak hello připojení nejde přes hello veřejného Internetu. Toto je rozhodně není povinný krok. Ale ho bude při nabízení data tooAzure z místního zlepšit propustnost nebo společném umístění.
 
-Výhody použití [ExpressRoute] [ ExpressRoute] jsou:
+Hello výhody použití [ExpressRoute] [ ExpressRoute] jsou:
 
 1. Větší spolehlivost
 2. Vyšší rychlost sítě
 3. Nižší latenci sítě
 4. vyšší zabezpečení sítě
 
-[ExpressRoute] [ ExpressRoute] je výhodné pro různé scénáře; nejen migrace.
+[ExpressRoute] [ ExpressRoute] je výhodné pro různé scénáře, ne jenom hello migrace.
 
-Zajímá vás to? Další informace a ceny prosím naleznete [dokumentace ExpressRoute][ExpressRoute documentation].
+Zajímá vás to? Další informace a ceny prosím naleznete hello [dokumentace ExpressRoute][ExpressRoute documentation].
 
 ### <a name="azure-import-and-export-service"></a>Azure Import a Export služby
-Azure Import a Export služby je proces přenosu dat pro velké (GB ++) umožňuje masivní (TB ++) přenosů dat do Azure. Se týká zápisu dat na disky a přesouvání je datové centrum Azure. Obsah disku se pak načíst do Azure Storage Blobs vaším jménem.
+Hello Azure Import a Export služby je proces přenosu dat určená pro velké (GB ++) toomassive (TB ++) přenosů dat do Azure. Se týká psaní toodisks vaše data a jejich přesouvání tooan datového centra Azure. obsah disku Hello budou načteny potom do objektů BLOB služby Azure Storage vaším jménem.
 
-Souhrnné zobrazení procesu importu export vypadá takto:
+Souhrnné zobrazení procesu exportu importovat hello vypadá takto:
 
-1. Konfigurace kontejner úložiště objektů Blob Azure přijmout data
-2. Exportovat data do místního úložiště
-3. Zkopírovat data do 3,5 SATA II/III pevných disků v nástroji [Azure Import/Export]
-4. Vytvoření úlohy importu pomocí Azure Import a Export služba poskytující soubory deníku vytvořený nástrojem [Azure Import/Export]
-5. Dodávat disky určenou Azure datové centrum
-6. Vaše data se přenáší do vašeho kontejneru Azure Blob Storage
-7. Načíst data do SQLDW pomocí PolyBase
+1. Konfigurace Azure Blob Storage kontejneru tooreceive hello dat
+2. Export toolocal úložiště dat
+3. Zkopírujte hello data too3.5 palec SATA II/III jednotky pevného disku pomocí hello [Azure Import/Export nástroj]
+4. Vytvoření úlohy importu pomocí hello Azure Import a Export služba poskytující soubory deníku hello vyprodukované hello [Azure Import/Export nástroj]
+5. Dodávat hello disky určenou Azure datové centrum
+6. Vaše data jsou přenášená tooyour kontejneru Azure Blob Storage
+7. Načtení dat hello do SQLDW pomocí PolyBase
 
 ### <a name="azcopyazcopy-utility"></a>[AZCopy][AZCopy] nástroj
-[AZCopy][AZCopy] nástroj je skvělý nástroj pro získávání dat přenesených do objektů BLOB služby Azure Storage. Pro velmi velký přenos dat (GB ++) je určený pro malé (MB ++). [AZCopy] byl navržen tak, aby poskytují dobrý odolné propustnost při přenosu dat do Azure a tak je je služba skvělou volbou pro krok přenos dat. Jednou přenášená můžete načíst data do SQL Data Warehouse pomocí PolyBase. AZCopy taky můžete začlenit do vaší služby SSIS balíčky pomocí "Spustit proces" úlohy.
+Hello [AZCopy][AZCopy] nástroj je skvělý nástroj pro získávání dat přenesených do objektů BLOB služby Azure Storage. Je určený pro malé (MB ++) toovery velké (GB ++) přenosy dat. [AZCopy] byl také navrženou tooprovide dobrý odolné propustnost při přenosu dat tooAzure a tak je, že je služba skvělou volbou pro krok přenos dat hello. Jednou přenášená načtením hello dat do SQL Data Warehouse pomocí PolyBase. AZCopy taky můžete začlenit do vaší služby SSIS balíčky pomocí "Spustit proces" úlohy.
 
-Použití nástroje AZCopy nejprve musíte stáhnout a nainstalovat ji. Je [produkční verzi] [ production version] a [verze preview] [ preview version] k dispozici.
+toouse AZCopy, bude nejprve nutné toodownload a nainstalujte ji. Je [produkční verzi] [ production version] a [verze preview] [ preview version] k dispozici.
 
-Nahrát soubor ze systému souborů budete potřebovat podobná té následující příkaz:
+tooupload soubor ze systému souborů, které budete potřebovat příkaz jako hello jeden níže:
 
 ```
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Pattern:abc.txt
@@ -156,30 +156,30 @@ AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/myconta
 
 Proces vysoké úrovně souhrn může být:
 
-1. Konfigurace kontejner objektu blob úložiště Azure pro příjem dat
-2. Exportovat data do místního úložiště
-3. AZCopy vaše data v kontejneru Azure Blob Storage
-4. Načítání dat do SQL Data Warehouse pomocí PolyBase
+1. Konfigurace úložiště Azure blob kontejneru tooreceive hello dat
+2. Export toolocal úložiště dat
+3. AZCopy daty v kontejneru Azure Blob Storage hello
+4. Načtení hello dat do SQL Data Warehouse pomocí PolyBase
 
 Úplné dokumentaci k dispozici: [AZCopy][AZCopy].
 
 ## <a name="optimizing-data-export"></a>Optimalizace export dat
-Kromě zajištění, že export splňuje požadavky nastíněny polybase můžete také hledat optimalizovat export data, která mají vylepšit další proces.
+Tooensuring, hello export vyhovuje toohello požadavky definované polybase můžete kromě toho můžete hledat toooptimize hello export proces hello tooimprove hello dat další.
 
 
 
 ### <a name="data-compression"></a>Komprese dat
-PolyBase čte data komprimované gzip. Pokud budete moci komprese dat, aby se soubory gzip se minimalizuje množství dat, které se instaluje přes síť.
+PolyBase čte data komprimované gzip. Pokud jsou možné toocompress datové soubory toogzip pak můžete minimalizovat hello množství dat, které se instaluje přes síť hello.
 
 ### <a name="multiple-files"></a>Více souborů
-Rozdělení rozsáhlé tabulky do několika souborů nejen pomáhá zvýšit rychlost exportu, také pomáhá s re-startability přenos a celkové možnosti správy dat jednou v Azure blob storage. Jedním z mnoha dobrý funkcí PolyBase je, že bude číst všechny soubory do složky a s nimi zacházet jako jedna tabulka. Proto je vhodné izolovat soubory pro každou tabulku do vlastní složky.
+Rozdělení rozsáhlé tabulky do několika souborů umožňuje nejenom tooimprove exportovat rychlost, také pomáhá s přenosu re-startability a hello celkové možnosti správy dat hello jednou v úložišti objektů blob Azure hello. Jeden z hello mnoho dobrý funkce PolyBase je, že bude číst všechny hello soubory do složky a s nimi zacházet jako jedna tabulka. Proto je vhodné tooisolate hello souborů pro každou tabulku do vlastní složky.
 
-PolyBase také podporuje funkci označuje jako "rekurzivní složky traversal". Tato funkce slouží k dalšímu vylepšení útoků organizace data exportovaná ke zlepšení vaší správy dat.
+PolyBase také podporuje funkci označuje jako "rekurzivní složky traversal". Tuto funkci můžete používat toofurther vylepšit hello organizace vaší tooimprove exportovaná data vaší dat správy.
 
-Další informace o načtení dat pomocí funkce PolyBase, najdete v části [PolyBase používá k načtení dat do SQL Data Warehouse][Use PolyBase to load data into SQL Data Warehouse].
+toolearn Další informace o načtení dat pomocí funkce PolyBase, najdete v části [použijte PolyBase tooload dat do SQL Data Warehouse][Use PolyBase tooload data into SQL Data Warehouse].
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o migraci najdete v tématu [migrace vašeho řešení do SQL Data Warehouse][Migrate your solution to SQL Data Warehouse].
+Další informace o migraci najdete v tématu [migrace vašeho řešení tooSQL datového skladu][Migrate your solution tooSQL Data Warehouse].
 Další tipy pro vývoj, najdete v části [přehled vývoje][development overview].
 
 <!--Image references-->
@@ -190,10 +190,10 @@ Další tipy pro vývoj, najdete v části [přehled vývoje][development overvi
 [ADF samples]: ../data-factory/data-factory-samples.md
 [ADF Copy examples]: ../data-factory/data-factory-copy-activity-tutorial-using-visual-studio.md
 [development overview]: sql-data-warehouse-overview-develop.md
-[Migrate your solution to SQL Data Warehouse]: sql-data-warehouse-overview-migrate.md
+[Migrate your solution tooSQL Data Warehouse]: sql-data-warehouse-overview-migrate.md
 [SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
-[Use bcp to load data into SQL Data Warehouse]: sql-data-warehouse-load-with-bcp.md
-[Use PolyBase to load data into SQL Data Warehouse]: sql-data-warehouse-get-started-load-with-polybase.md
+[Use bcp tooload data into SQL Data Warehouse]: sql-data-warehouse-load-with-bcp.md
+[Use PolyBase tooload data into SQL Data Warehouse]: sql-data-warehouse-get-started-load-with-polybase.md
 
 
 <!--MSDN references-->

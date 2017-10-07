@@ -1,6 +1,6 @@
 ---
-title: "Rychlý start Azure – Vytvoření virtuálního počítače pomocí rozhraní příkazového řádku | Dokumentace Microsoftu"
-description: "Rychle se naučíte, jak vytvářet virtuální počítače pomocí Azure CLI."
+title: "Rychlý Start - aaaAzure vytvořit virtuální počítač CLI | Microsoft Docs"
+description: "Naučte se rychle toocreate virtuálních počítačů s hello rozhraní příkazového řádku Azure."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
@@ -16,27 +16,27 @@ ms.workload: infrastructure
 ms.date: 06/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a7cba5b2c43704d92e36d6f808efaa9fc73fdf36
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0d9c686e2f4c7339b29b8c43cd1dd9ee56d7dc6a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-linux-virtual-machine-with-the-azure-cli"></a>Vytvoření virtuálního počítače s Linuxem pomocí Azure CLI
+# <a name="create-a-linux-virtual-machine-with-hello-azure-cli"></a>Vytvořit virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure hello
 
-Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tento průvodce podrobně popisuje nasazení virtuálního počítače se serverem Ubuntu pomocí Azure CLI. Po nasazení serveru se vytvoří připojení SSH a nainstaluje se webový server NGINX.
+Hello rozhraní příkazového řádku Azure je použité toocreate a spravovat prostředky Azure z hello příkazového řádku nebo ve skriptech. Tento průvodce údaje, pomocí rozhraní příkazového řádku Azure toodeploy hello virtuálního počítače s Ubuntu server. Po nasazení hello serveru se vytvoří připojení SSH a je nainstalován webovém serveru NGINX.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud zvolíte tooinstall a místně pomocí hello rozhraní příkazového řádku, tento rychlý start vyžaduje, že používáte verzi rozhraní příkazového řádku Azure hello verze 2.0.4 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
+Vytvořte skupinu prostředků s hello [vytvořit skupinu az](/cli/azure/group#create) příkaz. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
 
-Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
+Hello následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v hello *eastus* umístění.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
@@ -44,15 +44,15 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#create). 
+Vytvoření virtuálního počítače s hello [vytvořit virtuální počítač az](/cli/azure/vm#create) příkaz. 
 
-Následující příklad vytvoří virtuální počítač *myVM*, a pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, vytvoří je. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.  
+Hello následující příklad vytvoří virtuální počítač s názvem *Můjvp* a vytvoří klíče SSH, pokud už neexistují ve výchozím umístění klíče. toouse konkrétní nastavení klíčů, použijte hello `--ssh-key-value` možnost.  
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroup --name myVM --image UbuntuLTS --generate-ssh-keys
 ```
 
-Po vytvoření virtuálního počítače se v Azure CLI zobrazí podobné informace jako v následujícím příkladu. Poznamenejte si `publicIpAddress`. Tato adresa se používá pro přístup k virtuálnímu počítači.
+Po vytvoření hello virtuálních počítačů, hello rozhraní příkazového řádku Azure znázorňuje následující ukázka podobné toohello informace. Poznamenejte si hello `publicIpAddress`. Tato adresa je použité tooaccess hello virtuálních počítačů.
 
 ```azurecli-interactive 
 {
@@ -69,7 +69,7 @@ Po vytvoření virtuálního počítače se v Azure CLI zobrazí podobné inform
 
 ## <a name="open-port-80-for-web-traffic"></a>Otevření portu 80 pro webový provoz 
 
-Ve výchozím nastavení jsou na virtuální počítače s Linuxem, které jsou nasazené v Azure, povolená pouze připojení SSH. Pokud bude tento virtuální počítač webovým serverem, budete muset otevřít port 80 z internetu. Požadovaný port otevřete pomocí příkazu [az vm open-port](/cli/azure/vm#open-port).  
+Ve výchozím nastavení jsou na virtuální počítače s Linuxem, které jsou nasazené v Azure, povolená pouze připojení SSH. Pokud tento virtuální počítač bude toobe webovém serveru, je třeba tooopen port 80 z hello Internetu. Použití hello [az virtuálních počítačů open-port](/cli/azure/vm#open-port) příkaz tooopen hello požadovaného portu.  
  
  ```azurecli-interactive 
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
@@ -77,7 +77,7 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 
 ## <a name="ssh-into-your-vm"></a>Připojení SSH k virtuálnímu počítači
 
-Pomocí následujícího příkazu vytvořte s virtuálním počítačem relaci SSH. Nezapomeňte nahradit *<publicIpAddress>* správnou veřejnou IP adresou vašeho virtuálního počítače.  V našem příkladu byla IP adresa *40.68.254.142*.
+Použití hello následující příkaz toocreate na relace SSH s hello virtuálního počítače. Ujistěte se, že tooreplace  *<publicIpAddress>*  s hello opravte veřejnou IP adresu virtuálního počítače.  V našem příkladu byla IP adresa *40.68.254.142*.
 
 ```bash 
 ssh <publicIpAddress>
@@ -85,7 +85,7 @@ ssh <publicIpAddress>
 
 ## <a name="install-nginx"></a>Instalace serveru NGINX
 
-Pomocí následujícího skriptu bash provedete aktualizaci zdrojů balíčku a nainstalujete nejnovější balíček NGINX. 
+Použití hello následující zdroje balíčků tooupdate skriptů bash a instalovat nejnovější balíček NGINX hello. 
 
 ```bash 
 #!/bin/bash
@@ -97,16 +97,16 @@ apt-get -y update
 apt-get -y install nginx
 ```
 
-## <a name="view-the-nginx-welcome-page"></a>Zobrazení úvodní stránky serveru NGINX
+## <a name="view-hello-nginx-welcome-page"></a>Zobrazení hello NGINX úvodní stránka
 
-S nainstalovaným serverem NGINX na virtuálním počítači a nyní otevřeným portem 80 z internetu můžete použít libovolný webový prohlížeč a zobrazit výchozí úvodní stránku serveru NGINX. Nezapomeňte pro návštěvu výchozí stránky použít veřejnou IP adresu (*publicIpAddress*) popsanou výše. 
+NGINX nainstalován a port 80 nyní otevřete na vašem virtuálním počítači z hello Internetu – můžete použít webový prohlížeč volba tooview hello výchozí NGINX uvítací stránky. Se, zda text hello toouse *publicIpAddress* popsané výše toovisit hello výchozí stránky. 
 
 ![Výchozí web NGINX](./media/quick-create-cli/nginx.png) 
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#delete).
+Pokud již nepotřebujete, můžete použít hello [odstranění skupiny az](/cli/azure/group#delete) příkaz skupiny prostředků hello tooremove, virtuálních počítačů a všechny související prostředky.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -114,7 +114,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto Rychlém startu jste nasadili jednoduchý virtuální počítač a pravidlo skupiny zabezpečení sítě a nainstalovali jste webový server. Další informace o virtuálních počítačích Azure najdete v kurzu pro virtuální počítače s Linuxem.
+V tomto Rychlém startu jste nasadili jednoduchý virtuální počítač a pravidlo skupiny zabezpečení sítě a nainstalovali jste webový server. toolearn Další informace o virtuálních počítačích Azure, pokračovat v kurzu toohello pro virtuální počítače s Linuxem.
 
 
 > [!div class="nextstepaction"]

@@ -1,6 +1,6 @@
 ---
-title: "Používání MapReduce a prostředí PowerShell s Hadoop - Azure HDInsight | Microsoft Docs"
-description: "Zjistěte, jak pomocí prostředí PowerShell vzdáleně spouštět úlohy MapReduce s Hadoop v HDInsight."
+title: "aaaUse MapReduce a prostředí PowerShell s Hadoop - Azure HDInsight | Microsoft Docs"
+description: "Zjistěte, jak toouse prostředí PowerShell tooremotely spouštění úloh MapReduce s Hadoop v HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,56 +16,56 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/16/2017
 ms.author: larryfr
-ms.openlocfilehash: c3801573808709f29cb1e563ac803f225a28cafc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 59524f0e8813d4c017f92bccb2e50d4c018acf71
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-powershell"></a>Spuštění úloh MapReduce s Hadoop v HDInsight pomocí prostředí PowerShell
 
 [!INCLUDE [mapreduce-selector](../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Tento dokument poskytuje příklad použití Azure PowerShell a spusťte úlohu MapReduce v Hadoop na clusteru HDInsight.
+Tento dokument obsahuje příklad použití Azure PowerShell toorun úlohu MapReduce v Hadoop na clusteru HDInsight.
 
 ## <a id="prereq"></a>Požadavky
 
 * **Cluster Azure HDInsight (Hadoop v HDInsight)**
 
   > [!IMPORTANT]
-  > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * **Pracovní stanice s prostředím Azure PowerShell**.
 
 ## <a id="powershell"></a>Spustit úlohu MapReduce pomocí Azure PowerShell
 
-Prostředí Azure PowerShell poskytuje *rutiny* které umožňují vzdáleně spouštět úlohy MapReduce v HDInsight. Interně toho dosahuje pomocí volání REST [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (dříve se označovaly jako Templeton) spuštěná na clusteru HDInsight.
+Prostředí Azure PowerShell poskytuje *rutiny* , umožňují úloh MapReduce tooremotely spustit v HDInsight. Interně toho dosahuje pomocí volání REST příliš[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (dříve se označovaly jako Templeton) systémem hello clusteru HDInsight.
 
-Při spouštění úloh MapReduce v vzdáleného clusteru HDInsight, se používají následující rutiny.
+Hello se používají následující rutiny při spuštění úloh MapReduce v vzdáleného clusteru HDInsight.
 
-* **Login-AzureRmAccount**: ověřuje prostředí Azure PowerShell k předplatnému Azure.
+* **Login-AzureRmAccount**: ověřuje Azure PowerShell tooyour předplatného Azure.
 
-* **Nové AzureRmHDInsightMapReduceJobDefinition**: vytvoří novou *úlohy definice* pomocí zadané informace o MapReduce.
+* **Nové AzureRmHDInsightMapReduceJobDefinition**: vytvoří novou *úlohy definice* pomocí hello zadané informace o MapReduce.
 
-* **Spuštění AzureRmHDInsightJob**: odešle definici úlohy do HDInsight, spustí úlohu a vrátí *úlohy* objekt, který můžete použít ke kontrole stavu úlohy.
+* **Spuštění AzureRmHDInsightJob**: odešle tooHDInsight definice úlohy hello, spustí hello úlohy a vrátí *úlohy* objekt, který lze použít toocheck hello stav úlohy hello.
 
-* **Počkejte AzureRmHDInsightJob**: používá objekt úlohy a zkontrolujte stav úlohy. Se čeká na dokončení úlohy nebo je překročena doba čekání.
+* **Počkejte AzureRmHDInsightJob**: používá objekt úlohy hello toocheck hello stav úlohy hello. Se čeká na dokončení úlohy hello nebo je překročena doba čekání hello.
 
-* **Get-AzureRmHDInsightJobOutput**: používá se k načtení výstup úlohy.
+* **Get-AzureRmHDInsightJobOutput**: používá tooretrieve hello výstup hello úlohy.
 
-Následující kroky ukazují, jak tyto rutiny použít ke spuštění úlohy v clusteru HDInsight.
+Hello následující kroky ukazují, jak toouse tyto rutiny toorun úlohu v clusteru HDInsight.
 
-1. Pomocí editoru, uložte následující kód jako **mapreducejob.ps1**.
+1. Pomocí editoru, uložte hello následující kód jako **mapreducejob.ps1**.
 
-    [!code-powershell[hlavní](../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
+    [!code-powershell[main](../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
 
-2. Otevřete nový **prostředí Azure PowerShell** příkazového řádku. Změňte adresáře na umístění **mapreducejob.ps1** souboru a potom použijte následující příkaz pro spuštění skriptu:
+2. Otevřete nový **prostředí Azure PowerShell** příkazového řádku. Umístění adresáře toohello hello změnit **mapreducejob.ps1** souboru, potom použijte následující příkaz toorun hello skriptu hello:
 
         .\mapreducejob.ps1
 
-    Když spustíte skript, zobrazí se výzva k název clusteru HDInsight a HTTPS nebo správce název účtu a hesla pro cluster. Také můžete být vyzváni k ověření vašeho předplatného Azure.
+    Při spuštění skriptu hello, zobrazí se výzva k hello název clusteru HDInsight hello a hello HTTPS nebo správce účtu jména a hesla pro hello cluster. Může být také výzvami tooauthenticate tooyour předplatného Azure.
 
-3. Po dokončení úlohy, zobrazí se výstup podobný následujícímu:
+3. Po dokončení úlohy hello, zobrazí se výstup podobný toohello následující text:
 
         Cluster         : CLUSTERNAME
         ExitCode        : 0
@@ -77,27 +77,27 @@ Následující kroky ukazují, jak tyto rutiny použít ke spuštění úlohy v 
         SubmissionTime  : 12/5/2014 8:34:09 PM
         JobId           : job_1415949758166_0071
 
-    Tento výstup označuje, že úloha byla úspěšně dokončena.
+    Tento výstup označuje, že hello úloha úspěšně dokončena.
 
     > [!NOTE]
-    > Pokud **ExitCode** je hodnota než 0, najdete v části [Poradce při potížích s](#troubleshooting).
+    > Pokud hello **ExitCode** je hodnota než 0, najdete v části [Poradce při potížích s](#troubleshooting).
 
-    Tento příklad také ukládá stažené soubory, které chcete **výstup.txt** soubor v adresáři, který spuštění skriptu z.
+    Tento příklad také ukládá hello stažené soubory tooan **výstup.txt** soubor v adresáři hello, který spustí skript hello z.
 
 ### <a name="view-output"></a>Zobrazení výstupu
 
-Otevřete **výstup.txt** soubor v textovém editoru slova a počty vytvořeného úlohou.
+Otevřete hello **výstup.txt** soubor ve textového editoru toosee hello slova a počty vytvořené úlohou hello.
 
 > [!NOTE]
-> Výstupní soubory úlohy MapReduce jsou neměnné. Proto pokud tuto ukázku, musíte změnit název výstupního souboru.
+> výstupní soubory Hello úlohy MapReduce jsou neměnné. Pokud tuto ukázku, takže musíte toochange hello názvu výstupního souboru hello.
 
 ## <a id="troubleshooting"></a>Řešení potíží
 
-Pokud žádné informace se vrátí po dokončení úlohy, mohlo dojít k chybě během zpracování. Chcete-li zobrazit informace o chybě pro tuto úlohu, přidejte následující příkaz na konec **mapreducejob.ps1** souboru, uložit jej a znovu jej spusťte.
+Když se po dokončení úlohy hello nevrátí žádné informace, může mít došlo k chybě během zpracování. informace o chybě tooview pro tuto úlohu, přidejte následující příkaz toohello konec hello hello **mapreducejob.ps1** souboru, uložit jej a znovu jej spusťte.
 
 ```powershell
-# Print the output of the WordCount job.
-Write-Host "Display the standard output ..." -ForegroundColor Green
+# Print hello output of hello WordCount job.
+Write-Host "Display hello standard output ..." -ForegroundColor Green
 Get-AzureRmHDInsightJobOutput `
         -Clustername $clusterName `
         -JobId $wordCountJob.JobId `
@@ -105,11 +105,11 @@ Get-AzureRmHDInsightJobOutput `
         -DisplayOutputType StandardError
 ```
 
-Tato rutina vrátí informace, která byla zapsána do STDERR na serveru při spuštění úlohy a může pomoci zjistit, proč se nedaří úlohy.
+Tato rutina vrátí informace hello, která byla zapsána tooSTDERR na serveru hello při spuštění úlohy hello a může pomoci zjistit, proč se nedaří hello úlohy.
 
 ## <a id="summary"></a>Shrnutí
 
-Jak vidíte, Azure PowerShell poskytuje snadný způsob, jak spouštět úlohy MapReduce v clusteru HDInsight, sledovat stav úlohy a načíst výstup.
+Jak vidíte, bude Azure PowerShell na clusteru HDInsight, stav úlohy hello monitorování a výstup hello načtení poskytuje snadný způsob toorun úloh MapReduce.
 
 ## <a id="nextsteps"></a>Další kroky
 

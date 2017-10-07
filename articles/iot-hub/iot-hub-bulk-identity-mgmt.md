@@ -1,6 +1,6 @@
 ---
-title: "Import a export identit zařízení Azure IoT Hub | Microsoft Docs"
-description: "Jak používat sady SDK služby Azure IoT provádět hromadné operace proti registru identit pro import a export identit zařízení. Operace importu umožňují vytvářet, aktualizovat a odstraňovat identit zařízení hromadně."
+title: "export aaaImport identit zařízení Azure IoT Hub | Microsoft Docs"
+description: "Jak toouse hello Azure IoT služby SDK tooperform hromadné operace u hello identity registru tooimport a exportovat identit zařízení. Operace importu umožňují toocreate, aktualizace a odstranění zařízení identity hromadně."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: ad2c6d585eef5450f7f0912ffa4753fe80d86b37
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b67777d381e03de05d9c007b5ce6bdaf15bbb8f0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Spravovat vaše identit zařízení IoT Hub hromadně
 
-Každé centrum IoT má registru identit, které můžete použít k vytvoření prostředků na zařízení ve službě. Registr identit umožňuje řídit přístup k zařízení přístupem koncových bodů. Tento článek popisuje, jak importovat a exportovat identit zařízení hromadné do a z registru identit.
+Každé centrum IoT má registru identit toocreate prostředků na zařízení můžete použít ve službě hello. registr identit Hello můžete také toocontrol přístup toohello zařízení přístupem koncových bodů. Tento článek popisuje, jak tooimport a export identit zařízení v hromadné tooand z registru identit.
 
-Import a export operace proběhla v kontextu *úlohy* které umožňují provádět hromadné operace služby proti služby IoT hub.
+Import a export operace proběhla v kontextu hello *úlohy* , umožňují tooexecute hromadné operace služby proti služby IoT hub.
 
-**RegistryManager** třída zahrnuje **ExportDevicesAsync** a **ImportDevicesAsync** metody, které používají **úlohy** framework. Tyto metody umožňují exportovat, import a synchronizaci celého registru identit IoT hub.
+Hello **RegistryManager** třída zahrnuje hello **ExportDevicesAsync** a **ImportDevicesAsync** metody, které používají hello **úlohy** Framework. Tyto metody umožňují tooexport, importu a synchronizaci hello celého registru identit IoT hub.
 
 ## <a name="what-are-jobs"></a>Jaké jsou úlohy?
 
-Operace s registrem identit pomocí **úlohy** systému při operaci:
+Operace s registrem identit pomocí hello **úlohy** systému při hello operace:
 
-* Má potenciálně dlouhou dobu spuštění ve srovnání s standardní spuštění operace.
-* Vrátí velký objem dat pro uživatele.
+* Má potenciálně dlouhou dobu spuštění porovná toostandard spuštění operace.
+* Vrací velké množství dat toohello uživatele.
 
-Místo jednoho volání rozhraní API čekání nebo blokování na výsledek operace, operace asynchronně vytvoří **úlohy** tohoto centra IoT. Operace pak okamžitě vrátí **JobProperties** objektu.
+Místo jednoho volání rozhraní API čekání nebo blokování na hello výsledek operace hello, operace hello asynchronně vytvoří **úlohy** tohoto centra IoT. operace Hello pak okamžitě vrátí **JobProperties** objektu.
 
-Následující fragment kódu jazyka C# ukazuje postup vytvoření úlohy exportu:
+Hello následující C# code fragment kódu ukazuje, jak toocreate úlohy exportu:
 
 ```csharp
-// Call an export job on the IoT Hub to retrieve all devices
+// Call an export job on hello IoT Hub tooretrieve all devices
 JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
 ```
 
 > [!NOTE]
-> Použít **RegistryManager** třídy v kódu jazyka C#, přidejte **Microsoft.Azure.Devices** balíček NuGet do projektu. **RegistryManager** třída je v **Microsoft.Azure.Devices** oboru názvů.
+> toouse hello **RegistryManager** třídy v kódu jazyka C#, přidejte hello **Microsoft.Azure.Devices** projektu tooyour balíček NuGet. Hello **RegistryManager** třída je v hello **Microsoft.Azure.Devices** oboru názvů.
 
-Můžete použít **RegistryManager** třída k dotazování na stav systému **úlohy** pomocí vráceného **JobProperties** metadat.
+Můžete použít hello **RegistryManager** třídy tooquery hello stav hello **úlohy** pomocí hello vrátil **JobProperties** metadat.
 
-Následující fragment kódu jazyka C# ukazuje, jak pokud chcete zobrazit, pokud úloha dokončí provádění dotazování každých pět sekund:
+Hello následující fragment kódu jazyka C# ukazuje, jak toopoll toosee každých pět sekund, pokud hello úlohy skončil:
 
 ```csharp
 // Wait until job is finished
@@ -70,24 +70,24 @@ while(true)
 
 ## <a name="export-devices"></a>Export zařízení
 
-Použití **ExportDevicesAsync** metodu exportu celého IoT hub identity registru [Azure Storage](../storage/index.md) pomocí kontejneru objektů blob [sdíleného přístupového podpisu](../storage/common/storage-security-guide.md#data-plane-security).
+Použití hello **ExportDevicesAsync** metoda tooexport hello celého IoT hub identity registru tooan [Azure Storage](../storage/index.md) pomocí kontejneru objektů blob [sdíleného přístupového podpisu](../storage/common/storage-security-guide.md#data-plane-security).
 
-Tato metoda umožňuje vytvářet spolehlivá zálohy zařízení informací v kontejneru objektů blob, který ovládáte.
+Tato metoda umožňuje toocreate spolehlivé zálohování vašich zařízení informací v kontejneru objektů blob, který ovládáte.
 
-**ExportDevicesAsync** metoda vyžaduje dva parametry:
+Hello **ExportDevicesAsync** metoda vyžaduje dva parametry:
 
-* A *řetězec* obsahující identifikátor URI kontejner objektů blob. Tento identifikátor URI musí obsahovat token SAS, která uděluje oprávnění k zápisu do kontejneru. Tato úloha vytvoří objekt blob bloku v tomto kontejneru pro ukládání dat zařízení serializovaných export. SAS token musí zahrnovat tato oprávnění:
+* A *řetězec* obsahující identifikátor URI kontejner objektů blob. Tento identifikátor URI musí obsahovat token SAS, která uděluje přístup pro zápis toohello kontejneru. Úloha Hello vytvoří objekt blob bloku data tento kontejner toostore hello serializovat export zařízení. Hello SAS token musí zahrnovat tato oprávnění:
 
    ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
    ```
 
-* A *boolean* určující, zda chcete vyloučit ověřovací klíče exportovat data. Pokud **false**, ověřovací klíče jsou zahrnuty ve výstupu export. Jinak, jsou klíče exportovány jako **null**.
+* A *boolean* určující, pokud chcete exportovat data tooexclude ověřovací klíče. Pokud **false**, ověřovací klíče jsou zahrnuty ve výstupu export. Jinak, jsou klíče exportovány jako **null**.
 
-Následující fragment kódu jazyka C# ukazuje, jak spustit úlohy exportu obsahující klíče ověřování zařízení v exportu dat a pak dotazování na dokončení:
+Hello následující fragment kódu jazyka C# popisuje, jak tooinitiate úlohu export, který obsahuje klíče ověřování zařízení v hello exportovat data a pak dotazování na dokončení:
 
 ```csharp
-// Call an export job on the IoT Hub to retrieve all devices
+// Call an export job on hello IoT Hub tooretrieve all devices
 JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
 
 // Wait until job is finished
@@ -106,9 +106,9 @@ while(true)
 }
 ```
 
-Úloha ukládá její výstup v kontejneru objektů blob zadané jako objekt blob bloku s názvem **devices.txt**. Výstupní data se skládá z data zařízení serializován do formátu JSON, s jedno zařízení na každý řádek.
+Hello úlohy ukládá její výstup v kontejneru objektů blob hello zadané jako objekt blob bloku s názvem hello **devices.txt**. Hello výstupní data se skládá z data zařízení serializován do formátu JSON, s jedno zařízení na každý řádek.
 
-Následující příklad ukazuje výstupní data:
+Hello následující příklad ukazuje hello výstupní data:
 
 ```json
 {"id":"Device1","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
@@ -118,7 +118,7 @@ Následující příklad ukazuje výstupní data:
 {"id":"Device5","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
 ```
 
-Pokud zařízení obsahuje twin dat, twin data také exportovat společně s dat zařízení. Následující příklad ukazuje tento formát. Všechna data z řádku "twinETag" až do konce jsou twin data.
+Pokud zařízení obsahuje twin dat, hello twin data také exportovat společně s hello data zařízení. Hello následující příklad ukazuje tento formát. Všechna data z řádku "twinETag" hello dokud hello end jsou twin data.
 
 ```json
 {
@@ -165,7 +165,7 @@ Pokud zařízení obsahuje twin dat, twin data také exportovat společně s dat
 }
 ```
 
-Pokud budete potřebovat přístup k těmto datům v kódu, můžete snadno rekonstruovat tato data pomocí **ExportImportDevice** třídy. Následující fragment kódu jazyka C# ukazuje, jak číst informace o zařízení, který jste předtím exportovali do objektu blob bloku:
+Pokud budete potřebovat přístup k datům toothis v kódu, můžete snadno rekonstruovat tato data pomocí hello **ExportImportDevice** třídy. Hello následující fragment kódu jazyka C# ukazuje, jak tooread informace o zařízení, která byla předtím exportovali objekt blob bloku tooa:
 
 ```csharp
 var exportedDevices = new List<ExportImportDevice>();
@@ -182,44 +182,44 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 ```
 
 > [!NOTE]
-> Můžete také **GetDevicesAsync** metodu **RegistryManager** třída načíst seznam zařízení. Však tento přístup má pevný cap 1000 na počtu zařízení objekty, které jsou vráceny. Případ použití očekávané **GetDevicesAsync** metoda je pro vývojové scénáře, které pomáhají ladění a se nedoporučuje pro produkční zatížení.
+> Můžete taky hello **GetDevicesAsync** metoda hello **RegistryManager** třída toofetch seznam zařízení. Však tento přístup má pevný cap 1000 hello počtu zařízení objekty, které jsou vráceny. Hello očekává případ použití pro hello **GetDevicesAsync** metoda je pro vývoj scénáře tooaid ladění a se nedoporučuje pro produkční zatížení.
 
 ## <a name="import-devices"></a>Import zařízení
 
-**ImportDevicesAsync** metoda v **RegistryManager** vám umožňuje provádět operace hromadného importu a synchronizaci v registru identit IoT hub. Jako **ExportDevicesAsync** metody **ImportDevicesAsync** metoda používá **úlohy** framework.
+Hello **ImportDevicesAsync** metoda v hello **RegistryManager** třída umožňuje operace importu a synchronizaci hromadné tooperform v registru identit IoT hub. Jako hello **ExportDevicesAsync** metoda, hello **ImportDevicesAsync** metoda používá hello **úlohy** framework.
 
-Vezměte v potaz, pomocí **ImportDevicesAsync** metoda protože kromě zřizování nových zařízení v registru identit, můžete taky aktualizovat a odstranit existující zařízení.
+Vezměte v potaz pomocí hello **ImportDevicesAsync** metoda vzhledem k tomu, že v tooprovisioning nová zařízení přidání v registru identit, můžete také aktualizovat a odstranit existující zařízení.
 
 > [!WARNING]
-> Operace importu nelze vrátit zpět. Vždy zálohovat stávající data pomocí **ExportDevicesAsync** metodu pro jiný kontejner objektů blob, před provedením hromadné změny registru vaší identity.
+> Operace importu nelze vrátit zpět. Vždy zálohovat stávající data pomocí hello **ExportDevicesAsync** kontejner objektů blob tooanother metoda před provedením hromadné změny registru identit tooyour.
 
-**ImportDevicesAsync** metoda přebírá dva parametry:
+Hello **ImportDevicesAsync** metoda přebírá dva parametry:
 
-* A *řetězec* identifikátor URI, který obsahuje [Azure Storage](../storage/index.md) kontejner objektů blob, které chcete použít jako *vstupní* do úlohy. Tento identifikátor URI musí obsahovat token SAS, která uděluje přístup pro čtení ke kontejneru. Tento kontejner musí obsahovat objekt blob s názvem **devices.txt** obsahující data serializovaná zařízení určená k importu do registru identit. Import dat musí obsahovat informace o zařízení ve stejném formátu JSON, který **ExportImportDevice** úloha používá při vytváření **devices.txt** objektů blob. SAS token musí zahrnovat tato oprávnění:
+* A *řetězec* identifikátor URI, který obsahuje [Azure Storage](../storage/index.md) blob kontejneru toouse jako *vstupní* toohello úlohy. Tento identifikátor URI musí obsahovat token SAS, která uděluje přístup pro čtení toohello kontejneru. Tento kontejner musí obsahovat objekt blob s názvem hello **devices.txt** obsahující hello serializovat zařízení data tooimport do registru identit. Hello import dat musí obsahovat informace o zařízení v hello stejné JSON formátu této hello **ExportImportDevice** úloha používá při vytváření **devices.txt** objektů blob. Hello SAS token musí zahrnovat tato oprávnění:
 
    ```csharp
    SharedAccessBlobPermissions.Read
    ```
-* A *řetězec* identifikátor URI, který obsahuje [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) kontejner objektů blob, které chcete použít jako *výstup* z úlohy. Tato úloha vytvoří objekt blob bloku v tomto kontejneru ukládat všechny informace o chybě z dokončené import **úlohy**. SAS token musí zahrnovat tato oprávnění:
+* A *řetězec* identifikátor URI, který obsahuje [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) blob kontejneru toouse jako *výstup* z úlohy hello. Hello úloha vytvoří objekt blob bloku v tento kontejner toostore veškeré informace o chybě z hello dokončení importu **úlohy**. Hello SAS token musí zahrnovat tato oprávnění:
 
    ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
    ```
 
 > [!NOTE]
-> Dva parametry může ukazovat na stejném kontejneru objektů blob. Samostatné parametry jednoduše povolte větší kontrolu nad daty jako výstup kontejneru vyžaduje další oprávnění.
+> Hello dva parametry může ukazovat toohello stejný kontejner objektů blob. samostatné parametry Hello jednoduše povolte větší kontrolu nad daty jako kontejner výstup hello vyžaduje další oprávnění.
 
-Následující fragment kódu jazyka C# ukazuje, jak zahájit úlohy importu:
+Hello následující C# code fragment kódu ukazuje, jak tooinitiate úlohy importu:
 
 ```csharp
 JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 ```
 
-Tato metoda slouží také k importu dat pro dvojče zařízení. Formát pro vložení dat je stejný jako formát ukazuje **ExportDevicesAsync** části. Tímto způsobem můžete znovu naimportovat exportovaná data. **$Metadata** je volitelný.
+Tato metoda může být také použít tooimport hello data pro dvojče zařízení hello. Hello formát pro hello datového vstupu je hello stejný jako formát hello ukazuje hello **ExportDevicesAsync** části. Tímto způsobem můžete znovu naimportovat data hello exportovali. Hello **$metadata** je volitelný.
 
 ## <a name="import-behavior"></a>Import chování
 
-Můžete použít **ImportDevicesAsync** možností, jak provést následující operace hromadného v registru identit:
+Můžete použít hello **ImportDevicesAsync** metoda tooperform hello následující hromadné operace v registru identit:
 
 * Hromadné registrace nové zařízení
 * Hromadné odstranění stávajících zařízení
@@ -228,32 +228,32 @@ Můžete použít **ImportDevicesAsync** možností, jak provést následující
 * Hromadné auto-nové vygenerování klíče pro ověřování zařízení
 * Hromadné aktualizace dat twin
 
-Může vykonávat jakoukoli kombinaci předchozí operace v rámci jednoho **ImportDevicesAsync** volání. Můžete například zaregistrovat nové zařízení a odstranění nebo aktualizaci existujících zařízení pracujících s ve stejnou dobu. Při použití spolu s **ExportDevicesAsync** metody úplně můžete migrovat všechna vaše zařízení z jedné služby IoT hub do jiného.
+Můžete nastavit libovolnou kombinaci hello předcházející operace v rámci jednoho **ImportDevicesAsync** volání. Například můžete zaregistrovat nové zařízení a odstranění nebo aktualizaci stávajících zařízení v hello stejnou dobu. Při použití spolu s hello **ExportDevicesAsync** metody úplně můžete migrovat všechna vaše zařízení z jedné tooanother centra IoT.
 
-Pokud soubor importu obsahuje twin metadata, tato metadata přepíše existující twin metadata. Pokud soubor importu neobsahuje twin metadata, pak pouze `lastUpdateTime` metadat je aktualizovat pomocí aktuálního času.
+Obsahuje-li soubor importu hello twin metadata, tato metadata přepíše existující metadata twin hello. Pokud soubor importu hello neobsahuje twin metadata, pak pouze hello `lastUpdateTime` metadat je aktualizovat pomocí hello aktuální čas.
 
-Použít nepovinný **režimem importu** vlastnost importovat data serializace pro každé zařízení k řízení import proces za zařízení. **Režimem importu** vlastnost obsahuje následující možnosti:
+Volitelné použití hello **režimem importu** vlastnost hello import serializace dat pro každé zařízení toocontrol hello import proces podle zařízení. Hello **režimem importu** vlastnost má hello následující možnosti:
 
 | režimem importu | Popis |
 | --- | --- |
-| **createOrUpdate** |Pokud zařízení se zadaným neexistuje **id**, bude nově zaregistrovaný. <br/>Pokud už zařízení existuje, dojde k přepsání zadaný vstupní data bez ohledem na stávající informace o **značka ETag** hodnotu. <br> Uživatel Volitelně můžete zadat data twin spolu s daty zařízení. Značka etag twin,-li zadána, je zpracovat nezávisle ze zařízení etag. Pokud se neshodují s existující twin etag, do souboru protokolu se zapíše chyba. |
-| **vytvoření** |Pokud zařízení se zadaným neexistuje **id**, bude nově zaregistrovaný. <br/>Pokud už zařízení existuje, je zapíše chybu do souboru protokolu. <br> Uživatel Volitelně můžete zadat data twin spolu s daty zařízení. Značka etag twin,-li zadána, je zpracovat nezávisle ze zařízení etag. Pokud se neshodují s existující twin etag, do souboru protokolu se zapíše chyba. |
-| **aktualizace** |Pokud zařízení už se zadaným **id**, přepíše stávající informace o zadané vstupní data bez ohledem na **značka ETag** hodnotu. <br/>Pokud zařízení neexistuje, je zapíše chybu do souboru protokolu. |
-| **updateIfMatchETag** |Pokud zařízení už se zadaným **id**, přepíše stávající informace o zadané vstupní data jenom v případě, že je **značka ETag** shodovat. <br/>Pokud zařízení neexistuje, je zapíše chybu do souboru protokolu. <br/>Pokud dojde **značka ETag** neshoda, do souboru protokolu se zapíše chyba. |
-| **createOrUpdateIfMatchETag** |Pokud zařízení se zadaným neexistuje **id**, bude nově zaregistrovaný. <br/>Pokud už zařízení existuje, stávající informace o je přepsána zadaný vstupní data jenom v případě, že je **značka ETag** shodovat. <br/>Pokud dojde **značka ETag** neshoda, do souboru protokolu se zapíše chyba. <br> Uživatel Volitelně můžete zadat data twin spolu s daty zařízení. Značka etag twin,-li zadána, je zpracovat nezávisle ze zařízení etag. Pokud se neshodují s existující twin etag, do souboru protokolu se zapíše chyba. |
-| **odstranění** |Pokud zařízení už se zadaným **id**, odstraní se bez ohledem na **značka ETag** hodnotu. <br/>Pokud zařízení neexistuje, je zapíše chybu do souboru protokolu. |
-| **deleteIfMatchETag** |Pokud zařízení už se zadaným **id**, odstraní se pouze v případě, že dojde **značka ETag** shodovat. Pokud zařízení neexistuje, je zapíše chybu do souboru protokolu. <br/>Pokud dojde neshoda značek ETag, do souboru protokolu se zapíše chyba. |
+| **createOrUpdate** |Pokud zařízení s hello zadaný neexistuje **id**, bude nově zaregistrovaný. <br/>Pokud zařízení hello již existuje, dojde k přepsání hello poskytl vstupní data bez ohledem toohello stávající informace o **značka ETag** hodnotu. <br> uživatel Hello Volitelně můžete zadat data twin spolu s daty hello zařízení. značka etag Hello twin,-li zadána, je zpracovat nezávisle z hello zařízení etag. Pokud se neshodují s hello existující twin etag, se zapíše chyba toohello souboru protokolu. |
+| **vytvoření** |Pokud zařízení s hello zadaný neexistuje **id**, bude nově zaregistrovaný. <br/>Pokud zařízení hello již existuje, se zapíše chyba toohello souboru protokolu. <br> uživatel Hello Volitelně můžete zadat data twin spolu s daty hello zařízení. značka etag Hello twin,-li zadána, je zpracovat nezávisle z hello zařízení etag. Pokud se neshodují s hello existující twin etag, se zapíše chyba toohello souboru protokolu. |
+| **aktualizace** |Pokud zařízení už existuje s hello zadaný **id**, přepíše stávající informace o hello poskytl vstupní data bez ohledem toohello **značka ETag** hodnotu. <br/>Pokud zařízení hello neexistuje, se zapíše chyba toohello souboru protokolu. |
+| **updateIfMatchETag** |Pokud zařízení už existuje s hello zadaný **id**, přepíše stávající informace o hello poskytl vstupní data jenom v případě, že je **značka ETag** shodovat. <br/>Pokud zařízení hello neexistuje, se zapíše chyba toohello souboru protokolu. <br/>Pokud dojde **značka ETag** neshoda, se zapíše chyba toohello souboru protokolu. |
+| **createOrUpdateIfMatchETag** |Pokud zařízení s hello zadaný neexistuje **id**, bude nově zaregistrovaný. <br/>Pokud zařízení hello již existuje, stávající informace o přepsána hello poskytl vstupní data jenom v případě, že je **značka ETag** shodovat. <br/>Pokud dojde **značka ETag** neshoda, se zapíše chyba toohello souboru protokolu. <br> uživatel Hello Volitelně můžete zadat data twin spolu s daty hello zařízení. značka etag Hello twin,-li zadána, je zpracovat nezávisle z hello zařízení etag. Pokud se neshodují s hello existující twin etag, se zapíše chyba toohello souboru protokolu. |
+| **odstranění** |Pokud zařízení už existuje s hello zadaný **id**, odstraní se bez ohledem toohello **značka ETag** hodnotu. <br/>Pokud zařízení hello neexistuje, se zapíše chyba toohello souboru protokolu. |
+| **deleteIfMatchETag** |Pokud zařízení už existuje s hello zadaný **id**, odstraní se pouze v případě, že je **značka ETag** shodovat. Pokud zařízení hello neexistuje, se zapíše chyba toohello souboru protokolu. <br/>Pokud dojde neshoda značek ETag, se zapíše chyba toohello souboru protokolu. |
 
 > [!NOTE]
-> Pokud data serializace nejsou explicitně definovány **režimem importu** příznak pro zařízení, nastaví se jako výchozí **createOrUpdate** během operace importu.
+> Pokud data serializace hello nedefinuje explicitně **režimem importu** příznak pro zařízení, nastaví se jako výchozí příliš**createOrUpdate** během hello operace importu.
 
 ## <a name="import-devices-example--bulk-device-provisioning"></a>Import příklad zařízení – hromadné zřizování zařízení
 
-Následující ukázka kódu C# ukazuje, jak vygenerovat víc identit zařízení který:
+ukazuje, Hello následující ukázka kódu C# jak toogenerate více identit zařízení který:
 
 * Zahrnout ověřovací klíče.
-* Informace o tomto zařízení zapisovat do objektů blob bloku.
-* Importujte do registru identit zařízení.
+* Objekt blob bloku tohoto zařízení informace tooa zápisu
+* Importujte do registru identit hello hello zařízení.
 
 ```csharp
 // Provision 1,000 more devices
@@ -262,7 +262,7 @@ var serializedDevices = new List<string>();
 for (var i = 0; i < 1000; i++)
 {
   // Create a new ExportImportDevice
-  // CryptoKeyGenerator is in the Microsoft.Azure.Devices.Common namespace
+  // CryptoKeyGenerator is in hello Microsoft.Azure.Devices.Common namespace
   var deviceToAdd = new ExportImportDevice()
   {
     Id = Guid.NewGuid().ToString(),
@@ -278,11 +278,11 @@ for (var i = 0; i < 1000; i++)
     ImportMode = ImportMode.Create
   };
 
-  // Add device to the list
+  // Add device toohello list
   serializedDevices.Add(JsonConvert.SerializeObject(deviceToAdd));
 }
 
-// Write the list to the blob
+// Write hello list toohello blob
 var sb = new StringBuilder();
 serializedDevices.ForEach(serializedDevice => sb.AppendLine(serializedDevice));
 await blob.DeleteIfExistsAsync();
@@ -297,8 +297,8 @@ using (CloudBlobStream stream = await blob.OpenWriteAsync())
   }
 }
 
-// Call import using the blob to add new devices
-// Log information related to the job is written to the same container
+// Call import using hello blob tooadd new devices
+// Log information related toohello job is written toohello same container
 // This normally takes 1 minute per 100 devices
 JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 
@@ -320,14 +320,14 @@ while(true)
 
 ## <a name="import-devices-example--bulk-deletion"></a>Import zařízení příklad – hromadné odstranění
 
-Následující příklad kódu ukazuje, jak odstranit zařízení, které jste přidali v předchozím příkladu kódu pomocí:
+Hello následující ukázka kódu se dozvíte, jak toodelete hello zařízení, které jste přidali pomocí hello předchozí ukázka kódu:
 
 ```csharp
-// Step 1: Update each device's ImportMode to be Delete
+// Step 1: Update each device's ImportMode toobe Delete
 sb = new StringBuilder();
 serializedDevices.ForEach(serializedDevice =>
 {
-  // Deserialize back to an ExportImportDevice
+  // Deserialize back tooan ExportImportDevice
   var device = JsonConvert.DeserializeObject<ExportImportDevice>(serializedDevice);
 
   // Update property
@@ -337,7 +337,7 @@ serializedDevices.ForEach(serializedDevice =>
   sb.AppendLine(JsonConvert.SerializeObject(device));
 });
 
-// Step 2: Write the new import data back to the block blob
+// Step 2: Write hello new import data back toohello block blob
 await blob.DeleteIfExistsAsync();
 using (CloudBlobStream stream = await blob.OpenWriteAsync())
 {
@@ -349,7 +349,7 @@ using (CloudBlobStream stream = await blob.OpenWriteAsync())
   }
 }
 
-// Step 3: Call import using the same blob to delete all devices
+// Step 3: Call import using hello same blob toodelete all devices
 importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 
 // Wait until job is finished
@@ -368,14 +368,14 @@ while(true)
 }
 ```
 
-## <a name="get-the-container-sas-uri"></a>Získat identifikátor URI pro SAS kontejneru
+## <a name="get-hello-container-sas-uri"></a>Získat hello kontejneru SAS URI
 
-Následující příklad kódu ukazuje, jak vygenerovat [identifikátor URI pro SAS](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md) čtení, zápisu a odstranění oprávnění pro kontejner objektů blob:
+Hello následující příklad kódu ukazuje, jak toogenerate [identifikátor URI pro SAS](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md) čtení, zápisu a odstranění oprávnění pro kontejner objektů blob:
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
 {
-  // Set the expiry time and permissions for the container.
+  // Set hello expiry time and permissions for hello container.
   // In this case no start time is specified, so the
   // shared access signature becomes valid immediately.
   var sasConstraints = new SharedAccessBlobPolicy();
@@ -385,24 +385,24 @@ static string GetContainerSasUri(CloudBlobContainer container)
     SharedAccessBlobPermissions.Read | 
     SharedAccessBlobPermissions.Delete;
 
-  // Generate the shared access signature on the container,
-  // setting the constraints directly on the signature.
+  // Generate hello shared access signature on hello container,
+  // setting hello constraints directly on hello signature.
   string sasContainerToken = container.GetSharedAccessSignature(sasConstraints);
 
-  // Return the URI string for the container,
-  // including the SAS token.
+  // Return hello URI string for hello container,
+  // including hello SAS token.
   return container.Uri + sasContainerToken;
 }
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak provést hromadné operace proti registru identit služby IoT hub. Další informace o správě Azure IoT Hub na následujících odkazech:
+V tomto článku jste se dozvěděli, jak tooperform hromadné operace u hello registru identit služby IoT hub. Použijte tyto odkazy toolearn informace o správě Azure IoT Hub:
 
 * [Metriky služby IoT Hub][lnk-metrics]
 * [Monitorování operací][lnk-monitor]
 
-Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
+toofurther prozkoumat hello služby IoT Hub, najdete v tématu:
 
 * [Příručka vývojáře pro službu IoT Hub][lnk-devguide]
 * [Simulaci zařízení s hranou IoT][lnk-iotedge]

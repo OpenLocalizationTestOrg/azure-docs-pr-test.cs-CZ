@@ -1,6 +1,6 @@
 ---
-title: "Použít rozhraní API MongoDB k vytvoření aplikace Azure Cosmos DB | Microsoft Docs"
-description: "Kurz, který vytváří online databáze pomocí rozhraní API Azure Cosmos DB pro MongoDB."
+title: "aaaUse rozhraní API MongoDB toobuild aplikaci Azure Cosmos DB | Microsoft Docs"
+description: "Kurz, který vytváří online databáze pomocí hello Azure Cosmos DB rozhraní API pro MongoDB."
 keywords: "Příklady mongodb"
 services: cosmos-db
 author: AndrewHoh
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: anhoh
-ms.openlocfilehash: 433d2e585c884a10e7e923a0b27c179a95410d01
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 09be4362fe3aac02e0163325f958210be9598383
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a>Vytvoření Azure DB Cosmos: rozhraní API pro MongoDB aplikaci pomocí Node.js
 > [!div class="op_single_selector"]
@@ -32,16 +32,16 @@ ms.lasthandoff: 08/03/2017
 >  
 >
 
-Tento příklad ukazuje, jak sestavit Azure DB Cosmos: rozhraní API pro MongoDB konzolovou aplikaci pomocí Node.js.
+Tento příklad ukazuje, jak toobuild Azure DB Cosmos: rozhraní API pro MongoDB konzolovou aplikaci pomocí Node.js.
 
-Chcete-li použít tento příklad, postupujte takto:
+toouse v tomto příkladu je potřeba:
 
 * [Vytvoření](create-mongodb-dotnet.md#create-account) Azure DB Cosmos: rozhraní API pro účet MongoDB.
 * Načíst vaše MongoDB [připojovací řetězec](connect-mongodb-account.md) informace.
 
-## <a name="create-the-app"></a>Vytvoření aplikace
+## <a name="create-hello-app"></a>Vytvoření aplikace hello
 
-1. Vytvoření *app.js* soubor a zkopírujte a vložte kód níže.
+1. Vytvoření *app.js* soubor a zkopírujte a vložte následující kód hello.
 
     ```nodejs
     var MongoClient = require('mongodb').MongoClient;
@@ -66,7 +66,7 @@ Chcete-li použít tento příklad, postupujte takto:
             "address": { "country": "USA", "state": "WA", "city": "Seattle" }
         }, function(err, result) {
         assert.equal(err, null);
-        console.log("Inserted a document into the families collection.");
+        console.log("Inserted a document into hello families collection.");
         callback();
     });
     };
@@ -122,7 +122,7 @@ Chcete-li použít tento příklad, postupujte takto:
     });
     ```
 
-2. Upravte následující proměnné v *app.js* soubor pro nastavení svého účtu (informace o vyhledávání vaše [připojovací řetězec](connect-mongodb-account.md)):
+2. Upravit hello následující proměnné v hello *app.js* soubor pro nastavení svého účtu (Další informace jak toofind vaše [připojovací řetězec](connect-mongodb-account.md)):
    
     ```nodejs
     var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
@@ -131,4 +131,4 @@ Chcete-li použít tento příklad, postupujte takto:
 3. Otevřete svůj oblíbený terminál, spusťte **npm nainstalujte mongodb – uložte**, spusťte aplikaci s **uzlu app.js**
 
 ## <a name="next-steps"></a>Další kroky
-* Zjistěte, jak [použít MongoChef](mongodb-mongochef.md) s vaší Azure DB Cosmos: rozhraní API pro účet MongoDB.
+* Zjistěte, jak příliš[použít MongoChef](mongodb-mongochef.md) s vaší Azure DB Cosmos: rozhraní API pro účet MongoDB.

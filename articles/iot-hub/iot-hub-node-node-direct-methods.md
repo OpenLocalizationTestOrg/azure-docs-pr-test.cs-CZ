@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT Hub přímé metody (uzel) | Microsoft Docs"
-description: "Jak používat Azure IoT Hub přímé metody. K implementaci aplikace simulovaného zařízení, která zahrnuje přímá metoda a aplikační služby, která volá metodu přímé použijete SDK služby Azure IoT pro Node.js."
+title: "aaaAzure IoT Hub přímé metody (uzel) | Microsoft Docs"
+description: "Jak toouse Azure IoT Hub přímé metody. SDK služby Azure IoT hello se používá pro Node.js tooimplement aplikaci simulovaného zařízení, která zahrnuje přímá metoda a aplikační služby, která volá metodu přímé hello."
 services: iot-hub
 documentationcenter: 
 author: nberdy
@@ -15,26 +15,26 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83725c3ae3fd3807f2469be888e270ba078a8972
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 12300ba451816fec1f80163b633f6b6e411d9e5c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-direct-methods-on-your-iot-device-with-nodejs"></a>Použití přímé metody na zařízení IoT s Node.js
 [!INCLUDE [iot-hub-selector-c2d-methods](../../includes/iot-hub-selector-c2d-methods.md)]
 
-Na konci tohoto kurzu máte dvě aplikace konzoly Node.js:
+Na konci hello tohoto kurzu máte dvě aplikace konzoly Node.js:
 
-* **CallMethodOnDevice.js**, která volá metodu v aplikaci simulovaného zařízení a zobrazí odpověď.
-* **SimulatedDevice.js**, který se připojuje ke službě IoT hub s dříve vytvořenou identitou zařízení a reaguje na metodu volá cloudu.
+* **CallMethodOnDevice.js**, která volá metodu v aplikaci simulovaného zařízení hello a zobrazí hello odpovědi.
+* **SimulatedDevice.js**, který připojí tooyour IoT hub s dříve vytvořenou identitou zařízení hello a reaguje toohello metodu s názvem hello cloudem.
 
 > [!NOTE]
-> Informace o sadách Azure IoT SDK, s jejichž pomocí můžete vytvářet aplikace pro zařízení i back-end vašeho řešení, najdete v tématu [Sady SDK služby Azure IoT][lnk-hub-sdks].
+> článek Hello [SDK služby Azure IoT] [ lnk-hub-sdks] poskytuje informace o hello SDK služby Azure IoT, které můžete toobuild toorun obě aplikace na zařízení a back end vašeho řešení.
 > 
 > 
 
-Pro absolvování tohoto kurzu potřebujete:
+toocomplete tohoto kurzu budete potřebovat hello následující:
 
 * Node.js verze 0.10.x nebo novější.
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)
@@ -44,20 +44,20 @@ Pro absolvování tohoto kurzu potřebujete:
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-a-simulated-device-app"></a>Vytvoření aplikace simulovaného zařízení
-V této části vytvoříte konzolovou aplikaci softwaru Node.js, která reaguje na metodu s názvem cloudem.
+V této části vytvoříte konzolovou aplikaci Node.js, která odpovídá tooa metodu s názvem hello cloudem.
 
-1. Vytvořte novou prázdnou složku s názvem **simulateddevice**. Ve složce **simulateddevice** vytvořte soubor package.json pomocí následujícího příkazu v příkazovém řádku. Přijměte všechny výchozí hodnoty:
+1. Vytvořte novou prázdnou složku s názvem **simulateddevice**. V hello **simulateddevice** složky, vytvořte soubor package.json pomocí následujícího příkazu na příkazovém řádku hello. Přijměte všechny výchozí hodnoty hello:
    
     ```
     npm init
     ```
-2. V příkazovém řádku ve složce **simulateddevice** spusťte následující příkaz k instalaci balíčku sady SDK pro zařízení **azure-iot-device** a balíčku **azure-iot-device-amqp**:
+2. Na příkazovém řádku v hello **simulateddevice** složky, spusťte následující příkaz tooinstall hello hello **azure-iot-device** balíčku sady SDK zařízení a **azure-iot zařízení mqtt**balíčku:
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. Pomocí textového editoru, vytvořte nový soubor **SimulatedDevice.js** ve složce **simulateddevice**.
-4. Na začátek souboru **SimulatedDevice.js** přidejte následující příkazy `require`:
+3. Pomocí textového editoru, vytvořte novou **SimulatedDevice.js** souboru v hello **simulateddevice** složky.
+4. Přidejte následující hello `require` příkazy v hello začátek hello **SimulatedDevice.js** souboru:
    
     ```
     'use strict';
@@ -65,28 +65,28 @@ V této části vytvoříte konzolovou aplikaci softwaru Node.js, která reaguje
     var Mqtt = require('azure-iot-device-mqtt').Mqtt;
     var DeviceClient = require('azure-iot-device').Client;
     ```
-5. Přidat **connectionString** proměnné a použít ho k vytvoření **DeviceClient** instance. Nahraďte **{zařízení připojovací řetězec}** s připojením zařízení vygenerovanými v řetězci *vytvoření identity zařízení* části:
+5. Přidat **connectionString** proměnné a použít ho toocreate **DeviceClient** instance. Nahraďte **{zařízení připojovací řetězec}** s řetězcem připojení zařízení hello jste vygenerovali v hello *vytvoření identity zařízení* části:
    
     ```
     var connectionString = '{device connection string}';
     var client = DeviceClient.fromConnectionString(connectionString, Mqtt);
     ```
-6. Přidejte následující funkci implementovat metodu na zařízení:
+6. Přidejte následující metodu hello tooimplement funkce v zařízení hello hello:
    
     ```
     function onWriteLine(request, response) {
         console.log(request.payload);
    
-        response.send(200, 'Input was written to log.', function(err) {
+        response.send(200, 'Input was written toolog.', function(err) {
             if(err) {
                 console.error('An error ocurred when sending a method response:\n' + err.toString());
             } else {
-                console.log('Response to method \'' + request.methodName + '\' sent successfully.' );
+                console.log('Response toomethod \'' + request.methodName + '\' sent successfully.' );
             }
         });
     }
     ```
-7. Otevřete připojení do služby IoT hub a spusťte inicializovat naslouchací proces metoda:
+7. Otevřete Centrum IoT tooyour hello připojení a spusťte inicializovat hello metoda naslouchací proces:
    
     ```
     client.open(function(err) {
@@ -98,47 +98,47 @@ V této části vytvoříte konzolovou aplikaci softwaru Node.js, která reaguje
         }
     });
     ```
-8. Soubor **SimulatedDevice.js** uložte a zavřete.
+8. Uložte a zavřete hello **SimulatedDevice.js** souboru.
 
 > [!NOTE]
-> Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu, měli byste implementovat zásady opakování (například opakování připojení), dle pokynů v článku na webu MSDN [přechodných chyb][lnk-transient-faults].
+> věcí tookeep jednoduchý, tento kurz neimplementuje žádné zásady opakování. V produkčním kódu, měli byste implementovat zásady opakování (například opakování připojení), dle pokynů v článku na webu MSDN hello [přechodných chyb][lnk-transient-faults].
 > 
 > 
 
 ## <a name="call-a-method-on-a-device"></a>Volání metody na zařízení
-V této části vytvoříte konzolovou aplikaci softwaru Node.js, která volá metodu v aplikaci simulovaného zařízení a potom zobrazí odpověď.
+V této části vytvoříte konzolovou aplikaci softwaru Node.js, která volá metodu v aplikaci simulovaného zařízení hello a potom zobrazí hello odpovědi.
 
-1. Vytvořit novou prázdnou složku s názvem **callmethodondevice**. V **callmethodondevice** složky, vytvořte soubor package.json pomocí následujícího příkazu na příkazovém řádku. Přijměte všechny výchozí hodnoty:
+1. Vytvořit novou prázdnou složku s názvem **callmethodondevice**. V hello **callmethodondevice** složky, vytvořte soubor package.json pomocí následujícího příkazu na příkazovém řádku hello. Přijměte všechny výchozí hodnoty hello:
    
     ```
     npm init
     ```
-2. Na příkazovém řádku v **callmethodondevice** složky, spusťte následující příkaz k instalaci **azure-iothub** balíčku:
+2. Na příkazovém řádku v hello **callmethodondevice** složky, spusťte následující příkaz tooinstall hello hello **azure-iothub** balíčku:
    
     ```
     npm install azure-iothub --save
     ```
-3. Pomocí textového editoru, vytvořte **CallMethodOnDevice.js** v soubor **callmethodondevice** složky.
-4. Přidejte následující `require` příkazy na začátku **CallMethodOnDevice.js** souboru:
+3. Pomocí textového editoru, vytvořte **CallMethodOnDevice.js** souboru v hello **callmethodondevice** složky.
+4. Přidejte následující hello `require` příkazy v hello začátek hello **CallMethodOnDevice.js** souboru:
    
     ```
     'use strict';
    
     var Client = require('azure-iothub').Client;
     ```
-5. Přidejte následující deklaraci proměnné a nahraďte hodnotu zástupného symbolu připojovacím řetězcem pro vaši službu IoT Hub:
+5. Přidejte následující deklarace proměnné hello a nahraďte hodnotu zástupného symbolu hello hello připojovací řetězec služby IoT Hub pro vaše centrum:
    
     ```
     var connectionString = '{iothub connection string}';
     var methodName = 'writeLine';
     var deviceId = 'myDeviceId';
     ```
-6. Vytvoření klienta k otevření připojení do služby IoT hub.
+6. Vytvoření centra IoT tooyour hello hello klienta tooopen připojení.
    
     ```
     var client = Client.fromConnectionString(connectionString);
     ```
-7. Přidejte následující funkci k vyvolání metody zařízení a vytisknout odpověď zařízení do konzoly:
+7. Přidejte následující funkce tooinvoke hello zařízení metoda tiskových hello zařízení odpovědi toohello konzoly a hello:
    
     ```
     var methodParams = {
@@ -149,45 +149,45 @@ V této části vytvoříte konzolovou aplikaci softwaru Node.js, která volá m
    
     client.invokeDeviceMethod(deviceId, methodParams, function (err, result) {
         if (err) {
-            console.error('Failed to invoke method \'' + methodName + '\': ' + err.message);
+            console.error('Failed tooinvoke method \'' + methodName + '\': ' + err.message);
         } else {
             console.log(methodName + ' on ' + deviceId + ':');
             console.log(JSON.stringify(result, null, 2));
         }
     });
     ```
-8. Uložte a zavřete **CallMethodOnDevice.js** souboru.
+8. Uložte a zavřete hello **CallMethodOnDevice.js** souboru.
 
-## <a name="run-the-apps"></a>Spouštění aplikací
-Nyní jste připraveni aplikaci spustit.
+## <a name="run-hello-apps"></a>Spuštění aplikace hello
+Nyní je připraven toorun hello aplikace.
 
-1. Na příkazovém řádku v **simulateddevice** složky, spusťte následující příkaz, který zahájit naslouchání pro volání metod ze služby IoT Hub:
+1. Na příkazovém řádku v hello **simulateddevice** složky, spusťte následující příkaz toostart přijímá metoda volání ze služby IoT Hub hello:
    
     ```
     node SimulatedDevice.js
     ```
    
     ![][7]
-2. Na příkazovém řádku v **callmethodondevice** složky, spusťte následující příkaz ke spuštění monitorování služby IoT hub:
+2. Na příkazovém řádku v hello **callmethodondevice** složky, spusťte následující příkaz toobegin monitorovat služba IoT hub hello:
    
     ```
     node CallMethodOnDevice.js 
     ```
    
     ![][8]
-3. Zobrazí se zařízení reagovat na metodu tiskem, zprávu a aplikace, který označuje zobrazení metoda odpověď ze zařízení:
+3. Zobrazí se zařízení hello reagovat toohello metoda tiskem uvítací zprávu a hello aplikace, který označuje hello metoda zobrazení hello odpověď z hello zařízení:
    
     ![][9]
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Povolit aplikaci simulovaného zařízení reagování na metody vyvolané cloudu použijete tuto identitu zařízení. Můžete také vytvořit aplikaci, která volá metody na zařízení a zobrazí odpověď ze zařízení. 
+V tomto kurzu jste nakonfigurovali novou službu IoT hub v hello portál Azure a poté jste vytvořili identitu zařízení v registru identit služby IoT hub hello. Použili jste toto zařízení identity tooenable hello simulované zařízení aplikaci tooreact toomethods vyvolané hello cloudu. Můžete také vytvořit aplikaci, která volá metody na hello zařízení a zobrazí hello odezvu hello zařízení. 
 
-Chcete-li pokračovat v seznamování se službou IoT Hub a prozkoumat další scénáře IoT, podívejte se na tato témata:
+toocontinue Začínáme se službou IoT Hub a tooexplore najdete v dalších scénářů platformy IoT:
 
 * [Začínáme s centrem IoT]
 * [Plánování úloh na několika zařízeních][lnk-devguide-jobs]
 
-Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá na několika zařízeních, najdete v článku [plán a všesměrového vysílání úlohy] [ lnk-tutorial-jobs] kurzu.
+toolearn o tooextend IoT řešení a plán metodu volá na několika zařízeních a v tématu hello [plán a všesměrového vysílání úlohy] [ lnk-tutorial-jobs] kurzu.
 
 <!-- Images. -->
 [7]: ./media/iot-hub-node-node-direct-methods/run-simulated-device.png

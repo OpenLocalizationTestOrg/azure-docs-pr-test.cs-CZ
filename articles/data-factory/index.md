@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace ke službě Azure Data Factory – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se používat službu Data Factory k nastavování automatizovaných datových kanálů do místních a cloudových zdrojů a z nich s cílem přesouvat a zpracovávat data pro analýzu."
+title: "aaaAzure dokumentace k objektu pro vytváření dat – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Zjistěte, jak toouse Data Factory tooset automatizované data kanálů tooand z místní a cloudové zdroje v pořadí toomove a zpracování dat pro analýzu."
 services: data-factory
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: bf280db3ab7f9a4b3742dafcdbb0fb7c79cc963c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2b785093780a5eb5c23924a9c3c3f5d8675f0f96
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-data-factory-documentation"></a>Dokumentace ke službě Azure Data Factory
 
-Naučte se používat cloudovou službu pro integraci dat Data Factory k sestavování služeb úložišť dat, přesouvání a zpracování v automatizovaných datových kanálech. V kurzech a další dokumentaci se naučíte nastavit a spravovat datové kanály a také přesouvat a transformovat data pro analýzu.
+Zjistěte, jak toouse objekt pro vytváření dat, služba pro integraci dat cloudu, toocompose úložiště dat, přesun a zpracování služby do automatizované datových kanálů. Kurzy a další dokumentaci ukazují, jak tooset a Správa kanálů dat, stejně jako přesunout a transformovat data pro analýzu.
 
 <ul class="panelContent cardsFTitle">
    <li>

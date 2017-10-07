@@ -1,7 +1,7 @@
 ---
-title: "Přenos vlastnictví předplatného Azure na jiný účet | Microsoft Docs"
-description: "Popisuje, jak převést předplatné Azure do jiného uživatele a některé nejčastější dotazy (FAQ) o procesu"
-keywords: "přenos předplatného přenos předplatného azure, azure, přesunout do jiné vlastník předplatného změnu účtu azure předplatné azure, přenos předplatného azure na jiný účet"
+title: "aaaTransfer účet tooanother vlastnictví předplatného Azure | Microsoft Docs"
+description: "Popisuje, jak tootransfer uživatelé tooanother předplatného Azure a některé nejčastější dotazy (FAQ) o procesu hello"
+keywords: "přenos předplatného přenos předplatného azure, azure, přesuňte tooanother účtu předplatného azure, vlastník předplatného azure změnu, účtu tooanother předplatného azure přenosu"
 services: 
 documentationcenter: 
 author: genlin
@@ -17,144 +17,144 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8a856c39eb11546f35cb4e8c21e6bdcce98857a8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d2d9f5d9ccd34738701493e5f31c2f83a02f5d48
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Přenos vlastnictví předplatného služby Azure na jiný účet
+# <a name="transfer-ownership-of-an-azure-subscription-tooanother-account"></a>Převést vlastnictví tooanother účtu předplatného Azure
 
-Vaše předplatné můžou přenášet do jiného uživatele průběžné platby, Visual Studio, akce sady nebo BizSpark odběry v centru účtů. Podporujeme přenos externí služby Azure pro tyto předplatné typy. 
+Můžete přenést předplatné tooanother uživatelů pro odběry průběžné platby, Visual Studio, sada akce nebo BizSpark ve hello centra účtů. Podporujeme hello přenos externí služby Azure pro tyto předplatné typy. 
 
-Můžete chtít přenos vlastnictví předplatného Azure, když jste:
+Můžete chtít tootransfer vlastnictví předplatného Azure, pokud je:
 
-* Třeba k ruční přes fakturace vlastnictví předplatného Azure někomu jinému.
-* Chcete změnit účet použitý k registraci do Azure. Možná používá Account Microsoft ale určená použijte pracovní nebo školní účet.
-* Chcete přesunout do jiného předplatného Azure z jednoho adresáře.
-* V jiných klientů Azure a Office 365 a konsolidovat.
+* Potřebují toohand přes vlastnictví fakturace vašeho předplatného Azure toosomeone else.
+* Chcete účet hello toochange používat toosign pro službu Azure. Možná používá Account Microsoft ale určená toouse pracovní nebo školní účet místo.
+* Chcete toomove vašeho předplatného Azure z tooanother jeden adresář.
+* V jiných klientů Azure a Office 365 a chcete tooconsolidate.
 
-Chcete-li změnit předplatné na jinou nabídku, [vašeho předplatného Azure přepnout na jinou nabídku](billing-how-to-switch-azure-offer.md). 
+toochange nabízí vaše předplatné tooa jiný, najdete v části [přepínač vaši nabídku tooanother předplatné](billing-how-to-switch-azure-offer.md). 
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Přenos vlastnictví předplatného Azure
 > [!VIDEO https://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/Transfer-an-Azure-subscription/player]
 >
 >
 
-1. Přihlaste se na <https://account.windowsazure.com/Subscriptions>. Musíte být správce účtu provést převod vlastnictví. Chcete-li zjistit, kdo je správce účtu předplatného, přečtěte si téma [nejčastější dotazy](#faq).
+1. Přihlaste se na <https://account.windowsazure.com/Subscriptions>. Máte toobe hello správce účtu tooperform převod vlastnictví. toofind, který je hello správce účtu předplatného hello, najdete v části hello [nejčastější dotazy](#faq).
 
-2. Vyberte předplatné pro přenos.
+2. Vyberte předplatné tootransfer hello.
 
-3. Klikněte **přenos předplatného** možnost. V tématu [– nejčastější dotazy](#no-button) Pokud se nezobrazí tlačítko.
+3. Klikněte na tlačítko hello **přenos předplatného** možnost. V tématu [– nejčastější dotazy](#no-button) Pokud se nezobrazí tlačítko hello.
 
    ![Karta odběry účet Azure](./media/billing-subscription-transfer/image1.png)
-4. Zadejte příjemce.
+4. Zadejte příjemce hello.
 
    ![Dialogové okno přenos předplatného](./media/billing-subscription-transfer/image2.PNG)
-5. Příjemce automaticky dostane e-mail s odkazem pro akceptaci.
+5. příjemce Hello automaticky získá e-mail s odkazem přijetí.
 
-   ![Předplatné přenosu e-mailu k příjemce](./media/billing-subscription-transfer/image3.png)
-6. Příjemce klikne na odkaz a postupuje podle pokynů, včetně zadání platebních údajů.
+   ![Předplatné přenosu e-mailu toorecipient](./media/billing-subscription-transfer/image3.png)
+6. příjemce Hello klikne na odkaz hello a postupuje hello pokynů, včetně zadáním jejich platebních údajů.
 
    ![První předplatné přenos webové stránky](./media/billing-subscription-transfer/image4.png)
 
    ![Druhý předplatné přenos webové stránky](./media/billing-subscription-transfer/image5.png)
-7. Úspěšné! Předplatné je nyní přenést.
+7. Úspěšné! Nyní se přenáší Hello předplatného.
 
 ## <a name="transfer-subscription-ownership-for-enterprise-agreement-ea-customers"></a>Přenos vlastnictví předplatného pro zákazníky Enterprise Agreement (EA)
-Správce podnikové sítě může převést vlastnictví předplatných v rámci zápisu. Abyste mohli začít, najdete v části [přenos vlastnictví účet](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription) EA portálu.
+Hello podnikového správce může převést vlastnictví předplatných v rámci zápisu. tooget začít, najdete v části [přenos vlastnictví účet](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription) hello EA portálu.
 
 ## <a name="next-steps-after-accepting-ownership-of-a-subscription"></a>Další kroky následující po přijetí vlastnictví předplatného
-1. Nyní jste správce účtu. Zkontrolovat a aktualizovat Správce služeb a Spolusprávci. Spravovat správce ve [portál Azure classic](https://manage.windowsazure.com) přechodem na nastavení. [Další informace o rolích správce](billing-add-change-azure-subscription-administrator.md).
+1. Nyní jste hello správce účtu. Zkontrolovat a aktualizovat hello Správce služeb a Spolusprávci. Správa správců v hello [portál Azure classic](https://manage.windowsazure.com) přechodem tooSettings. [Další informace o rolích správce](billing-add-change-azure-subscription-administrator.md).
 
-2. Řízení přístupu na základě role (RBAC) můžete také použít pro vaše předplatné a služby. Navštivte [Azure Portal](https://portal.azure.com). [Další informace o RBAC](../active-directory/role-based-access-control-configure.md)
+2. Řízení přístupu na základě role (RBAC) můžete také použít pro vaše předplatné a služby. Navštivte hello [portál Azure](https://portal.azure.com). [Další informace o RBAC](../active-directory/role-based-access-control-configure.md)
 
 3. Aktualizujte přihlašovací údaje související s toto předplatné služby, včetně:
    
-   * Certifikáty pro správu, které udělit oprávnění správce pro prostředky předplatného. Další informace najdete v tématu [vytvoření a nahrání certifikátu správy pro Azure.](../cloud-services/cloud-services-certs-create.md)
+   * Certifikáty pro správu, která udělují oprávnění správce uživatele hello toosubscription prostředky. Další informace najdete v tématu [vytvoření a nahrání certifikátu správy pro Azure.](../cloud-services/cloud-services-certs-create.md)
    
    * Přístupové klávesy pro služby jako úložiště. Další informace najdete v tématu [účty Azure storage](../storage/common/storage-create-storage-account.md)
    
    * Pověření vzdáleného přístupu pro služby, jako virtuální počítače Azure. 
 
-4. [Aktualizovat fakturace výstrahy pro toto předplatné](billing-set-up-alerts.md) na [centra účtů Azure](https://account.windowsazure.com/Subscriptions). 
+4. [Aktualizovat fakturace výstrahy pro toto předplatné](billing-set-up-alerts.md) v hello [centra účtů Azure](https://account.windowsazure.com/Subscriptions). 
 
-5. Pokud pracujete s partnerem, zvažte aktualizaci ID partnera u tohoto předplatného. Můžete aktualizovat ID partnera v [centra účtů Azure](https://account.windowsazure.com/Subscriptions).
+5. Pokud pracujete s partnerem, zvažte aktualizaci ID partnera hello u tohoto předplatného. Můžete aktualizovat ID partnera hello v hello [centra účtů Azure](https://account.windowsazure.com/Subscriptions).
 
 <a id="faq"></a>
 
 ## <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
-* <a name="whoisaa"></a>**Kdo je správce účtu předplatného?**
+* <a name="whoisaa"></a>**Kdo je správce účtu hello hello předplatného?**
 
-  Správce účtu je osoba, která registraci aplikace nebo kód zakoupili předplatné Azure. Mají autorizaci pro přístup [centra účtů](https://account.windowsazure.com/Home/Index) a provádět různé úlohy správy, jako jsou vytvářet odběry, zrušit předplatné, změnit fakturace pro předplatné nebo změnit správce služeb. Pokud si nejste jistí, který je účet správce pro předplatné, použijte následující kroky a zjistěte.
+  Správce účtu Hello je hello osobě, která registraci aplikace nebo koupili hello předplatného Azure. Jsou oprávnění tooaccess hello [centra účtů](https://account.windowsazure.com/Home/Index) a provádět různé úlohy správy, jako jsou vytvářet odběry, zrušit předplatné, změnit hello fakturace pro předplatné nebo změnit hello Správce služeb. Pokud si nejste jistí, který správce účtu hello je pro předplatné, použijte následující kroky toofind out hello.
 
-  1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-  2. V nabídce centra vyberte **předplatné**.
-  3. Vyberte předplatné, které chcete kontrolovat, a pak hledejte v části **nastavení**.
-  4. Vyberte **vlastnosti**. Správce účtu předplatného se zobrazí v **správce účtu** pole.  
+  1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
+  2. V nabídce centra hello vyberte **předplatné**.
+  3. Vyberte předplatné hello chcete toocheck a pak hledejte v části **nastavení**.
+  4. Vyberte **vlastnosti**. Správce účtu Hello hello předplatného se zobrazí v hello **správce účtu** pole.  
 
 * **Všechno přenosu? Včetně skupin prostředků, virtuálních počítačů, disků a další spuštěné služby?**
 
-  Ano, všechny prostředky, například virtuálních počítačů, disků a weby přenos do nového vlastníka. Však žádné [role správce](billing-add-change-azure-subscription-administrator.md) a [řízení přístupu na základě rolí (RBAC)](../active-directory/role-based-access-control-configure.md) zásady, které jste nastavili nepřenášejí mezi různé adresáře.
+  Ano, všechny prostředky, například virtuálních počítačů, disků, a weby přenosu toohello nového vlastníka. Však žádné [role správce](billing-add-change-azure-subscription-administrator.md) a [řízení přístupu na základě rolí (RBAC)](../active-directory/role-based-access-control-configure.md) zásady, které jste nastavili nepřenášejí mezi různé adresáře.
 
-* <a id="no-button"></a>**Proč nezobrazí tlačítko přenos předplatného?**
+* <a id="no-button"></a>**Proč nevidím hello přenos předplatného tlačítko?**
 
-  Pokud nevidíte **přenos předplatného** tlačítko, pak přenos předplatného se nepodporuje pro vaši nabídku. [Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+  Pokud nevidíte hello **přenos předplatného** tlačítko, pak přenos předplatného se nepodporuje pro vaši nabídku. [Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 * **Přenos předplatného důsledkem výpadek služeb?**
 
-  Neexistuje žádný vliv na službu. Přenos předplatného zruší předplatného v rámci aktuálního účtu správce a vytvoří odběr pod účtem příjemce. Nový odběr je přidružena k základní služby Azure. ID předplatného se nezmění.
+  Není žádná služba toohello dopad. Přenos předplatného hello zruší hello předplatného pod hello aktuálního účtu správce a vytvoří odběr pod účtem hello příjemce. nové předplatné Hello je přidružené toohello základní služby Azure. zůstanou ID předplatného Hello hello stejné.
 
-* **Jak používat tento proces a změnit adresář pro předplatné?**
+* **Jak používat tento proces toochange hello adresář pro předplatné?**
 
-  Předplatné Azure je vytvořen v adresáři, který je součástí správce účtu. Chcete-li změnit adresář, přeneste předplatné do účet uživatele v cílovém adresáři. Po dokončení tohoto uživatele kroky tak, aby přijímal přenos předplatného je automaticky přesunuta do cílový adresář.
+  Předplatné Azure je vytvořen v adresáři hello této hello, ke kterému patří účet správce. toochange hello adresář, přenos hello předplatné tooa uživatelský účet v hello cílový adresář. Po dokončení tohoto uživatele hello kroky tooaccept přenos předplatného hello je automaticky přesunutý toohello cílový adresář.
 
-* **Pokud převzít vlastnictví fakturace předplatného z jiné organizace, se nadále přístup k mé prostředkům?**
+* **Pokud převzít vlastnictví fakturace předplatného z jiné organizace, že k pokračovat toohave přístup toomy prostředky?**
 
-  Pokud předplatné se přenese do jiného klienta, uživatelé, přidružený k předchozí klientovi ztratit přístup k předplatnému. I když uživatel není správce služby nebo spolusprávce už, mohou mít stále přístup k předplatnému pomocí jiné mechanismy zabezpečení, včetně:
+  Pokud je předplatné hello přenášená tooanother klienta, uživatelé hello přidružený předchozí klientovi hello ztratit přístup toohello předplatné. I když uživatel není správce služby nebo spolusprávce už, mohou stále mít předplatné toohello přístup prostřednictvím jiné mechanismy zabezpečení, včetně:
 
-  * Certifikáty pro správu, které udělit oprávnění správce pro prostředky předplatného. Další informace najdete v tématu [vytvoření a nahrání certifikátu pro správu pro Azure](../cloud-services/cloud-services-certs-create.md).
+  * Certifikáty pro správu, která udělují oprávnění správce uživatele hello toosubscription prostředky. Další informace najdete v tématu [vytvoření a nahrání certifikátu pro správu pro Azure](../cloud-services/cloud-services-certs-create.md).
   * Přístupové klávesy pro služby jako úložiště. Další informace najdete v tématu [účty Azure storage](../storage/common/storage-create-storage-account.md).
   * Pověření vzdáleného přístupu pro služby, jako virtuální počítače Azure.
 
- Pokud příjemce potřebuje k omezení přístupu ke svým prostředkům, se zvažte aktualizaci všech tajných klíčů spojené s touto službou. Většina prostředků můžete aktualizovat pomocí následujících kroků:
+ Pokud příjemce hello potřebuje toorestrict přístup k tootheir prostředkům, se zvažte aktualizaci všech tajných klíčů související se službou hello. Většina prostředků můžete aktualizovat pomocí hello následující kroky:
 
-    1. Přejděte na [portál Azure](https://portal.azure.com).
-    2. V nabídce centra vyberte **všechny prostředky**.
-    3. Vyberte prostředek. 
-    4. V okně prostředků klikněte na **nastavení**. Zde si můžete zobrazit a aktualizovat existující tajných klíčů.
+    1. Přejděte toohello [portál Azure](https://portal.azure.com).
+    2. V nabídce centra hello vyberte **všechny prostředky**.
+    3. Vyberte prostředek hello. 
+    4. V okně prostředků hello, klikněte na tlačítko **nastavení**. Zde si můžete zobrazit a aktualizovat existující tajných klíčů.
 
-* **Pokud přenést předplatné uprostřed fakturačního cyklu, příjemce platím pro celý fakturaci cyklu?**
+* **Pokud přenést předplatné hello uprostřed hello hello fakturační cyklus, hello příjemce platím pro fakturaci hello celého cyklu?**
 
-  Odesílatel je zodpovědná za platbu žádné využití, které byla nahlášena až do chvíle, že dokončení přenosu. Příjemce je zodpovědná za využití nahlásila čas přenosu a vyšší. Může mít některé využití, která byla provedena před přenosu ale ohlásil později. Využití je součástí příjemce faktury.
+  Hello sender je odpovědná za platebních pro jakékoli použití, která byla nahlášena až toohello bodu ukončení přenosu hello je. příjemce Hello je zodpovědná za využití nahlásila hello čas přenosu a vyšší. Může mít některé využití, která byla provedena před přenosu ale ohlásil později. využití Hello je součástí hello příjemce faktury.
 
-* **Má příjemce přístup k využití a fakturace historie?**
+* **Má hello příjemce toousage přístup a fakturace historie?**
 
-  Veškeré informace, které jsou k dispozici k příjemce je množství poslední faktury nebo pokud předplatné bylo přeneseno před první faktury generuje, aktuální stav. Využití a historie fakturace zbytek k přenosu k předplatnému.
+  Hello pouze informace k dispozici toohello příjemce je hello množství hello poslední faktury nebo pokud hello předplatné bylo přeneseno před první faktury hello byla vygenerována, hello aktuální vyrovnávání. zbytek Hello hello využití a historie fakturace k přenosu s předplatným hello.
 
-* **Lze změnit nabídku během přenosu?**
+* **Lze hello nabídka změnit během přenosu?**
 
-  Nabídka musí zůstat stejné. Chcete-li změnit nabídku, [vašeho předplatného Azure přepnout na jinou nabídku](billing-how-to-switch-azure-offer.md).
+  Hello nabídka musí zůstat stejné hello. toochange vaši nabídku, najdete v části [přepínač vaši nabídku tooanother předplatné](billing-how-to-switch-azure-offer.md).
 
-* **Můžou přenášet předplatné na uživatelský účet v jiné zemi?**
+* **Můžete převést předplatné tooa uživatelský účet v jiné zemi?**
 
-  Ne, není podporován přenosu předplatné na uživatelský účet v jiné zemi. Příjemce uživatelský účet musí být ve stejné zemi.
+  Ne, přenos předplatného tooa uživatelský účet v jiné zemi není podporován. příjemce Hello uživatelský účet musí být v hello stejné země.
 
-* **Příjemce, můžete použít jiný způsob platby?**
+* **Hello příjemce, můžete použít jiný způsob platby?**
 
-  Ano. Ale historie fakturace předplatného je rozdělit mezi dva účty.  
+  Ano. Ale historie fakturace předplatného hello je rozdělit mezi dva účty.  
 
-* **Je způsob platby dopad po přesunu předplatné Azure?**
+* **Je způsob platby hello dopad po přesunu předplatné Azure?**
 
-  Metoda pro platit pro odběr je třeba zadat tak, aby přijímal přenos předplatného, platební karty nebo podobné platby. Například pokud Bob přenese předplatné Jana a Jana přijímá přenos, Jana musí poskytnout způsob platby a zaplatit předplatné. Po dokončení přenosu Jana se fakturuje pro předplatné není Bob.
+  tooaccept přenos předplatného, platební karty, podobně jako způsob platby musí se zadat nebo toopay pro předplatné hello. Například pokud Bob přenáší tooJane předplatného a Jana přijímá přenos hello, zadejte Jana platebních metoda toopay pro předplatné hello. Po dokončení přenosu hello Jana se fakturuje hello předplatného není Bob.
 
-* **Jak migrovat data a služby pro Moje předplatné Azure do nového předplatného?**
+* **Jak migraci dat a služeb pro Moje předplatné toonew předplatné Azure?**
 
-  Pokud nelze převést vlastnictví předplatného, můžete migrovat ručně vašich prostředků. V tématu [přesunutím prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
+  Pokud nelze převést vlastnictví předplatného, můžete migrovat ručně vašich prostředků. V tématu [přesunout skupiny prostředků toonew prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
 
 
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
-Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychle vyřešit problém. 
+Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) tooget rychle vyřešit problém. 
 
 

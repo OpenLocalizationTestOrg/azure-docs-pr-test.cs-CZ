@@ -1,6 +1,6 @@
 ---
-title: "Přehled zabezpečení služby Azure service fabric | Microsoft Docs"
-description: "Tento článek obsahuje přehled zabezpečení služby Azure service fabric."
+title: "Přehled zabezpečení infrastruktury služby aaaAzure | Microsoft Docs"
+description: "Tento článek obsahuje přehled hello zabezpečení služby Azure service fabric."
 services: security
 documentationcenter: na
 author: unifycloud
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 4cbd2791649c6d2dd005521cedb44c17aa874073
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: ec5355983c5d59f4e0c3b855965f03ac47f1a4c1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-service-fabric-security-overview"></a>Přehled zabezpečení služby Azure Service Fabric
-[Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) je platforma distribuovaných systémů, která usnadňuje balíčku, nasazovat a spravovat škálovatelného a spolehlivého micro-services. Service Fabric řeší významné problémy ve vývoji a správě cloudových aplikací. Vývojáři a správci se můžou vyhnout problémům se složitou infrastrukturou a místo toho se soustředit na implementaci zásadních a náročných úloh, které jsou škálovatelné, spolehlivé a spravovatelné.
+[Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) je platforma distribuovaných systémů, která umožňuje snadno toopackage, nasazovat a spravovat škálovatelného a spolehlivého micro-services. Service Fabric řeší hello významné problémy ve vývoji a správě cloudových aplikací. Vývojáři a správci se můžou vyhnout problémům se složitou infrastrukturou a místo toho se soustředit na implementaci zásadních a náročných úloh, které jsou škálovatelné, spolehlivé a spravovatelné.
 
-V tomto článku Přehled zabezpečení infrastruktury služby Azure se zaměřuje na tyto oblasti:
+Tento přehled Azure Service Fabric zabezpečení článek se zaměřuje na hello následující oblasti:
 
 -   Zabezpečení clusteru
 -   Monitorování a Diagnostika
@@ -34,144 +34,144 @@ V tomto článku Přehled zabezpečení infrastruktury služby Azure se zaměřu
 -   Zabezpečení komunikace pro služby v Azure Service Fabric zabezpečení
 
 ## <a name="securing-your-cluster"></a>Zabezpečení clusteru
-Azure Service Fabric je produktu orchestrator služeb v rámci clusteru s podporou počítačů, clustery musí být zabezpečená neoprávněným uživatelům zabránit v připojení ke clusteru, zejména v případě, že je v něm spuštěny úlohy v produkčním prostředí. Přestože je možné vytvořit zabezpečená clusteru, tak učiníte, umožníte anonymní uživatelé pro připojení, pokud vystavuje koncové body správy do veřejného Internetu.
+Azure Service Fabric je produktu orchestrator služeb v rámci clusteru s podporou počítačů, clustery musí být zabezpečené tooprevent neoprávněného uživatele z připojení clusteru tooyour, zejména v případě, že je v něm spuštěny úlohy v produkčním prostředí. Přestože je možné toocreate zabezpečená clusteru, tak umožňuje anonymní uživatelé tooconnect tooit, pokud vystavuje toohello koncové body správy veřejného Internetu.
 
-Tato část obsahuje přehled scénáře zabezpečení pro clustery se systémem na Azure nebo samostatné a různých technologií použít k implementaci těchto scénářů. Scénáře zabezpečení clusteru jsou:
+Tato část obsahuje přehled hello scénáře zabezpečení pro clustery spuštěná v Azure nebo samostatné a hello tooimplement různých technologií, které používají tyto scénáře. scénáře zabezpečení clusteru Hello jsou:
 
 -   Zabezpečení – uzly
 -   Uzel Klient zabezpečení
 
 ### <a name="node-to-node-security"></a>Zabezpečení – uzly
-Zabezpečuje komunikaci mezi virtuální počítače nebo počítače v clusteru. Tím se zajistí, že pouze počítače, které jsou autorizované pro připojení ke clusteru mohou být součástí hostování aplikací a služeb v clusteru.
+Zabezpečuje komunikaci mezi hello virtuální počítače nebo počítače v clusteru hello. Tím se zajistí, že pouze počítače, které jsou autorizované toojoin hello clusteru mohou být součástí hostování aplikací a služeb v clusteru hello.
 
 Clustery se systémem na Azure nebo samostatné clustery spuštěná v systému Windows můžete použít buď [zabezpečení Certificate](https://msdn.microsoft.com/library/ff649801.aspx) nebo [zabezpečení systému Windows](https://msdn.microsoft.com/library/ff649396.aspx) pro počítače, Windows Server.
 
 **Zabezpečení certificate – uzly**
 
-Service Fabric používá certifikáty X.509 serveru, které zadáte jako součást konfigurace typ uzlu při vytváření clusteru. Rychlý přehled toho, co jsou tyto certifikáty a [jak můžete získat nebo jejich vytvoření je uvedené v tomto článku](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/working-with-certificates).
+Service Fabric používá certifikáty X.509 serveru, které zadáte jako součást konfigurace hello typ uzlu při vytváření clusteru. Rychlý přehled toho, co jsou tyto certifikáty a [jak můžete získat nebo jejich vytvoření je uvedené v tomto článku](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/working-with-certificates).
 
-Při vytváření clusteru buď prostřednictvím portálu Azure, šablon Azure Resource Manageru nebo šablonu JSON samostatné konfigurace certifikát zabezpečení. Můžete určit primární certifikát a volitelné sekundární certifikát, který se používá pro certifikát efekty přechodu. Primární a sekundární certifikáty zadáte by měla být jiná než správce klienta a jen pro čtení klientské certifikáty, které zadáte pro [klientský uzel zabezpečení](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-security).
+Při vytváření clusteru hello buď prostřednictvím hello portálu Azure, šablon Azure Resource Manageru nebo šablonu JSON samostatné konfigurace certifikát zabezpečení. Můžete určit primární certifikát a volitelné sekundární certifikát, který se používá pro certifikát efekty přechodu. Hello primární a sekundární certifikáty zadáte by měla být jiná než hello správce klienta a jen pro čtení klientských certifikátů, který určíte v parametru [klientský uzel zabezpečení](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-security).
 
 ### <a name="client-to-node-security"></a>Uzel Klient zabezpečení
-Klient uzel zabezpečení je nakonfigurován pomocí identity klienta. K vybudování důvěry mezi klientem a cluster, je nutné nakonfigurovat clusteru potřebujete vědět, který klient identity, které můžete důvěřovat. Tento krok můžete provést dvěma způsoby:
+Konfigurace klienta toonode zabezpečení pomocí identity klienta. tooestablish vztah důvěryhodnosti mezi klientem a hello clusteru, je nutné nakonfigurovat hello clusteru tooknow které identity klienta, které můžete důvěřovat. Tento krok můžete provést dvěma způsoby:
 
--   Zadejte skupinu uživatele domény, které se můžou připojit nebo
--   Zadejte uživatele uzlu domény, které se můžou připojit.
+-   Zadejte hello skupinu uživatele domény, které se můžou připojit nebo
+-   Zadejte hello uzlu uživatele domény, které se můžou připojit.
 
-Service Fabric podporuje dva typy ovládacích prvků různý přístup pro klienty, kteří jsou připojené ke clusteru Service Fabric:
+Service Fabric podporuje dva typy ovládacích prvků různý přístup pro klienty, které jsou připojené tooa cluster Service Fabric:
 
 -   Správce
 -   Uživatel
 
-Řízení přístupu poskytuje možnost pro správce clusteru k omezení přístupu k určitým typům operace clusteru pro různé skupiny uživatelů, lepší zabezpečení clusteru. Správci mají plný přístup k funkcím správy (včetně možnosti pro čtení i zápis). Uživatelé, ve výchozím nastavení, mají pouze pro čtení přístup k možnosti správy (například možnosti dotazu) a možnost řešení aplikace a služby.
+Řízení přístupu poskytuje schopnost hello hello toolimit Správce clusteru přístup toocertain typy operací clusteru pro různé skupiny uživatelů, lepší zabezpečení hello clusteru. Správci mají plný přístup toomanagement možnosti (včetně možnosti pro čtení i zápis). Uživatelé, ve výchozím nastavení, mají pouze možnosti toomanagement přístup pro čtení (například použití dotazů) a hello možnost tooresolve aplikací a služeb.
 
 **Certifikát klienta uzel zabezpečení**
 
-Při vytváření clusteru, buď prostřednictvím portálu Azure Resource Manager šablony nebo šablony JSON samostatné zadáním certifikát klienta správce nebo klientský certifikát uživatele konfigurace uzlu klientů certifikát zabezpečení. Správce klienta a uživatelské certifikáty klienta, který zadáte, musí být jiné než primární a sekundární certifikáty, které zadáte pro zabezpečení mezi uzly.
+Při vytváření clusteru hello buď prostřednictvím hello portál Azure Resource Manager šablony nebo šablony JSON samostatné zadáním certifikát klienta správce nebo klientský certifikát uživatele konfigurace uzlu klientů certifikát zabezpečení. Hello Správce klientů a uživatelů klientské certifikáty, které zadáte musí být jiný než hello primární a sekundární certifikáty, které zadáte pro zabezpečení mezi uzly.
 
-Klienti připojení ke clusteru pomocí Správce certifikátů mají plný přístup k možnosti správy. Klienti připojení ke clusteru pomocí klientský certifikát uživatele jen pro čtení mít přístup jenom pro čtení k možnosti správy. V jiné aplikaci word, které tyto certifikáty se používají pro roli základny řízení přístupu (RBAC).
+Klienti připojení toohello clusteru pomocí Správce certifikátů hello mají plný přístup toomanagement funkce. Klienti připojení clusteru toohello pomocí hello jen pro čtení uživatele klientský certifikát mají jenom funkce, toomanagement přístup pro čtení. V jiné aplikaci word, které tyto certifikáty se používají pro hello základny role řízení přístupu (RBAC).
 
-Pro čtení Azure [nastavení clusteru pomocí šablony Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) se dozvíte, jak nakonfigurovat certifikát zabezpečení v clusteru.
+Pro čtení Azure [nastavení clusteru pomocí šablony Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) toolearn jak tooconfigure certifikátu zabezpečení v clusteru.
 
 **Uzel Klient zabezpečení Azure Active Directory (AAD) v Azure**
 
-Clustery se systémem na platformě Azure můžete také zabezpečený přístup ke koncovým bodům správy pomocí Azure Active Directory (AAD). V tématu [nastavení clusteru pomocí šablony Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) informace o vytvoření artefakty potřebné AAD, jak naplnit při vytváření clusteru a jak se připojit k tyto clustery později.
+Clustery se systémem na platformě Azure také můžete zabezpečit přístup koncových bodů pro správu toohello pomocí Azure Active Directory (AAD). V tématu [nastavení clusteru pomocí šablony Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) informace o tom, jak toocreate hello artefakty potřebné AAD, jak toopopulate je během clusteru vytváření a jak tooconnect toothose clusterů později.
 
-Spravovat přístup uživatelů k aplikace, které jsou rozděleny do aplikace s přihlašovacími údaji webové uživatelské rozhraní a aplikací prostředí nativního klienta umožňuje AAD organizace (označované jako klienty).
+AAD umožňuje organizacím (označované jako klienty) toomanage uživatel přístup tooapplications, které jsou rozdělené do aplikací s přihlašovacími údaji webové uživatelské rozhraní a aplikací prostředí nativního klienta.
 
-Cluster Service Fabric nabízí několik vstupní body k jeho funkce správy, včetně webových Service Fabric Explorer a Visual Studio. V důsledku toho můžete vytvořit dvě AAD aplikace pro řízení přístupu do clusteru, jednu webovou aplikaci a jeden nativní aplikace.
-Pro Azure clusterů se doporučuje použít k ověřování klientů a certifikáty pro zabezpečení – uzly zabezpečení AAD.
+Cluster Service Fabric nabízí několik vstupní body tooits funkce správy, včetně hello webové Service Fabric Explorer a Visual Studio. V důsledku toho můžete vytvořit dvě AAD aplikace toocontrol přístup toohello cluster, jednu webovou aplikaci a jeden nativní aplikace.
+Pro Azure clusterů se doporučuje použít AAD zabezpečení tooauthenticate klientů a certifikáty pro zabezpečení mezi uzly.
 
 Pro samostatné clustery systému Windows Server se doporučuje používat zabezpečení systému Windows s účty spravované skupiny (GMA), pokud máte systém Windows Server 2012 R2 a služby Active Directory. Zabezpečení systému Windows stále jinak pomocí účtů systému Windows.
 
 ## <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorovací a diagnostické pro Azure Service Fabric
-[Monitorovací a diagnostické](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-overview) jsou důležité pro vývoj, testování a nasazení aplikace a služby v jakémkoli prostředí. Řešení Service Fabric fungují lépe, když plánování a implementace monitorování a diagnostiky, které pomáhají zajistit aplikace a služby jsou funguje podle očekávání v místním vývojovém prostředí, nebo v produkčním prostředí.
+[Monitorovací a diagnostické](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-overview) jsou kritické toodeveloping, testování a nasazení aplikace a služby v jakémkoli prostředí. Řešení Service Fabric fungují lépe, když plánování a implementace monitorování a diagnostiky, které pomáhají zajistit aplikace a služby jsou funguje podle očekávání v místním vývojovém prostředí, nebo v produkčním prostředí.
 
-Z hlediska zabezpečení jsou hlavní cíle monitorování a diagnostiky pro:
+Z hlediska zabezpečení hello hlavní cíle monitorování a Diagnostika mají:
 
--   Najít a diagnostikovat problémy hardwaru a infrastruktury, které mohou být způsobeny událostí zabezpečení.
+-   Zjištění a diagnostice problémů hardwaru a infrastruktury, které mohou být z důvodu tooa událostí zabezpečení.
 -   Rozpoznat, softwaru a aplikace problémy, které může poskytovat ukazatele ohrožení (IoC).
--   Pochopení spotřeby prostředků, aby se zabránilo nechtěnému odepření služby.
+-   Pochopení prostředků spotřeba toohelp zabránit nechtěnému odepření služby.
 
-Celkové pracovní postup monitorování a Diagnostika zahrnuje tři kroky:
+Hello celkového pracovního postupu monitorování a Diagnostika se skládá ze tří kroků:
 
--   **Generování událostí:** to zahrnuje událostí (protokoly, trasování, vlastních událostí) v infrastruktuře (cluster) a aplikace / service úroveň. Další informace o [úroveň události infrastruktury](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-infra) a [události na úrovni aplikace](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) pochopit, co je k dispozici a jak přidat další instrumentace.
--   **Agregace událostí:** vygenerovaných událostí je třeba shromažďovat a agregovat předtím, než je možné zobrazit. Obvykle doporučujeme používat [Azure Diagnostics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (podobně jako více do kolekce založené na agentovi protokolu) nebo [EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (v procesu protokolu kolekce).
--   **Analýza:** události musí být vizualizovaných a v některých formátu, aby bylo možné pro analýzu a zobrazit podle potřeby. Existuje několik skvělé platforem, které existují na trhu, pokud jde o analýzy a vizualizace dat monitorování a diagnostiky. Jsou dva, které doporučujeme [OMS](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) a [Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) z důvodu jejich lepší integraci s Service Fabric.
+-   **Generování událostí:** to hello infrastruktury (cluster) a úrovni aplikace / service zahrnuje událostí (protokoly, trasování, vlastních událostí). Další informace o [úroveň události infrastruktury](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-infra) a [události na úrovni aplikace](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) toounderstand, co jsou poskytovány a jak tooadd další instrumentace.
+-   **Agregace událostí:** vygenerovaných událostí potřebovat toobe shromážděných a agregovat předtím, než je možné zobrazit. Obvykle doporučujeme používat [Azure Diagnostics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (více podobné kolekce na základě tooagent protokolu) nebo [EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (v procesu protokolu kolekce).
+-   **Analýza:** události potřebovat toobe vizualizovaných a v některých formát, tooallow pro analýzu a zobrazení podle potřeby. Existuje několik skvělé platforem, které existují v hello trhu při přechodu do toohello analýzy a vizualizace dat monitorování a Diagnostika. Hello dva, doporučujeme jsou [OMS](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) a [Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) kvůli tootheir lepší integraci s Service Fabric.
 
-Můžete také použít [Azure monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) monitorovat mnoho prostředků Azure, na kterých je vytvořen cluster Service Fabric.
+Můžete také použít [Azure monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) toomonitor řadu hello prostředky Azure, na kterých je vytvořen cluster Service Fabric.
 
-Sledovací zařízení je samostatný služba, která může sledovat stav a zatížení v rámci služeb a sestavy stavu pro všechno, co je v hierarchii stavu modelu. To může pomoct zabránit chybám, které by se na základě zobrazení jedné služby. Watchdogs jsou také vhodné místo pro hostitele kód, který provede nápravné akce bez zásahu uživatele (například čištění souborů protokolů v úložiště v určitých časových intervalech). Můžete najít implementaci služby sledovací zařízení ukázka [zde](https://azure.microsoft.com/resources/samples/service-fabric-watchdog-service/).
+Sledovací zařízení je samostatný služba, která může sledovat stav a zatížení v rámci služeb a sestavy stavu pro všechno, co je v hierarchii modelu stavu hello. To může pomoct zabránit chybám, které by se na základě zobrazení hello jedné služby. Watchdogs jsou také vhodné místo toohost kód, který provede nápravné akce bez zásahu uživatele (například čištění souborů protokolů v úložiště v určitých časových intervalech). Můžete najít implementaci služby sledovací zařízení ukázka [zde](https://azure.microsoft.com/resources/samples/service-fabric-watchdog-service/).
 
 ## <a name="secure-using-certificates"></a>Zabezpečení pomocí certifikátů
-Pomocí certifikátů, o způsobu k zabezpečení komunikace mezi různými uzly clusteru Windows samostatné, a také o tom, k ověřování klientů, připojení k tomuto clusteru pomocí X.509 certifikáty. To zajišťuje, že můžete jenom autorizovaným uživatelům přístup ke clusteru, nasazené aplikace a provádět úlohy správy. Certifikát zabezpečení by měly být povoleny v clusteru při vytvoření clusteru.
+Používáte certifikáty, obsahuje informace jak toosecure hello komunikace mezi hello různé uzly clusteru Windows samostatné taky, jak tooauthenticate klienti připojení clusteru toothis pomocí certifikátů X.509. To zajišťuje, jenom Autorizovaní uživatelé mají přístup ke clusteru hello hello nasazené aplikace a provádět úlohy správy. Certifikát zabezpečení může být povoleno v clusteru hello při vytvoření clusteru hello.
 
 ### <a name="x509-certificates-and-service-fabric"></a>X.509 – certifikáty a Service Fabric
-Digitální certifikáty X.509 běžně se používají k ověřování klientů a serverů a k šifrování a digitálnímu podepisování zpráv.
+Digitální certifikáty X.509 jsou běžně používané tooauthenticate klienty a servery a tooencrypt a digitálnímu podepisování zpráv.
 
-Následující tabulka uvádí certifikáty, které budete potřebovat na vaše nastavení clusteru:
+Hello následující tabulka uvádí hello certifikáty, které budete potřebovat na vaše nastavení clusteru:
 
 |Informace o nastavení certifikátů |Popis|
 |-------------------------------|-----------|
-|ClusterCertificate|    Tento certifikát je vyžadován k zabezpečení komunikace mezi uzly v clusteru. Můžete použít dvě různé certifikáty, primární a sekundární pro upgrade.|
-|ServerCertificate| Tento certifikát je pro klienta zobrazí při pokusu o připojení k tomuto clusteru. Dva certifikáty jiný server, primární a sekundární můžete použít pro upgrade.|
-|ClientCertificateThumbprints|  To je sada certifikáty, které chcete instalovat na ověřené klienty.|
-|ClientCertificateCommonNames|  Nastavte běžný název první klientský certifikát pro CertificateCommonName. CertificateIssuerThumbprint je kryptografický otisk tohoto certifikátu vystavitele.|
-|ReverseProxyCertificate|   Toto je volitelné certifikát, který může být zadán, pokud chcete zabezpečit vaše [Reverse Proxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy).|
+|ClusterCertificate|    Tento certifikát se vyžaduje toosecure hello komunikaci mezi hello uzly v clusteru. Můžete použít dvě různé certifikáty, primární a sekundární pro upgrade.|
+|ServerCertificate| Tento certifikát se zobrazí toohello klienta, když se ho pokusí tooconnect toothis clusteru. Dva certifikáty jiný server, primární a sekundární můžete použít pro upgrade.|
+|ClientCertificateThumbprints|  To je sada certifikáty, které chcete tooinstall na klientech hello ověření.|
+|ClientCertificateCommonNames|  Nastavit hello běžný název hello první klientský certifikát pro hello CertificateCommonName. Hello CertificateIssuerThumbprint je hello kryptografický otisk pro hello vystavitele tohoto certifikátu.|
+|ReverseProxyCertificate|   Toto je volitelné certifikát, který může být zadán, pokud chcete, aby toosecure vaše [Reverse Proxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy).|
 
 Další informace o zabezpečení certifikáty [kliknutím sem](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-x509-security).
 
 ## <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
-Řízení přístupu umožňuje omezit přístup k určité operace clusteru pro různé skupiny uživatelů, lepší zabezpečení clusteru pomocí Správce clusteru. Podporuje dva typy různý přístup řízení pro klienty připojující se ke clusteru: role správce a role uživatele.
+Řízení přístupu umožňuje hello toolimit clusteru správce přístup toocertain operace na clusteru pro různé skupiny uživatelů, lepší zabezpečení hello clusteru. Podporuje dva typy různý přístup řízení pro klienty připojení clusteru tooa: role správce a role uživatele.
 
-Správci mají plný přístup k funkcím správy (včetně možnosti pro čtení i zápis). Uživatelé, ve výchozím nastavení, mají pouze pro čtení přístup k možnosti správy (například možnosti dotazu) a možnost řešení aplikace a služby.
+Správci mají plný přístup toomanagement možnosti (včetně možnosti pro čtení i zápis). Uživatelé, ve výchozím nastavení, mají pouze možnosti toomanagement přístup pro čtení (například použití dotazů) a hello možnost tooresolve aplikací a služeb.
 
-Zadáte správce a uživatelských rolí klienta v době vytváření clusteru poskytnutím oddělené identity (certifikáty, AAD atd.) pro každý. Další informace o výchozí nastavení řízení přístupu a jak změnit výchozí nastavení, najdete v části [řízení přístupu podle rolí pro Service Fabric klienty](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security-roles).
+Zadáte hello správce a uživatelských rolí klienta v době vytváření clusteru hello tím, že poskytuje samostatné identity (certifikáty, AAD atd.) pro každý. Další informace o nastavení řízení přístupu výchozí hello a jak toochange hello výchozí nastavení, najdete v části [řízení přístupu podle rolí pro Service Fabric klienty](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security-roles).
 
 ## <a name="secure-standalone-cluster-using-windows-security"></a>Zabezpečení clusteru samostatné pomocí zabezpečení systému Windows
-K zabránění neoprávněného přístupu k cluster Service Fabric, je nutné zabezpečit clusteru. Zabezpečení je zvlášť důležité při spuštění úlohy v produkčním prostředí clusteru. Popisuje konfiguraci zabezpečení – uzly a uzlu klientů pomocí zabezpečení systému Windows v souboru ClusterConfig.JSON souboru.
+tooprevent Neautorizováno cluster Service Fabric tooa přístup, je nutné zabezpečit hello clusteru. Zabezpečení je zvlášť důležité při hello cluster spouští úlohy v produkčním prostředí. Popisuje, jak hello tooconfigure-uzly a klientský uzel zabezpečení pomocí zabezpečení systému Windows v souboru ClusterConfig.JSON souboru.
 
 **Konfigurace zabezpečení systému Windows pomocí gMSA**
 
-Uzel zabezpečení uzlu je nakonfigurovaný nastavením [ClustergMSAIdentity](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-windows-security) když service fabric potřebuje pro spuštění pod gMSA. Chcete-li vytvořit vztahy důvěryhodnosti mezi uzly, se musí být provedeny vědět navzájem.
+Konfigurace zabezpečení toonode uzlu nastavením [ClustergMSAIdentity](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-windows-security) když service fabric potřebuje toorun pod gMSA. V pořadí toobuild vztahy důvěryhodnosti mezi uzly se musí být provedeny vědět navzájem.
 
-Klient uzel zabezpečení je nakonfigurován pomocí ClientIdentities. Chcete-li vytvořit vztah důvěryhodnosti mezi klientem a cluster, je nutné nakonfigurovat clusteru potřebujete vědět, který klient identity, které můžete důvěřovat.
+Konfigurace klienta toonode zabezpečení pomocí ClientIdentities. Pořadí tooestablish vztah důvěryhodnosti mezi klientem a hello clusteru musíte nakonfigurovat hello clusteru tooknow které identity klienta, které můžete důvěřovat.
 
 **Konfigurace zabezpečení systému Windows ve skupině počítač**
 
-Uzel zabezpečení uzlu je nakonfigurovaný v nastavení pomocí ClusterIdentity, pokud chcete použít skupinu počítače v doméně služby Active Directory. Další informace najdete v tématu [vytvořit skupinu počítače ve službě Active Directory](https://msdn.microsoft.com/library/aa545347).
+Uzel toonode zabezpečení je nakonfigurovat pomocí nastavení pomocí ClusterIdentity, pokud chcete, aby toouse skupinu počítače v doméně služby Active Directory. Další informace najdete v tématu [vytvořit skupinu počítače ve službě Active Directory](https://msdn.microsoft.com/library/aa545347).
 
-Zabezpečení uzel klient je nakonfigurován pomocí ClientIdentities. K vybudování důvěry mezi klientem a cluster, je nutné nakonfigurovat clusteru potřebujete vědět, klient identity, které můžete důvěřovat clusteru. Můžete vytvořit vztah důvěryhodnosti v dvěma různými způsoby:
+Zabezpečení uzel klient je nakonfigurován pomocí ClientIdentities. tooestablish vztah důvěryhodnosti mezi klientem a hello clusteru, je nutné nakonfigurovat hello clusteru tooknow hello klienta, které můžete důvěřovat identity, které hello clusteru. Můžete vytvořit vztah důvěryhodnosti v dvěma různými způsoby:
 
--   Zadejte skupinu uživatele domény, které se můžou připojit.
--   Zadejte uživatele uzlu domény, které se můžou připojit.
+-   Zadejte hello skupinu uživatele domény, které se můžou připojit.
+-   Zadejte hello uzlu uživatele domény, které se můžou připojit.
 
 ## <a name="configure-application-security-in-service-fabric"></a>Konfigurace zabezpečení aplikace v Service Fabric
 ### <a name="managing-secrets-in-service-fabric-applications"></a>Správa tajných klíčů v aplikace Service Fabric
 Tato metoda pomáhá při správě tajných klíčů v aplikace Service Fabric. Tajné klíče může být žádné citlivé informace, jako je například úložiště připojovací řetězce, hesla nebo jiné hodnoty, které by neměly být zpracovány v prostém textu.
 
-Tento postup používá [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) ke správě klíčů a tajných klíčů. Použití tajných klíčů v aplikaci je cloudové platformy vznikl k aplikacím umožňují nasadit do clusteru s podporou hostovat kdekoli. V tomto toku existují čtyři hlavní kroky:
+Tento postup používá [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) toomanage klíče a tajné klíče. Pomocí tajných klíčů v aplikaci je však cloudu tooallow bez ohledu na platformu aplikace nasazené toobe tooa clusteru hostovat kdekoli. V tomto toku existují čtyři hlavní kroky:
 
 -   Získejte certifikát dat šifrování.
--   Nainstalujte certifikát v clusteru.
--   Šifrování tajný hodnoty při nasazení aplikace pomocí certifikátu a vložit je do služby souborech Settings.xml konfigurační soubor.
--   Číst šifrovaných hodnot mimo souborech Settings.xml dešifrování stejným certifikátem šifrování.
+-   Nainstalujte certifikát hello v clusteru.
+-   Šifrování tajný hodnoty při nasazení aplikace s hello certifikátu a vložit je do služby souborech Settings.xml konfigurační soubor.
+-   Čtení šifrované hodnoty mimo souborech Settings.xml dešifrováním s hello stejný certifikát pro šifrování.
 
 >[!Note]
 >Další informace o [Správa tajných klíčů v Service Fabric aplikace](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management).
 
 ### <a name="configure-security-policies-for-your-application"></a>Konfigurace zásad zabezpečení pro aplikaci
-Pomocí Azure Service Fabric zabezpečení, může pomoct zabezpečených aplikací, které jsou spuštěny v clusteru v rámci jiné uživatelské účty. Zabezpečení infrastruktury služby také pomáhá zabezpečit prostředky, které jsou používány aplikací v době nasazení podle uživatelských účtů – například soubory, adresářů a certifikáty. Díky spuštěné aplikace, i v prostředí sdílené hostované bezpečnější od sebe navzájem.
-Zahrnuje následující kroky:
+Pomocí Azure Service Fabric zabezpečení, může pomoct zabezpečených aplikací, které jsou spuštěny v clusteru hello v rámci jiné uživatelské účty. Zabezpečení infrastruktury služby také pomáhá zabezpečené hello prostředky, které jsou používány aplikací v době hello nasazení pod hello uživatelských účtů – například, soubory, adresářů a certifikáty. Díky spuštěné aplikace, i v prostředí sdílené hostované bezpečnější od sebe navzájem.
+Hello krokům patří:
 
--   Nakonfigurujte zásady pro vstupní bod služby Instalační program.
+-   Nakonfigurujte zásady hello pro vstupní bod služby Instalační program.
 -   Spusťte příkazy prostředí PowerShell ze vstupního bodu instalační program.
 -   Pomocí konzoly přesměrování pro místní ladění.
 -   Umožňuje nakonfigurujte zásadu pro balíčky služeb kódu.
 -   Přiřaďte zásadu zabezpečení přístupu pro koncové body HTTP a HTTPS.
 
 ## <a name="secure-communication-for-services-in-azure-service-fabric-security"></a>Zabezpečené komunikace pro služby v Azure Service Fabric zabezpečení
-Zabezpečení je jedním z nejdůležitějších aspektů komunikace. Rozhraní spolehlivé služby poskytuje několik předem komunikace zásobníky a nástroje, které slouží k vylepšení zabezpečení.
+Zabezpečení je jedním z nejdůležitějších aspektů komunikace hello. Architektura aplikace na Hello spolehlivé služby poskytuje několik předem komunikace zásobníky a nástroje, které se dají použít tooimprove zabezpečení.
 
 -   [Pomoc se zabezpečením služby, pokud používáte vzdálenou komunikaci služby](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-secure-communication).
 -   [Pomoc se zabezpečením služby při použití zásobníku komunikace na základě WCF](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-secure-communication#help-secure-a-service-when-youre-using-a-wcf-based-communication-stack).

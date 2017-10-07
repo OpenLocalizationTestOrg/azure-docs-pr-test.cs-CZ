@@ -1,5 +1,5 @@
 ---
-title: "Aplikace Azure přehled Telemetrie datový Model - trasování Telemetrie | Microsoft Docs"
+title: "aaaAzure aplikace Insights Telemetrie datový Model - trasování Telemetrie | Microsoft Docs"
 description: "Application Insights datový model pro trasování telemetrie"
 services: application-insights
 documentationcenter: .net
@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: bwren
-ms.openlocfilehash: e1da0d6a6fbd9ca5486936c326ade667d7b01006
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: dfdee958e07d57448ff41abc5cd33bfd05dac090
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>Trasování telemetrie: Application Insights datový model
 
-Trasování telemetrie (v [Application Insights](app-insights-overview.md)) představuje `printf` styl příkazy trasování, které jsou prohledávat text. `Log4Net`, `NLog`, a další položky založený na textu protokolu jsou převedeny do instance tohoto typu. Trasování nemá měření jako rozšíření.
+Trasování telemetrie (v [Application Insights](app-insights-overview.md)) představuje `printf` styl příkazy trasování, které jsou prohledávat text. `Log4Net`, `NLog`, a další položky založený na textu protokolu jsou převedeny do instance tohoto typu. trasování Hello nemá měření jako rozšíření.
 
 ## <a name="message"></a>Zpráva
 

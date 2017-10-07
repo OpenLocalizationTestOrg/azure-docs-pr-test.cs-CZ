@@ -1,5 +1,5 @@
 ---
-title: "Úvod do Azure Security Center | Microsoft Docs"
+title: aaaIntroduction tooAzure Security Center | Microsoft Docs
 description: "Můžete se dozvědět o službě Azure Security Center, jejích klíčových funkcích a způsobu práce."
 services: security-center
 documentationcenter: na
@@ -14,65 +14,65 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: terrylan
-ms.openlocfilehash: 8951167213da6ab5341c1ca420353ec625ef5424
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 287dbaaa7e2004c522f103595bc316261daf05b4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-azure-security-center"></a>Úvod do Azure Security Center
+# <a name="introduction-tooazure-security-center"></a>Úvod tooAzure Security Center
 Můžete se dozvědět o službě Azure Security Center, jejích klíčových funkcích a způsobu práce.
 
 > [!NOTE]
-> Od začátku června 2017 bude Security Center používat ke shromažďování a ukládání dat agenta Microsoft Monitoring Agent. Další informace najdete v článku o [migraci platformy pro Azure Security Center](security-center-platform-migration.md). Informace v tomto článku představují funkce služby Security Center po přechodu na agenta Microsoft Monitoring Agent.
+> Počínaje časná 2017 června, Security Center použije hello agenta Microsoft Monitoring Agent toocollect a ukládat data. V tématu [Azure Security Center platformy migrace](security-center-platform-migration.md) toolearn Další. Hello informace v tomto článku představuje funkce Security Center po přechodu toohello agenta Microsoft Monitoring Agent.
 >
 >
 
 ## <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
- Security Center pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně a nabízí lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
+ Security Center pomáhá zabránit, zjistit a reagovat toothreats nabízí lepší přehled a kontrolu nad hello zabezpečení vašich prostředků Azure. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
 
 ## <a name="key-capabilities"></a>Klíčové funkce
- Security Center nabízí snadno použitelné a efektivní funkce prevence, zjišťování a reakce na ohrožení, které jsou integrované v Azure. Klíčové funkce:
+ Security Center nabízí snadno použitelné a efektivní threat prevence, zjišťování a reakce na funkce, které jsou součástí tooAzure. Klíčové funkce:
 
 | Krok | Schopnost |
 | --- | --- |
-| Prevence |Sleduje stav zabezpečení vašich prostředků Azure. |
-| Prevence | Definuje zásady pro předplatné Azure na základě požadavků zabezpečení vaší společnosti, typů aplikací, které používá a citlivosti vašich dat |
-| Prevence | Používá doporučení zabezpečení řízená zásadami, aby vedla vlastníky služby procesem implementace potřebných kontrol. |
+| Prevence |Monitorování hello stav zabezpečení vašich prostředků Azure |
+| Prevence | Definuje zásady pro předplatné Azure, na základě požadavků zabezpečení vaší společnosti, hello typy aplikací, které používáte a citlivosti vašich data hello |
+| Prevence | Vlastníky služby používá řízená zásadami zabezpečení doporučení tooguide hello procesem implementace potřebných kontrol. |
 | Prevence | Rychle nasazuje bezpečnostní služby a zařízení Microsoftu a partnerů. |
-| Zjišťování |Automaticky shromažďuje a analyzuje data zabezpečení z vašich prostředků Azure, sítě a řešení partnerů, jako jsou antimalwarové programy a brány firewall. |
-| Zjišťování | Využívá globální hrozby intelligence z produktů společnosti Microsoft a služeb, Microsoft digitální činů jednotky (přicházejí týmu DCU), Microsoft Security Response Center (MSRC) a externích informačních kanálů. |
+| Zjišťování |Automaticky shromažďuje a analyzuje data zabezpečení z vaše prostředky Azure, hello sítě a řešení partnerů, jako jsou antimalwarové programy a brány firewall |
+| Zjišťování | Využívá globální hrozby intelligence z Microsoft produktů a služeb společnosti Microsoft digitální činů jednotky (DCU), hello hello Microsoft Security Response Center (MSRC) a externích informačních kanálů. |
 | Zjišťování | Používá pokročilou analýzu, včetně machine learningu a analýzy chování. |
 | Reakce |Poskytuje incidenty a výstrahy zabezpečení seřazené podle priority. |
-| Reakce | Nabízí podrobný náhled na zdroj útoku a zasažené prostředky. |
-| Reakce | Navrhuje způsoby, jak aktuální útok zastavit, a pomáhá zabránit budoucím útokům. |
+| Reakce | Nabízí podrobný náhled na zdroj hello hello útoku a zasažené prostředky. |
+| Reakce | Navrhuje způsoby toostop hello aktuální útok a pomáhá zabránit budoucím útokům. |
 
 ## <a name="introductory-walkthrough"></a>Úvodní prohlídka
 
 > [!NOTE]
-> Tento dokument vám tuto službu představí formou ukázkového nasazení. Tento dokument není to podrobný průvodce.
+> Toto téma představuje hello služby pomocí příklad nasazení. Tento dokument není to podrobný průvodce.
 >
 >
 
- Služba Security Center je přístupná prostřednictvím [portálu Azure](https://azure.microsoft.com/features/azure-portal/). [Přihlaste se k portálu](https://portal.azure.com). V hlavní nabídce portálu, přejděte k položce **Security Center** nebo vyberte **Security Center** dlaždici, kterou jste dříve připnuli k řídicímu panelu portálu.
+ Security Center je přístupná z hello [portál Azure](https://azure.microsoft.com/features/azure-portal/). [Přihlaste se toohello portál](https://portal.azure.com). Posuňte se v hlavní nabídce portálu hello toohello **Security Center** možnost nebo vyberte hello **Security Center** dlaždici dříve připnuli toohello řídicí panel portálu.
 
 ![Dlaždice zabezpečení na portálu Azure][1]
 
 Ze služby Security Center můžete nastavovat zásady zabezpečení, sledovat konfigurace zabezpečení a zobrazovat výstrahy zabezpečení.
 
 ### <a name="security-policies"></a>Zásady zabezpečení
-Můžete definovat zásady pro vaše předplatná Azure podle požadavků zabezpečení vaší společnosti. Můžete je také přizpůsobit typům aplikací, které používáte, nebo citlivosti dat v každém předplatném. Například prostředky používané pro vývoj nebo testování můžou mít jiné požadavky na zabezpečení než ty, které se používají v aplikacích v produkčním prostředí. Aplikace pracující s regulovanými daty, třeba s osobními údaji, zase můžou vyžadovat jinou úroveň zabezpečení.
+Můžete definovat zásady pro vaše předplatná Azure podle tooyour požadavky na zabezpečení společnosti. Vám může také přizpůsobit toohello typy aplikací, které používáte nebo citlivosti toohello hello dat v každém předplatném. Například prostředky používané pro vývoj nebo testování můžou mít jiné požadavky na zabezpečení než ty, které se používají v aplikacích v produkčním prostředí. Aplikace pracující s regulovanými daty, třeba s osobními údaji, zase můžou vyžadovat jinou úroveň zabezpečení.
 
 > [!NOTE]
-> Pokud chcete upravit zásadu zabezpečení, musí být správce zabezpečení nebo odběru vlastníka nebo přispěvatele. Další informace o rolích a povolené akce v Centru zabezpečení, najdete v části [oprávnění v Azure Security Center](security-center-permissions.md).
+> toomodify zásady zabezpečení, musíte být vlastníkem nebo přispěvatelem správce zabezpečení nebo hello předplatného. toolearn Další informace o rolí a povolených akcí v Centru zabezpečení, najdete v části [oprávnění v Azure Security Center](security-center-permissions.md).
 >
 >
 
-V okně **Security Center** vyberte dlaždici **Zásady**, kde zobrazíte seznam předplatných a skupin prostředků.   
+Na hello **Security Center** okně, vyberte hello **zásad** dlaždici seznam předplatných a skupin prostředků.   
 
 ![Okno Security Center][2]
 
-Na **zásady zabezpečení** okně, vyberte předplatné, abyste zobrazili podrobnosti zásady.
+Na hello **zásady zabezpečení** okně vyberte předplatné tooview hello zásad podrobnosti.
 
 **Shromažďování dat** umožňuje shromažďování dat pro zásady zabezpečení. Povolením získáte následující:
 
@@ -80,73 +80,73 @@ Na **zásady zabezpečení** okně, vyberte předplatné, abyste zobrazili podro
 * Shromažďování událostí zabezpečení pro analýzu a zjišťování hrozeb.
 
 > [!NOTE]
-> Shromažďování dat je nakonfigurován na úrovni předplatného.
+> Shromažďování dat je konfigurována na úrovni předplatného hello.
 >
 >
 
-Vyberte **zásada Zabránění** otevřete **zásada Zabránění** okno. **Zobrazit doporučení pro** umožňuje vybrat ovládacích prvků zabezpečení, které chcete monitorovat a doporučení, které chcete zobrazit podle potřeb zabezpečení prostředků v rámci předplatného.
+Vyberte **zásada Zabránění** tooopen hello **zásada Zabránění** okno. **Zobrazit doporučení pro** umožňuje vybrat hello ovládacích prvků zabezpečení, které chcete toomonitor a hello doporučení, které chcete toosee na základě potřeb zabezpečení hello hello prostředků v rámci předplatného hello.
 
 ### <a name="security-recommendations"></a>Doporučení zabezpečení
- Služba Security Center analyzuje stav zabezpečení vašich prostředků Azure, aby identifikovala potenciální ohrožení zabezpečení. Seznam doporučení vás provede procesem konfigurace potřebných kontrol. Příklady obsahují:
+ Security Center analyzuje stav zabezpečení hello vaše prostředky Azure tooidentify potenciální ohrožení zabezpečení. Seznam doporučení vás provede procesem konfigurace potřebných kontrol hello. Příklady obsahují:
 
-* Zřizování antimalwaru, aby se pomohl identifikovat a odebrat škodlivý software
-* Konfigurace skupin zabezpečení sítě a pravidla pro řízení přenosu do virtuálních počítačů
-* Zřizování firewallů webových aplikací, které pomáhají bránit útokům zaměřeným na vaše webové aplikace
+* Zřizování antimalwaru, toohelp identifikovat a odebrat škodlivý software
+* Konfigurace sítě zabezpečení skupiny a pravidel toocontrol provoz tooVMs
+* Zřizování firewallů webových aplikací toohelp bránit proti útokům, které cílí na vaše webové aplikace
 * Nasazení chybějících aktualizací systému
-* Adresování konfigurací operačního systému, které neodpovídají doporučeným standardním hodnotám
+* Adresování konfigurací operačního systému, které neodpovídají hello doporučená standardních hodnot
 
-Seznam doporučení získáte kliknutím na dlaždici **Doporučení**. Kliknutím na jednotlivá doporučení zobrazíte další informace nebo provedete akce vedoucí k vyřešení problému.
+Klikněte na tlačítko hello **doporučení** dlaždici seznam doporučení. Klikněte na každou doporučení tooview Další informace nebo tootake akce tooresolve hello problém.
 
 ![Doporučení zabezpečení v Azure Security Center][5]
 
 ### <a name="security-state-of-azure-resources"></a>Stav zabezpečení prostředků Azure
-**Prevence** část řídicího panelu ukazuje celkové postavení zabezpečení prostředí podle typů prostředků, včetně virtuálních počítačů, webových aplikací a dalším prostředkům.   
+Hello **prevence** část řídicího panelu hello hello ukazuje celkové postavení zabezpečení prostředí hello podle typů prostředků, včetně virtuálních počítačů, webových aplikací a dalším prostředkům.   
 
-Vyberte typ prostředku v rámci **prevence** zobrazíte další informace, včetně seznamu možných ohrožení zabezpečení, které byly identifikovány. (**Výpočetní** je vybraný v následujícím příkladu.)
+Vyberte typ prostředku v rámci **prevence** tooview Další informace, včetně seznamu možných ohrožení zabezpečení, které byly identifikovány. (**Výpočetní** je vybraný v následujícím příkladu hello.)
 
 ![Dlaždice Stav prostředků][6]
 
 ### <a name="security-alerts"></a>Výstrahy zabezpečení
- Security Center automaticky shromažďuje, analyzuje a integruje data protokolu z vašich prostředků Azure, sítě a řešení partnerů, jako jsou antimalwarové programy a brány firewall. Při zjištění ohrožení zabezpečení se vytvoří výstraha zabezpečení. Příklady zahrnují zjišťování následujících situací:
+ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu z vaše prostředky Azure, hello sítě a řešení partnerů, jako jsou antimalwarové programy a brány firewall. Při zjištění ohrožení zabezpečení se vytvoří výstraha zabezpečení. Příklady zahrnují zjišťování následujících situací:
 
 * Ohrožené virtuální počítače komunikaci s známé škodlivé IP adresy
 * Pokročilý malware zjištěný pomocí zasílání zpráv o chybách systému Windows
 * Útoky hrubou silou na virtuální počítače
 * Výstrahy zabezpečení z integrovaných antimalwarových programů a bran firewall
 
-Kliknutím na dlaždici **Výstrahy zabezpečení** zobrazíte seznam výstrah seřazený podle priority.
+Kliknutím na hello **výstrahy zabezpečení** dlaždice zobrazí seznam výstrah seřazený podle priority.
 
 ![Výstrahy zabezpečení][7]
 
-Výběrem výstrahy zobrazíte další informace o útoku a návrhy na jeho řešení.
+Výběrem výstrahy zobrazíte další informace o hello útoku a návrhy, jak tooremediate ho.
 
 ![Podrobnosti výstrahy zabezpečení][8]
 
 ### <a name="partner-solutions"></a>Partnerská řešení
-**Partner solutions** dlaždici umožňuje sledovat na první pohled stav zabezpečení vašich partnerských řešení integrovaných ve vašem předplatném Azure. Security Center zobrazuje výstrahy, které pocházejí z těchto řešení.
+Hello **Partner solutions** dlaždice umožňuje sledovat na první pohled hello zabezpečení stav vašich partnerských řešení integrovaných ve vašem předplatném Azure. Security Center zobrazuje výstrahy, které pocházejí z hello řešení.
 
-Vyberte dlaždici **Partner solutions** (Partnerská řešení). Otevře se okno se seznamem všech připojených partnerských řešení.
+Vyberte hello **Partner solutions** dlaždici. Otevře se okno se seznamem všech připojených partnerských řešení.
 
 ![Partnerská řešení][9]
 
 ## <a name="get-started"></a>Začínáme
-Chcete-li začít využívat Security Center, potřebujete předplatné služby Microsoft Azure. Služba Security Center je povolená s vaším předplatným Azure. Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+tooget začít s Security Center, je nutné tooMicrosoft předplatné Azure. Služba Security Center je povolená s vaším předplatným Azure. Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
- Služba Security Center je přístupná prostřednictvím [portálu Azure](https://azure.microsoft.com/features/azure-portal/). Další informace najdete v [dokumentaci k portálu](https://azure.microsoft.com/documentation/services/azure-portal/).
+ Security Center je přístupná z hello [portál Azure](https://azure.microsoft.com/features/azure-portal/). V tématu hello [portálu dokumentace](https://azure.microsoft.com/documentation/services/azure-portal/) toolearn Další.
 
-Téma [Začínáme s Azure Security Center](security-center-get-started.md) vás rychle provede komponentami pro monitorování zabezpečení a správu zásad služby Security Center.
+[Začínáme s Azure Security Center](security-center-get-started.md) vás rychle provede hello monitorování zabezpečení a správu zásad součásti služby Security Center.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto dokumentu jste se seznámili se službou Security Center, jejími klíčovými funkcemi a způsobu zahájení práce. Další informace najdete v následujících zdrojích informací:
+V tomto dokumentu jste přináší tooSecurity Center, jejími klíčovými funkcemi a způsobu tooget spuštění. toolearn více, najdete v části hello následující prostředky:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md) – zjistěte, jak nakonfigurovat zásady zabezpečení pro skupiny prostředků a předplatná Azure.
+* [Nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md) – Další informace jak tooconfigure zásady zabezpečení pro skupiny prostředků a předplatná Azure.
 * [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky v Azure.
-* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure.
-* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – zjistěte, jak spravovat a reakce na výstrahy zabezpečení.
-* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
+* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – zjistěte, jak toomonitor hello stav svých prostředků Azure.
+* [Správa a zda odpovídá toosecurity výstrahy v Azure Security Center](security-center-managing-and-responding-alerts.md) – Další informace jak toomanage a reakce toosecurity výstrahy.
+* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – zjistěte, jak toomonitor hello stav vašich partnerských řešení.
 - [Zabezpečení dat v Azure Security Center](security-center-data-security.md) -další způsob správy a zabezpečení ve službě Security Center.
-* [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
-* [Blog o bezpečnosti Azure](http://blogs.msdn.com/b/azuresecurity/) – získejte nejnovější informace zabezpečení Azure a informace.
+* [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – přečtěte si nejčastější dotazy o použití služby hello.
+* [Blog o bezpečnosti Azure](http://blogs.msdn.com/b/azuresecurity/) – získejte nejnovější informace zabezpečení Azure hello a informace.
 
 <!--Image references-->
 [1]: ./media/security-center-intro/security-tile.png

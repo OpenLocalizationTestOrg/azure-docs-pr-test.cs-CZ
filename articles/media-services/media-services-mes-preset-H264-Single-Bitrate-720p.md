@@ -1,6 +1,6 @@
 ---
-title: "H264 jednou přenosovou rychlostí 720p Media Encoder Standard přednastavení - Azure | Microsoft Docs"
-description: "Téma nabízí přehled ** jednou přenosovou rychlostí H264 720 p ** úloh přednastavení."
+title: "aaaH264 jednou přenosovou rychlostí 720p Media Encoder Standard přednastavení - Azure | Microsoft Docs"
+description: "Hello téma nabízí přehled hello ** jednou přenosovou rychlostí H264 720 p ** úloh přednastavení."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 5ca683db654a5adda6e15e1761579c7e81438417
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 38229713b4c88cd78acbd597870bfa144f10ae1f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="h264-single-bitrate-720p"></a>H264 Jednou přenosovou rychlostí 720p
-`Media Encoder Standard`definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16. By pak předejte vlastní přednastavení kodéru. Seznam všech názvů přednastavené podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování. Můžete použít `preset name` toospecify do formátu, který chcete tooencode mediálního souboru. Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16. By pak předejte kodér vlastní přednastavené toohello hello. Hello seznam všech hello přednastavení názvy podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- Toto téma ukazuje `H264 Single Bitrate 720p` přednastavení ve formátu XML a JSON.  
+ Toto téma ukazuje hello `H264 Single Bitrate 720p` přednastavení ve formátu XML a JSON.  
   
- Tento soubor přednastavené vytváří jeden MP4 s přenosovou rychlostí 4500 kb/s a stereo AAC zvukovém souboru. Podrobné informace o profilu přenosovou rychlostí, vzorkování rychlost atd tohoto přednastavení, zkontrolovat, XML nebo JSON definovaná níže. Vysvětlení co každý prvek v těchto přednastavení znamená a platné hodnoty pro každý element, najdete v článku [Media Encoder Standard schématu](media-services-mes-schema.md) tématu.  
+ Tento soubor přednastavené vytváří jeden MP4 s přenosovou rychlostí 4500 kb/s a stereo AAC zvukovém souboru. Podrobné informace o profilu přenosovou rychlostí, vzorkování rychlost atd tohoto přednastavení, zkontrolujte hello XML nebo JSON definovaná níže. Vysvětlení co každý prvek v těchto přednastavení znamená a hello platné hodnoty pro každý element, najdete v části hello [Media Encoder Standard schématu](media-services-mes-schema.md) tématu.  
   
  XML  
   

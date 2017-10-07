@@ -1,6 +1,6 @@
 ---
-title: "Aktualizace modelů Machine Learning pomocí Azure Data Factory | Microsoft Docs"
-description: "Popisuje postup vytvoření vytvořit prediktivní kanály pomocí Azure Data Factory a Azure Machine Learning"
+title: "modely Machine Learning aaaUpdate pomocí Azure Data Factory | Microsoft Docs"
+description: "Popisuje, jak vytvořit toocreate prediktivní kanály pomocí Azure Data Factory a Azure Machine Learning"
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
-ms.openlocfilehash: e31a7a59d14de4382190b39bd70f3ddf6cf673ea
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6e5e4d2cfd245c7a9ed3bb9cdacca1f7f82b9620
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Aktualizace pomocí aktivita prostředku aktualizace modely Azure Machine Learning
 
@@ -33,36 +33,36 @@ ms.lasthandoff: 07/11/2017
 > * [Aktivita U-SQL služby Data Lake Analytics](data-factory-usql-activity.md)
 > * [Vlastní aktivity rozhraní .NET](data-factory-use-custom-activities.md)
 
-Tento článek doplňuje hlavní Azure Data Factory – článek integrace Azure Machine Learning: [vytvořit prediktivní kanály pomocí Azure Machine Learning a Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Pokud jste tak již neučinili, přečtěte si hlavní článek než si přečtete prostřednictvím tohoto článku. 
+Tento článek doplňuje hello hlavní Azure Data Factory – článek integrace Azure Machine Learning: [vytvořit prediktivní kanály pomocí Azure Machine Learning a Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Pokud jste tak již neučinili, přečtěte si hello hlavní článek než si přečtete prostřednictvím tohoto článku. 
 
 ## <a name="overview"></a>Přehled
-V průběhu času prediktivní modely v Azure ML vyhodnocování experimentů muset být retrained pomocí nové vstupní datové sady. Po dokončení práce s retraining, budete chtít aktualizovat webovou službu vyhodnocování retrained modelu ML. Typické postup povolení retraining a aktualizace Azure ML modely prostřednictvím webových služeb jsou:
+V čase třeba hello prediktivní modely v experimentech vyhodnocování Azure ML hello toobe retrained pomocí nové vstupní datové sady. Po dokončení práce s retraining, budete chtít tooupdate hello vyhodnocování webové služby s hello retrained modelu ML. jsou Hello obvyklé kroky tooenable retraining a aktualizace modelů Azure ML prostřednictvím webové služby:
 
 1. Vytvoření experimentu v [Azure ML Studio](https://studio.azureml.net).
-2. Jakmile budete spokojeni s modelem, používají k publikování webových služeb pro obě Azure ML Studio **výukový experiment** a vyhodnocování /**prediktivní experiment**.
+2. Jakmile budete spokojeni s modelem hello, použít Azure ML Studio toopublish webové služby pro obě hello **výukový experiment** a vyhodnocování /**prediktivní experiment**.
 
-Následující tabulka popisuje webové služby použité v tomto příkladu.  V tématu [Machine Learning Přeučování modelů prostřednictvím kódu programu](../machine-learning/machine-learning-retrain-models-programmatically.md) podrobnosti.
+Hello následující tabulka popisuje hello webové služby použité v tomto příkladu.  V tématu [Machine Learning Přeučování modelů prostřednictvím kódu programu](../machine-learning/machine-learning-retrain-models-programmatically.md) podrobnosti.
 
-- **Cvičení webové služby** – přijímá Cvičná data a vytváří trénované modely. Výstup retraining je soubor .ilearner v Azure Blob storage. **Výchozí koncový bod** se automaticky vytvoří pro při publikování školení experimentování jako webovou službu. Můžete vytvořit další koncové body, ale v příkladu se používá pouze výchozí koncový bod.
-- **Vyhodnocování webové služby** – bez popisku dat příklady obdrží a umožňuje předpovědi. Výstup předpovědi může mít různé formy, například soubor .csv nebo řádků v Azure SQL database, v závislosti na konfiguraci experimentu. Výchozí koncový bod se automaticky vytvoří za vás, když publikujete prediktivní experiment jako webovou službu. 
+- **Cvičení webové služby** – přijímá Cvičná data a vytváří trénované modely. výstup Hello hello retraining je soubor .ilearner v Azure Blob storage. Hello **výchozí koncový bod** se automaticky vytvoří pro při publikování hello školení experimentování jako webovou službu. Můžete vytvořit další koncové body, ale hello příklad používá jenom hello výchozí koncový bod.
+- **Vyhodnocování webové služby** – bez popisku dat příklady obdrží a umožňuje předpovědi. výstup Hello předpovědi může mít různé formy, například soubor .csv nebo řádků v Azure SQL database, v závislosti na konfiguraci hello hello experimentu. Hello výchozí koncový bod se automaticky vytvoří za vás, když publikujete hello prediktivní experiment jako webovou službu. 
 
-Následující obrázek znázorňuje vztahy mezi školení a vyhodnocování koncových bodů v Azure ML.
+Hello následující obrázek znázorňuje hello vztah mezi školení a vyhodnocování koncových bodů v Azure ML.
 
 ![Webové služby](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
 
-Můžete vyvolat **cvičení webové služby** pomocí **aktivita provedení dávky Azure ML**. Vyvolání webové služby školení je stejný jako vyvolání webové služby Azure ML (vyhodnocování webová služba) pro vyhodnocování data. V předchozích částech zabývá vyvolání webové služby Azure ML z podrobně kanál služby Azure Data Factory. 
+Můžete vyvolat hello **cvičení webové služby** pomocí hello **aktivita provedení dávky Azure ML**. Vyvolání webové služby školení je stejný jako vyvolání webové služby Azure ML (vyhodnocování webová služba) pro vyhodnocování data. Hello předchozí části titulní jak tooinvoke webové služby Azure ML ze služby Azure Data Factory kanálu podrobně. 
 
-Můžete vyvolat **vyhodnocování webové služby** pomocí **aktivita prostředku aktualizace Azure ML** aktualizace webové služby s nově naučeného modelu. Následující příklady obsahují definice propojené služby: 
+Můžete vyvolat hello **vyhodnocování webové služby** pomocí hello **aktivita prostředku aktualizace Azure ML** tooupdate hello webové služby s nově trained model hello. Následující příklady Hello poskytují definice propojené služby: 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>Vyhodnocování webové služby je classic webová služba
-Pokud je webová služba vyhodnocování **classic webové služby**, vytvořte druhý **jiné než výchozí a aktualizovat koncový bod** pomocí [portál Azure](https://manage.windowsazure.com). V tématu [vytvořit koncové body](../machine-learning/machine-learning-create-endpoint.md) najdete v článku kroky. Po vytvoření koncového bodu aktualizovat jiné než výchozí, proveďte následující kroky:
+Pokud je hello vyhodnocování webové služby **classic webové služby**, vytvořit hello druhý **jiné než výchozí a aktualizovat koncový bod** pomocí hello [portál Azure](https://manage.windowsazure.com). V tématu [vytvořit koncové body](../machine-learning/machine-learning-create-endpoint.md) najdete v článku kroky. Po vytvoření aktualizovat koncový bod hello jiné než výchozí, hello následující kroky:
 
-* Klikněte na tlačítko **BATCH EXECUTION** získat hodnota identifikátoru URI pro **mlEndpoint** vlastnost JSON.
-* Klikněte na tlačítko **aktualizace prostředků** odkaz k získání hodnoty identifikátoru URI pro **updateResourceEndpoint** vlastnost JSON. Klíč rozhraní API je na stránce koncového bodu (v pravém dolním rohu).
+* Klikněte na tlačítko **BATCH EXECUTION** tooget hello URI hodnota hello **mlEndpoint** vlastnost JSON.
+* Klikněte na tlačítko **aktualizace prostředků** odkaz tooget hello URI hodnotu hello **updateResourceEndpoint** vlastnost JSON. klíč rozhraní API Hello je hello koncový bod stránky na (v pravém dolním rohu hello).
 
 ![aktualizovat koncový bod](./media/data-factory-azure-ml-batch-execution-activity/updatable-endpoint.png)
 
-Následující příklad uvádí definici JSON ukázka AzureML propojené služby. Propojená služba používá apiKey pro ověřování.  
+Následující ukázka Hello poskytuje definici JSON ukázka hello AzureML propojené služby. Hello apiKey hello propojená služba používá pro ověřování.  
 
 ```json
 {
@@ -79,20 +79,20 @@ Následující příklad uvádí definici JSON ukázka AzureML propojené služb
 ```
 
 ## <a name="scoring-web-service-is-azure-resource-manager-web-service"></a>Vyhodnocování webové služby je webová služba Azure Resource Manager 
-Pokud webová služba je nový typ webové služby, který zveřejňuje koncový bod Azure Resource Manager, není potřeba přidat druhý **jiné než výchozí** koncový bod. **UpdateResourceEndpoint** v propojené službě je ve formátu: 
+Pokud hello webové služby je nový typ hello webové služby, který zveřejňuje koncový bod Azure Resource Manager, není nutné tooadd hello druhý **jiné než výchozí** koncový bod. Hello **updateResourceEndpoint** v hello propojené služby je hello formátu: 
 
 ```
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-Můžete získat hodnoty pro zástupného v adrese URL při dotazování na webovou službu [portálu služby Azure Machine Learning webové](https://services.azureml.net/). Nový typ prostředku aktualizace koncového bodu vyžaduje token AAD (Azure Active Directory). Zadejte **servicePrincipalId** a **servicePrincipalKey**v AzureML propojené služby. V tématu [postup vytvoření instančního objektu a přiřaďte oprávnění ke správě prostředků Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md). Zde je ukázka definice AzureML propojené služby: 
+Můžete získat hodnoty pro zástupného v adrese URL hello při dotazování hello webové služby na hello [portálu služby Azure Machine Learning webové](https://services.azureml.net/). Hello nový typ prostředku aktualizace koncového bodu vyžaduje token AAD (Azure Active Directory). Zadejte **servicePrincipalId** a **servicePrincipalKey**v AzureML propojené služby. V tématu [jak toocreate službu objektu zabezpečení a přiřaďte oprávnění toomanage prostředků Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md). Zde je ukázka definice AzureML propojené služby: 
 
 ```json
 {
     "name": "AzureMLLinkedService",
     "properties": {
         "type": "AzureML",
-        "description": "The linked service for AML web service.",
+        "description": "hello linked service for AML web service.",
         "typeProperties": {
             "mlEndpoint": "https://ussouthcentral.services.azureml.net/workspaces/0000000000000000000000000000000000000/services/0000000000000000000000000000000000000/jobs?api-version=2.0",
             "apiKey": "xxxxxxxxxxxx",
@@ -105,22 +105,22 @@ Můžete získat hodnoty pro zástupného v adrese URL při dotazování na webo
 }
 ```
 
-V následujícím scénáři najdete další podrobnosti. Obsahuje příklad retraining a aktualizace Azure ML modely z kanál služby Azure Data Factory.
+Hello následujícím scénáři najdete další podrobnosti. Obsahuje příklad retraining a aktualizace Azure ML modely z kanál služby Azure Data Factory.
 
 ## <a name="scenario-retraining-and-updating-an-azure-ml-model"></a>Scénář: retraining a aktualizace model Azure ML
-Tato část obsahuje ukázkový kanál, který používá **aktivita provedení dávky Azure ML** k přeučování modelu. Kanál také používá **aktivita prostředku aktualizace Azure ML** k aktualizaci modelu v rámci vyhodnocování webové služby. Tato část taky poskytuje fragmenty kódu JSON pro všechny propojené služby, datové sady a kanál v příkladu.
+Tato část obsahuje ukázkový kanál, který používá hello **aktivita provedení dávky Azure ML** tooretrain modelu. kanál Hello používá také hello **aktivita prostředku aktualizace Azure ML** tooupdate hello model v hello vyhodnocování webové služby. Hello oddíl obsahuje také fragmenty kódu JSON pro všechny hello propojených služeb, datových sad a kanálu v příkladu hello.
 
-Zde je zobrazení diagramu ukázkový kanál. Jak můžete vidět, aktivita provedení dávky Azure ML přijímá vstup školení a vytvoří výstupní školení (soubor iLearner). Aktivita prostředku aktualizace Azure ML přebírá tento výstup školení a aktualizuje model v vyhodnocování koncový bod webové služby. Aktivita prostředku aktualizace nevytváří žádný výstup. PlaceholderBlob je právě fiktivní výstupní datovou sadu, která je vyžadovaná službou Azure Data Factory ke spuštění kanálu.
+Zde je zobrazení diagramu hello hello ukázkový kanál. Jak můžete vidět, hello aktivita provedení dávky Azure ML přijímá hello školení vstup a výstup školení (soubor iLearner). Hello aktivita prostředku aktualizace Azure ML trvá tento výstup školení a aktualizace hello model v hello vyhodnocování koncový bod webové služby. Hello aktivita prostředku aktualizace nevytváří žádný výstup. Hello placeholderBlob je právě fiktivní výstupní datovou sadu, která vyžadují hello Azure Data Factory služby toorun hello kanálu.
 
 ![diagram kanálu](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 
 ### <a name="azure-blob-storage-linked-service"></a>Propojená služba Azure Blob storage:
-Azure Storage obsahuje následující data:
+Hello Azure Storage obsahuje hello následující data:
 
-* Cvičná data. Vstupní data pro webovou službu Azure ML školení.  
-* reprezentuje soubor iLearner. Výstup z webové služby Azure ML školení. Tento soubor je také vstup aktivita prostředku aktualizace.  
+* Cvičná data. Hello vstupní data pro hello Azure ML školení webové služby.  
+* reprezentuje soubor iLearner. Hello výstup z hello Azure ML školení webové služby. Tento soubor je také hello vstupní toohello aktivita prostředku aktualizace.  
 
-Zde je ukázka definici JSON propojené služby:
+Tady je definici JSON ukázka hello hello propojené služby:
 
 ```JSON
 {
@@ -135,7 +135,7 @@ Zde je ukázka definici JSON propojené služby:
 ```
 
 ### <a name="training-input-dataset"></a>Školení vstupní datové sady:
-Tyto datové sady představuje vstupní Cvičná data pro webovou službu Azure ML školení. Aktivita provedení dávky Azure ML přijímá tuto datovou sadu jako vstup.
+Hello následující datovou sadu představuje hello školení vstupní data pro hello Azure ML školení webovou službu. Hello aktivita provedení dávky Azure ML trvá tuto datovou sadu jako vstup.
 
 ```JSON
 {
@@ -166,7 +166,7 @@ Tyto datové sady představuje vstupní Cvičná data pro webovou službu Azure 
 ```
 
 ### <a name="training-output-dataset"></a>Školení výstupní datovou sadu:
-Tyto datové sady představuje výstupní soubor iLearner z webové služby Azure ML školení. Aktivita provedení dávky Azure ML vyprodukuje tuto datovou sadu. Tato datová sada je také vstup aktivita prostředku aktualizace Azure ML.
+Hello následující datovou sadu reprezentuje soubor iLearner výstup hello z hello Azure ML školení webové služby. Hello aktivita provedení dávky Azure ML vyprodukuje tuto datovou sadu. Tato datová sada je také hello vstupní toohello aktivita prostředku aktualizace Azure ML.
 
 ```JSON
 {
@@ -190,7 +190,7 @@ Tyto datové sady představuje výstupní soubor iLearner z webové služby Azur
 ```
 
 ### <a name="linked-service-for-azure-ml-training-endpoint"></a>Propojené služby pro koncový bod Azure ML školení
-Následující fragment kódu JSON definuje služby Azure Machine Learning propojené, který ukazuje na výchozí koncový bod webové služby školení.
+Následující fragment kódu JSON Hello definuje službou Azure Machine Learning, která je propojená, která ukazuje toohello výchozí koncový bod hello školení webové služby.
 
 ```JSON
 {    
@@ -205,16 +205,16 @@ Následující fragment kódu JSON definuje služby Azure Machine Learning propo
 }
 ```
 
-V **Azure ML Studio**, proveďte následující kroky k získání hodnot pro **mlEndpoint** a **apiKey**:
+V **Azure ML Studio**, hello tyto hodnoty tooget pro **mlEndpoint** a **apiKey**:
 
-1. Klikněte na tlačítko **webové služby** v levé nabídce.
-2. Klikněte **cvičení webové služby** v seznamu webové služby.
-3. Klikněte na možnost Kopírovat do **klíč rozhraní API** textové pole. Vložte klíč do schránky do editoru Data Factory JSON.
-4. V **Azure ML studio**, klikněte na tlačítko **BATCH EXECUTION** odkaz.
-5. Kopírování **URI požadavku** z **požadavku** části a vložte ho do editoru Data Factory JSON.   
+1. Klikněte na tlačítko **webové služby** v levé nabídce hello.
+2. Klikněte na tlačítko hello **cvičení webové služby** v seznamu hello webových služeb.
+3. Klikněte na tlačítko Kopírovat další příliš**klíč rozhraní API** textové pole. Vložte klíč hello hello schránky do editoru JSON objektu pro vytváření dat hello.
+4. V hello **Azure ML studio**, klikněte na tlačítko **BATCH EXECUTION** odkaz.
+5. Kopírování hello **URI požadavku** z hello **požadavku** části a vložte ho do editoru JSON objektu pro vytváření dat hello.   
 
 ### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Propojená služba Azure ML aktualizovat vyhodnocování koncového bodu:
-Následující fragment kódu JSON definuje služby Azure Machine Learning propojené, která odkazuje na jiné než výchozí koncový bod aktualizovat vyhodnocování webové služby.  
+Následující fragment kódu JSON Hello definuje služby Azure Machine Learning propojené, který odkazuje toohello jiné než výchozí aktualizovat koncový bod hello vyhodnocování webové služby.  
 
 ```JSON
 {
@@ -234,7 +234,7 @@ Následující fragment kódu JSON definuje služby Azure Machine Learning propo
 ```
 
 ### <a name="placeholder-output-dataset"></a>Zástupný symbol výstupní datovou sadu:
-Aktivita prostředku aktualizace Azure ML negeneruje žádný výstup. Azure Data Factory však vyžaduje výstupní datové sady do jednotky plán kanálu. Proto jsme použít datovou sadu fiktivní/zástupný symbol v tomto příkladu.  
+Hello aktivita prostředku aktualizace Azure ML negeneruje žádný výstup. Azure Data Factory však vyžaduje plán výstupní datová sada toodrive hello kanálu. Proto jsme použít datovou sadu fiktivní/zástupný symbol v tomto příkladu.  
 
 ```JSON
 {
@@ -257,7 +257,7 @@ Aktivita prostředku aktualizace Azure ML negeneruje žádný výstup. Azure Dat
 ```
 
 ### <a name="pipeline"></a>Kanál
-Kanál má dvě aktivity: **AzureMLBatchExecution** a **AzureMLUpdateResource**. Aktivita provedení dávky Azure ML trvá Cvičná data jako vstup a vytvoří soubor iLearner jako výstup. Aktivity vyvolá webovou službu školení (výukový experiment zveřejněné jako webovou službu) se vstupní Cvičná data a přijímá reprezentuje soubor ilearner z webovou službu. PlaceholderBlob je právě fiktivní výstupní datovou sadu, která je vyžadovaná službou Azure Data Factory ke spuštění kanálu.
+Hello kanálu má dvě aktivity: **AzureMLBatchExecution** a **AzureMLUpdateResource**. Hello aktivita provedení dávky Azure ML trvá hello Cvičná data jako vstup a vytvoří soubor iLearner jako výstup. Aktivita Hello vyvolá hello školení webové služby (výukový experiment zveřejněné jako webovou službu) se vstupem hello trénovací data a obdrží od hello webservice soubor ilearner hello. Hello placeholderBlob je právě fiktivní výstupní datovou sadu, která vyžadují hello Azure Data Factory služby toorun hello kanálu.
 
 ![diagram kanálu](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 

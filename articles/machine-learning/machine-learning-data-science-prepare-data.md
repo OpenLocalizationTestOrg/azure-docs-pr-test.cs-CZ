@@ -1,6 +1,6 @@
 ---
-title: "Vyčistěte a připravit data pro Azure Machine Learning | Microsoft Docs"
-description: "Předběžně zpracovat a vyčistit data připravit pro machine learning."
+title: "aaaClean a připravit data pro Azure Machine Learning | Microsoft Docs"
+description: "Předběžné zpracování a vyčištění dat tooprepare ho pro machine learning."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,89 +14,89 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.openlocfilehash: cfaccad0a7d81950d80486dcb0d9e6520deab9b3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3e3c3e4b0cfb9187f5820d7165e6ee1ea013ba02
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Úlohy k přípravě dat pro rozšířené strojové učení
-Předběžné zpracování a vyčištění dat jsou důležité úkoly, které obvykle musí být provedeny před datové sady je možné efektivně pro machine learning. Nezpracovaná data, je často aktivní nebo nespolehlivé a může být chybějící hodnoty. Pomocí těchto údajů pro modelování může vytvářet zavádějící výsledky. Tyto úlohy jsou součástí nástroje Team Data vědecké účely procesu (TDSP) a obvykle postupujte podle počáteční zkoumání použito k vyhledávání a plánování předběžné zpracování požadované datové sady. Podrobné pokyny k procesu TDSP, najdete v části podle kroků uvedených v [proces vědecké účely dat Team](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+# <a name="tasks-tooprepare-data-for-enhanced-machine-learning"></a>Tooprepare data úlohy pro rozšířené machine learning
+Předběžné zpracování a vyčištění dat jsou důležité úkoly, které obvykle musí být provedeny před datové sady je možné efektivně pro machine learning. Nezpracovaná data, je často aktivní nebo nespolehlivé a může být chybějící hodnoty. Pomocí těchto údajů pro modelování může vytvářet zavádějící výsledky. Tyto úlohy jsou součástí hello tým datové vědy procesu (TDSP) a obvykle postupujte podle počáteční zkoumání toodiscover použít datovou sadu a plán hello předzpracováním vyžaduje. Podrobné pokyny k procesu TDSP hello, najdete v části hello kroků uvedených v hello [proces vědecké účely dat Team](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
-Předběžné zpracování a čištění úlohy, jako například úloha zkoumání dat, lze provádět v celé řadě prostředí, jako je například SQL nebo Hive nebo Azure Machine Learning Studio a pomocí různých nástrojů a jazyky, jako je R nebo Python, v závislosti, kde jsou data uložena a jejich formátování. Vzhledem k tomu, že se předpokládá několikeré ve své podstatě TDSP, tyto úlohy můžete provádět v jednotlivých kroků v procesu pracovního postupu.
+Předběžné zpracování a úlohy čištění, jako úloha zkoumání hello data, lze provádět v celé řadě prostředí, jako je například SQL nebo Hive nebo Azure Machine Learning Studio a pomocí různých nástrojů a jazyky, jako je R nebo Python, v závislosti, kde je vaše data uložená a jejich formátování. Vzhledem k tomu, že se předpokládá několikeré ve své podstatě TDSP, tyto úlohy můžete provádět v jednotlivých kroků v pracovním postupu hello hello procesu.
 
 Tento článek představuje různé zpracování dat koncepty a úlohy, které lze provádět před nebo po příjem dat do Azure Machine Learning.
 
-Příklad zkoumání dat a předběžné zpracování provést uvnitř Azure Machine Learning studio, najdete v článku [předběžné zpracování dat v Azure Machine Learning Studio](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) videa.
+Příklad zkoumání dat a předběžné zpracování provést uvnitř Azure Machine Learning studio, najdete v části hello [předběžné zpracování dat v Azure Machine Learning Studio](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) videa.
 
 ## <a name="why-pre-process-and-clean-data"></a>Proč předběžně zpracovat a vyčistit data?
-Shromáždění skutečných dat z různých zdrojů a procesy a může obsahovat nesrovnalostí nebo poškozená data ohrožení kvality datovou sadu. Problémy kvality typické dat, které vznikají jsou:
+Shromáždění skutečných dat z různých zdrojů a procesy a může obsahovat nesrovnalostí nebo poškozená data ohrožení hello kvalitu hello datovou sadu. Hello typické data quality problémy, které vznikají jsou:
 
 * **Nedokončené**: dat chybí atributy nebo obsahující chybějící hodnoty.
 * **Aktivní**: Data obsahují chybné záznamy nebo odlehlé hodnoty.
 * **Nekonzistentní**: Data obsahují konfliktní záznamy nebo nesrovnalostí.
 
-Kvality dat je předpokladem pro prediktivní modely kvality. Vyhněte se "uvolňování paměti v paměti se" a zlepšení kvality dat a proto modelu výkonu, je nutné ke stavu obrazovky dat již v rané fázi přímé problémy dat a rozhodnout, na odpovídající zpracování dat a čisticí kroky.
+Kvality dat je předpokladem pro prediktivní modely kvality. tooavoid "paměti v paměti se" a zlepšení kvality dat a proto modelu výkonu, je nutné tooconduct toospot obrazovky data stavu, dat již v rané fázi problémy a rozhodněte o hello odpovídající zpracování dat a čištění kroky.
 
 ## <a name="what-are-some-typical-data-health-screens-that-are-employed"></a>Jaké jsou některé obrazovky stavu typické dat, které budou použity?
-Kontrolou jsme můžete zkontrolovat obecné kvality dat:
+Kontrolou jsme můžete zkontrolovat obecné kvality hello dat:
 
-* Počet **záznamy**.
-* Počet **atributy** (nebo **funkce**).
-* Atribut **datové typy** (nominální, pořadí nebo souvislé).
-* Počet **chybějící hodnoty**.
-* **Správnosti** data.
-  * Pokud jsou data v TSV nebo sdílený svazek clusteru, zkontrolujte, že oddělovačů sloupce a řádku oddělovačů vždy správně jednotlivé sloupce a řádky.
-  * Pokud jsou data ve formátu HTML nebo XML, zkontrolujte, zda data je ve správném formátu závislosti na jejich příslušné standardy.
-  * Analýza může být také nezbytné, aby extrahovat z částečně strukturovaných nebo nestrukturovaných dat strukturovaných informace.
-* **Zaznamenává nekonzistentní data**. Zkontrolujte, jsou povolené rozsah hodnot. Například pokud data obsahují student GPA, zkontrolujte, zda je GPA v určené oblasti vyslovení 0 ~ 4.
+* Hello počet **záznamy**.
+* Hello počet **atributy** (nebo **funkce**).
+* atribut Hello **datové typy** (nominální, pořadí nebo souvislé).
+* Hello počet **chybějící hodnoty**.
+* **Správnosti** dat hello.
+  * Pokud hello data jsou v TSV nebo sdílený svazek clusteru, zkontrolujte, že oddělovačů hello sloupce a řádku oddělovačů vždy správně oddělit sloupce a řádky.
+  * Je-li hello data ve formátu HTML nebo XML, zkontrolujte, zda hello data je ve správném formátu závislosti na jejich příslušné standardy.
+  * Analýza může být také nutné v pořadí tooextract strukturovaná informace z částečně strukturovaných nebo nestrukturovaných dat.
+* **Zaznamenává nekonzistentní data**. Zkontrolujte, jsou povolené hello rozsah hodnot. Například pokud hello dat obsahuje student GPA, zkontrolujte, zda text hello GPA je v hello určený rozsah vyslovení 0 ~ 4.
 
-Pokud narazíte na problémy s daty, **kroky zpracování** jsou nezbytné, což často zahrnuje vyčištění chybějících hodnot, data normalizaci, diskretizační, zpracování textu odeberte nebo nahraďte vložených znaků, což může mít vliv na data společné zarovnání různé datové typy, pole a dalších.
+Pokud narazíte na problémy s daty, **kroky zpracování** jsou nezbytné, což často zahrnuje vyčištění chybějících hodnot, data normalizaci, diskretizační, tooremove zpracování textu nebo nahrazení embedded znaků, což může mít vliv na společné zarovnání dat různé datové typy, pole a dalších.
 
-**Azure Machine Learning spotřebuje ve správném formátu tabulková data**.  Pokud již data ve formě tabulky, předběžné zpracování dat lze provést přímo pomocí Azure Machine Learning v nástroji Machine Learning Studio.  Pokud data nejsou ve formě tabulky, indikované, který je v XML, může být analýza vyžaduje, aby bylo možné převést data na formě tabulky.  
+**Azure Machine Learning spotřebuje ve správném formátu tabulková data**.  Pokud hello dat již ve formě tabulky, předběžné zpracování dat lze provést přímo pomocí Azure Machine Learning v hello Machine Learning Studio.  Pokud data nejsou ve formě tabulky, může být požadováno indikované, který je v analýze XML v pořadí tooconvert hello data tootabular formuláře.  
 
-## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>Jaké jsou některé z hlavních úloh v předběžné zpracování dat?
+## <a name="what-are-some-of-hello-major-tasks-in-data-pre-processing"></a>Jaké jsou některé z hlavních úloh hello v předběžné zpracování dat?
 * **Čištění dat.**: vyplňte nebo chybějící hodnoty detekovat a odstraňovat aktivní data a extrémních.
-* **Transformace dat**: normalizaci dat a snižuje tak dimenzí a šumu.
+* **Transformace dat**: normalizovat dimenzí tooreduce dat a šumu.
 * **Data snížení**: ukázková data záznamy nebo atributy pro snazší manipulaci s daty.
-* **Data diskretizační**: převést souvislé atributy kategorií atributy pro snadné použití pomocí metod určité machine learning.
+* **Data diskretizační**: převést souvislé atributy toocategorical atributy pro snadné použití pomocí metod určité machine learning.
 * **Text čištění**: odebrat vložené znaky, které může způsobit, že chybné zarovnání dat, například embedded karty v souboru tabulátorem data vložených nové řádky, které může rozdělit záznamy atd.
 
-Následující části obsahují podrobnosti některé z těchto kroků zpracování dat.
+v níže uvedených částech Hello podrobnosti některé z těchto kroků zpracování dat.
 
-## <a name="how-to-deal-with-missing-values"></a>Řešení problémů s chybějící hodnoty?
-Jak nakládat s chybějící hodnoty, je vhodné nejdříve identifikovat důvod chybějící hodnoty a lepší popisovač problém. Typické chybí hodnota zpracování metody jsou následující:
+## <a name="how-toodeal-with-missing-values"></a>Jak toodeal s chybějící hodnoty?
+toodeal s chybějící hodnoty, je vhodné toofirst identifikovat hello důvod pro hello chybějící hodnoty toobetter popisovač hello problém. Typické chybí hodnota zpracování metody jsou následující:
 
 * **Odstranění**: odebrat záznamy s chybějící hodnoty
 * **Fiktivní nahrazení**: chybějící hodnoty nahraďte fiktivní hodnoty: např, *neznámé* kategorií nebo 0 pro číselné hodnoty.
-* **Znamenat nahrazení**: Pokud chybějící data číselné, nahraďte chybějící hodnoty střední.
-* **Časté nahrazení**: Pokud chybějící data kategorií, nahraďte chybějící hodnoty nejčastěji se vyskytující položku
-* **Nahrazení regrese**: použijte metodu regrese nahradit chybějící hodnoty který poklesl hodnoty.  
+* **Znamenat nahrazení**: Pokud chybějící data hello číselné, nahraďte hello chybějící hodnoty střední hello.
+* **Časté nahrazení**: Pokud chybějící data hello kategorií, nahraďte hello chybějící hodnoty nejčastěji se vyskytující položku hello
+* **Nahrazení regrese**: použití regrese metoda tooreplace chybějící hodnoty který poklesl hodnotami.  
 
-## <a name="how-to-normalize-data"></a>Jak můžete normalizovat dat?
-Data normalizaci znovu škáluje číselné hodnoty pro zadaný rozsah. Metody normalizaci oblíbených dat patří:
+## <a name="how-toonormalize-data"></a>Jak toonormalize dat?
+Data normalizaci znovu škáluje číselné hodnoty tooa zadaný rozsah. Metody normalizaci oblíbených dat patří:
 
-* **Min-Max normalizaci**: Lineárně transformovat data do rozsahu, můžete mezi 0 a 1, kde je minimální hodnota škálovat na 0 a maximální hodnotu 1.
-* **Z – score normalizaci**: škálování dat na základě střední a směrodatnou odchylku: dělit rozdíl mezi daty a střední směrodatnou odchylku.
-* **Decimal škálování**: škálování dat jejich přesunutím desetinnou hodnotu atributu.  
+* **Min-Max normalizaci**: Lineárně transformace hello data tooa rozsahu, říkají, mezi 0 a 1, kde hello minimální hodnota je škálovat too0 a too1 maximální hodnotu.
+* **Z – score normalizaci**: škálování dat na základě střední a směrodatnou odchylku: dělit hello rozdíl mezi hello dat a střední hello hello směrodatnou odchylku.
+* **Decimal škálování**: škálovat hello dat, protože přesunutí desetinnou hello hodnota atributu hello.  
 
-## <a name="how-to-discretize-data"></a>Jak diskretizaci dat?
-Data můžete diskrétní převedením průběžné hodnoty na nominální atributy nebo intervaly. Některé z mnoha možností to jsou:
+## <a name="how-toodiscretize-data"></a>Jak toodiscretize dat?
+Data můžete diskrétní převedením průběžné hodnoty toonominal atributy nebo intervaly. Některé z mnoha možností to jsou:
 
-* **Přihrádkování rovná-Width**: rozdělení rozsah všech možných hodnot atributu na N skupiny stejnou velikost a přiřadit hodnoty, které spadají do přihrádky číslem Koš.
-* **Výška rovná Přihrádkování**: rozdělení rozsah všech možných hodnot atributu do skupiny, každý by měl obsahovat stejný počet instancí a potom přiřadit hodnoty, které spadají do přihrádky číslem Koš.  
+* **Přihrádkování rovná-Width**: rozdělení do skupiny N hello stejná velikost a přiřaďte hello hodnoty, které spadají do přihrádky s číslem bin hello hello rozsah všech možných hodnot atributu.
+* **Výška rovná Přihrádkování**: rozdělení hello rozsah všech možných hodnot atributu do skupiny, každý obsahující hello stejný počet instancí a potom přiřadit hello hodnoty, které spadají do přihrádky s hello bin číslo.  
 
-## <a name="how-to-reduce-data"></a>Jak k omezení dat?
-Existují různé metody pro snížení velikosti dat pro snazší data zpracování. V závislosti na velikosti dat a doméně můžete použít následující metody:
+## <a name="how-tooreduce-data"></a>Jak tooreduce dat?
+Existují různé metody tooreduce data velikost pro snazší data zpracování. V závislosti na velikosti a hello domény data můžete použít následující metody hello:
 
-* **Zaznamenejte vzorkování**: ukázkové datových záznamů a pouze reprezentativní podmnožinu vybírat data.
-* **Atribut vzorkování**: vyberte pouze podmnožinu nejdůležitější atributů data.  
-* **Agregace**: rozdělení dat do skupin a uložit čísla pro každou skupinu. Například denní výnosy čísla řetězu restaurace v posledních letech 20 můžete agregovat do měsíčního výnosy ke snížení velikosti dat.  
+* **Zaznamenejte vzorkování**: ukázkové hello záznamů dat a vyberte pouze reprezentativní podmnožinu hello z dat hello.
+* **Atribut vzorkování**: Vyberte jenom podmnožinu hello nejdůležitější atributy z dat hello.  
+* **Agregace**: rozdělení hello dat do skupin a uložit čísla hello pro každou skupinu. Například hello denní výnosy, který může být čísla řetězu restaurace přes hello posledních letech 20 agregován toomonthly výnosy tooreduce hello velikost dat hello.  
 
-## <a name="how-to-clean-text-data"></a>Postup vyčištění textová data?
-**Textová pole v tabulkovém data** může obsahovat znaky, které ovlivňují sloupce zarovnání nebo záznam hranice. Například vložených karty v synchronizace souboru tabulátorem příčina sloupce a vložených znaky nového řádku rozdělit záznamů řádků. Nesprávné text kódování zpracování při zápisu nebo čtení textu vede ke ztrátě informací, nechtěnému Úvod nečitelné znaky, například hodnoty Null, a může také vliv text analýzu. Pozor, analýze a úpravy mohou být vyžadovány Chcete-li vyčistit textových polí pro správné zarovnání a/nebo extrakce strukturovaná data z částečně strukturovaných nebo nestrukturovaných textová data.
+## <a name="how-tooclean-text-data"></a>Jak tooclean textová data?
+**Textová pole v tabulkovém data** může obsahovat znaky, které ovlivňují sloupce zarovnání nebo záznam hranice. Například vložených karty v synchronizace souboru tabulátorem příčina sloupce a vložených znaky nového řádku rozdělit záznamů řádků. Nesprávné kódování zpracování při zápisu nebo čtení textu textu vede tooinformation dojít ke ztrátě, nechtěnému Úvod nečitelné znaky, například hodnoty Null, a může také vliv text analýzu. V pořadí tooclean textových polí pro správné zarovnání nebo tooextract strukturovaná data z textu částečně strukturovaných nebo nestrukturovaných dat může být nutné pečlivé analýzy a úpravy.
 
-**Zkoumání dat** nabízí časná pohled na data. Počet problémy dat může neodkrytých během tohoto kroku a odpovídající metody lze použít k řešení těchto problémů.  Je důležité k nim máte nějaké otázky, jako jsou novinky zdroj problému a jak tento problém může mít zavedený. To také vám pomůže rozhodnout o zpracování dat kroky, které je třeba přijmout jejich řešení. Druh statistiky, které jeden chtít odvozena z dat lze také nastavit prioritu zpracování dat úsilí.
+**Zkoumání dat** nabízí zobrazení o předčasné do hello data. Počet problémy dat může neodkrytých během tohoto kroku a odpovídající metody mohou být použité tooaddress těchto problémů.  Je důležité tooask otázky, například hello zdroj problému hello a jak hello problém může mít zavedený. To zároveň pomáhá rozhodněte o hello zpracování dat kroky tohoto toobe nutné provést tooresolve je. Hello druh statistiky, že jeden zaměřen tooderive z hello dat může být také úsilí zpracování dat použité tooprioritize hello.
 
 ## <a name="references"></a>Odkazy
 > *Dolování dat: Konceptech a technikách*, Third Edition, Nováková Kaufmann, 2011, Hanu Jiawei, Micheline Kamber a Jian Pei

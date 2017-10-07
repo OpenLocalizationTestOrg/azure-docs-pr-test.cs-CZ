@@ -1,6 +1,6 @@
 ---
-title: "Postup zobrazení Azure Service Fabric entity agregovat stavu | Microsoft Docs"
-description: "Popisuje, jak pro dotazování, zobrazení a vyhodnotit agregovaný stav entity Azure Service Fabric, prostřednictvím dotazů na stav a obecné dotazy."
+title: aaaHow tooview Azure Service Fabric entit agregovat stavu | Microsoft Docs
+description: "Popisuje, jak tooquery, zobrazit a vyhodnotit agregovaný stav entity Azure Service Fabric, prostřednictvím dotazů na stav a obecné dotazy."
 services: service-fabric
 documentationcenter: .net
 author: oanapl
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: oanapl
-ms.openlocfilehash: b97972b1bdc28a17fb9c3a0e997738f5bd0b5d15
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: add810551cac26d2b4ff81b57d94ddd780c2cc2f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="view-service-fabric-health-reports"></a>Zobrazit sestavy stavu Service Fabric
-Představuje Azure Service Fabric [stavu modelu](service-fabric-health-introduction.md) s entity stavu, ve které součásti systému a watchdogs můžou sestavy místní podmínky, které jsou monitorování. [Úložiště stavu](service-fabric-health-introduction.md#health-store) slučuje všechny data o stavu k určení, zda jsou v pořádku entity.
+Představuje Azure Service Fabric [stavu modelu](service-fabric-health-introduction.md) s entity stavu, ve které součásti systému a watchdogs můžou sestavy místní podmínky, které jsou monitorování. Hello [úložiště stavu](service-fabric-health-introduction.md#health-store) slučuje všechny toodetermine data stavu zda entity jsou v pořádku.
 
-Cluster se automaticky zadá sestavy o stavu odeslaných součástech systému. Další informace v [sestav o stavu systému použít k řešení](service-fabric-understand-and-troubleshoot-with-system-health-reports.md).
+Hello clusteru se automaticky zadá sestavy o stavu odeslaných hello komponent systému. Další informace v [stavu systému pomocí sestavy tootroubleshoot](service-fabric-understand-and-troubleshoot-with-system-health-reports.md).
 
-Service Fabric nabízí více způsoby, jak získat agregovaný stav entity:
+Service Fabric nabízí několik způsobů tooget hello agregovat stavu hello entit:
 
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) nebo jiné vizualizace nástroje
 * Dotazy na stav (pomocí prostředí PowerShell, rozhraní API nebo REST)
-* Obecné dotazuje to návratový seznam entit, které mají stav jako jedna z vlastností (pomocí prostředí PowerShell, rozhraní API nebo REST)
+* Obecné dotazuje to návratový seznam entit, které mají stav jako jedna z vlastností hello (pomocí prostředí PowerShell, rozhraní API nebo REST)
 
-K předvedení tyto možnosti, můžeme použít místní cluster s pěti uzly a [fabric: / WordCount aplikace](http://aka.ms/servicefabric-wordcountapp). **Fabric: / WordCount** aplikace obsahuje dvě výchozí služby, stavové služby typu `WordCountServiceType`a bezstavové služby typu `WordCountWebServiceType`. Po změně `ApplicationManifest.xml` tak, aby vyžadovala 7 cíle replik pro stavové služby a jeden oddíl. Protože jsou pouze pět uzlů v clusteru, součástech systému informovat upozornění v oddílu služby, protože je pod počtu cílových.
+toodemonstrate tyto možnosti, budeme používat místní cluster s pěti uzly a hello [fabric: / aplikace WordCount](http://aka.ms/servicefabric-wordcountapp). Hello **fabric: / WordCount** aplikace obsahuje dvě výchozí služby, stavové služby typu `WordCountServiceType`a bezstavové služby typu `WordCountWebServiceType`. Po změně hello `ApplicationManifest.xml` toorequire sedm cíl replik pro stavové služby hello a jeden oddíl. Protože jsou pouze pět uzlů v clusteru hello, součásti systému hello sestavy upozornění oddílu služby hello protože je pod počtu cílových hello.
 
 ```xml
 <Service Name="WordCountService">
@@ -48,17 +48,17 @@ K předvedení tyto možnosti, můžeme použít místní cluster s pěti uzly a
 ```
 
 ## <a name="health-in-service-fabric-explorer"></a>Stav v Service Fabric Exploreru
-Service Fabric Explorer nabízí vizuální zobrazení clusteru. Na následujícím obrázku vidíte, který:
+Service Fabric Explorer nabízí vizuální zobrazení hello clusteru. V následující hello obrázek můžete uvidíte, že:
 
-* Aplikace **fabric: / WordCount** je červený (v chyba), protože obsahuje událost chyby hlášené **MyWatchdog** pro vlastnost **dostupnosti**.
-* Jeden z jejích služeb **fabric: / WordCount/WordCountService** žlutý (v upozornění). Služba je nakonfigurována s sedm repliky a cluster obsahuje pět uzlů, takže dvě repicas nemůže být umístěn. Je sice není vidět zde, oddílu služby žlutý kvůli sestavy systému z `System.FM` oznámením, že `Partition is below target replica or instance count`. Žlutý oddílu aktivuje žlutý služby.
-* Cluster je red kvůli red aplikace.
+* Hello aplikace **fabric: / WordCount** je červený (v chyba), protože obsahuje událost chyby hlášené **MyWatchdog** pro vlastnost hello **dostupnosti**.
+* Jeden z jejích služeb **fabric: / WordCount/WordCountService** žlutý (v upozornění). Služba Hello je nakonfigurována s sedm repliky a hello cluster obsahuje pět uzlů, takže dvě repicas nemůže být umístěn. Je sice není vidět zde, oddílu služby hello žlutý kvůli sestavy systému z `System.FM` oznámením, že `Partition is below target replica or instance count`. aktivační události žlutý oddílu Hello hello žlutý služby.
+* Hello clusteru je red kvůli hello red aplikace.
 
-Vyhodnocení používá výchozí zásady z manifestu clusteru a manifest aplikace. Jsou striktní zásady a není tolerovat žádné chyby.
+vyhodnocení Hello používá výchozí zásady z manifestu clusteru hello a manifest aplikace. Jsou striktní zásady a není tolerovat žádné chyby.
 
-Zobrazení clusteru Service Fabric Explorer:
+Zobrazení hello clusteru Service Fabric Explorer:
 
-![Zobrazení clusteru Service Fabric Exploreru.][1]
+![Zobrazení hello clusteru Service Fabric Exploreru.][1]
 
 [1]: ./media/service-fabric-view-entities-aggregated-health/servicefabric-explorer-cluster-health.png
 
@@ -69,47 +69,47 @@ Zobrazení clusteru Service Fabric Explorer:
 >
 
 ## <a name="health-queries"></a>Dotazy na stav
-Service Fabric vystaví dotazů na stav pro každý z podporovaném [typy entit](service-fabric-health-introduction.md#health-entities-and-hierarchy). Je přístupný prostřednictvím rozhraní API pomocí metody na [FabricClient.HealthManager](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet), rutiny prostředí PowerShell a REST. Tyto dotazy vrátí informace o stavu dokončení o entitě: agregovaný stav, události stavu entity, podřízené stavů (v případě potřeby), není v pořádku hodnocení (Pokud je entita není v pořádku) a podřízené objekty stavu statistiky (v případě potřeby).
+Service Fabric zpřístupní dotazů na stav pro každý hello podporované [typy entit](service-fabric-health-introduction.md#health-entities-and-hierarchy). Je přístupný prostřednictvím rozhraní API, pomocí metody na hello [FabricClient.HealthManager](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet), rutiny prostředí PowerShell a REST. Tyto dotazy vrátí informace o hello entity stavu dokončení: hello Agregovat stav, události stavu entity, podřízené stavů (v případě potřeby), není v pořádku hodnocení (Pokud hello entity není v pořádku) a podřízené objekty stavu statistiky (při použít).
 
 > [!NOTE]
-> Stav entity je vrácena, pokud je plně naplněna v health store. Entita musí být aktivní (nebyl odstraněn) a mít sestavy systému. Jeho nadřazený entit na řetězec hierarchie musí mít také sestav systému. Pokud nejsou splněné některé z těchto podmínek, stav vrácena dotazy [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) s [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) `FabricHealthEntityNotFound` který ukazuje, proč se nevrátí entity.
+> Stav entity je vrácena, pokud je plně naplněna v hello health store. Hello entity musí být aktivní (nebyl odstraněn) a mít sestavy systému. Jeho nadřazené entity v řetězu hello hierarchie musí mít také sestav systému. Pokud nejsou splněné některé z těchto podmínek, je vrácena hello stavu dotazy [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) s [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) `FabricHealthEntityNotFound` který ukazuje, proč se nevrátí hello entity.
 >
 >
 
-Dotazy na stav musí předat identifikátor entity, které závisí na typu entity. Dotazy přijmout parametry zásad volitelné stavu. Pokud nejsou zadány žádné zásady stavu, [zásady stavu](service-fabric-health-introduction.md#health-policies) z manifestu clusteru nebo aplikace, které se používají pro vyhodnocení. Pokud manifesty nesmí obsahovat definice pro zásady stavu, výchozích zásad stavu se používají pro vyhodnocení. Výchozí zásady stavu není tolerovat případných selhání. Dotazy taky přijmout filtry pro vrácení pouze částečné podřízených objektů nebo událostí – ty, které respektují určenému filtru. Jiný filtr povoluje, s výjimkou statistik pro podřízené objekty.
+dotazy na stav Hello musí projít identifikátor entity hello, což závisí na typu entity hello. dotazy Hello přijmout parametry zásad volitelné stavu. Pokud nejsou zadány žádné zásady stavu, hello [zásady stavu](service-fabric-health-introduction.md#health-policies) z manifestu clusteru nebo aplikace hello slouží k vyhodnocení. Pokud hello manifesty nesmí obsahovat definice pro zásady stavu, zásady stavu výchozí hello se používají pro vyhodnocení. zásady stavu výchozí Hello není tolerovat případných selhání. dotazy Hello také přijmout filtry pro vrácení pouze částečný podřízené objekty nebo události – hello ty, které jsou respektujících hello zadaných filtrů. Jiný filtr povoluje, s výjimkou statistiky hello podřízené objekty.
 
 > [!NOTE]
-> Výstupní filtry se použijí na straně serveru, takže se snižuje velikost zprávy odpovědi. Doporučujeme vám použít výstupní filtry k omezení s daty vrácenými, že místo použití filtrů na straně klienta.
+> Hello výstupní filtry se použijí na straně serveru hello, tak se snižuje velikost hello zprávy odpovědi. Doporučujeme použít filtry výstup hello toolimit hello data vrácená, ne však použít filtry na straně klienta hello.
 >
 >
 
 Stav entity obsahuje:
 
-* Agregovaný stav entity. Vypočtená podle stavu úložiště, na základě sestav stavu entity, podřízené stavů (v případě potřeby) a zásad stavu. Další informace o [vyhodnocení stavu entity](service-fabric-health-introduction.md#health-evaluation).  
-* Události stavu u entity.
-* Kolekce stavů všechny podřízené objekty pro entity, které může mít podřízené objekty. Stav obsahovat identifikátory entity a agregovaný stav v pořádku. Pokud chcete získat úplný stavu pro podřízenou, volání stavu dotazu pro typ entity podřízené a předat identifikátor podřízené.
-* Není v pořádku hodnocení, které odkazují na sestavu, která aktivuje stav entity, pokud entita není v pořádku. Hodnocení jsou rekurzivní, obsahující hodnocení stavu podřízené objekty, které aktivuje aktuálním stavu. Například sledovací zařízení oznámil chybu pro repliku. Zobrazuje stav aplikace není v pořádku zkušební verzi z důvodu služby není v pořádku; Služba je poškozen z důvodu oddíl v chybě; oddíl je poškozen z důvodu repliku v chybě; replika je poškozen z důvodu sestava stavu chyb sledovací zařízení.
-* Statistika stavu pro všechny podřízené objekty typu entity, které mají podřízené objekty. Například stav clusteru zobrazuje celkový počet aplikací, služeb, oddíly, repliky a nasazení entit v clusteru. Stav služby se zobrazuje celkový počet oddílů a repliky v části zadaná služba.
+* Hello agregován stav entity hello. Vypočtená podle hello stavu úložiště na základě sestav stavu entity, podřízené stavů (v případě potřeby) a zásad stavu. Další informace o [vyhodnocení stavu entity](service-fabric-health-introduction.md#health-evaluation).  
+* události stavu Hello u hello entity.
+* Hello kolekce stavů všechny podřízené objekty pro hello entity, které může mít podřízené objekty. Hello stavů obsahovat identifikátory entity a hello agregovaný stav. dokončení health tooget dítěte, volání stavu hello dotazu pro typ entity podřízené hello a předat hello podřízené identifikátor.
+* Tento bod toohello sestavy, který není v pořádku hodnocení Hello spuštěna hello stavu entity hello, pokud hello entity není v pořádku. hodnocení Hello jsou rekurzivní, obsahující hello podřízené objekty stavu hodnocení, které spouštějí aktuálním stavu. Například sledovací zařízení oznámil chybu pro repliku. Stav aplikace Hello ukazuje, není v pořádku zkušební verzi z důvodu tooan služby není v pořádku; Hello služby není v pořádku kvůli tooa oddílu v chybě; Hello oddílu není v pořádku kvůli tooa repliky v chybě; replika Hello je z důvodu sestava stavu chyb toohello sledovací zařízení není v pořádku.
+* Statistika Hello stavu pro všechny podřízené objekty typu hello entity, které mají podřízené objekty. Například stav clusteru ukazuje hello celkový počet aplikací, služeb, oddíly, repliky a nasadit entity v clusteru hello. Stav služby zobrazí hello celkový počet oddílů a repliky v části hello zadaná služba.
 
 ## <a name="get-cluster-health"></a>Získání stavu clusteru
-Vrátí stav entity clusteru a obsahuje stav aplikací a uzly (podřízené objekty daného clusteru). Vstup:
+Vrátí hello stavu entity hello clusteru a obsahuje hello stavů aplikací a uzly (podřízené objekty daného clusteru hello). Vstup:
 
-* [Nepovinné] Zásady stavu clusteru používá k vyhodnocení uzly a události clusteru.
-* [Nepovinné] Aplikace stavu zásad mapy, pomocí zásad stavu používaná k přepsání zásady manifestu aplikace.
-* [Nepovinné] Filtry pro události, uzly a aplikace, které určí položky, které jsou v zájmu a má být vrácen ve výsledku (například pouze chyby nebo upozornění i chyby). Všechny události, uzly a aplikace se používají k vyhodnocení stavu entity agregován, bez ohledu na to filtr.
-* [Nepovinné] Filtr pro vyloučení statistiky stavu.
-* [Nepovinné] Filtr, který patří fabric: / statistiky stavu systému do stavu statistiky. Platí jenom při statistiky stavu nejsou vyloučení. Ve výchozím stavu statistiky zahrnovat pouze statistiku pro uživatelské aplikace a ne aplikace systému.
+* [Nepovinné] hello zásady stavu clusteru používá tooevaluate hello uzly a události hello clusteru.
+* [Nepovinné] hello mapy zásady stavu aplikace, pomocí zásad stavu hello používá manifestu zásady aplikací toooverride hello.
+* [Nepovinné] Filtry pro události, uzly a aplikace, které určí položky, které jsou v zájmu a má být vrácen ve výsledku hello (například pouze chyby nebo upozornění i chyby). Všechny události, uzly a aplikace jsou stav entity agregovat hello použité tooevaluate, bez ohledu na to hello filtru.
+* [Nepovinné] Filtrujte tooexclude stavu statistiky.
+* [Nepovinné] Filtrovat tooinclude fabric: / statistiky stavu systému v hello statistiky stavu. Platí jenom při nejsou vyloučení hello stavu statistiky. Ve výchozím nastavení hello stavu statistiky obsahuje pouze statistiku pro uživatele aplikace a hello aplikaci systému.
 
 ### <a name="api"></a>Rozhraní API
-Chcete-li získat stav clusteru, vytvořte `FabricClient` a volání [GetClusterHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync) metoda na jeho **HealthManager**.
+tooget clusteru stavu, vytvořte `FabricClient` a volání hello [GetClusterHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync) metoda na jeho **HealthManager**.
 
-Toto volání získá stav clusteru:
+Hello následující volání získá hello clusteru stavu:
 
 ```csharp
 ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthAsync();
 ```
 
-Následující kód získá stav clusteru pomocí zásad stavu vlastní clusteru a filtry pro uzly a aplikace. Se určuje, že statistiky stavu obsahovat topologie fabric: / systému statistiky. Vytvoří [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthquerydescription), který obsahuje vstupní informace.
+Hello následující kód získá stav clusteru hello pomocí zásad stavu vlastní clusteru a filtry pro uzly a aplikace. Se určuje, že hello stavu statistiky obsahovat hello fabric: / System statistiky. Vytvoří [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthquerydescription), který obsahuje vstupní informace hello.
 
 ```csharp
 var policy = new ClusterHealthPolicy()
@@ -141,11 +141,11 @@ ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthA
 ```
 
 ### <a name="powershell"></a>PowerShell
-Rutina se získat stav clusteru je [Get-ServiceFabricClusterHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterhealth). Nejprve se připojte ke clusteru pomocí [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutiny.
+Hello rutiny tooget hello clusteru stav je [Get-ServiceFabricClusterHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterhealth). Nejdřív připojit toohello clusteru pomocí hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutiny.
 
-Stav clusteru je pět uzlů, aplikaci systému a fabric: / WordCount nakonfigurována, jak je popsáno.
+Hello stav clusteru hello je pět uzlů, hello systémová aplikace fabric: / WordCount nakonfigurována, jak je popsáno.
 
-Následující rutiny získá stav clusteru pomocí výchozích zásad stavu. Agregovaný stav je upozornění, protože topologie fabric: / WordCount aplikace je v upozornění. Všimněte si, jak není v pořádku hodnocení poskytují podrobnosti o podmínky, které aktivuje agregovaný stav.
+následující rutina Hello získá stav clusteru pomocí výchozích zásad stavu. Hello agregovaný stav je upozornění, protože hello fabric: / WordCount aplikace je v upozornění. Všimněte si, jak hello není v pořádku hodnocení poskytují podrobnosti o hello podmínky, které aktivuje hello agregovat stavu.
 
 ```xml
 PS D:\ServiceFabric> Get-ServiceFabricClusterHealth
@@ -202,7 +202,7 @@ HealthStatistics        :
                           Application           : 0 Ok, 1 Warning, 0 Error
 ```
 
-Následující rutiny prostředí PowerShell získá stav clusteru s použitím zásad vlastní aplikaci. Filtruje výsledky získat jenom aplikace a uzly ve chyby nebo upozornění. V důsledku toho jsou vráceny žádné uzly, jako jsou všechny v pořádku. Pouze fabric: / WordCount aplikace respektuje filtru aplikací. Protože vlastními zásadami určuje vzít v úvahu upozornění jako chyby pro topologie fabric: / WordCount aplikace, aplikace je vyhodnocena jako chyba, a stejně tak clusteru.
+Hello následující rutiny prostředí PowerShell získá hello stavu hello clusteru pomocí zásad vlastní aplikaci. Filtruje výsledky tooget jenom aplikace a uzly ve chyby nebo upozornění. V důsledku toho jsou vráceny žádné uzly, jako jsou všechny v pořádku. Pouze hello fabric: / aplikace WordCount respektuje filtr aplikace hello. Protože vlastní zásady hello určuje tooconsider upozornění jako chyby pro hello fabric: / WordCount aplikace, aplikace hello je vyhodnocena jako chyba, a stejně tak hello clusteru.
 
 ```powershell
 PS D:\ServiceFabric> $appHealthPolicy = New-Object -TypeName System.Fabric.Health.ApplicationHealthPolicy
@@ -239,25 +239,25 @@ HealthEvents            : None
 ```
 
 ### <a name="rest"></a>REST
-Můžete získat stav clusteru s [požadavek GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster) nebo [požadavek POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-by-using-a-health-policy) zásady stavu, které jsou popsané v textu, který obsahuje.
+Můžete získat stav clusteru s [požadavek GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster) nebo [požadavek POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-by-using-a-health-policy) , který obsahuje zásady stavu, které jsou popsané v textu hello.
 
 ## <a name="get-node-health"></a>Získat stav uzlu
-Vrátí stav uzlu entity a obsahuje události stavu na uzlu. Vstup:
+Vrátí hello stavu uzlu entity a obsahuje události stavu hello ohlášeny hello uzlu. Vstup:
 
-* [Vyžaduje] Název uzlu, který identifikuje uzlu.
-* [Nepovinné] Nastavení pro zásady stavu se cluster, používá k vyhodnocení stavu.
-* [Nepovinné] Filtry pro události, které určují, položky, které jsou v zájmu a má být vrácen ve výsledku (například pouze chyby nebo upozornění i chyby). Všechny události se používají k vyhodnocení stavu entity agregován, bez ohledu na to filtr.
+* Název uzlu hello [požadované], identifikující hello uzlu.
+* Nastavení zásad stavu clusteru [Nepovinné] hello používá tooevaluate stavu.
+* [Nepovinné] Filtry pro události, které určují, položky, které jsou v zájmu a má být vrácen ve výsledku hello (například pouze chyby nebo upozornění i chyby). Všechny události jsou stav entity agregovat hello použité tooevaluate, bez ohledu na to hello filtru.
 
 ### <a name="api"></a>Rozhraní API
-Získat stav uzlu prostřednictvím rozhraní API, vytvoření `FabricClient` a volání [GetNodeHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getnodehealthasync) metoda na jeho HealthManager.
+stav uzlu tooget prostřednictvím hello rozhraní API, vytvoření `FabricClient` a volání hello [GetNodeHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getnodehealthasync) metoda na jeho HealthManager.
 
-Následující kód získá stav uzlu název určeného uzlu:
+Hello následující kód získá stav uzlu hello název zadaný uzel hello:
 
 ```csharp
 NodeHealth nodeHealth = await fabricClient.HealthManager.GetNodeHealthAsync(nodeName);
 ```
 
-Následující kód získá stav uzlu pro název zadaný uzel a předá filtr událostí a vlastní zásady prostřednictvím [NodeHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.nodehealthquerydescription):
+Hello následující kód získá hello uzlu stavu pro hello zadaný název uzlu a předává v filtr událostí a vlastní zásady prostřednictvím [NodeHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.nodehealthquerydescription):
 
 ```csharp
 var queryDescription = new NodeHealthQueryDescription(nodeName)
@@ -270,8 +270,8 @@ NodeHealth nodeHealth = await fabricClient.HealthManager.GetNodeHealthAsync(quer
 ```
 
 ### <a name="powershell"></a>PowerShell
-Rutina se získat stav uzlu je [Get-ServiceFabricNodeHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnodehealth). Nejprve se připojte ke clusteru pomocí [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutiny.
-Následující rutiny získá stav uzlu pomocí výchozích zásad stavu:
+Hello rutiny tooget hello uzlu stav je [Get-ServiceFabricNodeHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnodehealth). Nejdřív připojit toohello clusteru pomocí hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutiny.
+následující rutiny Hello získá stav uzlu hello pomocí výchozí zásady stavu:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricNodeHealth _Node_1
@@ -293,7 +293,7 @@ HealthEvents          :
                         Transitions           : Error->Ok = 7/13/2017 4:40:47 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-Následující rutiny získá stav všech uzlů v clusteru:
+Hello následující rutiny získá hello stav všech uzlů v clusteru hello:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricNode | Get-ServiceFabricNodeHealth | select NodeName, AggregatedHealthState | ft -AutoSize
@@ -308,26 +308,26 @@ _Node_0                     Ok
 ```
 
 ### <a name="rest"></a>REST
-Můžete získat stav uzlu s [požadavek GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node) nebo [požadavek POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node-by-using-a-health-policy) zásady stavu, které jsou popsané v textu, který obsahuje.
+Můžete získat stav uzlu s [požadavek GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node) nebo [požadavek POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node-by-using-a-health-policy) , který obsahuje zásady stavu, které jsou popsané v textu hello.
 
 ## <a name="get-application-health"></a>Získání stavu aplikací
-Vrátí stav entity aplikací. Obsahuje stav nasazení aplikace a služby dětí. Vstup:
+Vrátí stav hello entity aplikací. Obsahuje hello stavů hello nasazené aplikace a služby dětí. Vstup:
 
-* [Vyžaduje] Název aplikace (URI) identifikující aplikace.
-* [Nepovinné] Zásady stavu aplikace používaná k přepsání zásady manifestu aplikace.
-* [Nepovinné] Filtry pro událostí, služeb a nasazené aplikace, které určují, položky, které jsou v zájmu a má být vrácen ve výsledku (například pouze chyby nebo upozornění i chyby). Všechny události, služby a nasazené aplikace se používají k vyhodnocení stavu entity agregován, bez ohledu na to filtr.
-* [Nepovinné] Filtr pro vyloučení statistiky stavu. Pokud není zadaný, zahrnují statistiky stavu ok, upozornění a počet chyb pro všechny aplikace, děti: nasazené aplikace služby, oddíly, repliky a nasazené balíčky služeb.
+* [Požadované] hello název aplikace (URI) identifikující aplikace hello.
+* [Nepovinné] hello zásady stavu aplikace použít manifestu zásady aplikací toooverride hello.
+* [Nepovinné] Filtry pro událostí, služeb a nasazené aplikace, které určují, položky, které jsou v zájmu a má být vrácen ve výsledku hello (například pouze chyby nebo upozornění i chyby). Všechny události, služby a nasazené aplikace jsou stav entity agregovat hello použité tooevaluate, bez ohledu na to hello filtru.
+* [Nepovinné] Filtrujte tooexclude hello stavu statistiky. Pokud není zadaný, zahrnují hello stavu statistiky hello ok, upozornění a počet chyb pro všechny aplikace, děti: nasazené aplikace služby, oddíly, repliky a nasazené balíčky služeb.
 
 ### <a name="api"></a>Rozhraní API
-Pokud chcete získat stav aplikací, vytvoření `FabricClient` a volání [GetApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getapplicationhealthasync) metoda na jeho HealthManager.
+Stav aplikace tooget, vytvořit `FabricClient` a volání hello [GetApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getapplicationhealthasync) metodu na jeho HealthManager.
 
-Následující kód získá stav aplikace pro zadaný název aplikace (URI):
+Hello následující kód získá stav aplikace hello hello zadaný název aplikace (URI):
 
 ```csharp
 ApplicationHealth applicationHealth = await fabricClient.HealthManager.GetApplicationHealthAsync(applicationName);
 ```
 
-Následující kód získá stav aplikace pro zadaný název aplikace (URI), s filtry a vlastní zásady zadaný prostřednictvím [ApplicationHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationhealthquerydescription).
+Hello následující kód získá stav aplikace hello hello zadaný název aplikace (URI), s filtry a vlastní zásady zadaný prostřednictvím [ApplicationHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationhealthquerydescription).
 
 ```csharp
 HealthStateFilter warningAndErrors = HealthStateFilter.Error | HealthStateFilter.Warning;
@@ -356,9 +356,9 @@ ApplicationHealth applicationHealth = await fabricClient.HealthManager.GetApplic
 ```
 
 ### <a name="powershell"></a>PowerShell
-Rutina se získat stav aplikace je [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps). Nejprve se připojte ke clusteru pomocí [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutiny.
+Stav aplikací Hello rutiny tooget hello je [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps). Nejdřív připojit toohello clusteru pomocí hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutiny.
 
-Následující rutina vrátí stav **fabric: / WordCount** aplikace:
+Hello následující rutina vrátí stav hello hello **fabric: / WordCount** aplikace:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricApplicationHealth fabric:/WordCount
@@ -426,7 +426,7 @@ HealthStatistics                :
                                   DeployedApplication   : 5 Ok, 0 Warning, 0 Error
 ```
 
-Následující rutiny prostředí PowerShell předá do vlastní zásady. Také filtry, děti a události.
+Hello následující předává rutiny prostředí PowerShell v vlastní zásady. Také filtry, děti a události.
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricApplicationHealth -ApplicationName fabric:/WordCount -ConsiderWarningAsError $true -ServicesFilter Error -EventsFilter Error -DeployedApplicationsFilter Error -ExcludeHealthStatistics
@@ -454,26 +454,26 @@ HealthEvents                    : None
 ```
 
 ### <a name="rest"></a>REST
-Můžete získat stav aplikací s [požadavek GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application) nebo [požadavek POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application-by-using-an-application-health-policy) zásady stavu, které jsou popsané v textu, který obsahuje.
+Můžete získat stav aplikací s [požadavek GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application) nebo [požadavek POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application-by-using-an-application-health-policy) , který obsahuje zásady stavu, které jsou popsané v textu hello.
 
 ## <a name="get-service-health"></a>Získání stavu služby
-Vrátí stav entity služby. Obsahuje stav oddílu. Vstup:
+Vrátí stav hello entity služby. Obsahuje hello oddílu stavů. Vstup:
 
-* [Vyžaduje] Název služby (URI), který určuje služba.
-* [Nepovinné] Zásady stavu aplikace používaná k přepsání zásady manifestu aplikace.
-* [Nepovinné] Filtry pro události a oddíly, které určují, položky, které jsou v zájmu a má být vrácen ve výsledku (například pouze chyby nebo upozornění i chyby). Všechny události a oddíly, které se používají k vyhodnocení stavu entity agregován, bez ohledu na to filtr.
-* [Nepovinné] Filtr pro vyloučení statistiky stavu. Není-li zadána, zobrazují statistiky stavu ok, upozornění, a počet chyb pro všechny oddíly a repliky služby.
+* [Požadované] hello název služby (URI) identifikující hello služby.
+* [Nepovinné] hello zásady stavu aplikace použít toooverride hello aplikace manifestu zásad.
+* [Nepovinné] Filtry pro události a oddíly, které určují, položky, které jsou v zájmu a má být vrácen ve výsledku hello (například pouze chyby nebo upozornění i chyby). Všechny události a oddíly, které jsou používané tooevaluate hello entity agregovat stavu, bez ohledu na to hello filtru.
+* [Nepovinné] Filtrujte tooexclude stavu statistiky. Pokud není zadaný, hello stavu statistiky zobrazit hello ok, upozornění a chyb počet pro všechny oddíly a repliky služby hello.
 
 ### <a name="api"></a>Rozhraní API
-Získat stav služby prostřednictvím rozhraní API, vytvoření `FabricClient` a volání [GetServiceHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getservicehealthasync) metoda na jeho HealthManager.
+Stav služby tooget prostřednictvím hello rozhraní API, vytvoření `FabricClient` a volání hello [GetServiceHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getservicehealthasync) metoda na jeho HealthManager.
 
-Následující příklad načte stav služby pomocí zadaného názvu služby (URI):
+Hello následující příklad načte hello stav služby pomocí zadaného názvu služby (URI):
 
 ```charp
 ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthAsync(serviceName);
 ```
 
-Následující kód získá stav služby pro zadaný název služby (URI), filtrů a vlastní zásady prostřednictvím [ServiceHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicehealthquerydescription):
+Hello následující kód získá hello stavu služby pro hello zadaný název služby (URI), filtrů a vlastní zásady prostřednictvím [ServiceHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicehealthquerydescription):
 
 ```csharp
 var queryDescription = new ServiceHealthQueryDescription(serviceName)
@@ -486,9 +486,9 @@ ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthA
 ```
 
 ### <a name="powershell"></a>PowerShell
-Rutina se získat stav služby je [Get-ServiceFabricServiceHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricservicehealth). Nejprve se připojte ke clusteru pomocí [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutiny.
+Stav služby Hello rutiny tooget hello je [Get-ServiceFabricServiceHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricservicehealth). Nejdřív připojit toohello clusteru pomocí hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutiny.
 
-Následující rutiny získá stav služby pomocí výchozích zásad stavu:
+následující rutiny Hello získá stav služby hello pomocí výchozích zásad stavu:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricServiceHealth -ServiceName fabric:/WordCount/WordCountService
@@ -526,27 +526,27 @@ HealthStatistics      :
 ```
 
 ### <a name="rest"></a>REST
-Můžete získat stav služby s [požadavek GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service) nebo [požadavek POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-by-using-a-health-policy) zásady stavu, které jsou popsané v textu, který obsahuje.
+Můžete získat stav služby s [požadavek GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service) nebo [požadavek POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-by-using-a-health-policy) , který obsahuje zásady stavu, které jsou popsané v textu hello.
 
 ## <a name="get-partition-health"></a>Získání stavu oddílu
-Vrátí stav entity oddílu. Obsahuje stav repliky. Vstup:
+Vrátí stav hello oddílu entity. Obsahuje hello repliky stavů. Vstup:
 
-* [Vyžaduje] Oddíl ID (GUID), který identifikuje oddílu.
-* [Nepovinné] Zásady stavu aplikace používaná k přepsání zásady manifestu aplikace.
-* [Nepovinné] Filtry pro události a repliky, které určují, položky, které jsou v zájmu a má být vrácen ve výsledku (například pouze chyby nebo upozornění i chyby). Všechny události a repliky se používají k vyhodnocení stavu entity agregován, bez ohledu na to filtr.
-* [Nepovinné] Filtr pro vyloučení statistiky stavu. Pokud není zadaný, stavu statistiky zobrazit, kolik repliky byly ve ok, upozornění a chybové stavy.
+* Oddíl [požadované] hello ID (GUID), který identifikuje hello oddílu.
+* [Nepovinné] hello zásady stavu aplikace použít toooverride hello aplikace manifestu zásad.
+* [Nepovinné] Filtry pro události a repliky, které určují, položky, které jsou v zájmu a má být vrácen ve výsledku hello (například pouze chyby nebo upozornění i chyby). Všechny události a repliky jsou stav entity agregovat hello použité tooevaluate, bez ohledu na to hello filtru.
+* [Nepovinné] Filtrujte tooexclude stavu statistiky. Pokud není zadaný, hello stavu statistiky zobrazit, kolik repliky byly ve ok, upozornění a chybové stavy.
 
 ### <a name="api"></a>Rozhraní API
-Získat stav oddílu prostřednictvím rozhraní API, vytvoření `FabricClient` a volání [GetPartitionHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getpartitionhealthasync) metoda na jeho HealthManager. Chcete-li zadat volitelné parametry, vytvořte [PartitionHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.partitionhealthquerydescription).
+Vytvoření stavu oddílu tooget prostřednictvím hello rozhraní API, `FabricClient` a volání hello [GetPartitionHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getpartitionhealthasync) metoda na jeho HealthManager. toospecify volitelné parametry, vytvořte [PartitionHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.partitionhealthquerydescription).
 
 ```csharp
 PartitionHealth partitionHealth = await fabricClient.HealthManager.GetPartitionHealthAsync(partitionId);
 ```
 
 ### <a name="powershell"></a>PowerShell
-Rutina se získat stav oddílu je [Get-ServiceFabricPartitionHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricpartitionhealth). Nejprve se připojte ke clusteru pomocí [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutiny.
+Hello rutiny tooget hello oddílu stav je [Get-ServiceFabricPartitionHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricpartitionhealth). Nejdřív připojit toohello clusteru pomocí hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutiny.
 
-Následující rutiny získá stav pro všechny oddíly **fabric: / WordCount/WordCountService** služby a filtry se stavy repliky:
+Hello následující rutiny získá hello stavu pro všechny oddíly hello **fabric: / WordCount/WordCountService** služby a filtry se stavy repliky:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasFilter None
@@ -585,8 +585,8 @@ HealthEvents          :
                         SentAt                : 7/13/2017 6:35:17 PM
                         ReceivedAt            : 7/13/2017 6:35:18 PM
                         TTL                   : 00:01:05
-                        Description           : The Load Balancer was unable to find a placement for one or more of the Service's Replicas:
-                        Secondary replica could not be placed due to the following constraints and properties:  
+                        Description           : hello Load Balancer was unable toofind a placement for one or more of hello Service's Replicas:
+                        Secondary replica could not be placed due toohello following constraints and properties:  
                         TargetReplicaSetSize: 7
                         Placement Constraint: N/A
                         Parent Service: N/A
@@ -618,26 +618,26 @@ HealthStatistics      :
 ```
 
 ### <a name="rest"></a>REST
-Můžete získat stav oddílu s [požadavek GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition) nebo [požadavek POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition-by-using-a-health-policy) zásady stavu, které jsou popsané v textu, který obsahuje.
+Můžete získat stav oddílu s [požadavek GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition) nebo [požadavek POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition-by-using-a-health-policy) , který obsahuje zásady stavu, které jsou popsané v textu hello.
 
 ## <a name="get-replica-health"></a>Získání stavu repliky
-Vrátí stav repliky stavové služby nebo instance bezstavové služby. Vstup:
+Vrátí stav hello repliku stavové služby nebo instance bezstavové služby. Vstup:
 
-* [Vyžaduje] ID (GUID) a repliky ID oddílu identifikující repliky.
-* [Nepovinné] Parametry pro zásady stavu se aplikace, používaná k přepsání zásady manifestu aplikace.
-* [Nepovinné] Filtry pro události, které určují, položky, které jsou v zájmu a má být vrácen ve výsledku (například pouze chyby nebo upozornění i chyby). Všechny události se používají k vyhodnocení stavu entity agregován, bez ohledu na to filtr.
+* [Požadované] hello ID (GUID) a repliky ID oddílu identifikující hello repliky.
+* Parametry zásady stavu aplikace [Nepovinné] hello používá manifestu zásady aplikací toooverride hello.
+* [Nepovinné] Filtry pro události, které určují, položky, které jsou v zájmu a má být vrácen ve výsledku hello (například pouze chyby nebo upozornění i chyby). Všechny události jsou stav entity agregovat hello použité tooevaluate, bez ohledu na to hello filtru.
 
 ### <a name="api"></a>Rozhraní API
-Získat stav repliky prostřednictvím rozhraní API, vytvoření `FabricClient` a volání [GetReplicaHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getreplicahealthasync) metoda na jeho HealthManager. Pokud chcete zadat upřesňující parametry, použijte [ReplicaHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.replicahealthquerydescription).
+Vytvoření stavu repliky hello tooget prostřednictvím hello rozhraní API, `FabricClient` a volání hello [GetReplicaHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getreplicahealthasync) metoda na jeho HealthManager. toospecify advanced parametrů, použijte [ReplicaHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.replicahealthquerydescription).
 
 ```csharp
 ReplicaHealth replicaHealth = await fabricClient.HealthManager.GetReplicaHealthAsync(partitionId, replicaId);
 ```
 
 ### <a name="powershell"></a>PowerShell
-Rutina se získat stav repliky je [Get-ServiceFabricReplicaHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricreplicahealth). Nejprve se připojte ke clusteru pomocí [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutiny.
+Hello rutiny tooget hello repliky stav je [Get-ServiceFabricReplicaHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricreplicahealth). Nejdřív připojit toohello clusteru pomocí hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutiny.
 
-Následující rutiny získá stav primární repliky pro všechny oddíly služby:
+Hello následující rutiny získá stav hello hello primární repliky pro všechny oddíly hello služby:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricReplica | where {$_.ReplicaRole -eq "Primary"} | Get-ServiceFabricReplicaHealth
@@ -661,18 +661,18 @@ HealthEvents          :
 ```
 
 ### <a name="rest"></a>REST
-Můžete získat stav repliky se [požadavek GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica) nebo [požadavek POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica-by-using-a-health-policy) zásady stavu, které jsou popsané v textu, který obsahuje.
+Můžete získat stav repliky se [požadavek GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica) nebo [požadavek POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica-by-using-a-health-policy) , který obsahuje zásady stavu, které jsou popsané v textu hello.
 
 ## <a name="get-deployed-application-health"></a>Získat stav nasazení aplikace
-Vrátí stav aplikace nasazené na uzlu entity. Obsahuje stav balíčku nasazené služby. Vstup:
+Vrátí stav hello aplikace nasazené na uzlu entity. Obsahuje stav balíčku hello nasazené služby. Vstup:
 
-* [Vyžaduje] Název aplikace (URI) a název uzlu (string) identifikují nasazené aplikace.
-* [Nepovinné] Zásady stavu aplikace používaná k přepsání zásady manifestu aplikace.
-* [Nepovinné] Filtry pro události a nasazené služby balíčky, které určují, položky, které jsou v zájmu a má být vrácen ve výsledku (například pouze chyby nebo upozornění i chyby). Všechny události a nasazené balíčky služeb se používají k vyhodnocení stavu entity agregován, bez ohledu na to filtr.
-* [Nepovinné] Filtr pro vyloučení statistiky stavu. Pokud není zadaný, stavu statistiky zobrazit počet nasazené balíčky služeb v ok, upozornění a chybové stavy.
+* Název aplikace [požadované] hello (URI) a název uzlu (string), které identifikují hello nasazené aplikace.
+* [Nepovinné] hello zásady stavu aplikace použít manifestu zásady aplikací toooverride hello.
+* [Nepovinné] Filtry pro události a nasazené služby balíčky, které určují, položky, které jsou v zájmu a má být vrácen ve výsledku hello (například pouze chyby nebo upozornění i chyby). Všechny události a nasazené balíčky služeb se stav entity agregovat hello použité tooevaluate, bez ohledu na to hello filtru.
+* [Nepovinné] Filtrujte tooexclude stavu statistiky. Pokud není zadaný, zobrazit hello stavu statistiky hello počet nasazené balíčky služeb v ok, upozornění a chybové stavy.
 
 ### <a name="api"></a>Rozhraní API
-Pokud chcete získat stav aplikace nasazené na uzlu prostřednictvím rozhraní API, vytvoření `FabricClient` a volání [GetDeployedApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedapplicationhealthasync) metoda na jeho HealthManager. Pokud chcete zadat volitelné parametry, použijte [DeployedApplicationHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedapplicationhealthquerydescription).
+Vytvoření tooget hello stavu aplikace nasazené na uzlu prostřednictvím hello rozhraní API, `FabricClient` a volání hello [GetDeployedApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedapplicationhealthasync) metoda na jeho HealthManager. Volitelné parametry toospecify, použijte [DeployedApplicationHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedapplicationhealthquerydescription).
 
 ```csharp
 DeployedApplicationHealth health = await fabricClient.HealthManager.GetDeployedApplicationHealthAsync(
@@ -680,9 +680,9 @@ DeployedApplicationHealth health = await fabricClient.HealthManager.GetDeployedA
 ```
 
 ### <a name="powershell"></a>PowerShell
-Rutina se získat stav nasazení aplikace je [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps). Nejprve se připojte ke clusteru pomocí [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutiny. Chcete-li zjistit, kde je aplikace nasazena, spusťte [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) a prohlédněte si podřízené objekty nasazené aplikace.
+Hello rutiny tooget hello nasazené aplikace stav je [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps). Nejdřív připojit toohello clusteru pomocí hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutiny. Spustit toofind, na kterém je aplikace nasazena, [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) a podívejte se na hello nasazené aplikace podřízené objekty.
 
-Následující rutiny získá stav **fabric: / WordCount** aplikace nasazené na **to uzel _Node_2**.
+Hello následující rutiny získá stav hello hello **fabric: / WordCount** aplikace nasazené na **to uzel _Node_2**.
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricDeployedApplicationHealth -ApplicationName fabric:/WordCount -NodeName _Node_0
@@ -710,7 +710,7 @@ HealthEvents                       :
                                      SentAt                : 7/13/2017 5:57:06 PM
                                      ReceivedAt            : 7/13/2017 5:57:17 PM
                                      TTL                   : Infinite
-                                     Description           : The application was activated successfully.
+                                     Description           : hello application was activated successfully.
                                      RemoveWhenExpired     : False
                                      IsExpired             : False
                                      Transitions           : Error->Ok = 7/13/2017 5:57:17 PM, LastWarning = 1/1/0001 12:00:00 AM
@@ -720,17 +720,17 @@ HealthStatistics                   :
 ```
 
 ### <a name="rest"></a>REST
-Můžete získat stav nasazení aplikace s [požadavek GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application) nebo [požadavek POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application-by-using-a-health-policy) zásady stavu, které jsou popsané v textu, který obsahuje.
+Můžete získat stav nasazení aplikace s [požadavek GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application) nebo [požadavek POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application-by-using-a-health-policy) , který obsahuje zásady stavu, které jsou popsané v textu hello.
 
 ## <a name="get-deployed-service-package-health"></a>Získat stav balíčku nasazené služby
-Vrátí stav entity balíček nasazené služby. Vstup:
+Vrátí hello stavu entity balíček nasazené služby. Vstup:
 
-* [Vyžaduje] Název aplikace (URI), název uzlu (string) a service manifest název (string), který identifikovat balíček nasazené služby.
-* [Nepovinné] Zásady stavu aplikace používaná k přepsání zásady manifestu aplikace.
-* [Nepovinné] Filtry pro události, které určují, položky, které jsou v zájmu a má být vrácen ve výsledku (například pouze chyby nebo upozornění i chyby). Všechny události se používají k vyhodnocení stavu entity agregován, bez ohledu na to filtr.
+* Název aplikace [požadované] hello (URI), název uzlu (string) a manifestu název služby (string), které identifikují hello nasadit balíček služby.
+* [Nepovinné] hello zásady stavu aplikace použít toooverride hello aplikace manifestu zásad.
+* [Nepovinné] Filtry pro události, které určují, položky, které jsou v zájmu a má být vrácen ve výsledku hello (například pouze chyby nebo upozornění i chyby). Všechny události jsou stav entity agregovat hello použité tooevaluate, bez ohledu na to hello filtru.
 
 ### <a name="api"></a>Rozhraní API
-Získat stav balíčku nasazené služby prostřednictvím rozhraní API, vytvoření `FabricClient` a volání [GetDeployedServicePackageHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedservicepackagehealthasync) metoda na jeho HealthManager. Pokud chcete zadat volitelné parametry, použijte [DeployedServicePackageHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedservicepackagehealthquerydescription).
+Vytvoření tooget hello stavu balíčku nasazené služby prostřednictvím hello rozhraní API, `FabricClient` a volání hello [GetDeployedServicePackageHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedservicepackagehealthasync) metoda na jeho HealthManager. Volitelné parametry toospecify, použijte [DeployedServicePackageHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedservicepackagehealthquerydescription).
 
 ```csharp
 DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeployedServicePackageHealthAsync(
@@ -738,9 +738,9 @@ DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeploy
 ```
 
 ### <a name="powershell"></a>PowerShell
-Rutina se získat stav balíčku nasazenou službu je [Get-ServiceFabricDeployedServicePackageHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth). Nejprve se připojte ke clusteru pomocí [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutiny. Pokud chcete zjistit, kde je aplikace nasazena, spusťte [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) a prohlédněte si nasazené aplikace. Pokud chcete zjistit, které služby jsou balíčky v aplikaci, podívejte se na podřízené balíček nasazené služby v [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) výstup.
+Hello rutiny tooget hello nasazené služby balíček stav je [Get-ServiceFabricDeployedServicePackageHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth). Nejdřív připojit toohello clusteru pomocí hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutiny. Spustit toosee, kde je aplikace nasazena, [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) a prohlédněte si hello nasazené aplikace. toosee, které balíčky služeb jsou v aplikaci, vyhledejte v hello nasazené služby balíček dětech do hello [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) výstup.
 
-Následující rutiny získá stav **WordCountServicePkg** balíček služby **fabric: / WordCount** aplikace nasazené na **to uzel _Node_2**. Entita, která má **System.Hosting** sestavy pro úspěšné aktivaci balíček služby a vstupní bod a úspěšnou registraci typ služby.
+Hello následující rutiny získá stav hello hello **WordCountServicePkg** balíček služby hello **fabric: / WordCount** aplikace nasazené na **to uzel _Node_2**. Hello entita má **System.Hosting** sestavy pro úspěšné aktivaci balíček služby a vstupní bod a úspěšnou registraci typ služby.
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricDeployedApplication -ApplicationName fabric:/WordCount -NodeName _Node_2 | Get-ServiceFabricDeployedServicePackageHealth -ServiceManifestName WordCountServicePkg
@@ -759,7 +759,7 @@ HealthEvents               :
                              SentAt                : 7/13/2017 5:57:06 PM
                              ReceivedAt            : 7/13/2017 5:57:18 PM
                              TTL                   : Infinite
-                             Description           : The ServicePackage was activated successfully.
+                             Description           : hello ServicePackage was activated successfully.
                              RemoveWhenExpired     : False
                              IsExpired             : False
                              Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
@@ -771,7 +771,7 @@ HealthEvents               :
                              SentAt                : 7/13/2017 5:57:06 PM
                              ReceivedAt            : 7/13/2017 5:57:18 PM
                              TTL                   : Infinite
-                             Description           : The CodePackage was activated successfully.
+                             Description           : hello CodePackage was activated successfully.
                              RemoveWhenExpired     : False
                              IsExpired             : False
                              Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
@@ -783,51 +783,51 @@ HealthEvents               :
                              SentAt                : 7/13/2017 5:57:07 PM
                              ReceivedAt            : 7/13/2017 5:57:18 PM
                              TTL                   : Infinite
-                             Description           : The ServiceType was registered successfully.
+                             Description           : hello ServiceType was registered successfully.
                              RemoveWhenExpired     : False
                              IsExpired             : False
                              Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
 ### <a name="rest"></a>REST
-Můžete získat stav balíčku nasazené služby s [požadavek GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package) nebo [požadavek POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package-by-using-a-health-policy) zásady stavu, které jsou popsané v textu, který obsahuje.
+Můžete získat stav balíčku nasazené služby s [požadavek GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package) nebo [požadavek POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package-by-using-a-health-policy) , který obsahuje zásady stavu, které jsou popsané v textu hello.
 
 ## <a name="health-chunk-queries"></a>Dotazy na stav bloku
-Dotazy bloku stavu může vrátit podřízené víceúrovňovou clusteru (rekurzivně), za vstupní filtry. Podporuje rozšířené filtry, které umožňují značnou flexibilitu při volbě podřízených má být vrácen. Jedinečný identifikátor nebo jiné skupiny nebo stavy, můžete zadat filtry podřízené objekty. Ve výchozím nastavení žádné podřízené objekty jsou zahrnuty, oproti stavu příkazy, které vždy zahrnovat první úrovně podřízené objekty.
+Hello stavu bloku dotazy mohou vracet podřízené víceúrovňovou clusteru (rekurzivně), za vstupní filtry. Podporuje rozšířené filtry, které umožňují značnou flexibilitu při volbě hello, děti toobe vrátila. hello jedinečný identifikátor nebo jiné skupiny nebo stavy, můžete zadat filtry Hello podřízené objekty. Ve výchozím nastavení žádné podřízené objekty jsou zahrnuty jako názvem na rozdíl od toohealth příkazy, které vždy zahrnovat první úrovně podřízené objekty.
 
-[Dotazů na stav](service-fabric-view-entities-aggregated-health.md#health-queries) vrátit pouze první úroveň podřízených prvků zadanou entitu za požadované filtry. Získat podřízený element pro podřízené objekty, musí volat další stavu rozhraní API pro každé entity, které vás zajímají. Podobně se získat stav konkrétní entity, musí volat jednoho stavu rozhraní API pro každou požadovanou entitu. Dotaz bloku advanced filtrování umožňuje požadovat více položek, které vás zajímají v jednom dotazu, minimalizovat velikost zprávy a počet zpráv.
+Hello [dotazů na stav](service-fabric-view-entities-aggregated-health.md#health-queries) návratový pouze první úroveň podřízených prvků hello zadané entity na požadované filtry. podřízené objekty hello tooget hello podřízených prvků, musí volat další stavu rozhraní API pro každé entity, které vás zajímají. Podobně tooget hello stav konkrétní entit, je třeba zavolat jednoho stavu rozhraní API pro každou požadovanou entitu. Hello bloku dotazu rozšířené filtrování vám umožní toorequest více položek, které vás zajímají v jednom dotazu, minimalizovat velikost zprávy hello a hello počet zpráv.
 
-Hodnota dotazu bloku je, že můžete získat stav pro další clusteru entity (potenciálně všechny clusteru entity začínající na požadovaný kořenový) v jednom volání. Komplexní stavu dotazu lze vyjádřit jako:
+Hodnota Hello hello bloku dotazu je, že můžete získat stav pro další clusteru entity (potenciálně všechny clusteru entity začínající na požadovaný kořenový) v jednom volání. Komplexní stavu dotazu lze vyjádřit jako:
 
 * Návratový pouze aplikace, které jsou v chybě a pro tyto aplikace zahrnout všechny služby upozornění nebo chyby. Vrácených služeb zahrnují všechny oddíly.
-* Vrátí pouze stav čtyři aplikací, určeného jejich názvy.
-* Vrátí pouze stav aplikací typu požadované aplikace.
-* Vrátí všechny nasazené entity na uzlu. Vrátí všechny aplikace, všechny nasazené aplikace v určeném uzlu a všech balíčků nasazené služby v tomto uzlu.
+* Vrátí pouze hello stav čtyři aplikací, určeného jejich názvy.
+* Vrátí pouze hello stav aplikací typu požadované aplikace.
+* Vrátí všechny nasazené entity na uzlu. Vrátí všechny aplikace, všechny nasazené aplikace v hello zadaný uzel a všechny hello nasazené balíčky služeb v tomto uzlu.
 * Vrátí všechny repliky v chybě. Vrátí všechny aplikace, služby, oddíly a pouze repliky v chybě.
 * Vrátí všechny aplikace. Zadaná služba zahrnují všechny oddíly.
 
-V současné době dotazu bloku stavu je vystaven pouze pro entitu clusteru. Vrátí bloku stavu clusteru, který obsahuje:
+V současné době dotazu bloku hello stavu je vystaven pouze pro entitu hello clusteru. Vrátí bloku stavu clusteru, který obsahuje:
 
-* Stav clusteru agregovat.
-* Stav stavu bloku seznam uzlů, které respektují vstupní filtry.
-* Stav seznam bloků dat stavu aplikací, které respektují vstupní filtry. Každého bloku stavu stavu aplikace obsahuje seznam bloků dat u všech služeb, které respektují vstupní filtry a seznam bloků dat s všechny nasazené aplikace, které respektují filtry. Stejný pro děti služeb a nasazené aplikace. Tímto způsobem všechny entity v clusteru se může potenciálně vracet Pokud vyžaduje, je hierarchický.
+* Hello clusteru agregován stavu.
+* Hello stavu stavu bloku seznam uzlů, které respektují vstupní filtry.
+* Hello stavu stavu bloku seznam aplikací, které respektují vstupní filtry. Každého bloku stavu stavu aplikace obsahuje seznam bloků dat u všech služeb, které respektují vstupní filtry a seznam bloků dat s všechny nasazené aplikace, které respektují hello filtry. Stejný pro děti hello služeb a nasazené aplikace. Tímto způsobem všechny entity v clusteru hello se může potenciálně vracet Pokud vyžaduje, je hierarchický.
 
 ### <a name="cluster-health-chunk-query"></a>Dotaz bloku stavu clusteru
-Vrátí stav entity clusteru a obsahuje hierarchické stavu bloky dat stavu požadované podřízených prvků. Vstup:
+Vrátí hello stavu entity hello clusteru a obsahuje hello hierarchické stavu stavu bloky požadované podřízených prvků. Vstup:
 
-* [Nepovinné] Zásady stavu clusteru používá k vyhodnocení uzly a události clusteru.
-* [Nepovinné] Aplikace stavu zásad mapy, pomocí zásad stavu používaná k přepsání zásady manifestu aplikace.
-* [Nepovinné] Filtry pro uzly a aplikace, které určí položky, které jsou v zájmu a má být vrácen ve výsledku. Filtry jsou specifické pro entity nebo skupinu entit nebo platí pro všechny entity na této úrovni. Seznam filtrů může obsahovat jeden obecné filtr a filtry pro konkrétní identifikátory na entity důkladnou vrácených dotazem. Pokud je prázdný, nebudou zobrazeny podřízené objekty ve výchozím nastavení.
-  Další informace o filtrů při [NodeHealthStateFilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.nodehealthstatefilter) a [ApplicationHealthStateFilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthstatefilter). Rekurzivní aplikace filtry můžete zadat rozšířené filtry pro děti.
+* [Nepovinné] hello zásady stavu clusteru používá tooevaluate hello uzly a události hello clusteru.
+* [Nepovinné] hello mapy zásady stavu aplikace, pomocí zásad stavu hello používá manifestu zásady aplikací toooverride hello.
+* [Nepovinné] Filtry pro uzly a aplikace, které určí položky, které jsou v zájmu a má být vrácen ve výsledku hello. Hello filtry jsou konkrétní tooan entity nebo skupiny entit nebo použít tooall entity na této úrovni. Hello seznam filtrů může obsahovat jeden obecné filtr a filtry pro konkrétní identifikátory toofine intervalem entity vrácené dotazem hello. Pokud je prázdný, děti hello nebudou zobrazeny ve výchozím nastavení.
+  Další informace o hello filtrů při [NodeHealthStateFilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.nodehealthstatefilter) a [ApplicationHealthStateFilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthstatefilter). rekurzivní může filtry aplikace Hello zadejte rozšířené filtry pro děti.
 
-Výsledek datových dávek obsahuje podřízené položky, které respektují filtry.
+výsledek bloku Hello zahrnuje hello podřízené objekty, které respektují hello filtry.
 
-V současné době bloku dotaz nevrátí, není v pořádku hodnocení nebo události entity. Tyto doplňující informace lze získat pomocí existující dotaz stavu clusteru.
+V současné době hello bloku dotaz nevrátí, není v pořádku hodnocení nebo události entity. Tyto doplňující informace lze získat pomocí hello existující cluster stavu dotaz.
 
 ### <a name="api"></a>Rozhraní API
-Chcete-li získat clusteru stavu bloku, vytvořit `FabricClient` a volání [GetClusterHealthChunkAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync) metoda na jeho **HealthManager**. Abyste mohli předávat [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthchunkquerydescription) k popisu zásady stavu a rozšířené filtry.
+stav clusteru tooget bloku dat, vytvořte `FabricClient` a volání hello [GetClusterHealthChunkAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync) metoda na jeho **HealthManager**. Abyste mohli předávat [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthchunkquerydescription) toodescribe stavu zásad a rozšířené filtry.
 
-Následující kód získá bloku stavu clusteru se rozšířené filtry.
+Hello následující kód získá bloku stavu clusteru se rozšířené filtry.
 
 ```csharp
 var queryDescription = new ClusterHealthChunkQueryDescription();
@@ -857,7 +857,7 @@ var wordCountServiceFilter = new ServiceHealthStateFilter()
 };
 wordCountServiceFilter.PartitionFilters.Add(wordCountServicePartitionFilter);
 
-// Application filter: for specific application, return no services except the ones of interest
+// Application filter: for specific application, return no services except hello ones of interest
 var wordCountApplicationFilter = new ApplicationHealthStateFilter()
     {
         // Always return fabric:/WordCount application
@@ -871,9 +871,9 @@ var result = await fabricClient.HealthManager.GetClusterHealthChunkAsync(queryDe
 ```
 
 ### <a name="powershell"></a>PowerShell
-Rutina se získat stav clusteru je [Get-ServiceFabricClusterChunkHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterhealthchunk). Nejprve se připojte ke clusteru pomocí [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutiny.
+Hello rutiny tooget hello clusteru stav je [Get-ServiceFabricClusterChunkHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterhealthchunk). Nejdřív připojit toohello clusteru pomocí hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) rutiny.
 
-Následující kód získá uzly pouze v případě, že se chyba s výjimkou konkrétním uzlu, který má být vždy vrácen.
+Hello následující kód získá uzly pouze v případě, že se chyba s výjimkou konkrétním uzlu, který má být vždy vrácen.
 
 ```xml
 PS D:\ServiceFabric> $errorFilter = [System.Fabric.Health.HealthStateFilter]::Error;
@@ -881,7 +881,7 @@ $allFilter = [System.Fabric.Health.HealthStateFilter]::All;
 
 $nodeFilter1 = New-Object System.Fabric.Health.NodeHealthStateFilter -Property @{HealthStateFilter=$errorFilter}
 $nodeFilter2 = New-Object System.Fabric.Health.NodeHealthStateFilter -Property @{NodeNameFilter="_Node_1";HealthStateFilter=$allFilter}
-# Create node filter list that will be passed in the cmdlet
+# Create node filter list that will be passed in hello cmdlet
 $nodeFilters = New-Object System.Collections.Generic.List[System.Fabric.Health.NodeHealthStateFilter]
 $nodeFilters.Add($nodeFilter1)
 $nodeFilters.Add($nodeFilter2)
@@ -899,7 +899,7 @@ NodeHealthStateChunks        :
 ApplicationHealthStateChunks : None
 ```
 
-Následující rutiny získá clusteru bloku s filtry aplikace.
+následující rutiny Hello získá clusteru bloku s filtry aplikace.
 
 ```xml
 PS D:\ServiceFabric> $errorFilter = [System.Fabric.Health.HealthStateFilter]::Error;
@@ -965,7 +965,7 @@ ApplicationHealthStateChunks :
                                         HealthState           : Error
 ```
 
-Následující rutina vrátí všechny nasazené entity na uzlu.
+Hello následující rutina vrací všechny nasazené entity na uzlu.
 
 ```xml
 PS D:\ServiceFabric> $errorFilter = [System.Fabric.Health.HealthStateFilter]::Error;
@@ -1021,56 +1021,56 @@ ApplicationHealthStateChunks :
 ```
 
 ### <a name="rest"></a>REST
-Můžete získat blok stavu clusteru s [požadavek GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-using-health-chunks) nebo [požadavek POST](https://docs.microsoft.com/rest/api/servicefabric/health-of-cluster) zásady stavu a rozšířené filtry, které jsou popsané v textu, který obsahuje.
+Můžete získat blok stavu clusteru s [požadavek GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-using-health-chunks) nebo [požadavek POST](https://docs.microsoft.com/rest/api/servicefabric/health-of-cluster) zahrnující zásady stavu a rozšířené filtry, které jsou popsané v textu hello.
 
 ## <a name="general-queries"></a>Obecné dotazy
-Obecné dotazy vrátí seznam entity prostředků infrastruktury služby zadaného typu. Se zveřejňují přes rozhraní API (prostřednictvím metody na **FabricClient.QueryManager**), rutiny prostředí PowerShell a REST. Tyto dotazy agregovat poddotazy z několika součástí. Jeden z nich je [úložiště stavu](service-fabric-health-introduction.md#health-store), který naplní agregovaný stav pro každý výsledek dotazu.  
+Obecné dotazy vrátí seznam entity prostředků infrastruktury služby zadaného typu. Se zveřejňují přes hello rozhraní API (prostřednictvím metody hello na **FabricClient.QueryManager**), rutiny prostředí PowerShell a REST. Tyto dotazy agregovat poddotazy z několika součástí. Jeden z nich je hello [úložiště stavu](service-fabric-health-introduction.md#health-store), který naplní hello Agregovat stav pro každý výsledek dotazu.  
 
 > [!NOTE]
-> Obecné dotazy vraťte agregovaný stav entity a neobsahují data bohaté stavu. Pokud entity není v pořádku, můžete sledovat pomocí dotazů na stav zobrazíte všechny jeho stavu informace, včetně událostí, podřízené stavů a není v pořádku hodnocení.
+> Obecné dotazy vrátit stav hello agregovat hello entity a neobsahuje data bohaté stavu. Pokud entity není v pořádku, můžete sledovat pomocí tooget dotazy stavu všechny jeho stavu informace, včetně událostí, podřízené stavů a není v pořádku hodnocení.
 >
 >
 
-Pokud obecné dotazy vrátit Neznámý stav pro entitu, je možné, že úložiště zdravotní nemá dokončení data o entitě. Je také možné, že poddotazu k úložišti stavu nebyl úspěšný (například došlo k chybě komunikace, nebo byla omezena úložiště zdravotní). Následnou akci s dotazem stavu pro entitu. Pokud je poddotaz došlo k přechodné chyby, například problémy se sítí, může být úspěšné následné dotaz. Ho může také získáte další informace z health store o proč nebude vystavena entity.
+Pokud obecné dotazy vrátí Neznámý stav pro entitu, je možné že toto úložiště stavu hello nemá dokončení data o hello entity. Je také možné, že úložiště stavu toohello poddotazu nebyla úspěšná (například došlo k chybě komunikace, nebo byla omezena hello stavu úložiště). Pomocí dotazu stavu pro entitu hello následnou akci. Pokud hello poddotazu došlo k přechodné chyby, například problémy se sítí, může být úspěšné následné dotaz. Ho může také získáte další informace z health store hello o proč nebude vystavena hello entity.
 
-Dotazy, které obsahují **HealthState** pro entity jsou:
+Hello dotazů, které obsahují **HealthState** pro entity jsou:
 
-* Seznam uzlů: vrátí seznam uzlů v clusteru (stránkovaného).
+* Seznam uzlů: vrátí hello seznamu uzlů v clusteru hello (stránkovaného).
   * Rozhraní API: [FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
   * Prostředí PowerShell: Get-ServiceFabricNode
-* Seznam aplikací: vrátí seznam aplikací v clusteru (stránkovaného).
+* Seznam aplikací: vrátí hello seznam aplikací v clusteru hello (stránkovaného).
   * Rozhraní API: [FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
   * Prostředí PowerShell: Get-ServiceFabricApplication
-* Seznam služeb: vrátí seznam služeb v aplikaci (stránkovaného).
+* Seznam služeb: vrátí hello seznam služeb v aplikaci (stránkovaného).
   * Rozhraní API: [FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
   * Prostředí PowerShell: Get-ServiceFabricService
-* Seznam oddílů: vrátí seznam oddílů ve službě (stránkovaného).
+* Seznam oddílů: vrátí hello seznam oddílů ve službě (stránkovaného).
   * Rozhraní API: [FabricClient.QueryClient.GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
   * Prostředí PowerShell: Get-ServiceFabricPartition
-* Seznam replik: vrátí seznam replik v oddílu (stránkovaného).
+* Seznam replik: vrátí hello seznam replik v oddílu (stránkovaného).
   * Rozhraní API: [FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
   * Prostředí PowerShell: Get-ServiceFabricReplica
-* Nasazení seznam aplikací: vrátí seznam nasazené aplikace na uzlu.
+* Nasazení seznam aplikací: vrátí hello seznam nasazené aplikace na uzlu.
   * Rozhraní API: [FabricClient.QueryClient.GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
   * Prostředí PowerShell: Get-ServiceFabricDeployedApplication
-* Nasazení služby seznam balíčků: vrátí seznam balíčků služby v nasazení aplikace.
+* Nasazení služby seznam balíčků: hello vrátí seznam balíčků služeb v nasazení aplikace.
   * Rozhraní API: [FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
   * Prostředí PowerShell: Get-ServiceFabricDeployedApplication
 
 > [!NOTE]
-> Některé dotazy, vrátí stránkových výsledků. Návrat tyto dotazy je odvozen od seznamu [PagedList<T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1). Pokud výsledky nebudou vyhovovat zprávu, je vrácena pouze na stránce a ContinuationToken, který sleduje kde výčtu zastavena. Pokračujte volání stejný dotaz a předejte token pro pokračování z předchozího dotazu a získat tak další výsledky.
+> Některé dotazy hello vrátí stránkových výsledků. Hello vrátit těchto dotazů je seznam odvozené od [PagedList<T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1). Pokud výsledky hello nebudou vyhovovat zprávu, je vrácen pouze na stránce a ContinuationToken, který sleduje kde výčtu zastavena. Pokračujte toocall hello stejný dotaz a předejte token pokračování hello z hello předchozí tooget další výsledky dotazu.
 >
 >
 
 ### <a name="examples"></a>Příklady
-Následující kód získá není v pořádku aplikace v clusteru:
+Hello následující kód získá hello není v pořádku aplikace v clusteru hello:
 
 ```csharp
 var applications = fabricClient.QueryManager.GetApplicationListAsync().Result.Where(
   app => app.HealthState == HealthState.Error);
 ```
 
-Následující rutiny získá podrobností o aplikaci pro topologie fabric: / WordCount aplikace. Všimněte si, že stav je v upozornění.
+Hello následující rutiny získá hello aplikace podrobnosti hello fabric: / WordCount aplikace. Všimněte si, že stav je v upozornění.
 
 ```powershell
 PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/WordCount
@@ -1090,7 +1090,7 @@ ApplicationParameters  : { "WordCountWebService_InstanceCount" = "1";
                          [ProcessId] -tid [ThreadId]","EnvironmentBlock":"_NO_DEBUG_HEAP=1\u0000"}]" }
 ```
 
-Následující rutiny získá služby s stav chyby:
+Hello následující rutiny získá hello služby s stav chyby:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricApplication | Get-ServiceFabricService | where {$_.HealthState -eq "Error"}
@@ -1107,13 +1107,13 @@ HealthState            : Error
 ```
 
 ## <a name="cluster-and-application-upgrades"></a>Upgrady cluster a aplikace
-Během monitorovaných upgrade clusteru a aplikace Service Fabric kontroluje stav zajistit, že všechno zůstane v pořádku. Pokud není v pořádku, jak se vyhodnocují se pomocí zásady nakonfigurované stavu entity se upgrade platí zásady specifické pro upgrade určit další akce. Upgrade může být pozastaveno umožňující interakci s uživatelem (například opravě chybové stavy nebo změna zásad) nebo ji může automaticky vrátit zpět na předchozí verzi funkční.
+Během monitorovaných upgrade hello cluster a aplikace Service Fabric kontroluje tooensure stavu, že všechno zůstane v pořádku. Pokud není v pořádku, jak se vyhodnocují se pomocí zásady nakonfigurované stavu entity se hello upgrade platí zásady specifické pro upgrade toodetermine hello další akce. Hello upgradu může být pozastavený tooallow zásah uživatele (například opravě chybové stavy nebo změna zásad) nebo ji může automaticky vrácení předchozí verze dobrý toohello.
 
-Během *clusteru* upgradu, můžete získat stav upgradu clusteru. Stav upgradu zahrnuje není v pořádku hodnocení, které odkazují na to, co je v clusteru není v pořádku. Pokud se upgrade je vrácena zpět kvůli problémům s stavu, stav upgradu pamatuje poslední důvodů není v pořádku. Tyto informace mohou pomoci správci prozkoumat, kde došlo k chybě po upgradu vrácena nebo zastavená.
+Během *clusteru* upgradu, můžete získat stav upgradu hello clusteru. Stav upgradu Hello zahrnuje není v pořádku hodnocení, které toowhat bod je v clusteru hello v chybném stavu. Pokud se hello upgrade je vrácena zpět z důvodu toohealth problémy, stav upgradu hello pamatuje hello poslední není v pořádku důvodů. Tyto informace mohou pomoci správci prozkoumat, kde došlo k chybě po upgradu hello vrácena nebo byla zastavena.
 
-Podobně při *aplikace* upgrade všech není v pořádku hodnocení jsou obsaženy v stav upgradu aplikace.
+Podobně při *aplikace* upgrade všech není v pořádku hodnocení jsou obsaženy v stav upgradu aplikace hello.
 
-Následující příklad zobrazuje stav upgradu aplikace pro upravené fabric: / WordCount aplikace. Sledovací zařízení ohlásilo chybu na jednom z jejích replik. Upgrade je vrácení zpět, protože nejsou dodržovány kontroly stavu.
+Hello následující ukazuje stav upgradu aplikace hello pro upravené fabric: / WordCount aplikace. Sledovací zařízení ohlásilo chybu na jednom z jejích replik. Hello upgrade je vrácení zpět, protože nejsou dodržovány kontroly stavu hello.
 
 ```powershell
 PS C:\> Get-ServiceFabricApplicationUpgrade fabric:/WordCount
@@ -1167,12 +1167,12 @@ ForceRestart                  : False
 UpgradeReplicaSetCheckTimeout : 00:15:00
 ```
 
-Další informace o [upgradu aplikace Service Fabric](service-fabric-application-upgrade.md).
+Další informace o hello [upgradu aplikace Service Fabric](service-fabric-application-upgrade.md).
 
-## <a name="use-health-evaluations-to-troubleshoot"></a>Hodnocení stavu použijte k řešení potíží
-Vždy, když nastane problém s clusteru nebo aplikaci, podívejte se na stav clusteru nebo aplikace a určit, co je nesprávný. Není v pořádku hodnocení poskytují podrobnosti o zdroj, aktuální stav není v pořádku. Pokud potřebujete, můžete k podrobnostem na není v pořádku podřízených entit k identifikaci hlavní příčinu.
+## <a name="use-health-evaluations-tootroubleshoot"></a>Použít tootroubleshoot hodnocení stavu
+Vždy, když nastane problém s hello clusteru nebo aplikaci, podívejte se na toopinpoint stavu clusteru nebo aplikace hello co je nesprávný. není v pořádku hodnocení Hello obsahují podrobné informace o jaké spouštěná hello stav aktuální není v pořádku. Pokud potřebujete, můžete k podrobnostem na není v pořádku podřízených entit tooidentify hello hlavní příčinu.
 
-Představte si třeba aplikace není v pořádku, protože není zprávu o chybách na jednom z jejích replik. Následující rutiny prostředí Powershell ukazuje, není v pořádku hodnocení:
+Představte si třeba aplikace není v pořádku, protože není zprávu o chybách na jednom z jejích replik. Hello následující rutiny prostředí Powershell ukazuje, není v pořádku hodnocení hello:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricApplicationHealth fabric:/WordCount -EventsFilter None -ServicesFilter None -DeployedApplicationsFilter None -ExcludeHealthStatistics
@@ -1200,7 +1200,7 @@ DeployedApplicationHealthStates : None
 HealthEvents                    : None
 ```
 
-Můžete se podívat na repliku, chcete-li získat další informace:
+Můžete se podívat na hello repliky tooget Další informace:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricReplicaHealth -ReplicaOrInstanceId 131444422260002646 -PartitionId af2e3e44-a8f8-45ac-9f31-4093eb897600
@@ -1239,16 +1239,16 @@ HealthEvents          :
 ```
 
 > [!NOTE]
-> Není v pořádku hodnocení ukazují, že je prvním důvodem entity vyhodnotit na aktuálním stavu. Může být více událostí, které spouštějí tento stav, ale neprojeví v hodnocení. Chcete-li získat další informace, přejděte do entity stavu a pokuste se zjistit všechny sestavy není v pořádku v clusteru.
+> Hello není v pořádku hodnocení zobrazit hello prvním důvodem je hello entity vyhodnotit toocurrent stavu. Může být více událostí, které spouštějí tento stav, ale neprojeví v hello hodnocení. tooget Další informace, rozbalení do hello stavu entity toofigure na všechny sestavy není v pořádku hello v clusteru hello.
 >
 >
 
 ## <a name="next-steps"></a>Další kroky
-[Použití sestav o stavu systému k řešení problémů](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+[Použít tootroubleshoot sestavy stavu systému](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 
 [Přidat vlastní sestavy stavu Service Fabric](service-fabric-report-health.md)
 
-[Postup vytvoření sestavy a zkontrolujte stav služby](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+[Jak tooreport a zkontrolujte stav služby](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 
 [Monitorování a Diagnostika služby místně](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 

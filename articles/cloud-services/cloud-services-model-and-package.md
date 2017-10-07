@@ -1,6 +1,6 @@
 ---
-title: "Co je Cloudová služba modelu a balíček | Microsoft Docs"
-description: "Popisuje model cloudové služby (.csdef, .cscfg) a balíčku (.cspkg) v Azure"
+title: "aaaWhat je Cloudová služba modelu a balíček | Microsoft Docs"
+description: "Popisuje hello model cloudové služby (.csdef, .cscfg) a balíčku (.cspkg) v Azure"
 services: cloud-services
 documentationcenter: 
 author: Thraka
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.openlocfilehash: 21fbdbc4c24440c6fbbd7487cfbb2e0a3140aa96
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 5280cdca4810859b6afdbbe1359fc2fabe871894
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Co je Cloudová služba modelu a jak ho balíček?
-Cloudová služba je vytvořená z tří součástí definice služby *(.csdef)*, konfigurace služby *(.cscfg)*a balíček služby *(.cspkg)*. Obě **ServiceDefinition.csdef** a **ServiceConfig.cscfg** soubory formátu XML a popisují strukturu cloudové služby a jak jsou nakonfigurované; se nazývají modelu. **ServicePackage.cspkg** je soubor zip, který se generují z **ServiceDefinition.csdef** a mimo jiné obsahuje všechny požadované závislosti na základě binární. Azure vytvoří cloudové služby i **ServicePackage.cspkg** a **ServiceConfig.cscfg**.
+# <a name="what-is-hello-cloud-service-model-and-how-do-i-package-it"></a>Co je model hello cloudové služby a jak ho balíček?
+Cloudová služba je vytvořená z tří součástí definice služby hello *(.csdef)*, hello konfigurace služby *(.cscfg)*a balíček služby *(.cspkg)*. Obě hello **ServiceDefinition.csdef** a **ServiceConfig.cscfg** soubory formátu XML a popisu hello struktury hello cloudové služby a jak jsou nakonfigurované; se nazývají hello modelu. Hello **ServicePackage.cspkg** je soubor zip, který se generují z hello **ServiceDefinition.csdef** a mimo jiné obsahuje všechny požadované hello na základě binární závislosti. Azure vytvoří cloudovou službu z obou hello **ServicePackage.cspkg** a hello **ServiceConfig.cscfg**.
 
-Jakmile Cloudová služba běží v Azure, můžete ji prostřednictvím překonfigurovat **ServiceConfig.cscfg** soubor, ale nelze změnit definici.
+Jakmile hello Cloudová služba běží v Azure, můžete ji překonfigurovat prostřednictvím hello **ServiceConfig.cscfg** soubor, ale nelze změnit definici hello.
 
-## <a name="what-would-you-like-to-know-more-about"></a>Co chcete vědět více o?
-* Chci vědět více o [ServiceDefinition.csdef](#csdef) a [ServiceConfig.cscfg](#cscfg) soubory.
+## <a name="what-would-you-like-tooknow-more-about"></a>Co chcete více informací o tooknow?
+* Chci další informace o hello tooknow [ServiceDefinition.csdef](#csdef) a [ServiceConfig.cscfg](#cscfg) soubory.
 * Již vědět o, mě [některé příklady](#next-steps) na Co mám nakonfigurovat.
-* Vytvořit [ServicePackage.cspkg](#cspkg).
+* Chci toocreate hello [ServicePackage.cspkg](#cspkg).
 * Používám Visual Studio a chcete...
   * [Vytvoření cloudové služby][vs_create]
   * [Znovu nakonfigurujte stávající cloudovou službu][vs_reconfigure]
@@ -38,7 +38,7 @@ Jakmile Cloudová služba běží v Azure, můžete ji prostřednictvím překon
 <a name="csdef"></a>
 
 ## <a name="servicedefinitioncsdef"></a>ServiceDefinition.csdef
-**ServiceDefinition.csdef** souboru Určuje nastavení, které používají Azure ke konfigurování cloudové služby. [Azure schématu definice služby (.csdef souboru)](https://msdn.microsoft.com/library/azure/ee758711.aspx) poskytuje povolený formát souboru definice služby. Následující příklad ukazuje nastavení, které lze definovat pro webové a pracovní role:
+Hello **ServiceDefinition.csdef** souboru určuje hello nastavení, které používají Azure tooconfigure cloudové služby. Hello [Azure schématu definice služby (.csdef souboru)](https://msdn.microsoft.com/library/azure/ee758711.aspx) poskytuje hello povolený formát souboru definice služby. Hello následující příklad ukazuje hello nastavení, které lze definovat pro hello webové a pracovní role:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -89,38 +89,38 @@ Jakmile Cloudová služba běží v Azure, můžete ji prostřednictvím překon
 </ServiceDefinition>
 ```
 
-Můžete se podívat do [služby definice schématu](https://msdn.microsoft.com/library/azure/ee758711.aspx) lépe porozumět schématu XML použít se zde, ale tady je rychlý vysvětlení některých prvků:
+Můžete se podívat toohello [definice schématu služby](https://msdn.microsoft.com/library/azure/ee758711.aspx) lépe porozumět schématu XML hello použít se zde, ale tady je rychlý vysvětlení některých elementů hello:
 
 **Weby**  
-Obsahuje definice pro weby nebo webové aplikace, které jsou hostované ve službě IIS7.
+Obsahuje definice hello pro weby nebo webové aplikace, které jsou hostované ve službě IIS7.
 
 **InputEndpoints**  
-Obsahuje definice pro koncové body, které se používají ke kontaktování cloudové služby.
+Obsahuje definice hello pro koncové body, které jsou použity toocontact hello cloudové služby.
 
 **InternalEndpoints**  
-Obsahuje definice pro koncové body, které jsou používány instance rolí pro komunikaci mezi sebou.
+Obsahuje definice hello pro koncové body, které jsou používány toocommunicate instancí role mezi sebou.
 
 **ConfigurationSettings**  
-Obsahuje definice nastavení pro funkce určité role.
+Obsahuje definice hello nastavení pro funkce určité role.
 
 **Certifikáty**  
-Obsahuje definice pro certifikáty, které jsou potřebné pro roli. Předchozí příklad kódu ukazuje certifikát, který se používá pro konfiguraci Azure připojit.
+Obsahuje definice hello pro certifikáty, které jsou potřebné pro roli. Hello předchozí příklad kódu ukazuje certifikát, který se používá pro konfiguraci hello Azure připojit.
 
 **LocalResources**  
-Obsahuje definice pro místní prostředky pro úložiště. Prostředek Místní úložiště je vyhrazené adresáře v systému souborů virtuálního počítače, ve kterém je spuštěna instance role.
+Obsahuje definice hello pro místní prostředky pro úložiště. Prostředek Místní úložiště je vyhrazené adresáře v systému souborů hello hello virtuálního počítače, ve kterém je spuštěna instance role.
 
 **Importy**  
-Obsahuje definice pro importovaných modulů. Předchozí příklad kódu ukazuje moduly pro připojení ke vzdálené ploše a Azure připojit.
+Obsahuje definice hello importovaných modulů. Hello předchozí příklad kódu ukazuje hello moduly pro připojení ke vzdálené ploše a Azure připojit.
 
 **Spuštění**  
-Obsahuje úlohy, které se spustí při spuštění role. Úkoly jsou definovány v .cmd nebo spustitelný soubor.
+Obsahuje úlohy, které se spustí při spuštění hello role. Hello úlohy jsou definovány v .cmd nebo spustitelný soubor.
 
 <a name="cscfg"></a>
 
 ## <a name="serviceconfigurationcscfg"></a>Souboru ServiceConfiguration.cscfg
-Konfigurace nastavení pro cloudové služby je určen podle hodnot v **souboru ServiceConfiguration.cscfg** souboru. Můžete zadat počet instancí, které chcete nasadit pro každou roli v tomto souboru. Hodnoty pro nastavení konfigurace, která jste zadali v souboru definice služby se přidají do konfiguračního souboru služby. Kryptografické otisky pro všechny certifikáty pro správu, které jsou spojeny s cloudovou službou jsou rovněž přidány do souboru. [Schéma konfigurace služby Azure (.cscfg souboru)](https://msdn.microsoft.com/library/azure/ee758710.aspx) poskytuje povolený formát pro konfigurační soubor služby.
+Konfigurace Hello hello nastavení pro cloudové služby je určen podle hodnoty hello v hello **souboru ServiceConfiguration.cscfg** souboru. Zadáte hello počet instancí, který má toodeploy pro každou roli v tomto souboru. konfigurační soubor služby toohello přidání hodnot Hello hello nastavení konfigurace, které jste zadali v souboru definice služby hello. Hello kryptografické otisky pro všechny certifikáty pro správu, které jsou přidruženy hello cloudové služby jsou rovněž přidány toohello souboru. Hello [schéma konfigurace služby Azure (.cscfg souboru)](https://msdn.microsoft.com/library/azure/ee758710.aspx) poskytuje hello povolený formát pro konfigurační soubor služby.
 
-Konfigurační soubor služby není spojených s aplikací, ale nahraje do Azure jako samostatný soubor a slouží ke konfiguraci cloudové služby. Můžete nahrát nový soubor konfigurace služby bez opětovného nasazení cloudové služby. Hodnoty konfigurace pro cloudové služby lze změnit, když běží v cloudové službě. Následující příklad ukazuje nastavení konfigurace, které lze definovat pro webové a pracovní role:
+Hello konfigurační soubor služby není spojených s aplikací hello, ale je nahrané tooAzure jako samostatný soubor a použít tooconfigure hello Cloudová služba. Můžete nahrát nový soubor konfigurace služby bez opětovného nasazení cloudové služby. Hello konfigurační hodnoty pro cloudové služby hello lze změnit během spuštěné hello cloudové služby. Hello následující příklad ukazuje hello nastavení konfigurace, které lze definovat pro hello webové a pracovní role:
 
 ```xml
 <?xml version="1.0"?>
@@ -140,28 +140,28 @@ Konfigurační soubor služby není spojených s aplikací, ale nahraje do Azure
 </ServiceConfiguration>
 ```
 
-Můžete se podívat do [schéma konfigurace služby](https://msdn.microsoft.com/library/azure/ee758710.aspx) pro lepší pochopení schématu XML použít se zde, ale tady je rychlý vysvětlení elementů:
+Můžete se podívat toohello [schéma konfigurace služby](https://msdn.microsoft.com/library/azure/ee758710.aspx) pro lepší pochopení hello schématu XML použít se zde, ale tady je rychlý vysvětlení hello elementů:
 
 **Instance**  
-Konfiguruje počet spuštěných instancí role. Abyste zabránili potenciálně stává stále k dispozici při upgradech cloudové služby, doporučujeme nasadit více než jednu instanci směřujících webové role. Nasazením více než jednu instanci, jsou splněny podle pokynů v [Azure výpočetní služby smlouvou o úrovni (SLA)](http://azure.microsoft.com/support/legal/sla/), což zaručuje 99,95 % externí připojení internetových rolí, pokud dvě nebo více instancí role jsou nasazeny pro službu.
+Nakonfiguruje hello počet spuštěných instancí hello role. tooprevent vaše cloudové služby potenciálně stal během upgradu není k dispozici, doporučujeme nasadit více než jednu instanci směřujících webové role. Nasazením více než jednu instanci, jsou dodržujte pokyny toohello v hello [Azure výpočetní služby smlouvou o úrovni (SLA)](http://azure.microsoft.com/support/legal/sla/), což zaručuje 99,95 % externí připojení internetových rolí, pokud dvě nebo více rolí instance jsou nasazeny pro službu.
 
 **ConfigurationSettings**  
-Konfiguruje nastavení pro spuštěné instance role. Název `<Setting>` elementy se musí shodovat definice nastavení v definičním souboru služby.
+Nakonfiguruje nastavení hello hello spuštěné instance role. Název Hello hello `<Setting>` elementy se musí shodovat hello Definice nastavení v souboru definice služby hello.
 
 **Certifikáty**  
-Nakonfiguruje certifikáty, které používají službu. Předchozí příklad kódu ukazuje, jak definovat certifikát pro modul vzdáleného přístupu. Hodnota *kryptografický otisk* musí být nastaven na kryptografický otisk certifikátu používat.
+Nakonfiguruje hello certifikáty, které používá služba hello. Hello předchozí příklad kódu ukazuje, jak toodefine hello certifikát pro modul RemoteAccess hello. Hello hodnotu hello *kryptografický otisk* musí být nastaven toohello kryptografický otisk certifikátu toouse hello.
 
 <p/>
 
 > [!NOTE]
-> Kryptografický otisk certifikátu lze přidat do konfiguračního souboru pomocí textového editoru. Nebo hodnota lze přidat na **certifikáty** kartě **vlastnosti** stránky role v sadě Visual Studio.
+> Hello kryptografický otisk certifikátu hello lze přidat pomocí textového editoru toohello konfigurační soubor. Nebo hodnota hello lze přidat na hello **certifikáty** kartě hello **vlastnosti** stránku hello role v sadě Visual Studio.
 > 
 > 
 
 ## <a name="defining-ports-for-role-instances"></a>Definování porty pro instance rolí
-Azure umožňuje pouze jeden vstupní bod do webové role. Znamená, že dojde k všechny přenosy přes jednu IP adresu. Můžete nakonfigurovat své weby pro sdílení port nakonfigurováním hlavičku hostitele pro směrování požadavku na správné místo. Můžete také nakonfigurovat aplikace tak, aby naslouchala na dobře známé porty IP adresu.
+Azure umožňuje pouze jedna položka tooa bodu webové role. Znamená, že dojde k všechny přenosy přes jednu IP adresu. Vaše weby tooshare port můžete nakonfigurovat tak, že nakonfigurujete hello hostitele záhlaví toodirect hello požadavek toohello správné umístění. Můžete také nakonfigurovat porty toowell známé toolisten vaší aplikace hello IP adresy.
 
-Následující příklad ukazuje konfiguraci pro webové role s webových stránek a webových aplikací. Web je nakonfigurován jako výchozí umístění položky na portu 80 a webových aplikací konfigurovány tak, aby přijímal požadavky z hlavičku alternativním hostiteli, který se nazývá "mail.mysite.cloudapp.net".
+Hello následující příklad ukazuje hello konfigurace pro webové role s webových stránek a webových aplikací. Hello web je nakonfigurován jako hello výchozí položku umístění na portu 80 a jsou nakonfigurované tooreceive požadavky od hlavičku alternativním hostiteli, který se nazývá "mail.mysite.cloudapp.net" hello webové aplikace.
 
 ```xml
 <WebRole>
@@ -196,55 +196,55 @@ Následující příklad ukazuje konfiguraci pro webové role s webových strán
 ```
 
 
-## <a name="changing-the-configuration-of-a-role"></a>Změna konfigurace role
-Konfigurace cloudové služby můžete aktualizovat, když je spuštěná v Azure, bez nutnosti převádět služby do režimu offline. Chcete-li změnit informace o konfiguraci, můžete nahrát nový soubor konfigurace, nebo upravit konfigurační soubor na místě a použijte ho pro spuštěnou službu. Ke konfiguraci služby můžete provedeny následující změny:
+## <a name="changing-hello-configuration-of-a-role"></a>Změna konfigurace hello role
+Konfigurace hello cloudové služby můžete aktualizovat, když je spuštěná v Azure, bez nutnosti převádět služby hello offline. informace o konfiguraci toochange, můžete buď nahrát nový soubor konfigurace, nebo upravit hello konfigurační soubor v umístění a použijte ho tooyour službou. Hello následující můžete provedeny změny konfigurace toohello služby:
 
-* **Změna hodnoty nastavení konfigurace**  
-  Při konfiguraci nastavení změny role instance můžete zvolit použití změny, zatímco instance online nebo recyklovat instance řádně a použití změn při instance je offline.
-* **Změna topologie služby instancí role**  
-  Topologie změny neovlivňují spuštěné instance, s výjimkou případů, kdy je odebírána instance. Všechny zbývající instance obecně nemusí být recyklována; Můžete však recyklovat instance rolí v reakci na změnu topologie.
-* **Změna kryptografický otisk certifikátu**  
-  Certifikát lze aktualizovat pouze pokud je role instance offline. Pokud certifikát přidat, odstranit nebo změnit, pokud je role instance online, Azure řádně trvá instance offline aktualizovat certifikát a převeďte ho zpátky do online režimu, po dokončení změn.
+* **Změna hodnot hello nastavení konfigurace**  
+  Při konfiguraci nastavení se změní na instanci role můžete zvolte tooapply hello změn při hello instance není online, nebo toorecycle hello instance řádně a použít hello změn při hello instance je offline.
+* **Změna topologie služby hello instancí role**  
+  Topologie změny neovlivňují spuštěné instance, s výjimkou případů, kdy je odebírána instance. Všechny zbývající instance obecně nemusí toobe recyklované; však můžete toorecycle instance rolí v odpovědi tooa topologie změn.
+* **Změna hello kryptografický otisk certifikátu**  
+  Certifikát lze aktualizovat pouze pokud je role instance offline. Pokud certifikát přidat, odstranit nebo změnit, pokud je role instance online, Azure řádně trvá hello instance offline tooupdate hello certifikátu a vrátí ji zpět online po dokončení změn hello.
 
 ### <a name="handling-configuration-changes-with-service-runtime-events"></a>Zpracování změny konfigurace s událostmi služby modulu Runtime
-[Knihovna Runtime Azure](https://msdn.microsoft.com/library/azure/mt419365.aspx) zahrnuje [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.aspx) názvů, který poskytuje třídy pro interakci s prostředím Azure z role. [RoleEnvironment](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx) třída definuje následující události, které jsou vyvolány před a po změně konfigurace:
+Hello [knihovna Runtime Azure](https://msdn.microsoft.com/library/azure/mt419365.aspx) zahrnuje hello [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.aspx) názvů, který poskytuje třídy pro interakci s hello prostředí Azure z role. Hello [RoleEnvironment](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx) třída definuje hello následující události, které jsou vyvolány před a po změně konfigurace:
 
 * **[Změna](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changing.aspx) událostí**  
-  K tomu dojde, před použitím změn konfigurace do zadané instance role s možností umožňuje vypnout instance rolí, v případě potřeby.
+  K tomu dojde, předtím, než se změna konfigurace hello je použité tooa Zadaná instance role budete prvního tootake dolů instance rolí hello v případě potřeby.
 * **[Změnit](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changed.aspx) událostí**  
-  Vyskytne se po změně konfigurace se použije k zadané instanci role.
+  Vyskytne se po změně konfigurace hello je použité tooa Zadaná instance role.
 
 > [!NOTE]
-> Protože změny certifikátu vždy provést instancí role do offline režimu, vyvolají není RoleEnvironment.Changing nebo RoleEnvironment.Changed událostí.
+> Protože změny certifikátu vždy provést hello instancí role do offline režimu, že není vyvolávání událostí RoleEnvironment.Changing nebo RoleEnvironment.Changed hello.
 > 
 > 
 
 <a name="cspkg"></a>
 
 ## <a name="servicepackagecspkg"></a>ServicePackage.cspkg
-Pokud chcete nasadit aplikaci jako cloudové služby v Azure, musí nejprve balíčku aplikace v příslušném formátu. Můžete použít **CSPack** nástroj příkazového řádku (nainstalované s [Azure SDK](https://azure.microsoft.com/downloads/)) k vytvoření souboru balíčku jako alternativu k sadě Visual Studio.
+toodeploy aplikace jako cloudové služby v Azure, musíte první aplikace hello balíčku v příslušném formátu hello. Můžete použít hello **CSPack** nástroj příkazového řádku (nainstalované s hello [Azure SDK](https://azure.microsoft.com/downloads/)) soubor balíčku hello toocreate jako alternativní tooVisual Studio.
 
-**CSPack** používá obsah souboru definice služby a konfigurační soubor služby zadat obsah balíčku. **CSPack** generuje balíčku souboru aplikace (.cspkg), který můžete nahrát do Azure pomocí [portál Azure](cloud-services-how-to-create-deploy-portal.md#create-and-deploy). Ve výchozím nastavení, balíček s názvem `[ServiceDefinitionFileName].cspkg`, ale můžete zadat jiný název pomocí `/out` možnost **CSPack**.
+**CSPack** používá hello obsah hello služby definice Souborová služba a služba konfigurace toodefine hello obsah souboru balíčku hello. **CSPack** vygeneruje soubor balíčku aplikace (.cspkg), můžete nahrát tooAzure pomocí hello [portál Azure](cloud-services-how-to-create-deploy-portal.md#create-and-deploy). Ve výchozím nastavení, je hello balíček s názvem `[ServiceDefinitionFileName].cspkg`, ale můžete zadat jiný název pomocí hello `/out` možnost **CSPack**.
 
 **CSPack** se nachází v  
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`
 
 > [!NOTE]
-> CSPack.exe (v systému windows) je k dispozici spuštěním **Microsoft Azure příkazového řádku** zástupce, který je nainstalován pomocí sady SDK.  
+> CSPack.exe (v systému windows) je k dispozici spuštěním hello **Microsoft Azure příkazového řádku** zástupce, který je nainstalován pomocí hello SDK.  
 > 
-> Spusťte CSPack.exe program samostatně najdete v dokumentaci o všech možných přepínačích a příkazy.
+> Spusťte hello CSPack.exe program samostatně toosee dokumentaci o všech možných přepínače hello a příkazy.
 > 
 > 
 
 <p />
 
 > [!TIP]
-> Spustit místně v cloudové služby **Microsoft Azure výpočetní emulátor**, použijte **/copyonly** možnost. Tato možnost zkopíruje binární soubory pro aplikaci do adresáře rozložení, ze kterého se můžete spustit v emulátoru služby výpočty v.
+> Spustit cloudové služby místně v hello **Microsoft Azure výpočetní emulátor**, použijte hello **/copyonly** možnost. Tato možnost zkopíruje hello binární soubory pro hello aplikace tooa directory rozložení, ze kterého se můžete spustit v emulátoru služby výpočty hello.
 > 
 > 
 
-### <a name="example-command-to-package-a-cloud-service"></a>Příklad do balíčku cloudové služby
-Následující příklad vytvoří balíček aplikace, který obsahuje informace pro webové role. Příkaz určuje soubor definice služby, kterou chcete použít, adresáři, kde můžete najít binární soubory, a název souboru balíčku.
+### <a name="example-command-toopackage-a-cloud-service"></a>Příklad příkaz toopackage cloudové služby
+Hello následující příklad vytvoří balíček aplikace obsahující hello informace pro webové role. příkaz Hello určuje toouse souboru definice služby hello, hello adresáře, kde může být binární soubory najít a názvem souboru balíčku hello hello.
 
 ```cmd
 cspack [DirectoryName]\[ServiceDefinition]
@@ -253,7 +253,7 @@ cspack [DirectoryName]\[ServiceDefinition]
        /out:[OutputFileName]
 ```
 
-Pokud aplikace obsahuje webovou roli a roli pracovního procesu, je použít následující příkaz:
+Pokud aplikace hello obsahuje webovou roli a roli pracovního procesu, hello následující příkaz se používá:
 
 ```cmd
 cspack [DirectoryName]\[ServiceDefinition]
@@ -263,18 +263,18 @@ cspack [DirectoryName]\[ServiceDefinition]
        /role:[RoleName];[RoleBinariesDirectory];[RoleAssemblyName]
 ```
 
-Kde proměnné jsou definovány takto:
+Kde hello proměnné jsou definovány takto:
 
 | Proměnná | Hodnota |
 | --- | --- |
-| \[DirectoryName\] |Podadresáři v kořenovém adresáři projektu, který obsahuje soubor .csdef Azure projektu. |
-| \[ServiceDefinition\] |Název souboru definice služby. Ve výchozím nastavení je tento soubor s názvem ServiceDefinition.csdef. |
-| \[Název_výstupního_souboru\] |Název souboru vygenerovaný balíček. Obvykle je nastavena na název aplikace. Pokud není zadán žádný název souboru, balíček aplikace je vytvořen jako \[ApplicationName\].cspkg. |
-| \[RoleName\] |Název role, jak jsou definovány v souboru definice služby. |
-| \[RoleBinariesDirectory] |Umístění binární soubory pro roli. |
-| \[VirtualPath\] |Fyzické adresáře pro každý virtuální cestu definovaný v oddílu lokality definice služby. |
-| \[PhysicalPath\] |Fyzické adresáře obsah pro každý virtuální cestu definovanou v uzlu lokality definice služby. |
-| \[RoleAssemblyName\] |Název binární soubor pro roli. |
+| \[DirectoryName\] |Hello podadresáře v adresáři projektu kořenové hello, která obsahuje soubor .csdef hello hello projektu Azure. |
+| \[ServiceDefinition\] |Název souboru definice služby hello Hello. Ve výchozím nastavení je tento soubor s názvem ServiceDefinition.csdef. |
+| \[Název_výstupního_souboru\] |Název Hello hello vygeneruje soubor balíčku. Obvykle je nastavena toohello název aplikace hello. Pokud není zadán žádný název souboru, balíček aplikace hello je vytvořen jako \[ApplicationName\].cspkg. |
+| \[RoleName\] |Název Hello hello role, jak jsou definovány v souboru definice služby hello. |
+| \[RoleBinariesDirectory] |umístění Hello hello binární soubory pro roli hello. |
+| \[VirtualPath\] |Hello fyzické adresáře pro každý virtuální cestu definovaný v oddílu lokality hello definice služby hello. |
+| \[PhysicalPath\] |Hello fyzické adresáře hello obsah pro každý virtuální cestu definovanou v uzlu lokality hello definice služby hello. |
+| \[RoleAssemblyName\] |Název Hello hello binárního souboru pro roli hello. |
 
 ## <a name="next-steps"></a>Další kroky
 Vytváření balíčku cloudové služby a chcete...

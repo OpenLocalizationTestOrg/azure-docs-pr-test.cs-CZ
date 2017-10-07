@@ -1,6 +1,6 @@
 ---
-title: "Azure diagnostické protokoly podporované služby a schémata | Microsoft Docs"
-description: "Porozumět schéma služby a událostí podporovaných pro diagnostických protokolů Azure."
+title: "aaaAzure diagnostické protokoly podporované služby a schémata | Microsoft Docs"
+description: "Srozumitelná hello podporované služby a schématu události pro diagnostických protokolů Azure."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: johnkem
-ms.openlocfilehash: aa4fa6e0310b2725005dfa34e3225c89fb4282d6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a3cbf5267e1bd0dc257f4fb4f42c323644046a6a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Podporované služby, schémat a kategorie pro diagnostických protokolů Azure.
 
-[Diagnostické protokoly prostředků Azure](monitoring-overview-of-diagnostic-logs.md) protokoly vysílaných vašich prostředků Azure, které popisují operaci prostředku. Tyto protokoly jsou typu prostředku konkrétní. V tomto článku jsme popisují sadu podporované služby a schématu události pro události vygenerované podle jednotlivých služeb. Tento článek také obsahuje úplný seznam dostupných protokolu kategorií podle typu prostředku.
+[Diagnostické protokoly prostředků Azure](monitoring-overview-of-diagnostic-logs.md) protokoly vysílaných vašich prostředků Azure, které popisují hello operace prostředku. Tyto protokoly jsou typu prostředku konkrétní. V tomto článku jsme popisují hello sadu podporovaných služeb a událostí schéma pro události vygenerované podle jednotlivých služeb. Tento článek také obsahuje úplný seznam dostupných protokolu kategorií podle typu prostředku.
 
 ## <a name="supported-services-and-schemas-for-resource-diagnostic-logs"></a>Podporované služby a schémat pro diagnostické protokoly prostředků
-Schéma pro prostředek diagnostických protokolů se liší v závislosti na kategorii prostředků a protokolu.   
+Hello schéma pro prostředek diagnostických protokolů se liší podle kategorie hello prostředků a protokolu.   
 
 | Služba | Schéma & dokumentace |
 | --- | --- |
@@ -52,12 +52,12 @@ Schéma pro prostředek diagnostických protokolů se liší v závislosti na ka
 ## <a name="supported-log-categories-per-resource-type"></a>Podporované kategorií protokolu na typ prostředku
 |Typ prostředku|Kategorie|Zobrazovaný název kategorie|
 |---|---|---|
-|Microsoft.ApiManagement/service|GatewayLogs|Protokoly související s ApiManagement brány|
+|Microsoft.ApiManagement/service|GatewayLogs|Protokoly související tooApiManagement brány|
 |Microsoft.Automation/automationAccounts|JobLogs|V protokolech úloh|
 |Microsoft.Automation/automationAccounts|JobStreams|Datové proudy úlohy|
 |Microsoft.Automation/automationAccounts|DscNodeStatus|Stav uzlu DSC|
 |Microsoft.Batch/batchAccounts|ServiceLog|Protokoly služby|
-|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Získá metriky koncového bodu, například šířky pásma, odchozí, atd.|
+|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Získá metriky hello hello koncového bodu, například šířky pásma, odchozí, atd.|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
 |Microsoft.DataLakeAnalytics/accounts|Auditování|Protokoly auditu|
 |Microsoft.DataLakeAnalytics/accounts|Požadavky|Žádost o protokoly|
@@ -89,6 +89,6 @@ Schéma pro prostředek diagnostických protokolů se liší v závislosti na ka
 ## <a name="next-steps"></a>Další kroky
 
 * [Další informace o diagnostických protokolů](monitoring-overview-of-diagnostic-logs.md)
-* [Stream prostředků do diagnostickým protokolům **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
-* [Změňte nastavení pro diagnostiku prostředků pomocí rozhraní REST API Azure monitorování](https://msdn.microsoft.com/library/azure/dn931931.aspx)
+* [Stream diagnostické protokoly prostředků příliš**Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Změňte nastavení pro diagnostiku prostředků pomocí hello REST API služby Azure monitorování](https://msdn.microsoft.com/library/azure/dn931931.aspx)
 * [Analýza protokolů z úložiště Azure s analýzy protokolů](../log-analytics/log-analytics-azure-storage.md)

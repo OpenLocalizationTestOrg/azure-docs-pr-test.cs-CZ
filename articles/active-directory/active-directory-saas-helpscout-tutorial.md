@@ -1,6 +1,6 @@
 ---
 title: "Kurz: Azure Active Directory integrace s pomůže Scout | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a pomáhají Scout."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a pomáhají Scout."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 84cee39c28a0f7e6b9878441e504131795673020
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 58edd140eb1eb5980796ca743b5f7acd891729a1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Kurz: Azure Active Directory integrace s pomůže Scout
 
-V tomto kurzu zjistěte, jak integrovat Scout pomoci s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak pomoci toointegrate Scout službou Azure Active Directory (Azure AD).
 
-Integrace s Azure AD pomáhají Scout byste získat následující výhody:
+Můžete získat hello z integrace s Azure AD pomáhají Scout následující výhody:
 
-- Ve službě Azure AD můžete řídit, kdo má přístup k nápovědě Scout.
-- Uživatelům pomůžou Scout můžete automaticky přihlásit pomocí jednotného přihlašování a účtu uživatele Azure AD.
-- Můžete spravovat své účty pomocí nich centrální umístění, portálu Azure.
+- Ve službě Azure AD můžete řídit, kdo má přístup tooHelp Scout.
+- Vaši uživatelé tooHelp Scout můžete automaticky přihlásit pomocí jednotného přihlašování a účtu uživatele Azure AD.
+- Můžete spravovat své účty pomocí nich centrální umístění, hello portálu Azure.
 
-Další informace o softwaru jako integraci aplikace služby (SaaS) s Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+toolearn Další informace o softwaru, služba (SaaS) aplikace integraci s Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-K nastavení integrace Azure AD s pomůže Scout, potřebujete následující položky:
+tooset až integrace Azure AD s pomůže Scout, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - Pomůže Scout předplatné, se jednotné přihlašování zapnutý 
 
 > [!NOTE]
-> Pokud testujete kroky v tomto kurzu, doporučujeme, abyste si je vyzkoušeli v provozním prostředí.
+> Pokud testujete hello kroky v tomto kurzu, doporučujeme, abyste si je vyzkoušeli v provozním prostředí.
 
-Doporučení pro testování kroky v tomto kurzu:
+Doporučení pro testování hello kroky v tomto kurzu:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat bezplatnou zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
@@ -50,172 +50,172 @@ Doporučení pro testování kroky v tomto kurzu:
 ## <a name="scenario-description"></a>Popis scénáře
 V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. 
 
-Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidejte pomůže Scout z galerie.
+1. Přidejte pomůže Scout z Galerie hello.
 2. Nastavte a otestujte Azure AD jednotné přihlašování.
 
-## <a name="add-help-scout-from-the-gallery"></a>Přidat pomůže Scout z Galerie
-K nastavení integrace Scout pomoci s Azure AD v galerii, přidejte pomůže Scout si na seznam spravovaných aplikací SaaS.
+## <a name="add-help-scout-from-hello-gallery"></a>Přidat pomůže Scout z Galerie hello
+tooset až hello integrace Scout pomoci s Azure AD v galerii hello přidat pomůže Scout tooyour seznam spravovaných aplikací SaaS.
 
-Chcete-li přidat pomůže Scout z galerie:
+tooadd pomoci Scout z Galerie hello:
 
-1. V [portál Azure](https://portal.azure.com), v nabídce vlevo vyberte **Azure Active Directory**. 
+1. V hello [portál Azure](https://portal.azure.com), v levé nabídce text hello, vyberte **Azure Active Directory**. 
 
-    ![Tlačítko Azure Active Directory][1]
+    ![tlačítko Azure Active Directory Hello][1]
 
 2. Vyberte **podnikové aplikace, které**a potom vyberte **všechny aplikace**.
 
-    ![Stránku podnikových aplikací][2]
+    ![stránka aplikace Hello Enterprise][2]
     
-3. Chcete-li přidat novou aplikaci, vyberte **novou aplikaci**.
+3. tooadd novou aplikaci, vyberte **novou aplikaci**.
 
-    ![Tlačítko nové aplikace][3]
+    ![tlačítko nové aplikace Hello][3]
 
-4. Do vyhledávacího pole zadejte **pomoci Scout**. Ve výsledcích hledání vyberte **pomoci Scout**a potom vyberte **přidat**.
+4. Hello vyhledávacího pole zadejte **pomoci Scout**. Ve výsledcích hledání hello, vyberte **pomoci Scout**a potom vyberte **přidat**.
 
-    ![Nápověda Scout v seznamu výsledků](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_addfromgallery.png)
+    ![Nápověda Scout v seznamu výsledků hello](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_addfromgallery.png)
 
 ## <a name="set-up-and-test-azure-ad-single-sign-on"></a>Nastavte a otestujte Azure AD jednotné přihlašování
 
 V této části můžete nastavit a testu Azure AD jednotné přihlašování s pomůže Scout podle testovacího uživatele s názvem *Britta Simon*.
 
-Pro jednotné přihlašování pro práci Azure AD musí znát příslušného uživatele Azure AD v nápovědě Scout. Je nutné vytvořit vztah propojení mezi uživatele Azure AD a související uživatele v nápovědě Scout.
+Pro toowork jeden přihlašování musí Azure AD tooknow hello Azure AD příslušného uživatele v pomoci Scout. Je nutné vytvořit vztah propojení mezi uživatele Azure AD a související uživatelské hello v nápovědě Scout.
 
-K navázání vztahu odkaz, v nápovědě Scout pro **uživatelské jméno**, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD.
+tooestablish hello propojení vztahu v rámci pomoci Scout pro **uživatelské jméno**, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s pomůže Scout, proveďte následující úlohy:
+tooconfigure a testování Azure AD jednotné přihlašování s pomůže Scout dokončení hello následující úlohy:
 
-1. [Nastavení Azure AD jednotné přihlašování](#set-up-azure-ad-single-sign-on). Nastaví uživatele tak, aby tuto funkci používat.
-2. [Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user). Testy Azure AD jednotné přihlašování s uživatelem Britta Simon.
-3. [Vytvoření zkušebního uživatele pomůže Scout](#create-a-help-scout-test-user). Vytvoří protějšek Britta Simon v pomoci Scout, který je propojený s Azure AD reprezentace uživatele.
-4. [Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user). Nastaví Britta Simon používat Azure AD jednotného přihlašování.
-5. [Test jednotného přihlašování](#test-single-sign-on). Ověřuje, že konfigurace funguje.
+1. [Nastavení Azure AD jednotné přihlašování](#set-up-azure-ad-single-sign-on). Nastaví uživatele toouse tuto funkci.
+2. [Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user). Testy Azure AD jednotné přihlašování s uživatelem hello Britta Simon.
+3. [Vytvoření zkušebního uživatele pomůže Scout](#create-a-help-scout-test-user). Vytvoří protějšek Britta Simon v pomoci Scout, který je propojený toohello reprezentace hello uživatele Azure AD.
+4. [Přiřadit hello Azure AD testovacího uživatele](#assign-the-azure-ad-test-user). Nastaví Britta Simon toouse Azure AD jednotné přihlašování.
+5. [Test jednotného přihlašování](#test-single-sign-on). Ověřuje, že konfigurace hello funguje.
 
 ### <a name="set-up-azure-ad-single-sign-on"></a>Nastavení Azure AD jednotné přihlašování
 
-V této části můžete nastavit Azure AD jednotného přihlašování na portálu Azure. Potom nastavíte jednotné přihlašování v aplikaci pomůže Scout.
+V této části můžete nastavit Azure AD jednotné přihlašování v hello portálu Azure. Potom nastavíte jednotné přihlašování v aplikaci pomůže Scout.
 
-Nastavení Azure AD jednotné přihlašování s Scout pomáhají:
+tooset do Azure AD jednotné přihlašování s pomůže Scout:
 
-1. Na portálu Azure na **pomoci Scout** stránky integrace aplikací, vyberte **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **pomoci Scout** stránky integrace aplikací, vyberte **jednotného přihlašování**.
  
     ![Nastavit odkaz přihlášení][4]
 
-2. Na **jednotného přihlašování** stránky, pro **režimu**, vyberte **na základě SAML přihlašování**.
+2. Na hello **jednotného přihlašování** stránky, pro **režimu**, vyberte **na základě SAML přihlašování**.
  
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_samlbase.png)
 
-3. V části **pomoci Scout domény a adresy URL**, pokud chcete nastavit aplikaci v režimu spouštěná IDP, dokončení následujících kroků:
+3. V části **pomoci Scout domény a adresy URL**, pokud chcete tooset si aplikace hello v rozšíření IDP spouštěná režimu dokončení hello následující kroky:
 
-    1. V **identifikátor** zadejte adresu URL, která má následující vzoru:`urn:auth0:helpscout:<instancename>`
+    1. V hello **identifikátor** zadejte adresu URL, která má následující vzor hello:`urn:auth0:helpscout:<instancename>`
 
-    2. V **adresa URL odpovědi** zadejte adresu URL, která má následující vzoru:`https://helpscout.auth0.com/login/callback?connection=<instancename>`
+    2. V hello **adresa URL odpovědi** zadejte adresu URL, která má následující vzor hello:`https://helpscout.auth0.com/login/callback?connection=<instancename>`
 
     ![Scout domény a adresy URL jeden přihlašování informace nápovědy](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_url.png)
 
-4. Pokud chcete nastavit aplikaci v režimu spouštěná SP, vyberte **zobrazit upřesňující nastavení adresy URL** zaškrtněte políčko a potom proveďte následující:
+4. Pokud chcete tooset až hello aplikace v režimu spouštěná SP, vyberte hello **zobrazit upřesňující nastavení adresy URL** zaškrtněte políčko a potom hello následující:
 
-    * V **přihlásit na adrese URL** zadejte adresu URL, která má následující formát:`https://secure.helpscout.net/members/login/`
+    * V hello **přihlásit na adrese URL** zadejte adresu URL, která má hello následující formát:`https://secure.helpscout.net/members/login/`
 
     ![Scout domény a adresy URL jeden přihlašování informace nápovědy](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_url1.png)
  
     > [!NOTE] 
-    > Hodnoty v těchto adres URL jsou pouze jako ukázka. Aktualizujte hodnoty s skutečného identifikátoru adresy URL a adresa URL odpovědi. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory pomůže Scout](mailto:help@helpscout.com). 
+    > Hello hodnoty v těchto adres URL jsou pouze jako ukázka. Aktualizujte hodnoty hello s hello skutečného identifikátoru adresy URL a adresa URL odpovědi. Obraťte se na tooget tyto hodnoty [tým podpory pomůže Scout](mailto:help@helpscout.com). 
 
-5. V části **SAML podpisový certifikát**, vyberte **soubor XML s metadaty**a potom uložte soubor metadat ve vašem počítači.
+5. V části **SAML podpisový certifikát**, vyberte **soubor XML s metadaty**a potom uložte soubor metadat hello ve vašem počítači.
 
-    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_certificate.png) 
+    ![odkaz ke stažení certifikátu Hello](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_certificate.png) 
 
 6. Vyberte **Uložit**.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-helpscout-tutorial/tutorial_general_400.png)
     
-7. Nastavení jednotného přihlašování na straně pomůže Scout, pošlete stažené metadata souboru XML na [tým podpory pomůže Scout](mailto:help@helpscout.com). Tým podpory pomůže Scout platí toto nastavení tak, aby SAML jeden přihlašování připojení je správně nastavena na obou stranách.
+7. tooset až jedním přihlašování na straně hello pomůže Scout, odesílat hello stáhnout metadata XML soubor toohello [tým podpory pomůže Scout](mailto:help@helpscout.com). tým podpory pomůže Scout Hello platí toto nastavení tak, aby hello SAML jednoho přihlášení připojení je správně nastavena na obou stranách.
 
 > [!TIP]
-> Můžete si přečíst stručným verzi tyto pokyny v [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace! Po přidání aplikace tak, že vyberete **služby Active Directory** > **podnikové aplikace, které**, vyberte **jednotné přihlašování** kartě. Dostanete embedded dokumentaci v **konfigurace** části, v dolní části stránky. Další informace najdete v tématu [Azure AD vložených dokumentaci]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Můžete si přečíst stručným verzi tyto pokyny v hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace! Po přidání aplikace hello výběrem **služby Active Directory** > **podnikové aplikace, které**, vyberte hello **jednotné přihlašování** kartě. Můžete získat přístup k dokumentaci hello vložených v hello **konfigurace** oddíl na hello dolní části stránky hello. Další informace najdete v tématu [Azure AD vložených dokumentaci]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
-V této části portálu Azure můžete vytvořit testovacího uživatele s názvem Britta Simon.
+V této části v hello portál Azure můžete vytvořit testovacího uživatele s názvem Britta Simon.
 
 ![Vytvořit testovací uživatele Azure AD][100]
 
-Vytvoření zkušebního uživatele ve službě Azure AD:
+toocreate testovacího uživatele ve službě Azure AD:
 
-1. Na portálu Azure v levé nabídce vyberte **Azure Active Directory**.
+1. V hello portál Azure, v levé nabídce hello, vyberte **Azure Active Directory**.
 
-    ![Tlačítko Azure Active Directory](./media/active-directory-saas-helpscout-tutorial/create_aaduser_01.png)
+    ![tlačítko Azure Active Directory Hello](./media/active-directory-saas-helpscout-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, vyberte **uživatelů a skupin**a potom vyberte **všichni uživatelé**.
+2. toodisplay hello seznam uživatelů, vyberte **uživatelů a skupin**a potom vyberte **všichni uživatelé**.
 
     ![Vyberte uživatele a skupiny a pak vyberte možnost Všichni uživatelé](./media/active-directory-saas-helpscout-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, v horní části **všichni uživatelé** vyberte **přidat**.
+3. tooopen hello **uživatele** dialogové okno, hello horní části hello **všichni uživatelé** vyberte **přidat**.
 
-    ![Tlačítko Přidat](./media/active-directory-saas-helpscout-tutorial/create_aaduser_03.png)
+    ![tlačítko Přidat Hello](./media/active-directory-saas-helpscout-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+4. V hello **uživatele** dialogové okno, dokončení hello následující kroky:
 
-    1. V **název** zadejte **BrittaSimon**.
+    1. V hello **název** zadejte **BrittaSimon**.
 
-    2. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
+    2. V hello **uživatelské jméno** zadejte hello e-mailovou adresu uživatele Britta Simon.
 
-    3. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
+    3. Vyberte hello **zobrazit hesla** zaškrtněte políčko a zapište si ji hello hodnotu, která se zobrazí v hello **heslo** pole.
 
     4. Vyberte **Vytvořit**.
 
-        ![Dialogové okno uživatele](./media/active-directory-saas-helpscout-tutorial/create_aaduser_04.png)
+        ![Dialogové okno uživatelského Hello](./media/active-directory-saas-helpscout-tutorial/create_aaduser_04.png)
 
  
 ### <a name="create-a-help-scout-test-user"></a>Vytvoření zkušebního uživatele pomůže Scout
 
-Objekt v této části je vytvoření uživatele s názvem Britta Simon v nápovědě Scout. Nápověda Scout podporuje za běhu (JIT) zřizování, který je ve výchozím nastavení zapnutá.
+objekt Hello této části je toocreate uživatele s názvem Britta Simon v nápovědě Scout. Nápověda Scout podporuje za běhu (JIT) zřizování, který je ve výchozím nastavení zapnutá.
 
-V této části se nevyžaduje žádné akce ani na dokončení úlohy. Pokud uživatel v nápovědě Scout ještě neexistuje, vytvoří se nový při pokusu o přístup k nápovědě Scout.
+V této části je toocomplete žádná akce nebo úloh. Pokud uživatel v nápovědě Scout ještě neexistuje, nový vytvoří při pokusíte tooaccess pomoci Scout.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Přiřadit hello Azure AD testovacího uživatele
 
-V této části povolit uživatele Britta Simon používat Azure AD jednotné přihlašování pomocí udělení přístupu uživatelskému účtu pomůže Scout.
+V této části můžete povolit uživateli hello Britta Simon toouse Azure AD jednotné přihlašování, poskytněte hello uživatele účtu přístup tooHelp Scout.
 
-![Přiřadit role uživatele][200] 
+![Přiřadit role uživatele hello][200] 
 
-Přiřazení Britta Simon Scout pomáhají:
+tooassign tooHelp Britta Simon Scout:
 
-1. Na portálu Azure otevřete zobrazení aplikace a pak přejděte do zobrazení adresáře. Vyberte **podnikové aplikace, které**a potom vyberte **všechny aplikace**.
+1. V hello portálu Azure otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení. Vyberte **podnikové aplikace, které**a potom vyberte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **pomoci Scout**.
+2. V seznamu aplikace hello vyberte **pomoci Scout**.
 
-    ![Na odkaz Nápověda Scout v seznamu aplikací](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_app.png)  
+    ![Hello pomůže Scout odkaz v seznamu aplikace hello](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_app.png)  
 
-3. V nabídce vlevo vyberte **uživatelů a skupin**.
+3. V levé nabídce hello, vyberte **uživatelů a skupin**.
 
-    ![Propojení uživatelů a skupin][202]
+    ![Hello uživatelé a skupiny odkaz][202]
 
-4. Vyberte **Přidat**. Potom na **přidat přiřazení** vyberte **uživatelů a skupin**.
+4. Vyberte **Přidat**. Potom na hello **přidat přiřazení** vyberte **uživatelů a skupin**.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přidružení Hello][203]
 
-5. Na **uživatelů a skupin** v seznamu uživatelů, vyberte na stránce **Britta Simon**.
+5. Na hello **uživatelů a skupin** v hello seznam uživatelů, vyberte na stránce **Britta Simon**.
 
-6. Na **uživatelů a skupin** vyberte **vyberte**.
+6. Na hello **uživatelů a skupin** vyberte **vyberte**.
 
-7. Na **přidat přiřazení** vyberte **přiřadit**.
+7. Na hello **přidat přiřazení** vyberte **přiřadit**.
     
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části otestovat vaše konfigurace Azure AD jeden přihlašování pomocí přístupového panelu.
+V této části otestovat vaše konfigurace Azure AD jeden přihlašování pomocí hello přístupového panelu.
 
-Když vyberete dlaždici pomůže Scout na přístupovém panelu, můžete by měl být automaticky přihlášeni do vaší aplikace pomůže Scout.
+Když vyberete hello pomůže Scout dlaždice v hello přístupového panelu, by měl být automaticky přihlášeni tooyour pomoci Scout aplikace.
 
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
+Další informace o na přístupovém panelu najdete v tématu [Úvod toohello přístupový panel](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů toointegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

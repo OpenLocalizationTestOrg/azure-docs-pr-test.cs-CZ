@@ -1,6 +1,6 @@
 ---
-title: "Použití spravovaných disků se škálovacími sadami virtuálních počítačů Azure | Dokumentace Microsoftu"
-description: "Naučte se, kdy a jak používat spravované disky se škálovacími sadami virtuálních počítačů."
+title: "aaaUsing spravované disky s Azure sady škálování virtuálního počítače | Microsoft Docs"
+description: "Zjistěte, proč a jak spravovat toouse disky s sady škálování virtuálního počítače"
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
@@ -15,41 +15,41 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 6/01/2017
 ms.author: negat
-ms.openlocfilehash: 3ab1d432a2f90db57b99f0e7d419d85e2958c308
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0e2a21e9f8b114ae1c8b81e1e6124621366f5643
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-vm-scale-sets-and-managed-disks"></a>Škálovací sady virtuálních počítačů Azure a spravované disky
 
 [Škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/) Azure podporují virtuální počítače se spravovanými disky. Použití spravovaných disků se škálovacími sadami má několik výhod:
 
-* Pro virtuální počítače škálovacích sad už není potřeba předem vytvářet a spravovat účty úložiště pro ukládání disků operačního systému.
+* Již nepotřebujete toopre – vytvoření a Správa disků hello OS toostore účty úložiště pro virtuální počítače sady škálování hello.
 
-* Spravované datové disky můžete připojit ke škálovací sadě.
+* Spravované datové disky toohello škálovací sadu můžete připojit.
 
 * Při použití spravovaného disku může mít škálovací sada kapacitu až 1 000 virtuálních počítačů, pokud je založená na imagi platformy, nebo 100 virtuálních počítačů, pokud je založená na vlastní imagi.
 
 ## <a name="get-started"></a>Začínáme
 
-Jednoduchým způsobem, jak začít pracovat se škálovacími sadami spravovaného disku, je provést nasazení z webu Azure Portal. Další informace najdete v [tomto článku](./virtual-machine-scale-sets-portal-create.md). Dalším jednoduchým způsobem, jak začít, je nasadit škálovací sadu pomocí [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2). Následující příklad ukazuje, jak vytvořit škálovací sadu založenou na Ubuntu s 10 virtuálními počítači, z nichž každý má 50GB a 100GB datový disk:
+Jednoduchý způsob tooget začít s sady škálování spravovaného disku je toodeploy jeden z hello portálu Azure. Další informace najdete v [tomto článku](./virtual-machine-scale-sets-portal-create.md). Jiné jednoduchý způsob tooget spuštění je toouse [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) toodeploy sady škálování virtuálního počítače. Hello následující příklad ukazuje, jak toocreate Ubuntu na základě škálování s 10 virtuálních počítačů, každý s 50 GB a 100 GB datový disk:
 
 ```azurecli
 az group create -l southcentralus -n dsktest
 az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --data-disk-sizes-gb 50 100
 ```
 
-Další možností je vyhledat v [úložišti šablon Azure Quickstart na GitHubu](https://github.com/Azure/azure-quickstart-templates) složky, které obsahují `vmss`, a podívat se na předem vytvořené příklady šablon, které nasazují škálovací sady. Ke zjištění, které ze šablon už používají spravované disky, můžete použít [tento seznam](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md).
+Alternativně může hledat v hello [úložiště GitHub šablony Azure rychlý Start](https://github.com/Azure/azure-quickstart-templates) pro složky, které obsahují `vmss` toosee předem vytvořené Příklady šablon, které nasadit sady škálování. tootell šablony, které už používáte spravovaných disků, naleznete v části příliš[tento seznam](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Další obecné informace o spravovaných discích najdete v [tomto článku](../virtual-machines/windows/managed-disks-overview.md).
 
-Postup převedení šablony Resource Manageru pro zřízení škálovací sady se spravovanými disky najdete v [tomto článku](./virtual-machine-scale-sets-convert-template-to-md.md). Stejné úpravy šablon Resource Manageru platí i pro rozhraní Azure REST API.
+toosee způsob tooconvert nastaví škálování tooprovision šablony Resource Manageru pomocí správy disků, najdete v části [v tomto článku](./virtual-machine-scale-sets-convert-template-to-md.md). Hello stejné šablony Resource Manageru toohello změny použít také toohello rozhraní REST API Azure.
 
-Další informace o použití spravovaných datových disků se škálovacími sadami najdete v [tomto článku](./virtual-machine-scale-sets-attached-disks.md).
+toolearn Další informace o spravovaných datových disků pomocí sad škálování, najdete v části [v tomto článku](./virtual-machine-scale-sets-attached-disks.md).
 
-Pokud chcete začít pracovat s rozsáhlými škálovacími sadami, přečtěte si [tento článek](./virtual-machine-scale-sets-placement-groups.md).
+Práce se sadami velkém měřítku, toobegin odkazovat příliš[v tomto článku](./virtual-machine-scale-sets-placement-groups.md).
 
 

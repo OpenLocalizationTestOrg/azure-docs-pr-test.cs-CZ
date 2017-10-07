@@ -1,6 +1,6 @@
 ---
-title: "Monitorování uživatelských dotazů v Azure SQL Data Warehouse | Microsoft Docs"
-description: "Přehled důležité informace, osvědčené postupy a úlohy pro monitorování uživatelských dotazů v Azure SQL Data Warehouse"
+title: "dotazy aaaMonitor uživatele v Azure SQL Data Warehouse | Microsoft Docs"
+description: "Přehled aspektů hello, osvědčené postupy a úlohy pro monitorování uživatelských dotazů v Azure SQL Data Warehouse"
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
@@ -15,22 +15,22 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
-ms.openlocfilehash: 65509a65c2b34553822cc02d7a7fa5a614adc57f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 67639e81b04635452e1ed844fe2d7245aa96a4fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-user-queries-in-azure-sql-data-warehouse"></a>Monitorování uživatelských dotazů v Azure SQL Data Warehouse
-Přehled důležité informace, osvědčené postupy a úlohy pro monitorování uživatelských dotazů v SQL Data Warehouse.
+Přehled hello aspekty, osvědčené postupy a úlohy pro monitorování uživatelských dotazů v SQL Data Warehouse.
 
 | Kategorie | Úlohu nebo aspekt | Popis |
 |:--- |:--- |:--- |
 | Nízký výkon |Najít dlouho běžící dotaz na uživatele |[Najít dlouho běžící dotazy][Find long-running queries] |
-| Souběžnost |Přidělování prostředků s souběžných uživatelů na dotazy |[Souběžnost a úlohy správy][Concurrency and workload management] |
+| Souběžnost |Přidělování prostředků s souběžných dotazů toouser |[Souběžnost a úlohy správy][Concurrency and workload management] |
 
 ## <a name="next-steps"></a>Další kroky
-Pro další správu tipy, přejděte na [přehled správy][Management overview].
+Pro další správu tipy zamiřte toohello [přehled správy][Management overview].
 
 <!--Image references-->
 

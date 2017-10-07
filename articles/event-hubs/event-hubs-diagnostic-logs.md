@@ -1,6 +1,6 @@
 ---
-title: "Diagnostické protokoly služby Azure Event Hubs | Microsoft Docs"
-description: "Zjistěte, jak nastavit diagnostické protokoly pro event hubs v Azure."
+title: "diagnostické protokoly aaaAzure Event Hubs | Microsoft Docs"
+description: "Zjistěte, jak tooset až diagnostické protokoly pro event hubs v Azure."
 keywords: 
 documentationcenter: 
 services: event-hubs
@@ -15,26 +15,26 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/27/2017
 ms.author: sethm;babanisa
-ms.openlocfilehash: 09bc62f4918635419d74ef3ae400a41d4ce58b5a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d2054e2e444e715e5077fe2608fe1e009e6c1d84
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-hubs-diagnostic-logs"></a>Diagnostické protokoly událostí rozbočovače
 
 Pro Azure Event Hubs můžete zobrazit dva typy protokolů:
-* **[Protokoly aktivity](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Tyto protokoly mít informace o operacích na úlohu provést. Protokoly jsou vždy povolena.
-* **[Diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Můžete nakonfigurovat diagnostické protokoly pro širší zobrazení všechno, co se děje s úlohou. Diagnostické protokoly titulní aktivit od okamžiku, kdy úloha je vytvořena až do odstranění úlohy, včetně aktualizací a aktivity, ke kterým dochází při běhu úlohy.
+* **[Protokoly aktivity](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Tyto protokoly mít informace o operacích na úlohu provést. Hello protokoly jsou vždy povolena.
+* **[Diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Můžete nakonfigurovat diagnostické protokoly pro širší zobrazení všechno, co se děje s úlohou. Diagnostické protokoly titulní aktivity z hello, když se vytvoří úloha hello až do odstranění hello úlohy, včetně aktualizací a aktivity, ke kterým dojde během hello úloha běží.
 
 ## <a name="turn-on-diagnostic-logs"></a>Zapnout diagnostické protokoly
-Diagnostické protokoly jsou zakázané ve výchozím nastavení. Povolení diagnostických protokolů:
+Diagnostické protokoly jsou zakázané ve výchozím nastavení. diagnostické protokoly tooenable:
 
-1.  V [portál Azure](https://portal.azure.com)v části **monitorování + správu**, klikněte na tlačítko **protokolů diagnostiky**.
+1.  V hello [portál Azure](https://portal.azure.com)v části **monitorování + správu**, klikněte na tlačítko **protokolů diagnostiky**.
 
-    ![Okno navigace k diagnostickým protokolům](./media/event-hubs-diagnostic-logs/image1.png)
+    ![Protokoly toodiagnostic navigačním okně](./media/event-hubs-diagnostic-logs/image1.png)
 
-2.  Klikněte na prostředek, který chcete monitorovat.
+2.  Klikněte na tlačítko hello prostředků, které chcete toomonitor.
 
 3.  Klikněte na tlačítko **zapněte diagnostiku**.
 
@@ -42,32 +42,32 @@ Diagnostické protokoly jsou zakázané ve výchozím nastavení. Povolení diag
 
 4.  Pro **stav**, klikněte na tlačítko **na**.
 
-    ![Změnit stav diagnostických protokolů](./media/event-hubs-diagnostic-logs/image3.png)
+    ![Změnit stav hello diagnostických protokolů](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  Nastavit cíl archiv, který chcete zjistit. například účet úložiště, centra událostí nebo analýza protokolů Azure.
+5.  Sada hello archivu cíl, který chcete zjistit. například účet úložiště, centra událostí nebo analýza protokolů Azure.
 
-6.  Uložte nové nastavení diagnostiky.
+6.  Uložte nové nastavení diagnostiky hello.
 
-Nové nastavení se projeví ve přibližně 10 minut. Potom protokolů se objeví v nakonfigurovaných archivace cíl, na **protokolů diagnostiky** okno.
+Nové nastavení se projeví ve přibližně 10 minut. Potom protokolů se objeví v archivace cílové hello nakonfigurované na hello **protokolů diagnostiky** okno.
 
-Další informace o konfiguraci diagnostiky, najdete v článku [přehled Azure diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Další informace o konfiguraci diagnostiky najdete v tématu hello [přehled Azure diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
 
 ## <a name="diagnostic-logs-categories"></a>Diagnostické protokoly kategorií
 Centra událostí jsou zaznamenány diagnostické protokoly pro dvou kategorií:
 
-* **ArchiveLogs**: související s archivy Event Hubs, konkrétně protokoly, protokoly související k archivaci chyby.
-* **OperationalLogs**: informace o tom, co se děje během operace služby Event Hubs, konkrétně operace typ, včetně vytváření centra událostí, prostředky využívané a stav operace.
+* **ArchiveLogs**: protokoly související s archivy tooEvent rozbočovače, konkrétně protokoly tooarchive související chyby.
+* **OperationalLogs**: informace o co se děje během operace služby Event Hubs, konkrétně hello typ operace, včetně vytváření centra událostí, prostředky používá a hello stav operace hello.
 
 ## <a name="diagnostic-logs-schema"></a>Diagnostické protokoly schématu
-Všechny protokoly se ukládají ve formátu JavaScript Object Notation (JSON). Každá položka má polí s řetězcem, které používají formát popsané v následujících částech.
+Všechny protokoly se ukládají ve formátu JavaScript Object Notation (JSON). Každá položka má polí s řetězcem, které používají formát hello je popsaný v následující části hello.
 
 ### <a name="archive-logs-schema"></a>Schéma protokoly archivu
 
-Řetězce formátu JSON protokolu archivu obsahovat prvky uvedené v následující tabulce:
+Řetězce formátu JSON protokolu archivu obsahovat prvky uvedené v následující tabulce hello:
 
 Name (Název) | Popis
 ------- | -------
-Název úlohy | Popis úloha, která se nezdařila.
+Název úlohy | Popis hello úlohu, která se nezdařila.
 ID aktivity | Interní ID použité pro sledování.
 trackingId | Interní ID použité pro sledování.
 resourceId | Azure Resource Manager ID prostředku.
@@ -80,7 +80,7 @@ durationInSeconds | Doba trvání selhání.
 Zpráva | Chybová zpráva.
 category | ArchiveLogs
 
-Následující kód je příkladem protokol archivu řetězce formátu JSON:
+Hello následující kód je příkladem protokol archivu řetězce formátu JSON:
 
 ```json
 {
@@ -94,18 +94,18 @@ Následující kód je příkladem protokol archivu řetězce formátu JSON:
      "startTime": "9/22/2016 5:11:21 AM",
      "failures": 3,
      "durationInSeconds": 360,
-     "message": "Microsoft.WindowsAzure.Storage.StorageException: The remote server returned an error: (404) Not Found. ---> System.Net.WebException: The remote server returned an error: (404) Not Found.\r\n   at Microsoft.WindowsAzure.Storage.Shared.Protocol.HttpResponseParsers.ProcessExpectedStatusCodeNoException[T](HttpStatusCode expectedStatusCode, HttpStatusCode actualStatusCode, T retVal, StorageCommandBase`1 cmd, Exception ex)\r\n   at Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.<PutBlockImpl>b__3e(RESTCommand`1 cmd, HttpWebResponse resp, Exception ex, OperationContext ctx)\r\n   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndGetResponse[T](IAsyncResult getResponseResult)\r\n   --- End of inner exception stack trace ---\r\n   at Microsoft.WindowsAzure.Storage.Core.Util.StorageAsyncResult`1.End()\r\n   at Microsoft.WindowsAzure.Storage.Core.Util.AsyncExtensions.<>c__DisplayClass4.<CreateCallbackVoid>b__3(IAsyncResult ar)\r\n--- End of stack trace from previous location where exception was thrown ---\r\n   at System.",
+     "message": "Microsoft.WindowsAzure.Storage.StorageException: hello remote server returned an error: (404) Not Found. ---> System.Net.WebException: hello remote server returned an error: (404) Not Found.\r\n   at Microsoft.WindowsAzure.Storage.Shared.Protocol.HttpResponseParsers.ProcessExpectedStatusCodeNoException[T](HttpStatusCode expectedStatusCode, HttpStatusCode actualStatusCode, T retVal, StorageCommandBase`1 cmd, Exception ex)\r\n   at Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.<PutBlockImpl>b__3e(RESTCommand`1 cmd, HttpWebResponse resp, Exception ex, OperationContext ctx)\r\n   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndGetResponse[T](IAsyncResult getResponseResult)\r\n   --- End of inner exception stack trace ---\r\n   at Microsoft.WindowsAzure.Storage.Core.Util.StorageAsyncResult`1.End()\r\n   at Microsoft.WindowsAzure.Storage.Core.Util.AsyncExtensions.<>c__DisplayClass4.<CreateCallbackVoid>b__3(IAsyncResult ar)\r\n--- End of stack trace from previous location where exception was thrown ---\r\n   at System.",
      "category": "ArchiveLogs"
 }
 ```
 
 ### <a name="operational-logs-schema"></a>Schéma operační protokoly
 
-Řetězce formátu JSON operační protokol obsahovat prvky uvedené v následující tabulce:
+Řetězce formátu JSON operační protokol obsahovat prvky uvedené v následující tabulce hello:
 
 Name (Název) | Popis
 ------- | -------
-ID aktivity | Interní ID použít ke sledování účel.
+ID aktivity | Vnitřní ID použít tootrack účel.
 EventName | Název operace.  
 resourceId | Azure Resource Manager ID prostředku.
 SubscriptionId | ID předplatného.
@@ -115,7 +115,7 @@ Status | Stav operace.
 Volající | Volající operace (Azure portal nebo správu klienta).
 category | OperationalLogs
 
-Následující kód je příkladem řetězce JSON operační protokol:
+Hello následující kód je příkladem řetězce JSON operační protokol:
 
 ```json
 Example:
@@ -133,6 +133,6 @@ Example:
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* [Úvod do služby Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Úvod tooEvent rozbočovače](event-hubs-what-is-event-hubs.md)
 * [Přehled rozhraní API služby Event Hubs](event-hubs-api-overview.md)
 * [Začínáme s Event Hubs](event-hubs-csharp-ephcs-getstarted.md)

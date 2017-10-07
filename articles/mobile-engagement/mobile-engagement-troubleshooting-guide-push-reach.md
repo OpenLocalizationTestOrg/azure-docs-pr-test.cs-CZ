@@ -1,5 +1,5 @@
 ---
-title: "Průvodce - Push nebo Reach odstraňováním potíží s Azure Mobile Engagement."
+title: "aaaAzure Mobile Engagement Průvodce odstraňováním potíží - Push nebo Reach"
 description: "Řešení potíží s uživatelské interakce a oznámení v Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
@@ -14,65 +14,65 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ef6f34404b97a6972fc136262920a1bdbc4117b0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4ee0b34b9b753a98ccf24863acb28a5dc76bfb95
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting-guide-for-push-and-reach-issues"></a>Průvodce řešením potíží se službami Push a Reach
-Následují možných problémů se můžete setkat s Azure Mobile Engagement jak odesílá informace pro vaše uživatele.
+Hello následují možných problémů se můžete setkat s jak Azure Mobile Engagement odesílá informace tooyour uživatele.
 
 ## <a name="push-failures"></a>Push selhání
 ### <a name="issue"></a>Problém
 * Oznámení nepodporují (v aplikaci z aplikace nebo obojí).
 
 ### <a name="causes"></a>Způsobí, že
-* Kolikrát selhání nabízené je jako ukazatel toho, že není správně integraci Azure Mobile Engagement Reach a další funkce Azure Mobile engagementu nebo že upgradu je potřeba v sadě SDK oprava známému problému se nová platforma operačního systému nebo zařízení.
-* Otestujte právě nabízení v aplikaci a právě aplikaci z nabízené k určení, zda se jedná o problém v aplikaci nebo aplikaci z.
-* Z uživatelského rozhraní a rozhraní API v rámci řešení potíží, které další informace o chybě jsou dostupné otestujte obou místech.
-* Mimo aplikaci nabízených oznámení nebude fungovat, pokud Azure Mobile Engagement a Reach jsou integrované v sadě SDK.
-* Oznámení nebude fungovat, pokud certifikáty jsou neplatné nebo používají PRODUKČNÍMU vs. DEV správně (jenom iOS). (**Poznámka:** "mimo aplikaci" nabízená oznámení nemusí doručit iOS, pokud máte i vývoj (vývoj) a produkční (PRODUKČNÍMU) verzí aplikace nainstalován na stejném zařízení od token zabezpečení přidružený certifikát může být zrušena společností Apple. Chcete-li vyřešit tento problém, vývoj a PRODUKČNÍMU verze aplikace odinstalovat a znovu nainstalovat jenom jednu verzi na zařízení.)
-* Mimo aplikaci nabízená počty jsou zpracovány jinak na různých platformách (iOS zobrazí menší informace než Android, pokud nativní oznámení jsou zakázány na zařízení, rozhraní API poskytne informace než uživatelského rozhraní pro nabízené statistiky).
+* Kolikrát selhání nabízené je jako ukazatel toho, že není správně integraci Azure Mobile Engagement Reach a další funkce Azure Mobile engagementu nebo že je upgrade vyžaduje v hello SDK toofix známý problém s nová platforma operačního systému nebo zařízení.
+* Pokud je problém v aplikaci nebo aplikaci z testovací právě nabízení v aplikaci a právě toodetermine nabízené z aplikace.
+* Testování z hello uživatelského rozhraní a hello rozhraní API v řešení potíží toosee krok jaké další chybové informace jsou k dispozici obou místech.
+* Mimo aplikaci nabízených oznámení nebude fungovat, pokud Azure Mobile Engagement a Reach jsou integrované v hello SDK.
+* Oznámení nebude fungovat, pokud certifikáty jsou neplatné nebo používají PRODUKČNÍMU vs. DEV správně (jenom iOS). (**Poznámka:** "mimo aplikaci" nabízená oznámení nemusí být doručují tooiOS, pokud máte oba hello vývoj (vývoj) a provozní (PRODUKČNÍMU) verze vaší aplikace nainstalovány na hello stejné zařízení od související token zabezpečení hello certifikátem může být zrušena společností Apple. tooresolve tento problém, odinstalujte hello Vývojářů a PRODUKČNÍMU verzí aplikace a znovu nainstalovat jenom hello jednu verzi na zařízení.)
+* Mimo aplikaci nabízená počty proto liší na různých platformách (iOS ukazuje menší informace než Android pokud nativní oznámení jsou zakázány na zařízení, hello rozhraní API můžete zadat další informace než hello uživatelského rozhraní na nabízené statistiky).
 * Mimo aplikaci můžete blokovat nabízených oznámení zákazníci na úrovni operačního systému (iOS a Android).
-* Mimo aplikaci nabízených oznámení se zobrazí jako zakázané v uživatelském rozhraní Azure Mobile Engagement, pokud nejsou správně integrované, ale může selhat bezobslužně z rozhraní API.
-* V aplikaci nabízených oznámení nebude fungovat, pokud Azure Mobile Engagement a Reach jsou integrované v sadě SDK.
-* Nabízených oznámení GCM a ADM nebude fungovat, pokud Azure Mobile Engagement a konkrétní server jsou integrované v sadě SDK (jen Android).
-* V aplikaci a mimo aplikaci by měla být nabízených oznámení testována samostatně k určení, zda se jedná o problém s nabízené nebo Reach.
-* V aplikaci, kterou nabízených oznámení vyžadují, aby aplikace otevřete k přijetí.
-* V aplikaci nabízených oznámení jsou často instalace filtrovat podle značky informace o aplikaci přihlášení nebo odhlášení.
-* Je-li použít vlastní kategorii v Reach k zobrazení oznámení v aplikaci, je nutné postupovat správné životní cyklus oznámení, jinak oznámení nemusí být vymazán když uživatel zprávu zavřete.
-* Pokud spustíte kampaň s žádné datum ukončení a zařízení obdrží v aplikaci oznámení, ale nemá není zobrazení se ještě, budou uživatel nadále přijímat oznámení při příštím přihlášení do aplikace i v případě, že ručně ukončení kampaně.
-* Pro problémy s rozhraním API Push potvrďte Opravdu chcete použít rozhraní API Push místo rozhraní Reach API (protože rozhraní Reach API je častěji) a že nejsou složitá parametry "datová část" a "oznamovatelem".
-* Testování kampaň nabízených pomocí obou zařízení, připojení přes Wi-Fi a 3G odstranit připojení k síti jako zdroj možných problémů.
+* Mimo aplikaci nabízených oznámení se zobrazí jako zakázané v hello Azure Mobile Engagement uživatelského rozhraní, pokud nejsou správně integrované, ale může selhat bezobslužně z hello rozhraní API.
+* V aplikaci nabízených oznámení nebude fungovat, pokud Azure Mobile Engagement a Reach jsou integrované v hello SDK.
+* Nabízených oznámení GCM a ADM nebude fungovat, pokud Azure Mobile Engagement a konkrétní server hello jsou integrované v hello SDK (jen Android).
+* V aplikaci a mimo aplikaci nabízených oznámení by měla být testována samostatně toodetermine Pokud je problém nabízené nebo Reach.
+* V nabízených oznámení aplikace vyžadují aplikaci hello být otevřené toobe přijata.
+* V aplikaci nabízených oznámení jsou často toobe instalace filtrovaná podle značky informace o aplikaci přihlášení nebo odhlášení.
+* Pokud používáte vlastní kategorii v oznámení v aplikaci toodisplay Reach, budete potřebovat toofollow hello správné životní cyklus hello oznámení, jinak hello oznámení nemusí být vymazán při hello uživatele zprávu zavřete.
+* Pokud kampaň začínat žádné datum ukončení a zařízení obdrží hello v oznámení aplikace, ale nezobrazuje se ještě, hello uživatel stále obdrží oznámení hello hello při příštím přihlášení do aplikace hello i v případě, že ručně ukončení kampaň hello.
+* Pro problémy se službou hello Push rozhraní API potvrďte Opravdu chcete toouse hello Push API místo hello Reach API (protože hello Reach API se často používá) a že nejste matoucí hello "datová část" a "oznamovatelem" parametry.
+* Testování kampaň nabízených pomocí obou zařízení, připojení přes Wi-Fi a 3G tooeliminate hello síťové připojení jako zdroj možných problémů.
 
 ## <a name="push-testing"></a>Push testování
 ### <a name="issue"></a>Problém
-* Oznámení lze odesílat na určité zařízení podle ID zařízení.
+* Oznámení mohou být odeslány konkrétní zařízení tooa podle ID zařízení.
 
 ### <a name="causes"></a>Způsobí, že
-* Testovací zařízení jsou instalace pro každou platformu, ale způsobuje událost v aplikaci na testovací zařízení a hledáte ID zařízení na portálu by měly fungovat najít ID zařízení pro všechny platformy.
+* Testovací zařízení jsou instalace pro každou platformu, ale způsobuje událost v aplikaci na testovací zařízení a hledáte ID zařízení hello portálu by měly fungovat toofind ID zařízení pro všechny platformy.
 * Testovací zařízení zavedením IDFA vs. IDFV (jenom iOS).
 
 ## <a name="push-customization"></a>Push přizpůsobení
 ### <a name="issue"></a>Problém
 * Advanced obsah, nebude fungovat položky (oznámení, prstence, zavibrovat, obrázek, atd.).
-* Odkazy z nabízených oznámení nepodporují (mimo aplikaci, v aplikaci na webu, do umístění v aplikaci).
-* Statistiky nabízené ukazují, že push nebyla odeslána tolik lidem podle očekávání (příliš mnoho nebo není dostatek).
+* Odkazy z nabízených oznámení nepodporují (mimo aplikaci, v aplikaci, tooa webu, tooa umístění v aplikaci).
+* Zobrazit nabízené statistiky, které push nebyly odeslány tooas (příliš mnoho nebo není dostatek) Spousta lidí dle očekávání.
 * Push duplicitní a přijaté dvakrát.
 * Nelze zaregistrovat testovací zařízení Azure Mobile Engagement sami (s vlastními produkčnímu nebo vývoj aplikací).
 
 ### <a name="causes"></a>Způsobí, že
-* Propojení na konkrétní umístění v aplikaci vyžaduje "kategorie" (jen Android).
-* Přímé propojení schémata přesměrovat uživatele do alternativního umístění po kliknutí na nabízených oznámení je třeba vytvořit v a přímo spravuje vaše aplikace a operačního systému zařízení není pomocí Mobile Engagement. (**Poznámka:** mimo aplikaci oznámení nelze odkaz přímo na v umístění aplikaci s iOS jako je tomu u Android.)
-* Servery externí image musejí mít na používání protokolu HTTP "GET" a "HEAD" pro velký obrázek nabízených oznámení (jen Android) fungovat.
-* V kódu můžete zakázat agenta Azure Mobile Engagement, když je otevřen klávesnici a mít kódu znovu aktivovat agenta Azure Mobile Engagement po zavření klávesnice tak, aby klávesnice nebude mít vliv na vzhled oznámení (jenom iOS).
+* toolink tooa konkrétního umístění v aplikaci vyžaduje "kategorie" (jen Android).
+* Přímé propojení schémata tooredirect uživatelé tooan alternativního umístění po kliknutí na nabízené oznámení potřebovat toobe vytvořené v a spravuje vaše aplikace a hello operačního systému zařízení není pomocí Mobile Engagement přímo. (**Poznámka:** mimo aplikaci oznámení se nemůže propojit přímo tooin umístění aplikaci s iOS jako je tomu u Android.)
+* Externí image servery potřebovat toobe možné toouse HTTP "GET" a "HEAD" pro velký obrázek nabízených oznámení toowork (jen Android).
+* V kódu, můžete zakázat agenta Azure Mobile Engagement hello po otevření hello klávesnice a svůj kód znovu aktivovat hello Azure Mobile Engagement agenta po zavření klávesnice hello tak, aby hello klávesnice nebude mít vliv na vzhled hello vaší oznámení (jenom iOS).
 * Některé položky nejsou funkční v testovací simulace, ale pouze skutečné kampaně (oznámení, prstence, zavibrovat, obrázek, atd.).
-* Když použijete tlačítko pro "test" nabízených oznámení, zaprotokoluje se žádná data na straně serveru. Data se protokolují pouze pro skutečné nabízené kampaně.
-* Snažte se určit problém, Poradce při potížích s: test, simulaci a skutečné kampaň vzhledem k tomu, že každý fungují trochu jinak.
-* Doba, kterou vaše "v aplikace" a "kdykoliv" kampaně spuštění je naplánováno na můžete ovlivňuje doručení čísla, protože kampaň budou doručeny pouze uživatelé, kteří jsou "v aplikaci" průběhu kampaň (a uživatelé, kteří mají své zařízení nastavení pro příjem oznámení "mimo aplikaci").
-* Rozdíly mezi jak pracovat mimo aplikaci oznámení Android a iOS je obtížné přímo Porovnat statistiku nabízené mezi Android a iOS verze vaší aplikace. Android poskytuje další úroveň oznámení informace operačního systému než iOS. Android sestavy, když je nativní oznámení přijatých, kliknutí na nebo odstranit v centru oznámení, ale iOS nehlásí tyto informace, pokud se po kliknutí na oznámení. 
-* Hlavním důvodem, které jsou jiné než než kampaně reach "doručit" čísla pro různé je, že "v aplikace" a "mimo aplikaci" oznámení, se počítají jinak "stisknutí" čísla. "V aplikaci" oznámení zpracovává Mobile Engagement, ale "mimo aplikaci" oznámení zpracovává centru oznámení v operačním systému vašeho zařízení.
+* Žádné na straně serveru, který data se protokolují, když použijete tlačítko hello příliš "test" nabízených oznámení. Data se protokolují pouze pro skutečné nabízené kampaně.
+* toohelp izolovat problém, Poradce při potížích s: test, simulaci a skutečné kampaň vzhledem k tomu, že každý fungují trochu jinak.
+* Hello dobu, kterou vaše "v aplikaci" a "kdykoliv" kampaně jsou naplánované toorun můžete ovlivňuje doručení čísla od kampaň budou pouze doručena toousers, kdo jsou "v aplikaci" průběhu kampaň hello (a uživatelé, kteří mají jejich nastavení zařízení nastavit tooreceive oznámení "mimo aplikaci").
+* Hello rozdíly mezi jak Android a iOS popisovač mimo aplikaci oznámení je obtížné toodirectly Porovnat statistiku nabízené mezi hello Android a iOS verze vaší aplikace. Android poskytuje další úroveň oznámení informace operačního systému než iOS. Android sestavy při přijatých, kliknutí na nebo odstranit v centru oznámení hello nativní oznámení, ale iOS nehlásí tyto informace, pokud se po kliknutí na hello oznámení. 
+* Hlavním důvodem Hello, které jsou jiné než než kampaně reach "doručit" čísla pro různé je, že "v aplikace" a "mimo aplikaci" oznámení, se počítají jinak "stisknutí" čísla. "V aplikaci" oznámení zpracovává Mobile Engagement, ale "mimo aplikaci" oznámení zpracovává hello Centrum oznámení na hello operačního systému zařízení.
 
 ## <a name="push-targeting"></a>Push cílení
 ### <a name="issue"></a>Problém
@@ -82,21 +82,21 @@ Následují možných problémů se můžete setkat s Azure Mobile Engagement ja
 * Jazykového nefungují podle očekávání.
 
 ### <a name="causes"></a>Způsobí, že
-* Ujistěte se, že jste nahráli značky informace o aplikaci pomocí Azure Mobile Engagement uživatelského rozhraní nebo rozhraní API.
-* Omezení rychlost nabízení nebo nabízené kvóta na úrovni aplikace, nebo omezení cílové skupiny na úrovni kampaň můžete zabránit osoby přijetí konkrétní push i v případě, že splňují vaše kritéria cílení. 
+* Ujistěte se, že jste nahráli značky informace o aplikaci prostřednictvím hello Azure Mobile Engagement uživatelského rozhraní nebo rozhraní API.
+* Omezení hello nabízené rychlost nebo nabízené kvóta na úrovni aplikace hello nebo limitující hello cílové skupiny na úrovni hello kampaň můžete zakázat osoby přijímání konkrétní push i v případě, že splňují vaše kritéria cílení. 
 * Nastavení "Jazyk" je jiné než cílení založený na zemi nebo národní prostředí, které se také liší od cílení podle geografického umístění na telefonu umístění nebo umístění GPS.
-* Je odeslána zpráva v jazyce"Výchozí" žádné zákazníkovi, který nemá jejich zařízení, nastavte na některou z alternativní jazyky, které zadáte.
+* odeslání zprávy Hello v hello "výchozí jazyk" tooany zákazníkovi, který nemá jejich zařízení, nastavit tooone hello alternativní jazyky, které zadáte.
 
 ## <a name="push-scheduling"></a>Push plánování
 ### <a name="issue"></a>Problém
 * Plánování nabízené nebude fungovat dle očekávání, (odeslat příliš časnému nebo zpožděné).
 
 ### <a name="causes"></a>Způsobí, že
-* Časová pásma může problémy s plánování, zvláště při používání koncoví uživatelé časové pásmo.
+* Časová pásma může problémy s plánování, zvláště při používání hello koncoví uživatelé časové pásmo.
 * Funkce Rozšířené nabízené zpozdit nabízených oznámení.
-* Cílení na základě na telefon, který se může zpozdit nastavení (namísto značky informace o aplikaci) nabízených oznámení, protože Azure Mobile Engagement může být nutné požádat dat reálném čase phone před odesláním oznámení.
-* Kampaně vytvořen bez koncové datum místně uložených nabízeného oznámení na zařízení a zobrazit ji při příštím otevření aplikace i v případě, že se tato kampaň ručně ukončí.
-* Spouštění více než jeden kampaň ve stejnou dobu může trvat delší dobu ke kontrole vaší uživatelské základny (pokuste se spustit pouze jeden kampaň najednou s maximálně čtyři, také cílový jenom na aktivní uživatele tak, aby staré uživatele nemusí být kontrolována).
-* Pokud použijete možnost "Ignorovat cílovou skupinu, nabízení se se uživatelům odešle přes rozhraní API" v části "Kampaň" kampaně Reach, kampaň se neodesílal automaticky, musíte ručně odesílání prostřednictvím rozhraní Reach API.
-* Je-li použít vlastní kategorii v Reach k zobrazení oznámení v aplikaci, je nutné postupovat správné životní cyklus oznámení, jinak oznámení nemusí být vymazán když uživatel zprávu zavřete.
+* Cílení na základě na telefon, který se může zpozdit nastavení (namísto značky informace o aplikaci) nabízených oznámení, protože Azure Mobile Engagement může mít toorequest data z hello phone reálném čase před odesláním oznámení.
+* Kampaně vytvořen bez koncové datum hello nabízené místně uložených na zařízení hello a zobrazit ji hello při příštím otevření aplikace hello i v případě, že ručně hello kampaň skončí.
+* Spouštění více než jeden kampaně v hello stejnou dobu může trvat delší dobu tooscan vaší uživatelské základny (zkuste tooonly spuštění jedné kampaně najednou s maximálně čtyři, také cíle jen aktivní uživatele tooyour tak, aby starý uživatelé nemají toobe zkontrolovat).
+* Pokud použijete možnost "Ignorovat cílovou skupinu, nabízení se odešle toousers prostřednictvím rozhraní API hello" hello v části "Kampaně" hello kampaně Reach hello kampaň bude neodesílal automaticky, budete potřebovat toosend ručně pomocí hello Reach API.
+* Pokud používáte vlastní kategorii v oznámení v aplikaci toodisplay Reach, budete potřebovat toofollow hello správné životní cyklus oznámení, jinak hello oznámení nemusí být vymazán při hello uživatele zprávu zavřete.
 

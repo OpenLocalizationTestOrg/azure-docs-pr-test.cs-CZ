@@ -1,6 +1,6 @@
 ---
-title: "Strojového učení dokumentace doporučení rozhraní API | Microsoft Docs"
-description: "Dokumentace Azure Machine Learning doporučení API pro modul doporučení k dispozici na webu Microsoft Azure Marketplace."
+title: "aaaMachine dokumentaci k rozhraní API doporučení Learning | Microsoft Docs"
+description: "Dokumentace Azure Machine Learning doporučení API pro modul doporučení k dispozici v hello Microsoft Azure Marketplace."
 services: machine-learning
 documentationcenter: 
 author: LuisCabrer
@@ -16,17 +16,17 @@ ms.date: 03/31/2017
 ms.author: LuisCa
 ROBOTS: NOINDEX
 redirect_url: machine-learning-datamarket-deprecation
-redirect_document_id: TRUE
-ms.openlocfilehash: 1fba64d78d779344e2895b0d54419186b7584865
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: d1cec228bf23870c05c8ab8df2779b0c3c65b06d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-machine-learning-recommendations-api-documentation"></a>Dokumentace k rozhraní Azure Machine Learning Recommendations API
 > [!NOTE]
-> Měli byste začít používat službu doporučení rozhraní API kognitivní místo tuto verzi. Službu kognitivní doporučení budou nahrazení této služby, a všechny nové funkce bude vyvinutý existuje. Obsahuje nové funkce, jako je dávkování podpory, lepší Explorer rozhraní API, čisticí prostředí plochy, konzistentnější registrace nebo fakturace rozhraní API, atd.
-> Další informace o [migraci na novou službu kognitivní](http://aka.ms/recomigrate)
+> Měli byste začít používat hello kognitivní služby API doporučení místo tuto verzi. Hello kognitivní službu doporučení budou nahrazení této služby, a všechny nové funkce hello bude vyvinutý existuje. Obsahuje nové funkce, jako je dávkování podpory, lepší Explorer rozhraní API, čisticí prostředí plochy, konzistentnější registrace nebo fakturace rozhraní API, atd.
+> Další informace o [toohello migrace nové kognitivní služby](http://aka.ms/recomigrate)
 > 
 > 
 
@@ -35,58 +35,58 @@ Tento dokument znázorňuje rozhraní API Microsoft Azure Machine Learning dopor
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="1-general-overview"></a>1. Obecné – přehled
-Tento dokument je referenční dokumentace rozhraní API. Měli byste začít s dokumentu "Azure Machine Learning doporučení – rychlý Start".
+Tento dokument je referenční dokumentace rozhraní API. Měli byste začít s hello "Azure Machine Learning doporučení – rychlý Start" dokumentu.
 
-Rozhraní API služby Azure Machine Learning doporučení je možné rozdělit do následujících logických skupin:
+Hello Azure Machine Learning doporučení API je možné rozdělit do hello následující logické skupiny:
 
 * <ins>Omezení</ins> -omezení rozhraní API doporučení.
 * <ins>Obecné informace</ins> -informace o ověřování, služba URI a správu verzí.
-* <ins>Model Basic</ins> – rozhraní API, které vám umožňují provádět základní operace v modelu (například vytvářet, aktualizovat a odstraňovat model).
-* <ins>Model Upřesnit</ins> – rozhraní API, která vám umožní získat pokročilé statistiky dat na modelu.
-* <ins>Model obchodní pravidla</ins> – rozhraní API, která vám umožní spravovat obchodní pravidla o výsledcích doporučení modelu.
-* <ins>Katalog</ins> – rozhraní API, které vám umožňují provádět základní operace ve model katalogu. Katalog obsahuje informace o metadatech na položky dat o využití.
-* <ins>Funkce</ins> – rozhraní API umožňujících získáte přehledy na položku do katalogu a jak tyto informace slouží k vytvoření lepší doporučení.
-* <ins>Data o využití</ins> – rozhraní API, které vám umožňují provádět základní operace s daty využití modelu. Ve formuláři Základní data o využití se skládá z řádků, které zahrnují dvojici & č. 60; userId & č. 62; & č. 60; itemId & č. 62;.
-* <ins>Sestavení</ins> – rozhraní API, která vám umožní aktivovat build modelu a provádět základní operace, které se vztahují na tento build. Až budete mít data o využití hodí v situaci, můžete aktivovat sestavení modelu.
-* <ins>Doporučení</ins> – rozhraní API, která vám umožní využívat doporučení až po skončení sestavení modelu.
-* <ins>Uživatelská Data</ins> – rozhraní API, která vám umožní načíst informace o uživatelských dat využití.
-* <ins>Oznámení</ins> – rozhraní API, která vám umožní přijímat oznámení o problémech souvisejících s vaše operace rozhraní API. (Například zasíláte data o využití přes získávání dat a většiny událostí dochází k selhání zpracování. Oznámení o chybě bude vyvolána.)
+* <ins>Model Basic</ins> – rozhraní API, která umožňují toodo hello základní operace v modelu (například vytvářet, aktualizovat a odstraňovat model).
+* <ins>Model Upřesnit</ins> – rozhraní API, která umožňují tooget pokročilé statistiky dat na modelu hello.
+* <ins>Model obchodní pravidla</ins> – rozhraní API, která umožňují toomanage obchodní pravidla o výsledcích doporučení hello modelu.
+* <ins>Katalog</ins> – rozhraní API, která umožňují toodo základní operace ve model katalogu. Katalog obsahuje informace o metadatech na hello položky dat o využití hello.
+* <ins>Funkce</ins> – rozhraní API umožňujících tooget insights na položku do katalogu hello a jak toouse tato doporučení lepší toobuild informace.
+* <ins>Data o využití</ins> – rozhraní API, která umožňují toodo základní operace s daty využití modelu hello. Data o využití v základním tvaru hello se skládá z řádků, které zahrnují dvojici & č. 60; userId & č. 62; & č. 60; itemId & č. 62;.
+* <ins>Sestavení</ins> – rozhraní API, které umožňují tootrigger model sestavení a provést základní operace, které jsou související toothis sestavení. Až budete mít data o využití hodí v situaci, můžete aktivovat sestavení modelu.
+* <ins>Doporučení</ins> – rozhraní API, která umožňují tooconsume doporučení až po skončení hello sestavení modelu.
+* <ins>Uživatelská Data</ins> – rozhraní API, která umožňují toofetch informace o data o využití hello uživatele.
+* <ins>Oznámení</ins> – rozhraní API, která umožňují tooreceive oznámení o problémech souvisejících s operací tooyour rozhraní API. (Například zasíláte data o využití přes získávání dat a většinu hello událostí dochází k selhání zpracování. Oznámení o chybě bude vyvolána.)
 
 ## <a name="2-limitations"></a>2. Omezení
-* Maximální počet modelů podle předplatného je 10.
-* Maximální počet sestavení za modelu je 20.
-* Maximální počet položek, které mohou být uloženy katalog je 100 000.
-* Maximální počet bodů využití, které jsou zachovány je ~ 5 000 000. Nejstarší budou odstraněna, pokud nové se nahrál nebo nahlásí.
-* Maximální velikost dat, který může odeslat v BLOGU (například import data katalogu, data o využití import) je 200MB.
-* Maximální počet položek, které můžete být požádáni o při získávání doporučení je 150.
+* maximální počet modelů jedno předplatné Hello je 10.
+* maximální počet sestavení za modelu Hello je 20.
+* maximální počet položek, které mohou být uloženy katalog Hello je 100 000.
+* maximální počet bodů využití, které jsou zachovány Hello je ~ 5 000 000. Pokud nové se nahrál nebo nahlásí se odstraní nejstarší Hello.
+* maximální velikost dat, který může odeslat v BLOGU (například import data katalogu, data o využití import) Hello je 200MB.
+* maximální počet položek, které můžete být požádáni o při získávání doporučení Hello je 150.
 
 ## <a name="3-apis---general-information"></a>3. Rozhraní API – obecné informace
 ### <a name="31-authentication"></a>3.1. Authentication
-Postupujte podle pokynů Microsoft Azure Marketplace týkající se ověřování. Na webu marketplace podporuje základní nebo OAuth metodu ověřování.
+Postupujte podle pokynů Microsoft Azure Marketplace hello týkající se ověřování. Hello marketplace podporuje metody ověřování Basic nebo OAuth hello.
 
 ### <a name="32-service-uri"></a>3.2. URI služby
-Kořenový adresář identifikátor URI pro rozhraní API služby Azure Machine Learning doporučení je [sem.](https://api.datamarket.azure.com/amla/recommendations/v3/)
+Hello služby kořenová identifikátor URI pro hello rozhraní API služby Azure Machine Learning doporučení je [sem.](https://api.datamarket.azure.com/amla/recommendations/v3/)
 
-Službu úplný identifikátor URI je vyjádřit pomocí elementů specifikace prostředí OData.  
+úplné URI služby Hello je vyjádřit pomocí elementů hello specifikace prostředí OData.  
 
 ### <a name="33-api-version"></a>3.3. Verze rozhraní API
-Každé volání rozhraní API bude mít na konci, parametr dotazu s názvem apiVersion, který musí být nastavena na 1.0.
+Každé volání rozhraní API bude mít na konci hello parametr dotazu s názvem apiVersion, který by mělo být nastavené too1.0.
 
 ### <a name="34-ids-are-case-sensitive"></a>3.4. ID jsou malá a velká písmena
-ID, vrácený některé z rozhraní API se velká a malá písmena a by měl být použit jako takový, při předány jako parametry při následných voláních rozhraní API. ID modelu a ID katalogu pro instanci, jsou velká a malá písmena.
+ID, vrácený žádné hello rozhraní API, jsou velká a malá písmena a by měl být použit jako takový, při předány jako parametry při následných voláních rozhraní API. ID modelu a ID katalogu pro instanci, jsou velká a malá písmena.
 
 ## <a name="4-recommendations-quality-and-cold-items"></a>4. Doporučení kvality a Cold položky
 ### <a name="41-recommendation-quality"></a>4.1. Doporučení kvality
-Vytvoření modelu doporučení je obvykle dostatek, aby umožňovalo systému poskytnout doporučení. Nicméně kvality doporučení se může lišit podle využití zpracovat a pokrytí katalogu. Například pokud máte spoustu cold položky (položek bez významné využití), systém bude mít problémy poskytuje doporučení pro tyto položky nebo pomocí takové položky jako doporučenou jeden. Překonat problém cold položky systému dovoluje metadata položky, které chcete vylepšit doporučení. Tato metadata se označuje jako funkce. Typické funkce jsou autor knihy nebo video z objektu actor. Funkce poskytované prostřednictvím katalogu ve formě řetězce klíč/hodnota. Úplný formát souboru katalogu, naleznete [importovat část katalogu](#81-import-catalog-data). 
+Vytvoření modelu doporučení je obvykle dostatek tooallow hello systému tooprovide doporučení. Nicméně kvality doporučení se liší podle využití hello zpracovat a hello pokrytí hello katalogu. Například pokud máte spoustu cold položky (položek bez významné využití), hello systému bude mít problémy poskytuje doporučení pro tyto položky nebo pomocí takové položky jako doporučenou jeden. V pořadí tooovercome hello cold položky problém umožňuje systém hello hello použití metadata hello položky tooenhance hello doporučení. Tato metadata jsou odkazované tooas funkce. Typické funkce jsou autor knihy nebo video z objektu actor. Funkce poskytované prostřednictvím hello katalogu v podobě hello řetězců klíč/hodnota. Hello úplný formát souboru katalogu hello, naleznete toohello [importovat část katalogu](#81-import-catalog-data). 
 
 ### <a name="42-rank-build"></a>4.2. RANK sestavení
-Funkce můžete vylepšit modelu doporučení, ale k tomu vyžaduje použití smysluplný funkcí. Pro tento účel, který byl zaveden nového sestavení - rank sestavení. Toto sestavení se zařadit užitečnost funkcí. Důležité funkce je funkce s skóre pořadí 2 nebo vyšší.
-Po porozumět tomu, které funkce mají význam, aktivovat build doporučení s seznamu (nebo dílčí seznam) smysluplný funkce. Je možné použít tyto funkce pro zvýšení záložním položky a cold položky. Chcete-li je používat pro záložním položky `UseFeatureInModel` parametr sestavení by měly být nastavené. Aby bylo možné používat funkce pro studenou položky `AllowColdItemPlacement` by měl být povolen parametr sestavení.
-Poznámka: Není možné povolit `AllowColdItemPlacement` bez povolení `UseFeatureInModel`.
+Funkce můžete vylepšit hello doporučení modelu, ale toodo proto vyžaduje použití hello smysluplný funkcí. Pro tento účel, který byl zaveden nového sestavení - rank sestavení. Toto sestavení se zařadit hello užitečnost funkcí. Důležité funkce je funkce s skóre pořadí 2 nebo vyšší.
+Po porozumět tomu, které funkce hello mají význam, aktivovat build doporučení s seznamu hello (nebo dílčí seznam) smysluplný funkcí. Je možné toouse, které tyto funkce pro vylepšení hello záložním položky a cold položky. V pořadí toouse je záložním položky hello `UseFeatureInModel` parametr sestavení by měly být nastavené. V pořadí toouse funkce pro studenou položky, hello `AllowColdItemPlacement` by měl být povolen parametr sestavení.
+Poznámka: Není možné tooenable `AllowColdItemPlacement` bez povolení `UseFeatureInModel`.
 
 ### <a name="43-recommendation-reasoning"></a>4.3. Doporučení reasoning
-Doporučení reasoning je další aspekt používání funkcí. Modul Azure Machine Learning doporučení skutečně, můžete použít funkce k vysvětlení doporučení (také známa jako důvody), což větší jistotou v položce doporučené od doporučení příjemce.
-Chcete-li povolit reasoning, `AllowFeatureCorrelation` a `ReasoningFeatureList` instalační program před požaduje doporučení sestavení musí být parametry.
+Doporučení reasoning je další aspekt používání funkcí. Ve skutečnosti hello modul Azure Machine Learning doporučení můžete použít funkce tooprovide doporučení vysvětlení (také známa jako odůvodnění), mezer na začátku toomore spolehlivosti v hello doporučuje položky z hello doporučení příjemce.
+tooenable odůvodnění, hello `AllowFeatureCorrelation` a `ReasoningFeatureList` musí být parametry instalace předchozí toorequesting sestavení doporučení.
 
 ## <a name="5-model-basic"></a>5. Model Basic
 ### <a name="51-create-model"></a>5.1. Vytvoření modelu
@@ -107,7 +107,7 @@ Vytvoří žádost o "Vytvoření modelu".
 
 Kód stavu HTTP: 200
 
-* `feed/entry/content/properties/id`-Obsahuje ID modelu.
+* `feed/entry/content/properties/id`-Obsahuje ID hello modelu.
   **Poznámka:**: ID modelu je malá a velká písmena.
 
 OData XML
@@ -149,7 +149,7 @@ Vytvoří žádost o "get model".
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| id |Jedinečný identifikátor modelu (malá a velká písmena) |
+| id |Jedinečný identifikátor modelu hello (malá a velká písmena) |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -158,15 +158,15 @@ Vytvoří žádost o "get model".
 
 Kód stavu HTTP: 200
 
-Data modelu naleznete v části následující prvky:
+data modelu Hello najdete v části hello následující prvky:
 
 * `feed/entry/content/properties/Id`-Jedinečné ID modelu.
 * `feed/entry/content/properties/Name`-Název modelu.
 * `feed/entry/content/properties/Date`-Datum vytvoření model.
-* `feed/entry/content/properties/Status`-Modelu stav. Jeden z následujících:
+* `feed/entry/content/properties/Status`-Modelu stav. Jedna z následujících hello:
   * Vytvořit - Model je vytvořený a neobsahuje katalogu a využití.
   * ReadyForBuild - Model se vytvoří a obsahuje katalogu a využití.
-* `feed/entry/content/properties/HasActiveBuild`-Určuje, pokud byl úspěšně sestaven modelu.
+* `feed/entry/content/properties/HasActiveBuild`-Určuje, pokud byl úspěšně sestaven hello modelu.
 * `feed/entry/content/properties/BuildId`-ID modelu active sestavení.
 * `feed/entry/content/properties/Mpr`-Model střední percentilu hodnocení (MPR - Další informace naleznete v tématu ModelInsight).
 * `feed/entry/content/properties/UserName`-Model interní uživatelské jméno.
@@ -205,7 +205,7 @@ OData XML
     </feed>
 
 ### <a name="53----get-all-models"></a>5.3.    Získat všechny modely
-Načte všechny modely aktuálního uživatele.
+Načte všechny modely hello aktuálního uživatele.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -224,10 +224,10 @@ Kód stavu HTTP: 200
 * `feed/entry/content/properties/Id`-Jedinečné ID modelu.
 * `feed/entry/content/properties/Name`-Název modelu.
 * `feed/entry/content/properties/Date`-Datum vytvoření model.
-* `feed/entry/content/properties/Status`-Modelu stav. Jeden z následujících:
+* `feed/entry/content/properties/Status`-Modelu stav. Jedna z následujících hello:
   * Vytvořit - Model je vytvořený a neobsahuje katalogu a využití.
   * ReadyForBuild - Model se vytvoří a obsahuje katalogu a využití.
-* `feed/entry/content/properties/HasActiveBuild`-Určuje, pokud byl úspěšně sestaven modelu.
+* `feed/entry/content/properties/HasActiveBuild`-Určuje, pokud byl úspěšně sestaven hello modelu.
 * `feed/entry/content/properties/BuildId`-ID modelu active sestavení.
 * `feed/entry/content/properties/Mpr`-Model MPR (Další informace naleznete v tématu ModelInsight).
 * `feed/entry/content/properties/UserName`-Model interní uživatelské jméno.
@@ -270,9 +270,9 @@ OData XML
     </feed>
 
 ### <a name="54----update-model"></a>5.4.    Aktualizace modelu
-Můžete aktualizovat popis modelu nebo ID aktivního sestavení.<br>
-<ins>ID aktivního sestavení</ins> -každé sestavení pro každý model má sestavení ID. ID aktivního sestavení je prvním úspěšném sestavení každý nový model. Jakmile máte ID aktivního sestavení a proveďte další sestavení pro stejný model, je nutné explicitně nastavit jako výchozí ID sestavení Pokud chcete. Když budete používat doporučení, pokud nezadáte ID sestavení, které chcete použít, výchozí nastavení se použije automaticky.<br>
-Tento mechanismus umožňuje – až budete mít model doporučení v produkčním prostředí - pro vytvoření nových modelů a testování je před zvýšením úrovně je do produkčního prostředí.
+Můžete aktualizovat popis modelu hello nebo hello ID aktivního sestavení.<br>
+<ins>ID aktivního sestavení</ins> -každé sestavení pro každý model má sestavení ID. ID aktivního sestavení Hello je hello prvním úspěšném sestavení každý nový model. Jakmile máte ID aktivního sestavení a provádět další sestavení pro hello stejného modelu, je nutné tooexplicitly nastavit jako hello výchozí sestavení ID Pokud budete chtít. Když spotřebujete doporučení, pokud nezadáte ID hello sestavení, který chcete toouse, výchozí hello, jeden budou automaticky použita.<br>
+Tento mechanismus umožňuje - po model doporučení v produkčním prostředí - toobuild nové modely a otestovat je před zvýšením úrovně je tooproduction.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -280,10 +280,10 @@ Tento mechanismus umožňuje – až budete mít model doporučení v produkčn�
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| id |Jedinečný identifikátor modelu (malá a velká písmena) |
+| id |Jedinečný identifikátor modelu hello (malá a velká písmena) |
 | apiVersion |1.0 |
 |  | |
-| Text žádosti |`<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`<Description>New Description</Description>`<br>`<ActiveBuildId>-1</ActiveBuildId>`<br>` </ModelUpdateParams>`<br><br>Všimněte si, že značky XML, popis a ActiveBuildId jsou volitelné. Pokud nechcete nastavit popis nebo ActiveBuildId, odeberte celý značky. |
+| Text žádosti |`<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`<Description>New Description</Description>`<br>`<ActiveBuildId>-1</ActiveBuildId>`<br>` </ModelUpdateParams>`<br><br>Všimněte si, že hello XML značky popis a ActiveBuildId jsou volitelné. Pokud nechcete, aby tooset popis nebo ActiveBuildId, odeberte celý značky hello. |
 
 **Odpověď**:
 
@@ -298,7 +298,7 @@ Odstraní existující model podle ID.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| id |Jedinečný identifikátor modelu (malá a velká písmena) |
+| id |Jedinečný identifikátor modelu hello (malá a velká písmena) |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -331,7 +331,7 @@ OData XML
 
 ## <a name="6-model-advanced"></a>6. Rozšířené modelu
 ### <a name="61----model-data-insight"></a>6.1.    Přehled modelu dat
-Vrátí data o využití, která tento model byl sestaven s statistické údaje.
+Vrátí data o využití hello tento model byl sestaven s statistické údaje.
 
 K dispozici pouze pro sestavení doporučení.
 
@@ -341,7 +341,7 @@ K dispozici pouze pro sestavení doporučení.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -350,12 +350,12 @@ K dispozici pouze pro sestavení doporučení.
 
 Kód stavu HTTP: 200
 
-Data se vrátí jako kolekci vlastností.
+Hello data jsou vrácena jako kolekci vlastností.
 
-* `feed/entry/id/content/properties/key`-Obsahuje název vlastnosti.
-* `feed/entry/id/content/properties/value`-Obsahuje hodnotu vlastnosti.
+* `feed/entry/id/content/properties/key`-Obsahuje název vlastnosti hello.
+* `feed/entry/id/content/properties/value`-Obsahuje hodnotu vlastnosti hello.
 
-Následující tabulka znázorňuje hodnotu, která představuje každý klíč.
+Následující tabulka Hello znázorňuje hello hodnotu, která představuje každý klíč.
 
 | Klíč | Popis |
 |:--- |:--- |
@@ -364,11 +364,11 @@ Následující tabulka znázorňuje hodnotu, která představuje každý klíč.
 | DensificationNumberOfItems |Počet položek po vyřazení položky, které nelze modelována. |
 | DensificationNumberOfUsers |Počet bodů využití po vyřazení uživatelů a položky, které nelze modelována. |
 | DensificationNumberOfRecords |Počet bodů využití po vyřazení uživatelů a položky, které nelze modelována. |
-| MaxItemLength |Počet jedinečných uživatelů pro nejoblíbenější položku. |
+| MaxItemLength |Počet jedinečných uživatelů pro nejoblíbenější položku hello. |
 | MaxUserLength |Maximální počet jedinečných položek pro uživatele. |
 | MinItemLength |Maximální počet jedinečných uživatelů pro položku. |
 | MinUserLength |Minimální počet jedinečných položek pro uživatele. |
-| RawNumberOfItems |Počet položek v souborech použití. |
+| RawNumberOfItems |Počet položek v souborech využití hello. |
 | RawNumberOfUsers |Počet bodů využití před všechny vyřazení. |
 | RawNumberOfRecords |Počet bodů využití před všechny vyřazení. |
 | SamplingNumberOfItems |Není k dispozici |
@@ -567,7 +567,7 @@ OData XML
     </feed>
 
 ### <a name="62----model-insight"></a>6.2.    Přehled modelu
-Vrátí model náhled na aktivní sestavení nebo (je-li zadána) na konkrétní sestavení.
+Vrátí model náhled na hello active sestavení nebo (je-li zadána) na konkrétní sestavení.
 
 K dispozici pouze pro sestavení doporučení.
 
@@ -577,7 +577,7 @@ K dispozici pouze pro sestavení doporučení.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
 | buildId |Volitelné – číslo, které identifikuje úspěšném sestavení. |
 | apiVersion |1.0 |
 |  | |
@@ -587,18 +587,18 @@ K dispozici pouze pro sestavení doporučení.
 
 Kód stavu HTTP: 200
 
-Data se vrátí jako kolekci vlastností.
+Hello data jsou vrácena jako kolekci vlastností.
 
 * `feed/entry/id/content/properties/key`
 * `feed/entry/id/content/properties/value`
 
-Následující tabulka znázorňuje hodnotu, která představuje každý klíč.
+Následující tabulka Hello znázorňuje hello hodnotu, která představuje každý klíč.
 
 | Klíč | Popis |
 |:--- |:--- |
-| CatalogCoverage |Jaké součástí katalogu můžete modelována s vzorce používání. Zbývající položky potřebovat funkce založené na obsah. |
-| Pravidlem zásad správy |Střední percentilu hodnocení modelu. Nižší je lepší. |
-| NumberOfDimensions |Počet dimenzí používá algoritmus factorization matice. |
+| CatalogCoverage |Jaká část hello katalogu můžete modelována s vzorce používání. Hello zbytek hello položky potřebovat funkce založené na obsah. |
+| Pravidlem zásad správy |Střední percentilu hodnocení hello modelu. Nižší je lepší. |
+| NumberOfDimensions |Počet dimenzí používá algoritmus factorization matice hello. |
 
 OData XML
 
@@ -648,7 +648,7 @@ OData XML
     </feed>
 
 ### <a name="63----get-model-sample"></a>6.3.    Získat ukázky modelu
-Získá ukázku modelu doporučení.
+Získá ukázku hello doporučení modelu.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -656,7 +656,7 @@ Získá ukázku modelu doporučení.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -684,115 +684,115 @@ Level 1
     fb8cf7a6-8719-46ee-97d4-92f931d77a3a, Smoke and Mirrors: Short Fictions and Illusions Rating: 0.5188
     8f5fe006-79e4-4679-816b-950989d1db4b, A Place I've Never Been (Contemporary American Fiction) Rating: 0.5156
     d8db4583-cc0f-49ce-bc95-b7fa3491623f, Happiness: A Novel Rating: 0.5156
-50471eec-9aeb-4900-84d7-21567ab18546, If the Buddha Dated: A Handbook for Finding Love on a Spiritual Path
-    cfe922a1-7ca0-4f8d-ad9d-b7cc87bfe0ef, Divine Secrets of the Ya-Ya Sisterhood: A Novel Rating: 0.5266
-    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, The Poisonwood Bible: A Novel Rating: 0.5252
+50471eec-9aeb-4900-84d7-21567ab18546, If hello Buddha Dated: A Handbook for Finding Love on a Spiritual Path
+    cfe922a1-7ca0-4f8d-ad9d-b7cc87bfe0ef, Divine Secrets of hello Ya-Ya Sisterhood: A Novel Rating: 0.5266
+    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, hello Poisonwood Bible: A Novel Rating: 0.5252
     973f8cbd-0846-4f6b-9d28-4dd0d7dc3a19, Pigs in Heaven Rating: 0.5244
     e2cbf7ad-0636-4117-8b30-298da6df7077, Animal Dreams Rating: 0.5227
     6c818fd3-5a09-417d-9ab4-7ffe090f0fef, Confessions of an Ugly Stepsister: A Novel Rating: 0.5222
-5e97148f-defb-4d74-af2d-80f4763bf531, The Deep End of the Ocean (Oprah's Book Club)
-    5e97148f-defb-4d74-af2d-80f4763bf531, The Deep End of the Ocean (Oprah's Book Club) Rating: 0.537
+5e97148f-defb-4d74-af2d-80f4763bf531, hello Deep End of hello Ocean (Oprah's Book Club)
+    5e97148f-defb-4d74-af2d-80f4763bf531, hello Deep End of hello Ocean (Oprah's Book Club) Rating: 0.537
     5dcbac37-2946-4f2a-a0b3-bbe710f9409a, Up Island: A Novel Rating: 0.5277
     bc5b69db-733b-4346-adde-3927544258f7, Downtown Rating: 0.5275
     31fe5c63-3e5a-48d0-802b-d3b0f989a634, Have a Nice Day: A Tale of Blood and Sweatsocks Rating: 0.5252
-    0adf981a-b65b-4c11-b36b-78aca2f948a2, The Perfect Storm: A True Story of Men Against the Sea Rating: 0.5238
-68f97068-ae1a-4163-9e94-396b800b743d, Modoc: The True Story of the Greatest Elephant That Ever Lived
-    68f97068-ae1a-4163-9e94-396b800b743d, Modoc: The True Story of the Greatest Elephant That Ever Lived Rating: 0.5379
-    6724862e-e4e7-4022-9614-1468d8b902ff, Little House on the Prairie Rating: 0.5345
-    cdedb837-1620-496d-94c4-6ccfed888320, Little House in the Big Woods Rating: 0.5325
-    382164ba-406b-4187-b726-d7a54b9d790d, The Tao of Pooh Rating: 0.5309
-    6a068d6a-bb74-4ba3-b3f2-a956c4f9d1b5, On the Banks of Plum Creek Rating: 0.5285
+    0adf981a-b65b-4c11-b36b-78aca2f948a2, hello Perfect Storm: A True Story of Men Against hello Sea Rating: 0.5238
+68f97068-ae1a-4163-9e94-396b800b743d, Modoc: hello True Story of hello Greatest Elephant That Ever Lived
+    68f97068-ae1a-4163-9e94-396b800b743d, Modoc: hello True Story of hello Greatest Elephant That Ever Lived Rating: 0.5379
+    6724862e-e4e7-4022-9614-1468d8b902ff, Little House on hello Prairie Rating: 0.5345
+    cdedb837-1620-496d-94c4-6ccfed888320, Little House in hello Big Woods Rating: 0.5325
+    382164ba-406b-4187-b726-d7a54b9d790d, hello Tao of Pooh Rating: 0.5309
+    6a068d6a-bb74-4ba3-b3f2-a956c4f9d1b5, On hello Banks of Plum Creek Rating: 0.5285
 37ef8e74-e348-44e5-aabc-1d7f9efcb25b, Men Are from Mars Women Are from Venus: A Practical Guide for Improving Communication and Getting What You Want in Your Relationships
     37ef8e74-e348-44e5-aabc-1d7f9efcb25b, Men Are from Mars, Women Are from Venus: A Practical Guide for Improving Communication and Getting What You Want in Your Relationships Rating: 0.5397
     f2be16d4-5faf-4d32-ab83-7ba74d29261e, Politically Correct Bedtime Stories: Modern Tales for Our Life and Times Rating: 0.5207
     ef732c5c-334b-4d6b-ab82-7255eb7286d0, Honor Among Thieves Rating: 0.5195
-    0b209b8c-7cdd-47fd-b940-05c7ff7c60fc, The Giving Tree Rating: 0.5194
-    883b360f-8b42-407f-b977-2f44ad840877, Scary Stories to Tell in the Dark: Collected from American Folklore (Scary Stories) Rating: 0.5184
-ff51b67e-fa8e-4c5e-8f4d-02a928de735d, Men at Work: The Craft of Baseball
-    d008dae9-c73a-40a1-9a9b-96d5cf546f36, The Gulag Archipelago 1918-1956: An Experiment in Literary Investigation I-II Rating: 0.5416
-    ff51b67e-fa8e-4c5e-8f4d-02a928de735d, Men at Work: The Craft of Baseball Rating: 0.5403
+    0b209b8c-7cdd-47fd-b940-05c7ff7c60fc, hello Giving Tree Rating: 0.5194
+    883b360f-8b42-407f-b977-2f44ad840877, Scary Stories tooTell in hello Dark: Collected from American Folklore (Scary Stories) Rating: 0.5184
+ff51b67e-fa8e-4c5e-8f4d-02a928de735d, Men at Work: hello Craft of Baseball
+    d008dae9-c73a-40a1-9a9b-96d5cf546f36, hello Gulag Archipelago 1918-1956: An Experiment in Literary Investigation I-II Rating: 0.5416
+    ff51b67e-fa8e-4c5e-8f4d-02a928de735d, Men at Work: hello Craft of Baseball Rating: 0.5403
     49dec30e-0adb-411a-b186-48eaabf6f8bc, Fatherland Rating: 0.5394
-    cc7964fd-d30f-478e-a425-93ddbdf094ed, Magic the Gathering: Arena Vol. 1 Rating: 0.5379
-    8a1e9f36-97af-4614-bed9-24e3940a05f3, More Sniglets: Any Word That Doesn't Appear in the Dictionary but Should Rating: 0.5377
+    cc7964fd-d30f-478e-a425-93ddbdf094ed, Magic hello Gathering: Arena Vol. 1 Rating: 0.5379
+    8a1e9f36-97af-4614-bed9-24e3940a05f3, More Sniglets: Any Word That Doesn't Appear in hello Dictionary but Should Rating: 0.5377
 12a6d988-be21-4a09-8143-9d5f4261ba16, A Dream of Eagles
     07b10e28-9e7c-4032-90b7-10acab7f2460, Cryptonomicon Rating: 0.5417
     e4cc5e69-3567-43ab-b00f-f0d8d0506870, Hit List Rating: 0.5416
-    1f1a34c4-9781-49f5-a3cc-acec3ae3c71d, The Family Rating: 0.5371
+    1f1a34c4-9781-49f5-a3cc-acec3ae3c71d, hello Family Rating: 0.5371
     56daeffe-7d48-43cd-8ef8-7dffd0c103d3, Kilo Class Rating: 0.5366
     b2fe511e-5cb9-4a56-b823-2801e63e6a96, Legal Tender Rating: 0.5366
 df87525b-e435-4bd6-8701-4e60ad344e28, Finding Fish
-    56d33036-dfda-46b9-8e2a-76cb03921bb0, The X-Files: Ground Zero Rating: 0.5417
+    56d33036-dfda-46b9-8e2a-76cb03921bb0, hello X-Files: Ground Zero Rating: 0.5417
     0780cde8-6529-4e1d-b6c6-082c1b80e596, Twelve Red Herrings Rating: 0.5416
     df87525b-e435-4bd6-8701-4e60ad344e28, Finding Fish Rating: 0.5408
-    400fe331-2c35-490c-adbc-b28b4b73d56c, Shall We Tell the President? Rating: 0.5383
+    400fe331-2c35-490c-adbc-b28b4b73d56c, Shall We Tell hello President? Rating: 0.5383
     f86ad7d0-5c03-42b3-aebf-13d44aec8b30, Shades of Grace Rating: 0.5358
-de1f62a4-89e6-44d2-aaee-992a4bf093f1, The Map That Changed the World: William Smith and the Birth of Modern Geology
-    de1f62a4-89e6-44d2-aaee-992a4bf093f1, The Map That Changed the World: William Smith and the Birth of Modern Geology Rating: 0.5422
+de1f62a4-89e6-44d2-aaee-992a4bf093f1, hello Map That Changed hello World: William Smith and hello Birth of Modern Geology
+    de1f62a4-89e6-44d2-aaee-992a4bf093f1, hello Map That Changed hello World: William Smith and hello Birth of Modern Geology Rating: 0.5422
     b303538f-e2c6-4a2c-b425-8d21e684fc3e, My Uncle Oswald Rating: 0.5385
-    34b84627-48af-4a4c-96c4-b26fb3863f56, Midnight In the Garden of Good and Evil Rating: 0.5379
-    306cbaa7-b1a8-4142-9d55-e11b5018a7a8, The Street Lawyer Rating: 0.5376
+    34b84627-48af-4a4c-96c4-b26fb3863f56, Midnight In hello Garden of Good and Evil Rating: 0.5379
+    306cbaa7-b1a8-4142-9d55-e11b5018a7a8, hello Street Lawyer Rating: 0.5376
     e53b4baa-8c09-45c4-95c0-b6a26b98770b, Miss Smillas Feeling for Snow Rating: 0.5367
 
 Level 2
 ---------------
-352aaea1-6b12-454d-a3d5-46379d9e4eb2, The Sinister Pig (Hillerman Tony)
-    352aaea1-6b12-454d-a3d5-46379d9e4eb2, The Sinister Pig (Hillerman Tony) Rating: 0.5425
-    74c49398-bc10-4af5-a658-a996a1201254, Children of the Storm (Peters Elizabeth) Rating: 0.5387
-    9ba80080-196e-43fd-8025-391d963f77e7, The Floating Girl Rating: 0.5372
+352aaea1-6b12-454d-a3d5-46379d9e4eb2, hello Sinister Pig (Hillerman Tony)
+    352aaea1-6b12-454d-a3d5-46379d9e4eb2, hello Sinister Pig (Hillerman Tony) Rating: 0.5425
+    74c49398-bc10-4af5-a658-a996a1201254, Children of hello Storm (Peters Elizabeth) Rating: 0.5387
+    9ba80080-196e-43fd-8025-391d963f77e7, hello Floating Girl Rating: 0.5372
     e68f81d5-7745-4cc7-b943-fedb8fcc2ced, Killer Smile (Scottoline Lisa) Rating: 0.5353
     b2fe511e-5cb9-4a56-b823-2801e63e6a96, Legal Tender Rating: 0.5332
 c65c3995-abf7-4c7b-bb3c-8eb5aa9be7a5, Lake Wobegon days
-    0adf981a-b65b-4c11-b36b-78aca2f948a2, The Perfect Storm: A True Story of Men Against the Sea Rating: 0.5433
+    0adf981a-b65b-4c11-b36b-78aca2f948a2, hello Perfect Storm: A True Story of Men Against hello Sea Rating: 0.5433
     c65c3995-abf7-4c7b-bb3c-8eb5aa9be7a5, Lake Wobegon days Rating: 0.543
-    a00ae6ad-4a7f-4211-9836-75ce8834eb11, Sniglets (Snig'lit: Any Word That Doesn't Appear in the Dictionary But Should) Rating: 0.5327
+    a00ae6ad-4a7f-4211-9836-75ce8834eb11, Sniglets (Snig'lit: Any Word That Doesn't Appear in hello Dictionary But Should) Rating: 0.5327
     6f6e192e-0d64-49ca-9b63-f09413ea1ee6, Politically Correct Holiday Stories: For an Enlightened Yuletide Season Rating: 0.5307
     798051a8-147d-4d46-b0dc-e836325029e6, AGE OF INNOCENCE (MOVIE TIE-IN) Rating: 0.5301
 73f3e25a-e996-4162-9ed8-ff3d34075650, O Pioneers! (Penguin Twentieth-Century Classics)
-    cba8163f-6536-436b-8130-47b4a43c827f, Trust No One (The Official Guide to the X-Files Vol. 2) Rating: 0.5434
+    cba8163f-6536-436b-8130-47b4a43c827f, Trust No One (hello Official Guide toohello X-Files Vol. 2) Rating: 0.5434
     5708e4cb-2492-49c0-94a8-cc413eec5d89, Small Gods (Discworld Novels (Paperback)) Rating: 0.5406
     73f3e25a-e996-4162-9ed8-ff3d34075650, O Pioneers! (Penguin Twentieth-Century Classics) Rating: 0.5403
-    d885b0bd-ae4b-452d-bdf2-faa90197dbc9, The Color of Magic Rating: 0.539
-    b133a9c4-4784-4db3-b100-d0d6dffb94d2, The Truth Is Out There (The Official Guide to the X-Files Vol. 1) Rating: 0.5367
-271700a5-854a-4d5a-8409-6b57a5ee4de4, Fluke: Or I Know Why the Winged Whale Sings
-    271700a5-854a-4d5a-8409-6b57a5ee4de4, Fluke: Or I Know Why the Winged Whale Sings Rating: 0.5445
-    2de1c354-90ff-47c5-a0db-1bad7d88ef94, The Salaryman's Wife (Children of Violence Series) Rating: 0.5329
+    d885b0bd-ae4b-452d-bdf2-faa90197dbc9, hello Color of Magic Rating: 0.539
+    b133a9c4-4784-4db3-b100-d0d6dffb94d2, hello Truth Is Out There (hello Official Guide toohello X-Files Vol. 1) Rating: 0.5367
+271700a5-854a-4d5a-8409-6b57a5ee4de4, Fluke: Or I Know Why hello Winged Whale Sings
+    271700a5-854a-4d5a-8409-6b57a5ee4de4, Fluke: Or I Know Why hello Winged Whale Sings Rating: 0.5445
+    2de1c354-90ff-47c5-a0db-1bad7d88ef94, hello Salaryman's Wife (Children of Violence Series) Rating: 0.5329
     d279416e-19c0-43f8-9ec9-a585947879ca, Zen Attitude Rating: 0.5316
-    c8f854d7-3de3-4b23-8217-f4f851670fd4, Revenge of the Cootie Girls: A Robin Hudson Mystery (Robin Hudson Mysteries (Paperback)) Rating: 0.5305
-    8ef4751c-7074-409e-a3ac-d49b222fc864, Where the Wild Things Are Rating: 0.5289
+    c8f854d7-3de3-4b23-8217-f4f851670fd4, Revenge of hello Cootie Girls: A Robin Hudson Mystery (Robin Hudson Mysteries (Paperback)) Rating: 0.5305
+    8ef4751c-7074-409e-a3ac-d49b222fc864, Where hello Wild Things Are Rating: 0.5289
 9ad1b620-0a7b-4543-8673-66d4c3bcb2f1, Their Eyes Were Watching God
     9ad1b620-0a7b-4543-8673-66d4c3bcb2f1, Their Eyes Were Watching God Rating: 0.5446
-    da45c4d5-aba1-413b-a9bd-50df98b1e1d2, The Bean Trees Rating: 0.5389
-    65ecbdd1-131c-40c3-a3d6-d86ca281377a, The God of Small Things Rating: 0.5387
-    c78743bf-7947-4a0c-8db7-8a3bfe69ba70, The Stone Diaries Rating: 0.5355
+    da45c4d5-aba1-413b-a9bd-50df98b1e1d2, hello Bean Trees Rating: 0.5389
+    65ecbdd1-131c-40c3-a3d6-d86ca281377a, hello God of Small Things Rating: 0.5387
+    c78743bf-7947-4a0c-8db7-8a3bfe69ba70, hello Stone Diaries Rating: 0.5355
     973f8cbd-0846-4f6b-9d28-4dd0d7dc3a19, Pigs in Heaven Rating: 0.5344
-5f17d90a-2604-4fe8-8977-1a280b9098b1, One for the Money (Stephanie Plum Novels (Paperback))
-    5f17d90a-2604-4fe8-8977-1a280b9098b1, One for the Money (Stephanie Plum Novels (Paperback)) Rating: 0.5446
+5f17d90a-2604-4fe8-8977-1a280b9098b1, One for hello Money (Stephanie Plum Novels (Paperback))
+    5f17d90a-2604-4fe8-8977-1a280b9098b1, One for hello Money (Stephanie Plum Novels (Paperback)) Rating: 0.5446
     57169b2b-9a8a-486b-9aac-1ed98ce57168, Final Appeal Rating: 0.5332
     efcb1bc4-7278-4a8f-b491-befde02070d6, Moment of Truth Rating: 0.5329
     1efa91a2-993b-4c43-9f5c-3454fc12612d, Burn Factor Rating: 0.5309
-    24c59962-458a-4ec8-b95d-d694e861919c, At Home in Mitford (The Mitford Years) Rating: 0.5303
-4fd48c46-1a20-4c57-bc7f-a02ef123dc52, As Nature Made Him: The Boy Who Was Raised As a Girl
-    4fd48c46-1a20-4c57-bc7f-a02ef123dc52, As Nature Made Him: The Boy Who Was Raised As a Girl Rating: 0.5449
+    24c59962-458a-4ec8-b95d-d694e861919c, At Home in Mitford (hello Mitford Years) Rating: 0.5303
+4fd48c46-1a20-4c57-bc7f-a02ef123dc52, As Nature Made Him: hello Boy Who Was Raised As a Girl
+    4fd48c46-1a20-4c57-bc7f-a02ef123dc52, As Nature Made Him: hello Boy Who Was Raised As a Girl Rating: 0.5449
     cd5f2c03-20cb-43be-a1fb-3b4233e63222, Pigs in Heaven Rating: 0.5329
-    19985fdb-d07a-4a25-ae4a-97b9cb61e5d1, Love in the Time of Cholera (Penguin Great Books of the 20th Century) Rating: 0.5267
+    19985fdb-d07a-4a25-ae4a-97b9cb61e5d1, Love in hello Time of Cholera (Penguin Great Books of hello 20th Century) Rating: 0.5267
     15689d09-c711-4844-84d8-130a90237b26, Bel Canto Rating: 0.5245
-    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, The Poisonwood Bible: A Novel Rating: 0.5235
+    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, hello Poisonwood Bible: A Novel Rating: 0.5235
 98df28ec-41e7-4fca-b77f-8b0d3109085d, Star Trek Memories
-    f874b5a3-5d40-4436-94ff-0fa1c090ddf5, The Sun Also Rises (A Scribner classic) Rating: 0.5451
+    f874b5a3-5d40-4436-94ff-0fa1c090ddf5, hello Sun Also Rises (A Scribner classic) Rating: 0.5451
     98df28ec-41e7-4fca-b77f-8b0d3109085d, Star Trek Memories Rating: 0.5442
     0ce0014a-9a48-4013-a08a-7f2c11877930, H.M.S. Unseen Rating: 0.5421
-    15316ca6-1e38-425f-893d-691944a47000, More Scary Stories To Tell In The Dark Rating: 0.5409
-    329d5682-3dc3-4206-8aa2-eef4b1032258, Letters from the Earth Rating: 0.54
+    15316ca6-1e38-425f-893d-691944a47000, More Scary Stories tooTell In hello Dark Rating: 0.5409
+    329d5682-3dc3-4206-8aa2-eef4b1032258, Letters from hello Earth Rating: 0.54
 5b9445d5-c072-419c-8d49-6f669bb1b0a9, Daughter of Fortune: A Novel (Oprah's Book Club (Hardcover))
     5b9445d5-c072-419c-8d49-6f669bb1b0a9, Daughter of Fortune: A Novel (Oprah's Book Club (Hardcover)) Rating: 0.5462
-    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, The Poisonwood Bible: A Novel Rating: 0.5372
+    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, hello Poisonwood Bible: A Novel Rating: 0.5372
     604eb3bd-6026-4f51-bffd-9fb54f180400, Family Pictures: A Novel Rating: 0.5341
     8d06d01d-31cd-4678-b6b1-140a67987ce9, Songs in Ordinary Time (Oprah's Book Club (Paperback)) Rating: 0.5334
-    da45c4d5-aba1-413b-a9bd-50df98b1e1d2, The Bean Trees Rating: 0.5319
+    da45c4d5-aba1-413b-a9bd-50df98b1e1d2, hello Bean Trees Rating: 0.5319
 d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven
     d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven Rating: 0.5491
-    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, The Poisonwood Bible: A Novel Rating: 0.5401
-    c78743bf-7947-4a0c-8db7-8a3bfe69ba70, The Stone Diaries Rating: 0.5393
+    ff91a483-1ce5-4b37-a6fd-5ffcf21f8745, hello Poisonwood Bible: A Novel Rating: 0.5401
+    c78743bf-7947-4a0c-8db7-8a3bfe69ba70, hello Stone Diaries Rating: 0.5393
     8d06d01d-31cd-4678-b6b1-140a67987ce9, Songs in Ordinary Time (Oprah's Book Club (Paperback)) Rating: 0.5382
     973f8cbd-0846-4f6b-9d28-4dd0d7dc3a19, Pigs in Heaven Rating: 0.5367
 
@@ -800,17 +800,17 @@ d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven
 
 
 ## <a name="7-model-business-rules"></a>7. Model obchodní pravidla
-Toto jsou typy pravidel, které jsou podporovány:
+Toto jsou typy hello pravidel podporované:
 
-* <strong>BlockList</strong> -BlockList umožňuje zadat seznam položek, které nechcete vracet ve výsledcích doporučení. 
-* <strong>FeatureBlockList</strong> -BlockList funkce umožňuje blokovat položek na základě hodnot její funkce.
+* <strong>BlockList</strong> -BlockList vám umožní tooprovide seznam položek, které nechcete tooreturn ve výsledcích doporučení hello. 
+* <strong>FeatureBlockList</strong> -BlockList funkce umožňuje vám položek tooblock na základě hodnot hello její funkce.
 
-*Neodesílat více než 1 000 položek v jednom blocklist pravidlo nebo volání může časový limit. Pokud potřebujete blokovat více než 1 000 položek, můžete provést několik blocklist volání.*
+*Neodesílat více než 1 000 položek v jednom blocklist pravidlo nebo volání může časový limit. Pokud potřebujete tooblock více než 1 000 položek, můžete provést několik blocklist volání.*
 
-* <strong>Upsale</strong> -Upsale umožňuje vynucovat položek k vrácení ve výsledcích doporučení.
-* <strong>Seznam povolených adres</strong> -seznamu povolených vám umožní pouze navrhovat doporučení ze seznamu položek.
-* <strong>FeatureWhiteList</strong> – seznam povolených funkcí umožňuje pouze doporučujeme položky, které mají hodnoty příslušné funkce.
-* <strong>PerSeedBlockList</strong> -na seznam blokovaných počáteční hodnoty můžete zadat na položku seznam položek, které nemůže být vrácen jako doporučení výsledky.
+* <strong>Upsale</strong> -Upsale vám umožní tooenforce tooreturn položek ve výsledcích doporučení hello.
+* <strong>Seznam povolených adres</strong> -umožňuje seznamu povolených tooonly můžete navrhnout doporučení ze seznamu položek.
+* <strong>FeatureWhiteList</strong> – seznam povolených funkcí vám umožní tooonly doporučujeme položky, které mají hodnoty příslušné funkce.
+* <strong>PerSeedBlockList</strong> – na počáteční hodnoty blokovaných umožňuje tooprovide za položku seznam položek, které nemůže být vrácen jako doporučení výsledky.
 
 ### <a name="71----get-model-rules"></a>7.1.    Získat pravidla modelu
 | Metoda HTTP | IDENTIFIKÁTOR URI |
@@ -819,7 +819,7 @@ Toto jsou typy pravidel, které jsou podporovány:
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -829,7 +829,7 @@ Toto jsou typy pravidel, které jsou podporovány:
 Kód stavu HTTP: 200
 
 * `feed/entry/content/properties/Id`-Jedinečný identifikátor tohoto pravidla.
-* `feed/entry/content/properties/Type`-Typ pravidla.
+* `feed/entry/content/properties/Type`-Typ pravidla hello.
 * `feed/entry/content/properties/Parameter`-Parametr pravidla.
 
 OData XML
@@ -881,25 +881,25 @@ OData XML
 |  | |
 | Text žádosti | |
 
-<ins>Vždy, když poskytnete ID položek obchodní pravidla, nezapomeňte použít externí Id položky (stejným Id, který jste použili v katalogu souboru)</ins><br>
-<ins>Chcete-li přidat pravidlo BlockList:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>
-<ins>Chcete-li přidat pravidlo FeatureBlockList:</ins><br>
+<ins>Vždy, když poskytnete ID položek obchodní pravidla, ujistěte se, zda text hello toouse externí Id položky hello (hello stejným Id, který jste použili v soubor katalogu hello)</ins><br>
+<ins>tooadd BlockList pravidlo:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>
+<ins>tooadd FeatureBlockList pravidlo:</ins><br>
 <br>
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins>Chcete-li přidat pravidlo Upsale:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br>
-<ins>Chcete-li přidat pravidlo seznamu povolených IP adres:</ins><br>
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins>tooadd pravidlo Upsale:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br>
+<ins>tooadd pravidlo seznamu povolených IP adres:</ins><br>
 `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins>
-<ins>Chcete-li přidat pravidlo FeatureWhiteList:</ins><br>
+<ins>tooadd FeatureWhiteList pravidlo:</ins><br>
 <br>
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins>Chcete-li přidat pravidlo PerSeedBlockList:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins>tooadd PerSeedBlockList pravidlo:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
 
 **Odpověď**:
 
 Kód stavu HTTP: 200
 
-Rozhraní API vrátí nově vytvořeného pravidla s jeho podrobnostmi. Vlastnost pravidla lze načíst z následující cesty:
+Hello rozhraní API vrátí hello nově vytvořeného pravidla s jeho podrobnostmi. Vlastnost pravidla Hello lze načíst z hello následující cesty:
 
 * `feed/entry/content/properties/Id`-Jedinečný identifikátor tohoto pravidla.
-* `feed/entry/content/properties/Type`-Typ pravidla: BlockList nebo Upsale.
+* `feed/entry/content/properties/Type`-Typ pravidla hello: BlockList nebo Upsale.
 * `feed/entry/content/properties/Parameter`-Parametr pravidla.
 
 OData XML
@@ -933,8 +933,8 @@ OData XML
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| filterId |Jedinečný identifikátor filtru |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| filterId |Jedinečný identifikátor hello filtru |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -950,7 +950,7 @@ Kód stavu HTTP: 200
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -961,14 +961,14 @@ Kód stavu HTTP: 200
 
 ## <a name="8-catalog"></a>8. Katalogu
 ### <a name="81----import-catalog-data"></a>8.1.    Umožňuje importovat Data Catalog
-Pokud nahrajete několik katalog souborů do stejného modelu s několika volání, jsme vloží nové položky katalogu. Existující položky zůstane s původními hodnotami. Data katalogu nelze aktualizovat pomocí této metody.
+Pokud nahrajete několik katalogu soubory toohello stejný model s několika volání, jsme vloží pouze hello nové položky katalogu. Existující položky zůstane s hello původní hodnoty. Data katalogu nelze aktualizovat pomocí této metody.
 
-Data katalogu postupujte podle následujícího formátu:
+data katalogu Hello postupujte hello následující formát:
 
 * Bez funkce –`<Item Id>,<Item Name>,<Item Category>[,<Description>]`
 * S funkcemi-`<Item Id>,<Item Name>,<Item Category>,[<Description>],<Features list>`
 
-Poznámka: Maximální velikost souboru je 200MB.
+Poznámka: hello maximální velikost souboru je 200MB.
 
 ** Formát podrobností **
 
@@ -976,9 +976,9 @@ Poznámka: Maximální velikost souboru je 200MB.
 |:--- |:--- |:--- |:--- |
 | Id položky |Ano |[A-z], [-z], [0-9] [_] &#40; Podtržítko &#41; [-] &#40; Dash &#41;<br> Maximální délka: 50 |Jedinečný identifikátor položky. |
 | Název položky |Ano |Žádné alfanumerické znaky<br> Maximální délka: 255 |Název položky. |
-| Kategorie položky |Ano |Žádné alfanumerické znaky <br> Maximální délka: 255 |Kategorie, do které patří tato položka (například vaření knihy, obrázkům...); nesmí být prázdné. |
+| Kategorie položky |Ano |Žádné alfanumerické znaky <br> Maximální délka: 255 |Kategorie toowhich tuto položku patří (například vaření knihy, obrázkům...); nesmí být prázdné. |
 | Popis |Ne, pokud funkce jsou k dispozici (ale nesmí být prázdné) |Žádné alfanumerické znaky <br> Maximální délka: 4000 |Popis této položky. |
-| Seznam funkcí |Ne |Žádné alfanumerické znaky <br> Maximální délka: 4000; Maximální počet funkcí: 20 |Čárkami oddělený seznam název funkce = hodnota funkce, který slouží k vylepšení modelu doporučení; v tématu [Advanced témata](#2-advanced-topics) části. |
+| Seznam funkcí |Ne |Žádné alfanumerické znaky <br> Maximální délka: 4000; Maximální počet funkcí: 20 |Čárkami oddělený seznam název funkce = hodnota funkce, které můžou být použité tooenhance modelu doporučení; v tématu [Advanced témata](#2-advanced-topics) části. |
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -987,20 +987,20 @@ Poznámka: Maximální velikost souboru je 200MB.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| Název souboru |Textové identifikátor katalogu.<br>Pouze písmena (A-Z, a – z), čísla (0-9), pomlčky (-) a podtržítka (_) jsou povoleny.<br>Maximální délka: 50 |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| Název souboru |Textové identifikátor hello katalogu.<br>Pouze písmena (A-Z, a – z), čísla (0-9), pomlčky (-) a podtržítka (_) jsou povoleny.<br>Maximální délka: 50 |
 | apiVersion |1.0 |
 |  | |
-| Text žádosti |Příklad (s funkcí):<br/>vytváření 2406e770-769c-4189-89de-1c9283f93a96, Clara Callan adresáře, popis knihy = Richard Wright vydavatele = Harper Flamingo Kanada, rok = 2001<br>21bf8088-b6c0-4509-870c-e1c7ac78304a, místnosti zapomenutí: vytváření A Fiction (Byzantium kniha), kniha,, = Nick Bantock vydavatele = Harpercollins, rok = 1997<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23, Spadework, kniha,, vytvářet = Alexander Findley vydavatele = HarperFlamingo Kanada rok = 2001<br>552a1940-21e4-4399-82bb-594b46d7ed54, omezení zvířata, kniha, popis knihy vytvářet = Magnus lisoven vydavatele = plošinová publikování rok = 1998</pre> |
+| Text žádosti |Příklad (s funkcí):<br/>2406e770-769c-4189-89de-1c9283f93a96, Clara Callan adresáře, popis hello knihy, vytvářet = Richard Wright vydavatele = Harper Flamingo Kanadě rok = 2001<br>hello 21bf8088-b6c0-4509-870c-e1c7ac78304a, Forgetting místnosti: vytváření A Fiction (Byzantium kniha), kniha,, = Nick Bantock vydavatele = Harpercollins, roku = 1997<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23, Spadework, kniha,, vytvářet = Alexander Findley vydavatele = HarperFlamingo Kanada rok = 2001<br>552a1940-21e4-4399-82bb-594b46d7ed54, omezení zvířata, kniha, popis hello knihy, vytvářet = Magnus lisoven vydavatele = plošinová publikování rok = 1998</pre> |
 
 **Odpověď**:
 
 Kód stavu HTTP: 200
 
-Rozhraní API vrátí sestavy importu.
+Hello rozhraní API vrátí sestavy hello importu.
 
 * `feed\entry\content\properties\LineCount`-Přijaté počet řádků.
-* `feed\entry\content\properties\ErrorCount`-Počet řádků, které nebyly vložit z důvodu chyby.
+* `feed\entry\content\properties\ErrorCount`-Počet řádků, které nebyly vložit z důvodu chyby tooan.
 
 OData XML
 
@@ -1027,7 +1027,7 @@ OData XML
 
 ### <a name="82----get-catalog"></a>8.2.    Získat katalogu
 Načte všechny položky katalogu.
-Katalog bude načtených v daný okamžik jednu stránku. Pokud chcete získat položky v konkrétním indexem, můžete použít parametr $skip odata. Například pokud chcete získat položky začínající na pozici 100, přidejte parametr $skip = 100 na požadavek.
+Hello katalog bude načtených v daný okamžik jednu stránku. Pokud chcete tooget položek v konkrétním indexem, můžete použít parametr hello $skip odata. Například pokud chcete tooget položky začínající na pozici 100, přidejte parametr hello $skip = 100 toohello požadavku.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -1035,7 +1035,7 @@ Katalog bude načtených v daný okamžik jednu stránku. Pokud chcete získat p
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -1044,10 +1044,10 @@ Katalog bude načtených v daný okamžik jednu stránku. Pokud chcete získat p
 
 Kód stavu HTTP: 200
 
-Odpověď obsahuje jeden záznam za položka katalogu. Každá položka má následující data:
+Hello odpověď obsahuje jeden záznam za položka katalogu. Každá položka má hello následující data:
 
-* `feed/entry/content/properties/ExternalId`-ID položky katalogu externí, zadanému zákazník.
-* `feed/entry/content/properties/InternalId`-Katalogu interní ID položky, ten, který vygeneruje Azure Machine Learning doporučení.
+* `feed/entry/content/properties/ExternalId`-Externí ID položky katalogu, hello jedno poskytované hello zákazníka.
+* `feed/entry/content/properties/InternalId`-Katalogu interní ID položky hello generovaný Azure Machine Learning doporučení.
 * `feed/entry/content/properties/Name`-Název položky katalogu.
 * `feed/entry/content/properties/Category`-Kategorie položky katalogu.
 * `feed/entry/content/properties/Description`-Katalogu popis položky.
@@ -1119,7 +1119,7 @@ OData XML
             <m:properties>
                 <d:ExternalId m:type="Edm.String">21BF8088-B6C0-4509-870C-E1C7AC78304A</d:ExternalId>
                 <d:InternalId m:type="Edm.String">ea65e4fa-768c-40b4-92c3-69d3e8178691</d:InternalId>
-                <d:Name m:type="Edm.String">The Forgetting Room: A Fiction (Byzantium Book)</d:Name>
+                <d:Name m:type="Edm.String">hello Forgetting Room: A Fiction (Byzantium Book)</d:Name>
                 <d:Category m:type="Edm.String">Book</d:Category>
                 <d:Description m:type="Edm.String"></d:Description>
                 <d:Metadata m:type="Edm.String"></d:Metadata>
@@ -1135,8 +1135,8 @@ OData XML
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| Token |Token názvu položky katalogu. By mělo obsahovat aspoň 3 znaky. |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| Token |Token položka katalogu hello názvu. By mělo obsahovat aspoň 3 znaky. |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -1145,9 +1145,9 @@ OData XML
 
 Kód stavu HTTP: 200
 
-Odpověď obsahuje jeden záznam za položka katalogu. Každá položka má následující data:
+Hello odpověď obsahuje jeden záznam za položka katalogu. Každá položka má hello následující data:
 
-* `feed/entry/content/properties/InternalId`-Katalogu interní ID položky, ten, který vygeneruje Azure Machine Learning doporučení.
+* `feed/entry/content/properties/InternalId`-Katalogu interní ID položky hello generovaný Azure Machine Learning doporučení.
 * `feed/entry/content/properties/Name`-Název položky katalogu.
 * `feed/entry/content/properties/Rating`-(pro budoucí použití)
 * `feed/entry/content/properties/Reasoning`-(pro budoucí použití)
@@ -1184,7 +1184,7 @@ OData XML
 ## <a name="9-usage-data"></a>9. Údaje o využití
 ### <a name="91----import-usage-data"></a>9.1.    Importovat Data o využití
 #### <a name="911-uploading-file"></a>9.1.1. Nahrání souboru
-V této části ukazuje, jak odeslat data o využití pomocí souboru. Můžete volat toto rozhraní API se data o využití. Všechna data o využití se uloží pro všechna volání.
+Tato část uvádí, jak data o využití tooupload pomocí souboru. Můžete volat toto rozhraní API se data o využití. Všechna data o využití se uloží pro všechna volání.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -1192,18 +1192,18 @@ V této části ukazuje, jak odeslat data o využití pomocí souboru. Můžete 
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| Název souboru |Textové identifikátor katalogu.<br>Pouze písmena (A-Z, a – z), čísla (0-9), pomlčky (-) a podtržítka (_) jsou povoleny.<br>Maximální délka: 50 |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| Název souboru |Textové identifikátor hello katalogu.<br>Pouze písmena (A-Z, a – z), čísla (0-9), pomlčky (-) a podtržítka (_) jsou povoleny.<br>Maximální délka: 50 |
 | apiVersion |1.0 |
 |  | |
-| Text žádosti |Data o využití. Formát:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>Name (Název)</th><th>Povinné</th><th>Typ</th><th>Popis</th></tr><tr><td>Id uživatele</td><td>Ano</td><td>[A-z], [-z], [0-9] [_] &#40; Podtržítko &#41; [-] &#40; Dash &#41;<br> Maximální délka: 255 </td><td>Jedinečný identifikátor uživatele.</td></tr><tr><td>Id položky</td><td>Ano</td><td>[A-z], [-z], [0-9] [&#95;] &#40; Podtržítko &#41; [-] &#40; Dash &#41;<br> Maximální délka: 50</td><td>Jedinečný identifikátor položky.</td></tr><tr><td>Čas</td><td>Ne</td><td>Datum ve formátu: rrrr/MM/ddTHH (například 2013/06/20T10:00:00)</td><td>Čas data.</td></tr><tr><td>Událost</td><td>Ne; Pokud zadaný musí taky datum</td><td>Jeden z následujících:<br>• Klikněte na tlačítko<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Nákupu</td><td></td></tr></table><br>Maximální velikost souboru: 200MB<br><br>Příklad:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
+| Text žádosti |Data o využití. Formát:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>Name (Název)</th><th>Povinné</th><th>Typ</th><th>Popis</th></tr><tr><td>Id uživatele</td><td>Ano</td><td>[A-z], [-z], [0-9] [_] &#40; Podtržítko &#41; [-] &#40; Dash &#41;<br> Maximální délka: 255 </td><td>Jedinečný identifikátor uživatele.</td></tr><tr><td>Id položky</td><td>Ano</td><td>[A-z], [-z], [0-9] [&#95;] &#40; Podtržítko &#41; [-] &#40; Dash &#41;<br> Maximální délka: 50</td><td>Jedinečný identifikátor položky.</td></tr><tr><td>Čas</td><td>Ne</td><td>Datum ve formátu: rrrr/MM/ddTHH (například 2013/06/20T10:00:00)</td><td>Čas data.</td></tr><tr><td>Událost</td><td>Ne; Pokud zadaný musí taky datum</td><td>Jedna z následujících hello:<br>• Klikněte na tlačítko<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Nákupu</td><td></td></tr></table><br>Maximální velikost souboru: 200MB<br><br>Příklad:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
 
 **Odpověď**:
 
 Kód stavu HTTP: 200
 
 * `Feed\entry\content\properties\LineCount`-Přijaté počet řádků.
-* `Feed\entry\content\properties\ErrorCount`-Počet řádků, které nebyly vložit z důvodu chyby.
+* `Feed\entry\content\properties\ErrorCount`-Počet řádků, které nebyly vložit z důvodu chyby tooan.
 * `Feed\entry\content\properties\FileId`-Souboru identifikátor.
 
 OData XML
@@ -1232,7 +1232,7 @@ OData XML
 
 
 #### <a name="912-using-data-acquisition"></a>9.1.2. Pomocí získávání dat
-V této části ukazuje, jak k odesílání událostí v reálném čase na Azure Machine Learning doporučení, obvykle z vašeho webu.
+Tato část uvádí, jak toosend událostí v reálném čas tooAzure Machine Learning doporučení, obvykle z vašeho webu.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -1242,7 +1242,7 @@ V této části ukazuje, jak k odesílání událostí v reálném čase na Azur
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
 | apiVersion |1.0 |
-| Text žádosti |Vkládání dat události pro všechny události, který chcete poslat. Byste měli odeslat pro stejné relace uživatele nebo prohlížeče stejné ID v poli ID relace. (Viz ukázka textu události, které jsou níže). |
+| Text žádosti |Vkládání dat události pro všechny události chcete toosend. By měli poslat pro hello stejné relace uživatele nebo prohlížeče hello stejným ID v poli SessionId hello. (Viz ukázka textu události, které jsou níže). |
 
 * Příklad pro události, klikněte na tlačítko'.
   
@@ -1337,7 +1337,7 @@ V této části ukazuje, jak k odesílání událostí v reálném čase na Azur
 
 ### <a name="92----list-model-usage-files"></a>9.2.    Seznam modelu využití souborů
 Načte metadata všechny soubory modelu využití.
-Využití, které budou soubory načtených v daný okamžik jednu stránku. Položky neobsahuje 100 každé stránky. Pokud chcete získat položky v konkrétním indexem, můžete použít parametr $skip odata. Například pokud chcete získat položky začínající na pozici 100, přidejte parametr $skip = 100 na požadavek.
+Hello využití, které budou soubory načíst jednu stránku současně. Položky neobsahuje 100 každé stránky. Pokud chcete tooget položek v konkrétním indexem, můžete použít parametr hello $skip odata. Například pokud chcete tooget položky začínající na pozici 100, přidejte parametr hello $skip = 100 toohello požadavku.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -1345,7 +1345,7 @@ Využití, které budou soubory načtených v daný okamžik jednu stránku. Pol
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| forModelId |Jedinečný identifikátor modelu |
+| forModelId |Jedinečný identifikátor modelu hello |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -1354,12 +1354,12 @@ Využití, které budou soubory načtených v daný okamžik jednu stránku. Pol
 
 Kód stavu HTTP: 200
 
-Odpověď obsahuje jeden záznam za použití souboru. Každá položka má následující data:
+Hello odpověď obsahuje jeden záznam za použití souboru. Každá položka má hello následující data:
 
 * `feed\entry\content\properties\Id`– ID využití souboru.
 * `feed\entry\content\properties\Length`-Využití délka souboru v MB.
-* `feed\entry\content\properties\DateModified`-Datum vytvoření souboru využití.
-* `feed\entry\content\properties\UseInModel`– Jestli využití souboru se používá v modelu.
+* `feed\entry\content\properties\DateModified`-Datum vytvoření souboru využití hello.
+* `feed\entry\content\properties\UseInModel`– Jestli hello využití souboru se používá v modelu hello.
 
 OData XML
 
@@ -1409,10 +1409,10 @@ Získá Statistika využití.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
 | Počátečním |Počáteční datum. Formát: rrrr/MM/ddTHH |
 | Koncové datum |Koncové datum. Formát: rrrr/MM/ddTHH |
-| eventTypes |Textový soubor s oddělovači řetězec typů událostí nebo hodnota null, zobrazíte všechny události |
+| eventTypes |Textový soubor s oddělovači řetězec události typy nebo hodnota null tooget všechny události |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -1421,9 +1421,9 @@ Získá Statistika využití.
 
 Kód stavu HTTP: 200
 
-Kolekci elementů klíč/hodnota. Každé z nich obsahuje součet události pro určitý typ události seskupené podle hodinu.
+Kolekci elementů klíč/hodnota. Každé z nich obsahuje součet hello události pro určitý typ události seskupené podle hodinu.
 
-* `feed\entry[i]\content\properties\Key`-Obsahuje čas (seskupené podle hodinu) a typ události.
+* `feed\entry[i]\content\properties\Key`-Obsahuje dobu hello (seskupené podle hodinu) a typ události hello.
 * `feed\entry[i]\content\properties\Value`-Počet celkový počet událostí.
 
 OData XML
@@ -1486,7 +1486,7 @@ OData XML
     </feed>
 
 ### <a name="94----get-usage-file-sample"></a>9.4.    Získat ukázkový soubor využití
-Načte první 2KB využití obsahu souboru.
+Načte hello první 2KB využití obsahu souboru.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -1494,8 +1494,8 @@ Načte první 2KB využití obsahu souboru.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| fileId |Jedinečný identifikátor využití souboru modelu |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| fileId |Jedinečný identifikátor hello modelu využití souboru |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -1526,7 +1526,7 @@ Odpověď se vrátí ve formátu raw textu:
 
 
 ### <a name="95----get-model-usage-file"></a>9.5.    Získat soubor modelu využití
-Načte celý obsah souboru využití.
+Načte hello celý obsah souboru využití hello.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -1534,8 +1534,8 @@ Načte celý obsah souboru využití.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| Mid – |Jedinečný identifikátor modelu |
-| FID |Jedinečný identifikátor využití souboru modelu |
+| Mid – |Jedinečný identifikátor modelu hello |
+| FID |Jedinečný identifikátor hello modelu využití souboru |
 | Stahování |1 |
 | apiVersion |1.0 |
 |  | |
@@ -1584,7 +1584,7 @@ Odpověď se vrátí ve formátu raw textu:
 </pre>
 
 ### <a name="96----delete-usage-file"></a>9.6.    Odstranit soubor využití
-Odstraní soubor využití zadaného modelu.
+Odstraní soubor hello zadaného modelu využití.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -1592,8 +1592,8 @@ Odstraní soubor využití zadaného modelu.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| fileId |Jedinečný identifikátor souboru k odstranění |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| fileId |Jedinečný identifikátor toobe souboru hello odstranit |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -1611,7 +1611,7 @@ Odstraní všechny soubory modelu využití.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -1621,12 +1621,12 @@ Odstraní všechny soubory modelu využití.
 Kód stavu HTTP: 200
 
 ## <a name="10-features"></a>10. Funkce
-V této části ukazuje, jak načíst informace o funkci, jako je například importované funkce a jejich hodnoty, jejich pořadí a toto pořadí byl přidělen. Funkce importují v rámci katalogu dat a jejich pořadí je pak přidružené, pokud se provádí rank sestavení.
-Funkce pořadí můžete změnit podle vzoru data o využití a typu položky. Ale pro konzistentní využití nebo položky, pořadí by měl mít jenom malé kolísání.
-Pořadí funkcí je nezáporné číslo. Číslo 0 znamená, že tato funkce nebyla seřazeny (se stane, když vyvolání toto rozhraní API před dokončením první rank sestavení). Datum, kdy byl pořadí s atributy se nazývá skóre podle aktuálnosti.
+Tato část uvádí, jak tooretrieve funkci informace, jako je například funkce hello importovat a jejich hodnoty, jejich pořadí, a pokud byl přidělen toto pořadí. Funkce importují v rámci hello katalogu dat a jejich pořadí je pak přidružené, pokud se provádí rank sestavení.
+Funkce pořadí můžete změnit podle vzoru toohello data o využití a typu položky. Ale pro konzistentní využití nebo položky, hello pořadí by měl mít jenom malé kolísání.
+pořadí Hello funkcí je nezáporné číslo. Hello číslo 0 znamená nebyl seřazeny této funkce hello (se stane, když vyvoláte dokončení předchozí toohello hello první rank sestavení toto rozhraní API). hello skóre podle aktuálnosti se nazývá Hello datum, kdy byl hello pořadí s atributy.
 
 ### <a name="101-get-features-info-for-last-rank-build"></a>10.1. Získání informací o funkcích (pro poslední Rank sestavení)
-Načte informace o funkci, včetně hodnocení pro poslední úspěšné rank sestavení.
+Načte informace o funkci hello, včetně hodnocení hello poslední úspěšné rank sestavení.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -1634,8 +1634,8 @@ Načte informace o funkci, včetně hodnocení pro poslední úspěšné rank se
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| samplingSize |Počet hodnot, které chcete pro každou součást podle data, která je obsažená v katalogu. <br/>Možné hodnoty:<br> -1 - všechny vzorky. <br>0 – žádný vzorkování. <br>N - vrátí N ukázky pro každý název funkce. |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| samplingSize |Počet hodnot tooinclude pro každou součást podle toohello data obsažená v katalogu hello. <br/>Možné hodnoty:<br> -1 - všechny vzorky. <br>0 – žádný vzorkování. <br>N - vrátí N ukázky pro každý název funkce. |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -1644,18 +1644,18 @@ Načte informace o funkci, včetně hodnocení pro poslední úspěšné rank se
 
 Kód stavu HTTP: 200
 
-Odpověď obsahuje seznam položek informace o funkci. Každý záznam obsahuje:
+Hello odpovědi obsahuje seznam položek informace o funkci. Každý záznam obsahuje:
 
 * `feed/entry/content/m:properties/d:Name`– Název funkce.
-* `feed/entry/content/m:properties/d:RankUpdateDate`-Datum, kdy pořadí byl přidělen k této funkci také znám jako skóre podle aktuálnosti funkce. Historická data (0001-01-01T00:00:00 ") znamená, že byla provedena žádná rank sestavení.
+* `feed/entry/content/m:properties/d:RankUpdateDate`-Datum, na které hello pořadí byl funkce přidělené toothis také znám jako skóre podle aktuálnosti funkce. Historická data (0001-01-01T00:00:00 ") znamená, že byla provedena žádná rank sestavení.
 * `feed/entry/content/m:properties/d:Rank`– Pořadí funkce (float). Pořadí 2.0 nebo vyšší je považován za dobré funkce.
-* `feed/entry/content/m:properties/d:SampleValues`-Textový soubor s oddělovači seznamu hodnot až je požadovaná velikost vzorkování.
+* `feed/entry/content/m:properties/d:SampleValues`-Textový soubor s oddělovači seznamu hodnot si požadovaná velikost toohello vzorkování.
 
 OData XML
 
     <feed xmlns:base="https://api.datamarket.azure.com/amla/recommendations/v3/GetModelFeatures" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
     <title type="text" />
-    <subtitle type="text">Get the features of a model</subtitle>
+    <subtitle type="text">Get hello features of a model</subtitle>
     <id>https://api.datamarket.azure.com/amla/recommendations/v3/GetModelFeatures?modelId='f13ab2e8-b530-4aa1-86f7-2f4a24714765'&amp;samplingSize='10'&amp;apiVersion='1.0'</id>
     <rights type="text" />
     <updated>2015-01-08T13:15:02Z</updated>
@@ -1705,7 +1705,7 @@ OData XML
 </feed>
 
 ### <a name="102-get-features-info-for-specific-rank-build"></a>10.2. Získání informací o funkcích (pro konkrétní Rank sestavení)
-Načte informace o funkci, včetně hodnocení pro konkrétní rank sestavení.
+Načte informace o funkci hello, včetně hello řazení pro konkrétní rank sestavení.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -1713,9 +1713,9 @@ Načte informace o funkci, včetně hodnocení pro konkrétní rank sestavení.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| samplingSize |Počet hodnot, které chcete pro každou součást podle data, která je obsažená v katalogu.<br/> Možné hodnoty:<br> -1 - všechny vzorky. <br>0 – žádný vzorkování. <br>N - vrátí N ukázky pro každý název funkce. |
-| rankBuildId |Jedinečný identifikátor rank sestavení nebo -1 pro poslední rank sestavení |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| samplingSize |Počet hodnot tooinclude pro každou součást podle toohello data obsažená v katalogu hello.<br/> Možné hodnoty:<br> -1 - všechny vzorky. <br>0 – žádný vzorkování. <br>N - vrátí N ukázky pro každý název funkce. |
+| rankBuildId |Jedinečný identifikátor hello rank sestavení nebo -1 pro hello poslední rank sestavení |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -1724,18 +1724,18 @@ Načte informace o funkci, včetně hodnocení pro konkrétní rank sestavení.
 
 Kód stavu HTTP: 200
 
-Odpověď obsahuje seznam položek informace o funkci. Každý záznam obsahuje:
+Hello odpovědi obsahuje seznam položek informace o funkci. Každý záznam obsahuje:
 
 * `feed/entry/content/m:properties/d:Name`– Název funkce.
-* `feed/entry/content/m:properties/d:RankUpdateDate`-Datum, kdy pořadí byl přidělen k této funkci také znám jako skóre podle aktuálnosti funkce. Historická data (0001-01-01T00:00:00 ") znamená, že byla provedena žádná rank sestavení.
+* `feed/entry/content/m:properties/d:RankUpdateDate`-Datum, na které hello pořadí byl funkce přidělené toothis také znám jako skóre podle aktuálnosti funkce. Historická data (0001-01-01T00:00:00 ") znamená, že byla provedena žádná rank sestavení.
 * `feed/entry/content/m:properties/d:Rank`– Pořadí funkce (float). Pořadí 2.0 nebo vyšší je považován za dobré funkce.
-* `feed/entry/content/m:properties/d:SampleValues`-Textový soubor s oddělovači seznamu hodnot až je požadovaná velikost vzorkování.
+* `feed/entry/content/m:properties/d:SampleValues`-Textový soubor s oddělovači seznamu hodnot si požadovaná velikost toohello vzorkování.
 
 OData
 
     <feed xmlns:base="https://api.datamarket.azure.com/amla/recommendations/v3/GetModelFeatures" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
         <title type="text" />
-        <subtitle type="text">Get the features of a model</subtitle>
+        <subtitle type="text">Get hello features of a model</subtitle>
         <id>https://api.datamarket.azure.com/amla/recommendations/v3/GetModelFeatures?modelId='f13ab2e8-b530-4aa1-86f7-2f4a24714765'&amp;samplingSize='10'&amp;rankBuildId=1000653&amp;apiVersion='1.0'</id>
         <rights type="text" />
         <updated>2015-01-08T13:54:22Z</updated>
@@ -1786,82 +1786,82 @@ OData
 
 
 ## <a name="11-build"></a>11. Sestavení
-  Tato část vysvětluje různé rozhraní API související s sestavení. Existují 3 typy sestavení: sestavení doporučení, rank sestavení a sestavení FBT (často koupili společně).
+  Tato část vysvětluje hello různých rozhraní API související s toobuilds. Existují 3 typy sestavení: sestavení doporučení, rank sestavení a sestavení FBT (často koupili společně).
 
-Účelem sestavení doporučení je chcete generovat model doporučení použít pro předpovědi. Predikce (pro tento typ sestavení) má ve dvou typů:
+účelem sestavení doporučení Hello je toogenerate používá model doporučení pro předpovědi. Predikce (pro tento typ sestavení) má ve dvou typů:
 
-* I2I - také znám jako Doporučení položkami - danou položku nebo seznam položek, tato možnost bude předpovídat seznam položek, které by mohly zajímat vysoké.
-* U2I - také znám jako Uživatele pro položky doporučení – dané id uživatele (a volitelně seznam položek) Tato možnost bude předvídání seznam položek, které by mohly být vysoké týkající se daného uživatele (a další volbu položek). U2I doporučení jsou založená na historii položky, které byly týkající se uživatelů až do okamžiku, kdy byl vytvořený modelu.
+* I2I - také znám jako Položka tooItem doporučení - danou položku nebo seznam položek bude tato možnost předpovědi seznam položek, které jsou pravděpodobně toobe vysoké zájmu.
+* U2I - také znám jako Doporučení tooItem uživatele – zadané id uživatele (a volitelně seznam položek) Tato možnost bude předpovídat seznam položek, které jsou pravděpodobně toobe vysoké týkající se hello daného uživatele (a další volbu položek). Hello U2I doporučení jsou založená na hello historie položek, které byly zajímavé pro uživatele hello až toohello době hello model byl vytvořený.
 
-Rank sestavení je technické sestavení, který umožňuje získat informace o použitelnosti vaší funkcí. Obvykle aby bylo možné získat nejlepších výsledků pro model doporučení zahrnující funkce, byste měli vzít následující kroky:
+Rank sestavení je technické sestavení, který vám umožní toolearn o hello užitečnost vaší funkcí. Obvykle v pořadí tooget hello nejlepší výsledek pro model doporučení zahrnující funkce, byste měli vzít hello následující kroky:
 
-* Aktivovat rank build (Pokud skóre vaší funkcí není stabilní) a počkejte, dokud získat skóre funkce.
-* Načtení pořadí vaší funkce voláním [získat informace o funkcích](#101-get-features-info-for-last-rank-build) rozhraní API.
-* Konfigurace sestavení doporučení s následujícími parametry:
-  * `useFeatureInModel`– Nastavte na hodnotu True.
-  * `ModelingFeatureList`– Nastavte na textový soubor s oddělovači seznam funkcí se skóre 2.0 nebo více (podle pořadí, které jste získali v předchozím kroku).
-  * `AllowColdItemPlacement`– Nastavte na hodnotu True.
-  * Volitelně můžete nastavit `EnableFeatureCorrelation` na hodnotu True a `ReasoningFeatureList` do seznamu funkcí, kterou chcete použít pro vysvětlení (obvykle seznam stejné funkce použité v modelování nebo dílčí seznam).
-* Aktivovat sestavení doporučení s konfigurovanými parametry.
+* Aktivovat rank build (Pokud hello skóre vaší funkcí není stabilní) a počkejte, dokud získat hello funkce skóre.
+* Načíst hello pořadí vaší funkce tak, že volání hello [získat informace o funkcích](#101-get-features-info-for-last-rank-build) rozhraní API.
+* Konfigurace sestavení doporučení s hello následující parametry:
+  * `useFeatureInModel`-Set tooTrue.
+  * `ModelingFeatureList`-Set tooa čárkami oddělený seznam funkcí se skóre 2.0 nebo více (podle pořadí toohello, který jste získali v předchozím kroku hello).
+  * `AllowColdItemPlacement`-Set tooTrue.
+  * Volitelně můžete nastavit `EnableFeatureCorrelation` tooTrue a `ReasoningFeatureList` toohello seznam funkcí, které chcete použít toouse pro vysvětlení (obvykle hello používá stejný seznam funkcí v modelování nebo dílčí seznam).
+* Aktivační událost hello doporučení sestavení s hello nakonfigurovat parametry.
 
-Poznámka: Pokud nenakonfigurujete žádné parametry (například vyvolání doporučení sestavení bez parametrů) nebo explicitně nezakážete využití funkcí (například `UseFeatureInModel` nastavena na hodnotu False), nastaví parametry související s funkcí, které vysvětleno v systému výše uvedené hodnoty v případě, že pořadí sestavení existuje.
+Poznámka: Pokud nenakonfigurujete žádné parametry (například vyvolání hello doporučení sestavení bez parametrů) nebo explicitně nezakážete hello využití funkcí (například `UseFeatureInModel` nastavit tooFalse), systému hello se nastavit parametry související s funkcí hello toohello popsané výše uvedené hodnoty v případě, že existuje rank sestavení.
 
-Neexistuje žádné omezení na spuštění rank sestavení a doporučení sestavení současně pro stejný model. Nicméně na stejný model paralelně nelze spustit dvě sestavení stejného typu.
+Neexistuje žádné omezení na spuštění rank sestavení a doporučení sestavení současně pro hello stejný model. Nicméně nelze spustit dvě sestavení hello stejný typ na hello stejný model paralelně.
 
 Sestavení FBT (často koupili společně) je ještě jiný algoritmus doporučení názvem někdy "konzervativní" doporučené, který je vhodný pro katalogů, které nejsou ve své podstatě homogenní (homogenní: knihy, filmy, některé jídlo dotazování; bez homogenní: počítače a zařízení, mezi doménami, velmi různorodému).
 
-Poznámka: Pokud využití soubory, které jste odeslali obsahovat volitelné pole "typ události" pak pro FBT modelování pouze "Nákupu" události se použije. Pokud je k dispozici žádný typ události, že všechny události bude považovat za nákupu.
+Poznámka: Pokud hello využití soubory, které jste odeslali obsahovat hello volitelné pole "typ události" pak pro FBT modelování pouze "Nákupu" události se použije. Pokud je k dispozici žádný typ události, že všechny události bude považovat za nákupu.
 
 #### <a name="111-build-parameters"></a>11.1 sestavení parametry
-Každý typ sestavení je možné nakonfigurovat přes sadu parametrů (které popsané níže). Pokud nenakonfigurujete parametry, systém automaticky atribut hodnoty na parametry podle informace obsažené v době, že aktivovat build.
+Každý typ sestavení je možné nakonfigurovat přes sadu parametrů (které popsané níže). Pokud nenakonfigurujete hello parametry, bude systém hello automaticky atribut toohello parametrů podle toohello informace obsažené v době hello, že aktivovat build.
 
 ##### <a name="1111-usage-condenser"></a>11.1.1. Chladič využití
-Další šumu než informace může obsahovat uživatele nebo položky s několika bodů využití. Systém se pokusí minimální počet bodů využití na uživatele nebo položku, který se má použít v modelu předpovědi. Toto číslo se bude nacházet v rozsahu definovaného ItemCutoffLowerBound a ItemCutoffUpperBound parametry pro položky a rozsah definovaný hodnotami parametrů UserCutOffLowerBound a UserCutoffUpperBound pro uživatele. Chladič vliv na položky nebo uživatelé se dá minimalizovat nastavení alespoň jeden odpovídající mezí nule.
+Další šumu než informace může obsahovat uživatele nebo položky s několika bodů využití. Hello systém pokusí toopredict hello minimální počet bodů využití podle uživatele nebo položku toobe použít v modelu. Toto číslo se bude v rozsahu hello definované hello ItemCutoffLowerBound a ItemCutoffUpperBound parametry položky a hello rozsah definovaný hello UserCutOffLowerBound a UserCutoffUpperBound parametry pro uživatele. nastavení alespoň jeden z hello odpovídající rozsah toozero můžete minimalizovat Hello chladič vliv na položky nebo uživatelů.
 
 ##### <a name="1112-rank-build-parameters"></a>11.1.2. Pořadí sestavení parametry
-Následující tabulka znázorňuje sestavení parametry rank sestavení.
+Následující tabulka Hello znázorňuje hello sestavení parametry pro rank sestavení.
 
 | Klíč | Popis | Typ | Platnou hodnotu. |
 |:--- |:--- |:--- |:--- |
-| NumberOfModelIterations |Počet iterací, které provádí modelu se odráží celkovou dobu výpočtů a přesnosti modelu. Tím vyšší je číslo, lepší přesnost budete mít, ale bude trvat delší dobu výpočtů. |Integer |10-50 |
-| NumberOfModelDimensions |Počet dimenzí má vztah k číslo modelu se pokusí najít v rámci vašich dat funkcí. Zvýšením počtu dimenzí vám umožní lépe vyladit výsledky do menší clusterů. Však příliš mnoho dimenze zabrání modelu nalézt korelací mezi položkami. |Integer |10-40 |
-| ItemCutOffLowerBound |Definuje položku dolní mez pro chladič. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
-| ItemCutOffUpperBound |Definuje položku horní mez pro chladič. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
-| UserCutOffLowerBound |Definuje dolní mez uživatele pro chladič. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
-| UserCutOffUpperBound |Definuje uživatele horní mez pro chladič. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
+| NumberOfModelIterations |Hello počet iterací provede hello modelu se odráží hello celkové výpočetní čas a hello přesnosti modelu. vyšší číslo hello Hello, hello lepší přesnosti, které budete mít, ale hello výpočetní dobu bude trvat déle. |Integer |10-50 |
+| NumberOfModelDimensions |Hello počet dimenzí platí, že toohello počet "funkce" hello modelu se pokusí toofind v rámci vaše data. Zvýšením počtu hello dimenzí vám umožní lepší doladění hello výsledky do menší clusterů. Však příliš mnoho dimenze zabrání hello modelu nalézt korelací mezi položkami. |Integer |10-40 |
+| ItemCutOffLowerBound |Definuje hello položky dolní mez pro chladič hello. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
+| ItemCutOffUpperBound |Definuje hello položky horní mez pro chladič hello. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
+| UserCutOffLowerBound |Definuje hello uživatele dolní mez pro chladič hello. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
+| UserCutOffUpperBound |Definuje hello uživatele horní mez pro chladič hello. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
 
 ##### <a name="1113-recommendation-build-parameters"></a>11.1.3. Parametry doporučení sestavení
-Následující tabulka znázorňuje parametry sestavení pro sestavení doporučení.
+Následující tabulka Hello znázorňuje hello parametry sestavení pro sestavení doporučení.
 
 | Klíč | Popis | Typ | Platnou hodnotu. |
 |:--- |:--- |:--- |:--- |
-| NumberOfModelIterations |Počet iterací, které provádí modelu se odráží celkovou dobu výpočtů a přesnosti modelu. Tím vyšší je číslo, lepší přesnost budete mít, ale bude trvat delší dobu výpočtů. |Integer |10-50 |
-| NumberOfModelDimensions |Počet dimenzí má vztah k číslo modelu se pokusí najít v rámci vašich dat funkcí. Zvýšením počtu dimenzí vám umožní lépe vyladit výsledky do menší clusterů. Však příliš mnoho dimenze zabrání modelu nalézt korelací mezi položkami. |Integer |10-40 |
-| ItemCutOffLowerBound |Definuje položku dolní mez pro chladič. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
-| ItemCutOffUpperBound |Definuje položku horní mez pro chladič. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
-| UserCutOffLowerBound |Definuje dolní mez uživatele pro chladič. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
-| UserCutOffUpperBound |Definuje uživatele horní mez pro chladič. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
+| NumberOfModelIterations |Hello počet iterací provede hello modelu se odráží hello celkové výpočetní čas a hello přesnosti modelu. vyšší číslo hello Hello, hello lepší přesnosti, které budete mít, ale hello výpočetní dobu bude trvat déle. |Integer |10-50 |
+| NumberOfModelDimensions |Hello počet dimenzí platí, že toohello počet "funkce" hello modelu se pokusí toofind v rámci vaše data. Zvýšením počtu hello dimenzí vám umožní lepší doladění hello výsledky do menší clusterů. Však příliš mnoho dimenze zabrání hello modelu nalézt korelací mezi položkami. |Integer |10-40 |
+| ItemCutOffLowerBound |Definuje hello položky dolní mez pro chladič hello. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
+| ItemCutOffUpperBound |Definuje hello položky horní mez pro chladič hello. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
+| UserCutOffLowerBound |Definuje hello uživatele dolní mez pro chladič hello. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
+| UserCutOffUpperBound |Definuje hello uživatele horní mez pro chladič hello. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
 | Popis |Vytvořte popis. |Řetězec |Jakýkoli text, maximální 512 znaků |
-| EnableModelingInsights |Umožňuje výpočetní metriky pro model doporučení. |Logická hodnota |Hodnotu true nebo False |
-| UseFeaturesInModel |Určuje funkce lze nastavit v zájmu modelu doporučení. |Logická hodnota |Hodnotu true nebo False |
-| ModelingFeatureList |Čárkami oddělený seznam názvů funkcí pro použití v sestavení doporučení, aby se zvýšila doporučení. |Řetězec |Funkce názvy až 512 znaků |
-| AllowColdItemPlacement |Označuje, pokud doporučení by také push cold položky prostřednictvím podobností funkci. |Logická hodnota |Hodnotu true nebo False |
+| EnableModelingInsights |Umožňuje toocompute metriky na hello doporučení modelu. |Logická hodnota |Hodnotu true nebo False |
+| UseFeaturesInModel |Označuje, pokud funkce lze použít v pořadí tooenhance hello doporučení modelu. |Logická hodnota |Hodnotu true nebo False |
+| ModelingFeatureList |Čárkami oddělený seznam toobe názvy funkce použité v sestavení hello doporučení, v pořadí tooenhance hello doporučení. |Řetězec |Názvy funkcí, až too512 znaků |
+| AllowColdItemPlacement |Označuje, pokud hello doporučení by také push cold položky prostřednictvím podobností funkci. |Logická hodnota |Hodnotu true nebo False |
 | EnableFeatureCorrelation |Určuje funkce lze nastavit v reasoning. |Logická hodnota |Hodnotu true nebo False |
-| ReasoningFeatureList |Čárkami oddělený seznam názvů funkcí má být použit pro odůvodnění věty (např. vysvětlení doporučení). |Řetězec |Funkce názvy až 512 znaků |
-| EnableU2I |Povolit přizpůsobené doporučení také znám jako U2I (uživatelům položky doporučení). |Logická hodnota |Logická hodnota (true výchozí) |
+| ReasoningFeatureList |Textový soubor s oddělovači seznam toobe názvy funkcí pro odůvodnění věty (např. vysvětlení doporučení). |Řetězec |Názvy funkcí, až too512 znaků |
+| EnableU2I |Povolit hello přizpůsobené doporučení také znám jako U2I (doporučení tooitem uživatele). |Logická hodnota |Logická hodnota (true výchozí) |
 
 ##### <a name="1114-fbt-build-parameters"></a>11.1.4. Parametry FBT sestavení
-Následující tabulka znázorňuje parametry sestavení pro sestavení doporučení.
+Následující tabulka Hello znázorňuje hello parametry sestavení pro sestavení doporučení.
 
 | Klíč | Popis | Typ | Platnou hodnotu (výchozí) |
 |:--- |:--- |:--- |:--- |
-| FbtSupportThreshold |Jak konzervativní je modelu. Počet položek, které mají být považovány za pro modelování společné opakování. |Integer |3-50 (6) |
-| FbtMaxItemSetSize |Počet položek v sadě časté Bounds. |Integer |2-3 (2) |
-| FbtMinimalScore |Minimální skóre, který by měl být sadu často chcete-li být do vrácených výsledků zahrnuty. Čím lépe. |Double |0 a vyšší (0) |
-| FbtSimilarityFunction |Definuje podobností funkci má být používána sestavení. Navýšení upřednostňuje serendipity, společné výskyt upřednostňuje předvídatelnost a Jaccard je to dobrý kompromis mezi nimi. |Řetězec |cooccurrence, navýšení, jaccard (navýšení) |
+| FbtSupportThreshold |Jak je model konzervativní hello. Počet společné výskyty toobe položky, které jsou považovány za pro modelování. |Integer |3-50 (6) |
+| FbtMaxItemSetSize |Rozsah hello počet položek v sadě časté. |Integer |2-3 (2) |
+| FbtMinimalScore |Minimální skóre, které často sadu by měla mít v pořadí toobe součástí hello vrátí výsledky. Hello vyšší hello lepší. |Double |0 a vyšší (0) |
+| FbtSimilarityFunction |Definuje hello podobností funkci toobe používané hello sestavení. Navýšení upřednostňuje serendipity, společné výskyt upřednostňuje předvídatelnost a Jaccard je to dobrý kompromis mezi dvěma hello. |Řetězec |cooccurrence, navýšení, jaccard (navýšení) |
 
 ### <a name="112-trigger-a-recommendation-build"></a>11.2. Aktivovat Build doporučení
-  Ve výchozím nastavení toto rozhraní API aktivují sestavení modelu doporučení. K aktivaci rank sestavení (Chcete-li stanovení skóre funkce), slouží variant rozhraní API sestavení s parametrem typu sestavení.
+  Ve výchozím nastavení toto rozhraní API aktivují sestavení modelu doporučení. tootrigger pořadí sestavení (v pořadí tooscore funkcí) by mělo být použito hello sestavení rozhraní API variant s parametrem typu sestavení.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -1870,19 +1870,19 @@ Následující tabulka znázorňuje parametry sestavení pro sestavení doporuč
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| userDescription |Textové identifikátor katalogu. Poznámka: Pokud použijete prostory musí zakódovat ho s % 20 místo. Najdete v předchozím příkladu.<br>Maximální délka: 50 |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| userDescription |Textové identifikátor hello katalogu. Poznámka: Pokud použijete prostory musí zakódovat ho s % 20 místo. Najdete v předchozím příkladu.<br>Maximální délka: 50 |
 | apiVersion |1.0 |
 |  | |
-| Text žádosti |Pokud je ponecháno prázdné pak sestavení bude proveden výchozí parametry sestavení.<br><br>Pokud chcete nastavit parametry sestavení, odešlete parametry ve formátu XML do datové části jako následující příklad. (Viz část "Sestavení parametry" Další informace o parametrech.)`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
+| Text žádosti |Pokud je ponecháno prázdné pak hello sestavení bude proveden hello výchozí sestavení parametry.<br><br>Pokud chcete tooset hello sestavení parametry, odešlete do textu hello jako hello následující ukázka hello parametry ve formátu XML. (Viz část hello "sestavení parametry" Vysvětlení parametrů hello.)`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
 
 **Odpověď**:
 
 Kód stavu HTTP: 200
 
-Toto je asynchronní rozhraní API. Zobrazí se ID sestavení jako odpověď. Vědět, pokud sestavení skončila, by měly volat rozhraní API "Získat sestavení stavu systému Model" a vyhledejte toto ID sestavení v odpovědi. Všimněte si, že sestavení může trvat minut až hodin v závislosti na velikosti dat.
+Toto je asynchronní rozhraní API. Zobrazí se ID sestavení jako odpověď. tooknow při sestavení hello skončila, měli byste volání rozhraní API "Získat sestavení stavu systému Model" hello a vyhledejte ID toto sestavení v odpovědi hello. Všimněte si, že sestavení může trvat od toohours minut v závislosti na velikosti hello dat hello.
 
-Nemůžete spotřebovat doporučení do sestavení ukončí.
+Doporučení nelze používat, dokud hello sestavení elementy end.
 
 Stav platný sestavení:
 
@@ -1892,9 +1892,9 @@ Stav platný sestavení:
 * Úspěch - sestavení skončila úspěšně.
 * Chyba: sestavení skončila s chybou.
 * Zrušena - sestavení byla zrušena.
-* Zrušení - byla odeslána žádost o zrušení pro sestavení.
+* Zrušení - byla odeslána žádost o zrušení hello sestavení.
 
-Všimněte si, že ID sestavení naleznete v následující cestě:`Feed\entry\content\properties\Id`
+Všimněte si, že hello sestavení, který ID naleznete v části hello následující cesty:`Feed\entry\content\properties\Id`
 
 OData XML
 
@@ -1943,20 +1943,20 @@ OData XML
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| userDescription |Textové identifikátor katalogu. Poznámka: Pokud použijete prostory musí zakódovat ho s % 20 místo. Najdete v předchozím příkladu.<br>Maximální délka: 50 |
-| buildType |Typ sestavení, která má být vyvolán: <br/> -"Doporučení" doporučení sestavení <br> -Řazení rank sestavení <br/> -'Fbt' FBT sestavení |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| userDescription |Textové identifikátor hello katalogu. Poznámka: Pokud použijete prostory musí zakódovat ho s % 20 místo. Najdete v předchozím příkladu.<br>Maximální délka: 50 |
+| buildType |Typ tooinvoke sestavení hello: <br/> -"Doporučení" doporučení sestavení <br> -Řazení rank sestavení <br/> -'Fbt' FBT sestavení |
 | apiVersion |1.0 |
 |  | |
-| Text žádosti |Pokud je ponecháno prázdné pak sestavení bude proveden výchozí parametry sestavení.<br><br>Pokud chcete nastavit parametry sestavení, odešlete je ve formátu XML do datové části jako v následující ukázce. (Viz část "Sestavení parametry" vysvětlení a úplný seznam parametrů.)`<BuildParametersList><NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance></BuildParametersList>` |
+| Text žádosti |Pokud je ponecháno prázdné pak hello sestavení bude proveden hello výchozí sestavení parametry.<br><br>Pokud chcete tooset sestavení parametry, odešlete je ve formátu XML do textu hello jako v hello následující ukázka. (Viz část hello "sestavení parametry" vysvětlení a úplný seznam parametrů hello.)`<BuildParametersList><NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance></BuildParametersList>` |
 
 **Odpověď**:
 
 Kód stavu HTTP: 200
 
-Toto je asynchronní rozhraní API. Zobrazí se ID sestavení jako odpověď. Vědět, pokud sestavení skončila, by měly volat rozhraní API "Získat sestavení stavu systému Model" a vyhledejte toto ID sestavení v odpovědi. Všimněte si, že sestavení může trvat minut až hodin v závislosti na velikosti dat.
+Toto je asynchronní rozhraní API. Zobrazí se ID sestavení jako odpověď. tooknow při sestavení hello skončila, měli byste volání rozhraní API "Získat sestavení stavu systému Model" hello a vyhledejte ID toto sestavení v odpovědi hello. Všimněte si, že sestavení může trvat od toohours minut v závislosti na velikosti hello dat hello.
 
-Nemůžete spotřebovat doporučení do sestavení ukončí.
+Doporučení nelze používat, dokud hello sestavení elementy end.
 
 Stav platný sestavení:
 
@@ -1968,7 +1968,7 @@ Stav platný sestavení:
 * Zrušena - sestavení byla zrušena.
 * Zrušení - sestavení se ruší.
 
-Všimněte si, že ID sestavení naleznete v následující cestě:`Feed\entry\content\properties\Id`
+Všimněte si, že hello sestavení, který ID naleznete v části hello následující cesty:`Feed\entry\content\properties\Id`
 
 OData XML
 
@@ -2021,29 +2021,29 @@ Načte sestavení a jejich stavu pro zadaný model.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| onlyLastBuild |Označuje, zda vrátit veškerá historie sestavení modelu nebo pouze stav poslední sestavení |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| onlyLastBuild |Určuje, zda všechny hello tooreturn sestavit historie hello modelu nebo pouze stav hello hello poslední sestavení |
 | apiVersion |1.0 |
 
 **Odpověď**:
 
 Kód stavu HTTP: 200
 
-Odpověď obsahuje jeden záznam za sestavení. Každá položka má následující data:
+Hello odpověď obsahuje jeden záznam za sestavení. Každá položka má hello následující data:
 
-* `feed/entry/content/properties/UserName`-Název uživatele.
-* `feed/entry/content/properties/ModelName`-Název modelu.
+* `feed/entry/content/properties/UserName`-Název hello uživatele.
+* `feed/entry/content/properties/ModelName`-Název modelu hello.
 * `feed/entry/content/properties/ModelId`-Model jedinečný identifikátor.
-* `feed/entry/content/properties/IsDeployed`– Jestli (také známa jako nasazení sestavení aktivní sestavení).
+* `feed/entry/content/properties/IsDeployed`– Jestli hello sestavení nasazeno do (také známa jako aktivní sestavení).
 * `feed/entry/content/properties/BuildId`-Vytvořte jedinečný identifikátor.
-* `feed/entry/content/properties/BuildType`-Typ sestavení.
-* `feed/entry/content/properties/Status`-Stav sestavení. Může být jedna z následujících akcí: Chyba, sestavování, zařazeno do fronty, Cancelling, zrušeno, úspěch.
-* `feed/entry/content/properties/StatusMessage`-Zpráva podrobné informace o stavu (platí pouze pro konkrétní stavy).
+* `feed/entry/content/properties/BuildType`-Typ hello sestavení.
+* `feed/entry/content/properties/Status`-Stav sestavení. Může být jedna z následujících hello: Chyba, sestavování, zařazeno do fronty, Cancelling, zrušeno, úspěch.
+* `feed/entry/content/properties/StatusMessage`-Podrobné stavové zprávy (platí pouze toospecific stavy).
 * `feed/entry/content/properties/Progress`-Vytvořte průběh (%).
 * `feed/entry/content/properties/StartTime`-Čas spuštění sestavení.
 * `feed/entry/content/properties/EndTime`-Vytvořte koncový čas.
 * `feed/entry/content/properties/ExecutionTime`-Vytvořte doba trvání.
-* `feed/entry/content/properties/ProgressStep`-Podrobnosti o aktuální fáze sestavení v průběhu.
+* `feed/entry/content/properties/ProgressStep`-Podrobnosti o hello aktuální fáze sestavení v průběhu.
 
 Stav platný sestavení:
 
@@ -2105,28 +2105,28 @@ Načte sestavení stavy všech modelů uživatele.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| onlyLastBuild |Označuje, zda vrátit veškerá historie sestavení modelu nebo pouze stav poslední sestavení. |
+| onlyLastBuild |Určuje, zda všechny hello tooreturn sestavit historie hello modelu nebo pouze stav hello hello poslední sestavení. |
 | apiVersion |1.0 |
 
 **Odpověď**:
 
 Kód stavu HTTP: 200
 
-Odpověď obsahuje jeden záznam za sestavení. Každá položka má následující data:
+Hello odpověď obsahuje jeden záznam za sestavení. Každá položka má hello následující data:
 
-* `feed/entry/content/properties/UserName`-Název uživatele.
-* `feed/entry/content/properties/ModelName`-Název modelu.
+* `feed/entry/content/properties/UserName`-Název hello uživatele.
+* `feed/entry/content/properties/ModelName`-Název modelu hello.
 * `feed/entry/content/properties/ModelId`-Model jedinečný identifikátor.
-* `feed/entry/content/properties/IsDeployed`– Jestli sestavení nasazeno.
+* `feed/entry/content/properties/IsDeployed`– Jestli hello sestavení nasazeno.
 * `feed/entry/content/properties/BuildId`-Vytvořte jedinečný identifikátor.
-* `feed/entry/content/properties/BuildType`-Typ sestavení.
-* `feed/entry/content/properties/Status`-Stav sestavení. Může být jedna z následujících akcí: Chyba, sestavování, zařazeno do fronty, zrušeno, Cancelling, úspěch.
-* `feed/entry/content/properties/StatusMessage`-Zpráva podrobné informace o stavu (platí pouze pro konkrétní stavy).
+* `feed/entry/content/properties/BuildType`-Typ hello sestavení.
+* `feed/entry/content/properties/Status`-Stav sestavení. Může být jedna z následujících hello: Chyba, sestavování, zařazeno do fronty, zrušeno, Cancelling, úspěch.
+* `feed/entry/content/properties/StatusMessage`-Podrobné stavové zprávy (platí pouze toospecific stavy).
 * `feed/entry/content/properties/Progress`-Vytvořte průběh (%).
 * `feed/entry/content/properties/StartTime`-Čas spuštění sestavení.
 * `feed/entry/content/properties/EndTime`-Vytvořte koncový čas.
 * `feed/entry/content/properties/ExecutionTime`-Vytvořte doba trvání.
-* `feed/entry/content/properties/ProgressStep`-Podrobnosti o aktuální fáze sestavení v průběhu.
+* `feed/entry/content/properties/ProgressStep`-Podrobnosti o hello aktuální fáze sestavení v průběhu.
 
 Stav platný sestavení:
 
@@ -2182,7 +2182,7 @@ OData XML
 ### <a name="116-delete-build"></a>11.6. Odstranění sestavení
 Odstraní sestavení.
 
-POZNÁMKA: <br>Nelze odstranit aktivní sestavení. Model je třeba aktualizovat na různých active Build před odstraněním.<br>Nelze odstranit v průběhu sestavení. Sestavení by měl zrušit nejdřív voláním <strong>zrušit sestavení</strong>.
+POZNÁMKA: <br>Nelze odstranit aktivní sestavení. Hello model by měl být před odstraněním aktualizovat tooa různých active sestavení.<br>Nelze odstranit v průběhu sestavení. Sestavení hello měli nejprve zrušit voláním <strong>zrušit sestavení</strong>.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -2190,7 +2190,7 @@ POZNÁMKA: <br>Nelze odstranit aktivní sestavení. Model je třeba aktualizovat
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| buildId |Jedinečný identifikátor sestavení. |
+| buildId |Jedinečný identifikátor hello sestavení. |
 | apiVersion |1.0 |
 
 **Odpověď:**
@@ -2206,7 +2206,7 @@ Zruší sestavení se při vytváření stavu.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| buildId |Jedinečný identifikátor sestavení. |
+| buildId |Jedinečný identifikátor hello sestavení. |
 | apiVersion |1.0 |
 
 **Odpověď:**
@@ -2222,7 +2222,7 @@ Načte sestavení parametry.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| buildId |Jedinečný identifikátor sestavení. |
+| buildId |Jedinečný identifikátor hello sestavení. |
 | apiVersion |1.0 |
 
 **Odpověď:**
@@ -2234,23 +2234,23 @@ Toto rozhraní API vrátí kolekci elementů klíč/hodnota. Každý prvek před
 * `feed/entry/content/properties/Key`-Vytvořte název parametru.
 * `feed/entry/content/properties/Value`-Vytvořte hodnotu parametru.
 
-Následující tabulka znázorňuje hodnotu, která představuje každý klíč.
+Následující tabulka Hello znázorňuje hello hodnotu, která představuje každý klíč.
 
 | Klíč | Popis | Typ | Platnou hodnotu. |
 |:--- |:--- |:--- |:--- |
-| NumberOfModelIterations |Počet iterací, které provádí modelu se odráží celkovou dobu výpočtů a přesnosti modelu. Tím vyšší je číslo, lepší přesnost budete mít, ale bude trvat delší dobu výpočtů. |Integer |10-50 |
-| NumberOfModelDimensions |Počet dimenzí má vztah k číslo modelu se pokusí najít v rámci vašich dat funkcí. Zvýšením počtu dimenzí vám umožní lépe vyladit výsledky do menší clusterů. Však příliš mnoho dimenze zabrání modelu nalézt korelací mezi položkami. |Integer |10-40 |
-| ItemCutOffLowerBound |Definuje položku dolní mez pro chladič. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
-| ItemCutOffUpperBound |Definuje položku horní mez pro chladič. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
-| UserCutOffLowerBound |Definuje dolní mez uživatele pro chladič. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
-| UserCutOffUpperBound |Definuje uživatele horní mez pro chladič. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
+| NumberOfModelIterations |Hello počet iterací provede hello modelu se odráží hello celkové výpočetní čas a hello přesnosti modelu. vyšší číslo hello Hello, hello lepší přesnosti, které budete mít, ale hello výpočetní dobu bude trvat déle. |Integer |10-50 |
+| NumberOfModelDimensions |Hello počet dimenzí platí, že toohello počet "funkce" hello modelu se pokusí toofind v rámci vaše data. Zvýšením počtu hello dimenzí vám umožní lepší doladění hello výsledky do menší clusterů. Však příliš mnoho dimenze zabrání hello modelu nalézt korelací mezi položkami. |Integer |10-40 |
+| ItemCutOffLowerBound |Definuje hello položky dolní mez pro chladič hello. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
+| ItemCutOffUpperBound |Definuje hello položky horní mez pro chladič hello. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
+| UserCutOffLowerBound |Definuje hello uživatele dolní mez pro chladič hello. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
+| UserCutOffUpperBound |Definuje hello uživatele horní mez pro chladič hello. V tématu Použití chladič výše. |Integer |2 nebo více (0 zakázat chladič) |
 | Popis |Vytvořte popis. |Řetězec |Jakýkoli text, maximální 512 znaků |
-| EnableModelingInsights |Umožňuje výpočetní metriky pro model doporučení. |Logická hodnota |Hodnotu true nebo False |
-| UseFeaturesInModel |Určuje funkce lze nastavit v zájmu modelu doporučení. |Logická hodnota |Hodnotu true nebo False |
-| ModelingFeatureList |Čárkami oddělený seznam názvů funkcí pro použití v sestavení doporučení, aby se zvýšila doporučení. |Řetězec |Funkce názvy až 512 znaků |
-| AllowColdItemPlacement |Označuje, pokud doporučení by také push cold položky prostřednictvím podobností funkci. |Logická hodnota |Hodnotu true nebo False |
+| EnableModelingInsights |Umožňuje toocompute metriky na hello doporučení modelu. |Logická hodnota |Hodnotu true nebo False |
+| UseFeaturesInModel |Označuje, pokud funkce lze použít v pořadí tooenhance hello doporučení modelu. |Logická hodnota |Hodnotu true nebo False |
+| ModelingFeatureList |Čárkami oddělený seznam toobe názvy funkce použité v sestavení hello doporučení, v pořadí tooenhance hello doporučení. |Řetězec |Názvy funkcí, až too512 znaků |
+| AllowColdItemPlacement |Označuje, pokud hello doporučení by také push cold položky prostřednictvím podobností funkci. |Logická hodnota |Hodnotu true nebo False |
 | EnableFeatureCorrelation |Určuje funkce lze nastavit v reasoning. |Logická hodnota |Hodnotu true nebo False |
-| ReasoningFeatureList |Čárkami oddělený seznam názvů funkcí má být použit pro odůvodnění věty (např. vysvětlení doporučení). |Řetězec |Funkce názvy až 512 znaků |
+| ReasoningFeatureList |Textový soubor s oddělovači seznam toobe názvy funkcí pro odůvodnění věty (např. vysvětlení doporučení). |Řetězec |Názvy funkcí, až too512 znaků |
 
 OData XML
 
@@ -2421,7 +2421,7 @@ OData XML
 
 ## <a name="12-recommendation"></a>12. Doporučení
 ### <a name="121-get-item-recommendations-for-active-build"></a>12.1. Získání položky doporučení (pro aktivní sestavení)
-Získejte doporučení active sestavení typu "Doporučení" nebo "Fbt" založené na seznam položek semen (vstupu).
+Získejte doporučení hello active sestavení typu "Doporučení" nebo "Fbt" založené na seznam položek semen (vstup).
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -2429,8 +2429,8 @@ Získejte doporučení active sestavení typu "Doporučení" nebo "Fbt" založen
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| položky ItemID |Textový soubor s oddělovači seznam položek, doporučujeme pro. <br>Pokud je aktivní sestavení typu FBT můžete odeslat pouze jednu položku. <br>Maximální délka: 1024 |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| položky ItemID |Textový soubor s oddělovači seznam hello položky toorecommend pro. <br>Pokud je aktivní sestavení hello zadejte FBT pak můžete odeslat pouze jednu položku. <br>Maximální délka: 1024 |
 | numberOfResults |Počet požadovaných výsledků <br> Maximální počet: 150 |
 | includeMetatadata |Budoucí použití, vždy hodnotu false. |
 | apiVersion |1.0 |
@@ -2439,14 +2439,14 @@ Získejte doporučení active sestavení typu "Doporučení" nebo "Fbt" založen
 
 Kód stavu HTTP: 200
 
-Odpověď obsahuje jeden záznam za doporučené položky. Každá položka má následující data:
+Hello odpověď obsahuje jeden záznam za doporučené položky. Každá položka má hello následující data:
 
 * `Feed\entry\content\properties\Id`– ID Doporučené položky.
-* `Feed\entry\content\properties\Name`-Název položky.
-* `Feed\entry\content\properties\Rating`-Hodnocení doporučení; vyšší číslo znamená vyšší spolehlivosti.
+* `Feed\entry\content\properties\Name`-Název položky hello.
+* `Feed\entry\content\properties\Rating`-Hodnocení hello doporučení; vyšší číslo znamená vyšší spolehlivosti.
 * `Feed\entry\content\properties\Reasoning`-Doporučení důvody (např. vysvětlení doporučení).
 
-Následující příklad odpověď obsahuje 10 doporučené položek.
+odpověď příklad Hello níže zahrnuje 10 položek doporučené.
 
 OData XML
 
@@ -2608,28 +2608,28 @@ Získejte doporučení konkrétní sestavení typu "Doporučení" nebo "Fbt".
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| položky ItemID |Textový soubor s oddělovači seznam položek, doporučujeme pro. <br>Pokud je aktivní sestavení typu FBT můžete odeslat pouze jednu položku. <br>Maximální délka: 1024 |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| položky ItemID |Textový soubor s oddělovači seznam hello položky toorecommend pro. <br>Pokud je aktivní sestavení hello zadejte FBT pak můžete odeslat pouze jednu položku. <br>Maximální délka: 1024 |
 | numberOfResults |Počet požadovaných výsledků <br> Maximální počet: 150 |
 | includeMetatadata |Budoucí použití, vždy hodnotu false. |
-| buildId |id sestavení, který má používat pro tento požadavek doporučení |
+| buildId |Hello sestavení toouse id pro tento požadavek doporučení |
 | apiVersion |1.0 |
 
 **Odpověď:**
 
 Kód stavu HTTP: 200
 
-Odpověď obsahuje jeden záznam za doporučené položky. Každá položka má následující data:
+Hello odpověď obsahuje jeden záznam za doporučené položky. Každá položka má hello následující data:
 
 * `Feed\entry\content\properties\Id`– ID Doporučené položky.
-* `Feed\entry\content\properties\Name`-Název položky.
-* `Feed\entry\content\properties\Rating`-Hodnocení doporučení; vyšší číslo znamená vyšší spolehlivosti.
+* `Feed\entry\content\properties\Name`-Název položky hello.
+* `Feed\entry\content\properties\Rating`-Hodnocení hello doporučení; vyšší číslo znamená vyšší spolehlivosti.
 * `Feed\entry\content\properties\Reasoning`-Doporučení důvody (např. vysvětlení doporučení).
 
 Podívejte se na příklad odpovědi v 12.1
 
 ### <a name="123-get-fbt-recommendations-for-active-build"></a>12.3. Získejte doporučení FBT (pro aktivní sestavení)
-Získejte doporučení active sestavení typu "Fbt" v závislosti na položce počáteční hodnotu (vstup).
+Získejte doporučení hello active sestavení typu "Fbt" v závislosti na položce počáteční hodnotu (vstup).
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -2637,10 +2637,10 @@ Získejte doporučení active sestavení typu "Fbt" v závislosti na položce po
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| itemId |Doporučujeme pro položku. <br>Maximální délka: 1024 |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| itemId |Položka toorecommend pro. <br>Maximální délka: 1024 |
 | numberOfResults |Počet požadovaných výsledků <br>Maximální počet: 150 |
-| minimalScore |Minimální skóre, který chcete-li být do vrácených výsledků zahrnuty by měl být časté sady |
+| minimalScore |Minimální skóre, které často sadu by měla mít v pořadí toobe součástí hello vrátí výsledky |
 | includeMetatadata |Budoucí použití, vždy hodnotu false. |
 | apiVersion |1.0 |
 
@@ -2648,16 +2648,16 @@ Získejte doporučení active sestavení typu "Fbt" v závislosti na položce po
 
 Kód stavu HTTP: 200
 
-Odpověď obsahuje jeden záznam za sadu Doporučené položky (sady položek, které jsou obvykle koupili společně s položka počáteční hodnoty nebo vstupních). Každá položka má následující data:
+Hello odpověď obsahuje jeden záznam za sadu Doporučené položky (sady položek, které jsou obvykle koupili společně s položka počáteční hodnoty nebo vstupních hello). Každá položka má hello následující data:
 
 * `Feed\entry\content\properties\Id1`– ID Doporučené položky.
-* `Feed\entry\content\properties\Name1`-Název položky.
+* `Feed\entry\content\properties\Name1`-Název položky hello.
 * `Feed\entry\content\properties\Id2`ID položky doporučené 2. (volitelné).
-* `Feed\entry\content\properties\Name2`-Název 2. položka (volitelné).
-* `Feed\entry\content\properties\Rating`-Hodnocení doporučení; vyšší číslo znamená vyšší spolehlivosti.
+* `Feed\entry\content\properties\Name2`-Název hello 2. položka (volitelné).
+* `Feed\entry\content\properties\Rating`-Hodnocení hello doporučení; vyšší číslo znamená vyšší spolehlivosti.
 * `Feed\entry\content\properties\Reasoning`-Doporučení důvody (např. vysvětlení doporučení).
 
-Následující příklad odpověď obsahuje 3 sad Doporučené položky.
+odpověď příklad Hello níže obsahuje 3 sad Doporučené položky.
 
 OData XML
 
@@ -2727,25 +2727,25 @@ Získejte doporučení konkrétní sestavení typu "Fbt".
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| itemId |Doporučujeme pro položku. <br>Maximální délka: 1024 |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| itemId |Položka toorecommend pro. <br>Maximální délka: 1024 |
 | numberOfResults |Počet požadovaných výsledků <br>Maximální počet: 150 |
-| minimalScore |Minimální skóre, který chcete-li být do vrácených výsledků zahrnuty by měl být časté sady |
+| minimalScore |Minimální skóre, které často sadu by měla mít v pořadí toobe součástí hello vrátí výsledky |
 | includeMetatadata |Budoucí použití, vždy hodnotu false. |
-| buildId |id sestavení, který má používat pro tento požadavek doporučení |
+| buildId |Hello sestavení toouse id pro tento požadavek doporučení |
 | apiVersion |1.0 |
 
 **Odpověď:**
 
 Kód stavu HTTP: 200
 
-Odpověď obsahuje jeden záznam za sadu Doporučené položky (sady položek, které jsou obvykle koupili společně s položka počáteční hodnoty nebo vstupních). Každá položka má následující data:
+Hello odpověď obsahuje jeden záznam za sadu Doporučené položky (sady položek, které jsou obvykle koupili společně s položka počáteční hodnoty nebo vstupních hello). Každá položka má hello následující data:
 
 * `Feed\entry\content\properties\Id1`– ID Doporučené položky.
-* `Feed\entry\content\properties\Name1`-Název položky.
+* `Feed\entry\content\properties\Name1`-Název položky hello.
 * `Feed\entry\content\properties\Id2`ID položky doporučené 2. (volitelné).
-* `Feed\entry\content\properties\Name2`-Název 2. položka (volitelné).
-* `Feed\entry\content\properties\Rating`-Hodnocení doporučení; vyšší číslo znamená vyšší spolehlivosti.
+* `Feed\entry\content\properties\Name2`-Název hello 2. položka (volitelné).
+* `Feed\entry\content\properties\Rating`-Hodnocení hello doporučení; vyšší číslo znamená vyšší spolehlivosti.
 * `Feed\entry\content\properties\Reasoning`-Doporučení důvody (např. vysvětlení doporučení).
 
 Podívejte se na příklad odpovědi v 12.3
@@ -2753,12 +2753,12 @@ Podívejte se na příklad odpovědi v 12.3
 ### <a name="125-get-user-recommendations-for-active-build"></a>12.5. Získejte doporučení uživatele (pro aktivní sestavení)
 Získejte doporučení uživatele sestavení typu "Doporučení" označená jako aktivní sestavení.
 
-Rozhraní API, vrátí se seznam předpokládaných položky podle historie využití uživatele.
+Hello rozhraní API, vrátí se seznam předpokládaných položky podle historie využití toohello hello uživatele.
 
 Poznámky: 
 
 1. Neexistuje žádný uživatel doporučení pro FBT sestavení.
-2. Pokud je aktivní sestavení FBT bude tato metoda vrátí chybu.
+2. Pokud hello active sestavení je FBT bude tato metoda vrátí chybu.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -2766,8 +2766,8 @@ Poznámky:
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| ID uživatele |Jedinečný identifikátor uživatele |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| ID uživatele |Jedinečný identifikátor uživatele hello |
 | numberOfResults |Počet požadovaných výsledků |
 | includeMetatadata |Budoucí použití, vždy hodnotu false. |
 | apiVersion |1.0 |
@@ -2776,11 +2776,11 @@ Poznámky:
 
 Kód stavu HTTP: 200
 
-Odpověď obsahuje jeden záznam za doporučené položky. Každá položka má následující data:
+Hello odpověď obsahuje jeden záznam za doporučené položky. Každá položka má hello následující data:
 
 * `Feed\entry\content\properties\Id`– ID Doporučené položky.
-* `Feed\entry\content\properties\Name`-Název položky.
-* `Feed\entry\content\properties\Rating`-Hodnocení doporučení; vyšší číslo znamená vyšší spolehlivosti.
+* `Feed\entry\content\properties\Name`-Název položky hello.
+* `Feed\entry\content\properties\Rating`-Hodnocení hello doporučení; vyšší číslo znamená vyšší spolehlivosti.
 * `Feed\entry\content\properties\Reasoning`-Doporučení důvody (např. vysvětlení doporučení).
 
 Podívejte se na příklad odpovědi v 12.1
@@ -2788,12 +2788,12 @@ Podívejte se na příklad odpovědi v 12.1
 ### <a name="126-get-user-recommendations-with-item-list-for-active-build"></a>12.6. Získat doporučení uživatele s položky seznamu (pro aktivní sestavení)
 Získat uživatele doporučení sestavení typu "Doporučení" označená jako aktivní sestavení s další seznam položek
 
-Rozhraní API vrátí seznam předpokládaných položky podle historie využití uživatele a další zadané položky.
+Hello rozhraní API, vrátí se seznam předpokládaných položky podle historie využití toohello hello uživatele a další zadané položky hello.
 
 Poznámky: 
 
 1. Neexistuje žádný uživatel doporučení pro FBT sestavení.
-2. Pokud je aktivní sestavení FBT bude tato metoda vrátí chybu.
+2. Pokud hello active sestavení je FBT bude tato metoda vrátí chybu.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -2801,9 +2801,9 @@ Poznámky:
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| ID uživatele |Jedinečný identifikátor uživatele |
-| itemsIds |Textový soubor s oddělovači seznam položek, doporučujeme pro. Maximální délka: 1024 |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| ID uživatele |Jedinečný identifikátor uživatele hello |
+| itemsIds |Textový soubor s oddělovači seznam hello položky toorecommend pro. Maximální délka: 1024 |
 | numberOfResults |Počet požadovaných výsledků |
 | includeMetatadata |Budoucí použití, vždy hodnotu false. |
 | apiVersion |1.0 |
@@ -2812,11 +2812,11 @@ Poznámky:
 
 Kód stavu HTTP: 200
 
-Odpověď obsahuje jeden záznam za doporučené položky. Každá položka má následující data:
+Hello odpověď obsahuje jeden záznam za doporučené položky. Každá položka má hello následující data:
 
 * `Feed\entry\content\properties\Id`– ID Doporučené položky.
-* `Feed\entry\content\properties\Name`-Název položky.
-* `Feed\entry\content\properties\Rating`-Hodnocení doporučení; vyšší číslo znamená vyšší spolehlivosti.
+* `Feed\entry\content\properties\Name`-Název položky hello.
+* `Feed\entry\content\properties\Rating`-Hodnocení hello doporučení; vyšší číslo znamená vyšší spolehlivosti.
 * `Feed\entry\content\properties\Reasoning`-Doporučení důvody (např. vysvětlení doporučení).
 
 Podívejte se na příklad odpovědi v 12.1
@@ -2824,7 +2824,7 @@ Podívejte se na příklad odpovědi v 12.1
 ### <a name="127-get-user-recommendations--of-a-specific-build"></a>12.7. Získejte doporučení uživatele (z konkrétní sestavení)
 Získejte doporučení uživatele konkrétní sestavení typu "Doporučení".
 
-Rozhraní API, vrátí se seznam předpokládaných položky podle historie využití uživatele (používá se v určitém sestavení).
+Hello rozhraní API, vrátí se seznam předpokládaných položky podle historie využití toohello hello uživatele (používá se v sestavení konkrétní hello).
 
 Poznámka: Neexistuje žádný uživatel doporučení pro FBT sestavení.
 
@@ -2834,30 +2834,30 @@ Poznámka: Neexistuje žádný uživatel doporučení pro FBT sestavení.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| ID uživatele |Jedinečný identifikátor uživatele |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| ID uživatele |Jedinečný identifikátor uživatele hello |
 | numberOfResults |Počet požadovaných výsledků |
 | includeMetatadata |Budoucí použití, vždy hodnotu false. |
-| buildId |id sestavení, který má používat pro tento požadavek doporučení |
+| buildId |Hello sestavení toouse id pro tento požadavek doporučení |
 | apiVersion |1.0 |
 
 **Odpověď:**
 
 Kód stavu HTTP: 200
 
-Odpověď obsahuje jeden záznam za doporučené položky. Každá položka má následující data:
+Hello odpověď obsahuje jeden záznam za doporučené položky. Každá položka má hello následující data:
 
 * `Feed\entry\content\properties\Id`– ID Doporučené položky.
-* `Feed\entry\content\properties\Name`-Název položky.
-* `Feed\entry\content\properties\Rating`-Hodnocení doporučení; vyšší číslo znamená vyšší spolehlivosti.
+* `Feed\entry\content\properties\Name`-Název položky hello.
+* `Feed\entry\content\properties\Rating`-Hodnocení hello doporučení; vyšší číslo znamená vyšší spolehlivosti.
 * `Feed\entry\content\properties\Reasoning`-Doporučení důvody (např. vysvětlení doporučení).
 
 Podívejte se na příklad odpovědi v 12.1
 
 ### <a name="128-get-user-recommendations-with-item-list-of-a-specific-build"></a>12.8. Získat doporučení uživatele s položky seznamu (konkrétní sestavení)
-Získejte doporučení uživatele konkrétní sestavení typu "Doporučení" a seznam dalších položek.
+Získejte doporučení uživatele konkrétní sestavení typu "Doporučení" a hello seznam dalších položek.
 
-Rozhraní API vrátí seznam předpokládaných položky podle historie využití uživatele a další seznam položek.
+Hello rozhraní API, vrátí se seznam předpokládaných položky podle historie využití toohello hello uživatele a hello další seznam položek.
 
 Poznámka: Tthere je žádné uživatele doporučení pro FBT sestavení.
 
@@ -2867,55 +2867,55 @@ Poznámka: Tthere je žádné uživatele doporučení pro FBT sestavení.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
-| ID uživatele |Jedinečný identifikátor uživatele |
-| položky ItemID |Textový soubor s oddělovači seznam položek, doporučujeme pro. Maximální délka: 1024 |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
+| ID uživatele |Jedinečný identifikátor uživatele hello |
+| položky ItemID |Textový soubor s oddělovači seznam hello položky toorecommend pro. Maximální délka: 1024 |
 | numberOfResults |Počet požadovaných výsledků |
 | includeMetatadata |Budoucí použití, vždy hodnotu false. |
-| buildId |id sestavení, který má používat pro tento požadavek doporučení |
+| buildId |Hello sestavení toouse id pro tento požadavek doporučení |
 | apiVersion |1.0 |
 
 **Odpověď:**
 
 Kód stavu HTTP: 200
 
-Odpověď obsahuje jeden záznam za doporučené položky. Každá položka má následující data:
+Hello odpověď obsahuje jeden záznam za doporučené položky. Každá položka má hello následující data:
 
 * `Feed\entry\content\properties\Id`– ID Doporučené položky.
-* `Feed\entry\content\properties\Name`-Název položky.
-* `Feed\entry\content\properties\Rating`-Hodnocení doporučení; vyšší číslo znamená vyšší spolehlivosti.
+* `Feed\entry\content\properties\Name`-Název položky hello.
+* `Feed\entry\content\properties\Rating`-Hodnocení hello doporučení; vyšší číslo znamená vyšší spolehlivosti.
 * `Feed\entry\content\properties\Reasoning`-Doporučení důvody (např. vysvětlení doporučení).
 
 Podívejte se na příklad odpovědi v 12.1
 
 ## <a name="13-user-usage-history"></a>13. Historie využití uživatele
-Jakmile doporučení model byl vytvořený systému umožní načíst historii uživatele (položky přidružené k určitým uživatelem) používá pro sestavení.
-Toto rozhraní API umožňují načíst historii uživatele
+Jakmile doporučení model byl vytvořený umožní hello systém tooretrieve historie uživatelů hello (položky přidružené tooa konkrétního uživatele) používá pro sestavení hello.
+Toto rozhraní API povolit historie uživatelů tooretrieve hello
 
-Poznámka: historie uživatelů je aktuálně k dispozici pouze pro sestavení doporučení.
+Poznámka: historie uživatelů hello je aktuálně k dispozici pouze pro sestavení doporučení.
 
 ### <a name="131-retrieve-user-history"></a>13.1 načíst historii uživatele
-Načtení seznamu položky, které jsou používány v active sestavení nebo v zadané sestavení pro dané id daného uživatele.
+Načtení hello seznam položek, které jsou používány hello active sestavení nebo v hello zadané sestavení pro hello zadané id uživatele.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
-| GET |Načtení historie uživatele active sestavení.<br/>`<rootURI>/GetUserHistory?modelId=%27<model_id>%27&userId=%27<userId>%27&apiVersion=%271.0%27`<br/><br/>Načtení historie uživatele pro danou sestavení`<rootURI>/GetUserHistory?modelId=%27<model_id>%27&userId=%27<userId>%27&buildId=<int>&apiVersion=%271.0%27`<br/><br/>Příklad:`<rootURI>/GetUserHistory?modelId=%2727967136e8-f868-4258-9331-10d567f87fae%27&&userId=%27u_1013%27&apiVersion=%271.0%277` |
+| GET |Zobrazit historii uživatele hello hello active sestavení.<br/>`<rootURI>/GetUserHistory?modelId=%27<model_id>%27&userId=%27<userId>%27&apiVersion=%271.0%27`<br/><br/>Získání historie hello uživatelů pro hello zadané sestavení`<rootURI>/GetUserHistory?modelId=%27<model_id>%27&userId=%27<userId>%27&buildId=<int>&apiVersion=%271.0%27`<br/><br/>Příklad:`<rootURI>/GetUserHistory?modelId=%2727967136e8-f868-4258-9331-10d567f87fae%27&&userId=%27u_1013%27&apiVersion=%271.0%277` |
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu. |
-| ID uživatele |Jedinečný identifikátor uživatele. |
-| buildId |Volitelný parametr, povolit k označení, ze které sestavení historii uživatele by měla být načítání |
+| %{ModelID/ |Jedinečný identifikátor Hello hello modelu. |
+| ID uživatele |Jedinečný identifikátor Hello hello uživatele. |
+| buildId |Volitelný parametr, povolit tooindicate, ze které sestavení by měla být historie uživatelů hello načtení |
 | apiVersion |1.0 |
 
 **Odpověď:**
 
 Kód stavu HTTP: 200
 
-Odpověď obsahuje jeden záznam za doporučené položky. Každá položka má následující data:
+Hello odpověď obsahuje jeden záznam za doporučené položky. Každá položka má hello následující data:
 
 * `Feed\entry\content\properties\Id`– ID Doporučené položky.
-* `Feed\entry\content\properties\Name`-Název položky.
+* `Feed\entry\content\properties\Name`-Název položky hello.
 * `Feed\entry\content\properties\Rating`-NENÍ K DISPOZICI.
 * `Feed\entry\content\properties\Reasoning`-NENÍ K DISPOZICI.
 
@@ -2947,14 +2947,14 @@ OData XML
 </feed>
 
 ## <a name="14-notifications"></a>14. Oznámení
-Azure Machine Learning doporučení vytvoří oznámení, když dojde k trvalé chyby v systému. Existují 3 typy oznámení:
+Azure Machine Learning doporučení vytvoří oznámení, když dojde k trvalé chyby v systému hello. Existují 3 typy oznámení:
 
 1. Sestavení selhání – toto oznámení se aktivuje pro každou chybu sestavení.
-2. Získávání dat zpracování selhání – toto oznámení se aktivuje, když máme více než 100 chyby za posledních 5 minut při zpracování událostí využití za modelu.
-3. Doporučení spotřeba selhání – toto oznámení se aktivuje, když máme více než 100 chyby za posledních 5 minut při zpracování požadavků doporučení za modelu.
+2. Získávání dat zpracování selhání – toto oznámení se aktivuje, když jsme má více než 100 chyby ve hello posledních 5 minut v hello zpracování událostí využití za modelu.
+3. Doporučení spotřeba selhání – toto oznámení se aktivuje, když jsme má více než 100 chyby ve hello posledních 5 minut v hello zpracování požadavků doporučení za modelu.
 
 ### <a name="141-get-notifications"></a>14.1. Dostávat oznámení
-Načte všechna oznámení pro všechny modely nebo pro jeden model.
+Načte všechny hello oznámení pro všechny modely nebo pro jeden model.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -2962,7 +2962,7 @@ Načte všechna oznámení pro všechny modely nebo pro jeden model.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Volitelný parametr. Když tento parametr vynechán, zobrazí se všechna oznámení pro všechny modely. <br>Platná hodnota: Jedinečný identifikátor modelu. |
+| %{ModelID/ |Volitelný parametr. Když tento parametr vynechán, zobrazí se všechna oznámení pro všechny modely. <br>Platná hodnota: Jedinečný identifikátor modelu hello. |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -2973,7 +2973,7 @@ Kód stavu HTTP: 200
 
 OData XML
 
-    The response includes one entry per notification. Each entry has the following data:
+    hello response includes one entry per notification. Each entry has hello following data:
         * feed\entry\content\properties\UserName - Internal user name identification.
         * feed\entry\content\properties\ModelId - Model ID.
         * feed\entry\content\properties\Message - Notification message.
@@ -3013,7 +3013,7 @@ Odstraní všechny čtení oznámení pro model.
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu |
+| %{ModelID/ |Jedinečný identifikátor modelu hello |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -3042,6 +3042,6 @@ Kód stavu HTTP: 200
 ## <a name="15-legal"></a>15. Právní informace
 Tento dokument je poskytován "jako-je". Informace a názory vyjádřené v tomto dokumentu včetně adres URL a dalších odkazů na internetové weby, mohou změnit bez předchozího upozornění.<br><br>
 Některé příklady použité v ukázkách jsou jenom ilustrativní a smyšlené. Žádný skutečný vztah nebo připojení je určený nebo událostmi.<br><br>
-Tento dokument neposkytuje jste žádná zákonná práva duševního vlastnictví produktů společnosti Microsoft. Můžete kopírovat a tento dokument použít pro interní referenční účely.<br><br>
+Tento dokument vám neposkytuje žádná zákonná práva tooany týkající se duševního vlastnictví produktů společnosti Microsoft. Můžete kopírovat a tento dokument použít pro interní referenční účely.<br><br>
 © 2015 Microsoft. Všechna práva vyhrazena.
 

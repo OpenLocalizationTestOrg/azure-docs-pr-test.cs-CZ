@@ -1,6 +1,6 @@
 ---
-title: "Škálování clusteru Service Fabric příchozí nebo odchozí | Microsoft Docs"
-description: "Cluster Service Fabric příchozí nebo odchozí škálovat tak, aby odpovídaly vyžádání nastavením pravidla automatického škálování pro každý uzel typu nebo virtuální počítač škálovací sadu. Přidávat nebo odebírat uzly do clusteru Service Fabric"
+title: "cluster Service Fabric aaaScale příchozí nebo odchozí | Microsoft Docs"
+description: "Cluster Service Fabric příchozí nebo odchozí toomatch vyžádání škálovat podle nastavení automatického škálování pravidel pro každý uzel typu nebo virtuální počítač škálovací sadu. Přidat nebo odebrat cluster Service Fabric tooa uzly"
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: chackdan
-ms.openlocfilehash: 32d8fca81c20e77db4ed3aae05d017ccc2ce1be3
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 37cfeaf80edc016cf6de017d1c2dc6fbcb8acc2a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules"></a>Škálování clusteru Service Fabric v nebo pomocí pravidel automatického škálování
-Sady škálování virtuálního počítače se Azure výpočtový prostředek, který můžete použít k nasazení a správě kolekci jako sada virtuálních počítačů. Každý typ uzlu, který je definován v clusteru Service Fabric je nastavený jako samostatnou sadu škálování virtuálního počítače. Každý typ uzlu můžete škálovat v nebo na nezávisle, mají různé sady otevřené porty a může mít různé kapacity metriky. Další informace o jeho [nodetypes Service Fabric](service-fabric-cluster-nodetypes.md) dokumentu. Vzhledem k tomu, že Service Fabric typy uzlů v clusteru jsou tvořeny sady škálování virtuálního počítače v back-end, budete muset nastavit pravidla pro automatické škálování pro každý uzel typu nebo virtuální počítač škálovací sadu.
+Sady škálování virtuálního počítače jsou prostředek výpočtů Azure, můžete použít toodeploy a spravovat kolekci virtuálních počítačů jako sada. Každý typ uzlu, který je definován v clusteru Service Fabric je nastavený jako samostatnou sadu škálování virtuálního počítače. Každý typ uzlu můžete škálovat v nebo na nezávisle, mají různé sady otevřené porty a může mít různé kapacity metriky. Další informace o jeho hello [nodetypes Service Fabric](service-fabric-cluster-nodetypes.md) dokumentu. Vzhledem k tomu, že hello Service Fabric typy uzlů v clusteru jsou tvořeny sady škálování virtuálního počítače v back-end hello, musíte pro každý uzel typu nebo virtuální počítač škálovací sadu tooset až pravidel automatického škálování.
 
 > [!NOTE]
-> Vaše předplatné musí mít dostatečný počet jader, který má-li přidat nové virtuální počítače, které tvoří tento cluster. Proto čas selhání nasazení, když se některé z maximální kvóty dosáhl neexistuje žádné ověření modelu v současné době.
+> Vaše předplatné musí mít dostatečný počet jader tooadd hello nové virtuální počítače, které tvoří tento cluster. Proto čas selhání nasazení, když se některé z hello kvótami dosáhl neexistuje žádné ověření modelu v současné době.
 > 
 > 
 
-## <a name="choose-the-node-typevirtual-machine-scale-set-to-scale"></a>Zvolte typ nebo virtuální uzel sad škálování škálování počítače
-V současné době nejste moci zadat pravidla automatického škálování pro sady škálování virtuálního počítače pomocí portálu, takže dejte nám pomocí prostředí Azure PowerShell (1.0 +) seznam typů uzlů a poté přidejte k nim pravidel automatického škálování.
+## <a name="choose-hello-node-typevirtual-machine-scale-set-tooscale"></a>Vyberte nastavení tooscale hello uzel typu nebo virtuální počítače
+V současné době nejsou možné toospecify hello automatickému škálování pravidla pro sady škálování virtuálního počítače pomocí portálu hello, takže dejte nám pomocí typy uzlů hello toolist prostředí Azure PowerShell (1.0 +) a poté přidejte toothem pravidla automatické škálování.
 
-Pokud chcete získat seznam škálovací sadu virtuálních počítačů, který vytváří cluster, spusťte následující rutiny:
+tooget hello seznam virtuálního počítače sady škálování, které tvoří cluster, spusťte následující rutiny hello:
 
 ```powershell
 Get-AzureRmResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/VirtualMachineScaleSets
@@ -39,78 +39,78 @@ Get-AzureRmResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/
 Get-AzureRmVmss -ResourceGroupName <RGname> -VMScaleSetName <Virtual Machine scale set name>
 ```
 
-## <a name="set-auto-scale-rules-for-the-node-typevirtual-machine-scale-set"></a>Nastavení automatického škálování pravidel pro typ nebo virtuální uzel škálovací sadu počítačů.
-Pokud váš cluster má více typů uzlu, potom opakujte pro každý uzel typy nebo virtuální počítače nastaví tato chcete škálovat (příchozí nebo odchozí). Vezměte v úvahu počet uzlů, musí mít před nastavením automatické škálování. Minimální počet uzlů, které musí být pro typ primárním uzlu, který doprovází úroveň spolehlivosti, kterou jste vybrali. Další informace o [úrovní spolehlivosti](service-fabric-cluster-capacity.md).
+## <a name="set-auto-scale-rules-for-hello-node-typevirtual-machine-scale-set"></a>Nastavení automatického škálování pravidel pro škálovací sadu hello uzel typu nebo virtuálních počítačů
+Pokud váš cluster má více typů uzlu, pak opakujte že nastaví tato pro každý uzel typy nebo virtuální počítače, který má tooscale (příchozí nebo odchozí). Trvat do účtu hello počet uzlů, musí mít před nastavením automatické škálování. minimální počet uzlů, které musí být pro typ primárního uzlu hello Hello doprovází hello úroveň spolehlivosti, kterou jste vybrali. Další informace o [úrovní spolehlivosti](service-fabric-cluster-capacity.md).
 
 > [!NOTE]
-> Škálování dolů primárním uzlu, který typ na hodnotu menší než minimální počet zkontrolujte nestabilním clusteru nebo tím, že ji. To může vést ke ztrátě dat pro vaše aplikace a systémových služeb.
+> Škálování dolů hello primárního uzlu typu tooless, než je minimální počet hello stát nestabilní hello clusteru nebo tím, že ji. To může vést ke ztrátě dat pro vaše aplikace a hello systémových služeb.
 > 
 > 
 
-Funkce automatického škálování není aktuálně doprovází zatížením, které vaše aplikace může být vytváření sestav do Service Fabric. Proto v současnosti automatickému škálování, které máte čistě vycházejí z čítače výkonu, které jsou vygenerované každou virtuálního počítače sady škálování instancí.  
+Funkce automatického škálování hello není aktuálně doprovází hello zatížením, že vaše aplikace může reporting tooService prostředků infrastruktury. Proto v tento čas hello automatické škálování, které máte čistě doprovází hello čítače výkonu, které jsou vygenerované každou instancí sady škálování virtuálního počítače hello.  
 
-Postupujte podle těchto pokynů [nastavení automatického škálování pro každý škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
+Postupujte podle těchto pokynů [tooset až automatické škálování pro každý škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
 
 > [!NOTE]
-> Vertikálně scénář, pokud váš typ uzlu má úroveň odolnosti zlatý nebo Silver je nutné volat [rutinu Remove-ServiceFabricNodeState](https://msdn.microsoft.com/library/azure/mt125993.aspx) s názvem příslušné uzlu.
+> V vertikálně scénář, pokud váš typ uzlu má úroveň odolnosti zlatý nebo Silver musíte toocall hello [rutinu Remove-ServiceFabricNodeState](https://msdn.microsoft.com/library/azure/mt125993.aspx) s názvem příslušný uzel hello.
 > 
 > 
 
-## <a name="manually-add-vms-to-a-node-typevirtual-machine-scale-set"></a>Ručně přidáte do typu uzlu nebo virtuální počítač škálovací sadu virtuálních počítačů
-Ukázka nebo podle pokynů [Galerie šablon úvodní](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) Chcete-li změnit počet virtuálních počítačů v každém uzlu. 
+## <a name="manually-add-vms-tooa-node-typevirtual-machine-scale-set"></a>Ručně přidejte virtuální počítače tooa uzel typu nebo virtuální počítač škálovací sadu
+Postupujte podle hello ukázka nebo pokynů v hello [Galerie šablon úvodní](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) toochange hello počet virtuálních počítačů v každém uzlu. 
 
 > [!NOTE]
-> Přidání virtuálních počítačů má čas, proto Nečekejte, budou přidány jako okamžitou. Proto naplánujte přidat kapacitu i v průběhu času, povolit pro více než 10 minut, než je k dispozici pro repliky kapacita virtuálního počítače nebo služby instance, které chcete získat umístit.
+> Přidání virtuálních počítačů má čas, proto Nečekejte hello dodatky toobe okamžitou. Proto plánování kapacity tooadd i v průběhu času, tooallow pro více než 10 minut, než je k dispozici pro repliky hello hello kapacity virtuálního počítače nebo služby tooget instancí, které jsou umístěny.
 > 
 > 
 
-## <a name="manually-remove-vms-from-the-primary-node-typevirtual-machine-scale-set"></a>Ručně odeberte virtuální počítače z typu nebo virtuální primárního uzlu škálovací sadu počítačů
+## <a name="manually-remove-vms-from-hello-primary-node-typevirtual-machine-scale-set"></a>Ručně odeberte z hello primárního uzlu typu nebo virtuální počítač škálovací sadu virtuálních počítačů
 > [!NOTE]
-> V typu primárního uzlu v clusteru spusťte service fabric systémových služeb. Tak, aby měli nikdy vypnout nebo snížit počet instancí v tomto uzlu typech poskytuje na menší, než jakou úroveň spolehlivosti. Odkazovat na [informace o spolehlivosti vrstev zde](service-fabric-cluster-capacity.md). 
+> v typu hello primárního uzlu v clusteru spusťte Hello service fabric systémových služeb. Tak, aby měli nikdy vypnout nebo snižovat hello počet instancí v tomto uzlu typech poskytuje na menší, než jakou úroveň spolehlivosti hello. Odkazovat příliš[hello informace o spolehlivosti vrstev zde](service-fabric-cluster-capacity.md). 
 > 
 > 
 
-Je třeba provést následující kroky jeden virtuální počítač instance současně. To umožňuje korektně vypnout instanci virtuálního počítače, kterou chcete odebrat a nové repliky vytvořené na jiných uzlech systémových služeb (a vaše stavové služby).
+Je třeba tooexecute hello následující kroky jedna instance virtuálních počítačů současně. To umožňuje, aby hello systémových služeb (a vaše stavové služby) toobe řádné ukončení v instanci virtuálního počítače hello odebíráte a nové repliky vytvořené na jiných uzlech.
 
-1. Spustit [zakázat ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) se záměrem 'RemoveNode' Chcete-li zakázat uzlu se chystáte odebrat (nejvyšší instance typu uzlu).
-2. Spustit [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) a ujistěte se, že uzel přešla skutečně na zakázáno. Pokud ne, počkejte, až uzel je zakázána. Tento krok nelze hurry.
-3. Ukázka nebo podle pokynů [Galerie šablon úvodní](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) Chcete-li změnit počet virtuálních počítačů pomocí jedné v tomto uzlu. Instance odebrat je nejvyšší instance virtuálního počítače. 
-4. Opakujte kroky 1 až 3 podle potřeby, ale nikdy snižovat počet instancí v primárním uzlu typy menší než co zaručuje úroveň spolehlivosti. Odkazovat na [informace o spolehlivosti vrstev zde](service-fabric-cluster-capacity.md). 
+1. Spustit [zakázat ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) s úmyslem 'RemoveNode' toodisable hello uzlu budete tooremove (nejvyšší instance pro hello v tomto typu uzlu).
+2. Spustit [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) toomake, že tento uzel hello skutečně přešla toodisabled. Pokud ne, počkejte, dokud hello uzlů je zakázáno. Tento krok nelze hurry.
+3. Postupujte podle hello ukázka nebo pokynů v hello [Galerie šablon úvodní](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) toochange hello počet virtuálních počítačů pomocí jedné v tomto uzlu. instance Hello odebrat je hello nejvyšší instance virtuálního počítače. 
+4. Opakujte kroky 1 až 3 podle potřeby, ale nikdy snižovat hello počet instancí v primárním uzlu typy hello menší než zaručuje, jakou úroveň spolehlivosti hello. Odkazovat příliš[hello informace o spolehlivosti vrstev zde](service-fabric-cluster-capacity.md). 
 
-## <a name="manually-remove-vms-from-the-non-primary-node-typevirtual-machine-scale-set"></a>Ručně odeberte z typu nebo virtuální uzel není primární počítač škálovací sadu virtuálních počítačů
+## <a name="manually-remove-vms-from-hello-non-primary-node-typevirtual-machine-scale-set"></a>Ručně odeberte z hello není primární uzel typu nebo virtuální počítač škálovací sadu virtuálních počítačů
 > [!NOTE]
-> Pro stavové služby budete potřebovat k určitému počtu uzlů se vždy až zachování dostupnosti a zároveň zachovat stav služby. Ve velmi minimální je třeba počet uzlů rovná počtu cílových replik sadu oddílu nebo služby. 
+> Pro stavové služby budete potřebovat k určitému počtu uzlů toobe vždy toomaintain dostupnosti a zachovat stav služby. V hello velmi minimální je nutné hello počet počet sada uzlů rovna toohello cíl repliky hello oddílu nebo služby. 
 > 
 > 
 
-Musíte provést následující kroky jeden virtuální počítač instance současně. To umožňuje, aby korektně vypnout na instanci virtuálního počítače, kterou chcete odebrat systémových služeb (a vaše stavové služby) a vytvořit nové repliky else where.
+Hello musíte provést následující kroky jedna instance virtuálních počítačů současně hello. To umožňuje, aby hello systémových služeb (a vaše stavové služby) toobe řádné ukončení na hello instance virtuálního počítače, kterou chcete odebrat a vytvořit nové repliky else where.
 
-1. Spustit [zakázat ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) se záměrem 'RemoveNode' Chcete-li zakázat uzlu se chystáte odebrat (nejvyšší instance typu uzlu).
-2. Spustit [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) a ujistěte se, že uzel přešla skutečně na zakázáno. V opačném případě počkejte na uzlu je zakázána. Tento krok nelze hurry.
-3. Ukázka nebo podle pokynů [Galerie šablon úvodní](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) Chcete-li změnit počet virtuálních počítačů pomocí jedné v tomto uzlu. Tato akce odebere teď nejvyšší instance virtuálního počítače. 
-4. Opakujte kroky 1 až 3 podle potřeby, ale nikdy snižovat počet instancí v primárním uzlu typy menší než co zaručuje úroveň spolehlivosti. Odkazovat na [informace o spolehlivosti vrstev zde](service-fabric-cluster-capacity.md).
+1. Spustit [zakázat ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) s úmyslem 'RemoveNode' toodisable hello uzlu budete tooremove (nejvyšší instance pro hello v tomto typu uzlu).
+2. Spustit [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) toomake, že tento uzel hello skutečně přešla toodisabled. V opačném případě počkejte na hello uzlů je zakázáno. Tento krok nelze hurry.
+3. Postupujte podle hello ukázka nebo pokynů v hello [Galerie šablon úvodní](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) toochange hello počet virtuálních počítačů pomocí jedné v tomto uzlu. Tato akce odebere teď hello nejvyšší instance virtuálního počítače. 
+4. Opakujte kroky 1 až 3 podle potřeby, ale nikdy snižovat hello počet instancí v primárním uzlu typy hello menší než zaručuje, jakou úroveň spolehlivosti hello. Odkazovat příliš[hello informace o spolehlivosti vrstev zde](service-fabric-cluster-capacity.md).
 
 ## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>Chování můžete pozorovat v Service Fabric Exploreru
-Při škálování cluster Service Fabric Explorer se projeví počet uzlů (instancí sady škálování virtuálního počítače), které jsou součástí clusteru.  Při změně měřítka však se cluster dolů můžete zobrazí instance odebrané uzlu nebo virtuální počítač zobrazí stav v pořádku, pokud zavoláte [odebrat ServiceFabricNodeState cmd](https://msdn.microsoft.com/library/mt125993.aspx) s názvem příslušné uzlu.   
+Při škálování hello clusteru Service Fabric Explorer se projeví hello počet uzlů (instancí sady škálování virtuálního počítače), které jsou součástí clusteru hello.  Při změně měřítka však se cluster dolů můžete zobrazí instance uzlu nebo virtuálního počítače hello odebrat nezobrazí v pořádku, pokud zavoláte [odebrat ServiceFabricNodeState cmd](https://msdn.microsoft.com/library/mt125993.aspx) s názvem příslušný uzel hello.   
 
-Následuje vysvětlení tohoto chování.
+Zde je hello vysvětlení tohoto chování.
 
-Uzly uvedené v Service Fabric Explorer jsou odraz jaké služby Service Fabric systému (FM konkrétně) ví o počtu uzlů clusteru měl/má. Při změně měřítka sad škálování virtuálního počítače, virtuální počítač byl odstraněn, ale FM systému služby stále domnívá, že uzel (který je namapovaný na virtuální počítač, který byl odstraněn) se vraťte. Proto Service Fabric Explorer stále zobrazuje tento uzel (i když stav může být chyba nebo neznámá).
+Hello uvedené v Service Fabric Explorer jsou uzly odraz jaké hello Service Fabric systémových služeb (FM konkrétně) ví o hello počtu uzlů clusteru hello měl má. Při změně měřítka hello sad škálování virtuálního počítače, hello virtuální počítač byl odstraněn, ale služba system FM stále předpokládá, že tento uzel hello, (který byl namapované toohello virtuálního počítače, který byl odstraněn), vrátí se znovu. Proto Service Fabric Explorer pokračuje toodisplay tento uzel (i když hello stav může být chyba nebo neznámá).
 
-Pokud chcete mít jistotu, že uzel je odebrán, když dojde k odebrání virtuálního počítače, máte dvě možnosti:
+V pořadí toomake jistotu, že uzel je odebrán, když dojde k odebrání virtuálního počítače máte dvě možnosti:
 
-1) Zvolte si úroveň odolnosti zlatý nebo Silver (k dispozici brzy) pro typy uzlů v clusteru, který vám dává integrace infrastruktury. Které pak automaticky odebere uzly z našich služeb (FM) stavu systému při změně měřítka.
-Odkazovat na [podrobnosti o sem úrovně odolnosti](service-fabric-cluster-capacity.md)
+1) Zvolte si úroveň odolnosti zlatý nebo Silver (k dispozici brzy) pro hello typy uzlů v clusteru, který vám dává hello integrace infrastruktury. Které pak automaticky odebere hello uzly z našich služeb (FM) stavu systému při změně měřítka.
+Odkazovat příliš[hello podrobnosti o sem úrovně odolnosti](service-fabric-cluster-capacity.md)
 
-2) Jakmile byla změněna velikost instance virtuálního počítače, je třeba volat [rutinu Remove-ServiceFabricNodeState](https://msdn.microsoft.com/library/mt125993.aspx).
+2) Jakmile zmenšování hello instance virtuálního počítače je nutné toocall hello [rutinu Remove-ServiceFabricNodeState](https://msdn.microsoft.com/library/mt125993.aspx).
 
 > [!NOTE]
-> Clusterů Service Fabric vyžadovat určité počet uzlů na být až na celou dobu pro zachování dostupnosti a zachovávají stav – označuje jako "údržbu kvora." Ano, je obvykle unsafe vypnout všechny počítače v clusteru, pokud jste provedli nejprve [úplného zálohování vaší stavu](service-fabric-reliable-services-backup-restore.md).
+> Clustery služby infrastruktury vyžadují počet uzlů toobe až na celou dobu hello v pořadí toomaintain dostupnosti a zachovat stav – odkazované tooas "údržbu kvora." Proto, pokud jste provedli nejprve je obvykle unsafe tooshut dolů všechny hello počítače v clusteru hello [úplného zálohování vaší stavu](service-fabric-reliable-services-backup-restore.md).
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si následující také další informace o plánování kapacity clusteru, upgradu clusteru a rozdělení do oddílů služby:
+Čtení hello následující tooalso Další informace o plánování kapacity clusteru, upgradu clusteru a rozdělení do oddílů služby:
 
 * [Plánování kapacity vašeho clusteru](service-fabric-cluster-capacity.md)
 * [Upgrade clusteru](service-fabric-cluster-upgrade.md)

@@ -1,5 +1,5 @@
 ---
-title: "Připojení k Azure IoT - lekci 2 Arduino: nástroje Azure (macOS) | Microsoft Docs"
+title: "Připojit Arduino tooAzure IoT - lekci 2: nástroje Azure (macOS) | Microsoft Docs"
 description: "Instalace v systému macOS Python a rozhraní příkazového řádku Azure (Azure CLI)."
 services: iot-hub
 documentationcenter: 
@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 037f8e3dba542773185fde43a345d5fd487b2d84
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8f0ec4131e54af5475cd0b4240480c3fda497e14
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-azure-tools-macos-1010"></a>Získat nástroje Azure (systému macOS 10.10)
 
@@ -32,49 +32,49 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="what-you-will-do"></a>Co provedete
 
-Nainstalujte rozhraní příkazového řádku Azure (Azure CLI). Pokud máte potíže, vyhledejte řešení na [řešení potíží s stránky](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md) pro panel Adafruit prolnutí M0 Wi-Fi Arduino.
+Nainstalujte hello rozhraní příkazového řádku Azure (Azure CLI). Pokud máte potíže, vyhledejte řešení na hello [řešení potíží s stránky](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md) pro panel Adafruit prolnutí M0 Wi-Fi Arduino.
 
 ## <a name="what-you-will-learn"></a>Co se dozvíte
 V tomto článku se dozvíte:
-* Postup instalace rozhraní příkazového řádku Azure.
-* Postup přidání podskupině IoT rozhraní příkazového řádku Azure.
+* Jak tooinstall rozhraní příkazového řádku Azure.
+* Jak tooadd podskupině hello rozhraní příkazového řádku Azure IoT.
 
 ## <a name="what-you-need"></a>Co potřebujete
 * Mac s připojením k Internetu.
 * Aktivní předplatné Azure. Pokud nemáte účet Azure, můžete vytvořit [Bezplatný zkušební účet Azure](http://azure.microsoft.com/pricing/free-trial/) za několik minut.
 
 ## <a name="install-python"></a>Instalace jazyka Python
-I když systému macOS dodává s Python 2.7 z pole, doporučujeme nainstalovat Python prostřednictvím Homebrew. V tématu [Python instalace v systému macOS](http://docs.python-guide.org/en/latest/starting/install/osx/).
+I když systému macOS dodává s Python 2.7 předinstalované hello, doporučujeme nainstalovat Python prostřednictvím Homebrew. V tématu [Python instalace v systému macOS](http://docs.python-guide.org/en/latest/starting/install/osx/).
 
-Instalace Python a pip spuštěním následujícího příkazu:
+Instalace jazyka Python a pip spuštěním hello následující příkaz:
 
 ```bash
 brew install python
 ```
 
-## <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
-Rozhraní příkazového řádku Azure nabízí prostředí s více platformami příkazového řádku Azure. Pracovat přímo z příkazového řádku pro zřizování a správu prostředků.
+## <a name="install-hello-azure-cli"></a>Nainstalujte hello rozhraní příkazového řádku Azure
+Hello rozhraní příkazového řádku Azure nabízí prostředí s více platformami příkazového řádku Azure. Práce přímo z vašeho tooprovision příkazového řádku a spravovat prostředky.
 
-Pokud chcete nainstalovat nejnovější rozhraní příkazového řádku Azure, postupujte takto:
+tooinstall hello nejnovější rozhraní příkazového řádku Azure, postupujte takto:
 
-1. Spusťte následující příkazy v okno terminálu. Může trvat pět minut, chcete-li nainstalovat rozhraní příkazového řádku Azure.
+1. Spusťte následující příkazy v okno terminálu hello. Může trvat pět minut tooinstall hello rozhraní příkazového řádku Azure.
 
    ```bash
    pip install --upgrade azure-cli
    pip install --upgrade azure-cli-iot
    ```
-2. Ověřte instalaci tak, že spustíte následující příkaz:
+2. Hello instalaci ověřte spuštěním hello následující příkaz:
 
    ```bash
    az iot -h
    ```
 
-Pokud k úspěšnému dokončení instalace, měli byste vidět následující výstup.
+Měli byste vidět, že hello následující výstup, pokud hello instalace byla úspěšně dokončena.
 
 ![Výstup, který označuje úspěch][output]
 
 ## <a name="summary"></a>Souhrn
-Instalaci rozhraní příkazového řádku Azure. Svůj další úkol je vytvoření Azure IoT hub a zařízení identity pomocí rozhraní příkazového řádku Azure.
+Jste nainstalovali hello rozhraní příkazového řádku Azure. Svůj další úkol je toocreate hello svou identitu Azure IoT hub a zařízení pomocí rozhraní příkazového řádku Azure.
 
 ## <a name="next-steps"></a>Další kroky
 [Vytvoření služby IoT hub a zaregistrujte Arduino panel][create-your-iot-hub-and-register-your-arduino-board]

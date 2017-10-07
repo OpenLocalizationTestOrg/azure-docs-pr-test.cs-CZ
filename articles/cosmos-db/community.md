@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB komunity, novinky a události | Microsoft Docs"
-description: "Připojit se ke komunitě Azure Cosmos DB k vytvoření relace, prezentují práci a Zostřit svoje dovednosti."
+title: "aaaAzure Cosmos DB komunity, novinky a události | Microsoft Docs"
+description: "Připojení k hello Azure Cosmos DB komunity toobuild relace, prezentují práci a Zostřit svoje dovednosti."
 services: cosmos-db
 documentationcenter: 
 author: aliuy
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/07/2017
 ms.author: andrl
-ms.openlocfilehash: 4be7f077fa5bc03531baf2443c663f1d8bc4a1c8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 953518ad336e484fd8bc82ceb8e218eec4144030
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="community-portal"></a>Portál komunity
 ## <a name="community-spotlight"></a>Spotlight komunity
-Dejte nám povýšíte projektu! Zobrazit nám Super projektu, kterou právě pracujete na s Azure Cosmos DB, nové generace zásobníku DocumentDB a pomůžeme sdílet vaše genius s na světě. K odeslání projektu, pošlete nám e-mail na: [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com).
+Dejte nám povýšíte projektu! Zobrazit nám hello Super projektu, kterou právě pracujete na s Azure Cosmos DB, hello nové generace hello DocumentDB zásobníku a pomůžeme sdílet vaše genius s hello, world. toosubmit projektu, pošlete nám e-mail na: [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com).
 
 ### <a name="documentdb-lumenize"></a>documentdb-lumenize
 *podle Larry Maccherone*
@@ -34,7 +34,7 @@ Zkontrolujte odhlašování na [Githubu](https://github.com/lmaccherone/document
 ### <a name="documentdb-studio"></a>DocumentDB Studio
 *podle jde Liu*
 
-Klient správy prohlížeč/explorer pro službu Azure Cosmos databáze DocumentDB rozhraní API.
+Klient správy prohlížeč nebo Průzkumníka pro hello služby Azure Cosmos databáze DocumentDB API.
 
 Zkontrolujte odhlašování na [Githubu](https://github.com/mingaliu/DocumentDBStudio).
 
@@ -48,38 +48,38 @@ Zkontrolujte odhlašování na [Githubu](https://github.com/a8m/doqmentdb) a [np
 ### <a name="typescript-api"></a>TypeScript rozhraní API
 *podle Jelmer Cormont*
 
-Představuje obálku kolem Node.js klienta napsané v TypeScript (funguje příliš v jazyce JavaScript prostý). Podporuje `async/await` a zjednodušené rozhraní API.
+Představuje obálku kolem klienta Node.js hello napsané v TypeScript (funguje příliš v jazyce JavaScript prostý). Podporuje `async/await` a zjednodušené rozhraní API.
 
 Zkontrolujte odhlašování na [Githubu](https://github.com/jcormont/documentdb-typescript) a [npm](https://www.npmjs.com/package/documentdb-typescript).
 
 ### <a name="swagger-rest-api-for-documentdb"></a>Swagger rozhraní REST API pro DocumentDB
 *podle Howard Edidin*
 
-Swagger pro rozhraní API REST v aplikaci Azure Cosmos DB soubor pro rozhraní API DocumentDB, který můžete snadno nasadit jako aplikaci API.
+Swagger pro rozhraní API REST v aplikaci Azure Cosmos DB soubor pro hello DocumentDB rozhraní API, které se dá snadno nasadit jako aplikaci API.
 
 Zkontrolujte odhlašování na [Githubu](https://github.com/HEDIDIN/DocumentDB-REST/tree/master/DocumentDBRestApi).
 
 ### <a name="fluent-plugin-documentdb"></a>Fluent documentdb modulu plug-in
 *podle Yoichi Kawasaki*
 
-Fluent modul plug-in documentdb je o Fluentd modul plug-in pro výstupy na rozhraní API služby Azure Cosmos databáze DocumentDB.
+Fluent modul plug-in documentdb je o Fluentd modul plug-in pro výstup vytvořeného tooAzure Cosmos databáze DocumentDB rozhraní API.
 
 Zkontrolujte odhlašování na [Githubu](https://github.com/yokawasa/fluent-plugin-documentdb) a [rubygems](https://rubygems.org/gems/fluent-plugin-documentdb).
 
 *Najít více otevřený zdroj projekty Azure Cosmos DB na [Githubu](https://github.com/search?p=4&q=documentdb&type=Repositories).*
 
 ## <a name="news-blogs-and-articles"></a>Zprávy, blogy a články
-Abyste mohli zůstat podle aktuální s nejnovějšími Azure Cosmos DB zprávy a funkce [náš blog](https://azure.microsoft.com/blog/tag/documentdb/).
+Abyste mohli zůstat podle aktuální pomocí nejnovější informace Azure Cosmos DB hello a funkcí [náš blog](https://azure.microsoft.com/blog/tag/documentdb/).
 
 **Komunitní příspěvky:**
 
-* [**Cesty sociálního**](https://medium.com/@Ealsur/a-journey-to-social-c47636bf25c9#.an669sx41) - *podle Matías Quaranta* 
+* [**Cesty tooSocial**](https://medium.com/@Ealsur/a-journey-to-social-c47636bf25c9#.an669sx41) - *podle Matías Quaranta* 
 * [**Azure DocumentDB podporou protokolů pro MongoDB ve verzi Preview, Moje testu s Sitecore**](https://alwaysupalwayson.blogspot.ca/2016/05/azure-documentdb-protocol-support-for.html) - *podle Mathieu Benoit* 
 * [**Budete sociálních s DocumentDB**](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/03/15/going-social-with-documentdb/) - *podle Matías Quaranta*
 * [**UPW, aplikační služby Azure a DocumentDB polévky: aplikaci ve sdílení fotografií**](https://blogs.windows.com/buildingapps/2016/03/17/uwp-azure-app-services-and-documentdb-soup-a-photo-sharing-app/) - *podle Erica Langland*
-* [**Shromažďování protokolů v Azure documentdb pomocí fluent modul plug-in documentdb**](http://unofficialism.info/posts/collecting-logs-into-azure-documentdb-using-fluent-plugin-documentdb/) - *podle Yoichi Kawasaki*
-* [**DocumentDB kdykoli znovu spustit část 1/2 – teorie**](https://peterintheazuresky.wordpress.com/2016/02/19/documentdb-revisited-part-12-the-theory/) - *podle Petr Mannerhult*
-* [**Co je potřeba rádi a Nejoblíbenějším o Azure DocumentDB**](http://blog.falafel.com/4-what-to-love-and-hate-about-azures-documentdb/) - *podle George Saadeh*
+* [**Shromažďování protokolů v tooAzure DocumentDB pomocí fluent modul plug-in documentdb**](http://unofficialism.info/posts/collecting-logs-into-azure-documentdb-using-fluent-plugin-documentdb/) - *podle Yoichi Kawasaki*
+* [**DocumentDB kdykoli znovu spustit část 1/2 – hello teoreticky**](https://peterintheazuresky.wordpress.com/2016/02/19/documentdb-revisited-part-12-the-theory/) - *podle Petr Mannerhult*
+* [**Jaké toolove a hate o Azure DocumentDB**](http://blog.falafel.com/4-what-to-love-and-hate-about-azures-documentdb/) - *podle George Saadeh*
 * [**Azure DocumentDB serverové skriptování**](https://www.simple-talk.com/cloud/cloud-data/azure-documentdb-server-side-scripting/) - *podle Robert Sheldon*
 * [**DocumentDB jako datový jímky pro Azure Stream Analytics**](http://janatdevelopment.com/2015/12/11/documentdb-as-a-data-sink-for-azure-stream-analytics/?utm_source=twitterfeed&utm_medium=twitter) - *podle Jan Hentschel*
 * [**Služba Azure Search indexery – dotazy DocumentDB (španělština)**](http://www.ealsur.com.ar/wp/index.php/2015/11/19/azure-search-indexers-documentdb-queries/) - *podle Matthias Quaranta*
@@ -87,14 +87,14 @@ Abyste mohli zůstat podle aktuální s nejnovějšími Azure Cosmos DB zprávy 
 * [**Datové body - Aurelia splňuje DocumentDB: Cesty Matchmaker**](https://msdn.microsoft.com/magazine/mt620011.aspx) - *podle Julie Lerman*
 * [**Infrastruktura jako kód a průběžné nasazování Node.js + Azure DocumentDB řešení**](http://www.talmeida.net/blog/2015/10/26/infrastructure-as-code-and-continuous-deployment-of-a-nodejs-azure-documentdb-solution) - *podle Thiago Almedia*
 * [**Proč DocumentDb má dobrou obchodní smysl pro některé projekty**](http://www.iquestllc.com/blogs/read/405/why-documentdb-makes-good-business-sense-for-some-projects) - *podle Samuel Uresin*
-* [**Azure DocumentDB vývoj přesunutí dopředného – vývoj třídy klienta (1 / 2) (japonština)**](http://beachside.hatenablog.com/entry/2015/10/01/202734) - *podle Atsushi Yokohoma*
-* [**Co potřebujete vědět, pokud se používá Azure DocumentDB (japonština)**](http://beachside.hatenablog.com/entry/2015/10/01/202734) - *podle Atsushi Yokohoma*
+* [**Azure DocumentDB vývoj přesunutí dopředného – vývoj hello třída klienta (1 / 2) (japonština)**](http://beachside.hatenablog.com/entry/2015/10/01/202734) - *podle Atsushi Yokohoma*
+* [**Co je třeba tooknow při použití Azure DocumentDB (japonština)**](http://beachside.hatenablog.com/entry/2015/10/01/202734) - *podle Atsushi Yokohoma*
 * [**Datové body - přehled Microsoft Azure DocumentDB**](https://msdn.microsoft.com/magazine/mt147238.aspx) - *podle Julie Lerman*
 * [**Pomocí DocumentDB F #**](https://jamessdixon.wordpress.com/2014/12/30/using-documentdb-with-f/) - *podle Jamie Štys*
 * [**Protokoly analýzu aplikace s DocumentDB**](http://vincentlauzon.com/2015/09/06/analysing-application-logs-with-documentdb/) - *podle Vincenc Philippe Lauzon*
 * [**Azure DocumentDB – zálohy bodů v čase**](http://softwarejuancarlos.com/2015/09/06/azure-documentdb-point-in-time-backups/) - *podle Juan Carlos Sanchez*
 
-*Máte příspěvku na blogu, ukázka kódu nebo Případová studie, kterou chcete sdílet? [Dejte nám vědět](mailto:askcosmosdb@microsoft.com)!*
+*Máte příspěvku na blogu, ukázka kódu, nebo Případová studie chcete tooshare? [Dejte nám vědět](mailto:askcosmosdb@microsoft.com)!*
 
 ## <a name="events-and-recordings"></a>Události a nahrávky
 ### <a name="recent-and-upcoming-events"></a>Poslední a nadcházející události
@@ -103,7 +103,7 @@ Abyste mohli zůstat podle aktuální s nejnovějšími Azure Cosmos DB zprávy 
 |[Jižní Florida Codecamp: NoSQL pro vývojáře .NET v části 10 minut pomocí Azure DocumentDB](http://www.fladotnet.com/codecamp/Agenda.aspx)| [Santosh Hari](https://twitter.com/_s_hari)|Davie, PL|11 března 2017|[#sflcc](https://twitter.com/search?q=%23sflcc&ref_src=twsrc%5Etfw)|
 |[Orlandu Codecamp: NoSQL pro vývojáře .NET v části 10 minut pomocí Azure DocumentDB](http://orlandocodecamp.com/Sessions/Details/20)| [Santosh Hari](https://twitter.com/_s_hari)|Sanford, PL|8. dubna 2017|[#OrlandoCC](https://twitter.com/hashtag/OrlandoCC?src=hash&ref_src=twsrc%5Etfw)|
 |[Globální Azure Bootcamp: Bez serveru výpočty v Azure s Azure Functions a DocumentDB](https://www.eventbrite.com/e/2017-global-azure-bootcamp-atlanta-usa-tickets-31817713638)| [Josh dráhy](https://twitter.com/jplane)|Atlanta, GA|22. dubna 2017|[#GlobalAzure](https://twitter.com/hashtag/GlobalAzure?src=hash)|
-|[NDC Olso 2017: Azure DocumentDB - nejlepší databáze NoSQL, které pravděpodobně není používáte (ještě)](http://ndcoslo.com/talk/azure-cosmos-db-the-best-nosql-database-youre-probably-not-using-yet/)|[Josh dráhy](https://twitter.com/jplane)|Olso, Norsko|14 června 2017|[#ndcoslo](https://twitter.com/search?q=%23ndcoslo)|
+|[NDC Olso 2017: Azure DocumentDB - hello nejlepší NoSQL databáze je pravděpodobně není používáte (ještě)](http://ndcoslo.com/talk/azure-cosmos-db-the-best-nosql-database-youre-probably-not-using-yet/)|[Josh dráhy](https://twitter.com/jplane)|Olso, Norsko|14 června 2017|[#ndcoslo](https://twitter.com/search?q=%23ndcoslo)|
 
 *Jsou ukázky na nebo hostování událost? [Dejte nám vědět](mailto:askcosmosdb@microsoft.com) jak jsme vám mohou pomoci!*
 
@@ -112,7 +112,7 @@ Abyste mohli zůstat podle aktuální s nejnovějšími Azure Cosmos DB zprávy 
 | --- | --- | --- | --- | --- |
 |[Ignite Austrálie: DocumentDB Hello: Azure je rychlé a svěží databáze NoSQL planetu škálování](https://msftignite.com.au/sessions/session-details/2115/hello-documentdb-azures-blazing-fast-planetscale-nosql-database-da224) | [Andrew Liu](https://twitter.com/aliuy8)|Queensland, Austrálie|Středa 15 února 2017|Chystaný|
 |[Ignite Austrálie: Nabídnout detailní s Azure DocumentDB: vytváření oddílů, modelování dat a geografickou replikaci](https://msftignite.com.au/sessions/session-details/2116/a-deepdive-with-azure-documentdb-partitioning-data-modelling-and-geo-replication-da335b) | [Andrew Liu](https://twitter.com/aliuy8)|Queensland, Austrálie|16 února 2017|Chystaný|
-| Wintellect webinář: Úvod do Azure DocumentDB| [Josh dráhy](https://twitter.com/jplane)|Online|12. ledna 2017 1 pm EST|[Azure DocumentDB: Vaše cloudové provozovaných, škálovat geograficky NoSQL Superweapon... Skrytí prostý nebyl zřejmý.](https://www.youtube.com/watch?v=uVcWgIYtBoc)|
+| Wintellect webinář: Úvod tooAzure DocumentDB| [Josh dráhy](https://twitter.com/jplane)|Online|12. ledna 2017 1 pm EST|[Azure DocumentDB: Vaše cloudové provozovaných, škálovat geograficky NoSQL Superweapon... Skrytí prostý nebyl zřejmý.](https://www.youtube.com/watch?v=uVcWgIYtBoc)|
 | [Connect(); 2016](https://connectevent.microsoft.com/) |[Kirill Gavrylyuk](https://twitter.com/kirillg_msft) |New York, NY |Od listopadu 2016 16 18 |[Channel 9 Connect(); videa](https://channel9.msdn.com/Events/Connect) |
 | [Skupiny uživatelů rozhraní .NET kapitálové města](http://www.meetup.com/tally-dot-net/events/233768568/) |[Santosh Hari](https://twitter.com/_s_hari)|Tallahassee, PL |3. listopadu 2016 |neuvedeno |
 | [Ignite 2016](https://myignite.microsoft.com/sessions?q=documentdb) |DocumentDB team |Atlanta, GA |Září 2016 26-30 |[Slidedeck](http://www.slideshare.net/aliuy/pass-summit-2016-azure-documentdb-a-deep-dive-into-advanced-features) |
@@ -140,10 +140,10 @@ Abyste mohli zůstat podle aktuální s nejnovějšími Azure Cosmos DB zprávy 
 | [SQL sobota #444 - Kansas City 2015](http://www.sqlsaturday.com/444/Sessions/Details.aspx?sid=38576) |Jeff Renz |Kansas města, PŘE |3. října 2015 |neuvedeno |
 | [SQL sobota #429 – portu 2015](http://www.sqlsaturday.com/429/Sessions/Details.aspx?sid=36089) |Leonardem Lobel |Portu, Portugalsko |3. října 2015 |neuvedeno |
 | [AzureCon](https://azure.microsoft.com/azurecon/) |David Makogon, Ryan Crawcour, Macintyre Jan |Virtuální událostí |29. září 2015 |[Data a analýzy platformy Azure](https://channel9.msdn.com/events/Microsoft-Azure/AzureCon-2015/ACON207) [práci s daty NoSQL v DocumentDB](https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON338) |
-| [SQL sobota #434 - Holandsko 2015](http://www.sqlsaturday.com/434/Sessions/Details.aspx?sid=36413) |Leonardem Lobel |Utrecht, Nizozemsko |26 září 2015 |[Úvod do Azure DocumentDB](https://channel9.msdn.com/Blogs/Azure/SQL-Saturday-Holland-2015-Introduction-to-Azure-DocumentDB) |
+| [SQL sobota #434 - Holandsko 2015](http://www.sqlsaturday.com/434/Sessions/Details.aspx?sid=36413) |Leonardem Lobel |Utrecht, Nizozemsko |26 září 2015 |[Úvod tooAzure DocumentDB](https://channel9.msdn.com/Blogs/Azure/SQL-Saturday-Holland-2015-Introduction-to-Azure-DocumentDB) |
 | [SQL sobota #441-2015 Ostravě.](http://www.sqlsaturday.com/441/Sessions/Details.aspx?sid=39191) |Jeff Renz |Ostravy, CO |19. září 2015 |neuvedeno |
 | [Meetup: Síť San Franciscu Bay oblasti Azure vývojářům](http://www.meetup.com/bayazure/events/223943785/) |Andrew Liu |Síť SAN Franciscu, certifikační Autority |15. září 2015 |neuvedeno |
-| [Skupiny uživatelů Azure Běloruska splňují Up](https://www.facebook.com/events/786540124800276/) |Alex Zyl |Minsk, Bělorusko |9. září 2015 |[Úvod do DocumentDB koncept přehled, úrovně konzistence, strategie horizontálního dělení](https://www.youtube.com/watch?v=Uc_qwWzJKH8) |
+| [Skupiny uživatelů Azure Běloruska splňují Up](https://www.facebook.com/events/786540124800276/) |Alex Zyl |Minsk, Bělorusko |9. září 2015 |[Přehled koncept tooDocumentDB úvod, úrovně konzistence, strategie horizontálního dělení](https://www.youtube.com/watch?v=Uc_qwWzJKH8) |
 | [Nyní NoSQL!](http://nosql2015.dataversity.net/) |David Makogon, Ryan Crawcour |Síť San Jose, certifikační Autority |18-20 srpen 2015 |neuvedeno |
 | [@ScalePraha](http://www.atscaleconference.com/) |Shukla (Dharma) |Seattle, WA |17. června 2015 |[Bez ohledu na schéma indexu s Azure DocumentDB](https://www.youtube.com/watch?v=VJQ_5qFFVP4) |
 | [Technická aktualizace 2015](https://channel9.msdn.com/Events/DXPortugal/Tech-Refresh-2015) |Bruno Lopes |Lisabon, Portugalsko |15. června 2015 |[DocumentDB 101](https://channel9.msdn.com/Events/DXPortugal/Tech-Refresh-2015/DPDEV01) |
@@ -155,63 +155,63 @@ Abyste mohli zůstat podle aktuální s nejnovějšími Azure Cosmos DB zprávy 
 | [DevIntersection](https://devintersection.com/) |Andrew Liu |Scottsdale, AZ |18 21 květen 2015 |neuvedeno |
 | [Meetup: Skupiny vývojářů Praha webové aplikace](http://www.meetup.com/Seattle-Web-App-Developers-Group/events/220591071/) |Andrew Liu |Seattle, WA |14 květen 2015 |neuvedeno |
 | [Ignite](http://ignite.microsoft.com/) |Andrew Hoh, Macintyre Jan |Chicagu, IL |4-8 květen 2015 |[Vyberte nejnovější DocumentDB z video](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-select-latest-from-microsoft-azure-documentdb/) [DocumentDB a Azure HDInsight: společně lepší video](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-microsoft-azure-documentdb-and-azure-hdinsight-better-together/) |
-| [Sestavení 2015](http://www.buildwindows.com/) |Ryan Crawcour |Síť SAN Franciscu, certifikační Autority |Duben 29-1 květen 2015 |[Vytvořit další velký plán službou Azure NoSQL: DocumentDB](https://channel9.msdn.com/Events/Build/2015/2-729) |
+| [Sestavení 2015](http://www.buildwindows.com/) |Ryan Crawcour |Síť SAN Franciscu, certifikační Autority |Duben 29-1 květen 2015 |[Sestavení hello další velký plán službou Azure NoSQL: DocumentDB](https://channel9.msdn.com/Events/Build/2015/2-729) |
 | [Globální Azure Bootcamp 2015 – Španělsko](http://azurebootcamp.es/) |Leoš Ruiz Pavon, Roberto Gonzalez |Madrid, Španělsko |25 duben 2015 |[#DEAN DocumentDB + Express + AngularJS + NodeJS spuštěné v Azure](https://channel9.msdn.com/events/Developers-Spain-Events/Global-Azure-Bootcamp-2015/DEAN-DocumentDB--Express--AngularJS--NodeJS-running-on-Azure) |
 | [Meetup: Dánsko Azure Usergroup](http://www.meetup.com/Azure-Usergroup-Denmark/events/221026670/) |Christian Holm Diget |Kodaň, Dánsko |16 duben 2015 |neuvedeno |
 | [Meetup: Cloudu Microsoftu Charlotte](http://www.meetup.com/Charlotte-Microsoft-Cloud/events/221503519/) |Jamie Rance |Charlotte, NC |8. dubna 2015 |neuvedeno |
 | [SQL sobota #375 - Silicon Valley 2015](http://www.sqlsaturday.com/375/Sessions/Details.aspx?sid=15289) |IKE Ellis |Horská zobrazení, certifikační Autority |28 března 2015 |neuvedeno |
 | [Meetup: Istanbul Azure Meetup](http://www.meetup.com/istanbul-azure-meetup/events/220325538/) |Daron Yondem |Istanbul, Turecko |7 března 2015 |neuvedeno |
 | [Meetup: Skupina uživatelů jezera velké oblasti rozhraní .net](http://www.meetup.com/Great-Lakes-Area-NET-User-Group-MIGANG/events/220364576/) |Michael Collier |Southfield, MI |18 únor 2015 |neuvedeno |
-| [TechX Azure](https://www.youtube.com/channel/UCDRlI2E4z5qmHsBXTrFOE2Q) |Magnus Mårtensson |Stockholm, Švédsko |28 29 lednem 2015 |[DocumentDB v Azure nové NoSQL možnost pro Cloud](https://www.youtube.com/watch?v=Hw7hDYoChNI) |
+| [TechX Azure](https://www.youtube.com/channel/UCDRlI2E4z5qmHsBXTrFOE2Q) |Magnus Mårtensson |Stockholm, Švédsko |28 29 lednem 2015 |[DocumentDB v Azure hello nové NoSQL pro hello cloudu](https://www.youtube.com/watch?v=Hw7hDYoChNI) |
 
 ### <a name="videos-and-podcasts"></a>Videa a podcastů
 | Zobrazit | Přednášející | Datum | Díl |
 | --- | --- | --- | --- |
 | Azure Friday |Kirill Gavrylyuk |31. října 2016 |[Co je nového v Azure DocumentDB?](https://channel9.msdn.com/Shows/Azure-Friday/AzureFridayNewinDocumentDB) |
-| Channel 9: Microsoft + Open Source |Jose Miguel Parrella |14. dubna 2016 |[Ze střední na DEAN v Azure pomocí Bitnami, škálovatelné sady virtuálních počítačů a DocumentDB](https://channel9.msdn.com/Blogs/Open/From-MEAN-to-DEAN-in-Azure-with-Bitnami-VM-Scale-Sets-and-DocumentDB) |
+| Channel 9: Microsoft + Open Source |Jose Miguel Parrella |14. dubna 2016 |[Ze střední tooDEAN v Azure pomocí Bitnami, škálovatelné sady virtuálních počítačů a DocumentDB](https://channel9.msdn.com/Blogs/Open/From-MEAN-to-DEAN-in-Azure-with-Bitnami-VM-Scale-Sets-and-DocumentDB) |
 | Wired2WinWebinar |Sai Sankar Kunnathukuzhiyil |9. března 2016 |[Vývoj řešení s Azure DocumentDB](https://www.youtube.com/watch?v=xKttEwXv_bs) |
 | Skupina uživatelů integrace |Hanu Wong |17. února 2016 |[Analýza a vizualizovat nerelační data s DocumentDB + Power BI](http://www.integrationusergroup.com/analyze-visualize-non-relational-data-documentdb-power-bi/) |
-| Azure podcastu |Menšit Teeter |14 leden 2016 |[Díl 110: Pomocí DocumentDB & hledání](http://azpodcast.azurewebsites.net/post/Episode-110-Using-DocumentDB-Search) |
-| Channel 9: Moderní aplikace |Tara Shankar Jana |13. prosinci 2016 |[Trvat moderní přístup k datům v aplikacích](https://channel9.msdn.com/Series/Modern-Applications/Take-a-modern-approach-to-data-in-your-apps) |
+| Hello podcastu Azure |Menšit Teeter |14 leden 2016 |[Díl 110: Pomocí DocumentDB & hledání](http://azpodcast.azurewebsites.net/post/Episode-110-Using-DocumentDB-Search) |
+| Channel 9: Moderní aplikace |Tara Shankar Jana |13. prosinci 2016 |[Trvat moderní přístup toodata ve svých aplikacích](https://channel9.msdn.com/Series/Modern-Applications/Take-a-modern-approach-to-data-in-your-apps) |
 | NinjaTips |Miguel Quintero |10. prosince 2015 |[DocumentDB - zruší vistazo obecné](https://channel9.msdn.com/Series/Ninja-Tips/31-NinjaTips-Desarrollo-DocumentDB-1-Vistazo-general) |
 | Skupina uživatelů integrace |Howard Edidin |5. října 2015 |[Azure DocumentDB zdravotní péče integrace](http://www.integrationusergroup.com/?event=azure-documentdb-and-biztalk) |
 | Directx Itálie - #TecHeroes |Alessandro Melchiori |2. října 2015 |[#TecHeroes - DocumentDB](https://channel9.msdn.com/Shows/TecHeroes/TecHeroes-DocumentDB) |
 | Zobrazit cloudu Microsoft - podcastu |Andrew Liu |30. září 2015 |[Díl 099 - Azure DocumentDB s Andrew Liu](http://www.microsoftcloudshow.com/podcast/Episodes/099-azure-documentdb-with-andrew-liu) |
 | Rozhraní .NET skály!  -Podcastu |Ryan Crawcour |29. září 2015 |[Data na DocumentDB s Ryan CrawCour](https://www.dotnetrocks.com/?show=1197) |
 | Data vystavená |Ryan Crawcour |28 září 2015 |[Co je nového s Azure DocumentDB od GA](https://channel9.msdn.com/Shows/Data-Exposed/Whats-New-with-Azure-DocumentDB-Since-GA) |
-| Azure podcastu |Menšit Teeter |17 září 2015 |[Díl 94: azpodcast.com re – architektura](http://azpodcast.azurewebsites.net/post/Episode-94-azpodcastcom-re-architecture) |
+| Hello podcastu Azure |Menšit Teeter |17 září 2015 |[Díl 94: azpodcast.com re – architektura](http://azpodcast.azurewebsites.net/post/Episode-94-azpodcastcom-re-architecture) |
 | Titulní cloudu |Ryan Crawcour |4. září 2015 |[Díl 185: Aktualizace DocumentDB s Ryan CrawCour](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-185-DocDB-Updates-with-Ryan-CrawCour) |
 | CodeChat 033 |Gregu Doerr |28. července 2015 |[Gregu Doerr na Azure DocumentDB](https://channel9.msdn.com/Shows/codechat/033) |
-| NoSql – střed |Král Wilder |25 květen 2015 |[Sledovací modul Golf - na video s přehledem o tom, jak vytvořit webovou aplikaci nad AngularJS, WebApi 2 a DocumentDB.](http://www.nosqlcentral.net/Story/Details/videos/kahanu/1-documentdb-golf-tracker-overview) |
+| NoSql – střed |Král Wilder |25 květen 2015 |[Golf sledovací modul - na video s přehledem o tom, toobuild webové aplikace nad AngularJS, WebApi 2 a DocumentDB.](http://www.nosqlcentral.net/Story/Details/videos/kahanu/1-documentdb-golf-tracker-overview) |
 | Virtuální kapitoly PRŮCHODU technologie v paměti |Stephen Baron |25 květen 2015 |[Hello DocumentDB](https://www.youtube.com/watch?v=itFXQCd9-dI) |
 | Data vystavená |Ryan Crawcour |8. dubna 2015 |[Obecné dostupnosti DocumentDB a co je nového!](https://channel9.msdn.com/Shows/Data-Exposed/DocumentDB-General-Availability-and-Whats-New) |
 | Data vystavená |Andrew Liu |17 března 2015 |[Java SDK pro DocumentDB](https://channel9.msdn.com/Shows/Data-Exposed/Java-SDK-for-DocumentDB) |
 | #DevHangout |Gustavo Alzate Sandoval |11 března 2015 |[DocumentDB, la základní de datos NoSql de Microsoft Azure](https://www.youtube.com/watch?v=8Ud3jB8KOBA) |
-| Data architektury virtuální kapitoly PRŮCHODU |IKE Ellis |25 únor 2015 |[Úvod do DocumentDB](https://www.youtube.com/watch?v=7BQYdFUkz6s) |
+| Data architektury virtuální kapitoly PRŮCHODU |IKE Ellis |25 únor 2015 |[TooDocumentDB Úvod](https://www.youtube.com/watch?v=7BQYdFUkz6s) |
 
 ### <a name="online-classes"></a>Online třídy
 | Learning partnera | Popis |
 | --- | --- |
-| [![Microsoft Virtual Academy](./media/community/mva.png)](https://mva.microsoft.com/en-US/training-courses/azure-documentdb-planetscale-nosql-16847) |[**Microsoft Virtual Academy** ](https://mva.microsoft.com/en-US/training-courses/azure-documentdb-planetscale-nosql-16847) nabízí cvičení před lidmi, kteří vám pomoct budovat Azure DocumentDB. |
-| [![Pluralsight](./media/community/pluralsight.png)](http://www.pluralsight.com/courses/azure-documentdb-introduction) |[**Pluralsight** ](http://www.pluralsight.com/courses/azure-documentdb-introduction) je nabídka Azure školení klíče partnera společnosti Microsoft. Pokud máte předplatné MSDM, využijte při přístupu ke školení na Microsoft Azure svoje výhody. |
+| [![Microsoft Virtual Academy](./media/community/mva.png)](https://mva.microsoft.com/en-US/training-courses/azure-documentdb-planetscale-nosql-16847) |[**Microsoft Virtual Academy** ](https://mva.microsoft.com/en-US/training-courses/azure-documentdb-planetscale-nosql-16847) nabízí cvičení od hello uživatelů, kteří vám pomoct budovat Azure DocumentDB. |
+| [![Pluralsight](./media/community/pluralsight.png)](http://www.pluralsight.com/courses/azure-documentdb-introduction) |[**Pluralsight** ](http://www.pluralsight.com/courses/azure-documentdb-introduction) je nabídka Azure školení klíče partnera společnosti Microsoft. Pokud jste odběratel MSDN, pomocí vaší školení výhody tooaccess Microsoft Azure. |
 | [![OpsGility](./media/community/opsgility.png)](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) |[**OpsGility** ](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) poskytuje podrobný technický školení v Microsoft Azure. Získejte instruktorem vedené školení na místě nebo prostřednictvím výuky na dálku od předních školitelů v tomto oboru. |
 
 ## <a name="discussion"></a>Diskusní
 ### <a name="twitter"></a>Twitter
-Sledujte nás v síti twitter [ @DocumentDB ](https://twitter.com/DocumentDB) zůstat aktuální s nejnovějšími konverzace na a [#DocumentDB](https://twitter.com/hashtag/DocumentDB) hashtag.
+Sledujte nás v síti twitter [ @DocumentDB ](https://twitter.com/DocumentDB) zůstat až toodate s hello nejnovější konverzace na hello a [#DocumentDB](https://twitter.com/hashtag/DocumentDB) hashtag.
 
 ### <a name="online-forums"></a>Online fóra
 | Fórum pro zprostředkovatele | Popis |
 | --- | --- |
 | [![StackOverflow](./media/community/stack-overflow.png)](http://stackoverflow.com/questions/tagged/azure-documentdb) |Nezávislé na jazyku společně upravit otázku a odpověď lokality pro programátory v jazyce. Podle našich značky: [azure documentdb](http://stackoverflow.com/questions/tagged/azure-documentdb) |
 
-## <a name="contact-the-team"></a>Obraťte se na tým
+## <a name="contact-hello-team"></a>Kontaktujte hello team
 ![Tým](./media/community/team.png)
 
-Potřebujete technickou nápovědu? Chcete se na něco zeptat? Vás zajímá, zda NoSQL vhodné pro vás? Můžete naplánovat 1:1 chat s technickým týmem DocumentDB přímo zasláním nám [e-mailu](mailto:askcosmosdb@microsoft.com) nebo počítačích s nás na adrese [ @DocumentDB ](https://twitter.com/DocumentDB).
+Potřebujete technickou nápovědu? Chcete se na něco zeptat? Vás zajímá, zda NoSQL vhodné pro vás? Můžete naplánovat 1:1 chat přímo s hello DocumentDB technickému týmu odesláním nám [e-mailu](mailto:askcosmosdb@microsoft.com) nebo počítačích s nás na adrese [ @DocumentDB ](https://twitter.com/DocumentDB).
 
 ## <a name="open-source-projects"></a>Projekty s otevřeným zdrojem
-Tyto projekty jsou aktivně vyvíjený tým služby Azure DocumentDB ve spolupráci s naší komunitou s otevřeným zdrojem.
+Tyto projekty jsou aktivně vyvíjený týmu Azure DocumentDB hello ve spolupráci s naší komunitou s otevřeným zdrojem.
 
 ### <a name="sdks"></a>Sady SDK
 | Platforma | GitHubu | Balíček |
@@ -228,7 +228,7 @@ Tyto projekty jsou aktivně vyvíjený tým služby Azure DocumentDB ve spolupr�
 | Nástroj pro migraci dat |[Azure-documentdb-datamigrationtool](https://github.com/Azure/azure-documentdb-datamigrationtool) |[Stažení softwaru společnosti Microsoft](http://www.microsoft.com/download/details.aspx?id=46436) |
 
 ## <a name="azure-cosmos-db-wizards"></a>Průvodce Azure Cosmos DB
-Azure DB průvodců Cosmos jsou žebříčky komunity, kteří si ukázán své EXEMPLÁRNÍ snahy o pomoc jiné co nejlépe využít své zkušenosti s Azure Cosmos DB, nové generace Azure DocumentDB. S komunitou a s týmem Azure Cosmos DB sdílejí jejich výjimečných nadšení, praktické znalosti a technických otázek.
+Azure DB průvodců Cosmos jsou žebříčky komunity, kteří si ukázán toohelping EXEMPLÁRNÍ úsilí, které ostatní hello nejvíce mimo své zkušenosti s Azure Cosmos DB, hello nové generace Azure DocumentDB. S hello komunity a tým Azure Cosmos DB hello sdílejí jejich výjimečných nadšení, praktické znalosti a technických otázek.
 
 | Průvodce | Obrázek |
 | --- | --- |
@@ -241,5 +241,5 @@ Azure DB průvodců Cosmos jsou žebříčky komunity, kteří si ukázán své 
 |  [Santosh Hari](https://twitter.com/_s_hari) |[![Santosh Hari](./media/community/wizard-santosh-hari.jpg)](https://twitter.com/_s_hari) |
 | [Matías Quaranta](https://twitter.com/ealsur) |[![Matías Quaranta](./media/community/wizard-matias-quaranta.jpg)](https://twitter.com/ealsur) |
 
-Chcete se Azure Cosmos DB Průvodce? Při žádné srovnávacího testu pro stal průvodce mezi kritéria, která nám vyhodnotit patří dopad kandidát příspěvky k online fóra, jako je například StackOverflow a MSDN; Wikiweby a online obsahu; konference a skupiny uživatelů; plynule přenášená data, webů, blogů a sociálních médií; a články a knih. Můžete určit sobě nebo někomu jinému podle [nám pošlete e-mailu](mailto:askcosmosdb@microsoft.com).
+Chcete toobecome Průvodce DB Cosmos Azure? Při žádné srovnávacího testu pro stal průvodce mezi hello kritéria, která nám vyhodnotit patří hello dopad kandidát příspěvky tooonline fóra například StackOverflow a MSDN; Wikiweby a online obsahu; konference a skupiny uživatelů; plynule přenášená data, webů, blogů a sociálních médií; a články a knih. Můžete určit sobě nebo někomu jinému podle [nám pošlete e-mailu](mailto:askcosmosdb@microsoft.com).
 

@@ -1,6 +1,6 @@
 ---
-title: "Další informace o nejnovějších verzích operačního systému hosta Azure | Microsoft Docs"
-description: "Nejnovější verze informace a kompatibility sady SDK pro Azure Cloud Services hostovaného operačního systému."
+title: "aaaLearn o hello nejnovější verzí hostovaného operačního systému Azure | Microsoft Docs"
+description: "Hello nejnovější verze informace a kompatibility sady SDK pro Azure Cloud Services hostovaného operačního systému."
 services: cloud-services
 documentationcenter: na
 author: raiye
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 8/24/2017
 ms.author: raiye
-ms.openlocfilehash: a4439346817df9223c032abc1405a7cf9cbe780b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7274f5a68a32ce91bdede77e1443cdb8053c07ea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure verze hostovaného operačního systému a kompatibilních sad SDK
-Poskytuje že aktuální informace o nejnovější hostovaného operačního systému Azure verze pro cloudové služby. Tyto informace vám pomůžou naplánovat způsob upgradu než hostovaného operačního systému je zakázáno. Pokud nakonfigurujete použití role *automatické* aktualizace hostovaného operačního systému, jak je popsáno v [nastavení aktualizace operačního systému hosta Azure][Azure Guest OS Update Settings], není důležité, abyste si přečetli tuto stránku.
+Poskytuje aktuální informace o hello nejnovější hostovaného operačního systému Azure se uvolní pro cloudové služby. Tyto informace vám pomůžou naplánovat způsob upgradu než hostovaného operačního systému je zakázáno. Pokud nakonfigurujete vaše role toouse *automatické* aktualizace hostovaného operačního systému, jak je popsáno v [nastavení aktualizace operačního systému hosta Azure][Azure Guest OS Update Settings], není důležité, abyste si přečetli tuto stránku.
 
 > [!IMPORTANT]
-> Tato stránka se vztahuje na webových a pracovních cloudové služby rolí, které běží nad hostovaného operačního systému. Provede **nelze použít** pro virtuální počítače IaaS.
+> Tato stránka se vztahuje tooCloud služby webové a pracovní role, které běží nad hostovaného operačního systému. Provede **nelze použít** tooIaaS virtuálních počítačů.
 >
 >
 
 
 > [!NOTE]
-> Informačního kanálu RSS, byla nedávno zastaralé. Sledovat aktualizace na nové informačního kanálu už brzy!
+> Hello informačního kanálu RSS, byla nedávno zastaralé. Sledovat aktualizace na nové informačního kanálu už brzy!
 >
 >
 
-Nejste si jistí, o jaké hostovaného operačního systému je nebo jak hostovaného operačního systému uvolní pracovní? Čtení [to](#how-it-works) části.
+Jistí, o jaké hello hostovaného operačního systému je nebo jak hello pracovní verze hostovaného operačního systému? Čtení [to](#how-it-works) části.
 
 ## <a name="news-updates"></a>Nejnovější zprávy
 
@@ -57,7 +57,7 @@ Zavedení června hostovaného operačního systému se spouští června 16 a m
 Může vydala hostovaného operačního systému.
 
 ###### <a name="may-17-2017"></a>**17 může 2017**
-Z důvodu chyby zabezpečení, jsme zakazování následující prosinec 2016 a ledna 2017 verzích operačního systému, které nemají [opravte] z portálu: WA-hosta-operačního systému-5.4_201612-01, WA-hosta-operačního systému-4.39_201612-01, WA-hosta-operačního systému-3.46_201612-01, WA-hosta-operačního systému-2.59_201701-01
+Z důvodu chyb zabezpečení tooa, jsme zakazování hello prosinec 2016 a ledna 2017 verzích operačního systému, která nemají hello [opravte] z portálu hello: WA-hosta-operačního systému-5.4_201612-01, WA-hosta-operačního systému-4.39_201612-01, WA-hosta-operačního systému-3.46_ WA 201612-01,-GUEST-OS-2.59_201701-01
 
 ###### <a name="may-12-2017"></a>**12 může 2017**
 Zavedení může hostovaného operačního systému se spouští může 12 a má předpokládané verzi 13. června.
@@ -69,7 +69,7 @@ Zavedení duben hostovaného operačního systému se spouští dne 18 a má př
 Zavedení března hostovaného operačního systému spustit 14. března 2017 a vydala 10. dubna 2017.
 
 ###### <a name="january-10-2017"></a>**10. ledna 2017**
-Leden hostovaného operačního systému obsahuje opravy, které mají vliv jenom operační systém řady 2 (Windows 2008 Server R2). Proto vydala pouze bitovou kopii operačního systému rodiny 2 (WA-GUEST-operačního systému-2.59_201701-01) pro tohoto měsíce. Pro všechny ostatní řady operačních systémů, prosinec operačního systému (201612 - 01) zůstane nejnovější.
+Hello leden hostovaného operačního systému obsahuje opravy, které mají vliv jenom operační systém řady 2 (Windows 2008 Server R2). Proto vydala pouze bitovou kopii operačního systému rodiny 2 hello (WA-GUEST-operačního systému-2.59_201701-01) pro tohoto měsíce. Pro všechny ostatní rodin OS hello prosinec operačního systému (201612 - 01) zůstane hello nejnovější.
 
 
 ## <a name="releases"></a>Verze
@@ -79,9 +79,9 @@ Leden hostovaného operačního systému obsahuje opravy, které mají vliv jeno
 Nainstalované rozhraní .NET framework: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 
 > [!NOTE]
-> Data s * jsou mohou podléhat změnám.
+> Data s * jsou toochange subjektu.
 >
-> Heslo RDP pro operační systém řady 5 musí být minimálně 10 znaků.
+> Heslo RDP pro operační systém řady 5 Hello musí být minimálně 10 znaků.
 >
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum | Vypršela platnost datum |
@@ -102,7 +102,7 @@ Nainstalované rozhraní .NET framework: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6
 Podporuje rozhraní .NET 4.0, 4.5, 4.5.1, 4.5.2
 
 > [!NOTE]
-> Data s * se mohou změnit
+> Data s * jsou toochange subjektu
 >
 >
 
@@ -128,7 +128,7 @@ Podporuje rozhraní .NET 4.0, 4.5, 4.5.1, 4.5.2
 Podporuje rozhraní .NET 4.0, 4.5, 4.5.1, 4.5.2
 
 > [!NOTE]
-> Data s * se mohou změnit
+> Data s * jsou toochange subjektu
 >
 >
 
@@ -154,7 +154,7 @@ Podporuje rozhraní .NET 4.0, 4.5, 4.5.1, 4.5.2
 Podporuje rozhraní .NET 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
 > [!NOTE]
-> Data s * se mohou změnit
+> Data s * jsou toochange subjektu
 >
 >
 
@@ -177,10 +177,10 @@ Podporuje rozhraní .NET 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
 
 ## <a name="msrc-patch-updates"></a>Střediska MSRC oprava aktualizací
-Seznam oprav, které jsou součástí jednotlivých měsíční verze hostovaného operačního systému je k dispozici [sem][patches].
+Hello seznam oprav, které jsou součástí jednotlivých měsíční verze hostovaného operačního systému je k dispozici [sem][patches].
 
 ## <a name="sdk-support"></a>Podpora v sadě SDK
-I když [vyřazení zásad pro sadu SDK Azure] [ retire policy sdk] označuje, že verze výše 2.2 jsou podporované, konkrétní pouze hostovaného operačního systému rodiny můžete používat starší verze. Vždy byste měli použít nejnovější podporovanou SDK.
+I když hello [zásady vyřazení pro hello Azure SDK] [ retire policy sdk] označuje, že verze výše 2.2 jsou podporované, konkrétní pouze hostovaného operačního systému rodiny můžete toouse starší verze. Je třeba použít hello nejnovější podporované SDK.
 
 | Skupina hostovaných operačních systémů | Verze kompatibilní sady SDK |
 | --- | --- |
@@ -191,45 +191,45 @@ I když [vyřazení zásad pro sadu SDK Azure] [ retire policy sdk] označuje, �
 | 1 |Verze 1.0 + |
 
 ## <a name="guest-os-release-information"></a>Informace o verzi operačního systému hosta
-Existují tři kalendářních dat, které jsou důležité pro verze hostovaného operačního systému: **verze** datum, **zakázáno** datum, a **vypršení platnosti** datum. Hostovaného operačního systému se považuje za k dispozici, pokud je v portálu a lze vybrat jako cíl hostovaného operačního systému. Když se dosáhne hostovaného operačního systému **zakázáno** datum, odebere se z Azure. Ale všechny cloudové služby cílení na tomto hostovaného operačního systému bude stále fungovat normálně.
+Existují tři kalendářních dat, které jsou důležité uvolní tooGuest operačního systému: **verze** datum, **zakázáno** datum, a **vypršení platnosti** datum. Hostovaného operačního systému se považuje za k dispozici, pokud je v hello portál a lze vybrat jako cíl hello hostovaného operačního systému. Když hostovaného operačního systému dosáhne hello **zakázáno** datum, odebere se z Azure. Ale všechny cloudové služby cílení na tomto hostovaného operačního systému bude stále fungovat normálně.
 
-Okno mezi **zakázáno** datum a **vypršení platnosti** datum poskytuje vyrovnávací paměť k snadno přechod z jednoho hostovaného operačního systému na jednu novější. Pokud používáte *automatické* jako vaše hostovaného operačního systému, vždy budete mít na nejnovější verzi a nemusíte si dělat starosti o vypršení platnosti.
+okno Hello mezi hello **zakázáno** datum a hello **vypršení platnosti** datum vám poskytne vyrovnávací paměti tooeasily přechod z jednoho hostovaného operačního systému tooone novější. Pokud používáte *automatické* jako vaše hostovaného operačního systému, vždy budete mít na nejnovější verzi hello a nemáte tooworry o vypršení platnosti.
 
-Když **vypršení platnosti** datum úspěšně projde, všechny cloudové služby stále pomocí tohoto hostovaného operačního systému bude zastavena, odstranit nebo došlo k upgradu. Další informace o zásadách vyřazení [sem][retirepolicy].
+Když hello **vypršení platnosti** datum předává, všechny cloudové služby stále pomocí tohoto hostovaného operačního systému bude zastaven, odstraní nebo vynucené tooupgrade. Další informace o zásadách vyřazení hello [sem][retirepolicy].
 
 ## <a name="guest-os-family-version-explanation"></a>Vysvětlení rodiny verze operačního systému hosta
-Rodiny hostovaného operačního systému jsou založeny na vydaná verze systému Microsoft Windows Server. Hostovaného operačního systému je základní operační systém, který Azure Cloud Services běží na. Každý hostovaného operačního systému má rodiny, verzí a vydání číslo.
+rodiny Hello hostovaného operačního systému jsou založeny na vydaná verze systému Microsoft Windows Server. Hello hostovaného operačního systému je hello příslušný operační systém spuštěný v Azure Cloud Services. Každý hostovaného operačního systému má rodiny, verzí a vydání číslo.
 
 * **Rodina hostovaného operačního systému**  
   Verze operačního systému Windows Server, založený na hostovaného operačního systému. Například *rodiny 3* je založena na systému Windows Server 2012.
 * **Verze operačního systému hosta**  
-  Konkrétní do hostovaného operačního systému rodiny bitové kopie a relevantní [Microsoft Security Response Center (MSRC)] [ msrc] opravy, které jsou dostupné na datum vytváří nové verze hostovaného operačního systému. Ne všechny opravy mohou být zahrnuty.
+  Plus příslušné bitové kopie konkrétní tooa hostovaného operačního systému rodiny [Microsoft Security Response Center (MSRC)] [ msrc] vytváří opravy, které jsou k dispozici v hello datum hello nové hostovaného operačního systému verze. Ne všechny opravy mohou být zahrnuty.
 
     Čísla začínají hodnotou 0 a zvýší o 1 pokaždé, když se přidá novou sadu aktualizací. Koncové nuly se zobrazují pouze pokud je to důležité. To znamená že verze 2.10 je jiné, mnohem novější verze než verze 2.1.
 * **Verze hostovaného operačního systému**  
-  Opětovné vydání verze hostovaného operačního systému. O opětovné vydání v případě Microsoft vyhledá problémy při testování; nutnosti změny. Nejnovější verze vždy nahrazuje všechny předchozí verze, veřejné nebo ne. Portál Azure pouze umožní uživatelům vybrat nejnovější verze pro danou verzi. Nasazení na předchozí vydání spuštěna nejsou obvykle platnost upgradovat v závislosti na závažnosti chybě.
+  Opětovné vydání verze hostovaného operačního systému. O opětovné vydání v případě Microsoft vyhledá problémy při testování; nutnosti změny. Hello nejnovější verzi vždy nahrazuje všechny předchozí verze, veřejné nebo ne. Hello portál Azure umožní uživatelům pouze toopick hello nejnovější verze pro danou verzi. Nasazení na předchozí vydání spuštěna nejsou obvykle platnost upgradovat v závislosti na závažnosti hello hello chyb.
 
-V následujícím příkladu 2 je dané rodině, je na verzi 12 a "rel2" je verze.
+V příkladu hello níže 2 je rodina hello, 12 je hello verze a verze hello je "rel2".
 
 **Verze hostovaného operačního systému** – 2.12 rel2
 
 **Konfigurační řetězec pro tuto verzi** -WA-GUEST-operačního systému-2.12_201208-02
 
-Řetězec konfigurace pro hostovaného operačního systému má stejné informace součástí, společně s datum zobrazení, které opravy střediska MSRC považovány za tuto verzi. V tomto příkladu byly střediska MSRC opravy až vrácená pro Windows Server 2008 R2 a včetně srpen 2012 rozhodnuto o zařazení. Jsou zahrnuty pouze opravy konkrétně použití této verzi systému Windows Server. Například pokud střediska MSRC oprava se vztahuje na Microsoft Office, nebude zahrnutý vzhledem k tomu, že produkt není součástí základní bitovou kopii systému Windows Server.
+Hello konfigurační řetězec pro hostovaného operačního systému má stejné informace součástí, společně s datum zobrazení, které opravy střediska MSRC považovány za tuto verzi. V tomto příkladu byly střediska MSRC opravy vrácená pro Windows Server 2008 R2 si tooand včetně srpen 2012 rozhodnuto o zařazení. Jsou zahrnuty pouze opravy konkrétně použití toothat verzi systému Windows Server. Například pokud střediska MSRC oprava se vztahuje tooMicrosoft Office, nebude zahrnutý vzhledem k tomu, že produkt není součástí základní bitovou kopii systému Windows Server hello.
 
 ## <a name="guest-os-system-update-process"></a>Proces aktualizace systému operačního systému hosta
-Tato stránka obsahuje informace o budoucích verzí hostovaného operačního systému. Zákazníci označili, že chcete vědět, kdy dochází verze jejich role cloudové služby se restartuje, pokud jsou nastavená na "Automatické" aktualizace. Verze hostovaného operačního systému obvykle dojít alespoň pět (5) dnů po vydání, k níž dojde k druhému úterý v každém měsíci střediska MSRC aktualizace. Nové verze zahrnují všechny relevantní opravy střediska MSRC pro každou skupinu hostovaného operačního systému.
+Tato stránka obsahuje informace o budoucích verzí hostovaného operačního systému. Označili zákazníci chtějí mít tooknow, když dojde k verze, protože jejich role cloudové služby se restartuje, pokud jsou nastavená příliš "automatické" aktualizace. Verze hostovaného operačního systému obvykle dojít alespoň pět (5) dnů po hello střediska MSRC vydání aktualizace, ke kterému dochází na hello druhé úterý v každém měsíci. Nové verze zahrnují všechny hello relevantní střediska MSRC opravy pro každou skupinu hostovaného operačního systému.
 
-Microsoft Azure je neustále vydání aktualizace. Hostovaného operačního systému je jenom jedna taková aktualizace v kanálu. Verze může být ovlivněn mnoha faktorech příliš mnoho, aby seznam sem. Kromě toho Azure je spuštěná na oznámena stovky tisíc počítačů. To znamená, že je možné uvést přesné datum a čas, kdy se restartuje vaše role. Pracujeme na plán pro omezení nebo čas restartování počítače.
+Microsoft Azure je neustále vydání aktualizace. Hello hostovaného operačního systému je jenom jedna taková aktualizace v kanálu hello. Verze může být ovlivněn mnoha faktorech příliš mnoho toolist sem. Kromě toho Azure je spuštěná na oznámena stovky tisíc počítačů. To znamená, že je možné toogive přesné datum a čas, kdy se restartuje vaše role. Nemůžeme práce na plán toolimit nebo čas restartování počítače.
 
-Pokud je publikovaná v nové verzi hostovaného operačního systému, může trvat dobu plně rozšíří na Azure. Jako služby Aktualizovaní na novou hostovaného operačního systému, budou se restartují, aby byla dodržena aktualizace domény. Nastavte na "Automatické" aktualizace pomocí služby získají verze první. Po aktualizaci zobrazí se nová verze hostovaného operačního systému, které jsou uvedené pro vaši službu na portálu Azure. Opětovná vydání může dojít během této doby. Některé verze může být nasazena v delší a automatického upgradu restartování počítače nelze provádět mnoho týdny po datu oficiálního vydání. Jakmile hostovaného operačního systému k dispozici, pak explicitně můžete tuto verzi z portálu nebo v konfiguračním souboru.
+Když novou verzi Dobrý den, kdy je publikována hostovaného operačního systému, může trvat dobu toofully rozšíří na Azure. Protože služby jsou aktualizované toohello nové hostovaného operačního systému, jsou restartovaný ctít zásady aktualizaci domény. Služby sady toouse "Automatické" aktualizace získají verze první. Po aktualizaci hello uvidíte, že nová verze hostovaného operačního systému hello uvedené pro vaši službu v hello portálu Azure. Opětovná vydání může dojít během této doby. Některé verze může být nasazena v delší a automatického upgradu restartování počítače nelze provádět mnoho týdny po datu vydání oficiální hello. Jakmile hostovaného operačního systému k dispozici, pak explicitně můžete tuto verzi z portálu hello nebo v konfiguračním souboru.
 
-Značnou část cenné informace o restartování a ukazatele na další informace o technické podrobnosti aktualizace hosta a hostitelským operačním systémem, naleznete v příspěvku MSDN post s názvem [Role Instance restartuje kvůli upgrady operačního systému][restarts].
+Značnou část cenné informace o restartování a ukazatele toomore informace technické podrobnosti Host a hostitelským operačním systémem aktualizací, najdete v blogu MSDN hello post s názvem [restartuje kvůli Role Instance upgrady tooOS] [ restarts].
 
-Pokud ručně aktualizovat vaše hostovaného operačního systému, přečtěte si téma [zásady vyřazení hostovaného operačního systému] [ retirepolicy] Další informace.
+Pokud ručně aktualizovat vaše hostovaného operačního systému, přečtěte si téma hello [zásady vyřazení hostovaného operačního systému] [ retirepolicy] Další informace.
 
 ## <a name="guest-os-supportability-and-retirement-policy"></a>Možnosti podpory hostovaného operačního systému a zásady vyřazení
-Možnosti podpory a vyřazení zásady hostovaného operačního systému je vysvětlen [sem][retirepolicy].
+Hello zásad možnosti podpory a vyřazení hostovaného operačního systému je vysvětlen [sem][retirepolicy].
 
 [Install .NET on a Cloud Service Role]: https://azure.microsoft.com/en-us/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Azure Guest OS Update Settings]: cloud-services-how-to-configure.md

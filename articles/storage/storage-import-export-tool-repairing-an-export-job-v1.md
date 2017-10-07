@@ -1,6 +1,6 @@
 ---
-title: "Oprava úlohy exportu Azure Import/Export - v1 | Microsoft Docs"
-description: "Zjistěte, jak opravit úlohu export, který byl vytvořen a spuštění pomocí služby Azure Import/Export."
+title: "aaaRepairing úlohy exportu Azure Import/Export - v1 | Microsoft Docs"
+description: "Zjistěte, jak toorepair úlohu export, který byl vytvořen a spustí pomocí hello Azure Import/Export služby."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 30ca0f8d06cb1927c19e66035ff485db0fc09e5a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 96c674fc7c697c37882fb2980c340303896ac6c8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="repairing-an-export-job"></a>Oprava úlohy exportu
-Po dokončení úlohy exportu, můžete spustit nástroj Microsoft Azure Import/Export místní na:  
+Po dokončení úlohy exportu, můžete spustit hello Microsoft Azure Import/Export nástroj místně pro:  
   
-1.  Stáhněte všechny soubory, které služba Azure Import/Export se nepodařilo exportovat.  
+1.  Stáhněte všechny soubory, aby byla služba Azure Import/Export hello nelze tooexport.  
   
-2.  Ověření, aby byly správně exportovány soubory na disku.  
+2.  Ověření, aby byly správně exportovány hello souborů na disku hello.  
   
-Musí mít připojení k Azure Storage k použití této funkce.  
+Tato funkce musí mít připojení k tooAzure úložiště toouse.  
   
-Příkaz pro opravu úlohy importu je **RepairExport**.
+příkaz Hello pro opravu úlohy importu je **RepairExport**.
 
 ## <a name="repairexport-parameters"></a>Parametry RepairExport
 
-Mohou být zadány následující parametry s **RepairExport**:  
+Hello mohou být zadány následující parametry s **RepairExport**:  
   
 |Parametr|Popis|  
 |---------------|-----------------|  
-|**/ r: < RepairFile\>**|Vyžaduje se. Cesta k souboru oprava, která sleduje průběh opravu a umožňuje obnovit přerušené opravit. Každé jednotky, musí mít pouze jeden soubor opravit. Při spuštění opravy pro danou jednotku, bude předáte v cestě k oprava souboru, který ještě neexistuje. Pokud chcete obnovit přerušené opravy, by měla předávat název existující soubor opravit. Soubor opravy odpovídající cílová jednotka je vždy třeba zadat.|  
-|**/logdir: < LogDirectory\>**|Volitelné. K adresáři protokolů. Souborů podrobného protokolování se zapíšou do tohoto adresáře. Pokud není zadán žádný adresář protokolu, aktuální adresář se použije jako adresář protokolu.|  
-|**/ d: < TargetDirectory\>**|Vyžaduje se. Adresář, který chcete ověřit a opravit. To je obvykle kořenový adresář jednotky exportu, ale může také být do síťové sdílené složky obsahující kopii exportované soubory.|  
-|**/BK: < BitLockerKey\>**|Volitelné. Pokud chcete nástroj k odemknutí zašifrované uložení exportované soubory musíte zadat klíč nástroje BitLocker.|  
-|**/sn: < StorageAccountName\>**|Vyžaduje se. Název účtu úložiště pro úlohy exportu.|  
-|**/Sk: < StorageAccountKey\>**|**Požadované** Pokud není zadán sdíleného přístupového podpisu kontejneru. Klíč účtu pro účet úložiště pro úlohy exportu.|  
-|**/csas: < ContainerSas\>**|**Požadované** Pokud není zadaný klíč účtu úložiště. Kontejner SAS pro přístup k objektům BLOB spojené s úlohou export.|  
-|**/ CopyLogFile: < DriveCopyLogFile\>**|Vyžaduje se. Cesta k souboru protokolu kopie disku. Soubor je generována pomocí služby Windows Azure Import/Export a si můžete stáhnout z úložiště objektů blob, které jsou přidružené k úloze. Kopírovat soubor protokolu obsahuje informace o selhání objektů BLOB nebo soubory, které mají být opravit.|  
-|**/ ManifestFile: < DriveManifestFile\>**|Volitelné. Cesta k souboru manifestu export jednotky. Tento soubor je generována pomocí služby Windows Azure Import/Export a uložené na jednotce exportu a volitelně do objektu BLOB v účtu úložiště, které jsou přidružené k úloze.<br /><br /> Obsah souborů na jednotce exportu se ověří pomocí hodnot hash MD5, obsažené v tomto souboru. Všechny soubory, které jsou určeny poškozen bude stažena a přepisuje, aby cílový adresáře.|  
+|**/ r: < RepairFile\>**|Povinná hodnota. Cesta toohello oprava souboru, který sleduje hello průběh hello opravy a můžete tooresume opravu dojde k přerušení. Každé jednotky, musí mít pouze jeden soubor opravit. Když spustíte opravy pro danou jednotku, předáte bude v hello cesta tooa oprava souboru, který ještě neexistuje. tooresume opravu dojde k přerušení, by měla předávat název hello k existujícímu souboru opravit. Hello opravit soubor odpovídající toohello cílová jednotka je vždy třeba zadat.|  
+|**/logdir: < LogDirectory\>**|Volitelné. Adresář protokolu Hello. Podrobné soubory protokolu se zapíše toothis adresáře. Pokud není zadán žádný adresář protokolu, aktuální adresář hello se použije jako adresář protokolu hello.|  
+|**/ d: < TargetDirectory\>**|Povinná hodnota. Hello directory toovalidate a opravy. To je obvykle hello kořenový adresář jednotky export hello, ale může také být do síťové sdílené složky obsahující kopii hello exportované soubory.|  
+|**/BK: < BitLockerKey\>**|Volitelné. Pokud chcete, aby toounlock nástroj hello šifrované kdy hello exportovaných souborů jsou uložené musíte zadat klíč nástroje BitLocker hello.|  
+|**/sn: < StorageAccountName\>**|Povinná hodnota. Úloha exportu Hello název účtu úložiště hello hello.|  
+|**/Sk: < StorageAccountKey\>**|**Požadované** Pokud není zadán sdíleného přístupového podpisu kontejneru. Úloha exportu Hello klíč účtu pro účet úložiště hello hello.|  
+|**/csas: < ContainerSas\>**|**Požadované** jenom v případě hello klíč účtu úložiště není zadán. kontejner Hello SAS pro přístup k objektům BLOB hello spojené s úlohou export hello.|  
+|**/ CopyLogFile: < DriveCopyLogFile\>**|Povinná hodnota. Hello cesta toohello jednotky kopírování souboru protokolu. soubor Hello je generován hello služby Windows Azure Import/Export a si můžete stáhnout z úložiště objektů blob hello spojené s úlohou hello. Hello kopie protokolový soubor obsahuje informace o selhání objektů BLOB nebo soubory, které jsou toobe opravit.|  
+|**/ ManifestFile: < DriveManifestFile\>**|Volitelné. Soubor manifestu Hello cesta toohello export jednotky. Tento soubor je vygenerované službou Windows Azure Import/Export hello a uložené na jednotce export hello a volitelně do objektu BLOB v účtu úložiště hello spojené s úlohou hello.<br /><br /> obsah hello souborů na jednotce export hello Hello se ověří pomocí hodnot hash MD5 hello obsažené v tomto souboru. Všechny soubory, které jsou určené toobe poškozený budou staženy a přepsaná toohello cíl adresáře.|  
   
-## <a name="using-repairexport-mode-to-correct-failed-exports"></a>Použití režimu RepairExport k opravě neúspěšné exporty  
-Nástroj Azure Import/Export můžete stáhnout soubory, které se nepodařilo exportovat. Kopírování souboru protokolu bude obsahovat seznam souborů, které se nepodařilo exportovat.  
+## <a name="using-repairexport-mode-toocorrect-failed-exports"></a>Pomocí RepairExport toocorrect režimu se nezdařilo exporty  
+Můžete použít hello nástroj Azure Import/Export toodownload soubory, které tooexport se nezdařilo. soubor protokolu Hello kopie bude obsahovat seznam souborů, které se nezdařily tooexport.  
   
-Příčiny chyb export patří tyto možnosti:  
+Hello selhání exportu příčiny hello následující možnosti:  
   
 -   Poškozené jednotky  
   
--   Změnit během procesu přenosu klíče účtu úložiště.  
+-   klíč účtu úložiště Hello změnit během přenosu hello  
   
-Chcete-li spustit nástroj **RepairExport** režim, musíte nejdřív připojit jednotku, která obsahuje exportované soubory do počítače. Potom spusťte nástroj Azure Import/Export, zadání cesty na tuto jednotku s `/d` parametr. Také budete muset zadat cestu k souboru protokolu na jednotku kopie, který jste stáhli. Následující příklad následující příkazový řádek spustí nástroj a opravte všechny soubory, které se nepodařilo exportovat:  
+Nástroj hello toorun v **RepairExport** režim, musíte nejprve tooconnect hello jednotce, která obsahuje počítače tooyour hello exportované soubory. Potom spustíte hello nástroj Azure Import/Export, zadáním hello cesta toothat jednotky s hello `/d` parametr. Musíte taky toospecify hello cesta toohello jednotku na kopírování protokolu souboru, který jste stáhli. Hello následující příkazový řádek příklad spustí nástroj toorepair hello všechny soubory, které se nezdařilo tooexport:  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log  
 ```  
   
-Toto je příklad kopírovat soubor protokolu, který ukazuje, že jeden blok v objektu blob selhalo při exportu:  
+Hello následuje příklad kopírování protokolového souboru, který zobrazuje tento jeden blok v tooexport hello objekt blob se nezdařilo:  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -81,20 +81,20 @@ Toto je příklad kopírovat soubor protokolu, který ukazuje, že jeden blok v 
 </DriveLog>  
 ```  
   
-Kopírování souboru protokolu označuje, že selhání došlo k chybě služby Windows Azure Import/Export byl stahování jeden objekt blob bloků k souboru na jednotce export. Ostatní součásti souboru úspěšně stažen a délku souboru byla nastavena správně. V takovém případě nástroj se otevřít soubor na disku, stáhněte bloku z účtu úložiště a zapisovat do souboru rozsah od posun 65536 s délkou 65536.  
+soubor protokolu kopie Hello označuje, že došlo k selhání při hello služby Windows Azure Import/Export byl stahování mezi hello blob bloků toohello soubor na disku export hello. Hello ostatní součásti hello soubor stažený úspěšně, a délka souboru hello byla správně nastavená. Nástroj hello budou v takovém případě otevřete hello soubor na disku hello, stáhněte hello bloku z účtu úložiště hello a zapisuje toohello souboru rozsah od posun 65536 s délkou 65536.  
   
-## <a name="using-repairexport-to-validate-drive-contents"></a>Pomocí RepairExport ověřit obsah jednotky  
-Můžete také použít Azure Import/Export s **RepairExport** možnost k ověření obsahu na jednotce jsou správné. Soubor manifestu na každém disku exportu obsahuje MD5s pro obsah jednotky.  
+## <a name="using-repairexport-toovalidate-drive-contents"></a>Pomocí RepairExport toovalidate jednotky obsah  
+Můžete také použít Azure Import/Export s hello **RepairExport** možnost toovalidate hello obsah na jednotce hello jsou správné. Soubor manifestu Hello na každém disku exportu obsahuje MD5s pro obsah hello hello jednotky.  
   
-Služba Azure Import/Export můžete také na účet úložiště uložit soubory manifestu během procesu exportu. Umístění manifestu souborů je k dispozici prostřednictvím [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operaci po dokončení úlohy. V tématu [službu Import/Export formát souboru manifestu](storage-import-export-file-format-metadata-and-properties.md) Další informace o formátu souboru manifestu jednotky.  
+Hello služba Azure Import/Export můžete také ukládat soubory manifestu hello účet úložiště tooa během procesu exportu hello. Hello umístění souborů manifestu hello je k dispozici prostřednictvím hello [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operaci po dokončení úlohy hello. V tématu [službu Import/Export formát souboru manifestu](storage-import-export-file-format-metadata-and-properties.md) Další informace o hello formát souboru manifestu jednotky.  
   
-Následující příklad ukazuje, jak spustit nástroj Azure Import/Export s **/ManifestFile** a **/CopyLogFile** parametry:  
+Hello následující příklad ukazuje, jak toorun hello Azure Import/Export nástroj s hello **/ManifestFile** a **/CopyLogFile** parametry:  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log /ManifestFile:G:\9WM35C3U.manifest  
 ```  
   
-Následuje příklad souboru manifestu:  
+Hello tady je příklad souboru manifestu:  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -131,7 +131,7 @@ Následuje příklad souboru manifestu:
 </DriveManifest>  
 ``` 
   
-Po dokončení procesu opravy, bude nástroj přečíst každý soubor v souboru manifestu odkazuje a ověří integritu souboru s hodnoty hash MD5. Pro manifest výše protože budou přenášeny pomocí následující součásti.  
+Po dokončení procesu opravy hello bude nástroj hello si přečíst každý soubor v souboru manifestu hello odkazuje a ověří integritu souboru hello s hello MD5 hodnoty hash. Pro manifest hello výše protože budou přenášeny prostřednictvím hello následující součásti.  
 
 ```  
 G:\pictures\city\redmond.jpg, offset 0, length 3584  
@@ -153,12 +153,12 @@ G:\pictures\wild\canyon.jpg, offset 8163, length 2721
 G:\pictures\wild\canyon.jpg.properties  
 ```
 
-Všechny součásti, které selhání ověření bude stažena nástrojem a přepsaná do stejného souboru na disku.  
+Všechny součásti, které selhání ověření hello bude stažena nástrojem hello a přepsaná toohello stejný soubor na disku hello.  
   
 ## <a name="next-steps"></a>Další kroky
  
-* [Nastavení nástroje Azure Import/Export](storage-import-export-tool-setup-v1.md)   
+* [Hello nastavení se nástroj Azure Import/Export](storage-import-export-tool-setup-v1.md)   
 * [Příprava pevných disků pro úlohu importu](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [Kontrola stavu úlohy s použitím kopií souborů protokolu](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Oprava úlohy importu](storage-import-export-tool-repairing-an-import-job-v1.md)   
-* [Řešení potíží s nástrojem Azure pro import/export](storage-import-export-tool-troubleshooting-v1.md)
+* [Řešení potíží s hello nástroj Azure Import/Export](storage-import-export-tool-troubleshooting-v1.md)

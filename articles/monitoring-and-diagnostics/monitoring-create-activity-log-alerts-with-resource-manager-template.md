@@ -1,5 +1,5 @@
 ---
-title: "Vytvořit výstrahu protokolu aktivit pomocí šablony Resource Manageru | Microsoft Docs"
+title: "aaaCreate výstrahu aktivity protokolu pomocí šablony Resource Manageru | Microsoft Docs"
 description: "Upozorňování při vytváření prostředků Azure."
 author: anirudhcavale
 manager: orenr
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: ancav
-ms.openlocfilehash: 92076c7fe1f867919b7e02abf79cf0fb74fb7eb4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0fb8aa037b9dce54ce35498622770955f2341bc2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-activity-log-alert-with-a-resource-manager-template"></a>Vytvořit výstrahu protokolu aktivit pomocí šablony Resource Manageru
-V tomto článku se dozvíte, jak používat [šablony Azure Resource Manageru](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates) konfigurace aktivity protokolu výstrah. Pomocí šablon můžete snadno nastavit více výstrah, které aktivovat na základě konkrétní aktivitu protokolu události podmínek jako součást procesu automatického nasazení.
+Tento článek ukazuje, jak toouse [šablony Azure Resource Manageru](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates) tooconfigure aktivity protokolu výstrahy. Pomocí šablon můžete snadno nastavit více výstrah, které aktivovat na základě konkrétní aktivitu protokolu události podmínek jako součást procesu automatického nasazení.
 
-Toto jsou základní kroky:
+Toto jsou základní kroky Hello:
 
-1. Vytvořte šablonu jako soubor JSON, který popisuje, jak vytvořit výstrahu protokolu aktivit.
+1. Vytvořte šablonu jako soubor JSON, který popisuje, jak toocreate hello aktivity protokolu výstrahy.
 
-2. Nasazení šablony pomocí [libovolnou metodu nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
+2. Nasazení šablony hello pomocí [libovolnou metodu nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
 
 ## <a name="resource-manager-template-for-an-activity-log-alert"></a>Šablony Resource Manageru pro výstrahu protokolu aktivit
-Vytvořit výstrahu protokolu aktivit pomocí šablony Resource Manageru, vytvořit prostředek typu `microsoft.insights/activityLogAlerts`. Potom můžete vyplnit všech souvisejících vlastností. Zde je šablonu, která vytvoří výstrahu protokolu aktivit.
+toocreate výstrahu aktivity protokolu pomocí šablony Resource Manageru, vytvořit prostředek typu hello `microsoft.insights/activityLogAlerts`. Potom můžete vyplnit všech souvisejících vlastností. Zde je šablonu, která vytvoří výstrahu protokolu aktivit.
 
 ```json
 {
@@ -40,20 +40,20 @@ Vytvořit výstrahu protokolu aktivit pomocí šablony Resource Manageru, vytvo�
     "activityLogAlertName": {
       "type": "string",
       "metadata": {
-        "description": "Unique name (within the Resource Group) for the Activity log alert."
+        "description": "Unique name (within hello Resource Group) for hello Activity log alert."
       }
     },
     "activityLogAlertEnabled": {
       "type": "bool",
       "defaultValue": true,
       "metadata": {
-        "description": "Indicates whether or not the alert is enabled."
+        "description": "Indicates whether or not hello alert is enabled."
       }
     },
     "actionGroupResourceId": {
       "type": "string",
       "metadata": {
-        "description": "Resource Id for the Action group."
+        "description": "Resource Id for hello Action group."
       }
     }
   },
@@ -102,6 +102,6 @@ Navštivte naše [galerii pro rychlý start Azure](https://azure.microsoft.com/r
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace o [výstrahy](monitoring-overview-alerts.md).
-- Informace o postupu přidání [skupiny akce pomocí šablony Resource Manageru](monitoring-create-action-group-with-resource-manager-template.md).
-- Zjistěte, jak [vytvořit výstrahu protokolu aktivitu monitorovat všechny operace škálování modul vaše předplatné](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert).
-- Zjistěte, jak [vytvořit výstrahu protokolu aktivitu monitorovat všechny operace škálování nebo škálovatelnou neúspěšné automatické škálování na vaše předplatné](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).
+- Zjistěte, jak tooadd [skupiny akce pomocí šablony Resource Manageru](monitoring-create-action-group-with-resource-manager-template.md).
+- Zjistěte, jak příliš[vytvoření výstrahy toomonitor aktivity protokolu všechny operace škálování modul vaše předplatné](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert).
+- Zjistěte, jak příliš[vytvoření výstrahy toomonitor aktivity protokolu všechny operace škálování nebo škálovatelnou neúspěšné automatické škálování na vaše předplatné](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).

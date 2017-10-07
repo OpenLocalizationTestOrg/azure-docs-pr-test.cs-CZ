@@ -1,6 +1,6 @@
 ---
-title: "Používání Hadoop Hive v prostředí PowerShell v HDInsight - Azure | Microsoft Docs"
-description: "Pomocí prostředí PowerShell ke spouštění dotazů Hive v Hadoop v HDInsight."
+title: "aaaUse Hadoop Hive v prostředí PowerShell v HDInsight - Azure | Microsoft Docs"
+description: "Pomocí dotazů Hive toorun prostředí PowerShell v Hadoop v HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,26 +16,26 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/16/2017
 ms.author: larryfr
-ms.openlocfilehash: e1cb2e4a1fc82fb43082e79a5feba71b81b3eaa8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9e0b72a25c5b12431f837b1a34a63ecc06223528
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-hive-queries-using-powershell"></a>Spouštění dotazů Hive pomocí prostředí PowerShell
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
-Tento dokument poskytuje příklad použití Azure PowerShell v režimu skupiny prostředků Azure ke spouštění dotazů Hive v Hadoop na clusteru HDInsight.
+Tento dokument poskytuje příklad použití Azure PowerShell v dotazy Hive hello skupiny prostředků Azure režimu toorun v Hadoop v clusteru HDInsight.
 
 > [!NOTE]
-> Tento dokument neposkytuje podrobný popis co dělat, příkazy HiveQL, které se používají v příkladech. Informace o HiveQL, který se používá v tomto příkladu najdete v tématu [používání Hive s Hadoop v HDInsight](hdinsight-use-hive.md).
+> Tento dokument neposkytuje podrobný popis co dělat hello HiveQL příkazy, které se používají v příkladech hello. Informace o hello HiveQL, který se používá v tomto příkladu najdete v tématu [používání Hive s Hadoop v HDInsight](hdinsight-use-hive.md).
 
 **Požadavky**
 
-* **Cluster Azure HDInsight**: nezáleží, jestli je clusteru systému Windows nebo linuxu.
+* **Cluster Azure HDInsight**: nezáleží na tom, jestli je Windows hello clusteru nebo systémem Linux.
 
   > [!IMPORTANT]
-  > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * **Pracovní stanice s prostředím Azure PowerShell**.
 
@@ -43,49 +43,49 @@ Tento dokument poskytuje příklad použití Azure PowerShell v režimu skupiny 
 
 ## <a name="run-hive-queries-using-azure-powershell"></a>Spouštění dotazů Hive pomocí Azure PowerShell
 
-Prostředí Azure PowerShell poskytuje *rutiny* které umožňují vzdáleně spouštět dotazy Hive v HDInsight. Interně rutiny volat REST [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) v clusteru HDInsight.
+Prostředí Azure PowerShell poskytuje *rutiny* , umožňují tooremotely spouštění dotazů Hive v HDInsight. Interně hello rutiny volání REST příliš[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) na clusteru HDInsight hello.
 
-Při spouštění dotazů Hive v vzdáleného clusteru HDInsight, se používají následující rutiny:
+Hello se používají následující rutiny při spuštění dotazů Hive v clusteru s podporou vzdálené HDInsight:
 
-* **Přidat-AzureRmAccount**: ověřuje prostředí Azure PowerShell k předplatnému Azure
-* **Nové AzureRmHDInsightHiveJobDefinition**: vytvoří *úlohy definice* pomocí zadané příkazy HiveQL
-* **Spuštění AzureRmHDInsightJob**: odešle definici úlohy do HDInsight, spustí úlohu a vrátí *úlohy* objekt, který můžete použít ke kontrole stavu úlohy
-* **Počkejte AzureRmHDInsightJob**: používá objekt úlohy a zkontrolujte stav úlohy. Se čeká na dokončení úlohy nebo je překročena doba čekání.
-* **Get-AzureRmHDInsightJobOutput**: používá se k načtení výstup úlohy
-* **Vyvolání AzureRmHDInsightHiveJob**: používá ke spouštění příkazy HiveQL. Tato rutina bloky dotaz dokončení a potom vrátí výsledky
-* **Použití AzureRmHDInsightCluster**: Nastaví aktuální cluster pro **Invoke-AzureRmHDInsightHiveJob** příkaz
+* **Přidat-AzureRmAccount**: ověřuje Azure PowerShell tooyour předplatného Azure
+* **Nové AzureRmHDInsightHiveJobDefinition**: vytvoří *úlohy definice* pomocí hello zadaný příkazy HiveQL
+* **Spuštění AzureRmHDInsightJob**: odešle tooHDInsight definice úlohy hello, spustí hello úlohy a vrátí *úlohy* objekt, který lze použít toocheck hello stav úlohy hello
+* **Počkejte AzureRmHDInsightJob**: používá objekt úlohy hello toocheck hello stav úlohy hello. Se čeká na dokončení úlohy hello nebo je překročena doba čekání hello.
+* **Get-AzureRmHDInsightJobOutput**: používá tooretrieve hello výstup hello úlohy
+* **Vyvolání AzureRmHDInsightHiveJob**: používat příkazy HiveQL toorun. Tento dotaz hello bloky rutiny dokončení a potom vrátí výsledky hello
+* **Použití AzureRmHDInsightCluster**: Nastaví hello aktuální toouse clusteru pro hello **Invoke-AzureRmHDInsightHiveJob** příkaz
 
-Následující kroky ukazují, jak tyto rutiny použít ke spuštění úlohy v clusteru HDInsight:
+Hello následující kroky ukazují, jak toouse tyto rutiny toorun úlohu v clusteru HDInsight:
 
-1. Pomocí editoru, uložte následující kód jako **hivejob.ps1**.
+1. Pomocí editoru, uložte hello následující kód jako **hivejob.ps1**.
 
-    [!code-powershell[hlavní](../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=5-42)]
+    [!code-powershell[main](../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=5-42)]
 
-2. Otevřete nový **prostředí Azure PowerShell** příkazového řádku. Změňte adresáře na umístění **hivejob.ps1** souboru a potom použijte následující příkaz pro spuštění skriptu:
+2. Otevřete nový **prostředí Azure PowerShell** příkazového řádku. Umístění adresáře toohello hello změnit **hivejob.ps1** souboru, potom použijte následující příkaz toorun hello skriptu hello:
 
         .\hivejob.ps1
 
-    Při spuštění skriptu, zobrazí se výzva k zadání názvu clusteru a přihlašovací údaje účtu HTTPS nebo Správce clusteru. Také můžete být vyzváni k přihlášení k předplatnému Azure.
+    Při spuštění skriptu hello jste výzvami tooenter hello clusteru název a hello HTTPS nebo přihlašovací údaje účtu správce pro hello cluster. Může být také výzvami toolog v tooyour předplatného Azure.
 
-3. Po dokončení úlohy vrátí informace podobná následující thext:
+3. Po dokončení úlohy hello vrátí následující thext podobné toohello informace:
 
-        Display the standard output...
+        Display hello standard output...
         2012-02-03      18:35:34        SampleClass0    [ERROR] incorrect       id
         2012-02-03      18:55:54        SampleClass1    [ERROR] incorrect       id
         2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
 
-4. Jak už bylo zmíněno dříve, **Invoke-Hive** lze použít ke spuštění dotazu a čekat na odpověď. Chcete-li zjistit, jak funguje Invoke-Hive pomocí následujícího skriptu:
+4. Jak už bylo zmíněno dříve, **Invoke-Hive** lze použít toorun dotazu a čeká na odpověď hello. Použijte následující skript toosee fungování Invoke-Hive hello:
 
-    [!code-powershell[hlavní](../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=50-71)]
+    [!code-powershell[main](../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=50-71)]
 
-    Výstup vypadá následující text:
+    výstup Hello vypadá hello následující text:
 
         2012-02-03    18:35:34    SampleClass0    [ERROR]    incorrect    id
         2012-02-03    18:55:54    SampleClass1    [ERROR]    incorrect    id
         2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
 
    > [!NOTE]
-   > Pro delší HiveQL dotazy, můžete použít prostředí Azure PowerShell **sem řetězce** rutina nebo HiveQL soubory skriptů. Následující fragment kódu ukazuje způsob použití **Invoke-Hive** můžete spustit soubor skriptu HiveQL. Soubor skriptu HiveQL musí být odeslán do wasb: / /.
+   > Pro delší HiveQL dotazy, můžete použít hello prostředí Azure PowerShell **sem řetězce** rutina nebo HiveQL soubory skriptů. Následující fragment kódu ukazuje, jak Hello toouse hello **Invoke-Hive** rutiny toorun soubor skriptu HiveQL. Hello HiveQL souboru skriptu musí být nahrán toowasb: / /.
    >
    > `Invoke-AzureRmHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
@@ -93,10 +93,10 @@ Následující kroky ukazují, jak tyto rutiny použít ke spuštění úlohy v 
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud žádné informace se vrátí po dokončení úlohy, mohlo dojít k chybě během zpracování. Chcete-li zobrazit informace o chybě pro tuto úlohu, přidejte na konec následující **hivejob.ps1** souboru, uložit jej a znovu jej spusťte.
+Když se po dokončení úlohy hello nevrátí žádné informace, může mít došlo k chybě během zpracování. informace o chybě tooview pro tuto úlohu, přidejte následující toohello konec hello hello **hivejob.ps1** souboru, uložit jej a znovu jej spusťte.
 
 ```powershell
-# Print the output of the Hive job.
+# Print hello output of hello Hive job.
 Get-AzureRmHDInsightJobOutput `
         -Clustername $clusterName `
         -JobId $job.JobId `
@@ -104,11 +104,11 @@ Get-AzureRmHDInsightJobOutput `
         -DisplayOutputType StandardError
 ```
 
-Tato rutina vrátí informace, které se zapisují do STDERR na serveru při spuštění úlohy.
+Tato rutina vrátí hello informace, které se zapisují tooSTDERR na serveru hello při spuštění úlohy hello.
 
 ## <a name="summary"></a>Souhrn
 
-Jak vidíte, Azure PowerShell poskytuje snadný způsob, jak spouštět dotazy Hive v clusteru služby HDInsight, monitorovat stav úlohy a načíst výstup.
+Jak vidíte, prostředí Azure PowerShell poskytuje snadný způsob toorun dotazů Hive v clusteru služby HDInsight, monitorování hello stav úlohy a načíst výstup hello.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Mobile Engagement uživatelské rozhraní - Analytics"
-description: "Zjistěte, jak analyzovat historická data o vaší aplikaci pomocí Azure Mobile Engagement"
+title: "aaaAzure Mobile Engagement uživatelské rozhraní - Analytics"
+description: "Zjistěte, jak tooanalyze historická data o vaší aplikaci pomocí Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,61 +14,61 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ad05676919d6c254d60fd010c3f589f663c4745d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4a9df11226fed6710cfb1337ae84ece7596d482f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-analyze-historical-data-about-your-application"></a>Jak analyzovat historická data o vaší aplikace
-Tento článek popisuje **ANALYTICS** kartě **Mobile Engagement** portálu. Můžete použít **Mobile Engagement** portálu ke sledování a správě mobilních aplikací. Všimněte si, že pokud chcete začít používat portál musíte nejprve vytvořit **Azure Mobile Engagement** účtu.
+# <a name="how-tooanalyze-historical-data-about-your-application"></a>Jak tooanalyze historická data o vaší aplikace
+Tento článek popisuje hello **ANALYTICS** kartě hello **Mobile Engagement** portálu. Použít hello **Mobile Engagement** portálu toomonitor a spravovat své mobilní aplikace. Všimněte si, že toostart hello portálu musíte nejprve toocreate **Azure Mobile Engagement** účtu.
 
-Analýza část uživatelského rozhraní obsahuje souhrnné informace o aplikaci na základě historických dat, který se aktualizuje každých 24 hodin. Informace se zobrazí na jiné řídicí panely skládá z řádku, řádku/výsečové grafy, mřížky a mapy. Data můžete také stáhnout jako soubory .csv. Většina stejné informace je k dispozici v reálném čase v části monitorování uživatelského rozhraní a je také přístupný z rozhraní API Analytics.
+Hello Analytics části hello uživatelského rozhraní obsahuje souhrnné informace o aplikaci na základě historických dat, který se aktualizuje každých 24 hodin. Hello informace se zobrazí na jiné řídicí panely skládá z řádku, řádku/výsečové grafy, mřížky a mapy. Hello dat se dá stáhnout i jako soubory .csv. Většina stejné informace je k dispozici v reálném čase v hello monitorování části hello uživatelského rozhraní a můžete také přístupná z hello Analytics rozhraní API.
 
 > [!NOTE]
-> Mnoho části **Mobile Engagement** portál obsahovat uživatelského rozhraní **zobrazit NÁPOVĚDU k** tlačítko. Chcete-li získat další kontextové informace o oddílu na toto tlačítko.
+> Mnoho oddílů hello **Mobile Engagement** portál uživatelského rozhraní obsahovat hello **zobrazit NÁPOVĚDU k** tlačítko. Stisknutím tohoto tlačítka tooget další kontextové informace o oddílu.
 
 ## <a name="standard-and-custom-analytics"></a>Standardní a vlastní Analytics
-Azure Mobile Engagement poskytuje sadu basic, standard analytické informace o aplikacích, které může být proto vytvořen při integraci aplikace s SDK. Azure Mobile Engagement také poskytuje schopnost shromažďovat informace o další vlastní analýzy, které chcete o chování vlastní koncoví uživatelé. To provedete tak, že vytvoříte plán značek vlastní "značky (app-info)", vytvořené z **nastavení** tak, aby Azure Mobile Engagement může shromažďovat tato další data za vás.
+Azure Mobile Engagement poskytuje sadu basic, standard analytické informace o aplikacích, které může být proto vytvořen při integraci aplikace s hello SDK. Azure Mobile Engagement poskytuje také hello možnost toogather další analýza vlastní informace, které chcete o chování vlastní koncoví uživatelé. To provedete tak, že vytvoříte plán značek vlastní "značky (app-info)", vytvořené z **nastavení** tak, aby Azure Mobile Engagement může shromažďovat tato další data za vás.
 
 ## <a name="analytics"></a>Analýza
 * Řídicí panel: Zobrazuje obecné informace o nových a aktivující uživatelům a jejich vývoj.
-* Uživatelé: Uživatelé se identifikují podle identifikátoru zařízení: Tento identifikátor je jedinečný pro každé zařízení (jeden nový uživatel je ve skutečnosti jedno nové zařízení). Uživatel se považuje za nové v daném časovém intervalu Pokud uskutečnil během tohoto intervalu uskutečnil první relaci. Uživatel se považuje za udrženého, pokud během posledních 7 dnů uskutečnil alespoň jednu relaci. Aktivní uživatelé jsou uživatelé, kteří provedené alespoň jednu relaci během daného období. Můžete řadit, měsíčně, týdně, denní nebo každou hodinu časových období. Všechny grafy vypadat podobně jako ale umožňují filtrovat podle různých funkcí, jako je například verzi vaší aplikace a potom seřadit podle v časovém intervalu. Standardní informace o shromažďovaných funkcí integraci sady SDK zahrnuje následující: aktivních uživatelů, nového uživatele, počet relací, délka každé relaci, technické informace o zemi, místní hodnoty, umístění, poskytovatel jazyk, zařízení, firmwaru, sítě (Wi-Fi) , verze aplikace a sady SDK, používaných zákazníky. Tuto informaci lze zobrazit v reálném čase z části monitorování.
+* Uživatelé: Uživatelé se identifikují podle identifikátoru zařízení: Tento identifikátor je jedinečný pro každé zařízení (jeden nový uživatel je ve skutečnosti jedno nové zařízení). Uživatel se považuje za nové v daném časovém intervalu Pokud uskutečnil během tohoto intervalu uskutečnil první relaci. Uživatel se považuje za udrženého, pokud uskutečnil alespoň jednu relaci během hello posledních 7 dnů. Aktivní uživatelé jsou uživatelé, kteří provedené alespoň jednu relaci během daného období. Můžete řadit, měsíčně, týdně, denní nebo každou hodinu časových období. Všechny grafy hello vypadat podobně jako ale umožňují toofilter různé funkce, jako je například hello verzi vaší aplikace a pak toosort podle v časovém intervalu. Hello standardní informace získané integrací hello SDK zahrnuje následující hello: aktivních uživatelů, nového uživatele, počet relací, délka každé relaci, technické informace o hello země, místní hodnoty, umístění, poskytovatel jazyk, zařízení, firmwaru, síť (Wi-Fi), verze aplikace hello a sady SDK, používaných zákazníky. Tuto informaci lze zobrazit v reálném čase z části monitorování hello.
 
 > [!NOTE]
-> Časové období je založena na datum z nastavení zařízení uživatelů, takže může uživatele, jehož telefon má datum nesprávné sady zobrazí v nesprávný časové období.
+> Hello časové období je založena na datum hello z hello uživatelských nastavení zařízení, takže uživatel, jehož telefon je správně nastaveno datum hello může zobrazí v hello nesprávný časové období.
 
-* Uchování: Uživatel se považuje za udrženého, pokud během tohoto intervalu uskutečnil první relaci uskutečnil v daném časovém intervalu. Časové intervaly, za které udržených uživatelů (a noví) uživatelé počítají můžete změnit na hodiny, dny, týdny nebo měsíce. Analýza uchování uživatele je vytvořená na základě kohorty. Kohorty je sada všichni noví uživatelé zjistil za dané období (tj, sadu uživatelů provedením jejich první relaci během této doby). Používáme kohorty 1 den, den 2, 4 dní, 7 dní nebo 1 měsíc. Vzhledem kohorty, každý 1 den, 2 dní, 4 dní, 7 dní, nebo 1 měsíc, Azure Mobile Engagement vypočítá sadu všichni uživatelé, kteří patří do kohorty a jsou stále aktivní (tedy sadu uživatelů, kteří během období alespoň jednu relaci). Tuto sadu uživatelů, se nazývá kohorty verze. (Azure Mobile Engagement můžete zjistit, kolik uživatelů jsou stále používají vaši aplikaci, ale pouze konkrétní úložiště platformy poznáte, kolik uživatelů odinstalovat aplikace – například GooglePlay iTunes, Windows Store, atd.).
-* Relace: Jedno použití aplikace uživatelem. Relace se generují z pořadí aktivity prováděné uživateli (aktivita je obvykle přidružena k použití jednu obrazovku aplikace, ale to se může lišit v závislosti na způsobu, jakým sady SDK integrovaná do aplikace). Uživatel může provádět pouze jednu aktivitu najednou: relace začíná, jakmile uživatel zahájí první aktivitu a zastaví, jakmile skončí poslední aktivita. Je-li uživatel více než několik sekund bez provádění všech činností, jeho pořadí aktivit rozdělit na dvě odlišné relace.
-* Aktivity: Názvy jednotlivých obrazovek v aplikaci a délka uživatelé vynaložit na každý obrazovky. Aktivity jsou vlastní analytické možnost, která odpovídá "informace o aplikaci" značek, které jste nastavili pro vlastní aplikace:
-* Cesta k uživatele: Ukazuje, jak uživatelé přecházejí mezi aktivitami (obrazovkami) aplikace. Přesunutím posuvníku upravíte úroveň podrobností. Modré uzly představují aktivity aplikace. Jejich velikost je úměrná době uživatelé stráví ve frontě. Bílé uzly představují zahájení a ukončení relace. Červené uzly představují havárie. Spojnice představují přechody mezi aktivitami aplikace (nebo mezi aktivitami a haváriemi). Klikněte na uzel nebo spojnici zobrazíte popisek s dalšími informacemi o vašich dat: časem stráveným na konkrétní obrazovce, počtem přechodů a procentem přechodů ze zdrojové aktivity k cílové aktivitě. (---60 %---> B znamená, že uživatelé z aktivity A přejde k aktivitě B 60 % času.) Graf můžete přeuspořádat tak, jak chcete upřesnit. jeho pozice se uloží pokaždé, když provedete změny. Zobrazením nebo skrytím havárií můžete graf zjednodušit.
-* Události: Konkrétní akce provedené uživatelem v aplikaci. Rozdělení událostí, které se zobrazí jako počet událostí na uživatele na relaci. Událost představuje okamžitou akci, například kliknutí na tlačítko nebo příjem oznámení. (Význam událostí závisí na tom, jak má sady SDK integrovaná do aplikace.) Událost může dojít během relace nebo úlohy, případně může být samostatná.
-* Úlohy: Podobné události, s výjimkou se zaměřuje na délce akce. Například úlohy může zjistit technické informace o tom, jak dlouho bude trvat obsahu zatížení nebo volání webové služby. Může také ukazují, jak dlouho trvalo uživatele k vyplnění formuláře, vytvoření účtu nebo nákupu. Úlohu představuje dobu trvání nějakého úkolu, například dobu stahování nebo dobu banner se zobrazuje na obrazovce. (Význam úloh závisí na tom, jak má sady SDK integrovaná do aplikace.) Úlohy jsou obvykle spojovány s úkoly na pozadí, které se provádějí mimo rozsah relace (tedy bez zásahu uživatele).
-* Technicals: Technické informace o zařízení uživatelů vaší aplikace, můžete sledovat, například národního prostředí, operátora, sítě, zařízení, firmwaru a obrazovky velikost zařízení uživatelů a verzi aplikace a verze sady SDK používaná ve vaší aplikaci.
-* Chyby: Informace o technických chyby uvnitř aplikace, které nezpůsobí aplikace došlo k chybě. Chybu představuje náhlý problém, například chybu sítě nebo chybnou manipulaci. (Význam událostí závisí na tom, jak má sady SDK integrovaná do aplikace.) K chybě může dojít během relace nebo úlohy, případně může být samostatná.
-* Dojde k chybě: Informace o chybách, ke kterým způsobit, že aplikace došlo k chybě. Havárie je vznikl nečekaně stav, kdy aplikace přestane vykonávat své předpokládané funkce a musí být zastavena. Havárie je většinou způsobena chybou v aplikaci.
+* Uchování: Uživatel se považuje za udrženého, pokud během tohoto intervalu uskutečnil první relaci uskutečnil v daném časovém intervalu. Můžete změnit hello časové intervaly, za které udržených uživatelů (a noví) uživatelé počítají toohours, dny, týdny nebo měsíce. uchování analýzy chování uživatelů Hello je postavená na kohorty. Kohorty je sada hello všichni noví uživatelé hello zjistil za dané období (tj, hello sadu uživatelů provedením jejich první relaci během této doby). Používáme kohorty 1 den, den 2, 4 dní, 7 dní nebo 1 měsíc. Zadaný kohorty, každý 1 den, den 2, 4 dní, 7 dní nebo 1 měsíce, Azure Mobile Engagement výpočtů hello sadu všichni uživatelé, kteří patří toohello kohorty a jsou stále aktivní (tedy hello sadu uživatelů, kteří provést na alespoň jednu relaci během období hello). Tuto sadu uživatelů, se nazývá kohorty verze. (Azure Mobile Engagement můžete zjistit, kolik uživatelů jsou stále používají vaši aplikaci, ale pouze konkrétní úložiště platformy hello poznáte, kolik uživatelů odinstalovat aplikace – například GooglePlay iTunes, Windows Store, atd.).
+* Relace: Jedno použití aplikace hello uživatelem. Relace se generují z hello posloupnost aktivit prováděné uživateli (aktivita je obvykle spojovány toohello využití jeden obrazovky aplikace hello, ale může se to lišit v závislosti na hello způsob hello SDK integrovaná v aplikaci hello). Uživatel může provádět pouze jednu aktivitu najednou: relace začíná, jakmile hello uživatel zahájí první aktivitu a zastaví, jakmile skončí poslední aktivita. Je-li uživatel více než několik sekund bez provádění všech činností, jeho pořadí aktivit rozdělit na dvě odlišné relace.
+* Aktivity: hello názvy jednotlivých obrazovky v aplikaci a hello délka uživatelé vynaložit na každý obrazovky. Aktivity jsou vlastní analytické možnost, která bude odpovídat toohello "informace o aplikaci" značky, které jste nastavili pro vlastní aplikace:
+* Cesta k uživatele: Ukazuje, jak uživatelé přecházejí mezi aktivitami (obrazovkami) aplikace. Přesunutím posuvníku hello tooadjust hello úroveň podrobností. Modré uzly představují aktivity aplikace. Jejich velikost je úměrná toohello uživatelé stráví ve frontě. Bílé uzly představují zahájení a ukončení relace. Červené uzly představují havárie. Spojnice představují přechody mezi aktivitami aplikace (nebo mezi aktivitami a haváriemi). Klikněte na uzel nebo odkaz toodisplay popisek s dalšími informacemi o vašich dat: hello časem stráveným na konkrétní obrazovce, hello počtem přechodů a procentem přechodů ze hello zdroj aktivity toohello cílová aktivita hello. (---60 %---> B znamená, že uživatelé se u aktivity vloží tooactivity B 60 % doby hello.) Jak chcete tooclarify, můžete přeuspořádat hello grafu. jeho pozice se uloží pokaždé, když provedete změny. Můžete zobrazit nebo skrýt hello havárií toolighten hello grafu.
+* Události: Konkrétní akce provedené uživatelem v aplikaci hello. distribuce Hello událostí se zobrazí jako hello počet událostí na uživatele na relaci. Událost představuje okamžitou akci, například kliknutí na tlačítko nebo hello příjem oznámení. (hello význam událostí závisí na tom, jak má hello SDK Integrovaná aplikace hello.) Událost může dojít během relace nebo úlohy, případně může být samostatná.
+* Úlohy: Podobné tooevents kromě se zaměřit na hello délka hello akce. Například úlohy může zjistit technické informace o tom, jak dlouho trvalo obsahu tooload nebo službu tooweb volání. Ho může také zobrazit, jak dlouho trvalo toofill uživatele na formuláři, vytvoření účtu nebo nákupu. Úlohu představuje hello dobu trvání nějakého úkolu, pro příklad, hello dobu stahování nebo hello čas banner se zobrazí na úvodní obrazovka. (hello význam úloh závisí na tom, jak má hello SDK Integrovaná aplikace hello.) Úlohy jsou obvykle spojovány s úkoly na pozadí, které se provádějí mimo rozsah relace (tedy bez zásahu uživatele) hello.
+* Technicals: Technické informace o zařízení hello hello uživatele vaší aplikace, které můžete sledovat, jako je například hello národního prostředí, operátora, sítě, zařízení, firmwaru a obrazovky velikost zařízení hello uživatelů a hello verzi aplikace a hello verze sady SDK používaná ve vaší aplikaci.
+* Chyby: Informace o technických chyby uvnitř hello aplikace, které nezpůsobí toocrash aplikace hello. Chybu představuje náhlý problém, například chybu sítě nebo chybnou manipulaci. (hello význam událostí závisí na tom, jak má hello SDK Integrovaná aplikace hello.) K chybě může dojít během relace nebo úlohy, případně může být samostatná.
+* Dojde k chybě: Informace o chybách, které způsobí toocrash vaší aplikace. Havárie je vznikl nečekaně stav, kdy hello aplikace přestane vykonávat své předpokládané funkce a musí být zastaven. Havárie je většinou kvůli tooa chyb v aplikaci hello.
 
 ![Analytics2][11]
 
-## <a name="accessing-the-retention-overview"></a>Přístup k uchování přehled
+## <a name="accessing-hello-retention-overview"></a>Přístup k hello uchování – přehled
 ![Analytics3][12]
 
-Přehled uchování je rozdělena uprostřed do několik karet, každý zobrazující přehledu po určitou dobu uchování. Doba uchování 2 dny je vidět v příkladu. Ostatní karty zobrazit období uchovávání 4 dny a 7 dní.
+Přehled uchování Hello je rozdělena střední hello do několik karet, každý zobrazuje přehled hello po určitou dobu uchování. Doba uchování 2 dny Hello je vidět v příkladu hello. Hello ostatní karty zobrazit hello 4 dny a období uchovávání 7 dní.
 
-## <a name="understanding-the-retention-overview-cards"></a>Principy kartách uchování – přehled
+## <a name="understanding-hello-retention-overview-cards"></a>Principy hello uchování Přehled karty
 ![Analytics4][13]
 
 ### <a name="each-card-is-composed-of-3-main-parts"></a>Každou kartu se skládá ze 3 hlavní části:
-1. 1: kohorty a období považovány za
-2. 2 – 4: uchování pro aktuální období
-3. 5: minigraf historie
+1. 1: hello kohorty a hello období považovány za
+2. 2 – 4: hello aktuální období uchovávání dat pro hello
+3. 5: minigraf hello historie
 
 ### <a name="here-is-detailed-information-about-each-element"></a>Tady je podrobné informace o jednotlivých prvků:
-1. Kohorty a období: typ kohorty poskytuje toto titulku. Zde "2 dny období" znamená, že se podíváme na chování uživatelů více než 2 dny, uživatelé, které byly přijaty během období 2 dny a jestli se připojení v následující bloky dvou dnů. V předchozím příkladu zvažuje aktivity uživatelů mezi 21 a 22nd listopadu.
-2. To poskytuje míru uchování nad 21 a 22 listopadu pro uživatele, které dorazily 19 a 20. listopadu. Zde jsme měli 1 aktivního uživatele mezi 21 a 22nd, přes 3, které byly nové uživatele mezi 19th a 20.
-3. Visual ukazatel poskytuje stejné informace, jak je uvedeno výše graficky znázornit. (Třetí kruhu je z číslo 33 %). Barva jsou uvedeny další informace: zelená značí toto číslo se ročně zvýší z předchozí výpočtu. Žlutý znamená stabilní a red znamená snížení.
-4. Označuje hodnoty používané pro výpočet.
-5. Toto je minigraf historii hodnot uchovávání informací. Umožňuje zobrazit hodnoty v minulosti tak, aby měl jak vyvinuly široký zobrazení.
+1. Kohorty a období: Tato titulku dává hello typ kohorty. Zde "2 dny období" znamená, že se podíváme na hello chování uživatelů více než 2 dny, uživatelé, které byly přijaty během období 2 dny a jestli se připojení v hello následující bloky dvou dnů. výše uvedený příklad Hello zvažuje hello aktivity uživatelů mezi hello 21 a 22 listopadu.
+2. To poskytuje míru uchování hello nad hello 21 a 22 listopadu pro uživatele hello přicházejících 19 a 20 listopadu. Zde jsme měli 1 aktivního uživatele mezi hello 21 a 22nd, přes hello 3, které byly nové uživatele mezi hello 19th a 20.
+3. Tato hello poskytuje vizuální indikátor graficky znázornit stejné informace jako výše. (třetí hello hello kroužek je z čísla 33 % hello.) Barva Hello jsou uvedeny další informace: zelená značí toto číslo se ročně zvýší z předchozí výpočtu hello. Žlutý znamená stabilní a red znamená snížení.
+4. To znamená hello hodnoty pro výpočet hello.
+5. Toto je minigraf hello historie hello uchování hodnot. Umožňuje toosee hello hodnoty v hello po toohave široký zobrazení jak vyvinuly.
 
 ## <a name="see-also"></a>Viz také
 * [Koncepty][Link 6]

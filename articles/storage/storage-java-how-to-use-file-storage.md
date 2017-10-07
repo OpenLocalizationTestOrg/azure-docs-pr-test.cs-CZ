@@ -1,6 +1,6 @@
 ---
-title: "Vývoj pro Azure File storage s Javou | Microsoft Docs"
-description: "Další informace jak vyvíjet aplikace Java a služby, které používají Azure File storage k ukládání dat souborů."
+title: aaaDevelop pro Azure File storage s Javou | Microsoft Docs
+description: "Zjistěte, jak toodevelop Java aplikace a služby, které používají Azure File storage toostore souborová data."
 services: storage
 documentationcenter: java
 author: robinsh
@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: robinsh
-ms.openlocfilehash: 16924599e49990265e07f7a58613756d93c46942
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b50703815daf2c829e7e9a9a4196c31a2b8727e9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="develop-for-azure-file-storage-with-java"></a>Vývoj pro Azure File storage s Javou
 [!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
@@ -26,7 +26,7 @@ ms.lasthandoff: 08/03/2017
 [!INCLUDE [storage-check-out-samples-java](../../includes/storage-check-out-samples-java.md)]
 
 ## <a name="about-this-tutorial"></a>O tomto kurzu
-Tento kurz popisuje základní informace o používání Javy k vývoji aplikací nebo služeb, které používají Azure File storage k ukládání dat souborů. V tomto kurzu jsme vytvořit jednoduché konzolové aplikace a ukazují, jak provést základní operace s Java a Azure File storage:
+V tomto kurzu se ukazují hello základy používání Java toodevelop aplikacím nebo službám, které používají Azure File storage toostore souborová data. V tomto kurzu bude vytvoření jednoduché konzolové aplikace a zobrazit jak tooperform základní operace s Java a Azure File storage:
 
 * Vytvářet a odstraňovat sdílené složky Azure File
 * Vytvářet a odstraňovat adresáře
@@ -34,25 +34,25 @@ Tento kurz popisuje základní informace o používání Javy k vývoji aplikac�
 * Odesílání, stahování a odstranění souboru
 
 > [!Note]  
-> Protože Azure File storage můžete získat přístup přes protokol SMB, je možné psát jednoduché aplikace, které přístup k Azure souborové složce přes standardní třídy Java vstupně-výstupních operací. Tento článek popisuje, jak k psaní aplikací, které používají Java SDK úložiště Azure, kterou používá [REST API služby Azure File storage](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) ke komunikaci s úložištěm Azure File.
+> Protože Azure File storage můžete získat přístup přes protokol SMB, je možné toowrite jednoduché aplikace, které přístup hello Azure souborové složce přes standardní třídy Java vstupně-výstupních operací hello. Tento článek popisuje, jak toowrite aplikace, které používají hello Java SDK úložiště Azure, kterou používá hello [REST API služby Azure File storage](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) tootalk tooAzure úložiště File.
 
 ## <a name="create-a-java-application"></a>Vytvoření aplikace Java
-Pokud chcete vytvořit ukázky, budete potřebovat Java Development Kit (JDK) a [] [Azure SDK úložiště pro jazyk Java]. Musí také jste vytvořili účet úložiště Azure.
+Ukázky hello toobuild, budete potřebovat hello Java Development Kit (JDK) a [hello [Azure SDK úložiště pro jazyk Java]]. Musí také jste vytvořili účet úložiště Azure.
 
-## <a name="setup-your-application-to-use-azure-file-storage"></a>Instalační program aplikace k používání Azure File storage
-Pokud chcete používat službu Azure storage rozhraní API, přidejte následující příkaz na začátek souboru Java, které máte v úmyslu přístup ke službě úložiště z.
+## <a name="setup-your-application-toouse-azure-file-storage"></a>Instalační program toouse vaše aplikace Azure File storage
+toouse hello úložiště Azure rozhraní API, přidejte následující příkaz toohello horní části souboru Java hello, kde chcete tooaccess hello úložiště služby z hello.
 
 ```java
-// Include the following imports to use blob APIs.
+// Include hello following imports toouse blob APIs.
 import com.microsoft.azure.storage.*;
 import com.microsoft.azure.storage.file.*;
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>Instalační program připojovací řetězec úložiště Azure
-Používání Azure File storage, budete muset připojit k účtu úložiště Azure. Prvním krokem by mohla být nakonfigurovat připojovací řetězec, který jsme budete používat pro připojení k vašemu účtu úložiště. Umožňuje definovat statické proměnné na to.
+toouse Azure File storage, budete potřebovat účet úložiště Azure tooyour tooconnect. Hello prvním krokem by tooconfigure připojovací řetězec, který použijeme účet úložiště tooyour tooconnect. Umožňuje definovat statické proměnné toodo který.
 
 ```java
-// Configure the connection-string with your values
+// Configure hello connection-string with your values
 public static final String storageConnectionString =
     "DefaultEndpointsProtocol=http;" +
     "AccountName=your_storage_account_name;" +
@@ -60,40 +60,40 @@ public static final String storageConnectionString =
 ```
 
 > [!NOTE]
-> Your_storage_account_name a your_storage_account_key nahraďte skutečnými hodnotami pro váš účet úložiště.
+> Nahraďte your_storage_account_name a your_storage_account_key hello skutečnými hodnotami pro váš účet úložiště.
 > 
 > 
 
-## <a name="connecting-to-an-azure-storage-account"></a>Připojení k účtu úložiště Azure
-Pokud chcete připojit k účtu úložiště, budete muset použít **CloudStorageAccount** objekt, předávání připojovací řetězec k jeho **analyzovat** metoda.
+## <a name="connecting-tooan-azure-storage-account"></a>Připojení tooan účtu úložiště Azure
+účet úložiště tooyour tooconnect, budete potřebovat toouse hello **CloudStorageAccount** objekt, předávání připojovací řetězec tooits **analyzovat** metoda.
 
 ```java
-// Use the CloudStorageAccount object to connect to your storage account
+// Use hello CloudStorageAccount object tooconnect tooyour storage account
 try {
     CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
 } catch (InvalidKeyException invalidKey) {
-    // Handle the exception
+    // Handle hello exception
 }
 ```
 
-**CloudStorageAccount.parse** vyvolá InvalidKeyException, budete muset uvést uvnitř bloku try/catch.
+**CloudStorageAccount.parse** vyvolává InvalidKeyException, budete potřebovat tooput ho uvnitř try/catch blokovat.
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření Azure sdílené složky
-Všechny soubory a adresáře v úložišti Azure File jsou umístěny v kontejneru názvem **sdílené složky**. Váš účet úložiště může mít tolik sdílených složek jako umožňuje kapacitě vašeho účtu. Pokud chcete získat přístup ke sdílené složce a její obsah, musíte použít klienta úložiště Azure File.
+Všechny soubory a adresáře v úložišti Azure File jsou umístěny v kontejneru názvem **sdílené složky**. Váš účet úložiště může mít tolik sdílených složek jako umožňuje kapacitě vašeho účtu. tooobtain přístup tooa sdílenou složku a její obsah, je nutné toouse klienta úložiště Azure File.
 
 ```java
-// Create the Azure File storage client.
+// Create hello Azure File storage client.
 CloudFileClient fileClient = storageAccount.createCloudFileClient();
 ```
 
-Pomocí klienta aplikace Azure File storage můžete pak získat odkaz na sdílenou složku.
+Pomocí klienta aplikace hello Azure File storage můžete získat, sdílenou složku tooa odkaz.
 
 ```java
-// Get a reference to the file share
+// Get a reference toohello file share
 CloudFileShare share = fileClient.getShareReference("sampleshare");
 ```
 
-Chcete-li ve skutečnosti vytvořit sdílenou složku, použijte **createIfNotExists** metodu objektu CloudFileShare.
+Vytvořte sdílenou složku hello tooactually, použijte hello **createIfNotExists** metodu objektu CloudFileShare hello.
 
 ```java
 if (share.createIfNotExists()) {
@@ -101,10 +101,10 @@ if (share.createIfNotExists()) {
 }
 ```
 
-V tomto okamžiku **sdílet** obsahuje odkaz na sdílenou složku s názvem **sampleshare**.
+V tomto okamžiku **sdílet** obsahuje odkaz na tooa sdílenou složku s názvem **sampleshare**.
 
 ## <a name="delete-an-azure-file-share"></a>Odstranit sdílenou složku Azure
-Odstranění sdílené složky se provádí volání **deleteIfExists** metoda CloudFileShare objektu. Tady je ukázkový kód, který nemá.
+Odstranění sdílené složky se provádí volání hello **deleteIfExists** metoda CloudFileShare objektu. Tady je ukázkový kód, který nemá.
 
 ```java
 try
@@ -112,10 +112,10 @@ try
     // Retrieve storage account from connection-string.
     CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the file client.
+    // Create hello file client.
    CloudFileClient fileClient = storageAccount.createCloudFileClient();
 
-   // Get a reference to the file share
+   // Get a reference toohello file share
    CloudFileShare share = fileClient.getShareReference("sampleshare");
 
    if (share.deleteIfExists()) {
@@ -127,13 +127,13 @@ try
 ```
 
 ## <a name="create-a-directory"></a>Vytvoření adresáře
-Úložiště můžete navíc uspořádat umístěním souborů v podadresářích místo nutnosti všechny z nich v kořenovém adresáři. Azure File storage můžete vytvořit tolik adresáře, které umožní váš účet. Následující kód vytvoří adresář s názvem **sampledir** pod kořenovým adresářem.
+Úložiště můžete navíc uspořádat umístěním souborů v podadresářích místo nutnosti všechny z nich v kořenovém adresáři hello. Úložiště Azure File umožňuje toocreate jako mnoho adresářů jako váš účet se povolit. Následující kód Hello vytvoří adresář s názvem **sampledir** pod kořenovým adresářem hello.
 
 ```java
-//Get a reference to the root directory for the share.
+//Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
-//Get a reference to the sampledir directory
+//Get a reference toohello sampledir directory
 CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
 
 if (sampleDir.createIfNotExists()) {
@@ -147,23 +147,23 @@ if (sampleDir.createIfNotExists()) {
 Odstranění adresáře je docela jednoduché úlohy, i když je potřeba poznamenat, že nelze odstranit adresář, který ještě obsahuje soubory nebo ostatních adresářů.
 
 ```java
-// Get a reference to the root directory for the share.
+// Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
-// Get a reference to the directory you want to delete
+// Get a reference toohello directory you want toodelete
 CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
 
-// Delete the directory
+// Delete hello directory
 if ( containerDir.deleteIfExists() ) {
     System.out.println("Directory deleted");
 }
 ```
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Vytvoření výčtu souborů a adresářů v Azure File sdílet
-Získání seznamu souborů a adresářů v rámci sdílené složky se snadno provádí voláním **listFilesAndDirectories** na CloudFileDirectory odkaz. Metoda vrátí seznam ListFileItem objektů, které můžete iterovat na. Například následující kód zobrazí seznam souborů a adresářů v kořenovém adresáři.
+Získání seznamu souborů a adresářů v rámci sdílené složky se snadno provádí voláním **listFilesAndDirectories** na CloudFileDirectory odkaz. Hello metoda vrátí seznam hodnot ListFileItem objekty, které můžete iterovat na. Jako příklad hello následující kód zobrazí seznam souborů a adresářů v kořenovém adresáři hello.
 
 ```java
-//Get a reference to the root directory for the share.
+//Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
 for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
@@ -172,19 +172,19 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 ```
 
 ## <a name="upload-a-file"></a>Nahrání souboru
-Soubor s Azure, které se sdílená složka obsahuje v každém, kořenový adresář, kde mohou být uloženy soubory. V této části se dozvíte jak nahrát soubor z místního úložiště do kořenového adresáře sdílenou složku.
+Soubor s Azure, který obsahuje sdílenou složku v hello velmi alespoň, kořenový adresář, kde mohou být uloženy soubory. V této části se dozvíte, jak tooupload soubor z místního úložiště do hello kořenový adresář sdílené složky.
 
-Prvním krokem při nahrání souboru se má získat odkaz na adresář, kde by měl být umístěn. To provedete pomocí volání **getRootDirectoryReference** metodu objektu sdílené složky.
+Hello prvním krokem při nahrání souboru je tooobtain adresář toohello odkaz kde by měl být umístěn. To se provádí volání hello **getRootDirectoryReference** metodu objektu hello sdílené složky.
 
 ```java
-//Get a reference to the root directory for the share.
+//Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 ```
 
-Teď, když máte odkaz na kořenovém adresáři sdílené složky, můžete nahrát soubor do jej pomocí následujícího kódu.
+Teď, když máte odkaz toohello kořenovým adresářem sdílené složky hello, můžete nahrát soubor do pomocí hello následující kód.
 
 ```java
-        // Define the path to a local file.
+        // Define hello path tooa local file.
         final String filePath = "C:\\temp\\Readme.txt";
     
         CloudFile cloudFile = rootDir.getFileReference("Readme.txt");
@@ -192,30 +192,30 @@ Teď, když máte odkaz na kořenovém adresáři sdílené složky, můžete na
 ```
 
 ## <a name="download-a-file"></a>Stažení souboru
-Jedním z častější operace, které je potřeba provést před Azure File storage je ke stažení souborů. V následujícím příkladu kódu stáhne SampleFile.txt a zobrazí její obsah.
+Jedním z hello další časté operace, které je potřeba provést před Azure File storage je toodownload soubory. V následujícím příkladu hello kód hello stáhne SampleFile.txt a zobrazí její obsah.
 
 ```java
-//Get a reference to the root directory for the share.
+//Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
-//Get a reference to the directory that contains the file
+//Get a reference toohello directory that contains hello file
 CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
 
-//Get a reference to the file you want to download
+//Get a reference toohello file you want toodownload
 CloudFile file = sampleDir.getFileReference("SampleFile.txt");
 
-//Write the contents of the file to the console.
+//Write hello contents of hello file toohello console.
 System.out.println(file.downloadText());
 ```
 
 ## <a name="delete-a-file"></a>Odstranění souboru
-Další běžné operace úložiště Azure File je odstranění souborů. Následující kód odstraní soubor s názvem SampleFile.txt uložený v adresáři s názvem **sampledir**.
+Další běžné operace úložiště Azure File je odstranění souborů. Hello následující kód odstraní soubor s názvem SampleFile.txt uložený v adresáři s názvem **sampledir**.
 
 ```java
-// Get a reference to the root directory for the share.
+// Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
-// Get a reference to the directory where the file to be deleted is in
+// Get a reference toohello directory where hello file toobe deleted is in
 CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
 
 String filename = "SampleFile.txt"
@@ -228,7 +228,7 @@ if ( file.deleteIfExists() ) {
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Pokud vás zajímají další informace o dalších úložiště Azure API, použijte tyto odkazy.
+Pokud vás zajímají další informace o dalších úložiště Azure rozhraní API toolearn, použijte tyto odkazy.
 
 * [Středisko pro vývojáře Java](http://azure.microsoft.com/develop/java/)
 * [Úložiště Azure SDK pro jazyk Java](https://github.com/azure/azure-storage-java)
@@ -236,4 +236,4 @@ Pokud vás zajímají další informace o dalších úložiště Azure API, pou�
 * [Odkaz na sadu SDK klienta úložiště Azure](http://dl.windowsazure.com/storage/javadoc/)
 * [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Blog týmu Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/)
-* [Přenos dat pomocí nástroje příkazového řádku AzCopy](storage-use-azcopy.md)
+* [Přenos dat pomocí příkazového řádku Azcopy hello](storage-use-azcopy.md)

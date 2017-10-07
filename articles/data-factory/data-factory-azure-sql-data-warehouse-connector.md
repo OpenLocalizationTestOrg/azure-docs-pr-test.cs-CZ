@@ -1,6 +1,6 @@
 ---
-title: "Kopírování dat do/z Azure SQL Data Warehouse | Microsoft Docs"
-description: "Zjistěte, jak ke zkopírování dat z Azure SQL Data Warehouse pomocí Azure Data Factory"
+title: aaaCopy data do/z Azure SQL Data Warehouse | Microsoft Docs
+description: "Zjistěte, jak toocopy data do/z Azure SQL Data Warehouse pomocí Azure Data Factory"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/04/2017
 ms.author: jingwang
-ms.openlocfilehash: 8cba89e0947646b498af07aa484511bf07bf7b0e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 75bfcf3c99844fc1297ca500107da23cf875e41f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory
-Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory pro přesun dat z Azure SQL Data Warehouse. Vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který představuje obecný přehled přesun dat s aktivitou kopírování.  
+# <a name="copy-data-tooand-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Tooand kopírování dat z Azure SQL Data Warehouse pomocí Azure Data Factory
+Tento článek vysvětluje, jak toouse hello aktivitu kopírování v Azure Data Factory toomove dat z Azure SQL Data Warehouse. Vychází hello [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který představuje obecný přehled přesun dat s aktivitou kopírování hello.  
 
 > [!TIP]
-> K dosažení nejlepšího výkonu, použijte k načtení dat do Azure SQL Data Warehouse PolyBase. [PolyBase používá k načtení dat do Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) obsahuje podrobnosti. Návod s případu použití najdete v tématu [načíst 1 TB do Azure SQL Data Warehouse pomocí Azure Data Factory v části 15 minut](data-factory-load-sql-data-warehouse.md).
+> tooachieve co nejlepší výkon, použijte PolyBase tooload data do Azure SQL Data Warehouse. Hello [použijte PolyBase tooload data do Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) obsahuje podrobnosti. Návod s případu použití najdete v tématu [načíst 1 TB do Azure SQL Data Warehouse pomocí Azure Data Factory v části 15 minut](data-factory-load-sql-data-warehouse.md).
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
-Může kopírovat data **z Azure SQL Data Warehouse** ukládá do následující data:
+Může kopírovat data **z Azure SQL Data Warehouse** toohello následující úložišť dat:
 
 [!INCLUDE [data-factory-supported-sinks](../../includes/data-factory-supported-sinks.md)]
 
-Může kopírovat data z následujících datových úložišť **do Azure SQL Data Warehouse**:
+Data můžete zkopírovat z hello následující úložišť dat **tooAzure SQL Data Warehouse**:
 
 [!INCLUDE [data-factory-supported-sources](../../includes/data-factory-supported-sources.md)]
 
 > [!TIP]
-> Při kopírování dat z SQL serveru nebo databáze SQL Azure do Azure SQL Data Warehouse, pokud tabulka neexistuje v cílové úložiště, Data Factory můžete automaticky vytvořit v tabulce v SQL Data Warehouse pomocí schématu tabulky v úložišti dat zdroje. V tématu [automatické vytvoření tabulky](#auto-table-creation) podrobnosti.
+> Při kopírování dat z SQL serveru nebo Azure SQL Database tooAzure SQL Data Warehouse, pokud tabulka hello neexistuje v hello cílové úložiště, Data Factory můžete automaticky vytvořit hello tabulky v SQL Data Warehouse pomocí schématu hello hello tabulky ve zdroji hello úložiště dat. V tématu [automatické vytvoření tabulky](#auto-table-creation) podrobnosti.
 
 ## <a name="supported-authentication-type"></a>Podporované typ ověřování
 Azure SQL Data Warehouse konektor podporu základní ověřování.
@@ -44,63 +44,63 @@ Azure SQL Data Warehouse konektor podporu základní ověřování.
 ## <a name="getting-started"></a>Začínáme
 Vytvoření kanálu s aktivitou kopírování, který přesouvá data z Azure SQL Data Warehouse pomocí různých nástrojů nebo rozhraní API.
 
-Nejjednodušší způsob, jak vytvořit kanál, který kopíruje data z Azure SQL Data Warehouse je pomocí Průvodce kopírováním data. V tématu [kurz: načtení dat do SQL Data Warehouse pomocí služby Data Factory](../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md) podrobný rychlé vytvoření kanálu pomocí Průvodce kopírováním data.
+Nejjednodušší způsob, jak toocreate Hello kanál, který kopíruje data z Azure SQL Data Warehouse je toouse hello kopírování dat průvodce. V tématu [kurz: načtení dat do SQL Data Warehouse pomocí služby Data Factory](../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md) podrobný rychlé vytvoření kanálu pomocí Průvodce kopírování dat hello.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **.NET API**, a **REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+Můžete také použít následující nástroje toocreate kanálu hello: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru** , **.NET API**, a **rozhraní REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) pro podrobné pokyny toocreate kanál s aktivitou kopírování.
 
-Jestli používáte nástroje nebo rozhraní API, je třeba provést následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat podřízený:
+Jestli používáte nástroje hello nebo rozhraní API, je třeba provést následující kroky toocreate kanál, který přesouvá data ze zdrojových dat úložiště tooa jímku dat hello:
 
 1. Vytvoření **objekt pro vytváření dat**. Objekt pro vytváření dat může obsahovat jeden nebo víc kanálů. 
-2. Vytvoření **propojené služby** propojení vstupní a výstupní data ukládá do data factory. Pokud jsou kopírování dat z Azure blob storage do služby Azure SQL data warehouse, například vytvoříte dvě propojené služby pro vytváření dat. propojte vašeho účtu úložiště Azure a Azure SQL data warehouse. Vlastnosti propojené služby, které jsou specifické pro Azure SQL Data Warehouse, najdete v části [propojené vlastnosti služby](#linked-service-properties) části. 
-3. Vytvoření **datové sady** představují vstupní a výstupní data pro kopírování. V příkladu uvedených v posledním kroku vytvoříte datové sady a zadat kontejner objektů blob a složky, která obsahuje vstupní data. A vytvořte jinou datovou sadu, která zadejte v tabulce v datovém skladu Azure SQL, který obsahuje data zkopírovat z úložiště objektů blob. Vlastnosti datové sady, které jsou specifické pro Azure SQL Data Warehouse, najdete v části [vlastnosti datové sady](#dataset-properties) části.
-4. Vytvoření **kanálu** s aktivitou kopírování, která přebírá datovou sadu jako vstup a datovou sadu jako výstup. V příkladu již bylo zmíněno dříve použijete BlobSource jako zdroj a SqlDWSink jako jímku pro aktivitu kopírování. Podobně pokud kopírujete z Azure SQL Data Warehouse do úložiště objektů Blob Azure, můžete použít SqlDWSource a BlobSink v aktivitě kopírování. Kopírovat vlastnosti aktivity, které jsou specifické pro Azure SQL Data Warehouse, najdete v části [zkopírovat vlastnosti aktivity](#copy-activity-properties) části. Podrobnosti o tom, jak používat úložiště dat jako zdroj nebo jímka klikněte na odkaz v předchozí části pro data store.
+2. Vytvoření **propojené služby** toolink vstupní a výstupní data úložiště tooyour data factory. Například pokud data kopírujete z Azure blob storage tooan Azure SQL data warehouse, vytvoříte dvě propojené služby toolink váš účet úložiště Azure a Azure SQL data warehouse tooyour objekt pro vytváření dat. Vlastnosti propojené služby, které jsou specifické tooAzure SQL Data Warehouse, najdete v části [propojené vlastnosti služby](#linked-service-properties) části. 
+3. Vytvoření **datové sady** toorepresent vstupní a výstupní data pro hello operace kopírování. V příkladu hello uvedených v posledním kroku hello vytvořte kontejner objektů blob hello toospecify datovou sadu a složky, která obsahuje vstupní data hello. A vytvořte jinou tabulkou hello toospecify datovou sadu v hello Azure SQL data warehouse, která obsahuje hello daty zkopírovanými z úložiště objektů blob hello. Vlastnosti datové sady, které jsou specifické tooAzure SQL Data Warehouse, najdete v části [vlastnosti datové sady](#dataset-properties) části.
+4. Vytvoření **kanálu** s aktivitou kopírování, která přebírá datovou sadu jako vstup a datovou sadu jako výstup. V příkladu hello již bylo zmíněno dříve použijete BlobSource jako zdroj a SqlDWSink jako jímku pro aktivitu kopírování hello. Podobně pokud zkopírujete z Azure SQL Data Warehouse tooAzure úložiště objektů Blob, použijte SqlDWSource a BlobSink v aktivitě kopírování hello. Vlastnosti aktivity kopírování, které jsou specifické tooAzure SQL Data Warehouse, najdete v části [zkopírovat vlastnosti aktivity](#copy-activity-properties) části. Podrobnosti o způsobu toouse úložiště dat jako zdroj nebo jímka klikněte na tlačítko hello odkaz v předchozí části hello pro data store.
 
-Když použijete průvodce, jsou automaticky vytvoří definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál). Při použití nástroje nebo rozhraní API (s výjimkou .NET API), definujete tyto entity služby Data Factory pomocí formátu JSON.  Ukázky s definicemi JSON entit služby Data Factory, které se používají ke zkopírování dat do/z Azure SQL Data Warehouse, najdete v části [JSON příklady](#json-examples-for-copying-data-to-and-from-sql-data-warehouse) tohoto článku.
+Když použijete Průvodce hello, jsou automaticky vytvoří definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál hello). Při použití nástroje nebo rozhraní API (s výjimkou .NET API), můžete definovat tyto entity služby Data Factory pomocí formátu JSON hello.  Ukázky s definicemi JSON entit služby Data Factory, které jsou používané toocopy data do/z Azure SQL Data Warehouse, najdete v části [JSON příklady](#json-examples-for-copying-data-to-and-from-sql-data-warehouse) tohoto článku.
 
-Následující části obsahují podrobnosti o vlastnostech formátu JSON, které slouží k definování konkrétní entity služby Data Factory pro Azure SQL Data Warehouse:
+Hello následující části obsahují podrobnosti o vlastnostech formátu JSON, které jsou používané toodefine objekt pro vytváření dat entity konkrétní tooAzure SQL Data Warehouse:
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
-Následující tabulka obsahuje popis specifické pro službu Azure SQL Data Warehouse propojené elementy JSON.
+Hello následující tabulka obsahuje popis pro konkrétní tooAzure elementy JSON SQL Data Warehouse propojené služby.
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| type |Vlastnost typu musí být nastavena na: **AzureSqlDW** |Ano |
-| připojovací řetězec |Zadejte informace potřebné pro připojení k Azure SQL Data Warehouse instance pro vlastnost connectionString. Podporováno je pouze základní ověřování. |Ano |
+| type |vlastnost typu Hello musí být nastavena na: **AzureSqlDW** |Ano |
+| připojovací řetězec |Zadejte informace potřebné pro vlastnost connectionString hello tooconnect toohello Azure SQL Data Warehouse instance. Podporováno je pouze základní ověřování. |Ano |
 
 > [!IMPORTANT]
-> Konfigurace [Firewall databáze Azure SQL](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) a databázový server, který [povolit službám Azure přístup k serveru](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Kromě toho pokud data kopírujete do Azure SQL Data Warehouse z mimo Azure včetně z místního zdroje dat se brána objekt pro vytváření dat, nakonfigurujte příslušné rozsah IP adres pro počítač, který odesílá data do Azure SQL Data Warehouse.
+> Konfigurace [Firewall databáze Azure SQL](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) a databázový server hello příliš[povolit serveru hello tooaccess Azure Services](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Kromě toho pokud kopírujete tooAzure dat SQL Data Warehouse z mimo Azure včetně z místního zdroje dat se brána objekt pro vytváření dat, nakonfigurujte příslušné rozsah IP adres pro hello počítač, který odesílá data tooAzure SQL Data Warehouse.
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny typy datovou sadu (Azure SQL Azure blob, tabulky Azure, atd.).
+Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v části hello [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny typy datovou sadu (Azure SQL Azure blob, tabulky Azure, atd.).
 
-V rámci typeProperties části se liší pro jednotlivé typy datovou sadu a poskytuje informace o umístění dat v úložišti. **Rámci typeProperties** části datové sady typu **AzureSqlDWTable** má následující vlastnosti:
+část rámci typeProperties Hello se liší pro jednotlivé typy datovou sadu a poskytuje informace o umístění hello hello dat v úložišti dat hello. Hello **rámci typeProperties** části pro datovou sadu hello typu **AzureSqlDWTable** má hello následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| tableName |Název tabulky nebo zobrazení v databázi Azure SQL Data Warehouse, která propojená služba odkazuje. |Ano |
+| tableName |Název hello tabulku nebo zobrazení v databázi Azure SQL Data Warehouse hello, která hello propojená služba odkazuje. |Ano |
 
 ## <a name="copy-activity-properties"></a>Zkopírovat vlastnosti aktivit
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [vytváření kanálů](data-factory-create-pipelines.md) článku. Vlastnosti, například název, popis, vstupní a výstupní tabulky a zásad jsou dostupné pro všechny typy aktivit.
+Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování aktivit najdete v tématu hello [vytváření kanálů](data-factory-create-pipelines.md) článku. Vlastnosti, například název, popis, vstupní a výstupní tabulky a zásad jsou dostupné pro všechny typy aktivit.
 
 > [!NOTE]
-> Aktivita kopírování přijímá pouze jeden vstup a vytváří jenom jeden výstup.
+> Hello aktivity kopírování přijímá pouze jeden vstup a vytváří jenom jeden výstup.
 
-Vzhledem k tomu, vlastnosti dostupné v rámci typeProperties části aktivity se liší podle každý typ aktivity. Pro aktivitu kopírování budou lišit v závislosti na typech zdrojů a jímky.
+Vzhledem k tomu, vlastnosti dostupné v rámci typeProperties části hello hello aktivity se liší podle každý typ aktivity. Pro aktivitu kopírování budou lišit v závislosti na typech hello zdrojů a jímky.
 
 ### <a name="sqldwsource"></a>SqlDWSource
-Pokud je zdroj typu **SqlDWSource**, následující vlastnosti jsou k dispozici v **rámci typeProperties** části:
+Pokud je zdroj typu **SqlDWSource**, hello následující vlastnosti jsou k dispozici v **rámci typeProperties** části:
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| sqlReaderQuery |Čtení dat pomocí vlastního dotazu. |Řetězec dotazu SQL. Příklad: vybrat * z MyTable. |Ne |
-| sqlReaderStoredProcedureName |Název uložené procedury, který čte data ze zdrojové tabulky. |Název uložené procedury. Poslední příkaz jazyka SQL musí být příkaz SELECT v uložené proceduře. |Ne |
-| storedProcedureParameters |Parametry pro uloženou proceduru. |Páry název/hodnota. Názvy a malá a velká písmena parametry musí odpovídat názvům a malá a velká písmena parametry uložené procedury. |Ne |
+| sqlReaderQuery |Použijte data tooread hello vlastního dotazu. |Řetězec dotazu SQL. Příklad: vybrat * z MyTable. |Ne |
+| sqlReaderStoredProcedureName |Název hello uložené procedury, která čte data z hello zdrojové tabulky. |Název hello uložené procedury. Hello poslední příkaz jazyka SQL musí být příkaz SELECT v hello uložené procedury. |Ne |
+| storedProcedureParameters |Parametry pro hello uložené procedury. |Páry název/hodnota. Názvy a malá a velká písmena parametry musí odpovídat názvům hello a malá a velká písmena parametry hello uložené procedury. |Ne |
 
-Pokud **sqlReaderQuery** je zadán pro SqlDWSource, spuštění aktivity kopírování tohoto dotazu na zdroji Azure SQL Data Warehouse se získat data.
+Pokud hello **sqlReaderQuery** je zadán pro hello SqlDWSource, hello aktivity kopírování spouští tento dotaz hello Azure SQL Data Warehouse zdrojová tooget hello data.
 
-Alternativně můžete zadat uložené procedury zadáním **sqlReaderStoredProcedureName** a **storedProcedureParameters** (Pokud uložená procedura přebírá parametry).
+Alternativně můžete zadat uložené procedury zadáním hello **sqlReaderStoredProcedureName** a **storedProcedureParameters** (Pokud hello uložená procedura používá parametry).
 
-Pokud nezadáte sqlReaderQuery nebo sqlReaderStoredProcedureName, sloupce definované v části Struktura sady dat JSON se používají k vytvoření dotazu ke spouštění na Azure SQL Data Warehouse. Příklad: `select column1, column2 from mytable`. Pokud definice datové sady nemá strukturu, jsou vybrány všechny sloupce z tabulky.
+Pokud nezadáte sqlReaderQuery nebo sqlReaderStoredProcedureName, hello sloupce definovaný v oddílu Struktura hello hello sady dat JSON jsou použité toobuild toorun dotaz proti hello Azure SQL Data Warehouse. Příklad: `select column1, column2 from mytable`. Pokud definice datové sady hello nemá hello struktura, vyberou se všechny sloupce z tabulky hello.
 
 #### <a name="sqldwsource-example"></a>Příklad SqlDWSource
 
@@ -114,7 +114,7 @@ Pokud nezadáte sqlReaderQuery nebo sqlReaderStoredProcedureName, sloupce defino
     }
 }
 ```
-**Uložená procedura definice:**
+**definice Hello uložené procedury:**
 
 ```SQL
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -134,19 +134,19 @@ GO
 ```
 
 ### <a name="sqldwsink"></a>SqlDWSink
-**SqlDWSink** podporuje následující vlastnosti:
+**SqlDWSink** podporuje hello následující vlastnosti:
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování provést tak, aby se vyčistit data určitý řez. Podrobnosti najdete v tématu [opakovatelnosti části](#repeatability-during-copy). |Příkaz dotazu. |Ne |
-| allowPolyBase |Označuje, zda místo hromadné vložení mechanismus použít PolyBase (v případě potřeby). <br/><br/> **Pomocí PolyBase je doporučeným způsobem, jak načíst data do SQL Data Warehouse.** V tématu [PolyBase používá k načtení dat do Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) části omezení a podrobnosti. |True <br/>NEPRAVDA (výchozí) |Ne |
-| polyBaseSettings |Skupinu vlastností, které se dají zadat při **allowPolybase** je nastavena na **true**. |&nbsp; |Ne |
-| rejectValue |Určuje číslo nebo podíl řádků, které může být odmítnutá předtím, než se dotaz nezdaří. <br/><br/>Další informace o možnostech odmítněte používání funkce PolyBase v **argumenty** části [vytvořit EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) tématu. |0 (výchozí), 1, 2... |Ne |
-| rejectType |Určuje, zda je hodnota literálu nebo jako procento zadána možnost rejectValue. |Hodnota (výchozí), procento |Ne |
-| rejectSampleValue |Určuje počet řádků k načtení předtím, než PolyBase přepočítá procento odmítnutých řádků. |1, 2, … |Ano, pokud **rejectType** je **procento** |
-| useTypeDefault |Určuje způsob zpracování chybějící hodnoty v textových souborů s oddělovači, když PolyBase načítá data z textového souboru.<br/><br/>Další informace o této vlastnosti v části argumenty [vytvořit EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). |Hodnota TRUE, False (výchozí) |Ne |
-| writeBatchSize |Vloží data do tabulky SQL, když velikost vyrovnávací paměti dosáhne writeBatchSize |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
-| writeBatchTimeout |Počkejte, než čas na dokončení předtím, než vyprší časový limit operace dávkové vložení. |Časový interval<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
+| sqlWriterCleanupScript |Zadejte dotaz aktivity kopírování tooexecute tak, aby se vyčistit data určitý řez. Podrobnosti najdete v tématu [opakovatelnosti části](#repeatability-during-copy). |Příkaz dotazu. |Ne |
+| allowPolyBase |Určuje, zda toouse PolyBase (v případě potřeby) namísto mechanismus hromadné vložení. <br/><br/> **Hello doporučená způsob tooload dat do SQL Data Warehouse pomocí PolyBase je.** V tématu [použijte PolyBase tooload data do Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) části omezení a podrobnosti. |True <br/>NEPRAVDA (výchozí) |Ne |
+| polyBaseSettings |Skupinu vlastností, které je možné zadat při hello **allowPolybase** vlastnost je nastavena příliš**true**. |&nbsp; |Ne |
+| rejectValue |Určuje číslo hello nebo podíl řádků, které může být odmítnutá před hello se dotaz nezdaří. <br/><br/>Další informace o hello PolyBase odmítnout možnosti v hello **argumenty** části [vytvořit EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) tématu. |0 (výchozí), 1, 2... |Ne |
+| rejectType |Určuje, zda je zadána možnost rejectValue hello literálovou hodnotou nebo jako procento. |Hodnota (výchozí), procento |Ne |
+| rejectSampleValue |Určuje hello počet řádků tooretrieve před hello PolyBase přepočítá hello procento odmítnutých řádků. |1, 2, … |Ano, pokud **rejectType** je **procento** |
+| useTypeDefault |Určuje, jak toohandle chybějící hodnoty v oddělené textové soubory, když PolyBase načítá data z textového souboru hello.<br/><br/>Další informace o této vlastnosti z oddílu argumenty hello v [vytvořit EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). |Hodnota TRUE, False (výchozí) |Ne |
+| writeBatchSize |Pokud velikost vyrovnávací paměti hello dosáhne writeBatchSize vkládá data do tabulky SQL hello |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
+| writeBatchTimeout |Doba pro toocomplete operaci vložení dávky hello Počkejte, než vyprší časový limit. |Časový interval<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
 
 #### <a name="sqldwsink-example"></a>Příklad SqlDWSink
 
@@ -157,13 +157,13 @@ GO
 }
 ```
 
-## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Použijte PolyBase k načtení dat do Azure SQL Data Warehouse
-Pomocí  **[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)**  je účinný způsob načítání velké množství dat do Azure SQL Data Warehouse s vysokou propustností. Velký nárůst v propustnost můžete zobrazit pomocí PolyBase místo výchozího mechanismu hromadné vložení. V tématu [zkopírujte výkonu referenční číslo](data-factory-copy-activity-performance.md#performance-reference) s podrobné porovnání. Návod s případu použití najdete v tématu [načíst 1 TB do Azure SQL Data Warehouse pomocí Azure Data Factory v části 15 minut](data-factory-load-sql-data-warehouse.md).
+## <a name="use-polybase-tooload-data-into-azure-sql-data-warehouse"></a>Použijte PolyBase tooload data do Azure SQL Data Warehouse
+Pomocí  **[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)**  je účinný způsob načítání velké množství dat do Azure SQL Data Warehouse s vysokou propustností. Velký nárůst hello propustnost můžete zobrazit pomocí PolyBase místo hello výchozí hromadné vložení mechanismus. V tématu [zkopírujte výkonu referenční číslo](data-factory-copy-activity-performance.md#performance-reference) s podrobné porovnání. Návod s případu použití najdete v tématu [načíst 1 TB do Azure SQL Data Warehouse pomocí Azure Data Factory v části 15 minut](data-factory-load-sql-data-warehouse.md).
 
-* Pokud je zdroj dat v **objektů Blob v Azure nebo Azure Data Lake Store**a formát je kompatibilní s funkcí PolyBase, můžete zkopírovat přímo do Azure SQL Data Warehouse pomocí PolyBase. V tématu  **[přímé kopírování pomocí PolyBase](#direct-copy-using-polybase)**  s podrobnostmi.
-* Pokud vaše zdrojového úložiště dat a formát není podporován původně polybase, můžete použít  **[připravený kopírování pomocí PolyBase](#staged-copy-using-polybase)**  místo toho funkci. Také poskytuje lepší propustnosti automaticky převod dat do formátu kompatibilní s funkcí PolyBase a ukládání dat v úložišti objektů Blob v Azure. Potom načte data do SQL Data Warehouse.
+* Pokud je zdroj dat v **objektů Blob v Azure nebo Azure Data Lake Store**a formát hello je kompatibilní s funkcí PolyBase, můžete zkopírovat přímo tooAzure SQL datového skladu pomocí PolyBase. V tématu  **[přímé kopírování pomocí PolyBase](#direct-copy-using-polybase)**  s podrobnostmi.
+* Pokud vaše zdrojového úložiště dat a formát není podporován původně polybase, můžete použít hello  **[připravený kopírování pomocí PolyBase](#staged-copy-using-polybase)**  místo toho funkci. Také poskytuje lepší propustnosti automaticky převod hello dat do formátu kompatibilní s funkcí PolyBase a ukládání hello dat v úložišti objektů Blob v Azure. Potom načte data do SQL Data Warehouse.
 
-Nastavte `allowPolyBase` vlastnost **true** jak je znázorněno v následujícím příkladu pro Azure Data Factory ke zkopírování dat do Azure SQL Data Warehouse pomocí funkce PolyBase. Když nastavíte allowPolyBase na hodnotu true, můžete zadat konkrétní vlastnosti PolyBase pomocí `polyBaseSettings` skupina vlastností. najdete v článku [SqlDWSink](#SqlDWSink) část Podrobnosti o vlastnosti, které můžete použít s polyBaseSettings.
+Sada hello `allowPolyBase` vlastnost příliš**true** jak ukazuje následující příklad pro Azure Data Factory toouse PolyBase toocopy data do Azure SQL Data Warehouse hello. Když nastavíte allowPolyBase tootrue, můžete zadat konkrétní vlastnosti PolyBase pomocí hello `polyBaseSettings` skupina vlastností. v tématu hello [SqlDWSink](#SqlDWSink) část Podrobnosti o vlastnosti, které můžete použít s polyBaseSettings.
 
 ```JSON
 "sink": {
@@ -180,19 +180,19 @@ Nastavte `allowPolyBase` vlastnost **true** jak je znázorněno v následující
 ```
 
 ### <a name="direct-copy-using-polybase"></a>Přímé kopírování pomocí PolyBase
-SQL Data Warehouse PolyBase přímo podporují objektů Blob v Azure a Azure Data Lake Store (pomocí instanční objekt) jako zdroj a s požadavky na konkrétní soubor formátu. Pokud vaše zdrojová data splňuje kritéria popsaných v této části, můžete přímo zkopírovat ze zdrojového úložiště dat do Azure SQL Data Warehouse pomocí PolyBase. Jinak můžete použít [připravený kopírování pomocí PolyBase](#staged-copy-using-polybase).
+SQL Data Warehouse PolyBase přímo podporují objektů Blob v Azure a Azure Data Lake Store (pomocí instanční objekt) jako zdroj a s požadavky na konkrétní soubor formátu. Pokud vaše zdrojová data splňuje kritéria hello popsaných v této části, můžete zkopírovat přímo ze zdroje dat úložiště tooAzure, které SQL datového skladu pomocí PolyBase. Jinak můžete použít [připravený kopírování pomocí PolyBase](#staged-copy-using-polybase).
 
 > [!TIP]
-> Ke zkopírování dat z Data Lake Store k SQL Data Warehouse efektivně, další informace z [Azure Data Factory usnadňuje i a pohodlný k odhalení přehled o datech, při použití Data Lake Store s SQL Data Warehouse](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
+> Další informace z toocopy dat z Data Lake Store tooSQL datového skladu efektivně [Azure Data Factory je i jednodušší a pohodlný toouncover přehled o datech, při použití Data Lake Store s SQL Data Warehouse](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
 
-Pokud požadavky nejsou splněny, zkontroluje nastavení Azure Data Factory a automaticky se vrátí k hromadné vložení mechanismus pro přesun dat.
+Pokud nejsou splněny požadavky hello, Azure Data Factory zkontroluje hello nastavení a automaticky se vrátí toohello hromadné vložení mechanismus pro přesun dat hello.
 
 1. **Zdroj propojené služby** je typu: **azurestorage** nebo **AzureDataLakeStore s objekt zabezpečení ověřování služby**.  
-2. **Vstupní datové sady** je typu: **AzureBlob** nebo **AzureDataLakeStore**a zadejte v části formát `type` vlastnosti je **OrcFormat**, nebo **TextFormat** s následující konfigurace:
+2. Hello **vstupní datové sady** je typu: **AzureBlob** nebo **AzureDataLakeStore**, a hello typ formátu pod `type` vlastnosti je **OrcFormat** , nebo **TextFormat** s hello následující konfigurace:
 
    1. `rowDelimiter`musí být  **\n** .
-   2. `nullValue`je nastavena na **prázdný řetězec** (""), nebo `treatEmptyAsNull` je nastaven na **true**.
-   3. `encodingName`je nastavena na **znakové sady utf-8**, což je **výchozí** hodnotu.
+   2. `nullValue`je nastaven příliš**prázdný řetězec** (""), nebo `treatEmptyAsNull` je nastaven příliš**true**.
+   3. `encodingName`je nastaven příliš**znakové sady utf-8**, což je **výchozí** hodnotu.
    4. `escapeChar`, `quoteChar`, `firstRowAsHeader`, a `skipLineCount` nejsou zadané.
    5. `compression`může být **bez komprese**, **GZip**, nebo **Deflate**.
 
@@ -213,23 +213,23 @@ Pokud požadavky nejsou splněny, zkontroluje nastavení Azure Data Factory a au
     },
     ```
 
-3. Neexistuje žádné `skipHeaderLineCount` nastavení v části **BlobSource** nebo **AzureDataLakeStore** pro aktivitu kopírování v kanálu.
-4. Neexistuje žádné `sliceIdentifierColumnName` nastavení v části **SqlDWSink** pro aktivitu kopírování v kanálu. (PolyBase zaručuje, že se aktualizuje všechna data nebo nic se aktualizuje v jednom spustit. K dosažení **opakovatelnosti**, můžete použít `sqlWriterCleanupScript`).
-5. Neexistuje žádné `columnMapping` použitá v přidružené v kopie aktivity.
+3. Neexistuje žádné `skipHeaderLineCount` nastavení v části **BlobSource** nebo **AzureDataLakeStore** pro hello aktivitu kopírování v kanálu hello.
+4. Neexistuje žádné `sliceIdentifierColumnName` nastavení v části **SqlDWSink** pro hello aktivitu kopírování v kanálu hello. (PolyBase zaručuje, že se aktualizuje všechna data nebo nic se aktualizuje v jednom spustit. tooachieve **opakovatelnosti**, můžete použít `sqlWriterCleanupScript`).
+5. Neexistuje žádné `columnMapping` použitá v hello související v aktivitě kopírování.
 
 ### <a name="staged-copy-using-polybase"></a>Dvoufázové instalace kopírování pomocí PolyBase
-Pokud vaše zdrojová data nesplňuje kritéria byla zavedená v předchozí části, můžete povolit kopírování dat prostřednictvím dočasné pracovní Azure Blob Storage (úložiště úrovně Premium nemůže být). V takovém případě Azure Data Factory automaticky provede transformace na data, která mají požadavkům data formátu PolyBase, potom použijte PolyBase k načtení dat do SQL Data Warehouse a v poslední čištění dočasná data z úložiště objektů Blob. V tématu [připravený kopie](data-factory-copy-activity-performance.md#staged-copy) informace o tom, jak kopírování dat prostřednictvím pracovní objektů Blob v Azure funguje obecně.
+Pokud vaše zdrojová data nesplňuje kritéria hello byla zavedená v předchozí části hello, můžete povolit kopírování dat prostřednictvím dočasné pracovní Azure Blob Storage (úložiště úrovně Premium nemůže být). V takovém případě Azure Data Factory automaticky provede transformace na hello data toomeet data formátu požadavky PolyBase a pak použijte PolyBase tooload dat do SQL Data Warehouse a v poslední čištění Vaše dočasná data z úložiště objektů Blob hello. V tématu [připravený kopie](data-factory-copy-activity-performance.md#staged-copy) informace o tom, jak kopírování dat prostřednictvím pracovní objektů Blob v Azure funguje obecně.
 
 > [!NOTE]
-> Při kopírování dat z data místní ukládání do Azure SQL Data Warehouse pomocí PolyBase a pracovní, pokud vaše verze brány pro správu dat je menší než 2.4, prostředí JRE (prostředí Java Runtime) se vyžaduje na počítači brány, který slouží k transformaci zdrojová data na správný formát. Naznačují, že upgrade brány na nejnovější předejdete této závislosti.
+> Při kopírování dat z data místní ukládání do Azure SQL Data Warehouse pomocí PolyBase a pracovní, pokud vaše verze brány pro správu dat je menší než 2.4, prostředí JRE (prostředí Java Runtime) je nutné na bráně počítač, který je použité tootransform zdrojová data do správný formát. Naznačují, že upgradu vaší brány toohello nejnovější tooavoid této závislosti.
 >
 
-Chcete-li tuto funkci používat, vytvořte [propojená služba Azure Storage](data-factory-azure-blob-connector.md#azure-storage-linked-service) který odkazuje na účet úložiště Azure, který má dočasné objektu blob úložiště, zadejte `enableStaging` a `stagingSettings` vlastnosti pro aktivitu kopírování, jak je znázorněno v následujícím kódu:
+toouse tuto funkci, vytvořit [propojená služba Azure Storage](data-factory-azure-blob-connector.md#azure-storage-linked-service) který označuje toohello účet úložiště Azure, který má hello úložiště objektů blob v mezičase, pak zadejte hello `enableStaging` a `stagingSettings` vlastnosti hello aktivity kopírování jak je znázorněno v následujícím kódu hello:
 
 ```json
 "activities":[  
 {
-    "name": "Sample copy activity from SQL Server to SQL Data Warehouse via PolyBase",
+    "name": "Sample copy activity from SQL Server tooSQL Data Warehouse via PolyBase",
     "type": "Copy",
     "inputs": [{ "name": "OnpremisesSQLServerInput" }],
     "outputs": [{ "name": "AzureSQLDWOutput" }],
@@ -251,21 +251,21 @@ Chcete-li tuto funkci používat, vytvořte [propojená služba Azure Storage](d
 ```
 
 ## <a name="best-practices-when-using-polybase"></a>Osvědčené postupy při používání funkce PolyBase
-Následující části obsahují další osvědčené postupy pro ty, které jsou uvedené v [osvědčené postupy pro Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-best-practices.md).
+Hello následující části obsahují další osvědčené postupy toohello těch, které jsou uvedené v [osvědčené postupy pro Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-best-practices.md).
 
 ### <a name="required-database-permission"></a>Oprávnění požadovaná databáze
-Pokud chcete používat funkce PolyBase, vyžaduje má uživatel používaný k načtení dat do SQL Data Warehouse [oprávnění "Řízení"](https://msdn.microsoft.com/library/ms191291.aspx) na cílovou databázi. Jeden způsob, jak dosáhnout, který je přidejte tohoto uživatele jako člen role "db_owner". Zjistěte, jak to provést pomocí následujících [v této části](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization).
+toouse PolyBase, vyžaduje hello uživatele se má použít tooload dat do SQL Data Warehouse hello [oprávnění "Řízení"](https://msdn.microsoft.com/library/ms191291.aspx) na hello cílovou databázi. Jedním ze způsobů tooachieve, který je tooadd tento uživatel jako člen role "db_owner". Zjistěte, jak toodo, pomocí následujících [v této části](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization).
 
 ### <a name="row-size-and-data-type-limitation"></a>Velikost řádku a datový typ omezení
-Polybase zatížení jsou omezeny na obou načítání řádků menší než **1 MB** a nelze načíst VARCHR(MAX), NVARCHAR(MAX) nebo VARBINARY(MAX). Odkazovat na [zde](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads).
+Polybase zatížení jsou omezené tooloading řádků i menší než **1 MB** a nelze načíst tooVARCHR(MAX), NVARCHAR(MAX) nebo VARBINARY(MAX). Odkazovat příliš[zde](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads).
 
-Pokud máte zdroj dat s řádky o velikosti větší než 1 MB, můžete rozdělit zdrojové tabulky svisle na několik malých sítí, kde největší velikost řádku každého z nich není delší než limit. Menší tabulky pak lze načíst pomocí PolyBase a sloučí v Azure SQL Data Warehouse.
+Pokud máte zdroj dat s řádky o velikosti větší než 1 MB, měli byste toosplit hello zdrojové tabulky svisle do několik malých ty, kde hello největší velikost řádku každého z nich není delší než hello limit. Hello menší tabulky mohou být načteny, pak pomocí PolyBase a sloučí v Azure SQL Data Warehouse.
 
 ### <a name="sql-data-warehouse-resource-class"></a>Třída prostředků SQL Data Warehouse
-K dosažení nejlepší možné propustnost, zvažte, pro větší Třída prostředků přiřadit uživatele používaný k načtení dat do SQL Data Warehouse pomocí PolyBase. Zjistěte, jak to provést pomocí následujících [změnit v příkladu třída prostředků uživatele](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example).
+tooachieve nejlepší možné propustnost, vezměte v úvahu tooassign větší prostředků třída toohello uživatel právě používá tooload dat do SQL Data Warehouse pomocí PolyBase. Zjistěte, jak toodo, pomocí následujících [změnit v příkladu třída prostředků uživatele](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example).
 
 ### <a name="tablename-in-azure-sql-data-warehouse"></a>Název tabulky v Azure SQL Data Warehouse
-Následující tabulka obsahuje příklady, jak můžete zadat **tableName** vlastnost v datové sadě JSON pro různé kombinace názvu schéma a tabulku.
+Hello následující tabulka obsahuje příklady jak toospecify hello **tableName** vlastnost v datové sadě JSON pro různé kombinace názvu schéma a tabulku.
 
 | Schéma databáze | Název tabulky | hodnotu vlastnosti tableName JSON |
 | --- | --- | --- |
@@ -274,24 +274,24 @@ Následující tabulka obsahuje příklady, jak můžete zadat **tableName** vla
 | dbo |My.Table |[My.Table] nebo [dbo]. [My.Table] |
 | dbo1 |My.Table |[dbo1]. [My.Table] |
 
-Pokud se zobrazí následující chyba, může to být problém s hodnotou, kterou jste zadali pro vlastnost tableName. Najdete v tabulce pro správný způsob, jak určit hodnoty pro vlastnost tableName JSON.  
+Pokud se zobrazí následující chyba hello, může to být problém s hello hodnotu, kterou jste zadali pro hello hodnotu vlastnosti tableName. V tabulce hello najdete hello správný způsob toospecify hodnoty pro vlastnosti JSON hello tableName.  
 
 ```
 Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account_test'.,Source=.Net SqlClient Data Provider
 ```
 
 ### <a name="columns-with-default-values"></a>Sloupce s výchozími hodnotami
-V současné době funkce PolyBase v datové továrně přijímá pouze stejný počet sloupců jako v cílové tabulce. Řekněme, máte tabulku s čtyři sloupce a jeden z nich je definovaná pomocí výchozí hodnotu. Vstupní data stále by mělo obsahovat čtyři sloupce. Poskytnutí 3sloupce vstupní datové sady, které by poskytují chyba podobná následující zpráva:
+V současné době PolyBase funkce v datové továrně přijímá pouze hello stejný počet sloupců jako v cílové tabulce hello. Řekněme, máte tabulku s čtyři sloupce a jeden z nich je definovaná pomocí výchozí hodnotu. vstupní data Hello stále by měl obsahovat čtyři sloupce. Poskytnutí 3sloupce vstupní datové sady povede k chybě podobné toohello následující zprávou:
 
 ```
-All columns of the table must be specified in the INSERT BULK statement.
+All columns of hello table must be specified in hello INSERT BULK statement.
 ```
-Hodnota NULL je speciální forma výchozí hodnotu. Pokud je sloupec s možnou hodnotou Null, vstupní data (v objektu blob) pro tento sloupec může být prázdná (nelze chybí vstupní datové sady). PolyBase vloží NULL u nich v Azure SQL Data Warehouse.  
+Hodnota NULL je speciální forma výchozí hodnotu. Pokud je hello sloupec s možnou hodnotou Null, hello vstupní data (v objektu blob) pro tento sloupec může být prázdná (nelze chybí vstupní datové sady hello). PolyBase vloží hodnotu NULL pro ně hello Azure SQL Data Warehouse.  
 
 ## <a name="auto-table-creation"></a>Automaticky vytvářené tabulky
-Pokud použijete Průvodce kopírováním ke zkopírování dat z SQL serveru nebo databáze SQL Azure do Azure SQL Data Warehouse a tabulky, která odpovídá zdrojová tabulka neexistuje v cílové úložiště, Data Factory můžete automaticky vytvořit v tabulce v datovém skladu pomocí schématu zdrojové tabulky.
+Pokud použijete Průvodce kopírováním toocopy dat z SQL serveru nebo Azure SQL Database tooAzure SQL Data Warehouse a hello tabulku, která odpovídá toohello zdrojová tabulka neexistuje v hello cílové úložiště, Data Factory můžete automaticky vytvořit hello tabulku v hello datový sklad pomocí schématu hello zdrojové tabulky.
 
-Data Factory vytvoří v cílové úložiště se stejným názvem tabulky v zdrojového úložiště dat v tabulce. Datové typy pro sloupce jsou zvolen v závislosti na následující mapování typu. V případě potřeby provede převody typů opravit všechny problémům s kompatibilitou mezi zdrojovým a cílovým úložišti. Používá také distribuce kruhové dotazování tabulky.
+Data Factory vytvoří v cílové úložiště hello hello tabulku s hello stejný název v úložišti dat hello zdrojové tabulky. Hello datové typy pro sloupce jsou zvolen v závislosti na hello následující mapování typu. V případě potřeby provede toofix převody typu žádné nekompatibility mezi zdrojovým a cílovým úložišti. Používá také distribuce kruhové dotazování tabulky.
 
 | Typ sloupce zdrojové databáze SQL | Cílový typ sloupce SQL DW (omezení velikosti) |
 | --- | --- |
@@ -307,34 +307,34 @@ Data Factory vytvoří v cílové úložiště se stejným názvem tabulky v zdr
 | Real | Real |
 | SmallMoney | SmallMoney |
 | Binární | Binární |
-| varbinary | Varbinary (až 8000) |
+| varbinary | Varbinary (až too8000) |
 | Datum | Datum |
 | Data a času | Data a času |
 | DateTime2 | DateTime2 |
 | Čas | Čas |
 | Datový typ DateTimeOffset | Datový typ DateTimeOffset |
 | SmallDateTime | SmallDateTime |
-| Text | Varchar (až 8000) |
-| NText | NVarChar (až 4000) |
-| Image | VarBinary (až 8000) |
+| Text | Varchar (až too8000) |
+| NText | NVarChar (až too4000) |
+| Image | VarBinary (až too8000) |
 | Typ UniqueIdentifier | Typ UniqueIdentifier |
 | Char | Char |
 | NChar | NChar |
-| VarChar | VarChar (až 8000) |
-| NVarChar | NVarChar (až 4000) |
-| XML | Varchar (až 8000) |
+| VarChar | VarChar (až too8000) |
+| NVarChar | NVarChar (až too4000) |
+| XML | Varchar (až too8000) |
 
 [!INCLUDE [data-factory-type-repeatability-for-sql-sources](../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
 ## <a name="type-mapping-for-azure-sql-data-warehouse"></a>Mapování typu pro Azure SQL Data Warehouse
-Jak je uvedeno v [aktivity přesunu dat](data-factory-data-movement-activities.md) článku aktivita kopírování provádí automatické typ převody z typů zdroje do jímky typů s následující postup krok 2:
+Jak je uvedeno v hello [aktivity přesunu dat](data-factory-data-movement-activities.md) článku aktivita kopírování provádí automatické typ převody z typů toosink typy zdroje s hello následující přístup krok 2:
 
-1. Převést na typ .NET typy nativní zdrojů
-2. Převést na typ jímky nativní typ formátu .NET
+1. Převod z typu too.NET typy nativní zdroje
+2. Převést typ jímky toonative typ rozhraní .NET
 
-Při přesunu dat do a z Azure SQL Data Warehouse, se používají následující mapování z typu SQL na typ .NET a naopak.
+Při přesouvání dat příliš & z Azure SQL Data Warehouse, hello následující mapování se používají z typu too.NET typ SQL a naopak.
 
-Mapování je stejné jako [mapování datového typu aplikace SQL Server pro technologii ADO.NET](https://msdn.microsoft.com/library/cc716729.aspx).
+mapování Hello je stejný jako hello [mapování datového typu aplikace SQL Server pro technologii ADO.NET](https://msdn.microsoft.com/library/cc716729.aspx).
 
 | Typ databázového stroje SQL Server | Typ rozhraní .NET framework |
 | --- | --- |
@@ -371,13 +371,13 @@ Mapování je stejné jako [mapování datového typu aplikace SQL Server pro te
 | varchar |Řetězec, Char] |
 | xml |XML |
 
-Můžete také mapovat sloupců z datové sady zdroje na sloupce ze sady jímku dat v definici aktivity kopírování. Podrobnosti najdete v tématu [mapování sloupců datovou sadu v Azure Data Factory](data-factory-map-columns.md).
+Můžete také mapovat sloupců z toocolumns datové sady zdroje z podřízený datovou sadu v definici aktivity kopírování hello. Podrobnosti najdete v tématu [mapování sloupců datovou sadu v Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="json-examples-for-copying-data-to-and-from-sql-data-warehouse"></a>Příklady JSON pro kopírování dat do a z SQL Data Warehouse
-Následující příklady poskytují ukázka JSON definice, které můžete použít k vytvoření kanálu pomocí [portál Azure](data-factory-copy-activity-tutorial-using-azure-portal.md) nebo [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Se ukazují, jak ke zkopírování dat do a z Azure SQL Data Warehouse a Azure Blob Storage. Nicméně je možné zkopírovat data **přímo** ze všech zdrojů do jakéhokoli z jímky uvádí [sem](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování v Azure Data Factory.
+## <a name="json-examples-for-copying-data-tooand-from-sql-data-warehouse"></a>Příklady JSON pro kopírování tooand dat z SQL Data Warehouse
+Hello následující příklady poskytují definice JSON ukázka používané toocreate kanálu pomocí [portál Azure](data-factory-copy-activity-tutorial-using-azure-portal.md) nebo [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazují jak toocopy tooand dat z Azure SQL Data Warehouse a Azure Blob Storage. Nicméně je možné zkopírovat data **přímo** ze všech zdrojů tooany z hello jímky uvádí [zde](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí hello aktivitu kopírování v Azure Data Factory.
 
-### <a name="example-copy-data-from-azure-sql-data-warehouse-to-azure-blob"></a>Příklad: Kopírování dat z Azure SQL Data Warehouse do objektů Blob v Azure
-Ukázka definuje následující entity služby Data Factory:
+### <a name="example-copy-data-from-azure-sql-data-warehouse-tooazure-blob"></a>Příklad: Kopírování dat z Azure SQL Data Warehouse tooAzure objektů Blob
+Ukázka Hello definuje hello následující entity služby Data Factory:
 
 1. Propojené služby typu [AzureSqlDW](#linked-service-properties).
 2. Propojené služby typu [azurestorage](data-factory-azure-blob-connector.md#linked-service-properties).
@@ -385,7 +385,7 @@ Ukázka definuje následující entity služby Data Factory:
 4. Výstup [datovou sadu](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 5. A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [SqlDWSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Ukázka zkopíruje data časové řady (hodinové, denní, atd.) z tabulky v databázi Azure SQL Data Warehouse do objektu blob každou hodinu. Vlastnostech JSON použitých ve tyto ukázky jsou popsané v části následující ukázky.
+Ukázka Hello zkopíruje data časové řady (hodinové, denní, atd.) z tabulky v objektu blob tooa databáze Azure SQL Data Warehouse každou hodinu. Hello vlastnostech JSON použitých ve tyto ukázky jsou popsané v části následující ukázky hello.
 
 **Azure SQL Data Warehouse propojené služby:**
 
@@ -415,9 +415,9 @@ Ukázka zkopíruje data časové řady (hodinové, denní, atd.) z tabulky v dat
 ```
 **Azure SQL Data Warehouse vstupní datové sady:**
 
-Příkladu se předpokládá, jste vytvořili tabulku "MyTable" v Azure SQL Data Warehouse a obsahuje sloupec s názvem "timestampcolumn" pro data časové řady.
+Ukázka Hello předpokládá jste vytvořili tabulku "MyTable" v Azure SQL Data Warehouse a obsahuje sloupec s názvem "timestampcolumn" pro data časové řady.
 
-Nastavení "externí": "PRAVDA" informuje služba Data Factory, datová sada je externí k objektu pro vytváření dat a není vyprodukované aktivitu v datové továrně.
+Nastavení "externí": "PRAVDA" informuje služba Data Factory hello tuto datovou sadu hello je externí toohello pro vytváření dat a není vyprodukované aktivitu v objektu pro vytváření dat hello.
 
 ```JSON
 {
@@ -445,7 +445,7 @@ Nastavení "externí": "PRAVDA" informuje služba Data Factory, datová sada je 
 ```
 **Azure Blob výstupní datovou sadu:**
 
-Data se zapisují do nového objektu blob každou hodinu (frekvence: hodiny, interval: 1). Cesta ke složce pro tento objekt blob je vyhodnocován dynamicky podle času zahájení řezu, které jsou zpracovávány. Cesta ke složce používá rok, měsíc, den a čas částí čas spuštění.
+Data se zapisují nový objekt blob tooa každou hodinu (frekvence: hodiny, interval: 1). Cesta ke složce Hello pro objekt blob hello je vyhodnocován dynamicky podle času zahájení hello hello řezu, které jsou zpracovávány. Cesta ke složce Hello používá rok, měsíc, den a čas části hello počáteční čas.
 
 ```JSON
 {
@@ -505,7 +505,7 @@ Data se zapisují do nového objektu blob každou hodinu (frekvence: hodiny, int
 
 **Aktivita kopírování v kanálu s SqlDWSource a BlobSink:**
 
-Kanál obsahuje aktivitu kopírování, který je nakonfigurovaný na použití vstupní a výstupní datové sady a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **SqlDWSource** a **podřízený** je typ nastaven na **BlobSink**. Zadané pro dotaz SQL **SqlReaderQuery** vlastnost vybere data za poslední hodinu pro kopírování.
+Hello kanál obsahuje aktivitu kopírování, která je nakonfigurovaná toouse hello vstupní a výstupní datové sady a je naplánované toorun každou hodinu. V kanálu hello definici JSON, hello **zdroj** je typ nastaven příliš**SqlDWSource** a **podřízený** je typ nastaven příliš**BlobSink**. Dotaz SQL Hello zadaný pro hello **SqlReaderQuery** vlastnost vybere hello data v hello za hodinu toocopy.
 
 ```JSON
 {  
@@ -554,16 +554,16 @@ Kanál obsahuje aktivitu kopírování, který je nakonfigurovaný na použití 
 }
 ```
 > [!NOTE]
-> V příkladu **sqlReaderQuery** je zadán pro SqlDWSource. Aktivita kopírování spustí tohoto dotazu na zdroji Azure SQL Data Warehouse se získat data.
+> V příkladu hello **sqlReaderQuery** pro hello SqlDWSource je zadána. Aktivita kopírování Hello spouští tento dotaz hello Azure SQL Data Warehouse zdrojová tooget hello data.
 >
-> Alternativně můžete zadat uložené procedury zadáním **sqlReaderStoredProcedureName** a **storedProcedureParameters** (Pokud uložená procedura přebírá parametry).
+> Alternativně můžete zadat uložené procedury zadáním hello **sqlReaderStoredProcedureName** a **storedProcedureParameters** (Pokud hello uložená procedura používá parametry).
 >
-> Pokud nezadáte sqlReaderQuery nebo sqlReaderStoredProcedureName, sloupce definované v části Struktura sady dat JSON se používají k vytvoření dotazu (vyberte Sloupec1, Sloupec2 z mytable) ke spouštění na Azure SQL Data Warehouse. Pokud definice datové sady nemá strukturu, jsou vybrány všechny sloupce z tabulky.
+> Pokud nezadáte sqlReaderQuery nebo sqlReaderStoredProcedureName, hello sloupce definované v části struktura hello hello sady dat JSON jsou použité toobuild dotazu (vyberte Sloupec1, Sloupec2 z mytable) toorun proti hello Azure SQL Data Warehouse. Pokud definice datové sady hello nemá hello struktura, vyberou se všechny sloupce z tabulky hello.
 >
 >
 
-### <a name="example-copy-data-from-azure-blob-to-azure-sql-data-warehouse"></a>Příklad: Kopírování dat z objektu Blob Azure do Azure SQL Data Warehouse
-Ukázka definuje následující entity služby Data Factory:
+### <a name="example-copy-data-from-azure-blob-tooazure-sql-data-warehouse"></a>Příklad: Kopírování dat z Azure Blob tooAzure SQL Data Warehouse
+Ukázka Hello definuje hello následující entity služby Data Factory:
 
 1. Propojené služby typu [AzureSqlDW](#linked-service-properties).
 2. Propojené služby typu [azurestorage](data-factory-azure-blob-connector.md#linked-service-properties).
@@ -571,7 +571,7 @@ Ukázka definuje následující entity služby Data Factory:
 4. Výstup [datovou sadu](data-factory-create-datasets.md) typu [AzureSqlDWTable](#dataset-properties).
 5. A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) a [SqlDWSink](#copy-activity-properties).
 
-Kopie ukázka časové řady dat (hodinový, denní atd.) z Azure blob do tabulky v Azure SQL Data Warehouse databáze každou hodinu. Vlastnostech JSON použitých ve tyto ukázky jsou popsané v části následující ukázky.
+Ukázka Hello zkopíruje data časové řady (hodinový, denní, atd.) z Azure blob tooa tabulky v databázi Azure SQL Data Warehouse každou hodinu. Hello vlastnostech JSON použitých ve tyto ukázky jsou popsané v části následující ukázky hello.
 
 **Azure SQL Data Warehouse propojené služby:**
 
@@ -601,7 +601,7 @@ Kopie ukázka časové řady dat (hodinový, denní atd.) z Azure blob do tabulk
 ```
 **Azure vstupní datovou sadu objektu Blob:**
 
-Data je převzata z nového objektu blob každou hodinu (frekvence: hodiny, interval: 1). Název složky a cesta k souboru pro tento objekt blob se vyhodnocují dynamicky podle času zahájení řezu, které jsou zpracovávány. Cesta ke složce používá rok, měsíc a den součástí čas spuštění a název souboru používá hodinu součástí čas spuštění. "externí": "PRAVDA" nastavení informuje služba Data Factory, že tato tabulka je externí k objektu pro vytváření dat a není vyprodukované aktivitu v datové továrně.
+Data je převzata z nového objektu blob každou hodinu (frekvence: hodiny, interval: 1). název a cesta k souboru složky Hello pro objekt blob hello se vyhodnocují dynamicky podle času zahájení hello hello řezu, které jsou zpracovávány. Cesta ke složce Hello používá rok, měsíc a den součástí hello počáteční čas a název souboru používá hello hodinu součástí hello počáteční čas. "externí": "PRAVDA" nastavení informuje hello služba Data Factory, tato tabulka je externí toohello pro vytváření dat a není vyprodukované aktivitu v objektu pro vytváření dat hello.
 
 ```JSON
 {
@@ -669,7 +669,7 @@ Data je převzata z nového objektu blob každou hodinu (frekvence: hodiny, inte
 ```
 **Azure SQL Data Warehouse výstupní datovou sadu:**
 
-Ukázka zkopíruje data na tabulku s názvem "MyTable" v Azure SQL Data Warehouse. Vytvořte v tabulce v Azure SQL Data Warehouse s stejný počet sloupců, podle očekávání souboru CSV objektů Blob tak, aby obsahovala. Nové záznamy se přidají do tabulky každou hodinu.
+Ukázka Hello zkopíruje data tooa tabulku s názvem "MyTable" v Azure SQL Data Warehouse. Vytvoření tabulky hello v Azure SQL Data Warehouse s hello stejný počet sloupců, podle očekávání toocontain soubor Blob CSV hello. Přidávání řádků tabulky toohello každou hodinu.
 
 ```JSON
 {
@@ -689,7 +689,7 @@ Ukázka zkopíruje data na tabulku s názvem "MyTable" v Azure SQL Data Warehous
 ```
 **Aktivita kopírování v kanálu s BlobSource a SqlDWSink:**
 
-Kanál obsahuje aktivitu kopírování, který je nakonfigurovaný na použití vstupní a výstupní datové sady a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **BlobSource** a **podřízený** je typ nastaven na **SqlDWSink**.
+Hello kanál obsahuje aktivitu kopírování, která je nakonfigurovaná toouse hello vstupní a výstupní datové sady a je naplánované toorun každou hodinu. V kanálu hello definici JSON, hello **zdroj** je typ nastaven příliš**BlobSource** a **podřízený** je typ nastaven příliš**SqlDWSink**.
 
 ```JSON
 {  
@@ -738,7 +738,7 @@ Kanál obsahuje aktivitu kopírování, který je nakonfigurovaný na použití 
    }
 }
 ```
-Podrobný postup najdete [načíst 1 TB do Azure SQL Data Warehouse pomocí Azure Data Factory v části 15 minut](data-factory-load-sql-data-warehouse.md) a [načtení dat pomocí Azure Data Factory](../sql-data-warehouse/sql-data-warehouse-get-started-load-with-azure-data-factory.md) článek v dokumentaci k Azure SQL Data Warehouse.
+Podrobný postup najdete v části hello najdete v části [načíst 1 TB do Azure SQL Data Warehouse pomocí Azure Data Factory v části 15 minut](data-factory-load-sql-data-warehouse.md) a [načtení dat pomocí Azure Data Factory](../sql-data-warehouse/sql-data-warehouse-get-started-load-with-azure-data-factory.md) článek v hello Azure SQL Data Warehouse dokumentace.
 
 ## <a name="performance-and-tuning"></a>Výkon a ladění
-V tématu [výkonu kopie aktivity & ladění průvodce](data-factory-copy-activity-performance.md) Další informace o klíčových faktorů, že dopad výkon přesun dat (aktivita kopírování) v Azure Data Factory a různé způsoby, jak optimalizovat ho.
+V tématu [výkonu kopie aktivity & ladění průvodce](data-factory-copy-activity-performance.md) toolearn o klíči faktory, že dopad výkon přesun dat (aktivita kopírování) v Azure Data Factory a různé způsoby toooptimize ho.

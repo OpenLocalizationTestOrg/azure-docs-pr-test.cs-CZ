@@ -1,5 +1,5 @@
 ---
-title: Jak funguje Site Recovery? | Dokumentace Microsoftu
+title: aaaHow funguje Site Recovery? | Dokumentace Microsoftu
 description: "Tento článek přináší přehled architektury Site Recovery."
 services: site-recovery
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.date: 06/14/2017
 ms.author: raynew
 ROBOTS: NOINDEX, NOFOLLOW
 redirect_url: site-recovery-azure-to-azure-architecture
-ms.openlocfilehash: e8faa2c7cde18fc08f0255e80f0acdb961082fcb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ff1580d0fe294148dc0c621728491e6119c3048a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="how-does-azure-site-recovery-work-for-on-premises-infrastructure"></a>Jak Azure Site Recovery funguje u místní infrastruktury?
 
@@ -28,174 +28,174 @@ ms.lasthandoff: 07/11/2017
 > * [Replikace virtuálních počítačů Azure](site-recovery-azure-to-azure-architecture.md)
 > * [Replikace místních počítačů](site-recovery-components.md)
 
-Tento článek popisuje základní architekturu služby [Azure Site Recovery](site-recovery-overview.md) a komponenty, které jí umožňují fungovat při replikaci úloh z místní infrastruktury do Azure.
+Tento článek popisuje základní architekturu hello [Azure Site Recovery](site-recovery-overview.md) služby a hello komponent, které fungují pro replikaci z místní tooAzure úlohy.
 
-Jakékoli dotazy můžete publikovat na konci tohoto článku nebo na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Odeslat všechny komentáře dole hello v tomto článku, nebo v hello [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
-## <a name="replicate-to-azure"></a>Replikování do Azure
+## <a name="replicate-tooazure"></a>Replikovat tooAzure
 
-Následující místní infrastrukturu můžete replikovat do Azure a chránit ji:
+Můžete replikovat a chránit hello následující na místní infrastrukturu tooAzure:
 
 - **VMware:** Místní virtuální počítače VMware spuštěné na [podporovaném hostiteli](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers). Můžete replikovat virtuální počítače VMware s [podporovanými operačními systémy](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions).
 - **Hyper-V:** Místní virtuální počítače Hyper-V spuštěné na [podporovaných hostitelích](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers).
 - **Fyzické počítače:** Místní fyzické servery s Windows nebo Linuxem spuštěné v [podporovaných operačních systémech](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions). Můžete replikovat virtuální počítače Hyper-V s jakýmkoli hostovaným operačním systémem, který [podporuje technologie Hyper-V a Azure](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 
-## <a name="vmware-to-azure"></a>Z VMware do Azure
+## <a name="vmware-tooazure"></a>VMware tooAzure
 
-Dál je uvedeno, co potřebujete pro replikaci virtuálních počítačů VMware do Azure.
+Zde je, co potřebujete pro replikaci tooAzure virtuálních počítačů VMware.
 
 Oblast | Komponenta | Podrobnosti
 --- | --- | ---
-**Konfigurační server** | Na jednom serveru pro správu (virtuální počítač VMware) jsou spuštěné všechny místní komponenty – konfigurační server, procesový server a hlavní cílový server. | Konfigurační server koordinuje komunikaci mezi místním prostředím a Azure a spravuje replikaci dat.
- **Procesový server:**  | Obvykle se instaluje na konfigurační server. | Funguje jako replikační brána. Přijímá data replikace, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování a odesílá je do úložiště Azure.<br/><br/> Procesový server se také stará o nabízenou instalaci služby Mobility na chráněné počítače a provádí automatické zjišťování virtuálních počítačů VMware.<br/><br/> Jak vaše nasazení poroste, můžete přidávat další samostatné vyhrazené procesní servery pro zpracování zvyšujícího se objemu replikačních přenosů.
- **Hlavní cílový server** | Obvykle se instaluje na místní konfigurační server. | Zpracovává replikační data během navracení služeb z Azure po obnovení.<br/><br/> Pokud je objem přenosů při navracení služeb po obnovení příliš vysoký, můžete nasadit samostatný hlavní cílový server pro účely navrácení služeb po obnovení.
-**Servery VMware** | Virtuální počítače VMware jsou hostované na serverech vSphere ESXi a ke správě hostitelů doporučujeme použít server vCenter. | Servery VMware přidáte do trezoru služby Recovery Services.<br/><br/>
-**Replikované počítače** | Na každý virtuální počítač VMware, který chcete replikovat, se nainstaluje služba Mobility. Můžete ji nainstalovat na každý počítač ručně, nebo pomocí nabízené instalace z procesového serveru.| -
+**Konfigurační server** | Na jednom serveru pro správu (virtuální počítač VMware) jsou spuštěné všechny místní komponenty – konfigurační server, procesový server a hlavní cílový server. | konfigurační server Hello koordinuje komunikaci mezi místními a Azure a spravuje replikaci dat.
+ **Procesový server:**  | Ve výchozím nastavení na konfiguračním serveru hello nainstalovaná. | Funguje jako replikační brána. Přijímá data replikace, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování a odešle ji tooAzure úložiště.<br/><br/> procesový server Hello také obstará nabízenou instalaci počítače tooprotected služby Mobility hello a provádí automatického zjišťování virtuálních počítačů VMware.<br/><br/> S růstem nasazení můžete přidat další samostatný proces vyhrazené servery toohandle zvýšení svazky provoz replikace.
+ **Hlavní cílový server** | Ve výchozím nastavení na konfiguračním serveru hello místně nainstalován. | Zpracovává replikační data během navracení služeb z Azure po obnovení.<br/><br/> Pokud je objem přenosů při navracení služeb po obnovení příliš vysoký, můžete nasadit samostatný hlavní cílový server pro účely navrácení služeb po obnovení.
+**Servery VMware** | Hostované virtuální počítače VMware na serverech vSphere ESXi a doporučujeme systému vCenter server toomanage hello hostitele. | Můžete přidat servery VMware, tooyour trezor služeb zotavení.<br/><br/>
+**Replikované počítače** | Hello služba Mobility se nainstaluje na jednotlivých virtuálních počítačů má tooreplicate VMware. Ho může být nainstalován ručně na každém počítači, nebo pomocí nabízené instalace z hello procesový server.| -
 
-**Obr. 1: Komponenty pro replikaci z VMware do Azure**
+**Obrázek 1: VMware tooAzure součásti**
 
 ![Komponenty](./media/site-recovery-components/arch-enhanced.png)
 
 ### <a name="replication-process"></a>Proces replikace
 
-1. Nastavíte nasazení, včetně komponent Azure, a trezor služby Recovery Services. V trezoru zadáte zdroj a cíl replikace, nastavíte konfigurační server, přidáte servery VMware, vytvoříte zásady replikace, nasadíte službu Mobility, povolíte replikaci a spustíte test převzetí služby.
-2.  Počítače se začnou replikovat v souladu se zásadami replikace a počáteční kopie dat se replikuje do úložiště Azure.
-4. Replikace rozdílových dat do Azure začne po dokončení počáteční replikace. Sledované změny se pro jednotlivé počítače ukládají do souboru .hrl.
-    - Počítače, které se replikují, komunikují s konfiguračním serverem kvůli správě replikace na příchozím portu HTTPS 443.
-    - Replikující se počítače odesílají data do procesového serveru na příchozím portu HTTPS 9443 (nastavitelné).
-    - Konfigurační server orchestruje správu replikace s Azure přes odchozí port HTTPS 443.
-    - Procesový server přijímá data ze zdrojového počítače, optimalizuje je a šifruje, a pak je odesílá do úložiště Azure přes odchozí port 443.
-    - Když povolíte konzistenci mezi více virtuálními počítači, budou spolu počítače v replikační skupině komunikovat na portu 20004. Konzistence více virtuálních počítačů znamená, že seskupíte víc virtuálních počítačů do replikační skupiny, v rámci které se sdílí body obnovení konzistentní vzhledem k selháním a konzistentní vzhledem k aplikacím, když dojde k převzetí služeb při selhání. To je užitečné, pokud je počítačích spuštěná stejná úloha a je třeba, aby zůstala konzistentní.
-5. Provoz se přes internet replikuje do veřejných koncových bodů úložiště Azure. Alternativně můžete použít [veřejný partnerský vztah](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-circuit-peerings#public-peering) Azure ExpressRoute. Přenos replikačních dat přes síť site-to-site VPN z místního serveru do Azure není podporovaný.
+1. Nastavit hello nasazení, včetně Azure součásti a trezoru služeb zotavení. V trezoru hello zadejte hello replikace zdroj a cíl, nastavení konfigurace serveru hello, přidat servery VMware, vytvořte zásadu replikace, nasazení hello služby Mobility, povolit replikaci a spustit testovací převzetí služeb.
+2.  Počítače zahájení replikace v souladu se zásadami replikace hello a počáteční kopii dat hello je tooAzure replikované úložiště.
+4. Replikace rozdílové změny tooAzure se spustí po dokončení počáteční replikace hello. Sledované změny se pro jednotlivé počítače ukládají do souboru .hrl.
+    - Replikaci počítačů komunikovat s hello konfigurační server na portu 443 protokolu HTTPS příchozí pro správu replikace.
+    - Replikaci počítače odesílají replikace dat toohello procesový server na portu HTTPS 9443 příchozí (může být nakonfigurován).
+    - konfigurační server Hello orchestruje replikaci správy s Azure přes port HTTPS 443 odchozí.
+    - Hello procesový server přijímá data ze zdrojového počítače, optimalizuje je zašifruje a odešle ji tooAzure úložiště přes port 443 odchozí.
+    - Pokud povolíte více virtuálních počítačů konzistence, pak počítače v replikační skupině hello vzájemně komunikovat přes port 20004. Konzistence více virtuálních počítačů znamená, že seskupíte víc virtuálních počítačů do replikační skupiny, v rámci které se sdílí body obnovení konzistentní vzhledem k selháním a konzistentní vzhledem k aplikacím, když dojde k převzetí služeb při selhání. To je užitečné, pokud počítače běží stejné zatížení hello a je třeba toobe konzistentní.
+5. Přenosy jsou replikované tooAzure úložiště veřejné koncové body, přes hello internet. Alternativně můžete použít [veřejný partnerský vztah](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-circuit-peerings#public-peering) Azure ExpressRoute. Provoz replikace prostřednictvím VPN site-to-site místní lokalitě tooAzure není podporována.
 
-**Obr. 2: Replikace z VMware do Azure**
+**Obrázek 2: VMware tooAzure replikace**
 
 ![Rozšířené](./media/site-recovery-components/v2a-architecture-henry.png)
 
 ### <a name="failover-and-failback"></a>Převzetí služeb při selhání a navrácení služeb po obnovení
 
-1. Po ověření správného fungování testovacího převzetí služeb při selhání můžete podle potřeby spouštět neplánovaná převzetí služeb při selhání do Azure. Plánované převzetí služeb není podporované.
-2. Můžete převzít služby při selhání jednoho počítače nebo vytvořit [plány obnovení](site-recovery-create-recovery-plans.md) pro převzetí služeb při selhání více virtuálních počítačů.
-3. V průběhu převzetí služeb při selhání se v Azure vytvoří replika virtuálního počítače. Po potvrzení procesu převzetí služeb můžete začít používat úlohu na replikovaném virtuálním počítači Azure.
-4. Až bude vaše místní lokalita opět dostupná, můžete službu navrátit. Nastavíte infrastrukturu navrácení služeb po obnovení, zahájíte replikaci počítače ze sekundární lokality na primární a spustíte neplánované převzetí služeb při selhání ze sekundární lokality. Jakmile toto navrácení služeb potvrdíte, budou data zpět v místní lokalitě a budete muset opět povolit replikaci do Azure. [Další informace](site-recovery-failback-azure-to-vmware.md)
+1. Po ověření, že převzetí služeb při selhání funguje podle očekávání, můžete spustit neplánované převzetí služeb při selhání tooAzure podle potřeby. Plánované převzetí služeb není podporované.
+2. Můžete převzít jeden počítač nebo vytvořit [plány obnovení](site-recovery-create-recovery-plans.md), toofail přes víc virtuálních počítačů.
+3. V průběhu převzetí služeb při selhání se v Azure vytvoří replika virtuálního počítače. Potvrzení převzetí služeb při selhání toostart přístupem hello zatížení z hello repliky virtuálního počítače Azure.
+4. Až bude vaše místní lokalita opět dostupná, můžete službu navrátit. Nastavení infrastruktury navrácení služeb po obnovení, zahájení replikace z primární toohello sekundární lokality hello hello počítač a spustit neplánované převzetí služeb při selhání z hello sekundární lokality. Po potvrzení toto převzetí služeb při selhání, data budou zpět na místní a budete potřebovat tooAzure tooenable replikace. [Další informace](site-recovery-failback-azure-to-vmware.md)
 
 **Obr. 3: Navrácení služeb po obnovení – VMware nebo fyzický server**
 
 ![Navrácení služeb po obnovení](./media/site-recovery-components/enhanced-failback.png)
 
-## <a name="physical-to-azure"></a>Z fyzických do Azure
+## <a name="physical-tooazure"></a>Fyzické tooAzure
 
-Když replikujete fyzické místní servery do Azure, replikace používá také stejné komponenty a procesy jako [VMware do Azure](#vmware-replication-to-azure), ale všimněte si těchto rozdílů:
+Když replikujete fyzický místní servery tooAzure, používá replikace také hello stejné součástech a procesech jako [VMware tooAzure](#vmware-replication-to-azure), ale tyto rozdíly:
 
-- Jako konfigurační server můžete místo virtuálního počítače VMware použít fyzický server.
-- Pro navrácení služeb po obnovení budete potřebovat místní infrastrukturu VMware. Služby po obnovení nelze navrátit na fyzický server.
+- Fyzický server můžete použít pro hello konfigurační server, namísto virtuální počítače VMware
+- Pro navrácení služeb po obnovení budete potřebovat místní infrastrukturu VMware. Fyzický počítač zpět tooa nelze nezdaří.
 
-## <a name="hyper-v-to-azure"></a>Z Hyper-V do Azure
+## <a name="hyper-v-tooazure"></a>TooAzure technologie Hyper-V
 
 ### <a name="replication-process"></a>Proces replikace
 
-1. Nastavíte komponenty Azure. Doporučujeme připravit účty úložiště a sítě ještě než začnete s nasazením Site Recovery.
+1. Nastavíte hello Azure součásti. Doporučujeme připravit účty úložiště a sítě ještě než začnete s nasazením Site Recovery.
 2. Vytvoříte trezor služby Replication Services pro Site Recovery a nakonfigurujete jeho nastavení, včetně těchto:
-    - Nastavení zdroje a cíle. Pokud nespravujete hostitele Hyper-V v cloudu VMM, vytvoříte pro cíl kontejner lokality Hyper-V a přidáte do něj hostitele Hyper-V. Pokud hostitele Hyper-V spravujete pomocí VMM, je zdrojem cloud VMM. Cílem je Azure.
-    - Instalace zprostředkovatele Azure Site Recovery a agenta Microsoft Azure Recovery Services Pokud máte server VMM, zprostředkovatel bude nainstalován na něj a agent na každého hostitele Hyper-V. Pokud VMM nemáte, nainstalujte zprostředkovatele i agenta na každého hostitele.
-    - Vytvoříte zásady replikace pro lokalitu Hyper-V nebo pro cloud VMM. Zásady se použijí pro všechny virtuální počítače na hostitelích v lokalitě nebo v cloudu.
-    - Povolíte replikaci pro virtuální počítače Hyper-V. Počáteční replikace proběhne podle nastavených zásad replikace.
-4. Pak budou sledovány změny dat a bude probíhat rozdílová replikace do Azure. Sledované změny se pro jednotlivé položky ukládají do souboru .hrl.
-5. Nakonec otestujete převzetí služeb při selhání, abyste měli jistotu, že všechno funguje.
+    - Nastavení zdroje a cíle. Pokud nespravujete hostitelů Hyper-V v cloudu VMM, pro cíl hello můžete vytvořit kontejner lokality Hyper-V a přidejte tooit hostitele technologie Hyper-V. Pokud hostitele Hyper-V jsou spravovány v nástroji VMM, zdroj hello je hello cloudu VMM. cíl Hello je Azure.
+    - Instalace hello zprostředkovatele Azure Site Recovery a agenta služeb zotavení Microsoft Azure hello. Pokud máte hello VMM se nainstaluje na něj zprostředkovatele a hello agent na každém hostiteli technologie Hyper-V. Pokud nemáte VMM, nenainstalují se hello zprostředkovatel a agent na každém hostiteli.
+    - Můžete vytvořit zásadu replikace pro cloudového serveru VMM nebo Hyper-V Server hello. zásady Hello je použité tooall virtuální počítače umístěné na hostitelích na hello webu nebo v cloudu.
+    - Povolíte replikaci pro virtuální počítače Hyper-V. V souladu s nastavením zásad replikace hello dojde k počáteční replikaci.
+4. Se sledují změny dat a replikaci rozdílové změny tooAzure se spustí po dokončení počáteční replikace hello. Sledované změny se pro jednotlivé položky ukládají do souboru .hrl.
+5. Při spuštění toomake testovací převzetí služeb při selhání, zda vše funguje.
 
 ### <a name="failover-and-failback-process"></a>Proces převzetí služeb při selhání a navrácení služeb po obnovení
 
-1. Můžete spustit plánované nebo neplánované [převzetí služeb při selhání](site-recovery-failover.md) z místních virtuálních počítačů Hyper-V do Azure. Pokud spustíte plánovanou operaci, dojde k ukončení zdrojových virtuálních počítačů, aby se zcela předešlo možné ztrátě dat.
-2. Můžete převzít službu při selhání jednoho počítače nebo vytvořit [plány zotavení](site-recovery-create-recovery-plans.md) a orchestrovat převzetí služeb více počítačů.
-4. Po převzetí služeb při selhání byste v Azure měli vidět vytvořené replikované virtuální počítače. Virtuálnímu počítači můžete přiřadit veřejnou IP adresu, když je to třeba.
-5. Po potvrzení procesu převzetí služeb můžete začít používat úlohu na replikovaném virtuálním počítači Azure.
-6. Až bude vaše místní lokalita opět dostupná, můžete [navrátit služby po obnovení](site-recovery-failback-from-azure-to-hyper-v.md). Zahájíte plánované převzetí služeb při selhání z Azure do primární lokality. Pro plánované převzetí služeb při selhání můžete vybrat navrácení služeb po obnovení do stejného virtuálního počítače nebo do alternativního umístění a synchronizovat změny mezi Azure a místním systémem, aby nedošlo ke ztrátě dat. Jakmile budou místní virtuální počítače vytvořené, můžete převzetí služeb při selhání potvrdit.
+1. Můžete spustit plánované, nebo neplánované [převzetí služeb při selhání](site-recovery-failover.md) z tooAzure místní virtuální počítače Hyper-V. Pokud spustíte plánované převzetí služeb při selhání, pak zdrojové virtuální počítače jsou vypnout tooensure nedošlo ke ztrátě dat.
+2. Můžete převzít jeden počítač nebo vytvořit [plány obnovení](site-recovery-create-recovery-plans.md) tooorchestrate převzetí služeb při selhání více počítačů.
+4. Po spuštění hello převzetí služeb při selhání, musí být schopný toosee hello vytvoří replikované virtuální počítače v Azure. V případě potřeby můžete přiřadit toohello veřejnou adresu IP virtuálního počítače.
+5. Potom potvrzení toostart hello převzetí služeb při selhání přístupu k hello zatížení z hello repliky virtuálního počítače Azure.
+6. Až bude vaše místní lokalita opět dostupná, můžete [navrátit služby po obnovení](site-recovery-failback-from-azure-to-hyper-v.md). Ji plánované převzetí služeb při selhání z Azure toohello primární lokality. Plánované převzetí služeb, které můžete vyberte toofailback toohello stejného virtuálního počítače nebo tooan alternativní umístění a synchronizovat změny mezi Azure a místními, tooensure nedošlo ke ztrátě dat. Virtuální počítače vytvořené na místě, potvrzení převzetí služeb při selhání hello.
 
-**Obr. 4: Replikace z lokality Hyper-V do Azure**
+**Obrázek 4: Technologie Hyper-V lokality tooAzure replikace**
 
 ![Komponenty](./media/site-recovery-components/arch-onprem-azure-hypervsite.png)
 
-**Obr. 5: Replikace z Hyper-V v cloudech VMM do Azure**
+**Obrázek 5: Technologie Hyper-V v nástroji VMM cloudů tooAzure replikace**
 
 ![Komponenty](./media/site-recovery-components/arch-onprem-onprem-azure-vmm.png)
 
 
-## <a name="replicate-to-a-secondary-site"></a>Replikace virtuálních počítačů VMware do sekundární lokality
+## <a name="replicate-tooa-secondary-site"></a>Replikovat tooa sekundární lokality
 
-Do sekundární lokality můžete replikovat následující:
+Můžete replikovat hello následující tooyour sekundární lokality:
 
 - **VMware:** Místní virtuální počítače VMware spuštěné na [podporovaném hostiteli](site-recovery-support-matrix-to-sec-site.md#on-premises-servers). Můžete replikovat virtuální počítače VMware s [podporovanými operačními systémy](site-recovery-support-matrix-to-sec-site.md#support-for-replicated-machine-os-versions).
 - **Fyzické počítače:** Místní fyzické servery s Windows nebo Linuxem spuštěné v [podporovaných operačních systémech](site-recovery-support-matrix-to-sec-site.md#support-for-replicated-machine-os-versions).
 - **Hyper-V:** Místní virtuální počítače Hyper-V spuštěné na [podporovaných hostitelích Hyper-V](site-recovery-support-matrix-to-sec-site.md#on-premises-servers) spravované v cloudech VMM. [Podporovaní hostitelé](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers). Můžete replikovat virtuální počítače Hyper-V s jakýmkoli hostovaným operačním systémem, který [podporuje technologie Hyper-V a Azure](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 
 
-## <a name="vmwarephysical-to-a-secondary-site"></a>Z VMware/fyzických do sekundární lokality
+## <a name="vmwarephysical-tooa-secondary-site"></a>Sekundární lokalita VMware nebo fyzický tooa
 
-Replikujete virtuální počítače VMware nebo fyzické servery do sekundární lokality pomocí nástroje InMage Scout.
+Můžete replikovat virtuální počítače VMware nebo fyzických serverů tooa sekundární lokality pomocí nástroje InMage Scout.
 
 ### <a name="components"></a>Komponenty
 
 **Oblast** | **Komponenta** | **Podrobnosti**
 --- | --- | ---
-**Procesový server** | Umístěný v primární lokalitě | Procesový server nasadíte, aby se staral o ukládání do mezipaměti, kompresi a optimalizaci dat.<br/><br/> Také obstará nabízenou instalaci nástroje Unified Agent na počítače, které chcete chránit.
-**Konfigurační server** | Umístěný v sekundární lokalitě | Konfigurační server spravuje, konfiguruje a monitoruje nasazení – buď pomocí webu pro správu, nebo konzoly vContinuum.
-**Server vContinuum** | Volitelné. Instaluje se do stejné lokality jako konfigurační server. | Poskytuje konzoli pro správu a monitorování chráněného prostředí.
-**Hlavní cílový server** | Umístěný v sekundární lokalitě | Na hlavní cílový server se ukládají replikovaná data. Přijímá data z procesního serveru, vytváří repliku počítače v sekundární lokalitě a ukládá body pro uchovávání dat.<br/><br/> Počet hlavních cílových serverů, které potřebujete, závisí na počtu počítačů, které chráníte.<br/><br/> Pokud chcete po obnovení vrátit služby do primární lokality, potřebujete hlavní cílový server i tam. Na tento server je třeba nainstalovat Unified Agent.
-**VMware ESX/ESXi a server vCenter** |  Virtuální počítače jsou hostované na hostitelích ESX nebo ESXi. Hostitelé se spravují pomocí serveru vCenter. | Pro replikaci virtuálních počítačů VMware budete potřebovat infrastrukturu VMware.
-**Virtuální počítače / fyzické servery** |  Nástroj Unified Agent nainstalovaný na virtuálních počítačích nebo fyzických serverech VMware, které chcete replikovat. | Agent funguje jako zprostředkovatel komunikace mezi všemi součástmi.
+**Procesový server** | Umístěný v primární lokalitě | Nasadíte ukládání do mezipaměti toohandle hello proces serveru, kompresi a optimalizaci data.<br/><br/> Také obstará nabízenou instalaci hello chcete tooprotect toomachines Unified Agent.
+**Konfigurační server** | Umístěný v sekundární lokalitě | Hello konfigurační server spravuje, konfiguraci a monitorování vašeho nasazení – buď pomocí webu pro správu hello nebo konzole vContinuum hello.
+**Server vContinuum** | Volitelné. Nainstalované v hello stejné umístění jako hello konfigurační server. | Poskytuje konzoli pro správu a monitorování chráněného prostředí.
+**Hlavní cílový server** | V sekundární lokalitě hello | Hello hlavní cílový server uchovává replikovaná data. Přijímá data z hello procesového serveru, vytváří repliku počítače v sekundární lokalitě hello a obsahuje body pro uchovávání hello.<br/><br/> Hello počet hlavních cílových serverů, které potřebujete, závisí na hello počtu počítačů, které chcete chránit.<br/><br/> Pokud chcete toofail back toohello primární lokality, potřebujete hlavní cílový server existuje příliš. Hello Unified Agent je na tomto serveru nainstalován.
+**VMware ESX/ESXi a server vCenter** |  Virtuální počítače jsou hostované na hostitelích ESX nebo ESXi. Hostitelé se spravují pomocí serveru vCenter. | Je nutné tooreplicate infrastruktury VMware virtuálních počítačů VMware.
+**Virtuální počítače / fyzické servery** |  Unified Agent nainstalovaný na virtuální počítače VMware a fyzické servery, které chcete tooreplicate. | Hello agent funguje jako zprostředkovatel komunikace mezi všechny součásti hello.
 
 
 ### <a name="replication-process"></a>Proces replikace
 
-1. V každé lokalitě si nastavte servery představující jednotlivé součásti (konfigurační, procesní, hlavní cílový) a nainstalujte si Unified Agent na počítače, které chcete replikovat.
-2. Po počáteční replikaci odesílá agent na každém počítači na procesní server rozdílové replikační změny.
-3. Procesní server tato data optimalizuje a přenese je na hlavní cílový server v sekundární lokalitě. Konfigurační server spravuje replikační proces.
+1. Nastavit hello součástí serverů v každé lokalitě (konfigurace, proces, hlavní cílový) a nainstalujte hello Unified Agent na počítače, které chcete tooreplicate.
+2. Po počáteční replikaci odesílá hello agent na každém počítači rozdílové replikační změny toohello procesový server.
+3. Hello procesový server hello dat optimalizuje a přenese na sekundární lokalitě hello toohello hlavní cílový server. Hello konfigurační server spravuje replikační proces hello.
 
-**Obr. 6: Replikace z VMware do VMware**
+**Obrázek 6: VMware tooVMware replikace**
 
-![Z VMware do VMware](./media/site-recovery-components/vmware-to-vmware.png)
+![VMware tooVMware](./media/site-recovery-components/vmware-to-vmware.png)
 
 
 
-## <a name="hyper-v-to-a-secondary-site"></a>Z Hyper-V do sekundární lokality
+## <a name="hyper-v-tooa-secondary-site"></a>Sekundární lokality tooa technologie Hyper-V
 
-Dál je uvedeno, co potřebujete pro replikaci virtuálních počítačů Hyper-V do sekundární lokality.
+Zde je, co potřebujete pro replikaci virtuálních počítačů Hyper-V tooa sekundární lokality.
 
 
 **Oblast** | **Komponenta** | **Podrobnosti**
 --- | --- | ---
-**Server VMM** | Doporučujeme jeden server VMM v primární lokalitě a další v sekundární lokalitě. | Oba servery VMM musí být připojené k internetu.<br/><br/> Každý server musí mít alespoň jeden privátní cloud VMM s nastavenou profilovou sadou schopností Hyper-V.<br/><br/> Nainstalujete zprostředkovatele Azure Site Recovery na server VMM. Zprostředkovatel koordinuje a orchestruje replikaci pomocí služby Site Recovery přes internet. Komunikace mezi poskytovatelem a Azure je zabezpečená a šifrovaná.
-**Server Hyper-V** |  Jeden nebo několik hostitelských serverů Hyper-V v primárním a sekundárním cloudu VMM.<br/><br/> Servery by měly být připojené k internetu.<br/><br/> Data se replikují mezi primárním a sekundárním hostitelským serverem Hyper-V přes síť LAN nebo VPN na základě protokolu Kerberos nebo ověření certifikátem.  
-**Virtuální počítače Hyper-V** | Umístěné na zdrojovém hostitelském serveru Hyper-V. | Zdrojový hostitelský server musí mít alespoň jeden virtuální počítač, který chcete replikovat.
+**Server VMM** | Doporučujeme, abyste server VMM v primární lokalitě hello a po jednom v sekundární lokalitě hello | Každý server VMM musí být připojené toohello Internetu.<br/><br/> Každý server musí mít alespoň jeden privátní cloud VMM, sadou profil schopností hello technologie Hyper-V.<br/><br/> Hello zprostředkovatele Azure Site Recovery nainstalujete na hello VMM server. Hello zprostředkovatel koordinuje a orchestruje replikaci pomocí hello služba Site Recovery přes hello Internetu. Komunikace mezi hello zprostředkovatele a Azure je zabezpečená a šifrovaná.
+**Server Hyper-V** |  Jeden nebo více servery Hyper-V host v hello primárních a sekundárních cloudech VMM.<br/><br/> Servery musí být připojené toohello Internetu.<br/><br/> Data se replikují mezi hello primární a sekundární servery Hyper-V hostiteli prostřednictvím hello LAN nebo VPN pomocí protokolu Kerberos nebo ověření certifikátu.  
+**Virtuální počítače Hyper-V** | Umístěný na serveru hostitele technologie Hyper-V hello zdroje. | Hello zdrojový hostitelský server by měl mít aspoň jeden virtuální počítač, který má tooreplicate.
 
 ### <a name="replication-process"></a>Proces replikace
 
-1. Připravíte účet Azure.
+1. Nastavit hello účet Azure.
 2. Vytvoříte trezor služby Replication Services pro Site Recovery a nakonfigurujete jeho nastavení, včetně těchto:
 
-    - Zdroj a cíl replikace (primární a sekundární lokality)
-    - Instalace zprostředkovatele Azure Site Recovery a agenta Microsoft Azure Recovery Services Zprostředkovatel bude nainstalován na servery VMM a agent na každého hostitele Hyper-V.
-    - Vytvoříte zásady replikace pro zdrojový cloud VMM. Zásady se použijí pro všechny virtuální počítače na hostitelích v cloudu.
-    - Povolíte replikaci pro virtuální počítače Hyper-V. Počáteční replikace proběhne podle nastavených zásad replikace.
-4. Pak budou sledovány změny dat a bude probíhat rozdílová replikace. Sledované změny se pro jednotlivé položky ukládají do souboru .hrl.
-5. Nakonec otestujete převzetí služeb při selhání, abyste měli jistotu, že všechno funguje.
+    - Hello replikace zdroj a cíl (primárních a sekundárních lokalit).
+    - Instalace hello zprostředkovatele Azure Site Recovery a agenta služeb zotavení Microsoft Azure hello. Hello zprostředkovatele je nainstalován na serverech VMM a agenta hello na každém hostiteli technologie Hyper-V.
+    - Vytvoříte zásady replikace pro zdrojový cloud VMM. zásady Hello je použité tooall virtuální počítače umístěné na hostitelích v cloudu hello.
+    - Povolíte replikaci pro virtuální počítače Hyper-V. V souladu s nastavením zásad replikace hello dojde k počáteční replikaci.
+4. Se sledují změny dat a replikace rozdílové změny toobegins po dokončení počáteční replikace hello. Sledované změny se pro jednotlivé položky ukládají do souboru .hrl.
+5. Při spuštění toomake testovací převzetí služeb při selhání, zda vše funguje.
 
-**Obrázek 7: Replikace z VMM do VMM**
+**Obrázek 7: VMM tooVMM replikace**
 
-![Z lokálního prostředí do lokálního prostředí](./media/site-recovery-components/arch-onprem-onprem.png)
+![Místní tooon místní](./media/site-recovery-components/arch-onprem-onprem.png)
 
 ### <a name="failover-and-failback"></a>Převzetí služeb při selhání a navrácení služeb po obnovení
 
-1. Můžete spustit plánované nebo neplánované [převzetí služeb při selhání](site-recovery-failover.md) mezi místními lokalitami. Pokud spustíte plánovanou operaci, dojde k ukončení zdrojových virtuálních počítačů, aby se zcela předešlo možné ztrátě dat.
-2. Můžete převzít službu při selhání jednoho počítače nebo vytvořit [plány zotavení](site-recovery-create-recovery-plans.md) a orchestrovat převzetí služeb více počítačů.
-4. Pokud proběhlo neplánované převzetí služeb při selhání sekundární lokalitou, po provedení převzetí služeb nebudou počítače v sekundární lokalitě chráněné pomocí replikace. Pokud jste spustili plánované převzetí služeb při selhání, počítače v sekundárním umístění chráněné budou.
-5. Po potvrzení převzetí služeb můžete začít používat úlohu na replikovaném virtuálním počítači.
-6. Až bude primární lokalita opět dostupná, zahájíte zpětnou replikaci ze sekundární lokality do primární. Po zpětné replikaci budou virtuální počítače v chráněném stavu, ale sekundární datové centrum bude stále aktivním umístěním.
-7. Chcete-li z primární lokality opět udělat aktivní, zahajte plánované převzetí služeb ze sekundární lokality do primární, následované další zpětnou replikací.
+1. Můžete spustit plánované nebo neplánované [převzetí služeb při selhání](site-recovery-failover.md) mezi místními lokalitami. Pokud spustíte plánované převzetí služeb při selhání, pak zdrojové virtuální počítače jsou vypnout tooensure nedošlo ke ztrátě dat.
+2. Můžete převzít jeden počítač nebo vytvořit [plány obnovení](site-recovery-create-recovery-plans.md) tooorchestrate převzetí služeb při selhání více počítačů.
+4. Pokud provádíte tooa sekundární lokality neplánované převzetí služeb při selhání, po převzetí služeb při selhání počítače hello v hello sekundárního umístění nejsou povolené pro ochranu nebo replikace. Pokud jste spustili plánované převzetí služeb při selhání, po převzetí služeb při selhání hello, jsou chráněné počítače v hello sekundárního umístění.
+5. Poté potvrďte hello převzetí služeb při selhání toostart přístupem hello zatížení z hello repliky virtuálních počítačů.
+6. Při primární lokality je opět k dispozici, můžete zahájit tooreplicate zpětná replikace z primární toohello sekundární lokality hello. Zpětná replikace přináší hello virtuální počítače v chráněném stavu, ale hello sekundárního datového centra je stále aktivní umístění hello.
+7. toomake hello primární lokalitu do umístění služby active hello znovu spustíte plánované převzetí služeb při selhání z sekundární tooprimary, za nímž následuje jiný zpětné replikace.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Další informace](site-recovery-hyper-v-azure-architecture.md) o pracovním postupu replikace Hyper-V
+- [Další informace](site-recovery-hyper-v-azure-architecture.md) o postupu replikace hello technologie Hyper-V.
 - [Kontrola požadavků](site-recovery-prereq.md)

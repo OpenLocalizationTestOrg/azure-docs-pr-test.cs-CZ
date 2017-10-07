@@ -1,5 +1,5 @@
 ---
-title: "Přehled služby Azure Event Hubs API | Microsoft Docs"
+title: "Přehled rozhraní API centra událostí aaaAzure | Microsoft Docs"
 description: "Přehled rozhraní API centra událostí Azure k dispozici"
 services: event-hubs
 documentationcenter: na
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: 40cd76e1aacb68d6051cae4a3c90a8970f5449f0
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 46dfcc544ff92642cfd7a967f9ec38a0d8e2bd5d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="available-event-hubs-apis"></a>Rozhraní API k dispozici události rozbočovače
 
 ## <a name="runtime-apis"></a>Modul runtime rozhraní API
 
-Následuje popis všech klientů aktuálně k dispozici modul runtime Azure Event Hubs. I když některé z těchto knihoven, také mají omezenou správu funkci, existují také [specifické knihovny](#management-apis) vyhrazený pro operace správy. Základní fokus tyto knihovny je odesílat a přijímat zprávy z centra událostí.
+Hello následuje popis všech klientů aktuálně k dispozici modul runtime Azure Event Hubs. I když některé z těchto knihoven, také mají omezenou správu funkci, existují také [specifické knihovny](#management-apis) vyhrazené toomanagement operace. fokus základní Hello tyto knihovny je toosend a přijímat zprávy z centra událostí.
 
-V tématu [Další informace o](#additional-information) další podrobnosti o aktuální stav jednotlivých modulu runtime knihoven.
+V tématu [Další informace o](#additional-information) další podrobnosti o hello aktuální stav jednotlivých modulu runtime knihoven.
 
 | Jazyk nebo platformu | Balíček klienta | Balíček EventProcessorHost | Úložiště |
 | --- | --- | --- | --- |
@@ -39,22 +39,22 @@ V tématu [Další informace o](#additional-information) další podrobnosti o a
 ### <a name="additional-information"></a>Další informace
 
 #### <a name="net"></a>.NET
-Ekosystému .NET má více moduly runtime a proto nejsou více knihovny .NET pro centra událostí. Knihovně .NET Standard můžete spustit pomocí .NET Core nebo rozhraní .NET Framework, když rozhraní .NET Framework – knihovna může spustit pouze v prostředí .NET Framework. Další informace o rozhraní .NET Framework naleznete v tématu [framework verze](https://docs.microsoft.com/dotnet/articles/standard/frameworks#framework-versions).
+Hello .NET ekosystém má více moduly runtime a proto nejsou více knihovny .NET pro centra událostí. knihovny .NET standardní Hello lze spouštět s využitím .NET Core nebo hello rozhraní .NET Framework, zatímco hello rozhraní .NET Framework – knihovna může spustit pouze v prostředí .NET Framework. Další informace o rozhraní .NET Framework naleznete v tématu [framework verze](https://docs.microsoft.com/dotnet/articles/standard/frameworks#framework-versions).
 
 #### <a name="node"></a>Node
 
-Knihovna Node.js je aktuálně ve verzi preview a je udržován jako straně projekt tak, že zaměstnanci společnosti Microsoft a externí přispěvatele. Všechny příspěvky včetně zdrojového kódu se úvodní a bude znovu.
+Knihovna Node.js Hello je aktuálně ve verzi preview a je udržován jako straně projekt tak, že zaměstnanci společnosti Microsoft a externí přispěvatele. Všechny příspěvky včetně zdrojového kódu se úvodní a bude znovu.
 
 ## <a name="management-apis"></a>Rozhraní API pro správu
 
-Následuje seznam všech aktuálně k dispozici správa specifické knihovny. Žádná z těchto knihoven obsahovat operace runtime a jsou pouze za účelem správy služby Event Hubs entity.
+Hello následuje seznam všech aktuálně k dispozici správa specifické knihovny. Žádná z těchto knihoven obsahovat operace runtime a jsou k jedinému účelu hello Správa entit služby Event Hubs.
 
 | Jazyk nebo platformu | Balíček pro správu | Úložiště |
 | --- | --- | --- | --- |
 | Standardní rozhraní .NET | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.EventHub) | [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/ResourceManagement/EventHub) |
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o službě Event Hubs najdete na následujících odkazech:
+Další informace o službě Event Hubs návštěvou hello následující odkazy:
 
 * [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Vytvoření centra událostí](event-hubs-create.md)

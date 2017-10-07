@@ -1,6 +1,6 @@
 ---
-title: "Přístup a použití sestav pro Azure MFA | Microsoft Docs"
-description: "Popisuje jak používat funkci Azure Multi-Factor Authentication - sestavy."
+title: "sestavy využití a aaaAccess pro Azure MFA | Microsoft Docs"
+description: Popisuje, jak toouse hello funkce Azure Multi-Factor Authentication - sestavy.
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: kgremban
-ms.openlocfilehash: f76e726c6a67de4b0472c0e97f9e72c31c14c4f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ae7ccceca4968d7ec7cf0cb1cf9e041d9997c840
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Sestavy v Azure Multi-Factor Authentication
-Azure Multi-Factor Authentication nabízí několik sestav, které mohou být využívána vám a vaší organizaci. Tyto sestavy lze přistupovat prostřednictvím portálu služby Multi-Factor Authentication Management Portal. Následuje seznam dostupných sestav:
+Azure Multi-Factor Authentication nabízí několik sestav, které mohou být využívána vám a vaší organizaci. Tyto sestavy je přístupná prostřednictvím hello Multi-Factor Authentication Management Portal. Hello tady je seznam dostupných sestav hello:
 
 | Sestava | Popis |
 |:--- |:--- |
-| Využití |Využití zprávy obsahují informace na celkové využití: uživatelský souhrn a podrobnosti o uživateli. |
-| Stav serveru |Tato sestava zobrazí stav aplikace Multi-Factor Authentication Server, která je spojená s vaším účtem. |
-| Historie blokování uživatelů |Tyto sestavy zobrazit historii žádostí o blokování nebo odblokování uživatelů. |
-| Historie přeskočených uživatelů |Zobrazí historii žádostí o obejití služby Multi-Factor Authentication pro telefonní číslo uživatele. |
-| Upozornění na podvod |Zobrazí historii upozornění na podvod odeslaných během období, které jste zadali. |
-| Ve frontě |Zobrazí sestavy zařazené do fronty pro zpracování a jejich stav. Po dokončení sestavy je k dispozici odkaz na stažení nebo zobrazení sestavy. |
+| Využití |využití Hello zprávy obsahují informace na celkové využití: uživatelský souhrn a podrobnosti o uživateli. |
+| Stav serveru |Tato sestava zobrazuje stav hello aplikace Multi-Factor Authentication Server, která je spojená s vaším účtem. |
+| Historie blokování uživatelů |Tyto sestavy zobrazit historii hello tooblock požadavky nebo odblokovat uživatele. |
+| Historie přeskočených uživatelů |Zobrazí historii hello toobypass žádosti o službu Multi-Factor Authentication pro telefonní číslo uživatele. |
+| Upozornění na podvod |Zobrazí historii upozornění na podvod odeslaných během hello rozsah, který jste zadali. |
+| Ve frontě |Zobrazí sestavy zařazené do fronty pro zpracování a jejich stav. Po dokončení sestavy hello je vypracována sestava odkaz toodownload nebo zobrazení hello. |
 
 ## <a name="view-reports"></a>Zobrazení sestav
-1. Přihlaste se do [portál Azure Classic](https://manage.windowsazure.com).
-2. Vlevo vyberte možnost Active Directory.
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+2. Na levé straně hello vyberte služby Active Directory.
 3. Proveďte jeden z těchto dvou možností, v závislosti na tom, zda používáte zprostředkovatelé ověřování:
-   * **Možnost 1**: klikněte na kartu zprostředkovatelé vícefaktorového ověřování. Vyberte poskytovatele MFA a klikněte na tlačítko **spravovat** tlačítko dole.
-   * **Možnost 2**: Vyberte adresář, přejděte na **konfigurace** kartě. V části ověřování vícefaktorového ověřování vyberte **Spravovat nastavení služby**. V dolní části stránky nastavení vícefaktorového ověřování služby kliknutím na Přejít do portálu odkaz.
-4. V portálu Azure Multi-Factor Authentication Management Portal, vyberte typ sestavy, které chcete z **zobrazit sestavu** část v levém navigačním panelu.
+   * **Možnost 1**: klikněte na kartu hello zprostředkovatelé vícefaktorového ověřování. Vyberte poskytovatele MFA a klikněte na tlačítko hello **spravovat** tlačítko dole v hello.
+   * **Možnost 2**: vyberte váš adresář a přejděte toohello **konfigurace** kartě. V části služby Multi-Factor authentication hello vyberte **spravovat nastavení služby**. V hello dolní části stránky hello nastavení vícefaktorového ověřování služby klikněte na položku hello přejděte toohello portálu odkaz.
+4. V hello Azure Multi-Factor Authentication Management Portal, vyberte typ hello sestavy, které chcete z hello **zobrazit sestavu** část v levé navigační hello.
 
 <center>![Cloud](./media/multi-factor-authentication-manage-reports/report.png)</center>
 

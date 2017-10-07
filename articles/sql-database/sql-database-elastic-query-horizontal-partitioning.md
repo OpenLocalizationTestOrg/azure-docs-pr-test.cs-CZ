@@ -1,6 +1,6 @@
 ---
-title: "Vytváření sestav napříč instancemi cloudu databáze | Microsoft Docs"
-description: "jak nastavit elastické dotazy přes vodorovné oddíly"
+title: "aaaReporting napříč instancemi cloudu databáze | Microsoft Docs"
+description: "jak tooset až elastické dotazy na vodorovné oddíly"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: mlandzic
-ms.openlocfilehash: 62b5bcd26aa1ed219fb38970916e0e8847ceb577
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 78986c2040bf308195bf7c77e64d4f37273fcf36
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Vytváření sestav napříč instancemi cloudu databází (preview)
 ![Dotazování mezi horizontálních oddílů][1]
 
-Horizontálně dělené databáze distribuovat řádky napříč škálovaný dat vrstvy. Schéma je stejná na všechny zúčastněné databáze, také známé jako vodorovné rozdělení do oddílů. Pomocí elastické dotazu, můžete vytvořit sestavy, které jsou rozmístěny všechny databáze v horizontálně dělené databázi.
+Horizontálně dělené databáze distribuovat řádky napříč škálovaný dat vrstvy. schéma Hello je stejná na všechny zúčastněné databáze, také známé jako vodorovné rozdělení do oddílů. Pomocí elastické dotazu, můžete vytvořit sestavy, které jsou rozmístěny všechny databáze v horizontálně dělené databázi.
 
 Rychle začít, najdete v části [vytváření sestav napříč instancemi cloudu databáze](sql-database-elastic-query-getting-started.md).
 
 Horizontálně dělené databází, najdete v části [dotazu mezi databázemi cloudu s různými schématy](sql-database-elastic-query-vertical-partitioning.md). 
 
 ## <a name="prerequisites"></a>Požadavky
-* Vytvoření mapy horizontálního oddílu pomocí klientské knihovny elastické databáze. v tématu [horizontálního oddílu mapy správu](sql-database-elastic-scale-shard-map-management.md). Nebo použijte ukázkovou aplikaci v [začít pracovat s nástroji elastické databáze](sql-database-elastic-scale-get-started.md).
-* Alternativně si zobrazte [migrovat existující databáze do databází upraveným](sql-database-elastic-convert-to-use-elastic-tools.md).
-* Uživatel musí mít oprávnění ALTER ANY EXTERNAL DATA SOURCE. Toto oprávnění je součástí oprávnění ALTER DATABASE.
-* K odkazování na podkladový zdroj dat jsou potřeba oprávnění ALTER ANY EXTERNAL DATA SOURCE.
+* Vytvoření mapy horizontálního oddílu pomocí klientské knihovny pro elastické databáze hello. v tématu [horizontálního oddílu mapy správu](sql-database-elastic-scale-shard-map-management.md). Nebo použijte hello ukázkovou aplikaci v [začít pracovat s nástroji elastické databáze](sql-database-elastic-scale-get-started.md).
+* Alternativně si zobrazte [migrací stávající databáze, databáze na více systémů tooscaled](sql-database-elastic-convert-to-use-elastic-tools.md).
+* Hello uživatel musí mít oprávnění ALTER ANY EXTERNAL DATA SOURCE. Toto oprávnění je součástí hello oprávnění ALTER DATABASE.
+* Oprávnění ALTER ANY externí zdroj dat se zdroji dat toohello potřebné toorefer.
 
 ## <a name="overview"></a>Přehled
-Tyto příkazy vytvoření metadat reprezentace horizontálně dělené datové vrstvě v databázi elastické dotazu. 
+Tyto příkazy vytvořit reprezentaci metadata hello horizontálně dělené datové vrstvě v hello elastické dotaz do databáze. 
 
 1. [VYTVOŘENÍ HLAVNÍHO KLÍČE](https://msdn.microsoft.com/library/ms174382.aspx)
 2. [VYTVOŘENÍ DATABÁZE OBOR PŘIHLAŠOVACÍCH ÚDAJŮ](https://msdn.microsoft.com/library/mt270260.aspx)
@@ -44,7 +44,7 @@ Tyto příkazy vytvoření metadat reprezentace horizontálně dělené datové 
 4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) 
 
 ## <a name="11-create-database-scoped-master-key-and-credentials"></a>1.1 vytvořit hlavní klíč databáze obor a přihlašovací údaje
-Přihlašovací údaje se používá v elastické dotazu pro připojení k vzdálené databáze.  
+Hello pověření je používáno hello elastické dotazu tooconnect tooyour vzdálené databáze.  
 
     CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'password';
     CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
@@ -52,7 +52,7 @@ Přihlašovací údaje se používá v elastické dotazu pro připojení k vzdá
     [;]
 
 > [!NOTE]
-> Ujistěte se, že *"\<uživatelské jméno\>"* neobsahuje žádné *"@servername"* příponu. 
+> Ujistěte se, že hello *"\<uživatelské jméno\>"* neobsahuje žádné *"@servername"* příponu. 
 > 
 > 
 
@@ -79,11 +79,11 @@ Syntaxe:
         SHARD_MAP_NAME='ShardMap' 
     );
 
-Načtěte seznam aktuálních zdrojů dat externí: 
+Načtení hello seznam aktuálních zdrojů externích dat: 
 
     select * from sys.external_data_sources; 
 
-Externí zdroj dat odkazuje na mapě horizontálního oddílu. Dotaz elastické pak používá externí zdroj dat a základní mapy horizontálního oddílu výčet databází, které jsou součástí datové vrstvy. Stejné přihlašovací údaje se používají ke čtení mapy horizontálního oddílu a k přístupu k datům na horizontálních oddílů během zpracování elastické dotazu. 
+Hello externí zdroj dat odkazuje na mapě horizontálního oddílu. Dotaz elastické pak použije hello externí zdroj dat a hello základní horizontálního oddílu mapy tooenumerate hello databáze, které účastnit hello datové vrstvy. Hello stejné přihlašovací údaje jsou použité tooread hello horizontálního oddílu mapy a tooaccess hello data na horizontálních oddílů hello během zpracování hello elastické dotazu. 
 
 ## <a name="13-create-external-tables"></a>1.3 Vytvoření externí tabulky
 Syntaxe:  
@@ -122,34 +122,34 @@ Syntaxe:
         DISTRIBUTION=SHARDED(ol_w_id)
     ); 
 
-Načtení seznamu externí tabulky z aktuální databáze: 
+Načtení seznamu hello externí tabulky z aktuální databáze hello: 
 
     SELECT * from sys.external_tables; 
 
-Chcete-li vyřadit externí tabulky:
+externí tabulky toodrop:
 
     DROP EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name. ] table_name[;]
 
 ### <a name="remarks"></a>Poznámky
-DATA\_zdroj klauzule definuje zdroj externích dat (horizontálních map), který se používá pro externí tabulky.  
+Hello DATA\_zdroj klauzule definuje hello externí zdroj dat (horizontálních map) používaný pro externí tabulky hello.  
 
-SCHÉMA\_název a OBJEKT\_název klauzule mapování definici externí tabulky do tabulky v jiném schématu. Pokud tento parametr vynechán, je schéma ke vzdálenému objektu předpokládá se "dbo" a její název se považuje za stejný jako název externí tabulky definovaný. To je užitečné, když se název vzdálené tabulky se už používá v databázi kde chcete vytvořit externí tabulky. Například můžete definovat externí tabulku získat agregované zobrazení katalogu zobrazení nebo zobrazení dynamické správy na škálovaný dat vrstvy. Vzhledem k tomu, že zobrazení katalogu a zobrazení dynamické správy již existují místně, nemůžete použít jejich názvy pro definici externí tabulky. Místo toho použijte jiný název a použijte zobrazení katalogu nebo DMV název ve schématu\_název nebo OBJEKT\_klauzule název. (Viz následující příklad.) 
+Hello schématu\_název a OBJEKT\_název klauzule mapování hello externí tooa tabulky v jiném schématu. Pokud tento parametr vynechán, hello schématu vzdálené objektu hello se předpokládá, že toobe "dbo" a jeho název je předpokládá, že název externí tabulky identické toohello toobe definovaný. To je užitečné, když se název hello Vzdálená tabulka už používá v databázi hello místo toocreate hello externí tabulky. Například chcete toodefine externí tabulky tooget agregované zobrazení katalogu zobrazení nebo zobrazení dynamické správy na škálovaný dat vrstvy. Vzhledem k tomu, že zobrazení katalogu a zobrazení dynamické správy již existují místně, nemůžete použít jejich názvy pro definici externí tabulky hello. Místo toho použijte jiný název a použijte zobrazení katalogu hello nebo hello DMV na název v hello schématu\_název nebo OBJEKT\_klauzule název. (Viz následující příklad hello.) 
 
-V klauzuli distribuční Určuje distribuci dat použít pro tuto tabulku. Procesor dotazů využívá informací uvedených v klauzuli distribuční k vytvoření nejúčinnější plány dotazů.  
+klauzule distribuční Hello Určuje distribuci dat hello používá pro tuto tabulku. Procesor dotazů Hello využívá hello informací uvedených v hello distribuční klauzule toobuild hello nejúčinnější plány dotazů.  
 
-1. **Horizontálně DĚLENÉ** znamená data vodorovně rozdělena mezi databází. Klíč rozdělení pro distribuci dat je **< sharding_column_name >** parametr.
-2. **REPLIKOVAT** znamená, že jsou identické kopií tabulky na každou databázi. Je vaší povinností ujistit, že repliky jsou identické mezi databází.
-3. **ZAOKROUHLÍ\_každý s každým** znamená, že v tabulce je vodorovně rozdělena na oddíly pomocí metody distribuce závislé aplikace. 
+1. **Horizontálně DĚLENÉ** znamená data vodorovně rozdělena mezi databázemi hello. Hello klíč rozdělení do oddílů pro distribuci dat hello je hello **< sharding_column_name >** parametr.
+2. **REPLIKOVAT** znamená, že jsou identické kopií tabulky hello na každou databázi. Je vaše odpovědnosti tooensure, hello repliky se shodují mezi databázemi hello.
+3. **ZAOKROUHLÍ\_každý s každým** znamená, že hello tabulka vodorovně rozdělena na oddíly pomocí metody distribuce závislé aplikace. 
 
-**Datové vrstvy odkaz**: DDL odkazuje na externí zdroj dat externí tabulky. Externí zdroj dat určuje horizontálního oddílu mapy, které poskytuje informace potřebné k vyhledání všechny databáze v datové vrstvě externí tabulky. 
+**Datové vrstvy odkaz**: tooan externí zdroj dat odkazuje hello DDL pro externí tabulky. Hello externí zdroj dat určuje horizontálního oddílu mapu, která poskytuje hello externí tabulky s hello informace nezbytné toolocate všechny hello databáze v datové vrstvě. 
 
 ### <a name="security-considerations"></a>Aspekty zabezpečení
-Uživatelé s přístupem k externí tabulky automaticky získají přístup k základní vzdálených tabulek v části přihlašovací údaje zadané v definici zdrojové externí data. Vyhněte se nežádoucí zvýšení oprávnění pomocí přihlašovacích údajů zdroje dat externí. Pomocí GRANT nebo REVOKE pro externí tabulky stejně, jako by šlo o běžnou tabulku.  
+Uživatelé s externí tabulky toohello přístupu automaticky získají přístup toohello základní vzdálených tabulek v rámci hello přihlašovací údaje zadané v definici zdrojové externích dat hello. Vyhněte se nežádoucí zvýšení oprávnění prostřednictvím hello externí zdroj dat hello přihlašovací údaje. Pomocí GRANT nebo REVOKE pro externí tabulky stejně, jako by šlo o běžnou tabulku.  
 
 Jakmile definujete zdroj externích dat a externí tabulky, teď můžete použít úplnou T-SQL na externí tabulky.
 
 ## <a name="example-querying-horizontal-partitioned-databases"></a>Příklad: dotazy na vodorovné oddílů databáze
-Následující dotaz spojí třícestný sklady a pořadí řádky objednávek a používá několik agregace a selektivní filtru. Předpokládá (1) vodorovné rozdělení (horizontálního dělení) a (2), sklady, objednávek a pořadí řádky jsou horizontálně dělené podle id sloupce skladu, a zda elastické dotaz můžete společně umísťovat spojení na horizontálních oddílů zpracovat nákladné část dotazu na horizontálních oddílů v paralelní. 
+Hello následující dotaz spojí třícestný sklady a pořadí řádky objednávek a používá několik agregace a selektivní filtru. Předpokládá (1) vodorovné rozdělení (horizontálního dělení) a (2) zda sklady, objednávek a pořadí řádky jsou horizontálně dělené podle hello skladu id sloupce, a můžete takový dotaz elastické hello společně umísťovat hello spojení na hello horizontálních oddílů a zpracovat hello nákladné součást hello dotazu na hello horizontálních oddílů paralelně. 
 
     select  
          w_id as warehouse,
@@ -167,14 +167,14 @@ Následující dotaz spojí třícestný sklady a pořadí řádky objednávek a
     group by w_id, o_c_id 
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Uložené procedury pro vzdálené spuštění T-SQL: sp\_execute_remote
-Elastické dotazu také zavádí uložené procedury, která poskytuje přímý přístup k horizontálních oddílů. Uložená procedura je volána [sp\_provést \_vzdáleného](https://msdn.microsoft.com/library/mt703714) a můžete použít ke spuštění vzdálené uložené procedury nebo kód T-SQL na vzdálené databáze. Ji používá následující parametry: 
+Elastické dotazu také zavádí uložené procedury, která poskytuje přímý přístup toohello horizontálních oddílů. Hello uložená procedura je volána [sp\_provést \_vzdáleného](https://msdn.microsoft.com/library/mt703714) a může být vzdálené uložené procedury používané tooexecute nebo kód T-SQL na hello vzdálené databáze. Jak dlouho trvá hello následující parametry: 
 
-* Název zdroje dat (nvarchar): název zdroje externích dat typu relační. 
-* Dotaz (nvarchar): na každý horizontálního oddílu provedení dotazu T-SQL. 
-* Deklarace parametru (nvarchar) - volitelné: řetězec s definice typu dat pro parametry použité v parametru dotazu (např. sp_executesql). 
+* Název zdroje dat (nvarchar): název hello hello externí zdroj dat typu relační. 
+* Dotaz (nvarchar): toobe hello T-SQL dotaz spustit na každém horizontálního oddílu. 
+* Deklarace parametru (nvarchar) - volitelné: řetězec s definice typu dat pro hello parametry použité v parametru dotazu hello (např. sp_executesql). 
 * Seznam hodnot parametru - volitelné: čárkami oddělený seznam hodnot parametrů (např. sp_executesql).
 
-Sp\_provést\_vzdálené používá externí zdroj dat součástí Parametry vyvolání daný příkaz T-SQL nelze provést na vzdálené databáze. Přihlašovací údaje z externí zdroj dat používá pro připojení k databázi správce shardmap a vzdálené databáze.  
+Hello sp\_provést\_vzdálené používá hello externí zdroj dat součástí hello volání parametry tooexecute hello zadaný příkaz jazyka T-SQL na hello vzdálené databáze. Používá hello přihlašovací údaje správce databáze shardmap tooconnect toohello hello externí datového zdroje a hello vzdálené databáze.  
 
 Příklad: 
 
@@ -183,13 +183,13 @@ Příklad:
         N'select count(w_id) as foo from warehouse' 
 
 ## <a name="connectivity-for-tools"></a>Připojení nástroje
-Používat regulární připojovací řetězce SQL serveru pro připojení vaší aplikace, vaše data a BI nástrojů pro integraci do databáze s definic externí tabulky. Ujistěte se, že systém SQL Server je podporovaný jako zdroj dat pro vaše nástroje. Pak odkaz databáze elastické dotazu jako jakékoli jiné databáze systému SQL Server připojen k nástroj a použijte externí tabulky z nástroje nebo aplikace jako kdyby byly místní tabulky. 
+Používat regulární tooconnect řetězce připojení SQL Server aplikace, vaše data a BI integrace nástroje toohello databáze s definic externí tabulky. Ujistěte se, že systém SQL Server je podporovaný jako zdroj dat pro vaše nástroje. Pak odkazovat hello elastické dotaz do databáze jako jakýkoli jiný nástroj toohello systému SQL Server databáze připojené a použít externí tabulky z nástroje nebo aplikace, jako kdyby byly místní tabulky. 
 
 ## <a name="best-practices"></a>Osvědčené postupy
-* Ujistěte se, že koncový bod databáze elastické dotazu byl udělen přístup k databázi shardmap a všechny horizontálních oddílů přes brány firewall SQL DB.  
-* Ověřit nebo vynutit distribuci dat definované externí tabulky. Pokud distribuční skutečná data se liší od rozdělení zadaný v definici vaší tabulky, vaše dotazy mohou vést k neočekávaným výsledkům. 
-* Elastické dotazu momentálně neprovádí odstranění horizontálních při predikáty nad klíčem horizontálního dělení by mohla bezpečně vyloučit některé horizontálních oddílů z zpracování.
-* Elastické dotazu je nejvhodnější pro dotazy kde většinu výpočet lze provést na horizontálních oddílů. Obvykle získáte nejlepší výkon dotazů s predikáty selektivní filtru, které lze vyhodnotit na horizontálních oddílů nebo spojení přes rozdělení klíčů, které lze provést tak oddílu zarovnaný na všechny horizontálních oddílů. Ostatní typy dotazů možná muset načíst velkých objemů dat z horizontálních oddílů k hlavnímu uzlu a může být špatná
+* Zajistěte, že hello elastické dotazu koncový bod databáze nebyla zadána databáze shardmap toohello přístupu a všechny horizontálních oddílů prostřednictvím brány firewall SQL DB hello.  
+* Ověřit nebo vynutit hello distribuci dat definované hello externí tabulky. Pokud distribuční skutečná data se liší od hello distribuční zadaný v definici vaší tabulky, vaše dotazy mohou vést k neočekávaným výsledkům. 
+* Elastické dotazu aktuálně neprovádí odstranění horizontálních při predikáty nad klíčem horizontálního dělení hello by umožnilo toosafely vyloučení určitých horizontálních oddílů z zpracování.
+* Elastické dotazu je nejvhodnější pro dotazy kde lze provést většinu výpočtu hello na hello horizontálních oddílů. Obvykle získat hello nejlepší výkon dotazů s predikáty selektivní filtru, které lze vyhodnotit na hello horizontálních oddílů nebo spojení přes hello dělení klíče, které lze provést tak oddílu zarovnaný na všechny horizontálních oddílů. Další vzory dotazu může být nutné tooload velkých objemů dat z hlavního uzlu toohello hello horizontálních oddílů a může být špatná
 
 ## <a name="next-steps"></a>Další kroky
 

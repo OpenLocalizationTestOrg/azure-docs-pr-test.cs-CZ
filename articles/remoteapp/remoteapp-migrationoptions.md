@@ -1,6 +1,6 @@
 ---
-title: "Možnosti pro migraci z Azure Remoteappu | Microsoft Docs"
-description: "Informace o možnostech pro migraci z Azure Remoteappu."
+title: aaaOptions pro migraci z Azure Remoteappu | Microsoft Docs
+description: "Informace o možnostech hello k migraci z Azure Remoteappu."
 services: remoteapp
 documentationcenter: 
 author: ericorman
@@ -13,59 +13,59 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 9ab63124e2521ee1922d15c1e388c54d50eb8301
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 75324597881520d0c75939983b728ae9bbd7f436
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="options-for-migrating-out-of-azure-remoteapp"></a>Možnosti pro migraci z Azure Remoteappu
 > [!IMPORTANT]
-> Azure RemoteApp se přestává používat dne 31. srpna 2017. Podrobnosti najdete v tomto [oznámení](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp se přestává používat dne 31. srpna 2017. Čtení hello [oznámení](https://go.microsoft.com/fwlink/?linkid=821148) podrobnosti.
 
 
-Pokud je nutné zastavit pomocí Azure Remoteappu z důvodu [vyřazení oznámení](https://go.microsoft.com/fwlink/?linkid=821148) nebo protože dokončení testování, je potřeba migrovat z Azure RemoteApp do jiné služby app service. Existují dva různé přístupy k migraci: spravuje vlastními silami (často říká infrastruktury jako služby [IaaS]) nasazení nebo plně spravovaná (často označované jako platforma jako služba) nebo softwaru jako služby [PaaS nebo SaaS] nabídky. 
+Pokud je nutné zastavit pomocí Azure Remoteappu z důvodu hello [vyřazení oznámení](https://go.microsoft.com/fwlink/?linkid=821148) nebo protože dokončení testování, je třeba toomigrate z Azure Remoteappu tooanother aplikační služby. Existují dva různé přístupy k migraci: spravuje vlastními silami (často říká infrastruktury jako služby [IaaS]) nasazení nebo plně spravovaná (často označované jako platforma jako služba) nebo softwaru jako služby [PaaS nebo SaaS] nabídky. 
 
-Samoobslužné služby IaaS je samoobslužné nasazení, které je spravovaná, provozovat a vlastní můžete nasadit přímo na virtuální počítače (VM) nebo fyzickými systémy. Na druhém konci plně spravovaná PaaS nebo SaaS nabídka je informace, například Azure RemoteApp – partnera poskytuje služby vrstvu nad vzdálenou komunikaci řešení, která zpracovává provozní a obsluhu, při, jako zákazník, do správy některé image a aplikací.
+Samoobslužné služby IaaS je samoobslužné nasazení, které je spravovaná, provozovat a vlastní můžete nasadit přímo na virtuální počítače (VM) nebo fyzickými systémy. Na hello jiných ukončení, plně spravovaná PaaS nebo SaaS nabídka je informace, například Azure RemoteApp – partnera poskytuje služby vrstvu nad vzdálenou komunikaci řešení, která zpracovává provozní a údržby při, jako zákazník hello provést některé správy image a aplikací.
 
-[Zobrazit webináře Azure RemoteApp na možnosti migrace](https://social.msdn.microsoft.com/Forums/azure/40557aaa-3e9f-403c-b221-ad3eac10dc56/migration-option-webinar-recordings?forum=AzureRemoteApp), nebo si můžete přečíst na další informace (včetně příkladů různé možnosti hostování).
+[Zobrazit webináře hello Azure RemoteApp na možnosti migrace](https://social.msdn.microsoft.com/Forums/azure/40557aaa-3e9f-403c-b221-ad3eac10dc56/migration-option-webinar-recordings?forum=AzureRemoteApp), nebo si můžete přečíst na další informace (včetně příkladů hello různé možnosti hostování).
 
 ## <a name="self-managed-iaas-solutions"></a>Spravuje vlastními silami řešení (IaaS)
 ### <a name="rds-on-iaas"></a>**Vzdálená plocha na IaaS**
 Nasazení můžete nativní na bázi relace služby Vzdálená plocha (v systému Windows Server) pomocí vzdálené aplikace RemoteApp nebo klienty na místně nebo v hostovaném prostředí (jako na virtuálních počítačích Azure). Vzdálená plocha na IaaS nasazení jsou nejlepší pro zákazníky už znáte a které mají existující technických otázek u nasazení vzdálené plochy. 
 
 > [!NOTE]
-> Musíte Volume Licensing s Software Assurance (SA) pro vzdálené plochy licencí pro klientský přístup pro použití této možnosti nasazení.
+> Potřebujete Volume Licensing s Software Assurance (SA) pro toouse licence přístupu klienta vzdálené plochy tuto volbu nasazení.
 
-Nasazení vzdálené plochy na virtuálních počítačích Azure je jednodušší než kdy při použití nasazení a opravy chyb šablony (čtení [přehled](https://blogs.technet.microsoft.com/enterprisemobility/2015/07/13/azure-resource-manager-template-for-rds-deployment/) a potom [přejděte získat je](https://aka.ms/rdautomation)). Můžete získat stejné možnosti elastické škálování s Azure classic nasazení modelu prostředky (ne prostředky Model prostředků Azure) v rámci Azure RemoteApp pomocí [automatické škálování skriptu](https://gallery.technet.microsoft.com/scriptcenter/Automatic-Scaling-of-9b4f5e76), i když existují další přizpůsobení a konfigurace. Při nasazení vzdálené plochy na virtuálních počítačích Azure, je poskytována prostřednictvím podpory [podporu Azure](https://azure.microsoft.com/support/plans/), stejné podporují Odborníci v oblasti, která je podporována s Azure Remoteappem. Můžete získat náklady odhady založené na vaší stávající využití kontaktováním [podporu Azure](https://azure.microsoft.com/support/plans/), nebo můžete výpočty provést sami pomocí brzy být vydané kalkulačky náklady.  S virtuálními počítači N-series (aktuálně v soukromém náhledu) můžete také přidat vGPU - informace o přidávání vGPU a o tom, jak nás [budou využívat vylepšení vzdálené plochy v systému Windows Server 2016](https://myignite.microsoft.com/videos/2794) v našem Ignite relaci.   
+Nasazení vzdálené plochy na virtuálních počítačích Azure je jednodušší než kdy při použití nasazení a opravy chyb šablony (čtení [přehled](https://blogs.technet.microsoft.com/enterprisemobility/2015/07/13/azure-resource-manager-template-for-rds-deployment/) a potom [přejděte získat je](https://aka.ms/rdautomation)). Můžete získat hello stejné možnosti elastické škálování s prostředky modelu nasazení Azure classic (ne prostředky Model prostředků Azure) v rámci Azure RemoteApp pomocí hello [automatické škálování skriptu](https://gallery.technet.microsoft.com/scriptcenter/Automatic-Scaling-of-9b4f5e76), i když existují další vlastní nastavení a konfiguraci. Při nasazení vzdálené plochy na virtuálních počítačích Azure, je poskytována prostřednictvím podpory [podporu Azure](https://azure.microsoft.com/support/plans/), hello stejné pracovníci technické podpory, která je podporována s Azure Remoteappem. Můžete získat náklady odhady založené na vaší stávající využití kontaktováním [podporu Azure](https://azure.microsoft.com/support/plans/), nebo můžete výpočty provést sami pomocí brzy toobe vydané kalkulačky náklady.  S virtuálními počítači N-series (aktuálně v soukromém náhledu) můžete také přidat vGPU - informace o přidávání vGPU a jak slyšet příliš[budou využívat vylepšení vzdálené plochy v systému Windows Server 2016](https://myignite.microsoft.com/videos/2794) v našem Ignite relaci.   
 
-Máme průvodcích nasazením krok za krokem pro [Windows Server 2012 R2](http://aka.ms/rdsonazure) a [systému Windows Server 2016](http://aka.ms/rdsonazure2016) pomoct s nasazením. Podívejte se [vzdálené plochy blog](https://blogs.technet.microsoft.com/enterprisemobility/?product=windows-server-remote-desktop-services) nejnovější informace.
+Máme průvodcích nasazením krok za krokem pro [Windows Server 2012 R2](http://aka.ms/rdsonazure) a [systému Windows Server 2016](http://aka.ms/rdsonazure2016) tooassist v rámci vašeho nasazení. Podívejte se na hello [vzdálené plochy blog](https://blogs.technet.microsoft.com/enterprisemobility/?product=windows-server-remote-desktop-services) pro hello nejnovější informace.
 
 ### <a name="citrix-on-iaas"></a>**Citrix na IaaS**
 Nativní Citrix nasazení na základě relace XenApp nebo XenDesktop lze nasadit místně nebo v hostovaném prostředí (například na virtuálních počítačích Azure). 
 
-Podívejte se na průvodci podrobný postup nasazení [Citrix XA 7.6 v Azure](http://www.citrixandmicrosoft.com/Documents/Citrix-Azure Deployment Guide-v.1.0.docx), další informace. Další informace o [Citrix v Azure](http://www.citrixandmicrosoft.com/Solutions/AzureCloud.aspx), včetně kalkulačky ceny. Můžete také vyhledat [Citrix obraťte se na](http://citrix.com/English/contact/index.asp) dohodnout se vaše možnosti.
+Projděte si průvodce hello podrobný postup nasazení, [Citrix XA 7.6 v Azure](http://www.citrixandmicrosoft.com/Documents/Citrix-Azure Deployment Guide-v.1.0.docx), další informace. Další informace o [Citrix v Azure](http://www.citrixandmicrosoft.com/Solutions/AzureCloud.aspx), včetně kalkulačky ceny. Můžete také vyhledat [Citrix kontaktujte](http://citrix.com/English/contact/index.asp) toodiscuss vaše možnosti.
 
 ## <a name="fully-managed-paassaas-offerings"></a>Plně spravovaná nabídky (PaaS nebo SaaS)
 
 ### <a name="citrix-xenapp-essentials-released-april-2017"></a>Citrix XenApp Essentials (vydané dubna 2017)
-Nyní dostupné na [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Citrix.XenAppEssentials), Citrix XenApp Essentials je nová služba virtualizace aplikace, kombinace výkon a flexibilitu Citrix Cloudová platforma s jednoduchý, doporučený a snadno využívat vizi Microsoft Azure RemoteApp. 
+Nyní dostupné na hello [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Citrix.XenAppEssentials), Citrix XenApp Essentials je hello nové služby virtualizace aplikace, kombinace hello napájení a flexibilitu hello Citrix Cloudová platforma s hello jednoduchý, doporučený, a snadno využívat vizi Microsoft Azure RemoteApp. 
 
 Stávající zákazníky služby Azure RemoteApp můžete [zaregistrovat k bezplatné zkušební verzi](https://www.citrix.com/products/citrix-cloud/form/xenapp-essentials-msft-trial/).  Poznámka: Pouze Citrix poplatek za uživatele služby je volné, použít Azure náklady na výpočetních operací a úložiště
 
 Víc se uč:
-- [Migrace z Azure Remoteappu k Citrix XenApp Essentials](remoteapp-migrate-citrix.md)
+- [Migrace z Azure Remoteappu tooCitrix XenApp Essentials](remoteapp-migrate-citrix.md)
 - [Citrix a společnosti Microsoft](https://www.citrix.com/global-partners/microsoft/remote-app.html)
 - [Prezentace Citrix XenApp Essentials](https://www.youtube.com/watch?v=91Z7CCfQ-9k).  
 
 ### <a name="citrix-cloud-xenapp-service-and-xendesktop-service"></a>Cloud XenApp Citrix a XenDesktop služba 
 
-[Cloud XenApp Citrix a služba XenDesktop](https://www.citrix.com/products/citrix-cloud/services.html) je nejlepší řešení pro doručování aplikace a stolní počítače, plus pokročilé správy i možnosti monitorování. 
+[Cloud XenApp Citrix a služba XenDesktop](https://www.citrix.com/products/citrix-cloud/services.html) je hello nejlepší řešení pro doručování hello aplikace a stolní počítače, plus pokročilé správy i možnosti monitorování. 
 
 #### <a name="conexlink-platform-name-mycloudit"></a>Conexlink (název platformy: MyCloudIT)
-[MyCloudIT](https://mycloudit.com) platformu automatizace pro IT společnosti zjednodušit, optimalizace a škálovat migrace a doručování vzdálené plochy, vzdálené aplikace a infrastrukturu v cloudu Microsoft Azure. 
+[MyCloudIT](https://mycloudit.com) platformu automatizace pro IT společnosti toosimplify, optimalizace a škálování hello migrace a hello doručování vzdálené plochy, vzdálené aplikace a infrastrukturu do cloudu Microsoft Azure. 
 
-Platforma MyCloudIT snižuje dobu nasazení 95 %, Azure náklady 30 % a přesouvá celé infrastruktury IT jejich klienta do cloudu v řádu tahy pár klíčů. Partneři teď můžou zákazníci spravovat z jedné globální řídicího panelu, koncoví uživatelé služby po celém světě jako nikdy předtím a růst výnosů bez přidání dalších zásahů nebo rozsáhlé Azure školení.  
+Platforma MyCloudIT Hello snižuje dobu nasazení 95 %, Azure náklady 30 % a přesune celé infrastruktury IT jejich klienta do cloudu hello v řádu tahy pár klíčů. Partneři teď můžou zákazníci spravovat z jedné globální řídicího panelu, koncoví uživatelé služby kolem hello, world jako nikdy předtím a růst výnosů bez přidání dalších zásahů nebo rozsáhlé Azure školení.  
 
 > Primární umístění: Dallas, TX, USA
 > 
@@ -87,7 +87,7 @@ Platforma MyCloudIT snižuje dobu nasazení 95 %, Azure náklady 30 % a přesouv
 
 ### <a name="frame"></a>Rámce
 
-Organizace IT v podniku a government, zprostředkovatelé spravované služby a předními dodavateli softwaru vybrat rámce vytvářet a spravovat jejich zabezpečení, softwarově definované pracovní prostory v cloudu. Z malé a velké organizace, rámeček umožňuje velmi snadno tak, aby uživatelé přístup k aplikacím Windows prostřednictvím libovolného prohlížeče z libovolného zařízení. Platforma rámce obsahuje všechno, co správce potřebuje k nasazení aplikací z cloudu, včetně infrastruktury Azure a licencí Vzdálené plochy (přinesou vlastní účet Azure a licencí je volitelný). 
+Oddělení IT v podniku a government, zprostředkovatelé spravované služby a předními dodavateli softwaru zvolte rámce toocreate a spravovat jejich zabezpečení, softwarově definované pracovní prostory v cloudu hello. Z malých toolarge organizací, rámeček umožňuje velmi snadno toolet uživatelé přístup k aplikacím Windows prostřednictvím libovolného prohlížeče z libovolného zařízení. Hello rámce platforma obsahuje všechno, co správce musí toodeploy aplikace z cloudu hello včetně hello infrastrukturu Azure a licencí Vzdálené plochy (přinesou vlastní účet Azure a licencí je volitelný). 
 
 Další informace o [rámce v Azure](https://www.fra.me/ara). 
 
@@ -100,12 +100,12 @@ Další informace o [rámce v Azure](https://www.fra.me/ara).
 > Telefon: 1-480-269-4668
 
 ### <a name="awingu"></a>Awingu
-Awingu poskytuje jednoduché online prostoru řešení spuštěná starší verze aplikace, SaaS a dokumenty z prohlížeče html5. Jako takový zpřístupnění všechny aplikace bezpečně na všech typů zařízení. Pro služby SaaS je k dispozici široké škále op Single-Sign-On možnosti. Systémy souborů různých (cloud) také může být úzce integruje, do pracovního prostoru. Vedle úplné mobility získáte bohaté online prostoru na Awingu optimální zabezpečení granulární ovládacích prvků (například stahování nebo odesílání), úplná využití auditování, Multi-Factor Authentication (např. Azure MFA), záznam relace a další. Out-of-the-box, Awingu umožňuje dokumentu a sdílení aplikací relace pro optimalizované a zabezpečenou spolupráci.
-Na Awingu řešení je více klientů, službu AD a otevřené rozhraní API. Se používají v malých a velkých firmách, poskytovatele cloudových služeb a [ISV](http://www.isv2saas.com). Těchto zákazníků ocení zejména snadné používání, snadná instalace a nízké náklady na vlastnictví.
+Awingu poskytuje jednoduché online prostoru řešení spuštěná starší verze aplikace, SaaS a dokumenty z prohlížeče html5. Jako takový zpřístupnění všechny aplikace bezpečně na všech typů zařízení. Pro služby SaaS je k dispozici široké škále op Single-Sign-On možnosti. Systémy souborů různých (cloud) také může být úzce integruje, do pracovního prostoru. Další toofull mobility získáte bohaté online prostoru na Awingu optimální zabezpečení s granulární ovládacích prvků (například stahování nebo odesílání), úplná využití auditování, Multi-Factor Authentication (např. Azure MFA), záznam relace a další. Out-of-the-box, Awingu umožňuje dokumentu a sdílení aplikací relace pro optimalizované a zabezpečenou spolupráci.
+Na Awingu řešení je více klientů, službu AD a otevřené rozhraní API. Se používají v malých a velkých firmách, poskytovatele cloudových služeb a [ISV](http://www.isv2saas.com). Těchto zákazníků ocení zejména hello snadné používání, snadná instalace a nízké náklady na vlastnictví.
 
-Je Awingu vše v jednom [dostupné v Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/awingu.awingu-arm) s 2 předdefinované souběžných uživatelů. Další licence jsou k dispozici prostřednictvím [širokou škálu distributorů a prodejce](http://www.awingu.com/reseller).
+Je Awingu vše v jednom [k dispozici v Azure Marketplace hello](https://azuremarketplace.microsoft.com/marketplace/apps/awingu.awingu-arm) s 2 předdefinované souběžných uživatelů. Další licence jsou k dispozici prostřednictvím [širokou škálu distributorů a prodejce](http://www.awingu.com/reseller).
 
-Další informace o [Awingu na jako alternativní do Azure Remoteappu](http://alternative-for-azure-remoteapp.awingu.com/).
+Další informace o [Awingu na jako alternativní tooAzure vzdálené aplikace RemoteApp](http://alternative-for-azure-remoteapp.awingu.com/).
 
 
 > Primární umístění: Belgie
@@ -134,20 +134,20 @@ Další informace o [Awingu na jako alternativní do Azure Remoteappu](http://al
 > 
 > **USA**:
 > 
-> 7. podlaží 1177 průměr z Americas,
+> 7. podlaží 1177 průměr Dobrý den Americas,
 > 
 > New York, NY 10036
 > 
 > E-mailu:[info.us@awingu.com](mailto:info.us@awingu.com)
 
 ### <a name="microsoft-hosted-service-provider"></a>Microsoft hostované poskytovatele služeb
-Hostování partnery obvykle nabízejí plně spravovaná hostované Windows desktop a služba aplikace, které mohou zahrnovat Správa prostředků Azure, operačních systémů, aplikací a pomocí partnerovi technickou podporu této licenční smlouvy s Microsoft a jiných softwarové poskytovatele spolu se služba Zprostředkovatel licenční smlouvu umožňující následný z odběratele přístup licence (SAL). Následující informace poskytují podrobnosti a kontaktní informace pro některé z hostitelů, které se specializují na zákazníky s jejich Azure RemoteApp migrace, které. Podívejte se na [aktuální seznam zprostředkovatelů služby hostované](http://aka.ms/rdsonazurecertified) který dokončili vzdálené plochy na IaaS učení cestu a hodnocení.  
+Hostování partnery obvykle nabízejí plně spravovaná hostované plochy Windows hello služba aplikace, které mohou zahrnovat Správa prostředků Azure, operačních systémů, aplikací a pomocí hello partnera technickou podporu této licenční smlouvy se společností Microsoft a jinými poskytovateli softwaru spolu se licenční smlouvy s poskytovatelem služby tooallow následný z odběratele přístup licence (SAL). Hello následující informace poskytují podrobnosti a kontaktní údaje pro některé hello hostitelé, které se specializují na zákazníky s jejich Azure RemoteApp migrace, které. Podívejte se na [hello aktuální seznam poskytovatelů služeb hostovaných](http://aka.ms/rdsonazurecertified) který dokončili hello vzdálené plochy na IaaS učení cestu a hodnocení.  
 
 ### <a name="citrix-service-provider-program"></a>Program poskytovatele služeb systému Citrix
-Program poskytovatele služeb Citrix snadno pro poskytovatele služeb k poskytování jednoduchost virtuální cloud computing chcete SMB, jejich nabízení služby, které chtějí ve model snadno, průběžnými platbami. Poskytovatelé služeb Citrix rozvoji svého podnikání Microsoft SPLA a rozbalte jejich investic platformy vzdálené plochy pro jakékoli zařízení, přístup odkudkoli, nejširší podporu aplikace, bohaté prostředí, zvýšení zabezpečení a vyšší škálovatelnost. Naopak poskytovatelé služeb Citrix přilákat další odběratele, zvýšit spokojenost zákazníků a snížit provozní náklady. [Další informace](http://www.citrix.com/products/service-providers.html) nebo [najít partnera](https://www.citrix.com/buy/partnerlocator.html).
+Hello Program poskytovatele služeb Citrix usnadňuje služby poskytovatelů toodeliver hello jednoduchost virtuální cloud computing tooSMBs, jejich nabízení hello služby, které chtějí ve model snadno, průběžnými platbami. Poskytovatelé služeb Citrix rozvoji svého podnikání Microsoft SPLA a rozbalte jejich investic platformy vzdálené plochy pro jakékoli zařízení, přístup odkudkoli, hello nejširší podpory k aplikaci, bohaté prostředí, zvýšení zabezpečení a vyšší škálovatelnost. Naopak poskytovatelé služeb Citrix přilákat další odběratele, zvýšit spokojenost zákazníků a snížit provozní náklady. [Další informace](http://www.citrix.com/products/service-providers.html) nebo [najít partnera](https://www.citrix.com/buy/partnerlocator.html).
 
 #### <a name="acuutech"></a>Acuutech
-[Acuutech](http://www.acuutech.com) se specializuje na poskytování hostované plochy řešení doručování úplné ploše a aplikacím ISV prostředí založený na technologii Microsoft na základní globální klienta z Azure a vlastních datových center.
+[Acuutech](http://www.acuutech.com) se specializuje na poskytování hostované plochy řešení doručování úplné ploše a aplikacím ISV prostředí založený na technologii tooa globální klienta Microsoft základní z Azure a vlastních datových center.
 
 > Primární umístění: Londýn, Spojené království; Singapur; Houston, TX
 > 
@@ -173,7 +173,7 @@ Program poskytovatele služeb Citrix snadno pro poskytovatele služeb k poskytov
 >   
 > 100 Cecil ulici, #09-02 
 >   
-> Celém světě, Singapur 069532
+> Hello celém světě, Singapur 069532
 > 
 > Phone: 4933 6709 + 65
 >   
@@ -186,7 +186,7 @@ Program poskytovatele služeb Citrix snadno pro poskytovatele služeb k poskytov
 > Phone: +1 713 691 0800
 
 #### <a name="aspex"></a>ASPEX
-[ASPEX](http://www.aspex.be/en) se specializuje na ISV přechodu do cloudu a ISV' vyhledávání za účelem optimalizace jejich aktuální nastavení cloudu. ASPEX nabízí širokou škálu spravované služby, devops a konzultační služby.  
+[ASPEX](http://www.aspex.be/en) se specializuje na přechod toohello cloudu a ISV nezávislí výrobci softwaru se vyhledávání toooptimize jejich aktuální nastavení cloudu. ASPEX nabízí širokou škálu spravované služby, devops a konzultační služby.  
 
 > Primární umístění: Antverpy, Belgie
 > 
@@ -207,8 +207,8 @@ Program poskytovatele služeb Citrix snadno pro poskytovatele služeb k poskytov
 > Web: [http://cloud.aspex.be/contact-ara-0](http://cloud.aspex.be/contact-ara-0)
 
 #### <a name="caasecom"></a>Caase.com
-[Caase.com](http://www.caase.com/) pomáhá podnikům, místní správy, jiných vládních subjektů a poskytovatelem zdravotní instituce s cestě směrem inteligentnější způsob práce v Microsoft cloudu. Probíhá produktivitu a zabezpečení v jakémkoli místě s jakýmkoli a nízké náklady na IT. Caase.com je true specialisty Microsoft Office365, Azure, Enterprise Mobility a zabezpečení a systému Windows. U naše poradenské služby migrace, přijetí programy, školení správy a podpory Caase.com vytvoří optimalizované a zabezpečené platformu pro spolupráci pro obě zákazníků zaměstnance, partnery a dodavateli.
-Caase.com je mastermind vzdálené prostoru Azure (mobilní síti na pracovišti) a digitální síti na pracovišti (sociální Intranet). Obě řešení – dosáhnout s přijetím – jsou foundation, která zajistí, že uživatelé z těchto řešení prostředí příjemný, úspěšné a efektivní v jejich trasy ke cloudu Microsoftu.
+[Caase.com](http://www.caase.com/) pomáhá podnikům, místní správy, jiných vládních subjektů a poskytovatelem zdravotní instituce s cestě směrem inteligentnější způsob práce v hello cloudu Microsoftu. Probíhá produktivitu a zabezpečení v jakémkoli místě s jakýmkoli a nízké náklady na IT. Caase.com je true specialisty Microsoft Office365, Azure, Enterprise Mobility a zabezpečení a systému Windows. U naše poradenské služby migrace, přijetí programy, školení správy a podpory Caase.com vytvoří optimalizované a zabezpečené platformu pro spolupráci pro obě zákazníků zaměstnance, partnery a dodavateli.
+Caase.com je mastermind hello hello pracovní prostor Azure vzdálené (mobilní síti na pracovišti) a hello digitální síti na pracovišti (sociální Intranet). Obě řešení – dosáhnout s přijetím – jsou hello foundation, která zajistí, že uživatelé hello těchto řešení hello příjemný, úspěšné a efektivní prostředí v jejich trasy toohello cloudu Microsoftu.
 Holandská překlad ánd podpůrné film přes zde: http://caase.com/over-ons/
 
 > Operace oblast: na základě holandština, globální sítě
@@ -232,7 +232,7 @@ Holandská překlad ánd podpůrné film přes zde: http://caase.com/over-ons/
 
 
 #### <a name="nerdio"></a>Nerdio
-[Nerdio pro Azure](http://getnerdio.com/nfa/) platformu automatizace IT, který nabízí ridiculously jednoduché zřizování, správu a optimalizace dokončení prostředí IT v cloudu Microsoft. Stát virtuálním plochám, vzdálené aplikace a servery v několika hodin. Spravovat prostředí v tři klepnutí nebo méně s Nerdio portál pro správu. Použití inteligentního automatické škálování a uložit 40 až 60 % prostředky Azure IaaS.
+[Nerdio pro Azure](http://getnerdio.com/nfa/) platformu automatizace IT, který nabízí ridiculously jednoduché zřizování, správu a optimalizace dokončení prostředí IT v hello cloudu Microsoftu. Stát virtuálním plochám, vzdálené aplikace a servery v několika hodin. Spravovat prostředí hello v tři klepnutí nebo méně s Nerdio portál pro správu. Použití inteligentního automatické škálování a uložit 40 too60 % prostředky Azure IaaS.
 
 > Primární umístění: operace Chicagu, IL oblast: stav po celém světě partnera: [Gold](https://partnercenter.microsoft.com/en-us/pcv/solution-providers/adar-inc_341c9afa-f12c-46f5-8f7b-3f9ef59a66a5/3a7ae479-3ac2-42f6-84e2-d456dc7424e1) poskytovatele cloudové služby společnosti Microsoft: Ano
 > 
@@ -272,7 +272,7 @@ Holandská překlad ánd podpůrné film přes zde: http://caase.com/over-ons/
 > 
 > Badhoevedorp 71 lineárního programování ÚLOH
 > 
-> Nizozemsko
+> Hello Nizozemsko
 > 
 > Phone: 8060 547 20 +31 
 > 
@@ -292,7 +292,7 @@ Holandská překlad ánd podpůrné film přes zde: http://caase.com/over-ons/
 > 
 > 105 Cecil ulice
 >    
-> \#11-08, Osmiúhelník
+> \#11-08 hello Osmiúhelník
 > 
 > Singapur 069534
 > 
@@ -305,7 +305,7 @@ Holandská překlad ánd podpůrné film přes zde: http://caase.com/over-ons/
 > Phone – Nový Zéland: 0321 488 4 + 64
 > 
 ## <a name="need-more-help"></a>Potřebujete další pomoc?
-Stále potřebujete pomoc, výběr nebo máte další otázky? Jak získat nápovědu, použijte jednu z následujících metod. 
+Stále potřebujete pomoc, výběr nebo máte další otázky? Použijte jeden z hello následující metody tooget nápovědy. 
 
 1. E-mailu nás na adrese [ arainfo@microsoft.com ](mailto:arainfo@microsoft.com).
 2. Obraťte se na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Začněte otevřením [případu podpory Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

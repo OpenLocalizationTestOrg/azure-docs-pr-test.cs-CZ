@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric vzory a scénáře | Microsoft Docs"
-description: "Další informace osvědčených postupů a předpokládá se, opakovaně použitelné vzory návrhu, vývoj a provoz vaší mikroslužeb v Service Fabric."
+title: "aaaAzure Service Fabric vzory a scénáře | Microsoft Docs"
+description: "Další informace osvědčených postupů a předpokládá se, opakovaně použitelné vzory toodesign vývoj a provoz vaší mikroslužeb v Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/16/2017
 ms.author: ryanwi
-ms.openlocfilehash: fb2fa495758433e357722427b1c162420935955d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3811420eb53d9a49e490dd2e2e5319d8dea5629c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="service-fabric-patterns-and-scenarios"></a>Vzory Service Fabric a scénáře
-Pokud zvažujete sestavování rozsáhlých mikroslužeb pomocí Azure Service Fabric, přečtěte si od odborníků, kteří navržen a sestaven Tato platforma jako služba (PaaS). Začínáme s správnou architekturu a pak zjistěte, jak optimalizovat prostředky pro vaši aplikaci. [Service Fabric Patterns and Practices](https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344) kurzu odpovídá na dotazy nejčastěji požaduje od zákazníků reálného o scénáře Service Fabric a v oblastech aplikace.
+Pokud zvažujete sestavování rozsáhlých mikroslužeb pomocí Azure Service Fabric, přečtěte si od odborníků hello, kteří navržen a sestaven Tato platforma jako služba (PaaS). Začínáme s správnou architekturu a dozvíte se, jak toooptimize prostředky pro vaši aplikaci. Hello [Service Fabric Patterns and Practices](https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344) kurzu odpovědi nejčastěji kladené reálného zákazníci scénáře Service Fabric a v oblastech aplikace hello otázky.
  
-Prostřednictvím doporučených postupů a prověřených opakovatelně použitelných vzorů se naučíte navrhovat, vyvíjet a provozovat mikroslužby na platformě Service Fabric. Získat přehled o Service Fabric a pak podrobné informace o tématech, které se týkají optimalizace clusteru a zabezpečení, migrace starší verze aplikace, IoT ve velkém měřítku, hostování herní moduly a další. Podívejte se na nastavené průběžné doručování pro různé úlohy a i získat podrobnosti o podpora Linuxu a kontejnerů. 
+Zjistěte, jak toodesign, vývoj a provoz vaší mikroslužeb v Service Fabric pomocí osvědčené postupy a principy, opakovaně použitelný vzorů. Získat přehled o Service Fabric a pak podrobné informace o tématech, které se týkají optimalizace clusteru a zabezpečení, migrace starší verze aplikace, IoT ve velkém měřítku, hostování herní moduly a další. Podívejte se na nastavené průběžné doručování pro různé úlohy a dokonce získat podrobnosti o hello na podporu Linux a kontejnery. 
 
 ## <a name="introduction"></a>Úvod
-Prozkoumejte osvědčené postupy a informace o výběru platforma jako služba (PaaS) přes infrastruktury jako služby (IaaS). Získáte podrobnosti o následující zásady designu ověřené aplikací.
+Prozkoumejte osvědčené postupy a informace o výběru platforma jako služba (PaaS) přes infrastruktury jako služby (IaaS). Získáte podrobnosti o hello na následující zásady designu ověřené aplikací.
 
 <table><tr><th>Video</th><th>Balíček aplikace PowerPoint</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=N2KwbbSGD_6405167344">
 <img src="./media/service-fabric-patterns-and-scenarios/intro.png" WIDTH="360" HEIGHT="244">
-</a></td><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344">Úvod do Service Fabric</a></td></tr>
+</a></td><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344">Úvod tooService prostředků infrastruktury</a></td></tr>
 </table>
 
 ## <a name="cluster-planning-and-management"></a>Plánování a správu clusteru
@@ -53,7 +53,7 @@ Seznamte se s koncepty kolem flexibilně škálovatelné webové, včetně dostu
 </table>
 
 ## <a name="iot"></a>IoT
-Prozkoumejte Internet věcí (IoT) v rámci Azure Service Fabric, včetně kanálu Azure IoT, víceklientský a IoT ve velkém měřítku.
+Prozkoumejte hello Internet věcí (IoT) v kontextu hello Azure Service Fabric, včetně hello Azure IoT kanálu, víceklientský a IoT ve velkém měřítku.
 
 <table><tr><th>Video</th><th>Balíček aplikace PowerPoint</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=naFUVeSGD_1505167344">
@@ -80,7 +80,7 @@ Prozkoumejte koncepty, včetně nepřetržité integrace/průběžné doručová
 </table>
 
 ## <a name="migration"></a>Migrace
-Další informace o migraci z cloudové služby, kromě migrace starší verze aplikací.
+Další informace o migraci z cloudové služby, kromě toomigration starší verze aplikací.
 
 <table><tr><th>Video</th><th>Balíček aplikace PowerPoint</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=hd1cMgSGD_5605167344">
@@ -89,7 +89,7 @@ Další informace o migraci z cloudové služby, kromě migrace starší verze a
 </table>
 
 ## <a name="containers-and-linux-support"></a>Kontejnery a podpora Linuxu
-Získat odpověď na otázku "Proč kontejnery?" Další informace o verzi preview pro kontejnery Windows, Linux podporuje a orchestraci kontejnerů Linux. Navíc můžete zjistit, jak migrovat aplikace .NET Core Linux.
+Získat hello odpovědí toohello otázku, "Proč kontejnery?" Další informace o hello preview pro kontejnery Windows, Linux podporuje a orchestraci kontejnerů Linux. Zjistit plus, jak tooLinux aplikace toomigrate .NET Core.
 
 <table><tr><th>Video</th><th>Balíček aplikace PowerPoint</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=V1ERJhSGD_305167344">
@@ -98,4 +98,4 @@ Získat odpověď na otázku "Proč kontejnery?" Další informace o verzi previ
 </table>
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili o vzory Service Fabric a scénáře, přečtěte si více o tom, jak [vytváření a správě clusterů](service-fabric-deploy-anywhere.md), [migrace aplikací cloudové služby do Service Fabric](service-fabric-cloud-services-migration-worker-role-stateless-service.md), [nastavení nastavené průběžné doručování](service-fabric-set-up-continuous-integration.md), a [nasazení kontejnerů](service-fabric-containers-overview.md).
+Teď, když jste se naučili o vzory Service Fabric a scénáře, další informace o tom, jak příliš[vytváření a správě clusterů](service-fabric-deploy-anywhere.md), [migrovat tooService aplikace cloudové služby Fabric](service-fabric-cloud-services-migration-worker-role-stateless-service.md), [nastavení nastavené průběžné doručování](service-fabric-set-up-continuous-integration.md), a [nasazení kontejnerů](service-fabric-containers-overview.md).

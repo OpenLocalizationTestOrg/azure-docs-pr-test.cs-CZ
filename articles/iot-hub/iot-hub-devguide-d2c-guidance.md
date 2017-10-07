@@ -1,6 +1,6 @@
 ---
-title: "Možnosti zařízení cloud Azure IoT Hub | Microsoft Docs"
-description: "Příručka vývojáře – pokyny k použití zpráv typu zařízení cloud, hlášen vlastnostech nebo nahrávání souborů pro komunikaci typu cloud zařízení."
+title: "Možnosti aaaAzure IoT Hub zařízení cloud | Microsoft Docs"
+description: "Příručka vývojáře – pokyny k při odeslání zpráv typu zařízení cloud toouse, hlášen vlastnostech nebo soubor pro komunikaci typu cloud zařízení."
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: elioda
-ms.openlocfilehash: a36283053939ccd53856a394cd9efb66285271ae
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2caefc4f59e16ad28b0d8cf4b3bb627b4cba803b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="device-to-cloud-communications-guidance"></a>Komunikace zařízení cloud pokyny
-Při odesílání informací z aplikace zařízení k back-end řešení, IoT Hub zpřístupní tři možnosti:
+Při odesílání informací z hello zařízení aplikaci toohello back-end řešení, IoT Hub zpřístupní tři možnosti:
 
 * [Zprávy typu zařízení cloud] [ lnk-d2c] pro časové řady telemetrie a výstrahy.
-* [Hlášené vlastnosti] [ lnk-twins] pro vytváření sestav informace o stavu zařízení například dostupné možnosti, podmínky nebo stav dlouho běžící pracovních postupů. Například konfigurace a aktualizace softwaru.
-* [Nahrávání souborů] [ lnk-fileupload] pro média soubory a velké telemetrie dávek odeslaný občas připojených zařízení a Komprimovat pro snížení šířky pásma.
+* [Hlášené vlastnosti] [ lnk-twins] pro vytváření sestav informace o stavu zařízení například dostupné možnosti, podmínky nebo hello stavu dlouho běžící pracovních postupů. Například konfigurace a aktualizace softwaru.
+* [Nahrávání souborů] [ lnk-fileupload] pro média soubory a velké telemetrie dávek odeslaný občas připojených zařízení a komprimované toosave šířky pásma.
 
-Zde je podrobné porovnání různých možností komunikace zařízení cloud.
+Zde je podrobné porovnání hello různé možnosti komunikace zařízení cloud.
 
 |  | Zprávy typu zařízení-cloud | Hlášené vlastnosti | Nahrávání souborů |
 | ---- | ------- | ---------- | ---- |
-| Scénář | Výstrahy a telemetrie časové řady. Například 256 KB senzor datových balíků odesílá každých 5 minut. | Podmínky a dostupné možnosti. Například aktuální zařízení režim připojení třeba mobilní síť nebo Wi-Fi. Synchronizace dlouho běžící pracovních postupů, jako je například konfigurace a aktualizací softwaru. | Mediálních souborů. Velké (obvykle komprimované) telemetrie dávek. |
-| Ukládání a načítání | Dočasně uložit službou IoT Hub až do 7 dnů. Pouze sekvenční čtení. | Ukládá v dvojče zařízení IoT Hub. Dá načíst pomocí [IoT Hub dotazovací jazyk][lnk-query]. | Uložený v účtu Azure Storage zadaný uživatelem. |
-| Velikost | Až 256 KB zprávy. | Maximální hlášené vlastnosti velikost je 8 KB. | Maximální velikost podporovaná technologií úložiště objektů Blob Azure. |
+| Scénář | Výstrahy a telemetrie časové řady. Například 256 KB senzor datových balíků odesílá každých 5 minut. | Podmínky a dostupné možnosti. Například hello aktuální zařízení režim připojení třeba mobilní síť nebo Wi-Fi. Synchronizace dlouho běžící pracovních postupů, jako je například konfigurace a aktualizací softwaru. | Mediálních souborů. Velké (obvykle komprimované) telemetrie dávek. |
+| Ukládání a načítání | Dočasně ukládá IoT Hub až too7 dnů. Pouze sekvenční čtení. | Ukládá v hello dvojče zařízení IoT Hub. Dá načíst pomocí hello [IoT Hub dotazovací jazyk][lnk-query]. | Uložený v účtu Azure Storage zadaný uživatelem. |
+| Velikost | Až too256 KB zprávy. | Maximální hlášené vlastnosti velikost je 8 KB. | Maximální velikost podporovaná technologií úložiště objektů Blob Azure. |
 | frekvence | Vysoká. Další informace najdete v tématu [IoT Hub omezuje][lnk-quotas]. | Střední. Další informace najdete v tématu [IoT Hub omezuje][lnk-quotas]. | Nízká. Další informace najdete v tématu [IoT Hub omezuje][lnk-quotas]. |
-| Protocol (Protokol) | K dispozici ve všech protokolů. | Aktuálně dostupná jenom při použití MQTT. | K dispozici při použití libovolný protokol, ale vyžaduje HTTP na zařízení. |
+| Protocol (Protokol) | K dispozici ve všech protokolů. | Aktuálně dostupná jenom při použití MQTT. | K dispozici při použití libovolný protokol, ale vyžaduje HTTP na hello zařízení. |
 
-Je možné, že aplikace vyžaduje jak odesílat informace jako časové řady telemetrie nebo upozornění a také aby byl k dispozici v dvojče zařízení. V tomto scénáři můžete vybrat jednu z následujících možností:
+Je možné, že aplikace vyžaduje tooboth odeslat informace jako telemetrie časové řady nebo výstrahu a také toomake je k dispozici v dvojče zařízení hello. V tomto scénáři můžete vybrat jednu hello následující možnosti:
 
-* Odešle zprávu typu zařízení cloud a sestavy změnu vlastnosti aplikace zařízení.
-* Back-end řešení může ukládat informace ve značkách dvojče zařízení při přijetí zprávy.
+* Hello zařízení aplikace odešle zprávu typu zařízení cloud a změna vlastností sestavy.
+* back-end Hello řešení můžete uložit hello informace ve dvojče zařízení hello značky, když obdrží uvítací zprávu.
 
-Vzhledem k tomu, že zprávy typu zařízení cloud povolit mnohem vyšší propustnost než aktualizace twin zařízení, je někdy žádoucí, aby se zabránilo aktualizace dvojče zařízení pro každou zprávu typu zařízení cloud.
+Vzhledem k tomu, že zprávy typu zařízení cloud povolit mnohem vyšší propustnost než aktualizace twin zařízení, je někdy žádoucí tooavoid aktualizace hello zařízení twin pro každou zprávu typu zařízení cloud.
 
 
 [lnk-twins]: iot-hub-devguide-device-twins.md

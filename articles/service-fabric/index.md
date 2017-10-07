@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace ke službě Azure Service Fabric – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se používat middlewarovou platformu Service Fabric k balení a nasazování mikroslužeb pro aplikace s rozsahem cloudu. Kurzy, reference k rozhraní API a ukázky kódu"
+title: "aaaAzure Service Fabric dokumentace - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Zjistěte, jak toouse Service Fabric middleware platformy toopackage a mikroslužeb pro cloudové škálování aplikace nasadit. Kurzy, reference k rozhraní API a ukázky kódu"
 services: service-fabric
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 95499b3ca42e17a6586f97ca3e28919d2fc64a80
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0758059e7f8604fc2fe9cff4acb826204ff8d686
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="service-fabric-documentation"></a>Dokumentace k platformě Service Fabric
 
-Naučte se používat Service Fabric k balení, nasazování a správě škálovatelných a spolehlivých mikroslužeb. Kurzy, reference k rozhraní API a ukázky kódu ukazují, jak použít tuto middlewarovou platformu k vytváření a správě aplikací s rozsahem cloudu.
+Zjistěte, jak toouse toopackage Service Fabric, nasazovat a spravovat škálovatelného a spolehlivého mikroslužeb. Kurzy, odkazy na rozhraní API a kódu ukázky zobrazit jak toouse toobuild tento middleware platformy a spravovat cloudové škálování aplikace.
 
 <ul class="panelContent cardsFTitle">
     <li>

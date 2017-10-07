@@ -1,5 +1,5 @@
 ---
-title: "Přidejte konektor Office 365 uživatelé v Logic Apps | Microsoft Docs"
+title: "aaaAdd hello uživatelé služeb Office 365 konektoru Logic Apps | Microsoft Docs"
 description: "Přehled konektoru uživatelé služeb Office 365 s parametry rozhraní REST API"
 services: 
 documentationcenter: 
@@ -15,32 +15,32 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 330f733440932a769eb0fe6031cd0d947a820080
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2fae1c80d195a368b5f6c1ad650905a0d6e94c83
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-office-365-users-connector"></a>Začínáme s konektorem uživatelé Office 365.
-Připojte k Office 365 uživatelům profily, uživatelé vyhledávající a další. Uživatelé služeb Office 365 můžete:
+# <a name="get-started-with-hello-office-365-users-connector"></a>Začínáme s konektorem hello uživatelé Office 365.
+Připojte tooOffice 365 uživatelé tooget profily, uživatelé vyhledávající a další. Uživatelé služeb Office 365 můžete:
 
-* Sestavení vaší firmy toku na základě dat, které můžete získat z uživatelé služeb Office 365. 
-* Použití akce, které získají přímé podřízené načíst profil uživatele správce a další. Tyto akce se odpověď a pak proveďte výstup k dispozici pro další akce. Například získat přímé podřízené osoby a pak proveďte tyto informace a aktualizace databáze SQL Azure. 
+* Sestavení vaší firmy tok na hello data, která můžete získat z uživatelé služeb Office 365. 
+* Použití akce, které získají přímé podřízené načíst profil uživatele správce a další. Tyto akce se odpověď a pak proveďte výstup hello k dispozici pro další akce. Například získat přímé podřízené osoby a pak proveďte tyto informace a aktualizace databáze SQL Azure. 
 
 Můžete začít s vytvářením aplikace logiky teď najdete v tématu [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-to-office-365-users"></a>Umožňuje vytvořit připojení k uživatelé Office 365.
-Když přidáte tento konektor aplikace logiky, musíte přihlásit ke svému účtu Office 365 uživatelů a povolit logic apps, abyste připojení k vašemu účtu.
+## <a name="create-a-connection-toooffice-365-users"></a>Umožňuje vytvořit připojení tooOffice 365 uživatelů
+Když přidáte aplikace logiky tooyour tento konektor, musí přihlášení uživatelé Office 365 tooyour účtu a povolit aplikace logiky tooconnect tooyour účet.
 
-> [!INCLUDE [Steps to create a connection to Office 365 Users](../../includes/connectors-create-api-office365users.md)]
+> [!INCLUDE [Steps toocreate a connection tooOffice 365 Users](../../includes/connectors-create-api-office365users.md)]
 > 
 > 
 
-Po vytvoření připojení, zadáte vlastnosti uživatelé služeb Office 365, jako je ID uživatele. **Odkazu k REST API** v tomto tématu popisuje tyto vlastnosti.
+Po vytvoření připojení hello zadáte hello uživatelé Office 365. vlastnosti, jako jsou hello ID uživatele. Hello **odkazu k REST API** v tomto tématu popisuje tyto vlastnosti.
 
 ## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
 
-Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/officeusers/).
+Zobrazit všechny aktivační události a akce definované v hello swagger a také zobrazit žádné limity v hello [connector – podrobnosti](/connectors/officeusers/).
 
 ## <a name="more-connectors"></a>Více konektorů
-Přejděte zpět [rozhraní API seznamu](apis-list.md).
+Přejděte zpět toohello [rozhraní API seznamu](apis-list.md).

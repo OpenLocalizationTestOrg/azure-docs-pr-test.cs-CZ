@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření clusterů HDInsight s Data Lake Store jako výchozí úložiště pomocí prostředí PowerShell | Microsoft Docs"
-description: "Pomocí prostředí Azure PowerShell k vytváření a používání clustery HDInsight s Azure Data Lake Store"
+title: "aaaCreate HDInsight clustery s Data Lake Store jako výchozí úložiště pomocí prostředí PowerShell | Microsoft Docs"
+description: "Pomocí prostředí Azure PowerShell toocreate a clusterů HDInsight pomocí Azure Data Lake Store"
 services: data-lake-store,hdinsight
 documentationcenter: 
 author: nitinme
@@ -14,50 +14,50 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/08/2017
 ms.author: nitinme
-ms.openlocfilehash: 77eb83b80312eca401e6f60d57ed6a5668ea442e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a5c0ad416da6ad9bd07204af2ebb6b7470916085
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-as-default-storage-by-using-powershell"></a>Vytvoření clusterů HDInsight s Data Lake Store jako výchozí úložiště pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
-> * [Použití portálu Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [Hello použití portálu Azure](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [Pomocí prostředí PowerShell (pro výchozí úložiště)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [Pomocí prostředí PowerShell (pro další úložiště)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [Pomocí Správce prostředků](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
-Další informace o použití prostředí Azure PowerShell ke konfiguraci Azure HDInsight clustery s Azure Data Lake Store, jako výchozí úložiště. Pokyny týkající se vytvoření clusteru HDInsight s Data Lake Store jako další úložiště najdete v tématu [vytvoření clusteru HDInsight s Data Lake Store jako další úložiště](data-lake-store-hdinsight-hadoop-use-powershell.md).
+Zjistěte, jak toouse prostředí Azure PowerShell tooconfigure Azure HDInsight clustery s Azure Data Lake Store, jako výchozí úložiště. Pokyny týkající se vytvoření clusteru HDInsight s Data Lake Store jako další úložiště najdete v tématu [vytvoření clusteru HDInsight s Data Lake Store jako další úložiště](data-lake-store-hdinsight-hadoop-use-powershell.md).
 
 Zde jsou některé důležité informace týkající se používání HDInsight s Data Lake Store:
 
-* Možnost k vytvoření clusterů HDInsight s přístupem k Data Lake Store jako výchozí úložiště je k dispozici pro HDInsight verze 3.5 a 3.6.
+* clustery HDInsight toocreate Hello možnost s přístupem k tooData Lake Store jako výchozí úložiště je k dispozici pro HDInsight verze 3.5 a 3.6.
 
-* Možnost vytvořit HDInsight clustery s přístupem do Data Lake Store jako výchozí úložiště je *není k dispozici* u clusterů HDInsight Premium.
+* Hello možnost toocreate clusterů HDInsight pomocí přístup tooData Lake Store jako výchozí úložiště je *není k dispozici* u clusterů HDInsight Premium.
 
-Ke konfiguraci HDInsight pro práci s Data Lake Store pomocí prostředí PowerShell, postupujte podle pokynů v následujících pět částech.
+tooconfigure toowork HDInsight s Data Lake Store pomocí prostředí PowerShell, postupujte podle pokynů hello v části Další pět hello.
 
 ## <a name="prerequisites"></a>Požadavky
-Než začnete tento kurz, ujistěte se, že splňujete následující požadavky:
+Než začnete tento kurz, ujistěte se, že splňujete hello následující požadavky:
 
-* **Předplatné Azure**: přejděte na [získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Prostředí Azure PowerShell 1.0 nebo vyšší**: najdete v části [postup instalace a konfigurace prostředí PowerShell](/powershell/azure/overview).
-* **Windows Software Development Kit (SDK)**: Chcete-li nainstalovat sadu Windows SDK, přejděte na [stáhne a nástroje pro Windows 10](https://dev.windows.com/en-us/downloads). Sada SDK se používá k vytvoření certifikát zabezpečení.
-* **Objekt služby Azure Active Directory**: Tento kurz popisuje, jak vytvořit objekt služby v Azure Active Directory (Azure AD). Pokud chcete vytvořit objekt služby, ale musí být správce Azure AD. Pokud jste správce, můžete přeskočit tento požadavek a pokračujte v tomto kurzu.
+* **Předplatné Azure**: přejděte příliš[získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+* **Prostředí Azure PowerShell 1.0 nebo vyšší**: najdete v části [jak tooinstall a konfigurace prostředí PowerShell](/powershell/azure/overview).
+* **Windows Software Development Kit (SDK)**: tooinstall Windows SDK a přejděte příliš[stáhne a nástroje pro Windows 10](https://dev.windows.com/en-us/downloads). Hello SDK je použité toocreate certifikát zabezpečení.
+* **Objekt služby Azure Active Directory**: Tento kurz popisuje, jak toocreate objektu služby ve službě Azure Active Directory (Azure AD). Ale toocreate hlavní název služby, musíte být správce Azure AD. Pokud jste správce, můžete přeskočit tento požadavek a pokračovat v kurzu hello.
 
     >[!NOTE]
-    >Pouze v případě, že jste správce Azure AD, vytvořte službu objektu zabezpečení. Správce služby Azure AD musí vytvořte službu objektu zabezpečení před vytvořením clusteru HDInsight s Data Lake Store. Objekt služby musí být vytvořeny pomocí certifikátu, jak je popsáno v [vytvořit objekt služby pomocí certifikátu](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority).
+    >Pouze v případě, že jste správce Azure AD, vytvořte službu objektu zabezpečení. Správce služby Azure AD musí vytvořte službu objektu zabezpečení před vytvořením clusteru HDInsight s Data Lake Store. Hello instanční objekt musí být vytvořeny pomocí certifikátu, jak je popsáno v [vytvořit objekt služby pomocí certifikátu](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority).
     >
 
 ## <a name="create-a-data-lake-store-account"></a>Vytvoření účtu Data Lake Store
-Pokud chcete vytvořit účet Data Lake Store, postupujte takto:
+toocreate účet Data Lake Store hello následující:
 
-1. Z plochy otevřete okno prostředí PowerShell a potom zadejte níže zobrazené fragmenty kódu. Když se zobrazí výzva k přihlášení, přihlaste se jako správci předplatného nebo vlastníky. 
+1. Z plochy otevřete okno prostředí PowerShell a potom zadejte níže zobrazené fragmenty kódu hello. Pokud jste výzvami toosign v přihlášení jako správci předplatného hello nebo vlastníky. 
 
-        # Sign in to your Azure account
+        # Sign in tooyour Azure account
         Login-AzureRmAccount
 
-        # List all the subscriptions associated to your account
+        # List all hello subscriptions associated tooyour account
         Get-AzureRmSubscription
 
         # Select a subscription
@@ -67,7 +67,7 @@ Pokud chcete vytvořit účet Data Lake Store, postupujte takto:
         Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
     > [!NOTE]
-    > Pokud registrace zprostředkovatele prostředků Data Lake Store a zobrazí se chyba podobná `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid`, vaše předplatné nemusí být seznam povolených adres pro Data Lake Store. Aktivujte předplatné Azure pro verzi public preview Data Lake Store, postupujte podle pokynů v [Začínáme s Azure Data Lake Store pomocí portálu Azure](data-lake-store-get-started-portal.md).
+    > Pokud registrace poskytovatele prostředků hello Data Lake Store a došlo k chybě, podobně jako příliš`Register-AzureRmResourceProvider : InvalidResourceNamespace: hello resource namespace 'Microsoft.DataLakeStore' is invalid`, vaše předplatné nemusí být seznam povolených adres pro Data Lake Store. tooenable vašeho předplatného Azure pro hello Data Lake Store verzi public preview, postupujte podle pokynů hello v [Začínáme s Azure Data Lake Store pomocí portálu Azure hello](data-lake-store-get-started-portal.md).
     >
 
 2. Účet Data Lake Store je přidruženo ke skupině prostředků Azure. Začněte vytvořením skupiny prostředků.
@@ -83,12 +83,12 @@ Pokud chcete vytvořit účet Data Lake Store, postupujte takto:
         Tags              :
         ResourceId        : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp
 
-3. Vytvoření účtu Data Lake Store. Název účtu, který zadáte, musí obsahovat jenom malá písmena a číslice.
+3. Vytvoření účtu Data Lake Store. účet Hello název, který zadáte, musí obsahovat jenom malá písmena a číslice.
 
         $dataLakeStoreName = "<your new Data Lake Store name>"
         New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStoreName -Location "East US 2"
 
-    Zobrazený výstup by měl vypadat asi takto:
+    Měli byste vidět výstup jako hello následující:
 
         ...
         ProvisioningState           : Succeeded
@@ -105,44 +105,44 @@ Pokud chcete vytvořit účet Data Lake Store, postupujte takto:
         Location                    : East US 2
         Tags                        : {}
 
-4. Pomocí Data Lake Store jako výchozí úložiště, musíte určit kořenovou cestu, do které soubory specifických pro cluster se zkopírují při vytváření clusteru. Chcete-li vytvořit kořenovou cestu, která je **/clustery/hdiadlcluster** v tomto fragmentu kódu pomocí následující rutiny:
+4. Použití Data Lake Store jako výchozí úložiště vyžaduje jste toospecify specifických pro cluster souborů kořenovou cestu toowhich hello zkopírované při vytváření clusteru. toocreate kořenovou cestu, která je **/clustery/hdiadlcluster** ve fragmentu kódu hello pomocí hello následující rutiny:
 
         $myrootdir = "/"
         New-AzureRmDataLakeStoreItem -Folder -AccountName $dataLakeStoreName -Path $myrootdir/clusters/hdiadlcluster
 
 
-## <a name="set-up-authentication-for-role-based-access-to-data-lake-store"></a>Nastavení ověřování pro přístup na základě rolí k Data Lake Store
-Každé předplatné služby Azure souvisí s entitou, Azure AD. Uživatelů a služeb, která přistupují k prostředkům předplatné pomocí portálu Azure nebo rozhraní API služby Azure Resource Manager, musí nejprve ověřit pomocí služby Azure AD. Udělením přístupu k předplatných Azure a služby přiřazením příslušné role na prostředek služby Azure. Objekt služby pro služby, identifikuje služby ve službě Azure AD.
+## <a name="set-up-authentication-for-role-based-access-toodata-lake-store"></a>Nastavení ověřování pro založené na rolích přístup tooData Lake Store
+Každé předplatné služby Azure souvisí s entitou, Azure AD. Uživatelů a služeb, přístup k prostředkům předplatné pomocí hello portál Azure nebo hello rozhraní API služby Azure Resource Manager, musí nejprve ověřit pomocí služby Azure AD. Přístup uděluje přiřazením příslušné role hello na prostředek služby Azure tooAzure odběry a služby. Objekt služby pro služby, identifikuje hello služby ve službě Azure AD.
 
-Tato část ukazuje postup udělení služby aplikace, jako je například HDInsight, přístup k prostředku Azure (účet Data Lake Store, který jste vytvořili dříve). To uděláte tak, že vytvoříte hlavní aplikace a přiřazení rolí k němu pomocí prostředí PowerShell služby.
+Tato část ukazuje, jak toogrant aplikace služby, jako je například HDInsight, tooan přístup prostředků Azure (hello účtu Data Lake Store, který jste vytvořili dříve). To uděláte tak, že vytvoření služby hlavní aplikace hello a přiřazování rolí tooit pomocí prostředí PowerShell.
 
-Nastavení ověřování služby Active Directory pro Azure Data Lake, proveďte kroky v následujících dvou částech.
+tooset až ověřování služby Active Directory pro Azure Data Lake, provádějí úlohy hello v hello následující dvě části.
 
 ### <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem
-Zajistěte, aby byla [Windows SDK](https://dev.windows.com/en-us/downloads) nainstalovat před provedením kroků v této části. Musíte také vytvořit adresář, jako například *C:\mycertdir*, kde můžete vytvořit certifikát.
+Zajistěte, aby byla [Windows SDK](https://dev.windows.com/en-us/downloads) nainstalovala ještě před pokračováním hello kroky v této části. Musíte také vytvořit adresář, jako například *C:\mycertdir*, kde můžete vytvořit certifikát hello.
 
-1. V okně PowerShell přejděte do umístění, kam jste nainstalovali Windows SDK (obvykle *C:\Program Files (x86) \Windows Kits\10\bin\x86*) a použít [MakeCert] [ makecert] nástroj vytvořit certifikát podepsaný svým držitelem a privátní klíč. Použijte následující příkazy:
+1. Z okna PowerShell text hello, přejděte toohello umístění, kam jste nainstalovali Windows SDK (obvykle *C:\Program Files (x86) \Windows Kits\10\bin\x86*) a použít hello [MakeCert] [ makecert] toocreate nástroj certifikát podepsaný svým držitelem a privátní klíč. Hello použijte následující příkazy:
 
         $certificateFileDir = "<my certificate directory>"
         cd $certificateFileDir
 
         makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -r -len 2048
 
-    Zobrazí se výzva k zadání heslo soukromého klíče. Po provedení příkazu je úspěšně, měli byste vidět **CertFile.cer** a **mykey.pvk** v adresáři certifikát, který jste zadali.
-2. Použití [Pvk2Pfx] [ pvk2pfx] nástroj pro převod pvk a .cer soubory, které vytvořili MakeCert do souboru .pfx. Spusťte následující příkaz:
+    Bude výzvami tooenter hello heslo soukromého klíče. Po hello příkaz je úspěšně provést, měli byste vidět **CertFile.cer** a **mykey.pvk** v adresáři hello certifikát, který jste zadali.
+2. Použití hello [Pvk2Pfx] [ pvk2pfx] nástroj tooconvert hello pvk a .cer soubory tento soubor .pfx vytvořený tooa MakeCert. Spusťte následující příkaz hello:
 
         pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
 
-    Po zobrazení výzvy zadejte heslo soukromého klíče, který jste dřív zadali. Hodnota zadaná **-SP** parametr je heslo, které je přidružené k souboru .pfx. Po příkazu byla úspěšně dokončena, měli byste taky vidět **CertFile.pfx** v adresáři certifikát, který jste zadali.
+    Po zobrazení výzvy zadejte hello heslo soukromého klíče dříve zadaný. Hodnota zadaná pro hello Hello **-SP** parametr je hello heslo, které jsou přidružené soubor .pfx hello. Po příkazu hello byla úspěšně dokončena, měli byste taky vidět **CertFile.pfx** v adresáři hello certifikát, který jste zadali.
 
 ### <a name="create-an-azure-ad-and-a-service-principal"></a>Vytvoření Azure AD a instanční objekt
-V této části vytvořit objekt služby pro aplikaci Azure AD, přiřazení role objekt služby a ověření jako objekt služby tím, že poskytuje certifikát. Pokud chcete vytvořit aplikaci ve službě Azure AD, spusťte následující příkazy:
+V této části vytvořit objekt služby pro aplikaci Azure AD, přiřaďte objekt role toohello služby a ověření jako hello instanční objekt tím, že poskytuje certifikát. toocreate aplikace ve službě Azure AD, spusťte následující příkazy hello:
 
-1. Vložte následující rutiny v okně konzoly prostředí PowerShell. Ujistěte se, že hodnota zadáváte pro **– DisplayName** vlastnost je jedinečný. Hodnoty pro **– Domovská stránka** a **- IdentiferUris** jsou zástupné hodnoty a nejsou ověřené.
+1. Vložte následující rutiny v okně konzoly prostředí PowerShell hello hello. Ujistěte se, že hello hodnota zadaná pro hello **– DisplayName** vlastnost je jedinečný. Hello hodnoty pro **– Domovská stránka** a **- IdentiferUris** jsou zástupné hodnoty a nejsou ověřené.
 
         $certificateFilePath = "$certificateFileDir\CertFile.pfx"
 
-        $password = Read-Host –Prompt "Enter the password" # This is the password you specified for the .pfx file
+        $password = Read-Host –Prompt "Enter hello password" # This is hello password you specified for hello .pfx file
 
         $certificatePFX = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certificateFilePath, $password)
 
@@ -159,26 +159,26 @@ V této části vytvořit objekt služby pro aplikaci Azure AD, přiřazení rol
             -EndDate $certificatePFX.NotAfter
 
         $applicationId = $application.ApplicationId
-2. Vytvořit objekt služby pomocí ID aplikace.
+2. Vytvořit objekt služby s použitím ID hello aplikace.
 
         $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $applicationId
 
         $objectId = $servicePrincipal.Id
-3. Udělte přístup k hlavní službě Data Lake Store kořenové a všechny složky v kořenové cestě, která jste zadali dříve. Pomocí následující rutiny:
+3. Udělit hello kořenovém adresáři Data Lake Store toohello služby hlavní přístupu a všechny složky hello v hello kořenovou cestu, která jste zadali dříve. Použijte hello následující rutiny:
 
         Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path / -AceType User -Id $objectId -Permissions All
         Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path /clusters -AceType User -Id $objectId -Permissions All
         Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path /clusters/hdiadlcluster -AceType User -Id $objectId -Permissions All
 
-## <a name="create-an-hdinsight-linux-cluster-with-data-lake-store-as-the-default-storage"></a>Vytvoření clusteru služby HDInsight Linux s Data Lake Store jako výchozí úložiště
+## <a name="create-an-hdinsight-linux-cluster-with-data-lake-store-as-hello-default-storage"></a>Vytvoření clusteru služby HDInsight Linux s Data Lake Store jako hello výchozí úložiště
 
-V této části vytvoříte clusteru služby HDInsight Hadoop Linux s Data Lake Store jako výchozí úložiště. Pro tuto verzi clusteru HDInsight a Data Lake Store musí být ve stejném umístění.
+V této části vytvoříte clusteru služby HDInsight Hadoop Linux s Data Lake Store jako hello výchozí úložiště. Pro tuto verzi hello HDInsight cluster a Data Lake Store musí být ve hello stejné umístění.
 
-1. Načtení ID předplatného klienta a uloží jej pro pozdější použití.
+1. Načtení ID hello předplatné klienta a uloží jej později toouse.
 
         $tenantID = (Get-AzureRmContext).Tenant.TenantId
 
-2. Vytvoření clusteru HDInsight pomocí následující rutiny:
+2. Vytvoření clusteru HDInsight se hello pomocí hello následující rutiny:
 
         # Set these variables
 
@@ -186,7 +186,7 @@ V této části vytvoříte clusteru služby HDInsight Hadoop Linux s Data Lake 
         $storageAccountName = $dataLakeStoreName                       # Data Lake Store account name
         $storageRootPath = "<Storage root path you specified earlier>" # E.g. /clusters/hdiadlcluster
         $clusterName = "<unique cluster name>"
-        $clusterNodes = <ClusterSizeInNodes>            # The number of nodes in the HDInsight cluster
+        $clusterNodes = <ClusterSizeInNodes>            # hello number of nodes in hello HDInsight cluster
         $httpCredentials = Get-Credential
         $sshCredentials = Get-Credential
 
@@ -208,20 +208,20 @@ V této části vytvoříte clusteru služby HDInsight Hadoop Linux s Data Lake 
                -CertificateFilePath $certificateFilePath `
                -CertificatePassword $password
 
-    Po úspěšném dokončení rutinu byste měli vidět výstup, který uvádí podrobnosti o clusteru.
+    Po úspěšném dokončení hello rutinu byste měli vidět výstup obsahující podrobnosti o clusteru hello.
 
-## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-store"></a>Spuštění testu úloh na clusteru HDInsight pomocí Data Lake Store
-Po dokončení konfigurace clusteru služby HDInsight, můžete spustit testovací úlohy na něm zajistit, že Data Lake Store můžete získat přístup. Uděláte to tak, spusťte ukázkové úlohy Hive a vytvořte tabulku, která používá ukázková data, která je již k dispozici v Data Lake Store v  *<cluster root>/example/data/sample.log*.
+## <a name="run-test-jobs-on-hello-hdinsight-cluster-toouse-data-lake-store"></a>Spustit testovací úlohy na toouse clusteru HDInsight hello Data Lake Store
+Po dokončení konfigurace clusteru služby HDInsight, můžete spustit testovací úlohy na něm tooensure, že Data Lake Store můžete získat přístup. toodo tedy spustit toocreate úlohy Hive ukázkové tabulku, která používá hello ukázková data, která je již k dispozici v Data Lake Store v  *<cluster root>/example/data/sample.log*.
 
-V této části vytvoříte připojení Secure Shell (SSH) do clusteru HDInsight Linux, který jste vytvořili, a spusťte ukázkový dotaz Hive.
+V této části vytvoříte připojení Secure Shell (SSH) do hello cluster HDInsight Linux, který jste vytvořili, a spusťte ukázkový dotaz Hive.
 
-* Pokud používáte klienta se systémem Windows k vytvoření připojení SSH do clusteru, přečtěte si téma [použití SSH se systémem Linux Hadoop v HDInsight ze systému Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
-* Pokud používáte klienta Linux vytvoření připojení SSH do clusteru, přečtěte si téma [použití SSH se systémem Linux Hadoop v HDInsight ze systému Linux](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+* Pokud používáte toomake klienta Windows připojení SSH do clusteru hello, přečtěte si téma [použití SSH se systémem Linux Hadoop v HDInsight ze systému Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
+* Pokud používáte klienta toomake Linux připojení SSH do clusteru hello, přečtěte si téma [použití SSH se systémem Linux Hadoop v HDInsight ze systému Linux](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Po provedení připojení, spusťte rozhraní příkazového řádku (CLI) Hive pomocí následujícího příkazu:
+1. Po provedení hello připojení, spusťte hello Hive rozhraní příkazového řádku (CLI) pomocí hello následující příkaz:
 
         hive
-2. Pomocí rozhraní příkazového řádku zadejte následující příkazy, čímž umožňuje vytvořit novou tabulku s názvem **vozidel** pomocí ukázkových dat v Data Lake Store:
+2. Použití hello rozhraní příkazového řádku tooenter hello následující příkazy toocreate novou tabulku s názvem **vozidel** pomocí hello ukázkových dat v Data Lake Store:
 
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -229,28 +229,28 @@ V této části vytvoříte připojení Secure Shell (SSH) do clusteru HDInsight
         STORED AS TEXTFILE LOCATION 'adl:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
-    Měli byste vidět výstup dotazu v konzole SSH.
+    V konzole hello SSH, byste měli vidět výstup hello dotazu.
 
     >[!NOTE]
-    >Cesta k vzorovými daty v předchozím příkazu CREATE TABLE je `adl:///example/data/`, kde `adl:///` je kořenový cluster. Následující příklad kořenu clusteru, který je uveden v tomto kurzu příkaz je `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster`. Můžete buď použít kratší alternativní nebo zadejte úplnou cestu k kořenovém clusteru.
+    >Hello cesta toohello ukázková data v předchozím příkazu CREATE TABLE hello jsou `adl:///example/data/`, kde `adl:///` je kořenový cluster hello. Následující příklad hello kořenové hello clusteru, který je uveden v tomto kurzu, příkaz hello je `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster`. Můžete buď použít kratší alternativní hello nebo zadejte toohello hello úplnou cestu ke kořenovému adresáři clusteru.
     >
 
 ## <a name="access-data-lake-store-by-using-hdfs-commands"></a>Přístup k Data Lake Store pomocí příkazů HDFS
-Po dokončení konfigurace clusteru HDInsight pomocí Data Lake Store, můžete přístup k obchodu s příkazy prostředí Hadoop Distributed File System (HDFS).
+Po nakonfigurování hello HDInsight clusteru toouse Data Lake Store, můžete použít Hadoop Distributed File System (HDFS) prostředí příkazy tooaccess hello úložiště.
 
-V této části provedete připojení SSH do clusteru HDInsight Linux, který jste vytvořili a pak spusťte příkazy HDFS.
+V této části provedete připojení SSH do hello cluster HDInsight Linux, který jste vytvořili, a spusťte příkazů HDFS hello.
 
-* Pokud používáte klienta se systémem Windows k vytvoření připojení SSH do clusteru, přečtěte si téma [použití SSH se systémem Linux Hadoop v HDInsight ze systému Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
-* Pokud používáte klienta Linux vytvoření připojení SSH do clusteru, přečtěte si téma [použití SSH se systémem Linux Hadoop v HDInsight ze systému Linux](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+* Pokud používáte toomake klienta Windows připojení SSH do clusteru hello, přečtěte si téma [použití SSH se systémem Linux Hadoop v HDInsight ze systému Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
+* Pokud používáte klienta toomake Linux připojení SSH do clusteru hello, přečtěte si téma [použití SSH se systémem Linux Hadoop v HDInsight ze systému Linux](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
-Po provedení připojení, seznam souborů v Data Lake Store pomocí následujícího příkazu systému souborů HDFS.
+Po provedení hello připojení, seznam souborů hello v Data Lake Store pomocí následujících příkazů systému souborů HDFS hello.
 
     hdfs dfs -ls adl:///
 
-Můžete také `hdfs dfs -put` příkazu do Data Lake Store nahrát některé soubory a pak použijte `hdfs dfs -ls` ověřit, zda soubory byly úspěšně nahrál.
+Můžete taky hello `hdfs dfs -put` příkaz tooupload některé soubory tooData Lake Store a pak použijte `hdfs dfs -ls` tooverify jestli hello soubory úspěšně se nahrál.
 
 ## <a name="see-also"></a>Viz také
-* [Portál Azure: vytvoření clusteru HDInsight používat Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Portál Azure: vytvoření toouse clusteru HDInsight Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

@@ -22,7 +22,7 @@
 ## Vytváření šablon
 ### [Osvědčené postupy pro šablony](resource-manager-template-best-practices.md)
 ### [Části šablon](resource-group-authoring-templates.md)
-### [Propojení s ostatními šablonami](resource-group-linked-templates.md)
+### [Odkaz tooother šablony](resource-group-linked-templates.md)
 ### [Definování závislosti mezi prostředky](resource-group-define-dependencies.md)
 ### [Vytvoření víc instancí](resource-group-create-multiple.md)
 ### [Nastavení umístění](resource-manager-template-location.md)
@@ -53,8 +53,8 @@
 ### [Azure CLI](xplat-cli-azure-resource-manager.md)
 ### [Azure Portal](resource-group-portal.md)
 ### [REST API](resource-manager-rest-api.md)
-### [Použití značek k uspořádání prostředků](resource-group-using-tags.md)
-### [Přesunutí prostředků do nové skupiny nebo předplatného](resource-group-move-resources.md)
+### [Používat značky tooorganize prostředky](resource-group-using-tags.md)
+### [Přesunout skupinu toonew prostředků nebo předplatného](resource-group-move-resources.md)
 ### [Příklady zásad správného řízení](resource-manager-subscription-examples.md)
 
 ## Řízení přístupu
@@ -63,13 +63,13 @@
 #### [Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 #### [Azure CLI 1.0](resource-group-authenticate-service-principal-cli.md)
 #### [Azure Portal](resource-group-create-service-principal-portal.md)
-### [Ověřovací rozhraní API pro přístup k předplatným](resource-manager-api-authentication.md)
+### [Ověřování rozhraní API tooaccess odběrů](resource-manager-api-authentication.md)
 ### [Uzamčení prostředků](resource-group-lock-resources.md)
 
 ## Nastavení zásad prostředků
 ### [Co jsou zásady prostředků?](resource-manager-policy.md)
-### [Přiřazení zásad pomocí portálu](resource-manager-policy-portal.md)
-### [Přiřazení zásad pomocí skriptů](resource-manager-policy-create-assign.md)
+### [Pomocí portálu tooassign zásad](resource-manager-policy-portal.md)
+### [Pomocí skriptů tooassign zásad](resource-manager-policy-create-assign.md)
 ### Příklady
 #### [Značky](resource-manager-policy-tags.md)
 #### [Zásady vytváření názvů](resource-manager-policy-naming-convention.md)

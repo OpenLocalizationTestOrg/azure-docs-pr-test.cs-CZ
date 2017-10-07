@@ -1,6 +1,6 @@
 ---
-title: "Nasazení aplikace Azure Service Fabric | Microsoft Docs"
-description: "Rozhraní API FabricClient použijte k nasazení a odebrat aplikace v Service Fabric."
+title: "aaaAzure nasazení aplikace Service Fabric | Microsoft Docs"
+description: "Použijte hello toodeploy FabricClient rozhraní API a odebrat aplikace v Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/07/2017
 ms.author: ryanwi
-ms.openlocfilehash: 2e4ca1069b4e8e473b26b790e81770b41e25ff50
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b2986b71c461f3e785ba16ec1b827fe47ad852fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Nasazení a odebírat aplikace pomocí FabricClient
 > [!div class="op_single_selector"]
@@ -30,90 +30,90 @@ ms.lasthandoff: 07/11/2017
 
 <br/>
 
-Jednou [typu aplikaci vytvořen balíček][10], je připraven k nasazení do clusteru služby Azure Service Fabric. Nasazení zahrnuje následující tři kroky:
+Jednou [typu aplikaci vytvořen balíček][10], je připraven k nasazení do clusteru služby Azure Service Fabric. Nasazení zahrnuje hello následující tři kroky:
 
-1. Nahrání balíčku aplikace do úložiště bitové kopie
-2. Registrace typu aplikace
-3. Vytvoření instance aplikace
+1. Nahrát úložiště bitových kopií toohello balíčku aplikace hello
+2. Registrace typu aplikace hello
+3. Vytvoření instance aplikace hello
 
-Jakmile je aplikace nasazená a je spuštěna instance v clusteru, můžete odstranit instanci aplikace a její typ aplikace. Chcete-li úplně odebrat z clusteru zahrnuje následující kroky:
+Jakmile je aplikace nasazená a instance běží v clusteru hello, můžete odstranit hello instanci aplikace a její typ aplikace. toocompletely odebrat aplikaci z clusteru hello zahrnuje hello následující kroky:
 
-1. Odebrat (nebo odstranit) spuštěné instance aplikace
-2. Zrušení registrace typu aplikace, pokud již nepotřebujete
-3. Odebrání balíčku aplikace z úložiště bitových kopií
+1. Odebrat (nebo odstranit) hello spuštěna instance aplikace
+2. Zrušení registrace typu aplikace hello, pokud již nepotřebujete
+3. Odebrání balíčku aplikace hello z úložiště bitových kopií hello
 
-Pokud používáte [Visual Studio pro nasazování a ladění aplikací](service-fabric-publish-app-remote-cluster.md) na vaše místní vývojový cluster, jsou automaticky zpracovává všechny předchozí kroky pomocí skriptu prostředí PowerShell.  Tento skript se nachází v *skripty* složku projekt aplikace. Tento článek obsahuje pozadí na co skriptu je to proto, že můžete provádět stejné operace mimo Visual Studio. 
+Pokud používáte [Visual Studio pro nasazování a ladění aplikací](service-fabric-publish-app-remote-cluster.md) na vaše místní vývojový cluster všechny předchozí kroky hello se zpracovávají automaticky pomocí skriptu prostředí PowerShell.  Tento skript se nachází v hello *skripty* složku projekt aplikace hello. Tento článek obsahuje pozadí na co skriptu je to, aby mohli provést hello stejné operace mimo Visual Studio. 
  
-## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
-Připojte se ke clusteru tak, že vytvoříte [FabricClient](/dotnet/api/system.fabric.fabricclient) instance předtím, než spustíte jakoukoli příklady kódu v tomto článku. Příklady připojení místního vývojového clusteru nebo vzdálený cluster nebo clusteru zabezpečené pomocí Azure Active Directory, X509 certifikáty nebo služby Windows Active Directory najdete v tématu [připojení ke clusteru zabezpečené](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis). Pro připojení k místní vývojový cluster, spusťte následující:
+## <a name="connect-toohello-cluster"></a>Připojte toohello cluster
+Připojte toohello cluster tak, že vytvoříte [FabricClient](/dotnet/api/system.fabric.fabricclient) instance předtím, než spustíte jakoukoli hello příklady kódu v tomto článku. Příklady připojování tooa místního vývojového clusteru nebo vzdálený cluster nebo clusteru zabezpečené pomocí Azure Active Directory, X509 certifikáty nebo služby Windows Active Directory najdete v tématu [clusteru zabezpečené připojení tooa](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis). tooconnect toohello místního vývojového clusteru, spusťte následující hello:
 
 ```csharp
-// Connect to the local cluster.
+// Connect toohello local cluster.
 FabricClient fabricClient = new FabricClient();
 ```
 
-## <a name="upload-the-application-package"></a>Nahrání balíčku aplikace
-Předpokládejme, že sestavení a balíček aplikace s názvem *Moje_aplikace* v sadě Visual Studio. Ve výchozím nastavení je název typu aplikace uvedené v ApplicationManifest.xml "MyApplicationType".  Balíček aplikace, která obsahuje manifest nezbytné aplikace, služby manifesty a balíčků kódu/config/data, se nachází v *C:\Users\&lt; uživatelské jméno&gt;\Documents\Visual Studio 2017\Projects\MyApplication\MyApplication\pkg\Debug*.
+## <a name="upload-hello-application-package"></a>Nahrání balíčku aplikace hello
+Předpokládejme, že sestavení a balíček aplikace s názvem *Moje_aplikace* v sadě Visual Studio. Ve výchozím nastavení je název typu aplikace hello uvedené v hello ApplicationManifest.xml "MyApplicationType".  Hello balíček aplikace, která obsahuje manifest hello nezbytné aplikace, služby manifesty a balíčků kódu/config/data, se nachází v *C:\Users\&lt; uživatelské jméno&gt;\Documents\Visual Studio 2017\Projects\ MyApplication\MyApplication\pkg\Debug*.
 
-Nahrávání balíčku aplikace vloží ho do umístění, která je přístupná pomocí interní komponenty Service Fabric. Service Fabric ověřuje balíčku aplikace během registrace balíčku aplikace. Pokud chcete ověřit balíček aplikace místně (tj. před nahráním), ale použít [Test ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) rutiny.
+Odesílání balíčku aplikace hello vloží ho do umístění, která je přístupná pomocí hello interní komponenty Service Fabric. Service Fabric ověřuje balíčku aplikace hello během registrace hello balíčku aplikace hello. Pokud však chcete tooverify hello balíčku aplikace místně (tj. před nahráním), použít hello [Test ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) rutiny.
 
-[CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) rozhraní API odesílá balíček aplikace do úložiště bitových kopií clusteru. 
+Hello [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) rozhraní API ukládání balíčku aplikace hello, toohello úložiště bitových kopií clusteru. 
 
-Pokud balíček aplikace je velký nebo má mnoho souborů, můžete [je komprimovat](service-fabric-package-apps.md#compress-a-package) a zkopírujte jej do úložiště bitové kopie pomocí prostředí PowerShell. Komprese snižuje velikost a počet souborů.
+Pokud balíček aplikace hello je velký nebo má mnoho souborů, můžete [je komprimovat](service-fabric-package-apps.md#compress-a-package) a zkopírujte ho toohello image store pomocí prostředí PowerShell. Hello komprese snižuje velikost hello a hello počet souborů.
 
-V tématu [pochopit připojovací řetězec úložiště bitové kopie](service-fabric-image-store-connection-string.md) doplňující informace o úložiště image store a bitové kopie připojovací řetězec uložit.
+V tématu [pochopit hello image store připojovací řetězec](service-fabric-image-store-connection-string.md) doplňující informace o hello úložiště image store a image uložit připojovací řetězec.
 
-## <a name="register-the-application-package"></a>Registrace balíčku aplikace
-Typ aplikace a verze deklarované v manifestu aplikace k dispozici pro použití při registraci balíčku aplikace. Systém přečte nahraný v předchozím kroku balíček, ověří balíčku, zpracuje obsah balíčku a zkopíruje zpracovaná balíček do umístění interní systému.  
+## <a name="register-hello-application-package"></a>Registrace balíčku aplikace hello
+v manifestu aplikace hello k dispozici pro použití při registraci balíčku aplikace hello deklarována Hello typ a verze aplikace. Hello systému přečte nahraný v předchozím kroku hello hello balíček, ověří hello balíčku, zpracuje hello obsah balíčku a zkopíruje hello zpracovat balíček tooan systému interní umístění.  
 
-[ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) registry rozhraní API aplikace, zadejte v clusteru a k dispozici pro nasazení.
+Hello [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) rozhraní API registry hello typu aplikace v clusteru hello a zpřístupní ji pro nasazení.
 
-[GetApplicationTypeListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationtypelistasync) rozhraní API poskytuje informace o všech typech aplikací byl úspěšně zaregistrován. Toto rozhraní API můžete použít k určení, kdy se provádí registraci.
+Hello [GetApplicationTypeListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationtypelistasync) rozhraní API poskytuje informace o všech typech aplikací byl úspěšně zaregistrován. Toodetermine toto rozhraní API můžete použít, pokud se provádí registraci hello.
 
 ## <a name="create-an-application-instance"></a>Vytvoření instance aplikace
-Můžete vytvořit instanci aplikace z jakéhokoli typu aplikace, který byl úspěšně zaregistrován pomocí [CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync) rozhraní API. Název každé aplikace musí začínat *"fabric:"* scheme a musí být jedinečný pro každou instanci aplikace (v rámci clusteru). Žádné výchozí služby definované v manifestu aplikace cílového typu aplikace jsou také vytvářeny.
+Můžete vytvořit instanci aplikace z jakéhokoli typu aplikace, který byl úspěšně zaregistrován pomocí hello [CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync) rozhraní API. Hello názvu každé aplikace musí začínat hello *"fabric:"* scheme a musí být jedinečný pro každou instanci aplikace (v rámci clusteru). Všechny výchozí služby definované v manifestu aplikace hello typu hello cílové aplikace jsou také vytvořit.
 
 Pro danou verzi typu zaregistrovanou aplikaci lze vytvořit více instancí aplikace. Každá instance aplikace spouští v izolaci, s vlastní pracovní adresář a sadu procesy.
 
-Pokud chcete zobrazit, které s názvem aplikace a služby běží v clusteru, spusťte [GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync) a [GetServiceListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync) rozhraní API.
+toosee, které s názvem služby a aplikace běží v clusteru hello, spusťte hello [GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync) a [GetServiceListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync) rozhraní API.
 
 ## <a name="create-a-service-instance"></a>Vytvoření instance služby
-Můžete vytvořit instanci služby z typu služby pomocí [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) rozhraní API.  Pokud služba je deklarován jako výchozí služba v manifestu aplikace, je vytvořena při vytváření instance aplikace instance služby.  Volání [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) rozhraní API pro službu, která je již vytvořena instance vrátí k výjimce typu FabricException obsahující chybový kód s hodnotou FabricErrorCode.ServiceAlreadyExists.
+Můžete vytvořit instanci služby z typu služby pomocí hello [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) rozhraní API.  Pokud služba hello je deklarován jako výchozí služba v manifestu aplikace hello, je vytvořena při vytváření instance aplikace hello instance hello služby.  Volání hello [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) rozhraní API pro službu, která je již vytvořena instance vrátí k výjimce typu FabricException obsahující chybový kód s hodnotou FabricErrorCode.ServiceAlreadyExists.
 
 ## <a name="remove-a-service-instance"></a>Odebrat instanci služby
-Pokud instance služby již nepotřebujete, můžete jej odebrat z spuštění instance aplikace voláním [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) rozhraní API.  
+Pokud instance služby již nepotřebujete, můžete jej odebrat z hello spuštěna instance aplikace pomocí volání hello [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) rozhraní API.  
 
 > [!WARNING]
 > Tato operace se nedá vrátit a nelze ji obnovit stav služby.
 
 ## <a name="remove-an-application-instance"></a>Odebrání instance aplikace
-Instance aplikace už je potřeba, trvale odstraníte ho pomocí názvu [DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) rozhraní API. [DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) automaticky odstraní všechny služby, které patří do aplikace také a trvale odebrat všechny služby stavu.
+Instance aplikace už je potřeba, trvale odstraníte ho podle názvu pomocí hello [DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) rozhraní API. [DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) automaticky odstraní všechny služby, které patří toohello aplikace také a trvale odebrat všechny služby stavu.
 
 > [!WARNING]
 > Tato operace se nedá vrátit a nelze ji obnovit stav aplikace.
 
 ## <a name="unregister-an-application-type"></a>Typ aplikace se zrušit registraci
-Pokud konkrétní verzi typ aplikace se už nepotřebuje, by měl zrušit registraci této konkrétní verze typu aplikace pomocí [Unregister-ServiceFabricApplicationType](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) rozhraní API. Zrušení registrace nepoužívané verze typů aplikace uvolní prostor úložiště používá úložiště bitových kopií. Verze typu aplikace může být zrušit registraci, dokud instance žádné aplikace. u této verze typu aplikace a nebyl upgradován čekající aplikace odkazují na tuto verzi typ aplikace.
+Pokud konkrétní verzi typ aplikace se už nepotřebuje, by měl zrušit registraci této konkrétní verze typu aplikace hello pomocí hello [Unregister-ServiceFabricApplicationType](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) rozhraní API. Zrušení registrace nepoužívané verze aplikace typy verzích prostoru úložiště používá úložiště bitových kopií hello. Verze typu aplikace může být zrušit registraci, dokud instance žádné aplikace. u této verze typu aplikace hello a nebyl upgradován čekající aplikace odkazují na tuto verzi typ aplikace hello.
 
-## <a name="remove-an-application-package-from-the-image-store"></a>Balíček aplikace odebrat z úložiště bitových kopií
-Balíček aplikace už je potřeba, můžete jej odstranit z úložiště bitových kopií uvolnit systémové prostředky pomocí [RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage) rozhraní API.
+## <a name="remove-an-application-package-from-hello-image-store"></a>Balíček aplikace odebrat z úložiště bitových kopií hello
+Balíček aplikace už je potřeba, musíte jej odstranit ze hello image store toofree až systémové prostředky pomocí hello [RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage) rozhraní API.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Kopírování ServiceFabricApplicationPackage požádá o parametr ImageStoreConnectionString
-Prostředí Service Fabric SDK byste již měli mít správný výchozí hodnoty nastavení. Ale v případě potřeby parametr ImageStoreConnectionString pro všechny příkazy musí odpovídat hodnotě používající cluster Service Fabric. Parametr ImageStoreConnectionString můžete najít v manifestu clusteru pomocí [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) a příkazy Get-ImageStoreConnectionStringFromClusterManifest:
+prostředí Service Fabric SDK Hello byste již měli mít hello správný, nastavit výchozí hodnoty. Ale v případě potřeby pro všechny příkazy hello parametr ImageStoreConnectionString musí odpovídat hello hodnotu této hello používá cluster Service Fabric. Hello parametr ImageStoreConnectionString můžete najít v manifestu clusteru hello načten pomocí hello [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) a Get-ImageStoreConnectionStringFromClusterManifest příkazy:
 
 ```powershell
 PS C:\> Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)
 ```
 
-**Get-ImageStoreConnectionStringFromClusterManifest** rutiny, která je součástí modulu Service Fabric SDK PowerShell, se použije k získání připojovacího řetězce úložiště bitové kopie.  Chcete-li importovat modul SDK, spusťte:
+Hello **Get-ImageStoreConnectionStringFromClusterManifest** rutiny, která je součástí modulu Service Fabric SDK PowerShell text hello, je použít tooget hello image uložit připojovací řetězec.  tooimport hello SDK modul, spusťte:
 
 ```powershell
 Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
 ```
 
 
-V manifestu clusteru se nachází parametr ImageStoreConnectionString:
+Parametr ImageStoreConnectionString Hello se nachází v manifestu clusteru hello:
 
 ```xml
 <ClusterManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="Server-Default-SingleNode" Version="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -127,30 +127,29 @@ V manifestu clusteru se nachází parametr ImageStoreConnectionString:
     [...]
 ```
 
-V tématu [pochopit připojovací řetězec úložiště bitové kopie](service-fabric-image-store-connection-string.md) doplňující informace o úložiště image store a bitové kopie připojovací řetězec uložit.
+V tématu [pochopit hello image store připojovací řetězec](service-fabric-image-store-connection-string.md) doplňující informace o hello úložiště image store a image uložit připojovací řetězec.
 
 ### <a name="deploy-large-application-package"></a>Nasazení balíčku velké aplikace
 Problém: [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) rozhraní API časového limitu pro balíček rozsáhlé aplikace (pořadí GB).
 Vyzkoušejte:
-- Zadat delší časový limit pro [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) metody s `timeout` parametr. Ve výchozím nastavení je časový limit 30 minut.
-- Zkontrolujte síťové připojení mezi zdrojovým počítačem a clusteru. Pokud připojení je pomalý, zvažte použití na počítači s lepší síťové připojení.
-Pokud klientský počítač je v jiné oblasti než clusteru, zvažte použití klientský počítač v oblasti blíže nebo stejné jako cluster.
-- Zkontrolujte, pokud jste nedosáhli externí omezení. Například pokud je úložiště image store je nakonfigurovaná pro použití úložiště azure, nahrávání může být omezena.
+- Zadat delší časový limit pro [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) metody s `timeout` parametr. Ve výchozím nastavení je hello časový limit 30 minut.
+- Zkontrolujte hello síťové připojení mezi zdrojovým počítačem a clusteru. Pokud jde o pomalé připojení hello, zvažte použití na počítači s lepší síťové připojení.
+Pokud hello klientský počítač je v jiné oblasti než hello clusteru, zvažte použití klientský počítač v oblasti blíže nebo stejné jako hello cluster.
+- Zkontrolujte, pokud jste nedosáhli externí omezení. Například v případě je úložiště image hello nakonfigurované toouse azure storage, může nahrávání omezeny.
 
-Problém: Nahrávání balíček úspěšně dokončit, ale [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) rozhraní API časového limitu.
-Vyzkoušejte:
-- [Komprimovat balíček](service-fabric-package-apps.md#compress-a-package) před kopírování do úložiště bitové kopie.
-Komprese snižuje velikost a počet souborů, který pak dále snižuje objem provozu a fungovat této Service Fabric musí provést. Operace odesílání může být pomalejší (obzvláště pokud zahrnete komprese čas), ale registrace a zrušení registrace typu aplikace je rychlejší.
+Problém: Nahrávání balíček úspěšně dokončit, ale [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) rozhraní API časového limitu. Vyzkoušejte:
+- [Komprimovat hello balíček](service-fabric-package-apps.md#compress-a-package) před kopírováním toohello úložiště bitových kopií.
+Hello komprese snižuje velikost hello a musíte provést hello počet souborů, která zase snižuje hello objem provozu a že Service Fabric fungovat. operace nahrávání Hello může být pomalejší (obzvláště pokud zahrnete hello komprese čas), ale registrace a zrušení registrace typu aplikace hello je rychlejší.
 - Zadat delší časový limit pro [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) rozhraní API pomocí `timeout` parametr.
 
 ### <a name="deploy-application-package-with-many-files"></a>Nasazení balíčku aplikace s mnoho souborů
 Problém: [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) časového limitu pro balíček aplikace s mnoha souborech (pořadí tisíc).
 Vyzkoušejte:
-- [Komprimovat balíček](service-fabric-package-apps.md#compress-a-package) před kopírování do úložiště bitové kopie. Komprese snižuje počet souborů.
+- [Komprimovat hello balíček](service-fabric-package-apps.md#compress-a-package) před kopírováním toohello úložiště bitových kopií. Hello komprese snižuje hello počet souborů.
 - Zadat delší časový limit pro [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) s `timeout` parametr.
 
 ## <a name="code-example"></a>Příklad kódu
-Následující příklad zkopíruje do úložiště bitové kopie, balíček aplikace zřizuje typ aplikace, vytvoří instanci aplikace, vytvoří instanci služby, odebere instance aplikace na zrušení zřizuje typu aplikace a odstranění balíčku aplikace z úložiště bitových kopií.
+Hello následující příklad zkopíruje úložišti aplikace toohello balíček bitové kopie, zřídí hello typu aplikace, vytvoří instanci aplikace, vytvoří instanci služby, odebere instanci aplikace hello, zrušení zřizuje hello typ aplikace, a balíček aplikace hello odstraní z úložiště bitových kopií hello.
 
 ```csharp
 using System;
@@ -181,27 +180,27 @@ static void Main(string[] args)
     string packagePath = "C:\\Users\\username\\Documents\\Visual Studio 2017\\Projects\\MyApplication\\MyApplication\\pkg\\Debug";
     string serviceType = "Stateless1Type";
 
-    // Connect to the cluster.
+    // Connect toohello cluster.
     FabricClient fabricClient = new FabricClient(clusterConnection);
 
-    // Copy the application package to a location in the image store
+    // Copy hello application package tooa location in hello image store
     try
     {
         fabricClient.ApplicationManager.CopyApplicationPackage(imageStoreConnectionString, packagePath, packagePathInImageStore);
-        Console.WriteLine("Application package copied to {0}", packagePathInImageStore);
+        Console.WriteLine("Application package copied too{0}", packagePathInImageStore);
     }
     catch (AggregateException ae)
     {
-        Console.WriteLine("Application package copy to Image Store failed: ");
+        Console.WriteLine("Application package copy tooImage Store failed: ");
         foreach (Exception ex in ae.InnerExceptions)
         {
             Console.WriteLine("HResult: {0} Message: {1}", ex.HResult, ex.Message);
         }
     }
 
-    // Provision the application.  "MyApplicationV1" is the folder in the image store where the application package is located. 
-    // The application type with name "MyApplicationType" and version "1.0.0" (both are found in the application manifest) 
-    // is now registered in the cluster.            
+    // Provision hello application.  "MyApplicationV1" is hello folder in hello image store where hello application package is located. 
+    // hello application type with name "MyApplicationType" and version "1.0.0" (both are found in hello application manifest) 
+    // is now registered in hello cluster.            
     try
     {
         fabricClient.ApplicationManager.ProvisionApplicationAsync(packagePathInImageStore).Wait();
@@ -218,7 +217,7 @@ static void Main(string[] args)
         }
     }
 
-    //  Create the application instance.
+    //  Create hello application instance.
     try
     {
         ApplicationDescription appDesc = new ApplicationDescription(new Uri(appName), appType, appVersion);
@@ -234,7 +233,7 @@ static void Main(string[] args)
         }
     }
 
-    // Create the stateless service description.  For stateful services, use a StatefulServiceDescription object.
+    // Create hello stateless service description.  For stateful services, use a StatefulServiceDescription object.
     StatelessServiceDescription serviceDescription = new StatelessServiceDescription();
     serviceDescription.ApplicationName = new Uri(appName);
     serviceDescription.InstanceCount = 1;
@@ -242,8 +241,8 @@ static void Main(string[] args)
     serviceDescription.ServiceName = new Uri(serviceName);
     serviceDescription.ServiceTypeName = serviceType;
 
-    // Create the service instance.  If the service is declared as a default service in the ApplicationManifest.xml,
-    // the service instance is already running and this call will fail.
+    // Create hello service instance.  If hello service is declared as a default service in hello ApplicationManifest.xml,
+    // hello service instance is already running and this call will fail.
     try
     {
         fabricClient.ServiceManager.CreateServiceAsync(serviceDescription).Wait();
@@ -275,7 +274,7 @@ static void Main(string[] args)
         }
     }
 
-    // Delete an application instance from the application type.
+    // Delete an application instance from hello application type.
     try
     {
         DeleteApplicationDescription deleteApplicationDescription = new DeleteApplicationDescription(new Uri(appName));
@@ -292,7 +291,7 @@ static void Main(string[] args)
         }
     }
 
-    // Un-provision the application type.
+    // Un-provision hello application type.
     try
     {
         fabricClient.ApplicationManager.UnprovisionApplicationAsync(appType, appVersion).Wait();
@@ -307,7 +306,7 @@ static void Main(string[] args)
         }
     }
 
-    // Delete the application package from a location in the image store.
+    // Delete hello application package from a location in hello image store.
     try
     {
         fabricClient.ApplicationManager.RemoveApplicationPackage(imageStoreConnectionString, packagePathInImageStore);
@@ -339,6 +338,6 @@ static void Main(string[] args)
 
 [Model aplikace v Service Fabric](service-fabric-application-model.md)
 
-<!--Link references--In actual articles, you only need a single period before the slash-->
+<!--Link references--In actual articles, you only need a single period before hello slash-->
 [10]: service-fabric-application-model.md
 [11]: service-fabric-application-upgrade.md

@@ -1,6 +1,6 @@
 ---
-title: "Funkce v různých edicích služby BizTalk Services | Dokumentace Microsoftu"
-description: "Porovnejte možnosti různých edic služby BizTalk Services: Free, Developer, Basic, Standard a Premium. MABS, WABS."
+title: "aaaLearn o funkcí v edicích služby BizTalk Services | Microsoft Docs"
+description: "Porovnání možností hello edic hello BizTalk Services: Free, Developer, Basic, Standard a Premium. MABS, WABS."
 services: biztalk-services
 documentationcenter: 
 author: MandiOhlinger
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 718b57a801a9ba62a0154ae42da2ac0c0741f203
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 81626fa743a7190e7c78a0fd90b3054a08982b02
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="biztalk-services-editions-chart"></a>BizTalk Services: Tabulka edic
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-Služba Azure BizTalk Services je dostupná v několika edicích. Tento článek vám pomůže zjistit, která edice je vhodná pro vaši situaci a obchodní potřeby.
+Služba Azure BizTalk Services je dostupná v několika edicích. Použijte tento článek toodetermine, která edice je vhodná pro vaši situaci a obchodní potřeby.
 
-## <a name="compare-the-editions"></a>Porovnání edic
+## <a name="compare-hello-editions"></a>Porovnejte edice hello
 **Free (Preview)**
 
-Dokáže vytvořit a spravovat hybridní připojení. Hybridní připojení je snadný způsob, jak připojit web Azure k místnímu systému, jako je třeba SQL Server.
+Dokáže vytvořit a spravovat hybridní připojení. Hybridní připojení se snadný způsob tooconnect webu Azure tooan místní systém, jako je SQL Server.
 
 **Developer**
 
-Zahrnuje hybridní připojení, zpracování zpráv EAI a EDI se snadnou použitelným portálem pro správu obchodních partnerů a podporu společných schémat EDI a rozšířeného zpracování EDI přes X12 a AS2. Dokáže vytvářet společné scénáře EAI, které propojují služby v cloudu s protokoly HTTP/S, REST, FTP, WCF a SFTP pro čtení a zápis zpráv.  Využívá připojení k místním systémům LOB pomocí připravených adaptérů pro SAP, Oracle eBusiness, Oracle DB, Siebel a SQL Server. Používá prostředí zaměřené na vývojáře s nástroji sady Visual Studio, které umožňují snadný vývoj a nasazení. Omezuje se jenom na účely vývoje a testování a nenabízí smlouvu o úrovni služeb (SLA).
+Zahrnuje hybridní připojení, zpracování zpráv EAI a EDI se snadnou použitelným portálem pro správu obchodních partnerů a podporu společných schémat EDI a rozšířeného zpracování EDI přes X12 a AS2. Můžete vytvářet společné scénáře EAI připojení služby v cloudu hello s žádné tooread protokoly HTTP/S, REST, FTP, WCF a SFTP a zápis zpráv.  Připojení k systémům LOB tooon místní využívat adaptéry SAP, Oracle eBusiness, Oracle DB, Siebel a SQL Server připravenou k použití. Používá prostředí zaměřené na vývojáře s nástroji sady Visual Studio, které umožňují snadný vývoj a nasazení. Omezené toodevelopment testovací účely a pouze s žádné o úrovni služeb smlouvy (SLA).
 
 **Basic**
 
-Obsahuje většinu funkcí edice Developer a k tomu rozšířené funkce hybridních připojení, mosty EAI, smlouvy EDI a připojení sady BizTalk Adapter Pack. Kromě toho nabízí vysokou dostupnost a možnost škálování se smlouvou o úrovni služeb (SLA).
+Obsahuje většinu hello vývojáře funkce hybridních připojení, mosty EAI, smlouvy EDI a sady BizTalk Adapter Pack připojení. Kromě toho nabízí vysokou dostupnost a možnost tooscale hello s smlouvy o úrovni služeb (SLA).
 
 **Standard**
 
-Obsahuje všechny funkce edice Basic a k tomu rozšířené funkce hybridních připojení, mosty EAI, smlouvy EDI a připojení sady BizTalk Adapter Pack. Kromě toho nabízí vysokou dostupnost a možnost škálování se smlouvou o úrovni služeb (SLA).
+Obsahuje všechny hello základní funkce hybridních připojení, mosty EAI, smlouvy EDI a sady BizTalk Adapter Pack připojení. Kromě toho nabízí vysokou dostupnost a možnost tooscale hello s smlouvy o úrovni služeb (SLA).
 
 **Premium**
 
-Obsahuje všechny funkce edice Standard a k tomu rozšířené funkce hybridních připojení, mosty EAI, smlouvy EDI a připojení sady BizTalk Adapter Pack. Kromě toho zahrnuje archivaci, vysokou dostupnost a možnost škálování se smlouvou o úrovni služeb (SLA).
+Obsahuje všechny hello standardní funkce hybridních připojení, mosty EAI, smlouvy EDI a sady BizTalk Adapter Pack připojení. Také zahrnuje archivaci, vysokou dostupnost a možnost tooscale hello s smlouvy o úrovni služeb (SLA).
 
 ## <a name="editions-chart"></a>Tabulka edic
-Rozdíly jsou uvedené v následující tabulce.
+Hello následující tabulce jsou uvedeny rozdíly hello.
 
 <table border="1">
 <tr bgcolor="FAF9F9">
@@ -84,9 +84,9 @@ Rozdíly jsou uvedené v následující tabulce.
 <td><strong>Maximální povolené horizontální navýšení kapacity</strong></td>
 <td>Bez škálování</td>
 <td>Bez škálování</td>
-<td>Až 8 jednotek</td>
-<td>Až 8 jednotek</td>
-<td>Až 8 jednotek</td>
+<td>Too8 jednotky</td>
+<td>Too8 jednotky</td>
+<td>Too8 jednotky</td>
 </tr>
 <tr>
 <td><strong>Mosty EAI na jednotku</strong></td>
@@ -123,7 +123,7 @@ Zahrnuje smlouvy TPM</td>
 <td>500</td>
 </tr>
 <tr>
-<td><strong>Připojení služby BizTalk Adapter Service k místním systémům LOB</strong></td>
+<td><strong>Připojení služby BizTalk Adapter Service, tooon místním systémům LOB</strong></td>
 <td>Nezahrnuje</td>
 <td>1 připojení</td>
 <td>2 připojení</td>
@@ -210,48 +210,48 @@ Zahrnuje neodvolatelnost příjmu a stahování sledovaných zpráv</td>
 
 ## <a name="faqs"></a>Nejčastější dotazy
 #### <a name="what-is-a-biztalk-unit"></a>Co je to jednotka BizTalk?
-„Jednotka“ je nejnižší úroveň nasazení služby Azure BizTalk Services. Každá edice se dodává s jednotkou, která má různou výpočetní kapacitu a paměť. Třeba jednotka Basic má vyšší výpočetní kapacitu než jednotka Developer, jednotka Standard má vyšší výpočetní kapacitu než jednotka Basic a tak dál. Horizontální snížení kapacity služeb BizTalk probíhá po jednotkách.
+"Jednotka" je nejnižší úroveň nasazení služby Azure BizTalk Services hello. Každá edice se dodává s jednotkou, která má různou výpočetní kapacitu a paměť. Třeba jednotka Basic má vyšší výpočetní kapacitu než jednotka Developer, jednotka Standard má vyšší výpočetní kapacitu než jednotka Basic a tak dál. Horizontální snížení kapacity služeb BizTalk probíhá po jednotkách.
 
-#### <a name="what-is-the-difference-between-biztalk-services-and-azure-biztalk-vm"></a>Jaký je rozdíl mezi službou BizTalk Services a virtuálním počítačem Azure BizTalk?
-Služba BizTalk Services nabízí opravdovou architekturu modelu Platforma jako služba (PaaS) pro sestavování integračních řešení v cloudu. Model PaaS umožňuje soustředit se na aplikační logiku a nechat veškerou správu infrastruktury na Microsoftu:
+#### <a name="what-is-hello-difference-between-biztalk-services-and-azure-biztalk-vm"></a>Jaký je rozdíl hello BizTalk Services a virtuálním Počítačem Azure BizTalk?
+Služba BizTalk Services nabízí true Architektura platformy jako služba (PaaS) pro sestavování integračních řešení v cloudu hello. U modelu PaaS hello soustředit se na hello aplikační logiku a nechat veškerou hello infrastruktury správy tooMicrosoft, včetně:
 
-* Nemusíte spravovat ani opravovat virtuální počítače.
+* Bez nutnosti toomanage nebo opravy virtuálních počítačů.
 * Microsoft zajišťuje dostupnost.
-* Škálování řídíte podle potřeby – stačí si na webu Azure Portal vyžádat větší nebo menší kapacitu.
+* Můžete řídit škálování na vyžádání pomocí jednoduše vyžádat větší nebo menší kapacitu prostřednictvím hello portálu Azure.
 
-BizTalk Server na virtuálních počítačích Azure nabízí architekturu podle modelu Infrastruktura jako služba (IaaS). Vytvoříte virtuální počítače a nakonfigurujete je stejně jako v místním prostředí, aby se stávající aplikace daly snáz spouštět v cloudu beze změn kódu. V modelu IaaS musíte provádět konfiguraci a správu virtuálních počítačů (třeba instalaci softwaru a oprav operačního systému) a připravit aplikaci na vysokou dostupnost.
+BizTalk Server na virtuálních počítačích Azure nabízí architekturu podle modelu Infrastruktura jako služba (IaaS). Vytváření virtuálních počítačů a nakonfigurujete je stejně jako v místním prostředí, což jednodušší toorun existujících aplikací v cloudu hello beze změn kódu. V modelu IaaS jsou stále zodpovědná za konfiguraci hello virtuální počítače, správu hello virtuálních počítačů (třeba instalaci softwaru a oprav operačního systému) a architektury hello aplikaci na vysokou dostupnost.
 
-Pokud chcete sestavit nová integrační řešení, která sníží pracnost správy infrastruktury, použijte službu BizTalk Services. Pokud hledáte způsob, jak rychle provést migraci stávajících řešení BizTalk, nebo hledáte prostředí na vyžádání pro vývoj a testování aplikací BizTalk Serveru, použijte BizTalk Server na virtuálním počítači Azure.
+Pokud chcete sestavit nová integrační řešení, která sníží pracnost správy infrastruktury, použijte službu BizTalk Services. Pokud hledáte tooquickly migraci stávajících řešení BizTalk nebo vyhledávání toodevelop na vyžádání prostředí a testovací BizTalk serveru aplikací, použijte BizTalk Server na virtuální počítač Azure.
 
-#### <a name="what-is-the-difference-between-biztalk-adapter-service-and-hybrid-connections"></a>Jaký je rozdíl mezi službou BizTalk Adapter Service a hybridními připojeními?
-Službu BizTalk Adapter Service používá služba Azure BizTalk Service. Služba BizTalk Adapter Service se pomocí sady BizTalk Adapter Pack připojuje k místnímu obchodnímu systému (LOB). Hybridní připojení poskytuje snadný a pohodlný způsob, jak připojit aplikace Azure, jako je funkce Web Apps ve službách Azure App Service a Azure Mobile Services, k místnímu prostředku.
+#### <a name="what-is-hello-difference-between-biztalk-adapter-service-and-hybrid-connections"></a>Co je hello rozdíl mezi služba BizTalk Adapter Service a hybridními připojeními?
+Hello služba BizTalk Adapter Service používá služby Azure BizTalk. Hello služba BizTalk Adapter Service používá hello sady BizTalk Adapter Pack tooconnect tooan v místním obchodnímu systému (LOB) systému. Hybridní připojení poskytuje tooconnect snadný a pohodlný způsob aplikace Azure, jako hello funkce Web Apps v Azure App Service a Azure Mobile Services tooan místních prostředků.
 
-#### <a name="what-does-hybrid-connection-data-transfer-gb-per-unit-mean-is-this-per-minutehourdayweekmonth-what-happens-when-the-limit-is-reached"></a>Co znamená „Přenos dat hybridním připojením (v GB) na jednotku“? Je to údaj za minutu, hodinu, den, týden, nebo měsíc? Co se stane po dosažení limitu?
-Cena za jednotku hybridního připojení závisí na edici služby BizTalk Services. Jednoduše řečeno, cena závisí na tom, kolik dat přenášíte. Třeba přenesení 10 GB dat denně stojí méně než přenos 100 GB denně. Konkrétní náklady zjistíte pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/?scenario=full) služby BizTalk Services. Limity se většinou vynucují denně. Pokud limit překročíte, další přenosy stojí 1 USD za GB.
+#### <a name="what-does-hybrid-connection-data-transfer-gb-per-unit-mean-is-this-per-minutehourdayweekmonth-what-happens-when-hello-limit-is-reached"></a>Co znamená „Přenos dat hybridním připojením (v GB) na jednotku“? Je to údaj za minutu, hodinu, den, týden, nebo měsíc? Co se stane, když je dosaženo limitu hello?
+Hello hybridní připojení cena za jednotku závisí na edici služby BizTalk Services hello. Jednoduše řečeno, cena závisí na tom, kolik dat přenášíte. Třeba přenesení 10 GB dat denně stojí méně než přenos 100 GB denně. Použití hello [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/?scenario=full) pro konkrétní náklady toodetermine BizTalk Services. Hello limity se většinou vynucují denně. Pokud hello limit překročíte, další přenosy výši hello míra 1 USD za GB.
 
-#### <a name="when-i-create-an-agreement-in-biztalk-services-why-does-the-number-of-bridges-go-up-by-two-instead-of-just-one"></a>Když vytvořím ve službě BizTalk Services smlouvu, proč vzroste počet mostů o dva, a ne o jeden?
+#### <a name="when-i-create-an-agreement-in-biztalk-services-why-does-hello-number-of-bridges-go-up-by-two-instead-of-just-one"></a>Po vytvoření ve službě BizTalk Services smlouvu, proč hello počet mostů se nezvyšuje o dva, a ne o jeden?
 Každá smlouva se skládá ze dvou různých mostů: z komunikačního mostu na straně odesílání a z komunikačního mostu na straně příjmu.
 
-#### <a name="what-happens-when-i-hit-the-quota-limit-on-the-number-of-bridges-or-agreements"></a>Co se stane, když dosáhnu maximální kvóty počtu mostů nebo smluv?
-Nebudete moct nasazovat žádné nové mosty ani vytvářet nové smlouvy. Pokud budete chtít nasadit další, budete muset vertikálně navýšit kapacitu na víc jednotek služby BizTalk nebo provést upgrade na vyšší edici.
+#### <a name="what-happens-when-i-hit-hello-quota-limit-on-hello-number-of-bridges-or-agreements"></a>Co se stane, když dosáhnu maximální kvóty hello hello počtu mostů nebo smluv?
+Nebylo možné toodeploy žádné nové mosty nebo vytvářet nové smlouvy. Další toodeploy, musíte tooscale toomore jednotky služby BizTalk hello nebo upgradu tooa vyšší verzi.
 
-#### <a name="how-do-i-migrate-from-one-tier-of-biztalk-services-to-another"></a>Jak provedu migraci z jedné vrstvy služby BizTalk Services na jinou?
-Edice Free neumožňuje migraci ani vertikální navýšení kapacity na jinou vrstvu a nedá se zálohovat a obnovit v jiné vrstvě. Pokud potřebujete jinou vrstvu, vytvořte novou službu BizTalk pomocí nové vrstvy. Všechny artefakty vytvořené pomocí edice Free, včetně hybridních připojení, bude potřeba v nové službě BizTalk znovu vytvořit. 
+#### <a name="how-do-i-migrate-from-one-tier-of-biztalk-services-tooanother"></a>Jak migrovat z jedné vrstvy služby BizTalk Services tooanother?
+edice Free Hello nemůže být migrován nebo "Rozšířená" tooanother vrstvy a nelze jej zálohovat a obnovit tooanother vrstvy. Pokud potřebujete jinou vrstvu, vytvořte novou službu BizTalk pomocí nové vrstvy hello. Všechny artefakty vytvořené pomocí edice Free hello, včetně hybridních připojení, toobe nutné znovu vytvořit v hello novou službu BizTalk. 
 
-U ostatních edic můžete k migraci artefaktů z jedné vrstvy do druhé použít funkci zálohování a obnovení. Můžete třeba zálohovat artefakty na vrstvě Standard a potom je obnovit na vrstvě |Premium. Článek [Služba BizTalk Services: Zálohování a obnovení](biztalk-backup-restore.md) popisuje podporované cesty migrace a uvádí, jaké artefakty se dají zálohovat. Upozorňujeme, že hybridní připojení se nezálohují. Po zálohování a obnovení na nové vrstvě musíte hybridní připojení znovu vytvořit.  
+Pro zbývající edice hello použijte hello zálohování a obnovení pro migraci artefaktů z jedné vrstvy tooanother. Můžete třeba zálohovat artefakty na vrstvě Standard hello a potom je obnovit toohello úroveň Premium. [Služba BizTalk Services: Zálohování a obnovení](biztalk-backup-restore.md) popisuje hello podporované cesty migrace a uvádí, jaké artefakty se dají zálohovat. Upozorňujeme, že hybridní připojení se nezálohují. Po zálohování a obnovení tooa novou vrstvu, pak znovu hello hybridní připojení.  
 
-#### <a name="is-the-biztalk-adapter-service-included-in-the-service-how-do-i-receive-the-software"></a>Je součástí služby i služba BizTalk Adapter Service? Jak tento software získám?
-Ano, součástí [stažení](http://www.microsoft.com/download/details.aspx?id=39087) sady SDK Azure BizTalk Services je také služba BizTalk Adapter Service se sadou BizTalk Adapter Pack.
+#### <a name="is-hello-biztalk-adapter-service-included-in-hello-service-how-do-i-receive-hello-software"></a>Služba BizTalk Adapter Service hello součástí hello služby? Jak získám hello softwaru?
+Ano, jsou součástí hello Azure BizTalk Services SDK hello služba BizTalk Adapter Service se hello sady BizTalk Adapter Pack [Stáhnout](http://www.microsoft.com/download/details.aspx?id=39087).
 
 ## <a name="next-steps"></a>Další kroky
-Pokud chcete vytvořit službu BizTalk Services na webu Azure Portal, přejděte na článek [BizTalk Services: Zřízení pomocí webu Azure Portal](biztalk-provision-services.md). Pokud chcete začít vytvářet aplikace, přejděte na článek [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197).
+toocreate Azure BizTalk Services v hello portálu Azure přejděte příliš[BizTalk Services: zřízení pomocí portálu Azure hello](biztalk-provision-services.md). vytváření aplikací, přejděte příliš toostart[služby Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197).
 
 ## <a name="additional-resources"></a>Další zdroje
-* [BizTalk Services: Zřízení pomocí webu Azure Portal](biztalk-provision-services.md)<br/>
+* [BizTalk Services: Zřízení pomocí hello portálu Azure](biztalk-provision-services.md)<br/>
 * [BizTalk Services: Tabulka stavů zřízení](biztalk-service-state-chart.md)<br/>
 * [BizTalk Services: Karty Řídicí panel, Sledování a Škálování](biztalk-dashboard-monitor-scale-tabs.md)<br/>
 * [BizTalk Services: Zálohování a obnovení](biztalk-backup-restore.md)<br/>
 * [BizTalk Services: Omezování](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk Services: Název a klíč vystavitele](biztalk-issuer-name-issuer-key.md)<br/>
-* [Jak začít používat sadu SDK Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Jak začít používat hello Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 

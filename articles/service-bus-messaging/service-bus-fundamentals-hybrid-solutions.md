@@ -1,6 +1,6 @@
 ---
-title: "Přehled základů služby Azure Service Bus | Dokumentace Microsoftu"
-description: "Úvod do používání Service Bus ke spojení aplikace Azure a jiného softwaru."
+title: "aaaOverview základy Azure Service Bus | Microsoft Docs"
+description: "Úvod toousing Service Bus tooconnect softwaru tooother aplikace Azure."
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
@@ -14,109 +14,109 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/15/2017
 ms.author: sethm
-ms.openlocfilehash: af8b10f0a460e695a39879718174e81f78934ef8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1abd5cf310ef06ba35e1e2489a7c0a07e1797736
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-service-bus"></a>Azure Service Bus
 
-Ať už aplikace nebo služba běží v cloudu nebo lokálně, často potřebuje komunikovat s jinými aplikacemi nebo službami. Microsoft Azure nabízí službu Service Bus, která právě toto výrazně usnadňuje. V tom to článku se podíváme na tuto technologii a na to, proč byste ji mohli chtít používat.
+Zda je aplikace nebo služba běží v cloudu hello nebo lokálně, často potřebuje toointeract s jinými aplikacemi nebo službami. tooprovide toodo široce užitečný způsob, jak tento, nabízí Microsoft Azure Service Bus. Tento článek vypadá na tuto technologii, které popisují, co je a proč byste měli toouse ho.
 
 ## <a name="service-bus-fundamentals"></a>Základy služby Service Bus
 
-Různé situace potřebují různé styly komunikace. Někdy je pro aplikace nejlepším řešením zprávy odesílat a přijímat přes jednoduchou frontu. V jiných situacích běžná fronta nestačí a je lepší použít frontu s publikováním a odběrem. V některých případech stačí jen navázat spojení mezi aplikacemi a fronty nejsou vůbec potřeba. Service Bus poskytuje všechny tři možnosti a umožňuje vašim aplikacím pracovat několika různými způsoby.
+Různé situace potřebují různé styly komunikace. V některých případech odesílat a přijímat zprávy přes jednoduchou frontu je nejlepším řešením hello. V jiných situacích běžná fronta nestačí a je lepší použít frontu s publikováním a odběrem. V některých případech stačí jen navázat spojení mezi aplikacemi a fronty nejsou vůbec potřeba. Service Bus poskytuje všechny tři možnosti, povolení toointeract vaší aplikace v několika různými způsoby.
 
-Service Bus je víceklientská cloudová služba – to znamená, že ji může sdílet několik uživatelů. Každý uživatel, jako třeba vývojář aplikací, vytvoří *obor názvů*, a pak definuje komunikační mechanizmy, které potřebuje v daném oboru názvů. Na obrázku 1 je znázorněno, jak tato architektura vypadá.
+Service Bus je víceklientská Cloudová služba, která znamená, že služba hello je sdílet více uživatelů. Vytvoří každý uživatel, jako třeba vývojář aplikací *obor názvů*, pak definuje komunikační mechanizmy hello potřebné v daném oboru názvů. Na obrázku 1 je znázorněno, jak tato architektura vypadá.
 
 ![][1]
 
-**Obrázek 1: Service Bus poskytuje víceklientské služby pro připojení aplikací přes cloud.**
+**Obrázek 1: Service Bus poskytuje víceklientské služby pro připojení aplikací přes hello cloud.**
 
-V oboru názvů můžete použít jednu nebo víc instancí tří různých komunikačních mechanizmů, každý z nich spojuje aplikace jiným způsobem. Na výběr jsou:
+V oboru názvů můžete použít jednu nebo víc instancí tří různých komunikačních mechanizmů, každý z nich spojuje aplikace jiným způsobem. Hello možnosti jsou:
 
 * *Fronty*, které umožňují jednosměrnou komunikaci. Každá fronta slouží jako prostředník (někdy se tomu říká *zprostředkovatel*), který ukládá odeslané zprávy, dokud nedorazí k příjemci. Každou zprávu přijme jeden příjemce.
-* *Témata*, která nabízejí jednosměrnou komunikaci pomocí *odběrů* – jedno téma může mít několik odběrů. Podobně jako u front je téma něco jako zprostředkovatel, ale každý odběr může volitelně používat filtr a přijímat jen zprávy, které odpovídají konkrétním kritériím.
-* *Předávání*, které umožňuje jednosměrnou komunikaci. Na rozdíl od front a témat se při předávání neukládají žádné zprávy; nejedná se o zprostředkování. Naopak se zprávy jednoduše předají k cílové aplikaci.
+* *Témata*, která nabízejí jednosměrnou komunikaci pomocí *odběrů* – jedno téma může mít několik odběrů. Podobně jako u front je téma něco jako zprostředkovatel, ale každý odběr může volitelně používat pouze zprávy filtru tooreceive, které odpovídají konkrétním kritériím.
+* *Předávání*, které umožňuje jednosměrnou komunikaci. Na rozdíl od front a témat se při předávání neukládají žádné zprávy; nejedná se o zprostředkování. Místo toho se zprávy jednoduše předají na toohello cílové aplikaci.
 
-Když vytvoříte frontu, téma nebo předávání, musíte je pojmenovat. Kombinace tohoto názvu a vašeho oboru názvů vytváří jedinečný identifikátor objektu. Aplikace můžou tento název poskytnout službě Service Bus, a pak pomocí této fronty, tématu nebo předávání mezi sebou komunikovat. 
+Když vytvoříte frontu, téma nebo předávání, musíte je pojmenovat. Tento název kombinace názvem vašeho oboru názvů, vytvoří jedinečný identifikátor pro objekt hello. Aplikace můžete zadat Tento název tooService sběrnice a pak vzájemně prostřednictvím této fronty, tématu nebo toocommunicate předávání. 
 
-Pokud aplikace Windows chtějí tyto objekty používat ve scénáři přenosu, můžou využít WCF (Windows Communication Foundation). Tato služba se označuje jako [přenos WCF](../service-bus-relay/relay-what-is-it.md). Pro fronty a témata můžou aplikace Windows použít API pro přenos zpráv, které definuje služba Service Bus. Pro snadnější použití těchto objektů z aplikací pro jinou platformu než Windows uvolnil Microsoft sady SDK pro Javu, Node.js a další jazyky. Přístup k frontám a tématům se může získat i pomocí [REST API](/rest/api/servicebus/) přes HTTP(s). 
+aplikace systému Windows toouse některý z těchto objektů v hello předávání scénáři, můžete použít Windows Communication Foundation (WCF). Tato služba se označuje jako [přenos WCF](../service-bus-relay/relay-what-is-it.md). Pro fronty a témata můžou aplikace Windows použít API pro přenos zpráv, které definuje služba Service Bus. toomake tyto objekty jednodušší toouse z aplikací systému Windows, Microsoft sady SDK pro jazyk Java, Node.js a další jazyky. Přístup k frontám a tématům se může získat i pomocí [REST API](/rest/api/servicebus/) přes HTTP(s). 
 
-Je důležité pochopit, že i když služba Service Bus samotná běží v cloudu (to znamená v datových centrech Microsoftu pro Azure), aplikace, které ji využívají, můžou běžet kdekoli. Service Bus můžete použít třeba k připojení aplikací běžících v Azure nebo aplikací běžících ve vašem vlastním datovém centru. Můžete ji použít i k připojení aplikace běžící v Azure nebo jiné cloudové službě k lokální službě nebo k mobilním zařízením,jako jsou tablety a telefony. Dokonce s ní můžete připojit domácí spotřebiče, senzory a jiná zařízení k centrální aplikaci nebo k jiným zařízením. Service Bus je komunikační mechanizmus v cloudu, který je přístupný prakticky odkudkoli. To, jakým způsobem ho budete využívat, záleží jen na tom, co vaše aplikace potřebují dělat.
+Je důležité toounderstand, který i v případě, že je služba Bus samotná běží v cloudu hello (to znamená v datových centrech společnosti Microsoft Azure), aplikace, které ho používají, můžou běžet kdekoli. Můžete použít Service Bus tooconnect aplikace běžící v Azure, například nebo aplikacemi spuštěnými ve svém vlastním datovém centru. Můžete ji použít i tooconnect aplikace běžící v Azure nebo jiné cloudové platformy místní aplikace nebo s tabletů a telefonů. Je dokonce tooconnect domácí spotřebiče, senzory a jiná zařízení tooa centrální aplikace nebo tooone jiné. Service Bus je komunikační mechanizmus v cloudu hello, který je přístupný prakticky odkudkoli. Způsob, jakým používáte závisí na to, jaké aplikace musí toodo.
 
 ## <a name="queues"></a>Fronty
 
-Řekněme, že jste se rozhodli spojit dvě aplikace pomocí fronty Service Bus. Na obrázku 2 je taková situace.
+Předpokládejme, že se že rozhodnete tooconnect dvě aplikace pomocí fronty Service Bus. Na obrázku 2 je taková situace.
 
 ![][2]
 
 **Obrázek 2: Fronty Service Bus poskytují jednosměrné asynchronní řízení front zpráv.**
 
-Tento proces je prostý: Odesílatel odešle zprávu do fronty Service Bus a příjemce si ji z fronty vyzvedne později. Je možné, aby fronta měla pouze jednoho příjemce, jak je znázorněno na obrázku 2. Ze stejné fronty může také číst více aplikací. V druhém případě přečte každou zprávu pouze jeden příjemce. Pro službu přetypování byste měli raději použít téma.
+Hello proces je prostý: odesílatel odešle zprávu tooa fronty Service Bus a příjemce převezme zprávy později. Je možné, aby fronta měla pouze jednoho příjemce, jak je znázorněno na obrázku 2. Nebo více aplikací může číst z hello stejné fronty. V druhé situaci hello každou zprávu přečte jen jeden příjemce. Pro službu přetypování byste měli raději použít téma.
 
-Každá zpráva má dvě části: skupinu vlastností ve formě dvojice klíč+hodnota a tělo zprávy. Tělo zprávy může mít formát binární, textový nebo i XML. Jejich použití závisí na tom, co se vaše aplikace snaží udělat. Například jedna aplikace odešle zprávu o nedávném prodeji, která může obsahovat třeba tyto údaje: **Seller="Ava"** a **Amount=10000**. Tělo zprávy může obsahovat naskenovaný snímek podepsané smlouvy o prodeji nebo nemusí obsahovat nic a může zůstat prázdné.
+Každá zpráva má dvě části: skupinu vlastností ve formě dvojice klíč+hodnota a tělo zprávy. datová část Hello může být binární, text nebo i XML. Jak používají závisí na jaké aplikace se pokouší toodo. Aplikace odešle zprávu o poslední prodej může obsahovat třeba hello vlastnosti **Seller = "Ava"** a **velikost = 10 000**. tělo zprávy Hello může obsahovat naskenovaný systému podepsané smlouvy hello prodej, nebo pokud není k dispozici, zůstat prázdné.
 
-Příjemce může zprávu načíst z fronty Service Bus dvěma různými způsoby. První možnost se jmenuje *[ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode)* (přijmout a odstranit) – odebere zprávu z fronty a okamžitě ji odstraní. Tento způsob je velmi jednoduchý, ale pokud příjemce spadne, než se mu podaří zprávu zpracovat, zprávu ztratí. A protože se už odstranila z fronty, nemůže ji získat ani žádný jiný příjemce. 
+Příjemce může zprávu načíst z fronty Service Bus dvěma různými způsoby. Hello první možnost se jmenuje  *[ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode)*, odstraní zprávu z fronty hello a okamžitě ji odstraní. Tato možnost je jednoduchá, ale pokud hello příjemce spadne, než se dokončí zpracování zprávy hello, dojde ke ztrátě uvítací zprávu. Proto je byla odebrána z fronty hello, ani žádný jiný příjemce k němu přístup. 
 
-Druhá možnost se jmenuje *[PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode)* (uzamknout pro zpracování) a jejím smyslem je vyřešit právě tento problém. Stejně jako v případě **ReceiveAndDelete** se při čtení **PeekLock** zpráva odebere z fronty. Jenže se při tom neodstraní úplně. Místo toho se zpráva jen uzamkne, aby nebyla vidět pro ostatní příjemce, a pak čeká na jednu ze tří událostí:
+Druhá možnost se Hello  *[PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode)*, je určen toohelp se tento problém. Jako **ReceiveAndDelete**, **PeekLock** čtení odebere zprávu z fronty hello. Uvítací zprávu, nedojde ale k odstranění. Místo toho zamkne uvítací zprávu, což neviditelná tooother příjemců, pak čeká na jednu ze tří událostí:
 
-* Pokud příjemce zprávu úspěšně zpracuje, zavolá [Complete()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) a fronta zprávu odstraní. 
-* Pokud se příjemce rozhodne, že nedokáže zprávu úspěšně zpracovat, zavolá [Abandon()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon). Fronta pak zruší zámek zprávy a ta je pak znovu dostupná pro ostatní příjemce.
-* Pokud příjemce v nastaveném časovém limitu nezavolá ani jednu z těchto metod (ve výchozím nastavení je to 60 sekund), fronta předpokládá, že příjemce selhal. V takovém případě se fronta chová jako kdyby příjemce zavolal **Abandon** a zpřístupní zprávu dalším příjemcům.
+* Pokud příjemce procesy hello hello zprávy úspěšně, zavolá [Complete()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete), a odstraní fronty hello uvítací zprávu. 
+* Pokud se hello příjemce rozhodne, že nelze zpracovat zprávu hello úspěšně, zavolá [Abandon()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon). fronty Hello pak hello zámku odebere uvítací zprávu a je k dispozici tooother příjemci.
+* Volá-li hello příjemce ani jeden z těchto metod v nastaveném časovém intervalu (ve výchozím nastavení 60 sekund), hello fronta předpokládá, že hello příjemce selhal. V takovém případě se chová jako kdyby hello příjemce zavolal **Abandon**, provedení hello zprávy k dispozici tooother příjemci.
 
-Všimněte si, co se tu může stát: Stejná zpráva se může dodat dvakrát, třeba i dvěma různým příjemcům. Aplikace, které používají fronty Service Bus, na tuto možnost musí být připravené. Pro usnadnění detekce duplicitních zpráv má každá zpráva jedinečnou vlastnost [MessageID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId), která ve výchozím nastavení zůstává pro danou zprávu vždy stejná bez ohledu na to, kolikrát se přečte z fronty. 
+Všimněte si, co se tu může stát: hello stejná zpráva se může dodat dvakrát, případně tootwo různým příjemcům. Aplikace, které používají fronty Service Bus, na tuto možnost musí být připravené. toomake detekce duplicitních jednodušší, každá zpráva má jedinečnou [MessageID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) vlastnost, která ve výchozím nastavení hello zůstává stejný bez ohledu na to, jak často uvítací zprávu je pro čtení z fronty. 
 
-Fronty jsou užitečné v mnoha situacích. Umožňují aplikacím komunikovat, i když nejsou spuštěné ve stejnou dobu – to se hodí především pro dávkové a mobilní aplikace. Fronta s několika příjemci taky poskytuje automatické vyvažování zátěže, protože odeslané zprávy se rozdělují mezi jednotlivé příjemce.
+Fronty jsou užitečné v mnoha situacích. Umožňují aplikacím toocommunicate i v případě, že nejsou spuštěné ve hello stejný čas, to se hodí především pro dávkové a mobilní aplikace. Fronta s několika příjemci taky poskytuje automatické vyvažování zátěže, protože odeslané zprávy se rozdělují mezi jednotlivé příjemce.
 
 ## <a name="topics"></a>Témata
 
-Přestože jsou fronty velice užitečné, nemusí se vždy jednat o to nejlepší řešení. Někdy je lepší použít témata Service Bus. Na obrázku 3 je taková situace.
+Je užitečná, protože se jedná o, fronty nejsou vždy hello správné řešení. Někdy je lepší použít témata Service Bus. Na obrázku 3 je taková situace.
 
 ![][3]
 
-**Obrázek 3: V závislosti na použitém filtru může odběratelská aplikace přijímat všechny nebo jen některé zprávy odeslané do tématu Service Bus.**
+**Obrázek 3: V závislosti na hello filtru může odběratelská aplikace, může přijímat, některé nebo všechny zprávy hello odeslaných tooa tématu Service Bus.**
 
-*Téma* se ve spoustě ohledů podobá frontě. Odesílatelé odesílají zprávy do tématu stejným způsobem jako do fronty a zprávy v tématu vypadají stejně jako zprávy ve frontě. Rozdíl je ale v tom, že témata umožňují každé aplikaci, aby si pomocí *filtru* vytvořila vlastní *odběr*. Odběratel pak uvidí jen zprávy, které odpovídají použitému filtru. Na obrázku 3 je například téma se třemi odběrateli a každý z nich používá vlastní filtr.
+A *tématu* je podobný ve frontě tooa mnoha způsoby. Odesílatelé odeslání zprávy tooa téma v hello stejným způsobem, kteří odesílají zprávy tooa fronty, a tyto vzhled zprávy hello stejné jako u front. Hello rozdílem je, že témata umožňují každé přijímající aplikace toocreate vlastní *předplatné* definováním *filtru*. Odběratel pak uvidí jen hello zprávy, které odpovídají použitému filtru. Na obrázku 3 je například téma se třemi odběrateli a každý z nich používá vlastní filtr.
 
-* Odběratel 1 přijímá jen zprávy, které mají určitou vlastnost *Seller="Ava"*.
-* Odběratel 2 přijímá zprávy, které mají vlastnost *Seller="Ruby"* a/nebo mají vlastnost *Amount* s hodnotou vyšší než 100 000. Možná je Ruby manažerka prodeje, takže chce vidět svoje prodeje a všechny velké prodeje bez ohledu na to, čí jsou.
-* Odběratel 3 má nastavený filtr *True* – to znamená, že přijímá všechny zprávy. Tato aplikace může mít například na starost udržování auditní stopy a proto potřebuje vidět všechny zprávy.
+* Odběratel 1 přijímá jen zprávy, které obsahují vlastnost hello *Seller = "Ava"*.
+* Odběratel 2 přijímá zprávy, které obsahují vlastnost hello *Seller = "Ruby"* a/nebo mají *velikost* vlastnost, jehož hodnota je vyšší než 100 000. Možná je Ruby manažerka prodeje hello, takže chce toosee svoje prodeje a všechny velké prodeje bez ohledu na to, čí jsou.
+* Odběratel 3 má nastavený filtr příliš*True*, což znamená, že přijímá všechny zprávy. Například tato aplikace může mít starost udržování auditní stopy a proto je nutné toosee všechny zprávy hello.
 
-Stejně jako v případě front můžou odběratelé tématu načítat zprávy buď způsobem [ReceiveAndDelete, nebo PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode). Na rozdíl od front se ale jedna zpráva odeslaná do tématu může dostat k více odběratelům předplatných. Tomuto přístupu se obvykle říká *publikování a odběr* (nebo *pub/sub*)a je vhodný v každé situaci, kde se o stejné zprávy zajímá několik aplikací. Pokud odběratel definuje vhodný filtr, může si z proudu zpráv vytáhnout jen ty, které potřebuje.
+Jako v případě front můžou Odběratelé tématu tooa načítat zprávy způsobem buď [ReceiveAndDelete a PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode). Na rozdíl od front se ale do jedné zprávy odeslané tooa tématu lze přijímat pomocí více předplatných. Tento přístup, označovaného jako *publikování a odběr* (nebo *pub nebo sub*), je užitečné v případě, že více aplikací jsou zajímá hello stejné zprávy. Definováním hello vhodný filtr může klepnout každého odběratele do jenom hello část, je nutné toosee hello datového proudu zpráv.
 
 ## <a name="relays"></a>Předávání
 
-Fronty i témata nabízejí jednosměrnou asynchronní komunikaci přes zprostředkovatele. Zprávy proudí jen jedním směrem a mezi odesílateli a příjemci není žádné přímé spojení. Co když ale toto připojení nechcete? Řekněme, že aplikace potřebují odesílat i přijímat zprávy nebo že mezi nimi třeba chcete vytvořit přímé spojení a nepotřebujete zprostředkovatele pro ukládání zpráv. Pro takovou situaci Service Bus nabízí možnost *přenosu*, jak je vidět na obrázku 4.
+Fronty i témata nabízejí jednosměrnou asynchronní komunikaci přes zprostředkovatele. Zprávy proudí jen jedním směrem a mezi odesílateli a příjemci není žádné přímé spojení. Co když ale toto připojení nechcete? Předpokládejme, že vaše aplikace potřebují tooboth odesílat a přijímat zprávy, nebo možná má přímé propojení mezi nimi a nepotřebujete zprostředkovatele toostore zprávy. tooaddress scénáře, jako je to, Service Bus poskytuje *předává*, jak ukazuje obrázek 4.
 
 ![][4]
 
 **Obrázek 4: Předávání přes Service Bus nabízí synchronní obousměrnou komunikaci mezi aplikacemi.**
 
-Asi vás napadne otázka týkající se přenosu: K čemu by se mi tohle hodilo? I když nepotřebuju fronty, proč mám nutit aplikace komunikovat přes cloudovou službu, když chci, aby komunikovaly přímo? Odpověď je taková, že přímá komunikace je někdo mnohem obtížnější, než by se mohlo zdát.
+Hello napadne otázka tooask asi je toto: Proč ji používat? I když není zapotřebí fronty, proč nutit aplikace komunikovat přes cloudovou službu a nikoli jen komunikovaly přímo? odpověď Hello je, že rozhovoru přímo může být obtížnější než si myslíte.
 
-Řekněme, že chcete propojit dvě lokální aplikace, které obě běží ve firemních datových centrech. Každá z těchto aplikací je za firewallem a každé datové centrum pravděpodobně používá překládání adres (NAT). Firewall povoluje data jen na několika málo portech a ostatní porty blokuje, zatímco NAT naznačuje, že ani jeden z počítačů, na kterých aplikace běží, nemá pevnou IP adresu, takže z jiné zóny, než je zóna jejího datového centra, se k ní nedá dostat přímo. Bez pomoci specializovaných nástrojů půjdou tyto aplikace propojit přes internet jen těžko.
+Předpokládejme, že chcete tooconnect dva místních aplikací, které obě běží ve firemních datových centrech. Každá z těchto aplikací je za firewallem a každé datové centrum pravděpodobně používá překládání adres (NAT). Brána firewall blokuje Hello příchozích dat na všech ale několik portů a NAT znamená, že hello počítače, které jednotlivé aplikace běží na nemá pevnou IP adresu, která můžete dosáhnout přímo z mimo hello datového centra. Bez pomoci specializovaných nástrojů tyto aplikace připojující se přes hello veřejný internet jen těžko.
 
-Service Bus relay může pomoci. Aby aplikace mohly komunikovat obousměrně s předáváním, každá z nich vytvoří odchozí připojení přes TCP se službou Service Bus a udržuje ho otevřené. Veškerá komunikace mezi těmito dvěma aplikacemi bude procházet přes tato spojení. Protože se obě spojení vytvořila ze zóny datového centra, firewall povolí veškerou příchozí komunikaci pro danou aplikaci bez nutnosti otevřít nové porty. Tento přístup také obchází problém s NAT, protože každá z obou aplikací má v cloudu vlastní pevný koncový bod. Výměnou dat přes předávací službu se aplikace můžou vyhnout problémům, které by jinak takovou komunikaci výrazně ztěžovaly. 
+Service Bus relay může pomoci. toocommunicate obousměrně s předáváním, každá aplikace navázat odchozí připojení TCP se Service Bus a udržuje ho otevřené. Veškerá komunikace mezi dvěma aplikacemi hello přenáší přes tato spojení. Protože se obě spojení vytvořila ze uvnitř hello datacenter hello brána firewall umožňuje příchozí provoz tooeach aplikace bez otevřít nové porty. Tento přístup také obchází problém hello NAT, protože každá aplikace má koncový bod konzistentní v cloudu hello hello komunikace. Výměnou dat přes předávací hello hello aplikace můžou vyhnout hello problémy, které by jinak takovou komunikaci výrazně ztěžovaly. 
 
-Pokud aplikace chtějí používat předávání přes Service Bus, můžou využít WCF (Windows Communication Foundation). Service Bus poskytuje vazby WCF, které aplikacím Windows ulehčují komunikaci přes předávací službu. Pro aplikace, které už WCF používají, obvykle stačí specifikovat jednu z těchto vazeb a potom můžou komunikovat přes předávací službu. Na rozdíl od front a témat ale komunikace přes předávací službu z aplikací na jiné platformě než Windows vyžaduje určitou míru programátorského úsilí, protože nejsou k dispozici žádné standardizované knihovny.
+předává toouse Service Bus, aplikací závisí na hello Windows Communication Foundation (WCF). Service Bus poskytuje vazby WCF, které ulehčují toointeract aplikací systému Windows přes předávací službu. Aplikace, které už WCF používají obvykle můžete určit jednu z těchto vazeb pak komunikovat tooeach jiných přes předávací službu. Na rozdíl od front a témat ale komunikace přes předávací službu z aplikací na jiné platformě než Windows vyžaduje určitou míru programátorského úsilí, protože nejsou k dispozici žádné standardizované knihovny.
 
-A na rozdíl od front a témat taky aplikace nevytvářejí explicitně předávací službu. Místo toho se stane, že když aplikace chce dostávat zprávy, vytvoří spojení se službou Service Bus přes TCP a předávací služba se vytvoří automaticky. Při ukončení spojení se předávací služba odstraní. Aby aplikace mohly najít předávací službu vytvořenou konkrétním posluchačem, Service Bus aplikacím poskytuje registr, který jim umožní najít konkrétní předávací službu podle názvu.
+A na rozdíl od front a témat taky aplikace nevytvářejí explicitně předávací službu. Místo toho když aplikace, která tooreceive zprávy, které vytvoří připojení TCP se Service Bus, přenos se vytvoří automaticky. Když hello připojení se ukončí, hello předávací služba odstraní. tooenable předávání hello toofind aplikaci vytvořili konkrétním posluchačem, Service Bus poskytuje registr, který umožňuje aplikacím toolocate konkrétní předávací službu podle názvu.
 
-Předávací služby jsou správným řešením v situaci, když potřebujete přímou komunikaci mezi aplikacemi. Řekněme třeba, že systém pro rezervaci letenek běží na lokálním datovém centru, ke kterému musí mít přístup prodejní místa, mobilní zařízení a další počítače. Aplikace, které běží na všech těchto systémech, by mohly ke komunikaci použít předávací služby Service Bus v cloudu, a bylo by jedno, kde běží.
+Předávací služby jsou správným řešením hello když potřebujete přímou komunikaci mezi aplikacemi. Řekněme třeba, že systém pro rezervaci letenek běží na lokálním datovém centru, ke kterému musí mít přístup prodejní místa, mobilní zařízení a další počítače. Aplikace běžící v těchto systémech může spoléhají na předávací služby Service Bus v cloudu toocommunicate hello, kde může být spuštěn.
 
 ## <a name="summary"></a>Souhrn
 
-Propojení aplikací vždy patřilo k budování kompletních řešení a množství situací, ve kterých spolu aplikace a služby musí komunikovat, se s rostoucím počtem zařízení připojených k internetu bude dál zvyšovat. Služba Service Bus poskytuje cloudové technologie pro zajištění komunikace prostřednictvím front, témat a předávání, aby tuto základní funkci aplikacím a službám umožnil, usnadnil a více zpřístupnil.
+Propojení aplikací vždy patřilo budování kompletních řešení a hello rozsah scénáře, které vyžadují aplikace a služby toocommunicate mezi sebou nastaven tooincrease víc aplikací a zařízení jsou připojené toohello Internetu. Poskytnutím cloudové technologie k dosažení komunikaci prostřednictvím fronty, témata a předávací službu Service Bus cílem je toomake jednodušší tooimplement tuto základní funkci a více zpřístupnil.
 
 ## <a name="next-steps"></a>Další kroky
 
-Dozvěděli jste se základní informace službě Azure Service Bus, další informace se dozvíte na následujících odkazech.
+Teď, když jste se naučili základy hello Azure Service Bus, postupujte podle těchto odkazů toolearn Další.
 
-* Jak používat [fronty Service Bus](service-bus-dotnet-get-started-with-queues.md)
-* Jak používat [témata Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)
-* Jak používat [předávání přes Service Bus](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md)
+* Jak toouse [fronty Service Bus](service-bus-dotnet-get-started-with-queues.md)
+* Jak toouse [témat sběrnice Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+* Jak toouse [předávání přes Service Bus](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md)
 * [Ukázky služby Service Bus](service-bus-samples.md)
 
 [1]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_01_architecture.png

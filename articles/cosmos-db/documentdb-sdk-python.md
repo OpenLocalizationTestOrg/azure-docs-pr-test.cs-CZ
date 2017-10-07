@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB Python rozhraní API, sadu SDK a prostředky | Microsoft Docs"
-description: "Další informace o rozhraní API pro Python a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi sady Azure Cosmos DB Python SDK."
+title: "aaaAzure Cosmos DB Python rozhraní API, sadu SDK a prostředky | Microsoft Docs"
+description: "Další informace o hello rozhraní API jazyka Python a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi hello Azure Cosmos DB Python SDK."
 services: cosmos-db
 documentationcenter: python
 author: rnagpal
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70d2550f713ff0e9daed235eb8053589b8682633
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 1a164b72d2bd819de87df0229357b82e2177af2f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cosmos-db-python-sdk-release-notes-and-resources"></a>Azure Python Cosmos DB SDK: Poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -43,9 +43,9 @@ ms.lasthandoff: 08/18/2017
 
 <tr><td>**Pokyny k instalaci sady SDK**</td><td>[Pokyny k instalaci Python SDK](http://azure.github.io/azure-documentdb-python/)</td></tr>
 
-<tr><td>**Můžete přispět k sadě SDK**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-python)</td></tr>
+<tr><td>**Přispívat tooSDK**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-python)</td></tr>
 
-<tr><td>**Začínáme**</td><td>[Začínáme s Python SDK](documentdb-python-application.md)</td></tr>
+<tr><td>**Začínáme**</td><td>[Začínáme s hello Python SDK](documentdb-python-application.md)</td></tr>
 
 <tr><td>**Aktuální podporované platformy**</td><td>[Python 2.7](https://www.python.org/downloads/) a [Python 3.5](https://www.python.org/downloads/)</td></tr>
 </table></br>
@@ -58,13 +58,13 @@ ms.lasthandoff: 08/18/2017
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * Přidaná podpora pro dotazy agregace (COUNT, MIN, MAX, součet a průměr).
 * Přidat možnost pro zákaz protokolu SSL ověření při spuštění emulátoru DB Cosmos.
-* Odebrat závislé požadavky modulu být přesně 2.10.0 omezení.
-* Snížena minimální propustnosti na dělené kolekce z 10,100 RU/s na 2 500 RU/s.
+* Odebrat závislé požadavky modulu toobe přesně 2.10.0 hello omezením.
+* Snížena minimální propustnosti na dělené kolekce z 10,100 RU/s too2500 RU/s.
 * Přidaná podpora pro povolení protokolování skriptu během provádění uložené procedury.
-* Verze rozhraní REST API bumped k 2017-01-19' v této verzi.
+* Verze rozhraní REST API bumped příliš ' 2017-01-19' v této verzi.
 
 ### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
-* Redakční změny provedené v dokumentační komentáře.
+* Redakční změny provedené toodocumentation komentáře.
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
 * Přidaná podpora pro Python 3.5.
@@ -73,33 +73,33 @@ ms.lasthandoff: 08/18/2017
 * Byla přidána podpora pro dotazy na nejvyšší nebo ORDERBY pro dělené kolekce.
 
 ### <a name="a-name190190"></a><a name="1.9.0"/>1.9.0
-* Podpora zásad přidané opakování omezenému požadavky. (Omezenému požadavky obdrží žádost o míra příliš velký výjimka, kód chyby 429.) Ve výchozím nastavení Azure Cosmos DB opakuje devětkrát pro každý požadavek vyskytne kód chyby 429, aby byla dodržena retryAfter čas v hlavičku odpovědi. Časový interval opakování pevné lze nyní nastavit jako součást RetryOptions vlastnost v objektu ConnectionPolicy Pokud budete chtít ignorovat čas retryAfter vrácená serverem mezi jednotlivými pokusy o odeslání. Azure Cosmos DB nyní čeká maximálně 30 sekund pro každý požadavek, který je omezené (bez ohledu na počet opakování) a vrátí odpověď s kódem chyby 429. Tento čas může být také elementem ve vlastnosti RetryOptions ConnectionPolicy objektu.
-* Cosmos DB nyní vrátí x-ms omezení--počet opakování a x-ms-throttle-retry-wait-time-ms jako opakovat hlavičky odpovědi v každé žádosti k označení omezení počtu a cummulative čas požadavku čekali mezi jednotlivými pokusy o odeslání.
-* Odebrat RetryPolicy třídu a vlastnost odpovídající (retry_policy) zveřejněné na třídě document_client a místo toho zavedl třídu RetryOptions vystavení vlastnost RetryOptions u ConnectionPolicy třídy, které je možné přepsat některé výchozí možnosti opakování.
+* Podpora zásad přidané opakování omezenému požadavky. (Omezenému požadavky obdrží žádost o míra příliš velký výjimka, kód chyby 429.) Ve výchozím nastavení Azure Cosmos DB opakuje devětkrát pro každý požadavek vyskytne kód chyby 429, aby byla dodržena hello retryAfter čas v hlavičku odpovědi hello. Časový interval opakování pevné lze nyní nastavit jako součást hello RetryOptions vlastnost u objektu ConnectionPolicy hello Pokud chcete, aby tooignore hello retryAfter čas vrácená serverem mezi opakovanými pokusy hello. Azure Cosmos DB nyní čeká maximálně 30 sekund pro každý požadavek, který je omezené (bez ohledu na počet opakování) a vrátí odpověď hello s kódem chyby 429. Tento čas může být také elementem v hello RetryOptions vlastnost ConnectionPolicy objektu.
+* Cosmos DB nyní vrátí x-ms omezení--počet opakování a x-ms-throttle-retry-wait-time-ms jako hello hlavičky odpovědi v každé žádosti toodenote hello omezení počtu a hello cummulative čas požadavku hello čekali mezi opakovanými pokusy hello zkuste provést znovu.
+* Odebrané hello RetryPolicy třídy a odpovídající vlastnosti hello (retry_policy) vystavený pro třídu document_client hello a místo toho zavedl třídu RetryOptions vystavení hello RetryOptions vlastnost ConnectionPolicy třídu, která lze použít toooverride Některé hello výchozí možnosti opakování.
 
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
-* Přidaná podpora pro účty databáze více oblast.
+* Podpora přidání hello účty databáze více oblast.
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
-* Přidaná podpora pro funkce čas k Live(TTL) pro dokumenty.
+* Přidání hello podporu pro funkci tooLive(TTL) čas pro dokumenty.
 
 ### <a name="a-name161161"></a><a name="1.6.1"/>1.6.1
-* Opravy chyb související s serveru straně vytváření oddílů umožňuje speciální znaky v cestě klíč oddílu.
+* Opravy chyb souvisejících s tooserver straně dělení tooallow speciální znaky v cestě klíč oddílu.
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
 * Implementovat [oddíly kolekce](partition-data.md) a [úrovně výkonu uživatelem definované](performance-levels.md). 
 
 ### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
-* Přidejte hodnotu Hash p & ro oddílu překladače pomoct s aplikacemi horizontálního dělení napříč více oddílů.
+* Přidejte hodnotu Hash p & ro tooassist překladače oddílu s horizontálního dělení aplikacemi v rámci více oddílů.
 
 ### <a name="a-name142142"></a><a name="1.4.2"/>1.4.2
-* Implementujte Upsert. Přidaná kvůli podpoře funkcí Upsert nové metody UpsertXXX.
+* Implementujte Upsert. Přidat nové metody UpsertXXX toosupport Upsert funkce.
 * Implementujte, na základě ID směrování. Žádné změny veřejné rozhraní API, všechny změny interní.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 * Podporuje geoprostorové index.
 * Ověří vlastnost id pro všechny prostředky. Identifikátory prostředků nesmí obsahovat?, /, #, \, znaků nebo končit mezerou.
-* Přidá nové záhlaví "index transformace průběh" ResourceResponse.
+* Přidá nový tooResourceResponse "průběh transformace index" záhlaví.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 * Implementuje zásady indexování V2.
@@ -111,14 +111,14 @@ ms.lasthandoff: 08/18/2017
 * GA SDK.
 
 ## <a name="release--retirement-dates"></a>Verze & vyřazení kalendářních dat
-Microsoft bude poskytovat oznámení alespoň **dobu 12 měsíců** předem vyřazení sady SDK k funkce smooth přechodu na novější nebo podporované verzi.
+Microsoft bude poskytovat oznámení alespoň **dobu 12 měsíců** před vyřazením z provozu v pořadí toosmooth hello přechod tooa novější nebo v nepodporované verzi sady SDK.
 
-Nové funkce a funkce a optimalizace, jsou přidány pouze v aktuální sadě SDK, jako takový je doporučujeme, aby vždy upgradu na nejnovější verze sady SDK v míře. 
+Nové funkce a funkce a optimalizace, jsou přidány pouze aktuální toohello SDK a jako takový je, že jste vždy upgradu toohello nejnovější verze sady SDK, abyste co nejdříve. 
 
-Každá žádost o DB Cosmos pomocí vyřazeno sady SDK budou odmítnuty službou.
+Všechny žádosti o tooCosmos DB pomocí vyřazeno sady SDK budou odmítnuty službou hello.
 
 > [!WARNING]
-> Všechny verze sady Azure DocumentDB SDK pro jazyk Python starší než verze **1.0.0** vyřadí na **29. února 2016**. 
+> Všechny verze hello Azure DocumentDB SDK pro Python předchozí tooversion **1.0.0** vyřadí na **29. února 2016**. 
 > 
 > 
 
@@ -152,5 +152,5 @@ Každá žádost o DB Cosmos pomocí vyřazeno sady SDK budou odmítnuty službo
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Viz také
-Další informace o Cosmos DB najdete v tématu [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stránku služby. 
+toolearn Další informace o Cosmos databáze, najdete v části [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stránku služby. 
 

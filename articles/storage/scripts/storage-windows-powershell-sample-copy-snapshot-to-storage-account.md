@@ -1,6 +1,6 @@
 ---
-title: "Azure ukázkový skript prostředí PowerShell - Export nebo zkopírování snímku jako virtuální pevný disk na účet úložiště v jiné oblasti. | Microsoft Docs"
-description: "Azure ukázkový skript prostředí PowerShell - Export nebo zkopírování snímku jako virtuální pevný disk na účet úložiště ve stejné oblasti jiné"
+title: "aaaAzure ukázka skriptu prostředí PowerShell - Export nebo zkopírování snímku jako účet úložiště tooa virtuálního pevného disku v jiné oblasti. | Microsoft Docs"
+description: "Azure ukázkový skript prostředí PowerShell - Export nebo zkopírování snímku jako účet úložiště tooa virtuální pevný disk ve stejné oblasti jiné"
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 80f83f4b66165ddd2bdd0edca2be5d026cb11a9b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3b3e38c6b06bfa1e117f4e913dfc09443a795196
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Export nebo zkopírování spravované snímků jako virtuální pevný disk na účet úložiště v jiné oblasti pomocí prostředí PowerShell
+# <a name="exportcopy-managed-snapshots-as-vhd-tooa-storage-account-in-different-region-with-powershell"></a>Export nebo zkopírování spravované snímků jako účet úložiště tooa virtuálního pevného disku v jiné oblasti pomocí prostředí PowerShell
 
-Tento skript exporty spravované snímku na účet úložiště v jiné oblasti. Nejprve generuje identifikátor URI SAS snímku a používá je zkopírovat do účtu úložiště v jiné oblasti. Tento skript lze použijte k udržování zálohování spravované disky v jiné oblasti pro obnovení po havárii.  
+Tento skript exportuje účtu úložiště spravovaného snímku tooa v jiné oblasti. Nejprve generuje hello identifikátor URI pro SAS hello snímku a používá je toocopy ho tooa účet úložiště v jiné oblasti. Použijte tuto zálohu toomaintain skriptu spravované disky v jiné oblasti pro obnovení po havárii.  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -31,18 +31,18 @@ Tento skript exporty spravované snímku na účet úložiště v jiné oblasti.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-powershell[hlavní](../../../powershell_scripts/storage/copy-snapshot-to-storage-account/copy-snapshot-to-storage-account.ps1 "kopírování snímku")]
+[!code-powershell[main](../../../powershell_scripts/storage/copy-snapshot-to-storage-account/copy-snapshot-to-storage-account.ps1 "Copy snapshot")]
 
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá tyto příkazy ke generování identifikátor URI pro SAS pro spravované snímek a zkopíruje snímku na účet úložiště pomocí SAS URI. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá následující příkazy toogenerate tooa účet úložiště pomocí SAS URI pořízení snímku identifikátor URI pro SAS pro spravované hello snímku a kopií. Každý příkaz v hello tabulky odkazů toocommand konkrétní dokumentaci.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Udělení AzureRmSnapshotAccess](/powershell/module/azurerm.compute/New-AzureRmDisk) | Identifikátor URI pro SAS se generuje pro snímek, který se používá ke zkopírování na účet úložiště. |
-| [Nové AzureStorageContext](/powershell/module/azure.storage/New-AzureStorageContext) | Vytvoří kontext účtu úložiště pomocí názvu účtu a klíč. Tento kontext lze použít k provedení operace čtení a zápisu v účtu úložiště. |
-| [Počáteční AzureStorageBlobCopy](/powershell/module/azure.storage/Start-AzureStorageBlobCopy) | Zkopíruje základní virtuální pevný disk snímku na účet úložiště |
+| [Udělení AzureRmSnapshotAccess](/powershell/module/azurerm.compute/New-AzureRmDisk) | Vygeneruje SAS URI pro snímek, který je použité toocopy ho tooa účet úložiště. |
+| [Nové AzureStorageContext](/powershell/module/azure.storage/New-AzureStorageContext) | Vytvoří kontext účtu úložiště pomocí hello název účtu a klíč. Tento kontext může být použité tooperform operace čtení a zápisu v účtu úložiště hello. |
+| [Počáteční AzureStorageBlobCopy](/powershell/module/azure.storage/Start-AzureStorageBlobCopy) | Kopie hello základní virtuální pevný disk účtu úložiště tooa snímku |
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -50,6 +50,6 @@ Tento skript používá tyto příkazy ke generování identifikátor URI pro SA
 
 [Vytvoření virtuálního počítače z spravovaného disku](./../../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-Další informace o modulu Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
+Další informace o modulu Azure PowerShell hello najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
 
-Ukázky skriptu PowerShell další virtuální počítač nachází v [virtuálního počítače Windows Azure dokumentaci](../../virtual-machines/windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ukázky skriptu PowerShell další virtuální počítač nachází v hello [virtuálního počítače Windows Azure dokumentaci](../../virtual-machines/windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

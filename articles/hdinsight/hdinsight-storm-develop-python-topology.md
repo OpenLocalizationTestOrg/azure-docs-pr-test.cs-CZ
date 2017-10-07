@@ -1,6 +1,6 @@
 ---
-title: Apache Storm s comopnents Python - Azure HDInsight | Microsoft Docs
-description: "Naučte se vytvářet topologie Apache Storm, která používá Python součásti."
+title: aaaApache Storm s comopnents Python - Azure HDInsight | Microsoft Docs
+description: "Zjistěte, jak toocreate Apache Storm topologie, která používá Python součásti."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,20 +16,20 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/04/2017
 ms.author: larryfr
-ms.openlocfilehash: 305c4060ad81458b254e66a4bad6dfd7bf69b28d
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 143c639623f1992f913900a7c52d6e3f03c701e2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Vývoj topologií Apache Storm v HDInsight používá Python
 
-Naučte se vytvářet topologie Apache Storm, která používá Python součásti. Apache Storm podporuje několik jazyků, i umožňuje zkombinovat součásti z několika jazyků v jedné topologii. Rozhraní framework tok (zavedené Storm 0.10.0) umožňuje snadno vytvářet řešení, která používají Python součásti.
+Zjistěte, jak toocreate Apache Storm topologie, která používá Python součásti. Apache Storm podporuje několik jazyků, i povolení toocombine součásti z několika jazyků v jedné topologii. Hello tok framework (zavedené Storm 0.10.0) vám umožní tooeasily vytvářet řešení, které použití komponent, Python.
 
 > [!IMPORTANT]
-> Informace v tomto dokumentu byla testována pomocí Storm v HDInsight 3.6. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Hello informace v tomto dokumentu byla testována pomocí Storm v HDInsight 3.6. Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-Kód pro tento projekt je k dispozici na [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount).
+Hello kód pro tento projekt je k dispozici na [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,17 +39,17 @@ Kód pro tento projekt je k dispozici na [https://github.com/Azure-Samples/hdins
 
 * Maven 3
 
-* (Volitelné) Místní Storm vývojové prostředí. Místní prostředí Storm je vyžadován, pouze pokud chcete spustit topologii místně. Další informace najdete v tématu [nastavení vývojového prostředí](http://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html).
+* (Volitelné) Místní Storm vývojové prostředí. Místní prostředí Storm je vyžadován, pouze pokud chcete, aby toorun hello místně topologie. Další informace najdete v tématu [nastavení vývojového prostředí](http://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html).
 
 ## <a name="storm-multi-language-support"></a>Podpora více jazyků Storm
 
-Apache Storm je navržené pro práci s součásti, které jsou napsané v žádný programovací jazyk. Součásti musíte pochopit, jak pracovat [definici Thrift Storm](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift). Pro Python se v rámci Apache Storm projekt, který umožňuje snadno rozhraní s Storm poskytuje modul. Můžete najít na tento modul [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
+Apache Storm se navrženou toowork s komponentami vytvořené pomocí žádný programovací jazyk. musíte pochopit součásti Hello jak toowork s hello [definici Thrift Storm](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift). Modul je pro Python, k dispozici jako součást projektu hello Apache Storm, který vám umožní tooeasily rozhraní s Storm. Můžete najít na tento modul [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
 
-Storm je Java proces, který běží na virtuálním počítači Java (JVM). Součásti, které jsou napsané v dalších jazycích jsou spouštěny jako podprocesů, které se. Storm komunikuje se tyto podprocesů, které se pomocí JSON zprávy odeslané přes stdin/stdout. Další informace o komunikaci mezi součástmi najdete v [více jazyků protokol](https://storm.apache.org/documentation/Multilang-protocol.html) dokumentaci.
+Storm je Java proces, který běží na hello Java Virtual Machine (JVM). Součásti, které jsou napsané v dalších jazycích jsou spouštěny jako podprocesů, které se. Hello Storm komunikuje se tyto podprocesů, které se pomocí JSON zprávy odeslané přes stdin/stdout. Další informace o komunikaci mezi součástmi naleznete v hello [více jazyků protokol](https://storm.apache.org/documentation/Multilang-protocol.html) dokumentaci.
 
-## <a name="python-with-the-flux-framework"></a>Python s tokem framework
+## <a name="python-with-hello-flux-framework"></a>Python s hello tok framework
 
-Rozhraní framework tok umožňuje definovat topologie Storm nezávisle na součásti. Rozhraní framework tok YAML používá k definování topologie Storm. Tento text je příklad toho, jak odkazovat na komponentu Python v dokumentu YAML:
+Tok framework Hello umožňuje topologie Storm toodefine nezávisle na součásti hello. Tok framework Hello používá topologie Storm hello toodefine YAML. Hello následující text je příklad toho, jak tooreference komponentu Python v dokumentu YAML hello:
 
 ```yaml
 # Spout definitions
@@ -65,33 +65,33 @@ spouts:
     parallelism: 1
 ```
 
-Třída `FluxShellSpout` se používá ke spuštění `sentencespout.py` skript, který implementuje funkcí spout.
+Hello třída `FluxShellSpout` je použité toostart hello `sentencespout.py` skript, který implementuje hello spout.
 
-Tok očekává skriptů Python ve `/resources` adresář uvnitř soubor jar obsahující topologii. Takže ukládá skriptů Python v tomto příkladu `/multilang/resources` adresáře. `pom.xml` Zahrnuje tento soubor pomocí následující kód XML:
+Tok očekává toobe skriptů Python hello hello `/resources` adresář uvnitř soubor jar hello, který obsahuje hello topologie. Proto tento příklad ukládá skriptů Python hello hello `/multilang/resources` adresáře. Hello `pom.xml` zahrnuje tento soubor pomocí hello následující XML:
 
 ```xml
-<!-- include the Python components -->
+<!-- include hello Python components -->
 <resource>
     <directory>${basedir}/multilang</directory>
     <filtering>false</filtering>
 </resource>
 ```
 
-Jak už bylo zmíněno dříve, není `storm.py` soubor, který implementuje definici Thrift Storm. Zahrnuje rozhraní tok `storm.py` automaticky při sestavení projektu, takže není nutné se obávat, včetně ho.
+Jak už bylo zmíněno dříve, není `storm.py` soubor, který implementuje definici Thrift hello Storm. zahrnuje Hello tok framework `storm.py` automaticky při hello sestavení projektu, takže není nutné tooworry o včetně ho.
 
-## <a name="build-the-project"></a>Sestavení projektu
+## <a name="build-hello-project"></a>Sestavení projektu hello
 
-Z kořenového adresáře projektu použijte následující příkaz:
+Hello kořenovém hello projektu můžete hello následující příkaz:
 
 ```bash
 mvn clean compile package
 ```
 
-Tento příkaz vytvoří `target/WordCount-1.0-SNAPSHOT.jar` soubor, který obsahuje kompilované topologie.
+Tento příkaz vytvoří `target/WordCount-1.0-SNAPSHOT.jar` soubor, který obsahuje hello zkompilovat topologie.
 
-## <a name="run-the-topology-locally"></a>Místní spuštění topologie
+## <a name="run-hello-topology-locally"></a>Místní spuštění hello topologie
 
-Pokud chcete spustit topologii místně, použijte následující příkaz:
+toorun hello topologie místně, použijte následující příkaz hello:
 
 ```bash
 storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.yaml
@@ -100,58 +100,58 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 > [!NOTE]
 > Tento příkaz vyžaduje místní vývojové prostředí Storm. Další informace najdete v tématu [nastavení vývojového prostředí](http://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html)
 
-Jednou spuštěním topologie, se vydá informace do místní konzoly podobný následujícímu:
+Jednou hello topologie spustí, se vydá informace toohello místní konzoly podobné toohello následující text:
 
 
-    24302 [Thread-25-sentence-spout-executor[4 4]] INFO  o.a.s.s.ShellSpout - ShellLog pid:2436, name:sentence-spout Emiting the cow jumped over the moon
+    24302 [Thread-25-sentence-spout-executor[4 4]] INFO  o.a.s.s.ShellSpout - ShellLog pid:2436, name:sentence-spout Emiting hello cow jumped over hello moon
     24302 [Thread-30] INFO  o.a.s.t.ShellBolt - ShellLog pid:2438, name:splitter-bolt Emitting the
     24302 [Thread-28] INFO  o.a.s.t.ShellBolt - ShellLog pid:2437, name:counter-bolt Emitting years:160
     24302 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=the, count=599}
     24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=seven, count=302}
     24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=dwarfs, count=143}
-    24303 [Thread-25-sentence-spout-executor[4 4]] INFO  o.a.s.s.ShellSpout - ShellLog pid:2436, name:sentence-spout Emiting the cow jumped over the moon
+    24303 [Thread-25-sentence-spout-executor[4 4]] INFO  o.a.s.s.ShellSpout - ShellLog pid:2436, name:sentence-spout Emiting hello cow jumped over hello moon
     24303 [Thread-30] INFO  o.a.s.t.ShellBolt - ShellLog pid:2438, name:splitter-bolt Emitting cow
     24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=four, count=160}
 
 
-Chcete-li zastavit topologii, použijte __kombinaci kláves Ctrl + C__.
+toostop hello topologie, použijte __kombinaci kláves Ctrl + C__.
 
-## <a name="run-the-storm-topology-on-hdinsight"></a>Spustit topologie Storm v HDInsight
+## <a name="run-hello-storm-topology-on-hdinsight"></a>Spustit hello topologie Storm v HDInsight
 
-1. Použijte následující příkaz pro kopírování `WordCount-1.0-SNAPSHOT.jar` soubor Storm na clusteru HDInsight:
+1. Použití hello následující příkaz toocopy hello `WordCount-1.0-SNAPSHOT.jar` souboru tooyour Storm v clusteru HDInsight:
 
     ```bash
     scp target\WordCount-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-    Nahraďte `sshuser` s uživatelem SSH pro váš cluster. Nahraďte `mycluster` se název clusteru. Můžete být vyzváni k zadání hesla pro uživatele SSH.
+    Nahraďte `sshuser` hello uživatele SSH pro váš cluster. Nahraďte `mycluster` s názvem clusteru hello. Může být výzvami tooenter hello heslo pro uživatele SSH hello.
 
     Další informace o používání SSH a SCP najdete v tématu [použití SSH s HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Jakmile soubor byl odeslán, připojte se ke clusteru pomocí protokolu SSH:
+2. Po odeslání hello souboru, připojte toohello clusteru pomocí protokolu SSH:
 
     ```bash
     ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-3. Z relace SSH použijte následující příkaz v clusteru spusťte topologie:
+3. Z relace SSH hello použijte následující příkaz toostart hello topologie v clusteru hello hello:
 
     ```bash
     storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -r -R /topology.yaml
     ```
 
-3. Uživatelské rozhraní Storm můžete použít k zobrazení topologii v clusteru. Uživatelské rozhraní Storm je umístěn v https://mycluster.azurehdinsight.net/stormui. Nahraďte `mycluster` se název clusteru.
+3. Můžete vytvořit hello uživatelské rozhraní Storm tooview hello topologie hello clusteru. Hello uživatelské rozhraní Storm je umístěn v https://mycluster.azurehdinsight.net/stormui. Nahraďte `mycluster` se název clusteru.
 
 > [!NOTE]
-> Po spuštění, topologie Storm spustí, dokud nebude zastaven. Zastavení topologie, použijte jednu z následujících metod:
+> Po spuštění, topologie Storm spustí, dokud nebude zastaven. toostop hello topologie, použijte jednu z následujících metod hello:
 >
-> * `storm kill TOPOLOGYNAME` Příkazu z příkazového řádku
-> * **Kill** tlačítko v uživatelském rozhraní Storm.
+> * Hello `storm kill TOPOLOGYNAME` příkazu z příkazového řádku hello
+> * Hello **Kill** tlačítka na hello uživatelské rozhraní Storm.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Najdete v následujících dokumentech pro další způsoby použití Python s HDInsight:
+V tématu hello následující dokumenty, kde najdete další způsoby toouse Python s HDInsight:
 
-* [Jak používat Python pro streamování úloh MapReduce](hdinsight-hadoop-streaming-python.md)
-* [Jak používat Python uživatele definované funkce (UDF) v Pig a Hive](hdinsight-python.md)
+* [Jak toouse Python pro streamování úloh MapReduce](hdinsight-hadoop-streaming-python.md)
+* [Jak toouse Python uživatele definované funkce (UDF) v Pig a Hive](hdinsight-python.md)

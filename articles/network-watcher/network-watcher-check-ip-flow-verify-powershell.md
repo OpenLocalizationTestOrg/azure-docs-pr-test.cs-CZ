@@ -1,6 +1,6 @@
 ---
-title: "Ověřte provoz s IP Adresou sledovací proces sítě Azure tok ověření – prostředí PowerShell | Microsoft Docs"
-description: "Tento článek popisuje, jak zkontrolovat, pokud provoz nebo z virtuálního počítače povolený nebo zakázaný pomocí prostředí PowerShell"
+title: "Ověřte aaaverify provoz s tokem IP sledovací proces sítě Azure – prostředí PowerShell | Microsoft Docs"
+description: "Tento článek popisuje, jak toocheck Pokud tooor provoz z virtuálního počítače povolený nebo zakázaný pomocí prostředí PowerShell"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: bf0c01a9af0e28647d11ad89a9d164716d5c8312
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 924da1de1bd554e15816886f8e51d7f170f0e7ac
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="check-if-traffic-is-allowed-or-denied-to-or-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Zkontrolujte, jestli je povolené nebo zakázané do nebo z virtuálního počítače s tokem IP přenosy ověřte součást sledovací proces sítě Azure
+# <a name="check-if-traffic-is-allowed-or-denied-tooor-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Zkontrolujte, jestli je povolené nebo zakázané tooor z virtuálního počítače s tokem IP přenosy ověřte součást sledovací proces sítě Azure
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-check-ip-flow-verify-portal.md)
@@ -30,19 +30,19 @@ ms.lasthandoff: 07/11/2017
 > - [Rozhraní API Azure REST](network-watcher-check-ip-flow-verify-rest.md)
 
 
-Tok IP ověřte, že je funkce sledovací proces sítě, která vám umožní ověřit, pokud provoz je povolený do nebo z virtuálního počítače. Tento scénář je vhodný pro zjištění aktuálního stavu o tom, jestli virtuální počítač může kontaktovat na externí prostředek nebo back-end. Ověřte toku IP umožňuje ověřit, pokud vaše skupina zabezpečení sítě (NSG) pravidla jsou správně nakonfigurovány a vyřešit toky, kteří jsou Blokovaní pravidla NSG. Dalším důvodem pro použití IP tok ověření, je potřeba zajistit provoz, který chcete blokovat, je správně blokován nastavením NSG.
+Tok IP ověřte, že je funkce sledovací proces sítě, která umožňuje tooverify Pokud provoz je povolený tooor z virtuálního počítače. Tento scénář je užitečné tooget aktuálním stavu o tom, jestli virtuální počítač může kontaktovat tooan externí prostředek nebo back-end. Tok IP ověření může být použité tooverify, pokud vaše skupina zabezpečení sítě (NSG) pravidla jsou správně nakonfigurovány a řešení potíží s toky, kteří jsou Blokovaní pravidla NSG. Dalším důvodem pro použití IP tok ověření je tooensure přenosy, které chcete blokovat je správně blokován nastavením hello NSG.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento scénář předpokládá, že už jste udělali kroky v [vytvořit sledovací proces sítě](network-watcher-create.md) vytvořit sledovací proces sítě nebo máte existující instanci sledovací proces sítě. Tento scénář také předpokládá, že skupina prostředků se platný virtuální počítač existuje má být použit.
+Tento scénář předpokládá, že jste již provedli kroky hello v [vytvořit sledovací proces sítě](network-watcher-create.md) toocreate sledovací proces sítě nebo existující instanci sledovací proces sítě. scénář Hello také předpokládá, že skupina prostředků se platný virtuální počítač existuje toobe použít.
 
 ## <a name="scenario"></a>Scénář
 
-Tento scénář používá IP tok ověření k ověření, pokud virtuální počítač může kontaktovat známé Bing IP adresu. Pokud je odepřená provoz, vrátí pravidlo zabezpečení, které je odepřen, aby provoz. Další informace o toku IP ověřte najdete [IP tok ověření – přehled](network-watcher-ip-flow-verify-overview.md)
+Tento scénář používá IP tok ověření tooverify, pokud virtuální počítač může kontaktovat tooa známé Bing IP adresu. Pokud je odepřená hello provoz, vrátí hello pravidlo zabezpečení, které je odepřen, aby provoz. Další informace o toku IP ověřit, navštivte toolearn [IP tok ověření – přehled](network-watcher-ip-flow-verify-overview.md)
 
 ## <a name="retrieve-network-watcher"></a>Načtení sledovací proces sítě
 
-Prvním krokem je pro získání instance sledovací proces sítě. `$networkWatcher` Se předá proměnná IP tok ověření rutiny.
+prvním krokem Hello je tooretrieve hello sledovací proces sítě instance. Hello `$networkWatcher` proměnné se předá toohello IP tok ověření rutiny.
 
 ```powershell
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
@@ -51,15 +51,15 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 
 ## <a name="get-a-vm"></a>Získat virtuální počítač
 
-Tok IP ověřte testy přenosy do nebo z IP adresy na virtuální počítač do nebo z vzdálený cíl. Id virtuálního počítače je vyžadováno pro rutinu. Pokud už znáte ID virtuálního počítače používat, můžete tento krok přeskočit.
+Tok IP ověřte testy tooor provoz z IP adresy na virtuální počítač tooor z vzdálený cíl. Id virtuálního počítače je vyžadováno pro rutinu hello. Pokud už znáte ID hello toouse hello virtuálního počítače, můžete tento krok přeskočit.
 
 ```powershell
 $VM = Get-AzurermVM -ResourceGroupName "testrg" -Name "testvm1"
 ```
 
-## <a name="get-the-nics"></a>Získat síťové karty
+## <a name="get-hello-nics"></a>Získat hello síťové karty
 
-IP adresa síťového adaptéru na virtuálním počítači je potřeba v tomto příkladu, nemůžeme načíst síťové adaptéry na virtuálním počítači. Pokud už znáte IP adresu, která chcete testovat na virtuálním počítači, můžete tento krok přeskočit.
+v tomto příkladu, nemůžeme načíst hello síťové adaptéry na virtuálním počítači, je potřeba Hello IP adresa síťového adaptéru na virtuálním počítači hello. Pokud už znáte hello IP adresu, kterou chcete tootest hello virtuálního počítače, můžete tento krok přeskočit.
 
 ```powershell
 $Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkProfile.NetworkInterfaces.Id.ForEach({$_})}
@@ -67,7 +67,7 @@ $Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkProfile.Networ
 
 ## <a name="run-ip-flow-verify"></a>Ověření spuštění toku IP
 
-Teď, když máme informace potřebné ke spuštění rutiny jsme spustit `Test-AzureRmNetworkWatcherIPFlow` rutiny k otestování provozu. V tomto příkladu používáme první IP adresu na první síťový adaptér.
+Teď, když máme hello informace potřebné toorun hello rutiny, spustíme hello `Test-AzureRmNetworkWatcherIPFlow` rutiny tootest hello provoz. V tomto příkladu používáme hello první IP adresou na síťovém adaptéru hello první.
 
 ```powershell
 Test-AzureRmNetworkWatcherIPFlow -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id `
@@ -76,11 +76,11 @@ Test-AzureRmNetworkWatcherIPFlow -NetworkWatcher $networkWatcher -TargetVirtualM
 ```
 
 > [!NOTE]
-> Tok IP ověření vyžaduje, aby prostředků virtuálního počítače je přidělená ke spuštění.
+> Tok IP ověření vyžaduje, aby hello prostředků virtuálního počítače je přidělená toorun.
 
 ## <a name="review-results"></a>Zkontrolujte výsledky
 
-Po spuštění `Test-AzureRmNetworkWatcherIPFlow` budou vráceny výsledky, v následujícím příkladu je výsledky vrácené z předchozího kroku.
+Po spuštění `Test-AzureRmNetworkWatcherIPFlow` hello výsledky se vrátí, hello následující příklad je hello výsledky vrácené z hello předchozím kroku.
 
 ```
 Access RuleName                                  
@@ -90,7 +90,7 @@ Allow  defaultSecurityRules/AllowInternetOutBound
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud je blokován provoz a neměl by být, najdete v části [spravovat skupiny zabezpečení sítě](../virtual-network/virtual-network-manage-nsg-arm-portal.md) sledovat pravidla zabezpečení sítě skupiny a zabezpečení, které jsou definovány.
+Pokud je blokován provoz a neměl by být, najdete v části [spravovat skupiny zabezpečení sítě](../virtual-network/virtual-network-manage-nsg-arm-portal.md) tootrack dolů hello pravidla zabezpečení sítě skupiny a zabezpečení, které jsou definovány.
 
 [1]: ./media/network-watcher-check-ip-flow-verify-portal/figure1.png
 [2]: ./media/network-watcher-check-ip-flow-verify-portal/figure2.png

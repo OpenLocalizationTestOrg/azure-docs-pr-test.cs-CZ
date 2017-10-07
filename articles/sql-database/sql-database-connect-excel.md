@@ -1,8 +1,8 @@
 ---
-title: "Připojení Excelu k SQL Database | Dokumentace Microsoftu"
-description: "Zjistěte, jak připojit Microsoft Excel k databázi SQL Azure v cloudu. Naimportujte si data do Excelu, kde můžete data dále zkoumat a vytvářet z nich sestavy."
+title: "aaaConnect Excel tooSQL databáze | Microsoft Docs"
+description: "Zjistěte, jak databázi aplikace Microsoft Excel tooAzure tooconnect SQL v cloudu hello. Naimportujte si data do Excelu, kde můžete data dále zkoumat a vytvářet z nich sestavy."
 services: sql-database
-keywords: "připojení excelu k sql, import dat do excelu"
+keywords: "připojení aplikace excel toosql, naimportujte tooexcel dat"
 documentationcenter: 
 author: joseidz
 manager: jhubbard
@@ -16,67 +16,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2017
 ms.author: jhubbard
-ms.openlocfilehash: 97344d7c0be38b3092a3224074d486b5bb984176
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0048849432023145bd1009d45b6d9b64a9c7ac3c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>Připojení Excelu k databázi Azure SQL a vytvoření sestavy
+# <a name="connect-excel-tooan-azure-sql-database-and-create-a-report"></a>Připojení aplikace Excel tooan Azure SQL database a vytvoření sestavy
 
-Připojení Excelu k databázi SQL v cloudu a importovat data a vytvářet tabulky a grafy na základě hodnot v databázi. V tomto kurzu nastavíte připojení mezi Excelem a databázovou tabulkou, uložíte soubor, ve kterém jsou uložená data a informace o připojení pro Excel, a pak z hodnot v databázi vytvoříte kontingenční graf.
+Připojení aplikace Excel tooa databáze SQL v cloudu hello a importovat data a vytvářet tabulky a grafy na základě hodnot v databázi hello. V tomto kurzu nastavíte hello připojení mezi Excelem a databázovou tabulku uložte soubor hello, která ukládá data a hello informace o připojení pro Excel a pak vytvoříte kontingenční graf z hello hodnot v databázi.
 
-Než začnete, budete potřebovat databázi SQL v Azure. Pokud žádnou nemáte, podívejte se na téma [Vytvoření první databáze SQL](sql-database-get-started-portal.md), kde najdete informace o tom, jak si během několika málo minut zprovoznit databázi s ukázkovými daty. V tomto článku budete importovat ukázková data do aplikace Excel z tohoto článku, ale můžete provést kroky pro podobné s vlastními daty.
+Než začnete, budete potřebovat databázi SQL v Azure. Pokud nemáte, přečtěte si téma [vytvořit svoji první databázi SQL](sql-database-get-started-portal.md) tooget databázi s ukázkovými daty fungovaly za pár minut. V tomto článku budete importovat ukázková data do aplikace Excel z tohoto článku, ale můžete provést kroky pro podobné s vlastními daty.
 
 Budete také potřebovat Excel. V tomto článku používáme [Microsoft Excel 2016](https://products.office.com/).
 
-## <a name="connect-excel-to-a-sql-database-and-create-an-odc-file"></a>Připojení Excelu k databázi SQL a vytvoření souboru odc
-1. Když budete chtít Excel připojit k databázi SQL, otevřete ho a vytvořte nový sešit nebo otevřete existující excelový sešit.
-2. V řádku nabídek v horní části stránky klikněte na **Data**, **Z jiných zdrojů** a potom klikněte na **Z SQL Serveru**.
+## <a name="connect-excel-tooa-sql-database-and-create-an-odc-file"></a>Připojení aplikace Excel tooa SQL database a vytvoření souboru odc
+1. tooconnect Excel tooSQL databáze, otevřete aplikaci Excel a vytvoření nového sešitu nebo otevřít existující sešit aplikace Excel.
+2. V řádku nabídek hello hello horní části stránky hello klikněte na **Data**, klikněte na tlačítko **z jiných zdrojů**a potom klikněte na **z SQL serveru**.
    
-   ![Výběr zdroje dat: Připojení Excelu k databázi SQL](./media/sql-database-connect-excel/excel_data_source.png)
+   ![Vyberte zdroj dat: připojení Excelu tooSQL databáze.](./media/sql-database-connect-excel/excel_data_source.png)
    
-   Otevře se Průvodce datovým připojením.
-3. V dialogovém okně **Připojit k databázovému serveru** zadejte **název serveru** SQL Database, ke kterému se chcete připojit, v následující podobě: <*název_serveru*>**. database.windows.net**. Například **adworkserver.database.windows.net**.
-4. V části **Přihlašovací pověření** klikněte na **Použít následující uživatelské jméno a heslo**, zadejte **uživatelské jméno** a **heslo**, které jste nastavili pro server SQL Database, když jste ho vytvářeli, a potom klikněte na **Další**.
+   Otevře se Průvodce datovým připojením Hello.
+3. V hello **připojit tooDatabase Server** dialogové okno, hello typ SQL Database **název serveru** chcete tooconnect tooin hello formulář <*servername* > **. database.windows.net**. Například **adworkserver.database.windows.net**.
+4. V části **přihlašovací pověření**, klikněte na tlačítko **hello použijte následující uživatelské jméno a heslo**, typ hello **uživatelské jméno** a **heslo** nastavil pro Databáze SQL serveru text Hello, pokud jste ji vytvořili a potom klikněte na **Další**.
    
-   ![Zadejte název a přihlašovací údaje serveru.](./media/sql-database-connect-excel/connect-to-server.png)
+   ![Zadejte název a přihlašovací údaje serveru hello](./media/sql-database-connect-excel/connect-to-server.png)
    
    > [!TIP]
-   > V závislosti na vašem síťovém prostředí nemusíte být schopni se připojit nebo může dojít ke ztrátě připojení (pokud server databáze SQL nepovoluje přenos dat z IP adresy vašeho klienta). Přejděte na [portál Azure](https://portal.azure.com/), klikněte na SQL servery, klikněte na svůj server, v nastavení klikněte na bránu firewall a přidejte IP adresu svého klienta. Podrobnosti najdete v tématu [Jak nakonfigurovat nastavení brány firewall](sql-database-configure-firewall-settings.md).
+   > V závislosti na vašem síťovém prostředí nemusí být možné tooconnect nebo můžete ztratit připojení hello, pokud server hello databáze SQL nepovoluje přenos dat z IP adresy vašeho klienta. Přejděte toohello [portál Azure](https://portal.azure.com/), klikněte na SQL servery, klikněte na svůj server, klikněte v části nastavení brány firewall a přidejte IP adresu svého klienta. V tématu [jak nastavení brány firewall tooconfigure](sql-database-configure-firewall-settings.md) podrobnosti.
    > 
    > 
-5. V dialogovém okně **Vybrat databázi a tabulku** vyberte ze seznamu databázi, se kterou chcete pracovat, a potom klikněte na tabulky nebo zobrazení, se kterými chcete pracovat (my jsme zvolili **vGetAllCategories**). Potom klikněte na **Další**.
+5. V hello **vybrat databázi a tabulku** dialogové okno, vyberte hello databázi toowork s hello seznamu a pak klikněte na tlačítko hello tabulek nebo zobrazení, které chcete toowork s (jsme zvolili **vGetAllCategories**) a potom Klikněte na tlačítko **Další**.
    
     ![Vyberte databázi a tabulku.](./media/sql-database-connect-excel/select-database-and-table.png)
    
-    Otevře se dialogové okno **Uložit soubor datového připojení a dokončit**, kde zadáte informace o souboru databázového připojení (*.odc) Office, který používá Excel. Můžete nechat nastavené výchozí hodnoty nebo si vybrané možnosti přizpůsobit.
-6. Můžete nechat nastavené výchozí hodnoty, ale důležité je poznamenat si **název souboru**. **Popis**, **popisný název** a **klíčová slova pro vyhledávání** vám a dalším uživatelům pomůžou zapamatovat si, k jaké databázi se připojujete, a najít připojení. Pokud chcete, aby se informace o připojení uložily do souboru odc, aby se mohl aktualizovat, když se k němu připojíte, klikněte na **Vždy aktualizovat data pomocí tohoto souboru** a potom klikněte na **Dokončit**.
+    Hello **uložit soubor datového připojení a dokončit** otevře se dialogové okno, kde zadáte informace o hello Office databáze připojení (*.odc) souboru, který používá Excel. Můžete ponechat výchozí nastavení hello nebo si vybrané možnosti přizpůsobit.
+6. Můžete ponechat výchozí hodnoty hello, ale Poznámka hello **název souboru** na konkrétní. A **popis**, **popisný název**, a **hledaná klíčová slova** vám pomůže a ostatní uživatelé mějte na paměti, co se připojujete tooand najít hello připojení. Klikněte na tlačítko **vždy pokusí toouse tato data souboru toorefresh** Pokud chcete informace o připojení, které jsou uložené v souboru odc hello, aby se mohl aktualizovat při připojení tooit a pak klikněte na tlačítko **Dokončit**.
    
     ![Uložení souboru odc](./media/sql-database-connect-excel/save-odc-file.png)
    
-    Zobrazí se dialogové okno **Importovat data**.
+    Hello **importovat data** zobrazí se dialogové okno.
 
-## <a name="import-the-data-into-excel-and-create-a-pivot-chart"></a>Import dat do Excelu a vytvoření kontingenčního grafu
-Máte vytvořené připojení a také soubor s daty a informacemi o připojení, můžete tedy začít s importem dat.
+## <a name="import-hello-data-into-excel-and-create-a-pivot-chart"></a>Umožňuje importovat hello data do Excelu a vytvoření kontingenčního grafu
+Teď, když jste vytvořili připojení hello a soubor vytvořený hello se data a informace o připojení, při čtení dat tooimport hello.
 
-1. V dialogovém okně **Importovat data** klikněte na možnost, kterou chcete použít pro prezentování vašich dat v listu, a potom klikněte na **OK**. Zvolili jsme možnost **Kontingenční graf**. Můžete také zvolit možnost **Nový list** nebo **Přidat tato data do datového modelu**. Další informace o datových modelech najdete v tématu [Vytvoření datového modelu v Excelu](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B). Klikněte na **Vlastnosti** a prozkoumejte informace o souboru odc, který jste vytvořili v předchozím kroku. Pak zvolte možnosti pro aktualizaci dat.
+1. V hello **importovat Data** dialogové okno, klikněte na možnost hello chcete použít pro prezentování vašich dat v listu hello a pak klikněte na tlačítko **OK**. Zvolili jsme možnost **Kontingenční graf**. Můžete také toocreate **nový list** nebo příliš**přidat tato data tooa datový Model**. Další informace o datových modelech najdete v tématu [Vytvoření datového modelu v Excelu](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B). Klikněte na tlačítko **vlastnosti** tooexplore informace o souboru odc hello jste vytvořili v hello předchozí krok a toochoose možnosti pro aktualizaci dat hello.
    
-    ![Volba formátu pro data v Excelu](./media/sql-database-connect-excel/import-data.png)
+    ![Výběr hello formát dat v aplikaci Excel](./media/sql-database-connect-excel/import-data.png)
    
-    List má teď prázdnou kontingenční tabulku a graf.
-2. V části **Pole kontingenční tabulky** zaškrtněte políčka pro všechna pole, která chcete zobrazit.
+    Hello list má teď prázdnou kontingenční tabulku a graf.
+2. V části **pole kontingenční tabulky**, vyberte všechny hello zaškrtněte políčka pro hello chcete tooview pole.
    
     ![Nakonfigurujte sestavu databáze.](./media/sql-database-connect-excel/power-pivot-results.png)
 
 > [!TIP]
-> Pokud chcete k databázi připojit jiné excelové sešity a listy, klikněte na **Data**, klikněte na **Připojení**, klikněte na **Přidat**, ze seznamu zvolte připojení, které jste vytvořili, a pak klikněte na **Otevřít**.
+> Pokud chcete tooconnect jiné databáze pro toohello sešity a listy aplikace Excel, klikněte na tlačítko **Data**, klikněte na tlačítko **připojení**, klikněte na tlačítko **přidat**, zvolte hello připojení, které jste vytvořili ze seznamu hello a pak klikněte na tlačítko **otevřete**.
 > ![Otevření připojení z jiného sešitu](./media/sql-database-connect-excel/open-from-another-workbook.png)
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-* Zjistěte, jak se [připojit k SQL Database přes SQL Server Management Studio](sql-database-connect-query-ssms.md) a provádět pokročilé dotazy a analýzy.
-* Další informace o výhodách [elastických fondů](sql-database-elastic-pool.md).
-* Zjistěte, jak [vytvořit webovou aplikaci, která se připojuje k SQL Database na back-endu](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md).
+* Zjistěte, jak příliš[připojit tooSQL databáze s SQL Server Management Studio](sql-database-connect-query-ssms.md) pro pokročilé dotazy a analýzy.
+* Další informace o výhodách hello [elastické fondy](sql-database-elastic-pool.md).
+* Zjistěte, jak příliš[vytvořit webovou aplikaci, která se připojuje tooSQL databáze na hello back-end](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md).
 

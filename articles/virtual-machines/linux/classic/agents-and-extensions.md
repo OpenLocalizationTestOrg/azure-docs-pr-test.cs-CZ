@@ -1,6 +1,6 @@
 ---
-title: "Agent virtuálního počítače s Linuxem a rozšíření v Azure | Microsoft Docs"
-description: "Poskytuje přehled agenta a rozšíření a způsobu jejich instalace agenta, pomocí modelu nasazení classic na virtuální počítač s Linuxem."
+title: "aaaLinux virtuálního počítače agenta a rozšíření v Azure | Microsoft Docs"
+description: "Poskytuje přehled hello agenta a rozšíření a jak tooinstall hello agenta, pomocí modelu nasazení classic hello na virtuální počítač s Linuxem."
 services: virtual-machines-linux
 documentationcenter: 
 author: squillace
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 03/02/2017
 ms.author: rasquill
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06b802c408ea5d1b2b40d05321e1a0014e99ca8b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a50cfe9964a44986f681e2cecb0c09a54ccdca75
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="about-the-virtual-machine-agent-and-extensions-for-linux"></a>O agenta virtuálního počítače a rozšíření pro Linux
+# <a name="about-hello-virtual-machine-agent-and-extensions-for-linux"></a>O hello agenta virtuálního počítače a rozšíření pro Linux
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Informace o virtuálních počítačů agentů a rozšířením s využitím Resource Manageru najdete v tématu [zde](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello. Informace o virtuálních počítačů agentů a rozšířením s využitím Resource Manageru najdete v tématu [zde](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-classic-agents-and-extensions](../../../../includes/virtual-machines-common-classic-agents-and-extensions.md)]

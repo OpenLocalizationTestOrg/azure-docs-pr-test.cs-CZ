@@ -1,6 +1,6 @@
 ---
-title: "Most iOS webové zobrazení pomocí nativní Mobile Engagement iOS SDK"
-description: "Popisuje postup vytvoření most mezi systémem Javascript a nativní Mobile Engagement iOS SDK webového zobrazení"
+title: "iOS aaaBridge webové zobrazení pomocí nativní Mobile Engagement iOS SDK"
+description: "Popisuje, jak toocreate most mezi systémem Javascript a hello nativní Mobile Engagement iOS SDK webového zobrazení"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 35f7bdbeb480122513ae2a0b04a6d8cfd426802a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 089ed8484722cb5ba624e5dce0e670ab56de514d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="bridge-ios-webview-with-native-mobile-engagement-ios-sdk"></a>Most iOS webové zobrazení pomocí nativní Mobile Engagement iOS SDK
 > [!div class="op_single_selector"]
@@ -27,25 +27,25 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Některé mobilní aplikace slouží jako hybridní aplikace, kde je aplikace vyvinuté pomocí nativní aplikace pro iOS jazyka Objective-C vývoj, ale některé nebo všechny obrazovky jsou vykreslovány v rámci iOS webové zobrazení. Můžete i nadále využívat Mobile Engagement iOS SDK v rámci těchto aplikací a tento kurz popisuje, jak chcete-li přejít k provedení tohoto. 
+Některé mobilní aplikace slouží jako hybridní aplikace, kde je hello aplikace vyvinuté pomocí nativní aplikace pro iOS jazyka Objective-C vývoj, ale některé nebo všechny hello obrazovky jsou vykreslovány v rámci iOS webové zobrazení. Můžete i nadále využívat Mobile Engagement iOS SDK v rámci těchto aplikací a tento kurz popisuje, jak toogo o to. 
 
-Jak toho docílit, když jsou obě nedokumentovanými dvěma způsoby:
+Existují dva přístupy tooachieve to i když jsou obě nedokumentovanými:
 
 * Nejdřív jednu je popsaný v tomto [odkaz](http://stackoverflow.com/questions/9826792/how-to-invoke-objective-c-method-from-javascript-and-send-back-data-to-javascrip) což zahrnuje registrace `UIWebViewDelegate` na vaše webové zobrazení a catch a okamžitě Storno umístění změnu provést v jazyce Javascript. 
-* Druhý jeden je založena na tomto [WWDC 2013 relace](https://developer.apple.com/videos/play/wwdc2013/615), přístup, což je čisticí než první a který jsme bude následovat po této příručce. Všimněte si, že tento přístup funguje jenom v systému IOS 7 a vyšší. 
+* Druhý jeden je založena na tomto [WWDC 2013 relace](https://developer.apple.com/videos/play/wwdc2013/615), přístup, což je první čisticí než hello a který jsme bude následovat po této příručce. Všimněte si, že tento přístup funguje jenom v systému IOS 7 a vyšší. 
 
-Pro iOS přemostění ukázkové, postupujte podle následujících kroků:
+Pro hello iOS přemostění ukázkové, postupujte podle následujících kroků hello:
 
-1. První řadě je potřeba zajistit, že jste prošli naše [kurzu Začínáme](mobile-engagement-ios-get-started.md) integrovat Mobile Engagement iOS SDK v hybridní aplikace. Volitelně můžete také povolit, testovací protokolování následujícím způsobem, aby mohli zobrazit metody SDK, jako je se spouští z webového zobrazení. 
+1. Je třeba nejprve všech, tooensure, který jste prošli naše [kurzu Začínáme](mobile-engagement-ios-get-started.md) toointegrate hello Mobile Engagement iOS SDK v hybridní aplikace. Volitelně můžete také povolit, testovací protokolování následujícím způsobem, aby mohli zobrazit hello SDK metody, jako je se spouští z webového zobrazení hello. 
    
         - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
            ....
              [EngagementAgent setTestLogEnabled:YES];
            ....
         }
-2. Nyní se ujistěte, že hybridní aplikace má na obrazovce s webové zobrazení. Můžete je přidat do `Main.storyboard` aplikace. 
-3. Přidružte tento webové zobrazení s vaší **ViewController** kliknutím a přetažením webové zobrazení z scény řadiče zobrazení k `ViewController.h` upravit obrazovky, jeho umístění právě níže `@interface` řádku. 
-4. Jakmile to uděláte, objeví se dialogové okno s výzvou k zadání názvu. Zadejte název ve tvaru **webové zobrazení**. Vaše `ViewController.h` soubor by měl vypadat takto:
+2. Nyní se ujistěte, že hybridní aplikace má na obrazovce s webové zobrazení. Můžete jej přidat toohello `Main.storyboard` aplikace hello. 
+3. Přidružte tento webové zobrazení s vaší **ViewController** kliknutím a přetažením webové zobrazení hello z hello scény řadiče zobrazení toohello `ViewController.h` upravit obrazovky, jeho umístění pod hello `@interface` řádku. 
+4. Jakmile to uděláte, objeví se dialogové okno s výzvou k zadání názvu. Zadejte název hello jako **webové zobrazení**. Vaše `ViewController.h` soubor by měl vypadat jako následující hello:
    
         #import <UIKit/UIKit.h>
         #import "EngagementViewController.h"
@@ -54,7 +54,7 @@ Pro iOS přemostění ukázkové, postupujte podle následujících kroků:
         @property (strong, nonatomic) IBOutlet UIWebView *webView;
    
         @end
-5. Aktualizujeme `ViewController.m` , ale nejdřív vytvoříme soubor mostu, který vytvoří obálku přes některé běžně používané Mobile Engagement iOS SDK metody souboru později. Vytvořte nový soubor záhlaví s názvem **EngagementJsExports.h** které používá `JSExport` mechanismus popsané ve zmíněném [relace](https://developer.apple.com/videos/play/wwdc2013/615) vystavit metody nativní aplikace pro iOS. 
+5. Aktualizujeme hello `ViewController.m` , ale nejdřív vytvoříme hello most souboru, který vytvoří obálku přes některé běžně používané Mobile Engagement iOS SDK metody souboru později. Vytvořte nový soubor záhlaví s názvem **EngagementJsExports.h** , který používá hello `JSExport` mechanismus popsané v hello zmíněnými [relace](https://developer.apple.com/videos/play/wwdc2013/615) tooexpose hello nativní aplikace pro iOS metody. 
    
         #import <Foundation/Foundation.h>
         #import <JavaScriptCore/JavascriptCore.h>
@@ -72,7 +72,7 @@ Pro iOS přemostění ukázkové, postupujte podle následujících kroků:
         @interface EngagementJs : NSObject <EngagementJsExports>
    
         @end
-6. Dále vytvoříme druhou část souboru, most. Vytvořte soubor s názvem **EngagementJsExports.m** který bude obsahovat implementace vytváření obálek skutečné voláním Mobile Engagement iOS SDK metod. Také Upozorňujeme, že jsme analýza `extras` předávány z webového zobrazení javascript a umístění, do `NSMutableDictionary` objekt, který má být předána s volání metod Engagement SDK.  
+6. Dále vytvoříme hello druhé části souboru most hello. Vytvořte soubor s názvem **EngagementJsExports.m** který bude obsahovat hello implementace vytváření hello skutečné obálky voláním hello Mobile Engagement iOS SDK metod. Všimněte si také, že jsme se analýza hello `extras` předávány z hello webové zobrazení javascript a umístění, do `NSMutableDictionary` objektu toobe byla dokončena s hello Engagement SDK metoda volání.  
    
         #import <UIKit/UIKit.h>
         #import "EngagementAgent.h"
@@ -113,7 +113,7 @@ Pro iOS přemostění ukázkové, postupujte podle následujících kroků:
         }
    
         @end
-7. Nyní jsme se vraťte k **ViewController.m** a aktualizovat ji následujícím kódem: 
+7. Nyní jsme vraťte toohello **ViewController.m** a aktualizujte pomocí hello následující kód: 
    
         #import <JavaScriptCore/JavaScriptCore.h>
         #import "ViewController.h"
@@ -158,11 +158,11 @@ Pro iOS přemostění ukázkové, postupujte podle následujících kroků:
         }
    
         @end
-8. Poznámka: následující body o **ViewController.m** souboru:
+8. Poznámka: hello následující body o hello **ViewController.m** souboru:
    
-   * V `loadWebView` metoda, jsme načítání do místního souboru HTML s názvem **LocalPage.html** jejíž kód jsme budou vedle zkontrolovat. 
-   * V `webViewDidFinishLoad` metoda, jsme metodou `JsContext` a přiřazení našeho obálkovou třídu s ním. To vám umožní volání metody SDK použitím popisovače, naše obálku **EngagementJs** z webové zobrazení. 
-9. Vytvořte soubor s názvem **LocalPage.html** následujícím kódem:
+   * V hello `loadWebView` metoda, jsme načítání do místního souboru HTML s názvem **LocalPage.html** jejíž kód jsme budou vedle zkontrolovat. 
+   * V hello `webViewDidFinishLoad` metoda, jsme jsou metodou hello `JsContext` a přiřazení našeho obálkovou třídu s ním. To vám umožní volání metody SDK pomocí hello popisovač naše obálku **EngagementJs** z webového zobrazení hello. 
+9. Vytvořte soubor s názvem **LocalPage.html** s hello následující kód:
    
         <!doctype html>
         <html>
@@ -186,7 +186,7 @@ Pro iOS přemostění ukázkové, postupujte podle následujících kroků:
                    if(input)
                    {
                        var value = input.value;
-                       // Example of how extras info can be passed with the Engagement logs
+                       // Example of how extras info can be passed with hello Engagement logs
                        var extras = '{"CustomerId":"MS290011"}';
                    }
    
@@ -248,16 +248,16 @@ Pro iOS přemostění ukázkové, postupujte podle následujících kroků:
                </div>
            </body>
         </html>
-10. Vezměte na vědomí následující body týkající se souboru HTML výše:
+10. Poznámka: hello následující body o soubor HTML hello výše:
     
-    * Obsahuje sadu vstupních polí, kde můžete zadat data, která má být použit jako názvy pro události, úlohy, chyba, AppInfo. Když kliknete na tlačítko vedle sebe, Přišla žádost o jazyka JavaScript, který nakonec volá metody ze souboru most předat volání Mobile Engagement iOS SDK. 
-    * Jsme jsou označování na některé statické doplňující informace o události, úlohy a k předvedení toho, jak to lze provést i chyby. Tyto doplňující informace o je odeslán jako řetězec JSON, který je-li hledat v `EngagementJsExports.m` souboru, rozdělování a předávání společně s odesílání událostí, úloh, chyb. 
-    * Mobile Engagement úloha je spuštěna s názvem spustit 10 sekund a zadáte v dialogovém okně vstupní vypnout. 
-    * Mobile Engagement appinfo nebo značka, předá s 'jméno_zákazníka' jako statické klíč a hodnotu, kterou jste zadali v vstup jako hodnotu pro značku. 
-11. Spusťte aplikaci a zobrazí se následující. Nyní zadejte nějaký název pro událost testování takto a klikněte na **odeslat** vedle sebe. 
+    * Obsahuje sadu vstupních polí, kde je možné poskytnout toobe dat použít jako názvy pro události, úlohy, chyba, AppInfo. Když kliknete na další tooit hello tlačítko, Přišla žádost o toohello Javascript, který nakonec volání metody hello ze hello most souboru toopass toohello toto volání Mobile Engagement iOS SDK. 
+    * Jsme jsou označování na některé události toohello statické doplňující informace, úlohy a i chyby toodemonstrate jak to lze provést. Tyto další informace o je odeslán jako řetězec JSON, který je-li hledat v hello `EngagementJsExports.m` souboru, rozdělování a předávání společně s odesílání událostí, úloh, chyb. 
+    * Mobile Engagement úloha je spuštěna s názvem hello zadáte hello vstupní pole, spusťte pro 10 sekund a vypnout. 
+    * Mobile Engagement appinfo nebo značka, se předá s 'jméno_zákazníka' jako hello statické klíč a hodnotu hello, kterou jste zadali v hello vstup jako hodnotu hello hello značky. 
+11. Spuštění hello aplikace a můžete se zobrazí následující hello. Nyní zadejte nějaký název pro událost testování jako hello následující a klikněte na **odeslat** další tooit. 
     
      ![][1]
-12. Nyní, pokud přejdete do **monitorování** karta aplikace a naleznete v části **události -> Podrobnosti o**, zobrazí se tato událost objeví spolu s statické aplikace informace, které jsme odesílání. 
+12. Nyní, pokud přejdete toohello **monitorování** karta aplikace a naleznete v části **události -> Podrobnosti o**, zobrazí se tato událost objeví spolu s hello statické aplikace informací, které jsme odesílání. 
     
     ![][2]
 

@@ -1,6 +1,6 @@
 ---
-title: "Přeučování nové Azure Machine Learning webové služby pomocí prostředí PowerShell | Microsoft Docs"
-description: "Zjistěte, jak programově přeučit modelu a aktualizovat webovou službu, která používá nově trénovaného modelu v Azure Machine Learning pomocí rutin prostředí PowerShell správu Machine Learning."
+title: "aaaRetrain nové Azure Machine Learning webové služby pomocí prostředí PowerShell | Microsoft Docs"
+description: "Zjistěte, jak tooprogrammatically přeučování modelu a aktualizace hello webové služby toouse hello nově trained model v Azure Machine Learning pomocí rutin prostředí PowerShell správu Machine Learning hello."
 services: machine-learning
 documentationcenter: 
 author: vDonGlover
@@ -14,48 +14,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
 ms.author: v-donglo
-ms.openlocfilehash: 804dd59e62f38ee1878045d93211ee18e0d5bfce
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5b77fa82cfe17f0b4e90007ef81c506ab712475b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>Přeučování nového správce prostředků na základě webové službě pomocí rutin prostředí PowerShell správu Machine Learning
-Pokud jste přeučování novou webovou službu, je aktualizovat definice prediktivní webové služby, chcete-li nový trained model.  
+# <a name="retrain-a-new-resource-manager-based-web-service-using-hello-machine-learning-management-powershell-cmdlets"></a>Přeučování nového správce prostředků na základě webové službě pomocí rutiny prostředí PowerShell správu Machine Learning hello
+Když jste přeučování novou webovou službu, aktualizujete hello prediktivní webové služby definice tooreference hello nový trained model.  
 
 ## <a name="prerequisites"></a>Požadavky
 Musíte vytvořit výukový experiment a prediktivní experiment, jak je znázorněno v [Machine Learning Přeučování modelů prostřednictvím kódu programu](machine-learning-retrain-models-programmatically.md). 
 
 > [!IMPORTANT]
-> Prediktivní experiment musí být nasazený jako počítač Azure Resource Manager (Nový) na základě učení webové služby. K nasazení nové webové služby musí mít dostatečná oprávnění v rámci předplatného, do které, můžete nasazení webové služby. Další informace najdete v tématu [spravovat webové služby pomocí portálu webové služby Azure Machine Learning](machine-learning-manage-new-webservice.md). 
+> Prediktivní experiment Hello musí být nasazený jako počítač Azure Resource Manager (Nový) na základě učení webové služby. toodeploy novou webovou službu, musíte mít dostatečná oprávnění v toowhich hello předplatné můžete nasazení hello webové služby. Další informace najdete v tématu [spravovat webové služby pomocí portálu webové služby Azure Machine Learning hello](machine-learning-manage-new-webservice.md). 
 
 Další informace o nasazení webové služby, najdete v části [nasazení webové služby Azure Machine Learning](machine-learning-publish-a-machine-learning-web-service.md).
 
-Tento proces vyžaduje, že jste nainstalovali rutiny Azure Machine Learning. Informace o instalaci rutin Machine Learning, najdete v článku [rutiny Azure Machine Learning](https://msdn.microsoft.com/library/azure/mt767952.aspx) odkaz na webu MSDN.
+Tento proces vyžaduje, že jste nainstalovali hello rutiny Azure Machine Learning. Informace o instalaci rutin hello Machine Learning, najdete v části hello [rutiny Azure Machine Learning](https://msdn.microsoft.com/library/azure/mt767952.aspx) odkaz na webu MSDN.
 
-Kopírovat z retraining výstupu následující informace:
+Následující informace z retraining výstup hello zkopírovaný hello:
 
 * BaseLocation
 * RelativeLocation
 
-Postup, kterým jsou:
+Hello postup, kterým jsou:
 
-1. Přihlaste se ke svému účtu Azure Resource Manager.
-2. Získat definice webové služby
-3. Exportovat jako JSON definice webové služby
-4. Aktualizujte odkaz na objekt blob ilearner v kódu JSON.
-5. Import kódu JSON do definice webové služby
-6. Aktualizovat webovou službu pomocí nové definice webové služby
+1. Přihlaste se tooyour účet Azure Resource Manager.
+2. Získat definice hello webové služby
+3. Exportovat hello definice webové služby jako JSON
+4. Aktualizace hello odkaz toohello ilearner objektů blob v hello JSON.
+5. Importovat hello JSON do definice webové služby
+6. Aktualizovat hello webové služby s novou definice webové služby
 
-## <a name="sign-in-to-your-azure-resource-manager-account"></a>Přihlaste se k účtu Azure Resource Manager
-Musíte se nejdřív přihlásit k účtu Azure z v prostředí PowerShell pomocí [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) rutiny.
+## <a name="sign-in-tooyour-azure-resource-manager-account"></a>Přihlaste se tooyour účet Azure Resource Manager
+Je nutné se přihlásit v tooyour účet Azure z prostředí PowerShell hello pomocí hello [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) rutiny.
 
-## <a name="get-the-web-service-definition"></a>Získat definice webové služby
-V dalším kroku získat voláním webové služby [Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) rutiny. Definice webové služby je interní reprezentací pro cvičný model webové služby a není přímo změn. Ujistěte se, že jsou načítání definice webové služby prediktivní experiment a není experimentu školení.
+## <a name="get-hello-web-service-definition"></a>Získat hello definice webové služby
+V dalším kroku získat hello webové služby pomocí volání hello [Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) rutiny. Hello definice webové služby je interní reprezentací hello trained model hello webové služby a není přímo změn. Ujistěte se, že dostáváte hello definice webové služby prediktivní experiment a není experimentu školení.
 
     $wsd = Get-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
-Chcete-li zjistit název skupiny prostředků existující webovou službu, spusťte rutinu Get-AzureRmMlWebService bez parametrů pro zobrazení webové služby v rámci vašeho předplatného. Vyhledejte webovou službu a podívejte se na jeho identifikátorem webové služby. Název skupiny prostředků je čtvrtý element v ID, bezprostředně za *Skupinyprostředků* element. V následujícím příkladu je název skupiny prostředků výchozí-MachineLearning-SouthCentralUS.
+toodetermine hello název skupiny prostředků existující webovou službu, spusťte rutinu Get-AzureRmMlWebService hello bez žádné parametry toodisplay hello webové služby v rámci vašeho předplatného. Vyhledejte hello webové služby a podívejte se na jeho identifikátorem webové služby. Hello název skupiny prostředků hello je čtvrtý element hello v hello ID bezprostředně za hello *Skupinyprostředků* element. V následujícím příkladu hello název skupiny prostředků hello je výchozí. MachineLearning SouthCentralUS.
 
     Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
     Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
@@ -64,18 +64,18 @@ Chcete-li zjistit název skupiny prostředků existující webovou službu, spus
     Type : Microsoft.MachineLearning/webServices
     Tags : {}
 
-Můžete taky určit název skupiny prostředků existující webové služby, přihlaste se k portálu Microsoft Azure Machine Learning webové služby. Vyberte webovou službu. Název skupiny prostředků je pátý element adresy URL webové služby, bezprostředně za *Skupinyprostředků* element. V následujícím příkladu je název skupiny prostředků výchozí-MachineLearning-SouthCentralUS.
+Alternativně toodetermine hello název skupiny prostředků existující webovou službu, protokolu na portálu Microsoft Azure Machine Learning webové služby toohello. Vyberte hello webovou službu. Název skupiny prostředků Hello je pátý element hello adresy URL hello hello webové služby, bezprostředně za hello *Skupinyprostředků* element. V následujícím příkladu hello název skupiny prostředků hello je výchozí. MachineLearning SouthCentralUS.
 
     https://services.azureml.net/subscriptions/<subcription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
 
 
-## <a name="export-the-web-service-definition-as-json"></a>Exportovat jako JSON definice webové služby
-Upravit definici, abyste pro cvičný model používat nově Trained Model, musíte nejprve použít [Export AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767935.aspx) rutiny exportovat do souboru ve formátu JSON.
+## <a name="export-hello-web-service-definition-as-json"></a>Exportovat hello definice webové služby jako JSON
+toomodify hello Definice toohello Trénink modelu toouse hello nově Trained Model, musíte nejprve použít hello [Export AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767935.aspx) tooexport rutiny ho tooa souboru ve formátu JSON.
 
     Export-AzureRmMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
 
-## <a name="update-the-reference-to-the-ilearner-blob-in-the-json"></a>Aktualizujte odkaz na objekt blob ilearner v kódu JSON.
-V prostředky, vyhledejte [trained model], aktualizujte *identifikátor uri* hodnotu *locationInfo* uzlu s identifikátorem URI objektu ilearner blob. Identifikátor URI je generován kombinování *BaseLocation* a *RelativeLocation* z výstupu BES retraining volání. Tím se aktualizuje cesta odkazovat na nové naučeného modelu.
+## <a name="update-hello-reference-toohello-ilearner-blob-in-hello-json"></a>Aktualizace hello odkaz toohello ilearner objektů blob v hello JSON.
+V hello prostředky, vyhledejte hello [trained model], aktualizace hello *uri* hodnota v hello *locationInfo* uzel s hello identifikátor URI objektu hello ilearner blob. Hello identifikátor URI je generována kombinováním hello *BaseLocation* a hello *RelativeLocation* z hello výstup hello BES retraining volání. Tím se aktualizuje hello cesta tooreference hello v nový trained model.
 
      "asset3": {
         "name": "Retrain Samp.le [trained model]",
@@ -90,20 +90,20 @@ V prostředky, vyhledejte [trained model], aktualizujte *identifikátor uri* hod
         }
       },
 
-## <a name="import-the-json-into-a-web-service-definition"></a>Import kódu JSON do definice webové služby
-Je nutné použít [Import AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767925.aspx) rutiny převést změněný soubor JSON zpět do definice webové služby, který můžete použít k aktualizaci definice webové služby.
+## <a name="import-hello-json-into-a-web-service-definition"></a>Importovat hello JSON do definice webové služby
+Je nutné použít hello [Import AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767925.aspx) rutiny tooconvert hello upravit soubor JSON zpět do definice webové služby, které můžete použít tooupdate hello definice webové služby.
 
     $wsd = Import-AzureRmMlWebService -InputFile "C:\temp\mlservice_export.json"
 
 
-## <a name="update-the-web-service-with-new-web-service-definition"></a>Aktualizovat webovou službu pomocí nové definice webové služby
-Nakonec použijte [aktualizace AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767922.aspx) rutiny aktualizovat definice webové služby.
+## <a name="update-hello-web-service-with-new-web-service-definition"></a>Aktualizovat hello webové služby s novou definice webové služby
+Nakonec použijte [aktualizace AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767922.aspx) rutiny tooupdate hello definice webové služby.
 
     Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'  -ServiceUpdates $wsd
 
 ## <a name="summary"></a>Souhrn
-Pomocí rutin prostředí PowerShell Machine Learning management, můžete aktualizovat pro cvičný model prediktivní povolení scénáře, jako webové služby:
+Pomocí rutiny správy Machine Learning PowerShell text hello, můžete aktualizovat hello trained model prediktivní povolení scénáře, jako webové služby:
 
 * Pravidelné model retraining s nová data.
-* Distribuce modelu pro zákazníky s cílem aby přeučování modelu s použitím svá vlastní data.
+* Distribuce toocustomers modelu s cílem hello aby přeučování hello model pomocí svá vlastní data.
 

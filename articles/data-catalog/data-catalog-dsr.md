@@ -1,6 +1,6 @@
 ---
-title: "Podporované zdroje dat v Azure Data Catalog | Microsoft Docs"
-description: "V tomto článku jsou uvedeny specifikace zdrojů dat aktuálně podporované."
+title: aaaSupported zdroje dat v Azure Data Catalog | Microsoft Docs
+description: "V tomto článku jsou uvedeny specifikace zdrojů dat aktuálně podporované hello."
 services: data-catalog
 documentationcenter: 
 author: steelanddata
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.openlocfilehash: d6867c73bc6ea3c238cceef8a68466d451f3365c
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4bfcabf31bf9fd781c939a5026abc42a5407df32
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Podporované zdroje dat v Azure Data Catalog
 
-Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-jednou registrace Nástroje, nebo když ručně zadáte informace přímo do Azure Data Catalog webový portál. Následující tabulka shrnuje všechny zdroje dat, které jsou podporovány v katalogu dnes a možnosti publikování pro každou. Externí data nástroje, které všechny zdroje dat, můžete spustit z našich zkušeností portál "open in" jsou také uvedeny. Druhá tabulka obsahuje další technické specifikace každé připojení vlastnosti zdroje dat.
+Metadata můžete publikovat pomocí veřejné rozhraní API nebo kliknutí-jednou nástroj pro registraci, nebo ručním zadáním informace přímo toohello Azure Data Catalog webový portál. Hello následující tabulka shrnuje všechny zdroje dat, které jsou podporovány katalogem hello dnes a hello možnosti publikování pro každou. Jsou také uvedeny hello externích dat nástroje, které všechny zdroje dat, můžete spustit z našich zkušeností portál "open in". Druhá tabulka Hello obsahuje specifikaci odbornější každé připojení vlastnosti zdroje dat.
 
 
 ## <a name="list-of-supported-data-sources"></a>Seznam podporovaných zdrojů dat
@@ -443,12 +443,12 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
     </tr>
 </table>
 
-Pokud potřebujete podporu pro další zdroje, podat žádost o funkci [fórum Azure Data Catalog](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409).
+Pokud potřebujete podporu pro další zdroje, odeslání toohello žádosti o funkce [fórum Azure Data Catalog](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409).
 
 
 ## <a name="data-source-reference-specification"></a>Specifikace odkaz na zdroj dat
 > [!NOTE]
-> **DSL struktura** sloupci v následující tabulce jsou uvedeny pouze vlastnosti připojení pro kontejner objektů a dat "address" používané Azure Data Catalog. To znamená balík vlastností "address" může obsahovat další vlastnosti připojení zdroje dat, které Azure Data Catalog potrvají, ale nepoužívá.
+> Hello **DSL struktura** sloupec v hello následující tabulka uvádí jenom hello vlastnosti připojení pro kontejner objektů a dat "address" používané Azure Data Catalog. To znamená balík vlastností "address" může obsahovat další vlastnosti připojení hello zdroje dat, které Azure Data Catalog potrvají, ale nepoužívá.
 
 <table>
     <tr>
@@ -970,7 +970,7 @@ Pokud potřebujete podporu pro další zdroje, podat žádost o funkci [fórum A
       </td>
     </tr>
     <tr>
-      <td>Jiné (žádná z výše uvedených)</td>
+      <td>Jiné (žádná z výše uvedených hello)</td>
       <td>\*</td>
       <td>\*</td>
       <td>

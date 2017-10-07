@@ -1,6 +1,6 @@
 ---
-title: "Operace v Azure IoT Hub monitorování | Microsoft Docs"
-description: "Jak používat Azure IoT Hub operations monitorování ke sledování stavu operací ve službě IoT hub v reálném čase."
+title: "operace služby IoT Hub aaaAzure monitorování | Microsoft Docs"
+description: "Jak operace Azure IoT Hub toouse monitorování toomonitor hello stav operace ve službě IoT hub v reálném čase."
 services: iot-hub
 documentationcenter: 
 author: nberdy
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: nberdy
-ms.openlocfilehash: b6de5c5df5f9401a41be152bfa06eb994594e83d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a0b233ef2d9bd0827e19fa30fdbdd49b2b61b813
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="iot-hub-operations-monitoring"></a>Operace služby IoT Hub monitorování
 
-Operace služby IoT Hub monitorování umožňuje sledovat stav operace ve službě IoT hub v reálném čase. IoT Hub sleduje události napříč několika kategorií operací. Můžete se taky rozhodnout do odesílání událostí z jedné nebo více kategorií pro koncový bod služby IoT hub pro zpracování. Můžete sledovat data chyby nebo nastavit složitější zpracování vámi data.
+Operace služby IoT Hub monitorování umožňuje toomonitor hello stav operace ve službě IoT hub v reálném čase. IoT Hub sleduje události napříč několika kategorií operací. Můžete se taky rozhodnout do odesílání událostí z jednoho nebo více kategorií tooan koncového bodu služby IoT hub pro zpracování. Můžete sledovat data hello chyby nebo nastavit složitější zpracování vámi data.
 
 IoT Hub monitoruje šesti kategorie události:
 
@@ -33,28 +33,28 @@ IoT Hub monitoruje šesti kategorie události:
 * Nahrávání souborů
 * Směrování zpráv
 
-## <a name="how-to-enable-operations-monitoring"></a>Postup povolení operací monitorování
+## <a name="how-tooenable-operations-monitoring"></a>Jak operace tooenable monitorování
 
-1. Vytvoření služby IoT hub. Pokyny k vytvoření služby IoT hub v naleznete [Začínáme] [ lnk-get-started] průvodce.
+1. Vytvoření služby IoT hub. Pokyny naleznete v tom toocreate služby IoT hub v hello [Začínáme] [ lnk-get-started] průvodce.
 
-1. Otevřete okno služby IoT hub. Zde, klikněte na tlačítko **Operations monitorování**.
+1. Otevřete okno hello služby IoT hub. Zde, klikněte na tlačítko **Operations monitorování**.
 
-    ![Monitorování konfigurace na portálu pro operace přístupu.][1]
+    ![Monitorování konfigurace portálu hello operace přístupu.][1]
 
-1. Vyberte monitorování kategorie, které chcete monitorovat a pak klikněte na tlačítko **Uložit**. Události jsou k dispozici pro čtení z koncového bodu kompatibilního s centrem událostí uvedený v **nastavení sledování**. Koncový bod centra IoT se nazývá `messages/operationsmonitoringevents`.
+1. Vyberte hello monitorování kategorií chcete toomonitor a potom klikněte na **Uložit**. Hello události jsou k dispozici pro čtení z koncového bodu kompatibilního s centrem událostí hello uvedené v **nastavení sledování**. Hello koncový bod centra IoT se nazývá `messages/operationsmonitoringevents`.
 
     ![Konfigurace operací monitorování ve službě IoT hub][2]
 
 > [!NOTE]
-> Výběr **podrobné** monitorování **připojení** kategorie způsobí, že Centrum IoT k vygenerování hlášení další diagnostiky. U všech ostatních kategorií **podrobné** změny nastavení množství informací IoT Hub obsahuje v každém chybová zpráva.
+> Výběr **podrobné** monitorování hello **připojení** kategorie způsobí, že IoT Hub toogenerate hlášení další diagnostiky. U všech ostatních kategorií hello **podrobné** změny nastavení hello množství informací IoT Hub obsahuje v každém chybová zpráva.
 
-## <a name="event-categories-and-how-to-use-them"></a>Kategorie události a jejich použití
+## <a name="event-categories-and-how-toouse-them"></a>Kategorie události a jak toouse je
 
 Každý operations monitorování sleduje kategorie má jiný typ interakci s IoT Hub a každou kategorii monitorování schéma, které definuje, jak jsou strukturovaná události v této kategorii.
 
 ### <a name="device-identity-operations"></a>Operace identity zařízení
 
-Kategorie operations identity zařízení sleduje chyby, ke kterým dochází při pokusu o vytvoření, aktualizace nebo odstranění položku v registru identit služby IoT hub. Sledování této kategorie jsou užitečné pro zřizování scénáře.
+kategorie operations identity zařízení Hello sleduje chyby, ke kterým dochází, když se pokusíte toocreate, aktualizovat nebo odstranit položku, která v registru identit služby IoT hub. Sledování této kategorie jsou užitečné pro zřizování scénáře.
 
 ```json
 {
@@ -73,7 +73,7 @@ Kategorie operations identity zařízení sleduje chyby, ke kterým dochází p�
 
 ### <a name="device-telemetry"></a>Zařízení telemetrie
 
-Kategorie zařízení telemetrie sleduje chybách, ke kterým dochází při služby IoT hub a souvisí s telemetrie kanálu. Tato kategorie zahrnuje chyb vzniklých při odesílání telemetrie událostí (například omezení šířky pásma) a příjem telemetrické události (například neoprávněným čtečky). Tuto kategorii nelze catch chyby způsobené kód spuštěný v samotném zařízení.
+kategorie telemetrie zařízení Hello sleduje chybách, ke kterým dochází při hello IoT hub a jsou související toohello telemetrie kanálu. Tato kategorie zahrnuje chyb vzniklých při odesílání telemetrie událostí (například omezení šířky pásma) a příjem telemetrické události (například neoprávněným čtečky). Tuto kategorii nelze catch chyby způsobené kód spuštěný v samotném hello zařízení.
 
 ```json
 {
@@ -97,7 +97,7 @@ Kategorie zařízení telemetrie sleduje chybách, ke kterým dochází při slu
 
 ### <a name="cloud-to-device-commands"></a>Příkazy typu cloud zařízení
 
-Kategorie příkazy typu cloud zařízení sleduje chybách, ke kterým dochází při služby IoT hub a souvisí s kanálu zpráv typu cloud zařízení. Tato kategorie zahrnuje chyb vzniklých při odesílání zpráv typu cloud zařízení (například neautorizovaného odesílatele), přijímání zpráv typu cloud zařízení (například počet doručení překročena) a přijímání zpráv typu cloud zařízení zpětnou vazbu (například zpětné vazby jeho platnost). Tuto kategorii nezachytí chyby ze zařízení, která nesprávně zpracovává zprávy typu cloud zařízení, pokud zpráva cloud zařízení byla úspěšně doručeno.
+kategorie příkazy typu cloud zařízení Hello sleduje chybách, ke kterým dochází při hello IoT hub a jsou kanálu související toohello zpráv typu cloud zařízení. Tato kategorie zahrnuje chyb vzniklých při odesílání zpráv typu cloud zařízení (například neautorizovaného odesílatele), přijímání zpráv typu cloud zařízení (například počet doručení překročena) a přijímání zpráv typu cloud zařízení zpětnou vazbu (například zpětné vazby jeho platnost). Tuto kategorii nezachytí chyby ze zařízení, která nesprávně zpracovává zprávy typu cloud zařízení, pokud zpráva hello cloud zařízení byla úspěšně doručeno.
 
 ```json
 {
@@ -121,7 +121,7 @@ Kategorie příkazy typu cloud zařízení sleduje chybách, ke kterým docház�
 
 ### <a name="connections"></a>Připojení
 
-Kategorie připojení sleduje chyb vzniklých při zařízení připojení nebo odpojení od služby IoT hub. Sledování této kategorie jsou užitečné pro identifikaci pokusy o neoprávněné připojení a sledování při ztrátě pro zařízení v oblastech malé možnosti připojení připojení.
+kategorie připojení Hello sleduje chyb vzniklých při zařízení připojení nebo odpojení od služby IoT hub. Sledování této kategorie jsou užitečné pro identifikaci pokusy o neoprávněné připojení a sledování při ztrátě pro zařízení v oblastech malé možnosti připojení připojení.
 
 ```json
 {
@@ -141,13 +141,13 @@ Kategorie připojení sleduje chyb vzniklých při zařízení připojení nebo 
 
 ### <a name="file-uploads"></a>Nahrávání souborů
 
-Kategorie nahrávání souboru sleduje chybách, ke kterým dochází při služby IoT hub a souvisí s funkcí nahrávání souboru. Tato kategorie zahrnuje:
+kategorie nahrávání souboru Hello sleduje chybách, ke kterým dochází při hello IoT hub a jsou související toofile odesílání funkce. Tato kategorie zahrnuje:
 
-* Chyby, které se identifikátor URI SAS, jako je například vypršení platnosti před zařízení upozorní rozbočovače dokončená nahrávání.
-* Nepodařilo nahrávání údajů ze zařízení.
+* Chyby, které se hello identifikátor URI SAS, jako je například vypršení platnosti před zařízení upozorní hello rozbočovače dokončené odeslání.
+* Nepodařilo nahrávání hlášené hello zařízení.
 * Chyby, které nastat, pokud soubor nebyl nalezen v úložišti během vytváření zpráv oznámení služby IoT Hub.
 
-Tuto kategorii nelze catch chyb, které přímo nastat, když je zařízení nahrání souboru do úložiště.
+Tuto kategorii nelze catch chyb, které přímo nastat při hello zařízení odesílá toostorage souboru.
 
 ```json
 {
@@ -168,7 +168,7 @@ Tuto kategorii nelze catch chyb, které přímo nastat, když je zařízení nah
 
 ### <a name="message-routing"></a>Směrování zpráv
 
-Kategorie směrování zpráv sleduje chyb vzniklých při vyhodnocení zpráva trasy a stav koncového bodu zaznamenatelného službou IoT Hub. Tato kategorie zahrnuje události, například pokud se pravidlo vyhodnotí jako "undefined", když IoT Hub označí koncový bod zpráv a všechny ostatní chyby přijaté z koncového bodu. Tato kategorie nezahrnuje konkrétní chyby týkající se zpráv sami (například zařízení omezení chyby), které jsou v části kategorie "zařízení telemetrická".
+kategorie směrování zpráv Hello sleduje chyb vzniklých při vyhodnocení zpráva trasy a stav koncového bodu zaznamenatelného službou IoT Hub. Tato kategorie zahrnuje události, například pokud se pravidlo vyhodnotí jako příliš "undefined", když IoT Hub označí koncový bod zpráv a všechny ostatní chyby přijaté z koncového bodu. Tato kategorie nezahrnuje konkrétní chyby týkající se zpráv hello, sami (například zařízení omezení chyby), které jsou v části kategorie "zařízení telemetrická" hello.
 
 ```json
 {
@@ -187,49 +187,49 @@ Kategorie směrování zpráv sleduje chyb vzniklých při vyhodnocení zpráva 
 
 ## <a name="view-events"></a>zobrazení událostí
 
-Můžete použít *iothub-explorer* nástroj rychle otestovat, zda služby IoT hub je generování události monitorování. Chcete-li nainstalovat nástroj, postupujte podle pokynů v [iothub-explorer] [ lnk-iothub-explorer] úložiště GitHub.
+Můžete použít hello *iothub-explorer* tooquickly nástroj testování, aby služby IoT hub je generování události monitorování. tooinstall hello nástroje najdete v pokynech hello v hello [iothub-explorer] [ lnk-iothub-explorer] úložiště GitHub.
 
-1. Zajistěte, aby **připojení** monitorování kategorie je nastaven na **podrobné** na portálu.
+1. Ujistěte se, zda text hello **připojení** monitorování kategorie je nastaven příliš**podrobné** hello portálu.
 
-1. V příkazovém řádku spusťte následující příkaz pro čtení z koncového bodu monitorování:
+1. V příkazovém řádku spusťte následující příkaz tooread z koncového bodu monitorování hello hello:
 
     ```
     iothub-explorer monitor-ops --login {your iothubowner connection string}
     ```
 
-1. V jiné příkazového řádku spusťte následující příkaz k simulaci zařízení odesílání zpráv typu zařízení cloud:
+1. V jiné příkazového řádku spusťte následující příkaz toosimulate hello zařízení odesílání zpráv typu zařízení cloud:
 
     ```
     iothub-explorer simulate-device {your device name} --send "My test message" --login {your iothubowner connection string}
     ```
 
-1. První příkazového řádku ukazuje události monitorování simulované zařízení připojí ke službě IoT hub.
+1. Hello první příkazového řádku ukazuje události monitorování hello hello simulované zařízení připojí tooyour služby IoT hub.
 
-## <a name="connect-to-the-monitoring-endpoint"></a>Připojení ke koncovému bodu monitorování
+## <a name="connect-toohello-monitoring-endpoint"></a>Připojit toohello koncového bodu monitorování
 
-Monitorování koncový bod ve službě IoT hub je koncový bod kompatibilní s centrem událostí. Můžete použít všechny mechanismus, který funguje se službou Event Hubs umožní číst zprávy typu monitorování z tento koncový bod. Následující příklad vytvoří základní čtečka, která není vhodná pro vysoce výkonná nasazení. Další informace o zpracování zpráv ze služby Event Hubs najdete v kurzu [Začínáme se službou Event Hubs][lnk-eventhubs-tutorial].
+Hello monitorování koncového bodu ve službě IoT hub je koncový bod kompatibilní s centrem událostí. Můžete použít jakéhokoli mechanismu, který funguje s Event Hubs tooread monitorování zprávy z tohoto koncového bodu. Hello následující ukázka vytvoří základní čtečka, která není vhodná pro vysoce výkonná nasazení. Další informace o tom, jak tooprocess zpráv ze služby Event Hubs naleznete v tématu hello [Začínáme se službou Event Hubs] [ lnk-eventhubs-tutorial] kurzu.
 
-Pro připojení k monitorování koncového bodu, budete potřebovat připojovací řetězec a název koncového bodu. Následující kroky vám ukážou, jak najít potřebné hodnoty na portálu:
+tooconnect toohello koncového bodu monitorování, je třeba název připojovacího řetězce a hello koncový bod. Hello následující kroky ukazují, jak toofind hello nezbytných hodnot hello portálu:
 
-1. Na portálu přejděte do okna prostředků vaší služby IoT Hub.
+1. Hello portálu přejděte tooyour okna prostředků služby IoT Hub.
 
-1. Zvolte **Operations monitorování**a poznamenejte si **název kompatibilní s centrem událostí** a **koncový bod kompatibilní s centrem událostí** hodnoty:
+1. Zvolte **Operations monitorování**a poznamenejte si hello **název kompatibilní s centrem událostí** a **koncový bod kompatibilní s centrem událostí** hodnoty:
 
     ![Hodnoty koncový bod kompatibilní s centrem událostí][img-endpoints]
 
-1. Zvolte **zásady sdíleného přístupu**, zvolte **služby**. Poznamenejte si **primární klíč** hodnotu:
+1. Zvolte **zásady sdíleného přístupu**, zvolte **služby**. Poznamenejte si hello **primární klíč** hodnotu:
 
     ![Primární klíč pro zásady sdíleného přístupu služby][img-service-key]
 
-Následující ukázka kódu C# jsou převzaty ze sady Visual Studio **Windows Classic Desktop** konzolovou aplikaci C#. Tento projekt **WindowsAzure.ServiceBus** nainstalovat balíček NuGet.
+Hello následující ukázka kódu C# jsou převzaty ze sady Visual Studio **Windows Classic Desktop** konzolovou aplikaci C#. Hello projekt má hello **WindowsAzure.ServiceBus** nainstalovat balíček NuGet.
 
-* Nahraďte zástupný symbol připojovacího řetězce připojovací řetězec, který používá **koncový bod kompatibilní s centrem událostí** a služba **primární klíč** hodnoty, které jste si poznamenali dříve, jak je znázorněno v následujícím příkladu:
+* Nahraďte zástupný symbol připojovacího řetězce hello připojovací řetězec, který používá hello **koncový bod kompatibilní s centrem událostí** a služba **primární klíč** hodnoty, které jste si poznamenali dříve, jak je znázorněno v následující hello Příklad:
 
     ```cs
     "Endpoint={your Event Hub-compatible endpoint};SharedAccessKeyName=service;SharedAccessKey={your service primary key value}"
     ```
 
-* Nahraďte monitorování zástupný symbol název koncového bodu se **název kompatibilní s centrem událostí** hodnoty, které jste si poznamenali dříve.
+* Nahraďte hello monitorování název koncového bodu zástupný symbol hello **název kompatibilní s centrem událostí** hodnoty, které jste si poznamenali dříve.
 
 ```cs
 class Program
@@ -240,7 +240,7 @@ class Program
 
     static void Main(string[] args)
     {
-        Console.WriteLine("Monitoring. Press Enter key to exit.\n");
+        Console.WriteLine("Monitoring. Press Enter key tooexit.\n");
 
         eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, monitoringEndpointName);
         var d2cPartitions = eventHubClient.GetRuntimeInformation().PartitionIds;
@@ -282,7 +282,7 @@ class Program
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
+toofurther prozkoumat hello služby IoT Hub, najdete v tématu:
 
 * [Příručka vývojáře pro službu IoT Hub][lnk-devguide]
 * [Simulaci zařízení s Azure IoT Edge][lnk-iotedge]

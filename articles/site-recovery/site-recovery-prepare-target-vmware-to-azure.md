@@ -1,6 +1,6 @@
 ---
-title: "Příprava cílového (VMware do Azure) | Microsoft Docs"
-description: "Tento článek popisuje postup přípravy prostředí Azure pro zahájení replikace virtuálních počítačů VMware do Azure."
+title: "Příprava cílového (VMware tooAzure) | Microsoft Docs"
+description: "Tento článek popisuje, jak tooprepare vašeho prostředí Azure toostart replikace tooAzure virtuálních počítačů VMware."
 services: site-recovery
 documentationcenter: 
 author: bsiva
@@ -14,39 +14,39 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 5/31/2017
 ms.author: bsiva
-ms.openlocfilehash: c84a775564769ddc796aa9d75add019ef1003175
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5975d3c122032f92f8df370ee74fa0c7012ebe2d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="prepare-target-vmware-to-azure"></a>Příprava cílového (VMware do Azure)
+# <a name="prepare-target-vmware-tooazure"></a>Příprava cílového (VMware tooAzure)
 > [!div class="op_single_selector"]
-> * [Z VMware do Azure](./site-recovery-prepare-target-vmware-to-azure.md)
-> * [Fyzické do Azure](./site-recovery-prepare-target-physical-to-azure.md)
+> * [VMware tooAzure](./site-recovery-prepare-target-vmware-to-azure.md)
+> * [Fyzické tooAzure](./site-recovery-prepare-target-physical-to-azure.md)
 
-Tento článek popisuje postup přípravy prostředí Azure pro zahájení replikace virtuálních počítačů VMware do Azure.
+Tento článek popisuje, jak tooprepare vašeho prostředí Azure toostart replikace tooAzure virtuálních počítačů VMware.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Článek předpokládá následující:
-- Jste vytvořili trezor služeb zotavení k ochraně virtuálních počítačů VMware. Můžete vytvořit trezor služeb zotavení z [portál Azure](http://portal.azure.com "portál Azure").
-- Máte [instalaci prostředí místní](./site-recovery-set-up-vmware-to-azure.md) k replikaci virtuálních počítačů VMware do Azure.
+Hello článek předpokládá hello následující:
+- Vytvořili jste tooprotect trezoru služeb zotavení virtuální počítače VMware. Můžete vytvořit trezor služeb zotavení z hello [portál Azure](http://portal.azure.com "portál Azure").
+- Máte [instalaci prostředí místní](./site-recovery-set-up-vmware-to-azure.md) tooAzure virtuální počítače VMware tooreplicate.
 
 ## <a name="prepare-target"></a>Příprava cílového
 
-Po dokončení **cíl ochrany krok 1: vyberte** a **krok 2: Příprava zdroj**, přejdete na **krok 3: cíl**
+Po dokončení hello **cíl ochrany krok 1: vyberte** a **krok 2: Příprava zdroj**, budete přesměrováni příliš**krok 3: cíl**
 
 ![Příprava cílového](./media/site-recovery-prepare-target-vmware-to-azure/prepare-target-vmware-to-azure.png)
 
-1. **Předplatné:** z rozevírací nabídky vyberte odběr, který chcete replikovat virtuální počítače.
-2. **Model nasazení:** vyberte model nasazení (Classic nebo Resource Manager)
+1. **Předplatné:** z hello rozevírací nabídce vyberte hello předplatné, které chcete tooreplicate virtuálního počítače.
+2. **Model nasazení:** model nasazení vyberte hello (Classic nebo Resource Manager)
 
-Založená na modelu vybrané nasazení, je zajistit, že máte alespoň jeden účet kompatibilní úložiště a virtuální sítě v cílové předplatné pro replikaci a převzetí služeb při selhání virtuálního počítače do spusťte ověřování.
+Podle hello zvolený model nasazení, ověřování tooensure, jestli máte aspoň jeden účet kompatibilní úložiště a virtuální sítě v hello cílové předplatné tooreplicate a převzetí služeb při selhání virtuálního počítače na spuštění.
 
-Jakmile ověřovací úspěšně dokončit, klikněte na tlačítko OK přejdete k dalšímu kroku.
+Po ověření hello úspěšně dokončit, klikněte na tlačítko OK toogo toohello další krok.
 
-Pokud nemáte účet úložiště kompatibilní Resource Manager nebo virtuální sítě, nebo chcete přidat více, můžete provést kliknutím **+ účet úložiště** nebo **+ síť** tlačítka nahoře v okně.
+Pokud nemáte účet úložiště kompatibilní Resource Manager nebo virtuální sítě, nebo chcete tooadd další, můžete provést kliknutím hello **+ účet úložiště** nebo **+ síť** tlačítka na začátku hello hello okno.
 
 ## <a name="next-steps"></a>Další kroky
 [Konfigurace nastavení replikace](./site-recovery-setup-replication-settings-vmware.md).

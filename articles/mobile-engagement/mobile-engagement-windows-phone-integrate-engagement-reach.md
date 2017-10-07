@@ -1,6 +1,6 @@
 ---
-title: Windows Phone Silverlight Reach integraci sady SDK
-description: "Postup při integraci Azure Mobile Engagement Reach s aplikacemi pro Windows Phone Silverlight"
+title: "aaaWindows integrace sady SDK dosáhnout Phone Silverlight"
+description: Jak tooIntegrate Azure Mobile Engagement Reach s aplikacemi pro Windows Phone Silverlight
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,51 +14,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0738f33df94d14fbb393bfaaf09e94c6560213cc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 09c8767216e11963c5c600755ab8d4d11cd92034
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="windows-phone-silverlight-reach-sdk-integration"></a>Windows Phone Silverlight Reach integraci sady SDK
-Je třeba provést postup integrace popsaný v tématu [integraci sady Windows Phone Silverlight Engagement SDK](mobile-engagement-windows-phone-integrate-engagement.md) před těchto pokynů.
+Je třeba postupovat podle hello integrace postup popsaný v hello [integraci sady Windows Phone Silverlight Engagement SDK](mobile-engagement-windows-phone-integrate-engagement.md) před těchto pokynů.
 
-## <a name="embed-the-engagement-reach-sdk-into-your-windows-phone-silverlight-project"></a>Vložení Engagement Reach SDK do projektu Windows Phone Silverlight
-Nemáte nic přidat. `EngagementReach`odkazy a prostředky jsou už ve vašem projektu.
+## <a name="embed-hello-engagement-reach-sdk-into-your-windows-phone-silverlight-project"></a>Vložení hello Engagement Reach SDK do projektu Windows Phone Silverlight
+Nemáte nic tooadd. `EngagementReach`odkazy a prostředky jsou už ve vašem projektu.
 
 > [!TIP]
-> Můžete přizpůsobit bitové kopie, které jsou umístěné v `Resources` složky projektu, zejména ikonu značky (této výchozí ikonu Engagement).
+> Můžete přizpůsobit bitové kopie, které jsou umístěné v hello `Resources` složky projektu, zejména hello brand ikona (této výchozí toohello Engagement).
 > 
 > 
 
-## <a name="add-the-capabilities"></a>Přidání funkcí
-Engagement Reach SDK potřebuje některé další funkce.
+## <a name="add-hello-capabilities"></a>Přidání možností hello
+Hello Engagement Reach SDK potřebuje některé další funkce.
 
-Otevřete váš `WMAppManifest.xml` souboru a ujistěte se, že jsou deklarovány následující možnosti:
+Otevřete váš `WMAppManifest.xml` soubor a zkontrolujte, zda jsou deklarovány této hello následující možnosti:
 
 * `ID_CAP_PUSH_NOTIFICATION`
 * `ID_CAP_WEBBROWSERCOMPONENT`
 
-První z nich se používá služba MPNS povolit zobrazení oznámení informační zprávy. Druhá slouží k vložení úlohu prohlížeče do sady SDK.
+Hello nejprve jeden používá hello MPNS služby tooallow hello zobrazení informační zpráva. Hello druhá je použité tooembed úlohu prohlížeče do hello SDK.
 
-Upravit `WMAppManifest.xml` souboru a přidejte uvnitř `<Capabilities />` značky:
+Upravit hello `WMAppManifest.xml` souboru a přidejte uvnitř hello `<Capabilities />` značky:
 
     <Capability Name="ID_CAP_PUSH_NOTIFICATION" />
     <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
 
-## <a name="enable-the-microsoft-push-notification-service"></a>Povolit službu Microsoft Push Notification Service
-Chcete-li použít **Microsoft službu nabízených oznámení** (označované jako MPNS) vaší `WMAppManifest.xml` soubor musí mít `<App />` značku s `Publisher` atributu nastavena na název projektu.
+## <a name="enable-hello-microsoft-push-notification-service"></a>Povolit hello Microsoft službu nabízených oznámení
+V pořadí toouse hello **Microsoft službu nabízených oznámení** (označované jako MPNS) vaší `WMAppManifest.xml` soubor musí mít `<App />` značku s `Publisher` atribut nastavit toohello název projektu.
 
-## <a name="initialize-the-engagement-reach-sdk"></a>Inicializace Engagement Reach SDK
+## <a name="initialize-hello-engagement-reach-sdk"></a>Inicializace hello Engagement Reach SDK
 ### <a name="engagement-configuration"></a>Konfigurace zapojení
-Konfigurace zapojení je centralizovaná v `Resources\EngagementConfiguration.xml` souboru projektu.
+Konfigurace Engagement Hello je centralizovaná v hello `Resources\EngagementConfiguration.xml` souboru projektu.
 
-Upravte tento soubor k určení reach konfigurace:
+Úpravy konfigurace reach toospecify souboru:
 
-* *Volitelné*, zda je aktivována nativního nabízení (MPNS) nebo není mezi `<enableNativePush>` a `</enableNativePush>` značky, (`true` ve výchozím nastavení).
-* *Volitelné*, označení názvu nabízené kanál mezi `<channelName>` a `</channelName>` značky, poskytují stejné, vaše aplikace může aktuálně použít nebo hodnotu nevyplňujte.
+* *Volitelné*, zda je aktivována hello nativního nabízení (MPNS) nebo není mezi `<enableNativePush>` a `</enableNativePush>` značky, (`true` ve výchozím nastavení).
+* *Volitelné*, označuje název hello hello nabízené kanál mezi `<channelName>` a `</channelName>` značky, poskytují hello stejné, že vaše aplikace může aktuálně použít nebo hodnotu nevyplňujte.
 
-Pokud chcete zadat za běhu, můžete volat metodu před Engagement inicializaci agenta:
+Pokud chcete, aby ho za běhu místo toho můžete volat hello následující toospecify metoda před inicializací agenta hello Engagement:
 
     /* Engagement configuration. */
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
@@ -66,23 +66,23 @@ Pokud chcete zadat za běhu, můžete volat metodu před Engagement inicializaci
     engagementConfiguration.Agent.ConnectionString = "Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}";
 
     engagementConfiguration.Reach.EnableNativePush = true;                  
-    /* [Optional] whether the native push (MPNS) is activated or not. */
+    /* [Optional] whether hello native push (MPNS) is activated or not. */
 
     engagementConfiguration.Reach.ChannelName = "YOUR_PUSH_CHANNEL_NAME";   
-    /* [Optional] Provide the same channel name that your application may currently use. */
+    /* [Optional] Provide hello same channel name that your application may currently use. */
 
     /* Initialize Engagement agent with above configuration. */
     EngagementAgent.Instance.Init(engagementConfiguration);
 
 > [!TIP]
-> Můžete zadat název kanálu nabízené MPNS vaší aplikace. Ve výchozím nastavení vytvoří název založený na appId zapojení. Nemáte žádné potřeba zadat název sami, s výjimkou Pokud plánujete použít kanál nabízené mimo zapojení.
+> Můžete zadat název hello hello MPNS nabízené kanál svojí aplikace. Ve výchozím nastavení vytvoří Engagement název založený na hello appId. Máte bez nutnosti toospecify hello názvu sami, s výjimkou Pokud máte v plánu toouse hello nabízené kanál mimo zapojení.
 > 
 > 
 
 ### <a name="engagement-initialization"></a>Inicializace zapojení
-Změnit `App.xaml.cs`:
+Upravit hello `App.xaml.cs`:
 
-* Přidat do vaší `using` příkazy:
+* Přidat tooyour `using` příkazy:
   
       using Microsoft.Azure.Engagement;
 * Vložit `EngagementReach.Instance.Init` právě po `EngagementAgent.Instance.Init` v `Application_Launching` :
@@ -92,7 +92,7 @@ Změnit `App.xaml.cs`:
          EngagementAgent.Instance.Init();
          EngagementReach.Instance.Init();
       }
-* Vložit `EngagementReach.Instance.OnActivated` v `Application_Activated` metoda:
+* Vložit `EngagementReach.Instance.OnActivated` v hello `Application_Activated` metoda:
   
       private void Application_Activated(object sender, ActivatedEventArgs e)
       {
@@ -101,41 +101,41 @@ Změnit `App.xaml.cs`:
       }
 
 > [!IMPORTANT]
-> `EngagementReach.Instance.Init` Běží ve vyhrazené vlákno. Nemusíte dělat sami.
+> Hello `EngagementReach.Instance.Init` běží ve vyhrazené vlákno. Nemáte toodo ho sami.
 > 
 > 
 
 ## <a name="app-store-submission-considerations"></a>Aspekty odeslání úložiště aplikací
-Microsoft ukládá některá pravidla při používání nabízených oznámení:
+Microsoft ukládá některá pravidla při použití hello nabízených oznámení:
 
-Z Microsoft [zásady aplikací] části 2.9, dokumentace:
+Z hello Microsoft [zásady aplikací] části 2.9, dokumentace:
 
-1) Musíte požádat uživatele tak, aby přijímal přijímat nabízená oznámení. Potom si v nastaveních, přidejte způsob, jak zakázat nabízená oznámení.
+1) Musíte požádat hello uživatele tooaccept tooreceive nabízená oznámení. Potom si v nastaveních, přidejte způsob toodisable hello nabízená oznámení.
 
-Objekt EngagementReach nabízí dvě metody pro správu opt souhlas/nesouhlas, `EnableNativePush()` a `DisableNativePush()`. Možnost může například vytvořit v nastavení s přepínání zakázat nebo povolit MPNS.
+objekt EngagementReach Hello nabízí dvě metody toomanage hello opt v nebo odhlášení, `EnableNativePush()` a `DisableNativePush()`. Může například vytvořit možnost v nastavení hello s toodisable přepínač nebo povolit MPNS.
 
-Můžete také rozhodnout deaktivovat MPNS prostřednictvím konfigurace Engagement\<windows phone-sdk-reach konfigurace\>.
+Můžete také rozhodnout toodeactivate MPNS prostřednictvím konfigurace Engagement hello\<windows phone-sdk-reach konfigurace\>.
 
-> 2.9.1) aplikace musí nejprve popisují oznámení, musíte zadat a **získat express oprávnění (výslovný souhlas)**, a **mechanismus, pomocí kterého uživatel může vyjádření výslovného nesouhlasu s nabízená oznámení musíte zadat**. Všechna oznámení zadaný pomocí Microsoft službu nabízených oznámení musí být v souladu s uživateli poskytnutý popis a musí dodržovat všechny příslušné [zásady aplikací] [ Content Policies] a [další požadavky pro konkrétní typy aplikací].
+> 2.9.1) aplikace hello musí nejprve popisují toobe oznámení hello zadaný a **získat express oprávnění uživatele hello (výslovný souhlas)**, a **musí nabízejí mechanismus, pomocí které hello uživatele můžete vyjádření výslovného nesouhlasu s přijetím nabízená oznámení**. Všechna oznámení zadaný pomocí hello Microsoft službu nabízených oznámení musí být v souladu s hello poskytnutý popis toohello uživatele a musí dodržovat všechny příslušné [zásady aplikací] [ Content Policies]a [další požadavky pro konkrétní aplikaci typy].
 > 
 > 
 
 2) Neměli byste používat příliš mnoho nabízená oznámení. Zapojení bude zpracovávat oznámení za vás.
 
-> 2.9.2) aplikace a jeho použití programu Microsoft službu nabízených oznámení nesmí nadměrně použít dostatečnou kapacitu sítě nebo šířka pásma Microsoft službu nabízených oznámení, nebo jinak neoprávněně nebyli Windows Phone nebo jiné zařízení Microsoft nebo služby s nadměrné nabízená oznámení, jak stanoví společnost Microsoft dle svého uvážení a musí poškodit nebo narušit žádné sítě, Microsoft nebo servery nebo serverech třetích stran nebo sítě připojené k Microsoft službu nabízených oznámení.
+> 2.9.2) hello aplikace a jeho použití programu hello Microsoft službu nabízených oznámení musí není nadměrně pomocí dostatečnou kapacitu sítě nebo šířka pásma hello Microsoft službu nabízených oznámení nebo jinak neoprávněně nebyli Windows Phone nebo jiných Microsoft zařízení nebo službu. s nadměrné nabízená oznámení, jak dle svého uvážení určí společnost Microsoft a nesmí poškodit nebo narušit žádné sítě, Microsoft nebo servery nebo serverech třetích stran nebo sítě připojené toohello Microsoft službu nabízených oznámení.
 > 
 > 
 
-3) Nespoléhejte na MPNS k odeslání informací o criticals. Zapojení používá MPNS, takže toto pravidlo platí také pro kampaně vytvářet v zapojení front-endu.
+3) Nespoléhejte na MPNS toosend criticals informace. Zapojení používá MPNS, takže toto pravidlo platí také pro hello kampaně vytvářet v hello Engagement front-endu.
 
-> Microsoft službu nabízených oznámení 2.9.3) nemusí být používá k odesílání oznámení, které jsou zvláště důležité nebo jinak mohou ovlivnit záležitosti životnosti nebo úmrtí, včetně bez omezení kritické oznámení souvisejících s lékařské zařízení nebo podmínku. MICROSOFT VÝSLOVNĚ ZŘÍKÁ JAKÉKOLI ZÁRUKY, POUŽITÍ MICROSOFT NABÍZENÁ OZNÁMENÍ SLUŽBY NEBO DORUČOVÁNÍ OZNÁMENÍ O SLUŽBÁCH MICROSOFT NABÍZENÁ OZNÁMENÍ BUDE BEZ PŘERUŠENÍ, BEZ CHYB, NEBO JINAK ZÁRUKU, ŽE DOJDE K NA ZÁKLADĚ V REÁLNÉM ČASE.
+> 2.9.3) hello Microsoft službu nabízených oznámení nemusí být použité toosend oznámení, která jsou mise kritické nebo jinak mohou ovlivnit záležitosti životnosti nebo smrti, včetně bez omezení kritické oznámení související tooa lékařské zařízení nebo podmínku. MICROSOFT výslovně zříká ANY záruky, hello použití z hello MICROSOFT NABÍZENÁ oznámení služby nebo doručení z MICROSOFT NABÍZENÁ oznámení služby oznámení bude být bez přerušení, chyba volné nebo jinak zaručit tooOCCUR základ v reálném čase A ON.
 > 
 > 
 
-**Nemůžeme zaručit, že vaše aplikace předá proces ověření Pokud nerespektují tato doporučení.**
+**Nemůžeme zaručit aplikace předá proces ověření hello Pokud nerespektují tato doporučení.**
 
 ## <a name="handle-data-push-optional"></a>Zpracování datová oznámení (volitelné)
-Pokud chcete aplikace nebudou moct přijímat Reach datová oznámení, je nutné implementovat dvě události EngagementReach třídy:
+Pokud chcete, aby vaše aplikace toobe možné tooreceive Reach datová oznámení, máte dvě události tooimplement hello EngagementReach třídy:
 
     EngagementReach.Instance.DataPushStringReceived += (body) =>
     {
@@ -150,18 +150,18 @@ Pokud chcete aplikace nebudou moct přijímat Reach datová oznámení, je nutn�
        return true;
     };
 
-Uvidíte, že zpětné volání každá metoda vrátí logickou hodnotu. Zapojení odešle zpětnou vazbu k jeho back-end po odeslání nabízeného oznámení data. Pokud vrátí hodnotu false, zpětné volání `exit` zpětné vazby bude odesílat. Jinak bude `action`. Pokud je pro události, nastavené žádné zpětného volání `drop` zapojení se vrátí zpětnou vazbu.
+Uvidíte, že hello zpětné volání z každé metoda vrátí logickou hodnotu. Zapojení odešle zpětné vazby tooits back-end po odeslání hello datová oznámení. Pokud zpětné volání hello vrací hodnotu false, hello `exit` zpětné vazby bude odesílat. Jinak bude `action`. Pokud je pro události hello nastavené žádné zpětné volání, hello `drop` tooEngagement bude vrácen zpětnou vazbu.
 
 > [!WARNING]
-> Zapojení není schopný přijímat násobky názory pro datová oznámení. Pokud budete chtít nastavit několik obslužné rutiny na události, uvědomte si, zda bude poslední odpovídají zpětné vazby jeden odeslána. V takovém případě doporučujeme vždy vrací stejnou hodnotu, abyste nemuseli matoucí zpětnou vazbu na front-endu.
+> Zapojení není možné tooreceive násobky názory pro datová oznámení. Pokud máte v plánu tooset několik obslužné rutiny na události, mějte na paměti, že zpětnou vazbu hello bude odpovídat toohello naposledy odeslána. V takovém případě doporučujeme tooalways vrátí hello stejnou hodnotu tooavoid s matoucí zpětnou vazbu o hello front-endu.
 > 
 > 
 
 ## <a name="customize-ui-optional"></a>Přizpůsobení uživatelského rozhraní (volitelné)
 ### <a name="first-step"></a>Prvním krokem
-Můžeme vám umožňují přizpůsobit reach uživatelského rozhraní.
+Můžeme vám umožňují toocustomize hello reach uživatelského rozhraní.
 
-Uděláte to tak, budete muset vytvořit podtřídou třídy `EngagementReachHandler` třídy.
+toodo tedy máte toocreate, podtřídou třídy hello `EngagementReachHandler` třídy.
 
 **Ukázkový kód:**
 
@@ -175,7 +175,7 @@ Uděláte to tak, budete muset vytvořit podtřídou třídy `EngagementReachHan
        }
     }
 
-Potom nastavte obsah `EngagementReach.Instance.Handler` pole s vaší vlastní objekt v vaše `App.xaml.cs` třídy v rámci `Application_Launching` metoda.
+Potom nastavte hello obsah hello `EngagementReach.Instance.Handler` pole s vaší vlastní objekt v vaše `App.xaml.cs` třídu v rámci hello `Application_Launching` metoda.
 
 **Ukázkový kód:**
 
@@ -187,16 +187,16 @@ Potom nastavte obsah `EngagementReach.Instance.Handler` pole s vaší vlastní o
     }
 
 > [!NOTE]
-> Ve výchozím nastavení používá Engagement jejich vlastní implementaci `EngagementReachHandler`. Nemusíte vytvářet vlastní, a pokud tak učiníte, nemusíte přepsat každou metodu. Výchozí chování je výběr základní objekt zapojení.
+> Ve výchozím nastavení používá Engagement jejich vlastní implementaci `EngagementReachHandler`. Nemáte toocreate vlastní, a pokud tak učiníte, nemáte toooverride každou metodu. Hello výchozí chování je základní objekt Engagement tooselect hello.
 > 
 > 
 
 ### <a name="layouts"></a>Rozložení
-Ve výchozím nastavení použije Reach vložené prostředky knihovny DLL k zobrazení oznámení a stránky.
+Ve výchozím nastavení použije Reach hello vložených prostředků hello DLL toodisplay hello oznámení a stránky.
 
-Můžete však použít vlastní prostředky tak, aby odrážela vaší značkou v těchto součástí.
+Ale můžete rozhodnout toouse, vlastní prostředky tooreflect vaší značkou v těchto součástí.
 
-Můžete přepsat `EngagementReachHandler` metody v vaše podtřída říct Engagement používat vaše rozložení:
+Můžete přepsat `EngagementReachHandler` metody ve vaší podtřídami tootell Engagement toouse vaše rozložení:
 
 **Ukázkový kód:**
 
@@ -204,17 +204,17 @@ Můžete přepsat `EngagementReachHandler` metody v vaše podtřída říct Enga
 
     public override string GetTextViewAnnouncementUri()
     {
-       // return the path of your own xaml
+       // return hello path of your own xaml
     }
 
     public override string GetWebViewAnnouncementUri()
     {
-       // return the path of your own xaml
+       // return hello path of your own xaml
     }
 
     public override string GetPollUri()
     {
-       // return the path of your own xaml
+       // return hello path of your own xaml
     }
 
     public override EngagementNotificationView CreateNotification(EngagementNotificationViewModel viewModel)
@@ -223,63 +223,63 @@ Můžete přepsat `EngagementReachHandler` metody v vaše podtřída říct Enga
     }
 
 > [!TIP]
-> `CreateNotification` Metoda může vrátit hodnotu null. Oznámení se nezobrazí a budou vynechána kampaně reach.
+> Hello `CreateNotification` metoda může vrátit hodnotu null. Hello oznámení se nezobrazí a kampaně reach hello se zahodí.
 > 
 > 
 
-Pro zjednodušení implementace rozložení, poskytujeme také vlastní xaml, který může sloužit jako základ pro váš kód. Se nacházejí v archivu Engagement SDK (/ src/reach /).
+toosimplify implementaci rozložení poskytujeme také vlastní xaml, který může sloužit jako základ pro váš kód. Se nacházejí v archivu Engagement SDK hello (nebo src/reach /).
 
 > [!WARNING]
-> Zdroje, které poskytujeme jsou přesně stejnou ty, které používáme. Takže pokud chcete změnit přímo, nezapomeňte změnit obor názvů a název.
+> Hello zdroje, které poskytujeme jsou hello přesně stejnou ty, které používáme. Takže pokud chcete toomodify je přímo, nemáte zapomněli toochange hello obor názvů a hello název.
 > 
 > 
 
 ### <a name="notification-position"></a>Pozice oznámení
-Ve výchozím nastavení zobrazí se ve spodní levé straně aplikace oznámení v aplikaci. Toto chování můžete změnit přepsání `GetNotificationPosition` metodu `EngagementReachHandler` objektu.
+Ve výchozím nastavení v hello spodní části hello aplikace se zobrazí oznámení v aplikaci. Toto chování můžete změnit přepsání hello `GetNotificationPosition` metoda hello `EngagementReachHandler` objektu.
 
     // In your subclass of EngagementReachHandler
 
     public override EngagementReachHandler.NotificationPosition GetNotificationPosition(EngagementNotificationViewModel viewModel)
     {
-       // return a value of the EngagementReachHandler.NotificationPosition enum (TOP or BOTTOM)
+       // return a value of hello EngagementReachHandler.NotificationPosition enum (TOP or BOTTOM)
     }
 
-V současné době můžete zvolit, jestli `BOTTOM` (výchozí) a `TOP` pozic.
+V současné době můžete zvolit hello `BOTTOM` (výchozí) a `TOP` pozic.
 
 ### <a name="launch-message"></a>Spusťte zprávu
-Když uživatel klikne na systémové oznámení (oznámení), Engagement spuštění aplikace, obsah zprávy nabízené načíst a zobrazit stránku pro odpovídající kampaně.
+Když uživatel klikne na systémové oznámení (oznámení), spustí Engagement hello aplikace, obsah hello zatížení hello nabízené zprávy a zobrazit stránku hello hello odpovídající kampaně.
 
-Dochází ke zpoždění mezi spuštění aplikace a zobrazení stránky (v závislosti na rychlosti sítě).
+Dochází ke zpoždění mezi hello spuštění aplikace a hello zobrazení hello hello stránky (v závislosti na rychlosti sítě hello).
 
-Chcete-li uživatele upozornit, načítání něco, by měl poskytovat vizuální informace, jako je indikátor průběhu nebo indikátor průběhu. Zapojení nemůže zpracovat samostatně, ale poskytuje několik obslužné rutiny pro vás.
+tooindicate toohello uživatele, který se načítá něco, by měl poskytovat vizuální informace, jako je indikátor průběhu nebo indikátor průběhu. Zapojení nemůže zpracovat samostatně, ale poskytuje několik obslužné rutiny pro vás.
 
-Chcete-li implementovat zpětné volání, proveďte:
+tooimplement hello zpětného volání, proveďte:
 
-    /* The application has launched and the content is loading.
+    /* hello application has launched and hello content is loading.
      * You should display an indicator here.
      */
     EngagementReach.Instance.RetrieveLaunchMessageStarted += () => { [...] };
 
-    /* The application has finished loading the content and the page
-     * is about to be displayed.
-     * You should hide the indicator here.
+    /* hello application has finished loading hello content and hello page
+     * is about toobe displayed.
+     * You should hide hello indicator here.
      */
     EngagementReach.Instance.RetrieveLaunchMessageCompleted += () => { [...] };
 
-    /* The content has been loaded, but an error has occurred.
-     * You can provide an information to the user.
-     * You should hide the indicator here.
+    /* hello content has been loaded, but an error has occurred.
+     * You can provide an information toohello user.
+     * You should hide hello indicator here.
      */
     EngagementReach.Instance.RetrieveLaunchMessageFailed += () => { [...] };
 
-Zpětné volání můžete nastavit v vaše `Application_Launching` metodu vaše `App.xaml.cs` soubor, pokud možno před `EngagementReach.Instance.Init()` volání.
+Zpětné volání hello můžete nastavit v vaše `Application_Launching` metodu vaše `App.xaml.cs` soubor, pokud možno před hello `EngagementReach.Instance.Init()` volání.
 
 > [!TIP]
-> Každý obslužná rutina je volána službou vlákna uživatelského rozhraní. Nemusíte si dělat starosti při použití a MessageBox nebo něco související uživatelského rozhraní.
+> Každý obslužná rutina je volána službou hello vlákna uživatelského rozhraní. Při použití a MessageBox nebo něco uživatelského rozhraní související nemáte tooworry.
 > 
 > 
 
 [zásady aplikací]:http://msdn.microsoft.com/library/windows/apps/hh184841(v=vs.105).aspx
 [Content Policies]:http://msdn.microsoft.com/library/windows/apps/hh184842(v=vs.105).aspx
-[další požadavky pro konkrétní typy aplikací]:http://msdn.microsoft.com/library/windows/apps/hh184838(v=vs.105).aspx
+[další požadavky pro konkrétní aplikaci typy]:http://msdn.microsoft.com/library/windows/apps/hh184838(v=vs.105).aspx
 

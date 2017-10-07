@@ -1,6 +1,6 @@
 ---
-title: "Vývoj řešení Azure Functions pomocí služby Media Services"
-description: "Toto téma ukazuje, jak začít vyvíjet Azure Functions pomocí služby Media Services pomocí portálu Azure."
+title: "aaaDevelop Azure Functions pomocí služby Media Services"
+description: "Toto téma ukazuje, jak hello toostart vývoj Azure Functions Media Services prostřednictvím portálu Azure."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,47 +14,47 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: juliako
-ms.openlocfilehash: 35d539855572fef6c00de614a4e57738a8abd075
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3b2c2fb498fea399c862dfbdb63033d06cabf6d0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="develop-azure-functions-with-media-services"></a>Vývoj řešení Azure Functions pomocí služby Media Services
 
-Toto téma ukazuje, jak začít s vytvářením Azure Functions, která pomocí služby Media Services. Funkce Azure, které jsou definované v tomto tématu monitoruje kontejner účet úložiště s názvem **vstupní** pro nové soubory MP4. Jakmile do kontejneru úložiště, bude vynechána soubor spustí aktivační události objektu blob funkce.
+Toto téma ukazuje, jak tooget začít s vytvářením Azure Functions, která pomocí služby Media Services. Hello Azure funkci definovanou v tomto tématu monitoruje kontejner účet úložiště s názvem **vstupní** pro nové soubory MP4. Jakmile soubor do kontejneru úložiště hello vyřazen, aktivační události objektu blob hello provede hello funkce.
 
-Pokud chcete prozkoumat a nasadit existující funkce Azure, který pomocí Azure Media Services, podívejte se na [funkce Azure Media Services](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). Toto úložiště obsahuje příklady, které používají služby Media Services zobrazíte pracovní postupy související s příjem obsahu přímo z úložiště objektů blob, kódování a zápis obsahu zpět do úložiště objektů blob. Zahrnuje také příklady, jak monitorovat úlohy oznámení prostřednictvím Webhooky a fronty Azure. Také můžete vyvíjet funkcí podle příklady v [funkce Azure Media Services](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) úložiště. Chcete-li nasadit funkce, stiskněte **nasadit do Azure** tlačítko.
+Pokud chcete tooexplore a nasadit existující funkce Azure, který pomocí Azure Media Services, podívejte se na [funkce Azure Media Services](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). Toto úložiště obsahuje příklady, které používají služby Media Services tooshow pracovní postupy související tooingesting obsahu přímo z úložiště objektů blob, kódování a zápis obsahu zpět tooblob úložiště. Také obsahuje příklady jak toomonitor úlohy oznámení prostřednictvím Webhooky a fronty Azure. Také můžete vyvíjet funkcí podle hello příklady v hello [funkce Azure Media Services](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) úložiště. Funkce hello toodeploy, stiskněte klávesu hello **nasazení tooAzure** tlačítko.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Je nutné, abyste před vytvořením první funkce měli aktivní účet Azure. Pokud ještě nemáte účet Azure, [můžete použít bezplatné účty](https://azure.microsoft.com/free/).
-- Pokud chcete vytvořit Azure Functions, který provádět akce na vašem účtu Azure Media Services (AMS) nebo poslouchat událostí odeslaných službou Media Services, měli byste vytvořit účet AMS, jak je popsáno [zde](media-services-portal-create-account.md).
-- Pochopení [jak používat Azure functions](../azure-functions/functions-overview.md). Projděte si také téma:
+- Před vytvořením první funkce, je nutné toohave aktivní účet Azure. Pokud ještě nemáte účet Azure, [můžete použít bezplatné účty](https://azure.microsoft.com/free/).
+- Pokud chcete toocreate Azure Functions, který provedení akce v účtu Azure Media Services (AMS) nebo naslouchání tooevents odeslaných službou Media Services, měli byste vytvořit účet AMS, jak je popsáno [zde](media-services-portal-create-account.md).
+- Pochopení [jak toouse Azure funkce](../azure-functions/functions-overview.md). Projděte si také téma:
     - [Řešení Azure functions vazby HTTP a webhooku](../azure-functions/functions-triggers-bindings.md)
-    - [Postup konfigurace nastavení aplikace Azure – funkce](../azure-functions/functions-how-to-use-azure-function-app-settings.md)
+    - [Jak nastavení aplikace tooconfigure funkce Azure](../azure-functions/functions-how-to-use-azure-function-app-settings.md)
     
 ## <a name="considerations"></a>Požadavky
 
--  Azure Functions spuštěna v rámci plánu spotřeby mít omezení vypršení časového limitu 5 minut.
+-  Azure Functions spuštěna v rámci plánu spotřeby hello mít omezení vypršení časového limitu 5 minut.
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
-1. Přejděte na web [Azure Portal](http://portal.azure.com) a přihlaste se pomocí účtu Azure.
+1. Přejděte toohello [portál Azure](http://portal.azure.com) a přihlaste se pomocí účtu Azure.
 2. Vytvoření aplikace pro funkce, jak je popsáno [zde](../azure-functions/functions-create-function-app-portal.md).
 
 >[!NOTE]
-> Účet úložiště, který určíte v **StorageConnection** proměnná prostředí (viz další krok) by měla být ve stejné oblasti jako vaše aplikace.
+> Účet úložiště, který určíte v hello **StorageConnection** proměnnou prostředí (viz další krok hello) by měl být ve hello stejné oblasti jako vaše aplikace.
 
 ## <a name="configure-function-app-settings"></a>Konfigurovat nastavení aplikace – funkce
 
-Při vývoji funkce Media Services, je užitečný pro přidání proměnné prostředí, které se používají v rámci funkcí. Chcete-li nakonfigurovat nastavení aplikace, klikněte na odkaz nakonfigurovat nastavení aplikace. Další informace najdete v tématu [postup konfigurace nastavení aplikace funkce Azure](../azure-functions/functions-how-to-use-azure-function-app-settings.md). 
+Při vývoji funkce Media Services, je užitečný tooadd proměnné prostředí, které se používají v rámci funkcí. tooconfigure nastavení aplikace, klikněte na odkaz hello nakonfigurovat nastavení aplikace. Další informace najdete v tématu [jak nastavení aplikace funkce Azure tooconfigure](../azure-functions/functions-how-to-use-azure-function-app-settings.md). 
 
 Například:
 
 ![Nastavení](./media/media-services-azure-functions/media-services-azure-functions001.png)
 
-Funkci definované v tomto článku předpokládá, že máte následující proměnné prostředí v nastavení aplikace:
+Funkce Hello, definované v tomto článku předpokládá, že máte následující proměnné prostředí v nastavení aplikace hello:
 
 **AMSAccount** : *název účtu AMS* (např. testams)
 
@@ -71,12 +71,12 @@ Funkci definované v tomto článku předpokládá, že máte následující pro
 Po nasazení aplikace funkce najdete ji mezi **App Services** Azure Functions.
 
 1. Vyberte svou aplikaci funkce a klikněte na tlačítko **novou funkci**.
-2. Vyberte **C#** jazyk a **zpracování dat** scénář.
-3. Zvolte **BlobTrigger** šablony. Tato funkce se spustí pokaždé, když se nahraje do objektu blob **vstupní** kontejneru. **Vstupní** název je zadán v **cesta**, v dalším kroku.
+2. Zvolte hello **C#** jazyk a **zpracování dat** scénář.
+3. Zvolte **BlobTrigger** šablony. Tato funkce se spustí pokaždé, když objekt blob nahraje do hello **vstupní** kontejneru. Hello **vstupní** název je zadán v hello **cesta**, v dalším kroku hello.
 
     ![Soubory](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
-4. Jakmile vyberete **BlobTrigger**, některé další ovládací prvky se zobrazí na stránce.
+4. Jakmile vyberete **BlobTrigger**, některé další ovládací prvky se zobrazí na stránce hello.
 
     ![Soubory](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
@@ -85,16 +85,16 @@ Po nasazení aplikace funkce najdete ji mezi **App Services** Azure Functions.
 
 ## <a name="files"></a>Soubory
 
-Funkce Azure je přidružen soubory kódu a další soubory, které jsou popsané v této části. Ve výchozím nastavení, je přidružen funkci **function.json** a **run.csx** soubory (C#). Budete muset přidat **project.json** souboru. Zbývající část tohoto oddílu obsahuje definice pro tyto soubory.
+Funkce Azure je přidružen soubory kódu a další soubory, které jsou popsané v této části. Ve výchozím nastavení, je přidružen funkci **function.json** a **run.csx** soubory (C#). Budete potřebovat tooadd **project.json** souboru. Hello zbytek této části ukazuje hello definice pro tyto soubory.
 
 ![Soubory](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>Function.JSON
 
-Soubor function.json definuje vazby funkcí a dalších nastavení konfigurace. Modul runtime používá tento soubor k určení události k monitorování a jak předat data do a ze spuštění funkce vrátit data. Další informace najdete v tématu [Azure functions vazby HTTP a webhooku](../azure-functions/functions-reference.md#function-code).
+soubor function.json Hello definuje hello vazby funkcí a dalších nastavení konfigurace. modul runtime Hello používá tento soubor toodetermine hello události toomonitor a jak toopass dat do a vrátit data z funkce provádění. Další informace najdete v tématu [Azure functions vazby HTTP a webhooku](../azure-functions/functions-reference.md#function-code).
 
 >[!NOTE]
->Nastavit **zakázáno** vlastnost **true** zabránit funkci spouštěna. 
+>Sada hello **zakázáno** vlastnost příliš**true** tooprevent hello funkce z spouštěna. 
 
 
 Tady je příklad **function.json** souboru.
@@ -114,7 +114,7 @@ Tady je příklad **function.json** souboru.
 
 ### <a name="projectjson"></a>Project.JSON
 
-Soubor project.json obsahuje závislosti. Tady je příklad **project.json** soubor, který zahrnuje požadované balíčky .NET Azure Media Services z Nuget. Všimněte si, že číslo verze se změní s nejnovějšími aktualizacemi pro balíčky, tak ověřte, zda nejnovější verze. 
+soubor project.json Hello obsahuje závislosti. Tady je příklad **project.json** soubor, který zahrnuje hello vyžaduje rozhraní .NET Azure Media Services balíčky z Nuget. Všimněte si, že čísla verzí hello změní s nejnovějšími aktualizacemi toohello balíčky, tak ověřte, zda text hello nejnovější verze. 
 
     {
       "frameworks": {
@@ -129,14 +129,14 @@ Soubor project.json obsahuje závislosti. Tady je příklad **project.json** sou
     
 ### <a name="runcsx"></a>Run.csx
 
-Toto je kód C# pro funkce.  Funkce definovaná níže monitorování kontejner účet úložiště s názvem **vstupní** (který je co byl zadaný v cestě) pro nové soubory MP4. Jakmile do kontejneru úložiště, bude vynechána soubor spustí aktivační události objektu blob funkce.
+Toto je hello C# – kód pro funkce.  Funkce Hello definovaná níže monitorování kontejner účet úložiště s názvem **vstupní** (který je co byl zadaný v cestě hello) pro nové soubory MP4. Jakmile soubor do kontejneru úložiště hello vyřazen, aktivační události objektu blob hello provede hello funkce.
     
-Příklad definované v této části ukazuje 
+Příklad Hello definované v této části ukazuje 
 
-1. Postup ingestování prostředek do účtu Media Services (zkopírováním do objektu blob do assetu AMS) a 
-2. jak odeslat kódování úlohu, která využívá Media Encoder Standard na "Adaptivní datové proudy" přednastavení.
+1. jak tooingest prostředek ve službě Media Services účet (zkopírováním do objektu blob do assetu AMS) a 
+2. jak toosubmit kódování úlohy, která používá Media Encoder Standard na "adaptivní datové proudy" přednastavení.
 
-Ve scénáři reálného života, budete pravděpodobně chtít sledovat průběh úlohy a pak publikujte zakódovanému assetu. Další informace najdete v tématu [Webhooky Azure použijte ke sledování služby Media Services úlohy oznámení](media-services-dotnet-check-job-progress-with-webhooks.md). Další příklady najdete v tématu [funkce Azure Media Services](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).  
+Ve scénáři reálného života hello budete pravděpodobně má tootrack průběh úlohy a pak publikujte zakódovanému assetu. Další informace najdete v tématu [použití Azure Webhooky toomonitor Media Services úlohy oznámení](media-services-dotnet-check-job-progress-with-webhooks.md). Další příklady najdete v tématu [funkce Azure Media Services](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).  
 
 Po dokončení definování funkce klikněte na tlačítko **uložte a spusťte**.
 
@@ -171,12 +171,12 @@ Po dokončení definování funkce klikněte na tlačítko **uložte a spusťte*
 
     public static void Run(CloudBlockBlob myBlob, string fileName, TraceWriter log)
     {
-        // NOTE that the variables {fileName} here come from the path setting in function.json
-        // and are passed into the  Run method signature above. We can use this to make decisions on what type of file
-        // was dropped into the input container for the function. 
+        // NOTE that hello variables {fileName} here come from hello path setting in function.json
+        // and are passed into hello  Run method signature above. We can use this toomake decisions on what type of file
+        // was dropped into hello input container for hello function. 
 
-        // No need to do any Retry strategy in this function, By default, the SDK calls a function up to 5 times for a 
-        // given blob. If the fifth try fails, the SDK adds a message to a queue named webjobs-blobtrigger-poison.
+        // No need toodo any Retry strategy in this function, By default, hello SDK calls a function up too5 times for a 
+        // given blob. If hello fifth try fails, hello SDK adds a message tooa queue named webjobs-blobtrigger-poison.
 
         log.Info($"C# Blob trigger function processed: {fileName}.mp4");
         log.Info($"Using Azure Media Services account : {_mediaServicesAccountName}");
@@ -184,16 +184,16 @@ Po dokončení definování funkce klikněte na tlačítko **uložte a spusťte*
 
         try
         {
-        // Create and cache the Media Services credentials in a static class variable.
+        // Create and cache hello Media Services credentials in a static class variable.
         _cachedCredentials = new MediaServicesCredentials(
                 _mediaServicesAccountName,
                 _mediaServicesAccountKey);
 
-        // Used the chached credentials to create CloudMediaContext.
+        // Used hello chached credentials toocreate CloudMediaContext.
         _context = new CloudMediaContext(_cachedCredentials);
 
-        // Step 1:  Copy the Blob into a new Input Asset for the Job
-        // ***NOTE: Ideally we would have a method to ingest a Blob directly here somehow. 
+        // Step 1:  Copy hello Blob into a new Input Asset for hello Job
+        // ***NOTE: Ideally we would have a method tooingest a Blob directly here somehow. 
         // using code from this sample - https://azure.microsoft.com/en-us/documentation/articles/media-services-copying-existing-blob/
 
         StorageCredentials mediaServicesStorageCredentials =
@@ -203,25 +203,25 @@ Po dokončení definování funkce klikněte na tlačítko **uložte a spusťte*
 
         // Step 2: Create an Encoding Job
 
-        // Declare a new encoding job with the Standard encoder
+        // Declare a new encoding job with hello Standard encoder
         IJob job = _context.Jobs.Create("Azure Function - MES Job");
 
-        // Get a media processor reference, and pass to it the name of the 
-        // processor to use for the specific task.
+        // Get a media processor reference, and pass tooit hello name of hello 
+        // processor toouse for hello specific task.
         IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
-        // Create a task with the encoding details, using a custom preset
+        // Create a task with hello encoding details, using a custom preset
         ITask task = job.Tasks.AddNew("Encode with Adaptive Streaming",
             processor,
             "Adaptive Streaming",
             TaskOptions.None); 
 
-        // Specify the input asset to be encoded.
+        // Specify hello input asset toobe encoded.
         task.InputAssets.Add(newAsset);
 
-        // Add an output asset to contain the results of the job. 
+        // Add an output asset toocontain hello results of hello job. 
         // This output is specified as AssetCreationOptions.None, which 
-        // means the output asset is not encrypted. 
+        // means hello output asset is not encrypted. 
         task.OutputAssets.AddNew(fileName, AssetCreationOptions.None);
 
         job.Submit();
@@ -266,13 +266,13 @@ Po dokončení definování funkce klikněte na tlačítko **uložte a spusťte*
     }
 
     /// <summary>
-    /// Creates a new asset and copies blobs from the specifed storage account.
+    /// Creates a new asset and copies blobs from hello specifed storage account.
     /// </summary>
-    /// <param name="blob">The specified blob.</param>
-    /// <returns>The new asset.</returns>
+    /// <param name="blob">hello specified blob.</param>
+    /// <returns>hello new asset.</returns>
     public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, string assetName, TraceWriter log)
     {
-         //Get a reference to the storage account that is associated with the Media Services account. 
+         //Get a reference toohello storage account that is associated with hello Media Services account. 
         StorageCredentials mediaServicesStorageCredentials =
         new StorageCredentials(_storageAccountName, _storageAccountKey);
         _destinationStorageAccount = new CloudStorageAccount(mediaServicesStorageCredentials, false);
@@ -286,7 +286,7 @@ Po dokončení definování funkce klikněte na tlačítko **uložte a spusťte*
         ILocator destinationLocator = _context.Locators.CreateLocator(LocatorType.Sas, asset, writePolicy);
         CloudBlobClient destBlobStorage = _destinationStorageAccount.CreateCloudBlobClient();
 
-        // Get the destination asset container reference
+        // Get hello destination asset container reference
         string destinationContainerName = (new Uri(destinationLocator.Path)).Segments[1];
         CloudBlobContainer assetContainer = destBlobStorage.GetContainerReference(destinationContainerName);
 
@@ -300,7 +300,7 @@ Po dokončení definování funkce klikněte na tlačítko **uložte a spusťte*
 
         log.Info("Created asset.");
 
-        // Get hold of the destination blob
+        // Get hold of hello destination blob
         CloudBlockBlob destinationBlob = assetContainer.GetBlockBlobReference(blob.Name);
 
         // Copy Blob
@@ -334,15 +334,15 @@ Po dokončení definování funkce klikněte na tlačítko **uložte a spusťte*
     }
 ##<a name="test-your-function"></a>Testování funkce
 
-Chcete-li funkci otestovat, je potřeba nahrát soubor MP4 do **vstupní** kontejneru účtu úložiště, který jste zadali v připojovacím řetězci.  
+tootest funkce, je třeba soubor MP4 do hello tooupload **vstupní** kontejneru hello účtu úložiště, který jste zadali v hello připojovací řetězec.  
 
 ## <a name="next-step"></a>Další krok
 
-V tomto okamžiku jste připravení začít s vývojem aplikací Media Services. 
+V tomto okamžiku jsou připravené toostart vývoj aplikace s Media Services. 
  
-Další podrobnosti a kompletní ukázky nebo řešení pomocí Azure Functions a Logic Apps pomocí Azure Media Services k vytváření pracovních postupů vlastní vytváření obsahu najdete v tématu [Media Services .NET funkce Integraiton ukázce na Githubu](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)
+Další podrobnosti a kompletní ukázky nebo řešení pomocí Azure Functions a aplikacích logiky s pracovními postupy vytváření vlastní obsahu toocreate Azure Media Services najdete v tématu hello [Media Services .NET funkce Integraiton ukázce na Githubu](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)
 
-Další informace naleznete v [Webhooky Azure použijte ke sledování úloh oznámení Media Services pomocí rozhraní .NET](media-services-dotnet-check-job-progress-with-webhooks.md). 
+Další informace naleznete v [použití Azure Webhooky toomonitor Media Services úlohy oznámení pomocí rozhraní .NET](media-services-dotnet-check-job-progress-with-webhooks.md). 
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

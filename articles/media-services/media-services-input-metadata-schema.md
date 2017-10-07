@@ -1,6 +1,6 @@
 ---
-title: "Schéma vstupu metadata Azure Media Services | Microsoft Docs"
-description: "Téma nabízí přehled Azure Media Services vstupní metadata schématu."
+title: "schéma vstupu metadata aaaAzure Media Services | Microsoft Docs"
+description: "Hello téma nabízí přehled Azure Media Services vstupní metadata schématu."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
-ms.openlocfilehash: 4787e4033e1afda6339b0b917263ecc165e400ad
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9b72c6ff317aa98451ea75548465dc6023b44a55
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="input-metadata"></a>Vstupní metadat
-Kódování úlohy jsou přiřazeny prostředek vstupní (nebo prostředky) na který chcete provést některé úlohy kódování.  Po dokončení úlohy se vytvářejí výstupní asset.  Výstupní asset obsahuje video, zvuk, miniatur, manifest atd. Výstupní asset obsahuje také soubor s metadata o vstupní asset. Název souboru XML metadat má následující formát: &lt;asset_id&gt;_metadata.xml (například 41114ad3-eb5e - 4c 57 8d 92-5354e2b7d4a4_metadata.xml), kde &lt;asset_id&gt; je hodnota ID vstupní prostředek.  
+Kódování úlohy jsou přiřazeny prostředek vstupní (nebo prostředky) na kterém chcete tooperform některé úlohy kódování.  Po dokončení úlohy se vytvářejí výstupní asset.  Hello výstupní asset obsahuje video, zvuk, miniatur manifestu, atd. hello výstupní asset obsahuje také soubor s metadata o vstupní asset hello. Hello název souboru XML metadat hello má hello následující formát: &lt;asset_id&gt;_metadata.xml (například 41114ad3-eb5e - 4c 57 8d 92-5354e2b7d4a4_metadata.xml), kde &lt;asset_id&gt; je hello ID Hodnota hello vstupní asset.  
 
-Pokud chcete zkontrolovat soubor metadat, můžete vytvořit **SAS** Lokátor a stahování souborů do místního počítače. Příklad najdete na tom, jak vytvořit lokátor SAS a stáhnout soubor [pomocí rozšíření Media Services .NET SDK](media-services-dotnet-get-started.md).  
+Pokud chcete soubor metadat hello tooexamine, můžete vytvořit **SAS** Lokátor a stahování hello souboru tooyour místního počítače. Příklad najdete na postupy toocreate lokátoru SAS a stáhnout soubor [pomocí rozšíření sady SDK pro .NET hello Media Services](media-services-dotnet-get-started.md).  
 
-Toto téma popisuje elementy a typy schématu XML, na kterém vstupní metada (&lt;asset_id&gt;_metadata.xml) je založena.  Informace o souboru, který obsahuje metadata o výstupní asset najdete v tématu [výstup metadat](media-services-output-metadata-schema.md).  
+Toto téma popisuje elementy hello a typy schématu XML hello na které vstupní metada hello (&lt;asset_id&gt;_metadata.xml) je založena.  Informace o hello souboru, který obsahuje metadata o hello výstupní asset najdete v tématu [výstup metadat](media-services-output-metadata-schema.md).  
 
 > [!NOTE]
-> Můžete najít [kód schématu](media-services-input-metadata-schema.md#code) [ukázkový kód XML](media-services-input-metadata-schema.md#xml) na konci tohoto tématu.  
+> Můžete najít hello [kód schématu](media-services-input-metadata-schema.md#code) [ukázkový kód XML](media-services-input-metadata-schema.md#xml) na konci hello v tomto tématu.  
 > 
 > 
 
 ## <a name="AssetFiles"></a>Element AssetFiles (kořenový element)
-Obsahuje kolekci [AssetFile element](media-services-input-metadata-schema.md#AssetFile)s pro úlohy kódování.  
+Obsahuje kolekci [AssetFile element](media-services-input-metadata-schema.md#AssetFile)s pro úlohy kódování hello.  
 
-Podívejte se příklad XML na konci tohoto tématu: [ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
+Prohlédněte si příklad XML na konci hello v tomto tématu: [ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 | Name (Název) | Popis |
 | --- | --- |
@@ -44,40 +44,40 @@ Podívejte se příklad XML na konci tohoto tématu: [ukázkový kód XML](media
 ## <a name="AssetFile"></a>AssetFile element
  Obsahuje atributy a elementy, které popisují soubor asset.  
 
- Podívejte se příklad XML na konci tohoto tématu: [ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
+ Prohlédněte si příklad XML na konci hello v tomto tématu: [ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
 | **Název**<br /><br /> Požaduje se |**xs:String** |Název souboru prostředku. |
-| **Velikost**<br /><br /> Požaduje se |**xs:Long** |Velikost souboru assetu v bajtech. |
+| **Velikost**<br /><br /> Požaduje se |**xs:Long** |Velikost souboru assetu hello v bajtech. |
 | **Doba trvání**<br /><br /> Požaduje se |**xs** |Obsahu play back doba trvání. Příklad: Doba trvání = "PT25M37.757S". |
-| **NumberOfStreams**<br /><br /> Požaduje se |**xs:int** |Počet datových proudů v souboru prostředku. |
+| **NumberOfStreams**<br /><br /> Požaduje se |**xs:int** |Počet datových proudů v souboru assetu hello. |
 | **FormatNames**<br /><br /> Požaduje se |**xs:String** |Názvy ve formátu. |
 | **FormatVerboseNames**<br /><br /> Požaduje se |**xs:String** |Podrobné názvy ve formátu. |
 | **Čas spuštění** |**xs** |Čas zahájení obsahu. Příklad: StartTime = "PT2.669S". |
-| **OverallBitRate** |**xs:int** |Průměrná přenosovou rychlostí souboru asset v kb/s. |
+| **OverallBitRate** |**xs:int** |Průměrná přenosovou rychlostí hello asset souboru v kb/s. |
 
 > [!NOTE]
-> Následující 4 podřízené elementy musí být uvedena v pořadí.  
+> Hello následující 4 podřízené elementy musí být uvedena v pořadí.  
 > 
 > 
 
 ### <a name="child-elements"></a>Podřízené elementy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Programy**<br /><br /> Hodnota minOccurs = "0" | |Kolekce všech [programy element](media-services-input-metadata-schema.md#Programs) po souboru prostředku ve formátu MPEG-TS. |
-| **VideoTracks**<br /><br /> Hodnota minOccurs = "0" | |Každý fyzický prostředek soubor může obsahovat nula nebo více video sleduje prokládaný do formátu odpovídajícího kontejneru. Tento prvek obsahuje kolekci všech [VideoTracks element](media-services-input-metadata-schema.md#VideoTracks) které jsou součástí souboru prostředku. |
-| **AudioTracks**<br /><br /> Hodnota minOccurs = "0" | |Každý fyzický prostředek soubor může obsahovat nula nebo více zvukových stop prokládaný do formátu odpovídajícího kontejneru. Tento prvek obsahuje kolekci všech [AudioTracks element](media-services-input-metadata-schema.md#AudioTracks) které jsou součástí souboru prostředku. |
+| **Programy**<br /><br /> Hodnota minOccurs = "0" | |Kolekce všech [programy element](media-services-input-metadata-schema.md#Programs) po hello asset soubor ve formátu MPEG-TS. |
+| **VideoTracks**<br /><br /> Hodnota minOccurs = "0" | |Každý fyzický prostředek soubor může obsahovat nula nebo více video sleduje prokládaný do formátu odpovídajícího kontejneru. Tento prvek obsahuje kolekci všech [VideoTracks element](media-services-input-metadata-schema.md#VideoTracks) které jsou součástí souboru assetu hello. |
+| **AudioTracks**<br /><br /> Hodnota minOccurs = "0" | |Každý fyzický prostředek soubor může obsahovat nula nebo více zvukových stop prokládaný do formátu odpovídajícího kontejneru. Tento prvek obsahuje kolekci všech [AudioTracks element](media-services-input-metadata-schema.md#AudioTracks) které jsou součástí souboru assetu hello. |
 | **Metadata**<br /><br /> Hodnota minOccurs = maxOccurs "0" = "bez vazby" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Metadata souboru assetu vyjádřené key\value řetězce. Například:<br /><br /> **&lt;Metadata key = "jazyk" value = "eng" /&gt;** |
 
 ## <a name="TrackType"></a>TrackType
-Podívejte se příklad XML na konci tohoto tématu: [ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
+Prohlédněte si příklad XML na konci hello v tomto tématu: [ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **ID**<br /><br /> Požaduje se |**xs:int** |Index nule tento dráhy zvuku a videa.<br /><br /> To není nezbytně, TrackID jako použitá v souboru MP4. |
+| **ID**<br /><br /> Požaduje se |**xs:int** |Index nule tento dráhy zvuku a videa.<br /><br /> Nemusí se jednat této hello TrackID jako použít v souboru MP4. |
 | **Kodeků** |**xs:String** |Řetězec kodeků sledovat videa. |
 | **CodecLongName** |**xs:String** |Sledování zvuku a videa kodeků dlouhý název. |
 | **Časové základny**<br /><br /> Požaduje se |**xs:String** |Základní doba. Příklad: Časové základny = "1/48000" |
@@ -86,7 +86,7 @@ Podívejte se příklad XML na konci tohoto tématu: [ukázkový kód XML](media
 | **Doba trvání** |**xs** |Sledování doby trvání. Příklad: Doba trvání = "PTSampleFormat M37.757S". |
 
 > [!NOTE]
-> Následující 2 podřízené elementy musí být uvedena v pořadí.  
+> Hello následující 2 podřízené elementy musí být uvedena v pořadí.  
 > 
 > 
 
@@ -94,14 +94,14 @@ Podívejte se příklad XML na konci tohoto tématu: [ukázkový kód XML](media
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
 | **Dispozice**<br /><br /> Hodnota minOccurs = maxOccurs "0" = "1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |Obsahuje informace prezentace (například jestli konkrétní audio track je pro slabozraké uživatele). |
-| **Metadata**<br /><br /> Hodnota minOccurs = maxOccurs "0" = "bez vazby" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Obecné klíč/hodnota řetězce, které slouží k uložení různé informace. Například klíč = "jazyk" a hodnota = "eng". |
+| **Metadata**<br /><br /> Hodnota minOccurs = maxOccurs "0" = "bez vazby" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Obecné klíč/hodnota řetězce, které se dají použít toohold různé informace. Například klíč = "jazyk" a hodnota = "eng". |
 
 ## <a name="AudioTrackType"></a>AudioTrackType (dědí z TrackType)
  **AudioTrackType** je globální komplexní typ, který dědí z [TrackType](media-services-input-metadata-schema.md#TrackType).  
 
- Typ představuje konkrétní zvuk sledovat v souboru prostředku.  
+ Typ Hello představuje konkrétní zvuk sledovat v souboru assetu hello.  
 
- Podívejte se příklad XML na konci tohoto tématu: [ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
+ Prohlédněte si příklad XML na konci hello v tomto tématu: [ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
@@ -110,15 +110,15 @@ Podívejte se příklad XML na konci tohoto tématu: [ukázkový kód XML](media
 | **ChannelLayout** |**xs:String** |Kanál rozložení. |
 | **Kanály**<br /><br /> Požaduje se |**xs:int** |Počet (0 nebo více) zvukové kanály. |
 | **SamplingRate**<br /><br /> Požaduje se |**xs:int** |Zvuk vzorkovací frekvenci v ukázky za sekundu nebo Hz. |
-| **Přenosovou rychlostí** |**xs:int** |Průměrná přenosová rychlost zvuku v bitech za sekundu, počítané ze souboru prostředku. Pouze datové části Základní datový proud se počítá a nároky na balení není zahrnut do tohoto počtu. |
-| **BitsPerSample** |**xs:int** |Bitů na vzorek pro formát wFormatTag typu. |
+| **Přenosovou rychlostí** |**xs:int** |Průměrná přenosová rychlost zvuku v bitech za sekundu, počítané ze souboru asset hello. Pouze datové části Základní datový proud hello se počítá a režijní náklady na hello balení není zahrnut do tohoto počtu. |
+| **BitsPerSample** |**xs:int** |Zadejte bitů na vzorek pro formát wFormatTag hello. |
 
 ## <a name="VideoTrackType"></a>VideoTrackType (dědí z TrackType)
 **VideoTrackType** je globální komplexní typ, který dědí z [TrackType](media-services-input-metadata-schema.md#TrackType).  
 
-Typ představuje konkrétní video sledovat v souboru prostředku.  
+Typ Hello představuje konkrétní video sledovat v souboru assetu hello.  
 
-Podívejte se příklad XML na konci tohoto tématu: [ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
+Prohlédněte si příklad XML na konci hello v tomto tématu: [ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
@@ -135,20 +135,20 @@ Podívejte se příklad XML na konci tohoto tématu: [ukázkový kód XML](media
 | **SampleAspectRatioNumerator** |**xs:Double** |Ukázkové video čítači poměr stran. |
 | **SampleAspectRatioNumerator** |**xs:Double** |Ukázkové video jmenovatel poměr stran. |
 | **Kmitočet snímků**<br /><br /> Požaduje se |**xs:decimal** |Měří video obnovovací frekvence ve formátu .3f. |
-| **Přenosovou rychlostí** |**xs:int** |Průměrná přenosová rychlost videa v kilobity za sekundu, počítané ze souboru prostředku. Pouze datové části Základní datový proud se počítá a nároky na balení není zahrnutý. |
+| **Přenosovou rychlostí** |**xs:int** |Průměrná přenosová rychlost videa v kilobity za sekundu, počítané ze souboru asset hello. Pouze datové části Základní datový proud hello se počítá a režijní náklady na hello balení není zahrnutý. |
 | **MaxGOPBitrate** |**xs:int** |Maximální počet GOP průměrná přenosovou rychlostí pro tento stopy videa, v kB. |
 | **HasBFrames** |**xs:int** |Video sledovat počet rámců B. |
 
 ## <a name="MetadataType"></a>MetadataType
 **MetadataType** je globální komplexní typ, který popisuje metadata souboru asset jako klíč/hodnota řetězce. Například klíč = "jazyk" a hodnota = "eng".  
 
-Podívejte se příklad XML na konci tohoto tématu: [ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
+Prohlédněte si příklad XML na konci hello v tomto tématu: [ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **klíč**<br /><br /> Požaduje se |**xs:String** |Klíč ve dvojici klíč/hodnota. |
-| **Hodnota**<br /><br /> Požaduje se |**xs:String** |Hodnota ve dvojici klíč/hodnota. |
+| **klíč**<br /><br /> Požaduje se |**xs:String** |Hello klíč v hello dvojice klíč/hodnota. |
+| **Hodnota**<br /><br /> Požaduje se |**xs:String** |Hello hodnota ve dvojici klíč/hodnota hello. |
 
 ## <a name="ProgramType"></a>ProgramType
 **ProgramType** je globální komplexní typ, který popisuje program.  
@@ -164,24 +164,24 @@ Podívejte se příklad XML na konci tohoto tématu: [ukázkový kód XML](media
 | **EndPTS** |**xs: dlouho** |Ukončování prezentace časové razítko. |
 
 ## <a name="StreamDispositionType"></a>StreamDispositionType
-**StreamDispositionType** je globální komplexní typ, který popisuje datového proudu.  
+**StreamDispositionType** je globální komplexní typ, který popisuje hello datového proudu.  
 
-Podívejte se příklad XML na konci tohoto tématu: [ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
+Prohlédněte si příklad XML na konci hello v tomto tématu: [ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Výchozí**<br /><br /> Požaduje se |**xs:int** |Tento atribut lze nastavte na hodnotu 1 se indikovat, že toto je výchozí prezentace. |
-| **Dub**<br /><br /> Požaduje se |**xs:int** |Tento atribut lze nastavte na hodnotu 1 se indikovat, že to dubbed prezentaci. |
-| **Původní**<br /><br /> Požaduje se |**xs:int** |Tento atribut lze nastavte na hodnotu 1 se indikovat, že to původní prezentaci. |
-| **Komentář**<br /><br /> Požaduje se |**xs:int** |Tento atribut lze nastavte na hodnotu 1 se indikovat, že tento stopy obsahuje komentáře. |
-| **Texty**<br /><br /> Požaduje se |**xs:int** |Tento atribut lze nastavte na hodnotu 1 se indikovat, že tento stopy obsahuje text. |
-| **Karaoke**<br /><br /> Požaduje se |**xs:int** |Tento atribut lze nastavte na hodnotu 1 se indikovat, že to představuje karaoke sledování (pozadí Hudba, žádné hlasy zpěváků). |
-| **Vynutit**<br /><br /> Požaduje se |**xs:int** |Tento atribut lze nastavte na hodnotu 1 se indikovat, že to vynucené prezentace. |
-| **HearingImpaired**<br /><br /> Požaduje se |**xs:int** |Tento atribut lze nastavte na hodnotu 1 se indikovat, že tento stopy pro vady sluchu. |
-| **VisualImpaired**<br /><br /> Požaduje se |**xs:int** |Tento atribut lze nastavte na hodnotu 1 se indikovat, že tento stopy pro uživatele se zrakovým postižením. |
-| **CleanEffects**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut na 1 se indikovat, že tento stopy má čistou důsledky. |
-| **AttachedPic**<br /><br /> Požaduje se |**xs:int** |Tento atribut lze nastavte na hodnotu 1 se indikovat, že tento stopy má obrázky. |
+| **Výchozí**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut too1 tooindicate, to je výchozí prezentace hello. |
+| **Dub**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut too1 tooindicate je hello dabované prezentace. |
+| **Původní**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut too1 tooindicate, to je původní prezentace hello. |
+| **Komentář**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut too1 tooindicate sledovat obsahuje komentáře. |
+| **Texty**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut too1 tooindicate sledovat obsahuje text. |
+| **Karaoke**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut too1 tooindicate představuje hello karaoke sledování (pozadí Hudba, žádné hlasy zpěváků). |
+| **Vynutit**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut too1 tooindicate, to je prezentace hello vynutit. |
+| **HearingImpaired**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut too1 tooindicate, ke kterému se tento stopy hello vady sluchu. |
+| **VisualImpaired**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut too1 tooindicate, ke kterému se tento stopy hello se zrakovým postižením. |
+| **CleanEffects**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut too1 tooindicate, která má toto sledování čistou účinky. |
+| **AttachedPic**<br /><br /> Požaduje se |**xs:int** |Nastavte tento atribut too1 tooindicate, která má toto sledování obrázky. |
 
 ## <a name="Programs"></a>Element programy
 Element obálky, která uchovává více **Program** elementy.  
@@ -189,27 +189,27 @@ Element obálky, která uchovává více **Program** elementy.
 ### <a name="child-elements"></a>Podřízené elementy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **Program**<br /><br /> Hodnota minOccurs = maxOccurs "0" = "bez vazby" |[ProgramType](media-services-input-metadata-schema.md#ProgramType) |Soubory prostředků, které jsou ve formátu MPEG-TS obsahuje informace o aplikacích v souboru prostředku. |
+| **Program**<br /><br /> Hodnota minOccurs = maxOccurs "0" = "bez vazby" |[ProgramType](media-services-input-metadata-schema.md#ProgramType) |Soubory prostředků, které jsou ve formátu MPEG-TS obsahuje informace o aplikacích v souboru assetu hello. |
 
 ## <a name="VideoTracks"></a>VideoTracks element
  Element obálky, která uchovává více **VideoTrack** elementy.  
 
- Podívejte se příklad XML na konci tohoto tématu: [ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
+ Prohlédněte si příklad XML na konci hello v tomto tématu: [ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="child-elements"></a>Podřízené elementy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **VideoTrack**<br /><br /> Hodnota minOccurs = maxOccurs "0" = "bez vazby" |[VideoTrackType (dědí z TrackType)](media-services-input-metadata-schema.md#VideoTrackType) |Obsahuje informace o video sleduje v souboru prostředku. |
+| **VideoTrack**<br /><br /> Hodnota minOccurs = maxOccurs "0" = "bez vazby" |[VideoTrackType (dědí z TrackType)](media-services-input-metadata-schema.md#VideoTrackType) |Obsahuje informace o video sleduje v souboru assetu hello. |
 
 ## <a name="AudioTracks"></a>AudioTracks element
  Element obálky, která uchovává více **AudioTrack** elementy.  
 
- Podívejte se příklad XML na konci tohoto tématu: [ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
+ Prohlédněte si příklad XML na konci hello v tomto tématu: [ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="elements"></a>Elementy
 | Name (Název) | Typ | Popis |
 | --- | --- | --- |
-| **AudioTrack**<br /><br /> Hodnota minOccurs = maxOccurs "0" = "bez vazby" |[AudioTrackType (dědí z TrackType)](media-services-input-metadata-schema.md#AudioTrackType) |Obsahuje informace o zvukových stop v souboru prostředku. |
+| **AudioTrack**<br /><br /> Hodnota minOccurs = maxOccurs "0" = "bez vazby" |[AudioTrackType (dědí z TrackType)](media-services-input-metadata-schema.md#AudioTrackType) |Obsahuje informace o zvukových stop v souboru assetu hello. |
 
 ## <a name="code"></a>Schéma kódu
     <?xml version="1.0" encoding="utf-8"?>  
@@ -277,7 +277,7 @@ Element obálky, která uchovává více **Program** elementy.
         </xs:sequence>  
         <xs:attribute name="Id" use="required">  
           <xs:annotation>  
-            <xs:documentation>zero-based index of this video track. Note: this is not necessarily the TrackID as used in an MP4 file</xs:documentation>  
+            <xs:documentation>zero-based index of this video track. Note: this is not necessarily hello TrackID as used in an MP4 file</xs:documentation>  
           </xs:annotation>  
           <xs:simpleType>  
             <xs:restriction base="xs:int">  
@@ -324,7 +324,7 @@ Element obálky, která uchovává více **Program** elementy.
 
       <xs:complexType name="VideoTrackType">  
         <xs:annotation>  
-          <xs:documentation>A specific video track in the parent AssetFile</xs:documentation>  
+          <xs:documentation>A specific video track in hello parent AssetFile</xs:documentation>  
         </xs:annotation>  
         <xs:complexContent>  
           <xs:extension base="TrackType">  
@@ -421,7 +421,7 @@ Element obálky, která uchovává více **Program** elementy.
             </xs:attribute>  
             <xs:attribute name="Bitrate">  
               <xs:annotation>  
-                <xs:documentation>average video bit rate in kilobits per second, as calculated from the AssetFile. Counts only the elementary stream payload, and does not include the packaging overhead</xs:documentation>  
+                <xs:documentation>average video bit rate in kilobits per second, as calculated from hello AssetFile. Counts only hello elementary stream payload, and does not include hello packaging overhead</xs:documentation>  
               </xs:annotation>  
               <xs:simpleType>  
                 <xs:restriction base="xs:int">  
@@ -450,7 +450,7 @@ Element obálky, která uchovává více **Program** elementy.
 
       <xs:complexType name="AudioTrackType">  
         <xs:annotation>  
-          <xs:documentation>a specific audio track in the parent AssetFile</xs:documentation>  
+          <xs:documentation>a specific audio track in hello parent AssetFile</xs:documentation>  
         </xs:annotation>  
         <xs:complexContent>  
           <xs:extension base="TrackType">  
@@ -486,7 +486,7 @@ Element obálky, která uchovává více **Program** elementy.
             </xs:attribute>  
             <xs:attribute name="Bitrate">  
               <xs:annotation>  
-                <xs:documentation>average audio bit rate in bits per second, as calculated from the AssetFile. Counts only the elementary stream payload, and does not include the packaging overhead</xs:documentation>  
+                <xs:documentation>average audio bit rate in bits per second, as calculated from hello AssetFile. Counts only hello elementary stream payload, and does not include hello packaging overhead</xs:documentation>  
               </xs:annotation>  
               <xs:simpleType>  
                 <xs:restriction base="xs:int">  
@@ -496,7 +496,7 @@ Element obálky, která uchovává více **Program** elementy.
             </xs:attribute>  
             <xs:attribute name="BitsPerSample">  
               <xs:annotation>  
-                <xs:documentation>Bits per sample for the wFormatTag format type</xs:documentation>  
+                <xs:documentation>Bits per sample for hello wFormatTag format type</xs:documentation>  
               </xs:annotation>  
               <xs:simpleType>  
                 <xs:restriction base="xs:int">  
@@ -510,7 +510,7 @@ Element obálky, která uchovává více **Program** elementy.
 
       <xs:element name="AssetFiles">  
         <xs:annotation>  
-          <xs:documentation>Collection of AssetFile entries for the encoding job</xs:documentation>  
+          <xs:documentation>Collection of AssetFile entries for hello encoding job</xs:documentation>  
         </xs:annotation>  
         <xs:complexType>  
           <xs:sequence>  
@@ -522,7 +522,7 @@ Element obálky, která uchovává více **Program** elementy.
                 <xs:sequence>  
                   <xs:element name="Programs" minOccurs="0">  
                     <xs:annotation>  
-                      <xs:documentation>This is the collection of all programs when file is MPEG-TS</xs:documentation>  
+                      <xs:documentation>This is hello collection of all programs when file is MPEG-TS</xs:documentation>  
                     </xs:annotation>  
                     <xs:complexType>  
                       <xs:sequence>  
@@ -532,7 +532,7 @@ Element obálky, která uchovává více **Program** elementy.
                   </xs:element>  
                   <xs:element name="VideoTracks" minOccurs="0">  
                     <xs:annotation>  
-                      <xs:documentation>Each physical AssetFile can contain in it zero or more video tracks interleaved into an appropriate container format. This is the collection of all those video tracks</xs:documentation>  
+                      <xs:documentation>Each physical AssetFile can contain in it zero or more video tracks interleaved into an appropriate container format. This is hello collection of all those video tracks</xs:documentation>  
                     </xs:annotation>  
                     <xs:complexType>  
                       <xs:sequence>  
@@ -542,7 +542,7 @@ Element obálky, která uchovává více **Program** elementy.
                   </xs:element>  
                   <xs:element name="AudioTracks" minOccurs="0">  
                     <xs:annotation>  
-                      <xs:documentation>each physical AssetFile can contain in it zero or more audio tracks interleaved into an appropriate container format. This is the collection of all those audio tracks</xs:documentation>  
+                      <xs:documentation>each physical AssetFile can contain in it zero or more audio tracks interleaved into an appropriate container format. This is hello collection of all those audio tracks</xs:documentation>  
                     </xs:annotation>  
                     <xs:complexType>  
                       <xs:sequence>  
@@ -554,7 +554,7 @@ Element obálky, která uchovává více **Program** elementy.
                 </xs:sequence>  
                 <xs:attribute name="Name" type="xs:string" use="required">  
                   <xs:annotation>  
-                    <xs:documentation>the media asset file name</xs:documentation>  
+                    <xs:documentation>hello media asset file name</xs:documentation>  
                   </xs:annotation>  
                 </xs:attribute>  
                 <xs:attribute name="Size" use="required">  
@@ -594,7 +594,7 @@ Element obálky, která uchovává více **Program** elementy.
                 </xs:attribute>  
                 <xs:attribute name="OverallBitRate">  
                   <xs:annotation>  
-                    <xs:documentation>average bitrate of the asset file in kbps</xs:documentation>  
+                    <xs:documentation>average bitrate of hello asset file in kbps</xs:documentation>  
                   </xs:annotation>  
                   <xs:simpleType>  
                     <xs:restriction base="xs:int">  
@@ -611,7 +611,7 @@ Element obálky, která uchovává více **Program** elementy.
 
 
 ## <a name="xml"></a>Ukázkový kód XML
-Následuje příklad vstupního souboru metadat.  
+Hello následuje příklad hello vstupu metadata souboru.  
 
     <?xml version="1.0" encoding="utf-8"?>  
     <AssetFiles xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2014/07/mediaencoder/inputmetadata">  

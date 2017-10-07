@@ -1,6 +1,6 @@
 ---
-title: "Přehled různých portálů bylo nutné vytvořit nabídku pro Marketplace | Microsoft Docs"
-description: "Přehled různých portálů bylo nutné vytvořit nabídku pro Marketplace."
+title: "aaaOverview z hello různé portály potřeby hello toocreate na nabídku Marketplace | Microsoft Docs"
+description: "Přehled hello různé portály potřeby hello toocreate na nabídku Marketplace."
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio
-ms.openlocfilehash: 093d3ee3ecce89c86a12e7e216072ece57f82f9d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6fbd7ecbbd873445f01f0ac4e1e5fee59e08c033
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="portals-you-will-need"></a>Portály, které budete potřebovat
-Před zahájením procesu publikování nabídky, Pojďme vás seznámili různými portály, které budete potřebovat. Níže je krátký souhrn o portálů – středisku pro vývojáře, publikování portálu Azure a portálu Azure – v pořadí, že bude komunikovat s nimi.                                                                            
+Před zahájením procesu hello publikování nabídky, Pojďme zavedená toohello různými portály, které budete potřebovat. Zde je souhrn krátké hello o hello portály – středisku pro vývojáře, publikování portálu Azure a portálu Azure – v hello pořadí, bude komunikovat s nimi.                                                                            
 
 ## <a name="developer-center"></a>Centrum pro vývojáře
 [http://dev.Windows.com/Registration?accountprogram=Azure](http://dev.windows.com/registration?accountprogram=azure)
 
 ### <a name="description"></a>Popis
-Vytvoření účtu Microsoft Developer Center je jednorázové úlohy. Ujistěte se, že společnost ještě nemá účet středisku pro vývojáře před dalším pokusem o vytvořit. Během procesu jsme shromažďovat informace o účtu bank, daň informace a informace o adrese společnosti.
+Vytvoření účtu Microsoft Developer Center je jednorázové úlohy. Ujistěte se, že hello společnosti ještě nemá účet středisku pro vývojáře před dalším pokusem toocreate jeden. Během procesu hello jsme shromažďovat informace o účtu bank, daň informace a informace o adrese společnosti.
 
 > [!NOTE]
 > Pokud publikujete pouze volné nabídky (nebo nabízí přineste si vlastníte license), jsme nevyžadují daň a bank informace.
@@ -35,10 +35,10 @@ Vytvoření účtu Microsoft Developer Center je jednorázové úlohy. Ujistěte
 > 
 
 ### <a name="identityaccount-used"></a>Identity/účet používaný
-V ideálním případě je to distribučního seznamu nebo skupinu zabezpečení (například azurepublishing @*partnercompany*.com). Distribučním seznamu nebo skupině zabezpečení **musí** být registrován jako účet Microsoft.
+V ideálním případě je to distribučního seznamu nebo skupinu zabezpečení (například azurepublishing @*partnercompany*.com). Hello distribučního seznamu nebo skupině zabezpečení **musí** být registrován jako účet Microsoft.
 
 > [!TIP]
-> Doporučujeme používat distribučního seznamu nebo skupině zabezpečení vzhledem k tomu, že jej odebere závislost na jakékoli fyzické samostatný účet lze také ale.
+> Doporučujeme používat distribučního seznamu nebo skupině zabezpečení protože hello závislost na jakékoli fyzické samostatný účet lze také ale.
 > 
 > 
 
@@ -46,20 +46,20 @@ V ideálním případě je to distribučního seznamu nebo skupinu zabezpečení
 [https://publish.windowsazure.com](https://publish.windowsazure.com)
 
 ### <a name="description"></a>Popis
-Toto je na portálu, který používáte pro práci na nabídku a publikováním (marketingu, ceny, publikování, certifikační, pokud je k dispozici, atd.).
+Toto je portál hello toowork na nabídku hello a toopublish její použití (marketingu, ceny, publikování, certifikační, pokud je k dispozici, atd.).
 
 ### <a name="identityaccount-used"></a>Identity/účet používaný
-Výše uvedené distribučního seznamu nebo skupině zabezpečení použije první pro přihlášení k portálu pro publikování. Později ostatní uživatelé se dá přidat jako pomocní správci. Toto je, jak získá mapované na registrační data středisku pro vývojáře.
+Hello výše distribučního seznamu nebo skupině zabezpečení použije pro první toosign čas hello toohello publikování portálu. Později ostatní uživatelé se dá přidat jako pomocní správci. Toto je, jak získá namapované toohello středisku pro vývojáře registrační data.
 
 ## <a name="azure-portal"></a>Azure Portal
 [https://Portal.Azure.com](https://portal.azure.com)
 
 ### <a name="description"></a>Popis
-Toto je portál, kde můžete zobrazit vaše dvoufázové instalace a publikované nabídky v Azure Marketplace (platí pro virtuální počítače, šablony řešení a služby pro vývojáře využívající Azure Resource Manager).
+Toto je hello portál, kde si můžete prohlédnout vaše dvoufázové instalace a publikované nabídky v hello Azure Marketplace (platí pro virtuální počítače, šablony řešení a služby pro vývojáře využívající Azure Resource Manager).
 
 ### <a name="identityaccount-used"></a>Identity/účet používaný
-Když se pracovní nabídku z portálu pro publikování, ID odběru musí být seznam povolených adres. Ve stejném předplatném (se uživatelské jméno a heslo, které jsou s ním spojená) se musí použít pro přihlášení k tomuto portálu k testování nabídku dvoufázové instalace.
+Když se pracovní nabídku z hello publikování portálu, ID odběru musí toobe seznam povolených adres. Hello stejného předplatného (se uživatelské jméno a heslo, které jsou s ním spojená) musí použít pro přihlášení nabídka hello dvoufázové instalace portálu tootest toothis toobe.
 
 ## <a name="see-also"></a>Viz také
-* [Začínáme: postup publikování nabídky pro Azure Marketplace](marketplace-publishing-getting-started.md)
+* [Začínáme: jak hello toopublish na nabídky pro Azure Marketplace](marketplace-publishing-getting-started.md)
 

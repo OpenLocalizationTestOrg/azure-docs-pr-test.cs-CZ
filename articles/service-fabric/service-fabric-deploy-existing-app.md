@@ -1,6 +1,6 @@
 ---
-title: "Nasadit existující spustitelný soubor do Azure Service Fabric | Microsoft Docs"
-description: "Návod o tom, jak balíček stávající aplikace jako Host spustitelného souboru, aby ji můžete nasadit na cluster Service Fabric"
+title: "aaaDeploy existující spustitelné tooAzure Service Fabric | Microsoft Docs"
+description: "Návod na způsobu nasazení toopackage existující aplikace jako spustitelný hosta, aby ho bylo možné tooa cluster Service Fabric"
 services: service-fabric
 documentationcenter: .net
 author: msfussell
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: mfussell;mikhegn
-ms.openlocfilehash: a1db3dda674ffe43587333d88f3816549af3019c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5599802bdb6bda2407a138d77e12148ccb64f437
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-a-guest-executable-to-service-fabric"></a>Nasazení do Service Fabric Host spustitelný soubor
-Jakýkoli typ kódu, třeba Node.js, Java nebo C++ v Azure Service Fabric můžete spustit jako služby. Service Fabric odkazuje na těchto typů služeb jako hosta spustitelné soubory.
+# <a name="deploy-a-guest-executable-tooservice-fabric"></a>Nasazení spustitelné tooService hosta prostředků infrastruktury
+Jakýkoli typ kódu, třeba Node.js, Java nebo C++ v Azure Service Fabric můžete spustit jako služby. Service Fabric označuje toothese typů služeb jako hosta spustitelné soubory.
 
-Spustitelné soubory hosta budou vyhodnocené jako bezstavové služby Service Fabric. V důsledku toho jsou umístěny na uzlech v clusteru, na základě dostupnosti a další metriky. Tento článek popisuje, jak pro zabalení a nasazení hosta spustitelný soubor do clusteru Service Fabric pomocí Visual Studio nebo nástroj příkazového řádku.
+Spustitelné soubory hosta budou vyhodnocené jako bezstavové služby Service Fabric. V důsledku toho jsou umístěny na uzlech v clusteru, na základě dostupnosti a další metriky. Tento článek popisuje, jak toopackage a nasadit cluster hostů spustitelné tooa Service Fabric pomocí Visual Studio nebo nástroj příkazového řádku.
 
-V tomto článku jsme zahrnují kroky k balíčku hosta spustitelný soubor a nasadíte ho do Service Fabric.  
+V tomto článku jsme zahrnují hello kroky toopackage hosta spustitelný soubor a nasaďte ji tooService prostředků infrastruktury.  
 
 ## <a name="benefits-of-running-a-guest-executable-in-service-fabric"></a>Výhody spuštění spustitelného souboru v Service Fabric Host
-Existuje několik výhod pro spuštění spustitelného souboru v clusteru Service Fabric Host:
+Existuje několik výhod toorunning spustitelný soubor v clusteru Service Fabric Host:
 
 * Vysoká dostupnost. Aplikace, které běží v Service Fabric jsou vysoce dostupné. Service Fabric zajistí, že instance aplikace běží.
 * Sledování stavu. Monitorování stavu Service Fabric zjišťuje, zda aplikace běží a poskytuje diagnostické informace, pokud dojde k selhání.   
-* Správa životního cyklu aplikací. Kromě toho poskytuje upgrady bez výpadků, Service Fabric nabízí automatického vrácení zpět na předchozí verzi, pokud existuje událost stavu chybný hlášené během upgradu.    
-* Hustotou. Více aplikací můžete spustit v clusteru, není potřeba pro každou aplikaci, aby běžela na svůj vlastní hardware.
-* Možnosti rozpoznání: Pomocí REST můžete volat službu Service Fabric Naming, kterou chcete najít další služby v clusteru. 
+* Správa životního cyklu aplikací. Kromě toho poskytuje upgrady bez výpadků, Service Fabric nabízí automatického vrácení zpět toohello předchozí verze, pokud existuje událost stavu chybný hlášené během upgradu.    
+* Hustotou. Více aplikací můžete spustit v clusteru, která eliminuje potřebu hello toorun každou aplikaci na svůj vlastní hardware.
+* Možnosti rozpoznání: Pomocí REST můžete volat hello Service Fabric Naming service toofind další služby v clusteru hello. 
 
 ## <a name="samples"></a>Ukázky
 * [Ukázka pro balení a nasazení spustitelný soubor hosta](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Ukázka dvěma hosta spustitelné soubory (C# a nodejs) komunikaci přes službu Naming pomocí REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
+* [Ukázka dvěma hosta spustitelné soubory (C# a nodejs) komunikaci přes hello pojmenování službu pomocí REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
 ## <a name="overview-of-application-and-service-manifest-files"></a>Přehled aplikace a soubory manifestu služby
-Jako součást nasazení spustitelný soubor hosta, je užitečné Service Fabric balení a nasazení modelu pochopit, jak je popsáno v [aplikačního modelu](service-fabric-application-model.md). Balení modelu Service Fabric spoléhá na dva soubory XML: manifestů aplikace a služby. Definice schématu pro ApplicationManifest.xml a ServiceManifest.xml soubory se instaluje s Service Fabric SDK do *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
+Jako součást nasazení spustitelný soubor hosta, je užitečné toounderstand hello Service Fabric balení a nasazení modelu jak je popsáno v [aplikačního modelu](service-fabric-application-model.md). model balení Service Fabric Hello spoléhá na dva soubory XML: hello manifestů aplikace a služby. Hello definice schématu pro hello ApplicationManifest.xml a ServiceManifest.xml soubory se instaluje s hello Service Fabric SDK do *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
 
-* **Manifest aplikace** manifest aplikace se používá k popisu aplikace. Zobrazí seznam služeb, které ji tvoří a musí být nasazené dalších parametrů, které slouží k určení jak jednu nebo více služeb, jako je počet instancí.
+* **Manifest aplikace** manifest aplikace hello je použité toodescribe hello aplikace. Vypíše hello služby, které ji tvoří a dalších parametrů, které jsou používané toodefine musí být nasazené jak jednu nebo více služeb, jako je například hello počet instancí.
 
-  Aplikace v Service Fabric je jednotka nasazení a upgrade. Aplikace lze upgradovat jako na jednu jednotku, kde se spravují potenciální chyby a potenciální odvolání. Service Fabric zaručuje, že proces upgradu je buď úspěšné, nebo, pokud se upgrade nezdaří, nenechává aplikace v neznámý nebo nestabilním stavu.
-* **Manifest služby** service manifest popisuje součásti služby. Obsahuje data, jako třeba název a typ služby a jeho kódu a konfigurace. Manifest služby zahrnuje také některé další parametry, které lze použít ke konfiguraci služby po jejím nasazení.
+  Aplikace v Service Fabric je jednotka nasazení a upgrade. Aplikace lze upgradovat jako na jednu jednotku, kde se spravují potenciální chyby a potenciální odvolání. Service Fabric zaručuje, že proces upgradu hello je buď úspěšné, nebo pokud hello upgrade selže, nenechává aplikace hello v neznámý nebo nestabilním stavu.
+* **Manifest služby** hello service manifest popisuje hello součásti služby. Obsahuje data, jako třeba hello název a typ služby a kódu a konfigurace. Hello service manifest také zahrnuje některé další parametry, které se dají použít tooconfigure hello služby po jejím nasazení.
 
 ## <a name="application-package-file-structure"></a>Struktura souboru balíčku aplikace
-Pokud chcete nasadit aplikace do Service Fabric, by mělo vycházet aplikace předdefinované adresářovou strukturu. Následuje příklad této struktury.
+toodeploy aplikaci tooService prostředků infrastruktury, aplikace hello by mělo vycházet předdefinované adresářovou strukturu. Hello následuje příklad této struktury.
 
 ```
 |-- ApplicationPackageRoot
@@ -63,87 +63,87 @@ Pokud chcete nasadit aplikace do Service Fabric, by mělo vycházet aplikace př
     |-- ApplicationManifest.xml
 ```
 
-ApplicationPackageRoot obsahuje ApplicationManifest.xml soubor, který definuje aplikace. Tak, aby obsahovala všechny artefakty, které služba vyžaduje, aby se používá podadresáři pro každou službu obsažené v aplikaci. Tyto podadresáře jsou ServiceManifest.xml a obvykle následující:
+Hello ApplicationPackageRoot obsahuje hello ApplicationManifest.xml soubor, který definuje aplikace hello. Podadresář pro každou službu součástí aplikace hello je použité toocontain všechny hello artefakty, pomocí kterých hello služba vyžaduje. Tyto podadresáře jsou hello ServiceManifest.xml a obvykle hello následující:
 
-* *Kód*. Tento adresář obsahuje kód služby.
-* *Konfigurace*. Tento adresář obsahuje soubor souborech Settings.xml (a další soubory v případě potřeby), že služba přístup za běhu k načtení specifické nastavení.
-* *Data*. To je další adresář k uložení další místní data, která může být nutné službu. Data slouží k ukládání pouze dočasných dat. Service Fabric kopírování nebo replikovat změny do adresáře dat, pokud služba musí být přemístění (například během převzetí služeb při selhání).
+* *Kód*. Tento adresář obsahuje kódu služby hello.
+* *Konfigurace*. Tento adresář obsahuje soubor souborech Settings.xml (a další soubory v případě potřeby), služba hello můžete získat přístup v modulu runtime tooretrieve specifické nastavení.
+* *Data*. Toto je další adresář toostore další místní data, která může být nutné hello služby. Data by měla být pouze dočasné dat použité toostore. Service Fabric nemá zkopírovat nebo replikovat změny toohello datový adresář, pokud služba hello musí toobe přemístění (například během převzetí služeb při selhání).
 
 > [!NOTE]
-> Není nutné vytvářet `config` a `data` adresářů, pokud je nepotřebujete.
+> Nemáte toocreate hello `config` a `data` adresářů, pokud je nepotřebujete.
 >
 >
 
 ## <a name="package-an-existing-executable"></a>Balíček existující spustitelný soubor
-Při balení spustitelný soubor hosta, můžete buď používat šablony projektů Visual Studio nebo [ručně vytvořit balíček aplikace](#manually). Pomocí sady Visual Studio, struktury balíček aplikace a soubory manifestu vytvářejí nové šablona projektu pro vás.
+Při balení spustitelný soubor hosta, můžete zvolit buď toouse šablona projektu sady Visual Studio nebo příliš[ručně vytvořit balíček aplikace hello](#manually). Pomocí sady Visual Studio, hello struktura balíček aplikace a soubory manifestu vytvářejí hello nová šablona projektu pro vás.
 
 > [!TIP]
-> Nejjednodušší způsob, jak spustitelný soubor do služby Windows pro existující balíček je pomocí sady Visual Studio a v systému Linux používat Yeoman
+> Nejjednodušší způsob, jak toopackage Hello existující spustitelný soubor do služby systému Windows je toouse Visual Studio a na Linux toouse Yeoman
 >
 
-## <a name="use-visual-studio-to-package-and-deploy-an-existing-executable"></a>Použijte sadu Visual Studio pro zabalení a nasazení existující spustitelný soubor
-Visual Studio poskytuje šablony služby Service Fabric vám pomůžou nasadit do clusteru Service Fabric Host spustitelný soubor.
+## <a name="use-visual-studio-toopackage-and-deploy-an-existing-executable"></a>Pomocí sady Visual Studio toopackage a nasadit existující spustitelný soubor
+Visual Studio poskytuje Service Fabric toohelp šablony služby nasadit cluster hostů spustitelné tooa Service Fabric.
 
 1. Zvolte **soubor** > **nový projekt**a vytvářet aplikace Service Fabric.
-2. Zvolte **spustitelný soubor hosta** jako šablonu služby.
-3. Klikněte na tlačítko **Procházet** vyberte složku s vaší spustitelný soubor a vyplňte zbytek parametrů k vytvoření služby.
-   * *Kód balíčku chování*. Může být nastaven na veškerý obsah složky zkopírujte do projektu Visual Studio, což je užitečné, pokud spustitelný soubor se nemění. Pokud očekáváte, spustitelný soubor změnit a chcete mít možnost dynamicky vyzvednutí nových sestavení automaticky, můžete místo toho odkaz ke složce. Propojené složek můžete použít při vytváření projektu aplikace v sadě Visual Studio. Tato sestava odkazuje na umístění zdroje z v projektu, což vám umožní aktualizovat Host spustitelný soubor v jeho zdroj cíl. Tyto aktualizace se stanou součástí balíčku aplikace při sestavování.
-   * *Program* Určuje spustitelný soubor, který by měl být spuštěn pro spuštění služby.
-   * *Argumenty* Určuje argumenty, které by měla být předána spustitelný soubor. Může být seznam parametrů s argumenty.
-   * *WorkingFolder* určuje pracovní adresář pro proces, který chcete spustit. Můžete určit tří hodnot:
-     * `CodeBase`Určuje, že pracovní adresář bude být nastavena na adresář kódu v balíčku aplikace (`Code` directory uvedené v předchozí strukturu souborů).
-     * `CodePackage`Určuje, že pracovní adresář bude se nastaví na kořen balíčku aplikace (`GuestService1Pkg` uvedené v předchozí strukturu souborů).
-     * `Work`Určuje, že soubory jsou umístěny v podadresáři volat pracovní.
+2. Zvolte **spustitelný soubor hosta** jako šablonu služby hello.
+3. Klikněte na tlačítko **Procházet** tooselect hello složka se spustitelný soubor a vyplňte hello zbytek hello parametry toocreate hello služby.
+   * *Kód balíčku chování*. Může být sada toocopy všechny hello obsah vaší složky toohello projekt sady Visual Studio, což je užitečné, pokud hello spustitelný soubor se nemění. Pokud očekávat toochange hello spustitelný soubor a dynamicky chcete hello možnost toopick si nových sestavení automaticky, můžete toolink toohello složky místo. Propojené složek můžete použít při vytváření projektu aplikace hello v sadě Visual Studio. Tím propojí toohello umístění zdroje z v rámci projektu hello, která umožňuje vám tooupdate hello hosta spustitelný soubor v jeho zdroj cíl. Tyto aktualizace se stanou součástí balíčku aplikace hello na sestavení.
+   * *Program* určuje hello spustitelný soubor, který by měl být spuštěn toostart hello služby.
+   * *Argumenty* určuje hello argumenty, které mají být předány toohello spustitelný soubor. Může být seznam parametrů s argumenty.
+   * *WorkingFolder* určuje hello pracovní adresář pro hello proces, který se bude toobe spuštěna. Můžete určit tří hodnot:
+     * `CodeBase`Určuje, že pracovní adresář hello přechází toobe nastavit adresář toohello kódu v balíčku aplikace hello (`Code` directory uvedené v předcházející strukturu souborů hello).
+     * `CodePackage`Určuje, že pracovní adresář hello přechází toobe nastavit toohello kořenové balíčku aplikace hello (`GuestService1Pkg` uvedené v předcházející strukturu souborů hello).
+     * `Work`Určuje, že hello soubory jsou umístěny v podadresáři volat pracovní.
 4. Zadejte název služby a klikněte na **OK**.
-5. Pokud vaše služba musí koncový bod pro komunikaci, můžete nyní přidat protokol, port a typ souboru ServiceManifest.xml. Například: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`.
-6. Teď můžete použít balíček a publikovat akce s místním clusteru tak, že ladění řešení v sadě Visual Studio. Až bude připravený, můžete publikovat aplikaci do vzdáleného clusteru nebo řešení správy zdrojového kódu se změnami.
-7. Přejděte na konci tohoto článku chcete zjistit, jak chcete-li zobrazit hosta spustitelný soubor služby spuštěné v Service Fabric Exploreru.
+5. Pokud vaše služba musí koncový bod pro komunikaci, můžete nyní přidat hello protokol, port a typ toohello ServiceManifest.xml souboru. Například: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`.
+6. Teď můžete použít balíček hello a publikovat akce s místním clusteru tak, že ladění hello řešení v sadě Visual Studio. Až bude připravený, můžete publikovat hello aplikace tooa vzdálený cluster nebo zkontrolujte v ovládacím prvku toosource řešení hello.
+7. Jak přejděte toohello konci tohoto článku toosee tooview hosta spustitelný soubor služby spuštěné v Service Fabric Exploreru.
 
-## <a name="use-yoeman-to-package-and-deploy-an-existing-executable-on-linux"></a>Použít Yoeman pro balíček a nasazení existující spustitelný soubor v systému Linux
+## <a name="use-yoeman-toopackage-and-deploy-an-existing-executable-on-linux"></a>Používat Yoeman toopackage a nasaďte existující spustitelný soubor v systému Linux
 
-Postup pro vytvoření a nasazení hosta spustitelného souboru v systému Linux je stejný jako nasazení aplikace csharp nebo java.
+Hello postup pro vytvoření a nasazení hosta spustitelného souboru v systému Linux je hello stejné jako nasazení aplikace csharp nebo java.
 
 1. V terminálu zadejte `yo azuresfguest`.
 2. Pojmenujte svoji aplikaci.
-3. Název služby a zadejte podrobnosti, včetně cesta ke spustitelnému souboru a parametry, které musí být volána s.
+3. Název služby a zadejte podrobnosti hello včetně cestu hello spustitelný soubor a hello parametry, které musí být volána s.
 
-Yeoman vytvoří balíček aplikace s příslušnou aplikaci a souborů manifestu spolu s instalaci a odinstalaci skripty.
+Yeoman vytvoří balíček aplikace hello příslušné aplikace a soubory manifestu spolu s instalaci a odinstalaci skripty.
 
 <a id="manually"></a>
 
 ## <a name="manually-package-and-deploy-an-existing-executable"></a>Ručně zabalení a nasazení existující spustitelný soubor
-Proces ručně balení spustitelný soubor hosta je založena na následujících obecných kroků:
+proces Hello ručně balení spustitelný soubor hosta je založena na hello následující obecné kroky:
 
-1. Vytvořte strukturu adresáře balíčku.
-2. Přidejte kód a konfigurační soubory aplikace.
-3. Upravte soubor manifestu služby.
-4. Upravte soubor manifestu aplikace.
+1. Vytvořte strukturu adresáře balíčku hello.
+2. Přidejte kód a konfigurační soubory aplikace hello.
+3. Upravte soubor manifestu služby hello.
+4. Upravte soubor manifestu aplikace hello.
 
 <!--
->[AZURE.NOTE] We do provide a packaging tool that allows you to create the ApplicationPackage automatically. The tool is currently in preview. You can download it from [here](http://aka.ms/servicefabricpacktool).
+>[AZURE.NOTE] We do provide a packaging tool that allows you toocreate hello ApplicationPackage automatically. hello tool is currently in preview. You can download it from [here](http://aka.ms/servicefabricpacktool).
 -->
 
-### <a name="create-the-package-directory-structure"></a>Vytvořit strukturu adresáře balíčku
-Můžete spustit tak, že vytvoříte strukturu adresáře, jak je popsáno v předchozí části "Aplikace balíčku souboru struktura."
+### <a name="create-hello-package-directory-structure"></a>Vytvořit strukturu adresáře balíčku hello
+Vytvořením hello adresářovou strukturu, můžete spustit jak je popsáno v předcházející části hello "Aplikace balíčku souboru struktura."
 
-### <a name="add-the-applications-code-and-configuration-files"></a>Přidání kódu a konfigurační soubory aplikace
-Po vytvoření strukturu adresáře, můžete přidat kód aplikace a konfigurační soubory v adresáři kódu a konfigurace. Můžete také vytvořit další adresáře nebo podadresáře v adresáři kódu nebo konfigurace.
+### <a name="add-hello-applications-code-and-configuration-files"></a>Přidání kódu a konfigurační soubory aplikace hello
+Po vytvoření hello adresářovou strukturu, můžete přidat aplikace hello kódu a konfigurační soubory v hello kódu a konfigurace adresářů. Můžete také vytvořit další adresáře nebo podadresáře v hello kódu nebo konfiguračního adresáře.
 
-Service Fabric nemá `xcopy` obsahu kořenového adresáře aplikace, takže není k dispozici žádné předdefinované struktura používat jiné než vytváření dva hlavní adresáře, kód a nastavení. (Můžete si vybrat odlišné názvy podle potřeby. Další podrobnosti najdete v další části.)
+Service Fabric nemá `xcopy` hello obsahu z hello kořenového adresáře aplikace, takže není k dispozici žádné předdefinované struktura toouse než vytváření dva hlavní adresáře, kód a nastavení. (Můžete si vybrat odlišné názvy podle potřeby. Další podrobnosti najdete v další části hello.)
 
 > [!NOTE]
-> Ujistěte se, jestli jste zahrnuli všechny soubory a závislosti, které aplikace potřebuje. Service Fabric zkopíruje obsah balíčku aplikace na všech uzlech v clusteru, kde se chystáte služby aplikace nasadit. Tento balíček měl obsahovat všechny kód, který aplikace je potřeba spustit. Nepředpokládejte, že závislosti jsou již nainstalovány.
+> Ujistěte se, jestli jste zahrnuli všechny soubory hello a závislosti, které hello potřebám aplikace. Service Fabric zkopíruje hello obsahu balíčku aplikace hello na všech uzlech v clusteru hello kde hello aplikační služby jsou toobe probíhající nasazení. Hello balíček měl obsahovat všechny hello kódu, že aplikace hello musí toorun. Nepředpokládejte, že hello závislosti jsou již nainstalovány.
 >
 >
 
-### <a name="edit-the-service-manifest-file"></a>Upravit soubor manifestu služby
-Dalším krokem je upravit soubor manifestu služby zahrnout tyto informace:
+### <a name="edit-hello-service-manifest-file"></a>Upravit soubor manifestu služby hello
+dalším krokem Hello je tooedit hello služby souboru manifestu tooinclude hello následující informace:
 
-* Název typu služby. Toto je ID, které Service Fabric používá k identifikaci služby.
-* Příkaz sloužící ke spuštění aplikace (ExeHost).
-* Žádný skript, který je potřeba spustit k nastavení aplikace (SetupEntrypoint).
+* Hello název typu služby hello. Toto je ID, že Service Fabric používá tooidentify služby.
+* Hello příkaz toouse toolaunch hello aplikace (ExeHost).
+* Žádný skript, který potřebuje toobe spustit tooset si aplikace hello (SetupEntrypoint).
 
-Tady je příklad `ServiceManifest.xml` souboru:
+Hello tady je příklad `ServiceManifest.xml` souboru:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -173,7 +173,7 @@ Tady je příklad `ServiceManifest.xml` souboru:
 </ServiceManifest>
 ```
 
-V následujících částech projít různé části souboru, který je potřeba aktualizovat.
+Následující části Hello projít různé části hello souboru, je nutné, aby tooupdate hello.
 
 #### <a name="update-servicetypes"></a>Aktualizace ServiceTypes
 ```xml
@@ -182,17 +182,17 @@ V následujících částech projít různé části souboru, který je potřeba
 </ServiceTypes>
 ```
 
-* Můžete vybrat libovolný název, který chcete použít pro `ServiceTypeName`. Hodnota se používá v `ApplicationManifest.xml` souboru k identifikaci služby.
-* Zadejte `UseImplicitHost="true"`. Tento atribut informuje Service Fabric, že služba je založen na samostatná aplikace, tak, aby všechny musí Service Fabric se spustí jako proces a monitorovat jeho stav.
+* Můžete vybrat libovolný název, který chcete použít pro `ServiceTypeName`. Hodnota Hello se používá v hello `ApplicationManifest.xml` tooidentify hello služba souborů.
+* Zadejte `UseImplicitHost="true"`. Tento atribut informuje Service Fabric, že služba hello je založena na samostatná aplikace, takže všechny Service Fabric musí toodo toolaunch ji jako proces a sledovat jeho stav.
 
 #### <a name="update-codepackage"></a>CodePackage aktualizace
-CodePackage element určuje umístění (a verzi) kódu služby.
+Hello CodePackage element určuje umístění hello (a verzi) kódu služby hello.
 
 ```xml
 <CodePackage Name="Code" Version="1.0.0.0">
 ```
 
-`Name` Element se používá k určení názvu adresáře v balíčku aplikace, která obsahuje kód služby. `CodePackage`má také `version` atribut. To lze použít k určení verze kódu a můžete také potenciálně použít k upgradu služby kódu s použitím infrastruktury pro správu životního cyklu aplikace v Service Fabric.
+Hello `Name` element je použité toospecify hello název adresáře hello v balíčku aplikace hello, který obsahuje kódu služby hello. `CodePackage`má také hello `version` atribut. To může být použité toospecify hello verze hello kódu a taky potenciálně lze používat kódu služby hello tooupgrade pomocí infrastruktury pro správu životního cyklu aplikace hello v Service Fabric.
 
 #### <a name="optional-update-setupentrypoint"></a>Volitelné: Aktualizace SetupEntrypoint
 ```xml
@@ -202,11 +202,11 @@ CodePackage element určuje umístění (a verzi) kódu služby.
    </ExeHost>
 </SetupEntryPoint>
 ```
-SetupEntryPoint element slouží k určení spustitelného souboru nebo v dávkovém souboru, který se má provést před spuštění kódu služby. Je volitelný krok, takže nemusí být zahrnuty, pokud není žádná inicializace požadována. SetupEntryPoint je proveden při každém restartování služby.
+Hello SetupEntryPoint element je použité toospecify spustitelný soubor nebo dávkového souboru, který se má provést před spuštění kódu služby hello. Je volitelný krok, takže nemusí toobe zahrnuty, pokud neexistuje žádné inicializace požadována. Hello SetupEntryPoint se spustí pokaždé, když hello restartována.
 
-Se jenom jeden SetupEntryPoint, takže skripty instalace musí být seskupeny do jednoho dávkový soubor, pokud instalační program aplikace vyžaduje několik skriptů. SetupEntryPoint může spustit libovolný typ souboru: spustitelné soubory, dávkové soubory a rutiny prostředí PowerShell. Další podrobnosti najdete v tématu [konfigurace SetupEntryPoint](service-fabric-application-runas-security.md).
+Se jenom jeden SetupEntryPoint, takže skripty instalace potřebovat toobe seskupené do jednoho dávkový soubor, pokud instalace aplikace hello vyžaduje několik skriptů. Hello SetupEntryPoint může spustit libovolný typ souboru: spustitelné soubory, dávkové soubory a rutiny prostředí PowerShell. Další podrobnosti najdete v tématu [konfigurace SetupEntryPoint](service-fabric-application-runas-security.md).
 
-V předchozím příkladu běží SetupEntryPoint batch soubor s názvem `LaunchConfig.cmd` který je umístěný v `scripts` podadresáři adresáři kódu (za předpokladu, že WorkingFolder element je nastaven na hodnotu základu kódu).
+V předchozím příkladu hello, hello SetupEntryPoint běží dávky soubor s názvem `LaunchConfig.cmd` který je umístěn v hello `scripts` podadresáři adresář kódu hello (za předpokladu, že hello WorkingFolder element je nastaven tooCodeBase).
 
 #### <a name="update-entrypoint"></a>EntryPoint aktualizace
 ```xml
@@ -219,16 +219,16 @@ V předchozím příkladu běží SetupEntryPoint batch soubor s názvem `Launch
 </EntryPoint>
 ```
 
-`EntryPoint` Element v souboru manifestu služby se používá k určení způsobu spuštění služby. `ExeHost` Element Určuje spustitelný soubor (a argumentů), by měl být použitý ke spuštění služby.
+Hello `EntryPoint` element v souboru manifestu služby hello je použité toospecify jak toolaunch hello služby. Hello `ExeHost` element určuje hello spustitelného souboru (a argumenty) který by měl být použit toolaunch hello služby.
 
-* `Program`Určuje název spustitelného souboru, který by měl spustit službu.
-* `Arguments`Určuje argumenty, které by měla být předána spustitelný soubor. Může být seznam parametrů s argumenty.
-* `WorkingFolder`Určuje pracovní adresář pro proces, který chcete spustit. Můžete určit tří hodnot:
-  * `CodeBase`Určuje, že pracovní adresář bude být nastavena na adresář kódu v balíčku aplikace (`Code` adresář v předchozím struktuře souborů).
-  * `CodePackage`Určuje, že pracovní adresář bude se nastaví na kořen balíčku aplikace (`GuestService1Pkg` v předchozí struktuře souborů).
-    * `Work`Určuje, že soubory jsou umístěny v podadresáři volat pracovní.
+* `Program`Určuje název hello hello spustitelný soubor, který by měl spustit službu hello.
+* `Arguments`Určuje hello argumenty, které mají být předány toohello spustitelný soubor. Může být seznam parametrů s argumenty.
+* `WorkingFolder`Určuje pracovní adresář hello hello procesu, který se bude toobe spuštěna. Můžete určit tří hodnot:
+  * `CodeBase`Určuje, že pracovní adresář hello přechází toobe nastavit adresář toohello kódu v balíčku aplikace hello (`Code` adresář v hello předcházející strukturu souborů).
+  * `CodePackage`Určuje, že pracovní adresář hello přechází toobe nastavit toohello kořenové balíčku aplikace hello (`GuestService1Pkg` v hello předcházející strukturu souborů).
+    * `Work`Určuje, že hello soubory jsou umístěny v podadresáři volat pracovní.
 
-WorkingFolder je vhodné nastavit správné pracovní adresář tak, aby relativní cesty mohou být využívána aplikace nebo inicializace skripty.
+Hello WorkingFolder je užitečné tooset hello správné pracovní adresář tak, aby relativní cesty mohou být využívána buď hello aplikace nebo inicializace skripty.
 
 #### <a name="update-endpoints-and-register-with-naming-service-for-communication"></a>Aktualizovat koncové body a zaregistrovat u služby DNS pro komunikaci
 ```xml
@@ -237,22 +237,22 @@ WorkingFolder je vhodné nastavit správné pracovní adresář tak, aby relativ
 </Endpoints>
 
 ```
-V předchozím příkladu `Endpoint` element určuje koncové body, které aplikace může naslouchat na portu. V tomto příkladu aplikace Node.js naslouchá na protokolu http na portu 3000.
+V předchozím příkladu hello, hello `Endpoint` element určuje hello koncových bodů, které může aplikace hello naslouchat. V tomto příkladu aplikace Node.js hello naslouchá na protokolu http na portu 3000.
 
-Kromě toho můžete pokládat Service Fabric publikovat tento koncový bod do služby DNS, tak další služby můžete zjistit adresa koncového bodu pro tuto službu. To vám umožňuje komunikovat mezi službami, které jsou hostované spustitelné soubory.
-Adresa publikované koncového bodu je ve formátu `UriScheme://IPAddressOrFQDN:Port/PathSuffix`. `UriScheme`a `PathSuffix` jsou volitelných atributů. `IPAddressOrFQDN`je IP adresa nebo plně kvalifikovaný název domény tohoto spustitelného souboru získá umístěny na uzlu, a se vypočítává za vás.
+Kromě toho můžete pokládat Service Fabric toopublish toohello tento koncový bod služby pojmenování tak další služby můžete zjistit hello koncový bod adresy toothis služby. To vám umožní mít toocommunicate toobe mezi službami, které jsou hostované spustitelné soubory.
+Hello adresa publikované koncového bodu má hello podobu `UriScheme://IPAddressOrFQDN:Port/PathSuffix`. `UriScheme`a `PathSuffix` jsou volitelných atributů. `IPAddressOrFQDN`je hello IP adresu nebo plně kvalifikovaný název domény tohoto spustitelného souboru získá umístěny na uzlu hello a se vypočítává za vás.
 
-V následujícím příkladu, jakmile nasazení služby v Service Fabric Explorer zobrazí podobná koncový bod `http://10.1.4.92:3000/myapp/` publikována pro instance služby. Nebo pokud se jedná se o místní počítač, zobrazí `http://localhost:3000/myapp/`.
+V hello následující příklad, jednou hello služby je nasazen, v Service Fabric Explorer zobrazí podobné koncový bod příliš`http://10.1.4.92:3000/myapp/` publikována pro instance služby hello. Nebo pokud se jedná se o místní počítač, zobrazí `http://localhost:3000/myapp/`.
 
 ```xml
 <Endpoints>
    <Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000"  UriScheme="http" PathSuffix="myapp/" Type="Input" />
 </Endpoints>
 ```
-Můžete použít tyto adresy s [reverse proxy](service-fabric-reverseproxy.md) ke komunikaci mezi službami.
+Můžete použít tyto adresy s [reverse proxy](service-fabric-reverseproxy.md) toocommunicate mezi službami.
 
-### <a name="edit-the-application-manifest-file"></a>Upravit soubor manifestu aplikace
-Po konfiguraci `Servicemanifest.xml` souboru, budete muset udělat některé změny `ApplicationManifest.xml` zajistíte, že jsou použité správné služby typu a název souboru.
+### <a name="edit-hello-application-manifest-file"></a>Upravte soubor manifestu aplikace hello
+Po konfiguraci hello `Servicemanifest.xml` souboru, je nutné toomake některé změny toohello `ApplicationManifest.xml` souboru tooensure, který hello správné, používají typ služby a název.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -264,7 +264,7 @@ Po konfiguraci `Servicemanifest.xml` souboru, budete muset udělat některé zm�
 ```
 
 #### <a name="servicemanifestimport"></a>ServiceManifestImport
-V `ServiceManifestImport` elementu, můžete zadat jednu nebo více služeb, které chcete zahrnout do aplikace. Služby jsou odkazovány pomocí `ServiceManifestName`, která určuje název adresáře, kde `ServiceManifest.xml` se nachází soubor.
+V hello `ServiceManifestImport` elementu, můžete zadat jednu nebo více služeb, které chcete tooinclude v aplikaci hello. Služby jsou odkazovány pomocí `ServiceManifestName`, která určuje název hello hello adresáře, kde hello `ServiceManifest.xml` se nachází soubor.
 
 ```xml
 <ServiceManifestImport>
@@ -273,11 +273,11 @@ V `ServiceManifestImport` elementu, můžete zadat jednu nebo více služeb, kte
 ```
 
 ## <a name="set-up-logging"></a>Nastavení protokolování
-Pro spustitelné soubory hosta je vhodné zobrazit protokoly konzoly a zjistěte, pokud aplikace a konfigurační skripty zobrazit všechny chyby.
-Přesměrování konzoly se dá nakonfigurovat v `ServiceManifest.xml` souboru pomocí `ConsoleRedirection` elementu.
+Pro hosta spustitelné soubory je užitečné toobe možné toosee konzoly protokoly toofind out-li zobrazit všechny chyby hello aplikace a konfigurační skripty.
+Přesměrování konzoly se dá nakonfigurovat v hello `ServiceManifest.xml` soubor pomocí hello `ConsoleRedirection` elementu.
 
 > [!WARNING]
-> Nikdy nepoužívejte konzolu Zásady přesměrování v aplikaci, která je nasazena v produkčním prostředí, protože to může mít vliv převzetí služeb při selhání aplikaci. *Pouze* používejte pro místní vývoj a účely ladění.  
+> Nikdy nepoužívejte zásad přesměrování konzoly hello v aplikaci, která je nasazena v produkčním prostředí, protože to může mít vliv hello aplikace převzetí služeb při selhání. *Pouze* používejte pro místní vývoj a účely ladění.  
 >
 >
 
@@ -292,16 +292,16 @@ Přesměrování konzoly se dá nakonfigurovat v `ServiceManifest.xml` souboru p
 </EntryPoint>
 ```
 
-`ConsoleRedirection`slouží k přesměrování výstup konzoly (stdout a stderr) do pracovního adresáře. To umožňuje ověřit, zda nejsou žádné chyby při instalaci nebo spuštění aplikace v clusteru Service Fabric.
+`ConsoleRedirection`lze použít tooredirect konzoly výstupního (stdout a stderr) tooa pracovní adresář. To poskytuje tooverify hello možnost, že nejsou žádné chyby během hello instalaci nebo spuštění aplikace hello v clusteru Service Fabric hello.
 
-`FileRetentionCount`Určuje, kolik souborů se ukládají do pracovní adresář. Hodnota 5, například znamená, že soubory protokolu pro předchozí pět spuštěních se ukládají v pracovním adresáři.
+`FileRetentionCount`Určuje, kolik souborů se ukládají do hello pracovní adresář. Hodnota 5, například znamená, že hello soubory protokolu pro předchozí pět spuštěních hello se ukládají v hello pracovní adresář.
 
-`FileMaxSizeInKb`Určuje maximální velikost protokolových souborů.
+`FileMaxSizeInKb`Určuje maximální velikost hello hello protokolových souborů.
 
-Ukládání souborů protokolu v jednom ze služby pracovních adresářích. Chcete-li určit, kde jsou umístěny soubory, pomocí Service Fabric Explorer rozhodnout, který uzel služby běží na a pracovní adresář, kterému je používán. Tento proces je popsaná později v tomto článku.
+Ukládání souborů protokolu v jednom z hello služby pracovních adresářích. toodetermine, kde jsou umístěny, hello soubory pomocí Service Fabric Explorer toodetermine služby hello uzlu, která běží na a pracovní adresář, kterému je používán. Tento proces je popsaná později v tomto článku.
 
 ## <a name="deployment"></a>Nasazení
-Posledním krokem je [nasazení aplikace](service-fabric-deploy-remove-applications.md). Následující skript prostředí PowerShell ukazuje, jak nasadit aplikace do místního vývojového clusteru a spustit novou službu Service Fabric.
+posledním krokem Hello je příliš[nasazení aplikace](service-fabric-deploy-remove-applications.md). Dobrý den zobrazí skript prostředí PowerShell následující jak toodeploy vaší aplikace toohello místního vývojového clusteru a spusťte novou službu Service Fabric.
 
 ```PowerShell
 
@@ -320,35 +320,35 @@ New-ServiceFabricService -ApplicationName 'fabric:/nodeapp' -ServiceName 'fabric
 ```
 
 >[!TIP]
-> [Komprimovat balíček](service-fabric-package-apps.md#compress-a-package) před kopírování do úložiště bitové kopie, pokud tento balíček je velký nebo má mnoho souborů. Další informace [zde](service-fabric-deploy-remove-applications.md#upload-the-application-package).
+> [Komprimovat hello balíček](service-fabric-package-apps.md#compress-a-package) před kopírováním toohello úložiště bitové kopie, pokud balíček hello je velký nebo má mnoho souborů. Další informace [zde](service-fabric-deploy-remove-applications.md#upload-the-application-package).
 >
 
-Služba Service Fabric se dá nasadit v různých "konfigurace". Například se můžete nasadit jako jeden nebo více instancí, nebo se můžete nasadit tak, že existuje jedna instance služby v každém uzlu clusteru Service Fabric.
+Služba Service Fabric se dá nasadit v různých "konfigurace". Například se můžete nasadit jako jeden nebo více instancí, nebo se můžete nasadit tak, že existuje jedna instance služby hello v každém uzlu clusteru Service Fabric hello.
 
-`InstanceCount` Parametr `New-ServiceFabricService` rutiny slouží k určení, kolik instancí služby musí být spuštěna v clusteru Service Fabric. Můžete nastavit `InstanceCount` hodnotu, v závislosti na typu aplikace, kterou nasazujete. Dva nejběžnější scénáře jsou:
+Hello `InstanceCount` parametr hello `New-ServiceFabricService` rutina je použité toospecify kolik instancí služby hello musí být spuštěna v clusteru Service Fabric hello. Můžete nastavit hello `InstanceCount` hodnotu, v závislosti na typu hello aplikace, kterou nasazujete. Hello dva nejběžnější scénáře jsou:
 
-* `InstanceCount = "1"`. V takovém případě je pouze jedna instance služby nasadit v clusteru. Scheduler Service Fabric Určuje, který uzel služby se chystáte nasadit na.
-* `InstanceCount ="-1"`. V takovém případě jedna instance služby je nasazen na každý uzel v clusteru Service Fabric. Výsledek má jeden (a pouze jeden) instance služby pro každý uzel v clusteru.
+* `InstanceCount = "1"`. V takovém případě pouze jednu instanci služby hello je nasazen v clusteru hello. Scheduler Service Fabric určuje služby, která uzlu hello přechází toobe nasazené na.
+* `InstanceCount ="-1"`. V takovém případě jednu instanci služby hello je nasazen na každý uzel v clusteru Service Fabric hello. výsledek Hello má jeden (a pouze jeden) instanci hello služby pro každý uzel v clusteru hello.
 
-Toto je užitečné konfiguraci pro front-endu aplikace (například koncový bod REST), protože klientské aplikace potřebují "připojit" pro všechny uzly v clusteru, aby používaly koncový bod. Tato konfigurace mohou sloužit také když například jsou všechny uzly clusteru Service Fabric připojeni ke službě Vyrovnávání zatížení. Přenosy klienta lze následně distribuovat napříč službou, která běží na všech uzlech v clusteru.
+Toto je užitečné konfiguraci pro front-endu aplikace (například koncový bod REST), protože klientské aplikace potřebují příliš "připojit" tooany hello uzlů v hello koncový bod hello toouse clusteru. Tato konfigurace mohou sloužit také při, například všechny uzly clusteru Service Fabric hello jsou připojené tooa nástroj pro vyrovnávání zatížení. Přenosy klienta lze následně distribuovat mezi hello služba, která běží na všech uzlech v clusteru hello.
 
 ## <a name="check-your-running-application"></a>Zkontrolujte spuštěné aplikace
-V Service Fabric Exploreru Identifikujte uzlu, kde je služba spuštěná. V tomto příkladu je spuštěna na Uzel1:
+V Service Fabric Exploreru Identifikujte hello uzlu, kde je spuštěna služba hello. V tomto příkladu je spuštěna na Uzel1:
 
 ![Uzel, na kterém je spuštěna služba](./media/service-fabric-deploy-existing-app/nodeappinsfx.png)
 
-Přejděte na uzel a přejděte do aplikace, zobrazí informace o základní uzlu, včetně jeho umístění na disku.
+Pokud přejdete toohello uzlu a procházet toohello aplikace, zobrazí hello uzlu nezbytné informace, včetně jeho umístění na disku.
 
 ![Umístění na disku](./media/service-fabric-deploy-existing-app/locationondisk2.png)
 
-Pokud přejdete do adresáře pomocí Průzkumníku serveru, můžete najít pracovní adresář a služby do složky protokolů, jak je znázorněno na následujícím snímku obrazovky: 
+Pokud adresář toohello pomocí Průzkumníka serveru, najdete hello pracovní adresář a složku protokolu hello služby, jak ukazuje následující snímek obrazovky hello: 
 
 ![Umístění protokolu](./media/service-fabric-deploy-existing-app/loglocation.png)
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste se naučili, jak zabalit spustitelný soubor hosta a nasadíte ho do Service Fabric. Najdete v následujících článcích související informace a úlohy.
+V tomto článku jste se naučili jak toopackage spustitelný soubor hosta a nasaďte ho tooService prostředků infrastruktury. Viz následující články pro související informace a úlohy hello.
 
-* [Ukázka pro balení a nasazení spustitelný soubor hosta](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), včetně odkaz na zkušební verzi nástroje balení
-* [Ukázka dvěma hosta spustitelné soubory (C# a nodejs) komunikaci přes službu Naming pomocí REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
+* [Ukázka pro balení a nasazení spustitelný soubor hosta](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), včetně toohello odkaz předběžné verze nástroje balení hello
+* [Ukázka dvěma hosta spustitelné soubory (C# a nodejs) komunikaci přes hello pojmenování službu pomocí REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 * [Nasazení několika hostujících spustitelných souborů](service-fabric-deploy-multiple-apps.md)
 * [Vytvoření první aplikace Service Fabric pomocí sady Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)

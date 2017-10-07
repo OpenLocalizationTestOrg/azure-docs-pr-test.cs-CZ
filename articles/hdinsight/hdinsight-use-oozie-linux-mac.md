@@ -1,6 +1,6 @@
 ---
-title: "Použití pracovních postupů Hadoop Oozie v HDInsight se systémem Linux | Microsoft Docs"
-description: "Použijte Hadoop Oozie v HDInsight se systémem Linux. Zjistěte, jak definovat pracovním postupu Oozie a odeslat úlohu Oozie."
+title: "pracovní postupy aaaUse Hadoop Oozie v HDInsight se systémem Linux | Microsoft Docs"
+description: "Použijte Hadoop Oozie v HDInsight se systémem Linux. Zjistěte, jak toodefine pracovním postupu Oozie a odešlete úlohu Oozie."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,27 +16,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: larryfr
-ms.openlocfilehash: e3206078e451aefe02689bfb61ce22a20dd0fa70
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: cb5682837543312621e3424b7a9341b5d2a00bf8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-hdinsight"></a>Použití Oozie se systémem Hadoop k definování a spuštění workflowu v HDInsight se systémem Linux
+# <a name="use-oozie-with-hadoop-toodefine-and-run-a-workflow-on-linux-based-hdinsight"></a>Pomocí Oozie Hadoop toodefine a spuštění workflowu v HDInsight se systémem Linux
 
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
-Další informace o použití Apache Oozie s Hadoop v HDInsight. Apache Oozie je pracovní postup nebo koordinaci systém, který spravuje úloh Hadoop. Oozie je integrována do zásobníku Hadoop a podporuje následující úlohy:
+Zjistěte, jak toouse Apache Oozie s Hadoop v HDInsight. Apache Oozie je pracovní postup nebo koordinaci systém, který spravuje úloh Hadoop. Oozie je integrována hello zásobníku Hadoop a podporuje hello následující úlohy:
 
 * Apache MapReduce
 * Apache Pig
 * Apache Hive
 * Apache Sqoop
 
-Oozie lze také použít k plánování úloh, které jsou specifické pro systém, jako jsou programy v jazyce Java nebo skripty prostředí
+Oozie může být také použít tooschedule úlohy, které jsou specifické tooa systém, jako jsou programy v jazyce Java nebo skripty prostředí
 
 > [!NOTE]
-> Další možností pro definování pracovních postupů v prostředí HDInsight je Azure Data Factory. Další informace o Azure Data Factory najdete v tématu [použijte Pig a Hive pomocí služby Data Factory][azure-data-factory-pig-hive].
+> Další možností pro definování pracovních postupů v prostředí HDInsight je Azure Data Factory. toolearn Další informace o Azure Data Factory najdete v části [použijte Pig a Hive pomocí služby Data Factory][azure-data-factory-pig-hive].
 
 > [!IMPORTANT]
 > Oozie není povoleno v doméně HDInsight.
@@ -46,64 +46,64 @@ Oozie lze také použít k plánování úloh, které jsou specifické pro syst�
 * **Cluster služby HDInsight**: najdete v části [Začínáme s prostředím HDInsight v Linuxu](hdinsight-hadoop-linux-tutorial-get-started.md)
 
   > [!IMPORTANT]
-  > Kroky v tomto dokumentu vyžadují clusteru služby HDInsight, který používá Linux. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > Hello kroky v tomto dokumentu vyžadují clusteru služby HDInsight, který používá Linux. Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="example-workflow"></a>Příklad pracovního postupu
 
-Pracovní postup v tomto dokumentu obsahuje dvě akce. Akce jsou definice pro úlohy, jako je například spuštění Hive, Sqoop, MapReduce nebo jiný proces:
+Hello pracovního postupu v tomto dokumentu obsahuje dvě akce. Akce jsou definice pro úlohy, jako je například spuštění Hive, Sqoop, MapReduce nebo jiný proces:
 
 ![Diagram pracovního postupu][img-workflow-diagram]
 
-1. Akce Hive spouští skript HiveQL k extrakci záznamy ze **hivesampletable** součástí HDInsight. Každý řádek dat popisuje návštěvu z určité mobilní zařízení. Formát záznamu se zobrazí podobná následující text:
+1. Akce Hive spouští skript HiveQL tooextract záznamů z hello **hivesampletable** součástí HDInsight. Každý řádek dat popisuje návštěvu z určité mobilní zařízení. Formát záznamu Hello se zobrazí podobné toohello následující text:
 
         8       18:54:20        en-US   Android Samsung SCH-i500        California     United States    13.9204007      0       0
         23      19:19:44        en-US   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
         23      19:19:46        en-US   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
 
-    V tomto dokumentu skriptu Hive počítá celkový počet návštěv pro každou platformu (třeba na Android nebo iPhone) a ukládá počty na novou tabulku Hive.
+    Hello skriptu Hive v tomto dokumentu počítá hello celkový počet návštěv pro každou platformu (třeba na Android nebo iPhone) a ukládá hello počty tooa novou tabulku Hive.
 
     Další informace o Hivu najdete v tématu [Použití Hivu se službou HDInsight][hdinsight-use-hive].
 
-2. Akce Sqoop exportuje obsah novou tabulku Hive k tabulce v Azure SQL database. Další informace o Sqoop najdete v tématu [Sqoop pomocí Hadoop v prostředí HDInsight][hdinsight-use-sqoop].
+2. Akce Sqoop exportuje obsah hello hello nové Hive tooa tabulku v databázi Azure SQL. Další informace o Sqoop najdete v tématu [Sqoop pomocí Hadoop v prostředí HDInsight][hdinsight-use-sqoop].
 
 > [!NOTE]
-> Podporované verze Oozie v clusterech prostředí HDInsight najdete v tématu [co je nového ve verzích clusterů systému Hadoop poskytovaných v HDInsight][hdinsight-versions].
+> Podporované verze Oozie v clusterech prostředí HDInsight najdete v tématu [co je nového ve verzích clusterů systému Hadoop hello poskytovaných v HDInsight][hdinsight-versions].
 
-## <a name="create-the-working-directory"></a>Vytvořte pracovní adresář
+## <a name="create-hello-working-directory"></a>Vytvoření hello pracovní adresář
 
-Oozie očekává prostředky potřebné pro úlohu k uložení do stejného adresáře. Tento příklad používá **wasb: / / / kurzy/useoozie**. Chcete-li vytvořit tento adresář a do adresáře dat, která obsahuje novou tabulku Hive, který byl vytvořen tento pracovní postup použijte následující příkaz:
+Oozie očekává prostředky potřebné pro úlohy toobe uložené v hello stejný adresář. Tento příklad používá **wasb: / / / kurzy/useoozie**. Tento adresář a hello datový adresář, který obsahuje novou tabulku Hive hello vytvořené tento pracovní postup, použijte následující příkaz toocreate hello:
 
 ```
 hdfs dfs -mkdir -p /tutorials/useoozie/data
 ```
 
 > [!NOTE]
-> `-p` Parametr způsobí, že všechny adresáře v cestě, který se má vytvořit. **Data** directory se používá k ukládání dat používané **useooziewf.hql** skriptu.
+> Hello `-p` parametr způsobí, že všechny adresáře v toobe cesta hello vytvořili. Hello **data** adresář je použité toohold dat používá hello **useooziewf.hql** skriptu.
 
-Taky spusťte následující příkaz, který zajistí, že může Oozie při spuštění úlohy Hive a Sqoop zosobnit váš uživatelský účet. Nahraďte **uživatelské jméno** s vaše přihlašovací jméno:
+Taky spusťte následující příkaz, který zajistí, že Oozie může zosobnit váš uživatelský účet při spuštění úlohy Hive a Sqoop hello. Nahraďte **uživatelské jméno** s vaše přihlašovací jméno:
 
 ```
 sudo adduser USERNAME users
 ```
 
 > [!NOTE]
-> Můžete ignorovat chyby, které uživatel je již členem `users` skupiny.
+> Můžete ignorovat chyby tohoto uživatele hello je již členem hello `users` skupiny.
 
 ## <a name="add-a-database-driver"></a>Přidat ovladač databáze
 
-Vzhledem k tomu, že tento pracovní postup používá Sqoop exportovat data do databáze SQL, je nutné zadat kopii ovladač JDBC používaný ke komunikaci s SQL Database. Použijte následující příkaz a zkopírujte ho do pracovního adresáře:
+Vzhledem k tomu, že tento pracovní postup používá Sqoop tooexport data tooSQL databáze, je nutné zadat, že kopii ovladač JDBC hello používá tootalk tooSQL databáze. Použití hello následující příkaz toocopy ho toohello pracovní adresář:
 
 ```
 hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /tutorials/useoozie/
 ```
 
-Pokud pracovní postup používá jiné prostředky, jako je například jar obsahující aplikaci MapReduce, musíte přidat také tyto prostředky.
+Pokud pracovní postup používá jiné prostředky, jako je například jar obsahující aplikaci MapReduce, potřebovali byste tooadd také tyto prostředky.
 
-## <a name="define-the-hive-query"></a>Zadejte dotaz Hive
+## <a name="define-hello-hive-query"></a>Definování dotazu Hive hello
 
-Pomocí následujících kroků můžete vytvořit skript HiveQL, který definuje dotaz, který se používá v pracovním postupu Oozie později v tomto dokumentu.
+Pomocí následujících kroků toocreate HiveQL skript, který definuje dotaz, který se používá v pracovním postupu Oozie později v tomto dokumentu hello.
 
-1. Připojte se ke clusteru pomocí protokolu SSH. Příkaz je příklad použití `ssh` příkaz. Nahraďte __uživatelské jméno__ s uživatelem SSH pro cluster. Nahraďte __CLUSTERNAME__ s názvem clusteru HDInsight.
+1. Připojte toohello clusteru pomocí protokolu SSH. Hello následujícího příkazu je příklad použití hello `ssh` příkaz. Nahraďte __uživatelské jméno__ hello uživatele SSH pro hello cluster. Nahraďte __CLUSTERNAME__ s názvem hello hello clusteru HDInsight.
 
     ```
     ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
@@ -111,13 +111,13 @@ Pomocí následujících kroků můžete vytvořit skript HiveQL, který definuj
 
     Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Z připojení SSH použijte následující příkaz k vytvoření souboru:
+2. Z hello připojení SSH použijte následující příkaz toocreate soubor hello:
 
     ```
     nano useooziewf.hql
     ```
 
-3. Jakmile se otevře nano editor, použijte následující dotaz jako obsah souboru:
+3. Jakmile se otevře hello nano editor, použijte následující dotaz jako hello obsah souboru hello hello:
 
     ```hiveql
     DROP TABLE ${hiveTableName};
@@ -126,39 +126,39 @@ Pomocí následujících kroků můžete vytvořit skript HiveQL, který definuj
     INSERT OVERWRITE TABLE ${hiveTableName} SELECT deviceplatform, COUNT(*) as count FROM hivesampletable GROUP BY deviceplatform;
     ```
 
-    Existují dvě proměnné používané ve skriptu:
+    Existují dvě proměnné používané ve skriptu hello:
 
-    * **${hiveTableName}**: obsahuje název tabulky, který se má vytvořit
+    * **${hiveTableName}**: obsahuje název hello toobe tabulky hello vytvořen
 
-    * **${hiveDataFolder}**: obsahuje umístění pro uložení souborů dat pro tabulku
+    * **${hiveDataFolder}**: obsahuje hello umístění toostore hello datové soubory pro tabulku hello
 
-    Soubor definice pracovního postupu (workflow.xml v tomto kurzu) předává tyto hodnoty tento skript HiveQL v době běhu
+    Soubor definice pracovního postupu Hello (workflow.xml v tomto kurzu) předává tyto hodnoty toothis skript HiveQL v době běhu
 
-4. Editor ukončíte stisknutím Ctrl-X. Po zobrazení výzvy vyberte **Y** k uložení souboru, potom použijte **Enter** používat **useooziewf.hql** název souboru.
+4. tooexit hello editor, stiskněte kombinaci kláves Ctrl-X. Po zobrazení výzvy vyberte **Y** toosave hello souboru, potom použijte **Enter** toouse hello **useooziewf.hql** název souboru.
 
-5. Použijte následující příkazy pro kopírování **useooziewf.hql** k **wasb:///tutorials/useoozie/useooziewf.hql**:
+5. Použití hello následující příkazy toocopy **useooziewf.hql** příliš**wasb:///tutorials/useoozie/useooziewf.hql**:
 
     ```
     hdfs dfs -put useooziewf.hql /tutorials/useoozie/useooziewf.hql
     ```
 
-    Ukládání těchto příkazů **useooziewf.hql** souboru na HDFS kompatibilní úložiště pro cluster.
+    Tyto příkazy ukládání hello **useooziewf.hql** souboru na hello HDFS kompatibilní úložiště pro hello cluster.
 
-## <a name="define-the-workflow"></a>Definice pracovního postupu
+## <a name="define-hello-workflow"></a>Definice pracovního postupu hello
 
-Definice Oozie pracovní postupy jsou zapsány ve hPDL (XML proces Definition Language). Pomocí následujících kroků můžete definovat pracovní postup:
+Definice Oozie pracovní postupy jsou zapsány ve hPDL (XML proces Definition Language). Hello použijte následující postup toodefine hello pracovního postupu:
 
-1. Můžete vytvářet a upravovat nový soubor, použijte následující příkaz:
+1. Použijte následující příkaz toocreate hello a upravit nový soubor:
 
     ```
     nano workflow.xml
     ```
 
-2. Jakmile se otevře nano editor, zadejte následující kód XML jako obsah souboru:
+2. Jakmile se otevře hello nano editor, zadejte následující XML jako obsah souboru hello hello:
 
     ```xml
     <workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
-        <start to = "RunHiveScript"/>
+        <start too= "RunHiveScript"/>
         <action name="RunHiveScript">
         <hive xmlns="uri:oozie:hive-action:0.2">
             <job-tracker>${jobTracker}</job-tracker>
@@ -209,55 +209,55 @@ Definice Oozie pracovní postupy jsou zapsány ve hPDL (XML proces Definition La
     </workflow-app>
     ```
 
-    Existují dvě akce, které jsou definovány v pracovním postupu:
+    Existují dvě akce definované v pracovním postupu hello:
 
-   * **RunHiveScript**: Tato akce je akci spuštění a běží **useooziewf.hql** skript podregistru
+   * **RunHiveScript**: Tato akce je hello spuštění akce a spouští hello **useooziewf.hql** skript podregistru
 
-   * **RunSqoopExport**: Tato akce exportuje data vytvořená ze skriptu Hive na databázi SQL pomocí Sqoop. Tato akce je spuštěna pouze pokud **RunHiveScript** akce je úspěšné.
+   * **RunSqoopExport**: Tato akce exportuje hello data vytvořená z tooSQL skriptu Hive hello databáze pomocí Sqoop. Tato akce je spuštěna pouze pokud hello **RunHiveScript** akce je úspěšné.
 
-     Pracovní postup má několik položek, jako například `${jobTracker}`. Tyto položky jsou nahrazovány hodnoty, které můžete použít v definici úlohy. Později v tomto dokumentu se vytvoří definici úlohy.
+     pracovní postup Hello má několik položek, jako například `${jobTracker}`. Tyto položky jsou nahrazovány hodnoty, které můžete použít v definici úlohy hello. Vytvoří se definice úlohy Hello později v tomto dokumentu.
 
-     Všimněte si také `<archive>sqljdbc4.jar</arcive>` položky v části Sqoop. Tato položka dá pokyn Oozie archivu k dispozici na pro Sqoop spuštění této akce.
+     Také Poznámka hello `<archive>sqljdbc4.jar</arcive>` položku v hello Sqoop části. Tato položka dá pokyn, Oozie toomake archivu k dispozici pro Sqoop po spuštění této akce.
 
-3. Použijte Ctrl-X, pak **Y** a **Enter** k uložení souboru.
+3. Použijte Ctrl-X, pak **Y** a **Enter** toosave hello souboru.
 
-4. Použijte následující příkaz pro kopírování **workflow.xml** do souboru **/tutorials/useoozie/workflow.xml**:
+4. Použití hello následující příkaz toocopy hello **workflow.xml** souboru příliš**/tutorials/useoozie/workflow.xml**:
 
     ```
     hdfs dfs -put workflow.xml /tutorials/useoozie/workflow.xml
     ```
 
-## <a name="create-the-database"></a>Vytvoření databáze
+## <a name="create-hello-database"></a>Vytvoření databáze hello
 
-K vytvoření databáze SQL Azure, postupujte podle kroků v [vytvoření databáze SQL](../sql-database/sql-database-get-started.md) dokumentu. Při vytváření databáze, použijte `oozietest` jako název databáze. Také si poznamenejte název databázového serveru.
+toocreate Azure SQL Database, postupujte podle kroků hello v hello [vytvoření databáze SQL](../sql-database/sql-database-get-started.md) dokumentu. Při vytváření hello databáze, použijte `oozietest` jako název databáze hello. Také si poznamenejte název hello hello databázového serveru.
 
-### <a name="create-the-table"></a>Vytvoření tabulky
+### <a name="create-hello-table"></a>Vytvoření tabulky hello
 
 > [!NOTE]
-> Pro připojení k databázi SQL a vytvořte tabulku mnoha způsoby. Následující postup použijte [FreeTDS](http://www.freetds.org/) z clusteru HDInsight.
+> Existuje mnoho způsobů tooconnect tooSQL databáze toocreate tabulku. Následující postup použijte Hello [FreeTDS](http://www.freetds.org/) z clusteru HDInsight hello.
 
 
-1. Použijte následující příkaz k instalaci FreeTDS v clusteru HDInsight:
+1. Použijte následující příkaz tooinstall FreeTDS na clusteru HDInsight hello hello:
 
     ```
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. Jednou FreeTDS nainstalován, použijte následující příkaz pro připojení k serveru služby SQL Database, kterou jste vytvořili dříve:
+2. Po instalaci FreeTDS, použijte následující příkaz tooconnect toohello databáze SQL serveru, kterou jste vytvořili dříve hello:
 
     ```
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -P <sqlPassword> -p 1433 -D oozietest
     ```
 
-    Zobrazí se výstup podobný následujícímu:
+    Zobrazí se výstup podobný toohello následující text:
 
         locale is "en_US.UTF-8"
         locale charset is "UTF-8"
         using default charset "UTF-8"
-        Default database being set to oozietest
+        Default database being set toooozietest
         1>
 
-3. Na `1>` výzva, zadejte následující řádky:
+3. V hello `1>` výzva, zadejte hello následující řádky:
 
     ```
     CREATE TABLE [dbo].[mobiledata](
@@ -268,35 +268,35 @@ K vytvoření databáze SQL Azure, postupujte podle kroků v [vytvoření datab�
     GO
     ```
 
-    Když `GO` příkaz je zadán, jsou vyhodnocovány předchozí příkazy. Tyto příkazy vytvořit tabulku s názvem **mobiledata** používané v tomto pracovním postupu.
+    Když hello `GO` příkaz je zadán, jsou vyhodnocovány hello předchozí příkazy. Tyto příkazy vytvořit tabulku s názvem **mobiledata** používané v pracovním postupu hello.
 
-    Chcete-li ověřit, zda byl vytvořen v tabulce použijte následující:
+    Použití hello následující tooverify, který hello tabulka byla vytvořena:
 
     ```
     SELECT * FROM information_schema.tables
     GO
     ```
 
-    Zobrazí výstup podobný následujícímu:
+    Zobrazí výstup podobný toohello následující text:
 
     ```
     TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
     oozietest       dbo     mobiledata      BASE TABLE
     ```
 
-4. Zadejte `exit` na `1>` výzvy ukončete nástroj tsql.
+4. Zadejte `exit` v hello `1>` výzvu tooexit hello tsql nástroj.
 
-## <a name="create-the-job-definition"></a>Vytvořit definici úlohy
+## <a name="create-hello-job-definition"></a>Vytvořit definici úlohy hello
 
-Definice úlohy popisuje, kde najít workflow.xml. Také popisuje, kde najít další soubory, které používá pracovní postup (například useooziewf.hql.) Také definuje hodnoty pro vlastnosti používaných v rámci pracovního postupu a související soubory.
+definice úlohy Hello popisuje, kde toofind hello workflow.xml. Také popisuje, kde toofind další soubory, které používá pracovní postup hello (například useooziewf.hql.) Také definuje hello hodnoty pro vlastnosti používaných v rámci pracovního postupu hello a související soubory.
 
-1. Použijte následující příkaz k získání úplné adresy výchozí úložiště. Tato adresa se používá v konfiguračním souboru za chvíli:
+1. Použijte následující příkaz tooget hello úplná adresa hello výchozí úložiště hello. Tato adresa se používá v konfiguračním souboru hello za chvíli:
 
     ```
     sed -n '/<name>fs.default/,/<\/value>/p' /etc/hadoop/conf/core-site.xml
     ```
 
-    Tento příkaz vrátí informace podobná následující kód XML:
+    Tento příkaz vrátí informace podobné toohello následující XML:
 
     ```xml
     <name>fs.defaultFS</name>
@@ -304,29 +304,29 @@ Definice úlohy popisuje, kde najít workflow.xml. Také popisuje, kde najít da
     ```
 
     > [!NOTE]
-    > Pokud HDInsight cluster používá úložiště Azure jako výchozí úložiště, `<value>` obsah elementu začínat `wasb://`. Pokud je použita Azure Data Lake Store, začne s `adl://`.
+    > Pokud hello HDInsight cluster používá jako hello výchozí úložiště Azure Storage, hello `<value>` obsah elementu začínat `wasb://`. Pokud je použita Azure Data Lake Store, začne s `adl://`.
 
-    Uložení obsahu `<value>` element, protože se používá v dalších krocích.
+    Uložit obsah hello hello `<value>` element, protože se používá v dalších krocích hello.
 
-2. Získat plně kvalifikovaný název domény clusteru headnode použijte následující příkaz. Tyto informace se používají pro adresu JobTracker pro cluster:
+2. Použijte následující příkaz tooget plně kvalifikovaný název domény clusteru headnode hello hello. Tyto informace se používají pro hello JobTracker adresu pro hello cluster:
 
     ```
     hostname -f
     ```
 
-    Vrátí informace podobná následující text:
+    Tento příkaz vrátí informace podobné toohello následující text:
 
     ```hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net```
 
-    Port používaný pro jako JobTracker je 8050, takže je úplná adresa pro jako JobTracker `hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8050`.
+    Hello port používaný pro hello JobTracker je 8050, takže je hello toouse úplná adresa pro hello JobTracker `hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8050`.
 
-3. Použijte následující postupy k vytvoření konfigurace definice úlohy Oozie:
+3. Použijte následující toocreate hello Oozie úlohy definice konfigurace hello:
 
     ```
     nano job.xml
     ```
 
-4. Jakmile se otevře nano editor, použijte následující kód XML jako obsah souboru:
+4. Jakmile se otevře hello nano editor, použijte následující XML jako hello obsah souboru hello hello:
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -389,72 +389,72 @@ Definice úlohy popisuje, kde najít workflow.xml. Také popisuje, kde najít da
     </configuration>
     ```
 
-   * Nahraďte všechny výskyty  **wasb://mycontainer@mystorageaccount.blob.core.windows.net**  s hodnotou jste obdrželi dříve pro výchozí úložiště.
+   * Nahraďte všechny výskyty  **wasb://mycontainer@mystorageaccount.blob.core.windows.net**  s hodnotou hello jste obdrželi dříve pro výchozí úložiště.
 
      > [!WARNING]
-     > Pokud se cesta `wasb` cestu, musíte použít úplnou cestu. Není jeho právě Zkraťte `wasb:///`.
+     > Pokud se cesta hello `wasb` cestu, musíte použít úplnou cestu hello. Není Zkraťte ho toojust `wasb:///`.
 
-   * Nahraďte **JOBTRACKERADDRESS** s adresou JobTracker/ResourceManager jste obdrželi dříve.
-   * Nahraďte **jméno** s vaše přihlašovací jméno pro HDInsight cluster.
-   * Nahraďte **serverName**, **adminLogin**, a **adminPassword** s informacemi k vaší databázi SQL Azure.
+   * Nahraďte **JOBTRACKERADDRESS** s hello JobTracker/ResourceManager adresu jste obdrželi dříve.
+   * Nahraďte **jméno** s vaše přihlašovací jméno pro hello HDInsight cluster.
+   * Nahraďte **serverName**, **adminLogin**, a **adminPassword** s hello informace o vaší databázi SQL Azure.
 
-     Většinu informací v tomto souboru se používá k naplnění hodnoty používané v souborech workflow.xml nebo ooziewf.hql (např. ${nameNode}.)
+     Většina hello informace v tomto souboru je použité toopopulate hello hodnoty používané v hello workflow.xml nebo ooziewf.hql soubory (např. ${nameNode}.)
 
      > [!NOTE]
-     > **Oozie.wf.application.path** položka udává kde najít soubor workflow.xml, který obsahuje pracovní postup spuštěné prostřednictvím této úlohy.
+     > Hello **oozie.wf.application.path** položka udává kde toofind hello workflow.xml soubor, který obsahuje pracovní postup hello spuštěné prostřednictvím této úlohy.
 
-5. Použijte Ctrl-X, pak **Y** a **Enter** k uložení souboru.
+5. Použijte Ctrl-X, pak **Y** a **Enter** toosave hello souboru.
 
-## <a name="submit-and-manage-the-job"></a>Odesílat a spravovat úlohy
+## <a name="submit-and-manage-hello-job"></a>Odesílat a spravovat úlohy hello
 
-Následující postup použijte příkaz Oozie k odeslání a správa pracovních postupů Oozie v clusteru. Příkaz Oozie je popisný rozhraní přes [Oozie REST API](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
+Hello následující kroky použijte hello Oozie příkaz toosubmit a správa pracovních postupů Oozie v clusteru hello. příkaz Oozie Hello je popisný rozhraní přes hello [Oozie REST API](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
 
 > [!IMPORTANT]
-> Při použití příkazu Oozie, je nutné použít plně kvalifikovaný název domény pro HDInsight headnode. Tento plně kvalifikovaný název domény je k dispozici pouze z clusteru, nebo pokud je clusteru na virtuální síť Azure, z jiných počítačů ve stejné síti.
+> Při použití příkazu hello Oozie, je nutné použít hello plně kvalifikovaný název domény pro hello HDInsight headnode. Tento plně kvalifikovaný název domény je k dispozici pouze z clusteru hello nebo pokud hello clusteru je na virtuální síť Azure, z jiných počítačů v hello stejné síti.
 
 
-1. Následující informace vám pomůžou získat adresu URL pro službu Oozie:
+1. Použijte následující tooobtain hello URL toohello Oozie služby hello:
 
     ```
     sed -n '/<name>oozie.base.url/,/<\/value>/p' /etc/oozie/conf/oozie-site.xml
     ```
 
-    Vrátí informace podobná následující kód XML:
+    Tento příkaz vrátí informace podobné toohello následující XML:
 
     ```xml
     <name>oozie.base.url</name>
     <value>http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie</value>
     ```
 
-    `http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie` Část je adresa URL pro použití s příkazem Oozie.
+    Hello `http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie` část je hello toouse adresu URL s hello Oozie příkaz.
 
-2. Použijte následující postupy k vytvoření proměnné prostředí pro adresu URL, takže není nutné zadat pro každý příkaz:
+2. Použití hello následující toocreate proměnné prostředí pro adresu URL hello, takže není nutné tootype pro každý příkaz:
 
     ```
     export OOZIE_URL=http://HOSTNAMEt:11000/oozie
     ```
 
-    Nahraďte adresu URL, které jste dostali dříve.
-3. Použijte následující postup odeslání úlohy:
+    Nahraďte adresu URL hello hello jeden, který jste dostali dříve.
+3. Použijte následující úlohy hello toosubmit hello:
 
     ```
     oozie job -config job.xml -submit
     ```
 
-    Tento příkaz načte informace o úloze z **job.xml** a odešle ji Oozie, ale nejde spustit.
+    Tento příkaz načte informace o úlohách hello z **job.xml** a odešle ji tooOozie, ale nespustí se nepodporuje.
 
-    Po dokončení příkazu by měl vrátit ID úlohy. Například, `0000005-150622124850154-oozie-oozi-W`. Toto ID se používá ke správě úlohy.
+    Po dokončení příkazu hello by měl vrátit hello ID úlohy hello. Například, `0000005-150622124850154-oozie-oozi-W`. Toto ID je použité toomanage hello úlohy.
 
-4. Zobrazení stavu úlohy pomocí následujícího příkazu:
+4. Zobrazit stav hello hello úlohy pomocí hello následující příkaz:
 
     ```
     oozie job -info <JOBID>
     ```
 
     > [!NOTE]
-    > Nahraďte `<JOBID>` s ID, vrátí se v předchozím kroku.
+    > Nahraďte `<JOBID>` s hello ID vrácené v předchozím kroku hello.
 
-    Vrátí informace podobná následující text:
+    Tento příkaz vrátí informace podobné toohello následující text:
 
     ```
     Job ID : 0000005-150622124850154-oozie-oozi-W
@@ -473,33 +473,33 @@ Následující postup použijte příkaz Oozie k odeslání a správa pracovníc
     ------------------------------------------------------------------------------------------------------------------------------------
     ```
 
-    Tato úloha je ve stavu `PREP`. Tento stav indikuje, že byla úloha vytvořen, ale není spuštěna.
+    Tato úloha je ve stavu `PREP`. Tento stav indikuje tuto úlohu hello byla vytvořena, ale není spuštěna.
 
-5. Spustit úlohu, použijte následující příkaz:
+5. Použijte následující příkaz toostart hello úlohy hello:
 
     ```
     oozie job -start JOBID
     ```
 
     > [!NOTE]
-    > Nahraďte `<JOBID>` s ID vrátil dříve.
+    > Nahraďte `<JOBID>` s hello ID vrácené dříve.
 
-    Pokud po tento příkaz Zkontrolovat stav, je v běžícím stavu a se vrátí informace pro akce v rámci úlohy.
+    Pokud zaškrtnete hello stav po tento příkaz, je v běžícím stavu a pro hello akce v rámci úlohy hello se vrátí informace.
 
-6. Po úspěšném dokončení úlohy můžete ověřit, že data byla vygenerována a exportovány do tabulky databáze SQL pomocí následujících příkazů:
+6. Po úspěšném dokončení úkolů hello můžete ověřit, že hello data byla vygenerována a exportovali toohello tabulka databáze SQL pomocí hello následující příkazy:
 
     ```
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D oozietest
     ```
 
-    Na `1>` výzva, zadejte následující dotaz:
+    V hello `1>` výzva, zadejte hello následující dotaz:
 
     ```
     SELECT * FROM mobiledata
     GO
     ```
 
-    Vrácené informace je podobná následující text:
+    vrácené informace Hello je podobné toohello následující text:
 
         deviceplatform  count
         Android 31591
@@ -510,79 +510,79 @@ Následující postup použijte příkaz Oozie k odeslání a správa pracovníc
         Windows Phone   1791
         (6 rows affected)
 
-Další informace o příkazu Oozie najdete v tématu [nástroj příkazového řádku Oozie](https://oozie.apache.org/docs/4.1.0/DG_CommandLineTool.html).
+Další informace o hello Oozie příkaz najdete v tématu [nástroj příkazového řádku Oozie](https://oozie.apache.org/docs/4.1.0/DG_CommandLineTool.html).
 
 ## <a name="oozie-rest-api"></a>Oozie REST API
 
-Rozhraní API REST Oozie umožňuje vytvářet vlastní nástroje, které pracují s Oozie. Tady jsou HDInsight konkrétní informace o použití rozhraní REST API Oozie:
+Hello Oozie REST API vám umožní toobuild vlastní nástroje, které pracují s Oozie. Hello následují HDInsight konkrétní informace o používání hello Oozie REST API:
 
-* **Identifikátor URI**: rozhraní API REST je přístupná z mimo cluster v`https://CLUSTERNAME.azurehdinsight.net/oozie`
+* **Identifikátor URI**: hello REST API je přístupná z clusteru mimo hello`https://CLUSTERNAME.azurehdinsight.net/oozie`
 
-* **Ověřování**: ověření na rozhraní API pomocí účet clusteru HTTP (správce) a heslo. Například:
+* **Ověřování**: ověření toohello rozhraní API pomocí účet clusteru HTTP hello (správce) a hesla. Například:
 
     ```
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/oozie/versions
     ```
 
-Další informace o používání rozhraní API REST Oozie najdete v tématu [Oozie Web Services API](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
+Další informace o používání hello Oozie REST API najdete v tématu [Oozie Web Services API](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
 
 ## <a name="oozie-web-ui"></a>Oozie webového uživatelského rozhraní
 
-Webové uživatelské rozhraní Oozie poskytuje webové pohled na stav Oozie úloh v clusteru. Webového uživatelského rozhraní vám umožní zobrazit následující informace:
+Hello Oozie webového uživatelského rozhraní poskytuje webové pohled na stav hello Oozie úloh na clusteru hello. Hello webového uživatelského rozhraní umožňuje tooview hello následující informace:
 
 * Stav úlohy
 * Definice úlohy
 * Konfigurace
-* Graf akce pro úlohu
-* Protokoly pro úlohu
+* Graf hello akcí v úloze hello
+* Protokoly pro úlohu hello
 
 Můžete také zobrazit podrobnosti pro akce v rámci úlohy.
 
-Pro přístup k Oozie webového uživatelského rozhraní, použijte následující postup:
+tooaccess hello Oozie webového uživatelského rozhraní, použijte hello následující kroky:
 
-1. Vytvoření tunelu SSH do clusteru HDInsight. Informace najdete v tématu [používání tunelového propojení SSH s HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
+1. Vytvoření clusteru HDInsight toohello tunelového propojení SSH. Informace najdete v tématu hello [používání tunelového propojení SSH s HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
 
-2. Po vytvoření tunelu, otevřete webovému uživatelskému rozhraní Ambari ve webovém prohlížeči. Je identifikátor URI webu Ambari **https://CLUSTERNAME.azurehdinsight.net**. Nahraďte **CLUSTERNAME** s názvem vašeho clusteru HDInsight se systémem Linux.
+2. Po vytvoření tunelu, otevřete ve webovém prohlížeči webovému uživatelskému rozhraní Ambari hello. Hello identifikátor URI pro lokalitu Ambari hello je **https://CLUSTERNAME.azurehdinsight.net**. Nahraďte **CLUSTERNAME** s názvem hello clusteru HDInsight se systémem Linux.
 
-3. Na levé straně stránky vyberte **Oozie**, pak **rychlé odkazy**a v neposlední řadě **Oozie webového uživatelského rozhraní**.
+3. Hello levé straně stránky hello, vyberte **Oozie**, pak **rychlé odkazy**a v neposlední řadě **Oozie webového uživatelského rozhraní**.
 
-    ![obrázek v nabídkách](./media/hdinsight-use-oozie-linux-mac/ooziewebuisteps.png)
+    ![Obrázek nabídky hello](./media/hdinsight-use-oozie-linux-mac/ooziewebuisteps.png)
 
-4. Webové uživatelské rozhraní Oozie výchozí zobrazení spuštěné úlohy pracovního postupu. Pokud chcete zobrazit všechny úlohy pracovního postupu, vyberte **všechny úlohy**.
+4. výchozí hodnoty toodisplaying Oozie webového uživatelského rozhraní Hello spuštěné úlohy pracovního postupu. Vyberte všechny úlohy pracovního postupu, toosee **všechny úlohy**.
 
     ![Zobrazí všechny úlohy](./media/hdinsight-use-oozie-linux-mac/ooziejobs.png)
 
-5. Vyberte úlohy zobrazíte další informace o úloze.
+5. Vyberte úlohy tooview Další informace o úloze hello.
 
     ![Informace o úloze](./media/hdinsight-use-oozie-linux-mac/jobinfo.png)
 
-6. Na kartě informace o úloze můžete zobrazit informace o základní úlohy a jednotlivé akce v rámci úlohy. Pomocí karet v horní části můžete zobrazit definici úlohy, úlohy konfigurace přístup protokolu úlohy nebo zobrazení směrované Acyklické grafu (DAG) úlohy.
+6. Z karty hello informace o úloze můžete zobrazit informace o základní úlohy a hello jednotlivé akce v rámci úlohy hello. V horní části hello, které můžete zobrazit pomocí karty hello hello definice úlohy, úlohy konfigurace přístup hello protokol úlohy nebo zobrazení směrované Acyklické grafu (DAG) hello úlohy.
 
-   * **Protokol úlohy**: vyberte **GetLogs** tlačítko získat všechny protokoly pro úlohu, nebo použijte **zadejte vyhledávací filtr** pole pro filtrování protokolů
+   * **Protokol úlohy**: Vyberte hello **GetLogs** tlačítko tooget všechny protokoly pro úlohu hello, nebo použijte hello **zadejte vyhledávací filtr** pole toofilter protokoly
 
        ![Protokol úlohy](./media/hdinsight-use-oozie-linux-mac/joblog.png)
 
-   * **JobDAG**: DAG je grafické přehled cest k datům prováděné v pracovním postupu
+   * **JobDAG**: hello DAG je grafické zobrazení cesty k datům hello prováděné prostřednictvím hello workflowu
 
        ![Úloha DAG](./media/hdinsight-use-oozie-linux-mac/jobdag.png)
 
-7. Vyberte jednu z akcí z **informace o úloze** karta zobrazí informace o akci. Vyberte například **RunHiveScript** akce.
+7. Vyberte jednu z akcí hello z hello **informace o úloze** kartě vyvoláte informace pro akce hello. Vyberte například hello **RunHiveScript** akce.
 
     ![Informace o akci](./media/hdinsight-use-oozie-linux-mac/action.png)
 
-8. Zobrazí podrobnosti pro akce, například odkaz **adresa URL konzoly**. Tento odkaz slouží k zobrazení informací o JobTracker pro úlohu.
+8. Zobrazí podrobnosti o hello akce, například odkaz toohello **adresa URL konzoly**. Tento odkaz může být použité tooview JobTracker informace pro úlohu hello.
 
 ## <a name="scheduling-jobs"></a>Plánování úloh
 
-Koordinátor umožňuje zadat začátek, konec a četnost výskytu pro úlohy. Chcete-li definovat plán pro pracovní postup, použijte následující kroky:
+Koordinátor Hello umožňuje toospecify začátek, konec a výskyt frekvence pro úlohy. toodefine plán pro pracovní postup hello, hello použijte následující kroky:
 
-1. Následující informace vám pomůžou vytvořit soubor s názvem **coordinator.xml**:
+1. Použití hello následující toocreate soubor s názvem **coordinator.xml**:
 
     ```
     nano coordinator.xml
     ```
 
-    Použijte následující kód XML jako obsah souboru:
+    Použijte následující XML jako hello obsah souboru hello hello:
 
     ```xml
     <coordinator-app name="my_coord_app" frequency="${coordFrequency}" start="${coordStart}" end="${coordEnd}" timezone="${coordTimezone}" xmlns="uri:oozie:coordinator:0.4">
@@ -595,33 +595,33 @@ Koordinátor umožňuje zadat začátek, konec a četnost výskytu pro úlohy. C
     ```
 
     > [!NOTE]
-    > `${...}` Proměnné jsou nahrazena hodnotami v definici úlohy při spuštění. Proměnné jsou:
+    > Hello `${...}` proměnné jsou nahrazena hodnotami v definici úlohy hello za běhu. Hello proměnnými jsou:
     >
-    > * `${coordFrequency}`: Doba mezi spuštěné instance úlohy.
-    > ** `${coordStart}`: Úloha Počáteční čas.
-    > * `${coordEnd}`: Času ukončení úlohy.
-    > * `${coordTimezone}`: Koordinátor úlohy jsou v pevné časové pásmo s žádné letní čas (obvykle vyjádřený pomocí UTC). Toto časové pásmo se označuje jako "Oozie zpracování časové pásmo."
-    > * `${wfPath}`: Cesta k workflow.xml.
+    > * `${coordFrequency}`: Doba mezi spuštěním instancí hello úlohy.
+    > ** `${coordStart}`: Úloha hello počáteční čas.
+    > * `${coordEnd}`: času ukončení úlohy hello.
+    > * `${coordTimezone}`: Koordinátor úlohy jsou v pevné časové pásmo s žádné letní čas (obvykle vyjádřený pomocí UTC). Toto časové pásmo se označuje jako hello "Oozie zpracování časové pásmo."
+    > * `${wfPath}`: hello workflow.xml toohello cesta.
 
-2. Chcete uložit soubor, použijte kombinaci kláves Ctrl-X **Y**, a **Enter**.
+2. toosave hello soubor, použijte kombinaci kláves Ctrl-X **Y**, a **Enter**.
 
-3. Zkopírujte soubor do pracovní adresář pro tuto úlohu použijte následující příkaz:
+3. Použijte následující příkaz toocopy hello souboru toohello pracovní adresář pro tuto úlohu hello:
 
     ```
     hadoop fs -put coordinator.xml /tutorials/useoozie/coordinator.xml
     ```
 
-4. Použijte tento příkaz Upravit **job.xml** souboru:
+4. Použití hello následující toomodify hello **job.xml** souboru:
 
     ```
     nano job.xml
     ```
 
-    Proveďte následující změny:
+    Ujistěte se, hello následující změny:
 
-   * Dáte pokyn, aby oozie coordinator soubor namísto pracovního postupu spustíte, změnit `<name>oozie.wf.application.path</name>` k `<name>oozie.coord.application.path</name>`.
+   * tooinstruct oozie toorun hello coordinator souboru místo hello pracovního postupu, změna `<name>oozie.wf.application.path</name>` příliš`<name>oozie.coord.application.path</name>`.
 
-   * Chcete-li nastavit `workflowPath` proměnné používané koordinátorem, přidejte následující kód XML:
+   * tooset hello `workflowPath` proměnné používané hello coordinator, přidejte následující XML hello:
 
         ```xml
         <property>
@@ -630,9 +630,9 @@ Koordinátor umožňuje zadat začátek, konec a četnost výskytu pro úlohy. C
         </property>
         ```
 
-       Nahraďte `wasb://mycontainer@mystorageaccount.blob.core.windows` text hodnota použitá v jiných položek v souboru job.xml.
+       Nahraďte hello `wasb://mycontainer@mystorageaccount.blob.core.windows` textu s hodnotou hello používá v jiné položky v souboru job.xml hello.
 
-   * Chcete-li definovat začátek, konec a četnost pro koordinátorem, přidejte následující kód XML:
+   * spuštění hello toodefine, end a četnost pro koordinátora hello, přidejte následující XML hello:
 
         ```xml
         <property>
@@ -656,89 +656,89 @@ Koordinátor umožňuje zadat začátek, konec a četnost výskytu pro úlohy. C
         </property>
         ```
 
-       Tyto hodnoty na 10 může 2017, koncový čas na 12 může 2017 nastavit výchozí čas do 12:00 PM. Interval pro spuštění tuto úlohu denně. Frekvence se v minutách, takže 24 hodin x 60 minut = 1 440 minut. Nakonec se nastaví časové pásmo UTC.
+       Tyto hodnoty nastaveny hello počáteční čas too12: 00 PM na 10 může 2017 hello koncový čas tooMay 12, 2017. Hello interval pro spuštění tuto úlohu denně. frekvence Hello je v minutách, takže 24 hodin x 60 minut = 1 440 minut. Nakonec časové pásmo hello nastavena tooUTC.
 
-5. Použijte Ctrl-X, pak **Y** a **Enter** k uložení souboru.
+5. Použijte Ctrl-X, pak **Y** a **Enter** toosave hello souboru.
 
-6. Pokud chcete spustit úlohu, použijte následující příkaz:
+6. toorun hello úloha hello použijte následující příkaz:
 
     ```
     oozie job -config job.xml -run
     ```
 
-    Tento příkaz odešle a spustí úlohu.
+    Tento příkaz odešle a spustí úlohu hello.
 
-7. Pokud navštívíte Oozie webového uživatelského rozhraní a vyberte **koordinátor úlohy** kartě uvidíte informace podobně jako na následujícím obrázku:
+7. Pokud navštívíte hello Oozie webového uživatelského rozhraní a vyberte hello **koordinátor úlohy** kartě uvidíte informace podobné toohello následující bitové kopie:
 
     ![Karta úlohy Coordinator](./media/hdinsight-use-oozie-linux-mac/coordinatorjob.png)
 
-    **Další Materialization** položka obsahuje další dobu, která má být úloha spuštěna.
+    Hello **další Materialization** záznam obsahuje hello příštím hello spuštění úloh.
 
-8. Podobně jako u starších úlohy pracovního postupu, seznam výběr položek úlohy v webového uživatelského rozhraní zobrazí informace v úloze:
+8. Podobně jako toohello starší úlohy pracovního postupu, výběr položek úlohy hello v hello webového uživatelského rozhraní zobrazí informace o úloze hello:
 
     ![Informace o úloze Coordinator](./media/hdinsight-use-oozie-linux-mac/coordinatorjobinfo.png)
 
     > [!NOTE]
-    > Tento image se zobrazí pouze úspěšně spustí úlohy, ne z individuálních akce v rámci naplánované pracovní postup. Chcete-li vidět, vyberte jednu z **akce** položky.
+    > Tento image se zobrazí pouze úspěšně spustí hello úlohy, ne z individuálních akce v rámci pracovního postupu hello naplánované. toosee, vyberte jednu z hello **akce** položky.
 
     ![Informace o akci](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Rozhraní Oozie umožňuje zobrazit protokoly Oozie. Obsahuje taky odkazy na JobTracker protokoly pro úlohy MapReduce spuštěna v tomto pracovním postupu. Vzor pro řešení potíží s by měla být:
+Hello Oozie uživatelského rozhraní umožňuje tooview Oozie protokoly. Obsahuje taky odkazy tooJobTracker protokoly pro úlohy MapReduce spustí pracovní postup hello. musí být Hello vzor pro řešení potíží:
 
-1. Zobrazte úlohy v Oozie webového uživatelského rozhraní.
+1. Zobrazit úlohy hello v Oozie webového uživatelského rozhraní.
 
-2. Pokud dojde k chybě nebo pro určité akce se nezdařilo, vyberte akci, která zjistí, zda **chybová zpráva** pole poskytuje další informace o selhání.
+2. Pokud dojde k chybě nebo pro určité akce se nezdařilo, vyberte hello toosee akce, pokud hello **chybová zpráva** pole poskytuje další informace o selhání hello.
 
-3. Pokud je k dispozici, použijte adresu URL akce zobrazíte další podrobnosti (třeba protokoly JobTracker) pro akci.
+3. Pokud je k dispozici, použijte hello adresu URL z hello akce tooview další podrobnosti (třeba protokoly JobTracker) pro akci hello.
 
-Dále jsou uvedeny konkrétní chyby, ke kterým může dojít a způsob jejich řešení.
+Hello následují konkrétní chyby, které se můžete setkat, a jak tooresolve je.
 
 ### <a name="ja009-cannot-initialize-cluster"></a>JA009: Nelze inicializovat clusteru
 
-**Příznaky**: stav úlohy změní na **POZASTAVENO**. Zobrazí podrobnosti pro úlohy, stav RunHiveScript jako **START_MANUAL**. Výběr akce, zobrazí se následující chybová zpráva:
+**Příznaky**: hello změny stavu úlohy příliš**POZASTAVENO**. Zobrazí podrobnosti pro úlohu hello hello RunHiveScript stav jako **START_MANUAL**. Výběr akce hello zobrazí hello následující chybová zpráva:
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
-**Příčina**: The WASB adresy použité v **job.xml** soubor neobsahuje kontejner úložiště nebo název účtu úložiště. Musí být ve formátu adresa WASB `wasb://containername@storageaccountname.blob.core.windows.net`.
+**Příčina**: hello WASB adresy použité v hello **job.xml** soubor neobsahuje kontejner úložiště hello nebo název účtu úložiště. musí být ve formátu adresa WASB Hello `wasb://containername@storageaccountname.blob.core.windows.net`.
 
-**Řešení**: Změna adresy WASB používá daná úloha.
+**Řešení**: Změna adresy WASB hello používá hello úloha.
 
-### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltuser"></a>JA002: Oozie není povoleno zosobnění &lt;uživatele >
+### <a name="ja002-oozie-is-not-allowed-tooimpersonate-ltuser"></a>JA002: Oozie není povolen tooimpersonate &lt;uživatele >
 
-**Příznaky**: stav úlohy změní na **POZASTAVENO**. Zobrazí podrobnosti pro úlohy, stav RunHiveScript jako **START_MANUAL**. Výběr akce zobrazí následující chybová zpráva:
+**Příznaky**: hello změny stavu úlohy příliš**POZASTAVENO**. Zobrazí podrobnosti pro úlohu hello hello RunHiveScript stav jako **START_MANUAL**. Výběr akce hello ukazuje hello následující chybová zpráva:
 
-    JA002: User: oozie is not allowed to impersonate <USER>
+    JA002: User: oozie is not allowed tooimpersonate <USER>
 
-**Příčina**: nastavení aktuální oprávnění neumožňují Oozie zosobnit zadaný uživatelský účet.
+**Příčina**: nastavení aktuální oprávnění neumožňují Oozie tooimpersonate hello zadaný uživatelský účet.
 
-**Řešení**: Oozie je povoleno zosobnit uživatele v **uživatelé** skupiny. Použití `groups USERNAME` zobrazení skupin, které uživatelský účet je členem skupiny. Pokud uživatel není členem **uživatelé** skupiny, použijte následující příkaz a přidejte uživatele do skupiny:
+**Řešení**: Oozie v hello je povolená uživatelé tooimpersonate **uživatelé** skupiny. Použití hello `groups USERNAME` toosee hello skupiny, které hello uživatelský účet je členem skupiny. Pokud není uživatel hello členem hello **uživatelé** skupiny, použijte následující příkaz tooadd hello uživatele toohello skupiny hello:
 
     sudo adduser USERNAME users
 
 > [!NOTE]
-> To může trvat několik minut, než HDInsight rozpozná, že uživatel byl přidán do skupiny.
+> Může trvat několik minut, než HDInsight rozpozná, že tento uživatel hello přidala toohello skupiny.
 
 ### <a name="launcher-error-sqoop"></a>Spouštěč chyby (Sqoop)
 
-**Příznaky**: stav úlohy změní na **KILLED**. Zobrazí podrobnosti pro úlohy, stav RunSqoopExport jako **chyba**. Výběr akce zobrazí následující chybová zpráva:
+**Příznaky**: hello změny stavu úlohy příliš**KILLED**. Zobrazí podrobnosti pro úlohu hello hello RunSqoopExport stav jako **chyba**. Výběr akce hello ukazuje hello následující chybová zpráva:
 
     Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
 
-**Příčina**: Sqoop se nepodařilo načíst ovladač databáze, které jsou nutné pro přístup k databázi.
+**Příčina**: Sqoop je nelze tooload hello ovladač vyžaduje tooaccess hello databáze.
 
-**Řešení**: při použití Sqoop z úlohu Oozie, je nutné zahrnout databázi ovladačů s prostředky (například workflow.xml) používá daná úloha. Také odkazovat obsahující ovladač databáze z archivu `<sqoop>...</sqoop>` části workflow.xml.
+**Řešení**: při použití Sqoop z úlohu Oozie, je nutné zahrnout hello ovladač databáze s hello jiné prostředky (třeba hello workflow.xml) používá hello úloha. Také odkazovat hello archivu obsahující hello ovladač databáze z hello `<sqoop>...</sqoop>` části hello workflow.xml.
 
-Například by pro úlohu v tomto dokumentu, použijte následující kroky:
+Například pro úlohu hello v tomto dokumentu použijete hello následující kroky:
 
-1. Zkopírujte soubor sqljdbc4.1.jar k adresáři /tutorials/useoozie:
+1. Zkopírujte adresář /tutorials/useoozie hello sqljdbc4.1.jar souboru toohello:
 
     ```
     hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc41.jar /tutorials/useoozie/sqljdbc41.jar
     ```
 
-2. Upravit workflow.xml a přidejte následující kód XML na nový řádek výše `</sqoop>`:
+2. Upravit hello workflow.xml tooadd hello následující XML na nový řádek výše `</sqoop>`:
 
     ```xml
     <archive>sqljdbc41.jar</archive>
@@ -746,7 +746,7 @@ Například by pro úlohu v tomto dokumentu, použijte následující kroky:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se dozvěděli, jak definovat pracovním postupu Oozie a jak spustit úlohu Oozie. Další informace o práci s HDInsight, naleznete v následujících článcích:
+V tomto kurzu jste se naučili jak toodefine pracovním postupu Oozie a jak toorun úlohu Oozie. toolearn Další informace o práci s HDInsight, najdete v části hello následující články:
 
 * [Použijte založené na čase Oozie Coordinator s HDInsight][hdinsight-oozie-coordinator-time]
 * [Nahrání dat pro úlohy Hadoop v HDInsight][hdinsight-upload-data]

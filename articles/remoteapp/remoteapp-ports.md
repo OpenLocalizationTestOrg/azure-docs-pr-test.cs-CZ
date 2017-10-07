@@ -1,6 +1,6 @@
 ---
-title: "Seznam portů a adres URL do seznamu povolených IP adres pro Azure RemoteApp nasazený ve virtuální síti zákazníka | Microsoft Docs"
-description: "Další informace, které porty a adresy URL budete muset nakonfigurovat pro komunikaci prostřednictvím Azure RemoteApp."
+title: "aaaList porty a adresy URL toowhitelist pro Azure RemoteApp nasazený ve virtuální síti zákazníka | Microsoft Docs"
+description: "Další informace, které porty a adresy URL tooconfigure budete potřebovat pro komunikaci prostřednictvím Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
 author: mghosh1616
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: c17ff8d5441ca92f7b893edb541a1e9730c2a847
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 039866f7b64ac763ca833d66031ade3def1d3543
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="list-of-ports-and-urls-to-permit-access-for-azure-remoteapp-deployed-in-customer-virtual-network"></a>Seznam portů a adres URL, k povolení přístupu pro Azure RemoteApp nasazení u zákazníka virtuální sítě
+# <a name="list-of-ports-and-urls-toopermit-access-for-azure-remoteapp-deployed-in-customer-virtual-network"></a>Seznam porty a adresy URL toopermit přístupu pro Azure RemoteApp nasazení u zákazníka virtuální sítě
 > [!IMPORTANT]
-> Azure RemoteApp se přestává používat dne 31. srpna 2017. Podrobnosti najdete v tomto [oznámení](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp se přestává používat dne 31. srpna 2017. Čtení hello [oznámení](https://go.microsoft.com/fwlink/?linkid=821148) podrobnosti.
 > 
 > 
 
-Pokud nasazujete kolekci Azure Remoteappu Cloudová nebo hybridní ve virtuální síti (VNET), přečtěte si následující informace o portu. Další informace o virtuálních sítí, přečtěte si [Přehled virtuálních sítí](../virtual-network/virtual-networks-overview.md). Pokud jste vytvořili skupinu zabezpečení sítě (NSG) provoz směřující do virtuální síťové prostředky v kolekci, ujistěte se, že následující porty jsou dostupné a povolené prostřednictvím zásad zabezpečení ve virtuální síti. Další informace o skupinách zabezpečení sítě najdete v tématu [co je skupina zabezpečení sítě? (NSG) ](../virtual-network/virtual-networks-nsg.md).
+Pokud nasazujete kolekci Azure Remoteappu Cloudová nebo hybridní ve virtuální síti (VNET), přečtěte si následující informace o portu hello. Další informace o virtuálních sítí, přečtěte si [Přehled virtuálních sítí](../virtual-network/virtual-networks-overview.md). Pokud jste vytvořili skupinu zabezpečení sítě (NSG) omezení provozu toohello virtuální síťové prostředky v kolekci, ujistěte se, že hello následující porty jsou dostupné a povolené prostřednictvím zásad zabezpečení hello ve virtuální síti hello. Další informace o skupinách zabezpečení sítě najdete v tématu [co je skupina zabezpečení sítě? (NSG) ](../virtual-network/virtual-networks-nsg.md).
 
-## <a name="azure-remoteapp-subnet-needs-access-to-these-endpoints-and-urls"></a>Azure RemoteApp podsíť potřebuje přístup k těchto koncových bodů a adresy URL:
+## <a name="azure-remoteapp-subnet-needs-access-toothese-endpoints-and-urls"></a>Azure RemoteApp podsíť musí mít přístup toothese koncových bodů a adresy URL:
 * *. servicebus.windows.net
 * *. servicebus.net
 * https://*.RemoteApp.windowsazure.com  
@@ -37,11 +37,11 @@ Pokud nasazujete kolekci Azure Remoteappu Cloudová nebo hybridní ve virtuáln�
 * Odchozí: TCP: TCP: 443, 9351, 9352, 10175 10101-Document 
 * Volitelné – UDP: 10201 10275  
 
-## <a name="azure-remoteapp-clients-need-access-to-these-endpoints-and-urls"></a>Azure RemoteApp klienti potřebovat přístup ke těchto koncových bodů a adresy URL:
-Klienti I rozumí stolní počítače, zařízení atd který lidé použít pro připojení k aplikace nasazené v kolekci Azure RemoteApp.
+## <a name="azure-remoteapp-clients-need-access-toothese-endpoints-and-urls"></a>Azure RemoteApp klienti potřebovat přístup k toothese koncových bodů a adresy URL:
+Klienti, které I znamenat hello stolních počítačů, zařízení atd který lidé použití tooconnect toohello aplikace nasazené v hello kolekci Azure Remoteappu.
 
 * https://telemetry.RemoteApp.windowsazure.com  
-* https://*.RemoteApp.windowsazure.com (volitelné porty UDP jsou pro tuto adresu) 
+* https://*.RemoteApp.windowsazure.com (volitelné porty UDP hello jsou pro tuto adresu) 
 * https://login.windows.net  
 * https://login.microsoftonline.com  
 * https://www.RemoteApp.windowsazure.com 

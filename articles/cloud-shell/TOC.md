@@ -8,7 +8,7 @@
 
 # Postupy
 ## [Zachování úložiště](persisting-shell-storage.md)
-## [Použití okna](using-the-shell-window.md)
+## [Pomocí okna hello](using-the-shell-window.md)
 
 # [Ceny](pricing.md)
 

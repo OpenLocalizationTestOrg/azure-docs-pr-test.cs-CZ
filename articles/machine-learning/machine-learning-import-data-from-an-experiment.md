@@ -1,6 +1,6 @@
 ---
-title: "Umožňuje importovat data z jiného experimentu do nástroje Machine Learning Studio | Microsoft Docs"
-description: "Jak uložit Cvičná data v Azure Machine Learning Studio a použít ho v jiného experimentu."
+title: "aaaImport data do nástroje Machine Learning Studio z jiného experimentu | Microsoft Docs"
+description: "Jak toosave Cvičná data v Azure Machine Learning Studio a použít ho v jiného experimentu."
 keywords: "Importujte dat, data, zdroje dat, Cvičná data"
 services: machine-learning
 documentationcenter: 
@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye;bradsev
-ms.openlocfilehash: ecfa2110d0d51511ceb5bd07b730732ecfa2e9e0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ca085149ed23c219a791ce09ac48dafeb807cb88
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="import-your-data-into-azure-machine-learning-studio-from-another-experiment"></a>Import dat do nástroje Azure Machine Learning Studio z jiného experimentu
 [!INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
 
-Bude nastat situace, kdy budete chtít využít výsledek zprostředkující z jednoho experiment a používat ji jako součást jiného experimentu. K tomuto účelu uložit modul jako datové sady:
+Bude nastat situace, kdy budete chcete tootake výsledek zprostředkující z jednoho experiment a ho použít jako součást jiného experimentu. toodo toho uložte hello modulu jako datové sady:
 
-1. Klikněte na výstup modulu, který chcete uložit jako datové sady.
+1. Klikněte na tlačítko hello výstup hello modulu, které chcete toosave jako datové sady.
 2. Klikněte na tlačítko **uložit jako datovou sadu**.
-3. Po zobrazení výzvy zadejte název a popis, který by bylo možné snadno identifikovat datovou sadu.
-4. Klikněte **OK** zaškrtnutí.
+3. Po zobrazení výzvy zadejte název a popis, který by mohl snadno můžete tooidentify hello datovou sadu.
+4. Klikněte na tlačítko hello **OK** zaškrtnutí.
 
-Po dokončení uložení datová sada bude k dispozici pro použití v rámci všech experimentu v pracovním prostoru. Najdete ho v **uložit datové sady** seznamu paletě modulů.
+Hello uložit dokončení, bude mít k dispozici pro použití v rámci všech experimentu v pracovním prostoru hello datovou sadu. Najdete ho v hello **uložit datové sady** seznamu v palety modulů hello.
 

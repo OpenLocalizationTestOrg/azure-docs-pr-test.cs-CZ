@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s MOBILE FUNGUJE | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a FUNGUJE MOBILE."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a FUNGUJE MOBILE."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 139a1968a59424eae278de3e7fa227ad340a1eb8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 80192218a2e99a921834bb53e708d5e4fab413f4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-works-mobile"></a>Kurz: Azure Active Directory integrace s MOBILE FUNGUJE
 
-V tomto kurzu zjistěte, jak integrovat MOBILE FUNGUJE s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak FUNGUJE toointegrate mobilní s Azure Active Directory (Azure AD).
 
-Integrace MOBILE FUNGUJE s Azure AD poskytuje následující výhody:
+Integrace MOBILE FUNGUJE s Azure AD poskytuje hello následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k MOBILE FUNGUJE
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k MOBILE FUNGUJE (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup tooWORKS MOBILE
+- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooWORKS MOBILE (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s MOBILE FUNGUJE, potřebujete následující položky:
+tooconfigure integrace Azure AD s MOBILE FUNGUJE, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - MOBILE FUNGUJE jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání MOBILE FUNGUJE z Galerie
+1. Přidání MOBILE FUNGUJE z Galerie hello
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-works-mobile-from-the-gallery"></a>Přidání MOBILE FUNGUJE z Galerie
-Při konfiguraci integrace MOBILE FUNGUJE do služby Azure AD potřebujete přidat mobilní FUNGUJE z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-works-mobile-from-hello-gallery"></a>Přidání MOBILE FUNGUJE z Galerie hello
+tooconfigure hello integrace MOBILE FUNGUJE do Azure AD, je nutné tooadd MOBILE FUNGUJE hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat mobilní FUNGUJE z galerie, proveďte následující kroky:**
+**tooadd FUNGUJE MOBILE z Galerie hello, proveďte následující kroky hello:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **MOBILE FUNGUJE**.
+4. Hello vyhledávacího pole zadejte **MOBILE FUNGUJE**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_search.png)
 
-5. Na panelu výsledků vyberte **MOBILE FUNGUJE**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků hello vyberte **MOBILE FUNGUJE**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s MOBILE FUNGUJE podle testovacího uživatele názvem "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v MOBILE FUNGUJE je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v MOBILE FUNGUJE musí navázat.
+Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v MOBILE FUNGUJE je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v MOBILE FUNGUJE musí toobe navázat.
 
-Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v MOBILE FUNGUJE.
+Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v MOBILE FUNGUJE.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s MOBILE FUNGUJE, je třeba dokončit následující stavební bloky:
+tooconfigure a testu Azure AD jednotné přihlašování s MOBILE FUNGUJE, potřebujete následující stavební bloky hello toocomplete:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele MOBILE FUNGUJE](#creating-a-works-mobile-test-user)**  – Pokud chcete mít protějšek Britta Simon v FUNGUJE MOBILE, která je propojený s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele MOBILE FUNGUJE](#creating-a-works-mobile-test-user)**  -toohave protějšek Britta Simon v FUNGUJE MOBILE, která je propojená toohello Azure AD reprezentace uživatele.
+4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci MOBILE FUNGUJE.
+V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci MOBILE FUNGUJE.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s MOBILE FUNGUJE, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s MOBILE FUNGUJE, proveďte následující kroky hello:**
 
-1. Na portálu Azure na **MOBILE FUNGUJE** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **MOBILE FUNGUJE** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_samlbase.png)
 
-3. Na **FUNGUJE MOBILE domény a adresy URL** část, proveďte následující kroky:
+3. Na hello **FUNGUJE MOBILE domény a adresy URL** část, proveďte následující kroky hello:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.worksmobile.com/jp/myservice`
+    a. V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<subdomain>.worksmobile.com/jp/myservice`
 
-    b. V **identifikátor** textovému poli, zadejte hodnotu jako`worksmobile.com`
+    b. V hello **identifikátor** textovému poli, hodnota typu hello jako`worksmobile.com`
 
     > [!NOTE] 
-    > Tato hodnota není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory FUNGUJE MOBILNÍHO klienta](mailto:dl_ssoinfo@worksmobile.com) získat tuto hodnotu. 
+    > Tato hodnota není skutečné. Aktualizujte tuto hodnotu s hello skutečná adresa URL přihlašování. Obraťte se na [tým podpory FUNGUJE MOBILNÍHO klienta](mailto:dl_ssoinfo@worksmobile.com) tooget tuto hodnotu. 
  
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Raw)** a potom uložte soubor certifikátu v počítači.
+4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Raw)** a potom uložte soubor certifikátu hello ve vašem počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_certificate.png) 
 
@@ -125,75 +125,75 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-worksmobile-tutorial/tutorial_general_400.png)
 
-6. Na **Konfigurace mobilních FUNGUJE** klikněte na tlačítko **nakonfigurovat mobilní FUNGUJE** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+6. Na hello **Konfigurace mobilních FUNGUJE** klikněte na tlačítko **nakonfigurovat mobilní FUNGUJE** tooopen **konfigurovat přihlášení** okno. Kopírování hello **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_configure.png) 
 
-7. Pokud chcete získat jednotné přihlašování, které jsou nakonfigurované pro vaše aplikace, obraťte se na [tým podpory FUNGUJE MOBILE](mailto:dl_ssoinfo@worksmobile.com) a uveďte následující informace: 
+7. tooget nakonfigurovat jednotné přihlašování pro vaši aplikaci, obraťte se na [tým podpory FUNGUJE MOBILE](mailto:dl_ssoinfo@worksmobile.com) , poskytovat hello následující informace: 
 
-    • Stažené **soubor certifikátu**
+    • hello Stáhnout **soubor certifikátu**
 
-    • **Adresa URL služby jednotného přihlašování SAML**
+    • hello **SAML jeden přihlašování adresa URL služby**
 
-    • **SAML Entity ID**
+    • hello **SAML Entity ID**
 
-    • **Odhlášení adresy URL**
+    • hello **Sign-Out adresy URL**
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-worksmobile-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-worksmobile-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-worksmobile-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-worksmobile-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V hello **název** textovému poli, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-works-mobile-test-user"></a>Vytvoření zkušebního uživatele MOBILE FUNGUJE
 
- V této části vytvoříte uživatele v MOBILE FUNGUJE jako Britta Simon. Spojte se s [tým podpory FUNGUJE MOBILE](mailto:dl_ssoinfo@worksmobile.com) přidat uživatele do FUNGUJE mobilní platformy.
+ V této části vytvoříte uživatele v MOBILE FUNGUJE jako Britta Simon. Spojte se s [tým podpory FUNGUJE MOBILE](mailto:dl_ssoinfo@worksmobile.com) tooadd hello uživatelé hello FUNGUJE mobilní platformy.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu k MOBILE FUNGUJE.
+V této části povolíte tak, že udělíte přístup tooWORKS MOBILE Britta Simon toouse Azure jednotné přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon MOBILE FUNGUJE, proveďte následující kroky:**
+**tooassign Britta Simon tooWORKS mobilních, proveďte následující kroky hello:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **MOBILE FUNGUJE**.
+2. V seznamu aplikace hello vyberte **MOBILE FUNGUJE**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -201,7 +201,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -209,14 +209,14 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete otestovat vaši konfiguraci Azure AD jednotného přihlašování k použití na přístupovém panelu.
+V této části můžete otestovat vaši konfiguraci Azure AD jednotného přihlašování pomocí hello přístupového panelu.
 
-Když kliknete na dlaždici MOBILE FUNGUJE na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci MOBILE FUNGUJE.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
+Když kliknete na dlaždici hello MOBILE FUNGUJE v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour FUNGUJE mobilní aplikace.
+Další informace o na přístupovém panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

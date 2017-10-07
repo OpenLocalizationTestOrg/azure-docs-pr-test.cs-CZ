@@ -1,6 +1,6 @@
 ---
-title: "Spuštění úlohy Apache Pig pomocí .NET SDK pro Hadoop - Azure HDInsight | Microsoft Docs"
-description: "Naučte se používat sadu .NET SDK pro Hadoop úlohy Pig do Hadoop v HDInsight."
+title: "aaaRun Apache Pig úlohy pomocí .NET SDK pro Hadoop - Azure HDInsight | Microsoft Docs"
+description: "Zjistěte, jak toouse hello .NET SDK pro tooHadoop o toosubmit Pig úloh Hadoop v HDInsight."
 services: hdinsight
 documentationcenter: .net
 author: Blackmist
@@ -16,38 +16,38 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/15/2017
 ms.author: larryfr
-ms.openlocfilehash: e40d152821b36852c447d5a3adfd39114edbbace
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 1d4ceebd7c168372d23fe29a088f04676686de30
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-pig-jobs-using-the-net-sdk-for-hadoop-in-hdinsight"></a>Spuštění úlohy Pig pomocí sady .NET SDK pro Hadoop v HDInsight
+# <a name="run-pig-jobs-using-hello-net-sdk-for-hadoop-in-hdinsight"></a>Spuštění úlohy Pig pomocí hello .NET SDK pro Hadoop v HDInsight
 
 [!INCLUDE [pig-selector](../../includes/hdinsight-selector-use-pig.md)]
 
-Naučte se používat sadu .NET SDK pro Hadoop úlohy Apache Pig do Hadoop v Azure HDInsight.
+Zjistěte, jak toouse hello .NET SDK pro Hadoop toosubmit Apache Pig úlohy tooHadoop v Azure HDInsight.
 
-.NET SDK služby HDInsight poskytuje klientské knihovny .NET, které usnadňuje práci s clustery HDInsight z rozhraní .NET. Pig umožňuje modelování řadu transformace dat vytvořit MapReduce operations. V tomto dokumentu zjistěte, jak používat základní aplikace C# se odeslat úlohu Pig do clusteru HDInsight.
+Hello HDInsight .NET SDK poskytuje klienta knihovny .NET, které umožňuje snazší toowork s clustery HDInsight pomocí technologie .NET. Pig umožňuje operace, MapReduce toocreate podle modelování řadu transformace dat. V tomto dokumentu zjistíte, jak toosubmit aplikace toouse základní C# Pig úlohy tooan clusteru HDInsight.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete provést kroky v tomto článku, budete potřebovat následující.
+toocomplete hello kroky v tomto článku, budete potřebovat následující hello.
 
 * Cluster Azure HDInsight (Hadoop v HDInsight) (buď Windows nebo systémem Linux).
 
   > [!IMPORTANT]
-  > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Visual Studio 2012, 2013, 2015 nebo 2017.
 
-## <a name="create-the-application"></a>Vytvoření aplikace
+## <a name="create-hello-application"></a>Vytvoření aplikace hello
 
-.NET SDK služby HDInsight poskytuje klientské knihovny .NET, která usnadňuje práci s clustery HDInsight pomocí technologie .NET.
+Hello HDInsight .NET SDK poskytuje klientské knihovny .NET, takže je jednodušší toowork s clustery HDInsight pomocí technologie .NET.
 
-1. Z **soubor** nabídky v sadě Visual Studio, vyberte **nový** a pak vyberte **projektu**.
+1. Z hello **soubor** nabídky v sadě Visual Studio, vyberte **nový** a pak vyberte **projektu**.
 
-2. Pro nový projekt zadejte nebo vyberte tyto hodnoty:
+2. Pro nový projekt hello typu nebo vyberte hello následující hodnoty:
 
    | Vlastnost | Hodnota |
    | ------ | ------ |
@@ -55,15 +55,15 @@ Pokud chcete provést kroky v tomto článku, budete potřebovat následující.
    | Šablona | Konzolová aplikace |
    | Name (Název) | SubmitPigJob |
 
-3. Kliknutím na tlačítko **OK** vytvořte projekt.
+3. Klikněte na tlačítko **OK** toocreate hello projektu.
 
-4. Z **nástroje** nabídce vyberte možnost **Správce balíčků knihoven** nebo **Správce balíčků Nuget**a potom vyberte **Konzola správce balíčků**.
+4. Z hello **nástroje** nabídce vyberte možnost **Správce balíčků knihoven** nebo **Správce balíčků Nuget**a potom vyberte **Konzola správce balíčků**.
 
-5. K instalaci balíčků .NET SDK, použijte následující příkaz:
+5. tooinstall hello .NET SDK balíčků, použijte následující příkaz hello:
 
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 
-6. V Průzkumníku řešení poklikejte na **Program.cs** ho otevřete. Nahraďte stávající kód následující.
+6. V Průzkumníku řešení poklikejte na **Program.cs** tooopen ho. Nahraďte stávající kód hello následující hello.
 
     ```csharp
     using Microsoft.Azure.Management.HDInsight.Job;
@@ -83,14 +83,14 @@ Pokud chcete provést kroky v tomto článku, budete potřebovat následující.
 
             static void Main(string[] args)
             {
-                System.Console.WriteLine("The application is running ...");
+                System.Console.WriteLine("hello application is running ...");
 
                 var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
                 _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
 
                 SubmitPigJob();
 
-                System.Console.WriteLine("Press ENTER to continue ...");
+                System.Console.WriteLine("Press ENTER toocontinue ...");
                 System.Console.ReadLine();
             }
 
@@ -107,30 +107,30 @@ Pokud chcete provést kroky v tomto článku, budete potřebovat následující.
                                 DUMP RESULT;"
                 };
 
-                System.Console.WriteLine("Submitting the Pig job to the cluster...");
+                System.Console.WriteLine("Submitting hello Pig job toohello cluster...");
                 var response = _hdiJobManagementClient.JobManagement.SubmitPigJob(parameters);
-                System.Console.WriteLine("Validating that the response is as expected...");
+                System.Console.WriteLine("Validating that hello response is as expected...");
                 System.Console.WriteLine("Response status code is " + response.StatusCode);
-                System.Console.WriteLine("Validating the response object...");
+                System.Console.WriteLine("Validating hello response object...");
                 System.Console.WriteLine("JobId is " + response.JobSubmissionJsonResponse.Id);
             }
         }
     }
     ```
 
-7. Chcete-li spustit aplikaci, stiskněte **F5**.
+7. aplikace hello toostart, stiskněte klávesu **F5**.
 
-8. Pokud chcete aplikaci ukončit, stiskněte **ENTER**.
+8. aplikace hello tooexit, stiskněte klávesu **ENTER**.
 
 ## <a name="summary"></a>Souhrn
 
-Jak vidíte, sady .NET SDK pro Hadoop umožňuje vytvářet aplikace .NET, které úlohy Pig do clusteru služby HDInsight a monitorovat stav úlohy.
+Jak vidíte, hello .NET SDK pro Hadoop vám umožní toocreate aplikace .NET, které odešlete clusteru HDInsight tooan úlohy Pig a sledovat stav úlohy hello.
 
 ## <a name="next-steps"></a>Další kroky
 
 Informace o Pig v HDInsight, naleznete v části [použijte Pig s Hadoop v HDInsight](hdinsight-use-pig.md).
 
-Další informace o používání Hadoop v HDInsight najdete v následujících dokumentech:
+Další informace o použití Hadoop v HDInsight najdete v části hello následující dokumenty:
 
 * [Použijte Hive s Hadoop v HDInsight](hdinsight-use-hive.md)
 * [Používání nástroje MapReduce s Hadoop v HDInsight](hdinsight-use-mapreduce.md)

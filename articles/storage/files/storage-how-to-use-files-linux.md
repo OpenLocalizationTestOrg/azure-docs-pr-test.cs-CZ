@@ -1,6 +1,6 @@
 ---
-title: "Používání Azure File storage s Linuxem | Microsoft Docs"
-description: "Zjistěte, jak připojit sdílenou složku Azure přes protokol SMB v systému Linux."
+title: aaaUse Azure File storage s Linuxem | Microsoft Docs
+description: "Zjistěte, jak sdílet toomount soubor Azure prostřednictvím protokolu SMB v systému Linux."
 services: storage
 documentationcenter: na
 author: RenaShahMSFT
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/8/2017
 ms.author: renash
-ms.openlocfilehash: d8987082c559a374b8d19fd69e20cf5e81cb25ef
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: eeaa24b7f9e646724c5d86ae1e80dfdadaff34fb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-azure-file-storage-with-linux"></a>Používání Azure File storage s Linuxem
-[Azure File Storage](../storage-dotnet-how-to-use-files.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure může být připojen v Linuxových distribucích pomocí [cifs utils balíček](https://wiki.samba.org/index.php/LinuxCIFS_utils) z [Samba projektu](https://www.samba.org/). Tento článek ukazuje dva způsoby, jak připojit sdílenou složku Azure: na vyžádání pomocí `mount` příkazů a na spouštění pomocí vytváření položku v `/etc/fstab`.
+[Úložiště Azure File](../storage-dotnet-how-to-use-files.md) je systém souborů cloudu snadno toouse společnosti Microsoft. Sdílené složky Azure může být připojen v Linuxových distribucích pomocí hello [cifs utils balíček](https://wiki.samba.org/index.php/LinuxCIFS_utils) z hello [Samba projektu](https://www.samba.org/). Tento článek ukazuje dva způsoby toomount sdílenou složku Azure File: na vyžádání pomocí hello `mount` příkazů a na spouštění pomocí vytváření položku v `/etc/fstab`.
 
 > [!NOTE]  
-> Aby bylo možné připojit Azure sdílenou složku mimo Azure oblast, kterou je hostovaná v, jako jsou místní nebo v jiné oblasti Azure, operačního systému musí podporovat funkci šifrování protokolu SMB 3.0. Šifrování funkce pro protokol SMB 3.0 pro Linux byla zavedena v 4.11 jádra. Tato funkce umožňuje připojení Azure sdílené položky z místní nebo jiné oblasti Azure. V době publikování tato funkce byla přeneseny zpět do Ubuntu z 16.04 a vyšší.
+> V pořadí toomount Azure sdílenou mimo hello oblast Azure, který je hostovaný, například místně nebo v jiné oblasti Azure, hello operačního systému musí podporovat funkci hello šifrování protokolu SMB 3.0. Šifrování funkce pro protokol SMB 3.0 pro Linux byla zavedena v 4.11 jádra. Tato funkce umožňuje připojení Azure sdílené položky z místní nebo jiné oblasti Azure. V době hello publikování tato funkce byla tooUbuntu přeneseny zpět z 16.04 a vyšší.
 
 
-## <a name="prerequisities-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package"></a>Prerequisities pro připojení Azure File sdílet s Linux a cifs utils balíček
-* **Vyberte distribuce systému Linux, která může mít tento balíček cifs utils nainstalován**: Společnost Microsoft doporučuje následující Linuxových distribucích v galerii Azure bitové kopie:
+## <a name="prerequisities-for-mounting-an-azure-file-share-with-linux-and-hello-cifs-utils-package"></a>Prerequisities pro připojení Azure sdílené složky pro Linux a hello cifs utils balíček
+* **Vyberte distribuce systému Linux, která může mít hello cifs utils balíček nainstalován**: Společnost Microsoft doporučuje hello následující Linuxových distribucích v galerii Azure image hello:
 
     * Ubuntu Server 14.04 +
     * RHEL 7 +
@@ -37,82 +37,82 @@ ms.lasthandoff: 08/29/2017
     * openSUSE 13.2 +
     * SUSE Linux Enterprise Server 12
 
-* <a id="install-cifs-utils"></a>**Instalaci balíčku cifs utils**: cifs-utils můžete nainstalovat pomocí Správce balíčků na distribučním Linux podle svého výběru. 
+* <a id="install-cifs-utils"></a>**Hello cifs utils je nainstalovaný balíček**: hello cifs-utils můžete nainstalovat pomocí Správce balíčků hello hello distribucí Linux podle svého výběru. 
 
-    Na **Ubuntu** a **na základě Debian** distribuce, použijte `apt-get` Správce balíčků:
+    Na **Ubuntu** a **na základě Debian** distribuce, použijte hello `apt-get` Správce balíčků:
 
     ```
     sudo apt-get update
     sudo apt-get install cifs-utils
     ```
 
-    Na **RHEL** a **CentOS**, použijte `yum` Správce balíčků:
+    Na **RHEL** a **CentOS**, použijte hello `yum` Správce balíčků:
 
     ```
     sudo yum install samba-client samba-common cifs-utils
     ```
 
-    Na **openSUSE**, použijte `zypper` Správce balíčků:
+    Na **openSUSE**, použijte hello `zypper` Správce balíčků:
 
     ```
     sudo zypper install samba*
     ```
 
-    Na další distribuce pomocí příslušné package manager nebo [zkompilovat ze zdroje](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download).
+    Na další distribuce pomocí hello odpovídající package manager nebo [zkompilovat ze zdroje](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download).
 
-* **Rozhodněte o oprávnění souboru nebo adresáře připojenou složku**: V následujících příkladech používáme 0777, aby číst, zapisovat a spouštět oprávnění pro všechny uživatele. Nahraďte ji s jinými [oprávnění chmod](https://en.wikipedia.org/wiki/Chmod) podle potřeby. 
+* **Rozhodněte o oprávnění souboru nebo adresáře hello připojenou složku hello**: V následujících příkladech hello, použijeme 0777, toogive číst, zapisovat a spouštět uživatelé tooall oprávnění. Nahraďte ji s jinými [oprávnění chmod](https://en.wikipedia.org/wiki/Chmod) podle potřeby. 
 
-* **Název účtu úložiště:** Pro připojení sdílené složky Azure budete potřebovat název účtu úložiště.
+* **Název účtu úložiště**: sdílenou složku Azure File toomount, bude nutné hello název účtu úložiště hello.
 
-* **Klíč účtu úložiště:** Pro připojení sdílené složky Azure budete potřebovat primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
+* **Klíč účtu úložiště**: sdílenou složku Azure File toomount, bude nutné hello klíč primární (nebo sekundární) úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
 
-* **Ujistěte se, je otevřený port 445**: SMB komunikuje přes port TCP 445 - zkontrolujte, pokud chcete zobrazit, pokud brána firewall neblokuje TCP porty 445 z klientského počítače.
+* **Ujistěte se, je otevřený port 445**: SMB komunikuje přes port TCP 445 - zkontrolujte porty toosee, pokud brána firewall neblokuje TCP 445 z klientského počítače.
 
-## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Připojení Azure File sdílet na vyžádání pomocí`mount`
-1. **[Nainstalovat balíček cifs utils pro Linux distribuční](#install-cifs-utils)**.
+## <a name="mount-hello-azure-file-share-on-demand-with-mount"></a>Připojit hello Azure sdílená složka na vyžádání pomocí`mount`
+1. **[Instalovat balíček hello cifs utils pro Linux distribuční](#install-cifs-utils)**.
 
-2. **Vytvořte složku pro přípojného bodu**: to můžete provést libovolné místo v systému souborů.
+2. **Vytvořte složku pro hello přípojného bodu**: to můžete provést libovolné místo v systému souborů hello.
 
     ```
     mkdir mymountpoint
     ```
 
-3. **Použijte příkaz připojení připojit sdílenou složku Azure File**: Nezapomeňte nahradit `<storage-account-name>`, `<share-name>`, a `<storage-account-key>` správné informace.
+3. **Použití hello připojení příkaz toomount hello sdílenou složku Azure File**: Mějte na paměti, tooreplace `<storage-account-name>`, `<share-name>`, a `<storage-account-key>` hello správné informace.
 
     ```
     sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> ./mymountpoint -o vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
     ```
 
 > [!Note]  
-> Po dokončení použití sdílené složky Azure File, můžete použít `sudo umount ./mymountpoint` o odpojení sdílené složky.
+> Po dokončení pomocí hello sdílenou složku Azure, můžete použít `sudo umount ./mymountpoint` toounmount hello sdílené složky.
 
-## <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Vytvořit bod trvalé připojení pro Azure sdílené složky`/etc/fstab`
-1. **[Nainstalovat balíček cifs utils pro Linux distribuční](#install-cifs-utils)**.
+## <a name="create-a-persistent-mount-point-for-hello-azure-file-share-with-etcfstab"></a>Vytvořit bod trvalé připojení pro sdílenou složku Azure File hello s`/etc/fstab`
+1. **[Instalovat balíček hello cifs utils pro Linux distribuční](#install-cifs-utils)**.
 
-2. **Vytvořte složku pro přípojného bodu**: to můžete provést libovolné místo v systému souborů, ale je potřeba si absolutní cestu ke složce. Následující příklad vytvoří složku v kořenovém adresáři.
+2. **Vytvořte složku pro hello přípojného bodu**: to můžete provést libovolné místo v systému souborů hello, ale potřebujete toonote hello absolutní cestu složky pro hello. Hello následující ukázka vytvoří složku v kořenovém adresáři.
 
     ```
     sudo mkdir /mymountpoint
     ```
 
-3. **Použijte následující příkaz pro připojení následující řádek do `/etc/fstab`** : Nezapomeňte nahradit `<storage-account-name>`, `<share-name>`, a `<storage-account-key>` správné informace.
+3. **Použití hello následující příkaz tooappend hello následující řádek příliš`/etc/fstab`**: Mějte na paměti, tooreplace `<storage-account-name>`, `<share-name>`, a `<storage-account-key>` hello správné informace.
 
     ```
     sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> /mymountpoint cifs vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
     ```
 
 > [!Note]  
-> Můžete použít `sudo mount -a` připojit sdílenou složku Azure File po dokončení úprav `/etc/fstab` místo restartování.
+> Můžete použít `sudo mount -a` sdílenou složku Azure File hello toomount po dokončení úprav `/etc/fstab` místo restartování.
 
 ## <a name="feedback"></a>Váš názor
-Linux uživatele, chceme slyšet váš názor!
+Uživatelé systému Linux, chceme toohear od vás!
 
-Azure File storage pro skupiny uživatelů Linux poskytuje fórum můžete sdílet zpětnou vazbu, jak vyhodnotit a přijmout soubor úložiště v systému Linux. E-mailu [Azure File storage Linux uživatelé](mailto:azurefileslinuxusers@microsoft.com) o připojení ke skupině uživatelů.
+Hello Azure File storage pro skupiny uživatelů Linux poskytuje fórum pro vás zpětnou vazbu tooshare vyhodnotit a přijmout soubor úložiště v systému Linux. E-mailu [Azure File storage Linux uživatelé](mailto:azurefileslinuxusers@microsoft.com) skupiny toojoin hello uživatelů.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o úložišti Azure File jsou dostupné na těchto odkazech.
 * [REST API služby File – referenční informace](http://msdn.microsoft.com/library/azure/dn167006.aspx)
-* [Použití nástroje AzCopy s Microsoft Azure storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
-* [Použití Azure CLI s Azure storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
+* [Jak toouse AzCopy s Microsoft Azure storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+* [Použití hello rozhraní příkazového řádku Azure s Azure storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [Nejčastější dotazy](../storage-files-faq.md)
 * [Řešení potíží](storage-troubleshoot-linux-file-connection-problems.md)

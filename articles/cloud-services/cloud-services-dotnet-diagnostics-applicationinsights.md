@@ -1,6 +1,6 @@
 ---
-title: "Řešení potíží s Cloud Services pomocí Application Insights | Microsoft Docs"
-description: "Informace o řešení problémů služby cloudu pomocí Application Insights pro zpracování dat z Azure Diagnostics."
+title: "aaaTroubleshoot cloudové služby pomocí Application Insights | Microsoft Docs"
+description: "Zjistěte, jak cloudové služby tootroubleshoot problémy pomocí Application Insights tooprocess dat z Azure Diagnostics."
 services: cloud-services
 documentationcenter: .net
 author: sbtron
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2017
 ms.author: saurabh
-ms.openlocfilehash: 4001ca908ff00b1a40829d687589080e9b07b18a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 972924d9e6d1fe33d5c19b006d482de52ffb0ef7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-cloud-services-using-application-insights"></a>Řešení potíží s Cloud Services pomocí Application Insights
-S [Azure SDK 2.8](https://azure.microsoft.com/downloads/) a rozšíření Azure diagnostiky 1.5, bude možné odesílat data diagnostiky Azure pro cloudové služby přímo do služby Application Insights. Shromažďují v protokolech Azure Diagnostics&mdash;včetně protokoly aplikací, protokoly událostí systému Windows, protokoly trasování událostí pro Windows a čítače výkonu&mdash;lze odeslat buď do Application Insights. Potom můžete vizualizovat tyto informace na portálu služby Application Insights uživatelského rozhraní. Application Insights SDK pak můžete získat přehled o metriky a protokoly, které pocházejí z vaší aplikace, a také systému a data na úrovni infrastruktury, který přichází z Azure Diagnostics.
+S [Azure SDK 2.8](https://azure.microsoft.com/downloads/) a rozšíření Azure diagnostiky 1.5, může odesílat data diagnostiky Azure pro cloudové služby přímo tooApplication statistiky. Hello protokoly se shromažďují Azure Diagnostics&mdash;včetně protokoly aplikací, protokoly událostí systému Windows, protokoly trasování událostí pro Windows a čítače výkonu&mdash;lze odeslat tooApplication statistiky. Potom můžete vizualizovat tyto informace portálu Application Insights hello uživatelského rozhraní. Potom můžete hello Application Insights SDK tooget přehled metriky a protokoly, které pocházejí z vaší aplikace, a také hello systému a data na úrovni infrastruktury, který přichází z Azure Diagnostics.
 
-## <a name="configure-azure-diagnostics-to-send-data-to-application-insights"></a>Konfigurace Azure Diagnostics k odesílání dat do služby Application Insights
-Postupujte podle těchto kroků nastavte projekt cloudové služby k odesílání dat Azure Diagnostics do Application Insights.
+## <a name="configure-azure-diagnostics-toosend-data-tooapplication-insights"></a>Konfigurace Azure Diagnostics toosend data tooApplication statistiky
+Postupujte podle těchto kroků tooset až tooApplication Azure Diagnostics data vaše cloudové služby projektu toosend statistiky.
 
-1. V Průzkumníku řešení Visual Studio, klikněte pravým tlačítkem na roli a vyberte **vlastnosti** otevřete návrháře Role.
+1. V Průzkumníku řešení Visual Studio, klikněte pravým tlačítkem na roli a vyberte **vlastnosti** tooopen hello Role designer.
 
     ![Vlastnosti rolí Průzkumník řešení][1]
 
-2. V **diagnostiky** části návrháře Role, vyberte **poslat diagnostická data do služby Application Insights** možnost.
+2. V hello **diagnostiky** části hello Role Návrhář, vyberte hello **odeslání diagnostiky dat tooApplication Insights** možnost.
 
-    ![Návrhář role odesílat data diagnostiky application insights][2]
+    ![Návrhář role odeslání diagnostiky dat tooapplication statistiky][2]
 
-3. V dialogovém okně, které se zobrazí vyberte prostředek Application Insights, který chcete odesílat data Azure diagnostics. Dialogové okno můžete vybrat existující prostředek Application Insights ze svého předplatného, a také ručně zadat kód instrumentace pro prostředek Application Insights. Další informace o vytváření prostředek Application Insights najdete v tématu [vytvořte nový prostředek Application Insights](../application-insights/app-insights-create-new-resource.md).
+3. Hello dialogové okno pole, která se objeví vyberte prostředek Application Insights hello, který chcete toosend hello data Azure diagnostics. Dialogové okno Hello vám umožní tooselect existující prostředek Application Insights ze svého předplatného, nebo toomanually zadejte kód instrumentace pro prostředek Application Insights. Další informace o vytváření prostředek Application Insights najdete v tématu [vytvořte nový prostředek Application Insights](../application-insights/app-insights-create-new-resource.md).
 
     ![Vyberte prostředek application insights][3]
 
-    Po přidání prostředku Application Insights, klíč instrumentace pro tento prostředek je uloženo jako nastavení konfigurace služby s názvem **APPINSIGHTS_INSTRUMENTATIONKEY**. Můžete změnit tato nastavení konfigurace pro každou konfiguraci služby nebo prostředí. To pokud chcete udělat, vyberte jinou konfiguraci z **konfigurace služby** seznamu a zadejte nový klíč instrumentace pro danou konfiguraci.
+    Po přidání prostředku Application Insights hello hello klíč instrumentace pro tento prostředek je uloženo jako nastavení konfigurace služby s názvem hello **APPINSIGHTS_INSTRUMENTATIONKEY**. Můžete změnit tato nastavení konfigurace pro každou konfiguraci služby nebo prostředí. toodo Ano, vyberte jinou konfiguraci z hello **konfigurace služby** seznamu a zadejte nový klíč instrumentace pro danou konfiguraci.
 
     ![Vyberte konfiguraci služby][4]
 
-    **APPINSIGHTS_INSTRUMENTATIONKEY** nastavení konfigurace Visual Studio slouží ke konfiguraci rozšíření diagnostiky pomocí příslušné informace o prostředcích Application Insights během publikování. Nastavení konfigurace je pohodlný způsob definování různých instrumentace klíčů pro různé služby konfigurace. Visual Studio se převede tohoto nastavení a vložit do veřejné konfigurace rozšíření diagnostiky během procesu publikování. Ke zjednodušení procesu konfigurace rozšíření diagnostiky pomocí prostředí PowerShell, balíček výstup ze sady Visual Studio také obsahuje veřejné konfigurace XML se příslušný klíč instrumentace Application Insights. Veřejné konfigurační soubory jsou vytvořeny ve složce rozšíření a postupujte podle vzoru *PaaSDiagnostics.&lt; RoleName&gt;. PubConfig.xml*. Všechna nasazení pomocí prostředí PowerShell můžete použít tento vzor pro mapování každé konfiguraci k roli.
+    Hello **APPINSIGHTS_INSTRUMENTATIONKEY** rozšíření diagnostiky hello tooconfigure sady Visual Studio s hello odpovídající Application Insights informací o prostředku během publikování se používá nastavení konfigurace. nastavení konfigurace Hello je pohodlný způsob definování různých instrumentace klíčů pro různé služby konfigurace. Visual Studio se převede tohoto nastavení a vložte ji do veřejné konfigurace rozšíření hello diagnostiky během hello publikování procesu. toosimplify hello proces konfigurace rozšíření diagnostiky hello v prostředí PowerShell, výstup hello balíčku ze sady Visual Studio také obsahuje hello veřejné konfigurace XML se hello příslušný klíč instrumentace Application Insights. Hello veřejné konfigurační soubory jsou vytvořeny ve složce rozšíření hello a postupujte podle vzoru hello *PaaSDiagnostics.&lt; RoleName&gt;. PubConfig.xml*. Všechna nasazení pomocí prostředí PowerShell můžete použít tento vzor toomap každou roli tooa konfigurace.
 
-4) Chcete-li nakonfigurovat Azure diagnostics odeslat všechny protokoly úroveň chyb shromážděné agentem Azure diagnostics Application Insights a čítače výkonu, povolte **poslat diagnostická data do služby Application Insights** možnost. 
+4) toosend Azure diagnostics tooconfigure všechny protokoly úroveň chyb a čítače výkonu shromážděné hello Azure diagnostics agenta tooApplication statistiky, povolit hello **odeslání diagnostiky dat tooApplication Insights** možnost. 
 
-    Pokud chcete provést další konfiguraci jaká data se budou odesílat do služby Application Insights, je nutné ručně upravit *diagnostics.wadcfgx* soubor pro každou roli. V tématu [konfigurace Azure Diagnostics k odesílání dat do služby Application Insights](#configure-azure-diagnostics-to-send-data-to-application-insights) Další informace o ruční aktualizaci konfigurace.
+    Pokud chcete toofurther konfigurace, jaká data se odesílají tooApplication statistiky, je nutné ručně upravit hello *diagnostics.wadcfgx* soubor pro každou roli. V tématu [konfigurace Azure Diagnostics toosend data tooApplication Insights](#configure-azure-diagnostics-to-send-data-to-application-insights) toolearn více o ruční aktualizaci konfigurace hello.
 
-Pokud cloudové služby je nakonfigurovaná pro odesílání dat Azure diagnostics application insights, můžete nasadit ho do Azure normálně, ujistěte se, že je povolené rozšíření Azure diagnostics. Další informace najdete v tématu [publikování cloudové služby pomocí sady Visual Studio](../vs-azure-tools-publishing-a-cloud-service.md).  
+Při hello Cloudová služba je nakonfigurované toosend Azure diagnostics data tooapplication statistiky, můžete nasadit tooAzure normálně, ujistěte se, že je povolená hello rozšíření Azure diagnostics. Další informace najdete v tématu [publikování cloudové služby pomocí sady Visual Studio](../vs-azure-tools-publishing-a-cloud-service.md).  
 
 ## <a name="viewing-azure-diagnostics-data-in-application-insights"></a>Zobrazení dat Azure diagnostics ve službě Application Insights
-Azure diagnostiky telemetrii se zobrazí v prostředku Application Insights nakonfigurovaný pro cloudové služby.
+Hello Azure diagnostická telemetrie se zobrazí v hello prostředek nakonfigurovaný pro cloudové služby Application Insights.
 
-Azure diagnostics protokolu typy mapy na Application Insights koncepty těmito způsoby:
+Typy protokolu Azure diagnostics mapování tooApplication Statistika koncepty těmito způsoby:
 
 * Čítače výkonu zobrazují jako vlastní metriky ve službě Application Insights.
 * Protokoly událostí systému Windows se zobrazí jako trasování a vlastní události ve službě Application Insights.
 * Aplikace protokoly, protokoly trasování událostí pro Windows a žádné infrastruktury diagnostické protokoly jsou zobrazeny jako trasování ve službě Application Insights.
 
-Chcete-li zobrazit Azure diagnostická data ve službě Application Insights, proveďte jednu z následujících:
+tooview Azure diagnostická data ve službě Application Insights, proveďte jednu z následujících hello:
 
-* Použití [Průzkumníku metrik](../application-insights/app-insights-metrics-explorer.md) k vizualizaci všechny vlastní čítače výkonu nebo počet různých typů událostí protokolu událostí systému Windows.
+* Použití [Průzkumníku metrik](../application-insights/app-insights-metrics-explorer.md) toovisualize všechny vlastní výkonu čítače nebo počty různých typů událostí protokolu událostí systému Windows.
 
     ![Vlastní metriky v Průzkumníku metrik][5]
 
-* Použití [vyhledávání](../application-insights/app-insights-diagnostic-search.md) hledání mezi protokoly trasování poslal Azure Diagnostics. Například pokud nezpracovanou výjimku způsobila roli a havárií recyklovat, informace o výjimce objeví *aplikace* kanál *protokolu událostí systému Windows*. Hledání můžete vyhledat chyby v protokolu událostí systému Windows a získat trasování úplné zásobníku pro výjimku, které vám pomohou najít příčinu problému.
+* Použití [vyhledávání](../application-insights/app-insights-diagnostic-search.md) toosearch přes protokoly trasování hello poslal Azure Diagnostics. Například pokud nezpracovanou výjimku způsobila hello role toocrash a recyklace, informace o výjimkách hello se zobrazí v hello *aplikace* kanál *protokolu událostí systému Windows*. Můžete použít toolook vyhledávání v hello Chyba protokolu událostí systému Windows a získat trasování hello úplné zásobníku pro hello výjimky toohelp najít hello příčina problému hello.
 
     ![Hledání trasování][6]
 
 ## <a name="next-steps"></a>Další kroky
-* [Přidejte Application Insights SDK do cloudové služby](../application-insights/app-insights-cloudservices.md) k odesílání dat o požadavky, výjimky, závislosti a jakékoli vlastní telemetrii z vaší aplikace. V kombinaci s daty Azure Diagnostics, tyto informace můžete získat úplné zobrazení vaší aplikace a systému, ve stejné aplikace přehled prostředků.  
+* [Přidat hello Application Insights SDK tooyour Cloudová služba](../application-insights/app-insights-cloudservices.md) toosend data o požadavky, výjimky, závislosti a jakékoli vlastní telemetrii z vaší aplikace. V kombinaci s daty Azure Diagnostics hello, tyto informace, které lze získat úplné zobrazení vaší aplikace a systému, ve hello stejného zdroje Přehled aplikace.  
 
 <!--Image references-->
 [1]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/solution-explorer-properties.png

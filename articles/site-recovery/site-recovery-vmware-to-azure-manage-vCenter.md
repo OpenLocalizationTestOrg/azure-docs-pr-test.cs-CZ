@@ -14,72 +14,72 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.openlocfilehash: 091f0884417535427c52beee7bcdc5ed1dd83315
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5be995f137d0c0efaf3050b5366a107098cae15a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-vmware-vcenter-server-in-azure-site-recovery"></a>Správa serveru VMware vCenter Server v Azure Site Recovery
-Tento článek popisuje různé operace obnovení lokality, které lze provést na VMware vCenter.
+Tento článek popisuje hello různé operace obnovení lokality, které lze provést na VMware vCenter.
 
 ## <a name="prerequisites"></a>Požadavky
 
 **Podpora serveru VMware vCenter a VMware vSphere hostitele ESX** | **Podrobnosti** |
 |--- | --- |
-|**Na místní servery VMware** | Jeden nebo více VMware vSphere serverů, 6.0, 5.5, 5.1 s nejnovější aktualizace. Servery musí nacházet ve stejné síti jako konfigurační server (nebo samostatný procesový server).<br/><br/> Doporučujeme, abyste server vCenter pro správu hostitele, kde běží 6.0 nebo 5.5 s nejnovějšími aktualizacemi. Při nasazení verze 6.0 jsou podporovány pouze funkce, které jsou k dispozici v 5.5.|
+|**Na místní servery VMware** | Jeden nebo více VMware vSphere serverů, 6.0, 5.5, 5.1 s nejnovější aktualizace. Servery musí nacházet ve stejné sítě jako konfigurační server hello (nebo samostatný procesový server) hello.<br/><br/> Doporučujeme systému vCenter server toomanage hostitele, kde běží 6.0 nebo 5.5 s nejnovějšími aktualizacemi hello. Při nasazení verze 6.0 jsou podporovány pouze funkce, které jsou k dispozici v 5.5.|
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>Příprava účtu pro automatické zjišťování
-Site Recovery potřebuje přístup k VMware pro procesový server se automaticky zjistit virtuální počítače a pro převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů.
+Site Recovery potřebuje přístup tooVMware pro hello proces serveru tooautomatically zjistit virtuální počítače a pro převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů.
 
-* **Migrace**: Pokud chcete migrovat virtuální počítače VMware do Azure, aniž by někdy je selhání zpět, je použít účet VMware s rolí jen pro čtení. Tyto role můžete spustit převzetí služeb při selhání, ale nelze vypnout chráněných zdrojových počítačů. To není nezbytné pro migraci.
-* **Replikovat nebo obnovit**: Pokud chcete nasadit úplná replikace (replikace, převzetí služeb při selhání, navrácení služeb po obnovení) účet musí být schopen spuštění operací, jako je například vytváření a odebrání disků, zapínání virtuálního počítače.
+* **Migrace**: Pokud chcete pouze toomigrate tooAzure virtuální počítače VMware, bez někdy je selhání zpět, je použít účet VMware s rolí jen pro čtení. Tyto role můžete spustit převzetí služeb při selhání, ale nelze vypnout chráněných zdrojových počítačů. To není nezbytné pro migraci.
+* **Replikovat nebo obnovit**: Pokud chcete účet hello toodeploy úplná replikace (replikace, převzetí služeb při selhání, navrácení služeb po obnovení) musí být schopný toorun operací, jako je vytváření a odebrání disků, zapínání virtuálního počítače.
 * **Automatické zjišťování**: je požadován alespoň účet jen pro čtení.
 
 
 |**Úlohy** | **Požadovaný účet nebo role** | **Oprávnění** | **Podrobnosti**|
 |--- | --- | --- | ---|
-|**Procesový server automaticky vyhledá virtuální počítače VMware** | Je třeba alespoň uživatele jen pro čtení | Objekt datového centra –> Propagate pro podřízený objekt role = jen pro čtení | Uživatel přiřazené úrovni datacenter a má přístup ke všem objektům v datovém centru.<br/><br/> Pokud chcete omezit přístup, přiřadit **žádný přístup** role s **Propagate na podřízené** objekt, pro podřízený objekt (hostitelů vSphere, datastores, virtuální počítače a sítě).|
-|**Převzetí služeb při selhání** | Je třeba alespoň uživatele jen pro čtení | Objekt datového centra –> Propagate pro podřízený objekt role = jen pro čtení | Uživatel přiřazené úrovni datacenter a má přístup ke všem objektům v datovém centru.<br/><br/> Pokud chcete omezit přístup, přiřadit **žádný přístup** role s **Propagate na podřízené** objekt, který má podřízené objekty (hostitelů vSphere, datastores, virtuální počítače a sítě).<br/><br/> Tato možnost je užitečná pro účely migrace, ale není úplná replikace, převzetí služeb při selhání a navrácení služeb po obnovení.|
-|**Převzetí služeb při selhání a navrácení služeb po obnovení** | Doporučujeme vytvořit roli (AzureSiteRecoveryRole) s požadovanými oprávněními a potom přiřadit roli VMware uživatele nebo skupinu | Objekt datového centra –> Propagate pro podřízený objekt role = AzureSiteRecoveryRole<br/><br/> Úložiště dat -> přidělte místo, procházet úložiště dat, operace se soubory nízké úrovně, odstraňte soubor, aktualizovat soubory virtuálního počítače<br/><br/> Síť -> přiřazení sítě<br/><br/> Zdroj -> Přiřazení virtuálního počítače do fondu zdrojů, migrovat napájený vypnout virtuální počítač, migrace napájený na virtuálním počítači<br/><br/> Úlohy -> Vytvořit úlohu, úloha aktualizace<br/><br/> Virtuální počítač -> Konfigurace<br/><br/> Virtuální počítač -> interakcí -> odpovědí otázku, připojení zařízení, nakonfigurovat média CD, nakonfigurovat disketová média, vypnout, zapnutí, instalaci nástroje VMware<br/><br/> Virtuální počítač -> inventáře -> vytvořit, registraci, zrušení registrace<br/><br/> Virtuální počítač -> zřizování -> Povolit stahování virtuálního počítače, povolí nahrát soubory virtuálního počítače<br/><br/> Virtuální počítač -> snímky -> odebrat snímky | Uživatel přiřazené úrovni datacenter a má přístup ke všem objektům v datovém centru.<br/><br/> Pokud chcete omezit přístup, přiřadit **žádný přístup** role s **Propagate na podřízené** objekt, pro podřízený objekt (hostitelů vSphere, datastores, virtuální počítače a sítě).|
+|**Procesový server automaticky vyhledá virtuální počítače VMware** | Je třeba alespoň uživatele jen pro čtení | Objekt datového centra –> Propagate tooChild objekt, role = jen pro čtení | Uživatel přiřazené úrovni datacenter a má přístup k objektům hello tooall v datovém centru hello.<br/><br/> toorestrict přístup, přiřaďte hello **žádný přístup** role s hello **rozšířit toochild** objekt, toohello podřízené objekty (hostitelů vSphere, datastores, virtuální počítače a sítě).|
+|**Převzetí služeb při selhání** | Je třeba alespoň uživatele jen pro čtení | Objekt datového centra –> Propagate tooChild objekt, role = jen pro čtení | Uživatel přiřazené úrovni datacenter a má přístup k objektům hello tooall v datovém centru hello.<br/><br/> toorestrict přístup, přiřaďte hello **žádný přístup** role s hello **rozšířit toochild** objektu toohello podřízené objekty (hostitelů vSphere, datastores, virtuální počítače a sítě).<br/><br/> Tato možnost je užitečná pro účely migrace, ale není úplná replikace, převzetí služeb při selhání a navrácení služeb po obnovení.|
+|**Převzetí služeb při selhání a navrácení služeb po obnovení** | Doporučujeme vytvořit roli (AzureSiteRecoveryRole) s hello vyžaduje oprávnění a pak mu přiřaďte hello role tooa VMware uživatel nebo skupina | Objekt datového centra –> Propagate tooChild objekt, role = AzureSiteRecoveryRole<br/><br/> Úložiště dat -> přidělte místo, procházet úložiště dat, operace se soubory nízké úrovně, odstraňte soubor, aktualizovat soubory virtuálního počítače<br/><br/> Síť -> přiřazení sítě<br/><br/> Prostředků -> fondu tooresource přiřazení virtuálního počítače, migraci napájený vypnout virtuální počítač, migrace napájený na virtuálním počítači<br/><br/> Úlohy -> Vytvořit úlohu, úloha aktualizace<br/><br/> Virtuální počítač -> Konfigurace<br/><br/> Virtuální počítač -> interakcí -> odpovědí otázku, připojení zařízení, nakonfigurovat média CD, nakonfigurovat disketová média, vypnout, zapnutí, instalaci nástroje VMware<br/><br/> Virtuální počítač -> inventáře -> vytvořit, registraci, zrušení registrace<br/><br/> Virtuální počítač -> zřizování -> Povolit stahování virtuálního počítače, povolí nahrát soubory virtuálního počítače<br/><br/> Virtuální počítač -> snímky -> odebrat snímky | Uživatel přiřazené úrovni datacenter a má přístup k objektům hello tooall v datovém centru hello.<br/><br/> toorestrict přístup, přiřaďte hello **žádný přístup** role s hello **rozšířit toochild** objekt, toohello podřízené objekty (hostitelů vSphere, datastores, virtuální počítače a sítě).|
 
-## <a name="create-an-account-to-connect-to-vmware-vcenter-server-vmware-vsphere-exsi-host"></a>Vytvoření účtu pro připojení k serveru VMware vCenter Server nebo VMware vSphere EXSi hostitele
-1. Přihlaste se k serveru konfigurace a spuštění cspsconfigtool.exe pomocí zástupce na ploše.
-2. Klikněte na tlačítko **přidat účet** na **spravovat účet** kartě.
+## <a name="create-an-account-tooconnect-toovmware-vcenter-server-vmware-vsphere-exsi-host"></a>Vytvoření tooVMware vCenter tooconnect účet Server nebo VMware vSphere EXSi hostitele
+1. Přihlaste se do hello konfigurace serveru a spouštět hello cspsconfigtool.exe pomocí zástupce hello umístit na hello plochy.
+2. Klikněte na tlačítko **přidat účet** na hello **spravovat účet** kartě.
 
   ![Přidat účet](./media/site-recovery-vmware-to-azure-manage-vcenter/addaccount.png)
-3. Zadejte podrobnosti o účtu a klikněte na tlačítko OK pro přidání účtu. Účet musí mít oprávnění uvedených v [Příprava účet pro automatické zjišťování](#prepare-an-account-for-automatic-discovery) části.
+3. Zadejte podrobnosti o hello účtu a klikněte na tlačítko OK tooadd hello účet. Hello účet by měl mít oprávnění hello uvedené v hello [Příprava účet pro automatické zjišťování](#prepare-an-account-for-automatic-discovery) části.
 
   >[!NOTE]
-  Jak dlouho trvá asi 15 minut pro informace o účtu možné synchronizovat se službou Site Recovery.
+  Jak dlouho trvá asi 15 minut pro hello účet informace toobe synchronizovat se službou Site Recovery hello.
 
 
 ## <a name="associate-a-vmware-vcenter-vmware-vsphere-esx-host-add-vcenter"></a>Přidružení VMware vCenter / VMware vSphere ESX host (Přidat vCenter)
-* Na portálu Azure přejděte do *YourRecoveryServicesVault* > **infrastruktura Site Recovery** > **servery konfigurace**  >  *ConfigurationServer*
-* Na stránce s podrobnostmi o konfiguračním serveru klikněte na vCenter tlačítko +.
+* Na portálu Azure text hello, procházet příliš*YourRecoveryServicesVault* > **infrastruktura Site Recovery** > **servery konfigurace**  >  *ConfigurationServer*
+* Na stránce s podrobnostmi o hello konfigurační server klikněte na hello + vCenter tlačítko.
 
 [!INCLUDE [site-recovery-add-vcenter](../../includes/site-recovery-add-vcenter.md)]
 
-## <a name="modify-credentials-used-to-connect-to-the-vcenter-server-vsphere-esxi-host"></a>Upravit přihlašovací údaje používané k připojení k serveru vCenter nebo hostitelů vSphere ESXi
+## <a name="modify-credentials-used-tooconnect-toohello-vcenter-server-vsphere-esxi-host"></a>Upravit přihlašovací údaje používané tooconnect toohello vCenter server nebo hostiteli ESXi vSphere
 
-1. Přihlášení k serveru konfigurace a spuštění cspsconfigtool.exe
-2. Klikněte na tlačítko **přidat účet** na **spravovat účet** kartě.
+1. Přihlášení do hello konfigurace serveru a spouštět hello cspsconfigtool.exe
+2. Klikněte na tlačítko **přidat účet** na hello **spravovat účet** kartě.
 
   ![Přidat účet](./media/site-recovery-vmware-to-azure-manage-vcenter/addaccount.png)
-3. Zadejte nové podrobnosti účtu a klikněte na tlačítko OK pro přidání účtu. Účet musí mít oprávnění uvedených v [Příprava účet pro automatické zjišťování](#prepare-an-account-for-automatic-discovery) části.
-4. Na portálu Azure přejděte do *YourRecoveryServicesVault* > **infrastruktura Site Recovery** > **servery konfigurace**  >  *ConfigurationServer*
-5. Na stránce s podrobnostmi o konfiguračním serveru klikněte na **aktualizace serveru** tlačítko.
-6. Po dokončení úlohy aktualizace serveru, vyberte vCenter Server otevřete souhrnnou stránku vCenter.
-7. Vyberte nově přidaný účet v **účet hostitele server vSphere vCenter** pole a klikněte na tlačítko **Uložit** tlačítko.
+3. Zadejte hello nové podrobnosti účtu a klikněte na tlačítko OK tooadd hello účtu. Hello účet by měl mít oprávnění hello uvedené v hello [Příprava účet pro automatické zjišťování](#prepare-an-account-for-automatic-discovery) části.
+4. Na portálu Azure text hello, procházet příliš*YourRecoveryServicesVault* > **infrastruktura Site Recovery** > **servery konfigurace**  >  *ConfigurationServer*
+5. Na stránce s podrobnostmi o hello konfigurační server klikněte na hello **aktualizace serveru** tlačítko.
+6. Po dokončení úlohy serveru aktualizace hello vyberte hello vCenter Server tooopen hello vCenter souhrnná stránka.
+7. Vyberte hello nově přidali účet v hello **účet hostitele server vSphere vCenter** pole a klikněte na tlačítko hello **Uložit** tlačítko.
 
   ![Upravit účet](./media/site-recovery-vmware-to-azure-manage-vcenter/modify-vcente-creds.png)
 
 ## <a name="delete-a-vcenter-in-azure-site-recovery"></a>Odstraňte vCenter v Azure Site Recovery
-1. Na portálu Azure přejděte do *YourRecoveryServicesVault* > **infrastruktura Site Recovery** > **servery konfigurace**  >  *ConfigurationServer*
-2. Konfigurační server podrobnosti stránce vyberte vCenter Server otevřete souhrnnou stránku vCenter.
-3. Klikněte na **odstranit** tlačítko pro odstranění serveru vCenter
+1. Na portálu Azure text hello, procházet příliš*YourRecoveryServicesVault* > **infrastruktura Site Recovery** > **servery konfigurace**  >  *ConfigurationServer*
+2. Na stránce Podrobnosti hello konfigurační server vyberte hello vCenter Server tooopen hello vCenter souhrnná stránka.
+3. Klikněte na hello **odstranit** tlačítko toodelete hello vCenter
 
   ![Odstranění účtu](./media/site-recovery-vmware-to-azure-manage-vcenter/delete-vcenter.png)
 
 > [!NOTE]
-Pokud potřebujete změnit IP adresu nebo FQDN Vcenter, podrobnosti o portu budete muset odstranit vCenter Server a přidejte ji zpět znovu.
+Pokud budete potřebovat toomodify hello Vcenter IP adresu nebo plně kvalifikovaný název domény, podrobnosti o portu, potom můžete potřebovat toodelete hello vCenter Server a přidejte ji zpět znovu.

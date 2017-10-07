@@ -1,5 +1,5 @@
 ---
-title: "Postup modelu komplexní datové typy ve službě Azure Search | Microsoft Docs"
+title: "aaaHow toomodel komplexní datové typy ve službě Azure Search | Microsoft Docs"
 description: "Vnořené nebo hierarchické datové struktury můžete modelován v indexu Azure Search pomocí plochou řádků a typu dat kolekce."
 services: search
 documentationcenter: 
@@ -15,19 +15,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: liamca
-ms.openlocfilehash: d576fd7bb267ae7a100589413185b595e3b2be42
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b330c5b322f4f33123a454be11733b977684b9e9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-model-complex-data-types-in-azure-search"></a>Postup modelu komplexní datové typy ve službě Azure Search
-Externích datových sad, které používá k naplnění indexu Azure Search někdy obsahovat hierarchické nebo vnořená používání dílčích struktur, které nejsou v tabulkovém řádků přehledně rozdělení. Příkladem takových struktury může zahrnovat více umístění a telefonních čísel pro jednoho zákazníka, více barvy a velikosti pro jednu SKU, více autorů jeden knihy a tak dále. V modelování podmínky, můžete se setkat těchto struktur, označuje jako *komplexními datovými typy*, *složené datové typy*, *složené datové typy*, nebo *agregace datové typy*, a další.
+# <a name="how-toomodel-complex-data-types-in-azure-search"></a>Jak toomodel rozšířené datové typy ve službě Azure Search
+Externích datových sad použít toopopulate indexu Azure Search někdy obsahovat hierarchické nebo vnořená používání dílčích struktur, které nejsou v tabulkovém řádků přehledně rozdělení. Příkladem takových struktury může zahrnovat více umístění a telefonních čísel pro jednoho zákazníka, více barvy a velikosti pro jednu SKU, více autorů jeden knihy a tak dále. V modelování podmínky, můžete vidět těchto struktur označuje tooas *komplexními datovými typy*, *složené datové typy*, *složené datové typy*, nebo *agregační datové typy*, tooname a několika.
 
-Komplexní datové typy nejsou podporovány nativně ve službě Azure Search, ale Principy řešení zahrnuje dvoustupňový proces sloučení strukturu a potom pomocí **kolekce** datový typ pro-rekonstruovat pro vnitřní strukturu. Podle postupu popsaného v tomto článku umožňuje obsah má proběhnout, Fasetové, filtrovat a seřadit.
+Komplexní datové typy nejsou podporovány nativně ve službě Azure Search, ale Principy řešení zahrnuje dvoustupňový proces sloučení hello struktura a pak pomocí **kolekce** datový typ vnitřních struktura tooreconstitute hello. Následující hello technik popsaných v tomto článku umožňuje obsahu toobe hello vyhledávaná, Fasetové, filtrovat a seřazeny.
 
 ## <a name="example-of-a-complex-data-structure"></a>Příklad rozšířené datové struktury
-Dotyčné údaje se obvykle nachází jako sada dokumentů XML nebo JSON, nebo jako položky v úložišti NoSQL například Azure Cosmos DB. Strukturálně výzvy byl vyvolán s více podřízené položky, které je třeba vyhledávat a filtrovat.  Jako výchozí bod pro znázornění alternativní řešení proveďte následující dokument JSON, který obsahuje sadu kontakty jako příklad:
+Data hello dotyčném se obvykle nachází jako sada dokumentů XML nebo JSON, nebo jako položky v úložišti NoSQL například Azure Cosmos DB. Strukturálně hello výzvy byl vyvolán s více podřízené položky, které je třeba toobe vyhledávat a filtrovat.  Jako výchozí bod pro znázornění hello alternativní řešení proveďte následující dokument JSON, který obsahuje sadu kontakty jako příklad hello:
 
 ~~~~~
 [
@@ -63,22 +63,22 @@ Dotyčné údaje se obvykle nachází jako sada dokumentů XML nebo JSON, nebo j
 }]
 ~~~~~
 
-Při pole s názvem "id", "název" a "společnost" lze snadno mapovat 1: 1 jako pole v indexu Azure Search, pole, umístění, obsahuje pole umístění, i skupinu ID umístění, jakož i popisy umístění. Vzhledem k tomu, že Azure Search nemá datový typ, který to podporuje, potřebujeme jiný způsob, jak to modelu ve službě Azure Search. 
+Při hello pole s názvem "id", "název" a "společnost" lze snadno mapovat 1: 1 jako pole v indexu Azure Search, hello 'umístění' pole obsahuje pole umístění, i skupinu ID umístění, jakož i popisy umístění. Vzhledem k tomu, že Azure Search nemá datový typ, který to podporuje, budeme potřebovat toomodel jiný způsob, jak ve službě Azure Search. 
 
 > [!NOTE]
-> Tento postup je popsán také zařízení Kirk Evans v příspěvku blogu [indexování DocumentDB s Azure Search](https://blogs.msdn.microsoft.com/kaevans/2015/03/09/indexing-documentdb-with-azure-seach/), zobrazující techniku nazývaný "sloučení dat", kterým byste měli pole s názvem `locationsID` a `locationsDescription` jsou oba [kolekce](https://msdn.microsoft.com/library/azure/dn798938.aspx) (nebo pole řetězců).   
+> Tento postup je popsán také zařízení Kirk Evans v příspěvku blogu [indexování DocumentDB s Azure Search](https://blogs.msdn.microsoft.com/kaevans/2015/03/09/indexing-documentdb-with-azure-seach/), který ukazuje techniku zvanou "sloučení hello data", které byste měli pole s názvem `locationsID` a `locationsDescription` které jsou obě [kolekce](https://msdn.microsoft.com/library/azure/dn798938.aspx) (nebo pole řetězců).   
 > 
 > 
 
-## <a name="part-1-flatten-the-array-into-individual-fields"></a>Část 1: Narovnání pole na jednotlivých polí
-K vytvoření indexu Azure Search, která bude vyhovovat tuto datovou sadu, vytvoření jednotlivých polí pro vnořené podkladní: `locationsID` a `locationsDescription` s typem dat [kolekce](https://msdn.microsoft.com/library/azure/dn798938.aspx) (nebo pole řetězců). V těchto polích by do indexu hodnoty '1' a (2) `locationsID` do pole pro John Smith a hodnoty "3" a "4" `locationsID` pole pro Jen Campbell.  
+## <a name="part-1-flatten-hello-array-into-individual-fields"></a>Část 1: Narovnání hello pole na jednotlivých polí
+toocreate indexu Azure Search, která bude vyhovovat tuto datovou sadu vytvořit jednotlivých polí pro vnořené podkladní hello: `locationsID` a `locationsDescription` s typem dat [kolekce](https://msdn.microsoft.com/library/azure/dn798938.aspx) (nebo pole řetězců). V těchto polích by indexu hello hodnoty '1' a "2" do hello `locationsID` pole pro hodnoty John Smith a hello "3" a "4" do hello `locationsID` pole pro Jen Campbell.  
 
 Vaše data v rámci Azure Search bude vypadat takto: 
 
 ![Ukázková data, 2 řádků](./media/search-howto-complex-data-types/sample-data.png)
 
-## <a name="part-2-add-a-collection-field-in-the-index-definition"></a>Část 2: Přidání kolekci polí v definici indexu
-Ve schématu indexu může vypadat podobně jako tento příklad definice pole.
+## <a name="part-2-add-a-collection-field-in-hello-index-definition"></a>Část 2: Přidání kolekci polí v definici indexu hello
+V hello schéma indexu definice pole hello může vypadat podobně jako příklad toothis.
 
 ~~~~
 var index = new Index()
@@ -95,18 +95,18 @@ var index = new Index()
 };
 ~~~~
 
-## <a name="validate-search-behaviors-and-optionally-extend-the-index"></a>Ověření chování vyhledávání a případně rozšířit index
-Za předpokladu, že jste vytvořili index a načíst data, můžete prověřit řešení ověření při provádění dotazu hledání podle datové sady. Každý **kolekce** pole by mělo být **prohledávatelné**, **filtrovatelných** a **facetable**. Nyní byste měli mít ke spouštění dotazů jako:
+## <a name="validate-search-behaviors-and-optionally-extend-hello-index"></a>Ověření chování vyhledávání a případně rozšířit hello indexu
+Za předpokladu, že vytvořený hello index a načíst hello data, můžete prověřit provádění dotazu hello řešení tooverify vyhledávání proti hello datovou sadu. Každý **kolekce** pole by mělo být **prohledávatelné**, **filtrovatelných** a **facetable**. Měli byste mít možnost toorun dotazy jako:
 
-* Najít všichni uživatelé, kteří pracují v ústředí"Adventureworks".
-* Získáte počet lidí, kteří pracují v Home Office.  
-* Osob, které fungují na Home Office zobrazit jaké ostatních kancelářích fungují společně s počet uživatelů v každé lokalitě.  
+* Najít všichni uživatelé, kteří pracují v hello 'Adventureworks ústředí'.
+* Získáte počet hello počet lidí, kteří pracují v Home Office.  
+* Hello osobám, které fungují na Home Office zobrazit jaké ostatních kancelářích fungují společně s počtem hello lidem v každém umístění.  
 
-Kde tato technika spadá rozdělovat je, když je potřeba udělat hledání, které kombinuje id umístění jak popis umístění. Například:
+Kde tato technika spadá rozdělovat je, když potřebujete toodo hledání, které kombinuje id umístění hello jak hello umístění popis. Například:
 
 * Najít všechny osoby, které mají Home Office a mají ID umístění na 4.  
 
-Pokud si Vzpomínáte, původní obsah hledá takto:
+Pokud si Vzpomínáte hello původní obsah hledá takto:
 
 ~~~~
    {
@@ -115,9 +115,9 @@ Pokud si Vzpomínáte, původní obsah hledá takto:
    }
 ~~~~
 
-Ale nyní, když budeme mít oddělené data do samostatných polí, jsme nijak starostí, protože pokud Home Office pro Jen Campbell má vztah k `locationsID 3` nebo `locationsID 4`.  
+Ale teď, když budeme mít oddělené hello data do samostatných polí, jsme nijak zjistit, pokud má příliš vztah hello Home Office pro Jen Campbell`locationsID 3` nebo `locationsID 4`.  
 
-Chcete-li zpracovávat tento případ, definujte jiné pole v indexu, které se kombinuje všechna data do jedné kolekce.  Pro náš příklad jsme bude volat v tomto poli `locationsCombined` a jsme dojde k oddělení obsah s `||` však můžete zvolit jakékoli oddělovač, který se domníváte, že by jedinečnou sadu znaků pro obsah. Například: 
+toohandle v tomto případě definovat jiné pole v indexu hello, které se kombinuje všechna hello data do jedné kolekce.  Pro náš příklad jsme bude volat v tomto poli `locationsCombined` a jsme dojde k oddělení hello obsah s `||` však můžete zvolit jakékoli oddělovač, který se domníváte, že by jedinečnou sadu znaků pro obsah. Například: 
 
 ![Ukázková data, 2 řádky s oddělovačem](./media/search-howto-complex-data-types/sample-data-2.png)
 
@@ -129,12 +129,12 @@ Pomocí této `locationsCombined` pole, jsme teď zvládne i další dotazy, nap
 ## <a name="limitations"></a>Omezení
 Tato metoda je užitečná pro různé scénáře, ale není možné v každém případě ho.  Například:
 
-1. Pokud nemáte sadu statických polí v komplexního datového typu a se žádný způsob, jak všechny možné typy mapování na jedno pole. 
-2. Aktualizace vnořených objektů vyžaduje další práci k určení toho, co přesně je aktualizovat v indexu Azure Search
+1. Pokud nemáte sadu statických polí v komplexního datového typu a se žádný způsob, jak toomap všechny možné hello typy tooa jediné pole. 
+2. Aktualizace hello vnořených objektů vyžaduje některé další práci toodetermine přesně toho, co je toobe aktualizovat v indexu Azure Search hello
 
 ## <a name="sample-code"></a>Ukázka kódu
-Můžete zobrazit příklad o tom, jak index komplexní JSON datové sady Azure Search a provádět spoustu dotazy přes tuto datovou sadu v této [úložiště GitHub](https://github.com/liamca/AzureSearchComplexTypes).
+Můžete zobrazit příklad, jak tooindex komplexní data JSON nastavit Azure Search a provádět spoustu dotazy přes tuto datovou sadu v této [úložiště GitHub](https://github.com/liamca/AzureSearchComplexTypes).
 
 ## <a name="next-step"></a>Další krok
-[Hlas pro nativní podpora pro komplexní datové typy](https://feedback.azure.com/forums/263029-azure-search) na UserVoice hledání Azure stránky a zadání žádné další, které chcete nám ke zvážení při výběru implementace funkce. Vám může také oslovení mi přímo na Twitteru v @liamca.
+[Hlas pro nativní podpora pro komplexní datové typy](https://feedback.azure.com/forums/263029-azure-search) na hello Azure Search UserVoice stránku a všechny další zadání, který byste nám chtěli tooconsider týkající se funkce implementace. Můžete také oslovení toome přímo na Twitteru v @liamca.
 

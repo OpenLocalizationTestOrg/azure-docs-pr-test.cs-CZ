@@ -1,6 +1,6 @@
 ---
-title: "Instalace úlohy elastické databáze | Microsoft Docs"
-description: "Provede procesem instalace funkce elastické úlohy."
+title: "úlohy elastické databáze aaaInstalling | Microsoft Docs"
+description: "Provede procesem instalace funkce elastické úlohy hello."
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -15,51 +15,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: e7a2d6dbcefbb31d76257eaf96ccc235d7a29416
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0349f66a4428f81d00d43681d7f2177f273ec032
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Instalace úlohy elastické databáze – přehled
-[**Elastické databáze úlohy** ](sql-database-elastic-jobs-overview.md) lze nainstalovat pomocí prostředí PowerShell nebo prostřednictvím Azure Classic Portal.You mohou získat přístup k vytvářet a spravovat úlohy pomocí rozhraní API prostředí PowerShell, pouze v případě, že budete instalovat balíček prostředí PowerShell. Kromě toho rozhraní API prostředí PowerShell poskytuje výrazně víc funkcí než portálu v daném okamžiku.
+[**Elastické databáze úlohy** ](sql-database-elastic-jobs-overview.md) lze nainstalovat pomocí prostředí PowerShell nebo prostřednictvím hello Azure Classic Portal.You můžete získat přístup k toocreate a spravovat úlohy pomocí hello rozhraní API prostředí PowerShell, pouze v případě, že budete instalovat balíček hello prostředí PowerShell. Kromě toho hello rozhraní API prostředí PowerShell poskytuje výrazně víc funkcí než hello portál v tuto chvíli.
 
-Pokud jste již nainstalovali **úlohy elastické databáze** prostřednictvím portálu ze stávajícího **elastický fond**, nejnovější prostředí Powershell preview zahrnuje skripty, které upgradovat existující instalaci. Důrazně doporučujeme pro upgrade na nejnovější instalace **úlohy elastické databáze** součásti, aby bylo možné využívat nové funkce, které jsou zveřejňovány prostřednictvím rozhraní API prostředí PowerShell.
+Pokud jste již nainstalovali **úlohy elastické databáze** prostřednictvím hello portálu ze stávajícího **elastický fond**, hello nejnovější prostředí Powershell preview zahrnuje skripty tooupgrade vaši existující instalaci. Vysoce je doporučeno tooupgrade vaší instalace toohello nejnovější **úlohy elastické databáze** hello součásti v pořadí tootake využívat nové funkce, které jsou zveřejňovány prostřednictvím rozhraní API prostředí PowerShell.
 
 ## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure. Bezplatná zkušební verze, najdete v části [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
-* Azure Powershell Nainstalujte nejnovější verzi pomocí [instalačního programu webové platformy](http://go.microsoft.com/fwlink/p/?linkid=320376). Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
-* [Nástroj příkazového řádku NuGet](https://nuget.org/nuget.exe) slouží k instalaci balíčku úlohy elastické databáze. Další informace najdete v tématu http://docs.nuget.org/docs/start-here/installing-nuget.
+* Azure Powershell Nainstalujte nejnovější verzi hello pomocí hello [instalačního programu webové platformy](http://go.microsoft.com/fwlink/p/?linkid=320376). Podrobné informace najdete v tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+* [Nástroj příkazového řádku NuGet](https://nuget.org/nuget.exe) je použité tooinstall hello elastické databáze úlohy balíček. Další informace najdete v tématu http://docs.nuget.org/docs/start-here/installing-nuget.
 
-## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>Stahování a import balíčku prostředí PowerShell úlohy elastické databáze
-1. Spusťte příkazové okno prostředí PowerShell Microsoft Azure a přejděte do adresáře, kam jste stáhli Nástroj příkazového řádku NuGet (nuget.exe).
-2. Stahování a import **úlohy elastické databáze** balíček do aktuální adresář pomocí následujícího příkazu:
+## <a name="download-and-import-hello-elastic-database-jobs-powershell-package"></a>Stahování a import balíčku prostředí PowerShell úlohy elastické databáze hello
+1. Spusťte příkazové okno prostředí PowerShell Microsoft Azure a přejděte toohello adresáře, kam jste stáhli Nástroj příkazového řádku NuGet (nuget.exe).
+2. Stahování a import **úlohy elastické databáze** balíček do aktuální adresář hello s hello následující příkaz:
    
         PS C:\>.\nuget install Microsoft.Azure.SqlDatabase.Jobs -prerelease
    
-    **Úlohy elastické databáze** soubory jsou umístěny do místního adresáře do složky s názvem **Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x** kde *x.x.xxxx.x* zobrazuje číslo verze. Rutiny prostředí PowerShell (včetně klienta knihoven DLL) jsou umístěné v **tools\ElasticDatabaseJobs** podadresář a skriptů prostředí PowerShell k instalaci, upgrade a odinstalaci jsou taky umístěné ve **nástroje** podadresář.
-3. Přejděte do nástroje podadresář ve složce Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x zadáním disk cd nástroje, například:
+    Hello **úlohy elastické databáze** soubory jsou umístěny do místního adresáře hello ve složce s názvem **Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x** kde *x.x.xxxx.x* Zobrazuje číslo verze hello. rutiny prostředí PowerShell Hello (včetně klienta knihoven DLL) jsou umístěné v hello **tools\ElasticDatabaseJobs** podadresář a hello tooinstall skripty prostředí PowerShell, upgradu a odinstalaci také nacházet v hello  **Nástroje pro** podadresář.
+3. Přejděte toohello nástroje podadresář ve složce Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x hello zadáním disk cd nástroje, například:
    
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 
-4. Spusťte skript.\InstallElasticDatabaseJobsCmdlets.ps1 chcete zkopírovat do adresáře ElasticDatabaseJobs do $home\Documents\WindowsPowerShell\Modules. To také automaticky importuje modul pro použití, například:
+4. Spusťte hello.\InstallElasticDatabaseJobsCmdlets.ps1 skriptu toocopy hello ElasticDatabaseJobs adresáře do $home\Documents\WindowsPowerShell\Modules. To také automaticky importuje hello modulu pro použití, například:
    
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobsCmdlets.ps1
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobsCmdlets.ps1
 
-## <a name="install-the-elastic-database-jobs-components-using-powershell"></a>Nainstalujte komponenty úlohy elastické databáze pomocí prostředí PowerShell
-1. Spusťte příkazové okno Microsoft Azure PowerShell a přejděte na \tools podadresář ve složce Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x: Zadejte \tools disku cd
+## <a name="install-hello-elastic-database-jobs-components-using-powershell"></a>Instalace součásti úlohy hello elastické databáze pomocí prostředí PowerShell
+1. Spusťte příkazové okno Microsoft Azure PowerShell a přejděte toohello \tools podadresář ve složce Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x hello: Zadejte \tools disku cd
    
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 
-2. Spustit.\InstallElasticDatabaseJobs.ps1 skript prostředí PowerShell a zadejte hodnoty pro její požadované proměnné. Tento skript vytvoří komponent popsaných v [úlohy elastické databáze součásti a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing) společně s konfigurací Azure Cloud Service odpovídajícím způsobem používat závislé součásti.
+2. Spustit skript prostředí PowerShell.\InstallElasticDatabaseJobs.ps1 hello a poskytnout hodnoty pro její požadované proměnné. Tento skript vytvoří hello komponent popsaných v [úlohy elastické databáze součásti a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing) společně s konfigurací hello Azure Cloud Service tooappropriately použít hello závislé součásti.
 
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobs.ps1
 
-Když spustíte tento příkaz, okno otevře požadující **uživatelské jméno** a **heslo**. Toto není vaše přihlašovací údaje Azure, zadejte uživatelské jméno a heslo, které budou přihlašovací údaje správce, kterou chcete vytvořit pro nový server.
+Když spustíte tento příkaz, okno otevře požadující **uživatelské jméno** a **heslo**. Toto není vaše přihlašovací údaje Azure, zadejte hello uživatelské jméno a heslo, které budou přihlašovací údaje správce hello toocreate chcete pro nový server hello.
 
-Parametry zadané na toto ukázkové volání lze upravit pro požadovaná nastavení. Následující poskytuje další informace o chování jednotlivých parametrů:
+pro požadovaná nastavení můžete upravit parametry Hello k dispozici na toto ukázkové volání. Následující Hello poskytuje další informace o chování hello každý parametr:
 
 <table style="width:100%">
   <tr>
@@ -69,55 +69,55 @@ Parametry zadané na toto ukázkové volání lze upravit pro požadovaná nasta
 
 <tr>
     <td>Název skupiny prostředků</td>
-    <td>Poskytuje název skupiny prostředků Azure k vytvoření, která obsahují nově vytvořený Azure komponenty. Tento parametr výchozí "__ElasticDatabaseJob". Není doporučeno tuto hodnotu změnit.</td>
+    <td>Poskytuje název skupiny prostředků Azure hello vytvořit toocontain hello nově vytvořený Azure součásti. Tento parametr výchozí příliš "__ElasticDatabaseJob". Není doporučeno toochange tuto hodnotu.</td>
     </tr>
 
 </tr>
 
     <tr>
     <td>ResourceGroupLocation</td>
-    <td>Poskytuje umístění Azure, který se má použít pro nově vytvořený Azure součásti. Tento parametr výchozí umístění střed USA.</td>
+    <td>Poskytuje toobe umístění Azure hello používá pro nově vytvořený Azure součásti hello. Tento parametr výchozí toohello střed USA umístění.</td>
 </tr>
 
 <tr>
     <td>ServiceWorkerCount</td>
-    <td>Obsahuje počet pracovních procesů služby pro instalaci. Tento parametr výchozí hodnotu 1. Vyšší počet pracovních procesů lze škálovat službu a pro zajištění vysoké dostupnosti. Doporučujeme použít pro nasazení, která vyžadují vysokou dostupnost služby "2".</td>
+    <td>Poskytuje hello počet tooinstall pracovníky služby. Tento parametr výchozí too1. Vyšší počet pracovních procesů může být použité tooscale out hello služby a tooprovide vysokou dostupnost. Doporučujeme toouse "2" pro nasazení, která vyžadují vysokou dostupnost služby hello.</td>
     </tr>
 
 </tr>
     <tr>
     <td>ServiceVmSize</td>
-    <td>Poskytuje velikost virtuálního počítače pro použití v rámci cloudové služby. Tento parametr výchozí A0. Hodnoty parametrů A0 nebo A1 nebo A2 nebo A3, jsou přijaty které způsobit role pracovního procesu sloužící velikost: mimořádně malý nebo malá nebo střední nebo velké v uvedeném pořadí. Další informace o velikosti role pracovního procesu, viz Fo [úlohy elastické databáze součásti a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Poskytuje hello velikost virtuálního počítače pro použití v rámci hello cloudové služby. Tento parametr výchozí tooA0. Hodnoty parametrů A0 nebo A1 nebo A2 nebo A3, jsou přijaty které způsobit hello pracovní toouse role pro velikost: mimořádně malý nebo malá nebo střední nebo velké. Další informace o velikosti role pracovního procesu, viz Fo [úlohy elastické databáze součásti a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
 </tr>
     <tr>
     <td>SqlServerDatabaseSlo</td>
-    <td>Poskytuje cíle na úrovni služby pro Standard edition. Tento parametr výchozí hodnotu S0. Hodnoty parametru S0/S1 nebo S2/S3, které způsobují databáze SQL Azure používat příslušné SLO jsou přijaty. Další informace o slo databáze SQL najdete v tématu [úlohy elastické databáze součásti a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Poskytuje hello cíle na úrovni služby pro Standard edition. Tento parametr výchozí tooS0. Hodnoty parametru S0/S1 nebo S2/S3 přijímají, které způsobují hello Azure SQL Database toouse hello příslušných SLO. Další informace o slo databáze SQL najdete v tématu [úlohy elastické databáze součásti a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
 </tr>
     <tr>
     <td>SqlServerAdministratorUserName</td>
-    <td>Poskytuje uživatelské jméno správce pro nově vytvořený serveru Azure SQL Database. Není-li zadána, bude vyžadovat přihlašovací údaje otevřete okno přihlašovací údaje prostředí PowerShell.</td>
+    <td>Poskytuje hello uživatelské jméno správce pro hello nově vytvořený serveru Azure SQL Database. Není-li zadána, otevře se okno přihlašovací údaje prostředí PowerShell tooprompt hello přihlašovacích údajů.</td>
 </tr>
 
 </tr>
     <tr>
     <td>SqlServerAdministratorPassword</td>
-    <td>Poskytuje heslo správce pro nově vytvořený serveru Azure SQL Database. Když není zadaná, bude vyžadovat přihlašovací údaje otevřete okno přihlašovací údaje prostředí PowerShell.</td>
+    <td>Poskytuje hello heslo správce pro hello nově vytvořený serveru Azure SQL Database. Když není zadaná, otevře se okno přihlašovací údaje prostředí PowerShell tooprompt hello přihlašovacích údajů.</td>
 </tr>
 </table>
 
-Pro systémy, které cílí má velký počet úloh spuštěných současně pro velký počet databází, se doporučuje zadejte parametry, jako například: - ServiceWorkerCount 2 - ServiceVmSize A2 - SqlServerDatabaseSlo S2.
+Pro systémy, které cílí má velký počet úloh spuštěných současně pro velký počet databází, se doporučuje toospecify parametry, jako: - ServiceWorkerCount 2 - ServiceVmSize A2 - SqlServerDatabaseSlo S2.
 
     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1
     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>.\InstallElasticDatabaseJobs.ps1 -ServiceWorkerCount 2 -ServiceVmSize A2 -SqlServerDatabaseSlo S2
 
 ## <a name="update-an-existing-elastic-database-jobs-components-installation-using-powershell"></a>Aktualizace stávající elastické databáze úlohy součásti instalace pomocí prostředí PowerShell
-**Elastické databáze úlohy** můžete aktualizovat v rámci existující instalace pro škálování a vysokou dostupností. Tento proces umožňuje pro budoucí upgrady kódu služby bez nutnosti vyřadit a znovu vytvořte databázi ovládacího prvku. Tento proces lze také v rámci stejné verze a změňte velikost virtuálního počítače služby nebo počet pracovního procesu serveru.
+**Elastické databáze úlohy** můžete aktualizovat v rámci existující instalace pro škálování a vysokou dostupností. Tento proces umožňuje pro budoucí upgrady kódu služby bez nutnosti toodrop a znovu vytvořte hello řízení databáze. Tento proces lze také v rámci hello stejné verze toomodify hello služby počet virtuálních počítačů velikost nebo hello serveru worker.
 
-Pokud chcete aktualizovat velikost virtuálního počítače instalace, spusťte následující skript s parametry aktualizovány na hodnoty podle svého výběru.
+velikost virtuálního počítače tooupdate hello instalace, spusťte hello následující skript s parametry aktualizovat toohello hodnoty podle svého výběru.
 
     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>Unblock-File .\UpdateElasticDatabaseJobs.ps1
     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>.\UpdateElasticDatabaseJobs.ps1 -ServiceVmSize A1 -ServiceWorkerCount 2
@@ -130,7 +130,7 @@ Pokud chcete aktualizovat velikost virtuálního počítače instalace, spusťte
 
   <tr>
     <td>Název skupiny prostředků</td>
-    <td>Určuje název skupiny prostředků Azure používá při byly původně nainstalované komponenty úlohy elastické databáze. Tento parametr výchozí "__ElasticDatabaseJob". Vzhledem k tomu, že není doporučeno tuto hodnotu změnit, není nutné, zadejte tento parametr.</td>
+    <td>Určuje název skupiny prostředků Azure hello používá při hello elastické databáze úlohy součásti byly původně nainstaloval. Tento parametr výchozí příliš "__ElasticDatabaseJob". Vzhledem k tomu, že není doporučeno toochange tuto hodnotu toospecify by neměl mít tento parametr.</td>
     </tr>
 </tr>
 
@@ -138,44 +138,44 @@ Pokud chcete aktualizovat velikost virtuálního počítače instalace, spusťte
 
   <tr>
     <td>ServiceWorkerCount</td>
-    <td>Obsahuje počet pracovních procesů služby pro instalaci.  Tento parametr výchozí hodnotu 1.  Vyšší počet pracovních procesů lze škálovat službu a pro zajištění vysoké dostupnosti.  Doporučujeme použít pro nasazení, která vyžadují vysokou dostupnost služby "2".</td>
+    <td>Poskytuje hello počet tooinstall pracovníky služby.  Tento parametr výchozí too1.  Vyšší počet pracovních procesů může být použité tooscale out hello služby a tooprovide vysokou dostupnost.  Doporučujeme toouse "2" pro nasazení, která vyžadují vysokou dostupnost služby hello.</td>
 </tr>
 
 </tr>
 
     <tr>
     <td>ServiceVmSize</td>
-    <td>Poskytuje velikost virtuálního počítače pro použití v rámci cloudové služby. Tento parametr výchozí A0. Hodnoty parametrů A0 nebo A1 nebo A2 nebo A3, jsou přijaty které způsobit role pracovního procesu sloužící velikost: mimořádně malý nebo malá nebo střední nebo velké v uvedeném pořadí. Další informace o velikosti role pracovního procesu, viz Fo [úlohy elastické databáze součásti a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Poskytuje hello velikost virtuálního počítače pro použití v rámci hello cloudové služby. Tento parametr výchozí tooA0. Hodnoty parametrů A0 nebo A1 nebo A2 nebo A3, jsou přijaty které způsobit hello pracovní toouse role pro velikost: mimořádně malý nebo malá nebo střední nebo velké. Další informace o velikosti role pracovního procesu, viz Fo [úlohy elastické databáze součásti a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
 </table>
 
-## <a name="install-the-elastic-database-jobs-components-using-the-portal"></a>Nainstalujte komponenty úlohy elastické databáze pomocí portálu
-Jakmile máte [vytvoření fondu elastické databáze](sql-database-elastic-pool-manage-portal.md), můžete nainstalovat **úlohy elastické databáze** součásti povolit spouštění úlohy správy na každou databázi v elastickém fondu. Na rozdíl od při použití **úlohy elastické databáze** rozhraní API prostředí PowerShell, rozhraní portálu je momentálně omezené do pouze prováděných na existující fond.
+## <a name="install-hello-elastic-database-jobs-components-using-hello-portal"></a>Nainstalujte komponenty úlohy elastické databáze hello pomocí hello portálu
+Jakmile máte [vytvoření fondu elastické databáze](sql-database-elastic-pool-manage-portal.md), můžete nainstalovat **úlohy elastické databáze** součásti tooenable provádění úloh správy na každou databázi v hello elastického fondu. Na rozdíl od při použití hello **úlohy elastické databáze** rozhraní API prostředí PowerShell, rozhraní portálu hello je momentálně omezené tooonly provádění na existující fond.
 
-**Odhadovaný čas dokončení:** 10 minut.
+**Odhadovaný čas toocomplete:** 10 minut.
 
-1. Z elastického fondu pomocí zobrazení řídicího panelu [portálu Azure](https://portal.azure.com/#) , klikněte na tlačítko **vytvořit úlohu**.
-2. Pokud vytváříte úlohu poprvé, musíte nainstalovat **úlohy elastické databáze** kliknutím **podmínky**.
-3. Přijměte podmínky kliknutím na zaškrtávací políčko.
-4. V zobrazení "Instalace služby", klikněte na **úlohy pověření**.
+1. V zobrazení řídicího panelu hello hello elastického fondu prostřednictvím hello [portálu Azure](https://portal.azure.com/#) , klikněte na tlačítko **vytvořit úlohu**.
+2. Pokud vytváříte úlohu pro hello poprvé, musíte nainstalovat **úlohy elastické databáze** kliknutím **podmínky**.
+3. Přijměte podmínky hello kliknutím hello zaškrtávací políčko.
+4. V zobrazení hello "instalace služby", klikněte na tlačítko **úlohy pověření**.
    
-    ![Instalace služby][1]
-5. Zadejte uživatelské jméno a heslo pro správce databáze Jako součást instalace se vytvoří nový server Azure SQL Database. V rámci tohoto serveru je novou databázi, označuje jako databázi řízení vytvořit a používat tak, aby obsahovala metadata pro úlohy elastické databáze. Uživatelské jméno a heslo vytvořená zde se používají pro účely přihlášení k databázi řízení. Samostatné přihlašovací údaje se používá pro spuštění skriptu s databázemi, v rámci fondu.
+    ![Instalace služby hello][1]
+5. Zadejte uživatelské jméno a heslo pro správce databáze Jako součást instalace hello vytvoří se nový server Azure SQL Database. Novou databázi, označuje jako hello řízení databáze, v rámci tohoto nového serveru se vytvoří a používá toocontain hello metadata pro úlohy elastické databáze. Hello uživatelské jméno a heslo vytvořená zde se používají pro účel hello protokolování v databázi toohello ovládacího prvku. Samostatné přihlašovací údaje se používá pro spuštění skriptu s databázemi hello v rámci fondu hello.
    
     ![Vytvořte uživatelské jméno a heslo][2]
-6. Klikněte na tlačítko OK. Součásti jsou vytvořeny pro vás za pár minut v nové [skupiny prostředků](../azure-resource-manager/resource-group-overview.md). Novou skupinu prostředků je připnutý na úvodní panel, jak je uvedeno níže. Úlohy po vytvoření, elastické databáze (Cloudová služba, databáze SQL, Service Bus a úložiště) jsou vytvořeny ve skupině.
+6. Klikněte na tlačítko OK hello. Hello součásti jsou vytvořeny pro vás za pár minut v nové [skupiny prostředků](../azure-resource-manager/resource-group-overview.md). Hello novou skupinu prostředků je připnutá toohello spustit Tabule, jak je uvedeno níže. Úlohy po vytvoření, elastické databáze (Cloudová služba, databáze SQL, Service Bus a úložiště) jsou vytvořeny ve skupině hello.
    
     ![Skupina prostředků v Tabule start][3]
-7. Pokud se pokusíte vytvořit ani spravovat úlohu při instalaci úlohy elastické databáze, pokud poskytuje **pověření** zobrazí se následující zpráva.
+7. Pokud pokus toocreate nebo spravovat úlohy, při instalaci úlohy elastické databáze, pokud poskytuje **pověření** zobrazí se následující zpráva hello.
    
     ![Stále probíhá nasazení][4]
 
-Pokud odinstalaci je potřeba, odstraňte skupinu prostředků. V tématu [postup odinstalace komponenty úlohy elastické databáze](sql-database-elastic-jobs-uninstall.md).
+Pokud odinstalaci je potřeba, odstraňte skupinu prostředků hello. V tématu [jak toouninstall hello elastické databáze úlohy součásti](sql-database-elastic-jobs-uninstall.md).
 
 ## <a name="next-steps"></a>Další kroky
-Zkontrolujte přihlašovací údaj se příslušná oprávnění pro spuštění skriptu se vytvoří na každou databázi ve skupině, další informace najdete v tématu [zabezpečení databáze SQL](sql-database-manage-logins.md).
-V tématu [vytváření a Správa úloh elastické databáze](sql-database-elastic-jobs-create-and-manage.md) začít pracovat.
+Zkontrolujte přihlašovací údaje s hello příslušná práva pro spuštění skriptu se vytvoří na každou databázi ve skupině hello, další informace najdete v tématu [zabezpečení databáze SQL](sql-database-manage-logins.md).
+V tématu [vytváření a Správa úloh elastické databáze](sql-database-elastic-jobs-create-and-manage.md) tooget spuštěna.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-jobs-service-installation/screen-1.png

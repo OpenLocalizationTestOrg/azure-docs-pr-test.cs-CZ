@@ -1,6 +1,6 @@
 ---
-title: "Rozdíly Azure Service Fabric pro Linux a Windows | Dokumentace Microsoftu"
-description: "Rozdíly mezi Azure Service Fabric Preview v Linuxu a Azure Service Fabric ve Windows"
+title: "aaaAzure Service Fabric rozdíly mezi systémy Linux a Windows | Microsoft Docs"
+description: "Rozdíly mezi hello Azure Service Fabric Preview v systému Linux a Azure Service Fabric v systému Windows."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 7b80bb7d4a4e6a1b4cf47ce87200f47339785c53
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7a16a440dfc8d9006e274f46951be1562e6f10d9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="differences-between-service-fabric-on-linux-preview-and-windows-generally-available"></a>Rozdíly mezi Service Fabric v Linuxu (verze Preview) a ve Windows (obecně dostupná verze)
 
-Protože Service Fabric v Linuxu je ve verzi Preview, existují určité funkce, které jsou ve Windows podporované, ale v Linuxu zatím ne. Nakonec si sady funkcí budou odpovídat, až bude Service Fabric v Linuxu v obecně dostupné verzi. S budoucími verzemi se bude tato mezera zmenšovat. Mezi nejnovějšími dostupnými verzemi (tedy mezi verzí 5.6 pro Windows a verzí 5.5 pro Linux) existují následující rozdíly: 
+Protože Service Fabric v Linuxu je ve verzi Preview, existují určité funkce, které jsou ve Windows podporované, ale v Linuxu zatím ne. Nakonec sady funkcí hello budou v parita, když je obecně dostupná Service Fabric v systému Linux. S budoucími verzemi se bude tato mezera zmenšovat. Hello následující rozdíly mezi existovat nejnovější dostupné verze hello (tedy mezi verzemi 5.6 v systému Windows a verzi 5.5 v systému Linux): 
 
 * Reliable Collections (a Reliable Stateful Services) 
 * ReverseProxy 
 * Samostatný instalační program 
 * Ověření schématu XML pro soubory manifestu 
 * Přesměrování konzoly 
-* Fault Analysis Service (FAS)
+* Hello selhání Analysis Service (DM)
 * Ovladače protokolování a svazku a Docker Compose pro kontejnery 
 * Zásady správného řízení prostředků pro kontejnery a služby 
 * Služba DNS
 * Podpora Azure Active Directory
 * Ekvivalenty příkazů rozhraní příkazového řádku pro určité příkazy PowerShellu 
-* Proti clusteru Linux lze spustit pouze podmnožinu příkazů Powershellu (jak je rozvedeno v další části).
+* Oproti Linux clusteru (jak rozšířit v další části hello) lze spustit pouze podmnožinu příkazy prostředí Powershell.
 
 >[!NOTE]
 >Přesměrování konzoly se nepodporuje v produkčních clusterech, dokonce ani ve Windows.
@@ -106,4 +106,4 @@ Nástroje pro vývoj ve Windows a v Linuxu se také liší. Ve Windows se použ�
 * [Vytvoření a nasazení první aplikace Service Fabric v Javě v Linuxu pomocí Yeomana](service-fabric-create-your-first-linux-application-with-java.md)
 * [Vytvoření a nasazení první aplikace Service Fabric v Javě v Linuxu pomocí modulu plug-in Service Fabric pro Eclipse](service-fabric-get-started-eclipse.md)
 * [Vytvoření první aplikace v CSharp v Linuxu](service-fabric-create-your-first-linux-application-with-csharp.md)
-* [Správa aplikací pomocí Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
+* [Pomocí aplikace hello toomanage Service Fabric rozhraní příkazového řádku](service-fabric-application-lifecycle-sfctl.md)

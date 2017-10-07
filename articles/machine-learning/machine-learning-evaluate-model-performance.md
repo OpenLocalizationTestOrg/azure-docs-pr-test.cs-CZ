@@ -1,6 +1,6 @@
 ---
-title: "Vyhodnocení modelu výkon v Machine Learning | Microsoft Docs"
-description: "Vysvětluje, jak k vyhodnocení výkonu modelu v Azure Machine Learning."
+title: "výkon modelu aaaEvaluate v Machine Learning | Microsoft Docs"
+description: "Vysvětluje, jak tooevaluate modelu výkon v Azure Machine Learning."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: bradsev;garye
-ms.openlocfilehash: d9576e0059f2e77a684e518389182e713f0a4f09
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 03477368758dbb13aa6f54c5d27fb215615d1f9d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>Jak vyhodnotit výkon modelu ve službě Azure Machine Learning
-Tento článek ukazuje, jak k vyhodnocení výkonu modelu v Azure Machine Learning Studio a poskytuje stručné vysvětlení metriky, které jsou k dispozici pro tuto úlohu. Tři běžné scénáře pod dohledem learning uvádíme: 
+# <a name="how-tooevaluate-model-performance-in-azure-machine-learning"></a>Jak tooevaluate modelu výkon v Azure Machine Learning
+Tento článek ukazuje, jak tooevaluate hello výkonu modelu v Azure Machine Learning Studio a nabízí stručné vysvětlení hello metriky, které jsou k dispozici pro tuto úlohu. Tři běžné scénáře pod dohledem learning uvádíme: 
 
 * Regrese
 * binární klasifikace 
@@ -29,24 +29,24 @@ Tento článek ukazuje, jak k vyhodnocení výkonu modelu v Azure Machine Learni
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-Vyhodnocení výkonu modelu je jedním z fáze jádra v procesu vědecké účely data. Označuje, jak úspěšné že vyhodnocování (předpověď) datové sady byl pomocí modulu trained model. 
+Vyhodnocení výkonu hello modelu je jedním z fází základní hello v procesu vědecké účely dat hello. Označuje, jak úspěšné hello vyhodnocování (předpovědi) datové sady byl pomocí modulu trained model. 
 
-Azure Machine Learning podporuje model vyhodnocení prostřednictvím dvou jeho hlavní strojového učení moduly: [Evaluate Model] [ evaluate-model] a [křížové ověření modelu][cross-validate-model]. Tyto moduly umožňují zobrazit, jak se provádí modelu z hlediska počtu metriky, které běžně se používají v machine learning a statistiky.
+Azure Machine Learning podporuje model vyhodnocení prostřednictvím dvou jeho hlavní strojového učení moduly: [Evaluate Model] [ evaluate-model] a [křížové ověření modelu][cross-validate-model]. Tyto moduly vám umožňují toosee jak modelu provádí z hlediska počtu metriky, které běžně se používají v machine learning a statistiky.
 
 ## <a name="evaluation-vs-cross-validation"></a>Vyhodnocení vs. Křížové ověření
-Vyhodnocení a křížového ověření způsoby standardní měření výkonu modelu. Obě vygenerovat zkušební metriky, které můžete zkontrolovat nebo porovnán těch, které ostatní modely.
+Vyhodnocení a křížového ověření jsou standardní způsoby toomeasure hello výkonu modelu. Obě vygenerovat zkušební metriky, které můžete zkontrolovat nebo porovnán těch, které ostatní modely.
 
-[Vyhodnocení modelu] [ evaluate-model] očekává scored datovou sadu jako vstup (nebo 2 v případě, kterou chcete porovnat výkon 2 odlišnými modely). To znamená, že budete muset cvičení váš model pomocí [trénování modelu] [ train-model] modul a zkontrolujte předpovědi na některé datové sady pomocí [Score Model] [ score-model] modulu, než je možné vyhodnotit výsledky. Hodnocení je založeno na scored popisky nebo pravděpodobnostech společně s true popisky, které jsou výstupem [Score Model] [ score-model] modulu.
+[Vyhodnocení modelu] [ evaluate-model] očekává scored datovou sadu jako vstup (nebo 2 v případě byste chtěli toocompare hello výkon 2 odlišnými modely). To znamená, že budete potřebovat tootrain model pomocí hello [Train Model] [ train-model] předpovědi modul a zkontrolujte u některých datové sady pomocí hello [Score Model] [ score-model] modulu, než je možné vyhodnotit hello výsledky. Hello hodnocení je založeno na hello skóre pro magnitudu popisky nebo pravděpodobnostech společně s hello true štítků, které jsou výstupem hello [Score Model] [ score-model] modulu.
 
-Alternativně můžete křížového ověření provést několik train – score vyhodnotit operací (10 složení) automaticky na různých podmnožiny vstupní data. Vstupní data je rozdělená do 10 části, kde jeden je vyhrazena pro testování, a dalších 9 pro školení. Tento proces se opakuje 10krát a průměr se metrik hodnocení. To pomáhá při určení, jak dobře model by generalize na nové datové sady. [Křížové ověření modelu] [ cross-validate-model] modul přebírá nevyškoleným modelu a některé s popiskem datové sady a vyhodnocení výsledky jednotlivých 10 složení, kromě zprůměrovanou výsledky.
+Alternativně můžete použít křížového ověření tooperform číslo train – score vyhodnotit operací (10 složení) automaticky na jinou podmnožinou vstupních dat hello. vstupní data Hello je rozdělená do 10 částí, kde jeden je vyhrazená pro testování a hello jiných 9 pro školení. Tento proces se opakuje 10krát a průměr se hello vyhodnocení metriky. To pomáhá při určení, jak dobře model by generalize toonew datové sady. Hello [křížové ověření modelu] [ cross-validate-model] modul přijímá ve model nevyškoleným a některé označené datovou sadu a výstupy výsledky hodnocení hello jednotlivých hello 10 složení, kromě toohello průměrem výsledky.
 
-V následujících částech jsme sestavení jednoduché regrese a klasifikace modely a vyhodnotit jejich výkonu pomocí [Evaluate Model] [ evaluate-model] a [křížové ověření modelu] [ cross-validate-model] moduly.
+V následujících částech hello, jsme sestavení jednoduché regrese a klasifikace modely a vyhodnotit jejich výkonu pomocí obou hello [Evaluate Model] [ evaluate-model] a hello [křížové ověření Model] [ cross-validate-model] moduly.
 
 ## <a name="evaluating-a-regression-model"></a>Vyhodnocení regresní Model
-Předpokládejme, že chcete předpovídat cenu automobilu použití některých funkcí, jako je například dimenze, koňských sil, modul specifikací a tak dále. Tento problém typické regrese, je kde Cílová proměnná (*cena*) je nepřetržitá číselná hodnota. Model jednoduché lineární regrese, který funkce hodnoty určité automobilu, může předpovídat cenu automobilu, že jsme můžete začlenit. Tato regresní model slouží ke stanovení skóre stejné datové sady, které jsme natrénovali na. Jakmile jsme předpokládaných ceny pro všechny automobilů, jsme prohlížením kolik jsou předpovědi odchylují od skutečné ceny v průměru vyhodnocení výkonu příslušného modelu. Pro znázornění je používáme *Automobile price data (Raw) datovou sadu* k dispozici v **uložit datové sady** část v Azure Machine Learning Studio.
+Předpokládejme, že chceme toopredict ceny automobilu na použití některých funkcí, jako je například dimenze, koňských sil, modul specifikací a tak dále. Tento problém typické regrese je, kde hello Cílová proměnná (*cena*) je nepřetržitá číselná hodnota. Jsme můžete začlenit model jednoduché lineární regrese, že dané funkce hello hodnoty určité automobilu, můžete předpovědi hello cena této Auto. Můžete použít tento regresní model tooscore hello jsme natrénovali na stejnou datovou. Jakmile budeme mít hello předpokládaných ceny pro všechny hello aut, jsme vyhodnotit hello výkonu hello modelu prohlížením kolik hello předpovědi odchylují od skutečné ceny hello v průměru. tooillustrate toho používáme hello *Automobile price data (Raw) datovou sadu* k dispozici v hello **uložit datové sady** část v Azure Machine Learning Studio.
 
-### <a name="creating-the-experiment"></a>Vytvoření experimentu
-Přidejte následující moduly do pracovního prostoru v nástroji Azure Machine Learning Studio:
+### <a name="creating-hello-experiment"></a>Vytváření hello experimentu
+Přidejte následující moduly tooyour prostoru v nástroji Azure Machine Learning Studio hello:
 
 * Automobilů price data (Raw)
 * [Lineární regrese][linear-regression]
@@ -54,41 +54,41 @@ Přidejte následující moduly do pracovního prostoru v nástroji Azure Machin
 * [Určení skóre modelu][score-model]
 * [Vyhodnocení modelu][evaluate-model]
 
-Připojte porty, jak je znázorněno níže na obrázku 1 a nastavte popisek sloupec [Train Model] [ train-model] modulu *cena*.
+Připojte hello porty, jak je znázorněno níže v obrázku 1 a sadu hello popisek sloupec hello [Train Model] [ train-model] modulu příliš*cena*.
 
 ![Vyhodnocení regresní Model](media/machine-learning-evaluate-model-performance/1.png)
 
 Obrázek 1. Vyhodnocení regresní Model.
 
-### <a name="inspecting-the-evaluation-results"></a>Probíhá kontrola výsledků vyhodnocení
-Po spuštění experimentu, můžete kliknutím na výstupní port modulu [Evaluate Model] [ evaluate-model] modul a vyberte *vizualizovat* zobrazíte výsledky hodnocení. Jsou k dispozici pro modely regrese vyhodnocení metriky: *znamenat absolutní chyba*, *kořenové znamenat absolutní chyba*, *relativní absolutní chyba*, *relativní kvadratická chyba*a *koeficientu spolehlivosti*.
+### <a name="inspecting-hello-evaluation-results"></a>Probíhá kontrola výsledků vyhodnocení hello
+Po spuštěné hello experiment, můžete kliknutím na výstupní port hello hello [Evaluate Model] [ evaluate-model] modul a vyberte *vizualizovat* výsledky hodnocení toosee hello. Hello vyhodnocení metriky, které jsou k dispozici pro regresní modely jsou: *znamenat absolutní chyba*, *kořenové znamenat absolutní chyba*, *relativní absolutní chyba*,  *Relativní kvadratická chyba*a hello *koeficientu spolehlivosti*.
 
-Termín "Chyba" představuje rozdíl mezi předpovězenou a skutečnou hodnotou. Absolutní hodnota nebo druhou mocninu tento rozdíl jsou obvykle vypočtenou hodnotu capture celkový odhad chyba napříč všemi instancemi jako rozdíl mezi předpokládaných a true hodnotou může být v některých případech záporná. Chyba metriky měření prediktivní výkon regresní model z hlediska střední odchylku jeho předpovědi z hodnot true. Nižší chybové hodnoty znamená, že je přesnější při provádění předpovědi modelu. Celkové metrika chyby 0 znamená modelu perfektně vyhovuje data.
+hello Hello termín "Chyba" představuje hello rozdíl mezi předpovězenou a skutečnou hodnotou hello. Hello absolutní hodnotu nebo hello odmocnina tohoto rozdílu jsou obvykle počítaný toocapture hello celkový odhad chyba napříč všemi instancemi jako hello rozdíl mezi hello předpovědět a může být v některých případech záporná hodnota true. Hello chyba metriky měření hello prediktivní výkon z hlediska hello střední odchylku jeho předpovědi z hodnot true hello regresní model. Nižší chybové hodnoty znamená, že je hello model přesnější při provádění předpovědi. Obecné chybě metrika 0 znamená, že hello modelu perfektně vyhovuje hello data.
 
-Koeficient spolehlivosti, která je také označována jako R spolehlivosti, je také standardní způsob měření, jak dobře model vyhovuje data. Můžete se interpretuje jako podíl variace vysvětlené modelu. A vyšší v tomto případě je lepší míry, kde 1 určuje vzájemně přizpůsobit.
+Hello koeficient spolehlivosti, která je také označována jako R spolehlivosti, je také standardní způsob měření, jak dobře hello model vyhovuje hello data. Můžete se interpretuje jako část hello variace vysvětlené hello modelu. A vyšší v tomto případě je lepší míry, kde 1 určuje vzájemně přizpůsobit.
 
 ![Lineární regrese vyhodnocení metriky](media/machine-learning-evaluate-model-performance/2.png)
 
 Obrázek 2. Lineární regrese vyhodnocení metriky.
 
 ### <a name="using-cross-validation"></a>Pomocí křížové ověření
-Jak už bylo zmíněno dříve, můžete provádět opakovaných školení, vyhodnocování a hodnocení automaticky pomocí [křížové ověření modelu] [ cross-validate-model] modulu. V takovém případě stačí je datová sada, model nevyškoleným a [křížové ověření modelu] [ cross-validate-model] modulu (viz následující obrázek). Všimněte si, budete muset nastavit popisek sloupce na *cena* v [křížové ověření modelu] [ cross-validate-model] vlastnosti modulu.
+Jak už bylo zmíněno dříve, můžete provést opakovaný školení, vyhodnocování a vyhodnocení automaticky pomocí hello [křížové ověření modelu] [ cross-validate-model] modulu. V takovém případě stačí je datová sada, model nevyškoleným a [křížové ověření modelu] [ cross-validate-model] modulu (viz následující obrázek). Všimněte si, je nutné tooset hello popisek sloupce příliš*cena* v hello [křížové ověření modelu] [ cross-validate-model] vlastnosti modulu.
 
 ![Mezi ověřování regresní Model](media/machine-learning-evaluate-model-performance/3.png)
 
 Obrázek 3. Mezi ověřování regresní Model.
 
-Po spuštění experimentu, si můžete prohlédnout výsledky hodnocení kliknutím na pravém výstupní port modulu [křížové ověření modelu] [ cross-validate-model] modulu. To poskytne podrobné zobrazení metriky pro každé iteraci (násobek) a zprůměrovanou výsledky jednotlivých metriky (obrázek 4).
+Po spuštěné hello experimentu si můžete prohlédnout výsledky hodnocení hello kliknutím na hello správné výstupní port modulu hello [křížové ověření modelu] [ cross-validate-model] modulu. To poskytne podrobné zobrazení hello metriky pro každé iteraci (násobek) a hello průměrem výsledky jednotlivých hello metriky (obrázek 4).
 
 ![Křížové ověření výsledky regresní Model](media/machine-learning-evaluate-model-performance/4.png)
 
 Obrázek 4. Křížové ověření výsledky regresní Model.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Vyhodnocení modelu binární klasifikace
-Ve scénáři binární klasifikace Cílová proměnná má jenom dvě možné výsledky, například: {0, 1} nebo {false, true}, {záporná, kladné}. Předpokládejme, jsou uvedeny datové sady pro dospělé zaměstnancům některé demografické údaje a jejich zaměstnání proměnné a že se zobrazí výzva k předvídání úroveň příjmů, binární proměnné s hodnotami {"< = 50 tisíc", "> 50 tisíc"}. Jinými slovy záporné třída reprezentuje zaměstnanci, kteří žádají menší než nebo rovna 50 tisíc za jeden rok. a kladné třída reprezentuje všechny ostatní zaměstnanci. Jako ve scénáři regrese jsme by Trénink modelu, stanovení skóre některá data a vyhodnoťte výsledky. Hlavní rozdíl je volba metriky, které se vypočítá Azure Machine Learning a výstupy. Pro ilustraci scénář úrovně předpovědi příjem, budeme používat [pro dospělé](http://archive.ics.uci.edu/ml/datasets/Adult) datovou sadu, která vytvoření experimentu Azure Machine Learning a vyhodnocení výkonu příslušného two-class logistic regresní model, běžně používané binární třídění.
+Ve scénáři binární klasifikace hello Cílová proměnná má jenom dvě možné výsledky, například: {0, 1} nebo {false, true}, {záporná, kladné}. Předpokládejme, jsou uvedeny datové sady pro dospělé zaměstnancům některé demografické údaje a jejich zaměstnání proměnné a úroveň příjmů toopredict hello, binární proměnné s hodnotami hello se zobrazí výzva {"< = 50 tisíc", "> 50 tisíc"}. Jinými slovy, hello záporné třída reprezentuje hello zaměstnanci, kteří žádají menší než nebo rovna too50K hello kladné třída reprezentuje všechny ostatní zaměstnanci a roce. Jako hello regrese scénáři jsme by trénování modelu, stanovení skóre některá data a vyhodnoťte výsledky hello. Hello zde hlavní rozdíl je volba hello metriky, které se vypočítá Azure Machine Learning a výstupy. tooillustrate hello příjem úrovně předpovědi scénáři budeme používat hello [pro dospělé](http://archive.ics.uci.edu/ml/datasets/Adult) toocreate datové sady Azure Machine Learning experiment a vyhodnocovat u nich hello výkon two-class logistic regresní model, binární běžně používané Klasifikátor.
 
-### <a name="creating-the-experiment"></a>Vytvoření experimentu
-Přidejte následující moduly do pracovního prostoru v nástroji Azure Machine Learning Studio:
+### <a name="creating-hello-experiment"></a>Vytváření hello experimentu
+Přidejte následující moduly tooyour prostoru v nástroji Azure Machine Learning Studio hello:
 
 * Datové sady pro dospělé úplné zjišťování příjem binární klasifikace
 * [Two-Class Logistic Regression][two-class-logistic-regression]
@@ -96,35 +96,35 @@ Přidejte následující moduly do pracovního prostoru v nástroji Azure Machin
 * [Určení skóre modelu][score-model]
 * [Vyhodnocení modelu][evaluate-model]
 
-Připojte porty, jak je znázorněno níže na obrázku 5 a nastavte popisek sloupec [Train Model] [ train-model] modulu *příjem*.
+Připojte hello porty, jak je znázorněno níže obrázek 5 a sadu hello popisek sloupce hello [Train Model] [ train-model] modulu příliš*příjem*.
 
 ![Vyhodnocení modelu binární klasifikace](media/machine-learning-evaluate-model-performance/5.png)
 
 Obrázek 5. Vyhodnocení modelu binární klasifikace.
 
-### <a name="inspecting-the-evaluation-results"></a>Probíhá kontrola výsledků vyhodnocení
-Po spuštění experimentu, můžete kliknutím na výstupní port modulu [Evaluate Model] [ evaluate-model] modul a vyberte *vizualizovat* zobrazíte výsledky hodnocení (obrázek 7). Jsou k dispozici pro binární klasifikaci modely vyhodnocení metriky: *přesnost*, *přesnost*, *odvolat*, *F1 skóre*, a *AUC*. Kromě toho modul výstupy nedorozuměním matice zobrazující počet true pozitivních, chybná hlášení, falešně pozitivních a true negativy, a také *ROC*, *přesnost nebo odvolání*, a *navýšení* křivek.
+### <a name="inspecting-hello-evaluation-results"></a>Probíhá kontrola výsledků vyhodnocení hello
+Po spuštěné hello experiment, můžete kliknutím na výstupní port hello hello [Evaluate Model] [ evaluate-model] modul a vyberte *vizualizovat* výsledky hodnocení hello toosee (obrázek 7). Hello vyhodnocení metriky, které jsou k dispozici pro binární klasifikaci modely jsou: *přesnost*, *přesnost*, *odvolat*, *F1 skóre*, a *AUC*. Kromě toho modul hello výstupy nedorozuměním matice zobrazující počet hello true pozitivních, chybná hlášení, falešně pozitivních a true negativy, a také *ROC*, *přesnost nebo odvolání*a *Navýšení* křivek.
 
-Přesnost je jednoduše podíl správně klasifikovaný instancí. Obvykle je první metriku, které si prohlédnete při vyhodnocování třídění. Nicméně, pokud je v testovacích datech nevyvážené (kde většinu instance patřit do jedné ze třídy), nebo vás zajímá více výkonu na jednu z tříd, přesnost není skutečně zaznamenat efektivitu třídění. Ve scénáři příjem úrovně klasifikace předpokládá, že testujete na některá data, kde % 99 instance představovat osobu, která vám menší než nebo rovna 50 tisíc za jeden rok. Je možné dosáhnout 0.99 přesnost Odhadnutím toho, jaká třída "< = 50 tisíc" pro všechny instance. Třídění v tomto případě je to dobrý úlohy celkové, ale ve skutečnosti se nepodaří klasifikovat všechny vysokými příjmy jednotlivce (1 %) správně.
+Přesnost je jednoduše hello podíl správně klasifikovaný instancí. Je obvykle hello první metriku, které si prohlédnete při vyhodnocování třídění. Když hello testovací data je však nevyvážené (kde většinu instancí hello patří tooone třídy hello), nebo vás zajímá více hello výkonu na jednu z tříd hello, přesnost není skutečně zaznamenat hello účinnosti třídění. V případě úrovně klasifikace příjem hello předpokládá testujete na některá data, kde % 99 instance hello představovat osobu, která vám menší než nebo rovna too50K za jeden rok. Je možné tooachieve 0.99 přesnost Odhadnutím toho, jaká třída hello "< = 50 tisíc" pro všechny instance. Hello třídění v takovém případě se zobrazí toobe provádění celkový dobrý úlohy, ale ve skutečnosti se nezdaří tooclassify žádné hello vysokými příjmy jednotlivce (hello 1 %) správně.
 
-Z tohoto důvodu je užitečné k výpočtu další metriky, které zaznamenat více konkrétních aspektů vyhodnocení. Před přechodem na podrobné informace o tyto metriky, je důležité si uvědomit, matice nedorozuměním vyhodnocení binární klasifikace. Popisky třídy v sadě školení může trvat na pouze 2 možné hodnoty, které se obvykle označují jako kladné nebo záporné. Kladné a záporné instancí, které třídění předpovídá správně se nazývají true pozitivních (TP) a true negativy (TN). Podobně se nesprávně klasifikovaného instancí nazývají falešně pozitivních (FP) a výsledkům (FN). Matice nejasnosti se jednoduše tabulka zobrazující počet instancí, které spadají pod každé z těchto 4 kategorií. Azure Machine Learning automaticky rozhoduje, které dvě třídy v sadě dat je kladné třída. Pokud třída popisky jsou typu logická hodnota nebo celá čísla, jsou přiřazeny 'true' nebo '1' s popiskem instancí kladné třídy. Pokud popisky jsou řetězce, jako v případě sady příjem dat, jsou popisky abecedním a první úroveň je zvolen je záporný třídy, zatímco druhou úroveň je kladné třída.
+Z tohoto důvodu je užitečné toocompute další metriky, které zaznamenat více konkrétních aspektů hello vyhodnocení. Před přechodem do hello podrobnosti o tyto metriky, je důležité toounderstand hello nedorozuměním matice vyhodnocení binární klasifikace. Třída Hello, popisky v sadě hello školení může trvat na pouze 2 možné hodnoty, které jsme obvykle naleznete tooas kladné a záporné. Hello kladné a záporné instancí, které třídění předpovídá správně se nazývají true pozitivních (TP) a true negativy (TN). Podobně hello nesprávně klasifikované instancí se nazývají falešně pozitivních (FP) a výsledkům (FN). matice nedorozuměním Hello je jednoduše tabulka zobrazující hello počet instancí, které spadají pod každé z těchto 4 kategorií. Azure Machine Learning automaticky rozhoduje, který hello dvě třídy v datové sadě hello je kladné třída hello. Pokud hello třída popisky jsou logická hodnota nebo celá čísla, hello 'true' nebo '1' s popiskem instancí přiřazené kladné třída hello. Pokud hello popisky jsou řetězce, jako v případě hello sady hello příjem dat jsou popisky hello abecedním a první úroveň hello je zvolen toobe hello záporné třída při druhou úroveň hello je kladné třída hello.
 
 ![Matice nedorozuměním binární klasifikace](media/machine-learning-evaluate-model-performance/6a.png)
 
 Obrázek 6. Binární klasifikační matice nejasnostem.
 
-Po návratu do příjem klasifikace problému, by chceme zeptejte se, že několik otázek hodnocení, které nám pomůže pochopit výkon třídění použít. Je velmi přirozené dotaz: ' mimo jednotlivce, kterým předpovědět modelu k získání být > 50 tisíc (transakční program + FP), kolik byly správnou klasifikaci (TP)?. Tento dotaz může odpovědi prohlížením **přesnost** modelu, který je poměr položky, které jsou klasifikovány správně: TP/(TP+FP). Další běžné otázky je "mimo všechny vysoce získávat zaměstnancům příjem > 50 tisíc (transakční program + FN), kolik třídění klasifikovat správně (TP)". Toto je ve skutečnosti **odvolat**, nebo hodnota true, kladné rychlost: TP/(TP+FN) třídění. Můžete si všimnout, že je zřejmé kompromis mezi přesnost a odvolání. Například zadány relativně vyrovnáváním datovou sadu, třídění, který bude předpovídat většinou kladné instancí, by měla mít vysokou odvolání, ale spíš nízkou přesnost jako řadu záporné instance by misclassified výsledkem velký počet falešně pozitivních zjištění. Pokud chcete zjistit, jak se tyto dvě metriky liší se graf, můžete kliknutím na křivku 'Přesnost nebo odvolání' na stránce výstupu výsledek vyhodnocení (nahoře vlevo součástí obrázek 7).
+Návratem toohello příjem klasifikace problému, by chceme tooask několik otázek hodnocení, které nám pomůže pochopit výkon hello třídění hello používá. Je velmi přirozené dotaz: ' mimo hello jednotlivce, kterým hello modelu předpokládaných toobe získávat > 50 tisíc (transakční program + FP), kolik byly správnou klasifikaci (TP)? " Tento dotaz může odpovědi prohlížením hello **přesnost** hello modelu, který je hello podíl položky, které jsou klasifikovány správně: TP/(TP+FP). Další běžné otázky je "mimo všechny hello vysoké zaměstnance earning s příjmem > 50 tisíc (transakční program + FN), kolik hello třídění klasifikovat správně (TP)". Toto je ve skutečnosti hello **odvolat**, nebo hello true kladné rychlost: TP/(TP+FN) třídění hello. Můžete si všimnout, že je zřejmé kompromis mezi přesnost a odvolání. Například zadány relativně vyrovnáváním datovou sadu, třídění, který bude předpovídat většinou kladné instancí, by měla mít vysokou odvolání, ale spíš nízkou přesnost libovolný počet instancí záporné hello by misclassified výsledkem velký počet falešně pozitivních zjištění. toosee vykreslení o tom, jak se tyto dvě metriky liší, můžete kliknutím na křivku 'Přesnost nebo odvolání' hello v stránku výstup výsledků vyhodnocení hello (nahoře vlevo součástí obrázek 7).
 
 ![Výsledky vyhodnocení binární klasifikace](media/machine-learning-evaluate-model-performance/7.png)
 
 Na obrázku 7. Výsledky vyhodnocení binární klasifikace.
 
-Další související metrika, který se často používá **F1 skóre**, což trvá přesnost i pro vyvolání v úvahu. Je průměr těchto 2 metrik a jako takový je počítaný: F1 = 2 (přesnost x odvolání) / (přesnost + odvolání). Skóre F1 je dobrý způsob, jak shrnout vyhodnocení v jediné číslo, ale je vždy vhodné podívat se na přesnost i pro vyvolání společně, abyste lépe pochopili, jak se chová třídění.
+Další související metriku, která se často používá je hello **F1 skóre**, což trvá přesnost i pro vyvolání v úvahu. Je hello průměr těchto 2 metrik a jako takový je počítaný: F1 = 2 (přesnost x odvolání) / (přesnost + odvolání). skóre F1 Hello je k testování dobře toosummarize hello v jediné číslo, ale vždycky je dobrým zvykem toolook na přesnost i pro vyvolání společně toobetter pochopit, jak se chová třídění.
 
-Kromě toho jeden můžete prohlédnout true kladné rychlost oproti false kladné rychlost v **příjemce operační vlastnosti (ROC)** křivky a odpovídající **oblasti v části the křivky (AUC)** hodnotu. Čím bližší je tento křivky levém horním rohu, tím lepší výkon třídění je (která je maximalizace true kladné rychlost a současně minimalizujete její false kladné rychlost). Křivek, které již brzy bude dosaženo diagonálních grafu, výsledek z třídění, které jsou obvykle provádět předpovědi, které již brzy bude dosaženo náhodné hádání.
+Kromě toho jeden můžete prohlédnout true kladné míra hello oproti false kladné rychlost hello v hello **příjemce operační vlastnosti (ROC)** křivky a hello odpovídající **oblasti pod hello křivky (AUC)** hodnotu. Hello blíže tento křivka je toohello horní levého horního rohu, hello lepší hello třídění na výkon (který je maximální využití hello true kladné rychlost a současně minimalizujete její hello false kladné rychlost). Křivek, které jsou zavřít toohello diagonálních z hello výkresu, výsledek z třídění, které jsou obvykle toomake předpovědi, které jsou zavřete uhodnutí toorandom.
 
 ### <a name="using-cross-validation"></a>Pomocí křížové ověření
-Jako v příkladu regrese jsme provedení křížového ověření opakovaně cvičení, skóre a vyhodnotit různé podmnožiny dat automaticky. Podobně, můžeme použít [křížové ověření modelu] [ cross-validate-model] modulu, model nevyškoleným logistic regression a datové sady. Popisek sloupce musí být nastavena na *příjem* v [křížové ověření modelu] [ cross-validate-model] vlastnosti modulu. Po spuštění experimentu a na pravé straně klikněte na výstupní port [křížové ověření modelu] [ cross-validate-model] modulu, uvidíme hodnoty metriky binární klasifikaci pro každý násobek kromě střední a směrodatnou odchylku jednotlivých. 
+Jako v příkladu regrese hello jsme provedení křížového ověření toorepeatedly train, stanovení skóre a vyhodnotit různé podmnožiny dat hello automaticky. Podobně, můžeme použít hello [křížové ověření modelu] [ cross-validate-model] modulu, model nevyškoleným logistic regression a datové sady. Hello popisek sloupce musí být nastaven příliš*příjem* v hello [křížové ověření modelu] [ cross-validate-model] vlastnosti modulu. Po spuštění experimentu hello a kliknete na pravém hello výstupní port hello [křížové ověření modelu] [ cross-validate-model] modulu, uvidíme hello binární klasifikace metrika hodnoty pro každý násobek kromě toohello střední a směrodatné odchylky jednotlivých. 
 
 ![Křížové ověření modelu binární klasifikace](media/machine-learning-evaluate-model-performance/8.png)
 
@@ -135,10 +135,10 @@ Obrázek 8. Mezi ověřování modelu binární klasifikace.
 Obrázek 9. Křížové ověření výsledky binární třídění.
 
 ## <a name="evaluating-a-multiclass-classification-model"></a>Vyhodnocení modelu více třídami klasifikace
-V této experimentu budeme používat oblíbených [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris") datové sady, který obsahuje instance 3 různé typy (třídy) iris závodu. Existují 4 hodnot funkce (sepal délky a šířky a délky a šířky Okvětní lístek) pro každou instanci. V předchozí experimenty jsme natrénovali a otestovat modelů pomocí stejné datové sady. Zde použijeme [rozdělení dat] [ split] modul k vytváření 2 podmnožiny dat, cvičení na první a stanovení skóre a vyhodnocení na druhý. Je Iris datová sada veřejně dostupné na [UCI Machine Learning úložiště](http://archive.ics.uci.edu/ml/index.html)a můžete je stáhnout pomocí [importovat Data] [ import-data] modulu.
+V této experimentu použijeme hello oblíbených [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris") datové sady, který obsahuje instance 3 různé typy (třídy) hello iris závodu. Existují 4 hodnot funkce (sepal délky a šířky a délky a šířky Okvětní lístek) pro každou instanci. V předchozích experimenty hello jsme natrénovali a modely otestované hello pomocí hello stejné datové sady. Zde použijeme hello [rozdělení dat] [ split] modulu toocreate 2 podmnožiny dat hello cvičení na hello nejprve a stanovení skóre a vyhodnocení na hello druhý. Hello Iris datová sada veřejně dostupné v hello [UCI Machine Learning úložiště](http://archive.ics.uci.edu/ml/index.html)a můžete je stáhnout pomocí [importovat Data] [ import-data] modulu.
 
-### <a name="creating-the-experiment"></a>Vytvoření experimentu
-Přidejte následující moduly do pracovního prostoru v nástroji Azure Machine Learning Studio:
+### <a name="creating-hello-experiment"></a>Vytváření hello experimentu
+Přidejte následující moduly tooyour prostoru v nástroji Azure Machine Learning Studio hello:
 
 * [Umožňuje importovat Data][import-data]
 * [Doménové struktury rozhodnutí multiclass][multiclass-decision-forest]
@@ -147,27 +147,27 @@ Přidejte následující moduly do pracovního prostoru v nástroji Azure Machin
 * [Určení skóre modelu][score-model]
 * [Vyhodnocení modelu][evaluate-model]
 
-Připojte porty, jak je znázorněno níže na obrázku 10.
+Připojte hello porty, jak je znázorněno níže na obrázku 10.
 
-Nastavte popisek index sloupce [Train Model] [ train-model] modulu 5. Datová sada má žádný řádek záhlaví, ale víme, že popisky třídy jsou ve sloupci pátý.
+Nastavit hello popisek sloupcový index hello [Train Model] [ train-model] too5 modulu. datovou sadu Hello je žádný řádek záhlaví, ale víme hello třídy, které jsou popisky ve sloupci pátý hello.
 
-Klikněte na [importovat Data] [ import-data] modul a sadu *zdroj dat* vlastnost *adresa URL webové prostřednictvím protokolu HTTP*a *adresa URL* k http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data.
+Klikněte na hello [importovat Data] [ import-data] modulu a sadu hello *zdroj dat* vlastnost příliš*adresa URL webové prostřednictvím protokolu HTTP*a hello *adresy URL*  toohttp://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data.
 
-Nastavte podíl instance, které chcete použít pro školení v [rozdělení dat] [ split] modulu (0,7 např.).
+Sada hello podíl toobe instance použitý pro školení v hello [rozdělení dat] [ split] modulu (0,7 např.).
 
 ![Vyhodnocení více třídami třídění](media/machine-learning-evaluate-model-performance/10.png)
 
 Obrázek 10. Vyhodnocení více třídami třídění
 
-### <a name="inspecting-the-evaluation-results"></a>Probíhá kontrola výsledků vyhodnocení
-Spusťte experiment a klikněte na výstupní port modulu [Evaluate Model][evaluate-model]. Výsledky hodnocení jsou uvedené ve formě matice nejasnostem, v takovém případě. Matice zobrazuje skutečné vs. předpokládaných instancí pro všechny 3 třídy.
+### <a name="inspecting-hello-evaluation-results"></a>Probíhá kontrola výsledků vyhodnocení hello
+Spusťte hello experiment a klikněte na výstupní port hello [Evaluate Model][evaluate-model]. výsledky vyhodnocení Hello uvádíme v hello formuláře matice nejasnostem, v tomto případě. v matici Hello zobrazí hello skutečnost a předpokládaných instancí pro všechny 3 třídy.
 
 ![Výsledky vyhodnocení více třídami klasifikace](media/machine-learning-evaluate-model-performance/11.png)
 
 Obrázek 11. Výsledky vyhodnocení více třídami klasifikace.
 
 ### <a name="using-cross-validation"></a>Pomocí křížové ověření
-Jak už bylo zmíněno dříve, můžete provádět opakovaných školení, vyhodnocování a hodnocení automaticky pomocí [křížové ověření modelu] [ cross-validate-model] modulu. Potřebovali byste datovou sadu, model nevyškoleným a [křížové ověření modelu] [ cross-validate-model] modulu (viz následující obrázek). Akci je nutné nastavit sloupec popisek [křížové ověření modelu] [ cross-validate-model] modulu (index sloupce 5 v tomto případě). Po spuštění experimentu a právo kliknete na výstupní port [křížové ověření modelu][cross-validate-model], si můžete prohlédnout metriky hodnoty pro každý násobek i odchylky střední a standard. Metriky zobrazí tady jsou podobná těm, které jsou popsané v případě, že binární klasifikace. Ale Všimněte si, že v více třídami klasifikaci, výpočetních pozitivních/negativy true a false pozitivních/negativy se provádí počítání na základě na třídu, protože neexistuje žádná třída celkové kladné a záporné. Například při výpočtu přesnost nebo odvolání 'Iris-setosa' třídy, se předpokládá, že toto je kladné třídy a všechny ostatní jako záporné.
+Jak už bylo zmíněno dříve, můžete provést opakovaný školení, vyhodnocování a vyhodnocení automaticky pomocí hello [křížové ověření modelu] [ cross-validate-model] modulu. Potřebovali byste datovou sadu, model nevyškoleným a [křížové ověření modelu] [ cross-validate-model] modulu (viz následující obrázek). Znovu potřebujete tooset hello popisek sloupec hello [křížové ověření modelu] [ cross-validate-model] modulu (index sloupce 5 v tomto případě). Po spuštění experimentu hello a kliknutím na pravé hello výstupní port hello [křížové ověření modelu][cross-validate-model], si můžete prohlédnout hello metriky hodnoty pro každý fold a také text hello, střední a směrodatné odchylky. metriky Hello zobrazí tady jsou podobné toohello hello ty, které jsou popsané v případě binární klasifikace hello. Ale Všimněte si, že v více třídami klasifikaci, výpočetních negativy true pozitivních hello a chybná pozitivních nebo hlášení se provádí počítání na základě na třídu, protože neexistuje žádná třída celkové kladné a záporné. Například při výpočetní hello přesnost nebo odvolání hello 'Iris-setosa' třídy, se předpokládá, že toto je hello kladné třídy a všechny ostatní jako záporné.
 
 ![Křížové ověření modelu více třídami klasifikace](media/machine-learning-evaluate-model-performance/12.png)
 

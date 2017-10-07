@@ -1,6 +1,6 @@
 ---
-title: "Použití Javy k dotazování služby Azure SQL Database | Dokumentace Microsoftu"
-description: "Toto téma vám ukáže, jak pomocí Javy vytvořit program, který se připojí ke službě Azure SQL Database a bude ji dotazovat s použitím příkazů jazyka Transact-SQL."
+title: aaaUse Java tooquery Azure SQL Database | Microsoft Docs
+description: "Toto téma ukazuje, jak toouse Java toocreate program, který se připojuje tooan Azure SQL Database a dotazování pomocí příkazů Transact-SQL."
 services: sql-database
 documentationcenter: 
 author: ajlam
@@ -15,55 +15,55 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 07/10/2017
 ms.author: andrela
-ms.openlocfilehash: 103b0755ab89a13297cfdc9ec72416664da8c1e9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f014edbe38ca0e7b6e43f4eb4d2e53d3561bf3e7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-java-to-query-an-azure-sql-database"></a>Použití Javy k dotazování databáze SQL Azure
+# <a name="use-java-tooquery-an-azure-sql-database"></a>Použít Java tooquery Azure SQL database
 
-Tento rychlý start ukazuje použití [Javy](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) pro připojení k databázi SQL Azure a následné použití příkazů jazyka Transact-SQL k dotazování dat.
+Tento rychlý start předvádí, jak toouse [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) tooconnect tooan Azure SQL databáze a pak používat data tooquery příkazy jazyka Transact-SQL.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli absolvovat tento rychlý úvodní kurz, ujistěte se, že máte následující:
+toocomplete tento rychlý úvodní kurz, ujistěte se, že máte hello následující požadavky:
 
-- Databázi SQL Azure. Tento rychlý start používá prostředky vytvořené v některém z těchto rychlých startů: 
+- Databázi SQL Azure. Tento rychlý start používá hello prostředky vytvořené v jednom z těchto rychlé spuštění: 
 
    - [Vytvoření databáze – portál](sql-database-get-started-portal.md)
    - [Vytvoření databáze – rozhraní příkazového řádku](sql-database-get-started-cli.md)
    - [Vytvoření databáze – PowerShell](sql-database-get-started-powershell.md)
 
-- [Pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) pro veřejnou IP adresu počítače, který používáte pro tento rychlý úvodní kurz.
+- A [pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) pro hello veřejnou IP adresu počítače hello použijete pro tento kurz rychlý start.
 
 - Máte nainstalovanou Javu a související software pro váš operační systém.
 
     - **MacOS:** Nainstalujte Homebrew a Javu a potom nainstalujte Maven. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/java/mac/).
-    - **Ubuntu:** Nainstalujte Java Development Kit a Maven. Viz [kroky 1.2, 1.3 a 1.4](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
-    - **Windows:** Nainstalujte Java Development Kit a Maven. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/java/windows/).    
+    - **Ubuntu**: Nainstalujte hello Java Development Kit a nainstalujte Maven. Viz [kroky 1.2, 1.3 a 1.4](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
+    - **Windows**: instalace hello Java Development Kit a Maven. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/java/windows/).    
 
 ## <a name="sql-server-connection-information"></a>Informace o připojení k SQL serveru
 
-Získejte informace o připojení potřebné pro připojení k databázi SQL Azure. V dalších postupech budete potřebovat plně kvalifikovaný název serveru, název databáze a přihlašovací údaje.
+Získáte hello připojení informace potřebné tooconnect toohello Azure SQL database. Budete potřebovat hello serveru plně kvalifikovaný název, název databáze a přihlašovacích údajů v dalším postupu hello.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo vyberte **SQL Database** a na stránce **Databáze SQL** klikněte na vaši databázi. 
-3. Na stránce **Přehled** pro vaši databázi si prohlédněte plně kvalifikovaný název serveru, jak je znázorněno na následujícím obrázku: Pokud na název serveru najedete myší, můžete vyvolat možnost **Kopírovat kliknutím**.  
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
+2. Vyberte **databází SQL** z nabídky na levé straně hello a klikněte na tlačítko databáze na hello **databází SQL** stránky. 
+3. Na hello **přehled** pro vaši databázi si prohlédněte hello serveru plně kvalifikovaný název, jak ukazuje následující obrázek hello: můžete podržet přes toobring název serveru hello až hello **klikněte na tlačítko toocopy** možnost.  
 
    ![název-serveru](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. Pokud zapomenete přihlašovací informace pro váš server, přejděte na stránku serveru služby SQL Database, abyste zobrazili jméno správce serveru.  V případě potřeby obnovte heslo.     
+4. Pokud zapomenete vaše přihlašovací údaje serveru, přejděte toohello databáze SQL serveru stránky tooview hello serveru správce název.  V případě potřeby resetovat heslo hello.     
 
 ## <a name="create-maven-project-and-dependencies"></a>**Vytvoření projektu a závislostí v Mavenu**
-1. Na terminálu vytvořte nový projekt v Mavenu s názvem **sqltest**. 
+1. Hello terminálu, vytvořte nový projekt Maven s názvem **sqltest**. 
 
    ```bash
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=sqltest" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
 2. Po zobrazení výzvy zadejte **Y**.
-3. Změňte adresář na **sqltest** a v oblíbeném textovém editoru otevřete soubor ***pom.xml***.  Pomocí následujícího kódu přidejte k závislostem projektu **Ovladač Microsoft JDBC pro SQL Server**:
+3. Změnit adresář příliš**sqltest** a otevřete ***pom.xml*** s svém oblíbeném textovém editoru.  Přidat hello **ovladač JDBC Microsoft pro systém SQL Server** závislosti projektu tooyour s využitím hello následující kód:
 
    ```xml
    <dependency>
@@ -73,7 +73,7 @@ Získejte informace o připojení potřebné pro připojení k databázi SQL Azu
    </dependency>
    ```
 
-4. Také do souboru ***pom.xml*** přidejte k projektu následující vlastnosti.  Pokud nemáte část s vlastnostmi, můžete ji přidat po závislostech.
+4. Také v ***pom.xml***, přidejte následující vlastnosti tooyour projektu hello.  Pokud nemáte oddíl vlastností, můžete ho přidat po hello závislosti.
 
    ```xml
    <properties>
@@ -84,11 +84,11 @@ Získejte informace o připojení potřebné pro připojení k databázi SQL Azu
 
 5. Soubor ***pom.xml*** uložte a zavřete.
 
-## <a name="insert-code-to-query-sql-database"></a>Vložení kódu pro dotazování databáze SQL
+## <a name="insert-code-tooquery-sql-database"></a>Vložení kódu tooquery SQL database
 
 1. V projektu v Mavenu už byste měli mít soubor ***App.java*** umístěný v: ..\sqltest\src\main\java\com\sqlsamples\App.java
 
-2. Otevřete tento soubor, jeho obsah nahraďte následujícím kódem a přidejte odpovídající hodnoty pro váš server, databázi, uživatele a heslo.
+2. Otevřete soubor hello a nahraďte jeho obsah s hello následující kód a přidat hello odpovídající hodnoty pro server, databáze, uživatele a heslo.
 
    ```java
    package com.sqldbsamples;
@@ -103,7 +103,7 @@ Získejte informace o připojení potřebné pro připojení k databázi SQL Azu
 
     public static void main(String[] args) {
     
-        // Connect to database
+        // Connect toodatabase
            String hostName = "your_server.database.windows.net";
            String dbName = "your_database";
            String user = "your_username";
@@ -144,16 +144,16 @@ Získejte informace o připojení potřebné pro připojení k databázi SQL Azu
    }
    ```
 
-## <a name="run-the-code"></a>Spuštění kódu
+## <a name="run-hello-code"></a>Spuštění kódu hello
 
-1. V příkazovém řádku spusťte následující příkazy:
+1. Hello příkazového řádku spusťte následující příkazy hello:
 
    ```bash
    mvn package
    mvn -q exec:java "-Dexec.mainClass=com.sqldbsamples.App"
    ```
 
-2. Ověřte, že se vrátilo prvních 20 řádků, a potom zavřete okno aplikace.
+2. Ověřte, že horních řádků 20 hello se vrátí a pak zavřete okno aplikace hello.
 
 
 ## <a name="next-steps"></a>Další kroky

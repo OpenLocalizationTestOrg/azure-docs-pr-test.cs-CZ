@@ -1,6 +1,6 @@
 ---
-title: "Postup dotazování pomocí SQL v Azure Cosmos DB? | Dokumentace Microsoftu"
-description: "Postup dotazování pomocí dat DocumentDB pomocí SQL v Azure Cosmos DB"
+title: aaaHow tooquery s SQL v Azure Cosmos DB? | Dokumentace Microsoftu
+description: "Další informace tooquery pomocí dat DocumentDB pomocí SQL v Azure Cosmos DB"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -16,24 +16,24 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: a2a562c06c6302b9548e758b4c6754ec13b6001d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d3dc51acf92cb78d4f4d9dbac7ec54b1382431cc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-how-to-query-using-sql"></a>Azure Cosmos DB: Jak dotazovat pomocí SQL?
+# <a name="azure-cosmos-db-how-tooquery-using-sql"></a>Azure Cosmos DB: Jak tooquery pomocí SQL?
 
-Azure Cosmos DB [DocumentDB API](documentdb-introduction.md) podporuje dotazování dokumentů pomocí SQL. Tento článek obsahuje ukázkové dokumentu a dva ukázkové dotazy SQL a výsledky.
+Hello Azure Cosmos DB [DocumentDB API](documentdb-introduction.md) podporuje dotazování dokumentů pomocí SQL. Tento článek obsahuje ukázkové dokumentu a dva ukázkové dotazy SQL a výsledky.
 
-Tento článek obsahuje následující úlohy: 
+Tento článek se zabývá hello následující úlohy: 
 
 > [!div class="checklist"]
 > * Dotazování na data pomocí SQL
 
 ## <a name="sample-document"></a>Ukázka dokumentu
 
-Dotazy SQL v tomto článku použít následující ukázka dokumentu.
+dotazy SQL Hello v tomto článku použít hello následující ukázka dokumentu.
 
 ```json
 {
@@ -65,18 +65,18 @@ Dotazy SQL v tomto článku použít následující ukázka dokumentu.
 ```
 ## <a name="where-can-i-run-sql-queries"></a>Kde je můžete spouštět dotazy SQL?
 
-Můžete spouštět dotazy pomocí Průzkumníku dat na portálu Azure pomocí [REST API a sadám SDK,](documentdb-sdk-dotnet.md)a to i v [Query playground](https://www.documentdb.com/sql/demo), která se spouští dotazy na existující sady ukázková data.
+Můžete spouštět dotazy pomocí hello Průzkumníku dat v hello portál Azure, prostřednictvím hello [REST API a sadám SDK](documentdb-sdk-dotnet.md)a to i v hello [Query playground](https://www.documentdb.com/sql/demo), která se spouští dotazy na existující sady ukázková data.
 
 Další informace o dotazech SQL najdete v tématu:
 * [Dotaz SQL a syntaxe SQL](documentdb-sql-query.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento kurz předpokládá, že máte účet Azure Cosmos databáze a kolekce. Nemáte žádné těchto? Dokončení [rychlý start 5 minut](create-mongodb-nodejs.md) nebo [vývojáře kurzu](tutorial-develop-mongodb.md) vytvoření účtu a kolekce.
+Tento kurz předpokládá, že máte účet Azure Cosmos databáze a kolekce. Nemáte žádné těchto? Dokončení hello [rychlý start 5 minut](create-mongodb-nodejs.md) nebo hello [vývojáře kurzu](tutorial-develop-mongodb.md) toocreate účet a kolekce.
 
 ## <a name="example-query-1"></a>Příklad dotazu 1
 
-Zadaný vzorek rodiny dokumentu výše, následující dotaz SQL vrátí dokumenty kde pole id odpovídá `WakefieldFamily`. Vzhledem k tomu, že je `SELECT *` příkaz výstup tohoto dotazu je kompletní dokumentu JSON:
+Zadané hello ukázka rodiny dokumentu výše, následující dotaz SQL vrátí hello dokumenty kde pole id hello odpovídá `WakefieldFamily`. Vzhledem k tomu, že je `SELECT *` příkaz hello výstup hello dotazu je hello dokončení dokumentu JSON:
 
 **Dotaz**
 
@@ -117,7 +117,7 @@ Zadaný vzorek rodiny dokumentu výše, následující dotaz SQL vrátí dokumen
 
 ## <a name="example-query-2"></a>Příklad dotazu 2
 
-Další dotaz vrátí všechny názvy daným podřízených prvků v dané rodině, jehož id odpovídá `WakefieldFamily` seřazené podle jejich úrovni.
+Hello další dotaz vrátí všechny názvy daným hello podřízených prvků řady hello shoduje s id `WakefieldFamily` seřazené podle jejich úrovni.
 
 **Dotaz**
 
@@ -137,12 +137,12 @@ Další dotaz vrátí všechny názvy daným podřízených prvků v dané rodin
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provést následující:
+V tomto kurzu provedete krok hello následující:
 
 > [!div class="checklist"]
-> * Zjistili, jak k dotazování pomocí SQL  
+> * Jak se naučili tooquery pomocí SQL  
 
-Nyní můžete přejít k dalším kurzu se dozvíte, jak se bude distribuovat globální data.
+Nyní můžete přejít toohello další kurz toolearn jak toodistribute data globálně.
 
 > [!div class="nextstepaction"]
 > [Globálně distribuci dat](tutorial-global-distribution-documentdb.md)

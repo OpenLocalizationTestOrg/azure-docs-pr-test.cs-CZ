@@ -1,6 +1,6 @@
 ---
-title: "Instalace jazyka Python a sady SDK – Azure"
-description: "Informace o instalaci Pythonu a sady SDK pro použití s Azure."
+title: "aaaInstall Python a hello SDK – Azure"
+description: "Zjistěte, jak tooinstall Python a hello toouse SDK s Azure."
 services: 
 documentationcenter: python
 author: lmazuel
@@ -14,68 +14,68 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: lmazuel
-ms.openlocfilehash: c9df4e1f7677b2ed10684f6f3c981f2abf64f171
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: c1b394770f9abd3e654a23d79ae179a9af89e2fb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="installing-python-and-the-sdk"></a>Instalace jazyka Python a sady SDK
-Python je možné snadno nastavit v systému Windows a obsahuje předem nainstalovaná v systému Mac, Linux, a [Bash pro systém Windows](https://msdn.microsoft.com/commandline/wsl/about). Tento průvodce vás provede procesem instalace a získávání váš počítač připravený k použití s Azure.
+# <a name="installing-python-and-hello-sdk"></a>Instalace jazyka Python a hello SDK
+Python je snadno tooset až v systému Windows a dodává se předem nainstalovaná v systému Mac, Linux, a [Bash pro systém Windows](https://msdn.microsoft.com/commandline/wsl/about). Tento průvodce vás provede procesem instalace a získávání váš počítač připravený k použití s Azure.
 
-## <a name="whats-in-the-python-azure-sdk"></a>Co je v Python Azure SDK?
-Azure SDK pro jazyk Python obsahuje součásti, které vám umožní vyvíjet, nasazení a Správa aplikací Python pro Azure. Konkrétně sadu Azure SDK pro jazyk Python zahrnuje následující:
+## <a name="whats-in-hello-python-azure-sdk"></a>Co je v hello Python Azure SDK?
+Hello Azure SDK pro jazyk Python obsahuje součásti, které vám umožňují toodevelop, nasazení a Správa aplikací Python pro Azure. Konkrétně hello Azure SDK pro jazyk Python obsahuje hello následující:
 
 * **Správa knihovny**. Tyto knihovny tříd poskytují rozhraní správu prostředků Azure, například účty úložiště, virtuální počítače.
 * **Knihovny za běhu**. Tyto knihovny tříd poskytují rozhraní pro přístup k Azure funkce, jako je například úložiště a service bus.
 
-## <a name="which-python-and-which-version-to-use"></a>Které Python a která verze se má použít
+## <a name="which-python-and-which-version-toouse"></a>Které Python a které toouse verze
 Nejsou k dispozici několik typů Python překladače – mezi příklady patří:
 
-* CPython – standard a nejčastěji používané překladač Pythonu
-* PyPy - rychlé, kompatibilní s jinou implementaci na CPython
+* CPython - překladač Pythonu standardní a nejčastěji používané hello
+* PyPy - tooCPython rychlé, kompatibilní s jinou implementaci
 * IronPython - překladač Pythonu, která běží na rozhraní .net/CLR
-* Jython - překladač Pythonu, který běží na virtuálním počítači Java
+* Jython - překladač Pythonu, která běží na hello virtuálního počítače Java
 
-**CPython** v2.7 nebo v3.3 + a PyPy 5.4.0 jsou testovány a podporovány pro sady Azure SDK pro Python.
+**CPython** v2.7 nebo v3.3 + a PyPy 5.4.0 jsou testovány a podporované na hello Python Azure SDK.
 
-## <a name="where-to-get-python"></a>Kde získat jazyk Python?
-Chcete-li získat CPython několika způsoby:
+## <a name="where-tooget-python"></a>Kde tooget Python?
+Existuje několik způsobů tooget CPython:
 
 * Přímo z [www.python.org][www.python.org]
 * Z důvěryhodných distro jako [www.continuum.io][www.continuum.io], [www.enthought.com] [ www.enthought.com] nebo [www.activestate.com][www.activestate.com]
 * Sestavení ze zdroje!
 
-Pokud máte konkrétní potřebu, doporučujeme první dvě možnosti.
+Pokud máte konkrétní potřebu, doporučujeme hello první dvě možnosti.
 
 ## <a name="sdk-installation-on-windows-linux-and-macos-client-libraries-only"></a>Instalace sady SDK v systému Windows, Linux a systému MacOS (pouze klientské knihovny)
-Pokud je již nainstalován jazyk Python, můžete k instalaci sady všechny knihovny klienta ve vaší stávající Python 2.7 nebo prostředí Python 3.3 + pip. Tato akce stáhne balíčky ze [indexu balíčků Pythonu] [ Python Package Index] (úložiště PyPI).
+Pokud je již nainstalován jazyk Python, můžete použít pip tooinstall sady všech knihoven klienta hello ve vaší stávající Python 2.7 nebo prostředí Python 3.3 +. Tato akce stáhne hello balíčky z hello [indexu balíčků Pythonu] [ Python Package Index] (úložiště PyPI).
 
 Budete pravděpodobně potřebovat oprávnění správce:
 
-* Linux a systému MacOS, použijte `sudo` příkaz: `sudo pip install azure-mgmt-compute`.
+* Linux a systému MacOS, použijte hello `sudo` příkaz: `sudo pip install azure-mgmt-compute`.
 * Windows: Otevřete prostředí PowerShell nebo příkazový řádek jako správce
 
 Můžete nainstalovat jednotlivě každý knihovny pro každou službu Azure:
 
 ```console
-   $ pip install azure-batch          # Install the latest Batch runtime library
-   $ pip install azure-mgmt-scheduler # Install the latest Storage management library
+   $ pip install azure-batch          # Install hello latest Batch runtime library
+   $ pip install azure-mgmt-scheduler # Install hello latest Storage management library
 ```
 
-Náhled balíčky můžete nainstalovat pomocí `--pre` příznak:
+Náhled balíčky můžete nainstalovat pomocí hello `--pre` příznak:
 
 ```console
-   $ pip install --pre azure-mgmt-compute # installs only the latest Compute Management library
+   $ pip install --pre azure-mgmt-compute # installs only hello latest Compute Management library
 ```
 
-Můžete taky nainstalovat sadu Azure knihovny v jediném řádku pomocí `azure` metabalíček. Vzhledem k tomu, že ne všechny balíčky v tomto balíčku meta publikují se jako stabilní ještě `azure` metabalíček je stále ve verzi preview.
-Však balíčky jádra, z perspektivy kvality/úplnost kód lze považovat za "stabilní" v tuto chvíli
+Můžete taky nainstalovat sadu Azure knihovny na jediném řádku pomocí hello `azure` metabalíček. Vzhledem k tomu, že ne všechny balíčky v tomto balíčku meta publikují se jako stabilní ještě, hello `azure` metabalíček je stále ve verzi preview.
+Ale hello základní balíčků z perspektivy kvality/úplnost kód lze považovat za "stabilní" v tuto chvíli
 
 * oficiálně označen jako takový synchronizované s jinými jazyky co nejdříve.
   Jsme nejsou plánování na všechny další hlavní změny do té doby.
 
-Vzhledem k tomu, že je verze preview, budete muset použít `--pre` příznak:
+Vzhledem k tomu, že je verze preview, budete potřebovat toouse hello `--pre` příznak:
 
 ```console
    $ pip install --pre azure
@@ -88,7 +88,7 @@ nebo přímo
 ```
 
 ## <a name="getting-more-packages"></a>Získávání další balíčky
-[Indexu balíčků Pythonu] [ Python Package Index] (úložiště PyPI) má bohaté výběr Python knihovny.  Pokud jste vybrali k instalaci Distro, budete již mít většinu zajímavé bitů pro různé scénáře vývoje webů na technické projekty.
+Hello [indexu balíčků Pythonu] [ Python Package Index] (úložiště PyPI) má bohaté výběr Python knihovny.  Pokud jste zvolili tooinstall Distro, budete již mít většinu hello zajímavé bitů pro různé scénáře tooTechnical vývoj webové výpočetní.
 
 ## <a name="python-tools-for-visual-studio"></a>Python Tools for Visual Studio
 [Python Tools pro Visual Studio][Python Tools pro Visual Studio] (PTVS) je plug-in bez/OSS od společnosti Microsoft, která převede VS do plnohodnotný IDE Python:
@@ -97,26 +97,26 @@ nebo přímo
 
 Pomocí PTVS je nepovinný, ale doporučuje se jako nabízí podporu jazyka Python a webový projekt nebo řešení, ladění, profilace, interaktivních okna, úprav šablony a technologii Intellisense.
 
-PTVS také usnadňuje nasazení do služby Microsoft Azure s podporou pro nasazení do [cloudové služby](cloud-services/cloud-services-python-ptvs.md) a [weby](app-service-web/web-sites-python-ptvs-django-mysql.md).
+PTVS také umožňuje snadno toodeploy tooMicrosoft Azure, s podporou pro nasazení příliš[cloudové služby](cloud-services/cloud-services-python-ptvs.md) a [weby](app-service-web/web-sites-python-ptvs-django-mysql.md).
 
 PTVS funguje s vaší stávající instalaci sady Visual Studio 2013, 2015 nebo 2017.  Dokumentace, stahování a diskusí najdete v tématu [Python Tools pro Visual Studio].  
 
 ## <a name="python-azure-scenarios-for-linux-and-macos"></a>Python Azure scénáře pro systémy Linux a systému MacOS
 Pro Linux ani systému MacOS, hlavní scénáře Azure, které jsou podporovány:
 
-1. Využívání služeb Azure pomocí klientské knihovny pro jazyk Python
+1. Využívání služeb Azure pomocí hello klientské knihovny pro jazyk Python
 2. Spuštění aplikace v virtuálního počítače s Linuxem
-3. Vývoj a publikování na weby Azure pomocí Git
+3. Vývoj a publikování tooAzure weby pomocí Git
 
-První scénář umožňuje vytvářet bohaté webových aplikací, které využít výhod funkcí Azure PaaS, jako [úložiště objektů blob](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), [fronty úložiště](storage/queues/storage-python-how-to-use-queue-storage.md), [tabulky úložiště](cosmos-db/table-storage-how-to-use-python.md) apod prostřednictvím Pythonic obálek pro rozhraní API REST Azure. Fungují stejně jako v systému Windows, Mac a Linux.  Můžete taky tyto knihovny klienta z místní vývojovém počítači nebo virtuálního počítače s Linuxem spuštěné v Azure.
+první scénář Hello vám umožní tooauthor bohatých webových aplikací, které využít výhod hello Azure PaaS možnosti, jako [úložiště objektů blob](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), [fronty úložiště](storage/queues/storage-python-how-to-use-queue-storage.md), [tabulky úložiště](cosmos-db/table-storage-how-to-use-python.md) atd. prostřednictvím Pythonic obálek pro hello rozhraní API REST služby Azure. Fungují stejně jako v systému Windows, Mac a Linux.  Můžete taky tyto knihovny klienta z místní vývojovém počítači nebo virtuálního počítače s Linuxem spuštěné v Azure.
 
-Pro tento scénář virtuální počítač jednoduše spustit virtuální počítač s Linuxem podle vašeho výběru (Ubuntu, CentOS, Suse) a spouštět a spravovat co se vám líbí.  Například můžete spustit [IPython] [ IPython] REPL/poznámkového bloku na vašem systému Windows nebo Mac/Linux počítač a přejděte v prohlížeči na systému Linux nebo Windows více procesorů virtuálního počítače modul IPython v Azure.
+Pro scénář hello virtuálních počítačů jednoduše spusťte virtuální počítač s Linuxem podle vašeho výběru (Ubuntu, CentOS, Suse) a spouštět a spravovat co se vám líbí.  Například můžete spustit [IPython] [ IPython] REPL/poznámkového bloku na počítači Windows nebo Mac/Linux a bod prohlížeče tooa Linux nebo spuštění virtuálního počítače pro více procesorů Windows hello IPython modulu v Azure.
 
-Informace o tom, jak nastavit virtuální počítač s Linuxem najdete v tématu [vytvořit virtuálním počítači systémem Linux](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) kurzu.
+Informace o tom tooset si virtuální počítač s Linuxem, najdete v části hello [vytvořit virtuálním počítači systémem Linux](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) kurzu.
 
-Pomocí nasazení Git, můžete vyvíjet webovou aplikaci Python a publikování na web Azure ve všech operačních systémech.  Když stisknete úložiště do Azure, automaticky vytvoří virtuální prostředí a pip nainstaluje požadované balíčky.
+Pomocí nasazení Git, můžete vyvíjet webovou aplikaci Python a publikujete ji tooan webu Azure ve všech operačních systémech.  Když stisknete tooAzure vašeho úložiště, automaticky vytvoří virtuální prostředí a pip nainstaluje požadované balíčky.
 
-Další informace o vývoji a publikování webů Azure, najdete v části kurzy pro [vytváření webů s rozhraním Django](app-service-web/web-sites-python-create-deploy-django-app.md), [vytváření webů s Bottle](app-service-web/web-sites-python-create-deploy-bottle-app.md), a [vytváření webů s Flask](app-service-web/web-sites-python-create-deploy-flask-app.md). Další obecné informace o použití žádné kompatibilní se standardem WSGI framework najdete v tématu [konfigurace Python s weby Azure](app-service-web/web-sites-python-configure.md).
+Další informace o vývoji a publikování webů Azure, najdete v části hello kurzy pro [vytváření webů s rozhraním Django](app-service-web/web-sites-python-create-deploy-django-app.md), [vytváření webů s Bottle](app-service-web/web-sites-python-create-deploy-bottle-app.md), a [vytváření webů s Flask](app-service-web/web-sites-python-create-deploy-flask-app.md). Další obecné informace o použití žádné kompatibilní se standardem WSGI framework najdete v tématu [konfigurace Python s weby Azure](app-service-web/web-sites-python-configure.md).
 
 ## <a name="additional-software-and-resources"></a>Další Software a prostředky:
 * [Azure SDK pro Python ReadTheDocs](http://azure-sdk-for-python.readthedocs.io/en/latest/)
@@ -152,8 +152,8 @@ Další informace o vývoji a publikování webů Azure, najdete v části kurzy
 [Python Package Index]: http://pypi.python.org/pypi
 [Microsoft Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?LinkId=254281
 [Microsoft Azure SDK for Python 3.4]: http://go.microsoft.com/fwlink/?LinkID=516990
-[Setting up a Linux VM via the Azure portal]: create-and-configure-opensuse-vm-in-portal.md
-[How to use the Azure Command-Line Interface]: crossplat-cmd-tools.md
+[Setting up a Linux VM via hello Azure portal]: create-and-configure-opensuse-vm-in-portal.md
+[How toouse hello Azure Command-Line Interface]: crossplat-cmd-tools.md
 [Create a Virtual Machine Running Linux]: virtual-machines-linux-quick-create-cli.md
 [Creating Websites with Django]: web-sites-python-create-deploy-django-app.md
 [Creating Websites with Bottle]: web-sites-python-create-deploy-bottle-app.md

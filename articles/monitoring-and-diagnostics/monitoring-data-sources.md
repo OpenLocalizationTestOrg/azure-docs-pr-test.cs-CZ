@@ -1,6 +1,6 @@
 ---
-title: "Využívat monitorování dat z Azure | Microsoft Docs"
-description: "Informace o všech monitorování zdroje dat k dispozici v Azure ještě dnes."
+title: "aaaConsume monitorování dat z Azure | Microsoft Docs"
+description: "Další informace o všech hello monitorování zdrojů dat dostupných v Azure ještě dnes."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/27/2017
 ms.author: johnkem
-ms.openlocfilehash: 6586cad908e6527b874dc3f0ee256c6b2cea8c49
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3c7fdad7c25b4d456df395b453fa0e75d514b0b9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Využívat monitorování dat z Azure
 
-Na platformě Azure jsme přináší společně dat monitorování na jednom místě s monitorováním Azure kanálu, ale prakticky vědomí, že se ještě dnes všechna data monitorování zatím k dispozici v tomto kanálu. V tomto článku jsme shrnuje různé způsoby, kterými data sledování můžete programově přistupovat ze služby Azure.
+Mezi hello Azure platformy, jsme přináší společně monitorování data na jednom místě s hello Azure monitorování kanálu, ale prakticky vědomí, že se ještě dnes všechna data monitorování zatím k dispozici v tomto kanálu. V tomto článku jsme shrnuje hello různé způsoby, kterými se data sledování můžete programově přistupovat ze služby Azure.
 
 ## <a name="options-for-data-consumption"></a>Možnosti spotřeby dat
 
@@ -52,5 +52,5 @@ Na platformě Azure jsme přináší společně dat monitorování na jednom mí
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o [metrik Azure monitorování](monitoring-overview-metrics.md)
-- Další informace o [protokol činnosti Azure](monitoring-overview-activity-logs.md)
+- Další informace o [hello protokol činnosti Azure](monitoring-overview-activity-logs.md)
 - Další informace o [diagnostických protokolů Azure.](monitoring-overview-of-diagnostic-logs.md)

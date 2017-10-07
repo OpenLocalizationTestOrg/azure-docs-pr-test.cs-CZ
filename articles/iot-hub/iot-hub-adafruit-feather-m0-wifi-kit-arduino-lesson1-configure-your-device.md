@@ -1,12 +1,12 @@
 ---
-title: "Connect Arduino (C) k Azure IoT - lekci 1: Konfigurace zařízení | Microsoft Docs"
+title: "Connect Arduino (C) tooAzure IoT - lekci 1: Konfigurace zařízení | Microsoft Docs"
 description: "Nakonfigurujte Adafruit prolnutí M0 Wi-Fi pro první použití."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "arduino nastavit připojení k počítači, instalační program arduino, arduino panelu arduino"
+keywords: "arduino nastavit připojení arduino toopc, instalační program arduino, arduino panelu"
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started
 ms.assetid: f5b334f0-a148-41aa-b374-ce7b9f5b305a
@@ -17,49 +17,49 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 9e319292e5d30dea7e45857e435825861aad1c84
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 30b764e8ff6221995456283a226e79f064b2d74e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-your-device"></a>Konfigurace zařízení
 ## <a name="what-you-will-do"></a>Co provedete
-Sestavte Tabule, napájený ho nakonfigurujte Adafruit prolnutí M0 Wi-Fi Arduino panel pro první použití. Pokud máte potíže, vyhledejte řešení na [řešení potíží s stránky](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md).
+Sestavte hello Tabule, napájený ho nakonfigurujte Adafruit prolnutí M0 Wi-Fi Arduino panel pro první použití. Pokud máte potíže, vyhledejte řešení na hello [řešení potíží s stránky](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md).
 
 ## <a name="what-you-need"></a>Co potřebujete
-Pro dokončení této operace, potřebujete pro vaše Adafruit prolnutí M0 Wi-Fi Starter Kit následujících částí:
+toocomplete tuto operaci je třeba hello vaší Adafruit prolnutí M0 Wi-Fi Starter Kit následujících částí:
 
-* Panel Adafruit prolnutí M0 Wi-Fi
-* Micro B kabelem USB typ A
+* Hello Tabule Adafruit prolnutí M0 Wi-Fi
+* Micro B tooType kabelu A USB
 
 ![Kit][kit]
 
 Budete také muset:
 
 * Počítač se systémem Windows, Mac nebo Linux.
-* Bezdrátové připojení pro panel Arduino pro připojení k.
-* Připojení k Internetu kvůli stahování nástroje Konfigurace.
+* Bezdrátové připojení pro vaše tooconnect Arduino Tabule pro.
+* Internetu toodownload konfigurační nástroj pro připojení.
 
 ## <a name="what-you-will-learn"></a>Co se dozvíte
 V tomto článku se dozvíte:
 
-* Jak sestavit panel Arduino a spotřeby pro následující lekce.
-* Postup přidání oprávnění sériového portu v Ubuntu.
+* Jak tooassemble Arduino panelu a power odpovídající hello následující lekci.
+* Jak tooadd oprávnění Ubuntu sériového portu.
 
-## <a name="connect-your-arduino-board-to-your-computer"></a>Panel Arduino připojte k počítači
+## <a name="connect-your-arduino-board-tooyour-computer"></a>Připojení počítače Arduino panelu tooyour
 
-1. Připojte kabel USB malých nejvyšší malých portu USB.
+1. Připojte kabel USB malých hello portu USB horním malých hello.
 
    ![Horní malých portu USB][top-micro-usb-port]
 
-2. Druhém konci kabelu USB připojte k počítači.
+2. Moduly hello druhém konci kabelu USB k počítači.
 
    ![Počítač USB][computer-usb]
 
 ## <a name="add-serial-port-permissions-on-ubuntu"></a>Přidání oprávnění sériového portu v Ubuntu
 
-Pokud používáte Windows nebo systému macOS, můžete tuto část přeskočit. Ubuntu musíte následujících kroků zkontrolujte, zda že má uživatel normální linux oprávnění provoz na portu USB Arduino panel.
+Pokud používáte Windows nebo systému macOS, můžete tuto část přeskočit. Ubuntu musíte hello následující kroky toomake se, že má uživatel normální linux hello hello oprávnění toooperate na portu USB hello Arduino panel.
 
 1. Nyní jako normální uživatelské z terminálu:
 
@@ -77,25 +77,25 @@ Pokud používáte Windows nebo systému macOS, můžete tuto část přeskočit
    crw-rw---- 1 root dialout 188, 0 5 apr 23.01 ttyACM0
    ```
 
-   "0" může být odlišný počet nebo více položek, může být vrácena. V prvním případě dat, potřebujeme je `uucp`, za sekundu je `dialout`, který je vlastníkem skupiny souboru.
+   Hello "0" může být odlišný počet nebo více položek, může být vrácena. V první data případu hello hello potřebujeme je `uucp`, v hello druhou je `dialout`, což je vlastník skupiny hello hello souboru.
 
-2. Přidejte uživatele do do skupiny:
+2. Přidáte skupinu uživatelů toohello toohello:
 
    ```bash
    sudo usermod -a -G group-name username
    ```
 
-   Kde `group-name` se data uvedená v prvním kroku, a `username` je vaše uživatelské jméno linux.
+   Kde `group-name` se nenašla v prvním kroku hello hello data a `username` je vaše uživatelské jméno linux.
 
-3. Musíte se přihlásit v a znovu tato změna se projeví a dokončete instalaci.
+3. Budete znovu potřebovat toolog v a pro tuto změnu tootake účinek a hello dokončení instalace.
 
 ## <a name="summary"></a>Souhrn
-V tomto článku jsme zjistili, jak nakonfigurovat Arduino panel. Dalším krokem je instalace nezbytné nástroje a software v rámci přípravy na spuštění ukázkové aplikace na vaší kartě Arduino.
+V tomto článku, když jste se naučili jak tooconfigure Arduino panel. Další úlohou Hello je tooinstall hello nezbytné nástroje a software v rámci přípravy na spuštění ukázkové aplikace na vaší kartě Arduino.
 
 ![Je připravená hardwaru][hardware-is-ready]
 
 ## <a name="next-steps"></a>Další kroky
-[Získat nástroje][get-the-tools]
+[Získat nástroje hello][get-the-tools]
 <!-- Images and links -->
 
 [kit]: media/iot-hub-adafruit-feather-m0-wifi-lessons/lesson1/kit.png

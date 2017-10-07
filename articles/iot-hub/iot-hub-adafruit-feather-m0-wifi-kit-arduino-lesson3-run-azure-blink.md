@@ -1,12 +1,12 @@
 ---
-title: "Connect Arduino (C) k Azure IoT - Lekce 3: spuštění ukázkových | Microsoft Docs"
-description: "Nasazení a spuštění ukázkové aplikace pro Adafruit prolnutí M0 WiFi, která odesílá zprávy do služby IoT hub a bliká Indikátor."
+title: "Connect Arduino (C) tooAzure IoT - Lekce 3: spuštění ukázkových | Microsoft Docs"
+description: "Nasazení a spuštění ukázkové aplikace tooAdafruit prolnutí M0 WiFi, která odesílá zprávy tooyour IoT hub a bliká DIODU hello."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "cloudové služby IOT, arduino odesílat data do cloudu"
+keywords: "cloudové služby IOT, arduino odesílat data toocloud"
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started
 ms.assetid: 92cce319-2b17-4c9b-889d-deac959e3e7c
@@ -17,64 +17,64 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 0c17fe74dbd78abca955f7789a1674ed6333367f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ddca015a3655f8a1a9de2a00e718ec0d28a5affb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-a-sample-application-to-send-device-to-cloud-messages"></a>Spuštění ukázkové aplikace k odesílání zpráv typu zařízení cloud
+# <a name="run-a-sample-application-toosend-device-to-cloud-messages"></a>Spuštění ukázkové aplikace toosend zpráv typu zařízení cloud
 ## <a name="what-you-will-do"></a>Co provedete
-Tento článek vám ukáže, jak nasadit a spustit ukázkovou aplikaci na vaší kartě Adafruit prolnutí M0 Wi-Fi Arduino, která odesílá zprávy do služby IoT hub.
+Tento článek vám ukáže, jak toodeploy a spusťte ukázkové aplikace na vašem Adafruit prolnutí M0 Wi-Fi Arduino board že odešle zprávy tooyour IoT hub.
 
-Pokud máte potíže, vyhledejte řešení na [řešení potíží s stránky][troubleshooting].
+Pokud máte potíže, vyhledejte řešení na hello [řešení potíží s stránky][troubleshooting].
 
 ## <a name="what-you-will-learn"></a>Co se dozvíte
-Se dozvíte, jak používat nástroj gulp k nasazení a spuštění ukázkové aplikace Arduino na panel Arduino.
+Se dozvíte, jak toouse hello gulp toodeploy nástroje a spusťte hello ukázkové Arduino aplikace na vaší kartě Arduino.
 
 ## <a name="what-you-need"></a>Co potřebujete
-* Než začnete tuto úlohu, musí úspěšně jste dokončili [vytvořit aplikaci Azure funkce a účet úložiště pro zpracování a ukládání zpráv centra IoT][process-and-store-iot-hub-messages].
+* Než začnete tuto úlohu, musí úspěšně jste dokončili [vytvořit aplikaci Azure funkce a úložiště účtu úložiště a tooprocess IoT hub zprávy][process-and-store-iot-hub-messages].
 
 ## <a name="get-your-iot-hub-and-device-connection-strings"></a>Získat IoT hub a zařízení připojovací řetězce
-Připojovací řetězec zařízení slouží k připojení vaší karty Arduino do služby IoT hub. IoT hub připojovací řetězec se používá pro připojení služby IoT hub pro identitu zařízení, která představuje panel Arduino ve službě IoT hub.
+Hello zařízení připojovací řetězec je použité tooconnect Arduino Tabule tooyour IoT hub. Hello IoT hub připojovací řetězec je použité tooconnect vaše IoT hub toohello zařízení identita, která představuje váš Arduino board hello IoT hub.
 
-* Seznam všech centra IoT ve vaší skupině prostředků spuštěním následujícího příkazu příkazového řádku Azure CLI:
+* Seznam všech centra IoT ve vaší skupině prostředků tak, že spustíte následující příkaz rozhraní příkazového řádku Azure hello:
 
 ```bash
 az iot hub list -g iot-sample --query [].name
 ```
 
-Použití `iot-sample` jako hodnotu `{resource group name}` Pokud nebylo změňte hodnotu.
+Použití `iot-sample` jako hodnota hello `{resource group name}` Pokud hodnota hello nebyla změněna.
 
-* Spuštěním následujícího příkazu příkazového řádku Azure CLI získáte připojovací řetězec centra IoT:
+* Spuštěním následujícího příkazu příkazového řádku Azure CLI hello získáte hello IoT hub, připojovací řetězec:
 
 ```bash
 az iot hub show-connection-string --name {my hub name}
 ```
 
-`{my hub name}`je název, který jste zadali při vytvoření služby IoT hub a registraci Arduino panel.
+`{my hub name}`je název hello, které jste zadali při vytvoření služby IoT hub a registraci Arduino panel.
 
-* Získáte připojovací řetězec zařízení tak, že spustíte následující příkaz:
+* Získáte hello zařízení připojovací řetězec tak, že spustíte následující příkaz hello:
 
 ```bash
 az iot device show-connection-string --hub-name {my hub name} --device-id mym0wifi
 ```
 
-Použití `mym0wifi` jako hodnotu `{device id}` Pokud nebylo změňte hodnotu.
-## <a name="configure-the-device-connection"></a>Nakonfigurujte připojení zařízení
-Konfigurace připojení zařízení, postupujte takto:
+Použití `mym0wifi` jako hodnota hello `{device id}` Pokud hodnota hello nebyla změněna.
+## <a name="configure-hello-device-connection"></a>Nakonfigurujte připojení zařízení hello
+tooconfigure hello připojení zařízení, postupujte takto:
 
-1. Získání sériového portu zařízení pomocí rozhraní příkazového řádku zjišťování zařízení:
+1. Získejte hello sériového portu zařízení hello s hello zařízení zjišťování rozhraní příkazového řádku:
 
    ```bash
    devdisco list --usb
    ```
 
-   Měli byste zobrazený výstup, který je podobný následujícímu a najít usb COM port pro panel Arduino:
+   Měli byste zobrazený výstup, který je podobný toohello následující a najít hello usb COM port pro panel Arduino:
 
    ![Zjišťování zařízení][device-discovery]
 
-2. Otevřete soubor `config.json` ve složce lekce a přidejte hodnotu nalezen číslo portu COM:
+2. Soubor otevřete hello `config.json` v hello lekce složky a přidat hello hodnotu hello najít číslo portu COM:
 
    ```json
    {
@@ -85,16 +85,16 @@ Konfigurace připojení zařízení, postupujte takto:
    ![Config.JSON][config-json]
 
    > [!NOTE]
-   > Pro port COM, na platformě Windows má formát `COM1, COM2, ...`. V systému macOS nebo Ubuntu začíná `/dev/`.
+   > Pro port hello COM na platformě Windows má formát hello `COM1, COM2, ...`. V systému macOS nebo Ubuntu začíná `/dev/`.
 
-3. Inicializace konfiguračního souboru spuštěním následujících příkazů:
+3. Inicializovat konfigurační soubor hello spuštěním hello následující příkazy:
 
    ```bash
    npm install
    gulp init
    gulp install-tools
    ```
-4. Otevřete konfigurační soubor zařízení `config-arduino.json` ve Visual Studio Code spuštěním následujícího příkazu:
+4. Otevřete hello zařízení konfigurační soubor `config-arduino.json` ve Visual Studio Code spuštěním hello následující příkaz:
 
    ```bash
    # For Windows command prompt
@@ -106,22 +106,22 @@ Konfigurace připojení zařízení, postupujte takto:
 
    ![Konfigurace arduino.json][config-arduino-json]
 
-5. Zkontrolujte následující nahrazení v `config-arduino.json` souboru:
+5. Ujistěte se, hello následující nahrazení v hello `config-arduino.json` souboru:
 
-   * Nahraďte **[Wi-Fi SSID]** s vaší SSID Wi-Fi, který připojení k Internetu.
-   * Nahraďte **[Wi-Fi heslo]** pomocí hesla Wi-Fi. Odeberte řetězec, pokud Wi-Fi nevyžaduje heslo.
-   * Nahraďte **[řetězec připojení zařízení IoT]** s `device connection string` jste získali.
-   * Nahraďte **[IoT hub, připojovací řetězec]** s `iot hub connection string` jste získali.
+   * Nahraďte **[Wi-Fi SSID]** s vaší SSID Wi-Fi, který připojený toohello Internetu.
+   * Nahraďte **[Wi-Fi heslo]** pomocí hesla Wi-Fi. Odeberte hello řetězec, pokud Wi-Fi nevyžaduje heslo.
+   * Nahraďte **[řetězec připojení zařízení IoT]** s hello `device connection string` jste získali.
+   * Nahraďte **[IoT hub, připojovací řetězec]** s hello `iot hub connection string` jste získali.
 
    > [!NOTE]
    > Nepotřebujete `azure_storage_connection_string` v tomto článku. Dodržte jako je.
 
-## <a name="deploy-and-run-the-sample-application"></a>Nasazení a spuštění ukázkové aplikace
-Nasazení a spuštění ukázkové aplikace na panel Arduino spuštěním následujícího příkazu:
+## <a name="deploy-and-run-hello-sample-application"></a>Nasazení a spuštění ukázkové aplikace hello
+Nasazení a spuštění ukázkové aplikace hello na panel Arduino spuštěním hello následující příkaz:
 
 ```bash
 gulp run
-# You can monitor the serial port by running listen task:
+# You can monitor hello serial port by running listen task:
 gulp listen
 
 # Or you can combine above two gulp tasks into one:
@@ -129,15 +129,15 @@ gulp run --listen
 ```
 
 > [!NOTE]
-> Spuštění úlohy gulp výchozí `install-tools` a `run` úlohy postupně. Když jste [blikání aplikace nasazená][deployed-the-blink-app], jste spustili tyto úlohy samostatně.
+> Hello výchozí gulp úloha spustí `install-tools` a `run` úlohy postupně. Pokud jste [hello blikání aplikace nasazená][deployed-the-blink-app], jste spustili tyto úlohy samostatně.
 
-## <a name="verify-that-the-sample-application-works"></a>Ověřte, že funguje ukázkové aplikace
-Měli byste vidět GPIO #0 integrovaného DIODU blikat, které každý dvou sekund. Pokaždé, když DIODU bliká, ukázkové aplikace odešle zprávu do služby IoT hub a ověřuje, že zpráva byla úspěšně odeslána do služby IoT hub. Kromě toho každou zprávu přijme služby IoT hub je vytištěna v okně konzoly. Ukázkové aplikace automaticky ukončí po odeslání 20 zpráv.
+## <a name="verify-that-hello-sample-application-works"></a>Ověřte, že funguje hello ukázkové aplikace
+Měli byste vidět integrovaného blikat DIODU hello GPIO #0 každé dvě sekundy. Pokaždé, když hello DIODU bliká, hello ukázkové aplikace odešle zpráva tooyour IoT hub a ověřuje, zda je že tento hello byla úspěšně odeslána zpráva tooyour IoT hub. Kromě toho každou zprávu přijme hello IoT hub je vytištěna v okně konzoly hello. Ukázková aplikace Hello automaticky ukončí po odeslání 20 zpráv.
 
 ![Ukázkovou aplikaci s odeslané a přijaté zprávy][sample-application-with-sent-and-received-messages]
 
 ## <a name="summary"></a>Souhrn
-Jste nasazení a spuštění nové aplikace ukázka blikání na panel Arduino k odesílání zpráv typu zařízení cloud do služby IoT hub. Zprávy si můžete nyní sledovat, jak se zapisují na účet úložiště.
+Jste nasazení a spusťte hello nové blikání ukázkovou aplikaci ve službě Arduino Tabule toosend zpráv typu zařízení cloud tooyour IoT hub. Vaše zprávy se teď sledovat, jak jsou napsány toohello účet úložiště.
 
 ## <a name="next-steps"></a>Další kroky
 [Čtení zprávy uchovávané v úložišti Azure][read-messages-persisted-in-azure-storage]

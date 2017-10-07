@@ -1,6 +1,6 @@
 ---
-title: "Postup přidání zdroje událostí centra událostí do prostředí Azure časové řady Insights | Microsoft Docs"
-description: "Tento kurz vysvětluje postup přidání zdroje událostí, která je připojena k Centru událostí pro vaše prostředí časové řady Statistika"
+title: "aaaHow tooadd prostředí centra událostí tooyour zdroje událostí Statistika řady čas Azure | Microsoft Docs"
+description: "Tento kurz popisuje, jak tooadd událost zdroje který je připojený tooan centra událostí tooyour časové řady Přehled prostředí"
 keywords: 
 services: time-series-insights
 documentationcenter: 
@@ -15,61 +15,61 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/19/2017
 ms.author: edett
-ms.openlocfilehash: 216c2146371e2b88d4a3d7aa4f08ae8186e89443
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a98cd91deb51c829084a00c5f2a80b39d0fc511c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-add-an-event-hub-event-source"></a>Postup přidání zdroje událostí centra událostí
+# <a name="how-tooadd-an-event-hub-event-source"></a>Jak tooadd zdroje událostí centra událostí
 
-Tento kurz se zaměřuje na tom, jak pomocí portálu Azure přidejte zdroje událostí, který čte z centra událostí pro vaše prostředí Statistika časové řady.
+Tento kurz popisuje, jak toouse hello Azure portálu tooadd zdroje událostí, který čte z prostředí časové řady Statistika tooyour centra událostí.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Vytvoření centra událostí a jsou k němu zápisu událostí. Další informace o službě Event Hubs naleznete v tématu <https://azure.microsoft.com/services/event-hubs/>
+Vytvoření centra událostí a jsou zápis tooit události. Další informace o službě Event Hubs naleznete v tématu <https://azure.microsoft.com/services/event-hubs/>
 
-> [Skupiny příjemců] Každý zdroj události Statistika časové řady musí mít svůj vlastní vyhrazenou skupinu spotřebitelů která není sdílena s dalšími uživateli. Pokud více čtečky přijímat události z stejnou skupinu uživatelů, budou pravděpodobně najdete v části selhání všechny nástroje pro čtení. Všimněte si, že také maximální počet 20 skupiny příjemců za centra událostí. Podrobnosti najdete v tématu [Průvodce programováním centra událostí](../event-hubs/event-hubs-programming-guide.md).
+> [Skupiny příjemců] Každý zdroj události Statistika časové řady musí toohave vlastní vyhrazenou skupinu spotřebitelů která není sdílena s dalšími uživateli. Pokud využívat více čtenářů událostí z hello stejnou skupinu uživatelů, pravděpodobně toosee selhání jsou všechny nástroje pro čtení. Všimněte si, že také maximální počet 20 skupiny příjemců za centra událostí. Podrobnosti najdete v tématu hello [Průvodce programováním centra událostí](../event-hubs/event-hubs-programming-guide.md).
 
 ## <a name="choose-an-import-option"></a>Zvolte možnost importovat
 
-Nastavení pro zdroj události lze zadat ručně nebo centra událostí je možné vybrat z centra událostí, které jsou k dispozici.
-V **možnost importu** selektor, vyberte jednu z následujících možností:
+Hello nastavení pro zdroj události hello lze zadat ručně nebo centra událostí je možné vybrat z hello centra událostí, které jsou k dispozici tooyou.
+V hello **možnost importu** selektor, vyberte jednu z hello následující možnosti:
 
 * Určit nastavení centra událostí ručně
 * Použít Centrum událostí z dostupných předplatných
 
 ### <a name="select-an-available-event-hub"></a>Vyberte dostupný centra událostí
 
-Následující tabulka popisuje jednotlivé možnosti na kartě nový zdroj událostí s jeho popis při výběru dostupná centra událostí jako zdroje událostí:
+Hello následující tabulka popisuje jednotlivé možnosti na kartě hello nový zdroj událostí s jeho popis při výběru dostupná centra událostí jako zdroje událostí:
 
 | NÁZEV VLASTNOSTI | POPIS |
 | --- | --- |
-| Název zdroje událostí | Název zdroje událostí. Tento název musí být jedinečný v rámci vašeho prostředí Statistika časové řady.
-| Zdroj | Zvolte **centra událostí** k vytvoření zdroje událostí centra událostí.
-| Id předplatného | Vyberte předplatné, ve kterém byla vytvořena toto Centrum událostí.
-| Obor názvů sběrnice | Vyberte obor názvů Service Bus, který obsahuje centra událostí.
-| Název centra událostí | Vyberte název centra událostí.
-| Název zásady centra událostí | Vyberte zásady sdíleného přístupu, které se dají vytvořit na kartě Konfigurace centra událostí. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. Zásada sdíleného přístupu ke zdroji událostí *musí* mít **číst** oprávnění.
-| Skupina uživatelů centra událostí | Skupina uživatelů mají události načítat z centra událostí. Důrazně doporučujeme použít vyhrazenou skupinu spotřebitelů zdroje událostí.
+| Název zdroje událostí | Hello název zdroje událostí. Tento název musí být jedinečný v rámci vašeho prostředí Statistika časové řady.
+| Zdroj | Zvolte **centra událostí** toocreate zdroje událostí centra událostí.
+| Id předplatného | Vyberte hello předplatné, ve kterém byla vytvořena toto Centrum událostí.
+| Obor názvů sběrnice | Vyberte hello oboru názvů Service Bus, která obsahuje hello centra událostí.
+| Název centra událostí | Vyberte název hello hello centra událostí.
+| Název zásady centra událostí | Vyberte zásady hello sdílený přístup, který lze vytvořit na kartě Konfigurace centra událostí hello. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. Hello sdílené zásady přístupu pro váš zdroj událostí *musí* mít **číst** oprávnění.
+| Skupina uživatelů centra událostí | Hello skupiny příjemců tooread události z hello centra událostí. Vysoce je doporučeno toouse vyhrazenou skupinu spotřebitelů zdroje událostí.
 
 ### <a name="provide-event-hub-settings-manually"></a>Určit nastavení centra událostí ručně
 
-Následující tabulka popisuje každou vlastnost v kartě nový zdroj událostí s jeho popis při zadávání nastavení ručně:
+Hello následující tabulka popisuje každou vlastnost v kartě hello nový zdroj událostí s jeho popis při zadávání nastavení ručně:
 
 | NÁZEV VLASTNOSTI | POPIS |
 | --- | --- |
-| Název zdroje událostí | Název zdroje událostí. Tento název musí být jedinečný v rámci vašeho prostředí Statistika časové řady.
-| Zdroj | Zvolte **centra událostí** k vytvoření zdroje událostí centra událostí.
-| Id předplatného | Předplatné, ve kterém byla vytvořena toto Centrum událostí.
-| Skupina prostředků | Předplatné, ve kterém byla vytvořena toto Centrum událostí.
+| Název zdroje událostí | Hello název zdroje událostí. Tento název musí být jedinečný v rámci vašeho prostředí Statistika časové řady.
+| Zdroj | Zvolte **centra událostí** toocreate zdroje událostí centra událostí.
+| Id předplatného | Hello předplatné, ve kterém byla vytvořena toto Centrum událostí.
+| Skupina prostředků | Hello předplatné, ve kterém byla vytvořena toto Centrum událostí.
 | Obor názvů sběrnice | Obor názvů sběrnice je kontejner sady entit pro zasílání zpráv. Při vytváření nového centra událostí, vytvoříte tím taky obor názvů sběrnice.
-| Název centra událostí | Název vašeho centra událostí. Když vytvoříte Centrum událostí, dáte mu taky určitý název
-| Název zásady centra událostí | Zásady sdíleného přístupu, které se dají vytvořit na kartě Konfigurace centra událostí. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. Zásada sdíleného přístupu ke zdroji událostí *musí* mít **číst** oprávnění.
-| Klíč události rozbočovače zásad | Sdílený přístupový klíč použitý k ověření přístupu k oboru názvů Service Bus. Primární nebo sekundární klíč zadejte sem.
-| Skupina uživatelů centra událostí | Skupina uživatelů mají události načítat z centra událostí. Důrazně doporučujeme použít vyhrazenou skupinu spotřebitelů zdroje událostí.
+| Název centra událostí | Hello název vašeho centra událostí. Když vytvoříte Centrum událostí, dáte mu taky určitý název
+| Název zásady centra událostí | Hello zásady sdíleného přístupu, které se dají vytvořit na kartě Konfigurace centra událostí hello. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. Hello sdílené zásady přístupu pro váš zdroj událostí *musí* mít **číst** oprávnění.
+| Klíč události rozbočovače zásad | Sdílený přístupový klíč Hello používá tooauthenticate oboru názvů Service Bus toohello přístup. Hello primární nebo sekundární klíč zadejte sem.
+| Skupina uživatelů centra událostí | Hello skupiny příjemců tooread události z hello centra událostí. Vysoce je doporučeno toouse vyhrazenou skupinu spotřebitelů zdroje událostí.
 
 ## <a name="next-steps"></a>Další kroky
 
-1. Přidat zásadu přístupu dat do vašeho prostředí [data definovat zásady přístupu](time-series-insights-data-access.md)
-1. Přístup k prostředí v [portálu Statistika časové řady](https://insights.timeseries.azure.com)
+1. Přidání prostředí dat zásad přístupu tooyour [data definovat zásady přístupu](time-series-insights-data-access.md)
+1. Přístup k prostředí v hello [portálu Statistika časové řady](https://insights.timeseries.azure.com)

@@ -1,5 +1,5 @@
 ---
-title: "Omezení v Azure databázi PostgreSQL | Microsoft Docs"
+title: "aaaLimitations v databázi Azure pro PostgreSQL | Microsoft Docs"
 description: "Popisuje omezení v Azure databázi PostgreSQL."
 services: postgresql
 author: kamathsun
@@ -10,19 +10,19 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: article
 ms.date: 06/01/2017
-ms.openlocfilehash: 38988fc5c0dc05331ea078534cd1a05e9eca2493
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f53dd240e55e0633bc1dfb8ad25e1818fa8ae18c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Omezení v Azure databázi PostgreSQL
-Databáze Azure pro PostgreSQL služby je ve verzi public preview. Následující části popisují kapacitu a funkční omezení ve službě databáze.
+Hello Azure databáze PostgreSQL služby je ve verzi public preview. Hello následující části popisují kapacitu a funkční omezení v databázi služby hello.
 
 ## <a name="service-tier-maximums"></a>Maximální hodnoty úroveň služby
 Azure databáze PostgreSQL má více úrovní služeb, které lze vybírat při vytváření serveru. Další informace najdete v tématu [co je dostupné na jednotlivých úrovních služby](concepts-service-tiers.md).  
 
-Je maximální počet připojení, výpočetní jednotky a úložiště v jednotlivých úrovních služeb ve verzi Preview služby následujícím způsobem: 
+Je maximální počet připojení, výpočetní jednotky a úložiště v jednotlivých úrovních služeb během verze preview služby hello, následujícím způsobem: 
 
 |                            |                   |
 | :------------------------- | :---------------- |
@@ -40,7 +40,7 @@ Je maximální počet připojení, výpočetní jednotky a úložiště v jednot
 | Úroveň služeb Basic         | 1 TB              |
 | Úroveň služeb Standard      | 1 TB              |
 
-Když se dosáhne příliš mnoha připojení, může se zobrazit chybová zpráva:
+Když se dosáhne příliš mnoha připojení, může se zobrazit hello následující chybě:
 > Závažná chyba: bohužel již příliš mnoho klientů
 
 ## <a name="preview-functional-limitations"></a>Funkční omezení verze Preview
@@ -56,10 +56,10 @@ Když se dosáhne příliš mnoha připojení, může se zobrazit chybová zprá
 - Dynamicky přesunutí předem vytvořené serverů mezi předplatné a skupina prostředků není aktuálně podporováno.
 
 ### <a name="point-in-time-restore"></a>Obnovení do bodu v čase
-1.  Obnovení na jinou službu vrstvy nebo výpočetní jednotky a velikost úložiště není povoleno.
+1.  Obnovení vrstvy služby toodifferent nebo výpočetní jednotky a velikost úložiště není povoleno.
 2.  Obnovení vynechaných server není podporováno.
 
 ## <a name="next-steps"></a>Další kroky
 - Pochopení [co je k dispozici v jednotlivých cenových úrovní](concepts-service-tiers.md)
 - Pochopení [podporované verze databáze PostgreSQL](concepts-supported-versions.md)
-- Zkontrolujte [postup zálohování a obnovení serveru v databázi Azure pro PostgreSQL pomocí portálu Azure](howto-restore-server-portal.md)
+- Zkontrolujte [jak hello tooBack zálohu a obnovení na serveru v Azure databázi PostgreSQL pomocí portálu Azure](howto-restore-server-portal.md)

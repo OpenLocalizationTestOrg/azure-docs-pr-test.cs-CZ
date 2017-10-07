@@ -1,6 +1,6 @@
 ---
-title: "Připojení z virtuální sítě do Azure Data Lake Store | Microsoft Docs"
-description: "Připojení k Azure Data Lake Store z virtuálních sítí Azure"
+title: "aaaConnect tooAzure Data Lake Store z virtuální sítě | Microsoft Docs"
+description: "Připojení z virtuální sítě Azure tooAzure Data Lake Store"
 services: data-lake-store,data-catalog
 documentationcenter: 
 author: nitinme
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/10/2017
 ms.author: nitinme
-ms.openlocfilehash: ff7d28d7b53e872b804788647b1e672fafcf6995
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c695dcf49fe4e1a87a90729cf085a938f3b51fe3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="access-azure-data-lake-store-from-vms-within-an-azure-vnet"></a>Přístup k Azure Data Lake Store z virtuálních počítačů v rámci síť Azure
-Azure Data Lake Store je PaaS služba, která běží na veřejné internetové IP adresy. Jakýkoli server, který se může připojit k veřejnému Internetu může obvykle připojit k Azure Data Lake Store také koncové body. Ve výchozím nastavení všechny virtuální počítače, které jsou v sítě Azure Vnet můžete přístup k Internetu a proto můžete přístup k Azure Data Lake Store. Nicméně je možné nakonfigurovat virtuální počítače ve virtuální síti není mít přístup k Internetu. Pro tyto virtuální počítače přístup k Azure Data Lake Store je omezený také. Blokování veřejný přístup k Internetu pro virtuální počítače ve virtuálních sítí Azure lze provést pomocí kteréhokoli následující postup.
+Azure Data Lake Store je PaaS služba, která běží na veřejné internetové IP adresy. Jakýkoli server, zda se může připojit toohello veřejného Internetu může obvykle připojit koncové body Data Lake Store tooAzure také. Ve výchozím nastavení všechny virtuální počítače, které jsou v virtuálních sítí Azure přístup k hello Internetu a proto můžete přístup k Azure Data Lake Store. Je však možné tooconfigure virtuální počítače ve virtuální síti toonot mít toohello přístup k Internetu. Pro tyto virtuální počítače přístup k tooAzure Data Lake Store je omezená také. Blokování veřejný přístup k Internetu pro virtuální počítače ve virtuálních sítí Azure lze provést pomocí kteréhokoli hello následující postup.
 
 * Podle konfigurace skupin zabezpečení sítě (NSG)
 * Nakonfigurováním uživatele definované trasy (UDR)
-* Při výměně tras přes protokol BGP (odvětví standardní protokol dynamického směrování) ExpressRoute je při použití tohoto bloku přístup k Internetu
+* Při výměně tras přes protokol BGP (odvětví standardní protokol dynamického směrování) ExpressRoute je při použití tohoto bloku přístup toohello Internetu
 
-V tomto článku se dozvíte, jak povolit přístup k Azure Data Lake Store z virtuálních počítačů Azure, které byly omezený přístup k prostředkům pomocí jedné ze tří metod uvedené výše.
+V tomto článku se dozvíte, jak tooenable přistupovat k toohello Azure Data Lake Store z virtuálních počítačů Azure, které byly tooaccess s omezeným přístupem, které prostředky pomocí jedné ze tří metod hello uvedené výše.
 
-## <a name="enabling-connectivity-to-azure-data-lake-store-from-vms-with-restricted-connectivity"></a>Povolení připojení k Azure Data Lake Store z virtuálních počítačů s připojením s omezeným přístupem
-Pro přístup k Azure Data Lake Store z těchto virtuálních počítačů, je nutné nakonfigurovat jejich přístupu k IP adresu, kde je k dispozici účet Azure Data Lake Store. Poznáte IP adresy pro vaše účty Data Lake Store pomocí překladu názvů DNS vaše účty (`<account>.azuredatalakestore.net`). To můžete použít nástroje, jako **nslookup**. Otevřete příkazový řádek ve vašem počítači a spusťte následující příkaz.
+## <a name="enabling-connectivity-tooazure-data-lake-store-from-vms-with-restricted-connectivity"></a>Povolení připojení tooAzure Data Lake Store z virtuálních počítačů s připojením s omezeným přístupem
+tooaccess úložiště Azure Data Lake z těchto virtuálních počítačů, je nutné nakonfigurovat tooaccess hello IP adresu, kde je k dispozici hello účtu Azure Data Lake Store. Můžete identifikovat hello IP adresy pro vaše účty Data Lake Store pomocí překladu názvů DNS hello vaše účty (`<account>.azuredatalakestore.net`). To můžete použít nástroje, jako **nslookup**. Otevřete příkazový řádek ve vašem počítači a spusťte následující příkaz hello.
 
     nslookup mydatastore.azuredatalakestore.net
 
-Výstup vypadá přibližně takto. Hodnota proti **adresu** vlastnost je IP adresa spojená s vaším účtem Data Lake Store.
+výstup Hello se podobá následující hello. Hello hodnoty s **adresu** vlastnost je hello IP adresu, která je spojená s vaším účtem Data Lake Store.
 
     Non-authoritative answer:
     Name:    1434ceb1-3a4b-4bc0-9c69-a0823fd69bba-mydatastore.projectcabostore.net
@@ -43,13 +43,13 @@ Výstup vypadá přibližně takto. Hodnota proti **adresu** vlastnost je IP adr
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>Povolení připojení z virtuálních počítačů omezený pomocí NSG
-Pokud pravidla NSG se používá k blokování přístupu k Internetu, můžete vytvořit další NSG, která umožňuje přístup k IP adrese Data Lake Store. Další informace o pravidla NSG je k dispozici na [co je skupina zabezpečení sítě?](../virtual-network/virtual-networks-nsg.md). Pokyny o tom, jak vytvářet skupiny Nsg najdete v tématu [Správa skupin Nsg pomocí portálu Azure](../virtual-network/virtual-networks-create-nsg-arm-pportal.md).
+Při použití pravidla NSG tooblock přístup toohello Internetu, potom můžete vytvořit další NSG, který umožňuje přístup toohello Data Lake Store IP adresu. Další informace o pravidla NSG je k dispozici na [co je skupina zabezpečení sítě?](../virtual-network/virtual-networks-nsg.md). Pokyny, jak zjistit, skupiny Nsg toocreate [jak hello skupiny Nsg toomanage pomocí portálu Azure](../virtual-network/virtual-networks-create-nsg-arm-pportal.md).
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>Povolení připojení z virtuálních počítačů omezený pomocí UDR nebo ExpressRoute
-Pokud trasy, udr nebo trasy protokolu BGP vyměňují se používá k blokování přístupu k Internetu, je potřeba nakonfigurovat tak, aby virtuální počítače v těchto podsítích přístup koncových bodů Data Lake Store speciální trasy. Další informace najdete v tématu [co jsou trasy definované uživatelem?](../virtual-network/virtual-networks-udr-overview.md). Pokyny pro vytvoření udr, najdete v části [udr vytvořit ve službě Správce prostředků](../virtual-network/virtual-network-create-udr-arm-ps.md).
+Když jsou trasy, udr nebo trasy protokolu BGP vyměňují toohello použité tooblock přístup k Internetu, musí trasu speciální toobe nakonfigurovaná tak, aby virtuální počítače v těchto podsítích přístup koncových bodů Data Lake Store. Další informace najdete v tématu [co jsou trasy definované uživatelem?](../virtual-network/virtual-networks-udr-overview.md). Pokyny pro vytvoření udr, najdete v části [udr vytvořit ve službě Správce prostředků](../virtual-network/virtual-network-create-udr-arm-ps.md).
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>Povolení připojení z virtuálních počítačů omezený pomocí ExpressRoute
-Když je nakonfigurovaná okruh ExpressRoute, místní servery přistupovat k Data Lake Store prostřednictvím veřejného partnerského vztahu. Další informace o konfiguraci ExpressRoute pro veřejný partnerský vztah je k dispozici na [nejčastější dotazy k ExpressRoute](../expressroute/expressroute-faqs.md).
+Když je nakonfigurovaná okruh ExpressRoute, hello na místní servery přistupovat k Data Lake Store prostřednictvím veřejného partnerského vztahu. Další informace o konfiguraci ExpressRoute pro veřejný partnerský vztah je k dispozici na [nejčastější dotazy k ExpressRoute](../expressroute/expressroute-faqs.md).
 
 ## <a name="see-also"></a>Viz také
 * [Přehled Azure Data Lake Store](data-lake-store-overview.md)

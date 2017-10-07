@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření první funkce z rozhraní Azure CLI| Dokumentace Microsoftu"
-description: "Naučíte se postup vytvoření první funkce Azure Function pro provádění pomocí Azure CLI bez serveru."
+title: "aaaCreate první funkce z hello rozhraní příkazového řádku Azure | Microsoft Docs"
+description: "Zjistěte, jak hello toocreate vaše první Azure fungovat pro provádění bez serveru pomocí rozhraní příkazového řádku Azure."
 services: functions
 keywords: 
 author: ggailey777
@@ -12,21 +12,21 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: erikre
-ms.openlocfilehash: 8bd3e4bb7423db44c48b04f25edcf1074e6ea0bd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5feed0045d4998b88b0e1bb50996cb7bb42b0822
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-your-first-function-using-the-azure-cli"></a>Vytvoření první funkce pomocí Azure CLI
+# <a name="create-your-first-function-using-hello-azure-cli"></a>Vytvoření první funkce pomocí hello rozhraní příkazového řádku Azure
 
-Tento rychlý start vám ukáže, jak používat Azure Functions k vytvoření první funkce. Pomocí Azure CLI vytvoříte aplikaci Function App, což je infrastruktura bez serveru, která je hostitelem funkce. Samotný kód funkce se nasadí z ukázkového úložiště Githubu.    
+Tento rychlý úvodní kurz vás provede jak toouse Azure Functions toocreate svoji první funkci. Můžete použít rozhraní příkazového řádku Azure toocreate hello funkce aplikace, která je hello bez serveru infrastruktury, který je hostitelem funkce. samotný kód Funkce Hello je nasazena z úložiště Githubu ukázka.    
 
-Následující kroky můžete provést v počítačích se systémem Mac, Windows nebo Linux. 
+Můžete provést kroky hello níže použití počítače Mac, Windows nebo Linux. 
 
 ## <a name="prerequisites"></a>Požadavky 
 
-Před spuštěním této ukázky musíte mít následující:
+Před spuštěním této ukázce, musíte mít následující hello:
 
 + Aktivní účet [GitHub](https://github.com) 
 + Aktivní předplatné Azure.
@@ -35,14 +35,14 @@ Před spuštěním této ukázky musíte mít následující:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud zvolte tooinstall a místně pomocí hello rozhraní příkazového řádku, v tomto tématu vyžaduje, že používáte hello Azure CLI verze 2.0 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure, jako například aplikace Function App, databáze a účty úložiště.
+Vytvořte skupinu prostředků s hello [vytvořit skupinu az](/cli/azure/group#create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure, jako například aplikace Function App, databáze a účty úložiště.
 
-Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup`.  
+Hello následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup`.  
 Pokud nepoužíváte cloudové prostředí, musíte se nejdřív přihlásit pomocí `az login`.
 
 ```azurecli-interactive
@@ -52,15 +52,15 @@ az group create --name myResourceGroup --location westeurope
 
 ## <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage
 
-Aplikace Functions používá účet Azure Storage k zachování stavu a dalších informací o vašich funkcích. Ve skupině prostředků, kterou jste vytvořili vytvořte účet úložiště pomocí příkazu [az storage account create](/cli/azure/storage/account#create).
+Funkce používá stav toomaintain účtu úložiště Azure a další informace o funkcí. Vytvořit účet úložiště ve skupině prostředků hello jste vytvořili pomocí hello [vytvořit účet úložiště az](/cli/azure/storage/account#create) příkaz.
 
-V následujícím příkazu nahraďte zástupný symbol `<storage_name>` vlastním globálním jedinečným názvem účtu úložiště. Názvy účtů úložiště musí mít od 3 do 24 znaků a můžou obsahovat jenom číslice a malá písmena.
+V hello následující příkaz, nahraďte váš vlastní název účtu globálně jedinečný úložiště, kde uvidíte hello `<storage_name>` zástupný symbol. Názvy účtů úložiště musí mít od 3 do 24 znaků a můžou obsahovat jenom číslice a malá písmena.
 
 ```azurecli-interactive
 az storage account create --name <storage_name> --location westeurope --resource-group myResourceGroup --sku Standard_LRS
 ```
 
-Po vytvoření účtu úložiště se v rozhraní Azure CLI zobrazí podobné informace jako v následujícím příkladu:
+Po vytvoření účtu úložiště hello hello rozhraní příkazového řádku Azure zobrazuje informace podobné toohello následující ukázka:
 
 ```json
 {
@@ -82,17 +82,17 @@ Po vytvoření účtu úložiště se v rozhraní Azure CLI zobrazí podobné in
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
-K hostování provádění funkcí musíte mít aplikaci Function App. Function App poskytuje prostředí pro provádění kódu funkce bez serveru. Umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. Aplikaci Function App vytvoříte pomocí příkazu [az functionapp create](/cli/azure/functionapp#create). 
+Musíte mít funkce aplikace toohost hello provádění funkcí. funkce aplikace Hello poskytuje prostředí pro bez serveru provádění kódu funkce. Umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. Vytvořit aplikaci function app pomocí hello [vytvořit az functionapp](/cli/azure/functionapp#create) příkaz. 
 
-V následujícím příkazu nahraďte zástupný symbol `<app_name>` a účet úložiště pro `<storage_name>` vlastním jedinečným názvem aplikace Function App. Jako výchozí doména DNS pro příslušnou aplikaci Function App se použije `<app_name>`, a proto musí být název mezi všemi aplikacemi v Azure jedinečný. 
+V hello následující příkaz, nahraďte název vlastní jedinečné funkce aplikace, kde uvidíte hello `<app_name>` zástupný symbol a hello název účtu úložiště pro `<storage_name>`. Hello `<app_name>` slouží jako hello výchozí doménu DNS hello funkce aplikace a Ano název hello musí toobe jedinečný mezi všechny aplikace v Azure. 
 
 ```azurecli-interactive
 az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup \
 --consumption-plan-location westeurope
 ```
-Ve výchozím nastavení se aplikace Function App vytvoří s plánem hostování Consumption, což znamená, že se prostředky přidávají dynamicky podle požadavků vašich funkcí a platíte, jenom když funkce běží. Další informace najdete v tématu [Výběr správného plánu hostování](functions-scale.md). 
+Ve výchozím nastavení je funkce aplikace vytvoří s plánem spotřeba hostování hello, což znamená, že se prostředky dynamicky podle požadavků vaší funkce přidají a platíte jenom při funkce fungují. Další informace najdete v tématu [zvolte hello správné hostingový plán](functions-scale.md). 
 
-Po vytvoření aplikace Function App se v Azure CLI zobrazí podobné informace jako v následujícím příkladu:
+Po vytvoření aplikace hello funkce hello rozhraní příkazového řádku Azure zobrazuje informace podobné toohello následující ukázka:
 
 ```json
 {
@@ -112,18 +112,18 @@ Po vytvoření aplikace Function App se v Azure CLI zobrazí podobné informace 
 }
 ```
 
-Teď, když máte aplikaci Function App, můžete nasadit samotný kód funkce z ukázkového úložiště GitHub.
+Teď, když máte aplikaci function app, můžete nasadit hello funkce skutečného kód z úložiště ukázkové hello GitHub.
 
 ## <a name="deploy-your-function-code"></a>Nasazení kódu funkce  
 
-Existuje několik způsobů vytvoření kódu funkce v nové aplikaci Function App. V tomto tématu se připojíte k ukázkovému úložišti v GitHubu. Tak jako předtím nahraďte v následujícím kódu zástupný symbol `<app_name>` názvem aplikace Function App, který jste vytvořili. 
+Existují několik způsobů toocreate funkce kódu v aplikaci nové funkce. Toto téma se připojí tooa Ukázka úložiště Githubu. Jako předtím v hello následující kód nahraďte hello `<app_name>` zástupný symbol hello název aplikace hello funkce jste vytvořili. 
 
 ```azurecli-interactive
 az functionapp deployment source config --name <app_name> --resource-group myResourceGroup --branch master \
 --repo-url https://github.com/Azure-Samples/functions-quickstart \
 --manual-integration 
 ```
-Po nastavení zdroje nasazení zobrazí Azure CLI informace podobně jako v následujícím příkladu (hodnoty null byly odebrány pro zachování přehlednosti):
+Po nasazení hello zdroj byl nastaven, hello rozhraní příkazového řádku Azure zobrazuje následující příklad (hodnoty null Odebrat čitelnější) podobné toohello informace:
 
 ```json
 {
@@ -140,9 +140,9 @@ Po nastavení zdroje nasazení zobrazí Azure CLI informace podobně jako v nás
 }
 ```
 
-## <a name="test-the-function"></a>Testování funkce
+## <a name="test-hello-function"></a>Testování funkce hello
 
-Na počítačích se systémem Mac nebo Linux otestujete nasazenou funkci pomocí cURL nebo v systému Windows pomocí skriptu Bash. Proveďte následující příkaz cURL, který nahradí zástupný symbol `<app_name>` názvem vaší aplikace Function App. Připojte řetězec dotazu `&name=<yourname>` k adrese URL.
+Funkci cURL tootest hello nasazený na počítači se systémem Mac nebo Linux nebo pomocí Bash v systému Windows. Spustit následující příkaz cURL, nahraďte hello hello `<app_name>` zástupný symbol hello název vaší aplikace funkce. Připojit řetězec dotazu hello `&name=<yourname>` toohello adresy URL.
 
 ```bash
 curl http://<app_name>.azurewebsites.net/api/HttpTriggerJS1?name=<yourname>
@@ -150,7 +150,7 @@ curl http://<app_name>.azurewebsites.net/api/HttpTriggerJS1?name=<yourname>
 
 ![Odpověď funkce se zobrazí v prohlížeči.](./media/functions-create-first-azure-function-azure-cli/functions-azure-cli-function-test-curl.png)  
 
-Pokud nemáte cURL k dispozici v příkazovém řádku, zadejte stejnou adresu URL do pole adresy ve webovém prohlížeči. Znovu nahraďte zástupný symbol `<app_name>` názvem aplikace Function App, připojte řetězec dotazu `&name=<yourname>` k adrese URL a proveďte požadavek. 
+Pokud nemáte cURL k dispozici v příkazovém řádku, zadejte text hello stejnou adresu URL v adrese hello webového prohlížeče. Znovu, nahraďte hello `<app_name>` zástupný symbol hello název funkce aplikace a připojte řetězec dotazu hello `&name=<yourname>` toohello adresy URL a provedení hello požadavku. 
 
     http://<app_name>.azurewebsites.net/api/HttpTriggerJS1?name=<yourname>
    
@@ -158,7 +158,7 @@ Pokud nemáte cURL k dispozici v příkazovém řádku, zadejte stejnou adresu U
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Další rychlé starty v této kolekci jsou postavené na tomto rychlém startu. Pokud chcete pokračovat v práci s dalšími rychlými starty nebo kurzy, nevyčišťujte prostředky vytvořené v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího příkazu odstraňte všechny prostředky vytvořené tímto rychlým startem:
+Další rychlé starty v této kolekci jsou postavené na tomto rychlém startu. Pokud máte v plánu toocontinue na toowork následné – elementy QuickStart nebo s hello kurzy, to není vyčištění hello prostředky vytvořené v tento rychlý start. Pokud neplánujete toocontinue, použijte následující příkaz toodelete hello všechny prostředky, které jsou vytvořené tento rychlý start:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

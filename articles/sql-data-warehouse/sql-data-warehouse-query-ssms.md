@@ -1,6 +1,6 @@
 ---
-title: "Připojení k Azure SQL Data Warehouse - SSMS | Microsoft Docs"
-description: "SQL Server Management Studio (SSMS) použijte k připojení a dotazování Azure SQL Data Warehouse."
+title: aaaConnect tooAzure SQL Data Warehouse - SSMS | Microsoft Docs
+description: "Pomocí SQL Server Management Studio (SSMS) tooconnect tooand dotazu Azure SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: 
 author: antvgski
@@ -15,13 +15,13 @@ ms.workload: data-services
 ms.custom: connect
 ms.date: 10/31/2016
 ms.author: anvang;barbkess
-ms.openlocfilehash: 207fb9fd861c66039fbde89681aed3df3a2f4021
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bcbaf7139d2e5183b388b8d58c015cf5ad726722
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Připojení k SQL Data Warehouse pomocí SQL Server Management Studio (SSMS)
+# <a name="connect-toosql-data-warehouse-with-sql-server-management-studio-ssms"></a>Připojit tooSQL datového skladu s SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
@@ -31,61 +31,61 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-SQL Server Management Studio (SSMS) použijte k připojení a dotazování Azure SQL Data Warehouse. 
+Pomocí SQL Server Management Studio (SSMS) tooconnect tooand dotazu Azure SQL Data Warehouse. 
 
 ## <a name="prerequisites"></a>Požadavky
-Chcete-li použít tento kurz, potřebujete:
+toouse tohoto kurzu potřebujete:
 
-* Existující SQL Data Warehouse. Pokud chcete jeden vytvořit, podívejte se na téma [Vytvoření SQL Data Warehouse][Create a SQL Data Warehouse].
+* Existující SQL Data Warehouse. toocreate, najdete v části [vytvořit SQL Data Warehouse][Create a SQL Data Warehouse].
 * SQL Server Management Studio (SSMS) nainstalována. [Instalace aplikace SSMS] [ Install SSMS] zdarma, pokud ještě nemáte ho.
-* Plně kvalifikovaný název serveru SQL. Ten zjistíte v části [Připojení k SQL Data Warehouse][Connect to SQL Data Warehouse].
+* Hello plně kvalifikovaný název serveru SQL server. toofind, najdete v tématu [připojit tooSQL datového skladu][Connect tooSQL Data Warehouse].
 
-## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Připojení k vaší službě SQL Data Warehouse
+## <a name="1-connect-tooyour-sql-data-warehouse"></a>1. Připojit tooyour SQL Data Warehouse
 1. Otevřete aplikaci SSMS.
-2. Otevřete Průzkumník objektů. Chcete-li to provést, vyberte **soubor** > **připojit Průzkumník objektů**.
+2. Otevřete Průzkumník objektů. toodo se vyberte **soubor** > **připojit Průzkumník objektů**.
    
     ![Průzkumník objektů systému SQL Server][1]
-3. Vyplňte pole v okně pro připojení k serveru.
+3. Vyplňte pole hello v okně tooServer hello připojit.
    
-    ![Připojení k serveru][2]
+    ![Připojit tooServer][2]
    
-   * **Název serveru**: Zadejte **název serveru**, který jste si zjistili.
+   * **Název serveru**: Zadejte hello **název serveru** dříve identifikovat.
    * **Ověřování**: Vyberte **Ověřování serveru SQL Server** nebo **Integrované ověřování Active Directory**.
    * **Uživatelské jméno** a **Heslo**: Pokud jste výše vybrali možnost Ověřování serveru SQL Server, zadejte uživatelské jméno a heslo.
    * Klikněte na **Připojit**.
-4. Pokud chcete SQL server Azure prozkoumat, rozbalte ho. Můžete se podívat, které databáze jsou k tomuto serveru přidružené. Rozbalte položku AdventureWorksDW a podívejte se na tabulky v ukázkové databázi.
+4. tooexplore, rozbalte položku serveru Azure SQL. Můžete zobrazit hello databáze přidružené k serveru hello. Rozbalte položku AdventureWorksDW toosee hello tabulky v ukázkové databázi.
    
     ![Prozkoumejte AdventureWorksDW.][3]
 
 ## <a name="2-run-a-sample-query"></a>2. Spuštění ukázkového dotazu
-Teď, když jste si vytvořili připojení k databázi, můžete napsat dotaz.
+Teď, když připojení bylo navázáno tooyour databáze, můžete napsat dotaz.
 
 1. Pravým tlačítkem myši klikněte na databázi v Průzkumníku objektů systému SQL Server.
 2. Vyberte **Nový dotaz**. Otevře se nové okno dotazu.
    
     ![Nový dotaz][4]
-3. Zkopírujte tento dotaz TSQL do okna dotazu:
+3. Zkopírujte tento dotaz TSQL do okna dotazu hello:
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Spusťte dotaz. Chcete-li to provést, klikněte na tlačítko `Execute` nebo použijte následující klávesovou zkratku: `F5`.
+4. Spusťte dotaz hello. toodo tento, klikněte na tlačítko `Execute` nebo hello použijte následující klávesové: `F5`.
    
     ![Spuštění dotazu][5]
-5. Podívejte se na výsledky dotazu. V tomto příkladě má tabulka FactInternetSales 60 398 řádků.
+5. Podívejte se na výsledky dotazu hello. V tomto příkladu má hello tabulka FactInternetSales 60 398 řádků.
    
     ![Výsledky dotazu][6]
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když se můžete připojit a můžete zadávat dotazy, můžete si vyzkoušet [vizualizaci dat pomocí PowerBI][visualizing the data with PowerBI].
+Teď, když se můžete připojit a dotazu, zkuste [vizualizace hello dat pomocí PowerBI][visualizing hello data with PowerBI].
 
-Informace o tom, jak nakonfigurovat prostředí pro ověřování služby Azure Active Directory, najdete v části [Ověřování pro SQL Data Warehouse][Authenticate to SQL Data Warehouse].
+tooconfigure prostředí pro ověřování Azure Active Directory, najdete v části [ověření tooSQL datového skladu][Authenticate tooSQL Data Warehouse].
 
 <!--Arcticles-->
-[Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md
+[Connect tooSQL Data Warehouse]: sql-data-warehouse-connect-overview.md
 [Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
-[Authenticate to SQL Data Warehouse]: sql-data-warehouse-authentication.md
-[visualizing the data with PowerBI]: sql-data-warehouse-get-started-visualize-with-power-bi.md 
+[Authenticate tooSQL Data Warehouse]: sql-data-warehouse-authentication.md
+[visualizing hello data with PowerBI]: sql-data-warehouse-get-started-visualize-with-power-bi.md 
 
 <!--Other-->
 [Azure portal]: https://portal.azure.com

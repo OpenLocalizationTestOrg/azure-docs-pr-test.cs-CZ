@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s Azure Data Lake Store pomocí sady Python SDK | Dokumentace Microsoftu"
-description: "Přečtěte si, jak pomocí sady SDK pro Python pracovat s účty a systémem souborů Data Lake Store."
+title: "aaaUse hello Python SDK tooget začít s Azure Data Lake Store | Microsoft Docs"
+description: "Zjistěte, jak toouse Python SDK toowork s účty Data Lake Store a hello systému souborů."
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: nitinme
-ms.openlocfilehash: 375a603360ac249fc1b08923a94c85652390a3fc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7061fdf25ef607608bab618a20ddd3d6fc7af01d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-data-lake-store-using-python"></a>Začínáme s Azure Data Lake Store pomocí jazyka Python
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 07/11/2017
 >
 >
 
-Naučte se používat sadu SDK pro Python pro Azure Data Lake Store k provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů atd. Další informace týkající se Data Lake najdete v tématu [Azure Data Lake Store](data-lake-store-overview.md).
+Zjistěte, jak toouse hello Python SDK pro Azure a Azure Data Lake Store tooperform základních operací, jako vytváření složek, nahrávání a stahování datových souborů atd. Další informace týkající se Data Lake najdete v tématu [Azure Data Lake Store](data-lake-store-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,17 +42,17 @@ Naučte se používat sadu SDK pro Python pro Azure Data Lake Store k prováděn
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Vytvoření aplikace Azure Active Directory**. Aplikaci Azure AD použijete k ověření aplikace Data Lake Store ve službě Azure AD. Existují různé přístupy k ověřování ve službě Azure AD, jsou to **ověřování koncového uživatele** nebo **ověřování služba-služba**. Pokyny a další informace o ověřování najdete v tématu [Ověřování koncových uživatelů](data-lake-store-end-user-authenticate-using-active-directory.md) nebo [Ověřování služba-služba](data-lake-store-authenticate-using-active-directory.md).
+* **Vytvoření aplikace Azure Active Directory**. Hello Azure AD aplikace tooauthenticate hello Data Lake Store aplikaci můžete používat s Azure AD. Existují různé přístupy tooauthenticate s Azure AD, které jsou **ověřování koncového uživatele** nebo **service-to-service ověřování**. Pokyny a další informace o tooauthenticate, najdete v části [ověřování koncového uživatele](data-lake-store-end-user-authenticate-using-active-directory.md) nebo [Service-to-service ověřování](data-lake-store-authenticate-using-active-directory.md).
 
-## <a name="install-the-modules"></a>Instalace modulů
+## <a name="install-hello-modules"></a>Instalace modulů hello
 
-Abyste mohli pracovat se službou Data Lake Store pomocí Pythonu, je nutné nainstalovat tři moduly.
+toowork s Data Lake Store pomocí jazyka Python, musíte tooinstall tři moduly.
 
-* Modul `azure-mgmt-resource`. Zahrnuje moduly Azure pro Active Directory atd.
-* Modul `azure-mgmt-datalake-store`. Zahrnuje operace správy účtů Azure Data Lake Store. Další informace o tomto modulu najdete v [referenčních informacích k modulu Azure Data Lake Store Management](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html).
-* Modul `azure-datalake-store`. Zahrnuje operace se systémem souborů Azure Data Lake Store. Další informace o tomto modulu najdete v [referenčních informacích k modulu Azure Data Lake Store Filesystem](http://azure-datalake-store.readthedocs.io/en/latest/).
+* Hello `azure-mgmt-resource` modulu. Zahrnuje moduly Azure pro Active Directory atd.
+* Hello `azure-mgmt-datalake-store` modulu. To zahrnuje operace správy účtů Azure Data Lake Store hello. Další informace o tomto modulu najdete v [referenčních informacích k modulu Azure Data Lake Store Management](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html).
+* Hello `azure-datalake-store` modulu. To zahrnuje operace systému souborů hello Azure Data Lake Store. Další informace o tomto modulu najdete v [referenčních informacích k modulu Azure Data Lake Store Filesystem](http://azure-datalake-store.readthedocs.io/en/latest/).
 
-Pomocí následujících příkazů tyto moduly nainstalujte.
+Použijte následující příkazy tooinstall hello moduly hello.
 
 ```
 pip install azure-mgmt-resource
@@ -62,9 +62,9 @@ pip install azure-datalake-store
 
 ## <a name="create-a-new-python-application"></a>Vytvoření nové aplikace v Pythonu
 
-1. Pomocí integrovaného vývojového prostředí (IDE) podle vašeho výběru vytvořte novou aplikaci v Pythonu, například **mysample.py**.
+1. V hello IDE zvoleného vytvořte novou aplikaci Python, například **mysample.py**.
 
-2. Přidáním následujících řádků importujte požadované moduly.
+2. Přidejte následující řádky tooimport hello požadované moduly hello
 
     ```
     ## Use this only for Azure AD service-to-service authentication
@@ -91,11 +91,11 @@ pip install azure-datalake-store
     import logging, getpass, pprint, uuid, time
     ```
 
-3. Uložte změny v souboru mysample.py.
+3. Uložte změny toomysample.py.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
-V této části popíšeme různé způsoby, jak provádět ověření pomocí Azure AD. Dostupné jsou následující možnosti:
+V této části se věnuje hello různé způsoby tooauthenticate s Azure AD. Hello možnosti, které jsou k dispozici jsou následující:
 
 * Ověřování koncových uživatelů
 * Ověřování služba-služba
@@ -105,39 +105,39 @@ Tyto možnosti ověřování je nutné použít jak pro správu účtů, tak i p
 
 ### <a name="end-user-authentication-for-account-management"></a>Ověřování koncového uživatele pro správu účtu
 
-Tento kód použijte k ověření ve službě Azure AD pro operace správy účtu (vytvoření/odstranění účtu Data Lake Store atd.). Je třeba zadat uživatelské jméno a heslo uživatele Azure AD. Upozorňujeme, že daný uživatel by neměl mít zapnuté vícefaktorové ověřování.
+Pomocí této tooauthenticate s Azure AD pro operace správy účtů (Vytvoření nebo odstranění účtu Data Lake Store, atd.). Je třeba zadat uživatelské jméno a heslo uživatele Azure AD. Všimněte si, že tento uživatel hello by se neměla konfigurovat službu Multi-Factor Authentication.
 
-    user = input('Enter the user to authenticate with that has permission to subscription: ')
+    user = input('Enter hello user tooauthenticate with that has permission toosubscription: ')
     password = getpass.getpass()
 
     credentials = UserPassCredentials(user, password)
 
 ### <a name="end-user-authentication-for-filesystem-operations"></a>Ověřování koncového uživatele pro operace se systémem souborů
 
-Tento kód použijte k ověření pomocí Azure AD pro operace se systémem souborů (vytvoření složky, nahrání souboru atd.). Tento kód použijte se stávající aplikací **nativního klienta** Azure AD. Uživatel, pro kterého zadáváte přihlašovací údaje Azure AD, by neměl mít zapnuté vícefaktorové ověřování.
+Pomocí této tooauthenticate s Azure AD pro operace systému souborů (vytvořit složku, nahrávání souborů atd.). Tento kód použijte se stávající aplikací **nativního klienta** Azure AD. Zadejte pověření pro uživatele Hello Azure AD by se neměla konfigurovat službu Multi-Factor Authentication.
 
     tenant_id = 'FILL-IN-HERE'
     client_id = 'FILL-IN-HERE'
-    user = input('Enter the user to authenticate with that has permission to subscription: ')
+    user = input('Enter hello user tooauthenticate with that has permission toosubscription: ')
     password = getpass.getpass()
 
     token = lib.auth(tenant_id, user, password, client_id)
 
 ### <a name="service-to-service-authentication-with-client-secret-for-account-management"></a>Ověřování služba-služba s tajným klíčem klienta pro správu účtu
 
-Tento kód použijte k ověření ve službě Azure AD pro operace správy účtu (vytvoření/odstranění účtu Data Lake Store atd.). Následující fragment kódu lze použít k neinteraktivnímu ověřování vaší aplikace pomocí tajného klíče klienta pro aplikaci nebo instančního objektu. Použijte tento fragment kódu se stávající aplikací Azure AD Webová aplikace.
+Pomocí této tooauthenticate s Azure AD pro operace správy účtů (Vytvoření nebo odstranění účtu Data Lake Store, atd.). Následující fragment kódu Hello lze použít tooauthenticate aplikace interaktivně, pomocí hello tajný klíč klienta pro hlavní aplikaci / service. Použijte tento fragment kódu se stávající aplikací Azure AD Webová aplikace.
 
     credentials = ServicePrincipalCredentials(client_id = 'FILL-IN-HERE', secret = 'FILL-IN-HERE', tenant = 'FILL-IN-HERE')
 
 ### <a name="service-to-service-authentication-with-client-secret-for-filesystem-operations"></a>Ověřování služba-služba s tajným klíčem klienta pro operace se systémem souborů
 
-Tento kód použijte k ověření pomocí Azure AD pro operace se systémem souborů (vytvoření složky, nahrání souboru atd.). Následující fragment kódu lze použít k neinteraktivnímu ověřování vaší aplikace pomocí tajného klíče klienta pro aplikaci nebo instančního objektu. Použijte tento fragment kódu se stávající aplikací Azure AD Webová aplikace.
+Pomocí této tooauthenticate s Azure AD pro operace systému souborů (vytvořit složku, nahrávání souborů atd.). Následující fragment kódu Hello lze použít tooauthenticate aplikace interaktivně, pomocí hello tajný klíč klienta pro hlavní aplikaci / service. Použijte tento fragment kódu se stávající aplikací Azure AD Webová aplikace.
 
     token = lib.auth(tenant_id = 'FILL-IN-HERE', client_secret = 'FILL-IN-HERE', client_id = 'FILL-IN-HERE')
 
 ### <a name="multi-factor-authentication-for-account-management"></a>Vícefaktorové ověřování pro správu účtu
 
-Tento kód použijte k ověření ve službě Azure AD pro operace správy účtu (vytvoření/odstranění účtu Data Lake Store atd.). Následující fragment kódu můžete použít k ověřování vaší aplikace pomocí vícefaktorového ověřování. Použijte tento fragment kódu se stávající aplikací Azure AD Webová aplikace.
+Pomocí této tooauthenticate s Azure AD pro operace správy účtů (Vytvoření nebo odstranění účtu Data Lake Store, atd.). Hello následující fragment kódu může být použit tooauthenticate aplikace pomocí služby Multi-Factor authentication. Použijte tento fragment kódu se stávající aplikací Azure AD Webová aplikace.
 
     authority_host_url = "https://login.microsoftonline.com"
     tenant = "FILL-IN-HERE"
@@ -154,13 +154,13 @@ Tento kód použijte k ověření ve službě Azure AD pro operace správy účt
 
 ### <a name="multi-factor-authentication-for-filesystem-management"></a>Vícefaktorové ověřování pro správu systému souborů
 
-Tento kód použijte k ověření pomocí Azure AD pro operace se systémem souborů (vytvoření složky, nahrání souboru atd.). Následující fragment kódu můžete použít k ověřování vaší aplikace pomocí vícefaktorového ověřování. Použijte tento fragment kódu se stávající aplikací Azure AD Webová aplikace.
+Pomocí této tooauthenticate s Azure AD pro operace systému souborů (vytvořit složku, nahrávání souborů atd.). Hello následující fragment kódu může být použit tooauthenticate aplikace pomocí služby Multi-Factor authentication. Použijte tento fragment kódu se stávající aplikací Azure AD Webová aplikace.
 
     token = lib.auth(tenant_id='FILL-IN-HERE')
 
 ## <a name="create-an-azure-resource-group"></a>Vytvoření skupiny prostředků Azure
 
-Pomocí následujícího fragmentu kódu vytvořte skupinu prostředků Azure:
+Použijte následující toocreate fragmentu kódu skupiny prostředků Azure hello:
 
     ## Declare variables
     subscriptionId= 'FILL-IN-HERE'
@@ -183,7 +183,7 @@ Pomocí následujícího fragmentu kódu vytvořte skupinu prostředků Azure:
 
 ## <a name="create-clients-and-data-lake-store-account"></a>Vytvoření klientů a účtu Data Lake Store
 
-Následující fragment kódu nejprve vytvoří klienta účtu Data Lake Store. Objekt klienta použije k vytvoření účtu Data Lake Store. Nakonec vytvoří objekt klienta systému souborů.
+Následující fragment kódu nejprve Hello vytvoří klienta pro účet Data Lake Store hello. Používá hello klienta objekt toocreate účtu Data Lake Store. Nakonec hello fragment kódu vytvoří objekt systému souborů klienta.
 
     ## Declare variables
     subscriptionId = 'FILL-IN-HERE'
@@ -204,9 +204,9 @@ Následující fragment kódu nejprve vytvoří klienta účtu Data Lake Store. 
     ## Create a filesystem client object
     adlsFileSystemClient = core.AzureDLFileSystem(token, store_name=adlsAccountName)
 
-## <a name="list-the-data-lake-store-accounts"></a>Výpis účtů Data Lake Store
+## <a name="list-hello-data-lake-store-accounts"></a>Seznam účtů Data Lake Store hello
 
-    ## List the existing Data Lake Store accounts
+    ## List hello existing Data Lake Store accounts
     result_list_response = adlsAcctClient.account.list()
     result_list = list(result_list_response)
     for items in result_list:

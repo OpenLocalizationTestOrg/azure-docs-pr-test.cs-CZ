@@ -1,6 +1,6 @@
 ---
-title: "Povolení vzdáleného ladění s nastavené průběžné doručování | Microsoft Docs"
-description: "Postup povolení vzdáleného ladění při použití nastavené průběžné doručování k nasazení do Azure"
+title: "vzdálené ladění pomocí nastavené průběžné doručování aaaEnable | Microsoft Docs"
+description: "Zjistěte, jak tooenable vzdálené ladění při použití tooAzure toodeploy nastavené průběžné doručování"
 services: cloud-services
 documentationcenter: .net
 author: kraigb
@@ -14,44 +14,44 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: kraigb
-ms.openlocfilehash: 7a8a853a93e3e9915f687a20c871444e6a0de50d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d9d9d1cfe5304c9526586a9164f172746a448e4e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="enable-remote-debugging-when-using-continuous-delivery-to-publish-to-azure"></a>Aktivace vzdáleného ladění při použití průběžného odesílání k publikování v Azure
-Můžete povolit vzdálené ladění v Azure, pro cloudové služby nebo virtuálního počítače, při použití [nastavené průběžné doručování](cloud-services-dotnet-continuous-delivery.md) publikovat do Azure pomocí následujících kroků.
+# <a name="enable-remote-debugging-when-using-continuous-delivery-toopublish-tooazure"></a>Povolení vzdáleného ladění při použití tooAzure toopublish nastavené průběžné doručování
+Můžete povolit vzdálené ladění v Azure, pro cloudové služby nebo virtuálního počítače, při použití [nastavené průběžné doručování](cloud-services-dotnet-continuous-delivery.md) toopublish tooAzure pomocí následujících kroků.
 
 ## <a name="enabling-remote-debugging-for-cloud-services"></a>Povolení vzdáleného ladění pro cloudové služby
-1. V agentovi sestavení nastavení počáteční prostředí pro Azure jak je uvedeno v [sestavení příkazového řádku pro Azure](http://msdn.microsoft.com/library/hh535755.aspx).
-2. Protože je vyžadován pro balíček vzdáleného ladění runtime (msvsmon.exe), nainstalujte **nástrojů pro vzdálenou pro Visual Studio**.
+1. V agentovi hello sestavení, nastavení hello počáteční prostředí pro Azure jak je uvedeno v [sestavení příkazového řádku pro Azure](http://msdn.microsoft.com/library/hh535755.aspx).
+2. Protože je vyžadován pro balíček hello hello vzdáleného ladění runtime (msvsmon.exe), nainstalujte hello **nástrojů pro vzdálenou pro Visual Studio**.
 
     * [Nástroje pro vzdálenou pro Visual Studio 2017](https://go.microsoft.com/fwlink/?LinkId=746570)
     * [Nástroje pro vzdálenou pro Visual Studio 2015](https://go.microsoft.com/fwlink/?LinkId=615470)
     * [Nástroje pro vzdálenou pro Visual Studio 2013 Update 5](https://www.microsoft.com/download/details.aspx?id=48156)
     
-    Jako alternativu můžete zkopírovat binární soubory pro vzdálené ladění ze systému, který má nainstalovanou sadu Visual Studio.
+    Jako alternativu můžete zkopírovat binární soubory pro vzdálené ladění hello ze systému, který má nainstalovanou sadu Visual Studio.
 
-3. Vytvoření certifikátu, jak je uvedeno v [Přehled certifikátů pro Azure Cloud Services](cloud-services-certs-create.md). Udržujte .pfx a kryptografický otisk certifikátu protokolu RDP a nahrání certifikátu ke cloudové službě cíl.
-4. Pomocí následujících možností v příkazovém řádku MSBuild sestavení a balíček s vzdáleného ladění povoleno. (Nahraďte skutečné cesty k souborům systému a projektů pro položky v závorkách úhel.)
+3. Vytvoření certifikátu, jak je uvedeno v [Přehled certifikátů pro Azure Cloud Services](cloud-services-certs-create.md). Zachovat hello .pfx a kryptografický otisk certifikátu protokolu RDP a nahrajte hello certifikát toohello cíl cloudové služby.
+4. Použijte hello následující možnosti v toobuild příkazového řádku nástroje MSBuild hello a balíčku s vzdáleného ladění povoleno. (Nahraďte soubory systému a projekt tooyour skutečné cesty pro položky v závorkách úhel hello.)
    
-        msbuild /TARGET:PUBLISH /PROPERTY:Configuration=Debug;EnableRemoteDebugger=true;VSX64RemoteDebuggerPath="<remote tools path>";RemoteDebuggerConnectorCertificateThumbprint="<thumbprint of the certificate added to the cloud service>";RemoteDebuggerConnectorVersion="2.7" "<path to your VS solution file>"
+        msbuild /TARGET:PUBLISH /PROPERTY:Configuration=Debug;EnableRemoteDebugger=true;VSX64RemoteDebuggerPath="<remote tools path>";RemoteDebuggerConnectorCertificateThumbprint="<thumbprint of hello certificate added toohello cloud service>";RemoteDebuggerConnectorVersion="2.7" "<path tooyour VS solution file>"
    
-    `VSX64RemoteDebuggerPath`je cesta ke složce obsahující msvsmon.exe v nástrojích pro vzdálenou pro sadu Visual Studio.
-    `RemoteDebuggerConnectorVersion`je verze sady SDK Azure v rámci cloudové služby. Je také by měl odpovídat verzi nainstalované s Visual Studio.
-5. Publikujte ke cloudové službě cíl s použitím souboru balíčku a .cscfg vygenerované v předchozím kroku.
-6. Importujte certifikátu (soubor .pfx) do počítače, který má Visual Studio s Azure SDK pro .NET nainstalované. Zajistěte, aby k importu do `CurrentUser\My` úložiště certifikátů, jinak se připojuje k v ladicím programu sady Visual Studio se nezdaří.
+    `VSX64RemoteDebuggerPath`je hello cesta toohello složku obsahující msvsmon.exe v nástrojích pro vzdálenou hello pro sadu Visual Studio.
+    `RemoteDebuggerConnectorVersion`je hello Azure SDK verze v rámci cloudové služby. Je také by měl odpovídat hello verze nainstalované s Visual Studio.
+5. Publikujte toohello cílovou cloudovou službu pomocí balíčku a .cscfg souboru hello vygenerovaného v předchozím kroku hello.
+6. Importovat hello certifikát (soubor .pfx) toohello počítač, který má Visual Studio s Azure SDK pro .NET nainstalované. Ujistěte se, že toohello tooimport `CurrentUser\My` úložiště certifikátů, jinak připojení ladicí program toohello v sadě Visual Studio se nezdaří.
 
 ## <a name="enabling-remote-debugging-for-virtual-machines"></a>Povolení vzdáleného ladění pro virtuální počítače
 1. Vytvořte virtuální počítač Azure. V tématu [vytvoření virtuálního počítače se systémem Windows Server](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) nebo [vytvářet a spravovat virtuální počítače Azure v sadě Visual Studio](../virtual-machines/windows/classic/manage-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
-2. Na [Azure classic stránky portálu](http://go.microsoft.com/fwlink/p/?LinkID=269851), zobrazení řídicího panelu virtuálního počítače zobrazíte virtuálního počítače **kryptografický OTISK certifikátu protokolu RDP**. Tato hodnota se používá pro `ServerThumbprint` hodnota v konfiguraci rozšíření.
-3. Vytvoření certifikátu klienta, jak je uvedeno v [Přehled certifikátů pro Azure Cloud Services](cloud-services-certs-create.md) (Uchovávejte .pfx a kryptografický otisk certifikátu protokolu RDP).
-4. Nainstalovat Azure Powershell (verze 0.7.4 nebo novější) jak je uvedeno v [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
-5. Spusťte následující skript, který chcete povolit rozšíření RemoteDebug. Nahraďte cesty a osobní data vlastní, například název odběru, název služby a kryptografický otisk.
+2. Na hello [Azure stránky portálu classic](http://go.microsoft.com/fwlink/p/?LinkID=269851), zobrazit hello virtuálního počítače řídicí panel toosee hello virtuálního počítače **kryptografický OTISK certifikátu protokolu RDP**. Tato hodnota se používá pro hello `ServerThumbprint` hodnota v konfiguraci rozšíření hello.
+3. Vytvoření certifikátu klienta, jak je uvedeno v [Přehled certifikátů pro Azure Cloud Services](cloud-services-certs-create.md) (Uchovávejte hello .pfx a kryptografický otisk certifikátu protokolu RDP).
+4. Nainstalovat Azure Powershell (verze 0.7.4 nebo novější) jak je uvedeno v [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+5. Spusťte následující skript tooenable hello RemoteDebug rozšíření hello. Nahraďte hello cesty a osobní data vlastní, například název odběru, název služby a kryptografický otisk.
    
    > [!NOTE]
-   > Tento skript je nakonfigurován pro Visual Studio 2015. Pokud používáte Visual Studio 2013 nebo Visual Studio 2017, upravte `$referenceName` a `$extensionName` přiřazení níže, aby `RemoteDebugVS2013` nebo `RemoteDebugVS2017`.
+   > Tento skript je nakonfigurován pro Visual Studio 2015. Pokud používáte Visual Studio 2013 nebo Visual Studio 2017, upravte hello `$referenceName` a `$extensionName` následující přiřazení příliš`RemoteDebugVS2013` nebo `RemoteDebugVS2017`.
 
     ```powershell   
     Add-AzureAccount
@@ -93,5 +93,5 @@ Můžete povolit vzdálené ladění v Azure, pro cloudové služby nebo virtuá
     $vm | Update-AzureVM
     ```
 
-6. Importujte certifikátu (.pfx) do počítače, který má Visual Studio s Azure SDK pro .NET nainstalované.
+6. Import hello certifikátu (.pfx) toohello počítač, který má Visual Studio s Azure SDK pro .NET nainstalované.
 

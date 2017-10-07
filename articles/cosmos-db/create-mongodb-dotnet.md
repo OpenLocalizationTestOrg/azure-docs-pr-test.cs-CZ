@@ -1,6 +1,6 @@
 ---
-title: "Databáze Azure Cosmos: Sestavení webové aplikace v prostředí .NET s rozhraním API MongoDB | Dokumentace Microsoftu"
-description: "Představuje ukázku kódu .NET, kterou můžete použít k připojení a dotazování do rozhraní API MongoDB databáze Azure Cosmos."
+title: "Azure Cosmos DB: Sestavení webové aplikace pomocí rozhraní .NET a hello MongoDB API | Microsoft Docs"
+description: "Uvede ukázku kódu .NET pomocí dotazu tooand tooconnect hello rozhraní API služby Azure Cosmos DB MongoDB"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -15,21 +15,21 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: 2d30bec75d701b1fd55355d1e139350b6d828c9a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c85cc47f772a19aaa7181611b75a8acaedbc4c42
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-the-azure-portal"></a>Databáze Azure Cosmos: Sestavení webové aplikace s rozhraním API MongoDB v prostředí .NET a na webu Azure Portal
+# <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-hello-azure-portal"></a>Azure Cosmos DB: Sestavení rozhraní API MongoDB webové aplikace pomocí rozhraní .NET a hello portálu Azure
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru Azure Cosmos DB. 
+Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete rychle vytvořit a dotazovat dokumentu, klíč/hodnota a graf databází, které těžit z globální distribuční hello a možnosti vodorovné škálování jádrem hello Azure Cosmos DB. 
 
-Tento rychlý start popisuje způsob vytvoření účtu databáze Azure Cosmos, databáze dokumentů a kolekce pomocí webu Azure Portal. Potom sestavíte a nasadíte webovou aplikaci seznamu úkolů založenou na [ovladači .NET MongoDB](https://docs.mongodb.com/ecosystem/drivers/csharp/). 
+Tento rychlý start předvádí, jak hello toocreate účet Azure Cosmos DB, dokumentu databáze a kolekce pomocí portálu Azure. Budete pak sestavení a nasazení webové aplikace seznamu úkolů založený na hello [MongoDB .NET ovladač](https://docs.mongodb.com/ecosystem/drivers/csharp/). 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte nainstalovanou sadu Visual Studio 2017, můžete stáhnout a použít **bezplatnou verzi** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
+Pokud ještě nemáte nainstalované Visual Studio 2017, můžete stáhnout a použít hello **volné** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Ujistěte se, že povolíte **Azure development** při instalaci sady Visual Studio hello.
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 <a id="create-account"></a>
@@ -37,25 +37,25 @@ Pokud ještě nemáte nainstalovanou sadu Visual Studio 2017, můžete stáhnout
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
-## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
+## <a name="clone-hello-sample-application"></a>Klonování hello ukázkové aplikace
 
-Teď naklonujeme aplikaci rozhraní API MongoDB z GitHubu, nastavíme připojovací řetězec a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu. 
+Teď umožňuje nastavit připojovací řetězec hello klonování MongoDB API aplikace z githubu a potom ho spusťte. Uvidíte, jak je snadné toowork s daty prostřednictvím kódu programu. 
 
-1. Otevřete okno terminálu Git, jako je třeba Git Bash, a pomocí `cd` přejděte do pracovního adresáře.  
+1. Otevřete okno terminálu git, jako je například git bash a `cd` tooa pracovní adresář.  
 
-2. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. 
+2. Spusťte následující příkaz tooclone hello Ukázka úložiště hello. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-getting-started.git
     ```
 
-3. Potom otevřete soubor řešení v sadě Visual Studio. 
+3. Poté otevřete soubor řešení hello v sadě Visual Studio. 
 
-## <a name="review-the-code"></a>Kontrola kódu
+## <a name="review-hello-code"></a>Zkontrolujte hello kódu
 
-Ještě jednou se stručně podívejme na to, co se v aplikaci děje. Otevřete soubor **Dal.cs** v adresáři **DAL** a zjistíte, že tyto řádky kódu vytvářejí prostředky databáze Azure Cosmos. 
+Provedeme jejich stručný přehled o dění v aplikaci hello. Otevřete hello **Dal.cs** souboru pod hello **DAL** directory a najdete, že tyto řádky kódu vytvořit hello prostředky Azure Cosmos DB. 
 
-* Inicializuje se klient Mongo.
+* Inicializujte hello Mongo klienta.
 
     ```cs
         MongoClientSettings settings = new MongoClientSettings();
@@ -75,7 +75,7 @@ Ještě jednou se stručně podívejme na to, co se v aplikaci děje. Otevřete
         MongoClient client = new MongoClient(settings);
     ```
 
-* Načte se databáze a kolekce.
+* Načíst hello databázi a kolekci hello.
 
     ```cs
     private string dbName = "Tasks";
@@ -93,47 +93,47 @@ Ještě jednou se stručně podívejme na to, co se v aplikaci děje. Otevřete
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
 
-Teď se vraťte zpátky na web Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
+Nyní přejděte zpět toohello Azure portálu tooget vaše informace o připojovacím řetězci a zkopírujte jej do aplikace hello.
 
-1. Na webu [Azure Portal](http://portal.azure.com/) klikněte v účtu databáze Azure Cosmos v levém navigačním panelu na možnost **Připojovací řetězec** a potom klikněte na **Klíče pro čtení i zápis**. V dalším kroku zkopírujete pomocí tlačítek kopírování na pravé straně obrazovky uživatelské jméno, heslo a hostitele do souboru Dal.cs.
+1. V hello [portál Azure](http://portal.azure.com/), ve vašem Azure Cosmos DB účet, klikněte v levé navigační hello **připojovací řetězec**a potom klikněte na **klíče pro čtení a zápis**. Do souboru Dal.cs hello v dalším kroku hello použijete hello tlačítka Kopírovat na pravé straně hello hello obrazovky toocopy hello uživatelské jméno, heslo a hostitele.
 
-2. Otevřete soubor **Dal.cs** v adresáři **DAL**. 
+2. Otevřete hello **Dal.cs** souboru v hello **DAL** adresáře. 
 
-3. Z portálu zkopírujte hodnotu **username** (pomocí tlačítka kopírování) a nastavte ji jako hodnotu položky **username** v souboru **Dal.cs**. 
+3. Kopírování vaše **uživatelské jméno** hodnoty z portálu hello (pomocí tlačítka kopírování hello) a nastavit jej jako hello hodnotu hello **uživatelské jméno** ve vaší **Dal.cs** souboru. 
 
-4. Potom z portálu zkopírujte hodnotu **host** a nastavte ji jako hodnotu **host** v souboru **Dal.cs**. 
+4. Zkopírujte vaše **hostitele** hodnoty z portálu hello a nastavit jej jako hello hodnotu hello **hostitele** ve vaší **Dal.cs** souboru. 
 
-5. Nakonec z portálu zkopírujte hodnotu **password** a nastavte ji jako hodnotu **password** v souboru **Dal.cs**. 
+5. Nakonec zkopírujte vaše **heslo** hodnoty z portálu hello a nastavit jej jako hello hodnotu hello **heslo** v vaše **Dal.cs** souboru. 
 
-Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s databází Azure Cosmos. 
+Jste nyní aktualizovat vaši aplikaci s všechny údaje hello potřebuje toocommunicate s Azure Cosmos DB. 
     
-## <a name="run-the-web-app"></a>Spuštění webové aplikace
+## <a name="run-hello-web-app"></a>Spouštění hello webové aplikace
 
-1. V sadě Visual Studio klikněte v **Průzkumníku řešení** pravým tlačítkem myši na projekt a potom klikněte na **Spravovat balíčky NuGet**. 
+1. V sadě Visual Studio, klikněte pravým tlačítkem na projekt hello v **Průzkumníku řešení** a pak klikněte na **spravovat balíčky NuGet**. 
 
-2. Do pole **Procházet** v NuGetu zadejte *MongoDB.Driver*.
+2. V hello NuGet **Procházet** zadejte *MongoDB.Driver*.
 
-3. Z výsledků nainstalujte knihovnu **MongoDB.Driver**. Tím se nainstaluje balíček MongoDB.Driver a všechny závislosti.
+3. Z výsledků hello nainstalovat hello **MongoDB.Driver** knihovny. Tím se nainstaluje balíček MongoDB.Driver hello a také všechny závislosti.
 
-4. Spusťte aplikaci stisknutím CTRL+F5. Aplikace se zobrazí v prohlížeči. 
+4. Klikněte na kombinaci kláves CTRL + F5 toorun hello aplikace. Aplikace se zobrazí v prohlížeči. 
 
-5. V prohlížeči klikněte na **Vytvořit** a vytvořte v aplikaci seznamu úkolů několik nových úloh.
+5. Klikněte na tlačítko **vytvořit** v hello prohlížeče a vytvořit pár nové úlohy ve vaší aplikaci seznamu úkolů.
 
-## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
+## <a name="review-slas-in-hello-azure-portal"></a>Zkontrolujte SLA v hello portálu Azure
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu z portálu Azure Portal všechny prostředky vytvořené podle tohoto rychlého startu:
+Pokud ale nebudete toocontinue toouse této aplikace, odstraňte všechny prostředky, které jsou vytvořené tento rychlý start v hello portál Azure s hello následující kroky:
 
-1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku. 
-2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+1. V levé nabídce hello v hello portálu Azure klikněte na **skupiny prostředků** a pak klikněte na název hello hello prostředků, které jste vytvořili. 
+2. Na stránce skupiny prostředků, klikněte na tlačítko **odstranit**hello textového pole zadejte název hello toodelete hello prostředků a pak klikněte na tlačítko **odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se seznámili s postupem vytvoření účtu databáze Azure Cosmos a spuštění webové aplikace pomocí rozhraní API pro MongoDB. Teď můžete do účtu databáze Cosmos importovat další data. 
+V tento rychlý start když jste se naučili jak toocreate účet Azure Cosmos DB a spusťte webovou aplikaci pomocí hello rozhraní API pro MongoDB. Nyní můžete importovat další data tooyour Cosmos DB účtu. 
 
 > [!div class="nextstepaction"]
-> [Import dat do databáze Azure Cosmos pro rozhraní API MongoDB](mongodb-migrate.md)
+> [Importovat data do Azure Cosmos DB pro hello MongoDB rozhraní API](mongodb-migrate.md)
 

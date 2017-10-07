@@ -1,5 +1,5 @@
 ---
-title: "Tabulky auditování, přesměrování TDS IP koncové body pro databázi SQL Azure a | Microsoft Docs"
+title: "aaaTable auditování, přesměrování TDS IP koncové body pro databázi SQL Azure a | Microsoft Docs"
 description: "Další informace o auditování, TDS přesměrování a IP koncový bod změny při implementaci tabulky auditování ve službě Azure SQL Database."
 services: sql-database
 documentationcenter: 
@@ -15,42 +15,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: giladm
-ms.openlocfilehash: d4a7e6658ec65a70bd7e07859e2a69acee58b7b5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 966c23f92fab6fa459a515ad841bb2d5f75436aa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL Database – podpora klientů nižší úrovně a změní koncový bod IP adresy pro auditování tabulka
 
 > [!IMPORTANT]
-> Tento dokument se vztahuje pouze na auditování tabulka, která je **nyní zastaralé**.<br>
-> Použijte prosím nový [auditování objektů Blob](sql-database-auditing.md) metoda, která **nemá** vyžadovat úpravy řetězec připojení klientů nižší úrovně. Další informace o auditování objektů Blob najdete v [začít pracovat s auditování databáze SQL](sql-database-auditing.md).
+> Tento dokument se vztahuje pouze tooTable auditování, což je **nyní zastaralé**.<br>
+> Použijte novou hello [auditování objektů Blob](sql-database-auditing.md) metoda, která **nemá** vyžadovat úpravy řetězec připojení klientů nižší úrovně. Další informace o auditování objektů Blob najdete v [začít pracovat s auditování databáze SQL](sql-database-auditing.md).
 
-[Databáze auditování](sql-database-auditing.md) automaticky spolupracuje se službou SQL klientů, které podporují přesměrování TDS. Všimněte si, že přesměrování nelze použít při použití metody auditování objektů Blob.
+[Databáze auditování](sql-database-auditing.md) automaticky spolupracuje se službou SQL klientů, které podporují přesměrování TDS. Všimněte si, že přesměrování nelze použít při použití metody auditování objektů Blob hello.
 
 ## <a id="subheading-1"></a>Podpora klientů nižší úrovně
-Jakýkoli klient, který implementuje TDS 7.4 také podporuje přesměrování. Výjimky zahrnují JDBC 4.0, ve kterém funkci přesměrování není plně podporována a Tedious pro Node.JS, ve které přesměrování nebyla implementována.
+Jakýkoli klient, který implementuje TDS 7.4 také podporuje přesměrování. Výjimky toothis zahrnuty JDBC 4.0 kterou hello funkci přesměrování není plně podporována a Tedious pro Node.JS, ve kterém nebyla implementována přesměrování.
 
-Pro "Klienty nižší úrovně" tj. by měl být které podporu TDS 7.3 a pod - server plně kvalifikovaný název domény pro připojení řetězec verze upraven:
+Pro "Klienty nižší úrovně", tj. který podporují TDS verze 7.3 a níže - hello plně kvalifikovaný název domény serveru v připojovacím řetězci hello by měl být upraven:
 
-Původní server plně kvalifikovaný název domény v připojovacím řetězci: <*název serveru*>. database.windows.net
+Původní server plně kvalifikovaný název domény v připojovacím řetězci hello: <*název serveru*>. database.windows.net
 
-Upravené plně kvalifikovaný název domény serveru v připojovacím řetězci: <*název serveru*> .database. **zabezpečené**. windows.net
+Upravené plně kvalifikovaný název domény serveru v připojovacím řetězci hello: <*název serveru*> .database. **zabezpečené**. windows.net
 
 Částečný seznam "Klienty nižší úrovně" zahrnuje:
 
 * Rozhraní .NET 4.0 a níže,
 * ODBC 10.0 a níže.
-* JDBC (při JDBC podporuje TDS 7.4, TDS přesměrování funkce není podporována plně)
+* JDBC (při JDBC podporuje TDS 7.4, hello TDS přesměrování funkce není plně podporována)
 * Zdlouhavé (pro platformu Node.JS)
 
-**Poznámka:** výše uvedeném serveru úpravy plně kvalifikovaného názvu domény může být užitečné také pro použití zásad auditování na úrovni SQL serveru bez potřebu konfiguraci krok v každé databázi (dočasné zmírnění).
+**Poznámka:** hello výše serveru úpravy plně kvalifikovaného názvu domény může být užitečné také pro použití zásad auditování na úrovni SQL serveru bez potřebu konfiguraci krok v každé databázi (dočasné zmírnění).
 
 ## <a id="subheading-2"></a>Koncový bod IP adresy se změní při zapínání auditování
-Upozorňujeme, že když povolíte auditování tabulka, se změní koncový bod IP adresy vaší databáze. Pokud máte možnost nastavení striktní brány firewall, aktualizujte prosím tato nastavení brány firewall odpovídajícím způsobem.
+Upozorňujeme, že když povolíte auditování tabulka, se změní hello koncový bod IP adresy vaší databáze. Pokud máte možnost nastavení striktní brány firewall, aktualizujte prosím tato nastavení brány firewall odpovídajícím způsobem.
 
-Nový koncový bod IP databáze bude záviset na oblasti databáze:
+Hello nový koncový bod IP databáze bude záviset na oblast databáze hello:
 
 | Oblast databáze | Možné koncové body IP |
 | --- | --- |

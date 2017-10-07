@@ -1,6 +1,6 @@
 ---
-title: "Přidejte konektor Facebook ve vašich Logic Apps | Microsoft Docs"
-description: "Přehled konektoru Facebook s parametry rozhraní REST API"
+title: "konektor služby Facebook hello aaaAdd ve vašich Logic Apps | Microsoft Docs"
+description: "Přehled konektoru Facebook hello s parametry rozhraní REST API"
 services: 
 documentationcenter: 
 author: MandiOhlinger
@@ -15,34 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: e10a30ccef3e81cb3d7749696453d82b8958d076
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 962c6ed5d36e465de9d485d50e5c6dca6d44f470
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-facebook-connector"></a>Začínáme s konektorem služby Facebook
-Připojení k síti Facebook a příspěvků na timeline, získat kanálů stránek a další. Facebook můžete:
+# <a name="get-started-with-hello-facebook-connector"></a>Začínáme s konektorem služby Facebook hello
+Připojit tooFacebook a konečná časová osa tooa, získat kanálů stránek a další. Facebook můžete:
 
-* Sestavení vaší firmy toku na základě dat, které máte ze sítě Facebook. 
+* Sestavení vaší firmy toku na základě hello dat, které máte ze sítě Facebook. 
 * Používejte aktivační událost, když je obdržena nového příspěvku.
-* Použití akce, které odeslání na časové ose získat kanálů stránek a další. Tyto akce se odpověď a pak proveďte výstup k dispozici pro další akce. Například po nového příspěvku na časové ose můžete provést tento post a push na váš informační kanál sítě Twitter. 
+* Použití akce, které post na časové ose tooyour získat kanálů stránek a další. Tyto akce se odpověď a pak proveďte výstup hello k dispozici pro další akce. Například po nového příspěvku na časové ose můžete provést tohoto příspěvku a poslat ho tooyour informační kanál sítě Twitter. 
 
 Můžete začít s vytvářením aplikace logiky teď najdete v tématu [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-to-facebook"></a>Umožňuje vytvořit připojení k síti Facebook
-Když přidáte tento konektor aplikace logiky, musíte je nejdříve autorizovat logic apps, abyste připojení k vaší službě Facebook.
+## <a name="create-a-connection-toofacebook"></a>Vytvoření připojení tooFacebook
+Když přidáte tento konektor tooyour logiku aplikace, musíte je nejdříve autorizovat logiku aplikace tooconnect tooyour Facebook.
 
-1. Přihlaste se k účtu služby Facebook
-2. Vyberte **Authorize**a povolit logic apps, abyste připojit a používat vaší sítě Facebook. 
+1. Přihlaste se tooyour účet služby Facebook
+2. Vyberte **Authorize**a povolit vaší tooconnect logiku aplikace a používat vaší sítě Facebook. 
 
-> [!INCLUDE [Steps to create a connection to Facebook](../../includes/connectors-create-api-facebook.md)]
+> [!INCLUDE [Steps toocreate a connection tooFacebook](../../includes/connectors-create-api-facebook.md)]
 > 
 
 
 ## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
 
-Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/facebook/).
+Zobrazit všechny aktivační události a akce definované v hello swagger a také zobrazit žádné limity v hello [connector – podrobnosti](/connectors/facebook/).
 
 ## <a name="more-connectors"></a>Více konektorů
-Přejděte zpět [rozhraní API seznamu](apis-list.md).
+Přejděte zpět toohello [rozhraní API seznamu](apis-list.md).

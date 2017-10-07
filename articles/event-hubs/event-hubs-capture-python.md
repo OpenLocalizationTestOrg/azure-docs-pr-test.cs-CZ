@@ -1,6 +1,6 @@
 ---
-title: "Azure Event Hubs zaznamenat návod | Microsoft Docs"
-description: "Ukázka pomocí sady Azure SDK pro Python, která demonstruje použití funkci zachycení centra událostí."
+title: "Postup zaznamenání centra událostí aaaAzure | Microsoft Docs"
+description: "Ukázku, která používá toodemonstrate Azure Python SDK hello pomocí funkce hello zaznamenat centra událostí."
 services: event-hubs
 documentationcenter: 
 author: djrosanova
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: darosa;sethm
-ms.openlocfilehash: a764a116755c20f60e92e553bd7c896425272b85
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 1737dcca283711d863aa970db0e80ae71814e666
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-hubs-capture-walkthrough-python"></a>Názorný postup zachycení centra událostí: Python
 
-Zaznamenat centra událostí je funkce služby Event Hubs, která umožňuje automaticky doručování streamování dat v Centru událostí k účtu úložiště objektů Blob v Azure podle svého výběru. Tato funkce umožňuje snadno provádět, dávkového zpracování na data v reálném čase streamování. Tento článek popisuje, jak používat zaznamenat centra událostí s Python. Další informace o zachycení centra událostí najdete v tématu [článek s přehledem](event-hubs-archive-overview.md).
+Zaznamenat centra událostí je funkce služby Event Hubs, která umožňuje tooautomatically můžete poskytovat hello streamování dat ve vaší tooan centra událostí účtu Azure Blob storage podle vašeho výběru. Tato funkce umožňuje snadno tooperform dávkového zpracování na data v reálném čase streamování. Tento článek popisuje, jak toouse Event Hubs zaznamenat s Python. Další informace o zachycení centra událostí najdete v tématu hello [článek s přehledem](event-hubs-archive-overview.md).
 
-V tomto příkladu [Azure Python SDK](https://azure.microsoft.com/develop/python/) k předvedení funkci zachycení. Sender.py program odešle simulovanou telemetrii prostředí do centra událostí ve formátu JSON. Centrum událostí je nakonfigurované použití funkce zachycení zápis tato data do úložiště objektů blob v dávkách. Aplikace capturereader.py pak přečte tyto objekty BLOB a vytvoří soubor připojení na zařízení a pak zapíše data do souborů CSV.
+Tato ukázka používá hello [Azure Python SDK](https://azure.microsoft.com/develop/python/) toodemonstrate hello zachycení funkce. Hello sender.py program odešle simulovanou telemetrii prostředí tooEvent Hubs ve formátu JSON. Hello Centrum událostí je nakonfigurované toouse hello zachycení funkci toowrite toto úložiště tooblob data v dávkách. Hello capturereader.py aplikace pak přečte tyto objekty BLOB a vytvoří soubor připojení na zařízení a pak zapíše hello data do souborů CSV.
 
 ## <a name="what-will-be-accomplished"></a>Co všechno zvládneme
 
-1. Vytvořte účet Azure Blob Storage a kontejner objektů blob v něm, pomocí portálu Azure.
-2. Vytvořte na obor názvů centra událostí, pomocí portálu Azure.
-3. Vytvoření centra událostí s funkci zachycení povoleno, pomocí portálu Azure.
-4. Posílat data do centra událostí se skript v jazyce Python.
-5. Čtení souborů z zachytávání a zpracovat je jiný skript v jazyce Python.
+1. Vytvořte účet Azure Blob Storage a kontejner objektů blob v něm, pomocí hello portálu Azure.
+2. Vytvořte na obor názvů centra událostí, pomocí hello portálu Azure.
+3. Vytvoření centra událostí hello zachycení funkce povolena, pomocí hello portálu Azure.
+4. Odeslání dat toohello centra událostí se skript v jazyce Python.
+5. Číst soubory hello z hello zachycení a zpracovat je jiný skript v jazyce Python.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,18 +43,18 @@ V tomto příkladu [Azure Python SDK](https://azure.microsoft.com/develop/python
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
 ## <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage
-1. Přihlaste se k webu [Azure Portal][Azure portal].
-2. V levém navigačním podokně portálu klikněte na **nový**, pak klikněte na tlačítko **úložiště**a potom klikněte na **účet úložiště**.
-3. Vyplňte pole v okně účtu úložiště a pak klikněte na tlačítko **vytvořit**.
+1. Přihlaste se toohello [portál Azure][Azure portal].
+2. V levém navigačním podokně hello hello portálu, klikněte na **nový**, pak klikněte na tlačítko **úložiště**a potom klikněte na **účet úložiště**.
+3. Vyplňte pole hello v okně účtu úložiště hello a pak klikněte na **vytvořit**.
    
    ![][1]
-4. Jakmile ověříte **úspěšné nasazení** zprávy, klikněte na název nového účtu úložiště a v **Essentials** okně klikněte na tlačítko **objekty BLOB**. Když **služba objektů Blob** okno otevře, klikněte na tlačítko **+ kontejner** v horní části. Název kontejneru **zaznamenat**, pak zavřete **služba objektů Blob** okno.
-5. Klikněte na tlačítko **přístupové klíče** v levém okně a zkopírujte název účtu úložiště a hodnotu **key1**. Uložte tyto hodnoty do programu Poznámkový blok nebo některé dočasné umístění.
+4. Jakmile ověříte hello **úspěšné nasazení** zprávy, klikněte na název hello hello nový účet úložiště a v hello **Essentials** okně klikněte na tlačítko **objekty BLOB**. Když hello **služba objektů Blob** okno otevře, klikněte na tlačítko **+ kontejner** v horní části hello. Název kontejneru hello **zaznamenat**, pak zavřete hello **služba objektů Blob** okno.
+5. Klikněte na tlačítko **přístupové klíče** v hello levém okně a zkopírujte hello název účtu úložiště hello a hodnotu hello **key1**. Uložte tyto hodnoty tooNotepad nebo některé dočasné umístění.
 
-## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>Vytvořit skript v jazyce Python odesílat události do vašeho centra událostí
+## <a name="create-a-python-script-toosend-events-tooyour-event-hub"></a>Vytvoření Python skript toosend události tooyour centra událostí
 1. Otevřete svém oblíbeném editoru Python, jako například [Visual Studio Code][Visual Studio Code].
-2. Vytvořte skript volá **sender.py**. Tento skript odesílá 200 události do vašeho centra událostí. Jsou jednoduché prostředí odečty odeslaných ve formátu JSON.
-3. Vložte následující kód do sender.py:
+2. Vytvořte skript volá **sender.py**. Tento skript odešle 200 centra událostí tooyour události. Jsou jednoduché prostředí odečty odeslaných ve formátu JSON.
+3. Vložte následující kód do sender.py hello:
    
   ```python
   import uuid
@@ -75,13 +75,13 @@ V tomto příkladu [Azure Python SDK](https://azure.microsoft.com/develop/python
           sbs.send_event('INSERT YOUR EVENT HUB NAME', s)
       print y
   ```
-4. Aktualizujte předchozí kód, který použije váš obor názvů, hodnota klíče a název centra událostí, který jste získali při vytvoření oboru názvů služby Event Hubs.
+4. Aktualizujte hello předcházející toouse kódu vašeho oboru názvů, hodnota klíče a název centra událostí, který jste získali při vytvoření oboru názvů služby Event Hubs hello.
 
-## <a name="create-a-python-script-to-read-your-capture-files"></a>Vytvořit skript v jazyce Python číst vaše soubory zachytávání
+## <a name="create-a-python-script-tooread-your-capture-files"></a>Vytvoření Python skriptu tooread zachycení souborů
 
-1. Vyplňte okno a klikněte na tlačítko **vytvořit**.
-2. Vytvořte skript volá **capturereader.py**. Tento skript načte zaznamenané soubory a vytvoří soubor na zařízení k zápisu dat pouze pro toto zařízení.
-3. Vložte následující kód do capturereader.py:
+1. Vyplňte hello okně a klikněte na tlačítko **vytvořit**.
+2. Vytvořte skript volá **capturereader.py**. Tento skript přečte hello zaznamenat soubory a vytvoří soubor na zařízení toowrite hello dat pouze pro toto zařízení.
+3. Vložte následující kód do capturereader.py hello:
    
   ```python
   import os
@@ -125,10 +125,10 @@ V tomto příkladu [Azure Python SDK](https://azure.microsoft.com/develop/python
           block_blob_service.delete_blob(container, blob.name)
   startProcessing('YOUR STORAGE ACCOUNT NAME', 'YOUR KEY', 'capture')
   ```
-4. Nezapomeňte vložit na odpovídající hodnoty pro název účtu úložiště a klíč ve volání `startProcessing`.
+4. Být jisti toopaste hello odpovídající hodnoty pro název účtu úložiště a klíč v hello volání příliš`startProcessing`.
 
-## <a name="run-the-scripts"></a>Spuštěním skriptů
-1. Otevřete příkazový řádek, který má Python v jeho cestu a poté spusťte tyto příkazy pro instalaci požadovaných balíčků Python:
+## <a name="run-hello-scripts"></a>Spouštění skriptů hello
+1. Otevřete příkazový řádek, který má Python v jeho cestu a potom spuštěním těchto příkazů tooinstall Python požadované balíčky:
    
   ```
   pip install azure-storage
@@ -136,35 +136,35 @@ V tomto příkladu [Azure Python SDK](https://azure.microsoft.com/develop/python
   pip install avro
   ```
    
-  Pokud máte starší verzi azure-storage nebo azure, budete možná muset použít **– upgrade** možnost
+  Pokud máte starší verzi azure-storage nebo azure, může být nutné toouse hello **– upgrade** možnost
    
-  Může se také muset spustit následující (není nutné u většiny systémů):
+  Můžete také potřebovat následující hello toorun (není nutné u většiny systémů):
    
   ```
   pip install cryptography
   ```
-2. Přejděte do adresáře kdekoli uloženy sender.py a capturereader.py a spusťte tento příkaz:
+2. Změňte váš adresář toowherever jste uložili sender.py a capturereader.py a spusťte tento příkaz:
    
   ```
   start python sender.py
   ```
    
-  Tento příkaz spustí nový proces Python ke spuštění odesílatele.
-3. Nyní Počkejte několik minut pro zaznamenání ke spuštění. Potom zadejte do původní okno příkazového řádku následující příkaz:
+  Tento příkaz spustí novou toorun hello odesílatele proces Python.
+3. Nyní Počkejte několik minut toorun zachycení hello. Poté zadejte hello do původní okno příkazového řádku následující příkaz:
    
    ```
    python capturereader.py
    ```
 
-   Tento snímek procesoru používá místní adresář ke stažení všechny objekty BLOB z účtu úložiště nebo kontejneru. Zpracuje všechny, které nejsou prázdné a zapíše výsledky jako soubory .csv do místního adresáře.
+   Tento snímek procesoru používá hello místního adresáře toodownload všech objektů BLOB hello z kontejneru účtu úložiště hello. Zpracuje všechny, které nejsou prázdné a zapíše hello výsledky jako soubory .csv do místního adresáře hello.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o službě Event Hubs najdete na následujících odkazech:
+Další informace o službě Event Hubs návštěvou hello následující odkazy:
 
 * [Přehled služby Event Hubs zachycení][Overview of Event Hubs Capture]
 * Úplná [ukázková aplikace, která používá službu Event Hubs][sample application that uses Event Hubs]
-* [Horizontální navýšení kapacity zpracování událostí ve službě Event Hubs][Scale out Event Processing with Event Hubs] – ukázka
+* Hello [horizontální navýšení kapacity zpracování událostí ve službě Event Hubs] [ Scale out Event Processing with Event Hubs] ukázka.
 * [Přehled služby Event Hubs][Event Hubs overview]
 
 [Azure portal]: https://portal.azure.com/

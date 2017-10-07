@@ -1,6 +1,6 @@
 ---
-title: "Úvod k řešení potíží s v sledovací proces sítě Azure prostředku | Microsoft Docs"
-description: "Tato stránka obsahuje přehled možnosti pro odstraňování potíží prostředků sledovací proces sítě"
+title: "řešení potíží s v sledovací proces sítě Azure tooresource aaaIntroduction | Microsoft Docs"
+description: "Tato stránka obsahuje přehled řešení problémů s možností prostředků hello sledovací proces sítě"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 0d5091b682d1b25c47b224394bcc2c46366eeb2a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ccbe4c1c2364473aba06e709460d67c773cf25ae
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Úvod k řešení potíží s v sledovací proces sítě Azure prostředku
+# <a name="introduction-tooresource-troubleshooting-in-azure-network-watcher"></a>Řešení potíží s v sledovací proces sítě Azure tooresource Úvod
 
-Brány virtuální sítě zajistěte připojení mezi místními prostředky a dalším virtuálním sítím v rámci Azure. Monitorování tyto brány a jejich připojení je důležité používat k zajištění komunikace není přerušeno. Sledovací proces sítě poskytuje možnost Poradce při potížích brány virtuální sítě a připojení. To je možné volat prostřednictvím portálu, prostředí PowerShell, rozhraní příkazového řádku nebo REST API. Při volání, sledovací proces sítě diagnostikuje stavu brány virtuální sítě nebo připojení a vrátit správné výsledky. Tento požadavek je dlouhotrvající transakci, budou vráceny výsledky, po dokončení diagnostiky.
+Brány virtuální sítě zajistěte připojení mezi místními prostředky a dalším virtuálním sítím v rámci Azure. Monitorování tyto brány a jejich připojení je velmi důležité tooensuring komunikace není poškozený. Sledovací proces sítě poskytuje schopnost tootroubleshoot hello brány virtuální sítě a připojení. To je možné volat prostřednictvím portálu hello, prostředí PowerShell, rozhraní příkazového řádku nebo REST API. Při volání, sledovací proces sítě diagnostikuje hello stavu brány virtuální sítě hello nebo připojení a příslušné výsledky vrácené hello. Tento požadavek je dlouhotrvající transakci, hello výsledky, se vrátí po dokončení diagnostiky hello.
 
 ![portál][2]
 
 ## <a name="results"></a>Výsledky
 
-Předběžné výsledky vrácené poskytují celkový přehled o stavu prostředku. Podrobnější informace lze zadat pro prostředky, jak je znázorněno v následující části:
+Hello předběžné výsledky vrácené poskytují celkový přehled o stavu hello hello prostředku. Podrobnější informace lze zadat pro prostředky, jak je znázorněno v následující části hello:
 
-V následujícím seznamu je hodnot vrácených s Poradce při potížích rozhraní API:
+Hello následujícím seznamu je hello hodnot vrácených s hello řešení rozhraní API:
 
-* **startTime** – tato hodnota je spuštění volání rozhraní API Poradce při potížích.
-* **čas ukončení** – tato hodnota je čas ukončení poradce při potížích.
+* **startTime** – tato hodnota je čas hello hello řešení volání rozhraní API spustit.
+* **čas ukončení** – tato hodnota je hello čas ukončení řešení potíží s hello.
 * **kód** – tato hodnota není v pořádku, pokud dojde k selhání jedné diagnostiku.
-* **výsledky** -výsledků je kolekce výsledků vrácených na připojení nebo brány virtuální sítě.
-    * **ID** – tato hodnota je typem chyby.
-    * **Souhrn** – tato hodnota je souhrn poruchy.
-    * **Podrobné** -tuto hodnotu poskytuje podrobný popis chyby.
-    * **recommendedActions** -tato vlastnost je kolekce doporučených akcí.
-      * **actionText** – tato hodnota obsahuje text popisující, jakou akci chcete provést.
-      * **actionUri** -tuto hodnotu poskytuje identifikátor URI pro dokumentaci o tom, jak fungují.
-      * **actionUriText** – tato hodnota je krátký popis text akce.
+* **výsledky** -výsledků je kolekce výsledků vrácených na hello připojení nebo hello brány virtuální sítě.
+    * **ID** – tato hodnota je typem chyby hello.
+    * **Souhrn** – tato hodnota je uveden seznam hello selhání.
+    * **Podrobné** -tuto hodnotu poskytuje podrobný popis chyby hello.
+    * **recommendedActions** -tato vlastnost je kolekce tootake doporučené akce.
+      * **actionText** – tato hodnota obsahuje text hello popisující, co tootake akce.
+      * **actionUri** -tuto hodnotu poskytuje hello URI toodocumentation tooact.
+      * **actionUriText** – tato hodnota je krátký popis text hello akce.
 
-Následující tabulky popisují různé chyby typy (id pod výsledky v předchozím seznamu), které jsou k dispozici, a pokud selhání vytvoří protokoly.
+Následující tabulky zobrazit hello různé chyby typy (id pod výsledky z hello předcházející seznamu), které jsou k dispozici Hello a pokud hello selhání vytvoří protokoly.
 
 ### <a name="gateway"></a>brána
 
@@ -54,12 +54,12 @@ Následující tabulky popisují různé chyby typy (id pod výsledky v předcho
 | GatewayNotFound | Nelze najít, že není zřízený brány nebo brána. |Ne|
 | PlannedMaintenance |  Instance brány je v rámci údržby.  |Ne|
 | UserDrivenUpdate | Pokud je aktualizace uživatele v průběhu. To může být operace změny velikosti. | Ne |
-| VipUnResponsive | Nelze kontaktovat primární instance brány. To se stane, když selže test stavu. | Ne |
-| PlatformInActive | Nastane problém s platformou. | Ne|
-| ServiceNotRunning | Základní služba není spuštěna. | Ne|
-| NoConnectionsFoundForGateway | Žádná připojení existuje v bráně. Toto je pouze upozornění.| Ne|
+| VipUnResponsive | Nelze kontaktovat hello primární instance hello brány. To se stane, když selže test stavu hello. | Ne |
+| PlatformInActive | Nastane problém s platformou hello. | Ne|
+| ServiceNotRunning | Hello základní služba není spuštěna. | Ne|
+| NoConnectionsFoundForGateway | Žádná připojení existuje v bráně hello. Toto je pouze upozornění.| Ne|
 | ConnectionsNotConnected | Připojení nejsou připojené. Toto je pouze upozornění.| Ano|
-| GatewayCPUUsageExceeded | Aktuální využití procesoru brány je > 95 %. | Ano |
+| GatewayCPUUsageExceeded | Aktuální využití procesoru brány Hello je > 95 %. | Ano |
 
 ### <a name="connection"></a>Připojení
 
@@ -69,19 +69,19 @@ Následující tabulky popisují různé chyby typy (id pod výsledky v předcho
 | GatewayNotFound | Nelze najít, že není zřízený brány nebo brána. |Ne|
 | PlannedMaintenance | Instance brány je v rámci údržby.  |Ne|
 | UserDrivenUpdate | Pokud je aktualizace uživatele v průběhu. To může být operace změny velikosti.  | Ne |
-| VipUnResponsive | Nelze kontaktovat primární instance brány. Ho se stane, když selže test stavu. | Ne |
+| VipUnResponsive | Nelze kontaktovat hello primární instance hello brány. Ho se stane, když selže test stavu hello. | Ne |
 | ConnectionEntityNotFound | Konfigurace připojení nebyl nalezen. | Ne |
-| ConnectionIsMarkedDisconnected | Připojení je označena jako "odpojené". |Ne|
-| ConnectionNotConfiguredOnGateway | Základní služby není k dispozici připojení nakonfigurovaná. | Ano |
-| ConnectionMarkedStandy | Základní služby je označena jako pohotovostní režim.| Ano|
+| ConnectionIsMarkedDisconnected | Hello připojení je označena jako "odpojené". |Ne|
+| ConnectionNotConfiguredOnGateway | základní služby Hello nemá hello nakonfigurováno připojení. | Ano |
+| ConnectionMarkedStandy | podkladová služba Hello je označena jako pohotovostní režim.| Ano|
 | Authentication | Neshoda předsdílený klíč. | Ano|
-| PeerReachability | Sdílené brána není dostupný. | Ano|
-| IkePolicyMismatch | Bránu sdílené má IKE zásady, které nejsou podporované službou Azure. | Ano|
-| Chyba WfpParse | Došlo k chybě při analýze protokolů Ochrana souborů systému Windows. |Ano|
+| PeerReachability | Hello sdílené brány není dostupný. | Ano|
+| IkePolicyMismatch | Hello sdílené brány má IKE zásady, které nejsou podporované službou Azure. | Ano|
+| Chyba WfpParse | Došlo k chybě analýzy protokolů Ochrana souborů systému Windows hello. |Ano|
 
 ## <a name="supported-gateway-types"></a>Podporované typy brány
 
-Následující seznam obsahuje podporu ukazuje připojení a bran, které jsou podporovány při řešení problémů sledovací proces sítě.
+Hello následující seznam obsahuje podporu hello ukazuje připojení a bran, které jsou podporovány při řešení problémů sledovací proces sítě.
 |  |  |
 |---------|---------|
 |**Typy brány**   |         |
@@ -100,23 +100,23 @@ Následující seznam obsahuje podporu ukazuje připojení a bran, které jsou p
 
 ## <a name="log-files"></a>Soubory protokolu
 
-Soubory protokolů Poradce prostředků jsou uložené v účtu úložiště po dokončení řešení potíží s prostředků. Následující obrázek znázorňuje příklad obsah volání, jehož výsledkem chyba.
+soubory protokolů Poradce prostředků Hello jsou uložené v účtu úložiště po dokončení řešení potíží s prostředků. Hello následující obrázek znázorňuje příklad obsah hello volání, jehož výsledkem chyba.
 
 ![soubor ZIP][1]
 
 > [!NOTE]
-> V některých případech pouze podmnožinu soubory protokolů se zapíše do úložiště.
+> V některých případech je zapsán pouze podmnožinu souborů protokolů hello toostorage.
 
-Pokyny ke stahování souborů z účty azure storage, najdete v části [Začínáme s Azure Blob storage pomocí rozhraní .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Jiný nástroj, který je možné je Storage Explorer. Další informace o Storage Explorer naleznete zde na následující odkaz: [Storage Explorer](http://storageexplorer.com/)
+Pokyny ke stahování souborů z účty azure storage, najdete v části příliš[Začínáme s Azure Blob storage pomocí rozhraní .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Jiný nástroj, který je možné je Storage Explorer. Další informace o Storage Explorer naleznete zde na hello následující odkaz: [Storage Explorer](http://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 
-**ConnectionStats.txt** soubor obsahuje celkové statistiky připojení, včetně příchozí a Odchozí bajty, stav připojení a času, které bylo vytvořeno připojení.
+Hello **ConnectionStats.txt** soubor obsahuje celkové statistiky hello připojení, včetně příchozí a Odchozí bajty, stav připojení a hello čas hello bylo vytvořeno připojení.
 
 > [!NOTE]
-> Pokud vrátí volání rozhraní API pro odstraňování potíží v pořádku, je jediné, co, vrátí se v souboru zip **ConnectionStats.txt** souboru.
+> Pokud toohello volání hello řešení potíží s rozhraní API vrátí v pořádku, je hello pouze věcí, vrátí se v souboru zip hello **ConnectionStats.txt** souboru.
 
-Obsah tohoto souboru se podobně jako v následujícím příkladu:
+Hello obsah tohoto souboru jsou podobné toohello následující ukázka:
 
 ```
 Connectivity State : Connected
@@ -128,7 +128,7 @@ Connected Since : 2/1/2017 8:22:06 PM
 
 ### <a name="cpustatstxt"></a>CPUStats.txt
 
-**CPUStats.txt** soubor obsahuje využití procesoru a paměti, které jsou k dispozici při testování.  Obsah tohoto souboru je stejný jako v následujícím příkladu:
+Hello **CPUStats.txt** soubor obsahuje využití procesoru a paměti, které jsou k dispozici v době hello testování.  Hello obsah tohoto souboru je podobné toohello následující ukázka:
 
 ```
 Current CPU Usage : 0 % Current Memory Available : 641 MBs
@@ -136,9 +136,9 @@ Current CPU Usage : 0 % Current Memory Available : 641 MBs
 
 ### <a name="ikeerrorstxt"></a>IKEErrors.txt
 
-**IKEErrors.txt** soubor obsahuje chyby IKE, ke kterým během monitorování nebyly nalezeny.
+Hello **IKEErrors.txt** soubor obsahuje chyby IKE, ke kterým během monitorování nebyly nalezeny.
 
-Následující příklad ukazuje obsah souboru IKEErrors.txt. Chyby se může lišit v závislosti na problém.
+Hello následující příklad ukazuje hello obsahu souboru IKEErrors.txt. Vaše chyby se může lišit v závislosti na hello problém.
 
 ```
 Error: Authentication failed. Check shared key. Check crypto. Check lifetimes. 
@@ -149,13 +149,13 @@ Error: On-prem device sent invalid payload.
 
 ### <a name="scrubbed-wfpdiagtxt"></a>Očistí wfpdiag.txt
 
-**Scrubbed wfpdiag.txt** protokolový soubor obsahuje protokol Ochrana souborů systému Windows. Tento protokol obsahuje protokolování paketu vyřaďte a IKE/AuthIP selhání.
+Hello **Scrubbed wfpdiag.txt** protokolový soubor obsahuje hello wfp protokolu. Tento protokol obsahuje protokolování paketu vyřaďte a IKE/AuthIP selhání.
 
-Následující příklad ukazuje obsah souboru Scrubbed wfpdiag.txt. V tomto příkladu nebyla sdílený klíč připojení správné, jak je vidět z 3. řádku dole. V následujícím příkladu je právě fragment celý protokolu, jako protokol může být náročná v závislosti na problém.
+Hello následující příklad ukazuje hello obsah souboru Scrubbed wfpdiag.txt hello. V tomto příkladu nebyla hello sdílený klíč připojení správné, jak je vidět z hello 3. řádku zdola hello. Následující ukázka Hello je právě fragment hello celý protokolu, jako hello protokolu může být náročná v závislosti na hello problém.
 
 ```
 ...
-[0]0368.03A4::02/02/2017-17:36:01.496 [ikeext] 3038|52.161.24.36|Deleted ICookie from the high priority thread pool list
+[0]0368.03A4::02/02/2017-17:36:01.496 [ikeext] 3038|52.161.24.36|Deleted ICookie from hello high priority thread pool list
 [0]0368.03A4::02/02/2017-17:36:01.496 [ikeext] 3038|52.161.24.36|IKE diagnostic event:
 [0]0368.03A4::02/02/2017-17:36:01.496 [ikeext] 3038|52.161.24.36|Event Header:
 [0]0368.03A4::02/02/2017-17:36:01.496 [ikeext] 3038|52.161.24.36|  Timestamp: 1601-01-01T00:00:00.000Z
@@ -182,9 +182,9 @@ Následující příklad ukazuje obsah souboru Scrubbed wfpdiag.txt. V tomto př
 
 ### <a name="wfpdiagtxtsum"></a>wfpdiag.txt.Sum
 
-**Wfpdiag.txt.sum** je soubor protokolu vyrovnávací paměti a zpracovaných událostí.
+Hello **wfpdiag.txt.sum** je soubor protokolu hello vyrovnávací paměti a zpracovaných událostí.
 
-V následujícím příkladu je obsah souboru wfpdiag.txt.sum.
+Hello následující příklad je hello obsah souboru wfpdiag.txt.sum.
 ```
 Files Processed:
     C:\Resources\directory\924336c47dd045d5a246c349b8ae57f2.GatewayTenantWorker.DiagnosticsStorage\2017-02-02T17-34-23\wfpdiag.etl
@@ -212,7 +212,7 @@ Elapsed Time            330 sec
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak diagnostikovat brány sítě VPN a připojení přes portál navštivte stránky [brány řešení potíží – portál Azure](network-watcher-troubleshoot-manage-portal.md).
+Zjistěte, jak toodiagnose brány sítě VPN a připojení přes hello navštivte stránky portálu [brány řešení potíží – portál Azure](network-watcher-troubleshoot-manage-portal.md).
 <!--Image references-->
 
 [1]: ./media/network-watcher-troubleshoot-overview/GatewayTenantWorkerLogs.png

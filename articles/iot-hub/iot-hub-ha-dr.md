@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT Hub vysoké dostupnosti a zotavení po havárii | Microsoft Docs"
-description: "Popisuje funkce Azure a IoT Hub, které pomáhají při vytváření vysoce dostupné řešení Azure IoT se po havárii možnosti obnovení."
+title: "aaaAzure IoT Hub vysoké dostupnosti a zotavení po havárii | Microsoft Docs"
+description: "Popisuje funkce hello Azure a IoT Hub, které vám pomůžou toobuild vysoce dostupné řešení Azure IoT s možností obnovení po havárii."
 services: iot-hub
 documentationcenter: 
 author: fsautomata
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2016
 ms.author: elioda
-ms.openlocfilehash: 76c3187549e1821908263c30e394db26ee6f75e6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 74e1fa1682258819ffb3fd84eb79e42fc6e4120f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub vysoké dostupnosti a zotavení po havárii
-Jako služby Azure IoT Hub poskytuje vysokou dostupnost (HA) pomocí redundance na úrovni oblasti Azure bez další zátěže vyžadují řešení. Platforma Microsoft Azure také obsahuje funkce, které pomáhají při vytváření řešení pomocí možnosti zotavení po havárii nebo mezi oblastmi dostupnosti. Pokud chcete zajistit vysokou dostupnost globální, mezi oblastmi pro zařízení nebo uživatelů, návrh a připravte řešení využívat výhod těchto funkcí Azure zotavení po Havárii. Článek [Azure obchodní kontinuity technické pokyny](../resiliency/resiliency-technical-guidance.md) popisuje integrované funkce v Azure pro provozní kontinuitu a zotavení po Havárii. [Zotavení po havárii a vysoká dostupnost pro aplikace Azure] [ Disaster recovery and high availability for Azure applications] dokument obsahuje pokyny k architektura s strategie pro aplikace Azure a dosáhnout HA a zotavení po Havárii.
+Jako služby Azure IoT Hub poskytuje vysokou dostupnost (HA) pomocí redundance na úrovni hello oblast Azure, bez další zátěže vyžadují hello řešení. Platforma Microsoft Azure Hello také zahrnuje funkce toohelp sestavování řešení s možností zotavení po havárii nebo mezi oblastmi dostupnosti. Pokud chcete tooprovide globální, mezi oblastmi vysoká dostupnost pro zařízení nebo uživatelů, návrh a připravte řešení tootake výhod těchto funkcí Azure zotavení po Havárii. článek Hello [Azure obchodní kontinuity technické pokyny](../resiliency/resiliency-technical-guidance.md) popisuje hello integrované funkce v Azure pro provozní kontinuitu a zotavení po Havárii. Hello [zotavení po havárii a vysoká dostupnost pro aplikace Azure] [ Disaster recovery and high availability for Azure applications] dokumentu poskytuje doporučení ohledně architektury na strategie pro aplikace Azure tooachieve HA a zotavení po Havárii.
 
 ## <a name="azure-iot-hub-dr"></a>Azure IoT Hub DR
-Kromě HA uvnitř oblasti IoT Hub implementuje mechanismy převzetí služeb při selhání pro zotavení po havárii, které vyžadují od uživatele žádný zásah. IoT Hub DR samoobslužné inicializaci a má cíli času obnovení (RTO), 2-26 hodin a tyto cíle bodu obnovení (rpo).
+Kromě toho HA toointra oblasti IoT Hub implementuje mechanismy převzetí služeb při selhání pro zotavení po havárii, které vyžadují bez zásahu uživatele hello. IoT Hub DR samoobslužné inicializaci a má cíli času obnovení (RTO) 2-26 hodin a hello následující plánovaných bodů obnovení (rpo).
 
 | Funkce | PLÁNOVANÝ BOD OBNOVENÍ |
 | --- | --- |
@@ -36,18 +36,18 @@ Kromě HA uvnitř oblasti IoT Hub implementuje mechanismy převzetí služeb př
 | Frontu zpětné vazby cloud zařízení |Dojde ke ztrátě všech nepřečtených zpráv |
 
 ## <a name="regional-failover-with-iot-hub"></a>Místní převzetí služeb při selhání s centrem IoT
-Dokončení zpracování topologií nasazení v řešeních pro IoT je mimo rámec tohoto článku. Popisuje článek *regionální převzetí služeb při selhání* modelu nasazení za účelem vysoké dostupnosti a zotavení po havárii.
+Dokončení zpracování topologií nasazení v řešeních pro IoT je mimo rámec tohoto článku hello. Hello článek popisuje hello *regionální převzetí služeb při selhání* modelu nasazení hello za účelem vysoké dostupnosti a zotavení po havárii.
 
-V modelu regionální převzetí služeb při selhání spustí back end řešení především v umístění jednoho datového centra a sekundární IoT hub a back-end nasazených v jiném umístění datového centra. Pokud jste službu IoT hub v primární datové centrum vyskytne výpadku nebo dojde k přerušení připojení k síti ze zařízení na primární datové centrum. Zařízení používají koncového bodu služby sekundární vždy, když primární brány, není dosažitelná. Pomocí funkce převzetí služeb při selhání mezi oblastmi lze zvýšit dostupnost řešení nad vysokou dostupnost jedné oblasti.
+V modelu regionální převzetí služeb při selhání hello řešení back end spustí především v umístění jednoho datového centra a sekundární IoT hub a back-end jsou nasazeny v jiném umístění datového centra. Pokud centra IoT hello primární datové centrum hello vyskytne výpadku nebo dojde k přerušení připojení k síti hello z primární datové centrum aplikace hello zařízení toohello. Zařízení používají koncového bodu služby sekundární vždy, když primární brány hello nelze získat přístup. Pomocí funkce převzetí služeb při selhání mezi oblastmi je možné zlepšit hello řešení dostupnosti nad rámec hello vysokou dostupnost jedné oblasti.
 
-Na vysoké úrovni implementovat model místní převzetí služeb při selhání službou IoT Hub, budete potřebovat následující:
+Na vysoké úrovni, tooimplement model místní převzetí služeb při selhání službou IoT Hub, je třeba hello následující:
 
-* **Sekundární IoT hub a zařízení směrování logiku**: v případě přerušení služby ve vaší primární oblasti, musíte spustit zařízení, připojení k vaší sekundární oblasti. Vzhledem k rozpoznání stavu povaze většina služeb související se situací, je běžné správců řešení, které spustí proces převzetí služeb při selhání mezi oblast. Nejlepší způsob, jak komunikaci nový koncový bod do zařízení, a zachováním kontroly procesu, je na jejich pravidelně kontrolovat *concierge* služby pro aktuální aktivní koncový bod. Službu concierge může být webové aplikace, která je replikována a uchovávat dosažitelný pomocí technik DNS přesměrování (například pomocí [Azure Traffic Manager][Azure Traffic Manager]).
-* **Replikace registru identit** – Pokud chcete být použitelná, sekundární IoT hub musí obsahovat všechny identity zařízení, které se můžou připojit k řešení. Řešení musí zachovat geograficky replikované zálohy identit zařízení a jejich nahrávání do služby IoT hub sekundární před přepnutím aktivní koncový bod pro zařízení. Funkce exportu identity zařízení IoT Hub je užitečné v tomto kontextu. Další informace najdete v tématu [Příručka vývojáře pro službu IoT Hub - registru identit][IoT Hub developer guide - identity registry].
-* **Slučování logiku** – když primární oblasti je dostupná, všechny musí být migrovány stav a data, která byla vytvořena v sekundární lokalitě zpět na primární oblasti. Tento stav a data většinou má vztah k identit zařízení a metadata aplikace, které je potřeba sloučit s primární IoT hub a jiných úložišť specifické pro aplikaci v primární oblasti. Pro zjednodušení tento krok, měli byste použít idempotent operace. Operace Idempotent minimalizovat vedlejší účinky z daného distribučního konzistentní událostí a z duplikáty nebo doručení na více systémů pořadí událostí. Kromě toho logiku aplikace by měl být pro tolerovat potenciální nekonzistence nebo "mírně" datum stavu. Tato situace může nastat v důsledku další čas potřebný pro systému "retušovat" podle plánovaných bodů obnovení (RPO).
+* **Sekundární IoT hub a zařízení směrování logiku**: V případě hello přerušení služby ve vaší primární oblasti, musíte spustit zařízení připojující tooyour sekundární oblast. Zadané hello stav povaha většina služeb související se situací, je běžné řešení správci tootrigger hello převzetí služeb při selhání mezi oblast procesu. Hello nejlepší způsob, jak toocommunicate hello nový koncový bod toodevices, při zachování kontroly nad hello procesu, je toohave je pravidelně kontrolovat *concierge* hello aktuální aktivní koncový bod služby. Hello concierge služba může být webové aplikace, která je replikována a uchovávat dosažitelný pomocí technik DNS přesměrování (například pomocí [Azure Traffic Manager][Azure Traffic Manager]).
+* **Replikace registru identit** -toobe použitelný, hello sekundární IoT hub musí obsahovat všechny identity zařízení, které se můžou připojit toohello řešení. Hello řešení musí zachovat geograficky replikované zálohy identit zařízení a odešlete toohello sekundární IoT hub před přepnutím hello aktivní koncový bod pro hello zařízení. funkce exportu identity Hello zařízení služby IoT Hub je užitečné v tomto kontextu. Další informace najdete v tématu [Příručka vývojáře pro službu IoT Hub - registru identit][IoT Hub developer guide - identity registry].
+* **Slučování logiku** – když primární oblasti hello opět k dispozici, všechny hello stav a data, která byla vytvořena v hello sekundární lokality musí být migrované back toohello primární oblasti. Tento stav a data se týká hlavně toodevice identit a metadata aplikace, které je potřeba sloučit s hello primární IoT hub a jiných úložišť specifické pro aplikaci v primární oblasti hello. toosimplify tento krok byste měli používat idempotent operace. Operace Idempotent minimalizovat hello vedlejší účinky od hello následné konzistentní distribuci událostí a od duplikáty nebo doručení na více systémů pořadí událostí. Kromě toho logiku aplikace hello musí být nekonzistence potenciální navrženou tootolerate nebo "mírně" datum stavu. Tato situace může nastat z důvodu toohello další čas potřebný pro systém hello příliš "retušovat" podle plánovaných bodů obnovení (RPO).
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o službě Azure IoT Hub na následujících odkazech:
+Použijte tyto odkazy toolearn Další informace o službě Azure IoT Hub:
 
 * [Začínáme s centra IoT (kurz)][lnk-get-started]
 * [Co je Azure IoT Hub?][What is Azure IoT Hub?]

@@ -1,6 +1,6 @@
 ---
-title: "10 způsobů, jak na virtuální počítač vědecké účely dat | Microsoft Docs"
-description: "Proveďte různé zkoumání dat a modelování úloh na vědecké zpracování dat virtuálního počítače."
+title: "aaaTen způsobů, jak na hello datové vědy virtuálního počítače | Microsoft Docs"
+description: "Provádění různých zkoumání dat a modelování úloh v hello vědecké zpracování dat virtuálního počítače."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,88 +14,88 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: gokuma;weig;bradsev
-ms.openlocfilehash: 45af1cd3a05b483429d2307659f1882ef28921f6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4dfe22f14f00208c63e26ce44b05123c9ac4b850
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>Deset věcí, které můžete provádět na virtuálních počítačích pro vědecké zkoumání dat
-Virtuální počítač pro vědecké účely dat společnosti Microsoft (DSVM) je výkonný data vědecké účely vývojového prostředí, které umožňuje provádět různé úlohy zkoumání a modelování data. Prostředí obsahuje již vytvořené a připojené několik oblíbených data analýzy nástroje, které usnadňují rychle začít používat analýzy pro místní, Cloudová nebo hybridní nasazení. DSVM úzce spolupracuje s řadou služeb Azure a se bude moct číst a zpracovávat data, která je již uložen v Azure, Azure SQL Data Warehouse, Azure Storage a Azure Data Lake nebo v Azure Cosmos DB. Můžete využít i jiné analytics nástroje, například Azure Machine Learning a Azure Data Factory.
+# <a name="ten-things-you-can-do-on-hello-data-science-virtual-machine"></a>Deset kroky, které můžete provést na hello vědecké zpracování dat virtuálního počítače
+Hello Microsoft Data vědecké účely virtuálního počítače (DSVM) je výkonný data vědecké účely vývojového prostředí, které umožňuje vám tooperform různé úlohy zkoumání a modelování data. Hello prostředí dodává již vytvořené a připojené oblíbených daty analytics nástroje, které umožňují snadno tooget rychle začít s analýzy pro místní, Cloudová nebo hybridní nasazení. Hello DSVM úzce spolupracuje s řadou služeb Azure a je možné tooread a zpracování dat, které jsou již uloženy v Azure, Azure SQL Data Warehouse, Azure Storage a Azure Data Lake nebo v Azure Cosmos DB. Můžete využít i jiné analytics nástroje, například Azure Machine Learning a Azure Data Factory.
 
-V tomto článku jsme vás provede procesem použití vašeho DSVM k provádění různých úloh datové vědy a komunikovat s jinými službami Azure. Tady jsou některé z akcí, které můžete provést jak na DSVM:
+V tomto článku jsme vás provedou postupem toouse vaše DSVM tooperform různé vědě data úloh a komunikovat s jinými službami Azure. Tady jsou některé hello věcí, které můžete provést jak na hello DSVM:
 
-1. Prozkoumejte data a vyvíjet modely místně na DSVM použití serveru Microsoft R, Python
-2. Pomocí poznámkového bloku Jupyter a experimentovat s daty v prohlížeči pomocí R Python 2, Python 3, Microsoft enterprise připravené verze R určená pro škálovatelnost a výkon
+1. Prozkoumejte data a vyvíjet modely místně na hello DSVM použití serveru Microsoft R, Python
+2. Použít tooexperiment poznámkového bloku Jupyter s daty v prohlížeči pomocí R Microsoft Python 2, Python 3, verze enterprise připravené R určená pro škálovatelnost a výkon
 3. Zprovoznit modely vytvářeny pomocí R a Python v Azure Machine Learning, tak klientské aplikace mají přístup k vaší modelů pomocí jednoduchého webového rozhraní služby
 4. Správa prostředků Azure pomocí portálu Azure nebo prostředí Powershell
 5. Rozšíření prostor úložiště a sdílet rozsáhlých datových sad / kódu napříč celý tým vytvoření Azure File storage jako připojit jednotku ve vašem DSVM
-6. Sdílet kódu se svým týmem pomocí Githubu a přístup k vaší úložiště pomocí předem nainstalovaná klienti Git - Git Bash a Git grafickým uživatelským rozhraním.
+6. Sdílet kódu se svým týmem pomocí Githubu a přístup k vaší úložiště pomocí hello předem nainstalovaná Git klienti - Git Bash a Git grafickým uživatelským rozhraním.
 7. Přístup k různým Azure data a analýzy službám jako úložiště objektů blob v Azure, Azure Data Lake, Azure HDInsight (Hadoop), Cosmos databáze Azure, Azure SQL Data Warehouse & databáze
-8. Vytvářejte sestavy a řídicí panel pomocí Power BI Desktop předinstalované na DSVM a nasadit je do cloudu
-9. Dynamické škálování vašeho DSVM potřebám vašeho projektu
+8. Vytvářejte sestavy a řídicí panel pomocí hello Power BI Desktop předinstalované na hello DSVM a nasadit je v cloudu hello
+9. Dynamicky škálovat vaše DSVM toomeet, musí váš projekt
 10. Nainstalujte další nástroje na virtuálním počítači   
 
 > [!NOTE]
-> Další využití poplatky pro mnoho dalších datové úložiště a analýzy služby uvedené v tomto článku. Podrobnosti najdete [Azure – ceny](https://azure.microsoft.com/pricing/) podrobnosti.
+> Další využití poplatky pro řadu hello další datové úložiště a analýzy služby uvedené v tomto článku. Podrobnosti najdete toohello [Azure – ceny](https://azure.microsoft.com/pricing/) stránce Podrobnosti.
 > 
 > 
 
 **Požadavky**
 
 * Budete potřebovat předplatné Azure. Můžete si zaregistrovat bezplatnou zkušební verzi [zde](https://azure.microsoft.com/free/).
-* Pokyny pro zřízení virtuálního počítače vědecké účely dat na portálu Azure jsou k dispozici v [vytvoření virtuálního počítače](https://portal.azure.com/#create/microsoft-ads.standard-data-science-vmstandard-data-science-vm).
+* Pokyny pro zřízení virtuálního počítače vědecké účely dat na portálu Azure hello jsou k dispozici v [vytvoření virtuálního počítače](https://portal.azure.com/#create/microsoft-ads.standard-data-science-vmstandard-data-science-vm).
 
 ## <a name="1-explore-data-and-develop-models-using-microsoft-r-server-or-python"></a>1. Prozkoumejte data a vývoj modelů pomocí serveru Microsoft R nebo Python
-Jazyky jako R a Python můžete provádět analýzy vaše data na DSVM vpravo.
+Analytické údaje dat můžete použít jazyky jako R a Python toodo na hello DSVM vpravo.
 
-Pro R můžete použít IDE názvem "Revolution R Enterprise 8.0", který se nachází v nabídce start nebo plochy. Společnost Microsoft poskytuje další knihovny nad otevřený zdroj/CRAN-R umožnit škálovatelný analýzy a schopnost analyzovat data větší než velikost paměti, který je povolená díky paralelní bloku analysis. Můžete taky nainstalovat IDE R z vaše volba jako [Rstudia](https://www.rstudio.com/products/rstudio-desktop/).
+Pro R můžete použít IDE názvem "Revolution R Enterprise 8.0", který se nachází v nabídce start hello nebo plochy hello. Společnost Microsoft poskytuje další knihovny nad hello otevřený zdroj/CRAN-R tooenable škálovatelné analytics hello možnost tooanalyze data a větší než velikost paměti hello povolená díky paralelní bloku analýzy. Můžete taky nainstalovat IDE R z vaše volba jako [Rstudia](https://www.rstudio.com/products/rstudio-desktop/).
 
-Pro jazyk Python můžete použít rozhraní IDE, jako Visual Studio Community Edition, který má nástroje Python Tools pro Visual Studio (PTVS) rozšíření předinstalován. Ve výchozím nastavení je nakonfigurován pouze základní Python 2.7 na PTVS (bez jakékoli knihovnu analytics jako SciKit, Pandas). Chcete-li povolit Anaconda Python 2.7 a 3.5, musíte udělat následující:
+Pro jazyk Python můžete použít rozhraní IDE, jako Visual Studio Community Edition, který má hello Python Tools pro Visual Studio (PTVS) rozšíření předinstalován. Ve výchozím nastavení je nakonfigurován pouze základní Python 2.7 na PTVS (bez jakékoli knihovnu analytics jako SciKit, Pandas). Pořadí tooenable Anaconda Python 2.7 a 3.5 je třeba toodo hello následující:
 
-* Vytvoření vlastního prostředí pro každou verzi přechodem na **nástroje** -> **Python Tools** -> **prostředí Python** a potom kliknutím na možnost " **+ Vlastní**"v aplikaci Visual Studio 2015 Community Edition
-* Zadejte popis a nastavte prostředí cesty předponu jako *c:\anaconda* Anaconda Python 2.7 nebo *c:\anaconda\envs\py35* pro Anaconda Python 3.5
-* Klikněte na tlačítko **automatické rozpoznání** a potom **použít** uložit prostředí.
+* Vytvoření vlastního prostředí pro každou verzi přechodem příliš**nástroje** -> **Python Tools** -> **prostředí Python** a potom kliknutím na " **+ Vlastní**"v hello Community Edition sady Visual Studio 2015
+* Zadejte popis a nastavte prostředí hello cesty předponu jako *c:\anaconda* Anaconda Python 2.7 nebo *c:\anaconda\envs\py35* pro Anaconda Python 3.5
+* Klikněte na tlačítko **automatické rozpoznání** a potom **použít** toosave hello prostředí.
 
-Zde je, jak nastavení vlastní prostředí vypadá v sadě Visual Studio.
+Zde je jaké nastavení vlastního prostředí hello vypadá jako v sadě Visual Studio.
 
 ![Instalační program PTVS](./media/machine-learning-data-science-vm-do-ten-things/PTVSSetup.png)
 
-Najdete v článku [dokumentaci k těmto nástrojům](https://github.com/Microsoft/PTVS/wiki/Selecting-and-Installing-Python-Interpreters#hey-i-already-have-an-interpreter-on-my-machine-but-ptvs-doesnt-seem-to-know-about-it) další podrobnosti o tom, jak vytvořit prostředí Python.
+V tématu hello [dokumentaci k těmto nástrojům](https://github.com/Microsoft/PTVS/wiki/Selecting-and-Installing-Python-Interpreters#hey-i-already-have-an-interpreter-on-my-machine-but-ptvs-doesnt-seem-to-know-about-it) získáte další informace o tom toocreate prostředí Python.
 
-Nyní jsou nastavení k vytvoření nového projektu Python. Přejděte na **soubor** -> **nový** -> **projektu** -> **Python** a vyberte typ Aplikace Python, které vytváříte. Prostředí Python pro aktuální projekt můžete nastavit na požadovanou verzi (Anaconda 2.7 nebo 3.5): klikněte pravým tlačítkem myši **prostředí Python**, vyberte **prostředí Python přidat nebo odebrat**a potom vyberte požadované prostředí, které chcete přidružit k projektu. Můžete najít další informace o práci s PTVS na produktu [dokumentace](https://github.com/Microsoft/PTVS/wiki) stránky.
+Nyní jsou nastavíte toocreate nový projekt Python. Přejděte příliš**soubor** -> **nový** -> **projektu** -> **Python** a vyberte typ hello Aplikace Python, které vytváříte. Můžete nastavit hello prostředí Python pro hello aktuální projekt toohello požadovanou verzi (Anaconda 2.7 nebo 3.5): klikněte pravým tlačítkem na hello **prostředí Python**, vyberte **prostředí Python přidat nebo odebrat**, a potom vyberte hello požadovaného s projektem hello tooassociate prostředí. Můžete najít další informace o práci s PTVS na produktu hello [dokumentace](https://github.com/Microsoft/PTVS/wiki) stránky.
 
-## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2. Pomocí poznámkového bloku Jupyter a prozkoumejte modelování svá data pomocí Python nebo R
-Poznámkového bloku Jupyter je výkonný prostředí, který poskytuje založené na prohlížeči "IDE" pro zkoumání dat a modelování. Můžete použít Python 2, Python 3 nebo R (Open Source a serveru Microsoft R) v poznámkového bloku Jupyter.
+## <a name="2-using-a-jupyter-notebook-tooexplore-and-model-your-data-with-python-or-r"></a>2. Pomocí poznámkového bloku Jupyter tooexplore a modelu vaše data v Pythonu nebo R
+Hello Poznámkový blok Jupyter je výkonný prostředí, který poskytuje založené na prohlížeči "IDE" pro zkoumání dat a modelování. V poznámkovém bloku Jupyter můžete použít Python 2, Python 3 nebo R (Open Source a hello Microsoft R Server).
 
-Spusťte Poznámkový blok Jupyter kliknutím na ikonu nabídky start / ikony na ploše s názvem **Poznámkový blok Jupyter**. Na DSVM můžete také vyhledat "https://localhost:9999 /" pro přístup k Jupiter poznámkového bloku. Pokud budete vyzváni k zadání hesla, použijte pokyny uvedené v ***jak vytvořit silné heslo na serveru poznámkového bloku Jupyter*** části [zřízení virtuálního počítače Microsoft Data vědecké účely](machine-learning-data-science-provision-vm.md) téma vytvořit silné heslo pro přístup k poznámkového bloku Jupyter. 
+toolaunch hello Poznámkový blok Jupyter klikněte na ikonu nabídky start hello / ikony na ploše s názvem **Poznámkový blok Jupyter**. Na hello DSVM můžete také vyhledat příliš "https://localhost:9999 /" tooaccess hello Jupiter Poznámkový blok. Pokud budete vyzváni k zadání hesla, použijte pokyny uvedené v hello ***jak toocreate silné heslo na serveru poznámkového bloku Jupyter hello*** části hello [zřídit hello Microsoft Data vědecké účely virtuálního počítače](machine-learning-data-science-provision-vm.md)toocreate tématu poznámkového bloku Jupyter hello tooaccess silné heslo. 
 
-Po spuštění poznámkového bloku, měli byste vidět adresář, který obsahuje pár příklad poznámkových bloků, které jsou předem zabalené do DSVM. Nyní můžete:
+Po spuštění hello Poznámkový blok, měli byste vidět adresář, který obsahuje pár příklad poznámkových bloků, které jsou předem zabalené do hello DSVM. Nyní můžete:
 
-* klikněte v poznámkovém bloku zobrazit kód.
+* Klikněte na hello poznámkového bloku toosee hello kódu.
 * Spusťte jednotlivých buněk tak, že stisknete **zadejte SHIFT**.
-* Kliknutím na spustit celý poznámkový blok **buňky** -> **spustit**
-* Kliknutím na ikonu Jupyter (levém horním rohu) a potom kliknutím na vytvořit nový poznámkový blok **nový** tlačítko vpravo a pak vyberete poznámkového bloku jazyka (také označované jako jádra).   
+* Kliknutím na spustit celý poznámkový blok hello **buňky** -> **spustit**
+* Kliknutím na hello Jupyter ikona (levém horním rohu) a potom kliknutím na vytvořit nový poznámkový blok **nový** tlačítko na hello vpravo a pak vyberete hello poznámkového bloku jazyka (také označované jako jádra).   
 
 > [!NOTE]
-> Momentálně podporujeme Python 2.7, Python 3.5 a R. Jádro R podporuje programování v Open source R jak podniku škálovatelné R Server společnosti Microsoft.   
+> Momentálně podporujeme Python 2.7, Python 3.5 a R. hello R jádra podporuje programování v Open source R jak hello enterprise škálovatelné R Server společnosti Microsoft.   
 > 
 > 
 
-Jakmile jsou v poznámkovém bloku, které můžete prozkoumat vaše data, sestavení modelu, otestování modelu pomocí vybraného knihovny.
+Jakmile jsou v poznámkovém bloku hello můžete prozkoumat vaše data, sestavení modelu hello, hello model pomocí vybraného knihovny testů.
 
 ## <a name="3-build-models-using-r-or-python-and-operationalize-them-using-azure-machine-learning"></a>3. Vytvářet modely R nebo Python a Operationalize jejich používání pomocí Azure Machine Learning
-Jakmile máte vytvořené a ověřit váš model dalším krokem je obvykle k nasazení do produkčního prostředí. To umožňuje aplikacím vyvolání předpovědi modelu v reálném čase, nebo na základě režimu dávky vašeho klienta. Azure Machine Learning poskytuje mechanismus pro zprovoznit model součástí R nebo Python.
+Jakmile máte vytvořené a ověřit modelu hello dalším krokem je obvykle toodeploy ho do produkčního prostředí. To umožňuje vašeho klienta aplikace tooinvoke hello modelu předpovědi v reálném čase, nebo na základě režimu dávky. Azure Machine Learning poskytuje mechanismus toooperationalize model součástí R nebo Python.
 
-Když jste zprovoznit modelu v Azure Machine Learning, je vystaven webové služby, která umožňuje klientům volání REST, které předejte vstupní parametry a přijímat předpovědi jako výstup z modelu.   
+Pokud jste zprovoznit modelu v Azure Machine Learning, je vystaven webové služby, umožňuje klientům toomake volání REST, která předejte vstupní parametry a přijímat předpovědi z modelu hello jako výstup.   
 
 > [!NOTE]
-> Pokud jste ještě nezaregistrovali jste se pro Azure Machine Learning, můžete získat volného prostoru nebo standardní pracovní prostor, navštivte stránky [Azure Machine Learning Studio](https://studio.azureml.net/) domovské stránky a kliknutím na "Začínáme".   
+> Pokud jste ještě nezaregistrovali jste se pro Azure Machine Learning, lze získat volného prostoru nebo standardní pracovní prostor z hello [Azure Machine Learning Studio](https://studio.azureml.net/) domovské stránky a kliknutím na "Začínáme".   
 > 
 > 
 
 ### <a name="build-and-operationalize-python-models"></a>Sestavení a zprovoznit Python modely
-Zde je fragment kódu vyvinuté v poznámkového bloku Jupyter Python, který sestaví jednoduchého modelu pomocí SciKit další knihovny.
+Zde je fragment kódu vyvinuté v poznámkového bloku Jupyter Python, který sestaví jednoduchého modelu pomocí hello SciKit další knihovny.
 
     #IRIS classification
     from sklearn import datasets
@@ -105,7 +105,7 @@ Zde je fragment kódu vyvinuté v poznámkového bloku Jupyter Python, který se
     X, y = iris.data, iris.target
     clf.fit(X, y)
 
-Metoda použít k nasazení do Azure Machine Learning zabalí předpovědi modelu do funkce modely python a upraví s atributy poskytované předem nainstalovaná knihovna python Azure Machine Learning, které označují vaší Azure Machine Learning ID pracovního prostoru, klíč rozhraní API a parametry vstupní a zpět.  
+Metoda Hello používá toodeploy vaše tooAzure python modely Machine Learning předpovědi zabalí hello hello modelu do funkce a upraví s atributy poskytované hello předem nainstalovaná knihovna python Azure Machine Learning, které označují počítači Azure ID pracovního prostoru Learning, klíč rozhraní API a hello vstup a vrátí parametry.  
 
     from azureml import services
     @services.publish(workspaceid, auth_token)
@@ -115,7 +115,7 @@ Metoda použít k nasazení do Azure Machine Learning zabalí předpovědi model
      inputArray = [sep_l, sep_w, pet_l, pet_w]
     return clf.predict(inputArray)
 
-Klienta můžete nyní volání webové služby. Existují obálky pohodlí, které vytvořit požadavky REST API. Tady je ukázkový kód využívají webové služby.
+Klient nyní můžete provést volání toohello webové služby. Existují obálky pohodlí, které vytvořit hello požadavky REST API. Zde je ukázka kódu tooconsume hello webové služby.
 
     # Consume through web service URL and keys
     from azureml import services
@@ -129,23 +129,23 @@ Klienta můžete nyní volání webové služby. Existují obálky pohodlí, kte
 
 
 > [!NOTE]
-> Knihovna Azure Machine Learning je podporována pouze na Python 2.7 aktuálně.   
+> Knihovna Azure Machine Learning Hello je podporována pouze na Python 2.7 aktuálně.   
 > 
 > 
 
 ### <a name="build-and-operationalize-r-models"></a>Sestavení a zprovoznit R modely
-Můžete nasadit R modely vytvořené na datové vědě virtuální počítač nebo jinde do Azure Machine Learning způsobem, který je podobný tomu pro jazyk Python. Jeho kroky:
+Můžete nasadit R modely vytvořené na hello datové vědy virtuálního počítače nebo jinde na Azure Machine Learning způsobem, který je podobný toohow, které se provádí pro jazyk Python. Jeho hello kroky:
 
-* Vytvořte soubor settings.json zajistit pracovního prostoru ID a ověření tokenu, jak znázorňuje následující ukázka kódu.
-* Obálka pro modelu předpovědi funkce zápisu
-* volání ```publishWebService``` v knihovně Azure Machine Learning předávat obálku funkce.  
+* Vytvořte tooprovide souboru settings.json ID pracovního prostoru a ověření tokenu, jak je znázorněno v následující ukázka kódu hello.
+* Obálka pro hello modelu předpovědi funkce zápisu
+* volání ```publishWebService``` v hello toopass knihovny Azure Machine Learning v hello funkce obálku.  
 
-Zde je postup a kód fragmenty kódu, které slouží k nastavení, vytvářet, publikovat a využívat model jako webovou službu v Azure Machine Learning.
+Zde je postup a kód fragmenty hello, které je možné použít tooset nahoru, sestavení, publikovat a využívat model jako webovou službu v Azure Machine Learning.
 
 #### <a name="setup"></a>Nastavení
-1. Instalovat balíček Machine Learning R zadáním ```install.packages("AzureML")``` v Revolution R Enterprise 8.0 IDE nebo vaše R IDE.
-2. Stáhněte si RTools z [zde](https://cran.r-project.org/bin/windows/Rtools/). Je nutné zip nástroj v cestě (a s názvem zip.exe) pro zprovoznění váš balíček R do Machine Learning.
-3. Vytvořte soubor settings.json pod adresář s názvem ```.azureml``` pod domovského adresáře a zadejte parametry z pracovního prostoru Azure Machine Learning:
+1. Instalovat balíček Machine Learning R hello zadáním ```install.packages("AzureML")``` v Revolution R Enterprise 8.0 IDE nebo vaše R IDE.
+2. Stáhněte si RTools z [zde](https://cran.r-project.org/bin/windows/Rtools/). Je nutné hello zip nástroj v cestě hello (a s názvem zip.exe) toooperationalize váš balíček R do Machine Learning.
+3. Vytvořte soubor settings.json pod adresář s názvem ```.azureml``` pod domovského adresáře a zadejte parametry hello z pracovního prostoru Azure Machine Learning:
 
 Settings.JSON strukturu souborů:
 
@@ -165,48 +165,48 @@ Settings.JSON strukturu souborů:
     train <- sleepstudy[sample(nrow(sleepstudy), 120),]
     m <- lm(Reaction ~ Days + Subject, data = train)
 
-    # Define a prediction function to publish based on the model:
+    # Define a prediction function toopublish based on hello model:
     sleepyPredict <- function(newdata){
           predict(m, newdata=newdata)
     }
 
     ep <- publishWebService(ws, fun = sleepyPredict, name="sleepy lm", inputSchema = sleepstudy, data.frame=TRUE)
 
-#### <a name="consume-the-model-deployed-in-azure-machine-learning"></a>Využívat model nasadit v Azure Machine Learning
-Využívat modelu z klientské aplikace, budeme používat knihovny Azure Machine Learning k vyhledání publikovanou webovou službu pomocí názvu `services` volání rozhraní API k určení koncový bod. Pak stačí zavolat `consume` funkce a předejte v data snímku na předpovědět.
-Následující kód slouží k využívat model publikován jako webové služby Azure Machine Learning.
+#### <a name="consume-hello-model-deployed-in-azure-machine-learning"></a>Využívat hello model nasadit v Azure Machine Learning
+model hello tooconsume z klientské aplikace, používáme hello Azure Machine Learning knihovny toolook až hello publikované webové služby podle názvu pomocí hello `services` koncový bod rozhraní API volání toodetermine hello. Pak stačí zavolat hello `consume` funkce a předávat hello dat rámce toobe předpovědět.
+Následující kód Hello je model hello použité tooconsume publikován jako webové služby Azure Machine Learning.
 
     library(AzureML)
     library(lme4)
     ws <- workspace(config="~/.azureml/settings.json")
 
     s <-  services(ws, name = "sleepy lm")
-    s <- tail(s, 1) # use the last published function, in case of duplicate function names
+    s <- tail(s, 1) # use hello last published function, in case of duplicate function names
 
     ep <- endpoints(ws, s)
 
     # OK, try this out, and compare with raw data
     ans = consume(ep, sleepstudy)$ans
 
-Další informace o knihovně Azure Machine Learning R naleznete [zde](https://cran.r-project.org/web/packages/AzureML/AzureML.pdf).
+Další informace o hello knihovně Azure Machine Learning R naleznete [zde](https://cran.r-project.org/web/packages/AzureML/AzureML.pdf).
 
 ## <a name="4-administer-your-azure-resources-using-azure-portal-or-powershell"></a>4. Správa prostředků Azure pomocí portálu Azure nebo prostředí Powershell
-DSVM nejen je možné sestavit vaše řešení analytics místně na virtuálním počítači, ale také umožňuje přístup ke službám v cloudu Azure společnosti Microsoft. Azure poskytuje několik výpočty, úložiště, služby analýzy dat a jiných služeb, které můžete spravovat a přistupovat z vašeho DSVM.
+Hello DSVM nejen vám umožní toobuild řešení analytics místně na hello virtuálního počítače, ale také umožňuje tooaccess služeb v cloudu Azure společnosti Microsoft. Azure poskytuje několik výpočty, úložiště, služby analýzy dat a jiných služeb, které můžete spravovat a přistupovat z vašeho DSVM.
 
-Ke správě předplatného a cloudových prostředků Azure můžete použít prohlížeč a přejděte [portál Azure](https://portal.azure.com). Prostředí Azure Powershell můžete použít také ke správě vašeho předplatného Azure a prostředky pomocí skriptu.
-Prostředí Azure Powershell můžete spustit pomocí zástupce na ploše nebo z nabídky start s názvem "Microsoft Azure Powershell". Odkazovat na [dokumentace k Microsoft Azure Powershell](../powershell-azure-resource-manager.md) Další informace o tom, jak můžete spravovat vaše předplatné Azure a prostředkům pomocí skriptů prostředí Windows Powershell.
+tooadminister předplatné a cloudových prostředků Azure můžete použít prohlížeč a bodu toothe [portál Azure](https://portal.azure.com). Můžete taky tooadminister prostředí Azure Powershell vaše předplatné Azure a prostředky pomocí skriptu.
+Můžete spustit prostředí Azure Powershell pomocí zástupce na ploše hello nebo ze hello spusťte nabídky s názvem "Microsoft Azure Powershell". Odkazovat na [dokumentace k Microsoft Azure Powershell](../powershell-azure-resource-manager.md) Další informace o tom, jak můžete spravovat vaše předplatné Azure a prostředkům pomocí skriptů prostředí Windows Powershell.
 
 ## <a name="5-extend-your-storage-space-with-a-shared-file-system"></a>5. Rozšíření prostor úložiště pomocí systému sdílený soubor
-Datových vědců můžete sdílet rozsáhlých datových sad, kódu nebo jiným prostředkům v rámci týmu. DSVM samotné má přibližně 70GB volného místa. Rozšířit úložiště, můžete použít službu souboru Azure a buď ji připojit na DSVM nebo přístup přes rozhraní REST API.   
+Datových vědců můžete sdílet rozsáhlých datových sad, kódu nebo jiným prostředkům v rámci týmu hello. Hello DSVM samotné má přibližně 70GB volného místa. tooextend úložiště, můžete použít hello souboru služby Azure a připojte ho na hello DSVM nebo přístup přes rozhraní REST API.   
 
 > [!NOTE]
-> Maximální místo sdílené složky souboru služby Azure je 5TB a maximální velikost jednotlivých souborů je 1TB.   
+> Maximální místo sdílení souboru služby Azure hello Hello je 5TB a maximální velikost jednotlivých souborů je 1TB.   
 > 
 > 
 
-Prostředí Azure Powershell můžete použít k vytvoření Azure služba souborů složky. Zde je skript, který chcete spustit v prostředí Azure PowerShell k vytvoření služby Azure sdílené složky.
+Můžete vytvořit prostředí Azure Powershell toocreate serveru sdílení souboru služby Azure. Zde je hello toorun skriptu v prostředí Azure PowerShell toocreate serveru služby Sdílení souborů Azure.
 
-    # Authenticate to Azure.
+    # Authenticate tooAzure.
     Login-AzureRmAccount
     # Select your subscription
     Get-AzureRmSubscription –SubscriptionName "<your subscription name>" | Select-AzureRmSubscription
@@ -219,41 +219,41 @@ Prostředí Azure Powershell můžete použít k vytvoření Azure služba soubo
 
     # Create a Azure File Service Share
     $s = New-AzureStorageShare <<teamsharename>>
-    # Create a directory under the FIle share. You can give it any name
+    # Create a directory under hello FIle share. You can give it any name
     New-AzureStorageDirectory -Share $s -Path <directory name>
-    # List the share to confirm that everything worked
+    # List hello share tooconfirm that everything worked
     Get-AzureStorageFile -Share $s
 
 
-Teď, když vytvoříte sdílenou složku Azure, můžete ji připojit žádné virtuální počítač v Azure. Důrazně doporučujeme, aby virtuální počítač ve stejném datovém centru Azure jako účet úložiště, náklady na přenos latence a data. Tady jsou příkazy připojit jednotku na DSVM, který můžete spustit v prostředí Azure Powershell.
+Teď, když vytvoříte sdílenou složku Azure, můžete ji připojit žádné virtuální počítač v Azure. Důrazně doporučujeme, že je tento hello virtuálních počítačů ve stejném datovém centru Azure jako hello úložiště účet tooavoid latence a datový přenos poplatky. Tady jsou hello příkazy toomount hello jednotku na hello DSVM, který můžete spustit v prostředí Azure Powershell.
 
-    # Get storage key of the storage account that has the Azure file share from Azure portal. Store it securely on the VM to avoid prompted in next command.
+    # Get storage key of hello storage account that has hello Azure file share from Azure portal. Store it securely on hello VM tooavoid prompted in next command.
     cmdkey /add:<<mydatadisk>>.file.core.windows.net /user:<<mydatadisk>> /pass:<storage key>
 
-    # Mount the Azure file share as Z: drive on the VM. You can chose another drive letter if you wish
+    # Mount hello Azure file share as Z: drive on hello VM. You can chose another drive letter if you wish
     net use z:  \\<mydatadisk>.file.core.windows.net\<<teamsharename>>
 
 
-Nyní můžete zobrazit tuto jednotku stejně jako všechny normální jednotky ve virtuálním počítači.
+Nyní můžete zobrazit tuto jednotku stejně jako všechny normální jednotky na hello virtuálních počítačů.
 
 ## <a name="6-share-code-with-your-team-using-github"></a>6. Sdílet kódu se svým týmem pomocí Githubu
-GitHub je úložiště kódu, kde můžete najít spoustu ukázkový kód a zdroje k různým nástrojům pomocí různých technologií, které jsou sdíleny komunity vývojářů. Git jako technologie používá ke sledování a uložit verzí soubory kódu. GitHub je také platforma, kde můžete vytvořit vlastní úložiště ukládání sdíleného kódu vašeho týmu a dokumentace, implementovat verzí a také ovládat, kteří mají přístup k zobrazení a přispívat kódu. Navštivte [stránky nápovědy Githubu](https://help.github.com/) pro další informace o použití Git. GitHub můžete použít jako jeden ze způsobů, jak se svým týmem spolupracovat, použít kód vyvinuté komunitou a přispívat kódu zpět do komunity.
+GitHub je úložiště kódu, kde můžete najít spoustu ukázkový kód a zdroje k různým nástrojům pomocí různých technologií, které jsou sdíleny komunity vývojářů hello. Jako hello technologie tootrack a úložiště verzí soubory kódu hello používá Git. GitHub je také platforma, kde můžete vytvořit vlastní úložiště toostore sdílené kód a dokumentace, váš tým implementovat verze ovládací prvky a také kteří mají přístup tooview a přispívat kódu. Navštivte hello [stránky nápovědy Githubu](https://help.github.com/) pro další informace o použití Git. Můžete použít Githubu jako jeden ze způsobů toocollaborate hello se svým týmem, použít kód vyvinuté hello komunity a přispívat kód back toohello komunity.
 
-DSVM už dodává s klientskými nástroji načíst na obou příkazového řádku jako dobře grafického uživatelského rozhraní pro přístup k úložišti GitHub. Nástroj příkazového řádku pro práci s Gitu a Githubu se nazývá Git Bash. Na DSVM nainstalovanou sadu Visual Studio má rozšíření Git. Můžete najít ikony spuštění těchto nástrojů v nabídce start a na ploše.
+Hello DSVM už dodává s klientskými nástroji načíst na obou příkazového řádku jako dobře tooaccess grafickým uživatelským rozhraním úložiště GitHub. Nástroj příkazového řádku toowork Hello s Gitu a Githubu se nazývá Git Bash. Visual Studio instalovaného na hello DSVM má hello Git rozšíření. Můžete najít ikony spuštění těchto nástrojů v nabídce start hello a vzdálené ploše hello.
 
-Ke stažení kód z úložiště Githubu použijete ```git clone``` příkaz. Například ke stažení úložiště vědecké účely data publikovaný microsoftem do aktuální adresář můžete spustit následující příkaz v ```git-bash```.
+toodownload kód z úložiště Githubu použijete hello ```git clone``` příkaz. Například úložiště vědecké účely data toodownload publikovaný microsoftem do aktuální adresář hello můžete spustit hello následující příkaz, jakmile jsou v ```git-bash```.
 
     git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
 
-V sadě Visual Studio můžete to udělat stejné operace klonování. Následující snímek obrazovky ukazuje, jak pro přístup k Gitu a Githubu nástroje v sadě Visual Studio.
+V sadě Visual Studio, můžete provést hello stejné operace klonování. Hello následující snímek obrazovky ukazuje, jak tooaccess Gitu a Githubu nástroje v sadě Visual Studio.
 
 ![Git v sadě Visual Studio](./media/machine-learning-data-science-vm-do-ten-things/VSGit.PNG)
 
-Můžete najít další informace o použití Git pracovat s úložiště GitHub z několika zdrojů, které jsou k dispozici na webu github.com. [Tahák](https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf) je užitečné referenční.
+Můžete najít další informace o použití Git toowork s úložiště GitHub z několika zdrojů, které jsou k dispozici na webu github.com. Hello [tahák](https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf) je užitečné referenční.
 
 ## <a name="7-access-various-azure-data-and-analytics-services"></a>7. Přístup k různým Azure službám data a analýzy
 ### <a name="azure-blob"></a>Azure Blob
-Objektů blob v Azure je spolehlivé a ekonomické cloudové úložiště pro data velká a malá. Dejte nám se podívejte na tom, jak můžete přesunout data do Azure Blob a přístup k datům uloženým v objektu Blob Azure.
+Objektů blob v Azure je spolehlivé a ekonomické cloudové úložiště pro data velká a malá. Dejte nám se podívejte na tom, jak můžete přesunout tooAzure data objektů Blob a přístup k datům uloženým v objektu Blob Azure.
 
 **Požadavek**
 
@@ -261,52 +261,52 @@ Objektů blob v Azure je spolehlivé a ekonomické cloudové úložiště pro da
 
 ![Create_Azure_Blob](./media/machine-learning-data-science-vm-do-ten-things/Create_Azure_Blob.PNG)
 
-* Potvrďte, že je nástroj příkazového řádku AzCopy předem nainstalovaná nalezený na ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```. Můžete přidat adresář obsahující azcopy.exe do vaší proměnné prostředí PATH na nemuseli zadávat cestu celý příkaz i při spuštění tohoto nástroje. Další informace o nástroj AzCopy naleznete [dokumentaci k AzCopy](../storage/common/storage-use-azcopy.md)
-* Spusťte nástroj Azure Storage Explorer. Lze ji stáhnout z [Microsoft Azure Storage Explorer](http://storageexplorer.com/). 
+* Potvrďte, že hello předem nainstalovaný nástroj příkazového řádku AzCopy se nachází zde ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```. Při spuštění tohoto nástroje můžete přidat hello obsahující hello azcopy.exe tooyour cesta prostředí proměnné tooavoid zadáním hello celý příkaz cesta k adresáři. Další informace o nástroj AzCopy naleznete příliš[dokumentaci k AzCopy](../storage/common/storage-use-azcopy.md)
+* Spusťte nástroj Azure Storage Explorer hello. Lze ji stáhnout z [Microsoft Azure Storage Explorer](http://storageexplorer.com/). 
 
 ![AzureStorageExplorer_v4](./media/machine-learning-data-science-vm-do-ten-things/AzureStorageExplorer_v4.png)
 
-**Přesun dat z virtuálního počítače do objektu Blob Azure: AzCopy**
+**Přesun dat z virtuálních počítačů tooAzure objektů Blob: AzCopy**
 
-Pro přesun dat mezi vaší místní soubory a úložiště objektů blob, můžete použít AzCopy v příkazového řádku nebo prostředí PowerShell:
+toomove dat mezi vaší místní soubory a úložiště objektů blob, můžete pomocí nástroje AzCopy v příkazového řádku nebo prostředí PowerShell:
 
     AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
 
-Nahraďte **C:\myfolder** na cestu, kde je uložen soubor, **můj_účet_úložiště** na název účtu úložiště objektů blob **můj_kontejner** název kontejneru, **klíč účtu úložiště** na přístupový klíč k úložišti objektů blob. Můžete najít přihlašovací údaje účtu úložiště v [portál Azure](https://portal.azure.com).
+Nahraďte **C:\myfolder** toohello cestu, kde je uložen soubor, **můj_účet_úložiště** tooyour název účtu úložiště objektů blob, **můj_kontejner** toohello název kontejneru, **klíč účtu úložiště** tooyour přístupový klíč k úložišti objektů blob. Můžete najít přihlašovací údaje účtu úložiště v [portál Azure](https://portal.azure.com).
 
 ![StorageAccountCredential_v2](./media/machine-learning-data-science-vm-do-ten-things/StorageAccountCredential_v2.png)
 
 V prostředí PowerShell nebo z příkazového řádku, spusťte příkaz AzCopy. Tady je některé příklady použití nástroje AzCopy příkazu:
 
-    # Copy *.sql from local machine to a Azure Blob
+    # Copy *.sql from local machine tooa Azure Blob
     "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:"c:\Aaqs\Data Science Scripts" /Dest:https://[ENTER STORAGE ACCOUNT].blob.core.windows.net/[ENTER CONTAINER] /DestKey:[ENTER STORAGE KEY] /S /Pattern:*.sql
 
-    # Copy back all files from Azure Blob container to Local machine
+    # Copy back all files from Azure Blob container tooLocal machine
 
     "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Dest:"c:\Aaqs\Data Science Scripts\temp" /Source:https://[ENTER STORAGE ACCOUNT].blob.core.windows.net/[ENTER CONTAINER] /SourceKey:[ENTER STORAGE KEY] /S
 
 
 
-Po spuštění příkazu AzCopy zkopírujte do Azure blob zobrazí ukazuje soubor nahoru v Azure Storage Explorer za chvíli.
+Po spuštění vaší AzCopy příkaz toocopy tooan objektů blob v Azure najdete v části souboru se zobrazí v Azure Storage Explorer za chvíli.
 
 ![AzCopy_run_finshed_Storage_Explorer_v3](./media/machine-learning-data-science-vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-**Přesun dat z virtuálního počítače do objektu Blob Azure: Azure Storage Explorer**
+**Přesun dat z virtuálních počítačů tooAzure objektů Blob: Azure Storage Explorer**
 
-Můžete také nahrát data z místního souboru v virtuálního počítače pomocí Průzkumníka úložiště Azure:
+Můžete také uložit data z místního souboru hello v virtuálního počítače pomocí Průzkumníka úložiště Azure:
 
-* Pokud chcete nahrát data do kontejneru, vyberte cílový kontejner a klikněte na **nahrát** tlačítko.![ Nahrát ve Storage Exploreru](./media/machine-learning-data-science-vm-do-ten-things/storage-accounts.png)
-* Klikněte na **...**  napravo **soubory** , vyberte jeden nebo více souborů ze systému souborů a klikněte na **nahrát** zahájíte nahrávání souborů.![ Nahrání souborů do objektu blob](./media/machine-learning-data-science-vm-do-ten-things/upload-files-to-blob.png)
+* kontejner tooa tooupload dat, vyberte hello cílový kontejner a klikněte na tlačítko hello **nahrát** tlačítko.![ Nahrát ve Storage Exploreru](./media/machine-learning-data-science-vm-do-ten-things/storage-accounts.png)
+* Klikněte na hello **...**  toohello napravo od hello **soubory** pole, vyberte jeden nebo více souborů tooupload hello systém souborů a klikněte na **nahrát** toobegin nahrávání souborů hello.![ Nahrát tooblob soubory](./media/machine-learning-data-science-vm-do-ten-things/upload-files-to-blob.png)
 
 **Čtení dat z Azure Blob: modul čtečky Machine Learning**
 
-V nástroji Azure Machine Learning Studio můžete použít **importovat Data modulu** číst data z objektu blob služby.
+V nástroji Azure Machine Learning Studio můžete použít **importovat Data modulu** tooread data z objektu blob služby.
 
 ![AML_ReaderBlob_Module_v3](./media/machine-learning-data-science-vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
 **Čtení dat z Azure Blob: Python ODBC**
 
-Můžete použít **BlobService** knihovny číst data přímo z objektu blob v programu Poznámkový blok Jupyter nebo Python.
+Můžete použít **BlobService** knihovny tooread data přímo z objektu blob v programu Poznámkový blok Jupyter nebo Python.
 
 Nejprve importujte požadované balíčky:
 
@@ -338,7 +338,7 @@ Potom zařaďte přihlašovací údaje účtu Azure Blob a čtení dat z objektu
     blob_service = BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
     blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILE)
     t2 = time.time()
-    print(("It takes %s seconds to download "+BLOBNAME) % (t2 - t1))
+    print(("It takes %s seconds toodownload "+BLOBNAME) % (t2 - t1))
 
     #unzipping downloaded files if needed
     #with zipfile.ZipFile(ZIPPEDLOCALFILE, "r") as z:
@@ -346,14 +346,14 @@ Potom zařaďte přihlašovací údaje účtu Azure Blob a čtení dat z objektu
 
     df1 = pd.read_csv(LOCALFILE, header=0)
     df1.columns = ['medallion','hack_license','vendor_id','rate_code','store_and_fwd_flag','pickup_datetime','dropoff_datetime','passenger_count','trip_time_in_secs','trip_distance','pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude']
-    print 'the size of the data is: %d rows and  %d columns' % df1.shape
+    print 'hello size of hello data is: %d rows and  %d columns' % df1.shape
 
-Data se čtou v jako snímek dat:
+Hello data se čtou v jako snímek dat:
 
 ![IPNB_data_readin](./media/machine-learning-data-science-vm-do-ten-things/IPNB_data_readin.PNG)
 
 ### <a name="azure-data-lake"></a>Azure Data Lake
-Azure Data Lake Storage je velkého rozsahu úložiště pro úlohy analýzy velkých objemů dat a kompatibilní s Hadoop Distributed File System (HDFS). Funguje s ekosystémem Hadoop a Azure Data Lake Analytics. Ukážeme, jak můžete přesun dat do Azure Data Lake Store a spustit analytics pomocí Azure Data Lake Analytics.
+Azure Data Lake Storage je velkého rozsahu úložiště pro úlohy analýzy velkých objemů dat a kompatibilní s Hadoop Distributed File System (HDFS). Funguje s ekosystémem Hadoop hello i hello Azure Data Lake Analytics. Ukážeme, jak můžete přesun dat do hello Azure Data Lake Store a spustit analytics pomocí Azure Data Lake Analytics.
 
 **Požadavek**
 
@@ -361,29 +361,29 @@ Azure Data Lake Storage je velkého rozsahu úložiště pro úlohy analýzy vel
 
 ![Azure_Data_Lake_Create_v2](./media/machine-learning-data-science-vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
 
-* **Nástrojů Azure Data Lake** v **Visual Studio** najít v této [odkaz](https://www.microsoft.com/download/details.aspx?id=49504) je již nainstalován na Visual Studio Community Edition, který je na virtuálním počítači. Po spuštění sady Visual Studio a protokolování ve vašem předplatném Azure, měli byste vidět účet Azure Data Analytics a úložiště v levém panelu sady Visual Studio.
+* Hello **nástrojů Azure Data Lake** v **Visual Studio** najít v této [odkaz](https://www.microsoft.com/download/details.aspx?id=49504) je již nainstalován na hello Visual Studio Community Edition, který je na virtuálním počítači hello. Po spuštění sady Visual Studio a protokolování ve vašem předplatném Azure, měli byste vidět účet Azure Data Analytics a úložiště v levém panelu hello sady Visual Studio.
 
 ![Azure_Data_Lake_PlugIn_v2](./media/machine-learning-data-science-vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
-**Přesun dat z virtuálního počítače do Data Lake: Azure Data Lake Explorer**
+**Přesun dat z virtuálních počítačů tooData Lake: Azure Data Lake Explorer**
 
-Můžete použít **Azure Data Lake Explorer** ukládat data z místních souborů ve virtuálním počítači do úložiště Data Lake.
+Můžete použít **Azure Data Lake Explorer** tooupload data z místních souborů hello v úložišti Lake tooData virtuálního počítače.
 
 ![Azure_Data_Lake_UploadData](./media/machine-learning-data-science-vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
 
-Můžete také vytvořit datového kanálu pro productionize vaše přesun dat do nebo z pomocí Azure Data Lake [Azure dat Factory(ADF)](https://azure.microsoft.com/services/data-factory/). Označujeme je to [článku](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) vás provedou kroky k vytvoření data kanálů.
+Můžete také vytvořit datový kanál tooproductionize vaše tooor přesun dat z Azure Data Lake pomocí hello [Azure dat Factory(ADF)](https://azure.microsoft.com/services/data-factory/). Označujeme si toothis [článku](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) tooguide vás hello kroky toobuild hello data kanálů.
 
-**Čtení dat z objektu Blob Azure do Data Lake: U-SQL**
+**Čtení dat z Azure Blob tooData Lake: U-SQL**
 
-Pokud máte data uložená v úložišti objektů Blob v Azure, můžete přímo přečíst data z objektu blob úložiště Azure v dotazu U-SQL. Před skládání dotazu U-SQL, zajistěte, aby že váš účet úložiště objektů blob je propojený s vaší Azure Data Lake. Přejděte na **portál Azure**, najít řídicí panel Azure Data Lake Analytics, klikněte na **přidat zdroj dat**, vyberte typ úložiště pro **Azure Storage** a zařadit ho ve vašem účtu úložiště Azure Název a klíč. Budete pak moci referenční data uložená v účtu úložiště.
+Pokud máte data uložená v úložišti objektů Blob v Azure, můžete přímo přečíst data z objektu blob úložiště Azure v dotazu U-SQL. Před skládání dotazu U-SQL, zajistěte, aby byl váš účet úložiště objektů blob propojené tooyour Azure Data Lake. Přejděte příliš**portál Azure**, najít řídicí panel Azure Data Lake Analytics, klikněte na **přidat zdroj dat**, vyberte typ úložiště příliš**Azure Storage** a připojte ve službě Azure Storage Název účtu a klíč. Pak je možné tooreference hello data uložená v účtu úložiště hello.
 
 ![Zadejte účet úložiště a klíč](./media/machine-learning-data-science-vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
-V sadě Visual Studio můžete číst data z úložiště objektů blob, provést některé manipulaci s daty, konstruování a výstupní Výsledná data do Azure Data Lake nebo úložiště objektů Blob Azure. Když odkazujete data v úložišti objektů blob, použijte **wasb: / /**; když odkazujete data v Azure Data Lake použití **swbhdfs: / /**
+V sadě Visual Studio můžete číst data z úložiště objektů blob, udělat některé manipulaci s daty, funkce inženýrství a výstup hello Výsledná data tooeither Azure Data Lake nebo úložiště objektů Blob Azure. Když odkazujete hello dat v úložišti objektů blob, použijte **wasb: / /**; když odkazujete hello data v Azure Data Lake použití **swbhdfs: / /**
 
 ![Data rámečku](./media/machine-learning-data-science-vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
-V sadě Visual Studio můžete použít následující dotazy U-SQL:
+Můžete použít následující dotazy U-SQL v sadě Visual Studio hello:
 
     @a =
         EXTRACT medallion string,
@@ -416,59 +416,59 @@ V sadě Visual Studio můžete použít následující dotazy U-SQL:
         GROUP BY vendor_id;
 
     OUTPUT @b   
-    TO "swebhdfs://<Azure Data Lake Storage Account Name>.azuredatalakestore.net/<Folder Name>/<Output Data File Name>"
+    too"swebhdfs://<Azure Data Lake Storage Account Name>.azuredatalakestore.net/<Folder Name>/<Output Data File Name>"
     USING Outputters.Csv();
 
     OUTPUT @b   
-    TO "wasb://<Container name>@<Azure Blob Storage Account Name>.blob.core.windows.net/<Output Data File Name>"
+    too"wasb://<Container name>@<Azure Blob Storage Account Name>.blob.core.windows.net/<Output Data File Name>"
     USING Outputters.Csv();
 
 
 
-Po dotazu je odeslána na server, se zobrazí diagram zobrazující stav úlohy.
+Odeslaná toohello serveru po dotazu se zobrazí diagram zobrazující hello stav úlohy.
 
 ![Diagram stavu úlohy](./media/machine-learning-data-science-vm-do-ten-things/USQL_Job_Status.PNG)
 
 **Dotaz na data v Data Lake: U-SQL**
 
-Po datová sada je konzumována do Azure Data Lake, můžete použít [jazykem U-SQL](../data-lake-analytics/data-lake-analytics-u-sql-get-started.md) pro dotazování a data prozkoumat. Jazyk U-SQL je podobná T-SQL, ale spojuje některé funkce z jazyka C#, tak, aby uživatelé můžete napsat vlastní moduly, uživatelem definované funkce a atd. Můžete použít skripty v předchozím kroku.
+Po hello datové sady je konzumována do Azure Data Lake, můžete použít [jazykem U-SQL](../data-lake-analytics/data-lake-analytics-u-sql-get-started.md) tooquery a zkoumat hello data. Jazyk U-SQL je podobné Tool SQL, ale spojuje některé funkce z jazyka C#, tak, aby uživatelé můžete napsat vlastní moduly, uživatelem definované funkce a atd. V předchozím kroku hello můžete použít skripty hello.
 
-Po dotazu je odeslána na server, tripdata_summary. Sdílený svazek clusteru najdete krátce v **Azure Data Lake Explorer**, vám může zobrazte náhled dat, podle klikněte pravým tlačítkem na soubor.
+Po hello dotaz je odeslaná tooserver tripdata_summary. Sdílený svazek clusteru najdete krátce v **Azure Data Lake Explorer**, může náhled hello dat klikněte pravým tlačítkem na soubor hello.
 
 ![Soubor v Průzkumníku služby Azure Data Lake](./media/machine-learning-data-science-vm-do-ten-things/USQL_create_summary.png)
 
-Chcete-li zobrazit informace o souboru:
+informace o souboru toosee hello:
 
 ![Souhrn souborů](./media/machine-learning-data-science-vm-do-ten-things/USQL_tripdata_summary.png)
 
 ### <a name="hdinsight-hadoop-clusters"></a>Clustery HDInsight Hadoop
-Azure HDInsight je spravovaná služba Apache Hadoop, Spark, HBase nebo Storm v cloudu. Můžete snadno pracovat s Azure HDInsight clustery z datové vědy virtuálního počítače.
+Azure HDInsight je spravovaná služba Apache Hadoop, Spark, HBase nebo Storm v cloudu hello. Můžete snadno pracovat s Azure HDInsight clustery z hello datové vědy virtuálního počítače.
 
 **Požadavek**
 
-* Vytvoření účtu úložiště objektů Blob v Azure z [portál Azure](https://portal.azure.com). Tento účet úložiště se používá k ukládání dat pro clustery služby HDInsight.
+* Vytvoření účtu úložiště objektů Blob v Azure z [portál Azure](https://portal.azure.com). Tento účet úložiště je použité toostore data pro clustery služby HDInsight.
 
 ![Vytvořit účet úložiště objektů Blob v Azure](./media/machine-learning-data-science-vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * Přizpůsobení clusterů systému Hadoop HDInsight Azure z [portálu Azure](machine-learning-data-science-customize-hadoop-cluster.md)
   
-  * Je nutné propojit účtu úložiště vytvořeném k vašemu clusteru HDInsight, když je vytvořeno. Tento účet úložiště se používá pro přístup k datům, která může být zpracována v rámci clusteru.
+  * Je nutné propojit hello úložiště účet vytvořený k vašemu clusteru HDInsight, když je vytvořeno. Tento účet úložiště se používá pro přístup k datům, která může být zpracována v rámci clusteru hello.
 
-![Odkaz na účet úložiště, které jsou vytvořené pomocí clusteru HDInsight](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_v4.PNG)
+![Odkaz toostorage účet vytvořený s clusterem HDInsight](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_v4.PNG)
 
-* Je nutné povolit **vzdáleného přístupu** k hlavnímu uzlu clusteru po jeho vytvoření. Pamatovat přihlašovací údaje vzdáleného přístupu, zde určíte (liší od nastavení zadané pro cluster při jeho vytváření): budete potřebovat v v následujícím postupu.
+* Je nutné povolit **vzdáleného přístupu** toohello hlavního uzlu clusteru hello po jejím vytvoření. Pamatovat přihlašovací údaje vzdáleného přístupu hello zde určíte (liší od nastavení zadané pro cluster hello při jeho vytváření): je nutné v následujícím postupu hello.
 
 ![Povolte vzdálený přístup](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
-* Vytvořte pracovní prostor služby Azure Machine Learning. Vaše strojovým učením jsou uloženy v tomto pracovním prostoru Machine Learning. Vyberte zvýrazněný možnosti portálu, jak je znázorněno na následujícím snímku obrazovky:
+* Vytvořte pracovní prostor služby Azure Machine Learning. Vaše strojovým učením jsou uloženy v tomto pracovním prostoru Machine Learning. Vyberte možnosti hello zvýrazněná portálu, jak ukazuje následující snímek obrazovky hello:
 
 ![Vytvoření pracovního prostoru Azure Machine Learningu](./media/machine-learning-data-science-vm-do-ten-things/Create_ML_Space.PNG)
 
-* Zadejte parametry pro pracovní prostor
+* Zadejte parametry hello pracovního prostoru
 
 ![Zadejte parametry pracovního prostoru Machine Learning](./media/machine-learning-data-science-vm-do-ten-things/Create_ML_Space_step2_v2.PNG)
 
-* Nahrání dat pomocí IPython Poznámkový blok. Importujte ho nejprve požadované balíčky, zařaďte přihlašovací údaje, vytvořit db ve vašem účtu úložiště a pak načíst data do clusterů HDI.
+* Nahrání dat pomocí IPython Poznámkový blok. Importujte ho nejprve požadované balíčky, zařaďte přihlašovací údaje, vytvořit db ve vašem účtu úložiště a pak načíst data tooHDI clustery.
 
         #Import required Packages
         import pyodbc
@@ -485,7 +485,7 @@ Azure HDInsight je spravovaná služba Apache Hadoop, Spark, HBase nebo Storm v 
         warnings.filterwarnings("ignore", category=UserWarning, module='urllib2')
 
 
-        #Create the connection to Hive using ODBC
+        #Create hello connection tooHive using ODBC
         SERVER_NAME='xxx.azurehdinsight.net'
         DATABASE_NAME='nyctaxidb'
         USERID='xxx'
@@ -551,7 +551,7 @@ Azure HDInsight je spravovaná služba Apache Hadoop, Spark, HBase nebo Storm v 
         cursor.execute(queryString)
 
 
-        #Upload data from blob storage to HDI cluster
+        #Upload data from blob storage tooHDI cluster
         for i in range(1,13):
             queryString = "LOAD DATA INPATH 'wasb:///nyctaxitripraw2/trip_data_%d.csv' INTO TABLE nyctaxidb2.trip PARTITION (month=%d);"%(i,i)
             cursor.execute(queryString)
@@ -559,17 +559,17 @@ Azure HDInsight je spravovaná služba Apache Hadoop, Spark, HBase nebo Storm v 
             cursor.execute(queryString)
 
 
-* Alternativně můžete to provést [návod](machine-learning-data-science-process-hive-walkthrough.md) odesílat data NYC taxíkem do clusteru HDI. Hlavní kroky zahrnují:
+* Alternativně můžete to provést [návod](machine-learning-data-science-process-hive-walkthrough.md) tooupload NYC taxíkem data tooHDI clusteru. Hlavní kroky zahrnují:
   
-  * AzCopy: Stáhněte komprimované CSV z veřejného objektu blob do místní složky
-  * AzCopy: nahrajte rozbalené sdílených svazcích clusteru z místní složky do clusteru HDI
-  * Přihlaste se k hlavnímu uzlu clusteru Hadoop a příprava pro analýzu nahodilého dat
+  * AzCopy: stažení komprimované CSV z místní složky tooyour veřejného objektu blob
+  * AzCopy: nahrajte rozbalené sdílených svazcích clusteru z místní složky tooHDI clusteru
+  * Přihlaste se k hlavnímu uzlu clusteru Hadoop hello a příprava pro analýzu nahodilého dat
 
-Po načtení dat do clusteru HDI, můžete zkontrolovat vaše data v Azure Storage Explorer. A máte databáze nyctaxidb, vytvořené v clusteru HDI.
+Po hello dat je načíst tooHDI cluster, můžete zkontrolovat vaše data v Azure Storage Explorer. A máte databáze nyctaxidb, vytvořené v clusteru HDI.
 
 **Zkoumání dat: dotazů Hive v Pythonu**
 
-Vzhledem k tomu, že data jsou v clusteru Hadoop, můžete se připojit k databázi clusterů systému Hadoop a dotazování pomocí Hive uděláte zkoumání a konstruování pyodbc balíčku. Můžete zobrazit existující tabulky, které jsme vytvořili v kroku požadovaných součástí.
+Vzhledem k tomu, že hello data je v clusteru Hadoop, můžete použít hello pyodbc balíček tooconnect tooHadoop clustery a dotaz do databáze pomocí Hive toodo zkoumání a funkce inženýrství. Můžete zobrazit hello existující tabulky, které jsme vytvořili v kroku požadovaných hello.
 
     queryString = """
         show tables in nyctaxidb2;
@@ -579,7 +579,7 @@ Vzhledem k tomu, že data jsou v clusteru Hadoop, můžete se připojit k datab�
 
 ![Zobrazit existující tabulky](./media/machine-learning-data-science-vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
 
-Podívejme se na počet záznamů v každém měsíci a frekvence šikmý nebo není v tabulce cesty:
+Podívejme se na hello počet záznamů v každém měsíci a hello frekvence šikmý nebo není v tabulce hello cesty:
 
     queryString = """
         select month, count(*) from nyctaxidb.trip group by month;
@@ -615,7 +615,7 @@ Podívejme se na počet záznamů v každém měsíci a frekvence šikmý nebo n
 
 ![Vykreslení frekvencí tipu](./media/machine-learning-data-science-vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
 
-Můžeme také výpočetní vzdálenost mezi výstupní umístění a dropoff umístění a porovnejte je s vzdálenost cesty.
+Můžeme také výpočetní hello vzdálenost mezi výstupní umístění a dropoff umístění a porovnejte je toohello dojít vzdálenost.
 
     queryString = """
                     select pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_distance, trip_time_in_secs,
@@ -645,7 +645,7 @@ Můžeme také výpočetní vzdálenost mezi výstupní umístění a dropoff um
     plt.scatter(df['direct_distance'], df['trip_distance'])
 
 
-![Vykreslení vyzvednutí/dropoff vzdálenost vzdálenost cesty](./media/machine-learning-data-science-vm-do-ten-things/Exploration_direct_distance_trip_distance_v2.PNG)
+![Vykreslení vyzvednutí/dropoff vzdálenost tootrip vzdálenost](./media/machine-learning-data-science-vm-do-ten-things/Exploration_direct_distance_trip_distance_v2.PNG)
 
 Nyní Pojďme Příprava nižší vzorků (1 %) sady dat pro modelování. Tyto údaje můžete použít v modul čtečky Machine Learning.
 
@@ -685,7 +685,7 @@ Nyní Pojďme Příprava nižší vzorků (1 %) sady dat pro modelování. Tyto 
         """
         cursor.execute(queryString)
 
-        --- now insert contents of the join into the preceding internal table
+        --- now insert contents of hello join into hello preceding internal table
 
         queryString = """
         insert overwrite table nyctaxi_downsampled_dataset_testNEW
@@ -771,7 +771,7 @@ Nyní Pojďme Příprava nižší vzorků (1 %) sady dat pro modelování. Tyto 
         """
         cursor.execute(queryString)
 
-Po chvíli uvidíte, že data se načetl v clusterů systému Hadoop:
+Po chvíli uvidíte, že načtení dat hello v clusterů systému Hadoop:
 
     queryString = """
         select * from nyctaxi_downsampled_dataset limit 10;
@@ -784,50 +784,50 @@ Po chvíli uvidíte, že data se načetl v clusterů systému Hadoop:
 
 **Čtení dat z HDI pomocí Machine Learning: modul čtečky**
 
-Můžete také používat **čtečky** modulu v nástroji Machine Learning Studio pro přístup k databázi v clusteru Hadoop. Připojte přihlašovací údaje HDI clusterů a účet úložiště Azure, abyste umožnili sestavení ing modelů strojového učení pomocí databáze v clusterech HDI.
+Můžete také používat hello **čtečky** modulu v Machine Learning Studio tooaccess hello databázi v clusteru Hadoop. Připojte hello pověření HDI clusterů a účet úložiště Azure tooenable sestavení ing modelů strojového učení pomocí databáze v clusterech HDI.
 
 ![Vlastnosti modulu Reader](./media/machine-learning-data-science-vm-do-ten-things/AML_Reader_Hive.PNG)
 
-Scored datovou sadu lze následně zobrazit:
+Hello scored datovou sadu lze následně zobrazit:
 
 ![Zobrazení skóre pro magnitudu datové sady](./media/machine-learning-data-science-vm-do-ten-things/AML_Model_Results.PNG)
 
 ### <a name="azure-sql-data-warehouse--databases"></a>Azure SQL Data Warehouse & databáze
 Azure SQL Data Warehouse je elastické datového skladu jako služba podnikových prostředí systému SQL Server.
 
-Můžete zřídit Azure SQL Data Warehouse pomocí následujících pokynů uvedených v tomto [článku](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md). Po zřízení Azure SQL Data Warehouse, můžete to [návod](machine-learning-data-science-process-sqldw-walkthrough.md) udělat nahrání dat, zkoumání a modelování pomocí dat v rámci SQL Data Warehouse.
+Můžete zřídit Azure SQL Data Warehouse pomocí následujících pokynů hello v tomto [článku](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md). Po zřízení Azure SQL Data Warehouse, můžete to [návod](machine-learning-data-science-process-sqldw-walkthrough.md) odesílání dat toodo, zkoumání a modelování pomocí dat v rámci hello SQL Data Warehouse.
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
-Azure Cosmos DB je databáze NoSQL v cloudu. Ji umožňuje pracovat s dokumenty jako JSON a umožňuje ukládání a dotazování dokumentů.
+Azure Cosmos DB je databáze NoSQL v cloudu hello. Ho můžete toowork s dokumenty jako JSON a můžete dokumenty hello toostore a dotazů.
 
-Je třeba provést následující kroky na požadavky pro přístup k databázi Azure Cosmos z DSVM.
+Je nutné toodo hello následujících za požadavky kroky tooaccess Azure Cosmos DB z hello DSVM.
 
 1. Instalace DocumentDB Python SDK (Spustit ```pip install pydocumentdb``` z příkazového řádku)
 2. Vytvoření účtu Azure Cosmos databáze a databáze z [portálu Azure](https://portal.azure.com)
-3. Stáhnout "Nástroj pro migraci Azure Cosmos DB" z [zde](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) a extrahování k adresáři podle svého výběru
-4. Umožňuje importovat data JSON (sopka data) uložené na [veřejného objektu blob](https://cahandson.blob.core.windows.net/samples/volcano.json) do databáze Cosmos s následující parametry příkazu pro nástroj pro migraci (dtui.exe z adresáře, kam jste nainstalovali nástroj pro migraci DB Cosmos). Zadejte umístění zdrojové a cílové s těmito parametry:
+3. Stáhnout "Nástroj pro migraci Azure Cosmos DB" z [zde](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) a extrahování directory tooa podle svého výběru
+4. Umožňuje importovat data JSON (sopka data) uložené na [veřejného objektu blob](https://cahandson.blob.core.windows.net/samples/volcano.json) do databáze Cosmos s následující příkaz parametry toohello nástroj pro migraci (dtui.exe z hello adresáře, kam jste nainstalovali nástroj pro migraci DB Cosmos hello). Zadejte hello zdrojové a cílové umístění s těmito parametry:
    
     /s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/; AccountKey = [[klíče]; Database = sopka /t.Collection:volcano1
 
-Jakmile importujete data, můžete přejít do Jupyter a otevřete Poznámkový blok s názvem *DocumentDBSample* obsahující kód python přístup k DocumentDB a provádět některé základní dotazování. Další informace o Cosmos DB návštěvou službu [stránky dokumentace, která](https://docs.microsoft.com/azure/cosmos-db/).
+Jakmile importujete hello data, můžete přejít tooJupyter a s názvem Poznámkový blok otevřete hello *DocumentDBSample* obsahující python code tooaccess DocumentDB a provádět některé základní dotazování. Další informace o Cosmos DB návštěvou hello služby [stránky dokumentace, která](https://docs.microsoft.com/azure/cosmos-db/).
 
-## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8. Vytvářejte sestavy a řídicí panel pomocí Power BI Desktop
-Dejte nám Vizualizujte soubor sopka JSON, který jsme viděli v předchozím příkladu Cosmos DB v Power BI k visual proniknout do data. Podrobné pokyny jsou k dispozici v [Power BI článku](../cosmos-db/powerbi-visualize.md). Zde jsou základní kroky:
+## <a name="8-build-reports-and-dashboard-using-hello-power-bi-desktop"></a>8. Vytvářejte sestavy a řídicí panel pomocí hello Power BI Desktop
+Dejte nám Vizualizujte souboru hello sopka JSON, který jsme viděli v předchozím příkladu Cosmos DB v Power BI toogain visual přehledy hello data hello. Podrobné pokyny jsou k dispozici v hello [Power BI článku](../cosmos-db/powerbi-visualize.md). Zde jsou základní kroky hello:
 
-1. Otevřít Power BI Desktop a do "Získat Data". Zadejte adresu URL jako: https://cahandson.blob.core.windows.net/samples/volcano.json
-2. Měli byste vidět importovaných jako seznam záznamů JSON
-3. Převést seznam na tabulku, Power BI mohli pracovat se stejným
-4. Rozbalte sloupce kliknutím na ikonu rozbalení (jeden ikonou "šipku vlevo a šipku vpravo" na pravé straně sloupec)
-5. Všimněte si, že umístění je na pole "Záznam". Rozbalte položku a vyberte pouze souřadnice. Souřadnice je sloupec seznamu
-6. Umožňuje přidat nový sloupec a převádět souřadnic sloupec seznamu čárkami samostatný LatLong sloupec zřetězení dva elementy pole souřadnic seznamu pomocí vzorce ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})```.
-7. Nakonec převést ```Elevation``` sloupec desetinných míst a vyberte **Zavřít** a **použít**.
+1. Otevřít Power BI Desktop a do "Získat Data". Zadejte adresu URL hello jako: https://cahandson.blob.core.windows.net/samples/volcano.json
+2. Měli byste vidět importovaných jako seznam záznamů JSON hello
+3. Převést hello seznamu tooa tabulky, Power BI mohli pracovat s hello stejné
+4. Rozbalte hello sloupce kliknutím na hello rozbalte ikonu (hello jeden "šipku vlevo a šipku vpravo" ikonou hello na hello napravo od hello sloupec)
+5. Všimněte si, že umístění je na pole "Záznam". Rozbalte hello záznam a vyberte pouze hello souřadnice. Souřadnice je sloupec seznamu
+6. Umožňuje přidat nový sloupec tooconvert hello seznamu souřadnic sloupec do čárkami samostatný LatLong sloupec zřetězení hello dva elementy v poli seznamu souřadnic hello pomocí vzorce hello ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})```.
+7. Nakonec převést hello ```Elevation``` tooDecimal sloupce a vyberte hello **Zavřít** a **použít**.
 
-Místo předchozích kroků, můžete vložte následující kód, skripty out s postupem v editoru Advanced v Power BI, který umožňuje zapisovat transformace dat v dotazovací jazyk.
+Místo předchozích kroků, vložte následující kód, který skriptů se hello postupem v hello hello Upřesnit v Power BI, který vám umožní transformace dat hello toowrite v jazyce dotazu.
 
     let
         Source = Json.Document(Web.Contents("https://cahandson.blob.core.windows.net/samples/volcano.json")),
-        #"Converted to Table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
-        #"Expanded Column1" = Table.ExpandRecordColumn(#"Converted to Table", "Column1", {"Volcano Name", "Country", "Region", "Location", "Elevation", "Type", "Status", "Last Known Eruption", "id"}, {"Volcano Name", "Country", "Region", "Location", "Elevation", "Type", "Status", "Last Known Eruption", "id"}),
+        #"Converted tooTable" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+        #"Expanded Column1" = Table.ExpandRecordColumn(#"Converted tooTable", "Column1", {"Volcano Name", "Country", "Region", "Location", "Elevation", "Type", "Status", "Last Known Eruption", "id"}, {"Volcano Name", "Country", "Region", "Location", "Elevation", "Type", "Status", "Last Known Eruption", "id"}),
         #"Expanded Location" = Table.ExpandRecordColumn(#"Expanded Column1", "Location", {"coordinates"}, {"coordinates"}),
         #"Added Custom" = Table.AddColumn(#"Expanded Location", "LatLong", each Text.From([coordinates]{1})&","&Text.From([coordinates]{0})),
         #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"Elevation", type number}})
@@ -836,33 +836,33 @@ Místo předchozích kroků, můžete vložte následující kód, skripty out s
 
 
 
-Nyní máte data v Power BI datového modelu. Power BI ploše by měl vypadat takto:
+Nyní máte hello data v Power BI datového modelu. Power BI ploše by měl vypadat takto:
 
 ![Power BI Desktop](./media/machine-learning-data-science-vm-do-ten-things/PowerBIVolcanoData.png)
 
-Můžete začít vytvářet sestavy a vizualizací pomocí datového modelu. Můžete postupovat podle kroků v tomto [Power BI článku](../cosmos-db/powerbi-visualize.md#build-the-reports) pro vytvoření sestavy. Konečný výsledek je sestava, která vypadá takto.
+Můžete začít vytvářet sestavy a vizualizací pomocí hello datového modelu. Můžete provést hello kroky v tomto [Power BI článku](../cosmos-db/powerbi-visualize.md#build-the-reports) toobuild sestavy. Konečný výsledek Hello je sestava, která vypadá jako následující hello.
 
 ![Power BI Desktop zobrazení sestavy - Power BI connector](./media/machine-learning-data-science-vm-do-ten-things/power_bi_connector_pbireportview2.png)
 
-## <a name="9-dynamically-scale-your-dsvm-to-meet-your-project-needs"></a>9. Dynamické škálování vašeho DSVM potřebám vašeho projektu
-Je možné škálovat nahoru a dolů DSVM potřebám vašeho projektu. Pokud nemusíte používat virtuální počítač v večer nebo o víkendech, můžete právě vypnout virtuální počítač z [portál Azure](https://portal.azure.com).
+## <a name="9-dynamically-scale-your-dsvm-toomeet-your-project-needs"></a>9. Dynamicky škálovat vaše DSVM toomeet, musí váš projekt
+Je možné škálovat nahoru a dolů hello DSVM toomeet, musí váš projekt. Pokud nepotřebujete toouse hello virtuálních počítačů v hello večer nebo o víkendech, můžete právě vypnout hello virtuálních počítačů z hello [portál Azure](https://portal.azure.com).
 
 > [!NOTE]
-> Pokud používáte pouze tlačítko vypnutí operačního systému ve virtuálním počítači platit poplatky výpočty.  
+> Poplatky za výpočty dojít, pokud používáte pouze hello tlačítko vypnutí operačního systému na hello virtuálních počítačů.  
 > 
 > 
 
-Pokud je potřeba zpracovat některé rozsáhlé analýzy a potřebovat větší kapacitu procesoru nebo paměti a disku můžete najít velké volba velikostí virtuálních počítačů z hlediska jader procesoru, kapacita paměti a disku typy (včetně jednotek SSD), které splňují vaše výpočetní a rozpočtových potřebuje. Úplný seznam virtuálních počítačů spolu s jejich hodinové výpočetní ceny je k dispozici na [ceny virtuálních počítačů Azure](https://azure.microsoft.com/pricing/details/virtual-machines/) stránky.
+Pokud potřebujete toohandle některé rozsáhlé analýzy a potřebovat větší kapacitu procesoru nebo paměti a disku můžete najít velké volba velikostí virtuálních počítačů z hlediska jader procesoru, kapacita paměti a disku typy (včetně jednotek SSD), které splňují vaše výpočetní a rozpočtových potřebám. Hello úplný seznam virtuálních počítačů spolu s jejich hodinové výpočetní ceny je k dispozici na hello [ceny virtuálních počítačů Azure](https://azure.microsoft.com/pricing/details/virtual-machines/) stránky.
 
-Podobně pokud snižuje potřeba kapacity zpracování virtuálního počítače (například: přesunout hlavní zatížení na Hadoop nebo Spark cluster), je možné škálovat dolů je cluster ze [portál Azure](https://portal.azure.com) a nastavení vaší instance virtuálních počítačů. Zde je snímek.
+Podobně pokud snižuje potřeba kapacity zpracování virtuálního počítače (například: přesunut tooa hlavní úloh Hadoop nebo clusteru Spark), je možné škálovat dolů hello clusteru z hello [portál Azure](https://portal.azure.com) a toohello nastavení virtuálního počítače instance. Zde je snímek.
 
 ![Nastavení instance virtuálních počítačů](./media/machine-learning-data-science-vm-do-ten-things/VMScaling.PNG)
 
 ## <a name="10-install-additional-tools-on-your-virtual-machine"></a>10. Nainstalujte další nástroje na virtuálním počítači
-Budeme mít zabalené několik nástrojů, které se domníváme, se můžou na adresu řadu běžné potřeby analýzy dat a který by měl ušetřit čas vyhnout nutnosti instalace a konfigurace vašeho prostředí po jednom a uložte peníze platebním pouze pro prostředky, že používáte.
+Budeme mít zabalené několik nástrojů, které se domníváme, jsou možné tooaddress řadu hello běžným potřebám analýzy dat a který by měl šetří čas vyhnout nutnosti tooinstall a konfigurace vašeho prostředí po jednom a ušetřit peníze platebním pouze pro prostředky, které použití.
 
-Můžete využít další data a analýzy služby Azure profilovaným v tomto článku k vylepšení prostředí analýzy. Chápeme, že v některých případech může vyžadovat vašim potřebám dalších nástrojů, včetně některá vlastnické nástroje třetích stran. Máte plný přístup správce na virtuální počítač pro instalaci nové nástroje, které potřebujete. Můžete taky nainstalovat další balíčky Python a R, která nejsou předem nainstalovaná. Pro jazyk Python můžete použít buď ```conda``` nebo ```pip```. Pro R můžete použít ```install.packages()``` v R konzole nebo pomocí rozhraní IDE a zvolte "**balíčky** -> **instalovat balíčky...** ".
+Můžete využít další Azure data a analytické služby profilovaným v tooenhance Tento článek prostředí analýzy. Chápeme, že v některých případech může vyžadovat vašim potřebám dalších nástrojů, včetně některá vlastnické nástroje třetích stran. Máte plný přístup správce na hello virtuálního počítače tooinstall nové nástroje, které potřebujete. Můžete taky nainstalovat další balíčky Python a R, která nejsou předem nainstalovaná. Pro jazyk Python můžete použít buď ```conda``` nebo ```pip```. R můžete použít hello ```install.packages()``` v hello R konzole nebo pomocí hello IDE a vyberte "**balíčky** -> **instalovat balíčky...** ".
 
 ## <a name="summary"></a>Souhrn
-Toto jsou jen některé z akcí, které můžete provést na Microsoft Data vědecké účely virtuálního počítače. Existuje mnoho dalších věcí, které můžete provést, aby bylo prostředí efektivní analýzu.
+To jsou jen některé hello věcí, které můžete provést jak na hello Microsoft Data vědecké účely virtuálního počítače. Existuje mnoho dalších věcí, které můžete provést toomake ho prostředí efektivní analýzu.
 

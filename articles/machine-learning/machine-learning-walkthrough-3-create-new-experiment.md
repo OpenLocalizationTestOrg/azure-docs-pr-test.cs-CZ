@@ -1,6 +1,6 @@
 ---
 title: "Krok 3: Vytvoření nového experimentu Machine Learning | Microsoft Docs"
-description: "Krok 3 vývoj prediktivního řešení návod: vytvoření nového experimentu školení v Azure Machine Learning Studio."
+description: "Krok 3 hello vývoj prediktivního řešení návod: vytvoření nového experimentu školení v Azure Machine Learning Studio."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,123 +14,123 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.openlocfilehash: cd410316910bce76f5c915c06e83b24c034481b7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4697d461a205c50c8d2aa6a3bd56697840cb30f9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="walkthrough-step-3-create-a-new-azure-machine-learning-experiment"></a>Krok 3 průvodce: Vytvoření nového experimentu služby Azure Machine Learning
-Toto je třetí krok tohoto průvodce, [vývoj řešení prediktivní analýzy v Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
+Toto je třetí krok hello hello návod [vývoj řešení prediktivní analýzy v Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
 
 1. [Vytvoření pracovního prostoru Machine Learning](machine-learning-walkthrough-1-create-ml-workspace.md)
 2. [Nahrání existujících dat](machine-learning-walkthrough-2-upload-data.md)
 3. **Vytvoření nového experimentu**
-4. [Natrénování a vyhodnocení modelů](machine-learning-walkthrough-4-train-and-evaluate-models.md)
-5. [Nasazení webové služby](machine-learning-walkthrough-5-publish-web-service.md)
-6. [Přístup k webové službě](machine-learning-walkthrough-6-access-web-service.md)
+4. [Natrénování a vyhodnocení modelů hello](machine-learning-walkthrough-4-train-and-evaluate-models.md)
+5. [Nasazení webové služby hello](machine-learning-walkthrough-5-publish-web-service.md)
+6. [Přístup k webové službě hello](machine-learning-walkthrough-6-access-web-service.md)
 
 - - -
-Dalším krokem v tomto návodu je vytvoření experimentu v Machine Learning Studio používající datové sady, které jsme nahrát.  
+dalším krokem Hello v tomto návodu je toocreate experimentu v Machine Learning Studio používající hello datovou sadu, které jsme nahrát.  
 
-1. V nástroji Studio klikněte na tlačítko **+ nový** v dolní části okna.
+1. V nástroji Studio klikněte na tlačítko **+ nový** v hello dolní části okna hello.
 2. Vyberte **EXPERIMENTU**a potom vyberte "Prázdný Experiment". 
 
     ![Vytvoření nového experimentu][0]
 
-2. Vyberte výchozí název v horní části na plátno experimentu a přejmenujte jej na něco smysluplného.
+2. Vyberte hello výchozí experimentovat název hello horní části plátna hello a přejmenujte ji toosomething smysluplný.
 
     ![Přejmenujte experimentu][5]
    
    > [!TIP]
-   > Je dobrým zvykem vyplnit **Souhrn** a **popis** experimentu v **vlastnosti** podokně. Tyto vlastnosti získáte možnost dokumentu experimentu tak, aby každý, kdo ho později zabývá pochopili záměry a metody.
+   > Je dobrým zvykem toofill v **Souhrn** a **popis** hello experimentu v hello **vlastnosti** podokně. Tyto vlastnosti udělení hello prvního toodocument hello experimentu tak, aby každý, kdo ho později zabývá pochopili záměry a metody.
    > 
    > ![Vlastnosti experimentu][6]
    > 
-3. Paletě modulů nalevo od plátna experimentu rozbalte **uložit datové sady**.
-4. Vyhledá se datová jste vytvořili v části **Moje datové sady** a přetáhněte na plátno. Datovou sadu můžete také vyhledat zadáním názvu v **vyhledávání** pole výše paletě.  
+3. V hello modulu palety toohello nalevo od plátna experimentu hello, rozbalte položku **uložit datové sady**.
+4. Datová sada hello najít, které jste vytvořili v části **Moje datové sady** a přetáhněte ji na plátno hello. Můžete také najít datovou sadu hello tak, že zadáte název hello hello **vyhledávání** pole výše palety hello.  
 
-    ![Přidejte datovou sadu experimentu][7]
+    ![Přidat hello datovou sadu toohello experimentu][7]
 
-## <a name="prepare-the-data"></a>Příprava dat
-Můžete zobrazit prvních 100 řádků dat a některé statistické informace pro celou datovou sadu: klikněte na výstupní port datové sady (přeškrtnutým kroužkem dole) a vyberte **vizualizovat**.  
+## <a name="prepare-hello-data"></a>Příprava dat hello
+Můžete zobrazit hello prvních 100 řádků hello dat a některé statistické informace pro celou datovou sadu hello: klikněte na výstupní port hello hello sady dat (přeškrtnutým kroužkem pro hello dolnímu hello) a vyberte **vizualizovat**.  
 
-Protože datový soubor nebyl dodán záhlaví sloupců, Studio poskytl obecné záhlaví (Sloupec1, Sloupec2, *atd*). Dobrý záhlaví nejsou nezbytně nutné, aby vytvoření modelu, ale jejich usnadnili práci s daty v rámci experimentu. Navíc pokud jsme nakonec publikovat tento model ve webové službě, záhlaví pomoci při identifikaci sloupce, které chcete uživatele služby.  
+Protože hello datový soubor nebyl dodán záhlaví sloupců, Studio poskytl obecné záhlaví (Sloupec1, Sloupec2, *atd*). Základní toocreating model nejsou funkční záhlaví, ale jeho udělají jednodušší toowork daty hello v experimentu hello. Navíc pokud jsme nakonec publikovat tento model ve webové službě, záhlaví hello pomoci při identifikaci hello sloupce toohello uživatel hello služby.  
 
-Přidáme záhlaví sloupců pomocí [upravit Metadata] [ edit-metadata] modulu.
-Můžete použít [upravit Metadata] [ edit-metadata] modulu změnit metadata spojená s datovou sadu. V takovém případě jsme můžete zadat další popisné názvy záhlaví sloupců. 
+Nyní můžete přidat pomocí hello záhlaví sloupců [upravit Metadata] [ edit-metadata] modulu.
+Použít hello [upravit Metadata] [ edit-metadata] modulu toochange metadata spojená s datovou sadu. V tomto případě používáme ho tooprovide další popisný názvy pro záhlaví sloupců. 
 
-Chcete-li použít [upravit Metadata][edit-metadata], nejprve zadejte sloupce, které chcete upravit (v tomto případě všechny z nich.) Potom zadejte akci prováděnou na tyto sloupce (v tomto případě změna záhlaví sloupců.)
+toouse [upravit Metadata][edit-metadata], nejprve zadat které toomodify sloupce (v tomto případě všechny z nich.) Dále určit toobe hello akce provést na tyto sloupce (v tomto případě změna záhlaví sloupců.)
 
-1. Paletě modulů, zadejte "metadata" **vyhledávání** pole. [Upravit Metadata] [ edit-metadata] se zobrazí v seznamu modulů.
+1. V modulu palety hello, zadejte "metadata" v hello **vyhledávání** pole. Hello [upravit Metadata] [ edit-metadata] se zobrazí v seznamu modul hello.
 
-2. Klikněte na tlačítko a přetáhněte ji [upravit Metadata] [ edit-metadata] modulu na plátno a umístěte jej pod datovou sadu jsme přidali dříve.
+2. Klikněte a přetáhněte hello [upravit Metadata] [ edit-metadata] modulu do hello plátno a umístěte jej pod datovou sadu hello jsme přidali dříve.
 
-3. Připojit datovou sadu, která [upravit Metadata][edit-metadata]: klikněte na výstupní port datové sady (přeškrtnutým kroužkem v dolní části datové sady), přetáhněte do vstupní port [upravit Metadata] [ edit-metadata] (přeškrtnutým kroužkem v horní části modulu), pak uvolnění tlačítka myši. Datovou sadu a modul zůstanou připojená, i když přesouváte buď na plátně.
+3. Připojit hello datovou sadu toohello [upravit Metadata][edit-metadata]: klikněte na výstupní port hello hello sady dat (přeškrtnutým kroužkem pro hello dole hello datovou sadu hello), přetáhněte toohello vstupní port [upravit Metadata ] [ edit-metadata] (hello přeškrtnutým kroužkem hello horní části modulu hello), pak uvolnění tlačítka myši hello. datovou sadu Hello a modul zůstanou připojené, i když přesouváte buď na plátně hello.
    
-   Experiment by teď měl vypadat přibližně takto:  
+   Hello experiment by teď měl vypadat přibližně takto:  
    
    ![Přidání metadat úpravy][1]
    
-   Červený vykřičník označuje, že jsme nebyly dosud nastavit vlastnosti pro tento modul. Provedeme tento další.
+   Hello červený vykřičník označuje, že jsme hello vlastnosti pro tento modul nenastavili ještě. Provedeme tento další.
    
    > [!TIP]
-   > Kliknutím dvakrát na modul a zadáním textu je možné přidat k modulu komentář. To vám může pomoci rychle poznat, jaký je účel modulu v experimentu. V takovém případě dvakrát klikněte [upravit Metadata] [ edit-metadata] modul a zadejte komentář "přidat záhlaví sloupců". Klikněte na tlačítko kdekoliv jinde na plátně zavřete textového pole. Pokud chcete zobrazit komentář, klikněte na šipku dolů na modul.
+   > Můžete přidat komentář modul tooa tak, že dvakrát kliknete na panel hello modulu a zadání textu. Díky tomu můžete ihned uvidíte, jaké hello modul provádí v experimentu. V takovém případě klikněte dvakrát na hello [upravit Metadata] [ edit-metadata] modulu a typu hello komentář "přidat záhlaví sloupců". Kdekoliv jinde, klikněte na hello plátno tooclose hello textové pole. toodisplay hello komentář, klikněte na šipku dolů hello v modulu hello.
    > 
    > ![Upravit komentář přidat Metadata modulu][8]
    > 
-4. Vyberte [upravit Metadata][edit-metadata]a v **vlastnosti** napravo od plátna, klikněte na tlačítko **spustit selektor sloupců**.
+4. Vyberte [upravit Metadata][edit-metadata]a v hello **vlastnosti** toohello podokně napravo od plátna hello, klikněte na tlačítko **spustit selektor sloupců**.
 
-5. V **vyberte sloupce** dialogovém okně, vyberte všechny řádky v **dostupné sloupce** a klikněte na tlačítko > přesunout jejich **vybrané sloupce**.
-   Dialogové okno by měl vypadat takto:
+5. V hello **vyberte sloupce** dialogové okno, vyberte všechny řádky v hello **dostupné sloupce** a klikněte na tlačítko > toomove je příliš**vybrané sloupce**.
+   Dialogové okno Hello by měl vypadat takto:
 
    ![Selektor sloupců s vybrané všechny sloupce][2]
 
-6. Klikněte **OK** zaškrtnutí.
+6. Klikněte na tlačítko hello **OK** zaškrtnutí.
 
-7. Zpět v **vlastnosti** podokně, podívejte se **nové názvy sloupců** parametr. V tomto poli zadejte seznam názvů pro 21 sloupců v datové sadě, oddělených čárkami a pořadí sloupců. Názvy sloupců můžete získat z dokumentace datové sady na webu UCI nebo ke zvýšení pohodlí můžete zkopírovat a vložit v následujícím seznamu:  
+7. Zpět v hello **vlastnosti** podokně, podívejte se na hello **nové názvy sloupců** parametr. V tomto poli zadejte seznam názvů pro hello 21 sloupců v datové sadě hello, oddělených čárkami a pořadí sloupců. Názvy sloupců hello můžete získat z dokumentace hello datové sady na webu UCI hello nebo ke zvýšení pohodlí můžete zkopírovat a vložit hello následující seznamu:  
    
        Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
    
-   V podokně Vlastnosti vypadá takto:
+   Podokno Properties Hello vypadá takto:
    
    ![Vlastnosti pro úpravy metadat][3]
 
 > [!TIP]
-> Pokud chcete ověřit záhlaví sloupců, spustit experiment (klikněte na tlačítko **spustit** níže na plátno experimentu). Po jeho dokončení spuštění (zelená značka zaškrtnutí se zobrazí na [upravit Metadata][edit-metadata]), klikněte na výstupní port modulu [upravit Metadata] [ edit-metadata] modulu a vyberte **vizualizovat**. Zobrazí se výstup libovolný modul stejným způsobem, chcete-li zobrazit průběh dat přes experimentu.
+> Pokud chcete záhlaví sloupců hello tooverify, spustit hello experiment (klikněte na tlačítko **spustit** pod plátnem experimentu hello). Po jeho dokončení spuštění (zelená značka zaškrtnutí se zobrazí na [upravit Metadata][edit-metadata]), klikněte na výstupní port hello hello [upravit Metadata] [ edit-metadata] modul a vyberte **vizualizovat**. Zobrazí se výstup hello libovolný modul v hello tooview způsob stejné hello průběh hello data prostřednictvím hello experimentu.
 > 
 > 
 
 ## <a name="create-training-and-test-datasets"></a>Vytvoření školení a testovací datové sady
-Potřebujeme některá data pro trénování modelu a některé to vyzkoušíte.
-Proto v dalším kroku experiment, jsme datovou sadu rozdělit na dvě samostatné datové sady: jeden pro cvičení našeho modelu a jeden pro testování ho.
+Potřebujeme některé datový model hello tootrain a některé tootest ho.
+Proto v dalším kroku hello pokusu se hello jsme datovou sadu hello rozdělit na dvě samostatné datové sady: jeden pro cvičení našeho modelu a jeden pro testování ho.
 
-K tomuto účelu používáme [rozdělení dat] [ split] modulu.  
+toodo toho používáme hello [rozdělení dat] [ split] modulu.  
 
-1. Najít [rozdělení dat] [ split] modulu, přetáhněte na plátno a propojte jej s [upravit Metadata] [ edit-metadata] modulu.
+1. Najde hello [rozdělení dat] [ split] modulu, přetáhněte na plátno hello a připojte ho toohello [upravit Metadata] [ edit-metadata] modulu.
 
-2. Výchozí hodnota je 0,5 poměr rozdělení a **Randomized rozdělení** parametr je nastaven. Znamená, že náhodných polovina dat je výstup prostřednictvím jednoho portu [rozdělení dat] [ split] modulu a polovina prostřednictvím dalších. Můžete upravit tyto parametry společně s **náhodná počáteční hodnota** parametr, chcete-li změnit rozdělení mezi trénování a testování data. V tomto příkladu jsme je jako ponechte-je.
+2. Ve výchozím nastavení, je poměr rozdělení hello 0,5 a hello **Randomized rozdělení** parametr je nastaven. Znamená, že půl náhodných hello dat je výstup prostřednictvím jednoho portu hello [rozdělení dat] [ split] modulu a půl až hello jiné. Vám může upravit tyto parametry, stejně jako hello **náhodná počáteční hodnota** parametr toochange hello rozdělit mezi trénování a testování data. V tomto příkladu jsme je jako ponechte-je.
    
    > [!TIP]
-   > Vlastnost **podíl řádků v první výstupní sadě dat** Určuje, kolik dat je výstup prostřednictvím *levém* výstupní port. Například pokud nastavíte poměr 0,7, pak 70 % dat je výstup prostřednictvím levý port a z 30 % prostřednictvím pravý port.  
+   > Hello vlastnost **podíl řádků v hello nejprve výstupní datovou sadu** Určuje, kolik dat hello je výstup prostřednictvím hello *levém* výstupní port. Například pokud nastavíte too0.7 poměr hello, 70 % hello dat je výstup prostřednictvím hello zbývajících port a z 30 % prostřednictvím hello pravý port.  
    > 
    > 
 
-3. Dvakrát klikněte [rozdělení dat] [ split] modul a zadejte komentář, "školení nebo testování dat rozdělení 50 %". 
+3. Klikněte dvakrát na hello [rozdělení dat] [ split] modul a zadejte komentář hello, "školení nebo testování dat rozdělení 50 %". 
 
-Můžeme použít výstupů [rozdělení dat] [ split] modulu jsme jako, ale můžeme se rozhodnete použít levý výstupní jako Cvičná data a právo výstupní data jako testování.  
+Můžeme použít hello výstupy hello [rozdělení dat] [ split] modulu jsme jako, ale umožňuje vybrat toouse hello levý výstupní jako Cvičná data a hello právo výstupní data jako testování.  
 
-Jak je uvedeno v [předchozího kroku](machine-learning-walkthrough-2-upload-data.md), je pětkrát vyšší než náklady na misclassifying nízkou úvěrové riziko jako vysoce misclassifying vysoké úvěrové riziko jako nízkými náklady. Aby se zohlednily to, se vygeneruje nová datová sada, která odráží tuto funkci náklady. V nová datová sada se každý příklad vysoce rizikové replikují pětkrát, zatímco se replikují každý příklad nízké riziko.   
+Jak je uvedeno v hello [předchozího kroku](machine-learning-walkthrough-2-upload-data.md), misclassifying vysokou úvěrové riziko jako nízké náklady hello je pětkrát vyšší než náklady hello misclassifying nízkou úvěrové riziko jako Vysoká. tooaccount pro to, se vygeneruje nová datová sada, která odráží tuto funkci náklady. V hello nová datová sada každý příklad vysoce rizikové replikují pětkrát, zatímco se replikují každý příklad nízké riziko.   
 
 Provedeme tato replikace pomocí kódu jazyka R:  
 
-1. Najděte a přetáhněte [spustit skript jazyka R] [ execute-r-script] modulu na plátno experimentu. 
+1. Najděte a přetáhněte hello [spustit skript jazyka R] [ execute-r-script] modulu na plátno experimentu hello. 
 
-2. Připojit levý výstupní port modulu [rozdělení dat] [ split] modulu první vstupní port ("Dataset1") [spustit skript jazyka R] [ execute-r-script] modulu.
+2. Připojte zbývající výstupní port modulu hello hello [rozdělení dat] [ split] modulu toohello první vstup port ("Dataset1") z hello [spustit skript jazyka R] [ execute-r-script] modul.
 
-3. Dvakrát klikněte [spustit skript jazyka R] [ execute-r-script] modul a zadejte komentář, "Sada úprava nákladů".
+3. Klikněte dvakrát na hello [spustit skript jazyka R] [ execute-r-script] modul a zadejte komentář hello "Sada úprava nákladů".
 
-4. V **vlastnosti** podokně odstranit výchozí text v **skript jazyka R** parametr a zadejte tento skript:
+4. V hello **vlastnosti** podokně odstranění hello výchozí text v hello **skript jazyka R** parametr a zadejte tento skript:
    
        dataset1 <- maml.mapInputPort(1)
        data.set<-dataset1[dataset1[,21]==1,]
@@ -138,20 +138,20 @@ Provedeme tato replikace pomocí kódu jazyka R:
        for (i in 1:5) data.set<-rbind(data.set,pos)
        maml.mapOutputPort("data.set")
 
-    ![R skript v modulu spustit skript jazyka R][9]
+    ![R skript v modulu hello spustit skript jazyka R][9]
 
-Je potřeba udělat stejná operace replikace pro každé výstup [rozdělení dat] [ split] modulu tak, aby data školení a testování stejné úpravu náklady. Nejjednodušší způsob je pomocí duplikování [spustit skript jazyka R] [ execute-r-script] modulu jsme provedli a jejím propojením s druhým výstupní port [rozdělení dat] [ split] modulu.
+Potřebujeme toodo stejná operace replikace pro každé výstup z hello [rozdělení dat] [ split] modulu tak, že hello trénování a testování dat mají hello stejné úprava nákladů. Nejjednodušší způsob, jak toodo jedná se o duplikování hello Hello [spustit skript jazyka R] [ execute-r-script] modulu jsme právě provedli a jejím propojením toohello jiné výstupní port hello [rozdělení dat] [ split] modulu.
 
-1. Klikněte pravým tlačítkem myši [spustit skript jazyka R] [ execute-r-script] modul a vyberte **kopie**.
+1. Klikněte pravým tlačítkem na hello [spustit skript jazyka R] [ execute-r-script] modul a vyberte **kopie**.
 
-2. Klikněte pravým tlačítkem na plátno experimentu a vyberte **vložení**.
+2. Klikněte pravým tlačítkem na plátno experimentu hello a vyberte **vložení**.
 
-3. Přetáhněte nového modulu do pozice a potom se připojte správné výstupní port modulu [rozdělení dat] [ split] modulu první vstupní port této nové [spustit skript jazyka R] [ execute-r-script] modulu. 
+3. Přetáhněte hello nového modulu do pozice a potom se připojte hello správné výstupní port modulu hello [rozdělení dat] [ split] modulu toohello nové první vstup portu tohoto [spustit skript jazyka R] [ execute-r-script] modulu. 
 
-4. V dolní části plátna, klikněte na tlačítko **spustit**. 
+4. Hello dolní části plátna hello, klikněte na **spustit**. 
 
 > [!TIP]
-> Kopii modulu spustit skript jazyka R obsahuje stejný skriptu jako původní modul. Když je kopírujete a vkládáte modul na plátně, bude pro kopii uchovává všechny vlastnosti původní.  
+> Hello kopii modulu spustit skript jazyka R hello obsahuje hello stejné jako původní modul hello skriptu. Při kopírování a vkládání modul na plátno hello hello kopie uchovává všechny vlastnosti hello hello původní.  
 > 
 > 
 
@@ -161,7 +161,7 @@ Naše experimentu nyní vypadat třeba takto:
 
 Další informace o použití skripty R v experimentů najdete v tématu [rozšíření experimentů pomocí R](machine-learning-extend-your-experiment-with-r.md).
 
-**Další krok: [Train a vyhodnocení modelů](machine-learning-walkthrough-4-train-and-evaluate-models.md)**
+**Další krok: [Train a vyhodnocení modelů hello](machine-learning-walkthrough-4-train-and-evaluate-models.md)**
 
 [0]: ./media/machine-learning-walkthrough-3-create-new-experiment/create-new-experiment.png
 [5]: ./media/machine-learning-walkthrough-3-create-new-experiment/rename-experiment.png

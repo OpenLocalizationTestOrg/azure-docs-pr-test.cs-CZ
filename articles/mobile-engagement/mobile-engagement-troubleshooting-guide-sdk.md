@@ -1,5 +1,5 @@
 ---
-title: "Řešení potíží s Průvodce - SDK Azure Mobile Engagement."
+title: "aaaAzure Mobile Engagement Průvodce odstraňováním potíží - SDK"
 description: "Řešení potíží s problémů s integrací sady SDK v Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 4d9d6165deb4bd0c65f1841aa7c457363a1f2865
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1c082b81d898f4bdb47b8efe6cfbacfd83fe9279
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting-guide-for-sdk-integration-issues"></a>Průvodci odstraňováním potíží problémů s integrací sady SDK
-Následují možných problémů se můžete setkat s jak Azure Mobile Engagement integruje do vaší aplikace.
+Hello následují možných problémů se můžete setkat s jak Azure Mobile Engagement integruje do vaší aplikace.
 
 ## <a name="sdk-issues-discovered-by-a-failure-in-another-area-of-your-application"></a>SDK problémů zjištěných selhání v jiné oblasti vaší aplikace.
 ### <a name="issue"></a>Problém
@@ -32,9 +32,9 @@ Následují možných problémů se můžete setkat s jak Azure Mobile Engagemen
 * Selhání služby (žádná z Azure Mobile Engagement funguje pro vaši aplikaci).
 
 ### <a name="causes"></a>Způsobí, že
-* Většiny problémů, které musí být rozpoznány s Azure Mobile Engagement SDK budou zjištěny chybou v aplikaci (například selhání shromažďování dat uživatelského rozhraní, selhání nabízená, chybu upřesňující funkce, selhání rozhraní API, havárie aplikací nebo výpadkem zřejmá služby) .  
-* Pokud konkrétní funkce Azure Mobile Engagement ve vaší aplikaci před nikdy fungovala, musíte se k dokončení integrace. 
-* Pokud konkrétní funkce Azure Mobile Engagement byla práce a byla zastavena, musíte aktualizovat na poslední verzi s Azure Mobile Engagement SDK. Mějte na paměti, že je jinou verzi sady Azure Mobile Engagement SDK pro každou platformu podporovanou nástrojem Azure Mobile Engagement (Android, iOS, Windows a Windows Phone).
+* Většiny problémů, které je třeba toobe vyřešil hello Azure Mobile Engagement SDK budou zjištěny chybou v aplikaci (například selhání shromažďování dat uživatelského rozhraní, selhání nabízená, chybu upřesňující funkce, selhání rozhraní API, havárie aplikací nebo zřejmá služby výpadek).  
+* Pokud konkrétní funkce Azure Mobile Engagement nikdy fungovala ve vaší aplikaci před, budete potřebovat toocomplete hello integrace. 
+* Pokud konkrétní funkce Azure Mobile Engagement byla práce a byla zastavena, může být nutné tooupgrade toohello poslední verze s hello Azure Mobile Engagement SDK. Mějte na paměti, že je jinou verzi hello Azure Mobile Engagement SDK pro každou platformu podporovanou nástrojem Azure Mobile Engagement (Android, iOS, Windows a Windows Phone).
 
 #### <a name="sdk-integration"></a>Integrace sady SDK
 * Azure Mobile Engagement integrované není správně v sadě SDK (Analytics).
@@ -50,8 +50,8 @@ Následují možných problémů se můžete setkat s jak Azure Mobile Engagemen
 * [Průvodce odstraňováním potíží s - Push][Link 23]
 
 #### <a name="sdk-upgrade"></a>Upgrade sady SDK
-* Třeba upgradovat SDK a řešit problémy s starší verze sady SDK (často souvisejících s novější verzí operačního systému zařízení).
-* Odinstalujte všechny předchozí verze aplikace ze zařízení a znovu nainstalujte nejnovější verzi aplikace znovu zaregistrovat ID zařízení z rozhraní Azure Mobile Engagement k potvrzení, že vaše zařízení používá nejnovější verze aplikace.
+* Třeba tooupgrade SDK tooresolve problémy se staršími verzemi hello SDK (často související toonewer verze operačního systému zařízení hello).
+* Odinstalujte všechny předchozí verze aplikace ze zařízení a znovu nainstalujte nejnovější verzi aplikace hello, hello znovu zaregistrovat ID zařízení z tooconfirm hello Azure Mobile Engagement uživatelského rozhraní, že vaše zařízení používá hello nejnovější verzi aplikace.
 
 **Viz také:**
 
@@ -59,8 +59,8 @@ Následují možných problémů se můžete setkat s jak Azure Mobile Engagemen
 * [Dokumentaci k sadě SDK - upgradu příručky](http://go.microsoft.com/fwlink/?LinkId= 525554)
 
 #### <a name="sdk-other"></a>SDK jiných
-* Azure Mobile Engagement nepracuje (jen Android) může způsobit chyby "AndroidManifest.xml" manifest aplikace.
-* Běžné problémy s integraci sady SDK a využití rozhraní API je zaměnit klíč SDK a klíč rozhraní API.
+* Chyby v Application Manifest "AndroidManifest.xml" může způsobit, že Azure Mobile Engagement toowork (jen Android).
+* Běžné problémy s integraci sady SDK a využití rozhraní API je tooconfuse hello klíč SDK a hello klíč rozhraní API.
 
 **Viz také:**
 
@@ -68,15 +68,15 @@ Následují možných problémů se můžete setkat s jak Azure Mobile Engagemen
 
 ## <a name="advanced-coding-issues"></a>Pokročilé kódování problémy
 ### <a name="issue"></a>Problém
-* Ne přímo související s Azure Mobile Engagement konkrétní kód platformy může způsobit problémy na iOS, Android a Windows Phone.
+* Kód konkrétní platformy není přímo souvisí s tooAzure Mobile Engagement v iOS, Android a Windows Phone může způsobit problémy.
 
 ### <a name="causes"></a>Způsobí, že
-* Několik upřesňujících kódování problémy s Azure Mobile Engagement jsou způsobeny konkrétní kód nesprávně napsaný platformy nesouvisí přímo s Azure Mobile Engagement. Musíte se k dokumentaci specifické pro platformy, které vyvíjíte pro kromě dokumentace Azure Mobile Engagement (Android, iOS, Web, systém Windows a Windows Phone).
-* Konfigurace není správně "kategorie", zabraňuje propojení z oznámení do jiného umístění uvnitř nebo mimo aplikaci (jen Android). 
-* Není nastavení "UIKit.framework" na "volitelné" ve vašem kódu iOS zobrazí "Symbol nebyla nalezena chyba" nebo dojde k chybě na zařízeních s iOS starší (jenom iOS).
-* Platnost certifikátů nebo není správně pomocí Vývojového nebo produkčnímu verze CERT příčiny problémů nabízené (jenom iOS).
-* Jsou systému platformu, která Azure Mobile Engagement nemůže řídit (jako jsou jak funguje produktu system center pro mimo aplikaci nabízených oznámení v Android a iOS) určitá omezení.
-* Azure Mobile Engagement publikuje úplný seznam interní balíčky pro referenci používá pro iOS a Android pomocí Azure Mobile Engagement. Mějte na paměti, že některé funkce Azure Mobile Engagement jsou specifické pro platformu (Android, iOS, Web, systém Windows a Windows Phone).
+* Několik upřesňujících kódování problémy s Azure Mobile Engagement se nezdařila z důvodu nesprávně napsaný platformou konkrétního kódu není přímo souvisí s tooAzure Mobile Engagement. Budete potřebovat tooconsult dokumentace konkrétní toohello platformy, které vyvíjíte pro kromě tooAzure Mobile Engagement dokumentace (Android, iOS, Web, systém Windows a Windows Phone).
+* Konfigurace není správně "kategorie", zabraňuje propojení z umístění tooanother oznámení uvnitř nebo vně aplikace hello (jen Android). 
+* Není nastavení "UIKit.framework" příliš "volitelné" ve vašem kódu iOS zobrazí "Symbol nebyla nalezena chyba" nebo dojde k chybě na zařízeních s iOS starší (jenom iOS).
+* Platnost certifikátů nebo pomocí není správně hello DEV nebo produkčnímu verze hello cert, nabízené příčiny problémů (jenom iOS).
+* Existují některá omezení vyplývajících tooa platforma, která Azure Mobile Engagement nemůže řídit (jako jsou jak funguje hello system center pro mimo aplikaci nabízených oznámení v Android a iOS).
+* Azure Mobile Engagement publikuje úplný seznam hello interní balíčky používané Azure Mobile Engagementem pro iOS a Android pro referenci. Mějte na paměti, že některé funkce Azure Mobile Engagement jsou konkrétní toohello platformy (Android, iOS, Web, systém Windows a Windows Phone).
 
 ### <a name="see-also"></a>Viz také
 * [Průvodce odstraňováním potíží s - Push][Link 23] 
@@ -85,12 +85,12 @@ Následují možných problémů se můžete setkat s jak Azure Mobile Engagemen
 
 ## <a name="application-crashes"></a>Selhání aplikace
 ### <a name="issue"></a>Problém
-* Aplikace, dojde k chybě v zařízení koncových uživatelů.
+* Aplikace na zařízení koncoví uživatelé hello dojde k chybě.
 
 ### <a name="causes"></a>Způsobí, že
-* Informace o havárii lze zobrazit v *uživatelského rozhraní Analytics* nebo *Analytics rozhraní API*
-* Můžete zjistit ID zařízení testovací zařízení a trvat o stejnou akci, která způsobila, že aplikace havárií pro koncové uživatele k identifikaci příčinu vaší havárií.
-* Známé problémy s Azure Mobile Engagement SDK, které způsobí aplikace došlo k chybě, se někdy vyřeší upgrade na nejnovější verzi sady SDK. Ujistěte se, že zkontrolujte poznámky o vaši platformu při zkoumání dojde k chybě.
+* Informace o havárii lze zobrazit v hello *uživatelského rozhraní Analytics* nebo hello *Analytics rozhraní API*
+* Můžete najít hello zařízení ID testovací zařízení a proveďte hello stejnou akci, která způsobila, že vaše aplikace toocrash pro toohelp koncový uživatel určit příčinu hello vaší havárie.
+* Známé problémy s hello Azure Mobile Engagement SDK, které způsobí toocrash aplikací jsou někdy vyřešit upgradem toohello nejnovější verzi hello SDK. Ujistěte se, že toocheck hello poznámky o vaši platformu při zkoumání dojde k chybě.
 
 ### <a name="see-also"></a>Viz také
 * [Dokumentaci k sadě SDK – poznámky k verzi][Link 5]
@@ -98,11 +98,11 @@ Následují možných problémů se můžete setkat s jak Azure Mobile Engagemen
 
 ## <a name="app-store-upload-failures"></a>Chyb odesílání App store
 ### <a name="issue"></a>Problém
-* Chyby související s odesílání nejnovější verzi aplikace Apple, Google nebo aplikace pro Windows store.
+* Chyby související s toouploading hello nejnovější verzi vaší aplikace tooApple, hello aplikace pro Windows store nebo Google.
 
 ### <a name="causes"></a>Způsobí, že
-* Aplikace ukládá někdy blokovat aplikacím s určité funkce povolit (např. Apple Storu brání použití IDFV v aplikacích v úložišti a úložišti GooglePlay brání sdílení informací o aplikaci mezi aplikacemi). 
-* Zajistěte, aby zkontrolujte poznámky o platformy a aktuální verzi sady SDK, pokud máte potíže při nahrávání aplikace do úložiště.
+* Aplikace ukládá někdy blokovat aplikacím s určité funkce povolit (například hello Apple Store brání použití hello IDFV v aplikacích v úložišti hello a úložiště GooglePlay hello brání hello sdílení informací o aplikaci mezi aplikacemi). 
+* Zajistěte, aby zkontrolujte poznámky k verzi hello o platformy a aktuální verzi hello SDK, pokud máte potíže při odesílání toohello obchod s aplikacemi.
 
 <!--Link references-->
 [Link 1]: mobile-engagement-user-interface.md

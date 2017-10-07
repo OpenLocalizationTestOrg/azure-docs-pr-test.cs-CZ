@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric oprava orchestration aplikace | Microsoft Docs
-description: "Aplikace pro automatizaci opravy operačního systému na cluster Service Fabric."
+title: aaaAzure aplikace Service Fabric oprava orchestration | Microsoft Docs
+description: "Operační systém opravy na cluster Service Fabric tooautomate aplikace."
 services: service-fabric
 documentationcenter: .net
 author: novino
@@ -14,70 +14,70 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/9/2017
 ms.author: nachandr
-ms.openlocfilehash: 2c5842822e347113e388d570f6ae603a313944d6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: fbb89aa2ea418181ee908a01850178c113c462fb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Oprava operačního systému Windows v clusteru Service Fabric
+# <a name="patch-hello-windows-operating-system-in-your-service-fabric-cluster"></a>Oprava operačního systému Windows hello v clusteru Service Fabric
 
-Oprava aplikace orchestration je aplikace Azure Service Fabric, která automatizuje operačního systému opravy na cluster Service Fabric v Azure bez výpadků.
+Hello oprava orchestration aplikace je aplikace Azure Service Fabric, která automatizuje operačního systému opravy na cluster Service Fabric v Azure bez výpadků.
 
-Oprava aplikace orchestration obsahuje následující informace:
+Hello oprava orchestration aplikaci poskytuje hello následující:
 
 - **Automatická instalace operačního systému aktualizaci**. Aktualizace operačního systému se automaticky stáhnout a nainstalovat. Uzly se restartují podle potřeby a bez výpadku clusteru.
 
-- **Clustery opravy a stavu integrace**. Při použití aktualizací, aplikace orchestration oprava monitoruje stav uzlů clusteru. Upgradovaná jeden uzel nebo jednu upgradovací doménu jsou uzly clusteru současně. Pokud stav clusteru ocitne mimo provoz z důvodu proces oprav, opravy je zastavena, aby zhorší problém.
+- **Clustery opravy a stavu integrace**. Při použití aktualizací, monitoruje hello oprava orchestration aplikace hello stav hello uzly clusteru. Upgradovaná jeden uzel nebo jednu upgradovací doménu jsou uzly clusteru současně. Pokud stav hello hello clusteru ocitne mimo provoz z důvodu toohello oprav procesu, opravy je zastaven tooprevent zhorší hello problém.
 
-## <a name="internal-details-of-the-app"></a>Interní podrobnosti o aplikaci
+## <a name="internal-details-of-hello-app"></a>Interní podrobnosti aplikace hello
 
-Oprava aplikace orchestration se skládá z následujících tyto dílčí součásti:
+Hello oprava orchestration aplikace se skládá z hello následující dílčí součásti:
 
 - **Služba Koordinátor**: Tato stavová služba je zodpovědná za:
-    - Koordinace úlohu služby Windows Update na celý cluster.
-    - Ukládání výsledek dokončené operace aplikace Windows Update.
-- **Služba agenta uzlu**: Tento bezstavové služby běží na všech uzlech clusteru Service Fabric. Služba je zodpovědná za:
-    - Zavádění NTService agenta uzlu.
-    - Monitorování NTService agenta uzlu.
-- **Uzel agenta NTService**: Tento systém Windows NT služba běží na vyšší úrovni oprávnění (systém). Naproti tomu Služba agenta uzlu a službu koordinátora spustit na nižší úrovni oprávnění (síťová služba). Služba je zodpovědná za provádění následujících úloh aktualizace systému Windows na všech uzlech clusteru:
-    - Zakázání automatické aktualizace systému Windows na uzlu.
-    - Stažení a instalaci služby Windows Update podle zásad uživatel zadal.
-    - Restartování počítače post instalace služby Windows Update.
-    - Výsledky aktualizace systému Windows se nahrávají na službu Koordinátor.
+    - Úloha aktualizace Windows hello na celý cluster hello spolupráci.
+    - Ukládání hello výsledek dokončené operace aplikace Windows Update.
+- **Služba agenta uzlu**: Tento bezstavové služby běží na všech uzlech clusteru Service Fabric. Hello služba je zodpovědná za:
+    - Zavedení spouštěcího programu hello NTService agenta uzlu.
+    - Monitorování hello NTService agenta uzlu.
+- **Uzel agenta NTService**: Tento systém Windows NT služba běží na vyšší úrovni oprávnění (systém). Naproti tomu hello Služba agenta uzlu a hello Služba koordinátora spouštět na nižší úrovni oprávnění (síťová služba). Hello služba je zodpovědná za provádění následujících úloh aktualizace systému Windows na všech uzlech clusteru hello hello:
+    - Vypnutí automatických aktualizací Windows hello uzlu.
+    - Podle uživatele hello zásad toohello poskytl stahování a instalace služby Windows Update.
+    - Restartování počítače post hello instalace služby Windows Update.
+    - Odesílání hello výsledky toohello aktualizace systému Windows služby Coordinator.
     - Vytváření sestav stavu hlásí v případě, že operace se nezdařilo po jejím vyčerpání všechny opakování.
 
 > [!NOTE]
-> Oprava aplikace orchestration používá službu Service Fabric opravy správce systému pro zakázání nebo povolení uzlu a provádění kontroly stavu. Úloha opravy vytvořené aplikací orchestration oprava sleduje průběh Windows Update pro každý uzel.
+> Hello oprava orchestration aplikace používá hello Service Fabric opravit toodisable služby správce systému nebo povolit hello uzlu a provádět kontroly stavu. Úloha opravy Hello vytvořené hello oprava orchestration aplikace sleduje hello průběh Windows Update pro každý uzel.
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="minimum-supported-service-fabric-runtime-version"></a>Minimální podporovaná verze modulu runtime Service Fabric
 
 #### <a name="azure-clusters"></a>Azure clustery
-Oprava orchestration aplikace musí být spuštěn na Azure clustery, které mají v5.5 verzi modulu runtime Service Fabric nebo novější.
+Hello oprava orchestration aplikace musí být spuštěn na Azure clustery, které mají v5.5 verzi modulu runtime Service Fabric nebo novější.
 
 #### <a name="standalone-on-premises-clusters"></a>Samostatné místní clustery
-Oprava orchestration aplikace musí být spuštěn na samostatné clustery, které mají verze 5.6 verzi modulu runtime Service Fabric nebo novější.
+Hello oprava orchestration aplikace musí být spuštěn na samostatné clustery, které mají verze 5.6 verzi modulu runtime Service Fabric nebo novější.
 
-### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>Povolit službu opravy správce (Pokud již není spuštěn)
+### <a name="enable-hello-repair-manager-service-if-its-not-running-already"></a>Povolení hello opravy Správce služby (Pokud již není spuštěn)
 
-Aplikace orchestration oprava vyžaduje službu opravy správce systému povolení v clusteru.
+Hello oprava orchestration aplikace vyžaduje hello opravy správce systému služby toobe na hello clusteru povolena.
 
 #### <a name="azure-clusters"></a>Azure clustery
 
-Azure clustery ve vrstvě stříbrným odolnost mají službu opravy manager ve výchozím nastavení povolené. Azure clusterů ve vrstvě gold odolnost může nebo nemusí mít službu správce oprava povoleno, v závislosti na tom, kdy byly vytvořeny těchto clusterů. Azure clusterů ve vrstvě bronzovým odolnost ve výchozím nastavení, není nutné službu opravy manager povolena. Pokud služba je již povolen, zobrazí se jeho spuštění v části systémové služby v Service Fabric Exploreru.
+Azure clustery ve vrstvě stříbrným odolnost hello mají hello opravit service manager ve výchozím nastavení povolené. Azure clustery ve vrstvě gold odolnost hello mohou nebo nemusí mít službu správce opravy hello povoleno, v závislosti na tom, kdy byly vytvořeny těchto clusterů. Azure clustery ve vrstvě hello bronzovým odolnost, ve výchozím nastavení, není nutné hello opravit service manager povolena. Pokud už je povolena služba hello, uvidíte jeho spuštění v části služby systému hello v hello Service Fabric Exploreru.
 
 ##### <a name="azure-portal"></a>portál Azure
-Opravte manager z portálu Azure můžete povolit v době nastavování clusteru. Vyberte `Include Repair Manager` možnost pod `Add on features` v době konfigurace clusteru.
+Opravte manager z portálu Azure můžete povolit v době hello nastavení clusteru. Vyberte `Include Repair Manager` možnost pod `Add on features` během hello konfigurace clusteru.
 ![Image Manager opravy povolení z portálu Azure](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
 ##### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
-Případně můžete použít [šablony Azure Resource Manageru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) povolit službu opravy správce v nových nebo stávajících clusterů Service Fabric. Získáte šablonu pro cluster, který chcete nasadit. Můžete použít ukázkové šablony, nebo vytvořit vlastní šablony Resource Manageru. 
+Případně můžete také použít hello [šablony Azure Resource Manageru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) tooenable hello opravy Správce služby v nových nebo stávajících clusterů Service Fabric. Získáte hello šablony pro hello clusteru, které chcete toodeploy. Můžete buď použít hello ukázkové šablony, nebo vytvořit vlastní šablony Resource Manageru. 
 
-Povolit pomocí service manager oprava [šablony Azure Resource Manageru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm):
+tooenable hello opravy Správce služby pomocí [šablony Azure Resource Manageru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm):
 
-1. Nejdřív zkontrolujte, zda `apiversion` je nastaven na `2017-07-01-preview` pro `Microsoft.ServiceFabric/clusters` prostředků, jak je znázorněno v následujícím fragmentu kódu. Pokud se liší, pak je potřeba aktualizovat `apiVersion` na hodnotu `2017-07-01-preview`:
+1. Nejdřív zkontrolujte, že hello `apiversion` je nastaven příliš`2017-07-01-preview` pro hello `Microsoft.ServiceFabric/clusters` prostředků, jak je znázorněno v následujícím fragmentu kódu hello. Pokud se liší, pak musíte tooupdate hello `apiVersion` toohello hodnotu `2017-07-01-preview`:
 
     ```json
     {
@@ -89,7 +89,7 @@ Povolit pomocí service manager oprava [šablony Azure Resource Manageru](https:
     }
     ```
 
-2. Teď povolit službu správce opravy přidáním následující `addonFeatures` části po `fabricSettings` části:
+2. Teď povolit service manager hello opravy přidáním následující hello `addonFeatures` po provedení hello `fabricSettings` části:
 
     ```json
     "fabricSettings": [
@@ -100,15 +100,15 @@ Povolit pomocí service manager oprava [šablony Azure Resource Manageru](https:
         ],
     ```
 
-3. Po aktualizaci šablony clusteru se tyto změny použít, je a mohli dokončit upgrade. Nyní můžete vidět službu system manager oprava běžící v clusteru. Je volána `fabric:/System/RepairManagerService` v části systémové služby v Service Fabric Exploreru. 
+3. Po aktualizaci šablony clusteru se tyto změny použít, je a nechat hello upgrade dokončit. Nyní můžete vidět hello opravy správce systému služby běžící v clusteru. Je volána `fabric:/System/RepairManagerService` v části služby systému hello v hello Service Fabric Exploreru. 
 
 ### <a name="standalone-on-premises-clusters"></a>Samostatné místní clustery
 
-Můžete použít [nastavení konfigurace pro samostatný cluster Windows](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest) povolit službu opravy správce na nové a stávající cluster Service Fabric.
+Můžete použít hello [nastavení konfigurace pro samostatný cluster Windows](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest) tooenable hello opravy Správce služby v nových nebo stávajících clusteru Service Fabric.
 
-Chcete-li povolit službu opravy správce:
+Služba Správce oprava tooenable hello:
 
-1. Nejdřív zkontrolujte, zda `apiversion` v [konfigurace obecné clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations) je nastaven na `04-2017` nebo vyšší:
+1. Nejdřív zkontrolujte, že hello `apiversion` v [konfigurace obecné clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations) je nastaven příliš`04-2017` nebo vyšší:
 
     ```json
     {
@@ -119,7 +119,7 @@ Chcete-li povolit službu opravy správce:
     }
     ```
 
-2. Teď povolit service manager opravy přidáním následující `addonFeaturres` části po `fabricSettings` části, jak je uvedeno níže:
+2. Teď povolit service manager opravy přidáním následující hello `addonFeaturres` po provedení hello `fabricSettings` části, jak je uvedeno níže:
 
     ```json
     "fabricSettings": [
@@ -130,30 +130,30 @@ Chcete-li povolit službu opravy správce:
         ],
     ```
 
-3. Aktualizovat manifestu clusteru se tyto změny pomocí v manifestu clusteru aktualizované [vytvoření nového clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server) nebo [upgradovat konfiguraci clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server#Upgrade-the-cluster-configuration). Jakmile v clusteru je spuštěn s manifestu aktualizované clusteru, se zobrazí služba system manager oprava běžící v clusteru, který se označuje `fabric:/System/RepairManagerService`v systému služby v Service Fabric explorer části.
+3. Aktualizovat manifestu clusteru se tyto změny pomocí manifestu clusteru hello aktualizovat [vytvoření nového clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server) nebo [konfigurace clusteru upgradu hello](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server#Upgrade-the-cluster-configuration). Jakmile hello clusteru je spuštěn s manifestu aktualizované clusteru, se zobrazí hello opravy správce systému služby běžící v clusteru, který se nazývá `fabric:/System/RepairManagerService`v systému služby v Service Fabric explorer hello části.
 
 ### <a name="disable-automatic-windows-update-on-all-nodes"></a>Zakázat automatické aktualizace systému Windows na všech uzlech
 
-Automatické aktualizace systému Windows můžou způsobit ztrátu dostupnosti, protože více uzlech clusteru můžete restartovat ve stejnou dobu. Oprava aplikace orchestration, ve výchozím nastavení, pokusí se zakázat automatické aktualizace systému Windows na všech uzlech clusteru. Pokud nastavení spravuje správce nebo zásad skupiny, doporučujeme však explicitně nastavení zásad Windows Update "Oznámit před stáhnout".
+Automatické aktualizace systému Windows může vést ke ztrátě tooavailability, protože více uzlech clusteru můžete restartovat hello stejný čas. Hello oprava orchestration aplikace, ve výchozím nastavení pokusů toodisable hello automatických aktualizací Windows na všech uzlech clusteru. Pokud hello nastavení spravuje správce nebo zásad skupiny, ale doporučujeme hello nastavení zásad příliš "oznámit před stažení" explicitně služby Windows Update.
 
 ### <a name="optional-enable-azure-diagnostics"></a>Volitelné: Povolení Azure Diagnostics
 
 Clustery se systémem verzi modulu runtime Service Fabric `5.6.220.9494` a výše shromažďování oprava orchestration aplikace protokoly jako součást Service Fabric protokoly.
 Pokud váš cluster běží na verzi modulu runtime Service Fabric, můžete tento krok přeskočit `5.6.220.9494` a vyšší.
 
-Pro clustery spuštěná verze modulu runtime Service Fabric menší než `5.6.220.9494`, protokoly pro aplikaci orchestration opravy se shromažďují místně na každém uzlu clusteru.
-Doporučujeme vám, že nakonfigurujete Azure Diagnostics odeslat protokoly ze všech uzlů do centrálního umístění.
+Pro clustery spuštěná verze modulu runtime Service Fabric menší než `5.6.220.9494`, na každém uzlu clusteru hello místně shromáždí protokoly pro aplikaci orchestration oprava hello.
+Doporučujeme nakonfigurovat Azure Diagnostics tooupload protokoly ze všech uzlů tooa centrálního umístění.
 
 Informace o povolení Azure Diagnostics najdete v tématu [shromažďování protokolů pomocí Azure Diagnostics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-how-to-setup-wad).
 
-Protokoly pro aplikaci orchestration opravy se generují u tohoto zprostředkovatele pevné ID:
+Protokoly pro hello oprava orchestration aplikace jsou generovány na následující pevný zprostředkovatele ID hello:
 
 - e39b723c-590c-4090-abb0-11e3e6616346
 - fc0028ff-bfdc-499f-80dc-ed922c52c5e9
 - 24afa313-0d3b-4c7c-b485-1047fd964b60
 - 05dc046c-60e9-4ef7-965e-91660adffa68
 
-V goto šablony Resource Manageru `EtwEventSourceProviderConfiguration` oddílu pod `WadCfg` a přidejte následující položky:
+V goto šablony Resource Manageru `EtwEventSourceProviderConfiguration` oddílu pod `WadCfg` a přidejte hello následující položky:
 
 ```json
   {
@@ -187,64 +187,64 @@ V goto šablony Resource Manageru `EtwEventSourceProviderConfiguration` oddílu 
 ```
 
 > [!NOTE]
-> Pokud váš cluster Service Fabric má více typů uzlu, pak v předchozí části, je třeba přidat k všechny `WadCfg` oddíly.
+> Pokud váš cluster Service Fabric má více typů uzlu, pak hello předchozí části, je třeba přidat k všechny hello `WadCfg` oddíly.
 
-## <a name="download-the-app-package"></a>Stáhněte si balíček aplikace
+## <a name="download-hello-app-package"></a>Stáhněte si balíček aplikace hello
 
-Stažení aplikace z [stáhnout odkaz](https://go.microsoft.com/fwlink/P/?linkid=849590).
+Stažení aplikace hello z hello [stáhnout odkaz](https://go.microsoft.com/fwlink/P/?linkid=849590).
 
-## <a name="configure-the-app"></a>Konfigurace aplikace
+## <a name="configure-hello-app"></a>Konfigurace aplikace hello
 
-Chování aplikace orchestration oprava lze nakonfigurovat podle svých potřeb. Přepište výchozí hodnoty předáním v aplikaci parametru během vytváření aplikace nebo aktualizace. Parametry aplikačního lze zadat zadáním `ApplicationParameter` k `Start-ServiceFabricApplicationUpgrade` nebo `New-ServiceFabricApplication` rutiny.
+Hello chování hello oprava orchestration aplikace může být nakonfigurované toomeet vašim potřebám. Přepište výchozí hodnoty hello předávání v parametru aplikace hello při vytvoření aplikace nebo aktualizace. Parametry aplikačního lze zadat zadáním `ApplicationParameter` toohello `Start-ServiceFabricApplicationUpgrade` nebo `New-ServiceFabricApplication` rutiny.
 
 |**Parametr**        |**Typ**                          | **Podrobnosti**|
 |:-|-|-|
-|MaxResultsToCache    |Dlouhé                              | Maximální počet výsledků Windows Update, které by měl být mezipaměti. <br>Výchozí hodnota je 3000 za předpokladu, že: <br> -Počet uzlů je 20. <br> -Počet aktualizací děje na uzlu za měsíc je pět. <br> -Počet výsledků na operace může být 10. <br> -By měly být uložené výsledky pro poslední tři měsíce. |
-|TaskApprovalPolicy   |výčet <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy označuje zásady, které má být používána službu koordinátora k instalaci aktualizací Windows mezi uzly clusteru Service Fabric.<br>                         Povolené hodnoty jsou: <br>                                                           <b>NodeWise</b>. Windows Update je nainstalovaná jednoho uzlu současně. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update je nainstalovaná jednu upgradovací doménu najednou. (Na maximum, můžete přejít všechny uzly, které patří k doméně upgradu pro Windows Update.)
+|MaxResultsToCache    |Dlouhé                              | Maximální počet výsledků Windows Update, které by měl být mezipaměti. <br>Výchozí hodnota je 3000 za předpokladu, že: <br> -Počet uzlů je 20. <br> -Počet aktualizací děje na uzlu za měsíc je pět. <br> -Počet výsledků na operace může být 10. <br> -Výsledky pro hello posledních tří měsíců by měly být uložené. |
+|TaskApprovalPolicy   |výčet <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy označuje hello zásady, které toobe používané aktualizace systému Windows tooinstall Služba koordinátora hello mezi uzly clusteru Service Fabric hello.<br>                         Povolené hodnoty jsou: <br>                                                           <b>NodeWise</b>. Windows Update je nainstalovaná jednoho uzlu současně. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update je nainstalovaná jednu upgradovací doménu najednou. (Na maximální hello, můžete přejít všechny hello uzlech náležících tooan domény upgradu pro Windows Update.)
 |LogsDiskQuotaInMB   |Dlouhé  <br> (Výchozí: 1024)               |Maximální velikost oprava orchestration aplikace přihlásí MB, který můžete nastavit jako trvalý, místně na uzlech.
-| WUQuery               | Řetězec<br>(Výchozí: "IsInstalled = 0")                | Dotaz pro získání aktualizace systému Windows. Další informace najdete v tématu [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-| InstallWindowsOSOnlyUpdates | BOOL <br> (výchozí: True)                 | Tento příznak umožňuje instalaci aktualizací operačního systému Windows.            |
-| WUOperationTimeOutInMinutes | celá čísla <br>(Výchozí: 90).                   | Určuje časový limit pro všechny operace služby Windows Update (hledání nebo stáhnout nebo nainstalovat). Pokud operaci nelze dokončit v rámci zadaného časového limitu, byl přerušen.       |
-| WURescheduleCount     | celá čísla <br> (Výchozí: 5).                  | Maximální počet časy službu přeplánuje Windows aktualizovat v případě, že operace selže trvalé.          |
-| WURescheduleTimeInMinutes | celá čísla <br>(Výchozí: 30). | Interval, ve kterém přeplánuje službu Windows update v případě, že chyba přetrvávat. |
-| WUFrequency           | Řetězce s hodnotami oddělenými čárkou (výchozí: "Každý týden, středu, 7:00:00")     | Četnost pro instalaci služby Windows Update. Formát a možné hodnoty jsou: <br>-Měsíců, DD, hh, například každý měsíc, 5, 12: 22:32. <br> -Každý týden, den, hh: mm:, pro příklad, týdně, úterý, 12:22:32.  <br> -Denní, hh: mm:, např. denně, 12:22:32.  <br> -Žádný označuje, že by neměl Windows Update provést.  <br><br> Všimněte si, že všechny časy jsou ve standardu UTC.|
-| AcceptWindowsUpdateEula | BOOL <br>(Výchozí: true) | Nastavením tohoto příznaku aplikace přijímá licenční smlouvy s koncovým uživatelem pro Windows Update jménem vlastník počítače.              |
+| WUQuery               | Řetězec<br>(Výchozí: "IsInstalled = 0")                | Dotaz tooget aktualizace systému Windows. Další informace najdete v tématu [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
+| InstallWindowsOSOnlyUpdates | BOOL <br> (výchozí: True)                 | Tento příznak umožňuje toobe aktualizace systému nainstalován operační systém Windows.            |
+| WUOperationTimeOutInMinutes | celá čísla <br>(Výchozí: 90).                   | Určuje časový limit hello pro všechny operace služby Windows Update (hledání nebo stáhnout nebo nainstalovat). Pokud hello operaci nelze dokončit v rámci zadaného časového limitu Dobrý den, byl přerušen.       |
+| WURescheduleCount     | celá čísla <br> (Výchozí: 5).                  | Hello maximálním počtem pokusů hello přeplánuje hello služby Windows update v případě, že operace selže trvalé.          |
+| WURescheduleTimeInMinutes | celá čísla <br>(Výchozí: 30). | Hello interval, ve které hello služby přeplánuje hello Windows update v případě, že chyba přetrvává. |
+| WUFrequency           | Řetězce s hodnotami oddělenými čárkou (výchozí: "Každý týden, středu, 7:00:00")     | Hello četnost pro instalaci služby Windows Update. Hello formátu a možné hodnoty jsou: <br>-Měsíců, DD, hh, například každý měsíc, 5, 12: 22:32. <br> -Každý týden, den, hh: mm:, pro příklad, týdně, úterý, 12:22:32.  <br> -Denní, hh: mm:, např. denně, 12:22:32.  <br> -Žádný označuje, že by neměl Windows Update provést.  <br><br> Všimněte si, že jsou všechny časy hello v čase UTC.|
+| AcceptWindowsUpdateEula | BOOL <br>(Výchozí: true) | Nastavením tohoto příznaku hello aplikace přijímá hello koncového uživatele licenční smlouvu pro Windows Update jménem vlastníka hello hello počítače.              |
 
 > [!TIP]
-> Pokud chcete, aby Windows Update provést okamžitě, nastavte `WUFrequency` podle času nasazení aplikace. Předpokládejme například, že máte testovací pěti uzly clusteru a plánování nasazení aplikace na přibližně 5:00 PM UTC. Pokud budete předpokládat, že upgradu aplikace nebo nasazení maximálně trvá 30 minut, nastavte WUFrequency jako "Denně, 17:30:00."
+> Pokud chcete okamžitě toohappen služby Windows Update, nastavte `WUFrequency` relativní toohello času nasazení aplikace. Například předpokládejme, že máte testovací pěti uzly clusteru a plán toodeploy hello aplikace v přibližně 5:00 PM UTC. Pokud budete předpokládat, že nasazení nebo upgradu aplikace hello trvá 30 minut v hello maximální, nastavte hello WUFrequency jako "Denně, 17:30:00."
 
-## <a name="deploy-the-app"></a>Nasazení aplikace
+## <a name="deploy-hello-app"></a>Nasazení aplikace hello
 
-1. Dokončete všechny požadované kroky při přípravě clusteru.
-2. Nasaďte aplikaci orchestration oprava stejně jako jiná aplikace Service Fabric. Aplikaci můžete nasadit pomocí prostředí PowerShell. Postupujte podle kroků v [nasazení a odeberte aplikací pomocí prostředí PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
-3. Konfigurace aplikace v době nasazení, předat `ApplicationParamater` k `New-ServiceFabricApplication` rutiny. Pro usnadnění nabízíme skript Deploy.ps1 spolu s aplikací. Použití skriptu:
+1. Dokončete všechny hello požadovaných krocích tooprepare hello clusteru.
+2. Nasaďte aplikaci orchestration oprava hello stejně jako jiná aplikace Service Fabric. Hello aplikaci můžete nasadit pomocí prostředí PowerShell. Postupujte podle kroků hello v [nasazení a odeberte aplikací pomocí prostředí PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
+3. aplikace hello tooconfigure v době nasazení, pass hello hello `ApplicationParamater` toohello `New-ServiceFabricApplication` rutiny. Pro usnadnění nabízíme hello skriptu Deploy.ps1 společně s aplikací hello. toouse hello skriptu:
 
-    - Připojení ke clusteru Service Fabric pomocí `Connect-ServiceFabricCluster`.
-    - Spustit skript prostředí PowerShell Deploy.ps1 s příslušnou `ApplicationParameter` hodnotu.
-
-> [!NOTE]
-> Zachovat skript a složce aplikace PatchOrchestrationApplication ve stejném adresáři.
-
-## <a name="upgrade-the-app"></a>Upgrade aplikace
-
-Pokud chcete upgradovat stávající aplikace orchestration oprava pomocí prostředí PowerShell, postupujte podle kroků v [upgradu aplikace Service Fabric pomocí prostředí PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-tutorial-powershell).
-
-## <a name="remove-the-app"></a>Odeberte aplikaci
-
-Chcete-li odebrat aplikace, postupujte podle kroků v [nasazení a odeberte aplikací pomocí prostředí PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
-
-Pro usnadnění nabízíme skript Undeploy.ps1 spolu s aplikací. Použití skriptu:
-
-  - Připojení ke clusteru Service Fabric pomocí ```Connect-ServiceFabricCluster```.
-
-  - Spusťte skript prostředí PowerShell Undeploy.ps1.
+    - Připojit cluster Service Fabric tooa pomocí `Connect-ServiceFabricCluster`.
+    - Spustit skript prostředí PowerShell hello Deploy.ps1 s hello odpovídající `ApplicationParameter` hodnotu.
 
 > [!NOTE]
-> Zachovat skript a složce aplikace PatchOrchestrationApplication ve stejném adresáři.
+> Mějte hello hello skript a složce aplikace hello PatchOrchestrationApplication stejný adresář.
 
-## <a name="view-the-windows-update-results"></a>Zobrazení výsledků Windows Update
+## <a name="upgrade-hello-app"></a>Upgrade aplikace hello
 
-Oprava aplikace orchestration zpřístupňuje rozhraní REST API zobrazit historická výsledky pro uživatele. Příklad výsledku JSON:
+tooupgrade stávající aplikace orchestration oprava pomocí prostředí PowerShell, postupujte podle kroků hello v [upgradu aplikace Service Fabric pomocí prostředí PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-tutorial-powershell).
+
+## <a name="remove-hello-app"></a>Odeberte aplikaci hello
+
+tooremove hello aplikace, postupujte podle kroků hello v [nasazení a odeberte aplikací pomocí prostředí PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
+
+Pro usnadnění nabízíme hello skriptu Undeploy.ps1 společně s aplikací hello. toouse hello skriptu:
+
+  - Připojit cluster Service Fabric tooa pomocí ```Connect-ServiceFabricCluster```.
+
+  - Spusťte skript prostředí PowerShell hello Undeploy.ps1.
+
+> [!NOTE]
+> Mějte hello hello skript a složce aplikace hello PatchOrchestrationApplication stejný adresář.
+
+## <a name="view-hello-windows-update-results"></a>Zobrazení výsledků aktualizace Windows hello
+
+Hello oprava orchestration aplikace zpřístupňuje rozhraní REST API toodisplay hello historických výsledky toohello uživatele. Příklad hello výsledku JSON:
 ```json
 [
   {
@@ -258,7 +258,7 @@ Oprava aplikace orchestration zpřístupňuje rozhraní REST API zobrazit histor
           {
             "UpdateId": "7392acaf-6a85-427c-8a8d-058c25beb0d6",
             "Title": "Cumulative Security Update for Internet Explorer 11 for Windows Server 2012 R2 (KB3185319)",
-            "Description": "A security issue has been identified in a Microsoft software product that could affect your system. You can help protect your system by installing this update from Microsoft. For a complete listing of the issues that are included in this update, see the associated Microsoft Knowledge Base article. After you install this update, you may have to restart your system.",
+            "Description": "A security issue has been identified in a Microsoft software product that could affect your system. You can help protect your system by installing this update from Microsoft. For a complete listing of hello issues that are included in this update, see hello associated Microsoft Knowledge Base article. After you install this update, you may have toorestart your system.",
             "ResultCode": 0
           }
         ],
@@ -272,134 +272,134 @@ Oprava aplikace orchestration zpřístupňuje rozhraní REST API zobrazit histor
   ...
 ]
 ```
-Pokud žádná aktualizace je ještě naplánováno, výsledkem JSON je prázdný.
+Pokud žádná aktualizace je ještě naplánováno, výsledkem hello JSON je prázdný.
 
-Přihlaste se ke clusteru k dotazu služby Windows Update výsledky. Poté zjistit adresu repliky pro primární službu koordinátora a stiskněte tlačítko adresu URL z prohlížeče: http://&lt;REPLIKY IP&gt;:&lt;ApplicationPort&gt;/PatchOrchestrationApplication/v1 / GetWindowsUpdateResults.
+Přihlaste se tooquery toohello clusteru služby Windows Update výsledky. Poté zjistit adresu hello repliky pro primární hello Dobrý den Služba koordinátora a stiskněte tlačítko hello adresu URL z prohlížeče hello: http://&lt;REPLIKY IP&gt;:&lt;ApplicationPort&gt;/PatchOrchestrationApplication/v1 / GetWindowsUpdateResults.
 
-Koncový bod REST pro službu koordinátora má dynamický port. Pokud chcete zkontrolovat přesnou adresu URL, najdete v Service Fabric Exploreru. Například jsou k dispozici na výsledky `http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults`.
+koncový bod REST Hello pro hello Služba koordinátora má dynamický port. toocheck hello přesnou adresu URL, najdete v toohello Service Fabric Exploreru. Například jsou k dispozici na výsledky hello `http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults`.
 
 ![Obrázek koncový bod REST](media/service-fabric-patch-orchestration-application/Rest_Endpoint.png)
 
 
-Pokud je v clusteru je povoleno reverzní proxy server, můžete adresu URL z mimo cluster také přistupovat.
-Koncový bod, který musí být dosáhl je http://&lt;SERVERURL&gt;:&lt;REVERSEPROXYPORT&gt;/PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults.
+Pokud je v clusteru hello povoleno hello reverzní proxy server, můžete přístup k adrese URL hello z mimo hello clusteru také.
+Hello koncový bod, který potřebuje toobe podle je http://&lt;SERVERURL&gt;:&lt;REVERSEPROXYPORT&gt;/PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults.
 
-Pokud chcete povolit reverzní proxy server v clusteru, postupujte podle kroků v [reverzní proxy server v Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy). 
+tooenable hello reverzní proxy server na hello clusteru, postupujte podle kroků hello v [reverzní proxy server v Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy). 
 
 > 
 > [!WARNING]
-> Po dokončení konfigurace reverzní proxy server, všechny malých služby v clusteru, které zveřejňují koncový bod protokolu HTTP jsou adresovatelné z mimo cluster.
+> Po dokončení konfigurace hello reverzní proxy server, jsou adresovatelné z mimo hello cluster všechny malých služby v hello clusteru, které zveřejňují koncový bod HTTP.
 
 ## <a name="diagnosticshealth-events"></a>Diagnostika stavu události
 
 ### <a name="collect-patch-orchestration-app-logs"></a>Protokolů shromažďování oprava orchestration aplikace
 
 Oprava orchestration aplikace protokoly se shromažďují jako součást Service Fabric protokoly z modulu runtime verze `5.6.220.9494` a vyšší.
-Pro clustery spuštěná verze modulu runtime Service Fabric menší než `5.6.220.9494`, protokoly se můžou shromažďovat pomocí jedné z následujících metod.
+Pro clustery spuštěná verze modulu runtime Service Fabric menší než `5.6.220.9494`, pomocí jedné z následujících metod hello se můžou shromažďovat protokoly.
 
 #### <a name="locally-on-each-node"></a>Místně na každém uzlu
 
-Protokoly se shromažďují místně na každém uzlu clusteru Service Fabric Pokud verzi modulu runtime Service Fabric je menší než `5.6.220.9494`. Umístění pro přístup k protokoly je \[Service Fabric\_instalace\_jednotka\]:\\PatchOrchestrationApplication\\protokoly.
+Protokoly se shromažďují místně na každém uzlu clusteru Service Fabric Pokud verzi modulu runtime Service Fabric je menší než `5.6.220.9494`. je technologie Hello umístění tooaccess hello protokoly \[Service Fabric\_instalace\_jednotka\]:\\PatchOrchestrationApplication\\protokoly.
 
-Například pokud Service Fabric je nainstalován na jednotce D, cesta je D:\\PatchOrchestrationApplication\\protokoly.
+Například pokud Service Fabric je nainstalován na jednotce D, cesta hello je D:\\PatchOrchestrationApplication\\protokoly.
 
 #### <a name="central-location"></a>Centrální umístění
 
-Pokud Azure Diagnostics je nakonfigurovaný jako součást požadovaných krocích, protokoly pro aplikaci orchestration opravy jsou k dispozici ve službě Azure Storage.
+Pokud Azure Diagnostics je nakonfigurovaný jako součást požadovaných krocích, protokoly pro hello oprava orchestration aplikace jsou dostupné ve službě Azure Storage.
 
 ### <a name="health-reports"></a>Sestavy o stavu
 
-Oprava aplikace orchestration, publikuje také sestavy stavu proti službu koordinátora nebo službu Agent uzlu v následujících případech:
+Hello oprava orchestration aplikace, publikuje také sestavy stavu proti hello Služba koordinátora nebo hello Služba agenta uzlu v následujících případech hello:
 
 #### <a name="a-windows-update-operation-failed"></a>Windows Update operace se nezdařila.
 
-Pokud na uzlu selže operace služby Windows Update, sestavy stavu se vygeneruje pro službu Agent uzlu. Podrobnosti stavu sestavy obsahují název problematické uzlu.
+Pokud na uzlu selže operace služby Windows Update, sestavy stavu se vygeneruje proti hello Služba agenta uzlu. Podrobnosti sestavy stavu hello obsahují název problematické uzlu hello.
 
-Po dokončení opravy je úspěšně na uzlu problematické, jsou automaticky vymazány sestavy.
+Po použití dílčích oprav úspěšném dokončení v uzlu hello problematické, jsou automaticky vymazány hello sestavy.
 
-#### <a name="the-node-agent-ntservice-is-down"></a>NTService agenta uzlu je mimo provoz
+#### <a name="hello-node-agent-ntservice-is-down"></a>Hello NTService agenta uzlu je mimo provoz
 
-Pokud NTService agenta uzlu je vypnutý na uzlu, vygeneruje se na službu Agent uzlu sestavy stavu úroveň upozornění.
+Pokud hello NTService agenta uzlu je vypnutý na uzlu, vygeneruje se sestavy stavu úroveň pro upozornění před hello Služba agenta uzlu.
 
-#### <a name="the-repair-manager-service-is-not-enabled"></a>Služba Správce opravy není povolena.
+#### <a name="hello-repair-manager-service-is-not-enabled"></a>není povolená služba manager oprava Hello
 
-Pokud službu opravy manager nebyl nalezen v clusteru, se generuje sestavy stavu úroveň upozornění pro službu koordinátora.
+Pokud hello opravy Správce služby nebyla nalezena v clusteru hello, vygeneruje se pro hello Služba koordinátora sestavy stavu úroveň pro upozornění.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-OTÁZKY. **Proč se při spuštěné aplikaci orchestration oprava vidí Moje clusteru v chybovém stavu?**
+OTÁZKY. **Proč se při spuštěné aplikaci orchestration oprava hello vidí Moje clusteru v chybovém stavu?**
 
-A. Během procesu instalace aplikace orchestration oprava zakáže nebo restartování uzlů, které mohou dočasně stav clusteru směrem dolů.
+A. Během procesu instalace hello hello oprava orchestration aplikace zakáže nebo restartování uzlů, které mohou dočasně hello stav clusteru hello směrem dolů.
 
-Na základě zásad pro aplikace, buď jeden uzel můžete přejděte během operace oprav *nebo* celá doména upgradu můžete současně přejděte.
+Na základě hello zásady pro aplikace hello buď jeden uzel můžete přejděte během operace oprav *nebo* celá doména upgradu můžete současně přejděte.
 
-Na konci instalace služby Windows Update jsou opětovně uzly povolena post restartování.
+Hello konec hello instalace aktualizace Windows hello, které jsou opětovně uzly povolena post restartování.
 
-V následujícím příkladu clusteru byl přesunut do chybový stav dočasně vzhledem k tomu, že dva uzly byly dolů a porušení zásady MaxPercentageUnhealthNodes. Chyba je dočasný, dokud probíhá oprav operaci.
+V následujícím příkladu hello hello clusteru se, že tooan chybový stav dočasně vzhledem k tomu, že dva uzly byly dolů a hello MaxPercentageUnhealthNodes zásad byla porušena. Chyba Hello je dočasný, dokud probíhá hello opravy operaci.
 
 ![Bitové kopie není v pořádku clusteru](media/service-fabric-patch-orchestration-application/MaxPercentage_causing_unhealthy_cluster.png)
 
-Pokud potíže potrvají, naleznete v části řešení potíží.
+Pokud hello problém přetrvá, podívejte se na část věnovanou řešení potíží toohello.
 
 OTÁZKY. **Oprava aplikace orchestration je ve stavu upozornění**
 
-A. Zkontrolujte, zda sestavy stavu odeslány vzhledem k aplikaci je hlavní příčinu. Upozornění obvykle obsahuje podrobnosti o problému. Pokud přechodný problém se předpokládá, že aplikace je automaticky obnovit z tohoto stavu.
+A. Zkontrolujte toosee v případě sestavy stavu odeslány proti hello aplikace hello hlavní příčinu. Upozornění hello obvykle obsahuje podrobnosti o problému hello. Pokud je přechodný problém hello, aplikace hello je očekávané tooauto obnovit z tohoto stavu.
 
-OTÁZKY. **Co mám dělat, když můj clusteru není v pořádku a je třeba provést aktualizaci naléhavé operačního systému?**
+OTÁZKY. **Co mám dělat, když můj clusteru není v pořádku a je potřeba toodo aktualizaci naléhavé operačního systému?**
 
-A. Oprava aplikace orchestration neinstaluje aktualizace při clusteru není v pořádku. Zkuste a převeďte cluster do stavu v pořádku odblokovat pracovního postupu oprava orchestration aplikace.
+A. Hello oprava orchestration aplikace neinstaluje aktualizace při hello clusteru není v pořádku. Zkuste toobring clusteru tooa stavu v pořádku toounblock hello oprava orchestration aplikace pracovního postupu.
 
-OTÁZKY. **Proč opravy napříč clustery trvá tak dlouho spustit?**
+OTÁZKY. **Proč opravy napříč clustery trvá tak dlouho toorun?**
 
-A. Čas potřebný oprava aplikace orchestration je ve většině případů závislé na následujících faktorech:
+A. Hello čas potřebný hello oprava orchestration aplikace je ve většině případů závisí na hello následující faktory:
 
-- Zásada službu koordinátora. 
-  - Výchozí zásady `NodeWise`, výsledkem opravy jenom jeden uzel v čase. Zejména v případě větší clusterů, doporučujeme použít `UpgradeDomainWise` zásadu, abyste dosáhli rychlejší opravy napříč clustery.
-- Počet aktualizací, které jsou k dispozici ke stažení a instalaci. 
-- Průměrný čas potřebný ke stažení a instalaci aktualizace, které by neměl překročit několik hodin.
-- Výkon virtuálního počítače a šířku pásma sítě.
+- zásady Hello hello Služba koordinátora. 
+  - Hello výchozí zásady `NodeWise`, výsledkem opravy jenom jeden uzel v čase. Zejména v případě hello větší clusterů, doporučujeme použít hello `UpgradeDomainWise` zásad tooachieve rychlejší opravy napříč clustery.
+- Hello počet aktualizací, které jsou k dispozici ke stažení a instalaci. 
+- Hello průměrný čas potřebný toodownload a nainstalovat aktualizace, které by neměl překročit několik hodin.
+- výkon Hello hello virtuálních počítačů a šířku pásma sítě.
 
-OTÁZKY. **Proč vidí některé aktualizace ve výsledcích Windows Update získat prostřednictvím rozhraní api REST, ale ne v historii služby Windows Update v počítači?**
+OTÁZKY. **Proč vidí některé aktualizace ve výsledcích Windows Update získat prostřednictvím rozhraní api REST, ale není v rámci hello historii služby Windows Update v počítači?**
 
-A. Některé aktualizace produktu je třeba ověřit v historii jejich příslušné aktualizace nebo opravy. Např: Aktualizace programu Windows Defender se nezobrazí v historii služby Windows Update v systému Windows Server 2016.
+A. Některé aktualizace produktu potřebovat toobe změnami svoji historii příslušné aktualizace nebo opravy. Např: Aktualizace programu Windows Defender se nezobrazí v historii služby Windows Update v systému Windows Server 2016.
 
 ## <a name="disclaimers"></a>Právní omezení
 
-- Oprava aplikace orchestration přijme licenční smlouvy s koncovým uživatelem z Windows Update jménem uživatele. Volitelně může být vypnuto nastavení v konfiguraci aplikace.
+- Hello oprava orchestration aplikace přijímá hello koncového uživatele licenční smlouvy služby Windows Update jménem uživatele hello. Volitelně může být vypnuto hello nastavení v konfiguraci hello aplikace hello.
 
-- Oprava aplikace orchestration shromažďuje telemetrická data pro sledování využití a výkonu. Telemetrie aplikace odpovídá nastavení telemetrie nastavení modulu runtime Service Fabric, (který je ve výchozím).
+- Hello oprava orchestration aplikace shromažďuje telemetrická data tootrack využití a výkonu. telemetrie aplikace Hello následuje hello nastavení runtime Service Fabric hello nastavení telemetrie, (který je ve výchozím).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-### <a name="a-node-is-not-coming-back-to-up-state"></a>Uzel není vracející se zpět do až stavu
+### <a name="a-node-is-not-coming-back-tooup-state"></a>Uzel není vracející se zpět tooup stavu
 
-**Uzel může zasekla v automatickém zakázání stavu, protože**:
+**uzel Hello se mohla zastavit v zakázání stavu, protože**:
 
-Kontrola zabezpečení čeká na vyřízení. Chcete-li opravit tuto situaci, zajistěte, aby byly dostatek uzlů k dispozici v dobrém stavu.
+Kontrola zabezpečení čeká na vyřízení. tooremedy této situaci, ujistěte se, že dostatek uzlů, jsou k dispozici v dobrém stavu.
 
-**Uzel se mohla zastavit v zakázaném stavu, protože**:
+**uzel Hello se mohla zastavit v zakázaném stavu, protože**:
 
-- Uzlu zakázal ručně.
-- Uzel byl zakázán z důvodu úlohu probíhající infrastruktury Azure.
-- Uzlu byla dočasně zakázána správcem aplikace oprava orchestration opravit uzlu.
+- Hello uzlu zakázal ručně.
+- Hello uzel byl zakázán z důvodu tooan probíhající infrastrukturu Azure úlohy.
+- uzel Hello byla dočasně zakázána správcem hello oprava orchestration aplikace toopatch hello uzlu.
 
-**Uzel může zasekla v automatickém dolů stavu, protože**:
+**Hello uzlu se mohla zastavit v dolní stav protože**:
 
-- Uzel byla zařazena v dolů stavu ručně.
-- Uzlu právě probíhá restartování počítače (který může být aktivovány oprava orchestration aplikace).
-- Uzel je mimo provoz z důvodu vadné virtuálního počítače nebo počítače nebo síťové problémy s připojením.
+- uzel Hello byla zařazena v dolů stavu ručně.
+- Hello uzlu právě probíhá restartování počítače (který může být aktivovány hello oprava orchestration aplikace).
+- uzel Hello je mimo provoz z důvodu tooa vadný virtuálního počítače nebo počítače nebo síťové problémy s připojením.
 
 ### <a name="updates-were-skipped-on-some-nodes"></a>Aktualizace, které byly přeskočeny na některých uzlech
 
-Oprava aplikace orchestration se pokusí o instalaci služby Windows update podle přeplánování zásad. Služba se pokusí obnovit uzel a přeskočit aktualizace podle zásad aplikací.
+Hello oprava orchestration aplikace pokusí tooinstall aktualizace podle toohello přeplánování zásad pro Windows. Služba Hello pokusí toorecover hello uzlu a přeskočit zásady podle toohello aplikace hello aktualizace.
 
-V takovém případě se vygeneruje sestavy stavu úroveň upozornění pro službu Agent uzlu. Výsledek pro služby Windows Update také obsahuje možný důvod selhání.
+V takovém případě se vygeneruje sestavy stavu úroveň pro upozornění před hello Služba agenta uzlu. Hello výsledek pro služby Windows Update také obsahuje hello možných příčin selhání hello.
 
-### <a name="the-health-of-the-cluster-goes-to-error-while-the-update-installs"></a>Stav clusteru přejde k chybě při instalaci aktualizace
+### <a name="hello-health-of-hello-cluster-goes-tooerror-while-hello-update-installs"></a>Hello stav clusteru hello přejde tooerror při instalaci aktualizace hello
 
-Vadný služby Windows update můžete zahrnout dolů stav aplikace nebo clusteru v konkrétním uzlu nebo doméně pro upgrade. Oprava aplikace orchestration ze všechny následné operace služby Windows Update, dokud znovu je v pořádku clusteru.
+Vadný služby Windows update můžete zahrnout dolů hello stavu aplikace nebo clusteru v konkrétním uzlu nebo doméně pro upgrade. Hello oprava orchestration aplikace ze všechny následné operace služby Windows Update, dokud nebude hello clusteru znovu v pořádku.
 
-Správce musí zasáhnout a zjistit, proč k problému z důvodu Windows Update aplikace nebo clusteru.
+Správce musí zasáhnout a zjistit, proč k problému z důvodu aplikace hello nebo clusteru tooWindows aktualizace.
 
 ## <a name="release-notes-"></a>Poznámky k verzi:
 
@@ -412,5 +412,5 @@ Správce musí zasáhnout a zjistit, proč k problému z důvodu Windows Update 
 ### <a name="version-120-latest"></a>Verze 1.2.0 (nejnovější)
 
 - Opravy chyb kolem systém restartovat pracovního postupu.
-- Oprava chyby při vytváření úlohy RM kvůli které stavu nebyl kontrola během přípravy úlohy oprava děje podle očekávání.
-- Změnit režim spuštění pro služby systému windows POANodeSvc z automatické na odložené automaticky.
+- Oprava chyby při vytváření úlohy RM kvůli toowhich Kontrola stavu během přípravy úlohy oprava nebyla děje podle očekávání.
+- Změněné hello režimu spuštění pro službu systému windows POANodeSvc z toodelayed automaticky automaticky.

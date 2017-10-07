@@ -1,6 +1,6 @@
 ---
-title: "Postup odstranění clusteru služby HDInsight - Azure | Microsoft Docs"
-description: "Informace o různých způsobů, jak můžete odstranit cluster služby HDInsight."
+title: "aaaHow toodelete clusteru služby HDInsight - Azure | Microsoft Docs"
+description: "Informace o hello různé způsoby, kterými můžete odstranit cluster služby HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,44 +15,44 @@ ms.workload: big-data
 ms.date: 07/31/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 65dac529df15d2dd43eec17673d82a2832f7692e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 5b9d9a09eecfdcfaed7a1f5ebab440e13bd358b0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>Odstranění clusteru služby HDInsight pomocí prohlížeče, prostředí PowerShell nebo rozhraní příkazového řádku Azure
+# <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-hello-azure-cli"></a>Odstranění clusteru služby HDInsight pomocí vašeho prohlížeče, prostředí PowerShell nebo hello rozhraní příkazového řádku Azure
 
-Jakmile clusteru je vytvořen a zastaví, když odstranění clusteru, začne běžet fakturace clusteru HDInsight. Fakturuje se fakturují za minutu, proto byste měli vždy odstranit cluster, když je již používán. V tomto dokumentu zjistěte, jak odstranit cluster pomocí portálu Azure, Azure PowerShell a Azure CLI 1.0.
+Jakmile clusteru je vytvořen a zastaví, když odstranění clusteru hello začne běžet fakturace clusteru HDInsight. Fakturuje se fakturují za minutu, proto byste měli vždy odstranit cluster, když je již používán. V tomto dokumentu zjistíte, jak hello toodelete clusteru pomocí portálu Azure, Azure PowerShell a hello Azure CLI 1.0.
 
 > [!IMPORTANT]
-> Odstranění clusteru služby HDInsight neodstraní účty Azure Storage nebo Data Lake Store, které jsou přidruženy ke clusteru. Data uložená v těchto služeb v budoucnu můžete znovu použít.
+> Odstranění clusteru služby HDInsight neodstraní hello účty Azure Storage nebo Data Lake Store přidruženého k hello clusteru. Data uložená v těchto služeb v hello budoucí můžete znovu použít.
 
 ## <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com) a vyberte clusteru HDInsight. Pokud není clusteru HDInsight připnuli k řídicímu panelu, můžete je vyhledat podle názvu pomocí pole hledání.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com) a vyberte clusteru HDInsight. Pokud váš cluster HDInsight není vázaný toohello řídicí panel, můžete je vyhledat podle názvu pomocí pole hledání hello.
    
     ![hledání portálu](./media/hdinsight-delete-cluster/navbar.png)
 
-2. Po otevření okna pro cluster, vyberte **odstranit** ikonu. Po zobrazení výzvy vyberte **Ano** cluster odstranit.
+2. Po otevření okna hello hello clusteru vybrat hello **odstranit** ikonu. Po zobrazení výzvy vyberte **Ano** toodelete hello clusteru.
    
     ![Odstranit ikonu](./media/hdinsight-delete-cluster/deletecluster.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Příkazovém řádku prostředí PowerShell můžete cluster odstranit následující příkaz:
+Z řádku prostředí PowerShell použijte následující příkaz toodelete hello clusteru hello:
 
     Remove-AzureRmHDInsightCluster -ClusterName CLUSTERNAME
 
-Nahraďte **CLUSTERNAME** názvem clusteru HDInsight.
+Nahraďte **CLUSTERNAME** s názvem hello clusteru HDInsight.
 
 ## <a name="azure-cli-10"></a>Azure CLI 1.0
 
-K odstranění clusteru z řádku, použijte následující:
+Z řádku použijte následující toodelete hello clusteru hello:
 
     azure hdinsight cluster delete CLUSTERNAME
 
-Nahraďte **CLUSTERNAME** názvem clusteru HDInsight.
+Nahraďte **CLUSTERNAME** s názvem hello clusteru HDInsight.
 
 > [!NOTE]
 > Azure CLI 2.0 nepodporuje odstraňování clusterů HDInsight v tuto chvíli (31 července 2017).

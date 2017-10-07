@@ -1,6 +1,6 @@
 ---
-title: "Publikování aplikací pro jednotlivé uživatele v kolekci Azure RemoteAppu (verze Preview) | Dokumentace Microsoftu"
-description: "Přečtěte si, jak v Azure RemoteAppu publikovat aplikace místo skupin pro jednotlivé uživatele."
+title: "aaaPublish aplikace tooindividual uživatele v kolekci Azure RemoteApp (Preview) | Microsoft Docs"
+description: "Zjistěte, jak publikovat aplikace tooindividual uživatele, místo v závislosti na skupin v Azure Remoteappu."
 services: remoteapp-preview
 documentationcenter: 
 author: piotrci
@@ -14,92 +14,92 @@ ms.tgt_pltfrm: na
 ms.workload: compute
 ms.date: 11/23/2016
 ms.author: piotrci
-ms.openlocfilehash: c94ffffdec3e46ed08d941ee58dcf17b432e1dad
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 87b435552ddbfc2c6d03aeb01d95a44985e71f9f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="publish-applications-to-individual-users-in-an-azure-remoteapp-collection-preview"></a>Publikování aplikací pro jednotlivé uživatele v kolekci Azure RemoteAppu (verze Preview)
+# <a name="publish-applications-tooindividual-users-in-an-azure-remoteapp-collection-preview"></a>Publikování aplikace tooindividual uživatele v kolekci Azure RemoteApp (Preview)
 > [!IMPORTANT]
-> Azure RemoteApp se přestává používat dne 31. srpna 2017. Podrobnosti najdete v tomto [oznámení](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp se přestává používat dne 31. srpna 2017. Čtení hello [oznámení](https://go.microsoft.com/fwlink/?linkid=821148) podrobnosti.
 > 
 > 
 
-Tento článek vysvětluje, jak publikovat aplikace pro jednotlivé uživatele v kolekci Azure RemoteAppu. Toto je nová funkce v Azure RemoteAppu, která je aktuálně ve verzi Preview a je k dispozici pouze vybraným uživatelům se zájmem o nové funkce pro účely vyhodnocení.
+Tento článek vysvětluje, jak toopublish aplikace tooindividual uživatele v kolekci Azure RemoteApp. Toto je nová funkce v Azure Remoteappu, aktuálně v soukromém náhledu a inovátoři tooselect k dispozici pouze pro účely vyhodnocení.
 
-Původně byl v Azure RemoteAppu povolen pouze jeden způsob „publikování“ aplikací: správce publikoval aplikace z image a ty se pak staly viditelnými pro všechny uživatele v kolekci.
+Původně Azure Remoteappu povolen pouze jeden způsob publikování aplikací: hello správce publikoval aplikace z hello image a nebudou viditelné tooall uživatele v kolekci hello.
 
-Obvyklým scénářem je zahrnout mnoho aplikací do jediného image a nasadit jednu kolekci, aby byly náklady na správu minimální. Často ale nejsou všechny aplikace relevantní pro všechny uživatele a správci by raději publikovali aplikace pro jednotlivé uživatele, aby ti pak ve svém kanálu aplikací neviděli aplikace, které nepotřebují.
+Obvyklým scénářem je tooinclude mnoho aplikací do jedné bitové kopie a nasadit jednu kolekci v náklady na správu tooreduce pořadí. Jsou často ne všechny aplikace relevantní tooall uživatelé a Správci by raději toopublish aplikace tooindividual uživatele, aby Ti pak nepotřebných aplikací ve svém kanálu aplikací.
 
-A právě to je nyní v Azure RemoteAppu možné – aktuálně jako omezeně dostupná funkce ve verzi Preview. Zde je stručný popis nové funkce:
+A právě to je nyní v Azure RemoteAppu možné – aktuálně jako omezeně dostupná funkce ve verzi Preview. Zde je uveden stručný přehled hello nové funkce:
 
 1. Kolekce lze nastavit do jednoho ze dvou režimů:
    
-   * Původní „režim kolekce“, ve kterém všichni uživatelé v kolekci vidí všechny publikované aplikace. To je výchozí režim.
-   * Nový „režim aplikací“, ve kterém uživatelé vidí pouze aplikace, které jim byly explicitně přiřazeny.
-2. V současnosti lze režim aplikací povolit pouze pomocí rutin prostředí Azure RemoteApp PowerShell.
+   * Hello původní režim kolekce, kde všichni uživatelé v kolekci vidí všechny publikované aplikace. Toto je výchozí režim hello.
+   * Hello nový režim aplikací, kde uživatelé vidí pouze aplikace, které byly explicitně přiřazeny toothem
+2. Momentálně hello režim aplikací hello lze povolit pouze pomocí rutin prostředí Azure RemoteApp PowerShell.
    
-   * Když je nastavený režim aplikací, přiřazení uživatelů v kolekci nelze spravovat prostřednictvím portálu Azure. Přiřazení uživatelů se musí spravovat pomocí rutin prostředí PowerShell.
-3. Uživatelům se zobrazí pouze aplikace, které byly publikovány přímo jim. Uživatel však stále může spustit i další aplikace, které jsou dostupné v imagi, když k nim bude přistupovat přímo přes operační systém.
+   * Pokud nelze nastavit tooapplication režim, přiřazení uživatelů v kolekci hello spravovat prostřednictvím hello portálu Azure. Přiřazení uživatelů se toobe spravovat pomocí rutin prostředí PowerShell.
+3. Uživatelům se zobrazí pouze publikovaná aplikace hello přímo toothem. Ale je stále možné pro uživatele toolaunch hello jiné aplikace, které jsou k dispozici na bitovou kopii hello podle k nim přistupovat přímo v hello operačního systému.
    
-   * Tato funkce nenabízí zabezpečené uzamčení aplikací. Omezuje pouze jejich viditelnost v kanálu aplikací.
-   * Pokud potřebujete uživatele od určitých aplikací izolovat, musíte pro tento účel použít samostatné kolekce.
+   * Tato funkce nenabízí zabezpečené uzamčení aplikací. omezuje pouze jejich viditelnost v kanálu aplikací hello.
+   * Pokud potřebujete tooisolate uživatelů z aplikací, musíte pro tento toouse samostatné kolekce.
 
-## <a name="how-to-get-azure-remoteapp-powershell-cmdlets"></a>Jak získat rutiny prostředí Azure RemoteApp PowerShell
-Pokud chcete vyzkoušet tuto novou funkci ve verzi Preview, budete muset použít rutiny prostředí Azure PowerShell. Nový režim publikování aplikací aktuálně není možné povolit pomocí portálu pro správu Azure.
+## <a name="how-tooget-azure-remoteapp-powershell-cmdlets"></a>Jak tooget rutin prostředí Azure RemoteApp PowerShell
+tootry hello novou funkci ve verzi preview, budete potřebovat toouse rutin prostředí Azure PowerShell. Aktuálně není možné toouse hello Azure Management portal tooenable hello nový režim publikování aplikací.
 
-Nejprve zkontrolujte, zda máte nainstalovaný [modul Azure PowerShell](/powershell/azure/overview).
+Nejprve zkontrolujte, zda máte hello [modul Azure PowerShell](/powershell/azure/overview) nainstalována.
 
-Potom spusťte konzolu PowerShellu v režimu správce a spusťte následující rutinu:
+Pak spusťte konzolu prostředí PowerShell hello v režimu správce a spusťte hello následující rutiny:
 
         Add-AzureAccount
 
-Zobrazí se výzva k zadání vašeho uživatelského jména a hesla pro Azure. Jakmile se přihlásíte, budete moci spouštět rutiny Azure RemoteAppu pro svá předplatná Azure.
+Zobrazí se výzva k zadání vašeho uživatelského jména a hesla pro Azure. Po přihlášení, bude možné toorun rutiny Azure Remoteappu pro svá předplatná Azure.
 
-## <a name="how-to-check-which-mode-a-collection-is-in"></a>Jak zjistit, ve kterém režimu kolekce je
-Spusťte následující rutinu:
+## <a name="how-toocheck-which-mode-a-collection-is-in"></a>Jak toocheck kterém režimu kolekce je v
+Spusťte následující rutinu hello:
 
         Get-AzureRemoteAppCollection <collectionName>
 
-![Zkontrolujte režim kolekce](./media/remoteapp-perapp/araacllelvel.png)
+![Zkontrolujte režim kolekce hello](./media/remoteapp-perapp/araacllelvel.png)
 
-Vlastnost AclLevel může mít následující hodnoty:
+Hello vlastnost AclLevel může mít hello následující hodnoty:
 
-* Collection: původní režim publikování. Všichni uživatelé vidí všechny publikované aplikace.
-* Application: nový režim publikování. Uživatelé vidí pouze aplikace, které byly publikovány přímo pro ně.
+* Kolekce: hello původní režim publikování. Všichni uživatelé vidí všechny publikované aplikace.
+* Aplikace: hello nový režim publikování. Uživatelé vidí pouze aplikace hello publikovat přímo toothem.
 
-## <a name="how-to-switch-to-application-publishing-mode"></a>Jak přepnout na režim publikování aplikací
-Spusťte následující rutinu:
+## <a name="how-tooswitch-tooapplication-publishing-mode"></a>Jak režim publikování tooapplication tooswitch
+Spusťte následující rutinu hello:
 
         Set-AzureRemoteAppCollection -CollectionName -AclLevel Application
 
-Stav publikování jednotlivých aplikací bude zachován: na počátku všichni uživatelé uvidí všechny původně publikované aplikace.
+Stav publikování jednotlivých aplikací bude zachován: původně všichni uživatelé uvidí všechny původně publikované aplikace hello.
 
-## <a name="how-to-list-users-who-can-see-a-specific-application"></a>Jak zobrazit seznam uživatelů, kteří mohou vidět konkrétní aplikaci
-Spusťte následující rutinu:
+## <a name="how-toolist-users-who-can-see-a-specific-application"></a>Jak toolist uživatelé, kteří mohou vidět konkrétní aplikaci
+Spusťte následující rutinu hello:
 
         Get-AzureRemoteAppUser -CollectionName <collectionName> -Alias <appAlias>
 
-Rutina vypíše seznam všech uživatelů, kteří mohou vidět danou aplikaci.
+Rutina Vypíše seznam všech uživatelů, kteří mohou vidět hello aplikaci.
 
-Poznámka: Aliasy aplikací (v syntaxi výše „app alias“) si můžete zobrazit spuštěním příkazu Get-AzureRemoteAppProgram -NázevKolekce <collectionName>.
+Poznámka: Zobrazí se hello aliasy aplikací (nazývané v hello syntaxi výše "app alias") spuštěním příkazu Get-AzureRemoteAppProgram - Názevkolekce <collectionName>.
 
-## <a name="how-to-assign-an-application-to-a-user"></a>Jak přiřadit aplikaci uživateli
-Spusťte následující rutinu:
+## <a name="how-tooassign-an-application-tooa-user"></a>Jak tooassign uživatel tooa aplikace
+Spusťte následující rutinu hello:
 
         Add-AzureRemoteAppUser -CollectionName <collectionName> -UserUpn <user@domain.com> -Type <OrgId|MicrosoftAccount> -Alias <appAlias>
 
-Uživatel nyní uvidí aplikaci v klientovi Azure RemoteAppu a bude se k ní moci připojit.
+Hello uživatel nyní uvidí aplikaci hello v klientovi Azure Remoteappu hello a bude moct tooconnect tooit.
 
-## <a name="how-to-remove-an-application-from-a-user"></a>Jak odebrat aplikaci uživateli
-Spusťte následující rutinu:
+## <a name="how-tooremove-an-application-from-a-user"></a>Jak tooremove aplikace od uživatele.
+Spusťte následující rutinu hello:
 
         Remove-AzureRemoteAppUser -CollectionName <collectionName> -UserUpn <user@domain.com> -Type <OrgId|MicrosoftAccount> -Alias <appAlias>
 
 ## <a name="providing-feedback"></a>Poskytnutí zpětné vazby
-Oceníme vaše názory a návrhy týkající se této funkce ve verzi Preview. Vyplňte prosím náš [průzkum](http://www.instant.ly/s/FDdrb) a dejte nám vědět, co si myslíte.
+Oceníme vaše názory a návrhy týkající se této funkce ve verzi Preview. Vyplňte prosím hello [průzkum](http://www.instant.ly/s/FDdrb) toolet nám vědět, co si myslíte.
 
-## <a name="havent-had-a-chance-to-try-the-preview-feature"></a>Neměli jste možnost vyzkoušet si funkci ve verzi Preview?
-Pokud jste se dosud neúčastnili žádného vyhodnocování verzí Preview, použijte prosím tento [průzkum](http://www.instant.ly/s/AY83p) a požádejte o přístup.
+## <a name="havent-had-a-chance-tootry-hello-preview-feature"></a>Neměli jste možnost tootry hello Ukázková funkce?
+Pokud jste se dosud neúčastnili hello preview ještě, použijte prosím tento [průzkum](http://www.instant.ly/s/AY83p) toorequest přístup.
 

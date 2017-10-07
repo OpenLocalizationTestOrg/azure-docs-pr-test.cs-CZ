@@ -1,6 +1,6 @@
 ---
-title: "Použití nástroje Hadoop Sqoop se Curl v HDInsight - Azure | Microsoft Docs"
-description: "Naučte se vzdáleně odesílání úloh Sqoop do HDInsight pomocí Curl."
+title: aaaUse Hadoop Sqoop s Curl v HDInsight - Azure | Microsoft Docs
+description: "Zjistěte, jak odeslat tooremotely tooHDInsight Sqoop úlohy pomocí Curl."
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -16,26 +16,26 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: 0975aedf58c6e110726dd3308eae5f9ad3907cc7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d9c09a6704ab6c5f48be50ed6d6314ec406df8ea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>Spuštění úloh Sqoop se systémem Hadoop v prostředí HDInsight pomocí Curl
 [!INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
-Další informace o použití Curl ke spuštění úloh Sqoop na cluster Hadoop v HDInsight.
+Zjistěte, jak clusteru toouse Curl toorun Sqoop úloh na Hadoop v HDInsight.
 
-Curl se používá k ukazují, jak můžete pracovat s HDInsight pomocí nezpracované požadavky HTTP na spouštět, monitorovat a načíst výsledky úlohy Sqoop. To funguje tak, že pomocí WebHCat REST API (dříve označované jako Templeton) poskytované clusteru HDInsight.
+Curl je použité toodemonstrate, jak můžete pracovat s HDInsight pomocí nezpracovaná toorun požadavky HTTP, monitorování a načíst výsledky hello Sqoop úloh. Tento postup funguje s použitím hello WebHCat rozhraní API REST (dříve označované jako Templeton) poskytované clusteru HDInsight.
 
 > [!NOTE]
-> Pokud jste obeznámeni s pomocí serverů se systémem Linux Hadoop, ale jsou nové do HDInsight, projděte si téma [informace o používání HDInsight v Linuxu](hdinsight-hadoop-linux-information.md).
+> Pokud jste obeznámeni s pomocí serverů se systémem Linux Hadoop, ale jsou nové tooHDInsight, přečtěte si téma [informace o používání HDInsight v Linuxu](hdinsight-hadoop-linux-information.md).
 > 
 > 
 
 ## <a name="prerequisites"></a>Požadavky
-Pokud chcete provést kroky v tomto článku, budete potřebovat následující:
+toocomplete hello kroky v tomto článku, budete potřebovat následující hello:
 
 * Hadoop v clusteru HDInsight (Linux nebo na základě Windows)
 * [Curl](http://curl.haxx.se/)
@@ -43,79 +43,79 @@ Pokud chcete provést kroky v tomto článku, budete potřebovat následující:
 
 ## <a name="submit-sqoop-jobs-by-using-curl"></a>Odesílání úloh Sqoop pomocí Curl
 > [!NOTE]
-> Pokud používáte Curl nebo jinou komunikaci REST s WebHCat, je třeba ověřit žádosti zadáním uživatelského jména a hesla pro správce clusteru HDInsight. Název clusteru také musíte použít jako součást identifikátoru URI (Uniform Resource Identifier) sloužícímu k odesílání požadavků na server.
+> Pokud používáte Curl nebo jinou komunikaci REST s WebHCat, je třeba ověřit žádosti hello zadáním hello uživatelské jméno a heslo pro správce clusteru HDInsight hello. Název clusteru hello musíte použít také jako součást hello identifikátor URI (Uniform Resource) použít toosend hello požadavky toohello serveru.
 > 
-> Pro příkazy v této části nahraďte **UŽIVATELSKÉ JMÉNO** uživatelem pro ověření do clusteru a nahraďte **HESLO** heslem pro uživatelský účet. Nahraďte **CLUSTERNAME** názvem vašeho clusteru.
+> Hello příkazy v této části, nahraďte **uživatelské jméno** s hello uživatele tooauthenticate toohello clusteru a nahraďte **heslo** s hello heslo pro uživatelský účet hello. Nahraďte **CLUSTERNAME** s hello názvem vašeho clusteru.
 > 
-> Rozhraní API REST je zabezpečeno pomocí [základního ověřování](http://en.wikipedia.org/wiki/Basic_access_authentication). Vždy doporučujeme provádět požadavky pomocí protokolu HTTPS (Secure HTTP) a pomoci tak zajistit, že přihlašovací údaje budou na server odeslány bezpečně.
+> Hello rozhraní API REST je zabezpečeno pomocí [základní ověřování](http://en.wikipedia.org/wiki/Basic_access_authentication). Vždy doporučujeme provádět požadavky pomocí HTTPS (Secure HTTP) toohelp Ujistěte se, že vaše přihlašovací údaje jsou odeslány bezpečně toohello serveru.
 > 
 > 
 
-1. Z příkazového řádku použijte následující příkaz k ověření, zda se můžete připojit ke clusteru HDInsight:
+1. Z příkazového řádku použijte následující příkaz tooverify, že se můžete připojit tooyour HDInsight cluster hello:
    
         curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/status
    
-    Měla by se zobrazit odpověď podobná následujícímu:
+    Měli byste obdržet a odpovědi podobné toohello následující:
    
         {"status":"ok","version":"v1"}
    
-    Parametry použité v tomto příkazu jsou následující:
+    Hello parametry použité v tomto příkazu jsou následující:
    
-   * **-u** – uživatelské jméno a heslo použité pro ověření žádosti.
+   * **-u** -hello uživatelské jméno a heslo použít tooauthenticate hello požadavku.
    * **-G** – označuje, že se jedná o požadavek GET.
      
-     Na začátek adresu URL, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, budou stejné pro všechny požadavky. Cesta **/status**, označuje, že požadavek je vrátit stav WebHCat (také známé jako Templeton) pro server. 
-2. Použijte následující postupy se odeslat úlohu sqoop:
+     Dobrý den, od adresy URL hello, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, bude hello stejné pro všechny požadavky. Cesta Hello **/status**, signalizuje tento požadavek hello tooreturn stav WebHCat (také známé jako Templeton) pro hello server. 
+2. Použijte následující toosubmit úlohu sqoop hello:
 
         curl -u USERNAME:PASSWORD -d user.name=USERNAME -d command="export --connect jdbc:sqlserver://SQLDATABASESERVERNAME.database.windows.net;user=USERNAME@SQLDATABASESERVERNAME;password=PASSWORD;database=SQLDATABASENAME --table log4jlogs --export-dir /tutorials/usesqoop/data --input-fields-terminated-by \0x20 -m 1" -d statusdir="wasb:///example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/sqoop
 
-    Parametry použité v tomto příkazu jsou následující:
+    Hello parametry použité v tomto příkazu jsou následující:
 
-    * **-d** – od `-G` se nepoužívá, použije se výchozí hodnota žádost na metodu POST. `-d`Určuje datových hodnot, které se odesílají s požadavkem.
+    * **-d** – od `-G` se nepoužívá, žádost hello výchozí toohello metodu POST. `-d`Určuje hello hodnot dat, které jsou odesílány hello požadavku.
 
-        * **User.Name** -uživatel, který spouští příkaz.
+        * **User.Name** -hello uživatele, který spouští příkaz hello.
 
-        * **příkaz** -Sqoop příkaz k provedení.
+        * **příkaz** -hello tooexecute příkaz Sqoop.
 
-        * **statusdir** -adresáře, který budou zapisovat do stavu pro tuto úlohu.
+        * **statusdir** -hello adresář, který hello stavu pro tuto úlohu se zapíšou do.
 
-    Tento příkaz by měl vrátit ID úlohy, který slouží ke kontrole stavu úlohy.
+    Tento příkaz by měl vrátit ID úlohy, které můžou být použité toocheck hello stav úlohy hello.
 
         {"id":"job_1415651640909_0026"}
 
-1. Chcete-li zkontrolovat stav úlohy, použijte následující příkaz. Nahraďte **JOBID** se hodnota vrácená v předchozím kroku. Například, pokud byl návratovou hodnotu `{"id":"job_1415651640909_0026"}`, pak **JOBID** by `job_1415651640909_0026`.
+1. Stav hello toocheck hello úlohy, hello použijte následující příkaz. Nahraďte **JOBID** s hodnotou hello vráceném v předchozím kroku hello. Například pokud hello se vrátit hodnota byla `{"id":"job_1415651640909_0026"}`, pak **JOBID** by `job_1415651640909_0026`.
    
         curl -G -u USERNAME:PASSWORD -d user.name=USERNAME https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
    
-    Pokud se úloha dokončí, bude stav **úspěšné**.
+    Pokud hello úloha dokončí, bude mít stav hello **úspěšné**.
    
    > [!NOTE]
-   > Tento požadavek Curl vrátí dokument JavaScript Object Notation (JSON) s informacemi o úloze; jq se používá k načtení jenom hodnotu stavu.
+   > Tento požadavek Curl vrátí dokument JavaScript Object Notation (JSON) s informacemi o úloze hello; se používá jq tooretrieve pouze hello hodnotu stavu.
    > 
    > 
-2. Jakmile se stav úlohy se změnila na **úspěšné**, můžete načíst výsledky úlohy z Azure Blob storage. `statusdir` Parametr předaný s dotaz obsahuje umístění výstupního souboru; v tomto případě **wasb: / / / Příklad/curl**. Tato adresa ukládá výstup úlohy v **příklad/curl** adresář na výchozí kontejner úložiště používané clusteru HDInsight.
+2. Jakmile se stav hello hello úlohy se změnil příliš**úspěšné**, výsledky hello hello úlohy můžete načíst z úložiště objektů Blob Azure. Hello `statusdir` parametr předaný s hello dotazu obsahuje hello umístění výstupního souboru hello; v tomto případě **wasb: / / / Příklad/curl**. Tato adresa ukládá hello výstup hello úlohy v hello **příklad/curl** v hello výchozí kontejner úložiště používané clusteru HDInsight.
    
-    Můžete zobrazit seznam a stáhnout tyto soubory pomocí [rozhraní příkazového řádku Azure](../cli-install-nodejs.md). Například pro zobrazení seznamu souborů v **příklad/curl**, použijte následující příkaz:
+    Můžete zobrazit seznam a stažení těchto souborů pomocí hello [rozhraní příkazového řádku Azure](../cli-install-nodejs.md). Například soubory toolist **příklad/curl**, použijte následující příkaz hello:
    
         azure storage blob list <container-name> example/curl
    
-    Ke stažení souboru, použijte tento příkaz:
+    toodownload soubor, použijte následující hello:
    
         azure storage blob download <container-name> <blob-name> <destination-file>
    
    > [!NOTE]
-   > Buď musíte zadat název účtu úložiště, který obsahuje objekt blob pomocí `-a` a `-k` parametry, nebo sady **AZURE\_úložiště\_účet** a **AZURE\_úložiště\_přístup\_klíč** proměnné prostředí. Najdete v části < href = "hdinsight data.md nahrávání" target = "_blank" Další informace.
+   > Buď musíte zadat název účtu úložiště hello, která obsahuje objekt blob hello pomocí hello `-a` a `-k` parametry, nebo sadu hello **AZURE\_úložiště\_účet** a **AZURE\_úložiště\_přístup\_klíč** proměnné prostředí. Najdete v části < href = "hdinsight data.md nahrávání" target = "_blank" Další informace.
    > 
    > 
 
 ## <a name="limitations"></a>Omezení
-* Hromadné export - s Linuxovým systémem HDInsight, Sqoop konektor umožňuje exportovat data do systému Microsoft SQL Server nebo Azure SQL Database v současné době nepodporuje hromadné vložení.
-* Dávkování - s HDInsight se systémem Linux, při použití `-batch` přepnout při vložení, Sqoop provede několik vloží místo dávkování operace insert.
+* Hromadně export - s Linuxovým systémem HDInsight, hello Sqoop konektor používaný tooexport data tooMicrosoft systému SQL Server nebo Azure SQL Database v současné době nepodporuje hromadné vložení.
+* Dávkování - s HDInsight se systémem Linux, při použití hello `-batch` přepnout při vložení, Sqoop provede několik vloží místo dávkování operace insert hello.
 
 ## <a name="summary"></a>Souhrn
-Jak je ukázáno v tomto dokumentu, můžete spouštět, monitorovat a zobrazit výsledky Sqoop úloh na clusteru HDInsight nezpracovaná požadavek HTTP.
+Jak je ukázáno v tomto dokumentu, můžete použít nezpracovaná toorun požadavku HTTP, monitorování a zobrazení výsledků hello Sqoop úloh na clusteru HDInsight.
 
-Další informace o rozhraní REST používané v tomto článku najdete v tématu <a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">Sqoop REST API průvodce</a>.
+Další informace o rozhraní REST hello používané v tomto článku najdete v tématu hello <a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">Sqoop REST API průvodce</a>.
 
 ## <a name="next-steps"></a>Další kroky
 Obecné informace o Hive s HDInsight:

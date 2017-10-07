@@ -1,6 +1,6 @@
 ---
-title: "Azure SQL Database v paměti technologie | Microsoft Docs"
-description: "Azure SQL Database v paměti technologie výrazně zlepšit výkon transakcí a analýzy úlohy. Zjistěte, jak chcete využít výhod těchto technologií."
+title: "technologie SQL databázi v paměti aaaAzure | Microsoft Docs"
+description: "Azure SQL Database v paměti technologie výrazně zlepšit hello výkon transakcí a analýzy zatížení. Zjistěte, jak tootake výhod těchto technologií."
 services: sql-database
 documentationCenter: 
 author: jodebrui
@@ -15,138 +15,138 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2017
 ms.author: jodebrui
-ms.openlocfilehash: 4cb45551c486263f26947e5684d54b4f2ecc7410
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1bacd7297b2f9b018853088eabf2a2ee66a9cb43
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimalizace výkonu pomocí technologie v paměti v databázi SQL
 
-Použití technologií v paměti ve službě Azure SQL Database, můžete dosáhnout zlepšení výkonu pomocí různých úloh: transakcí (online zpracování transakcí (OLTP)), analytics (online analytického zpracování (OLAP)) a ve smíšeném (hybridní transakce/analytického zpracování (HTAP)). Z důvodu efektivnější dotazu a zpracování transakcí v paměti technologie také pomoci snížit náklady. Obvykle nemusíte upgradovat cenová úroveň databáze k dosáhnout zvýšení výkonu. V některých případech i je možné snížit cenovou úroveň, při vylepšení výkonu s technologiemi v paměti se přesto zobrazuje.
+Použití technologií v paměti ve službě Azure SQL Database, můžete dosáhnout zlepšení výkonu pomocí různých úloh: transakcí (online zpracování transakcí (OLTP)), analytics (online analytického zpracování (OLAP)) a ve smíšeném (hybridní transakce/analytického zpracování (HTAP)). Z důvodu hello efektivnější dotazů a zpracování transakcí, v paměti technologie vám také pomoci tooreduce náklady. Obvykle není nutné tooupgrade hello cenová úroveň zvýšení výkonu tooachieve hello databáze. V některých případech i je možné snížit cenovou úroveň, při vylepšení výkonu s technologiemi v paměti se přesto zobrazuje hello.
 
-Zde jsou dva příklady, jak článek OLTP v paměti pomůže výrazně zlepšit výkon:
+Zde jsou dva příklady, jak OLTP v paměti pomohl toosignificantly zlepšení výkonu:
 
-- Pomocí OLTP v paměti, [kvora obchodními řešeními bylo možné dvakrát jejich zatížení při současném zvyšování Dtu 70 %](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
+- Pomocí OLTP v paměti, [kvora obchodními řešeními bylo možné toodouble jejich zatížení při současném zvyšování Dtu 70 %](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
     - DTU znamená *jednotek propustnosti databáze*, a obsahuje měření spotřeby prostředků.
-- Toto video ukazuje výrazné zlepšení spotřeby prostředků s ukázky pracovního vytížení: [OLTP v paměti v Azure SQL Database Video](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
-    - Další podrobnosti naleznete v příspěvku blogu: [OLTP v paměti v příspěvku blogu databáze SQL Azure](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
+- Hello toto video ukazuje výrazné zlepšení spotřeby prostředků s ukázky pracovního vytížení: [OLTP v paměti v Azure SQL Database Video](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
+    - Další podrobnosti najdete v tématu hello blogu: [OLTP v paměti v příspěvku blogu databáze SQL Azure](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
-Technologie v paměti jsou k dispozici v všechny databáze v úrovni Premium, včetně databází v elastické fondy Premium.
+Technologie v paměti jsou k dispozici v všechny databáze v úrovni Premium hello, včetně databází v elastické fondy Premium.
 
-Následující video vysvětluje potenciální zvýšení výkonu s technologiemi v paměti ve službě Azure SQL Database. Pamatujte, že zvýšení výkonu, který se zobrazí vždy závisí na mnoha faktorech, včetně povahu pracovního vytížení a data, vzor přístupu databáze a tak dále.
+Hello následující video vysvětluje potenciální zvýšení výkonu s technologiemi v paměti ve službě Azure SQL Database. Pamatujte, že hello výkonnější, který se zobrazí vždy závisí na mnoha faktorech, včetně hello povaha hello zatížení a data, vzor přístupu hello databáze a tak dále.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-In-Memory-Technologies/player]
 >
 >
 
-Azure SQL Database má následující technologie v paměti:
+Azure SQL Database má hello následující technologie v paměti:
 
 - *OLTP v paměti* zvyšuje propustnost a snižuje latence pro zpracování transakcí. Scénáře využívající OLTP v paměti jsou: transakce vysokou propustností zpracování například obchodní a hraní, přijímání dat ze zařízení IoT, ukládání do mezipaměti, načtení dat a dočasné tabulky a scénáře proměnné tabulky nebo události.
-- *Clusterované indexy columnstore* redukuje vašeho úložiště (až 10 x) a zlepšení výkonu pro dotazy analýz a generování sestav. Můžete ji pomocí tabulky faktů v datová Tržiště nevejde se do databáze více dat a zlepšíte výkon. Navíc můžete ho s historických dat v provozní databázi nástroje k archivaci a moct dotaz až 10 x další data.
-- *Neclusterovaných indexů columnstore* pro HTAP umožňují v reálném čase proniknout do vaší firmy prostřednictvím dotazování provozní databáze přímo, aniž by bylo nutné spustit nákladné extrakce, transformace a načítání (ETL) proces a vyčkejte pro datový sklad vyplnit. Neclusterovaných indexů columnstore povolí velmi rychlé spuštění analytické dotazy na databáze OLTP navíc snižuje dopad na provozní úlohy.
-- Můžete taky nechat kombinace paměťově optimalizované tabulky s indexem columnstore. Tato kombinace umožňuje provádět zpracování velmi rychlé transakcí a *souběžně* velmi rychle spustit analytické dotazy na stejná data.
+- *Clusterované indexy columnstore* redukuje vašeho úložiště (až too10 časy) a zlepšení výkonu pro dotazy analýz a generování sestav. Můžete ho použít s tabulky faktů vaše datové Tržiště toofit další data v databázi a zlepšit výkon. Můžete také pomocí historických dat ve vaší tooarchive provozní databáze a být schopný tooquery too10 časů další data.
+- *Neclusterovaných indexů columnstore* nápovědu HTAP můžete toogain v reálném čase přehled o svém podnikání prostřednictvím dotazování hello provozní databáze přímo, bez nutnosti toorun hello nákladné extrakce, transformace a načítání (ETL) proces a čekání pro hello datového skladu toobe naplněno. Neclusterovaných indexů columnstore povolí velmi rychlé spuštění analytické dotazy na databáze OLTP hello, a současně hello dopad na hello provozní úlohy.
+- Můžete taky nechat hello kombinace paměťově optimalizované tabulky s indexem columnstore. Tato kombinace umožňuje velmi rychlé transakce tooperform zpracování a příliš*souběžně* spuštění analytics dotazuje velmi rychle na hello stejná data.
 
-Indexy columnstore a OLTP v paměti se součástí produktu SQL Server od 2012 a 2014, v uvedeném pořadí. Azure SQL Database a SQL Server sdílet stejné implementaci technologií v paměti. Do budoucna, nové funkce pro tyto technologie jsou vydávány v Azure SQL Database nejprve před jejich vydání v systému SQL Server.
+Indexy columnstore a OLTP v paměti se součástí produktu SQL Server hello od 2012 a 2014, v uvedeném pořadí. Azure SQL Database a SQL Server hello sdílet stejné implementaci technologií v paměti. Do budoucna, nové funkce pro tyto technologie jsou vydávány v Azure SQL Database nejprve před jejich vydání v systému SQL Server.
 
-Toto téma popisuje aspekty OLTP v paměti a columnstore indexy, které jsou specifické pro Azure SQL Database a obsahuje také ukázku:
-- Dopad tyto technologie uvidíte na omezení velikosti úložiště a data.
-- Uvidíte, jak spravovat přesouvání databází, které používají tyto technologie mezi různé cenové úrovně.
-- Zobrazí se dvou vzorcích, které ilustrují použití OLTP v paměti, jakož i indexy columnstore ve službě Azure SQL Database.
+Toto téma popisuje aspekty OLTP v paměti a columnstore indexy, které jsou specifické tooAzure databáze SQL a také zahrnuje ukázky:
+- Uvidíte hello dopad těchto technologií na omezení velikosti úložiště a data.
+- Uvidíte, jak toomanage hello pohybů databází, které používají tyto technologie mezi hello jiných cenových úrovní.
+- Zobrazí se dvou vzorcích, které ilustrují použití hello OLTP v paměti, jakož i indexy columnstore ve službě Azure SQL Database.
 
-Najdete v následujících materiálech Další informace.
+V tématu hello následující prostředky pro další informace.
 
-Podrobné informace o technologiích:
+Podrobné informace o technologiích hello:
 
-- [Přehled OLTP v paměti a scénáře použití](https://msdn.microsoft.com/library/mt774593.aspx) (obsahuje odkazy na informace o začít a Zákaznické případové studie)
+- [Přehled OLTP v paměti a scénáře použití](https://msdn.microsoft.com/library/mt774593.aspx) (zahrnuje odkazy toocustomer případové studie a informace o tooget spuštění)
 - [Dokumentace pro OLTP v paměti](http://msdn.microsoft.com/library/dn133186.aspx)
 - [Průvodce indexy Columnstore](https://msdn.microsoft.com/library/gg492088.aspx)
 - Hybridní transakcí nebo analytického zpracování (HTAP), také známé jako [provozní analýzu v reálném čase](https://msdn.microsoft.com/library/dn817827.aspx)
 
-Rychlý úvod do na OLTP v paměti: [rychlý Start 1: technologie OLTP v paměti pro rychlejší T-SQL výkonu](http://msdn.microsoft.com/library/mt694156.aspx) (jiný článek vám pomohou začít)
+Rychlý úvod do na OLTP v paměti: [rychlý Start 1: technologie OLTP v paměti pro rychlejší T-SQL výkonu](http://msdn.microsoft.com/library/mt694156.aspx) (jiný článek toohelp začnete)
 
-Podrobný videa o technologiích:
+Podrobný videa o technologiích hello:
 
-- [OLTP v paměti ve službě Azure SQL Database](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (která obsahuje ukázku výkonnostních výhod a postup reprodukování těchto výsledků sami)
-- [Videa OLTP v paměti: Co je a v případě nebo postupy pro použití](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/03/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
+- [OLTP v paměti ve službě Azure SQL Database](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (která obsahuje ukázku výkonu výhody a kroky tooreproduce těchto výsledků sami)
+- [Videa OLTP v paměti: Co je a když/jak toouse ho](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/03/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
 - [Columnstore Index: Analýzy v paměti videa z webu Ignite 2016](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/04/columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
 
 ## <a name="storage-and-data-size"></a>Velikost úložiště a dat.
 
 ### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>Limitu velikosti a úložiště dat pro OLTP v paměti
 
-OLTP v paměti obsahuje paměťově optimalizované tabulky, které se používají k ukládání dat uživatele. Tyto tabulky musí nevejdou se do paměti. Vzhledem k tomu, že budete spravovat paměti přímo ve službě SQL Database, máme koncept kvótu pro data uživatelů. Toto je vhodné se označuje jako *OLTP v paměti úložiště*.
+OLTP v paměti obsahuje paměťově optimalizované tabulky, které se používají k ukládání dat uživatele. Tyhle tabulky jsou požadované toofit v paměti. Vzhledem k tomu, že budete spravovat přímo paměti hello služba SQL Database, máme hello konceptu kvótu pro data uživatelů. Tento nápad je odkazované tooas *OLTP v paměti úložiště*.
 
-Každý podporovaný samostatná databáze cenová úroveň a každý elastického fondu cenová úroveň zahrnuje množství OLTP v paměti úložiště. V době psaní získat gigabajt úložiště pro každý 125 jednotky transakcí databáze (Dtu) nebo jednotky transakcí elastické databáze (Edtu).
+Každý podporovaný samostatná databáze cenová úroveň a každý elastického fondu cenová úroveň zahrnuje množství OLTP v paměti úložiště. V době psaní textu hello zobrazí gigabajt úložiště pro každý 125 jednotky transakcí databáze (Dtu) nebo elastické databáze jednotky transakcí (Edtu).
 
-[Úrovně služeb SQL Database](sql-database-service-tiers.md) článek má oficiální seznam úložiště OLTP v paměti, která je k dispozici pro všechny podporované samostatná databáze a elastického fondu cenová úroveň.
+Hello [úrovně služeb SQL Database](sql-database-service-tiers.md) článek obsahuje seznam oficiální hello úložiště hello OLTP v paměti, která je k dispozici pro všechny podporované samostatná databáze a elastického fondu cenová úroveň.
 
-Následující položky započítávat vašeho úložiště cap OLTP v paměti:
+Hello následující počet položek směrem k vaší úložiště cap OLTP v paměti:
 
-- Řádky dat aktivního uživatele v paměťově optimalizované tabulky a proměnné tabulek. Všimněte si, že nemáte směrem k krytky počet staré verze řádku.
+- Řádky dat aktivního uživatele v paměťově optimalizované tabulky a proměnné tabulek. Všimněte si, že nemáte staré verze řádku započítávat hello zakončení.
 - Indexy v paměťově optimalizovaných tabulkách.
 - Provozní režie operací ALTER TABLE.
 
-Jestli jste nedosáhli krytky, obdržíte chybu na více systémů kvóty a jste již nebude možné vložit nebo aktualizovat data. Pro zmírnění této chybě, odstranit data nebo zvyšte cenová úroveň databáze nebo fond.
+Při dosažení limitu hello, obdržíte chybu na více systémů kvóty a již není možné data tooinsert nebo aktualizace. toomitigate odstranit data této chybě, nebo zvyšte hello cenová úroveň databáze hello nebo fond.
 
-Podrobnosti o sledování využití úložiště OLTP v paměti a konfiguraci výstrah při téměř zásahu krytky najdete v tématu [monitorování v paměti úložiště](sql-database-in-memory-oltp-monitoring.md).
+Podrobnosti o monitorování využití úložiště OLTP v paměti a konfiguraci výstrahy, když téměř dosáhl limitu hello najdete v tématu [monitorování v paměti úložiště](sql-database-in-memory-oltp-monitoring.md).
 
 #### <a name="about-elastic-pools"></a>O elastické fondy
 
-S elastické fondy úložiště OLTP v paměti je sdílet všechny databáze ve fondu. Proto využití v jedné databáze může potenciálně ovlivnit jiné databáze. Jsou dvě jejich zmírnění pro toto:
+S elastické fondy hello OLTP v paměti úložiště sdílet všechny databáze ve fondu hello. Proto hello využití v jedné databáze může potenciálně ovlivnit jiné databáze. Jsou dvě jejich zmírnění pro toto:
 
-- Nakonfigurujte maximální-počet jednotek eDTU pro databáze, která je nižší než počet eDTU pro fond jako celek. Tento maximální caps využití úložiště OLTP v paměti, všechny databáze ve fondu, velikost, která odpovídá počet eDTU.
-- Nakonfigurujte Min eDTU, která je větší než 0. Toto minimum zaručuje, že každá databáze ve fondu má velikost úložiště k dispozici OLTP v paměti, která odpovídá nakonfigurované jednotek eDTU Min.
+- Nakonfigurujte maximální-počet jednotek eDTU pro databáze, která je nižší než počet hello eDTU pro fond hello jako celek. Tento maximální caps hello využití úložiště OLTP v paměti, všechny databáze ve fondu hello, toohello velikost, která odpovídá počet eDTU toohello.
+- Nakonfigurujte Min eDTU, která je větší než 0. Tato minimální záruky, zda má každý databáze ve fondu hello hello množství dostupného úložiště OLTP v paměti, která odpovídá toohello nakonfigurovat Min eDTU.
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Velikost dat a úložiště pro indexy columnstore
 
-Indexy Columnstore nejsou povinné, aby se vešla do paměti. Proto je krytky pouze na velikost indexy maximální celkovou velikost databáze, která je popsána v [úrovně služeb SQL Database](sql-database-service-tiers.md) článku.
+Indexy Columnstore nejsou požadované toofit v paměti. Proto hello pouze zakončení na velikosti hello hello indexů je hello maximální celkovou velikost databáze, která je popsána v hello [úrovně služeb SQL Database](sql-database-service-tiers.md) článku.
 
-Při použití Clusterované indexy columnstore sloupcovém komprese se používá pro základní tabulka úložiště. Tato komprese může výrazně snížit nároky na úložiště dat uživatele, což znamená, že můžete začlenit další data v databázi. A komprese může být zvýšena další s [sloupcovém archivace komprese](https://msdn.microsoft.com/library/cc280449.aspx#Using Columnstore and Columnstore Archive Compression). Komprese, můžete dosáhnout závisí na povaze data, ale 10krát komprese není.
+Při použití Clusterované indexy columnstore sloupcovém komprese se používá pro hello základní tabulka úložiště. Tato komprese může výrazně redukuje hello úložiště uživatelských dat, což znamená, že můžete začlenit další data v databázi hello. A komprese hello může být zvýšena další s [sloupcovém archivace komprese](https://msdn.microsoft.com/library/cc280449.aspx#Using Columnstore and Columnstore Archive Compression). Hello množství komprese, můžete dosáhnout závisí na povaze hello hello dat, ale 10krát hello komprese není.
 
-Například pokud máte databázi s maximální velikostí 1 terabajt (TB) a dosáhnout 10krát komprese pomocí indexy columnstore, můžete začlenit celkem 10 TB dat uživatele v databázi.
+Například pokud máte databázi s maximální velikostí 1 terabajt (TB) a dosáhnout 10krát hello komprese pomocí indexy columnstore, můžete začlenit celkem 10 TB dat uživatele v databázi hello.
 
-Při použití neclusterovaných indexů columnstore základní tabulka je pořád uložená ve formátu tradiční rowstore. Proto nejsou úspory úložiště stejnou velikost jako s Clusterované indexy columnstore. Pokud chcete nahradit počet tradiční neclusterované indexy s indexem columnstore jeden, uvidíte stále celkové úspory v nároky na úložiště pro tabulku.
+Při použití neclusterovaných indexů columnstore hello základní tabulka je pořád uložená ve formátu tradiční rowstore hello. Proto nejsou úspory úložiště hello stejnou velikost jako s Clusterované indexy columnstore. Pokud chcete nahradit počet tradiční neclusterované indexy s indexem columnstore jeden, uvidíte stále celkové úspory v hello nároků úložiště pro tabulku hello.
 
 ## <a name="moving-databases-that-use-in-memory-technologies-between-pricing-tiers"></a>Přesunutí databází, které používají technologie v paměti mezi cenové úrovně
 
-Nejsou nikdy žádné nekompatibility nebo jiné problémy při upgradu na vyšší cenová úroveň, například z standardní, Premium. K dispozici funkce a prostředky pouze zvýšit.
+Nejsou nikdy žádné nekompatibility nebo jiné problémy při upgradu tooa vyšší cenové úrovně, jako třeba ze standardní tooPremium. k dispozici funkce Hello a prostředky pouze zvýšit.
 
-Ale přechod na starší verzi cenové úrovně může mít negativní vliv na vaši databázi. Dopad je obzvláště zřejmá při downgradovat z úrovně Premium standardní nebo základní Pokud databáze obsahuje objekty OLTP v paměti. Paměťově optimalizované tabulky a indexy columnstore jsou k dispozici po downgrade (i v případě, že zůstanou viditelné). Stejné aspekty platí při snížení cenová úroveň fondu elastické databáze, nebo přesunutí databáze s technologiemi v paměti do Standard a Basic elastického fondu.
+Ale přechod na starší verzi hello cenová úroveň může mít negativní vliv na vaši databázi. dopad Hello je obzvláště zřejmá při downgradovat z Premium tooStandard nebo Basic, když databáze obsahuje objekty OLTP v paměti. Paměťově optimalizované tabulky a indexy columnstore jsou k dispozici po hello přechod na starší verzi (i v případě, že zůstanou viditelné). Dobrý den, platí stejné aspekty při jste snížení hello cenová úroveň fondu elastické databáze nebo přesunutí databáze s technologiemi v paměti do Standard a Basic elastického fondu.
 
 ### <a name="in-memory-oltp"></a>OLTP v paměti
 
-*Přechod na starší verzi na Basic nebo Standard*: OLTP v paměti není podporována v databázích v úroveň Standard nebo Basic. Kromě toho není možné přesunout databáze, která obsahuje všechny objekty OLTP v paměti na úroveň Standard nebo Basic.
+*Přechod na starší verzi tooBasic a standardní*: OLTP v paměti není podporována v databázích v hello úroveň Standard nebo Basic. Kromě toho není možné toomove databáze, která obsahuje všechny OLTP v paměti objekty toohello úroveň Standard nebo Basic.
 
-Předtím, než jste starší verzi databáze, která se standardní a základní, odeberte všechny paměťově optimalizované tabulky a typů tabulek, jakož i všechny nativně Kompilované moduly T-SQL.
+Předtím, než jste starší verzi databáze hello tooStandard a základní, odeberte všechny paměťově optimalizované tabulky a typů tabulek, jakož i všechny nativně Kompilované moduly T-SQL.
 
-Není programový způsob, jak pochopit, jestli na danou databázi podporuje OLTP v paměti. Můžete spustit následující dotaz jazyka Transact-SQL:
+Není toounderstand programový způsob, jestli na danou databázi podporuje OLTP v paměti. Můžete provést hello následující jazyka Transact-SQL:
 
 ```
 SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 ```
 
-Pokud dotaz vrátí **1**, OLTP v paměti je podporováno v této databázi.
+Pokud hello dotaz vrátí **1**, OLTP v paměti je podporováno v této databázi.
 
 
-*Přechod na starší verzi nižší úrovně Premium*: Data v paměťově optimalizovaných tabulkách musí být přizpůsobena úložiště OLTP v paměti, které souvisí s cenová úroveň databáze nebo není k dispozici elastický fond. Pokud se pokusíte snížit cenovou úroveň, nebo přesunout databáze ve fondu, který nemá dostatek dostupné úložiště OLTP v paměti se operace nezdaří.
+*Přechod na starší verzi nižší úroveň Premium tooa*: Data v paměťově optimalizovaných tabulkách musí být přizpůsobena úložiště hello OLTP v paměti, které souvisí s hello cenová úroveň databáze hello nebo není k dispozici hello elastického fondu. Pokud zkuste toolower hello cenová úroveň nebo přesunutí hello databáze ve fondu, který nemá dostatek dostupného úložiště OLTP v paměti, hello operace selže.
 
 ### <a name="columnstore-indexes"></a>Indexy Columnstore
 
-*Přechod na starší verzi Basic nebo Standard*: indexy Columnstore jsou podporovány pouze na cenová úroveň Premium a ne na úrovních Standard nebo Basic. Když jste se downgradovat databázi Standard a Basic, stane indexu columnstore není k dispozici. Systém udržuje indexu columnstore, ale nikdy využívá index. Pokud později upgradujete zpět na Premium, je okamžitě připraven znovu využít indexu columnstore.
+*Přechod na starší verzi Standard nebo tooBasic*: Columnstore indexy jsou podporovány pouze na cenová úroveň Premium hello a ne v hello Standard nebo Basic vrstev. Když jste starší verzi databáze tooStandard nebo Basic, stane se indexu columnstore není k dispozici. Hello systém uchovává indexu columnstore, ale nikdy využívá hello index. Pokud později upgradujete tooPremium zpět, je indexu columnstore okamžitě připraven toobe využít znovu.
 
-Pokud máte **clusterové** columnstore index, celé tabulky nedostupný po vrstvy přechod na starší verzi. Proto doporučujeme vyřaďte všechny *clusterové* indexy columnstore před downgradovat databáze nižší než úroveň Premium.
+Pokud máte **clusterové** columnstore index, celé tabulky hello nedostupný po vrstvy přechod na starší verzi. Proto doporučujeme vyřaďte všechny *clusterové* indexy columnstore před downgradovat databáze nižší než úroveň Premium hello.
 
-*Přechod na starší verzi nižší úrovně Premium*: Tento přechod na starší verzi úspěšná, pokud odpovídá celé databáze v rámci maximální velikost pro cíl cenová úroveň, nebo dostupné úložiště v elastickém fondu. Neexistuje žádný konkrétní vliv z indexů columnstore.
+*Přechod na starší verzi nižší úroveň Premium tooa*: Tento přechod na starší verzi úspěšná, pokud odpovídá hello celé databáze v rámci hello maximální velikost databáze pro cíl hello cenovou úroveň, nebo dostupné úložiště hello v hello elastického fondu. Neexistuje žádná konkrétní vlivu indexy columnstore hello.
 
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
 
 &nbsp;
 
-## <a name="1-install-the-in-memory-oltp-sample"></a>1. Instalace ukázkové OLTP v paměti
+## <a name="1-install-hello-in-memory-oltp-sample"></a>1. Instalace ukázkové hello OLTP v paměti
 
-Ukázkové databáze AdventureWorksLT můžete vytvořit pomocí několika kliknutí v [portál Azure](https://portal.azure.com/). Pak kroků v této části popisují, jak můžete rozšířit vaše databáze AdventureWorksLT s objekty OLTP v paměti a předvedení výkonnostních výhod.
+Ukázkové databáze AdventureWorksLT hello můžete vytvořit pomocí několika kliknutí v hello [portál Azure](https://portal.azure.com/). Potom hello kroky v této části popisují, jak můžete rozšířit vaše databáze AdventureWorksLT s objekty OLTP v paměti a předvedení výkonnostních výhod.
 
 Více zneužívající vlastností prohlížeče, ale vizuálně výkonu ukázku pro OLTP v paměti najdete v části:
 
@@ -155,13 +155,13 @@ Více zneužívající vlastností prohlížeče, ale vizuálně výkonu ukázku
 
 #### <a name="installation-steps"></a>Postup instalace
 
-1. V [portál Azure](https://portal.azure.com/), vytvořte na serveru databáze Premium. Nastavte **zdroj** ukázkové databáze AdventureWorksLT. Podrobné pokyny najdete v tématu [vytvořit svoji první databázi Azure SQL](sql-database-get-started-portal.md).
+1. V hello [portál Azure](https://portal.azure.com/), vytvořte na serveru databáze Premium. Sada hello **zdroj** ukázkové databáze AdventureWorksLT toohello. Podrobné pokyny najdete v tématu [vytvořit svoji první databázi Azure SQL](sql-database-get-started-portal.md).
 
-2. Připojení k databázi s SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx).
+2. Připojit databáze toohello s SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx).
 
-3. Kopírování [OLTP v paměti jazyka Transact-SQL skriptu](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) do schránky. Skriptu T-SQL vytváří objekty nezbytné v paměti ukázkové databáze AdventureWorksLT, kterou jste vytvořili v kroku 1.
+3. Kopírování hello [OLTP v paměti jazyka Transact-SQL skriptu](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) tooyour schránky. Hello skriptu T-SQL vytvoří hello objekty nezbytné v paměti v ukázkové databáze AdventureWorksLT hello, kterou jste vytvořili v kroku 1.
 
-4. Vložit do aplikace SSMS skriptu T-SQL a poté spusťte tento skript. `MEMORY_OPTIMIZED = ON` Příkazy CREATE TABLE klauzule jsou zásadní. Například:
+4. Vložit do aplikace SSMS hello skriptu T-SQL a pak spusťte skript hello. Hello `MEMORY_OPTIMIZED = ON` příkazy CREATE TABLE klauzule jsou zásadní. Například:
 
 
 ```
@@ -175,7 +175,7 @@ CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
 #### <a name="error-40536"></a>Chyba 40536
 
 
-Pokud se zobrazí chyba 40536 při spuštění skriptu T-SQL, spusťte následující skript T-SQL, chcete-li ověřit, jestli podporuje databázi v paměti:
+Pokud se zobrazí chyba 40536 při spuštění skriptu hello T-SQL, spusťte hello následující tooverify skriptu T-SQL, zda text hello databáze podporuje v paměti:
 
 
 ```
@@ -183,12 +183,12 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 ```
 
 
-Důsledkem **0** znamená, že v paměti není podporován, a **1** znamená, že je podporovaná. A diagnostikovat problém, zkontrolujte, zda databáze na úroveň služeb Premium.
+Důsledkem **0** znamená, že v paměti není podporován, a **1** znamená, že je podporovaná. toodiagnose hello problém, ujistěte se, že hello je databáze na úroveň služeb Premium hello.
 
 
-#### <a name="about-the-created-memory-optimized-items"></a>O vytvořených položek paměťově optimalizované
+#### <a name="about-hello-created-memory-optimized-items"></a>O hello vytvořili paměťově optimalizované položky
 
-**Tabulky**: Ukázka obsahuje paměťově optimalizované tabulky:
+**Tabulky**: Ukázka hello obsahuje hello následující paměťově optimalizované tabulky:
 
 - SalesLT.Product_inmem
 - SalesLT.SalesOrderHeader_inmem
@@ -197,10 +197,10 @@ Důsledkem **0** znamená, že v paměti není podporován, a **1** znamená, ž
 - Demo.DemoSalesOrderDetailSeed
 
 
-Paměťově optimalizované tabulky prostřednictvím si můžete prohlédnout **Průzkumník objektů** v aplikaci SSMS. Klikněte pravým tlačítkem na **tabulky** > **filtru** > **nastavení filtru** > **je paměťově optimalizovaná**. Hodnota se rovná 1.
+Si můžete prohlédnout paměťově optimalizované tabulky prostřednictvím hello **Průzkumník objektů** v aplikaci SSMS. Klikněte pravým tlačítkem na **tabulky** > **filtru** > **nastavení filtru** > **je paměťově optimalizovaná**. Hello hodnota se rovná 1.
 
 
-Nebo můžete dát dotaz na zobrazení katalogu, jako například:
+Nebo můžete dát dotaz na zobrazení katalogu hello, jako například:
 
 
 ```
@@ -222,33 +222,33 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 &nbsp;
 
-### <a name="run-the-sample-oltp-workload"></a>Spuštění ukázky pracovního vytížení OLTP
+### <a name="run-hello-sample-oltp-workload"></a>Spustit hello ukázky OLTP pracovního vytížení
 
-Jediným rozdílem mezi následující dva *uložené procedury* je, že první postup používá verzích paměťově optimalizované tabulky, zatímco druhý postup používá regulární tabulky na disku:
+Hello jenom rozdíl mezi hello následující dva *uložené procedury* je první postup hello používá verzích paměťově optimalizované tabulky hello při hello druhý postup používá hello regulární tabulky na disku:
 
 - SalesLT**.** usp_InsertSalesOrder**_inmem**
 - SalesLT**.** usp_InsertSalesOrder**_ondisk**
 
 
-V této části najdete postup používání užitečný v **ostress.exe** nástroj provést dvě uložené procedury na stressful úrovních. Jak dlouho trvá pro spustí dvě přízvuk dokončíte, můžete porovnat.
+V této části, uvidíte, jak hello užitečný toouse **ostress.exe** tooexecute nástroj hello dvě uložené procedury na stressful úrovních. Jak dlouho trvá pro hello dva přízvuk spustí toofinish, můžete porovnat.
 
 
-Když spustíte ostress.exe, doporučujeme předat hodnoty parametrů, které jsou určené pro obě z následujících akcí:
+Když spustíte ostress.exe, doporučujeme předat hodnoty parametrů, které jsou určené pro obě hello následující:
 
 - Spustit velký počet souběžných připojení pomocí - n100.
 - Pomocí mít každý připojení smyčku stovky dobu, pomocí - r500.
 
 
-Ale můžete chtít začít s mnohem menšími hodnoty jako - n10 a - r 50 zajistit, že vše funguje.
+Můžete ale chtít toostart s mnohem menšími hodnoty jako - n10 a - r 50 tooensure, který vše funguje.
 
 
 ### <a name="script-for-ostressexe"></a>Skript pro ostress.exe
 
 
-V této části zobrazí skriptu T-SQL, vložené v našem ostress.exe příkazového řádku. Tento skript využívá položky, které byly vytvořeny pomocí skriptu T-SQL, který jste dříve nainstalovali.
+V této části zobrazí skript hello T-SQL, který je vložen v našem ostress.exe příkazového řádku. skript Hello používá položky, které byly vytvořeny hello skriptu T-SQL, který jste dříve nainstalovali.
 
 
-Následující skript vloží ukázka prodejní objednávky s pěti položek řádku do těchto paměťově optimalizované *tabulky*:
+Hello následující skript vloží ukázka prodejní objednávky s pěti položek řádku do následující hello paměťově optimalizované *tabulky*:
 
 - SalesLT.SalesOrderHeader_inmem
 - SalesLT.SalesOrderDetail_inmem
@@ -278,27 +278,27 @@ end
 ```
 
 
-Chcete-li *_ondisk* verzi předchozí skriptu T-SQL pro ostress.exe, měli byste nahradit oba výskyty *_inmem* substring s *_ondisk*. Tyto náhrady ovlivnit názvy tabulek a uložených procedur.
+toomake hello *_ondisk* verzi hello předchozí skriptu T-SQL pro ostress.exe, měli byste nahradit oba výskyty hello *_inmem* substring s *_ondisk*. Tyto náhrady ovlivnit hello názvy tabulek a uložených procedur.
 
 
 ### <a name="install-rml-utilities-and-ostress"></a>Instalace nástrojů RML a ostress
 
 
-V ideálním případě by plánujete spouštět ostress.exe na virtuální počítač Azure (VM). Měli byste vytvořit [virtuálního počítače Azure](https://azure.microsoft.com/documentation/services/virtual-machines/) ve stejné Azure geografické oblasti, kde se nachází databáze AdventureWorksLT. Ale ostress.exe na svém přenosném počítači může spouštět místo.
+V ideálním případě by plánování toorun ostress.exe na virtuální počítač Azure (VM). Měli byste vytvořit [virtuálního počítače Azure](https://azure.microsoft.com/documentation/services/virtual-machines/) v hello stejné Azure geografické oblasti, kde se nachází databáze AdventureWorksLT. Ale ostress.exe na svém přenosném počítači může spouštět místo.
 
 
-Ve virtuálním počítači nebo na ať hostitele, můžete zvolit, nainstalujte nástroje opětovného přehrání Markup Language (RML). Nástroje zahrnují ostress.exe.
+Na hello virtuálního počítače nebo na ať hostitele, můžete zvolit, nainstalujte nástroje hello opětovného přehrání Markup Language (RML). Hello nástroje zahrnují ostress.exe.
 
 Další informace naleznete v tématu:
-- Ostress.exe diskuse ve [ukázkové databáze pro OLTP v paměti](http://msdn.microsoft.com/library/mt465764.aspx).
+- Hello ostress.exe diskuse ve [ukázkové databáze pro OLTP v paměti](http://msdn.microsoft.com/library/mt465764.aspx).
 - [Ukázkové databáze pro OLTP v paměti](http://msdn.microsoft.com/library/mt465764.aspx).
-- [Blogu pro instalaci ostress.exe](http://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx).
+- Hello [blogu pro instalaci ostress.exe](http://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx).
 
 
 
 <!--
 dn511655.aspx is for SQL 2014,
-[Extensions to AdventureWorks to Demonstrate In-Memory OLTP]
+[Extensions tooAdventureWorks tooDemonstrate In-Memory OLTP]
 (http://msdn.microsoft.com/library/dn511655&#x28;v=sql.120&#x29;.aspx)
 
 whereas for SQL 2016+
@@ -308,13 +308,13 @@ whereas for SQL 2016+
 
 
 
-### <a name="run-the-inmem-stress-workload-first"></a>Spustit *_inmem* nejprve vystavila zátěži pracovního vytížení
+### <a name="run-hello-inmem-stress-workload-first"></a>Spustit hello *_inmem* nejprve vystavila zátěži pracovního vytížení
 
 
-Můžete použít *RML Cmd výzva* okno spustíte naše ostress.exe příkazový řádek. Parametry příkazového řádku přímé ostress na:
+Můžete použít *RML Cmd výzva* okno toorun naše ostress.exe příkazového řádku. Parametry příkazového řádku Hello přímé ostress na:
 
 - Připojení 100 běželo (-n100).
-- Každé připojení 50 času spuštění skriptu T-SQL (-r 50).
+- Každé připojení 50 času spuštění skriptu T-SQL hello (-r 50).
 
 
 ```
@@ -322,18 +322,18 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 ```
 
 
-Spuštění předchozího ostress.exe příkazového řádku:
+hello toorun předcházející ostress.exe příkazového řádku:
 
 
-1. Obnovení dat obsah databáze spuštěním následujícího příkazu v aplikaci SSMS odstranit všechna data, která byla vložená všech předchozích spuštění:
+1. Resetování hello databáze data obsah tak, že spustíte následující příkaz v aplikaci SSMS, toodelete hello všechna hello data, která byla vložená všech předchozích spuštění:
 
     ``` tsql
     EXECUTE Demo.usp_DemoReset;
     ```
 
-2. Text předchozí příkazového řádku ostress.exe kopírovat do schránky.
+2. Zkopírujte text hello hello předcházející schránky tooyour ostress.exe příkazového řádku.
 
-3. Nahraďte `<placeholders>` pro parametry -S - U -P -d s správné skutečné hodnoty.
+3. Nahraďte hello `<placeholders>` pro hello parametry -S - U -P -d s hello opravte skutečné hodnoty.
 
 4. V okně RML Cmd spusťte do upravená příkazového řádku.
 
@@ -341,7 +341,7 @@ Spuštění předchozího ostress.exe příkazového řádku:
 #### <a name="result-is-a-duration"></a>Výsledkem je, doba trvání
 
 
-Po dokončení ostress.exe zapíše spuštění doba trvání jako jeho poslední řádek výstupu v okně RML Cmd. Například kratší testovací běh už bylo asi 1,5 minuty:
+Po dokončení ostress.exe zapíše hello spustit trvání jako jeho poslední řádek výstupu v okně RML Cmd hello. Například kratší testovací běh už bylo asi 1,5 minuty:
 
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
@@ -349,93 +349,93 @@ Po dokončení ostress.exe zapíše spuštění doba trvání jako jeho posledn�
 #### <a name="reset-edit-for-ondisk-then-rerun"></a>Resetovat, upravit pro *_ondisk*, pak znovu spusťte
 
 
-Až budete mít výsledek z *_inmem* spustit, proveďte následující kroky pro *_ondisk* spustit:
+Až budete mít hello výsledek z hello *_inmem* spustit, proveďte následující kroky pro hello hello *_ondisk* spustit:
 
 
-1. Obnovit databázi v SSMS pro odstranění všech dat, který byl vložen podle předchozího spuštění spustíte následující příkaz:
+1. Obnovení databáze hello tak, že spustíte následující příkaz v aplikaci SSMS toodelete hello všechna hello data, která byla vložená hello předchozí spustit:
 ```
 EXECUTE Demo.usp_DemoReset;
 ```
 
-2. Upravit ostress.exe příkazového řádku k nahrazení všech *_inmem* s *_ondisk*.
+2. Upravit hello ostress.exe příkazového řádku tooreplace všechny *_inmem* s *_ondisk*.
 
-3. Spusťte ostress.exe podruhé a zaznamenat výsledek doba trvání.
+3. Znovu spustit ostress.exe pro hello ještě jednou a zachycení hello trvání výsledek.
 
-4. Znovu obnovte databázi (pro odstranění jeho zodpovědné, může být velký objem dat test).
+4. Znovu obnovte databáze hello (pro odstranění jeho zodpovědné, může být velký objem dat test).
 
 
 #### <a name="expected-comparison-results"></a>Očekávaný porovnání výsledků
 
-Naše testy v paměti ukázaly, že výkonu vylepšené podle **devětkrát** pro tento zneužívající vlastností prohlížeče zatížení s ostress systémem virtuálního počítače Azure ve stejné oblasti Azure jako databáze.
+Naše testy v paměti ukázaly, že výkonu vylepšené podle **devětkrát** pro tuto úlohu zneužívající vlastností prohlížeče s ostress systémem virtuálního počítače Azure v hello stejné oblasti Azure jako hello databáze.
 
 <a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
 
 &nbsp;
 
-## <a name="2-install-the-in-memory-analytics-sample"></a>2. Instalace ukázkové analýzy v paměti
+## <a name="2-install-hello-in-memory-analytics-sample"></a>2. Instalace ukázkové hello analýzy v paměti
 
 
-V této části při porovnání výsledků vstupně-výstupní operace a statistiky, když používáte index columnstore a index tradiční b stromu.
+V této části můžete porovnat hello vstupně-výstupní operace a statistiky výsledky při použití index columnstore a index tradiční b stromu.
 
 
-Pro analýzu v reálném čase na úloh s online zpracováním je často nejvhodnější použít neclusterovaný index columnstore. Podrobnosti najdete v tématu [popsané indexy Columnstore](http://msdn.microsoft.com/library/gg492088.aspx).
+Pro analýzu v reálném čase na úloh s online zpracováním je často nejlepším toouse neclusterovaný index columnstore. Podrobnosti najdete v tématu [popsané indexy Columnstore](http://msdn.microsoft.com/library/gg492088.aspx).
 
 
 
-### <a name="prepare-the-columnstore-analytics-test"></a>Příprava testovacího analytics columnstore
+### <a name="prepare-hello-columnstore-analytics-test"></a>Příprava hello columnstore analytics testu
 
 
-1. Použití portálu Azure vytvořit novou databázi AdventureWorksLT od vzorku.
+1. Pomocí portálu Azure toocreate čerstvé databáze AdventureWorksLT z ukázkové hello hello.
  - Použijte tento přesný název.
  - Vyberte všechny úroveň služeb Premium.
 
-2. Kopírování [sql_in memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) do schránky.
- - Skriptu T-SQL vytváří objekty nezbytné v paměti ukázkové databáze AdventureWorksLT, kterou jste vytvořili v kroku 1.
- - Tento skript vytvoří tabulce dimenzí a dvě tabulky faktů. Tabulky faktů se naplní 3.5 milionu řádků.
- - Skript může trvat 15 minut.
+2. Kopírování hello [sql_in memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) tooyour schránky.
+ - Hello skriptu T-SQL vytvoří hello objekty nezbytné v paměti v ukázkové databáze AdventureWorksLT hello, kterou jste vytvořili v kroku 1.
+ - skript Hello vytvoří hello tabulce dimenzí a dvě tabulky faktů. tabulky faktů Hello se naplní 3.5 milionu řádků.
+ - skript Hello může trvat 15 minut toocomplete.
 
-3. Vložit do aplikace SSMS skriptu T-SQL a poté spusťte tento skript. **COLUMNSTORE** – klíčové slovo v **CREATE INDEX** údajů je velmi důležitý, stejně jako na:<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
+3. Vložit do aplikace SSMS hello skriptu T-SQL a pak spusťte skript hello. Hello **COLUMNSTORE** – klíčové slovo v hello **CREATE INDEX** údajů je velmi důležitý, stejně jako na:<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
 
-4. Nastavit úroveň kompatibility 130 AdventureWorksLT:<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
+4. Nastavení úrovně toocompatibility AdventureWorksLT 130:<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
 
-    Úroveň 130 přímo nesouvisí s funkcí v paměti. Ale úroveň 130 obecně poskytuje vyšší výkon dotazu než 120.
+    Úroveň 130 není funkce přímo související tooIn paměti. Ale úroveň 130 obecně poskytuje vyšší výkon dotazu než 120.
 
 
 #### <a name="key-tables-and-columnstore-indexes"></a>Klíče tabulky a indexy columnstore
 
 
-- dbo. FactResellerSalesXL_CCI je tabulka, která má clusterovaný index columnstore, která obsahuje rozšířené komprese na *data* úroveň.
+- dbo. Tabulka, která má clusterovaný index columnstore, která obsahuje rozšířené komprese na hello je FactResellerSalesXL_CCI *data* úroveň.
 
-- dbo. FactResellerSalesXL_PageCompressed je tabulku, která má ekvivalentní regulární clusterovaný index, který se komprimují jenom na *stránky* úroveň.
-
-
-#### <a name="key-queries-to-compare-the-columnstore-index"></a>Klíče dotazů k porovnání columnstore index
+- dbo. Tabulka, která má ekvivalentní regulární clusterovaný index, který se komprimují jenom na hello je FactResellerSalesXL_PageCompressed *stránky* úroveň.
 
 
-Existují [několik typů dotazu T-SQL, které můžete spustit](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/clustered_columnstore_sample_queries.sql) zobrazíte vylepšení výkonu. V kroku 2 ve skriptu T-SQL věnujte pozornost tento pár dotazů. Liší se pouze na jednom řádku:
+#### <a name="key-queries-toocompare-hello-columnstore-index"></a>Index columnstore hello toocompare klíče dotazů
+
+
+Existují [několik typů dotazu T-SQL, které můžete spustit](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/clustered_columnstore_sample_queries.sql) toosee vylepšení výkonu. V kroku 2 hello skriptu T-SQL věnujte pozornost toothis pár dotazů. Liší se pouze na jednom řádku:
 
 
 - `FROM FactResellerSalesXL_PageCompressed a`
 - `FROM FactResellerSalesXL_CCI a`
 
 
-Clusterovaný index columnstore probíhá FactResellerSalesXL\_KÚS tabulky.
+Clusterovaný index columnstore je v hello FactResellerSalesXL\_KÚS tabulky.
 
-Následující výpis skriptu T-SQL vytiskne statistiky pro vstupně-výstupní operace a čas pro dotaz každé tabulky.
+Hello následující výňatek ze skriptu T-SQL vytiskne statistiky pro vstupně-výstupní operace a čas pro dotaz hello každé tabulky.
 
 
 ```
 /*********************************************************************
 Step 2 -- Overview
 -- Page Compressed BTree table v/s Columnstore table performance differences
--- Enable actual Query Plan in order to see Plan differences when Executing
+-- Enable actual Query Plan in order toosee Plan differences when Executing
 */
 -- Ensure Database is in 130 compatibility mode
 ALTER DATABASE AdventureworksLT SET compatibility_level = 130
 GO
 
--- Execute a typical query that joins the Fact Table with dimension tables
--- Note this query will run on the Page Compressed table, Note down the time
+-- Execute a typical query that joins hello Fact Table with dimension tables
+-- Note this query will run on hello Page Compressed table, Note down hello time
 SET STATISTICS IO ON
 SET STATISTICS TIME ON
 GO
@@ -460,8 +460,8 @@ SET STATISTICS TIME OFF
 GO
 
 
--- This is the same Prior query on a table with a clustered columnstore index CCI
--- The comparison numbers are even more dramatic the larger the table is (this is an 11 million row table only)
+-- This is hello same Prior query on a table with a clustered columnstore index CCI
+-- hello comparison numbers are even more dramatic hello larger hello table is (this is an 11 million row table only)
 SET STATISTICS IO ON
 SET STATISTICS TIME ON
 GO
@@ -486,7 +486,7 @@ SET STATISTICS TIME OFF
 GO
 ```
 
-V databázi s P2 cenovou úroveň bude pravděpodobně přibližně devětkrát zvýšení výkonu pro tento dotaz pomocí clusterovaný index columnstore v porovnání s tradiční index. S P15 bude pravděpodobně přibližně 57 časy zvýšení výkonu pomocí columnstore index.
+V databázi s hello P2 cenovou úroveň bude pravděpodobně přibližně devětkrát hello výkonnější pro tento dotaz pomocí hello clusterovaný index columnstore v porovnání s tradiční index hello. S P15 můžete očekávat o 57 časy hello výkonnější pomocí hello columnstore index.
 
 
 

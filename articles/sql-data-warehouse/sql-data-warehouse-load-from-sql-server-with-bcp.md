@@ -1,6 +1,6 @@
 ---
-title: "Načtení dat z SQL serveru do Azure SQL Data Warehouse (bcp) | Microsoft Docs"
-description: "Pro malou velikost dat využívá bcp k exportu data z SQL Serveru do plochých souborů a k importu dat přímo do Azure SQL Data Warehouse."
+title: aaaLoad dat z SQL serveru do Azure SQL Data Warehouse (bcp) | Microsoft Docs
+description: "Pro malou velikost dat využívá bcp tooexport data z tooflat soubory systému SQL Server a importovat data hello přímo do Azure SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.openlocfilehash: dae7b5f7456f4ec0daf60d55f9c38b780896ff83
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a03b5403d123e8814ae73a7cce8e6851c8b264a6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-flat-files"></a>Načtení dat z SQL Serveru do Azure SQL Data Warehouse (ploché soubory)
 > [!div class="op_single_selector"]
@@ -29,13 +29,13 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Pro malé datové sady můžete použít nástroj příkazového řádku bcp k exportu dat z SQL Serveru, které pak můžete načíst přímo do Azure SQL Data Warehouse.
+Pro malé datové sady můžete použít hello bcp nástroj příkazového řádku tooexport data z SQL serveru a pak můžete načíst přímo tooAzure SQL datového skladu.
 
 V tomto kurzu použijete nástroj bcp k následujícím operacím:
 
-* Export tabulky z SQL Serveru pomocí příkazu bcp out (nebo vytvoření jednoduchého ukázkového souboru)
-* Import tabulky z plochého souboru do SQL Data Warehouse
-* Vytvoření statistiky pro načtená data
+* Export tabulky z ze serveru SQL Server pomocí hello příkazu bcp out (nebo vytvoření jednoduchého ukázkového souboru)
+* Importovat hello tabulky z plochého souboru tooSQL datového skladu.
+* Vytvoření statistiky pro hello načíst data.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Loading-data-into-Azure-SQL-Data-Warehouse-with-BCP/player]
 > 
@@ -43,23 +43,23 @@ V tomto kurzu použijete nástroj bcp k následujícím operacím:
 
 ## <a name="before-you-begin"></a>Než začnete
 ### <a name="prerequisites"></a>Požadavky
-Pro jednotlivé kroky v tomto kurzu budete potřebovat:
+toostep prostřednictvím tohoto kurzu potřebujete:
 
 * Databázi SQL Data Warehouse
-* Nainstalovaný nástroj příkazového řádku bcp
-* Nainstalovaný nástroj příkazového řádku sqlcmd
+* Hello bcp nainstalovaný nástroj příkazového řádku
+* Hello sqlcmd nainstalovaný nástroj příkazového řádku
 
-Nástroje bcp a sqlcmd si můžete stáhnout z webu [Stažení softwaru společnosti Microsoft][Microsoft Download Center].
+Hello nástroje bcp a sqlcmd si můžete stáhnout z hello [Microsoft Download Center][Microsoft Download Center].
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>Data ve formátu ASCII nebo UTF-16
-Pokud pro tento kurz používáte svoje vlastní data, musí vaše data používat kódování ASCII nebo UTF-16, protože bcp nepodporuje kódování UTF-8. 
+Pokud se tento kurz používáte svoje vlastní data, musí vaše data toouse hello ASCII nebo UTF-16 kódování, protože bcp nepodporuje kódování UTF-8. 
 
-PolyBase podporuje UTF-8, ale zatím nepodporuje UTF-16. Je potřeba upozornit na to, že pokud chcete kombinovat používání nástroje s funkcí PolyBase, budete muset data po vyexportování z SQL Serveru převést na UTF-8. 
+PolyBase podporuje UTF-8, ale zatím nepodporuje UTF-16. Všimněte si, že pokud chcete, aby toocombine bcp pomocí funkce PolyBase budete potřebovat data hello tootransform tooUTF-8 po vyexportování z SQL serveru. 
 
 ## <a name="1-create-a-destination-table"></a>1. Vytvoření cílové tabulky
-Definujte v SQL Data Warehouse tabulku, která bude cílovou tabulkou pro načtení. Sloupce v tabulce musí odpovídat datům v jednotlivých řádcích vašeho datového souboru.
+Definujte tabulky v SQL Data Warehouse, které se bude hello cílové tabulky pro zatížení hello. Hello sloupců v tabulce hello musí odpovídat toohello dat v jednotlivých řádcích vašeho datového souboru.
 
-Pokud chcete vytvořit tabulku, otevřete okno příkazového řádku a pomocí sqlcmd.exe spusťte následující příkaz:
+toocreate tabulku, otevřete příkazový řádek a pomocí sqlcmd.exe toorun hello následující příkaz:
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -79,7 +79,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 
 ## <a name="2-create-a-source-data-file"></a>2. Vytvoření zdrojového datového souboru
-Otevřete Poznámkový blok a zkopírujte následující řádky dat do nového textového souboru. Pak tento soubor uložte do místního dočasného adresáře C:\Temp\DimDate2.txt. Tato data jsou ve formátu ASCII.
+Otevřete Poznámkový blok a zkopírujte hello následující řádky dat do nového textového souboru a potom uložte tento soubor tooyour místního dočasného adresáře C:\Temp\DimDate2.txt. Tato data jsou ve formátu ASCII.
 
 ```
 20150301,1,3
@@ -96,7 +96,7 @@ Otevřete Poznámkový blok a zkopírujte následující řádky dat do nového 
 20150101,1,3
 ```
 
-(Volitelné) Pokud chcete z databáze SQL Serveru vyexportovat svoje vlastní data, otevřete příkazový řádek a spusťte následující příkaz. TableName, ServerName, DatabaseName, Username a Password nahraďte svými vlastními informacemi.
+(Volitelné) tooexport svoje vlastní data z databáze systému SQL Server, otevřete příkazový řádek a spusťte následující příkaz hello. TableName, ServerName, DatabaseName, Username a Password nahraďte svými vlastními informacemi.
 
 ```sql
 bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t ','
@@ -104,20 +104,20 @@ bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName
 
 
 
-## <a name="3-load-the-data"></a>3. Načtení dat
-Pokud chcete načíst data, otevřete příkazový řádek a spusťte následující příkaz, přičemž hodnoty parametrů Server Name (Název serveru), Database name (Název databáze), Username (Uživatelské jméno) a Password (Heslo) nahraďte svými vlastními informacemi.
+## <a name="3-load-hello-data"></a>3. Načtení dat hello
+tooload hello data, otevřete příkazový řádek a spusťte následující příkaz, nahraďte hello hodnoty pro název serveru, název databáze, uživatelské jméno a heslo s informacemi o sobě hello.
 
 ```sql
 bcp DimDate2 in C:\Temp\DimDate2.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <password> -q -c -t  ','
 ```
 
-Pomocí tohoto příkazu ověřte, že se data načetla správně.
+Použijte tento příkaz tooverify hello data načetla správně.
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 
-Výsledky by měly vypadat takto:
+výsledky Hello by měl vypadat takto:
 
 | DateId | CalendarQuarter | FiscalQuarter |
 | --- | --- | --- |
@@ -135,9 +135,9 @@ Výsledky by měly vypadat takto:
 | 20151201 |4 |2 |
 
 ## <a name="4-create-statistics"></a>4. Vytvoření statistiky
-SQL Data Warehouse zatím nepodporuje automatické vytváření ani automatickou aktualizaci statistik. Aby vám dotazy vracely co nejlepší výsledky, je důležité, aby se statistiky vytvořily pro všechny sloupce všech tabulek po prvním načtením nebo kdykoli, kdy v datech dojde k zásadnějším změnám. Podrobné vysvětlení statistiky najdete v tématu [statistiky][Statistics]. 
+SQL Data Warehouse zatím nepodporuje automatické vytváření ani automatickou aktualizaci statistik. tooget hello nejlepší výkon dotazů, je důležité toocreate statistiky pro všechny sloupce všech tabulek po prvním načtením hello nebo po dojít k významné změny v datech hello. Podrobné vysvětlení statistiky najdete v tématu [statistiky][Statistics]. 
 
-Spuštěním následujícího příkazu vytvořte statistiku pro nově načtenou tabulku.
+Spusťte následující příkaz toocreate statistiky na nově načtenou tabulku hello.
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -148,17 +148,17 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 ## <a name="5-export-data-from-sql-data-warehouse"></a>5. Export dat z SQL Data Warehouse
-Cvičně si můžete data, která jste právě načetli, vyexportovat zpět z SQL Data Warehouse.  Příkaz pro export je úplně stejný jako příkaz pro export z SQL Serveru.
+Cvičně si můžete vyexportovat hello dat, který jste právě načetli zpět z SQL Data Warehouse.  příkaz tooexport Hello je přesně hello stejné jako Export z SQL serveru.
 
-Rozdíl je ve výsledcích. Vzhledem k tomu, že jsou data v rámci SQL Data Warehouse uložená v distribuovaných umístěních, při exportu dat zapíše data do výstupního souboru každý uzel Výpočty. Pořadí dat ve výstupním souboru bude s velkou pravděpodobností jiné než pořadí dat ve vstupním souboru.
+Je však rozdíl ve výsledcích hello. Vzhledem k tomu, že hello data je uložená v distribuovaných umístěních v rámci SQL Data Warehouse, při exportu dat zapíše ho každý výpočetní uzel data toohello výstupní soubor. pořadí Hello hello dat v hello výstupní soubor je pravděpodobně toobe liší od pořadí hello hello dat ve vstupním souboru hello.
 
 ### <a name="export-a-table-and-compare-exported-results"></a>Export tabulky a porovnání vyexportovaných výsledků
-Pokud si budete chtít vyexportovaná data zobrazit, otevřete okno příkazového řádku a spustíte tento příkaz pomocí svých vlastních parametrů. ServerName je název vašeho logického SQL serveru Azure.
+toosee hello exportovaná data, otevřete příkazový řádek a spusťte tento příkaz pomocí svých vlastních parametrů. ServerName je název hello Azure logického SQL serveru.
 
 ```sql
 bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t ','
 ```
-To, že se data vyexportovala správně, můžete ověřit tak, že nový soubor otevřete. Data v souboru by se měla shodovat s následujícím textem, budou ale pravděpodobně uvedená v jiném pořadí:
+Můžete ověřit hello data vyexportovala správně otevřením hello nový soubor. Hello data v souboru hello shodovat následujícím textem hello, ale bude pravděpodobně uvedená v jiném pořadí:
 
 ```
 20150301,1,3
@@ -175,8 +175,8 @@ To, že se data vyexportovala správně, můžete ověřit tak, že nový soubor
 20150101,1,3
 ```
 
-### <a name="export-the-results-of-a-query"></a>Export výsledků dotazu
-Místo vyexportování celé tabulky můžete také pomocí funkce **queryout** nástroje bcp vyexportovat jenom výsledky dotazu. 
+### <a name="export-hello-results-of-a-query"></a>Export hello výsledků dotazu
+Můžete použít hello **queryout** funkce bcp tooexport hello výsledků dotazu místo vyexportování celé tabulky hello. 
 
 ## <a name="next-steps"></a>Další kroky
 Přehled načítání najdete v tématu [Načtení dat do SQL Data Warehouse][Load data into SQL Data Warehouse].

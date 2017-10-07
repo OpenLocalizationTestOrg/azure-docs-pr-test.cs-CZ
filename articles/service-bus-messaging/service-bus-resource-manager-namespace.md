@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření oboru názvů Service Bus pomocí šablony Azure Resource Manager | Microsoft Docs"
-description: "Vytvoření oboru názvů Service Bus pomocí šablony Azure Resource Manageru"
+title: "obor názvů sběrnice aaaCreate pomocí šablony Azure Resource Manager | Microsoft Docs"
+description: "Použít toocreate šablony Azure Resource Manager oboru názvů Service Bus"
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
@@ -14,58 +14,58 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm;shvija
-ms.openlocfilehash: 8fff390919a1807995646dab322b4cbe56dd0268
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: fddf370affe761a734991ae9b60c1e5825e54ef7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Vytvoření oboru názvů Service Bus pomocí šablony Azure Resource Manager
 
-Tento článek popisuje, jak používat šablonu Azure Resource Manager, která vytvoří obor názvů sběrnice typu **zasílání zpráv** s Standard a základní SKU. V článku také definuje parametry, které jsou určené pro spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
+Tento článek popisuje, jak toouse šablonu Azure Resource Manager, který vytvořil oboru názvů Service Bus typu **zasílání zpráv** s Standard a základní SKU. Hello článku také definuje hello parametry, které jsou určené pro provádění hello hello nasazení. Můžete tuto šablonu použít pro vlastní nasazení, nebo si ji přizpůsobit toomeet vašim požadavkům.
 
 Další informace o vytváření šablon najdete v tématu [šablon pro tvorbu Azure Resource Manageru][Authoring Azure Resource Manager templates].
 
-Úplnou šablonu, najdete v článku [šablony oboru názvů Service Bus] [ Service Bus namespace template] na Githubu.
+Hello úplnou šablonu, najdete v části hello [šablony oboru názvů Service Bus] [ Service Bus namespace template] na Githubu.
 
 > [!NOTE]
-> Následující šablony Azure Resource Manager jsou k dispozici ke stažení a nasazení. 
+> Hello následující šablony Azure Resource Manager jsou k dispozici ke stažení a nasazení. 
 > 
 > * [Vytvoření oboru názvů Service Bus pomocí fronty](service-bus-resource-manager-namespace-queue.md)
 > * [Vytvoření oboru názvů Service Bus s téma a odběr](service-bus-resource-manager-namespace-topic.md)
 > * [Vytvoření oboru názvů Service Bus pomocí fronty a autorizační pravidla](service-bus-resource-manager-namespace-auth-rule.md)
 > * [Vytvoření oboru názvů Service Bus pomocí tématu, předplatné a pravidla](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> Vyhledat nejnovější šablony, najdete [šablon Azure rychlý Start] [ Azure Quickstart Templates] galerie a vyhledejte Service Bus.
+> toocheck pro hello nejnovější šablony, navštivte hello [šablon Azure rychlý Start] [ Azure Quickstart Templates] galerie a vyhledejte Service Bus.
 > 
 > 
 
 ## <a name="what-will-you-deploy"></a>Co budete nasazovat?
 Pomocí této šablony, kterou nasadíte v oboru názvů Service Bus s [Basic, Standard nebo Premium](https://azure.microsoft.com/pricing/details/service-bus/) SKU.
 
-Pokud chcete nasazení spustit automaticky, klikněte na následující tlačítko:
+toorun hello nasazení automaticky, klikněte na následující tlačítko hello:
 
-[![Nasazení do Azure](./media/service-bus-resource-manager-namespace/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-servicebus-create-namespace%2Fazuredeploy.json)
+[![Nasazení tooAzure](./media/service-bus-resource-manager-namespace/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-servicebus-create-namespace%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Parametry
-Pomocí Azure Resource Manageru definujete parametry pro hodnoty, které chcete zadat při nasazení šablony. Šablona obsahuje oddíl s názvem `Parameters` obsahující všechny hodnoty parametru. Měli byste parametr pro ty hodnoty, které se liší podle prostředí, ve kterém provádíte nasazení nebo na základě projektu, které nasazujete. Nedefinují parametry pro hodnoty, které zůstanou vždy stejná. Každá hodnota parametru se v šabloně použije k definování nasazovaných prostředků.
+S Azure Resource Manager, můžete definovat parametry pro hodnoty chcete toospecify při nasazení šablony hello. Šablona Hello zahrnuje části s názvem `Parameters` obsahující všechny hodnoty parametru hello. Měli byste parametr pro ty hodnoty, které se liší podle hello prostředí, které nasazujete nebo na základě hello projektu, které nasazujete. Parametry nedefinuje pro hodnoty, které vždy zůstanou hello stejné. Každá hodnota parametru se používá v hello šablony toodefine hello prostředky, které jsou nasazeny.
 
-Tato šablona definuje následující parametry.
+Tato šablona určuje hello následující parametry.
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
-Název oboru názvů Service Bus k vytvoření.
+Název Hello toocreate oboru názvů Service Bus hello.
 
 ```json
 "serviceBusNamespaceName": {
 "type": "string",
 "metadata": { 
-    "description": "Name of the Service Bus namespace" 
+    "description": "Name of hello Service Bus namespace" 
     }
 }
 ```
 
 ### <a name="servicebussku"></a>serviceBusSKU
-Název služby Service Bus [SKU](https://azure.microsoft.com/pricing/details/service-bus/) k vytvoření.
+Název Hello hello Service Bus [SKU](https://azure.microsoft.com/pricing/details/service-bus/) toocreate.
 
 ```json
 "serviceBusSku": { 
@@ -77,28 +77,28 @@ Název služby Service Bus [SKU](https://azure.microsoft.com/pricing/details/ser
     ], 
     "defaultValue": "Standard", 
     "metadata": { 
-        "description": "The messaging tier for service Bus namespace" 
+        "description": "hello messaging tier for service Bus namespace" 
     } 
 
 ```
 
-Šablona definuje hodnoty, které jsou povoleny pro tento parametr (Basic, Standard nebo Premium) a přiřadí výchozí hodnotu (Standard), pokud není zadaná žádná hodnota.
+Šablona Hello definuje hello hodnoty, které jsou povoleny pro tento parametr (Basic, Standard nebo Premium) a přiřadí výchozí hodnotu (Standard), pokud není zadaná žádná hodnota.
 
 Další informace o cenách služby Service Bus najdete v tématu [Service Bus ceny a fakturace][Service Bus pricing and billing].
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
-Verze rozhraní API služby Service Bus šablony.
+verze rozhraní API služby Service Bus Hello hello šablony.
 
 ```json
 "serviceBusApiVersion": { 
        "type": "string", 
        "defaultValue": "2015-08-01", 
        "metadata": { 
-           "description": "Service Bus ApiVersion used by the template" 
+           "description": "Service Bus ApiVersion used by hello template" 
        } 
 ```
 
-## <a name="resources-to-deploy"></a>Prostředky k nasazení
+## <a name="resources-toodeploy"></a>Toodeploy prostředky
 ### <a name="service-bus-namespace"></a>Obor názvů Service Bus
 Vytvoří standardní oboru názvů Service Bus typu **zasílání zpráv**.
 
@@ -120,7 +120,7 @@ Vytvoří standardní oboru názvů Service Bus typu **zasílání zpráv**.
 ]
 ```
 
-## <a name="commands-to-run-deployment"></a>Příkazy pro spuštění nasazení
+## <a name="commands-toorun-deployment"></a>Příkazy toorun nasazení
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
@@ -136,14 +136,14 @@ azure group deployment create <my-resource-group> <my-deployment-name> --templat
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste vytvoření a nasazení prostředků pomocí Azure Resource Manager, zjistěte, jak tyto zdroje spravovat pomocí čtení těchto článcích:
+Nyní, po vytvoření a nasazení prostředků pomocí Azure Resource Manager, se naučíte, jak toomanage tyto prostředky načtením těchto článcích:
 
 * [Správa služby Service Bus pomocí prostředí PowerShell](service-bus-manage-with-ps.md)
-* [Správa prostředků služby Service Bus pomocí Průzkumníka služby sběrnice](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* [Správa prostředků služby Service Bus pomocí hello Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Service Bus namespace template]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 [Service Bus pricing and billing]: service-bus-pricing-billing.md
 [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
-[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
+[Using hello Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md

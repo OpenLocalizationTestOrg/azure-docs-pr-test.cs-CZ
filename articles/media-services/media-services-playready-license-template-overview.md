@@ -1,6 +1,6 @@
 ---
-title: "Přehled šablonu licence Media Services PlayReady"
-description: "Toto téma poskytuje přehled šablonu licence PlayReady, která slouží ke konfiguraci licence technologie PlayReady."
+title: "Přehled šablonu licence PlayReady služby aaaMedia"
+description: "Toto téma poskytuje přehled šablonu licence PlayReady, která používá licence technologie PlayReady tooconfigure."
 author: juliako
 manager: cfowler
 editor: 
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: be19f616e36916655390cd05e738e93c08dcdf68
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5a5ba930c56f70038db204681486ebc4308199fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="media-services-playready-license-template-overview"></a>Přehled šablonu licence Media Services PlayReady
-Azure Media Services nyní poskytuje službu k doručování licencí PlayReady společnosti Microsoft. Když koncový uživatel player (například Silverlight) pokusí o přehrání obsahu PlayReady chráněné, žádost o posílá službu doručování licencí jak licenci získat. Pokud licenční služby schvalovat žádosti, vydá licenci, která se může odeslat klientovi a slouží k dešifrování- and -play zadaný obsah.
+Azure Media Services nyní poskytuje službu k doručování licencí PlayReady společnosti Microsoft. Když se koncový uživatel player hello (například Silverlight) pokusí tooplay vaše PlayReady chráněný obsah, je požadavek odeslaný toohello licence doručení služby tooobtain licenci. Pokud hello licenční služby schválí požadavek hello, vystavuje hello licenci, která je klient odeslané toohello a může být použité toodecrypt a play hello zadaný obsah.
 
-Služba Media Services také poskytuje rozhraní API, která umožňují nakonfigurujte své licence PlayReady. Licence obsahovat práva a omezení, které chcete použít pro modul runtime PlayReady DRM vynucovat, když se uživatel pokouší přehrávání chráněný obsah.
+Služba Media Services také poskytuje rozhraní API, která umožňují nakonfigurujte své licence PlayReady. Licence obsahovat hello práva a omezení, že chcete pro hello tooenforce runtime PlayReady DRM když uživatel se pokouší tooplayback chráněného obsahu.
 Tady jsou některé příklady PlayReady licenční omezení, které můžete zadat:
 
-* Hodnotu DateTime, ze kterého je platná licence.
-* Hodnota data a času, když vyprší platnost licence. 
-* Licenci pro ukládání do trvalého úložiště na straně klienta. Trvalé licence jsou obvykle používány k povolit offline přehrávání obsahu.
-* Minimální úroveň zabezpečení, přehrávač musí mít k přehrání obsahu. 
-* Úroveň ochrany výstupu pro ovládací prvky výstup audio\video obsahu. 
-* Další informace najdete v části ovládací prvky výstup (3.5) v [pravidla dodržování předpisů PlayReady](https://www.microsoft.com/playready/licensing/compliance/) dokumentu.
+* Hello DateTime, ze které hello je platná licence.
+* Hello hodnotu DateTime, když vyprší platnost licence hello. 
+* Pro toobe licence hello ukládány do trvalého úložiště na hello klienta. Trvalé licence jsou obvykle používanými tooallow offline přehrávání obsahu hello.
+* Hello minimální úroveň zabezpečení, přehrávač musí mít tooplay svůj obsah. 
+* Hello výstupní úroveň ochrany pro ovládací prvky výstup hello audio\video obsahu. 
+* Další informace najdete v tématu ovládací prvky výstup hello část (3.5) v hello [pravidla dodržování předpisů PlayReady](https://www.microsoft.com/playready/licensing/compliance/) dokumentu.
 
 > [!NOTE]
-> V současné době můžete konfigurovat pouze PlayRight licence PlayReady (toto právo je vyžadováno). PlayRight dává možnost klienta k přehrávání obsahu. PlayRight také umožňuje konfigurovat omezení, které jsou specifické pro přehrávání. Další informace najdete v tématu [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight).
+> V současné době můžete konfigurovat pouze hello PlayRight licence PlayReady hello (toto právo je vyžadováno). Hello PlayRight udává hello klienta hello možnost tooplayback hello obsah. Hello PlayRight také umožňuje konfigurovat konkrétní tooplayback omezení. Další informace najdete v tématu [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight).
 > 
 > 
 
-Pokud chcete konfigurovat licence technologie PlayReady pomocí služby Media Services, musíte nakonfigurovat šablona licence Media Services PlayReady. Šablona je definována v kódu XML.
+licence technologie PlayReady tooconfigure pomocí služby Media Services, je nutné nakonfigurovat hello šablona licence Media Services PlayReady. Hello šablona je definována v kódu XML.
 
-Následující příklad ukazuje nejjednodušší (a nejběžnější) šablony, která nakonfiguruje základní streamování licenci. S touto licencí vaši klienti budou moci přehrávání vaší PlayReady chráněného obsahu.
+Hello následující příklad ukazuje hello nejjednodušší (a nejběžnější) šablonu, která nakonfiguruje základní streamování licenci. Vaši klienti tuto licenci by být možné tooplayback vaše PlayReady chráněného obsahu.
 
     <?xml version="1.0" encoding="utf-8"?>
     <PlayReadyLicenseResponseTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" 
@@ -53,30 +53,30 @@ Následující příklad ukazuje nejjednodušší (a nejběžnější) šablony,
       </LicenseTemplates>
     </PlayReadyLicenseResponseTemplate>
 
-Soubor XML vyhovuje PlayReady licence šablony XML schéma definované v šabloně licence PlayReady části schématu XML.
+Hello XML vyhovuje toohello PlayReady licence šablony XML schéma definované v šablona licence PlayReady hello části schématu XML.
 
-Služba Media Services také definuje sadu tříd rozhraní .NET, které by bylo možné serializovat a deserializovat do a z XML. Popis hlavní třídy naleznete v tématu [Media Services .NET třídy](media-services-playready-license-template-overview.md#classes). která se používají ke konfiguraci šablony licence.
+Služba Media Services také definuje sadu tříd rozhraní .NET, které by mohly být použité tooserialized a deserializovat tooand z hello XML. Popis hlavní třídy naleznete v tématu [Media Services .NET třídy](media-services-playready-license-template-overview.md#classes). šablony použité tooconfigure licencí, které jsou.
 
-Příklad začátku do konce, který konfiguruje šablona licence PlayReady pomocí třídy rozhraní .NET, naleznete v části [pomocí dynamického šifrování PlayReady a službu doručování licencí](media-services-protect-with-drm.md).
+Příklad klient server, který používá rozhraní .NET třídy šablona licence PlayReady hello tooconfigure, najdete v části [pomocí dynamického šifrování PlayReady a službu doručování licencí](media-services-protect-with-drm.md).
 
-## <a id="classes"></a>Media Services .NET třídy, které se používají ke konfiguraci šablony licencí
-Následují že hlavní třídy rozhraní .NET, které se používají ke konfiguraci šablony licence Media Services PlayReady. Tyto třídy mapy pro typy definované v [schématu XML šablony licence PlayReady](media-services-playready-license-template-overview.md#schema).
+## <a id="classes"></a>Media Services .NET třídy, které jsou šablony používané tooconfigure licencí
+Následující Hello jsou hello hlavní rozhraní .NET třídy jsou používané tooconfigure Media Services PlayReady licence šablony. Tyto třídy map toohello typy definované v [schématu XML šablony licence PlayReady](media-services-playready-license-template-overview.md#schema).
 
-[MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) třída se používá k serializaci a deserializaci do a z šablona licence Media Services XML.
+Hello [MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) třída je použité tooserialize a deserializovat tooand z šablony licencí Media Services hello XML.
 
 ### <a name="playreadylicenseresponsetemplate"></a>PlayReadyLicenseResponseTemplate
-[PlayReadyLicenseResponseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate.aspx) -Tato třída reprezentuje šablonu pro odpověď odeslána zpět do koncového uživatele. Obsahuje pole, pro vlastní data řetězec o délce licenčního serveru a aplikace (může být užitečná pro vlastní aplikaci logiky), jakož i seznam jednu nebo více šablon licence.
+[PlayReadyLicenseResponseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate.aspx) -Tato třída reprezentuje hello šablony pro odeslané odpovědi hello back toohello koncového uživatele. Obsahuje pole, pro vlastní data řetězec o délce hello licenčního serveru a aplikace hello (může být užitečná pro vlastní aplikaci logiky), jakož i seznam jednu nebo více šablon licence.
 
-Toto je třída "nejvyšší úrovně" v hierarchii šablony. Znamená, že šablona odpovědi obsahuje seznam šablon licence a licencí šablony zahrnují (přímo ani nepřímo) všechny třídy, které obsahují data šablony k serializaci.
+Toto je třída "nejvyšší úrovně" hello v hierarchii šablony hello. Což znamená, že šablona hello odpovědi obsahuje seznam šablon licencí, které zahrnují šablony licence hello (přímo ani nepřímo) všechny hello jiné třídy, které tvoří hello šablony dat toobe serializovat.
 
 ### <a name="playreadylicensetemplate"></a>PlayReadyLicenseTemplate
-[PlayReadyLicenseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate.aspx) – třída reprezentuje licence šablonu pro vytvoření licence technologie PlayReady má být vrácen pro koncové uživatele. Obsahuje data na klíč k obsahu v licence a oprávnění nebo omezení která budou vynucena modulem runtime PlayReady DRM, při použití klíče obsahu.
+[PlayReadyLicenseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate.aspx) -hello třída reprezentuje šablonu licence pro vytváření toobe licence PlayReady vrátil toohello koncovým uživatelům. Obsahuje data hello na klíč obsahu hello v hello licenci a žádné oprávnění nebo omezení toobe vynuceny hello runtime PlayReady DRM při použití hello klíč obsahu.
 
 ### <a id="PlayReadyPlayRight"></a>PlayReadyPlayRight
-[PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx) -Tato třída reprezentuje PlayRight licence PlayReady. Udělí uživateli možnost přehrávání obsahu podléhají omezením počtu nula či více nakonfigurované v licenci a v samotné PlayRight (pro přehrávání specifičtější zásady). Většinu nastavení zásad na PlayRight souvisí se výstup omezení, které řídit typy výstupů, které obsah může být přehráván přes a nějaká omezení, které musí být použity při pomocí daného výstup. Například pokud je povoleno DigitalVideoOnlyContentRestriction, pak DRM runtime povolí pouze video, který se má zobrazit nad digitální výstupy (analogovým video výstupy nemohou předat obsah).
+[PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx) -Tato třída reprezentuje hello PlayRight licence PlayReady. Udělí hello uživatele hello možnost tooplayback hello obsahu subjektu toohello nula nebo více omezení nakonfigurovaná v hello licenci a na hello PlayRight samotné (pro přehrávání specifičtější zásady). Velká část hello zásady na hello PlayRight má toodo s výstup omezení, které řídí hello typy výstupů, které hello obsah může být přehráván přes a nějaká omezení, které musí být použity při pomocí daného výstup. Například pokud hello DigitalVideoOnlyContentRestriction je povoleno, pak hello DRM runtime povolí pouze hello video toobe zobrazí přes digitální výstupy (analogovým video výstupy nebudou povolena, toopass hello obsahu).
 
 > [!IMPORTANT]
-> Tyto typy omezení, můžou být velmi mocné ale může ovlivnit také prostředí pro uživatele. Pokud ochranu výstup nakonfigurovaných příliš omezující, může být možné přehrát na někteří klienti obsah. Další informace najdete v tématu [pravidla dodržování předpisů PlayReady](https://www.microsoft.com/playready/licensing/compliance/) dokumentu.
+> Tyto typy omezení, můžou být velmi mocné ale může ovlivnit také hello uživatelské prostředí. Pokud ochranu výstup hello nakonfigurovaných příliš omezující, může být možné přehrát na někteří klienti hello obsah. Další informace najdete v tématu hello [pravidla dodržování předpisů PlayReady](https://www.microsoft.com/playready/licensing/compliance/) dokumentu.
 > 
 > 
 

@@ -1,6 +1,6 @@
 ---
-title: "Vytvořit prostředky Azure Service Bus pomocí šablony Azure Resource Manager | Microsoft Docs"
-description: "Použití šablon Azure Resource Manageru k automatizaci vytváření prostředků služby Service Bus"
+title: "prostředky Azure Service Bus aaaCreate pomocí šablony Azure Resource Manager | Microsoft Docs"
+description: "Pomocí šablony Azure Resource Manager tooautomate hello vytváření prostředků služby Service Bus"
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm
-ms.openlocfilehash: c8142d8edfd3a527b13d655bac21acf5332f2d14
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: e539902cae307b63ae7c332580e2064761331ec5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Vytvoření služby Service Bus prostředků pomocí šablony Azure Resource Manager
 
-Tento článek popisuje postup vytvoření a nasazení prostředků služby Service Bus pomocí šablony Azure Resource Manager, prostředí PowerShell a zprostředkovatele prostředků služby Service Bus.
+Tento článek popisuje, jak toocreate a nasazení prostředků služby Service Bus pomocí šablony Azure Resource Manager, prostředí PowerShell a poskytovatele prostředků hello Service Bus.
 
-Šablony Azure Resource Manageru můžete definovat, které prostředky pro řešení nasadit a určit parametry a proměnné, které vám umožní zadat hodnoty pro různá prostředí. Šablona se skládá z JSON a výrazy, které můžete použít k vytvoření hodnot pro vaše nasazení. Podrobné informace o vytváření šablon Azure Resource Manageru a diskuzi o formátu šablony najdete v tématu [syntaxi šablon Azure Resource Manager a struktura](../azure-resource-manager/resource-group-authoring-templates.md).
+Šablony Azure Resource Manageru můžete definovat hello toodeploy prostředky pro řešení a toospecify parametry a proměnné, které umožňují tooinput hodnoty pro různá prostředí. Šablona Hello se skládá z JSON a výrazy, můžete použít hodnoty tooconstruct pro vaše nasazení. Podrobné informace o vytváření šablon Azure Resource Manageru a diskuzi o formátu hello šablony najdete v tématu [syntaxi šablon Azure Resource Manager a struktura](../azure-resource-manager/resource-group-authoring-templates.md).
 
 > [!NOTE]
-> V příkladech v tomto článku ukazují, jak pomocí Správce prostředků Azure k vytvoření oboru názvů Service Bus a entity zasílání zpráv (fronty). Další příklady šablony najdete v článku [galerii šablon Azure rychlý Start] [ Azure Quickstart Templates gallery] a vyhledejte "Service Bus".
+> jak Hello příklady v této zobrazit článek toouse Azure Resource Manager toocreate oboru názvů Service Bus a zasílání zpráv entity (queue). Další příklady šablony najdete v článku hello [galerii šablon Azure rychlý Start] [ Azure Quickstart Templates gallery] a vyhledejte "Service Bus".
 >
 >
 
 ## <a name="service-bus-resource-manager-templates"></a>Šablony služby sběrnice Resource Manager
 
-Tyto šablony správce prostředků Azure Service Bus jsou k dispozici ke stažení a nasazení. Kliknutím na následující odkazy podrobnosti o každém z nich, s odkazy na šablony na Githubu:
+Tyto šablony správce prostředků Azure Service Bus jsou k dispozici ke stažení a nasazení. Klikněte na tlačítko hello následující odkazy podrobnosti o každém z nich, se šablonami toohello odkazy na Githubu:
 
 * [Vytvoření oboru názvů Service Bus](service-bus-resource-manager-namespace.md)
 * [Vytvoření oboru názvů Service Bus pomocí fronty](service-bus-resource-manager-namespace-queue.md)
@@ -43,25 +43,25 @@ Tyto šablony správce prostředků Azure Service Bus jsou k dispozici ke staže
 
 ## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
 
-Následující postup popisuje, jak pomocí prostředí PowerShell pro nasazení šablonu Azure Resource Manager, která vytvoří **standardní** vrstvy oboru názvů Service Bus a fronty v daném oboru názvů. Tento příklad vychází z [vytvoření oboru názvů Service Bus s frontou](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue) šablony. Přibližná pracovní postup je následující:
+Hello následující postup popisuje, jak toouse prostředí PowerShell toodeploy šablonu Azure Resource Manager vytvářející **standardní** vrstvy oboru názvů Service Bus a fronty v daném oboru názvů. Tento příklad vychází z hello [vytvoření oboru názvů Service Bus s frontou](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue) šablony. Hello přibližnou pracovní postup je následující:
 
 1. Instalace prostředí PowerShell.
-2. Vytvořte šablonu a (volitelně) ze souboru parametrů.
-3. V prostředí PowerShell Přihlaste se k účtu Azure.
+2. Vytvořte šablonu hello a (volitelně) ze souboru parametrů.
+3. V prostředí PowerShell Přihlaste se tooyour účet Azure.
 4. Pokud žádný neexistuje, vytvořte novou skupinu prostředků.
-5. Testovací nasazení.
-6. V případě potřeby nastavte režim nasazení.
-7. Nasazení šablony.
+5. Test nasazení hello.
+6. V případě potřeby nastavte režim nasazení hello.
+7. Nasazení šablony hello.
 
 Úplné informace o nasazení šablony Azure Resource Manager najdete v tématu [nasazení prostředků pomocí šablony Azure Resource Manager][Deploy resources with Azure Resource Manager templates].
 
 ### <a name="install-powershell"></a>Instalace PowerShellu
 
-Nainstalovat Azure PowerShell podle pokynů v [Začínáme s Azure Powershellem](/powershell/azure/get-started-azureps).
+Nainstalovat Azure PowerShell podle následujících pokynů hello v [Začínáme s Azure Powershellem](/powershell/azure/get-started-azureps).
 
 ### <a name="create-a-template"></a>Vytvoření šablony
 
-Klonování nebo kopírování [201-servicebus vytvořit queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) šablony z Githubu:
+Klonování nebo kopírování hello [201-servicebus vytvořit queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) šablony z Githubu:
 
 ```json
 {
@@ -71,20 +71,20 @@ Klonování nebo kopírování [201-servicebus vytvořit queue](https://github.c
         "serviceBusNamespaceName": {
             "type": "string",
             "metadata": {
-                "description": "Name of the Service Bus namespace"
+                "description": "Name of hello Service Bus namespace"
             }
         },
         "serviceBusQueueName": {
             "type": "string",
             "metadata": {
-                "description": "Name of the Queue"
+                "description": "Name of hello Queue"
             }
         },
         "serviceBusApiVersion": {
             "type": "string",
             "defaultValue": "2015-08-01",
             "metadata": {
-                "description": "Service Bus ApiVersion used by the template"
+                "description": "Service Bus ApiVersion used by hello template"
             }
         }
     },
@@ -131,7 +131,7 @@ Klonování nebo kopírování [201-servicebus vytvořit queue](https://github.c
 
 ### <a name="create-a-parameters-file-optional"></a>Vytvořte soubor parametrů (volitelné)
 
-Chcete-li použít soubor volitelné parametry, zkopírujte [201-servicebus vytvořit queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) souboru. Nahraďte hodnotu `serviceBusNamespaceName` s názvem oboru názvů Service Bus, kterou chcete vytvořit v tomto nasazení a nahraďte hodnotu `serviceBusQueueName` s názvem fronty, kterou chcete vytvořit.
+toouse soubor volitelné parametry kopie hello [201-servicebus vytvořit queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) souboru. Nahraďte hodnotu hello `serviceBusNamespaceName` hello název oboru názvů Service Bus hello chcete toocreate v tomto nasazení a nahraďte hodnotu hello `serviceBusQueueName` s názvem hello hello fronty chcete toocreate.
 
 ```json
 {
@@ -151,37 +151,37 @@ Chcete-li použít soubor volitelné parametry, zkopírujte [201-servicebus vytv
 }
 ```
 
-Další informace najdete v tématu [parametry](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) tématu.
+Další informace najdete v tématu hello [parametry](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) tématu.
 
-### <a name="log-in-to-azure-and-set-the-azure-subscription"></a>Přihlaste se k Azure a nastavte předplatné Azure
+### <a name="log-in-tooazure-and-set-hello-azure-subscription"></a>Přihlaste se tooAzure a nastavte hello předplatného Azure
 
-Z řádku prostředí PowerShell spusťte následující příkaz:
+Příkazovém řádku prostředí PowerShell spusťte následující příkaz hello:
 
 ```powershell
 Login-AzureRmAccount
 ```
 
-Zobrazí se výzva k přihlášení k účtu Azure. Po přihlášení, spusťte následující příkaz k zobrazení dostupných předplatných.
+Jste výzvami toolog na tooyour účet Azure. Po přihlášení, spusťte následující příkaz tooview hello dostupných předplatných.
 
 ```powershell
 Get-AzureRMSubscription
 ```
 
-Tento příkaz vrátí seznam dostupných předplatných Azure. Spuštěním následujícího příkazu vyberte předplatné pro aktuální relaci. Nahraďte `<YourSubscriptionId>` s identifikátorem GUID pro předplatné Azure, kterou chcete použít.
+Tento příkaz vrátí seznam dostupných předplatných Azure. Zvolte předplatné pro hello aktuální relace tak, že spustíte následující příkaz hello. Nahraďte `<YourSubscriptionId>` s hello identifikátor GUID pro hello předplatné chcete toouse.
 
 ```powershell
 Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 ```
 
-### <a name="set-the-resource-group"></a>Nastavit skupinu prostředků
+### <a name="set-hello-resource-group"></a>Skupina prostředků hello sady
 
-Pokud nemáte existující prostředek skupiny, vytvořte novou skupinu prostředků s ** New-AzureRmResourceGroup ** příkaz. Zadejte název skupiny prostředků a umístění, do kterého chcete použít. Například:
+Pokud nemáte existující prostředek skupiny, vytvořte novou skupinu prostředků s hello ** New-AzureRmResourceGroup ** příkaz. Zadejte název hello hello skupinu prostředků a umístění, které chcete toouse. Například:
 
 ```powershell
 New-AzureRmResourceGroup -Name MyDemoRG -Location "West US"
 ```
 
-Pokud bylo úspěšné, zobrazí se souhrn novou skupinu prostředků.
+Pokud bylo úspěšné, zobrazí se souhrn hello novou skupinu prostředků.
 
 ```powershell
 ResourceGroupName : MyDemoRG
@@ -191,44 +191,44 @@ Tags              :
 ResourceId        : /subscriptions/<GUID>/resourceGroups/MyDemoRG
 ```
 
-### <a name="test-the-deployment"></a>Otestování nasazení
+### <a name="test-hello-deployment"></a>Testovací nasazení pro hello
 
-Ověření nasazení tak, že spustíte `Test-AzureRmResourceGroupDeployment` rutiny. Při testování nasazení, zadejte parametry přesně stejně jako při provádění nasazení.
-
-```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
-```
-
-### <a name="create-the-deployment"></a>Vytvoření nasazení
-
-Chcete-li vytvořit nové nasazení, spusťte `New-AzureRmResourceGroupDeployment` rutiny a zadejte potřebné parametry po zobrazení výzvy. Parametry jsou název pro vaše nasazení, název vaší skupiny prostředků a cesta nebo adresa URL k souboru šablony. Pokud **režimu** není zadán parametr, výchozí hodnota **přírůstkové** se používá. Další informace najdete v tématu [přírůstkové a úplné nasazení](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments).
-
-Následující příkaz vás vyzve k zadání tři parametry v okně prostředí PowerShell:
+Ověření nasazení spuštěním hello `Test-AzureRmResourceGroupDeployment` rutiny. Při testování hello nasazení, zadejte přesně tak, jak by při provádění nasazení hello parametry.
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
+Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path tootemplate file>\azuredeploy.json
 ```
 
-Místo toho zadat soubor parametrů, použijte následující příkaz.
+### <a name="create-hello-deployment"></a>Vytvoření nasazení hello
+
+nové nasazení hello toocreate, spusťte hello `New-AzureRmResourceGroupDeployment` rutiny a zadejte potřebné parametry hello po zobrazení výzvy. Hello parametry jsou název pro vaše nasazení hello název vaší skupiny prostředků a hello cesta nebo adresa URL souboru šablony toohello. Pokud hello **režimu** není zadán parametr, hello výchozí hodnotu **přírůstkové** se používá. Další informace najdete v tématu [přírůstkové a úplné nasazení](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments).
+
+Hello následující příkazové řádky můžete pro hello tři parametry v okně PowerShell hello:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
+New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path tootemplate file>\azuredeploy.json
 ```
 
-Vložené parametry můžete použít také při spuštění rutiny nasazení. Příkaz vypadá takto:
+toospecify soubor parametrů místo toho použijte následující příkaz hello.
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
+New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path tootemplate file>\azuredeploy.json -TemplateParameterFile <path tooparameters file>\azuredeploy.parameters.json
 ```
 
-Ke spuštění [dokončení](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) nasazení, nastavte **režimu** parametru **Complete**:
+Vložené parametry můžete použít také při spuštění rutiny nasazení hello. příkaz Hello vypadá takto:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
+New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path tootemplate file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
-### <a name="verify-the-deployment"></a>Ověření nasazení
-Pokud prostředky jsou nasazeny úspěšně, zobrazí se souhrn nasazení v okně prostředí PowerShell:
+toorun [dokončení](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) nasazení, sada hello **režimu** parametr příliš**Complete**:
+
+```powershell
+New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path tootemplate file>\azuredeploy.json
+```
+
+### <a name="verify-hello-deployment"></a>Ověření nasazení hello
+Pokud hello prostředky nasadí úspěšně, zobrazí se v okně PowerShell hello shrnutí nasazení hello:
 
 ```powershell
 DeploymentName    : MyDemoDeployment
@@ -247,7 +247,7 @@ Parameters        :
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Nyní jste se seznámili základní pracovní postup a příkazy pro nasazení šablonu Azure Resource Manager. Podrobnější informace získáte pomocí následujících odkazů:
+Nyní jste se seznámili hello základní pracovní postup a příkazy pro nasazení šablonu Azure Resource Manager. Podrobnější informace najdete v článku hello následující odkazy:
 
 * [Přehled Azure Resource Manageru][Azure Resource Manager overview]
 * [Nasazení prostředků pomocí šablony Resource Manageru a prostředí Azure PowerShell][Deploy resources with Azure Resource Manager templates]

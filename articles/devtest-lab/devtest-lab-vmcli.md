@@ -1,6 +1,6 @@
 ---
-title: "Vytvářet a spravovat virtuální počítače v DevTest Labs pomocí rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Naučte se používat Azure DevTest Labs k vytváření a správě virtuálních počítačů pomocí Azure CLI 2.0"
+title: "aaaCreate a spravovat virtuální počítače v DevTest Labs pomocí rozhraní příkazového řádku Azure | Microsoft Docs"
+description: "Zjistěte, jak Azure DevTest Labs toocreate toouse a spravovat virtuální počítače s Azure CLI 2.0"
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: lisawong19
@@ -13,34 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: liwong
-ms.openlocfilehash: 42b0448c1bcdfa909715abd5075353d63cab8389
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 98ea3aa7b2489bff61971573aaf584984cd811e6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Vytvářet a spravovat virtuální počítače s DevTest Labs pomocí rozhraní příkazového řádku Azure
+# <a name="create-and-manage-virtual-machines-with-devtest-labs-using-hello-azure-cli"></a>Vytvářet a spravovat virtuální počítače s použitím hello rozhraní příkazového řádku Azure DevTest Labs
 Tento úvodní vám pomohou vytvoření, spuštění, připojením, aktualizaci a mazání vývojovém počítači ve svém testovacím prostředí. 
 
 Než začnete:
 
 * Pokud nebyl vytvořen testovacím prostředí, pokyny naleznete [zde](devtest-lab-create-lab.md).
 
-* [Instalace rozhraní příkazového řádku 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). Chcete-li spustit, spusťte az přihlášení k vytvoření připojení pomocí Azure. 
+* [Instalace rozhraní příkazového řádku 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). toostart, spusťte az přihlášení toocreate připojení s Azure. 
 
-## <a name="create-and-verify-the-virtual-machine"></a>Vytvoření a ověření, jestli virtuální počítač 
+## <a name="create-and-verify-hello-virtual-machine"></a>Vytvoření a ověření hello virtuálního počítače 
 Vytvoření virtuálního počítače z image pořízenou prostřednictvím marketplace s ssh ověřování.
 ```azurecli
 az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGroup --name sampleVMName --image "Ubuntu Server 16.04 LTS" --image-type gallery --size Standard_DS1_v2 --authentication-type  ssh --generate-ssh-keys --ip-configuration public 
 ```
 > [!NOTE]
-> Umístit **skupinu prostředků pro testovací prostředí** názvem v parametru – skupinu prostředků.
+> Uveďte hello **skupinu prostředků pro testovací prostředí** v hello – parametr skupinu prostředků.
 >
 
-Pokud chcete vytvořit virtuální počítač pomocí vzorce, použijte--vzorce parametru v [az testovacího prostředí virtuálního počítače vytvořit](https://docs.microsoft.com/cli/azure/lab/vm#create).
+Pokud chcete toocreate virtuálního počítače pomocí vzorce, použijte hello – vzorce parametr v [az testovacího prostředí virtuálního počítače vytvořit](https://docs.microsoft.com/cli/azure/lab/vm#create).
 
 
-Ověřte, že virtuální počítač je k dispozici.
+Ověřte, že tento hello virtuálního počítače je k dispozici.
 ```azurecli
 az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup --expand 'properties($expand=ComputeVm,NetworkInterface)' --query '{status: computeVm.statuses[0].displayStatus, fqdn: fqdn, ipAddress: networkInterface.publicIpAddress}'
 ```
@@ -52,22 +52,22 @@ az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sam
 }
 ```
 
-## <a name="start-and-connect-to-the-virtual-machine"></a>Spuštění a připojení k virtuálnímu počítači
+## <a name="start-and-connect-toohello-virtual-machine"></a>Spuštění a připojení toohello virtuálního počítače
 Spuštění virtuálního počítače.
 ```azurecli
 az lab vm start --lab-name sampleLabName --name sampleVMName --resource-group sampleLabResourceGroup
 ```
 > [!NOTE]
-> Umístit **skupinu prostředků pro testovací prostředí** názvem v parametru – skupinu prostředků.
+> Uveďte hello **skupinu prostředků pro testovací prostředí** v hello – parametr skupinu prostředků.
 >
 
-Připojení k virtuálnímu počítači: [SSH](../virtual-machines/linux/mac-create-ssh-keys.md) nebo [vzdálené plochy](../virtual-machines/windows/connect-logon.md).
+Připojit tooa virtuálních počítačů: [SSH](../virtual-machines/linux/mac-create-ssh-keys.md) nebo [vzdálené plochy](../virtual-machines/windows/connect-logon.md).
 ```bash
 ssh userName@ipAddressOrfqdn 
 ```
 
-## <a name="update-the-virtual-machine"></a>Aktualizovat virtuální počítač
-Artefakty se vztahují na virtuální počítač.
+## <a name="update-hello-virtual-machine"></a>Aktualizovat virtuální počítač hello
+Použijte tooa artefaktů virtuálních počítačů.
 ```azurecli
 az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resource-group sampleResourceGroup  --artifacts @/artifacts.json
 ```
@@ -102,7 +102,7 @@ az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resou
 ]
 ```
 
-Zobrazí seznam artefaktů, které jsou k dispozici v testovacím prostředí.
+Zobrazí seznam artefaktů, které jsou k dispozici v testovacím prostředí hello.
 ```azurecli
 az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup --expand "properties(\$expand=artifacts)" --query 'artifacts[].{artifactId: artifactId, status: status}'
 ```
@@ -113,7 +113,7 @@ az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sam
 }
 ```
 
-## <a name="stop-and-delete-the-virtual-machine"></a>Zastavení a odstranění virtuálního počítače    
+## <a name="stop-and-delete-hello-virtual-machine"></a>Zastavení a odstranění virtuálního počítače hello    
 Zastavení virtuálního počítače.
 ```azurecli
 az lab vm stop --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup

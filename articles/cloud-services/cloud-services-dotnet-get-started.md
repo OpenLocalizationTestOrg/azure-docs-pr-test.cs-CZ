@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s cloudovými službami službou Azure Cloud Services a technologií ASP.NET | Dokumentace Microsoftu"
-description: "Naučte se vytvářet vícevrstvé aplikace s použitím technologie ASP.NET MVC a Azure. Aplikace běží v cloudové službě a obsahuje webovou roli a roli pracovního procesu. Používá nástroj Entity Framework, službu Azure SQL Database a fronty a objekty blob služby Azure Storage."
+title: "aaaGet začít s Azure Cloud Services a technologií ASP.NET | Microsoft Docs"
+description: "Zjistěte, jak toocreate vícevrstvé aplikace s použitím rozhraní ASP.NET MVC a Azure. Hello aplikace běží v cloudové službě a obsahuje webovou roli a roli pracovního procesu. Používá nástroj Entity Framework, službu Azure SQL Database a fronty a objekty blob služby Azure Storage."
 services: cloud-services, storage
 documentationcenter: .net
 author: Thraka
@@ -14,187 +14,187 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: d2c197db73477d06d86d1c4faa8c4a2f58c7b391
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 86271c29b79fad3f01f8ea0e88fd00c7aefc970c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
 
 ## <a name="overview"></a>Přehled
-Tento kurz ukazuje, jak lze vytvářet vícevrstvé aplikace .NET s front-endem ASP.NET MVC a jak je nasadit do [cloudové služby Azure](cloud-services-choose-me.md). Aplikace používá [službu Azure SQL Database](http://msdn.microsoft.com/library/azure/ee336279),  [službu objektů blob Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) a [službu front Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). [Projekt sady Visual Studio můžete stáhnout](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) z galerie kódů MSDN.
+Tento kurz ukazuje, jak toocreate vícevrstvé aplikace .NET s front-endu, ASP.NET MVC a nasaďte ho tooan [cloudové služby Azure](cloud-services-choose-me.md). Hello používá aplikace [Azure SQL Database](http://msdn.microsoft.com/library/azure/ee336279), hello [služby objektů Blob Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)a hello [službu front Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). Můžete [stažení projektu sady Visual Studio hello](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) z hello galerie kódů MSDN.
 
-V kurzu se dozvíte, jak sestavit a spustit aplikaci místně, jak ji nasadit do Azure a spustit v cloudu a jak ji sestavit od nuly. Pokud chcete, můžete začít tím, že ji sestavíte od nuly, potom ji otestujete a nakonec provedete kroky nasazení.
+Hello kurz ukazuje, jak toobuild a spusťte hello aplikaci místně, jak toodeploy ho tooAzure a hello spuštění v cloudu a jak toobuild ho od začátku. Můžete začít tím, sestavíte od nuly a pak hello test a kroky nasazení Pokud dáváte přednost.
 
 ## <a name="contoso-ads-application"></a>Aplikace Contoso Ads
-Aplikace slouží jako vývěsní tabule pro inzerci. Uživatelé vytvářejí reklamu tak, že zadají text a odešlou obrázek. Před sebou vidí seznam reklam s obrázky miniatur a plnou velikost obrázku s podrobnostmi si mohou zobrazit výběrem požadované reklamy.
+aplikace Hello je vývěsní Tabule pro inzerci. Uživatelé vytvářejí reklamu tak, že zadají text a odešlou obrázek. Vidí seznam reklam s obrázky miniatur a uvidí obrázek hello plné velikosti, když vyberou podrobnosti hello toosee služby ad.
 
 ![Seznam reklam](./media/cloud-services-dotnet-get-started/list.png)
 
-Aplikace používá [způsob práce zaměřený na fronty](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern), aby vyvážila práci při vytváření miniatur (která je náročná na prostředky procesoru) vůči back-endovému procesu.
+aplikace Hello používá hello [fronty způsob práce zaměřený](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) toooff zatížení hello náročná na prostředky procesoru práci při vytváření miniatur tooa back endovému procesu.
 
 ## <a name="alternative-architecture-websites-and-webjobs"></a>Alternativní architektura: weby a webové úlohy
-Tento kurz ukazuje, jak spustit front-end i back-end v cloudové službě Azure. Alternativou je spuštění front-endu na [webu Azure](/services/web-sites/) a použití funkce [webových úloh](http://go.microsoft.com/fwlink/?LinkId=390226) (momentálně ve verzi Preview) pro back-end. Kurz, který používá webové úlohy, najdete v článku [Začínáme se sadou SDK pro webové úlohy Azure](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md). Informace o tom, jak zvolit služby, které budou nejlépe vyhovovat vašemu scénáři, najdete v článku o [porovnání webů Azure, služeb Cloud Services a virtuálních počítačů](../app-service-web/choose-web-site-cloud-service-vm.md).
+Tento kurz ukazuje, jak toorun front-end i back-end v Azure cloud service. Alternativou je toorun hello front-endu v [webu Azure](/services/web-sites/) a používat hello [WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226) funkce (momentálně ve verzi preview) pro hello back-end. Kurz, který používá webové úlohy, najdete v části [začít pracovat s hello Azure WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md). Informace o tom, jak toochoose hello služby, které nejlépe vyhovovat vašemu scénáři, najdete v části [porovnání webů Azure, cloudové služby a virtuální počítače](../app-service-web/choose-web-site-cloud-service-vm.md).
 
 ## <a name="what-youll-learn"></a>Co se dozvíte
-* Postup zprovoznění počítače pro vývoj na platformě Azure nainstalováním sady Azure SDK.
-* Vytvoření projektu cloudových služeb sady Visual Studio s webovou rolí a rolí pracovního procesu technologie ASP.NET MVC.
-* Postup místního testování projektu cloudových služeb pomocí emulátoru úložiště Azure.
-* Postup publikování cloudového projektu do cloudové služby Azure a testování pomocí účtu úložiště Azure.
-* Odeslání souborů a jejich uložení do služby objektů blob Azure.
-* Používání služby front Azure pro komunikaci mezi vrstvami.
+* Jak tooenable počítači pro vývoj pro Azure nainstalováním hello Azure SDK.
+* Jak toocreate sady Visual Studio cloudové služby projektu s webová role ASP.NET MVC a roli pracovního procesu.
+* Jak tootest hello projekt cloudové služby místně, pomocí emulátoru úložiště Azure hello.
+* Jak toopublish hello cloudu projektu tooan Azure Cloudová služba a testování pomocí účtu úložiště Azure.
+* Jak tooupload souborů a uložit je do služby objektů Blob Azure hello.
+* Jak toouse hello služby front Azure pro komunikaci mezi vrstvami.
 
 ## <a name="prerequisites"></a>Požadavky
-Kurz předpokládá, že rozumíte [základnímu konceptu cloudových služeb Azure](cloud-services-choose-me.md), například terminologii *webových rolí* a *rolí pracovních procesů*.  Předpokládá také, že víte, jak pracovat s technologií [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) a s projekty [webových formulářů](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) ve Visual Studiu. Ukázková aplikace používá MVC, ale většina kurzu platí i pro webové formuláře.
+Hello kurz předpokládá, že rozumíte [základní koncepty Azure cloud services](cloud-services-choose-me.md) například *webovou roli* a *role pracovního procesu* terminologie.  Také předpokládá, že víte, jak toowork s [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) nebo [webových formulářů](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) projekty v sadě Visual Studio. Hello ukázková aplikace používá MVC, ale většina kurzu hello platí také tooWeb formulářů.
 
-Aplikaci můžete spustit místně bez předplatného Azure, ale k nasazení aplikace do cloudu budete předplatné potřebovat. Pokud nemáte účet, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) nebo [si zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668).
+Můžete spustit aplikace hello místně bez předplatného Azure, ale budete potřebovat jeden toodeploy hello aplikace toohello cloudu. Pokud nemáte účet, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) nebo [si zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668).
 
-Pokyny kurzu pracují s jedním z následujících produktů:
+Hello pokyny kurzu pracují s jedním z hello následující produkty:
 
 * Visual Studio 2013
 * Visual Studio 2015
 * Visual Studio 2017
 
-Pokud je nemáte, Visual Studio se vám může nainstalovat automaticky při instalaci sady Azure SDK.
+Pokud nemáte jednu z těchto, Visual Studio může být nainstalovaná automaticky při instalaci hello Azure SDK.
 
 ## <a name="application-architecture"></a>Architektura aplikace
-Aplikace ukládá reklamy do databáze SQL a k vytváření tabulky a přístupu k datům používá Entity Framework Code First. U každé reklamy databáze ukládá dvě adresy URL. Jednu pro obrázek v plné velikosti a druhou pro miniaturu.
+Hello aplikace ukládá reklamy do databáze SQL pomocí Entity Framework Code First toocreate hello tabulky a přístup k datům hello. Pro každou reklamu hello hello databáze ukládá dvě adresy URL. jednu pro obrázek v plné velikosti a druhou pro miniaturu hello.
 
 ![Tabulka reklam](./media/cloud-services-dotnet-get-started/adtable.png)
 
-Když uživatel odešle obrázek, front-end spuštěný ve webové roli obrázek uloží do [objektu blob Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage), který ukládá informace o reklamě do databáze s adresou URL, která odkazuje na objekt blob. Ve stejný okamžik zapíše zprávu do fronty Azure. Back-endový proces spuštěný v roli pracovního procesu se pravidelně dotazuje fronty na nové zprávy. Když se objeví nová zpráva, role pracovního procesu vytvoří miniaturu obrázku a zaktualizuje pole v databázi s adresou URL miniatury pro tuto reklamu. Následující diagram znázorňuje interakci částí aplikace.
+Když uživatel odešle obrázek, front-end spuštěný hello ve webové roli ukládá hello bitové kopie v [objektů blob v Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage), a ukládá hello ad informace v databázi hello s adresou URL, který odkazuje objekt blob toohello. Na hello stejný čas, zapíše zpráva tooan fronty Azure. Back-end proces spuštěný v roli pracovního procesu pravidelně dotazuje hello fronty pro nové zprávy. Když se objeví nová zpráva, hello role pracovního procesu vytvoří miniaturu obrázku a aktualizace hello miniatur databáze pole adresy URL pro tuto reklamu. Hello následující diagram znázorňuje interakci částí hello aplikace hello.
 
 ![Architektura Contoso Ads](./media/cloud-services-dotnet-get-started/apparchitecture.png)
 
 [!INCLUDE [install-sdk](../../includes/install-sdk-2017-2015-2013.md)]
 
-## <a name="download-and-run-the-completed-solution"></a>Stažení a spuštění dokončeného řešení
-1. Stáhněte a rozbalte [dokončené řešení](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4).
+## <a name="download-and-run-hello-completed-solution"></a>Stažení a spuštění řešení hello byla dokončena
+1. Stáhněte a rozbalte hello [dokončené řešení](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4).
 2. Spusťte Visual Studio.
-3. V nabídce **Soubor** zvolte **Otevřít projekt**, přejděte do místa, kam jste řešení stáhli, a potom otevřete soubor řešení.
-4. Stisknutím kláves CTRL+SHIFT+B řešení sestavíte.
+3. Z hello **soubor** nabídce zvolte **otevřít projekt**, přejděte toowhere jste si stáhli hello řešení a pak otevřete soubor řešení hello.
+4. Stisknutím kombinace kláves CTRL + SHIFT + B toobuild hello řešení.
 
-    Visual Studio ve výchozím nastavení automaticky obnoví obsah balíčku NuGet, který nebyl součástí souboru *.zip*. Pokud se balíčky neobnoví, nainstalujte je ručně tak, že přejdete do dialogového okna **Správa balíčků NuGet pro řešení** a kliknete na tlačítko **Obnovit**, které je vpravo nahoře.
-5. V **Průzkumníku řešení** zkontrolujte, jestli je jako spouštěný projekt vybraná možnost **ContosoAdsCloudService**.
-6. Pokud používáte Visual Studio 2015 nebo vyšší, změňte připojovací řetězec serveru SQL v aplikačním souboru *Web.config* projektu ContosoAdsWeb a v souboru *ServiceConfiguration.Local.cscfg* projektu ContosoAdsCloudService. V každém případě změňte „(localdb) \v11.0“ na „\MSSQLLocalDB (localdb)“.
-7. Stiskněte klávesy CTRL+F5 a spusťte aplikaci.
+    Visual Studio ve výchozím nastavení automaticky obnoví obsah balíčku NuGet hello, který nebyl součástí hello *.zip* souboru. Pokud hello balíčky neobnoví, nainstalujte je ručně budete toohello **spravovat balíčky NuGet pro řešení** dialogové okno a kliknutím na tlačítko hello **obnovení** tlačítko v pravé horní hello.
+5. V **Průzkumníku řešení**, ujistěte se, že **ContosoAdsCloudService** je vybrán jako spouštěný projekt hello.
+6. Pokud používáte Visual Studio 2015 nebo vyšší, změňte připojovací řetězec SQL serveru hello v aplikaci hello *Web.config* souboru hello projektu ContosoAdsWeb a v hello *ServiceConfiguration.Local.cscfg* souboru projektu ContosoAdsCloudService hello. V každém případě změňte "(localdb) \v11.0" příliš "\MSSQLLocalDB (localdb)".
+7. Stisknutím kombinace kláves CTRL + F5 toorun hello aplikace.
 
-    Když spouštíte projekt cloudové služby místně, Visual Studio automaticky vyvolá *emulátor služby Výpočty* Azure a *emulátor úložiště* Azure. Emulátor služby Výpočty využívá prostředky počítače k simulaci prostředí webové role a role pracovního procesu. Emulátor úložiště používá databázi serveru [SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx) k simulaci cloudového úložiště Azure.
+    Když spouštíte projekt cloudové služby místně, Visual Studio automaticky vyvolá hello Azure *emulátor služby výpočty* a Azure *emulátor úložiště*. Hello výpočetní emulátor používá počítače prostředky toosimulate hello webovou roli a prostředí role pracovního procesu. emulátor úložiště Hello používá [SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx) databáze toosimulate cloudového úložiště Azure.
 
-    Při prvním spuštění projektu cloudové služby může spuštění emulátorů trvat zhruba minutu. Když je spuštění emulátorů dokončené, výchozí prohlížeč otevře domovskou stránku aplikace.
+    Hello prvním spuštění projektu cloudové služby trvá minutu pro hello emulátorů toostart nahoru. Pokud je spuštění emulátorů dokončené, hello výchozí prohlížeč otevře domovskou stránku toohello aplikace.
 
     ![Architektura Contoso Ads](./media/cloud-services-dotnet-get-started/home.png)
 8. Klikněte na **Vytvořit reklamu**.
-9. Zadejte nějaká testovací data, vyberte obrázek *.jpg*, který chcete odeslat, a potom klikněte na **Vytvořit**.
+9. Zadejte nějaká testovací data a vyberte *.jpg* tooupload bitovou kopii a pak klikněte na tlačítko **vytvořit**.
 
     ![Vytvoření stránky](./media/cloud-services-dotnet-get-started/create.png)
 
-    Aplikace přejde na indexovou stránku, ale nezobrazí miniaturu nové reklamy, protože toto zpracování ještě neproběhlo.
-10. Chvíli počkejte a potom indexovou stránku aktualizujte. Miniatura se teď zobrazí.
+    aplikace Hello přejde toohello indexovou stránku, ale nezobrazí miniaturu nové reklamy hello, protože toto zpracování ještě neproběhlo.
+10. Chvíli počkejte a pak aktualizujte hello Index stránky toosee hello miniaturu.
 
      ![Indexová stránka](./media/cloud-services-dotnet-get-started/list.png)
-11. Pokud chcete obrázek reklamy zobrazit v plné velikosti, klikněte na **Podrobnosti**.
+11. Klikněte na tlačítko **podrobnosti** pro ad toosee hello plné velikosti bitové kopie.
 
      ![Stránka podrobností](./media/cloud-services-dotnet-get-started/details.png)
 
-Aplikace běží výhradně na místním počítači bez připojení ke cloudu. Emulátor úložiště ukládá data fronty a objektů blob do databáze serveru SQL Server Express LocalDB, ale aplikace ukládá data reklamy do jiné databáze LocalDB. Entity Framework Code First automaticky vytvoří databázi reklam v okamžiku, kdy se webová aplikace poprvé pokusí k databázi připojit.
+Jste byla spuštěna aplikace hello zcela v místním počítači, bez připojení toohello cloudu. Hello emulátor úložiště ukládá hello fronty a data objektů blob v databázi SQL serveru Express LocalDB a aplikace hello ukládá hello ad data do jiné databáze LocalDB. Databáze Entity Framework Code First automaticky vytvořený hello ad hello poprvé hello webové aplikace se pokusila tooaccess ho.
 
-V následující části budete konfigurovat řešení tak, aby při spuštění v cloudu používalo cloudové prostředky Azure pro fronty a objekty blob a také databázi aplikace. Pokud chcete aplikaci i nadále spouštět místně, ale používat cloudové úložiště a databázové prostředky, tak můžete. Stačí nastavit připojovací řetězce a my vám ukážeme, jak na to.
+V následující části hello nakonfigurujete hello řešení toouse cloudové prostředky Azure pro fronty, objekty BLOB a databáze aplikace hello při spuštění v cloudu hello. Pokud jste chtěli toocontinue toorun místně, ale využívat cloudové prostředky úložiště a databáze, můžete to udělat. Ho stačí nastavit připojovací řetězec, které se zobrazí jak toodo.
 
-## <a name="deploy-the-application-to-azure"></a>Nasazení aplikace v Azure
-Pokud chcete aplikaci spustit v cloudu, proveďte následující kroky:
+## <a name="deploy-hello-application-tooazure"></a>Nasazení aplikace tooAzure hello
+Můžete to udělat následující kroky toorun hello aplikaci v cloudu hello hello:
 
 * Vytvoření cloudové služby Azure
 * Vytvoření databáze SQL Azure
 * Vytvoření účtu úložiště Azure
-* Nakonfigurujte řešení, aby při spuštění v Azure používalo databázi SQL Azure.
-* Nakonfigurujte řešení, aby při spuštění v Azure používalo účet úložiště Azure.
-* Nasaďte projekt do cloudové služby Azure.
+* Nakonfigurujte řešení toouse hello Azure SQL database při spuštění v Azure.
+* Nakonfigurujte řešení toouse hello účtu úložiště Azure při spuštění v Azure.
+* Nasaďte hello projektu tooyour cloudové služby Azure.
 
 ### <a name="create-an-azure-cloud-service"></a>Vytvoření cloudové služby Azure
-Cloudová služba Azure je prostředí, ve kterém bude aplikace spuštěna.
+Cloudové služby Azure je, že bude hello prostředí hello aplikace spuštěna.
 
-1. Otevřete v prohlížeči portál [Azure Portal](https://portal.azure.com).
+1. V prohlížeči otevřete hello [portál Azure](https://portal.azure.com).
 2. Klikněte na **Nový > Výpočty > Cloudová služba**.
 
-3. Do vstupního pole název DNS zadejte předponu adresy URL pro cloudovou službu.
+3. Hello DNS název vstupní pole zadejte předponu adresy URL pro hello cloudové služby.
 
-    Tato adresa URL musí být jedinečná.  Pokud se zvolená předpona už používá, zobrazí se chybová zpráva.
-4. Zadejte pro tuto službu novou skupinu prostředků. Klikněte na **Vytvořit nový** a potom zadejte název do vstupního pole Skupina prostředků – například CS_contososadsRG.
+    Tato adresa URL má toobe jedinečný.  Budete zobrazí chybové hlášení, pokud zvolenou předponu hello je již používán.
+4. Zadejte novou skupinu prostředků pro službu hello. Klikněte na tlačítko **vytvořit nový** a potom zadejte název hello prostředků skupiny vstupní pole, jako je například CS_contososadsRG.
 
-5. Vyberte oblast, ve které chcete aplikaci nasadit.
+5. Zvolte hello oblasti, kde chcete toodeploy hello aplikace.
 
-    Toto pole určuje datové centrum, které bude hostovat vaše cloudové služby. V případě produkční aplikace vyberte oblast, která je nejblíž k vašim zákazníkům. V tomto kurzu vyberte oblast, která je nejblíž k vám.
+    Toto pole určuje datové centrum, které bude hostovat vaše cloudové služby. Pro produkční aplikace vyberte hello oblast nejbližší tooyour zákazníků. V tomto kurzu zvolte nejbližší tooyou hello oblast.
 5. Klikněte na možnost **Vytvořit**.
 
-    Na následujícím obrázku vidíte vytvoření cloudové služby s adresou URL CSvccontosoads.cloudapp.net.
+    V hello následující bitové kopie Cloudová služba se vytvoří s hello CSvccontosoads.cloudapp.net adresy URL.
 
     ![Nová cloudová služba](./media/cloud-services-dotnet-get-started/newcs.png)
 
 ### <a name="create-an-azure-sql-database"></a>Vytvoření databáze SQL Azure
-Když aplikace běží v cloudu, používá cloudovou databázi.
+Když hello aplikace běží v cloudu hello, použije databáze založené na cloudu.
 
-1. Na portálu [Azure Portal](https://portal.azure.com) klikněte na **Nový > Databáze > Databáze SQL**.
-2. Do pole **Název databáze** zadejte text *contosoads*.
-3. V části **Skupina prostředků** klikněte na **Použít existující** a vyberte skupinu prostředků použitou pro cloudovou službu.
-4. Na následujícím obrázku klikněte na **Server – Konfigurovat požadovaná nastavení** a **Vytvořit nový server**.
+1. V hello [portál Azure](https://portal.azure.com), klikněte na tlačítko **nový > databáze > databáze SQL**.
+2. V hello **název databáze** zadejte *contosoads*.
+3. V hello **skupiny prostředků**, klikněte na tlačítko **použít existující** a skupině prostředků vyberte hello používá pro hello cloudové služby.
+4. Následující obrázek, klikněte v hello **Server – nakonfigurujte požadovaná nastavení** a **vytvořit nový server**.
 
-    ![Tunel pro databázový server](./media/cloud-services-dotnet-get-started/newdb.png)
+    ![Server toodatabase tunelového propojení](./media/cloud-services-dotnet-get-started/newdb.png)
 
-    Pokud vaše předplatné obsahuje server, můžete alternativně vybrat tento server v rozevíracím seznamu.
-5. Do pole **Název serveru** zadejte *csvccontosodbserver*.
+    Případně pokud vaše předplatné už má server, můžete vybrat tento server z rozevíracího seznamu hello.
+5. V hello **název serveru** zadejte *csvccontosodbserver*.
 
 6. Zadejte **Přihlašovací jméno** a **Heslo** správce.
 
-    Pokud jste vybrali možnost **Vytvořit nový server**, nebudete zadávat existující název a heslo. Zadáváte nový název a heslo, které teď definujete pro pozdější použití, až budete chtít získat přístup k databázi. Pokud jste vybrali serveru, který jste vytvořili dříve, budete vyzváni k zadání hesla pro uživatelský účet správce jste již vytvořili.
-7. Vyberte stejné **Umístění** jako pro cloudové služby.
+    Pokud jste vybrali možnost **Vytvořit nový server**, nebudete zadávat existující název a heslo. Zadáváte nové jméno a heslo, že definujete teď toouse později při přístupu k databázi hello. Pokud jste vybrali serveru, který jste vytvořili dříve, budete vyzváni pro hello heslo toohello účet správce jste již vytvořili.
+7. Vyberte stejný hello **umístění** kterou jste zvolili pro cloudové služby hello.
 
-    Když jsou cloudové služby a databáze v různých datových centrech (různých oblastech), zvýší se latence a bude vám účtována šířka pásma mimo datové centrum. Šířka pásma v rámci datového centra je zdarma.
-8. Zkontrolujte možnost **Povolit službám Azure přístup k serveru**.
-9. Klikněte na možnost **Vybrat** u nového serveru.
+    Když hello cloudové služby a databáze jsou v různých datových centrech (různých oblastech), zvýší se latence a vám bude účtována šířka pásma mimo datové centrum hello. Šířka pásma v rámci datového centra je zdarma.
+8. Zkontrolujte **povolit službám azure tooaccess server**.
+9. Klikněte na tlačítko **vyberte** pro nový server hello.
 
     ![Nový server služby SQL Database](./media/cloud-services-dotnet-get-started/newdbserver.png)
 10. Klikněte na možnost **Vytvořit**.
 
 ### <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
-Účet úložiště Azure poskytuje prostředky pro ukládání dat front a objektů blob v cloudu.
+Účet úložiště Azure poskytuje prostředky pro ukládání dat front a objektů blob v cloudu hello.
 
 V reálné aplikaci byste obvykle vytvořili samostatné účty pro data aplikací a pro data protokolování a samostatné účty pro testovací data a pro produkční data. V tomto kurzu budete používat jenom jeden účet.
 
-1. Na portálu [Azure Portal](https://portal.azure.com) klikněte na **Nový > Úložiště > Účet úložiště – objekt blob, soubor, tabulka, fronta**.
-2. Do pole **Název** zadejte předponu adresy URL.
+1. V hello [portál Azure](https://portal.azure.com), klikněte na tlačítko **nový > úložiště > účet úložiště – objekt blob, soubor, tabulka, fronta**.
+2. V hello **název** zadejte předponu adresy URL.
 
-    Tato předpona a text zobrazený pod polem budou tvořit jedinečnou adresu URL k vašemu účtu úložiště. Pokud vybranou předponu používá někdo jiný, budete si muset zvolit jinou.
-3. U **Modelu nasazení** nastavte *Classic*.
+    Tato předpona a hello text, který se zobrazí pod polem hello bude účet úložiště tooyour jedinečnou adresu URL hello. Pokud zadáte předponu hello již byl použit někdo jiný, budete mít toochoose jinou předponu.
+3. Sada hello **modelu nasazení** příliš*Classic*.
 
-4. V rozevíracím seznamu **Replikace** vyberte **Místně redundantní úložiště**.
+4. Sada hello **replikace** rozevírací seznam příliš**místně redundantního úložiště**.
 
-    Když má účet úložiště povolenou geografickou replikaci, bude se uložený obsah replikovat do sekundárního datacentra, které zajistí převzetí služeb při selhání v případě významnější havárie v primárním umístění. Geografická replikace může způsobit dodatečné náklady. V případě testovacích a vývojových účtů je zbytečné za geografickou replikaci platit. Další informace naleznete v článku o [vytvoření, správě nebo odstranění účtu úložiště](../storage/common/storage-create-storage-account.md).
+    Pokud geografická replikace je povoleno pro účet úložiště, je hello uložený obsah případě významnější havárie v primárním umístění hello replikované tooa sekundárního datacentra tooenable převzetí služeb při selhání. Geografická replikace může způsobit dodatečné náklady. Pro testovací a vývojové účty obecně nechcete, aby toopay za geografickou replikaci. Další informace naleznete v článku o [vytvoření, správě nebo odstranění účtu úložiště](../storage/common/storage-create-storage-account.md).
 
-5. V části **Skupina prostředků** klikněte na **Použít existující** a vyberte skupinu prostředků použitou pro cloudovou službu.
-6. V rozevíracím seznamu **Umístění** vyberte stejnou oblast, jakou jste zvolili pro cloudové služby.
+5. V hello **skupiny prostředků**, klikněte na tlačítko **použít existující** a skupině prostředků vyberte hello používá pro hello cloudové služby.
+6. Sada hello **umístění** rozevíracího seznamu toohello stejné oblasti, které jste zvolili pro cloudové služby hello.
 
-    Když jsou cloudové služby a účet úložiště v různých datacentrech (různých oblastech), zvýší se latence a bude vám účtována šířka pásma mimo datové centrum. Šířka pásma v rámci datového centra je zdarma.
+    Když jsou hello cloudové služby a účet úložiště v různých datových centrech (různých oblastech), zvýší se latence a vám bude účtována šířka pásma mimo datové centrum hello. Šířka pásma v rámci datového centra je zdarma.
 
-    Skupina vztahů Azure nabízí mechanismus pro minimalizaci vzdálenosti mezi prostředky v datovém centru (můžete tak omezit latenci). V tomto kurzu skupinu vztahů nepoužíváme. Další informace naleznete v článku o [vytváření skupiny vztahů v Azure](http://msdn.microsoft.com/library/jj156209.aspx).
+    Skupina vztahů Azure nabízí mechanismus toominimize hello vzdálenosti mezi prostředky v datovém centru, můžete tak omezit latenci. V tomto kurzu skupinu vztahů nepoužíváme. Další informace najdete v tématu [jak tooCreate spřažení skupiny v Azure](http://msdn.microsoft.com/library/jj156209.aspx).
 7. Klikněte na možnost **Vytvořit**.
 
     ![Nový účet úložiště](./media/cloud-services-dotnet-get-started/newstorage.png)
 
-    Na obrázku vidíte vytvoření účtu úložiště s adresou URL `csvccontosoads.core.windows.net`.
+    Hello obrázku se vytvoří účet úložiště s adresou URL hello `csvccontosoads.core.windows.net`.
 
-### <a name="configure-the-solution-to-use-your-azure-sql-database-when-it-runs-in-azure"></a>Konfigurace řešení, aby při spuštění v Azure používalo databázi SQL Azure
-Webový projekt a projekt role pracovního procesu mají každý svůj vlastní připojovací řetězec k databázi a každý musí při spuštění aplikace v Azure odkazovat na databázi SQL Azure.
+### <a name="configure-hello-solution-toouse-your-azure-sql-database-when-it-runs-in-azure"></a>Konfigurace řešení toouse hello Azure SQL database při spuštění v Azure
+Hello webový projekt a hello projekt role pracovního procesu každý má vlastní připojovací řetězec databáze a každý musí toopoint toohello Azure SQL database při spuštění aplikace hello v Azure.
 
-Pro webovou roli a nastavení prostředí cloudové služby pro roli pracovního procesu budete používat [transformaci Web.config](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations).
+Budete používat [transformaci Web.config](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) pro hello webovou roli a nastavení prostředí cloudové služby pro roli pracovního procesu hello.
 
 > [!NOTE]
-> V této a v další části uložíte přihlašovací údaje do souborů projektu. [Citlivá data neukládejte do veřejných úložišť  zdrojového kódu](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control#secrets).
+> V této části a hello další části uložíte přihlašovací údaje v souborech projektu. [Citlivá data neukládejte do veřejných úložišť  zdrojového kódu](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control#secrets).
 >
 >
 
-1. V projektu ContosoAdsWeb otevřete transformační soubor *Web.Release.config* pro soubor *Web.config* aplikace, odstraňte blok komentáře, který obsahuje prvek `<connectionStrings>`, a vložte následující kód na příslušné místo.
+1. Otevřete v projektu ContosoAdsWeb hello hello *Web.Release.config* transformační soubor pro aplikaci hello *Web.config* souboru, odstraňte blok komentáře hello, který obsahuje `<connectionStrings>` prvku a vložení Následující kód na příslušné místo Hello.
 
     ```xml
     <connectionStrings>
@@ -203,56 +203,56 @@ Pro webovou roli a nastavení prostředí cloudové služby pro roli pracovního
     </connectionStrings>
     ```
 
-    Nechte soubor otevřený pro úpravy.
-2. Na portálu [Azure Portal](https://portal.azure.com) klikněte v levém podokně na **Databáze SQL**, klikněte na databázi, kterou jste si pro tento kurz vytvořili, a potom klikněte na **Zobrazit připojovací řetězce**.
+    Soubor hello nechte otevřený pro úpravy.
+2. V hello [portál Azure](https://portal.azure.com), klikněte na tlačítko **databází SQL** v levém podokně hello, klikněte na hello databáze, které jste vytvořili v tomto kurzu a pak klikněte na tlačítko **zobrazit připojovací řetězce**.
 
     ![Zobrazení připojovacích řetězců](./media/cloud-services-dotnet-get-started/showcs.png)
 
-    Portál zobrazí připojovací řetězce, místo hesla uvidíte zástupný symbol.
+    Hello portál zobrazí připojovací řetězce s zástupný symbol pro hello heslo.
 
     ![Připojovací řetězce](./media/cloud-services-dotnet-get-started/connstrings.png)
-3. V transformačním souboru *Web.Release.config* odstraňte text `{connectionstring}` a na jeho místo vložte připojovací řetězec ADO.NET z portálu Azure Portal.
-4. V připojovacím řetězci, který jste vložili do transformačního souboru*Web.Release.config*, nahraďte text `{your_password_here}` heslem, které jste vytvořili pro novou databázi SQL.
-5. Uložte soubor.  
-6. Vyberte a zkopírujte připojovací řetězec (bez okolních uvozovek), abyste ho mohli použít v následujících krocích konfigurace projektu role pracovního procesu.
-7. V **Průzkumníku řešení** v části **Role** v projektu cloudové služby klikněte pravým tlačítkem na **ContosoAdsWorker** a potom klikněte na **Vlastnosti**.
+3. V hello *Web.Release.config* transformační soubor, odstraňte `{connectionstring}` a vložte jeho místní hello připojovací řetězec ADO.NET z hello portálu Azure.
+4. V hello připojovací řetězec, který jste vložili do hello *Web.Release.config* transformační soubor, nahraďte `{your_password_here}` hello heslem, které jste vytvořili pro novou databázi SQL hello.
+5. Uložte soubor hello.  
+6. Vyberte a zkopírujte připojovací řetězec hello (bez okolních uvozovek hello) pro použití v následujících krocích konfigurace projektu role pracovního procesu hello hello.
+7. V **Průzkumníku řešení**v části **role** v hello projekt cloudové služby, klikněte pravým tlačítkem na **ContosoAdsWorker** a pak klikněte na tlačítko **vlastnosti**.
 
     ![Vlastnosti rolí](./media/cloud-services-dotnet-get-started/rolepropertiesworker.png)
-8. Klikněte na kartu **Nastavení**.
-9. Změňte nastavení **Konfigurace služby** na **Cloud**.
-10. V nastavení `ContosoAdsDbConnectionString` vyberte pole **Hodnota** a vložte do něj připojovací řetězec, který jste zkopírovali v předchozí části kurzu.
+8. Klikněte na tlačítko hello **nastavení** kartě.
+9. Změna **konfigurace služby** příliš**cloudu**.
+10. Vyberte hello **hodnotu** pole pro hello `ContosoAdsDbConnectionString` nastavení a potom vložte hello připojovací řetězec, který jste zkopírovali z předchozí části kurzu hello hello.
 
      ![Připojovací řetězec databáze pro roli pracovního procesu](./media/cloud-services-dotnet-get-started/workerdbcs.png)
 11. Uložte provedené změny.  
 
-### <a name="configure-the-solution-to-use-your-azure-storage-account-when-it-runs-in-azure"></a>Konfigurace řešení, aby při spuštění v Azure používalo účet úložiště Azure
-Připojovací řetězce k účtu úložiště Azure pro projekt webové role i projekt role pracovního procesu jsou uložené v nastavení prostředí v projektu cloudové služby. Každý projekt má samostatnou sadu nastavení, která se použije při spuštění aplikace místně a při spuštění v cloudu. Nastavení cloudového prostředí budete aktualizovat pro webový projekt i pro projekt role pracovního procesu.
+### <a name="configure-hello-solution-toouse-your-azure-storage-account-when-it-runs-in-azure"></a>Konfigurace účtu úložiště Azure hello řešení toouse při spuštění v Azure
+Připojovací řetězce k účtu úložiště Azure pro projekt hello webové role i projekt role pracovního procesu hello jsou uloženy v nastavení prostředí v projektu cloudové služby hello. Pro každý projekt je samostatnou sadu nastavení toobe používá při spuštění aplikace hello místně a při spuštění v cloudu hello. Nastavení cloudového prostředí pro webové a pracovní projekty role hello budete aktualizovat.
 
-1. V **Průzkumníku řešení** v části **Role** v projektu **ContosoAdsCloudService** klikněte pravým tlačítkem na **ContosoAdsWeb** a potom na **Vlastnosti**.
+1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na **ContosoAdsWeb** pod **role** v hello **ContosoAdsCloudService** projektu a pak klikněte na **Vlastnosti**.
 
     ![Vlastnosti rolí](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. Klikněte na kartu **Nastavení**. V rozevíracím seznamu **Konfigurace služby** vyberte **Cloud**.
+2. Klikněte na tlačítko hello **nastavení** kartě. V hello **konfigurace služby** rozevíracího seznamu vyberte **cloudu**.
 
     ![Konfigurace cloudu](./media/cloud-services-dotnet-get-started/sccloud.png)
-3. Vyberte položku **StorageConnectionString** a na pravém konci řádku se zobrazí tlačítko se třemi tečkami (**...**) . Kliknutím na tlačítko se třemi tečkami otevřete dialogové okno **Vytvoření připojovací řetězce k účtu úložiště**.
+3. Vyberte hello **StorageConnectionString** položku a zobrazí se třemi tečkami (**...** ) tlačítko na pravém konci řádku hello hello. Klikněte na tlačítko hello třemi tečkami tlačítko tooopen hello **vytvoření připojovacího řetězce účet úložiště** dialogové okno.
 
     ![Otevření pole Vytvoření připojovacího řetězce](./media/cloud-services-dotnet-get-started/opencscreate.png)
-4. V dialogovém okně **Vytvoření připojovacího řetězce k úložišti** klikněte na **Předplatné**, zvolte účet úložiště, které jste už dříve vytvořili, a potom klikněte na tlačítko **OK**. Pokud ještě nejste přihlášeni, budete vyzváni k zadání přihlašovacích údajů k účtu Azure.
+4. V hello **vytvoření připojovacího řetězce úložiště** dialogové okno, klikněte na tlačítko **vaše předplatné**, zvolte hello účet úložiště, který jste vytvořili dříve a pak klikněte na tlačítko **OK**. Pokud ještě nejste přihlášeni, budete vyzváni k zadání přihlašovacích údajů k účtu Azure.
 
     ![Vytvoření připojovacího řetězce k úložišti](./media/cloud-services-dotnet-get-started/createstoragecs.png)
 5. Uložte provedené změny.
-6. Postupujte stejným způsobem, který jste použili pro připojovací řetězec `StorageConnectionString`, a nastavte připojovací řetězec `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString`.
+6. Postupujte podle hello stejný postup, který jste použili pro hello `StorageConnectionString` připojovací řetězec tooset hello `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` připojovací řetězec.
 
     Tento připojovací řetězec se používá k protokolování.
-7. Postupujte stejným způsobem, který jste použili pro roli **ContosoAdsWeb**, a nastavte oba připojovací řetězce pro roli **ContosoAdsWorker**. Nezapomeňte nastavit hodnotu **Konfigurace služby** na **Cloud**.
+7. Postupujte podle hello stejný postup, který jste použili pro hello **ContosoAdsWeb** role tooset oba připojovací řetězce pro hello **ContosoAdsWorker** role. Nezapomeňte tooset **konfigurace služby** příliš**cloudu**.
 
-Nastavení prostředí role, které jste nakonfigurovali pomocí rozhraní Visual Studia, jsou uložená v následujících souborech v projektu ContosoAdsCloudService:
+nastavení prostředí role Hello, které jste nakonfigurovali pomocí rozhraní Visual Studia hello jsou uloženy v hello následující soubory v projektu ContosoAdsCloudService hello:
 
-* *ServiceDefinition.csdef* – definuje názvy nastavení.
-* *ServiceConfiguration.Cloud.cscfg* – poskytuje hodnoty pro situace, kdy aplikace běží v cloudu.
-* *ServiceConfiguration.Local.cscfg* – poskytuje hodnoty pro situace, kdy aplikace běží místně.
+* *ServiceDefinition.csdef* – definuje názvy nastavení hello.
+* *ServiceConfiguration.Cloud.cscfg* – poskytuje hodnoty pro spuštění aplikace hello v cloudu hello.
+* *ServiceConfiguration.Local.cscfg* – poskytuje hodnoty pro spuštění aplikace hello místně.
 
-Například soubor ServiceDefinition.csdef obsahuje následující definice:
+Například hello ServiceDefinition.csdef obsahuje následující definice hello:
 
 ```xml
 <ConfigurationSettings>
@@ -261,7 +261,7 @@ Například soubor ServiceDefinition.csdef obsahuje následující definice:
 </ConfigurationSettings>
 ```
 
-A soubor *ServiceConfiguration.Cloud.cscfg* obsahuje hodnoty, které jste pro tato nastavení zadali ve Visual Studiu.
+A hello *ServiceConfiguration.Cloud.cscfg* soubor obsahuje hello hodnoty, které jste zadali pro tato nastavení v sadě Visual Studio.
 
 ```xml
 <Role name="ContosoAdsWorker">
@@ -277,42 +277,42 @@ A soubor *ServiceConfiguration.Cloud.cscfg* obsahuje hodnoty, které jste pro ta
 </Role>
 ```
 
-Nastavení `<Instances>` určuje počet virtuálních počítačů, na kterých Azure spustí kód role pracovního procesu. Část [Další kroky](#next-steps) obsahuje odkazy na další informace o škálování cloudové služby.
+Hello `<Instances>` nastavení určuje hello počet virtuálních počítačů, které Azure spustí pracovní hello kód role na. Hello [další kroky](#next-steps) část obsahuje odkazy toomore informace o škálování cloudové služby
 
-### <a name="deploy-the-project-to-azure"></a>Nasazení projektu do Azure
-1. V **Průzkumníku řešení** klikněte pravým tlačítkem na cloudový projekt **ContosoAdsCloudService** a potom vyberte **Publikovat**.
+### <a name="deploy-hello-project-tooazure"></a>Nasazení projektu tooAzure hello
+1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na hello **ContosoAdsCloudService** cloudový projekt a potom vyberte **publikovat**.
 
    ![Publikování nabídky](./media/cloud-services-dotnet-get-started/pubmenu.png)
-2. V průvodci **Publikování aplikaci Azure** v kroku **Přihlásit se** klikněte na tlačítko **Další**.
+2. V hello **přihlášení** krok hello **publikování aplikaci Azure** průvodce, klikněte na tlačítko **Další**.
 
     ![Krok Přihlásit se](./media/cloud-services-dotnet-get-started/pubsignin.png)
-3. Klikněte v průvodci v kroku **Nastavení** na tlačítko **Další**.
+3. V hello **nastavení** krok hello průvodce, klikněte na tlačítko **Další**.
 
     ![Krok Nastavení](./media/cloud-services-dotnet-get-started/pubsettings.png)
 
-    Výchozí nastavení na kartě **Upřesnit** jsou pro účely tohoto kurzu vyhovující. Informace o kartě Upřesnit naleznete v článku o [průvodci publikováním aplikace Azure](http://msdn.microsoft.com/library/hh535756.aspx).
-4. V kroku **Souhrn** klikněte na tlačítko **Publikovat**.
+    Výchozí nastavení v hello Hello **Upřesnit** kartě jsou pro tento kurz. Informace o kartě Upřesnit hello najdete v tématu [Průvodci publikováním aplikace Azure](http://msdn.microsoft.com/library/hh535756.aspx).
+4. V hello **Souhrn** krok, klikněte na tlačítko **publikovat**.
 
     ![Krok Souhrn](./media/cloud-services-dotnet-get-started/pubsummary.png)
 
-   Ve Visual Studiu se otevře okno **Protokol činnosti Azure**.
-5. Kliknutím na ikonu se šipkou doprava rozbalíte podrobnosti o nasazení.
+   Hello **protokol činnosti Azure** otevře se okno v sadě Visual Studio.
+5. Klikněte na tlačítko hello šipku vpravo ikonu tooexpand hello podrobnosti o nasazení.
 
-    Dokončení nasazení může trvat 5 minut i déle.
+    Hello nasazení může trvat až minut too5 nebo další toocomplete.
 
     ![Okno Protokol činnosti Azure](./media/cloud-services-dotnet-get-started/waal.png)
-6. Po dokončení nasazení klikněte na **Adresa URL webové aplikace** a spusťte aplikaci.
-7. Teď můžete aplikaci otestovat a vytvořit, zobrazit nebo upravit některé reklamy, stejně jako jste to dělali, když byla aplikace spuštěná místně.
+6. Po dokončení hello stav nasazení, klikněte na tlačítko hello **adresa URL webové aplikace** toostart hello aplikace.
+7. Nyní můžete otestovat aplikace hello vytváření, zobrazením a upravit některé reklamy, stejně jako při spuštění aplikace hello místně.
 
 > [!NOTE]
-> Až budete s testováním hotovi, odstraňte nebo zastavte cloudovou službu. Poplatky vám totiž nabíhají i když cloudové služby nepoužíváte, protože jsou pro ně vyhrazené prostředky virtuálních počítačů. A pokud je necháte spuštěné, může každý, kdo najde vaši adresu URL, vytvářet a zobrazovat reklamy. Na portálu [Azure Portal](https://portal.azure.com) přejděte na kartu **Přehled** vaší cloudové služby a potom v horní části stránky klikněte na tlačítko **Odstranit**. Pokud chcete ostatním jen dočasně znemožnit přístup na web, klikněte místo toho na tlačítko **Zastavit**. V takovém případě budou poplatky dál nabíhat. Podobným způsobem můžete odstranit nepotřebnou databázi SQL a účet úložiště.
+> Pokud jste dokončení testování, odstraňte nebo zastavte cloudovou službu hello. I v případě, že nepoužíváte hello cloudové služby, protože jsou pro ně vyhrazené prostředky virtuálního počítače totiž nabíhají poplatky. A pokud je necháte spuštěné, může každý, kdo najde vaši adresu URL, vytvářet a zobrazovat reklamy. V hello [portál Azure](https://portal.azure.com), přejděte toohello **přehled** pro cloudové služby a pak klikněte hello **odstranit** tlačítko hello horní části stránky hello. Pokud chcete zabránit tootemporarily ostatním v přístupu k webu hello, klikněte na tlačítko **Zastavit** místo. V takovém případě budou poplatky dál tooaccrue. Pokud je již nepotřebujete, můžete provést podobné hello toodelete postup SQL databáze a účet úložiště.
 >
 >
 
-## <a name="create-the-application-from-scratch"></a>Vytvoření aplikace od začátku
-Pokud jste [dokončenou aplikaci](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) ještě nestáhli, udělejte to teď. Soubory ze staženého projektu budete kopírovat do nového projektu.
+## <a name="create-hello-application-from-scratch"></a>Vytvoření aplikace hello od začátku
+Pokud jste ještě nestáhli [aplikace hello Dokončit](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4), udělejte to teď. Budete kopírovat soubory z projektu hello stáhli do nového projektu hello.
 
-Vytvoření aplikace Contoso Ads zahrnuje následující kroky:
+Vytvoření aplikace Contoso Ads hello zahrnuje hello následující kroky:
 
 * Vytvoření řešení cloudové služby Visual Studio
 * Aktualizace a přidání balíčků NuGet
@@ -320,53 +320,53 @@ Vytvoření aplikace Contoso Ads zahrnuje následující kroky:
 * Konfigurace připojovacích řetězců
 * Přidání souborů s kódy
 
-Po vytvoření řešení zkontrolujete kód, který je pro projekty cloudových služeb a objekty blob a fronty Azure jedinečný.
+Po vytvoření hello řešení zkontrolujete hello kód, který je jedinečný toocloud služby projekty a Azure objekty BLOB a fronty.
 
 ### <a name="create-a-cloud-service-visual-studio-solution"></a>Vytvoření řešení cloudové služby Visual Studio
-1. Ve Visual Studiu zvolte v nabídce **Soubor** možnost **Nový projekt**.
-2. V levém podokně dialogového okna **Nový projekt** rozbalte položku **Visual C#**, vyberte šablonu **Cloud** a potom klikněte na šablonu **Cloudová služba Azure**.
-3. Pojmenujte projekt a řešení ContosoAdsCloudService a potom klikněte na tlačítko **OK**.
+1. V sadě Visual Studio, vyberte **nový projekt** z hello **souboru** nabídky.
+2. V levém podokně hello hello **nový projekt** dialogové okno, rozbalte seznam **Visual C#** a zvolte **cloudu** šablony a potom zvolte hello **CloudováslužbaAzure** šablony.
+3. Název hello projektu a řešení ContosoAdsCloudService a potom klikněte na **OK**.
 
     ![Nový projekt](./media/cloud-services-dotnet-get-started/newproject.png)
-4. V dialogovém okně **Nová cloudová služba Azure** přidejte webovou roli a roli pracovního procesu. Pojmenujte webovou roli ContosoAdsWeb a roli pracovního procesu ContosoAdsWorker. (Ke změně výchozích názvů rolí použijte ikonu tužky v pravém podokně.)
+4. V hello **nová Cloudová služba Azure** dialogové okno pole, přidejte webovou roli a roli pracovního procesu. Název hello webovou roli ContosoAdsWeb a roli pracovního procesu hello název ContosoAdsWorker. (Použijte ikonu tužky hello v hello pravém podokně toochange hello výchozích názvů rolí hello.)
 
     ![Nový projekt cloudové služby](./media/cloud-services-dotnet-get-started/newcsproj.png)
-5. Po zobrazení dialogového okna **Nový projekt ASP.NET** pro webovou roli vyberte šablonu MVC a potom klikněte na **Změnit ověřování**.
+5. Až se zobrazí hello **nový projekt ASP.NET** dialogové okno pro webovou roli hello, zvolte šablonu MVC hello a pak klikněte na tlačítko **změna ověřování**.
 
     ![Změna ověřování](./media/cloud-services-dotnet-get-started/chgauth.png)
-6. V dialogovém okně **Změna ověřování** vyberte **Bez ověřování** a potom klikněte na tlačítko **OK**.
+6. V hello **změna ověřování** dialogovém okně vyberte **bez ověřování**a potom klikněte na **OK**.
 
     ![Bez ověřování](./media/cloud-services-dotnet-get-started/noauth.png)
-7. V dialogovém okně **Nový projekt ASP.NET** klikněte na tlačítko **OK**.
-8. V **Průzkumníku řešení** klikněte pravým tlačítkem na řešení (ne na projekt) a zvolte **Přidat – nový projekt**.
-9. V dialogovém okně **Přidání nového projektu**  klikněte v levém podokně v části **Visual C#** na tlačítko **Windows** a potom klikněte na šablonu **Knihovna tříd**.  
-10. Pojmenujte projekt *ContosoAdsCommon* a potom klikněte na tlačítko **OK**.
+7. V hello **nový projekt ASP.NET** dialogové okno, klikněte na tlačítko **OK**.
+8. V **Průzkumníku řešení**, klikněte pravým tlačítkem na hello řešení (ne hello projektů) a zvolte **přidat – nový projekt**.
+9. V hello **přidat nový projekt** dialogovém okně vyberte **Windows** pod **Visual C#** v levém podokně text hello a potom klikněte na hello **knihovny tříd** Šablona.  
+10. Název projektu hello *ContosoAdsCommon*a potom klikněte na **OK**.
 
-    Na kontext Entity Framework a datový model je třeba odkazovat z projektů webové role i role pracovního procesu. Jako alternativu můžete třídy související s EF definovat v projektu webové role a odkazovat na takový projekt z projektu role pracovního procesu. V tomto alternativním přístupu bude projekt role pracovního procesu obsahovat odkaz na webová sestavení, která nepotřebuje.
+    Je nutné tooreference hello kontextu a hello datový model Entity Framework z projektů webové a pracovní role. Jako alternativu můžete definovat třídy související s EF hello v hello projekt webové role a odkazovat na takový projekt z projektu role pracovního procesu hello. Ale v hello alternativní způsob, váš projekt role pracovního procesu být referenční tooweb sestavení, která nepotřebuje.
 
 ### <a name="update-and-add-nuget-packages"></a>Aktualizace a přidání balíčků NuGet
-1. Otevřete dialogové okno **Správa balíčků NuGet** řešení.
-2. V horní části okna vyberte **Aktualizace**.
-3. Najděte balíček *WindowsAzure.Storage* a pokud je v seznamu, vyberte ho a vyberte webový projekt a projekt pracovního procesu, ve kterých ho chcete aktualizovat, a potom klikněte na **Aktualizace**.
+1. Otevřete hello **spravovat balíčky NuGet** dialogové okno pro řešení hello.
+2. Hello horní části okna hello, vyberte **aktualizace**.
+3. Vyhledejte hello *WindowsAzure.Storage* balíčku a pokud je v seznamu hello, vyberte ho a vyberte hello webové a pracovní projekty tooupdate ho a pak klikněte na tlačítko **aktualizace**.
 
-    Knihovna klienta úložiště se aktualizuje častěji než šablony projektů Visual Studio, takže se často stává, že verzi u nově vytvořeného projektu je potřeba aktualizovat.
-4. V horní části okna vyberte **Procházet**.
-5. Najděte balíček NuGet *EntityFramework* a nainstalujte ho do všech tří projektů.
-6. Najděte balíček NuGet *Microsoft.WindowsAzure.ConfigurationManager* a nainstalujte ho do projektu role pracovního procesu.
+    Klientská knihovna pro úložiště Hello je aktualizován častěji než šablony projektů Visual Studio, tak, že hello verze budete často zjistíte v toobe nově vytvořený projekt musí aktualizovat.
+4. Hello horní části okna hello, vyberte **Procházet**.
+5. Najde hello *EntityFramework* NuGet balíček a nainstalujte ho do všech tří projektů.
+6. Najde hello *Microsoft.WindowsAzure.ConfigurationManager* NuGet balíčku a nainstalujte ho do projektu role pracovního procesu hello.
 
 ### <a name="set-project-references"></a>Nastavení odkazů na projekty
-1. V projektu ContosoAdsWeb nastavte odkaz na projekt ContosoAdsCommon. Klikněte pravým tlačítkem na projekt ContosoAdsWeb a potom klikněte na **Odkazy** - **Přidat odkazy**. V dialogovém okně **Správce odkazů** vyberte v levém podokně **Řešení – projekty**, vyberte **ContosoAdsCommon** a potom klikněte na tlačítko **OK**.
-2. V projektu ContosoAdsWorker nastavte odkaz na projekt ContosAdsCommon.
+1. V hello projektu ContosoAdsWeb nastavte odkaz na projekt ContosoAdsCommon toohello. Klikněte pravým tlačítkem na projekt ContosoAdsWeb hello a pak klikněte na **odkazy** - **přidat odkazy**. V hello **správce odkazů** dialogové okno, vyberte **řešení – projekty** v levém podokně hello vyberte **ContosoAdsCommon**a pak klikněte na tlačítko **OK**.
+2. V hello projektu ContosoAdsWorker nastavte odkaz na projekt ContosAdsCommon toohello.
 
-    ContosoAdsCommon bude obsahovat datový model a třídu kontextu Entity Framework, které použije front-end i back-end.
-3. V projektu ContosoAdsWorker nastavte odkaz na `System.Drawing`.
+    ContosoAdsCommon bude obsahovat hello Entity Framework datový model a třídu kontextu, který se použije i hello front-end a back-end.
+3. V hello projektu ContosoAdsWorker nastavte odkaz příliš`System.Drawing`.
 
-    Back-end toto sestavení používá k převodu obrázků na miniatury.
+    Toto sestavení používá toothumbnails bitové kopie hello tooconvert back-end.
 
 ### <a name="configure-connection-strings"></a>Konfigurace připojovacích řetězců
-V této části budete konfigurovat službu Azure Storage a připojovací řetězce SQL pro místní testování. Pokyny pro nasazení (uvedené už dříve) vysvětlují, jak nastavit připojovací řetězce pro situaci, kdy aplikace běží v cloudu.
+V této části budete konfigurovat službu Azure Storage a připojovací řetězce SQL pro místní testování. Pokyny k nasazení Hello v kurzu hello vysvětlují, jak tooset až hello připojovací řetězce pro při hello aplikace běží v cloudu hello.
 
-1. V projektu ContosoAdsWeb otevřete aplikační soubor Web.config a vložte následující prvek `connectionStrings` za prvek `configSections`.
+1. V projektu ContosoAdsWeb hello hello otevřete aplikační soubor Web.config a vložení hello následující `connectionStrings` element po hello `configSections` elementu.
 
     ```xml
     <connectionStrings>
@@ -376,52 +376,52 @@ V této části budete konfigurovat službu Azure Storage a připojovací řet�
 
     Pokud používáte Visual Studio 2015 nebo vyšší, nahraďte text „v11.0“ textem „MSSQLLocalDB“.
 2. Uložte provedené změny.
-3. Klikněte v projektu ContosoAdsCloudService pravým tlačítkem v části **Role** na ContosoAdsWeb a potom klikněte na **Vlastnosti**.
+3. V projektu ContosoAdsCloudService hello, klikněte pravým tlačítkem na ContosoAdsWeb pod **role**a potom klikněte na **vlastnosti**.
 
     ![Vlastnosti rolí](./media/cloud-services-dotnet-get-started/roleproperties.png)
-4. V okně vlastností **ContosAdsWeb [Role]** klikněte na kartu **Nastavení** a potom na **Přidat nastavení**.
+4. V hello **ContosAdsWeb [Role]** okně vlastností klikněte na tlačítko hello **nastavení** a pak klikněte **přidat nastavení**.
 
-    Možnost **Konfigurace služby** nechte nastavenou na **Všechny konfigurace**.
-5. Přidejte nastavení s názvem *StorageConnectionString*. Nastavte **Typ** na *ConnectionString* a možnost **Hodnota** nastavte na *UseDevelopmentStorage=true*.
+    Nechte **konfigurace služby** nastavit příliš**všechny konfigurace**.
+5. Přidejte nastavení s názvem *StorageConnectionString*. Nastavit **typ** příliš*ConnectionString*a nastavte **hodnotu** příliš*UseDevelopmentStorage = true*.
 
     ![Nový připojovací řetězec](./media/cloud-services-dotnet-get-started/scall.png)
 6. Uložte provedené změny.
-7. Postupujte stejným způsobem a přidejte připojovací řetězec úložiště do vlastností role ContosoAdsWorker.
-8. Ještě v okně vlastností **ContosoAdsWorker [Role]** přidejte další připojovací řetězec:
+7. Postupujte podle hello stejný postup tooadd připojovací řetězec úložiště do vlastností role ContosoAdsWorker hello.
+8. Stále v hello **ContosoAdsWorker [Role]** vlastnosti – okno, přidejte další připojovací řetězec:
 
    * Název: ContosoAdsDbConnectionString
    * Typ: Řetězec
-   * Hodnota: Vložte stejný připojovací řetězec, který jste použili pro projekt webové role. (Následující příklad je určený pro Visual Studio 2013. Pokud tento příklad kopírujete a používáte Visual Studio 2015 nebo vyšší, nezapomeňte změnit zdroj dat.)
+   * Hodnota: Vložte hello stejný připojovací řetězec použitý pro projekt webové role hello. (hello následující ukázka je pro Visual Studio 2013. Nezapomeňte toochange hello zdroj dat Pokud tento příklad kopírujete a používáte Visual Studio 2015 nebo vyšší.)
 
        ```
        Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;
        ```
 
 ### <a name="add-code-files"></a>Přidání souborů s kódy
-V této části zkopírujete soubory s kódy ze staženého řešení do nového řešení. Následující části vám ukáží a vysvětlí klíčová místa tohoto kódu.
+V této části zkopírujete soubory kódu z řešení hello stáhli do nové řešení hello. Hello následující části se zobrazí a vysvětlí klíčová místa tohoto kódu.
 
-Pokud chcete přidat soubory do projektu nebo složky, klikněte pravým tlačítkem na projekt nebo složku a potom klikněte na **Přidat** - **Existující položka**. Vyberte požadované soubory a potom klikněte na tlačítko **Přidat**. Pokud se zobrazí dotaz, jestli chcete nahradit existující soubory, klikněte na **Ano**.
+tooadd soubory tooa projektu nebo složky, klikněte pravým tlačítkem na projekt hello nebo složku a klikněte na tlačítko **přidat** - **existující položka**. Vyberte soubory hello a potom klikněte na **přidat**. Pokud se zobrazí dotaz, zda chcete, aby tooreplace existující soubory, klikněte na tlačítko **Ano**.
 
-1. V projektu ContosoAdsCommon odstraňte soubor *Class1.cs* a na jeho místo přidejte soubory *Ad.cs* a *ContosoAdscontext.cs* ze staženého projektu.
-2. Do projektu ContosoAdsWeb přidejte následující soubory ze staženého projektu.
+1. V projektu ContosoAdsCommon hello odstranit hello *Class1.cs* souboru a přidejte do jeho místní hello *Ad.cs* a *ContosoAdscontext.cs* stáhnout soubory z hello projektu.
+2. V projektu ContosoAdsWeb hello přidejte následující soubory z projektu hello stáhli hello.
 
    * *Global.asax.cs*.  
-   * Do složky *Views\Shared*: *\_Layout.cshtml*.
-   * Do složky *Views\Home*: *Index.cshtml*.
-   * Do složky *Controllers*: *AdController.cs*.
-   * Do složky *Views\Ad* (nejdřív složku vytvořte): pět souborů *.cshtml*.
-3. Do projektu ContosoAdsWorker přidejte soubor *WorkerRole.cs* ze staženého projektu.
+   * V hello *Views\Shared* složky:  *\_Layout.cshtml*.
+   * V hello *Views\Home* složky: *Index.cshtml*.
+   * V hello *řadiče* složky: *AdController.cs*.
+   * V hello *Views\Ad* složky (nejprve vytvořte složku hello): pět *.cshtml* soubory.
+3. V projektu ContosoAdsWorker hello přidat *WorkerRole.cs* z hello stáhli projektu.
 
-Teď můžete sestavit a spustit aplikaci podle dříve uvedených pokynů tohoto kurzu a aplikace bude používat prostředky místní databáze a emulátoru úložiště.
+Teď můžete sestavit a spustit aplikaci hello podle pokynů v kurzu hello a hello aplikace bude používat místní databáze a prostředky emulátoru úložiště.
 
-Následující části popisují kód týkající se práce s prostředím Azure, objekty blob a frontami. Tento kurzu nevysvětluje, jak máte vytvořit kontrolery a zobrazení MVC pomocí generování uživatelského rozhraní, jak napsat kód Entity Framework, který funguje s databází serveru SQL Server, ani nepopisuje základy asynchronního programování v technologii ASP.NET 4.5. Informace o těchto tématech naleznete v následujících zdrojích:
+Hello následující části popisují kód hello související tooworking s hello prostředí Azure, objekty BLOB a fronty. V tomto kurzu nevysvětluje, jak řadiče MVC toocreate a zobrazení pomocí generování uživatelského rozhraní, jak toowrite kódu rozhraní Entity Framework, funguje s databází serveru SQL Server nebo hello nepopisuje základy asynchronního programování v technologii ASP.NET 4.5. Informace o těchto tématech najdete v tématu hello následující prostředky:
 
 * [Začínáme s MVC 5](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
 * [Začínáme s EF 6 a MVC 5](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc)
-* [Úvod do asynchronního programování na platformě .NET 4.5](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices#async).
+* [Úvod tooasynchronous programování v rozhraní .NET 4.5](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices#async).
 
 ### <a name="contosoadscommon---adcs"></a>ContosoAdsCommon – Ad.cs
-Soubor Ad.cs definuje výčet kategorií reklam a třídu entity objektů POCO pro informace o reklamách.
+Hello soubor Ad.cs definuje výčet kategorií reklam a třídu entity objektů POCO pro informace o reklamách.
 
 ```csharp
 public enum Category
@@ -465,7 +465,7 @@ public class Ad
 ```
 
 ### <a name="contosoadscommon---contosoadscontextcs"></a>ContosoAdsCommon – ContosoAdsContext.cs
-Třída ContosoAdsContext určuje použití třídy reklamy v kolekci DbSet, kterou Entity Framework uloží do databáze SQL.
+Hello třída ContosoAdsContext Určuje, zda text hello Ad třída se používá v kolekci DbSet, kterou Entity Framework uloží do databáze SQL.
 
 ```csharp
 public class ContosoAdsContext : DbContext
@@ -481,19 +481,19 @@ public class ContosoAdsContext : DbContext
 }
 ```
 
-Třída má dva konstruktory. První z nich používán webovým projektem a určuje název připojovacího řetězce, který je uložený v souboru Web.config. Druhý konstruktor vám umožňuje předat samotný připojovací řetězec používaný projektem role pracovního projektu, protože nemá soubor Web.config. Už dříve jste viděli, kam se tento připojovací řetězec uložil, a později uvidíte, jak kód získává připojovací řetězec při vytvoření instance třídy DbContext.
+Hello třída má dva konstruktory. Hello první z nich je používané hello webovým projektem a určuje název připojovacího řetězce, který je uložený v souboru Web.config hello hello. Hello druhý konstruktor vám umožňuje toopass v hello samotný připojovací řetězec používaný hello projekt role pracovního procesu, protože sám nemá soubor Web.config. Už jste viděli dříve tento připojovací řetězec uložil, kde uvidíte později jak hello kód načte hello připojovací řetězec při vytvoření instance třídy DbContext hello.
 
 ### <a name="contosoadsweb---globalasaxcs"></a>ContosoAdsWeb – Global.asax.cs
-Kód, který se volá z metody `Application_Start`, vytvoří kontejner objektů blob s *obrázky* a frontu *obrázků*, pokud ještě neexistují. To zajišťuje, že při každém spuštění pomocí nového účtu úložiště nebo při spuštění pomocí emulátoru úložiště v novém počítači budou požadovaný kontejner objektů blob a fronta vytvořeny automaticky.
+Kód, který je volána z hello `Application_Start` metoda vytvoří *bitové kopie* kontejner objektů blob a *bitové kopie* fronty, pokud ještě neexistují. To zajistí, že při každém spuštění pomocí nového účtu úložiště, nebo pomocí emulátoru úložiště hello na nový počítač, hello požadovaný kontejner objektů blob a fronty se vytvoří automaticky.
 
-Kód získá přístup k účtu úložiště pomocí připojovacího řetězec úložiště ze souboru *.cscfg*.
+Hello kód získá přístup k účtu úložiště pro toohello pomocí připojovacího řetězce úložiště hello z hello *.cscfg* souboru.
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse
     (RoleEnvironment.GetConfigurationSettingValue("StorageConnectionString"));
 ```
 
-Potom získá odkaz na kontejner objektů blob s *obrázky*, pokud kontejner neexistuje, tak ho vytvoří, a nastaví přístupová oprávnění na nový kontejner. Ve výchozím nastavení povolí nové kontejnery přístup k objektům blob jenom klientům s přihlašovacími údaji k účtu úložiště. Web potřebuje, aby objekty blob byly veřejné, jinak by nemohl zobrazit obrázky pomocí adres URL, které odkazují na objekty blob s obrázky.
+Potom získá odkaz na toohello *bitové kopie* kontejner objektů blob, vytvoří kontejner hello, pokud ještě neexistuje, a nastaví přístupová oprávnění na nový kontejner hello. Ve výchozím nastavení nové kontejnery jenom klientům s účtem úložiště objektů BLOB tooaccess přihlašovací údaje. Hello webu musí hello toobe veřejné objekty BLOB tak, aby se může zobrazit obrázky pomocí adres URL objekty BLOB tento bod toohello bitové kopie.
 
 ```csharp
 var blobClient = storageAccount.CreateCloudBlobClient();
@@ -508,7 +508,7 @@ if (imagesBlobContainer.CreateIfNotExists())
 }
 ```
 
-Podobný kód získá odkaz na frontu *obrázků* a vytvoří novou frontu. V tomto případě nejsou nutná žádná oprávnění.
+Podobný kód získá odkaz na toohello *bitové kopie* fronty a vytvoří novou frontu. V tomto případě nejsou nutná žádná oprávnění.
 
 ```csharp
 CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
@@ -517,10 +517,10 @@ imagesQueue.CreateIfNotExists();
 ```
 
 ### <a name="contosoadsweb---layoutcshtml"></a>ContosoAdsWeb – \_Layout.cshtml
-Soubor *_Layout.cshtml* nastaví název aplikace v záhlaví a zápatí a vytvoří položku nabídky „Reklamy“.
+Hello *_Layout.cshtml* soubor nastaví název aplikace hello v hello záhlaví a zápatí a vytvoří položku nabídky "Reklamy".
 
 ### <a name="contosoadsweb---viewshomeindexcshtml"></a>ContosoAdsWeb – Views\Home\Index.cshtml
-Soubor *Views\Home\Index.cshtml* zobrazuje na domovské stránce odkazy na kategorie. Odkazy předají celočíselnou hodnotu výčtu `Category` v proměnné řetězce dotazu na indexovou stránku reklam.
+Hello *Views\Home\Index.cshtml* souboru zobrazuje kategorie odkazy na domovskou stránku hello. Hello odkazy předají celočíselnou hodnotu hello hello `Category` výčtu na stránce služby Active Directory Index toohello proměnné řetězce dotazu.
 
 ```razor
 <li>@Html.ActionLink("Cars", "Index", "Ad", new { category = (int)Category.Cars }, null)</li>
@@ -530,9 +530,9 @@ Soubor *Views\Home\Index.cshtml* zobrazuje na domovské stránce odkazy na kateg
 ```
 
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb – AdController.cs
-V souboru *AdController.cs* volá konstruktor metodu `InitializeStorage`, aby vytvořil objekty knihovny klienta služby Azure Storage, které poskytují rozhraní API pro práci s objekty blob a frontami.
+V hello *AdController.cs* soubor, hello konstruktor volání hello `InitializeStorage` metoda toocreate Klientská knihovna pro úložiště Azure objekty, které poskytují rozhraní API pro práci s objekty BLOB a frontami.
 
-Potom kód získá odkaz na kontejner objektů blob s *obrázky*, jak už jste viděli v souboru *Global.asax.cs*. Během toho nastaví výchozí [zásady opakování](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling), které jsou vhodné pro webovou aplikaci. Výchozí zásady opakování exponenciálního omezení rychlosti můžou způsobit, že webová aplikace přestane při opakovaných pokusech reagovat na dobu delší než jednu minutu. Důvodem může být přechodná chyba. Zde určené zásady opakování čekají po každém pokusu tři sekundy a celkem provádějí tři pokusy.
+Pak hello kód získá odkaz na toohello *bitové kopie* kontejner objektů blob, jako jste viděli dříve v *Global.asax.cs*. Během toho nastaví výchozí [zásady opakování](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling), které jsou vhodné pro webovou aplikaci. zásady opakování exponenciálního omezení rychlosti výchozí Hello může přečnívat hello webové aplikace po dobu delší než minutu při opakovaných pokusech přechodná chyba. Tady určené zásady opakování Hello čeká tří sekund po každém pokusu až toothree pokusů.
 
 ```csharp
 var blobClient = storageAccount.CreateCloudBlobClient();
@@ -540,7 +540,7 @@ blobClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSeco
 imagesBlobContainer = blobClient.GetContainerReference("images");
 ```
 
-Podobný kód získá odkaz na frontu *obrázků*.
+Podobný kód získá odkaz na toohello *bitové kopie* fronty.
 
 ```csharp
 CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
@@ -548,7 +548,7 @@ queueClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSec
 imagesQueue = queueClient.GetQueueReference("images");
 ```
 
-Většinu kódu kontroleru je typická pro práci s datovým modelem Entity Framework za použití třídy DbContext. Výjimkou je metoda HttpPost `Create`, která soubor odešle a uloží ho do úložiště objektů blob. Vazač modelu poskytuje metodě objekt [HttpPostedFileBase](http://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx).
+Většinu kódu kontroleru hello je typická pro práci s datovým modelem Entity Framework použití třídy DbContext. Výjimkou je hello HttpPost `Create` metodu, která soubor odešle a uloží ho do úložiště objektů blob. poskytuje vazač modelu Hello [HttpPostedFileBase](http://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx) objektu toohello metoda.
 
 ```csharp
 [HttpPost]
@@ -558,7 +558,7 @@ public async Task<ActionResult> Create(
     HttpPostedFileBase imageFile)
 ```
 
-Pokud uživatel vybral soubor k odeslání, kód soubor odešle, uloží ho do objektu blob a zaktualizuje záznam v databázi reklam pomocí adresy URL, která odkazuje na objekt blob.
+Pokud hello uživatel vybral soubor tooupload, kód hello odešle soubor hello, uloží ho do objektu blob a aktualizuje hello záznam v databázi reklam pomocí adresy URL, který odkazuje objekt blob toohello.
 
 ```csharp
 if (imageFile != null && imageFile.ContentLength != 0)
@@ -568,7 +568,7 @@ if (imageFile != null && imageFile.ContentLength != 0)
 }
 ```
 
-Kód, který odesílání provádí, je umístěný v metodě `UploadAndSaveBlobAsync`. Vytvoří identifikátor GUID pro objekt blob, odešle a uloží soubor a vrátí odkaz na uložený objekt blob.
+Hello kód, který hello odesílání je v hello `UploadAndSaveBlobAsync` metoda. Vytvoří identifikátor GUID pro objekt blob hello, nahrávání a uloží hello soubor a vrátí objekt blob uložit toohello odkaz.
 
 ```csharp
 private async Task<CloudBlockBlob> UploadAndSaveBlobAsync(HttpPostedFileBase imageFile)
@@ -583,7 +583,7 @@ private async Task<CloudBlockBlob> UploadAndSaveBlobAsync(HttpPostedFileBase ima
 }
 ```
 
-Když metoda HttpPost `Create` odešle objekt blob a zaktualizuje databázi, vytvoří zprávu fronty, aby informovala back-endový proces, že obrázek je připravený k převodu na miniaturu.
+Po hello HttpPost `Create` metoda odešle objekt blob a aktualizace hello databázi, vytvoří tooinform zprávy fronty tohoto procesu back-end, že obrázek je připravený pro převod tooa miniaturu.
 
 ```csharp
 string queueMessageString = ad.AdId.ToString();
@@ -591,7 +591,7 @@ var queueMessage = new CloudQueueMessage(queueMessageString);
 await queue.AddMessageAsync(queueMessage);
 ```
 
-Kód metody HttpPost `Edit` je podobný s tím rozdílem, že pokud uživatel vybere nový obrázkový soubor, veškeré existující objekty blob musí být odstraněny.
+Hello kód pro hello HttpPost `Edit` metoda je podobný s tím rozdílem, že pokud hello uživatel vybere nový obrázkový soubor musíte odstranit všechny objekty BLOB, které již existují.
 
 ```csharp
 if (imageFile != null && imageFile.ContentLength != 0)
@@ -602,7 +602,7 @@ if (imageFile != null && imageFile.ContentLength != 0)
 }
 ```
 
-Další příklad ukazuje kód, který odstraní objekty blob při odstranění reklamy.
+Hello další příklad ukazuje hello kód, který odstraní objekty BLOB při odstranění ad.
 
 ```csharp
 private async Task DeleteAdBlobsAsync(Ad ad)
@@ -627,45 +627,45 @@ private static async Task DeleteAdBlobAsync(Uri blobUri)
 ```
 
 ### <a name="contosoadsweb---viewsadindexcshtml-and-detailscshtml"></a>ContosoAdsWeb – Views\Ad\Index.cshtml a Details.cshtml
-Soubor *Index.cshtml* zobrazí miniatury s dalšími daty reklam.
+Hello *Index.cshtml* souboru zobrazí miniatury s hello dalšími daty reklam.
 
 ```razor
 <img src="@Html.Raw(item.ThumbnailURL)" />
 ```
 
-Soubor *Details.cshtml* zobrazí obrázek v plné velikosti.
+Hello *Details.cshtml* zobrazí obrázek hello plné velikosti.
 
 ```razor
 <img src="@Html.Raw(Model.ImageURL)" />
 ```
 
 ### <a name="contosoadsweb---viewsadcreatecshtml-and-editcshtml"></a>ContosoAdsWeb – Views\Ad\Create.cshtml a Edit.cshtml
-Soubory *Create.cshtml* a *Edit.cshtml* určují kódování formuláře, které kontroleru umožňuje získání objektu `HttpPostedFileBase`.
+Hello *Create.cshtml* a *Edit.cshtml* soubory zadejte formuláře kódování, že umožňuje hello řadiče tooget hello `HttpPostedFileBase` objektu.
 
 ```razor
 @using (Html.BeginForm("Create", "Ad", FormMethod.Post, new { enctype = "multipart/form-data" }))
 ```
 
-Prvek `<input>` sděluje prohlížeči, aby zobrazil dialogové okno pro výběr souboru.
+`<input>` Element informuje hello prohlížeče tooprovide dialogové okno pro výběr souboru.
 
 ```razor
 <input type="file" name="imageFile" accept="image/*" class="form-control fileupload" />
 ```
 
 ### <a name="contosoadsworker---workerrolecs---onstart-method"></a>ContosoAdsWorker – WorkerRole.cs – metoda OnStart 
-Prostředí role pracovního procesu Azure volá metodu `OnStart` ve třídě `WorkerRole`, když se spouští role pracovního procesu, a volá metodu `Run`, když se metoda `OnStart` dokončí.
+prostředí role pracovního procesu Azure Hello volá hello `OnStart` metoda v hello `WorkerRole` třídy, když se spouští role pracovního procesu hello a zavolá hello `Run` metoda při hello `OnStart` Metoda dokončení.
 
-Metoda `OnStart` získá připojovací řetězec databáze ze souboru *.cscfg* a předá ho do třídy DbContext v Entity Framework. Poskytovatel SQLClienta se používá ve výchozím nastavení, takže ho není nutné zadávat.
+Hello `OnStart` metoda získá připojovací řetězec databáze hello z hello *.cscfg* a předá ho toohello třídy Entity Framework DbContext. Poskytovatel Sqlclienta Hello se používá ve výchozím nastavení, takže hello zprostředkovatel nemá toobe zadaný.
 
 ```csharp
 var dbConnString = CloudConfigurationManager.GetSetting("ContosoAdsDbConnectionString");
 db = new ContosoAdsContext(dbConnString);
 ```
 
-Potom metoda získá odkaz na účet úložiště a vytvoří kontejner objektů blob a frontu (pokud ještě neexistují). Kód pro tuto akci je podobný kódu, který jste už viděli v metodě webové role `Application_Start`.
+Potom hello metoda získá odkaz na účet úložiště toohello a vytvoří kontejner objektů blob hello a fronty, pokud ještě neexistují. Hello kód, pro který je podobný toowhat jste už viděli v hello webovou roli `Application_Start` metoda.
 
 ### <a name="contosoadsworker---workerrolecs---run-method"></a>ContosoAdsWorker – WorkerRole.cs – metoda Run
-Metoda `Run` se volá, když metoda `OnStart` dokončí svoji inicializaci. Metoda spustí nekonečnou smyčku, která sleduje nové zprávy fronty a po jejich příchodu je zpracuje.
+Hello `Run` metoda je volána, když hello `OnStart` metoda dokončí svoji inicializaci. Hello metoda spustí nekonečnou smyčku, která sleduje nové zprávy fronty a po jejich příchodu je zpracuje.
 
 ```csharp
 public override void Run()
@@ -698,9 +698,9 @@ public override void Run()
 }
 ```
 
-Po každé iteraci smyčky, kdy nebyla nalezena žádná zpráva fronty, se program na sekundu uspí. Tím se roli pracovního procesu zabrání, aby nadměrně nezvyšovala náklady na čas procesoru a transakce úložiště. Poradní tým Microsoftu vypráví příběh o vývojáři, který tohle zapomněl zohlednit, nasadil kód do výroby a odjel na dovolenou. Když se vrátil zpět, byl účet za dohled vyšší než cena jeho dovolené.
+Po každé iteraci smyčky hello, pokud byla nalezena žádná zpráva fronty, hello program na sekundu uspí. To brání tomu, aby role pracovního procesu hello by docházelo k nadměrnému využití procesoru čas a úložiště cena za transakci. Hello poradní tým Microsoftu vypráví příběh o vývojáři, který se zapomněl tooinclude tohoto nasazení tooproduction a odjel na dovolenou. Když se vrátil zpět, byl účet za dohled vyšší než dovolenou hello.
 
-Obsah zprávy fronty občas způsobí chybu při zpracování. Takové zprávě se říká *nezpracovatelná zpráva* a pokud jste právě zaprotokolovali chybu a restartovali smyčku, můžete se pokoušet o zpracování této zprávy do nekonečna.  Zachycující blok proto zahrnuje podmínku, která kontroluje, jak často se aplikace pokusila aktuální zprávu zpracovat a pokud to bylo víc než pětkrát, odstraní zprávu z fronty.
+Někdy hello obsah zprávy fronty výsledkem bude chyba ve zpracování. Tento postup se nazývá *nezpracovatelná zpráva*, a pokud jste právě zaprotokolovali chybu a restartování hello smyčky, může do nekonečna pokusíte tooprocess této zprávě.  Proto blok catch hello zahrnuje příkaz, který kontroluje toosee kolikrát aplikace hello nezkusí tooprocess hello aktuální zprávu, a pokud to bylo víc než 5krát, odstraní hello zprávu z fronty hello.
 
 `ProcessQueueMessage` se volá při nalezení zpráv fronty.
 
@@ -733,49 +733,49 @@ private void ProcessQueueMessage(CloudQueueMessage msg)
 }
 ```
 
-Tento kód čte databázi, aby získal adresu URL obrázku, převede obrázek na miniaturu, uloží miniaturu do objektu blob, zaktualizuje databázi pomocí adresy URL odkazující na miniaturu v objektu blob a odstraní zprávu fronty.
+Tento kód čte hello databáze tooget hello adresa URL obrázku, převede hello image tooa miniaturu, uloží miniaturu hello do objektu blob, aktualizuje hello databáze s adresou URL hello miniaturu v objektu blob a odstraní zprávu fronty hello.
 
 > [!NOTE]
-> Kód v metodě `ConvertImageToThumbnailJPG` používá pro zjednodušení třídy v oboru názvů System.Drawing. Třídy v tomto oboru názvů však byly navrženy pro používání s formuláři Windows. Jejich používání není podporované ve Windows a službě ASP.NET. Další informace o možnostech zpracování obrázků najdete v článcích o [dynamickém generování obrázků](http://www.hanselman.com/blog/BackToBasicsDynamicImageGenerationASPNETControllersRoutingIHttpHandlersAndRunAllManagedModulesForAllRequests.aspx) a o [hloubkové změně velikosti uvnitř obrázků](http://www.hanselminutes.com/313/deep-inside-image-resizing-and-scaling-with-aspnet-and-iis-with-imageresizingnet-author-na).
+> Hello kód v hello `ConvertImageToThumbnailJPG` metoda používá třídy v oboru názvů System.Drawing hello pro jednoduchost. Hello třídy v tomto oboru názvů však byly navrženy pro používání s formuláři Windows. Jejich používání není podporované ve Windows a službě ASP.NET. Další informace o možnostech zpracování obrázků najdete v článcích o [dynamickém generování obrázků](http://www.hanselman.com/blog/BackToBasicsDynamicImageGenerationASPNETControllersRoutingIHttpHandlersAndRunAllManagedModulesForAllRequests.aspx) a o [hloubkové změně velikosti uvnitř obrázků](http://www.hanselminutes.com/313/deep-inside-image-resizing-and-scaling-with-aspnet-and-iis-with-imageresizingnet-author-na).
 >
 >
 
 ## <a name="troubleshooting"></a>Řešení potíží
-Pokud by vám při procházení kurzem něco nefungovalo, následuje přehled běžných chyb a jejich řešení.
+V případě, že něco nefunguje vám při procházení kurzem hello pokyny v tomto kurzu, tady jsou některé běžné chyby a jak tooresolve je.
 
 ### <a name="serviceruntimeroleenvironmentexception"></a>ServiceRuntime.RoleEnvironmentException
-Azure poskytne objekt `RoleEnvironment` při spuštění aplikace v Azure nebo při spuštění místně pomocí emulátoru služby Výpočty v Azure.  Pokud se tato chyba objeví, když aplikaci spouštíte místně, zkontrolujte, jestli jste projekt ContosoAdsCloudService nastavili jako spouštěný projekt. Toto nastaví projekt tak, aby běžel pomocí emulátoru služby Výpočty v Azure.
+Hello `RoleEnvironment` objekt při spuštění aplikace v Azure nebo při spuštění místně pomocí emulátoru služby výpočty Azure hello poskytuje Azure.  Pokud k této chybě dojde, když spouštíte místně, ujistěte se, že jste hello projektu ContosoAdsCloudService nastavili jako spouštěný projekt hello. Toto nastaví toorun hello projektu pomocí emulátoru služby výpočty Azure hello.
 
-Jedna z věcí, ke kterým aplikace používá RoleEnvironment Azure, je získání hodnot připojovacích řetězců, které jsou uložené v souborech *.cscfg*, takže další možnou příčinou této výjimky je chybějící připojovací řetězec. Zkontrolujte, jestli jste v projektu ContosoAdsWeb vytvořili nastavení StorageConnectionString pro cloudovou i místní konfiguraci a jestli jste vytvořili oba připojovací řetězce pro obě konfigurace i v projektu ContosoAdsWorker. Pokud budete StorageConnectionString hledat pomocí možnosti **Najít všechny** v celém řešení, mělo by se zobrazit devětkrát v šesti souborech.
+Jednou z věcí hello hello hello aplikace používá RoleEnvironment Azure pro je tooget hello připojení řetězcové hodnoty, které jsou uložené v hello *.cscfg* souborům, takže další možnou příčinou této výjimky je chybějící připojovací řetězec. Ujistěte se, který jste vytvořili hello nastavení StorageConnectionString pro Cloudovou i místní konfiguraci v projektu ContosoAdsWeb hello a který jste vytvořili oba připojovací řetězce pro obě konfigurace i v projektu ContosoAdsWorker hello. Pokud uděláte **najít všechny** vyhledávání storageconnectionstring v celé řešení hello měli zobrazení 9 časy v 6 soubory.
 
-### <a name="cannot-override-to-port-xxx-new-port-below-minimum-allowed-value-8080-for-protocol-http"></a>Nejde přepsat na port xxx. Nový port s nižší než minimální povolenou hodnotou 8080 pro protokol http
-Změňte číslo portu, který používáte pro webový projekt. Klikněte pravým tlačítkem na projekt ContosoAdsWeb a potom klikněte na **Vlastnosti**. Klikněte na kartu **Web** a potom v nastavení **Adresa URL projektu** změňte číslo portu.
+### <a name="cannot-override-tooport-xxx-new-port-below-minimum-allowed-value-8080-for-protocol-http"></a>Nejde přepsat tooport xxx. Nový port s nižší než minimální povolenou hodnotou 8080 pro protokol http
+Změňte číslo portu hello používá hello webového projektu. Klikněte pravým tlačítkem na projekt ContosoAdsWeb hello a pak klikněte na **vlastnosti**. Klikněte na tlačítko hello **webové** a pak změňte číslo portu hello hello **adresa Url projektu** nastavení.
 
-Další alternativní řešení problému najdete v následující části.
+Další alternativní řešení problému hello najdete v následující části hello.
 
 ### <a name="other-errors-when-running-locally"></a>Další chyby při místním spuštění
-Nové projekty cloudových služeb ve výchozím nastavení používají expresní emulátor služby Výpočty v Azure k simulaci prostředí Azure. Jedná se o odlehčenou verzi úplného emulátoru služby Výpočty a za určitých podmínek bude úplný emulátor fungovat, když expresní verze nepracuje.  
+Výchozí nové cloudové služby projektů pomocí hello Azure výpočetní emulátor express toosimulate hello prostředí Azure. Toto je Odlehčená verze hello úplného emulátoru služby výpočty a za některých podmínek hello úplný emulátor fungovat, pokud hello expresní verze nepracuje.  
 
-Pokud chcete změnit projekt, který používá úplný emulátor, klikněte pravým tlačítkem na projekt ContosoAdsCloudService a potom na **Vlastnosti**. V okně **Vlastnosti** klikněte na kartu **Web** a potom na přepínač **Použít úplný emulátor**.
+toochange hello projektu toouse hello úplný emulátor, klikněte pravým tlačítkem na projekt ContosoAdsCloudService hello a pak klikněte na tlačítko **vlastnosti**. V hello **vlastnosti** okna klikněte na tlačítko hello **webové** a pak klikněte hello **použít úplný emulátor** přepínač.
 
-Pokud chcete aplikaci spustit s úplným emulátorem, otevřete Visual Studio s oprávněními správce.
+V pořadí aplikace hello toorun s hello úplný emulátor máte tooopen Visual Studio s oprávněními správce.
 
 ## <a name="next-steps"></a>Další kroky
-Aplikace Contoso Ads je kvůli úvodnímu kurzu záměrně jednoduchá. Například neimplementuje [vkládání závislostí](http://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection) nebo [úložiště a jednotky pracovních vzorů](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo), nepodporuje [používání rozhraní k protokolování](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log), nepoužívá [migrace Code First EF](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application) ke správě změn datových modelů nebo [odolnost připojení EF](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application) ke správě přechodných síťových chyb a tak dále.
+Hello aplikace Contoso Ads má záměrně jednoduchá kurz – Začínáme. Například neimplementuje [vkládání závislostí](http://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection) nebo hello [úložiště a jednotky pracovních vzorů](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo), nepodporuje [používání rozhraní k protokolování](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log), nepoužívá [ Migrace Code First EF](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application) toomanage datový model změny nebo [odolnost připojení EF](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application) toomanage pouze dočasné chyby sítě a tak dále.
 
-Níže uvádíme několik ukázkových aplikací cloudových služeb, které předvádějí realističtější postupy kódování (jsou řazené od méně složitých po složitější):
+Zde jsou některé cloudové služby ukázkové aplikace, které ukazují další reálného osvědčených kódovacích postupů, ze méně složitých toomore komplexní seznamu:
 
-* [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31). Podobný koncept jako Contoso Ads, ale implementuje víc funkcí a realističtější postupy kódování.
-* [Vícevrstvé aplikace cloudových služeb Azure s tabulkami, frontami a objekty blob](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36). Představuje tabulky služby Azure Storage a také objekty blob a fronty. Vychází ze starší verzi sady Azure SDK pro .NET. Bude vyžadovat určité změny pro práci s aktuální verzí.
-* [Základy cloudových služeb v Microsoft Azure Cloud](http://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Komplexní ukázka předvádějící širokou škálu osvědčených postupů, kterou vytvořila skupina Microsoft Patterns and Practices.
+* [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31). Koncept podobný tooContoso služby Active Directory, ale implementuje víc funkcí a další realističtější postupy kódování.
+* [Vícevrstvé aplikace cloudových služeb Azure s tabulkami, frontami a objekty blob](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36). Představuje tabulky služby Azure Storage a také objekty blob a fronty. Na základě na starší verzi hello Azure SDK pro .NET, bude vyžadovat některé změny toowork s aktuální verzí hello.
+* [Základy cloudových služeb v Microsoft Azure Cloud](http://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Komplexní ukázka předvádějící širokou škálu osvědčených postupů, vyprodukované skupina Microsoft Patterns and Practices hello.
 
-Obecné informace o vývoji pro cloud najdete v článku o [vytváření reálných cloudových aplikací s Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction).
+Obecné informace o vývoji pro hello cloud najdete v tématu [vytváření reálných cloudových aplikací s Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction).
 
-Video úvod do osvědčených postupů a vzorů služby Azure Storage najdete v článku [Služba Microsoft Azure Storage – novinky, osvědčené postupy a vzory](http://channel9.msdn.com/Events/Build/2014/3-628).
+Pro úvodní video tooAzure úložiště osvědčených postupů a vzorů, najdete v části [Microsoft Azure Storage – novinky, osvědčené postupy a vzory](http://channel9.msdn.com/Events/Build/2014/3-628).
 
-Další informace najdete v následujících materiálech:
+Další informace najdete v tématu hello následující prostředky:
 
 * [Cloudové služby Azure Cloud Services část 1: Úvod](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
-* [Jak spravovat Cloud Services](cloud-services-how-to-manage.md)
+* [Jak toomanage cloudových služeb](cloud-services-how-to-manage.md)
 * [Azure Storage](/documentation/services/storage/)
-* [Jak vybrat poskytovatele cloudových služeb](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
+* [Jak toochoose cloudu poskytovatel služeb](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

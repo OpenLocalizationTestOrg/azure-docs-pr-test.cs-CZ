@@ -1,5 +1,5 @@
 ---
-title: "Schéma se aktualizuje června-1-2016 - Azure Logic Apps | Microsoft Docs"
+title: "aaaSchema aktualizace června-1-2016 - Azure Logic Apps | Microsoft Docs"
 description: "Vytvoření definic JSON pro Azure Logic Apps s verzí schématu 2016-06-01"
 author: jeffhollan
 manager: anneta
@@ -15,21 +15,21 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/25/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 43df04d6478e44c82c88b17d916cfc9fe4afc03e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b0347fbbd692a93b63a2f8b741402a225450b35a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Aktualizace schématu pro Azure Logic Apps – 1. června 2016
 
-Toto nové schéma a rozhraní API verze pro Azure Logic Apps zahrnuje klíčových vylepšení, které aplikace logiky spolehlivější a jednodušší použít:
+Toto nové schéma a rozhraní API verze pro Azure Logic Apps zahrnuje klíčových vylepšení, které aplikace logiky více spolehlivé a snadnější toouse:
 
 * [Obory](#scopes) umožňují seskupení nebo vnoření akce jako sadu akcí.
 * [Podmínky a smyčky](#conditions-loops) jsou nyní prvotřídní akce.
-* Přesnější řazení pro spouštění akcí, které se `runAfter` vlastnost nahrazení`dependsOn`
+* Přesnější řazení pro akce s hello `runAfter` vlastnost nahrazení`dependsOn`
 
-K upgradu aplikace logiky na schéma 1. června 2016 schéma preview 1 srpen 2015 [podívejte se na část upgrade](##upgrade-your-schema).
+aplikace logiky z hello 1 srpen 2015 tooupgrade náhled schématu toohello 1. června 2016 schématu, [podívejte se na část upgrade hello](##upgrade-your-schema).
 
 <a name="scopes"></a>
 ## <a name="scopes"></a>Obory
@@ -88,9 +88,9 @@ Ve schématu předchozí verze, podmínky a smyčky byly parametry přidružené
 <a name="run-after"></a>
 ## <a name="runafter-property"></a>Vlastnost 'runAfter.
 
-`runAfter` Vlastnost nahradí `dependsOn`, poskytuje další přesnost, když zadáte pořadí spouštění pro akce na základě stavu předchozí akcí.
+Hello `runAfter` vlastnost nahradí `dependsOn`, poskytuje další přesnost, když zadáte hello spustit pořadí pro akce na základě hello stavu předchozí akcí.
 
-`dependsOn` Vlastnost byla totožná s "akce byla spuštěna a bylo úspěšné", bez ohledu na počet opakování, které jste chtěli provést akci, v závislosti na tom, jestli byla úspěšná, předchozí akce se nezdařilo nebo přeskočen. `runAfter` Vlastnost poskytuje tuto flexibilitu jako objekt, který určuje všechny názvy akcí, po jejichž uplynutí se spouští objekt. Tato vlastnost také definuje pole stavy, které mohou být použity jako aktivační události. Například pokud chcete spustit po kroku A úspěšné a také po kroku B úspěšná nebo neúspěšná, vytvoříte tím `runAfter` vlastnost:
+Hello `dependsOn` vlastnost byla totožná s "hello akce byla spuštěna a bylo úspěšné", bez ohledu na to, jak často chtěli byste se nezdařilo. tooexecute akce, podle hello předchozí akce, jestli byla úspěšná nebo přeskočena. Hello `runAfter` vlastnost poskytuje tuto flexibilitu jako objekt, který určuje všechny hello názvy akcí, po které hello objektu spouští. Tato vlastnost také definuje pole stavy, které mohou být použity jako aktivační události. Například pokud byste chtěli toorun po kroku A úspěšné a také po kroku B úspěšná nebo neúspěšná, vytvoříte tím `runAfter` vlastnost:
 
 ```
 {
@@ -104,59 +104,59 @@ Ve schématu předchozí verze, podmínky a smyčky byly parametry přidružené
 
 ## <a name="upgrade-your-schema"></a>Upgradu vašeho schématu
 
-Upgrade na nové schéma trvá jenom pár kroků. Proces upgradu zahrnuje spuštěním skriptu upgradu, uložit jako novou aplikaci logiky a pokud chcete, které by mohly mít přepsal předchozí aplikaci logiky.
+Upgrade toohello nové schéma pouze trvá několik kroků. Hello procesu upgradu zahrnuje spuštění skriptu aktualizace hello ukládání jako novou aplikaci logiky a pokud chcete, které by mohly mít přepsal hello předchozí aplikaci logiky.
 
-1. Na portálu Azure otevřete aplikaci logiky.
+1. V hello portálu Azure otevřete aplikaci logiky.
 
-2. Přejděte na **přehled**. Na panelu nástrojů aplikace logiky, zvolte **aktualizovat schéma**.
+2. Přejděte příliš**přehled**. Na panelu nástrojů aplikace logiky hello, zvolte **aktualizovat schéma**.
    
     ![Zvolte Aktualizovat schéma][1]
    
-    Upgradovaná definice se vrátí, které můžete zkopírovat a vložit do definice prostředků v případě potřeby. 
-    Ale jsme **důrazně doporučujeme** zvolíte **uložit jako** a ujistěte se, že všechny odkazy na připojení jsou platné v aplikaci logiky upgradovaný.
+    Hello upgradovaný definice se vrátí, které můžete zkopírovat a vložit do definice prostředků v případě potřeby. 
+    Ale jsme **důrazně doporučujeme** zvolíte **uložit jako** toomake se, že všechny odkazy na připojení jsou platné v hello upgradovat aplikaci logiky.
 
-3. Na panelu nástrojů okna upgradu zvolte **uložit jako**.
+3. V panelu nástrojů upgradu okno hello, zvolte **uložit jako**.
 
-4. Zadejte název logiku a stav. Chcete-li nasadit aplikaci logiky upgradovaný, zvolte **vytvořit**.
+4. Zadejte název logiku hello a stav. toodeploy aplikace logiky upgradovaný zvolte **vytvořit**.
 
 5. Potvrďte, že aplikace logiky upgradovaný funguje podle očekávání.
    
    > [!NOTE]
-   > Pokud používáte ruční nebo žádostí o aktivační událost, se změní adresa URL zpětného volání v nové aplikace logiky. Otestujte novou adresu URL a ujistěte, že funguje prostředí začátku do konce. Pokud chcete zachovat předchozí adresy URL, může klonovat přes existující aplikace logiky.
+   > Pokud používáte ruční nebo žádostí o aktivační událost, změní se adresa URL hello zpětného volání v nové aplikace logiky. Test hello nové adresy URL toomake zda hello k kompletní prostředí funguje. toopreserve předchozí adresy URL, může klonovat přes existující aplikace logiky.
 
-6. *Volitelné* přepsat předchozí aplikaci logiky v nové verzi schématu, na panelu nástrojů vyberte **klon**vedle možnosti **aktualizovat schéma**. Tento krok je nutné pouze v případě, že chcete zachovat stejné ID prostředku nebo aktivační událost adresa URL aplikace logiky požadavku.
+6. *Volitelné* zvolte aplikaci logiky předchozích verzí hello nové schéma, na panelu nástrojů hello toooverwrite **klon**, další příliš**aktualizovat schéma**. Tento krok je nutný pouze v případě, že chcete tookeep hello stejné ID nebo žádostí o aktivační události URL prostředku aplikace logiky.
 
 ### <a name="upgrade-tool-notes"></a>Poznámky k upgradu nástroje
 
 #### <a name="mapping-conditions"></a>Mapování podmínky
 
-V definici upgradovaný nástroj provede usilovně na seskupování true a false větve akce jako obor. Konkrétně návrháře vzor `@equals(actions('a').status, 'Skipped')` mají zobrazit jako `else` akce. Ale pokud nástroj zjistí nelze rozpoznat vzory, nástroj může vytvořit oddělené podmínky pro hodnotu true a false větev. Můžete změnit mapování akcí po upgradu, v případě potřeby.
+V definici hello upgradovat nástroj hello umožňuje usilovně na seskupování true a false větve akce jako obor. Konkrétně hello návrháře vzor `@equals(actions('a').status, 'Skipped')` mají zobrazit jako `else` akce. Ale pokud hello nástroj zjistí nelze rozpoznat vzory, hello nástroj může vytvořit oddělené podmínky pro hello true a false větve hello. Můžete změnit mapování akcí po upgradu, v případě potřeby.
 
 #### <a name="foreach-loop-with-condition"></a>smyčka 'typu foreach' s podmínkou
 
-V novém schématu, můžete použít k replikaci vzor akci filtru `foreach` smyčky s podmínkou na položku, ale tato změna automaticky dojde při upgradu. Stav se změní na filtr akce před smyčka typu foreach pro vrácení pouze pole položek, které splňují podmínku a tohoto pole je předána do foreach akce. Příklad, naleznete v části [smyčky a obory](../logic-apps/logic-apps-loops-and-scopes.md).
+V nové schéma hello, můžete použít hello filtru akce tooreplicate hello vzor `foreach` smyčky s podmínkou na položku, ale tato změna automaticky dojde při upgradu. Podmínka Hello stane filtr akce před hello smyčka typu foreach pro vrácení pouze pole položek, které vyhovují podmínce hello a tohoto pole je předána do hello foreach akce. Příklad, naleznete v části [smyčky a obory](../logic-apps/logic-apps-loops-and-scopes.md).
 
 #### <a name="resource-tags"></a>Značky prostředku
 
-Po upgradu se značky prostředku se odeberou, takže je nutné obnovit upgradovaný pracovního postupu.
+Po upgradu se značky prostředku se odeberou, takže je nutné obnovit pro pracovní postup hello upgradovat.
 
 ## <a name="other-changes"></a>Další změny
 
-### <a name="renamed-manual-trigger-to-request-trigger"></a>Přejmenovat aktivační události "Ruční" k aktivační události "žádostí"
+### <a name="renamed-manual-trigger-toorequest-trigger"></a>Přejmenovat too'request "Ruční" aktivační událost ' aktivační událost
 
-`manual` Typ aktivační událost byla zastaralé a přejmenován na `request` s typem `http`. Tato změna vytvoří další konzistenci pro druh vzor, která má aktivační procedura slouží k vytvoření.
+Hello `manual` typ aktivační událost byla zastaralé a přejmenovat příliš`request` s typem `http`. Tato změna vytvoří další konzistence pro hello druh vzor, který hello aktivační události je použité toobuild.
 
 ### <a name="new-filter-action"></a>Nová akce 'filtru.
 
-Chcete-li filtrovat velké pole dolů menší sadu položek, nové `filter` typu přijímá pole a podmínku, vyhodnocuje podmínku pro každou položku a vrátí pole s položkami, které splňují podmínku.
+toofilter velké pole dolů tooa menší sadu položek hello nové `filter` typu přijímá pole a podmínku, vyhodnotí hello podmínku pro každou položku a vrátí pole s položkami splnění podmínky hello.
 
 ### <a name="restrictions-for-foreach-and-until-actions"></a>Omezení pro "foreach" a "do" akce
 
-`foreach` a `until` smyčky jsou omezeny na jednu akci.
+Hello `foreach` a `until` smyčky jsou omezené tooa jedné akce.
 
 ### <a name="new-trackedproperties-for-actions"></a>Nový 'trackedProperties' pro akce
 
-Akce nyní můžete mít další vlastnost s názvem `trackedProperties`, který je na stejné úrovni k `runAfter` a `type` vlastnosti. Tento objekt určuje určité akce vstupů nebo výstupů, které chcete zahrnout do Azure diagnostiky telemetrii, vygenerované jako součást pracovního postupu. Například:
+Akce nyní můžete mít další vlastnost s názvem `trackedProperties`, který je na stejné úrovni toohello `runAfter` a `type` vlastnosti. Tento objekt určuje určité akce vstupy nebo výstupy, které chcete tooinclude v Azure diagnostiky telemetrii hello vygenerované jako součást pracovního postupu. Například:
 
 ```
 {                

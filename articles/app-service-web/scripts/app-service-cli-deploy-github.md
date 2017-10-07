@@ -1,5 +1,5 @@
 ---
-title: "Azure CLI skriptu ukázkové – vytvoření webové aplikace s nasazením z Githubu | Microsoft Docs"
+title: "aaaAzure ukázka skriptu rozhraní příkazového řádku - vytvořit webovou aplikaci s nasazením z Githubu | Microsoft Docs"
 description: "Azure CLI skriptu ukázkové – vytvoření webové aplikace s nasazením z Githubu"
 services: app-service\web
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.topic: sample
 ms.date: 06/19/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 61e9d65319cecf3ea4e9152ebdf1035566aad74c
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: eb7231aa5c6a7e23d76885107e733008382f7487
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-web-app-with-deployment-from-github"></a>Vytvoření webové aplikace s nasazením z Githubu
 
@@ -30,17 +30,17 @@ Tento ukázkový skript vytvoří webovou aplikaci ve službě App Service se je
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud zvolte tooinstall a místně pomocí hello rozhraní příkazového řádku, v tomto tématu vyžaduje, že používáte hello Azure CLI verze 2.0 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-azurecli-interactive[hlavní](../../../cli_scripts/app-service/deploy-github/deploy-github.sh?highlight=3 "vytvořit webovou aplikaci s nasazením z Githubu")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-github/deploy-github.sh?highlight=3 "Create a web app with deployment from GitHub")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu 
 
-Tento skript používá následující příkazy. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá hello následující příkazy. Každý příkaz v hello tabulky odkazů toocommand konkrétní dokumentaci.
 
 | Příkaz | Poznámky |
 |---|---|
@@ -52,6 +52,6 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
+Další informace o hello rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
 
-Další ukázky skript aplikace služby rozhraní příkazového řádku najdete v [dokumentaci služby Azure App Service](../app-service-cli-samples.md).
+Další ukázky skriptu rozhraní příkazového řádku služby aplikace naleznete v hello [dokumentaci služby Azure App Service](../app-service-cli-samples.md).

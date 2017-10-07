@@ -1,6 +1,6 @@
 ---
-title: "Generování doporučení pomocí Mahout HDInsight z prostředí PowerShell – Azure | Microsoft Docs"
-description: "Další informace o použití Apache Mahout strojového učení knihovny pro generování doporučení s HDInsight (Hadoop) ze skriptu prostředí PowerShell systémem vašeho klienta."
+title: "doporučení aaaGenerate pomocí Mahout HDInsight z prostředí PowerShell – Azure | Microsoft Docs"
+description: "Zjistěte, jak toouse hello Apache Mahout strojového učení knihovny toogenerate doporučení s HDInsight (Hadoop) ze skriptu prostředí PowerShell systémem vašeho klienta."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,51 +16,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: larryfr
-ms.openlocfilehash: 934de9ca2df48b29ef7a56d5729d59d77875ea7b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 675a2cd8ecaf7fc797d6cd094e4e58f9aca7ed92
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Generování doporučení pomocí Apache Mahout s Hadoop v HDInsight (PowerShell)
 
 [!INCLUDE [mahout-selector](../../includes/hdinsight-selector-mahout.md)]
 
-Další informace o použití [Apache Mahout](http://mahout.apache.org) knihovny machine learning s Azure HDInsight ke generování doporučení. V příkladu v tomto dokumentu používá ke spuštění úlohy Mahout prostředí Azure PowerShell.
+Zjistěte, jak toouse hello [Apache Mahout](http://mahout.apache.org) knihovny machine learning s Azure HDInsight toogenerate doporučení. Příklad Hello v tomto dokumentu používá prostředí Azure PowerShell toorun Mahout úlohy.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Cluster HDInsight se systémem Linux. Informace o vytváření jeden najdete v tématu [začít používat systémem Linux Hadoop v HDInsight][getstarted].
 
 > [!IMPORTANT]
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * [Azure PowerShell](/powershell/azure/overview)
 
 ## <a name="recommendations"></a>Generování doporučení pomocí prostředí Azure PowerShell
 
 > [!WARNING]
-> Úlohy v této části funguje tak, že pomocí Azure PowerShell. Řadu třídy součástí Mahout nefungují aktuálně s prostředím Azure PowerShell. Seznam tříd, které nefungují s prostředím Azure PowerShell najdete v tématu [Poradce při potížích s](#troubleshooting) části.
+> Hello úlohy v této části funguje tak, že pomocí Azure PowerShell. Řadu hello třídy součástí Mahout nefungují aktuálně s prostředím Azure PowerShell. Seznam tříd, které nefungují s prostředím Azure PowerShell najdete v tématu hello [Poradce při potížích s](#troubleshooting) části.
 >
-> Příklad použití SSH se připojit k HDInsight a spuštění příklady Mahout přímo na clusteru, naleznete v části [generování doporučení pomocí Mahout a HDInsight (SSH)](hdinsight-hadoop-mahout-linux-mac.md).
+> Příklad použití SSH tooconnect tooHDInsight a spuštění příkladů Mahout přímo na clusteru hello, naleznete v části [generování doporučení pomocí Mahout a HDInsight (SSH)](hdinsight-hadoop-mahout-linux-mac.md).
 
-Jednou z funkcí, které zajišťuje Mahout je modul doporučení. Tento modul přijímá data ve formátu `userID`, `itemId`, a `prefValue` (předvolba uživatele pro položku). Mahout data používá k určení uživatelů s předvolby jako položky, které se dají použít tak, aby doporučení.
+Jedním z hello funkce, které zajišťuje Mahout je modul doporučení. Tento modul přijímá data ve formátu hello `userID`, `itemId`, a `prefValue` (hello předvoleb uživatele pro položku hello). Mahout používá hello data toodetermine uživatelé s jako položky předvoleb, které můžou být použité toomake doporučení.
 
-Následující příklad je zjednodušený návod, jak funguje proces doporučení:
+Hello následující příklad je zjednodušený návod, jak funguje hello doporučení proces:
 
-* **společné výskyt**: Jan, Alice a Bob všechny líbilo *hvězdičky válek*, *Empire stávky zpět*, a *návrat Jedi*. Mahout Určuje, že uživatelé, kteří také jako některého z těchto filmy jako další dvě.
+* **společné výskyt**: Jan, Alice a Bob všechny líbilo *hvězdičky válek*, *hello Empire stávky zpět*, a *návrat hello Jedi*. Mahout Určuje, že uživatelé, kteří jako některého z těchto filmy chtěl také hello další dvě.
 
-* **společné výskyt**: Bob a Alice také líbilo *The Menace fiktivní*, *útoku klonů*, a *odvety Sith*. Mahout Určuje, že uživatelé, kteří líbilo předchozí tři filmy také jako tyto filmy.
+* **společné výskyt**: Bob a Alice také líbilo *hello fiktivní Menace*, *útoku hello klonů*, a *odvety hello Sith*. Mahout Určuje, že uživatelé, kteří líbilo hello předchozí tři filmy také jako tyto filmy.
 
-* **Podobnosti doporučení**: protože Jan líbilo první tři filmy, Mahout vypadá na filmy ostatní s líbilo podobných předvolby, ale nebyla Jan sledovaná (líbilo nebo hodnocení). V takovém případě se doporučuje Mahout *The Menace fiktivní*, *útoku klonů*, a *odvety Sith*.
+* **Podobnosti doporučení**: protože Jan líbilo hello první tři filmy, Mahout vypadá na filmy ostatní s líbilo podobných předvolby, ale nebyla Jan sledovaná (líbilo nebo hodnocení). V takovém případě se doporučuje Mahout *hello fiktivní Menace*, *útoku hello klonů*, a *odvety hello Sith*.
 
-### <a name="understanding-the-data"></a>Pochopení dat
+### <a name="understanding-hello-data"></a>Principy hello dat
 
-[GroupLens Research] [ movielens] poskytuje hodnocení data pro filmy ve formátu, který je kompatibilní s Mahout. Tato data jsou k dispozici na výchozí úložiště pro váš cluster v `/HdiSamples//HdiSamples/MahoutMovieData`.
+[GroupLens Research] [ movielens] poskytuje hodnocení data pro filmy ve formátu, který je kompatibilní s Mahout. Tato data jsou k dispozici na hello výchozí úložiště pro váš cluster v `/HdiSamples//HdiSamples/MahoutMovieData`.
 
-Existují dva soubory, `moviedb.txt` (informace o videa) a `user-ratings.txt`. `user-ratings.txt` Soubor se používá během analýzy. `moviedb.txt` Soubor se používá k zadejte popisný text při zobrazení výsledky analýzy.
+Existují dva soubory, `moviedb.txt` (informace o filmy hello) a `user-ratings.txt`. Hello `user-ratings.txt` soubor se používá během analýzy. Hello `moviedb.txt` souboru je použité tooprovide popisný text při zobrazení hello výsledky analýzy hello.
 
-Data obsažená v ratings.txt uživatel má struktura `userID`, `movieID`, `userRating`, a `timestamp`, který víme, jak vysoce každý uživatel hodnocení filmu. Tady je příklad dat:
+Hello data obsažená v ratings.txt uživatel má struktura `userID`, `movieID`, `userRating`, a `timestamp`, který víme, jak vysoce každý uživatel hodnocení filmu. Tady je příklad hello dat:
 
     196    242    3    881250949
     186    302    3    891717742
@@ -68,44 +68,44 @@ Data obsažená v ratings.txt uživatel má struktura `userID`, `movieID`, `user
     244    51    2    880606923
     166    346    1    886397596
 
-### <a name="run-the-job"></a>Spustit úlohu
+### <a name="run-hello-job"></a>Spustit úlohu hello
 
-Spustit úlohu, která používá modul doporučení Mahout s daty film pomocí následujícího skriptu prostředí Windows PowerShell:
-
-> [!NOTE]
-> Tento soubor vyzve k zadání informace, které se používá k připojení ke svému clusteru HDInsight a spuštění úloh. To může trvat několik minut na dokončení a stáhněte si soubor výstup.txt úloh.
-
-[!code-powershell[hlavní](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=5-98)]
+Použijte následující toorun skriptu prostředí Windows PowerShell úlohu, která používá modul doporučení Mahout hello s daty film hello hello:
 
 > [!NOTE]
-> Mahout úlohy neodebírejte dočasná data, která je vytvořena při zpracování úlohy. `--tempDir` v úloze příklad izolovat dočasné soubory do konkrétního adresáře je zadán parametr.
+> Tento soubor vyzve k zadání informací, které jsou používané tooconnect cluster HDInsight tooyour a spuštění úlohy. Může trvat několik minut, než toocomplete hello úlohy a stáhněte soubor výstup.txt hello.
 
-Úloha Mahout nevrátí výstup STDOUT. Místo toho je uložený v zadané výstupní adresář jako **část r-00000**. Skript stáhne tento soubor do **výstup.txt** v aktuálním adresáři na pracovní stanici.
+[!code-powershell[main](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=5-98)]
 
-Tento text je příkladem obsah tohoto souboru:
+> [!NOTE]
+> Mahout úlohy neodebírejte dočasná data, který se vytvoří při zpracování úlohy hello. Hello `--tempDir` je zadán parametr v hello příklad úlohy tooisolate hello dočasné soubory do konkrétního adresáře.
+
+Úloha Mahout Hello nevrací tooSTDOUT výstup hello. Místo toho je uložený v zadané výstupní adresář hello jako **část r-00000**. skript Hello soubory ke stažení tohoto souboru příliš**výstup.txt** hello aktuálního adresáře na pracovní stanici.
+
+Hello následující text je příkladem hello obsah tohoto souboru:
 
     1    [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
     2    [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
     3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
     4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
 
-První sloupec je `userID`. Hodnoty obsažené v ' [' a ']' jsou `movieId`:`recommendationScore`.
+první sloupec Hello je hello `userID`. Hello hodnoty obsažené v ' [' a ']' jsou `movieId`:`recommendationScore`.
 
-Skript také stáhne `moviedb.txt` a `user-ratings.txt` soubory, které jsou potřebné k formátování výstupu být srozumitelnější.
+skript Hello také stáhne hello `moviedb.txt` a `user-ratings.txt` soubory, které jsou potřebné tooformat hello výstup toobe srozumitelnější.
 
-### <a name="view-the-output"></a>Zobrazit výstup
+### <a name="view-hello-output"></a>Výstup hello zobrazení
 
-I když generovaný výstup může být OK pro použití v aplikaci, není uživatelsky přívětivý. `moviedb.txt` Ze serveru, můžete použít k vyřešení `movieId` film název. Pomocí následujícího skriptu prostředí PowerShell zobrazíte doporučení s názvy film:
+I když hello generovaný výstup může být OK pro použití v aplikaci, není uživatelsky přívětivý. Hello `moviedb.txt` z hello může být server hello použité tooresolve `movieId` tooa film název. Použijte následující doporučení toodisplay skript prostředí PowerShell s názvy film hello:
 
-[!code-powershell[hlavní](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=106-180)]
+[!code-powershell[main](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=106-180)]
 
-Pokud chcete zobrazit doporučení v uživatelsky přívětivý formátu použijte následující příkaz: 
+Použijte následující příkaz toodisplay hello doporučení v uživatelsky přívětivý formátu hello: 
 
 ```powershell
 .\show-recommendation.ps1 -userId 4 -userDataFile .\user-ratings.txt -movieFile .\moviedb.txt -recommendationFile .\output.txt
 ```
 
-Výstup se bude podobat následujícímu:
+Hello výstup je podobné toohello následující text:
 
     Reading movies descriptions
     Reading rated movies
@@ -114,7 +114,7 @@ Výstup se bude podobat následujícímu:
     ---------------------------
     Movie                                    Rating
     -----                                    ------
-    Devil's Own, The (1997)                  1
+    Devil's Own, hello (1997)                  1
     Alien: Resurrection (1997)               3
     187 (1997)                               2
     (lines ommitted)
@@ -127,8 +127,8 @@ Výstup se bude podobat následujícímu:
     -----                                    -----
     Good Will Hunting (1997)                 4.6504064
     Swingers (1996)                          4.6862745
-    Wings of the Dove, The (1997)            4.6666665
-    People vs. Larry Flynt, The (1996)       4.834559
+    Wings of hello Dove, hello (1997)            4.6666665
+    People vs. Larry Flynt, hello (1996)       4.834559
     Everyone Says I Love You (1996)          4.707071
     Secrets & Lies (1996)                    4.818182
     That Thing You Do! (1996)                4.75
@@ -140,12 +140,12 @@ Výstup se bude podobat následujícímu:
 
 ### <a name="cannot-overwrite-files"></a>Nelze přepsat soubory
 
-Mahout úlohy se vyčistit dočasné soubory, které byly vytvořeny během zpracování. Kromě toho úlohy Nepřepisovat existující soubor výstupu.
+Mahout úlohy se vyčistit dočasné soubory, které byly vytvořeny během zpracování. Kromě toho hello úlohy Nepřepisovat existující výstupní soubor.
 
-Aby nedocházelo k chybám při spuštění úlohy Mahout, odstraňte dočasné a výstupní soubory mezi spustí. Chcete-li odebrat soubory vytvořené pomocí dřívějších skripty v tomto dokumentu, použijte následující skript prostředí PowerShell:
+tooavoid chyby při spuštění úlohy Mahout se odstranit dočasné a výstupní soubory mezi spustí. vytvořené soubory hello tooremove hello starší skripty v tomto dokumentu pomocí hello následující skript prostředí PowerShell:
 
 ```powershell
-# Login to your Azure subscription
+# Login tooyour Azure subscription
 # Is there an active Azure subscription?
 $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
 if(-not($sub))
@@ -154,10 +154,10 @@ if(-not($sub))
 }
 
 # Get cluster info
-$clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
-$creds=Get-Credential -Message "Enter the login for the cluster"
+$clusterName = Read-Host -Prompt "Enter hello HDInsight cluster name"
+$creds=Get-Credential -Message "Enter hello login for hello cluster"
 
-#Get the cluster info so we can get the resource group, storage, etc.
+#Get hello cluster info so we can get hello resource group, storage, etc.
 $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
 $resourceGroup = $clusterInfo.ResourceGroup
 $storageAccountName = $clusterInfo.DefaultStorageAccount.split('.')[0]
@@ -166,20 +166,20 @@ $storageAccountKey = (Get-AzureRmStorageAccountKey `
     -Name $storageAccountName `
 -ResourceGroupName $resourceGroup)[0].Value
 
-#Create a storage context and upload the file
+#Create a storage context and upload hello file
 $context = New-AzureStorageContext `
     -StorageAccountName $storageAccountName `
     -StorageAccountKey $storageAccountKey
 
 #Azure PowerShell can't delete blobs using wildcard,
-#so have to get a list and delete one at a time
-# Start with the output
+#so have tooget a list and delete one at a time
+# Start with hello output
 $blobs = Get-AzureStorageBlob -Container $container -Context $context -Prefix "example/out"
 foreach($blob in $blobs)
 {
     Remove-AzureStorageBlob -Blob $blob.Name -Container $container -context $context
 }
-# Next the temp files
+# Next hello temp files
 $blobs = Get-AzureStorageBlob -Container $container -Context $context -Prefix "example/temp"
 foreach($blob in $blobs)
 {
@@ -189,7 +189,7 @@ foreach($blob in $blobs)
 
 ### <a name="nopowershell"></a>Třídy, které nefungují s prostředím Azure PowerShell
 
-Mahout úlohy, které používají následující třídy vrátit různé chybové zprávy při použití v prostředí Windows PowerShell:
+Mahout úlohy, které používají následující třídy hello vrátit různé chybové zprávy při použití v prostředí Windows PowerShell:
 
 * org.apache.mahout.utils.clustering.ClusterDumper
 * org.apache.mahout.utils.SequenceFileDumper
@@ -208,11 +208,11 @@ Mahout úlohy, které používají následující třídy vrátit různé chybov
 * org.apache.mahout.classifier.sequencelearning.hmm.RandomSequenceGenerator
 * org.apache.mahout.classifier.df.tools.Describe
 
-Ke spuštění úloh, které používají tyto třídy, připojte se ke clusteru HDInsight pomocí protokolu SSH a spuštění úloh z příkazového řádku. Příklad použití SSH ke spuštění úloh Mahout, naleznete v části [generování doporučení pomocí Mahout a HDInsight (SSH)](hdinsight-hadoop-mahout-linux-mac.md).
+toorun úlohy, které používají tyto třídy připojit toohello clusteru HDInsight pomocí SSH a spouštění úloh hello z příkazového řádku hello. Příklad použití SSH toorun Mahout úloh naleznete v části [generování doporučení pomocí Mahout a HDInsight (SSH)](hdinsight-hadoop-mahout-linux-mac.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili použití Mahout, zjišťovat další způsoby, jak pracovat s daty v HDInsight:
+Teď, když jste se naučili, jak toouse Mahout, zjišťovat další způsoby, jak práci s daty v HDInsight:
 
 * [Hive s HDInsight](hdinsight-use-hive.md)
 * [Pig s HDInsight](hdinsight-use-pig.md)

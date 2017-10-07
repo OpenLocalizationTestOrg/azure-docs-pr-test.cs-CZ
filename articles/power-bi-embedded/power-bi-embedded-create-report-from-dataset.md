@@ -1,5 +1,5 @@
 ---
-title: "Vytvoření nové sestavy z datové sady v Azure Power BI Embedded | Microsoft Docs"
+title: "aaaCreate nové sestavy z datové sady v Azure Power BI Embedded | Microsoft Docs"
 description: "Power BI Embedded sestavy lze vytvořit nyní z datové sady ve vaší vlastní aplikaci."
 services: power-bi-embedded
 documentationcenter: 
@@ -15,29 +15,29 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/11/2017
 ms.author: asaxton
-ms.openlocfilehash: 457f53aa76059dbb2faed6b264102f1f59b9918a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 41a0a52e4c833313f495bb5ff14749203fef9b41
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-embedded"></a>Vytvoření nové sestavy z datové sady v Power BI Embedded
 
 Power BI Embedded sestavy lze vytvořit nyní z datové sady ve vaší vlastní aplikaci. 
 
-Metoda ověřování je podobný že sestavy vložit. Je založena na přístupové tokeny, které jsou specifické pro datovou sadu. Pomocí Azure Active Directory (AAD) jsou vydávány tokeny, na které se používá pro PowerBI.com a vlastní službou jsou vydávány tokeny Power BI Embedded.
+Hello metoda ověřování je podobný toothat sestavy pro vložení. Je založena na přístupové tokeny, které jsou specifické tooa datovou sadu. Pomocí Azure Active Directory (AAD) jsou vydávány tokeny, na které se používá pro PowerBI.com a vlastní službou jsou vydávány tokeny Power BI Embedded.
 
-Když jsou createing vložených sestavy, tokeny vydané pro konkrétní datové sady. Tokeny by měly být přidruženy s adresou URL vložení u stejného elementu k zajistěte, aby byl každý token jedinečný. Chcete-li vytvořit sestavu vložených *Dataset.Read a Workspace.Report.Create* obory musí být zadáno v tokenu přístupu.
+Když createing zprávu o vložených hello tokeny vydané jsou pro konkrétní datové sady. Tokeny by měly být přidruženy s hello vložte adresu URL na hello stejný element tooensure každý má jedinečný token. V pořadí toocreate zprávu o vložených *Dataset.Read a Workspace.Report.Create* obory musí být zadáno v hello přístupový token.
 
-## <a name="create-access-token-needed-to-create-new-report"></a>Vytvoření tokenu přístupu, které jsou nutné k vytvoření nové sestavy
+## <a name="create-access-token-needed-toocreate-new-report"></a>Vytvořit novou sestavu tokenu potřebné toocreate přístup
 
-Power BI Embedded používají vložení token, který jsou HMAC podepsané webových tokenů JSON. Přístupový klíč z vaší Azure Power BI Embedded kolekce pracovních prostorů jsou podepsané tokeny. Vložení tokeny, ve výchozím nastavení, používají se pro čtení pouze přístup k sestavě pro vložení do aplikace. Vložení tokeny jsou vydán pro konkrétní sestavy a by měly být přidružené adrese URL vložení.
+Power BI Embedded používají vložení token, který jsou HMAC podepsané webových tokenů JSON. Hello tokeny jsou podepsané hello přístupový klíč z vaší Azure Power BI Embedded kolekce pracovních prostorů. Vložení tokeny, ve výchozím nastavení, jsou použité tooprovide číst přístup jenom k tooembed tooa sestavy do aplikace. Vložení tokeny jsou vydán pro konkrétní sestavy a by měly být přidružené adrese URL vložení.
 
-Přístupové tokeny by se vytvořit na serveru, přístupové klíče se používají pro přihlášení nebo šifrování tokenů. Informace o tom, jak vytvořit token přístupu najdete v tématu [Authenticating a autorizaci s Power BI Embedded](power-bi-embedded-app-token-flow.md). Můžete také zkontrolovat [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) metoda. Tady je příklad co to může vypadat třeba pomocí sady .NET SDK pro Power BI.
+Přístupové tokeny musí být vytvořena na serveru hello hello přístupové klíče jsou použité toosign nebo šifrování tokenů hello. Informace o tom najdete v části toocreate přístupový token, [Authenticating a autorizaci s Power BI Embedded](power-bi-embedded-app-token-flow.md). Můžete také zkontrolovat hello [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) metoda. Tady je příklad co to může vypadat třeba pomocí hello .NET SDK pro Power BI.
 
-V tomto příkladu máme naše id sady dat, který chceme creat – nové sestavy na. Také je potřeba přidat obory *Dataset.Read a Workspace.Report.Create*.
+V tomto příkladu máme naše id sady dat, který chceme toocreat hello novou sestavu na. Potřebujeme tooadd hello obory pro *Dataset.Read a Workspace.Report.Create*.
 
-*PowerBIToken třída* je nutné nainstalovat [Power BI základní NuGut balíček](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
+Hello *PowerBIToken třída* vyžaduje instalaci hello [Power BI základní NuGut balíček](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
 
 **Instalace balíčku NuGet**
 
@@ -59,10 +59,10 @@ var token = embedToken.Generate("{access key}");
 
 ## <a name="create-a-new-blank-report"></a>Vytvoření nové prázdné sestavy
 
-Chcete-li vytvořit novou sestavu, je třeba poskytnout vytvořit konfiguraci. To by mělo zahrnovat přístupový token, embedURL a datasetID, který chcete vytvořit sestavu s. To je nutné nainstalovat nuget [Power BI JavaScript balíček](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). EmbedUrl právě bude https://embedded.powerbi.com/appTokenReportEmbed.
+V pořadí toocreate nové sestavy, vytvořte hello konfigurace je nutné zadat. To by mělo zahrnovat hello přístupový token, hello embedURL a hello datasetID, které chceme toocreate hello sestavy proti. To je nutné nainstalovat hello nuget [Power BI JavaScript balíček](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). Hello embedUrl právě bude https://embedded.powerbi.com/appTokenReportEmbed.
 
 > [!NOTE]
-> Můžete použít [ukázka vložení sestavy JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/) správnou funkci. Také nabízí příklady kódu pro různé operace, které jsou k dispozici.
+> Můžete použít hello [ukázka vložení sestavy JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/) tootest funkce. Také nabízí příklady kódu pro hello různé operace, které jsou k dispozici.
 
 **Instalace balíčku NuGet**
 
@@ -81,23 +81,23 @@ var embedCreateConfiguration = {
         datasetId: '5dac7a4a-4452-46b3-99f6-a25915e0fe55',
     };
     
-    // Grab the reference to the div HTML element that will host the report
+    // Grab hello reference toohello div HTML element that will host hello report
     var reportContainer = $('#reportContainer')[0];
 
     // Create report
     var report = powerbi.createReport(reportContainer, embedCreateConfiguration);
 ```
 
-Volání metody *powerbi.createReport()* bude prázdného plátna v režimu úprav zobrazí v rámci *div* elementu.
+Volání metody *powerbi.createReport()* bude prázdného plátna v režimu úprav zobrazí v rámci hello *div* elementu.
 
 ![](media/power-bi-embedded-create-report-from-dataset/pbi-embedded-create-new-report.png)
 
 ## <a name="save-new-reports"></a>Uložit nové sestavy
 
-Sestava nebude vytvořena ve skutečnosti, dokud zavoláte **uložit jako** operaci. Tento krok můžete provést z nabídky soubor nebo pomocí jazyka JavaScript.
+Sestava Hello ve skutečnosti nevytvoří, dokud volání hello **uložit jako** operaci. Tento krok můžete provést z nabídky soubor nebo pomocí jazyka JavaScript.
 
 ```
- // Get a reference to the embedded report.
+ // Get a reference toohello embedded report.
     report = powerbi.get(reportContainer);
     
     var saveAsParameters = {
@@ -109,13 +109,13 @@ Sestava nebude vytvořena ve skutečnosti, dokud zavoláte **uložit jako** oper
 ```
 
 > [!IMPORTANT]
-> Vytvoření nové sestavy až po **uložit jako** je volána. Po uložení se na plátno, bude mít datovou sadu v režimu úprav a není sestava. Musíte se znovu načíst nové sestavy, stejně jako u jiných sestavách.
+> Vytvoření nové sestavy až po **uložit jako** je volána. Po uložení se hello plátno, bude mít hello datovou sadu v sestavě režim a není hello upravit. Budete potřebovat tooreload hello novou sestavu jako jiných sestavách.
 
 ![](media/power-bi-embedded-create-report-from-dataset/pbi-embedded-save-new-report.png)
 
-## <a name="load-the-new-report"></a>Načtení nové sestavy
+## <a name="load-hello-new-report"></a>Nová sestava zatížení hello
 
-Aby bylo možné využívat nové sestavy, které potřebujete k vložení stejným způsobem, jakým aplikace vloží regulární sestavy, což znamená, nový token musí být vydaný speciálně pro novou sestavu a pak volat metodu vložení.
+Pořadí toointeract s novou sestavu hello je nutné ji hello speciálně pro hello nové sestavy musí být vystavené stejným způsobem jako aplikace hello vloží pravidelných sestav, což znamená, nový token, a potom volání hello vložení metoda tooembed.
 
 ```
 <div id="reportContainer"></div>
@@ -126,16 +126,16 @@ var embedConfiguration = {
         reportId: '5dac7a4a-4452-46b3-99f6-a25915e0fe54',
     };
     
-    // Grab the reference to the div HTML element that will host the report
+    // Grab hello reference toohello div HTML element that will host hello report
     var reportContainer = $('#reportContainer')[0];
 
     // Embed report
     var report = powerbi.embed(reportContainer, embedConfiguration);
 ```
 
-## <a name="automate-save-and-load-of-a-new-report-using-the-saved-event"></a>Automatizovat uložení a načtení nové sestavy pomocí "uložené" události
+## <a name="automate-save-and-load-of-a-new-report-using-hello-saved-event"></a>Automatizovat uložení a načtení nové sestavy pomocí hello "uložené" události
 
-V pořadí pro automatizaci procesu "Uložit jako" a pak načítání nové sestavy, které lze provést použitím "uložené" události. Tato událost je aktivována, pokud uložení bylo dokončeno a vrátí objekt Json obsahující nové reportId, název sestavy, staré reportId (pokud existuje) a pokud byla operace Uložit jako nebo uložit.
+V pořadí tooautomate hello proces "Uložit jako" a pak načítání hello novou sestavu můžete provést použití hello "uložené" události. Tato událost je aktivována, po dokončení hello operace uložení a vrátí objekt Json obsahující hello nové reportId, název sestavy, staré reportId hello (pokud existuje) a pokud byla operace hello uložit jako nebo uložit.
 
 ```
 {
@@ -146,7 +146,7 @@ V pořadí pro automatizaci procesu "Uložit jako" a pak načítání nové sest
 }
 ```
 
-Pro automatizaci procesu můžete naslouchat "uložené" události, proveďte nové reportId, vytvořit nový token a vložit novou sestavu s ním.
+tooAutomate hello proces můžete naslouchat na události "uložené" hello, provést nové reportId hello, vytvořit nový token hello a vložit novou sestavu hello s ním.
 
 ```
 <div id="reportContainer"></div>
@@ -157,7 +157,7 @@ var embedCreateConfiguration = {
         datasetId: '5dac7a4a-4452-46b3-99f6-a25915e0fe55',
     };
     
-    // Grab the reference to the div HTML element that will host the report
+    // Grab hello reference toohello div HTML element that will host hello report
     var reportContainer = $('#reportContainer')[0];
 
     // Create report
@@ -171,14 +171,14 @@ var embedCreateConfiguration = {
     // SaveAs report
     report.saveAs(saveAsParameters);
 
-    // report.on will add an event handler which prints to Log window.
+    // report.on will add an event handler which prints tooLog window.
     report.on("saved", function(event) {
         
          // get new Token
          var newReportId =  event.detail.reportObjectId;
 
-        // create new Token. This is a function that the application should provide
-        var newToken = createAccessToken(newReportId,scopes /*provide the wanted scopes*/);
+        // create new Token. This is a function that hello application should provide
+        var newToken = createAccessToken(newReportId,scopes /*provide hello wanted scopes*/);
         
         
     var embedConfiguration = {
@@ -205,4 +205,4 @@ var embedCreateConfiguration = {
 [Vložená ukázka JavaScriptu](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 [Power BI základní NuGut balíčku](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
 [Power BI JavaScript balíčku](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
-Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](http://community.powerbi.com/)
+Chcete se ještě na něco zeptat? [Zkuste hello komunitě Power BI](http://community.powerbi.com/)

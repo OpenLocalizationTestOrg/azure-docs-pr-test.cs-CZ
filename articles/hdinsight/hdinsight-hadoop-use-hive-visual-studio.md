@@ -1,6 +1,6 @@
 ---
-title: "Hive pomocí nástrojů Data Lake (Hadoop) pro Visual Studio – Azure HDInsight | Microsoft Docs"
-description: "Další informace o použití nástroje Data Lake pro Visual Studio ke spouštění dotazů Apache Hive s Apache Hadoop v Azure HDInsight."
+title: "aaaHive pomocí nástrojů Data Lake (Hadoop) pro Visual Studio – Azure HDInsight | Microsoft Docs"
+description: "Zjistěte, jak nástroje toouse hello Data Lake pro Visual Studio toorun Apache Hive dotazy s Apache Hadoop v Azure HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,24 +16,24 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 3411c59fee73aa2e26a05d70e1dae11cdfc865ff
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: dc76974c02cf68bcf701b2b155842c9e9c5cb988
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Spouštění dotazů Hive pomocí nástroje Data Lake pro Visual Studio
+# <a name="run-hive-queries-using-hello-data-lake-tools-for-visual-studio"></a>Spouštění dotazů Hive pomocí hello nástrojů Data Lake pro Visual Studio
 
-Zjistěte, jak pomocí nástrojů Data Lake pro Visual Studio pro Apache Hive dotaz. Nástroje Data Lake umožňují snadno vytvářet, odesílání a sledování dotazů Hive k systému Hadoop v Azure HDInsight.
+Zjistěte, jak nástroje toouse hello Data Lake pro Visual Studio tooquery Apache Hive. nástroje Data Lake Hello umožňují tooeasily vytvoření, odeslání a sledování tooHadoop dotazy Hive v Azure HDInsight.
 
 ## <a id="prereq"></a>Požadavky
 
 * Cluster Azure HDInsight (Hadoop v HDInsight)
 
   > [!IMPORTANT]
-  > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* Visual Studio (jedna z následujících verzí):
+* Visual Studio (jeden hello následující verze):
 
     * Visual Studio 2013 Community/Professional/Premium/Ultimate s aktualizací 4
 
@@ -41,13 +41,13 @@ Zjistěte, jak pomocí nástrojů Data Lake pro Visual Studio pro Apache Hive do
 
     * Visual Studio 2017 (všechny edice)
 
-* Nástroje HDInsight pro Visual Studio nebo nástroje Azure Data Lake pro Visual Studio. V tématu [začněte používat nástroje Visual Studio Hadoop pro HDInsight](hdinsight-hadoop-visual-studio-tools-get-started.md) informace o instalaci a konfiguraci nástroje.
+* Nástroje HDInsight pro Visual Studio nebo nástroje Azure Data Lake pro Visual Studio. V tématu [začněte používat nástroje Visual Studio Hadoop pro HDInsight](hdinsight-hadoop-visual-studio-tools-get-started.md) informace o instalaci a konfiguraci nástroje hello.
 
-## <a id="run"></a>Spouštění dotazů Hive pomocí sady Visual Studio
+## <a id="run"></a>Spouštění dotazů Hive pomocí hello Visual Studio
 
 1. Otevřete **Visual Studio** a vyberte **nový** > **projektu** > **Azure Data Lake**  >   **HIVE** > **podregistru aplikace**. Zadejte název pro tento projekt.
 
-2. Otevřete **Script.hql** souboru, který je vytvořen s tímto projektu a vložte následující příkazy HiveQL:
+2. Otevřete hello **Script.hql** souboru, který je vytvořen s tímto projektu a vložte následující příkazy HiveQL hello:
 
    ```hiveql
    set hive.execution.engine=tez;
@@ -58,38 +58,38 @@ Zjistěte, jak pomocí nástrojů Data Lake pro Visual Studio pro Apache Hive do
    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND  INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
    ```
 
-    Tyto příkazy provádět následující akce:
+    Tyto příkazy provádět hello následující akce:
 
-   * `DROP TABLE`: Pokud existuje v tabulce, tento příkaz se odstraní.
+   * `DROP TABLE`: Pokud hello tabulka existuje, tento příkaz se odstraní.
 
-   * `CREATE EXTERNAL TABLE`: Vytvoří novou tabulku "externí" v Hive. Externí tabulky pouze uložit definici tabulky Hive (data je ponechán v původním umístění).
+   * `CREATE EXTERNAL TABLE`: Vytvoří novou tabulku "externí" v Hive. Externí tabulky pouze uložit definici tabulky hello Hive (hello dat je ponecháno v původním umístění hello).
 
      > [!NOTE]
-     > Externí tabulky by měl být použit při očekáváte, že v základních datech aktualizovat externího zdroje. Například MapReduce úlohy nebo služby Azure.
+     > Externí tabulky by měl použít, pokud očekáváte, že hello základní data toobe aktualizovat externího zdroje. Například MapReduce úlohy nebo služby Azure.
      >
-     > Vyřazení externí tabulku nemá **není** odstranit data, jenom definici tabulky.
+     > Vyřazení externí tabulku nemá **není** odstranit hello data, jenom hello definici tabulky.
 
-   * `ROW FORMAT`: Určuje způsob formátování data Hive. V takovém případě polí v každém protokolu jsou oddělené mezerou.
+   * `ROW FORMAT`: Určuje způsob formátování hello data Hive. V takovém případě hello pole v každém protokolu jsou oddělené mezerou.
 
-   * `STORED AS TEXTFILE LOCATION`: Informuje Hive se uloží data (například/datový adresář) a která je uložena jako text.
+   * `STORED AS TEXTFILE LOCATION`: Informuje Hive kde hello data se ukládají (adresář hello příklad nebo data) a která je uložena jako text.
 
-   * `SELECT`: Vyberte počet všech řádků kde sloupec `t4` obsahuje hodnotu `[ERROR]`. Tento příkaz vrátí hodnotu `3` vzhledem k tomu, že existují tři řádky, které obsahují tuto hodnotu.
+   * `SELECT`: Vyberte počet všech řádků kde sloupec `t4` obsahuje hodnotu hello `[ERROR]`. Tento příkaz vrátí hodnotu `3` vzhledem k tomu, že existují tři řádky, které obsahují tuto hodnotu.
 
-   * `INPUT__FILE__NAME LIKE '%.log'`-Informuje Hive, jsme by měl vrátit pouze data ze souborů končící na. log. Tuto klauzuli omezuje hledání sample.log soubor, který obsahuje data.
+   * `INPUT__FILE__NAME LIKE '%.log'`-Informuje Hive, jsme by měl vrátit pouze data ze souborů končící na. log. Tuto klauzuli omezuje hello vyhledávání toohello sample.log soubor, který obsahuje hello data.
 
-3. Na panelu nástrojů vyberte **clusteru HDInsight** , kterou chcete použít pro tento dotaz. Vyberte **odeslání** spustit příkazy jako úlohy Hive.
+3. Hello nástrojů vyberte hello **clusteru HDInsight** chcete toouse pro tento dotaz. Vyberte **odeslání** toorun hello příkazy jako úlohy Hive.
 
    ![Odeslání panelu](./media/hdinsight-hadoop-use-hive-visual-studio/toolbar.png)
 
-4. **Souhrn úlohy Hive** se zobrazí a zobrazí informace o probíhající úloze. Použití **aktualizovat** odkaz aktualizovat informace o úloze, dokud **stav úlohy** změny **dokončeno**.
+4. Hello **Souhrn úlohy Hive** se zobrazí a zobrazí informace o hello spuštění úlohy. Použití hello **aktualizovat** odkaz toorefresh hello informace o úlohách, dokud hello **stav úlohy** změní příliš**dokončeno**.
 
    ![Souhrn úlohy zobrazení dokončené úlohy](./media/hdinsight-hadoop-use-hive-visual-studio/jobsummary.png)
 
-5. Použití **výstup úlohy** odkaz zobrazte výstup této úlohy. Zobrazuje `[ERROR] 3`, což je hodnoty vrácené tímto dotazem.
+5. Použití hello **výstup úlohy** odkaz výstup hello tooview této úlohy. Zobrazuje `[ERROR] 3`, což je hello hodnoty vrácené tímto dotazem.
 
 6. Můžete také spustit dotazů Hive bez vytvoření projektu. Pomocí **Průzkumníka serveru**, rozbalte položku **Azure** > **HDInsight**, klikněte pravým tlačítkem na serveru HDInsight a pak vyberte **napsat dotaz Hive** .
 
-7. V **temp.hql** dokument, který se zobrazí, přidejte následující příkazy HiveQL:
+7. V hello **temp.hql** dokument, který se zobrazí, přidejte následující příkazy HiveQL hello:
 
    ```hiveql
    set hive.execution.engine=tez;
@@ -97,24 +97,24 @@ Zjistěte, jak pomocí nástrojů Data Lake pro Visual Studio pro Apache Hive do
    INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
    ```
 
-    Tyto příkazy provádět následující akce:
+    Tyto příkazy provádět hello následující akce:
 
-   * `CREATE TABLE IF NOT EXISTS`: Vytvoří tabulku, pokud ještě neexistuje. Protože `EXTERNAL` – klíčové slovo není, tento příkaz vytvoří interní tabulku. Interní tabulky jsou uložena v datovém skladu Hive a jsou spravovány nástrojem Hive.
+   * `CREATE TABLE IF NOT EXISTS`: Vytvoří tabulku, pokud ještě neexistuje. Protože hello `EXTERNAL` – klíčové slovo není, tento příkaz vytvoří interní tabulku. Interní tabulky jsou uložené v hello Hive datového skladu a jsou spravovány nástrojem Hive.
 
      > [!NOTE]
-     > Na rozdíl od `EXTERNAL` tabulky, vyřazení interní tabulku taky odstraní zadaná data.
+     > Na rozdíl od `EXTERNAL` tabulky, vyřazení interní tabulku taky odstraní hello základní data.
 
-   * `STORED AS ORC`: Ukládá data ve sloupcovém formátu (ORC) optimalizované řádek. ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat Hive.
+   * `STORED AS ORC`: Hello úložiště dat ve sloupcovém formátu (ORC) optimalizované řádek. ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat Hive.
 
-   * `INSERT OVERWRITE ... SELECT`: Vybere řádky z `log4jLogs` tabulku, která obsahují `[ERROR]`, pak vkládá data do `errorLogs` tabulky.
+   * `INSERT OVERWRITE ... SELECT`: Vybere řádky z hello `log4jLogs` tabulku, která obsahují `[ERROR]`, pak vloží hello data do hello `errorLogs` tabulky.
 
-8. Na panelu nástrojů vyberte **odeslání** chcete spustit úlohu. Použití **stav úlohy** k určení, zda byla úloha úspěšně dokončena.
+8. Hello nástrojů vyberte **odeslání** toorun hello úlohy. Použití hello **stav úlohy** toodetermine tuto úlohu hello byla úspěšně dokončena.
 
-9. Chcete-li ověřit, zda úloha vytvořena v tabulce, použijte **Průzkumníka serveru** a rozbalte **Azure** > **HDInsight** > clusteru HDInsight >  **Hive databáze** > **výchozí**. **ErrorLogs** tabulky a **log4jLogs** tabulce jsou uvedeny.
+9. tooverify, který hello úlohy vytvoření hello tabulky, použijte **Průzkumníka serveru** a rozbalte **Azure** > **HDInsight** > clusteru HDInsight > **Databáze hive** > **výchozí**. Hello **errorLogs** tabulky a hello **log4jLogs** tabulce jsou uvedeny.
 
 ## <a id="nextsteps"></a>Další kroky
 
-Jak vidíte, nástroje HDInsight pro Visual Studio poskytují snadný způsob, jak pracovat s dotazy Hive v HDInsight.
+Jak vidíte, zadejte hello nástroje HDInsight pro Visual Studio snadno toowork s dotazy Hive v HDInsight.
 
 Obecné informace o Hive v HDInsight:
 
@@ -126,7 +126,7 @@ Informace o jiných způsobech můžete pracovat s Hadoop v HDInsight:
 
 * [Používání nástroje MapReduce s Hadoop v HDInsight](hdinsight-use-mapreduce.md)
 
-Další informace o nástrojích HDInsight pro Visual Studio:
+Další informace o hello nástroje HDInsight pro Visual Studio:
 
 * [Začínáme s nástroje HDInsight pro Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Integrace Azure Stream Analytics a Machine Learning | Microsoft Docs
-description: "Jak používat uživatelsky definované funkce a Machine Learning v úloze Stream Analytics"
+title: aaaAzure integrace Stream Analytics a Machine Learning | Microsoft Docs
+description: "Jak toouse uživatelsky definované funkce a Machine Learning v úloze Stream Analytics"
 keywords: 
 documentationcenter: 
 services: stream-analytics
@@ -15,166 +15,166 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/06/2017
 ms.author: jeffstok
-ms.openlocfilehash: 023033d5479fcf0e2dff168b6604431eef283d3b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e1ba7ab51ece80719839793e1320a7666cfc4181
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Provedení analýzy postojích pomocí Azure Stream Analytics nebo Azure Machine Learning
-Tento článek popisuje, jak rychle nastavit jednoduchou úlohu Azure Stream Analytics, která integruje Azure Machine Learning. Používáte model Machine Learning postojích analytics z webu Cortana Intelligence Gallery a analyzovat data streamovaná text určení skóre postojích v reálném čase. Pomocí Cortana Intelligence Suite umožňuje provedení této úlohy bez obav o rozbor všech vytváření model postojích analytics.
+Tento článek popisuje, jak tooquickly nastavit jednoduchou úlohu Azure Stream Analytics, která integruje Azure Machine Learning. Použijte model Machine Learning postojích analytics z hello Cortana Intelligence Gallery tooanalyze streamování textová data a určení skóre postojích hello v reálném čase. Pomocí hello Cortana Intelligence Suite umožňuje provedení této úlohy bez obav o rozbor všech hello vytváření model postojích analytics.
 
-Můžete použít co dozvíte z tohoto článku pro scénáře, jako je například tyto:
+Můžete použít informace z tohoto článku tooscenarios například tyto:
 
 * Analýza v reálném čase postojích na streamování dat Twitteru.
 * Analýza záznamy zákazníka konverzace s pracovníky technické podpory.
 * Vyhodnocení komentáře na fóra, blogy a videa. 
 * Mnoho dalších v reálném čase, prediktivní vyhodnocování scénářů.
 
-Ve scénáři reálného by získat data přímo z datového proudu Twitter. Pro zjednodušení tento kurz, jsme jste jej tak, aby úlohy streamování Analytics získá tweetů ze souboru CSV v úložišti objektů Blob Azure. Můžete vytvořit svůj vlastní soubor CSV, nebo můžete použít ukázkový soubor CSV, jak je znázorněno na následujícím obrázku:
+Ve scénáři reálného by získat hello data přímo z datového proudu Twitter. toosimplify hello kurzu jsme jste jej tak, aby hello úlohy streamování Analytics získá tweetů ze souboru CSV v úložišti objektů Blob Azure. Můžete vytvořit svůj vlastní soubor CSV, nebo můžete použít ukázkový soubor CSV, jak ukazuje následující obrázek hello:
 
 ![Ukázka tweetů v souboru CSV](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
 
-Úlohy streamování Analytics, který vytvoříte platí model analýzy postojích jako uživatelem definované funkce (UDF) na ukázková data text z úložiště objektů blob. Výstup (výsledek analýzy postojích) je zapsán do stejné úložiště objektů blob v jiném souboru CSV. 
+úlohy streamování Analytics Hello, který vytvoříte platí model analýzy postojích hello jako uživatelem definované funkce (UDF) na hello ukázka textová data z úložiště objektů blob hello. výstup Hello (hello výsledek analýzy postojích hello) je zapsán toohello stejné úložiště objektů blob v jiném souboru CSV. 
 
-Následující obrázek ukazuje tuto konfiguraci. Jak jsme uvedli, realističtější scénáři můžete nahradit úložiště objektů blob streamování Twitter dat z Azure Event Hubs vstup. Kromě toho je sestavení [Microsoft Power BI](https://powerbi.microsoft.com/) v reálném čase vizualizace agregační postojích.    
+Hello následující obrázek znázorňuje tuto konfiguraci. Jak jsme uvedli, realističtější scénáři můžete nahradit úložiště objektů blob streamování Twitter dat z Azure Event Hubs vstup. Kromě toho je sestavení [Microsoft Power BI](https://powerbi.microsoft.com/) v reálném čase vizualizace agregační postojích hello.    
 
 ![Přehled integrace Stream Analytics Machine Learning](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-1.png)  
 
 ## <a name="prerequisites"></a>Požadavky
-Než začnete, ujistěte se, že máte následující:
+Než začnete, ujistěte se, že máte hello následující:
 
 * Aktivní předplatné Azure.
-* Soubor CSV s některá data v ní. Si můžete stáhnout soubor uvedena výše z [Githubu](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv), nebo můžete vytvořit svůj vlastní soubor. V tomto článku předpokládáme, že používáte soubor z Githubu.
+* Soubor CSV s některá data v ní. Si můžete stáhnout soubor hello uvedena výše z [Githubu](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv), nebo můžete vytvořit svůj vlastní soubor. V tomto článku předpokládáme, že používáte hello souboru z Githubu.
 
-Na vysoké úrovni k dokončení úkolů ukázáno v tomto článku jste takto:
+Na vysoké úrovni toocomplete hello úlohy ukázáno v tomto článku jste hello následující:
 
-1. Vytvořit účet úložiště Azure a kontejner úložiště objektů blob a nahrajte vstupní soubor ve formátu CSV do kontejneru.
-3. Přidání modelu analytics postojích z webu Cortana Intelligence Gallery do pracovního prostoru Azure Machine Learning a nasadit tento model jako webovou službu v pracovním prostoru Machine Learning.
-5. Vytvořte úlohu služby Stream Analytics, který volání této webové služby jako funkci, aby bylo možné zjistit postojích pro zadávání textu.
-6. Spustit úlohu služby Stream Analytics a zkontrolujte výstup.
+1. Vytvořit účet úložiště Azure a kontejner úložiště objektů blob a nahrajte kontejner toohello vstupní soubor ve formátu CSV.
+3. Přidání modelu analytics postojích z pracovního prostoru hello Cortana Intelligence Gallery tooyour Azure Machine Learning a nasadit tento model jako webovou službu v pracovního prostoru Machine Learning hello.
+5. Vytvořte úlohu služby Stream Analytics, který volání této webové služby jako funkci v pořadí toodetermine postojích pro zadávání textu hello.
+6. Spuštění úlohy Stream Analytics hello a zkontrolujte výstup hello.
 
-## <a name="create-a-storage-container-and-upload-the-csv-input-file"></a>Vytvoření kontejneru úložiště a načtěte vstupní soubor CSV
-Pro tento krok můžete použít všechny souboru CSV, jako je třeba k dispozici z Githubu.
+## <a name="create-a-storage-container-and-upload-hello-csv-input-file"></a>Vytvořit kontejner úložiště a odeslat vstupní soubor CSV hello
+Pro tento krok můžete použít všechny souboru CSV, jako je například hello nějaký k dispozici z Githubu.
 
-1. Na portálu Azure klikněte na tlačítko **nový** &gt; **úložiště** &gt; **účet úložiště**.
+1. V hello portálu Azure, klikněte na **nový** &gt; **úložiště** &gt; **účet úložiště**.
 
    ![Vytvořit nový účet úložiště](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-create-storage-account.png)
 
-2. Zadejte název (`samldemo` v příkladu). Název můžete použít jenom malá písmena a čísla a musí být jedinečný v Azure. 
+2. Zadejte název (`samldemo` v příkladu hello). v názvu Hello lze použít pouze malá písmena a čísla a musí být jedinečný v Azure. 
 
-3. Zadejte existující skupinu prostředků a zadejte umístění. Pro umístění doporučujeme všechny prostředky, které jsou vytvořené v tomto kurzu použít stejné umístění.
+3. Zadejte existující skupinu prostředků a zadejte umístění. Pro umístění, doporučujeme, aby všechny prostředky hello vytvořené v tomto kurzu hello stejné umístění.
 
     ![Zadejte podrobnosti o účtu úložiště](./media/stream-analytics-machine-learning-integration-tutorial/create-sa1.png)
 
-4. Na portálu Azure vyberte účet úložiště. V okně účtu úložiště, klikněte na tlačítko **kontejnery** a pak klikněte na  **+ &nbsp;kontejneru** k vytvoření úložiště objektů blob.
+4. V hello portálu Azure vyberte účet úložiště hello. V okně účtu úložiště hello, klikněte na tlačítko **kontejnery** a pak klikněte na  **+ &nbsp;kontejneru** toocreate úložiště objektů blob.
 
     ![Vytvoření kontejneru objektů blob](./media/stream-analytics-machine-learning-integration-tutorial/create-sa2.png)
 
-5. Zadejte název kontejneru (`azuresamldemoblob` v příkladu) a ověřte, že **přistupovat typu** je nastaven na **Blob**. Až to budete mít, klikněte na **OK**.
+5. Zadejte název pro kontejner hello (`azuresamldemoblob` v příkladu hello) a ověřte, že **přistupovat typu** je nastaven příliš**Blob**. Až to budete mít, klikněte na **OK**.
 
     ![Zadejte podrobnosti kontejner objektů blob](./media/stream-analytics-machine-learning-integration-tutorial/create-sa3.png)
 
-6. V **kontejnery** okně vyberte nový kontejner, který se otevře v okně pro tento kontejner.
+6. V hello **kontejnery** okně, vyberte hello nový kontejner, což otevře okno hello pro tento kontejner.
 
 7. Klikněte na **Odeslat**.
 
     ![Nahrát tlačítko pro kontejner](./media/stream-analytics-machine-learning-integration-tutorial/create-sa-upload-button.png)
 
-8. V **nahrávání blob** okno, zadejte soubor CSV, který chcete použít pro tento kurz. Pro **Blob typ**, vyberte **objekt blob bloku** a nastavit velikost bloku na 4 MB, který je dostatečný pro účely tohoto kurzu.
+8. V hello **nahrávání blob** okno, zadejte soubor CSV hello chcete toouse pro účely tohoto kurzu. Pro **Blob typ**, vyberte **objekt blob bloku** a zároveň se zablokují hello sadu velikost too4 MB, který je dostatečný pro účely tohoto kurzu.
 
     ![Nahrát soubor blob](./media/stream-analytics-machine-learning-integration-tutorial/create-sa4.png)
 
-9. Klikněte **nahrát** tlačítko v dolní části okna.
+9. Klikněte na tlačítko hello **nahrát** tlačítko v hello dolní části okna hello.
 
-## <a name="add-the-sentiment-analytics-model-from-the-cortana-intelligence-gallery"></a>Přidat model analýzy postojích z webu Cortana Intelligence Gallery
+## <a name="add-hello-sentiment-analytics-model-from-hello-cortana-intelligence-gallery"></a>Přidat model analýzy postojích hello z hello Cortana Intelligence Gallery
 
-Teď, když je ukázková data do objektu BLOB, můžete povolit model postojích analýzy v Cortana Intelligence Gallery.
+Teď, když je hello ukázková data do objektu BLOB, můžete povolit model analýzy postojích hello v Cortana Intelligence Gallery.
 
-1. Přejděte na [model postojích prediktivní analýzy](https://gallery.cortanaintelligence.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1) stránky v Cortana Intelligence Gallery.  
+1. Přejděte toohello [model postojích prediktivní analýzy](https://gallery.cortanaintelligence.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1) stránku hello Cortana Intelligence Gallery.  
 
 2. Klikněte na tlačítko **Open in Studio**.  
    
    ![Stream Analytics Machine Learning, otevřete Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
 
-3. Přihlaste se k přejděte do pracovního prostoru. Vyberte umístění.
+3. Přihlaste se toogo toohello prostoru. Vyberte umístění.
 
-4. Klikněte na tlačítko **spustit** v dolní části stránky. Spustí se proces, který trvá několik minut.
+4. Klikněte na tlačítko **spustit** v hello dolní části stránky hello. Hello proces spouští, což trvá několik minut.
 
    ![Spusťte experiment v nástroji Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
 
-5. Poté, co proces proběhla úspěšně, vyberte **nasazení webové služby** v dolní části stránky.
+5. Jakmile proces hello proběhl úspěšně, vyberte **nasazení webové služby** na hello dolní části stránky hello.
 
    ![experiment v nástroji Machine Learning Studio nasaďte jako webovou službu](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
 
-6. Chcete-li ověřit, zda model analýzy postojích připravené k použití, klikněte na tlačítko **Test** tlačítko. Zadejte textový vstup, jako je "I rádi Microsoft". 
+6. toovalidate, který hello postojích model analýzy je připraven toouse, klikněte na tlačítko hello **Test** tlačítko. Zadejte textový vstup, jako je "I rádi Microsoft". 
 
    ![Test experimentu v nástroji Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
 
-    Pokud test funguje, zobrazí výsledek podobně jako v následujícím příkladu:
+    Pokud testovací hello funguje, zobrazí výsledek podobné toohello následující ukázka:
 
    ![výsledky testu v nástroji Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
 
-7. V **aplikace** sloupce, klikněte na tlačítko **Excel 2010 nebo starší sešitu** odkaz ke stažení sešitu aplikace Excel. Sešit obsahuje klíč rozhraní API a adresu URL, kterou budete potřebovat později nastavit úlohu služby Stream Analytics.
+7. V hello **aplikace** sloupce, klikněte na tlačítko hello **Excel 2010 nebo starší sešitu** odkaz toodownload sešitu aplikace Excel. Hello sešit obsahuje klíč hello rozhraní API a adresy URL hello, je nutné, aby novější tooset do úlohy Stream Analytics hello.
 
     ![Stream Analytics Machine Learning, rychlého přehledu.](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
 
 
-## <a name="create-a-stream-analytics-job-that-uses-the-machine-learning-model"></a>Vytvořit úlohu služby Stream Analytics, který používá model Machine Learning
+## <a name="create-a-stream-analytics-job-that-uses-hello-machine-learning-model"></a>Vytvořit úlohu služby Stream Analytics, který používá model Machine Learning hello
 
-Nyní můžete vytvořit úlohu služby Stream Analytics, která načte tweetů ukázka ze souboru CSV v úložišti objektů blob. 
+Nyní můžete vytvořit úlohu Stream Analytics, která načte hello ukázka tweetů ze souboru CSV hello v úložišti objektů blob. 
 
-### <a name="create-the-job"></a>Vytvoření úlohy
+### <a name="create-hello-job"></a>Vytvořit úlohu hello
 
-1. Přejděte na [portál Azure](https://portal.azure.com).  
+1. Přejděte toohello [portál Azure](https://portal.azure.com).  
 
 2. Klikněte na tlačítko **nový** > **Internet věcí** > **úlohy služby Stream Analytics**. 
 
-   ![Cesty Azure portálu pro získání do nové úlohy Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-new-iot-sa-job.png)
+   ![Cesty Azure portálu pro získání tooa nová úloha Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-new-iot-sa-job.png)
    
-3. Název úlohy `azure-sa-ml-demo`, zadejte předplatné, zadejte existující skupinu prostředků nebo vytvořte novou a vyberte umístění pro úlohu.
+3. Název úlohy hello `azure-sa-ml-demo`, zadejte předplatné, zadejte existující skupinu prostředků nebo vytvořte novou a vyberte umístění hello hello úlohy.
 
    ![Zadejte nastavení pro nové úlohy Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-job-1.png)
    
 
-### <a name="configure-the-job-input"></a>Konfigurace vstupu úlohy
-Úloha získá vstupní ze souboru CSV, který jste dříve nahráli do úložiště objektů blob.
+### <a name="configure-hello-job-input"></a>Konfigurace vstupu úlohy hello
+Úloha Hello získá vstupní ze souboru CSV hello, který jste nahráli starší tooblob úložiště.
 
-1. Po úloha byla vytvořena, v části **úlohy topologie** v okně úlohy klikněte **vstupy** pole.  
+1. Po hello byla vytvořena úloha, v části **úlohy topologie** v okně úlohy hello, klikněte na tlačítko hello **vstupy** pole.  
    
    !["Vstupy" pole v okně úlohy Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-job-add-input.png)  
 
-2. V **vstupy** okně klikněte na tlačítko **+ přidat**.
+2. V hello **vstupy** okně klikněte na tlačítko **+ přidat**.
 
-   ![Přidání tlačítka pro přidání vstup do úlohy Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-job-add-input-button.png)  
+   ![Přidání tlačítka pro přidání úlohu služby Stream Analytics vstupní toohello](./media/stream-analytics-machine-learning-integration-tutorial/create-job-add-input-button.png)  
 
-3. Vyplňte **nové vstup** okno s těmito hodnotami:
+3. Vyplňte hello **nové vstup** okno s těmito hodnotami:
 
-    * **Vstupní alias**: použijte název `datainput`.
+    * **Vstupní alias**: použití hello název `datainput`.
     * **Typ zdroje**: vyberte **datový proud**.
     * **Zdroj**: vyberte **úložiště objektů Blob**.
     * **Import možnost**: vyberte **pomocí úložiště objektů blob z aktuálního předplatného**. 
-    * **Účet úložiště**. Vyberte účet úložiště, které jste vytvořili dříve.
-    * **Kontejner**. Vyberte kontejner, který jste vytvořili dříve (`azuresamldemoblob`).
+    * **Účet úložiště**. Vyberte účet úložiště hello, které jste vytvořili dříve.
+    * **Kontejner**. Vyberte hello kontejneru, které jste vytvořili dříve (`azuresamldemoblob`).
     * **Formát serializace událostí**. Vyberte **CSV**.
 
     ![Nastavení pro nové úlohy vstup](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
 4. Klikněte na možnost **Vytvořit**.
 
-### <a name="configure-the-job-output"></a>Konfigurace výstup úlohy
-Úloha odešle výsledky na stejné úložiště objektů blob kde získá vstup. 
+### <a name="configure-hello-job-output"></a>Konfigurace hello výstup úlohy
+toohello výsledky odešle úlohu Hello stejný objekt blob úložiště, kde získá vstup. 
 
-1. V části **úlohy topologie** v okně úlohy klikněte na tlačítko **výstupy** pole.  
+1. V části **úlohy topologie** v okně úlohy hello, klikněte na tlačítko hello **výstupy** pole.  
   
    ![Vytvořit nový výstupní úlohy streamování Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-output.png)  
 
-2. V **výstupy** okně klikněte na tlačítko **+ přidat**a poté přidejte výstup s aliasem `datamloutput`. 
+2. V hello **výstupy** okně klikněte na tlačítko **+ přidat**a poté přidejte výstup s aliasem hello `datamloutput`. 
 
-3. Pro **jímky**, vyberte **úložiště objektů Blob**. Pak zadejte ve zbývající části Nastavení výstupní pomocí stejné hodnoty, které jste použili pro úložiště objektů blob pro vstup:
+3. Pro **jímky**, vyberte **úložiště objektů Blob**. Potom vyplňte hello zbytek hello výstup hello nastavení pomocí stejné hodnoty, které jste použili pro hello úložiště objektů blob pro vstup:
 
-    * **Účet úložiště**. Vyberte účet úložiště, které jste vytvořili dříve.
-    * **Kontejner**. Vyberte kontejner, který jste vytvořili dříve (`azuresamldemoblob`).
+    * **Účet úložiště**. Vyberte účet úložiště hello, které jste vytvořili dříve.
+    * **Kontejner**. Vyberte hello kontejneru, které jste vytvořili dříve (`azuresamldemoblob`).
     * **Formát serializace událostí**. Vyberte **CSV**.
 
    ![Nastavení pro nové výstup úlohy](./media/stream-analytics-machine-learning-integration-tutorial/create-output2.png) 
@@ -182,41 +182,41 @@ Nyní můžete vytvořit úlohu služby Stream Analytics, která načte tweetů 
 4. Klikněte na možnost **Vytvořit**.   
 
 
-### <a name="add-the-machine-learning-function"></a>Přidání funkce Machine Learning 
-Dříve jste publikovali model Machine Learning k webové službě. V tomto scénáři při spuštění úlohy analýzy datového proudu odešle každý ukázka tweet ze vstupu k webové službě pro analýzu postojích. Vrátí webové službě Machine Learning postojích (`positive`, `neutral`, nebo `negative`) a pravděpodobnost vzniku tweet se kladné. 
+### <a name="add-hello-machine-learning-function"></a>Přidání funkce Machine Learning hello 
+Dříve jste publikovali webovou službu tooa model Machine Learning. V tomto scénáři při spuštění úlohy analýzy datového proudu hello odešle každý ukázka tweet z hello vstupní toohello webové služby pro analýzu postojích. Vrátí Hello webové službě Machine Learning postojích (`positive`, `neutral`, nebo `negative`) a pravděpodobnost vzniku tweet hello se kladné. 
 
-V této části kurzu definujete funkce v Úloha analýzy datového proudu. Funkci nelze vyvolat odeslala tweet k webové službě a získat odpověď zpět. 
+V této části kurzu hello definujete funkce v hello Úloha analýzy datového proudu. Funkce Hello můžete být vyvolaná toosend tweet toohello webové služby a získat odpovědi hello zpět. 
 
-1. Ujistěte se, že máte webové adresy URL a rozhraní API klíč služby, který jste si stáhli dříve v sešitu aplikace Excel.
+1. Ujistěte se, že máte hello webové služby adresy URL a rozhraní API klíč, který jste si stáhli dříve v sešitu aplikace Excel hello.
 
-2. Vraťte se do okna Přehled úlohy.
+2. Vrátí okno Přehled toohello úlohy.
 
 3. V části **nastavení**, vyberte **funkce** a pak klikněte na **+ přidat**.
 
-   ![Přidání funkce do úlohy Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-function1.png) 
+   ![Přidat úloha Stream Analytics toohello – funkce](./media/stream-analytics-machine-learning-integration-tutorial/create-function1.png) 
 
-4. Zadejte `sentiment` jako alias funkce a vyplňte na zbytek okna pomocí těchto hodnot:
+4. Zadejte `sentiment` jako hello funkce alias a vyplňte hello zbytek hello okno pomocí těchto hodnot:
 
     * **Typ funkce**: vyberte **Azure ML**.
-    * **Import možnost**: vyberte **Import z jiného předplatného**. To vám dává možnost zadat adresu URL a klíč.
-    * **Adresa URL**: vložte adresu URL webové služby.
-    * **Klíč**: vložte klíč rozhraní API.
+    * **Import možnost**: vyberte **Import z jiného předplatného**. To vám dává možnost tooenter hello URL a klíč.
+    * **Adresa URL**: vložte adresu URL webové služby hello.
+    * **Klíč**: vložte klíč rozhraní API hello.
   
-    ![Nastavení pro přidání funkce Machine Learning do úlohy Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  
+    ![Nastavení pro přidání úloha Stream Analytics toohello funkce Machine Learning](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  
     
 5. Klikněte na možnost **Vytvořit**.
 
-### <a name="create-a-query-to-transform-the-data"></a>Vytvořit dotaz, který transformace dat
+### <a name="create-a-query-tootransform-hello-data"></a>Vytvoření dotazu tootransform hello dat
 
-Stream Analytics používá k ověření vstupu a zpracovat dotaz deklarativní, na základě SQL. V této části vytvoříte dotaz, který čte každý tweet ze vstupu a pak zavolá funkci Machine Learning k analýze postojích. Výsledek dotazu pak odešle na výstupu, že jste definovali (úložiště objektů blob).
+Stream Analytics používá deklarativní, na základě SQL dotaz tooexamine hello vstup a zpracovat. V této části vytvoříte dotaz, který čte každý tweet ze vstupu a potom se vyvolá hello Machine Learning funkce tooperform postojích analýzy. dotaz Hello pak odešle hello výsledek toohello výstup, že jste definovali (úložiště objektů blob).
 
-1. Vraťte se do okna Přehled úlohy.
+1. Vrátí okno Přehled toohello úlohy.
 
-2.  V části **úlohy topologie**, klikněte na tlačítko **dotazu** pole.
+2.  V části **úlohy topologie**, klikněte na tlačítko hello **dotazu** pole.
 
     ![Vytvoření dotazu úlohy streamování Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-query.png)  
 
-3. Zadejte následující dotaz:
+3. Zadejte hello následující dotaz:
 
     ```
     WITH sentiment AS (  
@@ -228,50 +228,50 @@ Stream Analytics používá k ověření vstupu a zpracovat dotaz deklarativní,
     From sentiment  
     ```    
 
-    Dotaz, vyvolá funkce, které jste vytvořili dříve (`sentiment`) Chcete-li provést analýzu postojích na každý tweet ve vstupu. 
+    dotaz Hello vyvolá hello funkce, které jste vytvořili dříve (`sentiment`) v pořadí tooperform postojích analýzy na každý tweet ve vstupu hello. 
 
-4. Klikněte na tlačítko **Uložit** Uložte dotaz.
+4. Klikněte na tlačítko **Uložit** toosave hello dotazu.
 
 
-## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Spustit úlohu služby Stream Analytics a zkontrolujte výstup
+## <a name="start-hello-stream-analytics-job-and-check-hello-output"></a>Spuštění úlohy Stream Analytics hello a zkontrolujte výstup hello
 
-Nyní můžete spustit úlohu služby Stream Analytics.
+Nyní můžete spustit úlohy služby Stream Analytics hello.
 
-### <a name="start-the-job"></a>Spustit úlohu
-1. Vraťte se do okna Přehled úlohy.
+### <a name="start-hello-job"></a>Spuštění úlohy hello
+1. Vrátí okno Přehled toohello úlohy.
 
-2. Klikněte na tlačítko **spustit** v horní části okna.
+2. Klikněte na tlačítko **spustit** hello horní části okna hello.
 
     ![Vytvoření dotazu úlohy streamování Analytics](./media/stream-analytics-machine-learning-integration-tutorial/start-job.png)  
 
-3. V **spuštění úlohy**, vyberte **vlastní**a pak vyberte jeden den před při nahrát soubor CSV do úložiště objektů blob. Když jste hotovi, klikněte na tlačítko **spustit**.  
+3. V hello **spuštění úlohy**, vyberte **vlastní**a pak vyberte předchozí toowhen jeden den, který jste nahráli úložiště tooblob soubor CSV hello. Když jste hotovi, klikněte na tlačítko **spustit**.  
 
 
-### <a name="check-the-output"></a>Zkontrolujte výstup
-1. Umožní má úloha spustit několik minut, dokud neuvidíte aktivity v **monitorování** pole. 
+### <a name="check-hello-output"></a>Zkontrolujte výstup hello
+1. Úlohy umožňují hello spustit několik minut, dokud neuvidíte aktivity v hello **monitorování** pole. 
 
-2. Pokud máte nástroj, který se standardně používáte k ověřit obsah úložiště objektů blob, že kontrola pomocí nástroje `azuresamldemoblob` kontejneru. Případně proveďte následující kroky na portálu Azure:
+2. Pokud máte nástroj normálně používat obsah hello tooexamine úložiště objektů blob, použijte tento nástroj tooexamine hello `azuresamldemoblob` kontejneru. Alternativně hello, proveďte kroky v hello portálu Azure:
 
-    1. V portálu, najdete `samldemo` úložiště účet a v rámci účtu, najděte `azuresamldemoblob` kontejneru. Zobrazí dva soubory v kontejneru: soubor, který obsahuje ukázkové tweetů a soubor CSV generované úlohu služby Stream Analytics.
-    2. Klikněte pravým tlačítkem na vygenerovaný soubor a pak vyberte **Stáhnout**. 
+    1. Hello portálu, najde hello `samldemo` úložiště účtu a v rámci účtu hello najde hello `azuresamldemoblob` kontejneru. Zobrazí dva soubory v kontejneru hello: hello soubor, který obsahuje hello ukázka tweetů a soubor CSV generované úlohy služby Stream Analytics hello.
+    2. Klikněte pravým tlačítkem hello vygeneruje soubor a pak vyberte **Stáhnout**. 
 
    ![Stáhněte si výstup úlohy CSV z úložiště objektů Blob](./media/stream-analytics-machine-learning-integration-tutorial/download-output-csv-file.png)  
 
-3. Otevřete generovaný soubor CSV. Vidět něco podobného jako v následujícím příkladu:  
+3. Otevřete hello vygeneruje soubor CSV. Vidět něco podobného jako hello následující ukázka:  
    
    ![Stream Analytics Machine Learning, CSV zobrazení](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
 
 
 ### <a name="view-metrics"></a>Zobrazit metriky
-Také můžete zobrazit související funkce metrik Azure Machine Learning. Následující metriky funkce související se zobrazují v **monitorování** pole v okně úlohy:
+Také můžete zobrazit související funkce metrik Azure Machine Learning. Hello následující metriky funkce související se zobrazují v hello **monitorování** pole v okně úlohy hello:
 
-* **Funkce požadavky** označuje počet požadavky odeslané na webové službě Machine Learning.  
-* **Funkce události** označuje počet událostí v požadavku. Každý požadavek k webové službě Machine Learning obsahuje ve výchozím nastavení až 1 000 událostí.  
+* **Funkce požadavky** označuje hello počet odeslaných požadavků tooa webové službě Machine Learning.  
+* **Funkce události** označuje hello počet událostí v žádosti o hello. Ve výchozím nastavení každý tooa žádost webové službě Machine Learning obsahuje too1 000 událostí.  
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
+* [Úvod tooAzure Stream Analytics](stream-analytics-introduction.md)
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Integrace rozhraní REST API a strojového učení](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 * [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)

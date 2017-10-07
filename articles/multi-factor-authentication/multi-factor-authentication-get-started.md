@@ -1,6 +1,6 @@
 ---
-title: "Výběr mezi cloudovým a serverovým Azure MFA | Dokumentace Microsoftu"
-description: "Zvolte pro vás ideální řešení zabezpečení Multi-Factor Authentication položením otázky, co se pokoušíte zabezpečit a kde se nachází vaši uživatelé.  Pak vyberte cloud, server MFA nebo AD FS."
+title: aaaChoose mezi Azure MFA cloudu nebo server | Microsoft Docs
+description: "Zvolte řešení hello vícefaktorového ověřování zabezpečení, které je pro vás nejvhodnější tím, že požádá, co se I při toosecure a kde jsou Moji uživatelé nachází.  Pak vyberte cloud, server MFA nebo AD FS."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -14,36 +14,36 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/23/2017
 ms.author: kgremban
-ms.openlocfilehash: 6f8ee3449244b12d2c8b5714e6ad893e2f0b10ee
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: bd9639e5f744f586d9143c6e90b105ed645eecb6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>Výběr vhodného řešení Azure Multi-Factor Authentication
-Vzhledem k tomu, že existuje několik typů Azure Multi-Factor Authentication (MFA), musíme odpovědět na několik otázek, aby bylo možné zjistit, která verze je pro vás nejlepší.  Jsou to tyto otázky:
+# <a name="choose-hello-azure-multi-factor-authentication-solution-for-you"></a>Výběr hello Azure Multi-Factor Authentication řešení pro vás
+Vzhledem k tomu, že existuje několik typů Azure Multi-Factor Authentication (MFA), musíme odpovědět několik toofigure otázky, na která verze je správné jeden toouse hello.  Jsou to tyto otázky:
 
-* [Co se pokouším zabezpečit?](#what-am-i-trying-to-secure)
-* [Kde se nacházejí uživatelé?](#where-are-the-users-located)
+* [Co se pokouším toosecure](#what-am-i-trying-to-secure)
+* [Kde se nachází uživatelé hello](#where-are-the-users-located)
 * [Jaké funkce budu potřebovat?](#what-featured-do-i-need)
 
-V následujících částech najdete tipy k zodpovězení každé z těchto otázek.
+Hello následující části obsahují informace o určení každý z těchto odpovědi.
 
-## <a name="what-am-i-trying-to-secure"></a>Co se pokouším zabezpečit?
-Pro určení správného řešení dvoustupňového ověření si nejdříve musíme odpovědět na otázku, co se pokoušíte zabezpečit pomocí druhé metody ověřování.  Jedná se o aplikaci, která je v Azure?  Nebo systém vzdáleného přístupu?  Tím, že určíme, co se pokoušíme zabezpečit, si můžeme odpovědět na otázku, kde musí být povoleno ověřování Multi-Factor Authentication.  
+## <a name="what-am-i-trying-toosecure"></a>Co se pokouším toosecure?
+řešení toodetermine hello správné dvoustupňové ověření, nejprve musíme odpovědět hello otázku, co se vám snažíme toosecure pomocí druhé metody ověřování.  Jedná se o aplikaci, která je v Azure?  Nebo systém vzdáleného přístupu?  Tak, že určíte, co se pokoušíme toosecure, jsme zodpovědět hello otázku, kde potřebuje služba Multi-Factor Authentication toobe povolena.  
 
-| Co se pokoušíte zabezpečit | MFA v cloudu | Server MFA |
+| Co se vám snažíme toosecure | MFA v cloudu hello | Server MFA |
 | --- |:---:|:---:|
 | Vlastní aplikace Microsoftu |● |● |
-| Aplikace Saas v galerii aplikací |● |  |
+| Aplikace SaaS v galerii aplikací hello |● |  |
 | Webové aplikace publikované prostřednictvím proxy aplikace Azure AD |● |  |
 | Aplikace služby IIS nepublikované prostřednictvím proxy aplikace Azure AD | |● |
 | Vzdálený přístup, jako je například síť VPN, RDG | ● | ● |
 
-## <a name="where-are-the-users-located"></a>Kde se nachází uživatelé
-Když se dále podíváme, kde se naši uživatelé nacházejí, pomůže nám to určit správné řešení – jestli je to v cloudu nebo místně pomocí serveru MFA.
+## <a name="where-are-hello-users-located"></a>Kde se nachází uživatelé hello
+V dalším kroku prohlížení, kde se nachází naši uživatelé pomáhá toodetermine hello správné řešení toouse, zda v hello cloudu nebo místně pomocí hello MFA serveru.
 
-| Umístění uživatele | MFA v cloudu | Server MFA |
+| Umístění uživatele | MFA v cloudu hello | Server MFA |
 | --- |:---:|:---:|
 | Azure Active Directory |● | |
 | Azure AD a místní AD využívající federaci se službou AD FS |● |● |
@@ -52,9 +52,9 @@ Když se dále podíváme, kde se naši uživatelé nacházejí, pomůže nám t
 | Místní služby Active Directory | |● |
 
 ## <a name="what-features-do-i-need"></a>Jaké funkce budu potřebovat?
-Následující tabulka porovnává funkce, které jsou dostupné se službou Multi-Factor Authentication v cloudu a s Multi-Factor Authentication Serverem.
+Hello následující tabulka porovnává hello funkce, které jsou dostupné pomocí služby Multi-Factor Authentication v cloudu hello a s hello aplikace Multi-Factor Authentication Server.
 
-| Funkce | MFA v cloudu | Server MFA |
+| Funkce | MFA v cloudu hello | Server MFA |
 | --- |:---:|:---:|
 | Oznámení mobilní aplikace jako druhý faktor | ● | ● |
 | Kód ověření mobilní aplikace jako druhý faktor | ● | ● |
@@ -77,11 +77,11 @@ Následující tabulka porovnává funkce, které jsou dostupné se službou Mul
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jsme určili, zda chcete použít cloudové  multi-factor authentication nebo server multi-factor authentication na místě, můžete začít s nastavováním a používáním Azure Multi-Factor Authentication. **Vyberte ikonu, která představuje váš scénář.**
+Teď, když jsme zjistili, jestli toouse cloudové služby Multi-Factor authentication nebo hello MFA serveru místně, můžete začít s nastavováním a používáním Azure Multi-Factor Authentication. **Vyberte ikonu hello, která představuje váš scénář**
 
 <center>
 
 
 
 
-[![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Server](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </center>
+[![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Server](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>

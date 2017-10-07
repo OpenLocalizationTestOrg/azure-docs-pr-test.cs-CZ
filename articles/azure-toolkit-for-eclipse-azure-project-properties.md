@@ -1,6 +1,6 @@
 ---
-title: Vlastnosti projektu Azure
-description: "Popisuje nastavení vlastností projektu Azure v sadě nástrojů Azure pro Eclipse."
+title: aaaAzure vlastnosti projektu
+description: "Popisuje nastavení hello vlastnosti projektu Azure v hello nástrojů Azure pro prostředí Eclipse."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,30 +14,30 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: 9d9eb695b63c2f4efa3ebea97ddb2f2780180bca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6d8993ca38e7e03a8c7ebe96d174594aa0ff78e2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-project-properties"></a>Vlastnosti projektu Azure
-Různá nastavení pro svůj projekt Azure můžete nastavit v rámci sady nástrojů Azure pro prostředí Eclipse.
+Různá nastavení pro svůj projekt Azure můžete nastavit v rámci hello nástrojů Azure pro prostředí Eclipse.
 
 ## <a name="configuring-azure-project-properties"></a>Konfigurace vlastností projektu Azure
-Konfigurace vlastnosti projektu Azure se provádí pomocí vlastnosti dialogová okna pro svůj projekt Azure. Klikněte pravým tlačítkem na projekt v Project Exploreru podokně na Eclipse, klikněte na tlačítko **vlastnosti**a pak vyberte **Azure** dílčí nabídky.
+Konfigurace vlastnosti projektu Azure se provádí pomocí hello vlastnost dialogová okna pro svůj projekt Azure. Klikněte pravým tlačítkem na projekt hello v podokně Průzkumník projektů Eclipse na, klikněte na tlačítko **vlastnosti**a potom vyberte hello **Azure** dílčí nabídky.
 
 ![][ic719480]
 
-V rámci této stránky vlastností můžete změnit následující položky: 
+V rámci této stránky vlastností můžete změnit hello následující položky: 
 
-* **Název služby:** název projektu Azure.
-* **Sestavení pro:** nastavená projektu pro vytváření na emulátoru služby výpočty v nebo nasazení do Azure.
-* **Cílový operační systém:** operační systém pro použití při nasazení projektu do Azure.
+* **Název služby:** hello název projektu Azure.
+* **Sestavení pro:** nastavená hello projektu pro vytváření toohello výpočetní emulátor nebo nasazení tooAzure.
+* **Cílový operační systém:** hello toouse operační systém nasazený tooAzure po projektu.
 
 ## <a name="see-also"></a>Viz také
 [Azure nástrojů pro Eclipse][Azure Toolkit for Eclipse]
 
-[Instalace Azure Toolkit pro Eclipse][Installing the Azure Toolkit for Eclipse] 
+[Instalace hello nástrojů Azure pro Eclipse][Installing hello Azure Toolkit for Eclipse] 
 
 [Vytvoření aplikace Hello World služby Azure v prostředí Eclipse][Creating a Hello World Application for Azure in Eclipse]
 
@@ -45,7 +45,7 @@ V rámci této stránky vlastností můžete změnit následující položky:
 
 [Seznam účtů úložiště Azure][Azure Storage Account List]
 
-Další informace o používání Azure s Java najdete v tématu [Azure střediska pro vývojáře Java][Azure Java Developer Center].
+Další informace o používání Azure v jazyce Java, najdete v tématu hello [Azure střediska pro vývojáře Java][Azure Java Developer Center].
 
 <!-- URL List -->
 
@@ -54,7 +54,7 @@ Další informace o používání Azure s Java najdete v tématu [Azure středis
 [Azure Role Properties]: http://go.microsoft.com/fwlink/?LinkID=699525
 [Azure Storage Account List]: http://go.microsoft.com/fwlink/?LinkID=699528
 [Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Installing hello Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
 
 <!-- IMG List -->
 

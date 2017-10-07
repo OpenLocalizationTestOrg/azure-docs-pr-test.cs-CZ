@@ -1,0 +1,239 @@
+---
+title: "aaaSend události tooAzure časové řady Přehled prostředí | Microsoft Docs"
+description: "Tento kurz se zaměřuje hello kroky toopush události tooyour časové řady Přehled prostředí"
+keywords: 
+services: tsi
+documentationcenter: 
+author: venkatgct
+manager: jhubbard
+editor: 
+ms.assetid: 
+ms.service: tsi
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: big-data
+ms.date: 07/21/2017
+ms.author: venkatja
+ms.openlocfilehash: dbccc23f61351a0033cd48c1a02fb3841b45d560
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/06/2017
+---
+# <a name="send-events-tooa-time-series-insights-environment-using-event-hub"></a>Odeslání události tooa časové řady Statistika prostředí pomocí centra událostí
+
+Tento kurz vysvětluje, jak toocreate a konfiguraci centra událostí a spuštění ukázkové aplikace toopush události. Pokud máte existující centrum událostí s událostmi ve formátu JSON, přeskočte tento kurz a zobrazte své prostředí v [Time Series Insights](https://insights.timeseries.azure.com).
+
+## <a name="configure-an-event-hub"></a>Konfigurace centra událostí
+1. toocreate centra událostí, postupujte podle pokynů z hello centra událostí [dokumentaci](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+
+2. Ujistěte se, že vytváříte skupinu příjemců, kterou používá výhradně váš zdroj událostí Time Series Insights.
+
+  > [!IMPORTANT]
+  > Zajistěte, aby tuto skupinu příjemců nepoužívala žádná jiná služba (například úloha služby Stream Analytics nebo jiné prostředí Time Series Insights). Pokud je skupina uživatelů používají i jiné služby, přečtěte si, že operace je negativně ovlivňovat to pro toto prostředí a hello dalších služeb. Pokud používáte "$Default" jako hello skupiny příjemců, je by mohlo vést toopotential opakované použití jiných čtečky.
+
+  ![Výběr skupiny příjemců centra událostí](media/send-events/consumer-group.png)
+
+3. Vytvořte "MySendPolicy" na hello centra událostí, který je použité toosend události v ukázce csharp hello.
+
+  ![Vyberte Zásady sdíleného přístupu a klikněte na tlačítko Přidat.](media/send-events/shared-access-policy.png)  
+
+  ![Přidání nové zásady sdíleného přístupu](media/send-events/shared-access-policy-2.png)  
+
+## <a name="create-time-series-insights-event-source"></a>Vytvoření zdroje událostí Time Series Insights
+1. Pokud jste dosud nevytvořili zdroje událostí, postupujte podle [tyto pokyny](time-series-insights-add-event-source.md) toocreate zdroje událostí.
+
+2. Zadejte "deviceTimestamp" jako název vlastnosti časové razítko hello – tato vlastnost se používá jako hello skutečné časové razítko v ukázce csharp hello. Název vlastnosti Hello časové razítko je malá a velká písmena a hodnoty musí mít formát hello __rrrr-MM-ddTHH. FFFFFFFK__ při odeslání jako JSON tooevent rozbočovače. Pokud vlastnost hello hello události neexistuje, pak hello čas události rozbočovače zařazených do fronty se používá.
+
+  ![Vytvoření zdroje událostí](media/send-events/event-source-1.png)
+
+## <a name="sample-code-toopush-events"></a>Ukázka kódu toopush události
+1. Přejděte zásady centra událostí toohello "MySendPolicy" a zkopírujte připojovací řetězec hello klíčem hello zásad.
+
+  ![Zkopírování připojovacího řetězce zásady MySendPolicy](media/send-events/sample-code-connection-string.png)
+
+2. Spusťte následující kód hello této události toosend 600 pro každou z hello tři zařízení. Nahraďte `eventHubConnectionString` vaším připojovacím řetězcem.
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using Microsoft.ServiceBus.Messaging;
+
+namespace Microsoft.Rdx.DataGenerator
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            var from = new DateTime(2017, 4, 20, 15, 0, 0, DateTimeKind.Utc);
+            Random r = new Random();
+            const int numberOfEvents = 600;
+
+            var deviceIds = new[] { "device1", "device2", "device3" };
+
+            var events = new List<string>();
+            for (int i = 0; i < numberOfEvents; ++i)
+            {
+                for (int device = 0; device < deviceIds.Length; ++device)
+                {
+                    // Generate event and serialize as JSON object:
+                    // { "deviceTimestamp": "utc timestamp", "deviceId": "guid", "value": 123.456 }
+                    events.Add(
+                        String.Format(
+                            CultureInfo.InvariantCulture,
+                            @"{{ ""deviceTimestamp"": ""{0}"", ""deviceId"": ""{1}"", ""value"": {2} }}",
+                            (from + TimeSpan.FromSeconds(i * 30)).ToString("o"),
+                            deviceIds[device],
+                            r.NextDouble()));
+                }
+            }
+
+            // Create event hub connection.
+            var eventHubConnectionString = @"Endpoint=sb://...";
+            var eventHubClient = EventHubClient.CreateFromConnectionString(eventHubConnectionString);
+
+            using (var ms = new MemoryStream())
+            using (var sw = new StreamWriter(ms))
+            {
+                // Wrap events into JSON array:
+                sw.Write("[");
+                for (int i = 0; i < events.Count; ++i)
+                {
+                    if (i > 0)
+                    {
+                        sw.Write(',');
+                    }
+                    sw.Write(events[i]);
+                }
+                sw.Write("]");
+
+                sw.Flush();
+                ms.Position = 0;
+
+                // Send JSON tooevent hub.
+                EventData eventData = new EventData(ms);
+                eventHubClient.Send(eventData);
+            }
+        }
+    }
+}
+
+```
+## <a name="supported-json-shapes"></a>Podporované tvary JSON
+### <a name="sample-1"></a>Ukázka 1
+
+#### <a name="input"></a>Vstup
+
+Jednoduchý objekt JSON.
+
+```json
+{
+    "id":"device1",
+    "timestamp":"2016-01-08T01:08:00Z"
+}
+```
+#### <a name="output---1-event"></a>Výstup – 1 událost
+
+|id|časové razítko|
+|--------|---------------|
+|device1|2016-01-08T01:08:00Z|
+
+### <a name="sample-2"></a>Ukázka 2
+
+#### <a name="input"></a>Vstup
+Pole JSON se dvěma objekty JSON. Každý objekt JSON, bude převedený tooan událostí.
+```json
+[
+    {
+        "id":"device1",
+        "timestamp":"2016-01-08T01:08:00Z"
+    },
+    {
+        "id":"device2",
+        "timestamp":"2016-01-17T01:17:00Z"
+    }
+]
+```
+#### <a name="output---2-events"></a>Výstup – 2 události
+
+|id|časové razítko|
+|--------|---------------|
+|device1|2016-01-08T01:08:00Z|
+|device2|2016-01-08T01:17:00Z|
+### <a name="sample-3"></a>Ukázka 3
+
+#### <a name="input"></a>Vstup
+
+Objekt JSON s vnořeným polem JSON, které obsahuje dva objekty JSON.
+```json
+{
+    "location":"WestUs",
+    "events":[
+        {
+            "id":"device1",
+            "timestamp":"2016-01-08T01:08:00Z"
+        },
+        {
+            "id":"device2",
+            "timestamp":"2016-01-17T01:17:00Z"
+        }
+    ]
+}
+
+```
+#### <a name="output---2-events"></a>Výstup – 2 události
+Všimněte si, že je vlastnost hello "umístění" zkopíruje přes tooeach hello události.
+
+|location|events.id|events.timestamp|
+|--------|---------------|----------------------|
+|WestUs|device1|2016-01-08T01:08:00Z|
+|WestUs|device2|2016-01-08T01:17:00Z|
+
+### <a name="sample-4"></a>Ukázka 4
+
+#### <a name="input"></a>Vstup
+
+Objekt JSON s vnořeným polem JSON, které obsahuje dva objekty JSON. Tento vstup ukazuje, že vlastnosti globálních hello může být zastoupena hello komplexní objekt JSON.
+
+```json
+{
+    "location":"WestUs",
+    "manufacturer":{
+        "name":"manufacturer1",
+        "location":"EastUs"
+    },
+    "events":[
+        {
+            "id":"device1",
+            "timestamp":"2016-01-08T01:08:00Z",
+            "data":{
+                "type":"pressure",
+                "units":"psi",
+                "value":108.09
+            }
+        },
+        {
+            "id":"device2",
+            "timestamp":"2016-01-17T01:17:00Z",
+            "data":{
+                "type":"vibration",
+                "units":"abs G",
+                "value":217.09
+            }
+        }
+    ]
+}
+```
+#### <a name="output---2-events"></a>Výstup – 2 události
+
+|location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
+|---|---|---|---|---|---|---|---|
+|WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
+|WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
+
+## <a name="next-steps"></a>Další kroky
+
+* Zobrazení prostředí na [portálu Time Series Insights](https://insights.timeseries.azure.com)

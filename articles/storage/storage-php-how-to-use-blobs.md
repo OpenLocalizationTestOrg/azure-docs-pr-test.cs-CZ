@@ -1,6 +1,6 @@
 ---
-title: "Jak používat úložiště objektů blob (úložiště objektů) z PHP | Microsoft Docs"
-description: "Ukládejte nestrukturovaná data v cloudu pomocí Azure Blob Storage (úložiště objektů)."
+title: "úložiště objektů blob toouse (úložiště objektů) aaaHow z PHP | Microsoft Docs"
+description: "Ukládání nestrukturovaných dat v cloudu hello s Azure Blob storage (úložiště objektů)."
 documentationcenter: php
 services: storage
 author: mmacy
@@ -14,44 +14,44 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-ms.openlocfilehash: 2c356d7faafa8ef4591087b5b1f949b9374732be
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 331405e583c17c4f71acacdc0078b2bc71efbef0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-blob-storage-from-php"></a>Používání úložiště blob z PHP
+# <a name="how-toouse-blob-storage-from-php"></a>Jak toouse objektu blob úložiště z PHP
 [!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Přehled
-Úložiště objektů blob v Azure je služba, která ukládá nestrukturovaná data v cloudu jako objekty nebo objekty blob. Do Blob storage se dá ukládat jakýkoli druh textu nebo binárních dat, jako je dokument, soubor médií nebo instalátor aplikace. Blob storage se také nazývá úložiště objektů.
+Azure Blob storage je služba, která ukládá Nestrukturovaná data v cloudu hello jako objekty nebo objekty BLOB. Do Blob storage se dá ukládat jakýkoli druh textu nebo binárních dat, jako je dokument, soubor médií nebo instalátor aplikace. Úložiště objektů blob je také odkazované tooas objektu úložiště.
 
-Tento průvodce vám ukáže, jak provádět běžné scénáře s využitím služby Azure blob. Ukázky jsou napsané v PHP a použití [Azure SDK pro jazyk PHP][download]. Pokryté scénáře zahrnují **odesílání**, **výpis**, **stahování**, a **odstraňování** objekty BLOB. Další informace o objekty BLOB, najdete v článku [další kroky](#next-steps) části.
+Tento průvodce vám ukáže, jak služba objektů blob tooperform běžné scénáře s využitím hello Azure. Hello ukázky jsou napsané v jazyce PHP a používají hello [Azure SDK pro jazyk PHP][download]. Hello pokryté scénáře zahrnují **odesílání**, **výpis**, **stahování**, a **odstraňování** objekty BLOB. Další informace o objekty BLOB najdete v tématu hello [další kroky](#next-steps) části.
 
 [!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-php-application"></a>Vytvoření aplikace PHP
-Jediný požadavek pro vytvoření aplikace PHP, který přistupuje k službě Azure blob je odkazování třídy v sadě Azure SDK pro jazyk PHP z vašeho kódu. Všechny nástroje pro vývoj slouží k vytvoření aplikace, včetně Poznámkový blok.
+Hello jen požadavek pro vytvoření aplikace PHP, který přistupuje k službě Azure blob hello je hello odkazování tříd v hello Azure SDK pro jazyk PHP z vašeho kódu. Můžete použít všechny toocreate nástroje pro vývoj aplikace, včetně Poznámkový blok.
 
 V této příručce používat funkce služby, které lze volat v rámci aplikace PHP místně nebo v kódu běžící v rámci webové role Azure, role pracovního procesu nebo webu.
 
-## <a name="get-the-azure-client-libraries"></a>Získat knihoven klienta Azure
+## <a name="get-hello-azure-client-libraries"></a>Získání knihovny klienta Azure hello
 [!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
 
-## <a name="configure-your-application-to-access-the-blob-service"></a>Konfigurace aplikace pro přístup ke službě blob
-Pomocí rozhraní API služby objektů blob v Azure, budete muset:
+## <a name="configure-your-application-tooaccess-hello-blob-service"></a>Konfigurace služby objektů blob hello tooaccess vaší aplikace
+toouse hello objektů blob v Azure API služby, musíte:
 
-1. Reference souboru pomocí automatického zavaděče [require_once] příkaz, a
+1. Referenční dokumentace hello automatického zavaděče soubor pomocí hello [require_once] příkaz, a
 2. Referenční všechny třídy, které můžete použít.
 
-Následující příklad ukazuje, jak se zahrnuje automatického zavaděče souboru a odkaz **ServicesBuilder** třídy.
+Hello následující příklad ukazuje, jak tooinclude hello automatického zavaděče souboru a odkaz hello **ServicesBuilder** třídy.
 
 > [!NOTE]
-> V příkladech v tomto článku předpokládá, že jste nainstalovali PHP klientské knihovny pro Azure prostřednictvím autora. Pokud jste nainstalovali v knihovnách ručně, je třeba odkazovat `WindowsAzure.php` automatického zavaděče souboru.
+> Hello příklady v tomto článku předpokládá, že jste nainstalovali hello PHP klientské knihovny pro Azure prostřednictvím autora. Pokud jste nainstalovali hello knihovny ručně, je třeba tooreference hello `WindowsAzure.php` automatického zavaděče souboru.
 >
 >
 
@@ -60,10 +60,10 @@ require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
-V následujících příkladech `require_once` příkaz zobrazí vždy, ale jenom ty třídy potřebné pro tento příklad provést odkazují.
+V následujících příkladech hello, hello `require_once` příkaz zobrazí vždy, ale pouze hello třídy potřebné pro tooexecute příklad hello odkazují.
 
 ## <a name="set-up-an-azure-storage-connection"></a>Nastavit připojení k úložišti Azure
-K vytvoření instance klienta služby Azure blob, Nejdřív musíte mít platný připojovací řetězec. Formát pro připojovací řetězec služby objektů blob je:
+tooinstantiate klientem služby objektů blob v Azure, že máte platný připojovací řetězec. Formát Hello připojovací řetězec služby objektů blob hello je:
 
 Pro přístup k službě za provozu:
 
@@ -71,20 +71,20 @@ Pro přístup k službě za provozu:
 DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]
 ```
 
-Pro přístup k emulátoru úložiště:
+Pro přístup k emulátoru úložiště hello:
 
 ```php
 UseDevelopmentStorage=true
 ```
 
-Pokud chcete vytvořit libovolného klienta služby Azure, budete muset použít **ServicesBuilder** třídy. Můžete:
+toocreate libovolného klienta služby Azure, budete potřebovat toouse hello **ServicesBuilder** třídy. Můžete:
 
-* Připojovací řetězec přímo jí předat nebo
-* Použití **CloudConfigurationManager (CCM)** zkontrolujte několik externích zdrojů pro připojovací řetězec:
+* Předat hello připojovací řetězec přímo tooit nebo
+* Použití hello **CloudConfigurationManager (CCM)** toocheck více externí zdroje pro hello připojovací řetězec:
   * Ve výchozím nastavení je teď obsahuje podporu pro jeden externí zdroj – proměnné prostředí.
-  * Můžete přidat nové zdroje tím, že rozšíří **ConnectionStringSource** třídy.
+  * Můžete přidat nové zdroje rozšířením hello **ConnectionStringSource** třídy.
 
-Příklady podle zde uvedeného se předají připojovací řetězec, který přímo.
+Příklady hello podle zde uvedeného se předají hello připojovací řetězec, který přímo.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -97,7 +97,7 @@ $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionSt
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 [!INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
-A **BlobRestProxy** objektu umožňuje vytvářet kontejner objektů blob s **createContainer** metoda. Při vytváření kontejneru, můžete nastavit možnosti v kontejneru, ale to tak není povinný. (Následující příklad ukazuje, jak nastavit kontejner seznam řízení přístupu (ACL) a metadata kontejneru.)
+A **BlobRestProxy** objektu umožňuje vytvářet kontejner objektů blob s hello **createContainer** metoda. Při vytváření kontejneru, můžete nastavit možnosti hello kontejneru, ale to tak není povinný. (následující hello příklad ukazuje, jak přistupovat k tooset hello kontejneru ovládacího prvku seznam (ACL) a metadata kontejneru.)
 
 ```php
 require_once 'vendor\autoload.php';
@@ -119,16 +119,16 @@ $createContainerOptions = new CreateContainerOptions();
 // PublicAccessType::CONTAINER_AND_BLOBS and PublicAccessType::BLOBS_ONLY.
 // CONTAINER_AND_BLOBS:
 // Specifies full public read access for container and blob data.
-// proxys can enumerate blobs within the container via anonymous
-// request, but cannot enumerate containers within the storage account.
+// proxys can enumerate blobs within hello container via anonymous
+// request, but cannot enumerate containers within hello storage account.
 //
 // BLOBS_ONLY:
 // Specifies public read access for blobs. Blob data within this
 // container can be read via anonymous request, but container data is not
-// available. proxys cannot enumerate blobs within the container via
+// available. proxys cannot enumerate blobs within hello container via
 // anonymous request.
-// If this value is not specified in the request, container data is
-// private to the account owner.
+// If this value is not specified in hello request, container data is
+// private toohello account owner.
 $createContainerOptions->setPublicAccess(PublicAccessType::CONTAINER_AND_BLOBS);
 
 // Set container metadata.
@@ -149,12 +149,12 @@ catch(ServiceException $e){
 }
 ```
 
-Volání metody **setPublicAccess (PublicAccessType::CONTAINER\_a\_objektů BLOB)** zpřístupní data kontejnerů a objektů blob prostřednictvím anonymních požadavků. Volání metody **setPublicAccess(PublicAccessType::BLOBS_ONLY)** díky pouze blob dat, které jsou přístupné prostřednictvím anonymních požadavků. Další informace o kontejneru seznamy řízení přístupu najdete v tématu [sadu kontejneru seznamu řízení přístupu (REST API)][container-acl].
+Volání metody **setPublicAccess (PublicAccessType::CONTAINER\_a\_objektů BLOB)** díky hello kontejnerů a objektů blob dat, které jsou přístupné prostřednictvím anonymních požadavků. Volání metody **setPublicAccess(PublicAccessType::BLOBS_ONLY)** díky pouze blob dat, které jsou přístupné prostřednictvím anonymních požadavků. Další informace o kontejneru seznamy řízení přístupu najdete v tématu [sadu kontejneru seznamu řízení přístupu (REST API)][container-acl].
 
 Další informace o chybových kódech služby objektů Blob najdete v tématu [kódy chyb služby objektů Blob][error-codes].
 
 ## <a name="upload-a-blob-into-a-container"></a>Nahrání objektu blob do kontejneru
-Pokud chcete nahrát soubor jako objekt blob, použijte **BlobRestProxy -> createBlockBlob** metoda. Tato operace vytvoří objekt blob, pokud neexistuje, nebo ho přepíše, pokud k tomu. Následující příklad kódu předpokládá, že kontejner byl vytvořen a používá [fopen –] [ fopen] k otevření souboru jako datový proud.
+tooupload soubor jako objekt blob, použijte hello **BlobRestProxy -> createBlockBlob** metoda. Tato operace vytvoří objekt blob hello, pokud neexistuje, nebo ho přepíše, pokud k tomu. Hello následující příklad kódu předpokládá, kontejneru hello již byly vytvořeny a používá [fopen –] [ fopen] tooopen hello soubor jako datový proud.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -183,10 +183,10 @@ catch(ServiceException $e){
 }
 ```
 
-Všimněte si, že v předchozím příkladu odešle objekt blob jako datový proud. Ale objekt blob je možné také uložit jako řetězec, pomocí, například [soubor\_získat\_obsah] [ file_get_contents] funkce. Chcete-li to provést, pomocí v předchozím příkladu, změňte `$content = fopen("c:\myfile.txt", "r");` k `$content = file_get_contents("c:\myfile.txt");`.
+Všimněte si, že hello předchozí ukázce odešle objekt blob jako datový proud. Také však nahrát objekt blob jako řetězec, například pomocí hello [soubor\_získat\_obsah] [ file_get_contents] funkce. toodo tento pomocí předchozího vzorku hello, změnit `$content = fopen("c:\myfile.txt", "r");` příliš`$content = file_get_contents("c:\myfile.txt");`.
 
-## <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
-K zobrazení seznamu objektů BLOB v kontejneru, použijte **BlobRestProxy -> listBlobs** metoda s **foreach** smyčky do cyklus prostřednictvím výsledek. Následující kód zobrazí název jednotlivých objektů blob jako výstup v kontejneru a jeho identifikátoru URI do prohlížeče.
+## <a name="list-hello-blobs-in-a-container"></a>Seznam hello objekty BLOB v kontejneru
+toolist hello objekty BLOB v kontejneru, použijte hello **BlobRestProxy -> listBlobs** metoda s **foreach** cykly tooloop prostřednictvím hello výsledků. Hello následující kód zobrazí název hello každý objekt blob jako výstup v kontejneru a jeho prohlížeče toohello identifikátor URI.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -219,7 +219,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="download-a-blob"></a>Stažení objektu blob
-Chcete-li stáhnout objekt blob, volejte **BlobRestProxy -> getblob –** metoda, pak volání **getContentStream** metodu výsledná **GetBlobResult** objektu.
+toodownload objekt blob volání hello **BlobRestProxy -> getblob –** metoda pak volání hello **getContentStream** metodu hello výsledná **GetBlobResult** objektu.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -246,10 +246,10 @@ catch(ServiceException $e){
 }
 ```
 
-Všimněte si, že v předchozím příkladu získá objekt blob jako prostředek datového proudu (výchozí nastavení). Můžete však použít [datového proudu\_získat\_obsah] [ stream-get-contents] funkce vráceném datovém proudu převést na řetězec.
+Poznámka: výše uvedené hello například získá objekt blob jako prostředek datového proudu (hello výchozí chování). Můžete však použít hello [datového proudu\_získat\_obsah] [ stream-get-contents] funkce tooconvert hello vrátil řetězec tooa datového proudu.
 
 ## <a name="delete-a-blob"></a>Odstranění objektu blob
-Chcete-li odstranit objekt blob, předejte název kontejneru a název objektu blob na **BlobRestProxy -> deleteBlob**.
+toodelete objekt blob předat hello název kontejneru a název objektu blob příliš**BlobRestProxy -> deleteBlob**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -276,7 +276,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="delete-a-blob-container"></a>Odstranit kontejner objektů blob
-Nakonec pokud chcete odstranit kontejner objektů blob, předat název kontejneru, který má **BlobRestProxy -> deleteContainer**.
+Nakonec toodelete kontejner objektů blob předat název kontejneru hello příliš**BlobRestProxy -> deleteContainer**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -302,14 +302,14 @@ catch(ServiceException $e){
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili základy služby Azure blob, postupujte podle následujících odkazech na další informace o složitějších úlohách úložiště.
+Teď, když jste se naučili základy hello hello služby objektů blob v Azure, použijte tyto odkazy toolearn o složitějších úlohách úložiště.
 
-* Přejděte [blog týmu Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/)
-* Najdete v článku [příklad objekt blob bloku PHP](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php).
-* Najdete v článku [příklad objekt blob stránky PHP](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php).
-* [Přenos dat pomocí nástroje příkazového řádku AzCopy](storage-use-azcopy.md)
+* Navštivte hello [blog týmu Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/)
+* V tématu hello [příklad objekt blob bloku PHP](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php).
+* V tématu hello [příklad objekt blob stránky PHP](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php).
+* [Přenos dat pomocí příkazového řádku Azcopy hello](storage-use-azcopy.md)
 
-Další informace naleznete také [středisku pro vývojáře PHP](/develop/php/).
+Další informace najdete v tématu taky hello [středisku pro vývojáře PHP](/develop/php/).
 
 [download]: http://go.microsoft.com/fwlink/?LinkID=252473
 [container-acl]: http://msdn.microsoft.com/library/azure/dd179391.aspx

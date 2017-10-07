@@ -1,6 +1,6 @@
 ---
-title: "Přepínání mezi zobrazení a úprava režimu sestav v Azure Power BI Embedded | Microsoft Docs"
-description: "Zjistěte, jak přepínat mezi zobrazení a úprava režim pro sestavy v rámci Power BI Embedded."
+title: "aaaToggle režim prohlížení a úpravy sestavy v Azure Power BI Embedded | Microsoft Docs"
+description: "Zjistěte, jak tootoggle režim prohlížení a úpravy sestavy v rámci Power BI Embedded."
 services: power-bi-embedded
 documentationcenter: 
 author: guyinacube
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/11/2017
 ms.author: asaxton
-ms.openlocfilehash: f73bf05b41523a5833cc9366fb84cb7021b4b7a9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c9e3da5f9ae74d221af650adebde7c9d83b38a99
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-embedded"></a>Přepínání mezi zobrazení a úprava režimu pro sestavy v Power BI Embedded
 
-Zjistěte, jak přepínat mezi zobrazení a úprava režim pro sestavy v rámci Power BI Embedded.
+Zjistěte, jak tootoggle režim prohlížení a úpravy sestavy v rámci Power BI Embedded.
 
 ## <a name="creating-an-access-token"></a>Vytváření token přístupu
 
-Musíte vytvořit přístupový token, který vám dává možnost jak zobrazit a upravit sestavu. Upravit a uložit sestavu, je nutné **Report.ReadWrite** token oprávnění. Další informace najdete v tématu [Authenticating a autorizaci v Power BI Embedded](power-bi-embedded-app-token-flow.md).
+Budete potřebovat toocreate přístupový token, který vám dává hello možnost tooboth prohlížení a úpravy sestavy. tooedit a uložení sestavy, je nutné hello **Report.ReadWrite** token oprávnění. Další informace najdete v tématu [Authenticating a autorizaci v Power BI Embedded](power-bi-embedded-app-token-flow.md).
 
 > [!NOTE]
-> To vám umožní upravit a uložit změny do existující sestavy. Pokud také chcete funkci podporu **uložit jako**, budete muset zadat další oprávnění. Další informace najdete v tématu [obory](power-bi-embedded-app-token-flow.md#scopes).
+> To umožní tooedit a uložit změny tooan existující sestavy. Pokud také chcete hello funkce podporu **uložit jako**, budete potřebovat toosupply další oprávnění. Další informace najdete v tématu [obory](power-bi-embedded-app-token-flow.md#scopes).
 
 ```
 using Microsoft.PowerBI.Security;
@@ -44,7 +44,7 @@ var token = embedToken.Generate("{access key}");
 
 ## <a name="embed-configuration"></a>Vložení konfigurace
 
-Budete muset zadat oprávnění a viewMode, chcete-li zobrazit uložení tlačítko v režimu úprav. Další informace najdete v tématu [vložení podrobnosti konfigurace](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
+Budete potřebovat oprávnění toosupply a viewMode v pořadí toosee hello uložit tlačítko v režimu úprav. Další informace najdete v tématu [vložení podrobnosti konfigurace](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
 
 Například v jazyce JavaScript:
 
@@ -54,7 +54,7 @@ Například v jazyce JavaScript:
     // Get models. Models, it contains enums that can be used.
     var models = window['powerbi-client'].models;
 
-    // Embed configuration used to describe the what and how to embed.
+    // Embed configuration used toodescribe hello what and how tooembed.
     // This object is used when calling powerbi.embed.
     // This also includes settings and options such as filters.
     // You can find more information at https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details.
@@ -71,43 +71,43 @@ Například v jazyce JavaScript:
         }
     };
 
-    // Get a reference to the embedded report HTML element
+    // Get a reference toohello embedded report HTML element
     var reportContainer = $('#reportContainer')[0];
 
-    // Embed the report and display it within the div container.
+    // Embed hello report and display it within hello div container.
     var report = powerbi.embed(reportContainer, config);
 ```
 
-To bude znamenat pro vložení sestavy v režimu zobrazení na základě **viewMode** Probíhá nastavení objektu na **modelů. ViewMode.View**.
+To bude znamenat tooembed hello sestavu v režimu zobrazení na základě **viewMode** nastaveno příliš**modelů. ViewMode.View**.
 
 ## <a name="view-mode"></a>Režim zobrazení
 
-Chcete-li přepnout do režimu zobrazení, pokud jste v režimu úprav, můžete použít následující JavaScript.
+Hello následující JavaScript tooswitch do režimu zobrazení, můžete použít, pokud jste v režimu úprav.
 
 ```
-// Get a reference to the embedded report HTML element
+// Get a reference toohello embedded report HTML element
 var reportContainer = $('#reportContainer')[0];
 
-// Get a reference to the embedded report.
+// Get a reference toohello embedded report.
 report = powerbi.get(reportContainer);
 
-// Switch to view mode.
+// Switch tooview mode.
 report.switchMode("view");
 
 ```
 
 ## <a name="edit-mode"></a>Režim úprav
 
-Pokud jste v zobrazení režimu, můžete použít následující JavaScript přepnout do režimu úprav.
+Hello následující JavaScript tooswitch do režimu úprav, můžete použít, pokud jste v zobrazení režimu.
 
 ```
-// Get a reference to the embedded report HTML element
+// Get a reference toohello embedded report HTML element
 var reportContainer = $('#reportContainer')[0];
 
-// Get a reference to the embedded report.
+// Get a reference toohello embedded report.
 report = powerbi.get(reportContainer);
 
-// Switch to edit mode.
+// Switch tooedit mode.
 report.switchMode("edit");
 
 ```
@@ -121,4 +121,4 @@ report.switchMode("edit");
 [Vložená ukázka JavaScriptu](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 [Úložiště Git PowerBI CSharp](https://github.com/Microsoft/PowerBI-CSharp)  
 [Úložiště Git PowerBI uzlu](https://github.com/Microsoft/PowerBI-Node)  
-Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](http://community.powerbi.com/)
+Chcete se ještě na něco zeptat? [Zkuste hello komunitě Power BI](http://community.powerbi.com/)

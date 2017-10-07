@@ -1,6 +1,6 @@
 ---
-title: "Apache Storm příkladu Java topologie – Azure HDInsight | Microsoft Docs"
-description: "Naučte se vytvářet topologií Apache Storm v jazyce Java tak, že vytvoříte ukázkové topologie počet aplikace word."
+title: "aaaApache Storm ukázkové topologie Java - Azure HDInsight | Microsoft Docs"
+description: "Zjistěte, jak toocreate topologií Apache Storm v jazyce Java vytvořením příklad word počet topologie."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -17,23 +17,23 @@ ms.workload: big-data
 ms.date: 07/07/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 36285fbaf1da3c566d338bd5612eebad327eaf50
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 54fa9dc3c93ddad83ac861f3101f50f80117d804
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Vytvoření topologie Apache Storm v jazyce Java
 
-Naučte se vytvářet topologii založené na jazyce Java pro Apache Storm. Můžete vytvořit topologie Storm, který implementuje počtu slov aplikace. Používáte Maven k sestavení a balíček projektu. Pak zjistíte, jak definovat topologie pomocí rozhraní tok.
+Zjistěte, jak toocreate topologii založené na jazyce Java pro Apache Storm. Můžete vytvořit topologie Storm, který implementuje počtu slov aplikace. Použijete projekt Maven toobuild a balíček hello. Potom se dozvíte, jak toodefine hello topologie pomocí hello tok framework.
 
 > [!NOTE]
-> Rozhraní framework tok je k dispozici v Storm 0.10.0 nebo vyšší. Storm 0.10.0 je k dispozici s HDInsight 3.3 a 3.4.
+> Tok framework Hello je k dispozici v Storm 0.10.0 nebo vyšší. Storm 0.10.0 je k dispozici s HDInsight 3.3 a 3.4.
 
-Po dokončení kroků v tomto dokumentu, můžete nasadit topologie do Apache Storm v HDInsight.
+Po dokončení kroků hello v tomto dokumentu, můžete nasadit tooApache hello topologie Storm v HDInsight.
 
 > [!NOTE]
-> Dokončené verze příkladů topologie Storm vytvořené v tomto dokumentu je k dispozici na [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount).
+> Dokončené verzi příkladů topologie Storm hello vytvořené v tomto dokumentu je k dispozici na [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,21 +45,21 @@ Po dokončení kroků v tomto dokumentu, můžete nasadit topologie do Apache St
 
 ## <a name="configure-environment-variables"></a>Nakonfigurujte proměnné prostředí
 
-Následující proměnné prostředí může být nastaven při instalaci Java a sadu JDK. Nicméně byste měli zkontrolovat, že existují a že obsahují správné hodnoty pro váš systém.
+Hello následující proměnné prostředí může být nastaven při instalaci Java a hello JDK. Ale byste měli zkontrolovat, že existují a že obsahují hello správné hodnoty pro váš systém.
 
-* **JAVA_HOME** -by měla odkazovat na adresář, kam nainstalovat prostředí Java runtime (JRE). Například v distribuci systému Unix nebo Linux, musí mít hodnotu podobnou `/usr/lib/jvm/java-7-oracle`. V systému Windows má hodnotu podobnou`c:\Program Files (x86)\Java\jre1.7`
+* **JAVA_HOME** -by měla odkazovat toohello adresáře, kde je nainstalován hello prostředí Java runtime (JRE). Například v distribuci systému Unix nebo Linux, musí mít hodnotu podobnou příliš`/usr/lib/jvm/java-7-oracle`. Windows neměl by mít hodnotu podobnou příliš`c:\Program Files (x86)\Java\jre1.7`
 
-* **CESTA** -musí obsahovat následující cesty:
+* **CESTA** -musí obsahovat hello následující cesty:
 
-  * **JAVA_HOME** (nebo ekvivalentní cesta)
+  * **JAVA_HOME** (nebo ekvivalentní cesta hello)
 
-  * **JAVA_HOME\bin** (nebo ekvivalentní cesta)
+  * **JAVA_HOME\bin** (nebo ekvivalentní cesta hello)
 
-  * Adresář, kde je nainstalován Maven
+  * Hello adresáře, kde je nainstalován Maven
 
 ## <a name="create-a-maven-project"></a>Vytvořte projekt Maven
 
-Z příkazového řádku, použijte následující příkaz k vytvoření Maven projektu s názvem **WordCount**:
+Z příkazového řádku hello, použijte následující hello příkaz toocreate projekt Maven s názvem **WordCount**:
 
 ```bash
 mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=com.microsoft.example -DartifactId=WordCount -DinteractiveMode=false
@@ -70,22 +70,22 @@ mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupI
 >
 > `mvn archetype:generate "-DarchetypeArtifactId=maven-archetype-quickstart" "-DgroupId=com.microsoft.example" "-DartifactId=WordCount" "-DinteractiveMode=false"`
 
-Tento příkaz vytvoří adresář s názvem `WordCount` do aktuálního umístění, která obsahuje základní projekt Maven. `WordCount` Adresář obsahuje následující položky:
+Tento příkaz vytvoří adresář s názvem `WordCount` hello aktuálního umístění, která obsahuje základní projekt Maven. Hello `WordCount` adresář obsahuje hello následující položky:
 
-* `pom.xml`: Obsahuje nastavení pro projekt Maven.
+* `pom.xml`: Obsahuje nastavení pro projekt Maven hello.
 * `src\main\java\com\microsoft\example`: Obsahuje kód aplikace.
 * `src\test\java\com\microsoft\example`: Obsahuje testy pro vaši aplikaci. 
 
-### <a name="remove-the-generated-example-code"></a>Odebrat generovaný ukázkový kód
+### <a name="remove-hello-generated-example-code"></a>Odebrat hello generované ukázkový kód
 
-Odstraňte generovaný test a soubory aplikace:
+Odstraňte testovací hello generované hello souborů a aplikací:
 
 * **src\test\java\com\microsoft\example\AppTest.Java**
 * **src\main\java\com\microsoft\example\App.Java**
 
 ## <a name="add-maven-repositories"></a>Přidání úložiště Maven
 
-HDInsight je založena na Hortonworks Data Platform (HDP), takže vám doporučujeme používat úložiště Hortonworks ke stažení závislostí pro projekty Apache Storm. V __pom.xml__ soubor, přidejte následující kód XML po `<url>http://maven.apache.org</url>` řádku:
+HDInsight je založena na hello Hortonworks Data Platform (HDP), takže vám doporučujeme používat hello Hortonworks úložiště toodownload závislosti pro projekty Apache Storm. V hello __pom.xml__ soubor, přidejte následující XML po hello hello `<url>http://maven.apache.org</url>` řádku:
 
 ```xml
 <repositories>
@@ -126,42 +126,42 @@ HDInsight je založena na Hortonworks Data Platform (HDP), takže vám doporuču
 
 ## <a name="add-properties"></a>Přidání vlastnosti
 
-Maven umožňuje definovat hodnoty úrovni projektu názvem vlastnosti. V __pom.xml__, přidejte následující text po `</repositories>` řádku:
+Maven vám umožní hodnoty úrovni projektu toodefine názvem vlastnosti. V hello __pom.xml__, přidejte následující text po hello hello `</repositories>` řádku:
 
 ```xml
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!--
-    This is a version of Storm from the Hortonworks repository that is compatible with HDInsight.
+    This is a version of Storm from hello Hortonworks repository that is compatible with HDInsight.
     -->
     <storm.version>1.0.1.2.5.3.0-37</storm.version>
 </properties>
 ```
 
-Teď můžete použít tuto hodnotu v dalších částech `pom.xml`. Například při určení verze součástí Storm, můžete použít `${storm.version}` místo pevné kódování hodnotu.
+Teď můžete použít tuto hodnotu v dalších částech hello `pom.xml`. Například při zadávání hello verzi komponenty Storm, můžete použít `${storm.version}` místo pevné kódování hodnotu.
 
 ## <a name="add-dependencies"></a>Přidat závislosti
 
-Přidáte závislost pro komponenty Storm. Otevřete `pom.xml` souboru a přidejte následující kód `<dependencies>` části:
+Přidáte závislost pro komponenty Storm. Otevřete hello `pom.xml` souboru a přidejte následující kód v hello hello `<dependencies>` části:
 
 ```xml
 <dependency>
     <groupId>org.apache.storm</groupId>
     <artifactId>storm-core</artifactId>
     <version>${storm.version}</version>
-    <!-- keep storm out of the jar-with-dependencies -->
+    <!-- keep storm out of hello jar-with-dependencies -->
     <scope>provided</scope>
 </dependency>
 ```
 
-Při kompilaci, Maven používá tuto informaci k vyhledání `storm-core` v úložišti Maven. Nejprve hledá v úložišti místního počítače. Nejsou-li soubory existuje, Maven je stáhne z veřejného úložiště Maven a ukládá je v místním úložišti.
+Při kompilaci, Maven používá tato informace toolook `storm-core` v úložišti Maven hello. Vypadá to nejdřív v úložišti hello v místním počítači. Nejsou-li hello soubory existuje, Maven je stáhne z veřejného úložiště Maven hello a ukládá je v místním úložišti hello.
 
 > [!NOTE]
-> Upozornění `<scope>provided</scope>` řádek v této části. Toto nastavení určuje Maven vyloučit **storm základní** z všechny JAR soubory, které jsou vytvořeny, protože je k dispozici v systému.
+> Všimněte si hello `<scope>provided</scope>` řádek v této části. Toto nastavení určuje Maven tooexclude **storm základní** ze všech JAR souborů, které jsou vytvořit, protože je poskytované hello systému.
 
 ## <a name="build-configuration"></a>Konfigurace sestavení
 
-Moduly plug-in maven umožňují přizpůsobit fáze sestavení projektu. Například jak kompilace projektu nebo jak zabalit do soubor JAR. Otevřete `pom.xml` souboru a přidejte následující kód přímo výše `</project>` řádku.
+Moduly plug-in maven povolit toocustomize hello fáze sestavení projektu hello. Například jak kompilace projektu hello nebo jak toopackage do soubor JAR. Otevřete hello `pom.xml` souboru a přidejte následující kód přímo nad hello hello `</project>` řádku.
 
 ```xml
 <build>
@@ -172,11 +172,11 @@ Moduly plug-in maven umožňují přizpůsobit fáze sestavení projektu. Např�
 </build>
 ```
 
-V této části se používá k přidání modulů plug-in, prostředky a další možnosti konfigurace sestavení. Úplný přehled o **pom.xml** souborů najdete v tématu [http://maven.apache.org/pom.html](http://maven.apache.org/pom.html).
+Tato část je použité tooadd moduly plug-in, prostředky a další možnosti konfigurace sestavení. Úplný přehled hello **pom.xml** souborů najdete v tématu [http://maven.apache.org/pom.html](http://maven.apache.org/pom.html).
 
 ### <a name="add-plug-ins"></a>Přidat moduly plug-in
 
-Pro topologií Apache Storm implementována v jazyce Java [modulu plug-in Maven Exec](http://www.mojohaus.org/exec-maven-plugin/) je užitečné, protože umožňuje snadno topologii místní spuštění ve vašem vývojovém prostředí. Přidejte následující `<plugins>` části `pom.xml` souboru modulu plug-in Exec Maven:
+Topologií Apache Storm implementována v jazyce Java, hello [modulu plug-in Maven Exec](http://www.mojohaus.org/exec-maven-plugin/) je užitečné, protože umožňuje tooeasily místní spuštění hello topologie ve vašem vývojovém prostředí. Přidejte následující toohello hello `<plugins>` části hello `pom.xml` souboru modulu plug-in Exec Maven tooinclude hello:
 
 ```xml
 <plugin>
@@ -201,13 +201,13 @@ Pro topologií Apache Storm implementována v jazyce Java [modulu plug-in Maven 
 </plugin>
 ```
 
-Další užitečné modul plug-in je [Apache Maven kompilátoru modul plug-in](http://maven.apache.org/plugins/maven-compiler-plugin/), který se používá k změnit možnosti kompilace. Změny jazyce Java verze, která používá Maven pro zdroje a cíle pro vaši aplikaci.
+Další užitečné modul plug-in je hello [Apache Maven kompilátoru modul plug-in](http://maven.apache.org/plugins/maven-compiler-plugin/), což je použité toochange možnosti kompilace. změny Hello hello verzi Javy, který Maven používá pro hello zdroj a cíl pro vaši aplikaci.
 
-* Pro HDInsight __3.4 nebo starším__, nastavte zdroj a cíl verzi Javy k __1.7__.
+* Pro HDInsight __3.4 nebo starším__, nastavení hello zdroje a cíle too__1.7__ verze Java.
 
-* Pro HDInsight __3.5__, nastavte zdroj a cíl verzi Javy k __1.8__.
+* Pro HDInsight __3.5__, nastavení hello zdroje a cíle too__1.8__ verze Java.
 
-Přidejte následující text do `<plugins>` části `pom.xml` souboru modulu plug-in Apache Maven kompilátoru. Tento příklad určuje 1.8, tak, aby cílová HDInsight verze 3.5.
+Přidejte následující text v hello hello `<plugins>` části hello `pom.xml` souboru modulu plug-in Apache Maven kompilátoru tooinclude hello. Tento příklad určuje 1.8, tak, aby hello cílová HDInsight verze 3.5.
 
 ```xml
 <plugin>
@@ -223,7 +223,7 @@ Přidejte následující text do `<plugins>` části `pom.xml` souboru modulu pl
 
 ### <a name="configure-resources"></a>Konfigurace prostředků
 
-V části prostředky umožňuje zahrnout jiný kód prostředkům, například konfigurační soubory, které jsou potřebné součásti v topologii. V tomto příkladu přidejte následující text do `<resources>` oddílu se soubor pom.xml.
+Hello oddílu prostředků můžete prostředky bez kódu tooinclude například konfigurační soubory, které jsou potřebné součásti v topologii hello. V tomto příkladu přidejte následující text v hello hello `<resources>` části hello se soubor pom.xml.
 
 ```xml
 <resource>
@@ -235,29 +235,29 @@ V části prostředky umožňuje zahrnout jiný kód prostředkům, například 
 </resource>
 ```
 
-Tento příklad přidá adresáře prostředků v kořenovém adresáři projektu (`${basedir}`) jako umístění, která obsahuje prostředky a obsahuje soubor s názvem `log4j2.xml`. Tento soubor se používá ke konfiguraci, které informace se v topologii protokolu.
+Tento příklad přidá adresáře hello prostředků v kořenovém hello hello projektu (`${basedir}`) jako umístění, která obsahuje prostředky a zahrnuje hello soubor s názvem `log4j2.xml`. Tento soubor je použité tooconfigure, jaké je do něj protokolují informace podle topologie hello.
 
-## <a name="create-the-topology"></a>Vytvoření topologie
+## <a name="create-hello-topology"></a>Vytvoření topologie hello
 
 Topologie založené na jazyce Java Apache Storm se skládá z tři součásti, které musíte napsat (nebo reference) jako závislost.
 
-* **Spouts**: načte data z externího zdroje a vysílá datových proudů do topologie.
+* **Spouts**: načte data z externího zdroje a vysílá datových proudů do topologie hello.
 
 * **Bolts**: provádí zpracování datových proudů vysílaných funkcích spouts nebo jiné funkce bolts a vysílá jeden nebo více datových proudů.
 
-* **Topologie**: definuje, jak funkcích spouts a funkce bolts jsou uspořádány a představuje vstupní bod pro topologii.
+* **Topologie**: definuje, jak hello spouts a funkce bolts jsou uspořádány a poskytuje hello vstupní bod pro topologii s hello.
 
-### <a name="create-the-spout"></a>Vytvořte spout
+### <a name="create-hello-spout"></a>Vytvoření hello spout
 
-Ke snížení požadavků pro nastavení externích zdrojů dat, následující spout jednoduše vyšle náhodných věty. Je upravenou verzi spout, který je zadán v rámci [počáteční příklady Storm](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter).
+tooreduce požadavky pro nastavení externích datových zdrojů, hello následující spout jednoduše vyšle náhodných věty. Je upravenou verzi spout, který je zadán v rámci hello [počáteční příklady Storm](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter).
 
 > [!NOTE]
-> Příklad funkcí spout, který čte z externího zdroje dat najdete v následujících příkladech:
+> Příklad funkcí spout, který čte z externího zdroje dat najdete v jednom z hello následující příklady:
 >
 > * [TwitterSampleSPout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): Příklad funkcí spout, který čte ze služby Twitter.
 > * [Storm Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka): spout, který čte z Kafka
 
-Pro spout, vytvořte soubor s názvem `RandomSentenceSpout.java` v `src\main\java\com\microsoft\example` adresáře a použijte následující Java kód jako obsah:
+Pro hello spout, vytvořte soubor s názvem `RandomSentenceSpout.java` v hello `src\main\java\com\microsoft\example` hello adresáře a použijte následující kód v jazyce Java jako obsah hello:
 
 ```java
 package com.microsoft.example;
@@ -275,31 +275,31 @@ import java.util.Random;
 
 //This spout randomly emits sentences
 public class RandomSentenceSpout extends BaseRichSpout {
-  //Collector used to emit output
+  //Collector used tooemit output
   SpoutOutputCollector _collector;
-  //Used to generate a random number
+  //Used toogenerate a random number
   Random _rand;
 
-  //Open is called when an instance of the class is created
+  //Open is called when an instance of hello class is created
   @Override
   public void open(Map conf, TopologyContext context, SpoutOutputCollector collector) {
-  //Set the instance collector to the one passed in
+  //Set hello instance collector toohello one passed in
     _collector = collector;
     //For randomness
     _rand = new Random();
   }
 
-  //Emit data to the stream
+  //Emit data toohello stream
   @Override
   public void nextTuple() {
   //Sleep for a bit
     Utils.sleep(100);
-    //The sentences that are randomly emitted
-    String[] sentences = new String[]{ "the cow jumped over the moon", "an apple a day keeps the doctor away",
-        "four score and seven years ago", "snow white and the seven dwarfs", "i am at two with nature" };
+    //hello sentences that are randomly emitted
+    String[] sentences = new String[]{ "hello cow jumped over hello moon", "an apple a day keeps hello doctor away",
+        "four score and seven years ago", "snow white and hello seven dwarfs", "i am at two with nature" };
     //Randomly pick a sentence
     String sentence = sentences[_rand.nextInt(sentences.length)];
-    //Emit the sentence
+    //Emit hello sentence
     _collector.emit(new Values(sentence));
   }
 
@@ -313,7 +313,7 @@ public class RandomSentenceSpout extends BaseRichSpout {
   public void fail(Object id) {
   }
 
-  //Declare the output fields. In this case, an sentence
+  //Declare hello output fields. In this case, an sentence
   @Override
   public void declareOutputFields(OutputFieldsDeclarer declarer) {
     declarer.declare(new Fields("sentence"));
@@ -322,20 +322,20 @@ public class RandomSentenceSpout extends BaseRichSpout {
 ```
 
 > [!NOTE]
-> I když tato topologie používá jenom jeden spout, ostatní může mít několik, které data datového kanálu z různých zdrojů do topologie.
+> I když tato topologie používá jenom jeden spout, ostatní může mít několik, které data datového kanálu z různých zdrojů do topologie hello.
 
-### <a name="create-the-bolts"></a>Vytvořte funkce bolts
+### <a name="create-hello-bolts"></a>Vytvoření funkce bolts hello
 
-Funkce Bolts zpracovávat data zpracování. Tato topologie používá dvě funkce bolts:
+Funkce Bolts zpracovávat zpracování dat hello. Tato topologie používá dvě funkce bolts:
 
-* **SplitSentence**: rozdělí věty vysílaných **RandomSentenceSpout** do jednotlivých slov.
+* **SplitSentence**: rozdělí věty hello vysílaných **RandomSentenceSpout** do jednotlivých slov.
 
 * **WordCount**: Spočítá počet opakování jednotlivých slov došlo k chybě.
 
 > [!NOTE]
-> Funkce Bolts dělat cokoliv, například výpočet, trvalost nebo rozhovoru externích součástí.
+> Funkce Bolts dělat cokoliv, například výpočet, trvalost nebo rozhovoru tooexternal součásti.
 
-Vytvořte dva nové soubory, `SplitSentence.java` a `WordCount.java` v `src\main\java\com\microsoft\example` adresáře. Použijte následující text jako obsah pro soubory:
+Vytvořte dva nové soubory, `SplitSentence.java` a `WordCount.java` v hello `src\main\java\com\microsoft\example` adresáře. Použijte následující text jako hello obsahu pro soubory hello hello:
 
 #### <a name="splitsentence"></a>SplitSentence
 
@@ -354,20 +354,20 @@ import org.apache.storm.tuple.Values;
 //There are a variety of bolt types. In this case, use BaseBasicBolt
 public class SplitSentence extends BaseBasicBolt {
 
-  //Execute is called to process tuples
+  //Execute is called tooprocess tuples
   @Override
   public void execute(Tuple tuple, BasicOutputCollector collector) {
-    //Get the sentence content from the tuple
+    //Get hello sentence content from hello tuple
     String sentence = tuple.getString(0);
-    //An iterator to get each word
+    //An iterator tooget each word
     BreakIterator boundary=BreakIterator.getWordInstance();
-    //Give the iterator the sentence
+    //Give hello iterator hello sentence
     boundary.setText(sentence);
-    //Find the beginning first word
+    //Find hello beginning first word
     int start=boundary.first();
-    //Iterate over each word and emit it to the output stream
+    //Iterate over each word and emit it toohello output stream
     for (int end=boundary.next(); end != BreakIterator.DONE; start=end, end=boundary.next()) {
-      //get the word
+      //get hello word
       String word=sentence.substring(start,end);
       //If a word is whitespace characters, replace it with empty
       word=word.replaceAll("\\s+","");
@@ -414,12 +414,12 @@ public class WordCount extends BaseBasicBolt {
   private static final Logger logger = LogManager.getLogger(WordCount.class);
   //For holding words and counts
   Map<String, Integer> counts = new HashMap<String, Integer>();
-  //How often to emit a count of words
+  //How often tooemit a count of words
   private Integer emitFrequency;
 
   // Default constructor
   public WordCount() {
-      emitFrequency=5; // Default to 60 seconds
+      emitFrequency=5; // Default too60 seconds
   }
 
   // Constructor that sets emit frequency
@@ -429,7 +429,7 @@ public class WordCount extends BaseBasicBolt {
 
   //Configure frequency of tick tuples for this bolt
   //This delivers a 'tick' tuple on a specific interval,
-  //which is used to trigger certain actions
+  //which is used tootrigger certain actions
   @Override
   public Map<String, Object> getComponentConfiguration() {
       Config conf = new Config();
@@ -437,7 +437,7 @@ public class WordCount extends BaseBasicBolt {
       return conf;
   }
 
-  //execute is called to process tuples
+  //execute is called tooprocess tuples
   @Override
   public void execute(Tuple tuple, BasicOutputCollector collector) {
     //If it's a tick tuple, emit all words and counts
@@ -449,13 +449,13 @@ public class WordCount extends BaseBasicBolt {
         logger.info("Emitting a count of " + count + " for word " + word);
       }
     } else {
-      //Get the word contents from the tuple
+      //Get hello word contents from hello tuple
       String word = tuple.getString(0);
       //Have we counted any already?
       Integer count = counts.get(word);
       if (count == null)
         count = 0;
-      //Increment the count and store it
+      //Increment hello count and store it
       count++;
       counts.put(word, count);
     }
@@ -469,15 +469,15 @@ public class WordCount extends BaseBasicBolt {
 }
 ```
 
-### <a name="define-the-topology"></a>Definovat topologii
+### <a name="define-hello-topology"></a>Definovat topologii hello
 
-Topologie sváže funkcích spouts a bolts společně na graf, který definuje, jak se data proudí mezi součástmi. Nabízí taky paralelismus pomocné parametry, které Storm používá při vytváření instancí komponent v rámci clusteru.
+topologie Hello sváže funkcích spouts hello a bolts společně na graf, který definuje, jak se data proudí mezi součástmi hello. Nabízí taky paralelismus pomocné parametry, které Storm používá při vytváření instancí komponent hello v rámci clusteru hello.
 
-Na následujícím obrázku je základní diagram grafu součástí této topologii.
+Hello následující obrázek je základní diagram hello grafu součástí této topologii.
 
-![Diagram zobrazující uspořádání funkcích spouts a funkce bolts](./media/hdinsight-storm-develop-java-topology/wordcount-topology.png)
+![Diagram znázorňující hello spouts a bolts uspořádání](./media/hdinsight-storm-develop-java-topology/wordcount-topology.png)
 
-Pokud chcete implementovat topologii, vytvořte soubor s názvem `WordCountTopology.java` v `src\main\java\com\microsoft\example` adresáře. Použijte následující kód Java jako obsah souboru:
+tooimplement hello topologie, vytvořte soubor s názvem `WordCountTopology.java` v hello `src\main\java\com\microsoft\example` adresáře. Použijte následující kód v jazyce Java jako hello obsah souboru hello hello:
 
 ```java
 package com.microsoft.example;
@@ -492,49 +492,49 @@ import com.microsoft.example.RandomSentenceSpout;
 
 public class WordCountTopology {
 
-  //Entry point for the topology
+  //Entry point for hello topology
   public static void main(String[] args) throws Exception {
-  //Used to build the topology
+  //Used toobuild hello topology
     TopologyBuilder builder = new TopologyBuilder();
-    //Add the spout, with a name of 'spout'
+    //Add hello spout, with a name of 'spout'
     //and parallelism hint of 5 executors
     builder.setSpout("spout", new RandomSentenceSpout(), 5);
-    //Add the SplitSentence bolt, with a name of 'split'
+    //Add hello SplitSentence bolt, with a name of 'split'
     //and parallelism hint of 8 executors
-    //shufflegrouping subscribes to the spout, and equally distributes
-    //tuples (sentences) across instances of the SplitSentence bolt
+    //shufflegrouping subscribes toohello spout, and equally distributes
+    //tuples (sentences) across instances of hello SplitSentence bolt
     builder.setBolt("split", new SplitSentence(), 8).shuffleGrouping("spout");
-    //Add the counter, with a name of 'count'
+    //Add hello counter, with a name of 'count'
     //and parallelism hint of 12 executors
-    //fieldsgrouping subscribes to the split bolt, and
-    //ensures that the same word is sent to the same instance (group by field 'word')
+    //fieldsgrouping subscribes toohello split bolt, and
+    //ensures that hello same word is sent toohello same instance (group by field 'word')
     builder.setBolt("count", new WordCount(), 12).fieldsGrouping("split", new Fields("word"));
 
     //new configuration
     Config conf = new Config();
-    //Set to false to disable debug information when
+    //Set toofalse toodisable debug information when
     // running in production on a cluster
     conf.setDebug(false);
 
     //If there are arguments, we are running on a cluster
     if (args != null && args.length > 0) {
-      //parallelism hint to set the number of workers
+      //parallelism hint tooset hello number of workers
       conf.setNumWorkers(3);
-      //submit the topology
+      //submit hello topology
       StormSubmitter.submitTopology(args[0], conf, builder.createTopology());
     }
     //Otherwise, we are running locally
     else {
-      //Cap the maximum number of executors that can be spawned
-      //for a component to 3
+      //Cap hello maximum number of executors that can be spawned
+      //for a component too3
       conf.setMaxTaskParallelism(3);
-      //LocalCluster is used to run locally
+      //LocalCluster is used toorun locally
       LocalCluster cluster = new LocalCluster();
-      //submit the topology
+      //submit hello topology
       cluster.submitTopology("word-count", conf, builder.createTopology());
       //sleep
       Thread.sleep(10000);
-      //shut down the cluster
+      //shut down hello cluster
       cluster.shutdown();
     }
   }
@@ -543,7 +543,7 @@ public class WordCountTopology {
 
 ### <a name="configure-logging"></a>Konfigurace protokolování
 
-Storm používá Apache Log4j k ukládání informací. Pokud neprovedete konfiguraci protokolování, topologii vysílá diagnostické informace. Pokud chcete řídit, co je protokolováno, vytvořte soubor s názvem `log4j2.xml` v `resources` adresáře. Použijte následující kód XML jako obsah souboru.
+Storm používá Apache Log4j toolog informace. Pokud neprovedete konfiguraci protokolování, hello topologie vysílá diagnostické informace. Co je protokolováno, toocontrol vytvořte soubor s názvem `log4j2.xml` v hello `resources` adresáře. Použijte následující XML jako hello obsah souboru hello hello.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -564,24 +564,24 @@ Storm používá Apache Log4j k ukládání informací. Pokud neprovedete konfig
 </Configuration>
 ```
 
-Tato konfigurace XML nakonfiguruje nové protokoly pro `com.microsoft.example` třída, která obsahuje součásti v této topologii příklad. Pro tohoto protokolovacího nástroje, které jsou zaznamenány žádné informace o protokolování vygenerované součásti v této topologii je nastavena úroveň pro trasování.
+Tato konfigurace XML nakonfiguruje nové protokoly pro hello `com.microsoft.example` třída, která obsahuje součásti hello v této topologii příklad. úroveň Hello nastavena tootrace pro tohoto protokolovacího nástroje, které jsou zaznamenány žádné informace o protokolování vygenerované součásti v této topologii.
 
-`<Root level="error">` Části nakonfiguruje kořenové úrovni protokolování (vše, co není ve `com.microsoft.example`) se protokolovat jenom informace o chybě.
+Hello `<Root level="error">` části nakonfiguruje hello kořenové úrovně protokolování (vše, co není ve `com.microsoft.example`) informace o chybě tooonly protokolu.
 
 Další informace o konfiguraci protokolování pro Log4j najdete v tématu [http://logging.apache.org/log4j/2.x/manual/configuration.html](http://logging.apache.org/log4j/2.x/manual/configuration.html).
 
 > [!NOTE]
-> Storm verze 0.10.0 a vyšší využití Log4j 2.x. Starší verze storm použít Log4j 1.x, který používá jiný formát pro konfiguraci protokolu. Informace o konfiguraci starší, najdete v části [http://wiki.apache.org/logging-log4j/Log4jXmlFormat](http://wiki.apache.org/logging-log4j/Log4jXmlFormat).
+> Storm verze 0.10.0 a vyšší využití Log4j 2.x. Starší verze storm použít Log4j 1.x, který používá jiný formát pro konfiguraci protokolu. Informace o konfiguraci starší hello, najdete v části [http://wiki.apache.org/logging-log4j/Log4jXmlFormat](http://wiki.apache.org/logging-log4j/Log4jXmlFormat).
 
-## <a name="test-the-topology-locally"></a>Testování topologie místně
+## <a name="test-hello-topology-locally"></a>Test hello místně topologie
 
-Po uložení souborů, použijte následující příkaz k testování topologie místně.
+Po uložení hello soubory, použijte následující příkaz tootest hello topologie místně hello.
 
 ```bash
 mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
 ```
 
-Při jeho spuštění, topologii zobrazí informace o spuštění. Tento text je příklad výstupu, počet word:
+Při jeho spuštění, hello topologie zobrazí informace o spuštění. Hello následující text je příklad výstupu počet word hello:
 
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
@@ -591,29 +591,29 @@ Při jeho spuštění, topologii zobrazí informace o spuštění. Tento text je
     17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word snow
 
-Tento příklad protokol znamená, že slovo 'a' má byla vygenerované 113 časy. Počet i nadále přejít, dokud topologie běží, protože funkcí spout nepřetržitě vysílá stejné věty.
+Tento příklad protokol Určuje, že word hello "a" má byla vygenerované 113 časy. Hello počet i nadále toogo nahoru, dokud hello topologie běží, protože hello spout nepřetržitě vysílá hello stejné věty.
 
-Mezi emisí slova a počty je interval 5 sekund. **WordCount** součást nakonfigurovaná pro vydávání pouze informace, pokud dorazí značek řazené kolekce členů. Požaduje této značky řazených kolekcí členů jsou pouze doručovány každých pět sekund.
+Mezi emisí slova a počty je interval 5 sekund. Hello **WordCount** nakonfigurována součást tooonly generuje informace, pokud dorazí značek řazené kolekce členů. Požaduje této značky řazených kolekcí členů jsou pouze doručovány každých pět sekund.
 
-## <a name="convert-the-topology-to-flux"></a>Převést topologii tok
+## <a name="convert-hello-topology-tooflux"></a>Převést tooFlux topologie hello
 
-Tok je nové rozhraní Storm 0.10.0 k dispozici a vyšší, což umožňuje oddělit konfiguraci z implementace. Vaše komponenty jsou stále definována v jazyce Java, ale topologii je definována pomocí souboru YAML. Můžete balíček definice výchozí topologie s projektu, nebo použijte samostatný soubor při odesílání topologie. Při odesílání topologie do Storm, můžete použít k naplnění hodnoty v definici topologie YAML proměnné prostředí nebo konfigurační soubory.
+Tok je nové rozhraní Storm 0.10.0 k dispozici a vyšší, což vám umožní tooseparate konfiguraci z implementace. Vaše komponenty jsou stále definována v jazyce Java, ale hello topologie je definována pomocí souboru YAML. Můžete balíček definice výchozí topologie s projektem nebo používat samostatný soubor při odesílání topologie hello. Při odesílání topologie tooStorm hello, můžete použít proměnné prostředí nebo konfigurační soubory toopopulate hodnoty v hello YAML topologie definice.
 
-Soubor YAML definuje součásti, které budou používat pro topologii a data tok mezi nimi. Jako součást na soubor jar můžete zahrnout soubor YAML nebo můžete použít externí soubor YAML.
+soubor YAML Hello definuje hello součásti toouse hello topologie a hello tok dat mezi nimi. Můžete zahrnout soubor YAML jako součást soubor jar hello nebo externí soubor YAML můžete použít.
 
 Další informace o toku najdete v tématu [tok framework (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).
 
 > [!WARNING]
-> Z důvodu [chyb (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) s Storm 1.0.1, budete muset nainstalovat [Storm vývojového prostředí](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) tok topologie spouštět místně.
+> Kvůli tooa [chyb (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) s Storm 1.0.1, může být nutné tooinstall [Storm vývojového prostředí](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) toorun tok místně topologie.
 
-1. Přesunout `WordCountTopology.java` souboru mimo projekt. Tento soubor dříve, definované topologii, ale není potřeba s tokem.
+1. Přesunout hello `WordCountTopology.java` souboru mimo projekt hello. Tento soubor dříve, definované hello topologie, ale není potřeba s tokem.
 
-2. V `resources` adresáře, vytvořte soubor s názvem `topology.yaml`. Použijte následující text jako obsah tohoto souboru.
+2. V hello `resources` adresáře, vytvořte soubor s názvem `topology.yaml`. Použijte hello následující text jako hello obsah tohoto souboru.
 
-        name: "wordcount"       # friendly name for the topology
+        name: "wordcount"       # friendly name for hello topology
         
         config:                 # Topology configuration
-        topology.workers: 1     # Hint for the number of workers to create
+        topology.workers: 1     # Hint for hello number of workers toocreate
         
         spouts:                 # Spout definitions
         - id: "sentence-spout"
@@ -633,8 +633,8 @@ Další informace o toku najdete v tématu [tok framework (https://storm.apache.
         
         streams:                # Stream definitions
             - name: "Spout --> Splitter" # name isn't used (placeholder for logging, UI, etc.)
-            from: "sentence-spout"       # The stream emitter
-            to: "splitter-bolt"          # The stream consumer
+            from: "sentence-spout"       # hello stream emitter
+            to: "splitter-bolt"          # hello stream consumer
             grouping:                    # Grouping type
                 type: SHUFFLE
           
@@ -643,21 +643,21 @@ Další informace o toku najdete v tématu [tok framework (https://storm.apache.
             to: "counter-bolt"
             grouping:
             type: FIELDS
-                args: ["word"]           # field(s) to group on
+                args: ["word"]           # field(s) toogroup on
 
-3. Proveďte následující změny na `pom.xml` souboru.
+3. Ujistěte se, hello následující změny toohello `pom.xml` souboru.
    
-   * Přidejte následující závislost nové v `<dependencies>` části:
+   * Přidejte následující nové závislosti v hello hello `<dependencies>` části:
      
         ```xml
-        <!-- Add a dependency on the Flux framework -->
+        <!-- Add a dependency on hello Flux framework -->
         <dependency>
             <groupId>org.apache.storm</groupId>
             <artifactId>flux-core</artifactId>
             <version>${storm.version}</version>
         </dependency>
         ```
-   * Přidejte následující modul plug-in, který `<plugins>` části. Tento modul plug-in zpracovává vytvoření balíčku (soubor jar) pro projekt a platí některé transformace, které jsou specifické pro tok při vytváření balíčku.
+   * Přidejte následující modul plug-in toohello hello `<plugins>` části. Tento modul plug-in zpracovává hello vytvoření balíčku (soubor jar) pro projekt hello a platí konkrétní tooFlux některé transformace při vytváření balíčku hello.
      
         ```xml
         <!-- build an uber jar -->
@@ -670,7 +670,7 @@ Další informace o toku najdete v tématu [tok framework (https://storm.apache.
                     <!-- Keep us from getting a "can't overwrite file error" -->
                     <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer" />
                     <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
-                    <!-- We're using Flux, so refer to it as main -->
+                    <!-- We're using Flux, so refer tooit as main -->
                     <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                         <mainClass>org.apache.storm.flux.Flux</mainClass>
                     </transformer>
@@ -698,41 +698,41 @@ Další informace o toku najdete v tématu [tok framework (https://storm.apache.
         </plugin>
         ```
 
-   * V **modulu plug-in exec maven** `<configuration>` část, změňte hodnotu `<mainClass>` k `org.apache.storm.flux.Flux`. Toto nastavení umožňuje tok pro zpracování topologii spuštěn místně v vývoj.
+   * V hello **modulu plug-in exec maven** `<configuration>` změňte hodnotu hello `<mainClass>` příliš`org.apache.storm.flux.Flux`. Toto nastavení umožňuje tok toohandle hello topologie spuštěn místně v vývoj.
 
-   * V `<resources>` přidejte následující příkaz a `<includes>`. Tato konfigurace XML obsahuje YAML soubor, který definuje topologii v rámci projektu.
+   * V hello `<resources>` přidejte následující toohello hello `<includes>`. Tato konfigurace XML obsahuje hello YAML soubor, který definuje hello topologie v rámci projektu hello.
 
         ```xml
         <include>topology.yaml</include>
         ```
 
-## <a name="test-the-flux-topology-locally"></a>Testování topologii tok místně
+## <a name="test-hello-flux-topology-locally"></a>Test hello tok topologie místně
 
-1. Pro zkompilování a spuštění tok topologie pomocí nástroje Maven, použijte následující:
+1. Použijte následující toocompile hello a provést hello tok topologie pomocí nástroje Maven:
 
     ```bash
     mvn compile exec:java -Dexec.args="--local -R /topology.yaml"
     ```
 
-    Pokud používáte prostředí PowerShell, použijte následující příkaz:
+    Pokud používáte prostředí PowerShell, použijte následující příkaz hello:
 
     ```bash
     mvn compile exec:java "-Dexec.args=--local -R /topology.yaml"
     ```
 
     > [!WARNING]
-    > Pokud vaše topologie používá Storm 1.0.1 bits, tento příkaz se nezdaří. Tato chyba je způsobená [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055). Místo toho [nainstalovat Storm ve vašem vývojovém prostředí](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html) a použijte následující informace.
+    > Pokud vaše topologie používá Storm 1.0.1 bits, tento příkaz se nezdaří. Tato chyba je způsobená [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055). Místo toho [nainstalovat Storm ve vašem vývojovém prostředí](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html) a hello použijte následující informace.
 
-    Pokud máte [nainstalovaný ve vašem vývojovém prostředí Storm](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), můžete místo toho použít následující příkazy:
+    Pokud máte [nainstalovaný ve vašem vývojovém prostředí Storm](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), můžete použít následující příkazy místo hello:
 
     ```bash
     mvn compile package
     storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local -R /topology.yaml
     ```
 
-    `--local` Parametr spustí topologii v místním režimu ve vývojovém prostředí. `-R /topology.yaml` Parametr používá `topology.yaml` souborů prostředků z na soubor jar definovat topologii.
+    Hello `--local` parametr spustí hello topologie v místním režimu ve vývojovém prostředí. Hello `-R /topology.yaml` parametr používá hello `topology.yaml` souborů prostředků z hello jar souboru toodefine hello topologie.
 
-    Při jeho spuštění, topologii zobrazí informace o spuštění. Tento text je příklad výstupu:
+    Při jeho spuštění, hello topologie zobrazí informace o spuštění. Následující text Hello je příklad výstupu hello:
 
         17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
         17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
@@ -743,7 +743,7 @@ Další informace o toku najdete v tématu [tok framework (https://storm.apache.
 
     Mezi listy protokolovaných informací je prodlevu 10 sekund.
 
-2. Vytvořit kopii `topology.yaml` souboru z projektu. Název nového souboru `newtopology.yaml`. V `newtopology.yaml` souboru, vyhledejte následující oddíl a změňte hodnotu `10` k `5`. Tato úprava změní interval mezi generování dávky počty slov z 10 sekund. 5.
+2. Vytvořit kopii hello `topology.yaml` souboru z projektu hello. Název hello nový soubor `newtopology.yaml`. V hello `newtopology.yaml` souboru, najít hello následující části a změnit hodnotu hello `10` příliš`5`. Tato změna změny hello interval mezi generování dávky aplikace word počty z too5 10 sekund.
 
     ```yaml
     - id: "counter-bolt"
@@ -753,7 +753,7 @@ Další informace o toku najdete v tématu [tok framework (https://storm.apache.
     parallelism: 1
     ```yaml
 
-3. To run the topology, use the following command:
+3. toorun hello topology, use hello following command:
 
     ```bash
     mvn exec:java -Dexec.args="--local /path/to/newtopology.yaml"
@@ -765,25 +765,25 @@ Další informace o toku najdete v tématu [tok framework (https://storm.apache.
     storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local /path/to/newtopology.yaml
     ```
 
-    Změna `/path/to/newtopology.yaml` na cestu k souboru newtopology.yaml jste vytvořili v předchozím kroku. Tento příkaz používá newtopology.yaml jako definice topologie. Vzhledem k tomu, že jsme nezahrnuli `compile` parametr, Maven používá verzi projektu vytvořené v předchozích krocích.
+    Změna hello `/path/to/newtopology.yaml` toohello cestě toohello newtopology.yaml souboru jste vytvořili v předchozím kroku hello. Tento příkaz používá hello newtopology.yaml jako definice topologie hello. Vzhledem k tomu, že jsme nezahrnuli hello `compile` parametr Maven používá verzi hello projektu hello vytvořené v předchozích krocích.
 
-    Jakmile se spustí topologii, měli byste zaznamenat, že čas mezi emitovaného dávky se změnila, aby odrážela hodnotu v newtopology.yaml. Abyste viděli, že můžete změnit konfiguraci prostřednictvím soubor YAML bez nutnosti její kompilace topologii.
+    Jednou hello topologie spustí, měli byste zaznamenat, že hello čas mezi emitovaného dávky se změnila hodnota hello tooreflect v newtopology.yaml. Abyste viděli, že můžete změnit konfiguraci prostřednictvím soubor YAML bez nutnosti toorecompile hello topologie.
 
-Další informace o těchto a dalších funkcí rozhraní tok najdete v tématu [tok (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).
+Další informace o těchto a dalších funkcí hello tok framework najdete v tématu [tok (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).
 
 ## <a name="trident"></a>Trident
 
-Trident má vysokou úroveň abstrakce, která je poskytována Storm. Podporuje stavová zpracování. Primární výhodou Trident je, že ho může zaručit, že každou zprávu, která vstupuje do topologie je zpracovány pouze jednou. Bez použití Trident, topologie pouze zaručit alespoň jednou zpracování zpráv. Existují také další rozdíly, jako je například integrované komponenty, které lze použít místo vytvoření funkce bolts. Funkce bolts jsou ve skutečnosti nahrazovány obecného méně součástí, např. filtry, projekce a funkcí.
+Trident má vysokou úroveň abstrakce, která je poskytována Storm. Podporuje stavová zpracování. Primární výhodou Trident Hello je, že ho může zaručit, že každou zprávu, která vstupuje do topologie hello je zpracovány pouze jednou. Bez použití Trident, topologie pouze zaručit alespoň jednou zpracování zpráv. Existují také další rozdíly, jako je například integrované komponenty, které lze použít místo vytvoření funkce bolts. Funkce bolts jsou ve skutečnosti nahrazovány obecného méně součástí, např. filtry, projekce a funkcí.
 
-Trident aplikace lze vytvořit pomocí projekty Maven. Použijte stejný základní postup uvedenou výše v tomto článku – pouze kód se liší. Trident také (aktuálně) nelze zadat s tokem framework.
+Trident aplikace lze vytvořit pomocí projekty Maven. Použít hello basic stejné kroky uvedenou výše v tomto článku – pouze hello kód se liší. Trident také (aktuálně) nelze zadat s hello tok framework.
 
-Další informace o Trident naleznete v tématu [přehled API Trident](http://storm.apache.org/documentation/Trident-API-Overview.html).
+Další informace o Trident naleznete v tématu hello [přehled API Trident](http://storm.apache.org/documentation/Trident-API-Overview.html).
 
 Příklad aplikace Trident naleznete v části [Twitter trendů témata s Apache Storm v HDInsight](hdinsight-storm-twitter-trending.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Jste se naučili vytváření topologie Storm pomocí Java. Teď další postup:
+Jste se naučili, jak toocreate topologie Storm pomocí Java. Teď další postup:
 
 * [Nasazení a správa topologií Apache Storm v HDInsight](hdinsight-storm-deploy-monitor-topology.md)
 

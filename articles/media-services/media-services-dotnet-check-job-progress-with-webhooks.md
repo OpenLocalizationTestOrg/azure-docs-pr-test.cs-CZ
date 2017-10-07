@@ -1,6 +1,6 @@
 ---
-title: "Pomocí Webhooků Azure monitorovat oznámení úlohy Media Services s .NET | Microsoft Docs"
-description: "Naučte se používat Azure Webhooky monitorování oznámení úlohy Media Services. Ukázka kódu je napsána v jazyce C# a pomocí sady Media Services SDK pro .NET."
+title: "oznámení úlohy aaaUse Azure Webhooky toomonitor Media Services s .NET | Microsoft Docs"
+description: "Zjistěte, jak toomonitor toouse Webhooky Azure Media Services úlohy oznámení. Ukázka kódu Hello je napsána v jazyce C# a používá hello sady Media Services SDK pro .NET."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,63 +14,63 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: juliako
-ms.openlocfilehash: eaa875a7c78de0b69c81514ea023f9b8bceb2656
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b7df597da20e551cb2a02cd21c96c7bddf9e1a66
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Použití Azure Webhooky monitorování oznámení úlohy Media Services pomocí rozhraní .NET
-Při spuštění úlohy, často vyžadují způsob, jak sledovat průběh úlohy. Oznámení úlohy Media Services můžete monitorovat pomocí Webhooků Azure nebo [Azure Queue storage](media-services-dotnet-check-job-progress-with-queues.md). Toto téma ukazuje, jak pracovat s Webhooky.
+# <a name="use-azure-webhooks-toomonitor-media-services-job-notifications-with-net"></a>Použití Azure Webhooky toomonitor Media Services úlohy oznámení pomocí rozhraní .NET
+Při spuštění úlohy, často vyžadují průběh úlohy tootrack způsobem. Oznámení úlohy Media Services můžete monitorovat pomocí Webhooků Azure nebo [Azure Queue storage](media-services-dotnet-check-job-progress-with-queues.md). Toto téma ukazuje, jak toowork s Webhooky.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení kurzu potřebujete následující:
+Hello následují požadované toocomplete hello kurzu:
 
 * Účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
-* Pochopení [jak používat Azure functions](../azure-functions/functions-overview.md). Projděte si také téma [Azure functions vazby HTTP a webhooku](../azure-functions/functions-bindings-http-webhook.md).
+* Účet Media Services. toocreate účet Media Services najdete v části [jak tooCreate účtu Media Services](media-services-portal-create-account.md).
+* Pochopení [jak toouse Azure funkce](../azure-functions/functions-overview.md). Projděte si také téma [Azure functions vazby HTTP a webhooku](../azure-functions/functions-bindings-http-webhook.md).
 
 Toto téma ukazuje, jak
 
-*  Definujte funkce Azure, který upravit tak, aby odpovídal na webhooky. 
+*  Definujte funkce služby Azure, která je přizpůsobené toorespond toowebhooks. 
     
-    V takovém případě webhooku se aktivuje pomocí služby Media Services, když vaše úlohy kódování změní stav. Funkce přijímá volání webhooku zpět z oznámení Media Services a publikuje výstupní asset po dokončení úlohy. 
+    V takovém případě hello webhooku se aktivuje pomocí služby Media Services, když vaše úlohy kódování změní stav. Funkce Hello naslouchá hello webhooku volání zpět z oznámení Media Services a publikuje hello výstupní asset po dokončení úlohy hello. 
     
     >[!NOTE]
     >Než budete pokračovat, musíte rozumět jak [vazby HTTP funkce Azure a webhooku](../azure-functions/functions-bindings-http-webhook.md) fungovat.
     >
     
-* Přidejte webhook, jehož kódování úlohu a zadejte adresu URL webhooku a tajný klíč, který tento webhook reaguje na. Příkladu je kód, který vytvoří úlohu kódování konzolovou aplikaci.
+* Přidat úloha kódování tooyour webhooku a zadejte URL webhooku se nenačetla hello a tajný klíč, který tento webhook reaguje na. V příkladu hello tady uvedené hello kód, který vytvoří hello kódování úloh je konzolovou aplikaci.
 
 ## <a name="setting-up-webhook-notification-azure-functions"></a>Nastavení "webhooku oznámení" Azure functions
 
-Kód v této části ukazuje implementaci Azure funkce, která je webhook, jehož. V této ukázce funkce přijímá volání webhooku zpět z oznámení Media Services a publikuje výstupní asset po dokončení úlohy.
+Hello kód v této části ukazuje implementaci Azure funkce, která je webhook, jehož. V této ukázce hello funkce naslouchá hello webhooku volání zpět z oznámení Media Services a publikuje hello výstupní asset po dokončení úlohy hello.
 
-Webhook očekává podpisový klíč (pověření) tak, aby odpovídaly je ta, kterou předáte při konfiguraci koncového bodu oznámení. Podpisový klíč je hodnota kódováním Base64 64 bajtů, který se používá k ochraně a zabezpečení vaší Webhooky zpětná volání ze služby Azure Media Services. 
+Hello webhooku očekává podpisový klíč (pověření) toomatch hello jeden předáte při konfiguraci koncového bodu oznámení hello. Hello podpisového klíče je hello 64 bajtů kódováním Base64 hodnotu, která je použité tooprotect a zabezpečení vaší Webhooky zpětná volání ze služby Azure Media Services. 
 
-V následujícím kódu **VerifyWebHookRequestSignature** metoda nemá ověření na oznámení. Účelem tohoto ověření je zajistit, že zpráva byla odeslána službou Azure Media Services a nikdo neoprávněně nemanipuloval. Podpis je volitelné pro Azure functions, protože má **kód** hodnotu jako parametr dotazu přes zabezpečení TLS (Transport Layer). 
+V následujícím kódu hello, hello **VerifyWebHookRequestSignature** metoda hello ověření na uvítací zprávu oznámení. účelem Hello toto ověření je tooensure, který hello zpráva byla odeslána službou Azure Media Services a nikdo neoprávněně nemanipuloval. Hello podpisu je pro Azure functions volitelné, protože má hello **kód** hodnotu jako parametr dotazu přes zabezpečení TLS (Transport Layer). 
 
-Můžete najít definici různé Media Services .NET Azure Functions (včetně uvedeno v tomto tématu) [zde](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).
+Můžete najít hello definice různých Media Services .NET Azure Functions (včetně hello popsaný v tomto tématu) [zde](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).
 
-Následující výpis kódu ukazuje definice parametrů funkce Azure a tři soubory, které jsou přidruženy funkci Azure: function.json, project.json a run.csx.
+Hello následující výpis kódu ukazuje hello Definice parametry funkce Azure a tři soubory, které jsou přidruženy hello Azure funkce: function.json, project.json a run.csx.
 
 ### <a name="application-settings"></a>Nastavení aplikace 
 
-V následující tabulce jsou uvedeny parametry, které používají Azure funkci definovanou v této části. 
+Hello následující tabulka uvádí hello parametry, které jsou používány hello Azure funkci definovanou v této části. 
 
 |Name (Název)|Definice|Příklad| 
 |---|---|---|
 |AMSAccount|Název účtu AMS. |juliakomediaservices|
 |AMSKey |Klíč účtu AMS. | JUWJdDaOHQQqsZeiXZuE76eDt2SO + YMJk25Lghgy2nY =|
-|MediaServicesStorageAccountName |Název účtu úložiště, který je přidružen k vašemu účtu AMS.| storagepkeewmg5c3peq|
-|MediaServicesStorageAccountKey |Klíč účtu úložiště, který je přidružen k vašemu účtu AMS.|
+|MediaServicesStorageAccountName |Název účtu úložiště hello, která je přiřazená k vašemu účtu AMS.| storagepkeewmg5c3peq|
+|MediaServicesStorageAccountKey |Klíč účtu úložiště hello, která je přiřazená k vašemu účtu AMS.|
 |SigningKey |Podpisový klíč.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
 |WebHookEndpoint | Adresa koncového bodu webhooku. | https://juliakofuncapp.azurewebsites.NET/API/Notification_Webhook_Function?Code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
 
 ### <a name="functionjson"></a>Function.JSON
 
-Soubor function.json definuje vazby funkcí a dalších nastavení konfigurace. Modul runtime používá tento soubor k určení události k monitorování a jak předat data do a ze spuštění funkce vrátit data. 
+soubor function.json Hello definuje hello vazby funkcí a dalších nastavení konfigurace. modul runtime Hello používá tento soubor toodetermine hello události toomonitor a jak toopass dat do a vrátit data z funkce provádění. 
 
     {
       "bindings": [
@@ -96,7 +96,7 @@ Soubor function.json definuje vazby funkcí a dalších nastavení konfigurace. 
     
 ### <a name="projectjson"></a>Project.JSON
 
-Soubor project.json obsahuje závislosti. 
+soubor project.json Hello obsahuje závislosti. 
 
     {
       "frameworks": {
@@ -111,11 +111,11 @@ Soubor project.json obsahuje závislosti.
     
 ### <a name="runcsx"></a>Run.csx
 
-Následující kód C# ukazuje definici Azure funkce, která je webhook, jehož. Funkce přijímá volání webhooku zpět z oznámení Media Services a publikuje výstupní asset po dokončení úlohy. 
+Hello následující C# kód ukazuje definici Azure funkce, která je webhook, jehož. Funkce Hello naslouchá hello webhooku volání zpět z oznámení Media Services a publikuje hello výstupní asset po dokončení úlohy hello. 
 
 
 >[!NOTE]
->Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
+>Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Měli byste použít hello stejné ID zásad, pokud vždy používáte hello stejné dny / přístupová oprávnění, například zásady pro lokátory, které jsou určený tooremain zavedené po dlouhou dobu (bez odeslání zásady). Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
 
     ///////////////////////////////////////////////////
     #r "Newtonsoft.Json"
@@ -177,7 +177,7 @@ Následující kód C# ukazuje definici Azure funkce, která je webhook, jehož.
                 if(_context!=null)   
                 {                        
                 string urlForClientStreaming = PublishAndBuildStreamingURLs(msg.Properties["JobId"]);
-                log.Info($"URL to the manifest for client streaming using HLS protocol: {urlForClientStreaming}");
+                log.Info($"URL toohello manifest for client streaming using HLS protocol: {urlForClientStreaming}");
                 }
             }
 
@@ -210,19 +210,19 @@ Následující kód C# ukazuje definici Azure funkce, která je webhook, jehož.
         TimeSpan.FromDays(30),
         AccessPermissions.Read);
 
-        // Create a locator to the streaming content on an origin. 
+        // Create a locator toohello streaming content on an origin. 
         ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
         policy,
         DateTime.UtcNow.AddMinutes(-5));
 
 
-        // Get a reference to the streaming manifest file from the  
-        // collection of files in the asset. 
+        // Get a reference toohello streaming manifest file from hello  
+        // collection of files in hello asset. 
         var manifestFile = asset.AssetFiles.Where(f => f.Name.ToLower().
                     EndsWith(".ism")).
                     FirstOrDefault();
 
-        // Create a full URL to the manifest file. Use this for playback
+        // Create a full URL toohello manifest file. Use this for playback
         // in streaming media clients. 
         string urlForClientStreaming = originLocator.Path + manifestFile.Name + "/manifest" +  "(format=m3u8-aapl)";
         return urlForClientStreaming;
@@ -278,7 +278,7 @@ Následující kód C# ukazuje definici Azure funkce, která je webhook, jehož.
     private static readonly char[] HexLookup = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 
     /// <summary>
-    /// Converts a <see cref="T:byte[]"/> to a hex-encoded string.
+    /// Converts a <see cref="T:byte[]"/> tooa hex-encoded string.
     /// </summary>
     private static string ToHex(byte[] data)
     {
@@ -320,7 +320,7 @@ Následující kód C# ukazuje definici Azure funkce, která je webhook, jehož.
 
 ### <a name="function-output"></a>Výstup – funkce
 
-V předchozím příkladu vytvořil tento výstup, vaše hodnoty se budou lišit.
+výše uvedený příklad Hello vytvořen hello následující výstup, vaše hodnoty se budou lišit.
 
     C# HTTP trigger function processed a request. RequestUri=https://juliako001-functions.azurewebsites.net/api/Notification_Webhook_Function?code=9376d69kygoy49oft81nel8frty5cme8hb9xsjslxjhalwhfrqd79awz8ic4ieku74dvkdfgvi
     Request Body = {
@@ -339,19 +339,19 @@ V předchozím příkladu vytvořil tento výstup, vaše hodnoty se budou lišit
       }
     }
     
-    URL to the manifest for client streaming using HLS protocol: http://mediapkeewmg5c3peq.streaming.mediaservices.windows.net/0ac98077-2b58-4db7-a8da-789a13ac6167/BigBuckBunny.ism/manifest(format=m3u8-aapl)
+    URL toohello manifest for client streaming using HLS protocol: http://mediapkeewmg5c3peq.streaming.mediaservices.windows.net/0ac98077-2b58-4db7-a8da-789a13ac6167/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
-## <a name="adding-webhook-to-your-encoding-task"></a>Přidání Webhooku do kódování úlohu
+## <a name="adding-webhook-tooyour-encoding-task"></a>Přidání Webhooku tooyour kódování úloh
 
-V této části se zobrazí kód, který přidá webhooku oznámení k úloze. Můžete také přidat úroveň oznámení úlohy, které by být užitečnější pro úlohu s zřetězené úlohy.  
+V této části se zobrazí hello kód, který přidá tooa oznámení webhooku úloh. Můžete také přidat úroveň oznámení úlohy, které by být užitečnější pro úlohu s zřetězené úlohy.  
 
-1. Vytvořte novou konzolovou aplikaci v jazyce C# v sadě Visual Studio. Zadejte název, umístění a řešení název a potom klikněte na tlačítko OK.
-2. Použití [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) k instalaci služby Azure Media Services.
+1. Vytvořte novou konzolovou aplikaci v jazyce C# v sadě Visual Studio. Zadejte hello název název, umístění a řešení a pak klikněte na tlačítko OK.
+2. Použití [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) tooinstall Azure Media Services.
 3. Aktualizujte soubor App.config příslušné hodnoty: 
     
     * Azure Media Services název a klíč, který bude odesílat oznámení, 
-    * URL webhooku se nenačetla, která očekává dostávat oznámení, 
-    * podpisový klíč, který se shoduje s klíčem, který vaše webhooku očekává. Podpisový klíč je hodnota kódováním Base64 64 bajtů, který se používá k ochraně a zabezpečení vaší Webhooky zpětná volání ze služby Azure Media Services. 
+    * URL webhooku se nenačetla, která očekává tooget hello oznámení, 
+    * Hello podpisového klíče, který odpovídá hello klíč, který vaše webhooku očekává. Hello podpisového klíče je hello 64 bajtů kódováním Base64 hodnotu, která je použité tooprotect a zabezpečení vaší Webhooky zpětná volání ze služby Azure Media Services. 
 
             <appSettings>
               <add key="MediaServicesAccountName" value="AMSAcctName" />
@@ -360,7 +360,7 @@ V této části se zobrazí kód, který přidá webhooku oznámení k úloze. M
               <add key="WebhookSigningKey" value="j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt" />
             </appSettings>
             
-4. Aktualizace souboru Program.cs následujícím kódem:
+4. Aktualizujte si soubor Program.cs hello následující kód:
 
         using System;
         using System.Configuration;
@@ -371,7 +371,7 @@ V této části se zobrazí kód, který přidá webhooku oznámení k úloze. M
         {
             class Program
             {
-            // Read values from the App.config file.
+            // Read values from hello App.config file.
             private static readonly string _mediaServicesAccountName =
                 ConfigurationManager.AppSettings["MediaServicesAccountName"];
             private static readonly string _mediaServicesAccountKey =
@@ -387,7 +387,7 @@ V této části se zobrazí kód, který přidá webhooku oznámení k úloze. M
             static void Main(string[] args)
             {
 
-                // Used the cached credentials to create CloudMediaContext.
+                // Used hello cached credentials toocreate CloudMediaContext.
                 _context = new CloudMediaContext(new MediaServicesCredentials(
                         _mediaServicesAccountName,
                         _mediaServicesAccountKey));
@@ -396,7 +396,7 @@ V této části se zobrazí kód, který přidá webhooku oznámení k úloze. M
 
                 IAsset newAsset = _context.Assets.FirstOrDefault();
 
-                // Check for existing Notification Endpoint with the name "FunctionWebHook"
+                // Check for existing Notification Endpoint with hello name "FunctionWebHook"
 
                 var existingEndpoint = _context.NotificationEndPoints.Where(e => e.Name == "FunctionWebHook").FirstOrDefault();
                 INotificationEndPoint endpoint = null;
@@ -413,11 +413,11 @@ V této části se zobrazí kód, který přidá webhooku oznámení k úloze. M
                 Console.WriteLine("Notification Endpoint Created with Key : {0}", keyBytes.ToString());
                 }
 
-                // Declare a new encoding job with the Standard encoder
+                // Declare a new encoding job with hello Standard encoder
                 IJob job = _context.Jobs.Create("MES Job");
 
-                // Get a media processor reference, and pass to it the name of the 
-                // processor to use for the specific task.
+                // Get a media processor reference, and pass tooit hello name of hello 
+                // processor toouse for hello specific task.
                 IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
                 ITask task = job.Tasks.AddNew("My encoding task",
@@ -425,15 +425,15 @@ V této části se zobrazí kód, který přidá webhooku oznámení k úloze. M
                 "Adaptive Streaming",
                 TaskOptions.None);
 
-                // Specify the input asset to be encoded.
+                // Specify hello input asset toobe encoded.
                 task.InputAssets.Add(newAsset);
 
-                // Add an output asset to contain the results of the job. 
+                // Add an output asset toocontain hello results of hello job. 
                 // This output is specified as AssetCreationOptions.None, which 
-                // means the output asset is not encrypted. 
+                // means hello output asset is not encrypted. 
                 task.OutputAssets.AddNew(newAsset.Name, AssetCreationOptions.None);
 
-                // Add the WebHook notification to this Task and request all notification state changes.
+                // Add hello WebHook notification toothis Task and request all notification state changes.
                 // Note that you can also add a job level notification
                 // which would be more useful for a job with chained tasks.  
                 if (endpoint != null)
@@ -448,8 +448,8 @@ V této části se zobrazí kód, který přidá webhooku oznámení k úloze. M
 
                 job.Submit();
 
-                Console.WriteLine("Expect WebHook to be triggered for the Job ID: {0}", job.Id);
-                Console.WriteLine("Expect WebHook to be triggered for the Task ID: {0}", task.Id);
+                Console.WriteLine("Expect WebHook toobe triggered for hello Job ID: {0}", job.Id);
+                Console.WriteLine("Expect WebHook toobe triggered for hello Task ID: {0}", task.Id);
 
                 Console.WriteLine("Job Submitted");
 

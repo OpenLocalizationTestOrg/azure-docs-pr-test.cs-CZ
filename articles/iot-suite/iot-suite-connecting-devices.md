@@ -1,6 +1,6 @@
 ---
-title: "Připojení zařízení pomocí jazyka C v systému Windows | Microsoft Docs"
-description: "Popisuje, jak se připojit zařízení k Azure IoT Suite předkonfigurované řešení vzdáleného monitorování pomocí aplikace napsané v jazyce C v systému Windows."
+title: "aaaConnect zařízení pomocí jazyka C v systému Windows | Microsoft Docs"
+description: "Popisuje, jak tooconnect toohello zařízení Azure IoT Suite předkonfigurované řešení vzdáleného monitorování pomocí aplikace napsané v jazyce C v systému Windows."
 services: 
 suite: iot-suite
 documentationcenter: na
@@ -15,48 +15,48 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.openlocfilehash: d222bcbd64f288d4091acb0ecd2922b9ceee57e5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 51041e0cec113a5cfa006ab2276096baf928eef5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-windows"></a>Připojte zařízení k monitorování předkonfigurované řešení vzdáleného (Windows)
+# <a name="connect-your-device-toohello-remote-monitoring-preconfigured-solution-windows"></a>Připojit vaše zařízení toohello pro vzdálené monitorování předkonfigurované řešení (Windows)
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
 ## <a name="create-a-c-sample-solution-on-windows"></a>Vytvoření ukázkové řešení C v systému Windows
-Následující kroky ukazují, jak vytvořit klientskou aplikaci, která komunikuje s předkonfigurovaného řešení vzdáleného monitorování. Tato aplikace napsané v jazyce C a vytvořené a spusťte v systému Windows.
+Hello následující kroky vám ukážou, jak toocreate klientskou aplikaci, která komunikuje s hello vzdálené monitorování předkonfigurované řešení. Tato aplikace napsané v jazyce C a vytvořené a spusťte v systému Windows.
 
-Vytvoření projektu starter v sadě Visual Studio 2015 nebo Visual Studio 2017 a přidání balíčků NuGet IoT Hub zařízení klienta:
+Vytvoření projektu starter v sadě Visual Studio 2015 nebo Visual Studio 2017 a přidání balíčků NuGet klienta zařízení IoT Hub hello:
 
-1. Ve Visual Studiu Vytvořte konzolovou aplikaci C pomocí Visual C++ **Konzolová aplikace Win32** šablony. Název projektu **RMDevice**.
-2. Na **nastavení aplikace** stránku **Win32 – Průvodce aplikací**, ujistěte se, že **Konzolová aplikace** je vybrána a zrušte zaškrtnutí políčka **předkompilované záhlaví** a **kontroluje životního cyklu SDL (Security Development)**.
-3. V **Průzkumníku**, odstraňte soubory stdafx.h, targetver.h a stdafx.cpp.
-4. V **Průzkumníku**, přejmenujte soubor RMDevice.cpp RMDevice.c.
-5. V **Průzkumníku řešení**, klikněte pravým tlačítkem na **RMDevice** projektu a pak klikněte na **spravovat balíčky NuGet balíčky**. Klikněte na tlačítko **Procházet**, vyhledejte a nainstalujte následující balíčky NuGet:
+1. Ve Visual Studiu Vytvořte konzolovou aplikaci C hello Visual C++ pomocí **Konzolová aplikace Win32** šablony. Název projektu hello **RMDevice**.
+2. Na hello **nastavení aplikace** stránku hello **Win32 – Průvodce aplikací**, ujistěte se, že **Konzolová aplikace** je vybrána a zrušte zaškrtnutí políčka **předkompilované záhlaví** a **kontroluje životního cyklu SDL (Security Development)**.
+3. V **Průzkumníku**, odstraňte soubory stdafx.h hello targetver.h a stdafx.cpp.
+4. V **Průzkumníku**, přejmenujte tooRMDevice.c RMDevice.cpp souboru hello.
+5. V **Průzkumníku řešení**, klikněte pravým tlačítkem na hello **RMDevice** projektu a pak klikněte na **spravovat balíčky NuGet balíčky**. Klikněte na tlačítko **Procházet**, vyhledejte a nainstalujte následující balíčky NuGet hello:
    
    * Microsoft.Azure.IoTHub.Serializer
    * Microsoft.Azure.IoTHub.IoTHubClient
    * Microsoft.Azure.IoTHub.MqttTransport
-6. V **Průzkumníku řešení**, klikněte pravým tlačítkem na **RMDevice** projektu a pak klikněte na **vlastnosti** otevření projektu **stránky vlastností** Dialogové okno. Podrobnosti najdete v tématu [nastavení vlastností projektu Visual C++][lnk-c-project-properties]. 
-7. Klikněte na tlačítko **Linkeru** složku, klikněte **vstup** stránku vlastností.
-8. Přidat **crypt32.lib** k **Další závislosti** vlastnost. Klikněte na tlačítko **OK** a potom **OK** znovu k uložení projektu hodnot vlastností.
+6. V **Průzkumníku řešení**, klikněte pravým tlačítkem na hello **RMDevice** projektu a pak klikněte na **vlastnosti** projektu hello tooopen **stránky vlastností**dialogové okno. Podrobnosti najdete v tématu [nastavení vlastností projektu Visual C++][lnk-c-project-properties]. 
+7. Klikněte na tlačítko hello **Linkeru** složku, pak klikněte na tlačítko hello **vstup** stránku vlastností.
+8. Přidat **crypt32.lib** toohello **Další závislosti** vlastnost. Klikněte na tlačítko **OK** a potom **OK** znovu toosave hello projektu hodnot vlastností.
 
-Přidat Parson JSON knihovnu, která má **RMDevice** projekt a přidejte požadované `#include` příkazy:
+Přidat hello Parson JSON knihovny toohello **RMDevice** projekt a přidejte požadované hello `#include` příkazy:
 
-1. Ve složce vhodný ve vašem počítači naklonujte úložiště Parson GitHub pomocí následujícího příkazu:
+1. Ve složce vhodný ve vašem počítači klonovat úložiště Parson GitHub hello pomocí hello následující příkaz:
 
     ```
     git clone https://github.com/kgabis/parson.git
     ```
 
-1. Zkopírujte soubory parson.h a parson.c z místní kopie Parson úložiště k vaší **RMDevice** složce projektu.
+1. Zkopírujte soubory parson.h a parson.c hello hello místní kopii hello Parson úložiště tooyour **RMDevice** složce projektu.
 
-1. V sadě Visual Studio, klikněte pravým tlačítkem myši **RMDevice** projektu, klikněte na tlačítko **přidat**a potom klikněte na **existující položka**.
+1. V sadě Visual Studio, klikněte pravým tlačítkem na hello **RMDevice** projektu, klikněte na tlačítko **přidat**a potom klikněte na **existující položka**.
 
-1. V **přidat existující položku** dialogovém okně, vyberte parson.h a parson.c soubory **RMDevice** složce projektu. Pak klikněte na tlačítko **přidat** přidat tyto dva soubory do projektu.
+1. V hello **přidat existující položku** dialogové okno, vyberte hello parson.h a parson.c soubory v hello **RMDevice** složce projektu. Pak klikněte na tlačítko **přidat** tooadd tyto dva soubory tooyour projektu.
 
-1. V sadě Visual Studio otevřete soubor RMDevice.c. Nahradit existující `#include` příkazy následujícím kódem:
+1. V sadě Visual Studio otevřete soubor RMDevice.c hello. Nahradit stávající hello `#include` příkazy s hello následující kód:
    
     ```c
     #include "iothubtransportmqtt.h"
@@ -70,15 +70,15 @@ Přidat Parson JSON knihovnu, která má **RMDevice** projekt a přidejte požad
     ```
 
     > [!NOTE]
-    > Nyní můžete ověřit, že váš projekt má nastavit tak, že vytváření se správnými závislostmi.
+    > Nyní můžete ověřit, že váš projekt má hello nastavit tak, že vytváření se správnými závislostmi.
 
 [!INCLUDE [iot-suite-connecting-code](../../includes/iot-suite-connecting-code.md)]
 
-## <a name="build-and-run-the-sample"></a>Sestavit a spustit ukázku
+## <a name="build-and-run-hello-sample"></a>Sestavení a spuštění ukázkových hello
 
-Přidejte kód, který má být vyvolán **vzdáleného\_monitorování\_spustit** funkce a potom sestavit a spustit aplikaci zařízení.
+Přidat kód tooinvoke hello **vzdáleného\_monitorování\_spustit** funkce a potom sestavení a spuštění aplikace hello zařízení.
 
-1. Nahraďte **hlavní** funkce s následující kód k vyvolání **vzdáleného\_monitorování\_spustit** funkce:
+1. Nahraďte hello **hlavní** funkce s následující kód tooinvoke hello **vzdáleného\_monitorování\_spustit** funkce:
    
     ```c
     int main()
@@ -88,9 +88,9 @@ Přidejte kód, který má být vyvolán **vzdáleného\_monitorování\_spustit
     }
     ```
 
-1. Klikněte na tlačítko **sestavení** a potom **sestavit řešení** sestavit aplikaci pro zařízení.
+1. Klikněte na tlačítko **sestavení** a potom **sestavit řešení** toobuild hello zařízení aplikací.
 
-1. V **Průzkumníku řešení**, klikněte pravým tlačítkem myši **RMDevice** projektu, klikněte na tlačítko **ladění**a potom klikněte na **spustit novou instanci** ke spuštění ukázky. Konzole zobrazí zprávy jako aplikace odesílá telemetrii vzorek pro předkonfigurované řešení, obdrží požadovanou vlastnost hodnotami nastavenými na řídicím panelu řešení a reaguje na metody vyvolané z řídicího panelu řešení.
+1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na hello **RMDevice** projektu, klikněte na tlačítko **ladění**a potom klikněte na **spustit novou instanci** toorun hello Ukázka. Hello konzoly zobrazí zprávy jako hello aplikace odešle ukázková telemetrická toohello předkonfigurované řešení, obdrží požadovanou vlastnost hodnotami nastavenými v řídicí panel řešení hello a odpoví toomethods volat z řídicí panel řešení hello.
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
 

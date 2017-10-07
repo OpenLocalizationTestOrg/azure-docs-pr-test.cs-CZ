@@ -1,6 +1,6 @@
 ---
-title: Migrace platformy pro Azure Security Center | Dokumentace Microsoftu
-description: "Tento dokument vysvětluje některé změny ve způsobu, jakým se shromažďují data ve službě Azure Security Center."
+title: aaaAzure migrace platformy Security Center | Microsoft Docs
+description: "Tento dokument popisuje způsob toohello některé změny dat Azure Security Center se shromažďují."
 services: security-center
 documentationcenter: na
 author: YuriDio
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: yurid
-ms.openlocfilehash: 5ddf71dcd9c5a2b03e3b1441d8c9b4d91b6bad12
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 28cb8d85912a3f62941cf113da51070081b5eda2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-security-center-platform-migration"></a>Migrace platformy pro Azure Security Center
 
-Od začátku června 2017 Azure Security Center postupně zavádí důležité změny ve způsobu, jakým se shromažďují a ukládají data zabezpečení.  Tyto změny odemykají nové možnosti, jako je snadné prohledávání dat zabezpečení, a jsou lépe sladěné s dalšími službami pro správu a monitorování Azure.
+Počínaje časná 2017 června, Azure Security Center zavede důležité změny toohello způsob zabezpečení data jsou shromažďována a uložené.  Tyto změny odemknutí nové funkce, jako je hello možnost tooeasily vyhledávání zabezpečení dat a lépe zarovnaná s použitím jiných Azure Správa a monitorování služeb.
 
 > [!NOTE]
-> Migrace platformy by neměla mít vliv na vaše produkční prostředky a nevyžaduje žádnou akci z vaší strany.
+> Hello platformy migrace by neměla mít vliv na vaše produkční prostředky a není potřeba z vaší strany žádná akce.
 
 
 ## <a name="whats-happening-during-this-platform-migration"></a>Co se děje během této migrace platformy?
 
-Dříve služba Security Center využívala ke shromažďování dat zabezpečení z virtuálních počítačů agenta Azure Monitoring Agent. Tato data zahrnují informace o konfiguracích zabezpečení, které slouží k identifikaci ohrožení zabezpečení, a události zabezpečení, které slouží k rozpoznání hrozeb. Tato data se ukládala ve vašich účtech Storage v Azure.
+Security Center použil hello Azure Monitoring Agent toocollect zabezpečení dat z virtuálních počítačů. To zahrnuje informace o konfiguracích zabezpečení, které jsou používané tooidentify ohrožení zabezpečení, a události zabezpečení, které jsou používané toodetect hrozeb. Tato data se ukládala ve vašich účtech Storage v Azure.
 
-Výhledově bude Security Center používat agenta Microsoft Monitoring Agent – to je stejný agent, kterého používá Operations Management Suite a služba Log Analytics. Data shromážděná z tohoto agenta se ukládají v existujících [pracovním prostoru](../log-analytics/log-analytics-manage-access.md) *Log Analytics* přidruženém k vašemu předplatnému Azure nebo v nových pracovních prostorech s ohledem na geografickou polohu virtuálního počítače.
+Do budoucna, že Security Center používá hello Microsoft Monitoring Agent – to je hello používá stejné agenta hello Operations Management Suite a služba analýzy protokolů. Data shromážděná z tohoto agenta je uložen v buď existující *analýzy protokolů* [prostoru](../log-analytics/log-analytics-manage-access.md) přidružený k předplatnému Azure nebo nové pracovních prostorů, s ohledem na zeměpisnou polohu hello účet Dobrý den virtuálních počítačů .
 
 ## <a name="agent"></a>Agent
 
-V rámci přechodu se agent Microsoft Monitoring Agent (pro [Windows](../log-analytics/log-analytics-windows-agents.md) nebo [Linux](../log-analytics/log-analytics-linux-agents.md)) nainstaluje na všech virtuálních počítačích Azure, ze kterých se aktuálně shromažďují data.  Pokud je na virtuálním počítači agent Microsoft Monitoring Agent již nainstalovaný, Security Center bude využívat stávajícího nainstalovaného agenta.
+V rámci přechodu hello hello agenta Microsoft Monitoring Agent (pro [Windows](../log-analytics/log-analytics-windows-agents.md) nebo [Linux](../log-analytics/log-analytics-linux-agents.md)) je nainstalována na všech virtuálních počítačích Azure ze kterých aktuálně nejsou shromažďována data.  Pokud má virtuální počítač již hello Microsoft Monitoring Agent nainstalován, hello Security Center využívá hello aktuální nainstalovat agenta.
 
-Oba agenti budou po nějakou dobu (obvykle několik dnů) pracovat souběžně, aby se zajistil bezproblémový přechod bez ztráty dat. To umožní Microsoftu před ukončením používání stávajícího kanálu ověřit, že je nový datový kanál funkční. Po ověření bude agent Azure Monitoring Agent z virtuálních počítačů odebrán. Od vás se nic nevyžaduje. Jakmile budou všichni zákazníci úspěšně migrováni, obdržíte e-mail s oznámením.
+Dobu (obvykle několik dní) poběží i agenty tooensure vedle sebe s hladkým přechodem bez ztrátě dat. Tato akce povolí Microsoft toovalidate, který hello nový datový kanál je funkční před zrušený použití hello aktuální kanálu. Jednou ověřené hello Azure Monitoring Agent se odebere z virtuálních počítačů. Od vás se nic nevyžaduje. Jakmile budou všichni zákazníci úspěšně migrováni, obdržíte e-mail s oznámením.
  
-Během migrace se nedoporučuje ručně odinstalovat agenta Azure Monitoring Agent, protože by to mohlo vést k mezerám v datech zabezpečení. Pokud potřebujete další pomoc, obraťte se na [Oddělení zákaznických služeb a podpory společnosti Microsoft](https://support.microsoft.com/contactus/). 
+Není doporučeno odinstalovat hello Azure Monitoring Agent během migrace hello ručně, protože by mohlo vést mezer v datech zabezpečení. Pokud potřebujete další pomoc, obraťte se na [Oddělení zákaznických služeb a podpory společnosti Microsoft](https://support.microsoft.com/contactus/). 
 
-Microsoft Monitoring Agent pro Windows vyžaduje použití portu TCP 443. Další informace najdete v [průvodci odstraňováním potíží pro službu Azure Security Center](security-center-troubleshooting-guide.md).
+Microsoft Monitoring agenta pro Windows Hello vyžaduje používá port TCP 443, přečtěte si [Průvodce odstraňováním potíží Azure Security Center](security-center-troubleshooting-guide.md) Další informace.
 
 
 > [!NOTE] 
-> Protože agenta Microsoft Monitoring Agent můžou využívat další služby pro správu a monitorování Azure, po vypnutí shromažďování dat ve službě Security Center se agent neodinstaluje automaticky. V případě potřeby však můžete agenta odinstalovat ručně.
+> Protože hello agenta Microsoft Monitoring Agent může být používán jiných Azure správu a monitorování služeb, hello agent nebude odinstalován automaticky po vypnutí shromažďování dat ve službě Security Center. V případě potřeby však můžete odinstalovat ručně agenta hello.
 
 ## <a name="workspace"></a>Pracovní prostor
 
-Jak je popsáno výše, data shromážděná z agenta Microsoft Monitoring Agent (jménem služby Security Center) se ukládají v existujících pracovních prostorech Log Analytics přidružených k vašemu předplatnému Azure nebo v nových pracovních prostorech s ohledem na geografickou polohu virtuálního počítače.
+Jak je popsáno výše, datech shromážděných z hello agenta Microsoft Monitoring Agent (jménem Security Center) jsou uloženy v buď existující analýzy protokolů pracovních prostorů přidružený k předplatnému Azure nebo nové pracovních prostorů, s ohledem na účet hello informace o zeměpisné poloze hello virtuálních počítačů.
 
-Na webu Azure Portal můžete procházením zobrazit seznam pracovních prostorů Log Analytics, včetně těch vytvořených službou Security Center. Pro nové pracovní prostory se vytvoří související skupina prostředků. Obojí se řídí těmito zásadami vytváření názvů:
+V hello portálu Azure můžete procházet toosee seznam vašich analýzy protokolů pracovních prostorů, včetně všech vytvořených pomocí služby Security Center. Pro nové pracovní prostory se vytvoří související skupina prostředků. Obojí se řídí těmito zásadami vytváření názvů:
 
 - Pracovní prostor: *DefaultWorkspace-[ID_předplatného]-[zeměpisné umístění]*
 - Skupina prostředků: *DefaultResouceGroup-[zeměpisné_umístění]* 
  
-U pracovních prostorů vytvořených službou Security Center se data uchovávají po dobu 30 dnů. U existujících pracovních prostorů uchovávání závisí na cenové úrovni pracovního prostoru.
+U pracovních prostorů vytvořených službou Security Center se data uchovávají po dobu 30 dnů. Pro existující pracovní prostory uchování vychází z pracovního prostoru hello cenová úroveň.
 
 > [!NOTE]
-> Data shromážděná dříve službou Security Center zůstanou ve vašich účtech Storage. Po dokončení migrace můžete tyto účty Storage odstranit.
+> Data shromážděná dříve službou Security Center zůstanou ve vašich účtech Storage. Po dokončení migrace hello, můžete odstranit tyto účty úložiště.
 
 ### <a name="oms-security-solution"></a>Řešení OMS Security 
 
@@ -69,12 +69,12 @@ Pro zákazníky, kteří řešení OMS Security nemají nainstalované, ho Micro
 
 ## <a name="other-updates"></a>Další aktualizace
 
-Ve spojení s migrací platformy postupně zavádíme některé další menší aktualizace:
+Ve spojení s hello platformy migrace jsme se zavedením některé další méně závažné aktualizace:
 
-- Budou podporovány další verze operačních systémů. Seznam najdete [zde](security-center-faq.md#virtual-machines).
-- Seznam ohrožení zabezpečení operačních systémů se bude rozšiřovat. Seznam najdete [zde](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335).
+- Budou podporovány další verze operačních systémů. Viz seznam hello [zde](security-center-faq.md#virtual-machines).
+- Hello seznam ohrožení zabezpečení operačního systému bude rozšířena. Viz seznam hello [zde](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335).
 - [Ceny](https://azure.microsoft.com/pricing/details/security-center/) se budou účtovat poměrně po hodinách (dříve to bylo po dnech) a díky tomu někteří zákazníci ušetří.
-- Shromažďování dat bude vyžadováno a automaticky povoleno pro zákazníky na cenové úrovni Standard.
+- Shromažďování dat bude potřeba a automaticky povolí pro zákazníky na hello standardní cenovou úroveň.
 - Azure Security Center začne zjišťovat antimalwarová řešení, která nebyla nasazena prostřednictvím rozšíření Azure. Jako první bude k dispozici zjišťování nástrojů Symantec Endpoint Protection a Defender pro Windows 2016.
-- Zásady a oznámení prevence je možné konfigurovat pouze na úrovni *předplatného*, ale ceny je stále možné nastavit na úrovni *skupiny prostředků*.
+- Zásady prevence a oznámení se dají konfigurovat na hello pouze *předplatné* úroveň, ale ceny můžete nastavit stále v hello *skupiny prostředků* úroveň
 

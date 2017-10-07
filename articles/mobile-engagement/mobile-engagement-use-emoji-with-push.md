@@ -1,6 +1,6 @@
 ---
-title: "Použití emotikon Emoji v rámci Azure Mobile Engagement"
-description: "Jak používat Emoji emotikony v rámci nabízených oznámení"
+title: "aaaUse Emoji emotikony v rámci Azure Mobile Engagement"
+description: "Jak toouse Emoji emotikony v rámci nabízených oznámení"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: bbb7ce5e95b229a7505c5e97b6866d5a302a1d27
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 63bfc59ef472e9fe9aa28b5ac8761017b9250e0f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-emoji-emoticon-within-push-notifications"></a>Použití Emoji emotikonu v rámci nabízená oznámení
 Můžete zahrnout Emoji emotikony ve službě nabízených oznámení v několika jednoduchými kroky: 
 
-1. Nejprve budete muset najít Emoji chcete odeslat ve zprávě. Ujistěte se, že Emoji výběru bude podporovat cílové zařízení jako zařízení vyrábí trvat delší dobu, chcete-li přidat nově schválené Emojis na platformách zařízení. 
-2. Na **Windows** – můžete přejít na to [odkaz](http://apps.timwhitlock.info/emoji/tables/unicode) a zkopírujte ikonu "Nativní".
+1. Je třeba nejprve všech toofind hello Emoji chcete toosend v uvítací zprávu. Zkontrolujte, že hello Emoji výběru bude podporovat hello cílové zařízení jako zařízení vyrábí nově schválené platformy zařízení toohello Emojis provést některé tooadd čas. 
+2. Na **Windows** – můžete procházet toothis [odkaz](http://apps.timwhitlock.info/emoji/tables/unicode) a "Nativní" ikona kopírování hello.
    
     ![][7] 
-3. Na **Mac** – můžete najít Emojis ve slovníku aplikaci v nabídce Upravit -> Emoji & symboly.
+3. Na **Mac** – můžete najít hello Emojis ve slovníku aplikaci v nabídce Upravit -> Emoji & symboly.
    
     ![][6] 
-4. Nyní, přejděte na **dosáhnout** na kartě portálu Azure Mobile Engagement. Vyberte typ nabízených oznámení (oznámení, dotazuje atd). V tomto příkladu vybereme možnost nabízených oznámení.
-5. Zadejte různých polí oznámení, dokud se nedostanete do textu oznámení. Toto je, kde budete přidávat emotikonu Emoji. Můžete uvést v názvu, zprávy nebo obojí. Bude potřeba přetáhněte nebo zkopírujte Emoji, najít z výše uvedené umístění. 
+4. Nyní přejděte toohello **dosáhnout** karta na portál Azure Mobile Engagement hello hello. Vyberte typ hello nabízených oznámení (oznámení, hlasování atd). V tomto příkladu vybereme možnost nabízených oznámení.
+5. Zadejte hello různých polí hello oznámení až hello textu hello oznámení. Toto je, kde budete přidávat emotikonu Emoji. Můžete zvolit tooput v hello title, uvítací zprávu nebo obojí. Budete potřebovat toodrag a drop nebo zkopírujte hello Emoji, najít z výše uvedených hello umístění. 
    
     ![][1]
-6. Vyplňte příslušná pole pro oznámení a uložte jej. 
-7. Při spouštění testu nebo aktivovat oznámení se zobrazí oznámení s na emotikonu jako zadaný.   
+6. Dokončení hello další pole pro hello oznámení a uložte ho. 
+7. Při spouštění testu nebo aktivovat hello oznámení se zobrazí oznámení s hello emotikonu jako zadaný.   
    
     ![][3] ![][4] ![][5]
 

@@ -1,6 +1,6 @@
 ---
-title: "Použití Ruby k dotazování služby Azure SQL Database | Dokumentace Microsoftu"
-description: "Toto téma vám ukáže, jak pomocí Ruby vytvořit program, který se připojí ke službě Azure SQL Database a bude ji dotazovat s použitím příkazů jazyka Transact-SQL."
+title: aaaUse Ruby tooquery Azure SQL Database | Microsoft Docs
+description: "Toto téma ukazuje, jak toouse Ruby toocreate program, který se připojuje tooan Azure SQL Database a dotazování pomocí příkazů Transact-SQL."
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -15,51 +15,51 @@ ms.devlang: ruby
 ms.topic: hero-article
 ms.date: 07/14/2017
 ms.author: carlrab
-ms.openlocfilehash: 25ff9a9cfaa5494dbb006c84e235099fe51e6545
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 0d4b16b8aacb5e376ab80cbe37569130f2fd52b2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-ruby-to-query-an-azure-sql-database"></a>Použití Ruby k dotazování na službu Azure SQL Database
+# <a name="use-ruby-tooquery-an-azure-sql-database"></a>Použití poznámek Ruby tooquery Azure SQL database
 
-Tento rychlý úvodní kurz ukazuje použití [Ruby](https://www.ruby-lang.org) k vytvoření programu pro připojení ke službě Azure SQL Database a použití příkazů jazyka Transact-SQL k dotazování dat.
+Tento úvodní kurz ukazuje, jak toouse [Ruby](https://www.ruby-lang.org) toocreate tooan tooconnect programu Azure SQL databáze a používat data tooquery příkazy jazyka Transact-SQL.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli absolvovat tento rychlý úvodní kurz, ujistěte se, že máte následující:
+toocomplete tento rychlý úvodní kurz, ujistěte se, že máte hello následující požadavky:
 
-- Databázi SQL Azure. Tento rychlý start používá prostředky vytvořené v některém z těchto rychlých startů: 
+- Databázi SQL Azure. Tento rychlý start používá hello prostředky vytvořené v jednom z těchto rychlé spuštění: 
 
    - [Vytvoření databáze – portál](sql-database-get-started-portal.md)
    - [Vytvoření databáze – rozhraní příkazového řádku](sql-database-get-started-cli.md)
    - [Vytvoření databáze – PowerShell](sql-database-get-started-powershell.md)
 
-- [Pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) pro veřejnou IP adresu počítače, který používáte pro tento rychlý úvodní kurz.
+- A [pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) pro hello veřejnou IP adresu počítače hello použijete pro tento kurz rychlý start.
 - Máte nainstalované Ruby a související software pro váš operační systém.
     - **MacOS:** Nainstalujte Homebrew, nainstalujte rbenv a ruby-build, nainstalujte Ruby a potom nainstalujte FreeTDS. Viz [kroky 1.2, 1.3, 1.4 a 1.5](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/).
     - **Ubuntu:** Nainstalujte požadavky pro Ruby, nainstalujte rbenv a ruby-build, nainstalujte Ruby a potom nainstalujte FreeTDS. Viz [kroky 1.2, 1.3, 1.4 a 1.5](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/).
 
 ## <a name="sql-server-connection-information"></a>Informace o připojení k SQL serveru
 
-Získejte informace o připojení potřebné pro připojení k databázi SQL Azure. V dalších postupech budete potřebovat plně kvalifikovaný název serveru, název databáze a přihlašovací údaje.
+Získáte hello připojení informace potřebné tooconnect toohello Azure SQL database. Budete potřebovat hello serveru plně kvalifikovaný název, název databáze a přihlašovacích údajů v dalším postupu hello.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo vyberte **SQL Database** a na stránce **Databáze SQL** klikněte na vaši databázi. 
-3. Na stránce **Přehled** pro vaši databázi zkontrolujte plně kvalifikovaný název serveru. Pokud na název serveru najedete myší, můžete vyvolat možnost **Kopírování kliknutím**, jak je znázorněno na následujícím obrázku:
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
+2. Vyberte **databází SQL** z nabídky na levé straně hello a klikněte na tlačítko databáze na hello **databází SQL** stránky. 
+3. Na hello **přehled** pro vaši databázi si prohlédněte hello serveru plně kvalifikovaný název. Můžete podržet přes toobring název serveru hello až hello **klikněte na tlačítko toocopy** možnost, jak ukazuje následující obrázek hello:
 
    ![název-serveru](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. Pokud jste zapomněli přihlašovací informace pro váš server Azure SQL Database, přejděte na stránku serveru SQL Database, abyste zobrazili jméno správce serveru a v případě potřeby resetovali heslo.
+4. Pokud jste zapomněli hello přihlašovací informace pro váš server databáze SQL Azure, přejděte toohello databáze SQL serveru stránky tooview hello serveru správce název a, v případě potřeby obnovit heslo hello.
 
 > [!IMPORTANT]
-> Musíte mít nastavené pravidlo brány firewall pro veřejnou IP adresu počítače, na kterém provádíte tento kurz. Pokud jste na jiném počítači nebo máte jinou veřejnou IP adresu, vytvořte [pravidlo brány firewall na úrovni serveru pomocí webu Azure Portal](sql-database-get-started-portal.md#create-a-server-level-firewall-rule). 
+> Pravidlo brány firewall musí mít zavedené hello veřejných IP adres hello počítače, na kterém provádíte tento kurz. Pokud jsou v jiném počítači nebo mít jinou veřejnou IP adresu, vytvořte [pravidlo brány firewall na úrovni serveru pomocí portálu Azure hello](sql-database-get-started-portal.md#create-a-server-level-firewall-rule). 
 
-## <a name="insert-code-to-query-sql-database"></a>Vložení kódu pro dotazování databáze SQL
+## <a name="insert-code-tooquery-sql-database"></a>Vložení kódu tooquery SQL database
 
 1. V oblíbeném textovém editoru vytvořte nový soubor **sqltest.rb**.
 
-2. Nahraďte jeho obsah následujícím kódem a přidejte odpovídající hodnoty pro váš server, databázi, uživatele a heslo.
+2. Nahraďte obsah hello hello následující kód a přidat hello odpovídající hodnoty pro server, databáze, uživatele a heslo.
 
 ```ruby
 require 'tiny_tds'
@@ -81,15 +81,15 @@ result.each do |row|
 end
 ```
 
-## <a name="run-the-code"></a>Spuštění kódu
+## <a name="run-hello-code"></a>Spuštění kódu hello
 
-1. V příkazovém řádku spusťte následující příkazy:
+1. Hello příkazového řádku spusťte následující příkazy hello:
 
    ```bash
    ruby sqltest.rb
    ```
 
-2. Ověřte, že se vrátilo prvních 20 řádků, a potom zavřete okno aplikace.
+2. Ověřte, že horních řádků 20 hello se vrátí a pak zavřete okno aplikace hello.
 
 
 ## <a name="next-steps"></a>Další kroky

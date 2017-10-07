@@ -1,6 +1,6 @@
 ---
-title: "Azure Log Analytics hledání odkaz | Microsoft Docs"
-description: "Analýzy protokolů hledání odkaz popisuje jazyk vyhledávání a poskytuje syntaxe dotazu Obecné možnosti můžete můžete použít při vyhledávání pro data a filtrování výrazy a zúžit vyhledávání."
+title: "aaaAzure analýzy protokolů hledání odkaz | Microsoft Docs"
+description: "Hello analýzy protokolů hledání odkaz popisuje hello vyhledávání jazyk a poskytuje hello obecné dotazu syntaxe možnosti, které můžete použít při vyhledávání pro data a filtrování výrazy toohelp zužte své hledání."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -15,29 +15,29 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc9c9b0a6292dab256997a86a6db16367fc48cd3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7478a1139b88a1ce76ebb7b76027a6ccd66f4f27
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="log-analytics-search-reference"></a>Referenční dokumentace vyhledávání analýzy protokolů
 
 >[!NOTE]
-> Tento článek popisuje protokolu vyhledávání v aktuální jazyk dotazu analýzy protokolů.  Pokud pracovní prostor byl upgradován na verzi [nové protokolu Analytics query language](log-analytics-log-search-upgrade.md), pak se seznamte s [referenční příručka jazyka pro nový jazyk](https://go.microsoft.com/fwlink/?linkid=856079).
+> Tento článek popisuje vyhledávání protokolu pomocí dotazovacího jazyka pro aktuální hello v analýzy protokolů.  Pokud pracovní prostor byl upgradovaný toohello [nové analýzy protokolů dotazu jazyka](log-analytics-log-search-upgrade.md), pak by měl odkazovat příliš[hello referenční příručka jazyka pro nový jazyk hello](https://go.microsoft.com/fwlink/?linkid=856079).
 
-V následujícím referenčním oddílu o vyhledávání jazyk popisuje možnosti syntaxe obecné dotazu, můžete použít při vyhledávání pro data a filtrování výrazy a zúžit vyhledávání. Popisuje také příkazy, které můžete provést akci pro data načtená.
+Hello následujícím referenčním oddílu o vyhledávání jazyk popisuje hello obecné dotazu syntaxe možnosti, které můžete použít při vyhledávání pro data a filtrování výrazy toohelp zužte své hledání. Popisuje také příkazy, které můžete tootake akce na hello data načtená.
 
-Další informace o pole, vrátí se v hledání a omezující vlastnosti, které vám pomohou zjistit informace o podobné kategorie dat, v [pole hledání a omezující vlastnost odkazovat části](#search-field-and-facet-reference).
+Další informace o hello pole, vrátí se v hledání a hello omezující vlastnosti, které vám pomohou zjistit informace o podobné kategorie dat do hello [pole hledání a omezující vlastnost odkazovat části](#search-field-and-facet-reference).
 
 ## <a name="general-query-syntax"></a>Syntaxe dotazu obecné
-Syntaxe pro obecné dotazování vypadá takto:
+Obecné dotazování Hello syntaxe vypadá takto:
 
 ```
 filterExpression | command1 | command2 …
 ```
 
-Výraz filtru (`filterExpression`) definuje "kde" podmínky pro dotaz. Příkazy použít do výsledků vrácených dotazem. Více příkazů musí být odděleny znakem (|).
+výraz filtru Hello (`filterExpression`) definuje hello "kde" podmínky pro hello dotazu. příkazy Hello použít toohello výsledků vrácených dotazem hello. Více příkazů musí být odděleny znakem hello (|).
 
 ### <a name="general-syntax-examples"></a>Příklady syntaxe obecné
 Příklady:
@@ -46,10 +46,10 @@ Příklady:
 system
 ```
 
-Tento dotaz vrací výsledky, které obsahují slovo *systému* v každé pole, které pro fulltextové indexování nebo podmínek vyhledávání.
+Tento dotaz vrací výsledky, které obsahují hello word *systému* v každé pole, které pro fulltextové indexování nebo podmínek vyhledávání.
 
 > [!NOTE]
-> Ne všechna pole jsou indexované tímto způsobem, ale nejběžnější textové pole (například názvy a popisy) obvykle jsou.
+> Ne všechna pole jsou indexované tímto způsobem, ale jsou nejběžnější textové pole (například názvy a popisy), obvykle hello.
 >
 >
 
@@ -57,24 +57,24 @@ Tento dotaz vrací výsledky, které obsahují slovo *systému* v každé pole, 
 system error
 ```
 
-Tento dotaz vrací výsledky, které obsahují slova *systému* a *chyba*.
+Tento dotaz vrací výsledky, které obsahují hello slova *systému* a *chyba*.
 
 ```
 system error | sort ManagementGroupName, TimeGenerated desc | top 10
 ```
 
-Tento dotaz vrací výsledky, které obsahují slova *systému* a *chyba*. Potom setřídí výsledky podle *ManagementGroupName* pole (ve vzestupném pořadí) a potom *TimeGenerated* pole (v sestupném pořadí). Jak dlouho trvá pouze prvních 10 výsledky.
+Tento dotaz vrací výsledky, které obsahují hello slova *systému* a *chyba*. Potom seřadí hello výsledky podle hello *ManagementGroupName* pole (ve vzestupném pořadí) a potom podle hello *TimeGenerated* pole (v sestupném pořadí). Trvá hello pouze prvních 10 výsledky.
 
 > [!IMPORTANT]
-> Názvy všech polí a hodnoty pro pole řetězce a text se velká a malá písmena.
+> Všechny hello názvy polí a hello hodnoty pro pole řetězce a textu hello jsou velká a malá písmena.
 >
 >
 
 ## <a name="filter-expressions"></a>Výrazy filtru
-Následující podčásti vysvětlují výrazech filtru.
+Hello následující témata popisují hello filtru výrazů.
 
 ### <a name="string-literals"></a>Textové literály
-Řetězcový literál je řetězec, který nelze rozpoznat analyzátorem jako klíčové slovo nebo předdefinované datový typ (například číslo nebo datum).
+Řetězcový literál je řetězec, který nelze rozpoznat analyzátorem hello jako klíčové slovo nebo předdefinované datový typ (například číslo nebo datum).
 
 Příklady:
 
@@ -82,7 +82,7 @@ Příklady:
 These all are string literals
 ```
 
-Tento dotaz vyhledává výsledky, které obsahují výskyty všechna pět slova. Pokud chcete provést vyhledávání složitých řetězec, uzavřete řetězcový literál v uvozovkách. Například:
+Tento dotaz vyhledává výsledky, které obsahují výskyty všechna pět slova. tooperform komplexní řetězec hledání, uzavřete hello řetězcový literál v uvozovkách. Například:
 
 ```
 "Windows Server"
@@ -91,7 +91,7 @@ Tento dotaz vyhledává výsledky, které obsahují výskyty všechna pět slova
 Tento příkaz vrátí jenom výsledky s přesné shody pro *systému Windows Server*.
 
 ### <a name="numbers"></a>Čísla
-Analyzátor podporuje desítkové celé číslo a číslo s plovoucí desetinnou čárkou syntaxe pro číselné pole.
+Hello analyzátor podporuje hello desítkové celé číslo a číslo s plovoucí desetinnou čárkou syntaxe pro číselné pole.
 
 Příklady:
 
@@ -104,11 +104,11 @@ HTTP 500
 ```
 
 ### <a name="dates-and-times"></a>Data a časy
-Má každá část data v systému *TimeGenerated* vlastnosti, která představuje původní datum a čas záznamu. Některé typy dat může mít další datum a čas pole (například *změněno*).
+Každá část data v systému hello má *TimeGenerated* vlastnosti, která představuje hello původní datum a čas záznamu hello. Některé typy dat může mít další datum a čas pole (například *změněno*).
 
-Časovou osu **graf a času** selektor v Azure Log Analytics ukazuje distribuční výsledků v čase (podle aktuální dotaz spuštěn). To je založené na *TimeGenerated* pole. Datum a čas mají konkrétní řetězec formátu, který lze použít v dotazech dotaz omezit na určitý časový rámec. Syntaxe můžete taky odkazovat na relativní časové intervaly (například "mezi před 3 dny a 2 hodinami").
+Časová osa Hello **graf a času** selektor v Azure Log Analytics ukazuje distribuční výsledků v čase (podle toohello aktuální dotaz spuštěn). To je založené na hello *TimeGenerated* pole. Datum a čas mají konkrétní řetězec formátu, který lze použít v dotazech toorestrict hello dotazu tooa určitý časový rámec. Můžete také použít syntaxi toorefer toorelative časové intervaly (například "mezi před 3 dny a 2 hodinami").
 
-Tady jsou platné formuláře syntaxe kalendářních dat a časů:
+Hello následují platné formuláře syntaxe kalendářních dat a časů:
 
 ```
 yyyy-mm-ddThh:mm:ss.dddZ
@@ -141,14 +141,14 @@ Například:
 TimeGenerated:2013-10-01T12:20
 ```
 
-Předchozí příkaz vrátí jenom záznamy se *TimeGenerated* hodnota přesně 12:20 na 1. října 2013.
+Hello předchozí příkaz vrátí jenom záznamy se *TimeGenerated* hodnota přesně 12:20 na 1. října 2013.
 
-Analyzátor také nyní podporuje klávesovými hodnotě Datum a čas. (Nepravděpodobné, že to předá výsledky, protože data doesn't make prostřednictvím systému to rychlé.)
+Analyzátor Hello také podporuje hello klávesovými hodnotu data a času, teď. (Nepravděpodobné, že to předá výsledky, protože data doesn't make prostřednictvím systému hello to rychlé.)
 
-Tyto příklady jsou stavební bloky, které chcete použít pro relativní a absolutní datum. V následujících třech témata zobrazí se jejich použití v rozšířené filtry s příklady, které používají rozsahy relativní datum.
+Tyto příklady jsou toouse stavební bloky pro relativní a absolutní datum. V hello následující tři témata, uvidíte, jak toouse je v rozšířené filtry s příklady, které používají rozsahy relativní datum.
 
 ### <a name="datetime-math"></a>Matematické datum a čas
-Pomocí data a času matematické operátory posunutí nebo zaokrouhlit hodnotě Datum a čas, a to pomocí jednoduché výpočty datum a čas.
+Použít hello datum a čas matematické operátory toooffset nebo zaokrouhlit hello hodnotě Datum a čas, a to pomocí jednoduché výpočty datum a čas.
 
 Syntaxe:
 
@@ -162,29 +162,29 @@ datetime[+|-]count unit
 
 | Operátor | Popis |
 | --- | --- |
-| / |Zaokrouhlí na jednotku, zadané datum a čas. Například nyní / den zaokrouhlí aktuální datum a čas na půlnoc aktuálního dne. |
-| + nebo - |Posune datum a čas zadaný počet jednotek. Například nyní + 1 hodina posune aktuální datum a čas o jednu hodinu dopředu. 2013-10-01T12:00-10 dní posune hodnoty Date zpět o 10 dní. |
+| / |Datum a čas toohello zaokrouhlí zadat jednotku. Například nyní / den zaokrouhlí hello aktuální datum a čas toomidnight Dobrý den aktuálního dne. |
+| + nebo - |Posuny data a času podle hello zadat počet jednotek. Například nyní + 1 hodina posune hello aktuální datum a čas o jednu hodinu dopředu. 2013-10-01T12:00-10 dní posune hodnoty Date hello zpět o 10 dní. |
 
-Matematické operátory datum a čas můžete zřetězené společně. Například:
+Matematické operátory hello datum a čas můžete zřetězené společně. Například:
 
 ```
 NOW+1HOUR-10MONTHS/MINUTE
 ```
 
-Následující tabulka uvádí podporované jednotky datum a čas.
+Hello následující tabulka uvádí jednotky hello podporované datum a čas.
 
 | Datum a čas jednotky | Popis |
 | --- | --- |
-| ROK, LET. |Zaokrouhlí do aktuálního roku a posune o zadaný počet roků. |
-| MĚSÍC, MĚSÍCŮ |Zaokrouhlí do aktuálního měsíce nebo posune o zadaném počtu měsíců. |
-| DEN, DNŮ, DATUM |Zaokrouhlí na aktuální den v měsíci, nebo posune o zadaný počet dnů. |
-| HODINA, ČAS |Zaokrouhlí číslo na aktuální hodinu nebo posuny podle zadaného počtu hodin. |
-| MINUTA, MINUT |Zaokrouhlí do aktuální minuty nebo posune o zadaný počet minut. |
-| SECOND, SECONDS. |Druhý zaokrouhlí na aktuální nebo posune o zadaný počet sekund. |
-| MILISEKUND, POČET MILISEKUND, MILLI, MILLIS |Zaokrouhlí na aktuální milisekundu nebo posune o zadaný počet milisekund, po. |
+| ROK, LET. |Zaokrouhlí toocurrent rok nebo posuny podle hello zadaný počet roků. |
+| MĚSÍC, MĚSÍCŮ |Zaokrouhlí toocurrent měsíci, nebo posuny podle hello zadaný počet měsíců. |
+| DEN, DNŮ, DATUM |Zaokrouhlí toocurrent den měsíce hello nebo posuny podle hello zadaný počet dnů. |
+| HODINA, ČAS |Zaokrouhlí toocurrent hodinu nebo posuny podle hello zadaný počet hodin. |
+| MINUTA, MINUT |Zaokrouhlí toocurrent minutu nebo posuny podle hello zadaný počet minut. |
+| SECOND, SECONDS. |Zaokrouhlí toocurrent druhý nebo posune o hello zadat počet sekund. |
+| MILISEKUND, POČET MILISEKUND, MILLI, MILLIS |Počet milisekund, po zadána zaokrouhlí toocurrent milisekundu nebo posuny podle hello. |
 
 ### <a name="field-facets"></a>Omezující vlastnosti pole
-Pomocí pole omezující vlastnosti můžete zadejte podmínku vyhledávání konkrétních polí a jejich přesné hodnoty. To se liší od zápis "bez textu" dotazů pro různé podmínky v celém indexu. Jste viděli již tato technika v několika předchozích příkladech. Následují příklady složitější.
+Pomocí pole omezující vlastnosti můžete zadat podmínky hello vyhledávání konkrétních polí a jejich přesné hodnoty. To se liší od zápis "bez textu" dotazů pro různé podmínky v celém indexu hello. Jste viděli již tato technika v několika předchozích příkladech. Hello Následují příklady složitější.
 
 **Syntaxe**
 
@@ -198,7 +198,7 @@ field=value
 
 **Popis**
 
-Vyhledá pole pro tuto konkrétní hodnotu. Hodnota může být řetězcový literál, číslo nebo datum a čas.
+Hledání hello pole pro konkrétní hodnotu hello. Hello hodnota může být řetězcový literál, číslo nebo datum a čas.
 
 Například:
 
@@ -257,7 +257,7 @@ SampleValue:[0..2]
 ```
 
 ### <a name="in"></a>V
-**IN** – klíčové slovo umožňuje vybrat ze seznamu hodnot. V závislosti na syntaxi, kterou používáte může se jednat jednoduchý seznam hodnot, které poskytnete, nebo seznam hodnot z agregace.
+Hello **IN** – klíčové slovo vám umožní tooselect ze seznamu hodnot. V závislosti na hello syntaxe, které používáte může se jednat jednoduchý seznam hodnot, které poskytnete, nebo seznam hodnot z agregace.
 
 Syntaxe 1:
 
@@ -265,7 +265,7 @@ Syntaxe 1:
 field IN {value1,value2,value3,...}
 ```
 
-Tuto syntaxi umožňuje zahrnout všechny hodnoty v jednoduchých seznamů.
+Tuto syntaxi umožňuje tooinclude všechny hodnoty v jednoduchých seznamů.
 
 
 
@@ -282,25 +282,25 @@ Computer IN {"srv01.contoso.com","srv02.contoso.com"}
 Syntaxe 2:
 
 ```
-(Outer query) (Field to use with inner query results) IN {Inner query | measure count() by (Field to send to outer query)} (rest  of outer query)  
+(Outer query) (Field toouse with inner query results) IN {Inner query | measure count() by (Field toosend tooouter query)} (rest  of outer query)  
 ```
 
-Tuto syntaxi vám umožní vytvořit agregace. Seznam hodnot můžete informačního kanálu pak z tohoto agregace do jiné vnější search (primární), která vypadá pro události se tyto hodnoty. To uděláte tak, že uzavření vnitřní hledání do složených závorek a napájení své výsledky jako možných hodnot pro pole ve vnější vyhledávání pomocí operátor.
+Tuto syntaxi umožňuje toocreate agregace. Z tohoto agregace do jiné vnější search (primární), která vypadá pro události se tyto hodnoty můžete pak informačního kanálu hello seznamu hodnot. To provedete obklopuje hello vnitřní vyhledávání do složených závorek a napájení své výsledky jako možných hodnot pro pole v hello vnější vyhledávání pomocí operátoru IN hello.
 
-Vnitřní dotaz příklad: *počítače aktuálně chybějící aktualizace zabezpečení* s následující dotaz agregace:
+Vnitřní dotaz příklad: *počítače aktuálně chybějící aktualizace zabezpečení* s hello následující agregace dotazu:
 
 ```
 Type:Update Classification="Security Updates"  UpdateState=needed TimeGenerated>NOW-25HOURS | measure count() by Computer
 ```    
 
-Poslední dotaz, který vyhledá *všechny události systému Windows pro počítače, které jsou aktuálně chybějící aktualizace zabezpečení* vypadá zhruba takto:
+Hello poslední dotaz, který vyhledá *všechny události systému Windows pro počítače, které jsou aktuálně chybějící aktualizace zabezpečení* podobá hello následující:
 
 ```
 Type=Event Computer IN {Type:Update Classification="Security Updates"  UpdateState=needed TimeGenerated>NOW-25HOURS | measure count() by Computer}
 ```
 
 ### <a name="contains"></a>Contains
-**Obsahuje** – klíčové slovo vám umožní filtrovat pro záznamy s polem, které obsahuje zadaný řetězec. To je malá a velká písmena, lze použít pouze u polí s řetězcem a nesmí obsahovat žádné řídicí znaky.
+Hello **obsahuje** – klíčové slovo vám umožní toofilter pro záznamy s polem, které obsahuje zadaný řetězec. To je malá a velká písmena, lze použít pouze u polí s řetězcem a nesmí obsahovat žádné řídicí znaky.
 
 Syntaxe:
 
@@ -314,12 +314,12 @@ Příklad:
 Type:contains("Event")
 ```
 
-Vrátí záznamy s typem, který obsahuje řetězec "Událost". Mezi příklady patří **událostí**, **SecurityEvent**, a **ServiceFabricOperationEvent**.
+Vrátí záznamy s typem, který obsahuje řetězec hello "Událost". Mezi příklady patří **událostí**, **SecurityEvent**, a **ServiceFabricOperationEvent**.
 
 
 
 ### <a name="regular-expressions"></a>Regulární výrazy
-Můžete určit podmínku vyhledávání pro pole s regulárním výrazem, pomocí **Regex** – klíčové slovo. Úplný popis syntaxe můžete použít v regulárních výrazech naleznete v tématu [pomocí regulárních výrazů k filtrování protokolu hledání v analýzy protokolů](log-analytics-log-searches-regex.md).
+Můžete určit podmínku vyhledávání pro pole s regulárním výrazem, pomocí hello **Regex** – klíčové slovo. Úplný popis syntaxe hello můžete použít v regulárních výrazech naleznete v tématu [v analýzy protokolů pomocí regulárních výrazů toofilter protokolu hledání](log-analytics-log-searches-regex.md).
 
 Syntaxe:
 
@@ -334,7 +334,7 @@ Computer:Regex("^C.*")
 ```
 
 ### <a name="logical-operators"></a>Logické operátory
-Logické operátory podporu jazyků dotazu (*a*, *nebo*, a *není*) a jejich aliasy stylu jazyka C (*&&*,  *||* , a *!*, v uvedeném pořadí). Závorky můžete použít k seskupení těchto operátorů.
+dotaz Hello jazyky podporují hello logické operátory (*a*, *nebo*, a *není*) a jejich aliasy stylu jazyka C (*&&*,  *||* , a *!*, v uvedeném pořadí). Závorky toogroup můžete použít tyto operátory.
 
 Příklady:
 
@@ -347,35 +347,35 @@ system OR error
 Type:Alert AND NOT(Severity:1 OR ObjectId:"8066bbc0-9ec8-ca83-1edc-6f30d4779bcb8066bbc0-9ec8-ca83-1edc-6f30d4779bcb")
 ```
 
-Logický operátor argumenty filtru nejvyšší úrovně, můžete vynechat. V takovém případě se předpokládá, operátor a.
+Logický operátor hello argumenty hello filtru nejvyšší úrovně, můžete vynechat. V takovém případě se předpokládá hello operátor AND.
 
-| Výraz filtru | Ekvivalent hodnoty |
+| Výraz filtru | Ekvivalentní příliš|
 | --- | --- |
 | Systémová chyba |systém a chyb |
 | systému "Windows Server" nebo závažnosti: 1 |systém a ("Windows Server" nebo závažnosti: 1) |
 
 ### <a name="wildcarding"></a>Použití zástupných znaků
-Dotazovací jazyk podporuje používání ( \* ) znaku, který představuje jeden nebo více znaků pro hodnotu v dotazu.
+Hello dotazovací jazyk podporuje používání hello ( \* ) znak příliš představují jeden nebo více znaků pro hodnotu v dotazu.
 
 Příklad:
 
- Vyhledáte všechny počítače s "SQL" v názvu, jako je například "Redmond-SQL".
+ Vyhledá všechny počítače s "SQL" v hello názvem, například "Redmond-SQL".
 
 ```
 Type=Event Computer=*SQL*
 ```
 
 > [!NOTE]
-> V tuto chvíli nelze použít zástupné znaky v rámci uvozovky. Například zpráva `"*This text*"` zvažuje (\*) použít jako literál (\*) znaků.
+> V tuto chvíli nelze použít zástupné znaky v rámci uvozovky. Například uvítací zprávu `"*This text*"` zvažuje hello (\*) použít jako literál (\*) znaků.
 
 
 ## <a name="commands"></a>Příkazy
 
 
-Příkazy se vztahuje na výsledky, které jsou v dotazu. Pomocí znaku svislá čára (|) použít příkaz načtené výsledky. Více příkazů musí být odděleny znakem.
+příkazy Hello použít toohello výsledky, které jsou vrácených dotazem hello. Použití hello kanálu znak (|) tooapply toohello příkaz načíst výsledky. Více příkazů musí být odděleny znakem hello.
 
 > [!NOTE]
-> Názvy příkazů může být napsán v velká nebo malá písmena, na rozdíl od názvy polí a data.
+> Názvy příkazů může být napsán v velká nebo malá písmena, na rozdíl od hello názvy polí a hello data.
 >
 >
 
@@ -384,7 +384,7 @@ Syntaxe:
 
     sort field1 asc|desc, field2 asc|desc, …
 
-Řazení výsledků podle určitého pole. Přípona asc nebo desc seřadit výsledky ve vzestupném nebo sestupném pořadí je volitelný. Je-li vynechán, *asc* se předpokládá, že pořadí řazení. Pro **TimeGenerated** pole, *desc* pořadí řazení se předpokládá, tak, aby vracel nejnovější výsledky nejprve ve výchozím nastavení.
+Řazení výsledků hello podle určitého pole. Hello asc nebo desc příponu toosort hello výsledky ve vzestupném nebo sestupném pořadí je volitelný. Pokud je vynechaný, hello *asc* se předpokládá, že pořadí řazení. Pro hello **TimeGenerated** pole, *desc* pořadí řazení se předpokládá, tak, aby vracel nejnovější výsledky hello nejprve ve výchozím nastavení.
 
 ### <a name="toplimit"></a>Horní/Limit
 Syntaxe:
@@ -393,20 +393,20 @@ Syntaxe:
 
 
     limit number
-Omezuje odpověď na hlavních výsledky.
+Omezení hello odpovědi toohello top N výsledky.
 
 Příklad:
 
     Type:Alert errors detected | top 10
 
-Vrátí top 10 odpovídající výsledky.
+Vrátí hello top 10 odpovídajících výsledků.
 
 ### <a name="skip"></a>Přeskočit
 Syntaxe:
 
     skip number
 
-Přeskočí počet výsledků.
+Přeskočí hello počet výsledků.
 
 Příklad:
 
@@ -419,16 +419,16 @@ Syntaxe:
 
     select field1, field2, ...
 
-Omezí výsledky na pole, které zvolíte.
+Omezí výsledky toohello pole, které zvolíte.
 
 Příklad:
 
     Type:Alert errors detected | select Name, Severity
 
-Omezení vrácených výsledků pole ke *název* a *závažnost*.
+Omezení hello vrácených výsledků pole příliš*název* a *závažnost*.
 
 ### <a name="measure"></a>Míra
-*Měr* příkaz se používá k aplikování statistických funkcí k nezpracované výsledků. To je velmi užitečné k získání *Seskupit podle* zobrazení nad daty. Pokud použijete příkaz měr, analýzy protokolů hledání zobrazí tabulku s agregované výsledky.
+Hello *měr* příkaz je použité tooapply statistických funkcí toohello nezpracovaná výsledků. To je velmi užitečná tooget *Seskupit podle* zobrazení nad daty hello. Při použití příkazu hello měr, analýzy protokolů hledání zobrazí tabulku s agregované výsledky.
 
 **Syntaxe:**
 
@@ -439,19 +439,19 @@ Omezení vrácených výsledků pole ke *název* a *závažnost*.
 
 
 
-Agreguje výsledky podle *skupinové pole*a vypočítá hodnoty agregované měr pomocí *aggregatedField*.
+Agreguje hello výsledků podle *skupinové pole*a vypočítá hello agregaci hodnot měr pomocí *aggregatedField*.
 
 | Míra statistické funkce | Popis |
 | --- | --- |
-| *Vlastnost aggregateFunction* |Název agregační funkci (rozlišování malých a velkých písmen). Jsou podporovány následující agregační funkce: počet, MAX, MIN, SUM, AVG, STDDEV, COUNTDISTINCT, PERCENTILU ## nebo PCT ## (## je jakékoli číslo mezi 1 a 99). |
-| *aggregatedField* |Pole, které je agregaci. Toto pole je volitelné pro agregační funkce COUNT, ale musí být existující číselné pole pro SUM, MAX, MIN, AVG, STDDEV, PERCENTILU ## nebo PCT ## (## je jakékoli číslo mezi 1 a 99). Některé z může být také aggregatedField **rozšíření** podporované funkce. |
-| *fieldAlias* |(Volitelné) alias pro počítané agregovaná hodnota. Pokud není zadáno, je název pole **AggregatedValue**. |
-| *skupinové pole* |Název pole, která nastavit výsledek se seskupují po. |
-| *Interval* |Časový interval, ve formátu:**nnnNAME**. **nnn**je kladné celé číslo. **NÁZEV** je název intervalu. Názvy podporovaný interval jsou velká a malá písmena a zahrnují: MILISEKUNDU [S], [S] SEKUNDU MINUTU [S], [S] HODINU dne [S], [S] měsíce a roku [S]. |
+| *Vlastnost aggregateFunction* |Název Hello hello agregační funkce (rozlišování malých a velkých písmen). jsou podporovány následující agregační funkce Hello: počet, MAX, MIN, SUM, AVG, STDDEV, COUNTDISTINCT, PERCENTILU ## nebo PCT ## (## je jakékoli číslo mezi 1 a 99). |
+| *aggregatedField* |Hello pole, které je agregaci. Toto pole je volitelné pro hello počet agregační funkce, ale má toobe existující číselné pole pro SUM, MAX, MIN, AVG, STDDEV, PERCENTILU ## nebo PCT ## (## je jakékoli číslo mezi 1 a 99). Některé z hello může být také Hello aggregatedField **rozšíření** podporované funkce. |
+| *fieldAlias* |Hodnota aliasu pro hello vypočítat agregovat Hello (volitelné). Pokud není zadáno, je název pole hello **AggregatedValue**. |
+| *skupinové pole* |Název Hello hello pole, který sada výsledků hello se seskupují po. |
+| *Interval* |Hello časový interval, ve formátu hello:**nnnNAME**. **nnn**je hello kladné celé číslo. **NÁZEV** je název interval hello. Názvy podporovaný interval jsou velká a malá písmena a zahrnují: MILISEKUNDU [S], [S] SEKUNDU MINUTU [S], [S] HODINU dne [S], [S] měsíce a roku [S]. |
 
-Interval možnost lze použít pouze v polích časových skupinu (například *TimeGenerated* a *TimeCreated*). V současné době to nevynucuje službou, ale pole bez datum a čas, který je předán do back-end způsobí, že chyba v běhu. Pokud se implementuje ověření schématu, rozhraní API služby odmítne dotazy, které používají pole bez datum a čas pro interval agregace. Aktuální *měr* implementace podporuje interval seskupení pro všechny agregační funkci.
+Hello interval možnost lze použít pouze v polích časových skupinu (například *TimeGenerated* a *TimeCreated*). V současné době to nevynucuje hello služby, ale pole bez datum a čas, který je předán toohello back-end způsobí, že chyba v běhu. Pokud se implementuje ověření schématu hello, rozhraní API služby hello odmítne dotazy, které používají pole bez datum a čas pro interval agregace. Hello aktuální *měr* implementace podporuje interval seskupení pro všechny agregační funkci.
 
-Pokud je vynechaná klauzule BY, ale není zadaný interval (jako druhý syntaxe), *TimeGenerated* pole se předpokládá, že ve výchozím nastavení.
+Pokud je vynechaná klauzule BY hello, ale není zadaný interval (jako druhý syntaxe), hello *TimeGenerated* pole se předpokládá, že ve výchozím nastavení.
 
 Příklady:
 
@@ -459,91 +459,91 @@ Příklady:
 
     Type:Alert | measure count() as Count by ObjectId
 
-Výstrahy podle skupin *ObjectID*a vypočítá počet výstrah pro každou skupinu. Agregovaná hodnota vrácena jako *počet* pole (alias).
+Skupiny hello výstrahy podle *ObjectID*a vypočítá hello počet výstrah pro každou skupinu. Hello agregovaná hodnota vrácena jako hello *počet* pole (alias).
 
 **Příklad 2**
 
     Type:Alert | measure count() interval 1HOUR
 
-Pomocí skupin výstrahy podle intervalu 1 hodin *TimeGenerated* pole a vrátí počet výstrah v každém intervalu.
+Skupiny hello výstrahy podle intervalu 1 hodin pomocí hello *TimeGenerated* pole a vrátí hello počet výstrah v každém intervalu.
 
 **Příklad 3**
 
     Type:Alert | measure count() as AlertsPerHour interval 1HOUR
 
-Stejné jako v předchozím příkladu, ale s aliasem agregované pole (*AlertsPerHour*).
+Stejné jako hello předchozí příklad, ale s aliasem agregované pole (*AlertsPerHour*).
 
 **Příklad 4**
 
     * | míra count() podle 5DAYS TimeCreated intervalu
 
-Výsledky jsou seskupeny podle intervaly 5 dnů pomocí *TimeCreated* pole a vrátí počet výsledků v každém intervalu.
+Výsledky hello seskupeny podle intervaly 5 dnů pomocí hello *TimeCreated* pole a vrátí hello počet výsledků v každém intervalu.
 
 **Příklad 5**
 
     Type:Alert | measure max(Severity) by WorkflowName
 
-Skupiny výstrahy podle názvu úlohy a vrátí hodnotu maximální závažnost výstrahy pro každý pracovní postup.
+Skupiny hello výstrahy podle názvu úlohy, a vrátí hello hodnotu maximální závažnost výstrahy pro každý pracovní postup.
 
 **Příklad 6**
 
     Type:Alert | measure min(Severity) by WorkflowName
 
-Stejné jako v předchozím příkladu, ale *min* agregovat funkce.
+Stejné jako hello předchozí příklad, ale s hello *min* agregovat funkce.
 
 **Příklad 7**
 
     Type:Perf | measure avg(CounterValue) by Computer
 
-Skupiny výkonu počítačem a vypočítá průměrnou (průměr).
+Skupiny výkonu počítačem a vypočítá průměr hello (průměr).
 
 **Příklad 8**
 
     Type:Perf | measure sum(CounterValue) by Computer
 
-Stejný jako předchozí příklad, ale používá *součet*.
+Stejné jako hello předchozí příklad, ale používá *součet*.
 
 **Příklad 9**
 
     Type:Perf | measure stddev(CounterValue) by Computer
 
-Stejný jako předchozí příklad, ale používá *stddev*.
+Stejné jako hello předchozí příklad, ale používá *stddev*.
 
 **Příklad 10**
 
     Type:Perf | measure percentile70(CounterValue) by Computer
 
-Stejný jako předchozí příklad, ale používá *percentile70*.
+Stejné jako hello předchozí příklad, ale používá *percentile70*.
 
 **Příklad 11**
 
     Type:Perf | measure pct70(CounterValue) by Computer
 
-Stejný jako předchozí příklad, ale používá *pct70*. Všimněte si, že *PCT ##* je pouze alias *PERCENTILU ##* funkce.
+Stejné jako hello předchozí příklad, ale používá *pct70*. Všimněte si, že *PCT ##* je pouze alias *PERCENTILU ##* funkce.
 
 **Příklad 12**
 
     Type:Perf | measure avg(CounterValue) by Computer, CounterName
 
-Skupiny výkonu nejdřív počítač a potom CounterName a vypočítá průměrnou (průměr).
+Skupiny výkonu nejdřív počítač a potom CounterName a vypočítá průměr hello (průměr).
 
 **Příklad 13**
 
     Type:Alert | measure count() as Count by WorkflowName | sort Count desc | top 5
 
-Získá nejvyšší pět pracovních s maximální počet výstrah.
+Získá hello nejvyšší pět pracovních s hello maximální počet výstrah.
 
 **Příklad 14**
 
     * | míra countdistinct(Computer) podle typu
 
-Spočítá počet jedinečných počítačů, vytváření sestav pro každého typu.
+Spočítá hello počet jedinečných počítačů, vytváření sestav pro každého typu.
 
 **Příklad 15**
 
     * | míra countdistinct(Computer) intervalu 1 hodina
 
-Spočítá počet jedinečných počítačů, vytváření sestav pro každou hodinu.
+Spočítá hello počet jedinečných počítačů, vytváření sestav pro každou hodinu.
 
 **Příklad 16**
 
@@ -551,13 +551,13 @@ Spočítá počet jedinečných počítačů, vytváření sestav pro každou ho
 Type:Perf CounterName=”% Processor Time” InstanceName=”_Total” | measure avg(CounterValue) by Computer Interval 1HOUR
 ```
 
-Skupiny % času procesoru počítačem a vrátí průměrnou hodnotu pro každou hodinu.
+% Času procesoru počítačem skupiny a vrátí hello průměr pro každou hodinu.
 
 **Příklad 17**
 
     Type:W3CIISLog | measure max(TimeTaken) by csMethod Interval 5MINUTES
 
-Skupiny W3CIISLog metodou a vrátí maximální pro každých 5 minut.
+Skupiny W3CIISLog metodou a vrátí hello maximální pro každých 5 minut.
 
 **Příklad 18**
 
@@ -565,7 +565,7 @@ Skupiny W3CIISLog metodou a vrátí maximální pro každých 5 minut.
 Type:Perf CounterName=”% Processor Time” InstanceName=”_Total”  | measure min(CounterValue) as MIN, avg(CounterValue) as AVG, percentile75(CounterValue) as PCT75, max(CounterValue) as MAX by Computer Interval 1HOUR
 ```
 
-% Času procesoru počítačem skupiny a vrátí minimální, průměr, 75 percentilu a maximální pro každou hodinu.
+Skupiny % času procesoru počítače a vrátí hello minimální, průměr, 75 percentilu a maximum pro každou hodinu.
 
 **Příklad 19**
 
@@ -573,7 +573,7 @@ Type:Perf CounterName=”% Processor Time” InstanceName=”_Total”  | measur
 Type:Perf CounterName=”% Processor Time”  | measure min(CounterValue) as MIN, avg(CounterValue) as AVG, percentile75(CounterValue) as PCT75, max(CounterValue) as MAX by Computer, InstanceName Interval 1HOUR
 ```
 
-Skupiny % času procesoru nejprve podle počítače a poté podle názvu Instance a vrátí minimální, průměr, 75 percentilu a maximální pro každou hodinu.
+Skupiny % času procesoru nejprve podle počítače a poté podle Instance název a vrátí hello minimální, průměrná, 75. percentil a maximální pro každou hodinu.
 
 **Příklad 20**
 
@@ -581,7 +581,7 @@ Skupiny % času procesoru nejprve podle počítače a poté podle názvu Instanc
 Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | measure max(product(CounterValue,60)) as MaxDWPerMin by InstanceName Interval 1HOUR
 ```
 
-Vypočítá maximální počet zápisů disku za minutu pro každý disk ve vašem počítači.
+Vypočítá hello maximálně zápisy na disk za minutu pro každý disk ve vašem počítači.
 
 ### <a name="where"></a>kde
 Syntaxe:
@@ -590,7 +590,7 @@ Syntaxe:
 **where** AggregatedValue>20
 ```
 
-Lze použít pouze po *měr* příkaz pro další filtrování agregované výsledky, které *měr* má vytvořeného agregační funkce.
+Lze použít pouze po *měr* příkaz toofurther filtru hello agregovat výsledky této hello *měr* má vytvořeného agregační funkce.
 
 Příklady:
 
@@ -605,16 +605,16 @@ Syntaxe:
 
     Dedup FieldName
 
-Vrátí první dokument pro každou jedinečnou hodnotu pole daného nalezen.
+Vrátí první dokument hello najít pro každou jedinečnou hodnotu hello zadané pole.
 
 Příklad:
 
     Type=Event | Dedup EventID | sort TimeGenerated DESC
 
-Tento příklad vrátí jedna událost (nejnovější událost) na ID události.
+Tento příklad vrátí jedna událost (hello nejnovější událost) na ID události.
 
 ### <a name="join"></a>Spojit
-Spojí dva dotazy k jedné sadě výsledků výsledky.  Podporuje několik typů spojení, které jsou popsané v tabulce postupujte podle kroků.
+Spojení hello výsledky dva dotazy tooform jedné sada výsledků.  Podporuje několik typů join popsané v hello podle tabulky.
 
 | Typ spojení | Popis |
 |:--|:--|
@@ -623,7 +623,7 @@ Spojí dva dotazy k jedné sadě výsledků výsledky.  Podporuje několik typů
 | Vlevo  | Vrátí všechny záznamy z levé dotazu a odpovídající záznamy z pravé dotazu. |
 
 
-- Spojení aktuálně nepodporují dotazy, které zahrnují **IN** – klíčové slovo, **měr** příkaz nebo **rozšíření** příkaz, pokud je cílem pole pravé dotazu.
+- Spojení aktuálně nepodporují dotazy, které zahrnují hello **IN** – klíčové slovo, hello **měr** příkaz nebo hello **rozšíření** příkaz, pokud je cílem pole pravé dotazu hello.
 - Můžete zahrnout aktuálně pouze jednoho pole ke spojení.
 - Hledání jednoduchého nesmí obsahovat více než jedno připojení.
 
@@ -635,7 +635,7 @@ Spojí dva dotazy k jedné sadě výsledků výsledky.  Podporuje několik typů
 
 **Příklady**
 
-Pro ilustraci typů různých spojení, zvažte připojení typu dat shromážděných z vlastního protokolu volána MyBackup_CL s prezenčního signálu pro jednotlivé počítače.  Tyto datové typy mají následující data.
+tooillustrate hello spojení různé typy, zvažte připojení typu dat shromážděných z vlastního protokolu volána MyBackup_CL s hello prezenčního signálu pro jednotlivé počítače.  Tyto datové typy mít hello následující data.
 
 `Type = MyBackup_CL`
 
@@ -657,7 +657,7 @@ Pro ilustraci typů různých spojení, zvažte připojení typu dat shromážd�
 
 `Type=MyBackup_CL | join inner Computer (Type=Heartbeat) Computer`
 
-Vrátí následující záznamy, kde pole počítače odpovídá pro oba datové typy.
+Vrátí hello následující záznamy, kde pole hello počítače odpovídá pro oba datové typy.
 
 | Počítač| TimeGenerated | LastBackupStatus | TimeGenerated_joined | ComputerIP_joined | Type_joined |
 |:---|:---|:---|:---|:---|:---|
@@ -669,7 +669,7 @@ Vrátí následující záznamy, kde pole počítače odpovídá pro oba datové
 
 `Type=MyBackup_CL | join outer Computer (Type=Heartbeat) Computer`
 
-Vrátí následující záznamy pro oba datové typy.
+Vrátí hello následující záznamy pro oba datové typy.
 
 | Počítač| TimeGenerated | LastBackupStatus | TimeGenerated_joined | ComputerIP_joined | Type_joined |
 |:---|:---|:---|:---|:---|:---|
@@ -684,7 +684,7 @@ Vrátí následující záznamy pro oba datové typy.
 
 `Type=MyBackup_CL | join left Computer (Type=Heartbeat) Computer`
 
-Vrátí následující záznamy z MyBackup_CL s všechna odpovídající pole z prezenčního signálu.
+Vrátí hello následující záznamy z MyBackup_CL se žádné odpovídající pole z prezenčního signálu.
 
 | Počítač| TimeGenerated | LastBackupStatus | TimeGenerated_joined | ComputerIP_joined | Type_joined |
 |:---|:---|:---|:---|:---|:---|
@@ -694,7 +694,7 @@ Vrátí následující záznamy z MyBackup_CL s všechna odpovídající pole z 
 
 
 ### <a name="extend"></a>Rozšíření
-Umožňuje vytvořit běhu pole v dotazech. Všimněte si, že spuštění pole nelze použít pomocí příkazu měr k provedení agregace.
+Umožňuje vám toocreate běhu pole v dotazech. Všimněte si, že spuštění pole nelze používat s hello měr příkaz tooperform agregace.
 
 **Příklad 1**
 
@@ -709,7 +709,7 @@ Zobrazí hodnotu čítače v články znalostní báze místo bajtů.
 **Příklad 3**
 
     Type=WireData | EXTEND scale(TotalBytes,0,100) AS ScaledTotalBytes | Select ScaledTotalBytes,TotalBytes | SORT TotalBytes DESC
-Hodnota WireData TotalBytes škáluje tak, aby všechny výsledky jsou v rozmezí od 0 do 100.
+Měřítka hello hodnotu WireData TotalBytes tak, aby všechny výsledky jsou v rozmezí od 0 do 100.
 
 **Příklad 4**
 
@@ -723,169 +723,169 @@ Značky hodnoty čítače výkonu menší než 50 procent jako nízká, jiné ja
 ```
 Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | Extend product(CounterValue,60) as DWPerMin| measure max(DWPerMin) by InstanceName Interval 1HOUR
 ```
-Vypočítá maximální počet zápisů disku za minutu pro každý disk ve vašem počítači.
+Vypočítá hello maximálně zápisy na disk za minutu pro každý disk ve vašem počítači.
 
 **Podporované funkce**
 
 | Funkce | Popis | Příklady syntaxe |
 | --- | --- | --- |
-| Abs |Vrátí absolutní hodnotu zadanou hodnotu nebo funkce. |`abs(x)` <br> `abs(-5)` |
+| Abs |Vrátí hello absolutní hodnotu hello zadaná hodnota nebo funkce. |`abs(x)` <br> `abs(-5)` |
 | ACOS |Vrací kosinus oblouk hodnotu, nebo funkci. |`acos(x)` |
-| a |Vrátí hodnotu true, pokud všechny jeho operandy vyhodnotit na hodnotu true. |`and(not(exists(popularity)),exists(price))` |
+| a |Vrátí hodnotu true, pokud všechny jeho operandy vyhodnotit tootrue. |`and(not(exists(popularity)),exists(price))` |
 | ASIN |Vrací sinus oblouk hodnotu, nebo funkci. |`asin(x)` |
 | Atan |Vrací tangens oblouk hodnotu, nebo funkci. |`atan(x)` |
-| ATAN2 |Vrací úhel, vyplývající z převodu obdélníkový souřadnice x, y polární souřadnice. |`atan2(x,y)` |
+| ATAN2 |Vrací úhel hello vyplývající z hello převod hello obdélníkový souřadnice x, y toopolar souřadnice. |`atan2(x,y)` |
 | cbrt – |Kořenové datové krychle. |`cbrt(x)` |
-| ceil |Zaokrouhlí na celé číslo. |`ceil(x)`  <br> `ceil(5.6)`Vrátí hodnotu 6 |
+| ceil |Zaokrouhlí číslo nahoru tooan celé číslo. |`ceil(x)`  <br> `ceil(5.6)`Vrátí hodnotu 6 |
 | Cos |Vrátí kosinus úhlu. |`cos(x)` |
 | COSH |Vrací hyperbolický kosinus úhlu. |`cosh(x)` |
-| DEF |Zkratka pro výchozí. Vrátí hodnotu pole "pole". Pokud pole neexistuje, vrátí výchozí hodnotu zadanou a výsledkem je první hodnota, kde: `exists()==true`. |`def(rating,5)`. Tato funkce def() vrátí hodnocení nebo pokud není zadán žádný hodnocení v dokumentu, vrátí 5. <br> `def(myfield, 1.0)`je ekvivalentní `if(exists(myfield),myfield,1.0)`. |
-| stupňů |Převede radiánech stupňů. |`deg(x)` |
+| DEF |Zkratka pro výchozí. Vrátí hello hodnotu pole "pole". Pokud hello pole neexistuje, vrátí hodnotu výchozí hello zadaný a vypočítá hello první hodnota kde: `exists()==true`. |`def(rating,5)`. Tato funkce def() vrátí hello hodnocení nebo pokud není zadán žádný hodnocení v dokumentu hello, vrátí 5. <br> `def(myfield, 1.0)`je ekvivalentní příliš`if(exists(myfield),myfield,1.0)`. |
+| stupňů |Převede toodegrees radiánech. |`deg(x)` |
 | div |`div(x,y)`rozdělí x, y. |`div(1,y)` <br> `div(sum(x,100),max(y,1))` |
-| DIST |Vrací vzdálenost mezi dvěma vektorů, (body) v n dimenzí místa. Přebírá napájení plus dva nebo více instancí ValueSource a vypočítá vzdálenosti mezi dvěma způsoby. Každý ValueSource musí být číslo. Musí být sudé číslo instancí ValueSource předaná a metoda předpokládá, že první polovinu představují první vektoru a druhou polovinu představují druhý vektoru. |`dist(2, x, y, 0, 0)`Vypočítá Euclidean vzdálenost mezi (0,0) a (x, y) pro každý dokument. <br> `dist(1, x, y, 0, 0)`Vypočítá Manhattan (taxicab) vzdálenost mezi (0,0) a (x, y) pro každý dokument. <br> `dist(2,,x,y,z,0,0,0)`Euclidean vzdálenost mezi (0,0,0) a (x, y, z) pro každý dokument.<br>`dist(1,x,y,z,e,f,g)`Manhattan vzdálenost mezi (x, y, z) a (e, f, g), kde každý znak je název pole. |
-| existuje |Vrátí hodnotu TRUE, pokud žádné člen pole existuje. |`exists(author)`Vrátí hodnotu TRUE pro každý dokument, který má hodnotu v poli "Autor".<br>`exists(query(price:5.00))`Vrátí hodnotu TRUE, pokud "cena" odpovídá, "5.00". |
-| Exp |Vrátí Eulerova na číslo na mocninu x. |`exp(x)` |
-| Floor |Zaokrouhlí číslo dolů na celé číslo. |`floor(x)`  <br> `floor(5.6)`Vrátí hodnotu 5 |
+| DIST |Vrátí hello vzdálenost mezi dvěma vektorů, (body) v n dimenzí místa. Přebírá hello power plus dva nebo více instancí ValueSource a vypočítá hello vzdálenosti mezi dvěma vektory hello. Každý ValueSource musí být číslo. Musí být sudé číslo instancí ValueSource předaná a hello metoda předpokládá, že hello první polovinu představují první vektoru hello a hello druhou polovinu představují druhý vektoru hello. |`dist(2, x, y, 0, 0)`Vypočítá hello Euclidean vzdálenost mezi (0,0) a (x, y) pro každý dokument. <br> `dist(1, x, y, 0, 0)`Vypočítá hello Manhattan (taxicab) vzdálenost mezi (0,0) a (x, y) pro každý dokument. <br> `dist(2,,x,y,z,0,0,0)`Euclidean vzdálenost mezi (0,0,0) a (x, y, z) pro každý dokument.<br>`dist(1,x,y,z,e,f,g)`Manhattan vzdálenost mezi (x, y, z) a (e, f, g), kde každý znak je název pole. |
+| existuje |Vrátí hodnotu TRUE, pokud žádné členem hello pole existuje. |`exists(author)`Vrátí hodnotu TRUE pro každý dokument, který má hodnotu v poli "Autor" hello.<br>`exists(query(price:5.00))`Vrátí hodnotu TRUE, pokud "cena" odpovídá, "5.00". |
+| Exp |Eulerova vrátí číslo vyvolá toopower x. |`exp(x)` |
+| Floor |Zaokrouhlí číslo dolů tooan celé číslo. |`floor(x)`  <br> `floor(5.6)`Vrátí hodnotu 5 |
 | hypo |Vrátí sqrt(sum(pow(x,2),pow(y,2))) bez zprostředkující přetečení nebo podtečení. |`hypo(x,y)`  <br> ` |
-| Pokud |Umožňuje podmíněného funkce dotazy. V `if(test,value1,value2)`, test se nebo odkazuje na logickou hodnotu nebo výraz, který vrací logickou hodnotu (TRUE nebo FALSE). `value1`je vrácena hodnota funkce Pokud test vypočítá hodnotu TRUE. `value2`je vrácena hodnota funkce Pokud test vypočítá hodnotu FALSE. Výraz může být žádné funkce, které výstupy logické hodnoty. Může být také funkce vracení číselných hodnot, ve kterých se interpretuje jako false hodnota 0, nebo vrácení řetězce, ve které případu prázdný řetězec interpretována jako false. |`if(termfreq(cat,'electronics'),popularity,42)`Tato funkce zkontroluje každý dokument zobrazit, pokud obsahuje termín "electronics" v poli cat. Pokud ano, je vrácena hodnota pole oblíbenosti. Jinak je vrácena hodnota 42. |
-| lineární |Implementuje `m*x+c`, kde m a c jsou konstanty a x je libovolný funkce. Jde o ekvivalent `sum(product(m,x),c)`, ale poněkud efektivnější, jak jsou implementované jako jedinou funkci. |`linear(x,m,c) linear(x,2,4)`Vrátí`2*x+4` |
-| ln |Vrátí přirozené protokol zadanou funkci. |`ln(x)` |
-| Protokolu |Vrátí protokol základní 10 zadanou funkci. |`log(x)   log(sum(x,100))` |
-| mapy |Mapuje hodnoty vstupní funkce x, které spadají do min a max, včetně k zadané cílové. Argumenty min a max musí být konstanty. Argumenty cíle a výchozí může být konstanty nebo funkce. Pokud hodnota x nespadá mezi min a max, poté je vrácena hodnota x nebo výchozí hodnota je vrácena v případě, že zadaný jako 5. argument. |`map(x,min,max,target) map(x,0,0,1)`Změní všechny hodnoty 0 až 1. To může být užitečné při zpracování 0 výchozí hodnoty.<br> `map(x,min,max,target,default)    map(x,0,100,1,-1)`Změní hodnoty mezi 0 a 100 až 1 a všechny ostatní hodnoty na hodnotu -1.<br>  `map(x,0,100,sum(x,599),docfreq(text,solr))`Změny žádné hodnoty mezi 0 a 100 x + 599 a všechny ostatní hodnoty frekvence podmínek, solr, v textovém poli. |
-| maximální počet |Vrací maximální hodnotu číselného více vnořené funkce nebo konstanty, které jsou zadané jako argumenty: `max(x,y,...)`. Maximální funkce může být také užitečná pro "bottoming out" jinou funkci nebo pole v některé zadaný konstanta.  Použití `field(myfield,max)` syntaxe pro výběr maximální hodnota, která jediné pole s více hodnotami. |`max(myfield,myotherfield,0)` |
-| min |Vrací minimální hodnotu číselného více vnořené funkce konstanty, které jsou zadané jako argumenty: `min(x,y,...)`. Funkce min, také může být užitečné pro zajištění "horní mez" na funkce pomocí konstanta. Použití `field(myfield,min)` syntaxe pro výběr minimální hodnota jednoho pole s více hodnotami. |`min(myfield,myotherfield,0)` |
-| MOD |Vypočítá zbytek z funkce x, y funkce. |`mod(1,x)` <br> `mod(sum(x,100), max(y,1))` |
-| MS |Vrátí rozdíl mezi její argumenty v milisekundách. Data jsou relativní vzhledem k se systémy Unix a POSIX epoch čas, půlnoc, 1. ledna 1970 UTC. Argumenty může být název indexované TrieDateField, nebo na základě konstantní data matematické datum nebo teď. `ms()`je ekvivalentní `ms(NOW)`, počet milisekund od epoch. `ms(a)`Vrátí počet milisekund od epoch, který představuje argument. `ms(a,b)`Vrátí počet milisekund, po tomto b dojde před a, což je `a - b`. |`ms(NOW/DAY)`<br>`ms(2000-01-01T00:00:00Z)`<br>`ms(mydatefield)`<br>`ms(NOW,mydatefield)`<br>`ms(mydatefield,2000-01-01T00:00:00Z)`<br>`ms(datefield1,datefield2)` |
-| není |Logicky posunut hodnota zabalená funkce. |`not(exists(author))`Hodnota TRUE, pouze pokud `exists(author)` je false. |
+| Pokud |Umožňuje podmíněného funkce dotazy. V `if(test,value1,value2)`, test se nebo odkazuje tooa logická hodnota nebo výraz, který vrací logickou hodnotu (TRUE nebo FALSE). `value1`je hodnota hello vrácené funkcí hello Pokud test vypočítá hodnotu TRUE. `value2`je hodnota hello vrácené funkcí hello Pokud test vypočítá FALSE. Výraz může být žádné funkce, které výstupy logické hodnoty. Může být také funkce vracení číselných hodnot, ve kterých se interpretuje jako false hodnota 0, nebo vrácení řetězce, ve které případu prázdný řetězec interpretována jako false. |`if(termfreq(cat,'electronics'),popularity,42)`Tato funkce zkontroluje každý dokument toosee pokud obsahuje hello termín "electronics" v poli cat hello. Pokud, pak hello je vrácena hodnota pole oblíbenosti hello. Jinak je vrácena hodnota hello 42. |
+| lineární |Implementuje `m*x+c`, kde m a c jsou konstanty a x je libovolný funkce. Jde o ekvivalent příliš`sum(product(m,x),c)`, ale poněkud efektivnější, jak jsou implementované jako jedinou funkci. |`linear(x,m,c) linear(x,2,4)`Vrátí`2*x+4` |
+| ln |Vrátí hello přirozené protokolu hello zadat funkce. |`ln(x)` |
+| Protokolu |Vrátí hello protokolu základní 10 hello zadané funkce. |`log(x)   log(sum(x,100))` |
+| mapy |Mapuje hodnoty vstupní funkce x, které spadají do min a max, včetně toohello zadaný cíl. Hello argumenty min a max musí být konstanty. Hello argumenty cíle a výchozí může být konstanty nebo funkce. Pokud mezi minimální a maximální nespadá hello hodnotu x, pak je vrácena hodnota x buď hello nebo výchozí hodnota je vrácena v případě, že zadaný jako 5. argument. |`map(x,min,max,target) map(x,0,0,1)`Změní všechny hodnoty 0 too1. To může být užitečné při zpracování 0 výchozí hodnoty.<br> `map(x,min,max,target,default)    map(x,0,100,1,-1)`Změní všechny hodnoty mezi 0 a 100 too1 a všechny ostatní hodnoty příliš-1.<br>  `map(x,0,100,sum(x,599),docfreq(text,solr))`Změní hodnoty od 0 do 100 toox + 599 a všechny ostatní hodnoty toofrequency hello podmínek, solr, pole textu hello. |
+| maximální počet |Vrátí hello maximální číselná hodnota více vnořené funkce nebo konstanty, které jsou zadané jako argumenty: `max(x,y,...)`. max – Funkce Hello také může být užitečná pro "bottoming out" jinou funkci nebo pole v některé zadaný konstanta.  Použití hello `field(myfield,max)` syntaxe pro výběr hello maximální hodnota je jediné pole s více hodnotami. |`max(myfield,myotherfield,0)` |
+| min |Vrátí hello minimální číselnou hodnotu více vnořené funkce konstanty, které jsou zadané jako argumenty: `min(x,y,...)`. Funkce min Hello může být také užitečná při "horní mez" na funkce pomocí konstanta. Použití hello `field(myfield,min)` syntaxe pro výběr hello minimální hodnota jednoho pole s více hodnotami. |`min(myfield,myotherfield,0)` |
+| MOD |Vypočítá numerického zbytku hello hello funkce x hello funkce y. |`mod(1,x)` <br> `mod(sum(x,100), max(y,1))` |
+| MS |Vrátí rozdíl mezi její argumenty v milisekundách. Data jsou relativní toohello systémem Unix nebo POSIX epoch čas, půlnoc, 1. ledna 1970 UTC. Argumenty může být název hello indexované TrieDateField, nebo na základě konstantní data matematické datum nebo teď. `ms()`je ekvivalentní příliš`ms(NOW)`, počet milisekund od hello epoch. `ms(a)`Vrátí hello počet milisekund od hello epoch, který představuje hello argument. `ms(a,b)`Vrátí hello počet milisekund, po tomto b dojde před a, což je `a - b`. |`ms(NOW/DAY)`<br>`ms(2000-01-01T00:00:00Z)`<br>`ms(mydatefield)`<br>`ms(NOW,mydatefield)`<br>`ms(mydatefield,2000-01-01T00:00:00Z)`<br>`ms(datefield1,datefield2)` |
+| není |Hodnota Hello logicky Negované hello zabalená funkce. |`not(exists(author))`Hodnota TRUE, pouze pokud `exists(author)` je false. |
 | nebo |Logická disjunkce. |`or(value1,value2)`Hodnota TRUE, pokud buď value1 nebo value2 platí. |
-| Pow |Vyvolá určenou mocninu o zadaném základu. `pow(x,y)`Vyvolá x exponentem y. |`pow(x,y)`<br>`pow(x,log(y))`<br>`pow(x,0.5)`Stejné jako sqrt. |
-| Produktu |Vrátí součin více hodnot nebo funkce, které jsou určené v seznamu odděleném čárkami. `mul(...)`může také použít jako alias pro tuto funkci. |`product(x,y,...)`<br>`product(x,2)`<br>`product(x,y)`<br>`mul(x,y)` |
-| recip |Provede vzájemných funkce s `recip(x,m,a,b)` implementace `a/(m*x+b)`, kde m, a, b jsou konstanty a x je žádné libovolně komplexní funkce. Když a b stejné a je x > = 0, tato funkce má maximální hodnota je 1, který zahodí jako x zvyšuje. Zvýšení hodnoty z a b společně výsledky v Přesun celého funkce plošší část křivky. Tyto vlastnosti můžete vytvořit ideální funkce pro zvyšovat skóre novější dokumenty, když je x `rord(datefield)`. |`recip(myfield,m,a,b)`<br>`recip(rord(creationDate),1,1000,1000)` |
-| rad |Převede radiánech stupňů. |`rad(x)` |
-| Tisknout |Zaokrouhlí číslo na nejbližší celé číslo. |`rint(x)`  <br> `rint(5.6)`Vrátí hodnotu 6 |
+| Pow |Vyvolá hello zadat základní toohello zadaný napájení. `pow(x,y)`Vyvolá x toohello power y. |`pow(x,y)`<br>`pow(x,log(y))`<br>`pow(x,0.5)`Hello stejné jako sqrt. |
+| Produktu |Vrátí hello produktu více hodnot nebo funkce, které jsou určené v seznamu odděleném čárkami. `mul(...)`může také použít jako alias pro tuto funkci. |`product(x,y,...)`<br>`product(x,2)`<br>`product(x,y)`<br>`mul(x,y)` |
+| recip |Provede vzájemných funkce s `recip(x,m,a,b)` implementace `a/(m*x+b)`, kde m, a, b jsou konstanty a x je žádné libovolně komplexní funkce. Když a b stejné a je x > = 0, tato funkce má maximální hodnota je 1, který zahodí jako x zvyšuje. Hello hodnotu zvýšit a b společně má za následek pohyb hello celý funkce tooa plošší součástí křivky hello. Tyto vlastnosti můžete vytvořit ideální funkce pro zvyšovat skóre novější dokumenty, když je x `rord(datefield)`. |`recip(myfield,m,a,b)`<br>`recip(rord(creationDate),1,1000,1000)` |
+| rad |Převede tooradians stupňů. |`rad(x)` |
+| Tisknout |Zaokrouhlí číslo toohello nejbližší celé číslo. |`rint(x)`  <br> `rint(5.6)`Vrátí hodnotu 6 |
 | Sin |Vrátí sinus úhlu. |`sin(x)` |
 | SINH |Vrací hyperbolický sinus úhlu. |`sinh(x)` |
-| Škálování |Udává hodnoty funkce x tak, aby se patří mezi zadaný minTarget a maxTarget (včetně). Aktuální implementace prochází všechny hodnoty funkce získat min a max, takže ho můžete vybrat správné škálování. Aktuální implementace nerozlišuje po odstranění dokumentů, nebo dokumenty, které nemají žádnou hodnotu. Použije 0.0 hodnoty pro tyto případy: To znamená, že pokud jsou obvykle všechny větší hodnotu než 0,0 hodnoty, jeden můžete nadále binárními 0,0 jako minimální hodnota k namapování z. V těchto případech odpovídající `map()` funkce může jako alternativní řešení Chcete-li změnit 0,0 na hodnotu v rozsahu skutečné, jak je vidět tady:`scale(map(x,0,0,5),1,2)` |`scale(x,minTarget,maxTarget)`<br>`scale(x,1,2)`Hodnoty x, škáluje tak, aby všechny hodnoty jsou mezi 1 a 2 (včetně). |
-| Sqrt |Vrátí druhou odmocninu čísla se zadanou hodnotou nebo funkce. |`sqrt(x)`<br>`sqrt(100)`<br>`sqrt(sum(x,100))` |
-| strdist |Vypočítá vzdálenost mezi dva řetězce. Používá rozhraní Lucene kontrolu pravopisu StringDistance a podporuje všechny implementace, které jsou k dispozici v tomto balíčku. Také umožňuje aplikacím zařadit vlastní, prostřednictvím prostředků na Solr možnosti načítání. provede strdist `(string1, string2, distance measure)`. Možné hodnoty pro míru vzdálenost jsou:<ul><li>jw: Jaro Winkler</li><li>Upravit: Levenstein nebo upravit vzdálenost</li><li>ngram: The NGramDistance-li zadána, můžete volitelně předávat velikost ngram příliš. Výchozí hodnota je 2.</li><li>FQN: Plně kvalifikovaný název pro implementaci rozhraní StringDistance třídy. Musí mít konstruktor bez arg.</li></ul> |`strdist("SOLR",id,edit)` |
+| Škálování |Udává hodnoty hello funkce x, tak, aby se patří mezi hello zadané minTarget a maxTarget (včetně). aktuální implementace Hello prochází všechny hello funkce hodnoty tooobtain hello min a max, takže ho můžete vybrat hello správné škálování. aktuální implementace Hello nerozlišuje po odstranění dokumentů, nebo dokumenty, které nemají žádnou hodnotu. Použije 0.0 hodnoty pro tyto případy: To znamená, že pokud jsou obvykle všechny větší hodnotu než 0,0 hodnoty, jeden můžete nadále binárními 0,0 jako hello toomap minimální hodnota z. V těchto případech odpovídající `map()` funkce by se použil jako alternativní řešení toochange 0,0 tooa hodnotu v rozsahu skutečné hello, jak je vidět tady:`scale(map(x,0,0,5),1,2)` |`scale(x,minTarget,maxTarget)`<br>`scale(x,1,2)`Měřítka hello hodnoty x, tak, aby všechny hodnoty jsou mezi 1 a 2 (včetně). |
+| Sqrt |Vrátí hello druhou odmocninu čísla hello zadaná hodnota nebo funkce. |`sqrt(x)`<br>`sqrt(100)`<br>`sqrt(sum(x,100))` |
+| strdist |Vypočítá hello vzdálenost mezi dva řetězce. Používá hello Lucene pravopisu kontrolu StringDistance rozhraní a podporuje všechny hello implementace, které jsou k dispozici v tomto balíčku. Kromě toho umožňuje tooplug aplikace ve své vlastní prostřednictvím prostředků na Solr možnosti načítání. provede strdist `(string1, string2, distance measure)`. Možné hodnoty pro míru vzdálenost jsou:<ul><li>jw: Jaro Winkler</li><li>Upravit: Levenstein nebo upravit vzdálenost</li><li>ngram: hello NGramDistance,-li zadána, můžete volitelně předávat hello ngram velikost příliš. Výchozí hodnota je 2.</li><li>FQN: Plně kvalifikovaný název pro implementaci rozhraní StringDistance hello – třída. Musí mít konstruktor bez arg.</li></ul> |`strdist("SOLR",id,edit)` |
 | Sub – |Vrátí x-y z `sub(x,y)`. |`sub(myfield,myfield2)`<br>`sub(100,sqrt(myfield))` |
-| Součet |Vrátí součet více hodnot nebo funkce, které jsou určené v seznamu odděleném čárkami. `add(...)`může se použít jako alias pro tuto funkci. |`sum(x,y,...)`<br>`sum(x,1)`<br>`sum(x,y)`<br>`sum(sqrt(x),log(y),z,0.5)`<br>`add(x,y)` |
-| termfreq |Vrátí počet termín se zobrazí v poli pro tento dokument. |termfreq(text,'memory') |
+| Součet |Vrátí hello součet více hodnot nebo funkce, které jsou určené v seznamu odděleném čárkami. `add(...)`může se použít jako alias pro tuto funkci. |`sum(x,y,...)`<br>`sum(x,1)`<br>`sum(x,y)`<br>`sum(sqrt(x),log(y),z,0.5)`<br>`add(x,y)` |
+| termfreq |Vrátí číslo hello kolikrát hello termín se zobrazí v hello pole pro tento dokument. |termfreq(text,'memory') |
 | Tan |Vrátí tangens úhlu. |`tan(x)` |
 | TANH |Vrací hyperbolický tangens úhlu. |`tanh(x)` |
 
 ## <a name="search-field-and-facet-reference"></a>Odkaz na pole a omezující vlastnost vyhledávání
-Při použití hledání protokolů hledání dat, zobrazí výsledky různé pole a omezující vlastnosti. Některé z informací se nemusí zobrazit velmi popisný. Použijte následující informace vám pomohou pochopit výsledky.
+Při použití hledání protokolů toofind data zobrazit výsledky různé pole a omezující vlastnosti. Některé z informací hello se nemusí zobrazit velmi popisný. Použijte následující informace toohelp pochopit hello výsledky hello.
 
 | Pole | Typ vyhledávání | Popis |
 | --- | --- | --- |
-| TenantId |Všechny |Používá se k oddílu dat. |
-| TimeGenerated |Všechny |Používá k řízení časové ose timeselectors (ve vyhledávání a na dalších obrazovkách). Reprezentuje při generování část dat (obvykle na agenta). Čas je vyjádřen ve formátu ISO a je vždycky UTC. U typů, které jsou založeny na existující instrumentace (to znamená, události v protokolu) je to obvykle reálném čase, který položka/řádku/záznam protokolu byla zaznamenána. Pro některé typy, které vytváří prostřednictvím sad management Pack nebo v cloudu (například doporučení nebo výstrahy) představuje dobu něco jiného. Toto je čas tato nová data se snímkem konfigurací nějaká nebyla shromážděna, nebo bylo vytvořeno ho podle doporučení nebo výstrahy. |
-| ID události |Událost |ID události v protokolu událostí systému Windows. |
-| Protokol událostí |Událost |Protokol událostí, kde byla události zaznamenané v systému Windows. |
+| TenantId |Všechny |Použít toopartition data. |
+| TimeGenerated |Všechny |Použít časové osy hello toodrive, timeselectors (ve vyhledávání a na dalších obrazovkách). Reprezentuje při generování hello část dat (obvykle na hello agent). čas Hello je vyjádřen ve formátu ISO a je vždycky UTC. V případě hello typy, které jsou založeny na existující instrumentace (to znamená, události v protokolu) je to obvykle hello reálném čas, že hello položku nebo řádek nebo záznam protokolu. Pro některé hello hello jiné typy, které vytváří prostřednictvím sad management Pack nebo v cloudu hello (například doporučení nebo výstrahy), doba představuje něco jiný. Toto je čas hello tato nová data se snímkem konfigurací nějaká nebyla shromážděna, nebo bylo vytvořeno ho podle doporučení nebo výstrahy. |
+| ID události |Událost |ID události v protokolu událostí systému Windows hello. |
+| Protokol událostí |Událost |Protokol událostí, kde hello událost byla zaznamenána v systému Windows. |
 | EventLevelName |Událost |Kritický nebo upozornění nebo informace nebo úspěch |
 | eventLevel |Událost |Číselnou hodnotu pro kritický nebo upozornění nebo informace nebo úspěch (použijte EventLevelName místo pro snazší/srozumitelnější dotazy). |
-| SourceSystem |Všechny |Kde data pocházejí z (z hlediska připojení režimu do služby). Mezi příklady patří Microsoft System Center Operations Manager a Azure Storage. |
+| SourceSystem |Všechny |Kde hello data pocházejí z (z hlediska připojení režimu toohello služby). Mezi příklady patří Microsoft System Center Operations Manager a Azure Storage. |
 | Název objektu |PerfHourly |Název objektu výkonu systému Windows. |
 | InstanceName |PerfHourly |Název instance čítače výkonu systému Windows. |
 | CounteName |PerfHourly |Název čítače výkonu systému Windows. |
-| ObjectDisplayName |PerfHourly ConfigurationObjectProperty ConfigurationAlert, ConfigurationObject, |Zobrazovaný název objektu cílem pravidlo kolekce výkonu v nástroji Operations Manager. Mohou být také zobrazovaný název objektu zjištěné Operational Insights, nebo pro který byla výstraha vygenerována. |
-| RootObjectName |PerfHourly ConfigurationObjectProperty ConfigurationAlert, ConfigurationObject, |Zobrazovaný název nadřazeného člena nadřazeného (v dvojité hostitelský vztah) objekt cílem pravidlo kolekce výkonu v nástroji Operations Manager. Mohou být také zobrazovaný název objektu zjištěné Operational Insights, nebo pro který byla výstraha vygenerována. |
-| Počítač |Většina typů |Název počítače, které patří data. |
-| Název zařízení |ProtectionStatus |Název počítače dat patří do (stejný jako "Počítač"). |
+| ObjectDisplayName |PerfHourly ConfigurationObjectProperty ConfigurationAlert, ConfigurationObject, |Zobrazovaný název objektu hello cílem pravidlo kolekce výkonu v nástroji Operations Manager. Mohou být také hello zobrazovaný název objektu hello zjištěných Statistika provozu nebo na které hello byla vygenerována výstraha. |
+| RootObjectName |PerfHourly ConfigurationObjectProperty ConfigurationAlert, ConfigurationObject, |Zobrazovaný název nadřazené hello hello nadřazeného objektu hello cílem pravidlo kolekce výkonu v nástroji Operations Manager (v dvojité hostitelský vztah). Mohou být také hello zobrazovaný název objektu hello zjištěných Statistika provozu nebo na které hello byla vygenerována výstraha. |
+| Počítač |Většina typů |Název počítače, které hello dat patří. |
+| Název zařízení |ProtectionStatus |Data hello název počítače patří příliš (stejné jako "Počítač"). |
 | DetectionId |ProtectionStatus | |
-| ThreatStatusRank |ProtectionStatus |Pořadí stav Threat je číselné vyjádření stavu hrozeb. Podobně jako u kódy odpovědí protokolu HTTP, má pořadí mezery mezi zadanými čísly (proto žádné hrozeb je 150 a není 100 nebo 0), a místo pro přidání nové stavy. Pro souhrn stavu hrozeb a stav ochrany je záměrem Zobrazit nejhorší stav, který byl počítač v průběhu časového období. Čísla rank různé stavy, takže můžete vyhledat záznam s nejvyšší číslo. |
+| ThreatStatusRank |ProtectionStatus |Pořadí stav Threat je číselné vyjádření stavu threat hello. Kódy odpovědí podobné tooHTTP, hodnocení hello má mezery mezi hello čísla (proto žádné hrozeb je 150 a není 100 nebo 0), a místo tooadd nové stavy. Záměr hello souhrnu threat stav a stav ochrany, je, že tooshow hello nejhorší stav hello počítače byl v průběhu hello vybrané časové období. čísla Hello rank hello, můžete vyhledat hello záznam s nejvyšší číslo hello různých stavů. |
 | ThreatStatus |ProtectionStatus |Popis ThreatStatus, mapování 1:1 s ThreatStatusRank. |
-| TypeofProtection |ProtectionStatus |Antimalwarových produktu, který je zjištěn v počítači: none, nástroje pro odebrání Microsoft Malware, Forefront a tak dále. |
+| TypeofProtection |ProtectionStatus |Antimalwarových produktu, který je zjištěn v počítači hello: none, nástroje pro odebrání Microsoft Malware, Forefront a tak dále. |
 | ScanDate |ProtectionStatus | |
 | SourceHealthServiceId |ProtectionStatus RequiredUpdate |ID služby stavu pro tento počítač agenta. |
 | HealthServiceId |Většina typů |ID služby stavu pro tento počítač agenta. |
 | ManagementGroupName |Většina typů |Název skupiny pro správu pro agenty nástroje Operations Manager připojit. Jinak má hodnotu null nebo prázdný. |
 | objectType |ConfigurationObject |Zadejte pro tento objekt zjištěný assessment konfigurace analýzy protokolů (jako sada management pack Operations Manager typu nebo třídy). |
-| UpdateTitle |RequiredUpdate |Název aktualizace, která byla nalezena není nainstalován. |
-| PublishDate |RequiredUpdate |Pokud byla aktualizace publikována ve službě Microsoft Update. |
-| Server |RequiredUpdate |Název počítače dat patří do (stejný jako "Počítač"). |
-| Produkt |RequiredUpdate |Produkt, který se aktualizace vztahuje. |
+| UpdateTitle |RequiredUpdate |Název hello aktualizace, která byla nalezena není nainstalovaná. |
+| PublishDate |RequiredUpdate |Pokud byla aktualizace hello publikována ve službě Microsoft Update. |
+| Server |RequiredUpdate |Data hello název počítače patří příliš (stejné jako "Počítač"). |
+| Produkt |RequiredUpdate |Produkt, který hello aktualizace se vztahuje na. |
 | UpdateClassification |RequiredUpdate |Typ aktualizace (například kumulativní aktualizace nebo service pack). |
 | KBID |RequiredUpdate |ID článku KB, který popisuje tento osvědčený postup nebo aktualizace. |
-| WorkflowName |ConfigurationAlert |Název pravidla nebo monitorování, které vytváří výstrahy. |
-| Závažnost |ConfigurationAlert |Závažnost výstrahy. |
-| Priorita |ConfigurationAlert |Priorita výstrahy. |
+| WorkflowName |ConfigurationAlert |Název hello pravidlo nebo monitorování, které vytváří výstrahy hello. |
+| Závažnost |ConfigurationAlert |Závažnost výstrahy hello. |
+| Priorita |ConfigurationAlert |Priorita výstrahy hello. |
 | IsMonitorAlert |ConfigurationAlert |Je tato výstraha vygeneruje, monitorování (true) nebo pravidlem (false)? |
-| AlertParameters |ConfigurationAlert |Soubor XML s parametry výstrahy analýzy protokolů. |
-| Kontext |ConfigurationAlert |Soubor XML s kontextem výstrahy analýzy protokolů. |
-| Úloha |ConfigurationAlert |Technologie nebo úlohy, které výstrahu odkazuje. |
-| AdvisorWorkload |Doporučení |Technologie nebo úlohy, které odkazuje doporučení. |
+| AlertParameters |ConfigurationAlert |Soubor XML s parametry hello hello analýzy protokolů výstrahy. |
+| Kontext |ConfigurationAlert |Soubor XML s kontextem hello hello analýzy protokolů výstrahy. |
+| Úloha |ConfigurationAlert |Označuje technologie nebo úlohy, které hello výstrahy. |
+| AdvisorWorkload |Doporučení |Označuje technologie nebo úlohy, které hello doporučení. |
 | Popis |ConfigurationAlert |Popis výstrahy (krátký). |
-| DaysSinceLastUpdate |UpdateAgent |Počet dní před (relativní vůči TimeGenerated tento záznam) tohoto agenta nainstalovat v žádné aktualizace ze služby Windows Server Update Service (WSUS) nebo Microsoft Update? |
+| DaysSinceLastUpdate |UpdateAgent |Počet dní před (relativní tooTimeGenerated tento záznam) tohoto agenta nainstalovat v žádné aktualizace ze služby Windows Server Update Service (WSUS) nebo Microsoft Update? |
 | DaysSinceLastUpdateBucket |UpdateAgent |Podle DaysSinceLastUpdate kategorizaci v čas kbelíků z dobu počítač poslední nainstalované všechny aktualizace z webu služby WSUS nebo Microsoft Update. |
 | AutomaticUpdateEnabled |UpdateAgent |Kontrola automatických aktualizací povolená nebo zakázaná na tento agent? |
-| AutomaticUpdateValue |UpdateAgent |Automatické aktualizace kontroluje nastaven na automaticky stahovat a instalovat, stahují jenom nebo jenom zkontrolujte? |
-| WindowsUpdateAgentVersion |UpdateAgent |Číslo verze agenta nástroje Microsoft Update. |
+| AutomaticUpdateValue |UpdateAgent |Je automatickou aktualizaci pro vracení se změnami sadu tooautomatically stažení a instalace, stahují jenom nebo jenom zkontrolujte? |
+| WindowsUpdateAgentVersion |UpdateAgent |Číslo verze agenta hello Microsoft Update. |
 | WSUSServer |UpdateAgent |Který WSUS server tohoto agenta aktualizace cílí? |
-| OSVersion |UpdateAgent |Verze operačního systému tohoto agenta aktualizace běží na. |
-| Name (Název) |Doporučení, ConfigurationObjectProperty |Název nebo název doporučení, nebo název vlastnosti z hodnocení konfigurace analýzy protokolů. |
+| OSVersion |UpdateAgent |Verze operačního systému hello tohoto agenta aktualizace běží na. |
+| Name (Název) |Doporučení, ConfigurationObjectProperty |Název nebo název hello doporučení nebo název vlastnosti hello z hodnocení konfigurace analýzy protokolů. |
 | Hodnota |ConfigurationObjectProperty |Hodnota vlastnosti z hodnocení konfigurace analýzy protokolů. |
-| KBLink |Doporučení |Adresa URL v článku KB, který popisuje tento osvědčený postup nebo aktualizace. |
-| RecommendationStatus |Doporučení |Doporučení jsou mezi několik typů, jejichž záznamy aktualizovat, ne jenom přidat do indexu vyhledávání. Tento stav se změní, zda doporučení je aktivní/otevřít, nebo pokud analýzy protokolů zjistí, že ho byl vyřešen. |
+| KBLink |Doporučení |Adresa URL toohello KB článek, který popisuje tento osvědčený postup nebo aktualizace. |
+| RecommendationStatus |Doporučení |Doporučení jsou mezi hello několik typů, jejichž záznamy získat aktualizované, právě přidanou toohello indexu vyhledávání. Tento stav se změní, zda hello doporučení je aktivní/otevřít, nebo pokud analýzy protokolů zjistí, že ho byl vyřešen. |
 | RenderedDescription |Událost |Vykreslené popis (znovu používaný text se vyplněná parametry) událost systému Windows. |
-| ParameterXml |Událost |Soubor XML s parametry v datové části události systému Windows (jak je vidět v prohlížeči událostí). |
-| EventData |Událost |Soubor XML s celou datová část události systému Windows (jak je vidět v prohlížeči událostí). |
-| Zdroj |Událost |Zdroj protokolu událostí, které vygenerovalo událost. |
-| EventCategory |Událost |Kategorie události přímo z protokolu událostí systému Windows. |
-| Uživatelské jméno |Událost |Uživatelské jméno událostí systému Windows (obvykle AUTHORITY\LOCALSYSTEM NT). |
-| SampleValue |PerfHourly |Průměrnou hodnotu pro hodinové agregace čítače výkonu. |
-| Min. |PerfHourly |Minimální hodnota v hodinový interval agregace hodinové čítače výkonu. |
-| Max. |PerfHourly |Maximální hodnota v hodinový interval agregace hodinové čítače výkonu. |
-| Percentile95 |PerfHourly |Hodnota 95. percentil hodinový interval agregace hodinové čítače výkonu. |
-| SampleCount |PerfHourly |Kolik nezpracovaná vzorků jste použili k vytvoření tento záznam hodinové agregace. |
+| ParameterXml |Událost |Soubor XML s parametry hello hello datové části události systému Windows (jak je vidět v prohlížeči událostí). |
+| EventData |Událost |Soubor XML s hello celou datová část události systému Windows (jak je vidět v prohlížeči událostí). |
+| Zdroj |Událost |Zdroj protokolu událostí, které vygenerovalo událost hello. |
+| EventCategory |Událost |Kategorie události hello přímo z protokolu událostí systému Windows hello. |
+| Uživatelské jméno |Událost |Uživatelské jméno událostí systému Windows hello (obvykle AUTHORITY\LOCALSYSTEM NT). |
+| SampleValue |PerfHourly |Průměrná hodnota hello hodinové agregace čítače výkonu. |
+| Min. |PerfHourly |Minimální hodnota v hello hodinový interval agregace hodinové čítače výkonu. |
+| Max. |PerfHourly |Maximální hodnota v hello hodinový interval agregace hodinové čítače výkonu. |
+| Percentile95 |PerfHourly |Hello 95. hodnota percentilu pro hello hodinový interval agregace hodinové čítače výkonu. |
+| SampleCount |PerfHourly |Kolik nezpracovaná vzorků byly použité tooproduce tomto hodinové agregace záznamu. |
 | Hrozby |ProtectionStatus |Název malwaru byl nalezen. |
-| StorageAccount |W3CIISLog |Účet služby Azure Storage protokol byl načten z. |
-| AzureDeploymentID |W3CIISLog |ID Azure nasazení cloudové služby v protokolu patří. |
-| Role |W3CIISLog |Role služby Azure cloud protokol patří. |
-| RoleInstance |W3CIISLog |RoleInstance Azure role, které patří do protokolu. |
-| sSiteName |W3CIISLog |Web služby IIS, které patří protokol (metabáze zápis); pole s-sitename v původní protokolu. |
-| sComputerName |W3CIISLog |Pole s-computername v původní protokolu. |
-| sIP |W3CIISLog |Požadavek HTTP adresa IP serveru byla určena. Pole s-ip v původní protokolu. |
-| csMethod |W3CIISLog |Metoda HTTP (např. GET nebo POST) používaná klientem v požadavku HTTP. Cs metoda v původní protokolu. |
-| cIP |W3CIISLog |Požadavek HTTP adresa IP klienta pochází. Pole c-ip v původní protokolu. |
-| csUserAgent |W3CIISLog |HTTP User-Agent deklarovaná klienta (prohlížeče nebo jinak). Cs uživatelského agenta v původní protokolu. |
-| scStatus |W3CIISLog |Kód stavu HTTP (například 200/403/500) vrácená serverem do klienta. Cs stav v původní protokolu. |
-| timeTaken |W3CIISLog |Jak dlouho (v milisekundách), kterou trvalo dokončení požadavku. Pole timetaken v původní protokolu. |
-| csUriStem |W3CIISLog |Relativní identifikátor URI (bez adresa hostitele, který je, a vyhledávání), byl požadován. Cs-modul uristem pole v původní protokolu. |
+| StorageAccount |W3CIISLog |Azure hello protokol účtu úložiště byl načten z. |
+| AzureDeploymentID |W3CIISLog |ID nasazení Azure hello cloudové služby hello protokolu patří. |
+| Role |W3CIISLog |Role hello Azure cloud service hello protokolu patří. |
+| RoleInstance |W3CIISLog |RoleInstance hello Azure role, která hello protokolu patří. |
+| sSiteName |W3CIISLog |Web služby IIS, která hello protokolu patří too(metabase notation); pole s-sitename Hello v původní protokolu hello. |
+| sComputerName |W3CIISLog |pole s-computername Hello v původní protokolu hello. |
+| sIP |W3CIISLog |Požadavek HTTP hello adresu IP serveru byla určena. pole s-ip Hello v původní protokolu hello. |
+| csMethod |W3CIISLog |Metoda HTTP (např. GET nebo POST) používaná klientem hello v hello HTTP žádosti. Hello cs-method v původní protokolu hello. |
+| cIP |W3CIISLog |Požadavek HTTP hello adresa IP klienta pochází. Hello c-ip pole v původní protokolu hello. |
+| csUserAgent |W3CIISLog |HTTP User-Agent deklarovaná hello klienta (prohlížeče nebo jinak). Hello cs-user-agent v původní protokolu hello. |
+| scStatus |W3CIISLog |Stav protokolu HTTP (například 200/403/500) vrátil kód klienta toohello server hello. Hello cs stav v původní protokolu hello. |
+| timeTaken |W3CIISLog |Jak dlouho (v milisekundách) trvalo této žádosti hello toocomplete. pole timetaken Hello v původní protokolu hello. |
+| csUriStem |W3CIISLog |Relativní identifikátor URI (bez adresa hostitele, který je, a vyhledávání), byl požadován. Hello cs-modul uristem pole v původní protokolu hello. |
 | csUriQuery |W3CIISLog |Dotaz v identifikátoru URI. Identifikátor URI dotazy jsou potřebný jenom u dynamických stránek, například stránky ASP, takže toto pole obvykle obsahuje pomlčka pro statické stránky. |
-| sPort |W3CIISLog |Port serveru, který požadavek HTTP byl odeslán do (a zda služba IIS naslouchá, protože je převzata). |
-| csUserName |W3CIISLog |Ověřit uživatelské jméno, je-li žádost ověřený a není anonymní. |
-| csVersion |W3CIISLog |Verze protokolu HTTP použitý v požadavku (například HTTP/1.1). |
+| sPort |W3CIISLog |Port serveru, který hello požadavek HTTP byl odeslán příliš (a zda služba IIS naslouchá, protože je převzata). |
+| csUserName |W3CIISLog |Ověřit uživatelské jméno, pokud je požadavek hello ověřený a není anonymní. |
+| csVersion |W3CIISLog |Verzi protokolu HTTP použitou v žádosti o hello (například HTTP/1.1). |
 | csCookie |W3CIISLog |Informace o souboru cookie. |
-| csReferer |W3CIISLog |Web, který uživatel navštívil jako poslední. Tento web poskytl odkaz na aktuální web. |
+| csReferer |W3CIISLog |Webový server tento hello uživatel navštívil jako poslední. Tento web poskytl odkaz toohello aktuální web. |
 | csHost |W3CIISLog |Hlavička hostitele (například www.mysite.com) požadovanou. |
 | scSubStatus |W3CIISLog |Druhotný stavový kód chyby. |
 | scWin32Status |W3CIISLog |Stavový kód Windows. |
-| csBytes |W3CIISLog |Počet bajtů odeslaných v požadavku z klienta na server. |
-| scBytes |W3CIISLog |Počet bajtů vrácený zpět v odpovědi ze serveru do klienta. |
+| csBytes |W3CIISLog |Bajtů odeslaných v požadavku hello ze serveru toohello client hello. |
+| scBytes |W3CIISLog |Bajtů vrátila zpět v odpovědi hello z klienta toohello server hello. |
 | ConfigChangeType |Změnakonfigurace |Typ změny (například WindowsServices nebo softwaru). |
-| ChangeCategory |Změnakonfigurace |Kategorie změn (Added/upravené nebo odebrané). |
+| ChangeCategory |Změnakonfigurace |Kategorie změn hello (Added/upravené nebo odebrané). |
 | SoftwareType |Změnakonfigurace |Typ softwaru (aplikace nebo aktualizace). |
-| SoftwareName |Změnakonfigurace |Název softwaru (platí jenom pro změny softwaru). |
-| Vydavatel |Změnakonfigurace |Dodavatele, který publikuje softwaru (platí jenom pro změny softwaru). |
-| SvcChangeType |Změnakonfigurace |Typ změny, které bylo použito na služby systému Windows (stavu/StartupType/cesta/Účet_služby). Tento krok platí jenom pro změny služby Windows. |
-| SvcDisplayName |Změnakonfigurace |Zobrazovaný název služby, která byla změněna. |
-| SvcName |Změnakonfigurace |Název služby, která byla změněna. |
-| SvcState |Změnakonfigurace |Nový (aktuální) stav služby. |
-| SvcPreviousState |Změnakonfigurace |Předchozí známé stavu služby (platí jenom Pokud se změnila stav služby). |
+| SoftwareName |Změnakonfigurace |Název softwaru hello (pouze změny použít toosoftware). |
+| Vydavatel |Změnakonfigurace |Dodavatele, který publikuje hello softwaru (pouze změny použít toosoftware). |
+| SvcChangeType |Změnakonfigurace |Typ změny, které bylo použito na služby systému Windows (stavu/StartupType/cesta/Účet_služby). Toto je pouze změny tooWindows příslušné služby. |
+| SvcDisplayName |Změnakonfigurace |Zobrazovaný název služby hello, která byla změněna. |
+| SvcName |Změnakonfigurace |Název služby hello, která byla změněna. |
+| SvcState |Změnakonfigurace |Nový stav (aktuální) služby hello. |
+| SvcPreviousState |Změnakonfigurace |Předchozí označuje stav služby hello (platí jenom Pokud se změnila stav služby). |
 | SvcStartupType |Změnakonfigurace |Typ spuštění služby. |
 | SvcPreviousStartupType |Změnakonfigurace |Předchozí typ spuštění v služby (platí pouze je-li změnit typ spuštění služby). |
 | SvcAccount |Změnakonfigurace |Účet služby. |
 | SvcPreviousAccount |Změnakonfigurace |Účet služby předchozí (platí jenom Pokud změněn účet služby). |
-| SvcPath |Změnakonfigurace |Cesta ke spustitelnému souboru služby systému Windows. |
-| SvcPreviousPath |Změnakonfigurace |Předchozí cesta ke spustitelnému souboru pro službu systému Windows (platí jenom pokud ho změnit). |
-| SvcDescription |Změnakonfigurace |Popis služby. |
+| SvcPath |Změnakonfigurace |Cesta toohello spustitelný soubor služby systému Windows hello. |
+| SvcPreviousPath |Změnakonfigurace |Předchozí cesta hello spustitelný soubor pro hello služba systému Windows (platí jenom pokud ho změnit). |
+| SvcDescription |Změnakonfigurace |Popis služby hello. |
 | Předchozí |Změnakonfigurace |Předchozí stav tohoto softwaru (nainstalováno nebo není nainstalovaná nebo předchozí verze). |
 | Aktuální |Změnakonfigurace |Nejnovější stav tohoto softwaru (nainstalováno nebo není nainstalovaná nebo aktuální verze). |
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o protokolu hledání:
 
-* Chcete-li zobrazit podrobné informace shromážděné řešeními, seznamte se s [vyhledáváním protokolů](log-analytics-log-searches.md).
-* Použití [vlastních polí ve analýzy protokolů](log-analytics-custom-fields.md) rozšířit vyhledávání protokolu.
+* Seznamte se s [protokolu hledání](log-analytics-log-searches.md) tooview podrobné informace shromážděné řešení.
+* Použití [vlastních polí ve analýzy protokolů](log-analytics-custom-fields.md) tooextend protokolu hledání.

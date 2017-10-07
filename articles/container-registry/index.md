@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace ke službě Azure Container Registry – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se vytvářet a spravovat registry kontejnerů pro ukládání imagí nasazení pomocí spravované služby registru Dockeru. Kurzy, reference k rozhraní API a další zdroje informací"
+title: "aaaAzure dokumentace k registru kontejneru – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Zjistěte, jak toocreate a udržovat toostore registrech kontejner nasazení bitové kopie s spravované služby Docker registru. Kurzy, reference k rozhraní API a další zdroje informací"
 services: container-registry
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 3962f34170cf3a19fe51b2f90b49fa21e01fc6cc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d759eb2b00b59797cfdf8ce3b4071317a574c2b8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-container-registry-documentation"></a>Dokumentace k Azure Container Registry
 
-Naučte se používat registr kontejneru k ukládání a správě imagí pro všechny typy kontejnerových nasazení. Kurzy, reference k rozhraní REST API a další dokumentace ukazují, jak vytvářet a spravovat kontejnerové registry pomocí této spravované služby registru Dockeru.
+Zjistěte, jak toouse kontejneru registru toostore a správa bitových kopií pro všechny typy nasazení kontejnerů. Kurzy, odkazu k REST API a další dokumentaci ukazují, jak toocreate a udržovat registrech kontejner s tímto spravované Docker registru služby.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -52,7 +52,7 @@ Naučte se používat registr kontejneru k ukládání a správě imagí pro vš
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s vytvářením registru pomocí portálu</h3>
+                        <h3>Začínáte s vytvářením registru pomocí portálu hello</h3>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@ Naučte se používat registr kontejneru k ukládání a správě imagí pro vš
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s vytvářením registru pomocí rozhraní CLI</h3>
+                        <h3>Začínáte s vytvářením registru s hello rozhraní příkazového řádku</h3>
                     </div>
                 </div>
             </div>

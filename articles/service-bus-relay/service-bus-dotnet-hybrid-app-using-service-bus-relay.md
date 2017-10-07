@@ -1,6 +1,6 @@
 ---
-title: "Hybridní místní/cloudová aplikace (.NET) Azure WCF Relay | Dokumentace Microsoftu"
-description: "Naučte se vytvořit hybridní místní/cloudovou aplikaci .NET využívající Azure WCF Relay."
+title: "aaaAzure WCF předávání hybridní lokální/Cloudová aplikace (.NET) | Microsoft Docs"
+description: "Zjistěte, jak toocreate .NET lokální/Cloudová hybridní aplikace pomocí Azure WCF předávání."
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
@@ -14,78 +14,78 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/14/2017
 ms.author: sethm
-ms.openlocfilehash: 366922a083b9d18ef50e04eb8b459d2725315e1e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: aab8b1dbdc85c4edf7b0ccef0921b69524b2d306
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>Hybridní místní/cloudová aplikace .NET využívající Azure WCF Relay
 ## <a name="introduction"></a>Úvod
 
-Tento článek popisuje, jak vytvořit hybridní cloudovou aplikaci pomocí Microsoft Azure a Visual Studia. Tento kurz předpokládá, že nemáte žádné předchozí zkušenosti s používáním Azure. Za méně než 30 minut budete mít aplikaci, která používá několik různých prostředků Azure a běží v cloudu.
+Tento článek ukazuje, jak toobuild hybridní cloudové aplikace s Microsoft Azure a Visual Studio. Hello kurz předpokládá, že nemáte žádné předchozí zkušenosti s používáním Azure. Za méně než 30 minut budete mít aplikaci, která se používá několik prostředků Azure a spouštění v cloudu hello.
 
 Co se dozvíte:
 
-* Jak vytvořit nebo přizpůsobit existující webovou službu pro spotřebu webovým řešením.
-* Jak používat službu Azure WCF Relay ke sdílení dat mezi aplikací Azure a webovou službou hostovanou jinde.
+* Jak toocreate nebo přizpůsobit existující webovou službu pro spotřebu webovým řešením.
+* Jak toouse hello Azure WCF předávací služby tooshare dat mezi aplikací Azure a webovou službu hostovanou jinde.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
 ## <a name="how-azure-relay-helps-with-hybrid-solutions"></a>Jak Azure Relay pomáhá s hybridními řešeními
 
-Podniková řešení se obvykle skládají z kombinace vlastního kódu napsaného pro řešení nových a jedinečných podnikových řešení a stávajících funkcí poskytovaných řešeními a systémy, které již existují.
+Podniková řešení se obvykle skládají z kombinace vlastního kódu napsaného tootackle nových a jedinečných obchodních požadavků a stávajících funkcí poskytovaných řešeními a systémy, které jsou již v místní.
 
-Architekti řešení začínají používat cloud, protože jim to umožňuje snadněji zvládat nároky na škálování a snížit provozní náklady. Přitom zjišťují, že existující prostředky služeb, které by chtěli využívat jako stavební prvky pro svá řešení, jsou za firemním firewallem a cloudové řešení k nim nemá snadný přístup. Spousta interních služeb není postavená nebo hostovaná tak, aby se dala snadno vystavit na rozhraní firemní sítě.
+Řešení architekty začínáte toouse hello cloud pro snazší zpracování požadavků škálování a nižších provozních nákladů. Při tom najdou, že existující prostředky služeb mu tooleverage jako stavební bloky pro svá řešení jsou podnikovým firewallem hello a mimo snadno spojit pro přístup k hello cloudové řešení. Spousta interních služeb nejsou vytvořené nebo hostovaná tak, aby se dala snadno vystavit na hranici podnikové sítě hello.
 
-[Azure Relay](https://azure.microsoft.com/services/service-bus/) je navržené pro situace, kdy je potřeba vzít existující webové služby WCF (Windows Communication Foundation) a bezpečně je zpřístupnit pro řešení, která jsou mimo firemní zónu, a to bez nutnosti provádět nežádoucí změny infrastruktury podnikové sítě. Takové přenosové služby se stále hostují uvnitř existujícího prostředí, ale delegují čekání na příchozí spojení a požadavky na přenosovou službu hostovanou v cloudu. Azure Relay taky takové služby chrání před neoprávněným přístupem pomocí ověření [Sdíleným přístupovým podpisem](../service-bus-messaging/service-bus-sas.md) (SAS).
+[Předávání přes Azure](https://azure.microsoft.com/services/service-bus/) je určená pro hello případ použití vzít existující webové služby Windows Communication Foundation (WCF) a bezpečně přístupné toosolutions nacházející se mimo firemní zónu hello bez nutnosti publikování těchto služeb. nežádoucí změny toohello podnikové síťové infrastruktury. Takové služby předávání přes se stále hostují uvnitř existujícího prostředí, ale delegují čekání příchozí relace a požadavky toohello služby předávání hostovaných v cloudu. Azure Relay taky takové služby chrání před neoprávněným přístupem pomocí ověření [Sdíleným přístupovým podpisem](../service-bus-messaging/service-bus-sas.md) (SAS).
 
 ## <a name="solution-scenario"></a>Scénář řešení
-V tomto kurzu vytvoříte webovou stránku ASP.NET, která vám umožní zobrazit seznam produktů na stránce inventáře produktů.
+V tomto kurzu vytvoříte webu ASP.NET, která umožňuje toosee seznam produktů na stránce inventáře produktů hello.
 
 ![][0]
 
-Kurz předpokládá, že máte produktové informace dostupné v existujícím místním systému, a používá Azure Relay k získání přístupu do takového systému. To se simuluje jako webová služba, která spustí jednoduchou konzolovou aplikaci a využívá sadu produktů uloženou v paměti. Taky si vyzkoušíte spuštění této konzolové aplikace na svém vlastním počítači a nasazení webové role do Azure. Uvidíte tak, jak webová role běžící v datovém centru Azure skutečně zavolá do vašeho počítače, i když se váš počítač skoro určitě nachází za nejméně jedním firewallem a vrstvou překládání adres (NAT).
+Hello kurz předpokládá, že máte produktové informace dostupné v existující místní systém a používá předávání přes Azure tooreach do takového systému. To se simuluje jako webová služba, která spustí jednoduchou konzolovou aplikaci a využívá sadu produktů uloženou v paměti. Bude se mít toorun této konzolové aplikace ve vašem počítači a nasazení hello webové role do Azure. Díky tomu se zobrazí jak hello webová role běžící v hello datovém centru Azure skutečně zavolá do vašeho počítače, i když váš počítač skoro určitě nachází za nejméně jedním firewallem a vrstvou sítě adres překlad (NAT).
 
-## <a name="set-up-the-development-environment"></a>Nastavení vývojového prostředí
+## <a name="set-up-hello-development-environment"></a>Nastavit hello vývojového prostředí
 
-Než začnete s vývojem aplikací pro Azure, stáhněte si nástroje a nastavte si vývojové prostředí:
+Před zahájením vývojem aplikací pro Azure, stáhnout hello nástroje a nastavení vývojového prostředí:
 
-1. Nainstalujte sadu Azure SDK pro .NET ze [stránky pro stažení SDK](https://azure.microsoft.com/downloads/).
-2. Ve sloupci **.NET** klikněte na verzi sady [Visual Studio](http://www.visualstudio.com), kterou používáte. Kroky v tomto kurzu používají sadu Visual Studio 2015, ale také pracují se sadou Visual Studio 2017.
-3. Když se zobrazí dialog pro spuštění nebo uložení instalačního programu, klikněte na **Spustit**.
-4. V **Instalačním programu webové platformy** klikněte na **Instalovat** a pokračujte v instalaci.
-5. Po dokončení instalace budete mít všechno, co je potřeba k vývoji aplikace. Sada SDK obsahuje nástroje, které vám umožní snadno vyvíjet aplikace pro Azure ve Visual Studiu.
+1. Nainstalujte hello Azure SDK pro .NET ze hello SDK [položky ke stažení](https://azure.microsoft.com/downloads/).
+2. V hello **.NET** sloupce, klikněte na tlačítko hello verzi [Visual Studio](http://www.visualstudio.com) používáte. Hello kroky v tomto kurzu Visual Studio 2015, ale také pracovat s Visual Studio 2017.
+3. Po zobrazení výzvy toorun nebo uložení instalačního programu hello, klikněte na tlačítko **spustit**.
+4. V hello **instalačního programu webové platformy**, klikněte na tlačítko **nainstalovat** a pokračovat v instalaci hello.
+5. Po dokončení instalace hello budete mít všechno potřebné toostart toodevelop hello aplikace. Hello SDK obsahuje nástroje, které vám umožní snadno vyvíjet aplikace Azure v sadě Visual Studio.
 
 ## <a name="create-a-namespace"></a>Vytvoření oboru názvů
 
-Pokud chcete začít používat přenosové funkce v Azure, musíte nejdříve vytvořit obor názvů služby. Obor názvů poskytuje kontejner oboru pro adresování prostředků Azure v rámci vaší aplikace. Pokud chcete vytvořit obor názvů Relay, postupujte podle [těchto pokynů](relay-create-namespace-portal.md).
+pomocí toobegin hello funkce předávání v Azure, musíte nejdřív vytvořit obor názvů služby. Obor názvů poskytuje kontejner oboru pro adresování prostředků Azure v rámci vaší aplikace. Postupujte podle hello [pokynů tady](relay-create-namespace-portal.md) toocreate předávání názvů.
 
 ## <a name="create-an-on-premises-server"></a>Vytvoření lokálního serveru
 
-Nejdřív vytvoříte lokální (testovací) systém katalogu produktů. Bude vcelku jednoduchý a nahradí skutečný lokální systém katalogu produktů, i s kompletní rovinou služeb, kterou chceme integrovat.
+Nejdřív vytvoříte lokální (testovací) systém katalogu produktů. Bude vcelku jednoduchý; Zobrazí se to jako představující skutečný lokální systém katalogu produktu s kompletní rovinou služeb pokoušíme toointegrate.
 
-Tento projekt je konzolová aplikace z Visual Studia a pomocí [balíčku NuGet pro Azure Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) zahrnuje konfiguračních nastavení a knihovny Service Bus.
+Tento projekt je konzolová aplikace z Visual Studia a pomocí hello [balíček Azure Service Bus NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) tooinclude hello konfiguračních nastavení a knihovny Service Bus.
 
-### <a name="create-the-project"></a>Vytvoření projektu
+### <a name="create-hello-project"></a>Vytvoření projektu hello
 
-1. Spusťte Visual Studio s právy správce. Pokud tak chcete učinit, klikněte pravým tlačítkem na ikonu programu Visual Studio a potom klikněte na **Spustit jako správce**.
-2. Ve Visual Studiu v nabídce **Soubor** klikněte na **Nový** a pak na **Projekt**.
-3. V **Nainstalovaných šablonách** v části **Visual C#** klikněte na **Konzolová aplikace (.NET Framework)**. Do pole **Název** zadejte název **ProductsServer**:
+1. Spusťte Visual Studio s právy správce. Ano, klikněte pravým tlačítkem na ikonu programu sady Visual Studio hello toodo a pak klikněte na **spustit jako správce**.
+2. V sadě Visual Studio na hello **soubor** nabídky, klikněte na tlačítko **nový**a potom klikněte na **projektu**.
+3. V **Nainstalovaných šablonách** v části **Visual C#** klikněte na **Konzolová aplikace (.NET Framework)**. V hello **název** pole, název typu hello **ProductsServer**:
 
    ![][11]
-4. Kliknutím na tlačítko **OK** vytvořte projekt **ProductsServer**.
-5. Pokud jste už nainstalovali správce balíčků NuGet pro Visual Studio, přejděte na další krok. Pokud ne, přejděte na [NuGet][NuGet] a klikněte na [Nainstalovat NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c). Podle pokynů nainstalujte správce balíčků NuGet, a pak znovu spusťte Visual Studio.
-6. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **ProductsServer**, pak klikněte na **Správa balíčků NuGet**.
-7. Klikněte na kartu **Procházet** a potom najděte `Microsoft Azure Service Bus`. Vyberte balíček **WindowsAzure.ServiceBus**.
-8. Klikněte na **Instalovat** a přijměte podmínky použití.
+4. Klikněte na tlačítko **OK** toocreate hello **ProductsServer** projektu.
+5. Pokud jste již nainstalovali hello Správce balíčků NuGet pro Visual Studio, toohello další krok přeskočte. Pokud ne, přejděte na [NuGet][NuGet] a klikněte na [Nainstalovat NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c). Postupujte podle Správce balíčků NuGet hello tooinstall hello výzvy a potom znovu spusťte Visual Studio.
+6. V Průzkumníku řešení klikněte pravým tlačítkem na hello **ProductsServer** projektu a pak klikněte na **spravovat balíčky NuGet**.
+7. Klikněte na tlačítko hello **Procházet** a potom vyhledejte `Microsoft Azure Service Bus`. Vyberte hello **WindowsAzure.ServiceBus** balíčku.
+8. Klikněte na tlačítko **nainstalovat**a přijměte podmínky použití hello.
 
    ![][13]
 
-   Poznámka: Teď jsou vytvořené reference na sestavení klienta.
-8. Přidejte novou třídu pro váš produktový kontrakt. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **ProductsServer**, pak klikněte na **Přidat** a pak na **Třída**.
-9. Do pole **Název** zadejte název **ProductsContract.cs**. Pak klikněte na **Přidat**.
-10. V **ProductsContract.cs** místo definice oboru názvů zadejte následující kód, který definuje kontrakt služby.
+   Všimněte si, že hello vyžaduje, že teď jsou reference na sestavení klienta.
+8. Přidejte novou třídu pro váš produktový kontrakt. V Průzkumníku řešení klikněte pravým tlačítkem na hello **ProductsServer** projektu a klikněte na tlačítko **přidat**a potom klikněte na **třída**.
+9. V hello **název** pole, název typu hello **ProductsContract.cs**. Pak klikněte na **Přidat**.
+10. V **ProductsContract.cs**, nahraďte definici oboru názvů hello hello následující kód, který definuje kontrakt hello služby hello.
 
     ```csharp
     namespace ProductsServer
@@ -94,9 +94,9 @@ Tento projekt je konzolová aplikace z Visual Studia a pomocí [balíčku NuGet 
         using System.Runtime.Serialization;
         using System.ServiceModel;
 
-        // Define the data contract for the service
+        // Define hello data contract for hello service
         [DataContract]
-        // Declare the serializable properties.
+        // Declare hello serializable properties.
         public class ProductData
         {
             [DataMember]
@@ -107,7 +107,7 @@ Tento projekt je konzolová aplikace z Visual Studia a pomocí [balíčku NuGet 
             public string Quantity { get; set; }
         }
 
-        // Define the service contract.
+        // Define hello service contract.
         [ServiceContract]
         interface IProducts
         {
@@ -121,7 +121,7 @@ Tento projekt je konzolová aplikace z Visual Studia a pomocí [balíčku NuGet 
         }
     }
     ```
-11. V Program.cs místo definice oboru názvů zadejte následující kód, který přidá službu profilu a hosta pro ni.
+11. V souboru Program.cs místo definice oboru názvů hello hello následující kód, který přidá službu profilu hello a hello hosta pro ni.
 
     ```csharp
     namespace ProductsServer
@@ -131,7 +131,7 @@ Tento projekt je konzolová aplikace z Visual Studia a pomocí [balíčku NuGet 
         using System.Collections.Generic;
         using System.ServiceModel;
 
-        // Implement the IProducts interface.
+        // Implement hello IProducts interface.
         class ProductsService : IProducts
         {
 
@@ -149,8 +149,8 @@ Tento projekt je konzolová aplikace z Visual Studia a pomocí [balíčku NuGet 
                                          Quantity = "2500"},
                     };
 
-            // Display a message in the service console application
-            // when the list of products is retrieved.
+            // Display a message in hello service console application
+            // when hello list of products is retrieved.
             public IList<ProductData> GetProducts()
             {
                 Console.WriteLine("GetProducts called.");
@@ -161,13 +161,13 @@ Tento projekt je konzolová aplikace z Visual Studia a pomocí [balíčku NuGet 
 
         class Program
         {
-            // Define the Main() function in the service application.
+            // Define hello Main() function in hello service application.
             static void Main(string[] args)
             {
                 var sh = new ServiceHost(typeof(ProductsService));
                 sh.Open();
 
-                Console.WriteLine("Press ENTER to close");
+                Console.WriteLine("Press ENTER tooclose");
                 Console.ReadLine();
 
                 sh.Close();
@@ -175,7 +175,7 @@ Tento projekt je konzolová aplikace z Visual Studia a pomocí [balíčku NuGet 
         }
     }
     ```
-12. V Průzkumníku řešení poklikejte na soubor **App.config**.cs a otevře se v editoru Visual Studio. Na konci elementu `<system.ServiceModel>` (ale pořád ještě uvnitř `<system.ServiceModel>`) přidejte následující kód XML. Nezapomeňte místo *yourServiceNamespace* zadat název vašeho oboru názvů a místo *yourKey* váš SAS klíč, který jste předtím získali z portálu:
+12. V Průzkumníku řešení klikněte dvakrát na hello **App.config** souboru tooopen ji v editoru Visual Studio hello. Na konci hello hello `<system.ServiceModel>` – element (ale stále ještě v `<system.ServiceModel>`), přidejte následující kód XML hello. Být jisti tooreplace *yourServiceNamespace* s hello název vašeho oboru názvů, a *yourKey* s hello SAS klíč, který jste předtím získali z portálu hello:
 
     ```xml
     <system.serviceModel>
@@ -198,7 +198,7 @@ Tento projekt je konzolová aplikace z Visual Studia a pomocí [balíčku NuGet 
       </behaviors>
     </system.serviceModel>
     ```
-13. Ještě v souboru App.config v elementu `<appSettings>` nahraďte hodnotu připojovacího řetězce připojovacím řetězcem, který jste předtím získali z portálu.
+13. Stále v souboru App.config v hello `<appSettings>` elementu, nahraďte hello připojení řetězcovou hodnotu s jste předtím získali z portálu hello hello připojovací řetězec.
 
     ```xml
     <appSettings>
@@ -207,40 +207,40 @@ Tento projekt je konzolová aplikace z Visual Studia a pomocí [balíčku NuGet 
            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey"/>
     </appSettings>
     ```
-14. Stiskněte **Ctrl+Shift+B** nebo v nabídce **Sestavení** klikněte na **Sestavit řešení** a tím sestavte aplikaci a potvrďte přesnost své dosavadní práce.
+14. Stiskněte klávesu **Ctrl + Shift + B** nebo z hello **sestavení** nabídky, klikněte na tlačítko **sestavit řešení** toobuild hello aplikace a ověřte hello přesnost své dosavadní práce.
 
 ## <a name="create-an-aspnet-application"></a>Vytvoření aplikace ASP.NET
 
 V této části sestavíte jednoduchou aplikaci ASP.NET, která zobrazí data načtená z vaší produktové služby.
 
-### <a name="create-the-project"></a>Vytvoření projektu
+### <a name="create-hello-project"></a>Vytvoření projektu hello
 
 1. Zkontrolkujte, že je Visual Studio spuštěné s právy správce.
-2. Ve Visual Studiu v nabídce **Soubor** klikněte na **Nový** a pak na **Projekt**.
-3. V **Nainstalovaných šablonách** v části **Visual C#**, klikněte na **Webová aplikace ASP.NET (.NET Framework)**. Jako název projektu zadejte **ProductsPortal**. Pak klikněte na **OK**.
+2. V sadě Visual Studio na hello **soubor** nabídky, klikněte na tlačítko **nový**a potom klikněte na **projektu**.
+3. V **Nainstalovaných šablonách** v části **Visual C#**, klikněte na **Webová aplikace ASP.NET (.NET Framework)**. Název projektu hello **ProductsPortal**. Pak klikněte na **OK**.
 
    ![][15]
 
-4. V seznamu **Šablony ASP.NET** v dialogovém okně **Nová webová aplikace ASP.NET** klikněte na **MVC**.
+4. Z hello **šablony ASP.NET** seznamu v hello **nové webové aplikace ASP.NET** dialogové okno, klikněte na tlačítko **MVC**.
 
    ![][16]
 
-6. Klikněte na tlačítko **Změna ověřování**. V dialogovém okně **Změnit ověřování** zkontrolujte, že je vybraná možnost **Bez ověřování**, a potom klikněte na **OK**. V tomto kurzu nasazujete aplikace, která nepotřebuje přihlášení uživatele.
+6. Klikněte na tlačítko hello **změna ověřování** tlačítko. V hello **změna ověřování** dialogové okno pole, ujistěte se, že **bez ověřování** je vybrána a potom klikněte na **OK**. V tomto kurzu nasazujete aplikace, která nepotřebuje přihlášení uživatele.
 
     ![][18]
 
-7. Vraťte se do dialogového okna **Nová webová aplikace ASP.NET** a kliknutím na **OK** vytvořte aplikaci MVC.
-8. Teď musíte nakonfigurovat prostředky Azure pro novou webovou aplikaci. Postupujte podle pokynů v [části Publikování v Azure v tomto článku](../app-service-web/app-service-web-get-started-dotnet.md). Potom se vraťte do tohoto kurzu a pokračujte dalším krokem.
-10. V Průzkumníkovi řešení klikněte pravým tlačítkem na **Modely**, pak levým na **Přidat** a pak na **Třída**. Do pole **Název** zadejte název **Product.cs**: Pak klikněte na **Přidat**.
+7. Zpět v hello **nové webové aplikace ASP.NET** dialogové okno, klikněte na tlačítko **OK** aplikace MVC toocreate hello.
+8. Teď musíte nakonfigurovat prostředky Azure pro novou webovou aplikaci. Postupujte podle kroků hello v hello [publikování tooAzure části tohoto článku](../app-service-web/app-service-web-get-started-dotnet.md). Potom vraťte toothis kurzu a pokračujte dalším krokem toohello.
+10. V Průzkumníkovi řešení klikněte pravým tlačítkem na **Modely**, pak levým na **Přidat** a pak na **Třída**. V hello **název** pole, název typu hello **Product.cs**. Pak klikněte na **Přidat**.
 
     ![][17]
 
-### <a name="modify-the-web-application"></a>Úprava webové aplikace
+### <a name="modify-hello-web-application"></a>Úprava hello webové aplikace
 
-1. V souboru Product.cs ve Visual Studiu nahraďte existující definici oboru názvů následujícím kódem.
+1. V souboru Product.cs hello v sadě Visual Studio nahraďte existující definici oboru názvů hello hello následující kód.
 
    ```csharp
-    // Declare properties for the products inventory.
+    // Declare properties for hello products inventory.
     namespace ProductsWeb.Models
     {
        public class Product
@@ -251,8 +251,8 @@ V této části sestavíte jednoduchou aplikaci ASP.NET, která zobrazí data na
        }
     }
     ```
-2. V Průzkumníku řešení rozbalte složku **Kontrolery**, pak poklikejte na soubor **HomeController.cs** a ten se otevře ve Visual Studiu.
-3. V souboru **HomeController.cs** nahraďte existující definici oboru názvů následujícím kódem.
+2. V Průzkumníku řešení rozbalte hello **řadiče** složky, dvakrát hello **HomeController.cs** souboru tooopen ho v sadě Visual Studio.
+3. V **HomeController.cs**, nahraďte existující definici oboru názvů hello hello následující kód.
 
     ```csharp
     namespace ProductsWeb.Controllers
@@ -263,7 +263,7 @@ V této části sestavíte jednoduchou aplikaci ASP.NET, která zobrazí data na
 
         public class HomeController : Controller
         {
-            // Return a view of the products inventory.
+            // Return a view of hello products inventory.
             public ActionResult Index(string Identifier, string ProductName)
             {
                 var products = new List<Product>
@@ -273,13 +273,13 @@ V této části sestavíte jednoduchou aplikaci ASP.NET, která zobrazí data na
          }
     }
     ```
-4. V Průzkumníku řešení rozbalte složku Views\Shared, pak poklikejte na soubor **_Layout.cshtml** a ten se otevře v editoru Visual Studia.
-5. Všechny výskyty **My ASP.NET Application** změňte na **LITWARE's Products**.
-6. Odstraňte odkazy **Home**, **About** a **Contact**. V následujícím příkladu odstraňte zvýrazněný kód.
+4. V Průzkumníku řešení rozbalte složku Views\Shared hello, pak poklikejte na **_Layout.cshtml** tooopen ji v editoru Visual Studio hello.
+5. Změňte všechny výskyty **Moje aplikace technologie ASP.NET** příliš**LITWARE's Products**.
+6. Odebrat hello **Domů**, **o**, a **kontaktujte** odkazy. V následujícím příkladu hello odstraňte hello zvýrazněná kód.
 
     ![][41]
 
-7. V Průzkumníku řešení rozbalte složku Views\Home, pak poklikejte na soubor **Index.cshtml** a ten se otevře v editoru Visual Studia. Celý obsah souboru nahraďte následujícím kódem.
+7. V Průzkumníku řešení rozbalte složku Views\Home hello, pak poklikejte na **Index.cshtml** tooopen ji v editoru Visual Studio hello. Nahraďte hello celý obsah souboru hello hello následující kód.
 
    ```html
    @model IEnumerable<ProductsWeb.Models.Product>
@@ -314,31 +314,31 @@ V této části sestavíte jednoduchou aplikaci ASP.NET, která zobrazí data na
 
    </table>
    ```
-8. Pokud chcete zkontrolovat přesnost svojí dosavadní práce, můžete stisknout **Ctrl+Shift+B** a tím projekt sestavit.
+8. tooverify hello přesnost své dosavadní práce, stiskněte **Ctrl + Shift + B** toobuild hello projektu.
 
-### <a name="run-the-app-locally"></a>Místní spuštění aplikace
+### <a name="run-hello-app-locally"></a>Místní spuštění aplikace hello
 
-Spusťte aplikace pro kontrolu, že funguje.
+Spusťte tooverify hello aplikace, která funguje.
 
-1. Zkontrolujte, že aktivní projekt je **ProductsPortal**. V Průzkumníku řešení klikněte pravým tlačítkem na název projektu a klikněte na možnost **Nastavit jako spouštěný projekt**.
+1. Ujistěte se, že **ProductsPortal** je hello aktivního projektu. Název projektu hello v Průzkumníku řešení klikněte pravým tlačítkem a vyberte **nastavit jako spouštěný projekt**.
 2. V sadě Visual Studio stiskněte **F5**.
 3. Měla by se objevit vaše aplikace, jak běží v prohlížeči.
 
    ![][21]
 
-## <a name="put-the-pieces-together"></a>Složení částí do jednoho celku
+## <a name="put-hello-pieces-together"></a>Připravili částí hello
 
-Dalším krokem je spojit lokální produktový server s aplikací ASP.NET.
+dalším krokem Hello je toohook hello místní produkty server s hello aplikace ASP.NET.
 
-1. Pokud v aplikaci Visual Studio není otevřený projekt **ProductsPortal**, který jste vytvořili v části [Vytvoření aplikace ASP.NET](#create-an-aspnet-application), znovu ho otevřete.
-2. Podobně jako v části Vytvoření lokálního serveru přidejte do referencí projektu balíček NuGet. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **ProductsPortal**, pak klikněte na **Správa balíčků NuGet**.
-3. Vyhledejte „Service Bus“ a vyberte položku **WindowsAzure.ServiceBus**. Potom zavřete dialogové okno, tím dokončíte instalaci.
-4. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **ProductsPortal**, pak klikněte na **Přidat** a pak na **Existující položka**.
-5. Přejděte na soubor **ProductsContract.cs** v konzolovém projektu **ProductsServer**. Kliknutím zvýrazněte ProductsContract.cs. Klikněte na šipku dolů vedle tlačítka **Přidat**, pak klikněte na **Přidat jako odkaz**.
+1. Pokud již není otevřený, v sadě Visual Studio znovu otevřete hello **ProductsPortal** projektu, které jste vytvořili v hello [vytvořit aplikaci ASP.NET](#create-an-aspnet-application) části.
+2. Podobně jako toohello krok v části "Vytvoření místnímu serveru" hello, přidání odkazů projektu toohello balíček NuGet hello. V Průzkumníku řešení klikněte pravým tlačítkem na hello **ProductsPortal** projektu a pak klikněte na **spravovat balíčky NuGet**.
+3. Vyhledejte "Service Bus" a vyberte hello **WindowsAzure.ServiceBus** položky. Potom dokončete hello instalace a zavřete toto dialogové okno.
+4. V Průzkumníku řešení klikněte pravým tlačítkem na hello **ProductsPortal** projektu a pak klikněte na **přidat**, pak **existující položka**.
+5. Přejděte toohello **ProductsContract.cs** soubor z hello **ProductsServer** projekt konzoly. Klikněte na tlačítko toohighlight ProductsContract.cs. Klikněte na tlačítko hello šipka dolů vedle příliš**přidat**, pak klikněte na tlačítko **přidat jako odkaz**.
 
    ![][24]
 
-6. Teď ve Visual Studiu otevřete soubor **HomeController.cs** a nahraďte definici oboru názvů následujícím kódem. Nezapomeňte místo *yourServiceNamespace* zadat název vašeho oboru názvů služby a místo *yourKey* váš SAS klíč. To klientovi umožní zavolat lokální službu a vrátit výsledek volání.
+6. Nyní otevřete hello **HomeController.cs** souboru v editoru Visual Studio hello a nahraďte definici oboru názvů hello hello následující kód. Být jisti tooreplace *yourServiceNamespace* s hello názvem vašeho oboru názvů služby a *yourKey* váš SAS klíč. Tato akce povolí hello klienta toocall hello místní službu a vrátit výsledek volání hello hello.
 
    ```csharp
    namespace ProductsWeb.Controllers
@@ -352,7 +352,7 @@ Dalším krokem je spojit lokální produktový server s aplikací ASP.NET.
 
        public class HomeController : Controller
        {
-           // Declare the channel factory.
+           // Declare hello channel factory.
            static ChannelFactory<IProductsChannel> channelFactory;
 
            static HomeController()
@@ -369,7 +369,7 @@ Dalším krokem je spojit lokální produktový server s aplikací ASP.NET.
            {
                using (IProductsChannel channel = channelFactory.CreateChannel())
                {
-                   // Return a view of the products inventory.
+                   // Return a view of hello products inventory.
                    return this.View(from prod in channel.GetProducts()
                                     select
                                         new Product { Id = prod.Id, Name = prod.Name,
@@ -379,83 +379,83 @@ Dalším krokem je spojit lokální produktový server s aplikací ASP.NET.
        }
    }
    ```
-7. V Průzkumníku řešení klikněte pravým tlačítkem na řešení **ProductsPortal** (klikněte skutečně na řešení, ne na projekt). Klikněte na **Přidat** a pak klikněte na **Existující projekt**.
-8. Přejděte do projektu **ProductsServer**, pak poklikejte na řešení **ProductsServer.csproj** a tím ho přidejte.
-9. Aby se data mohla zobrazit na **ProductsPortal**, musí běžet **ProductsServer**. V Průzkumníku řešení klikněte pravým tlačítkem na řešení **ProductsPortal** a pak na **Vlastnosti**. Zobrazí se dialogové okno **Stránky vlastností**.
-10. Na levé straně klikněte na **Spouštěný projekt**. Na pravé straně klikněte na **Více projektů po spuštění**. Zkontrolujte, že se objeví **ProductsServer** a **ProductsPortal** v tomto pořadí, a že je pro obojí nastavená akce **Start**.
+7. V Průzkumníku řešení klikněte pravým tlačítkem na hello **ProductsPortal** řešení (zkontrolujte že tooright kliknutím hello řešení, není hello projektu). Klikněte na **Přidat** a pak klikněte na **Existující projekt**.
+8. Přejděte toohello **ProductsServer** projekt, pak poklikejte na hello **ProductsServer.csproj** tooadd soubor řešení ho.
+9. **ProductsServer** musí být spuštěn v pořadí toodisplay hello data v **ProductsPortal**. V Průzkumníku řešení klikněte pravým tlačítkem na hello **ProductsPortal** řešení a klikněte na tlačítko **vlastnosti**. Hello **stránky vlastností** se zobrazí dialogové okno.
+10. Na levé straně hello, klikněte na tlačítko **spouštěný projekt**. Na pravé straně hello, klikněte na tlačítko **více projektů po spuštění**. Ujistěte se, že **ProductsServer** a **ProductsPortal** zobrazí v tomto pořadí, s **spustit** nastavit jako hello akci pro oba.
 
       ![][25]
 
-11. Pořád ještě v dialogovém okně **Vlastnosti** na levé straně klikněte na **Závislosti projektu**.
-12. V seznamu **Projekty** klikněte na **ProductsServer**. Zkontrolujte, že **ProductsPortal** není vybraný.
-13. V seznamu **Projekty** klikněte na **ProductsPortal**. Zkontrolujte, že je **ProductsServer** vybraný.
+11. Stále v hello **vlastnosti** dialogové okno, klikněte na tlačítko **závislosti projektu** na levé straně hello.
+12. V hello **projekty** seznamu, klikněte na tlačítko **ProductsServer**. Zkontrolujte, že **ProductsPortal** není vybraný.
+13. V hello **projekty** seznamu, klikněte na tlačítko **ProductsPortal**. Zkontrolujte, že je **ProductsServer** vybraný.
 
     ![][26]
 
-14. Kliknutím na **OK** zavřete se dialogové okno **Stránky vlastností**.
+14. Klikněte na tlačítko **OK** v hello **stránky vlastností** dialogové okno.
 
-## <a name="run-the-project-locally"></a>Spusťte projekt lokálně.
+## <a name="run-hello-project-locally"></a>Místní spuštění projektu hello
 
-Aplikaci můžete lokálně spustit a otestovat ve Visual Studiu stisknutím klávesy **F5**. Nejdřív by se měl spustit lokální server (**ProductsServer**), potom by se v okně prohlížeče měla spustit aplikace **ProductsPortal**. Tentokrát uvidíte, že inventář produktů zobrazí seznam dat načtených z lokálního systému služby.
+tootest hello místně, aplikace v sadě Visual Studio klávesu **F5**. místní server Hello (**ProductsServer**) musí nejdřív spustit a pak hello **ProductsPortal** v okně prohlížeče měla spustit aplikace. Tentokrát uvidíte, že tento hello inventář produktů zobrazí seznam dat načtených z hello produktu služby v místním systému.
 
 ![][10]
 
-Na stránce **ProductsPortal** stiskněte **Obnovit**. Pokaždé, když obnovíte stránku, měla by aplikace serveru při volání `GetProducts()` z **ProductsServer** zobrazit zprávu.
+Stiskněte klávesu **aktualizovat** na hello **ProductsPortal** stránky. Pokaždé, když obnovíte stránku hello, zobrazí se aplikace server hello zobrazí zpráva při `GetProducts()` z **ProductsServer** je volána.
 
-Před dalším krokem zavřete obě aplikace.
+Zavřete obě aplikace před pokračováním toohello další krok.
 
-## <a name="deploy-the-productsportal-project-to-an-azure-web-app"></a>Nasazení projektu ProductsPortal do webové aplikace Azure
+## <a name="deploy-hello-productsportal-project-tooan-azure-web-app"></a>Nasazení hello ProductsPortal projektu tooan Azure webové aplikace
 
-Dalším krokem je nové publikování frontendu **ProductsPortal** webové aplikace Azure. Udělejte toto:
+dalším krokem Hello je toorepublish hello Azure webové aplikace **ProductsPortal** front-endu. Hello následující:
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem myši na projekt **ProductsPortal** a klikněte na **Publikovat**. Potom klikněte na **Publikovat** na stránce **Publikovat**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem na hello **ProductsPortal** projektu a klikněte na tlačítko **publikovat**. Potom klikněte na **publikovat** na hello **publikovat** stránky.
 
   > [!NOTE]
-  > V okně prohlížeče se při automatickém spuštění webového projektu **ProductsPortal** po nasazení může objevit chybová zpráva. To je v pořádku a děje se to, protože aplikace **ProductsServer** ještě neběží.
+  > Mohou se zobrazit chybová zpráva v okně prohlížeče hello při hello **ProductsPortal** automatickém spuštění webového projektu po nasazení hello. To je v pořádku a dochází hello **ProductsServer** aplikace ještě neběží.
 >
 >
 
-2. Zkopírujte adresu URL nasazené aplikace protože ji budete potřebovat v dalším kroku. Tuto adresu URL můžete taky získat z okna Aktivita služby Azure App Service ve Visual Studiu:
+2. Kopírování hello URL hello nasadit webové aplikace, budete potřebovat adresu URL hello v dalším kroku hello. Tuto adresu URL můžete získat i z okna aktivita služby Azure App Service hello v sadě Visual Studio:
 
   ![][9]
 
-3. Zavřením okna prohlížeče zastavte spuštěnou aplikaci.
+3. Zavřete hello prohlížeče okno toostop hello spuštění aplikace.
 
 ### <a name="set-productsportal-as-web-app"></a>Nastavení ProductsPortal jako webové aplikace
 
-Než spustíte aplikaci v cloudu, musíte zkontrolovat, že se **ProductsPortal** spustí z Visual Studia jak webová aplikace.
+Před běžící hello aplikaci v cloudu hello, musíte zajistit, aby **ProductsPortal** spustí z Visual Studia jak webová aplikace.
 
-1. V sadě Visual Studio klikněte pravým tlačítkem myši na projekt **ProductsPortal** a potom klikněte na **Vlastnosti**.
-2. V levém sloupci klikněte na **Web**.
-3. V části **Spustit akci** klikněte na tlačítko **Otevřít adresu URL** a do textového pole zadejte URL webové aplikace nasazené předtím, například `http://productsportal1234567890.azurewebsites.net/`.
+1. V sadě Visual Studio, klikněte pravým tlačítkem na hello **ProductsPortal** projektu a pak klikněte na **vlastnosti**.
+2. V levém sloupci hello, klikněte na **webové**.
+3. V hello **spustit akci** klikněte na tlačítko hello **spustit adresu URL** tlačítko a hello textového pole zadejte hello URL dříve nasazené webové aplikace, například `http://productsportal1234567890.azurewebsites.net/`.
 
     ![][27]
 
-4. Ve Visual Studiu zvolte v nabídce **Soubor** možnost **Uložit vše**.
-5. Ve Visual Studiu zvolte v nabídce Sestavení možnost **Znovu sestavit řešení**.
+4. Z hello **soubor** nabídky v sadě Visual Studio, klikněte na tlačítko **Uložit vše**.
+5. V nabídce hello sestavení v sadě Visual Studio, klikněte na tlačítko **znovu sestavit řešení**.
 
-## <a name="run-the-application"></a>Spuštění aplikace
+## <a name="run-hello-application"></a>Spuštění aplikace hello
 
-1. Stisknutím klávesy F5 aplikaci sestavíte a spustíte. Nejdřív by se měl spustit lokální server (konzolová aplikace **ProductsServer**), potom by se v okně prohlížeče měla spustit aplikace **ProductsPortal**, jak je vidět na tomto snímku obrazovky. Znovu si všimněte, že inventář produktů zobrazí seznam dat načtených z lokálního systému služby a tato data zobrazí ve webové aplikaci. Zkontrolujte adresu URL a ujistěte se, že **ProductsPortal** běží v cloudu jako webová aplikace Azure.
+1. Stiskněte klávesu F5 toobuild a spuštění aplikace hello. místní server Hello (hello **ProductsServer** Konzolová aplikace) musí nejdřív spustit a pak hello **ProductsPortal** v okně prohlížeče měla spustit aplikace, jak je znázorněno v následující obrazovce hello snímek. Všimněte si znovu, že hello inventář produktů zobrazí seznam dat načtených z hello produktu služby v místním systému a tato data zobrazí ve webové aplikaci hello. Zkontrolujte toomake URL hello se, který **ProductsPortal** běží v cloudu hello jako webové aplikace Azure.
 
    ![][1]
 
    > [!IMPORTANT]
-   > Konzolová aplikace **ProductsServer** musí běžet a musí být schopná odesílat data do aplikace **ProductsPortal**. pokud prohlížeč zobrazí chybu, počkejte několik dalších sekund, než se načte **ProductsServer** a zobrazí se následující zpráva. Potom v prohlížeči stiskněte **Obnovit**.
+   > Hello **ProductsServer** konzolové aplikace a musí být spuštěná schopná tooserve hello data toohello **ProductsPortal** aplikace. Pokud se hello prohlížeč zobrazí chybu, počkejte několik dalších sekund **ProductsServer** tooload a zobrazení hello následující zpráva. Stiskněte klávesu **aktualizovat** v prohlížeči hello.
    >
    >
 
    ![][37]
-2. Zpátky v prohlížeči na stránce **ProductsPortal** stiskněte **Obnovit**. Pokaždé, když obnovíte stránku, měla by aplikace serveru při volání `GetProducts()` z **ProductsServer** zobrazit zprávu.
+2. Zpět v prohlížeči hello, stiskněte klávesu **aktualizovat** na hello **ProductsPortal** stránky. Pokaždé, když obnovíte stránku hello, zobrazí se aplikace server hello zobrazí zpráva při `GetProducts()` z **ProductsServer** je volána.
 
     ![][38]
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se o Azure Relay chcete dozvědět víc, pročtěte si následující zdroje:  
+toolearn Další informace o předávání přes Azure, najdete v části hello následující prostředky:  
 
 * [Co je Azure Relay?](relay-what-is-it.md)  
-* [Jak používat Relay](service-bus-dotnet-how-to-use-relay.md)  
+* [Jak toouse předávání](service-bus-dotnet-how-to-use-relay.md)  
 
 [0]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
 [1]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/App2.png

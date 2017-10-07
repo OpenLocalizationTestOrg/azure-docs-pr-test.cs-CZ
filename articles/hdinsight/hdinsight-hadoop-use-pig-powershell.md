@@ -1,6 +1,6 @@
 ---
-title: "Použijte Hadoop Pig v prostředí PowerShell v HDInsight - Azure | Microsoft Docs"
-description: "Zjistěte, jak úlohy Pig do clusteru Hadoop v HDInsight pomocí prostředí Azure PowerShell."
+title: "aaaUse Hadoop Pig v prostředí PowerShell v HDInsight - Azure | Microsoft Docs"
+description: "Zjistěte, jak clusteru toosubmit Pig úlohy tooa Hadoop v HDInsight pomocí prostředí Azure PowerShell."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,27 +16,27 @@ ms.workload: big-data
 ms.date: 06/16/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 28904b07609ffb40a8195278fd1afd3957896733
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 771617df203011eaec715a0dba6f5014a42877f3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>Pomocí prostředí Azure PowerShell ke spuštění úlohy Pig s HDInsight
+# <a name="use-azure-powershell-toorun-pig-jobs-with-hdinsight"></a>Použijte úlohy Azure PowerShell toorun Pig s HDInsight
 
 [!INCLUDE [pig-selector](../../includes/hdinsight-selector-use-pig.md)]
 
-Tento dokument poskytuje příklad použití Azure PowerShell k odesílání úloh Pig do Hadoop v clusteru HDInsight. Pig umožňuje zapsat úloh MapReduce pomocí jazyka (Pig Latin) této transformace dat modely, nikoli mapování a snížit funkce.
+Tento dokument obsahuje příklad použití Azure PowerShell toosubmit Pig úlohy tooa Hadoop na clusteru HDInsight. Pig vám umožní úloh MapReduce toowrite pomocí jazyka (Pig Latin), který modelů transformace dat, nikoli mapování a snížit funkce.
 
 > [!NOTE]
-> Tento dokument neposkytuje podrobný popis co dělat, Pig Latin příkazy použít v příkladech. Informace o Pig Latin použité v tomto příkladu najdete v tématu [použijte Pig s Hadoop v HDInsight](hdinsight-use-pig.md).
+> Tento dokument neposkytuje podrobný popis co dělat, příkazy Pig Latin hello použitých v ukázkách hello. Informace o hello Pig Latin použité v tomto příkladu najdete v tématu [použijte Pig s Hadoop v HDInsight](hdinsight-use-pig.md).
 
 ## <a id="prereq"></a>Požadavky
 
 * **Cluster Azure HDInsight**
 
   > [!IMPORTANT]
-  > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * **Pracovní stanice s prostředím Azure PowerShell**.
 
@@ -44,33 +44,33 @@ Tento dokument poskytuje příklad použití Azure PowerShell k odesílání úl
 
 ## <a id="powershell"></a>Spuštění úlohy Pig pomocí prostředí PowerShell
 
-Prostředí Azure PowerShell poskytuje *rutiny* které umožňují vzdáleně spouštět úlohy Pig v HDInsight. Interně, prostředí PowerShell používá volání REST [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) běžící v clusteru HDInsight.
+Prostředí Azure PowerShell poskytuje *rutiny* , umožňují úlohy Pig tooremotely spustit v HDInsight. Interně, prostředí PowerShell používá volání REST příliš[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) běžící v clusteru HDInsight hello.
 
-Při spuštění úlohy Pig na vzdálený cluster HDInsight, se používají následující rutiny:
+Hello se používají následující rutiny při spuštění úlohy Pig na vzdálený cluster HDInsight:
 
-* **Login-AzureRmAccount**: ověřuje prostředí Azure PowerShell k předplatnému Azure
-* **Nové AzureRmHDInsightPigJobDefinition**: vytvoří *úlohy definice* pomocí zadané Pig Latin příkazy
-* **Spuštění AzureRmHDInsightJob**: odešle definici úlohy do HDInsight, spustí úlohu a vrátí *úlohy* objekt, který můžete použít ke kontrole stavu úlohy
-* **Počkejte AzureRmHDInsightJob**: používá objekt úlohy a zkontrolujte stav úlohy. Se čeká na dokončení úlohy nebo byla překročena doba čekání.
-* **Get-AzureRmHDInsightJobOutput**: používá se k načtení výstup úlohy
+* **Login-AzureRmAccount**: ověřuje Azure PowerShell tooyour předplatné Azure
+* **Nové AzureRmHDInsightPigJobDefinition**: vytvoří *úlohy definice* pomocí hello zadaný Pig Latin příkazy
+* **Spuštění AzureRmHDInsightJob**: odešle tooHDInsight definice úlohy hello, spustí hello úlohy a vrátí *úlohy* objekt, který lze použít toocheck hello stav úlohy hello
+* **Počkejte AzureRmHDInsightJob**: používá objekt úlohy hello toocheck hello stav úlohy hello. Se čeká na dokončení úlohy hello nebo byla překročena doba čekání hello.
+* **Get-AzureRmHDInsightJobOutput**: používá tooretrieve hello výstup hello úlohy
 
-Následující kroky ukazují, jak tyto rutiny použít ke spuštění úlohy v clusteru HDInsight.
+Hello následující kroky ukazují, jak toouse tyto rutiny toorun úlohu v clusteru HDInsight.
 
-1. Pomocí editoru, uložte následující kód jako **pigjob.ps1**.
+1. Pomocí editoru, uložte hello následující kód jako **pigjob.ps1**.
 
-    [!code-powershell[hlavní](../../powershell_scripts/hdinsight/use-pig/use-pig.ps1?range=5-51)]
+    [!code-powershell[main](../../powershell_scripts/hdinsight/use-pig/use-pig.ps1?range=5-51)]
 
-1. Otevřete nový příkazový řádek prostředí Windows PowerShell. Změňte adresáře na umístění **pigjob.ps1** souboru a potom použijte následující příkaz pro spuštění skriptu:
+1. Otevřete nový příkazový řádek prostředí Windows PowerShell. Umístění adresáře toohello hello změnit **pigjob.ps1** souboru, potom použijte následující příkaz toorun hello skriptu hello:
 
         .\pigjob.ps1
 
-    Zobrazí se výzva k přihlášení k předplatnému Azure. Potom budete vyzváni k HTTPs nebo správce název účtu a hesla pro HDInsight cluster.
+    Jste výzvami toolog v tooyour předplatného Azure. Potom budete vyzváni k hello HTTPs nebo správce účtu jména a hesla pro hello HDInsight cluster.
 
-2. Po dokončení úlohy, měla by vrátit informace podobná následující text:
+2. Po dokončení úlohy hello, měla by vrátit informace podobná toohello následující text:
 
-        Start the Pig job ...
-        Wait for the Pig job to complete ...
-        Display the standard output ...
+        Start hello Pig job ...
+        Wait for hello Pig job toocomplete ...
+        Display hello standard output ...
         (TRACE,816)
         (DEBUG,434)
         (INFO,96)
@@ -80,20 +80,20 @@ Následující kroky ukazují, jak tyto rutiny použít ke spuštění úlohy v 
 
 ## <a id="troubleshooting"></a>Řešení potíží
 
-Pokud žádné informace se vrátí po dokončení úlohy, mohlo dojít k chybě během zpracování. Chcete-li zobrazit informace o chybě pro tuto úlohu, přidejte následující příkaz na konec **pigjob.ps1** souboru, uložit jej a znovu jej spusťte.
+Když se po dokončení úlohy hello nevrátí žádné informace, může mít došlo k chybě během zpracování. informace o chybě tooview pro tuto úlohu, přidejte následující příkaz toohello konec hello hello **pigjob.ps1** souboru, uložit jej a znovu jej spusťte.
 
-    # Print the output of the Pig job.
-    Write-Host "Display the standard error output ..." -ForegroundColor Green
+    # Print hello output of hello Pig job.
+    Write-Host "Display hello standard error output ..." -ForegroundColor Green
     Get-AzureRmHDInsightJobOutput `
             -Clustername $clusterName `
             -JobId $pigJob.JobId `
             -HttpCredential $creds `
             -DisplayOutputType StandardError
 
-Tento příkaz vrátí informace, které byla zapsána do STDERR na serveru při spuštění úlohy a ho mohou pomoci zjistit, proč je neúspěšné úlohy.
+Vrátí hello informace, která byla zapsána tooSTDERR na serveru hello při spuštění úlohy hello a zkuste zjistit, proč se nedaří hello úlohy.
 
 ## <a id="summary"></a>Shrnutí
-Jak vidíte, Azure PowerShell poskytuje snadný způsob, jak spouštět úlohy Pig v clusteru HDInsight, sledovat stav úlohy a načíst výstup.
+Jak můžete vidět, prostředí Azure PowerShell poskytuje snadný způsob toorun úlohy Pig v clusteru HDInsight, stav úlohy hello monitorování a načíst výstup hello.
 
 ## <a id="nextsteps"></a>Další kroky
 Obecné informace o Pig v HDInsight:

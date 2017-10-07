@@ -1,6 +1,6 @@
 ---
-title: "Vynutit zabezpečení se zásadami na virtuální počítače s Linuxem v Azure | Microsoft Docs"
-description: "Tom, jak používat zásady pro správce prostředků Linux virtuální počítač Azure"
+title: "aaaEnforce zabezpečení se zásadami na virtuální počítače s Linuxem v Azure | Microsoft Docs"
+description: "Jak tooapply tooan zásad Azure Resource Manager Linux virtuálního počítače"
 services: virtual-machines-linux
 documentationcenter: 
 author: singhkays
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: singhkay
-ms.openlocfilehash: 58eaab4fa03afc1e6a5e38bef691cce62a921ea9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 5abd0c937578aba7e72b62c65b4eef9a9737aa2a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Zásady použít pro virtuální počítače s Linuxem pomocí Azure Resource Manageru
-Pomocí zásad můžete vynutit organizaci různé konvence a pravidla v rámci podniku. Vynucení požadované chování může pomoci zmírnit rizika při přispívání do úspěch organizace. V tomto článku jsme popisují, jak lze pomocí Azure Resource Manager zásad můžete určit požadované chování pro virtuální počítače vaší organizace.
+# <a name="apply-policies-toolinux-vms-with-azure-resource-manager"></a>Použít zásady tooLinux virtuálních počítačů pomocí Azure Resource Manageru
+Pomocí zásad můžete vynutit organizaci různé konvence a pravidla v rámci rozlehlé sítě hello. Vynucení hello požadovaného chování může pomoci zmírnit rizika při přidání toohello úspěch organizace hello. V tomto článku jsme popisují, jak můžete použít Azure Resource Manager zásady toodefine hello požadovaného chování pro virtuální počítače vaší organizace.
 
-Úvod do zásady, najdete v části [použití zásad ke správě prostředků a řízení přístupu](../../azure-resource-manager/resource-manager-policy.md).
+Toopolicies Úvod najdete v části [zásady používání toomanage prostředků a řízení přístupu](../../azure-resource-manager/resource-manager-policy.md).
 
 ## <a name="permitted-virtual-machines"></a>Povolené virtuální počítače
-Zajistit, že virtuální počítače ve vaší organizaci, jsou kompatibilní s aplikací, můžete omezit povolených operační systémy. V následujícím příkladu zásady Povolit pouze Ubuntu 14.04.2-LTS virtuální počítače, který se má vytvořit.
+tooensure, jestli jsou kompatibilní s aplikací virtuálních počítačů ve vaší organizaci, můžete omezit hello povolené operační systémy. Ve hello následující ukázka zásad, můžete povolit pouze virtuální počítače, 14.04.2-LTS Ubuntu toobe vytvořili.
 
 ```json
 {
@@ -79,7 +79,7 @@ Zajistit, že virtuální počítače ve vaší organizaci, jsou kompatibilní s
 }
 ```
 
-K úpravě předchozí zásada umožnit žádný obrázek Ubuntu LTS použijte zástupný znak: 
+Použijte hello toomodify zástupný znak předcházející žádný obrázek Ubuntu LTS tooallow zásad: 
 
 ```json
 {
@@ -92,7 +92,7 @@ Informace o polí zásad najdete v tématu [zásad aliasy](../../azure-resource-
 
 ## <a name="managed-disks"></a>Managed Disks
 
-Pokud chcete vyžadovat použití spravovaných disků, použijte tyto zásady:
+toorequire hello použití spravovaných disků, použijte hello následující zásady:
 
 ```json
 {
@@ -140,9 +140,9 @@ Pokud chcete vyžadovat použití spravovaných disků, použijte tyto zásady:
 
 ## <a name="images-for-virtual-machines"></a>Bitové kopie u virtuálních počítačů
 
-Z bezpečnostních důvodů se může vyžadovat, aby byly nasazené schválené vlastní Image ve vašem prostředí. Můžete zadat buď skupinu prostředků, která obsahuje Image schválené nebo konkrétní schválených bitové kopie.
+Z bezpečnostních důvodů se může vyžadovat, aby byly nasazené schválené vlastní Image ve vašem prostředí. Můžete zadat buď hello skupinu prostředků, která obsahuje hello schválení bitových kopií, nebo konkrétní Image schválené hello.
 
-Následující příklad vyžaduje bitové kopie z skupiny schválené prostředků:
+Následující ukázka Hello vyžaduje bitové kopie z skupiny schválené prostředků:
 
 ```json
 {
@@ -169,7 +169,7 @@ Následující příklad vyžaduje bitové kopie z skupiny schválené prostřed
 } 
 ```
 
-Následující příklad určuje ID schválené bitové kopie:
+Hello následující příklad určuje hello schválení image ID:
 
 ```json
 {
@@ -180,7 +180,7 @@ Následující příklad určuje ID schválené bitové kopie:
 
 ## <a name="virtual-machine-extensions"></a>Rozšíření virtuálního počítače
 
-Můžete chtít nezakazuje využití určitých typů rozšíření. Například rozšíření pravděpodobně není kompatibilní s obrázky určité vlastního virtuálního počítače. Následující příklad ukazuje, jak chcete blokovat konkrétní rozšíření. Pomocí vydavatele a typ určit, které rozšíření, které chcete blokovat.
+Můžete chtít tooforbid využití určitých typů rozšíření. Například rozšíření pravděpodobně není kompatibilní s obrázky určité vlastního virtuálního počítače. Následující příklad ukazuje, jak Hello tooblock konkrétní rozšíření. Vydavatel a typ toodetermine používá které tooblock rozšíření.
 
 ```json
 {
@@ -209,6 +209,6 @@ Můžete chtít nezakazuje využití určitých typů rozšíření. Například
 
 
 ## <a name="next-steps"></a>Další kroky
-* Po definování zásad pravidlo (jak je znázorněno v předchozích ukázkách), musíte k vytvoření definice zásady a přiřadit obor. Obor může být předplatné, skupinu prostředků nebo prostředek. K přiřazení zásad prostřednictvím portálu, najdete v části [portálu Azure použijte přiřadit a spravovat zásady prostředků](../../azure-resource-manager/resource-manager-policy-portal.md). K přiřazení zásad pomocí rozhraní REST API, Powershellu nebo příkazového řádku Azure CLI, najdete v části [přiřadit a spravovat zásady prostřednictvím skriptu](../../azure-resource-manager/resource-manager-policy-create-assign.md).
-* Úvod do zásad prostředků, najdete v části [přehled zásad prostředků](../../azure-resource-manager/resource-manager-policy.md).
-* Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](../../azure-resource-manager/resource-manager-subscription-governance.md).
+* Po definování zásad pravidlo (jak je znázorněno v předchozích příkladech hello), budete potřebovat definice zásady hello toocreate a přiřaďte ho tooa oboru. obor Hello může být předplatné, skupinu prostředků nebo prostředek. v tématu Zásady tooassign prostřednictvím portálu hello [Azure pomocí portálu tooassign a spravovat zásady prostředků](../../azure-resource-manager/resource-manager-policy-portal.md). zásady tooassign prostřednictvím REST API, Powershellu nebo příkazového řádku Azure CLI, najdete v části [přiřadit a spravovat zásady prostřednictvím skriptu](../../azure-resource-manager/resource-manager-policy-create-assign.md).
+* Úvod tooresource zásady, najdete v části [přehled zásad prostředků](../../azure-resource-manager/resource-manager-policy.md).
+* Pokyny k použití Resource Manager tooeffectively podniky můžou spravovat předplatná najdete v tématu [Azure enterprise vygenerované uživatelské rozhraní – zásady správného řízení doporučený předplatné](../../azure-resource-manager/resource-manager-subscription-governance.md).

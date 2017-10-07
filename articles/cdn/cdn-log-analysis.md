@@ -1,5 +1,5 @@
 ---
-title: "V protokolu analýzy Azure CDN | Microsoft Docs"
+title: "Analýza aaaLog Azure CDN | Microsoft Docs"
 description: "Zákazníka můžete povolit analýzy protokolů pro Azure CDN."
 services: cdn
 documentationcenter: 
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: v-semcev
-ms.openlocfilehash: 03ff74ae4e40d3f2279caaf4f73e9b4aac6a2ebb
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 56e5a4fec46fd156cf38252732afb4522741d009
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="diagnostics-logs-for-azure-cdn"></a>Diagnostické protokoly pro Azure CDN
 
-Když povolíte CDN pro vaši aplikaci, bude pravděpodobně chtít monitorovat využití CDN, zkontrolujte stav vaší doručení a potenciální potíže. Azure CDN poskytuje tyto možnosti se [CDN základní analýza](cdn-analyze-usage-patterns.md) a [diagnostických protokolů](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
+Když povolíte CDN pro vaši aplikaci, bude pravděpodobně chcete toomonitor hello CDN využití, zkontrolujte stav hello vaší doručení a potenciální potíže. Azure CDN poskytuje tyto možnosti se [CDN základní analýza](cdn-analyze-usage-patterns.md) a [diagnostických protokolů](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 
 ## <a name="cdn-core-analytics"></a>Základní analýza CDN
-Jako aktuální uživatel Azure CDN Verizon standard nebo premium profilu jste už moct zobrazovat základní analýza na doplňkovém portálu, který je přístupný prostřednictvím možnosti "Manage" z portálu Azure. 
+Jako aktuální uživatel Azure CDN Verizon standard nebo premium profilu jste už moct tooview základní analýza hello doplňkovém portálu přístupné přes hello "Manage" možnost hello portálu Azure. 
 
 ## <a name="azure-diagnostic-logs"></a>Azure diagnostických protokolů
 
@@ -35,43 +35,43 @@ Azure pomocí této nové funkce, můžete nyní zobrazit analýzu základní a 
  - Azure Event Hubs
  - [Úložiště analýzy protokolů OMS](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
- Tato funkce je k dispozici pro všechny koncové body CDN patřící do Verizon (Standard a Premium) a profilů CDN Akamai (Standard).
+ Tato funkce je k dispozici pro všechny koncové body CDN patřící tooVerizon (Standard a Premium) a profilů CDN Akamai (Standard).
 
-Diagnostické protokoly umožňují, aby můžete využívat požadovaným způsobem exportu metriky základní informace o využití z koncový bod CDN do různých zdrojů. Například můžete provést následující typy dat exportu:
+Diagnostické protokoly povolení metrik tooexport základní informace o využití z vaší CDN koncový bod tooa řady zdrojů tak, aby můžete využívat požadovaným způsobem. Například můžete provést následující typy dat export hello:
 
-- Export dat do úložiště objektů blob, exportovat do souboru CSV a generovat grafy v aplikaci excel.
-- Exportovat data do centra událostí a korelovat s daty z jiné služby azure.
-- Exportovat data do protokolu analýzy a zobrazení dat ve vlastní pracovní prostor OMS
+- Exportovat data tooblob úložiště, exportovat tooCSV a generovat grafy v aplikaci excel.
+- Exportovat data tooevent rozbočovače a korelovat s daty z jiné služby azure.
+- Exportovat data analýzy a zobrazení toolog dat ve vlastní pracovní prostor OMS
 
-Následující obrázek znázorňuje typické přehled CDN základní analýza data.
+Hello následující obrázek ukazuje typické CDN základní analýza zobrazení na data.
 
 ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/01_OMS-workspace.png)
 
 *Obrázek 1 – základní analýza CDN zobrazení*
 
-Následující návod projde schéma analytická data základní kroky při povolení funkce a jejich předání do různých umístění a spotřebě z těchto cílů.
+Následující postup Hello projde hello schéma hello základní analytická data, kroky při povolení funkce hello a jejich předání toovarious cíle a spotřebě z těchto cílů.
 
 ## <a name="enable-logging-with-azure-portal"></a>Povolit protokolování pomocí portálu Azure
 
 > [!NOTE]
-> Diagnostické protokoly jsou zapnuté **vypnout** ve výchozím nastavení. 
+> Hello diagnostické protokoly jsou zapnuté **vypnout** ve výchozím nastavení. 
 
-Použijte následující postup povolení protokolování s CDN základní analýza:
+Postupujte podle kroků hello tooenable protokolování s CDN základní analýza:
 
-Přihlaste se k webu [Azure Portal](http://portal.azure.com). Pokud ještě nemáte CDN povolené pro pracovní postup [povolení Azure CDN](cdn-create-new-endpoint.md) než budete pokračovat.
+Přihlaste se toohello [portál Azure](http://portal.azure.com). Pokud ještě nemáte CDN povolené pro pracovní postup [povolení Azure CDN](cdn-create-new-endpoint.md) než budete pokračovat.
 
-1. Na portálu, přejděte na **profil CDN**.
-2. Vyberte profil CDN a pak vyberte koncového bodu CDN, který chcete povolit **protokolů diagnostiky**.
+1. Hello portálu, přejděte příliš**profil CDN**.
+2. Vyberte profil CDN a pak vyberte hello koncový bod CDN, které chcete tooenable **protokolů diagnostiky**.
 
     ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/02_Browse-to-Diagnostics-logs.png)
 
-3. Přejděte na **protokolů diagnostiky** okno pod **monitorování** část, pak změňte na stavu **na**.
+3. Přejděte příliš**protokolů diagnostiky** okno pod **monitorování** část, pak změňte stav hello příliš**na**.
 
     ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/03_Diagnostics-logs-options.png)
 
 ### <a name="enable-logging-with-azure-storage"></a>Povolit protokolování s Azure Storage
     
-Používání Azure Storage k ukládání protokolů, vyberte **archivu do účtu úložiště**, vyberte dní uchovávání a klikněte na tlačítko **CoreAnalytics** pod **protokolu**.
+protokoly hello toostore toouse Azure Storage, vyberte **archivu účet úložiště tooa**, vyberte dní uchovávání dat a klikněte na **CoreAnalytics** pod **protokolu**.
 
 ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png)
 
@@ -79,13 +79,13 @@ Používání Azure Storage k ukládání protokolů, vyberte **archivu do účt
 
 ### <a name="logging-with-oms-log-analytics"></a>Protokolování s OMS analýzy protokolů
 
-OMS Log Analytics k ukládání protokolů, postupujte podle těchto kroků:
+toouse analýzy protokolů OMS toostore hello protokoly, postupujte takto:
 
-1. Z **protokolů diagnostiky** okno pod **monitorování**, vyberte **odeslat k analýze protokolů** z 
+1. Z hello **protokolů diagnostiky** okno pod **monitorování**, vyberte **odeslat tooLog Analytics** z 
 
     ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
 
-2. Konfigurace protokolování analýzy protokolů kliknutím na konfigurovat. Tím přejdete do dialogového okna, kde můžete vybrat předchozí pracovního prostoru nebo vytvořte novou.
+2. Konfigurace protokolování analýzy protokolů hello kliknutím na konfigurovat. Tím přejdete tooa dialogové okno, kde můžete vybrat předchozí pracovního prostoru nebo vytvořte novou.
 
     ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/06_Choose-workspace.png)
 
@@ -93,35 +93,35 @@ OMS Log Analytics k ukládání protokolů, postupujte podle těchto kroků:
 
     ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/07_Create-new.png)
 
-4. Dále musíte vybrat nový název pracovního prostoru, stávající předplatné, skupinu prostředků (nová nebo stávající), umístění a cenovou úroveň. Máte možnost Připnutí na řídicí panel tuto konfiguraci. Klikněte na tlačítko OK k dokončení konfigurace.
+4. Dále musíte vybrat nový název pracovního prostoru, stávající předplatné, skupinu prostředků (nová nebo stávající), umístění a cenovou úroveň. Máte možnost hello Připnutí tento řídicí panel tooyour konfigurace. Klikněte na tlačítko OK toocomplete hello konfigurace.
 
     Dále byste měli vidět pracovního prostoru s názvy skupiny pracovním prostorem OMS a prostředků. Názvy musí být jedinečný a použít pouze písmena, číslice a pomlčky. Nejsou povoleny mezery a podtržítka. 
 
     ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/08_Workspace-resource.png)
 
-5. Zobrazí další krátkou zprávu oznamující, že váš prostor byl vytvořen a vrátíte se na obrazovce konfigurace protokolování. Můžete potvrdit, název pracovního prostoru analýzy protokolů.
+5. Zobrazí další krátkou zprávu oznamující, že váš prostor byl vytvořen a vrátíte se tooyour protokolování konfigurační obrazovce. Můžete potvrdit, hello název pracovního prostoru analýzy protokolů.
 
     ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/09_Return-to-logging.png)
 
-    Jakmile jste nastavili konfigurace analýzy protokolů, zkontrolujte, zda že můžete taky zaškrtnout políčko CoreAnalytics pro protokolování CDN.
+    Jakmile nastavíte konfigurace analýzy protokolů hello, ujistěte se, že zaškrtnete políčko CoreAnalytics hello CDN protokolování.
 
-6. Pokud všechno, co je titulků, klikněte na tlačítko **Uložit** tlačítka v horní části dialogového okna konfigurace.
+6. Pokud všechno, co je tooyour libosti, klikněte na tlačítko hello **Uložit** tlačítka v horní části hello dialogové okno Konfigurace hello.
 
     ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/10_Save-me.png)
 
-    **Uložit** tlačítko již není aktivní a nyní je tlačítko Zapnout nebo vypnout v, ale blue místo fialová.
+    Hello **Uložit** tlačítko již není aktivní a že hello na nebo vypnutí teď ON, ale blue místo fialová.
 
-7. Pokud chcete zobrazit nové pracovní prostor OMS, přejděte na portálu Azure řídicí panel, klikněte na název pracovního prostoru analýzy protokolů. Dále uvidíte pracovního prostoru (ujistěte se, zda je na levé straně zvýrazněný pracovním prostorem OMS). Klikněte na dlaždici portálu OMS zobrazíte pracovní prostor v úložišti OMS. 
+7. Pokud chcete toosee nový pracovní prostor OMS, přejděte tooyour portál Azure řídicí panel, klikněte na název hello pracovní prostor analýzy protokolů. Dále uvidíte pracovního prostoru (ujistěte se, že pracovní prostor OMS je označený na levé straně hello). Klikněte na hello portálu OMS dlaždice toosee pracovního prostoru v úložišti OMS hello. 
 
     ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/11_OMS-dashboard.png) 
 
-    Úložiště OMS je nyní připraven k protokolovat data. Aby bylo možné využívat data, musíte použít [OMS řešení](#consuming-oms-log-analytics-data), zahrnuté později v tomto článku.
+    Úložiště OMS je nyní připraven toolog data. V pořadí tooconsume dat, je nutné použít [OMS řešení](#consuming-oms-log-analytics-data), zahrnuté později v tomto článku.
 
 Další informace o protokolu data zpoždění [zde](#log-data-delays).
 
 ## <a name="enable-logging-with-powershell"></a>Povolení protokolování v prostředí PowerShell
 
-Dole je příklad o tom, jak povolit a získat diagnostické protokoly prostřednictvím rutin prostředí PowerShell Azure.
+Dole je příklad na tom, jak hello tooenable a získání diagnostických protokolů prostřednictvím rutin prostředí Azure PowerShell.
 
 ###<a name="enabling-diagnostic-logs-in-a-storage-account"></a>Povolení diagnostických protokolů v účtu úložiště
 
@@ -132,12 +132,12 @@ Nejdřív se přihlaste a vyberte předplatné:
     Select-AzureSubscription -SubscriptionId 
 
 
-K povolení diagnostických protokolů v účtu úložiště použijte tento příkaz:
+tooEnable diagnostických protokolů v účtu úložiště, použijte tento příkaz:
 
 ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
 ```
-K povolení protokolů diagnostiky v pracovním prostoru OMS použijte tento příkaz:
+tooEnable protokolů diagnostiky v pracovním prostoru OMS, použijte tento příkaz:
 
 ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
@@ -147,85 +147,85 @@ K povolení protokolů diagnostiky v pracovním prostoru OMS použijte tento př
 
 
 ## <a name="consuming-diagnostics-logs-from-azure-storage"></a>Použití protokolů diagnostiky ze služby Azure Storage
-Tato část popisuje schéma základní analýza CDN, jak tyto jsou uspořádány v rámci účtu úložiště Azure a poskytuje ukázkový kód pro stažení protokolů v souboru CSV.
+Tato část popisuje schéma hello hello CDN základní analýza, jak tyto jsou uspořádány v rámci účtu úložiště Azure a poskytuje ukázkový kód toodownload hello protokolů v souboru CSV tooa.
 
 ### <a name="using-microsoft-azure-storage-explorer"></a>Pomocí Průzkumníka úložiště Microsoft Azure
-Než se dostanete k základní analytická data z účtu úložiště Azure, musíte nejprve nástroj pro přístup k obsahu v účtu úložiště. Na trhu jsou k dispozici několik nástrojů, i když je ten, který doporučujeme Microsoft Azure Storage Explorer. Si můžete stáhnout nástroj z [zde](http://storageexplorer.com/). Po stažení a instalaci softwaru, nakonfigurujte ji používat stejný účet úložiště Azure, který byl nakonfigurovaný jako cíl do protokolů diagnostiky CDN.
+Než se dostanete k hello základní analytická data z hello účet úložiště Azure, je nutné nejprve nástroj tooaccess hello obsah v účtu úložiště. Hello trhu jsou k dispozici několik nástrojů, i když je hello ten, který doporučujeme hello Microsoft Azure Storage Explorer. Si můžete stáhnout z nástroj hello [zde](http://storageexplorer.com/). Po stažení a instalace softwaru hello konfigurace toouse hello stejný účet úložiště Azure, který byl nakonfigurovaný jako cílový toohello CDN diagnostické protokoly.
 
 1.  Otevřete **Microsoft Azure Storage Explorer**
-2.  Najděte účet úložiště
-3.  Přejděte na **"Kontejnery objektů Blob"** uzel v rámci toto úložiště účtu a rozbalte uzel
-4.  Vyberte kontejner s názvem **"insights-logs-coreanalytics"** a poklikejte na něj
-5.  Zobrazit výsledky nahoru v pravém podokně počínaje první úroveň, který vypadá podobně jako **"resourceId ="**. Pokračujte kliknutím na úplně, dokud naleznete v souboru **PT1H.json**. Viz následující poznámka vysvětlení cesty.
-6.  Každý objekt blob **PT1H.json** představuje analýzy protokolů pro jednu hodinu pro konkrétní koncový bod CDN nebo jeho vlastní doménu.
-7.  Schéma obsah tohoto souboru JSON je popsaný v části schéma základní analýzy protokolů
+2.  Najděte účet úložiště hello
+3.  Přejděte toohello **"Kontejnery objektů Blob"** uzel v rámci toto úložiště účtu a rozbalte uzel hello
+4.  Vyberte hello kontejner s názvem **"insights-logs-coreanalytics"** a poklikejte na něj
+5.  Zobrazit výsledky až na hello pravém podokně počínaje hello první úrovně, který vypadá podobně jako **"resourceId ="**. Pokračujte kliknutím na všechny hello způsobem, dokud neuvidíte hello souboru **PT1H.json**. V tématu hello následující poznámka vysvětlení hello cesty.
+6.  Každý objekt blob **PT1H.json** představuje hello analýzy protokolů pro jednu hodinu pro konkrétní koncový bod CDN nebo jeho vlastní doménu.
+7.  schéma Hello hello obsah tohoto souboru JSON je popsané v sekci hello schématu hello základní analýzy protokolů
 
 
 > [!NOTE]
 > **Formát cesty objektu BLOB**
 > 
-> Základní analýza protokolů jsou generovány, každou hodinu. Všechna data pro jednu hodinu jsou shromážděných a uložených do jediného objektu Blob Azure jako datové části JSON. Cesta k této objektů Blob v Azure se zobrazí, jako kdyby je hierarchická struktura. Toto je vzhledem k tomu, že nástroj Průzkumník úložišť interpretuje '/' za oddělovač adresářů a zobrazuje hierarchii ke zvýšení pohodlí. Ve skutečnosti celé cesty právě představuje název objektu blob. Tento název objektu blob postupuje podle následující konvence   
+> Základní analýza protokolů jsou generovány, každou hodinu. Všechna data pro jednu hodinu jsou shromážděných a uložených do jediného objektu Blob Azure jako datové části JSON. Hello cesta toothis objektů Blob v Azure se zobrazí, jako kdyby je hierarchická struktura. Toto je vzhledem k tomu, že nástroj Průzkumník úložiště hello interpretuje '/' za oddělovač adresářů a zobrazuje hierarchii hello ke zvýšení pohodlí. Ve skutečnosti celou cestu hello právě představuje název objektu blob hello. Tento název objektu hello blob následuje hello následující zásady vytváření názvů 
     
     resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json
 
 **Popis polí:**
 
-|hodnota|Popis|
+|hodnota|description|
 |-------|---------|
-|ID předplatného    |ID předplatného Azure. Toto je ve formátu Guid.|
-|Prostředek |Název skupiny název skupiny prostředků, do které patří prostředky CDN.|
-|Název profilu |Název profilu CDN|
-|Název koncového bodu |Název koncového bodu CDN|
-|Rok|  reprezentace 4 číslice roku například 2017|
-|Měsíc| 2 číslice reprezentace číslo měsíce. 01 = leden... 12 = prosinec|
-|Den|   2 číslice reprezentace den v měsíci|
-|PT1H.JSON| Skutečný soubor JSON se uloží analytická data|
+|ID předplatného    |ID hello předplatné Azure. Toto je ve formátu Guid hello.|
+|Prostředek |Název skupiny prostředků hello prostředků skupiny toowhich hello CDN patří.|
+|Název profilu |Název hello profil CDN|
+|Název koncového bodu |Název hello koncový bod CDN|
+|Rok|  reprezentace 4 číslice roku hello například 2017|
+|Měsíc| 2 číslice reprezentace číslo měsíce hello. 01 = leden... 12 = prosinec|
+|Den|   2 číslice reprezentace hello den v měsíci hello|
+|PT1H.JSON| Skutečný soubor JSON se uloží hello analytická data|
 
-### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>Export základní analytická Data do souboru CSV
+### <a name="exporting-hello-core-analytics-data-tooa-csv-file"></a>Export hello základní analytická Data tooa souboru CSV
 
-Chcete-li snadný přístup k základní analýza, poskytujeme ukázkový kód pro nějaký nástroj, který umožňuje stahování souborů JSON do nestrukturované textový soubor s oddělovači souboru ve formátu, který lze snadno vytvářet grafy nebo jiných agregací.
+toomake it snadno tooaccess hello základní analýza poskytujeme ukázkový kód pro nějaký nástroj, který umožňuje stahování souborů hello JSON do souboru nestrukturované oddělený čárkami ve formátu, který lze použít tooeasily vytvořit grafy nebo jiných agregací.
 
-Zde je, jak můžete použít nástroj:
+Zde je, jak můžete použít nástroj hello:
 
-1.  Po kliknutí na odkaz githubu: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv )
-2.  Stáhněte si kód
-3.  Postupujte podle pokynů pro kompilaci a konfigurace
-4.  Spusťte nástroj
-5.  Výsledný soubor CSV zobrazuje analytická data v jednoduchých ploché hierarchii.
+1.  Po kliknutí hello githubu odkaz: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv )
+2.  Stáhněte si kód hello
+3.  Postupujte podle pokynů toocompile a konfigurace
+4.  Spusťte nástroj hello
+5.  Výsledný soubor CSV ukazuje hello analytická data v jednoduchých ploché hierarchii.
 
 ## <a name="consuming-diagnostics-logs-from-an-oms-log-analytics-repository"></a>Použití protokolů diagnostiky z úložiště analýzy protokolů OMS
-Analýzy protokolů je služba v Operations Management Suite (OMS), který monitoruje své cloudové a místní prostředí k udržování své dostupnosti a výkonu. Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji. 
+Analýzy protokolů je služba v Operations Management Suite (OMS), která monitoruje vaše cloudové a místní prostředí toomaintain jejich dostupnost a výkon. Shromáždí data generována prostředky ve vašich cloudových a místních prostředích a z dalších monitorování tooprovide analysis nástroje napříč více zdrojů. 
 
-Chcete-li použít analýzy protokolů, je nutné [povolit protokolování](#enable-logging-with-azure-storage) do úložiště analýzy protokolů Azure OMS, které je popsané výše v tomto článku.
+toouse analýzy protokolů, musíte [povolit protokolování](#enable-logging-with-azure-storage) úložiště analýzy protokolů Azure OMS toohello, které je popsané výše v tomto článku.
 
-### <a name="using-the-oms-repository"></a>Použití úložiště OMS
+### <a name="using-hello-oms-repository"></a>Pomocí hello OMS úložiště
 
- Následující diagram znázorňuje architekturu vstupy a výstupy úložiště:
+ Následující diagram ukazuje hello architektura hello vstupy a výstupy úložiště hello Hello:
 
 ![Úložiště analýzy protokolů OMS](./media/cdn-diagnostics-log/12_Repo-overview.png)
 
 *Obrázek 3 - úložiště analýzy protokolů*
 
-Data můžete zobrazit v mnoha různými způsoby pomocí řešení pro správu. Můžete získat řešení pro správu z [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions).
+Hello data můžete zobrazit v mnoha různými způsoby pomocí řešení pro správu. Řešení pro správu můžete získat z hello [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions).
 
-Řešení pro správu můžete nainstalovat z Azure marketplace kliknutím **ho získat** odkaz na konci každé řešení.
+Řešení pro správu můžete nainstalovat z Azure marketplace kliknutím hello **ho získat** odkaz dole hello v jednotlivých řešení.
 
 ### <a name="adding-an-oms-cdn-management-solution"></a>Přidávání do řešení pro správu OMS CDN
 
-Použijte následující postup přidání řešení pro správu:
+Postupujte podle těchto kroků tooadd řešení pro správu:
 
-1.   Pokud jste tak již neučinili, přihlaste se k portálu Azure pomocí svého předplatného Azure a přejděte na řídicí panel.
+1.   Pokud jste tak již neučinili, přihlaste se toohello portálu Azure pomocí svého předplatného Azure a přejděte tooyour řídicího panelu.
     ![Řídicí panel Azure](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
 
-2. V **nový** okno pod **Marketplace**, vyberte **monitorování + správu**.
+2. V hello **nový** okno pod **Marketplace**, vyberte **monitorování + správu**.
 
     ![Marketplace](./media/cdn-diagnostics-log/14_Marketplace.png)
 
-3. V **monitorování + správu** okně klikněte na tlačítko **zobrazit všechny**.
+3. V hello **monitorování + správu** okně klikněte na tlačítko **zobrazit všechny**.
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/15_See-all.png)
 
-4.  Vyhledejte CDN do vyhledávacího pole.
+4.  Vyhledejte CDN hello vyhledávacího pole.
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/16_Search-for.png)
 
@@ -233,43 +233,43 @@ Použijte následující postup přidání řešení pro správu:
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
-6.  Po kliknutí na **vytvořit**, zobrazí se výzva k vytvoření nové pracovní prostor OMS nebo použijte existující. 
+6.  Po kliknutí na **vytvořit**, nebudete vyzváni toocreate nový pracovní prostor OMS nebo použijte existující. 
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
-7.  Vyberte pracovní prostor, který jste vytvořili před. Pak je potřeba přidat účet automation.
+7.  Vyberte pracovní prostor hello, kterou jste vytvořili před. Pak musíte tooadd účet automation.
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/19_Add-automation.png)
 
-8. Na následující obrazovce se zobrazí formulář účet automation, který je nutné vyplnit. 
+8. Hello následující obrazovka ukazuje hello automatizace účet formuláře, které je nutné vyplnit. 
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/20_Automation.png)
 
-9. Po vytvoření účtu automation, jste připraveni přidat řešení. Klikněte na tlačítko **Vytvořit**.
+9. Po vytvoření účtu automation hello jste připravené tooadd řešení. Klikněte na tlačítko hello **vytvořit** tlačítko.
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/21_Ready.png)
 
-10. Řešení teď přidaná do pracovního prostoru. Přejděte zpět na portálu Azure řídicího panelu.
+10. Řešení byl přidán tooyour prostoru. Vraťte se zpátky tooyour portál Azure řídicího panelu.
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/22_Dashboard.png)
 
-    Klikněte na pracovní prostor analýzy protokolů, které jste vytvořili pro přejděte do pracovního prostoru. 
+    Klikněte na pracovní prostor analýzy protokolů hello, které jste vytvořili toogo tooyour prostoru. 
 
-11. Klikněte **portálu OMS** dlaždice zobrazíte nové řešení na portálu OMS.
+11. Klikněte na tlačítko hello **portálu OMS** dlaždici toosee nové řešení na portálu OMS hello.
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/23_workspace.png)
 
-12. Na portálu OMS by teď měl vypadat jako následující obrazovka:
+12. Na portálu OMS by teď měl vypadat jako hello následující obrazovka:
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/24_OMS-solution.png)
 
-    Klikněte na jednu z dlaždice zobrazíte několik zobrazení na vaše data.
+    Klikněte na jednu z hello dlaždice toosee několik zobrazení na vaše data.
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/25_Interior-view.png)
 
-    Můžete se posunete doleva nebo doprava zobrazíte další dlaždice představující jednotlivé zobrazení do data. 
+    Se posunete doleva nebo další správné toosee dlaždice představující jednotlivé zobrazení na hello data. 
 
-    Kliknutím na jedno ze dlaždice získáte další informace o data.
+    Kliknutím na jedno hello dlaždic vám dává další podrobnosti o vaše data.
 
      ![Zobrazit všechno](./media/cdn-diagnostics-log/26_Further-detail.png)
 
@@ -279,11 +279,11 @@ Můžete zobrazit nabídky a cenové úrovně pro řešení pro správu OMS [zde
 
 ### <a name="customizing-views"></a>Přizpůsobení zobrazení
 
-Zobrazení lze přizpůsobit do vašich dat pomocí **Návrhář zobrazení**. Přejděte do pracovního prostoru OMS a začnete navrhovat kliknutím **Návrhář zobrazení** dlaždici.
+Můžete přizpůsobit zobrazení hello do vašich dat pomocí hello **Návrhář zobrazení**. Přejděte na pracovní prostor OMS tooyour a začnete navrhovat kliknutím hello **Návrhář zobrazení** dlaždici.
 
 ![Návrhář zobrazení](./media/cdn-diagnostics-log/27_Designer.png)
 
-Můžete přetáhnout a vyřadit typy grafů zleva a zadejte podrobnosti dat, který chcete analyzovat na levé straně.
+Můžete přetáhnout a vyřadit typy grafů zleva hello a vyplňte informace o datových hello chcete tooanalyze na zbývajících hello.
 
 ![Návrhář zobrazení](./media/cdn-diagnostics-log/28_Designer.png)
 
@@ -292,14 +292,14 @@ Můžete přetáhnout a vyřadit typy grafů zleva a zadejte podrobnosti dat, kt
 
 Verizon protokolu data zpoždění | Akamai protokolu data zpoždění
 --- | ---
-Data protokolu Verizon je zpožděno 1 hodinu a trvat až 2 hodin zahájíte zobrazování po dokončení šíření koncový bod. | Data protokolu Akamai je 24 hodin, zpoždění a trvá až 2 hodin start, zobrazování, pokud byla vytvořena více než 24 hodinami. Pokud byl nedávno vytvořen, může trvat až 25 hodin pro protokoly spuštění, které jsou uvedeny.
+Data protokolu Verizon je zpožděno 1 hodinu a trvat až toostart hodin too2 zobrazování po dokončení šíření koncový bod. | Data protokolu Akamai je 24 hodin, zpoždění a zabírají toostart hodin too2 zobrazování, pokud byla vytvořena více než 24 hodinami. Pokud byl nedávno vytvořen, může trvat až too25 hodin toostart hello protokoly, které jsou uvedeny.
 
 ## <a name="diagnostic-log-types-for-cdn-core-analytics"></a>Typy protokolů diagnostiky pro CDN základní analýza
 
-Nabízíme aktuálně pouze základní analýza protokoly, které obsahují metriky ukazující statistiky odpovědi HTTP a odchozí statistiky, jak je vidět z CDN POP nebo okrajů.
+Nabízíme aktuálně pouze základní analýza protokoly, které obsahují metriky ukazující statistiky odpovědi HTTP a odchozí statistiky, jak je vidět z hello CDN POP nebo okraje.
 
 ### <a name="core-analytics-metrics-details"></a>Základní analýza metriky podrobnosti
-Následující tabulka uvádí seznam metriky, které jsou k dispozici v základní Analýza protokolů. Ne všechny metriky jsou k dispozici od všech poskytovatelů, i když tyto rozdíly jsou minimální. V následující tabulce také ukazuje, pokud daná metrika je k dispozici od zprostředkovatele. Upozorňujeme, že jsou k dispozici pro jenom ty koncové body CDN mající přenosy na těchto metriky.
+Hello následující tabulka obsahuje seznam metriky, které jsou k dispozici v hello základní Analýza protokolů. Ne všechny metriky jsou k dispozici od všech poskytovatelů, i když tyto rozdíly jsou minimální. Hello také následující tabulka ukazuje, pokud daná metrika je k dispozici od zprostředkovatele. Upozorňujeme, že jsou k dispozici pro jenom ty koncové body CDN mající přenosy na těchto hello metriky.
 
 
 |Metrika                     | Popis   | Verizon  | Akamai 
@@ -315,10 +315,10 @@ Následující tabulka uvádí seznam metriky, které jsou k dispozici v základ
 | RequestCountHttpStatus302 | Počet všech požadavků, jejichž výsledkem 302 kód odpovědi HTTP              |Ne   |Ano   |
 | RequestCountHttpStatus304 |  Počet všech požadavků, jejichž výsledkem 304 kód odpovědi HTTP             |Ne   |Ano   |
 | RequestCountHttpStatus404 | Počet všech požadavků, jejichž výsledkem kódu odpovědi HTTP 404              |Ne   |Ano   |
-| RequestCountCacheHit |Počet všech požadavků, jejichž výsledkem požadavků mezipaměti. To znamená, že zpracování asset přímo z POP do klienta.               | Ano  |Ne   |
-| RequestCountCacheMiss | Počet všech požadavků, která byla vygenerována v neúspěšnému přístupu do mezipaměti. To znamená asset nebyla nalezena na serveru POP nejbližší klientovi a proto byla načtena z tohoto počátku.              |Ano   | Ne  |
-| RequestCountCacheNoCache | Počet všech požadavků na prostředek, které nebudou moci ukládat do mezipaměti z důvodu konfigurace uživatele na hranici.              |Ano   | Ne  |
-| RequestCountCacheUncacheable | Počet všech požadavků na prostředky, které nebudou moci ukládat do mezipaměti asset Cache-Control a Expires hlavičky, které označují, že by neměl být uložen do mezipaměti, na serveru POP nebo klient HTTP                |Ano   |Ne   |
+| RequestCountCacheHit |Počet všech požadavků, jejichž výsledkem požadavků mezipaměti. To znamená, že zpracování hello asset přímo z hello POP toohello klienta.               | Ano  |Ne   |
+| RequestCountCacheMiss | Počet všech požadavků, která byla vygenerována v neúspěšnému přístupu do mezipaměti. To znamená hello asset nebyl nalezen na hello POP nejbližší toohello klienta a proto byla načtena z hello původu.              |Ano   | Ne  |
+| RequestCountCacheNoCache | Počet všech požadavků tooan asset, který nebudou moci ukládat do mezipaměti z důvodu konfigurace uživatele tooa hranu hello.              |Ano   | Ne  |
+| RequestCountCacheUncacheable | Počet všech požadavků tooassets, která nebudou moci ukládat do mezipaměti podle hello asset Cache-Control a vyprší platnost hlavičky, které označují, že by neměl být uložen do mezipaměti, na serveru POP nebo klientem hello HTTP                |Ano   |Ne   |
 | RequestCountCacheOthers | Počet všech požadavků stavem mezipaměti, které nejsou pokryty výše.              |Ano   | Ne  |
 | EgressTotal | Odchozí přenosy dat v GB              |Ano   |Ano   |
 | EgressHttpStatus2xx | Odchozí datové přenosy * pro odpovědi s stavové kódy HTTP 2xx v GB            |Ano   |Ne   |
@@ -326,28 +326,28 @@ Následující tabulka uvádí seznam metriky, které jsou k dispozici v základ
 | EgressHttpStatus4xx | Přenos odchozích dat pro odpovědi s stavové kódy HTTP 4xx v GB               |Ano   | Ne  |
 | EgressHttpStatus5xx | Přenos odchozích dat pro odpovědi s stavové kódy HTTP 5xx v GB               |Ano   |  Ne |
 | EgressHttpStatusOthers | Odchozí přenosy dat pro odpovědi s ostatních stavových kódech HTTP v GB                |Ano   |Ne   |
-| EgressCacheHit |  Odchozí přenosy dat pro odpovědi, které byly doručeny přímo z mezipaměti CDN na CDN POP nebo okrajů  |Ano   |  Ne |
-| EgressCacheMiss | Odchozí přenosy dat pro odpovědi, které nebyly na nejbližší server POP najít a načíst ze zdrojového serveru              |Ano   |  Ne |
-| EgressCacheNoCache | Přenos odchozích dat pro prostředky, které nebudou moci ukládat do mezipaměti z důvodu konfigurace uživatele na hranici.                |Ano   |Ne   |
-| EgressCacheUncacheable | Odchozí datové přenosy pro prostředky, které nebudou moci ukládat do mezipaměti asset Cache-Control nebo Expires hlavičky, které označují, že by neměl být uložen do mezipaměti, na serveru POP nebo klient HTTP                    |Ano   | Ne  |
+| EgressCacheHit |  Odchozí přenos dat pro odpovědi, které byly doručeny přímo z mezipaměti CDN hello na hello CDN POP od okrajů  |Ano   |  Ne |
+| EgressCacheMiss | Přenos odchozích dat pro odpovědi, které nebyly na hello nejbližší POP server najít a načíst ze serveru původu hello              |Ano   |  Ne |
+| EgressCacheNoCache | Odchozí datové přenosy pro prostředky, které nebudou moci ukládat do mezipaměti z důvodu konfigurace uživatele tooa hranu hello.                |Ano   |Ne   |
+| EgressCacheUncacheable | Odchozí datové přenosy pro prostředky, které nebudou moci ukládat do mezipaměti hello asset Cache-Control nebo Expires hlavičky, které označují, že by neměl být uložen do mezipaměti, na serveru POP nebo klientem hello HTTP                    |Ano   | Ne  |
 | EgressCacheOthers |  Odchozí datové přenosy s dalšími scénáři mezipaměti.             |Ano   | Ne  |
 
-* Odchozí přenosy dat odkazuje na provoz klientovi předána ze serverů CDN POP.
+* Odchozí přenosy dat odkazuje tootraffic doručit od CDN POP servery toohello klienta.
 
 
-### <a name="schema-of-the-core-analytics-logs"></a>Schéma základní analýzy protokolů 
+### <a name="schema-of-hello-core-analytics-logs"></a>Schéma hello základní analýzy protokolů 
 
-Všechny protokoly se ukládají ve formátu JSON a každá položka má následující pole řetězce níže schématu:
+Všechny protokoly se ukládají ve formátu JSON a každá položka má následující hello níže schématu polí s řetězcem:
 
 ```json
     "records": [
         {
             "time": "2017-04-27T01:00:00",
-            "resourceId": "<ARM Resource Id of the CDN Endpoint>",
+            "resourceId": "<ARM Resource Id of hello CDN Endpoint>",
             "operationName": "Microsoft.Cdn/profiles/endpoints/contentDelivery",
             "category": "CoreAnalytics",
             "properties": {
-                "DomainName": "<Name of the domain for which the statistics is reported>",
+                "DomainName": "<Name of hello domain for which hello statistics is reported>",
                 "RequestCountTotal": integer value,
                 "RequestCountHttpStatus2xx": integer value,
                 "RequestCountHttpStatus3xx": integer value,
@@ -382,7 +382,7 @@ Všechny protokoly se ukládají ve formátu JSON a každá položka má násled
 }
 ```
 
-Kde 'čas' představuje čas zahájení hodinu hranic, pro který je hlášen statistik. Pokud metriky není podporována zprostředkovatelem CDN, místo hodnotu double nebo celé číslo, bude mít hodnotu null. Tato hodnota null ukazuje na nepřítomnost metriky a tento proces se liší od hodnotu 0. Všimněte si také, že bude jednu sadu tyto metriky v každé doméně nakonfigurovaný v koncovém bodě.
+Kde hello čas představuje čas zahájení hello hello hodinu hranic, pro který je hlášen hello statistiky. Pokud metriky není podporována zprostředkovatelem CDN, místo hodnotu double nebo celé číslo, bude mít hodnotu null. Tato hodnota null znamená hello absenci metriky a tento proces se liší od hodnotu 0. Všimněte si také, že bude jednu sadu tyto metriky na doménu na koncový bod hello nakonfigurovaný.
 
 Příklad vlastnosti níže:
 

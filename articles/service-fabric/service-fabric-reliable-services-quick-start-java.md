@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření vaší první mikroslužbu spolehlivé Azure v jazyce Java | Microsoft Docs"
-description: "Úvod do vytváření aplikace Microsoft Azure Service Fabric s bezzstavovými i stavovými službami."
+title: "aaaCreate vaše první spolehlivé Azure mikroslužbu v Javě | Microsoft Docs"
+description: "Úvod toocreating aplikace Microsoft Azure Service Fabric s bezzstavovými i stavovými službami."
 services: service-fabric
 documentationcenter: java
 author: vturecek
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: 1ebabe4844732412e04bab8c277f7ebbc4a5737c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 577d96591797bbfe6be5c1094426b5f1435cca0f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-reliable-services"></a>Začínáme s Reliable Services
 > [!div class="op_single_selector"]
@@ -27,30 +27,30 @@ ms.lasthandoff: 08/29/2017
 >
 >
 
-Tento článek vysvětluje základy služby Azure Service Fabric spolehlivé a provede vás vytvořením a nasazením jednoduchou spolehlivá služba aplikaci napsanou v jazyce Java. Video tento Microsoft Virtual Academy také ukazuje postup vytvoření bezstavové spolehlivé služby:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
+Tento článek vysvětluje hello Základy služby Azure Service Fabric spolehlivé a provede vás vytvořením a nasazením jednoduchou spolehlivá služba aplikaci napsanou v jazyce Java. Toto video Microsoft Virtual Academy také ukazuje, jak toocreate bezstavové spolehlivé služby:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
 <img src="./media/service-fabric-reliable-services-quick-start-java/ReliableServicesJavaVid.png" WIDTH="360" HEIGHT="244">  
 </a></center>
 
 ## <a name="installation-and-setup"></a>Instalace a nastavení
-Než začnete, ujistěte se, že máte vývojového prostředí Service Fabric na váš počítač.
-Pokud potřebujete nastavit tak, přejděte na [Začínáme v systému Mac](service-fabric-get-started-mac.md) nebo [Začínáme v systému Linux](service-fabric-get-started-linux.md).
+Než začnete, ujistěte se, že máte hello Service Fabric vývojového prostředí nastavit na vašem počítači.
+Pokud potřebujete tooset ho, přejděte příliš[Začínáme v systému Mac](service-fabric-get-started-mac.md) nebo [Začínáme v systému Linux](service-fabric-get-started-linux.md).
 
 ## <a name="basic-concepts"></a>Základní koncepty
-Pokud chcete začít se službami Reliable Services, potřebujete jenom pochopit několik základní koncepty:
+spuštění se službami Reliable Services, můžete pouze tooget potřebovat toounderstand pár základních konceptech:
 
-* **Typ služby**: Toto je implementace služby. Je definována v třídě napíšete, který rozšiřuje `StatelessService` a ostatní kódu nebo v něm, použít název a číslo verze závislosti.
-* **S názvem instance služby**: ke spuštění služby, vytvoříte pojmenované instance typu služby mnohem jako vytvoření instance objektu typu třídy. Instance služby, které jsou ve skutečnosti instancí objektu možnosti vaší služby třídu, která můžete zapsat.
-* **Hostitel služby**: pojmenované instance vytvoříte muset spustit uvnitř hostitele. Hostitel služby je právě proces, kde můžete spustit instance služby.
-* **Registrace služby**: registrace soustřeďuje všechny informace dohromady. Typ služby musí být zaregistrován u modulu runtime Service Fabric v hostitele služby umožňující Service Fabric k vytvoření instance ho spustit.  
+* **Typ služby**: Toto je implementace služby. Je definována pomocí třídy hello napíšete, která rozšiřuje `StatelessService` a ostatní kódu nebo v něm, použít název a číslo verze závislosti.
+* **S názvem instance služby**: toorun vaší služby, vytvoříte pojmenované instance typu služby mnohem jako vytvoření instance objektu typu třídy. Instance služby, které jsou ve skutečnosti instancí objektu možnosti vaší služby třídu, která můžete zapsat.
+* **Hostitel služby**: hello s názvem instance služby vytvoříte toorun nutné v hostiteli. Hostitel služby Hello je právě proces, kde můžete spustit instance služby.
+* **Registrace služby**: registrace soustřeďuje všechny informace dohromady. Hello typ služby musí být zaregistrován s hello Service Fabric runtime ve službě hostitele tooallow Service Fabric toocreate instance ho toorun.  
 
 ## <a name="create-a-stateless-service"></a>Vytvoření bezstavové služby
-Začněte vytvořením aplikace Service Fabric. Sada Service Fabric SDK pro Linux zahrnuje Yeoman generátor zajistit generování uživatelského rozhraní pro aplikace Service Fabric pomocí bezstavové služby. Spusťte následující Yeoman spuštěním příkazu:
+Začněte vytvořením aplikace Service Fabric. zahrnuje Hello Service Fabric SDK pro Linux Yeoman generování generátor tooprovide hello uživatelského rozhraní pro aplikace Service Fabric pomocí bezstavové služby. Spusťte spuštěním hello následující Yeoman příkaz:
 
 ```bash
 $ yo azuresfjava
 ```
 
-Postupujte podle pokynů vytvořte **spolehlivé bezstavové služby**. V tomto kurzu, název aplikace "HelloWorldApplication" a "HelloWorld" service. Výsledek obsahuje adresářů pro `HelloWorldApplication` a `HelloWorld`.
+Postupujte podle pokynů toocreate hello **spolehlivé bezstavové služby**. V tomto kurzu aplikace hello název "HelloWorldApplication" a hello služby "HelloWorld". výsledek Hello zahrnuje adresářů pro hello `HelloWorldApplication` a `HelloWorld`.
 
 ```bash
 HelloWorldApplication/
@@ -77,8 +77,8 @@ HelloWorldApplication/
 └── uninstall.sh
 ```
 
-## <a name="implement-the-service"></a>Tuto službu implementovat
-Otevřete **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**. Tato třída definuje typ služby a můžete spustit kód. Rozhraní API služby obsahuje dvě vstupní body pro váš kód:
+## <a name="implement-hello-service"></a>Implementace služby hello
+Otevřete **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**. Tato třída definuje typ hello služby a všechny kód můžete spustit. rozhraní API služby Hello poskytuje dva vstupní body kódu:
 
 * Metodu zprostředkovává vstupního bodu, názvem `runAsync()`, kde můžete začít provádění jakékoli úlohy, včetně dlouho běžící výpočetních úloh.
 
@@ -98,28 +98,28 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 }
 ```
 
-V tomto kurzu budeme soustředit se na `runAsync()` metody vstupní bod. Toto je, kde můžete okamžitě začít kód spuštěný.
+V tomto kurzu budeme soustředit na hello `runAsync()` metody vstupní bod. Toto je, kde můžete okamžitě začít kód spuštěný.
 
 ### <a name="runasync"></a>RunAsync
-Platforma volá tuto metodu, když je umístěný a připravené ke spuštění instance služby. Bezstavové služby, která jednoduše znamená, když je otevřen v instanci služby. Token zrušení je k dispozici pro koordinaci při instanci služby musí být uzavřen. V Service Fabric tento cyklus otevření nebo uzavření instance služby může docházet k tolikrát, kolikrát za dobu existence služby jako celek. Toto může nastat z různých důvodů, včetně:
+Platforma Hello volá tuto metodu, pokud instance služby je umístěný a připravené tooexecute. Bezstavové služby, která jednoduše znamená po otevření hello instance služby. Token zrušení získáte toocoordinate při instanci služby musí toobe uzavřen. V Service Fabric může tento cyklus otevření nebo uzavření instance služby k mnohokrát průběhu životnosti hello hello služby jako celek. Toto může nastat z různých důvodů, včetně:
 
-* Systém přesune vaší instance služby pro vyrovnávání prostředků.
+* Hello systém přesune vaší instance služby pro vyrovnávání prostředků.
 * K chybám dochází v kódu.
-* Aplikace nebo systému byla upgradována.
-* Základní hardware dojde k výpadku.
+* Hello aplikace nebo systému byla upgradována.
+* základní hardware Hello dojde k výpadku.
 
-Tato orchestration je spravován pomocí Service Fabric a udržovat služby je vysoce dostupný a správně vyrovnáváním.
+Tato orchestration spravuje Service Fabric tookeep služby vysoce dostupné a správně vyrovnáváním.
 
-`runAsync()`by neměly blokovat synchronně. Implementaci runAsync by měl vrátit CompletableFuture umožňující pokračovat modulu runtime. Pokud vaše úlohy musí implementovat dlouhotrvající úlohu, která se má provést uvnitř CompletableFuture.
+`runAsync()`by neměly blokovat synchronně. Implementaci runAsync by měl vrátit toocontinue CompletableFuture tooallow hello modulu runtime. Pokud vaše úlohy potřebuje tooimplement dlouhotrvající úlohu, která se má provést uvnitř hello CompletableFuture.
 
 #### <a name="cancellation"></a>Zrušení
-Zrušení úlohy je spolupráci úsilí řízená token poskytnutý zrušení. Systém čeká na ukončení (podle úspěšné dokončení, zrušení nebo selhání), než ji přesune vaše úlohy. Je důležité respektovat token zrušení, Dokončit veškerou práci a ukončete `runAsync()` provést co nejrychleji, pokud systém požadavky zrušení. Následující příklad ukazuje, jak se zpracovat událost zrušení:
+Zrušení úlohy je spolupráci úsilí řízená hello zadaný token zrušení. systém Hello počká na vaše úloha tooend (podle úspěšné dokončení, zrušení nebo selhání) předtím, než ji přesune. Je důležité toohonor hello zrušení tokenu, dokončit všechny fungovat a ukončete `runAsync()` provést co nejrychleji při hello systému požadavky zrušení. Hello následující příklad ukazuje, jak toohandle zrušení událostí:
 
 ```java
     @Override
     protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 
-        // TODO: Replace the following sample code with your own logic
+        // TODO: Replace hello following sample code with your own logic
         // or remove this runAsync override if it's not needed in your service.
 
         CompletableFuture.runAsync(() -> {
@@ -140,7 +140,7 @@ Zrušení úlohy je spolupráci úsilí řízená token poskytnutý zrušení. S
 ```
 
 ### <a name="service-registration"></a>Registrace služby
-Typů služeb musí být zaregistrované v modulu runtime Service Fabric. Typ služby je definována v `ServiceManifest.xml` a třídě služby, který implementuje `StatelessService`. Registrace služby se provádí v hlavní vstupního bodu procesu. V tomto příkladu je hlavní vstupního bodu procesu `HelloWorldServiceHost.java`:
+Typů služeb musí být zaregistrované v modulu runtime Service Fabric hello. Typ služby Hello je definována v hello `ServiceManifest.xml` a třídě služby, který implementuje `StatelessService`. Registrace služby se provádí v hello proces hlavní vstupní bod. V tomto příkladu hello proces hlavní vstupní bod je `HelloWorldServiceHost.java`:
 
 ```java
 public static void main(String[] args) throws Exception {
@@ -156,9 +156,9 @@ public static void main(String[] args) throws Exception {
 }
 ```
 
-## <a name="run-the-application"></a>Spuštění aplikace
+## <a name="run-hello-application"></a>Spuštění aplikace hello
 
-Yeoman generování uživatelského rozhraní obsahuje skript gradle sestavení aplikace a skripty pro nasazení a odeberte aplikaci bash. Ke spuštění aplikace, nejprve sestavte aplikaci s gradlem:
+Hello Yeoman generování uživatelského rozhraní obsahuje gradle skriptu toobuild hello aplikace a bash skripty toodeploy a aplikaci odebrat. toorun hello aplikace, první aplikace hello sestavení s gradlem:
 
 ```bash
 $ gradle
@@ -168,7 +168,7 @@ Tímto se vytvoří balíček aplikace Service Fabric, které se dá nasadit pom
 
 ### <a name="deploy-with-service-fabric-cli"></a>Nasazení pomocí Service Fabric rozhraní příkazového řádku
 
-Install.sh skript obsahuje potřebné příkazy Service Fabric rozhraní příkazového řádku pro nasazení balíčku aplikace. Spusťte skript install.sh k nasazení aplikace.
+Hello install.sh skript obsahuje hello nezbytné Service Fabric rozhraní příkazového řádku příkazy toodeploy hello balíčku aplikace. Spusťte aplikaci install.sh skriptu toodeploy hello.
 
 ```bash
 $ ./install.sh

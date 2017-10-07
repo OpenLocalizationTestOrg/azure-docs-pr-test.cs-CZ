@@ -1,6 +1,6 @@
 ---
-title: "Zobrazit měsíční náklady na trend odhadované testovacího prostředí v Azure DevTest Labs | Microsoft Docs"
-description: "Další informace o graf trendů Azure DevTest Labs měsíční odhadované náklady."
+title: "aaaView hello měsíční odhadované testovacím trend náklady v Azure DevTest Labs | Microsoft Docs"
+description: "Další informace o hello Azure DevTest Labs měsíční odhadované náklady trend grafu."
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: tomarcher
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
-ms.openlocfilehash: b3ad1ead522908d4b41b7cca98d20ac91664998e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 47c7dd4cf91b76de74b502c50f05e79cd501ee35
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>Zobrazit měsíční náklady na trend odhadované testovacího prostředí v Azure DevTest Labs
-Náklady na správu funkce DevTest Labs vám pomůže sledovat náklady na vašem testovacím prostředí. Tento článek ukazuje, jak používat **měsíční odhadované náklady Trend** grafu zobrazíte aktuální kalendářní měsíc odhadované náklady na začátku a předpokládané náklady na konci měsíce pro aktuální měsíc kalendáře. V tomto článku zjistěte, jak chcete-li zobrazit měsíční graf trendů odhadované náklady na portálu Azure.
+# <a name="view-hello-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>Zobrazení hello měsíční odhadované testovacím trend náklady v Azure DevTest Labs
+Funkce náklady na správu Hello DevTest Labs vám pomůže sledovat hello náklady na vašem testovacím prostředí. Tento článek ukazuje, jak toouse hello **měsíční odhadované náklady Trend** grafu tooview hello aktuální kalendářní měsíc odhadované náklady na začátku a hello předpokládané koncový měsíc náklady pro hello aktuální kalendářní měsíc. V tomto článku se dozvíte, jak tooview hello měsíční odhadované náklady graf trendů v hello portálu Azure.
 
-## <a name="viewing-the-monthly-estimated-cost-trend-chart"></a>Zobrazení grafu měsíční odhadované náklady trendů
-Chcete-li zobrazit graf měsíční odhadované náklady trendů, postupujte takto: 
+## <a name="viewing-hello-monthly-estimated-cost-trend-chart"></a>Zobrazení grafu měsíční odhadované náklady Trend hello
+tooview hello měsíční Trend odhadované náklady na graf, postupujte takto: 
 
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Vyberte **více služeb**a potom vyberte **DevTest Labs** ze seznamu.
-3. Ze seznamu labs vyberte požadované testovací prostředí.   
-4. V okně v prostředí, vyberte **náklady nastavení**.
-5. V tomto prostředí **náklady nastavení** vyberte **trend náklady na testovacím**.
-6. Následující snímek obrazovky ukazuje příklad grafu náklady. 
+1. Přihlaste se toohello [portál Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+2. Vyberte **více služeb**a potom vyberte **DevTest Labs** hello seznamu.
+3. Ze seznamu hello labs vyberte požadované prostředí hello.   
+4. V okně prostředí hello vyberte **náklady nastavení**.
+5. V testovacím hello **náklady nastavení** vyberte **trend náklady na testovacím**.
+6. Hello následující snímek obrazovky ukazuje příklad grafu náklady. 
    
     ![Cenově grafu](./media/devtest-lab-configure-cost-management/graph.png)
 
-**Odhadované náklady na** hodnota je aktuální kalendářní měsíc odhadované náklady na začátku. **Plánované náklady** je odhadované náklady pro celou aktuální kalendářní měsíc vypočítává pomocí náklady na testovacím předchozí pět dní.
+Hello **odhadované náklady na** hodnota je hello aktuální kalendářní měsíc odhadované náklady na začátku. Hello **plánované náklady** hello odhadované náklady pro celou hello aktuální kalendářní měsíc vypočítáván hello testovacím náklady pro hello předchozí pět dní.
 
-Objemy náklady jsou zaokrouhlený nahoru na nejbližší celé číslo. Například: 
+objemy Hello náklady jsou zaokrouhlit toohello nejbližší celé číslo. Například: 
 
-* 5.01 zaokrouhlí až 6 
-* 5.50 zaokrouhlí až 6
-* 5.99 zaokrouhlí až 6
+* 5.01 zaokrouhlí too6 
+* 5.50 zaokrouhlí too6
+* 5.99 zaokrouhlí too6
 
-Jak je uvedeno výše grafu, náklady, se zobrazí v grafu jsou *odhadované* stojí pomocí [průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/) nabízejí sazby.
-Kromě toho jsou následující *není* zahrnutých do výpočtu náklady na:
+Jak je uvedeno výše hello grafu, jsou náklady hello se zobrazí v grafu hello *odhadované* stojí pomocí [průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/) nabízejí sazby.
+Kromě toho jsou následující hello *není* součástí hello výpočet nákladů:
 
-* Předplatné Dreamspark a CSP nejsou aktuálně podporovány jako používá Azure DevTest Labs [rozhraní API Azure fakturace](../billing/billing-usage-rate-card-overview.md) vypočítat náklady, který nepodporuje zprostředkovatele kryptografických služeb nebo Dreamspark odběry testovací prostředí.
-* Nabídka sazby. V současné době Nedokážeme používat sazby nabídka (zobrazené v rámci svého předplatného), že máte vyjedná se společnosti Microsoft nebo Microsoft partnery. Používáme průběžné platby sazby.
+* Předplatné Dreamspark a CSP nejsou aktuálně podporovány jako Azure DevTest Labs používá hello [rozhraní API Azure fakturace](../billing/billing-usage-rate-card-overview.md) testovacím hello toocalculate náklady, který nepodporuje zprostředkovatele kryptografických služeb nebo Dreamspark odběry.
+* Nabídka sazby. V současné době jsme nejsou možné toouse nabídka sazby (zobrazené v rámci svého předplatného), že máte vyjedná se společnosti Microsoft nebo Microsoft partnery. Používáme průběžné platby sazby.
 * Vaše daně
 * Vaše slevy
-* Vaše fakturační Měna. V současné době náklady na testovacího prostředí se zobrazí jenom v USD měny.
+* Vaše fakturační Měna. V současné době náklady hello testovacího prostředí se zobrazí pouze v USD měny.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-blog-posts"></a>Příspěvky blogu související
-* [Dva kroky zachovat vaše náklady na sledování v DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2016/06/21/keep-your-cost-on-track/)
+* [Dva další věci tookeep vaše náklady na sledování v DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2016/06/21/keep-your-cost-on-track/)
 * [Proč náklady prahové hodnoty?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/11/why-cost-thresholds/)
 
 ## <a name="next-steps"></a>Další kroky
-Zde jsou další vyzkoušejte:
+Zde jsou další tootry některé věci:
 
-* [Definování zásad testovacího](devtest-lab-set-lab-policy.md) – zjistěte, jak nastavit různé zásady použité k řízení použití testovacího prostředí a jeho virtuální počítače. 
-* [Vytvořit vlastní image](devtest-lab-create-template.md) – při vytváření virtuálního počítače, zadejte základ, který může být buď vlastní image nebo image pořízenou prostřednictvím Marketplace. Tento článek ukazuje, jak vytvořit vlastní obrázek ze souboru virtuálního pevného disku.
-* [Konfigurace Marketplace image](devtest-lab-configure-marketplace-images.md) – DevTest Labs podporuje vytváření virtuálních počítačů založené na imagích Azure Marketplace. Tento článek ukazuje, jak určit, které, pokud existuje, může být Azure Marketplace Image používá při vytváření virtuálních počítačů v testovacím prostředí.
-* [Vytvoření virtuálního počítače v testovacím prostředí](devtest-lab-add-vm-with-artifacts.md) -znázorňuje, jak vytvořit virtuální počítač z bitové kopie základní (buď vlastní nebo Marketplace) a postup práce s artefakty ve vašem virtuálním počítači.
+* [Definování zásad testovacího](devtest-lab-set-lab-policy.md) – zjistěte, jak tooset hello různé zásady použít toogovern použití testovacího prostředí a jeho virtuální počítače. 
+* [Vytvořit vlastní image](devtest-lab-create-template.md) – při vytváření virtuálního počítače, zadejte základ, který může být buď vlastní image nebo image pořízenou prostřednictvím Marketplace. Tento článek ukazuje, jak toocreate vlastní obrázek z soubor virtuálního pevného disku.
+* [Konfigurace Marketplace image](devtest-lab-configure-marketplace-images.md) – DevTest Labs podporuje vytváření virtuálních počítačů založené na imagích Azure Marketplace. Tento článek ukazuje, jak toospecify, který, pokud existuje, Azure Marketplace bitové kopie lze použít při vytváření virtuálních počítačů v testovacím prostředí.
+* [Vytvoření virtuálního počítače v testovacím prostředí](devtest-lab-add-vm-with-artifacts.md) -ukazuje, jak toocreate virtuální počítač z bitové kopie základní (buď vlastní nebo Marketplace) a jak toowork s artefakty ve vašem virtuálním počítači.
 

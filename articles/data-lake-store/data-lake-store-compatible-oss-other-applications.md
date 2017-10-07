@@ -1,5 +1,5 @@
 ---
-title: "Velké objemy dat aplikace, které jsou kompatibilní s Data Lake Store | Microsoft Docs"
+title: "aaaBig datových aplikací kompatibilní s Data Lake Store | Microsoft Docs"
 description: "Seznam aplikací s otevřeným zdrojem, které fungují s Azure Data Lake Store"
 services: data-lake-store
 documentationcenter: 
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: nitinme
-ms.openlocfilehash: 0570e86c16ff3bc647040c202ab46df535bb2ba1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ad4afd6437412c596c77d6b001478b82ddccf276
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="open-source-big-data-applications-that-work-with-azure-data-lake-store"></a>Otevřete zdroj velkých objemů dat aplikací, které fungují s Azure Data Lake Store
-Tento článek obsahuje seznam aplikací s otevřeným zdrojem velkých objemů dat, které fungují s Azure Data Lake Store. Pro aplikace v následující tabulce jsou podporovány pouze verze uvedené distribuční k dispozici. Informace o jaké verze těchto aplikací jsou k dispozici s HDInsight naleznete v tématu [Správa verzí komponenty HDInsight](../hdinsight/hdinsight-component-versioning.md).
+Tento článek obsahuje seznam hello s otevřeným zdrojem velkých objemů dat aplikací, které fungují s Azure Data Lake Store. Pro aplikace hello v tabulce hello níže pouze hello jsou podporovány verze, které jsou k dispozici distribuční hello uvedené. Informace o jaké verze těchto aplikací jsou k dispozici s HDInsight naleznete v tématu [Správa verzí komponenty HDInsight](../hdinsight/hdinsight-component-versioning.md).
 
 | Software s otevřeným zdrojem | Distribuce |
 | --- | --- |

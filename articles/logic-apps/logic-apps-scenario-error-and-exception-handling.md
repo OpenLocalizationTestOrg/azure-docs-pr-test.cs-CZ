@@ -1,5 +1,5 @@
 ---
-title: "Zpracovávání výjimek v jazyce & scénář protokolování chyb – Azure Logic Apps | Microsoft Docs"
+title: "aaaException zpracování a chyby protokolování scénář – Azure Logic Apps | Microsoft Docs"
 description: "Popisuje případu použití skutečné o pokročilé zpracování výjimek a protokolování chyb pro Azure Logic Apps"
 keywords: 
 services: logic-apps
@@ -16,51 +16,51 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: LADocs; b-hoedid
-ms.openlocfilehash: 044de27c75da93c95609110d2b73336c42f746fe
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e893a7b652254dca7b8a82398e8afd571f6ccd25
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scénář: Zpracování výjimek a protokolování chyb pro logic apps
 
-Tento scénář popisuje, jak můžete rozšířit aplikace logiky lepší podpory výjimek. Jste použili jsme případu použití reálnými odpověď na otázku: "Azure Logic Apps podporuje výjimky a zpracování chyb?"
+Tento scénář popisuje, jak můžete rozšířit zpracování výjimek toobetter podporu logiku aplikace. Použili jsme použití skutečném případu tooanswer hello otázku: "Azure Logic Apps podporuje výjimky a zpracování chyb?"
 
 > [!NOTE]
-> Aktuální schéma Azure Logic Apps poskytuje standardní šablona pro akce odpovědi. Tato šablona obsahuje interní ověření a chybové odpovědi vrácená z aplikace API.
+> Hello aktuální schéma Azure Logic Apps poskytuje standardní šablona pro akce odpovědi. Tato šablona obsahuje interní ověření a chybové odpovědi vrácená z aplikace API.
 
 ## <a name="scenario-and-use-case-overview"></a>Přehled scénáře a použití případu
 
-Tady je článek jako případ použití pro tento scénář: 
+Tady je hello scénáře jako hello případ použití pro tento scénář: 
 
-Dobře známé zdravotní péče organizace pověření nám vyvíjet Azure řešení, které by vytvořit pacienta portálu pomocí Microsoft Dynamics CRM Online. Potřebovali odeslat schůzku záznamy mezi Dynamics CRM Online pacienta portál a Salesforce. Jsme se zobrazí dotaz, použít [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) standard pro všechny pacienta záznamy.
+Dobře známé zdravotní péče organizace nám pověření toodevelop Azure řešení, které by vytvořit pacienta portálu pomocí Microsoft Dynamics CRM Online. Potřebovali toosend schůzku záznamy mezi hello Dynamics CRM Online pacienta portál a Salesforce. Nemůžeme se zobrazí výzva, toouse hello [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) standard pro všechny pacienta záznamy.
 
-Projekt má dva hlavní požadavky:  
+Hello projekt má dva hlavní požadavky:  
 
-* Metoda na protokolování záznamů odeslaných z portálu pro Dynamics CRM Online
-* Způsob, jak zobrazit chyby, ke kterým došlo v rámci pracovního postupu
+* Záznamy a metoda toolog odeslaný hello Dynamics CRM Online portálu
+* Způsob tooview chyby, ke kterým došlo v rámci pracovního postupu hello
 
 > [!TIP]
-> Souhrnné video o tomto projektu najdete v tématu [skupiny uživatelů integrace](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Integration User Group").
+> Souhrnné video o tomto projektu najdete v tématu [skupiny uživatelů integrace](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "skupiny uživatelů integrace").
 
-## <a name="how-we-solved-the-problem"></a>Jak jsme problém byl
+## <a name="how-we-solved-hello-problem"></a>Jak jsme vyřešit problém hello
 
-Jsme zvolili [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/ "Azure Cosmos DB") jako úložiště pro záznamy protokolu a chyby (Cosmos DB odkazuje na záznamy jako dokumenty). Azure Logic Apps obsahuje standardní šablonu pro všechny odpovědi, a proto jsme nebude muset vytvořit vlastní schéma. Vytvoříme může aplikace API k **vložit** a **dotazu** pro záznamy chyba a protokolu. Může také definujeme schéma pro jednotlivé aplikace API.  
+Jsme zvolili [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/ "Azure Cosmos DB") jako úložiště pro záznamy protokolu a chyba hello (Cosmos DB odkazuje toorecords jako dokumenty). Azure Logic Apps obsahuje standardní šablonu pro všechny odpovědi, a proto jsme nebude mít toocreate vlastní schéma. Jsme může vytvořit aplikaci API příliš**vložit** a **dotazu** pro záznamy chyba a protokolu. Pro každý v rámci aplikace API hello jsme také může definovat schéma.  
 
-Další požadavky se k vyprázdnění záznamů po určitém datu. Cosmos DB má vlastnost s názvem [TTL](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "TTL") (TTL), což nám nastavit povolené **TTL** hodnotu pro každý záznam nebo kolekce. Tato funkce eliminovat potřeba ručně odstranit záznamy v databázi Cosmos.
+Další požadavky se záznamy toopurge po určitém datu. Cosmos DB má vlastnost s názvem [čas tooLive](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "čas tooLive") (TTL), což povolené nám tooset **čas tooLive** hodnotu pro každý záznam nebo kolekce. Tato funkce eliminovat hello nutné toomanually odstranění záznamů v databázi Cosmos.
 
 > [!IMPORTANT]
-> K dokončení tohoto kurzu, musíte vytvořit databázi Cosmos DB a dvě kolekce (protokolování a chyby).
+> toocomplete tohoto kurzu budete potřebovat toocreate Cosmos DB databáze a dvě kolekce (protokolování a chyby).
 
-## <a name="create-the-logic-app"></a>Vytvoření aplikace logiky
+## <a name="create-hello-logic-app"></a>Vytvoření aplikace logiky hello
 
-Prvním krokem je vytvoření aplikace logiky a otevřete aplikaci v návrháři aplikace logiky. V tomto příkladu používáme aplikace logiky nadřazený podřízený. Předpokládejme, že jsme už máte vytvořené nadřazené a se chystáte vytvořit jednu aplikaci logiky podřízené.
+prvním krokem Hello je toocreate hello logiku aplikace a otevřete hello aplikace v návrháři aplikace logiky. V tomto příkladu používáme aplikace logiky nadřazený podřízený. Předpokládejme jsme už máte vytvořené hello nadřazené a budou toocreate jedna podřízené logiku aplikace.
 
-Vzhledem k tomu, že přidáme protokolu záznam vycházejících z Dynamics CRM Online, Začněme v horní části. Musí používáme **požadavku** aktivovat, protože aplikace logiky nadřazené aktivuje tohoto dítěte.
+Vzhledem k tomu, že přidáme záznam hello toolog vycházejících z Dynamics CRM Online, Začněme v horní části hello. Musí používáme **požadavku** aktivovat, protože aplikace logiky nadřazené hello aktivuje tohoto dítěte.
 
 ### <a name="logic-app-trigger"></a>Aktivační událostí aplikace logiky
 
-Používáme **požadavku** spustit jak je znázorněno v následujícím příkladu:
+Používáme **požadavku** spustit jak je znázorněno v hello následující ukázka:
 
 ```` json
 "triggers": {
@@ -100,14 +100,14 @@ Používáme **požadavku** spustit jak je znázorněno v následujícím přík
 
 ## <a name="steps"></a>Kroky
 
-Zdroj (požadavek) pacienta záznamu jsme musíte se přihlásit z portálu Dynamics CRM Online.
+Zdroj hello (požadavek) pacienta záznamu hello jsme musíte se přihlásit z hello Dynamics CRM Online portálu.
 
 1. Nový záznam schůzku nám musí získat ze služby Dynamics CRM Online.
 
-   Aktivační události pocházející z CRM poskytuje nám s **CRM PatentId**, **typ záznamu**, **nový nebo aktualizovat záznam** (nový nebo aktualizovat logická hodnota), a **SalesforceId**. **SalesforceId** může mít hodnotu null, protože se používá pouze pro aktualizaci.
-   Se nám získat záznam CRM pomocí aplikace CRM **PatientID** a **typ záznamu**.
+   aktivační událost Hello pocházejících z CRM nám poskytuje hello **CRM PatentId**, **typ záznamu**, **nový nebo aktualizovat záznam** (nový nebo aktualizovat logická hodnota), a  **SalesforceId**. Hello **SalesforceId** může mít hodnotu null, protože se používá pouze pro aktualizaci.
+   Nemůžeme získat hello CRM záznam pomocí hello CRM **PatientID** a hello **typ záznamu**.
 
-2. Dále je potřeba přidat naše aplikace DocumentDB API **InsertLogEntry** operace, jak je vidět tady v návrháři aplikace logiky.
+2. Dále je třeba tooadd naše aplikace DocumentDB API **InsertLogEntry** operace, jak je vidět tady v návrháři aplikace logiky.
 
    **Vložit položky protokolu**
 
@@ -124,15 +124,15 @@ Zdroj (požadavek) pacienta záznamu jsme musíte se přihlásit z portálu Dyna
 ## <a name="logic-app-source-code"></a>Zdrojovém kódu aplikace logiky
 
 > [!NOTE]
-> Následující příklady jsou pouze ukázky. Protože v tomto kurzu vychází z implementace teď v produkčním prostředí, hodnotu **zdrojový uzel** se nemusí zobrazit vlastnosti, které se vztahují k plánování na schůzku. > 
+> Hello následující příklady jsou pouze ukázky. Protože v tomto kurzu vychází z implementace teď v produkčním prostředí, hello hodnotu **zdrojový uzel** se nemusí zobrazit vlastnosti, které jsou související tooscheduling na schůzku. > 
 
 ### <a name="logging"></a>Protokolování
 
-Následující ukázka kódu aplikace logiky ukazuje způsob zpracování protokolování.
+Následující kód aplikace logiky Hello ukázkové ukazuje, jak toohandle protokolování.
 
 #### <a name="log-entry"></a>Položka protokolu
 
-Tady je zdrojovém kódu aplikace logiky pro vkládání položka protokolu.
+Tady je hello logiku aplikace zdrojový kód pro vložení položka protokolu.
 
 ``` json
 "InsertLogEntry": {
@@ -160,7 +160,7 @@ Tady je zdrojovém kódu aplikace logiky pro vkládání položka protokolu.
 
 #### <a name="log-request"></a>Žádost protokolu
 
-Zde je zpráva protokolu žádost odeslat do aplikace API.
+Zde je zpráva požadavku protokolu hello odeslány toohello aplikace API.
 
 ``` json
     {
@@ -180,7 +180,7 @@ Zde je zpráva protokolu žádost odeslat do aplikace API.
 
 #### <a name="log-response"></a>Odpověď protokolu
 
-Zde je zpráva odpovědi protokolu z aplikace API.
+Zde je zpráva odpovědi protokolu hello z aplikace API hello.
 
 ``` json
 {
@@ -214,15 +214,15 @@ Zde je zpráva odpovědi protokolu z aplikace API.
 
 ```
 
-Nyní Podíváme se na zpracování kroky chyb.
+Nyní Podíváme se na zpracování kroky hello chyb.
 
 ### <a name="error-handling"></a>Zpracování chyb
 
-Následující ukázka kódu aplikace logiky ukazuje, jak můžete implementovat zpracování chyb.
+Hello následující ukázka kódu aplikace logiky ukazuje, jak můžete implementovat zpracování chyb.
 
 #### <a name="create-error-record"></a>Vytvořit záznam chyby
 
-Tady je zdrojovém kódu aplikace logiky pro vytvoření záznam chyby.
+Tady je zdrojovém kódu aplikace hello logiku pro vytvoření záznam chyby.
 
 ``` json
 "actions": {
@@ -269,7 +269,7 @@ Tady je zdrojovém kódu aplikace logiky pro vytvoření záznam chyby.
         "isError": true,
         "crmId": "6b115f6d-a7ee-e511-80f5-3863bb2eb2d0",
         "patientId": "6b115f6d-a7ee-e511-80f5-3863bb2eb2d0",
-        "message": "Salesforce failed to complete task: Message: duplicate value found: Account_ID_MED__c duplicates value on record with id: 001U000001c83gK",
+        "message": "Salesforce failed toocomplete task: Message: duplicate value found: Account_ID_MED__c duplicates value on record with id: 001U000001c83gK",
         "providerId": "",
         "severity": 4,
         "salesforceId": "",
@@ -307,7 +307,7 @@ Tady je zdrojovém kódu aplikace logiky pro vytvoření záznam chyby.
         "action": "New_Patient",
         "salesforceId": "",
         "update": false,
-        "body": "CRM failed to complete task: Message: duplicate value found: CRM_HUB_ID__c duplicates value on record with id: 001U000001c83gK",
+        "body": "CRM failed toocomplete task: Message: duplicate value found: CRM_HUB_ID__c duplicates value on record with id: 001U000001c83gK",
         "source": "{/"Account_Class_vod__c/":/"PRAC/",/"Account_Status_MED__c/":/"I/",/"CRM_HUB_ID__c/":/"6b115f6d-a7ee-e511-80f5-3863bb2eb2d0/",/"Credentials_vod__c/":/"DO - Degree level is DO/",/"DTC_ID_MED__c/":/"/",/"Fax/":/"/",/"FirstName/":/"A/",/"Gender_vod__c/":/"/",/"IMS_ID__c/":/"/",/"LastName/":/"BAILEY/",/"MterID_mp__c/":/"/",/"Medicis_ID_MED__c/":/"851588/",/"Middle_vod__c/":/"/",/"NPI_vod__c/":/"/",/"PDRP_MED__c/":false,/"PersonDoNotCall/":false,/"PersonEmail/":/"/",/"PersonHasOptedOutOfEmail/":false,/"PersonHasOptedOutOfFax/":false,/"PersonMobilePhone/":/"/",/"Phone/":/"/",/"Practicing_Specialty__c/":/"FM - FAMILY MEDICINE/",/"Primary_City__c/":/"/",/"Primary_State__c/":/"/",/"Primary_Street_Line2__c/":/"/",/"Primary_Street__c/":/"/",/"Primary_Zip__c/":/"/",/"RecordTypeId/":/"012U0000000JaPWIA0/",/"Request_Date__c/":/"2016-06-10T22:31:55.9647467Z/",/"XXXXXXX/":/"/",/"Specialty_1_vod__c/":/"/",/"Suffix_vod__c/":/"/",/"Website/":/"/"}",
         "code": 400,
         "errors": null,
@@ -340,7 +340,7 @@ Tady je zdrojovém kódu aplikace logiky pro vytvoření záznam chyby.
     },
     "body": {
         "status": 400,
-        "message": "Salesforce failed to complete task: Message: duplicate value found: Account_ID_MED__c duplicates value on record with id: 001U000001c83gK",
+        "message": "Salesforce failed toocomplete task: Message: duplicate value found: Account_ID_MED__c duplicates value on record with id: 001U000001c83gK",
         "source": "Salesforce.Common",
         "errors": []
     }
@@ -348,11 +348,11 @@ Tady je zdrojovém kódu aplikace logiky pro vytvoření záznam chyby.
 
 ```
 
-### <a name="return-the-response-back-to-parent-logic-app"></a>Vrátí odpověď zpět do nadřazené aplikace logiky
+### <a name="return-hello-response-back-tooparent-logic-app"></a>Vrátí hello odpověď zpět tooparent logiku aplikace
 
-Po získání odpovědi můžete předat odpověď zpět do aplikace logiky nadřazené.
+Po získání odpovědi hello můžete předat hello odpověď zpět toohello nadřazené logiku aplikace.
 
-#### <a name="return-success-response-to-parent-logic-app"></a>Vrátí úspěšná odpověď do nadřazené logiku aplikace
+#### <a name="return-success-response-tooparent-logic-app"></a>Vrátí aplikace logiky tooparent úspěšné odpovědi
 
 ``` json
 "SuccessResponse": {
@@ -374,7 +374,7 @@ Po získání odpovědi můžete předat odpověď zpět do aplikace logiky nad�
 }
 ```
 
-#### <a name="return-error-response-to-parent-logic-app"></a>Vrátí chybové odpovědi do nadřazené logiku aplikace
+#### <a name="return-error-response-tooparent-logic-app"></a>Vrátí aplikace logiky tooparent chybové odpovědi
 
 ``` json
 "ErrorResponse": {
@@ -404,12 +404,12 @@ Naše řešení možnosti s přidané [Cosmos DB](https://azure.microsoft.com/se
 
 ### <a name="error-management-portal"></a>Portál pro správu chyby
 
-Chcete-li zobrazit chyby, můžete vytvořit webové aplikace MVC zobrazí chyba záznamy z databáze Cosmos. **Seznamu**, **podrobnosti**, **upravit**, a **odstranit** operace jsou zahrnuté v aktuální verzi.
+chyby hello tooview, můžete vytvořit MVC webové aplikace toodisplay hello chyba záznamy z databáze Cosmos. Hello **seznamu**, **podrobnosti**, **upravit**, a **odstranit** operace jsou zahrnuté v aktuální verzi hello.
 
 > [!NOTE]
-> Upravit operace: Cosmos DB nahradí celý dokument. Záznamy zobrazené na **seznamu** a **podrobností** zobrazení jsou pouze vzorky. Nejsou skutečné pacienta schůzku záznamy.
+> Upravit operace: Cosmos DB nahrazuje hello celý dokument. Hello záznamy zobrazené na hello **seznamu** a **podrobností** zobrazení jsou pouze vzorky. Nejsou skutečné pacienta schůzku záznamy.
 
-Zde jsou příklady naše podrobnosti o aplikaci MVC vytvořené pomocí výše popsaných přístup.
+Zde jsou příklady naše aplikace MVC podrobnosti vytvořili s hello dříve popsané přístup.
 
 #### <a name="error-management-list"></a>Seznam chyb správy
 ![Seznam chyb](media/logic-apps-scenario-error-and-exception-handling/errorlist.png)
@@ -419,7 +419,7 @@ Zde jsou příklady naše podrobnosti o aplikaci MVC vytvořené pomocí výše 
 
 ### <a name="log-management-portal"></a>Portál pro správu protokolu
 
-K zobrazení protokolů, také jsme vytvořili webové aplikace MVC. Zde jsou příklady naše podrobnosti o aplikaci MVC vytvořené pomocí výše popsaných přístup.
+protokoly hello tooview, jsme také vytvořit webové aplikace MVC. Zde jsou příklady naše aplikace MVC podrobnosti vytvořili s hello dříve popsané přístup.
 
 #### <a name="sample-log-detail-view"></a>Zobrazení podrobností protokolu ukázka
 ![Zobrazení podrobností protokolu](media/logic-apps-scenario-error-and-exception-handling/samplelogdetail.png)
@@ -434,14 +434,14 @@ Naše open-source Azure Logic Apps Výjimka rozhraní API pro správu aplikací 
 * **LogController** vloží záznam protokolu (dokument) v kolekci DocumentDB.
 
 > [!TIP]
-> Použít oba řadiče `async Task<dynamic>` operace a operace přeložit za běhu, takže jsme můžete vytvořit schéma DocumentDB v těle operace. 
+> Použít oba řadiče `async Task<dynamic>` operace a operace tooresolve za běhu, takže jsme můžete vytvořit hello schématu DocumentDB v textu hello hello operace. 
 > 
 
-Každému dokumentu v DocumentDB musí mít jedinečné ID. Používáme `PatientId` a přidání časové razítko, které jsou převedeny na hodnotu časového razítka systému Unix (double). Jsme zkrátit hodnota odebrat desetinnou hodnotu.
+Každému dokumentu v DocumentDB musí mít jedinečné ID. Používáme `PatientId` a přidání časového razítka, která je převést hodnotu časového razítka Unix tooa (double). Jsme zkrátit hello hodnota tooremove hello desetinnou hodnotu.
 
-Můžete zobrazit zdrojový kód chyby kontroleru rozhraní API [z Githubu](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs).
+Můžete zobrazit zdrojový kód hello chyba kontroleru rozhraní API [z Githubu](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs).
 
-Jsme volání rozhraní API z aplikace logiky pomocí následující syntaxe:
+Říkáme hello rozhraní API z aplikace logiky pomocí hello následující syntaxi:
 
 ``` json
  "actions": {
@@ -474,17 +474,17 @@ Jsme volání rozhraní API z aplikace logiky pomocí následující syntaxe:
  }
 ```
 
-Vyhledá výraz v předchozím příkladu kódu *Create_NewPatientRecord* stav **se nezdařilo**.
+Hello výrazu v hello předcházející kontroly ukázkový kód pro hello *Create_NewPatientRecord* stav **se nezdařilo**.
 
 ## <a name="summary"></a>Souhrn
 
 * Můžete snadno implementovat protokolování a zpracování chyb v aplikaci logiky.
-* DocumentDB slouží jako úložiště pro záznamy protokolu a chyby (dokumentů).
-* MVC slouží k vytvoření portálu zobrazit záznamy protokolu a chyby.
+* DocumentDB můžete použít jako úložiště hello záznamů protokolu a chyby (dokumentů).
+* Můžete použít MVC toocreate portálu toodisplay protokolu a záznamy o chybách.
 
 ### <a name="source-code"></a>Zdrojový kód
 
-Zdrojový kód pro správu výjimek aplikace logiky aplikace rozhraní API je k dispozici v tomto [úložiště GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "rozhraní API pro správu aplikace logiky aplikace výjimka").
+zdrojový kód Hello hello správu výjimek aplikace logiky aplikace rozhraní API je k dispozici v tomto [úložiště GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "rozhraní API pro správu aplikace logiky aplikace výjimka").
 
 ## <a name="next-steps"></a>Další kroky
 

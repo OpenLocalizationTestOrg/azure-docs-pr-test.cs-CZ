@@ -1,6 +1,6 @@
 ---
-title: "Pokročilé vytváření sestav s MobileApps Engagement univerzální pro Windows"
-description: "Postup pro integraci Azure Mobile Engagement univerzálních aplikací pro Windows"
+title: "aaaWindows Universal pokročilé vytváření sestav s MobileApps zapojení"
+description: "Jak tooIntegrate Azure Mobile Engagement s univerzálních aplikací pro Windows"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/12/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: feac309db1ffce0945012e293bfc1df417aed876
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 20968f238ef7ae9dc0b8bb6dac3fb8bdb9bc3a10
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="advanced-reporting-with-the-windows-universal-apps-engagement-sdk"></a>Pokročilé vytváření sestav s Engagement univerzálních aplikací pro Windows SDK
+# <a name="advanced-reporting-with-hello-windows-universal-apps-engagement-sdk"></a>Pokročilé vytváření sestav s hello Engagement SDK univerzální aplikace Windows
 > [!div class="op_single_selector"]
 > * [Univerzální platforma Windows](mobile-engagement-windows-store-advanced-reporting.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -29,22 +29,22 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Toto téma popisuje další scénáře vytváření sestav v aplikaci univerzální pro Windows. Mezi tyto scénáře patří možnosti, které můžete použít pro vytvořené v aplikaci [Začínáme](mobile-engagement-windows-store-dotnet-get-started.md) kurzu.
+Toto téma popisuje další scénáře vytváření sestav v aplikaci univerzální pro Windows. Mezi tyto scénáře patří možnosti, které můžete tooapply toohello aplikace vytvořená v hello [Začínáme](mobile-engagement-windows-store-dotnet-get-started.md) kurzu.
 
 ## <a name="prerequisites"></a>Požadavky
 [!INCLUDE [Prereqs](../../includes/mobile-engagement-windows-store-prereqs.md)]
 
-Před zahájením tohoto kurzu, je třeba nejprve provést [Začínáme](mobile-engagement-windows-store-dotnet-get-started.md) kurz, který je úmyslně přímé a jednoduché. Tento kurz se zaměřuje na další možnosti, které můžete vybrat z.
+Před zahájením tohoto kurzu, musíte nejdřív dokončit hello [Začínáme](mobile-engagement-windows-store-dotnet-get-started.md) kurz, který je úmyslně přímé a jednoduché. Tento kurz se zaměřuje na další možnosti, které můžete vybrat z.
 
 ## <a name="specifying-engagement-configuration-at-runtime"></a>Určení konfigurace engagement za běhu
-Konfigurace zapojení je centralizovaná v `Resources\EngagementConfiguration.xml` souboru projektu, který je tam, kde byl zadán v [Začínáme](mobile-engagement-windows-store-dotnet-get-started.md) tématu.
+Konfigurace Engagement Hello je centralizovaná v hello `Resources\EngagementConfiguration.xml` souboru projektu, který je tam, kde byl zadán v hello [Začínáme](mobile-engagement-windows-store-dotnet-get-started.md) tématu.
 
-Ale můžete je také zadat v době běhu: můžete volat metodu před Engagement inicializaci agenta:
+Ale můžete je také zadat v době běhu: můžete volat hello následující metody před inicializaci agenta hello Engagement:
 
           /* Engagement configuration. */
           EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
 
-          /* Set the Engagement connection string. */
+          /* Set hello Engagement connection string. */
           engagementConfiguration.Agent.ConnectionString = "Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}";
 
           /* Initialize Engagement angent with above configuration. */
@@ -53,14 +53,14 @@ Ale můžete je také zadat v době běhu: můžete volat metodu před Engagemen
 
 
 ## <a name="recommended-method-overload-your-page-classes"></a>Doporučená metoda: přetížení vaší `Page` třídy
-Pokud chcete aktivovat reporting všechny protokoly, které vyžadují zapojení k výpočtu uživatelů, relací, aktivity, dojde k chybě a technické statistiky, zkontrolujte všechny vaše `Page` dílčí třídy dědí `EngagementPage` třídy.
+vytváření sestav hello tooactivate všechny protokoly hello vyžadují zapojení toocompute uživatelů, relací, aktivity, dojde k chybě a technické statistiky, ujistěte se, všechna vaše `Page` dílčí třídy dědí hello `EngagementPage` třídy.
 
-Tady je příklad pro stránku vaší aplikace. Můžete to samé pro všechny stránky vaší aplikace.
+Tady je příklad pro stránku vaší aplikace. Můžete provést hello samé pro všechny stránky vaší aplikace.
 
 ### <a name="c-source-file"></a>C# zdrojový soubor
 Upravit stránku `.xaml.cs` souboru:
 
-* Přidat do vaší `using` příkazy:
+* Přidat tooyour `using` příkazy:
   
       using Microsoft.Azure.Engagement;
 * Nahraďte `Page` s `EngagementPage`:
@@ -88,14 +88,14 @@ Upravit stránku `.xaml.cs` souboru:
         }
 
 > [!IMPORTANT]
-> Pokud stránka přepíše metodu `OnNavigatedTo`, nezapomeňte volat `base.OnNavigatedTo(e)`. Jinak, není hlášena aktivity ( `EngagementPage` volání `StartActivity` uvnitř jeho `OnNavigatedTo` metoda).
+> Pokud stránka přepíše hello `OnNavigatedTo` metoda, že toocall být `base.OnNavigatedTo(e)`. Jinak, není hlášena hello aktivity (hello `EngagementPage` volání `StartActivity` uvnitř jeho `OnNavigatedTo` metoda).
 > 
 > 
 
 ### <a name="xaml-file"></a>Souboru XAML
 Upravit stránku `.xaml` souboru:
 
-* Přidejte do deklarací oborů názvů:
+* Přidejte tooyour deklarací oborů názvů:
   
       xmlns:engagement="using:Microsoft.Azure.Engagement"
 * Nahraďte `Page` s `engagement:EngagementPage`:
@@ -115,31 +115,31 @@ Upravit stránku `.xaml` souboru:
             ...
         </engagement:EngagementPage >
 
-### <a name="override-the-default-behaviour"></a>Přepsat výchozí chování
-Ve výchozím nastavení je název třídy stránky uvedená jako název aktivity, s žádné další. Pokud třída používá příponou "Stránka", Engagement jeho odstranění.
+### <a name="override-hello-default-behaviour"></a>Přepsat výchozí chování hello
+Ve výchozím nastavení je název třídy hello stránku hello uvedená jako název aktivity hello a žádné navíc. Pokud třída hello používá příponu "Stránka" hello, Engagement jeho odstranění.
 
-Pokud chcete přepsat výchozí chování pro název, přidejte tento kód:
+toooverride hello výchozí chování pro název hello přidejte tento kód:
 
-        // in the .xaml.cs file
+        // in hello .xaml.cs file
         protected override string GetEngagementPageName()
         {
           /* your code */
           return "new name";
         }
 
-Sestavy doplňující informace s vaší aktivitou, přidejte tento kód:
+tooreport doplňující informace s vaší aktivitou, přidejte tento kód:
 
-        // in the .xaml.cs file
+        // in hello .xaml.cs file
         protected override Dictionary<object,object> GetEngagementPageExtra()
         {
           /* your code */
           return extra;
         }
 
-Tyto metody jsou volány prostřednictvím `OnNavigatedTo` metoda stránky.
+Tyto metody jsou volat v rámci hello `OnNavigatedTo` metoda stránky.
 
 ### <a name="alternate-method-call-startactivity-manually"></a>Alternativní metoda: volání `StartActivity()` ručně
-Pokud nemůžete nebo nechcete přetížení vaše `Page` třídy, můžete místo toho spustit vaše aktivity voláním `EngagementAgent` metody přímo.
+Pokud nemůžete nebo nechcete, aby toooverload vaše `Page` třídy, můžete místo toho spustit vaše aktivity voláním `EngagementAgent` metody přímo.
 
 Doporučujeme, abyste volání `StartActivity` uvnitř vaší `OnNavigatedTo` metoda stránky.
 
@@ -152,12 +152,12 @@ Doporučujeme, abyste volání `StartActivity` uvnitř vaší `OnNavigatedTo` me
 > [!IMPORTANT]
 > Zajistěte, aby že správně ukončete svou relaci.
 > 
-> Sady Windows Universal SDK automaticky zavolá `EndActivity` metoda při ukončení aplikace. Z toho důvodu je **vysoce** doporučuje volat `StartActivity` metoda vždy, když aktivita uživatele změnit a **nikdy** volání `EndActivity` metoda. Tato metoda Engagement server oznámení, že má aktuální uživatel opustil aplikaci, které ovlivní všechny protokoly aplikací.
+> Hello sady Windows Universal SDK automaticky volá hello `EndActivity` metoda při zavření aplikace hello. Z toho důvodu je **vysoce** doporučená toocall hello `StartActivity` metoda vždy, když aktivita hello hello uživatele změnit a příliš**nikdy** volání hello `EndActivity` metoda. Tato metoda hello Engagement server oznámení, že tento aktuální uživatel hello opustil hello aplikaci, které ovlivní všechny protokoly aplikací.
 > 
 > 
 
 ## <a name="advanced-reporting"></a>Rozšířená tvorba sestav
-Volitelně můžete chtít sestavu, události specifické pro aplikace, chyb a úlohy, Uděláte to tak, použít jiné metody v nalezen `EngagementAgent` třídy. Rozhraní API Engagement umožňuje použití pokročilých funkcí pro všechny zapojení.
+Volitelně můžete tooreport události specifické pro aplikaci, chyb a úlohy, toodo tak, použijte hello další metody nalezeny v hello `EngagementAgent` třídy. Hello Engagement API umožňuje použití pokročilých funkcí pro všechny zapojení.
 
-Další informace najdete v tématu [jak používat rozšířené Mobile Engagement označování rozhraní API v aplikaci Windows Universal](mobile-engagement-windows-store-use-engagement-api.md).
+Další informace najdete v tématu [jak toouse hello advanced označování rozhraní API v aplikaci Windows Universal Mobile Engagement](mobile-engagement-windows-store-use-engagement-api.md).
 

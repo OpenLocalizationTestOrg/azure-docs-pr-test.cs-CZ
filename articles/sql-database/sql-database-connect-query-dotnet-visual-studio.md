@@ -1,6 +1,6 @@
 ---
-title: "Použití sady Visual Studio a .NET k dotazování služby Azure SQL Database | Dokumentace Microsoftu"
-description: "Toto téma vám ukáže, jak pomocí sady Visual Studio vytvořit program, který se připojí ke službě Azure SQL Database a bude ji dotazovat s použitím příkazů jazyka Transact-SQL."
+title: aaaUse Visual Studio a .NET tooquery Azure SQL Database | Microsoft Docs
+description: "Toto téma ukazuje, jak toouse Visual Studio toocreate program, který se připojuje tooan Azure SQL Database a dotazování pomocí příkazů Transact-SQL."
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -15,67 +15,67 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 07/05/2017
 ms.author: carlrab
-ms.openlocfilehash: 105dab17823a7e7f6957a604833f4ecad35c14bd
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 038cfb9c680217dfeea5a9996a0abed88cc80559
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-net-c-with-visual-studio-to-connect-and-query-an-azure-sql-database"></a>Použití .NET (jazyk C#) a sady Visual Studio k připojení k databázi SQL Azure a jejímu dotazování
+# <a name="use-net-c-with-visual-studio-tooconnect-and-query-an-azure-sql-database"></a>Pomocí sady Visual Studio tooconnect .NET (C#) a dotaz na databázi Azure SQL
 
-Tento rychlý úvodní kurz ukazuje použití rozhraní [.NET Framework](https://www.microsoft.com/net/) a sady Visual Studio k vytvoření programu v jazyce C# pro připojení k databázi SQL Azure a použití příkazů jazyka Transact-SQL k dotazování dat.
+Tento úvodní kurz ukazuje, jak toouse hello [rozhraní .NET framework](https://www.microsoft.com/net/) toocreate C# programu sady Visual Studio tooconnect tooan Azure SQL Database a používat data tooquery příkazy jazyka Transact-SQL.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli absolvovat tento rychlý úvodní kurz, ujistěte se, že máte následující:
+toocomplete tento rychlý úvodní kurz, ujistěte se, že máte hello následující:
 
-- Databázi SQL Azure. Tento rychlý start používá prostředky vytvořené v některém z těchto rychlých startů: 
+- Databázi SQL Azure. Tento rychlý start používá hello prostředky vytvořené v jednom z těchto rychlé spuštění: 
 
    - [Vytvoření databáze – portál](sql-database-get-started-portal.md)
    - [Vytvoření databáze – rozhraní příkazového řádku](sql-database-get-started-cli.md)
    - [Vytvoření databáze – PowerShell](sql-database-get-started-powershell.md)
 
-- [Pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) pro veřejnou IP adresu počítače, který používáte pro tento rychlý úvodní kurz.
+- A [pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) pro hello veřejnou IP adresu počítače hello použijete pro tento kurz rychlý start.
 - Instalaci sady [Visual Studio Community 2017, Visual Studio Professional 2017 nebo Visual Studio Enterprise 2017](https://www.visualstudio.com/downloads/).
 
 ## <a name="sql-server-connection-information"></a>Informace o připojení k SQL serveru
 
-Získejte informace o připojení potřebné pro připojení k databázi SQL Azure. V dalších postupech budete potřebovat plně kvalifikovaný název serveru, název databáze a přihlašovací údaje.
+Získáte hello připojení informace potřebné tooconnect toohello Azure SQL database. Budete potřebovat hello serveru plně kvalifikovaný název, název databáze a přihlašovacích údajů v dalším postupu hello.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo vyberte **SQL Database** a na stránce **Databáze SQL** klikněte na vaši databázi. 
-3. Na stránce **Přehled** pro vaši databázi si prohlédněte plně kvalifikovaný název serveru, jak je znázorněno na následujícím obrázku. Pokud na název serveru najedete myší, můžete vyvolat možnost **Kopírování kliknutím**. 
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
+2. Vyberte **databází SQL** z nabídky na levé straně hello a klikněte na tlačítko databáze na hello **databází SQL** stránky. 
+3. Na hello **přehled** stránky pro vaši databázi hello zkontrolujte plně kvalifikovaný název serveru, jak ukazuje následující obrázek hello. Můžete podržet přes toobring název serveru hello až hello **klikněte na tlačítko toocopy** možnost. 
 
    ![název-serveru](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. Pokud zapomenete přihlašovací informace pro váš server služby Azure SQL Database, přejděte na stránku serveru služby SQL Database, abyste zobrazili jméno správce serveru. V případě potřeby můžete obnovit heslo.
+4. Pokud zapomenete přihlašovací údaje serveru Azure SQL Database, přejděte toohello databáze SQL serveru stránky tooview hello serveru správce název. V případě potřeby můžete resetovat heslo hello.
 
 5. Klikněte na tlačítko **Zobrazit databázové připojovací řetězce**.
 
-6. Zkontrolujte úplný připojovací řetězec **ADO.NET**.
+6. Zkontrolujte hello dokončení **ADO.NET** připojovací řetězec.
 
     ![Připojovací řetězec pro ADO.NET](./media/sql-database-connect-query-dotnet/adonet-connection-string.png)
 
 > [!IMPORTANT]
-> Musíte mít nastavené pravidlo brány firewall pro veřejnou IP adresu počítače, na kterém provádíte tento kurz. Pokud jste na jiném počítači nebo máte jinou veřejnou IP adresu, vytvořte [pravidlo brány firewall na úrovni serveru pomocí webu Azure Portal](sql-database-get-started-portal.md#create-a-server-level-firewall-rule). 
+> Pravidlo brány firewall musí mít zavedené hello veřejných IP adres hello počítače, na kterém provádíte tento kurz. Pokud jsou v jiném počítači nebo mít jinou veřejnou IP adresu, vytvořte [pravidlo brány firewall na úrovni serveru pomocí portálu Azure hello](sql-database-get-started-portal.md#create-a-server-level-firewall-rule). 
 >
   
 ## <a name="create-a-new-visual-studio-project"></a>Vytvoření nového projektu v sadě Visual Studio
 
 1. V sadě Visual Studio vyberte **Soubor**, **Nový**, **Projekt**. 
-2. V dialogovém okně **Nový projekt** rozbalte **Visual C#**.
-3. Vyberte **Konzolová aplikace** a jako název projektu zadejte *sqltest*.
-4. Kliknutím na **OK** vytvořte nový projekt a otevřete ho v sadě Visual Studio.
+2. V hello **nový projekt** dialogové okno a rozbalte **Visual C#**.
+3. Vyberte **konzolovou aplikaci** a zadejte *sqltest* pro název projektu hello.
+4. Klikněte na tlačítko **OK** toocreate a otevřete hello nový projekt v sadě Visual Studio
 4. V Průzkumníku řešení klikněte pravým tlačítkem na **sqltest** a klikněte na **Správa balíčků NuGet**. 
-5. V části **Procházet** vyhledejte a po nalezení vyberte ```System.Data.SqlClient```.
-6. Na stránce **System.Data.SqlClient** klikněte na **Nainstalovat**.
-7. Po dokončení instalace zkontrolujte změny a potom kliknutím na **OK** zavřete okno **Náhled**. 
+5. Na hello **Procházet**, vyhledejte ```System.Data.SqlClient``` a, kdy najít, vyberte ji.
+6. V hello **System.Data.SqlClient** klikněte na tlačítko **nainstalovat**.
+7. Po dokončení instalace hello hello změny a pak klikněte na **OK** tooclose hello **Preview** okno. 
 8. Pokud se zobrazí okno **Souhlas s podmínkami licence**, klikněte na **Souhlasím**.
 
-## <a name="insert-code-to-query-sql-database"></a>Vložení kódu pro dotazování databáze SQL
-1. Přepněte na soubor **Program.cs** (případně ho otevřete).
+## <a name="insert-code-tooquery-sql-database"></a>Vložení kódu tooquery SQL database
+1. Přepínač příliš (nebo otevřít v případě potřeby) **Program.cs**
 
-2. Obsah souboru **Program.cs** nahraďte následujícím kódem a přidejte odpovídající hodnoty pro váš server, databázi, uživatele a heslo.
+2. Nahraďte obsah hello **Program.cs** s hello následující kód a přidat hello odpovídající hodnoty pro server, databáze, uživatele a heslo.
 
 ```csharp
 using System;
@@ -131,14 +131,14 @@ namespace sqltest
 }
 ```
 
-## <a name="run-the-code"></a>Spuštění kódu
+## <a name="run-hello-code"></a>Spuštění kódu hello
 
-1. Stisknutím klávesy **F5** spusťte aplikaci.
-2. Ověřte, že se vrátilo prvních 20 řádků, a potom zavřete okno aplikace.
+1. Stiskněte klávesu **F5** toorun hello aplikace.
+2. Ověřte, že horních řádků 20 hello se vrátí a pak zavřete okno aplikace hello.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o [připojení k databázi SQL Azure a jejím dotazování pomocí .NET Core](sql-database-connect-query-dotnet-core.md) v systému Windows, Linux nebo macOS  
-- Informace o tom, [jak začít s .NET Core v systému Windows, Linux nebo macOS pomocí příkazového řádku](/dotnet/core/tutorials/using-with-xplat-cli)
-- Informace o [návrhu první databáze SQL Azure pomocí aplikace SSMS](sql-database-design-first-database.md) nebo [návrhu první databáze SQL Azure pomocí .NET](sql-database-design-first-database-csharp.md)
+- Zjistěte, jak příliš[připojení a dotazování Azure SQL database pomocí .NET core](sql-database-connect-query-dotnet-core.md) v systému Windows nebo Linux/systému macOS.  
+- Další informace o [Začínáme s .NET Core v systému Windows nebo Linux/macOS hello příkazového řádku](/dotnet/core/tutorials/using-with-xplat-cli).
+- Zjistěte, jak příliš[navrhnout první databáze Azure SQL pomocí aplikace SSMS](sql-database-design-first-database.md) nebo [navrhnout první databáze Azure SQL pomocí rozhraní .NET](sql-database-design-first-database-csharp.md).
 - Další informace o .NET najdete v [dokumentaci rozhraní .NET](https://docs.microsoft.com/dotnet/).

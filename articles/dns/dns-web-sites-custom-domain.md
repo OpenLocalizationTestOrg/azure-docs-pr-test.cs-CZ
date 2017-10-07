@@ -1,6 +1,6 @@
 ---
-title: "Vytvořit vlastní záznamy DNS pro webovou aplikaci | Microsoft Docs"
-description: "Jak vytvořit vlastní doménu. záznamy DNS pro webovou aplikaci pomocí Azure DNS."
+title: "aaaCreate vlastní záznamy DNS pro webovou aplikaci | Microsoft Docs"
+description: "Jak záznamy toocreate vlastní domény DNS pro webovou aplikaci pomocí Azure DNS."
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -13,39 +13,39 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
-ms.openlocfilehash: b054a41ecd69ee1c802d8403fe4b25128f016e3c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 070c808a55bab922eb624d99ae5c275d8eaa5aaa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-dns-records-for-a-web-app-in-a-custom-domain"></a>Vytvořit záznamy DNS pro webovou aplikaci ve vlastní domény
 
-Azure DNS můžete použít k hostování vlastní doménu pro webové aplikace. Například při vytváření webové aplikace Azure a mají vaši uživatelé k němu přístup, a to buď pomocí contoso.com nebo www.contoso.com jako plně kvalifikovaný název domény.
+Azure DNS toohost vlastní doménu můžete použít pro webové aplikace. Například při vytváření webové aplikace Azure a chcete, aby vaši uživatelé tooaccess ho a to buď pomocí contoso.com nebo www.contoso.com jako plně kvalifikovaný název domény.
 
-Chcete-li to provést, je nutné vytvořit dva záznamy:
+toodo, máte dva záznamy toocreate:
 
-* Kořenový "A" záznam odkazující na contoso.com
-* Záznam "CNAME" www název, který odkazuje na záznam a.
+* Kořenový "A" záznamu polohovací toocontoso.com
+* "Záznam CNAME" záznam pro hello www název, který ukazuje toohello záznam
 
-Mějte na paměti, že pokud vytváříte záznam pro webovou aplikaci v Azure, záznam A musí být ručně aktualizovat, pokud zdrojová IP adresa pro změny webové aplikace.
+Uvědomte si, pokud vytvoříte záznam pro webovou aplikaci v Azure, hello záznam je potřeba aktualizovat ručně pokud hello Zdrojová IP adresa pro změny hello webové aplikace.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Než začnete, musíte nejprve vytvořit zónu DNS v Azure DNS a delegovat zóny v registrátora do Azure DNS.
+Než začnete, musíte nejprve vytvořit zónu DNS v Azure DNS a delegovat hello zóny v tooAzure vašeho registrátora DNS.
 
-1. Pokud chcete vytvořit zónu DNS, postupujte podle kroků v [vytvořit zónu DNS](dns-getstarted-create-dnszone.md).
-2. Delegování DNS do Azure DNS, postupujte podle kroků v [delegování DNS domény](dns-domain-delegation.md).
+1. toocreate zóny DNS, postupujte podle kroků hello v [vytvořit zónu DNS](dns-getstarted-create-dnszone.md).
+2. toodelegate vaše DNS tooAzure DNS, postupujte podle kroků hello v [delegování DNS domény](dns-domain-delegation.md).
 
-Po vytvoření zóny a delegování do Azure DNS, potom můžete vytvořit záznamy pro vaši vlastní doménu.
+Po vytvoření zóny a delegování ho tooAzure DNS, potom můžete vytvořit záznamy pro vaši vlastní doménu.
 
 ## <a name="1-create-an-a-record-for-your-custom-domain"></a>1. Vytvoření záznamu A pro vaši vlastní doménu.
 
-Záznam A slouží k mapování názvů na IP adresu. V následujícím příkladu jsme se přiřadit jako záznam na adresu IPv4:
+Záznam je použité toomap na název tooits IP adresu. V následující ukázka hello jsme se přiřadit jako tooan záznam A adresu IPv4:
 
 ### <a name="step-1"></a>Krok 1
 
-Vytvořte záznam a přiřaďte proměnnou $rs
+Vytvořte záznam a přiřaďte tooa proměnné $rs
 
 ```powershell
 $rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -ResourceGroupName "MyAzureResourceGroup" -Ttl 600
@@ -53,9 +53,9 @@ $rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -
 
 ### <a name="step-2"></a>Krok 2
 
-Přidejte hodnotu IPv4 do sady dříve vytvořenou záznamu "@" použití $rs proměnné přiřazené. IPv4 hodnotu přiřazenou bude IP adresa pro vaši webovou aplikaci.
+Přidat hello IPv4 hodnota toohello dříve vytvořili sadu záznamů "@" použití hello $rs proměnné přiřazené. Hello IPv4 přiřazené bude hello IP adresu pro vaši webovou aplikaci.
 
-Najít IP adresu pro webovou aplikaci, postupujte podle kroků v [konfigurace vlastního názvu domény v Azure App Service](../app-service-web/app-service-web-tutorial-custom-domain.md).
+toofind hello IP adres pro webovou aplikaci, postupujte podle kroků hello v [konfigurace vlastního názvu domény v Azure App Service](../app-service-web/app-service-web-tutorial-custom-domain.md).
 
 ```powershell
 Add-AzureRMDnsRecordConfig -RecordSet $rs -Ipv4Address "<your web app IP address>"
@@ -63,7 +63,7 @@ Add-AzureRMDnsRecordConfig -RecordSet $rs -Ipv4Address "<your web app IP address
 
 ### <a name="step-3"></a>Krok 3
 
-Potvrďte změny provedené v sadě záznamů. Použití `Set-AzureRMDnsRecordSet` odeslání změn na záznam nastavit do Azure DNS:
+Potvrďte hello změny toohello sady záznamů. Použití `Set-AzureRMDnsRecordSet` tooupload hello změny tooAzure toohello sada záznamů DNS:
 
 ```powershell
 Set-AzureRMDnsRecordSet -RecordSet $rs
@@ -71,17 +71,17 @@ Set-AzureRMDnsRecordSet -RecordSet $rs
 
 ## <a name="2-create-a-cname-record-for-your-custom-domain"></a>2. Vytvořte záznam CNAME pro vaši vlastní doménu.
 
-Pokud vaše doména je již spravován nástrojem Azure DNS (v tématu [delegování DNS domény](dns-domain-delegation.md), můžete použít následující příklad vytvoří záznam CNAME pro contoso.azurewebsites.net.
+Pokud vaše doména je již spravován nástrojem Azure DNS (viz [delegování DNS domény](dns-domain-delegation.md), můžete použít následující příklad toocreate hello záznam CNAME pro contoso.azurewebsites.net hello.
 
 ### <a name="step-1"></a>Krok 1
 
-Otevřete prostředí PowerShell a vytvořit novou sadu záznamů CNAME a proměnné $rs přiřadit. Tento příklad vytvoří sadu záznamů typu CNAME s "time to live" 600 sekund v zóně DNS s názvem "contoso.com".
+Otevřete prostředí PowerShell a vytvořte novou sadu záznamů CNAME a přiřaďte tooa proměnné $rs. Tento příklad vytvoří sadu záznamů typu CNAME s "časem toolive" 600 sekund v zóně DNS s názvem "contoso.com".
 
 ```powershell
 $rs = New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName myresourcegroup -Name "www" -RecordType "CNAME" -Ttl 600
 ```
 
-Dalším příkladem je tato odpověď.
+Následující ukázka Hello je hello odpovědi.
 
 ```
 Name              : www
@@ -96,15 +96,15 @@ Tags              : {}
 
 ### <a name="step-2"></a>Krok 2
 
-Po vytvoření sady záznamů CNAME, budete muset vytvořit hodnotu alias, který bude odkazovat na webovou aplikaci.
+Po vytvoření sady záznamů CNAME hello musíte toocreate hodnotou alias, který bude odkazovat toohello webové aplikace.
 
-Pomocí dříve přiřazenou proměnnou "$rs" můžete použít následující příkaz prostředí PowerShell pro vytvoření aliasu pro contoso.azurewebsites.net aplikace webové.
+Hello dřív přiřazené proměnná "$rs" pomocí příkazu prostředí PowerShell hello níže toocreate hello alias pro hello webové aplikace contoso.azurewebsites.net.
 
 ```powershell
 Add-AzureRMDnsRecordConfig -RecordSet $rs -Cname "contoso.azurewebsites.net"
 ```
 
-Dalším příkladem je tato odpověď.
+Následující ukázka Hello je hello odpovědi.
 
 ```
     Name              : www
@@ -119,13 +119,13 @@ Dalším příkladem je tato odpověď.
 
 ### <a name="step-3"></a>Krok 3
 
-Potvrzení změn pomocí `Set-AzureRMDnsRecordSet` rutiny:
+Potvrzení změn hello pomocí hello `Set-AzureRMDnsRecordSet` rutiny:
 
 ```powershell
 Set-AzureRMDnsRecordSet -RecordSet $rs
 ```
 
-Můžete ověřit záznam byl vytvořen správně dotazováním "www.contoso.com" pomocí nástroje nslookup, jak je uvedeno níže:
+Můžete ověřit hello záznam vytvořil správně dotazováním hello "www.contoso.com" pomocí nástroje nslookup, jak je uvedeno níže:
 
 ```
 PS C:\> nslookup
@@ -146,17 +146,17 @@ contoso.azurewebsites.net
 
 ## <a name="create-an-awverify-record-for-web-apps"></a>Vytvoření záznamů "awverify" pro webové aplikace
 
-Pokud se rozhodnete použít záznam pro vaši webovou aplikaci, musí projít procesem ověření Ujistěte se, že vlastníte vlastní doménu. Tento krok ověření se provádí tak, že vytvoříte speciální záznam CNAME s názvem "awverify". Tato část se týká pouze záznamy.
+Pokud se rozhodnete toouse záznam pro vaši webovou aplikaci, musíte přejít do tooensure ověření procesu můžete vlastní hello vlastní doménu. Tento krok ověření se provádí tak, že vytvoříte speciální záznam CNAME s názvem "awverify". Tato část se týká pouze tooA záznamy.
 
 ### <a name="step-1"></a>Krok 1
 
-Vytvořte záznam "awverify". V následujícím příkladu vytvoříme záznam "aweverify" pro doménu contoso.com ověřit vlastnictví pro vlastní doménu.
+Vytvořte záznam "awverify" hello. V příkladu hello dole vytvoříme hello "aweverify" záznam pro contoso.com tooverify vlastnictví pro vlastní doménu, hello.
 
 ```powershell
 $rs = New-AzureRMDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "myresourcegroup" -Name "awverify" -RecordType "CNAME" -Ttl 600
 ```
 
-Dalším příkladem je tato odpověď.
+Následující ukázka Hello je hello odpovědi.
 
 ```
 Name              : awverify
@@ -171,13 +171,13 @@ Tags              : {}
 
 ### <a name="step-2"></a>Krok 2
 
-Po vytvoření sady záznamů "awverify" přiřadíte sadu alias záznamů CNAME. V následujícím příkladu jsme přiřadí nastavte alias na awverify.contoso.azurewebsites.net záznam CNAMe.
+Po vytvoření sady záznamů hello "awverify" přiřadíte alias sadu záznamů CNAME hello. V příkladu hello níže jsme přiřadí tooawverify.contoso.azurewebsites.net alias sady záznamů CNAMe hello.
 
 ```powershell
 Add-AzureRMDnsRecordConfig -RecordSet $rs -Cname "awverify.contoso.azurewebsites.net"
 ```
 
-Dalším příkladem je tato odpověď.
+Následující ukázka Hello je hello odpovědi.
 
 ```
     Name              : awverify
@@ -192,7 +192,7 @@ Dalším příkladem je tato odpověď.
 
 ### <a name="step-3"></a>Krok 3
 
-Potvrzení změn pomocí `Set-AzureRMDnsRecordSet cmdlet`, jak ukazuje následující příkaz.
+Potvrzení změn hello pomocí hello `Set-AzureRMDnsRecordSet cmdlet`, jak ukazuje následující příkaz hello.
 
 ```powershell
 Set-AzureRMDnsRecordSet -RecordSet $rs
@@ -200,4 +200,4 @@ Set-AzureRMDnsRecordSet -RecordSet $rs
 
 ## <a name="next-steps"></a>Další kroky
 
-Postupujte podle kroků v [konfigurace vlastního názvu domény pro službu App Service](../app-service-web/web-sites-custom-domain-name.md) ke konfiguraci vaší webové aplikace na používat vlastní doménu.
+Postupujte podle kroků hello v [konfigurace vlastního názvu domény pro službu App Service](../app-service-web/web-sites-custom-domain-name.md) tooconfigure vaší webové aplikace toouse vlastní doménu.

@@ -1,6 +1,6 @@
 ---
-title: "Formát souboru manifestu Azure Import/Export | Microsoft Docs"
-description: "Další informace o formátu souboru manifestu jednotku, která popisuje mapování mezi objekty BLOB v Azure Blob storage a souborů na disku v importu nebo exportu úlohy ve službě importu a exportu."
+title: "Formát souboru manifestu importu a exportu aaaAzure | Microsoft Docs"
+description: "Informace o hello formát souboru manifestu hello disku, který popisuje hello mapování mezi objekty BLOB v Azure Blob storage a souborů na disku v úlohu import nebo export ve službě Import/Export hello."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: c1857eb94fba13c30e7f07669616f5d0ab9953f4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d7e5e1990482916f7ff5f891c97343b52e82b2f3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Azure formát souboru manifestu služby importu a exportu
-Soubor manifestu jednotky popisuje mapování mezi objekty BLOB v Azure Blob storage a souborů na jednotce, která obsahuje úlohu import nebo export. Operace importu souboru manifestu je vytvořen jako součást procesu přípravy jednotky a je uložená na disku před odesláním jednotku do datového centra Azure. Během operace exportu do manifestu se vytvoří a uloží na jednotce pomocí služby Azure Import/Export.  
+Soubor manifestu jednotky Hello popisuje hello mapování mezi objekty BLOB v Azure Blob storage a souborů na jednotce, která obsahuje úlohu import nebo export. Operace importu souboru manifestu hello je vytvořen jako součást procesu přípravy hello jednotky a je uložená na disku hello před odesláním disku hello toohello datového centra Azure. Během operace exportu se hello manifest vytvoří a uloží na jednotce hello podle hello služba Azure Import/Export.  
   
-Pro obě importovat a exportovat úlohy, v souboru manifestu jednotky je uložená na disku import nebo export; není přenesen service pomocí všechny operace rozhraní API.  
+Jak importovat a úlohy exportu souboru manifestu hello disk je uložený na hello importovat nebo exportovat jednotky; není přenášených toohello service pomocí všechny operace rozhraní API.  
   
-Následující text popisuje obecný formát souboru manifestu jednotky:  
+Hello následující text popisuje hello obecný formát souboru manifestu jednotky:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -36,7 +36,7 @@ Následující text popisuje obecný formát souboru manifestu jednotky:
   
     <!-- First Blob List -->  
     <BlobList>  
-      <!-- Global properties and metadata that applies to all blobs -->  
+      <!-- Global properties and metadata that applies tooall blobs -->  
       [<MetadataPath Hash="md5-hash">global-metadata-file-path</MetadataPath>]  
       [<PropertiesPath   
         Hash="md5-hash">global-properties-file-path</PropertiesPath>]  
@@ -93,44 +93,44 @@ block-list ::=
 
 ## <a name="manifest-xml-elements-and-attributes"></a>Manifestu XML elementů a atributů
 
-V následující tabulce je určen datové prvky, atributy ve formátu jednotka manifestu XML.  
+Hello data elementů a atributů hello jednotky manifestu XML formátu jsou určené v hello následující tabulka.  
   
 |XML Element|Typ|Popis|  
 |-----------------|----------|-----------------|  
-|`DriveManifest`|Kořenový element|Kořenový element souboru manifestu. Všechny elementy v souboru jsou pod tohoto elementu.|  
-|`Version`|Atribut, řetězec|Verze souboru manifestu.|  
-|`Drive`|Vnořené – element XML|Obsahuje manifest pro každou jednotku.|  
-|`DriveId`|Řetězec|Jednotky jedinečný identifikátor pro jednotku. Identifikátor disku nachází pomocí dotazu na disku pro jeho sériového čísla. Sériové číslo jednotky je obvykle vytištěno na vnější také disku. `DriveID` Element musí být před spuštěním `BlobList` element v souboru manifestu.|  
-|`StorageAccountKey`|Řetězec|Požadovaný pro import úlohy Pokud a pouze v případě `ContainerSas` není zadán. Klíč účtu pro účet úložiště Azure přidružený k úloze.<br /><br /> Tento element je vynechaný manifest pro operace exportu.|  
-|`ContainerSas`|Řetězec|Požadovaný pro import úlohy Pokud a pouze v případě `StorageAccountKey` není zadán. Kontejner SAS pro přístup k objektům BLOB přidružený k úloze. V tématu [Put úlohy](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) pro formát. Tento element je vynechaný manifest pro operace exportu.|  
-|`ClientCreator`|Řetězec|Určuje klienta, který vytvoří soubor XML. Tato hodnota není interpretovat službu Import/Export.|  
-|`BlobList`|Vnořené – element XML|Obsahuje seznam objektů BLOB, které jsou součástí import nebo export úlohy. Každý objekt blob v seznamu objektů blob sdílí stejné vlastnosti a metadata.|  
-|`BlobList/MetadataPath`|Řetězec|Volitelné. Určuje relativní cestu k souboru na disku, který obsahuje výchozí metadata, která bude nastavena na objekty BLOB v seznamu objektů blob pro operace importu. Tato metadata lze volitelně přepsat na základě objektů blob blob.<br /><br /> Tento element je vynechaný manifest pro operace exportu.|  
-|`BlobList/MetadataPath/@Hash`|Atribut, řetězec|Určuje hodnotu hash MD5 kódováním Base16 soubor metadat.|  
-|`BlobList/PropertiesPath`|Řetězec|Volitelné. Určuje relativní cestu k souboru na disku, který obsahuje výchozí vlastnosti, které budou nastaveny na objekty BLOB v seznamu objektů blob pro operace importu. Tyto vlastnosti lze volitelně přepsat na základě objektů blob blob.<br /><br /> Tento element je vynechaný manifest pro operace exportu.|  
-|`BlobList/PropertiesPath/@Hash`|Atribut, řetězec|Určuje hodnotu hash MD5 kódováním Base16 vlastnosti souboru.|  
+|`DriveManifest`|Kořenový element|kořenový element Hello souboru manifestu hello. Všechny elementy v souboru hello jsou pod tohoto elementu.|  
+|`Version`|Atribut, řetězec|Hello verze souboru manifestu hello.|  
+|`Drive`|Vnořené – element XML|Obsahuje hello manifest pro každou jednotku.|  
+|`DriveId`|Řetězec|Hello jednotky jedinečný identifikátor pro hello jednotky. identifikátor disku Hello nachází dotazováním hello jednotky pro jeho sériového čísla. Hello jednotky sériové číslo je obvykle vytištěno na hello mimo také hello jednotky. Hello `DriveID` element musí být před spuštěním `BlobList` element v souboru manifestu hello.|  
+|`StorageAccountKey`|Řetězec|Požadovaný pro import úlohy Pokud a pouze v případě `ContainerSas` není zadán. Hello klíč účtu pro hello účtu úložiště Azure spojené s úlohou hello.<br /><br /> Tento element je vynechaný hello manifestu pro operace exportu.|  
+|`ContainerSas`|Řetězec|Požadovaný pro import úlohy Pokud a pouze v případě `StorageAccountKey` není zadán. kontejner Hello SAS pro přístup k objektům BLOB hello spojené s úlohou hello. V tématu [Put úlohy](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) pro formát. Tento element je vynechaný hello manifestu pro operace exportu.|  
+|`ClientCreator`|Řetězec|Určuje hello klienta, který vytvoří soubor XML hello. Tato hodnota není interpretovat hello služby importu a exportu.|  
+|`BlobList`|Vnořené – element XML|Obsahuje seznam objektů BLOB, které jsou součástí hello import nebo export úlohy. Každý objekt blob v seznamu objektů blob sdílené složky hello stejnou metadata a vlastnosti.|  
+|`BlobList/MetadataPath`|Řetězec|Volitelné. Určuje hello relativní cestu k souboru na hello disk, který obsahuje hello výchozí metadata, která bude nastavena na objekty BLOB v seznamu objektů blob hello operace importu. Tato metadata lze volitelně přepsat na základě objektů blob blob.<br /><br /> Tento element je vynechaný hello manifestu pro operace exportu.|  
+|`BlobList/MetadataPath/@Hash`|Atribut, řetězec|Určuje hodnotu hash MD5 kódováním Base16 hello soubor metadat hello.|  
+|`BlobList/PropertiesPath`|Řetězec|Volitelné. Určuje hello relativní cestu k souboru na hello disku, který obsahuje hello výchozí vlastnosti, které budou nastaveny na objekty BLOB v seznamu objektů blob hello operace importu. Tyto vlastnosti lze volitelně přepsat na základě objektů blob blob.<br /><br /> Tento element je vynechaný hello manifestu pro operace exportu.|  
+|`BlobList/PropertiesPath/@Hash`|Atribut, řetězec|Určuje hodnotu hash MD5 kódováním Base16 hello hello vlastnosti souboru.|  
 |`Blob`|Vnořené – element XML|Obsahuje informace o jednotlivých objektů blob v každém seznamu objektů blob.|  
-|`Blob/BlobPath`|Řetězec|Relativní identifikátor URI objektu blob, počínaje název kontejneru. Pokud objekt blob je v kořenovém kontejneru, musí začínat `$root`.|  
-|`Blob/FilePath`|Řetězec|Určuje relativní cestu k souboru na disku. Pro úlohy exportu cesta blobu se použije pro danou cestu k souboru, pokud je to možné; *například*, `pictures/bob/wild/desert.jpg` se vyexportují do `\pictures\bob\wild\desert.jpg`. Z důvodu omezení názvů systému souborů NTFS, však může objekt blob exportovat do souboru s cestu, která není vypadat cesta blobu.|  
-|`Blob/ClientData`|Řetězec|Volitelné. Obsahuje poznámky od zákazníka. Tato hodnota není interpretovat službu Import/Export.|  
-|`Blob/Snapshot`|Data a času|Volitelné pro úlohy exportu. Určuje identifikátor snímku pro exportovaný blob snímku.|  
-|`Blob/Length`|Integer|Určuje celková délka objektu blob v bajtech. Hodnota může být až 200 GB pro objekt blob bloku a až 1 TB pro objekt blob stránky. Pro objekt blob stránky tato hodnota musí být násobkem 512.|  
-|`Blob/ImportDisposition`|Řetězec|Volitelné pro úlohy import, export úloh tento parametr vynechán. Určuje, jak službu Import/Export pracovat případ úlohy importu kde objekt blob se stejným názvem již existuje. Pokud tato hodnota je vynechán z manifestu import, výchozí hodnota je `rename`.<br /><br /> Hodnoty pro tento element:<br /><br /> -   `no-overwrite`: Pokud se stejným názvem již existuje cílový objekt blob, přeskočí operace importu import tohoto souboru.<br />-   `overwrite`: Žádné existující cílový objekt blob je zcela přepsány nově importovaného souboru.<br />-   `rename`: Nový objekt blob, nebude odesílat s upravený název.<br /><br /> Přejmenování pravidlo vypadá takto:<br /><br /> -Li název objektu blob neobsahuje tečku, generuje se nový název připojením `(2)` původní název objektu blob; Pokud je tento nový název taky v konfliktu s existujícím názvem objektu blob, pak `(3)` se připojí místě `(2)`; a tak dále.<br />– Pokud je název objektu blob obsahuje tečku, považuje za část následující poslední tečky název rozšíření. Podobně jako výše uvedeného postupu `(2)` je vložen před poslední tečky vygenerovat nový název; Pokud blob nový název stále je v konfliktu s existujícím názvem a pak službu pokusí `(3)`, `(4)`a tak dále, dokud nebude nalezen název konfliktní.<br /><br /> Příklady:<br /><br /> Objekt blob `BlobNameWithoutDot` bude přejmenován na:<br /><br /> `BlobNameWithoutDot (2)  // if BlobNameWithoutDot exists`<br /><br /> `BlobNameWithoutDot (3)  // if both BlobNameWithoutDot and BlobNameWithoutDot (2) exist`<br /><br /> Objekt blob `Seattle.jpg` bude přejmenován na:<br /><br /> `Seattle (2).jpg  // if Seattle.jpg exists`<br /><br /> `Seattle (3).jpg  // if both Seattle.jpg and Seattle (2).jpg exist`|  
-|`PageRangeList`|Vnořené – element XML|Vyžaduje se pro objekt blob stránky.<br /><br /> Operace, určuje pro importu seznam rozsahů bajtů souboru určených k importu. Každý rozsahu stránek je popsán posun a délka ve zdrojovém souboru, který popisuje rozsahu stránek, společně s hodnotu hash MD5 oblasti. `Hash` Atribut rozsahu stránek je povinný. Služba ověří, zda hodnota hash dat do objektu BLOB odpovídá vypočtená hodnota hash MD5 z rozsahu stránek. Libovolný počet rozsahů stránek lze popisují soubor k importu, s celková velikost až 1 TB. Jsou povoleny žádné překrytí a všechny rozsahy stránky musí být seřazené podle posun.<br /><br /> Operace, o export určuje sadu rozsahů bajtů objektu blob, které byly vyexportovány do jednotky.<br /><br /> Rozsahů stránek společně se může vztahovat pouze dílčí rozsahy objektů blob nebo souboru.  Očekává se zbývající část souboru není uvedena v jakémkoli rozsahu stránky a její obsah může být definovaný.|  
+|`Blob/BlobPath`|Řetězec|Hello relativní identifikátor URI toohello objektů blob, počínaje hello název kontejneru. Pokud hello objektů blob v kontejneru kořenové, musí začínat `$root`.|  
+|`Blob/FilePath`|Řetězec|Určuje soubor toohello hello relativní cesty na jednotce hello. Pro úlohy exportu cesta blobu hello se použije pro cestu souboru hello Pokud je to možné; *například*, `pictures/bob/wild/desert.jpg` vyexportují se příliš`\pictures\bob\wild\desert.jpg`. Z důvodu omezení toohello názvů systému souborů NTFS, ale objekt blob může být tooa exportovaný soubor s cestu, která není vypadat cesta blobu hello.|  
+|`Blob/ClientData`|Řetězec|Volitelné. Obsahuje komentáře od hello zákazníka. Tato hodnota není interpretovat hello služby importu a exportu.|  
+|`Blob/Snapshot`|Data a času|Volitelné pro úlohy exportu. Určuje identifikátor snímku hello exportovaný blob snímku.|  
+|`Blob/Length`|Integer|Určuje hello celková délka objektu hello blob v bajtech. Hello hodnota může být too200 GB pro objekt blob bloku a až too1 TB pro objekt blob stránky. Pro objekt blob stránky tato hodnota musí být násobkem 512.|  
+|`Blob/ImportDisposition`|Řetězec|Volitelné pro úlohy import, export úloh tento parametr vynechán. To určí, jak hello službu Import/Export hello případ úlohy importu kde objekt blob se hello stejný název již existuje. Pokud tato hodnota je vynechán z manifestu import hello, hello výchozí hodnota je `rename`.<br /><br /> Hello hodnoty pro tento element:<br /><br /> -   `no-overwrite`: Pokud je cílový objekt blob se již nachází s hello stejný název, operace importu hello přeskočí import tohoto souboru.<br />-   `overwrite`: Žádné existující cílový objekt blob je zcela přepsány hello nově importovaného souboru.<br />-   `rename`: hello nový objekt blob se nahrál upravený název.<br /><br /> Přejmenování pravidlo Hello vypadá takto:<br /><br /> -Li název objektu blob hello neobsahuje tečku, generuje se nový název připojením `(2)` toohello původní název objektu blob; Pokud je tento nový název taky v konfliktu s existujícím názvem objektu blob, pak `(3)` se připojí místě `(2)`; a tak dále.<br />– Pokud je název objektu blob hello obsahuje tečku, považuje za část hello následující poslední tečkou hello hello název rozšíření. Podobné toohello výše postupu `(2)` je vložen před hello poslední tečkou toogenerate nový název; Pokud je nový název hello stále konfliktu s existujícím názvem objektu blob, potom hello služba se pokusí `(3)`, `(4)`a tak dále, až jiný konfliktní název je nalezena.<br /><br /> Příklady:<br /><br /> Objekt blob Hello `BlobNameWithoutDot` bude přejmenován na:<br /><br /> `BlobNameWithoutDot (2)  // if BlobNameWithoutDot exists`<br /><br /> `BlobNameWithoutDot (3)  // if both BlobNameWithoutDot and BlobNameWithoutDot (2) exist`<br /><br /> Objekt blob Hello `Seattle.jpg` bude přejmenován na:<br /><br /> `Seattle (2).jpg  // if Seattle.jpg exists`<br /><br /> `Seattle (3).jpg  // if both Seattle.jpg and Seattle (2).jpg exist`|  
+|`PageRangeList`|Vnořené – element XML|Vyžaduje se pro objekt blob stránky.<br /><br /> Operace, určuje pro importu seznam rozsahů bajtů toobe soubor importu. Každý rozsahu stránek je popsán posun a délka v hello zdrojový soubor, který popisuje hello rozsahu stránek, společně s hodnotu hash MD5 hello oblasti. Hello `Hash` atribut rozsahu stránek je povinný. Služba Hello ověří, že hodnota hash hello hello dat v objektu blob hello odpovídající hodnotě hash MD5 hello počítaný z rozsahu stránek hello. Libovolný počet rozsahů stránek může být použité toodescribe soubor pro import, s hello celková velikost až too1 TB. Jsou povoleny žádné překrytí a všechny rozsahy stránky musí být seřazené podle posun.<br /><br /> Určuje, že sada rozsahů bajtů objektu blob, které byly exportovány toohello jednotky pro operace exportu.<br /><br /> rozsahů stránek Hello společně se může vztahovat pouze dílčí rozsahy objektů blob nebo souboru.  je očekávána Hello zbývající část hello souboru není uvedena v jakémkoli rozsahu stránky a její obsah může být definovaný.|  
 |`PageRange`|XML element|Představuje rozsahu stránek.|  
-|`PageRange/@Offset`|Atribut, celé číslo|Určuje posunutí v přenosu souborů a objektů blob, které začíná určeném rozsahu. Tato hodnota musí být násobkem 512.|  
-|`PageRange/@Length`|Atribut, celé číslo|Určuje délku rozsahu stránek. Tato hodnota musí být násobkem 512 a více než 4 MB.|  
-|`PageRange/@Hash`|Atribut, řetězec|Určuje hodnotu hash MD5 kódováním Base16 rozsahu stránek.|  
-|`BlockList`|Vnořené – element XML|Vyžaduje se pro objekt blob bloku pomocí pojmenovaných bloků.<br /><br /> Pro operace importu do seznamu zakázaných položek Určuje sadu bloků, které bude naimportován do úložiště Azure. Pro operace exportu do seznamu zakázaných položek Určuje, kde každý blok byla uložena v souboru na disku pro export. Každý blok je popsán posun v souboru a délka bloku; Každý blok je kromě s názvem atributem ID bloku a obsahuje hodnotu hash MD5 pro blok. Až 50 000 bloků lze popsat objekt blob.  Všechny bloky musejí být seřazeny podle posun a společně by mělo zahrnovat kompletní rozsah souboru *tj*, nesmí být mezera mezi bloky. Pokud objekt blob je více než 64 MB, ID bloku pro každého bloku musí být všechny chybějící nebo všechny existuje. ID bloku musí být řetězce s kódováním Base64. V tématu [Put bloku](/rest/api/storageservices/put-block) další požadavky pro ID bloku.|  
+|`PageRange/@Offset`|Atribut, celé číslo|Určuje, že začne hello posun v souboru přenos hello a objektů blob hello tam, kde hello zadán rozsahu stránek. Tato hodnota musí být násobkem 512.|  
+|`PageRange/@Length`|Atribut, celé číslo|Určuje délku hello rozsahu stránku hello. Tato hodnota musí být násobkem 512 a více než 4 MB.|  
+|`PageRange/@Hash`|Atribut, řetězec|Určuje hodnotu hash MD5 kódováním Base16 hello hello rozsahu stránek.|  
+|`BlockList`|Vnořené – element XML|Vyžaduje se pro objekt blob bloku pomocí pojmenovaných bloků.<br /><br /> Pro operace importu hello blokovaných určuje sadu bloků, které bude naimportován do úložiště Azure. Pro operace exportu hello blokovaných Určuje, kde každý blok byla uložena v souboru hello na disku export hello. Každý blok je popsán posun v souboru hello a délka bloku; Každý blok je kromě s názvem atributem ID bloku a obsahuje hodnotu hash MD5 pro hello blok. Až too50 může být 000 bloků použité toodescribe objekt blob.  Všechny bloky musejí být seřazeny podle posun a společně by mělo zahrnovat hello dokončení rozsah souboru hello *tj*, nesmí být mezera mezi bloky. Pokud hello blob je delší než 64 MB, hello ID bloku pro každého bloku musí být buď všechny chybí, nebo všechny k dispozici. ID bloku jsou řetězce, požadované toobe kódováním Base64. V tématu [Put bloku](/rest/api/storageservices/put-block) další požadavky pro ID bloku.|  
 |`Block`|XML element|Představuje blok.|  
-|`Block/@Offset`|Atribut, celé číslo|Určuje posun, kde začíná zadaný blok.|  
-|`Block/@Length`|Atribut, celé číslo|Určuje počet bajtů v bloku; Tato hodnota musí být delší než 4 MB volného místa.|  
-|`Block/@Id`|Atribut, řetězec|Určuje řetězec představující ID bloku pro blok.|  
-|`Block/@Hash`|Atribut, řetězec|Určuje algoritmus hash MD5 kódováním Base16 bloku.|  
-|`Blob/MetadataPath`|Řetězec|Volitelné. Určuje relativní cestu k souboru metadat. Během importu metadata nastavena na cílový objekt blob. Během operace exportu metadata objektu blob je uloženo v souboru metadat na jednotce.|  
-|`Blob/MetadataPath/@Hash`|Atribut, řetězec|Určuje algoritmus hash MD5 Base16 kódovaný soubor metadat objektu blob.|  
-|`Blob/PropertiesPath`|Řetězec|Volitelné. Určuje relativní cestu k souboru vlastnosti. Během importu že jsou nastavené vlastnosti na cílový objekt blob. Během operace exportu jsou vlastnosti objektů blob uložené v souboru vlastnosti na jednotce.|  
-|`Blob/PropertiesPath/@Hash`|Atribut, řetězec|Určuje algoritmus hash MD5 kódováním Base16 objektu blob vlastnosti souboru.|  
+|`Block/@Offset`|Atribut, celé číslo|Určuje posun hello kde začíná hello zadaný blok.|  
+|`Block/@Length`|Atribut, celé číslo|Určuje hello počet bajtů v bloku hello; Tato hodnota musí být delší než 4 MB volného místa.|  
+|`Block/@Id`|Atribut, řetězec|Určuje řetězec představující hello ID bloku pro hello blok.|  
+|`Block/@Hash`|Atribut, řetězec|Určuje algoritmus hash MD5 kódováním Base16 hello hello bloku.|  
+|`Blob/MetadataPath`|Řetězec|Volitelné. Určuje hello relativní cestu k souboru metadat. Během importu hello metadata nastavena na hello cílový objekt blob. Během operace exportu se metadata objektu blob hello uložené v souboru metadat hello na jednotce hello.|  
+|`Blob/MetadataPath/@Hash`|Atribut, řetězec|Určuje algoritmus hash MD5 kódováním Base16 hello hello blob metadata souboru.|  
+|`Blob/PropertiesPath`|Řetězec|Volitelné. Určuje hello relativní cestu k souboru vlastnosti. Během importu jsou vlastnosti hello nastavit hello cílový objekt blob. Během operace exportu jsou vlastnosti objektů blob hello uložené v souboru vlastnosti hello na jednotce hello.|  
+|`Blob/PropertiesPath/@Hash`|Atribut, řetězec|Určuje algoritmus hash MD5 kódováním Base16 hello hello blob vlastnosti souboru.|  
   
 ## <a name="next-steps"></a>Další kroky
  

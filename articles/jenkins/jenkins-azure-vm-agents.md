@@ -1,5 +1,5 @@
 ---
-title: "Použití agentů virtuálních počítačů Azure pro průběžnou integraci pomocí Jenkinse"
+title: "virtuální počítač Azure agenty aaaUse pro nepřetržitou integraci s volaných."
 description: "Agenti virtuálních počítačů Azure jako podřízené servery Jenkinse"
 services: multiple
 documentationcenter: 
@@ -15,57 +15,57 @@ ms.topic: hero-article
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 0b22a559fbc03158a6d4398603d1a7d2874d7b67
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2388e6919d0280372166fbd325d80dafb00d7550
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-azure-vm-agents-for-continuous-integration-with-jenkins"></a>Použití agentů virtuálních počítačů Azure pro průběžnou integraci pomocí Jenkinse
 
-Tento rychlý start předvádí, jak pomocí modulu plug-in Jenkins Azure VM Agents vytvořit v Azure linuxového (Ubuntu) agenta na vyžádání.
+Tento rychlý start ukazuje, jak toouse hello agenty virtuálních počítačů Azure volaných modul plug-in toocreate agenta Linux (Ubuntu) na vyžádání v Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu je potřeba:
+toocomplete tento rychlý start:
 
-* Pokud ještě nemáte hlavní server Jenkinse, můžete začít s využitím [šablony řešení](install-jenkins-solution-template.md). 
-* Pokud ještě nemáte instanční objekt Azure, přečtěte si téma [Vytvoření instančního objektu Azure pomocí Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json).
+* Pokud již nemáte volaných master, můžete začít s hello [šablona řešení](install-jenkins-solution-template.md) 
+* Odkazovat příliš[vytvořit objekt služby Azure pomocí Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) Pokud již nemáte objektu zabezpečení služby Azure.
 
 ## <a name="install-azure-vm-agents-plugin"></a>Instalace modulu plug-in Azure VM Agents
 
-Pokud začínáte z [šablony řešení](install-jenkins-solution-template.md), modul plug-in Azure VM Agents je nainstalovaný na hlavním serveru Jenkinse.
+Když spustíte z hello [šablona řešení](install-jenkins-solution-template.md), modul plug-in hello agenta virtuálního počítače Azure je nainstalován v předloze volaných hello.
 
-Jinak nainstalujte modul plug-in **Azure VM Agents** z řídicího panelu Jenkinse.
+Jinak, instalovat hello **agenti virtuálních počítačů Azure** modulu plug-in v rámci hello volaných řídicího panelu.
 
-## <a name="configure-the-plugin"></a>Konfigurace modulu plug-in
+## <a name="configure-hello-plugin"></a>Konfigurace modulu plug-in hello
 
-* Na řídicím panelu Jenkinse klikněte na **Manage Jenkins (Správa Jenkinse) -> Configure System (Konfigurace systému)**. Přejděte do dolní části stránky a vyhledejte část s rozevíracím seznamem **Add new cloud** (Přidat nový cloud). Z nabídky vyberte **Microsoft Azure VM Agents**.
-* Vyberte existující účet z rozevíracího seznamu Azure Credentials (Přihlašovací údaje Azure).  Pokud chcete přidat nový **Microsoft Azure Service Principal** (Instanční objekt Microsoft Azure), zadejte následující hodnoty: Subscription ID (ID předplatného), Client ID (ID klienta), Client Secret (Tajný klíč klienta) a OAuth 2.0 Token Endpoint (Koncový bod tokenu OAuth 2.0).
+* V rámci hello volaných řídicí panel, klikněte na **volaných spravovat -> Konfigurovat systém ->**. Posuňte se toohello dolní části stránky hello a najít oddíl hello s rozevíracím hello **přidat nové cloudové**. Hello nabídce vyberte **agenti virtuálního počítače Microsoft Azure**
+* Z rozevíracího seznamu hello přihlašovací údaje Azure vyberte existující účet.  tooadd nový **Microsoft Azure Service Principal** zadejte hello následující hodnoty: ID předplatného, ID klienta, sdílený tajný klíč klienta a koncový bod tokenu OAuth 2.0.
 
 ![Přihlašovací údaje Azure](./media/jenkins-azure-vm-agents/service-principal.png)
 
-* Klikněte na **Verify configuration** (Ověřit konfiguraci) a zkontrolujte správnost konfigurace profilu.
-* Uložte konfiguraci a pokračujte k dalšímu kroku.
+* Klikněte na tlačítko **ověřte konfiguraci** toomake, že tato konfigurace profilu hello je správná.
+* Uložte konfiguraci hello a pokračovat dalším krokem toohello.
 
 ## <a name="template-configuration"></a>Konfigurace šablony
 
 ### <a name="general-configuration"></a>Obecná konfigurace
-Dále nakonfigurujte šablonu, která se použije k definování agenta virtuálního počítače Azure. 
+Potom nakonfigurujte šablonu pro použití toodefine agenta virtuálního počítače Azure. 
 
-* Kliknutím na **Add** (Přidat) přidejte šablonu. 
+* Klikněte na tlačítko **přidat** tooadd šablonu. 
 * Zadejte název nové šablony. 
-* Jako popisek zadejte ubuntu. Tento popisek se používá během konfigurace úlohy.
-* V poli se seznamem vyberte požadovanou oblast.
-* Vyberte požadovanou velikost virtuálního počítače.
-* Zadejte název účtu Azure Storage. Pokud pole ponecháte prázdné, použije se výchozí název jenkinsarmst.
-* Zadejte dobu uchování v minutách. Toto nastavení definuje počet minut, po které může Jenkins čekat před automatickým odstraněním nečinného agenta. Pokud nechcete, aby se nečinní agenti automaticky odstraňovali, zadejte 0.
+* Pro hello štítek zadejte "ubuntu." Tento popisek se používá během hello úlohy konfigurace.
+* Vyberte požadovanou oblast hello z pole se seznamem hello.
+* Vyberte hello potřeby velikost virtuálního počítače.
+* Zadejte název účtu úložiště Azure hello nebo necháte prázdné toouse hello výchozí název "jenkinsarmst."
+* Zadejte dobu uchování hello v minutách. Toto nastavení definuje hello počet minut, po které může volaných čekat před odstraněním automaticky nečinnosti agenta. Pokud nechcete, aby automaticky odstraněn toobe nečinnosti agenty, zadejte 0.
 
 ![Obecná konfigurace](./media/jenkins-azure-vm-agents/general-config.png)
 
 ### <a name="image-configuration"></a>Konfigurace image
 
-Pokud chcete vytvořit linuxového (Ubuntu) agenta, vyberte **Image reference** (Odkaz na image) a použijte následující konfiguraci jako příklad. Nejnovější podporované image Azure najdete na webu [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1).
+toocreate agenta Linux (Ubuntu), vyberte **referenční bitové kopie** a hello použijte následující konfiguraci jako příklad. Odkazovat příliš[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) hello nejnovější Azure podporováno obrázky.
 
 * Image Publisher (Vydavatel image): Canonical
 * Image Offer (Nabídka image): UbuntuServer
@@ -84,23 +84,23 @@ sudo apt-get install -y openjdk-7-jdk
 ```
 ![Konfigurace image](./media/jenkins-azure-vm-agents/image-config.png)
 
-* Kliknutím na **Verify Template** (Ověřit šablonu) ověřte konfiguraci.
+* Klikněte na tlačítko **ověřte šablony** tooverify hello konfigurace.
 * Klikněte na **Uložit**.
 
 ## <a name="create-a-job-in-jenkins"></a>Vytvoření úlohy v Jenkinsu
 
-* Na řídicím panelu Jenkinse klikněte na **New Item** (Nová položka). 
+* V rámci hello volaných řídicí panel, klikněte na **novou položku**. 
 * Zadejte název, vyberte **Freestyle project** (Volný projekt) a klikněte na **OK**.
-* Na kartě **General** (Obecné) vyberte možnost „Restrict where project can be run“ (Omezit, kde je možné projekt spustit) a do pole Label Expression (Výraz popisku) zadejte ubuntu. V rozevíracím seznamu se teď zobrazí ubuntu.
+* V hello **Obecné** karty, vyberte možnost "Omezit, kde je možné spustit projekt" a typ "ubuntu" ve výrazu popisku. Zobrazí "ubuntu" v rozevírací nabídce hello.
 * Klikněte na **Uložit**.
 
 ![Nastavení úlohy](./media/jenkins-azure-vm-agents/job-config.png)
 
 ## <a name="build-your-new-project"></a>Sestavení nového projektu
 
-* Vraťte se na řídicí panel Jenkinse.
-* Klikněte pravým tlačítkem na novou úlohu, kterou jste vytvořili, a pak klikněte na **Build now** (Sestavit). Spustí se sestavování. 
-* Jakmile bude sestavování dokončeno, přejděte na **Console output** (Výstup konzoly). Uvidíte, že se sestavení provedlo vzdáleně v Azure.
+* Vraťte se zpátky toohello volaných řídicího panelu.
+* Vytvořit novou úlohu hello klikněte pravým tlačítkem, poté klikněte na tlačítko **sestavení teď**. Spustí se sestavování. 
+* Po dokončení sestavení hello přejděte příliš**konzole výstup**. Uvidíte, že sestavení hello byla provedena vzdáleně na platformě Azure.
 
 ![Výstup konzoly](./media/jenkins-azure-vm-agents/console-output.png)
 

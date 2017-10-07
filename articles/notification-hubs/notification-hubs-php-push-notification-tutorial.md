@@ -1,6 +1,6 @@
 ---
-title: "Použití centra oznámení s PHP"
-description: "Naučte se používat Azure Notification Hubs z PHP back-end."
+title: "aaaHow toouse centra oznámení s PHP"
+description: "Zjistěte, jak toouse Azure Notification Hubs z PHP back-end."
 services: notification-hubs
 documentationcenter: 
 author: ysxu
@@ -14,48 +14,48 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: yuaxu
-ms.openlocfilehash: c27b6308ff528224a0398e0ff40537db05417bb0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6cd426286a684006a07867fcf44a8ff71be7efa8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-notification-hubs-from-php"></a>Jak používat centra oznámení z PHP
+# <a name="how-toouse-notification-hubs-from-php"></a>Jak toouse Notification Hubs z PHP
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Můžete ke všem funkcím centra oznámení z back-end Java, PHP nebo Ruby, pomocí rozhraní REST centra oznámení, jak je popsáno v tématu MSDN [rozhraní API REST centra oznámení](http://msdn.microsoft.com/library/dn223264.aspx).
+Můžete ke všem funkcím centra oznámení z Java/PHP nebo Ruby back-end pomocí rozhraní REST centra oznámení hello, jak je popsáno v tématu MSDN hello [rozhraní API REST centra oznámení](http://msdn.microsoft.com/library/dn223264.aspx).
 
 V tomto tématu ukážeme postup:
 
 * Vytvoření klienta REST pro funkce Notification Hubs v jazyce PHP;
-* Postupujte podle [kurzu Začínáme Get](notification-hubs-ios-apple-push-notification-apns-get-started.md) pro vaši mobilní platformu podle volby implementace části back-end v jazyce PHP.
+* Postupujte podle hello [kurzu Začínáme Get](notification-hubs-ios-apple-push-notification-apns-get-started.md) pro vaši mobilní platformu podle vlastní volby, implementace část hello back-end v jazyce PHP.
 
 ## <a name="client-interface"></a>Rozhraní klienta
-Rozhraní hlavní klienta může poskytovat stejné metody, které jsou k dispozici v [.NET SDK centra oznámení](http://msdn.microsoft.com/library/jj933431.aspx), to vám umožní přímo převést všechny výukové programy a ukázky aktuálně k dispozici na tomto webu a přispěli Komunita na Internetu.
+rozhraní Hello hlavní klienta může poskytnout hello stejných metod, které jsou k dispozici v hello [.NET SDK centra oznámení](http://msdn.microsoft.com/library/jj933431.aspx), bude možné toodirectly převede všechny hello kurzy a ukázky aktuálně k dispozici na tomto webu a přispěli hello komunity na hello Internetu.
 
-K dispozici v kódu lze najít [PHP REST obálku ukázka].
+Můžete najít všechny hello kód je k dispozici v hello [PHP REST obálku ukázka].
 
-Chcete-li například vytvořit klienta:
+Například toocreate klienta:
 
     $hub = new NotificationHub("connection string", "hubname");    
 
-K odeslání iOS nativní oznámení:
+toosend nativní oznámení iOS:
 
     $notification = new Notification("apple", '{"aps":{"alert": "Hello!"}}');
     $hub->sendNotification($notification, null);
 
 ## <a name="implementation"></a>Implementace
-Pokud jste ještě není, postupujte podle našich [kurzu Začínáme Get] až na poslední část, kde je nutné implementovat back-end.
-Navíc pokud chcete, můžete použít kód z [PHP REST obálku ukázka] a přejít přímo na [dokončit kurz](#complete-tutorial) části.
+Pokud jste ještě není, postupujte podle našich [kurzu Začínáme Get] až toohello poslední část, kde máte tooimplement hello back-end.
+Navíc pokud chcete, můžete použít hello kód z hello [PHP REST obálku ukázka] , přejděte přímo toohello [hello dokončení kurzu](#complete-tutorial) části.
 
-Všechny podrobnosti implementace úplné obálku REST naleznete na [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). V této části jsme se popisují implementaci PHP hlavní kroky potřebné pro přístup k koncové body REST centra oznámení:
+Všechny hello podrobnosti tooimplement úplné obálku REST naleznete na [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). V této části jsme se popisují implementaci PHP hello hello hlavní kroky požadované tooaccess koncové body REST centra oznámení:
 
-1. Analýza připojovacího řetězce
-2. Vygenerování tokenu autorizace
-3. Provádění volání protokolu HTTP
+1. Analyzovat hello připojovací řetězec
+2. Vygenerování tokenu autorizace hello
+3. Provádění volání hello HTTP
 
-### <a name="parse-the-connection-string"></a>Analýza připojovacího řetězce
-Tady je hlavní třída implementace klienta, jejichž konstruktor, který analyzuje připojovací řetězec:
+### <a name="parse-hello-connection-string"></a>Analyzovat hello připojovací řetězec
+Tady je hello hlavní třídy implementující hello klienta, jejichž konstruktor, který analyzuje hello připojovací řetězec:
 
     class NotificationHub {
         const API_VERSION = "?api-version=2013-10";
@@ -91,8 +91,8 @@ Tady je hlavní třída implementace klienta, jejichž konstruktor, který analy
 
 
 ### <a name="create-security-token"></a>Vytvoření tokenu zabezpečení
-Podrobnosti o vytvoření tokenu zabezpečení jsou k dispozici [zde](http://msdn.microsoft.com/library/dn495627.aspx).
-Následující metoda má být přidán do **NotificationHub** v identifikátoru URI aktuální žádosti a přihlašovací údaje extrahovat z připojovacího řetězce na základě třídy k vytvoření tohoto tokenu.
+Podrobnosti o Hello hello vytvoření tokenu zabezpečení jsou k dispozici [zde](http://msdn.microsoft.com/library/dn495627.aspx).
+Hello následující metoda má toobe přidat toohello **NotificationHub** třída toocreate hello token podle hello identifikátoru URI aktuální žádosti hello a přihlašovací údaje hello extrahoval z hello připojovací řetězec.
 
     private function generateSasToken($uri) {
         $targetUri = strtolower(rawurlencode(strtolower($uri)));
@@ -134,9 +134,9 @@ Dejte nám nejdřív definice třídy představující oznámení.
 
 Tato třída je kontejner pro nativní oznámení text, nebo sadu vlastností v případě šablony oznámení a sadu hlaviček, který obsahuje formátu (nativní platforma nebo šablony) a vlastnosti specifické pro platformu (např. vlastnost Apple vypršení platnosti a WNS hlavičky).
 
-Naleznete [dokumentaci rozhraní API REST centra oznámení](http://msdn.microsoft.com/library/dn495827.aspx) a na konkrétní oznámení platformách formátů pro všechny možnosti, které jsou k dispozici.
+Podrobnosti najdete toohello [dokumentaci rozhraní API REST centra oznámení](http://msdn.microsoft.com/library/dn495827.aspx) a hello formáty konkrétní oznámení platformy pro všechny hello možnosti, které jsou k dispozici.
 
-Díky této třídy, jsme nyní můžete napsat odesílání oznámení metody uvnitř **NotificationHub** třídy.
+Díky této třídy, jsme nyní můžete napsat hello odesílání oznámení metody uvnitř hello **NotificationHub** třídy.
 
     public function sendNotification($notification, $tagsOrTagExpression="") {
         if (is_array($tagsOrTagExpression)) {
@@ -180,7 +180,7 @@ Díky této třídy, jsme nyní můžete napsat odesílání oznámení metody u
             CURLOPT_POSTFIELDS => $notification->payload
         ));
 
-        // Send the request
+        // Send hello request
         $response = curl_exec($ch);
 
         // Check for errors
@@ -195,16 +195,16 @@ Díky této třídy, jsme nyní můžete napsat odesílání oznámení metody u
         }
     } 
 
-Výše uvedené metody odeslat požadavek HTTP POST koncovému bodu /messages centra oznámení, s správné textu a hlavičky k odesílání oznámení.
+Hello výše metody odeslat HTTP POST požadavek toohello /messages koncový bod centra oznámení, s správné textu hello a hlavičky toosend hello oznámení.
 
-## <a name="complete-tutorial"></a>Dokončení tohoto kurzu
-Nyní můžete dokončit kurz Začínáme zasláním oznámení z PHP back-end.
+## <a name="complete-tutorial"></a>Dokončení hello kurzu
+Nyní můžete provést kurzu Začínáme hello odesláním hello oznámení z PHP back-end.
 
-Inicializace vašeho centra oznámení klienta (nahraďte název připojovacího řetězce a centra podle pokynů v [kurzu Začínáme Get]):
+Inicializace vašeho centra oznámení klienta (nahraďte hello připojovací řetězec a názvu centra podle pokynů v hello [kurzu Začínáme Get]):
 
     $hub = new NotificationHub("connection string", "hubname");    
 
-Pak přidejte kód odeslat v závislosti na svou cílovou platformu mobilních.
+Pak přidejte kód odesílání hello v závislosti na svou cílovou platformu mobilních.
 
 ### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows Store a Windows Phone 8.1 (bez Silverlight)
     $toast = '<toast><visual><binding template="ToastText01"><text id="1">Hello from PHP!</text></binding></visual></toast>';
@@ -243,13 +243,13 @@ Pak přidejte kód odeslat v závislosti na svou cílovou platformu mobilních.
 Spuštěním kódu PHP by měl vytvořit nyní oznámení, které jsou na cílovém zařízení.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto tématu jsme vám ukázal, jak vytvořit jednoduché Java REST klienta pro centra oznámení. Odsud můžete:
+V tomto tématu jsme vám ukázal, jak toocreate jednoduché Java REST klienta pro centra oznámení. Odsud můžete:
 
-* Stáhnout kompletní [PHP REST obálku ukázka], která obsahuje všechny výše uvedený kód.
-* Pokračujte ve čtení o centrech oznámení označování funkce v [novinkách kurzu]
-* Další informace o odesílání nabízených oznámení pro jednotlivé uživatele v [upozornění uživatelů kurzu]
+* Stáhnout hello úplné [PHP REST obálku ukázka], která obsahuje všechny výše uvedený kód hello.
+* Pokračujte ve čtení o centrech oznámení označování funkce v hello [novinkách kurzu]
+* Další informace o nabízené oznámení tooindividual uživatelé v [upozornění uživatelů kurzu]
 
-Další informace naleznete také [středisku pro vývojáře PHP](/develop/php/).
+Další informace najdete v tématu taky hello [středisku pro vývojáře PHP](/develop/php/).
 
 [PHP REST obálku ukázka]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [kurzu Začínáme Get]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/

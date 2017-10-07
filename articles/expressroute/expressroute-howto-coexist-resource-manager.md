@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: charwen,cherylmc
-ms.openlocfilehash: b29147a37f9a90fc80e16b350ac9b91daac1d7f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: efda9f89d95617c8c4e75af91b20631dc468d4db
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>Konfigurace společně používaných připojení typu Site-to-Site a ExpressRoute
 > [!div class="op_single_selector"]
@@ -28,33 +28,33 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Konfigurace ExpressRoute a současně existujících připojení VPN typu Site-to-Site má několik výhod. Můžete nakonfigurovat VPN typu Site-to-Site jako zabezpečenou cestu převzetí služeb při selhání pro ExressRoute, nebo použít VPN typu Site-to-Site pro připojení k webům, které nejsou připojené prostřednictvím ExpressRoute. V tomto článku nabízíme postupy konfigurace pro oba scénáře. Tento článek se týká modelu nasazení Resource Manager a používá PowerShell. Tato konfigurace není k dispozici na webu Azure Portal.
+Konfigurace ExpressRoute a současně existujících připojení VPN typu Site-to-Site má několik výhod. Můžete nakonfigurovat VPN typu Site-to-Site jako cestu zabezpečené převzetí služeb při selhání pro ExressRoute, nebo použít toosites tooconnect sítě Site-to-Site VPN, které nejsou připojené prostřednictvím ExpressRoute. Nabídneme tooconfigure kroky hello oba scénáře v tomto článku. Tento článek vztahuje toohello modelu nasazení Resource Manager a používá prostředí PowerShell. Tato konfigurace není k dispozici v hello portálu Azure.
 
 > [!IMPORTANT]
-> Než budete postupovat podle dál uvedených pokynů, musí být předem nakonfigurované okruhy ExpressRoute. Než budete pokračovat, zkontrolujte, že jste provedli postupy pro [vytvoření okruhu ExpressRoute](expressroute-howto-circuit-arm.md) a [konfiguraci směrování](expressroute-howto-routing-arm.md).
+> Okruhy ExpressRoute musí být předem nakonfigurované, než začnete postupovat podle pokynů hello. Ujistěte se, že jste postupovali podle příručky hello příliš[vytvoření okruhu ExpressRoute](expressroute-howto-circuit-arm.md) a [konfigurace směrování](expressroute-howto-routing-arm.md) než budete pokračovat.
 > 
 > 
 
 ## <a name="limits-and-limitations"></a>Omezení
 * **Směrování provozu není podporováno.** Nemůžete provádět směrování (přes Azure) mezi místní sítí připojenou prostřednictvím sítě VPN typu site-to-site a místní sítí připojenou přes ExpressRoute.
-* **Základní brána SKU není podporována.** Pro [bránu ExpressRoute](expressroute-about-virtual-network-gateways.md) a [bránu VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) je nutné použít jinou než základní bránu SKU.
+* **Základní brána SKU není podporována.** Musíte použít bránu bez – základní SKU pro obě hello [brány ExpressRoute](expressroute-about-virtual-network-gateways.md) a hello [brány VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 * **Podporována je pouze brána VPN na základě tras.** Je nutné použít službu [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) na základě tras.
-* **Pro vaši bránu VPN by měla být nakonfigurována statická trasa.** Pokud je vaše místní síť připojená k ExpressRoute a síti VPN typu site-to-site, musíte mít v místní síti konfigurovanou statickou trasu, abyste mohli směrovat připojení VPN typu site-to-site do veřejného internetu.
-* **Nejprve je potřeba nakonfigurovat bránu ExpressRoute a připojit ji k okruhu.** Bránu ExpressRoute musíte vytvořit a připojit k okruhu předtím, než přidáte bránu VPN typu Site-to-Site.
+* **Pro vaši bránu VPN by měla být nakonfigurována statická trasa.** Pokud vaše místní síť připojená tooboth ExpressRoute a Site-to-Site VPN, musíte mít ve vaší místní síti tooroute hello Site-to-Site VPN připojení toohello konfigurovanou statickou trasu veřejného Internetu.
+* **Bránu ExpressRoute musí být nakonfigurovaná a propojit tooa okruh.** Je nutné nejprve vytvořte bránu ExpressRoute hello a tu propojit tooa okruhu předtím, než přidáte bránu VPN hello Site-to-Site.
 
 ## <a name="configuration-designs"></a>Návrhy konfigurace
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Konfigurace VPN typu site-to-site jako cesty převzetí služeb při selhání pro ExpressRoute
-Můžete nakonfigurovat připojení VPN typu site-to-site jako záložní pro ExpressRoute. To platí jenom pro virtuální sítě, které jsou propojené s cestou soukromého partnerského vztahu Azure. Neexistuje žádné řešení převzetí služeb při selhání založené na VPN pro služby, které jsou přístupné prostřednictvím veřejného partnerského vztahu Azure nebo partnerského vztahu Microsoftu. Okruh ExpressRoute je vždy primárním propojením. Data prochází cestou VPN typu Site-to-Site jenom v případě, že okruh ExpressRoute selže.
+Můžete nakonfigurovat připojení VPN typu site-to-site jako záložní pro ExpressRoute. To platí pouze toovirtual sítě propojené toohello cestou soukromého partnerského vztahu Azure. Neexistuje žádné řešení převzetí služeb při selhání založené na VPN pro služby, které jsou přístupné prostřednictvím veřejného partnerského vztahu Azure nebo partnerského vztahu Microsoftu. Hello okruh ExpressRoute je vždy hello primární propojení. Data proudí prostřednictvím cesty hello Site-to-Site VPN, pouze pokud hello okruh ExpressRoute selže.
 
 > [!NOTE]
-> I když v případě, že jsou obě trasy stejné, je okruh ExpressRoute upřednostněný před VPN typu Site-to-Site, Azure k výběru trasy směrem k cíli paketu použije nejdelší shodu předpony.
+> Při okruh ExpressRoute je upřednostňované prostřednictvím sítě Site-to-Site VPN, když oba trasy jsou hello stejné, použije Azure hello nejdelší předponu shodu toochoose hello trasy směrem cíle hello paketu.
 > 
 > 
 
 ![Současná existence](media/expressroute-howto-coexist-resource-manager/scenario1.jpg)
 
-### <a name="configure-a-site-to-site-vpn-to-connect-to-sites-not-connected-through-expressroute"></a>Konfigurace VPN typu site-to-site pro připojení webů, které nejsou připojené prostřednictvím ExpressRoute
-Svoji síť můžete nakonfigurovat tak, že některé weby jsou připojené přímo k Azure prostřednictvím VPN typu site-to-site a některé weby přes ExpressRoute. 
+### <a name="configure-a-site-to-site-vpn-tooconnect-toosites-not-connected-through-expressroute"></a>Konfigurace Site-to-Site VPN tooconnect toosites nejsou připojené prostřednictvím ExpressRoute
+Můžete nakonfigurovat síti, kde některé weby jsou připojené přímo tooAzure prostřednictvím sítě Site-to-Site VPN a některé weby přes ExpressRoute. 
 
 ![Současná existence](media/expressroute-howto-coexist-resource-manager/scenario2.jpg)
 
@@ -63,23 +63,23 @@ Svoji síť můžete nakonfigurovat tak, že některé weby jsou připojené př
 > 
 > 
 
-## <a name="selecting-the-steps-to-use"></a>Výběr kroků k použití
-Existují dvě různé sady postupů, ze kterých si můžete vybrat. Postup konfigurace, který vyberete, závisí na tom, jestli máte existující virtuální síť, ke které se chcete připojit, nebo chcete vytvořit novou virtuální síť.
+## <a name="selecting-hello-steps-toouse"></a>Výběr toouse kroky hello
+Existují dvě sady postupů toochoose z. Postup konfigurace Hello, který vyberete, závisí na tom, jestli máte existující virtuální síť, které mají tooconnect k, nebo chcete toocreate nové virtuální sítě.
 
-* Nemám virtuální síť a potřebuji ji vytvořit.
+* Nemám virtuální síť a potřebuji toocreate jeden.
   
-    Pokud ještě nemáte virtuální síť, tento postup vás provede procesem vytvoření nové virtuální sítě pomocí modelu nasazení Resource Manager a vytvoření nových připojení ExpressRoute a VPN typu Site-to-Site. Pokud chcete konfigurovat virtuální síť, postupujte podle kroků v části [Vytvoření nové virtuální sítě a současně existujících připojení](#new).
+    Pokud ještě nemáte virtuální síť, tento postup vás provede procesem vytvoření nové virtuální sítě pomocí modelu nasazení Resource Manager a vytvoření nových připojení ExpressRoute a VPN typu Site-to-Site. tooconfigure virtuální sítě, postupujte podle kroků hello v [toocreate nové virtuální sítě a koexistujících připojení](#new).
 * Už mám virtuální síť modelu nasazení Resource Manager.
   
-    Už můžete mít virtuální síť s existujícím připojením VPN typu site-to-site nebo připojením ExpressRoute. V části [Konfigurace současně existujících připojení pro už existující virtuální síť](#add) najdete postup odstranění brány a následného vytvoření nových připojení ExpressRoute a VPN typu Site-to-Site. Při vytváření nových připojení musí být kroky provedené ve specifickém pořadí. Nepoužívejte pro vytvoření připojení a bran pokyny z jiných článků.
+    Už můžete mít virtuální síť s existujícím připojením VPN typu site-to-site nebo připojením ExpressRoute. Hello [tooconfigure koexistujících připojení pro už existující virtuální síť](#add) části najdete postup odstranění hello brány a následného vytvoření nových připojení ExpressRoute a Site-to-Site VPN. Při vytváření nové připojení hello hello kroky musí dokončit v určitém pořadí. Nepoužívejte hello pokyny v jiných článcích toocreate připojení a bran.
   
-    V tomto postupu bude vytvoření připojení, která mohou existovat současně, vyžadovat, abyste odstranili bránu a pak nakonfigurovali nové brány. Během odstraňování a opětného vytváření brány a připojení budete mít výpadek připojení mezi místy, ale nebude nutné migrovat žádné virtuální počítače ani služby do nové virtuální sítě. Virtuální počítače a služby budou během konfigurace brány stále schopné komunikovat prostřednictvím nástroje pro vyrovnávání zatížení, pokud jsou tak nakonfigurované.
+    V tomto postupu vytvoření připojení, která mohou existovat vedle sebe vyžaduje toodelete můžete bránu a pak nakonfigurovali nové brány. Budete mít výpadku pro připojení mezi různými místy odstranit a znovu vytvořte brány a připojení, ale nebude nutné toomigrate všechny virtuální počítače a služby tooa nové virtuální sítě. Virtuální počítače a služby bude nadále možné toocommunicate se prostřednictvím nástroje pro vyrovnávání zatížení hello během konfigurace brány, pokud jsou nakonfigurované toodo tak.
 
-## <a name="new"></a>Vytvoření nové virtuální sítě a současně existujících připojení
+## <a name="new"></a>toocreate nové virtuální sítě a koexistujících připojení
 Tento postup vás provede procesem vytvoření virtuální sítě a připojení ExpressRoute a VPN typu Site-to-Site, která budou existovat společně.
 
-1. Nainstalujte nejnovější verzi rutin Azure PowerShellu. Informace o instalaci rutin najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Rutiny, které použijete pro tuto konfiguraci, se můžou mírně lišit od těch, co znáte. Ujistěte se, že používáte rutiny určené v těchto pokynech.
-2. Přihlaste se ke svému účtu a nastavte prostředí.
+1. Nainstalujte nejnovější verzi rutin prostředí Azure PowerShell hello hello. Informace o instalaci rutin hello najdete v tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview). Hello rutin, které používáte pro tuto konfiguraci můžou mírně lišit, než co je znají. Být jisti toouse hello rutiny určené v těchto pokynech.
+2. Přihlaste se v účtu tooyour a nastavení prostředí hello.
 
   ```powershell
   login-AzureRmAccount
@@ -88,10 +88,10 @@ Tento postup vás provede procesem vytvoření virtuální sítě a připojení 
   $resgrp = New-AzureRmResourceGroup -Name "ErVpnCoex" -Location $location
   $VNetASN = 65010
   ```
-3. Vytvořte virtuální síť včetně podsítě brány. Další informace o konfiguraci virtuální sítě najdete v tématu [Konfigurace Azure Virtual Network](../virtual-network/virtual-networks-create-vnet-arm-ps.md).
+3. Vytvořte virtuální síť včetně podsítě brány. Další informace o konfiguraci virtuální sítě hello najdete v tématu [konfigurace Azure Virtual Network](../virtual-network/virtual-networks-create-vnet-arm-ps.md).
    
    > [!IMPORTANT]
-   > Podsíť brány musí být /27 nebo kratší předpona (například /26 nebo /25).
+   > Hello podsíť brány musí být/27 nebo kratší předpona (například/26 nebo /25).
    > 
    > 
    
@@ -108,12 +108,12 @@ Tento postup vás provede procesem vytvoření virtuální sítě a připojení 
   Add-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet -AddressPrefix "10.200.255.0/24"
   ```
    
-    Uložte konfiguraci virtuální sítě.
+    Uložte konfiguraci virtuální sítě hello.
 
   ```powershell
   $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
-4. <a name="gw"></a>Vytvořte bránu ExpressRoute. Další informace o konfiguraci brány ExpressRoute najdete v tématu [Konfigurace brány ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). GatewaySKU musí být *Standard*, *HighPerformance* nebo *UltraPerformance*.
+4. <a name="gw"></a>Vytvořte bránu ExpressRoute. Další informace o konfiguraci brány ExpressRoute hello najdete v tématu [konfigurace brány ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Hello GatewaySKU musí být *standardní*, *HighPerformance*, nebo *UltraPerformance*.
 
   ```powershell
   $gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
@@ -121,13 +121,13 @@ Tento postup vás provede procesem vytvoření virtuální sítě a připojení 
   $gwConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name "ERGatewayIpConfig" -SubnetId $gwSubnet.Id -PublicIpAddressId $gwIP.Id
   $gw = New-AzureRmVirtualNetworkGateway -Name "ERGateway" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -IpConfigurations $gwConfig -GatewayType "ExpressRoute" -GatewaySku Standard
   ```
-5. Propojte bránu ExpressRoute s okruhem ExpressRoute. Po dokončení tohoto kroku bude připojení mezi místní sítí a Azure prostřednictvím ExpressRoute vytvořeno. Další informace o operaci propojení najdete v tématu [Propojení virtuálních sítí s ExpressRoute](expressroute-howto-linkvnet-arm.md).
+5. Propojení okruhu ExpressRoute toohello brány ExpressRoute hello. Po dokončení tohoto kroku se hello připojení mezi místní sítí a Azure prostřednictvím ExpressRoute vytvořeno. Další informace o operaci propojení hello najdete v tématu [propojení virtuálních sítí tooExpressRoute](expressroute-howto-linkvnet-arm.md).
 
   ```powershell
   $ckt = Get-AzureRmExpressRouteCircuit -Name "YourCircuit" -ResourceGroupName "YourCircuitResourceGroup"
   New-AzureRmVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -VirtualNetworkGateway1 $gw -PeerId $ckt.Id -ConnectionType ExpressRoute
   ```
-6. <a name="vpngw"></a>Dále vytvořte bránu VPN typu site-to-site. Další informace o konfiguraci brány VPN najdete v tématu [Konfigurace virtuální sítě s připojením typu site-to-site](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md). GatewaySKU musí být *Standard*, *HighPerformance* nebo *UltraPerformance*. VpnType musí být *RouteBased*.
+6. <a name="vpngw"></a>Dále vytvořte bránu VPN typu site-to-site. Další informace o konfiguraci brány VPN hello najdete v tématu [konfigurace virtuální sítě pomocí připojení Site-to-Site](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md). Hello GatewaySKU musí být *standardní*, *HighPerformance*, nebo *UltraPerformance*. Hello VpnType musí *RouteBased*.
 
   ```powershell
   $gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
@@ -136,51 +136,51 @@ Tento postup vás provede procesem vytvoření virtuální sítě a připojení 
   New-AzureRmVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -IpConfigurations $gwConfig -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "Standard"
   ```
    
-    Brána Azure VPN podporuje směrovací protokol BGP. Můžete zadat ASN (číslo AS) pro tuto virtuální síť přidáním přepínače -Asn do následujícího příkazu. V případě nezadání parametru se použije výchozí číslo AS 65515.
+    Brána Azure VPN podporuje směrovací protokol BGP. Přidáte přepínač - Asn hello hello následující příkaz, můžete zadat číslo ASN (čísla AS) pro tuto virtuální síť. Není zadáním tohoto parametru bude tooAS výchozí číslo 65515.
 
   ```powershell
   $azureVpn = New-AzureRmVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -IpConfigurations $gwConfig -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "Standard" -Asn $VNetASN
   ```
    
-    IP adresu partnerských vztahů protokolu BGP a číslo AS, které Azure používá pro bránu VPN, najdete v $azureVpn.BgpSettings.BgpPeeringAddress a $azureVpn.BgpSettings.Asn. Další informace najdete v tématu [Konfigurace protokolu BGP](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md) pro bránu VPN Azure.
-7. Vytvořte entitu brány VPN místního webu. Tento příkaz neprovede konfiguraci vaší místní brány VPN. Místo toho umožní zadat nastavení místní brány, jako je například veřejná IP adresa a místní adresní prostor, aby se brána Azure VPN k nim mohla připojit.
+    Můžete najít hello IP partnerského vztahu protokolu BGP a hello jako číslo, které Azure používá pro bránu VPN hello v $azureVpn.BgpSettings.BgpPeeringAddress a $azureVpn.BgpSettings.Asn. Další informace najdete v tématu [Konfigurace protokolu BGP](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md) pro bránu VPN Azure.
+7. Vytvořte entitu brány VPN místního webu. Tento příkaz neprovede konfiguraci vaší místní brány VPN. Místo toho můžete nastavení místní brány hello tooprovide, jako je například veřejná IP adresa hello a hello místní adresní prostor, aby hello Azure VPN gateway bude moct připojit tooit.
    
-    Pokud vaše místní zařízení VPN podporuje pouze statické směrování, můžete nakonfigurovat statické trasy následujícím způsobem:
+    Pokud vaše místní zařízení VPN podporuje jenom statické směrování, můžete nakonfigurovat statické trasy hello v hello následujícím způsobem:
 
   ```powershell
   $MyLocalNetworkAddress = @("10.100.0.0/16","10.101.0.0/16","10.102.0.0/16")
   $localVpn = New-AzureRmLocalNetworkGateway -Name "LocalVPNGateway" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -GatewayIpAddress *<Public IP>* -AddressPrefix $MyLocalNetworkAddress
   ```
    
-    Pokud vaše místní zařízení VPN podporuje protokol BGP a chcete povolit dynamické trasování, potřebujete znát IP adresu partnerských vztahů protokolu BGP a číslo AS, které vaše místní zařízení VPN používá.
+    Pokud vaše místní zařízení VPN podporuje hello protokolu BGP a chcete tooenable dynamické směrování, je třeba tooknow hello BGP partnerský vztah hello jako číslo, které vaše místní síť VPN a IP adresy zařízení používá.
 
   ```powershell
   $localVPNPublicIP = "<Public IP>"
-  $localBGPPeeringIP = "<Private IP for the BGP session>"
+  $localBGPPeeringIP = "<Private IP for hello BGP session>"
   $localBGPASN = "<ASN>"
   $localAddressPrefix = $localBGPPeeringIP + "/32"
   $localVpn = New-AzureRmLocalNetworkGateway -Name "LocalVPNGateway" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -GatewayIpAddress $localVPNPublicIP -AddressPrefix $localAddressPrefix -BgpPeeringAddress $localBGPPeeringIP -Asn $localBGPASN
   ```
-8. Nakonfigurujte místní zařízení VPN pro připojení k nové bráně Azure VPN. Další informace o konfiguraci zařízení VPN najdete v tématu [Konfigurace zařízení VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md).
-9. Propojte bránu VPN typu site-to-site v Azure s místní bránou.
+8. Nakonfigurujte místní zařízení tooconnect toohello nové Azure VPN bránu VPN. Další informace o konfiguraci zařízení VPN najdete v tématu [Konfigurace zařízení VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md).
+9. Brána Site-to-Site VPN hello odkaz na Azure toohello místní brány.
 
   ```powershell
   $azureVpn = Get-AzureRmVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName
   New-AzureRmVirtualNetworkGatewayConnection -Name "VPNConnection" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -VirtualNetworkGateway1 $azureVpn -LocalNetworkGateway2 $localVpn -ConnectionType IPsec -SharedKey <yourkey>
   ```
 
-## <a name="add"></a>Konfigurace současně existujících připojení pro už existující virtuální síť
-Pokud máte existující virtuální síť, zkontrolujte velikost podsítě brány. Pokud podsíť brány je /28 nebo /29, musíte nejdřív bránu virtuální sítě odstranit a zvýšit velikost podsítě brány. Postup v této části ukazuje, jak to provést.
+## <a name="add"></a>tooconfigure koexistujících připojení pro už existující virtuální síť
+Pokud máte existující virtuální síť, zkontrolujte velikost podsítě brány hello. Pokud podsíť brány hello velikosti/28 nebo/29, musíte nejprve odstranit bránu virtuální sítě hello a zvýšit velikost podsítě brány hello. Hello kroky v této části ukazují, jak toodo který.
 
-Pokud podsíť brány je /27 nebo větší a virtuální síť je připojená přes ExpressRoute, můžete přeskočit následující kroky a přejít ke [kroku 6 – Vytvoření brány VPN typu site-to-site](#vpngw) v předchozí části. 
+Pokud hello podsíť brány je/27 nebo větší a hello virtuální síť je připojená přes ExpressRoute, můžete přeskočit hello kroky a přejít příliš["Krok 6 – Vytvoření brány Site-to-Site VPN"](#vpngw) v předchozí části hello. 
 
 > [!NOTE]
-> Pokud odstraníte existující bránu, místní místo ztratí během práce na této konfiguraci připojení k virtuální síti. 
+> Pokud odstraníte existující bránu hello, místní místo ztratí hello připojení tooyour virtuální sítě během práce na této konfiguraci. 
 > 
 > 
 
-1. Budete potřebovat nainstalovat nejnovější verzi rutin Azure PowerShellu. Další informace o instalaci rutin najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Rutiny, které použijete pro tuto konfiguraci, se můžou mírně lišit od těch, co znáte. Ujistěte se, že používáte rutiny určené v těchto pokynech. 
-2. Odstraňte existující bránu ExpressRoute nebo VPN typu site-to-site.
+1. Budete potřebovat tooinstall hello nejnovější verzi rutin prostředí Azure PowerShell hello. Další informace o instalaci rutin najdete v tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview). Hello rutin, které používáte pro tuto konfiguraci můžou mírně lišit, než co je znají. Být jisti toouse hello rutiny určené v těchto pokynech. 
+2. Odstraňte existující bránu ExpressRoute nebo VPN typu Site-to-Site na hello.
 
   ```powershell 
   Remove-AzureRmVirtualNetworkGateway -Name <yourgatewayname> -ResourceGroupName <yourresourcegroup>
@@ -193,7 +193,7 @@ Pokud podsíť brány je /27 nebo větší a virtuální síť je připojená p�
 4. Přidejte podsíť brány, která je /27 nebo větší.
    
    > [!NOTE]
-   > Pokud vám ve virtuální síti nezbylo dost IP adres pro zvětšení velikosti podsítě brány, budete muset přidat další adresní prostor IP adres.
+   > Pokud nemáte dost IP adres v velikost podsítě brány vaší virtuální sítě tooincrease hello, musíte tooadd další adresní prostor IP adres.
    > 
    > 
 
@@ -202,15 +202,15 @@ Pokud podsíť brány je /27 nebo větší a virtuální síť je připojená p�
   Add-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet -AddressPrefix "10.200.255.0/24"
   ```
    
-    Uložte konfiguraci virtuální sítě.
+    Uložte konfiguraci virtuální sítě hello.
 
   ```powershell
   $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
-5. V tuto chvíli máte virtuální síť, která nemá žádné brány. Abyste vytvořili nové brány a dokončili připojení, můžete pokračovat [krokem 4 – Vytvoření brány ExpressRoute](#gw), který se nachází v předchozí sadě kroků.
+5. V tuto chvíli máte virtuální síť, která nemá žádné brány. toocreate nové brány a dokončili připojení, abyste mohli pokračovat [krokem 4 – vytvoření brány ExpressRoute](#gw), který se nachází v hello předcházející sadě kroků.
 
-## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>Přidání konfigurace point-to-site k bráně VPN
-Podle následujících pokynů můžete k bráně VPN v nastavení koexistence přidat konfiguraci point-to-site.
+## <a name="tooadd-point-to-site-configuration-toohello-vpn-gateway"></a>Brána sítě VPN toohello tooadd konfigurace point-to-site
+Můžete provést kroky hello níže tooadd Point-to-Site konfigurace tooyour brány VPN v nastavení koexistence.
 
 1. Přidejte fond adres klienta VPN.
 
@@ -218,7 +218,7 @@ Podle následujících pokynů můžete k bráně VPN v nastavení koexistence p
   $azureVpn = Get-AzureRmVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName
   Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $azureVpn -VpnClientAddressPool "10.251.251.0/24"
   ```
-2. Odešlete kořenový certifikát VPN pro bránu VPN do Azure. V tomto příkladu se předpokládá, že kořenový certifikát je uložený v místním počítači, kde se spustí následující rutiny PowerShellu.
+2. Nahrajte hello VPN kořenový certifikát tooAzure pro bránu sítě VPN. V tomto příkladu se předpokládá, že tento hello kořenový certifikát je uložený v hello místního počítače, kde se spouštějí hello následující rutiny prostředí PowerShell.
 
   ```powershell
   $p2sCertFullName = "RootErVpnCoexP2S.cer" 
@@ -231,4 +231,4 @@ Podle následujících pokynů můžete k bráně VPN v nastavení koexistence p
 Další informace o VPN typu point-to-site najdete v tématu [Konfigurace připojení typu point-to-site](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md).
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
+Další informace o ExpressRoute najdete v tématu hello [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).

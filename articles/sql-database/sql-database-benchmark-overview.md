@@ -1,6 +1,6 @@
 ---
-title: "Přehled služby Azure SQL Database srovnávacího testu"
-description: "Toto téma popisuje databáze Azure SQL, srovnávací test měření výkonu databáze SQL Azure."
+title: "přehledu srovnávacího testu aaaAzure databáze SQL"
+description: "Toto téma popisuje hello Azure SQL Database srovnávacího testu měření výkonu hello databáze SQL Azure."
 services: sql-database
 documentationcenter: na
 author: jan-eng
@@ -15,41 +15,41 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 06/21/2016
 ms.author: janeng
-ms.openlocfilehash: 57178352e0a402f3559c94ce25f125dcbefd1374
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1024e9ada511935f911cb1345b4dc5508997c702
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-sql-database-benchmark-overview"></a>Přehled služby Azure SQL Database srovnávacího testu
 ## <a name="overview"></a>Přehled
-Microsoft Azure SQL Database nabízí tři [úrovních služeb](sql-database-service-tiers.md) s více úrovněmi výkonu. Každá úroveň výkonu poskytuje roste sadu prostředků, nebo "power" navržený tak, aby stále vyšší propustnost.
+Microsoft Azure SQL Database nabízí tři [úrovních služeb](sql-database-service-tiers.md) s více úrovněmi výkonu. Každou úroveň výkonu poskytuje zvýšení propustnosti stále větší toodeliver sadu prostředků, nebo "power", určené.
 
-Je důležité, abyste mohli vyčíslení jak roste sílu každou úroveň výkonu překládá do databáze vyšší výkon. Uděláte to této společnost Microsoft vyvinula srovnávacího testu pro databáze SQL Azure (ASDB). Testu výkonnosti vykonává směs základní operace v všechny úlohy OLTP nalezen. Jsme měření propustnosti dá dosáhnout databáze spuštěné v každé úrovni výkonu.
+Je důležité toobe možné tooquantify jak roste power hello každé úrovně výkonu překládá do databáze vyšší výkon. toodo, které tuto společnost Microsoft vyvinula hello Azure SQL Database srovnávacího testu (ASDB). srovnávací test Hello vykonává směs základní operace v všechny úlohy OLTP nalezen. Jsme měření propustnosti hello dá dosáhnout databáze spuštěné v každé úrovni výkonu.
 
-Z hlediska jsou vyjádřeny prostředků a výkonu každou úroveň služby a výkonu úroveň [jednotky transakcí databáze (Dtu)](sql-database-what-is-a-dtu.md). Počet jednotek Dtu poskytnout způsob, jak popisují relativní kapacitu úrovně výkonu založené na kombinaci měření procesoru, paměti a čtení a zápisu, nabízí sazby jednotlivými úrovněmi výkonu. Zvýší hodnocení DTU databáze rovná zvýší výkon databáze. Testu výkonnosti umožňuje posoudit dopad na výkon databáze většího výkonu nabízí jednotlivými úrovněmi výkonu výkonem skutečné databázové operace, při škálování velikost databáze, počet uživatelů a transakcí míry v poměru k prostředky zadané do databáze.
+Hello prostředků a výkonu každou úroveň a výkonu služby jsou vyjádřeny z hlediska [jednotky transakcí databáze (Dtu)](sql-database-what-is-a-dtu.md). Počet jednotek Dtu poskytují způsob toodescribe hello relativní kapacitu úrovně výkonu založené na kombinaci měření procesoru, paměti a čtení a zápis nabízené jednotlivými úrovněmi výkonu výše. Zvýší hello hodnocení DTU databáze znamená zároveň toodoubling hello databáze napájení. srovnávací test Hello umožňuje nám tooassess hello dopad na výkon databáze hello zvýšení spotřeby nabízí jednotlivými úrovněmi výkonu výkonem skutečné databázové operace, při škálování velikost databáze, počet uživatelů a transakcí míry v poměru toohello prostředky k dispozici toohello databáze.
 
-Vyjádření propustnost vrstvy služby na úrovni Basic pomocí transakce za hodinu, vrstvě služby na úrovni Standard pomocí transakce za minutu a úroveň služeb Premium použití transakcí za sekundu, umožňuje jednodušší a rychle vytvořit relaci výkon potenciální každý vrstvy služby pro požadavky na aplikace.
+Podle vyjádření hello propustnost vrstvu služby na úrovni Basic hello pomocí transakce za hodinu, se týkají vrstvy služby na úrovni Standard hello pomocí transakce za minutu a úroveň služeb Premium hello použití transakcí za sekundu, umožňuje snazší tooquickly hello potenciální výkon jednotlivých požadavků na toohello služby vrstvy aplikace.
 
-## <a name="correlating-benchmark-results-to-real-world-database-performance"></a>Korelace srovnávacího testu výsledky skutečných výkon databáze
-Je důležité si uvědomit, že ASDB, podobně jako všechny srovnávacích testů, je reprezentativní a naznačuje výslednou jenom. Sazby transakce dosáhnout s aplikací srovnávacího testu nesmí být stejné jako ty, které může dosáhnout s jinými aplikacemi. Testu výkonnosti se skládá z kolekce jinou transakci, které typy spouštění schéma obsahující rozsah tabulky a datové typy. Během testu výkonnosti využije stejné základní operace, které jsou společné pro všechny úlohy OLTP, nepředstavuje žádné konkrétní třídě databáze nebo aplikace. Cílem srovnávacího testu je zajistit přiměřené Průvodce relativní výkon databáze, která může být očekávána při škálování nahoru nebo dolů mezi úrovněmi výkonu. Ve skutečnosti databáze jsou různé velikosti a složitost, dojde k jiné mix úloh a bude odpovídat různými způsoby. Například aplikace náročné na vstupně-výstupní operace narazit dříve vstupně-výstupní operace prahové hodnoty nebo narazit aplikace náročná na prostředky procesoru CPU omezení dříve. Není zaručeno, že všechny konkrétní databáze bude škálovat stejným způsobem jako srovnávací test v rámci zvýšení zatížení.
+## <a name="correlating-benchmark-results-tooreal-world-database-performance"></a>Korelace výkonu databáze world tooreal výsledků srovnávacího testu
+Je důležité toounderstand této ASDB, jako jsou všechny srovnávacích testů se reprezentativní a naznačuje výslednou jenom. Hello transakce sazby dosáhnout pomocí aplikace hello srovnávacího testu nebude hello stejné jako ty, které může dosáhnout s jinými aplikacemi. Hello srovnávacího testu se skládá z kolekce jinou transakci, které typy spouštění schéma obsahující rozsah tabulky a datové typy. Během cvičení srovnávacího testu hello hello stejné základní operace, které jsou běžné úlohy tooall OLTP, nepředstavuje žádné konkrétní třídě databáze nebo aplikace. cílem Hello srovnávacího testu hello je tooprovide relativní výkon přiměřené Průvodce toohello databáze, která může být očekávána při škálování nahoru nebo dolů mezi úrovněmi výkonu. Ve skutečnosti databáze jsou různé velikosti a složitost, dojde k jiné mix úloh a bude odpovídat různými způsoby. Například aplikace náročné na vstupně-výstupní operace narazit dříve vstupně-výstupní operace prahové hodnoty nebo narazit aplikace náročná na prostředky procesoru CPU omezení dříve. Není zaručeno, že všechny konkrétní databáze bude škálovat v hello stejný způsobem jako hello srovnávací test v rámci zvýšení zatížení.
 
-Test výkonnosti a její metody jsou podrobněji popsané v níže.
+Hello srovnávacího testu a její metody jsou podrobněji popsané v níže.
 
 ## <a name="benchmark-summary"></a>Souhrn srovnávacího testu
-ASDB měří výkon směs základní databázových operací, které se vyskytují nejčastěji v online transakcí (OLTP) úlohy zpracování. I když srovnávacího testu je navržen s cloud computing v paměti, schématu databáze, pro naplnění dat a transakce byly navrženy široce reprezentativní pro základní prvky nejčastěji používané v OLTP úlohy.
+ASDB měří výkon hello směs základní databázových operací, které se vyskytují nejčastěji v online transakcí (OLTP) úlohy zpracování. Přestože srovnávacího testu hello je navržený s cloud computing pamatovat, hello schématu databáze, pro naplnění dat a transakce byla navrženou toobe široce reprezentativní základní elementů hello nejčastěji používaná v úlohách OLTP.
 
 ## <a name="schema"></a>Schéma
-Schéma je určena pro mít dostatek různých a složitost pro podporu širokou škálu operace. Testu výkonnosti spouští skládá z šesti tabulky databáze. V tabulkách spadají do tří kategorií: pevné velikosti, škálování a rozšiřujících se. Existují dvě tabulky pevné velikosti; tři škálování tabulky; a rostoucí jedna tabulka. Pevné velikosti tabulky obsahovat konstantní počet řádků. Škálování tabulky obsahovat mohutnost, která je úměrná výkon databáze, ale nemění během testu výkonnosti. Rostoucí tabulky je velikost jako škálování na počáteční zatížení, ale pak mohutnost změny v průběhu spuštění testu výkonnosti, jako jsou vloženy a odstranit řádky tabulky.
+schéma Hello je navrženou toohave dostatek různých a složitost toosupport širokou škálu operace. Hello srovnávacího testu spouští skládá z šesti tabulky databáze. tabulky Hello spadají do tří kategorií: pevné velikosti, škálování a rozšiřujících se. Existují dvě tabulky pevné velikosti; tři škálování tabulky; a rostoucí jedna tabulka. Pevné velikosti tabulky obsahovat konstantní počet řádků. Škálování tabulky obsahovat mohutnost, která je přímo úměrná toodatabase výkon, ale nemění během hello srovnávacího testu. je velikost Hello narůstají tabulku jako tabulku škálování na počáteční zatížení, ale poté změní hello mohutnost v hello během spuštění hello srovnávacího testu, jako jsou vloženy a odstranit řádky.
 
-Schéma obsahuje směs datových typů, včetně typu integer, číselný znak a datum a čas. Schéma obsahuje primární a sekundární klíče, ale nejsou žádné cizí klíče – to znamená, že jsou žádné omezení referenční integrity mezi tabulkami.
+Hello schéma obsahuje směs datových typů, včetně typu integer, číselný znak a datum a čas. schéma Hello zahrnuje primární a sekundární klíče, ale nejsou žádné cizí klíče – to znamená, že jsou žádné omezení referenční integrity mezi tabulkami.
 
-Program generování dat generuje data pro počáteční databáze. Celé číslo a číselná data se generují s různými strategie. V některých případech se náhodně distribuují hodnoty v rozsahu. V ostatních případech sadu hodnot je náhodně permutovanou funkci zajistit, že se zachová konkrétní distribuční. Textová pole jsou generovány z vyvážené seznam slov k vytvoření realistické vypadající data.
+Program generování dat generuje hello dat pro databázi počáteční hello. Celé číslo a číselná data se generují s různými strategie. V některých případech se náhodně distribuují hodnoty v rozsahu. V ostatních případech je sada hodnot náhodně permutovanou funkci tooensure, že se zachová konkrétní distribuční. Textová pole jsou generovány z vyvážené seznam slova tooproduce realistické vypadající data.
 
-Databáze je velikost podle "měřítko." Měřítko (zkratka jako SF) určuje mohutnost změny velikosti a rozšiřujících se tabulky. Jak je popsáno níže v části Uživatelé a Pacing, velikost databáze, počet uživatelů a maximální výkon všech škálování v poměru k sobě navzájem.
+Hello databáze je velikost podle "měřítko." Hello měřítko (zkratka jako SF) určuje hello Kardinalita hello škálování a rozšiřujících se tabulky. Jak je popsáno níže v hello části uživatelů a Pacing, velikost databáze hello, počet uživatelů a všechny škálování v poměru tooeach další maximální výkon.
 
 ## <a name="transactions"></a>Transakce
-Úlohy se skládá z devíti typy transakcí, jak je znázorněno v následující tabulce. Každou transakci je určena pro zvýraznit konkrétní sadu systému charakteristiky v databázi modul a systému hardwaru, s vysokým kontrastem z dalších transakcí. Tento přístup usnadňuje posoudit dopad na celkový výkon různé součásti. Například "Pro čtení velkou" transakce vytváří velký počet operací čtení z disku.
+zatížení Hello se skládá z typy devět transakcí, jak ukazuje následující tabulka hello. Každou transakci je navrženou toohighlight konkrétní sadu systému charakteristiky v hello databáze modul a systému hardwaru, s vysokým kontrastem z hello dalších transakcí. Tento přístup umožňuje snazší dopad hello tooassess toooverall výkonu různých součástí. Například "Pro čtení velkou" hello transakce vytváří velký počet operací čtení z disku.
 
 | Typ transakce | Popis |
 | --- | --- |
@@ -64,7 +64,7 @@ Databáze je velikost podle "měřítko." Měřítko (zkratka jako SF) určuje m
 | Těžký procesoru |VYBRAT; v paměti; relativně velké zatížení procesoru; jen pro čtení |
 
 ## <a name="workload-mix"></a>Kombinace úloh
-Transakce jsou náhodně vybírány ze vyvážené distribuce s následující celkové kombinaci. Celkové kombinace má pro čtení a zápis poměr přibližně 2:1.
+Transakce jsou náhodně vybrané ze vyvážené distribuce s hello následující celkové kombinaci. Hello celkové kombinace má pro čtení a zápis poměr přibližně 2:1.
 
 | Typ transakce | % Kombinaci |
 | --- | --- |
@@ -79,24 +79,24 @@ Transakce jsou náhodně vybírány ze vyvážené distribuce s následující c
 | Těžký procesoru |10 |
 
 ## <a name="users-and-pacing"></a>Uživatelé a interval
-Zatížení srovnávacího testu vycházejí z nástroj, který odešle transakce mezi sadu připojení k simulaci chování počet souběžných uživatelů. I když všechna připojení a transakce jsou počítače, které jsou generovány, pro jednoduchost označujeme tato připojení jako "uživatelé." I když každý uživatel pracuje nezávisle na jiných uživatelů, všichni uživatelé provádět stejné cyklus následující kroky:
+Hello srovnávacího testu zatížení vycházejí z nástroj, který odešle transakce mezi sadu připojení toosimulate hello chování počet souběžných uživatelů. I když jsou všechny hello připojení a transakce generované počítače, pro jednoduchost označujeme toothese připojení jako "uživatelé." I když každý uživatel pracuje nezávisle na jiných uživatelů, všichni uživatelé provést hello stejné cyklus následující kroky:
 
 1. Navázání připojení k databázi.
-2. Opakujte, dokud signál, chcete-li ukončit:
+2. Opakujte až signalizovaného tooexit:
    * Vyberte transakce (z náhodně vyvážené distribuce).
-   * Provedení vybrané transakce a měření doby odezvy.
+   * Proveďte hello vybrané transakce a doby odezvy hello měr.
    * Počkejte intervalu zpoždění.
-3. Zavřete připojení k databázi.
+3. Připojení k databázi zavřít hello.
 4. Ukončení.
 
-Je náhodně vybrané intervalu zpoždění (v kroku 2c), ale s distribučním, který má v průměru 1.0 sekundu. Každý uživatel může, proto v průměru generovat maximálně jednu transakci za sekundu.
+je náhodně vybrané Hello interval zpoždění (v kroku 2c), ale s distribučním, který má v průměru 1.0 sekundu. Každý uživatel může, proto v průměru generovat maximálně jednu transakci za sekundu.
 
 ## <a name="scaling-rules"></a>Škálování pravidla
-Počet uživatelů, je dáno velikost databáze (v jednotkách měřítko). Je jeden uživatel pro každých pět jednotky měřítko. Z důvodu intervalu zpoždění může jeden uživatel generovat maximálně jednu transakci za sekundu v průměru.
+Hello počet uživatelů, je dáno hello velikost databáze (v jednotkách měřítko). Je jeden uživatel pro každých pět jednotky měřítko. Z důvodu hello interval zpoždění může jeden uživatel generovat maximálně jednu transakci za sekundu v průměru.
 
-Například-měřítko 500 (SF = 500) databáze bude mít 100 uživatelů a můžete dosáhnout maximálně 100 TPS. K řízení vyšší TPS míra vyžaduje více uživatelů a větší databázi.
+Například-měřítko 500 (SF = 500) databáze bude mít 100 uživatelů a můžete dosáhnout maximálně 100 TPS. toodrive vyšší míra TPS vyžaduje více uživatelů a větší databázi.
 
-Následující tabulka zobrazuje počet uživatelů ve skutečnosti trvalejší pro každou úroveň a výkonu služby.
+Následující tabulka Hello ukazuje hello počet uživatelů ve skutečnosti trvalejší pro každou úroveň a výkonu služby.
 
 | Úroveň služby (úroveň výkonu) | Uživatelé | Velikost databáze |
 | --- | --- | --- |
@@ -112,10 +112,10 @@ Následující tabulka zobrazuje počet uživatelů ve skutečnosti trvalejší 
 Platný spuštění testu výkonnosti vyžaduje stabilního stavu měření doby trvání alespoň jednu hodinu.
 
 ## <a name="metrics"></a>Metriky
-Klíčové metriky v testu výkonnosti jsou propustnost a dobu odezvy.
+Hello klíčové metriky v srovnávacího testu hello jsou propustnost a dobu odezvy.
 
-* Propustnost je míra nezbytné výkonu v průběhu testu. Propustnost je uvedená v transakce za jednotku předčasné, počítání všechny typy transakcí.
-* Doba odezvy se rozumí míra výkonu předvídatelnost. Omezení času odezvy se liší podle třídy služeb s vyšší třídy služeb s přísnější požadavky na dobu odezvy, jak je uvedeno níže.
+* Propustnost je hello základní výkon měr v hello srovnávacího testu. Propustnost je uvedená v transakce za jednotku předčasné, počítání všechny typy transakcí.
+* Doba odezvy se rozumí míra výkonu předvídatelnost. omezení času odezvy Hello se liší podle třídy služeb s vyšší třídy služeb s přísnější požadavky na dobu odezvy, jak je uvedeno níže.
 
 | Třída služby | Propustnost měr | Požadavky na dobu odezvy |
 | --- | --- | --- |
@@ -124,10 +124,10 @@ Klíčové metriky v testu výkonnosti jsou propustnost a dobu odezvy.
 | Basic |Transakce za hodinu |80. percentil v sekundách 2.0 |
 
 ## <a name="conclusion"></a>Závěr
-Srovnávací test Azure SQL Database měří relativní výkon spuštění pro řadu úrovně dostupných služeb a úrovně výkonu databáze SQL Azure. Testu výkonnosti vykonává směs základní databázových operací, které se vyskytují nejčastěji v online transakcí (OLTP) úlohy zpracování. Podle měření skutečným výkonem, poskytuje testu výkonnosti smysluplnější posoudit dopad na propustnost Změna úrovně výkonu, než je možné pomocí právě výpis prostředky poskytované jednotlivé úrovně, jako je například rychlosti procesoru, velikosti paměti a IOPS. V budoucnu budeme nadále momentální srovnávacího testu rozbalte dostupných dat a rozšíří jeho oboru.
+Hello srovnávacího testu databáze SQL Azure měří hello relativní výkon spuštění pro řadu hello úrovně dostupných služeb a úrovně výkonu databáze SQL Azure. srovnávací test Hello vykonává směs základní databázových operací, které se vyskytují nejčastěji v online transakcí (OLTP) úlohy zpracování. Podle měření skutečným výkonem, poskytuje srovnávacího testu hello smysluplnější vyhodnocení účinku hello na propustnost změna hello úroveň výkonu než je možné pomocí právě výpis hello prostředky poskytované jednotlivé úrovně, jako je například rychlosti procesoru, velikosti paměti a IOPS . V budoucích hello jsme tooevolve hello srovnávacího testu toobroaden pokračovat v jeho oboru a rozbalte hello data poskytnutá.
 
 ## <a name="resources"></a>Zdroje
-[Úvod do databáze SQL](sql-database-technical-overview.md)
+[Úvod tooSQL databáze](sql-database-technical-overview.md)
 
 [Úrovně služeb a úrovně výkonu](sql-database-service-tiers.md)
 

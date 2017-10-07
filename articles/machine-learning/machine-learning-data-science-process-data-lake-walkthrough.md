@@ -1,6 +1,6 @@
 ---
 title: "Škálovatelné vědecké zpracování dat pomocí Azure Data Lake: návod začátku do konce | Microsoft Docs"
-description: "Jak používat Azure Data Lake udělat zkoumání a binární klasifikace úlohy dat na datovou sadu."
+description: "Jak toouse Azure Data Lake toodo data zkoumání a binární klasifikace úlohy na datovou sadu."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,48 +14,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: bradsev;weig
-ms.openlocfilehash: 34fbe99572b4a6cee73de6ae5412a0ec09dd1ccc
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8b05457ae7045a7aaed350a7502469f2247161e0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Škálovatelné vědecké zpracování dat pomocí Azure Data Lake: návod začátku do konce
-Tento návod ukazuje, jak používat Azure Data Lake a zkoumání dat a binární klasifikace úlohy na ukázku cesty taxíkem NYC jízdenky datová sada k předvídání, zda budeme tip platit tarif. Provede vás provede postupem [proces vědecké účely dat Team](http://aka.ms/datascienceprocess), klient server, získávání dat pro modelování školení a pak do nasazení webové služby, který publikuje modelu.
+Tento návod ukazuje, jak zkoumání dat toodo toouse Azure Data Lake a binární klasifikace úlohy na ukázku hello NYC taxi služební cestě a tarif toopredict datovou sadu, zda tip budeme platit tarif. Ho vás provede kroky hello hello [proces vědecké účely dat Team](http://aka.ms/datascienceprocess), klient server, z dat pořízení toomodel školení a toohello nasazení webové služby, který publikuje hello modelu.
 
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
-[Microsoft Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/) má všechny možnosti potřeba usnadňují datových vědců k ukládání dat všech velikost, tvar a rychlost a ke zpracování dat, pokročilé analýzy a modelování s vysokou strojové učení škálovatelnost nákladově efektivní způsobem.   Platíte na základě na úlohu jenom v případě, že data ve skutečnosti probíhá zpracování. Azure Data Lake Analytics obsahuje U-SQL, jazyk, který smíchá deklarativní charakter jazyka SQL o výrazovou sílu jazyka C# k poskytování škálovatelných distribuovaných možnost dotazu. Umožňuje zpracování nestrukturovaných dat s použitím schématu na čtení, vložení vlastní logiky a uživatelem definované funkce (UDF) a zahrnuje rozšíření povolit podrobné kontrolu nad postup provést ve velkém měřítku. Další informace o filosofie návrhu tříd za U-SQL najdete v tématu [Visual Studio příspěvku na blogu](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
+Hello [Microsoft Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/) má všechny požadované toomake možnosti hello snadno data vědců toostore data libovolné velikosti, tvar a rychlost a tooconduct zpracování dat, pokročilé analýzy a modelování machine learning s vysokou škálovatelnost nákladově efektivní způsobem.   Platíte na základě na úlohu jenom v případě, že data ve skutečnosti probíhá zpracování. Azure Data Lake Analytics obsahuje U-SQL, jazyk, prolnutí hello deklarativní charakter jazyka SQL s hello výrazovou sílu jazyka C# tooprovide škálovatelných distribuovaných možnost dotazu. Umožňuje vám tooprocess nestrukturovaných dat s použitím schématu na čtení, vložení vlastní logiky a uživatelsky definované funkce (UDF) a zahrnuje rozšíření tooenable jemné možnosti řízení jak tooexecute ve velkém měřítku. toolearn Další informace o filosofie návrhu hello za U-SQL, najdete v části [Visual Studio příspěvku na blogu](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
 
 Služba Data Lake Analytics je také klíčovou součástí Cortana Analytics Suite a spolupracuje se službami Azure SQL Data Warehouse, Power BI a Data Factory. To vám dává kompletní cloud velkých objemů dat a platformy pokročilou analýzu.
 
-Tento názorný postup začíná popisující požadavky a prostředky, které jsou nutné k dokončení úlohy s Data Lake Analytics, která tvoří proces vědecké účely dat a jak je nainstalovat. Pak se popisuje postup zpracování dat pomocí U-SQL a ukazuje, jak používat Python a Hive se ukončí s Azure Machine Learning Studio vytvářet a nasazovat prediktivní modely. 
+Tento názorný postup začne prostřednictvím popisu hello požadavky a prostředky, které jsou potřeba toocomplete hello úlohy s Data Lake Analytics, který tvoří proces vědecké účely hello dat a jak tooinstall je. Potom ji popisuje postup hello zpracování dat pomocí U-SQL a ukončí zobrazením jak toouse Python a Hive s Azure Machine Learning Studio toobuild a nasazovat prediktivní modely hello. 
 
 ### <a name="u-sql-and-visual-studio"></a>U-SQL Server a Visual Studio
-Tento názorný postup se doporučuje pomocí sady Visual Studio upravit skriptů U-SQL zpracovat datovou sadu. Skriptů U-SQL jsou zde popsané a poskytuje v samostatném souboru. Proces zahrnuje příjem, zkoumat a vzorkování data. Také ukazuje, jak spustit úlohu skripty U-SQL z portálu Azure. Pro data v clusteru HDInsight přidružené k usnadnění vytváření a nasazení modelu binární klasifikace v Azure Machine Learning Studio se vytvoří tabulek Hive.  
+Tento názorný postup se doporučuje použití datové sady Visual Studio tooedit U-SQL skriptů tooprocess hello. Hello skriptů U-SQL jsou zde popsané a poskytuje v samostatném souboru. Hello proces zahrnuje příjem, zkoumat a vzorkování dat hello. Také ukazuje, jak toorun U-SQL skripty úlohu, která z hello portálu Azure. Pro data hello do přidružených HDInsight clusteru toofacilitate hello sestavení a nasazení modelu binární klasifikace v Azure Machine Learning Studio se vytvoří tabulek Hive.  
 
 ### <a name="python"></a>Python
-Tento názorný postup obsahuje také oddíl, který ukazuje, jak vytvářet a nasazovat prediktivní model pomocí Azure Machine Learning Studio Python.  Poskytujeme poznámkového bloku Jupyter pomocí skriptů Python pro tyto kroky v tomto procesu. Poznámkový blok obsahuje kód pro některé další funkce engineering kroky a modely konstrukce například více třídami klasifikace a regresní modelování kromě modelu binární klasifikace podle zde uvedeného. Tato úloha regrese je k předvídání množství tip podle dalších funkcí tip. 
+Tento názorný postup obsahuje také oddíl, který ukazuje, jak toobuild a nasazení prediktivního modelu Python pomocí Azure Machine Learning Studio.  Poskytujeme poznámkového bloku Jupyter pomocí skriptů Python hello tyto kroky v tomto procesu. Poznámkový blok Hello obsahuje kód pro některé další funkce engineering kroky a vytváření modelů například více třídami klasifikace a regresní modelování kromě modelu toohello binární klasifikace podle zde uvedeného. Úloha regrese Hello je toopredict hello množství hello tip podle dalších funkcí tip. 
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-Azure Machine Learning Studio je umožňuje vytvářet a nasazovat prediktivní modely. To se provádí pomocí dva přístupy: nejdřív se skriptů Pythonu a potom se tabulek Hive v clusteru HDInsight (Hadoop).
+Azure Machine Learning Studio je použité toobuild a nasazovat prediktivní modely hello. To se provádí pomocí dva přístupy: nejdřív se skriptů Pythonu a potom se tabulek Hive v clusteru HDInsight (Hadoop).
 
 ### <a name="scripts"></a>Skripty
-V tomto názorném postupu jsou uvedeny pouze hlavní kroky. Si můžete stáhnout kompletní **skript U-SQL** a **Poznámkový blok Jupyter** z [Githubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough).
+V tomto názorném postupu jsou uvedeny pouze hello hlavní kroky. Můžete si stáhnout hello úplné **skript U-SQL** a **Poznámkový blok Jupyter** z [Githubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough).
 
 ## <a name="prerequisites"></a>Požadavky
-Před zahájením těchto témat, musíte mít následující:
+Před zahájením těchto témat, musíte mít následující hello:
 
 * Předplatné Azure. Pokud není již nemáte, přečtěte si téma [získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * [Doporučeno] Visual Studio 2013 nebo novější. Pokud jste ještě není jedním z těchto verzí, můžete stáhnout bezplatnou verzi komunity z [Visual Studio Community](https://www.visualstudio.com/vs/community/).
 
 > [!NOTE]
-> Místo Visual Studio můžete také použít portál Azure k odesílání dotazů Azure Data Lake. Poskytujeme pokyny o tom, jak udělat, tak i pomocí sady Visual Studio a na portálu v části s názvem **zpracování dat pomocí U-SQL**. 
+> Místo Visual Studio můžete také použít hello portálu Azure toosubmit Azure Data Lake dotazy. Poskytujeme pokyny na tom, jak toodo tak pomocí sady Visual Studio i na portálu hello v hello části s názvem **zpracování dat pomocí U-SQL**. 
 > 
 > 
 
 
 ## <a name="prepare-data-science-environment-for-azure-data-lake"></a>Příprava dat vědecké účely prostředí pro Azure Data Lake
-Příprava prostředí vědecké účely data v tomto návodu, vytvořte v následujících zdrojích informací:
+tooprepare hello datové vědy prostředí pro účely tohoto postupu vytvořit hello následující prostředky:
 
 * Azure Data Lake Store (ADLS) 
 * Azure Data Lake Analytics (ADLA)
@@ -63,47 +63,47 @@ Příprava prostředí vědecké účely data v tomto návodu, vytvořte v násl
 * Účet Azure Machine Learning Studio
 * Nástroje Azure Data Lake pro Visual Studio (doporučeno)
 
-Tato část obsahuje pokyny k vytvoření každý z těchto prostředků. Pokud chcete použít tabulek Hive pomocí Azure Machine Learning, místo Python, k vytvoření modelu, také musíte se ke zřízení clusteru služby HDInsight (Hadoop). Tento alternativní postup v popsané v následující části.
+Tato část obsahuje pokyny, jak toocreate těchto prostředků. Pokud se rozhodnete toouse tabulek Hive pomocí Azure Machine Learning, místo Python, toobuild modelu, musíte se také tooprovision clusteru služby HDInsight (Hadoop). Tento alternativní postup v popsané v příslušné části hello níže.
 
 
 > [!NOTE]
-> **Azure Data Lake Store** je možné vytvořit buď samostatně nebo při vytváření **Azure Data Lake Analytics** jako výchozí úložiště. Odkazují pokyny pro vytvoření každý z těchto prostředků samostatně níže, ale nemusí být samostatně vytvoření účtu úložiště Data Lake.
+> Hello **Azure Data Lake Store** je možné vytvořit buď samostatně nebo při vytváření hello **Azure Data Lake Analytics** jako hello výchozí úložiště. Odkazují pokyny pro vytvoření každý z těchto prostředků samostatně níže, ale nemusí být hello účet úložiště Data Lake vytvářejí zvlášť.
 >
 > 
 
 ### <a name="create-an-azure-data-lake-store"></a>Vytvoření Azure Data Lake Store
 
 
-Vytvoření ADLS z [portál Azure](http://portal.azure.com). Podrobnosti najdete v tématu [vytvoření clusteru HDInsight s Data Lake Store pomocí portálu Azure](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md). Nezapomeňte nastavit identita AAD clusteru v **DataSource** okno **volitelné konfiguraci** okna popsané existuje. 
+Vytvoření ADLS z hello [portálu Azure](http://portal.azure.com). Podrobnosti najdete v tématu [vytvoření clusteru HDInsight s Data Lake Store pomocí portálu Azure](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md). Být jisti tooset až hello identita AAD clusteru v hello **DataSource** okno hello **volitelné konfiguraci** okna popsané existuje. 
 
  ![3](./media/machine-learning-data-science-process-data-lake-walkthrough/3-create-ADLS.PNG)
 
 ### <a name="create-an-azure-data-lake-analytics-account"></a>Vytvoření účtu Azure Data Lake Analytics
-Vytvoření účtu ADLA z [portálu Azure](http://portal.azure.com). Podrobnosti najdete v tématu [kurz: Začínáme s Azure Data Lake Analytics pomocí portálu Azure](../data-lake-analytics/data-lake-analytics-get-started-portal.md). 
+Vytvoření účtu ADLA z hello [portálu Azure](http://portal.azure.com). Podrobnosti najdete v tématu [kurz: Začínáme s Azure Data Lake Analytics pomocí portálu Azure](../data-lake-analytics/data-lake-analytics-get-started-portal.md). 
 
  ![4](./media/machine-learning-data-science-process-data-lake-walkthrough/4-create-ADLA-new.PNG)
 
 ### <a name="create-an-azure-blob-storage-account"></a>Vytvoření účtu úložiště objektů Blob v Azure
-Vytvoření účtu úložiště objektů Blob v Azure z [portálu Azure](http://portal.azure.com). Podrobnosti najdete v tématu vytvořením účtu úložiště v tématu v [účty Azure storage](../storage/common/storage-create-storage-account.md).
+Vytvoření účtu úložiště objektů Blob v Azure z hello [portálu Azure](http://portal.azure.com). Podrobnosti najdete v tématu hello vytvořit účet úložiště v tématu [účty Azure storage](../storage/common/storage-create-storage-account.md).
 
  ![5](./media/machine-learning-data-science-process-data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
 ### <a name="set-up-an-azure-machine-learning-studio-account"></a>Nastavit účet Azure Machine Learning Studio
-Přihlášení/do Azure Machine Learning Studio z [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) stránky. Klikněte na **začít nyní** tlačítko a pak zvolte "Volného prostoru" nebo "Standardní pracovní prostor". Potom bude moct vytvářet experimenty v Azure ML Studio.  
+Přihlášení/do Azure Machine Learning Studio z hello [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) stránky. Klikněte na hello **začít nyní** tlačítko a pak zvolte "Volného prostoru" nebo "Standardní pracovní prostor". Potom bude možné toocreate experimenty v Azure ML Studio.  
 
 ### <a name="install-azure-data-lake-tools-recommended"></a>Instalace nástroje Azure Data Lake [doporučeno]
 Instalace nástroje Azure Data Lake pro vaši verzi sady Visual Studio z [nástrojů Azure Data Lake pro Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504).
 
  ![6](./media/machine-learning-data-science-process-data-lake-walkthrough/6-install-ADL-tools-VS.PNG)
 
-Po úspěšném dokončení instalace, otevřete Visual Studio. Měli byste vidět Data Lake, klikněte v nabídce v horní části. Vašich prostředků Azure mají objevit v levém panelu, když se přihlásíte ke svému účtu Azure.
+Po instalaci hello skončí úspěšně, otevřete Visual Studio. Měli byste vidět hello Data Lake karta hello nabídce v horní části hello. V levém panelu hello měla vypadat vašich prostředků Azure, když se přihlásíte ke svému účtu Azure.
 
  ![7](./media/machine-learning-data-science-process-data-lake-walkthrough/7-install-ADL-tools-VS-done.PNG)
 
-## <a name="the-nyc-taxi-trips-dataset"></a>Datová sada NYC taxíkem cest
-Sada dat jsme použili v tomto poli je veřejně dostupné datové sady – [datovou sadu cest taxíkem NYC](http://www.andresmh.com/nyctaxitrips/). Data NYC taxíkem cesty se skládá z přibližně 20GB komprimovaných souborů CSV (nekomprimovaným ~ 48GB), zaznamenávání 173 milionů jednotlivých cest a tarify placené pro každou cestu. Každý záznam cestě zahrnuje vyzvednutí a odkládací umístění a časy, anonymizovaná hackerský (ovladač) číslo licence a číslo Medailon (taxi na jedinečné id). Data obsahuje všechny služebních cest v roku 2013 a je dostupné pro každý měsíc následující dvě datové sady:
+## <a name="hello-nyc-taxi-trips-dataset"></a>datovou sadu cest taxíkem NYC Hello
+Hello sady dat jsme použili v tomto poli je veřejně dostupné datová sada--hello [datovou sadu cest taxíkem NYC](http://www.andresmh.com/nyctaxitrips/). Hello NYC taxíkem cestě dat se skládá z přibližně 20GB komprimovaných souborů CSV (nekomprimovaným ~ 48GB), zaznamenávání 173 milionů jednotlivých cest a hello tarify placené pro každou cestu. Každý záznam cestě zahrnuje hello vyzvednutí a odkládací umístění a časy, anonymní zabezpečení číslo licence (ovladač) a hello číslo Medailon (taxi na jedinečné id). Hello dat obsahuje všechny služebních cest v hello roku 2013 a je součástí hello následující dvě datové sady pro každý měsíc:
 
-* 'trip_data' CSV obsahuje podrobnosti o cestě, například na počtu cestujících, vyzvednutí a dropoff body, doba trvání cesty a délka cesty. Tady je několik ukázkových záznamů:
+* Hello 'trip_data' CSV obsahuje podrobnosti o cestě, například na počtu cestujících, vyzvednutí a dropoff body, doba trvání cesty a délka cesty. Tady je několik ukázkových záznamů:
   
        medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count, trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
@@ -111,7 +111,7 @@ Sada dat jsme použili v tomto poli je veřejně dostupné datové sady – [dat
        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-* Trip_fare CSV obsahující podrobnosti o tarif placené pro každou cestu, například typ platby, velikost tarif, příplatek a daně, tipy a mýtné, a celkovou velikost placené. Tady je několik ukázkových záznamů:
+* Hello CSV obsahuje podrobnosti o tarif hello placené pro každou cestu, například typ platby, velikost tarif, příplatek a daně, tipy a mýtné a celkovou velikost hello placené trip_fare. Tady je několik ukázkových záznamů:
   
        medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
@@ -120,10 +120,10 @@ Sada dat jsme použili v tomto poli je veřejně dostupné datové sady – [dat
        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-Jedinečný klíč pro připojení k cestě\_dat a cesty\_tarif se skládá z následující tři pole: medailonu, hackerský\_licence a vyzvednutí\_data a času. Nezpracované soubory CSV jsou přístupné z veřejného úložiště Azure blob. Skript U-SQL pro toto připojení je v [připojení k cestě a tarif tabulky](#join) části.
+Hello jedinečné klíče toojoin cestě\_dat a cesty\_tarif se skládá z následujících tří polí hello: medailonu, hackerský\_licence a vyzvednutí\_data a času. CSV soubory raw Hello jsou přístupné z veřejného úložiště Azure blob. Hello skript U-SQL pro toto připojení je v hello [připojení k cestě a tarif tabulky](#join) části.
 
 ## <a name="process-data-with-u-sql"></a>Zpracování dat pomocí U-SQL
-Úlohy zpracování dat v této části zahrnují příjem, kontrolu kvality, prohlížení a vzorkování data. Také jsme ukazují, jak připojit k cestě a tarif tabulky. Koncová část ukazuje spuštění úlohy pomocí skriptu U-SQL z portálu Azure. Tady jsou odkazy na každou část:
+úlohy zpracování dat Hello v této části zahrnují příjem, kontrolu kvality, prohlížení a vzorkování dat hello. Také ukážeme, jak toojoin služební cestě a tarif tabulky. Koncová část Hello ukazuje spuštění úlohy pomocí skriptu U-SQL z hello portálu Azure. Tady jsou odkazy tooeach část:
 
 * [Přijímání dat: přečíst data z veřejného objektu blob](#ingest)
 * [Kontrolu kvality dat](#quality)
@@ -132,21 +132,21 @@ Jedinečný klíč pro připojení k cestě\_dat a cesty\_tarif se skládá z n�
 * [Vzorkování dat](#sample)
 * [Spuštění úloh U-SQL](#run)
 
-Skriptů U-SQL jsou zde popsané a poskytuje v samostatném souboru. Si můžete stáhnout kompletní **skriptů U-SQL** z [Githubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough).
+Hello skriptů U-SQL jsou zde popsané a poskytuje v samostatném souboru. Můžete si stáhnout hello úplné **skriptů U-SQL** z [Githubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough).
 
-Spuštění U-SQL, otevřete Visual Studio, klikněte na tlačítko **souboru--> Nový Projekt-->**, zvolte **projekt U-SQL**, název a uložte je do složky.
+tooexecute U-SQL, otevřete Visual Studio, klikněte na tlačítko **souboru--> New--> projekt**, zvolte **projekt U-SQL**, název a uložte ho tooa složky.
 
 ![8](./media/machine-learning-data-science-process-data-lake-walkthrough/8-create-USQL-project.PNG)
 
 > [!NOTE]
-> Je možné pomocí webu Azure Portal spuštění U-SQL místo sady Visual Studio. Můžete přejít k prostředku Azure Data Lake Analytics na portálu a odesílání dotazů přímo jako ilustrované na následujícím obrázku.
+> Je možné toouse hello portálu Azure tooexecute U-SQL místo sady Visual Studio. Můžete přejít toohello prostředků Azure Data Lake Analytics na portálu hello a odesílání dotazů přímo jako ukázáno v hello následující obrázek.
 > 
 > 
 
 ![9](./media/machine-learning-data-science-process-data-lake-walkthrough/9-portal-submit-job.PNG)
 
 ### <a name="ingest"></a>Přijímání dat: Přečíst data z veřejného objektu blob
-Umístění dat v Azure blob je odkazováno jako  **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**  a mohou být extrahovány pomocí **Extractors.Csv()**. Nahraďte váš vlastní název kontejneru a název účtu úložiště v následujících skriptů pro container_name@blob_storage_account_name wasb adresu. Vzhledem k tomu, že názvy souborů jsou ve stejném formátu, můžeme použít **cestě\_data_ {\*\}.csv** ke čtení v všechny soubory 12 cesty. 
+umístění Hello hello dat v hello objektů blob v Azure je odkazováno jako  **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**  a mohou být extrahovány pomocí **Extractors.Csv()**. Nahraďte váš vlastní název kontejneru a název účtu úložiště v následujících skriptů pro container_name@blob_storage_account_name hello wasb adresu. Vzhledem k tomu, že názvy souborů hello jsou ve stejném formátu, můžeme použít **cestě\_data_ {\*\}.csv** tooread v všechny soubory 12 cesty. 
 
     ///Read in Trip data
     @trip0 =
@@ -169,7 +169,7 @@ Umístění dat v Azure blob je odkazováno jako  **wasb://container_name@blob_s
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-Vzhledem k tomu, že jsou v první řádek záhlaví, je potřeba odebrat hlavičky a změnit typy sloupců do odpovídající těm, které jsou. Buď uložení zpracovaná data pomocí Azure Data Lake Storage můžeme **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_ nebo pomocí účtu úložiště objektů Blob v Azure  **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**. 
+Vzhledem k tomu, že jsou v hello první řádek záhlaví, budeme potřebovat tooremove hello hlavičky a změnit typy sloupců do odpovídající těm, které jsou. Můžeme buď uložit hello zpracování dat tooAzure Data Lake Storage pomocí **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_ nebo tooAzure úložiště objektů Blob v účtu pomocí  **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** . 
 
     // change data types
     @trip =
@@ -191,28 +191,28 @@ Vzhledem k tomu, že jsou v první řádek záhlaví, je potřeba odebrat hlavi�
     FROM @trip0
     WHERE medallion != "medallion";
 
-    ////output data to ADL
+    ////output data tooADL
     OUTPUT @trip   
-    TO "swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_trip.csv"
+    too"swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_trip.csv"
     USING Outputters.Csv(); 
 
-    ////Output data to blob
+    ////Output data tooblob
     OUTPUT @trip   
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_trip.csv"
+    too"wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_trip.csv"
     USING Outputters.Csv();  
 
-Podobně jsme můžete přečíst tarif datových sad. Klikněte pravým tlačítkem na Azure Data Lake Store, můžete se podívat na vaše data v **portálu Azure--> Průzkumníku dat** nebo **Průzkumníka souborů** v sadě Visual Studio. 
+Podobně jsme může číst hello tarif datových sad. Klikněte pravým tlačítkem na Azure Data Lake Store, můžete toolook na vaše data v **portálu Azure--> Průzkumníku dat** nebo **Průzkumníka souborů** v sadě Visual Studio. 
 
  ![10](./media/machine-learning-data-science-process-data-lake-walkthrough/10-data-in-ADL-VS.PNG)
 
  ![11](./media/machine-learning-data-science-process-data-lake-walkthrough/11-data-in-ADL.PNG)
 
 ### <a name="quality"></a>Kontrolu kvality dat
-Po cestě a tarif tabulky byly načteny v, kontrolu kvality dat lze provést následujícím způsobem. Výsledné soubory sdíleného svazku clusteru může být výstup do úložiště objektů Blob v Azure nebo Azure Data Lake Store. 
+Po cestě a tarif tabulky byly načteny v, lze provést kontrolu kvality dat v hello následujícím způsobem. Hello výsledná soubory sdíleného svazku clusteru může být výstup tooAzure Blob storage nebo Azure Data Lake Store. 
 
-Získat počet medallions a jedinečné číslo medallions:
+Najít hello počet medallions a jedinečné číslo medallions:
 
-    ///check the number of medallions and unique number of medallions
+    ///check hello number of medallions and unique number of medallions
     @trip2 =
         SELECT
         medallion,
@@ -228,7 +228,7 @@ Získat počet medallions a jedinečné číslo medallions:
         FROM @trip2
         GROUP BY pickup_month;
         OUTPUT @ex_1   
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_1.csv"
+    too"wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_1.csv"
     USING Outputters.Csv(); 
 
 Najděte tyto medallions, kterým má více než 100 odezvy:
@@ -242,7 +242,7 @@ Najděte tyto medallions, kterým má více než 100 odezvy:
         GROUP BY medallion
         HAVING COUNT(medallion) > 100;
         OUTPUT @ex_2   
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_2.csv"
+    too"wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_2.csv"
     USING Outputters.Csv(); 
 
 Najděte tyto neplatné záznamy z hlediska pickup_longitude:
@@ -254,7 +254,7 @@ Najděte tyto neplatné záznamy z hlediska pickup_longitude:
         WHERE
         pickup_longitude <- 90 OR pickup_longitude > 90;
         OUTPUT @ex_3   
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_3.csv"
+    too"wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_3.csv"
     USING Outputters.Csv(); 
 
 Najdete chybějící hodnoty pro některé proměnné:
@@ -274,15 +274,15 @@ Najdete chybějící hodnoty pro některé proměnné:
         FROM @res
         GROUP BY vendor_id;
     OUTPUT @trip_summary6
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_16.csv"
+    too"wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_16.csv"
     USING Outputters.Csv();
 
 
 
 ### <a name="explore"></a>Zkoumání dat
-Provedeme některé zkoumání dat pro lepší pochopení dat.
+Jsme můžete provést některé tooget zkoumání dat lépe porozumět hello data.
 
-Najděte distribuci šikmý a vysypávány služebních cest:
+Najděte hello distribuce šikmý a vysypávány služebních cest:
 
     ///tipped vs. not tipped distribution
     @tip_or_not =
@@ -296,10 +296,10 @@ Najděte distribuci šikmý a vysypávány služebních cest:
         FROM @tip_or_not
         GROUP BY tipped;
         OUTPUT @ex_4   
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_4.csv"
+    too"wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_4.csv"
     USING Outputters.Csv(); 
 
-Najít distribuci tip velikost s hodnotami oříznutím: 0,5,10 a 20 odběru.
+Najít hello distribuce tip velikost s hodnotami oříznutím: 0,5,10 a 20 odběru.
 
     //tip class/range distribution
     @tip_class =
@@ -312,7 +312,7 @@ Najít distribuci tip velikost s hodnotami oříznutím: 0,5,10 a 20 odběru.
         FROM @tip_class
         GROUP BY tip_class;
         OUTPUT @ex_5   
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_5.csv"
+    too"wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_5.csv"
     USING Outputters.Csv(); 
 
 Najděte základní statistické údaje o cestě vzdálenost:
@@ -328,10 +328,10 @@ Najděte základní statistické údaje o cestě vzdálenost:
         FROM @trip
         GROUP BY vendor_id;
     OUTPUT @trip_summary4
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_14.csv"
+    too"wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_14.csv"
     USING Outputters.Csv();
 
-Najděte percentily vzdálenost cesty:
+Najděte hello percentily vzdálenosti cesty:
 
     // find percentiles of trip_distance
     @trip_summary3 =
@@ -342,7 +342,7 @@ Najděte percentily vzdálenost cesty:
         FROM @trip;
        // group by vendor_id;
     OUTPUT @trip_summary3
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_13.csv"
+    too"wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_13.csv"
     USING Outputters.Csv(); 
 
 
@@ -360,18 +360,18 @@ Služební cestě a tarif tabulek je možné připojit Medailon, hack_license a 
     ON   (t.medallion == f.medallion AND t.hack_license == f.hack_license AND t.pickup_datetime == f.pickup_datetime)
     WHERE   (pickup_longitude != 0 AND dropoff_longitude != 0 );
 
-    //// output to blob
+    //// output tooblob
     OUTPUT @model_data_full   
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_7_full_data.csv"
+    too"wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_7_full_data.csv"
     USING Outputters.Csv(); 
 
-    ////output data to ADL
+    ////output data tooADL
     OUTPUT @model_data_full   
-    TO "swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_ex_7_full_data.csv"
+    too"swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_ex_7_full_data.csv"
     USING Outputters.Csv(); 
 
 
-Pro každou úroveň počtu osobní vypočte se počet záznamů, tip pro průměrnou dobu, odchylku tip velikost, procento šikmý služebních cest.
+Pro každou úroveň počtu osobní vypočítejte hello počet záznamů, tip pro průměrnou dobu, odchylku tip velikost, procento šikmý služebních cest.
 
     // contigency table
     @trip_summary8 =
@@ -384,12 +384,12 @@ Pro každou úroveň počtu osobní vypočte se počet záznamů, tip pro prům�
         FROM @model_data_full
         GROUP BY passenger_count;
         OUTPUT @trip_summary8
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_17.csv"
+    too"wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_17.csv"
     USING Outputters.Csv();
 
 
 ### <a name="sample"></a>Vzorkování dat
-Nejprve jsme náhodně zvolí 0,1 % data z připojeného k tabulce:
+Nejprve jsme náhodně zvolí 0,1 % hello dat z tabulky připojené k hello:
 
     //random select 1/1000 data for modeling purpose
     @addrownumberres_randomsample =
@@ -403,7 +403,7 @@ Nejprve jsme náhodně zvolí 0,1 % data z připojeného k tabulce:
     WHERE rownum % 1000 == 0;
 
     OUTPUT @model_data_random_sample_1_1000   
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_7_random_1_1000.csv"
+    too"wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_7_random_1_1000.csv"
     USING Outputters.Csv(); 
 
 Potom jsme vrstveného vzorkování provedete binární proměnné tip_class:
@@ -418,44 +418,44 @@ Potom jsme vrstveného vzorkování provedete binární proměnné tip_class:
     SELECT *
     FROM @addrownumberres_stratifiedsample
     WHERE rownum % 1000 == 0;
-    //// output to blob
+    //// output tooblob
     OUTPUT @model_data_stratified_sample_1_1000   
-    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_9_stratified_1_1000.csv"
+    too"wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_9_stratified_1_1000.csv"
     USING Outputters.Csv(); 
-    ////output data to ADL
+    ////output data tooADL
     OUTPUT @model_data_stratified_sample_1_1000   
-    TO "swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_ex_9_stratified_1_1000.csv"
+    too"swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_ex_9_stratified_1_1000.csv"
     USING Outputters.Csv(); 
 
 
 ### <a name="run"></a>Spuštění úloh U-SQL
-Po dokončení úprav skriptů U-SQL, je možné odeslat na server pomocí účtu Azure Data Lake Analytics. Klikněte na tlačítko **Data Lake**, **odeslat úlohu**, vyberte vaše **účet Analytics**, zvolte **paralelismus**a klikněte na tlačítko **odeslání**  tlačítko.  
+Po dokončení úprav skriptů U-SQL, můžete je odeslat toohello serveru pomocí účtu Azure Data Lake Analytics. Klikněte na tlačítko **Data Lake**, **odeslat úlohu**, vyberte vaše **účet Analytics**, zvolte **paralelismus**a klikněte na tlačítko **odeslání**  tlačítko.  
 
  ![12](./media/machine-learning-data-science-process-data-lake-walkthrough/12-submit-USQL.PNG)
 
-Když úloha se úspěšně splněny, stav úlohy se zobrazí v sadě Visual Studio monitorování. Po dokončení úlohy můžete i přehráním proces spuštění úlohy a zjistěte problémové místo kroky ke zlepšení efektivity úlohy. Můžete také přejít na portál Azure a zkontrolujte stav úloh U-SQL.
+Když hello úlohy je úspěšně splněny, hello stav úlohy se zobrazí v sadě Visual Studio pro monitorování. Po dokončení úlohy hello můžete i opětovného přehrání hello úlohy spuštění procesu a zjistěte hello bottleneck kroky tooimprove efektivity úlohy. Můžete také přejít tooAzure portál toocheck hello stav úloh U-SQL.
 
  ![13](./media/machine-learning-data-science-process-data-lake-walkthrough/13-USQL-running-v2.PNG)
 
  ![14](./media/machine-learning-data-science-process-data-lake-walkthrough/14-USQL-jobs-portal.PNG)
 
-Nyní můžete zkontrolovat výstupní soubory v Azure Blob storage nebo portálu Azure. Pro naše modelování v dalším kroku použijeme vrstveného ukázková data.
+Nyní můžete zkontrolovat hello výstupní soubory v Azure Blob storage nebo portálu Azure. Pro naše modelování v dalším kroku hello použijeme hello si ukázková data.
 
  ![15](./media/machine-learning-data-science-process-data-lake-walkthrough/15-U-SQL-output-csv.PNG)
 
  ![16](./media/machine-learning-data-science-process-data-lake-walkthrough/16-U-SQL-output-csv-portal.PNG)
 
 ## <a name="build-and-deploy-models-in-azure-machine-learning"></a>Vytváření a nasazování modelů v Azure Machine Learning
-Ukážeme dvě možnosti k dispozici pro vás k získání dat do Azure Machine Learning k sestavení a 
+Ukážeme dvě možnosti k dispozici pro vás toopull data do Azure Machine Learning toobuild a 
 
-* V první možnosti, můžete použít jen Vzorkovaná data, která byla zapsána do objektu Blob Azure (v **dat vzorkování** předchozí krok) a použít Python pro sestavení a nasazení modely z Azure Machine Learning. 
-* V druhé možnosti je dotaz na data v Azure Data Lake přímo pomocí dotazů Hive. Tato možnost vyžaduje vytvoření nového clusteru HDInsight nebo použít stávající cluster HDInsight, kde tabulek Hive příkaz NY taxíkem data v Azure Data Lake Storage.  Probereme obě tyto možnosti dole. 
+* V první možnosti hello použijete hello vzorků dat, která byla zapsána tooan objektů Blob v Azure (v hello **dat vzorkování** předchozí krok) a použít Python toobuild a nasazovat modely z Azure Machine Learning. 
+* V druhé možnosti hello dotazování hello dat v Azure Data Lake přímo pomocí dotazů Hive. Tato možnost vyžaduje vytvoření nového clusteru HDInsight nebo použít stávající cluster HDInsight tabulky, kde hello Hive bodu toohello NY taxíkem data v Azure Data Lake Storage.  Probereme obě tyto možnosti dole. 
 
-## <a name="option-1-use-python-to-build-and-deploy-machine-learning-models"></a>Možnost 1: Použití Python k vytváření a nasazování počítače learning modely
-K vytváření a nasazování modelů machine learning používá Python, vytvořte poznámkového bloku Jupyter na místním počítači nebo v Azure Machine Learning Studio. Poznámkového bloku Jupyter k dispozici na [Githubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) obsahuje kód úplné chcete prozkoumat, vizualizovat data, funkce technikům, modelování a nasazení. V tomto článku jsme zobrazit právě modelování a nasazení. 
+## <a name="option-1-use-python-toobuild-and-deploy-machine-learning-models"></a>Možnost 1: Použití Python toobuild a nasazovat modely machine learning
+toobuild a nasadit modely machine learning používá Python, vytvořte poznámkového bloku Jupyter na místním počítači nebo v Azure Machine Learning Studio. Hello Poznámkový blok Jupyter k dispozici na [Githubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) obsahuje hello tooexplore úplného kódu, vizualizovat data, funkce technikům, modelování a nasazení. V tomto článku jsme zobrazit právě hello modelování a nasazení. 
 
 ### <a name="import-python-libraries"></a>Importovat knihovny Python
-Aby bylo možné spustit ukázku soubor, následující Python, balíčky jsou nutné skriptu Poznámkový blok Jupyter nebo Python. Pokud používáte službu AzureML Poznámkový blok, byly tyto balíčky předem nainstalovaná.
+V pořadí toorun hello ukázkové Poznámkový blok Jupyter nebo hello soubor skriptu jazyka Python, hello následující balíčky Python, které jsou potřeba. Pokud používáte hello služby AzureML Poznámkový blok, byly tyto balíčky předem nainstalovaná.
 
     import pandas as pd
     from pandas import Series, DataFrame
@@ -478,7 +478,7 @@ Aby bylo možné spustit ukázku soubor, následující Python, balíčky jsou n
     from azureml import services
 
 
-### <a name="read-in-the-data-from-blob"></a>Pro čtení dat z objektu blob
+### <a name="read-in-hello-data-from-blob"></a>Přečtěte si hello dat z objektu blob
 * Připojovací řetězec   
   
         CONTAINERNAME = 'test1'
@@ -491,7 +491,7 @@ Aby bylo možné spustit ukázku soubor, následující Python, balíčky jsou n
         t1 = time.time()
         data = blob_service.get_blob_to_text(CONTAINERNAME,BLOBNAME).split("\n")
         t2 = time.time()
-        print(("It takes %s seconds to read in "+BLOBNAME) % (t2 - t1))
+        print(("It takes %s seconds tooread in "+BLOBNAME) % (t2 - t1))
   
   ![17](./media/machine-learning-data-science-process-data-lake-walkthrough/17-python_readin_csv.PNG)    
 * Přidat názvy sloupců a jednotlivé sloupce
@@ -500,7 +500,7 @@ Aby bylo možné spustit ukázku soubor, následující Python, balíčky jsou n
         'passenger_count','trip_time_in_secs','trip_distance','pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude',
         'payment_type', 'fare_amount', 'surcharge', 'mta_tax', 'tolls_amount',  'total_amount', 'tip_amount', 'tipped', 'tip_class', 'rownum']
         df1 = pd.DataFrame([sub.split(",") for sub in data], columns = colnames)
-* Změnit některé sloupce na číselné
+* Změnit některé sloupce toonumeric
   
         cols_2_float = ['trip_time_in_secs','pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude',
         'fare_amount', 'surcharge','mta_tax','tolls_amount','total_amount','tip_amount', 'passenger_count','trip_distance'
@@ -509,13 +509,13 @@ Aby bylo možné spustit ukázku soubor, následující Python, balíčky jsou n
             df1[col] = df1[col].astype(float)
 
 ### <a name="build-machine-learning-models"></a>Vytvářet modely machine learning
-Zde jsme sestavení modelu binární klasifikace předpovědět, zda je vysypávány cesty, nebo ne. V poznámkovém bloku Jupyter můžete najít další dva modely: více třídami klasifikace a modely regrese.
+Zde jsme sestavení toopredict modelu binární klasifikace, zda cesty je vysypávány nebo ne. V hello Poznámkový blok Jupyter můžete najít další dva modely: více třídami klasifikace a modely regrese.
 
-* Nejprve musíme vytvořit fiktivní proměnné, které lze použít v scikit-další modely
+* Nejdřív potřebujeme toocreate fiktivní proměnné, které mohou být používány scikit-další modely
   
         df1_payment_type_dummy = pd.get_dummies(df1['payment_type'], prefix='payment_type_dummy')
         df1_vendor_id_dummy = pd.get_dummies(df1['vendor_id'], prefix='vendor_id_dummy')
-* Vytvořit data snímku pro modelování
+* Vytvořit data snímku pro modelování hello
   
         cols_to_keep = ['tipped', 'trip_distance', 'passenger_count']
         data = df1[cols_to_keep].join([df1_payment_type_dummy,df1_vendor_id_dummy])
@@ -555,7 +555,7 @@ Zde jsme sestavení modelu binární klasifikace předpovědět, zda je vysypáv
        ![c2](./media/machine-learning-data-science-process-data-lake-walkthrough/c2-py-logit-evaluation.PNG)
 
 ### <a name="build-web-service-api-and-consume-it-in-python"></a>Sestavení webového rozhraní API služby a využívat v Pythonu
-Chceme zprovoznit strojového učení modelu, jakmile byl vytvořen. Tady používáme binární logistic model jako příklad. Zajistěte, aby scikit-další 0.15.1 je verze v místním počítači. Nemusíte si dělat starosti o to, pokud používáte službu Azure ML studio.
+Chceme toooperationalize hello strojového učení modelu, jakmile byl vytvořen. Tady používáme hello binární logistic model jako příklad. Ujistěte se, zda text hello scikit-další 0.15.1 je verze v místním počítači. Pokud používáte službu Azure ML studio nemáte tooworry o to.
 
 * Najít z Azure ML studio nastavení přihlašovacích údajů pracovního prostoru. V nástroji Azure Machine Learning Studio, klikněte na tlačítko **nastavení** --> **název** --> **autorizace tokeny**. 
   
@@ -585,32 +585,32 @@ Chceme zprovoznit strojového učení modelu, jakmile byl vytvořen. Tady použ�
         @services.returns(float)
         def NYCTAXIPredictor(trip_distance, passenger_count, payment_type_dummy_CRD, payment_type_dummy_CSH,payment_type_dummy_DIS, payment_type_dummy_NOC, payment_type_dummy_UNK, vendor_id_dummy_CMT, vendor_id_dummy_VTS ):
             pass
-* Volání rozhraní API webové služby. Budete muset počkejte 5 až 10 sekund po předchozím kroku.
+* Volání rozhraní API webové služby. Máte toowait 5-10 sekund po hello předchozího kroku.
   
         NYCTAXIPredictor(1,2,1,0,0,0,0,0,1)
   
        ![c4](./media/machine-learning-data-science-process-data-lake-walkthrough/c4-call-API.PNG)
 
 ## <a name="option-2-create-and-deploy-models-directly-in-azure-machine-learning"></a>Možnost 2: Vytvoření a nasazení modely přímo v Azure Machine Learning
-Azure Machine Learning Studio můžete číst data přímo z Azure Data Lake Store a pak použije k vytvoření a nasazení modelů. Tento postup používá tabulku Hive, která odkazuje na Azure Data Lake Store. To vyžaduje, aby zřídit samostatný cluster Azure HDInsight, na který se vytvoří tabulku Hive. Následující části vysvětlují, jak to provést. 
+Azure Machine Learning Studio můžete číst data přímo z Azure Data Lake Store a pak být použité toocreate a modely nasazení. Tento postup používá tabulku Hive, která odkazuje na hello Azure Data Lake Store. To vyžaduje zřídit samostatný cluster Azure HDInsight, na které hello Hive k vytvoření tabulky. Dobrý den, následující části zobrazit jak toodo to. 
 
 ### <a name="create-an-hdinsight-linux-cluster"></a>Vytvoření clusteru HDInsight Linux
-Vytvoření clusteru HDInsight (Linux) z [portál Azure](http://portal.azure.com). Podrobnosti najdete v tématu **vytvoření clusteru HDInsight s přístupem k Azure Data Lake Store** kapitoly [vytvoření clusteru HDInsight s Data Lake Store pomocí portálu Azure](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+Vytvoření clusteru HDInsight (Linux) z hello [portálu Azure](http://portal.azure.com). Podrobnosti najdete v tématu hello **vytvoření clusteru HDInsight s přístup tooAzure Data Lake Store** kapitoly [vytvoření clusteru HDInsight s Data Lake Store pomocí portálu Azure](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
  ![18](./media/machine-learning-data-science-process-data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
 ### <a name="create-hive-table-in-hdinsight"></a>Vytvoří tabulku Hive v HDInsight
-Nyní vytvoříme tabulek Hive, který se má použít v nástroji Azure Machine Learning Studio v clusteru HDInsight pomocí dat uložených v Azure Data Lake Store v předchozím kroku. Přejděte ke clusteru HDInsight se právě vytvořili. Klikněte na tlačítko **nastavení** --> **vlastnosti** --> **identita AAD clusteru** --> **přístupu ADLS**, Ujistěte se, že váš účet Azure Data Lake Store je přidaný do seznamu čtení, zápisu a oprávnění pro spouštění. 
+Nyní vytvoříme toobe tabulek Hive v clusteru HDInsight hello pomocí hello data uložená v Azure Data Lake Store v předchozím kroku hello používá v Azure Machine Learning Studio. Přejděte toohello clusteru HDInsight se právě vytvořili. Klikněte na tlačítko **nastavení** --> **vlastnosti** --> **identita AAD clusteru** --> **přístupu ADLS**, Ujistěte se, že váš účet Azure Data Lake Store je přidaný do seznamu hello čtení, zápisu a oprávnění pro spouštění. 
 
  ![19](./media/machine-learning-data-science-process-data-lake-walkthrough/19-HDI-cluster-add-ADLS.PNG)
 
-Pak klikněte na tlačítko **řídicí panel** vedle **nastavení** tlačítko a okna, objeví se. Klikněte na tlačítko **zobrazení Hive** se zobrazí v pravém horním rohu stránky a můžete **Editor dotazů**.
+Pak klikněte na tlačítko **řídicí panel** další toohello **nastavení** tlačítko a okna, objeví se. Klikněte na tlačítko **zobrazení Hive** v hello pravém horním rohu stránky hello a uvidí hello **Editor dotazů**.
 
  ![20](./media/machine-learning-data-science-process-data-lake-walkthrough/20-HDI-dashboard.PNG)
 
  ![21](./media/machine-learning-data-science-process-data-lake-walkthrough/21-Hive-Query-Editor-v2.PNG)
 
-Vložte následující skripty Hive a vytvořte tabulku. Umístění zdroje dat je v Azure Data Lake Store odkaz tímto způsobem: **adl://data_lake_store_name.azuredatalakestore.net:443/název_složky/název_souboru**.
+Vložte následující Hive skripty toocreate hello tabulku. Hello umístění zdroje dat je v Azure Data Lake Store odkaz tímto způsobem: **adl://data_lake_store_name.azuredatalakestore.net:443/název_složky/název_souboru**.
 
     CREATE EXTERNAL TABLE nyc_stratified_sample
     (
@@ -643,46 +643,46 @@ Vložte následující skripty Hive a vytvořte tabulku. Umístění zdroje dat 
     LOCATION 'adl://data_lake_storage_name.azuredatalakestore.net:443/nyctaxi_folder/demo_ex_9_stratified_1_1000_copy.csv';
 
 
-Po dokončení dotazu, zobrazí se výsledky takto:
+Po dokončení spuštění dotazu hello uvidíte výsledky hello takto:
 
  ![22](./media/machine-learning-data-science-process-data-lake-walkthrough/22-Hive-Query-results.PNG)
 
 ### <a name="build-and-deploy-models-in-azure-machine-learning-studio"></a>Vytváření a nasazování modely v Azure Machine Learning Studio
-Nyní jsme připraveni k sestavení a nasazení model, který předpovídá, zda je tip placené pomocí Azure Machine Learning. Je připravená k použití v této binární klasifikace vrstveného ukázková data (tip nebo ne) problém. Prediktivní modely pomocí více třídami klasifikace (tip_class) a regrese (tip_amount) můžete také být vytvořené a nasazené se službou Azure Machine Learning Studio, ale zde jsme pouze ukazují, jak zpracovávat tento případ použití modelu binární klasifikace.
+Jsme jsou teď připravena toobuild a nasadit model, který předpovídá, zda je tip placené pomocí Azure Machine Learning. Hello vrstveného ukázková data jsou připravena toobe použít v této binární klasifikace (tip nebo ne) problém. Hello prediktivní modely pomocí více třídami klasifikace (tip_class) a regrese (tip_amount) můžete také být vytvořené a nasazené se službou Azure Machine Learning Studio, ale tady jenom ukážeme, jak toohandle hello případu použití hello binární klasifikace modelu.
 
-1. Získat data do aplikace pomocí Azure ML **importovat Data** modulu, k dispozici v **vstupu a výstupu dat** části. Další informace najdete v tématu [importovat Data modulu](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) stránka s referencemi k.
-2. Vyberte **dotaz Hive** jako **zdroj dat** v **vlastnosti** panelu.
-3. Vložte následující skript Hive v **databázový dotaz Hive** editoru
+1. Získat hello data do Azure ML pomocí hello **importovat Data** modulu, k dispozici v hello **vstupu a výstupu dat** části. Další informace najdete v tématu hello [importovat Data modulu](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) stránka s referencemi k.
+2. Vyberte **dotaz Hive** jako hello **zdroj dat** v hello **vlastnosti** panelu.
+3. Hello vložte následující skript Hive v hello **databázový dotaz Hive** editoru
    
         select * from nyc_stratified_sample;
-4. Zadejte identifikátor URI HDInsight clusteru (lze najít na portálu Azure), přihlašovací údaje Hadoop, umístění výstupních dat a název název / / kontejner klíče účtu úložiště Azure.
+4. Zadejte cluster URI HDInsight hello (lze najít na portálu Azure), přihlašovací údaje Hadoop, umístění výstupních dat a název název / / kontejner klíče účtu úložiště Azure.
    
    ![23](./media/machine-learning-data-science-process-data-lake-walkthrough/23-reader-module-v3.PNG)  
 
-Na obrázku níže je uveden příklad binární klasifikace pokusu se čtení dat z tabulky Hive.
+Obrázek hello je uveden příklad binární klasifikace pokusu se čtení dat z tabulky Hive.
 
  ![24](./media/machine-learning-data-science-process-data-lake-walkthrough/24-AML-exp.PNG)
 
-Po vytvoření experimentu klikněte na tlačítko **nastavit webové služby** --> **prediktivní webové služby**
+Po vytvoření hello experimentu klikněte na tlačítko **nastavit webové služby** --> **prediktivní webové služby**
 
  ![25](./media/machine-learning-data-science-process-data-lake-walkthrough/25-AML-exp-deploy.PNG)
 
-Spustit automaticky vytvořený vyhodnocování experiment, po dokončení, klikněte na tlačítko **nasazení webové služby**
+Vyhodnocování experiment, po dokončení klikněte na tlačítko Spustit hello automaticky vytvoří **nasazení webové služby**
 
  ![26](./media/machine-learning-data-science-process-data-lake-walkthrough/26-AML-exp-deploy-web.PNG)
 
-Řídicí panel webové služby se zobrazí po chvíli:
+řídicí panel Hello webové služby se zobrazí po chvíli:
 
  ![27](./media/machine-learning-data-science-process-data-lake-walkthrough/27-AML-web-api.PNG)
 
 ## <a name="summary"></a>Souhrn
-Provedením tohoto návodu jste vytvořili data vědecké účely prostředí pro vytváření škálovatelných začátku do konce řešení v Azure Data Lake. Toto prostředí byl použit k analýze velkých veřejné datové sady, který ji provede kanonický kroky procesu vědecké účely dat, z získávání dat přes model školení a následně do nasazení model jako webovou službu. U-SQL byl použit ke zpracování, prozkoumejte a ukázková data. Python a Hive se použít s Azure Machine Learning Studio vytvářet a nasazovat prediktivní modely.
+Provedením tohoto návodu jste vytvořili data vědecké účely prostředí pro vytváření škálovatelných začátku do konce řešení v Azure Data Lake. Toto prostředí bylo použité tooanalyze velké veřejné datové sady, trvá prostřednictvím hello kanonický kroky hello proces vědecké účely dat, z získávání dat prostřednictvím modelu školení, a potom toohello nasazení hello model jako webovou službu. U-SQL bylo použité tooprocess, prozkoumejte a vzorová hello data. Python a Hive se použít s Azure Machine Learning Studio toobuild a nasazovat prediktivní modely.
 
 ## <a name="whats-next"></a>Co dále?
-Studijní postup pro [tým datové vědy procesu (TDSP)](http://aka.ms/datascienceprocess) obsahuje odkazy na témata s popisem jednotlivých kroků v procesu pokročilou analýzu. Existuje řada návodů uvedeno na [proces vědecké účely dat Team návody](data-science-process-walkthroughs.md) stránky, který předvádí použití služby a prostředky v různých scénářích prediktivní analýzy:
+Hello kurzů pro [tým datové vědy procesu (TDSP)](http://aka.ms/datascienceprocess) poskytuje tootopics odkazy, které popisují každou krok v hello pokročilé analýzy procesu. Existuje řada návodů uvedeno na hello [proces vědecké účely dat Team návody](data-science-process-walkthroughs.md) stránce tohoto představením jak toouse služby v různé scénáře prediktivní analýzy a prostředky:
 
-* [Proces Team dat. vědecké účely v akci: pomocí SQL Data Warehouse](machine-learning-data-science-process-sqldw-walkthrough.md)
-* [Proces Team dat. vědecké účely v akci: pomocí clusterů systému HDInsight Hadoop](machine-learning-data-science-process-hive-walkthrough.md)
-* [Procesu vědecké účely Team dat: SQL Server pomocí](machine-learning-data-science-process-sql-walkthrough.md)
-* [Přehled procesu vědecké účely dat pomocí Spark v Azure HDInsight](machine-learning-data-science-spark-overview.md)
+* [Hello proces vědecké účely Team dat v akci: pomocí SQL Data Warehouse](machine-learning-data-science-process-sqldw-walkthrough.md)
+* [Hello proces vědecké účely Team dat v akci: pomocí clusterů systému HDInsight Hadoop](machine-learning-data-science-process-hive-walkthrough.md)
+* [Hello proces vědecké účely dat Team: pomocí SQL serveru](machine-learning-data-science-process-sql-walkthrough.md)
+* [Přehled hello proces vědecké účely dat pomocí Spark v Azure HDInsight](machine-learning-data-science-spark-overview.md)
 

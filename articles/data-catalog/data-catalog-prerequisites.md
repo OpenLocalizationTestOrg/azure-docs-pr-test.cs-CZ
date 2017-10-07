@@ -1,6 +1,6 @@
 ---
-title: "Požadavky Azure Data Catalog | Microsoft Docs"
-description: "Další informace o požadavcích, že potřebujete Začínáme s Azure Data Catalog."
+title: "požadavky aaaAzure katalogu Data Catalog | Microsoft Docs"
+description: "Další informace o hello požadavky, které že budete potřebovat tooget začít s Azure Data Catalog."
 services: data-catalog
 documentationcenter: 
 author: steelanddata
@@ -15,37 +15,37 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.openlocfilehash: 3fdef7bb58a5cd5dfbe4d37d9baf9c8e392ebe42
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 0c8e768e5846c61b542b746d7ad80121725a9ec7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-data-catalog-prerequisites"></a>Požadavky na Azure Data Catalog
 
-Budete muset postará o pár věcí, než můžete nastavit Azure Data Catalog. Nemusíte si dělat starosti, není tento proces trvá dlouho.
+Před nastavením Azure Data Catalog musíte tootake péče o pár věcí. Nemusíte si dělat starosti, není tento proces trvá dlouho.
 
 ## <a name="azure-subscription"></a>Předplatné Azure
-Pokud chcete nastavit katalogu Data Catalog, musí být vlastníkem nebo spoluvlastník předplatného Azure.
+tooset do katalogu Data Catalog, musí být vlastníkem hello nebo spoluvlastník předplatného Azure.
 
-Předplatná Azure, která umožňují přístup k prostředkům cloudových služeb, například Data Catalog. Odběry také umožňují řídit způsob hlášené, účtují a zaplacení využití prostředků. Každý odběr může mít samostatné fakturace a platebních instalace, tak může mít odběry a plány, které se liší podle oddělení, projektů, místní office a tak dále. Každé cloudové služby přísluší k odběru a musíte mít předplatné před instalací katalogu Data Catalog. Více informací naleznete v tématu [Správa účtů, předplatných a správních rolí](../active-directory/active-directory-assign-admin-roles.md).
+Předplatná Azure můžete uspořádat přístup k prostředkům služby toocloud například katalogu Data Catalog. Odběry také umožňují řídit způsob hlášené, účtují a zaplacení využití prostředků. Každý odběr může mít samostatné fakturace a platebních instalace, tak může mít odběry a plány, které se liší podle oddělení, projektů, místní office a tak dále. Každé cloudové služby patří tooa předplatného a potřebujete toohave předplatné před nastavením Data Catalog. Další, najdete v části toolearn [spravovat účty, odběry a správu role](../active-directory/active-directory-assign-admin-roles.md).
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-Pokud chcete nastavit katalogu Data Catalog, musí být podepsané pomocí uživatelského účtu Azure Active Directory (Azure AD).
+tooset do katalogu Data Catalog můžete musí být podepsané pomocí uživatelského účtu Azure Active Directory (Azure AD).
 
-Azure AD umožní vaší firmě snadnou správu identity a přístupu, a to jak v cloudu, tak i místně. Uživatele můžete použít pracovní nebo školní účet pro jednom přihlášení na všechny cloudové a místní webové aplikace. Data Catalog používá Azure AD k ověřování přihlášení. Další informace najdete v tématu [co je Azure Active Directory?](../active-directory/active-directory-whatis.md).
+Azure AD poskytuje snadný způsob pro obchodní toomanage identity a přístup v hello cloudové i místní. Uživatele můžete použít pracovní nebo školní účet pro tooany přihlášení cloud a místní webové aplikace. Data Catalog používá přihlášení tooauthenticate Azure AD. Další, najdete v části toolearn [co je Azure Active Directory?](../active-directory/active-directory-whatis.md).
 
 > [!NOTE]
-> Pomocí [portál Azure](http://portal.azure.com/), se můžete přihlásit se pomocí osobního účtu Microsoft nebo Azure Active Directory pracovní nebo školní účet. Nastavit Data Catalog pomocí portálu Azure nebo [katalogu Data Catalog portál](http://www.azuredatacatalog.com), musí se přihlásit účtu Azure Active Directory, nikoli osobní účet.
+> Pomocí hello [portál Azure](http://portal.azure.com/), se můžete přihlásit se pomocí osobního účtu Microsoft nebo Azure Active Directory pracovní nebo školní účet. tooset do katalogu Data Catalog pomocí buď hello portálu Azure nebo hello [katalogu Data Catalog portál](http://www.azuredatacatalog.com), musí se přihlásit účtu Azure Active Directory, nikoli osobní účet.
 >
 >
 
 ## <a name="active-directory-policy-configuration"></a>Zásady Konfigurace služby Active Directory
-Může nastat situace, kde se můžete přihlásit k portálu katalogu Data Catalog, ale při pokusu o přihlášení k nástroj registrace zdroje dat, dojde k chybovou zprávu, která brání přihlášení. Toto chování problému může dojít pouze v případě, že jste na podnikové síti, nebo ho může dojít pouze v případě, že se připojujete z vnějšku firemní sítě.
+Tam, kde se můžete přihlásit toohello katalogu Data Catalog portálu, ale když se pokusíte toosign v toohello nástroj registrace zdroje dat se může nastat situace, dojde k chybovou zprávu, která brání přihlášení. Toto chování problému může dojít pouze v případě, že jste na podnikové síti hello nebo může dojít, pouze pokud se připojujete ze mimo hello podnikové síti.
 
-Nástroj registrace zdroje dat používá ověřování založené na formulářích k ověření pověření uživatele pro službu Active Directory. Můžete úspěšně přihlásit, musí správce služby Active Directory povolit ověřování pomocí formulářů v globální zásady ověřování.
+Nástroj registrace zdroje dat Hello používá ověřování pomocí formulářů toovalidate pověření uživatele pro službu Active Directory. toohelp úspěšně přihlášení, Správce služby Active Directory musí povolit ověřování pomocí formulářů v hello globální zásady ověřování.
 
-V globální zásady ověřování metody ověřování se dá nastavit samostatně pro intranetové a připojení k síti extranet, jak je znázorněno na následujícím snímku obrazovky. Pokud je ověřování pomocí formulářů není povoleno pro síť, ze kterého se připojujete, může dojít k chybám přihlášení.
+V hello globální zásady ověřování metody ověřování může být povoleno samostatně intranetu a extranetu, jak ukazuje následující snímek obrazovky hello. Pokud je ověřování pomocí formulářů není povoleno pro hello síť, ze kterého se připojujete, může dojít k chybám přihlášení.
 
  ![Služby Active Directory globální zásady ověřování](./media/data-catalog-prerequisites/global-auth-policy.png)
 

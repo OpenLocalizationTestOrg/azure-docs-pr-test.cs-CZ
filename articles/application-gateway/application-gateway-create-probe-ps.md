@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření vlastní test paměti - Azure Application Gateway - prostředí PowerShell | Microsoft Docs"
-description: "Naučte se vytvářet vlastní test paměti pro službu Application Gateway pomocí prostředí PowerShell ve službě Správce prostředků"
+title: "PowerShell – Azure Application Gateway - testu aaaCreate vlastní | Microsoft Docs"
+description: "Zjistěte, jak toocreate vlastní sběru dat pro službu Application Gateway pomocí prostředí PowerShell ve službě Správce prostředků"
 services: application-gateway
 documentationcenter: na
 author: georgewallace
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: gwallace
-ms.openlocfilehash: b54fe5267d87a41eb9e81d5d1dc9b1b16c5c5e88
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 44c9ffa75401d6d0db023e66fa82c701fb0cf8bc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Vytvoření vlastní test paměti pro Azure Application Gateway pomocí prostředí PowerShell pro Azure Resource Manager
 
@@ -28,10 +28,10 @@ ms.lasthandoff: 07/11/2017
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
-V tomto článku přidejte vlastní test paměti existující application gateway pomocí prostředí PowerShell. Vlastní testy paměti jsou užitečné pro aplikace, které mají na stránce Kontrola konkrétní stav nebo pro aplikace, které neposkytuje úspěšné odpovědi na výchozí webovou aplikaci.
+V tomto článku můžete přidat vlastní test paměti tooan existující aplikace bránu pomocí prostředí PowerShell. Vlastní testy paměti jsou užitečné pro aplikace, které mají na stránce Kontrola konkrétní stav nebo pro aplikace, které neposkytuje úspěšné odpovědi na hello výchozí webové aplikace.
 
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek se věnuje modelu nasazení Resource Manager, který Microsoft doporučuje pro většinu nových nasazení namísto [klasického modelu nasazení](application-gateway-create-probe-classic-ps.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek popisuje použití modelu nasazení Resource Manager hello, které společnost Microsoft doporučuje pro většinu nasazení nové místo hello [modelu nasazení classic](application-gateway-create-probe-classic-ps.md).
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -39,19 +39,19 @@ V tomto článku přidejte vlastní test paměti existující application gatewa
 
 ### <a name="sign-in-and-create-resource-group"></a>Přihlaste se a vytvořte skupinu prostředků
 
-1. Použití `Login-AzureRmAccount` k ověření.
+1. Použití `Login-AzureRmAccount` tooauthenticate.
 
   ```powershell
   Login-AzureRmAccount
   ```
 
-1. Získáte předplatná pro příslušný účet.
+1. Získáte hello předplatná pro účet hello.
 
   ```powershell
   Get-AzureRmSubscription
   ```
 
-1. Zvolte předplatné Azure, které chcete použít.
+1. Zvolte, které vaše toouse předplatných Azure.
 
   ```powershell
   Select-AzureRmSubscription -Subscriptionid '{subscriptionGuid}'
@@ -63,28 +63,28 @@ V tomto článku přidejte vlastní test paměti existující application gatewa
   New-AzureRmResourceGroup -Name appgw-rg -Location 'West US'
   ```
 
-Azure Resource Manager vyžaduje, aby všechny skupiny prostředků určily umístění. Toto umístění slouží jako výchozí umístění pro prostředky v příslušné skupině prostředků. Ujistěte se, že všechny příkazy k vytvoření služby application gateway používají stejnou skupinu prostředků.
+Azure Resource Manager vyžaduje, aby všechny skupiny prostředků určily umístění. Toto umístění se používá jako hello výchozí umístění pro prostředky v příslušné skupině prostředků. Ujistěte se, že všechny příkazy toocreate hello aplikaci brány použijte stejnou skupinu prostředků.
 
-V předchozím příkladu jsme vytvořili skupinu prostředků s názvem **appgw-RG** v umístění **západní USA**.
+V předchozím příkladu hello, jsme vytvořili skupinu prostředků s názvem **appgw-RG** v umístění **západní USA**.
 
 ### <a name="create-a-virtual-network-and-a-subnet"></a>Vytvoření virtuální sítě a podsítě
 
-Následující příklad vytvoří virtuální síť a podsíť pro aplikační bránu. Aplikační brána vyžaduje vlastní podsíti pro použití. Z tohoto důvodu by měla být menší než adresní prostor sítě vnet umožňující jiných podsítí k vytvoření a použití podsíť vytvořená pro službu application gateway.
+Hello následující příklad vytvoří virtuální síť a podsíť pro aplikační bránu hello. Aplikační brána vyžaduje vlastní podsíti pro použití. Z tohoto důvodu by měla být menší než hello adresní prostor virtuální sítě tooallow hello pro další podsítě toobe vytvořit a použít hello podsíť vytvořená hello aplikační brány.
 
 ```powershell
-# Assign the address range 10.0.0.0/24 to a subnet variable to be used to create a virtual network.
+# Assign hello address range 10.0.0.0/24 tooa subnet variable toobe used toocreate a virtual network.
 $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 
-# Create a virtual network named appgwvnet in resource group appgw-rg for the West US region using the prefix 10.0.0.0/16 with subnet 10.0.0.0/24.
+# Create a virtual network named appgwvnet in resource group appgw-rg for hello West US region using hello prefix 10.0.0.0/16 with subnet 10.0.0.0/24.
 $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
-# Assign a subnet variable for the next steps, which create an application gateway.
+# Assign a subnet variable for hello next steps, which create an application gateway.
 $subnet = $vnet.Subnets[0]
 ```
 
-### <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Vytvoření veřejné IP adresy pro front-end konfiguraci
+### <a name="create-a-public-ip-address-for-hello-front-end-configuration"></a>Vytvoření veřejné IP adresy pro front-end konfiguraci hello
 
-Vytvořte prostředek veřejné IP adresy **publicIP01** ve skupině prostředků **appgw-rg** pro oblast Západní USA. Tento příklad používá veřejnou IP adresu pro front-end IP adresu aplikační brány.  Aplikační brána vyžaduje veřejnou IP adresu, kterou proto mít dynamicky vytvořený název DNS `-DomainNameLabel` nelze zadat při vytváření veřejnou IP adresu.
+Vytvořte prostředek veřejné IP **adresy publicIP01** ve skupině prostředků **appgw-rg** pro oblast západní USA hello. Tento příklad používá veřejnou IP adresu pro hello front-end IP adresu hello aplikační brány.  Aplikační brána vyžaduje hello veřejnou IP adresu toohave dynamicky vytvořený název DNS proto hello `-DomainNameLabel` nelze zadat během vytváření hello hello veřejné IP adresy.
 
 ```powershell
 $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -Location 'West US' -AllocationMethod Dynamic
@@ -92,17 +92,17 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name publicI
 
 ### <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-Nastavit všechny položky konfigurace před vytvořením služby application gateway. Následující příklad vytvoří položky konfigurace, které jsou potřebné pro prostředek aplikační brány.
+Nastavit všechny položky konfigurace před vytvořením hello aplikační brány. Hello následující příklad vytvoří hello položky konfigurace, které jsou potřebné pro prostředek aplikační brány.
 
 | **Komponenta** | **Popis** |
 |---|---|
 | **Konfigurace IP brány** | Konfigurace IP aplikační brány.|
-| **Fond back-end** | Fond IP adres, plně kvalifikovaný název domény společnosti nebo síťové adaptéry, které jsou na aplikační servery, které jsou hostiteli webové aplikace|
-| **Test stavu** | Vlastní test paměti používá k monitorování stavu členy fondu back-end|
-| **Nastavení protokolu HTTP** | Kolekce nastavení, včetně, port, protokol, spřažení na základě souborů cookie, test a vypršení časového limitu.  Tato nastavení určují, jak se provoz směruje na členy fondu back-end|
-| **Front-endový port** | Port, který službu application gateway naslouchá pro přenosy na|
+| **Fond back-end** | Fond IP adres, plně kvalifikovaný název domény společnosti nebo síťové adaptéry, které jsou toohello aplikační servery, které jsou hostiteli hello webové aplikace|
+| **Test stavu** | Stav hello toomonitor členy fondu back-end hello používá vlastní test paměti|
+| **Nastavení protokolu HTTP** | Kolekce nastavení, včetně, port, protokol, spřažení na základě souborů cookie, test a vypršení časového limitu.  Tato nastavení určují, jak provoz se směruje toohello členy fondu back-end|
+| **Front-endový port** | Hello port, který hello brány aplikace nenaslouchala komunikaci na|
 | **Naslouchací proces** | Kombinace protokolu, front-endové konfigurace protokolu IP a port front-endu. Je to, co poslouchá příchozí požadavky.
-|**Pravidlo**| Směrování provozu na příslušné back-end podle nastavení protokolu HTTP.|
+|**Pravidlo**| Trasy hello provoz toohello odpovídající back-end na základě nastavení protokolu HTTP.|
 
 ```powershell
 # Creates a application gateway Frontend IP configuration named gatewayIP01
@@ -114,67 +114,67 @@ $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPA
 # Creates a probe that will check health at http://contoso.com/path/path.htm
 $probe = New-AzureRmApplicationGatewayProbeConfig -Name probe01 -Protocol Http -HostName 'contoso.com' -Path '/path/path.htm' -Interval 30 -Timeout 120 -UnhealthyThreshold 8
 
-# Creates the backend http settings to be used. This component references the $probe created in the previous command.
+# Creates hello backend http settings toobe used. This component references hello $probe created in hello previous command.
 $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled -Probe $probe -RequestTimeout 80
 
-# Creates a frontend port for the application gateway to listen on port 80 that will be used by the listener.
+# Creates a frontend port for hello application gateway toolisten on port 80 that will be used by hello listener.
 $fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01 -Port 80
 
-# Creates a frontend IP configuration. This associates the $publicip variable defined previously with the front-end IP that will be used by the listener.
+# Creates a frontend IP configuration. This associates hello $publicip variable defined previously with hello front-end IP that will be used by hello listener.
 $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -PublicIPAddress $publicip
 
-# Creates the listener. The listener is a combination of protocol and the frontend IP configuration $fipconfig and frontend port $fp created in previous steps.
+# Creates hello listener. hello listener is a combination of protocol and hello frontend IP configuration $fipconfig and frontend port $fp created in previous steps.
 $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01  -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 
-# Creates the rule that routes traffic to the backend pools.  In this example we create a basic rule that uses the previous defined http settings and backend address pool.  It also associates the listener to the rule
+# Creates hello rule that routes traffic toohello backend pools.  In this example we create a basic rule that uses hello previous defined http settings and backend address pool.  It also associates hello listener toohello rule
 $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 
-# Sets the SKU of the application gateway, in this example we create a small standard application gateway with 2 instances.
+# Sets hello SKU of hello application gateway, in this example we create a small standard application gateway with 2 instances.
 $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
-# The final step creates the application gateway with all the previously defined components.
+# hello final step creates hello application gateway with all hello previously defined components.
 $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location 'West US' -BackendAddressPools $pool -Probes $probe -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
 
-## <a name="add-a-probe-to-an-existing-application-gateway"></a>Přidat sondu existující aplikační brány
+## <a name="add-a-probe-tooan-existing-application-gateway"></a>Přidat existující aplikace bránu tooan testu
 
-Následující fragment kódu přidá sondu existující aplikační brány.
+Hello následující fragment kódu přidá existující aplikace bránu tooan testu.
 
 ```powershell
-# Load the application gateway resource into a PowerShell variable by using Get-AzureRmApplicationGateway.
+# Load hello application gateway resource into a PowerShell variable by using Get-AzureRmApplicationGateway.
 $getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
-# Create the probe object that will check health at http://contoso.com/path/path.htm
+# Create hello probe object that will check health at http://contoso.com/path/path.htm
 $getgw = Add-AzureRmApplicationGatewayProbeConfig -ApplicationGateway $getgw -Name probe01 -Protocol Http -HostName 'contoso.com' -Path '/path/custompath.htm' -Interval 30 -Timeout 120 -UnhealthyThreshold 8
 
-# Set the backend HTTP settings to use the new probe
+# Set hello backend HTTP settings toouse hello new probe
 $getgw = Set-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw -Name $getgw.BackendHttpSettingsCollection.name -Port 80 -Protocol Http -CookieBasedAffinity Disabled -Probe $probe -RequestTimeout 120
 
-# Save the application gateway with the configuration changes
+# Save hello application gateway with hello configuration changes
 Set-AzureRmApplicationGateway -ApplicationGateway $getgw
 ```
 
 ## <a name="remove-a-probe-from-an-existing-application-gateway"></a>Odstranit sondu z existující aplikační brány
 
-Následující fragment kódu sondu Odebere existující aplikační brány.
+Následující fragment kódu Hello sondu Odebere existující aplikační brány.
 
 ```powershell
-# Load the application gateway resource into a PowerShell variable by using Get-AzureRmApplicationGateway.
+# Load hello application gateway resource into a PowerShell variable by using Get-AzureRmApplicationGateway.
 $getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
-# Remove the probe from the application gateway configuration object
+# Remove hello probe from hello application gateway configuration object
 $getgw = Remove-AzureRmApplicationGatewayProbeConfig -ApplicationGateway $getgw -Name $getgw.Probes.name
 
-# Set the backend HTTP settings to remove the reference to the probe. The backend http settings now use the default probe
+# Set hello backend HTTP settings tooremove hello reference toohello probe. hello backend http settings now use hello default probe
 $getgw = Set-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw -Name $getgw.BackendHttpSettingsCollection.name -Port 80 -Protocol http -CookieBasedAffinity Disabled
 
-# Save the application gateway with the configuration changes
+# Save hello application gateway with hello configuration changes
 Set-AzureRmApplicationGateway -ApplicationGateway $getgw
 ```
 
 ## <a name="get-application-gateway-dns-name"></a>Získání názvu DNS služby Application Gateway
 
-Po vytvoření brány je dalším krokem konfigurace front-endu pro komunikaci. Při použití veřejné IP adresy služba Application Gateway vyžaduje dynamicky přidělený název DNS, který ale není popisný. Pokud chcete zajistit, aby se koncoví uživatelé mohli dostat ke službě Application Gateway, můžete použít záznam CNAME sloužící k odkazovaní na veřejný koncový bod služby Application Gateway. [Konfigurace vlastního názvu domény pro cloudovou službu Azure](../cloud-services/cloud-services-custom-domain-name-portal.md). Budete muset načíst podrobnosti o službě Application Gateway a název její přidružené IP adresy nebo DNS, a to pomocí elementu PublicIPAddress připojeného ke službě Application Gateway. Název DNS služby Application Gateway byste měli použít k vytvoření záznamu CNAME, který tyto dvě webové aplikace odkazuje na tento název DNS. Použití záznamů A se nedoporučuje z toho důvodu, že virtuální IP adresa se může změnit při restartování služby Application Gateway.
+Po vytvoření brány hello hello dalším krokem je tooconfigure hello front-end pro komunikaci. Při použití veřejné IP adresy služba Application Gateway vyžaduje dynamicky přidělený název DNS, který ale není popisný. tooensure koncoví uživatelé mohou dosáhl hello aplikační brány lze použít záznam CNAME toopoint toohello veřejný koncový bod hello aplikační brány. [Konfigurace vlastního názvu domény pro cloudovou službu Azure](../cloud-services/cloud-services-custom-domain-name-portal.md). toodo se načíst podrobnosti o hello aplikační brány a svému přidruženému názvu IP a DNS pomocí hello PublicIPAddress element připojené toohello aplikační brány. název DNS Hello Aplikační brána musí být použité toocreate záznam CNAME, které body hello dva webové aplikace toothis název DNS. Hello použití záznamů A se nedoporučuje, protože hello VIP může změnit při restartu aplikační brány.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
@@ -204,5 +204,5 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o konfiguraci, navštivte stránky snižování zátěže protokolu SSL: [konfigurovat přesměrování zpracování SSL](application-gateway-ssl-arm.md)
+Další snižování zátěže protokolu SSL tooconfigure navštivte stránky: [konfigurovat přesměrování zpracování SSL](application-gateway-ssl-arm.md)
 

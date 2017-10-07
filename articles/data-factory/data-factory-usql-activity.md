@@ -1,6 +1,6 @@
 ---
-title: "Transformace dat pomocí skriptu U-SQL - Azure | Microsoft Docs"
-description: "Informace o zpracování nebo transformace dat pomocí spouštění skriptů U-SQL na výpočetní služba Azure Data Lake Analytics."
+title: "aaaTransform data pomocí skriptu U-SQL - Azure | Microsoft Docs"
+description: "Zjistěte, jak tooprocess nebo transformace dat pomocí spouštění skriptů U-SQL v Azure Data Lake Analytics výpočetní služby."
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: spelluru
-ms.openlocfilehash: 49a809af92ed1bc6664fbdd3bf1aabf36afb8180
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 51fdb40334d0c131720f65c3a96b4c5045a98b24
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformace dat pomocí spouštění skriptů U-SQL v Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -33,46 +33,46 @@ ms.lasthandoff: 08/18/2017
 > * [Aktivita U-SQL služby Data Lake Analytics](data-factory-usql-activity.md)
 > * [Vlastní aktivity rozhraní .NET](data-factory-use-custom-activities.md)
 
-Kanál v objektu pro vytváření dat Azure zpracovává data v služby propojené úložiště pomocí propojené výpočetní služby. Obsahuje posloupnost aktivit, kde každá aktivita provede konkrétní zpracování operace. Tento článek popisuje **Data Lake Analytics U-SQL aktivity** , která se spouští **U-SQL** skript na **Azure Data Lake Analytics** výpočetní propojené služby. 
+Kanál v objektu pro vytváření dat Azure zpracovává data v služby propojené úložiště pomocí propojené výpočetní služby. Obsahuje posloupnost aktivit, kde každá aktivita provede konkrétní zpracování operace. Tento článek popisuje hello **Data Lake Analytics U-SQL aktivity** , která se spouští **U-SQL** skript na **Azure Data Lake Analytics** výpočetní propojené služby. 
 
 > [!NOTE]
-> Vytvoření účtu Azure Data Lake Analytics před vytvořením kanálu s aktivitou Data Lake Analytics U-SQL. Další informace o Azure Data Lake Analytics najdete v tématu [Začínáme s Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
+> Vytvoření účtu Azure Data Lake Analytics před vytvořením kanálu s aktivitou Data Lake Analytics U-SQL. toolearn o Azure Data Lake Analytics najdete v části [Začínáme s Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 > 
-> Zkontrolujte [vytvoření vaší první kurz kanálu](data-factory-build-your-first-pipeline.md) podrobné pokyny pro vytváření dat, propojené služby, datových sad a kanálu. Použití JSON fragmenty pomocí editoru služby Data Factory nebo Visual Studio nebo Azure PowerShell k vytvoření entit služby Data Factory.
+> Zkontrolujte hello [vytvoření vaší první kurz kanálu](data-factory-build-your-first-pipeline.md) pro podrobné kroky toocreate objekt pro vytváření dat, propojené služby, datových sad a kanálu. Fragmenty kódu JSON pomocí editoru služby Data Factory nebo entit služby Data Factory toocreate Visual Studio nebo Azure PowerShell.
 
 ## <a name="supported-authentication-types"></a>Typy podporované ověřování
 Aktivita U-SQL podporuje následující typy ověřování proti Data Lake Analytics:
 * Ověřování instančních objektů
 * Ověření přihlašovacích údajů (OAuth) uživatele 
 
-Doporučujeme použít objekt zabezpečení ověřování služby, zejména pro naplánovaného spuštění U-SQL. Vypršení platnosti tokenu chování mohou nastat u ověření přihlašovacích údajů uživatele. Podrobnosti konfigurace najdete v tématu [propojené vlastnosti služby](#azure-data-lake-analytics-linked-service) části.
+Doporučujeme použít objekt zabezpečení ověřování služby, zejména pro naplánovaného spuštění U-SQL. Vypršení platnosti tokenu chování mohou nastat u ověření přihlašovacích údajů uživatele. Podrobnosti konfigurace najdete v tématu hello [propojené vlastnosti služby](#azure-data-lake-analytics-linked-service) části.
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Propojená služba Azure Data Lake Analytics
-Vytvoříte **Azure Data Lake Analytics** propojená služba Azure Data Lake Analytics výpočetní služby s objektem pro vytváření dat Azure. Data Lake Analytics U-SQL aktivitu v kanálu odkazuje na tato propojená služba. 
+Vytvoříte **Azure Data Lake Analytics** propojené služby toolink služby Azure Data Lake Analytics výpočetní služby tooan Azure data factory. Hello Data Lake Analytics U-SQL aktivitu v kanálu hello odkazuje toothis propojené služby. 
 
-Následující tabulka obsahuje popis obecné vlastnosti používané v definici JSON. Dále můžete mezi instanční objekt a ověření přihlašovacích údajů uživatele.
+Hello následující tabulka obsahuje popis hello obecné vlastnosti používané ve hello definici JSON. Dále můžete mezi instanční objekt a ověření přihlašovacích údajů uživatele.
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| **Typ** |Vlastnost typu musí být nastavená na: **AzureDataLakeAnalytics**. |Ano |
+| **Typ** |vlastnost typu Hello by měla být nastavena na: **AzureDataLakeAnalytics**. |Ano |
 | **název účtu** |Název účtu Azure Data Lake Analytics. |Ano |
 | **dataLakeAnalyticsUri** |Identifikátor URI služby Azure Data Lake Analytics. |Ne |
-| **ID předplatného** |Id předplatného Azure |Ne (když není určeno, předplatné objektu pro vytváření dat se používá). |
-| **Název skupiny prostředků** |Název skupiny prostředků Azure. |Ne (když není určeno, skupinu prostředků objektu pro vytváření dat se používá). |
+| **ID předplatného** |Id předplatného Azure |Ne (když není určeno předplatné hello se používá pro vytváření dat). |
+| **Název skupiny prostředků** |Název skupiny prostředků Azure. |Ne (když není určeno skupiny prostředků hello se používá pro vytváření dat). |
 
 ### <a name="service-principal-authentication-recommended"></a>Objekt zabezpečení ověřování služby (doporučeno)
-Pokud chcete použít ověřování hlavní služby, zaregistrujte entitu aplikace v Azure Active Directory (Azure AD) a jí udělit přístup k Data Lake Store. Podrobné pokyny najdete v tématu [Service-to-service ověřování](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Poznamenejte si následující hodnoty, které můžete použít k definování propojené služby:
+objekt zabezpečení ověřování služby toouse registrace entity aplikace v Azure Active Directory (Azure AD) a udělte ho hello přístup tooData Lake Store. Podrobné pokyny najdete v tématu [Service-to-service ověřování](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Poznamenejte si hello následující hodnoty, které používáte toodefine hello propojené služby:
 * ID aplikace
 * Klíč aplikace 
 * ID tenanta
 
-Použijte objekt zabezpečení ověřování služby tak, že zadáte následující vlastnosti:
+Objekt zabezpečení ověřování služby použijte zadáním hello následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Zadejte ID aplikace klienta. | Ano |
-| **servicePrincipalKey** | Zadejte klíč aplikace. | Ano |
-| **klienta** | Zadejte informace o klienta (název nebo klienta domény ID) v rámci které se nachází aplikace. Můžete ji načíst podržením ukazatele myši v pravém horním rohu portálu Azure. | Ano |
+| **servicePrincipalId** | Zadejte ID aplikace hello klienta. | Ano |
+| **servicePrincipalKey** | Zadejte klíč aplikace hello. | Ano |
+| **klienta** | Zadejte informace klienta hello (název nebo klienta domény ID) v rámci které se nachází aplikace. Můžete jej načíst po výběru ukázáním hello myši v pravém horním rohu hello hello portálu Azure. | Ano |
 
 **Příkladu: Ověření objektu službu**
 ```json
@@ -94,12 +94,12 @@ Použijte objekt zabezpečení ověřování služby tak, že zadáte následuj�
 ```
 
 ### <a name="user-credential-authentication"></a>Ověření pověření uživatele
-Alternativně můžete použít ověřování pověření uživatele pro Data Lake Analytics zadáním následujících vlastností:
+Alternativně můžete použít ověřování pověření uživatele pro Data Lake Analytics zadáním hello následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| **autorizace** | Klikněte **Autorizovat** tlačítko v editoru služby Data Factory a zadejte svoje přihlašovací údaje, který přiřazuje URL pro autorizaci automaticky generovaný této vlastnosti. | Ano |
-| **ID relace** | ID relace OAuth z autorizační relace OAuth. Každé ID relace je jedinečné a může být použit pouze jednou. Toto nastavení se automaticky generuje při pomocí editoru služby Data Factory. | Ano |
+| **autorizace** | Klikněte na tlačítko hello **Autorizovat** tlačítka na hello editoru služby Data Factory a zadejte svoje přihlašovací údaje, který přiřazuje hello automaticky vygenerovanou autorizace URL toothis vlastnost. | Ano |
+| **ID relace** | ID relace OAuth z autorizační relace, hello OAuth. Každé ID relace je jedinečné a může být použit pouze jednou. Toto nastavení se automaticky generuje při použití hello editoru služby Data Factory. | Ano |
 
 **Příklad: Ověření pověření uživatele**
 ```json
@@ -120,14 +120,14 @@ Alternativně můžete použít ověřování pověření uživatele pro Data La
 ```
 
 #### <a name="token-expiration"></a>Vypršení platnosti tokenu
-Autorizační kód, který jste vygenerovali pomocí **Autorizovat** tlačítko vyprší po určité době. Pro dobu vypršení platnosti pro různé typy uživatelských účtů najdete v následující tabulce. Mohou se zobrazit následující chyby zprávy při ověřování **platnost tokenu vyprší**: přihlašovací údaje chyby operace: invalid_grant - AADSTS70002: Chyba při ověřování přihlašovacích údajů. AADSTS70008: Předloženému udělení přístupu je prošlý nebo odvolat. ID trasování: ID korelace d18629e8-af88-43c5-88e3-d8419eb1fca1: časové razítko fac30a0c-6be6-4e02-8d69-a776d2ffefd7: 2015-12-15 21:09:31Z
+Hello autorizační kód vygenerovaného s využitím hello **Autorizovat** tlačítko vyprší po určité době. Viz následující tabulka pro hello vypršení platnosti časy pro různé typy uživatelských účtů hello. Zobrazí následující chybová zpráva hello při hello ověřování **platnost tokenu vyprší**: přihlašovací údaje chyby operace: invalid_grant - AADSTS70002: Chyba při ověřování přihlašovacích údajů. AADSTS70008: hello údaje udělení přístupu vypršela platnost nebo odvolat. ID trasování: ID korelace d18629e8-af88-43c5-88e3-d8419eb1fca1: časové razítko fac30a0c-6be6-4e02-8d69-a776d2ffefd7: 2015-12-15 21:09:31Z
 
 | Typ uživatele | Platnost vyprší po |
 |:--- |:--- |
 | Uživatelské účty, které nejsou spravované přes Azure Active Directory (@hotmail.com, @live.comatd.) |12 hodin |
-| Účty uživatelů spravované pomocí Azure Active Directory (AAD) |14 dnů po poslední řez spustit. <br/><br/>90 dnů, pokud řezu založeného na základě OAuth propojené služby používá alespoň jednou za 14 dní. |
+| Účty uživatelů spravované pomocí Azure Active Directory (AAD) |14 dnů po poslední řez hello spustit. <br/><br/>90 dnů, pokud řezu založeného na základě OAuth propojené služby používá alespoň jednou za 14 dní. |
 
-Vyhněte se/vyřešit tuto chybu, opětovné pověření pomocí **Authorize** tlačítko při **platnost tokenu vyprší** a znovu nasaďte propojené služby. Můžete také vygenerovat hodnoty pro **sessionId** a **autorizace** vlastnosti programově pomocí kódu následujícím způsobem:
+tooavoid nebo vyřešit tuto chybu, opětovné pověření pomocí hello **Authorize** když hello **platnost tokenu vyprší** a znovu nasaďte hello propojené služby. Můžete také vygenerovat hodnoty pro **sessionId** a **autorizace** vlastnosti programově pomocí kódu následujícím způsobem:
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
@@ -154,16 +154,16 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-V tématu [azuredatalakestorelinkedservice třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx), a [AuthorizationSessionGetResponse třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) témata podrobnosti o třídy objektu pro vytváření dat používá v kódu. Přidat odkaz na: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll pro třídu WindowsFormsWebAuthenticationDialog. 
+V tématu [azuredatalakestorelinkedservice třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx), a [AuthorizationSessionGetResponse třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) témata podrobnosti o třídách Data Factory hello používá v kódu hello. Přidat odkaz na: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll pro hello WindowsFormsWebAuthenticationDialog třídy. 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Aktivita U-SQL služby Data Lake Analytics
-Následující fragment kódu JSON definuje kanál s aktivitou Data Lake Analytics U-SQL. Definici aktivity odkazuje na Azure Data Lake Analytics propojené služby, kterou jste vytvořili dříve.   
+Definuje Hello následujícím fragmentu kódu JSON kanálu s aktivitou Data Lake Analytics U-SQL. definici aktivity Hello má toohello referenční dokumentace Azure Data Lake Analytics propojené služby, kterou jste vytvořili dříve.   
 
 ```json
 {
     "name": "ComputeEventsByRegionPipeline",
     "properties": {
-        "description": "This is a pipeline to compute events for en-gb locale and date less than 2012/02/19.",
+        "description": "This is a pipeline toocompute events for en-gb locale and date less than 2012/02/19.",
         "activities": 
         [
             {
@@ -210,25 +210,25 @@ Následující fragment kódu JSON definuje kanál s aktivitou Data Lake Analyti
 }
 ```
 
-Následující tabulka popisuje názvy a popisy vlastností, které jsou specifické pro tuto aktivitu. 
+Hello následující tabulka popisuje názvy a popisy vlastností, které jsou specifické toothis aktivity. 
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type |Vlastnost typu musí být nastavená na **DataLakeAnalyticsU SQL**. |Ano |
-| scriptPath |Cesta ke složce, který obsahuje skript U-SQL. Název souboru je malá a velká písmena. |Ne (když používáte skript) |
-| scriptLinkedService |Propojené služby, který odkazuje úložiště, který obsahuje skript pro vytváření dat. |Ne (když používáte skript) |
+| type |musí být nastavena vlastnost typu Hello příliš**DataLakeAnalyticsU SQL**. |Ano |
+| scriptPath |Cesta toofolder, který obsahuje skript hello U-SQL. Název souboru hello rozlišuje velká a malá písmena. |Ne (když používáte skript) |
+| scriptLinkedService |Propojené služby, který odkazuje hello úložiště, který obsahuje toohello hello skriptu pro vytváření dat |Ne (když používáte skript) |
 | Skript |Zadejte místo zadání scriptPath a scriptLinkedService zpracování vloženého skriptu. Například: `"script": "CREATE DATABASE test"`. |Ne (když používáte scriptPath a scriptLinkedService) |
-| degreeOfParallelism |Maximální počet uzlů současně slouží ke spuštění úlohy. |Ne |
-| Priorita |Určuje, jaké úlohy mimo všechny, které jsou zařazeny do fronty, měla by být vybrána má spustit jako první. Čím nižší je číslo, tím vyšší je priorita. |Ne |
-| Parametry |Parametry pro skript U-SQL |Ne |
-| runtimeVersion | Verze runtime – stroje U-SQL používat | Ne | 
-| compilationMode | <p>Režim kompilace U-SQL. Musí být jedna z těchto hodnot:</p> <ul><li>**Sémantické:** provádět jenom sémantického kontroly a nezbytné správností kontroly.</li><li>**Úplné:** provést úplné kompilace, včetně kontrola syntaxe, optimalizace, generování kódu atd.</li><li>**SingleBox:** provést úplné kompilace s TargetType nastavení SingleBox.</li></ul><p>Pokud nezadáte hodnotu pro tuto vlastnost, server určí režim optimální kompilace. </p>| Ne | 
+| degreeOfParallelism |maximální počet uzlů Hello současně použít toorun hello úlohy. |Ne |
+| Priorita |Určuje, které z uložených ve frontě úloh by měl být vybrané toorun nejdřív. Hello nižší hello číslo, vyšší prioritu hello hello. |Ne |
+| parameters |Parametry pro skript hello U-SQL |Ne |
+| runtimeVersion | Verze runtime toouse modul hello U-SQL | Ne | 
+| compilationMode | <p>Režim kompilace U-SQL. Musí být jedna z těchto hodnot:</p> <ul><li>**Sémantické:** provádět jenom sémantického kontroly a nezbytné správností kontroly.</li><li>**Úplné:** provést úplné kompilace hello, včetně kontrola syntaxe, optimalizace, generování kódu atd.</li><li>**SingleBox:** provést úplné kompilace hello s tooSingleBox TargetType nastavení.</li></ul><p>Pokud nezadáte hodnotu pro tuto vlastnost, hello server určuje režim optimální kompilace hello. </p>| Ne | 
 
-V tématu [definice skriptu SearchLogProcessing.txt](#sample-u-sql-script) pro definici skriptu. 
+V tématu [definice skriptu SearchLogProcessing.txt](#sample-u-sql-script) pro definici skriptu hello. 
 
 ## <a name="sample-input-and-output-datasets"></a>Ukázkové vstupní a výstupní datové sady
 ### <a name="input-dataset"></a>Vstupní datové sady
-V tomto příkladu vstupní data nachází v Azure Data Lake Store (soubor SearchLog.tsv soubor ve složce datalake/vstupu). 
+V tomto příkladu hello vstupní data nachází v Azure Data Lake Store (soubor SearchLog.tsv soubor ve složce datalake/vstup hello). 
 
 ```json
 {
@@ -254,7 +254,7 @@ V tomto příkladu vstupní data nachází v Azure Data Lake Store (soubor Searc
 ```
 
 ### <a name="output-dataset"></a>Výstupní datové sady
-V tomto příkladu výstupní data vytvořená skript U-SQL uložený v Azure Data Lake Store (datalake výstupní složka). 
+V tomto příkladu hello výstupních dat vytvářených hello skript U-SQL uložený v Azure Data Lake Store (datalake výstupní složka). 
 
 ```json
 {
@@ -274,7 +274,7 @@ V tomto příkladu výstupní data vytvořená skript U-SQL uložený v Azure Da
 ```
 
 ### <a name="sample-data-lake-store-linked-service"></a>Ukázková Data Lake Store propojená služba
-Zde je definici vzorku Azure Data Lake Store propojená služba používá vstupní a výstupní datové sady. 
+Zde je definice hello hello ukázky Azure Data Lake Store propojené služby používané hello vstupní a výstupní datové sady. 
 
 ```json
 {
@@ -291,7 +291,7 @@ Zde je definici vzorku Azure Data Lake Store propojená služba používá vstup
 }
 ```
 
-V tématu [přesun dat do a z Azure Data Lake Store](data-factory-azure-datalake-connector.md) článku popisy vlastností JSON. 
+V tématu [přesunout tooand dat z Azure Data Lake Store](data-factory-azure-datalake-connector.md) článku popisy vlastností JSON. 
 
 ## <a name="sample-u-sql-script"></a>Ukázkový skript U-SQL
 
@@ -318,16 +318,16 @@ WHERE Region == "en-gb";
     WHERE Start <= DateTime.Parse("2012/02/19");
 
 OUTPUT @rs1   
-    TO @out
+    too@out
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-Hodnoty pro  **@in**  a  **@out**  parametry ve skriptu U-SQL jsou předaná dynamicky ADF pomocí části parametry.". Najdete v části 'parametry' v definici kanálu.
+Hello hodnoty pro  **@in**  a  **@out**  parametry v hello U-SQL skriptů jsou předaná dynamicky ADF pomocí oddílu "parametry" hello. Naleznete hello 'parametry' v definici kanálu hello.
 
-Také můžete zadat další vlastnosti, například degreeOfParallelism a priority v definici vaší kanálu pro úlohy, které běží na službu Azure Data Lake Analytics.
+Také můžete zadat další vlastnosti, například degreeOfParallelism a priority v definici vaší kanálu pro hello úlohy, které běží na hello služby Azure Data Lake Analytics.
 
 ## <a name="dynamic-parameters"></a>Dynamické parametry
-V definici ukázkový kanál a odhlašování parametry jsou přiřazeny pevně definovaných hodnot. 
+V definici kanálu ukázka hello a odhlašování parametry jsou přiřazeny pevně definovaných hodnot. 
 
 ```json
 "parameters": {
@@ -336,7 +336,7 @@ V definici ukázkový kanál a odhlašování parametry jsou přiřazeny pevně 
 }
 ```
 
-Je možné místo toho použít dynamické parametry. Například: 
+Místo toho je možné toouse dynamických parametrů. Například: 
 
 ```json
 "parameters": {
@@ -345,5 +345,5 @@ Je možné místo toho použít dynamické parametry. Například:
 }
 ```
 
-V takovém případě vstupní soubory jsou stále zachyceny ze složky /datalake/input a výstupní soubory se generují ve složce /datalake/output. Názvy souborů jsou dynamické podle času zahájení řez.  
+V takovém případě vstupní soubory jsou stále zachyceny ze složky /datalake/input hello a výstupní soubory se generují ve složce /datalake/output hello. názvy souborů Hello jsou dynamické podle času zahájení řez hello.  
 

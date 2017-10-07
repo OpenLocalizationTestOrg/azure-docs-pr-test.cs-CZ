@@ -1,6 +1,6 @@
 ---
-title: "Zpracování mediálních souborů pomocí Azure Media Hyperlapse | Microsoft Docs"
-description: "Azure Media Hyperlapse vytvoří smooth vypršelo čas videa z první, kdo nebo akce fotoaparát obsah. Toto téma ukazuje způsob použití Media Indexer."
+title: "aaaHyperlapse mediálních souborů pomocí Azure Media Hyperlapse | Microsoft Docs"
+description: "Azure Media Hyperlapse vytvoří smooth vypršelo čas videa z první, kdo nebo akce fotoaparát obsah. Toto téma ukazuje, jak toouse Media Indexer."
 services: media-services
 documentationcenter: 
 author: asolanki
@@ -14,37 +14,37 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: adsolank
-ms.openlocfilehash: 02f634c2af04b6b372642ab0e6a17a5d29f16450
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 85bb07206d0ca2f5b2fd0767e6ed4904195d3ab6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Zpracování mediálních souborů pomocí Azure Media Hyperlapse
-Azure Media Hyperlapse je média procesoru (PP) vytvářející smooth vypršelo čas videa z první osoba nebo akce fotoaparát obsahu.  Na stejné úrovni cloudu k [plochy Hyperlapse Pro a mobilního telefonu Hyperlapse Microsoft Research](http://aka.ms/hyperlapse), Microsoft Hyperlapse pro službu Azure Media Services využívá masivním měřítku na platformě Azure Media Services média zpracování vodorovně škálování a paralelní hromadné Hyperlapse zpracování.
+Azure Media Hyperlapse je média procesoru (PP) vytvářející smooth vypršelo čas videa z první osoba nebo akce fotoaparát obsahu.  Hello založené na cloudu na stejné úrovni příliš[plochy Hyperlapse Pro a mobilního telefonu Hyperlapse Microsoft Research](http://aka.ms/hyperlapse), Hyperlapse Microsoft pro službu Azure Media Services využívá hello masivní škálování hello Azure Media Services média Zpracování platformy toohorizontally škálování a paralelní hromadné Hyperlapse zpracování.
 
 > [!IMPORTANT]
-> Microsoft Hyperlapse slouží nejlépe pracovat na první, kdo obsahu s přesunutí fotoaparát.  I když stále kamer můžete i nadále fungovat, výkonu a kvalitě procesor médií Azure Media Hyperlapse nemůže zaručit pro jiné typy obsahu.  Další informace o Microsoft Hyperlapse pro Azure Media Services a zobrazit některé ukázkové video, podívejte se [úvodní příspěvku na blogu](http://aka.ms/azurehyperlapseblog) z verze public preview.
+> Microsoft Hyperlapse je navrženou toowork nejlepší na první, kdo obsah s přesunutí fotoaparát.  I když stále kamer můžete i nadále fungovat, hello výkonu a kvalitě z hello procesor Azure Media Hyperlapse médií nemůže zaručit pro jiné typy obsahu.  Další informace o Microsoft Hyperlapse pro Azure Media Services toolearn a najdete některé ukázkové video, podívejte se na hello [úvodní příspěvku na blogu](http://aka.ms/azurehyperlapseblog) z hello verzi public preview.
 > 
 > 
 
-Azure Media Hyperlapse úlohy vezme jako vstupní asset soubor MP4, MOV nebo WMV společně s konfiguračního souboru, který určuje, které snímky video by měla být vypršelo čas a jaké rychlosti (například první 10 000 rámců na 2 x).  Výstup je stabilizované a čas vypršelo interpretace vstupu videa.
+Azure Media Hyperlapse úlohy vezme jako vstupní soubor MP4, MOV nebo WMV asset spolu s konfigurační soubor, který určuje, které snímky video by měla být vypršelo čas a toowhat rychlosti (například první 10 000 rámců na 2 x).  výstup Hello je stabilizované a čas vypršelo interpretace hello vstupní videa.
 
-Nejnovější aktualizace Azure Media Hyperlapse, najdete v části [Media Services blogy](https://azure.microsoft.com/blog/topics/media-services/).
+Nejnovější aktualizace Azure Media Hyperlapse hello najdete v části [Media Services blogy](https://azure.microsoft.com/blog/topics/media-services/).
 
 ## <a name="hyperlapse-an-asset"></a>Hyperlapse prostředek
-Nejdřív je potřeba nahrát požadované vstupní soubor k Azure Media Services.  Další informace o konceptech, které jsou spojené s odesílání a správu obsahu, najdete [správy obsahu článku](media-services-portal-vod-get-started.md).
+Nejprve budete potřebovat tooupload vaše požadované vstupní soubor tooAzure Media Services.  Další informace o toolearn hello koncepty, které jsou spojené s odesílání a správu obsahu, přečtěte si hello [správy obsahu článku](media-services-portal-vod-get-started.md).
 
 ### <a id="configuration"></a>Konfigurace předvolbu pro Hyperlapse
-Jakmile vašeho obsahu v váš účet Media Services, musíte vytvořit přednastavených vaší konfigurace.  Následující tabulka vysvětluje pole definované uživatelem:
+Jakmile vašeho obsahu v váš účet Media Services, budete potřebovat tooconstruct přednastavení konfiguraci.  Hello následující tabulka vysvětluje hello zadán uživatel pole:
 
 | Pole | Popis |
 | --- | --- |
-| StartFrame |Rámečku, na kterém by měl začínat Microsoft Hyperlapse zpracování. |
-| NumFrames |Počet snímků při zpracování |
-| Rychlost |Faktor, ke které má být urychlení vstupní video. |
+| StartFrame |Hello rámečku, při které hello Microsoft Hyperlapse by měl začínat zpracování. |
+| NumFrames |Hello počet tooprocess rámce |
+| Rychlost |Hello faktory s které toospeed až vstupní video hello. |
 
-Následuje příklad vyhovující konfiguračního souboru XML a JSON:
+Hello tady je příklad vyhovující konfiguračního souboru XML a JSON:
 
 **Přednastavení XML:**
 
@@ -74,14 +74,14 @@ Následuje příklad vyhovující konfiguračního souboru XML a JSON:
         }
     }
 
-### <a id="sample_code"></a>Microsoft Hyperlapse pomocí .NET SDK služby AMS
-Následující metoda odešle soubor média jako prostředek a vytvoří úlohu s procesorem Azure Media Hyperlapse média.
+### <a id="sample_code"></a>Hyperlapse Microsoft s hello AMS .NET SDK
+Hello následující metodu odešle soubor média jako prostředek a vytvoří úlohu s hello procesor Azure Media Hyperlapse médií.
 
 > [!NOTE]
-> CloudMediaContext byste již měli mít v oboru s názvem "context" pro tento kód pracovat.  Další informace o tom, najdete [správy obsahu článku](media-services-dotnet-get-started.md).
+> V oboru s hello název "context" pro tento kód toowork byste již měli mít CloudMediaContext.  Další informace o této, přečtěte si hello toolearn [správy obsahu článku](media-services-dotnet-get-started.md).
 > 
 > [!NOTE]
-> Argument řetězce "hyperConfig" musí být konfiguraci vyhovující přednastavení v XML nebo JSON, jak je popsáno výše.
+> argument řetězce Hello "hyperConfig" je očekávané toobe vyhovující konfigurace přednastavení v JSON nebo XML, jak je popsáno výše.
 > 
 > 
 
@@ -148,7 +148,7 @@ Následující metoda odešle soubor média jako prostředek a vytvoří úlohu 
                                                  CancellationToken.None);
             progressJobTask.Wait();
 
-            // If job state is Error, the event handling
+            // If job state is Error, hello event handling
             // method for job progress should log errors.  Here we check
             // for error state and exit if needed.
             if (job.State == JobState.Error)

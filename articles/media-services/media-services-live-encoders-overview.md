@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace místních kodérů při vytvářejí proudy s více přenosovými rychlostmi pomocí Azure Media Services | Microsoft Docs"
-description: "Toto téma uvádí místními kodéry, které můžete použít k zachycení živé události a odesílat živý datový proud jednou přenosovou rychlostí do AMS kanálů, (které jsou kódování v reálném čase povolit) pro další zpracování. Téma obsahuje odkazy na návodů, které ukazují, jak nakonfigurovat uvedené kodérů."
+title: "aaaConfigure místními kodéry při použití datové proudy více přenosovými rychlostmi toocreate Azure Media Services | Microsoft Docs"
+description: "Toto téma uvádí místními kodéry, můžete použít toocapture živé události a odesílat živý datový proud tooAMS kanály, (které jsou kódování v reálném čase povolit) s jednou přenosovou rychlostí pro další zpracování. téma Hello propojí tootutorials, která ukazují, jak tooconfigure uvedené kodérů."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: 68aaf0fda2e60c5736ab020c15e516144e11d68e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8c4a46250bd9cdc9b8f1d22c093fb7bfac99611a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Postup konfigurace místních kodérů při vytvářejí proudy s více přenosovými rychlostmi pomocí Azure Media Services
-Toto téma uvádí místními kodéry, které můžete použít k zachycení živé události a odesílat živý datový proud jednou přenosovou rychlostí do AMS kanálů, (které jsou kódování v reálném čase povolit) pro další zpracování. V tématu taky obsahuje odkazy na návodů, které ukazují, jak nakonfigurovat uvedené kodérů.
+# <a name="how-tooconfigure-on-premises-encoders-when-using-azure-media-services-toocreate-multi-bitrate-streams"></a>Jak tooconfigure místními kodéry při použití služby Azure Media Services toocreate více přenosovými rychlostmi datové proudy
+Toto téma uvádí místními kodéry, můžete použít toocapture živé události a odesílat živý datový proud tooAMS kanály, (které jsou kódování v reálném čase povolit) s jednou přenosovou rychlostí pro další zpracování. Hello téma obsahuje i odkazy tootutorials, která ukazují, jak tooconfigure uvedené kodérů.
 
 ## <a name="elemental-live"></a>Elemental za provozu
-Informace o tom, jak nakonfigurovat [elementární Live](http://www.elementaltechnologies.com/products/elemental-live) najdete v části ke odesílat živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace elementární Live](media-services-configure-elemental-live-encoder.md).
+Informace o tom tooconfigure hello [elementární Live](http://www.elementaltechnologies.com/products/elemental-live) toosend kodér tooan živý datový proud jednou přenosovou rychlostí AMS kanál, najdete v části [konfigurace elementární Live](media-services-configure-elemental-live-encoder.md).
 
 ## <a name="flash-media-live-encoder"></a>Flash Media Encoder za provozu
-Informace o tom, jak nakonfigurovat [Flash Live kodér médií](http://www.adobe.com/products/flash-media-encoder.html) najdete v části encoder (FMLE) k odeslání živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace FMLE](media-services-configure-fmle-live-encoder.md) .
+Informace o tom tooconfigure hello [Flash Live kodér médií](http://www.adobe.com/products/flash-media-encoder.html) (FMLE) kodér toosend tooan živý datový proud jednou přenosovou rychlostí AMS kanál, najdete v části [konfigurace FMLE](media-services-configure-fmle-live-encoder.md) .
 
 ## <a name="telestream-wirecast"></a>Kodér Telestream Wirecast
-Informace o tom, jak nakonfigurovat [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) najdete v části ke odesílat živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace Wirecast](media-services-configure-wirecast-live-encoder.md).
+Informace o tom tooconfigure hello [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) toosend kodér tooan živý datový proud jednou přenosovou rychlostí AMS kanál, najdete v části [konfigurace Wirecast](media-services-configure-wirecast-live-encoder.md).
 
 ## <a name="newtek-tricaster"></a>NewTek čase
-Informace o tom, jak nakonfigurovat [čase](http://newtek.com/products/tricaster-40.html) najdete v části ke odesílat živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace čase](media-services-configure-tricaster-live-encoder.md).
+Informace o tom tooconfigure hello [čase](http://newtek.com/products/tricaster-40.html) toosend kodér tooan živý datový proud jednou přenosovou rychlostí AMS kanál, najdete v části [konfigurace čase](media-services-configure-tricaster-live-encoder.md).
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -42,5 +42,5 @@ Informace o tom, jak nakonfigurovat [čase](http://newtek.com/products/tricaster
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také
-[Živé streamování využívající Azure Media Services k vytvářejí proudy s více přenosovými rychlostmi](media-services-manage-live-encoder-enabled-channels.md).
+[Živé streamování využívající Azure Media Services toocreate více přenosovými rychlostmi datové proudy](media-services-manage-live-encoder-enabled-channels.md).
 

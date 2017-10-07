@@ -1,6 +1,6 @@
 ---
-title: "Vytvořit modul Azure IoT Edge s Javou | Microsoft Docs"
-description: "V tomto kurzu umožňující prezentovat jak napsat modulu převaděč dat zakázat pomocí nejnovější balíčky Azure IoT Edge Maven."
+title: aaaCreate modul Azure IoT Edge s Javou | Microsoft Docs
+description: "V tomto kurzu hodnotí, jak toowrite pomocí modulu zakázat data převaděč hello nejnovější balíčky Azure IoT Edge Maven."
 services: iot-hub
 author: junyi
 manager: timlt
@@ -11,53 +11,53 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: junyi
-ms.openlocfilehash: 0c430272225d79737baec2be15ed7c93991cdeac
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: abb560933d13d133ae9a1da08b503d5735b230e0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-azure-iot-edge-module-with-java"></a>Vytvořit modul Azure IoT Edge s Javou
 
 V tomto kurzu hodnotí, jak jeden může vytvořit modul pro Azure IoT hrany v jazyce Java.
 
-V tomto kurzu jsme provede procesem nastavení prostředí a jak napsat [lit](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy) modulu převaděč dat pomocí nejnovější balíčky Azure IoT Edge Maven.
+V tomto kurzu jsme provede procesem nastavení prostředí a jak toowrite [lit](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy) modulu převaděč dat pomocí Azure IoT Edge Maven balíčky nejnovější hello.
 
 ## <a name="prerequisites"></a>Požadavky
 
-V této části bude nastavení prostředí pro vývoj modulu IoT okraj. Platí pro obě *64bitová verze Windows* a *64-bit Linux (8 Ubuntu/Debian)* operační systémy.
+V této části bude nastavení prostředí pro vývoj modulu IoT okraj. Platí tooboth *64bitová verze Windows* a *64-bit Linux (8 Ubuntu/Debian)* operační systémy.
 
-Je vyžadován následující software:
+je potřeba Hello následující software:
 
 * [Git klienta](https://git-scm.com/downloads).
 * [**x64** JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 * [Maven](https://maven.apache.org/install.html).
 
-Otevřete okno příkazového řádku terminálu a klonovat úložiště v následující:
+Otevřete příkazového řádku terminálu okno a klonování hello následující úložiště:
 
 1. `git clone https://github.com/Azure-Samples/iot-edge-samples.git`.
 2. `cd iot-edge-samples/java/simulated_ble`
 
 ## <a name="overall-architecture"></a>Přehled architektury
 
-Platformy Azure IoT Edge výraznou přijme [Von Neumannova architektura](https://en.wikipedia.org/wiki/Von_Neumann_architecture). Které znamená, že se celý Azure IoT Edge architektura systému, který zpracovává vstup a výstup; a každý jednotlivých modul je také velmi malé subsystému vstup a výstup. V tomto kurzu jsme vás seznámí následující dva moduly:
+platformy Azure IoT Edge Hello výraznou přijme hello [Von Neumannova architektura](https://en.wikipedia.org/wiki/Von_Neumann_architecture). To znamená této architektuře hello celý Azure IoT okraj je systém, který zpracovává vstup a výstup; a každý jednotlivých modul je také velmi malé subsystému vstup a výstup. V tomto kurzu jsme vás seznámí hello následující dva moduly:
 
 1. Modul, který obdrží simulované [lit](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy) signál a převede jej na formátovaný [JSON](https://en.wikipedia.org/wiki/JSON) zprávy.
-2. Modul, který vytiskne přijatého [JSON](https://en.wikipedia.org/wiki/JSON) zprávy.
+2. Modul, který vytiskne hello přijata [JSON](https://en.wikipedia.org/wiki/JSON) zprávy.
 
-Následující obrázek zobrazuje typické toku začátku do konce dat pro tento projekt.
+Hello následující obrázek zobrazuje typické začátku do konce toku hello dat pro tento projekt.
 
 ![Tok dat mezi tři moduly](media/iot-hub-iot-edge-create-module/dataflow.png "vstup: Simulated zakázat modulu; Procesor: Převaděč modulu; Výstup: Modul tiskárny")
 
-## <a name="understanding-the-code"></a>Pochopení kódu
+## <a name="understanding-hello-code"></a>Pochopení kódu hello
 
 ### <a name="maven-project-structure"></a>Struktura projekt maven
 
-Vzhledem k tomu, že Azure IoT Edge balíčky jsou založená na Maven, je potřeba vytvořit typické struktura projekt Maven, který obsahuje `pom.xml` souboru.
+Vzhledem k tomu, že Azure IoT Edge balíčky jsou založená na Maven, potřebujeme toocreate typické struktura projekt Maven, který obsahuje `pom.xml` souboru.
 
-POM dědí z `com.microsoft.azure.gateway.gateway-module-base` balíček, který deklaruje všechny závislé součásti, které modul projekt, která zahrnuje binární soubory modulu runtime, cesta k souboru konfigurace brány a chování při spuštění. To nám uloží velké množství času a eliminovat potřebu zápisu a opakovaně přepisování stovky řádků kódu.
+Hello POM dědí z hello `com.microsoft.azure.gateway.gateway-module-base` balíček, který deklaruje všechny hello závislosti, které modul projekt, která zahrnuje hello binární soubory modulu runtime, cesta ke konfiguračnímu souboru hello brány a chování při spuštění hello. To nám uloží velké množství času a eliminovat potřeba toowrite hello a opakovaně přepisování stovky řádků kódu.
 
-Je potřeba aktualizovat soubor pom.xml deklarace požadované závislosti nebo moduly plug-in a název konfiguračního souboru pro použití naše modulem, jak je znázorněno v následující fragment kódu.
+Potřebujeme tooupdate soubor pom.xml deklarováním hello požadované závislosti nebo modulů plug-in a hello název hello konfigurační soubor toobe používané naše modulu, jak je znázorněno v následujícím fragmentu kódu hello.
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -77,7 +77,7 @@ Je potřeba aktualizovat soubor pom.xml deklarace požadované závislosti nebo 
   <version>1.0</version>
   <packaging>jar</packaging>
 
-  <!-- Set the filename of the Azure IoT Edge configuration located
+  <!-- Set hello filename of hello Azure IoT Edge configuration located
        under ./src/main/resources/gateway/ which is used in parent -->
   <properties>
     <gw.config.fileName>gw-config.json</gw.config.fileName>
@@ -123,13 +123,13 @@ Je potřeba aktualizovat soubor pom.xml deklarace požadované závislosti nebo 
 
 Modul služby Azure IoT Edge lze považovat procesor dat, jejichž povinnostem je: přijímání vstupu, zpracovat a vytvoření výstupu.
 
-Vstup může být data z hardware (např. detektor pohybu), zprávu z ostatních modulů, nebo cokoliv jiného (např. náhodné číslo pravidelně generované časovač).
+vstup Hello může být data z hardware (např. detektor pohybu), zprávu z ostatních modulů, nebo cokoliv jiného (např. náhodné číslo pravidelně generované časovač).
 
-Výstup bude vypadat na vstup, se může spustit chování hardware (např. blikající LED), zprávu, která z ostatních modulů, nebo cokoliv jiného (např. tisk do konzoly).
+výstup Hello je podobné toohello vstup, se může spustit chování hardware (např. hello blikat DIODU), zpráva tooother moduly nebo cokoliv jiného (např. tisk toohello konzoly).
 
-Moduly navzájem komunikují pomocí `com.microsoft.azure.gateway.messaging.Message` třídy. **Obsahu** z `Message` je bajtové pole, která umožňuje představující jakýkoli druh dat se vám líbí. **Vlastnosti** jsou také k dispozici v `Message` a jsou jednoduše mapování řetězec řetězec. Může si můžete představit **vlastnosti** jako hlavičky v požadavku HTTP nebo metadata souboru.
+Moduly navzájem komunikují pomocí `com.microsoft.azure.gateway.messaging.Message` třídy. Hello **obsahu** z `Message` je bajtové pole, která umožňuje představující jakýkoli druh dat se vám líbí. **Vlastnosti** jsou také k dispozici v hello `Message` a jsou jednoduše mapování řetězec řetězec. Může si můžete představit **vlastnosti** jako hello hlavičky v požadavku HTTP, nebo hello metadata souboru.
 
-Chcete-li vytvořit modul Azure IoT Edge v jazyce Java, je potřeba vytvořit novou třídu modul, který dědí z `com.microsoft.azure.gateway.core.GatewayModule` a implementovat požadované abstraktní metody `receive()` a `destroy()`. V tomto okamžiku můžete také implementovat volitelné `start()` nebo `create()` také metody. Následující fragment kódu ukazuje, jak začít pracovat, vytváření modul Azure IoT okraj.
+V pořadí toodevelop modul Azure IoT Edge v jazyce Java, budete potřebovat toocreate novou třídu modul, který dědí z `com.microsoft.azure.gateway.core.GatewayModule` a implementaci abstraktní metody hello požadované `receive()` a `destroy()`. V tomto okamžiku můžete také tooimplement hello volitelné `start()` nebo `create()` také metody. Hello následující fragment kódu ukazuje, jak tooget zahájeno vytváření modul Azure IoT okraj.
 
 ```java
 import com.microsoft.azure.gateway.core.Broker;
@@ -138,29 +138,29 @@ import com.microsoft.azure.gateway.messaging.Message;
 
 public class MyEdgeModule extends GatewayModule {
   public MyEdgeModule(long address, Broker broker, String configuration) {
-    /* Let the GatewayModule do the dirty work of initialization. It's also
-       a good time to parse your own configuration defined in Azure IoT Edge
+    /* Let hello GatewayModule do hello dirty work of initialization. It's also
+       a good time tooparse your own configuration defined in Azure IoT Edge
        configuration file (typically ./src/main/resources/gateway/gw-config.json) */
     super(address, broker, configuration);
   }
 
   @Override
   public void start() {
-    /* Acquire the resources you need. If you don't
+    /* Acquire hello resources you need. If you don't
        need any resources, you may omit this method. */
   }
 
   @Override
   public void destroy() {
-    /* It's time to release all resources. This method is required. */
+    /* It's time toorelease all resources. This method is required. */
   }
 
   @Override
   public void receive(Message message) {
-    /* Logic to process the input message. This method is required. */
+    /* Logic tooprocess hello input message. This method is required. */
     // ...
-    /* Use publish() method to do the output. You are
-       allowed to publish your new Message instance. */
+    /* Use publish() method toodo hello output. You are
+       allowed toopublish your new Message instance. */
     this.publish(message);
   }
 }
@@ -172,7 +172,7 @@ public class MyEdgeModule extends GatewayModule {
 | ------------------------ | -------------------------------------- | ---------------------- | ---------------------- |
 | Teplotní datových zpráv | Analýza a vytvořit novou zprávu JSON | Struktura JSON zpráv | `ConverterModule.java` |
 
-Tento modul je typické modul Azure IoT okraj. Přijímá zprávy teploty z ostatních modulů (modul hardwarového nebo v tomto případě naše simulované modulu lit); a pak normalizuje teploty zprávu ve zprávě strukturovaných JSON (včetně připojování ID zprávy, nastavení vlastnosti jestli musíme teploty výstrahu aktivovat a tak dále).
+Tento modul je typické modul Azure IoT okraj. Přijímá zprávy teploty z ostatních modulů (modul hardwarového nebo v tomto případě naše simulované modulu lit); a pak normalizuje uvítací zprávu teploty tooa strukturovaná JSON zprávy (včetně připojování hello ID zprávy, nastavení hello vlastnost jestli potřebujeme tootrigger hello teploty výstrahy a tak dále).
 
 ```java
 @Override
@@ -202,9 +202,9 @@ public void receive(Message message) {
 
 | Vstup                          | Procesor | Výstup                     | Zdrojový soubor          |
 | ------------------------------ | --------- | -------------------------- | -------------------- |
-| Jakékoli zprávy z ostatních modulů | Není k dispozici       | Přihlaste se do konzoly zprávy | `PrinterModule.java` |
+| Jakékoli zprávy z ostatních modulů | Není k dispozici       | Protokolování zpráv tooconsole hello | `PrinterModule.java` |
 
-Toto je jednoduchá, není potřeba vysvětlovat, modul, který výstupy přijatých zpráv do okna terminálu.
+Toto je jednoduchá, není potřeba vysvětlovat, modul, který výstupy hello přijaté zprávy toohello okno terminálu.
 
 ```java
 @Override
@@ -215,9 +215,9 @@ public void receive(Message message) {
 
 ### <a name="azure-iot-edge-configuration"></a>Konfigurace Azure IoT Edge
 
-V posledním kroku před spuštěním moduly je ke konfiguraci Azure IoT okraj a k navázání připojení mezi moduly.
+posledním krokem Hello před spuštěním moduly hello je tooconfigure hello Azure IoT okraj a tooestablish hello připojení mezi moduly.
 
-Nejprve je potřeba deklarovat naše zavaděč Java (od Azure IoT Edge podporuje zavaděče různých jazyků), který může být odkazuje jeho `name` v částech i později.
+Nejprve je třeba toodeclare naše zavaděč Java (od Azure IoT Edge podporuje zavaděče různých jazyků), který může být odkazuje jeho `name` v částech hello i později.
 
 ```json
 "loaders": [{
@@ -231,7 +231,7 @@ Nejprve je potřeba deklarovat naše zavaděč Java (od Azure IoT Edge podporuje
 }]
 ```
 
-Jakmile jsme prohlásí, že je naše zavaděče, bude také musíme deklarovat také naše moduly. Podobně jako deklarace zavaděče, že lze také odkazovat podle jejich `name` atribut. Když modul deklarace, musíme určit zavaděč, měla by používat (který by měl být jeden jsme definovali před) a vstupní bod (musí být normalizovaný název třídy Naše modulu) pro každý modul. `simulated_device` Modul je nativní modul, který je zahrnutý v balíčku Azure IoT Edge core runtime. Vždy by měla obsahovat vaše `args` v kódu JSON souboru i v případě, že je `null`.
+Jakmile jsme prohlásí, že je naše zavaděče, bude také potřebujeme toodeclare také naše moduly. Podobné zavaděče hello toodeclaring, že lze také odkazovat podle jejich `name` atribut. Když modul deklarace, potřebujeme toospecify hello zavaděč měli použít (které by se měly hello jeden jsme definovali před) a hello vstupního bodu (by měl být hello normalizovaný název třídy Naše modulu) pro každý modul. Hello `simulated_device` modul je nativní modul, který je součástí hello Azure IoT Edge core runtime balíčku. Vždy by měla obsahovat vaše `args` v souboru JSON, i když je hello `null`.
 
 ```json
 "modules": [
@@ -273,7 +273,7 @@ Jakmile jsme prohlásí, že je naše zavaděče, bude také musíme deklarovat 
 ]
 ```
 
-Na konci konfigurace naváže připojení. Je každé připojení vyjádřená `source` a `sink`. Jejich by měl obě odkazovat modul předem definovaná. Výstup zprávu `source` modulu se předají na vstup `sink` modulu.
+Na konci hello hello konfigurace naváže připojení hello. Je každé připojení vyjádřená `source` a `sink`. Jejich by měl obě odkazovat modul předem definovaná. zprávu výstup Hello `source` modulu se předají toohello vstup z `sink` modulu.
 
 ```json
 "links": [
@@ -288,14 +288,14 @@ Na konci konfigurace naváže připojení. Je každé připojení vyjádřená `
 ]
 ```
 
-## <a name="running-the-modules"></a>Spuštění moduly
+## <a name="running-hello-modules"></a>Spuštěné moduly hello
 
-Použití `mvn package` k sestavení všechno, co do `target/` složky. `mvn clean package`je také vhodné pro čistá sestavení.
+Použití `mvn package` toobuild všechno, co do hello `target/` složky. `mvn clean package`je také vhodné pro čistá sestavení.
 
-Použití `mvn exec:exec` ke spuštění na Azure IoT okraj a jste měli zjistit že se ke konzole s pevnou sazbou vytištěn teploty data a všechny vlastnosti.
+Použití `mvn exec:exec` toorun hello Azure IoT okraj a měli zjistit, zda jsou hello teploty data a všechny vlastnosti hello konzoly na tištěných toohello s pevnou sazbou.
 
-Pokud chcete aplikaci ukončit, stiskněte klávesu `<Enter>` klíč.
+Pokud chcete aplikace hello tooterminate, stiskněte klávesu `<Enter>` klíč.
 
 > [!IMPORTANT]
-> Není doporučeno používat kombinace kláves Ctrl + C k ukončení aplikace IoT hraniční brány. Jak to může způsobit neobvyklým způsobem ukončení procesu.
+> Není doporučeno toouse Ctrl + C tooterminate hello IoT hraniční brány aplikace. Jak to může způsobit hello proces tooterminate neobvyklým způsobem.
 

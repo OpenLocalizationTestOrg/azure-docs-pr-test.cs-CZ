@@ -1,6 +1,6 @@
 ---
-title: "Připojení k Azure Database for PostgreSQL pomocí jazyka Java| Dokumentace Microsoftu"
-description: "V tomto rychlém startu najdete vzorek kódu Java, který můžete použít k připojení a dotazování dat ze služby Azure Database for PostgreSQL."
+title: "Připojení tooAzure databáze pro PostgreSQL pomocí Java | Microsoft Docs"
+description: "Tento rychlý start poskytuje ukázka kódu Java můžete použít tooconnect a zadávat dotazy na data z databáze Azure pro PostgreSQL."
 services: postgresql
 author: jasonwhowell
 ms.author: jasonh
@@ -11,38 +11,38 @@ ms.custom: mvc
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 06/23/2017
-ms.openlocfilehash: 730a3f464b4437c260d09abc026a186a0e26293c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8f6e0a47a0d6dfebf29eb56c31ccccabd7c2b670
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-database-for-postgresql-use-java-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Použití jazyka Java k připojení a dotazování dat
-Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for PostgreSQL pomocí aplikace jazyka Java. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí jazyka Java a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
+# <a name="azure-database-for-postgresql-use-java-tooconnect-and-query-data"></a>Azure databázi PostgreSQL: použití Java tooconnect a dotazování dat
+Tento rychlý start předvádí jak tooconnect tooan Azure databázi PostgreSQL pomocí aplikace Java. Zobrazuje jak toouse tooquery příkazy SQL, vložit, aktualizovat a odstranit data v databázi hello. Hello postup v tomto článku předpokládá, že jste obeznámeni s vývojem pomocí Java, a že jste novou tooworking s Azure databáze PostgreSQL.
 
 ## <a name="prerequisites"></a>Požadavky
-Tento rychlý start využívá jako výchozí bod prostředky vytvořené v některém z těchto průvodců:
+Tento rychlý start využívá prostředky hello vytvořené v některém z těchto průvodcích se dozvíte jako výchozí bod:
 - [Vytvoření databáze – portál](quickstart-create-server-database-portal.md)
 - [Vytvoření databáze – rozhraní příkazového řádku Azure](quickstart-create-server-database-azure-cli.md)
 
 Budete také muset:
-- Stáhnout [ovladač JDBC pro PostgreSQL](https://jdbc.postgresql.org/download.html) odpovídající verzi jazyka Java a sadě Java Development Kit
-- Zahrnout soubor .jar JDBC pro PostgreSQL (například postgresql-42.1.1.jar) do cesty pro třídu aplikace Další informace najdete v [podrobnostech cesty pro třídu](https://jdbc.postgresql.org/documentation/head/classpath.html).
+- Stáhnout hello [ovladač JDBC PostgreSQL](https://jdbc.postgresql.org/download.html) odpovídající verzi aplikace Java a hello Java Development Kit.
+- Zahrňte hello soubor jar PostgreSQL JDBC (například postgresql-42.1.1.jar) do cesty pro třídy vaší aplikace. Další informace najdete v [podrobnostech cesty pro třídu](https://jdbc.postgresql.org/documentation/head/classpath.html).
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
-Získejte informace o připojení potřebné pro připojení ke službě Azure Database for PostgreSQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
+Získáte hello připojení informace potřebné tooconnect toohello databáze Azure pro PostgreSQL. Musíte hello serveru plně kvalifikovaný název a přihlašovací údaje.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server, například **mypgserver-20170401**.
-3. Klikněte na název serveru **mypgserver-20170401**.
-4. Vyberte stránku **Přehled** serveru. Poznamenejte si **Název serveru** a **Přihlašovací jméno správce serveru**.
- ![Azure Database for PostgreSQL – přihlašovací jméno správce serveru](./media/connect-java/1-connection-string.png)
-5. Pokud zapomenete přihlašovací údaje k serveru, přejděte na stránku **Přehled**, kde můžete zobrazit přihlašovací jméno správce serveru a v případě potřeby resetovat heslo.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
+2. Hello levé nabídce na portálu Azure, klikněte na tlačítko **všechny prostředky** a vyhledejte hello serveru, které jste vytvořili, například **mypgserver 20170401**.
+3. Klikněte na název serveru hello **mypgserver 20170401**.
+4. Vyberte hello serveru **přehled** stránky. Poznamenejte si hello **název serveru** a **přihlašovací jméno pro Server správce**.
+ ![Azure Database for PostgreSQL – přihlášení správce serveru](./media/connect-java/1-connection-string.png)
+5. Pokud zapomenete vaše přihlašovací údaje serveru, přejděte toohello **přehled** stránka tooview hello serveru správce přihlašovací jméno a v případě potřeby obnovit heslo hello.
 
 ## <a name="connect-create-table-and-insert-data"></a>Připojení, vytvoření tabulky a vložení dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím funkce s příkazem **INSERT** jazyka SQL. Metody [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) a [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) slouží k připojení, odpojení a vytvoření tabulky. Objekt [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) slouží k sestavení příkazů INSERT a metody setString() a setInt() k vázání hodnot parametrů. Metoda [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) spouští příkaz pro každou sadu parametrů. 
+Použití hello následující kód tooconnect a zatížení hello dat pomocí funkce hello **vložit** příkaz jazyka SQL. Hello metody [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html), a [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) jsou použité tooconnect, vyřaďte a vytvořte tabulku hello. Hello [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) objekt je příkazy insert hello toobuild použité, s setString() a setInt() hodnotami parametrů toobind hello. Metoda [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) hello spustí příkaz pro každou sadu parametrů. 
 
-Nahraďte parametry host (hostitel), database (databáze), user (uživatel) a password (heslo) hodnotami, které jste zadali při vytváření vlastního serveru a databáze.
+Nahraďte hello hodnoty, které jste zadali při vytváření vlastní server a databáze hello hostitele, databáze, uživatele a heslo parametry.
 
 ```java
 import java.sql.*;
@@ -59,7 +59,7 @@ public class CreateTableInsertRows {
         String user = "mylogin@mypgserver-20170401";
         String password = "<server_admin_password>";
 
-        // check that the driver is installed
+        // check that hello driver is installed
         try
         {
             Class.forName("org.postgresql.Driver");
@@ -78,7 +78,7 @@ public class CreateTableInsertRows {
         {
             String url = String.format("jdbc:postgresql://%s/%s", host, database);
             
-            // set up the connection properties
+            // set up hello connection properties
             Properties properties = new Properties();
             properties.setProperty("user", user);
             properties.setProperty("password", password);
@@ -89,13 +89,13 @@ public class CreateTableInsertRows {
         }
         catch (SQLException e)
         {
-            throw new SQLException("Failed to create connection to database.", e);
+            throw new SQLException("Failed toocreate connection toodatabase.", e);
         }
         if (connection != null) 
         { 
-            System.out.println("Successfully created connection to database.");
+            System.out.println("Successfully created connection toodatabase.");
         
-            // Perform some SQL queries over the connection.
+            // Perform some SQL queries over hello connection.
             try
             {
                 // Drop previous table of same name if one exists.
@@ -123,7 +123,7 @@ public class CreateTableInsertRows {
                 nRowsInserted += preparedStatement.executeUpdate();
                 System.out.println(String.format("Inserted %d row(s) of data.", nRowsInserted));
     
-                // NOTE No need to commit all changes to database, as auto-commit is enabled by default.
+                // NOTE No need toocommit all changes toodatabase, as auto-commit is enabled by default.
     
             }
             catch (SQLException e)
@@ -132,7 +132,7 @@ public class CreateTableInsertRows {
             }       
         }
         else {
-            System.out.println("Failed to create connection to database.");
+            System.out.println("Failed toocreate connection toodatabase.");
         }
         System.out.println("Execution finished.");
     }
@@ -140,9 +140,9 @@ public class CreateTableInsertRows {
 ```
 
 ## <a name="read-data"></a>Čtení dat
-Pomocí následujícího kódu načtěte data s využitím příkazu **SELECT** jazyka SQL. Metody [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) a [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) slouží k připojení, vytvoření a spuštění příkazu SELECT. Výsledky se zpracovávají pomocí objektu [ResultSet](https://www.postgresql.org/docs/7.4/static/jdbc-query.html). 
+Použití hello následující kód tooread hello dat pomocí **vyberte** příkaz jazyka SQL. Hello metody [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html), a [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) jsou použité tooconnect, vytvořte a spusťte příkaz select hello. výsledky Hello se zpracovávají pomocí [třídy ResultSet](https://www.postgresql.org/docs/7.4/static/jdbc-query.html) objektu. 
 
-Nahraďte parametry host (hostitel), database (databáze), user (uživatel) a password (heslo) hodnotami, které jste zadali při vytváření vlastního serveru a databáze.
+Nahraďte hello hodnoty, které jste zadali při vytváření vlastní server a databáze hello hostitele, databáze, uživatele a heslo parametry.
 
 ```java
 import java.sql.*;
@@ -159,7 +159,7 @@ public class ReadTable {
         String user = "mylogin@mypgserver-20170401";
         String password = "<server_admin_password>";
 
-        // check that the driver is installed
+        // check that hello driver is installed
         try
         {
             Class.forName("org.postgresql.Driver");
@@ -178,7 +178,7 @@ public class ReadTable {
         {
             String url = String.format("jdbc:postgresql://%s/%s", host, database);
             
-            // set up the connection properties
+            // set up hello connection properties
             Properties properties = new Properties();
             properties.setProperty("user", user);
             properties.setProperty("password", password);
@@ -189,13 +189,13 @@ public class ReadTable {
         }
         catch (SQLException e)
         {
-            throw new SQLException("Failed to create connection to database.", e);
+            throw new SQLException("Failed toocreate connection toodatabase.", e);
         }
         if (connection != null) 
         { 
-            System.out.println("Successfully created connection to database.");
+            System.out.println("Successfully created connection toodatabase.");
         
-            // Perform some SQL queries over the connection.
+            // Perform some SQL queries over hello connection.
             try
             {
     
@@ -218,7 +218,7 @@ public class ReadTable {
             }       
         }
         else {
-            System.out.println("Failed to create connection to database.");
+            System.out.println("Failed toocreate connection toodatabase.");
         }
         System.out.println("Execution finished.");
     }
@@ -227,9 +227,9 @@ public class ReadTable {
 ```
 
 ## <a name="update-data"></a>Aktualizace dat
-Pomocí následujícího kódu změňte data s využitím příkazu **UPDATE** jazyka SQL. Metody [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html) a [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) slouží k připojení, přípravě a spuštění příkazu UPDATE. 
+Použití hello následující kód toochange hello dat pomocí **aktualizace** příkaz jazyka SQL. Hello metody [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html), a [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) jsou použité tooconnect, Příprava, a spusťte příkaz update hello. 
 
-Nahraďte parametry host (hostitel), database (databáze), user (uživatel) a password (heslo) hodnotami, které jste zadali při vytváření vlastního serveru a databáze.
+Nahraďte hello hodnoty, které jste zadali při vytváření vlastní server a databáze hello hostitele, databáze, uživatele a heslo parametry.
 
 ```java
 import java.sql.*;
@@ -245,7 +245,7 @@ public class UpdateTable {
         String user = "mylogin@mypgserver-20170401";
         String password = "<server_admin_password>";
 
-        // check that the driver is installed
+        // check that hello driver is installed
         try
         {
             Class.forName("org.postgresql.Driver");
@@ -264,7 +264,7 @@ public class UpdateTable {
         {
             String url = String.format("jdbc:postgresql://%s/%s", host, database);
             
-            // set up the connection properties
+            // set up hello connection properties
             Properties properties = new Properties();
             properties.setProperty("user", user);
             properties.setProperty("password", password);
@@ -275,13 +275,13 @@ public class UpdateTable {
         }
         catch (SQLException e)
         {
-            throw new SQLException("Failed to create connection to database.", e);
+            throw new SQLException("Failed toocreate connection toodatabase.", e);
         }
         if (connection != null) 
         { 
-            System.out.println("Successfully created connection to database.");
+            System.out.println("Successfully created connection toodatabase.");
         
-            // Perform some SQL queries over the connection.
+            // Perform some SQL queries over hello connection.
             try
             {
                 // Modify some data in table.
@@ -292,7 +292,7 @@ public class UpdateTable {
                 nRowsUpdated += preparedStatement.executeUpdate();
                 System.out.println(String.format("Updated %d row(s) of data.", nRowsUpdated));
     
-                // NOTE No need to commit all changes to database, as auto-commit is enabled by default.
+                // NOTE No need toocommit all changes toodatabase, as auto-commit is enabled by default.
             }
             catch (SQLException e)
             {
@@ -300,16 +300,16 @@ public class UpdateTable {
             }       
         }
         else {
-            System.out.println("Failed to create connection to database.");
+            System.out.println("Failed toocreate connection toodatabase.");
         }
         System.out.println("Execution finished.");
     }
 }
 ```
 ## <a name="delete-data"></a>Odstranění dat
-Pomocí následujícího kódu odstraňte data s využitím příkazu **DELETE** jazyka SQL. Metody [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html) a [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) slouží k připojení, přípravě a spuštění příkazu DELETE. 
+Použití hello následující kód tooremove dat pomocí **odstranit** příkaz jazyka SQL. Hello metody [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html), a [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) jsou použité tooconnect, Příprava, a spusťte příkaz delete hello. 
 
-Nahraďte parametry host (hostitel), database (databáze), user (uživatel) a password (heslo) hodnotami, které jste zadali při vytváření vlastního serveru a databáze.
+Nahraďte hello hodnoty, které jste zadali při vytváření vlastní server a databáze hello hostitele, databáze, uživatele a heslo parametry.
 
 ```java
 import java.sql.*;
@@ -325,7 +325,7 @@ public class DeleteTable {
         String user = "mylogin@mypgserver-20170401";
         String password = "<server_admin_password>";
 
-        // check that the driver is installed
+        // check that hello driver is installed
         try
         {
             Class.forName("org.postgresql.Driver");
@@ -344,7 +344,7 @@ public class DeleteTable {
         {
             String url = String.format("jdbc:postgresql://%s/%s", host, database);
             
-            // set up the connection properties
+            // set up hello connection properties
             Properties properties = new Properties();
             properties.setProperty("user", user);
             properties.setProperty("password", password);
@@ -355,13 +355,13 @@ public class DeleteTable {
         }
         catch (SQLException e)
         {
-            throw new SQLException("Failed to create connection to database.", e);
+            throw new SQLException("Failed toocreate connection toodatabase.", e);
         }
         if (connection != null) 
         { 
-            System.out.println("Successfully created connection to database.");
+            System.out.println("Successfully created connection toodatabase.");
         
-            // Perform some SQL queries over the connection.
+            // Perform some SQL queries over hello connection.
             try
             {
                 // Delete some data from table.
@@ -371,7 +371,7 @@ public class DeleteTable {
                 nRowsDeleted += preparedStatement.executeUpdate();
                 System.out.println(String.format("Deleted %d row(s) of data.", nRowsDeleted));
     
-                // NOTE No need to commit all changes to database, as auto-commit is enabled by default.
+                // NOTE No need toocommit all changes toodatabase, as auto-commit is enabled by default.
             }
             catch (SQLException e)
             {
@@ -379,7 +379,7 @@ public class DeleteTable {
             }       
         }
         else {
-            System.out.println("Failed to create connection to database.");
+            System.out.println("Failed toocreate connection toodatabase.");
         }
         System.out.println("Execution finished.");
     }

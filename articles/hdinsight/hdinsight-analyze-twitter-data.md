@@ -1,6 +1,6 @@
 ---
-title: "Analýza dat Twitteru pomocí Hadoop v HDInsight - Azure | Microsoft Docs"
-description: "Další informace o použití Hive k analýze dat Twitteru systému Hadoop v HDInsight k vyhledání využití četnost určité slovo."
+title: "aaaAnalyze dat Twitteru pomocí Hadoop v HDInsight - Azure | Microsoft Docs"
+description: "Zjistěte, jak toouse Hive tooanalyze Twitter data v Hadoop v HDInsight toofind hello využití frekvenci určité slovo."
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -15,71 +15,71 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 711d364c36c3aba699326f4a76d42891ba3219fb
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 40c0a1afbc1fff10c070d22a99cd9d32d42f230a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Analýza dat Twitteru pomocí Hive v HDInsight
-Sociální weby jsou jedním z hlavních řízení vynutí pro velké objemy dat přijetí. Veřejná rozhraní API poskytované lokality jako Twitter jsou užitečné zdroje dat pro analýzu a pochopení oblíbených trendy.
-V tomto kurzu získáte tweetů pomocí Twitteru, streamování rozhraní API a pak použít Apache Hive v Azure HDInsight k získání seznamu Twitter uživatelů, kteří odeslané většina tweetů, které obsahovaly určité slovo.
+Sociální weby jsou jedním z hlavních řízení vynutí pro přijetí velkých objemů dat hello. Veřejná rozhraní API poskytované lokality jako Twitter jsou užitečné zdroje dat pro analýzu a pochopení oblíbených trendy.
+V tomto kurzu budete získat tweetů pomocí Twitteru, streamování rozhraní API a potom pomocí Apache Hive v Azure HDInsight tooget seznam Twitter uživatelů, kteří odeslané hello většina tweetů, které obsahovaly určité slovo.
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu vyžadují cluster HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Konkrétní kroky do clusteru se systémem Linux najdete v tématu [Twitter analýza dat pomocí Hive v HDInsight (Linux)](hdinsight-analyze-twitter-data-linux.md).
+> Hello kroky v tomto dokumentu vyžadují cluster HDInsight se systémem Windows. Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Kroky konkrétní tooa systémem Linux clusteru, najdete v části [Twitter analýza dat pomocí Hive v HDInsight (Linux)](hdinsight-analyze-twitter-data-linux.md).
 
 ## <a name="prerequisites"></a>Požadavky
-Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
+Než začnete tento kurz, musíte mít následující hello:
 
 * **Pracovní stanice** pomocí prostředí Azure PowerShell nainstalovaný a nakonfigurovaný.
 
-    Spuštění skriptů prostředí Windows PowerShell, musíte spustit prostředí Azure PowerShell jako správce a nastavte zásady spouštění *RemoteSigned*. V tématu [spustit prostředí Windows PowerShell skripty][powershell-script].
+    tooexecute skriptů prostředí Windows PowerShell, je nutné spustit prostředí Azure PowerShell jako správce a nastavte zásady spouštění hello příliš*RemoteSigned*. V tématu [spustit prostředí Windows PowerShell skripty][powershell-script].
 
-    Před spuštěním skriptů prostředí Windows PowerShell, zkontrolujte, zda že jste připojeni k předplatnému Azure pomocí následující rutiny:
+    Před spuštěním skriptů prostředí Windows PowerShell, zkontrolujte, zda že jsou připojené tooyour předplatného Azure pomocí hello následující rutiny:
 
     ```powershell
     Login-AzureRmAccount
     ```
 
-    Pokud máte víc předplatných Azure, použijte následující rutinu nastavte aktuální předplatné:
+    Pokud máte víc předplatných Azure, použijte následující rutinu tooset hello aktuální předplatné hello:
 
     ```powershell
     Select-AzureRmSubscription -SubscriptionID <Azure Subscription ID>
     ```
 
     > [!IMPORTANT]
-    > Podpora prostředí Azure PowerShell pro správu prostředků služby HDInsight pomocí Azure Service Manageru je **zastaralá** a k 1. lednu 2017 jsme ji odebrali. Kroky v tomto dokumentu používají nové rutiny služby HDInsight, které pracují s Azure Resource Managerem.
+    > Podpora prostředí Azure PowerShell pro správu prostředků služby HDInsight pomocí Azure Service Manageru je **zastaralá** a k 1. lednu 2017 jsme ji odebrali. kroky Hello, v tento dokument použít hello nové rutiny služby HDInsight, které fungují s Azure Resource Manager.
     >
-    > Podle postupu v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs) si nainstalujte nejnovější verzi prostředí Azure PowerShell. Pokud máte skripty, které je potřeba upravit tak, aby používaly nové rutiny, které pracují s nástrojem Azure Resource Manager, najdete další informace v tématu [Migrace na vývojové nástroje založené na Azure Resource Manageru pro clustery služby HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
+    > Postupujte podle kroků hello v [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azureps-cmdlets-docs) tooinstall hello nejnovější verzi prostředí Azure PowerShell. Pokud máte skripty, že toobe potřeba upravit hello toouse nové se rutiny, které pracují s Azure Resource Managerem najdete v tématu [tooAzure migrace založené na správci prostředků vývoj nástroje pro clustery služby HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md) Další informace.
 
-* **Cluster Azure HDInsight**. Postup při zřizování clusteru naleznete v tématu [začněte používat HDInsight] [ hdinsight-get-started] nebo [zřizování clusterů HDInsight][hdinsight-provision]. Později v tomto kurzu budete potřebovat název clusteru.
+* **Cluster Azure HDInsight**. Postup při zřizování clusteru naleznete v tématu [začněte používat HDInsight] [ hdinsight-get-started] nebo [zřizování clusterů HDInsight][hdinsight-provision]. Název clusteru hello budete potřebovat později v kurzu hello.
 
-Následující tabulka uvádí soubory používané v tomto kurzu:
+Hello následující tabulka uvádí soubory hello použité v tomto kurzu:
 
 | Soubory | Popis |
 | --- | --- |
-| /tutorials/Twitter/data/tweets.txt |Zdroj dat pro úlohy Hive. |
-| /tutorials/Twitter/Output |Výstupní složky pro úlohy Hive. Je název souboru výstup úlohy Hive výchozí **000000_0**. |
-| tutorials/Twitter/Twitter.hql |Soubor skriptu HiveQL. |
-| /tutorials/Twitter/JobStatus |Stav úlohy Hadoop. |
+| /tutorials/Twitter/data/tweets.txt |Hello zdroje dat pro úlohy Hive hello. |
+| /tutorials/Twitter/Output |Hello výstupní složky pro úlohy Hive hello. Hello výchozí Hive úlohy výstup název souboru je **000000_0**. |
+| tutorials/Twitter/Twitter.hql |soubor skriptu HiveQL Hello. |
+| /tutorials/Twitter/JobStatus |Hello stav úlohy Hadoop. |
 
 ## <a name="get-twitter-feed"></a>Get Twitteru
-V tomto kurzu budete používat [Twitter streamování rozhraní API][twitter-streaming-api]. Konkrétní Twitter streamování použijete rozhraní API je [stavy nebo filtr][twitter-statuses-filter].
+V tomto kurzu budete používat hello [Twitter streamování rozhraní API][twitter-streaming-api]. je technologie Hello konkrétní Twitter streamování použijete rozhraní API [stavy nebo filtr][twitter-statuses-filter].
 
 > [!NOTE]
-> Soubor obsahující 10 000 tweetů a soubor skriptu Hive (popsaná v další části) byly odeslány ve veřejném kontejneru Blob. Pokud chcete použít odeslané soubory, můžete tuto část přeskočit.
+> Soubor obsahující 10 000 tweetů a soubor skriptu Hive hello (popsaná v další části hello) byly odeslány ve veřejném kontejneru Blob. Pokud chcete soubory toouse hello nahrát, můžete tuto část přeskočit.
 
-[Tweetů data](https://dev.twitter.com/docs/platform-objects/tweets) je uložený ve formátu JavaScript Object Notation (JSON), která obsahuje komplexní vnořené struktury. Místo psaní velkého počtu řádků kódu s použitím konvenční programovací jazyk, můžete převést tuto strukturu vnořené do tabulky Hive, tak, aby může být dotazován podle jazyka SQL (Structured Query) – jako jazyka nazývaného HiveQL.
+[Tweetů data](https://dev.twitter.com/docs/platform-objects/tweets) je uložený ve formátu JavaScript Object Notation (JSON) hello, která obsahuje komplexní vnořené struktury. Místo psaní velkého počtu řádků kódu s použitím konvenční programovací jazyk, můžete převést tuto strukturu vnořené do tabulky Hive, tak, aby může být dotazován podle jazyka SQL (Structured Query) – jako jazyka nazývaného HiveQL.
 
-K poskytování autorizovaný přístup k jeho API používá Twitter OAuth. OAuth je ověřovací protokol, který umožňuje uživatelům schválit aplikace tak, aby fungoval na ně bez sdílení své heslo. Další informace najdete na [oauth.net](http://oauth.net/) nebo vynikající [Průvodce začátečníka OAuth](http://hueniverse.com/oauth/) z Hueniverse.
+Twitter používá rozhraní API tooits OAuth tooprovide oprávnění přístupu. OAuth je ověřovací protokol, který umožňuje uživatelům tooapprove aplikace tooact jejich jménem bez sdílení své heslo. Další informace najdete na [oauth.net](http://oauth.net/) nebo v hello vynikající [tooOAuth příručka začátečníka](http://hueniverse.com/oauth/) z Hueniverse.
 
-Prvním krokem k používají OAuth je vytvořit novou aplikaci na webu služby Twitter Developer.
+první krok toouse Hello OAuth je toocreate novou aplikaci na webu služby Twitter vývojáře hello.
 
-**Vytvořit aplikaci služby Twitter.**
+**toocreate aplikace služby Twitter.**
 
-1. Přihlaste se k [https://apps.twitter.com/](https://apps.twitter.com/). Klikněte na tlačítko **nyní** odkaz, pokud nemáte účet služby Twitter.
+1. Přihlaste se příliš[https://apps.twitter.com/](https://apps.twitter.com/). Klikněte na tlačítko hello **nyní** odkaz, pokud nemáte účet služby Twitter.
 2. Klikněte na tlačítko **vytvořte novou aplikaci**.
-3. Zadejte **název**, **popis**, **webu**. Můžete použít pro adresu URL **webu** pole. Následující tabulka uvádí některé ukázkové hodnoty použít:
+3. Zadejte **název**, **popis**, **webu**. Můžete použít adresu URL pro hello **webu** pole. Hello následující tabulka uvádí některé ukázkové hodnoty toouse:
 
    | Pole | Hodnota |
    | --- | --- |
@@ -87,46 +87,46 @@ Prvním krokem k používají OAuth je vytvořit novou aplikaci na webu služby 
    |  Popis |MyHDInsightApp |
    |  Web |http://www.myhdinsightapp.com |
 4. Zkontrolujte **souhlasím**a potom klikněte na **vytvořit aplikaci služby Twitter**.
-5. Klikněte **oprávnění** kartě. Výchozí oprávnění je **jen pro čtení**. Toto je dostatečný pro účely tohoto kurzu.
-6. Klikněte **klíče a přístupové tokeny** kartě.
+5. Klikněte na tlačítko hello **oprávnění** kartě hello výchozí oprávnění je **jen pro čtení**. Toto je dostatečný pro účely tohoto kurzu.
+6. Klikněte na tlačítko hello **klíče a přístupové tokeny** kartě.
 7. Klikněte na tlačítko **vytvořit můj přístupový token**.
-8. Klikněte na tlačítko **testovací OAuth** v pravém horním rohu stránky.
-9. Zapište **uživatelský klíč**, **uživatelský tajný klíč**, **přístupový token**, a **tajný klíč přístupového tokenu**. Později v tomto kurzu budete potřebovat hodnoty.
+8. Klikněte na tlačítko **testovací OAuth** v pravém horním rohu hello hello stránky.
+9. Zapište **uživatelský klíč**, **uživatelský tajný klíč**, **přístupový token**, a **tajný klíč přístupového tokenu**. Hello hodnoty budete potřebovat později v kurzu hello.
 
-V tomto kurzu budete používat prostředí Windows PowerShell aby volání webové služby. C# .NET ukázku, najdete v části [analýzu v reálném čase sentimentu Twitter s HBase v HDInsight][hdinsight-hbase-twitter-sentiment]. Dalších oblíbených nástroj volání webové služby je [ *Curl*][curl]. Curl si můžete stáhnout z [sem][curl-download].
+V tomto kurzu použijete volání webové služby v prostředí Windows PowerShell toomake hello. C# .NET ukázku, najdete v části [analýzu v reálném čase sentimentu Twitter s HBase v HDInsight][hdinsight-hbase-twitter-sentiment]. je technologie Hello volání webové služby dalších oblíbených nástroj toomake [ *Curl*][curl]. Curl si můžete stáhnout z [sem][curl-download].
 
 > [!NOTE]
-> Pokud použijete příkaz curl v systému Windows, použijte dvojité uvozovky místo jednoduchých uvozovek a být pro hodnoty možnosti.
+> Pokud použijete příkaz curl hello v systému Windows, použijte dvojité uvozovky místo jednoduchých uvozovek a být pro hodnoty možnosti hello.
 
-**Chcete-li získat tweetů**
+**tooget tweetů**
 
-1. Otevřete prostředí Windows PowerShell Integrované skriptovací prostředí (ISE). (Na obrazovce Start pro Windows 8, zadejte **PowerShell_ISE** a pak klikněte na **Windows PowerShell ISE**. V tématu [spuštění prostředí Windows PowerShell v systému Windows 8 a Windows][powershell-start].)
-2. Zkopírujte následující skript do podokna skriptu:
+1. Otevřete Windows PowerShell Integrované skriptovací prostředí (ISE) hello. (Na obrazovce Windows 8 Start hello zadejte **PowerShell_ISE** a pak klikněte na **Windows PowerShell ISE**. V tématu [spuštění prostředí Windows PowerShell v systému Windows 8 a Windows][powershell-start].)
+2. Zkopírujte následující skript do podokno skriptu hello hello:
 
     ```powershell
     #region - variables and constants
-    $clusterName = "<HDInsightClusterName>" # Enter the HDInsight cluster name
+    $clusterName = "<HDInsightClusterName>" # Enter hello HDInsight cluster name
 
-    # Enter the OAuth information for your Twitter application
+    # Enter hello OAuth information for your Twitter application
     $oauth_consumer_key = "<TwitterAppConsumerKey>";
     $oauth_consumer_secret = "<TwitterAppConsumerSecret>";
     $oauth_token = "<TwitterAppAccessToken>";
     $oauth_token_secret = "<TwitterAppAccessTokenSecret>";
 
-    $destBlobName = "tutorials/twitter/data/tweets.txt" # This script saves the tweets into this blob.
+    $destBlobName = "tutorials/twitter/data/tweets.txt" # This script saves hello tweets into this blob.
 
-    $trackString = "Azure, Cloud, HDInsight" # This script gets the tweets containing these keywords.
+    $trackString = "Azure, Cloud, HDInsight" # This script gets hello tweets containing these keywords.
     $track = [System.Uri]::EscapeDataString($trackString);
-    $lineMax = 10000  # The script will get this number of tweets. It is about 3 minutes every 100 lines.
+    $lineMax = 10000  # hello script will get this number of tweets. It is about 3 minutes every 100 lines.
     #endregion
 
-    #region - Connect to Azure subscription
-    Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
+    #region - Connect tooAzure subscription
+    Write-Host "`nConnecting tooyour Azure subscription ..." -ForegroundColor Green
     Login-AzureRmAccount
     #endregion
 
     #region - Create a block blob object for writing tweets into Blob storage
-    Write-Host "Get the default storage account name and Blob container name using the cluster name ..." -ForegroundColor Green
+    Write-Host "Get hello default storage account name and Blob container name using hello cluster name ..." -ForegroundColor Green
     $myCluster = Get-AzureRmHDInsightCluster -Name $clusterName
     $resourceGroupName = $myCluster.ResourceGroup
     $storageAccountName = $myCluster.DefaultStorageAccount.Replace(".blob.core.windows.net", "")
@@ -134,7 +134,7 @@ V tomto kurzu budete používat prostředí Windows PowerShell aby volání webo
     Write-Host "`tThe storage account name is $storageAccountName." -ForegroundColor Yellow
     Write-Host "`tThe blob container name is $containerName." -ForegroundColor Yellow
 
-    Write-Host "Define the Azure storage connection string ..." -ForegroundColor Green
+    Write-Host "Define hello Azure storage connection string ..." -ForegroundColor Green
     $storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName)[0].Value
     $storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=$storageAccountName;AccountKey=$storageAccountKey"
     Write-Host "`tThe connection string is $storageConnectionString." -ForegroundColor Yellow
@@ -217,8 +217,8 @@ V tomto kurzu budete používat prostředí Windows PowerShell aby volání webo
     }
     #endregion
 
-    #region - Write tweets to Blob storage
-    Write-Host "Write to the destination blob ..." -ForegroundColor Green
+    #region - Write tweets tooBlob storage
+    Write-Host "Write toohello destination blob ..." -ForegroundColor Green
     $writeStream.Flush()
     $memStream.Seek(0, "Begin")
     $destBlob.UploadFromStream($memStream)
@@ -229,44 +229,44 @@ V tomto kurzu budete používat prostředí Windows PowerShell aby volání webo
     Write-Host "Completed!" -ForegroundColor Green
     ```
 
-3. Nastavte první pět až osm proměnné ve skriptu:
+3. Nastavte hello prvních pět tooeight proměnné ve skriptu hello:
 
     Proměnná|Popis
     ---|---
-    $clusterName|Toto je název clusteru HDInsight, ve které chcete aplikaci spustit.
-    $oauth_consumer_key|Toto je aplikace Twitter **uživatelský klíč** jste si poznamenali dříve při vytváření aplikace služby Twitter.
-    $oauth_consumer_secret|Toto je aplikace Twitter **uživatelský tajný klíč** jste si poznamenali dříve.
-    $oauth_token|Toto je aplikace Twitter **přístupový token** jste si poznamenali dříve.
-    $oauth_token_secret|Toto je aplikace Twitter **tajný klíč přístupového tokenu** jste si poznamenali dříve.
-    $destBlobName|Toto je název výstupního objektu blob. Výchozí hodnota je **tutorials/twitter/data/tweets.txt**. Pokud změníte výchozí hodnotu, budete muset aktualizovat skriptů prostředí Windows PowerShell odpovídajícím způsobem.
-    $trackString|Webová služba vrátí tweetů související s Tato klíčová slova. Výchozí hodnota je **Azure Cloud, HDInsight**. Pokud změníte výchozí hodnotu, bude odpovídajícím způsobem aktualizovat skriptů prostředí Windows PowerShell.
-    $lineMax|Hodnota určuje, kolik tweetů, skript bude číst. Číst 100 tweetů trvá přibližně tři minuty. Můžete nastavit vyšší číslo, ale bude trvat delší dobu ke stažení.
+    $clusterName|Toto je název clusteru HDInsight hello místo toorun hello aplikace hello.
+    $oauth_consumer_key|Toto je aplikace hello Twitter **uživatelský klíč** jste si poznamenali dříve při vytváření aplikace hello Twitter.
+    $oauth_consumer_secret|Toto je aplikace hello Twitter **uživatelský tajný klíč** jste si poznamenali dříve.
+    $oauth_token|Toto je aplikace hello Twitter **přístupový token** jste si poznamenali dříve.
+    $oauth_token_secret|Toto je aplikace hello Twitter **tajný klíč přístupového tokenu** jste si poznamenali dříve.
+    $destBlobName|Toto je název objektu blob výstup hello. Hello výchozí hodnota je **tutorials/twitter/data/tweets.txt**. Pokud změníte výchozí hodnotu hello, budete potřebovat skriptů prostředí Windows PowerShell hello tooupdate odpovídajícím způsobem.
+    $trackString|Webová služba Hello vrátí související toothese tweetů klíčová slova. Hello výchozí hodnota je **Azure Cloud, HDInsight**. Pokud změníte výchozí hodnotu hello, aktualizujte skriptů prostředí Windows PowerShell hello odpovídajícím způsobem.
+    $lineMax|Hello hodnota určuje, kolik skriptu hello tweetů, bude číst. Trvá přibližně tři minuty tooread 100 tweetů. Můžete nastavit vyšší číslo, ale bude trvat další toodownload čas.
 
-1. Stisknutím klávesy **F5** spusťte skript. Pokud narazíte na problémy, jako řešení, vyberte všechny řádky a stiskněte klávesu **F8**.
-2. Zobrazí se "Dokončit!" na konci výstupu. Chybové zprávy, se zobrazí červeně.
+1. Stiskněte klávesu **F5** toorun hello skriptu. Pokud narazíte na problémy, jako řešení, vyberte všechny řádky hello a potom stiskněte klávesu **F8**.
+2. Zobrazí se "Dokončit!" na konci hello hello výstupu. Chybové zprávy, se zobrazí červeně.
 
-Jako postup ověření, můžete zkontrolovat výstupní soubor **/tutorials/twitter/data/tweets.txt**, ve službě Azure Blob storage pomocí Průzkumníka úložiště Azure nebo Azure PowerShell. Ukázkový skript prostředí Windows PowerShell pro výpis soubory, najdete v části [používání Blob storage s HDInsight][hdinsight-storage-powershell].
+Jako postup ověření, můžete zkontrolovat soubor výstup hello, **/tutorials/twitter/data/tweets.txt**, ve službě Azure Blob storage pomocí Průzkumníka úložiště Azure nebo Azure PowerShell. Ukázkový skript prostředí Windows PowerShell pro výpis soubory, najdete v části [používání Blob storage s HDInsight][hdinsight-storage-powershell].
 
 ## <a name="create-hiveql-script"></a>Vytvořit skript HiveQL
-Pomocí Azure PowerShell, můžete současně spustit více příkazy HiveQL jeden nebo balíček příkaz HiveQL do souboru skriptu. V tomto kurzu vytvoříte skript HiveQL. Soubor skriptu musí být nahrán do úložiště objektů Blob v Azure. V další části bude spuštěn soubor skriptu pomocí prostředí Azure PowerShell.
+Pomocí Azure PowerShell, můžete spustit více příkazy HiveQL jeden na čas, nebo balíček hello HiveQL příkaz do souboru skriptu. V tomto kurzu vytvoříte skript HiveQL. soubor skriptu Hello musí být nahrané tooAzure úložiště objektů Blob. V další části hello bude spuštěn soubor skriptu hello pomocí prostředí Azure PowerShell.
 
 > [!NOTE]
-> Soubor skriptu Hive a soubor obsahující 10 000 tweetů byly odeslány ve veřejném kontejneru Blob. Pokud chcete použít odeslané soubory, můžete tuto část přeskočit.
+> soubor skriptu Hive Hello a soubor obsahující 10 000 tweetů byly odeslány ve veřejném kontejneru Blob. Pokud chcete soubory toouse hello nahrát, můžete tuto část přeskočit.
 
-Skript HiveQL provede následující:
+Hello skript HiveQL provede hello následující:
 
-1. **Odpojit tabulku tweets_raw** v případě, že v tabulce již existuje.
-2. **Vytvoří tabulku Hive tweets_raw**. Tato dočasná tabulka strukturovaných Hive uchovává data pro další extrakce, transformace a načítání (ETL) zpracování. Informace o oddílech najdete v tématu [Hive kurzu][apache-hive-tutorial].
-3. **Načtení dat** ze zdrojové složky, /tutorials/twitter/data. Datovou sadu tweetů velké ve vnořených formátu JSON má nyní převedeny na dočasné struktura tabulky Hive.
-4. **Odpojit tabulku tweetů** v případě, že v tabulce již existuje.
-5. **Vytvoření tabulky tweetů**. Předtím, než proti datovou sadu tweetů se můžete dotazovat pomocí Hive, budete muset spustit jiným procesem ETL. Tento proces ETL definuje podrobnější schématu tabulky pro data, která máte uložená v tabulce "twitter_raw".
-6. **Vložit přepsat tabulku**. Tento komplexní skript Hive se ji sadu dlouho úloh MapReduce clusterem Hadoop. V závislosti na datovou sadu a velikost clusteru to může trvat asi 10 minut.
-7. **Vložení přepsat directory**. Spuštění dotazu a výstupní datové sady do souboru. Tento dotaz vrátí seznam Twitter uživatelů, kteří odeslané většina tweetů, obsahující slovo "Azure".
+1. **Odpojit tabulku tweets_raw hello** v případě, že hello tabulka již existuje.
+2. **Vytvoří tabulku Hive tweets_raw hello**. Tato dočasná tabulka strukturovaných Hive obsahuje hello data pro další extrakce, transformace a načítání (ETL) zpracování. Informace o oddílech najdete v tématu [Hive kurzu][apache-hive-tutorial].
+3. **Načtení dat** ze hello zdrojové složky /tutorials/twitter/data. datovou sadu tweetů velké Hello ve vnořených formátu JSON má nyní převedeny na dočasné struktura tabulky Hive.
+4. **Vyřaďte hello tweetů tabulky** v případě, že hello tabulka již existuje.
+5. **Vytvoření tabulky tweetů hello**. Než proti datovou sadu tweetů hello se můžete dotazovat pomocí Hive, musíte toorun jiný proces ETL. Tento proces ETL definuje podrobnější schématu tabulky pro hello data, která máte uložená v tabulce "twitter_raw" hello.
+6. **Vložit přepsat tabulku**. Tento komplexní skript Hive se ji sadu dlouho úloh MapReduce clusterem Hadoop hello. V závislosti na vaší datovou sadu a hello velikost clusteru to může trvat asi 10 minut.
+7. **Vložení přepsat directory**. Spusťte soubor tooa datovou sadu dotaz a výstup hello. Tento dotaz vrátí seznam Twitter uživatelů, kteří odeslané většina tweetů, které obsahovaly hello slovo "Azure".
 
-**K vytvoření skriptu Hive a nahrajte ho do Azure**
+**toocreate podregistru skript a nahrajte ho tooAzure**
 
 1. Otevřete Windows PowerShell ISE.
-2. Zkopírujte následující skript do podokna skriptu:
+2. Zkopírujte následující skript do podokno skriptu hello hello:
 
     ```powershell
     #region - variables and constants
@@ -389,8 +389,8 @@ Skript HiveQL provede následující:
     "@
     #endregion
 
-    #region - Connect to Azure subscription
-    Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
+    #region - Connect tooAzure subscription
+    Write-Host "`nConnecting tooyour Azure subscription ..." -ForegroundColor Green
 
     Try{
         Get-AzureRmSubscription
@@ -403,8 +403,8 @@ Skript HiveQL provede následující:
 
     #endregion
 
-    #region - Create a block blob object for writing the Hive script file
-    Write-Host "Get the default storage account name and container name based on the cluster name ..." -ForegroundColor Green
+    #region - Create a block blob object for writing hello Hive script file
+    Write-Host "Get hello default storage account name and container name based on hello cluster name ..." -ForegroundColor Green
     $myCluster = Get-AzureRmHDInsightCluster -ClusterName $clusterName
     $resourceGroupName = $myCluster.ResourceGroup
     $defaultStorageAccountName = $myCluster.DefaultStorageAccount.Replace(".blob.core.windows.net", "")
@@ -412,11 +412,11 @@ Skript HiveQL provede následující:
     Write-Host "`tThe storage account name is $defaultStorageAccountName." -ForegroundColor Yellow
     Write-Host "`tThe blob container name is $defaultBlobContainerName." -ForegroundColor Yellow
 
-    Write-Host "Define the connection string ..." -ForegroundColor Green
+    Write-Host "Define hello connection string ..." -ForegroundColor Green
     $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $defaultStorageAccountName)[0].Value
     $storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=$defaultStorageAccountName;AccountKey=$defaultStorageAccountKey"
 
-    Write-Host "Create block blob objects referencing the hql script file" -ForegroundColor Green
+    Write-Host "Create block blob objects referencing hello hql script file" -ForegroundColor Green
     $storageAccount = [Microsoft.WindowsAzure.Storage.CloudStorageAccount]::Parse($storageConnectionString)
     $storageClient = $storageAccount.CreateCloudBlobClient();
     $storageContainer = $storageClient.GetContainerReference($defaultBlobContainerName)
@@ -428,8 +428,8 @@ Skript HiveQL provede následující:
     $writeStream.Writeline($hqlStatements)
     #endregion
 
-    #region - Write the Hive script file to Blob storage
-    Write-Host "Write to the destination blob ... " -ForegroundColor Green
+    #region - Write hello Hive script file tooBlob storage
+    Write-Host "Write toohello destination blob ... " -ForegroundColor Green
     $writeStream.Flush()
     $memStream.Seek(0, "Begin")
     $hqlScriptBlob.UploadFromStream($memStream)
@@ -438,28 +438,28 @@ Skript HiveQL provede následující:
     Write-Host "Completed!" -ForegroundColor Green
     ```
 
-3. Nastavte první dvě proměnné ve skriptu:
+3. Nastavte hello první dvě proměnné ve skriptu hello:
 
    | Proměnná | Popis |
    | --- | --- |
-   |  $clusterName |Zadejte název clusteru HDInsight, ve které chcete aplikaci spustit. |
+   |  $clusterName |Zadejte název clusteru HDInsight hello místo toorun hello aplikace. |
    |  $subscriptionID |Zadejte ID vašeho předplatného Azure. |
-   |  $sourceDataPath |Umístění úložiště objektů Blob v Azure dotazy Hive, kde bude číst data z. Nemusíte měnit tuto proměnnou. |
-   |  $outputPath |Umístění úložiště objektů Blob v Azure, kde bude dotazů Hive vypsání výsledků. Nemusíte měnit tuto proměnnou. |
-   |  $hqlScriptFile |Umístění a název souboru souboru skriptu HiveQL. Nemusíte měnit tuto proměnnou. |
-4. Stisknutím klávesy **F5** spusťte skript. Pokud narazíte na problémy, jako řešení, vyberte všechny řádky a stiskněte klávesu **F8**.
-5. Zobrazí se "Dokončit!" na konci výstupu. Chybové zprávy, se zobrazí červeně.
+   |  $sourceDataPath |Hello hello dotazů Hive, kde bude číst hello data z umístění úložiště objektů Blob v Azure. Tato proměnná nepotřebujete toochange. |
+   |  $outputPath |Hello umístění úložiště objektů Blob v Azure, kde dotazů Hive hello výstup hello výsledky. Tato proměnná nepotřebujete toochange. |
+   |  $hqlScriptFile |Hello umístění a název souboru hello soubor skriptu HiveQL hello. Tato proměnná nepotřebujete toochange. |
+4. Stiskněte klávesu **F5** toorun hello skriptu. Pokud narazíte na problémy, jako řešení, vyberte všechny řádky hello a potom stiskněte klávesu **F8**.
+5. Zobrazí se "Dokončit!" na konci hello hello výstupu. Chybové zprávy, se zobrazí červeně.
 
-Jako postup ověření, můžete zkontrolovat výstupní soubor **/tutorials/twitter/twitter.hql**, ve službě Azure Blob storage pomocí Průzkumníka úložiště Azure nebo Azure PowerShell. Ukázkový skript prostředí Windows PowerShell pro výpis soubory, najdete v části [používání Blob storage s HDInsight][hdinsight-storage-powershell].
+Jako postup ověření, můžete zkontrolovat soubor výstup hello, **/tutorials/twitter/twitter.hql**, ve službě Azure Blob storage pomocí Průzkumníka úložiště Azure nebo Azure PowerShell. Ukázkový skript prostředí Windows PowerShell pro výpis soubory, najdete v části [používání Blob storage s HDInsight][hdinsight-storage-powershell].
 
 ## <a name="process-twitter-data-by-using-hive"></a>Zpracování dat Twitteru pomocí Hive
-Dokončení veškeré práce přípravy. Nyní můžete vyvolání skriptu Hive a zkontrolovat výsledky.
+Dokončení veškeré práce přípravy hello. Nyní můžete vyvolat hello skriptu Hive a hello výsledky kontroly.
 
 ### <a name="submit-a-hive-job"></a>Odeslání úlohy Hive
-Pomocí následujícího skriptu prostředí Windows PowerShell pro spuštění skriptu Hive. Musíte nastavit proměnnou první.
+Použijte následující skript prostředí Windows PowerShell, toorun skriptu Hive hello hello. Budete potřebovat tooset hello první proměnné.
 
 > [!NOTE]
-> Chcete-li použít tweetů a HiveQL skript, který jste nahráli v posledních dvou částech, nastavte $hqlScriptFile na "/ tutorials/twitter/twitter.hql". Chcete-li použít ty, které byly nahrány do veřejného objektu blob pro vás, nastavte $hqlScriptFile na "wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql".
+> toouse hello tweetů a HiveQL skript, který jste nahráli v posledních dvou částech hello sadu $hqlScriptFile too"/tutorials/twitter/twitter.hql hello". hello toouse ty, které byly odeslány tooa veřejného objektu blob pro vás, nastavte $hqlScriptFile příliš"wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql".
 
 ```powershell
 #region variables and constants
@@ -467,7 +467,7 @@ $clusterName = "<Existing Azure HDInsight Cluster Name>"
 $httpUserName = "admin"
 $httpUserPassword = "<HDInsight Cluster HTTP User Password>"
 
-#use one of the following
+#use one of hello following
 $hqlScriptFile = "wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql"
 $hqlScriptFile = "/tutorials/twitter/twitter.hql"
 
@@ -484,31 +484,31 @@ $defaultBlobContainerName = $myCluster.DefaultStorageContainer
 #region - Invoke Hive
 Write-Host "Invoke Hive ... " -ForegroundColor Green
 
-# Create the HDInsight cluster
+# Create hello HDInsight cluster
 $pw = ConvertTo-SecureString -String $httpUserPassword -AsPlainText -Force
 $httpCredential = New-Object System.Management.Automation.PSCredential($httpUserName,$pw)
 
 Use-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -HttpCredential $httpCredential
 $response = Invoke-AzureRmHDInsightHiveJob -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -DefaultContainer $defaultBlobContainerName -file $hqlScriptFile -StatusFolder $statusFolder #-OutVariable $outVariable
 
-Write-Host "Display the standard error log ... " -ForegroundColor Green
+Write-Host "Display hello standard error log ... " -ForegroundColor Green
 $jobID = ($response | Select-String job_ | Select-Object -First 1) -replace ‘\s*$’ -replace ‘.*\s’
 Get-AzureRmHDInsightJobOutput -ClusterName $clusterName -JobId $jobID -DefaultContainer $defaultBlobContainerName -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -HttpCredential $httpCredential
 #endregion
 ```
 
-### <a name="check-the-results"></a>Kontrola výsledků
-Zkontrolujte výstup úlohy Hive pomocí následujícího skriptu prostředí Windows PowerShell. Musíte nastavit první dvě proměnné.
+### <a name="check-hello-results"></a>Výsledky kontroly hello
+Použijte následující prostředí Windows PowerShell skriptu toocheck hello výstup úlohy Hive hello. Budete potřebovat tooset hello první dvě proměnné.
 
 ```powershell
 #region variables and constants
 $clusterName = "<Existing Azure HDInsight Cluster Name>"
 
-$blob = "tutorials/twitter/output/000000_0" # The name of the blob to be downloaded.
+$blob = "tutorials/twitter/output/000000_0" # hello name of hello blob toobe downloaded.
 #endregion
 
 #region - Create an Azure storage context object
-Write-Host "Get the default storage account name and container name based on the cluster name ..." -ForegroundColor Green
+Write-Host "Get hello default storage account name and container name based on hello cluster name ..." -ForegroundColor Green
 $myCluster = Get-AzureRmHDInsightCluster -ClusterName $clusterName
 $resourceGroupName = $myCluster.ResourceGroup
 $defaultStorageAccountName = $myCluster.DefaultStorageAccount.Replace(".blob.core.windows.net", "")
@@ -523,11 +523,11 @@ $storageContext = New-AzureStorageContext -StorageAccountName $defaultStorageAcc
 #endregion
 
 #region - Download blob and display blob
-Write-Host "Download the blob ..." -ForegroundColor Green
+Write-Host "Download hello blob ..." -ForegroundColor Green
 cd $HOME
 Get-AzureStorageBlobContent -Container $defaultBlobContainerName -Blob $blob -Context $storageContext -Force
 
-Write-Host "Display the output ..." -ForegroundColor Green
+Write-Host "Display hello output ..." -ForegroundColor Green
 Write-Host "==================================" -ForegroundColor Green
 cat "./$blob"
 Write-Host "==================================" -ForegroundColor Green
@@ -535,18 +535,18 @@ Write-Host "==================================" -ForegroundColor Green
 ```
 
 > [!NOTE]
-> V tabulce Hive \001 používá jako oddělovač polí. Oddělovač, který není viditelný ve výstupu.
+> Tabulka Hive Hello používá \001 jako hello oddělovačem polí. Oddělovač Hello není zobrazená v výstup hello.
 
-Po výsledky analýzy byly umístěny do úložiště objektů Blob v Azure, můžete exportovat data na Azure SQL database nebo SQL server, export dat do aplikace Excel pomocí doplňku Power Query nebo připojení aplikace k datům pomocí ovladače ODBC Hive. Další informace najdete v tématu [Sqoop použití s HDInsight][hdinsight-use-sqoop], [analýza letu zpoždění dat pomocí HDInsight][hdinsight-analyze-flight-delay-data], [připojení aplikace Excel do prostředí HDInsight pomocí doplňku Power Query][hdinsight-power-query], a [připojení aplikace Excel do HDInsight pomocí ovladače ODBC Microsoft Hive][hdinsight-hive-odbc].
+Po výsledky analýzy hello byly umístěny do úložiště objektů Blob v Azure, můžete hello data tooan Azure SQL database nebo SQL server pro export, export tooExcel hello dat pomocí Power Query nebo připojení vašich dat toohello aplikace pomocí hello ovladače ODBC Hive. Další informace najdete v tématu [Sqoop použití s HDInsight][hdinsight-use-sqoop], [analýza letu zpoždění dat pomocí HDInsight][hdinsight-analyze-flight-delay-data], [ Připojení aplikace Excel tooHDInsight doplněk Power Query][hdinsight-power-query], a [tooHDInsight připojení aplikace Excel s hello ovladače ODBC Microsoft Hive][hdinsight-hive-odbc].
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jsme viděli, jak k transformaci datové sadě služby nestrukturovaných JSON do strukturovaných tabulku Hive k dotazování, prozkoumejte a analýze dat z Twitteru pomocí HDInsight v Azure. Další informace naleznete v tématu:
+V tomto kurzu jsme viděli, jak tootransform nestrukturovaných JSON datové sady do strukturovaných tooquery tabulku Hive zkoumat a analyzovat data z Twitteru pomocí HDInsight v Azure. toolearn více, najdete v části:
 
 * [Začínáme s HDInsight][hdinsight-get-started]
 * [Analýza v reálném čase sentimentu Twitter s HBase v HDInsight][hdinsight-hbase-twitter-sentiment]
 * [Analýza dat zpoždění letu pomocí HDInsight][hdinsight-analyze-flight-delay-data]
-* [Připojení Excelu k prostředí HDInsight pomocí doplňku Power Query][hdinsight-power-query]
-* [Připojení aplikace Excel do HDInsight pomocí ovladače ODBC Microsoft Hive][hdinsight-hive-odbc]
+* [Připojení aplikace Excel tooHDInsight doplněk Power Query][hdinsight-power-query]
+* [Připojení aplikace Excel tooHDInsight s hello ovladače ODBC Microsoft Hive][hdinsight-hive-odbc]
 * [Použití nástroje Sqoop s HDInsight][hdinsight-use-sqoop]
 
 [curl]: http://curl.haxx.se

@@ -1,5 +1,5 @@
 ---
-title: Obnovit Azure SQL Data Warehouse (PowerShell) | Microsoft Docs
+title: aaaRestore Azure SQL Data Warehouse (PowerShell) | Microsoft Docs
 description: "Prostředí PowerShell úlohy pro obnovení Azure SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: backup-restore
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
-ms.openlocfilehash: 6286c0e682bae2d3bf0435a25b8077a53b117b25
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: aa29a315080b1ed477cc6a051ce15a3202630cfa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="restore-an-azure-sql-data-warehouse-powershell"></a>Obnovit Azure SQL Data Warehouse (PowerShell)
 > [!div class="op_single_selector"]
@@ -30,24 +30,24 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-V tomto článku se dozvíte, jak obnovit Azure SQL Data Warehouse pomocí prostředí PowerShell.
+V tomto článku se dozvíte, jak toorestore Azure SQL datového skladu pomocí prostředí PowerShell.
 
 ## <a name="before-you-begin"></a>Než začnete
-**Ověření vaší DTU kapacity.** Každý datový sklad SQL je hostitelem serveru SQL (např. myserver.database.windows.net), který má kvóty DTU.  Před obnovením SQL Data Warehouse, ověřte, zda serveru SQL server má dostatek zbývající kvóty DTU pro databáze obnovena. Informace o výpočtu DTU potřeby nebo požádejte o další DTU najdete v tématu [žádosti o změnu kvóty DTU][Request a DTU quota change].
+**Ověření vaší DTU kapacity.** Každý datový sklad SQL je hostitelem serveru SQL (např. myserver.database.windows.net), který má kvóty DTU.  Před obnovením SQL Data Warehouse, ověřte, že hello systému SQL server má dostatek zbývající kvóty DTU pro hello databáze obnovena. toolearn jak toocalculate DTU potřebná nebo toorequest více DTU, najdete v části [žádosti o změnu kvóty DTU][Request a DTU quota change].
 
 ### <a name="install-powershell"></a>Instalace PowerShellu
-Abyste mohli používat Azure PowerShell s SQL Data Warehouse, musíte nainstalovat Azure PowerShell verze 1.0 nebo novější.  Vaše verze můžete zkontrolovat spuštěním **Get-Module - ListAvailable-AzureRM název**.  Nejnovější verzi můžete nainstalovat z [instalačního programu webové platformy Microsoft][Microsoft Web Platform Installer].  Další informace o instalaci nejnovější verze najdete v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell][How to install and configure Azure PowerShell].
+V pořadí toouse prostředí Azure PowerShell s SQL Data Warehouse budete potřebovat tooinstall prostředí Azure PowerShell verze 1.0 nebo vyšší.  Vaše verze můžete zkontrolovat spuštěním **Get-Module - ListAvailable-AzureRM název**.  je možné nainstalovat nejnovější verzi Hello od [instalačního programu webové platformy Microsoft][Microsoft Web Platform Installer].  Další informace o instalaci nejnovější verze hello najdete v tématu [jak tooinstall a konfigurace prostředí Azure PowerShell][How tooinstall and configure Azure PowerShell].
 
 ## <a name="restore-an-active-or-paused-database"></a>Obnovit databázi active nebo pozastavena
-K obnovení databázi z použití snímku [obnovení-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] rutiny prostředí PowerShell.
+toorestore databáze ze snímku použít hello [obnovení-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] rutiny prostředí PowerShell.
 
 1. Otevřete Windows PowerShell.
-2. Připojte se ke svému účtu Azure a seznamu všechna předplatná spojená s vaším účtem.
-3. Vyberte odběr, který obsahuje databázi obnovit.
-4. Zobrazí seznam bodů obnovení pro databázi.
-5. Vyberte bod požadované obnovení pomocí RestorePointCreationDate.
-6. Obnovení databáze do bodu požadované obnovení.
-7. Ověřte, že obnovené databáze je online.
+2. Seznam všech odběrů hello spojené s vaším účtem a připojit tooyour účet Azure.
+3. Vyberte předplatné hello, který obsahuje toobe hello databáze obnovena.
+4. Seznam hello obnovit body pro databázi hello.
+5. Vyberte bod obnovení hello potřeby pomocí hello RestorePointCreationDate.
+6. Obnovení bodu obnovení toohello potřeby hello databáze.
+7. Ověřte, že hello obnovit databáze je online.
 
 ```Powershell
 
@@ -61,13 +61,13 @@ Login-AzureRmAccount
 Get-AzureRmSubscription
 Select-AzureRmSubscription -SubscriptionName $SubscriptionName
 
-# List the last 10 database restore points
+# List hello last 10 database restore points
 ((Get-AzureRMSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName ($DatabaseName).RestorePointCreationDate)[-10 .. -1]
 
 # Or list all restore points
 Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
 
-# Get the specific database to restore
+# Get hello specific database toorestore
 $Database = Get-AzureRmSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
 
 # Pick desired restore point using RestorePointCreationDate
@@ -76,25 +76,25 @@ $PointInTime="<RestorePointCreationDate>"
 # Restore database from a restore point
 $RestoredDatabase = Restore-AzureRmSqlDatabase –FromPointInTimeBackup –PointInTime $PointInTime -ResourceGroupName $Database.ResourceGroupName -ServerName $Database.$ServerName -TargetDatabaseName $NewDatabaseName –ResourceId $Database.ResourceID
 
-# Verify the status of restored database
+# Verify hello status of restored database
 $RestoredDatabase.status
 
 ```
 
 > [!NOTE]
-> Po dokončení obnovení můžete nakonfigurovat obnovené databáze pomocí následujících [nakonfigurovat databázi po obnovení][Configure your database after recovery].
+> Po dokončení obnovení hello obnovené databáze můžete nakonfigurovat pomocí následujících [nakonfigurovat databázi po obnovení][Configure your database after recovery].
 > 
 > 
 
 ## <a name="restore-a-deleted-database"></a>Obnovení odstraněné databáze
-Chcete-li obnovit odstraněnou databázi, použijte [obnovení-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] rutiny.
+toorestore odstraněnou databázi, použijte hello [obnovení-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] rutiny.
 
 1. Otevřete Windows PowerShell.
-2. Připojte se ke svému účtu Azure a seznamu všechna předplatná spojená s vaším účtem.
-3. Vyberte odběr, který obsahuje obnovit odstraněnou databázi.
-4. Získejte konkrétní odstraněnou databázi.
-5. Obnovte odstraněnou databázi.
-6. Ověřte, že obnovené databáze je online.
+2. Seznam všech odběrů hello spojené s vaším účtem a připojit tooyour účet Azure.
+3. Vyberte předplatné hello, který obsahuje toobe hello odstranit databázi obnovit.
+4. Získáte hello konkrétní odstranit databázi.
+5. Hello odstranit databázi obnovte.
+6. Ověřte, že hello obnovit databáze je online.
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
@@ -107,55 +107,55 @@ Login-AzureRmAccount
 Get-AzureRmSubscription
 Select-AzureRmSubscription -SubscriptionName $SubscriptionName
 
-# Get the deleted database to restore
+# Get hello deleted database toorestore
 $DeletedDatabase = Get-AzureRmSqlDeletedDatabaseBackup -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
 
 # Restore deleted database
 $RestoredDatabase = Restore-AzureRmSqlDatabase –FromDeletedDatabaseBackup –DeletionDate $DeletedDatabase.DeletionDate -ResourceGroupName $DeletedDatabase.ResourceGroupName -ServerName $DeletedDatabase.ServerName -TargetDatabaseName $NewDatabaseName –ResourceId $DeletedDatabase.ResourceID
 
-# Verify the status of restored database
+# Verify hello status of restored database
 $RestoredDatabase.status
 ```
 
 > [!NOTE]
-> Po dokončení obnovení můžete nakonfigurovat obnovené databáze pomocí následujících [nakonfigurovat databázi po obnovení][Configure your database after recovery].
+> Po dokončení obnovení hello obnovené databáze můžete nakonfigurovat pomocí následujících [nakonfigurovat databázi po obnovení][Configure your database after recovery].
 > 
 > 
 
 ## <a name="restore-from-an-azure-geographical-region"></a>Obnovení z Azure geografické oblasti
-Chcete-li obnovit databázi, použijte [obnovení-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] rutiny.
+toorecover databázi, použijte hello [obnovení-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] rutiny.
 
 1. Otevřete Windows PowerShell.
-2. Připojte se ke svému účtu Azure a seznamu všechna předplatná spojená s vaším účtem.
-3. Vyberte odběr, který obsahuje databázi obnovit.
-4. Získáte databázi, kterou chcete obnovit.
-5. Vytvořte žádost o obnovení pro databázi.
-6. Zkontrolujte stav databáze geografické obnovení.
+2. Seznam všech odběrů hello spojené s vaším účtem a připojit tooyour účet Azure.
+3. Vyberte předplatné hello, který obsahuje toobe hello databáze obnovena.
+4. Získáte požadovaná databáze hello toorecover.
+5. Vytvořte žádost o obnovení hello hello databáze.
+6. Zkontrolujte stav hello hello geografické obnovení databáze.
 
 ```Powershell
 Login-AzureRmAccount
 Get-AzureRmSubscription
 Select-AzureRmSubscription -SubscriptionName "<Subscription_name>"
 
-# Get the database you want to recover
+# Get hello database you want toorecover
 $GeoBackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourServerName>" -DatabaseName "<YourDatabaseName>"
 
 # Recover database
 $GeoRestoredDatabase = Restore-AzureRmSqlDatabase –FromGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourTargetServer>" -TargetDatabaseName "<NewDatabaseName>" –ResourceId $GeoBackup.ResourceID
 
-# Verify that the geo-restored database is online
+# Verify that hello geo-restored database is online
 $GeoRestoredDatabase.status
 ```
 
 > [!NOTE]
-> Konfigurace databáze po dokončení obnovení najdete v tématu [nakonfigurovat databázi po obnovení][Configure your database after recovery].
+> v tématu vaše databáze po dokončení obnovení hello tooconfigure [nakonfigurovat databázi po obnovení][Configure your database after recovery].
 > 
 > 
 
-Pokud zdrojové databáze je povolené šifrování TDE, budou obnovené databáze povolené šifrování TDE.
+Hello obnovené databáze bude povolené šifrování TDE Pokud hello zdrojové databáze je povolené šifrování TDE.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o funkcích kontinuity obchodních edice Azure SQL Database, přečtěte si [Azure SQL Database obchodní kontinuity přehled][Azure SQL Database business continuity overview].
+toolearn o hello firmy kontinuitu podnikových procesů jednotlivých edice Azure SQL Database, přečtěte si prosím hello [Azure SQL Database obchodní kontinuity přehled][Azure SQL Database business continuity overview].
 
 <!--Image references-->
 
@@ -163,7 +163,7 @@ Další informace o funkcích kontinuity obchodních edice Azure SQL Database, p
 [Azure SQL Database business continuity overview]: ../sql-database/sql-database-business-continuity.md
 [Request a DTU quota change]: ./sql-data-warehouse-get-started-create-support-ticket.md#request-quota-change
 [Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[How tooinstall and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [Overview]: ./sql-data-warehouse-restore-database-overview.md
 [Portal]: ./sql-data-warehouse-restore-database-portal.md
 [PowerShell]: ./sql-data-warehouse-restore-database-powershell.md

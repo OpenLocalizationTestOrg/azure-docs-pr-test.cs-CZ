@@ -1,6 +1,6 @@
 ---
-title: "Postup nasazení webové služby do několika oblastí | Microsoft Docs"
-description: "Postup nasazení (kopírování) novou webovou službu k jiné oblasti."
+title: "aaaHow toodeploy webové služby toomultiple oblasti | Microsoft Docs"
+description: "Kroky toodeploy (kopie) oblasti tooother novou webovou službu."
 services: machine-learning
 documentationcenter: 
 author: vDonGlover
@@ -14,38 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: 3895537bbca72e687838ff5013c291dfee3be707
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 21fcdb96f118c60ed98b60b1b2df833766c7c8bb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-deploy-a-web-service-to-multiple-regions"></a>Jak nasadit webovou službu do více oblastí
-Nové webové služby Azure umožňují snadno nasadit webovou službu do několika oblastí bez nutnosti více předplatných nebo pracovních prostorů. 
+# <a name="how-toodeploy-a-web-service-toomultiple-regions"></a>Jak toodeploy webové služby toomultiple oblastí
+Hello nové webové služby Azure umožňují tooeasily nasazení webové služby toomultiple oblastí bez nutnosti více předplatných nebo pracovních prostorů. 
 
-Ceny je oblast konkrétní, že proto je nutné definovat plán fakturace pro každou oblast, ve které budete nasazovat webové služby.
+Ceny je oblast konkrétní, že proto je nutné definovat plán fakturace pro každou oblast, ve které budete nasazovat hello webové služby.
 
-## <a name="to-create-a-plan-in-another-region"></a>Vytvoření plánu v jiné oblasti
+## <a name="toocreate-a-plan-in-another-region"></a>toocreate plán v jiné oblasti
 1. Přihlaste se k [Microsoft Azure Machine Learning webové služby](https://services.azureml.net/).
-2. Klikněte **plány** možnost nabídky.
-3. V plánech přes stránka zobrazení, klikněte na tlačítko **nový**.
-4. Z **předplatné** rozevíracího seznamu, vyberte předplatné, ve kterém se bude nacházet nový plán.
-5. Z **oblast** rozevíracího seznamu, vyberte oblast pro nový plán. Možnosti plánování pro vybrané oblasti se zobrazí v **možnosti plánování** části stránky.
-6. Z **skupiny prostředků** rozevíracího seznamu, vyberte prostředek skupiny pro plán. Další informace o skupinách prostředků najdete v části [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
-7. V **název plánu** zadejte název plánu.
-8. V části **plán možnosti**, klikněte na úroveň fakturace pro nový plán.
+2. Klikněte na tlačítko hello **plány** možnost nabídky.
+3. V plánech hello přes stránka zobrazení, klikněte na tlačítko **nový**.
+4. Z hello **předplatné** rozevíracího seznamu, vyberte hello předplatné, ve které hello se bude nacházet nový plán.
+5. Z hello **oblast** rozevíracího seznamu, vyberte oblast pro hello nový plán. Hello možnosti plánování pro vybrané oblasti hello se zobrazí v hello **možnosti plánování** oddílu hello stránky.
+6. Z hello **skupiny prostředků** rozevíracího seznamu, vyberte prostředek skupiny pro plán hello. Další informace o skupinách prostředků najdete v části [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
+7. V **název plánu** název typu hello hello plánu.
+8. V části **plán možnosti**, klikněte na tlačítko hello fakturace úroveň hello nový plán.
 9. Klikněte na možnost **Vytvořit**.
 
-## <a name="deploying-the-web-service-to-another-region"></a>Nasazení webové služby pro jiné oblasti
-1. Klikněte **webové služby** možnost nabídky.
-2. Vyberte webovou službu, kterou nasazujete do nové oblasti.
+## <a name="deploying-hello-web-service-tooanother-region"></a>Nasazení hello webové služby tooanother oblast
+1. Klikněte na tlačítko hello **webové služby** možnost nabídky.
+2. Vyberte hello webové služby, které nasazujete tooa novou oblast.
 3. Klikněte na tlačítko **kopie**.
-4. V **název webové služby**, zadejte nový název pro webovou službu.
-5. V **webové služby popis**, zadejte popis pro webovou službu.
-6. Z **předplatné** rozevíracího seznamu, vyberte předplatné, ve kterém se bude nacházet novou webovou službu.
-7. Z **skupiny prostředků** rozevíracího seznamu, vyberte prostředek skupiny pro webovou službu. Další informace o skupinách prostředků najdete v části [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
-8. Z **oblast** rozevíracího seznamu, vyberte oblast, ve které chcete nasadit webovou službu.
-9. Z **účet úložiště** účet rozevíracího seznamu, vyberte úložiště pro uložení webovou službu.
-10. Z **cena plán** rozevíracího seznamu, vyberte plán v oblasti, které jste vybrali v kroku 8.
+4. V **název webové služby**, zadejte nový název pro hello webovou službu.
+5. V **webové služby popis**, zadejte popis pro hello webovou službu.
+6. Z hello **předplatné** rozevíracího seznamu, vyberte hello předplatné, ve které hello bude umístěn novou webovou službu.
+7. Z hello **skupiny prostředků** rozevíracího seznamu, vyberte prostředek skupiny pro hello webovou službu. Další informace o skupinách prostředků najdete v části [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
+8. Z hello **oblast** rozevíracího seznamu, vyberte hello oblast, ve které toodeploy hello webové služby.
+9. Z hello **účet úložiště** rozevíracího seznamu, vyberte účet úložiště, ve které toostore hello webové služby.
+10. Z hello **cena plán** rozevíracího seznamu, vyberte plán v oblasti hello jste vybrali v kroku 8.
 11. Klikněte na tlačítko **kopie**.
 

@@ -1,5 +1,5 @@
 ---
-title: "Začínáme s hybridními připojeními Azure Relay v Node | Dokumentace Microsoftu"
+title: "aaaGet začít s Azure předávání hybridní připojení v uzlu | Microsoft Docs"
 description: "Napište konzolovou aplikaci v Node.js pro Azure Relay Hybrid Connections."
 services: service-bus-relay
 documentationcenter: node
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: node
 ms.workload: na
 ms.date: 07/07/2017
 ms.author: sethm
-ms.openlocfilehash: c3bfc45969f250059988129f532edd12dfe3dcfe
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 235548399570074f7fd160fec28de8d3633625c5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-relay-hybrid-connections"></a>Začínáme s hybridními připojeními pro přenos
 
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-Tento kurz obsahuje úvod do služby [Azure Relay Hybrid Connections](relay-what-is-it.md#hybrid-connections) a ukazuje, jak pomocí Node.js vytvořit klientskou aplikaci, která odesílá zprávy do příslušné aplikace naslouchacího procesu. 
+Tento kurz obsahuje úvod příliš[Azure předávání hybridní připojení](relay-what-is-it.md#hybrid-connections)a ukazuje, jak toouse Node.js toocreate klientskou aplikaci, která odesílá zprávy tooa odpovídající naslouchací proces aplikace. 
 
 ## <a name="what-will-be-accomplished"></a>Co všechno zvládneme
 
-Protože služba Hybrid Connections vyžaduje komponentu klienta i serveru, vytvoříme v tomto kurzu dvě konzolové aplikace. Postup je následující:
+Protože služba Hybrid Connections vyžaduje komponentu klienta i serveru, vytvoříme v tomto kurzu dvě konzolové aplikace. Zde jsou kroky hello:
 
-1. Pomocí webu Azure Portal vytvoříme obor názvů přenosu.
-2. Pomocí webu Azure Portal vytvoříme hybridní připojení.
-3. Napíšeme serverovou aplikaci pro příjem zpráv.
-4. Napíšeme aplikaci klientské konzoly pro příjem zpráv.
+1. Vytvořte obor názvů předávání pomocí hello portálu Azure.
+2. Umožňuje vytvořte hybridní připojení, pomocí hello portálu Azure.
+3. Zápis serveru zpráv tooreceive aplikace konzoly.
+4. Zapsat klienta zprávy toosend aplikace konzoly.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,35 +42,35 @@ Protože služba Hybrid Connections vyžaduje komponentu klienta i serveru, vytv
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Vytvoření oboru názvů služby Service Bus pomocí webu Azure Portal
+## <a name="1-create-a-namespace-using-hello-azure-portal"></a>1. Vytvoření oboru názvů pomocí hello portálu Azure
 
-Pokud už máte vytvořený obor názvů služby Relay, přejděte do části [Vytvoření hybridního připojení pomocí webu Azure Portal](#2-create-a-hybrid-connection-using-the-azure-portal).
+Pokud už máte obor názvů předávání vytvořen, přeskočit toohello [vytvořit hybridní připojení pomocí portálu Azure hello](#2-create-a-hybrid-connection-using-the-azure-portal) části.
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
-## <a name="2-create-a-hybrid-connection-using-the-azure-portal"></a>2. Vytvoření hybridního připojení pomocí webu Azure Portal
+## <a name="2-create-a-hybrid-connection-using-hello-azure-portal"></a>2. Vytvořit hybridní připojení pomocí hello portálu Azure
 
-Pokud už máte vytvořené hybridní připojení, přejděte do části [Vytvoření serverové aplikace](#3-create-a-server-application-listener).
+Pokud již máte vytvořit hybridní připojení, přeskočit toohello [vytvořit aplikaci typu server](#3-create-a-server-application-listener) části.
 
 [!INCLUDE [relay-create-hybrid-connection-portal](../../includes/relay-create-hybrid-connection-portal.md)]
 
 ## <a name="3-create-a-server-application-listener"></a>3. Vytvoření serverové aplikace (naslouchací proces)
 
-Aby bylo možné prostřednictvím přenosu poslouchat a přijímat zprávy, napíšeme konzolovou aplikaci Node.js.
+toolisten a příjem zpráv z hello předávání, jsme zapíše konzolovou aplikaci Node.js.
 
 [!INCLUDE [relay-hybrid-connections-node-get-started-server](../../includes/relay-hybrid-connections-node-get-started-server.md)]
 
 ## <a name="4-create-a-client-application-sender"></a>4. Vytvoření klientské aplikace (odesílatel)
 
-Aby bylo možné prostřednictvím přenosu odesílat zprávy, napíšeme konzolovou aplikaci Node.js.
+toosend zpráv toohello předávání, jsme zapíše konzolovou aplikaci Node.js.
 
 [!INCLUDE [relay-hybrid-connections-node-get-started-client](../../includes/relay-hybrid-connections-node-get-started-client.md)]
 
-## <a name="5-run-the-applications"></a>5. Spuštění aplikací
+## <a name="5-run-hello-applications"></a>5. Spouštění aplikací hello
 
-1. Spuštění serverové aplikace: v příkazovém řádku Node.js zadejte `node listener.js`.
-2. Spuštění klientské aplikace: v příkazovém řádku Node.js zadejte `node sender.js` a nějaký text.
-3. Ujistěte se, že výstupem konzoly serverové aplikace je text, který jste zadali v klientské aplikaci.
+1. Spusťte aplikaci server hello: z typu příkazového řádku Node.js `node listener.js`.
+2. Spuštění klienta aplikace hello: z typu příkazového řádku Node.js `node sender.js`a zadejte nějaký text.
+3. Zkontrolujte, že server hello aplikace konzoly výstupy hello text, který byl zadán v aplikaci klienta hello.
 
 ![running-applications](./media/relay-hybrid-connections-node-get-started/running-applications.png)
 

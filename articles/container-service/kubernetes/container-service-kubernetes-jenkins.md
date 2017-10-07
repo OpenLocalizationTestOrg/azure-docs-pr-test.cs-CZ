@@ -1,6 +1,6 @@
 ---
-title: "CI volaných disku CD s Kubernetes v Azure Container Service | Microsoft Docs"
-description: "Jak automatizovat proces CI/CD s volaných k nasazení a upgrade kontejnerizované aplikace na Kubernetes v Azure Container Service"
+title: aaaJenkins CI/CD s Kubernetes v Azure Container Service | Microsoft Docs
+description: "Jak tooautomate CI/CD zpracovat volaných toodeploy a upgrade kontejnerizované aplikace na Kubernetes v Azure Container Service"
 services: container-service
 documentationcenter: 
 author: chzbrgr71
@@ -17,25 +17,25 @@ ms.workload: na
 ms.date: 03/23/2017
 ms.author: briar
 ms.custom: mvc
-ms.openlocfilehash: 2078d0694fc4dd6e83ecd2792588b4254980cd78
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: e00e13bf06619bed73e82878777e55458ea3dd77
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="jenkins-integration-with-azure-container-service-and-kubernetes"></a>Volaných integraci s Azure Container Service a Kubernetes 
-V tomto kurzu jsme provede proces nastavte průběžnou integraci aplikace s více kontejnerů do Azure kontejneru služby Kubernetes použití volaných platformy. Pracovní postup aktualizací bitové kopie kontejneru v úložiště Docker Hub a upgraduje Kubernetes pracovními stanicemi soustředěnými kolem pomocí zavedení nasazení. 
+V tomto kurzu jsme provede hello proces tooset až průběžnou integraci aplikace s více kontejnerů do Azure kontejneru služby Kubernetes pomocí platformy volaných hello. pracovní postup Hello aktualizací bitové kopie hello kontejneru v úložiště Docker Hub a upgraduje hello Kubernetes pracovními stanicemi soustředěnými kolem pomocí zavedení nasazení. 
 
 ## <a name="high-level-process"></a>Proces vysoké úrovně
-Toto jsou základní kroky popsané v tomto článku: 
+Hello základní kroky popsané v tomto článku jsou: 
 - Instalace clusteru s podporou Kubernetes v kontejneru služby
-- Nastavit volaných a konfigurovat přístup ke kontejneru služby
+- Nastavení volaných a konfigurace přístupu tooContainer služby
 - Vytvoření pracovního postupu volaných
-- Otestujte proces CI/CD koncová
+- Testování tooend koncového procesu CI/CD hello
 
 ## <a name="install-a-kubernetes-cluster"></a>Instalace clusteru s podporou Kubernetes
     
-Nasazení clusteru Kubernetes v Azure Container Service pomocí následujících kroků. Úplnou dokumentaci se nachází [zde](container-service-kubernetes-walkthrough.md).
+Nasazení clusteru Kubernetes hello v Azure Container Service pomocí hello následující kroky. Úplnou dokumentaci se nachází [zde](container-service-kubernetes-walkthrough.md).
 
 ### <a name="step-1-create-a-resource-group"></a>Krok 1: Vytvoření skupiny prostředků
 ```azurecli
@@ -45,9 +45,9 @@ LOCATION=westus
 az group create --name=$RESOURCE_GROUP --location=$LOCATION
 ```
 
-### <a name="step-2-deploy-the-cluster"></a>Krok 2: Nasazení clusteru
+### <a name="step-2-deploy-hello-cluster"></a>Krok 2: Nasazení clusteru hello
 > [!NOTE]
-> Následující kroky vyžadují místní veřejný klíč SSH uložen ve složce ~/.ssh.
+> Hello následující kroky vyžadují místní veřejný klíč SSH uložen ve složce ~/.ssh hello.
 >
 
 ```azurecli
@@ -67,20 +67,20 @@ az acs create \
 --agent-vm-size=Standard_D1_v2
 ```
 
-## <a name="set-up-jenkins-and-configure-access-to-container-service"></a>Nastavit volaných a konfigurovat přístup ke kontejneru služby
+## <a name="set-up-jenkins-and-configure-access-toocontainer-service"></a>Nastavení volaných a konfigurace přístupu tooContainer služby
 
 ### <a name="step-1-install-jenkins"></a>Krok 1: Instalace volaných
-1. Vytvořte virtuální počítač Azure s Ubuntu 16.04 LTS.  Vzhledem k tomu, že později v krocích budete muset připojit k tomuto virtuálnímu počítači pomocí bash na místním počítači, nastavení ověřování typu SSH veřejným klíčem a vložte veřejný klíč SSH, který je místně uložené ve složce ~/.ssh.  Také si poznamenejte uživatelské jméno zadáte vzhledem k tomu, že toto uživatelské jméno bude potřeba k zobrazení řídicího panelu volaných a pro připojení k virtuálnímu počítači volaných v dalších krocích.
+1. Vytvořte virtuální počítač Azure s Ubuntu 16.04 LTS.  Vzhledem k tomu, že dál v hello kroky nutné tooconnect toothis virtuální počítač pomocí na místním počítači, sada hello "Ověřování typu" too'SSH veřejný klíč bash budou a vložte hello veřejný klíč SSH místně uložená ve složce ~/.ssh.  Také si poznamenejte hello "uživatelské jméno, že zadáváte vzhledem k tomu, že toto uživatelské jméno bude potřebné tooview hello volaných řídicí panel a pro připojení toohello volaných virtuálních počítačů v dalších krocích.
 2. Nainstalujte volaných prostřednictvím těchto [pokyny](https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Ubuntu). Podrobnější kurz je určen v [howtoforge.com](https://www.howtoforge.com/tutorial/how-to-install-jenkins-with-apache-on-ubuntu-16-04).
-3. Chcete-li zobrazit řídicí panel volaných na místním počítači, aktualizujte na skupinu zabezpečení sítě Azure povolte port 8080 přidáním příchozí pravidlo, které umožňuje přístup k portu 8080.  Alternativně může nastavit přesměrování portu tak, že spustíte tento příkaz:`ssh -i ~/.ssh/id_rsa -L 8080:localhost:8080 <your_jenkins_user>@<your_jenkins_public_ip`
-4. Připojení k serveru volaných pomocí prohlížeče přechodem na veřejné IP adresy (http:// < your_jenkins_public_ip >: 8080) a odemknutí řídicím panelu volaných poprvé heslem počáteční správce.  Heslo správce je uložený v /var/lib/jenkins/secrets/initialAdminPassword volaných virtuálního počítače.  Snadný způsob, jak získat toto heslo je SSH do virtuálního počítače volaných: `ssh <your_jenkins_user>@<your_jenkins_public_ip>`.  Potom spustíte: `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`.
-5. Nainstalujte do počítače volaných prostřednictvím těchto Docker [pokyny](https://docs.docker.com/cs-engine/1.13/#install-on-ubuntu-1404-lts-or-1604-lts). To umožňuje Docker příkazy ke spuštění v volaných úlohy.
-6. Nakonfigurujte oprávnění Docker umožňující volaných pro přístup k Docker koncový bod.
+3. tooview hello volaných řídicího panelu na místním počítači, aktualizovat port tooallow skupiny zabezpečení sítě Azure hello 8080 přidáním pravidlo pro příchozí data, která umožňuje přístup tooport 8080.  Alternativně může nastavit přesměrování portu tak, že spustíte tento příkaz:`ssh -i ~/.ssh/id_rsa -L 8080:localhost:8080 <your_jenkins_user>@<your_jenkins_public_ip`
+4. Připojení serveru volaných tooyour pomocí prohlížeče hello přechodem toohello veřejnou IP adresu (http:// < your_jenkins_public_ip >: 8080) a odemknutí hello volaných řídicím panelu hello poprvé heslem hello počáteční správce.  heslo správce Hello je uložený v /var/lib/jenkins/secrets/initialAdminPassword na hello volaných virtuálních počítačů.  Snadný způsob tooget toto heslo je tooSSH do hello volaných virtuálních počítačů: `ssh <your_jenkins_user>@<your_jenkins_public_ip>`.  Potom spustíte: `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`.
+5. Nainstalujte na počítač volaných hello prostřednictvím těchto Docker [pokyny](https://docs.docker.com/cs-engine/1.13/#install-on-ubuntu-1404-lts-or-1604-lts). To umožňuje toobe Docker příkazy spouštět ve volaných úlohy.
+6. Nakonfigurujte Docker oprávnění tooallow volaných tooaccess hello Docker koncový bod.
 
     ```bash
     sudo chmod 777 /run/docker.sock
     ```
-8. Nainstalujte `kubectl` rozhraní příkazového řádku na volaných. Další podrobnosti najdete v [instalace a nastavení kubectl](https://kubernetes.io/docs/tasks/kubectl/install/).  Úlohy volaných použije ke správě a nasazení do clusteru Kubernetes 'kubectl'.
+8. Nainstalujte `kubectl` rozhraní příkazového řádku na volaných. Další podrobnosti najdete v [instalace a nastavení kubectl](https://kubernetes.io/docs/tasks/kubectl/install/).  Úlohy volaných použije 'kubectl' toomanage a nasazení toohello Kubernetes clusteru.
 
     ```bash
     curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
@@ -90,13 +90,13 @@ az acs create \
     sudo mv ./kubectl /usr/local/bin/kubectl
     ```
 
-### <a name="step-2-set-up-access-to-the-kubernetes-cluster"></a>Krok 2: Nastavení přístup ke clusteru Kubernetes
+### <a name="step-2-set-up-access-toohello-kubernetes-cluster"></a>Krok 2: Nastavení clusteru Kubernetes toohello přístupu
 
 > [!NOTE]
-> Existuje několik přístupů k provedení následujících kroků. Použijte postup, který je pro vás nejjednodušší.
+> Existuje několik přístupů tooaccomplishing hello následující kroky. Použijte hello přístup, který je pro vás nejjednodušší.
 >
 
-1. Kopírování `kubectl` konfigurační soubor do počítače volaných tak, aby měli přístup ke clusteru Kubernetes volaných úlohy. Tyto pokyny předpokládají, že používáte bash z jiný počítač než volaných virtuálního počítače a místní veřejný klíč SSH je uložen ve složce ~/.ssh počítače.
+1. Kopírování hello `kubectl` konfigurační soubor toohello volaných počítač tak, aby volaných úloh clusteru Kubernetes toohello přístupu. Tyto pokyny předpokládají, že používáte bash z jiný počítač, než hello volaných virtuálních počítačů a že místní veřejný klíč SSH je uložen ve složce ~/.ssh hello počítače.
 
 ```bash
 export KUBE_MASTER=<your_cluster_master_fqdn>
@@ -108,7 +108,7 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
 && sudo ssh -i ~/.ssh/id_rsa $JENKINS_USER@$JENKINS_SERVER sudo cp /home/$JENKINS_USER/.kube/config /var/lib/jenkins/.kube/config \
 ```
         
-2. Z volaných ověřte, že Kubernetes cluster je přístupný.  K tomu, SSH do virtuálního počítače volaných: `ssh <your_jenkins_user>@<your_jenkins_public_ip>`.  Dále ověřte volaných můžete úspěšně připojit ke clusteru: `kubectl cluster-info`.
+2. Ověření z volaných této hello Kubernetes clusteru je přístupný.  toodo se SSH do hello volaných virtuálních počítačů: `ssh <your_jenkins_user>@<your_jenkins_public_ip>`.  Dále ověřte volaných můžete úspěšně připojit tooyour cluster: `kubectl cluster-info`.
     
 
 ## <a name="create-a-jenkins-workflow"></a>Vytvoření pracovního postupu volaných
@@ -116,15 +116,15 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
 ### <a name="prerequisites"></a>Požadavky
 
 - Účet GitHub pro kód úložišti.
-- Docker Hub účet k ukládání a aktualizaci bitové kopie.
+- Docker Hub účet toostore a aktualizaci bitové kopie.
 - Kontejnerizované aplikace, které je možné znovu sestavit a aktualizovat. Můžete použít této ukázkové kontejneru aplikace napsané v Golang: https://github.com/chzbrgr71/go-web 
 
 > [!NOTE]
-> Je třeba provést následující kroky v účtu Githubu. Nebojte se naklonujte výše úložiště, ale svůj vlastní účet musíte použít ke konfiguraci webhooků, které a volaných přístup.
+> Hello následující kroky je potřeba provést v účtu Githubu. Myslíte, že volné tooclone hello výše úložiště, ale musíte použít vlastní účet tooconfigure hello webhooky a volaných přístup.
 >
 
 ### <a name="step-1-deploy-initial-v1-of-application"></a>Krok 1: Nasazení počáteční v1 aplikace
-1. Sestavení aplikace z počítače vývojáře pomocí následujících příkazů. Nahraďte `myrepo` vlastními.
+1. Sestavení aplikace hello z počítače vývojáře hello s hello následující příkazy. Nahraďte `myrepo` vlastními.
     
     ```bash
     git clone https://github.com/chzbrgr71/go-web.git
@@ -132,17 +132,17 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
     docker build -t myrepo/go-web .
     ```
 
-2. Doručte bitové kopie do úložiště Docker Hub.
+2. Push image tooDocker rozbočovače.
 
     ```bash
     docker login
     docker push myrepo/go-web
     ```
 
-3. Nasaďte do Kubernetes clusteru.
+3. Nasazení clusteru Kubernetes toohello.
     
     > [!NOTE] 
-    > Upravit `go-web.yaml` souboru k aktualizaci kontejneru image a úložišti.
+    > Upravit hello `go-web.yaml` souboru tooupdate kontejneru image a úložišti.
     >
         
     ```bash
@@ -153,18 +153,18 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
 2. V části **Githubu**, vyberte **přidat Server Githubu**.
 3. Nechte **adresy URL rozhraní API** jako výchozí.
 4. V části **pověření**, přidat pomocí přihlašovacích údajů volaných **tajný text**. Doporučujeme používat Githubu osobní přístupové tokeny, které jsou nakonfigurované v nastavení účtu uživatele Githubu. Další informace o to [sem.](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)
-5. Klikněte na tlačítko **testovací připojení** Chcete-li to správně nakonfigurovaná.
+5. Klikněte na tlačítko **testovací připojení** tooensure to správně nakonfigurovaná.
 6. V části **vlastnosti globálních**, přidejte proměnná prostředí `DOCKER_HUB` a zadejte heslo úložiště Docker Hub. (To je užitečné v této ukázce, ale produkční scénář by vyžadovaly bezpečnější přístup.)
 7. Uložte.
 
 ![Přístup volaných Githubu](./media/container-service-kubernetes-jenkins/jenkins-github-access.png)
 
-### <a name="step-3-create-the-jenkins-workflow"></a>Krok 3: Vytvoření pracovního postupu volaných
+### <a name="step-3-create-hello-jenkins-workflow"></a>Krok 3: Vytvoření pracovního postupu volaných hello
 1. Vytvořte položku volaných.
 2. Zadejte název (například "přejděte – web") a vyberte **volný styl projektu**. 
-3. Zkontrolujte **Githubu projektu** a zadejte adresu URL vašeho úložiště GitHub.
-4. V **správu zdrojového kódu**, zadejte adresu URL úložiště GitHub a přihlašovací údaje. 
-5. Přidat **sestavení krok** typu **spustit prostředí** a použijte následující text:
+3. Zkontrolujte **Githubu projektu** a zadat úložiště GitHub tooyour hello adresy URL.
+4. V **správu zdrojového kódu**, zadejte adresu URL úložiště GitHub hello a přihlašovací údaje. 
+5. Přidat **sestavení krok** typu **spustit prostředí** a hello použijte následující text:
 
     ```bash
     WEB_IMAGE_NAME="myrepo/go-web:kube${BUILD_NUMBER}"
@@ -173,7 +173,7 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
     docker push $WEB_IMAGE_NAME
     ```
 
-6. Přidejte další **sestavení krok** typu **spustit prostředí** a použijte následující text:
+6. Přidejte další **sestavení krok** typu **spustit prostředí** a hello použijte následující text:
 
     ```bash
     WEB_IMAGE_NAME="myrepo/go-web:kube${BUILD_NUMBER}"
@@ -182,21 +182,21 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
 
 ![Kroky sestavení volaných](./media/container-service-kubernetes-jenkins/jenkins-build-steps.png)
     
-7. Uložit položky volaných a testování pomocí **sestavení teď**.
+7. Uložit položky volaných hello a testování pomocí **sestavení teď**.
 
 ### <a name="step-4-connect-github-webhook"></a>Krok 4: Připojení webhook Githubu
-1. V položce volaných jste vytvořili, klikněte na tlačítko **konfigurace**.
-2. V části **sestavení aktivační události**, vyberte **Githubu háku aktivační událost pro dotazování GITScm** a **Uložit**. Tím se automaticky nakonfiguruje webhook Githubu.
+1. V položce volaných hello jste vytvořili, klikněte na tlačítko **konfigurace**.
+2. V části **sestavení aktivační události**, vyberte **Githubu háku aktivační událost pro dotazování GITScm** a **Uložit**. Tím se automaticky nakonfiguruje webhook Githubu hello.
 3. V úložiště GitHub pro přejděte web, klikněte na **Nastavení > Webhooky**.
-4. Ověřte, že adresa URL webhooku volaných byl úspěšně přidán. Adresa URL musí končit "webhook githubu".
+4. Ověřte, že hello volaných webhooku, které adresu URL byl úspěšně přidán. Adresa URL Hello musí končit "webhook githubu".
 
 ![Konfigurace webhooku volaných](./media/container-service-kubernetes-jenkins/jenkins-webhook.png)
 
-## <a name="test-the-cicd-process-end-to-end"></a>Otestujte proces CI/CD koncová
+## <a name="test-hello-cicd-process-end-tooend"></a>Testování tooend koncového procesu CI/CD hello
 
-1. Aktualizujte kód pro úložiště a nabízených nebo synchronizace s úložištěm GitHub.
-2. Z konzoly volaných, zkontrolujte **sestavení historie** a ověřit, jestli se úloha spustila. Výstup konzoly zobrazení zobrazíte podrobnosti.
-3. Z Kubernetes zobrazte podrobnosti o upgradované nasazení:
+1. Aktualizujte kód pro hello úložišti a nabízených nebo synchronizace s úložišti GitHub hello.
+2. Z konzoly volaných hello, zkontrolujte hello **sestavení historie** a ověřte, že hello úloha byla spuštěna. Zobrazení podrobností toosee výstupu konzoly.
+3. Zobrazení podrobností hello z Kubernetes, upgradovat nasazení:
 
     ```bash
     kubectl rollout history deployment/go-web
@@ -206,4 +206,4 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
 
 - Nasaďte registru kontejner Azure a uložení bitové kopie v zabezpečené úložiště. V tématu [dokumentace Azure kontejneru registru](https://docs.microsoft.com/azure/container-registry).
 - Vytvořte složitější pracovní postup, který obsahuje vedle sebe nasazení a automatizovaných testů ve volaných.
-- Další informace o CI/CD s volaných a Kubernetes najdete v tématu [volaných blog](https://jenkins.io/blog/2015/07/24/integrating-kubernetes-and-jenkins/).
+- Další informace o CI/CD s volaných a Kubernetes najdete v tématu hello [volaných blog](https://jenkins.io/blog/2015/07/24/integrating-kubernetes-and-jenkins/).

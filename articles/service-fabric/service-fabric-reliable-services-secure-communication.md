@@ -1,6 +1,6 @@
 ---
-title: "Pomůže zabezpečené komunikace pro služby v Azure Service Fabric | Microsoft Docs"
-description: "Přehled o tom, jak pomoci zabezpečenou komunikaci pro spolehlivé služby, které jsou spuštěny v clusteru služby Azure Service Fabric."
+title: "aaaHelp zabezpečené komunikace pro služby v Azure Service Fabric | Microsoft Docs"
+description: "Přehled o tom, jak toohelp zabezpečení komunikace pro spolehlivé služby, jsou spuštěny v clusteru služby Azure Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: suchiagicha
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: 53119244f8f09c0c6c43f43761af1cc074f8d0af
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 15201eb503322b17db329b319f1f42860b0f0c6b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="help-secure-communication-for-services-in-azure-service-fabric"></a>Nápověda zabezpečené komunikace pro služby v Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -27,12 +27,12 @@ ms.lasthandoff: 07/11/2017
 >
 >
 
-Zabezpečení je jedním z nejdůležitějších aspektů komunikace. Rozhraní spolehlivé služby poskytuje několik předem komunikace zásobníky a nástroje, které můžete použít k vylepšení zabezpečení. Tento článek pojednává o tom, jak zlepšit zabezpečení, když používáte vzdálené komunikace služby a služby Windows Communication Foundation (WCF) komunikačního balíku.
+Zabezpečení je jedním z nejdůležitějších aspektů komunikace hello. Architektura aplikace na Hello spolehlivé služby poskytuje několik předem komunikace zásobníky a nástroje, které můžete použít tooimprove zabezpečení. Tento článek pojednává o tom, jak tooimprove zabezpečení při použití služby vzdálené komunikace a hello Windows Communication Foundation (WCF) komunikačního balíku.
 
 ## <a name="help-secure-a-service-when-youre-using-service-remoting"></a>Pomoc se zabezpečením služby, pokud používáte vzdálenou komunikaci služby
-Používáme existující [příklad](service-fabric-reliable-services-communication-remoting.md) to vysvětluje, jak nastavit vzdálenou komunikaci pro spolehlivé služby. Chcete-li pomoc se zabezpečením služby, pokud používáte vzdálenou komunikaci služby, postupujte takto:
+Používáme existující [příklad](service-fabric-reliable-services-communication-remoting.md) to vysvětluje, jak tooset až vzdálené komunikace pro spolehlivé služby. toohelp zabezpečení služby, pokud používáte vzdálenou komunikaci služby, postupujte takto:
 
-1. Vytvořit rozhraní, `IHelloWorldStateful`, který definuje metody, které budou k dispozici pro vzdálené volání procedury vaší služby. Bude vaše služba používat `FabricTransportServiceRemotingListener`, kterého je deklarovaná v `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` oboru názvů. Jedná se `ICommunicationListener` implementace, která poskytuje funkce vzdálené komunikace.
+1. Vytvořit rozhraní, `IHelloWorldStateful`, který definuje hello metody, které budou k dispozici pro vzdálené volání procedury vaší služby. Bude vaše služba používat `FabricTransportServiceRemotingListener`, kterého je deklarovaná v hello `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` oboru názvů. Jedná se `ICommunicationListener` implementace, která poskytuje funkce vzdálené komunikace.
 
     ```csharp
     public interface IHelloWorldStateful : IService
@@ -57,9 +57,9 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
     ```
 2. Přidejte nastavení naslouchacího procesu a zabezpečovací pověření.
 
-    Ujistěte se, že certifikát, který chcete použít k zabezpečení komunikace vaší služby je nainstalována na všech uzlech v clusteru. Zadejte nastavení naslouchacího procesu a zabezpečovací pověření dvěma způsoby:
+    Ujistěte se, že hello certifikát, který má toouse toohelp zabezpečené komunikace vaší služby je nainstalován ve všech uzlech clusteru hello hello. Zadejte nastavení naslouchacího procesu a zabezpečovací pověření dvěma způsoby:
 
-   1. Poskytněte přímo v kódu služby:
+   1. Poskytněte přímo v kódu služby hello:
 
        ```csharp
        protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -94,7 +94,7 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
        ```
    2. Poskytněte pomocí [konfigurační balíček](service-fabric-application-model.md):
 
-       Přidat `TransportSettings` v souborech settings.xml souboru.
+       Přidat `TransportSettings` v souborech settings.xml souboru hello.
 
        ```xml
        <Section Name="HelloWorldStatefulTransportSettings">
@@ -110,7 +110,7 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
        </Section>
        ```
 
-       V takovém případě `CreateServiceReplicaListeners` metoda bude vypadat například takto:
+       V takovém případě hello `CreateServiceReplicaListeners` metoda bude vypadat například takto:
 
        ```csharp
        protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -124,7 +124,7 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
        }
        ```
 
-        Pokud přidáte `TransportSettings` v souborech settings.xml souboru `FabricTransportRemotingListenerSettings ` načte všechna nastavení z tohoto oddílu ve výchozím nastavení.
+        Pokud přidáte `TransportSettings` oddíl v souboru souborech settings.xml hello `FabricTransportRemotingListenerSettings ` načte všechna nastavení hello z této části ve výchozím nastavení.
 
         ```xml
         <!--"TransportSettings" section .-->
@@ -132,7 +132,7 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
             ...
         </Section>
         ```
-        V takovém případě `CreateServiceReplicaListeners` metoda bude vypadat například takto:
+        V takovém případě hello `CreateServiceReplicaListeners` metoda bude vypadat například takto:
 
         ```csharp
         protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -145,7 +145,7 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
             };
         }
         ```
-3. Při volání metody ve službě zabezpečené pomocí vzdálené komunikace zásobníku, místo použití `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` třídy vytvořit proxy služby, použijte `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`. Předejte `FabricTransportRemotingSettings`, který obsahuje `SecurityCredentials`.
+3. Při volání metody ve službě zabezpečené pomocí hello zásobník vzdálenou komunikaci, místo použití hello `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` toocreate třídy proxy služby, použijte `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`. Předejte `FabricTransportRemotingSettings`, který obsahuje `SecurityCredentials`.
 
     ```csharp
 
@@ -175,7 +175,7 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
 
     ```
 
-    Pokud kód klienta je spuštěn jako součást služby, můžete načíst `FabricTransportRemotingSettings` ze souboru souborech settings.xml. Vytvořte HelloWorldClientTransportSettings oddíl, který je podobný kódu služby, jako je uvedené výše. Na kód klienta, proveďte následující změny:
+    Pokud kód klienta hello je spuštěn jako součást služby, můžete načíst `FabricTransportRemotingSettings` ze souboru souborech settings.xml hello. Vytvořte HelloWorldClientTransportSettings oddíl, který je podobný kódu toohello služby, jako je uvedené výše. Proveďte následující změny kódu klienta toohello hello:
 
     ```csharp
     ServiceProxyFactory serviceProxyFactory = new ServiceProxyFactory(
@@ -188,11 +188,11 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
 
     ```
 
-    Pokud klient není spuštěna jako součást služby, můžete vytvořit soubor client_name.settings.xml ve stejném umístění, kde je client_name.exe. Pak vytvořte TransportSettings části v tomto souboru.
+    Pokud klient hello není spuštěna jako součást služby, můžete vytvořit soubor client_name.settings.xml v hello stejné umístění, kde je hello client_name.exe. Pak vytvořte TransportSettings části v tomto souboru.
 
-    Podobně jako službu, pokud přidáte `TransportSettings` část v klienta settings.xml/client_name.settings.xml `FabricTransportRemotingSettings` načte všechna nastavení z tohoto oddílu ve výchozím nastavení.
+    Podobně jako toohello služby, pokud přidáte `TransportSettings` část v klienta settings.xml/client_name.settings.xml `FabricTransportRemotingSettings` načte všechna nastavení hello z této části ve výchozím nastavení.
 
-    V takovém případě je zjednodušený i další starší kód:  
+    V takovém případě hello dřívější kód je ještě víc zjednodušit:  
 
     ```csharp
 
@@ -204,9 +204,9 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
     ```
 
 ## <a name="help-secure-a-service-when-youre-using-a-wcf-based-communication-stack"></a>Pomoc se zabezpečením služby při použití zásobníku komunikace na základě WCF
-Používáme existující [příklad](service-fabric-reliable-services-communication-wcf.md) to vysvětluje, jak nastavit zásobníku komunikace na základě WCF pro spolehlivé služby. K zajištění služby, pokud používáte zásobníku komunikace na základě WCF, postupujte takto:
+Používáme existující [příklad](service-fabric-reliable-services-communication-wcf.md) to vysvětluje, jak tooset až komunikace na základě WCF zásobníku pro spolehlivé služby. toohelp zabezpečení služby při použití zásobníku komunikace na základě WCF, postupujte takto:
 
-1. Pro službu, potřebujete pomoc se zabezpečením naslouchací proces komunikace WCF (`WcfCommunicationListener`), které vytvoříte. Chcete-li to provést, změňte `CreateServiceReplicaListeners` metoda.
+1. Pro službu hello, je nutné naslouchací proces komunikace toohelp zabezpečené hello WCF (`WcfCommunicationListener`), které vytvoříte. toodo, upravte hello `CreateServiceReplicaListeners` metoda.
 
     ```csharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -227,7 +227,7 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
             listenerBinding: GetNetTcpBinding(),
             endpointResourceName:"WcfServiceEndpoint");
 
-        // Add certificate details in the ServiceHost credentials.
+        // Add certificate details in hello ServiceHost credentials.
         wcfCommunicationListener.ServiceHost.Credentials.ServiceCertificate.SetCertificate(
             StoreLocation.LocalMachine,
             StoreName.My,
@@ -243,7 +243,7 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
         return b;
     }
     ```
-2. V klientovi `WcfCommunicationClient` třídu, která byla vytvořena v předchozí [příklad](service-fabric-reliable-services-communication-wcf.md) zůstává beze změny. Je nutné přepsat, ale `CreateClientAsync` metodu `WcfCommunicationClientFactory`:
+2. V klientovi hello hello `WcfCommunicationClient` třídu, která byla vytvořena v hello předchozí [příklad](service-fabric-reliable-services-communication-wcf.md) zůstává beze změny. Ale musíte toooverride hello `CreateClientAsync` metodu `WcfCommunicationClientFactory`:
 
     ```csharp
     public class SecureWcfCommunicationClientFactory<TServiceContract> : WcfCommunicationClientFactory<TServiceContract> where TServiceContract : class
@@ -277,8 +277,8 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
             {
                 channelFactory = new ChannelFactory<TServiceContract>(this.clientBinding, endpointAddress);
             }
-            // Add certificate details to the ChannelFactory credentials.
-            // These credentials will be used by the clients created by
+            // Add certificate details toohello ChannelFactory credentials.
+            // These credentials will be used by hello clients created by
             // SecureWcfCommunicationClientFactory.  
             channelFactory.Credentials.ClientCertificate.SetCertificate(
                 StoreLocation.LocalMachine,
@@ -293,7 +293,7 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
     }
     ```
 
-    Použití `SecureWcfCommunicationClientFactory` k vytvoření klienta WCF komunikace (`WcfCommunicationClient`). Klient použijte pro vyvolání metody služeb.
+    Použití `SecureWcfCommunicationClientFactory` toocreate komunikace klienta WCF (`WcfCommunicationClient`). Pomocí metody služby tooinvoke hello klienta.
 
     ```csharp
     IServicePartitionResolver partitionResolver = ServicePartitionResolver.GetDefault();

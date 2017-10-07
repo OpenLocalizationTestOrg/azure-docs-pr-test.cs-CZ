@@ -1,5 +1,5 @@
 ---
-title: "Nejčastější dotazy k Azure SQL Data Warehouse | Microsoft Docs"
+title: "aaaAzure SQL Data Warehouse – nejčastější dotazy | Microsoft Docs"
 description: "Tento článek obsahuje seznam si nejčastější dotazy k Azure SQL Data Warehouse od zákazníků a vývojářů"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: overview
 ms.date: 3/1/2017
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 4c00710ecc0c91f8407eca81b78176075fcbd6ad
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 09fd3f65d9507b09fcb8f477742c7d020add2755
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse nejčastější dotazy
 
@@ -31,7 +31,7 @@ A. SQL DW nabízí několik řešení pro ochranu dat, jako je například šifr
 
 OTÁZKY. Kde lze zjistit SQL datového skladu je jaké právní či obchodní normy kompatibilní s?
 
-A. Přejděte [Microsoft Compliance] stránky pro různé nabídky dodržování předpisů produktu, jako je například SOC a ISO. Nejdřív vyberte podle názvu dodržování předpisů, pak rozbalte Azure v části služby Microsoft cloud v oboru na pravé straně stránky uvidíte, jaké služby jsou Azure jsou služby kompatibilní.
+A. Navštivte hello [Microsoft Compliance] stránky pro různé nabídky dodržování předpisů produktu, jako je například SOC a ISO. Nejdřív vyberte podle názvu dodržování předpisů, pak rozbalte Azure v hello Microsoftu v oboru cloudu služby oddílu na pravé straně hello toosee stránku hello jaké služby jsou služby Azure, jsou kompatibilní.
 
 OTÁZKY. Můžete připojit PowerBI?
 
@@ -43,7 +43,7 @@ A. V tématu naše aktuální [limity kapacity] stránky.
 
 OTÁZKY. Proč můj škálování nebo pozastavení nebo obnovení trvá tak dlouho?
 
-A. Různé faktory mohou mít vliv na dobu výpočetní operace správy. Společné případ dlouho běžící operace je vrácení transakcí zpět. Při zahájení operace škálování nebo pozastavení blokovány všechny příchozí relace a jsou nečekaně dotazy. Aby bylo možné ponechat systém stabilní, musí transakce vrácena zpět před započetím operace. Větší počet a větší velikost protokolu transakcí, tím déle operaci bude být zastaven a proces obnovení systému stabilního stavu.
+A. Různé faktory mohou mít vliv na hello dobu výpočetní operace správy. Společné případ dlouho běžící operace je vrácení transakcí zpět. Při zahájení operace škálování nebo pozastavení blokovány všechny příchozí relace a jsou nečekaně dotazy. Transakce v pořadí tooleave hello systém stabilní, musí být vrácena zpět před započetím operace. Dobrý den větší počet hello a větší velikost hello protokolu transakcí, hello delší hello operace bude zastaveno obnovení hello systému tooa stabilního stavu.
 
 ## <a name="user-support"></a>Podpora uživatelů
 
@@ -73,7 +73,7 @@ A. I když SQL Data Warehouse podporuje mnoho funkcí, některé nejsou podporov
 
 OTÁZKY. Podporujete databázové projekty v sadě Visual Studio.
 
-A. Aktuálně nepodporujeme databázové projekty v sadě Visual Studio pro SQL Data Warehouse. Pokud chcete převést hlas získat tuto funkci, navštivte naše User Voice [databázové projekty funkci požadavku].
+A. Aktuálně nepodporujeme databázové projekty v sadě Visual Studio pro SQL Data Warehouse. Pokud chcete toocast hlas tooget tuto funkci, navštivte naše User Voice [databázové projekty funkci požadavku].
 
 OTÁZKY. Podporuje SQL Data Warehouse rozhraní REST API?
 
@@ -84,23 +84,23 @@ A. Ano. Většina funkcí REST, které lze použít s databází SQL je také do
 
 OTÁZKY. Jaké ovladače klienta podporujete?
 
-A. Podporu ovladačů pro datového skladu naleznete na [připojovací řetězce] stránky
+A. Podpora ovladačů pro datového skladu lze najít v hello [připojovací řetězce] stránky
 
 Otázka: jaký formáty souborů jsou podporovány službou SQL Data Warehouse polybase?
 
 Odpověď: Orc, RC, Parquet a ploché odděleného textu
 
-Otázka: co je možné připojit k z datového skladu SQL pomocí PolyBase? 
+Otázka: co lze je možné připojit pomocí PolyBase toofrom SQL DW? 
 
 Odpověď: [Azure Data Lake Store] a [objektů BLOB služby Azure Storage]
 
-Otázka: je přenos směrem dolů výpočetní možné při připojení k Azure Storage Blobs nebo ADLS? 
+Otázka: je přenos směrem dolů výpočetní možné při připojování tooAzure úložiště objektů BLOB nebo ADLS? 
 
-A: PolyBase datového skladu SQL Ne, komunikuje pouze komponenty úložiště. 
+A: PolyBase datového skladu SQL Ne, komunikuje jenom hello úložiště součásti. 
 
-Otázka: je možné připojit k HDI?
+Otázka: je možné připojit tooHDI?
 
-Odpověď: HDI můžete použít buď ADLS nebo WASB jako vrstva HDFS. Pokud máte buď jako HDFS vrstvě, můžete načíst data do datového skladu SQL. Však nelze vygenerovat výpočetní přenos směrem dolů k instanci HDI. 
+Odpověď: HDI můžete použít buď ADLS nebo WASB jako vrstva HDFS hello. Pokud máte buď jako HDFS vrstvě, můžete načíst data do datového skladu SQL. Však nelze vygenerovat přenos směrem dolů výpočetní toohello HDI instance. 
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o SQL Data Warehouse jako celku najdete v tématu naše [přehled] stránky.

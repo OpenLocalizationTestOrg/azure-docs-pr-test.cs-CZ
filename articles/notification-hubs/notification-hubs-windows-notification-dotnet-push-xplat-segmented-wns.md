@@ -1,6 +1,6 @@
 ---
-title: "Použití služby Notification Hubs k odesílání novinek (univerzální pro Windows)"
-description: "Pomocí značky v registraci použijte Azure Notification Hubs k odesílání novinek do univerzální aplikace pro Windows."
+title: "toosend Notification Hubs aaaUse Novinky (univerzální pro Windows)"
+description: "Použití centra oznámení Azure se značkami v toosend registrace hello nejnovější novinky tooa univerzální aplikace pro Windows."
 services: notification-hubs
 documentationcenter: windows
 author: ysxu
@@ -14,30 +14,30 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 0e945b5626a08fcb428131f2abb465c2c141011a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f102d286d2c7bd387fcfa2c7eab2ba31a0298517
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-notification-hubs-to-send-breaking-news"></a>Používání centra oznámení k odesílání novinek
+# <a name="use-notification-hubs-toosend-breaking-news"></a>Použít nejnovější zprávy přes toosend centra oznámení
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 ## <a name="overview"></a>Přehled
-Toto téma ukazuje, jak používat Azure Notification Hubs k vysílání oznámení o aktuálních zprávách do Windows Store nebo Windows Phone 8.1 (bez Silverlight) aplikace. Pokud cílíte na Windows Phone 8.1 Silverlight, získáte informace [Windows Phone](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) verze. Po dokončení bude moci zaregistrovat pro nejnovější novinky kategorií, které vás zajímají a přijímat pouze nabízená oznámení pro tyto kategorie. Tento scénář je běžný vzor velký počet aplikací, kde mají oznámení k odeslání do skupiny uživatelů, které jste předtím nebyl deklarovaný zájem o je například čtečku RSS, aplikace pro Hudba ventilátory a tak dále. 
+Toto téma ukazuje, jak toobroadcast Azure Notification Hubs toouse nejnovější zprávy oznámení tooa Windows Store nebo Windows Phone 8.1 (bez Silverlight) aplikace. Pokud cílíte na Windows Phone 8.1 Silverlight, naleznete v toohello [Windows Phone](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) verze. Po dokončení budete mít možnost tooregister pro nejnovější novinky kategorií, které vás zajímají a přijímat pouze nabízená oznámení pro tyto kategorie. Tento scénář je běžný vzor velký počet aplikací, kde mají oznámení odeslaných toobe toogroups uživatelů, kteří mají zájem o je například čtečku RSS, aplikace pro Hudba ventilátory, dříve deklarované a tak dále. 
 
-Všesměrového vysílání scénáře jsou povolené zahrnutím jeden nebo více *značky* při vytváření registrace v centru oznámení. Pokud oznámení se odesílají do značku, všechna zařízení, která byla zaregistrovaná pro značku obdrží oznámení. Protože značky jsou jednoduše řetězce, nemají být předem zřízená. Další informace o značkách najdete v části [směrování centra oznámení a značky výrazy](notification-hubs-tags-segment-push-message.md).
+Všesměrového vysílání scénáře jsou povolené zahrnutím jeden nebo více *značky* při vytváření registrace v centru oznámení hello. Pokud jsou oznámení odesílána tooa značky, všechna zařízení, která jste zaregistrovali hello značky obdrží oznámení hello. Protože značky jsou jednoduše řetězce, nemají toobe předem zřízený. Další informace o značkách najdete v části příliš[směrování centra oznámení a značky výrazy](notification-hubs-tags-segment-push-message.md).
 
 > [!NOTE]
 > Windows Store a verze projekty Windows Phone 8.1 a starší nejsou podporovány v aplikaci Visual Studio 2017.  Další informace najdete v tématu [Cílení na platformy a kompatibilita v sadě Visual Studio 2017](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs). 
 
 ## <a name="prerequisites"></a>Požadavky
-Toto téma je založený na aplikaci, kterou jste vytvořili v [Začínáme s Notification Hubs][get-started]. Před zahájením tohoto kurzu, musí jste již dokončili [Začínáme s Notification Hubs][get-started].
+Toto téma je založený na hello aplikace, které jste vytvořili v [Začínáme s Notification Hubs][get-started]. Před zahájením tohoto kurzu, musí jste již dokončili [Začínáme s Notification Hubs][get-started].
 
-## <a name="add-category-selection-to-the-app"></a>Přidat výběru kategorie do aplikace
-Prvním krokem je přidání prvky uživatelského rozhraní na existující stránku pro hlavní, který uživateli umožňuje výběr kategorií k registraci. Kategorie, které uživatel jsou uloženy v zařízení. Při spuštění aplikace registrace zařízení se vytvoří v centru oznámení s vybrané kategorie jako značky.
+## <a name="add-category-selection-toohello-app"></a>Přidat aplikaci toohello výběru kategorie
+Hello prvním krokem je tooadd hello uživatelského rozhraní elementy tooyour existující hlavní stránce umožňujících hello uživatele tooselect kategorie tooregister. kategorie Hello vybrané uživatelem se ukládají na hello zařízení. Při spuštění aplikace hello, registrace zařízení se vytvoří v centru oznámení s hello vybrané kategorie jako značky.
 
-1. Otevřete soubor projektu MainPage.xaml a pak zkopírujte následující kód v **mřížky** element:
+1. Otevřete soubor projektu MainPage.xaml hello pak kopie hello následující kód v hello **mřížky** element:
    
         <Grid>
             <Grid.RowDefinitions>
@@ -60,13 +60,13 @@ Prvním krokem je přidání prvky uživatelského rozhraní na existující str
             <ToggleSwitch Header="Sports" Name="SportsToggle" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"/>
             <Button Name="SubscribeButton" Content="Subscribe" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click"/>
         </Grid>
-2. Klikněte pravým tlačítkem **sdílené** projekt a přidejte novou třídu s názvem **oznámení**, přidejte **veřejné** modifikátor v definici třídy, přidejte následující  **pomocí** příkazy na nový soubor kódu:
+2. Klikněte pravým tlačítkem na hello **sdílené** projekt a přidejte novou třídu s názvem **oznámení**, přidejte hello **veřejné** modifikátor toohello definici třídy a pak přidejte následující hello **pomocí** příkazy toohello nového souboru kódu:
    
         using Windows.Networking.PushNotifications;
         using Microsoft.WindowsAzure.Messaging;
         using Windows.Storage;
         using System.Threading.Tasks;
-3. Zkopírujte následující kód do nové **oznámení** třídy:
+3. Kopírování hello následující kód do nové hello **oznámení** třídy:
    
         private NotificationHub hub;
    
@@ -96,7 +96,7 @@ Prvním krokem je přidání prvky uživatelského rozhraní na existující str
                 categories = RetrieveCategories();
             }
    
-            // Using a template registration to support notifications across platforms.
+            // Using a template registration toosupport notifications across platforms.
             // Any template notifications that contain messageParam and a corresponding tag expression
             // will be delivered for this registration.
    
@@ -106,29 +106,29 @@ Prvním krokem je přidání prvky uživatelského rozhraní na existující str
                     categories);
         }
    
-    Tato třída používá místní úložiště k ukládání kategorie příspěvků, který toto zařízení má přijmout. Všimněte si, že se namísto volání *RegisterNativeAsync* metoda říkáme *RegisterTemplateAsync* registrovat kategorie pomocí šablony registrace. 
+    Tato třída se používá místní úložiště hello toostore hello kategorie zprávy, že toto zařízení má tooreceive. Všimněte si, že se namísto volání hello *RegisterNativeAsync* metoda říkáme *RegisterTemplateAsync* tooregister hello kategorií pomocí šablony registrace. 
    
-    Poskytujeme také název šablony ("simpleWNSTemplateExample"), protože jsme chtít zaregistrovat více než jednu šablonu (například jeden pro informační zprávy) a jeden pro dlaždice a musíme název je, aby bylo možné aktualizovat nebo odstranit.
+    Poskytujeme také název šablony hello ("simpleWNSTemplateExample"), protože jsme chtít tooregister více než jednu šablonu (například jeden pro informační zprávy) a jeden pro dlaždice a potřebujeme tooname je v pořadí možné tooupdate toobe nebo je odstranit.
    
-    Všimněte si, že pokud se zařízení zaregistruje několik šablon se stejnou značkou, příchozí zprávy cílení, značka bude mít za následek více oznámení doručit do zařízení (jeden pro každé šablony). Toto chování je užitečné, když stejné logické zpráva má za následek více visual oznámení, například zobrazující oznámení a oznámení v aplikaci pro Windows Store.
+    Všimněte si, že pokud se zařízení zaregistruje několik šablon s hello stejná značka, příchozí zprávy cílení, že bude mít za následek značky doručit více oznámení toohello zařízení, (jeden pro každé šablony). Toto chování je užitečné, když hello stejné logické zpráva má tooresult v rámci více visual oznámení pro instanci zobrazující oznámení a oznámení v aplikaci pro Windows Store.
    
     Další informace o šablonách najdete v tématu [šablony](notification-hubs-templates-cross-platform-push-messages.md).
-4. V souboru projektu App.xaml.cs přidejte následující vlastnosti, která má **aplikace** třídy:
+4. Soubor projektu App.xaml.cs hello, přidejte následující vlastnost toohello hello **aplikace** třídy:
    
         public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
    
-    Tato vlastnost slouží k vytváření a přístup **oznámení** instance.
+    Tato vlastnost je použité toocreate a přístup **oznámení** instance.
    
-    Ve výše uvedeném kódu nahraďte `<hub name>` a `<connection string with listen access>` zástupné symboly pomocí názvu centra oznámení a připojovacího řetězce pro *DefaultListenSharedAccessSignature* kterou jste získali dříve.
+    V hello výše kódu, nahraďte hello `<hub name>` a `<connection string with listen access>` zástupné symboly oznámení centra název a hello připojovacím řetězcem pro *DefaultListenSharedAccessSignature* kterou jste získali dříve.
    
    > [!NOTE]
-   > Protože přihlašovací údaje, které jsou distribuované s klientskou aplikaci není obvykle zabezpečení, by měl distribuovat klíč pro naslouchání přístup pouze s vaší klientské aplikace. Poslechněte umožní přístup k aplikaci zaregistrovat pro oznámení, ale existující registrace nemůže být upravena a nelze odeslat oznámení. Úplný přístup klíč se používá ve službě Zabezpečené back-end pro zasílání oznámení a změna existující registrace.
+   > Protože přihlašovací údaje, které jsou distribuované s klientskou aplikaci nejsou obecně bezpečné, musí distribuovat hello klíč pro přístup k naslouchání pouze s vaší klientské aplikace. Poslechněte umožní přístup k vaší aplikaci tooregister oznámení, ale existující registrace nemůže být upravena a nelze odeslat oznámení. Hello úplné přístupový klíč se používá ve službě Zabezpečené back-end pro zasílání oznámení a změna existující registrace.
    > 
    > 
-5. V MainPage.xaml.cs přidejte následující řádek:
+5. V MainPage.xaml.cs přidejte následující řádek hello:
    
         using Windows.UI.Popups;
-6. V souboru projektu MainPage.xaml.cs přidejte následující metodu:
+6. V souboru projektu hello MainPage.xaml.cs přidejte následující metodu hello:
    
         private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -147,19 +147,19 @@ Prvním krokem je přidání prvky uživatelského rozhraní na existující str
             await dialog.ShowAsync();
         }
    
-    Tato metoda vytvoří seznam kategorií a používá **oznámení** značky třída pro uložení seznamu v místním úložišti a zaregistrujte odpovídající pomocí centra oznámení. Při změně kategorií, registrace se znovu vytvoří se nové kategorie.
+    Tato metoda vytvoří seznam kategorií a používá hello **oznámení** třídy toostore hello seznamu v místním úložišti hello a zaregistrujte hello značky odpovídající pomocí centra oznámení. Při změně kategorií, hello registrace se znovu vytvoří se nové kategorie hello.
 
-Aplikace je teď možné uložit sadu kategorií místní úložiště v zařízení a zaregistrovat do centra oznámení pokaždé, když uživatel změní výběr kategorie.
+Aplikace je nyní možné toostore sadu kategorií v místním úložišti na hello zařízení a zaregistrujte hello centra oznámení pokaždé, když změny uživatelů hello hello výběru kategorie.
 
 ## <a name="register-for-notifications"></a>Registrace pro oznámení
-Tyto kroky zaregistrovat do centra oznámení na spouštění pomocí kategorií, které byly uloženy v místním úložišti.
+Tyto kroky zaregistrovat hello centra oznámení na spuštění pomocí hello kategorií, které byly uloženy v místním úložišti.
 
 > [!NOTE]
-> Vzhledem k tomu, že kanál URI přiřazené pomocí služby oznámení Windows (WNS) můžete změnit kdykoli, byste měli zaregistrovat pro oznámení často, aby se zabránilo selhání oznámení. V tomto příkladu se zaregistruje pro oznámení při každém spuštění aplikace. Pro aplikace, které jsou často spouštíte více než jednou denně, můžete pravděpodobně přeskočit registraci byla zachována šířka pásma, pokud od předchozí registrace uplynul méně než jeden den.
+> Protože hello kanál URI přiřadila hello služby oznámení Windows (WNS) můžete změnit kdykoli, byste měli zaregistrovat pro oznámení často tooavoid oznámení selhání. Tento příklad zaregistruje oznámení pokaždé, když spustí aplikaci hello. Pro aplikace, které jsou často spouštíte více než jednou denně, pravděpodobně Pokud můžete přeskočit šířky pásma toopreserve registrace od předchozí registrace hello uplynul méně než jeden den.
 > 
 > 
 
-1. Otevřete soubor App.xaml.cs a aktualizace **InitNotificationsAsync** metoda se má použít `notifications` k odběru na základě kategorií.
+1. Otevřete hello App.xaml.cs soubor a aktualizace hello **InitNotificationsAsync** metoda toouse hello `notifications` toosubscribe třídy založené na kategoriích.
    
         // *** Remove or comment out these lines *** 
         //var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
@@ -168,8 +168,8 @@ Tyto kroky zaregistrovat do centra oznámení na spouštění pomocí kategorií
    
         var result = await notifications.SubscribeToCategories();
    
-    Tím je zajištěno, že při každém spuštění aplikace načte kategorie z místního úložiště a požadavky registrace pro tyto kategorie. **InitNotificationsAsync** metoda byla vytvořena jako součást [Začínáme s Notification Hubs] [ get-started] kurzu.
-2. V souboru projektu MainPage.xaml.cs, přidejte následující kód, který *OnNavigatedTo* metoda:
+    Tím je zajištěno, že při každém spuštění aplikace hello načte kategorie hello z místního úložiště a požadavky registrace pro tyto kategorie. Hello **InitNotificationsAsync** metoda byla vytvořena jako součást hello [Začínáme s Notification Hubs] [ get-started] kurzu.
+2. V souboru projektu hello MainPage.xaml.cs přidejte následující kód toohello hello *OnNavigatedTo* metoda:
    
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -183,45 +183,45 @@ Tyto kroky zaregistrovat do centra oznámení na spouštění pomocí kategorií
             if (categories.Contains("Sports")) SportsToggle.IsOn = true;
         }
    
-    Tím se aktualizuje na základě stavu dříve uloženou kategorií hlavní stránce.
+    Tato aktualizace hello hlavní stránky založené na stav hello dříve uložit kategorií.
 
-Aplikace je nyní dokončen a sadu kategorií můžete uložit do místního úložiště zařízení používá k registraci do centra oznámení pokaždé, když uživatel změní výběr kategorie. V dalším kroku bude definujeme back-end, který kategorie oznámení můžete odesílat do této aplikace.
+Hello aplikace je nyní dokončen a může ukládat sadu kategorií hello zařízení používá místní úložiště tooregister hello centra oznámení pokaždé, když změny uživatelů hello hello výběru kategorie. V dalším kroku bude definujeme back-end, který může odesílat kategorie oznámení toothis aplikace.
 
 ## <a name="sending-tagged-notifications"></a>Odesílání oznámení s příznakem
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="run-the-app-and-generate-notifications"></a>Spusťte aplikaci a generovat upozornění
-1. Ve Visual Studiu stisknutím klávesy F5 zkompilování a spuštění aplikace.
+## <a name="run-hello-app-and-generate-notifications"></a>Spuštění aplikace hello a generovat oznámení
+1. V sadě Visual Studio stiskněte klávesu F5 toocompile a spusťte aplikaci hello.
    
     ![][1]
    
-    Všimněte si, že aplikace uživatelského rozhraní, poskytuje sadu přepínačů, která vám umožní vybrat kategorie pro přihlášení k odběru.
+    Všimněte si, že přepíná hello aplikaci, kterou poskytuje sadu uživatelského rozhraní, která umožňuje vybrat toosubscribe kategorie hello k.
 2. Povolit jednu nebo více kategorií přepínačů a potom klikněte na **přihlásit k odběru**.
    
-    Aplikace převede vybraných kategorií značky a požaduje novou registraci zařízení pro vybranou značky z centra oznámení. Registrovaný kategorie se vrátí a zobrazí v dialogu.
+    aplikace Hello převede hello vybrané kategorie značky a požaduje novou registraci zařízení pro hello vybrané značky z centra oznámení hello. Hello registrované kategorie se vrátí a zobrazí v dialogu.
    
     ![][19]
-3. Odeslání nové oznámení z back-end v jednom z následujících způsobů:
+3. Odeslání nové oznámení z back-end hello v jednom z následujících způsobů hello:
    
-   * **Konzolové aplikace:** Spusťte konzolovou aplikaci.
+   * **Konzolové aplikace:** spustit hello konzolovou aplikaci.
    * **Java/PHP:** spuštění vaší aplikace nebo skriptu.
      
-     Oznámení pro vybrané kategorie se zobrazí jako informační zprávy.
+     Oznámení pro hello vybrané kategorie se zobrazí jako informační zprávy.
      
      ![][14]
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jsme zjistili, jak k vysílání novinek podle kategorie. Vezměte v úvahu dokončení jednu z následujících kurzů upozorňující na jiné pokročilé scénáře centra oznámení:
+V tomto kurzu jsme se dozvěděli, jak toobroadcast nejnovější zprávy přes podle kategorie. Vezměte v úvahu dokončení jednu z následujících návodů, které zvýrazněte pokročilé scénáře Notification Hubs hello:
 
-* [Použití centra oznámení k vysílání lokalizované novinek]
+* [Použití centra oznámení toobroadcast lokalizované novinek]
   
-    Zjistěte, jak rozšířit aplikace nejnovější zprávy k povolení odesílání lokalizované upozornění.
+    Zjistěte, jak lokalizované tooexpand hello nejnovější novinky aplikace tooenable odesílání oznámení.
 
 <!-- Anchors. -->
-[Add category selection to the app]: #adding-categories
+[Add category selection toohello app]: #adding-categories
 [Register for notifications]: #register
 [Send notifications from your back-end]: #send
-[Run the app and generate notifications]: #test-app
+[Run hello app and generate notifications]: #test-app
 [Next Steps]: #next-steps
 
 <!-- Images. -->
@@ -234,11 +234,11 @@ V tomto kurzu jsme zjistili, jak k vysílání novinek podle kategorie. Vezměte
 
 <!-- URLs.-->
 [get-started]: /manage/services/notification-hubs/getting-started-windows-dotnet/
-[Použití centra oznámení k vysílání lokalizované novinek]: /manage/services/notification-hubs/breaking-news-localized-dotnet/
+[Použití centra oznámení toobroadcast lokalizované novinek]: /manage/services/notification-hubs/breaking-news-localized-dotnet/
 [Notify users with Notification Hubs]: /manage/services/notification-hubs/notify-users
 [Mobile Service]: /develop/mobile/tutorials/get-started/
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs How-toofor Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253

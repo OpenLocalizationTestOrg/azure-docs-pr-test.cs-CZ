@@ -1,5 +1,5 @@
 ---
-title: "Dočasné tabulky v SQL Data Warehouse | Microsoft Docs"
+title: aaaTemporary tabulek v SQL Data Warehouse | Microsoft Docs
 description: "Začínáme s dočasných tabulek v Azure SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 10/31/2016
 ms.author: shigu;barbkess
-ms.openlocfilehash: fd8c31a727dae3b011aa8294a81f005bad72a278
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2e8b122eb6d71d5bc0a99ce8a2ecab5dbe2d1b49
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>Dočasné tabulky v SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -33,9 +33,9 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Dočasné tabulky jsou velmi užitečné při zpracování dat – zejména při transformace, které jsou přechodné mezilehlých výsledků. V SQL Data Warehouse existovat dočasné tabulky na úrovni relace.  Jsou viditelné pro relace, ve kterém byly vytvořeny a jsou automaticky zrušeny při odhlášení této relaci.  Dočasné tabulky nabízejí výhody výkonu, protože jejich výsledky se zapisují na místní místo vzdálené úložiště.  Dočasné tabulky jsou v Azure SQL Data Warehouse poněkud liší od Azure SQL Database, jako jsou dostupné z kdekoli v této relaci, včetně uvnitř i mimo ni uložené procedury.
+Dočasné tabulky jsou velmi užitečné při zpracování dat – zejména při transformace, které jsou přechodné hello mezilehlých výsledků. V SQL Data Warehouse existovat dočasné tabulky na úrovni relace hello.  Jsou to jenom viditelné toohello relace ve kterém byly vytvořeny a jsou automaticky zrušeny při odhlášení této relaci.  Dočasné tabulky nabízejí výhody výkonu, protože jejich výsledky jsou zapsány toolocal spíše než vzdálené úložiště.  Dočasné tabulky jsou v Azure SQL Data Warehouse poněkud liší od Azure SQL Database, jako jsou dostupné z kdekoli uvnitř hello relace, včetně uvnitř i mimo ni uložené procedury.
 
-Tento článek obsahuje základní pokyny pro používání dočasných tabulek a zvýrazní se zásadami relace úrovni dočasných tabulek. Pomocí informací v tomto článku vám může pomoct rozčlenění kódu, vylepšení – opětovné použití a usnadnění údržby kódu na moduly.
+Tento článek obsahuje základní pokyny pro používání dočasných tabulek a zvýrazňuje hello principů relace úrovni dočasných tabulek. Pomocí hello informace v tomto článku vám může pomoct rozčlenění kódu, vylepšení – opětovné použití a usnadnění údržby kódu na moduly.
 
 ## <a name="create-a-temporary-table"></a>Vytvořit dočasnou tabulku.
 Dočasné tabulky se vytváří pomocí jednoduše prefixu název tabulky s `#`.  Například:
@@ -58,7 +58,7 @@ WITH
 )
 ```
 
-Dočasné tabulky můžete také vytvořit s `CTAS` pomocí přesně stejný přístup:
+Dočasné tabulky můžete také vytvořit s `CTAS` pomocí přesně hello stejný přístup:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -112,12 +112,12 @@ FROM    t1
 ``` 
 
 > [!NOTE]
-> `CTAS`je velmi výkonný příkazu a má výhodu, se velmi efektivní v jeho použití místa protokolu transakcí. 
+> `CTAS`je velmi výkonný příkazu a přidala hello výhod se velmi efektivní v jeho použití místa protokolu transakcí. 
 > 
 > 
 
 ## <a name="dropping-temporary-tables"></a>Vyřazení dočasných tabulek
-Když je vytvořena nová relace, musí existovat žádné dočasné tabulky.  Ale pokud jsou volání stejné uložené procedury, která vytvoří dočasný se stejným názvem, aby vaše `CREATE TABLE` příkazy jsou úspěšné kontrolu jednoduché předběžné existence s `DROP` lze použít jako v následujícím příkladu:
+Když je vytvořena nová relace, musí existovat žádné dočasné tabulky.  Však stejné hello při volání uložené procedury, která vytvoří dočasný s hello stejný název, tooensure, vaše `CREATE TABLE` příkazy jsou úspěšné kontrolu jednoduché předběžné existence s `DROP` lze použít jako v následujícím příkladu hello:
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -126,14 +126,14 @@ BEGIN
 END
 ```
 
-Pro kódování konzistence, je vhodné použít tento vzor pro tabulky a dočasných tabulek.  Je také vhodné použít `DROP TABLE` odebrat dočasných tabulek po dokončení s nimi ve vašem kódu.  V uložené proceduře vývoj, které je celkem běžné zjistit příkazů drop sdruženy na konci tohoto postupu, aby tyto objekty jsou vyčistit.
+Kódování konzistence, je dobrou praxi toouse tento vzor pro tabulky a dočasných tabulek.  Je také vhodné toouse `DROP TABLE` tooremove dočasných tabulek po dokončení s nimi ve vašem kódu.  V uložené proceduře vývoj je celkem běžné toosee hello příkazů drop sdruženy na konci hello tohoto postupu tooensure, že jsou tyto objekty vyčistit.
 
 ```sql
 DROP TABLE #stats_ddl
 ```
 
 ## <a name="modularizing-code"></a>Modularizing kódu
-Vzhledem k tomu, že dočasných tabulek se zobrazí kdekoli v relaci uživatele, můžete to zneužití můžete rozčlenění moduly kódu aplikace.  Například následující uložené procedury spojuje doporučené postupy z výše pro generování skriptu DDL, kterou bude aktualizovat všechny statistiky v databázi podle názvu statistiky.
+Vzhledem k tomu, že dočasných tabulek se zobrazí kdekoli v relaci uživatele, může to být odstranění zneužité toohelp rozčlenění na moduly kódu aplikace.  Například hello uložené procedury níže spojuje hello doporučené postupy pro výše toogenerate DDL, který se bude aktualizovat všechny statistiky v databázi hello podle názvu statistiky.
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -207,7 +207,7 @@ FROM    t1
 GO
 ```
 
-V této fázi vytváření uložené procedury, která bude jednoduše je jedinou akcí, došlo k chybě vygenerována do dočasné tabulky #stats_ddl s příkazy DDL.  Tuto uloženou proceduru bude vyřadit #stats_ddl, pokud již existuje a zda že neselže, je-li spustit více než jednou v rámci relace.  Ale vzhledem k tomu, že neexistuje žádné `DROP TABLE` na konci uložené procedury, po dokončení uložené procedury je ponechá vytvořené tabulky tak, aby ho mohou číst mimo uložené procedury.  V SQL Data Warehouse na rozdíl od jiných databází systému SQL Server, je možné použít dočasnou tabulku mimo procedury, která ji vytvořila.  Je možné dočasných tabulek SQL Data Warehouse **kdekoli** uvnitř relace. To může vést k další kódu jako v modulární a spravovat následujícím příkladu:
+V této fázi je hello jedinou akcí, které došlo k vytvoření hello uložené procedury, která bude jednoduše vygenerovaným do dočasné tabulky #stats_ddl s příkazy DDL.  Tuto uloženou proceduru bude vyřadit #stats_ddl, pokud již existuje tooensure, které neselže, je-li spustit více než jednou v rámci relace.  Ale vzhledem k tomu, že neexistuje žádná `DROP TABLE` na konci hello hello uložené procedury, když hello dokončení uložené procedury je ponechá hello vytvořili tabulku tak, aby ho mohou číst mimo hello uložené procedury.  V SQL Data Warehouse na rozdíl od jiných databází systému SQL Server, je možné toouse hello dočasné tabulky mimo hello procedury, která ji vytvořila.  Je možné dočasných tabulek SQL Data Warehouse **kdekoli** uvnitř hello relace. To může vést toomore modulární a spravovat kód jako hello následujícím příkladu:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -232,7 +232,7 @@ DROP TABLE #stats_ddl;
 SQL Data Warehouse zavádí několik omezení při implementaci dočasných tabulek.  V současné době pouze relace vymezená dočasných tabulek jsou podporovány.  Globální dočasné tabulky nejsou podporovány.  Kromě toho zobrazení nelze vytvořit v dočasných tabulkách.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v článcích na [tabulky přehled][Overview], [tabulky datové typy][Data Types], [distribuci tabulku] [ Distribute], [Indexování tabulku][Index], [vytváření oddílů tabulky] [ Partition] a [Zachování statistiky tabulky][Statistics].  Další informace o osvědčených postupech najdete v tématu [SQL Data Warehouse osvědčené postupy][SQL Data Warehouse Best Practices].
+články hello toolearn více, najdete na [tabulky přehled][Overview], [tabulky datové typy][Data Types], [distribuci tabulku] [ Distribute], [Indexování tabulku][Index], [vytváření oddílů tabulky] [ Partition] a [ Zachování statistiky tabulky][Statistics].  Další informace o osvědčených postupech najdete v tématu [SQL Data Warehouse osvědčené postupy][SQL Data Warehouse Best Practices].
 
 <!--Image references-->
 

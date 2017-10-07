@@ -1,5 +1,5 @@
 ---
-title: "Stručná referenční příručka pro nástroj Azure Import/Export import úlohy příkazy | Microsoft Docs"
+title: "aaaQuick reference pro příkazy úlohy importu nástroj Azure Import/Export | Microsoft Docs"
 description: "Azure Import/Export nástroj informace o příkazech pro import často používané příkazy úlohy."
 author: muralikk
 manager: syadav
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: e9377e0c5001cf5be220e19e06ff96c1e058e853
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0a615aed938e5e1b52d55a340aa6b48fa0744367
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="quick-reference-for-frequently-used-commands-for-import-jobs"></a>Stručná referenční příručka pro často používané příkazy pro úlohy importu
 
@@ -48,7 +48,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /AbortSession
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3 /ResumeSession
 ```
 
-## <a name="add-drives-to-latest-session"></a>Přidejte disky do nejnovější relace
+## <a name="add-drives-toolatest-session"></a>Přidání jednotky toolatest relace
 
 ```
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3 /AdditionalDriveSet:driveset-2.csv
@@ -56,4 +56,4 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3 /AdditionalDriveS
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Ukázkový pracovní postup pro přípravu pevných disků pro úlohu importu](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
+* [Ukázkový pracovní postup tooprepare pevné disky pro úlohy importu](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)

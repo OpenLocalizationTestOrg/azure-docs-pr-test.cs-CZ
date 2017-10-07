@@ -1,6 +1,6 @@
 ---
-title: "Zobrazit topologii sledovací proces sítě Azure – rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Tento článek popisuje postup používání rozhraní příkazového řádku Azure k dotazování topologii vaší sítě."
+title: "sledovací proces sítě Azure topologii aaaView – rozhraní příkazového řádku Azure | Microsoft Docs"
+description: "Tento článek popisuje jak toouse rozhraní příkazového řádku Azure tooquery topologii vaší sítě."
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 5be8e103f9a1f32117a4ed3be73bff021db1186d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: afa7e7dd844ecb2ab4c616ba99fa0a433f1e4ade
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="view-network-watcher-topology-with-azure-cli"></a>Zobrazení topologie sledovací proces sítě pomocí rozhraní příkazového řádku Azure
 
@@ -28,39 +28,39 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-topology-cli.md)
 > - [REST API](network-watcher-topology-rest.md)
 
-Topologie funkci sledovací proces sítě poskytuje vizuální reprezentace síťových prostředků v předplatném. Na portálu pro tuto vizualizaci se zobrazují automaticky. Informace pro zobrazení topologie na portálu se dají získat pomocí prostředí PowerShell.
-Díky této vlastnosti je rozmanitější jako data mohou být spotřebovávána další nástroje pro sestavení se vizualizaci informací o topologii.
+Funkce topologie Hello sledovací proces sítě poskytuje vizuální reprezentace hello síťových prostředků v předplatném. V portálu hello tuto vizualizaci zobrazí tooyou automaticky. informace o Hello za zobrazení topologie hello portálu hello se dají získat pomocí prostředí PowerShell.
+Díky této vlastnosti je informace o topologii hello rozmanitější jako hello data mohou být spotřebovávána jiné nástroje toobuild out hello vizualizace.
 
 Tento článek používá 1.0 rozhraní příkazového řádku Azure a platformy, která je dostupná pro Windows, Mac a Linux. Sledovací proces sítě aktuálně používá pro podporu rozhraní příkazového řádku Azure CLI 1.0.
 
-Propojení je modelován v dva vztahy.
+propojení Hello je modelován v dva vztahy.
 
 - **Členství ve skupině** – příklad: obsahuje podsíť virtuální sítě obsahuje síťový adaptér
 - **Související** – příklad: síťový adaptér je přidružený virtuální počítač
 
-V následujícím seznamu je vlastnosti, které jsou vráceny při dotazování topologie REST API.
+Hello následujícím seznamu jsou uvedeny vlastnosti, které jsou vráceny při dotazování hello topologie REST API.
 
-* **název** -název prostředku
-* **ID** – identifikátor uri prostředku.
-* **umístění** -umístění, kde existuje prostředek.
-* **přidružení** – seznam přidružení k odkazovaného objektu.
-    * **název** -název odkazovaného prostředku.
-    * **resourceId** -resourceId je identifikátor uri prostředku, kterou se odkazuje v přidružení.
-    * **Třída associationType** – tato hodnota se odkazuje vztah mezi podřízený objekt a nadřazený. Platné hodnoty jsou **obsahuje** nebo **přidružené**.
+* **název** – hello název prostředku hello
+* **ID** -hello identifikátor uri prostředku hello.
+* **umístění** -hello umístění, kde existuje prostředek hello.
+* **přidružení** – seznam přidružení toohello odkazuje objekt.
+    * **název** -hello název hello odkazuje prostředků.
+    * **resourceId** -hello resourceId je identifikátor uri hello hello prostředku, kterou se odkazuje v hello přidružení.
+    * **Třída associationType** – tato hodnota se odkazuje hello vztah mezi hello podřízený objekt a nadřazené hello. Platné hodnoty jsou **obsahuje** nebo **přidružené**.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V tomto scénáři použijete `network watcher topology` rutiny k načtení informací o topologii. O tom, jak je také článek [načíst topologie sítě pomocí rozhraní REST API](network-watcher-topology-rest.md).
+V tomto scénáři použijete hello `network watcher topology` informace o topologii rutiny tooretrieve hello. K dispozici je také článek o příliš[načíst topologie sítě pomocí rozhraní REST API](network-watcher-topology-rest.md).
 
-Tento scénář předpokládá, že už jste udělali kroky v [vytvořit sledovací proces sítě](network-watcher-create.md) vytvořit sledovací proces sítě.
+Tento scénář předpokládá, že jste již provedli kroky hello v [vytvořit sledovací proces sítě](network-watcher-create.md) toocreate sledovací proces sítě.
 
 ## <a name="scenario"></a>Scénář
 
-Scénář popsaná v tomto článku načte odpověď topologie pro danou skupinu prostředků.
+scénář Hello popsaná v tomto článku načte odpověď hello topologie pro danou skupinu prostředků.
 
 ## <a name="retrieve-topology"></a>Načtení topologie
 
-`network watcher topology` Rutina načte topologie pro danou skupinu prostředků. Přidat argument "--json" zobrazíte oput ve formátu json
+Hello `network watcher topology` rutina načte hello topologie pro danou skupinu prostředků. Přidat hello argument "--json" hello oput tooview ve formátu json
 
 ```azurecli
 azure network watcher topology -g resourceGroupName -n networkWatcherName -r topologyResourceGroupName --json
@@ -68,7 +68,7 @@ azure network watcher topology -g resourceGroupName -n networkWatcherName -r top
 
 ## <a name="results"></a>Výsledky
 
-Výsledky vrácené mít vlastnost name "zdroje", které obsahuje těla odpovědi json pro `network watcher topology` rutiny.  Odpověď obsahuje prostředky ve skupině zabezpečení sítě a jejich přidružení (který je obsahuje, přidružené).
+Hello výsledky vrácené mít vlastnost název "prostředky", které obsahuje hello těla odpovědi json pro hello `network watcher topology` rutiny.  Hello odpovědi obsahuje hello prostředky v hello skupinu zabezpečení sítě a jejich přidružení (který je obsahuje, přidružené).
 
 ```json
 {
@@ -113,4 +113,4 @@ Výsledky vrácené mít vlastnost name "zdroje", které obsahuje těla odpověd
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o zabezpečení pravidla, která se použijí k síťovým prostředkům, navštivte stránky [přehled zobrazení skupiny zabezpečení](network-watcher-security-group-view-overview.md)
+Další informace o pravidlech hello zabezpečení, které jsou použité tooyour síťovým prostředkům, navštivte stránky [přehled zobrazení skupiny zabezpečení](network-watcher-security-group-view-overview.md)

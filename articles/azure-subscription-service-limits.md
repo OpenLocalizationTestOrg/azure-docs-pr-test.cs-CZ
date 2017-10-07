@@ -1,6 +1,6 @@
 ---
-title: "Limity předplatného Azure a kvóty | Microsoft Docs"
-description: "Poskytuje seznam běžných předplatného Azure a omezení služby, kvóty a omezení. To zahrnuje informace o tom, jak zvýšit omezení spolu s maximální hodnoty."
+title: "předplatné aaaAzure omezení a kvóty | Microsoft Docs"
+description: "Poskytuje seznam běžných předplatného Azure a omezení služby, kvóty a omezení. To zahrnuje informace o tom, jak tooincrease omezuje spolu s maximální hodnoty."
 services: 
 documentationcenter: 
 author: rothja
@@ -15,32 +15,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: byvinyal
-ms.openlocfilehash: a76acd67e9ba7822f2837b3c08e2ede389047f11
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a754d56124520791254ab8f1729808f0750ff222
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
-Tento dokument uvádí některé z nejběžnějších omezení Microsoft Azure, což se taky někdy označují jako kvóty. Tento dokument nepokrývá aktuálně všech služeb Azure. V čase v seznamu rozbalit a aktualizovat tak, aby pokrývalo více platformou.
+Tento dokument uvádí některé z hello nejběžnější Microsoft Azure omezení, což se taky někdy označují jako kvóty. Tento dokument nepokrývá aktuálně všech služeb Azure. V průběhu času hello seznam bude rozšířena a aktualizovat toocover další platformy hello.
 
-Navštivte [ceny přehled Azure](https://azure.microsoft.com/pricing/) Další informace o cenách služby Azure. Zde můžete odhadnout náklady na používání [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) nebo když přejdete na stránce s cenami podrobnosti pro službu (například [virtuálních počítačů Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)). Tipy ke správě náklady na najdete v tématu [zabránit neočekávané náklady s Azure fakturace a náklady na správu](billing/billing-getting-started.md).
-
-> [!NOTE]
-> Pokud chcete zvýšit limit nebo kvóty výše **výchozí Limit**, [otevřete žádosti o podporu online zákazníka zdarma](azure-supportability/resource-manager-core-quotas-request.md). Není možné zvýšit limity výše **maximální Limit** hodnota použitá v následujících tabulkách. Pokud není žádná **maximální Limit** sloupec a potom prostředek nemá nastavitelná omezení. 
-> 
-> Bezplatné předplatné zkušební verze nejsou způsobilé k omezení nebo zvyšuje kvóty. Pokud máte bezplatnou zkušební verzi, můžete upgradovat na [průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/) předplatné. Další informace najdete v tématu [Upgrade bezplatné zkušební verze Azure na průběžné platby](billing/billing-upgrade-azure-subscription.md).
-> 
-
-## <a name="limits-and-the-azure-resource-manager"></a>Omezení a Azure Resource Manager
-Nyní je možné kombinovat více prostředků Azure v do jedné skupiny prostředků Azure. Při použití skupin prostředků, omezení, které byly jednou globální spravovanou na místní úrovni s Azure Resource Manager. Další informace o skupinách prostředků Azure najdete v tématu [přehled Azure Resource Manageru](azure-resource-manager/resource-group-overview.md).
-
-V níže uvedené limity se přidal nové tabulky, aby odrážela případné rozdíly v omezení při použití Azure Resource Manager. Například, že je **limity předplatného** tabulky a **limity předplatného – Azure Resource Manager** tabulky. Když omezení platí pro oba scénáře, se zobrazí pouze v první tabulce. Pokud není uvedeno jinak, jsou omezení globální přes všechny oblasti.
+Navštivte [ceny přehled Azure](https://azure.microsoft.com/pricing/) toolearn informace o cenách Azure. Zde můžete odhadnout náklady na používání hello [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) nebo návštěvou hello ceny stránce s podrobnostmi o službu (například [virtuálních počítačů Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)). Pro tipy toohelp spravovat vaše náklady, najdete v části [zabránit neočekávané náklady s Azure fakturace a náklady na správu](billing/billing-getting-started.md).
 
 > [!NOTE]
-> Je nutné zdůraznit, že jsou na oblast přístupný pro vaše předplatné kvóty pro prostředky ve skupinách prostředků Azure a nejsou za předplatné, jako jsou kvóty správy služby. Jako příklad použijeme základní kvóty. Pokud potřebujete požádat o zvýšení kvóty s podporou pro počet jader, musíte se rozhodnout, kolik jader, kterou chcete použít v oblasti, které a pak proveďte konkrétního požadavku pro skupiny prostředků Azure základní kvóty pro částky a oblastí, které chcete. Proto v případě, že budete muset použít 30 jader v oblasti západní Evropa spusťte aplikaci; Konkrétně měli požádat o 30 jader v oblasti západní Evropa. Ale nebudete mít základní kvóta zvyšují v jiné oblasti – pouze západní Evropa budou mít kvótu 30 jádra.
+> Pokud chcete tooraise hello limit nebo kvóty výše hello **výchozí Limit**, [otevřete žádosti o podporu online zákazníka zdarma](azure-supportability/resource-manager-core-quotas-request.md). Hello omezení nelze zvýšit nad hello **maximální Limit** hodnota použitá v hello následující tabulky. Pokud není žádná **maximální Limit** sloupce, pak hello prostředků nemá nastavitelná omezení. 
+> 
+> Bezplatné předplatné zkušební verze nejsou způsobilé k omezení nebo zvyšuje kvóty. Pokud máte bezplatnou zkušební verzi, můžete upgradovat tooa [průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/) předplatné. Další informace najdete v tématu [Upgrade bezplatné zkušební verze Azure tooPay jako-vám-přejděte](billing/billing-upgrade-azure-subscription.md).
+> 
+
+## <a name="limits-and-hello-azure-resource-manager"></a>Omezení a hello Azure Resource Manager
+Nyní je možné toocombine několik prostředků Azure v tooa jedna skupina prostředků Azure. Při použití skupin prostředků, omezení, které byly jednou globální spravovanou na místní úrovni s hello Azure Resource Manager. Další informace o skupinách prostředků Azure najdete v tématu [přehled Azure Resource Manageru](azure-resource-manager/resource-group-overview.md).
+
+V omezení hello pod novou tabulku byl přidaný tooreflect případné rozdíly v omezení při použití hello Azure Resource Manager. Například, že je **limity předplatného** tabulky a **limity předplatného – Azure Resource Manager** tabulky. Pokud limit tooboth scénáře, se zobrazí pouze v první tabulce hello. Pokud není uvedeno jinak, jsou omezení globální přes všechny oblasti.
+
+> [!NOTE]
+> Je důležité tooemphasize, že jsou na oblast přístupný pro vaše předplatné kvóty pro prostředky ve skupinách prostředků Azure a nejsou za předplatné, jsou hello služby správy kvóty. Jako příklad použijeme základní kvóty. Pokud potřebujete toorequest zvýšit kvótu s podporou pro počet jader, je nutné toodecide jak velký počet jader toouse v oblasti, které chcete a proveďte konkrétního požadavku pro skupinu prostředků Azure pro základní kvóty pro hello objemy a oblastí, které chcete. Proto pokud potřebujete toouse 30 cores v oblasti západní Evropa toorun aplikace Konkrétně měli požádat o 30 jader v oblasti západní Evropa. Ale nebudete mít základní kvóta zvyšují v jiné oblasti – pouze západní Evropa budou mít 30 – základní kvóta hello.
 > <!-- -->
-> V důsledku toho může být vhodné vzít v úvahu při rozhodování o tom, co kvóty vaší skupiny prostředků Azure musí být pro úlohy v libovolné oblasti jeden a požadovat tato částka v každé oblasti, do kterého uvažujete o nasazení. V tématu [potíží s nasazením](resource-manager-common-deployment-errors.md) další pomoc zjišťování vaše aktuální kvóty pro konkrétní oblasti.
+> V důsledku toho může být užitečné tooconsider při rozhodování o tom, co vaše skupina prostředků Azure kvóty třeba toobe pro úlohy v jakékoli jedné oblasti a žádost o které částka v každé oblasti, do kterého uvažujete o nasazení. V tématu [potíží s nasazením](resource-manager-common-deployment-errors.md) další pomoc zjišťování vaše aktuální kvóty pro konkrétní oblasti.
 > 
 > 
 
@@ -51,7 +51,7 @@ V níže uvedené limity se přidal nové tabulky, aby odrážela případné ro
 * [Application Gateway](#application-gateway-limits)
 * [Application Insights](#application-insights-limits)
 * [Automation](#automation-limits)
-* [Databáze Azure Cosmos](#azure-cosmos-db-limits)
+* [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure událostí mřížky](#azure-event-grid-limits)
 * [Azure Redis Cache](#azure-redis-cache-limits)
 * [Azure RemoteApp](#azure-remoteapp-limits)
@@ -83,7 +83,7 @@ V níže uvedené limity se přidal nové tabulky, aby odrážela případné ro
 * [Service Bus](#service-bus-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
-* [Storage](#storage-limits)
+* [Úložiště](#storage-limits)
 * [Systém StorSimple](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Předplatné](#subscription-limits)
@@ -96,7 +96,7 @@ V níže uvedené limity se přidal nové tabulky, aby odrážela případné ro
 [!INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
 #### <a name="subscription-limits---azure-resource-manager"></a>Limity předplatného – Azure Resource Manager
-Následující omezení platí při použití skupiny prostředků Azure a Azure Resource Manager. Limity, které nebyly změněny s Azure Resource Manager nejsou uvedené níže. Naleznete v předchozí tabulce těchto omezení.
+Hello následující omezení platí při použití hello Azure Resource Manager a skupiny prostředků Azure. Limity, které nebyly změněny s hello Azure Resource Manager nejsou uvedené níže. Naleznete v předchozí tabulce toohello těchto omezení.
 
 Informace o zpracování omezení pro správce prostředků požadavky najdete v tématu [omezení Resource Manager požadavky](resource-manager-request-limits.md).
 
@@ -110,7 +110,7 @@ Informace o zpracování omezení pro správce prostředků požadavky najdete v
 [!INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
 
 #### <a name="virtual-machines-limits---azure-resource-manager"></a>Virtuální počítače omezení - Azure Resource Manager
-Následující omezení platí při použití skupiny prostředků Azure a Azure Resource Manager. Limity, které nebyly změněny s Azure Resource Manager nejsou uvedené níže. Naleznete v předchozí tabulce těchto omezení.
+Hello následující omezení platí při použití hello Azure Resource Manager a skupiny prostředků Azure. Limity, které nebyly změněny s hello Azure Resource Manager nejsou uvedené níže. Naleznete v předchozí tabulce toohello těchto omezení.
 
 [!INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 
@@ -144,7 +144,7 @@ Další informace o limity účtu úložiště najdete v tématu [a cíle výkon
 #### <a name="storage-service-limits"></a>Omezení služby úložiště
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
 
-<!-- conceptual info about disk limits -- applies to unmanaged and managed -->
+<!-- conceptual info about disk limits -- applies toounmanaged and managed -->
 #### <a name="virtual-machine-disk-limits"></a>Omezení disku virtuálního počítače 
 [!INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
@@ -167,7 +167,7 @@ V tématu [velikostí virtuálních počítačů](virtual-machines/linux/sizes.m
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
 
 ### <a name="app-service-limits"></a>Omezení služby App Service
-Následující omezení služby App Service zahrnují omezení pro webové aplikace, mobilní aplikace, aplikace API a Logic Apps.
+Následující text Hello, které omezení služby App Service zahrnují omezení pro webové aplikace, mobilní aplikace, aplikace API a Logic Apps.
 
 [!INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
 
@@ -178,22 +178,22 @@ Následující omezení služby App Service zahrnují omezení pro webové aplik
 [!INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
 
 ### <a name="biztalk-services-limits"></a>Omezení služby BizTalk Services
-Následující tabulka uvádí omezení služby Azure Biztalk Services.
+Hello následující tabulka uvádí hello omezení služby Azure Biztalk Services.
 
 [!INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
 
 ### <a name="azure-cosmos-db-limits"></a>Omezení Azure Cosmos DB
-Azure Cosmos DB je globálním měřítku databáze, ve které je možné rozšířit propustnost a úložiště pro zpracování, ať vaše aplikace vyžaduje. Pokud máte nějaké otázky o rozsahu poskytuje Azure Cosmos DB, pošlete e-mail na askcosmosdb@microsoft.com.
+Azure Cosmos DB je globálním měřítku databáze, ve které propustnost a úložiště lze škálovat toohandle ať vaše aplikace vyžaduje. Pokud máte jakékoli dotazy týkající se hello škálování, které poskytuje Azure Cosmos DB, pošlete e-mail tooaskcosmosdb@microsoft.com.
 
 ### <a name="mobile-engagement-limits"></a>Omezení Mobile Engagement
 [!INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]
 
 ### <a name="search-limits"></a>Omezení vyhledávání
-Cenové úrovně určete kapacitu a omezení služby search. Úrovně zahrnují:
+Cenové úrovně určit hello kapacitu a omezení služby search. Úrovně zahrnují:
 
 * *Volné* víceklientské služby, sdílené s další předplatitelé služby Azure, určený pro malé vývoj a testování projektů.
-* *Základní* poskytuje vyhrazený výpočetní prostředky pro úlohy v produkčním prostředí v menším měřítku, s až tři repliky pro vysokou dostupnost dotazu úlohy.
-* *Standard (S1, S2, S3, S3 s vysokou hustotou)* je pro větší úlohy v produkčním prostředí. Více úrovní existovat v rámci úroveň standard, aby mohli vybrat konfiguraci prostředků, který nejlépe odpovídá váš profil zatížení.
+* *Základní* poskytuje vyhrazený výpočetní prostředky pro úlohy v produkčním prostředí v menším měřítku, s toothree repliky pro vysokou dostupnost dotazu úlohy.
+* *Standard (S1, S2, S3, S3 s vysokou hustotou)* je pro větší úlohy v produkčním prostředí. Více úrovní existují v rámci úrovně standard hello, takže můžete konfiguraci prostředků, který nejlépe odpovídá váš profil zatížení.
 
 **Omezení podle předplatného**
 
@@ -203,7 +203,7 @@ Cenové úrovně určete kapacitu a omezení služby search. Úrovně zahrnují:
 
 [!INCLUDE [azure-search-limits-per-service](../includes/azure-search-limits-per-service.md)]
 
-Další informace o omezeních na podrobnější úrovni, jako je například velikost dokumentu, dotazů za sekundu, klíčů, požadavků a odpovědí, najdete v části [omezení ve službě Azure Search služby](search/search-limits-quotas-capacity.md).
+toolearn Další informace o omezení na podrobnější úrovni, jako je například velikost dokumentu, dotazů za sekundu, klíčů, požadavků a odpovědí, najdete v části [omezení ve službě Azure Search služby](search/search-limits-quotas-capacity.md).
 
 ### <a name="media-services-limits"></a>Omezení služby Media Services
 [!INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]

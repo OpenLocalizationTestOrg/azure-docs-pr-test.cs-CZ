@@ -1,6 +1,6 @@
 ---
-title: "Přidat Azure Automation runbook do plánů obnovení v Azure Site Recovery | Microsoft Docs"
-description: "Zjistěte, jak Azure Site Recovery můžete rozšířit plánů obnovení pomocí Azure Automation. Zjistěte, jak dokončit složité úlohy během obnovení do Azure."
+title: "aaaAdd Azure Automation. runbooky toorecovery plány v Azure Site Recovery | Microsoft Docs"
+description: "Zjistěte, jak Azure Site Recovery můžete rozšířit plánů obnovení pomocí Azure Automation. Zjistěte, jak toocomplete komplexní úlohy během obnovení tooAzure."
 services: site-recovery
 documentationcenter: 
 author: ruturaj
@@ -14,23 +14,23 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 06/23/2017
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: 064a6782970b950543f93c24800998c1f104c8df
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 90d517200cec5527e98a0d00da466bace587b70b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Přidání sad Azure Automation runbook do plánů obnovení
-V tomto článku jsme popisují, jak Azure Site Recovery integruje se službou Azure Automation můžete rozšířit plánu obnovení. Plány obnovení můžete orchestraci obnovení virtuálních počítačů, které jsou chráněné službou Site Recovery. Plány obnovení fungovat pro replikaci do sekundární cloudu i pro replikaci do Azure. Plány obnovení také pomoci zajistit, aby obnovení **přesné**, **repeatable**, a **automatizované**. Pokud jste převzetí služeb při selhání virtuálních počítačů do Azure, integraci s Azure Automation rozšiřuje plánu obnovení. Můžete ho spuštění sady runbook, které nabízí výkonné automatizace úloh.
+# <a name="add-azure-automation-runbooks-toorecovery-plans"></a>Přidat plány toorecovery sady runbook automatizace Azure.
+V tomto článku jsme popisují, jak Azure Site Recovery integruje se službou Azure Automation toohelp rozšíříte plánu obnovení. Plány obnovení můžete orchestraci obnovení virtuálních počítačů, které jsou chráněné službou Site Recovery. Jak pro replikaci tooa sekundární cloud a pro replikace tooAzure pracovat plány obnovení. Plány obnovení také pomoci zajistit, aby hello obnovení **přesné**, **repeatable**, a **automatizované**. Pokud budete selhání tooAzure vaše virtuální počítače, integraci s Azure Automation rozšiřuje plánu obnovení. Můžete ho tooexecute sady runbook, které nabízí výkonné automatizace úloh.
 
-Pokud začínáte Azure Automation, můžete [zaregistrovat](https://azure.microsoft.com/services/automation/) a [stažení ukázkové skripty](https://azure.microsoft.com/documentation/scripts/). Další informace a další informace o orchestraci obnovení do Azure pomocí [plány obnovení](https://azure.microsoft.com/blog/?p=166264), najdete v části [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/).
+Pokud jste nový tooAzure automatizace, můžete [zaregistrovat](https://azure.microsoft.com/services/automation/) a [stažení ukázkové skripty](https://azure.microsoft.com/documentation/scripts/). Další informace a toolearn jak tooorchestrate tooAzure obnovení pomocí [plány obnovení](https://azure.microsoft.com/blog/?p=166264), najdete v části [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/).
 
-V tomto článku jsme popisují, jak můžete integrovat Azure Automation runbook do plánu obnovení. Příklady použít k automatizaci základní úlohy, které dříve vyžadovaly ruční zásah. Můžeme také popisují, jak převést obnovení několika kroky akce obnovení jedním kliknutím.
+V tomto článku jsme popisují, jak můžete integrovat Azure Automation runbook do plánu obnovení. Používáme tooautomate příklady základní se úlohy, které dříve vyžadovaly ruční zásah. Můžeme také popisují, jak tooconvert tooa několika kroky obnovení jedním kliknutím akce obnovení.
 
-## <a name="customize-the-recovery-plan"></a>Přizpůsobit plán obnovení
-1. Přejděte na **Site Recovery** okna prostředků plánu obnovení. V tomto příkladu plán obnovení má dva virtuální počítače přidat do něj pro obnovení. Chcete-li začít přidávat sady runbook, klikněte na tlačítko **přizpůsobit** kartě.
+## <a name="customize-hello-recovery-plan"></a>Přizpůsobit plán obnovení hello
+1. Přejděte toohello **Site Recovery** okna prostředků plánu obnovení. V tomto příkladu hello plán obnovení má dva virtuální počítače přidané tooit, pro obnovení. toobegin přidání sady runbook, klikněte na tlačítko hello **přizpůsobit** kartě.
 
-    ![Klikněte na tlačítko Upravit](media/site-recovery-runbook-automation-new/essentials-rp.png)
+    ![Klikněte na tlačítko Přizpůsobit hello](media/site-recovery-runbook-automation-new/essentials-rp.png)
 
 
 2. Klikněte pravým tlačítkem na **1. skupina: spuštění**a potom vyberte **akce po přidání**.
@@ -39,26 +39,26 @@ V tomto článku jsme popisují, jak můžete integrovat Azure Automation runboo
 
 3. Klikněte na tlačítko **vyberte skript**.
 
-4. Na **akce aktualizace** okně Název skriptu **Hello, World**.
+4. Na hello **akce aktualizace** okno, název hello skriptu **Hello, World**.
 
-    ![V okně Akce aktualizace](media/site-recovery-runbook-automation-new/update-rp.png)
+    ![okno Akce aktualizace Hello](media/site-recovery-runbook-automation-new/update-rp.png)
 
 5. Zadejte název účtu Automation.
     >[!NOTE]
-    > Účet Automation může být v libovolné oblasti Azure. Účet Automation musí být ve stejném předplatném jako trezor Azure Site Recovery.
+    > Hello účet Automation může být v libovolné oblasti Azure. Hello účet Automation musí být v hello stejnému předplatnému jako hello trezoru Azure Site Recovery.
 
-6. V účtu Automation vyberte sadu runbook. Tato sada runbook je skript, který běží během provádění plán obnovení po obnovení první skupinu.
+6. V účtu Automation vyberte sadu runbook. Tato sada runbook je hello skript, který běží během provádění hello hello plán obnovení po obnovení hello hello první skupiny.
 
-7. Chcete-li uložit skript, klikněte na tlačítko **OK**. Skript se přidá do **1. skupina: po kroky**.
+7. toosave hello skriptu, klikněte na tlačítko **OK**. Hello skript se přidá příliš**1. skupina: po kroky**.
 
     ![1:Start skupiny následné akce](media/site-recovery-runbook-automation-new/addedscript-rp.PNG)
 
 
 ## <a name="considerations-for-adding-a-script"></a>Důležité informace týkající se přidání skriptu
 
-* Pro možnost **odstranit krok** nebo **skript aktualizovat**, klikněte pravým tlačítkem na skript.
-* Skript můžete spustit v Azure při převzetí služeb při selhání z místního počítače do Azure. Ho také můžete spustit v Azure jako skript primární lokalitu před vypnutí, během navrácení služeb po obnovení z Azure do místního počítače.
-* Při spuštění skriptu, vloží kontextu plánu obnovení. Následující příklad ukazuje kontextové proměnné:
+* Možnosti příliš**odstranit krok** nebo **aktualizovat hello skriptu**, klikněte pravým tlačítkem na skript hello.
+* Skript můžete spustit v Azure při převzetí služeb při selhání z tooAzure místní počítač. Ho také můžete spustit v Azure jako skript primární lokalitu před vypnutí, během navrácení služeb po obnovení z Azure tooan na místním počítači.
+* Při spuštění skriptu, vloží kontextu plánu obnovení. Hello následující příklad ukazuje kontextové proměnné:
 
     ```
             {"RecoveryPlanName":"hrweb-recovery",
@@ -86,33 +86,33 @@ V tomto článku jsme popisují, jak můžete integrovat Azure Automation runboo
             }
     ```
 
-    Následující tabulka uvádí název a popis pro každou proměnnou v kontextu.
+    Hello následující tabulka uvádí hello název a popis pro každou proměnnou v kontextu hello.
 
     | **Název proměnné** | **Popis** |
     | --- | --- |
-    | RecoveryPlanName |Název plánu spuštěn. Tato proměnná umožňuje provádět různé akce na základě názvu plánu obnovení. Také můžete znovu použít skript. |
-    | FailoverType |Určuje, jestli je převzetí služeb při selhání testu, plánované, nebo neplánované. |
-    | FailoverDirection |Určuje, zda probíhá obnovení do primární nebo sekundární lokality. |
-    | GroupID |Identifikuje číslo skupiny v plánu obnovení, když běží plánu. |
-    | VmMap |Pole všechny virtuální počítače ve skupině. |
-    | Klíč VMMap |Jedinečný klíč (GUID) pro každý virtuální počítač. Je stejný jako Identifikátor Azure Virtual Machine Manager (VMM) virtuálního počítače, kde je to možné. |
-    | SubscriptionId |ID předplatného Azure, ve kterém byl vytvořen virtuální počítač. |
-    | RoleName |Název virtuálního počítače Azure, který se obnovuje. |
-    | CloudServiceName |Název služby cloudu Azure, ve kterém byl vytvořen virtuální počítač. |
-    | Název skupiny prostředků|Název skupiny prostředků Azure, ve kterém byl vytvořen virtuální počítač. |
-    | RecoveryPointId|Časové razítko pro při obnovení virtuálního počítače. |
+    | RecoveryPlanName |Hello název plánu hello spuštěn. Tato proměnná umožňuje provádět různé akce na základě názvu plánu obnovení hello. Také můžete znovu použít skript hello. |
+    | FailoverType |Určuje, zda text hello převzetí služeb při selhání testu, plánované, nebo neplánované. |
+    | FailoverDirection |Určuje, zda obnovení tooa primární nebo sekundární lokality. |
+    | GroupID |Určuje číslo skupiny hello v plánu obnovení hello po spuštění plánu hello. |
+    | VmMap |Pole všechny virtuální počítače ve skupině hello. |
+    | Klíč VMMap |Jedinečný klíč (GUID) pro každý virtuální počítač. Jeho hello stejný jako hello Azure Virtual Machine Manager (VMM) ID hello virtuální počítač, kde je to možné. |
+    | SubscriptionId |ID předplatného Azure Hello, ve kterém hello virtuálních počítačů vytvořila. |
+    | RoleName |Název Hello hello virtuálního počítače Azure, který se obnovuje. |
+    | CloudServiceName |název služby Azure cloud Hello, pod kterým hello virtuálních počítačů vytvořila. |
+    | Název skupiny prostředků|Název skupiny prostředků Azure Hello, pod kterým hello virtuálních počítačů vytvořila. |
+    | RecoveryPointId|Hello časové razítko pro při obnovení hello virtuálních počítačů. |
 
-* Zkontrolujte, zda má účet služby Automation následující moduly:
+* Zajistěte, aby byl tento účet Automation hello hello následující moduly:
     * AzureRM.profile
     * AzureRM.Resources
     * AzureRM.Automation
     * AzureRM.Network
     * AzureRM.Compute
 
-Všechny moduly musí být kompatibilní verze. Snadný způsob, jak všechny moduly musí být kompatibilní se má používat nejnovější verze všech modulů.
+Všechny moduly musí být kompatibilní verze. Tooensure snadný způsob, jestli jsou všechny moduly kompatibilní je toouse hello nejnovější verze všechny moduly hello.
 
-### <a name="access-all-vms-of-the-vmmap-in-a-loop"></a>Přístup k všechny virtuální počítače VMMap ve smyčce
-Použijte následující kód na opakování mezi všechny virtuální počítače Microsoft VMMap:
+### <a name="access-all-vms-of-hello-vmmap-in-a-loop"></a>Přístup k všechny virtuální počítače hello VMMap ve smyčce
+Použijte následující kód tooloop napříč všechny virtuální počítače hello Microsoft VMMap hello:
 
 ```
 $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
@@ -121,7 +121,7 @@ $vmMap = $RecoveryPlanContext.VmMap
  {
      $VM = $vmMap.$VMID                
              if( !(($VM -eq $Null) -Or ($VM.ResourceGroupName -eq $Null) -Or ($VM.RoleName -eq $Null))) {
-         #this check is to ensure that we skip when some data is not available else it will fail
+         #this check is tooensure that we skip when some data is not available else it will fail
  Write-output "Resource group name ", $VM.ResourceGroupName
  Write-output "Rolename " = $VM.RoleName
      }
@@ -130,17 +130,17 @@ $vmMap = $RecoveryPlanContext.VmMap
 ```
 
 > [!NOTE]
-> Skupina název a role název hodnoty prostředků jsou prázdné po před akcí pro skupinu spouštěcí skript. Pouze v případě, že virtuální počítač této skupiny úspěšné v převzetí služeb při selhání, naplní se hodnoty. Skript je po akce spouštěcí skupiny.
+> Hello prostředků skupiny název a role název hodnoty jsou prázdné, pokud je skript hello spouštěcí skupině tooa před akcí. Hello hodnoty jsou naplněny pouze v případě, že v převzetí služeb při selhání se podaří hello virtuálních počítačů této skupiny. skript Hello je po akce hello spouštěcí skupině.
 
-## <a name="use-the-same-automation-runbook-in-multiple-recovery-plans"></a>Použijte stejné sady Automation runbook v více plánů obnovení
+## <a name="use-hello-same-automation-runbook-in-multiple-recovery-plans"></a>Použití hello stejné sady Automation runbook v více plánů obnovení
 
-Můžete pomocí jednoho skriptu v více plánů obnovení pomocí externích proměnných. Můžete použít [proměnné automatizace Azure](../automation/automation-variables.md) k uložení parametry, které můžete předat provedení plánu obnovení. Přidáním předpony název plánu obnovení proměnnou můžete vytvořit jednotlivé proměnných pro každý plán obnovení. Pak použijte proměnné jako parametry. Můžete změnit parametr beze změny skript, ale stále Změna způsobu práce skript.
+Můžete pomocí jednoho skriptu v více plánů obnovení pomocí externích proměnných. Můžete použít [proměnné automatizace Azure](../automation/automation-variables.md) toostore parametry, které můžete předat pro obnovení, naplánujte spuštění. Přidáním název plánu obnovení hello jako předpona toohello proměnné, můžete vytvořit jednotlivé proměnných pro každý plán obnovení. Pak použijte proměnné hello jako parametry. Můžete změnit parametr beze změny hello skript, ale stále změnu hello způsobem hello skriptu funguje.
 
 ### <a name="use-a-simple-string-variable-in-a-runbook-script"></a>Použití jednoduché řetězec proměnné ve skriptu runbook
 
-V tomto příkladu skript přijímá vstup z skupina zabezpečení sítě (NSG) a platí pro virtuální počítače v plánu obnovení.
+V tomto příkladu skript přijímá hello vstup z skupina zabezpečení sítě (NSG) a použije ho toohello virtuální počítače v plánu obnovení.
 
-Pro skript k detekci obnovení, který je spuštěn plán, použijte kontext plánu obnovení:
+Pro skript toodetect hello plánu obnovení je spuštěna použijte kontextu plán obnovení hello:
 
 ```
 workflow AddPublicIPAndNSG {
@@ -152,18 +152,18 @@ workflow AddPublicIPAndNSG {
     $RPName = $RecoveryPlanContext.RecoveryPlanName
 ```
 
-Použít existující skupina NSG, musíte znát název skupiny NSG a název skupiny prostředků NSG. Tyto proměnné můžete použijte jako vstupy pro skripty plánu obnovení. K tomu, vytvořte dvě proměnné v prostředky účet Automation. Přidejte název plánu obnovení, který vytváříte parametry jako předpony názvu proměnné.
+tooapply existující skupina NSG, musíte znát název hello NSG a název skupiny prostředků hello NSG. Tyto proměnné můžete použijte jako vstupy pro skripty plánu obnovení. toodo, vytvořte dvě proměnné v hello prostředky účet Automation. Přidejte název hello hello plán obnovení, který vytváříte hello parametry pro jako název proměnné toohello předponu.
 
-1. Vytvořte proměnnou pro uložení názvu skupiny NSG. Přidání předpony k názvu proměnné pomocí názvu plánu obnovení.
+1. Vytvořte název proměnné toostore hello NSG. Přidejte název proměnné toohello předponu pomocí názvu hello hello plánu obnovení.
 
     ![Vytvořte proměnnou Název skupiny NSG](media/site-recovery-runbook-automation-new/var1.png)
 
-2. Vytvořte proměnnou pro uložení této skupině název skupiny prostředků. Přidání předpony k názvu proměnné pomocí názvu plánu obnovení.
+2. Vytvořte název skupiny prostředků NSG proměnné toostore hello. Přidejte název proměnné toohello předponu pomocí názvu hello hello plánu obnovení.
 
     ![Vytvoření názvu skupiny prostředků NSG](media/site-recovery-runbook-automation-new/var2.png)
 
 
-3.  Ve skriptu použijte následující kód odkaz získat hodnoty proměnné:
+3.  Ve skriptu hello použijte následující hodnoty proměnné tooget hello kódu pro odkaz hello:
 
     ```
     $NSGValue = $RecoveryPlanContext.RecoveryPlanName + "-NSG"
@@ -173,14 +173,14 @@ Použít existující skupina NSG, musíte znát název skupiny NSG a název sku
     $RGnameVar = Get-AutomationVariable -Name $NSGRGValue
     ```
 
-4.  Pomocí proměnné v runbooku použít NSG k síťové rozhraní virtuálního počítače při selhání:
+4.  Použití proměnné hello v hello runbook tooapply hello NSG toohello síťové rozhraní služeb hello při selhání virtuálního počítače:
 
     ```
     InlineScript {
     if (($Using:NSGname -ne $Null) -And ($Using:NSGRGname -ne $Null)) {
             $NSG = Get-AzureRmNetworkSecurityGroup -Name $Using:NSGname -ResourceGroupName $Using:NSGRGname
             Write-output $NSG.Id
-            #Apply the NSG to a network interface
+            #Apply hello NSG tooa network interface
             #$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
             #Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name FrontEnd `
             #  -AddressPrefix 192.168.1.0/24 -NetworkSecurityGroup $NSG
@@ -188,16 +188,16 @@ Použít existující skupina NSG, musíte znát název skupiny NSG a název sku
     }
     ```
 
-Pro každý plán obnovení vytvořte nezávislých proměnných, takže můžete opakovaně použít skript. Přidání předpony pomocí název plánu obnovení. Pro dokončení, začátku do konce skript pro tento scénář, najdete v části [přidat veřejné IP adresy a NSG na virtuálních počítačích během testovacího převzetí služeb při selhání plánu obnovení Site Recovery](https://gallery.technet.microsoft.com/Add-Public-IP-and-NSG-to-a6bb8fee).
+Pro každý plán obnovení vytvořte nezávislých proměnných, takže můžete opakovaně použít skript hello. Přidání předpony pomocí hello název plánu obnovení. Pro dokončení, začátku do konce skript pro tento scénář, najdete v části [během testovacího převzetí služeb při selhání plánu obnovení Site Recovery přidat veřejné IP adresy a NSG tooVMs](https://gallery.technet.microsoft.com/Add-Public-IP-and-NSG-to-a6bb8fee).
 
 
-### <a name="use-a-complex-variable-to-store-more-information"></a>Použití proměnné komplexní ukládat další informace
+### <a name="use-a-complex-variable-toostore-more-information"></a>Použití proměnné komplexní toostore Další informace
 
-Vezměte v úvahu scénář, ve kterém chcete jednoho skriptu zapnout veřejnou IP adresu pro konkrétní virtuální počítače. V jiné scénáři můžete chtít použít odlišné skupiny Nsg na různé virtuální počítače (ne na všech virtuálních počítačích). Můžete použít skript, který je opakovaně použitelné pro každého plánu obnovení. Proměnný počet virtuálních počítačů může mít každý plán obnovení. Například obnovení služby SharePoint má dva elementy front end. Základní-obchodní (LOB) aplikace má pouze jeden front-endu. Nelze vytvořit samostatné proměnných pro každý plán obnovení. 
+Vezměte v úvahu scénář, ve kterém chcete tooturn jednoho skriptu na veřejnou IP adresu pro konkrétní virtuální počítače. V jiné scénáři můžete chtít tooapply odlišné skupiny Nsg na různé virtuální počítače (ne na všech virtuálních počítačích). Můžete použít skript, který je opakovaně použitelné pro každého plánu obnovení. Proměnný počet virtuálních počítačů může mít každý plán obnovení. Například obnovení služby SharePoint má dva elementy front end. Základní-obchodní (LOB) aplikace má pouze jeden front-endu. Nelze vytvořit samostatné proměnných pro každý plán obnovení. 
 
-V následujícím příkladu jsme nové způsobem a vytvořte [komplexní proměnná](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396) v prostředky účet Azure Automation. To uděláte tak, že zadáte více hodnot. Pokud chcete provést následující kroky je nutné použít prostředí Azure PowerShell:
+V následující ukázka hello, jsme nové způsobem a vytvoříte [komplexní proměnná](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396) v prostředky účet Azure Automation hello. To uděláte tak, že zadáte více hodnot. Je nutné použít hello toocomplete prostředí Azure PowerShell následující kroky:
 
-1. V prostředí PowerShell Přihlaste se k předplatnému Azure:
+1. V prostředí PowerShell Přihlaste se tooyour předplatné Azure:
 
     ```
     login-azurermaccount
@@ -205,24 +205,24 @@ V následujícím příkladu jsme nové způsobem a vytvořte [komplexní promě
     $sub | Select-AzureRmSubscription
     ```
 
-2. Uložit parametry, vytvořte proměnnou komplexní pomocí název plánu obnovení:
+2. toostore hello parametry, jak vytvořit proměnnou komplexní hello pomocí názvu hello hello plánu obnovení:
 
     ```
     $VMDetails = @{"VMGUID"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"};"VMGUID2"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"}}
         New-AzureRmAutomationVariable -ResourceGroupName <RG of Automation Account> -AutomationAccountName <AA Name> -Name <RecoveryPlanName> -Value $VMDetails -Encrypted $false
     ```
 
-3. V této proměnné komplexní **VMDetails** je ID virtuálního počítače pro chráněný virtuální počítač. Chcete-li získat ID virtuálního počítače na portálu Azure, zobrazte vlastnosti virtuálního počítače. Následující snímek obrazovky ukazuje proměnné, která jsou uloženy podrobnosti o dva virtuální počítače:
+3. V této proměnné komplexní **VMDetails** je hello ID virtuálního počítače pro hello chráněných virtuálních počítačů. tooget hello ID virtuálního počítače v hello portál Azure, zobrazit vlastnosti virtuálního počítače hello. Hello následující snímek obrazovky ukazuje proměnné, která ukládá hello podrobnosti o dva virtuální počítače:
 
-    ![Pomocí ID virtuálního počítače jako identifikátor GUID](media/site-recovery-runbook-automation-new/vmguid.png)
+    ![Použít hello ID virtuálního počítače jako hello GUID](media/site-recovery-runbook-automation-new/vmguid.png)
 
-4. Pomocí této proměnné v runbooku. Pokud se najde uvedené identifikátor GUID virtuálního počítače v rámci plánu obnovení, použít NSG na virtuálním počítači:
+4. Pomocí této proměnné v runbooku. Pokud hello označil že identifikátor GUID virtuálního počítače je nalezeno v kontextu plán obnovení hello, použít hello NSG na hello virtuálních počítačů:
 
     ```
     $VMDetailsObj = Get-AutomationVariable -Name $RecoveryPlanContext.RecoveryPlanName
     ```
 
-4. V sadě runbook projděte virtuálních počítačů kontextu plánu obnovení. Zkontrolujte, zda existuje virtuální počítač v **$VMDetailsObj**. Pokud existuje, přístup k vlastnostem proměnnou použít NSG:
+4. V sadě runbook projděte virtuální počítače hello kontextu plán obnovení hello. Zkontrolujte, zda text hello virtuálních počítačů existuje v **$VMDetailsObj**. Pokud existuje, přístup k vlastnostem hello hello proměnné tooapply hello NSG:
 
     ```
         $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
@@ -231,26 +231,26 @@ V následujícím příkladu jsme nové způsobem a vytvořte [komplexní promě
         foreach($VMID in $VMinfo) {
             Write-output $VMDetailsObj.value.$VMID
 
-            if ($VMDetailsObj.value.$VMID -ne $Null) { #If the VM exists in the context, this will not b Null
+            if ($VMDetailsObj.value.$VMID -ne $Null) { #If hello VM exists in hello context, this will not b Null
                 $VM = $vmMap.$VMID
-                # Access the properties of the variable
+                # Access hello properties of hello variable
                 $NSGname = $VMDetailsObj.value.$VMID.'NSGName'
                 $NSGRGname = $VMDetailsObj.value.$VMID.'NSGResourceGroupName'
 
-                # Add code to apply the NSG properties to the VM
+                # Add code tooapply hello NSG properties toohello VM
             }
         }
     ```
 
-Můžete použít stejný skriptu pro různé obnovení plány. Zadejte jiné parametry uložením hodnotu, která odpovídá do plánu obnovení v různých proměnných.
+Hello stejný skriptu můžete použít pro jinou obnovení plány. Zadejte jiné parametry uložením hello hodnotu, která odpovídá plánu obnovení tooa v různých proměnných.
 
 ## <a name="sample-scripts"></a>Ukázkové skripty
 
-Chcete-li nasadit ukázkové skripty do vašeho účtu Automation, klikněte na tlačítko **nasadit do Azure** tlačítko.
+toodeploy ukázkové skripty tooyour účet Automation, klikněte na tlačítko hello **nasazení tooAzure** tlačítko.
 
-[![Nasazení do Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![Nasazení tooAzure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
-Další příklad najdete v následujícím videu. Ukazuje, jak obnovit dvouvrstvé WordPress aplikace do Azure:
+Jiný příklad najdete v tématu hello následující videa. Ukazuje, jak toorecover tooAzure aplikace WordPress dvouvrstvá:
 
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]

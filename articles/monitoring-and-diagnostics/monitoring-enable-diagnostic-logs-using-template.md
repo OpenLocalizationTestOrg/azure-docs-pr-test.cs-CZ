@@ -1,6 +1,6 @@
 ---
-title: "Automaticky povolit nastavení pro diagnostiku pomocí šablony Resource Manageru | Microsoft Docs"
-description: "Další informace o použití šablony Resource Manageru k vytvoření nastavení diagnostiky, které vám umožní datového proudu k diagnostickým protokolům do centra událostí nebo uchováváte v účtu úložiště."
+title: "aaaAutomatically povolit nastavení pro diagnostiku pomocí šablony Resource Manageru | Microsoft Docs"
+description: "Zjistěte, jak toouse Resource Manager toocreate šablony diagnostiky se nastavení, které vám umožní toostream vaše diagnostické protokoly tooEvent centra nebo uchováváte v účtu úložiště."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/14/2017
 ms.author: johnkem
-ms.openlocfilehash: dde2435e976bbd14ca35cccc714ea21dcc5817b7
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8f38731107029928029c6d940da7bd076fea5d49
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automaticky povolte nastavení pro diagnostiku při vytváření prostředků pomocí šablony Resource Manageru
-V tomto článku jsme ukazují, jak můžete použít [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) ke konfiguraci nastavení pro diagnostiku na prostředku při jeho vytvoření. To umožňuje automatické spuštění streamování diagnostické protokoly a metriky do centra událostí, archivaci je v účtu úložiště nebo jejich odeslání k analýze protokolů při vytváření prostředku.
+V tomto článku jsme ukazují, jak můžete použít [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) tooconfigure nastavení diagnostiky pro prostředek při vytvoření. To vám umožní spustit tooautomatically streamování diagnostické protokoly a metriky tooEvent rozbočovače, je archivaci v účtu úložiště, nebo je při vytváření prostředku odeslání tooLog Analytics.
 
-Metoda pro povolení diagnostických protokolů pomocí šablony Resource Manageru závisí na typu prostředku.
+Metoda Hello k povolení diagnostických protokolů pomocí šablony Resource Manageru závisí na typu prostředku hello.
 
 * **Bez výpočetní** prostředků (například skupiny zabezpečení sítě, Logic Apps automatizace), použijte [diagnostické nastavení popsané v tomto článku](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings).
-* **Výpočetní** prostředků (WAD/LAD na základě), použijte [WAD/LAD konfigurační soubor popsané v tomto článku](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
+* **Výpočetní** (WAD/LAD na základě) prostředky používají hello [WAD/LAD konfigurační soubor popsané v tomto článku](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
 
-V tomto článku jsme popisují, jak nakonfigurovat diagnostiku pomocí těchto metod.
+V tomto článku jsme popisují, jak Diagnostika tooconfigure pomocí obou těchto metod.
 
-Základní kroky jsou následující:
+Hello základní kroky jsou následující:
 
-1. Vytvořte šablonu jako soubor JSON, který popisuje, jak vytvořit prostředek a zapněte diagnostiku.
-2. [Šablonu nasadit pomocí libovolné metody nasazení](../azure-resource-manager/resource-group-template-deploy.md).
+1. Vytvořte šablonu jako soubor JSON, který popisuje, jak toocreate hello prostředků a zapněte diagnostiku.
+2. [Nasazení šablony hello pomocí libovolné metody nasazení](../azure-resource-manager/resource-group-template-deploy.md).
 
-Níže nás dostanete příklad soubor JSON šablony, které potřebujete k vygenerování pro jiný výpočetní prostředí a výpočetní prostředky.
+Níže nás dostanete příklad šablony hello soubor JSON, je nutné toogenerate pro jiný výpočetní prostředí a výpočetní prostředky.
 
 ## <a name="non-compute-resource-template"></a>Bez výpočetních prostředků šablony
-Pro jiné výpočetní prostředky budete muset udělat dvě věci:
+Pro jiné výpočetní prostředky budete potřebovat toodo dvě věci:
 
-1. Přidání parametrů do objektu blob parametry pro název účtu úložiště, ID pravidla service bus nebo ID pracovního prostoru analýzy protokolů OMS (povolení archivace diagnostických protokolů v účtu úložiště, datové proudy protokoluje události do centra událostí a odesílání protokolů k analýze protokolů).
+1. Přidáte parametry toohello parametry objektu blob pro název účtu úložiště hello, ID pravidla service bus nebo ID pracovního prostoru analýzy protokolů OMS (povolení archivace diagnostických protokolů v účtu úložiště, datové proudy protokoly tooEvent centra nebo odesílání protokolů tooLog Analytics).
    
     ```json
     "storageAccountName": {
       "type": "string",
       "metadata": {
-        "description": "Name of the Storage Account in which Diagnostic Logs should be saved."
+        "description": "Name of hello Storage Account in which Diagnostic Logs should be saved."
       }
     },
     "serviceBusRuleId": {
       "type": "string",
       "metadata": {
-        "description": "Service Bus Rule Id for the Service Bus Namespace in which the Event Hub should be created or streamed to."
+        "description": "Service Bus Rule Id for hello Service Bus Namespace in which hello Event Hub should be created or streamed to."
       }
     },
     "workspaceId":{
       "type": "string",
       "metadata": {
-        "description": "Log Analytics workspace ID for the Log Analytics workspace to which logs will be sent."
+        "description": "Log Analytics workspace ID for hello Log Analytics workspace toowhich logs will be sent."
       }
     }
     ```
-2. V poli prostředky prostředků, pro který chcete povolit diagnostických protokolů přidat prostředek typu `[resource namespace]/providers/diagnosticSettings`.
+2. V poli prostředky hello hello prostředku, pro které chcete tooenable diagnostické protokoly, přidejte prostředek typu `[resource namespace]/providers/diagnosticSettings`.
    
     ```json
     "resources": [
@@ -102,9 +102,9 @@ Pro jiné výpočetní prostředky budete muset udělat dvě věci:
     ]
     ```
 
-Odpovídá vlastnosti objektu blob pro nastavení diagnostiky [formát popsaný v tomto článku](https://msdn.microsoft.com/library/azure/dn931931.aspx). Přidávání `metrics` vlastnost vám umožní také odeslat metrika prostředků tyto stejné výstupů za předpokladu, že [prostředek podporuje Azure monitorování metriky](monitoring-supported-metrics.md).
+Následuje technologie Hello vlastnosti objektu blob pro hello nastavení diagnostiky [hello formát je popsaný v tomto článku](https://msdn.microsoft.com/library/azure/dn931931.aspx). Přidání hello `metrics` vlastnost vám umožní tooalso odesílání prostředku metriky toothese stejné výstupy, za předpokladu, že [hello prostředek podporuje Azure monitorování metriky](monitoring-supported-metrics.md).
 
-Zde je úplný příklad, který vytvoří aplikace logiky a zapne streamování centrům událostí a úložiště v účtu úložiště.
+Zde je úplný příklad, který vytvoří aplikace logiky a zapne streamování tooEvent rozbočovače a úložiště v účtu úložiště.
 
 ```json
 
@@ -115,7 +115,7 @@ Zde je úplný příklad, který vytvoří aplikace logiky a zapne streamování
     "logicAppName": {
       "type": "string",
       "metadata": {
-        "description": "Name of the Logic App that will be created."
+        "description": "Name of hello Logic App that will be created."
       }
     },
     "testUri": {
@@ -125,19 +125,19 @@ Zde je úplný příklad, který vytvoří aplikace logiky a zapne streamování
     "storageAccountName": {
       "type": "string",
       "metadata": {
-        "description": "Name of the Storage Account in which Diagnostic Logs should be saved."
+        "description": "Name of hello Storage Account in which Diagnostic Logs should be saved."
       }
     },
     "serviceBusRuleId": {
       "type": "string",
       "metadata": {
-        "description": "Service Bus Rule Id for the Service Bus Namespace in which the Event Hub should be created or streamed to."
+        "description": "Service Bus Rule Id for hello Service Bus Namespace in which hello Event Hub should be created or streamed to."
       }
     },
     "workspaceId": {
       "type": "string",
       "metadata": {
-        "description": "Log Analytics workspace ID for the Log Analytics workspace to which logs will be sent."
+        "description": "Log Analytics workspace ID for hello Log Analytics workspace toowhich logs will be sent."
       }
     }
   },
@@ -224,20 +224,20 @@ Zde je úplný příklad, který vytvoří aplikace logiky a zapne streamování
 ```
 
 ## <a name="compute-resource-template"></a>Výpočetní šablony prostředků
-Povolí se Diagnostika na výpočetních prostředků, například cluster virtuálního počítače nebo Service Fabric, budete muset:
+Diagnostika tooenable na výpočetních prostředků, například virtuální počítač nebo cluster Service Fabric, budete muset:
 
-1. Přidejte rozšíření Azure Diagnostics do definice prostředků virtuálního počítače.
+1. Přidejte definici prostředků hello Azure Diagnostics rozšíření toohello virtuálních počítačů.
 2. Zadejte úložiště účet nebo události rozbočovače jako parametr.
-3. Přidejte obsah souboru WADCfg XML do vlastnost XMLCfg správně uvozovací znaky všechny znaky XML.
+3. Přidejte hello obsah souboru WADCfg XML do vlastnosti XMLCfg hello, správně uvozovací znaky všechny znaky XML.
 
 > [!WARNING]
-> Tento poslední krok může být složité získat správné. [Najdete v článku](../virtual-machines/windows/extensions-diagnostics-template.md#diagnostics-configuration-variables) příklad, která rozdělí schématu konfigurace diagnostiky do proměnné, které jsou uvozené a správně naformátovaná.
+> Tento poslední krok může být složité tooget vpravo. [Najdete v článku](../virtual-machines/windows/extensions-diagnostics-template.md#diagnostics-configuration-variables) příklad, rozdělení hello schéma konfigurace diagnostiky do proměnné, které jsou uvozené a správně naformátovaná.
 > 
 > 
 
-Celý proces, včetně ukázky, je popsaný [v tomto dokumentu](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Hello celý proces, včetně ukázky, je popsaný [v tomto dokumentu](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="next-steps"></a>Další kroky
 * [Další informace o diagnostických protokolů Azure.](monitoring-overview-of-diagnostic-logs.md)
-* [Stream Azure diagnostických protokolů do centra událostí](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Datový proud diagnostických protokolů Azure tooEvent rozbočovače](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 

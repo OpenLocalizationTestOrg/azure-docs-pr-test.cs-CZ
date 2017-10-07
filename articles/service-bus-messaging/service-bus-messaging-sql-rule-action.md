@@ -1,5 +1,5 @@
 ---
-title: Reference syntaxe SQLRuleAction v Azure | Microsoft Docs
+title: reference syntaxe aaaSQLRuleAction v Azure | Microsoft Docs
 description: Podrobnosti o SQLRuleAction gramatika.
 services: service-bus-messaging
 documentationcenter: na
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: sethm
-ms.openlocfilehash: 7379b7f58563675f28d77928d933c0d9c7992e71
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8ef281f942847bcc535b83a5ffb30d03539734f9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sqlruleaction-syntax"></a>Syntaxe SQLRuleAction
 
-A *SqlRuleAction* je instance [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) třídy a představuje sadu akcí, které jsou napsané v jazyce SQL na základě syntaxi, která bude provedena [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage).   
+A *SqlRuleAction* je instance hello [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) třídy a představuje sadu akcí, které jsou napsané v jazyce SQL na základě syntaxi, která bude provedena [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage).   
   
-Toto téma obsahuje podrobnosti o gramatiku SQL pravidlo akce.  
+Toto téma obsahuje podrobnosti o hello gramatiky akce pravidla SQL.  
   
 ```  
 <statements> ::=
@@ -64,11 +64,11 @@ Toto téma obsahuje podrobnosti o gramatiku SQL pravidlo akce.
   
 ## <a name="arguments"></a>Argumenty  
   
--   `<scope>`je volitelný řetězec označující oboru `<property_name>`. Platné hodnoty jsou `sys` nebo `user`. `sys` Hodnota označuje rozsah systémů kde `<property_name>` je název veřejné vlastnosti [BrokeredMessage třída](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user`označuje oboru uživatele kde `<property_name>` je klíč z [BrokeredMessage třída](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) slovníku. `user`rozsah je výchozí obor, pokud `<scope>` není zadán.  
+-   `<scope>`je volitelný řetězec označující hello oboru hello `<property_name>`. Platné hodnoty jsou `sys` nebo `user`. Hello `sys` hodnota určuje rozsah systémů kde `<property_name>` je název veřejné vlastnosti hello [BrokeredMessage třída](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user`označuje oboru uživatele kde `<property_name>` je klíč hello [BrokeredMessage třída](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) slovníku. `user`rozsah je výchozí obor hello, pokud `<scope>` není zadán.  
   
 ### <a name="remarks"></a>Poznámky  
 
-Pokus o přístup k systému neexistující vlastnost je k chybě při pokusu o přístup k neexistující uživatele vlastnost není chyba. Místo toho vlastnost uživatele neexistující interně vyhodnotí jako neznámou hodnotou. Neznámá hodnota považuje speciálně během vyhodnocení operátor.  
+Tooaccess pokusu o systému neexistující vlastnost je k chybě při vlastnost uživatele pokusu o tooaccess neexistující není chyba. Místo toho vlastnost uživatele neexistující interně vyhodnotí jako neznámou hodnotou. Neznámá hodnota považuje speciálně během vyhodnocení operátor.  
   
 ## <a name="propertyname"></a>%{Property_Name/  
   
@@ -83,7 +83,7 @@ Pokus o přístup k systému neexistující vlastnost je k chybě při pokusu o 
 ```  
   
 ### <a name="arguments"></a>Argumenty  
- `<regular_identifier>`řetězec reprezentována následujícímu regulárnímu výrazu:  
+ `<regular_identifier>`je řetězec reprezentována hello následující regulární výraz:  
   
 ```  
 [[:IsLetter:]][_[:IsLetter:][:IsDigit:]]*  
@@ -97,7 +97,7 @@ Pokus o přístup k systému neexistující vlastnost je k chybě při pokusu o 
   
  A `<regular_identifier>` nemůže být rezervované klíčové slovo.  
   
- `<delimited_identifier>`je řetězec, který je uzavřena s levé nebo pravé hranaté závorky ([]). Pravou hranatou závorku je reprezentován jako dvě pravé hranaté závorky. Následují příklady `<delimited_identifier>`:  
+ `<delimited_identifier>`je řetězec, který je uzavřena s levé nebo pravé hranaté závorky ([]). Pravou hranatou závorku je reprezentován jako dvě pravé hranaté závorky. Hello Následují příklady `<delimited_identifier>`:  
   
 ```  
 [Property With Space]  
@@ -105,7 +105,7 @@ Pokus o přístup k systému neexistující vlastnost je k chybě při pokusu o 
   
 ```  
   
- `<quoted_identifier>`je řetězec, který je uzavřena dvojitých uvozovek nahoře. Dvojité uvozovky v identifikátoru je reprezentován jako dva znaky uvozovek. Není doporučeno použít identifikátory v uvozovkách, protože můžete snadno Nezaměňovat s řetězcová konstanta. Pokud je to možné použijte s oddělovači identifikátor. Tady je příklad `<quoted_identifier>`:  
+ `<quoted_identifier>`je řetězec, který je uzavřena dvojitých uvozovek nahoře. Dvojité uvozovky v identifikátoru je reprezentován jako dva znaky uvozovek. Není doporučeno, protože můžete snadno Nezaměňovat s konstantní řetězec v uvozovkách toouse identifikátory. Pokud je to možné použijte s oddělovači identifikátor. Hello tady je příklad `<quoted_identifier>`:  
   
 ```  
 "Contoso & Northwind"  
@@ -120,7 +120,7 @@ Pokus o přístup k systému neexistující vlastnost je k chybě při pokusu o 
   
 ### <a name="remarks"></a>Poznámky
   
- `<pattern>`musí být výraz, který se vyhodnotí jako řetězec. Použije se jako vzor pro operátor LIKE.      Může obsahovat následující znaky:  
+ `<pattern>`musí být výraz, který se vyhodnotí jako řetězec. Použije se jako vzor pro hello jako operátor.      Může obsahovat hello následující zástupné znaky:  
   
 -   `%`: Řetězec nula nebo více znaků.  
   
@@ -135,7 +135,7 @@ Pokus o přístup k systému neexistující vlastnost je k chybě při pokusu o 
   
 ### <a name="remarks"></a>Poznámky
   
- `<escape_char>`musí být výraz, který se vyhodnotí jako řetězec o délce 1. Slouží jako řídicí znak pro operátor LIKE.  
+ `<escape_char>`musí být výraz, který se vyhodnotí jako řetězec o délce 1. Slouží jako řídicí znak pro hello jako operátor.  
   
  Například `property LIKE 'ABC\%' ESCAPE '\'` odpovídá `ABC%` místo řetězec, který začíná `ABC`.  
   
@@ -148,27 +148,27 @@ Pokus o přístup k systému neexistující vlastnost je k chybě při pokusu o 
   
 ### <a name="arguments"></a>Argumenty  
   
--   `<integer_constant>`je řetězec čísel, která se nenacházejí v uvozovkách a neobsahují desetinných míst. Hodnoty jsou uloženy jako `System.Int64` interně a postupujte podle stejného rozsahu.  
+-   `<integer_constant>`je řetězec čísel, která se nenacházejí v uvozovkách a neobsahují desetinných míst. Hello hodnoty se uloží jako `System.Int64` interně, a postupujte podle hello stejný rozsah.  
   
-     Následují příklady dlouho konstant:  
+     Hello Následují příklady dlouho konstanty:  
   
     ```  
     1894  
     2  
     ```  
   
--   `<decimal_constant>`je řetězec čísel, která se nenacházejí v uvozovkách a obsahovat desetinné čárky. Hodnoty jsou uloženy jako `System.Double` interně a postupujte podle stejné rozsah nebo přesnosti.  
+-   `<decimal_constant>`je řetězec čísel, která se nenacházejí v uvozovkách a obsahovat desetinné čárky. Hello hodnoty se uloží jako `System.Double` interně a postupujte podle hello stejný rozsah nebo přesnosti.  
   
-     V budoucí verzi, může být tento číslo uložené v na jiný datový typ pro podporu přesné číslo sémantiku, takže byste neměli spoléhat na skutečnost, základní datový typ je `System.Double` pro `<decimal_constant>`.  
+     V budoucí verzi, toto číslo může být uložena v jiný datový toosupport přesné číslo Sémantika typu, takže byste neměli spoléhat na hello fakt hello základní datový typ je `System.Double` pro `<decimal_constant>`.  
   
-     Následují příklady decimal konstant:  
+     Hello Následují příklady decimal konstanty:  
   
     ```  
     1894.1204  
     2.0  
     ```  
   
--   `<approximate_number_constant>`je číslo napsaných v exponenciální notace. Hodnoty jsou uloženy jako `System.Double` interně a postupujte podle stejné rozsah nebo přesnosti. Následují příklady přibližnou číselné konstanty:  
+-   `<approximate_number_constant>`je číslo napsaných v exponenciální notace. Hello hodnoty se uloží jako `System.Double` interně a postupujte podle hello stejný rozsah nebo přesnosti. Hello Následují příklady přibližnou číselné konstanty:  
   
     ```  
     101.5E5  
@@ -184,7 +184,7 @@ Pokus o přístup k systému neexistující vlastnost je k chybě při pokusu o 
   
 ### <a name="remarks"></a>Poznámky
   
-Logická hodnota konstanty jsou reprezentované pomocí klíčová slova `TRUE` nebo `FALSE`. Hodnoty jsou uloženy jako `System.Boolean`.  
+Logická hodnota konstanty jsou reprezentované pomocí klíčových slov hello `TRUE` nebo `FALSE`. Hello hodnoty se uloží jako `System.Boolean`.  
   
 ## <a name="stringconstant"></a>string_constant  
   
@@ -206,18 +206,18 @@ Logická hodnota konstanty jsou reprezentované pomocí klíčová slova `TRUE` 
   
 ### <a name="remarks"></a>Poznámky  
 
-`newid()` Funkce vrátí **System.Guid** vygenerované `System.Guid.NewGuid()` metoda.  
+Hello `newid()` funkce vrátí **System.Guid** generované hello `System.Guid.NewGuid()` metoda.  
   
-`property(name)` Funkce vrátí hodnotu vlastnosti odkazuje `name`. `name` Hodnota může být libovolný platný výraz, který vrací řetězcovou hodnotu.  
+Hello `property(name)` funkce vrátí hodnotu hello hello vlastnosti odkazuje `name`. Hello `name` hodnota může být libovolný platný výraz, který vrací řetězcovou hodnotu.  
   
 ## <a name="considerations"></a>Požadavky
 
-- Sada se používá k vytvoření nové vlastnosti nebo aktualizujte hodnotu existující vlastnost.
-- ODEBRAT slouží k odebrání vlastnosti.
-- Pokud typ výrazu a existující typ vlastnosti se liší, provede sadu implicitní převod Pokud je to možné.
+- Sada je použité toocreate novou hodnotu hello vlastnost nebo aktualizovat existující vlastnost.
+- ODEBRAT je použité tooremove vlastnost.
+- Pokud typ výrazu hello a existující typ vlastnosti hello se liší, provede sadu implicitní převod Pokud je to možné.
 - Akce selže, pokud odkazované vlastnosti neexistující systému.
 - Akce neselže, pokud byly na něj odkazovalo vlastnosti neexistující uživatele.
-- Vlastnost uživatele neexistující vyhodnotí jako "Neznámý" interně následující stejnou sémantiku jako [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) při vyhodnocování operátory.
+- Vlastnost uživatele neexistující interně vyhodnotí jako "Neznámý", následující hello stejnou sémantiku jako [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) při vyhodnocování operátory.
 
 ## <a name="next-steps"></a>Další kroky
 

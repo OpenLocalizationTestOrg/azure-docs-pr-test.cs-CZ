@@ -1,6 +1,6 @@
 ---
-title: "264 více přenosovou rychlostí 4K zvuk 5.1 | Microsoft Docs"
-description: "Téma nabízí přehled ** 264 přednastavení úloh Multiple Bitrate 4K zvuk 5.1* *."
+title: "aaa264 více přenosovou rychlostí 4K zvuk 5.1 | Microsoft Docs"
+description: "Hello téma nabízí přehled hello ** 264 přednastavení úloh Multiple Bitrate 4K zvuk 5.1* *."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 10e5c41be42b73e3e1458adac9642547c182530b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ea0169a86b132002233488ba748a6583fe08d51b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="h264-multiple-bitrate-4k-audio-51"></a>H264 Zvuk přenosovou rychlostí 4K více 5.1
-`Media Encoder Standard`definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16. By pak předejte vlastní přednastavení kodéru. Seznam všech názvů přednastavené podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování. Můžete použít `preset name` toospecify do formátu, který chcete tooencode mediálního souboru. Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16. By pak předejte kodér vlastní přednastavené toohello hello. Hello seznam všech hello přednastavení názvy podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- Toto téma ukazuje `H264 Multiple Bitrate 4K Audio 5.1` přednastavení ve formátu XML a JSON.  
+ Toto téma ukazuje hello `H264 Multiple Bitrate 4K Audio 5.1` přednastavení ve formátu XML a JSON.  
   
- Tato předvolba vytvoří sadu 12 soubory MP4 zarovnaný GOP od 20000 kb/s až 1 000 kB/s a zvuku AAC 5.1. Podrobné informace o profilu přenosovou rychlostí, vzorkování rychlost atd tohoto přednastavení, zkontrolovat, XML nebo JSON definovaná níže. Vysvětlení znamená, co každý prvek a platné hodnoty pro každý element, najdete v článku [Media Encoder Standard schématu](media-services-mes-schema.md).  
-  
-> [!NOTE]
->  Měli byste obdržet jednotku rezervovanou Premium kóduje typ s 4 kB. Další informace najdete v tématu [postup škálování kódování](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).  
+ Tato předvolba vytvoří sadu 12 souborů zarovnaný GOP MP4, od kb/s too1000 20000 kb/s a zvuku AAC 5.1. Podrobné informace o profilu přenosovou rychlostí, vzorkování rychlost atd tohoto přednastavení, zkontrolujte hello XML nebo JSON definovaná níže. Vysvětlení znamená, co každý prvek a hello platné hodnoty pro každý element, najdete v tématu hello [Media Encoder Standard schématu](media-services-mes-schema.md).  
   
 > [!NOTE]
->  Při úpravě `Width` a `Height` hodnot v rámci vrstvy, ujistěte se, aby zůstala konzistentní poměr stran. Příklad: 1920 × 1080, 1280 × 720, 1080 x 576 640 x 360. Neměli byste používat směs poměrům stran, jako například: 1280 × 720, 720 x 480, 640 x 360.  
+>  Měli byste obdržet hello Premium vyhrazené kóduje typ jednotky s 4 kB. Další informace najdete v tématu [jak tooScale kódování](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).  
+  
+> [!NOTE]
+>  Při úpravě hello `Width` a `Height` hodnot v rámci vrstvy, ujistěte se, že poměr stran hello konzistentní. Příklad: 1920 × 1080, 1280 × 720, 1080 x 576 640 x 360. Neměli byste používat směs poměrům stran, jako například: 1280 × 720, 720 x 480, 640 x 360.  
   
  XML  
   

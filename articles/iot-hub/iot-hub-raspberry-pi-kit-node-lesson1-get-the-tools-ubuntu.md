@@ -1,6 +1,6 @@
 ---
-title: "Připojení k Azure IoT - lekci 1 malin platformy (uzel): získat nástroje (Ubuntu) | Microsoft Docs"
-description: "Stáhněte a nainstalujte nezbytné nástroje a software pro první ukázkovou aplikaci pro platformy na Ubuntu."
+title: "Připojit malin platformy (uzel) tooAzure IoT - lekci 1: získání nástroje (Ubuntu) | Microsoft Docs"
+description: "Stáhněte a nainstalujte na Ubuntu hello nezbytné nástroje a software pro hello první ukázkovou aplikaci pro platformy."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,13 +17,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: de583be0cdce058c83091f421376812e8013d76e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b4f566fa0d1faf8b2321707145f675e3d87f0bef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-the-tools-ubuntu-1604"></a>Získání nástrojů (Ubuntu 16.04)
+# <a name="get-hello-tools-ubuntu-1604"></a>Získat nástroje hello (Ubuntu 16.04)
 
 > [!div class="op_single_selector"]
 > * [Windows 7 nebo novější](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
@@ -32,26 +32,26 @@ ms.lasthandoff: 07/11/2017
 
 
 ## <a name="what-you-will-do"></a>Co provedete
-Stažení nástroje pro vývoj a software pro první ukázkovou aplikaci pro malin pí 3. Pokud máte potíže, vyhledejte řešení na [řešení potíží s stránky](iot-hub-raspberry-pi-kit-node-troubleshooting.md).
+Stažení nástroje pro vývoj hello a hello softwaru pro hello první ukázkovou aplikaci pro malin pí 3. Pokud máte potíže, vyhledejte řešení na hello [řešení potíží s stránky](iot-hub-raspberry-pi-kit-node-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Co se dozvíte
 V tomto článku se dozvíte:
 
-* Jak nainstalovat Git a Node.js.
-  * [Git](https://git-scm.com) je systém správy verzí distribuované s otevřeným zdrojem. Ukázkovou aplikaci pro tento článek je uložený na Git.
+* Jak tooinstall Git a Node.js.
+  * [Git](https://git-scm.com) je systém správy verzí distribuované s otevřeným zdrojem. Hello ukázkovou aplikaci pro tento článek je uložený na Git.
   * [Node.js](https://nodejs.org/en/) je JavaScript runtime s ekosystém bohaté balíčku.
-* Postup instalace dalších nástrojů pro vývoj Node.js pomocí NPM.
-  * Minimální požadovaná verze Node.js je 4.5 LTS.
-  * [NPM](https://www.npmjs.com) je jedním z vybraných manažerů balíčku pro Node.js.
+* Jak toouse NPM tooinstall další Node.js nástroje pro vývoj.
+  * minimální požadovaná verze Node.js Hello je 4.5 LTS.
+  * [NPM](https://www.npmjs.com) je jedním z hello správce balíčku pro Node.js.
 
 ## <a name="what-do-you-need"></a>Co je potřeba
-Pro dokončení této operace, budete potřebovat:
+toocomplete této operace, budete potřebovat:
 
-* Připojení k Internetu kvůli stahování nástroje pro vývoj a softwaru.
+* Toodownload připojení Internetu hello nástroje pro vývoj a hello softwaru.
 * Počítač, který používá Ubuntu 16.04 nebo novější.
 
 ## <a name="install-git-nodejs-and-npm"></a>Nainstalovat Git, Node.js a NPM
-Použijte klávesovou zkratku `Ctrl + Alt + T` otevřete terminál a spusťte následující příkazy:
+Použití hello klávesové zkratky `Ctrl + Alt + T` tooopen hello terminálu a spusťte následující příkazy:
 
 ```bash
 sudo apt-get update
@@ -61,22 +61,22 @@ sudo apt-get install git
 ```
 
 ## <a name="install-additional-nodejs-development-tools"></a>Instalace dalších nástrojů pro vývoj Node.js
-Používáte [gulp.js](http://gulpjs.com) k automatizaci nasazení ukázkové aplikace pro platformy. Můžete také použít [zařízení zjišťování-rozhraní příkazového řádku](https://github.com/Azure/device-discovery-cli) k načtení sítě informací o zařízení IoT.
+Používáte [gulp.js](http://gulpjs.com) tooautomate hello nasazení hello ukázkové aplikace tooPi. Můžete také použít hello [zařízení zjišťování-rozhraní příkazového řádku](https://github.com/Azure/device-discovery-cli) tooretrieve sítě informace o zařízení IoT.
 
-Nainstalujte `gulp` a `device-discovery-cli` spuštěním následujícího příkazu v terminálu:
+Nainstalujte `gulp` a `device-discovery-cli` tak, že spustíte následující příkaz v terminálu hello hello:
 
 ```bash
 sudo npm install -g device-discovery-cli gulp
 ```
 
-Pokud máte problémy instalace Node.js a tyto další vývojové nástroje na Ubuntu, přečtěte si téma [Průvodce odstraňováním potíží s](iot-hub-raspberry-pi-kit-node-troubleshooting.md) pro řešení běžných potíží.
+Pokud máte problémy instalace Node.js a tyto další vývojové nástroje na Ubuntu, přečtěte si téma hello [Průvodce odstraňováním potíží s](iot-hub-raspberry-pi-kit-node-troubleshooting.md) řešení toocommon problémů.
 
 ## <a name="install-visual-studio-code"></a>Nainstalovat Visual Studio Code
-[Stáhněte si](https://code.visualstudio.com/docs/setup/linux) a nainstalujte Visual Studio Code. Visual Studio Code je editor lightweight, ale výkonnou zdrojového kódu pro Windows, Linux a systému macOS. Použití tohoto editoru později v tomto kurzu upravte ukázkový kód.
+[Stáhněte si](https://code.visualstudio.com/docs/setup/linux) a nainstalujte Visual Studio Code. Visual Studio Code je editor lightweight, ale výkonnou zdrojového kódu pro Windows, Linux a systému macOS. Použití tohoto editoru později v hello kurz tooedit hello ukázkový kód.
 
 ## <a name="summary"></a>Souhrn
-Jste nainstalovali nástroje pro vývoj vyžaduje a software pro první ukázkovou aplikaci. Dalším krokem je vytvoření, nasazení a spuštění ukázkové aplikace na pí.
+Jste nainstalovali nástroje pro vývoj hello vyžaduje a software pro hello první ukázkovou aplikaci. Další úlohou Hello je toocreate, nasazení a spuštění ukázkové aplikace hello na pí.
 
 ## <a name="next-steps"></a>Další kroky
-[Vytvoření a nasazení ukázkové aplikace blikání](iot-hub-raspberry-pi-kit-node-lesson1-deploy-blink-app.md)
+[Vytvoření a nasazení ukázkové aplikace hello blikání](iot-hub-raspberry-pi-kit-node-lesson1-deploy-blink-app.md)
 

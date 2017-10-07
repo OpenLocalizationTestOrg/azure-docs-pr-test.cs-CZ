@@ -1,6 +1,6 @@
 ---
-title: "Standardní hodnoty řešení Zabezpečení a audit pro Operations Management Suite | Dokumentace Microsoftu"
-description: "Tento dokument popisuje, jak použít řešení Zabezpečení a audit v OMS k provedení vyhodnocení standardních hodnot u všech monitorovaných počítačů za účelem dodržování předpisů a zabezpečení."
+title: "aaaOperations Management Suite zabezpečení a Audit řešení základní | Microsoft Docs"
+description: "Tento dokument popisuje, jak toouse OMS zabezpečení a Audit řešení tooperform směrného plánu hodnocení všech monitorovaných počítačů za účelem dodržování předpisů a zabezpečení."
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-ms.openlocfilehash: d538eee4dccdbf158baab8908ebfff56713bde95
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ea52408cb9d2598728fe3826a946067e1c99318f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="baseline-assessment-in-operations-management-suite-security-and-audit-solution"></a>Vyhodnocování standardních hodnot v řešení Zabezpečení a audit pro Operations Management Suite
-Tento dokument vám pomůže s použitím schopností vyhodnocování standardních hodnot v [řešení Zabezpečení a audit pro Operations Management Suite (OMS)](operations-management-suite-overview.md) pro přístup ke stavu zabezpečení monitorovaných prostředků.
+Tento dokument vám pomůže toouse [Operations Management Suite (OMS) zabezpečení a Audit řešení](operations-management-suite-overview.md) směrného plánu vyhodnocení možnosti tooaccess hello zabezpečené stavu monitorovaných prostředků.
 
 ## <a name="what-is-baseline-assessment"></a>Co je vyhodnocování standardních hodnot?
 Společnost Microsoft, spolu s organizacemi z oboru a vládními organizacemi po celém světě, definuje konfiguraci systému Windows, která představuje vysoce zabezpečená nastavení serverů. Tuto konfiguraci tvoří sada klíčů registru, nastavení zásad auditu, nastavení zásad zabezpečení a společností Microsoft doporučené hodnoty pro tato nastavení. Tato sada pravidel se označuje jako standardní hodnoty zabezpečení. Schopnost vyhodnocování standardních hodnot v řešení Zabezpečení a audit v OMS umožňuje bezproblémovou kontrolu dodržování předpisů na všech vašich počítačích. 
@@ -31,57 +31,57 @@ Existují tři typy pravidel:
 
 * **Pravidla registru**: kontrolují, jestli jsou správně nastavené klíče registru.
 * **Pravidla zásad auditu**: pravidla týkající se vašich zásad auditu.
-* **Pravidla zásad zabezpečení**: pravidla týkající se oprávnění uživatele na počítači.
+* **Pravidla zásad zabezpečení**: pravidla týkající hello uživatelských oprávnění na počítači hello.
 
 > [!NOTE]
-> Stručný přehled této funkce najdete v tématu [Použití zabezpečení OMS k vyhodnocení standardních hodnot konfigurace zabezpečení](https://blogs.technet.microsoft.com/msoms/2016/08/12/use-oms-security-to-assess-the-security-configuration-baseline/).
+> Čtení [použití OMS zabezpečení tooassess hello standardních hodnot konfigurace zabezpečení](https://blogs.technet.microsoft.com/msoms/2016/08/12/use-oms-security-to-assess-the-security-configuration-baseline/) stručný přehled této funkce.
 > 
 > 
 
 ## <a name="security-baseline-assessment"></a>Vyhodnocování standardních hodnot zabezpečení
-Můžete zkontrolovat aktuální stav vyhodnocení standardních hodnot zabezpečení pro všechny počítače monitorované řešením Zabezpečení a audit v OMS pomocí řídicího panelu.  Provedením následujících kroků otevřete řídicí panel vyhodnocování standardních hodnot zabezpečení:
+Můžete zkontrolovat vaše aktuální vyhodnocení směrného plánu zabezpečení pro všechny počítače, které jsou monitorovány pomocí OMS zabezpečení a Audit hello řídicím panelu.  Provést následující kroky tooaccess hello zabezpečení směrného plánu řídicí panel assessment hello:
 
-1. Na hlavním řídicím panelu **Microsoft Operations Management Suite** klikněte na dlaždici **Zabezpečení a audit**.
-2. Na řídicím panelu **Zabezpečení a audit** klikněte na **Vyhodnocování standardních hodnot** v části **Domény zabezpečení**. Zobrazí se řídicí panel **Vyhodnocování standardních hodnot zabezpečení**, jak je znázorněno na následujícím obrázku:
+1. V hello **Microsoft Operations Management Suite** hlavní řídicí panel, klikněte na tlačítko **zabezpečení a Audit** dlaždici.
+2. V hello **zabezpečení a Audit** řídicí panel, klikněte na tlačítko **směrného plánu vyhodnocení** pod **zabezpečení domény**. Hello **vyhodnocení směrného plánu zabezpečení** řídicího panelu se zobrazí, jak ukazuje následující obrázek hello:
    
     ![Vyhodnocování standardních hodnot v řešení Zabezpečení a audit v OMS](./media/oms-security-baseline/oms-security-baseline-fig1.png)
 
 Tento řídicí panel je rozdělen na tři hlavní oblasti:
 
-* **Počítače porovnané se standardními hodnotami**: Tato část obsahuje souhrn počtu počítačů, ke kterým se zdařil přístup, a procentuální podíl počítačů, pro které bylo vyhodnocení úspěšné. Obsahuje také seznam 10 nejúspěšnějších počítačů a procentuální výsledek vyhodnocení.
-* **Stav požadovaných pravidel**: Účelem této části je zvýšit povědomí o pravidlech, která selhala, podle závažnosti a podle typu. Při pohledu na první graf je na první pohled patrné, jestli byla většina pravidel, která selhala, kritických, nebo ne. Obsahuje také seznam Top 10 pravidel, která selhala, a jejich závažnost. Druhý graf ukazuje typy pravidel, která během vyhodnocování selhala. 
-* **Počítače, u kterých nedošlo k vyhodnocení standardních hodnot**: Tato část obsahuje seznam počítačů, ke kterým se nezdařil přístup z důvodu nekompatibility operačního systému nebo selhání. 
+* **Počítače porovnání toobaseline**: Tato část poskytuje souhrn hello počet počítačů, které byly a hello procento počítačů, které předávají hello hodnocení. Poskytuje také hello top 10 počítačů a hello procento výsledek pro vyhodnocení hello.
+* **Vyžaduje stav pravidel**: Tato část obsahuje hello záměrné toobring povědomí o hello se nezdařilo pravidla podle závažnosti, se nezdařilo pravidla podle typu. Podle toohello první graf, které můžete rychle zjistit, zda většina hello se nezdařilo pravidla jsou důležité, nebo ne. Také poskytuje seznam hello top 10 neúspěšných pravidel a jejich závažnosti. Hello druhý graf znázorňuje hello typ pravidla, které selhaly během hodnocení hello. 
+* **Počítače s chybějícími směrného plánu vyhodnocení**: Tato část obsahuje seznam počítačů hello, které nejsou přístupné z důvodu chyby nebo nekompatibilita toooperating systému. 
 
-### <a name="accessing-computers-compared-to-baseline"></a>Přístup k počítačům porovnaným se standardními hodnotami
-V ideálním případě jsou všechny vaše počítače kompatibilní s vyhodnocováním standardních hodnot zabezpečení. Nicméně se dá očekávat, že v některých případech tomu tak není. Je důležité zahrnout kontrolu počítačů, kterým se nepodařilo projít všemi testy vyhodnocování, jako součást procesu správy zabezpečení. Rychlý způsob, jak to vizualizovat, je výběrem možnosti **Dostupné počítače** umístěné v části **Počítače porovnané se standardními hodnotami**. Měl by se zobrazit výsledek hledání v protokolu se seznamem počítačů, jak je znázorněno na následující obrazovce:
+### <a name="accessing-computers-compared-toobaseline"></a>Přístup k počítačům ve srovnání toobaseline
+V ideálním případě všechny počítače se musí splňovat hello vyhodnocení směrného plánu zabezpečení. Nicméně se dá očekávat, že v některých případech tomu tak není. V rámci procesu správy hello zabezpečení je důležité tooinclude kontrola hello počítačů, které selhaly toopass všechny testy vyhodnocení zabezpečení. Toovisualize rychlý způsob, který je výběrem možnosti hello **počítače získat přístup k** umístěný v hello **počítače porovnání toobaseline** části. Zobrazí hello protokolu vyhledávání výsledek zobrazující hello seznam počítačů, jako ukazuje v hello následující obrazovka:
 
 ![Výsledky hledání dostupných počítačů](./media/oms-security-baseline/oms-security-baseline-fig2.png)
 
-Výsledek hledání je zobrazen ve formátu tabulky, kde první sloupec obsahuje název počítače a druhý sloupec obsahuje počet pravidel, která selhala. Chcete-li načíst informace týkající se typu pravidla, které selhalo, klikněte na počet pravidel, která selhala, vedle názvu počítače. Zobrazený výsledek by se měl podobat tomu na následujícím obrázku:
+výsledek hledání Hello se zobrazuje ve formátu tabulky, kde hello první sloupec má název počítače hello a druhá barva hello hello počet pravidel, která se nezdařila. tooretrieve hello informace týkající se hello typ pravidla, která se nezdařila, klikněte v hello počet neúspěšných pravidel kromě hello název počítače. Měli byste vidět výsledek podobné toohello, ukazuje následující obrázek hello:
 
 ![Podrobnosti o výsledku hledání dostupných počítačů](./media/oms-security-baseline/oms-security-baseline-fig3.png)
 
-Tento výsledek hledání obsahuje celkový počet dostupných pravidel, počet kritických pravidel, která selhala, a počet pravidel upozornění a informací, která selhala.
+V této výsledek hledání máte celkem hello pravidel přístupu, hello počet kritické pravidla, která se nezdařila, hello pravidla upozornění a hello pravidla informace se nezdařilo.
 
 ### <a name="accessing-required-rules-status"></a>Přístup ke stavu požadovaných pravidel
-Po obdržení informace o procentuálním zastoupení počítačů, které prošly vyhodnocením, možná budete chtít získat další informace o tom, která pravidla selhávají podle jejich závažnosti. Tato vizualizace vám pomůže určit prioritu adresování počítačů k zajištění, aby při dalším vyhodnocení splňovaly požadavky. V části **Stav požadovaných pravidel** na dlaždici **Pravidla, která selhala, podle závažnosti** najeďte myší na část grafu Kritické a klikněte na ni. Zobrazený výsledek by měl vypadat přibližně jako na tomto obrázku:
+Po získání hello informace týkající se hello procento počet počítačů s úspěšně dokončenou hello hodnocení, můžete další informace o pravidlech, u kterých se nedaří podle závažnost toohello tooobtain. Tato vizualizace pomůže tooprioritize počítače, které by měl být řešit první tooensure budou kompatibilní v další assessment hello. Pozastavte ukazatel myši nad hello důležitou součástí hello graf umístěný v hello **se nezdařilo pravidla podle závažnosti** dlaždici v části **vyžaduje stav pravidel** a klikněte na něj. Měli byste vidět výsledek podobné toohello následující obrazovka:
 
 ![Podrobnosti o pravidlech, která selhala, podle závažnosti](./media/oms-security-baseline/oms-security-baseline-fig4.png) 
 
-V tomto výsledku protokolu uvidíte typ základního pravidla, které selhalo, popis pravidla a Common Configuration Enumeration (CCE) ID tohoto pravidla zabezpečení. Tyto atributy by měly být dostačující k provedení nápravné akce, která tento problém na cílovém počítači opraví.
+Výsledek tohoto protokolu se zobrazuje hello typ pravidla směrného plánu, který selhal, hello popis tohoto pravidla a ID společné konfigurace – výčet (CCE) hello tohoto pravidla zabezpečení. Tyto atributy musí být tento problém v cílovém počítači hello dostatek tooperform toofix opravné akce.
 
 > [!NOTE]
-> Další informace o CCE získáte na webu [Národní databáze ohrožení zabezpečení](https://nvd.nist.gov/cce/index.cfm).
+> Další informace o CCE přístup hello [National Vulnerability databáze](https://nvd.nist.gov/cce/index.cfm).
 > 
 > 
 
 ### <a name="accessing-computers-missing-baseline-assessment"></a>Přístup k počítačům, u nichž nedošlo k vyhodnocení standardních hodnot
-OMS podporuje profil standardních hodnot člena domény a řadiče domény v systému Windows Server 2008 R2 až po Windows Server 2012 R2. Standardní hodnoty systému Windows Server 2016 ještě nejsou dokončené, ale budou přidány okamžitě po publikování. Všechny ostatní operační systémy kontrolované přes vyhodnocování standardních hodnot v řešení Zabezpečení a audit v OMS jsou uvedené v části **Počítače, u kterých nedošlo k vyhodnocení standardních hodnot**.
+OMS podporuje hello členem domény a profil základní řadič domény na Windows Server 2008 R2 až tooWindows Server 2012 R2. Standardní hodnoty systému Windows Server 2016 ještě nejsou dokončené, ale budou přidány okamžitě po publikování. Všechny ostatní operační systémy, zkontrolovat pomocí OMS zabezpečení a Audit hodnocení směrného plánu se zobrazí pod hello **počítače s chybějícími směrného plánu vyhodnocení** části.
 
 ## <a name="see-also"></a>Viz také
-V tomto dokumentu jste se dozvěděli o vyhodnocování standardních hodnot v řešení Zabezpečení a audit v OMS. Další informace o zabezpečení v OMS najdete v následujících článcích:
+V tomto dokumentu jste se dozvěděli o vyhodnocování standardních hodnot v řešení Zabezpečení a audit v OMS. Další informace o zabezpečení OMS toolearn najdete hello následující články:
 
 * [Přehled Operations Management Suite (OMS)](operations-management-suite-overview.md)
-* [Monitorování a reagování na výstrahy zabezpečení v řešení Zabezpečení a audit v Operations Management Suite](oms-security-responding-alerts.md)
+* [Monitorování a výstrahy tooSecurity odpovídá v Operations Management Suite zabezpečení a Audit řešení](oms-security-responding-alerts.md)
 * [Monitorování prostředků v řešení Zabezpečení a audit v Operations Management Suite](oms-security-monitoring-resources.md)
 

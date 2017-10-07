@@ -1,6 +1,6 @@
 ---
-title: "Hadoop zásobníku trasování chybové zprávy - Azure HDInsight | Microsoft Docs"
-description: "Index Hadoop zásobník trasování chybové zprávy v Azure HDInsight. Vyhledejte chybu v seznamu zobrazíte informace o odstraňování potíží."
+title: "aaaHadoop zásobníku trasování chybové zprávy - Azure HDInsight | Microsoft Docs"
+description: "Index Hadoop zásobník trasování chybové zprávy v Azure HDInsight. Najít hello Chyba v informace o hello seznamu toosee řešení potíží."
 keywords: "trasování zásobníku, chybové zprávy"
 services: hdinsight
 documentationcenter: NA
@@ -16,20 +16,20 @@ ms.tgt_pltfrm: NA
 ms.workload: big-data
 ms.date: 08/15/2017
 ms.author: jgao
-ms.openlocfilehash: 45b3df39dcabf8be640bf6b9e5b83a452d6dd824
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 875cea0198d74feac5791b3bea095a01319dc45e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="index-of-hadoop-in-hdinsight-troubleshooting-articles"></a>Index Hadoop v HDInsight řešení potíží s články
 Jsou články uspořádané podle typů chyb.
 
 ## <a name="out-of-memory-error"></a>Nedostatek paměti
-* [Opravte Hive nedostatek paměti v HDInsight](hdinsight-hadoop-hive-out-of-memory-error-oom.md): Opravte nedostatku paměti chyby (OOM) z dotazu Hive. Scénář zákazníka zahrnuje dotazu napříč mnoha velké tabulky.
+* [Opravte Hive nedostatek paměti v HDInsight](hdinsight-hadoop-hive-out-of-memory-error-oom.md): Opravte nedostatku paměti chyby (OOM) z dotazu Hive. scénář zákazníka Hello zahrnuje dotazu napříč mnoha velké tabulky.
 
 ## <a name="hive-query-performance"></a>Ladění výkonu dotazů Hive
-* [Optimalizace dotazů Hive pro Hadoop v HDInsight](hdinsight-hadoop-optimize-hive-query.md): Tento článek se zabývá některé nejběžnější Hive výkonu optimalizace metody, které můžete použít pro dotazy Hive.
+* [Optimalizace dotazů Hive pro Hadoop v HDInsight](hdinsight-hadoop-optimize-hive-query.md): Tento článek se zabývá některé nejběžnější Hive optimalizace metody údajů o výkonu, můžete použít tooHive dotazy.
 * [Řešení potíží s výkonem dotaz Hive v clusteru HDInsight Hadoop](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/).
 
 ## <a name="more-troubleshooting-articles"></a>Další odkazy na články

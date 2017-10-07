@@ -1,6 +1,6 @@
 ---
 title: "Nastavit filtry směrování pro partnerský vztah Azure ExpressRoute Microsoftu: prostředí PowerShell | Microsoft Docs"
-description: "Tento článek popisuje, jak nastavit filtry tras pro Microsoft Peering pomocí prostředí PowerShell"
+description: "Tento článek popisuje, jak filtry tooconfigure trasy pro Microsoft Peering pomocí prostředí PowerShell"
 documentationcenter: na
 services: expressroute
 author: cherylmc
@@ -15,85 +15,85 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: de3550c20439fa809869d98b8a57ea3be9c03e7c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 395bcf7d6ad43c643ff041b154f8e4b797083e7f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-route-filters-for-microsoft-peering"></a>Konfigurace filtrů směrování pro partnerský vztah Microsoftu
 
-Filtry tras představují způsob, jak využívat podmnožinu podporované služby prostřednictvím partnerského vztahu Microsoftu. Kroky v tomto článku vám pomůžou nakonfigurovat a spravovat filtry tras pro okruhy ExpressRoute.
+Filtry tras jsou způsob tooconsume podmnožinu podporované služby prostřednictvím partnerského vztahu Microsoftu. Hello kroky v této nápovědě článku můžete nakonfigurovat a spravovat filtry tras pro okruhy ExpressRoute.
 
-Dynamics 365 služeb a služeb Office 365 například Exchange Online, SharePoint Online a Skype pro firmy, jsou přístupné prostřednictvím partnerského vztahu Microsoftu. Pokud partnerský vztah Microsoftu je nakonfigurován v okruhu ExpressRoute, jsou všechny předpony související s těmito službami inzerované prostřednictvím relace protokolu BGP, které jsou vytvořeny. Hodnota komunity protokolu BGP je připojený k každých předpona k identifikaci služby, které nabízí prostřednictvím předponu. Seznam hodnot komunity protokolu BGP a služeb, jsou mapovány najdete v tématu [komunit protokolu BGP](expressroute-routing.md#bgp).
+Dynamics 365 služeb a služeb Office 365 například Exchange Online, SharePoint Online a Skype pro firmy, jsou přístupné prostřednictvím partnerského vztahu Microsoftu hello. Pokud partnerský vztah Microsoftu je nakonfigurován v okruhu ExpressRoute, jsou všechny služby související toothese předpony inzerované prostřednictvím hello relací protokolu BGP, které jsou vytvořeny. Hodnota komunity protokolu BGP je připojený tooevery předponu tooidentify hello služba, která je nabízeným přes hello předponu. Seznam hodnot komunity protokolu BGP hello a hello služeb jsou mapovány najdete v tématu [komunit protokolu BGP](expressroute-routing.md#bgp).
 
-Pokud budete potřebovat připojení ke všem službám, jsou velký počet předpon inzerovaných prostřednictvím protokolu BGP. Tím se výrazně zvyšuje velikost směrovací tabulky udržuje pomocí směrovačů v rámci vaší sítě. Pokud budete chtít využívat jenom podmnožinu službám nabízeným přes partnerský vztah Microsoftu, můžete snížit velikost vašeho směrovací tabulky dvěma způsoby. Můžete:
+Pokud budete potřebovat připojení tooall služeb, jsou velký počet předpon inzerovaných prostřednictvím protokolu BGP. Tím se výrazně zvyšuje velikost hello hello směrovací tabulky udržuje pomocí směrovačů v rámci vaší sítě. Pokud máte v plánu tooconsume pouze podmnožinu službám nabízeným přes partnerské vztahy Microsoft, můžete snížit velikost hello vaší směrovací tabulky dvěma způsoby. Můžete:
 
 - Filtrovat nežádoucí předpony použitím filtry tras na komunit protokolu BGP. Tento postup standardní sítě a běžně používá v rámci mnoho sítí.
 
-- Zadejte filtry tras a použít je pro váš okruh ExpressRoute. Filtr trasy je nový prostředek, který umožňuje vybrat seznam služeb, které budete chtít využívat prostřednictvím partnerského vztahu Microsoftu. ExpressRoute směrovače odeslat pouze seznam předpon, které patří na služby určené ve filtru trasy.
+- Definovat filtry tras a použít tooyour okruh ExpressRoute. Filtr trasy je nový prostředek, který vám umožní vybrat hello seznam služeb můžete naplánovat tooconsume prostřednictvím partnerského vztahu Microsoftu. ExpressRoute směrovače odeslat pouze hello seznam předpon, které patří služby toohello stanovených ve filtru hello trasy.
 
 ### <a name="about"></a>O filtrech směrování
 
-Pokud partnerský vztah Microsoftu je nakonfigurován na váš okruh ExpressRoute, Microsoft hraniční směrovače vytvořte dvojici relací protokolu BGP s hraniční směrovače (váš nebo váš poskytovatel připojení). Žádné trasy inzerovány vaší sítě. Pokud chcete povolit inzerování trasy k síti, je nutné přidružit filtr trasy.
+Pokud partnerský vztah Microsoftu je nakonfigurován na váš okruh ExpressRoute, hello Microsoft hraniční směrovače vytvořte dvojici relací protokolu BGP s hello hraniční směrovače (váš nebo váš poskytovatel připojení). Trasy se inzerovaný tooyour sítě. tooenable trasy oznámení o inzerovaném programu tooyour sítě, je nutné přidružit filtr trasy.
 
-Filtr trasy umožňuje identifikoval služby, které chcete využívat prostřednictvím partnerského vztahu Microsoftu okruhu ExpressRoute. Je v podstatě prázdný seznam všech hodnot komunity protokolu BGP. Po filtru prostředek trasy definované a připojené k okruhu ExpressRoute, jsou všechny předpony, které jsou mapovány na hodnoty komunity protokolu BGP inzerovaný do vaší sítě.
+Filtr trasy umožňuje identifikovat služby, které mají tooconsume prostřednictvím partnerského vztahu Microsoftu okruhu ExpressRoute. Je to v podstatě prázdný seznam všech hodnot komunity protokolu BGP hello. Prostředek trasy filtru je definovaný a připojené tooan okruh ExpressRoute, budete všech předpon, které mapují hodnoty komunity protokolu BGP toohello inzerovaný tooyour sítě.
 
-Abyste mohli připojit filtry tras se službami Office 365 na ně, musí mít oprávnění pro využívání služeb Office 365 prostřednictvím ExpressRoute. Pokud nemáte oprávnění k využívání služeb Office 365 prostřednictvím ExpressRoute, operace připojit filtry tras se nezdaří. Další informace o procesu autorizačního najdete v tématu [Azure ExpressRoute pro Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd). Připojení ke službám Dynamics 365 nevyžaduje žádné předchozí autorizace.
+filtry tras toobe možné tooattach se službami Office 365 na ně, musí mít služby Office 365 tooconsume autorizace prostřednictvím ExpressRoute. Pokud si nejste oprávnění tooconsume Office 365 služby prostřednictvím ExpressRoute, filtry tras tooattach hello operace selže. Další informace o procesu autorizačního hello najdete v tématu [Azure ExpressRoute pro Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd). 365 služeb připojení k tooDynamics nevyžaduje žádné předchozí autorizace.
 
 > [!IMPORTANT]
-> Okruhy ExpressRoute, které byly nakonfigurovány před 1. srpna 2017 partnerského vztahu Microsoftu bude mít všechny služby předpony inzerované prostřednictvím Microsoft partnerský vztah, i když nejsou definovány filtry tras. Okruhy ExpressRoute, které jsou nakonfigurované na nebo po 1 srpen 2017 partnerského vztahu Microsoftu nebude mít všechny předpony inzerované dokud trasy filtr je připojen k okruhu.
+> Partnerského vztahu Microsoftu okruhy ExpressRoute, které byly nakonfigurovány předchozí tooAugust 1, 2017 budou mít všechny služby předpony inzerované prostřednictvím partnerského vztahu Microsoftu, i když nejsou definovány filtry tras. Okruhy ExpressRoute, které jsou nakonfigurované na nebo po 1 srpen 2017 partnerského vztahu Microsoftu nebude mít všechny předpony inzerované, dokud nebude připojené filtr trasy toohello okruh.
 > 
 > 
 
 ### <a name="workflow"></a>Pracovní postup
 
-Abyste mohli úspěšně připojit ke službám prostřednictvím partnerského vztahu Microsoftu, musíte provést následující kroky konfigurace:
+možnost toosuccessfully toobe připojit tooservices prostřednictvím partnerského vztahu Microsoftu, je třeba provést následující kroky konfigurace hello:
 
-- Musí mít aktivní okruh ExpressRoute, který má Microsoft partnerský vztah zřízené. K těmto úkolům můžete použít následující pokyny:
-  - [Vytvoření okruhu ExpressRoute](expressroute-howto-circuit-arm.md) a mějte ho povolený vaším poskytovatelem připojení, než budete pokračovat. Okruh ExpressRoute musí být ve stavu zřízený a povolený.
-  - [Vytvoření partnerského vztahu Microsoftu](expressroute-circuit-peerings.md) Pokud budete spravovat přímo relaci protokolu BGP. Nebo váš poskytovatel připojení zřídit partnerský vztah Microsoftu pro váš okruh.
+- Musí mít aktivní okruh ExpressRoute, který má Microsoft partnerský vztah zřízené. Následující pokyny tooaccomplish hello můžete použít tyto úlohy:
+  - [Vytvoření okruhu ExpressRoute](expressroute-howto-circuit-arm.md) a mít okruh hello povolený vaším poskytovatelem připojení, než budete pokračovat. Hello okruh ExpressRoute musí být ve stavu zřízený a povolený.
+  - [Vytvoření partnerského vztahu Microsoftu](expressroute-circuit-peerings.md) Pokud spravujete hello přímo v relaci protokolu BGP. Nebo váš poskytovatel připojení zřídit partnerský vztah Microsoftu pro váš okruh.
 
 -  Musíte vytvořit a konfigurovat filtr trasy.
-    - Identifikovat služby vám využívat prostřednictvím partnerského vztahu Microsoftu
-    - Určení seznamu hodnot komunity protokolu BGP přidruženého ke službám
-    - Vytvořit pravidlo, které umožňují seznamu předponu odpovídající hodnoty komunity protokolu BGP
+    - Identifikovat hello služby services s tooconsume prostřednictvím partnerského vztahu Microsoftu
+    - Identifikovat hello seznam hodnot komunity protokolu BGP souvisejících se službou hello
+    - Vytvoření pravidlo tooallow hello předponu seznamu odpovídající hello hodnotami komunity protokolu BGP
 
--  Filtr trasy musí připojit k okruhu ExpressRoute.
+-  Je nutné připojit okruh ExpressRoute toohello filtr trasy hello.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Před zahájením konfigurace, ujistěte se, že splňují následující kritéria:
+Před zahájením konfigurace, ujistěte se, že splňujete hello následující kritéria:
 
- - Nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. Další informace najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShelll](/powershell/azure/install-azurerm-ps).
+ - Nainstalujte nejnovější verzi rutin Powershellu pro Azure Resource Manager hello hello. Další informace najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShelll](/powershell/azure/install-azurerm-ps).
 
   > [!NOTE]
-  > Stáhněte nejnovější verzi z Galerie prostředí PowerShell, nikoli pomocí Instalační služby. Instalační program aktuálně nepodporuje požadovaných rutin.
+  > Stažení nejnovější verze hello z Galerie prostředí PowerShell text hello, nikoli pomocí hello Instalační služby. Hello instalační program aktuálně nepodporuje hello požadované rutiny.
   > 
 
- - Zkontrolujte [požadavky](expressroute-prerequisites.md) a [pracovních](expressroute-workflows.md) před zahájením konfigurace.
+ - Zkontrolujte hello [požadavky](expressroute-prerequisites.md) a [pracovních](expressroute-workflows.md) před zahájením konfigurace.
 
- - Musí mít aktivní okruh ExpressRoute. Než budete pokračovat, podle pokynů [vytvořte okruh ExpressRoute](expressroute-howto-circuit-arm.md) a mějte ho povolený vaším poskytovatelem připojení. Okruh ExpressRoute musí být ve stavu zřízený a povolený.
+ - Musí mít aktivní okruh ExpressRoute. Postupujte podle pokynů hello příliš[vytvoření okruhu ExpressRoute](expressroute-howto-circuit-arm.md) a mít okruh hello povolený vaším poskytovatelem připojení, než budete pokračovat. Hello okruh ExpressRoute musí být ve stavu zřízený a povolený.
 
  - Musíte mít active partnerský vztah Microsoftu. Postupujte podle pokynů v [vytvoření a úprava konfigurace partnerského vztahu](expressroute-circuit-peerings.md)
 
-### <a name="log-in-to-your-azure-account"></a>Přihlaste se k účtu Azure
+### <a name="log-in-tooyour-azure-account"></a>Přihlaste se tooyour účet Azure
 
-Před zahájením této konfigurace se musíte přihlásit ke svému účtu Azure. Tato rutina vás vyzve k zadání přihlašovacích údajů k vašemu účtu Azure. Po přihlášení se stáhne nastavení účtu, aby bylo dostupné v Azure PowerShellu.
+Před zahájením této konfigurace, musíte být přihlášení tooyour účet Azure. Hello rutina vás vyzve k zadání hello přihlašovací údaje k účtu Azure. Po přihlášení stahování nastavení svého účtu tak, aby byly k dispozici tooAzure prostředí PowerShell.
 
-Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
+Otevřete konzolu prostředí PowerShell se zvýšenými oprávněními a připojte tooyour účtu. Použijte následující příklad toohelp, ke kterým se připojujete hello:
 
 ```powershell
 Login-AzureRmAccount
 ```
 
-Pokud máte více předplatných Azure, zkontrolujte předplatná pro daný účet.
+Pokud máte víc předplatných Azure, zkontrolujte hello předplatná pro účet hello.
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Určete předplatné, které chcete použít.
+Zadejte hello předplatné, které chcete toouse.
 
 ```powershell
 Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
@@ -103,22 +103,22 @@ Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_nam
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1. Získat seznam hodnot komunity protokolu BGP
 
-Chcete-li získat seznam hodnot komunity protokolu BGP souvisejících se službou přístupné prostřednictvím partnerského vztahu Microsoftu a seznam předpon, které jsou s nimi spojených použijte následující rutinu:
+Použijte následující rutinu tooget hello seznam hodnot komunity protokolu BGP souvisejících se službou přístupné prostřednictvím partnerského vztahu Microsoftu hello a hello seznam předpon, které jsou s nimi spojených:
 
 ```powershell
 Get-AzureRmBgpServiceCommunity
 ```
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Zkontrolujte seznam hodnot, které chcete použít
+### <a name="2-make-a-list-of-hello-values-that-you-want-toouse"></a>2. Zkontrolujte seznam hello hodnot, které chcete toouse
 
-Zkontrolujte seznam hodnotami komunity protokolu BGP, které chcete použít ve filtru trasy. Jako příklad je hodnota komunity protokolu BGP pro služby Dynamics 365 12076:5040.
+Zkontrolujte seznam hodnotami komunity protokolu BGP, které chcete toouse ve filtru hello trasy. Jako příklad je hello hodnota komunity protokolu BGP pro služby Dynamics 365 12076:5040.
 
 ## <a name="filter"></a>Krok 2. Vytvořte filtr trasy a pravidlo filtru
 
-Filtr trasy může mít pouze jedno pravidlo a pravidlo musí být typu 'Povolit'. Toto pravidlo může mít seznam hodnot komunity protokolu BGP s ním spojená.
+Filtr trasy může mít pouze jedno pravidlo a hello pravidlo musí být typu 'Povolit'. Toto pravidlo může mít seznam hodnot komunity protokolu BGP s ním spojená.
 
 ### <a name="1-create-a-route-filter"></a>1. Vytvoření filtru trasy
 
-Nejprve vytvořte filtr trasy. Příkaz 'New-AzureRmRouteFilter, pouze vytvoří prostředek filtru trasy. Po vytvoření prostředku, musí pak vytvořit pravidlo a připojte ji k objektu filtru trasy. Spusťte následující příkaz pro vytvoření filtru prostředku trasy:
+Nejprve vytvořte filtr hello trasy. příkaz Hello 'New-AzureRmRouteFilter, pouze vytvoří prostředek trasy filtru. Po vytvoření hello prostředků, musíte pak vytvořit pravidlo a připojte ji toohello trasy filtru objektu. Spusťte následující příkaz toocreate hello prostředek trasy filtru:
 
 ```powershell
 New-AzureRmRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
@@ -126,15 +126,15 @@ New-AzureRmRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup
 
 ### <a name="2-create-a-filter-rule"></a>2. Vytvořit pravidlo filtru
 
-Sadu komunit protokolu BGP jako seznam oddělený čárkami, můžete zadat, jak je znázorněno v příkladu. Spusťte následující příkaz pro vytvoření nového pravidla:
+Sadu komunit protokolu BGP jako seznam oddělený čárkami, můžete zadat, jak je znázorněno v příkladu hello. Spusťte následující příkaz toocreate hello nové pravidlo:
  
 ```powershell
 $rule = New-AzureRmRouteFilterRuleConfig -Name "Allow-EXO-D365" -Access Allow -RouteFilterRuleType Community -CommunityList "12076:5010,12076:5040"
 ```
 
-### <a name="3-add-the-rule-to-the-route-filter"></a>3. Přidat pravidlo filtru trasy
+### <a name="3-add-hello-rule-toohello-route-filter"></a>3. Přidat filtr trasy toohello pravidlo hello
 
-Spusťte následující příkaz pro přidání tomuto pravidlu filtru do filtru tras:
+Spusťte následující příkaz tooadd hello filtru pravidlo toohello trasy filtru hello:
  
 ```powershell
 $routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
@@ -142,34 +142,34 @@ $routefilter.Rules.Add($rule)
 Set-AzureRmRouteFilter -RouteFilter $routefilter
 ```
 
-## <a name="attach"></a>Krok 3. Připojte filtr trasy k okruhu ExpressRoute
+## <a name="attach"></a>Krok 3. Připojte okruh ExpressRoute tooan filtr trasy hello
 
-Spusťte následující příkaz pro připojení filtru trasy k okruhu ExpressRoute, za předpokladu, že máte jenom partnerského vztahu Microsoftu:
+Spusťte následující příkaz tooattach hello trasy filtru toohello okruh ExpressRoute, za předpokladu, že máte jenom partnerského vztahu Microsoft hello:
 
 ```powershell
 $ckt.Peerings[0].RouteFilter = $routefilter 
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="getproperties"></a>Chcete-li získat vlastnosti filtru trasy
+## <a name="getproperties"></a>Vlastnosti hello tooget filtru trasy
 
-Vlastnosti filtru trasy, použijte následující kroky:
+Vlastnosti hello tooget filtru trasy, hello použijte následující kroky:
 
-1. Spusťte následující příkaz, který vám daný prostředek trasy filtru:
+1. Spusťte následující příkaz tooget hello trasy filtru prostředků hello:
 
   ```powershell
   $routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
   ```
-2. Získáte trasy pravidla filtru pro prostředek trasy filtru, tak, že spustíte následující příkaz:
+2. Získáte pravidla filtru hello trasy pro prostředek trasy filtru hello spuštěním hello následující příkaz:
 
   ```powershell
   $routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
   $rule = $routefilter.Rules[0]
   ```
 
-## <a name="updateproperties"></a>Aktualizovat vlastnosti filtr trasy
+## <a name="updateproperties"></a>Vlastnosti hello tooupdate filtru trasy
 
-Pokud trasa filtru je již připojen k okruhu, aktualizace do seznamu komunity protokolu BGP automaticky rozšíří změny příslušné předpony oznámení o inzerovaném programu prostřednictvím zavedených relací protokolu BGP. Můžete aktualizovat seznam komunity protokolu BGP filtru trasu pomocí následujícího příkazu:
+Pokud hello trasy filtru je již připojen tooa okruhu seznamu komunity protokolu BGP toohello aktualizace automaticky šíří oznámení o inzerovaném programu změny příslušné předpony prostřednictvím relace protokolu BGP hello navázat. Můžete aktualizovat seznam komunity protokolu BGP hello filtru trasu pomocí hello následující příkaz:
 
 ```powershell
 $routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
@@ -177,18 +177,18 @@ $routefilter.rules[0].Communities = "12076:5030", "12076:5040"
 Set-AzureRmRouteFilter -RouteFilter $routefilter
 ```
 
-## <a name="detach"></a>Odpojit filtr trasy z okruhu ExpressRoute
+## <a name="detach"></a>toodetach filtr trasy z okruhu ExpressRoute
 
-Jakmile trasy filtr je odpojená od okruhu ExpressRoute, jsou bez předpony inzerované prostřednictvím relace protokolu BGP. Můžete odpojit filtr trasy z okruhu ExpressRoute pomocí následujícího příkazu:
+Jakmile filtr trasy odpojený od hello okruh ExpressRoute, jsou bez předpony inzerované prostřednictvím relace protokolu BGP hello. Můžete odpojit filtr trasy z okruhu ExpressRoute pomocí hello následující příkaz:
   
 ```powershell
 $ckt.Peerings[0].RouteFilter = $null
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="delete"></a>Odstranění filtru trasy
+## <a name="delete"></a>toodelete filtr trasy
 
-Filtr trasy může odstranit pouze, pokud není připojený k žádné okruh. Zkontrolujte, že filtr trasy není připojen k žádné okruh před pokusem o jeho odstranění. Odstraněním trasy filtr, pomocí následujícího příkazu:
+Můžete pouze odstranění filtru trasy, pokud není připojen tooany okruh. Zkontrolujte tento filtr trasy hello není připojen tooany okruhu před pokusem o toodelete ho. Odstraněním trasy filtrovat pomocí hello následující příkaz:
 
 ```powershell
 Remove-AzureRmRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
@@ -196,4 +196,4 @@ Remove-AzureRmRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGr
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
+Další informace o ExpressRoute najdete v tématu hello [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).

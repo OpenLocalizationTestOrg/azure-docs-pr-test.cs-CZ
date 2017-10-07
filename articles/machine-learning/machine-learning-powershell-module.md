@@ -1,6 +1,6 @@
 ---
-title: "Modul prostředí PowerShell pro Machine Learning | Microsoft Docs"
-description: "Modul PowerShell pro Azure Machine Learning je dostupný v režimu veřejné zkušební verze. Použijte PowerShell k vytváření a správě pracovní prostory, experimenty, webové služby a další."
+title: modul aaaPowerShell pro Machine Learning | Microsoft Docs
+description: "Hello modul prostředí PowerShell pro Azure Machine Learning je k dispozici v režimu verzi public preview. Pomocí prostředí PowerShell toocreate a spravovat pracovní prostory, experimenty, webové služby a další."
 keywords: "experiment,lineární regrese,algoritmy Machine Learningu,kurz Machine Learningu,techniky prediktivního modelování,experiment z oblasti datové vědy"
 services: machine-learning
 documentationcenter: 
@@ -15,27 +15,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: garye;haining
-ms.openlocfilehash: 6ea4b887428891f41ed1a4bad26148763cefabe8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 59362027356b86bf286b7c07380db677ae1d71c1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="powershell-module-for-microsoft-azure-machine-learning"></a>Modul PowerShell pro Microsoft Azure Machine Learning
-Modul prostředí PowerShell pro Azure Machine Learning je výkonný nástroj, který umožňuje spravovat pracovní prostory, experimenty, datové sady, Classic webové služby a další pomocí prostředí Windows PowerShell.
+Hello modul prostředí PowerShell pro Azure Machine Learning je výkonný nástroj, který vám umožní toouse prostředí Windows PowerShell toomanage pracovních prostorů, experimenty, datové sady, Classic webové služby a další.
 
-Projít si dokumentaci a stáhnout modul včetně celého zdrojového kódu můžete na adrese [https://aka.ms/amlps](https://aka.ms/amlps). 
+Můžete zobrazit dokumentaci hello a stáhnout modul hello, společně s hello úplný zdrojový kód, na adrese [https://aka.ms/amlps](https://aka.ms/amlps). 
 
 > [!NOTE]
-> Modul Powershellu pro Azure Machine Learning je aktuálně v režimu preview. Modul bude třeba zlepšit a rozšířit během tohoto období preview. Dohlížet na [Cortana Intelligence a Machine Learning Blog](https://blogs.technet.microsoft.com/machinelearning/) pro příspěvky a informace.
+> modul Azure Machine Learning PowerShell Hello je aktuálně v režimu preview. modul Hello bude toobe vylepšené a rozšířit během tohoto období preview. Dohlížet na hello [Cortana Intelligence a Machine Learning Blog](https://blogs.technet.microsoft.com/machinelearning/) pro příspěvky a informace.
 
-## <a name="what-is-the-machine-learning-powershell-module"></a>Co je modul Machine Learning PowerShell?
-Modul Machine Learning PowerShell. Na základě NET DLL modul, který vám umožní plně spravovat pracovních prostorů Azure Machine Learning, experimenty, datové sady, Classic webové služby a koncových bodů webové služby Classic z prostředí Windows PowerShell. 
+## <a name="what-is-hello-machine-learning-powershell-module"></a>Co je modul Machine Learning PowerShell hello?
+modul Machine Learning PowerShell Hello. Na základě NET modulu DLL, který vám umožní toofully spravovat pracovních prostorů Azure Machine Learning, experimenty, datové sady, Classic webové služby a koncových bodů webové služby Classic z prostředí Windows PowerShell. 
 
-Spolu s modulem, si můžete stáhnout úplný zdrojový kód, který zahrnuje řádně oddělených [vrstvu rozhraní API jazyka C#](https://github.com/hning86/azuremlps/blob/master/code/AzureMLSDK.cs). Můžete odkazovat na tuto knihovnu DLL z projektu rozhraní .NET a spravovat Azure Machine Learning prostřednictvím rozhraní .NET kódu. Kromě toho knihovnu DLL, závisí na základní rozhraní REST API, který můžete použít přímo z vašeho oblíbeného klienta.
+Společně s hello modul, si můžete stáhnout hello úplný zdrojový kód, který zahrnuje řádně oddělených [vrstvu rozhraní API jazyka C#](https://github.com/hning86/azuremlps/blob/master/code/AzureMLSDK.cs). Můžete odkazovat na tuto knihovnu DLL z projektu rozhraní .NET a spravovat Azure Machine Learning prostřednictvím rozhraní .NET kódu. Kromě toho hello DLL závisí na základní rozhraní REST API, který můžete použít přímo z vašeho oblíbeného klienta.
 
-## <a name="what-can-i-do-with-the-powershell-module"></a>Co můžu s modulem PowerShell dělat?
-S modulem PowerShell můžete provádět například některé z těchto úloh. Tyto a mnoho dalších funkcí najdete také v [úplné dokumentaci](https://aka.ms/amlps).
+## <a name="what-can-i-do-with-hello-powershell-module"></a>Co můžete dělat s modulu PowerShell hello?
+Zde jsou některé hello úlohy, které můžete provádět s Tento modul prostředí PowerShell. Podívejte se na hello [úplné dokumentace](https://aka.ms/amlps) pro tyto a další mnoho funkcí.
 
 * Zřiďte nový pracovní prostor s pomocí certifikátu pro správu ([New-AmlWorkspace](https://github.com/hning86/azuremlps#new-amlworkspace)).
 * Exportujte a importujte soubor JSON s grafem experimentu ([Export-AmlExperimentGraph](https://github.com/hning86/azuremlps#export-amlexperimentgraph) a [Import-AmlExperimentGraph](https://github.com/hning86/azuremlps#import-amlexperimentgraph)).
@@ -44,21 +44,21 @@ S modulem PowerShell můžete provádět například některé z těchto úloh. 
 * Vytvoření koncového bodu na publikované webové službě ([přidat AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint))
 * Zavolejte koncový bod webové služby RRS či BES ([Invoke-AmlWebServiceRRSEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) a [Invoke-AmlWebServicBESEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint)).
 
-Na jednoduchém příkladu si můžeme ukázat, jak se pomocí PowerShell spustí existující experiment:
+Tady je zběžný příklad pomocí prostředí PowerShell toorun existující experimentu:
 
-        #Find the first Experiment named “xyz”
+        #Find hello first Experiment named “xyz”
         $exp = (Get-AmlExperiment | where Description -eq ‘xyz’)[0]
-        #Run the Experiment
+        #Run hello Experiment
         Start-AmlExperiment -ExperimentId $exp.ExperimentId 
 
-Podrobnější případu použití, najdete v článku na modulu PowerShell pro automatizaci úloh běžně požadovaný: [vytvořit mnoho modely Machine Learning a webové koncové body služby z jednoho experimentu pomocí prostředí PowerShell](machine-learning-create-models-and-endpoints-with-powershell.md).
+Podrobnější případu použití, najdete v článku o používání tooautomate modulu prostředí PowerShell hello úlohu běžně požadovaný: [vytvořit mnoho modely Machine Learning a webové koncové body služby z jednoho experimentu pomocí prostředí PowerShell](machine-learning-create-models-and-endpoints-with-powershell.md).
 
 ## <a name="how-do-i-get-started"></a>Jak mám začít?
-Pokud chcete začít s Machine Learning PowerShell, stáhněte si [vydaný balíček](https://github.com/hning86/azuremlps/releases) z GitHubu a postupujte podle [instalačních pokynů](https://github.com/hning86/azuremlps/blob/master/README.md). Pokyny popisují, jak odblokovat stáhli rozbalené DLL a importujte ho do prostředí PowerShell. Většina rutin vyžaduje, abyste zadali ID pracovního prostoru, jeho autorizační token a oblast Azure, ve které se pracovní prostor nachází. Prostřednictvím výchozí config.json soubor, který je nejjednodušší způsob, jak tyto hodnoty zadat ručně. Podle pokynů také vysvětlují, jak nakonfigurovat tento soubor. 
+tooget spuštění pomocí prostředí PowerShell Machine Learning, stáhněte si hello [balíček verze](https://github.com/hning86/azuremlps/releases) z Githubu a postupujte podle hello [pokyny pro instalaci](https://github.com/hning86/azuremlps/blob/master/README.md). Hello pokyny popisují, jak toounblock hello stáhnout nebo rozbalené DLL a importujte ho do prostředí PowerShell. Většina hello rutiny vyžadují zadat ID pracovního prostoru hello, hello prostoru autorizační token a hello oblast Azure, který hello pracovního prostoru se. Hello nejjednodušší způsob, jak tooprovide hello hodnoty je prostřednictvím výchozí config.json soubor. pokyny Hello také vysvětlují, jak tooconfigure tento soubor. 
 
-Pokud chcete, můžete naklonovat stromu git upravit kód a zkompilovat ho místně pomocí sady Visual Studio.
+A pokud chcete, můžete klonovat hello git stromu, upravit kód hello a zkompilovat ho místně pomocí sady Visual Studio.
 
 ## <a name="next-steps"></a>Další kroky
-Úplnou dokumentaci pro modul PowerShell na můžete najít [https://aka.ms/amlps](https://aka.ms/amlps). 
+Úplnou dokumentaci hello pro modul prostředí PowerShell hello na můžete najít [https://aka.ms/amlps](https://aka.ms/amlps). 
 
-Příklad rozšířené informace o použití modulu ve scénáři reálného, podívejte se na případ podrobné použití, [vytvořit mnoho modely Machine Learning a webové koncové body služby z jednoho experimentu pomocí prostředí PowerShell](machine-learning-create-models-and-endpoints-with-powershell.md).
+Příklad rozšířené jak toouse hello modulu ve scénáři reálného, podívejte se na hello podrobné případu, použití [vytvořit mnoho modely Machine Learning a webové koncové body služby z jednoho experimentu pomocí prostředí PowerShell](machine-learning-create-models-and-endpoints-with-powershell.md).

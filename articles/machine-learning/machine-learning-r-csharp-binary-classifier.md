@@ -1,5 +1,5 @@
 ---
-title: "(nepoužívané) Binární třídění - Azure | Microsoft Docs"
+title: "AAA(Deprecated) binární třídění - Azure | Microsoft Docs"
 description: "(nepoužívané) Binární třídění"
 services: machine-learning
 documentationcenter: 
@@ -16,42 +16,42 @@ ms.date: 01/06/2017
 ms.author: jaymathe
 ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-redirect_document_id: TRUE
-ms.openlocfilehash: 1a83392f90bb5a9fb183334c03ccec20dd3f3520
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: 0496fcec9952ca243270caf67f55fe191b2dc9f8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deprecated-binary-classifier"></a>(nepoužívané) Binární třídění
 
 > [!NOTE]
-> Microsoft DataMarket se postupně vyřazuje z provozu a toto rozhraní API je zastaralá. 
+> Hello Microsoft DataMarket se postupně vyřazuje z provozu a toto rozhraní API je zastaralá. 
 > 
-> Můžete najít mnoho užitečné příklad experimentů a rozhraní API v [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com). Další informace o galerii najdete v tématu [sdílené složky a zjišťovat prostředky ve Cortana Intelligence Gallery](machine-learning-gallery-how-to-use-contribute-publish.md).
+> Mnoho užitečné příklad experimentů a rozhraní API můžete najít v hello [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com). Další informace o hello Galerie najdete v tématu [sdílené složky a zjišťovat prostředky ve hello Cortana Intelligence Gallery](machine-learning-gallery-how-to-use-contribute-publish.md).
 
-Předpokládejme, že už máte datovou sadu a chcete předpovídat proměnnou binární závislé na základě nezávislých proměnných. 'Logistic Regression' je Oblíbené statistické technika pro takové předpovědi. Tady je závislé proměnné binary nebo dichotomous a p je pravděpodobnost přítomnost vlastnosti, které vás zajímají. 
+Předpokládejme, že máte datovou sadu a chcete toopredict proměnnou binární závislé na základě nezávislých proměnných hello. 'Logistic Regression' je Oblíbené statistické technika pro takové předpovědi. Tady je hello závislé proměnné binary nebo dichotomous a p je hello pravděpodobnost přítomnost hello vlastnosti, které vás zajímají. 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-Může být jednoduchého scénáře, kde výzkumným pokouší odhadnout, zda je pravděpodobné, přijmout nabídku jejich příchodu do univerzity, na základě informací (GPA střední školy, rodinného příjmu trvalé stavu, pohlaví) potenciální student. Předpokládaných výsledek je pravděpodobnost potenciální student přijetím přijetí nabídky. To [webovou službu](https://datamarket.azure.com/dataset/aml_labs/log_regression) vyhovuje logistic regresní model dat a vrací hodnotu pravděpodobnosti (y) pro každý pozorování v datech.  
+Může být jednoduchého scénáře, kde výzkumným se pokouší toopredict, jestli je potenciální student pravděpodobně tooaccept univerzity tooa nabídka jejich příchodu na základě informací (GPA střední školy, rodinného příjmu trvalé stavu, pohlaví). výsledek předpokládaných Hello je hello pravděpodobnost hello potenciální student přijetí nabídky jejich příchodu hello. To [webovou službu](https://datamarket.azure.com/dataset/aml_labs/log_regression) pro rozlišení hello data toohello modelu logistic regression a výstupy hello hodnotu pravděpodobnosti (y) pro každý hello pozorování v datech hello.  
 
-> Tato webová služba může spotřebovat uživateli – potenciálně prostřednictvím mobilní aplikace prostřednictvím webu, nebo i v místním počítači, třeba. Ale účelem webové služby je také slouží jako příklad použití Azure Machine Learning k vytvoření webové služby v kódu jazyka R. Zadání několika řádků kódu jazyka R a klikne na tlačítko v rámci Azure Machine Learning Studio můžete experimentu vytvořené pomocí kódu jazyka R a publikovat jako webovou službu. Webové služby můžete pak publikování na webu Azure Marketplace a spotřebovávají uživatelů a zařízení po celém světě s žádné nastavení infrastruktury autorem webové služby.  
+> Tato webová služba může spotřebovat uživateli – potenciálně prostřednictvím mobilní aplikace prostřednictvím webu, nebo i v místním počítači, třeba. Ale hello účelem hello webové služby je také tooserve jako příklad, jak Azure Machine Learning lze použít toocreate webové služby v kódu jazyka R. Zadání několika řádků kódu jazyka R a klikne na tlačítko v rámci Azure Machine Learning Studio můžete experimentu vytvořené pomocí kódu jazyka R a publikovat jako webovou službu. Hello webové služby může být pak publikované toohello Azure Marketplace a využívat tak, že uživatelé a zařízení napříč hello, world s žádné nastavení infrastruktury autorem hello hello webové služby.  
 > 
 > 
 
 ## <a name="consumption-of-web-service"></a>Spotřeba webové služby
-Tato webová služba poskytuje předpovězené hodnoty proměnné závislé na základě nezávislých proměnných pro všechny připomínky. Webová služba očekává, že koncovému uživateli umožňují vstupní data jako řetězec, kde řádky jsou oddělené čárkou (,) a sloupce jsou odděleny středníkem (;). Webová služba očekává 1 řádek v čase a očekává první sloupec jako závislé proměnné. Datové sadě služby příkladu může vypadat například takto:
+Tento web service poskytuje hello předpovědět hodnoty proměnné hello závislé na základě nezávislých proměnných hello všech hello připomínky. Webová služba Hello očekává hello koncový uživatel tooinput data jako řetězec, kde řádky jsou oddělené čárkou (,) a sloupce jsou odděleny středníkem (;). Webová služba Hello očekává 1 řádek v čase a očekává hello první sloupec toobe hello závislé proměnné. Datové sadě služby příkladu může vypadat například takto:
 
 ![Ukázková data][1]
 
-Připomínky bez závislé proměnné by měl zadejte jako hodnotu "NA" pro y. Data vstup pro výše uvedené datová sada by být následující řetězec: "1; 5; 2,1; 1; 6,0; 5.3; 2.1,0; 5; 5,0; 3; 4,1; 2; 1, NA; 3; 4". Výstup je předpovězené hodnoty pro každý z jeho řádků na základě nezávislých proměnných. 
+Připomínky bez závislé proměnné by měl zadejte jako hodnotu "NA" pro y. Hello vstupních dat pro hello výše datová sada by být hello následující řetězec: "1; 5; 2,1; 1; 6,0; 5.3; 2.1,0; 5; 5,0; 3; 4,1; 2; 1, NA; 3; 4". Hello výstup hello předpovězené hodnoty pro každý hello řádků podle hello nezávislých proměnných. 
 
-> Tato služba jako hostované v Azure Marketplace je službou OData. To může být volána prostřednictvím metody POST nebo GET. 
+> Tato služba jako hostované na hello Azure Marketplace, je službou OData. To může být volána prostřednictvím metody POST nebo GET. 
 > 
 > 
 
-Existuje více způsobů využívání služby automatizovaně (je třeba aplikace [sem](http://microsoftazuremachinelearning.azurewebsites.net/BinaryClassifier.aspx)).
+Existuje více způsobů využívání služby hello automatizovaně (je třeba aplikace [sem](http://microsoftazuremachinelearning.azurewebsites.net/BinaryClassifier.aspx)).
 
 ### <a name="starting-c-code-for-web-service-consumption"></a>Spouštění kódu C# pro používání webové služby:
     public class Input
@@ -82,11 +82,11 @@ Existuje více způsobů využívání služby automatizovaně (je třeba aplika
 
 
 ## <a name="creation-of-web-service"></a>Vytvoření webové služby
-> Této webové služby byl vytvořen pomocí Azure Machine Learning. Pro bezplatnou zkušební verzi, jakož i úvodní videa na vytváření experimentů a [publikování webových služeb](machine-learning-publish-a-machine-learning-web-service.md), najdete v tématu [azure.com/ml](http://azure.com/ml). Níže je snímek obrazovky experimentu, který vytvořené pro každou z modulů v rámci experimentu webové služby a příklad kódu.
+> Této webové služby byl vytvořen pomocí Azure Machine Learning. Pro bezplatnou zkušební verzi, jakož i úvodní videa na vytváření experimentů a [publikování webových služeb](machine-learning-publish-a-machine-learning-web-service.md), najdete v tématu [azure.com/ml](http://azure.com/ml). Níže je snímek obrazovky hello experimentu, který vytvořili hello webové služby a příklad kódu pro každou hello modulů v rámci experimentu hello.
 > 
 > 
 
-Ze v rámci Azure Machine Learning, nový prázdný experiment byl vytvořen a dvě [spustit skript jazyka R] [ execute-r-script] moduly vyžádat na pracovním prostoru. Tato webová služba běží experimentu Azure Machine Learning s základní skript jazyka R. Existují 2 částí do tohoto experimentu: definice schématu a školení modelu + vyhodnocování. První modul definuje vstupní datové sady, kde je první proměnná závislé proměnné a zbývající proměnné jsou nezávislé na očekávané struktuře. Druhý modul vyhovuje obecné logistic regresní model pro vstupní data.    
+Ze v rámci Azure Machine Learning, nový prázdný experiment byl vytvořen a dvě [spustit skript jazyka R] [ execute-r-script] moduly vyžádat do pracovního prostoru hello. Tato webová služba běží experimentu Azure Machine Learning s základní skript jazyka R. Existují experimentovat toothis 2 částí: definice schématu a školení modelu + vyhodnocování. první modul Hello definuje hello očekávána struktura hello vstupní datové sady, kde první proměnná hello je hello závislé proměnné a hello zbývající proměnné jsou nezávislé. druhý modul Hello vyhovuje obecné logistic regresní model pro vstupní data hello.    
 
 ![Tok experimentu][2]
 
@@ -120,10 +120,10 @@ Ze v rámci Azure Machine Learning, nový prázdný experiment byl vytvořen a d
 
 
 ## <a name="limitations"></a>Omezení
-Toto je velmi jednoduchý příklad binární klasifikace webové služby. Jak je vidět z výše uvedeném příkladu kódu, je implementovaný zachycení žádné chyby a službu předpokládá, že všechno, co je binární, průběžné proměnné (bez kategorií funkcí povoleny), jako služba číselné hodnoty vstupy pouze v době vytvoření této webové služby. Navíc služba aktuálně zpracovává velikost omezenou dat, vyřízení požadavků a odpovědí povaze volání webové služby a fakt, že je probíhá podle modelu pokaždé, když je volat webovou službu. 
+Toto je velmi jednoduchý příklad binární klasifikace webové služby. Jak je vidět z hello ukázkový kód výše, je implementována zachycení žádné chyby a hello služby předpokládá, že všechno, co je binární, průběžné proměnné (bez kategorií funkcí povoleny), jako hello služby pouze vstupy číselných hodnot v době hello hello vytvoření tohoto webové služby. Navíc služba hello aktuálně zpracovává velikost omezenou dat, z důvodu toohello požadavků a odpovědí povaha hello webové služby je se volání a hello skutečnost, že hello modelu odpovídat pokaždé, když je volána hello webové služby. 
 
 ## <a name="faq"></a>Nejčastější dotazy
-Nejčastější dotazy o spotřebě webové služby nebo publikování na webu Azure Marketplace naleznete v části [zde](machine-learning-marketplace-faq.md).
+Nejčastější dotazy o spotřebě hello webové služby nebo publikování toohello Azure Marketplace naleznete v části [zde](machine-learning-marketplace-faq.md).
 
 [1]: ./media/machine-learning-r-csharp-binary-classifier/binary1.png
 [2]: ./media/machine-learning-r-csharp-binary-classifier/binary2.png

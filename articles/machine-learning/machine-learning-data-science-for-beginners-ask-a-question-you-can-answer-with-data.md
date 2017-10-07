@@ -1,6 +1,6 @@
 ---
-title: "Požádejte otázku dat může odpovědět - data vědecké účely úlohy - Azure Machine Learning | Microsoft Docs"
-description: "Naučte se formulovali dotaz vědecké účely sharp data v vědecké zpracování dat pro začátečníky video 3. Obsahuje porovnání klasifikace a regrese otázky."
+title: "dokáže odpovědět na otázku data - aaaAsk datové vědy problémy - Azure Machine Learning | Microsoft Docs"
+description: "Zjistěte, jak otázka tooformulate vědecké zpracování sharp dat v vědecké zpracování dat pro začátečníky video 3. Obsahuje porovnání klasifikace a regrese otázky."
 keywords: "datové vědy problémy, vědecké účely otázky ohledně dat, formulovali otázky, regrese otázky, klasifikace otázky, sharp otázku"
 services: machine-learning
 documentationcenter: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2017
 ms.author: cgronlun
-ms.openlocfilehash: 0495dbab72024e504ae33d35f16a212a2084bc10
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 00c328f51e6d9ff6654b5966eb97d6762582f7e5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Položení otázky, na kterou lze odpovědět pomocí dat
 ## <a name="video-3-data-science-for-beginners-series"></a>Video 3: Vědecké zpracování dat pro začátečníky řady
-Naučte se formulovali problému vědecké účely dat do svůj dotaz vědecké zpracování dat pro začátečníky video 3. Toto video obsahuje porovnání otázky pro klasifikaci a regrese algoritmy.
+Zjistěte, jak tooformulate problému vědecké účely dat do svůj dotaz vědecké zpracování dat pro začátečníky video 3. Toto video obsahuje porovnání otázky pro klasifikaci a regrese algoritmy.
 
-Získejte maximum z řady, můžete sledujte všechny. [Přejděte do seznamu videí](#other-videos-in-this-series)
+hello tooget naplno hello řady, podívejte se na všechny. [Přejděte toohello seznamu videí](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player]
@@ -33,68 +33,68 @@ Získejte maximum z řady, můžete sledujte všechny. [Přejděte do seznamu vi
 >
 
 ## <a name="other-videos-in-this-series"></a>Další videa z této série
-*Vědecké zpracování dat pro začátečníky* je rychlý úvod do vědecké zpracování dat v pěti krátké videa.
+*Vědecké zpracování dat pro začátečníky* je rychlý úvod vědecký toodata pět krátké videa.
 
-* Video 1: [5 otázky, odpovědi vědecké účely data](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 14 s min.)*
+* Video 1: [hello 5 otázky, odpovědi vědecké účely data](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 14 s min.)*
 * Video 2: [vašich dat je připravený pro vědecké zpracování dat?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 56 sekundu min.)*
 * Video 3: Položte dotaz, který vám pomůže odpovědět s daty
 * Video 4: [předpovědi odpověď s jednoduchého modelu](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 42 sekundu min.)*
-* Video 5: [zkopírujte jiní lidé práce uděláte vědecké zpracování dat](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 18 sekundu min.)*
+* Video 5: [zkopírujte vědecké zpracování dat jiní lidé pracovní toodo](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 18 sekundu min.)*
 
 ## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>Přepis: Položte dotaz, který vám pomůže odpovědět s daty
-Vítá vás třetí video v řadě "Vědecké zpracování dat pro začátečníky."  
+Vítejte toohello třetí video v řadě hello "Vědecké zpracování dat pro začátečníky."  
 
 V této jeden získáte tipy pro formulování dotaz, který vám pomůže odpovědět s daty.
 
-Další využití toto video, může získat, pokud nejprve sledovat dvě starší videa z této série: "vědecké zpracování dat 5 otázky může odpovědět na" a "Je vaše data jsou připravena k vědecké zpracování dat?"
+Další využití toto video, může získat, pokud nejprve sledovat dvě starší videa z této série hello: "vědecké zpracování dat otázky hello 5 může odpovědět na" a "Je vaše data jsou připravena k vědecké zpracování dat?"
 
 ## <a name="ask-a-sharp-question"></a>Zeptejte se sharp
-Jste už jsme mluvili o tom, jak vědecké zpracování dat pomocí názvů (také nazývané kategorie nebo popisky) a čísel k předvídání odpověď na otázku. Ale nemůže být jen maskou pro jakýkoli otázku; je třeba *sharp otázku.*
+Jste už jsme mluvili o tom, jak vědecké zpracování dat je proces hello pomocí názvů (také nazývané kategorie nebo popisky) a čísla toopredict tooa otázku odpovědi. Ale nemůže být jen maskou pro jakýkoli otázku; má toobe *sharp otázku.*
 
-Nepřesných dotaz nemusí odpovídat názvu nebo číslem. Musí být sharp otázku.
+Nepřesných dotaz nemá toobe odpovědi s názvem nebo číslem. Musí být sharp otázku.
 
-Představte si, že jste našli magic svítilny s genie, kdo bude pravdivě zodpovědět všechny otázku. Ale je mischievous genie a mohl budete pokusí provést jeho odpovědí jako nepřesných a matoucí, jak si můžete rychle získat s. Chcete připnout mu s vzduchotěsným proto mu nelze pomoci ale zjistit, co chcete vědět, dotaz.
+Představte si, že jste našli magic svítilny s genie, kdo bude pravdivě zodpovědět všechny otázku. Ale je mischievous genie a mohl budete zkuste toomake jeho odpovědí jako nepřesných a matoucí jako mu můžete rychle získat s. Chcete, aby toopin mu dolů s dotaz vzduchotěsným proto mu nelze pomoci ale zjistíte co chcete tooknow.
 
-Pokud byste chtěli zeptejte nepřesných, jako jsou "Co se má stát s Moje stock?", může odpovědět genie, "změní za cenu". Který je pravdivou odpovědí, ale je velmi užitečné.
+Pokud jste tooask nepřesných otázku, jako jsou "Co se děje toohappen s Moje stock?", může odpovědět hello genie, "změní cena hello". Který je pravdivou odpovědí, ale je velmi užitečné.
 
-Ale pokud byste chtěli sharp zeptejte, jako je "Co Moje stock prodej ceny budou příští týden?", nelze genie pomoci ale získáte konkrétní odpovědět a předpovídat cenu prodej.
+Ale pokud byste byli tooask sharp otázku, jako "Co Moje stock prodej ceny budou příští týden?", hello genie nemůže pomoci ale získáte konkrétní odpovědět a předpovídat cenu prodej.
 
 ## <a name="examples-of-your-answer-target-data"></a>Příklady odpověď: cílová data
-Jakmile jste formulovali dotaz, zkontrolujte, zda je nutné příklady odpověď ve vašich datech.
+Jakmile jste formulovali dotaz, toosee zkontrolujte, zda máte příklady hello odpovědí ve vašich datech.
 
-Pokud je naše otázku "Co Moje stock prodej cena bude příští týden?" potom máme Ujistěte se, že naše data zahrnují cenu akcií historie.
+Pokud je naše otázku "Co Moje stock prodej cena bude příští týden?" potom máme toomake se, že naše data zahrnují cenu akcií historie hello.
 
-Pokud je naše otázku "které car v mé firemního vozového bude nejprve nezdaří?" potom máme Ujistěte se, že naše data zahrnují informace o předchozích chybách.
+Pokud je naše otázku "které car v mé firemního vozového je toofail probíhající nejprve?" potom máme toomake se, že naše data zahrnují informace o předchozích chybách.
 
 ![Cílová data - příklady odpověď. Formulovali dotaz vědecké účely data.](./media/machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data/target-data.png)
 
-Tyto příklady odpovědi se označují jako cíl. Cílem je, co se pokoušíme předpovídat budoucí datové body, jestli je kategorii nebo číslo.
+Tyto příklady odpovědi se označují jako cíl. Cíl je Snažíme se pokouší toopredict o budoucí datové body, jestli je kategorii nebo číslo.
 
-Pokud nemáte k dispozici žádná data target, budete muset získat některé. Nebudete moci odpovídající vaší otázce bez ní.
+Pokud nemáte k dispozici žádná data target, budete potřebovat tooget některé. Můžete nebudou moct tooanswer váš dotaz bez.
 
 ## <a name="reformulate-your-question"></a>Byla znovu formulována váš dotaz
-Někdy může změna znění váš dotaz získat užitečnější odpovědí.
+Někdy může změna znění vaši otázku tooget užitečnější odpovědí.
 
-Na otázku "Je tento datový bod A nebo B?" předpovídá kategorie (nebo název nebo popisek) určitého objektu. K hovor, používáme *klasifikační algoritmus*.
+Otázka Hello "je tento datový bod A nebo B?" předpovídá kategorie hello (nebo název nebo popis) určitého objektu. tooanswer, používáme *klasifikační algoritmus*.
 
-Otázka "Kolik?" nebo "Kolik?" předpovídá dobu. K hovor používáme *regresní algoritmus*.
+Hello otázka "Kolik?" nebo "Kolik?" předpovídá dobu. tooanswer ho používáme *regresní algoritmus*.
 
-Informace o tom, jak tyto můžete převést jsme, podíváme se na otázku, "které zprávy scénáře je nejvíce zajímavé pro tento čtečky?" Zjišťuje předpovědi jednu volbu z mnoha možností – jinými slovy "Je tento A nebo B nebo C nebo D?" - a využije klasifikační algoritmus.
+toosee jak jsme můžete převést tyto, podíváme se na hello otázku, "které zprávy scénáře je nejvíce zajímavé čtečky toothis hello?" Zjišťuje předpovědi jednu volbu z mnoha možností – jinými slovy "Je tento A nebo B nebo C nebo D?" - a využije klasifikační algoritmus.
 
-Ale touto otázkou mohou být snazší s dotazem, zda Změna znění jej jako "jak zajímavé je každý článek v tomto seznamu k této čtečky?" Teď můžete udělit jednotlivých článků číselné skóre a pak je snadné identifikovat článku nejvyšší vyhodnocování. Toto je změnit formulaci otázky klasifikace do regrese otázku nebo kolik?
+Ale tuto otázku může být snazší tooanswer, pokud je jako Změna znění "jak zajímavé je každý článek na tento seznam toothis čtečky?" Nyní můžete udělit jednotlivých článků číselné skóre a pak je snadno tooidentify hello nejvyšší vyhodnocování článku. Toto je změnit formulaci hello klasifikace otázky do regrese otázku nebo kolik?
 
 ![Byla znovu formulována svůj dotaz. Klasifikace otázka oproti regrese otázku.](./media/machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data/classification-question-vs-regression-question.png)
 
-Jak požádat, že dotaz je potvrzením, na který algoritmus můžou dát odpověď.
+Jak požádat, že dotaz je algoritmus toowhich potvrzením můžou dát odpověď.
 
-Zjistíte, že jsou některé rodiny algoritmů – jako jsou v našem příkladu scénáře news - úzce související. Byla znovu formulována svůj dotaz, použít algoritmus, který vám dává nejužitečnější odpověď.
+Zjistíte, že jsou některé rodiny algoritmů - jako hello ty, které jsou v našem příkladu scénáře news - úzce související. Můžete byla znovu formulována vaši otázku toouse hello algoritmus, který vám dává hello nejužitečnější odpovědí.
 
-Ale, nejdůležitější požádejte tuto sharp otázku - otázku, která vám pomůže odpovědět s daty. A zkontrolujte, zda že máte správná data na hovor.
+Ale, nejdůležitější požádejte tuto sharp otázku - hello otázku, která vám pomůže odpovědět s daty. A zkontrolujte, zda máte správná data tooanswer hello ho.
 
 Jste už jsme mluvili o některých základních zásad pro dotaz s dotazem, že vám pomůže odpovědět s daty.
 
-Ujistěte se, podívejte se na ostatní videa v "Datové vědy pro začátečníky" z Microsoft Azure Machine Learning.
+Být jisti toocheck out hello jiných videa v "Datové vědy pro začátečníky" z Microsoft Azure Machine Learning.
 
 ## <a name="next-steps"></a>Další kroky
 * [Zkuste prvního experimentu vědecké účely data nástroje Machine Learning Studio](machine-learning-create-experiment.md)
-* [Získejte Úvod do Machine Learning v Microsoft Azure](machine-learning-what-is-machine-learning.md)
+* [Získat tooMachine Úvod učení v Microsoft Azure](machine-learning-what-is-machine-learning.md)

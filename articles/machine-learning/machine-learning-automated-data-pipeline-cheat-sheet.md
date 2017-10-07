@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning automatizované datového kanálu tahák | Microsoft Docs"
-description: "Tisknutelná tahák, který ukazuje, jak nastavit kanál automatizované dat k webové službě Azure Machine Learning, jestli vaše data jsou na místě, streamování v Azure nebo v jiných výrobců cloudové službě."
+title: "datový kanál tahák automatizované aaaAzure Machine Learning | Microsoft Docs"
+description: "Tisknutelná tahák, který ukazuje, jak tooset automatizované data kanálu tooyour webovou službu Azure Machine Learning, jestli vaše data jsou na místě, streamování v Azure nebo v jiných výrobců cloudové službě."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mithal;garye
-ms.openlocfilehash: e212b2c935eb0ae64ed1cd2e6dc1564f8fcd503b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 045f5c0a40fe301fcdc8df61a156f93246286174
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Tahák k automatizovanému datovému kanálu pro predikce služby Azure Machine Learning
-**Microsoft Azure Machine Learning automatizované datového kanálu tahák** pomáhá procházet technologie můžete získat data vaší Machine Learning webové služby, kde mohou být upraveny váš model prediktivní analýzy.
+Hello **Microsoft Azure Machine Learning automatizované datového kanálu tahák** pomáhá procházet tuto technologii můžete použít tooget vaše data tooyour webové službě Machine Learning kde mohou být upraveny nástrojem vaší prediktivní model analýzy.
 
-V závislosti na tom, jestli vaše data jsou na místě, v cloudu, nebo streamování v reálném čase, existují různé mechanismy, které jsou k dispozici pro přesun dat do vašeho koncového bodu webové služby pro vyhodnocování.
-Tento list podvést vás provede rozhodnutí, která budete muset udělat, a nabízí odkazy na články, které vám mohou pomoci sestavit vaše řešení.
+V závislosti na tom, jestli vaše data jsou na místě v cloudu hello nebo streamování v reálném čase, existují různé mechanismy dostupné toomove hello data tooyour koncový bod webové služby pro vyhodnocování.
+Tato podvést list nevystavíte slabé stránky zabezpečení vás hello rozhodnout, budete potřebovat toomake a nabízí odkazy tooarticles, které vám umožní vyvíjet řešení.
 
-## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>Stáhněte si rychlý přehled Machine Learning automatizované datového kanálu
-Jakmile si stáhnout rychlý přehled, můžete ho vytisknout ve velikosti tabloid (11 × 17 palců).
+## <a name="download-hello-machine-learning-automated-data-pipeline-cheat-sheet"></a>Stáhnout hello Machine Learning automatizované datového kanálu tahák
+Jakmile si stáhnout tahák hello, můžete ho vytisknout ve velikosti tabloid (11 × 17 palců).
 
-Stáhněte si tahák zde:  **[Microsoft Azure Machine Learning automatizované datového kanálu tahák](http://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
+Stáhnout hello tahák zde:  **[Microsoft Azure Machine Learning automatizované datového kanálu tahák](http://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
 
 ![Přehled možností nástroje Microsoft Machine Learning Studio][op-cheat-sheet]
 
@@ -37,9 +37,9 @@ Stáhněte si tahák zde:  **[Microsoft Azure Machine Learning automatizované d
 
 
 ## <a name="more-help-with-machine-learning-studio"></a>Další nápověda k nástroji Machine Learning Studio
-* Přehled Microsoft Azure Machine Learning najdete v tématu [Úvod do strojového učení v Microsoft Azure](machine-learning-what-is-machine-learning.md).
-* Další informace o tom, jak nasadit vyhodnocování webové služby, najdete v části [nasazení webové služby Azure Machine Learning](machine-learning-publish-a-machine-learning-web-service.md).
-* Informace o tom, jak využívat vyhodnocování webové služby, naleznete v [využívání Azure Machine Learning webové služby](machine-learning-consume-web-services.md).
+* Přehled Microsoft Azure Machine Learning najdete v tématu [toomachine Úvod učení v Microsoft Azure](machine-learning-what-is-machine-learning.md).
+* Další informace o tom najdete v části toodeploy vyhodnocování webové služby, [nasazení webové služby Azure Machine Learning](machine-learning-publish-a-machine-learning-web-service.md).
+* Informace o tom najdete v části tooconsume vyhodnocování webové služby, [jak tooconsume Azure Machine Learning webové služby](machine-learning-consume-web-services.md).
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 

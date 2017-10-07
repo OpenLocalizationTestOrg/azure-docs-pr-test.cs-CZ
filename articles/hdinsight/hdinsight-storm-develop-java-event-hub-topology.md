@@ -1,6 +1,6 @@
 ---
-title: "Zpracování událostí ze služby Event Hubs se Storm v HDInsight pomocí Java | Microsoft Docs"
-description: "Informace o zpracování dat služby Event Hubs s topologie Java Storm vytvořené pomocí Maven."
+title: "aaaProcess události ze služby Event Hubs se Storm v HDInsight pomocí Java | Microsoft Docs"
+description: "Zjistěte, jak vytvořit tooprocess dat služby Event Hubs s topologie Java Storm s Maven."
 services: hdinsight,notification hubs
 documentationcenter: 
 author: Blackmist
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/13/2017
 ms.author: larryfr
-ms.openlocfilehash: 2e8ebbdab2be7bed224a67facec798820615bb22
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 6506f5bc8f6ab0e29350c071a3f84433382038e4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-java"></a>Zpracování událostí z Azure Event Hubs se Storm v HDInsight (Java)
 
-Naučte se používat Azure Event Hubs se Storm v HDInsight. Tento příklad používá založené na jazyce Java součásti číst a zapisovat data v Azure Event Hubs.
+Zjistěte, jak toouse Azure Event Hubs se Storm v HDInsight. Tento příklad používá založené na jazyce Java součásti tooread a zápis dat v Azure Event Hubs.
 
-Azure Event Hubs umožňuje zpracovat masivní objemy dat z webů, aplikací a zařízení. Spout Centrum událostí je snadno použitelný Apache Storm v HDInsight k analýze tato data v reálném čase. Můžete také zápisu dat do centra událostí z Storm pomocí bolt Event Hubs.
+Azure Event Hubs vám umožní tooprocess masivní objemy dat z webů, aplikací a zařízení. Hello Event Hub spout umožňuje snadno toouse Apache Storm v HDInsight tooanalyze tato data v reálném čase. Je také možné zapsat tooEvent datového centra z Storm pomocí hello funkce bolt Event Hubs.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Apache Storm na verzi clusteru HDInsight 3.6. Další informace najdete v tématu [Začínáme se Storm v clusteru HDInsight](hdinsight-apache-storm-tutorial-get-started-linux.md).
 
     > [!IMPORTANT]
-    > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+    > Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * [Centra událostí Azure](../event-hubs/event-hubs-csharp-ephcs-getstarted.md).
 
@@ -43,31 +43,31 @@ Azure Event Hubs umožňuje zpracovat masivní objemy dat z webů, aplikací a z
 * Textového editoru nebo integrované vývojové prostředí (IDE).
 
     > [!NOTE]
-    > Editor nebo IDE může mít specifické funkce pro práci s Maven, který mu není adresovaný v tomto dokumentu. Informace o možnostech vašeho prostředí pro úpravy najdete v dokumentaci pro produkt, který používáte.
+    > Editor nebo IDE může mít specifické funkce pro práci s Maven, který mu není adresovaný v tomto dokumentu. Informace o možnostech hello prostředí pro úpravy naleznete v dokumentaci k hello hello produktu, který používáte.
 
     * Klientem SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* `ssh` a `scp` příkazy. Ty se používají pro kopírování souborů do clusteru HDInsight. V systému Windows můžete získat tyto prostřednictvím Bash ve Windows 10.
+* Hello `ssh` a `scp` příkazy. Jedná se o clusteru HDInsight toohello použité toocopy soubory. V systému Windows můžete získat tyto prostřednictvím Bash ve Windows 10.
 
-## <a name="understanding-the-example"></a>Principy příklad
+## <a name="understanding-hello-example"></a>Principy hello – ukázka
 
-[Hdinsight-java-storm-eventhub](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) příklad obsahuje dvě topologie:
+Hello [hdinsight-java-storm-eventhub](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) příklad obsahuje dvě topologie:
 
-`resources/writer.yaml` Topologie zapíše náhodná data do centra událostí Azure. Data je generován `DeviceSpout` součást, a je ID náhodných zařízení a zařízení hodnota. Proto se simuluje některé hardwaru, který vysílá řetězec ID a číselná hodnota.
+Hello `resources/writer.yaml` topologie zapíše náhodná data tooan centra událostí Azure. Hello data je generována hello `DeviceSpout` součást, a je ID náhodných zařízení a zařízení hodnota. Proto se simuluje některé hardwaru, který vysílá řetězec ID a číselná hodnota.
 
-Thí `resources/reader.yaml` topologie čte data z centra událostí (data podle EventHubWriter, zapisují) analyzuje JSON data a pak protokoly `deviceId` a `deviceValue` data.
+Thí `resources/reader.yaml` topologie čte data z centra událostí (služba EventHubWriter, zapíše data hello) analyzuje hello JSON data a pak protokoly hello `deviceId` a `deviceValue` data.
 
-Data je naformátován jako dokument JSON předtím, než je zapsán do centra událostí a když číst čtečky ho je analyzována z JSON a do řazené kolekce členů. Formát JSON je následující:
+formátování dat Hello jako dokument JSON předtím, než je zapsána tooEvent rozbočovače a když číst hello čtečky ho je analyzována z JSON a do řazené kolekce členů. Formát JSON Hello vypadá takto:
 
     { "deviceId": "unique identifier", "deviceValue": some value }
 
 ### <a name="project-configuration"></a>Konfigurace projektu
 
-`POM.xml` Soubor obsahuje informace o konfiguraci pro tento projekt Maven. Jsou zajímavé částí:
+Hello `POM.xml` soubor obsahuje informace o konfiguraci pro tento projekt Maven. zajímavé částí Hello jsou:
 
 #### <a name="event-hub-components"></a>Součásti centra událostí
 
-Komponenta, která čte a zapisuje do služby Azure Event Hubs se nachází v [úložiště HDInsight](https://github.com/hdinsight/mvn-rep). V následujících částech v `POM.xml` souborové zatížení komponenty z tohoto úložiště
+Hello komponenta, která čte a zapisuje tooAzure Event Hubs se nachází v hello [úložiště HDInsight](https://github.com/hdinsight/mvn-rep). Následující části hello Hello `POM.xml` zatížení hello komponenty soubory z tohoto úložiště
 
 ```xml
 <repositories>
@@ -78,7 +78,7 @@ Komponenta, která čte a zapisuje do služby Azure Event Hubs se nachází v [�
 </repositories>
 ```
 
-#### <a name="the-eventhubs-storm-spout-dependency"></a>Závislost EventHubs Storm Spout
+#### <a name="hello-eventhubs-storm-spout-dependency"></a>Hello EventHubs Storm Spout závislostí
 
 ```xml
 <dependency>
@@ -88,7 +88,7 @@ Komponenta, která čte a zapisuje do služby Azure Event Hubs se nachází v [�
 </dependency>
 ```
 
-Tato konfigurace xml definuje závislost pro balíčku eventhubs, která obsahuje spout pro čtení ze služby Event Hubs a na funkce bolt pro zápis do něj.
+Tato konfigurace xml definuje závislost pro hello eventhubs balíček, který obsahuje spout pro čtení ze služby Event Hubs i na funkce bolt pro zápis tooit.
 
 ```xml
 </source>
@@ -97,9 +97,9 @@ Tato konfigurace xml definuje závislost pro balíčku eventhubs, která obsahuj
 </plugin>
 ```
 
-Tato konfigurace xml nakonfiguruje projektu pro generování výstupu pro jazyk Java 8, který se používá v HDInsight 3.5 nebo vyšší.
+Tato konfigurace xml nakonfiguruje toogenerate výstup hello projektu Java 8, které se používá v HDInsight 3.5 nebo vyšší.
 
-#### <a name="the-maven-shade-plugin"></a>Plugin stín maven
+#### <a name="hello-maven-shade-plugin"></a>Hello maven stín-modulu plug-in
 
 ```xml
 <!-- build an uber jar -->
@@ -136,17 +136,17 @@ Tato konfigurace xml nakonfiguruje projektu pro generování výstupu pro jazyk 
 </plugin>
 ```
 
-Tato konfigurace xml lze konfigurovat řešení tak, aby balíček výstup do uber jar. Jar obsahuje kód projektu i požadované závislosti. Používá se také na:
+Tato konfigurace xml nakonfiguruje hello řešení toopackage hello výstup do uber jar. Hello jar obsahuje kód projektu hello a požadované závislosti. Používá se také na:
 
-* Přejmenování souborů s licencí pro závislosti.
+* Přejmenování souborů s licencí pro hello závislosti.
 * Vylučte zabezpečení nebo podpisy.
-* Zajistěte, aby více implementace stejné rozhraní jsou sloučeny do jednu položku.
+* Ujistěte se, že více implementace hello stejné rozhraní jsou sloučeny do jednu položku.
 
 Tato nastavení konfigurace zabránit chybám za běhu.
 
 #### <a name="topology-definitions"></a>Definice topologie
 
-Tento příklad používá [tok](https://storm.apache.org/releases/1.1.0/flux.html) framework. Toto rozhraní používá YAML pro definování uvedené topologie. Primární výhodou je, že nejste pevné kódování topologii v jazyce Java kódu. Vzhledem k tomu, že definice je YAML, můžete ji změnit před odesláním topologii, aniž by museli znovu zkompiluje vše.
+Tento příklad používá hello [tok](https://storm.apache.org/releases/1.1.0/flux.html) framework. Toto rozhraní využívá YAML toodefine hello topologie. Hello Primární výhodou je, že nejste pevné kódování hello topologie v kódu v jazyce Java. Vzhledem k tomu, že definice hello je YAML, můžete ji změnit před odesláním hello topologie, bez nutnosti toorecompile vše.
 
 __Writer.yaml__:
 
@@ -156,11 +156,11 @@ __Writer.yaml__:
 name: "eventhubwriter"
 
 components:
-  # Configure the Event Hub spout
+  # Configure hello Event Hub spout
   - id: "eventhubbolt-config"
     className: "org.apache.storm.eventhubs.bolt.EventHubBoltConfig"
     constructorArgs:
-      # These are populated from the .properties file when the topology is started
+      # These are populated from hello .properties file when hello topology is started
       - "${eventhub.write.policy.name}"
       - "${eventhub.write.policy.key}"
       - "${eventhub.namespace}"
@@ -177,7 +177,7 @@ bolts:
     className: "org.apache.storm.eventhubs.bolt.EventHubBolt"
     constructorArgs:
       - ref: "eventhubbolt-config" # config declared in components section
-    # parallelism hint. This should be the same as the number of partitions for your Event Hub, so we read it from the dev.properties file passed at run time.
+    # parallelism hint. This should be hello same as hello number of partitions for your Event Hub, so we read it from hello dev.properties file passed at run time.
     parallelism: ${eventhub.partitions}
 
   # Log information
@@ -185,7 +185,7 @@ bolts:
     className: "org.apache.storm.flux.wrappers.bolts.LogInfoBolt"
     parallelism: 1
 
-# How data flows through the components
+# How data flows through hello components
 streams:
   - name: "spout -> eventhub" # just a string used for logging
     from: "device-emulator-spout"
@@ -208,11 +208,11 @@ __Reader.yaml__:
 name: "eventhubreader"
 
 components:
-  # Configure the Event Hub spout
+  # Configure hello Event Hub spout
   - id: "eventhubspout-config"
     className: "org.apache.storm.eventhubs.spout.EventHubSpoutConfig"
     constructorArgs:
-      # These are populated from the .properties file when the topology is started
+      # These are populated from hello .properties file when hello topology is started
       - "${eventhub.read.policy.name}"
       - "${eventhub.read.policy.key}"
       - "${eventhub.namespace}"
@@ -224,7 +224,7 @@ spouts:
     className: "org.apache.storm.eventhubs.spout.EventHubSpout"
     constructorArgs:
       - ref: "eventhubspout-config" # config declared in components section
-    # parallelism hint. This should be the same as the number of partitions for your Event Hub, so we read it from the dev.properties file passed at run time.
+    # parallelism hint. This should be hello same as hello number of partitions for your Event Hub, so we read it from hello dev.properties file passed at run time.
     parallelism: ${eventhub.partitions}
 
 bolts:
@@ -238,7 +238,7 @@ bolts:
     className: "com.microsoft.example.ParserBolt"
     parallelism: ${eventhub.partitions}
 
-# How data flows through the components
+# How data flows through hello components
 streams:
   - name: "spout -> parser" # just a string used for logging
     from: "eventhub-spout"
@@ -253,9 +253,9 @@ streams:
         type: SHUFFLE
 ```
 
-#### <a name="tell-the-topology-about-event-hub"></a>Topologie říct o centra událostí
+#### <a name="tell-hello-topology-about-event-hub"></a>Řekněte hello topologie o centra událostí
 
-V době běhu `dev.properties` soubor se používá k nastavení centra událostí předat topologii. V následujícím příkladu je výchozí obsah souboru:
+V době běhu hello `dev.properties` soubor je použité toopass hello centra událostí konfigurace toohello topologie. Hello následující příklad je hello výchozí obsah souboru hello:
 
 ```yaml
 eventhub.write.policy.name: writer
@@ -269,34 +269,34 @@ eventhub.partitions: 2
 
 ## <a name="configure-environment-variables"></a>Nakonfigurujte proměnné prostředí
 
-Následující proměnné prostředí může být nastaven při instalaci Java a sadu JDK na pracovní stanici. Nicméně byste měli zkontrolovat, že existují a že obsahují správné hodnoty pro váš systém.
+Hello následující proměnné prostředí může být nastaven při instalaci Java a hello JDK na pracovní stanici. Ale byste měli zkontrolovat, že existují a že obsahují hello správné hodnoty pro váš systém.
 
-* **JAVA_HOME** -by měla odkazovat na adresář, kam nainstalovat prostředí Java runtime (JRE). Například v distribuci systému Unix nebo Linux, musí mít hodnotu podobnou `/usr/lib/jvm/java-7-oracle`. V systému Windows má hodnotu podobnou`c:\Program Files (x86)\Java\jre1.7`
-* **CESTA** -musí obsahovat následující cesty:
+* **JAVA_HOME** -by měla odkazovat toohello adresáře, kde je nainstalován hello prostředí Java runtime (JRE). Například v distribuci systému Unix nebo Linux, musí mít hodnotu podobnou příliš`/usr/lib/jvm/java-7-oracle`. Windows neměl by mít hodnotu podobnou příliš`c:\Program Files (x86)\Java\jre1.7`
+* **CESTA** -musí obsahovat hello následující cesty:
 
-  * **JAVA_HOME** (nebo ekvivalentní cesta)
-  * **JAVA_HOME\bin** (nebo ekvivalentní cesta)
-  * Adresář, kde je nainstalován Maven
+  * **JAVA_HOME** (nebo ekvivalentní cesta hello)
+  * **JAVA_HOME\bin** (nebo ekvivalentní cesta hello)
+  * Hello adresáře, kde je nainstalován Maven
 
 ## <a name="configure-event-hub"></a>Konfigurace centra událostí
 
-Event Hubs je zdroj dat pro tento příklad. Pomocí následujících kroků můžete vytvořit Centrum událostí.
+Event Hubs je hello zdroj dat pro tento příklad. Pomocí následujících kroků toocreate centra událostí hello.
 
-1. Z [portálu Azure Classic](https://manage.windowsazure.com), vyberte **nový** > **Service Bus** > **centra událostí**  >  **Vytvořit vlastní**.
+1. Z hello [portálu Azure Classic](https://manage.windowsazure.com), vyberte **nový** > **Service Bus** > **centra událostí**  >  **Vytvořit vlastní**.
 
-2. Na **přidat nového centra událostí** obrazovky, zadejte **název centra událostí**. Vyberte **oblast** vytvoření centrum a pak vytvořit obor názvů nebo vyberte nějaký existující. Nakonec klikněte na **šipku** pokračujte.
+2. Na hello **přidat nového centra událostí** obrazovky, zadejte **název centra událostí**. Vyberte hello **oblast** toocreate, hello rozbočovače a pak vytvořit obor názvů nebo vyberte nějaký existující. Nakonec klikněte na hello **šipku** toocontinue.
 
     ![Stránka 1 Průvodce](./media/hdinsight-storm-develop-csharp-event-hub-topology/wiz1.png)
 
    > [!NOTE]
-   > Vyberte stejný **umístění** jako Storm v HDInsight serveru a snižuje tak latenci a náklady.
+   > Vyberte hello stejné **umístění** jako Storm v HDInsight server tooreduce latenci a náklady.
 
-3. Na **Konfigurace centra událostí** obrazovky, zadejte **oddílu počet** a **uchování zpráv** hodnoty. V tomto příkladu použijte počet oddílů 10 a uchování zpráv 1. Poznámka: počet oddílů, protože je tato hodnota potřebovat později.
+3. Na hello **Konfigurace centra událostí** obrazovky, zadejte hello **oddílu počet** a **uchování zpráv** hodnoty. V tomto příkladu použijte počet oddílů 10 a uchování zpráv 1. Poznámka: počet oddílů hello později potřebovat tuto hodnotu.
 
     ![Stránka 2 Průvodce](./media/hdinsight-storm-develop-csharp-event-hub-topology/wiz2.png)
 
-4. Po vytvoření centra událostí, vyberte obor názvů, vyberte **Event Hubs**a potom vyberte centra událostí, které jste vytvořili dříve.
-5. Vyberte **konfigurace**, pak vytvořte dva nové zásady přístupu pomocí následující informace:
+4. Po centra událostí hello hello vytvořené, vyberte obor názvů, vyberte **Event Hubs**a potom vyberte hello centra událostí, který jste vytvořili dříve.
+5. Vyberte **konfigurace**, pak vytvořte dva nové zásady přístupu pomocí hello následující informace:
 
     <table>
     <tr><th>Name (Název)</th><th>Oprávnění</th></tr>
@@ -304,73 +304,73 @@ Event Hubs je zdroj dat pro tento příklad. Pomocí následujících kroků mů
     <tr><td>Čtenář</td><td>Naslouchání</td></tr>
     </table>
 
-    Po vytvoření oprávnění, vyberte **Uložit** ikona v dolní části stránky. Tyto zásady sdíleného přístupu slouží ke čtení a zápisu do centra událostí.
+    Po vytvoření oprávnění hello vyberte hello **Uložit** ikonu v hello dolní části stránky hello. Tyto zásady sdíleného přístupu jsou použité tooread a zápis tooEvent rozbočovače.
 
     ![zásady](./media/hdinsight-storm-develop-csharp-event-hub-topology/policy.png)
 
-6. Po uložení zásady, pomocí **klíče generátor sdíleného přístupu** v dolní části stránky načíst klíč pro **zapisovače** a **čtečky** zásady. Uložte tyto klíče.
+6. Po uložení hello zásad, pomocí hello **klíče generátor sdíleného přístupu** v dolní části hello hello stránky tooretrieve hello klíče pro hello **zapisovače** a **čtečky** zásady. Uložte tyto klíče.
 
-## <a name="download-and-build-the-project"></a>Stáhněte si a sestavte projekt
+## <a name="download-and-build-hello-project"></a>Stáhněte si a sestavte projekt hello
 
-1. Stažení projektu z Githubu: [hdinsight-java-storm-eventhub](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub). Můžete stáhnout balíček jako archivu zip, nebo použijte [git](https://git-scm.com/) klonovat projektu místně.
+1. Stáhnout hello projektu z Githubu: [hdinsight-java-storm-eventhub](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub). Můžete stáhnout balíček hello jako archivu zip, nebo použijte [git](https://git-scm.com/) tooclone hello místně projektu.
 
-2. Změnit `dev.properties` soubor s konfigurací pro vaše Centrum událostí.
+2. Upravit hello `dev.properties` soubor s hello konfiguraci pro Centrum událostí.
 
-3. Použijte následující postupy k vytvoření a balíček projektu:
+3. Použijte následující toobuild a balíček projektu hello hello:
 
         mvn package
 
-    Tento příkaz stáhne požadované závislosti, sestavení a pak balíčky projektu. Výstup je uložen v **/target** adresáři jako **EventHubExample. 1.0 SNAPSHOT.jar**.
+    Tento příkaz stáhne požadované závislosti, sestavení, a pak balíčky hello projektu. výstup Hello je uložen v hello **/target** adresáři jako **EventHubExample. 1.0 SNAPSHOT.jar**.
 
 ## <a name="test-locally"></a>Test místně
 
-Vzhledem k tomu, že tyto topologie jenom číst a zapisovat do centra událostí, je můžete otestovat místně, pokud máte [Storm vývojového prostředí](http://storm.apache.org/releases/current/Setting-up-development-environment.html). Spustit místně v prostředí dev pomocí následujících kroků:
+Vzhledem k tomu, že tyto topologie jenom číst a zapisovat tooEvent rozbočovače, je můžete otestovat místně, pokud máte [Storm vývojového prostředí](http://storm.apache.org/releases/current/Setting-up-development-environment.html). Použijte následující postup toorun místně v prostředí dev hello hello:
 
-1. Spusťte modul pro zápis:
+1. Spusťte zapisovače hello:
 
         storm jar EventHubExample-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local -R /writer.yaml --filter dev.properties
 
-2. Spusťte program pro čtení:
+2. Spusťte čtečky hello:
 
         storm jar EventHubExample-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local -R /reader.yaml --filter dev.properties
 
 > [!TIP]
-> * `--local`: Spusťte topologii v místním režimu (bez distribuované).
-> * `-R /writer.yaml`: Načíst definici topologie z `resources` součástí jar. Pokud topologie je soubor v místním systému souborů, zadejte cestu k němu místo jako poslední parametr.
-> * `--filter dev.properties`: Použijte obsah `dev.properties` vyplnit hodnoty v definicích topologie. Například, `${eventhub.read.policy.name}`.
+> * `--local`: Topologie spuštění hello v místním režimu (bez distribuované).
+> * `-R /writer.yaml`: Načíst definici topologie hello z hello `resources` součástí hello jar. Pokud hello topologie je soubor na hello místního systému souborů, zadejte místo toho hello cesta tooit jako poslední parametr hello.
+> * `--filter dev.properties`: Použijte hello obsah `dev.properties` toofill hello hodnoty v definicích topologie hello. Například, `${eventhub.read.policy.name}`.
 
-Při místním spuštění je výstup protokolovány v konzoli. Použití __Ctrl + C__ k zastavení topologie.
+Výstup je konzola zaznamenané toohello při místním spuštění. Použití __Ctrl + C__ toostop hello topologie.
 
-## <a name="deploy-the-topologies"></a>Nasazení topologie
+## <a name="deploy-hello-topologies"></a>Hello topologie nasazení
 
-1. Spojovací bod služby slouží ke kopírování balíčků jar ke svému clusteru HDInsight. Nahraďte uživatelské jméno uživatele SSH pro váš cluster. Nahraďte název clusteru s názvem clusteru HDInsight:
+1. Použití clusteru HDInsight tooyour jar spojovací bod služby toocopy hello balíčku. Nahraďte uživatelské jméno uživatele hello SSH pro váš cluster. Nahraďte název clusteru s názvem hello clusteru HDInsight:
 
         scp ./target/EventHubExample-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.
 
-    Pokud jste použili heslo pro účet SSH, zobrazí se výzva k zadání hesla. Pokud jste použili klíče SSH pomocí účtu, budete možná muset použít `-i` parametru určete cestu k souboru klíče. Například `scp -i ~/.ssh/id_rsa ./target/EventHubExample-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.`.
+    Pokud jste použili heslo pro účet SSH, jste výzvami tooenter hello heslo. Pokud jste použili klíče SSH s účtem hello, může být nutné toouse hello `-i` parametr toospecify hello cestě toohello klíče souboru. Například `scp -i ~/.ssh/id_rsa ./target/EventHubExample-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.`.
 
-    Tento příkaz zkopíruje soubor do domovského adresáře uživatelů SSH v clusteru.
+    Tento příkaz zkopíruje hello souboru toohello domovský adresář vaše uživatele SSH na hello clusteru.
 
-2. Po dokončení nahrávání souboru použití SSH se připojit ke clusteru HDInsight. Nahraďte **uživatelské jméno** název vaší přihlašování přes SSH. Nahraďte **CLUSTERNAME** názvem clusteru HDInsight:
+2. Po dokončení nahrávání souboru hello použijte clusteru HDInsight toohello tooconnect SSH. Nahraďte **uživatelské jméno** hello název vaší přihlašování přes SSH. Nahraďte **CLUSTERNAME** názvem clusteru HDInsight:
 
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
     > [!NOTE]
-    > Pokud jste použili heslo pro účet SSH, zobrazí se výzva k zadání hesla. Pokud jste použili klíče SSH pomocí účtu, budete možná muset použít `-i` parametru určete cestu k souboru klíče. Následující příklad načte privátní klíč z `~/.ssh/id_rsa`:
+    > Pokud jste použili heslo pro účet SSH, jste výzvami tooenter hello heslo. Pokud jste použili klíče SSH s účtem hello, může být nutné toouse hello `-i` parametr toospecify hello cestě toohello klíče souboru. Hello následující příklad načte privátní klíč hello z `~/.ssh/id_rsa`:
     >
     > `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`
 
-3. Použijte následující příkaz pro spuštění topologie:
+3. Použijte následující příkaz toostart hello topologie hello:
 
         storm jar EventHubExample-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /writer.yaml --filter dev.properties
         storm jar EventHubExample-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /reader.yaml --filter dev.properties
 
     > [!TIP]
-    > * `--remote`: Odešle topologii pro službu Nimbus, která spustí na pracovních uzlech v clusteru.
+    > * `--remote`: Odešle hello topologie toohello Nimbus služba, která ji spustí na hello uzlů pracovního procesu v clusteru hello.
 
-4. Chcete zobrazit data protokolu, přejděte na https://CLUSTERNAME.azurehdinsight.net/stormui, kde __CLUSTERNAME__ je název clusteru HDInsight. Vyberte uvedené topologie a přejít k podrobnostem a součásti. Vyberte __port__ položka pro instanci součást k zobrazení informací o protokolu.
+4. tooview hello protokolovat data, přejděte toohttps://CLUSTERNAME.azurehdinsight.net/stormui, kde __CLUSTERNAME__ je hello název clusteru HDInsight. Vyberte hello topologie a podrobně toohello součásti. Vyberte hello __port__ položka pro instanci komponenty tooview protokolují informace.
 
-5. Zastavit uvedené topologie použijte následující příkazy:
+5. Použijte následující příkazy toostop hello topologie hello:
 
         storm kill reader
         storm kill writer

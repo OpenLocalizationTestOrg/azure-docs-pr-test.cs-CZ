@@ -1,6 +1,6 @@
 ---
-title: "Vývoj pro Azure File storage s Pythonem | Microsoft Docs"
-description: "Další informace jak vyvíjet aplikace Python a služby, které používají Azure File storage k ukládání dat souborů."
+title: aaaDevelop pro Azure File storage s Pythonem | Microsoft Docs
+description: "Zjistěte, jak toodevelop Python aplikace a služby, které používají Azure File storage toostore souborová data."
 services: storage
 documentationcenter: python
 author: robinsh
@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
-ms.openlocfilehash: 3dd14e8d3ea7d1e50f41633a7920a6d36becf789
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2adc5aac2765b98a8022ab1f706c1fcdbca1b43c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="develop-for-azure-file-storage-with-python"></a>Vývoj pro Azure File storage s Pythonem
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -26,7 +26,7 @@ ms.lasthandoff: 08/29/2017
 [!INCLUDE [storage-try-azure-tools-files](../../../includes/storage-try-azure-tools-files.md)]
 
 ## <a name="about-this-tutorial"></a>O tomto kurzu
-V tomto kurzu se ukazují základy používání Python k vývoji aplikací nebo služeb, které používají Azure File storage k ukládání dat souborů. V tomto kurzu jsme vytvořit jednoduché konzolové aplikace a ukazují, jak provést základní operace s Python a Azure File storage:
+V tomto kurzu se ukazují hello základy používání Python toodevelop aplikacím nebo službám, které používají Azure File storage toostore souborová data. V tomto kurzu bude vytvoření jednoduché konzolové aplikace a zobrazit jak tooperform základní operace s Python a Azure File storage:
 
 * Vytvoření sdílené složky Azure File
 * Vytváření adresářů
@@ -34,38 +34,38 @@ V tomto kurzu se ukazují základy používání Python k vývoji aplikací nebo
 * Odesílání, stahování a odstranění souboru
 
 > [!Note]  
-> Protože Azure File storage můžete získat přístup přes protokol SMB, je možné psát jednoduché aplikace, které přístup k Azure souborové složce přes standardní Python vstupně-výstupních operací třídy a funkce. Tento článek popisuje, jak k psaní aplikací, které používají Azure Python SDK úložiště, který používá [REST API služby Azure File storage](https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/file-service-rest-api) ke komunikaci s úložištěm Azure File.
+> Protože Azure File storage můžete získat přístup přes protokol SMB, je možné toowrite jednoduché aplikace, které přístup hello Azure sdílenou složku pomocí hello standardní Python vstupně-výstupních operací třídy a funkce. Tento článek popisuje, jak toowrite aplikace, které používají hello Python SDK úložiště Azure, který používá hello [REST API služby Azure File storage](https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/file-service-rest-api) tootalk tooAzure úložiště File.
 
-### <a name="set-up-your-application-to-use-azure-file-storage"></a>Nastavení aplikace k používání Azure File storage
-Přidejte následující v horní části všech Python zdrojový soubor, ve kterém chcete k programovému přístupu ke službě Azure Storage.
+### <a name="set-up-your-application-toouse-azure-file-storage"></a>Nastavit toouse vaše aplikace Azure File storage
+Přidejte následující hello v hello horní části všech Python zdrojový soubor, ve kterém chcete tooprogrammatically přístupu Azure Storage.
 
 ```python
 from azure.storage.file import FileService
 ```
 
-### <a name="set-up-a-connection-to-azure-file-storage"></a>Nastavit připojení k Azure File storage 
-`FileService` Objekt vám umožňuje spolupracovat s sdílených složek, adresářů a souborů. Následující kód vytvoří `FileService` pomocí klíč účet a název účtu úložiště. Nahraďte `<myaccount>` a `<mykey>` s názvem účtu a klíč.
+### <a name="set-up-a-connection-tooazure-file-storage"></a>Nastavení připojení tooAzure úložiště File 
+Hello `FileService` objekt vám umožňuje spolupracovat s sdílených složek, adresářů a souborů. Hello následující kód vytvoří `FileService` objekt, který používá hello klíč účtu úložiště účet a název. Nahraďte `<myaccount>` a `<mykey>` s názvem účtu a klíč.
 
 ```python
 file_service = FileService(account_name='myaccount', account_key='mykey')
 ```
 
 ### <a name="create-an-azure-file-share"></a>Vytvoření Azure sdílené složky
-V následujícím příkladu kódu, můžete použít `FileService` objekt, který chcete vytvořit sdílenou složku, pokud neexistuje.
+V hello následující ukázka kódu, můžete použít `FileService` objektu toocreate hello sdílené složky pokud neexistuje.
 
 ```python
 file_service.create_share('myshare')
 ```
 
 ### <a name="create-a-directory"></a>Vytvoření adresáře
-Úložiště můžete navíc uspořádat umístěním souborů v podadresářích místo nutnosti všechny z nich v kořenovém adresáři. Azure File storage můžete vytvořit tolik adresáře, které umožní váš účet. Následující kód vytvoří adresář s názvem **sampledir** pod kořenovým adresářem.
+Úložiště můžete navíc uspořádat umístěním souborů v podadresářích místo nutnosti všechny z nich v kořenovém adresáři hello. Úložiště Azure File umožňuje toocreate jako víc adresářů jako váš účet se povolit. Následující kód Hello vytvoří adresář s názvem **sampledir** pod kořenovým adresářem hello.
 
 ```python
 file_service.create_directory('myshare', 'sampledir')
 ```
 
 ### <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Vytvoření výčtu souborů a adresářů v Azure File sdílet
-K zobrazení seznamu souborů a adresářů ve sdílené složce, použijte **seznamu\_adresáře\_a\_soubory** metoda. Tato metoda vrátí generátor. Následující kód výstupy **název** každého souboru a adresáře ve sdílené složce, do konzoly.
+toolist hello souborů a adresářů ve sdílené složce, použít hello **seznamu\_adresáře\_a\_soubory** metoda. Tato metoda vrátí generátor. Hello následující kód výstupy hello **název** z jednotlivých souborů a adresářů v konzole toohello sdílené složky.
 
 ```python
 generator = file_service.list_directories_and_files('myshare')
@@ -74,42 +74,42 @@ for file_or_dir in generator:
 ```
 
 ### <a name="upload-a-file"></a>Nahrání souboru 
-Azure soubor, který obsahuje sdílenou složku v každém, kořenový adresář, kde mohou být uloženy soubory. V této části se dozvíte jak nahrát soubor z místního úložiště do kořenového adresáře sdílenou složku.
+Azure soubor, který obsahuje sdílenou složku v hello velmi alespoň, kořenový adresář, kde mohou být uloženy soubory. V této části se dozvíte, jak tooupload soubor z místního úložiště do hello kořenový adresář sdílené složky.
 
-Chcete-li vytvořit soubor a odesílat data, použijte `create_file_from_path`, `create_file_from_stream`, `create_file_from_bytes` nebo `create_file_from_text` metody. Jsou nejdůležitější metody, které provádějí potřebné rozdělování, když velikost dat přesáhne 64 MB.
+toocreate soubor a nahrávání dat, použijte hello `create_file_from_path`, `create_file_from_stream`, `create_file_from_bytes` nebo `create_file_from_text` metody. Jsou nejdůležitější metody, které provádějí hello nezbytné rozdělování když hello velikost dat hello překročí 64 MB.
 
-`create_file_from_path`Odešle obsah souboru ze zadané cesty a `create_file_from_stream` odešle obsah z již otevřeného souboru/stream. `create_file_from_bytes`odešle pole bajtů, a `create_file_from_text` odešle zadanou textovou hodnotu pomocí zadaného kódování (výchozí hodnota je UTF-8).
+`create_file_from_path`nahrávání hello obsah souboru z hello zadané cesty, a `create_file_from_stream` nahrávání hello obsah z již otevřeného souboru/stream. `create_file_from_bytes`odešle pole bajtů, a `create_file_from_text` nahrávání hello zadán textové hodnoty pomocí hello kódování (výchozí nastavení tooUTF-8).
 
-V následujícím příkladu se uloží obsah **sunset.png** soubor do **myfile** souboru.
+Hello následujícím příkladu se uloží obsah hello hello **sunset.png** souboru do hello **myfile** souboru.
 
 ```python
 from azure.storage.file import ContentSettings
 file_service.create_file_from_path(
     'myshare',
-    None, # We want to create this blob in the root directory, so we specify None for the directory_name
+    None, # We want toocreate this blob in hello root directory, so we specify None for hello directory_name
     'myfile',
     'sunset.png',
     content_settings=ContentSettings(content_type='image/png'))
 ```
 
 ### <a name="download-a-file"></a>Stažení souboru
-Chcete-li stáhnout data ze souboru, použijte `get_file_to_path`, `get_file_to_stream`, `get_file_to_bytes`, nebo `get_file_to_text`. Jsou nejdůležitější metody, které provádějí potřebné rozdělování, když velikost dat přesáhne 64 MB.
+toodownload data ze souboru, použijte `get_file_to_path`, `get_file_to_stream`, `get_file_to_bytes`, nebo `get_file_to_text`. Jsou nejdůležitější metody, které provádějí hello nezbytné rozdělování když hello velikost dat hello překročí 64 MB.
 
-Následující příklad ukazuje, jak pomocí `get_file_to_path` stáhnout obsah **myfile** souboru a uložte ho do **na více systémů sunset.png** souboru.
+Hello následující příklad ukazuje použití `get_file_to_path` toodownload hello obsah hello **myfile** souboru a uložte ho toohello **na více systémů sunset.png** souboru.
 
 ```python
 file_service.get_file_to_path('myshare', None, 'myfile', 'out-sunset.png')
 ```
 
 ### <a name="delete-a-file"></a>Odstranění souboru
-Nakonec odstranění souboru, zavolejte `delete_file`.
+Nakonec toodelete soubor, zavolejte `delete_file`.
 
 ```python
 file_service.delete_file('myshare', None, 'myfile')
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili jak pracovat s Azure File storage s Python, postupujte podle následujících odkazech na další informace.
+Teď, když jste se naučili jak toomanipulate Azure File storage s Python, použijte tyto odkazy toolearn Další.
 
 * [Středisko pro vývojáře programující v Pythonu](/develop/python/)
 * [REST API služby Azure Storage](http://msdn.microsoft.com/library/azure/dd179355)

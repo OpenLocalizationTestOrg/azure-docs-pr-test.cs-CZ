@@ -15,33 +15,33 @@ ms.devlang: gremlin
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: khdang
-ms.openlocfilehash: 27c4d945e418b130c68cfde845571eb93658101e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0be5c9b12cdba4a428c809d00e1e68785a9ec1ab
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cosmos-db-perform-graph-analytics-by-using-spark-and-apache-tinkerpop-gremlin"></a>Azure Cosmos DB: Proveďte analýzy grafu pomocí Spark a Apache TinkerPop Gremlin
 
-[Azure Cosmos DB](introduction.md) je služba databáze globálně distribuované a více modelech od společnosti Microsoft. Můžete vytvořit a dotazovat dokumentu, klíč/hodnota a graf databáze, z nichž všechny využívat funkce globální distribuce a škálování vodorovných základem Azure Cosmos DB. Azure Cosmos DB podporuje online zpracování úlohy graf (OLTP), které používají transakcí [Apache TinkerPop Gremlin](graph-introduction.md).
+[Azure Cosmos DB](introduction.md) je hello globálně distribuované a více modelech databáze služby společnosti Microsoft. Můžete vytvořit a dotaz dokumentu, klíč/hodnota a databáze grafu, všechny z nich využívat hello globální distribuce a škálování vodorovných funkce jádrem hello Azure Cosmos DB. Azure Cosmos DB podporuje online zpracování úlohy graf (OLTP), které používají transakcí [Apache TinkerPop Gremlin](graph-introduction.md).
 
-[Spark](http://spark.apache.org/) je projekt Apache Software Foundation, který se zaměřuje na zpracování dat pro obecné účely online analytického zpracování (OLAP). Spark poskytuje hybridní v paměti nebo disk – na základě distribuovaná výpočetní model, který je podobný modelu Hadoop MapReduce. Apache Spark v cloudu můžete nasadit pomocí [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/).
+[Spark](http://spark.apache.org/) je projekt Apache Software Foundation, který se zaměřuje na zpracování dat pro obecné účely online analytického zpracování (OLAP). Spark poskytuje hybridní v paměti nebo disk – na základě distribuovaná výpočetní model, který je podobný toohello model Hadoop MapReduce. Apache Spark v cloudu hello můžete nasadit pomocí [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/).
 
-Kombinací Azure Cosmos DB a Spark můžete provádět úlohy OLTP a technologií OLAP při použití Gremlin. Tento úvodní článek ukazuje, jak ke spouštění dotazů Gremlin Azure Cosmos DB v clusteru Azure HDInsight Spark.
+Kombinací Azure Cosmos DB a Spark můžete provádět úlohy OLTP a technologií OLAP při použití Gremlin. Tento úvodní článek ukazuje, jak toorun Gremlin dotazy pro Azure Cosmos DB v clusteru Azure HDInsight Spark.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než budete moct tuto ukázku spustit, je potřeba splnit následující požadavky:
+Před spuštěním této ukázce, musíte mít hello následující požadavky:
 * Cluster Azure HDInsight Spark 2.0
 * JDK 1.8 + (Pokud nemáte JDK, spusťte `apt-get install default-jdk`.)
 * Maven (Pokud nemáte Maven, spusťte `apt-get install maven`.)
 * Předplatné Azure ([!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)])
 
-Informace o tom, jak nastavit clusteru Azure HDInsight Spark najdete v tématu [clusterů HDInsight zřizování](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md).
+Informace o tom najdete v části tooset do clusteru Azure HDInsight Spark, [clusterů HDInsight zřizování](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="create-an-azure-cosmos-db-database-account"></a>Vytvoření účtu Azure Cosmos DB databáze
 
-Nejprve vytvořte účet databáze s rozhraní Graph API následujícím způsobem:
+Nejprve vytvořte účet databáze s hello rozhraní Graph API pomocí tohoto postupu hello následující:
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -51,11 +51,11 @@ Nejprve vytvořte účet databáze s rozhraní Graph API následujícím způsob
 
 ## <a name="get-apache-tinkerpop"></a>Získat Apache TinkerPop
 
-Získáte Apache TinkerPop následujícím způsobem:
+Apache TinkerPop získáte pomocí tohoto postupu hello následující:
 
-1. Vzdálené k hlavního uzlu clusteru HDInsight `ssh tinkerpop3-cosmosdb-demo-ssh.azurehdinsight.net`.
+1. Vzdálené toohello hlavního uzlu clusteru HDInsight hello `ssh tinkerpop3-cosmosdb-demo-ssh.azurehdinsight.net`.
 
-2. Klonování TinkerPop3 zdrojový kód, ji vytvořit místně a nainstalujte ji do mezipaměti Maven.
+2. Klonování hello TinkerPop3 zdrojový kód, ji vytvořit místně a nainstalujte ji tooMaven mezipaměti.
 
     ```bash
     git clone https://github.com/apache/tinkerpop.git
@@ -63,11 +63,11 @@ Získáte Apache TinkerPop následujícím způsobem:
     mvn clean install
     ```
 
-3. Instalace modulu plug-in Gremlin Spark 
+3. Instalace modulu plug-in Spark Gremlin hello 
 
-    a. Instalace modulu plug-in se zpracovává souborem hroznového. Naplnění úložiště informace o hroznového, můžete si stáhnout modul plug-in a jeho závislé součásti. 
+    a. Instalace modulu plug-in hello Hello se zpracovává souborem hroznového. Naplnění hello úložiště informace hroznového tak může stahovat hello modulů plug-in a jeho závislosti. 
 
-      Vytvoření hroznového konfiguračního souboru, pokud není přítomen v `~/.groovy/grapeConfig.xml`. Použijte následující nastavení:
+      Vytvořit hello hroznového konfigurační soubor, pokud není přítomen v `~/.groovy/grapeConfig.xml`. Použijte hello následující nastavení:
 
     ```xml
     <ivysettings>
@@ -91,7 +91,7 @@ Získáte Apache TinkerPop následujícím způsobem:
 
     b. Spusťte konzolu Gremlin `bin/gremlin.sh`.
         
-    c. Instalace modulu plug-in Gremlin Spark s verzí 3.3.0-SNAPSHOT, který jste vytvořili v předchozích krocích:
+    c. Instalace modulu plug-in Spark Gremlin hello s verzí 3.3.0-SNAPSHOT, který jste vytvořili v předchozích krocích hello:
 
     ```bash
     $ bin/gremlin.sh
@@ -103,7 +103,7 @@ Získáte Apache TinkerPop následujícím způsobem:
     plugin activated: tinkerpop.utilities
     plugin activated: tinkerpop.tinkergraph
     gremlin> :install org.apache.tinkerpop spark-gremlin 3.3.0-SNAPSHOT
-    ==>loaded: [org.apache.tinkerpop, spark-gremlin, 3.3.0-SNAPSHOT] - restart the console to use [tinkerpop.spark]
+    ==>loaded: [org.apache.tinkerpop, spark-gremlin, 3.3.0-SNAPSHOT] - restart hello console toouse [tinkerpop.spark]
     gremlin> :q
     $ bin/gremlin.sh
 
@@ -117,17 +117,17 @@ Získáte Apache TinkerPop následujícím způsobem:
     ==>tinkerpop.spark activated
     ```
 
-4. Zkontrolujte, zda `Hadoop-Gremlin` se aktivuje s `:plugin list`. Zakázat tento modul plug-in, protože by mohl narušovat modulu plug-in Gremlin Spark `:plugin unuse tinkerpop.hadoop`.
+4. Zkontrolujte, zda toosee `Hadoop-Gremlin` se aktivuje s `:plugin list`. Tento modul plug-in, protože ho může narušovat hello Spark Gremlin modulu plug-in zakázat `:plugin unuse tinkerpop.hadoop`.
 
 ## <a name="prepare-tinkerpop3-dependencies"></a>Příprava TinkerPop3 závislosti
 
-Po TinkerPop3 jste vytvořili v předchozím kroku, tento proces také vyžádány všechny závislosti jar pro Spark a Hadoop v cílovém adresáři. Použijte JAR, které jsou předem nainstalované s HDI a vyžádá další závislosti pouze podle potřeby.
+Po TinkerPop3 jste vytvořili v předchozím kroku hello, proces hello také vyžádány všechny závislosti jar pro Spark a Hadoop v hello cílový adresář. Použijte hello JAR, které jsou předem nainstalované s HDI a vyžádá další závislosti pouze podle potřeby.
 
-1. Přejděte do adresáře Gremlin konzole cílové v `tinkerpop/gremlin-console/target/apache-tinkerpop-gremlin-console-3.3.0-SNAPSHOT-standalone`. 
+1. Přejděte toohello Gremlin konzole cílové adresář v `tinkerpop/gremlin-console/target/apache-tinkerpop-gremlin-console-3.3.0-SNAPSHOT-standalone`. 
 
-2. Přesunout všechny JAR pod `ext/` k `lib/`: `find ext/ -name '*.jar' -exec mv {} lib/ \;`.
+2. Přesunout všechny JAR pod `ext/` příliš`lib/`: `find ext/ -name '*.jar' -exec mv {} lib/ \;`.
 
-3. Odeberte všechny jar knihovny pod `lib/` které nejsou v následujícím seznamu:
+3. Odeberte všechny jar knihovny pod `lib/` , jsou hello není v následujícím seznamu:
 
     ```bash
     # TinkerPop3
@@ -174,13 +174,13 @@ Po TinkerPop3 jste vytvořili v předchozím kroku, tento proces také vyžádá
     xml-apis-1.3.04.jar                        
     ```
 
-## <a name="get-the-azure-cosmos-db-spark-connector"></a>Získat konektor Azure Cosmos DB Spark
+## <a name="get-hello-azure-cosmos-db-spark-connector"></a>Získat konektor Azure Cosmos DB Spark hello
 
-1. Získat konektor Azure Cosmos DB Spark `azure-documentdb-spark-0.0.3-SNAPSHOT.jar` a Cosmos DB Java SDK `azure-documentdb-1.10.0.jar` z [konektoru služby Azure DB Spark Cosmos na Githubu](https://github.com/Azure/azure-cosmosdb-spark/tree/master/releases/azure-cosmosdb-spark-0.0.3_2.0.2_2.11).
+1. Získat konektor Azure Cosmos DB Spark hello `azure-documentdb-spark-0.0.3-SNAPSHOT.jar` a Cosmos DB Java SDK `azure-documentdb-1.10.0.jar` z [konektoru služby Azure DB Spark Cosmos na Githubu](https://github.com/Azure/azure-cosmosdb-spark/tree/master/releases/azure-cosmosdb-spark-0.0.3_2.0.2_2.11).
 
-2. Alternativně můžete vytvořit ho místně. Protože nejnovější verzi Spark Gremlin byl sestaven s Spark 1.6.1 a není kompatibilní s Spark bodu 2.0.2, který je aktuálně používán konektor Azure Cosmos DB Spark, můžete sestavit kód nejnovější TinkerPop3 a nainstalujte JAR ručně. Udělejte toto:
+2. Alternativně můžete vytvořit ho místně. Protože hello nejnovější verzi Spark Gremlin byl sestaven s Spark 1.6.1 a není kompatibilní s Spark bodu 2.0.2, který je aktuálně používán hello Azure Cosmos DB Spark konektor, můžete sestavit hello nejnovější TinkerPop3 kód a hello JAR nainstalovat ručně. Hello následující:
 
-    a. Klonování konektor Azure Cosmos DB Spark.
+    a. Klonování konektor Azure Cosmos DB Spark hello.
 
     b. Sestavení TinkerPop3 (neudělali v předchozích krocích). Nainstalujte všechny TinkerPop 3.3.0-SNAPSHOT JAR místně.
 
@@ -193,9 +193,9 @@ Po TinkerPop3 jste vytvořili v předchozím kroku, tento proces také vyžádá
     mvn install:install-file -Dfile="tinkergraph-gremlin-3.3.0-SNAPSHOT.jar" -DgroupId=org.apache.tinkerpop -DartifactId=tinkergraph-gremlin -Dversion=3.3.0-SNAPSHOT -Dpackaging=jar`
     ```
 
-    c. Aktualizace `tinkerpop.version` `azure-documentdb-spark/pom.xml` k `3.3.0-SNAPSHOT`.
+    c. Aktualizace `tinkerpop.version` `azure-documentdb-spark/pom.xml` příliš`3.3.0-SNAPSHOT`.
     
-    d. Sestavení s Maven. Potřebné JAR jsou umístěny v `target` a `target/alternateLocation`.
+    d. Sestavení s Maven. Hello potřebné JAR jsou umístěny v `target` a `target/alternateLocation`.
 
     ```bash
     git clone https://github.com/Azure/azure-cosmosdb-spark.git
@@ -203,7 +203,7 @@ Po TinkerPop3 jste vytvořili v předchozím kroku, tento proces také vyžádá
     mvn clean package
     ```
 
-3. Zkopírujte dříve uvedených JAR do místního adresáře v ~ / azure-documentdb-spark:
+3. Kopírování hello už jsme zmínili JAR tooa místní adresář v ~ / azure-documentdb-spark:
 
     ```bash
     $ azure-documentdb-spark:
@@ -212,22 +212,22 @@ Po TinkerPop3 jste vytvořili v předchozím kroku, tento proces také vyžádá
     cp target/alternateLocation/azure-documentdb-1.10.0.jar ~/azure-documentdb-spark
     ```
 
-## <a name="distribute-the-dependencies-to-the-spark-worker-nodes"></a>Distribuovat závislosti k pracovním uzlům Spark 
+## <a name="distribute-hello-dependencies-toohello-spark-worker-nodes"></a>Distribuovat hello závislosti toohello Spark pracovní uzly 
 
-1. Protože transformaci dat grafu. závisí na TinkerPop3, je nutné distribuovat související závislosti pro všechny uzly pracovního procesu Spark.
+1. Protože hello transformaci dat grafu. závisí na TinkerPop3, je nutné distribuovat hello související závislosti tooall Spark pracovním uzlům.
 
-2. Zkopírujte dříve uvedených Gremlin závislosti, CosmosDB Spark konektor jar a CosmosDB Java SDK k pracovním uzlům následujícím způsobem:
+2. Kopírování hello výše Gremlin závislosti, hello jar konektor CosmosDB Spark a uzlů pracovního procesu toohello CosmosDB Java SDK pomocí tohoto postupu hello následující:
 
-    a. Zkopírujte všechny JAR do `~/azure-documentdb-spark`.
+    a. Kopírování všech souborů JAR hello do `~/azure-documentdb-spark`.
 
     ```bash
     $ /home/sshuser/tinkerpop/gremlin-console/target/apache-tinkerpop-gremlin-console-3.3.0-SNAPSHOT-standalone:
     cp lib/* ~/azure-documentdb-spark
     ```
 
-    b. Získání seznamu všechny uzly pracovního procesu Spark, které můžete najít na řídicím panelu Ambari v `Spark2 Clients` v seznamu `Spark2` oddílu.
+    b. Získání seznamu hello všechny uzly pracovního procesu Spark, které můžete najít na řídicím panelu Ambari v hello `Spark2 Clients` seznamu v hello `Spark2` části.
 
-    c. Zkopírujte tento adresář na všech uzlech.
+    c. Zkopírujte tento adresář tooeach hello uzlů.
 
     ```bash
     scp -r ~/azure-documentdb-spark sshuser@wn0-cosmos:/home/sshuser
@@ -235,19 +235,19 @@ Po TinkerPop3 jste vytvořili v předchozím kroku, tento proces také vyžádá
     ...
     ```
     
-## <a name="set-up-the-environment-variables"></a>Nastavení proměnných prostředí
+## <a name="set-up-hello-environment-variables"></a>Nastavení proměnných prostředí hello
 
-1. Najděte verzi softwaru HDP clusteru Spark. Je název adresáře v rámci `/usr/hdp/` (například 2.5.4.2-7).
+1. Najděte hello HDP verzi clusteru Spark hello. Je název adresáře hello pod `/usr/hdp/` (například 2.5.4.2-7).
 
-2. Nastavte hdp.version pro všechny uzly. Na řídicím panelu Ambari, přejděte na **YARN části** > **konfigurací** > **Upřesnit**, a poté proveďte následující: 
+2. Nastavte hdp.version pro všechny uzly. Ambari řídicím panelu přejděte příliš**YARN části** > **konfigurací** > **Upřesnit**a pak hello následující: 
  
-    a. V `Custom yarn-site`, přidejte novou vlastnost `hdp.version` s hodnotou verze softwaru HDP na hlavní uzel. 
+    a. V `Custom yarn-site`, přidejte novou vlastnost `hdp.version` s hodnotou hello verzí softwaru HDP hello na hlavní uzel hello. 
      
-    b. Uložte konfiguraci. Existují upozornění, které můžete ignorovat. 
+    b. Ukládání konfigurace hello. Existují upozornění, které můžete ignorovat. 
      
-    c. Restartujte služby YARN a Oozie jako ikony oznámení označují.
+    c. Restartujte služby YARN a Oozie hello jako ikony oznámení hello označují.
 
-3. Nastavte následující proměnné prostředí v hlavním uzlu (Nahraďte hodnoty podle potřeby):
+3. Sada hello následující proměnné prostředí v hello hlavního uzlu (nahraďte hello hodnoty podle potřeby):
 
     ```bash
     export HADOOP_GREMLIN_LIBS=/home/sshuser/tinkerpop/gremlin-console/target/apache-tinkerpop-gremlin-console-3.3.0-SNAPSHOT-standalone/ext/spark-gremlin/lib
@@ -256,9 +256,9 @@ Po TinkerPop3 jste vytvořili v předchozím kroku, tento proces také vyžádá
     export HADOOP_HOME=${HADOOP_HOME:-/usr/hdp/current/hadoop-client}
     ```
 
-## <a name="prepare-the-graph-configuration"></a>Příprava konfiguraci grafu
+## <a name="prepare-hello-graph-configuration"></a>Příprava hello grafu konfigurace
 
-1. Vytvoření konfiguračního souboru s Azure Cosmos DB parametry připojení a nastavení Spark a umístí jej na `tinkerpop/gremlin-console/target/apache-tinkerpop-gremlin-console-3.3.0-SNAPSHOT-standalone/conf/hadoop/gremlin-spark.properties`.
+1. Vytvoření konfiguračního souboru s hello Azure Cosmos DB parametry připojení a nastavení z Spark a umístí jej na `tinkerpop/gremlin-console/target/apache-tinkerpop-gremlin-console-3.3.0-SNAPSHOT-standalone/conf/hadoop/gremlin-spark.properties`.
 
     ```
     gremlin.graph=org.apache.tinkerpop.gremlin.hadoop.structure.HadoopGraph
@@ -278,7 +278,7 @@ Po TinkerPop3 jste vytvořili v předchozím kroku, tento proces také vyžádá
     spark.kryo.registrator=org.apache.tinkerpop.gremlin.spark.structure.io.gryo.GryoRegistrator
     gremlin.spark.persistContext=true
 
-    # Classpath for the driver and executors
+    # Classpath for hello driver and executors
     spark.driver.extraClassPath=/usr/hdp/current/spark2-client/jars/*:/home/sshuser/azure-documentdb-spark/*
     spark.executor.extraClassPath=/usr/hdp/current/spark2-client/jars/*:/home/sshuser/azure-documentdb-spark/*
     
@@ -294,9 +294,9 @@ Po TinkerPop3 jste vytvořili v předchozím kroku, tento proces také vyžádá
     spark.documentdb.preferredRegions=FILLIN
     ```
 
-2. Aktualizace `spark.driver.extraClassPath` a `spark.executor.extraClassPath` zahrnout do adresáře JAR distribuované v předchozím kroku, se v tomto případě `/home/sshuser/azure-documentdb-spark/*`.
+2. Aktualizace hello `spark.driver.extraClassPath` a `spark.executor.extraClassPath` tooinclude hello adresáře souborů JAR hello distribuované v předchozím kroku hello se v tomto případě `/home/sshuser/azure-documentdb-spark/*`.
 
-3. Zadejte následující podrobnosti pro Azure Cosmos DB:
+3. Zadejte následující podrobnosti pro Azure Cosmos DB hello:
 
     ```
     spark.documentdb.Endpoint=https://FILLIN.documents.azure.com:443/
@@ -307,10 +307,10 @@ Po TinkerPop3 jste vytvořili v předchozím kroku, tento proces také vyžádá
     #spark.documentdb.preferredRegions=West\ US;West\ US\ 2
     ```
    
-## <a name="load-the-tinkerpop-graph-and-save-it-to-azure-cosmos-db"></a>Načíst TinkerPop grafu a uložit ho do Azure Cosmos DB
-Abychom ukázali, jak se zachovat graf do Azure Cosmos databáze, tento příklad používá TinkerPop předdefinované TinkerPop moderní grafu. Graf je uložený ve formátu Kryo a je k dispozici v úložišti TinkerPop.
+## <a name="load-hello-tinkerpop-graph-and-save-it-tooazure-cosmos-db"></a>Načíst hello TinkerPop grafu a uložit ho tooAzure Cosmos DB
+toodemonstrate jak toopersist graf do Azure Cosmos databáze, tento příklad používá hello TinkerPop předdefinované TinkerPop moderní grafu. Graf Hello je uložený ve formátu Kryo a je součástí hello TinkerPop úložiště.
 
-1. Protože Gremlin je spuštěn v režimu YARN, je třeba zpřístupnit data grafu v systému souborů Hadoop. Použijte následující příkazy a aby byl adresář zkopírujte soubor místní grafu do ní. 
+1. Protože Gremlin je spuštěn v režimu YARN, je třeba zpřístupnit data grafu hello v hello systému souborů Hadoop. Použití hello následující příkazy toomake adresáře a kopírovat hello grafu místní soubor do ní. 
 
     ```bash
     $ tinkerpop:
@@ -318,16 +318,16 @@ Abychom ukázali, jak se zachovat graf do Azure Cosmos databáze, tento příkla
     hadoop fs -copyFromLocal ~/tinkerpop/data/tinkerpop-modern.kryo /graphData/tinkerpop-modern.kryo
     ```
 
-2. Dočasně aktualizovat `gremlin-spark.properties` soubor `GryoInputFormat` číst grafu. Taky jednat `inputLocation` jako adresář vytvoříte, jako v následujícím příkladu:
+2. Dočasně aktualizovat hello `gremlin-spark.properties` souboru toouse `GryoInputFormat` tooread hello grafu. Taky jednat `inputLocation` jako hello directory vytvoříte, stejně jako hello následující:
 
     ```
     gremlin.hadoop.graphReader=org.apache.tinkerpop.gremlin.hadoop.structure.io.gryo.GryoInputFormat
     gremlin.hadoop.inputLocation=/graphData/tinkerpop-modern.kryo
     ```
 
-3. Spusťte konzolu Gremlin a pak vytvořte následující kroky výpočtu pro uložení dat do nakonfigurované kolekce Cosmos databázi Azure:  
+3. Spusťte konzolu Gremlin a pak vytvořte hello následující výpočetní kroky toopersist data toohello nakonfigurované Azure Cosmos DB kolekci:  
 
-    a. Vytvoření grafu `graph = GraphFactory.open("conf/hadoop/gremlin-spark.properties")`.
+    a. Vytvoření grafu hello `graph = GraphFactory.open("conf/hadoop/gremlin-spark.properties")`.
 
     b. Použít SparkGraphComputer pro zápis `graph.compute(SparkGraphComputer.class).result(GraphComputer.ResultGraph.NEW).persist(GraphComputer.Persist.EDGES).program(TraversalVertexProgram.build().traversal(graph.traversal().withComputer(Computer.compute(SparkGraphComputer.class)),"gremlin-groovy","g.V()").create(graph)).submit().get()`.
 
@@ -346,25 +346,25 @@ Abychom ukázali, jak se zachovat graf do Azure Cosmos databáze, tento příkla
     ==>result[hadoopgraph[documentdbinputrdd->documentdboutputrdd],memory[size:1]]
     ```
 
-4. V Průzkumníku dat můžete ověřit, že data se k databázi Azure Cosmos jako trvalý.
+4. V Průzkumníku dat můžete ověřit, že tooAzure Cosmos DB jako trvalý, že hello data byla úspěšně.
 
-## <a name="load-the-graph-from-azure-cosmos-db-and-run-gremlin-queries"></a>Načtení grafu ze Azure Cosmos DB a spouštět dotazy Gremlin
+## <a name="load-hello-graph-from-azure-cosmos-db-and-run-gremlin-queries"></a>Načíst hello grafu z databáze Cosmos Azure a spouštět dotazy Gremlin
 
-1. Chcete-li načíst graf, upravte `gremlin-spark.properties` nastavit `graphReader` k `DocumentDBInputRDD`:
+1. Graf hello tooload, upravit `gremlin-spark.properties` tooset `graphReader` příliš`DocumentDBInputRDD`:
 
     ```
     gremlin.hadoop.graphReader=com.microsoft.azure.documentdb.spark.gremlin.DocumentDBInputRDD
     ```
 
-2. Načíst graf, procházet data a spouštět dotazy Gremlin ho následujícím způsobem:
+2. Načíst hello grafu, procházení hello data a spouštět dotazy Gremlin ho pomocí tohoto postupu hello následující:
 
-    a. Spusťte konzolu Gremlin `bin/gremlin.sh`.
+    a. Spustit hello Gremlin konzoly `bin/gremlin.sh`.
 
-    b. Vytvoření grafu s konfigurací `graph = GraphFactory.open('conf/hadoop/gremlin-spark.properties')`.
+    b. Vytvoření grafu hello s konfigurací hello `graph = GraphFactory.open('conf/hadoop/gremlin-spark.properties')`.
 
     c. Vytvoření grafu traversal s SparkGraphComputer `g = graph.traversal().withComputer(SparkGraphComputer)`.
 
-    d. Spusťte následující dotazy Gremlin grafu:
+    d. Spusťte následující dotazy grafu Gremlin hello:
 
     ```bash
     gremlin> graph = GraphFactory.open("conf/hadoop/gremlin-spark.properties")
@@ -397,11 +397,11 @@ Abychom ukázali, jak se zachovat graf do Azure Cosmos databáze, tento příkla
     ```
 
 > [!NOTE]
-> Pokud chcete zobrazit podrobnější protokolování, nastavte úroveň v protokolu `conf/log4j-console.properties` na podrobnější úrovni.
+> toosee podrobnější protokolování, nastavte úroveň protokolu hello `conf/log4j-console.properties` tooa podrobnější úrovni.
 >
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku úvodní jsme zjistili, jak pracovat s grafy kombinací Azure Cosmos DB a Spark.
+V tomto článku úvodní když jste se naučili jak grafech toowork s kombinací Azure Cosmos DB a Spark.
 
 > [!div class="nextstepaction"]

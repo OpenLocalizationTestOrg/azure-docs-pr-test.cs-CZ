@@ -1,6 +1,6 @@
 ---
-title: "Protokol integrace se službou Azure s protokoly auditu Azure Active Directory | Microsoft Docs"
-description: "Zjistěte, jak nainstalovat službu protokolu integrace se službou Azure a integrovat protokoly z protokolů auditu Azure"
+title: aaaAzure protokolu integrace s protokoly auditu Azure Active Directory | Microsoft Docs
+description: "Zjistěte, jak tooinstall hello Azure protokolu integrační služby a integraci protokoly z protokolů auditu Azure"
 services: security
 documentationcenter: na
 author: Barclayn
@@ -15,22 +15,22 @@ ums.workload: na
 ms.date: 08/08/2017
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 8a1295cc86057ed72940e774d0bd423d61142e31
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3ee8fa3b8b5e9bd33202e57ed5327cd8d3127f00
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Integrovat protokolů auditu Azure Active Directory
 
-Události auditování Azure Active Directory (Azure AD) pomáhá identifikovat privilegovaných akcí, které došlo k chybě v Azure Active Directory. Zobrazí typy událostí, které můžete sledovat kontrolou [události sestavy auditování Azure Active Directory](/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events.md).
+Události auditování Azure Active Directory (Azure AD) pomáhá identifikovat privilegovaných akcí, které došlo k chybě v Azure Active Directory. Zobrazí se hello typy událostí, které můžete sledovat kontrolou [události sestavy auditování Azure Active Directory](/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events.md).
 
 > [!NOTE]
-> Před provedením kroků v tomto článku, je nutné si [Začínáme](security-azure-log-integration-get-started.md) článek a dokončete existuje.
+> Před provedením hello kroky v tomto článku, je nutné si hello [Začínáme](security-azure-log-integration-get-started.md) článek a proveďte kroky hello existuje.
 
-## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Protokoly auditu kroky pro integraci služby Azure Active directory
+## <a name="steps-toointegrate-azure-active-directory-audit-logs"></a>Protokoly auditu Azure Active directory toointegrate kroky
 
-1. Otevřete příkazový řádek a spusťte tento příkaz:
+1. Otevřete příkazový řádek se hello a spusťte tento příkaz:
 
    ``cd c:\Program Files\Microsoft Azure Log Integration``
 
@@ -38,9 +38,9 @@ Události auditování Azure Active Directory (Azure AD) pomáhá identifikovat 
  
    ``azlog createazureid``
 
-   Tento příkaz zobrazí výzvu k přihlášení Azure. Příkaz vytvoří Azure Active Directory instančního objektu v klienty Azure AD, které jsou hostiteli předplatná Azure, ve kterých přihlášený uživatel je správce, spolusprávce nebo vlastníka. Příkaz se nezdaří, pokud je uživatel přihlášený pouze uživatel guest v klientovi Azure AD. Ověřování do Azure se provádí prostřednictvím služby Azure AD. Vytvoření objektu služby pro integraci protokolu Azure vytvoří Azure AD identity, který je přiřazen přístup ke čtení z předplatných Azure.
+   Tento příkaz zobrazí výzvu k přihlášení Azure. Hello příkaz potom vytvoří Azure Active Directory instančního objektu v Azure AD hello klientům hello předplatná Azure, ve které hello přihlášený uživatel je správce, spolusprávce nebo vlastníka tohoto hostitele. příkaz Hello se nezdaří, pokud je pouze uživatel guest v klientovi Azure AD hello hello přihlášeného uživatele. TooAzure ověřování se provádí prostřednictvím služby Azure AD. Vytvoření objektu služby pro integraci protokolu Azure vytvoří hello identit Azure AD, který je přiřazen přístup tooread z předplatných Azure.
 
-3. Spusťte následující příkaz k poskytování vaše ID klienta. Musíte být členem role Správce klientů ke spuštění příkazu.
+3. Spusťte následující příkaz tooprovide hello vaše ID klienta. Je nutné toobe členem hello klienta správce role toorun hello příkaz.
 
    ``Azlog.exe authorizedirectoryreader tenantId``
 
@@ -48,29 +48,29 @@ Události auditování Azure Active Directory (Azure AD) pomáhá identifikovat 
 
    ``AZLOG.exe authorizedirectoryreader ba2c0000-d24b-4f4e-92b1-48c4469999``
 
-4. Zkontrolujte následující složky pro potvrzení, že jsou v nich vytvořeny soubory JSON protokolů auditu Azure Active Directory:
+4. Zkontrolujte, že hello následující tooconfirm složky, která hello soubory JSON protokolu auditování Azure Active Directory jsou vytvořené v nich:
 
    * **C:\Users\azlog\AzureActiveDirectoryJson**
    * **C:\Users\azlog\AzureActiveDirectoryJsonLD**
 
-Následující video ukazuje kroky popsané v tomto článku:
+Hello toto video ukazuje hello kroky popsané v tomto článku:
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Log-Integration-Videos-Azure-AD-Integration/player]
 
 
 > [!NOTE]
-> Konkrétní pokyny k uvedení informací v souborech JSON do své informace o zabezpečení a událostí systému pro správu (SIEM) obraťte se na dodavatele systému SIEM.
+> Konkrétní pokyny k uvedení hello informace v souborech JSON hello do své informace o zabezpečení a událostí systému pro správu (SIEM) obraťte se na dodavatele systému SIEM.
 
-Komunita pomoc je k dispozici prostřednictvím [fórum MSDN integrace protokolu Azure](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration). Toto fórum umožňuje členové komunity protokolu integrace se službou Azure pro podporu navzájem otázky, odpovědi, tipy a triky. Kromě toho týmem protokolu integrace se službou Azure sleduje toto fórum a pomáhá vždy, když je to možné.
+Komunita pomoc je k dispozici prostřednictvím hello [fórum MSDN integrace protokolu Azure](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration). Toto fórum umožňuje lidem v toosupport komunity protokolu integrace se službou Azure hello navzájem otázky, odpovědi, tipy a triky. Kromě toho týmu Integrace protokolu Azure hello monitoruje Toto fórum a pomáhá vždy, když je to možné.
 
-Můžete také otevřít [žádost o podporu](../azure-supportability/how-to-create-azure-support-request.md). Vyberte **integrace protokolu** jako službu, pro kterou jsou žádosti o podporu.
+Můžete také otevřít [žádost o podporu](../azure-supportability/how-to-create-azure-support-request.md). Vyberte **integrace protokolu** jako hello služby, pro kterou jsou žádosti o podporu.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o integraci Azure protokolu najdete v tématu:
+toolearn Další informace o integraci Azure protokolu, najdete v části:
 
 * [Microsoft Azure protokolu integrace pro Azure protokoly](https://www.microsoft.com/download/details.aspx?id=53324): stránka tento stažení softwaru poskytuje podrobnosti, požadavky na systém a pokyny k integraci Azure protokolu.
-* [Úvod do integrace se službou Azure protokolu](security-azure-log-integration-overview.md): Tento článek vás seznámí s protokolu integrace se službou Azure, jejích klíčových funkcích a jak to funguje.
-* [Partner kroky konfigurace](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/): Tento příspěvek blogu ukazuje, jak nakonfigurovat integraci Azure protokolu pro práci s partnerských řešení Splunk, HP ArcSight a IBM QRadar.
+* [Úvod tooAzure integrace protokolu](security-azure-log-integration-overview.md): Tento článek představuje tooAzure integrace protokolu, jejích klíčových funkcích a jak to funguje.
+* [Partner kroky konfigurace](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/): Tento příspěvek blogu ukazuje, jak tooconfigure integrace se službou Azure protokolu toowork s partnerských řešení Splunk, HP ArcSight a IBM QRadar.
 * [Nejčastější dotazy k integraci Azure protokolu](security-azure-log-integration-faq.md): Tento článek obsahuje odpovědi na otázky týkající se integrace se službou Azure protokolu.
-* [Výstrahy Security Center integrování integrace se službou Azure protokolu](../security-center/security-center-integrating-alerts-with-log-integration.md): v tomto článku se dozvíte, jak synchronizovat výstrahy Security Center, společně s zabezpečení virtuálního počítače shromažďovány události pomocí diagnostiky Azure a Azure auditu protokoly s vaší analýzy protokolů nebo Řešení SIEM.
-* [Protokoly auditu nové funkce pro diagnostiky Azure a Azure](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): Tento příspěvek blogu vás seznámí s protokoly auditu Azure a další funkce, které vám pomůžou získat přehled o činnosti vašich prostředků Azure.
+* [Výstrahy Security Center integrování integrace se službou Azure protokolu](../security-center/security-center-integrating-alerts-with-log-integration.md): Tento článek ukazuje, jak toosync Security Center výstrahy, společně s shromážděných pomocí diagnostiky Azure a protokoly auditu Azure, s vaší analýzy protokolů událostí zabezpečení virtuálního počítače nebo Řešení SIEM.
+* [Protokoly auditu nové funkce pro diagnostiky Azure a Azure](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): Tento příspěvek blogu vás seznámí tooAzure protokoly auditu a další funkce, které vám pomohou analyzovat hello operations vašich prostředků Azure.

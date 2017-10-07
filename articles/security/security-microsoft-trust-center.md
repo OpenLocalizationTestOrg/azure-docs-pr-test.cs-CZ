@@ -1,6 +1,6 @@
 ---
-title: "Informace o zabezpečení Microsoft Trust Center a Azure | Microsoft Docs"
-description: "V centru Microsoft Trust poskytuje informace, že budete muset být jisti, že je zabezpečený platformy Azure, na kterém jste spustili vašim službám."
+title: "Centrum zabezpečení a Azure informace o zabezpečení aaaMicrosoft | Microsoft Docs"
+description: "Hello Microsoft Trust center nabízí hello informace, které potřebujete toobe jisti, že hello Azure je zabezpečený platformy, na kterém jste spustili vašim službám."
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
-ms.openlocfilehash: a8835da0947ce2a365b57356960541cb997e73b3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3710ad820699045b7c1d3af6739c3bdf1a3d36e7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoft-trust-center"></a>Centrum zabezpečení Microsoftu
-Informace o zabezpečení Azure lokality na Azure.com obsahuje informace, budete potřebovat k plánování, návrh, nasazení, konfigurovat a spravovat řešení cloudové bezpečně. Ve službě Microsoft Trust center máte také informace, které musíte být jisti, že je zabezpečený platformy Azure, na kterém jste spustili vašim službám.
+poskytuje informace o zabezpečení Azure lokality Hello na Azure.com hello informace, které potřebujete tooplan, návrhu, nasazení, konfigurace a bezpečně spravovat vaše cloudové řešení. S hello Microsoft Trust center, můžete si taky hello informace, které potřebujete toobe jisti, že hello Azure je zabezpečený platformy, na kterém jste spustili vašim službám.
 
-Víme, že když svěřit aplikace a data do Azure, budete mít dotazy. Kde je? Kdo k němu přístup? Co je Microsoft probíhá chránit? Jak můžete ověřit, Microsoft je to, že se říká?
+Víme, že pokud jste svěřit vaše aplikace a data tooAzure, budete toohave otázky. Kde je? Kdo k němu přístup? Co je Microsoft provádění tooprotect ho? Jak můžete ověřit, Microsoft je to, že se říká?
 
-A máme odpovědi. Vzhledem k tomu, že je vaše data, můžete rozhodnout, kdo má přístup a pracovat s námi spolupracovat a rozhodnout, kde se nachází. K zabezpečení dat, použijeme špičkových kryptografie a technologie zabezpečení stavu techniky. Naše dodržování předpisů je auditováno nezávisle a máme transparentní na mnoho úrovní – z jak budeme pracovat s právní požadavky pro vaše zákaznické údaje zabezpečení kódu.
+A máme odpovědi. Vzhledem k tomu, že je vaše data, můžete rozhodnout, kdo má přístup a práci s námi toodecide tam, kde je umístěn. toosafeguard vašich dat používáme špičkových kryptografie a technologie zabezpečení stavu techniky. Naše dodržování předpisů je auditováno nezávisle a máme transparentní na mnoho úrovní – z jak budeme pracovat s právní požadavky pro zabezpečení vašeho zákazníka data toohello kódu.
 
-Tady je najít v Microsoft Trust Center:
+Tady je najít v hello Microsoft Trust Center:
 
-* [Zabezpečení](https://aka.ms/tcsecurity) – Další informace jak jsou zabezpečené všech Microsoft cloudových služeb.
-* [Ochrana osobních údajů](https://aka.ms/tcprivacy) – pochopit, jak Microsoft zajišťuje ochranu osobních údajů vaše Data v cloudu Microsoftu.
-* [Dodržování předpisů](https://aka.ms/tccompliance) – zjistit, jak Microsoft pomáhá organizacím, které vyhovují požadavkům national, místní a průmyslové řídících shromažďování a používání dat fyzických osob.
-* [Průhlednost](https://aka.ms/tctransparency) – zobrazit, jak společnost Microsoft domnívá, kterou řídíte, aby vaše data v cloudu a jak budete vědět, co nejvíce o zpracování dat pomáhá společnosti Microsoft.
-* [Produkty a služby](https://aka.ms/tcproductsservices) – zobrazit všechny produkty Microsoft Cloud a služeb na jednom místě.
+* [Zabezpečení](https://aka.ms/tcsecurity) – Další informace jak všechny hello Microsoft Cloud services jsou zabezpečené.
+* [Ochrana osobních údajů](https://aka.ms/tcprivacy) – pochopit, jak Microsoft zajišťuje ochranu osobních údajů vaše Data v cloudu Microsoft hello.
+* [Dodržování předpisů](https://aka.ms/tccompliance) – zjistit, jak Microsoft pomáhá organizacím, které vyhovují požadavkům national, místní a průmyslové řídících hello shromažďování a používání dat fyzických osob.
+* [Průhlednost](https://aka.ms/tctransparency) – zobrazení, jak společnost Microsoft domnívá, kterou řídíte, aby vaše data v hello cloudu a jak budete vědět, co nejvíce o zpracování dat pomáhá společnosti Microsoft.
+* [Produkty a služby](https://aka.ms/tcproductsservices) – zobrazit všechny hello Microsoft Cloud produktů a služeb na jednom místě.
 * [Portál pro vztah důvěryhodnosti služby](https://aka.ms/tcservicetrportal) – získat kopie nezávislé auditu sestavy Microsoft cloudových služeb, hodnocení rizik zabezpečení osvědčené postupy a související materiály.
 * [Co je nového](https://aka.ms/tcwhatsnew) – zjistěte, co je nového v Microsoft cloudu důvěryhodnosti
 * [Prostředky](https://aka.ms/tcresources) – zjistěte, dokumenty white paper, videa a případové studie na důvěryhodné cloudu Microsoftu
 
-[Microsoft Trust Center](https://www.microsoft.com/trustcenter) má, co je potřeba pochopit, co můžeme udělat pro zabezpečení cloudu Microsoftu.
+Hello [Microsoft Trust Center](https://www.microsoft.com/trustcenter) má co potřebujete, aby toounderstand co provedeme toosecure hello Microsoft Cloud.

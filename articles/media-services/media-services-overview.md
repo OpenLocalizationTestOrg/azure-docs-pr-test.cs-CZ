@@ -1,5 +1,5 @@
 ---
-title: "Přehled služby Azure Media Services | Dokumentace Microsoftu"
+title: "Přehled služby Media Services aaaAzure | Microsoft Docs"
 description: "Toto téma nabízí přehled Azure Media Services."
 services: media-services
 documentationcenter: 
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 07/04/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 2a175aed40b9775d9a4de6877eb3467b43819568
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 81f9f4d9ff75effea30c10fd09449e9d2025f377
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-media-services-overview"></a>Přehled služby Azure Media Services 
 
-Microsoft Azure Media Services je rozšiřitelná cloudová platforma, která vývojářům umožňuje vytvářet škálovatelné aplikace pro správu a doručování médií. Služba Media Services využívá rozhraní REST API, které vám umožní bezpečně nahrávat, ukládat, kódovat a balit obsah (video nebo zvuk) doručovaný na vyžádání i v živě streamovaný různým klientům (například do televizí, počítačů a mobilních zařízení).
+Microsoft Azure Media Services je rozšiřitelná platforma založená na cloudu, která umožňuje vývojářům toobuild škálovatelné média správu a doručování aplikacím. Služba Media Services je založena na rozhraní REST API, která umožňují toosecurely nahrávání, ukládání, kódování a video nebo zvuk obsah balíčku pro vysílání na vyžádání i živé streamování doručení toovarious klienty (například TV, počítače a mobilní zařízení).
 
-Pomocí Media Services můžete vytvářet pracovní postupy od začátku až do konce. V některých částech pracovního postupu můžete použít komponenty třetích stran. Můžete například kódovat pomocí kodéru třetí strany. Potom obsah nahrajete, zabezpečíte, zabalíte a doručíte pomocí služby Media Services.
+Pomocí Media Services můžete vytvářet pracovní postupy od začátku až do konce. Můžete také toouse komponenty třetích stran pro některé části pracovního postupu. Můžete například kódovat pomocí kodéru třetí strany. Potom obsah nahrajete, zabezpečíte, zabalíte a doručíte pomocí služby Media Services.
 
-Svůj obsah můžete streamovat živě nebo doručovat na vyžádání. Téma obsahuje i odkazy na další související témata.
+Můžete vybrat toostream obsah za provozu nebo doručování obsahu na vyžádání. Hello téma obsahuje i odkazy tooother související témata.
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 Mapu kurzů k AMS můžete zobrazit tady:
@@ -36,25 +36,25 @@ Mapu kurzů k AMS můžete zobrazit tady:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete začít používat Azure Media Services, potřebujete následující:
+toostart využívající Azure Media Services, měli byste mít hello následující:
 
 * Účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com).
 * Účet Azure Media Services. Další informace najdete v článku o [vytvoření účtu](media-services-portal-create-account.md).
 * (Volitelné) Nastavte vývojové prostředí. Jako vývojové prostředí si zvolte .NET nebo REST API. Další informace najdete v článku o [nastavení prostředí](media-services-dotnet-how-to-use.md).
 
-    Seznamte se také s postupem [připojení prostřednictvím kódu programu k rozhraní API pro AMS](media-services-use-aad-auth-to-access-ams-api.md).
+    Také zjistěte, jak příliš[připojení prostřednictvím kódu programu tooAMS rozhraní API](media-services-use-aad-auth-to-access-ams-api.md).
 * Koncový bod streamování Standard nebo Premium ve spuštěném stavu.  Další informace najdete v článku o [správě koncových bodů streamování](media-services-portal-manage-streaming-endpoints.md).
 
 ## <a name="sdks-and-tools"></a>Sady SDK a nástroje
 
-Pokud chcete vytvořit řešení Media Services, můžete použít následující pomůcky:
+toobuild řešení Media Services, můžete:
 
 * [Rozhraní REST API služby Media Services](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
-* Jednu z dostupných klientských sad SDK:
+* Jeden z dostupných klientů hello sady SDK:
     * [Azure Media Services SDK pro .NET](https://github.com/Azure/azure-sdk-for-media-services),
     * [Azure SDK pro Javu](https://github.com/Azure/azure-sdk-for-java),
     * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php),
-    * [Azure Media Services pro Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (Jedná se o verzi sady SDK, kterou nevytvořil Microsoft. Spravuje ji komunita a aktuálně nemá 100% pokrytí rozhraní API pro AMS.)
+    * [Azure Media Services pro Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (Jedná se o verzi sady SDK, kterou nevytvořil Microsoft. Ho je možný díky komunita a aktuálně nemá 100 % pokrytí rozhraní API pro AMS hello).
 * Existující nástroje:
     * [Azure Portal](https://portal.azure.com/)
     * [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Azure Media Services Explorer (AMSE) je aplikace napsaná v jazyce Winforms/C# pro Windows.)
@@ -62,7 +62,7 @@ Pokud chcete vytvořit řešení Media Services, můžete použít následujíc�
 ## <a name="concepts-and-overview"></a>Koncepty a přehled
 Informace o konceptech Azure Media Services najdete v článku [Koncepty](media-services-concepts.md).
 
-Řada návodů, které vás seznámí se všemi hlavními součástmi Azure Media Services, najdete v článku o [podrobných kurzech pro Azure Media Services](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series). Tato řada návodů obsahuje přehled konceptů a využívá nástroj AMSE k předvádění úloh AMS. Nástroj AMSE je nástrojem systému Windows. Tento nástroj podporuje většinu úloh, které můžete provádět prostřednictvím kódu programu se sadami [AMS SDK pro .NET](https://github.com/Azure/azure-sdk-for-media-services), [Azure SDK pro Javu](https://github.com/Azure/azure-sdk-for-java), nebo  [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php).
+Jak – tooseries vás seznámí s tooall hello hlavními součástmi Azure Media Services, najdete v části [Azure Media Services podrobných kurzech](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series). Tato návody obsahují skvělý Přehled konceptů a používá úlohy toodemonstrate AMS nástroj AMSE hello. Nástroj AMSE je nástrojem systému Windows. Tento nástroj podporuje většinu úloh hello můžete dosáhnout prostřednictvím kódu programu s [AMS SDK pro .NET](https://github.com/Azure/azure-sdk-for-media-services), [Azure SDK pro jazyk Java](https://github.com/Azure/azure-sdk-for-java), nebo [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php).
 
 ## <a name="supported-scenarios-and-availability-of-media-services-across-data-centers"></a>Podporované scénáře a dostupnost služby Media Services v datových centrech
 
@@ -72,13 +72,13 @@ Podrobné informace najdete v tématu [Scénáře a dostupnost funkcí a služeb
 
 * V případě služby Media Services Encoding zaručujeme 99,9% dostupnosti transakcí REST API.
 * V případě streamování budeme úspěšně obsluhovat požadavky se zárukou 99,9% dostupnosti pro existující mediální obsah, pokud jste zakoupili koncový bod streamování Standard nebo Premium.
-* V případě živých kanálů zaručujeme externí konektivitu minimálně po 99,9 % času.
-* V případě Content Protection zaručujeme úspěšné plnění klíčových požadavků minimálně po 99,9 % času.
-* V případě indexeru po 99,9 % času úspěšně obsluhujeme požadavky úloh indexeru, které zpracovává jednotka rezervovaná pro kódování.
+* Živých kanálů Zaručujeme, že spuštění kanály bude mít externí konektivitu minimálně 99,9 % času hello.
+* V případě Content Protection Zaručujeme, že jsme bude úspěšné plnění klíčových požadavků minimálně 99,9 % času hello.
+* Pro Indexer, úspěšně obsluhujeme požadavky úloh indexeru zpracovat rezervovaná pro kódování jednotky 99,9 % času hello.
 
 Další informace najdete v článku [Microsoft Azure SLA](https://azure.microsoft.com/support/legal/sla/).
 
-Informace o dostupnosti v datových centrech najdete v části [Dostupnost](scenarios-and-availability.md#availability).
+Informace o dostupnosti v datových centrech najdete v tématu hello [Avaiability](scenarios-and-availability.md#availability) části.
 
 ## <a name="support"></a>Podpora
 

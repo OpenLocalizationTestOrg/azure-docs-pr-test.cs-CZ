@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB .NET základní rozhraní API, sadu SDK a prostředky | Microsoft Docs"
-description: "Další informace o rozhraní API .NET Core a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi Cosmos DB .NET SDK služby Azure jádra."
+title: "aaaAzure Cosmos DB .NET Core API, sadu SDK a prostředky | Microsoft Docs"
+description: "Další informace o hello .NET Core API a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi hello Azure Cosmos DB .NET Core SDK."
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a7ce4d771e9c655687f72f4b46c7405cf64aeb74
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 1269cafe0ea1caaa871404d507b12632dbb3ed82
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cosmos-db-net-core-sdk-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK: Poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ ms.lasthandoff: 08/18/2017
 
 <tr><td>**Ukázky**</td><td>[Ukázky kódu rozhraní .NET](documentdb-dotnet-samples.md)</td></tr>
 
-<tr><td>**Začínáme**</td><td>[Začínáme s Azure Cosmos DB .NET Core SDK](documentdb-dotnetcore-get-started.md)</td></tr>
+<tr><td>**Začínáme**</td><td>[Začínáme s Azure Cosmos DB .NET Core SDK hello](documentdb-dotnetcore-get-started.md)</td></tr>
 
 <tr><td>**Kurz vývoje webové aplikace**</td><td>[Vývoj webových aplikací s Azure Cosmos DB](documentdb-dotnet-application.md)</td></tr>
 
@@ -52,19 +52,19 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
-Cosmos DB .NET SDK služby Azure základní má parity funkcí s nejnovější verzi [.NET SDK služby Azure Cosmos DB](documentdb-sdk-dotnet.md).
+Hello Azure Cosmos DB .NET Core SDK má parity funkcí s nejnovější verzí hello hello [.NET SDK služby Azure Cosmos DB](documentdb-sdk-dotnet.md).
 
 > [!NOTE] 
-> Cosmos DB .NET SDK služby Azure jádra není kompatibilní s aplikací pro univerzální platformu Windows (UWP). Pokud vás zajímá .NET Core SDK, který podporuje aplikace UWP odeslat e-mailu [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com).
+> Hello Azure Cosmos DB .NET Core SDK ještě není kompatibilní s aplikací pro univerzální platformu Windows (UWP). Pokud vás zajímá hello .NET Core SDK, který podporuje aplikace UWP odeslání e-mailu příliš[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com).
 
 ### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0 
 
-* Přidaná podpora pro PartitionKeyRangeId jako FeedOption pro vymezení výsledky dotazu a hodnotu klíče rozsahu konkrétního oddílu. 
-* Přidaná podpora pro StartTime jako ChangeFeedOption zahájíte hledá změny po uplynutí této doby. 
+* Přidaná podpora pro PartitionKeyRangeId jako FeedOption pro vymezení hodnotu klíče rozsahu konkrétního oddílu tooa výsledky dotazu. 
+* Přidaná podpora pro StartTime jako ChangeFeedOption toostart, hledá změny hello po uplynutí této doby. 
 
 ### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
 
-*   Byl opraven problém ve třídě JsonSerializable, která může způsobit výjimce přetečení zásobníku.
+*   Byl opraven problém v hello JsonSerializable třídu, která může způsobit výjimce přetečení zásobníku.
 
 ### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
 
@@ -72,7 +72,7 @@ Cosmos DB .NET SDK služby Azure základní má parity funkcí s nejnovější v
 
 ### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
 
-*   Podpora rozhraní .NET standardní 1.5 jako jeden z cílové architektury.
+*   Podpora rozhraní .NET standardní 1.5 jako jeden z hello cílové rozhraní.
 
 ### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
 
@@ -82,55 +82,55 @@ Cosmos DB .NET SDK služby Azure základní má parity funkcí s nejnovější v
 
 *   Přidaná podpora pro novou úroveň konzistence volá ConsistentPrefix.
 *   Přidaná podpora pro dotaz metriky pro jednotlivé oddíly.
-*   Přidaná podpora pro omezení velikosti token pokračování pro dotazy.
+*   Přidaná podpora pro omezení velikosti hello hello token pokračování pro dotazy.
 *   Přidaná podpora pro podrobnější trasování pro chybné žádosti.
-*   Provedli jsme některé vylepšení výkonu v sadě SDK.
+*   Provádí některé vylepšení výkonu v hello SDK.
 
 ### <a name="a-name122122"></a><a name="1.2.2"/>1.2.2
 
-* Opravit problém, který ignoruje PartitionKey hodnota zadaná v FeedOptions pro agregační dotazy.
+* Opravit problém, který ignoruje hello PartitionKey hodnota zadaná v FeedOptions pro agregační dotazy.
 * Byl opraven problém v transparentní zpracování oddílu správy během letu střední cross-partition Order By dotazu provádění.
 
 ### <a name="a-name121121"></a><a name="1.2.1"/>1.2.1
 
-* Byl opraven problém, který chybu způsobil zablokování v některých asynchronní rozhraní API, pokud se používá v kontextu ASP.NET.
+* Byl opraven problém, který chybu způsobil zablokování v některých hello asynchronní rozhraní API, pokud se používá v kontextu ASP.NET.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 
-* Opravy aby SDK pružnější automatické převzetí služeb při selhání za určitých podmínek.
+* Opravy toomake SDK více odolné tooautomatic převzetí služeb při selhání za určitých podmínek.
 
 ### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
-* Opravte pro problém způsobující příležitostně o výjimku WebException: vzdálený název nelze rozpoznat.
-* Přidaná podpora pro přímo čtení typu dokumentu přidáním nové přetížení ReadDocumentAsync rozhraní API.
+* Opravte pro problém způsobující příležitostně o výjimku WebException: hello vzdálený název nelze rozpoznat.
+* Přidání hello podporu pro přímo čtení typu dokumentu přidáním nové rozhraní API tooReadDocumentAsync přetížení.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
 
 * Byla přidána podpora LINQ pro dotazy agregace (COUNT, MIN, MAX, součet a průměr).
-* Opravte pro problém nevracení paměti pro objekt ConnectionPolicy způsobené použití obslužné rutiny události.
+* Opravte pro problém nevracení paměti pro objekt ConnectionPolicy hello způsobené hello použití obslužné rutiny události.
 * Oprava problému, ve kterém nebyl UpsertAttachmentAsync pracovat, když byla použita značka ETag.
 * Oprava problému, ve kterém nebyl křížové oddílu klauzule order by dotazu pokračování práce při řazení na pole řetězce.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 
 * Přidaná podpora pro dotazy agregace (COUNT, MIN, MAX, součet a průměr). V tématu [podporu agregace](documentdb-sql-query.md#Aggregates).
-* Snížena minimální propustnosti na dělené kolekce z 10,100 RU/s na 2 500 RU/s.
+* Snížena minimální propustnosti na dělené kolekce z 10,100 RU/s too2500 RU/s.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 
-Azure Cosmos DB .NET Core SDK umožňuje vytvářet rychlé a napříč platformami [ASP.NET Core](https://www.asp.net/core) a [.NET Core](https://www.microsoft.com/net/core#windows) aplikace běžely na Windows, Mac a Linux. Nejnovější verzi Azure Cosmos DB .NET Core SDK je plně [Xamarin](https://www.xamarin.com) kompatibilní a umožňuje vytvářet aplikace, které cílí na iOS, Android a Mono (Linux).  
+Hello Azure Cosmos DB .NET Core SDK vám umožní toobuild rychlá napříč platformami [ASP.NET Core](https://www.asp.net/core) a [.NET Core](https://www.microsoft.com/net/core#windows) toorun aplikace v systému Windows, Mac a Linux. Hello nejnovější verzi hello Azure Cosmos DB .NET Core SDK je plně [Xamarin](https://www.xamarin.com) kompatibilní a použít toobuild aplikacemi, které cílí na iOS, Android a Mono (Linux).  
 
 ### <a name="a-name010-preview010-preview"></a><a name="0.1.0-preview"/>0.1.0-Preview
 
-Azure Cosmos DB .NET Core Preview SDK umožňuje vytvářet rychlé a napříč platformami [ASP.NET Core](https://www.asp.net/core) a [.NET Core](https://www.microsoft.com/net/core#windows) aplikace běžely na Windows, Mac a Linux.
+Hello Azure Cosmos DB .NET Core Preview SDK vám umožní toobuild rychlá napříč platformami [ASP.NET Core](https://www.asp.net/core) a [.NET Core](https://www.microsoft.com/net/core#windows) toorun aplikace v systému Windows, Mac a Linux.
 
-Cosmos DB .NET SDK služby Azure základní Preview má parity funkcí s nejnovější verzi [.NET SDK služby Azure Cosmos DB](documentdb-sdk-dotnet.md) a podporuje následující:
+Hello Azure Cosmos DB .NET Core Preview SDK má parity funkcí s nejnovější verzí hello hello [.NET SDK služby Azure Cosmos DB](documentdb-sdk-dotnet.md) a podporuje následující hello:
 * Všechny [připojení režimy](performance-tips.md#networking): režim brány, přímé TCP a přímé HTTPs. 
 * Všechny [úrovně konzistence](consistency-levels.md): silným, relace, typu s ohraničenou Prošlostí a Eventual.
 * [Oddíly kolekce](partition-data.md). 
 * [Účty databáze více oblasti a geografická replikace](distribute-data-globally.md).
 
-Pokud máte otázky související s touto sadou SDK, odeslání na [StackOverflow](http://stackoverflow.com/questions/tagged/azure-documentdb), nebo problém v souboru [úložiště github](https://github.com/Azure/azure-documentdb-dotnet/issues). 
+Pokud máte otázky související toothis SDK, post příliš[StackOverflow](http://stackoverflow.com/questions/tagged/azure-documentdb), nebo soubor problém v hello [úložiště github](https://github.com/Azure/azure-documentdb-dotnet/issues). 
 
 ## <a name="release--retirement-dates"></a>Verze & vyřazení kalendářních dat
 
@@ -152,5 +152,5 @@ Pokud máte otázky související s touto sadou SDK, odeslání na [StackOverflo
 | [0.1.0-Preview](#0.1.0-preview) |15. listopadu 2016 |31. prosinci 2016 |
 
 ## <a name="see-also"></a>Viz také
-Další informace o Cosmos DB najdete v tématu [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stránku služby. 
+toolearn Další informace o Cosmos databáze, najdete v části [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stránku služby. 
 

@@ -1,6 +1,6 @@
 ---
 title: "Infografice: Základy learning - algoritmus příklady počítač | Microsoft Docs"
-description: "Přehled snadno pochopit základy machine learning obsahuje příklady algoritmus. Zaváděná infografice popisuje většina strojového učení otázky."
+description: "Přehled snadno pochopit základy machine learning obsahuje příklady algoritmus. zaváděná infografice Hello popisuje většina strojového učení otázky."
 keywords: "Machine learning základy, příklady algoritmus strojového učení pro začátečníky, machine learning otázky, oblíbených algoritmy, infografice algoritmus"
 services: machine-learning
 documentationcenter: 
@@ -15,29 +15,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: garye
-ms.openlocfilehash: 03d5b53f63fddb95f369e2673f4c3430d50d6614
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a703021454fde76f770b2f6c8420b9ba2488d768
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Infografika ke stažení: Základy služby Machine Learning s příklady algoritmů
-Stáhněte si tento snadno pochopit infografice přehled nástroje machine learning základní informace o další informace o oblíbených algoritmy používané k odpovědi na časté otázky machine learning. Příklady algoritmus pomoct pochopit, jaké algoritmy mají být použity a co se používají pro začátečníka machine learning.
+Stáhněte si tento přehled snadno pochopit infografice strojového učení toolearn základní informace o oblíbených algoritmy používané tooanswer běžné otázky strojové učení. Příklady algoritmus pomoci hello machine learning Začátečník pochopit, jaké toouse algoritmy a co se používají pro.
 
 ## <a name="popular-algorithms-in-machine-learning-studio"></a>Oblíbené algoritmy v Machine Learning Studio
-[Azure Machine Learning Studio](https://studio.azureml.net/) se dodává s velké knihovny algoritmů prediktivní analýzy. Infografice identifikuje čtyři oblíbených rodiny algoritmů - regrese, detekce anomálií, clustering a klasifikace - a poskytuje odkazy na příklady práci v [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/). Galerie obsahuje příklad experimentů a návodů, které ukazují, jak tyto algoritmy lze použít mnoho skutečná řešení.
+[Azure Machine Learning Studio](https://studio.azureml.net/) se dodává s velké knihovny algoritmů prediktivní analýzy. Hello infografice identifikuje čtyři oblíbených rodiny algoritmů - regrese, detekce anomálií, clustering a klasifikace - a poskytuje odkazy tooworking příklady v [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/). Hello galerie obsahuje příklad experimentů a návodů, které ukazují, jak tyto algoritmy lze použít mnoho skutečná řešení.
 
-## <a name="download-the-infographic-with-algorithm-examples"></a>Stáhněte si infografice s příklady algoritmus
-**[Stáhnout: Infografice nástroje machine learning základy s odkazy na příklady algoritmus (PDF)](http://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
+## <a name="download-hello-infographic-with-algorithm-examples"></a>Stáhnout hello infografice s příklady algoritmus
+**[Stáhnout: Infografice nástroje machine learning základy s příklady tooalgorithm odkazy (PDF)](http://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
 ![Infografice: Strojového učení základy s příklady algoritmus. Oblíbené algoritmy. Strojového učení pro začátečníky.](./media/machine-learning-basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
 
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>Další pomoc s algoritmy pro začátečníky a pokročilé uživatele
-* Podrobnější diskuzi o různé typy algoritmy strojového učení, jak se používají a jak zvolit ten správný pro vaše řešení, najdete v části [jak zvolit algoritmy pro Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
-* Seznam podle kategorie všechny algoritmy strojového učení dostupné v nástroji Machine Learning Studio najdete v tématu [inicializovat Model] [ initialize-model] v Machine Learning Studio algoritmus a pomáhají modulu.
+* Podrobnější informace o různých typů hello algoritmy strojového učení, jak se používají a jak toochoose hello správné jednu pro vaše řešení, najdete v části [jak toochoose algoritmy pro Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
+* Seznam podle kategorie všechny hello algoritmy strojového učení dostupné v nástroji Machine Learning Studio najdete v tématu [inicializovat Model] [ initialize-model] v nápovědě modulu a hello Machine Learning Studio algoritmus.
 * Dokončení abecední seznam algoritmů a modulů v Machine Learning Studio najdete v tématu [seznam A-Z modulů Machine Learning Studio] [ a-z-list] v Machine Learning Studio algoritmus a pomoci modulu.
-* Pokud si chcete stáhnout a vytisknout diagram s přehledem funkcí nástroje Machine Learning Studio, nahlédněte do tématu [Diagram s přehledem možností nástroje Machine Learning Studio](machine-learning-studio-overview-diagram.md).
-* Přehled Cortana Intelligence Gallery a mnoho vytvářené komunitou dostupné prostředky došlo, najdete v části [sdílené složky a zjišťovat prostředky ve Cortana Intelligence Gallery](machine-learning-gallery-how-to-use-contribute-publish.md).
+* toodownload a tisk diagram, který bude stručně charakterizovat hello možností nástroje Machine Learning Studio, najdete v [diagram s přehledem funkcí Azure Machine Learning Studio](machine-learning-studio-overview-diagram.md).
+* Přehled Dobrý den Cortana Intelligence Gallery a hello mnoho vytvářené komunitou prostředky k dispozici, najdete v části [sdílené složky a zjišťovat prostředky ve hello Cortana Intelligence Gallery](machine-learning-gallery-how-to-use-contribute-publish.md).
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: "Zřídit Redis Cache pomocí Azure Resource Manager | Microsoft Docs"
-description: "Šablona Azure Resource Manager k nasazení Azure Redis Cache."
+title: "aaaProvision Redis Cache pomocí Azure Resource Manager | Microsoft Docs"
+description: "Použijte toodeploy šablony Azure Resource Manager Azure Redis Cache."
 services: app-service
 documentationcenter: 
 author: steved0x
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: sdanie
-ms.openlocfilehash: cce5d63e8bad2dd066cb4c28e2a8a9cb16c47953
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 46e7b3b2493ac51dbe6bab0b086304802afc5d48
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-redis-cache-using-a-template"></a>Vytvoření mezipaměti Redis Cache pomocí šablony
-V tomto tématu se dozvíte, jak vytvořit šablonu Azure Resource Manager, která nasazuje Azure Redis Cache. Mezipaměti umožňuje s existujícím účtem úložiště zachovat diagnostická data. Také zjistíte, jak definovat prostředky, ke kterým nasazených a jak definovat parametry, které jsou zadané, když se spustí nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
+V tomto tématu se dozvíte, jak toocreate šablonu Azure Resource Manager, které nasazuje Azure Redis Cache. Hello mezipaměti můžete použít s existující úložiště účet tookeep diagnostická data. Také zjistíte, jak toodefine prostředky, ke kterým jsou nasazené a jak toodefine parametry, které jsou zadané, když se spustí nasazení hello. Můžete tuto šablonu použít pro vlastní nasazení, nebo si ji přizpůsobit toomeet vašim požadavkům.
 
-Nastavení diagnostiky se v současné době jsou sdíleny pro všechny mezipaměti ve stejné oblasti pro předplatné. Aktualizace mezipaměti jeden v oblasti ovlivňuje všechny mezipaměti v oblasti.
+V současné době jsou sdílené nastavení diagnostiky pro všechny mezipaměti v hello stejné oblasti pro předplatné. Aktualizace mezipaměti jeden v oblasti hello ovlivňuje všechny mezipaměti v oblasti hello.
 
 Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 
-Pro úplnou šablonu, najdete v části [Redis Cache šablony](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json).
+Hello úplnou šablonu, najdete v části [Redis Cache šablony](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json).
 
 > [!NOTE]
-> Šablony Resource Manageru pro nový [úroveň Premium](cache-premium-tier-intro.md) jsou k dispozici. 
+> Šablony Resource Manageru pro nový hello [úroveň Premium](cache-premium-tier-intro.md) jsou k dispozici. 
 > 
 > * [Vytvořit Premium Redis Cache s clusteringem](https://azure.microsoft.com/documentation/templates/201-redis-premium-cluster-diagnostics/)
 > * [Vytvoření pomocí trvalosti dat Premium Redis Cache](https://azure.microsoft.com/documentation/templates/201-redis-premium-persistence/)
 > * [Vytvořit Premium Redis Cache s virtuální sítí a volitelné clustering](https://azure.microsoft.com/documentation/templates/201-redis-premium-vnet-cluster-diagnostics/)
 > 
-> Vyhledat nejnovější šablony, najdete v tématu [šablon Azure rychlý Start](https://azure.microsoft.com/documentation/templates/) a vyhledejte řetězec `Redis Cache`.
+> toocheck pro hello nejnovější šablony, najdete v části [šablon Azure rychlý Start](https://azure.microsoft.com/documentation/templates/) a vyhledejte řetězec `Redis Cache`.
 > 
 > 
 
 ## <a name="what-you-will-deploy"></a>Co budete nasazovat
 V této šabloně nasadíte Azure Redis Cache, který používá stávající účet úložiště pro diagnostická data.
 
-Pokud chcete nasazení spustit automaticky, klikněte na následující tlačítko:
+toorun hello nasazení automaticky, klikněte na následující tlačítko hello:
 
-[![Nasazení do Azure](./media/cache-redis-cache-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
+[![Nasazení tooAzure](./media/cache-redis-cache-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Parametry
-Pomocí Azure Resource Manageru definujete parametry pro hodnoty, které chcete zadat při nasazení šablony. Šablona obsahuje oddíl s názvem parametry obsahující všechny hodnoty parametru.
-Parametr byste měli definovat pro hodnoty, které se mění v závislosti na nasazovaném projektu nebo prostředí, do kterého nasazujete. Nedefinujte parametry pro hodnoty, které jsou vždy stejné. Každá hodnota parametru se v šabloně použije k definování nasazovaných prostředků. 
+S Azure Resource Manager, můžete definovat parametry pro hodnoty chcete toospecify při nasazení šablony hello. Šablona Hello obsahuje oddíl s názvem parametry obsahující všechny hodnoty parametru hello.
+Měli byste parametr pro ty hodnoty, které se liší podle hello prostředí, které nasazujete nebo na základě hello projektu, které nasazujete. Parametry nedefinuje pro hello hodnoty, které vždy zůstávají stejné. Každá hodnota parametru se používá v hello šablony toodefine hello prostředky, které jsou nasazeny. 
 
 [!INCLUDE [app-service-web-deploy-redis-parameters](../../includes/cache-deploy-parameters.md)]
 
 ### <a name="rediscachelocation"></a>redisCacheLocation
-Umístění mezipaměti Redis. Pro zajištění nejlepšího výkonu používalo stejné umístění jako aplikace pro použití s mezipamětí.
+umístění Hello hello Redis Cache. Pro nejlepší výkon použijte hello stejné umístění jako hello toobe aplikace použít s hello mezipaměti.
 
     "redisCacheLocation": {
       "type": "string"
     }
 
 ### <a name="existingdiagnosticsstorageaccountname"></a>existingDiagnosticsStorageAccountName
-Název existující účet úložiště pro diagnostiku. 
+Hello název hello toouse účet existující úložiště pro diagnostiku. 
 
     "existingDiagnosticsStorageAccountName": {
       "type": "string"
     }
 
 ### <a name="enablenonsslport"></a>EnableNonSslPort
-Logická hodnota, která určuje, jestli se má povolit přístup přes porty bez SSL.
+Logická hodnota, která určuje, zda tooallow přístup přes porty bez SSL.
 
     "enableNonSslPort": {
       "type": "bool"
@@ -86,9 +86,9 @@ Hodnota, která určuje, zda je povoleno diagnostiky. Použití ON nebo OFF.
         ]
     }
 
-## <a name="resources-to-deploy"></a>Prostředky k nasazení
+## <a name="resources-toodeploy"></a>Toodeploy prostředky
 ### <a name="redis-cache"></a>Redis Cache
-Vytvoří mezipaměť Redis systému Azure.
+Vytvoří hello Azure Redis Cache.
 
     {
       "apiVersion": "2015-08-01",
@@ -122,7 +122,7 @@ Vytvoří mezipaměť Redis systému Azure.
 
 
 
-## <a name="commands-to-run-deployment"></a>Příkazy pro spuštění nasazení
+## <a name="commands-toorun-deployment"></a>Příkazy toorun nasazení
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell

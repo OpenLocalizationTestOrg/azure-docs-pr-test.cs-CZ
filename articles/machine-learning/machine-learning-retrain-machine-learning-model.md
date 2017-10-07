@@ -1,6 +1,6 @@
 ---
-title: "Přeučování strojového učení modelu | Microsoft Docs"
-description: "Zjistěte, jak aktualizovat webovou službu, která používá nově trénovaného modelu v Azure Machine Learning a přeučování modelu."
+title: "aaaRetrain Model strojového učení | Microsoft Docs"
+description: "Zjistěte, jak tooretrain modelu a aktualizace hello webové služby toouse hello nově trained model v Azure Machine Learning."
 services: machine-learning
 documentationcenter: 
 author: vDonGlover
@@ -14,86 +14,86 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: f86c2bc41dd7ff0bc31454a56b84d136dc7d026c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 342bb9954105339b4b634ff20968a64f4f9f750e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="retrain-a-machine-learning-model"></a>Přeučování strojového učení modelu
-Jako součást procesu operationalization modelů machine learning v Azure Machine Learning je váš model vycvičena a uložit. Potom ji používáte k vytvoření predicative webové služby. Webové služby, pak mohou být využívány v weby, řídicí panely a mobilní aplikace. 
+Jako součást procesu hello operationalization modelů machine learning v Azure Machine Learning je váš model vycvičena a uložit. Pak použijete ho toocreate predicative webové služby. Hello webové služby, pak mohou být využívány v weby, řídicí panely a mobilní aplikace. 
 
-Obvykle nejsou statické modely, které vytvoříte pomocí Machine Learning. Jakmile nová data k dispozici, nebo když příjemce rozhraní API má svá vlastní data musí být retrained modelu. 
+Obvykle nejsou statické modely, které vytvoříte pomocí Machine Learning. Jakmile nová data k dispozici nebo pokud má příjemce hello hello rozhraní API modelu hello svá vlastní data musí toobe retrained. 
 
-Retraining může dojít, často. S funkcí programové Přeučení rozhraní API můžete prostřednictvím kódu programu přeučování modelu s použitím rozhraní Retraining API a aktualizovat webovou službu s nově naučeného modelu. 
+Retraining může dojít, často. S funkcí rozhraní API programové Přeučení hello můžete programově přeučit hello model pomocí hello Retraining API a aktualizace hello webové služby s nově trained model hello. 
 
-Tento dokument popisuje proces retraining a ukazuje, jak použít i rozhraní Retraining API.
+Tento dokument popisuje hello retraining procesu a ukazuje, jak toouse hello Retraining API.
 
-## <a name="why-retrain-defining-the-problem"></a>Proč přeučování: definování problému
-Jako součást strojového učení proces školení cvičení modelu pomocí datové sadě. Obvykle nejsou statické modely, které vytvoříte pomocí Machine Learning. Jakmile nová data k dispozici, nebo když příjemce rozhraní API má svá vlastní data musí být retrained modelu.
+## <a name="why-retrain-defining-hello-problem"></a>Proč přeučování: definování problému hello
+Jako součást hello strojové učení cvičení proces cvičení modelu pomocí datové sadě. Obvykle nejsou statické modely, které vytvoříte pomocí Machine Learning. Jakmile nová data k dispozici nebo pokud má příjemce hello hello rozhraní API modelu hello svá vlastní data musí toobe retrained.
 
-V těchto scénářích poskytuje programovací rozhraní API pohodlný způsob, jak povolit jste nebo příjemci vašich rozhraní API pro vytvoření klienta, který může na základě jednorázové nebo regulární přeučování modelu s použitím svá vlastní data. Potom se můžete vyhodnotit výsledky retraining a aktualizovat webového rozhraní API služby použít nově trained model.
+V těchto scénářích poskytuje programovací rozhraní API tooallow pohodlný způsob jste nebo hello příjemce toocreate vaše rozhraní API klienta, který může na základě jednorázové nebo regulární přeučování hello model pomocí svá vlastní data. Potom se můžete vyhodnotit hello výsledky retraining a aktualizovat hello webové rozhraní API toouse hello nově trained model služby.
 
 > [!NOTE]
-> Pokud máte existující výukový Experiment a nové webové služby, můžete projít obsloužených existující prediktivní webovou službu místo následující postupy uvedené v následující části.
+> Pokud máte existující výukový Experiment a nové webové služby, můžete toocheck out obsloužených existující prediktivní webové služby místo následující návod hello uvedených v následující části hello.
 > 
 > 
 
-## <a name="end-to-end-workflow"></a>Komplexní pracovní postup
-Proces zahrnuje následující součásti: A výukový Experiment a prediktivní Experiment publikované jako webovou službu. Povolit retraining z modulu trained model, je nutné výukový Experiment publikovat jako webovou službu s výstup modulu trained model. To umožňuje retraining API přístup k modelu. 
+## <a name="end-to-end-workflow"></a>Ucelený pracovní postup
+Hello proces zahrnuje hello následující součásti: A výukový Experiment a prediktivní Experiment publikované jako webovou službu. tooenable retraining z modulu trained model, hello výukový Experiment musí být publikován jako webovou službu s hello výstup modulu trained model. To umožňuje model toohello přístupu rozhraní API pro přeučení. 
 
-Následující postup platí pro nové a Classic webové služby:
+Hello postupem použít tooboth nové a Classic webové služby:
 
-Vytvoření počáteční prediktivní webové služby:
+Vytvoření hello počáteční prediktivní webové služby:
 
 * Vytvoření experimentu školení
 * Vytvoření experimentu prediktivní web
 * Nasadit prediktivní webové služby
 
-Přeučování webové služby:
+Přeučování hello webové služby:
 
-* Aktualizace výukový experiment umožňující retraining
-* Nasazení retraining webové služby
-* Pomocí služby Batch provádění kódu přeučování modelu
+* Aktualizovat tooallow experimentu školení pro retraining
+* Nasazení hello retraining webové služby
+* Použít hello služba Batch provádění kódu tooretrain hello model
 
-Návod, podle předchozích kroků, najdete v části [Machine Learning Přeučování modelů prostřednictvím kódu programu](machine-learning-retrain-models-programmatically.md).
+Návod hello předchozích kroků najdete v tématu [Machine Learning Přeučování modelů prostřednictvím kódu programu](machine-learning-retrain-models-programmatically.md).
 
 > [!NOTE] 
-> K nasazení nové webové služby musí mít dostatečná oprávnění v rámci předplatného, do které, můžete nasazení webové služby. Další informace najdete v tématu [spravovat webové služby pomocí portálu webové služby Azure Machine Learning](machine-learning-manage-new-webservice.md). 
+> toodeploy novou webovou službu, musíte mít dostatečná oprávnění v toowhich hello předplatné můžete nasazení hello webové služby. Další informace najdete v tématu [spravovat webové služby pomocí portálu webové služby Azure Machine Learning hello](machine-learning-manage-new-webservice.md). 
 
 Pokud jste nasadili Classic webové služby:
 
-* Vytvořte nový koncový bod na prediktivní webové služby
-* Získat adresu PATCH URL a kódu
-* Použijte adresu URL OPRAVIT tak, aby odkazoval nový koncový bod v retrained modelu 
+* Vytvořte nový koncový bod na hello prediktivní webové služby
+* Získat adresu URL hello opravy a kódu
+* Použití hello oprava URL toopoint hello nový koncový bod v hello retrained modelu 
 
-Návod, podle předchozích kroků, najdete v části [Přeučování Classic webové služby](machine-learning-retrain-a-classic-web-service.md).
+Návod hello předchozích kroků najdete v tématu [Přeučování Classic webové služby](machine-learning-retrain-a-classic-web-service.md).
 
-Pokud narazíte na problémy retraining Classic webové služby, přečtěte si téma [řešení potíží s retraining Azure Machine Learning Classic webové služby](machine-learning-troubleshooting-retraining-models.md).
+Pokud narazíte na problémy retraining Classic webové služby, přečtěte si téma [řešení potíží s hello retraining Azure Machine Learning Classic webové služby](machine-learning-troubleshooting-retraining-models.md).
 
 Pokud jste nasadili do nové webové služby:
 
-* Přihlaste se k účtu Azure Resource Manager
-* Získat definice webové služby
-* Exportovat jako JSON definice webové služby
-* Aktualizovat odkaz na `ilearner` objektu blob ve formátu JSON
-* Import kódu JSON do definice webové služby
-* Aktualizovat webovou službu pomocí nové definice webové služby
+* Přihlaste se tooyour účet Azure Resource Manager
+* Získat definice hello webové služby
+* Exportovat hello definice webové služby jako JSON
+* Aktualizovat hello odkaz toohello `ilearner` objektů blob v hello JSON
+* Importovat hello JSON do definice webové služby
+* Aktualizovat hello webové služby s novou definice webové služby
 
-Návod, podle předchozích kroků, najdete v části [Přeučování nové webové službě pomocí rutin prostředí PowerShell správu Machine Learning](machine-learning-retrain-new-web-service-using-powershell.md).
+Návod hello předchozích kroků najdete v tématu [Přeučování nové webové službě pomocí rutiny prostředí PowerShell správu Machine Learning hello](machine-learning-retrain-new-web-service-using-powershell.md).
 
-Proces pro nastavení retraining Classic webové služby zahrnuje následující kroky:
+proces Hello nastavení retraining Classic webové služby zahrnuje hello následující kroky:
 
 ![Retraining přehled procesu][1]
 
-Proces pro nastavení retraining pro nové webové služby zahrnuje následující kroky:
+proces Hello nastavení pro novou webovou službu retraining zahrnuje hello následující kroky:
 
 ![Retraining přehled procesu][7]
 
 ## <a name="other-resources"></a>Další prostředky
 * [Modely retraining a aktualizaci Azure Machine Learning s Azure Data Factory](https://azure.microsoft.com/blog/retraining-and-updating-azure-machine-learning-models-with-azure-data-factory/)
 * [Vytvořit mnoho modely Machine Learning a webové koncové body služby z jednoho experimentu pomocí prostředí PowerShell](machine-learning-create-models-and-endpoints-with-powershell.md)
-* [AML Přeučení modelů pomocí rozhraní API](https://www.youtube.com/watch?v=wwjglA8xllg) video ukazuje, jak přeučování modelů Machine Learning v Azure Machine Learning vytvořit pomocí rozhraní Retraining API a prostředí PowerShell.
+* Hello [AML Přeučení modelů pomocí rozhraní API](https://www.youtube.com/watch?v=wwjglA8xllg) video ukazuje, jak vytvořit tooretrain modely Machine Learning v Azure Machine Learning pomocí hello Retraining API a prostředí PowerShell.
 
 <!--image links-->
 [1]: ./media/machine-learning-retrain-machine-learning-model/machine-learning-retrain-models-programmatically-IMAGE01.png

@@ -1,6 +1,6 @@
 ---
-title: "Jak migrovat z virtuální sítě vzdálené aplikace RemoteApp o virtuální síť Azure | Microsoft Docs"
-description: "Zjistěte, jak migrovat z virtuální sítě vzdálené aplikace RemoteApp o virtuální síť Azure"
+title: "aaaHow toomigrate z virtuální sítě vzdálené aplikace RemoteApp tooan virtuální síť Azure | Microsoft Docs"
+description: "Zjistěte, jak toomigrate z virtuální sítě vzdálené aplikace RemoteApp tooan virtuální síť Azure"
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,40 +13,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
-ms.openlocfilehash: 10b5f4844a38fe97852dee8634e8cf54f1a23a1e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c0f8617556c6f1e33eca8322febf67ff33937ecd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-migrate-a-hybrid-collection-from-a-remoteapp-vnet-to-an-azure-vnet"></a>Jak migrovat hybridní kolekce z virtuální sítě vzdálené aplikace RemoteApp o virtuální síť Azure
+# <a name="how-toomigrate-a-hybrid-collection-from-a-remoteapp-vnet-tooan-azure-vnet"></a>Jak toomigrate hybridní kolekci z virtuální sítě vzdálené aplikace RemoteApp tooan virtuální síť Azure
 > [!IMPORTANT]
-> Azure RemoteApp se přestává používat dne 31. srpna 2017. Podrobnosti najdete v tomto [oznámení](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp se přestává používat dne 31. srpna 2017. Čtení hello [oznámení](https://go.microsoft.com/fwlink/?linkid=821148) podrobnosti.
 > 
 > 
 
-Dobrá zpráva! Jsme povolili můžete nasadit hybridní kolekce vzdálené aplikace RemoteApp přímo do vaší stávající virtuální sítě Azure (virtuální sítě) místo vytvoření virtuální sítě vzdálené aplikace RemoteApp specifické. To vám umožní využívat výhody nejnovějších funkcí virtuální síť (jako je ExpressRoute) a poskytnout přímý přístup k síti v případě hybridních kolekcí k dalším službám Azure a virtuální počítače nasazené do ní.  (To získá je lepší výkon a jednodušší nastavení než konfigurace propojení VNET-to-VNET).
+Dobrá zpráva! Jsme jste povolili toodeploy hybridní kolekce vzdálené aplikace RemoteApp přímo do vaší stávající virtuální sítě Azure (virtuální sítě) místo vytvoření virtuální sítě vzdálené aplikace RemoteApp specifické. To vám umožní využít výhod hello nejnovější funkce virtuální síť (jako je ExpressRoute) a poskytnout vaší hybridní kolekce přímého síťového přístupu tooother služby Azure a virtuální počítače nasazené toothat virtuální sítě.  (To získá je lepší výkon a jednodušší nastavení než konfigurace propojení VNET-to-VNET).
 
-Řekněme, že jste už vytvořili hybridní kolekce vzdálené aplikace RemoteApp názvem *OriginalCollection* v virtuální sítě vzdálené aplikace RemoteApp označuje jako *RemoteAppVNET*. Tady jsou kroky k migraci na nové virtuální sítě Azure volá *AzureVNET*.
+Řekněme, že jste už vytvořili hybridní kolekce vzdálené aplikace RemoteApp názvem *OriginalCollection* v virtuální sítě vzdálené aplikace RemoteApp označuje jako *RemoteAppVNET*. Tady jsou kroky toomigrate hello ho tooa novou virtuální síť Azure volá *AzureVNET*.
 
-1. Na **sítě** kartě v [portálu pro správu](http://manage.windowsazure.com/), vytvořit virtuální síť, která volá *AzureVNET*, pomocí stejného umístění, konfigurace serveru DNS a adresní prostor (pro minimálně jeden z *AzureVNET* podsítě) jako jste použili pro *RemoteAppVNET*.
-2. Konfigurace *AzureVNET* na hostitele nebo mít síťové připojení k nasazení služby Active Directory, *OriginalCollection* je připojený k doméně do.
-3. Na **vzdálené aplikace RemoteApp** kartě, vytvořit novou kolekci vzdálené aplikace RemoteApp názvem *nové kolekce*. (Použití **vytvořit s virtuální síť** možnost, není **rychle vytvořit**.)
-4. Konfigurace *NewCollection* k nasazení pro podsíť v *AzureVNET*.
-5. Konfigurace *NewCollection* použít stejnou bitovou kopii a informace o připojení k doméně, jako jste použili pro *OriginalCollection*.
+1. Na hello **sítě** ve hello [portálu pro správu](http://manage.windowsazure.com/), vytvořte virtuální síť, která volá *AzureVNET*pomocí hello stejné umístění, konfigurace serveru DNS a adresní prostor (pro minimálně jeden Dobrý den *AzureVNET* podsítě) jako jste použili pro *RemoteAppVNET*.
+2. Konfigurace *AzureVNET* tooeither hostitele nebo mít nasazení služby Active Directory toohello připojení k síti, *OriginalCollection* je připojený k doméně do.
+3. Na hello **vzdálené aplikace RemoteApp** kartě, vytvořit novou kolekci vzdálené aplikace RemoteApp názvem *nové kolekce*. (Použití hello **vytvořit s virtuální síť** možnost, není **rychle vytvořit**.)
+4. Konfigurace *NewCollection* toobe nasazené tooa podsítě v *AzureVNET*.
+5. Konfigurace *NewCollection* toouse hello stejnou bitovou kopii a informace o připojení k doméně jako jste použili pro *OriginalCollection*.
 6. Po několik hodin *NewCollection* se zobrazí v seznamu kolekce s aktivním stavu.
 
-Nyní pokud nepotřebujete migrovat nějaké informace o uživateli z původní kolekci do nové kolekce, proveďte tyto kroky dále:
+Nyní pokud nepotřebujete toomigrate nějaké informace o uživateli z hello původní kolekce toohello nové kolekce, proveďte tyto kroky dále:
 
 1. Odstranit *OriginalCollection*.
 2. Odstranit *RemoteAppVNET*.
 
 A jste hotovi!
 
-Případně pokud potřebujete migrovat informace o uživateli z původní kolekci do nové kolekce, proveďte tyto kroky dále:
+Případně pokud potřebujete informace o uživateli toomigrate z hello původní kolekce toohello nové kolekce, proveďte tyto kroky dále:
 
-1. E-mailovou zprávu na [ remoteappforum@microsoft.com ](mailto:remoteappforum@microsoft.com?subject=Azure%20RemoteApp%20user%20information%20migration) svoje ID předplatného Azure, názvem vašeho původního kolekce a s názvem vaší nové kolekce a požádejte je o migrovat informace o uživateli.
-2. Do 2 pracovních dnů se tým služby RemoteApp přesune přístup k seznamu uživatelů a všechny dokumenty uživatele a nastavení uživatele z původní kolekce do nové kolekce.
+1. Odeslat e-mail příliš[ remoteappforum@microsoft.com ](mailto:remoteappforum@microsoft.com?subject=Azure%20RemoteApp%20user%20information%20migration) s svoje ID předplatného Azure hello název původní kolekci a hello název nové kolekce a požádejte je toomigrate informace o uživateli.
+2. V rámci 2 pracovních dnů přesune tým služby RemoteApp hello hello uživatel přístup k seznamu a všechny dokumenty uživatele a nastavení uživatele z hello původní kolekce toohello nové kolekce.
 3. Odstranit *OriginalCollection*.
 4. Odstranit *RemoteAppVNET*.
 

@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace protokolu SSL pro cloudové služby | Microsoft Docs"
-description: "Zjistěte, jak zadat koncový bod HTTPS pro webovou roli a jak nahrát certifikát SSL pro zabezpečení vaší aplikace. Tyto příklady použití portálu Azure."
+title: "aaaConfigure SSL pro cloudové služby | Microsoft Docs"
+description: "Zjistěte, jak toospecify koncový bod HTTPS pro webovou roli a jak tooupload protokolem SSL certifikát toosecure vaší aplikace. Tyto příklady použití hello portálu Azure."
 services: cloud-services
 documentationcenter: .net
 author: Thraka
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: adegeo
-ms.openlocfilehash: e5c8c3b098772c0586712305a577b24a6f0d924c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b19283bb7b0e95374f2ae9c3532eb1effc7d6a9f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Konfigurace protokolu SSL pro všechny aplikace v Azure
 > [!div class="op_single_selector"]
@@ -26,38 +26,38 @@ ms.lasthandoff: 07/11/2017
 > * [Portál Azure Classic](cloud-services-configure-ssl-certificate.md)
 >
 
-Šifrování SSL (Secure Socket Layer) je nejčastěji používanou metodou zabezpečení dat posílaných přes internet. Článek o tomto běžném postupu probírá, jak zadat koncový bod HTTPS pro webovou roli a jak nahrát certifikát SSL pro zabezpečení aplikace.
+Šifrování Secure Socket Layer (SSL) je metoda hello nejčastěji používaná zabezpečení dat posílaných v hello Internetu. Tato běžných úkolů popisuje jak toospecify koncový bod HTTPS pro webovou roli a jak tooupload protokolem SSL certifikát toosecure vaší aplikace.
 
 > [!NOTE]
-> Postupy v této úloze platí pro Azure Cloud Services; Aplikační služby, najdete v části [to](../app-service-web/web-sites-configure-ssl-certificate.md).
+> Hello postupy v této úloze platí tooAzure cloudové služby; Aplikační služby, najdete v části [to](../app-service-web/web-sites-configure-ssl-certificate.md).
 >
 
-Tato úloha používá produkčním nasazení. Informace o používání pracovní nasazení najdete na konci tohoto tématu.
+Tato úloha používá produkčním nasazení. Informace o používání pracovní nasazení se poskytuje na konci hello v tomto tématu.
 
 Čtení [to](cloud-services-how-to-create-deploy-portal.md) první, pokud jste ještě nevytvořili cloudové služby.
 
 [!INCLUDE [websites-cloud-services-css-guided-walkthrough](../../includes/websites-cloud-services-css-guided-walkthrough.md)]
 
 ## <a name="step-1-get-an-ssl-certificate"></a>Krok 1: Získání certifikátu protokolu SSL
-Konfigurace protokolu SSL pro aplikaci, musíte nejdřív získat certifikát SSL, která byla podepsána pomocí certifikační autoritou (CA), důvěryhodná třetí straně, která vystavuje certifikáty pro tento účel. Pokud není již nemáte, budete muset získat jeden ze společnosti, která prodává certifikáty SSL.
+tooconfigure SSL pro aplikaci, musíte nejdřív tooget certifikát SSL, která byla podepsána pomocí certifikační autoritou (CA), důvěryhodná třetí straně, která vystavuje certifikáty pro tento účel. Pokud není již nemáte, je třeba tooobtain jeden ze společnosti, která prodává certifikáty SSL.
 
-Certifikát musí splňovat následující požadavky na certifikáty SSL v Azure:
+certifikát Hello musí splňovat následující požadavky na certifikáty SSL v Azure hello:
 
-* Certifikát musí obsahovat privátní klíč.
-* Certifikát se musí vytvořit pro výměnu klíčů, exportovat do souboru Personal Information Exchange (.pfx).
-* Název subjektu certifikátu musí odpovídat domény používá pro přístup ke cloudové službě. Nelze získat certifikát SSL od certifikační autority (CA) pro doménu cloudapp.net. Musíte získat vlastní název domény má použít při přístupu ke službě. Pokud budete požadovat certifikát od certifikační Autority, název subjektu certifikátu musí odpovídat názvu vlastní domény, používá pro přístup k aplikaci. Například, pokud je váš vlastní název domény **contoso.com** by vyžádání certifikátu z certifikační Autority pro ***. contoso.com** nebo **www.contoso.com**.
-* Certifikát musí používat minimálně 2048bitové šifrování.
+* Hello certifikát musí obsahovat privátní klíč.
+* Hello certifikátu musí být vytvořeny pro výměnu klíčů, exportovatelný tooa soubor Personal Information Exchange (.pfx).
+* Hello názvu subjektu certifikátu musí odpovídat hello domény použít tooaccess hello cloudové služby. Nelze získat certifikát SSL od certifikační autority (CA) pro doménu cloudapp.net hello. Musíte získat toouse název vlastní domény při přístupu ke službě. Pokud budete požadovat certifikát od certifikační Autority, musí se název subjektu certifikátu hello odpovídat tooaccess název používaný hello vlastní domény aplikace. Například, pokud je váš vlastní název domény **contoso.com** by vyžádání certifikátu z certifikační Autority pro ***. contoso.com** nebo **www.contoso.com**.
+* Hello certifikát musí používat minimálně 2048bitové šifrování.
 
-Pro účely testování můžete [vytvořit](cloud-services-certs-create.md) a použít certifikát podepsaný svým držitelem. Certifikát podepsaný svým držitelem není ověřen pomocí certifikační Autority a cloudapp.net domény můžete použít jako adresu URL webu. Například následující úkol používá certifikát podepsaný svým držitelem, ve kterém je běžný název (CN) použitý v certifikátu **sslexample.cloudapp.net**.
+Pro účely testování můžete [vytvořit](cloud-services-certs-create.md) a použít certifikát podepsaný svým držitelem. Certifikát podepsaný svým držitelem není ověřen pomocí certifikační Autority a hello cloudapp.net domény můžete použít jako adresu URL webu hello. Například hello následující úkol používá certifikát podepsaný svým držitelem, ve které hello je běžný název (CN) použitý v certifikátu hello **sslexample.cloudapp.net**.
 
-V dalším kroku musí zahrnovat informace o certifikátu v definici služby a služby konfigurační soubory.
+V dalším kroku musí zahrnovat informace o certifikátu hello v definici služby a služby konfigurační soubory.
 
 <a name="modify"> </a>
 
-## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>Krok 2: Upravte soubory definice a konfigurace služby
-Vaše aplikace musí být nakonfigurována pro použití certifikátu a koncový bod HTTPS musí být přidán. Definice služby a služby konfigurační soubory v důsledku toho musí aktualizovat.
+## <a name="step-2-modify-hello-service-definition-and-configuration-files"></a>Krok 2: Upravte soubory pro definice a konfigurace služby hello
+Aplikace musí být nakonfigurované toouse hello certifikátu a koncový bod HTTPS musí být přidán. V důsledku toho hello definice služby a soubory konfigurace služby musí toobe aktualizovat.
 
-1. Ve vašem vývojovém prostředí, otevřete soubor definice služby (CSDEF), přidejte **certifikáty** části v rámci **WebRole** části a uveďte tyto informace o certifikátu (a zprostředkující certifikáty):
+1. Ve vašem vývojovém prostředí, otevřete soubor definice služby hello (CSDEF), přidejte **certifikáty** části v rámci hello **WebRole** části a zahrnovat hello následující informace certifikát (a zprostředkující certifikáty):
 
    ```xml
     <WebRole name="CertificateTesting" vmsize="Small">
@@ -68,11 +68,11 @@ Vaše aplikace musí být nakonfigurována pro použití certifikátu a koncový
                         storeName="My"
                         permissionLevel="limitedOrElevated" />
             <!-- IMPORTANT! Unless your certificate is either
-            self-signed or signed directly by the CA root, you
-            must include all the intermediate certificates
+            self-signed or signed directly by hello CA root, you
+            must include all hello intermediate certificates
             here. You must list them here, even if they are
-            not bound to any endpoints. Failing to list any of
-            the intermediate certificates may cause hard-to-reproduce
+            not bound tooany endpoints. Failing toolist any of
+            hello intermediate certificates may cause hard-to-reproduce
             interoperability problems on some clients.-->
             <Certificate name="CAForSampleCertificate"
                         storeLocation="LocalMachine"
@@ -83,16 +83,16 @@ Vaše aplikace musí být nakonfigurována pro použití certifikátu a koncový
     </WebRole>
     ```
 
-   **Certifikáty** oddíl definuje název naše certifikát, její umístění a název úložiště, kde se nachází.
+   Hello **certifikáty** oddíl definuje název hello naše certifikát, její umístění a název hello hello úložiště, kde se nachází.
 
-   Oprávnění (`permisionLevel` atribut) můžete nastavit na jedno z následujících hodnot:
+   Oprávnění (`permisionLevel` atribut) může být sada tooone Dobrý den následující hodnoty:
 
    | Hodnota oprávnění | Popis |
    | --- | --- |
-   | limitedOrElevated |**(Výchozí) ** Všechny procesy role můžete přístup k privátnímu klíči. |
-   | zvýšené |Jenom procesy se zvýšenými oprávněními, můžete přístup k privátnímu klíči. |
+   | limitedOrElevated |**(Výchozí)**  Všechny procesy role můžete přístup hello privátní klíč. |
+   | zvýšené |K privátní klíč hello přístup jenom procesy se zvýšenými oprávněními. |
 
-2. V souboru definice služby, přidejte **InputEndpoint** v rámci **koncové body** části Povolit protokol HTTPS:
+2. V souboru definice služby, přidejte **InputEndpoint** v rámci hello **koncové body** části tooenable HTTPS:
 
    ```xml
     <WebRole name="CertificateTesting" vmsize="Small">
@@ -105,7 +105,7 @@ Vaše aplikace musí být nakonfigurována pro použití certifikátu a koncový
     </WebRole>
     ```
 
-3. V souboru definice služby, přidejte **vazby** v prvku **lokality** části. Tento element přidá vazbu HTTPS k mapování koncový bod na váš web:
+3. V souboru definice služby, přidejte **vazby** v rámci hello **lokality** části. Tento element přidá toomap vazba HTTPS webu tooyour koncový bod:
 
    ```xml
     <WebRole name="CertificateTesting" vmsize="Small">
@@ -121,8 +121,8 @@ Vaše aplikace musí být nakonfigurována pro použití certifikátu a koncový
     </WebRole>
     ```
 
-   Byly dokončeny všechny požadované změny pro soubor definice služby; ale potřebujete přidat informace o certifikátu do konfiguračního souboru služby.
-4. V konfiguračním souboru služby (CSCFG), ServiceConfiguration.Cloud.cscfg, přidejte **certifikáty** hodnotu s u vašeho certifikátu. Následující ukázka kódu obsahuje podrobnosti o **certifikáty** části, s výjimkou hodnotu kryptografického otisku.
+   Byly dokončeny všechny hello požadované změny toohello souboru definice služby; ale stále potřebujete informace o certifikátu hello tooadd hello služby konfiguračního souboru.
+4. V konfiguračním souboru služby (CSCFG), ServiceConfiguration.Cloud.cscfg, přidejte **certifikáty** hodnotu s u vašeho certifikátu. Hello následující ukázka kódu obsahuje podrobnosti o hello **certifikáty** části, s výjimkou hodnota kryptografického otisku hello.
 
    ```xml
     <Role name="Deployment">
@@ -139,51 +139,51 @@ Vaše aplikace musí být nakonfigurována pro použití certifikátu a koncový
     </Role>
     ```
 
-(Tento příklad používá **sha1** pro algoritmus kryptografický otisk. Zadejte hodnotu vhodnou pro váš certifikát kryptografický algoritmus.)
+(Tento příklad používá **sha1** pro hello kryptografický algoritmus. Zadejte hodnotu hello vhodnou pro váš certifikát kryptografický algoritmus.)
 
-Teď, když byly aktualizovány definice služby a služby konfigurační soubory, balíček nasazení nahrát do Azure. Pokud používáte **cspack**, nepoužívejte **/generateConfigurationFile** příznak, jako který přepíše vloženého informace o certifikátu.
+Teď, když hello služby definice a služby konfigurační soubory byly aktualizovány, balíček nasazení pro nahrávání tooAzure. Pokud používáte **cspack**, nepoužívejte **/generateConfigurationFile** příznak, jako který přepíše vloženého informace o certifikátu.
 
 ## <a name="step-3-upload-a-certificate"></a>Krok 3: Nahrát na server certifikát
-Připojení k portálu Azure a...
+Připojit toohello portál Azure a...
 
-1. V **všechny prostředky** části portálu, vyberte cloudové služby.
+1. V hello **všechny prostředky** části hello portál, vyberte cloudové služby.
 
     ![Publikování cloudové služby](media/cloud-services-configure-ssl-certificate-portal/browse.png)
 
 2. Klikněte na tlačítko **certifikáty**.
 
-    ![Klikněte na ikonu certifikáty](media/cloud-services-configure-ssl-certificate-portal/certificate-item.png)
+    ![Klikněte na ikonu certifikáty hello](media/cloud-services-configure-ssl-certificate-portal/certificate-item.png)
 
-3. Klikněte na tlačítko **nahrát** v horní části oblasti certifikáty.
+3. Klikněte na tlačítko **nahrát** hello horní části oblasti certifikáty hello.
 
-    ![Klikněte na položku nabídky nahrávání](media/cloud-services-configure-ssl-certificate-portal/Upload_menu.png)
+    ![Klikněte na položku nabídky nahrávání hello](media/cloud-services-configure-ssl-certificate-portal/Upload_menu.png)
 
-4. Zadejte **soubor**, **heslo**, pak klikněte na tlačítko **nahrát** v dolní části oblasti vstupní data.
+4. Zadejte hello **soubor**, **heslo**, pak klikněte na tlačítko **nahrát** dole hello hello dat vstupní oblast.
 
-## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>Krok 4: Připojení k instanci role pomocí protokolu HTTPS
-Teď, když vaše nasazení je spuštěná v Azure, můžete připojit se pomocí protokolu HTTPS.
+## <a name="step-4-connect-toohello-role-instance-by-using-https"></a>Krok 4: Připojte instanci role toohello pomocí protokolu HTTPS
+Teď, když vaše nasazení je spuštěná v Azure, můžete připojit tooit pomocí protokolu HTTPS.
 
-1. Klikněte **adresa URL webu** otevřete webový prohlížeč.
+1. Klikněte na tlačítko hello **adresa URL webu** tooopen až hello webového prohlížeče.
 
-   ![Klikněte na adresu URL webu](media/cloud-services-configure-ssl-certificate-portal/navigate.png)
+   ![Klikněte na tlačítko hello adresa URL webu](media/cloud-services-configure-ssl-certificate-portal/navigate.png)
 
-2. Ve webovém prohlížeči, upravte odkaz použít **https** místo **http**a potom navštivte stránku.
+2. Ve webovém prohlížeči, upravte hello odkaz toouse **https** místo **http**a potom navštivte stránku hello.
 
    > [!NOTE]
-   > Pokud používáte certifikát podepsaný svým držitelem, když přejdete na koncový bod HTTPS, který je spojen s certifikát podepsaný svým držitelem může se zobrazit chyba certifikátu v prohlížeči. Používá certifikát podepsaný důvěryhodnou certifikační autoritou eliminuje tento problém; do té doby můžete chybu ignorovat. (Další možností je přidání certifikátu podepsaného svým držitelem do úložiště certifikátů důvěryhodné certifikační autority uživatele.)
+   > Pokud používáte certifikát podepsaný svým držitelem, když procházíte tooan koncový bod HTTPS, který je spojen s certifikát podepsaný svým držitelem hello může se zobrazit chyba certifikátu v prohlížeči hello. Používá certifikát podepsaný důvěryhodnou certifikační autoritou eliminuje tento problém; v hello té doby chybu můžete ignorovat hello. (Další možností je tooadd hello certifikát podepsaný svým držitelem toohello důvěryhodné certifikační autority úložišti certifikátů uživatele.)
    >
    >
 
    ![Verze preview webu](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > Pokud chcete používat protokol SSL pro pracovní nasazení místo produkční nasazení, musíte nejdřív určit adresu URL pro pracovní nasazení použít. Jakmile Cloudová služba byla nasazena, je dáno adresu URL na pracovní prostředí **ID nasazení** identifikátor GUID v tomto formátu:`https://deployment-id.cloudapp.net/`  
+   > Pokud chcete toouse SSL pro nasazení pracovní místo produkční nasazení, je nutné nejdříve toodetermine hello adresa URL použitá pro hello pracovní nasazení. Jakmile nasadila cloudové služby toohello URL hello pracovní prostředí je určen podle hello **ID nasazení** identifikátor GUID v tomto formátu:`https://deployment-id.cloudapp.net/`  
    >
-   > Vytvoření certifikátu pomocí běžný název (CN) rovnou na adresu URL, na základě GUID (například **328187776e774ceda8fc57609d404462.cloudapp.net**). Použití portálu k přidání certifikátu do dvoufázové instalace cloudové služby. Potom CSDEF a CSCFG souborům přidat informace o certifikátu, znovu zabalte aplikaci a aktualizaci dvoufázové nasazení tak, aby pomocí nového balíčku.
+   > Vytvoření certifikátu s hello běžný název (CN) rovna toohello na základě GUID adresou URL (například **328187776e774ceda8fc57609d404462.cloudapp.net**). Použití hello portálu tooadd hello certifikát tooyour připravený cloudové služby. Pak přidejte hello informace tooyour CSDEF a CSCFG soubory certifikátů, znovu zabalte aplikaci a aktualizovat vaše dvoufázové instalace toouse hello nový balíček pro nasazení.
    >
 
 ## <a name="next-steps"></a>Další kroky
 * [Obecná konfigurace cloudové služby](cloud-services-how-to-configure-portal.md).
-* Zjistěte, jak [nasazení cloudové služby](cloud-services-how-to-create-deploy-portal.md).
+* Zjistěte, jak příliš[nasazení cloudové služby](cloud-services-how-to-create-deploy-portal.md).
 * Konfigurace [vlastní název domény](cloud-services-custom-domain-name-portal.md).
 * [Správa služby cloud](cloud-services-how-to-manage-portal.md).

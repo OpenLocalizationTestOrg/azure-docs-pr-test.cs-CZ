@@ -1,6 +1,6 @@
 ---
-title: "Začínáme se službou Azure IoT Hub (Java) | Dokumentace Microsoftu"
-description: "Zjistěte, jak odesílat zprávy typu zařízení-cloud do služby Azure IoT Hub pomocí sad IoT SDK pro Javu. Vytvořte simulované zařízení a aplikace služeb pro registraci vašeho zařízení, odesílání zpráv a čtení zpráv ze služby IoT Hub."
+title: "aaaGet začít s Azure IoT Hub (Java) | Microsoft Docs"
+description: "Zjistěte, jak toosend zařízení cloud zprávy tooAzure IoT Hub pro jazyk Java pomocí sady SDK služby IoT. Vytvoření simulovaného zařízení a služby aplikace tooregister zařízení, odesílání zpráv a čtení zpráv ze služby IoT hub."
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -15,50 +15,50 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 707356a49970bcd76a55ee1b8a6fbddf6a6ba390
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ac954f0522b46ed2a5b4a819bc611c13be0b9a9e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-device-to-your-iot-hub-using-java"></a>Připojení zařízení ke službě IoT Hub pomocí Javy
+# <a name="connect-your-device-tooyour-iot-hub-using-java"></a>Připojení zařízení tooyour IoT hub pomocí jazyka Java
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-Na konci tohoto kurzu budete mít tři konzolové aplikace Java:
+Na konci hello tohoto kurzu máte tři aplikace konzoly v jazyce Java:
 
-* **create-device-identity** vytváří identitu zařízení a přidružený klíč zabezpečení k připojení aplikace pro zařízení.
-* **read-d2c-messages** zobrazuje telemetrická data odesílaná aplikací pro zařízení.
-* **simulated-device** propojuje službu IoT Hub s dříve vytvořenou identitou zařízení a každou druhou sekundu zasílá telemetrickou zprávu pomocí protokolu MQTT.
+* **Create-device-identity**, který vytvoří identitu zařízení a přiřazený bezpečnostní klíč tooconnect aplikace zařízení.
+* **Read-d2c-messages**, který zobrazuje hello telemetrické zprávy odesílané aplikace zařízení.
+* **simulated-device**, který připojí tooyour IoT hub s dříve vytvořenou identitou zařízení hello a odešle zprávu telemetrie každý druhý pomocí hello MQTT protokolu.
 
 > [!NOTE]
-> Informace o sadách Azure IoT SDK, s jejichž pomocí můžete vytvářet aplikace pro zařízení i back-end vašeho řešení, najdete v tématu [Sady SDK služby Azure IoT][lnk-hub-sdks].
+> článek Hello [SDK služby Azure IoT] [ lnk-hub-sdks] poskytuje informace o hello SDK služby Azure IoT, které můžete toobuild toorun obě aplikace na zařízení a back end vašeho řešení.
 
-Pro absolvování tohoto kurzu potřebujete:
+toocomplete tohoto kurzu budete potřebovat hello následující:
 
-* Nejnovější [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
+* Hello nejnovější [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
 * [Maven 3](https://maven.apache.org/install.html) 
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-Na závěr si poznamenejte hodnotu **Primární klíč**. Potom klikněte na **Koncové body** a na integrovaný koncový bod **Události**. V okně **Vlastnosti** si poznamenejte **název kompatibilní s centrem událostí** a adresu **koncového bodu kompatibilního s centrem událostí**. Tyto tři hodnoty budete potřebovat k vytvoření aplikace **read-d2c-messages**.
+V posledním kroku, si poznamenejte hello **primární klíč** hodnotu. Pak klikněte na tlačítko **koncové body** a hello **události** vestavěným koncovým bodem. Na hello **vlastnosti** okno, poznamenejte hello **název kompatibilní s centrem událostí** a hello **koncový bod kompatibilní s centrem událostí** adresu. Tyto tři hodnoty budete potřebovat k vytvoření aplikace **read-d2c-messages**.
 
 ![Okno Zasílání zpráv služby IoT Hub na webu Azure Portal][6]
 
-Nyní jste vytvořili svůj IoT Hub. Máte název hostitele služby IoT Hub, připojovací řetězec služby IoT Hub, primární klíč služby IoT Hub a název a koncový bod kompatibilní s centrem událostí, které potřebujete k dokončení tohoto kurzu.
+Nyní jste vytvořili svůj IoT Hub. Máte hello název hostitele služby IoT Hub, připojovací řetězec služby IoT Hub, IoT Hub primární klíč, název kompatibilní s centrem událostí a koncový bod kompatibilní s centrem událostí je třeba toocomplete v tomto kurzu.
 
 ## <a name="create-a-device-identity"></a>Vytvoření identity zařízení
-V této části vytvoříte konzolovou aplikaci Java, která v registru identit ve službě IoT Hub vytvoří identitu zařízení. Zařízení lze připojit ke službě IoT Hub, pouze pokud má záznam v registru identit. Další informace najdete v části **Registr identit** v [Příručce pro vývojáře pro službu IoT Hub][lnk-devguide-identity]. Tato konzolová aplikace po spuštění vygeneruje jedinečné ID zařízení a klíč, s jehož pomocí se zařízení může identifikovat při posílání zpráv typu zařízení-cloud do služby IoT Hub. 
+V této části vytvoříte konzolovou aplikaci Java, která vytvoří identitu zařízení v registru identit hello ve službě IoT hub. Pokud má záznam v registru identit hello se nemůže připojit zařízení tooIoT rozbočovače. Další informace najdete v tématu hello **registru identit** části hello [Příručka vývojáře pro službu IoT Hub][lnk-devguide-identity]. Při spuštění této konzolové aplikace vygeneruje jedinečné ID zařízení a klíč, že vaše zařízení použít tooidentify samotné při odešle zařízení cloud zprávy tooIoT rozbočovače.
 
-1. Vytvořte prázdnou složku s názvem iot-java-get-started. Ve složce iot-java-get-started vytvořte pomocí následujícího příkazu v příkazovém řádku projekt Maven s názvem **create-device-identity**. Všimněte si, že se jedná o jeden dlouhý příkaz:
+1. Vytvořte prázdnou složku s názvem iot-java-get-started. Ve složce iot-java-get-started hello vytvořte projekt Maven s názvem **create-device-identity** pomocí hello následující příkaz na příkazovém řádku. Všimněte si, že se jedná o jeden dlouhý příkaz:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=create-device-identity -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. Na příkazovém řádku přejděte do složky create-device-identity.
+2. Na příkazovém řádku přejděte toohello složky create-device-identity.
 
-3. Pomocí textového editoru otevřete ve složce create-device-identity soubor pom.xml a k uzlu **závislosti** přidejte následující závislost. Tato závislost vám umožní použít v aplikaci balíček iot-service-client:
+3. Pomocí textového editoru, otevřete soubor pom.xml hello ve složce create-device-identity hello a přidejte následující závislost toohello hello **závislosti** uzlu. Tuto závislost umožňuje, aby vám toouse hello klienta služby iot balíček ve vaší aplikaci:
 
     ```xml
     <dependency>
@@ -69,13 +69,13 @@ V této části vytvoříte konzolovou aplikaci Java, která v registru identit 
     ```
 
     > [!NOTE]
-    > Můžete vyhledat nejnovější verzi **iot-service-client** pomocí [vyhledávání Maven][lnk-maven-service-search].
+    > Můžete zkontrolovat nejnovější verze hello **klienta služby iot** pomocí [Maven vyhledávání][lnk-maven-service-search].
 
-4. Soubor pom.xml uložte a zavřete.
+4. Uložte a zavřete soubor pom.xml hello.
 
-5. Pomocí textového editoru otevřete soubor create-device-identity\src\main\java\com\mycompany\app\App.java.
+5. Pomocí textového editoru otevřete soubor create-device-identity\src\main\java\com\mycompany\app\App.java hello.
 
-6. Do souboru přidejte následující příkazy pro **import**:
+6. Přidejte následující hello **importovat** souboru toohello příkazy:
 
     ```java
     import com.microsoft.azure.sdk.iot.service.exceptions.IotHubException;
@@ -86,7 +86,7 @@ V této části vytvoříte konzolovou aplikaci Java, která v registru identit 
     import java.net.URISyntaxException;
     ```
 
-7. Do třídy **App** přidejte následující proměnné na úrovni třídy a nahraďte zástupné symboly **{yourhubconnectionstring}** hodnotou, kterou jste si předtím poznamenali:
+7. Přidejte následující proměnné na úrovni toohello hello **aplikace** třídy a nahraďte **{yourhubconnectionstring}** s hello hodnotu vaší uvedené výše:
 
     ```java
     private static final String connectionString = "{yourhubconnectionstring}";
@@ -94,13 +94,13 @@ V této části vytvoříte konzolovou aplikaci Java, která v registru identit 
     ```
 [!INCLUDE [iot-hub-pii-note-naming-device](../../includes/iot-hub-pii-note-naming-device.md)]
 
-8. Upravte podpis metody **Main** tak, aby zahrnoval následující výjimky:
+8. Upravte podpis hello hello **hlavní** metoda tooinclude hello výjimky následujícím způsobem:
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException, Exception
     ```
 
-9. Přidejte následující kód jako obsah metody **Main**. Tento kód vytvoří v registru identit služby IoT Hub zařízení s názvem *javadevice* (pokud zatím neexistuje). Potom zobrazí ID a klíč zařízení, které budete později potřebovat:
+9. Přidejte následující kód jako hello textu hello hello **hlavní** metoda. Tento kód vytvoří v registru identit služby IoT Hub zařízení s názvem *javadevice* (pokud zatím neexistuje). Potom zobrazí hello zařízení ID a klíč, který budete potřebovat později:
 
     ```java
     RegistryManager registryManager = RegistryManager.createFromConnectionString(connectionString);
@@ -112,7 +112,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     try {
       device = registryManager.addDevice(device);
     } catch (IotHubException iote) {
-      // If the device already exists.
+      // If hello device already exists.
       try {
         device = registryManager.getDevice(deviceId);
       } catch (IotHubException iotf) {
@@ -130,7 +130,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     try {
       device = registryManager.addDevice(device);
     } catch (IotHubException iote) {
-      // If the device already exists.
+      // If hello device already exists.
       try {
         device = registryManager.getDevice(deviceId);
       } catch (IotHubException iotf) {
@@ -144,41 +144,41 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     System.out.println("Device key: " + device.getPrimaryKey());
     ```
 
-10. Soubor App.java uložte a zavřete.
+10. Uložte a zavřete soubor App.java hello.
 
-11. Aplikaci **create-device-identity** pomocí nástroje Maven sestavíte tak, že v příkazovém řádku ve složce create-device-identity spustíte následující příkaz:
+11. toobuild hello **create-device-identity** aplikace pomocí nástroje Maven, spustit následující příkaz na příkazovém řádku hello ve složce create-device-identity hello hello:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
 
-12. Aplikaci **create-device-identity** pomocí nástroje Maven spustíte tak, že v příkazovém řádku ve složce create-device-identity spustíte následující příkaz:
+12. toorun hello **create-device-identity** aplikace pomocí nástroje Maven, spustit následující příkaz na příkazovém řádku hello ve složce create-device-identity hello hello:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-13. Poznamenejte si **ID zařízení** a **Klíč zařízení**. Tyto hodnoty budete potřebovat později při vytváření aplikace, která se ke službě IoT Hub připojí jako zařízení.
+13. Poznamenejte si hello **ID zařízení** a **klíč zařízení**. Budete potřebovat tyto hodnoty později při vytváření aplikace, která se připojuje tooIoT rozbočovače jako zařízení.
 
 > [!NOTE]
-> V registru identit služby IoT Hub se uchovávají pouze identity zařízení za účelem bezpečného přístupu ke službě IoT Hub. Ukládají se tady ID zařízení a jejich klíče, které slouží jako zabezpečené přihlašovací údaje, a příznak povoleno/zakázáno, s jehož pomocí můžete zakázat přístup k jednotlivým zařízením. Pokud aplikace potřebuje pro zařízení ukládat další metadata, měla by používat úložiště pro konkrétní aplikaci. Další informace najdete v [Příručce pro vývojáře pro službu IoT Hub][lnk-devguide-identity].
+> Hello registru identit služby IoT Hub ukládá jenom zařízení identity tooenable zabezpečený přístup toohello IoT hub. Ukládá ID a klíče toouse zařízení jako zabezpečovací přihlašovací údaje a příznak povoleno/zakázáno, které můžete toodisable přístup k jednotlivým zařízením. Pokud aplikace potřebuje toostore další metadata specifická pro zařízení, měla by používat úložiště specifické pro aplikace. Další informace najdete v tématu hello [Příručka vývojáře pro službu IoT Hub][lnk-devguide-identity].
 
 ## <a name="receive-device-to-cloud-messages"></a>Příjem zpráv typu zařízení-cloud
 
-V této části vytvoříte konzolovou aplikaci Java, která čte zprávy typu zařízení-cloud ze služby IoT Hub. Služba IoT Hub zpřístupní koncový bod kompatibilní se službou [Event Hub][lnk-event-hubs-overview], který vám umožní číst zprávy typu zařízení-cloud. Z důvodu zjednodušení vytvoří tento kurz jednoduchou čtečku, která není vhodná pro vysoce výkonná nasazení. Způsoby zpracování zpráv typu zařízení-cloud v různých škálách najdete v kurzu [Zpracování zpráv typu zařízení-cloud][lnk-process-d2c-tutorial]. Kurz [Začínáme se službou Event Hubs][lnk-eventhubs-tutorial] vám poskytne další informace o zpracování zpráv ze služby Event Hubs a vztahuje se na koncové body kompatibilní s centrem událostí služby IoT Hub.
+V této části vytvoříte konzolovou aplikaci Java, která čte zprávy typu zařízení-cloud ze služby IoT Hub. IoT hub zpřístupní [centra událostí][lnk-event-hubs-overview]-koncový bod kompatibilní tooenable jste tooread zpráv typu zařízení cloud. věcí tookeep jednoduchý, v tomto kurzu vytvoří základní čtečka, která není vhodná pro vysoce výkonná nasazení. Hello [zpracování zpráv typu zařízení cloud] [ lnk-process-d2c-tutorial] kurz ukazuje, jak tooprocess zařízení cloud zpráv ve velkém měřítku. Hello [Začínáme se službou Event Hubs] [ lnk-eventhubs-tutorial] kurz obsahuje další informace o tom, jak tooprocess zpráv ze služby Event Hubs a je použít toohello koncové body kompatibilní s centrem událostí služby IoT Hub.
 
 > [!NOTE]
-> Koncový bod kompatibilní s centrem událostí pro čtení zpráv mezi zařízením a cloudem vždy používá protokol AMQP.
+> Hello koncový bod kompatibilní s centrem událostí pro čtení zpráv typu zařízení cloud vždy používá protokol AMQP hello.
 
-1. Ve složce iot-java-get-started, kterou jste vytvořili v části *Vytvoření identity zařízení*, vytvořte pomocí následujícího příkazu v příkazovém řádku projekt Maven s názvem **read-d2c-messages**. Všimněte si, že se jedná o jeden dlouhý příkaz:
+1. Ve složce iot-java-get-started hello jste vytvořili v hello *vytvoření identity zařízení* , vytvořte projekt Maven s názvem **read-d2c-messages** pomocí hello následující příkaz na příkazovém řádku. Všimněte si, že se jedná o jeden dlouhý příkaz:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-d2c-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. Na příkazovém řádku přejděte do složky read-d2c-messages.
+2. Na příkazovém řádku přejděte toohello read-d2c-messages složky.
 
-3. Pomocí textového editoru otevřete ve složce read-d2c-messages soubor pom.xml a k uzlu **závislosti** přidejte následující závislost. Tato závislost umožňuje čtení z koncového bodu kompatibilního s centrem událostí pomocí balíčku eventhubs-client ve vaší aplikaci:
+3. Pomocí textového editoru, otevřete soubor pom.xml hello ve složce read-d2c-messages hello a přidejte následující závislost toohello hello **závislosti** uzlu. Tuto závislost umožňuje toouse hello balíčku eventhubs-client ve vaší aplikaci tooread z koncového bodu kompatibilního s centrem událostí hello:
 
     ```xml
     <dependency> 
@@ -188,11 +188,11 @@ V této části vytvoříte konzolovou aplikaci Java, která čte zprávy typu z
     </dependency>
     ```
 
-4. Soubor pom.xml uložte a zavřete.
+4. Uložte a zavřete soubor pom.xml hello.
 
-5. Pomocí textového editoru otevřete soubor  read-d2c-messages\src\main\java\com\mycompany\app\App.java.
+5. Pomocí textového editoru otevřete soubor read-d2c-messages\src\main\java\com\mycompany\app\App.java hello.
 
-6. Do souboru přidejte následující příkazy pro **import**:
+6. Přidejte následující hello **importovat** souboru toohello příkazy:
 
     ```java
     import java.io.IOException;
@@ -204,13 +204,13 @@ V této části vytvoříte konzolovou aplikaci Java, která čte zprávy typu z
     import java.util.function.*;
     ```
 
-7. Do třídy **App** přidejte následující proměnnou na úrovni třídy. Zástupné symboly **{youriothubkey}**, **{youreventhubcompatibleendpoint}** a **{youreventhubcompatiblename}** nahraďte hodnotami, které jste si předtím poznamenali:
+7. Přidejte následující proměnné toohello úrovni třídy hello **aplikace** třídy. Nahraďte **{youriothubkey}**, **{youreventhubcompatibleendpoint}**, a **{youreventhubcompatiblename}** hello hodnotami, které jste si poznamenali dříve:
 
     ```java
     private static String connStr = "Endpoint={youreventhubcompatibleendpoint};EntityPath={youreventhubcompatiblename};SharedAccessKeyName=iothubowner;SharedAccessKey={youriothubkey}";
     ```
 
-8. Do třídy **App** přidejte následující metodu **receiveMessages**. Tato metoda vytvoří instanci **EventHubClient** k připojení ke koncovému bodu kompatibilnímu s centrem událostí a poté asynchronně vytvoří instanci **PartitionReceiver** ke čtení z oddílu centra událostí. Až do ukončení aplikace se bude nepřetržitě provádět v cyklu a vypisovat podrobnosti o zprávách.
+8. Přidejte následující hello **receiveMessages** metoda toohello **aplikace** třídy. Tato metoda vytvoří **EventHubClient** instance tooconnect toohello kompatibilní s centrem událostí koncový bod a poté asynchronně vytvoří **PartitionReceiver** instance tooread z centra událostí oddíl. To nepřetržitě provádět v cyklu a vytiskne hello podrobnosti zprávy, dokud neskončí aplikace hello.
 
     ```java
     // Create a receiver on a partition.
@@ -219,7 +219,7 @@ V této části vytvoříte konzolovou aplikaci Java, která čte zprávy typu z
       try {
         client = EventHubClient.createFromConnectionStringSync(connStr);
       } catch (Exception e) {
-        System.out.println("Failed to create client: " + e.getMessage());
+        System.out.println("Failed toocreate client: " + e.getMessage());
         System.exit(1);
       }
       try {
@@ -251,33 +251,33 @@ V této části vytvoříte konzolovou aplikaci Java, která čte zprávy typu z
                   System.out.println(String.format("Partition: %s, ReceivedBatch Size: %s", partitionId, batchSize));
                 }
               } catch (Exception e) {
-                System.out.println("Failed to receive messages: " + e.getMessage());
+                System.out.println("Failed tooreceive messages: " + e.getMessage());
               }
             }
           });
         } catch (Exception e) {
-          System.out.println("Failed to create receiver: " + e.getMessage());
+          System.out.println("Failed toocreate receiver: " + e.getMessage());
       }
       return client;
     }
     ```
 
    > [!NOTE]
-   > Tato metoda při vytváření přijímače používá filtr, aby přijímač četl pouze zprávy odeslané do služby IoT Hub až po jeho spuštění. Tato metoda je užitečná v testovacím prostředí, protože uvidíte aktuální sadu zpráv. V produkčním prostředí by měl kód zpracovávat všechny zprávy – další informace najdete v kurzu [Postupy zpracování zpráv typu zařízení-cloud ve službě IoT Hub][lnk-process-d2c-tutorial].
+   > Tato metoda používá filtr, při vytváření příjemce hello tak, aby hello přijímač četl pouze zprávy odeslané tooIoT Hub až po spuštění hello příjemce. Tato metoda je užitečná v testovacím prostředí, abyste viděli hello aktuální sadu zpráv. V produkčním prostředí by měl váš kód Ujistěte se, že zpracovává všechny zprávy hello – Další informace naleznete v tématu hello [jak tooprocess zpráv typu zařízení cloud IoT Hub] [ lnk-process-d2c-tutorial] kurzu.
 
-9. Upravte podpis metody **Main** tak, aby zahrnoval následující výjimku:
+9. Upravte podpis hello hello **hlavní** metoda tooinclude hello výjimka následujícím způsobem:
 
     ```java
     public static void main( String[] args ) throws IOException
     ```
 
-10. Ve třídě **App** přidejte do metody **Main** následující kód. Tento kód vytvoří dvě instance **EventHubClient** a **PartitionReceiver** a umožní vám po dokončení zpracování zpráv zavřít aplikaci:
+10. Přidejte následující kód toohello hello **hlavní** metoda v hello **aplikace** třídy. Tento kód vytvoří dvě hello **EventHubClient** a **PartitionReceiver** instance a umožní vám aplikace hello tooclose po dokončení zpracování zpráv:
 
     ```java
     // Create receivers for partitions 0 and 1.
     EventHubClient client0 = receiveMessages("0");
     EventHubClient client1 = receiveMessages("1");
-    System.out.println("Press ENTER to exit.");
+    System.out.println("Press ENTER tooexit.");
     System.in.read();
     try {
       client0.closeSync();
@@ -289,28 +289,28 @@ V této části vytvoříte konzolovou aplikaci Java, která čte zprávy typu z
     ```
 
     > [!NOTE]
-    > Tento kód předpokládá, že jste vytvořili službu IoT Hub na úrovni F1 (Free). Služba IoT Hub na úrovni Free má dva oddíly s názvem „0“ a „1“.
+    > Tento kód předpokládá, že jste vytvořili službu IoT hub v úroveň hello F1 (free). Služba IoT Hub na úrovni Free má dva oddíly s názvem „0“ a „1“.
 
-11. Soubor App.java uložte a zavřete.
+11. Uložte a zavřete soubor App.java hello.
 
-12. Aplikaci **read-d2c-messages** pomocí nástroje Maven sestavíte tak, že v příkazovém řádku ve složce read-d2c-messages spustíte následující příkaz:
+12. toobuild hello **read-d2c-messages** aplikace pomocí nástroje Maven, spustit následující příkaz na příkazovém řádku hello ve složce read-d2c-messages hello hello:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
 
 ## <a name="create-a-device-app"></a>Vytvoření aplikace pro zařízení
-V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízení odesílající zprávy typu zařízení-cloud do služby IoT Hub.
+V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízení odesílající zprávy typu zařízení cloud tooan IoT hub.
 
-1. Ve složce iot-java-get-started, kterou jste vytvořili v části *Vytvoření identity zařízení*, vytvořte pomocí následujícího příkazu v příkazovém řádku projekt Maven s názvem **simulated-device**. Všimněte si, že se jedná o jeden dlouhý příkaz:
+1. Ve složce iot-java-get-started hello jste vytvořili v hello *vytvoření identity zařízení* , vytvořte projekt Maven s názvem **simulated-device** pomocí hello následující příkaz na příkazovém řádku. Všimněte si, že se jedná o jeden dlouhý příkaz:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. Na příkazovém řádku přejděte do složky simulated-devices.
+2. Na příkazovém řádku přejděte toohello složky simulated Devices.
 
-3. Pomocí textového editoru otevřete ve složce simulated-device soubor pom.xml a k uzlu **závislosti** přidejte následující závislosti. Tato závislost vám umožní komunikovat se službou IoT Hub a serializovat objekty Java do formátu JSON pomocí balíčku iothub-java-client ve vaší aplikaci:
+3. Pomocí textového editoru, otevřete soubor pom.xml hello ve složce simulated-device hello a přidejte následující závislosti toohello hello **závislosti** uzlu. Tuto závislost umožňuje, aby vám toouse hello iothub-java-client balíček ve vaší aplikaci toocommunicate s IoT hub a tooserialize tooJSON objekty Java:
 
     ```xml
     <dependency>
@@ -326,13 +326,13 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     ```
 
     > [!NOTE]
-    > Můžete vyhledat nejnovější verzi **iot-device-client** pomocí [vyhledávání Maven][lnk-maven-device-search].
+    > Můžete zkontrolovat nejnovější verze hello **klienta zařízení iot** pomocí [Maven vyhledávání][lnk-maven-device-search].
 
-4. Soubor pom.xml uložte a zavřete.
+4. Uložte a zavřete soubor pom.xml hello.
 
-5. Pomocí textového editoru otevřete soubor simulated-device\src\main\java\com\mycompany\app\App.java.
+5. Pomocí textového editoru otevřete soubor simulated-device\src\main\java\com\mycompany\app\App.java hello.
 
-6. Do souboru přidejte následující příkazy pro **import**:
+6. Přidejte následující hello **importovat** souboru toohello příkazy:
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -345,7 +345,7 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     import java.util.concurrent.ExecutorService;
     ```
 
-7. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahraďte hodnotu **{youriothubname}** názvem vaší služby IoT Hub a hodnotu **{yourdevicekey}** klíčem zařízení, který jste vygenerovali v části *Vytvoření identity zařízení*:
+7. Přidejte následující proměnné na úrovni toohello hello **aplikace** třídy. Nahrazení **{youriothubname}** názvem služby IoT hub, a **{yourdevicekey}** s hodnotou klíče hello zařízení jste vygenerovali v hello *vytvoření identity zařízení* části:
 
     ```java
     private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myFirstJavaDevice;SharedAccessKey={yourdevicekey}";
@@ -354,9 +354,9 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     private static DeviceClient client;
     ```
    
-    Tato ukázková aplikace používá při vytváření instance objektu **DeviceClient** proměnnou **protocol**. Ke komunikaci se službou IoT Hub můžete použít protokol MQTT, AMQP nebo HTTP.
+    Tato ukázková aplikace používá hello **protokol** proměnná při vytvoření instance **DeviceClient** objektu. Můžete buď toocommunicate hello MQTT, AMQP nebo HTTP protocol službou IoT Hub.
 
-8. Telemetrická data, která vaše zařízení odesílá do služby IoT Hub, určete přidáním následující vnořené třídy **TelemetryDataPoint** do třídy **App**.
+8. Přidejte následující hello vnořenou **TelemetryDataPoint** třída uvnitř hello **aplikace** třídy toospecify hello telemetrická data vaše zařízení odesílá tooyour IoT hub:
 
     ```java
     private static class TelemetryDataPoint {
@@ -370,12 +370,12 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
       }
     }
     ```
-9. Za účelem zobrazení stavu potvrzení, které služba IoT Hub vrací po zpracování zprávy z aplikace pro zařízení, přidejte do třídy **App** následující vnořenou třídu **EventCallback**. Tato metoda také po zpracování zprávy upozorní hlavní vlákno v aplikaci:
+9. Přidejte následující hello vnořenou **EventCallback** třída uvnitř hello **aplikace** třída toodisplay hello potvrzení stav, který hello služby IoT hub vrací po zpracování zprávy ze zařízení aplikaci hello. Tato metoda také upozorňován hello hlavní vlákno v aplikaci hello po zpracování zprávy hello:
    
     ```java
     private static class EventCallback implements IotHubEventCallback {
       public void execute(IotHubStatusCode status, Object context) {
-        System.out.println("IoT Hub responded to message with status: " + status.name());
+        System.out.println("IoT Hub responded toomessage with status: " + status.name());
    
         if (context != null) {
           synchronized (context) {
@@ -386,7 +386,7 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     }
     ```
 
-10. Do třídy **App** přidejte následující vnořenou třídu **MessageSender**. Metoda **run** v této třídě vygeneruje ukázková telemetrická data, která se odešlou do služby IoT Hub, a před odesláním další zprávy počká na potvrzení:
+10. Přidejte následující hello vnořenou **MessageSender** třída uvnitř hello **aplikace** třídy. Hello **spustit** metoda v této třídě vygeneruje ukázková telemetrická data toosend tooyour IoT hub a počká na potvrzení před odesláním další zprávy hello:
 
     ```java
     private static class MessageSender implements Runnable {
@@ -426,9 +426,9 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
     }
     ```
 
-    Tato metoda odešle novou zprávu typu zařízení-cloud sekundu poté, co služba IoT Hub potvrdí předchozí zprávu. Zpráva obsahuje objekt serializovaný do formátu JSON, s ID zařízení a náhodně generovanými čísly, který simuluje snímač teploty a snímač vlhkosti.
+    Tato metoda odesílá novou zprávu typu zařízení cloud sekundu poté, co hello IoT hub potvrdí předchozí zprávu hello. Hello zpráva obsahuje objekt serializací JSON s ID hello zařízení a náhodně vygenerované čísla toosimulate senzor teploty a vlhkosti senzoru.
 
-11. Metodu **Main** nahraďte následujícím kódem, který vytvoří vlákno k odesílání zpráv typu zařízení-cloud do služby IoT Hub:
+11. Nahraďte hello **hlavní** metoda s hello následující kód, který vytvoří vlákno toosend zpráv typu zařízení cloud tooyour IoT rozbočovači:
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException {
@@ -440,58 +440,58 @@ V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízen�
       ExecutorService executor = Executors.newFixedThreadPool(1);
       executor.execute(sender);
     
-      System.out.println("Press ENTER to exit.");
+      System.out.println("Press ENTER tooexit.");
       System.in.read();
       executor.shutdownNow();
       client.closeNow();
     }
     ```
 
-12. Soubor App.java uložte a zavřete.
+12. Uložte a zavřete soubor App.java hello.
 
-13. Aplikaci **simulated-device** pomocí nástroje Maven sestavíte tak, že v příkazovém řádku ve složce simulated-device spustíte následující příkaz:
+13. toobuild hello **simulated-device** aplikace pomocí nástroje Maven, spustit následující příkaz na příkazovém řádku hello ve složce simulated-device hello hello:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
 
 > [!NOTE]
-> Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byte měli implementovat zásady opakování (například exponenciální opakování), jak je navrženo v článku [Řešení přechodných chyb][lnk-transient-faults] na webu MSDN.
+> věcí tookeep jednoduchý, tento kurz neimplementuje žádné zásady opakování. V produkčním kódu, měli byste implementovat zásady opakování (například exponenciální zdvojnásobení) dle pokynů v článku na webu MSDN hello [přechodných chyb][lnk-transient-faults].
 
-## <a name="run-the-apps"></a>Spouštění aplikací
+## <a name="run-hello-apps"></a>Spuštění aplikace hello
 
-Nyní jste připraveni aplikaci spustit.
+Nyní je připraven toorun hello aplikace.
 
-1. V příkazovém řádku ve složce read-d2c spusťte následující příkaz, aby se začal monitorovat první oddíl služby IoT Hub:
+1. Na příkazovém řádku ve složce read-d2c hello spusťte následující příkaz toobegin monitorovat první oddíl služby IoT hub hello hello:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Aplikace služby Java IoT Hub pro monitorování zpráv typu zařízení-cloud][7]
+    ![Zprávy typu zařízení cloud Java IoT Hub služby aplikace toomonitor][7]
 
-2. V příkazovém řádku ve složce simulated-device spusťte následující příkaz, aby se do služby IoT Hub začala odesílat telemetrická data:
+2. Na příkazovém řádku ve složce simulated-device hello spusťte následující příkaz toobegin odesílání telemetrických dat tooyour IoT hub hello:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
     ```
 
-    ![Aplikace zařízení služby Java IoT Hub pro odesílání zpráv typu zařízení-cloud][8]
+    ![Zprávy typu zařízení cloud Java IoT Hub zařízení aplikace toosend][8]
 
-3. Na dlaždici **Využití** na webu [Azure Portal][lnk-portal] se zobrazuje počet zpráv odeslaných do služby IoT Hub:
+3. Hello **využití** dlaždici v hello [portál Azure] [ lnk-portal] ukazuje hello počet zpráv odeslaných toohello služby IoT hub:
 
-    ![Dlaždice Použití webu Azure Portal se zobrazením počtu zpráv odeslaných do služby IoT Hub][43]
+    ![Azure portálu využití dlaždice zobrazuje počet zpráv odeslaných tooIoT rozbočovače][43]
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Pomocí identity zařízení jste aplikaci pro zařízení povolili odesílání zpráv typu zařízení-cloud do služby IoT Hub. Také jste vytvořili aplikaci, která zobrazuje zprávy přijaté službou IoT Hub.
+V tomto kurzu jste nakonfigurovali novou službu IoT hub v hello portál Azure a poté jste vytvořili identitu zařízení v registru identit služby IoT hub hello. Použili jste toto zařízení identity tooenable hello zařízení aplikaci toosend zpráv typu zařízení cloud toohello Centrum IoT. Můžete také vytvořit aplikaci, která zobrazuje hello zprávy přijaté službou hello IoT hub.
 
-Chcete-li pokračovat v seznamování se službou IoT Hub a prozkoumat další scénáře IoT, podívejte se na tato témata:
+toocontinue Začínáme se službou IoT Hub a tooexplore najdete v dalších scénářů platformy IoT:
 
 * [Připojení zařízení][lnk-connect-device]
 * [Začínáme se správou zařízení][lnk-device-management]
 * [Začínáme se službou Azure IoT Edge][lnk-iot-edge]
 
-Další informace o tom, jak rozšířit vaše řešení internetu věcí a zpracovávat škálované zprávy typu zařízení-cloud, najdete v kurzu [Zpracování zpráv typu zařízení-cloud][lnk-process-d2c-tutorial].
+toolearn jak tooextend zpráv IoT řešení a proces zařízení cloud ve velkém měřítku, najdete v části hello [zpracování zpráv typu zařízení cloud] [ lnk-process-d2c-tutorial] kurzu.
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 
 <!-- Images. -->

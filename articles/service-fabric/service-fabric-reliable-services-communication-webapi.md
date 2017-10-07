@@ -1,6 +1,6 @@
 ---
-title: "Služba komunikaci s rozhraním ASP.NET Web API | Microsoft Docs"
-description: "Zjistěte, jak implementovat podrobné komunikace služby pomocí rozhraní ASP.NET Web API OWIN samoobslužné hostování v spolehlivé Services API."
+title: "aaaService komunikace s hello rozhraní ASP.NET Web API | Microsoft Docs"
+description: "Zjistěte, jak hello komunikace služby tooimplement podrobné pomocí rozhraní ASP.NET Web API s OWIN samoobslužné hostování v hello spolehlivé Services API."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -15,35 +15,35 @@ ms.workload: required
 ms.date: 02/10/2017
 ms.author: vturecek
 redirect_url: /azure/service-fabric/service-fabric-reliable-services-communication-aspnetcore
-ms.openlocfilehash: 73b7e1c0cb93ae7c54780a3aab837b0e5bcdb0a0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3fb18fcb141ada0d79a0acda3dccbc7fb044346d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-service-fabric-web-api-services-with-owin-self-hosting"></a>Začínáme: Service Fabric webového rozhraní API služby s vlastním hostování OWIN
-Azure Service Fabric vloží napájení rukou při se rozhodování, jak chcete, aby vaše služby, aby komunikovat s uživateli a mezi sebou. Tento kurz se zaměřuje na implementaci komunikace služby pomocí rozhraní ASP.NET Web API Open Web Interface pro .NET (OWIN) samoobslužné hostování v Service Fabric spolehlivé Services API. Jsme budete pustíte hluboko do spolehlivé služby modulární komunikace rozhraní API. Také použijeme webového rozhraní API v Podrobný příklad návod, jak nastavit vlastní komunikace naslouchací proces.
+Azure Service Fabric přináší hello výkon v ruce při se rozhodování, jak chcete vaši toocommunicate služby s uživateli a mezi sebou. Tento kurz se zaměřuje na implementaci komunikace služby pomocí rozhraní ASP.NET Web API Open Web Interface pro .NET (OWIN) samoobslužné hostování v Service Fabric spolehlivé Services API. Jsme budete pustíte hluboko do hello spolehlivé služby modulární komunikace rozhraní API. Také použijeme webového rozhraní API v tooshow podrobný příklad můžete jak tooset si vlastní komunikace naslouchací proces.
 
-## <a name="introduction-to-web-api-in-service-fabric"></a>Úvod do webového rozhraní API v Service Fabric
-Rozhraní ASP.NET Web API je Oblíbené a výkonné rozhraní pro vytváření rozhraní API HTTP na rozhraní .NET Framework. Pokud už nejste obeznámeni s rozhraní, přečtěte si téma [Začínáme s ASP.NET Web API 2](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) Další informace.
+## <a name="introduction-tooweb-api-in-service-fabric"></a>Úvod tooWeb rozhraní API v Service Fabric
+Rozhraní ASP.NET Web API je Oblíbené a výkonné rozhraní pro vytváření rozhraní API HTTP nad hello rozhraní .NET Framework. Pokud už nejste obeznámeni s hello framework, přečtěte si téma [Začínáme s ASP.NET Web API 2](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) toolearn Další.
 
-Webové rozhraní API v Service Fabric je stejné rozhraní ASP.NET Web API znáte a rádi. Rozdíl je, jak můžete *hostitele* aplikace webového rozhraní API. Nebudete používat Microsoft Internetové informační služby (IIS). Abyste lépe pochopili rozdíl, můžeme ho rozdělit na dvě části:
+Webové rozhraní API v Service Fabric je hello stejné rozhraní ASP.NET Web API znáte a rádi. Hello rozdíl je, jak můžete *hostitele* aplikace webového rozhraní API. Nebudete používat Microsoft Internetové informační služby (IIS). toobetter pochopit rozdíl hello, můžeme rozdělit na dvě části:
 
-1. Aplikace webového rozhraní API (včetně řadiče a modely)
-2. Hostitele (na webový server, obvykle IIS)
+1. aplikace Hello webového rozhraní API (včetně řadiče a modely)
+2. Hello hostitele (hello webový server, obvykle IIS)
 
-Vlastní aplikace webového rozhraní API se nezmění. Se neliší od aplikací webového rozhraní API, které máte napsaný v minulosti a nyní byste měli mít jednoduše přesunout přes většinu kódu aplikace. Ale pokud jste si byla hostování ve službě IIS, kde může být jen málo liší od se používá pro hostitele aplikace. Předtím, než se nám získat hostování část, Začněme s něco další známé: aplikace webového rozhraní API.
+Vlastní aplikace webového rozhraní API se nezmění. Se neliší od aplikací webového rozhraní API, které máte napsaný v posledních hello a musí být schopný toosimply přesunutí přes většinu kódu aplikace. Pokud jste si ve službě IIS, kde hostovat aplikace hello hostování, ale může být jen málo liší od co jste slouží jako. Předtím, než získáme toohello hostování část, Začněme s něco další známé: hello aplikace webového rozhraní API.
 
-## <a name="create-the-application"></a>Vytvoření aplikace
+## <a name="create-hello-application"></a>Vytvoření aplikace hello
 Začněte vytvořením nové aplikace Service Fabric pomocí jednoho bezstavové služby v sadě Visual Studio 2015.
 
-Šablony sady Visual Studio pro bezstavové služby pomocí rozhraní Web API je k dispozici. V tomto kurzu využijeme projekt webového rozhraní API od začátku, jejímž výsledkem co byste získali jste vybrali této šablony.
+Šablony sady Visual Studio pro bezstavové služby pomocí rozhraní Web API je k dispozici tooyou. V tomto kurzu využijeme projekt webového rozhraní API od začátku, jejímž výsledkem co byste získali jste vybrali této šablony.
 
-Vyberte prázdný projekt bezstavové služby se dozvíte, jak sestavit projekt webového rozhraní API od začátku, nebo můžete začít se šablonou bezstavové služby webového rozhraní API a jednoduše podle nich zorientujete.  
+Vyberte prázdné toolearn projektu bezstavové služby, jak můžete toobuild projekt webového rozhraní API od začátku, nebo můžete začít s hello bezstavové služby šablony webového rozhraní API a jednoduše podle nich zorientujete.  
 
-Prvním krokem je stáhnout některé balíčky NuGet pro webové rozhraní API. Balíček, který chcete použít je Microsoft.AspNet.WebApi.OwinSelfHost. Tento balíček obsahuje všechny potřebné balíčky webového rozhraní API a *hostitele* balíčky. To bude důležité později.
+prvním krokem Hello je toopull v některé balíčky NuGet pro webové rozhraní API. balíček Hello chceme toouse je Microsoft.AspNet.WebApi.OwinSelfHost. Tento balíček obsahuje všechny potřebné balíčky webového rozhraní API hello a hello *hostitele* balíčky. To bude důležité později.
 
-Po dokončení instalace balíčků, můžete začít vytváření základní strukturu projekt webového rozhraní API. Pokud jste použili webového rozhraní API, struktura projektu velmi povědomé. Začněte přidáním `Controllers` directory a řadič jednoduché hodnoty:
+Po dokončení instalace hello balíčků, můžete začít vytváření hello základní strukturu projekt webového rozhraní API. Pokud jste použili webového rozhraní API, struktura projektu hello velmi povědomé. Začněte přidáním `Controllers` directory a řadič jednoduché hodnoty:
 
 **ValuesController.cs**
 
@@ -86,7 +86,7 @@ namespace WebService.Controllers
 
 ```
 
-V dalším kroku přidejte třídu spuštění v kořenu projektu k registraci směrování, formátování a dalších nastavení konfigurace. Toto je také kde webového rozhraní API připojí k *hostitele*, který bude kdykoli znovu spustit později. 
+V dalším kroku přidejte třídu spuštění na hello projektu kořenové tooregister hello směrování, formátování a dalších nastavení konfigurace. Toto je také kde webového rozhraní API připojí toohello *hostitele*, který bude kdykoli znovu spustit později. 
 
 **Startup.cs**
 
@@ -115,12 +115,12 @@ namespace WebService
 }
 ```
 
-Je to pro část aplikace. V tomto okamžiku nastavili jsme právě základní rozložení projektu webového rozhraní API. Pokud by neměl vypadat výrazně liší od projekty webového rozhraní API, že jste vytvořili v minulosti nebo ze základní šablony webového rozhraní API. Obchodní logiky přejde v kontrolerech a modelech jako obvykle.
+Je to pro část aplikace hello. V tomto okamžiku nastavili jsme právě hello základní webového rozhraní API rozložení projektu. Pokud by neměl vypadat výrazně liší od projekty webového rozhraní API, že jste vytvořili v minulosti hello nebo z šablony webového rozhraní API základní hello. Obchodní logika je třeba do hello řadiče a modely jako obvykle.
 
 Nyní co můžeme udělat o hostování tak, aby jeho ve skutečnosti spuštěním?
 
 ## <a name="service-hosting"></a>Služby hostování
-V Service Fabric služby běží v *procesu hostitele služby*, spustitelný soubor, který spouští službu kódu. Při zápisu služby pomocí rozhraní API spolehlivé služby projektu služby právě zkompiluje na spustitelný soubor, který zaregistruje typ vaší služby a spustí váš kód. To platí ve většině případů při zápisu služby v Service Fabric v rozhraní .NET. Při otevření souboru Program.cs v projektu bezstavové služby, byste měli vidět:
+V Service Fabric služby běží v *procesu hostitele služby*, spustitelný soubor, který spouští službu kódu. Při zápisu služby pomocí hello spolehlivé rozhraní API služby projektu služby právě zkompiluje tooan spustitelný soubor, který zaregistruje typ vaší služby a spustí váš kód. To platí ve většině případů při zápisu služby v Service Fabric v rozhraní .NET. Při otevření souboru Program.cs v projektu hello bezstavové služby, byste měli vidět:
 
 ```csharp
 using System;
@@ -152,22 +152,22 @@ internal static class Program
 
 ```
 
-Pokud toto vypadá nápadně jako vstupní bod do konzolovou aplikaci, která je, protože je.
+Pokud toto vypadá nápadně jako hello vstupní bod tooa konzolovou aplikaci, která je, protože je.
 
-Další podrobnosti o procesu hostitele služby a registraci služby jsou nad rámec tohoto článku. Je důležité vědět, pro, ale teď, když *kódu služby běží ve svém vlastním procesu*.
+Další podrobnosti o hello proces hostitele služby a registraci služby jsou nad rámec tohoto článku hello. Je důležité tooknow pro, ale teď, když *kódu služby běží ve svém vlastním procesu*.
 
 ## <a name="self-host-web-api-with-an-owin-host"></a>Hostování na vlastním serveru webového rozhraní API s hostitelem OWIN
-Vzhledem k tomu, že je kód aplikace webového rozhraní API hostované ve svém vlastním procesu, jak vám propojte ho na webový server? Zadejte [OWIN](http://owin.org/). OWIN je jednoduše smlouva mezi webových aplikací .NET a webovými servery. Tradičně při ASP.NET (až MVC 5) se používá, webové aplikace je úzce párované pro službu IIS prostřednictvím System.Web. Ale webového rozhraní API implementuje OWIN, tak z webového serveru, který je hostitelem ho můžete napsat webovou aplikaci, která odpojené. Z toho důvodu můžete použít *hostovanou na vlastním* OWIN webový server, který můžete spustit v vlastního procesu. To odpovídá perfektně s modelem hostování Service Fabric, kterou jsme právě popsané.
+Vzhledem k tomu, že je kód aplikace webového rozhraní API hostované ve svém vlastním procesu, jak můžete spojit se tooa webový server? Zadejte [OWIN](http://owin.org/). OWIN je jednoduše smlouva mezi webových aplikací .NET a webovými servery. Tradičně při ASP.NET (až tooMVC 5) se používá, hello webové aplikace je úzce párované tooIIS prostřednictvím System.Web. Však webového rozhraní API implementuje OWIN, takže píšete webovou aplikaci, která odpojené z hello webový server, který je hostitelem. Z toho důvodu můžete použít *hostovanou na vlastním* OWIN webový server, který můžete spustit v vlastního procesu. To odpovídá perfektně s Service Fabric hello hostování se model, který jsme právě popsané.
 
-V tomto článku použijeme Katana jako hostitel OWIN pro aplikaci webového rozhraní API. Katana je implementace hostitele OWIN open source založený na [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener.aspx) a Windows [rozhraní API serveru HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx).
+V tomto článku použijeme Katana jako hello OWIN hostitele pro hello aplikace webového rozhraní API. Katana je implementace hostitele OWIN open source založený na [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener.aspx) a hello Windows [rozhraní API serveru HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx).
 
 > [!NOTE]
-> Další informace o Katana, přejděte na [Katana lokality](http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana). Rychlý přehled o tom, jak používat Katana pro hostování na vlastním serveru webového rozhraní API, najdete v části [použít OWIN Self-Host ASP.NET Web API 2](http://www.asp.net/web-api/overview/hosting-aspnet-web-api/use-owin-to-self-host-web-api).
+> Další informace o Katana, přejděte toohello toolearn [Katana lokality](http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana). Rychlý přehled o toouse Katana tooself hostitele webového rozhraní API, najdete v části [OWIN použití tooSelf hostitele ASP.NET Web API 2](http://www.asp.net/web-api/overview/hosting-aspnet-web-api/use-owin-to-self-host-web-api).
 > 
 > 
 
-## <a name="set-up-the-web-server"></a>Nastavit webový server
-Spolehlivé služby API poskytuje ke vstupnímu bodu komunikace, kde můžete zařadit zásobníky komunikace, které umožňují uživatelům a klienty pro připojení ke službě:
+## <a name="set-up-hello-web-server"></a>Nastavit webový server hello
+Hello spolehlivé rozhraní API služby poskytuje ke vstupnímu bodu komunikace, kde můžete zařadit zásobníky komunikace, které umožňují uživatelům a klienti tooconnect toohello služby:
 
 ```csharp
 
@@ -178,7 +178,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ```
 
-Webový server (a další komunikačního balíku, které můžete použít v budoucnu, jako je například technologie WebSockets) by měl použít rozhraní ICommunicationListener správně integrovat s v systému. Důvody této začnou více zřejmá v následujících krocích.
+Hello webový server (a další komunikačního balíku, které můžete použít v budoucí, jako je například technologie WebSockets hello) by měl použít hello ICommunicationListener rozhraní toointegrate správně s hello systémem. důvody Hello začnou více zřejmá v hello následující kroky.
 
 Nejdřív vytvořte třídu s názvem OwinCommunicationListener, který implementuje ICommunicationListener:
 
@@ -213,13 +213,13 @@ namespace WebService
 }
 ```
 
-Rozhraní ICommunicationListener poskytuje tři metody pro správu naslouchací proces komunikace služby:
+rozhraní ICommunicationListener Hello poskytuje tři metody toomanage naslouchací proces komunikace služby:
 
 * *OpenAsync*. Zahájit naslouchání požadavkům.
 * *CloseAsync*. Zastavil naslouchání požadavkům, dokončit všechny během letu žádosti a korektně vypnout.
 * *Abort –*. Všechno, co zrušte a zastavte okamžitě.
 
-Pokud chcete začít, přidejte členy privátní třídy pro naslouchací proces bude potřeba funkce věcí. Tyto se inicializovat pomocí konstruktoru a později použije při nastavování naslouchání adresy URL.
+Soukromá třída členy tooget spustili, přidat, pro naslouchací proces hello věcí bude potřebovat toofunction. Tyto se inicializovat pomocí konstruktoru hello a později použije při nastavování hello naslouchání adresy URL.
 
 ```csharp
 internal class OwinCommunicationListener : ICommunicationListener
@@ -274,12 +274,12 @@ internal class OwinCommunicationListener : ICommunicationListener
 ```
 
 ## <a name="implement-openasync"></a>Implementace OpenAsync
-Chcete-li nastavit webový server, je třeba dva údaje:
+tooset hello webový server, budete potřebovat dva údaje:
 
-* *Předponu adresy URL cesta*. I když tato položka je nepovinná, že je vhodné, můžete to teď nastavte, aby bylo možné bezpečně hostovat několik webových služeb ve vaší aplikaci.
+* *Předponu adresy URL cesta*. I když tato položka je nepovinná, je vhodné pro tooset můžete tento až teď tak, aby ve vaší aplikaci můžete bezpečně hostovat několik webových služeb.
 * *Port*.
 
-Než získáte port na webovém serveru, je důležité pochopit, že Service Fabric poskytuje aplikační vrstvu, která funguje jako vyrovnávací paměť mezi vaší aplikace a její příslušný operační systém, který běží na. Jako takový Service Fabric nabízí způsob, jak nakonfigurovat *koncové body* pro vaše služby. Service Fabric zajistí, že koncové body jsou k dispozici pro vaši službu používat. Tímto způsobem nemáte je konfigurovat sami v základní prostředí operačního systému. Snadno můžete hostovat aplikace Service Fabric v různých prostředích bez nutnosti provádět všechny změny do vaší aplikace. (Například je možné hostovat stejnou aplikaci v Azure nebo ve svém vlastním datovém centru.)
+Předtím, než získáte port pro hello webový server, je důležité pochopit, že Service Fabric poskytuje aplikační vrstvu, která funguje jako vyrovnávací paměť mezi aplikací a hello základní operační systém, který běží na. Jako takový Service Fabric nabízí způsob tooconfigure *koncové body* pro vaše služby. Service Fabric zajišťuje, aby byly k dispozici pro vaše služba toouse koncové body. Tímto způsobem, že nemáte tooconfigure je sami v hello základní prostředí operačního systému. Snadno můžete hostovat aplikace Service Fabric v různých prostředích bez nutnosti toomake aplikace tooyour žádné změny. (Například je možné hostovat hello stejnou aplikaci v Azure nebo ve svém vlastním datovém centru.)
 
 Konfigurace koncového bodu protokolu HTTP v PackageRoot\ServiceManifest.xml:
 
@@ -292,9 +292,9 @@ Konfigurace koncového bodu protokolu HTTP v PackageRoot\ServiceManifest.xml:
 
 ```
 
-Tento krok je důležité, protože proces hostitele služby běží pověřeními s omezeným přístupem (síťové služby v systému Windows). To znamená, že služby nebudete mít přístup k nastavení koncový bod HTTP na svůj vlastní. Pomocí konfigurace koncového bodu Service Fabric zná k nastavení seznamu řízení správné přístupu (ACL) pro adresu URL, který bude naslouchat službu. Service Fabric také poskytuje standardní místo pro konfiguraci koncových bodů.
+Tento krok je důležité, protože proces hostitele služby hello spouští pověřeními s omezeným přístupem (síťové služby v systému Windows). To znamená, že služby nebudete mít přístup tooset až koncový bod HTTP svoje vlastní. Service Fabric pomocí konfigurace koncového bodu hello zná tooset hello řádného přístup ovládací prvek seznamu (ACL) pro hello, který bude naslouchat adresa URL, která hello služby. Service Fabric také poskytuje standardní místo tooconfigure koncové body.
 
-Zpět v OwinCommunicationListener.cs můžete začít implementace OpenAsync. Toto je, kde spustit webový server. Nejdřív získat informace o koncový bod a vytvořit adresu URL, kterou služba bude naslouchat na portu. Adresa URL se liší v závislosti na tom, jestli se používá naslouchací proces v bezstavové služby nebo stavové služby. Pro stavové služby je potřeba vytvořit jedinečnou adresu pro každou repliku stavové služby, kterou naslouchá na naslouchací proces. Adresa pro bezstavové služby, může být mnohem jednodušší. 
+Zpět v OwinCommunicationListener.cs můžete začít implementace OpenAsync. Toto je, kde spustit hello webový server. Nejdřív získat informace o koncovém hello a vytvořit hello adresu URL, který bude naslouchat hello služby. Adresa URL Hello se liší v závislosti na tom, jestli se používá naslouchací proces hello v bezstavové služby nebo stavové služby. Pro stavové služby musí naslouchací proces hello toocreate jedinečný pro každé repliky stavové služby se sleduje v adresu. Pro bezstavové služby může být adresa hello mnohem jednodušší. 
 
 ```csharp
 public Task<string> OpenAsync(CancellationToken cancellationToken)
@@ -339,11 +339,11 @@ public Task<string> OpenAsync(CancellationToken cancellationToken)
 
 ```
 
-Všimněte si, že se tady používá "http://+". Toto je zajistit, že webový server naslouchá na všechny dostupné adresy, včetně místního hostitele, plně kvalifikovaný název domény a IP adresu počítače.
+Všimněte si, že se tady používá "http://+". Toto je toomake se, že tento webový server hello naslouchá na všechny dostupné adresy, včetně místního hostitele, plně kvalifikovaný název domény a IP adresy počítače hello.
 
-Implementace OpenAsync je jedním z nejdůležitějších důvodů, proč webového serveru (nebo všechny komunikačního balíku) je implementována jako ICommunicationListener, nikoli jen s ho otevřít přímo z `RunAsync()` ve službě. Vrácená hodnota z OpenAsync je adresa, která naslouchá na webovém serveru. Pokud tato adresa se vrátí do systému, registruje adresu pomocí služby. Service Fabric poskytuje rozhraní API, která umožňuje klientům a dalším službám, a pak požádejte podle názvu služby pro tuto adresu. To je důležité, protože není statickou adresu služby. Služby se přesouvají v clusteru pro účely vyrovnávání a dostupnosti prostředků. Toto je mechanismus, který umožňuje klientům přeložit adresu naslouchání pro službu.
+Hello OpenAsync implementace je jedním z hello nejdůležitější z důvodů, proč hello webového serveru (nebo všechny komunikačního balíku) je implementována jako ICommunicationListener, nikoli jen s ho otevřít přímo z `RunAsync()` ve službě hello. Hello vrácená hodnota z OpenAsync je hello adresu, která hello webový server naslouchá na. Pokud tato adresa se vrátí toohello systému, zaregistruje hello adresu službou hello. Service Fabric poskytuje rozhraní API, která umožňuje klientským a dalších služeb toothen požádejte pro tuto adresu podle názvu služby. To je důležité, protože není statickou adresu služby hello. Služby přesouvání hello clusteru za účelem vyrovnávání a dostupnosti prostředků. Toto je hello mechanismus, který umožňuje klientům tooresolve hello naslouchání adresu pro službu.
 
-OpenAsync si uvědomit, spustí webový server a vrátí adresu, která naslouchá na. Všimněte si, že naslouchá na "http://+", ale před OpenAsync vrátí adresu, "+" je nahrazena IP adresu nebo plně kvalifikovaný název domény uzlu je aktuálně v. Adresa, vrátí tato metoda je, co není zaregistrována v systému. Je také co klienti a dalším službám uvidí při vyzvou pro adresu služby. Aby klienti mohli k nim připojit správně potřebují skutečná IP nebo plně kvalifikovaný název domény v adrese.
+OpenAsync si uvědomit, spustí hello webový server a vrátí hello adresu, která naslouchá na. Všimněte si, že naslouchá na "http://+", ale před OpenAsync vrátí hello adresu, hello "+" je nahrazena hello IP adresu nebo plně kvalifikovaný název domény hello uzel, který je aktuálně v. Hello adresu, kterou vrátí tato metoda je, co není zaregistrována hello systému. Je také co klienti a dalším službám uvidí při vyzvou pro adresu služby. Pro klienty toocorrectly připojení tooit, potřebují adresu hello skutečná IP nebo plně kvalifikovaný název domény.
 
 ```csharp
     ...
@@ -362,7 +362,7 @@ OpenAsync si uvědomit, spustí webový server a vrátí adresu, která naslouch
     }
     catch (Exception ex)
     {
-        this.eventSource.Message("Web server failed to open endpoint {0}. {1}", this.endpointName, ex.ToString());
+        this.eventSource.Message("Web server failed tooopen endpoint {0}. {1}", this.endpointName, ex.ToString());
 
         this.StopWebServer();
 
@@ -372,12 +372,12 @@ OpenAsync si uvědomit, spustí webový server a vrátí adresu, která naslouch
 
 ```
 
-Všimněte si, že tato třída při spuštění, který byl předán v OwinCommunicationListener v konstruktoru odkazuje. Tato instance spuštění se používá pro webový server k navázání připojení aplikace webového rozhraní API.
+Všimněte si, že to odkazuje hello spuštění třídu, která byla předána toohello OwinCommunicationListener v konstruktoru hello. Tato instance spuštění používá hello webový server toobootstrap hello aplikace webového rozhraní API.
 
-`ServiceEventSource.Current.Message()` Řádku se zobrazí v okně diagnostické události později, při spuštění aplikace pro potvrzení, že webový server byl úspěšně spuštěn.
+Hello `ServiceEventSource.Current.Message()` řádku se zobrazí v okně diagnostické události hello později, při spuštění aplikace tooconfirm hello tento hello webový server byl úspěšně spuštěn.
 
 ## <a name="implement-closeasync-and-abort"></a>Implementace CloseAsync a přerušení
-Nakonec implementujte CloseAsync a přerušení zastavení webového serveru. Uvolnění popisovač serveru, který jste vytvořili během OpenAsync můžete zastavit webový server.
+Nakonec implementovat CloseAsync a přerušení toostop hello webový server. uvolnění popisovač hello serveru, který jste vytvořili během OpenAsync můžete zastavit Hello webový server.
 
 ```csharp
 public Task CloseAsync(CancellationToken cancellationToken)
@@ -412,10 +412,10 @@ private void StopWebServer()
 }
 ```
 
-V tomto příkladu implementace CloseAsync a přerušení jednoduše zastavení webového serveru. Můžete zvolit provádět více řádně koordinované vypnutí webového serveru v CloseAsync. Ukončení může například čekat na během letu žádosti o splnit, aby návratový.
+V tomto příkladu implementace CloseAsync a přerušení jednoduše zastavit hello webový server. Můžete zvolit tooperform více řádně koordinované vypnutí hello webového serveru v CloseAsync. Vypnutí hello může například čekat na během letu požadavky toobe dokončit před hello vrátit.
 
-## <a name="start-the-web-server"></a>Spustí webový server
-Nyní jste připraveni vytvořit a vrátit instanci třídy OwinCommunicationListener Start pro server webového. Zpět v třídě služby (WebService.cs) přepsat `CreateServiceInstanceListeners()` metoda:
+## <a name="start-hello-web-server"></a>Spustí webový server hello
+Teď už připravený toocreate a vrátit instanci třídy OwinCommunicationListener toostart hello webový server. Zpět v hello třída služby (WebService.cs), přepište hello `CreateServiceInstanceListeners()` metoda:
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -429,12 +429,12 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-To je, kdy webového rozhraní API *aplikace* a OWIN *hostitele* nakonec splňovat. Hostitel (OwinCommunicationListener) je zadána instance *aplikace* (webového rozhraní API) prostřednictvím třída při spuštění. Service Fabric spravuje pak životního cyklu. Tento stejný vzor obvykle platí s žádné komunikačního balíku.
+Kde to je hello webového rozhraní API *aplikace* a hello OWIN *hostitele* nakonec splňovat. Hello hostitele (OwinCommunicationListener) je zadána instance hello *aplikace* (webového rozhraní API) prostřednictvím hello třída při spuštění. Service Fabric spravuje pak životního cyklu. Tento stejný vzor obvykle platí s žádné komunikačního balíku.
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
-V tomto příkladu, nemusíte dělat nic `RunAsync()` proto, že přepsání můžete jednoduše odeberou.
+V tomto příkladu nepotřebujete toodo ničím v hello `RunAsync()` proto, že přepsání můžete jednoduše odeberou.
 
-Implementace konečné služby by měl být velmi jednoduché. Stačí, když ho vytvořit naslouchací proces komunikace:
+implementace Hello konečné služby by měl být velmi jednoduché. Potřebuje pouze toocreate hello komunikace naslouchací proces:
 
 ```csharp
 using System;
@@ -466,7 +466,7 @@ namespace WebService
 }
 ```
 
-Kompletní `OwinCommunicationListener` třídy:
+Hello dokončení `OwinCommunicationListener` třídy:
 
 ```csharp
 using System;
@@ -579,7 +579,7 @@ namespace WebService
             }
             catch (Exception ex)
             {
-                this.eventSource.Message("Web server failed to open endpoint {0}. {1}", this.endpointName, ex.ToString());
+                this.eventSource.Message("Web server failed tooopen endpoint {0}. {1}", this.endpointName, ex.ToString());
 
                 this.StopWebServer();
 
@@ -621,22 +621,22 @@ namespace WebService
 }
 ```
 
-Teď, když jste umístili všechny části na místě, projekt by měl vypadat jako typický aplikace webového rozhraní API s spolehlivé rozhraní API služby vstupní body a hostiteli OWIN.
+Teď, když jste umístili všech částí hello na místě, projekt by měl vypadat jako typický aplikace webového rozhraní API s spolehlivé rozhraní API služby vstupní body a hostiteli OWIN.
 
 ## <a name="run-and-connect-through-a-web-browser"></a>Spuštění a připojení přes webový prohlížeč
 Pokud jste neprovedli, [nastavení vývojového prostředí](service-fabric-get-started.md).
 
-Teď můžete vytvářet a nasazovat služby. Stiskněte klávesu **F5** v sadě Visual Studio pro vytváření a nasazení aplikace. V okně diagnostických událostí zobrazí zprávu, která označuje, že webový server otevřen na http://localhost:8281 /.
+Teď můžete vytvářet a nasazovat služby. Stiskněte klávesu **F5** v sadě Visual Studio toobuild a nasazení aplikace hello. V okně diagnostické události hello zobrazí zprávu, která ukazuje na tento webový server hello otevřít na http://localhost:8281 /.
 
 > [!NOTE]
-> Pokud port již byla otevřena jiným procesem na počítači, může se zobrazit chyba sem. To znamená, že naslouchací proces nelze otevřít. Pokud je to tento případ, zkuste použít jiný port pro konfiguraci koncového bodu v ServiceManifest.xml.
+> Pokud hello port již byla otevřena jiným procesem na počítači, může se zobrazit chyba sem. To znamená, že tento naslouchací proces hello nelze otevřít. Pokud se hello případ, zkuste použít jiný port pro hello konfigurace koncového bodu v ServiceManifest.xml.
 > 
 > 
 
-Jakmile je služba spuštěná, spusťte prohlížeč a přejděte do [http://localhost:8281/api/hodnoty](http://localhost:8281/api/values) to vyzkoušíte.
+Jakmile je spuštěna služba hello otevřete prohlížeč a přejděte příliš[http://localhost:8281/api/hodnoty](http://localhost:8281/api/values) tootest ho.
 
 ## <a name="scale-it-out"></a>Škálovat tak
-Škálování bezstavové webové aplikace obvykle znamená přidáním další počítače a otáčí do webové aplikace na ně. Jádro Orchestrace Service Fabric to můžete provést za vás, při každém přidání nových uzlů do clusteru. Při vytváření instancí bezstavové služby, můžete zadat počet instancí, které chcete vytvořit. Service Fabric umístí tohoto počtu instancí na uzly v clusteru. A umožňuje nezapomeňte vytvořit více než jedna instance na jednoho libovolného uzlu. Můžete také určit, aby Service Fabric vždy vytvořit instanci na každý uzel zadáním **-1** pro počet instancí. To zaručuje, že při každém přidání uzlů pro horizontální škálování vašeho clusteru, bude instance bezstavové služby vytvořena na nových uzlů. Tato hodnota je vlastnost instance služby tak, že nastavíte při vytváření instance služby. Můžete to udělat pomocí prostředí PowerShell:
+Škálování bezstavové webové aplikace obvykle znamená přidáním další počítače a otáčí až hello webové aplikace na ně. Jádro Orchestrace Service Fabric to můžete provést za vás, při každém přidání nových uzlů clusteru tooa. Při vytváření instancí bezstavové služby, můžete zadat číslo hello instancí chcete toocreate. Service Fabric umístí na uzly v clusteru hello tento počet instancí. A zkontroluje, zda není toocreate více než jednu instanci na jednoho libovolného uzlu. Můžete také určit, aby tooalways Service Fabric vytvořit instanci v každém uzlu tak, že zadáte **-1** pro počet instancí hello. To zaručuje, že při každém přidání tooscale uzly na cluster, instanci bezstavové služby vytvořit na nové uzly hello. Tato hodnota je vlastnost hello instance služby, tak, že nastavíte při vytváření instance služby. Můžete to udělat pomocí prostředí PowerShell:
 
 ```powershell
 
@@ -658,7 +658,7 @@ Můžete také k tomu při definování výchozí služba v projektu sady Visual
 
 ```
 
-Další informace o tom, jak vytvořit aplikace a instance služby najdete v tématu [nasazení aplikace](service-fabric-deploy-remove-applications.md).
+Další informace o způsobu toocreate aplikace a instance služby, najdete v části [nasazení aplikace](service-fabric-deploy-remove-applications.md).
 
 ## <a name="next-steps"></a>Další kroky
 [Ladění aplikace Service Fabric pomocí sady Visual Studio](service-fabric-debugging-your-application.md)

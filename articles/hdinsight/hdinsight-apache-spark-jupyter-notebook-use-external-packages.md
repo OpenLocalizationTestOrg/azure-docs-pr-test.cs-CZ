@@ -1,6 +1,6 @@
 ---
-title: "Vlastní balíčky Maven pomocí Jupyter ve Sparku v Azure HDInsight | Microsoft Docs"
-description: "Podrobné pokyny o tom, jak nakonfigurovat k dispozici poznámkové bloky Jupyter s clustery HDInsight Spark použití vlastní Maven balíčků."
+title: "vlastní balíčky Maven aaaUse s Jupyter ve Sparku v Azure HDInsight | Microsoft Docs"
+description: "Podrobný návod, jak tooconfigure poznámkové bloky Jupyter k dispozici s HDInsight Spark clusterů toouse vlastní Maven balíčky."
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
-ms.openlocfilehash: 0bcfe220e60e34937c667c7b416065d5f3dc8d63
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ba8ac13716bc94ab082a18fe02d4a40b2f1e09e4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Použijte externí balíčky s poznámkovými bloky Jupyter v clusterech Apache Spark v HDInsight
 > [!div class="op_single_selector"]
@@ -29,25 +29,25 @@ ms.lasthandoff: 08/03/2017
 >
 >
 
-Naučte se konfigurovat poznámkového bloku Jupyter v clusteru Apache Spark v HDInsight používat externí, komunity podílí **maven** balíčky, které nejsou zahrnuty v clusteru se na pole. 
+Zjistěte, jak tooconfigure poznámkového bloku Jupyter v clusteru Apache Spark v HDInsight toouse externí, komunity podílí **maven** balíčky, které nejsou součástí clusteru hello se na pole. 
 
-Můžete hledat [Maven úložiště](http://search.maven.org/) úplný seznam balíčků, které jsou k dispozici. Seznam dostupných balíčků můžete také získat z jiných zdrojů. Například je k dispozici úplný seznam balíčků podílí komunity [Spark balíčky](http://spark-packages.org/).
+Můžete hledat hello [Maven úložiště](http://search.maven.org/) hello úplný seznam balíčků, které jsou k dispozici. Seznam dostupných balíčků můžete také získat z jiných zdrojů. Například je k dispozici úplný seznam balíčků podílí komunity [Spark balíčky](http://spark-packages.org/).
 
-V tomto článku se dozvíte, jak používat [spark csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) balíček s poznámkovým blokem Jupyter.
+V tomto článku se dozvíte, jak toouse hello [spark csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) balíček s hello Poznámkový blok Jupyter.
 
 
 
 ## <a name="prerequisites"></a>Požadavky
-Musíte mít následující:
+Musíte mít následující hello:
 
 * Cluster Apache Spark v HDInsight. Pokyny najdete v tématu [clusterů vytvořit Apache Spark v Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Použijte externí balíčky s poznámkovými bloky Jupyter
-1. Z [Portálu Azure](https://portal.azure.com/) z úvodního panelu klikněte na dlaždici pro váš cluster Spark (pokud je připnutý na úvodní panel). Můžete také přejít na cluster pod položkou **Procházet vše** > **Clustery HDInsight**.   
-2. Z okna clusteru Spark klikněte na tlačítko **Rychlé odkazy** a pak z okna **Řídicí panel clusteru** klikněte na tlačítko **Poznámkový blok Jupyter**. Po vyzvání zadejte přihlašovací údaje správce clusteru.
+1. Z hello [portálu Azure](https://portal.azure.com/), z úvodního panelu hello klikněte hello dlaždici pro váš cluster Spark (Pokud je připnutý toohello úvodní panel). Můžete také přejít tooyour clusteru pod **Procházet vše** > **clustery HDInsight**.   
+2. Z okna clusteru Spark hello, klikněte na tlačítko **rychlé odkazy**a potom z hello **řídicí panel clusteru** okně klikněte na tlačítko **Poznámkový blok Jupyter**. Pokud se zobrazí výzva, zadejte přihlašovací údaje správce hello hello clusteru.
 
     > [!NOTE]
-    > Může také otevřít poznámkový blok Jupyter pro váš cluster tak, že otevřete následující adresu URL v prohlížeči. Nahraďte **CLUSTERNAME** názvem clusteru:
+    > Může také nedostanete hello Poznámkový blok Jupyter pro váš cluster pomocí hello otevření následující adresy URL v prohlížeči. Nahraďte **CLUSTERNAME** s hello název clusteru:
     > 
     > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
     > 
@@ -58,40 +58,40 @@ Musíte mít následující:
    
     ![Vytvoření nového poznámkového bloku Jupyter](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Vytvoření nového poznámkového bloku Jupyter")
 
-4. Nový poznámkový blok se vytvoří a otevře s názvem Untitled.pynb. Klikněte na název poznámkového bloku v horní části a zadejte popisný název.
+4. Nový poznámkový blok se vytvoří a otevřít s hello názvem Untitled.pynb. Klikněte na název hello poznámkového bloku v horní části hello a zadejte popisný název.
    
-    ![Zadání názvu poznámkového bloku](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Zadání názvu poznámkového bloku")
+    ![Zadejte název pro hello notebook](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "zadejte název pro hello Poznámkový blok")
 
-5. Budete používat `%%configure` magic konfigurace poznámkového bloku na externí balíček použít. Ujistěte se, zavoláte v poznámkových bloků, které používají externí balíčky, `%%configure` magic v první buňky kódu. Tím se zajistí, že jádra je nakonfigurované na použití balíčku před zahájením relace.
+5. Budete používat hello `%%configure` magic tooconfigure hello poznámkového bloku toouse externí balíčku. Ujistěte se, volání hello v poznámkových bloků, které používají externí balíčky, `%%configure` magic v hello první buňky kódu. Tím se zajistí, že tento jádra hello je nakonfigurované toouse hello balíčku před zahájením relace hello.
 
     >[!IMPORTANT] 
-    >Pokud zapomenete nakonfigurovat jádra v první buňky, můžete použít `%%configure` s `-f` parametr, ale který restartuje relace a všechny průběh budou ztraceny.
+    >Pokud zapomenete tooconfigure hello jádra hello první buňky, můžete použít hello `%%configure` s hello `-f` parametr, ale který restartuje hello relace a všechny průběh budou ztraceny.
 
     | HDInsight verze | Příkaz |
     |-------------------|---------|
     |Pro HDInsight 3.3 a HDInsight 3.4 | `%%configure` <br>`{ "packages":["com.databricks:spark-csv_2.10:1.4.0"] }`|
     | Pro HDInsight 3.5 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.10:1.4.0" }}`|
 
-6. Výše uvedeném fragmentu očekává souřadnice maven pro externí balíček v centrálním úložišti Maven. V této fragmentu kódu `com.databricks:spark-csv_2.10:1.4.0` je souřadnice maven **spark csv** balíčku. Zde je, jak vytvořit souřadnice pro balíček.
+6. výše Hello fragmentu očekává hello maven souřadnice hello externí balíček v centrálním úložišti Maven. V této fragmentu kódu `com.databricks:spark-csv_2.10:1.4.0` je souřadnice maven hello **spark csv** balíčku. Zde je, jak vytvořit hello souřadnice pro balíček.
    
-    a. Najděte balíček v úložišti Maven. V tomto kurzu používáme [spark csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
+    a. Najděte balíček hello v hello Maven úložiště. V tomto kurzu používáme [spark csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
    
-    b. Z úložiště, shromážděte hodnoty **GroupId**, **ArtifactId**, a **verze**. Ujistěte se, že hodnoty, které shromáždíte odpovídat vašeho clusteru. V tomto případě používáme Scala 2.10 a Spark 1.4.0 balíček, ale budete muset vybrat různé verze pro příslušné Scala nebo Spark verze v clusteru. Můžete zjistit verzi Scala v clusteru tak, že spustíte `scala.util.Properties.versionString` na Spark Jupyter jádra nebo odeslání Spark. Můžete zjistit verzi Spark v clusteru tak, že spustíte `sc.version` v poznámkových blocích Jupyter.
+    b. Z úložiště hello shromážděte hello hodnoty pro **GroupId**, **ArtifactId**, a **verze**. Ujistěte se, aby odpovídaly hello hodnoty, které shromáždíte vašeho clusteru. V tomto případě používáme Scala 2.10 a Spark 1.4.0 balíček, ale musíte tooselect různé verze pro příslušnou verzi Scala nebo Spark na hello v clusteru. Můžete zjistit verzi Scala hello v clusteru tak, že spustíte `scala.util.Properties.versionString` na hello Spark Jupyter jádra nebo odeslání Spark. Můžete zjistit hello Spark verze v clusteru tak, že spustíte `sc.version` v poznámkových blocích Jupyter.
    
     ![Použijte externí balíčky s Poznámkový blok Jupyter](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "použijte externí balíčky s poznámkového bloku Jupyter")
    
-    c. Řetězení tři hodnoty oddělené dvojtečkou (**:**).
+    c. Řetězení hello tři hodnoty, oddělené dvojtečkou (**:**).
    
         com.databricks:spark-csv_2.10:1.4.0
 
-7. Spustit buňky kódu pomocí `%%configure` magic. Tím nakonfigurujete základní relace Livy k použití balíčku, který jste zadali. V následujících buněk v poznámkovém bloku můžete nyní používat balíčku, jak je uvedeno níže.
+7. Spusťte buňky kódu hello s hello `%%configure` magic. Tím nakonfigurujete hello základní Livy relace toouse hello balíčku, který jste zadali. V hello následné buněk v hello Poznámkový blok můžete nyní používat hello balíček, jak je uvedeno níže.
    
         val df = sqlContext.read.format("com.databricks.spark.csv").
         option("header", "true").
         option("inferSchema", "true").
         load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
-8. Potom můžete spustit fragmenty kódu, jako vidíte níže, chcete-li zobrazit data z dataframe jste vytvořili v předchozím kroku.
+8. Potom můžete spustit hello fragmenty, jako vidíte níže, tooview hello data z hello dataframe jste vytvořili v předchozím kroku hello.
    
         df.show()
    
@@ -103,7 +103,7 @@ Musíte mít následující:
 ### <a name="scenarios"></a>Scénáře
 * [Spark s BI: Provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](hdinsight-apache-spark-use-bi-tools.md)
 * [Spark s Machine Learning: Používejte Spark v HDInsight pro analýzu teploty v budově pomocí dat HVAC](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-* [Spark s Machine Learning: Používejte Spark v HDInsight k předpovědím výsledků kontrol potravin](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Spark s Machine Learning: používejte Spark v výsledků kontroly potravin toopredict HDInsight](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Datové proudy Spark: Používejte Spark v HDInsight pro sestavení aplikací datových proudů v reálném čase](hdinsight-apache-spark-eventhub-streaming.md)
 * [Analýza protokolu webu pomocí Sparku v HDInsight](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
@@ -114,13 +114,13 @@ Musíte mít následující:
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
 
 * [Používat externí python balíčky s poznámkovými bloky Jupyter v clusterech Apache Spark na HDInsight Linux](hdinsight-apache-spark-python-package-installation.md)
-* [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](hdinsight-apache-spark-intellij-tool-plugin.md)
-* [Použití modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vzdálené ladění aplikací Spark](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Pomocí modulu plug-in nástroje HDInsight pro IntelliJ IDEA toocreate a odesílání aplikací Spark Scala](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Vzdáleně pomocí modulu plug-in nástroje HDInsight pro IntelliJ IDEA toodebug Spark aplikace](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Použití poznámkových bloků Zeppelin s clusterem Sparku v HDInsight](hdinsight-apache-spark-zeppelin-notebook.md)
 * [Jádra dostupná pro poznámkový blok Jupyter v clusteru Sparku pro HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
-* [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
+* [Do počítače nainstalovat Jupyter a připojte tooan clusteru HDInsight Spark](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Správa prostředků
-* [Správa prostředků v clusteru Apache Spark v Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
+* [Správa prostředků hello cluster Apache Spark v Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 * [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](hdinsight-apache-spark-job-debugging.md)
 

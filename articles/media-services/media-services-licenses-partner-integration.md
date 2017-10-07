@@ -1,6 +1,6 @@
 ---
-title: "Pomocí partnery pro doručování licence na Widevine do služby Azure Media Services | Microsoft Docs"
-description: "Tento článek popisuje, jak můžete použít Azure Media Services (AMS) k poskytování datový proud, který je dynamicky šifrovat pomocí PlayReady a Widevine technologiemi DRM AMS. Licence PlayReady pochází z Media Services PlayReady licenčního serveru a licence Widevine doručuje castLabs licenční server."
+title: aaaUsing partnery toodeliver Widevine licence tooAzure Media Services | Microsoft Docs
+description: "Tento článek popisuje, jak můžete použít Azure Media Services (AMS) toodeliver datový proud, který je dynamicky šifrovat pomocí PlayReady a Widevine technologiemi DRM AMS. licence PlayReady Hello pochází z Media Services PlayReady licenčního serveru a licence Widevine doručuje castLabs licenční server."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 6867e4f910970121df3858516c6bab3114c3c6f9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3c18a8a22ced239931dea5385020194bd6d83f28
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-partners-to-deliver-widevine-licenses-to-azure-media-services"></a>Využití služeb partnerů k distribuci licencí Widevine pro Azure Media Services
+# <a name="using-partners-toodeliver-widevine-licenses-tooazure-media-services"></a>Pomocí partnery toodeliver Widevine licence tooAzure Media Services
 ## <a name="overview"></a>Přehled
-Microsoft Azure Media Services umožňuje doručovat MPEG-DASH, které jsou chráněné pomocí Widevine DRM, který se zašifrují podle specifikace Common Encryption (CENC).
+Microsoft Azure Media Services umožňuje vám toodeliver MPEG-DASH chránit pomocí Widevine DRM, který se zašifrují podle hello specifikace Common Encryption (CENC).
 
-Spuštění pomocí .NET SDK služby Media Services verze 3.5.2, Media Services umožňuje konfigurovat šablonu licence Widevine a získání licence na Widevine. Licence Widevine vám také mohou doručit následující partneři AMS : [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](http://ezdrm.com/), [castLabs](http://castlabs.com/company/partners/azure/).
+Počínaje hello sady Media Services .NET SDK verze 3.5.2, Media Services umožňuje vám tooconfigure Widevine šablona licence a získání licence na Widevine. Můžete také použít následující toohelp partneři AMS doručování licence na Widevine hello: [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](http://ezdrm.com/), [castLabs](http://castlabs.com/company/partners/azure/).
 
 ## <a name="castlabs"></a>castLabs
-Můžete použít [castLabs](http://castlabs.com/company/partners/azure/) pro doručování licence na Widevine. Další informace najdete v tématu [pomocí castLabs k poskytování DRM licence k Azure Media Services](media-services-castlabs-integration.md)
+Můžete použít [castLabs](http://castlabs.com/company/partners/azure/) toodeliver licence na Widevine. Další informace najdete v tématu [pomocí castLabs toodeliver DRM licence tooAzure Media Services](media-services-castlabs-integration.md)
 
 ## <a name="axinom"></a>Axinom
-Můžete použít [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/) pro doručování licence na Widevine. Další informace najdete v tématu [pomocí Axinom k poskytování DRM licence k Azure Media Services](media-services-axinom-integration.md)
+Můžete použít [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/) toodeliver licence na Widevine. Další informace najdete v tématu [toodeliver Axinom pomocí DRM licence tooAzure Media Services](media-services-axinom-integration.md)
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

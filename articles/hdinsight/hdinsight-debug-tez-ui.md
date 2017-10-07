@@ -1,6 +1,6 @@
 ---
-title: "Použijte uživatelské rozhraní Tez s HDInsight se systémem Windows - Azure | Microsoft Docs"
-description: "Zjistěte, jak pomocí uživatelského rozhraní Tez k ladění úlohách Tez na HDInsight HDInsight se systémem Windows."
+title: "aaaUse Tez uživatelského rozhraní s HDInsight se systémem Windows - Azure | Microsoft Docs"
+description: "Zjistěte, jak toouse hello uživatelského rozhraní Tez toodebug Tez úlohy na HDInsight HDInsight se systémem Windows."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,130 +15,130 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3889fa1c3523eb0330cbe3b7640fd8590a5ceadf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7ae21242ee1f8dc34a8501bed1ca995480885540
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Chcete-li ladit úlohách Tez na HDInsight se systémem Windows pomocí uživatelského rozhraní Tez
-Rozhraní Tez je webová stránka, která můžete použít k pochopení a ladění úlohy, které používají Tez jako modul spouštění v clusterech HDInsight se systémem Windows. Rozhraní Tez umožňuje vizualizovat úlohu jako graf připojených položek, přejdete na každou položku a načíst informace o protokolování a statistiky.
+# <a name="use-hello-tez-ui-toodebug-tez-jobs-on-windows-based-hdinsight"></a>Použít na HDInsight se systémem Windows hello úlohách Tez toodebug Tez uživatelského rozhraní
+Hello Tez uživatelského rozhraní je webová stránka, kterou lze použít toounderstand a ladění úlohy, které používají Tez jako modul provádění hello v clusterech HDInsight se systémem Windows. Hello Tez uživatelského rozhraní umožňuje toovisualize hello úlohy graf připojených položek, přejdete na každou položku a načíst informace o protokolování a statistiky.
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu vyžadují clusteru HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Hello kroky v tomto dokumentu vyžadují clusteru HDInsight se systémem Windows. Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Požadavky
 * Cluster HDInsight se systémem Windows. Pokyny týkající se vytvoření nového clusteru, najdete v části [začněte používat HDInsight se systémem Windows](hdinsight-hadoop-tutorial-get-started-windows.md).
 
   > [!IMPORTANT]
-  > Rozhraní Tez je dostupná pouze na clustery HDInsight se systémem Windows, které jsou vytvořené po 8. únoru 2016.
+  > Hello Tez uživatelského rozhraní je dostupná pouze na clustery HDInsight se systémem Windows, které jsou vytvořené po 8. únoru 2016.
   >
   >
 * Klient vzdálené plochy se systémem Windows.
 
 ## <a name="understanding-tez"></a>Principy Tez
-Tez je rozšiřitelná architektura pro zpracování dat v Hadoop, která poskytuje vyšší rychlosti než tradiční zpracování prostředí MapReduce. Pro clustery HDInsight se systémem Windows je volitelné motoru, kterou můžete povolit pro Hive pomocí následujícího příkazu v rámci dotazu Hive:
+Tez je rozšiřitelná architektura pro zpracování dat v Hadoop, která poskytuje vyšší rychlosti než tradiční zpracování prostředí MapReduce. Pro clustery HDInsight se systémem Windows je volitelné motoru, kterou můžete povolit pro Hive pomocí hello jako součást dotazu Hive následující příkaz:
 
     set hive.execution.engine=tez;
 
-Při odeslání pracovní Tez, vytvoří směrované Acyklické grafu (DAG) popisující pořadí provádění akcí požadovaných úlohou. Jednotlivé akce se nazývají vrcholy a provést část celkového úlohy. Skutečné provádění pracovní popsaného vrchol je volána úloha a mohou být distribuovány mezi několika uzly v clusteru.
+Odeslaná tooTez po pracovní vytvoří směrované Acyklické grafu (DAG) popisující hello pořadí provádění akcí hello vyžadovanou hello úlohy. Jednotlivé akce se nazývají vrcholy a spouštět úsek hello celkové úlohy. skutečné provádění Hello popsaného Vrchol pracovní hello je volána úloha a mohou být distribuovány mezi několika uzly v clusteru hello.
 
-### <a name="understanding-the-tez-ui"></a>Vysvětlení rozhraní Tez
-Rozhraní Tez je na webové stránce poskytuje informace o procesech, které jsou spuštěné, nebo byl již spuštěn pomocí Tez. Umožňuje zobrazit DAG generované Tez, jak je rozdělené mezi clustery, jako je množství paměti používané úlohy a vrcholy a informace o chybě čítače. Vám může nabídnout užitečné informace v následujících scénářích:
+### <a name="understanding-hello-tez-ui"></a>Principy hello Tez uživatelského rozhraní
+Hello Tez uživatelského rozhraní je na webové stránce poskytuje informace o procesech, které jsou spuštěné, nebo byl již spuštěn pomocí Tez. Umožňuje tooview hello DAG generované Tez, jak je rozdělené mezi clustery, jako je množství paměti používané úlohy a vrcholy a informace o chybě čítače. Vám může nabídnout užitečné informace v hello následující scénáře:
 
-* Monitorování dlouho běžící procesy, zobrazení průběhu mapy a snížit úlohy.
-* Analýza historické údaje o úspěšném nebo neúspěšném procesy, které se dozvíte, jak lze zlepšit zpracování nebo proč se nezdařilo.
+* Monitorování dlouho běžící procesy, zobrazení hello průběh mapy a snížit úlohy.
+* Analýza historické údaje o úspěšném nebo neúspěšném procesy toolearn, jak lze zlepšit zpracování nebo proč se nezdařilo.
 
 ## <a name="generate-a-dag"></a>Generovat DAG
-Rozhraní Tez bude obsahovat pouze data, pokud úlohu, která používá modul Tez běží v současné době nebo byl byla spuštěna v minulosti. Jednoduché dotazů Hive obvykle lze přeložit bez použití Tez, ale složitější dotazy, které provádějí filtrování, seskupování, řazení, atd. spojení se obvykle vyžadují Tez.
+Hello uživatelského rozhraní Tez bude obsahovat pouze data, pokud úlohu, která používá hello Tez modul běží v současné době nebo byl byla spuštěna v posledních hello. Jednoduché dotazů Hive obvykle lze přeložit bez použití Tez, ale složitější dotazy, které provádějí filtrování, seskupování, řazení, atd. spojení se obvykle vyžadují Tez.
 
-Použijte následující postup ke spuštění dotazu Hive, která se spustí pomocí Tez.
+Pomocí následujících kroků toorun dotaz Hive, který provede pomocí Tez hello.
 
-1. Ve webovém prohlížeči, přejděte na https://CLUSTERNAME.azurehdinsight.net, kde **CLUSTERNAME** je název clusteru HDInsight.
-2. V nabídce v horní části stránky, vyberte **Hive Editor**. Zobrazí se stránka s následující příklad dotazu.
+1. Ve webovém prohlížeči přejděte toohttps://CLUSTERNAME.azurehdinsight.net, kde **CLUSTERNAME** je hello název clusteru HDInsight.
+2. Z nabídky hello hello horní části stránky hello vyberte hello **Hive Editor**. Zobrazí se stránka s hello následující příklad dotazu.
 
         Select * from hivesampletable
 
-    Erase – příklad dotazu a nahraďte ji následujícím textem.
+    Vymazat hello příklad dotazu a nahraďte ji metodou následující hello.
 
         set hive.execution.engine=tez;
         select market, state, country from hivesampletable where deviceplatform='Android' group by market, country, state;
-3. Vyberte **odeslání** tlačítko. **Úlohy relace** v dolní části stránky se zobrazí stav dotazu. Jakmile se stav změní na **dokončeno**, vyberte **zobrazit podrobnosti** odkaz zobrazíte výsledky. **Výstup úlohy** by mělo být podobné následujícímu:
+3. Vyberte hello **odeslání** tlačítko. Hello **úlohy relace** oddíl hello dolní části stránky hello se zobrazí stav hello hello dotazu. Jednou hello změny stavu příliš**dokončeno**, vyberte hello **zobrazit podrobnosti** odkaz tooview hello výsledky. Hello **výstup úlohy** by měla být podobné toohello následující:
 
         en-GB   Hessen      Germany
         en-GB   Kingston    Jamaica
         en-GB   Nairobi Area    Kenya
 
-## <a name="use-the-tez-ui"></a>Pomocí uživatelského rozhraní Tez
+## <a name="use-hello-tez-ui"></a>Použití hello Tez uživatelského rozhraní
 > [!NOTE]
-> Rozhraní Tez je dostupná pouze z plochy hlavních uzlech clusteru, je nutné použít vzdálené plochy pro připojení k hlavnímu uzlu.
+> Hello Tez uživatelského rozhraní je dostupná pouze z plochy hello hello head uzlů clusteru, takže je nutné použít vzdálené plochy tooconnect toohello hlavních uzlech.
 >
 >
 
-1. Z [portál Azure](https://portal.azure.com), vyberte clusteru HDInsight. Z horní části okna HDInsight, vyberte **vzdálené plochy** ikonu. Tato akce zobrazí okno Vzdálené plochy
+1. Z hello [portál Azure](https://portal.azure.com), vyberte clusteru HDInsight. Hello horní části okna hello HDInsight, vyberte hello **vzdálené plochy** ikonu. Bude se zobrazovat vzdálené plochy okno hello
 
     ![Ikona vzdálené plochy](./media/hdinsight-debug-tez-ui/remotedesktopicon.png)
-2. V okně připojení ke vzdálené ploše vyberte **Connect** pro připojení k hlavnímu uzlu clusteru. Pokud budete vyzváni, použijte clusteru vzdálené plochy uživatelské jméno a heslo k ověření připojení.
+2. V okně hello vzdálené plochy, vyberte **Connect** hlavního uzlu clusteru tooconnect toohello. Pokud budete vyzváni, použijte hello clusteru připojení ke vzdálené ploše uživatelské jméno a heslo tooauthenticate hello.
 
     ![Ikona připojení vzdálené plochy](./media/hdinsight-debug-tez-ui/remotedesktopconnect.png)
 
    > [!NOTE]
-   > Pokud jste nepovolili připojení vzdálené plochy, zadejte uživatelské jméno, heslo a datum vypršení platnosti a pak vyberte **povolit** k povolení služby Vzdálená plocha. Poté, co byla povolena, použijte předchozí kroky pro připojení.
+   > Pokud jste nepovolili připojení vzdálené plochy, zadejte uživatelské jméno, heslo a datum vypršení platnosti a pak vyberte **povolit** tooenable vzdálené plochy. Jakmile je povoleno, použijte hello předchozí kroky tooconnect.
    >
    >
-3. Po připojení otevřete Internet Explorer na vzdálenou plochu, vyberte ikonu ozubené kolečko v pravém horním rohu stránky prohlížeče a pak vyberte **nastavení kompatibilního zobrazení**.
-4. V dolní části **nastavení kompatibilního zobrazení**, zrušte zaškrtnutí políčka pro **zobrazit intranetové servery v kompatibilního zobrazení** a **použití Microsoft kompatibility seznamy**, a potom vyberte **Zavřít**.
-5. V Internet Exploreru přejděte do http://headnodehost:8188/tezui / #/. Bude se zobrazovat Tez uživatelského rozhraní
+3. Po připojení otevřete Internet Explorer na hello vzdálené plochy, vyberte hello ozubené kolečko ikonu v hello pravém horním rohu stránky hello prohlížeče a potom vyberte **nastavení kompatibilního zobrazení**.
+4. Hello dolní části **nastavení kompatibilního zobrazení**, zrušte hello zaškrtávací políčko pro **zobrazit intranetové servery v kompatibilního zobrazení** a **použití Microsoft kompatibility seznamy**, a pak vyberte **Zavřít**.
+5. V aplikaci Internet Explorer procházet toohttp://headnodehost:8188/tezui / #/. Bude se zobrazovat hello Tez uživatelského rozhraní
 
     ![Tez uživatelského rozhraní](./media/hdinsight-debug-tez-ui/tezui.png)
 
-    Až se načte Tez uživatelského rozhraní, zobrazí se, že seznam DAG, které jsou aktuálně spuštěné, nebo byla spuštěna v clusteru. Výchozí zobrazení zahrnuje Dag název, Id, odesílatel, stav, čas spuštění, čas ukončení, doba trvání, ID aplikace a fronty. Pomocí ikony ozubené kolečko na pravé straně stránky lze přidat více sloupců.
+    Až se načte hello Tez uživatelského rozhraní, zobrazí se, že seznam DAG, které jsou aktuálně spuštěné, nebo byla spuštěna v clusteru hello. Výchozí zobrazení Hello zahrnuje hello Dag název, Id, odesílatel, stav, čas spuštění, čas ukončení, doba trvání, ID aplikace a fronty. Pomocí ikony ozubené kolečko hello na hello napravo od stránku hello lze přidat více sloupců.
 
-    Pokud máte pouze jednu položku, bude pro dotaz, který jste spustili v předchozí části. Pokud máte více položek, můžete vyhledat tak, že zadáte kritéria hledání v polích nad DAG a pak stiskněte tlačítko **Enter**.
-6. Vyberte **Dag název** u nejnovější položky DAG. Tato akce zobrazí informace o DAG, a také možnost stáhnout zip soubory JSON, které obsahují informace o DAG.
+    Pokud máte pouze jednu položku, bude pro hello dotaz, který jste spustili v předchozí části hello. Pokud máte více položek, můžete vyhledat tak, že zadáte kritéria hledání v polích hello výše hello DAG a pak stiskněte tlačítko **Enter**.
+6. Vyberte hello **Dag název** u hello nejnovější DAG položky. Tato akce zobrazí informace o hello DAG, jakož i hello možnost toodownload zip soubory JSON, které obsahují informace o hello DAG.
 
     ![Podrobnosti o DAG](./media/hdinsight-debug-tez-ui/dagdetails.png)
-7. Výše **DAG podrobnosti** je několik odkazů, které lze použít k zobrazení informací o DAG.
+7. Výše hello **DAG podrobnosti** je několik odkazů, které se dají použít toodisplay informace o hello DAG.
 
    * **Čítače DAG** zobrazí informace o čítačích pro tento DAG.
    * **Grafické zobrazení** zobrazuje grafické reprezentace této DAG.
-   * **Všechny vrcholy** zobrazí seznam vrcholy v této DAG.
-   * **Všechny úlohy** zobrazí seznam úloh pro všechny vrcholy v této DAG.
-   * **Všechny TaskAttempts** zobrazí informace o pokusí spustit úlohy pro tuto DAG.
+   * **Všechny vrcholy** zobrazí seznam hello vrcholy v této DAG.
+   * **Všechny úlohy** zobrazí seznam hello úloh pro všechny vrcholy v této DAG.
+   * **Všechny TaskAttempts** zobrazí informace o hello pokusů o zadání toorun úlohy pro tuto DAG.
 
      > [!NOTE]
-     > Pokud se posunete zobrazení sloupce pro vrcholy, úlohy a TaskAttempts, Všimněte si, že jsou odkazů pro zobrazení **čítače** a **zobrazení nebo stažení protokolů** pro každý řádek.
+     > Pokud se posunete zobrazení sloupce hello vrcholy, úlohy a TaskAttempts, Všimněte si, že existují odkazy tooview **čítače** a **zobrazení nebo stažení protokolů** pro každý řádek.
      >
      >
 
-     Pokud došlo k selhání s úlohou, podrobnosti DAG se zobrazí stav se nezdařilo, spolu s odkazy na informace o neúspěšné úloze. Diagnostické informace se zobrazí pod podrobnosti DAG.
-8. Vyberte **grafické zobrazení**. Zobrazí se grafické reprezentace DAG. Myši můžete umístit každý vrchol, v zobrazení pro zobrazení informací o něm.
+     Pokud došlo k selhání s úlohou hello, hello podrobnosti DAG se zobrazí stav se nezdařilo, spolu s odkazy tooinformation o neúspěšné úloze hello. Diagnostické informace se zobrazí pod hello DAG podrobnosti.
+8. Vyberte **grafické zobrazení**. Zobrazí se grafické reprezentace hello DAG. Každý vrchol hello zobrazení toodisplay informace o tom můžete umístit hello myši.
 
     ![Grafické zobrazení](./media/hdinsight-debug-tez-ui/dagdiagram.png)
-9. Kliknutím na vrchol načte **vrchol podrobnosti** pro tuto položku. Klikněte na **mapy 1** vrchol si můžete zobrazit podrobnosti pro tuto položku. Vyberte **potvrdit** potvrďte navigaci.
+9. Kliknutím na vrchol načte hello **vrchol podrobnosti** pro tuto položku. Klikněte na hello **mapy 1** vrchol toodisplay podrobnosti pro tuto položku. Vyberte **potvrdit** tooconfirm hello navigace.
 
     ![Vrchol podrobnosti](./media/hdinsight-debug-tez-ui/vertexdetails.png)
-10. Upozorňujeme ale, nyní se odkazy v horní části stránky, která se vztahují k vrcholy a úloh.
+10. Upozorňujeme ale, nyní se odkazy v horní části hello hello stránky, které jsou související toovertices a úloh.
 
     > [!NOTE]
-    > Můžete se na tuto stránku tak, že přejdete zpět na také doručení **DAG podrobnosti**, vyberete **vrchol podrobnosti**a potom výběrem **mapy 1** vrchol.
+    > Tato stránka také můžete dospět tak, že přejdete příliš**DAG podrobnosti**, vyberete **vrchol podrobnosti**a potom vyberete hello **mapy 1** vrchol.
     >
     >
 
     * **Vrchol čítače** zobrazí čítače informace pro tento vrchol.
     * **Úlohy** zobrazuje úlohy, které pro tento vrchol.
-    * **Úloha pokusy o** zobrazí informace o pokusí spustit úlohy pro tuto vrchol.
+    * **Úloha pokusy o** zobrazí informace o úlohách toorun pokusů pro tento vrchol.
     * **Zdroje & jímky** zobrazí zdroje dat a pro tento vrchol jímky.
 
       > [!NOTE]
-      > Jako s předchozí nabídky můžete posuňte zobrazení sloupce pro úlohy, pokusy o úloh a zdroje & Sinks__ zobrazíte odkazy na další informace pro každou položku.
+      > S předchozí nabídce hello při posouvání hello sloupec zobrazení pro úlohy, propojí pokusy o úloh a zdroje & Sinks__ toodisplay toomore informace pro každou položku.
       >
       >
-11. Vyberte **úlohy**a potom vyberte položku s názvem **00_000000**. Bude se zobrazovat **podrobnosti úlohy** pro tuto úlohu. Na této obrazovce můžete zobrazit **úloh čítače** a **úloh pokusy**.
+11. Vyberte **úlohy**, a pak vyberte hello položku s názvem **00_000000**. Bude se zobrazovat **podrobnosti úlohy** pro tuto úlohu. Na této obrazovce můžete zobrazit **úloh čítače** a **úloh pokusy**.
 
     ![Podrobnosti úlohy](./media/hdinsight-debug-tez-ui/taskdetails.png)
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili použití Tez zobrazení, další informace o [pomocí Hive v HDInsight](hdinsight-use-hive.md).
+Teď, když jste se naučili, jak zobrazit toouse hello Tez, další informace o [pomocí Hive v HDInsight](hdinsight-use-hive.md).
 
-Další podrobné technické informace o Tez naleznete v tématu [Tez stránku v Hortonworks](http://hortonworks.com/hadoop/tez/).
+Další podrobné technické informace o Tez naleznete v tématu hello [Tez stránku v Hortonworks](http://hortonworks.com/hadoop/tez/).

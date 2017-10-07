@@ -1,5 +1,5 @@
 ---
-title: "Pravidla ve službě Azure CDN modul podmíněné výrazy | Microsoft Docs"
+title: "aaaAzure CDN pravidla podmíněné výrazy na modul | Microsoft Docs"
 description: "Referenční dokumentace pro Azure CDN pravidla shody stav motoru a funkce."
 services: cdn
 documentationcenter: 
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 57e56c38e003cb83dcf44f455c4451d159db8a59
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 39d0754c34a577f77ca87b6fd92e2b6a9e4ff8fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cdn-rules-engine-conditional-expressions"></a>Pravidla ve službě Azure CDN modul podmíněné výrazy
-Toto téma obsahuje podrobné popisy podmíněné výrazy pro Azure Content Delivery Network (CDN) [stroj pravidel](cdn-rules-engine.md).
+Toto téma obsahuje podrobné popisy hello podmíněné výrazy pro Azure Content Delivery Network (CDN) [stroj pravidel](cdn-rules-engine.md).
 
-První část pravidla je podmíněným výrazem.
+první část Hello pravidla je hello podmíněným výrazem.
 
 Podmíněným výrazem | Popis
 -----------------------|-------------
-POKUD | Výraz IF je vždy součástí první příkaz v pravidle. Stejně jako všechny ostatní podmíněné výrazy musí být tento příkaz IF přidružený shody. Pokud jsou definovány žádné další podmíněné výrazy, určuje toto porovnání kritérium, které je nutné splnit před sadu funkcí, je možné používat na žádost.
-A POKUD | Výraz a v případě lze přidat pouze po následující typy podmíněné výrazy: IF, a v případě. Ho znamená, že existuje jiný stav, který musí být splněné počáteční Pokud příkaz.
-POKUD JINÝ| Výraz ELSE IF Určuje alternativní podmínku, která je nutné splnit před sadu funkcí, které jsou specifické pro tento výraz ELSE když probíhá. Přítomnost příkazu ELSE IF označuje konec předchozí příkaz. Pouze podmíněným výrazem, který se může použít jiný příkaz ELSE IF po příkazu ELSE IF. To znamená, že příkaz ELSE IF lze použít pouze k určení jeden další podmínku, která musí být splněny.
+POKUD | Výraz IF je vždy součástí hello první příkaz v pravidle. Stejně jako všechny ostatní podmíněné výrazy musí být tento příkaz IF přidružený shody. Pokud jsou definovány žádné další podmíněné výrazy, určuje toto porovnání hello kritérium, které je nutné splnit před sadu funkcí, může být použité tooa požadavku.
+A POKUD | Výraz a v případě lze přidat pouze po hello následující typy podmíněné výrazy: IF, a v případě. Ho znamená, že existuje jiný stav, který musí být splněné, pokud příkaz počáteční hello.
+POKUD JINÝ| Výraz ELSE IF Určuje alternativní podmínky, které je nutné splnit před sadu funkce konkrétní toothis výraz ELSE když probíhá. Hello přítomnost příkazu ELSE IF naznačuje hello konec hello předchozí příkaz. Hello pouze podmíněným výrazem, který se může použít jiný příkaz ELSE IF po příkazu ELSE IF. To znamená, příkaz ELSE IF může být pouze používané toospecify jeden další podmínku, která má toobe splněny.
 
 **Příklad**: ![CDN vyhovují podmínce](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
 
  > [!TIP]
-   > Následující pravidlo může přepsat akce zadané předchozí pravidlem. Příklad: Catch všechna pravidla zabezpečuje všechny požadavky na základě tokenu ověřování. Přímo pod ním vytvářet výjimky pro určité typy požadavků může vytvořit jiné pravidlo.
+   > Následující pravidlo může přepsat hello akce zadané předchozí pravidlem. Příklad: Catch všechna pravidla zabezpečuje všechny požadavky na základě tokenu ověřování. Jiné pravidlo může být vytvářeny pod ji přímo toomake výjimku pro určité typy požadavků.
 
 ### <a name="next-steps"></a>Další kroky
 * [Přehled Azure CDN](cdn-overview.md)
 * [Referenční dokumentace pravidel modulu](cdn-rules-engine-reference.md)
 * [Stav shody motoru pravidla](cdn-rules-engine-reference-match-conditions.md)
 * [Funkce modulu pravidla](cdn-rules-engine-reference-features.md)
-* [Přepsání výchozího nastavení HTTP používá stroj pravidel](cdn-rules-engine.md)
+* [Přepsání výchozího nastavení HTTP používá stroj pravidel hello](cdn-rules-engine.md)

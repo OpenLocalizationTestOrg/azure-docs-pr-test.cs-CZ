@@ -1,6 +1,6 @@
 ---
-title: "Azure Mobile Engagement Windows Phone Silverlight SDK přehled | Microsoft Docs"
-description: "Přehled sady Windows Phone Silverlight SDK pro Azure Mobile Engagement"
+title: "Přehled sady Mobile Engagement Windows Phone Silverlight SDK aaaAzure | Microsoft Docs"
+description: "Přehled hello Windows Phone Silverlight SDK pro Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,38 +14,38 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/03/2016
 ms.author: piyushjo
-ms.openlocfilehash: c4e8ceee4104c3d3a6c3e6b79322ba1cf8463b22
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ff2febed2202127e0538373ebbabe674993ce39d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="windows-phone-silverlight-sdk-overview-for-azure-mobile-engagement"></a>Windows Phone Silverlight SDK přehled pro Azure Mobile Engagement
-Chcete-li získat podrobné informace o tom, jak integrovat Azure Mobile Engagement v aplikaci Silverlight pro Windows Phone, začněte zde. Pokud chcete a vyzkoušejte ho nejdřív, ujistěte se, dokončení naše [15 minut kurzu](mobile-engagement-windows-phone-get-started.md).
+Začněte zde tooget hello podrobnosti o tom, toointegrate Azure Mobile Engagement v aplikaci Silverlight pro Windows Phone. Pokud chcete toogive ho zkuste to nejprve zkontrolujte, zda dokončení naše [15 minut kurzu](mobile-engagement-windows-phone-get-started.md).
 
-Kliknutím zobrazíte [SDK obsahu](mobile-engagement-windows-phone-sdk-content.md)
+Klikněte na tlačítko toosee hello [SDK obsahu](mobile-engagement-windows-phone-sdk-content.md)
 
 ## <a name="integration-procedures"></a>Integrace procedury
-1. Začněte zde: [jak integrovat Mobile Engagement v aplikaci Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
-2. Pro oznámení: [jak integrovat Reach (oznámení) v aplikaci Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement-reach.md)
-3. Značka plán implementace: [jak používat rozšířené Mobile Engagement označování rozhraní API v aplikaci Windows Phone Silverlight](mobile-engagement-windows-phone-use-engagement-api.md)
+1. Začněte zde: [jak toointegrate Mobile Engagement v aplikaci Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
+2. Pro oznámení: [jak toointegrate Reach (oznámení) v aplikaci Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement-reach.md)
+3. Značka plán implementace: [jak toouse hello advanced Mobile Engagement označování rozhraní API v aplikaci Windows Phone Silverlight](mobile-engagement-windows-phone-use-engagement-api.md)
 
 ## <a name="release-notes"></a>Poznámky k verzi
 ###<a name="331-11032016"></a>3.3.1 (11/03/2016)
-Součást *MicrosoftAzure.MobileEngagement* balíček Nuget **v3.4.1**
+Součást hello *MicrosoftAzure.MobileEngagement* balíček Nuget **v3.4.1**
 
 * Zlepšení stability.
 
-Starší verze najdete v tématu [dokončení poznámky k verzi](mobile-engagement-windows-phone-release-notes.md)
+Starší verze najdete v tématu hello [dokončení poznámky k verzi](mobile-engagement-windows-phone-release-notes.md)
 
 ## <a name="upgrade-procedures"></a>Postupy upgradu
-Pokud již máte integrovanou starší verze naše sady SDK do své aplikace, je nutné zvážit následující body při upgradu sady SDK.
+Pokud již máte integrovanou starší verze naše sady SDK do své aplikace, musíte tooconsider hello následující body při upgradu hello SDK.
 
-Možná budete muset několik postupy použijte, pokud provedena několik verzí sady SDK. Zobrazit úplnou [postupy upgradu](mobile-engagement-windows-phone-upgrade-procedure.md). Například pokud migrujete z 0.10.1 0.11.0 budete muset nejdřív postupujte podle pokynů "od 0.9.0 k 0.10.1" pak postupu "od 0.10.1 k 0.11.0".
+Toofollow může mít několik postupů, pokud provedena několik verzí hello SDK. V tématu hello dokončení [postupy upgradu](mobile-engagement-windows-phone-upgrade-procedure.md). Například pokud migrujete z 0.10.1 too0.11.0 máte toofirst postupujte podle hello "z 0.9.0 too0.10.1" postup pak hello "z 0.10.1 too0.11.0" postup.
 
-### <a name="from-200-to-330"></a>Z 2.0.0 k 3.3.0
+### <a name="from-200-too330"></a>Z 2.0.0 too3.3.0
 #### <a name="test-logs"></a>Protokolů testování
-Protokoly konzoly vyprodukované sady SDK teď může být povolena nebo zakázána nebo filtrovat. Chcete-li přizpůsobit tím, aktualizujte vlastnost `EngagementAgent.Instance.TestLogEnabled` na jednu z hodnota dostupná z `EngagementTestLogLevel` výčtu pro instanci:
+Protokoly konzoly vyprodukované hello SDK teď může být povolena nebo zakázána nebo filtrovat. toocustomize se aktualizovat hello vlastnost `EngagementAgent.Instance.TestLogEnabled` tooone hello hodnota dostupná z hello `EngagementTestLogLevel` výčtu, například:
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();

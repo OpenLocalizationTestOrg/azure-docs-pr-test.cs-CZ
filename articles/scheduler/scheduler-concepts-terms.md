@@ -1,5 +1,5 @@
 ---
-title: Koncepty, pojmy a entity Scheduleru | Dokumentace Microsoftu
+title: aaaScheduler koncepty, pojmy a entity | Microsoft Docs
 description: "Koncepty, terminologie a hierarchie entit služby Azure Scheduler včetně úloh a kolekcí úloh.  Zobrazí ucelený příklad naplánované úlohy."
 services: scheduler
 documentationcenter: .NET
@@ -14,45 +14,45 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: 0f035b58ccd140a5481703df7e184206da2ed651
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 73e7de7bfd2937e401aeab05e0e10fa292cf37b9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scheduler-concepts-terminology--entity-hierarchy"></a>Koncepty, terminologie a hierarchie entit Scheduleru
 ## <a name="scheduler-entity-hierarchy"></a>Hierarchie entit Scheduleru
-V následující tabulce jsou uvedené hlavní prostředky, které rozhraní API Scheduleru vystavuje nebo používá.
+Hello následující tabulka popisuje hlavní prostředky, které hello vystavuje nebo používá hello API Scheduleru:
 
 | Prostředek | Popis |
 | --- | --- |
-| **Kolekce úloh** |Kolekce úloh obsahuje skupinu úloh a zachovává nastavení, kvóty a omezení, které jsou sdílené mezi úlohami v kolekci. Kolekci úloh vytvoří vlastník předplatného a seskupuje úlohy podle použití nebo hranic aplikací. Je omezená na jednu oblast. Taky umožňuje vynucovat kvóty a dál tak omezovat používání všech úloh v dané kolekci. Tyto kvóty zahrnují hodnoty MaxJobs a MaxRecurrence. |
+| **Kolekce úloh** |Kolekce úloh obsahuje skupinu úloh a zachovává nastavení, kvóty a omezení, které jsou sdílené mezi úlohami v kolekci hello. Kolekci úloh vytvoří vlastník předplatného a seskupuje úlohy podle použití nebo hranic aplikací. Je omezené tooone oblast. Také umožňuje vynucovat kvóty hello tooconstrain hello používání všech úloh v dané kolekci. Hello kvóty zahrnují hodnoty MaxJobs a MaxRecurrence. |
 | **Úloha** |Úloha definuje jednu opakující se akci s jednoduchými nebo komplexními strategiemi provedení. Akce můžou zahrnovat požadavky HTTP, fronty úložiště, fronty sběrnice nebo témata sběrnice. |
 | **Historie úlohy** |Historie úlohy obsahuje podrobnosti o provedení úlohy. Obsahuje podrobnosti o úspěchu/neúspěchu a jakékoli odezvě. |
 
 ## <a name="scheduler-entity-management"></a>Správa entit Scheduleru
-Na vysoké úrovni plánovač a rozhraní API pro správu služeb vystavují na prostředky tyto operace:
+Na vysoké úrovni hello Plánovač a rozhraní API pro správu služby hello vystavit hello následující operací s prostředky hello:
 
 | Schopnost | Popis a adresa identifikátoru URI |
 | --- | --- |
-| **Správa kolekce úloh** |Podpora pro GET, PUT a DELETE pro vytváření a úpravu kolekcí úloh a v nich obsažených úloh. Kolekce úloh je kontejner pro úlohy a mapy ke kvótám a sdíleným nastavením. Příklady kvót popsané později jsou maximální počet úloh a nejmenší interval opakování. <p>PUT a DELETE: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p><p>GET: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p> |
-| **Správa úloh** |Podpora pro GET, PUT, POST, PATCH a DELETE pro vytváření a úpravu úloh. Všechny úlohy musí patřit do stejné kolekce, která už existuje, takže k vytváření nedochází. <p>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`</p> |
+| **Správa kolekce úloh** |GET, PUT a DELETE podpora pro vytváření a úpravu kolekcí úloh a v nich obsažených úloh hello. Kolekce úloh je kontejner pro úlohy a mapy tooquotas a sdíleným nastavením. Příklady kvót popsané později jsou maximální počet úloh a nejmenší interval opakování. <p>PUT a DELETE: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p><p>GET: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p> |
+| **Správa úloh** |Podpora pro GET, PUT, POST, PATCH a DELETE pro vytváření a úpravu úloh. Všechny úlohy musí patřit tooa kolekce úloh, který již existuje, takže není vytváření nedochází. <p>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`</p> |
 | **Správa historie úloh** |Podpora pro GET pro načtení historie provádění úloh, jako je uplynulá doba úlohy a výsledky provedení úlohy, za posledních 60 dní. Přidá podporu parametru řetězce dotazu pro filtrování podle stavu a statusu. <P>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history`</p> |
 
 ## <a name="job-types"></a>Typy úloh
-Existují různé typy úloh: úlohy HTTP (a úlohy HTTPS, které podporují SSL), úlohy fronty úložiště, úlohy fronty sběrnice a úlohy témata sběrnice. Úlohy HTTP jsou ideální, pokud máte koncový bod existující úlohy nebo služby. Úlohy fronty úložiště můžete použít k odeslání zprávy do front úložiště, takže jsou ideální pro úlohy, které používají fronty úložiště. Úlohy sběrnice služby jsou zase ideální pro úlohy, které používají témata a fronty sběrnice služby.
+Existují různé typy úloh: úlohy HTTP (a úlohy HTTPS, které podporují SSL), úlohy fronty úložiště, úlohy fronty sběrnice a úlohy témata sběrnice. Úlohy HTTP jsou ideální, pokud máte koncový bod existující úlohy nebo služby. Fronty úloh toopost zprávy toostorage front úložiště, můžete použít, takže jsou ideální pro úlohy, které používají fronty úložiště. Úlohy sběrnice služby jsou zase ideální pro úlohy, které používají témata a fronty sběrnice služby.
 
-## <a name="the-job-entity-in-detail"></a>Podrobnosti o entitě „úloha“
+## <a name="hello-job-entity-in-detail"></a>Podrobnosti o entitě "úloha" Hello
 Na základní úrovni má naplánovaná úloha několik částí:
 
-* Akce, která se má provést, když časovač úlohy sepne  
-* (Volitelné) Čas, kdy se má úloha spustit  
-* (Volitelné) Kdy a jak často se má úloha opakovat  
-* (Volitelné) Akce, která se má provést, pokud primární akce selže  
+* Hello akce tooperform při hello časovač úlohy sepne  
+* (Volitelné) hello čase toorun hello úloha  
+* (Volitelné) Kdy a jak často toorepeat hello úlohy  
+* (Volitelné) Toofire akce, pokud selže primární akce hello  
 
-Naplánovaná úloha interně taky obsahuje data poskytnutá systémem, jako je třeba čas příštího naplánovaného provedení.
+Naplánovaná úloha interně taky obsahuje data poskytnutá systémem, jako je například hello čas příštího naplánovaného provedení.
 
-Následující kód je komplexní příklad naplánované úlohy. Podrobnější informace jsou uvedené v dalších částech.
+Následující kód Hello poskytuje ucelený příklad naplánované úlohy. Podrobnější informace jsou uvedené v dalších částech.
 
     {
         "startTime": "2012-08-04T00:00Z",               // optional
@@ -84,14 +84,14 @@ Následující kód je komplexní příklad naplánované úlohy. Podrobnější
         "recurrence":                                   // optional
         {
             "frequency": "week",                        // can be "year" "month" "day" "week" "minute"
-            "interval": 1,                              // optional, how often to fire (default to 1)
+            "interval": 1,                              // optional, how often toofire (default too1)
             "schedule":                                 // optional (advanced scheduling specifics)
             {
                 "weekDays": ["monday", "wednesday", "friday"],
                 "hours": [10, 22]
             },
-            "count": 10,                                 // optional (default to recur infinitely)
-            "endTime": "2012-11-04",                     // optional (default to recur infinitely)
+            "count": 10,                                 // optional (default toorecur infinitely)
+            "endTime": "2012-11-04",                     // optional (default toorecur infinitely)
         },
         "state": "disabled",                           // enabled or disabled
         "status":                                       // controlled by Scheduler service
@@ -104,7 +104,7 @@ Následující kód je komplexní příklad naplánované úlohy. Podrobnější
         },
     }
 
-Jak je vidět na předešlé ukázce naplánované úlohy, má definice úlohy několik částí:
+Jak je vidět v hello předešlé ukázce naplánované úlohy, má definice úlohy několik částí:
 
 * Čas spuštění („startTime“)  
 * Akce („action“), která zahrnuje i akci při chybě („errorAction“)
@@ -116,12 +116,12 @@ Jak je vidět na předešlé ukázce naplánované úlohy, má definice úlohy n
 Podívejme se na každou podrobněji:
 
 ## <a name="starttime"></a>startTime
-„startTime“ je čas spuštění a umožňuje volajícímu zadat posun časového pásma ve [formátu ISO-8601](http://en.wikipedia.org/wiki/ISO_8601).
+Hello "startTime" je čas spuštění hello a umožňuje hello volající toospecify časové pásmo posun na hello přenosu v [formátu ISO 8601](http://en.wikipedia.org/wiki/ISO_8601).
 
 ## <a name="action-and-erroraction"></a>action a errorAction
-„action“ je akce vyvolaná při každém výskytu a popisuje typ vyvolání služby. Akce je to, co se provede podle stanoveného plánu. Scheduler podporuje akce HTTP, fronty úložiště, fronty sběrnice a témata sběrnice.
+Hello "action" je hello akce vyvolaná při každém výskytu a popisuje typ vyvolání služby. Akce Hello je, co se provede na hello zadaný plán. Scheduler podporuje akce HTTP, fronty úložiště, fronty sběrnice a témata sběrnice.
 
-V příkladu nahoře je akce HTTP. Dole je příklad akce fronty úložiště:
+Akce Hello v předchozím příkladu hello je akce HTTP. Dole je příklad akce fronty úložiště:
 
     {
             "type": "storageQueue",
@@ -147,45 +147,45 @@ Dole je příklad akce fronty sběrnice:
         "sasKeyName": "QPolicy", "type": "sharedAccessKey" }, "message": "Some message",  
       "brokeredMessageProperties": {}, "customMessageProperties": { "appname": "FromScheduler" } }, "type": "serviceBusQueue" }
 
-„errorAction“ je obslužná rutina chyb – akce vyvolaná při selhání primární akce. Tuto proměnnou můžete použít k zavolání koncového hodu pro zpracování chyby nebo odeslání oznámení pro uživatele. To se může použít pro spojení se sekundárním koncovým bodem v případě, že primární koncový bod není dostupný (např. při nehodě nebo přírodní katastrofě v lokalitě koncového bodu) nebo se může použít pro upozornění koncového bodu pro zpracování chyby. Stejně jako primární akce může i obslužná rutina mít jednoduchou nebo složenou logiku podle jiných akcí. Pokud se chcete dozvědět, jak vytvořit token SAS, podívejte se na téma [Vytvoření a používání sdíleného přístupového podpisu](https://msdn.microsoft.com/library/azure/jj721951.aspx).
+Hello "errorAction" je obslužná rutina chyby hello, hello akce vyvolaná při selhání primární akce hello. Můžete použít tuto proměnnou toocall koncový bod zpracování chyb nebo odeslání oznámení pro uživatele. Dá se použít pro spojení se sekundárním koncovým bodem v případě hello této hello primární server není k dispozici (například v případě havárie v lokalitě koncového bodu hello hello) nebo můžete použít pro upozornění koncového bodu pro zpracování chyby. Stejně jako primární akce hello může být akce chyby hello jednoduchou nebo složenou logiku podle jiných akcí. jak toocreate SAS token naleznete příliš toolearn[vytváření a používání sdíleného přístupového podpisu](https://msdn.microsoft.com/library/azure/jj721951.aspx).
 
 ## <a name="recurrence"></a>recurrence
 Opakování má několik částí:
 
 * Frequency (frekvence): Minuta, hodina, den, týden, měsíc nebo rok  
-* Interval: Interval při dané frekvenci opakování  
-* Prescribed schedule (předepsaný plán): Minuty, hodiny, dny v týdnu, měsíce a dny v měsíci pro opakování  
+* Interval: Interval při hello zadané frekvence opakování hello  
+* Předepsaný plán: Zadejte minuty, hodiny, dny v týdnu, měsíce a prescribed hello opakování  
 * Count (počet): Počet výskytů  
-* End time (čas ukončení): Po zadaném čase ukončení se neprovedou žádné úlohy  
+* Koncový čas: po hello zadaný čas ukončení se neprovedou žádné úlohy  
 
-Úloha se opakuje, jestliže má ve své definici JSON opakující se objekt. Pokud jsou zadané count i endTime, má přednost to pravidlo dokončení, které nastane jako první.
+Úloha se opakuje, jestliže má ve své definici JSON opakující se objekt. Pokud jsou zadané count i endTime, je dodržení hello dokončení pravidlo, které nastane jako první.
 
 ## <a name="state"></a>state
-Stav (state) úlohy může mít jednu ze čtyř hodnot: enabled (zapnuto, disabled (vypnuto), completed (dokončeno) nebo faulted (chyba). Pomocí PUT nebo PATCH můžete aktualizovat stav úloh a tím jim přidělit stav zapnuto nebo vypnuto. Pokud má úloha stav dokončeno nebo chyba, je to konečný stav, který se už nedá změnit (na úlohu ale stále můžete použít DELETE). Příklad vlastnosti state:
+Hello stav úlohy hello je jednu ze čtyř hodnot: povolena, zakázána, dokončení nebo došlo k chybě. Můžete vložit nebo oprava úlohy, jako tooupdate je toohello povolený nebo zakázaný stav. Pokud úloha byla dokončena nebo došlo k chybě, která je konečný stav, který nelze aktualizovat (i když stále můžete použít DELETE hello úlohy). Příklad vlastnosti stavu hello vypadá takto:
 
         "state": "disabled", // enabled, disabled, completed, or faulted
 Dokončené úlohy a úlohy, které selhaly, se odstraní po 60 dnech.
 
 ## <a name="status"></a>status
-Po zahájení úlohy Scheduleru se vrátí informace o aktuálním statusu (stavu) úlohy. Uživatel nemůže tento objekt nastavit – nastaví ho systém. Je ale obsažený v objektu úlohy (a ne v samostatném propojeném prostředku), aby se mohl snadno získat stav (status) úlohy.
+Po zahájení úlohy Scheduleru se vrátí informace o aktuální stav úlohy hello hello. Tento objekt není nastavit uživatelem hello – je nastavena podle hello systému. Ale je součástí hello objektu úlohy (spíše než v samostatném propojeném prostředku), aby jeden můžete snadno získat hello stav úlohy.
 
-Stav (status) úlohy obsahuje čas předchozího spuštění (pokud existuje), čas dalšího naplánovaného spuštění (pro probíhající úlohy) a počet provedení úlohy.
+Stav úlohy obsahuje čas hello hello předchozího spuštění (pokud existuje), hello čas dalšího naplánovaného spuštění hello (pro probíhající úlohy) a počet provedení hello hello úlohy.
 
 ## <a name="retrypolicy"></a>retryPolicy
-Pro případ, že úloha Scheduleru selže, se můžou zadat zásady opakovaných pokusů a pomocí nich se může nastavit, jestli se má pokus o provedení úlohy opakovat a když ano, tak jak. To se nastavuje pomocí objektu **retryType** – pokud nejsou žádné zásady opakovaných pokusů, jako v příkladu nahoře, je nastavený na **none**. Pokud zásady opakovaných pokusů existují, nastavte ho na **fixed**.
+Pokud úloha Scheduleru selže, je možné toospecify toodetermine zásady opakování, zda a jak se pokus o hello akce. To je dáno hello **retryType** objektu – je nastaven příliš**žádné** Pokud neexistuje žádné zásady opakovaných pokusů, jak je uvedeno výše. Nastavit také**pevné** v případě zásady opakování.
 
-Pokud chcete nastavit zásady opakovaných pokusů, můžete nastavit další dvě nastavení: interval opakovaných pokusů (**retryInterval**) a počet opakovaných pokusů (**retryCount**).
+tooset zásady opakovaných pokusů, můžete zadat další dvě nastavení: interval opakování (**retryInterval**) a hello počet opakovaných pokusů (**retryCount**).
 
-Interval opakovaných pokusů zadaný v objektu **retryInterval** je interval mezi opakovanými pokusy. Výchozí hodnota je 30 sekund, minimální nastavitelná hodnota je 15 sekund a maximální hodnota je 18 měsíců. Pro úlohy v kolekcích úloh Free je minimální nastavitelná hodnota 1 hodina.  Definuje se ve formátu ISO 8601. Podobně je to s hodnotou počtu opakovaných pokusů nastavených v objektu **retryCount** – je to počet, kolikrát se má pokus opakovat. Výchozí hodnota je 4 a maximální hodnota je 20\. Obě **retryInterval** a **retryCount** jsou volitelné. Pokud je objekt **retryType** nastavený na **fixed** a nejsou explicitně zadané žádné konkrétní hodnoty, použijí se výchozí hodnoty.
+interval opakovaných Hello zadaným hello **retryInterval** objektu, je hello interval mezi opakovanými pokusy. Výchozí hodnota je 30 sekund, minimální nastavitelná hodnota je 15 sekund a maximální hodnota je 18 měsíců. Pro úlohy v kolekcích úloh Free je minimální nastavitelná hodnota 1 hodina.  Je definována ve formátu ISO 8601 hello. Podobně je zadána hodnota hello hello počet opakování s hello **retryCount** objektu; je hello počet, kolikrát má pokus opakovat. Výchozí hodnota je 4 a maximální hodnota je 20\. Obě **retryInterval** a **retryCount** jsou volitelné. Pokud jsou uvedené výchozí hodnoty **retryType** je nastaven příliš**pevné** a nejsou explicitně zadané žádné hodnoty.
 
 ## <a name="see-also"></a>Viz také
  [Co je Scheduler?](scheduler-intro.md)
 
- [Úvod do používání Scheduleru na portálu Azure Portal](scheduler-get-started-portal.md)
+ [Začněte používat plánovače v hello portálu Azure](scheduler-get-started-portal.md)
 
  [Plány a fakturace v Azure Scheduleru](scheduler-plans-billing.md)
 
- [Sestavení komplexních plánů a pokročilé opakování v Azure Scheduleru](scheduler-advanced-complexity.md)
+ [Jak toobuild komplexní plány a pokročilé opakování ve službě Azure Scheduler](scheduler-advanced-complexity.md)
 
  [REST API Azure Scheduleru – referenční informace](https://msdn.microsoft.com/library/mt629143)
 

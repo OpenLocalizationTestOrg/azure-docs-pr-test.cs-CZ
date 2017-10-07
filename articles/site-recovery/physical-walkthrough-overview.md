@@ -1,6 +1,6 @@
 ---
-title: "Replikovat fyzické místní servery do Azure s Azure Site Recovery | Microsoft Docs"
-description: "Obsahuje přehled kroků pro replikaci úlohy běžící na fyzických serverech místní Windows nebo Linuxem do Azure se službou Azure Site Recovery."
+title: "aaaReplicate fyzický místní servery tooAzure s Azure Site Recovery | Microsoft Docs"
+description: "Poskytuje přehled hello kroky pro replikovat úlohy běžící na místní Windows nebo Linuxem fyzických serverů tooAzure s hello služba Azure Site Recovery."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,86 +14,86 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.openlocfilehash: 0a09b35e98dc0b2f5283c2a707a3a2b8ac9a39f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f801b9544072d4029ec06cc1abfd4ff370e852e9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="replicate-physical-servers-to-azure-with-site-recovery"></a>Replikace fyzických serverů do Azure pomocí Site Recovery
+# <a name="replicate-physical-servers-tooazure-with-site-recovery"></a>Replikace fyzických serverů tooAzure službou Site Recovery
 
-Tento článek obsahuje přehled kroků nezbytných k replikaci místní Windows nebo Linuxem fyzických serverů do Azure, pomocí [Azure Site Recovery](site-recovery-overview.md) službu na portálu Azure.
+Tento článek obsahuje přehled hello kroky požadované tooreplicate místní Windows nebo Linuxem fyzických serverů tooAzure, pomocí hello [Azure Site Recovery](site-recovery-overview.md) služby v hello portálu Azure.
 
 
 ## <a name="step-1-review-architecture-and-prerequisites"></a>Krok 1: Posouzení architektura a požadavky
 
-Před zahájením nasazení, zkontrolujte na architekturu scénáře a ujistěte se, že rozumíte všechny součásti, které je třeba nastavit nasazení.
+Před zahájením nasazení, zkontrolujte architekturu scénáře hello a ujistěte se, že rozumíte všechny součásti hello potřebujete tooset až hello nasazení.
 
-Přejděte na [krok 1: Přečtěte si architektura](physical-walkthrough-architecture.md)
+Přejděte příliš[krok 1: Zkontrolujte architektura hello](physical-walkthrough-architecture.md)
 
 
 ## <a name="step-2-review-prerequisites"></a>Krok 2: Kontrola předpokladů
 
-Ujistěte se, že máte požadavky na místě pro každou součást nasazení:
+Ujistěte se, že máte nastavené pro jednotlivé součásti nasazení hello požadavky:
 
 - **Požadavky Azure**: budete potřebovat účet Microsoft Azure, sítě Azure a účty úložiště.
 - **Místní součásti Site Recovery**: budete potřebovat počítač se systémem součásti Site Recovery na místě.
-- **Replikovat počítače**: servery, které chcete replikovat potřebovat pro dosažení souladu s místními a požadavky pro Azure.
+- **Replikovat počítače**: servery, které chcete tooreplicate potřebovat toocomply s místními a požadavky pro Azure.
 
-Přejděte na [krok 2: Přečtěte si požadavky a omezení](physical-walkthrough-prerequisites.md)
+Přejděte příliš[krok 2: Přečtěte si požadavky a omezení](physical-walkthrough-prerequisites.md)
 
 ## <a name="step-3-plan-capacity"></a>Krok 3: Plánování kapacity
 
-Pokud provádíte úplné nasazení potřebujete zjistit, jaké prostředky replikace, které potřebujete. Pokud jste to nějakou rychlou nastavit tak, aby testovací prostředí, můžete tento krok přeskočit.
+Pokud provádíte úplné nasazení musíte toofigure na jaké replikace prostředky, které potřebujete. Pokud jste to nějakou rychlou nastavení tootest hello prostředí, můžete tento krok přeskočit.
 
-Přejděte na [Krok 3: Plánování kapacity](physical-walkthrough-capacity.md)
+Přejděte příliš[krok 3: plánování kapacity](physical-walkthrough-capacity.md)
 
 ## <a name="step-4-plan-networking"></a>Krok 4: Plánování sítě
 
-Budete muset provést některé síťové plánování zajistit, že virtuální počítače Azure, jsou připojeny k sítím po převzetí služeb při selhání a která, ke kterým mají správné IP adresy.
+Je nutné toodo některé síťové plánování tooensure, že virtuální počítače Azure jsou připojené toonetworks po převzetí služeb při selhání, a že, ke kterým mají hello správné IP adres.
 
-Přejděte na [krok 4: plánování sítě](physical-walkthrough-network.md)
+Přejděte příliš[krok 4: plánování sítě](physical-walkthrough-network.md)
 
 ##  <a name="step-5-prepare-azure-resources"></a>Krok 5: Příprava prostředků Azure
 
 Nastavte před zahájením Azure sítím a úložišti. 
 
-Přejděte na [krok 5: Příprava Azure](physical-walkthrough-prepare-azure.md)
+Přejděte příliš[krok 5: Příprava Azure](physical-walkthrough-prepare-azure.md)
 
 
 ## <a name="step-6-set-up-a-vault"></a>Krok 6: Nastavení trezoru
 
-Nastavíte trezor služeb zotavení pro orchestraci a správu replikace. Když nastavíte trezor, zadejte co chcete replikovat a kam chcete replikovat, aby.
+Můžete nastavit tooorchestrate trezoru služeb zotavení a spravovat replikace. Při nastavování hello trezoru, určíte, co chcete tooreplicate, a místo, kam chcete tooreplicate jeho.
 
-Přejděte na [krok 6: nastavení trezoru](physical-walkthrough-create-vault.md)
+Přejděte příliš[krok 6: nastavení trezoru](physical-walkthrough-create-vault.md)
 
 ## <a name="step-7-configure-source-and-target-settings"></a>Krok 7: Konfigurace nastavení zdroje a cíle
 
-Nakonfigurujte nastavení pro zdrojové a cílové lokality (Azure). Nastavení zdroje zahrnuje systémem Unified instalačního programu pro instalaci součásti Site Recovery na místě.
+Nakonfigurujte nastavení pro hello zdrojové a cílové lokality (Azure). Nastavení zdroje zahrnuje spuštění tooinstall Unified instalace součásti Site Recovery místní hello.
 
-Přejděte na [krok 7: nastavit zdroje a cíle](physical-walkthrough-source-target.md)
+Přejděte příliš[krok 7: nastavení hello zdroje a cíle](physical-walkthrough-source-target.md)
 
 ## <a name="step-8-set-up-a-replication-policy"></a>Krok 8: Nastavení zásad replikace
 
-Můžete nastavit zásadu k určení jak fyzických serverů musí replikovat.
+Nastavení zásad toospecify jak fyzické servery musí replikovat.
 
-Přejděte na [krok 8: nastavení zásad replikace](physical-walkthrough-replication.md)
+Přejděte příliš[krok 8: nastavení zásad replikace](physical-walkthrough-replication.md)
 
-## <a name="step-9-install-the-mobility-service"></a>Krok 9: Instalace služby Mobility
+## <a name="step-9-install-hello-mobility-service"></a>Krok 9: Instalace služby Mobility hello
 
-Služba Mobility musí být nainstalovaná na každém serveru, který chcete replikovat. Existuje několik způsobů, jak nastavit službu s instalace push nebo pull.
+Služba Mobility Hello musí být nainstalován na každém serveru chcete tooreplicate. Existuje několik způsobů tooset až služba hello se instalace push nebo pull.
 
-Přejděte na [krok 9: instalace služby Mobility](physical-walkthrough-install-mobility.md)
+Přejděte příliš[krok 9: instalace služby Mobility hello](physical-walkthrough-install-mobility.md)
 
 ## <a name="step-10-enable-replication"></a>Krok 10: Povolení replikace
 
-Jakmile je na serveru běží služba Mobility, můžete povolit pro něho replikaci. Když povolíte, dojde k počáteční replikaci virtuálního počítače.
+Po hello služba Mobility běží na serveru, můžete povolit pro něho replikaci. Když povolíte, dojde k počáteční replikaci hello virtuálních počítačů.
 
-Přejděte na [krok 10: povolení replikace](physical-walkthrough-enable-replication.md)
+Přejděte příliš[krok 10: povolení replikace](physical-walkthrough-enable-replication.md)
 
 ## <a name="step-11-run-a-test-failover"></a>Krok 11: Spuštění testu převzetí služeb
 
-Po dokončení počáteční replikace a je spuštěna rozdílová replikace, můžete spustit převzetí služeb při selhání a ujistěte se, že vše funguje podle očekávání.
+Po dokončení počáteční replikace a je spuštěna rozdílová replikace, můžete spustit toomake testovací převzetí služeb při selhání, se, že vše funguje podle očekávání.
 
-Přejděte na [krok 11: spustit testovací převzetí služeb](physical-walkthrough-test-failover.md)
+Přejděte příliš[krok 11: spustit testovací převzetí služeb](physical-walkthrough-test-failover.md)
 

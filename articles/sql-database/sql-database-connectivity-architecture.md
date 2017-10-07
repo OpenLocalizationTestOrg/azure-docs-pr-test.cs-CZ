@@ -1,6 +1,6 @@
 ---
-title: "Architektura připojení k Azure SQL Database | Microsoft Docs"
-description: "Tento dokument popisuje architekturu připojení k Azure SQLDB z Azure nebo z mimo Azure."
+title: "aaaAzure architektura připojení k SQL Database | Microsoft Docs"
+description: "Tento dokument popisuje hello Azure SQLDB připojení architektura z Azure nebo z mimo Azure."
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -15,51 +15,51 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 06/05/2017
 ms.author: carlrab
-ms.openlocfilehash: 8a1dd89c9e82483184ceb5d767190a5a5044265d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 917df6d88a16f1b841b617fb2a53025b4d14d034
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Architektura připojení k databázi Azure SQL 
 
-Tento článek popisuje architekturu připojení k databázi SQL Azure a vysvětluje, jak různé součásti funkci, aby se směrovat provoz na instanci databáze SQL Azure. Tyto Azure SQL Database připojení funkce komponent směrovat síťový provoz do databáze Azure s klienty připojení v rámci Azure a klienti připojení z mimo Azure. Tento článek také obsahuje skript ukázky změnit, jak dojde k připojení a důležité informace související s změny výchozího nastavení připojení. Pokud po přečtení tohoto článku existují nějaké dotazy, obraťte se na Dhruv v dmalik@microsoft.com. 
+Tento článek popisuje architekturu připojení k databázi SQL Azure hello a vysvětluje, jak funkce různých komponent hello toodirect provoz tooyour instance databáze SQL Azure. Tyto součásti připojení k databázi SQL Azure fungovat toodirect síťový provoz toohello databáze Azure s klienty připojení v rámci Azure a klienti připojení z mimo Azure. Tento článek také obsahuje skript ukázky toochange jak dojde k připojení a hello aspekty související nastavení připojení k výchozí toochanging hello. Pokud po přečtení tohoto článku existují nějaké dotazy, obraťte se na Dhruv v dmalik@microsoft.com. 
 
 ## <a name="connectivity-architecture"></a>Architektura připojení
 
-Následující diagram představuje podrobný přehled architektury připojení k databázi SQL Azure. 
+Následující diagram Hello poskytuje podrobný přehled hello architektura připojení k databázi SQL Azure. 
 
 ![Přehled architektury](./media/sql-database-connectivity-architecture/architecture-overview.png)
 
 
-Následující kroky popisují, jak se naváže připojení k databázi Azure SQL přes Azure SQL Database softwaru-Vyrovnávání zatížení (SLB) a bránu Azure SQL Database.
+Hello následující kroky popisují, jak připojení je navázáno tooan Azure SQL database prostřednictvím hello Azure SQL Database softwaru Vyrovnávání zatížení (SLB) a brány Azure SQL Database hello.
 
-- Klienti v rámci Azure nebo mimo Azure připojit k SLB, která má veřejnou IP adresu a naslouchá na portu 1433.
-- SLB přesměruje přenosy na bráně Azure SQL Database.
-- Brána přesměruje provoz na správný proxy middleware.
-- Proxy middleware přesměruje přenosy dat k příslušné databázi Azure SQL.
+- Klienti v rámci Azure nebo mimo Azure připojit toohello SLB, která má veřejnou IP adresu a naslouchá na portu 1433.
+- Hello SLB směrovat provoz toohello Azure SQL Database brány.
+- Hello brány přesměruje hello provoz toohello správné proxy middleware.
+- Hello proxy middleware přesměruje hello provoz toohello odpovídající Azure SQL database.
 
 > [!IMPORTANT]
-> Každou z těchto součástí je distribuovat útok na dostupnost služby (Denial) ochrany integrované v síti a vrstva aplikací.
+> Každou z těchto součástí je distribuovat útok na dostupnost služby (Denial) ochrany integrované v síti hello a vrstva aplikací hello.
 >
 
 ## <a name="connectivity-from-within-azure"></a>Připojení z v rámci Azure
 
-Pokud se připojujete ze v rámci Azure, vaše připojení mají zásady připojení **přesměrování** ve výchozím nastavení. Zásady **přesměrování** znamená, že připojení po TCP je vytvoření relace k databázi Azure SQL relaci klienta se pak přesměrují na proxy middleware s změnu cílové virtuální IP adresa od bránu Azure SQL Database a který middleware proxy serveru. Následně všechny následující pakety toku přímo prostřednictvím proxy serveru middlewaru, obcházení brány Azure SQL Database. Následující diagram znázorňuje tento tok přenosů.
+Pokud se připojujete ze v rámci Azure, vaše připojení mají zásady připojení **přesměrování** ve výchozím nastavení. Zásady **přesměrování** znamená, že připojení po relace TCP hello je navázáno toohello Azure SQL database, relaci klienta hello se pak přesměruje toohello proxy middlewaru s změnu toohello cílové virtuální IP adresy z který toothat brány Azure SQL Database hello hello proxy middlewaru. Následně všechny následující pakety toku přímo prostřednictvím middlewaru hello proxy, obcházení brány Azure SQL Database hello. Hello následující diagram znázorňuje tento tok přenosů.
 
 ![Přehled architektury](./media/sql-database-connectivity-architecture/connectivity-from-within-azure.png)
 
 ## <a name="connectivity-from-outside-of-azure"></a>Připojení z mimo Azure
 
-Pokud se připojujete ze mimo Azure, vaše připojení mají zásady připojení **Proxy** ve výchozím nastavení. Zásady **Proxy** znamená, že je vytvoření relace TCP prostřednictvím brány Azure SQL Database a všechny následující pakety toku prostřednictvím brány. Následující diagram znázorňuje tento tok přenosů.
+Pokud se připojujete ze mimo Azure, vaše připojení mají zásady připojení **Proxy** ve výchozím nastavení. Zásady **Proxy** hello znamená, že je vytvořena relace TCP hello prostřednictvím brány Azure SQL Database hello se všechny následující pakety toku prostřednictvím brány. Hello následující diagram znázorňuje tento tok přenosů.
 
 ![Přehled architektury](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL Database brány IP adresy
 
-Pro připojení k databázi Azure SQL z místních prostředků, musíte povolit odchozí přenosy sítě k bráně Azure SQL Database pro vaši oblast Azure. Připojení, jdou pouze prostřednictvím brány při připojení v režimu proxy serveru, který je výchozím nastavením, pokud se připojujete z místních prostředků.
+databáze Azure SQL tooconnect tooan z místních prostředků, musíte tooallow odchozí síťový provoz toohello Azure SQL Database brány pro vaši oblast Azure. Připojení, jdou pouze prostřednictvím brány hello při připojení v režimu proxy serveru, který je výchozí hello při připojení z místních prostředků.
 
-Následující tabulka uvádí primární a sekundární IP adresy brány Azure SQL Database pro všechny datové oblasti. Pro některé oblasti jsou dvě IP adresy. V těchto oblastech primární IP adresa je aktuální IP adresu brány, a druhou IP adresu je IP adresa převzetí služeb při selhání. Převzetí služeb při selhání adresa je adresa, na kterou jsme může přesunout server, abyste mohli udržovat vysokou dostupnost služeb. Pro tyto oblasti doporučujeme povolit odchozí na IP adresy. Druhou IP adresu je vlastnictví společnosti Microsoft a nepřijímá požadavky na žádné služby, až po aktivaci Azure SQL Database tak, aby přijímal připojení.
+Následující tabulka seznamy Hello hello primární a sekundární IP adresy brány Azure SQL Database hello pro všechny datové oblasti. Pro některé oblasti jsou dvě IP adresy. V těchto oblastech hello primární IP adresa je hello aktuální IP adresu brány hello a druhou IP adresu hello je IP adresa převzetí služeb při selhání. Adresa Hello převzetí služeb při selhání je toowhich adresu hello jsme může váš server tookeep hello dostupnost služby vysoké přesunout. Pro tyto oblasti doporučujeme povolit odchozí tooboth hello IP adresy. Hello druhou IP adresu je vlastnictví společnosti Microsoft a nepřijímá požadavky na žádné služby, dokud je aktivován Azure SQL Database tooaccept připojení.
 
 | Název oblasti | Primární adresa IP | Sekundární adresa IP |
 | --- | --- |--- |
@@ -95,18 +95,18 @@ Následující tabulka uvádí primární a sekundární IP adresy brány Azure 
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Změnit zásady připojení databáze SQL Azure
 
-Můžete změnit zásady připojení databáze SQL Azure pro server Azure SQL Database [REST API](https://msdn.microsoft.com/library/azure/mt604439.aspx). 
+toochange hello Azure SQL Database zásady připojení pro server Azure SQL Database, použijte hello [REST API](https://msdn.microsoft.com/library/azure/mt604439.aspx). 
 
-- Pokud vaše zásady připojení je nastavený na **Proxy**, všechny síťové pakety toku prostřednictvím brány Azure SQL Database. U tohoto nastavení musíte povolit odchozí pouze IP brány Azure SQL Database. Pomocí nastavení **Proxy** má více latenci než nastavení **přesměrování**. 
-- Pokud je nastavení zásady vaší připojení **přesměrování**, všechny síťové pakety toku přímo k proxy serveru middleware. U tohoto nastavení musíte povolit odchozí do víc IP adres. 
+- Pokud vaše zásady připojení je nastaven příliš**Proxy**, všechny síťové pakety toku prostřednictvím brány Azure SQL Database hello. U tohoto nastavení musíte IP brány tooallow odchozí tooonly hello Azure SQL Database. Pomocí nastavení **Proxy** má více latenci než nastavení **přesměrování**. 
+- Pokud je nastavení zásady vaší připojení **přesměrování**, všech síťových paketů toku přímo toohello middleware proxy. U tohoto nastavení musíte odchozí toomultiple tooallow IP adresy. 
 
-## <a name="script-to-change-connection-settings"></a>Chcete-li změnit nastavení připojení skriptu
+## <a name="script-toochange-connection-settings"></a>Nastavení připojení toochange skriptu
 
 > [!IMPORTANT]
-> Tento skript vyžaduje [modul Azure PowerShell](/powershell/azure/install-azurerm-ps).
+> Tento skript vyžaduje hello [modul Azure PowerShell](/powershell/azure/install-azurerm-ps).
 >
 
-Následující skript prostředí PowerShell ukazuje, jak změnit zásady připojení.
+Hello následující skript prostředí PowerShell ukazuje, jak toochange hello zásady připojení.
 
 ```powershell
 import-module azureRm
@@ -130,10 +130,10 @@ $authHeader = @{
 'Authorization'=$result.CreateAuthorizationHeader()
 }
 
-#getting the current connection property
+#getting hello current connection property
 Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/servers/$serverName/connectionPolicies/Default?api-version=2014-04-01-preview" -Method GET -Headers $authHeader
 
-#setting the property to ‘Proxy’
+#setting hello property too‘Proxy’
 $connectionType=”Proxy” <#Redirect / Default are other options#>
 $body = @{properties=@{connectionType=$connectionType}} | ConvertTo-Json
 
@@ -142,6 +142,6 @@ Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscription
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o tom, jak změnit zásady připojení Azure SQL Database pro databázi Azure SQL server najdete v tématu [vytvoření nebo aktualizace serveru připojení zásady pomocí rozhraní REST API](https://msdn.microsoft.com/library/azure/mt604439.aspx).
+- Informace o tom, jak toochange hello Azure SQL Database zásady připojení pro server Azure SQL Database, najdete v části [vytvořit nebo aktualizovat zásady připojení serveru pomocí rozhraní REST API hello](https://msdn.microsoft.com/library/azure/mt604439.aspx).
 - Informace o chování Azure SQL Database připojení pro klienty, kteří používají ADO.NET 4.5 nebo novější verze najdete v tématu [porty nad rámec 1433 pro technologii ADO.NET 4.5](sql-database-develop-direct-route-ports-adonet-v12.md).
 - Obecná aplikace vývoj přehled informace najdete v tématu [přehled vývoje aplikace databáze SQL](sql-database-develop-overview.md).

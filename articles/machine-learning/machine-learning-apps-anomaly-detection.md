@@ -1,5 +1,5 @@
 ---
-title: "(nepoužívané) Služba detekce anomálií Azure Machine Learning | Microsoft Docs"
+title: "Služba detekce Azure Machine Learning anomálií AAA(Deprecated) | Microsoft Docs"
 description: "(nepoužívané) Služba detekce anomálií je příklad vytvořené s nástroji Microsoft Azure Machine Learning, který zjistí anomálie v časových řad dat se číselné hodnoty, které jsou rozloženy rovnoměrně v čase."
 services: machine-learning
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.date: 01/18/2017
 ms.author: alok
 ROBOTS: NOINDEX
 redirect_url: machine-learning-apps-anomaly-detection-api
-redirect_document_id: TRUE
-ms.openlocfilehash: 6f3b3329fbbca33d44a055ee7d9c2508a7e1fceb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: c8c41426b669223844b3aefa2f9e23b42469d687
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="machine-learning-anomaly-detection-service-deprecated"></a>Machine Learning anomálií zjišťování služeb (zastaralé)

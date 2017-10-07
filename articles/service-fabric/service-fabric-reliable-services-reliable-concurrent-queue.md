@@ -1,5 +1,5 @@
 ---
-title: ReliableConcurrentQueue v Azure Service Fabric
+title: aaaReliableConcurrentQueue v Azure Service Fabric
 description: "ReliableConcurrentQueue je Vysoká propustnost fronty, který umožňuje paralelní enqueues a dequeues."
 services: service-fabric
 documentationcenter: .net
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: sangarg
-ms.openlocfilehash: 122cb48149477f295a65b8ee623c647b6db10a86
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 78a9905996b9ab265c1288d2b49753638d7bc445
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Úvod do ReliableConcurrentQueue v Azure Service Fabric
-Spolehlivé souběžných fronty je frontu asynchronní, transakční a replikované které funkce vysoké souběžnosti pro zařazování a dequeue – operace. Je navržen pro poskytování vysoké prostupnosti a nízké latence podle uvolnit striktní řazení FIFO poskytované [spolehlivé fronty](https://msdn.microsoft.com/library/azure/dn971527.aspx) a místo toho poskytuje best effort řazení.
+# <a name="introduction-tooreliableconcurrentqueue-in-azure-service-fabric"></a>Úvod tooReliableConcurrentQueue v Azure Service Fabric
+Spolehlivé souběžných fronty je frontu asynchronní, transakční a replikované které funkce vysoké souběžnosti pro zařazování a dequeue – operace. Je navrženou toodeliver vysoké prostupnosti a nízké latence podle uvolnit hello striktní FIFO řazení poskytované [spolehlivé fronty](https://msdn.microsoft.com/library/azure/dn971527.aspx) a místo toho poskytuje best effort řazení.
 
 ## <a name="apis"></a>Rozhraní API
 
@@ -33,20 +33,20 @@ Spolehlivé souběžných fronty je frontu asynchronní, transakční a replikov
 
 ## <a name="comparison-with-reliable-queuehttpsmsdnmicrosoftcomlibraryazuredn971527aspx"></a>Porovnání s [spolehlivé fronty](https://msdn.microsoft.com/library/azure/dn971527.aspx)
 
-Spolehlivé souběžných fronty je poskytován jako alternativu k [spolehlivé fronty](https://msdn.microsoft.com/library/azure/dn971527.aspx). By být používána v případech, kde není vyžadována, striktní řazení FIFO jako zaručující FIFO vyžaduje kompromis s souběžnosti.  [Spolehlivé fronty](https://msdn.microsoft.com/library/azure/dn971527.aspx) používá zámky vynutit FIFO řazení s maximálně jednu transakci povolen zařadit do fronty a maximálně jednu transakci dovoleno dequeue – najednou. Porovnání spolehlivé souběžných fronty zmírní řazení omezení a umožňuje jakýchkoli počet souběžných transakcí interleave jejich zařazování a dequeue – operace. Řazení typu Best effort je zadáno, ale relativní řazení ze dvou hodnot v spolehlivé souběžných frontě možné nikdy zaručit.
+Spolehlivé souběžných fronty je poskytován jako alternativu příliš[spolehlivé fronty](https://msdn.microsoft.com/library/azure/dn971527.aspx). By být používána v případech, kde není vyžadována, striktní řazení FIFO jako zaručující FIFO vyžaduje kompromis s souběžnosti.  [Spolehlivé fronty](https://msdn.microsoft.com/library/azure/dn971527.aspx) používá zámky tooenforce FIFO řazení, s maximálně jednu transakci povolen tooenqueue a na většině jednu transakci toodequeue v jednu chvíli může. Porovnání spolehlivé souběžných fronty zmírní hello řazení omezení a umožňuje jejich zařadit všechny počet souběžných transakcí toointerleave a dequeue – operace. Řazení typu Best effort je zadáno, ale relativní řazení hello ze dvou hodnot v spolehlivé souběžných frontě možné nikdy zaručit.
 
 Poskytuje spolehlivé souběžných fronty vyšší propustnost a nižší latenci než [spolehlivé fronty](https://msdn.microsoft.com/library/azure/dn971527.aspx) vždy, když jsou více souběžných transakcí provádění enqueues nebo dequeues.
 
-Ukázka případ použití je ReliableConcurrentQueue [fronta zpráv](https://en.wikipedia.org/wiki/Message_queue) scénář. V tomto scénáři jeden nebo více zpráv producenti vytvoření a přidání položek do fronty, a jeden nebo více zpráv příjemci načítat zprávy z fronty a jejich zpracování. Více producenti a spotřebitelé může nezávisle pracovat, aby bylo možné zpracovat fronty použití souběžných transakcí.
+Ukázka případ použití hello ReliableConcurrentQueue je hello [fronta zpráv](https://en.wikipedia.org/wiki/Message_queue) scénář. V tomto scénáři jedním nebo více výrobci zprávu vytvořit a přidat položky toohello fronty, a jeden nebo více zpráv příjemci načítat zprávy z fronty hello a jejich zpracování. Více producenti a spotřebitelé může nezávisle pracovat, použití souběžných transakcí ve frontě hello tooprocess pořadí.
 
 ## <a name="usage-guidelines"></a>Pokyny týkající se používání
-* Fronty očekává, že položky ve frontě mají doby uchování nízkou. To znamená položky by zůstat ve frontě delší dobu.
-* Fronty nezaručuje striktní FIFO řazení.
-* Fronta není přečíst vlastní zápisy. Pokud je položka zařazených do fronty v rámci transakce, nebude viditelná pro dequeuer v rámci stejné transakci.
-* Dequeues nejsou od sebe navzájem oddělené. Pokud položka *A* je vyjmutou v transakci *txnA*, i když *txnA* položky není potvrzena, *A* nebude viditelná pro souběžné transakce *txnB*.  Pokud *txnA* zruší, *A* bude zobrazovat *txnB* okamžitě.
-* *TryPeekAsync* chování může být implementováno pomocí *TryDequeueAsync* a pak ruší se transakce. Příklady najdete v části programování vzory.
-* Počet je netransakční. Umožňuje získat představu o počet elementů ve frontě, ale představuje bodu v čase a nelze spoléhat.
-* Nákladné zpracování na dequeued položky nebude prováděna při transakci je aktivní, aby se zabránilo dlouhotrvajících transakcí, které by mohly mít dopad na výkon systému.
+* fronty Hello očekává, že hello položek ve frontě hello mají doby uchování nízkou. To znamená hello položky by zůstat ve frontě hello po dlouhou dobu.
+* fronty Hello nezaručuje striktní FIFO řazení.
+* fronty Hello číst vlastní zápisy. Pokud je položka zařazených do fronty v rámci transakce, nebude viditelná tooa dequeuer v rámci hello stejné transakci.
+* Dequeues nejsou od sebe navzájem oddělené. Pokud položka *A* je vyjmutou v transakci *txnA*, i když *txnA* položky není potvrzena, *A* nebudou viditelné tooa souběžných transakce *txnB*.  Pokud *txnA* zruší, *A* se bude zobrazovat příliš*txnB* okamžitě.
+* *TryPeekAsync* chování může být implementováno pomocí *TryDequeueAsync* a pak ruší se transakce hello. Příklady najdete v hello části programování vzory.
+* Počet je netransakční. Může být použité tooget představu o hello počet elementů ve frontě hello, ale představuje bodu v čase a nelze spoléhat.
+* Nákladné zpracování na hello vyjmutou položky nesmí provést v průběhu hello transakcí je aktivní, tooavoid dlouhotrvajících transakcí, které by mohly mít dopad na výkon systému hello.
 
 ## <a name="code-snippets"></a>Fragmenty kódu
 Dejte nám se podívejte na několik fragmenty kódu a jejich očekávané výstupy. Zpracovávání výjimek v jazyce je ignorován v této části.
@@ -66,7 +66,7 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Předpokládejme, že úloha dokončena úspěšně a že v něm nebyly žádné souběžných transakcí úprava fronty. Uživatele můžete očekávat fronty tak, aby obsahovala položky ve všech následujících příkazů:
+Předpokládejme, že hello úloha byla úspěšně dokončena, a který nebyly žádné souběžných transakcí úprava fronty hello. uživatel, Hello očekávat hello fronty toocontain hello položky v některém z hello následující příkazy:
 
 > 10, 20
 
@@ -95,11 +95,11 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Předpokládejme, že úlohy byl úspěšně dokončen, že úkoly spustili paralelně a že neexistují žádné souběžných transakcí úprava fronty. Žádné odvození můžete provedeny o pořadí položek ve frontě. Pro tento fragment kódu může se zobrazit položky v některém ze 4! možné pořadí.  Fronty se pokusí uchovat položky v původní pořadí (zařazených do fronty), ale muset změnit jejich pořadí z důvodu souběžných operací nebo chyb.
+Předpokládejme, že hello úlohy byl úspěšně dokončen, jestli hello úlohy spustila paralelně a že neexistují žádné souběžných transakcí úprava fronty hello. Žádné odvození můžete provedeny o hello pořadí položek ve frontě hello. Pro tento fragment kódu může se zobrazit hello položky v některém z hello 4! možné pořadí.  Hello fronty se pokusí tookeep hello položky v hello původní (zařazených do fronty) pořadí, ale může být vynucené tooreorder je z důvodu operace tooconcurrent nebo chyb.
 
 
 ### <a name="dequeueasync"></a>DequeueAsync
-Tady je několik fragmenty kódu pro použití TryDequeueAsync následuje očekávané výstupy. Předpokládejme, že fronta je již naplněný následující položky ve frontě:
+Tady je několik fragmenty kódu pro použití TryDequeueAsync následuje výstupy hello očekává. Předpokládejme, že této fronty hello je již naplněný hello následujících položek ve frontě hello:
 > 10, 20, 30, 40, 50, 60
 
 - *Případ 1: Jeden dequeue – úloha*
@@ -115,7 +115,7 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Předpokládejme, že úloha dokončena úspěšně a že v něm nebyly žádné souběžných transakcí úprava fronty. Vzhledem k tomu, že o pořadí položek ve frontě nelze realizovat žádná odvození, může být vyjmutou všechny tři položky v libovolném pořadí. Fronty se pokusí uchovat položky v původní pořadí (zařazených do fronty), ale muset změnit jejich pořadí z důvodu souběžných operací nebo chyb.  
+Předpokládejme, že hello úloha byla úspěšně dokončena, a který nebyly žádné souběžných transakcí úprava fronty hello. Vzhledem k tomu, že o hello pořadí hello položek ve frontě hello nelze realizovat žádná odvození, může být vyjmutou všechny tři položky hello v libovolném pořadí. Hello fronty se pokusí tookeep hello položky v hello původní (zařazených do fronty) pořadí, ale může být vynucené tooreorder je z důvodu operace tooconcurrent nebo chyb.  
 
 - *Případ 2: Dequeue – paralelní úlohy*
 
@@ -141,13 +141,13 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Předpokládejme, že úlohy byl úspěšně dokončen, že úkoly spustili paralelně a že neexistují žádné souběžných transakcí úprava fronty. Vzhledem k tomu, že nelze realizovat žádná odvození o pořadí položek ve frontě, seznamy *dequeue1* a *dequeue2* bude každý obsahovat jakékoli dvě položky v libovolném pořadí.
+Předpokládejme, že hello úlohy byl úspěšně dokončen, jestli hello úlohy spustila paralelně a že neexistují žádné souběžných transakcí úprava fronty hello. Vzhledem k tomu, že o hello pořadí hello položek ve frontě hello nelze realizovat žádná odvození, hello seznamy *dequeue1* a *dequeue2* bude každý obsahovat jakékoli dvě položky v libovolném pořadí.
 
-Stejná položka bude *není* se zobrazí v obou seznamy. Proto pokud má dequeue1 *10*, *30*, pak by měla mít dequeue2 *20*, *40*.
+Hello se stejnou položku *není* se zobrazí v obou seznamy. Proto pokud má dequeue1 *10*, *30*, pak by měla mít dequeue2 *20*, *40*.
 
 - *Případ 3: Dequeue – při řazení s přerušení transakcí*
 
-Ruší se transakce s během letu dequeues PUT, které položky zpět na záhlaví fronty. Pořadí, ve které položky se vrátit zpět na záhlaví fronty není zaručena. Dejte nám podívejte se na následující kód:
+Ruší se transakce s během letu dequeues PUT, které položky hello zpět na záhlaví hello hello fronty. Hello pořadí, ve kterém hello položky se vrátit zpět na záhlaví hello hello fronty není zaručena. Dejte nám podívejte se na hello následující kód:
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -155,25 +155,25 @@ using (var txn = this.StateManager.CreateTransaction())
     await this.Queue.TryDequeueAsync(txn, cancellationToken);
     await this.Queue.TryDequeueAsync(txn, cancellationToken);
 
-    // Abort the transaction
+    // Abort hello transaction
     await txn.AbortAsync();
 }
 ```
-Předpokládejme, že položky byly vyjmutou v následujícím pořadí:
+Předpokládejme, že hello položky byly vyjmutou v hello následující pořadí:
 > 10, 20
 
-Když jsme ji zrušit, by byl přidán položky zpět do head fronty v některém z následujících objednávky:
+Když jsme abort hello transakce, hello položky by byl přidán back toohello head hello fronty v některém z hello následující příkazy:
 > 10, 20
 
 > 20, 10
 
-Totéž platí pro všechny případy, pokud transakce nebyla úspěšně *potvrzení*.
+Hello totéž platí pro všechny případy, kdy hello transakce nebyla úspěšně *potvrzení*.
 
 ## <a name="programming-patterns"></a>Vzory programování
 V této části, dejte nám podívejte se na několik programování vzorů, které mohou být užitečné při použití ReliableConcurrentQueue.
 
 ### <a name="batch-dequeues"></a>Batch Dequeues
-A doporučená programovací vzor je pro úlohu příjemce dávku jeho dequeues místo jedné dequeue – najednou. Uživatel může vybrat k omezení zpoždění mezi každou dávku nebo velikost dávky. Následující fragment kódu ukazuje tento programovací model.  Všimněte si, že se v tomto příkladu, se provádí zpracování po, že je transakce potvrzena, nebo, pokud k chybě dochází při zpracování, nezpracované položky budou ztraceny bez zpracování.  Alternativně zpracování lze provést v rámci oboru transakce, ale to může mít negativní dopad na výkon a vyžaduje zpracování položek, které jsou již zpracována.
+A doporučená programovací vzor je pro hello příjemce úloh toobatch jeho dequeues místo jedné dequeue – najednou. Hello uživatel může vybrat toothrottle zpoždění mezi každou dávka nebo hello velikost dávky. Hello následující fragment kódu ukazuje tento programovací model.  Všimněte si, že v tomto příkladu hello dokončení zpracování po hello transakce se potvrdí, takže pokud chybu byly toooccur při zpracování, hello nezpracované položky budou ztraceny bez zpracování.  Alternativně lze provést hello zpracování v rámci oboru hello transakce, ale to může mít negativní dopad na výkon a vyžaduje zpracování položek hello již zpracovány.
 
 ```
 int batchSize = 5;
@@ -194,12 +194,12 @@ while(!cancellationToken.IsCancellationRequested)
 
             if (ret.HasValue)
             {
-                // If an item was dequeued, add to the buffer for processing
+                // If an item was dequeued, add toohello buffer for processing
                 processItems.Add(ret.Value);
             }
             else
             {
-                // else break the for loop
+                // else break hello for loop
                 break;
             }
         }
@@ -207,7 +207,7 @@ while(!cancellationToken.IsCancellationRequested)
         await txn.CommitAsync();
     }
 
-    // Process the dequeues
+    // Process hello dequeues
     for (int i = 0; i < processItems.Count; ++i)
     {
         Console.WriteLine("Value : " + processItems[i]);
@@ -219,7 +219,7 @@ while(!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="best-effort-notification-based-processing"></a>Zpracování oznámení na základě typu Best Effort
-Jiné zajímavé programovací vzor používá rozhraní API počet. Zde můžeme implementovat best effort oznámení na základě zpracování pro frontu. Fronty počet slouží k omezení dequeue úlohy nebo zařazování.  Všimněte si, že jako v předchozím příkladu vzhledem k tomu, že mimo transakci, proběhne zpracování nezpracovaných položky může dojít ke ztrátě Pokud dojde k chybě během zpracování.
+Jiné zajímavé programovací vzor používá hello počet rozhraní API. Zde můžeme implementovat zpracování oznámení na základě typu best effort pro frontu hello. fronty Hello počet může být použité toothrottle element zařazování nebo dequeue úloh.  Všimněte si, že jako v předchozím příkladu hello, vzhledem k tomu, že zpracování hello proběhne mimo transakci hello nezpracované položky může dojít ke ztrátě Pokud dojde k chybě během zpracování.
 
 ```
 int threshold = 5;
@@ -231,11 +231,11 @@ while(!cancellationToken.IsCancellationRequested)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
-        // If the queue does not have the threshold number of items, delay the task and check again
+        // If hello queue does not have hello threshold number of items, delay hello task and check again
         await Task.Delay(TimeSpan.FromMilliseconds(delayMs), cancellationToken);
     }
 
-    // If there are approximately threshold number of items, try and process the queue
+    // If there are approximately threshold number of items, try and process hello queue
 
     // Buffer for dequeued items
     List<int> processItems = new List<int>();
@@ -250,7 +250,7 @@ while(!cancellationToken.IsCancellationRequested)
 
             if (ret.HasValue)
             {
-                // If an item was dequeued, add to the buffer for processing
+                // If an item was dequeued, add toohello buffer for processing
                 processItems.Add(ret.Value);
             }
         } while (processItems.Count < threshold && ret.HasValue);
@@ -258,7 +258,7 @@ while(!cancellationToken.IsCancellationRequested)
         await txn.CommitAsync();
     }
 
-    // Process the dequeues
+    // Process hello dequeues
     for (int i = 0; i < processItems.Count; ++i)
     {
         Console.WriteLine("Value : " + processItems[i]);
@@ -267,9 +267,9 @@ while(!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="best-effort-drain"></a>Best Effort vyprazdňování
-Vyprazdňování fronty nemůže zaručit z důvodu souběžných povaha datovou strukturu.  Je možné, že i když žádné operace uživatele na fronty jsou během letu, konkrétní volání TryDequeueAsync nemusí vracet položku, která byla dříve zařazených do fronty a potvrzené.  Položka zařazených do fronty záruku, že *nakonec* budou zobrazeny na vyřazení z fronty, ale bez mechanismus komunikace out-of-band nezávislé příjemce nemůže vědět, že fronty dosáhl stabilní i když všechny generátory byla zastavena a nové zařazování, které jsou povolené operace. Operace vyprazdňování tedy best effort jak jsou implementované níže.
+Z důvodu souběžných povaha hello datová struktura toohello nelze zaručit vyprazdňování hello fronty.  Je možné, že i když jsou neukládají žádné uživatele operace ve frontě hello, konkrétní volání tooTryDequeueAsync nemusí vracet položku, která byla dříve zařazených do fronty a potvrzené.  Hello zařazených do fronty položek záruku, že se příliš*nakonec* stát viditelné toodequeue, ale bez mechanismus komunikace out-of-band nemůže vědět nezávislé příjemce této fronty hello dosáhl stabilní i když všechny jsou povoleny žádné nové operace zařazování a producenti byly zastaveny. Operace vyprazdňování hello tedy best effort jak jsou implementované níže.
 
-Uživatel by měl zastavit všechny další producent a úlohy příjemce a počkat na jakékoli během letu transakce potvrzení nebo přerušení, před pokusem o vyprazdňování fronty.  Pokud uživatel nezná očekávaný počet položek ve frontě, můžete nastavit oznámení, která signalizuje, že máte byla vyjmutou všechny položky.
+Hello uživatel by měl zastavit všechny další producent a úlohy příjemce a počkejte, všechny toocommit během letu transakce nebo přerušení, před pokusem o toodrain hello fronty.  Pokud uživatel hello nezná hello očekávaný počet položek ve frontě hello, můžete nastavit oznámení, která signalizuje, že máte byla vyjmutou všechny položky.
 
 ```
 int numItemsDequeued;
@@ -289,7 +289,7 @@ do
 
             if(ret.HasValue)
             {
-                // Buffer the dequeues
+                // Buffer hello dequeues
                 processItems.Add(ret.Value);
             }
         } while (ret.HasValue && processItems.Count < batchSize);
@@ -297,7 +297,7 @@ do
         await txn.CommitAsync();
     }
 
-    // Process the dequeues
+    // Process hello dequeues
     for (int i = 0; i < processItems.Count; ++i)
     {
         Console.WriteLine("Value : " + processItems[i]);
@@ -306,7 +306,7 @@ do
 ```
 
 ### <a name="peek"></a>Prohlížet
-ReliableConcurrentQueue neposkytuje *TryPeekAsync* rozhraní api. Uživatelé dostanou prohlížení sémantického pomocí *TryDequeueAsync* a pak ruší se transakce. V tomto příkladu dequeues se zpracují pouze v případě, že je větší než hodnota položky *10*.
+ReliableConcurrentQueue neposkytuje hello *TryPeekAsync* rozhraní api. Uživatelé dostanou funkce Náhled hello sémantického pomocí *TryDequeueAsync* a pak ruší se transakce hello. V tomto příkladu dequeues se zpracují pouze v případě, že je větší než hodnota položky hello *10*.
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -318,7 +318,7 @@ using (var txn = this.StateManager.CreateTransaction())
     {
         if (ret.Value > 10)
         {
-            // Process the item
+            // Process hello item
             Console.WriteLine("Value : " + ret.Value);
             valueProcessed = true;
         }
@@ -342,5 +342,5 @@ using (var txn = this.StateManager.CreateTransaction())
 * [Spolehlivé služby zálohování a obnovení (zotavení po havárii)](service-fabric-reliable-services-backup-restore.md)
 * [Spolehlivé stavu Správce konfigurace](service-fabric-reliable-services-configuration.md)
 * [Začínáme se službou Service Fabric webové rozhraní API služby](service-fabric-reliable-services-communication-webapi.md)
-* [Rozšířené použití spolehlivé služby programovací Model](service-fabric-reliable-services-advanced-usage.md)
+* [Rozšířené použití hello spolehlivé služby programovací Model](service-fabric-reliable-services-advanced-usage.md)
 * [Referenční informace pro vývojáře pro spolehlivé kolekce](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

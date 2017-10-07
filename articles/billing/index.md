@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace ke službě Azure Billing – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Zjistěte, jak můžete porozumět fakturaci Azure a také spravovat a monitorovat využití a náklady. Kurzy, nejčastější dotazy, reference k rozhraní API a další dokumentace"
+title: "aaaAzure kurzy, fakturace dokumentace – referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Zjistěte, jak toounderstand vaše Azure fakturace, stejně jako spravovat a sledovat využití a náklady. Kurzy, nejčastější dotazy, reference k rozhraní API a další dokumentace"
 services: billing
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: f9d8cecf45e40909e39f894c62bcc572b610b014
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 663ea1a4526ed897e963d3daa9ed41a7bdbabef0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-billing-documentation"></a>Dokumentace ke službě Azure Billing
 
-Zjistěte, jak můžete porozumět fakturaci Azure a monitorovat využití a náklady. Kurzy, nejčastější dotazy, reference k rozhraní API a další dokumentace ukazují, jak můžete spravovat svůj účet.
+Zjistěte, jak toounderstand Azure fakturace a sledování využití a náklady. Kurzy, časté otázky, odkazů na rozhraní API, a další dokumentace k ukáže, jak toomanage váš účet.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -125,7 +125,7 @@ Zjistěte, jak můžete porozumět fakturaci Azure a monitorovat využití a ná
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Naučte se používat rozhraní API</h3>
+                        <h3>Další informace toouse hello rozhraní API</h3>
                         <p><a href="/azure/billing-usage-rate-card-overview">Přehled rozhraní API</a></p>
                         <p><a href="/azure/billing-usage-rate-card-partner-solution-cloudcruiser">Partnerské řešení: Cloud Cruiser</a></p>
                         <p><a href="/azure/billing-usage-rate-card-partner-solution-cloudyn">Partnerské řešení: Cloudyn</a></p>

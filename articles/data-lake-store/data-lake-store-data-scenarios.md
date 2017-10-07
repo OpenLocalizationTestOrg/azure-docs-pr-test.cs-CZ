@@ -1,6 +1,6 @@
 ---
-title: "Scénáře dat obsahující Data Lake Store | Microsoft Docs"
-description: "Pochopit různé scénáře a nástroje pro použití, která data můžete požity, zpracování, staženy a vizualizována v Data Lake Store"
+title: "scénáře aaaData obsahující Data Lake Store | Microsoft Docs"
+description: "Pochopení hello různé scénáře a nástroje pomocí data, která může požity, zpracování, stáhnout a vizualizována v Data Lake Store"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/10/2017
 ms.author: nitinme
-ms.openlocfilehash: 2a2801e5c506dcc8aa9ca2ecd275b52c72d5fbbf
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: caaa3979b8a2532089778c3e3db3c711714d3c42
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-azure-data-lake-store-for-big-data-requirements"></a>Požadavky na velkých objemů dat pomocí Azure Data Lake Store
 Existují čtyři fáze klíče v zpracování velkých objemů dat:
 
 * Příjem velkých objemů dat do úložiště dat v reálném čase nebo v dávkách
-* Zpracování dat
-* Stahování dat
-* Vizualizaci dat
+* Zpracování dat hello
+* Stahování dat hello
+* Vizualizace dat hello
 
-V tomto článku se podíváme na tyto fáze s ohledem na Azure Data Lake Store pochopení nástroje dostupné pro podle svých potřeb velkých objemů dat a možnosti.
+V tomto článku se podíváme na tyto fáze s ohledem tooAzure Data Lake Store toounderstand hello možnosti a nástroje k dispozici toomeet vašim potřebám velkých objemů dat.
 
 ## <a name="ingest-data-into-data-lake-store"></a>Ingestovat data do Data Lake Store
-V této části jsou zdůrazněné různých zdrojů dat a různé způsoby, ve kterém můžete konzumaci dat do účtu Data Lake Store.
+V této části jsou zdůrazněné hello různých zdrojů dat a hello různými způsoby, ve kterém můžete konzumaci dat do účtu Data Lake Store.
 
 ![Ingestovat data do Data Lake Store](./media/data-lake-store-data-scenarios/ingest-data.png "Ingestovat data do Data Lake Store")
 
 ### <a name="ad-hoc-data"></a>Ad hoc dat
-To představuje menší sady dat, které se používá pro vytváření prototypů velkých objemů dat aplikace. Příjem ad hoc dat v závislosti na zdroji dat různými způsoby.
+To představuje menší sady dat, které se používá pro vytváření prototypů velkých objemů dat aplikace. Příjem ad hoc dat v závislosti na hello zdroj dat hello různými způsoby.
 
 | Zdroj dat | Ingestování pomocí |
 | --- | --- |
@@ -44,91 +44,91 @@ To představuje menší sady dat, které se používá pro vytváření prototyp
 | Objekt Blob úložiště Azure |<ul> <li>[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md)</li> <li>[Nástroj AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[DistCp běžící v clusteru HDInsight](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>Datové proudy
-Reprezentuje data, která může být generována různých zdrojů, jako je například aplikace, zařízení, senzorů, atd. Tato data můžete konzumaci do Data Lake Store pomocí různých nástrojů. Tyto nástroje se obvykle zachycení a zpracování dat na základě událostí událostí v reálném čase a zapište si událostí v dávkách do Data Lake Store tak, že můžete mít další zpracovány.
+Reprezentuje data, která může být generována různých zdrojů, jako je například aplikace, zařízení, senzorů, atd. Tato data můžete konzumaci do Data Lake Store pomocí různých nástrojů. Tyto nástroje se obvykle zachycení a zpracování dat hello u jednotlivých událostí událostí v reálném čase a zapište si hello událostí v dávkách do Data Lake Store tak, že můžete mít další zpracovány.
 
 Toto jsou nástroje, které můžete použít:
 
-* [Azure Stream Analytics](../stream-analytics/stream-analytics-data-lake-output.md) -události požity do centra událostí je možné zapsat do Azure Data Lake pomocí Azure Data Lake Store výstup.
-* [Azure HDInsight Storm](../hdinsight/hdinsight-storm-write-data-lake-store.md) -zápisu dat do Data Lake Store přímo z clusteru Storm.
-* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) – může přijímat události ze služby Event Hubs a pak zapsat pomocí Data Lake Store [Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md).
+* [Azure Stream Analytics](../stream-analytics/stream-analytics-data-lake-output.md) -události požity do centra událostí lze zapisovat tooAzure Data Lake pomocí Azure Data Lake Store výstup.
+* [Azure HDInsight Storm](../hdinsight/hdinsight-storm-write-data-lake-store.md) – data můžete psát přímo tooData Lake Store z hello Storm cluster.
+* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) – může přijímat události ze služby Event Hubs a zapište si ji tooData Lake Store pomocí hello [Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md).
 
 ### <a name="relational-data"></a>Relačních dat
-Zdrojem může také data z relační databáze. Období čas relačních databází shromažďovat obrovské objemy dat, které můžou poskytovat klíče statistiky, pokud je zpracování velkých objemů dat kanálu. Tyto nástroje můžete přesunout taková data do Data Lake Store.
+Zdrojem může také data z relační databáze. Období čas relačních databází shromažďovat obrovské objemy dat, které můžou poskytovat klíče statistiky, pokud je zpracování velkých objemů dat kanálu. Taková data můžete použít následující nástroje toomove hello do Data Lake Store.
 
 * [Apache Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
 * [Azure Data Factory](../data-factory/data-factory-data-movement-activities.md)
 
 ### <a name="web-server-log-data-upload-using-custom-applications"></a>Data protokolu webového serveru (nahrávání pomocí vlastních aplikací)
-Tento typ datové sady je konkrétně označuje, protože analýzy dat protokolu webového serveru se běžně používá pro velké objemy dat aplikace a vyžaduje velké svazky protokolových souborů k odeslání do Data Lake Store. Zápis vlastní skripty nebo aplikace pro nahrávání těchto dat můžete použít některý z následujících nástrojů.
+Tento typ datové sady je konkrétně označuje, protože analýzy dat protokolu webového serveru se běžně používá pro velké objemy dat aplikace a vyžaduje, že velké objemy toobe soubory protokolu načtený toohello Data Lake Store. Některé z následujících nástrojů toowrite hello můžete použít vlastní skripty nebo aplikace tooupload taková data.
 
 * [Azure CLI a platformy 2.0](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [.NET SDK služby Azure Data Lake Store](data-lake-store-get-started-net-sdk.md)
 * [Azure Data Factory](../data-factory/data-factory-data-movement-activities.md)
 
-Pro nahrávání dat protokolu webového serveru a také pro odesílání dalších typů dat (např. sociálních chráněny data) je dobré přístup pro zápis vlastní vlastních skriptů nebo aplikací, protože poskytuje vám flexibilitu zahrnout data odesílání součásti jako součást větší velkých objemů dat aplikace. V některých případech může tento kód mít formu skript nebo nástroj příkazového řádku jednoduché. V ostatních případech kód lze integrovat zpracování velkých objemů dat do obchodní aplikace nebo řešení.
+Pro nahrávání dat protokolu webového serveru a také pro odesílání dalších typů dat (např. sociálních chráněny data), je správné přístupu toowrite vlastní vlastních skriptů nebo aplikací, protože nabízejí flexibilitu tooinclude hello data odesílání součásti v rámci větší velkých objemů dat aplikace. V některých případech může trvat tento kód formuláře hello skriptu nebo nástroj příkazového řádku jednoduché. V jiných případech může být hello kód používané toointegrate velkých objemů dat zpracování na obchodní aplikace nebo řešení.
 
 ### <a name="data-associated-with-azure-hdinsight-clusters"></a>Data přidružená k Azure HDInsight clustery
-Většina typů clusteru HDInsight (Hadoop, HBase, Storm) podporují jako úložiště dat úložiště Data Lake Store. Clustery HDInsight přístup k datům z Azure úložiště objektů BLOB (WASB). Pro lepší výkon můžete zkopírovat data z WASB do účtu Data Lake Store související s clusterem. Ke zkopírování dat můžete použít následující nástroje.
+Většina typů clusteru HDInsight (Hadoop, HBase, Storm) podporují jako úložiště dat úložiště Data Lake Store. Clustery HDInsight přístup k datům z Azure úložiště objektů BLOB (WASB). Pro lepší výkon můžete zkopírovat z WASB hello dat do účtu Data Lake Store přidruženého k hello clusteru. Můžete použít následující nástroje toocopy hello data hello.
 
 * [Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)
 * [AdlCopy služby](data-lake-store-copy-data-azure-storage-blob.md)
 * [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md)
 
 ### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>Data uložená v místní nebo IaaS Hadoop clusterů
-Velké objemy dat mohou být uloženy ve stávajících clusterů Hadoop, místně do počítače, které používají HDFS. Může být v místním nasazení clusterů systému Hadoop, nebo může být v rámci clusteru služby IaaS v Azure. Může se požadavky na přístup, jednorázové nebo opakované způsobem zkopírovat taková data do Azure Data Lake Store. Existují různé možnosti, které můžete použít k dosažení tohoto cíle. Níže je seznam alternativních a přidružené kompromisy.
+Velké objemy dat mohou být uloženy ve stávajících clusterů Hadoop, místně do počítače, které používají HDFS. clustery Hadoop Hello může být v místním nasazení nebo může být v rámci clusteru služby IaaS v Azure. Může dojít k toocopy požadavky těchto dat tooAzure Data Lake Store přístup, jednorázové nebo opakované způsobem. Existují různé možnosti, které můžete použít tooachieve to. Níže uvádíme seznam alternativních a hello související kompromis.
 
 | Přístup | Podrobnosti | Výhody | Požadavky |
 | --- | --- | --- | --- |
-| Kopírování dat přímo z clusterů systému Hadoop do Azure Data Lake Store pomocí Azure Data Factory (ADF) |[ADF podporuje HDFS jako zdroj dat](../data-factory/data-factory-hdfs-connector.md) |ADF poskytuje podporu se na pole pro HDFS a první klient server správy a monitorování |Vyžaduje Brána pro správu dat nasadit místně nebo v IaaS clusteru |
-| Exportujte data z Hadoop jako soubory. Poté zkopírujte soubory do Azure Data Lake Store pomocí vhodný mechanismus. |Pomocí Azure Data Lake Store můžete zkopírovat soubory: <ul><li>[Prostředí Azure PowerShell pro systém Windows operačního systému](data-lake-store-get-started-powershell.md)</li><li>[Azure CLI a platformy 2.0 pro Windows OS](data-lake-store-get-started-cli-2.0.md)</li><li>Vlastní aplikaci pomocí jakékoli Data Lake Store SDK</li></ul> |Rychle začít pracovat. Můžete provést vlastní nahrávání |Vícekrokový proces, který zahrnuje několik technologie. Správa a sledování se zvýší být výzvu nad doba zadaná přizpůsobené povaha nástroje |
-| Použití Distcp ke zkopírování dat z Hadoopu do úložiště Azure. Potom zkopírujte data z úložiště Azure Data Lake Store pomocí vhodný mechanismus. |Může kopírovat data z úložiště Azure Data Lake Store pomocí: <ul><li>[Azure Data Factory](../data-factory/data-factory-data-movement-activities.md)</li><li>[Nástroj AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[Apache DistCp systémem clustery HDInsight](data-lake-store-copy-data-wasb-distcp.md)</li></ul> |Můžete použít nástroje open source. |Vícekrokový proces, který zahrnuje několik technologie |
+| Pomocí Azure Data Factory (ADF) toocopy data přímo z Hadoop clusterů tooAzure Data Lake Store |[ADF podporuje HDFS jako zdroj dat](../data-factory/data-factory-hdfs-connector.md) |ADF poskytuje podporu se na pole pro HDFS a první klient server správy a monitorování |Vyžaduje Brána pro správu dat toobe nasadit místně nebo v clusteru IaaS hello |
+| Exportujte data z Hadoop jako soubory. Pak zkopírujte hello soubory tooAzure Data Lake Store pomocí vhodný mechanismus. |Můžete zkopírovat soubory tooAzure Data Lake Store pomocí: <ul><li>[Prostředí Azure PowerShell pro systém Windows operačního systému](data-lake-store-get-started-powershell.md)</li><li>[Azure CLI a platformy 2.0 pro Windows OS](data-lake-store-get-started-cli-2.0.md)</li><li>Vlastní aplikaci pomocí jakékoli Data Lake Store SDK</li></ul> |Rychlé tooget spustit. Můžete provést vlastní nahrávání |Vícekrokový proces, který zahrnuje několik technologie. Správa a sledování se zvýší toobe výzvu přes čas zadaný hello přizpůsobit povaha hello nástroje |
+| Použití Distcp toocopy data z Hadoop tooAzure úložiště. Potom zkopírujte data z Azure Storage tooData Lake Store pomocí vhodný mechanismus. |Může kopírovat data z Azure Storage tooData Lake Store pomocí: <ul><li>[Azure Data Factory](../data-factory/data-factory-data-movement-activities.md)</li><li>[Nástroj AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[Apache DistCp systémem clustery HDInsight](data-lake-store-copy-data-wasb-distcp.md)</li></ul> |Můžete použít nástroje open source. |Vícekrokový proces, který zahrnuje několik technologie |
 
 ### <a name="really-large-datasets"></a>Opravdu rozsáhlých datových sad
-Nahrát datové sady, které rozsahu v několika terabajtů, pomocí metod popsaných výše může být někdy pomalé a nákladná. V takových případech můžete pomocí následujících možností.
+Nahrát datové sady, které rozsahu v několika terabajtů, pomocí výše popsané metody hello může někdy být pomalé a nákladná. V takových případech můžete hello níže uvedené možnosti.
 
 * **Pomocí služby Azure ExpressRoute**. Azure ExpressRoute vám umožňuje vytvářet privátní připojení mezi datovými centry Azure a infrastruktury místně. To poskytuje spolehlivé možnost pro přenos velkých objemů dat. Další informace najdete v tématu [dokumentace Azure ExpressRoute](../expressroute/expressroute-introduction.md).
-* **"Do režimu offline" nahrávání dat**. Pokud pomocí Azure ExpressRoute není možné je z jakéhokoli důvodu, můžete použít [služba Azure Import/Export](../storage/common/storage-import-export-service.md) pro odeslání jednotky pevného disku s daty pro datové centrum Azure. Vaše data, je nejprve nahrán do úložiště objektů BLOB služby Azure. Pak můžete použít [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md) nebo [AdlCopy nástroj](data-lake-store-copy-data-azure-storage-blob.md) ke zkopírování dat z úložiště objektů BLOB Azure do Data Lake Store.
+* **"Do režimu offline" nahrávání dat**. Pokud pomocí Azure ExpressRoute není možné je z jakéhokoli důvodu, můžete použít [služba Azure Import/Export](../storage/common/storage-import-export-service.md) tooship pevných disků s vaše data tooan datového centra Azure. Vaše data jsou první nahrané tooAzure objektů BLOB Storage. Pak můžete použít [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md) nebo [AdlCopy nástroj](data-lake-store-copy-data-azure-storage-blob.md) toocopy dat z Azure úložiště objektů BLOB tooData Lake Store.
 
   > [!NOTE]
-  > Když použijete službu Import/Export, velikosti souborů na discích, které jsou k datovému centru Azure by neměla být větší než 195 GB.
+  > Při importu a exportu služby pomocí hello, velikost souboru hello na hello center disky dodávají spolu tooAzure dat nesmí být větší než 195 GB.
   >
   >
 
 ## <a name="process-data-stored-in-data-lake-store"></a>Zpracování dat uložených v Data Lake Store
-Jakmile jsou data k dispozici v Data Lake Store můžete spustit analýzu na tato data pomocí aplikací podporovaných velkých objemů dat. V současné době můžete použít Azure HDInsight a Azure Data Lake Analytics ke spuštění úloh analýzy dat na data uložená v Data Lake Store.
+Jakmile hello dat je k dispozici v Data Lake Store můžete spustit analýzu že dat pomocí hello podporuje velké objemy dat aplikací. V současné době můžete použít Azure HDInsight a Azure Data Lake Analytics úlohy analýzy datového toorun na hello data uložená v Data Lake Store.
 
 ![Analýza dat v Data Lake Store](./media/data-lake-store-data-scenarios/analyze-data.png "analýza dat v Data Lake Store")
 
-Můžete si prohlédnout následující příklady.
+Můžete si prohlédnout hello následující příklady.
 
 * [Vytvoření clusteru HDInsight s Data Lake Store jako úložiště](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [Použití Azure Data Lake Analytics se službou Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 
 ## <a name="download-data-from-data-lake-store"></a>Stahování dat z Data Lake Store
-Můžete také chtít stáhnout nebo přesun dat z Azure Data Lake Store pro scénáře, jako například:
+Může také chcete toodownload nebo přesun dat z Azure Data Lake Store pro scénáře, jako například:
 
-* Přesun dat do jiných úložišť na rozhraní s vaší stávající zpracování dat kanály. Například můžete chtít přesun dat z Data Lake Store do Azure SQL Database nebo místní SQL Server.
-* Stahování dat do místního počítače pro zpracování v prostředí IDE při vytváření prototypů aplikace.
+* Přesun dat tooother úložiště toointerface s vaší stávající zpracování dat kanály. Například můžete chtít toomove dat z Data Lake Store tooAzure SQL Database nebo místní systém SQL Server.
+* Stáhněte si data tooyour místního počítače pro zpracování v prostředí IDE při vytváření prototypů aplikace.
 
 ![Výstupních dat z Data Lake Store](./media/data-lake-store-data-scenarios/egress-data.png "výstupních dat z Data Lake Store")
 
-V takových případech můžete použít některý z následujících možností:
+V takových případech můžete použít některý z hello následující možnosti:
 
 * [Apache Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
 * [Azure Data Factory](../data-factory/data-factory-data-movement-activities.md)
 * [Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)
 
-Následující metody můžete také psát vlastní skript nebo aplikace ke stahování dat z Data Lake Store.
+Můžete taky hello následující metody toowrite svoje vlastní data toodownload aplikace nebo skriptu z Data Lake Store.
 
 * [Azure CLI a platformy 2.0](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [.NET SDK služby Azure Data Lake Store](data-lake-store-get-started-net-sdk.md)
 
 ## <a name="visualize-data-in-data-lake-store"></a>Vizualizace dat v Data Lake Store
-Směs služby slouží k vytvoření vizuální znázornění dat uložených v Data Lake Store.
+Můžete použít kombinaci služby toocreate vizuální znázornění dat uložených v Data Lake Store.
 
 ![Vizualizace dat v Data Lake Store](./media/data-lake-store-data-scenarios/visualize-data.png "vizualizaci dat v Data Lake Store")
 
-* Můžete spustit pomocí [Azure Data Factory pro přesun dat z Data Lake Store k Azure SQL Data Warehouse](../data-factory/data-factory-data-movement-activities.md#supported-data-stores-and-formats)
-* Potom můžete [Power BI integrovat Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-integrate-power-bi.md) vizuální znázornění dat vytvořit.
+* Můžete spustit pomocí [Azure Data Factory toomove dat z Data Lake Store tooAzure SQL Data Warehouse](../data-factory/data-factory-data-movement-activities.md#supported-data-stores-and-formats)
+* Potom můžete [Power BI integrovat Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-integrate-power-bi.md) toocreate vizuální znázornění dat hello.
