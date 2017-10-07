@@ -1,6 +1,6 @@
 ---
-title: "Nakonfigurovat privátní IP adresy pro virtuální počítače - 2.0 rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat privátní IP adresy pro virtuální počítače pomocí rozhraní příkazového řádku Azure (CLI) 2.0."
+title: "aaaConfigure privátních IP adres pro virtuální počítače - 2.0 rozhraní příkazového řádku Azure | Microsoft Docs"
+description: "Zjistěte, jak hello tooconfigure privátních IP adres pro virtuální počítače pomocí rozhraní příkazového řádku Azure (CLI) 2.0."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,45 +16,45 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 071156367c1f819a00d31f1d0335e301391fda81
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0e278e6ac63c0cda061cf70ab0edfaff5491c03b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli-20"></a><span data-ttu-id="2d600-103">Nakonfigurovat privátní IP adresy pro virtuální počítač pomocí Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="2d600-103">Configure private IP addresses for a virtual machine using the Azure CLI 2.0</span></span>
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-hello-azure-cli-20"></a><span data-ttu-id="5a25d-103">Nakonfigurovat privátní IP adresy pro virtuální počítač pomocí hello 2.0 rozhraní příkazového řádku Azure</span><span class="sxs-lookup"><span data-stu-id="5a25d-103">Configure private IP addresses for a virtual machine using hello Azure CLI 2.0</span></span>
 
 [!INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
 
 
-## <a name="cli-versions-to-complete-the-task"></a><span data-ttu-id="2d600-104">Verze rozhraní příkazového řádku pro dokončení úlohy</span><span class="sxs-lookup"><span data-stu-id="2d600-104">CLI versions to complete the task</span></span> 
+## <a name="cli-versions-toocomplete-hello-task"></a><span data-ttu-id="5a25d-104">Úloha hello toocomplete verze rozhraní příkazového řádku</span><span class="sxs-lookup"><span data-stu-id="5a25d-104">CLI versions toocomplete hello task</span></span> 
 
-<span data-ttu-id="2d600-105">K dokončení úlohy můžete využít jednu z následujících verzí rozhraní příkazového řádku:</span><span class="sxs-lookup"><span data-stu-id="2d600-105">You can complete the task using one of the following CLI versions:</span></span> 
+<span data-ttu-id="5a25d-105">Můžete dokončit hello úloh pomocí jedné z hello následující verze rozhraní příkazového řádku:</span><span class="sxs-lookup"><span data-stu-id="5a25d-105">You can complete hello task using one of hello following CLI versions:</span></span> 
 
-- <span data-ttu-id="2d600-106">[Azure CLI 1.0](virtual-networks-static-private-ip-cli-nodejs.md) – naše rozhraní příkazového řádku pro klasické modely nasazení a modely nasazení správy prostředků</span><span class="sxs-lookup"><span data-stu-id="2d600-106">[Azure CLI 1.0](virtual-networks-static-private-ip-cli-nodejs.md) – our CLI for the classic and resource management deployment models</span></span> 
-- <span data-ttu-id="2d600-107">[Azure CLI 2.0](#specify-a-static-private-ip-address-when-creating-a-vm) -naší nové generace rozhraní příkazového řádku pro správu model nasazení prostředku (v tomto článku)</span><span class="sxs-lookup"><span data-stu-id="2d600-107">[Azure CLI 2.0](#specify-a-static-private-ip-address-when-creating-a-vm) - our next generation CLI for the resource management deployment model (this article)</span></span>
+- <span data-ttu-id="5a25d-106">[Azure CLI 1.0](virtual-networks-static-private-ip-cli-nodejs.md) – naše rozhraní příkazového řádku pro hello classic a resource správy nasazení modely</span><span class="sxs-lookup"><span data-stu-id="5a25d-106">[Azure CLI 1.0](virtual-networks-static-private-ip-cli-nodejs.md) – our CLI for hello classic and resource management deployment models</span></span> 
+- <span data-ttu-id="5a25d-107">[Azure CLI 2.0](#specify-a-static-private-ip-address-when-creating-a-vm) -naší nové generace rozhraní příkazového řádku pro model nasazení prostředků správu hello (v tomto článku)</span><span class="sxs-lookup"><span data-stu-id="5a25d-107">[Azure CLI 2.0](#specify-a-static-private-ip-address-when-creating-a-vm) - our next generation CLI for hello resource management deployment model (this article)</span></span>
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-<span data-ttu-id="2d600-108">Tento článek se týká modelu nasazení Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="2d600-108">This article covers the Resource Manager deployment model.</span></span> <span data-ttu-id="2d600-109">Můžete také [spravovat statickou privátní IP adresou v modelu nasazení classic](virtual-networks-static-private-ip-classic-cli.md).</span><span class="sxs-lookup"><span data-stu-id="2d600-109">You can also [manage static private IP address in the classic deployment model](virtual-networks-static-private-ip-classic-cli.md).</span></span>
+<span data-ttu-id="5a25d-108">Tento článek se týká modelu nasazení Resource Manager hello.</span><span class="sxs-lookup"><span data-stu-id="5a25d-108">This article covers hello Resource Manager deployment model.</span></span> <span data-ttu-id="5a25d-109">Můžete také [spravovat statickou privátní IP adresou v modelu nasazení classic hello](virtual-networks-static-private-ip-classic-cli.md).</span><span class="sxs-lookup"><span data-stu-id="5a25d-109">You can also [manage static private IP address in hello classic deployment model](virtual-networks-static-private-ip-classic-cli.md).</span></span>
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
 > [!NOTE]
-> <span data-ttu-id="2d600-110">Vzorové příkazy Azure CLI 2.0 níže očekávat jednoduché prostředí již vytvořeny.</span><span class="sxs-lookup"><span data-stu-id="2d600-110">The sample Azure CLI 2.0 commands below expect a simple environment already created.</span></span> <span data-ttu-id="2d600-111">Pokud chcete ke spuštění příkazů, jak jsou zobrazeny v tomto dokumentu, nejprve vytvořit testovací prostředí popsané v [vytvoření virtuální sítě](virtual-networks-create-vnet-arm-cli.md).</span><span class="sxs-lookup"><span data-stu-id="2d600-111">If you want to run the commands as they are displayed in this document, first build the test environment described in [create a vnet](virtual-networks-create-vnet-arm-cli.md).</span></span>
+> <span data-ttu-id="5a25d-110">Hello vzorové Azure CLI 2.0 příkazy níže očekávat jednoduché prostředí již vytvořeny.</span><span class="sxs-lookup"><span data-stu-id="5a25d-110">hello sample Azure CLI 2.0 commands below expect a simple environment already created.</span></span> <span data-ttu-id="5a25d-111">Pokud chcete příkazy hello toorun, jak jsou zobrazeny v tomto dokumentu, nejprve sestavení hello testovací prostředí popsané v [vytvoření virtuální sítě](virtual-networks-create-vnet-arm-cli.md).</span><span class="sxs-lookup"><span data-stu-id="5a25d-111">If you want toorun hello commands as they are displayed in this document, first build hello test environment described in [create a vnet](virtual-networks-create-vnet-arm-cli.md).</span></span>
 
-## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a><span data-ttu-id="2d600-112">Při vytváření virtuálního počítače zadat statickou privátní IP adresu</span><span class="sxs-lookup"><span data-stu-id="2d600-112">Specify a static private IP address when creating a VM</span></span>
+## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a><span data-ttu-id="5a25d-112">Při vytváření virtuálního počítače zadat statickou privátní IP adresu</span><span class="sxs-lookup"><span data-stu-id="5a25d-112">Specify a static private IP address when creating a VM</span></span>
 
-<span data-ttu-id="2d600-113">Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíť virtuální sítě s názvem *TestVNet* se statickou privátní IP z *192.168.1.101*, postupujte podle následujících kroků:</span><span class="sxs-lookup"><span data-stu-id="2d600-113">To create a VM named *DNS01* in the *FrontEnd* subnet of a VNet named *TestVNet* with a static private IP of *192.168.1.101*, follow the steps below:</span></span>
+<span data-ttu-id="5a25d-113">virtuální počítač s názvem toocreate *DNS01* v hello *front-endu* podsíť virtuální sítě s názvem *TestVNet* se statickou privátní IP z *192.168.1.101*, postupujte podle následujících kroků hello:</span><span class="sxs-lookup"><span data-stu-id="5a25d-113">toocreate a VM named *DNS01* in hello *FrontEnd* subnet of a VNet named *TestVNet* with a static private IP of *192.168.1.101*, follow hello steps below:</span></span>
 
-1. <span data-ttu-id="2d600-114">Pokud nebyly dosud, nainstalovat a nakonfigurovat nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlaste se k Azure účet pomocí [az přihlášení](/cli/azure/#login).</span><span class="sxs-lookup"><span data-stu-id="2d600-114">If you haven't yet, install and configure the latest [Azure CLI 2.0](/cli/azure/install-az-cli2) and log in to an Azure account using [az login](/cli/azure/#login).</span></span> 
+1. <span data-ttu-id="5a25d-114">Pokud nebyly dosud, nainstalujete a nakonfigurujete hello nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlaste se pomocí účtu Azure tooan [az přihlášení](/cli/azure/#login).</span><span class="sxs-lookup"><span data-stu-id="5a25d-114">If you haven't yet, install and configure hello latest [Azure CLI 2.0](/cli/azure/install-az-cli2) and log in tooan Azure account using [az login](/cli/azure/#login).</span></span> 
 
-2. <span data-ttu-id="2d600-115">Vytvoření veřejné IP adresy pro virtuální počítač s [vytvoření veřejné sítě az-ip](/cli/azure/network/public-ip#create) příkaz.</span><span class="sxs-lookup"><span data-stu-id="2d600-115">Create a public IP for the VM with the [az network public-ip create](/cli/azure/network/public-ip#create) command.</span></span> <span data-ttu-id="2d600-116">Seznam uvedený za výstupem vysvětluje použité parametry.</span><span class="sxs-lookup"><span data-stu-id="2d600-116">The list shown after the output explains the parameters used.</span></span>
+2. <span data-ttu-id="5a25d-115">Vytvoření veřejné IP adresy pro hello virtuálních počítačů s hello [vytvoření veřejné sítě az-ip](/cli/azure/network/public-ip#create) příkaz.</span><span class="sxs-lookup"><span data-stu-id="5a25d-115">Create a public IP for hello VM with hello [az network public-ip create](/cli/azure/network/public-ip#create) command.</span></span> <span data-ttu-id="5a25d-116">Hello seznam uvedený za výstup hello vysvětluje použité parametry hello.</span><span class="sxs-lookup"><span data-stu-id="5a25d-116">hello list shown after hello output explains hello parameters used.</span></span>
 
     > [!NOTE]
-    > <span data-ttu-id="2d600-117">Vám může potřebujete nebo chcete použít různé hodnoty pro vaše argumenty v tomto a dalších krocích, v závislosti na vašem prostředí.</span><span class="sxs-lookup"><span data-stu-id="2d600-117">You may want or need to use different values for your arguments in this and subsequent steps, depending upon your environment.</span></span>
+    > <span data-ttu-id="5a25d-117">Můžete chtít nebo potřebovat toouse různé hodnoty pro vaše argumenty v tomto a dalších krocích v závislosti na vašem prostředí.</span><span class="sxs-lookup"><span data-stu-id="5a25d-117">You may want or need toouse different values for your arguments in this and subsequent steps, depending upon your environment.</span></span>
    
     ```azurecli
     az network public-ip create \
@@ -64,7 +64,7 @@ ms.lasthandoff: 07/11/2017
     --allocation-method Static
     ```
 
-    <span data-ttu-id="2d600-118">Očekávaný výstup:</span><span class="sxs-lookup"><span data-stu-id="2d600-118">Expected output:</span></span>
+    <span data-ttu-id="5a25d-118">Očekávaný výstup:</span><span class="sxs-lookup"><span data-stu-id="5a25d-118">Expected output:</span></span>
    
    ```json
    {
@@ -78,11 +78,11 @@ ms.lasthandoff: 07/11/2017
     }
     ```
 
-   * <span data-ttu-id="2d600-119">`--resource-group`: Název skupiny prostředků, ve kterém k vytvoření veřejné IP adresy.</span><span class="sxs-lookup"><span data-stu-id="2d600-119">`--resource-group`: Name of the resource group in which to create the public IP.</span></span>
-   * <span data-ttu-id="2d600-120">`--name`: Název veřejné IP adresy.</span><span class="sxs-lookup"><span data-stu-id="2d600-120">`--name`: Name of the public IP.</span></span>
-   * <span data-ttu-id="2d600-121">`--location`: Oblast azure, ve kterém k vytvoření veřejné IP adresy.</span><span class="sxs-lookup"><span data-stu-id="2d600-121">`--location`: Azure region in which to create the public IP.</span></span>
+   * <span data-ttu-id="5a25d-119">`--resource-group`: Název skupiny prostředků hello toocreate veřejné IP hello.</span><span class="sxs-lookup"><span data-stu-id="5a25d-119">`--resource-group`: Name of hello resource group in which toocreate hello public IP.</span></span>
+   * <span data-ttu-id="5a25d-120">`--name`: Název veřejné IP adresy hello.</span><span class="sxs-lookup"><span data-stu-id="5a25d-120">`--name`: Name of hello public IP.</span></span>
+   * <span data-ttu-id="5a25d-121">`--location`: Oblast azure, ve které toocreate hello veřejnou IP adresu.</span><span class="sxs-lookup"><span data-stu-id="5a25d-121">`--location`: Azure region in which toocreate hello public IP.</span></span>
 
-3. <span data-ttu-id="2d600-122">Spustit [vytvořit síťových adaptérů sítě az](/cli/azure/network/nic#create) příkaz pro vytvoření síťový adaptér se statickou privátní IP.</span><span class="sxs-lookup"><span data-stu-id="2d600-122">Run the [az network nic create](/cli/azure/network/nic#create) command to create a NIC with a static private IP.</span></span> <span data-ttu-id="2d600-123">Seznam uvedený za výstupem vysvětluje použité parametry.</span><span class="sxs-lookup"><span data-stu-id="2d600-123">The list shown after the output explains the parameters used.</span></span> 
+3. <span data-ttu-id="5a25d-122">Spustit hello [vytvořit síťových adaptérů sítě az](/cli/azure/network/nic#create) příkaz toocreate síťový adaptér se statickou privátní IP.</span><span class="sxs-lookup"><span data-stu-id="5a25d-122">Run hello [az network nic create](/cli/azure/network/nic#create) command toocreate a NIC with a static private IP.</span></span> <span data-ttu-id="5a25d-123">Hello seznam uvedený za výstup hello vysvětluje použité parametry hello.</span><span class="sxs-lookup"><span data-stu-id="5a25d-123">hello list shown after hello output explains hello parameters used.</span></span> 
    
     ```azurecli
     az network nic create \
@@ -94,7 +94,7 @@ ms.lasthandoff: 07/11/2017
     --vnet-name TestVNet
     ```
 
-    <span data-ttu-id="2d600-124">Očekávaný výstup:</span><span class="sxs-lookup"><span data-stu-id="2d600-124">Expected output:</span></span>
+    <span data-ttu-id="5a25d-124">Očekávaný výstup:</span><span class="sxs-lookup"><span data-stu-id="5a25d-124">Expected output:</span></span>
    
     ```json
     {
@@ -128,13 +128,13 @@ ms.lasthandoff: 07/11/2017
     }
     ```
     
-    <span data-ttu-id="2d600-125">Parametry:</span><span class="sxs-lookup"><span data-stu-id="2d600-125">Parameters:</span></span>
+    <span data-ttu-id="5a25d-125">Parametry:</span><span class="sxs-lookup"><span data-stu-id="5a25d-125">Parameters:</span></span>
 
-    * <span data-ttu-id="2d600-126">`--private-ip-address`: Statickou privátní IP adresou pro síťovou kartu.</span><span class="sxs-lookup"><span data-stu-id="2d600-126">`--private-ip-address`: Static private IP address for the NIC.</span></span>
-    * <span data-ttu-id="2d600-127">`--vnet-name`: Název sítě VNet, ve které chcete vytvořit síťovou kartu.</span><span class="sxs-lookup"><span data-stu-id="2d600-127">`--vnet-name`: Name of the VNet in wihch to create the NIC.</span></span>
-    * <span data-ttu-id="2d600-128">`--subnet`: Název podsítě, ve které chcete vytvořit síťovou kartu.</span><span class="sxs-lookup"><span data-stu-id="2d600-128">`--subnet`: Name of the subnet in which to create the NIC.</span></span>
+    * <span data-ttu-id="5a25d-126">`--private-ip-address`: Statickou privátní IP adresou pro hello síťový adaptér.</span><span class="sxs-lookup"><span data-stu-id="5a25d-126">`--private-ip-address`: Static private IP address for hello NIC.</span></span>
+    * <span data-ttu-id="5a25d-127">`--vnet-name`: Název hello sítě vnet, ve které toocreate hello síťový adaptér.</span><span class="sxs-lookup"><span data-stu-id="5a25d-127">`--vnet-name`: Name of hello VNet in wihch toocreate hello NIC.</span></span>
+    * <span data-ttu-id="5a25d-128">`--subnet`: Název hello podsítě, ve které toocreate hello síťový adaptér.</span><span class="sxs-lookup"><span data-stu-id="5a25d-128">`--subnet`: Name of hello subnet in which toocreate hello NIC.</span></span>
 
-4. <span data-ttu-id="2d600-129">Spustit [vytvoření virtuálního počítače azure](/cli/azure/vm/nic#create) příkaz pro vytvoření virtuálního počítače pomocí veřejné IP adresy a síťovou kartu, vytvořili výše.</span><span class="sxs-lookup"><span data-stu-id="2d600-129">Run the [azure vm create](/cli/azure/vm/nic#create) command to create the VM using the public IP and NIC created above.</span></span> <span data-ttu-id="2d600-130">Seznam uvedený za výstupem vysvětluje použité parametry.</span><span class="sxs-lookup"><span data-stu-id="2d600-130">The list shown after the output explains the parameters used.</span></span>
+4. <span data-ttu-id="5a25d-129">Spustit hello [vytvoření virtuálního počítače azure](/cli/azure/vm/nic#create) hello toocreate příkaz virtuálního počítače pomocí hello veřejná IP adresa a síťovou kartu vytvořili výše.</span><span class="sxs-lookup"><span data-stu-id="5a25d-129">Run hello [azure vm create](/cli/azure/vm/nic#create) command toocreate hello VM using hello public IP and NIC created above.</span></span> <span data-ttu-id="5a25d-130">Hello seznam uvedený za výstup hello vysvětluje použité parametry hello.</span><span class="sxs-lookup"><span data-stu-id="5a25d-130">hello list shown after hello output explains hello parameters used.</span></span>
    
     ```azurecli
     az vm create \
@@ -147,7 +147,7 @@ ms.lasthandoff: 07/11/2017
     --nics TestNIC
     ```
 
-    <span data-ttu-id="2d600-131">Očekávaný výstup:</span><span class="sxs-lookup"><span data-stu-id="2d600-131">Expected output:</span></span>
+    <span data-ttu-id="5a25d-131">Očekávaný výstup:</span><span class="sxs-lookup"><span data-stu-id="5a25d-131">Expected output:</span></span>
    
     ```json
     {
@@ -162,26 +162,26 @@ ms.lasthandoff: 07/11/2017
     }
     ```
    
-   <span data-ttu-id="2d600-132">Parametry než základní [vytvořit virtuální počítač az](/cli/azure/vm#create) parametry.</span><span class="sxs-lookup"><span data-stu-id="2d600-132">Parameters other than the basic [az vm create](/cli/azure/vm#create) parameters.</span></span>
+   <span data-ttu-id="5a25d-132">Parametry než hello základní [vytvořit virtuální počítač az](/cli/azure/vm#create) parametry.</span><span class="sxs-lookup"><span data-stu-id="5a25d-132">Parameters other than hello basic [az vm create](/cli/azure/vm#create) parameters.</span></span>
 
-   * <span data-ttu-id="2d600-133">`--nics`: Název síťové karty, ke kterému je připojený virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="2d600-133">`--nics`: Name of the NIC to which the VM is attached.</span></span>
+   * <span data-ttu-id="5a25d-133">`--nics`: Název hello seskupování toowhich hello virtuální počítač je připojený.</span><span class="sxs-lookup"><span data-stu-id="5a25d-133">`--nics`: Name of hello NIC toowhich hello VM is attached.</span></span>
    
 
-## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a><span data-ttu-id="2d600-134">Načíst statickou privátní IP adresu informace pro virtuální počítač</span><span class="sxs-lookup"><span data-stu-id="2d600-134">Retrieve static private IP address information for a VM</span></span>
+## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a><span data-ttu-id="5a25d-134">Načíst statickou privátní IP adresu informace pro virtuální počítač</span><span class="sxs-lookup"><span data-stu-id="5a25d-134">Retrieve static private IP address information for a VM</span></span>
 
-<span data-ttu-id="2d600-135">Chcete-li zobrazit statickou privátní IP adresou, kterou jste vytvořili, pomocí následujícího příkazu příkazového řádku Azure CLI a sledovat hodnoty *alokační metody privátní IP* a *privátní IP adresa*:</span><span class="sxs-lookup"><span data-stu-id="2d600-135">To view the static private IP address that you created, run the following Azure CLI command and observe the values for *Private IP alloc-method* and *Private IP address*:</span></span>
+<span data-ttu-id="5a25d-135">Spusťte následující příkaz rozhraní příkazového řádku Azure hello tooview hello statickou privátní IP adresu, která jste vytvořili, a sledovat hello hodnoty pro *alokační metody privátní IP* a *privátní IP adresa*:</span><span class="sxs-lookup"><span data-stu-id="5a25d-135">tooview hello static private IP address that you created, run hello following Azure CLI command and observe hello values for *Private IP alloc-method* and *Private IP address*:</span></span>
 
 ```azurecli
 az vm show -g TestRG -n DNS01 --show-details --query 'privateIps'
 ```
 
-<span data-ttu-id="2d600-136">Očekávaný výstup:</span><span class="sxs-lookup"><span data-stu-id="2d600-136">Expected output:</span></span>
+<span data-ttu-id="5a25d-136">Očekávaný výstup:</span><span class="sxs-lookup"><span data-stu-id="5a25d-136">Expected output:</span></span>
 
 ```json
 "192.168.1.101"
 ```
 
-<span data-ttu-id="2d600-137">Pokud chcete zobrazit konkrétní informace o IP síťového adaptéru pro tento virtuální počítač, konkrétně dotaz na síťový adaptér:</span><span class="sxs-lookup"><span data-stu-id="2d600-137">To display the specific IP information of the NIC for that VM, query the NIC specifically:</span></span>
+<span data-ttu-id="5a25d-137">toodisplay hello konkrétně pro konkrétní IP informace hello síťovou kartu pro tento virtuální počítač, dotaz hello síťovou kartu:</span><span class="sxs-lookup"><span data-stu-id="5a25d-137">toodisplay hello specific IP information of hello NIC for that VM, query hello NIC specifically:</span></span>
 
 ```azurecli
 az network nic show \
@@ -191,7 +191,7 @@ az network nic show \
 rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 ```
 
-<span data-ttu-id="2d600-138">Výstup bude podobný tomuto:</span><span class="sxs-lookup"><span data-stu-id="2d600-138">The output is something like:</span></span>
+<span data-ttu-id="5a25d-138">výstup Hello se něco podobného jako:</span><span class="sxs-lookup"><span data-stu-id="5a25d-138">hello output is something like:</span></span>
 
 ```json
 {
@@ -202,15 +202,15 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 }
 ```
 
-## <a name="remove-a-static-private-ip-address-from-a-vm"></a><span data-ttu-id="2d600-139">Odeberte statickou privátní IP adresu z virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="2d600-139">Remove a static private IP address from a VM</span></span>
+## <a name="remove-a-static-private-ip-address-from-a-vm"></a><span data-ttu-id="5a25d-139">Odeberte statickou privátní IP adresu z virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="5a25d-139">Remove a static private IP address from a VM</span></span>
 
-<span data-ttu-id="2d600-140">Statickou privátní IP adresu nelze odebrat z síťový adaptér v Azure CLI pro nasazení resource manager.</span><span class="sxs-lookup"><span data-stu-id="2d600-140">You cannot remove a static private IP address from a NIC in Azure CLI for resource manager deployments.</span></span> <span data-ttu-id="2d600-141">Postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="2d600-141">You must:</span></span>
-- <span data-ttu-id="2d600-142">Vytvořte novou síťovou kartu, která používá dynamický IP</span><span class="sxs-lookup"><span data-stu-id="2d600-142">Create a new NIC that uses a dynamic IP</span></span>
-- <span data-ttu-id="2d600-143">Nastavení síťového adaptéru ve virtuálních počítačů na nově vytvořený síťový adaptér.</span><span class="sxs-lookup"><span data-stu-id="2d600-143">Set the NIC on the VM do the newly created NIC.</span></span> 
+<span data-ttu-id="5a25d-140">Statickou privátní IP adresu nelze odebrat z síťový adaptér v Azure CLI pro nasazení resource manager.</span><span class="sxs-lookup"><span data-stu-id="5a25d-140">You cannot remove a static private IP address from a NIC in Azure CLI for resource manager deployments.</span></span> <span data-ttu-id="5a25d-141">Postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="5a25d-141">You must:</span></span>
+- <span data-ttu-id="5a25d-142">Vytvořte novou síťovou kartu, která používá dynamický IP</span><span class="sxs-lookup"><span data-stu-id="5a25d-142">Create a new NIC that uses a dynamic IP</span></span>
+- <span data-ttu-id="5a25d-143">Nastavit hello síťový adaptér na hello hello virtuálních počítačů nově vytvořený síťový adaptér.</span><span class="sxs-lookup"><span data-stu-id="5a25d-143">Set hello NIC on hello VM do hello newly created NIC.</span></span> 
 
-<span data-ttu-id="2d600-144">Chcete-li změnit síťový adaptér pro virtuální počítač používá v předchozích příkazech, postupujte podle následujících kroků.</span><span class="sxs-lookup"><span data-stu-id="2d600-144">To change the NIC for the VM used in the commands above, follow the steps below.</span></span>
+<span data-ttu-id="5a25d-144">toochange hello síťovou kartu pro hello virtuálních počítačů použita v hello příkazů výše, postupujte podle kroků hello níže.</span><span class="sxs-lookup"><span data-stu-id="5a25d-144">toochange hello NIC for hello VM used in hello commands above, follow hello steps below.</span></span>
 
-1. <span data-ttu-id="2d600-145">Spustit **síťových adaptérů sítě azure vytvořit** příkaz pro vytvoření nové síťové karty pomocí dynamické přidělování IP adres s novou IP adresu.</span><span class="sxs-lookup"><span data-stu-id="2d600-145">Run the **azure network nic create** command to create a new NIC using dynamic IP allocation with a new IP address.</span></span> <span data-ttu-id="2d600-146">Všimněte si, protože není zadána žádná IP adresa, metoda přidělení **dynamické**.</span><span class="sxs-lookup"><span data-stu-id="2d600-146">Note that because no IP address is specified, the allocation method is **Dynamic**.</span></span>
+1. <span data-ttu-id="5a25d-145">Spustit hello **síťových adaptérů sítě azure vytvořit** příkaz toocreate nový síťový adaptér pomocí dynamické přidělování IP adres s novou IP adresu.</span><span class="sxs-lookup"><span data-stu-id="5a25d-145">Run hello **azure network nic create** command toocreate a new NIC using dynamic IP allocation with a new IP address.</span></span> <span data-ttu-id="5a25d-146">Všimněte si, protože není zadána žádná IP adresa, metoda přidělení hello **dynamické**.</span><span class="sxs-lookup"><span data-stu-id="5a25d-146">Note that because no IP address is specified, hello allocation method is **Dynamic**.</span></span>
 
     ```azurecli
     az network nic create     \
@@ -221,7 +221,7 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
     --vnet-name TestVNet
     ```        
    
-    <span data-ttu-id="2d600-147">Očekávaný výstup:</span><span class="sxs-lookup"><span data-stu-id="2d600-147">Expected output:</span></span>
+    <span data-ttu-id="5a25d-147">Očekávaný výstup:</span><span class="sxs-lookup"><span data-stu-id="5a25d-147">Expected output:</span></span>
 
     ```json
     {
@@ -255,13 +255,13 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
     }
     ```
 
-2. <span data-ttu-id="2d600-148">Spustit **sada virtuálních počítačů azure** příkazu změníte na síťový adaptér použit ve virtuálním počítači.</span><span class="sxs-lookup"><span data-stu-id="2d600-148">Run the **azure vm set** command to change the NIC used by the VM.</span></span>
+2. <span data-ttu-id="5a25d-148">Spustit hello **sada virtuálních počítačů azure** příkaz toochange hello síťový adaptér používá hello virtuálních počítačů.</span><span class="sxs-lookup"><span data-stu-id="5a25d-148">Run hello **azure vm set** command toochange hello NIC used by hello VM.</span></span>
    
     ```azurecli
     azure vm set -g TestRG -n DNS01 -N TestNIC2
     ```
 
-    <span data-ttu-id="2d600-149">Očekávaný výstup:</span><span class="sxs-lookup"><span data-stu-id="2d600-149">Expected output:</span></span>
+    <span data-ttu-id="5a25d-149">Očekávaný výstup:</span><span class="sxs-lookup"><span data-stu-id="5a25d-149">Expected output:</span></span>
    
     ```json
     [
@@ -274,10 +274,10 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
     ```
 
     > [!NOTE]
-    > <span data-ttu-id="2d600-150">Pokud je dostatečně velký pro mít více než jeden síťový adaptér virtuálního počítače, spusťte **odstranit síťových adaptérů sítě azure** příkaz k odstranění původního síťový adaptér.</span><span class="sxs-lookup"><span data-stu-id="2d600-150">If the VM is large enough to have more than one NIC, run the **azure network nic delete** command to delete the old NIC.</span></span>
+    > <span data-ttu-id="5a25d-150">Pokud hello virtuálního počítače je dostatečně velké na to toohave více než jeden síťový adaptér, spusťte hello **odstranit síťových adaptérů sítě azure** příkaz toodelete hello staré síťový adaptér.</span><span class="sxs-lookup"><span data-stu-id="5a25d-150">If hello VM is large enough toohave more than one NIC, run hello **azure network nic delete** command toodelete hello old NIC.</span></span>
    
-## <a name="next-steps"></a><span data-ttu-id="2d600-151">Další kroky</span><span class="sxs-lookup"><span data-stu-id="2d600-151">Next steps</span></span>
-* <span data-ttu-id="2d600-152">Další informace o [vyhrazené veřejné IP adresy](virtual-networks-reserved-public-ip.md) adresy.</span><span class="sxs-lookup"><span data-stu-id="2d600-152">Learn about [reserved public IP](virtual-networks-reserved-public-ip.md) addresses.</span></span>
-* <span data-ttu-id="2d600-153">Další informace o [veřejné IP (splnění) na úrovni instance](virtual-networks-instance-level-public-ip.md) adresy.</span><span class="sxs-lookup"><span data-stu-id="2d600-153">Learn about [instance-level public IP (ILPIP)](virtual-networks-instance-level-public-ip.md) addresses.</span></span>
-* <span data-ttu-id="2d600-154">Obrátit [vyhrazené IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx).</span><span class="sxs-lookup"><span data-stu-id="2d600-154">Consult the [Reserved IP REST APIs](https://msdn.microsoft.com/library/azure/dn722420.aspx).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="5a25d-151">Další kroky</span><span class="sxs-lookup"><span data-stu-id="5a25d-151">Next steps</span></span>
+* <span data-ttu-id="5a25d-152">Další informace o [vyhrazené veřejné IP adresy](virtual-networks-reserved-public-ip.md) adresy.</span><span class="sxs-lookup"><span data-stu-id="5a25d-152">Learn about [reserved public IP](virtual-networks-reserved-public-ip.md) addresses.</span></span>
+* <span data-ttu-id="5a25d-153">Další informace o [veřejné IP (splnění) na úrovni instance](virtual-networks-instance-level-public-ip.md) adresy.</span><span class="sxs-lookup"><span data-stu-id="5a25d-153">Learn about [instance-level public IP (ILPIP)](virtual-networks-instance-level-public-ip.md) addresses.</span></span>
+* <span data-ttu-id="5a25d-154">Poraďte se hello [vyhrazené IP rozhraní REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx).</span><span class="sxs-lookup"><span data-stu-id="5a25d-154">Consult hello [Reserved IP REST APIs](https://msdn.microsoft.com/library/azure/dn722420.aspx).</span></span>
 

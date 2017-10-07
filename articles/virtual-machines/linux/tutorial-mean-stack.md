@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření střední hodnotu zásobníku na virtuální počítač s Linuxem v Azure | Microsoft Docs"
-description: "Naučte se vytvářet zásobníku MongoDB, Express, AngularJS a Node.js (střední) na virtuální počítač s Linuxem v Azure."
+title: "aaaCreate střední hodnotu zásobníku na virtuální počítač s Linuxem v Azure | Microsoft Docs"
+description: "Zjistěte, jak toocreate MongoDB, Express, AngularJS a Node.js (střední) zásobníku na virtuální počítač s Linuxem v Azure."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: davidmu1
@@ -16,34 +16,34 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.openlocfilehash: 892d3481b4ec70fb8434cb25013c5cfd8ab85051
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 82a8e34e60d2bb6e6670ee007faa1113ea78b716
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-vm-in-azure"></a><span data-ttu-id="d807c-103">Na virtuální počítač s Linuxem v Azure vytvořit zásobníku MongoDB, Express, AngularJS a Node.js (střední)</span><span class="sxs-lookup"><span data-stu-id="d807c-103">Create a MongoDB, Express, AngularJS, and Node.js (MEAN) stack on a Linux VM in Azure</span></span>
+# <a name="create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-vm-in-azure"></a><span data-ttu-id="f80e3-103">Na virtuální počítač s Linuxem v Azure vytvořit zásobníku MongoDB, Express, AngularJS a Node.js (střední)</span><span class="sxs-lookup"><span data-stu-id="f80e3-103">Create a MongoDB, Express, AngularJS, and Node.js (MEAN) stack on a Linux VM in Azure</span></span>
 
-<span data-ttu-id="d807c-104">V tomto kurzu se dozvíte, jak implementovat zásobníku MongoDB, Express, AngularJS a Node.js (střední) na virtuální počítač s Linuxem v Azure.</span><span class="sxs-lookup"><span data-stu-id="d807c-104">This tutorial shows you how to implement a MongoDB, Express, AngularJS, and Node.js (MEAN) stack on a Linux VM in Azure.</span></span> <span data-ttu-id="d807c-105">Střední zásobníku, který vytvoříte umožňuje přidávání, odstraňování a výpis knihy v databázi.</span><span class="sxs-lookup"><span data-stu-id="d807c-105">The MEAN stack that you create enables adding, deleting, and listing books in a database.</span></span> <span data-ttu-id="d807c-106">Získáte informace o těchto tématech:</span><span class="sxs-lookup"><span data-stu-id="d807c-106">You learn how to:</span></span>
+<span data-ttu-id="f80e3-104">Tento kurz ukazuje, jak tooimplement MongoDB, Express, AngularJS a Node.js (střední) zásobníku na virtuální počítač s Linuxem v Azure.</span><span class="sxs-lookup"><span data-stu-id="f80e3-104">This tutorial shows you how tooimplement a MongoDB, Express, AngularJS, and Node.js (MEAN) stack on a Linux VM in Azure.</span></span> <span data-ttu-id="f80e3-105">Hello střední zásobníku, který vytvoříte umožňuje přidávání, odstraňování a výpis knihy v databázi.</span><span class="sxs-lookup"><span data-stu-id="f80e3-105">hello MEAN stack that you create enables adding, deleting, and listing books in a database.</span></span> <span data-ttu-id="f80e3-106">Získáte informace o těchto tématech:</span><span class="sxs-lookup"><span data-stu-id="f80e3-106">You learn how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="d807c-107">Vytvoření virtuálního počítače s Linuxem</span><span class="sxs-lookup"><span data-stu-id="d807c-107">Create a Linux VM</span></span>
-> * <span data-ttu-id="d807c-108">Instalovat Node.js</span><span class="sxs-lookup"><span data-stu-id="d807c-108">Install Node.js</span></span>
-> * <span data-ttu-id="d807c-109">Nainstalujte MongoDB a nastavení serveru</span><span class="sxs-lookup"><span data-stu-id="d807c-109">Install MongoDB and set up the server</span></span>
-> * <span data-ttu-id="d807c-110">Expresní instalace a nastavení trasy k serveru</span><span class="sxs-lookup"><span data-stu-id="d807c-110">Install Express and set up routes to the server</span></span>
-> * <span data-ttu-id="d807c-111">Přístup k tras se AngularJS</span><span class="sxs-lookup"><span data-stu-id="d807c-111">Access the routes with AngularJS</span></span>
-> * <span data-ttu-id="d807c-112">Spuštění aplikace</span><span class="sxs-lookup"><span data-stu-id="d807c-112">Run the application</span></span>
+> * <span data-ttu-id="f80e3-107">Vytvoření virtuálního počítače s Linuxem</span><span class="sxs-lookup"><span data-stu-id="f80e3-107">Create a Linux VM</span></span>
+> * <span data-ttu-id="f80e3-108">Instalovat Node.js</span><span class="sxs-lookup"><span data-stu-id="f80e3-108">Install Node.js</span></span>
+> * <span data-ttu-id="f80e3-109">Nainstalujte MongoDB a nastavit hello server</span><span class="sxs-lookup"><span data-stu-id="f80e3-109">Install MongoDB and set up hello server</span></span>
+> * <span data-ttu-id="f80e3-110">Expresní instalace a nastavení serveru toohello trasy</span><span class="sxs-lookup"><span data-stu-id="f80e3-110">Install Express and set up routes toohello server</span></span>
+> * <span data-ttu-id="f80e3-111">Přístup hello tras se AngularJS</span><span class="sxs-lookup"><span data-stu-id="f80e3-111">Access hello routes with AngularJS</span></span>
+> * <span data-ttu-id="f80e3-112">Spuštění aplikace hello</span><span class="sxs-lookup"><span data-stu-id="f80e3-112">Run hello application</span></span>
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-<span data-ttu-id="d807c-113">Pokud si zvolíte instalaci a použití rozhraní příkazového řádku místně, tento kurz vyžaduje, že používáte Azure CLI verze verze 2.0.4 nebo novější.</span><span class="sxs-lookup"><span data-stu-id="d807c-113">If you choose to install and use the CLI locally, this tutorial requires that you are running the Azure CLI version 2.0.4 or later.</span></span> <span data-ttu-id="d807c-114">Verzi zjistíte spuštěním příkazu `az --version`.</span><span class="sxs-lookup"><span data-stu-id="d807c-114">Run `az --version` to find the version.</span></span> <span data-ttu-id="d807c-115">Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="d807c-115">If you need to install or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span>
+<span data-ttu-id="f80e3-113">Pokud zvolíte tooinstall a místně pomocí hello rozhraní příkazového řádku, tento kurz vyžaduje, že používáte verzi rozhraní příkazového řádku Azure hello verze 2.0.4 nebo novější.</span><span class="sxs-lookup"><span data-stu-id="f80e3-113">If you choose tooinstall and use hello CLI locally, this tutorial requires that you are running hello Azure CLI version 2.0.4 or later.</span></span> <span data-ttu-id="f80e3-114">Spustit `az --version` toofind hello verze.</span><span class="sxs-lookup"><span data-stu-id="f80e3-114">Run `az --version` toofind hello version.</span></span> <span data-ttu-id="f80e3-115">Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="f80e3-115">If you need tooinstall or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span>
 
 
-## <a name="create-a-linux-vm"></a><span data-ttu-id="d807c-116">Vytvoření virtuálního počítače s Linuxem</span><span class="sxs-lookup"><span data-stu-id="d807c-116">Create a Linux VM</span></span>
+## <a name="create-a-linux-vm"></a><span data-ttu-id="f80e3-116">Vytvoření virtuálního počítače s Linuxem</span><span class="sxs-lookup"><span data-stu-id="f80e3-116">Create a Linux VM</span></span>
 
-<span data-ttu-id="d807c-117">Vytvořte skupinu prostředků s [vytvořit skupinu az](https://docs.microsoft.com/cli/azure/group#create) příkazů a vytvoření virtuálního počítače s Linuxem pomocí [vytvořit virtuální počítač az](https://docs.microsoft.com/cli/azure/vm#create) příkaz.</span><span class="sxs-lookup"><span data-stu-id="d807c-117">Create a resource group with the [az group create](https://docs.microsoft.com/cli/azure/group#create) command and create a Linux VM with the [az vm create](https://docs.microsoft.com/cli/azure/vm#create) command.</span></span> <span data-ttu-id="d807c-118">Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.</span><span class="sxs-lookup"><span data-stu-id="d807c-118">An Azure resource group is a logical container into which Azure resources are deployed and managed.</span></span>
+<span data-ttu-id="f80e3-117">Vytvořte skupinu prostředků s hello [vytvořit skupinu az](https://docs.microsoft.com/cli/azure/group#create) příkazů a vytvoření virtuálního počítače s Linuxem pomocí hello [vytvořit virtuální počítač az](https://docs.microsoft.com/cli/azure/vm#create) příkaz.</span><span class="sxs-lookup"><span data-stu-id="f80e3-117">Create a resource group with hello [az group create](https://docs.microsoft.com/cli/azure/group#create) command and create a Linux VM with hello [az vm create](https://docs.microsoft.com/cli/azure/vm#create) command.</span></span> <span data-ttu-id="f80e3-118">Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.</span><span class="sxs-lookup"><span data-stu-id="f80e3-118">An Azure resource group is a logical container into which Azure resources are deployed and managed.</span></span>
 
-<span data-ttu-id="d807c-119">Následující příklad používá rozhraní příkazového řádku Azure k vytvoření skupiny prostředků s názvem *myResourceGroupMEAN* v *eastus* umístění.</span><span class="sxs-lookup"><span data-stu-id="d807c-119">The following example uses the Azure CLI to create a resource group named *myResourceGroupMEAN* in the *eastus* location.</span></span> <span data-ttu-id="d807c-120">Virtuální počítač je vytvořen s názvem *Můjvp* s klíči SSH, pokud už neexistují ve výchozím umístění klíče.</span><span class="sxs-lookup"><span data-stu-id="d807c-120">A VM is created named *myVM* with SSH keys if they do not already exist in a default key location.</span></span> <span data-ttu-id="d807c-121">Pokud chcete použít konkrétní sady klíčů, použijte možnost--ssh klíč hodnota.</span><span class="sxs-lookup"><span data-stu-id="d807c-121">To use a specific set of keys, use the --ssh-key-value option.</span></span>
+<span data-ttu-id="f80e3-119">Hello následující příklad používá toocreate hello rozhraní příkazového řádku Azure s názvem skupiny prostředků *myResourceGroupMEAN* v hello *eastus* umístění.</span><span class="sxs-lookup"><span data-stu-id="f80e3-119">hello following example uses hello Azure CLI toocreate a resource group named *myResourceGroupMEAN* in hello *eastus* location.</span></span> <span data-ttu-id="f80e3-120">Virtuální počítač je vytvořen s názvem *Můjvp* s klíči SSH, pokud už neexistují ve výchozím umístění klíče.</span><span class="sxs-lookup"><span data-stu-id="f80e3-120">A VM is created named *myVM* with SSH keys if they do not already exist in a default key location.</span></span> <span data-ttu-id="f80e3-121">toouse konkrétní sada klíčů, použijte hello – možnost ssh klíč hodnota.</span><span class="sxs-lookup"><span data-stu-id="f80e3-121">toouse a specific set of keys, use hello --ssh-key-value option.</span></span>
 
 ```azurecli-interactive
 az group create --name myResourceGroupMEAN --location eastus
@@ -57,7 +57,7 @@ az vm create \
 az vm open-port --port 3300 --resource-group myResourceGroupMEAN --name myVM
 ```
 
-<span data-ttu-id="d807c-122">Po vytvoření virtuálního počítače Azure CLI uvádí informace podobně jako v následujícím příkladu:</span><span class="sxs-lookup"><span data-stu-id="d807c-122">When the VM has been created, the Azure CLI shows information similar to the following example:</span></span> 
+<span data-ttu-id="f80e3-122">Po vytvoření hello virtuálních počítačů, hello rozhraní příkazového řádku Azure ukazuje následující příklad podobné toohello informace:</span><span class="sxs-lookup"><span data-stu-id="f80e3-122">When hello VM has been created, hello Azure CLI shows information similar toohello following example:</span></span> 
 
 ```azurecli-interactive
 {
@@ -71,67 +71,67 @@ az vm open-port --port 3300 --resource-group myResourceGroupMEAN --name myVM
   "resourceGroup": "myResourceGroupMEAN"
 }
 ```
-<span data-ttu-id="d807c-123">Poznamenejte si `publicIpAddress`.</span><span class="sxs-lookup"><span data-stu-id="d807c-123">Take note of the `publicIpAddress`.</span></span> <span data-ttu-id="d807c-124">Tato adresa se používá pro přístup k virtuálnímu počítači.</span><span class="sxs-lookup"><span data-stu-id="d807c-124">This address is used to access the VM.</span></span>
+<span data-ttu-id="f80e3-123">Poznamenejte si hello `publicIpAddress`.</span><span class="sxs-lookup"><span data-stu-id="f80e3-123">Take note of hello `publicIpAddress`.</span></span> <span data-ttu-id="f80e3-124">Tato adresa je použité tooaccess hello virtuálních počítačů.</span><span class="sxs-lookup"><span data-stu-id="f80e3-124">This address is used tooaccess hello VM.</span></span>
 
-<span data-ttu-id="d807c-125">Použijte následující příkaz k vytvoření relace SSH s virtuálním Počítačem.</span><span class="sxs-lookup"><span data-stu-id="d807c-125">Use the following command to create an SSH session with the VM.</span></span> <span data-ttu-id="d807c-126">Nezapomeňte použít správné veřejnou IP adresu.</span><span class="sxs-lookup"><span data-stu-id="d807c-126">Make sure to use the correct public IP address.</span></span> <span data-ttu-id="d807c-127">V našem příkladu výše naše IP adresa byla 13.72.77.9.</span><span class="sxs-lookup"><span data-stu-id="d807c-127">In our example above our IP address was 13.72.77.9.</span></span>
+<span data-ttu-id="f80e3-125">Použití hello následující příkaz toocreate na relace SSH s hello virtuálních počítačů.</span><span class="sxs-lookup"><span data-stu-id="f80e3-125">Use hello following command toocreate an SSH session with hello VM.</span></span> <span data-ttu-id="f80e3-126">Zajistěte, aby toouse hello správné veřejnou IP adresu.</span><span class="sxs-lookup"><span data-stu-id="f80e3-126">Make sure toouse hello correct public IP address.</span></span> <span data-ttu-id="f80e3-127">V našem příkladu výše naše IP adresa byla 13.72.77.9.</span><span class="sxs-lookup"><span data-stu-id="f80e3-127">In our example above our IP address was 13.72.77.9.</span></span>
 
 ```bash
 ssh azureuser@13.72.77.9
 ```
 
-## <a name="install-nodejs"></a><span data-ttu-id="d807c-128">Instalovat Node.js</span><span class="sxs-lookup"><span data-stu-id="d807c-128">Install Node.js</span></span>
+## <a name="install-nodejs"></a><span data-ttu-id="f80e3-128">Instalovat Node.js</span><span class="sxs-lookup"><span data-stu-id="f80e3-128">Install Node.js</span></span>
 
-<span data-ttu-id="d807c-129">[Node.js](https://nodejs.org/en/) je prostředí JavaScript runtime, který je založený na JavaScript v8: modul pro Chrome.</span><span class="sxs-lookup"><span data-stu-id="d807c-129">[Node.js](https://nodejs.org/en/) is a JavaScript runtime built on Chrome's V8 JavaScript engine.</span></span> <span data-ttu-id="d807c-130">Node.js se používá v tomto kurzu nastavit Express trasy a AngularJS řadiče.</span><span class="sxs-lookup"><span data-stu-id="d807c-130">Node.js is used in this tutorial to set up the Express routes and AngularJS controllers.</span></span>
+<span data-ttu-id="f80e3-129">[Node.js](https://nodejs.org/en/) je prostředí JavaScript runtime, který je založený na JavaScript v8: modul pro Chrome.</span><span class="sxs-lookup"><span data-stu-id="f80e3-129">[Node.js](https://nodejs.org/en/) is a JavaScript runtime built on Chrome's V8 JavaScript engine.</span></span> <span data-ttu-id="f80e3-130">Node.js se používá v tento kurz tooset hello Express tras a AngularJS řadiče.</span><span class="sxs-lookup"><span data-stu-id="f80e3-130">Node.js is used in this tutorial tooset up hello Express routes and AngularJS controllers.</span></span>
 
-<span data-ttu-id="d807c-131">Ve virtuálním počítači, pomocí prostředí bash, kterou jste otevřeli pomocí protokolu SSH nainstalujte si Node.js.</span><span class="sxs-lookup"><span data-stu-id="d807c-131">On the VM, using the bash shell that you opened with SSH, install Node.js.</span></span>
+<span data-ttu-id="f80e3-131">Na hello virtuální počítač pomocí prostředí bash hello, kterou jste otevřeli pomocí protokolu SSH nainstalujte si Node.js.</span><span class="sxs-lookup"><span data-stu-id="f80e3-131">On hello VM, using hello bash shell that you opened with SSH, install Node.js.</span></span>
 
 ```bash
 sudo apt-get install -y nodejs
 ```
 
-## <a name="install-mongodb-and-set-up-the-server"></a><span data-ttu-id="d807c-132">Nainstalujte MongoDB a nastavení serveru</span><span class="sxs-lookup"><span data-stu-id="d807c-132">Install MongoDB and set up the server</span></span>
-<span data-ttu-id="d807c-133">[MongoDB](http://www.mongodb.com) ukládá data v dokumentech flexibilní, jako JSON.</span><span class="sxs-lookup"><span data-stu-id="d807c-133">[MongoDB](http://www.mongodb.com) stores data in flexible, JSON-like documents.</span></span> <span data-ttu-id="d807c-134">Pole v databázi se může lišit z dokumentu do dokumentu a struktura dat lze změnit v čase.</span><span class="sxs-lookup"><span data-stu-id="d807c-134">Fields in a database can vary from document to document and data structure can be changed over time.</span></span> <span data-ttu-id="d807c-135">Pro naše ukázková aplikace přidáváme kniha záznamy MongoDB, které obsahují název adresáře, číslo isbn, autora a počet stránek.</span><span class="sxs-lookup"><span data-stu-id="d807c-135">For our example application, we are adding book records to MongoDB that contain book name, isbn number, author, and number of pages.</span></span> 
+## <a name="install-mongodb-and-set-up-hello-server"></a><span data-ttu-id="f80e3-132">Nainstalujte MongoDB a nastavit hello server</span><span class="sxs-lookup"><span data-stu-id="f80e3-132">Install MongoDB and set up hello server</span></span>
+<span data-ttu-id="f80e3-133">[MongoDB](http://www.mongodb.com) ukládá data v dokumentech flexibilní, jako JSON.</span><span class="sxs-lookup"><span data-stu-id="f80e3-133">[MongoDB](http://www.mongodb.com) stores data in flexible, JSON-like documents.</span></span> <span data-ttu-id="f80e3-134">Pole v databázi se můžou lišit od toodocument dokumentu a struktura dat lze změnit v čase.</span><span class="sxs-lookup"><span data-stu-id="f80e3-134">Fields in a database can vary from document toodocument and data structure can be changed over time.</span></span> <span data-ttu-id="f80e3-135">Pro naše ukázková aplikace přidáváme tooMongoDB kniha záznamy, které obsahují název adresáře, číslo isbn, autora a počet stránek.</span><span class="sxs-lookup"><span data-stu-id="f80e3-135">For our example application, we are adding book records tooMongoDB that contain book name, isbn number, author, and number of pages.</span></span> 
 
-1. <span data-ttu-id="d807c-136">Ve virtuálním počítači, pomocí prostředí bash, kterou jste otevřeli pomocí protokolu SSH nastavte klíč MongoDB.</span><span class="sxs-lookup"><span data-stu-id="d807c-136">On the VM, using the bash shell that you opened with SSH, set the MongoDB key.</span></span>
+1. <span data-ttu-id="f80e3-136">Na hello virtuální počítač pomocí prostředí bash hello, kterou jste otevřeli pomocí protokolu SSH nastavte klíč hello MongoDB.</span><span class="sxs-lookup"><span data-stu-id="f80e3-136">On hello VM, using hello bash shell that you opened with SSH, set hello MongoDB key.</span></span>
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
     echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
     ```
 
-2. <span data-ttu-id="d807c-137">Aktualizujte správce balíčků s klíčem.</span><span class="sxs-lookup"><span data-stu-id="d807c-137">Update the package manager with the key.</span></span>
+2. <span data-ttu-id="f80e3-137">Aktualizujte správce balíčků hello klíčem hello.</span><span class="sxs-lookup"><span data-stu-id="f80e3-137">Update hello package manager with hello key.</span></span>
   
     ```bash
     sudo apt-get update
     ```
 
-3. <span data-ttu-id="d807c-138">Nainstalujte MongoDB.</span><span class="sxs-lookup"><span data-stu-id="d807c-138">Install MongoDB.</span></span>
+3. <span data-ttu-id="f80e3-138">Nainstalujte MongoDB.</span><span class="sxs-lookup"><span data-stu-id="f80e3-138">Install MongoDB.</span></span>
 
     ```bash
     sudo apt-get install -y mongodb
     ```
 
-4. <span data-ttu-id="d807c-139">Spuštění serveru.</span><span class="sxs-lookup"><span data-stu-id="d807c-139">Start the server.</span></span>
+4. <span data-ttu-id="f80e3-139">Spusťte hello server.</span><span class="sxs-lookup"><span data-stu-id="f80e3-139">Start hello server.</span></span>
 
     ```bash
     sudo service mongodb start
     ```
 
-5. <span data-ttu-id="d807c-140">Také je potřeba nainstalovat [textu analyzátor](https://www.npmjs.com/package/body-parser-json) balíček a pomoci tak zpracování JSON předané požadavky na server.</span><span class="sxs-lookup"><span data-stu-id="d807c-140">We also need to install the [body-parser](https://www.npmjs.com/package/body-parser-json) package to help us process the JSON passed in requests to the server.</span></span>
+5. <span data-ttu-id="f80e3-140">Potřebujeme tooinstall hello [textu analyzátor](https://www.npmjs.com/package/body-parser-json) balíček toohelp nám zpracovat hello JSON předané požadavky toohello serveru.</span><span class="sxs-lookup"><span data-stu-id="f80e3-140">We also need tooinstall hello [body-parser](https://www.npmjs.com/package/body-parser-json) package toohelp us process hello JSON passed in requests toohello server.</span></span>
 
-    <span data-ttu-id="d807c-141">Nainstalujte npm Správce balíčků.</span><span class="sxs-lookup"><span data-stu-id="d807c-141">Install the npm package manager.</span></span>
+    <span data-ttu-id="f80e3-141">Nainstalujte Správce balíčků npm hello.</span><span class="sxs-lookup"><span data-stu-id="f80e3-141">Install hello npm package manager.</span></span>
 
     ```bash
     sudo apt-get install npm
     ```
 
-    <span data-ttu-id="d807c-142">Nainstalujte balíček analyzátor textu.</span><span class="sxs-lookup"><span data-stu-id="d807c-142">Install the body parser package.</span></span>
+    <span data-ttu-id="f80e3-142">Instalovat balíček analyzátor textu hello.</span><span class="sxs-lookup"><span data-stu-id="f80e3-142">Install hello body parser package.</span></span>
     
     ```bash
     sudo npm install body-parser
     ```
 
-6. <span data-ttu-id="d807c-143">Vytvořte složku s názvem *knihy* a přidejte do ní s názvem souboru *server.js* obsahující konfigurace na webovém serveru.</span><span class="sxs-lookup"><span data-stu-id="d807c-143">Create a folder named *Books* and add a file to it named *server.js* that contains the configuration for the web server.</span></span>
+6. <span data-ttu-id="f80e3-143">Vytvořte složku s názvem *knihy* a přidejte souboru tooit s názvem *server.js* obsahující hello konfigurace pro webový server hello.</span><span class="sxs-lookup"><span data-stu-id="f80e3-143">Create a folder named *Books* and add a file tooit named *server.js* that contains hello configuration for hello web server.</span></span>
 
     ```node.js
     var express = require('express');
@@ -146,17 +146,17 @@ sudo apt-get install -y nodejs
     });
     ```
 
-## <a name="install-express-and-set-up-routes-to-the-server"></a><span data-ttu-id="d807c-144">Expresní instalace a nastavení trasy k serveru</span><span class="sxs-lookup"><span data-stu-id="d807c-144">Install Express and set up routes to the server</span></span>
+## <a name="install-express-and-set-up-routes-toohello-server"></a><span data-ttu-id="f80e3-144">Expresní instalace a nastavení serveru toohello trasy</span><span class="sxs-lookup"><span data-stu-id="f80e3-144">Install Express and set up routes toohello server</span></span>
 
-<span data-ttu-id="d807c-145">[Express](https://expressjs.com) je minimalistické a flexibilní Node.js webové aplikace rozhraní, které poskytuje funkce pro webové a mobilní aplikace.</span><span class="sxs-lookup"><span data-stu-id="d807c-145">[Express](https://expressjs.com) is a minimal and flexible Node.js web application framework that provides features for web and mobile applications.</span></span> <span data-ttu-id="d807c-146">Express se používá v tomto kurzu předat sešit informací na Internet a z našich databáze MongoDB.</span><span class="sxs-lookup"><span data-stu-id="d807c-146">Express is used in this tutorial to pass book information to and from our MongoDB database.</span></span> <span data-ttu-id="d807c-147">[Mongoose](http://mongoosejs.com) poskytuje jednoduché a na základě schématu řešení pro modelování data aplikací.</span><span class="sxs-lookup"><span data-stu-id="d807c-147">[Mongoose](http://mongoosejs.com) provides a straight-forward, schema-based solution to model your application data.</span></span> <span data-ttu-id="d807c-148">Mongoose se používá v tomto kurzu poskytuje schéma adresáře pro databázi.</span><span class="sxs-lookup"><span data-stu-id="d807c-148">Mongoose is used in this tutorial to provide a book schema for the database.</span></span>
+<span data-ttu-id="f80e3-145">[Express](https://expressjs.com) je minimalistické a flexibilní Node.js webové aplikace rozhraní, které poskytuje funkce pro webové a mobilní aplikace.</span><span class="sxs-lookup"><span data-stu-id="f80e3-145">[Express](https://expressjs.com) is a minimal and flexible Node.js web application framework that provides features for web and mobile applications.</span></span> <span data-ttu-id="f80e3-146">Express se používá v tento kurz toopass kniha informace tooand v naší databázi MongoDB.</span><span class="sxs-lookup"><span data-stu-id="f80e3-146">Express is used in this tutorial toopass book information tooand from our MongoDB database.</span></span> <span data-ttu-id="f80e3-147">[Mongoose](http://mongoosejs.com) poskytuje jednoduché a na základě schématu řešení toomodel data aplikací.</span><span class="sxs-lookup"><span data-stu-id="f80e3-147">[Mongoose](http://mongoosejs.com) provides a straight-forward, schema-based solution toomodel your application data.</span></span> <span data-ttu-id="f80e3-148">Mongoose se používá v tento kurz tooprovide schématu adresáře pro databázi hello.</span><span class="sxs-lookup"><span data-stu-id="f80e3-148">Mongoose is used in this tutorial tooprovide a book schema for hello database.</span></span>
 
-1. <span data-ttu-id="d807c-149">Expresní instalace a Mongoose.</span><span class="sxs-lookup"><span data-stu-id="d807c-149">Install Express and Mongoose.</span></span>
+1. <span data-ttu-id="f80e3-149">Expresní instalace a Mongoose.</span><span class="sxs-lookup"><span data-stu-id="f80e3-149">Install Express and Mongoose.</span></span>
 
     ```bash
     sudo npm install express mongoose
     ```
 
-2. <span data-ttu-id="d807c-150">V *knihy* složky, vytvořte složku s názvem *aplikace* a přidejte do souboru s názvem *routes.js* s express trasy definované.</span><span class="sxs-lookup"><span data-stu-id="d807c-150">In the *Books* folder, create a folder named *apps* and add a file named *routes.js* with the express routes defined.</span></span>
+2. <span data-ttu-id="f80e3-150">V hello *knihy* složky, vytvořte složku s názvem *aplikace* a přidejte do souboru s názvem *routes.js* s hello express trasy definované.</span><span class="sxs-lookup"><span data-stu-id="f80e3-150">In hello *Books* folder, create a folder named *apps* and add a file named *routes.js* with hello express routes defined.</span></span>
 
     ```node.js
     var Book = require('./models/book');
@@ -186,7 +186,7 @@ sudo apt-get install -y nodejs
         Book.findOneAndRemove(req.query, function(err, result) {
           if ( err ) throw err;
           res.json( {
-            message: "Successfully deleted the book",
+            message: "Successfully deleted hello book",
             book: result
           });
         });
@@ -198,7 +198,7 @@ sudo apt-get install -y nodejs
     };
     ```
 
-3. <span data-ttu-id="d807c-151">V *aplikace* složky, vytvořte složku s názvem *modely* a přidejte do souboru s názvem *book.js* pomocí modelu konfigurace adresáře definované.</span><span class="sxs-lookup"><span data-stu-id="d807c-151">In the *apps* folder, create a folder named *models* and add a file named *book.js* with the book model configuration defined.</span></span>  
+3. <span data-ttu-id="f80e3-151">V hello *aplikace* složky, vytvořte složku s názvem *modely* a přidejte do souboru s názvem *book.js* pomocí hello kniha model konfigurace definované.</span><span class="sxs-lookup"><span data-stu-id="f80e3-151">In hello *apps* folder, create a folder named *models* and add a file named *book.js* with hello book model configuration defined.</span></span>  
 
     ```node.js
     var mongoose = require('mongoose');
@@ -216,11 +216,11 @@ sudo apt-get install -y nodejs
     module.exports = mongoose.model('Book', bookSchema); 
     ```
 
-## <a name="access-the-routes-with-angularjs"></a><span data-ttu-id="d807c-152">Přístup k tras se AngularJS</span><span class="sxs-lookup"><span data-stu-id="d807c-152">Access the routes with AngularJS</span></span>
+## <a name="access-hello-routes-with-angularjs"></a><span data-ttu-id="f80e3-152">Přístup hello tras se AngularJS</span><span class="sxs-lookup"><span data-stu-id="f80e3-152">Access hello routes with AngularJS</span></span>
 
-<span data-ttu-id="d807c-153">[AngularJS](https://angularjs.org) poskytuje webové rozhraní pro vytváření dynamického zobrazení v webových aplikací.</span><span class="sxs-lookup"><span data-stu-id="d807c-153">[AngularJS](https://angularjs.org) provides a web framework for creating dynamic views in your web applications.</span></span> <span data-ttu-id="d807c-154">V tomto kurzu používáme AngularJS připojit naše webové stránky s Express a provádět akce na databázi našich seznamu.</span><span class="sxs-lookup"><span data-stu-id="d807c-154">In this tutorial, we use AngularJS to connect our web page with Express and perform actions on our book database.</span></span>
+<span data-ttu-id="f80e3-153">[AngularJS](https://angularjs.org) poskytuje webové rozhraní pro vytváření dynamického zobrazení v webových aplikací.</span><span class="sxs-lookup"><span data-stu-id="f80e3-153">[AngularJS](https://angularjs.org) provides a web framework for creating dynamic views in your web applications.</span></span> <span data-ttu-id="f80e3-154">V tomto kurzu jsme použít AngularJS tooconnect naše webové stránky s Express a provádět akce na našem databázi seznamu.</span><span class="sxs-lookup"><span data-stu-id="f80e3-154">In this tutorial, we use AngularJS tooconnect our web page with Express and perform actions on our book database.</span></span>
 
-1. <span data-ttu-id="d807c-155">Změna adresáře zpět do *knihy* (`cd ../..`) a pak vytvořte složku s názvem *veřejné* a přidejte do souboru s názvem *script.js* s konfigurací řadiče definované.</span><span class="sxs-lookup"><span data-stu-id="d807c-155">Change the directory back up to *Books* (`cd ../..`), and then create a folder named *public* and add a file named *script.js* with the controller configuration defined.</span></span>
+1. <span data-ttu-id="f80e3-155">Změnit adresář, hello zálohování příliš*knihy* (`cd ../..`) a pak vytvořte složku s názvem *veřejné* a přidejte do souboru s názvem *script.js* s řadičem hello konfigurace definované.</span><span class="sxs-lookup"><span data-stu-id="f80e3-155">Change hello directory back up too*Books* (`cd ../..`), and then create a folder named *public* and add a file named *script.js* with hello controller configuration defined.</span></span>
 
     ```node.js
     var app = angular.module('myApp', []);
@@ -262,7 +262,7 @@ sudo apt-get install -y nodejs
     });
     ```
     
-2. <span data-ttu-id="d807c-156">V *veřejné* složky, vytvořte soubor s názvem *index.html* s webovou stránkou definované.</span><span class="sxs-lookup"><span data-stu-id="d807c-156">In the *public* folder, create a file named *index.html* with the web page defined.</span></span>
+2. <span data-ttu-id="f80e3-156">V hello *veřejné* složky, vytvořte soubor s názvem *index.html* s webovou stránku hello definované.</span><span class="sxs-lookup"><span data-stu-id="f80e3-156">In hello *public* folder, create a file named *index.html* with hello web page defined.</span></span>
 
     ```html
     <!doctype html>
@@ -315,41 +315,41 @@ sudo apt-get install -y nodejs
     </html>
     ```
 
-##  <a name="run-the-application"></a><span data-ttu-id="d807c-157">Spuštění aplikace</span><span class="sxs-lookup"><span data-stu-id="d807c-157">Run the application</span></span>
+##  <a name="run-hello-application"></a><span data-ttu-id="f80e3-157">Spuštění aplikace hello</span><span class="sxs-lookup"><span data-stu-id="f80e3-157">Run hello application</span></span>
 
-1. <span data-ttu-id="d807c-158">Změna adresáře zpět do *knihy* (`cd ..`) a spustí se server tak, že spustíte tento příkaz:</span><span class="sxs-lookup"><span data-stu-id="d807c-158">Change the directory back up to *Books* (`cd ..`) and start the server by running this command:</span></span>
+1. <span data-ttu-id="f80e3-158">Změnit adresář, hello zálohování příliš*knihy* (`cd ..`) a spusťte hello server spuštěním tohoto příkazu:</span><span class="sxs-lookup"><span data-stu-id="f80e3-158">Change hello directory back up too*Books* (`cd ..`) and start hello server by running this command:</span></span>
 
     ```bash
     nodejs server.js
     ```
 
-2. <span data-ttu-id="d807c-159">Otevřete webový prohlížeč na adrese, které jste si poznamenali pro virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="d807c-159">Open a web browser to the address that you recorded for the VM.</span></span> <span data-ttu-id="d807c-160">Například *http://13.72.77.9:3300*.</span><span class="sxs-lookup"><span data-stu-id="d807c-160">For example, *http://13.72.77.9:3300*.</span></span> <span data-ttu-id="d807c-161">Měli byste vidět něco podobného jako na následující stránce:</span><span class="sxs-lookup"><span data-stu-id="d807c-161">You should see something like the following page:</span></span>
+2. <span data-ttu-id="f80e3-159">Otevřete webovou adresu toohello prohlížeče, které jste si poznamenali pro hello virtuálních počítačů.</span><span class="sxs-lookup"><span data-stu-id="f80e3-159">Open a web browser toohello address that you recorded for hello VM.</span></span> <span data-ttu-id="f80e3-160">Například *http://13.72.77.9:3300*.</span><span class="sxs-lookup"><span data-stu-id="f80e3-160">For example, *http://13.72.77.9:3300*.</span></span> <span data-ttu-id="f80e3-161">Měli byste vidět něco podobného jako hello následující stránky:</span><span class="sxs-lookup"><span data-stu-id="f80e3-161">You should see something like hello following page:</span></span>
 
     ![Záznam adresáře](media/tutorial-mean/meanstack-init.png)
 
-3. <span data-ttu-id="d807c-163">Zadejte data do textových polí a klikněte na tlačítko **přidat**.</span><span class="sxs-lookup"><span data-stu-id="d807c-163">Enter data into the textboxes and click **Add**.</span></span> <span data-ttu-id="d807c-164">Například:</span><span class="sxs-lookup"><span data-stu-id="d807c-164">For example:</span></span>
+3. <span data-ttu-id="f80e3-163">Zadejte data do textových polí hello a klikněte na tlačítko **přidat**.</span><span class="sxs-lookup"><span data-stu-id="f80e3-163">Enter data into hello textboxes and click **Add**.</span></span> <span data-ttu-id="f80e3-164">Například:</span><span class="sxs-lookup"><span data-stu-id="f80e3-164">For example:</span></span>
 
     ![Přidejte záznam adresáře](media/tutorial-mean/meanstack-add.png)
 
-4. <span data-ttu-id="d807c-166">Po aktualizaci stránky, měli byste vidět něco podobného jako na této stránce:</span><span class="sxs-lookup"><span data-stu-id="d807c-166">After refreshing the page, you should see something like this page:</span></span>
+4. <span data-ttu-id="f80e3-166">Po obnovení hello stránky, byste měli vidět něco podobného jako na této stránce:</span><span class="sxs-lookup"><span data-stu-id="f80e3-166">After refreshing hello page, you should see something like this page:</span></span>
 
     ![Seznam záznamů adresáře](media/tutorial-mean/meanstack-list.png)
 
-5. <span data-ttu-id="d807c-168">Uživatel může klepnout **odstranit** a odebrat záznam adresáře z databáze.</span><span class="sxs-lookup"><span data-stu-id="d807c-168">You could click **Delete** and remove the book record from the database.</span></span>
+5. <span data-ttu-id="f80e3-168">Uživatel může klepnout **odstranit** a odebrat záznam adresáře hello z databáze hello.</span><span class="sxs-lookup"><span data-stu-id="f80e3-168">You could click **Delete** and remove hello book record from hello database.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="d807c-169">Další kroky</span><span class="sxs-lookup"><span data-stu-id="d807c-169">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="f80e3-169">Další kroky</span><span class="sxs-lookup"><span data-stu-id="f80e3-169">Next steps</span></span>
 
-<span data-ttu-id="d807c-170">V tomto kurzu jste vytvořili webovou aplikaci, která uchovává informace o seznamu záznamů pomocí střední hodnotu zásobníku na virtuální počítač s Linuxem.</span><span class="sxs-lookup"><span data-stu-id="d807c-170">In this tutorial, you created a web application that keeps track of book records using a MEAN stack on a Linux VM.</span></span> <span data-ttu-id="d807c-171">Jste se dozvěděli, jak na:</span><span class="sxs-lookup"><span data-stu-id="d807c-171">You learned how to:</span></span>
+<span data-ttu-id="f80e3-170">V tomto kurzu jste vytvořili webovou aplikaci, která uchovává informace o seznamu záznamů pomocí střední hodnotu zásobníku na virtuální počítač s Linuxem.</span><span class="sxs-lookup"><span data-stu-id="f80e3-170">In this tutorial, you created a web application that keeps track of book records using a MEAN stack on a Linux VM.</span></span> <span data-ttu-id="f80e3-171">Naučili jste se tyto postupy:</span><span class="sxs-lookup"><span data-stu-id="f80e3-171">You learned how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="d807c-172">Vytvoření virtuálního počítače s Linuxem</span><span class="sxs-lookup"><span data-stu-id="d807c-172">Create a Linux VM</span></span>
-> * <span data-ttu-id="d807c-173">Instalovat Node.js</span><span class="sxs-lookup"><span data-stu-id="d807c-173">Install Node.js</span></span>
-> * <span data-ttu-id="d807c-174">Nainstalujte MongoDB a nastavení serveru</span><span class="sxs-lookup"><span data-stu-id="d807c-174">Install MongoDB and set up the server</span></span>
-> * <span data-ttu-id="d807c-175">Expresní instalace a nastavení trasy k serveru</span><span class="sxs-lookup"><span data-stu-id="d807c-175">Install Express and set up routes to the server</span></span>
-> * <span data-ttu-id="d807c-176">Přístup k tras se AngularJS</span><span class="sxs-lookup"><span data-stu-id="d807c-176">Access the routes with AngularJS</span></span>
-> * <span data-ttu-id="d807c-177">Spuštění aplikace</span><span class="sxs-lookup"><span data-stu-id="d807c-177">Run the application</span></span>
+> * <span data-ttu-id="f80e3-172">Vytvoření virtuálního počítače s Linuxem</span><span class="sxs-lookup"><span data-stu-id="f80e3-172">Create a Linux VM</span></span>
+> * <span data-ttu-id="f80e3-173">Instalovat Node.js</span><span class="sxs-lookup"><span data-stu-id="f80e3-173">Install Node.js</span></span>
+> * <span data-ttu-id="f80e3-174">Nainstalujte MongoDB a nastavit hello server</span><span class="sxs-lookup"><span data-stu-id="f80e3-174">Install MongoDB and set up hello server</span></span>
+> * <span data-ttu-id="f80e3-175">Expresní instalace a nastavení serveru toohello trasy</span><span class="sxs-lookup"><span data-stu-id="f80e3-175">Install Express and set up routes toohello server</span></span>
+> * <span data-ttu-id="f80e3-176">Přístup hello tras se AngularJS</span><span class="sxs-lookup"><span data-stu-id="f80e3-176">Access hello routes with AngularJS</span></span>
+> * <span data-ttu-id="f80e3-177">Spuštění aplikace hello</span><span class="sxs-lookup"><span data-stu-id="f80e3-177">Run hello application</span></span>
 
-<span data-ttu-id="d807c-178">Přechodu na v dalším kurzu se dozvíte, jak zabezpečit webové servery s certifikáty protokolu SSL.</span><span class="sxs-lookup"><span data-stu-id="d807c-178">Advance to the next tutorial to learn how to secure web servers with SSL certificates.</span></span>
+<span data-ttu-id="f80e3-178">Jak zálohy další kurz toolearn toohello toosecure webových serverů s certifikáty protokolu SSL.</span><span class="sxs-lookup"><span data-stu-id="f80e3-178">Advance toohello next tutorial toolearn how toosecure web servers with SSL certificates.</span></span>
 
 > [!div class="nextstepaction"]
-> [<span data-ttu-id="d807c-179">Zabezpečení webového serveru pomocí protokolu SSL</span><span class="sxs-lookup"><span data-stu-id="d807c-179">Secure web server with SSL</span></span>](tutorial-secure-web-server.md)
+> [<span data-ttu-id="f80e3-179">Zabezpečení webového serveru pomocí protokolu SSL</span><span class="sxs-lookup"><span data-stu-id="f80e3-179">Secure web server with SSL</span></span>](tutorial-secure-web-server.md)

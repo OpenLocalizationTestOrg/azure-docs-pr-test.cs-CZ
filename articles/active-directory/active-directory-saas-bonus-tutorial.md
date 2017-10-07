@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Bonusly | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Bonusly."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Bonusly."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,256 +14,256 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 29a88b2efdb9f0f33f7933bc654a5a0fdf589c5a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 60ad06c028463af81a7901ab321c4ae9346798ea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bonusly"></a><span data-ttu-id="3b2ac-103">Kurz: Azure Active Directory integrace s Bonusly</span><span class="sxs-lookup"><span data-stu-id="3b2ac-103">Tutorial: Azure Active Directory integration with Bonusly</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-bonusly"></a><span data-ttu-id="52640-103">Kurz: Azure Active Directory integrace s Bonusly</span><span class="sxs-lookup"><span data-stu-id="52640-103">Tutorial: Azure Active Directory integration with Bonusly</span></span>
 
-<span data-ttu-id="3b2ac-104">V tomto kurzu zjistěte, jak integrovat Bonusly s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="3b2ac-104">In this tutorial, you learn how to integrate Bonusly with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="52640-104">V tomto kurzu zjistíte, jak toointegrate Bonusly s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="52640-104">In this tutorial, you learn how toointegrate Bonusly with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="3b2ac-105">Integrace Bonusly s Azure AD poskytuje následující výhody:</span><span class="sxs-lookup"><span data-stu-id="3b2ac-105">Integrating Bonusly with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="52640-105">Integrace Bonusly s Azure AD poskytuje hello následující výhody:</span><span class="sxs-lookup"><span data-stu-id="52640-105">Integrating Bonusly with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="3b2ac-106">Můžete řídit ve službě Azure AD, který má přístup k Bonusly</span><span class="sxs-lookup"><span data-stu-id="3b2ac-106">You can control in Azure AD who has access to Bonusly</span></span>
-- <span data-ttu-id="3b2ac-107">Můžete povolit uživatelům, aby automaticky získat přihlášení k Bonusly (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="3b2ac-107">You can enable your users to automatically get signed-on to Bonusly (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="3b2ac-108">Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure</span><span class="sxs-lookup"><span data-stu-id="3b2ac-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="52640-106">Můžete řídit ve službě Azure AD, který má přístup tooBonusly</span><span class="sxs-lookup"><span data-stu-id="52640-106">You can control in Azure AD who has access tooBonusly</span></span>
+- <span data-ttu-id="52640-107">Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooBonusly (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="52640-107">You can enable your users tooautomatically get signed-on tooBonusly (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="52640-108">Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure</span><span class="sxs-lookup"><span data-stu-id="52640-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="3b2ac-109">Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="3b2ac-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="52640-109">Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="52640-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="3b2ac-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="3b2ac-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="52640-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="52640-110">Prerequisites</span></span>
 
-<span data-ttu-id="3b2ac-111">Konfigurace integrace Azure AD s Bonusly, potřebujete následující položky:</span><span class="sxs-lookup"><span data-stu-id="3b2ac-111">To configure Azure AD integration with Bonusly, you need the following items:</span></span>
+<span data-ttu-id="52640-111">Integrace služby Azure AD s Bonusly tooconfigure, je třeba hello následující položky:</span><span class="sxs-lookup"><span data-stu-id="52640-111">tooconfigure Azure AD integration with Bonusly, you need hello following items:</span></span>
 
-- <span data-ttu-id="3b2ac-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="3b2ac-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="3b2ac-113">Bonusly jednotné přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="3b2ac-113">A Bonusly single sign-on enabled subscription</span></span>
+- <span data-ttu-id="52640-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="52640-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="52640-113">Bonusly jednotné přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="52640-113">A Bonusly single sign-on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="3b2ac-114">K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="52640-114">tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="52640-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="3b2ac-115">Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="3b2ac-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="52640-115">tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="52640-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="3b2ac-116">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="3b2ac-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="3b2ac-117">If you don't have an Azure AD trial environment, you can [get a one-month trial](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="52640-116">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="52640-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="52640-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="52640-117">If you don't have an Azure AD trial environment, you can [get a one-month trial](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="3b2ac-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="3b2ac-118">Scenario description</span></span>
-<span data-ttu-id="3b2ac-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="3b2ac-120">Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="3b2ac-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="52640-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="52640-118">Scenario description</span></span>
+<span data-ttu-id="52640-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="52640-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="52640-120">Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="52640-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="3b2ac-121">Přidání Bonusly z Galerie</span><span class="sxs-lookup"><span data-stu-id="3b2ac-121">Adding Bonusly from the gallery</span></span>
-2. <span data-ttu-id="3b2ac-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="3b2ac-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="52640-121">Přidání Bonusly z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="52640-121">Adding Bonusly from hello gallery</span></span>
+2. <span data-ttu-id="52640-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="52640-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-bonusly-from-the-gallery"></a><span data-ttu-id="3b2ac-123">Přidání Bonusly z Galerie</span><span class="sxs-lookup"><span data-stu-id="3b2ac-123">Adding Bonusly from the gallery</span></span>
-<span data-ttu-id="3b2ac-124">Při konfiguraci integrace Bonusly do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Bonusly z galerie.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-124">To configure the integration of Bonusly into Azure AD, you need to add Bonusly from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-bonusly-from-hello-gallery"></a><span data-ttu-id="52640-123">Přidání Bonusly z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="52640-123">Adding Bonusly from hello gallery</span></span>
+<span data-ttu-id="52640-124">tooconfigure hello integrace Bonusly do Azure AD, je nutné tooadd Bonusly hello Galerie tooyour seznamu spravovaných aplikací SaaS.</span><span class="sxs-lookup"><span data-stu-id="52640-124">tooconfigure hello integration of Bonusly into Azure AD, you need tooadd Bonusly from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="3b2ac-125">**Pokud chcete přidat Bonusly z galerie, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="3b2ac-125">**To add Bonusly from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="52640-125">**tooadd Bonusly z Galerie hello, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="52640-125">**tooadd Bonusly from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="3b2ac-126">V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="52640-126">V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="52640-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
-    ![Tlačítko Azure Active Directory][1]
+    ![tlačítko Azure Active Directory Hello][1]
 
-2. <span data-ttu-id="3b2ac-128">Přejděte na **podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="3b2ac-129">Pak přejděte na **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="52640-128">Přejděte příliš**podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="52640-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="52640-129">Potom přejděte příliš**všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="52640-129">Then go too**All applications**.</span></span>
 
-    ![V okně podnikové aplikace][2]
+    ![okno aplikace Hello Enterprise][2]
     
-3. <span data-ttu-id="3b2ac-131">Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="52640-131">tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.</span><span class="sxs-lookup"><span data-stu-id="52640-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
-    ![Tlačítko nové aplikace][3]
+    ![tlačítko nové aplikace Hello][3]
 
-4. <span data-ttu-id="3b2ac-133">Do vyhledávacího pole zadejte **Bonusly**, vyberte **Bonusly** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-133">In the search box, type **Bonusly**, select **Bonusly** from result panel then click **Add** button to add the application.</span></span>
+4. <span data-ttu-id="52640-133">Hello vyhledávacího pole zadejte **Bonusly**, vyberte **Bonusly** z panelu výsledků klikněte **přidat** tlačítko tooadd hello aplikace.</span><span class="sxs-lookup"><span data-stu-id="52640-133">In hello search box, type **Bonusly**, select **Bonusly** from result panel then click **Add** button tooadd hello application.</span></span>
 
-    ![Bonusly v seznamu výsledků](./media/active-directory-saas-bonus-tutorial/tutorial_bonusly_addfromgallery.png)
+    ![V seznamu výsledků hello bonusly](./media/active-directory-saas-bonus-tutorial/tutorial_bonusly_addfromgallery.png)
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a><span data-ttu-id="3b2ac-135">Konfigurace a otestování Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="3b2ac-135">Configure and test Azure AD single sign-on</span></span>
-<span data-ttu-id="3b2ac-136">V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Bonusly podle testovacího uživatele názvem "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="3b2ac-136">In this section, you configure and test Azure AD single sign-on with Bonusly based on a test user called "Britta Simon".</span></span>
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a><span data-ttu-id="52640-135">Konfigurace a otestování Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="52640-135">Configure and test Azure AD single sign-on</span></span>
+<span data-ttu-id="52640-136">V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Bonusly podle testovacího uživatele názvem "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="52640-136">In this section, you configure and test Azure AD single sign-on with Bonusly based on a test user called "Britta Simon".</span></span>
 
-<span data-ttu-id="3b2ac-137">Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Bonusly je pro uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-137">For single sign-on to work, Azure AD needs to know what the counterpart user in Bonusly is to a user in Azure AD.</span></span> <span data-ttu-id="3b2ac-138">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Bonusly musí navázat.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-138">In other words, a link relationship between an Azure AD user and the related user in Bonusly needs to be established.</span></span>
+<span data-ttu-id="52640-137">Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v Bonusly je tooa uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="52640-137">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in Bonusly is tooa user in Azure AD.</span></span> <span data-ttu-id="52640-138">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v Bonusly musí toobe navázat.</span><span class="sxs-lookup"><span data-stu-id="52640-138">In other words, a link relationship between an Azure AD user and hello related user in Bonusly needs toobe established.</span></span>
 
-<span data-ttu-id="3b2ac-139">V Bonusly, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-139">In Bonusly, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.</span></span>
+<span data-ttu-id="52640-139">V Bonusly, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.</span><span class="sxs-lookup"><span data-stu-id="52640-139">In Bonusly, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
 
-<span data-ttu-id="3b2ac-140">Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Bonusly, je třeba dokončit následující stavební bloky:</span><span class="sxs-lookup"><span data-stu-id="3b2ac-140">To configure and test Azure AD single sign-on with Bonusly, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="52640-140">tooconfigure a testu Azure AD jednotné přihlašování s Bonusly, potřebujete následující stavební bloky hello toocomplete:</span><span class="sxs-lookup"><span data-stu-id="52640-140">tooconfigure and test Azure AD single sign-on with Bonusly, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="3b2ac-141">**[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-141">**[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="3b2ac-142">**[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-142">**[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="3b2ac-143">**[Vytvoření Bonusly zkušebního uživatele](#create-a-bonusly-test-user)**  – Pokud chcete mít protějšek Britta Simon v Bonusly propojeném s Azure AD reprezentace daného uživatele.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-143">**[Create a Bonusly test user](#create-a-bonusly-test-user)** - to have a counterpart of Britta Simon in Bonusly that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="3b2ac-144">**[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-144">**[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="3b2ac-145">**[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-145">**[Test Single Sign-On](#test-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="52640-141">**[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.</span><span class="sxs-lookup"><span data-stu-id="52640-141">**[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="52640-142">**[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="52640-142">**[Create an Azure AD test user](#create-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="52640-143">**[Vytvoření Bonusly zkušebního uživatele](#create-a-bonusly-test-user)**  -toohave protějšek Britta Simon v Bonusly, která je propojená toohello Azure AD reprezentace uživatele.</span><span class="sxs-lookup"><span data-stu-id="52640-143">**[Create a Bonusly test user](#create-a-bonusly-test-user)** - toohave a counterpart of Britta Simon in Bonusly that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="52640-144">**[Přiřadit hello Azure AD testovacího uživatele](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="52640-144">**[Assign hello Azure AD test user](#assign-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="52640-145">**[Test jednotného přihlašování](#test-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.</span><span class="sxs-lookup"><span data-stu-id="52640-145">**[Test Single Sign-On](#test-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configure-azure-ad-single-sign-on"></a><span data-ttu-id="3b2ac-146">Konfigurovat Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="3b2ac-146">Configure Azure AD single sign-on</span></span>
+### <a name="configure-azure-ad-single-sign-on"></a><span data-ttu-id="52640-146">Konfigurovat Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="52640-146">Configure Azure AD single sign-on</span></span>
 
-<span data-ttu-id="3b2ac-147">V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Bonusly.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-147">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Bonusly application.</span></span>
+<span data-ttu-id="52640-147">V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci Bonusly.</span><span class="sxs-lookup"><span data-stu-id="52640-147">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your Bonusly application.</span></span>
 
-<span data-ttu-id="3b2ac-148">**Ke konfiguraci Azure AD jednotné přihlašování s Bonusly, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="3b2ac-148">**To configure Azure AD single sign-on with Bonusly, perform the following steps:**</span></span>
+<span data-ttu-id="52640-148">**tooconfigure Azure AD jednotné přihlašování s Bonusly, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="52640-148">**tooconfigure Azure AD single sign-on with Bonusly, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="3b2ac-149">Na portálu Azure na **Bonusly** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-149">In the Azure portal, on the **Bonusly** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="52640-149">V portálu Azure, na hello hello **Bonusly** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="52640-149">In hello Azure portal, on hello **Bonusly** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. <span data-ttu-id="3b2ac-151">Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-151">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="52640-151">Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="52640-151">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-bonus-tutorial/tutorial_bonusly_samlbase.png)
 
-3. <span data-ttu-id="3b2ac-153">Na **Bonusly domény a adresy URL** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="3b2ac-153">On the **Bonusly Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="52640-153">Na hello **Bonusly domény a adresy URL** část, proveďte následující kroky hello:</span><span class="sxs-lookup"><span data-stu-id="52640-153">On hello **Bonusly Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Bonusly domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-bonus-tutorial/tutorial_bonusly_url.png)
 
-    <span data-ttu-id="3b2ac-155">V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://Bonus.ly/saml/<tenant-name>`</span><span class="sxs-lookup"><span data-stu-id="3b2ac-155">In the **Reply URL** textbox, type a URL using the following pattern: `https://Bonus.ly/saml/<tenant-name>`</span></span>
+    <span data-ttu-id="52640-155">V hello **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://Bonus.ly/saml/<tenant-name>`</span><span class="sxs-lookup"><span data-stu-id="52640-155">In hello **Reply URL** textbox, type a URL using hello following pattern: `https://Bonus.ly/saml/<tenant-name>`</span></span>
 
     > [!NOTE] 
-    > <span data-ttu-id="3b2ac-156">Hodnota není skutečné.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-156">The value is not real.</span></span> <span data-ttu-id="3b2ac-157">Aktualizujte hodnotu s skutečná adresa URL odpovědi.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-157">Update the value with the actual Reply URL.</span></span> <span data-ttu-id="3b2ac-158">Obraťte se na [tým podpory Bonusly](https://Bonusly/contact) k získání hodnoty.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-158">Contact [Bonusly support team](https://Bonusly/contact) to get the value.</span></span>
+    > <span data-ttu-id="52640-156">Hodnota Hello není skutečné.</span><span class="sxs-lookup"><span data-stu-id="52640-156">hello value is not real.</span></span> <span data-ttu-id="52640-157">Aktualizace hello hodnotu s hello skutečná adresa URL odpovědi.</span><span class="sxs-lookup"><span data-stu-id="52640-157">Update hello value with hello actual Reply URL.</span></span> <span data-ttu-id="52640-158">Obraťte se na [tým podpory Bonusly](https://Bonusly/contact) tooget hello hodnotu.</span><span class="sxs-lookup"><span data-stu-id="52640-158">Contact [Bonusly support team](https://Bonusly/contact) tooget hello value.</span></span>
  
-4. <span data-ttu-id="3b2ac-159">Na **SAML podpisový certifikát** část, zkopírujte **kryptografický OTISK** hodnotu z certifikátu.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-159">On the **SAML Signing Certificate** section, copy the **THUMBPRINT** value from the certificate.</span></span>
+4. <span data-ttu-id="52640-159">Na hello **SAML podpisový certifikát** část, kopie hello **kryptografický OTISK** hodnotu z hello certifikátu.</span><span class="sxs-lookup"><span data-stu-id="52640-159">On hello **SAML Signing Certificate** section, copy hello **THUMBPRINT** value from hello certificate.</span></span>
 
-    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-bonus-tutorial/tutorial_bonusly_certificate.png) 
+    ![odkaz ke stažení certifikátu Hello](./media/active-directory-saas-bonus-tutorial/tutorial_bonusly_certificate.png) 
 
-5. <span data-ttu-id="3b2ac-161">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-161">Click **Save** button.</span></span>
+5. <span data-ttu-id="52640-161">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="52640-161">Click **Save** button.</span></span>
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-bonus-tutorial/tutorial_general_400.png)
 
-6. <span data-ttu-id="3b2ac-163">Na **Bonusly konfigurace** klikněte na tlačítko **konfigurace Bonusly** otevřete **konfigurovat přihlášení** okno.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-163">On the **Bonusly Configuration** section, click **Configure Bonusly** to open **Configure sign-on** window.</span></span> <span data-ttu-id="3b2ac-164">Kopírování **SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**</span><span class="sxs-lookup"><span data-stu-id="3b2ac-164">Copy the **SAML Entity ID, and SAML Single Sign-On Service URL** from the **Quick Reference section.**</span></span>
+6. <span data-ttu-id="52640-163">Na hello **Bonusly konfigurace** klikněte na tlačítko **konfigurace Bonusly** tooopen **konfigurovat přihlášení** okno.</span><span class="sxs-lookup"><span data-stu-id="52640-163">On hello **Bonusly Configuration** section, click **Configure Bonusly** tooopen **Configure sign-on** window.</span></span> <span data-ttu-id="52640-164">Kopírování hello **SAML Entity ID a SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**</span><span class="sxs-lookup"><span data-stu-id="52640-164">Copy hello **SAML Entity ID, and SAML Single Sign-On Service URL** from hello **Quick Reference section.**</span></span>
 
     ![Bonusly konfigurace](./media/active-directory-saas-bonus-tutorial/tutorial_bonusly_configure.png) 
 
-7. <span data-ttu-id="3b2ac-166">V okně jiný prohlížeč, přihlaste se k vaší **Bonusly** klienta.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-166">In a different browser window, log in to your **Bonusly** tenant.</span></span>
+7. <span data-ttu-id="52640-166">V okně jiný prohlížeč, přihlaste tooyour **Bonusly** klienta.</span><span class="sxs-lookup"><span data-stu-id="52640-166">In a different browser window, log in tooyour **Bonusly** tenant.</span></span>
 
-8. <span data-ttu-id="3b2ac-167">Na panelu nástrojů v horní části klikněte na tlačítko **nastavení**a potom vyberte **aplikace a integrace v rámci**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-167">In the toolbar on the top, click **Settings**, and then select **Integrations and apps**.</span></span>
+8. <span data-ttu-id="52640-167">V panelu nástrojů hello hello nahoře, klikněte na **nastavení**a potom vyberte **aplikace a integrace v rámci**.</span><span class="sxs-lookup"><span data-stu-id="52640-167">In hello toolbar on hello top, click **Settings**, and then select **Integrations and apps**.</span></span>
    
-    <span data-ttu-id="3b2ac-168">![Bonusly sociálních části](./media/active-directory-saas-bonus-tutorial/ic773686.png "Bonusly")</span><span class="sxs-lookup"><span data-stu-id="3b2ac-168">![Bonusly Social Section](./media/active-directory-saas-bonus-tutorial/ic773686.png "Bonusly")</span></span>
-9. <span data-ttu-id="3b2ac-169">V části **jednotné přihlašování**, vyberte **SAML**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-169">Under **Single Sign-On**, select **SAML**.</span></span>
+    <span data-ttu-id="52640-168">![Bonusly sociálních části](./media/active-directory-saas-bonus-tutorial/ic773686.png "Bonusly")</span><span class="sxs-lookup"><span data-stu-id="52640-168">![Bonusly Social Section](./media/active-directory-saas-bonus-tutorial/ic773686.png "Bonusly")</span></span>
+9. <span data-ttu-id="52640-169">V části **jednotné přihlašování**, vyberte **SAML**.</span><span class="sxs-lookup"><span data-stu-id="52640-169">Under **Single Sign-On**, select **SAML**.</span></span>
 
-10. <span data-ttu-id="3b2ac-170">Na **SAML** dialogové okno stránky, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="3b2ac-170">On the **SAML** dialog page, perform the following steps:</span></span>
+10. <span data-ttu-id="52640-170">Na hello **SAML** dialogové okno proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="52640-170">On hello **SAML** dialog page, perform hello following steps:</span></span>
    
-    <span data-ttu-id="3b2ac-171">![Bonusly Saml dialogové okno stránky](./media/active-directory-saas-bonus-tutorial/ic773687.png "Bonusly")</span><span class="sxs-lookup"><span data-stu-id="3b2ac-171">![Bonusly Saml Dialog page](./media/active-directory-saas-bonus-tutorial/ic773687.png "Bonusly")</span></span>
+    <span data-ttu-id="52640-171">![Bonusly Saml dialogové okno stránky](./media/active-directory-saas-bonus-tutorial/ic773687.png "Bonusly")</span><span class="sxs-lookup"><span data-stu-id="52640-171">![Bonusly Saml Dialog page](./media/active-directory-saas-bonus-tutorial/ic773687.png "Bonusly")</span></span>
    
-    <span data-ttu-id="3b2ac-172">a.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-172">a.</span></span> <span data-ttu-id="3b2ac-173">V **IdP SSO cílová adresa URL** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-173">In the **IdP SSO target URL** textbox, paste the value of **SAML Single Sign-On Service URL**, which you have copied from Azure portal.</span></span>
+    <span data-ttu-id="52640-172">a.</span><span class="sxs-lookup"><span data-stu-id="52640-172">a.</span></span> <span data-ttu-id="52640-173">V hello **IdP SSO cílová adresa URL** textovému poli, vložte hodnotu hello **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="52640-173">In hello **IdP SSO target URL** textbox, paste hello value of **SAML Single Sign-On Service URL**, which you have copied from Azure portal.</span></span>
    
-    <span data-ttu-id="3b2ac-174">b.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-174">b.</span></span> <span data-ttu-id="3b2ac-175">V **IdP vystavitele** textovému poli, vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-175">In the **IdP Issuer** textbox, paste the value of **SAML Entity ID**, which you have copied from Azure portal.</span></span> 
+    <span data-ttu-id="52640-174">b.</span><span class="sxs-lookup"><span data-stu-id="52640-174">b.</span></span> <span data-ttu-id="52640-175">V hello **IdP vystavitele** textovému poli, vložte hodnotu hello **SAML Entity ID**, který jste zkopírovali z portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="52640-175">In hello **IdP Issuer** textbox, paste hello value of **SAML Entity ID**, which you have copied from Azure portal.</span></span> 
 
-    <span data-ttu-id="3b2ac-176">c.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-176">c.</span></span> <span data-ttu-id="3b2ac-177">V **IdP přihlašovací adresa URL** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-177">In the **IdP Login URL** textbox, paste the value of **SAML Single Sign-On Service URL**, which you have copied from Azure portal.</span></span>
+    <span data-ttu-id="52640-176">c.</span><span class="sxs-lookup"><span data-stu-id="52640-176">c.</span></span> <span data-ttu-id="52640-177">V hello **IdP přihlašovací adresa URL** textovému poli, vložte hodnotu hello **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="52640-177">In hello **IdP Login URL** textbox, paste hello value of **SAML Single Sign-On Service URL**, which you have copied from Azure portal.</span></span>
 
-    <span data-ttu-id="3b2ac-178">d.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-178">d.</span></span> <span data-ttu-id="3b2ac-179">Vložení **kryptografický otisk** hodnota zkopírována z portálu Azure do **otisk prstu Cert** textové pole.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-179">Paste the **Thumbprint** value copied from Azure portal into the **Cert Fingerprint** textbox.</span></span>
+    <span data-ttu-id="52640-178">d.</span><span class="sxs-lookup"><span data-stu-id="52640-178">d.</span></span> <span data-ttu-id="52640-179">Vložení **kryptografický otisk** hodnota zkopírována z portálu Azure do hello **otisk prstu Cert** textové pole.</span><span class="sxs-lookup"><span data-stu-id="52640-179">Paste the **Thumbprint** value copied from Azure portal into hello **Cert Fingerprint** textbox.</span></span>
    
-11. <span data-ttu-id="3b2ac-180">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-180">Click **Save**.</span></span>
+11. <span data-ttu-id="52640-180">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="52640-180">Click **Save**.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="3b2ac-181">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!</span><span class="sxs-lookup"><span data-stu-id="3b2ac-181">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="3b2ac-182">Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-182">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="3b2ac-183">Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="3b2ac-183">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="52640-181">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!</span><span class="sxs-lookup"><span data-stu-id="52640-181">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="52640-182">Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello.</span><span class="sxs-lookup"><span data-stu-id="52640-182">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="52640-183">Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="52640-183">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 > 
 
-### <a name="create-an-azure-ad-test-user"></a><span data-ttu-id="3b2ac-184">Vytvořit testovací uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="3b2ac-184">Create an Azure AD test user</span></span>
-<span data-ttu-id="3b2ac-185">Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-185">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="create-an-azure-ad-test-user"></a><span data-ttu-id="52640-184">Vytvořit testovací uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="52640-184">Create an Azure AD test user</span></span>
+<span data-ttu-id="52640-185">Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.</span><span class="sxs-lookup"><span data-stu-id="52640-185">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Vytvořit testovací uživatele Azure AD][100]
 
-<span data-ttu-id="3b2ac-187">**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="3b2ac-187">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="52640-187">**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="52640-187">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="3b2ac-188">V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-188">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="52640-188">V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="52640-188">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
-    ![Tlačítko Azure Active Directory](./media/active-directory-saas-bonus-tutorial/create_aaduser_01.png) 
+    ![tlačítko Azure Active Directory Hello](./media/active-directory-saas-bonus-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="3b2ac-190">Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-190">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="52640-190">toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="52640-190">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-bonus-tutorial/create_aaduser_02.png) 
+    ![Hello "Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-bonus-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="3b2ac-192">Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-192">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="52640-192">tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.</span><span class="sxs-lookup"><span data-stu-id="52640-192">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
-    ![Tlačítko Přidat](./media/active-directory-saas-bonus-tutorial/create_aaduser_03.png) 
+    ![tlačítko Přidat Hello](./media/active-directory-saas-bonus-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="3b2ac-194">Na **uživatele** dialogové okno stránky, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="3b2ac-194">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="52640-194">Na hello **uživatele** dialogové okno proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="52640-194">On hello **User** dialog page, perform hello following steps:</span></span>
  
-    ![Dialogové okno uživatele](./media/active-directory-saas-bonus-tutorial/create_aaduser_04.png) 
+    ![Dialogové okno uživatelského Hello](./media/active-directory-saas-bonus-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="3b2ac-196">a.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-196">a.</span></span> <span data-ttu-id="3b2ac-197">V **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-197">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="52640-196">a.</span><span class="sxs-lookup"><span data-stu-id="52640-196">a.</span></span> <span data-ttu-id="52640-197">V hello **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="52640-197">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="3b2ac-198">b.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-198">b.</span></span> <span data-ttu-id="3b2ac-199">V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-199">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="52640-198">b.</span><span class="sxs-lookup"><span data-stu-id="52640-198">b.</span></span> <span data-ttu-id="52640-199">V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="52640-199">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="3b2ac-200">c.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-200">c.</span></span> <span data-ttu-id="3b2ac-201">Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-201">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="52640-200">c.</span><span class="sxs-lookup"><span data-stu-id="52640-200">c.</span></span> <span data-ttu-id="52640-201">Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.</span><span class="sxs-lookup"><span data-stu-id="52640-201">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="3b2ac-202">d.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-202">d.</span></span> <span data-ttu-id="3b2ac-203">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-203">Click **Create**.</span></span>
+    <span data-ttu-id="52640-202">d.</span><span class="sxs-lookup"><span data-stu-id="52640-202">d.</span></span> <span data-ttu-id="52640-203">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="52640-203">Click **Create**.</span></span>
  
-### <a name="create-a-bonusly-test-user"></a><span data-ttu-id="3b2ac-204">Vytvoření Bonusly zkušebního uživatele</span><span class="sxs-lookup"><span data-stu-id="3b2ac-204">Create a Bonusly test user</span></span>
+### <a name="create-a-bonusly-test-user"></a><span data-ttu-id="52640-204">Vytvoření Bonusly zkušebního uživatele</span><span class="sxs-lookup"><span data-stu-id="52640-204">Create a Bonusly test user</span></span>
 
-<span data-ttu-id="3b2ac-205">Pokud chcete povolit uživatelům Azure AD přihlášení k Bonusly, musí být zřízená do Bonusly.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-205">In order to enable Azure AD users to log in to Bonusly, they must be provisioned into Bonusly.</span></span> <span data-ttu-id="3b2ac-206">V případě Bonusly zřizování je ruční úloha.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-206">In the case of Bonusly, provisioning is a manual task.</span></span>
+<span data-ttu-id="52640-205">V pořadí tooenable Azure AD Uživatelé toolog v tooBonusly musí být zřízená do Bonusly.</span><span class="sxs-lookup"><span data-stu-id="52640-205">In order tooenable Azure AD users toolog in tooBonusly, they must be provisioned into Bonusly.</span></span> <span data-ttu-id="52640-206">V případě hello Bonusly zřizování je ruční úloha.</span><span class="sxs-lookup"><span data-stu-id="52640-206">In hello case of Bonusly, provisioning is a manual task.</span></span>
 
 >[!NOTE]
-><span data-ttu-id="3b2ac-207">Můžete použít jakékoli jiné nástroje vytvoření Bonusly uživatelského účtu nebo rozhraní API poskytované Bonusly zřídit AAD uživatelské účty.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-207">You can use any other Bonusly user account creation tools or APIs provided by Bonusly to provision AAD user accounts.</span></span>
+><span data-ttu-id="52640-207">Můžete použít jakékoli jiné nástroje vytvoření Bonusly uživatelského účtu nebo rozhraní API poskytované Bonusly tooprovision AAD uživatelské účty.</span><span class="sxs-lookup"><span data-stu-id="52640-207">You can use any other Bonusly user account creation tools or APIs provided by Bonusly tooprovision AAD user accounts.</span></span>
 >  
 
-<span data-ttu-id="3b2ac-208">**Pokud chcete konfigurovat, zřizování uživatelů, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="3b2ac-208">**To configure user provisioning, perform the following steps:**</span></span>
+<span data-ttu-id="52640-208">**tooconfigure zřizování uživatelů, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="52640-208">**tooconfigure user provisioning, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="3b2ac-209">V okně webového prohlížeče Přihlaste se ke klientovi Bonusly.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-209">In a web browser window, log in to your Bonusly tenant.</span></span>
+1. <span data-ttu-id="52640-209">V okně webového prohlížeče Přihlaste se tooyour Bonusly klienta.</span><span class="sxs-lookup"><span data-stu-id="52640-209">In a web browser window, log in tooyour Bonusly tenant.</span></span>
 
-2. <span data-ttu-id="3b2ac-210">Klikněte na tlačítko **nastavení**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-210">Click **Settings**.</span></span>
+2. <span data-ttu-id="52640-210">Klikněte na tlačítko **nastavení**.</span><span class="sxs-lookup"><span data-stu-id="52640-210">Click **Settings**.</span></span>
  
-    <span data-ttu-id="3b2ac-211">![Nastavení](./media/active-directory-saas-bonus-tutorial/ic781041.png "nastavení")</span><span class="sxs-lookup"><span data-stu-id="3b2ac-211">![Settings](./media/active-directory-saas-bonus-tutorial/ic781041.png "Settings")</span></span>
+    <span data-ttu-id="52640-211">![Nastavení](./media/active-directory-saas-bonus-tutorial/ic781041.png "nastavení")</span><span class="sxs-lookup"><span data-stu-id="52640-211">![Settings](./media/active-directory-saas-bonus-tutorial/ic781041.png "Settings")</span></span>
 
-3. <span data-ttu-id="3b2ac-212">Klikněte **uživatelů a bonusy** kartě.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-212">Click the **Users and bonuses** tab.</span></span>
+3. <span data-ttu-id="52640-212">Klikněte na tlačítko hello **uživatelů a bonusy** kartě.</span><span class="sxs-lookup"><span data-stu-id="52640-212">Click hello **Users and bonuses** tab.</span></span>
    
-    <span data-ttu-id="3b2ac-213">![Uživatelé a bonusy](./media/active-directory-saas-bonus-tutorial/ic781042.png "uživatelů a bonusy")</span><span class="sxs-lookup"><span data-stu-id="3b2ac-213">![Users and bonuses](./media/active-directory-saas-bonus-tutorial/ic781042.png "Users and bonuses")</span></span>
+    <span data-ttu-id="52640-213">![Uživatelé a bonusy](./media/active-directory-saas-bonus-tutorial/ic781042.png "uživatelů a bonusy")</span><span class="sxs-lookup"><span data-stu-id="52640-213">![Users and bonuses](./media/active-directory-saas-bonus-tutorial/ic781042.png "Users and bonuses")</span></span>
 
-4. <span data-ttu-id="3b2ac-214">Klikněte na tlačítko **Správa uživatelů**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-214">Click **Manage Users**.</span></span>
+4. <span data-ttu-id="52640-214">Klikněte na tlačítko **Správa uživatelů**.</span><span class="sxs-lookup"><span data-stu-id="52640-214">Click **Manage Users**.</span></span>
    
-    <span data-ttu-id="3b2ac-215">![Správa uživatelů](./media/active-directory-saas-bonus-tutorial/ic781043.png "Správa uživatelů")</span><span class="sxs-lookup"><span data-stu-id="3b2ac-215">![Manage Users](./media/active-directory-saas-bonus-tutorial/ic781043.png "Manage Users")</span></span>
+    <span data-ttu-id="52640-215">![Správa uživatelů](./media/active-directory-saas-bonus-tutorial/ic781043.png "Správa uživatelů")</span><span class="sxs-lookup"><span data-stu-id="52640-215">![Manage Users](./media/active-directory-saas-bonus-tutorial/ic781043.png "Manage Users")</span></span>
 
-5. <span data-ttu-id="3b2ac-216">Klikněte na tlačítko **přidat uživatele**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-216">Click **Add User**.</span></span>
+5. <span data-ttu-id="52640-216">Klikněte na tlačítko **přidat uživatele**.</span><span class="sxs-lookup"><span data-stu-id="52640-216">Click **Add User**.</span></span>
    
-    <span data-ttu-id="3b2ac-217">![Přidat uživatele](./media/active-directory-saas-bonus-tutorial/ic781044.png "přidat uživatele")</span><span class="sxs-lookup"><span data-stu-id="3b2ac-217">![Add User](./media/active-directory-saas-bonus-tutorial/ic781044.png "Add User")</span></span>
+    <span data-ttu-id="52640-217">![Přidat uživatele](./media/active-directory-saas-bonus-tutorial/ic781044.png "přidat uživatele")</span><span class="sxs-lookup"><span data-stu-id="52640-217">![Add User](./media/active-directory-saas-bonus-tutorial/ic781044.png "Add User")</span></span>
 
-6. <span data-ttu-id="3b2ac-218">Na **přidat uživatele** dialogové okno, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="3b2ac-218">On the **Add User** dialog, perform the following steps:</span></span>
+6. <span data-ttu-id="52640-218">Na hello **přidat uživatele** dialogové okno, proveďte následující kroky hello:</span><span class="sxs-lookup"><span data-stu-id="52640-218">On hello **Add User** dialog, perform hello following steps:</span></span>
    
-    <span data-ttu-id="3b2ac-219">![Přidat uživatele](./media/active-directory-saas-bonus-tutorial/ic781045.png "přidat uživatele")</span><span class="sxs-lookup"><span data-stu-id="3b2ac-219">![Add User](./media/active-directory-saas-bonus-tutorial/ic781045.png "Add User")</span></span>  
+    <span data-ttu-id="52640-219">![Přidat uživatele](./media/active-directory-saas-bonus-tutorial/ic781045.png "přidat uživatele")</span><span class="sxs-lookup"><span data-stu-id="52640-219">![Add User](./media/active-directory-saas-bonus-tutorial/ic781045.png "Add User")</span></span>  
 
-    <span data-ttu-id="3b2ac-220">a.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-220">a.</span></span> <span data-ttu-id="3b2ac-221">V **křestní jméno** textovému poli, zadejte jméno uživatele jako **Britta**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-221">In the **First name** textbox, enter the first name of user like **Britta**.</span></span>
+    <span data-ttu-id="52640-220">a.</span><span class="sxs-lookup"><span data-stu-id="52640-220">a.</span></span> <span data-ttu-id="52640-221">V hello **křestní jméno** textovému poli, zadejte hello křestní jméno uživatele jako **Britta**.</span><span class="sxs-lookup"><span data-stu-id="52640-221">In hello **First name** textbox, enter hello first name of user like **Britta**.</span></span>
 
-    <span data-ttu-id="3b2ac-222">b.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-222">b.</span></span> <span data-ttu-id="3b2ac-223">V **příjmení** textovému poli, zadejte příjmení uživatele jako **Simon**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-223">In the **Last name** textbox, enter the last name of user like **Simon**.</span></span>
+    <span data-ttu-id="52640-222">b.</span><span class="sxs-lookup"><span data-stu-id="52640-222">b.</span></span> <span data-ttu-id="52640-223">V hello **příjmení** textovému poli, zadejte příjmení uživatele jako hello **Simon**.</span><span class="sxs-lookup"><span data-stu-id="52640-223">In hello **Last name** textbox, enter hello last name of user like **Simon**.</span></span>
  
-    <span data-ttu-id="3b2ac-224">c.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-224">c.</span></span> <span data-ttu-id="3b2ac-225">V **e-mailu** textovému poli, zadejte e-mailu uživatele jako  **brittasimon@contoso.com** .</span><span class="sxs-lookup"><span data-stu-id="3b2ac-225">In the **Email** textbox, enter the email of user like **brittasimon@contoso.com**.</span></span>
+    <span data-ttu-id="52640-224">c.</span><span class="sxs-lookup"><span data-stu-id="52640-224">c.</span></span> <span data-ttu-id="52640-225">V hello **e-mailu** textovému poli, zadejte e-mailu hello uživatele jako  **brittasimon@contoso.com** .</span><span class="sxs-lookup"><span data-stu-id="52640-225">In hello **Email** textbox, enter hello email of user like **brittasimon@contoso.com**.</span></span>
 
-    <span data-ttu-id="3b2ac-226">d.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-226">d.</span></span> <span data-ttu-id="3b2ac-227">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-227">Click **Save**.</span></span>
+    <span data-ttu-id="52640-226">d.</span><span class="sxs-lookup"><span data-stu-id="52640-226">d.</span></span> <span data-ttu-id="52640-227">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="52640-227">Click **Save**.</span></span>
    
      >[!NOTE]
-     ><span data-ttu-id="3b2ac-228">Držitel účtu Azure AD obdrží e-mail, který obsahuje odkaz pro potvrzení účtu před stane aktivní.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-228">The Azure AD account holder receives an email that includes a link to confirm the account before it becomes active.</span></span>
+     ><span data-ttu-id="52640-228">Držitel účtu Azure AD Hello obdrží e-mail, který obsahuje účet odkaz tooconfirm hello předtím, než se stane aktivní.</span><span class="sxs-lookup"><span data-stu-id="52640-228">hello Azure AD account holder receives an email that includes a link tooconfirm hello account before it becomes active.</span></span>
      >  
 
-### <a name="assign-the-azure-ad-test-user"></a><span data-ttu-id="3b2ac-229">Přiřadit testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="3b2ac-229">Assign the Azure AD test user</span></span>
+### <a name="assign-hello-azure-ad-test-user"></a><span data-ttu-id="52640-229">Přiřadit hello Azure AD testovacího uživatele</span><span class="sxs-lookup"><span data-stu-id="52640-229">Assign hello Azure AD test user</span></span>
 
-<span data-ttu-id="3b2ac-230">V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Bonusly.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-230">In this section, you enable Britta Simon to use Azure single sign-on by granting access to Bonusly.</span></span>
+<span data-ttu-id="52640-230">V této části povolíte tak, že udělíte přístup tooBonusly toouse Britta Simon Azure jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="52640-230">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooBonusly.</span></span>
 
-![Přiřadit role uživatele][200] 
+![Přiřadit role uživatele hello][200] 
 
-<span data-ttu-id="3b2ac-232">**Pokud chcete přiřadit Britta Simon Bonusly, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="3b2ac-232">**To assign Britta Simon to Bonusly, perform the following steps:**</span></span>
+<span data-ttu-id="52640-232">**tooassign Britta Simon tooBonusly, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="52640-232">**tooassign Britta Simon tooBonusly, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="3b2ac-233">Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-233">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="52640-233">V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="52640-233">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Přiřadit uživatele][201] 
 
-2. <span data-ttu-id="3b2ac-235">V seznamu aplikací vyberte **Bonusly**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-235">In the applications list, select **Bonusly**.</span></span>
+2. <span data-ttu-id="52640-235">V seznamu aplikace hello vyberte **Bonusly**.</span><span class="sxs-lookup"><span data-stu-id="52640-235">In hello applications list, select **Bonusly**.</span></span>
 
-    ![Odkaz Bonusly v seznamu aplikací](./media/active-directory-saas-bonus-tutorial/tutorial_bonusly_app.png) 
+    ![Hello Bonusly odkaz v seznamu aplikace hello](./media/active-directory-saas-bonus-tutorial/tutorial_bonusly_app.png) 
 
-3. <span data-ttu-id="3b2ac-237">V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-237">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="52640-237">V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="52640-237">In hello menu on hello left, click **Users and groups**.</span></span>
 
-    ![Odkaz "Uživatelé a skupiny"][202] 
+    ![odkaz "Uživatelé a skupiny" Hello][202] 
 
-4. <span data-ttu-id="3b2ac-239">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-239">Click **Add** button.</span></span> <span data-ttu-id="3b2ac-240">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-240">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="52640-239">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="52640-239">Click **Add** button.</span></span> <span data-ttu-id="52640-240">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="52640-240">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přidružení Hello][203]
 
-5. <span data-ttu-id="3b2ac-242">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-242">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="52640-242">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.</span><span class="sxs-lookup"><span data-stu-id="52640-242">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="3b2ac-243">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-243">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="52640-243">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="52640-243">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="3b2ac-244">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-244">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="52640-244">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="52640-244">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="test-single-sign-on"></a><span data-ttu-id="3b2ac-245">Test jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="3b2ac-245">Test single sign-on</span></span>
+### <a name="test-single-sign-on"></a><span data-ttu-id="52640-245">Test jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="52640-245">Test single sign-on</span></span>
 
-<span data-ttu-id="3b2ac-246">Cílem této části je Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-246">The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="52640-246">Hello cílem této části je tootest pomocí Azure AD konfigurace přihlášení hello přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="52640-246">hello objective of this section is tootest your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="3b2ac-247">Když kliknete na dlaždici Bonusly na přístupovém panelu jste měli získat automaticky přihlášení k aplikaci Bonusly.</span><span class="sxs-lookup"><span data-stu-id="3b2ac-247">When you click the Bonusly tile in the Access Panel, you should get automatically signed-on to your Bonusly application.</span></span>
+<span data-ttu-id="52640-247">Po kliknutí na tlačítko hello Bonusly dlaždice v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour Bonusly aplikace.</span><span class="sxs-lookup"><span data-stu-id="52640-247">When you click hello Bonusly tile in hello Access Panel, you should get automatically signed-on tooyour Bonusly application.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="3b2ac-248">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="3b2ac-248">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="52640-248">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="52640-248">Additional resources</span></span>
 
-* [<span data-ttu-id="3b2ac-249">Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="3b2ac-249">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="3b2ac-250">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="3b2ac-250">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="52640-249">Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="52640-249">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="52640-250">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="52640-250">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 
 

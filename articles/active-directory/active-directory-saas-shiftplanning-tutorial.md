@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s lidskosti | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a lidskosti."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a lidskosti."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,255 +13,255 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 327cc1e3d0836e79376e0a3cd5a4422a967f5943
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7d8a04a2eb3c997f86f1e199c47809fa3dad60e8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-humanity"></a><span data-ttu-id="9c53c-103">Kurz: Azure Active Directory integrace s lidskosti</span><span class="sxs-lookup"><span data-stu-id="9c53c-103">Tutorial: Azure Active Directory integration with Humanity</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-humanity"></a><span data-ttu-id="5a656-103">Kurz: Azure Active Directory integrace s lidskosti</span><span class="sxs-lookup"><span data-stu-id="5a656-103">Tutorial: Azure Active Directory integration with Humanity</span></span>
 
-<span data-ttu-id="9c53c-104">V tomto kurzu zjistěte, jak integrovat lidskosti s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="9c53c-104">In this tutorial, you learn how to integrate Humanity with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="5a656-104">V tomto kurzu zjistíte, jak toointegrate lidskosti službou Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="5a656-104">In this tutorial, you learn how toointegrate Humanity with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="9c53c-105">Integrace lidskosti s Azure AD poskytuje následující výhody:</span><span class="sxs-lookup"><span data-stu-id="9c53c-105">Integrating Humanity with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="5a656-105">Integrace lidskosti s Azure AD poskytuje hello následující výhody:</span><span class="sxs-lookup"><span data-stu-id="5a656-105">Integrating Humanity with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="9c53c-106">Můžete řídit ve službě Azure AD, který má přístup k lidskosti</span><span class="sxs-lookup"><span data-stu-id="9c53c-106">You can control in Azure AD who has access to Humanity</span></span>
-- <span data-ttu-id="9c53c-107">Můžete povolit uživatelům, aby automaticky získat přihlášení k lidskosti (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="9c53c-107">You can enable your users to automatically get signed-on to Humanity (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="9c53c-108">Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure</span><span class="sxs-lookup"><span data-stu-id="9c53c-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="5a656-106">Můžete řídit ve službě Azure AD, který má přístup tooHumanity</span><span class="sxs-lookup"><span data-stu-id="5a656-106">You can control in Azure AD who has access tooHumanity</span></span>
+- <span data-ttu-id="5a656-107">Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooHumanity (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="5a656-107">You can enable your users tooautomatically get signed-on tooHumanity (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="5a656-108">Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure</span><span class="sxs-lookup"><span data-stu-id="5a656-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="9c53c-109">Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="9c53c-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="5a656-109">Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="5a656-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="9c53c-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="9c53c-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="5a656-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="5a656-110">Prerequisites</span></span>
 
-<span data-ttu-id="9c53c-111">Konfigurace integrace Azure AD s lidskosti, potřebujete následující položky:</span><span class="sxs-lookup"><span data-stu-id="9c53c-111">To configure Azure AD integration with Humanity, you need the following items:</span></span>
+<span data-ttu-id="5a656-111">Integrace služby Azure AD s lidskosti tooconfigure, je třeba hello následující položky:</span><span class="sxs-lookup"><span data-stu-id="5a656-111">tooconfigure Azure AD integration with Humanity, you need hello following items:</span></span>
 
-- <span data-ttu-id="9c53c-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="9c53c-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="9c53c-113">Lidskosti jednotného přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="9c53c-113">A Humanity single-sign on enabled subscription</span></span>
+- <span data-ttu-id="5a656-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="5a656-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="5a656-113">Lidskosti jednotného přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="5a656-113">A Humanity single-sign on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="9c53c-114">K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="9c53c-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="5a656-114">tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="5a656-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="9c53c-115">Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="9c53c-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="5a656-115">tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="5a656-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="9c53c-116">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="9c53c-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="9c53c-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="9c53c-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="5a656-116">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="5a656-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="5a656-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="5a656-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="9c53c-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="9c53c-118">Scenario description</span></span>
-<span data-ttu-id="9c53c-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="9c53c-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="9c53c-120">Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="9c53c-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="5a656-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="5a656-118">Scenario description</span></span>
+<span data-ttu-id="5a656-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="5a656-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="5a656-120">Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="5a656-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="9c53c-121">Přidání lidskosti z Galerie</span><span class="sxs-lookup"><span data-stu-id="9c53c-121">Adding Humanity from the gallery</span></span>
-2. <span data-ttu-id="9c53c-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="9c53c-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="5a656-121">Přidání lidskosti z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="5a656-121">Adding Humanity from hello gallery</span></span>
+2. <span data-ttu-id="5a656-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="5a656-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-humanity-from-the-gallery"></a><span data-ttu-id="9c53c-123">Přidání lidskosti z Galerie</span><span class="sxs-lookup"><span data-stu-id="9c53c-123">Adding Humanity from the gallery</span></span>
-<span data-ttu-id="9c53c-124">Chcete-li nakonfigurovat integraci lidskosti do služby Azure AD, přidejte lidskosti z Galerie si na seznam spravovaných aplikací SaaS.</span><span class="sxs-lookup"><span data-stu-id="9c53c-124">To configure the integration of Humanity into Azure AD, you need to add Humanity from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-humanity-from-hello-gallery"></a><span data-ttu-id="5a656-123">Přidání lidskosti z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="5a656-123">Adding Humanity from hello gallery</span></span>
+<span data-ttu-id="5a656-124">integrace hello tooconfigure lidskosti do služby Azure AD, je nutné tooadd lidskosti hello Galerie tooyour seznamu spravovaných aplikací SaaS.</span><span class="sxs-lookup"><span data-stu-id="5a656-124">tooconfigure hello integration of Humanity into Azure AD, you need tooadd Humanity from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="9c53c-125">**Pokud chcete přidat lidskosti z galerie, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="9c53c-125">**To add Humanity from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="5a656-125">**tooadd lidskosti z Galerie hello, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="5a656-125">**tooadd Humanity from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="9c53c-126">V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="9c53c-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="5a656-126">V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="5a656-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="9c53c-128">Přejděte na **podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="9c53c-129">Pak přejděte na **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="5a656-128">Přejděte příliš**podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="5a656-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="5a656-129">Potom přejděte příliš**všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="5a656-129">Then go too**All applications**.</span></span>
 
     ![Aplikace][2]
     
-3. <span data-ttu-id="9c53c-131">Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="9c53c-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="5a656-131">tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.</span><span class="sxs-lookup"><span data-stu-id="5a656-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Aplikace][3]
 
-4. <span data-ttu-id="9c53c-133">Do vyhledávacího pole zadejte **lidskosti**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-133">In the search box, type **Humanity**.</span></span>
+4. <span data-ttu-id="5a656-133">Hello vyhledávacího pole zadejte **lidskosti**.</span><span class="sxs-lookup"><span data-stu-id="5a656-133">In hello search box, type **Humanity**.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-shiftplanning-tutorial/tutorial_humanity_search.png)
 
-5. <span data-ttu-id="9c53c-135">Na panelu výsledků vyberte **lidskosti**a potom klikněte na **přidat** tlačítko Přidat aplikaci.</span><span class="sxs-lookup"><span data-stu-id="9c53c-135">In the results panel, select **Humanity**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="5a656-135">Na panelu výsledků hello vyberte **lidskosti**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.</span><span class="sxs-lookup"><span data-stu-id="5a656-135">In hello results panel, select **Humanity**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-shiftplanning-tutorial/tutorial_humanity_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="9c53c-137">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="9c53c-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="9c53c-138">V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s lidskosti podle testovacího uživatele názvem "Britta Simon."</span><span class="sxs-lookup"><span data-stu-id="9c53c-138">In this section, you configure and test Azure AD single sign-on with Humanity based on a test user called "Britta Simon."</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="5a656-137">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="5a656-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="5a656-138">V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s lidskosti podle testovacího uživatele názvem "Britta Simon."</span><span class="sxs-lookup"><span data-stu-id="5a656-138">In this section, you configure and test Azure AD single sign-on with Humanity based on a test user called "Britta Simon."</span></span>
 
-<span data-ttu-id="9c53c-139">Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v lidskosti je pro uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="9c53c-139">For single sign-on to work, Azure AD needs to know what the counterpart user in Humanity is to a user in Azure AD.</span></span> <span data-ttu-id="9c53c-140">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v lidskosti musí navázat.</span><span class="sxs-lookup"><span data-stu-id="9c53c-140">In other words, a link relationship between an Azure AD user and the related user in Humanity needs to be established.</span></span>
+<span data-ttu-id="5a656-139">Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v lidskosti je tooa uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="5a656-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in Humanity is tooa user in Azure AD.</span></span> <span data-ttu-id="5a656-140">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v lidskosti musí toobe navázat.</span><span class="sxs-lookup"><span data-stu-id="5a656-140">In other words, a link relationship between an Azure AD user and hello related user in Humanity needs toobe established.</span></span>
 
-<span data-ttu-id="9c53c-141">V lidskosti, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.</span><span class="sxs-lookup"><span data-stu-id="9c53c-141">In Humanity, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.</span></span>
+<span data-ttu-id="5a656-141">V lidskosti, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.</span><span class="sxs-lookup"><span data-stu-id="5a656-141">In Humanity, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
 
-<span data-ttu-id="9c53c-142">Nakonfigurovat a otestovat Azure AD jednotné přihlašování s lidskosti, je třeba dokončit následující stavební bloky:</span><span class="sxs-lookup"><span data-stu-id="9c53c-142">To configure and test Azure AD single sign-on with Humanity, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="5a656-142">tooconfigure a testu Azure AD jednotné přihlašování s lidskosti, potřebujete následující stavební bloky hello toocomplete:</span><span class="sxs-lookup"><span data-stu-id="5a656-142">tooconfigure and test Azure AD single sign-on with Humanity, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="9c53c-143">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.</span><span class="sxs-lookup"><span data-stu-id="9c53c-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="9c53c-144">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="9c53c-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="9c53c-145">**[Vytvoření zkušebního uživatele lidskosti](#creating-a-humanity-test-user)**  – Pokud chcete mít protějšek Britta Simon v lidskosti propojeném s Azure AD reprezentace daného uživatele.</span><span class="sxs-lookup"><span data-stu-id="9c53c-145">**[Creating a Humanity test user](#creating-a-humanity-test-user)** - to have a counterpart of Britta Simon in Humanity that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="9c53c-146">**[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="9c53c-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="9c53c-147">**[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.</span><span class="sxs-lookup"><span data-stu-id="9c53c-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="5a656-143">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.</span><span class="sxs-lookup"><span data-stu-id="5a656-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="5a656-144">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="5a656-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="5a656-145">**[Vytvoření zkušebního uživatele lidskosti](#creating-a-humanity-test-user)**  -toohave protějšek Britta Simon v lidskosti, která je propojená toohello Azure AD reprezentace uživatele.</span><span class="sxs-lookup"><span data-stu-id="5a656-145">**[Creating a Humanity test user](#creating-a-humanity-test-user)** - toohave a counterpart of Britta Simon in Humanity that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="5a656-146">**[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="5a656-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="5a656-147">**[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.</span><span class="sxs-lookup"><span data-stu-id="5a656-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="9c53c-148">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="9c53c-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="5a656-148">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="5a656-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="9c53c-149">V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci lidskosti.</span><span class="sxs-lookup"><span data-stu-id="9c53c-149">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Humanity application.</span></span>
+<span data-ttu-id="5a656-149">V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci lidskosti.</span><span class="sxs-lookup"><span data-stu-id="5a656-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your Humanity application.</span></span>
 
-<span data-ttu-id="9c53c-150">**Ke konfiguraci Azure AD jednotné přihlašování s lidskosti, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="9c53c-150">**To configure Azure AD single sign-on with Humanity, perform the following steps:**</span></span>
+<span data-ttu-id="5a656-150">**tooconfigure Azure AD jednotné přihlašování s lidskosti, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="5a656-150">**tooconfigure Azure AD single sign-on with Humanity, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="9c53c-151">Na portálu Azure na **lidskosti** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-151">In the Azure portal, on the **Humanity** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="5a656-151">V portálu Azure, na hello hello **lidskosti** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="5a656-151">In hello Azure portal, on hello **Humanity** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. <span data-ttu-id="9c53c-153">Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.</span><span class="sxs-lookup"><span data-stu-id="9c53c-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="5a656-153">Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="5a656-153">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-shiftplanning-tutorial/tutorial_humanity_samlbase.png)
 
-3. <span data-ttu-id="9c53c-155">Na **lidskosti domény a adresy URL** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="9c53c-155">On the **Humanity Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="5a656-155">Na hello **lidskosti domény a adresy URL** část, proveďte následující kroky hello:</span><span class="sxs-lookup"><span data-stu-id="5a656-155">On hello **Humanity Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-shiftplanning-tutorial/tutorial_humanity_url.png)
 
-    <span data-ttu-id="9c53c-157">a.</span><span class="sxs-lookup"><span data-stu-id="9c53c-157">a.</span></span> <span data-ttu-id="9c53c-158">V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://company.humanity.com/includes/saml/`</span><span class="sxs-lookup"><span data-stu-id="9c53c-158">In the **Sign-on URL** textbox, type a URL using the following pattern: `https://company.humanity.com/includes/saml/`</span></span>
+    <span data-ttu-id="5a656-157">a.</span><span class="sxs-lookup"><span data-stu-id="5a656-157">a.</span></span> <span data-ttu-id="5a656-158">V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://company.humanity.com/includes/saml/`</span><span class="sxs-lookup"><span data-stu-id="5a656-158">In hello **Sign-on URL** textbox, type a URL using hello following pattern: `https://company.humanity.com/includes/saml/`</span></span>
 
-    <span data-ttu-id="9c53c-159">b.</span><span class="sxs-lookup"><span data-stu-id="9c53c-159">b.</span></span> <span data-ttu-id="9c53c-160">V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://company.humanity.com/app/`</span><span class="sxs-lookup"><span data-stu-id="9c53c-160">In the **Identifier** textbox, type a URL using the following pattern: `https://company.humanity.com/app/`</span></span>
+    <span data-ttu-id="5a656-159">b.</span><span class="sxs-lookup"><span data-stu-id="5a656-159">b.</span></span> <span data-ttu-id="5a656-160">V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://company.humanity.com/app/`</span><span class="sxs-lookup"><span data-stu-id="5a656-160">In hello **Identifier** textbox, type a URL using hello following pattern: `https://company.humanity.com/app/`</span></span>
 
     > [!NOTE] 
-    > <span data-ttu-id="9c53c-161">Tyto hodnoty nejsou skutečné.</span><span class="sxs-lookup"><span data-stu-id="9c53c-161">These values are not real.</span></span> <span data-ttu-id="9c53c-162">Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor.</span><span class="sxs-lookup"><span data-stu-id="9c53c-162">Update these values with the actual Sign-On URL and Identifier.</span></span> <span data-ttu-id="9c53c-163">Obraťte se na [tým podpory lidskosti klienta](https://www.humanity.com/support/) k získání těchto hodnot.</span><span class="sxs-lookup"><span data-stu-id="9c53c-163">Contact [Humanity Client support team](https://www.humanity.com/support/) to get these values.</span></span> 
+    > <span data-ttu-id="5a656-161">Tyto hodnoty nejsou skutečné.</span><span class="sxs-lookup"><span data-stu-id="5a656-161">These values are not real.</span></span> <span data-ttu-id="5a656-162">Aktualizovat tyto hodnoty s hello skutečné přihlašovací adresa URL a identifikátor.</span><span class="sxs-lookup"><span data-stu-id="5a656-162">Update these values with hello actual Sign-On URL and Identifier.</span></span> <span data-ttu-id="5a656-163">Obraťte se na [tým podpory lidskosti klienta](https://www.humanity.com/support/) tooget tyto hodnoty.</span><span class="sxs-lookup"><span data-stu-id="5a656-163">Contact [Humanity Client support team](https://www.humanity.com/support/) tooget these values.</span></span> 
  
-4. <span data-ttu-id="9c53c-164">Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.</span><span class="sxs-lookup"><span data-stu-id="9c53c-164">On the **SAML Signing Certificate** section, click **Certificate (Base64)** and then save the certificate file on your computer.</span></span>
+4. <span data-ttu-id="5a656-164">Na hello **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu hello ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="5a656-164">On hello **SAML Signing Certificate** section, click **Certificate (Base64)** and then save hello certificate file on your computer.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-shiftplanning-tutorial/tutorial_humanity_certificate.png) 
 
-5. <span data-ttu-id="9c53c-166">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="9c53c-166">Click **Save** button.</span></span>
+5. <span data-ttu-id="5a656-166">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="5a656-166">Click **Save** button.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-shiftplanning-tutorial/tutorial_general_400.png)
 
-6. <span data-ttu-id="9c53c-168">Na **lidskosti konfigurace** klikněte na tlačítko **konfigurace lidskosti** otevřete **konfigurovat přihlášení** okno.</span><span class="sxs-lookup"><span data-stu-id="9c53c-168">On the **Humanity Configuration** section, click **Configure Humanity** to open **Configure sign-on** window.</span></span> <span data-ttu-id="9c53c-169">Kopírování **SAML jeden přihlašování adresa URL služby a adresu URL Sign-Out** z **Stručná referenční příručka části.**</span><span class="sxs-lookup"><span data-stu-id="9c53c-169">Copy the **SAML Single Sign-On Service URL, and Sign-Out URL** from the **Quick Reference section.**</span></span>
+6. <span data-ttu-id="5a656-168">Na hello **lidskosti konfigurace** klikněte na tlačítko **konfigurace lidskosti** tooopen **konfigurovat přihlášení** okno.</span><span class="sxs-lookup"><span data-stu-id="5a656-168">On hello **Humanity Configuration** section, click **Configure Humanity** tooopen **Configure sign-on** window.</span></span> <span data-ttu-id="5a656-169">Kopírování hello **SAML jeden přihlašování adresa URL služby a adresu URL Sign-Out** z hello **Stručná referenční příručka části.**</span><span class="sxs-lookup"><span data-stu-id="5a656-169">Copy hello **SAML Single Sign-On Service URL, and Sign-Out URL** from hello **Quick Reference section.**</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-shiftplanning-tutorial/tutorial_humanity_configure.png) 
 
-7. <span data-ttu-id="9c53c-171">V okně prohlížeče jiný web, přihlaste se k vaší **lidskosti** společnosti lokality jako správce.</span><span class="sxs-lookup"><span data-stu-id="9c53c-171">In a different web browser window, log in to your **Humanity** company site as an administrator.</span></span>
+7. <span data-ttu-id="5a656-171">V okně prohlížeče jiných webových přihlásit tooyour **lidskosti** společnosti lokality jako správce.</span><span class="sxs-lookup"><span data-stu-id="5a656-171">In a different web browser window, log in tooyour **Humanity** company site as an administrator.</span></span>
 
-8. <span data-ttu-id="9c53c-172">V nabídce v horní části, klikněte na tlačítko **správce**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-172">In the menu on the top, click **Admin**.</span></span>
+8. <span data-ttu-id="5a656-172">V nabídce hello hello nahoře, klikněte na tlačítko **správce**.</span><span class="sxs-lookup"><span data-stu-id="5a656-172">In hello menu on hello top, click **Admin**.</span></span>
    
-    <span data-ttu-id="9c53c-173">![Správce](./media/active-directory-saas-shiftplanning-tutorial/iC786619.png "správce")</span><span class="sxs-lookup"><span data-stu-id="9c53c-173">![Admin](./media/active-directory-saas-shiftplanning-tutorial/iC786619.png "Admin")</span></span>
+    <span data-ttu-id="5a656-173">![Správce](./media/active-directory-saas-shiftplanning-tutorial/iC786619.png "správce")</span><span class="sxs-lookup"><span data-stu-id="5a656-173">![Admin](./media/active-directory-saas-shiftplanning-tutorial/iC786619.png "Admin")</span></span>
 
-9. <span data-ttu-id="9c53c-174">V části **integrace**, klikněte na tlačítko **jednotné přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-174">Under **Integration**, click **Single Sign-On**.</span></span>
+9. <span data-ttu-id="5a656-174">V části **integrace**, klikněte na tlačítko **jednotné přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="5a656-174">Under **Integration**, click **Single Sign-On**.</span></span>
    
-    <span data-ttu-id="9c53c-175">![Jednotné přihlašování](./media/active-directory-saas-shiftplanning-tutorial/iC786620.png "jednotného přihlašování")</span><span class="sxs-lookup"><span data-stu-id="9c53c-175">![Single Sign-On](./media/active-directory-saas-shiftplanning-tutorial/iC786620.png "Single Sign-On")</span></span>
+    <span data-ttu-id="5a656-175">![Jednotné přihlašování](./media/active-directory-saas-shiftplanning-tutorial/iC786620.png "jednotného přihlašování")</span><span class="sxs-lookup"><span data-stu-id="5a656-175">![Single Sign-On](./media/active-directory-saas-shiftplanning-tutorial/iC786620.png "Single Sign-On")</span></span>
 
-10. <span data-ttu-id="9c53c-176">V **jednotné přihlašování** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="9c53c-176">In the **Single Sign-On** section, perform the following steps:</span></span>
+10. <span data-ttu-id="5a656-176">V hello **jednotné přihlašování** část, proveďte následující kroky hello:</span><span class="sxs-lookup"><span data-stu-id="5a656-176">In hello **Single Sign-On** section, perform hello following steps:</span></span>
    
-    <span data-ttu-id="9c53c-177">![Jednotné přihlašování](./media/active-directory-saas-shiftplanning-tutorial/iC786905.png "jednotného přihlašování")</span><span class="sxs-lookup"><span data-stu-id="9c53c-177">![Single Sign-On](./media/active-directory-saas-shiftplanning-tutorial/iC786905.png "Single Sign-On")</span></span>
+    <span data-ttu-id="5a656-177">![Jednotné přihlašování](./media/active-directory-saas-shiftplanning-tutorial/iC786905.png "jednotného přihlašování")</span><span class="sxs-lookup"><span data-stu-id="5a656-177">![Single Sign-On](./media/active-directory-saas-shiftplanning-tutorial/iC786905.png "Single Sign-On")</span></span>
    
-    <span data-ttu-id="9c53c-178">a.</span><span class="sxs-lookup"><span data-stu-id="9c53c-178">a.</span></span> <span data-ttu-id="9c53c-179">Vyberte **povoleno SAML**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-179">Select **SAML Enabled**.</span></span>
+    <span data-ttu-id="5a656-178">a.</span><span class="sxs-lookup"><span data-stu-id="5a656-178">a.</span></span> <span data-ttu-id="5a656-179">Vyberte **povoleno SAML**.</span><span class="sxs-lookup"><span data-stu-id="5a656-179">Select **SAML Enabled**.</span></span>
 
-    <span data-ttu-id="9c53c-180">b.</span><span class="sxs-lookup"><span data-stu-id="9c53c-180">b.</span></span> <span data-ttu-id="9c53c-181">Vyberte **povolit přihlášení heslo**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-181">Select **Allow Password Login**.</span></span>
+    <span data-ttu-id="5a656-180">b.</span><span class="sxs-lookup"><span data-stu-id="5a656-180">b.</span></span> <span data-ttu-id="5a656-181">Vyberte **povolit přihlášení heslo**.</span><span class="sxs-lookup"><span data-stu-id="5a656-181">Select **Allow Password Login**.</span></span>
 
-    <span data-ttu-id="9c53c-182">c.</span><span class="sxs-lookup"><span data-stu-id="9c53c-182">c.</span></span> <span data-ttu-id="9c53c-183">Vložení **SAML jeden přihlašování adresa URL služby** hodnoty do **URL vystavitele SAML** textové pole.</span><span class="sxs-lookup"><span data-stu-id="9c53c-183">Paste the **SAML Single Sign-On Service URL** value into the **SAML Issuer URL** textbox.</span></span>
+    <span data-ttu-id="5a656-182">c.</span><span class="sxs-lookup"><span data-stu-id="5a656-182">c.</span></span> <span data-ttu-id="5a656-183">Vložení hello **SAML jeden přihlašování adresa URL služby** hodnotu do hello **URL vystavitele SAML** textové pole.</span><span class="sxs-lookup"><span data-stu-id="5a656-183">Paste hello **SAML Single Sign-On Service URL** value into hello **SAML Issuer URL** textbox.</span></span>
 
-    <span data-ttu-id="9c53c-184">d.</span><span class="sxs-lookup"><span data-stu-id="9c53c-184">d.</span></span> <span data-ttu-id="9c53c-185">Vložení **Sign-Out URL** hodnotu do **vzdálené adresy URL odhlašovací** textové pole.</span><span class="sxs-lookup"><span data-stu-id="9c53c-185">Paste the **Sign-Out URL** value into the **Remote Logout URL** textbox.</span></span>
+    <span data-ttu-id="5a656-184">d.</span><span class="sxs-lookup"><span data-stu-id="5a656-184">d.</span></span> <span data-ttu-id="5a656-185">Vložení hello **Sign-Out URL** hodnotu do hello **vzdálené adresy URL odhlašovací** textové pole.</span><span class="sxs-lookup"><span data-stu-id="5a656-185">Paste hello **Sign-Out URL** value into hello **Remote Logout URL** textbox.</span></span>
    
-    <span data-ttu-id="9c53c-186">e.</span><span class="sxs-lookup"><span data-stu-id="9c53c-186">e.</span></span> <span data-ttu-id="9c53c-187">V poznámkovém bloku otevřete váš kódování base-64 kódovaného certifikátu, zkopírujte obsah ho do schránky a vložte jej do **certifikát X.509** textové pole.</span><span class="sxs-lookup"><span data-stu-id="9c53c-187">Open your base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste it to the **X.509 Certificate** textbox.</span></span>
+    <span data-ttu-id="5a656-186">e.</span><span class="sxs-lookup"><span data-stu-id="5a656-186">e.</span></span> <span data-ttu-id="5a656-187">Otevřete váš kódování base-64 kódovaného certifikátu v poznámkovém bloku hello kopírování obsahu ho do schránky a pak ji vložit toohello **certifikát X.509** textové pole.</span><span class="sxs-lookup"><span data-stu-id="5a656-187">Open your base-64 encoded certificate in notepad, copy hello content of it into your clipboard, and then paste it toohello **X.509 Certificate** textbox.</span></span>
 
-11. <span data-ttu-id="9c53c-188">Klikněte na tlačítko **uložit nastavení**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-188">Click **Save Settings**.</span></span>
+11. <span data-ttu-id="5a656-188">Klikněte na tlačítko **uložit nastavení**.</span><span class="sxs-lookup"><span data-stu-id="5a656-188">Click **Save Settings**.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="9c53c-189">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!</span><span class="sxs-lookup"><span data-stu-id="9c53c-189">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="9c53c-190">Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části.</span><span class="sxs-lookup"><span data-stu-id="9c53c-190">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="9c53c-191">Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="9c53c-191">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="5a656-189">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!</span><span class="sxs-lookup"><span data-stu-id="5a656-189">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="5a656-190">Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello.</span><span class="sxs-lookup"><span data-stu-id="5a656-190">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="5a656-191">Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="5a656-191">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="9c53c-192">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="9c53c-192">Creating an Azure AD test user</span></span>
-<span data-ttu-id="9c53c-193">Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="9c53c-193">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="5a656-192">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="5a656-192">Creating an Azure AD test user</span></span>
+<span data-ttu-id="5a656-193">Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.</span><span class="sxs-lookup"><span data-stu-id="5a656-193">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Vytvořit uživatele Azure AD][100]
 
-<span data-ttu-id="9c53c-195">**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="9c53c-195">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="5a656-195">**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="5a656-195">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="9c53c-196">V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="9c53c-196">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="5a656-196">V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="5a656-196">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-shiftplanning-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="9c53c-198">Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-198">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="5a656-198">toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="5a656-198">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-shiftplanning-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="9c53c-200">Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="9c53c-200">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="5a656-200">tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.</span><span class="sxs-lookup"><span data-stu-id="5a656-200">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-shiftplanning-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="9c53c-202">Na **uživatele** dialogové okno stránky, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="9c53c-202">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="5a656-202">Na hello **uživatele** dialogové okno proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="5a656-202">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-shiftplanning-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="9c53c-204">a.</span><span class="sxs-lookup"><span data-stu-id="9c53c-204">a.</span></span> <span data-ttu-id="9c53c-205">V **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-205">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="5a656-204">a.</span><span class="sxs-lookup"><span data-stu-id="5a656-204">a.</span></span> <span data-ttu-id="5a656-205">V hello **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="5a656-205">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="9c53c-206">b.</span><span class="sxs-lookup"><span data-stu-id="9c53c-206">b.</span></span> <span data-ttu-id="9c53c-207">V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="9c53c-207">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="5a656-206">b.</span><span class="sxs-lookup"><span data-stu-id="5a656-206">b.</span></span> <span data-ttu-id="5a656-207">V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="5a656-207">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="9c53c-208">c.</span><span class="sxs-lookup"><span data-stu-id="9c53c-208">c.</span></span> <span data-ttu-id="9c53c-209">Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-209">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="5a656-208">c.</span><span class="sxs-lookup"><span data-stu-id="5a656-208">c.</span></span> <span data-ttu-id="5a656-209">Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.</span><span class="sxs-lookup"><span data-stu-id="5a656-209">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="9c53c-210">d.</span><span class="sxs-lookup"><span data-stu-id="9c53c-210">d.</span></span> <span data-ttu-id="9c53c-211">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-211">Click **Create**.</span></span>
+    <span data-ttu-id="5a656-210">d.</span><span class="sxs-lookup"><span data-stu-id="5a656-210">d.</span></span> <span data-ttu-id="5a656-211">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="5a656-211">Click **Create**.</span></span>
  
-### <a name="creating-a-humanity-test-user"></a><span data-ttu-id="9c53c-212">Vytvoření zkušebního uživatele lidskosti</span><span class="sxs-lookup"><span data-stu-id="9c53c-212">Creating a Humanity test user</span></span>
+### <a name="creating-a-humanity-test-user"></a><span data-ttu-id="5a656-212">Vytvoření zkušebního uživatele lidskosti</span><span class="sxs-lookup"><span data-stu-id="5a656-212">Creating a Humanity test user</span></span>
 
-<span data-ttu-id="9c53c-213">Pokud chcete povolit uživatelům Azure AD přihlášení do lidskosti, musí být zřízená do lidskosti.</span><span class="sxs-lookup"><span data-stu-id="9c53c-213">In order to enable Azure AD users to log in to Humanity, they must be provisioned into Humanity.</span></span> <span data-ttu-id="9c53c-214">V případě lidskosti zřizování je ruční úloha.</span><span class="sxs-lookup"><span data-stu-id="9c53c-214">In the case of Humanity, provisioning is a manual task.</span></span>
+<span data-ttu-id="5a656-213">V pořadí tooenable Azure AD Uživatelé toolog v tooHumanity musí být zřízená do lidskosti.</span><span class="sxs-lookup"><span data-stu-id="5a656-213">In order tooenable Azure AD users toolog in tooHumanity, they must be provisioned into Humanity.</span></span> <span data-ttu-id="5a656-214">V případě hello lidskosti zřizování je ruční úloha.</span><span class="sxs-lookup"><span data-stu-id="5a656-214">In hello case of Humanity, provisioning is a manual task.</span></span>
 
-<span data-ttu-id="9c53c-215">**K poskytnutí uživatelského účtu, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="9c53c-215">**To provision a user account, perform the following steps:**</span></span>
+<span data-ttu-id="5a656-215">**tooprovision uživatelský účet, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="5a656-215">**tooprovision a user account, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="9c53c-216">Přihlaste se k vaší **lidskosti** společnosti lokality jako správce.</span><span class="sxs-lookup"><span data-stu-id="9c53c-216">Log in to your **Humanity** company site as an administrator.</span></span>
+1. <span data-ttu-id="5a656-216">Přihlaste se tooyour **lidskosti** společnosti lokality jako správce.</span><span class="sxs-lookup"><span data-stu-id="5a656-216">Log in tooyour **Humanity** company site as an administrator.</span></span>
 
-2. <span data-ttu-id="9c53c-217">Klikněte na tlačítko **správce**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-217">Click **Admin**.</span></span>
+2. <span data-ttu-id="5a656-217">Klikněte na tlačítko **správce**.</span><span class="sxs-lookup"><span data-stu-id="5a656-217">Click **Admin**.</span></span>
    
-    <span data-ttu-id="9c53c-218">![Správce](./media/active-directory-saas-shiftplanning-tutorial/iC786619.png "správce")</span><span class="sxs-lookup"><span data-stu-id="9c53c-218">![Admin](./media/active-directory-saas-shiftplanning-tutorial/iC786619.png "Admin")</span></span>
+    <span data-ttu-id="5a656-218">![Správce](./media/active-directory-saas-shiftplanning-tutorial/iC786619.png "správce")</span><span class="sxs-lookup"><span data-stu-id="5a656-218">![Admin](./media/active-directory-saas-shiftplanning-tutorial/iC786619.png "Admin")</span></span>
 
-3. <span data-ttu-id="9c53c-219">Klikněte na tlačítko **zaměstnanci**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-219">Click **Staff**.</span></span>
+3. <span data-ttu-id="5a656-219">Klikněte na tlačítko **zaměstnanci**.</span><span class="sxs-lookup"><span data-stu-id="5a656-219">Click **Staff**.</span></span>
    
-    <span data-ttu-id="9c53c-220">![Zaměstnanci](./media/active-directory-saas-shiftplanning-tutorial/ic786623.png "zaměstnanci")</span><span class="sxs-lookup"><span data-stu-id="9c53c-220">![Staff](./media/active-directory-saas-shiftplanning-tutorial/ic786623.png "Staff")</span></span>
+    <span data-ttu-id="5a656-220">![Zaměstnanci](./media/active-directory-saas-shiftplanning-tutorial/ic786623.png "zaměstnanci")</span><span class="sxs-lookup"><span data-stu-id="5a656-220">![Staff](./media/active-directory-saas-shiftplanning-tutorial/ic786623.png "Staff")</span></span>
 
-4. <span data-ttu-id="9c53c-221">V části **akce**, klikněte na tlačítko **přidat zaměstnanci**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-221">Under **Actions**, click **Add Employees**.</span></span>
+4. <span data-ttu-id="5a656-221">V části **akce**, klikněte na tlačítko **přidat zaměstnanci**.</span><span class="sxs-lookup"><span data-stu-id="5a656-221">Under **Actions**, click **Add Employees**.</span></span>
    
-    <span data-ttu-id="9c53c-222">![Přidat zaměstnanci](./media/active-directory-saas-shiftplanning-tutorial/iC786624.png "přidat zaměstnanci")</span><span class="sxs-lookup"><span data-stu-id="9c53c-222">![Add Employees](./media/active-directory-saas-shiftplanning-tutorial/iC786624.png "Add Employees")</span></span>
+    <span data-ttu-id="5a656-222">![Přidat zaměstnanci](./media/active-directory-saas-shiftplanning-tutorial/iC786624.png "přidat zaměstnanci")</span><span class="sxs-lookup"><span data-stu-id="5a656-222">![Add Employees](./media/active-directory-saas-shiftplanning-tutorial/iC786624.png "Add Employees")</span></span>
 
-5. <span data-ttu-id="9c53c-223">V **přidat zaměstnanci** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="9c53c-223">In the **Add Employees** section, perform the following steps:</span></span>
+5. <span data-ttu-id="5a656-223">V hello **přidat zaměstnanci** část, proveďte následující kroky hello:</span><span class="sxs-lookup"><span data-stu-id="5a656-223">In hello **Add Employees** section, perform hello following steps:</span></span>
    
-    <span data-ttu-id="9c53c-224">![Uložit zaměstnanci](./media/active-directory-saas-shiftplanning-tutorial/iC786625.png "uložit zaměstnanci")</span><span class="sxs-lookup"><span data-stu-id="9c53c-224">![Save Employees](./media/active-directory-saas-shiftplanning-tutorial/iC786625.png "Save Employees")</span></span>
+    <span data-ttu-id="5a656-224">![Uložit zaměstnanci](./media/active-directory-saas-shiftplanning-tutorial/iC786625.png "uložit zaměstnanci")</span><span class="sxs-lookup"><span data-stu-id="5a656-224">![Save Employees](./media/active-directory-saas-shiftplanning-tutorial/iC786625.png "Save Employees")</span></span>
    
-    <span data-ttu-id="9c53c-225">a.</span><span class="sxs-lookup"><span data-stu-id="9c53c-225">a.</span></span> <span data-ttu-id="9c53c-226">Typ **křestní jméno**, **příjmení**, a **e-mailu** platného účtu AAD chcete mají být zahrnuty do související textových polí.</span><span class="sxs-lookup"><span data-stu-id="9c53c-226">Type the **First Name**, **Last Name**, and **Email** of a valid AAD account you want to provision into the related textboxes.</span></span>
+    <span data-ttu-id="5a656-225">a.</span><span class="sxs-lookup"><span data-stu-id="5a656-225">a.</span></span> <span data-ttu-id="5a656-226">Typ hello **křestní jméno**, **příjmení**, a **e-mailu** z platný účet AAD chcete tooprovision do hello související textových polí.</span><span class="sxs-lookup"><span data-stu-id="5a656-226">Type hello **First Name**, **Last Name**, and **Email** of a valid AAD account you want tooprovision into hello related textboxes.</span></span>
 
-    <span data-ttu-id="9c53c-227">b.</span><span class="sxs-lookup"><span data-stu-id="9c53c-227">b.</span></span> <span data-ttu-id="9c53c-228">Klikněte na tlačítko **uložit zaměstnanci**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-228">Click **Save Employees**.</span></span>
+    <span data-ttu-id="5a656-227">b.</span><span class="sxs-lookup"><span data-stu-id="5a656-227">b.</span></span> <span data-ttu-id="5a656-228">Klikněte na tlačítko **uložit zaměstnanci**.</span><span class="sxs-lookup"><span data-stu-id="5a656-228">Click **Save Employees**.</span></span>
 
 >[!NOTE]
-><span data-ttu-id="9c53c-229">Můžete použít všechny ostatní lidskosti uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované lidskosti zřídit AAD uživatelské účty.</span><span class="sxs-lookup"><span data-stu-id="9c53c-229">You can use any other Humanity user account creation tools or APIs provided by Humanity to provision AAD user accounts.</span></span>
+><span data-ttu-id="5a656-229">Můžete použít všechny ostatní lidskosti uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované lidskosti tooprovision AAD uživatelské účty.</span><span class="sxs-lookup"><span data-stu-id="5a656-229">You can use any other Humanity user account creation tools or APIs provided by Humanity tooprovision AAD user accounts.</span></span>
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="9c53c-230">Přiřazení testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="9c53c-230">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="5a656-230">Přiřazení hello Azure AD testovacího uživatele</span><span class="sxs-lookup"><span data-stu-id="5a656-230">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="9c53c-231">V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu lidskosti.</span><span class="sxs-lookup"><span data-stu-id="9c53c-231">In this section, you enable Britta Simon to use Azure single sign-on by granting access to Humanity.</span></span>
+<span data-ttu-id="5a656-231">V této části povolíte tak, že udělíte přístup tooHumanity toouse Britta Simon Azure jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="5a656-231">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooHumanity.</span></span>
 
 ![Přiřadit uživatele][200] 
 
-<span data-ttu-id="9c53c-233">**Pokud chcete přiřadit Britta Simon lidskosti, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="9c53c-233">**To assign Britta Simon to Humanity, perform the following steps:**</span></span>
+<span data-ttu-id="5a656-233">**tooassign Britta Simon tooHumanity, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="5a656-233">**tooassign Britta Simon tooHumanity, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="9c53c-234">Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-234">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="5a656-234">V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="5a656-234">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Přiřadit uživatele][201] 
 
-2. <span data-ttu-id="9c53c-236">V seznamu aplikací vyberte **lidskosti**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-236">In the applications list, select **Humanity**.</span></span>
+2. <span data-ttu-id="5a656-236">V seznamu aplikace hello vyberte **lidskosti**.</span><span class="sxs-lookup"><span data-stu-id="5a656-236">In hello applications list, select **Humanity**.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-shiftplanning-tutorial/tutorial_humanity_app.png) 
 
-3. <span data-ttu-id="9c53c-238">V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="9c53c-238">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="5a656-238">V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="5a656-238">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Přiřadit uživatele][202] 
 
-4. <span data-ttu-id="9c53c-240">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="9c53c-240">Click **Add** button.</span></span> <span data-ttu-id="9c53c-241">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="9c53c-241">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="5a656-240">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="5a656-240">Click **Add** button.</span></span> <span data-ttu-id="5a656-241">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="5a656-241">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Přiřadit uživatele][203]
 
-5. <span data-ttu-id="9c53c-243">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.</span><span class="sxs-lookup"><span data-stu-id="9c53c-243">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="5a656-243">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.</span><span class="sxs-lookup"><span data-stu-id="5a656-243">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="9c53c-244">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="9c53c-244">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="5a656-244">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="5a656-244">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="9c53c-245">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="9c53c-245">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="5a656-245">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="5a656-245">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="9c53c-246">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="9c53c-246">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="5a656-246">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="5a656-246">Testing single sign-on</span></span>
 
-<span data-ttu-id="9c53c-247">V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="9c53c-247">In this section, you test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="5a656-247">V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="5a656-247">In this section, you test your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="9c53c-248">Když kliknete na dlaždici lidskosti na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci lidskosti.</span><span class="sxs-lookup"><span data-stu-id="9c53c-248">When you click the Humanity tile in the Access Panel, you should get automatically signed-on to your Humanity application.</span></span>
-<span data-ttu-id="9c53c-249">Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="9c53c-249">For more information about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).</span></span>
+<span data-ttu-id="5a656-248">Když kliknete na dlaždici lidskosti hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour lidskosti aplikace.</span><span class="sxs-lookup"><span data-stu-id="5a656-248">When you click hello Humanity tile in hello Access Panel, you should get automatically signed-on tooyour Humanity application.</span></span>
+<span data-ttu-id="5a656-249">Další informace o hello přístupového panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="5a656-249">For more information about hello Access Panel, see [Introduction toohello Access Panel](active-directory-saas-access-panel-introduction.md).</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="9c53c-250">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="9c53c-250">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="5a656-250">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="5a656-250">Additional resources</span></span>
 
-* [<span data-ttu-id="9c53c-251">Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="9c53c-251">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="9c53c-252">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="9c53c-252">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="5a656-251">Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="5a656-251">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="5a656-252">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="5a656-252">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

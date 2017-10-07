@@ -1,6 +1,6 @@
 ---
-title: "Základní rozhraní příkazového řádku pro úlohy virtuálního počítače s Windows | Microsoft Docs"
-description: "Základní rozhraní příkazového řádku Azure k vytváření a správě virtuálních počítačů Windows ve službě Správce prostředků Azure"
+title: "příkazy aaaBasic rozhraní příkazového řádku pro úlohy virtuálního počítače s Windows | Microsoft Docs"
+description: "Základní rozhraní příkazového řádku Azure příkazy toocreate a spravovat virtuální počítače Windows ve službě Správce prostředků Azure"
 services: virtual-machines-windows
 documentationcenter: 
 author: dlepow
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/23/2016
 ms.author: danlep
-ms.openlocfilehash: 1ec1e0d5499e0a4da02a26bfb71a1117d920e7f5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3b5db7ae0017cb4713785539c96f7550b5a9bdab
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="common-azure-cli-commands-for-virtual-machine-tasks-in-the-resource-manager-deployment-model"></a><span data-ttu-id="0279d-103">Běžné příkazy příkazového řádku Azure CLI pro úlohy virtuálního počítače v modelu nasazení Resource Manager</span><span class="sxs-lookup"><span data-stu-id="0279d-103">Common Azure CLI commands for virtual machine tasks in the Resource Manager deployment model</span></span>
-<span data-ttu-id="0279d-104">Tento článek popisuje běžné příkazy rozhraní příkazového řádku Azure (Azure CLI) vytvářet a spravovat virtuální počítače v modelu nasazení Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="0279d-104">This article shows common Azure Command-Line Interface (Azure CLI) commands to create and manage VMs in the Resource Manager deployment model.</span></span> 
+# <a name="common-azure-cli-commands-for-virtual-machine-tasks-in-hello-resource-manager-deployment-model"></a><span data-ttu-id="20b23-103">Běžné příkazy příkazového řádku Azure CLI pro úlohy virtuálního počítače v modelu nasazení Resource Manager hello</span><span class="sxs-lookup"><span data-stu-id="20b23-103">Common Azure CLI commands for virtual machine tasks in hello Resource Manager deployment model</span></span>
+<span data-ttu-id="20b23-104">Tento článek ukazuje běžné toocreate příkazy rozhraní příkazového řádku Azure (Azure CLI) a spravovat virtuální počítače v modelu nasazení Resource Manager hello.</span><span class="sxs-lookup"><span data-stu-id="20b23-104">This article shows common Azure Command-Line Interface (Azure CLI) commands toocreate and manage VMs in hello Resource Manager deployment model.</span></span> 
 
 [!INCLUDE [virtual-machines-common-cli-manage](../../../includes/virtual-machines-common-cli-manage.md)]
 
