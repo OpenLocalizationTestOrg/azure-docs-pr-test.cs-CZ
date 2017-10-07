@@ -1,5 +1,5 @@
 ---
-title: "Umístění POP Azure CDN | Microsoft Docs"
+title: "aaaAzure umístění POP CDN | Microsoft Docs"
 description: "Toto téma uvádí umístění bodů přítomnosti Azure CDN."
 services: cdn
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 7c13931aa6d17036e59674cdd917e3ca221ac57f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8f10afb12c168aa610f996f1e49b0ef133f2236a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cdn-pop-locations"></a>Lokality POP v Azure CDN
 Toto téma uvádí aktuální umístění POP pro **Azure CDN společnosti Verizon** a **Azure CDN společnosti Akamai**.
@@ -26,7 +26,7 @@ Toto téma uvádí aktuální umístění POP pro **Azure CDN společnosti Veriz
 > [!IMPORTANT]
 > \***Azure CDN společnosti Akamai** umístění POP nejsou uvedeny jednotlivě.  
 > 
-> Oba poskytovatelé, kteří mají odlišné způsoby vytváření své infrastruktury CDN.  Doporučujeme před použitím umístění POP rozhodnout, které produktů Azure CDN používat a místo toho zvažte funkcí a výkonu koncového uživatele.  Testování výkonu obou zprostředkovatelům vybrat správné produktů Azure CDN pro vaše uživatele. 
+> Oba poskytovatelé, kteří mají odlišné způsoby vytváření své infrastruktury CDN.  Doporučujeme před použitím toodecide umístění POP, které Azure CDN toouse produktu a místo toho zvažte funkcí a výkonu koncového uživatele.  Testování výkonu hello s oba poskytovatelé toochoose hello správné produktů CDN Azure pro vaše uživatele. 
 > 
 > 
 
@@ -44,5 +44,5 @@ Toto téma uvádí aktuální umístění POP pro **Azure CDN společnosti Veriz
 | Austrálie a Nový Zéland |Melbourne, Austrálie<br />Sydney, Austrálie |**& #x 2713;**\* |
 
 ## <a name="see-also"></a>Viz také
-* [Chcete-li získat nejnovější IP adresy pro vytvoření seznamu povolených Azure API uzly okraj CDN](https://docs.microsoft.com/en-us/rest/api/cdn/edgenodes)
+* [Azure CDN Edge uzly API tooget nejnovější IP adresy pro vytvoření seznamu povolených](https://docs.microsoft.com/en-us/rest/api/cdn/edgenodes)
 

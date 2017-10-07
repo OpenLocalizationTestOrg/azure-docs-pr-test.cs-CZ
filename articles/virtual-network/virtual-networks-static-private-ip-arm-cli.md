@@ -1,6 +1,6 @@
 ---
-title: "Nakonfigurovat privátní IP adresy pro virtuální počítače - 2.0 rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat privátní IP adresy pro virtuální počítače pomocí rozhraní příkazového řádku Azure (CLI) 2.0."
+title: "aaaConfigure privátních IP adres pro virtuální počítače - 2.0 rozhraní příkazového řádku Azure | Microsoft Docs"
+description: "Zjistěte, jak hello tooconfigure privátních IP adres pro virtuální počítače pomocí rozhraní příkazového řádku Azure (CLI) 2.0."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,45 +16,45 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 071156367c1f819a00d31f1d0335e301391fda81
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0e278e6ac63c0cda061cf70ab0edfaff5491c03b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli-20"></a>Nakonfigurovat privátní IP adresy pro virtuální počítač pomocí Azure CLI 2.0
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-hello-azure-cli-20"></a>Nakonfigurovat privátní IP adresy pro virtuální počítač pomocí hello 2.0 rozhraní příkazového řádku Azure
 
 [!INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
 
 
-## <a name="cli-versions-to-complete-the-task"></a>Verze rozhraní příkazového řádku pro dokončení úlohy 
+## <a name="cli-versions-toocomplete-hello-task"></a>Úloha hello toocomplete verze rozhraní příkazového řádku 
 
-K dokončení úlohy můžete využít jednu z následujících verzí rozhraní příkazového řádku: 
+Můžete dokončit hello úloh pomocí jedné z hello následující verze rozhraní příkazového řádku: 
 
-- [Azure CLI 1.0](virtual-networks-static-private-ip-cli-nodejs.md) – naše rozhraní příkazového řádku pro klasické modely nasazení a modely nasazení správy prostředků 
-- [Azure CLI 2.0](#specify-a-static-private-ip-address-when-creating-a-vm) -naší nové generace rozhraní příkazového řádku pro správu model nasazení prostředku (v tomto článku)
+- [Azure CLI 1.0](virtual-networks-static-private-ip-cli-nodejs.md) – naše rozhraní příkazového řádku pro hello classic a resource správy nasazení modely 
+- [Azure CLI 2.0](#specify-a-static-private-ip-address-when-creating-a-vm) -naší nové generace rozhraní příkazového řádku pro model nasazení prostředků správu hello (v tomto článku)
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Tento článek se týká modelu nasazení Resource Manager. Můžete také [spravovat statickou privátní IP adresou v modelu nasazení classic](virtual-networks-static-private-ip-classic-cli.md).
+Tento článek se týká modelu nasazení Resource Manager hello. Můžete také [spravovat statickou privátní IP adresou v modelu nasazení classic hello](virtual-networks-static-private-ip-classic-cli.md).
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
 > [!NOTE]
-> Vzorové příkazy Azure CLI 2.0 níže očekávat jednoduché prostředí již vytvořeny. Pokud chcete ke spuštění příkazů, jak jsou zobrazeny v tomto dokumentu, nejprve vytvořit testovací prostředí popsané v [vytvoření virtuální sítě](virtual-networks-create-vnet-arm-cli.md).
+> Hello vzorové Azure CLI 2.0 příkazy níže očekávat jednoduché prostředí již vytvořeny. Pokud chcete příkazy hello toorun, jak jsou zobrazeny v tomto dokumentu, nejprve sestavení hello testovací prostředí popsané v [vytvoření virtuální sítě](virtual-networks-create-vnet-arm-cli.md).
 
 ## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>Při vytváření virtuálního počítače zadat statickou privátní IP adresu
 
-Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíť virtuální sítě s názvem *TestVNet* se statickou privátní IP z *192.168.1.101*, postupujte podle následujících kroků:
+virtuální počítač s názvem toocreate *DNS01* v hello *front-endu* podsíť virtuální sítě s názvem *TestVNet* se statickou privátní IP z *192.168.1.101*, postupujte podle následujících kroků hello:
 
-1. Pokud nebyly dosud, nainstalovat a nakonfigurovat nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlaste se k Azure účet pomocí [az přihlášení](/cli/azure/#login). 
+1. Pokud nebyly dosud, nainstalujete a nakonfigurujete hello nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlaste se pomocí účtu Azure tooan [az přihlášení](/cli/azure/#login). 
 
-2. Vytvoření veřejné IP adresy pro virtuální počítač s [vytvoření veřejné sítě az-ip](/cli/azure/network/public-ip#create) příkaz. Seznam uvedený za výstupem vysvětluje použité parametry.
+2. Vytvoření veřejné IP adresy pro hello virtuálních počítačů s hello [vytvoření veřejné sítě az-ip](/cli/azure/network/public-ip#create) příkaz. Hello seznam uvedený za výstup hello vysvětluje použité parametry hello.
 
     > [!NOTE]
-    > Vám může potřebujete nebo chcete použít různé hodnoty pro vaše argumenty v tomto a dalších krocích, v závislosti na vašem prostředí.
+    > Můžete chtít nebo potřebovat toouse různé hodnoty pro vaše argumenty v tomto a dalších krocích v závislosti na vašem prostředí.
    
     ```azurecli
     az network public-ip create \
@@ -78,11 +78,11 @@ Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíť 
     }
     ```
 
-   * `--resource-group`: Název skupiny prostředků, ve kterém k vytvoření veřejné IP adresy.
-   * `--name`: Název veřejné IP adresy.
-   * `--location`: Oblast azure, ve kterém k vytvoření veřejné IP adresy.
+   * `--resource-group`: Název skupiny prostředků hello toocreate veřejné IP hello.
+   * `--name`: Název veřejné IP adresy hello.
+   * `--location`: Oblast azure, ve které toocreate hello veřejnou IP adresu.
 
-3. Spustit [vytvořit síťových adaptérů sítě az](/cli/azure/network/nic#create) příkaz pro vytvoření síťový adaptér se statickou privátní IP. Seznam uvedený za výstupem vysvětluje použité parametry. 
+3. Spustit hello [vytvořit síťových adaptérů sítě az](/cli/azure/network/nic#create) příkaz toocreate síťový adaptér se statickou privátní IP. Hello seznam uvedený za výstup hello vysvětluje použité parametry hello. 
    
     ```azurecli
     az network nic create \
@@ -130,11 +130,11 @@ Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíť 
     
     Parametry:
 
-    * `--private-ip-address`: Statickou privátní IP adresou pro síťovou kartu.
-    * `--vnet-name`: Název sítě VNet, ve které chcete vytvořit síťovou kartu.
-    * `--subnet`: Název podsítě, ve které chcete vytvořit síťovou kartu.
+    * `--private-ip-address`: Statickou privátní IP adresou pro hello síťový adaptér.
+    * `--vnet-name`: Název hello sítě vnet, ve které toocreate hello síťový adaptér.
+    * `--subnet`: Název hello podsítě, ve které toocreate hello síťový adaptér.
 
-4. Spustit [vytvoření virtuálního počítače azure](/cli/azure/vm/nic#create) příkaz pro vytvoření virtuálního počítače pomocí veřejné IP adresy a síťovou kartu, vytvořili výše. Seznam uvedený za výstupem vysvětluje použité parametry.
+4. Spustit hello [vytvoření virtuálního počítače azure](/cli/azure/vm/nic#create) hello toocreate příkaz virtuálního počítače pomocí hello veřejná IP adresa a síťovou kartu vytvořili výše. Hello seznam uvedený za výstup hello vysvětluje použité parametry hello.
    
     ```azurecli
     az vm create \
@@ -162,14 +162,14 @@ Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíť 
     }
     ```
    
-   Parametry než základní [vytvořit virtuální počítač az](/cli/azure/vm#create) parametry.
+   Parametry než hello základní [vytvořit virtuální počítač az](/cli/azure/vm#create) parametry.
 
-   * `--nics`: Název síťové karty, ke kterému je připojený virtuální počítač.
+   * `--nics`: Název hello seskupování toowhich hello virtuální počítač je připojený.
    
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Načíst statickou privátní IP adresu informace pro virtuální počítač
 
-Chcete-li zobrazit statickou privátní IP adresou, kterou jste vytvořili, pomocí následujícího příkazu příkazového řádku Azure CLI a sledovat hodnoty *alokační metody privátní IP* a *privátní IP adresa*:
+Spusťte následující příkaz rozhraní příkazového řádku Azure hello tooview hello statickou privátní IP adresu, která jste vytvořili, a sledovat hello hodnoty pro *alokační metody privátní IP* a *privátní IP adresa*:
 
 ```azurecli
 az vm show -g TestRG -n DNS01 --show-details --query 'privateIps'
@@ -181,7 +181,7 @@ Očekávaný výstup:
 "192.168.1.101"
 ```
 
-Pokud chcete zobrazit konkrétní informace o IP síťového adaptéru pro tento virtuální počítač, konkrétně dotaz na síťový adaptér:
+toodisplay hello konkrétně pro konkrétní IP informace hello síťovou kartu pro tento virtuální počítač, dotaz hello síťovou kartu:
 
 ```azurecli
 az network nic show \
@@ -191,7 +191,7 @@ az network nic show \
 rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 ```
 
-Výstup bude podobný tomuto:
+výstup Hello se něco podobného jako:
 
 ```json
 {
@@ -206,11 +206,11 @@ Výstup bude podobný tomuto:
 
 Statickou privátní IP adresu nelze odebrat z síťový adaptér v Azure CLI pro nasazení resource manager. Postupujte takto:
 - Vytvořte novou síťovou kartu, která používá dynamický IP
-- Nastavení síťového adaptéru ve virtuálních počítačů na nově vytvořený síťový adaptér. 
+- Nastavit hello síťový adaptér na hello hello virtuálních počítačů nově vytvořený síťový adaptér. 
 
-Chcete-li změnit síťový adaptér pro virtuální počítač používá v předchozích příkazech, postupujte podle následujících kroků.
+toochange hello síťovou kartu pro hello virtuálních počítačů použita v hello příkazů výše, postupujte podle kroků hello níže.
 
-1. Spustit **síťových adaptérů sítě azure vytvořit** příkaz pro vytvoření nové síťové karty pomocí dynamické přidělování IP adres s novou IP adresu. Všimněte si, protože není zadána žádná IP adresa, metoda přidělení **dynamické**.
+1. Spustit hello **síťových adaptérů sítě azure vytvořit** příkaz toocreate nový síťový adaptér pomocí dynamické přidělování IP adres s novou IP adresu. Všimněte si, protože není zadána žádná IP adresa, metoda přidělení hello **dynamické**.
 
     ```azurecli
     az network nic create     \
@@ -255,7 +255,7 @@ Chcete-li změnit síťový adaptér pro virtuální počítač používá v př
     }
     ```
 
-2. Spustit **sada virtuálních počítačů azure** příkazu změníte na síťový adaptér použit ve virtuálním počítači.
+2. Spustit hello **sada virtuálních počítačů azure** příkaz toochange hello síťový adaptér používá hello virtuálních počítačů.
    
     ```azurecli
     azure vm set -g TestRG -n DNS01 -N TestNIC2
@@ -274,10 +274,10 @@ Chcete-li změnit síťový adaptér pro virtuální počítač používá v př
     ```
 
     > [!NOTE]
-    > Pokud je dostatečně velký pro mít více než jeden síťový adaptér virtuálního počítače, spusťte **odstranit síťových adaptérů sítě azure** příkaz k odstranění původního síťový adaptér.
+    > Pokud hello virtuálního počítače je dostatečně velké na to toohave více než jeden síťový adaptér, spusťte hello **odstranit síťových adaptérů sítě azure** příkaz toodelete hello staré síťový adaptér.
    
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [vyhrazené veřejné IP adresy](virtual-networks-reserved-public-ip.md) adresy.
 * Další informace o [veřejné IP (splnění) na úrovni instance](virtual-networks-instance-level-public-ip.md) adresy.
-* Obrátit [vyhrazené IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx).
+* Poraďte se hello [vyhrazené IP rozhraní REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx).
 

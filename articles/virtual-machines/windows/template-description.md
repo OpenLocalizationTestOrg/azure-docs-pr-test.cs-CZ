@@ -1,6 +1,6 @@
 ---
-title: "Virtuální počítače v šablonu Azure Resource Manager | Microsoft Azure"
-description: "Další informace o tom, jak je definován prostředek virtuálního počítače v šablonu Azure Resource Manager."
+title: "aaaVirtual počítačů v šablonu Azure Resource Manager | Microsoft Azure"
+description: "Další informace o tom, jak je definován prostředek virtuálního počítače hello v šablonu Azure Resource Manager."
 services: virtual-machines-windows
 documentationcenter: 
 author: davidmu1
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.openlocfilehash: d9b9121bc5e38396ba4def6c17f9b373c2b48056
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 94adcbe5bf44be72ffc1b920461aed15c4fc025f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuální počítače v šablonu Azure Resource Manager
 
-Tento článek popisuje aspekty šablony Azure Resource Manager, které se vztahují na virtuální počítače. Tento článek popisuje kompletní šablonu pro vytvoření virtuálního počítače; k tomu potřebujete definice prostředku pro účty úložiště, síťová rozhraní, veřejné IP adresy a virtuální sítě. Další informace o tom, jak tyto prostředky je možné definovat společně najdete v tématu [názorný Průvodce šablonou Resource Manageru](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Tento článek popisuje aspekty šablony Azure Resource Manager, které se vztahují toovirtual počítače. Tento článek popisuje kompletní šablonu pro vytvoření virtuálního počítače; k tomu potřebujete definice prostředku pro účty úložiště, síťová rozhraní, veřejné IP adresy a virtuální sítě. Další informace o tom, jak tyto prostředky je možné definovat společně najdete v tématu hello [názorný Průvodce šablonou Resource Manageru](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 
-Existuje mnoho [šablony v galerii](https://azure.microsoft.com/documentation/templates/?term=VM) , zahrnout prostředků virtuálního počítače. Ne všechny elementy, které můžou být součástí šablony jsou popsané v tomto poli.
+Existuje mnoho [šablony v galerii hello](https://azure.microsoft.com/documentation/templates/?term=VM) , zahrnout hello prostředků virtuálního počítače. Ne všechny elementy, které můžou být součástí šablony jsou popsané v tomto poli.
 
 Tento příklad ukazuje oddíl typické prostředků šablony pro vytvoření zadaný počet virtuálních počítačů:
 
@@ -145,21 +145,21 @@ Tento příklad ukazuje oddíl typické prostředků šablony pro vytvoření za
 ``` 
 
 > [!NOTE] 
->Tento příklad spoléhá na účet úložiště, která byla dříve vytvořena. Můžete vytvořit účet úložiště po nasazení ze šablony. V příkladu se také závisí na rozhraní sítě a jeho závislé prostředky, které by definované v šabloně. Tyto prostředky se nezobrazí v příkladu.
+>Tento příklad spoléhá na účet úložiště, která byla dříve vytvořena. Můžete vytvořit účet úložiště hello nasazením z šablony hello. Příklad Hello také závisí na rozhraní sítě a jeho závislé prostředky, které by definované v šabloně hello. Tyto prostředky se nezobrazí v příkladu hello.
 >
 >
 
 ## <a name="api-version"></a>Verze rozhraní API
 
-Když nasadíte prostředky pomocí šablony, budete muset určit verzi rozhraní API používat. V příkladu prostředek virtuálního počítače pomocí tohoto elementu apiVersion:
+Když nasadíte prostředky pomocí šablony, máte toospecify verzi rozhraní API toouse hello. Příklad Hello ukazuje hello prostředek virtuálního počítače pomocí tohoto elementu apiVersion:
 
 ```
 "apiVersion": "2016-04-30-preview",
 ```
 
-Verze rozhraní API, které zadáte v šabloně ovlivňuje vlastnosti, které definujete v šabloně. Obecně byste měli vybrat nejnovější verzi rozhraní API, při vytváření šablony. Pro existující šablony můžete rozhodnout, jestli chcete pokračovat, pomocí dřívější verze rozhraní API nebo aktualizaci šablony na nejnovější verzi, abyste mohli využívat nové funkce.
+Hello verzi hello rozhraní API, které zadáte v šabloně ovlivňuje vlastnosti, které definujete v šabloně hello. Obecně byste měli vybrat hello nejnovější verzi rozhraní API, při vytváření šablony. Pro existující šablony můžete rozhodnout, zda chcete toocontinue pomocí dřívější verze rozhraní API nebo aktualizaci šablony pro hello nejnovější verze tootake výhod nových funkcí.
 
-Použijte tyto příležitosti pro získání nejnovější verze rozhraní API:
+Použijte tyto příležitosti pro získání hello nejnovější verze rozhraní API:
 
 - Rozhraní API REST - [zobrazit seznam všech poskytovatelů prostředků](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
 - PowerShell – [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
@@ -167,7 +167,7 @@ Použijte tyto příležitosti pro získání nejnovější verze rozhraní API:
 
 ## <a name="parameters-and-variables"></a>Parametry a proměnné
 
-[Parametry](../../resource-group-authoring-templates.md) usnadní zadejte hodnoty pro šablonu, když jej spustíte. V příkladu se používá v této části Parametry:
+[Parametry](../../resource-group-authoring-templates.md) usnadní vám toospecify hodnoty pro šablonu hello při každém spuštění. V příkladu hello se používá v této části Parametry:
 
 ```        
 "parameters": {
@@ -177,9 +177,9 @@ Použijte tyto příležitosti pro získání nejnovější verze rozhraní API:
 },
 ```
 
-Když nasadíte příklad šablony, zadejte hodnoty pro název a heslo účtu správce na každý virtuální počítač a počet virtuálních počítačů k vytvoření. Máte možnost zadání hodnot parametrů do samostatného souboru, který je spravován pomocí šablony, nebo zadáním hodnot po zobrazení výzvy.
+Když nasadíte hello příklad šablony, zadejte hodnoty pro hello jméno a heslo účtu správce hello na každý virtuální počítač a hello počet toocreate virtuálních počítačů. Máte možnost hello zadání hodnot parametrů do samostatného souboru, který je spravován pomocí šablony hello nebo zadáním hodnot po zobrazení výzvy.
 
-[Proměnné](../../resource-group-authoring-templates.md) snadno nastavit hodnoty v šabloně jsou opakovaně použít v celé jeho nebo můžou časem změnit. V příkladu se používá v této části proměnné:
+[Proměnné](../../resource-group-authoring-templates.md) usnadní vám tooset hodnot v šabloně hello jsou opakovaně použít v celé jeho nebo můžou časem změnit. Tato část proměnné se používá v příkladu hello:
 
 ```
 "variables": { 
@@ -212,11 +212,11 @@ Když nasadíte příklad šablony, zadejte hodnoty pro název a heslo účtu sp
 }, 
 ```
 
-Při nasazování šablony Příklad hodnoty proměnné se používají pro název a identifikátor dříve vytvořený účet úložiště. Proměnné se taky používají k zadání nastavení pro rozšíření diagnostiky. Použití [osvědčené postupy pro vytváření šablon Azure Resource Manager](../../resource-manager-template-best-practices.md) vám pomohou rozhodnout, jak chcete struktury parametrů a proměnných ve vaší šabloně.
+Při nasazování šablony příklad hello hodnoty proměnné se používají pro hello název a identifikátor hello vytvořili účet úložiště. Proměnné jsou také použít tooprovide hello nastavení pro rozšíření diagnostiky hello. Použití hello [osvědčené postupy pro vytváření šablon Azure Resource Manager](../../resource-manager-template-best-practices.md) toohelp můžete určit, jak mají toostructure hello parametrů a proměnných ve vaší šabloně.
 
 ## <a name="resource-loops"></a>Smyčky prostředků
 
-Pokud potřebujete více než jeden virtuální počítač pro vaši aplikaci, můžete použít element kopírování v šabloně. Tento volitelný element projde vytváření počet virtuálních počítačů, které jste zadali jako parametr:
+Pokud potřebujete více než jeden virtuální počítač pro vaši aplikaci, můžete použít element kopírování v šabloně. Tento volitelný element projde vytváření hello počet virtuálních počítačů, které jste zadali jako parametr:
 
 ```
 "copy": {
@@ -225,7 +225,7 @@ Pokud potřebujete více než jeden virtuální počítač pro vaši aplikaci, m
 },
 ```
 
-Všimněte si také, v příkladu, index smyčky se používá při zadávání některé hodnoty pro prostředek. Například pokud jste zadali počet instancí tří, názvy disků operačního systému jsou myOSDisk1, myOSDisk2 a myOSDisk3:
+Všimněte si v příkladu hello, který hello index smyčky se také používá při zadání některé z hello hodnoty pro prostředek hello. Například pokud jste zadali počet instancí názvů tři, hello hello disků operačního systému jsou myOSDisk1, myOSDisk2 a myOSDisk3:
 
 ```
 "osDisk": { 
@@ -236,11 +236,11 @@ Všimněte si také, v příkladu, index smyčky se používá při zadávání 
 ```
 
 > [!NOTE] 
->Tento příklad používá spravované disky pro virtuální počítače.
+>Tento příklad používá spravované disky pro virtuální počítače hello.
 >
 >
 
-Mějte na paměti, že vytváření smyčku pro jeden prostředek v šabloně, může vyžadovat použití smyčky při vytváření nebo přístup k dalším prostředkům. Například víc virtuálních počítačů nemůžou použít stejný síťového rozhraní, pokud vaše šablona projde vytváření tři virtuální počítače musí také cykly procesem vytvoření tři síťových rozhraní. Při přiřazování síťové rozhraní virtuálního počítače, index smyčky se používá k identifikaci:
+Mějte na paměti, že vytváření smyčku pro jeden prostředek v šabloně hello může vyžadovat jste toouse hello smyčky při vytváření nebo přístup k dalším prostředkům. Víc virtuálních počítačů nelze použít například hello stejné síťové rozhraní, takže pokud vaše šablona projde vytváření tři virtuální počítače musí také cykly procesem vytvoření tři síťových rozhraní. Při přiřazování tooa rozhraní sítě virtuálních počítačů, index smyčky hello je použité tooidentify ho:
 
 ```
 "networkInterfaces": [ { 
@@ -251,7 +251,7 @@ Mějte na paměti, že vytváření smyčku pro jeden prostředek v šabloně, m
 
 ## <a name="dependencies"></a>Závislosti
 
-Většina prostředky závisí na jiné prostředky fungovala správně. Virtuální počítače musí být přidružený k virtuální síti a k provádění potřebuje síťové rozhraní. [DependsOn](../../resource-group-define-dependencies.md) element se používá a ujistěte se, že síťové rozhraní je připravený k použití před vytvořením virtuálních počítačů:
+Většina prostředky závisí na jiné prostředky toowork správně. Virtuální počítače musí být přidružený virtuální sítě a toodo, že tato služba vyžaduje síťové rozhraní. Hello [dependsOn](../../resource-group-define-dependencies.md) element je použité toomake se rozhraní sítě, hello je připraven toobe využít, než se vytvoří virtuální počítače hello:
 
 ```
 "dependsOn": [
@@ -259,9 +259,9 @@ Většina prostředky závisí na jiné prostředky fungovala správně. Virtuá
 ],
 ```
 
-Správce prostředků nasadí současně všechny prostředky, které nejsou závislé na jiný prostředek nasazuje. Buďte opatrní při nastavení závislostí, protože můžou nechtěně způsobit snížení nasazení tak, že zadáte nepotřebné závislosti. Závislosti můžete zřetězené prostřednictvím více prostředků. Síťové rozhraní, například závisí na veřejnou IP adresu a virtuální síťové prostředky.
+Správce prostředků nasadí současně všechny prostředky, které nejsou závislé na jiný prostředek nasazuje. Buďte opatrní při nastavení závislostí, protože můžou nechtěně způsobit snížení nasazení tak, že zadáte nepotřebné závislosti. Závislosti můžete zřetězené prostřednictvím více prostředků. Například hello síťové rozhraní závisí na hello veřejnou IP adresu a virtuální síťové prostředky.
 
-Jak poznáte, pokud je třeba provést závislost? Podívejte se na hodnoty, které se nastavují v šabloně. Pokud element body definice prostředků virtuálního počítače na jiný prostředek, který je nasazen do stejné šablony, musíte závislost. Virtuální počítač příklad určují profil sítě:
+Jak poznáte, pokud je třeba provést závislost? Podívejte se na hello hodnoty, které můžete zadat v šabloně hello. Pokud element v definici prostředků virtuálního počítače hello odkazuje tooanother prostředků, která je nasazena v hello stejné šablony, musíte závislost. Virtuální počítač příklad určují profil sítě:
 
 ```
 "networkProfile": { 
@@ -272,11 +272,11 @@ Jak poznáte, pokud je třeba provést závislost? Podívejte se na hodnoty, kte
 },
 ```
 
-Pokud chcete nastavit tuto vlastnost, musí existovat síťové rozhraní. Proto musíte závislost. Musíte taky nastavit závislost, když jeden prostředek (podřízená) je definována v rámci jiný prostředek (nadřazené). Například nastavení pro diagnostiku a rozšíření vlastních skriptů jsou obě definované jako podřízené prostředky virtuálního počítače. Nelze vytvořit dokud virtuální počítač existuje. Proto i prostředky jsou označené jako závislé na virtuálním počítači.
+tooset tato vlastnost musí existovat hello síťové rozhraní. Proto musíte závislost. Musíte taky tooset závislost, když jeden prostředek (podřízená) je definována v rámci jiný prostředek (nadřazené). Například nastavení pro diagnostiku hello a rozšíření vlastních skriptů jsou obě definované jako podřízené prostředky hello virtuálního počítače. Nelze vytvořit dokud hello virtuální počítač existuje. Proto i prostředky jsou označeny jako závislé na hello virtuálního počítače.
 
 ## <a name="profiles"></a>Profily
 
-Několik elementy profil se používá při definování prostředek virtuálního počítače. Některé jsou vyžadovány a některé jsou volitelné. Například položka hardwareProfile, osProfile, storageProfile a networkProfile elementy jsou požadovány, ale diagnosticsProfile je volitelný. Tyto profily definovat nastavení, jako:
+Několik elementy profil se používá při definování prostředek virtuálního počítače. Některé jsou vyžadovány a některé jsou volitelné. Například hello položka hardwareProfile, osProfile, storageProfile a networkProfile elementy jsou požadovány, ale hello diagnosticsProfile je volitelný. Tyto profily definovat nastavení, jako:
    
 - [velikost](sizes.md)
 - [název](/architecture/best-practices/naming-conventions) a přihlašovací údaje
@@ -286,11 +286,11 @@ Několik elementy profil se používá při definování prostředek virtuální
 
 ## <a name="disks-and-images"></a>Disky a obrázků
    
-V Azure, můžete soubory vhd představují [disky nebo bitové kopie](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Pokud operační systém v souboru virtuálního pevného disku se specializuje na konkrétním virtuálním počítači, je jako disk uvedené. Pokud operační systém v souboru virtuálního pevného disku je zobecněn, který se má použít k vytvoření hodně virtuálních počítačů, je jako obrázek uvedené.   
+V Azure, můžete soubory vhd představují [disky nebo bitové kopie](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Když hello operační systém v souboru virtuálního pevného disku je specializovaná toobe konkrétní virtuální počítač, je tooas odkazuje na disk. Když je zobecněn hello operačního systému v souboru vhd toobe používat toocreate hodně virtuálních počítačů, je odkazované tooas bitovou kopii.   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Vytvoření nové virtuální počítače a nové disky z image platformy
 
-Když vytvoříte virtuální počítač, musíte rozhodnout, jaký operační systém používat. Element imageReference element se používá k definování operačního systému nový virtuální počítač. Příklad ukazuje definici pro operační systém Windows Server:
+Když vytvoříte virtuální počítač, musíte rozhodnout, jaké toouse operačního systému. Element imageReference element Hello je použité toodefine hello operační systém nový virtuální počítač. Hello příklad ukazuje definici pro operační systém Windows Server:
 
 ```
 "imageReference": { 
@@ -301,7 +301,7 @@ Když vytvoříte virtuální počítač, musíte rozhodnout, jaký operační s
 },
 ```
 
-Pokud chcete vytvořit operačního systému Linux, můžete použít tuto definici:
+Pokud chcete toocreate operačního systému Linux, můžete použít tuto definici:
 
 ```
 "imageReference": {
@@ -312,7 +312,7 @@ Pokud chcete vytvořit operačního systému Linux, můžete použít tuto defin
 },
 ```
 
-Nastavení konfigurace pro disk operačního systému jsou přiřazeny osDisk element. V příkladu definuje ukládání do mezipaměti režim nastavený na nový disk spravované **ReadWrite** a zda je disk se vytváří z [image platformy](cli-ps-findimage.md):
+Nastavení konfigurace pro disk operačního systému hello jsou přiřazeny hello osDisk element. Hello příklad definuje nový disk spravované hello ukládání do mezipaměti v režimu sadu příliš**ReadWrite** a tento disk hello se vytváří z [image platformy](cli-ps-findimage.md):
 
 ```
 "osDisk": { 
@@ -324,7 +324,7 @@ Nastavení konfigurace pro disk operačního systému jsou přiřazeny osDisk el
 
 ### <a name="create-new-virtual-machines-from-existing-managed-disks"></a>Vytvoření nové virtuální počítače z existujícího spravovaného disků
 
-Pokud chcete vytvořit virtuální počítače z existujícího disků, odeberte elementu imageReference a osProfile elementy a definovat toto nastavení disku:
+Pokud chcete toocreate virtuální počítače z existujícího disků, odeberte element imageReference hello a hello osProfile elementy a definovat toto nastavení disku:
 
 ```
 "osDisk": { 
@@ -339,7 +339,7 @@ Pokud chcete vytvořit virtuální počítače z existujícího disků, odeberte
 
 ### <a name="create-new-virtual-machines-from-a-managed-image"></a>Vytvoření nových virtuálních počítačů ze spravovaných bitové kopie
 
-Pokud chcete vytvořit virtuální počítač z bitové kopie spravované, změňte element elementu imageReference a definovat toto nastavení disku:
+Pokud chcete virtuální počítač z bitové kopie spravované toocreate, změňte hello elementu imageReference element a definovat toto nastavení disku:
 
 ```
 "storageProfile": { 
@@ -357,7 +357,7 @@ Pokud chcete vytvořit virtuální počítač z bitové kopie spravované, změ�
 
 ### <a name="attach-data-disks"></a>Připojte datových disků
 
-Volitelně můžete přidat datových disků do virtuálních počítačů. [Počet disků](sizes.md) závisí na velikosti disku operačního systému, který používáte. S velikostí virtuálních počítačů, nastavte na Standard_DS1_v2 je maximální počet datových disků, které nebylo možné přidat do je dva. V příkladu je přidáván jeden spravovaný datový disk pro každý virtuální počítač:
+Můžete přidat data toohello disky virtuálních počítačů. Hello [počet disků](sizes.md) závisí na velikosti hello disk operačního systému, který používáte. S hello nastavit velikost virtuálních počítačů hello tooStandard_DS1_v2 hello maximální počet datových disků, které nebylo možné přidat toohello je je dva. V příkladu hello jeden spravovaný datový disk je přidáván tooeach virtuálních počítačů:
 
 ```
 "dataDisks": [
@@ -373,7 +373,7 @@ Volitelně můžete přidat datových disků do virtuálních počítačů. [Po�
 
 ## <a name="extensions"></a>Rozšíření
 
-I když [rozšíření](extensions-features.md) jsou samostatné prostředků, úzce jsou svázané s virtuálními počítači. Rozšíření mohou být přidány jako podřízený prostředek virtuálního počítače nebo jako samostatnou prostředek. Příklad ukazuje [rozšíření diagnostiky](extensions-diagnostics-template.md) se přidává do virtuálních počítačů:
+I když [rozšíření](extensions-features.md) jsou samostatné prostředku, jsou úzce vázanou tooVMs. Rozšíření mohou být přidány jako podřízené prostředkem hello virtuálního počítače nebo jako samostatnou prostředek. Příklad Hello ukazuje hello [rozšíření diagnostiky](extensions-diagnostics-template.md) přidávané toohello virtuální počítače:
 
 ```
 { 
@@ -406,9 +406,9 @@ I když [rozšíření](extensions-features.md) jsou samostatné prostředků, �
 },
 ```
 
-Tento prostředek rozšíření používá proměnnou storageName a diagnostiky proměnné zadat hodnoty. Pokud chcete změnit data, která se shromažďují v tomto rozšíření, můžete přidat další čítače výkonu wadperfcounters proměnné. Může se také rozhodnout put diagnostická data do jiného úložiště účtu než kde jsou uloženy disky virtuálních počítačů.
+Tento prostředek rozšíření používá proměnnou storageName hello a hello diagnostiky proměnné tooprovide hodnoty. Pokud chcete toochange hello data, která se shromažďují v tomto rozšíření, můžete přidat další výkonu čítače toohello wadperfcounters proměnné. Může také zvolit tooput hello diagnostická data do jiného úložiště účtu než kde jsou uloženy hello disky virtuálních počítačů.
 
-Existuje mnoho rozšíření, které můžete nainstalovat na virtuální počítač, ale je velmi užitečné pravděpodobně [rozšíření vlastních skriptů](extensions-customscript.md). V příkladu spustí skript prostředí PowerShell s názvem start.ps1 na každý virtuální počítač při prvním spuštění:
+Existuje mnoho rozšíření, které můžete nainstalovat na virtuálním počítači, avšak hello nejužitečnější je pravděpodobně hello [rozšíření vlastních skriptů](extensions-customscript.md). V příkladu hello spustí skript prostředí PowerShell s názvem start.ps1 na každý virtuální počítač při prvním spuštění:
 
 ```
 {
@@ -435,26 +435,26 @@ Existuje mnoho rozšíření, které můžete nainstalovat na virtuální počí
 }
 ```
 
-Skript start.ps1 lze provádět mnoho úkoly konfigurace. Například nejsou inicializovány datových disků, které jsou přidány do virtuálních počítačů v příkladu; můžete použít vlastní skript k chybě při inicializaci je. Pokud máte více spuštění úlohy uděláte, můžete použít soubor start.ps1 volat jiné skripty prostředí PowerShell v úložišti Azure. Tento příklad používá prostředí PowerShell, ale můžete použít libovolnou skriptování metodu, která je k dispozici v operačním systému, který používáte.
+skript start.ps1 Hello lze provádět mnoho úkoly konfigurace. Například nejsou inicializovány hello datových disků, které jsou přidány toohello virtuálních počítačů v příkladu hello; můžete použít vlastní skript tooinitialize je. Pokud máte více toodo spuštění úlohy, můžete hello start.ps1 souboru toocall jiné skripty prostředí PowerShell v úložišti Azure. Příklad Hello používá prostředí PowerShell, ale můžete použít libovolnou skriptování metodu, která je dostupná na hello operačního systému, který používáte.
 
-Stav nainstalovaného rozšíření z nastavení rozšíření na portálu můžete zobrazit:
+Můžete zobrazit stav hello hello nainstalovaná rozšíření z nastavení rozšíření hello hello portálu:
 
 ![Načíst stav rozšíření](./media/template-description/virtual-machines-show-extensions.png)
 
-Můžete také získat informace o rozšíření pomocí **Get-AzureRmVMExtension** příkazu Powershellu **get rozšíření virtuálního počítače** příkaz Azure CLI 2.0 nebo **získat informace o rozšíření** ROZHRANÍ REST API.
+Můžete také získat informace o rozšíření pomocí hello **Get-AzureRmVMExtension** prostředí PowerShell příkaz hello **get rozšíření virtuálního počítače** příkaz Azure CLI 2.0 nebo hello **získat informace o rozšíření**  Rozhraní REST API.
 
 ## <a name="deployments"></a>Nasazení
 
-Při nasazení šablony Azure sleduje prostředky nasazené jako skupina a automaticky přiřadí název této skupiny nasazené. Název nasazení je stejný jako název šablony.
+Při nasazení šablony Azure sleduje hello prostředky, které jste nasadili jako skupina a automaticky přiřadí skupinu název toothis nasazení. Název Hello hello nasazení je hello stejný jako název hello hello šablony.
 
-Pokud jste zvědaví o stavu prostředků v nasazení, můžete v okně skupiny prostředků na portálu Azure:
+Pokud jste zvědaví o hello stavu prostředků v hello nasazení, můžete okna skupina prostředků hello v hello portálu Azure:
 
 ![Získat informace o nasazení](./media/template-description/virtual-machines-deployment-info.png)
     
-Není problém používat stejné šablony vytvořit prostředky nebo aktualizovat existující prostředky. Při použití příkazů pro nasazení šablon, máte možnost k vyslovení který [režimu](../../resource-group-template-deploy.md) chcete použít. Režim může být nastaven na hodnotu **Complete** nebo **přírůstkové**. Ve výchozím nastavení se přírůstkové aktualizace. Buďte opatrní při používání **Complete** režimu vzhledem k tomu, že omylem může odstranit prostředky. Pokud nastavíte režim na **Complete**, odstraní všechny prostředky ve skupině prostředků, které nejsou v šabloně Resource Manager.
+Není problém toouse hello stejné prostředky toocreate šablony nebo tooupdate existující prostředky. Při použití šablony toodeploy příkazy, máte možnost toosay hello který [režimu](../../resource-group-template-deploy.md) chcete toouse. režim Hello lze nastavit tooeither **Complete** nebo **přírůstkové**. Výchozí hodnota Hello je toodo přírůstkové aktualizace. Buďte opatrní při používání hello **Complete** režimu vzhledem k tomu, že omylem může odstranit prostředky. Pokud nastavíte režim hello příliš**Complete**, odstraní všechny prostředky ve skupině prostředků hello, které nejsou v šabloně hello Resource Manager.
 
 ## <a name="next-steps"></a>Další kroky
 
 - Vytvoření vlastní šablony pomocí [šablon pro tvorbu Azure Resource Manageru](../../resource-group-authoring-templates.md).
-- Nasazení šablony, který jste vytvořili pomocí [vytvoření virtuálního počítače s Windows pomocí šablony Resource Manageru](ps-template.md).
-- Zjistěte, jak spravovat virtuální počítače, které jste vytvořili kontrolou [vytvořit a spravovat virtuální počítače Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Nasazení šablony hello, který jste vytvořili pomocí [vytvoření virtuálního počítače s Windows pomocí šablony Resource Manageru](ps-template.md).
+- Zjistěte, jak toomanage hello virtuálních počítačů, které jste vytvořili kontrolou [vytvořit a spravovat virtuální počítače Windows hello modul Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

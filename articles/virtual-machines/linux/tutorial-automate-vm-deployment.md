@@ -1,6 +1,6 @@
 ---
-title: "Přizpůsobení virtuálního počítače s Linuxem na při prvním spuštění v Azure | Microsoft Docs"
-description: "Další informace o použití cloudu init a Key Vault pro virtuální počítače s Linuxem customze při prvním spuštění v Azure"
+title: "aaaCustomize virtuálního počítače s Linuxem na při prvním spuštění v Azure | Microsoft Docs"
+description: "Zjistěte, jak cloudové inicializací toouse a Key Vault toocustomze virtuální počítače s Linuxem hello prvním spuštění v Azure"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,35 +16,35 @@ ms.workload: infrastructure
 ms.date: 08/11/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 6adf4e43aa80c28c6f5f8d8a071966323ba85723
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 280189723ac0205226f9c0068bd605da13249ace
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-customize-a-linux-virtual-machine-on-first-boot"></a>Postup přizpůsobení virtuální počítač s Linuxem na při prvním spuštění
-V předchozích kurzu jste se dozvěděli, jak chcete SSH pro virtuální počítač (VM) a ručně nainstalujte NGINX. Pokud chcete vytvořit virtuální počítače rychlý a konzistentním způsobem, je obvykle potřeby nějaký způsob automatizace. Běžný postup přizpůsobení virtuálního počítače při prvním spuštění počítače se má používat [cloudu init](https://cloudinit.readthedocs.io). V tomto kurzu se naučíte:
+# <a name="how-toocustomize-a-linux-virtual-machine-on-first-boot"></a>Jak toocustomize virtuální počítač s Linuxem na při prvním spuštění
+V předchozích kurzu jste se naučili jak tooSSH tooa virtuální počítač (VM) a ručně nainstalujte NGINX. Obvykle se požaduje toocreate virtuální počítače rychlý a konzistentním způsobem, nějaký způsob automatizace. Běžné toocustomize přístup virtuální počítač na při prvním spuštění je toouse [cloudu init](https://cloudinit.readthedocs.io). V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvořte soubor konfigurace cloudu init
 > * Vytvořit virtuální počítač, který používá soubor init cloudu
-> * Zobrazit spuštěné aplikaci Node.js, po vytvoření virtuálního počítače
-> * Pomocí Key Vault bezpečně uložit certifikáty
+> * Zobrazit spuštěné aplikaci Node.js po hello je vytvořena virtuálních počítačů
+> * Pomocí Key Vault toosecurely úložiště certifikátů
 > * Automatizovat zabezpečená nasazení NGINX s inicializací cloudu
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud si zvolíte instalaci a použití rozhraní příkazového řádku místně, tento kurz vyžaduje, že používáte Azure CLI verze verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).  
+Pokud zvolíte tooinstall a místně pomocí hello rozhraní příkazového řádku, tento kurz vyžaduje, že používáte verzi rozhraní příkazového řádku Azure hello verze 2.0.4 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli).  
 
 
 
 ## <a name="cloud-init-overview"></a>Init cloudu – přehled
-[Init cloudu](https://cloudinit.readthedocs.io) je často používaný přístup k přizpůsobení virtuálního počítače s Linuxem, jako při prvním spuštění. Init cloudu můžete použít k instalaci balíčků a zapisovat soubory nebo konfigurace zabezpečení a uživatelů. Init cloudu běží během úvodního spouštění, nejsou žádné další kroky nebo požadované agenty použít konfiguraci.
+[Init cloudu](https://cloudinit.readthedocs.io) je často používaný přístup toocustomize virtuálního počítače s Linuxem jako spustí pro hello poprvé. Můžete používat cloudové init tooinstall balíčky a zapisovat soubory, nebo tooconfigure uživatele a zabezpečení. Init cloudu běží během počáteční spouštění hello, neexistují žádné další kroky nebo požadováno agenty tooapply konfiguraci.
 
-Init cloudu také funguje v různých distribucí. Například nepoužívejte **výstižný get instalace** nebo **yum nainstalovat** nainstalovat balíček. Místo toho můžete definovat seznam balíčků pro instalaci. Init cloudu automaticky používá nástroj pro správu nativní balíčku pro distro, kterou vyberete.
+Init cloudu také funguje v různých distribucí. Například nepoužívejte **výstižný get instalace** nebo **yum nainstalovat** tooinstall balíčku. Místo toho můžete definovat seznam tooinstall balíčky. Init cloudu automaticky používá nástroj pro správu hello nativní balíčku pro hello distro, kterou vyberete.
 
-Pracujeme s našimi partnery získat cloudu init zahrnuté a práci v bitové kopie, které poskytují do Azure. Následující tabulka popisuje aktuální dostupnosti cloudu init Image platformy Azure:
+Snažíme se práce s našich partnerů tooget cloudu inicializací zahrnuté a práci v hello bitové kopie, aby umožňovala tooAzure. Hello následující tabulka popisuje hello aktuální dostupnosti cloudu init Image platformy Azure:
 
 | Alias | Vydavatel | Nabídka | Skladová jednotka (SKU) | Verze |
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -54,9 +54,9 @@ Pracujeme s našimi partnery získat cloudu init zahrnuté a práci v bitové ko
 
 
 ## <a name="create-cloud-init-config-file"></a>Vytvoření cloudové init konfiguračního souboru
-Informace o cloudu init v akci, vytvořte virtuální počítač, který nainstaluje NGINX a spustí jednoduchý "zdravím svět" aplikace Node.js. Následující konfigurace cloudu init nainstaluje požadované balíčky, vytvoří aplikace Node.js, potom inicializaci a spuštění aplikace.
+toosee cloudu inicializací v akci, vytvořte virtuální počítač, který nainstaluje NGINX a spustí jednoduchou aplikaci Node.js "Zdravím svět". Hello následující konfigurace cloudu init nainstaluje hello požadované balíčky, vytvoří aplikaci Node.js, pak inicializaci a spuštění aplikace hello.
 
-V aktuálním prostředí, vytvořte soubor s názvem *cloudu init.txt* a vložte následující konfigurace. Například vytvoření souboru v prostředí cloudu není na místním počítači. Můžete použít libovolný editor, které chcete. Zadejte `sensible-editor cloud-init.txt` k vytvoření tohoto souboru a zobrazit seznam dostupných editory. Ujistěte se, že je soubor celou cloudu init zkopírován správně, obzvláště první řádek:
+V aktuálním prostředí, vytvořte soubor s názvem *cloudu init.txt* a hello vložte následující konfigurace. Můžete například vytvořte soubor hello v hello cloudové prostředí není na místním počítači. Můžete použít libovolný editor, které chcete. Zadejte `sensible-editor cloud-init.txt` toocreate hello souboru a zobrazit seznam dostupných editory. Ujistěte se, že tento soubor celou cloudu init hello správně zkopírován, zejména hello první řádek:
 
 ```yaml
 #cloud-config
@@ -103,13 +103,13 @@ runcmd:
 Další informace o možnostech konfigurace cloudu init najdete v tématu [příklady konfigurace cloudu init](https://cloudinit.readthedocs.io/en/latest/topics/examples.html).
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
-Před vytvořením virtuálního počítače, vytvořte skupinu prostředků s [vytvořit skupinu az](/cli/azure/group#create). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupAutomate* v *eastus* umístění:
+Před vytvořením virtuálního počítače, vytvořte skupinu prostředků s [vytvořit skupinu az](/cli/azure/group#create). Hello následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupAutomate* v hello *eastus* umístění:
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAutomate --location eastus
 ```
 
-Teď vytvořte virtuální počítač s [vytvořit virtuální počítač az](/cli/azure/vm#create). Použití `--custom-data` parametr předávat do cloudu init konfiguračního souboru. Zadejte úplnou cestu k *cloudu init.txt* konfigurace, pokud jste uložili soubor mimo pracovní adresář existuje. Následující příklad vytvoří virtuální počítač s názvem *myAutomatedVM*:
+Teď vytvořte virtuální počítač s [vytvořit virtuální počítač az](/cli/azure/vm#create). Použití hello `--custom-data` parametr toopass v souboru config init cloudu. Zadejte úplnou cestu toohello hello *cloudu init.txt* konfigurace, pokud jste uložili soubor hello mimo pracovní adresář existuje. Hello následující příklad vytvoří virtuální počítač s názvem *myAutomatedVM*:
 
 ```azurecli-interactive 
 az vm create \
@@ -121,34 +121,34 @@ az vm create \
     --custom-data cloud-init.txt
 ```
 
-Trvá několik minut pro virtuální počítač, který se má vytvořit, balíčky určené k instalaci a aplikaci spusťte. Existují úlohy na pozadí, které dál běžet po rozhraní příkazového řádku Azure se vrátíte do řádku. To může být jiná několik minut, než může aplikaci používat. Po vytvoření virtuálního počítače, poznamenejte si `publicIpAddress` zobrazí pomocí rozhraní příkazového řádku Azure. Tato adresa se používá pro přístup k aplikaci Node.js pomocí webového prohlížeče.
+Jak dlouho trvá několik minut, než toobe hello virtuálního počítače vytvořena, hello balíčky tooinstall a toostart aplikace hello. Existují úlohy na pozadí, které pokračovat toorun po hello příkazového řádku Azure CLI vrátí, toohello řádku. To může být jiná několik minut před přístupem k aplikaci hello. Po vytvoření hello virtuálních počítačů, poznamenejte si hello `publicIpAddress` zobrazí hello rozhraní příkazového řádku Azure. Tato adresa se aplikace Node.js hello použité tooaccess prostřednictvím webového prohlížeče.
 
-Povolit webový provoz připojit virtuální počítač, otevřete port 80 z Internetu s [az virtuálních počítačů open-port](/cli/azure/vm#open-port):
+tooallow webový provoz tooreach virtuální počítač, otevřete port 80 z hello Internet s [az virtuálních počítačů open-port](/cli/azure/vm#open-port):
 
 ```azurecli-interactive 
 az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myVM
 ```
 
 ## <a name="test-web-app"></a>Test webové aplikace
-Nyní můžete otevřít webový prohlížeč a zadejte *http://<publicIpAddress>*  na panelu Adresa. Zadejte vlastní veřejná IP adresa z virtuálního počítače vytvořit proces. Aplikace Node.js se zobrazí jako v následujícím příkladu:
+Nyní můžete otevřít webový prohlížeč a zadejte *http://<publicIpAddress>*  v panelu Adresa hello. Zadejte vlastní veřejná IP adresa z hello virtuálního počítače vytvořit proces. Aplikace Node.js se zobrazí jako hello následující ukázka:
 
 ![Zobrazení spuštěných NGINX lokality](./media/tutorial-automate-vm-deployment/nginx.png)
 
 
 ## <a name="inject-certificates-from-key-vault"></a>Vložit certifikáty z Key Vault
-Této volitelné části ukazuje, jak můžete bezpečně uložit certifikáty v Azure Key Vault a vložit je při nasazení virtuálního počítače. Místo použití vlastní image, která obsahuje certifikáty zaručená v, tento proces zajišťuje, že nejaktuálnější certifikáty jsou aplikován na virtuální počítač při prvním spuštění počítače. Během procesu certifikát nikdy opustí platformy Azure nebo je vystaven ve skriptu, historie příkazového řádku nebo šablony.
+Této volitelné části ukazuje, jak můžete bezpečně uložit certifikáty v Azure Key Vault a vložit je během hello nasazení virtuálního počítače. Místo použití vlastní image, která obsahuje certifikáty hello zaručená v, tento proces zajišťuje, že hello nejaktuálnější certifikáty jsou vložit tooa virtuální počítač při prvním spuštění počítače. Během procesu hello hello certifikát nikdy opustí hello platformy Azure nebo je vystaven ve skriptu, historie příkazového řádku nebo šablony.
 
-Azure Key Vault chrání kryptografické klíče a tajné klíče, jako je například certifikáty nebo hesla. Key Vault pomáhá zjednodušit proces správy klíčů a zajišťuje vám kontrolu nad klíči, které k přístupu a šifrování vaše data. Tento scénář jsou uvedené některé pojmy Key Vault, jak vytvořit a používat certifikát, ale není vyčerpávající přehled o tom, jak používat Key Vault.
+Azure Key Vault chrání kryptografické klíče a tajné klíče, jako je například certifikáty nebo hesla. Key Vault pomáhá zjednodušit proces správy klíčů hello a umožní vám toomaintain kontrolu nad klíči, které k přístupu a šifrování dat. Tento scénář představuje některé koncepty toocreate Key Vault a použít certifikát, ale není vyčerpávající přehled o tom, toouse Key Vault.
 
-Následující kroky ukazují, jak můžete:
+Hello následující kroky ukazují, jak můžete:
 
 - Vytvoření Azure Key Vault
-- Generovat nebo nahrajte certifikát do služby Key Vault
-- Vytvoření tajného klíče z certifikátu se vložit v pro virtuální počítač
-- Vytvoření virtuálního počítače a vložit certifikátu
+- Generovat nebo nahrát certifikát toohello Key Vault
+- Vytvoření tajného klíče z certifikátu tooinject hello v tooa virtuálních počítačů
+- Vytvoření virtuálního počítače a vložit hello certifikátu
 
 ### <a name="create-an-azure-key-vault"></a>Vytvoření Azure Key Vault
-Nejprve vytvořte Key Vault s [vytvořit az keyvault](/cli/azure/keyvault#create) a povolit pro použití při nasazení virtuálního počítače. Každý Key Vault vyžaduje jedinečný název a musí být všechny malá písmena. Nahraďte *mykeyvault* v následujícím příkladu se svůj vlastní jedinečný název pro Key Vault:
+Nejprve vytvořte Key Vault s [vytvořit az keyvault](/cli/azure/keyvault#create) a povolit pro použití při nasazení virtuálního počítače. Každý Key Vault vyžaduje jedinečný název a musí být všechny malá písmena. Nahraďte *mykeyvault* v hello následující příklad s svůj vlastní jedinečný název pro Key Vault:
 
 ```azurecli-interactive 
 keyvault_name=mykeyvault
@@ -159,7 +159,7 @@ az keyvault create \
 ```
 
 ### <a name="generate-certificate-and-store-in-key-vault"></a>Vygenerování certifikátu a uložit v Key Vault
-Pro použití v provozním prostředí, měli byste importovat platný certifikát podepsaný službou důvěryhodného zprostředkovatele s [import certifikátu keyvault az](/cli/azure/keyvault/certificate#import). V tomto kurzu následující příklad ukazuje, jak můžete vygenerovat certifikát podepsaný svým držitelem s [vytvoření certifikátu keyvault az](/cli/azure/keyvault/certificate#create) používající výchozí zásady certifikátu:
+Pro použití v provozním prostředí, měli byste importovat platný certifikát podepsaný službou důvěryhodného zprostředkovatele s [import certifikátu keyvault az](/cli/azure/keyvault/certificate#import). V tomto kurzu hello následující příklad ukazuje, jak můžete vygenerovat certifikát podepsaný svým držitelem s [vytvoření certifikátu keyvault az](/cli/azure/keyvault/certificate#create) používající zásady certifikátů výchozí hello:
 
 ```azurecli-interactive 
 az keyvault certificate create \
@@ -170,7 +170,7 @@ az keyvault certificate create \
 
 
 ### <a name="prepare-certificate-for-use-with-vm"></a>Příprava certifikátu pro použití s virtuálním Počítačem.
-K použití certifikátu během virtuálního počítače vytvořit proces, získat číslo ID vašeho certifikátu s [az keyvault verze sdíleného tajného klíče seznam-](/cli/azure/keyvault/secret#list-versions). Virtuální počítač, musí certifikát v určitém formátu vložit na spuštění, takže převést certifikát s [az virtuálních počítačů formát secret](/cli/azure/vm#format-secret). Následující příklad přiřadí proměnné pro snadné použití v dalších krocích výstup z těchto příkazů:
+certifikát hello toouse během hello virtuálního počítače vytvořit proces, získejte hello ID vašeho certifikátu s [az keyvault verze sdíleného tajného klíče seznam-](/cli/azure/keyvault/secret#list-versions). potřebuje certifikát hello Hello virtuálního počítače v určité formátu tooinject ho na spuštění, takže převést hello certifikát s [az virtuálních počítačů formát secret](/cli/azure/vm#format-secret). Následující ukázka Hello přiřadí výstup hello toovariables tyto příkazy pro snadné použití v hello další kroky:
 
 ```azurecli-interactive 
 secret=$(az keyvault secret list-versions \
@@ -181,10 +181,10 @@ vm_secret=$(az vm format-secret --secret "$secret")
 ```
 
 
-### <a name="create-cloud-init-config-to-secure-nginx"></a>Vytvoření konfigurace cloudu init zabezpečit NGINX
-Když vytvoříte virtuální počítač, certifikáty a klíče jsou uložené v chráněného */var/lib/příkazwaagent/* adresáře. K automatizaci certifikát se přidává do virtuálního počítače a konfigurace NGINX, můžete použít aktualizované cloudu init konfigurace z předchozího příkladu.
+### <a name="create-cloud-init-config-toosecure-nginx"></a>Vytvoření cloudové init konfigurace toosecure NGINX
+Když vytvoříte virtuální počítač, certifikáty a klíče jsou uložené v hello chráněné */var/lib/příkazwaagent/* adresáře. tooautomate přidání hello certifikát toohello virtuálního počítače a konfigurace NGINX, můžete použít aktualizované cloudu init konfigurace z předchozí příklad hello.
 
-Vytvořte soubor s názvem *cloudu. init secured.txt* a vložte následující konfigurace. Znovu Pokud používáte cloudové prostředí, vytvořte konfigurační soubor cloudu init tam a není na místním počítači. Použití `sensible-editor cloud-init-secured.txt` k vytvoření tohoto souboru a zobrazit seznam dostupných editory. Ujistěte se, že je soubor celou cloudu init zkopírován správně, obzvláště první řádek:
+Vytvořte soubor s názvem *cloudu. init secured.txt* a hello vložte následující konfigurace. Znovu Pokud používáte hello cloudové prostředí, vytvořte hello cloudu init konfiguračního souboru tam a není na místním počítači. Použití `sensible-editor cloud-init-secured.txt` toocreate hello souboru a zobrazit seznam dostupných editory. Ujistěte se, že tento soubor celou cloudu init hello správně zkopírován, zejména hello první řádek:
 
 ```yaml
 #cloud-config
@@ -236,7 +236,7 @@ runcmd:
 ```
 
 ### <a name="create-secure-vm"></a>Vytvoření zabezpečeného virtuálního počítače
-Teď vytvořte virtuální počítač s [vytvořit virtuální počítač az](/cli/azure/vm#create). Data certifikátu je vložili z trezoru klíčů `--secrets` parametr. Jako v předchozím příkladu můžete předat také v konfiguraci cloudu init s `--custom-data` parametr:
+Teď vytvořte virtuální počítač s [vytvořit virtuální počítač az](/cli/azure/vm#create). data certifikátu Hello je vložili z Key Vault s hello `--secrets` parametr. Jako v předchozím příkladu hello také předáte v konfiguraci cloudu init hello s hello `--custom-data` parametr:
 
 ```azurecli-interactive 
 az vm create \
@@ -249,9 +249,9 @@ az vm create \
     --secrets "$vm_secret"
 ```
 
-Trvá několik minut pro virtuální počítač, který se má vytvořit, balíčky určené k instalaci a aplikaci spusťte. Existují úlohy na pozadí, které dál běžet po rozhraní příkazového řádku Azure se vrátíte do řádku. To může být jiná několik minut, než může aplikaci používat. Po vytvoření virtuálního počítače, poznamenejte si `publicIpAddress` zobrazí pomocí rozhraní příkazového řádku Azure. Tato adresa se používá pro přístup k aplikaci Node.js pomocí webového prohlížeče.
+Jak dlouho trvá několik minut, než toobe hello virtuálního počítače vytvořena, hello balíčky tooinstall a toostart aplikace hello. Existují úlohy na pozadí, které pokračovat toorun po hello příkazového řádku Azure CLI vrátí, toohello řádku. To může být jiná několik minut před přístupem k aplikaci hello. Po vytvoření hello virtuálních počítačů, poznamenejte si hello `publicIpAddress` zobrazí hello rozhraní příkazového řádku Azure. Tato adresa se aplikace Node.js hello použité tooaccess prostřednictvím webového prohlížeče.
 
-Povolit zabezpečený webový provoz připojit virtuální počítač, otevřete port 443 z Internetu s [az virtuálních počítačů open-port](/cli/azure/vm#open-port):
+tooallow zabezpečit webové přenosy tooreach virtuální počítač, otevřete port 443 ze hello Internet s [az virtuálních počítačů open-port](/cli/azure/vm#open-port):
 
 ```azurecli-interactive 
 az vm open-port \
@@ -261,26 +261,26 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>Testování zabezpečení webové aplikace
-Nyní můžete otevřít webový prohlížeč a zadejte *https://<publicIpAddress>*  na panelu Adresa. Zadejte vlastní veřejná IP adresa z virtuálního počítače vytvořit proces. Pokud použijete certifikát podepsaný svým držitelem, přijměte upozornění zabezpečení:
+Nyní můžete otevřít webový prohlížeč a zadejte *https://<publicIpAddress>*  v panelu Adresa hello. Zadejte vlastní veřejná IP adresa z hello virtuálního počítače vytvořit proces. Přijměte upozornění zabezpečení hello, pokud se používá certifikát podepsaný svým držitelem:
 
 ![Přijetí upozornění zabezpečení webového prohlížeče](./media/tutorial-automate-vm-deployment/browser-warning.png)
 
-Zabezpečené NGINX lokality a Node.js aplikace se potom zobrazí jako v následujícím příkladu:
+Zabezpečené NGINX lokality a Node.js aplikace se potom zobrazí jako hello následující ukázka:
 
 ![Zobrazit spuštěná zabezpečené NGINX Web](./media/tutorial-automate-vm-deployment/secured-nginx.png)
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste nakonfigurovali virtuální počítače při prvním spuštění počítače s inicializací cloudu. Jste se dozvěděli, jak na:
+V tomto kurzu jste nakonfigurovali virtuální počítače při prvním spuštění počítače s inicializací cloudu. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Vytvořte soubor konfigurace cloudu init
 > * Vytvořit virtuální počítač, který používá soubor init cloudu
-> * Zobrazit spuštěné aplikaci Node.js, po vytvoření virtuálního počítače
-> * Pomocí Key Vault bezpečně uložit certifikáty
+> * Zobrazit spuštěné aplikaci Node.js po hello je vytvořena virtuálních počítačů
+> * Pomocí Key Vault toosecurely úložiště certifikátů
 > * Automatizovat zabezpečená nasazení NGINX s inicializací cloudu
 
-Přechodu na v dalším kurzu se dozvíte, jak vytvořit vlastní Image virtuálních počítačů.
+Jak zálohy další kurz toolearn toohello toocreate vlastní Image virtuálních počítačů.
 
 > [!div class="nextstepaction"]
 > [Vytváření vlastních imagí virtuálních počítačů](./tutorial-custom-images.md)

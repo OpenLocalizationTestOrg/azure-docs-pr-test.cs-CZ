@@ -1,6 +1,6 @@
 ---
 title: "Kurz: Azure Active Directory integrace s síti na pracovišti ve službě Facebook. | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a síti na pracovišti ve službě Facebook."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a síti na pracovišti ve službě Facebook."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,165 +14,165 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 27e62a00832484667117d8718db9f2fc05e2f4e2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: fd19b3f178a2aee7dd2f204d6d3cf6df8fe6b444
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>Kurz: Azure Active Directory integrace s síti na pracovišti ve službě Facebook.
 
-V tomto kurzu zjistěte, jak k síti na pracovišti ve službě Facebook integraci s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate síti na pracovišti ve službě Facebook se službou Azure Active Directory (Azure AD).
 
-Integrace síti na pracovišti ve službě Facebook s Azure AD poskytuje následující výhody:
+Integrace síti na pracovišti ve službě Facebook s Azure AD poskytuje hello následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup k síti na pracovišti ve službě Facebook.
-- Můžete povolit uživatelům automaticky získat přihlášeného k síti na pracovišti ve službě Facebook (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě: portál Azure.
+- Můžete ovládat ve službě Azure AD, který má přístup tooWorkplace ve službě Facebook.
+- Můžete povolit uživatelům tooautomatically získat podepsaný na tooWorkplace Facebook (jednotné přihlášení) s jejich účty Azure AD.
+- Můžete spravovat vaše účty v jednom centrálním místě: hello portálu Azure.
 
 Další podrobnosti o softwaru, služba (SaaS) aplikace integraci s Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD se na pracovišti ve službě Facebook, potřebujete následující položky:
+tooconfigure integrace Azure AD se na pracovišti ve službě Facebook, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - Předplatné povolené firemní síti pomocí sítě Facebook jednotné přihlašování (SSO)
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle následujících doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle následujících doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu Azure AD jednotného přihlašování k testování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu Azure AD jednotného přihlašování k testování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidejte síti na pracovišti ve službě Facebook z galerie.
+1. Přidejte síti na pracovišti ve službě Facebook z Galerie hello.
 2. Konfigurace a otestování Azure AD jednotné přihlašování.
 
-## <a name="add-workplace-by-facebook-from-the-gallery"></a>Přidat pracovní ploše ve službě Facebook z Galerie
-Při konfiguraci integrace síti na pracovišti ve službě Facebook do služby Azure AD přidáte do seznamu spravovaných aplikací SaaS síti na pracovišti ve službě Facebook z galerie.
+## <a name="add-workplace-by-facebook-from-hello-gallery"></a>Přidat pracovní ploše ve službě Facebook z Galerie hello
+tooconfigure hello integrace síti na pracovišti ve službě Facebook do Azure AD, přidejte síti na pracovišti ve službě Facebook hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-1. V [portál Azure](https://portal.azure.com), v levém podokně vyberte **Azure Active Directory**. 
+1. V hello [portál Azure](https://portal.azure.com), v levém podokně text hello, vyberte **Azure Active Directory**. 
 
-    ![Tlačítko Azure Active Directory][1]
+    ![tlačítko Azure Active Directory Hello][1]
 
-2. Přejděte do **podnikové aplikace, které** > **všechny aplikace**.
+2. Procházet příliš**podnikové aplikace, které** > **všechny aplikace**.
 
-    ![V okně podnikové aplikace][2]
+    ![okno aplikace Hello Enterprise][2]
     
-3. Chcete-li přidat novou aplikaci, vyberte **novou aplikaci** horní dialogové okno.
+3. tooadd hello novou aplikaci, vyberte **novou aplikaci** hello nahoře dialogového okna hello.
 
-    ![Tlačítko nové aplikace][3]
+    ![tlačítko nové aplikace Hello][3]
 
-4. Do vyhledávacího pole zadejte **síti na pracovišti ve službě Facebook**a vyberte **síti na pracovišti ve službě Facebook** z výsledků. Potom vyberte **přidat**, chcete-li přidat aplikaci.
+4. Hello vyhledávacího pole zadejte **síti na pracovišti ve službě Facebook**a vyberte **síti na pracovišti ve službě Facebook** z výsledků. Potom vyberte **přidat**, tooadd hello aplikace.
 
-    ![Síti na pracovišti ve službě Facebook v seznamu výsledků](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_search.png)
+    ![Síti na pracovišti ve službě Facebook v seznamu výsledků hello](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_search.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
 V této části můžete nakonfigurovat a otestovat Azure AD přihlášení SSO se síti na pracovišti ve službě Facebook, podle testovacího uživatele názvem "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v síti na pracovišti ve službě Facebook je pro uživatele ve službě Azure AD. Jinými slovy je třeba vytvořit propojené vztah mezi uživatele Azure AD a související uživateli v síti na pracovišti ve službě Facebook.
+Azure AD musí pro jednotné přihlašování toowork tooknow hello příslušného uživatele v síti na pracovišti ve službě Facebook se tooa uživatele ve službě Azure AD. Jinými slovy je třeba vytvořit propojené vztah mezi uživatele Azure AD a související uživatelské hello v síti na pracovišti ve službě Facebook.
 
-Vytvořit tento vztah přiřazením hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v síti na pracovišti ve službě Facebook.
+Vytvořit tento vztah přiřazením hello hodnotu hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v síti na pracovišti ve službě Facebook.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
 
-V této části povolíte Azure AD jednotného přihlašování k portálu Azure a nakonfigurovat jednotné přihlašování na vašem pracovišti aplikace Facebook.
+V této části Povolení jednotného přihlašování Azure AD v hello portál Azure a nakonfigurovat jednotné přihlašování na vašem pracovišti aplikace Facebook.
 
-1. Na portálu Azure na **síti na pracovišti ve službě Facebook** stránky integrace aplikací, vyberte **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **síti na pracovišti ve službě Facebook** stránky integrace aplikací, vyberte **jednotného přihlašování**.
 
     ![Konfigurace propojení přihlášení][4]
 
-2. V **jednotného přihlašování** dialogové okno, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. V hello **jednotného přihlašování** dialogové okno, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
  
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_samlbase.png)
 
-3. V **síti na pracovišti Facebook domény a adresy URL** část, postupujte takto:
+3. V hello **síti na pracovišti Facebook domény a adresy URL** část, hello následující:
 
-    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL, která používá následující vzorec:`https://<company subdomain>.facebook.com`
+    a. V hello **přihlašovací adresa URL** textového pole zadejte adresu URL, která používá následující vzor hello:`https://<company subdomain>.facebook.com`
 
-    b. V **identifikátor** textového pole zadejte adresu URL, která používá následující vzorec:`https://www.facebook.com/company/<scim company id>`
+    b. V hello **identifikátor** textového pole zadejte adresu URL, která používá následující vzor hello:`https://www.facebook.com/company/<scim company id>`
 
     > [!NOTE]
-    > Tyto hodnoty jsou pouze příklad. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se [síti na pracovišti tým podpory klienta sítě Facebook](https://workplace.fb.com/faq/) k získání těchto hodnot. 
+    > Tyto hodnoty jsou pouze příklad. Tyto hodnoty aktualizujte hello skutečné přihlašovací adresa URL a identifikátor. Kontaktujte hello [síti na pracovišti tým podpory klienta sítě Facebook](https://workplace.fb.com/faq/) tooget tyto hodnoty. 
 
-4. V **SAML podpisový certifikát** vyberte **certifikátu (Base64)**a potom uložte soubor certifikátu v počítači.
+4. V hello **SAML podpisový certifikát** vyberte **certifikátu (Base64)**a potom uložte soubor certifikátu hello ve vašem počítači.
 
-    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_certificate.png) 
+    ![odkaz ke stažení certifikátu Hello](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_certificate.png) 
 
 5. Vyberte **Uložit**.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_general_400.png)
 
-6. V **síti na pracovišti v konfiguraci sítě Facebook** vyberte **pracoviště nakonfigurovat ve službě Facebook** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka** části.
+6. V hello **síti na pracovišti v konfiguraci sítě Facebook** vyberte **pracoviště nakonfigurovat ve službě Facebook** tooopen hello **konfigurovat přihlášení** okno. Kopírování hello **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka** části.
 
     ![Síti na pracovišti v konfiguraci sítě Facebook](./media/active-directory-saas-facebook-at-work-tutorial/config.png) 
 
-7. V okně prohlížeče jiný web Přihlaste se k pracovní ploše lokalitou Facebook společnosti jako správce.
+7. V okně prohlížeče jiný web přihlaste jako správce tooyour síti na pracovišti lokalitou společnosti Facebook.
   
    > [!NOTE] 
-   > Jako součást procesu ověřování SAML můžete síti na pracovišti velikost použít řetězce dotazu až 2,5 kilobajtů, aby bylo možné předat parametry do služby Azure AD.
+   > Jako součást hello procesu ověřování SAML síti na pracovišti, můžete použít řetězce dotazu až too2.5 kilobajtů velikostí v pořadí toopass parametry tooAzure AD.
 
-8. V **řídicí panel společnosti**, přejděte na **ověřování** kartě.
+8. V hello **řídicí panel společnosti**, přejděte toohello **ověřování** kartě.
 
-9. V části **ověřování SAML**, vyberte **pouze jednotné přihlašování** z rozevíracího seznamu.
+9. V části **ověřování SAML**, vyberte **pouze jednotné přihlašování** z rozevíracího seznamu hello.
 
-10. Zadejte hodnoty zkopírovaných z **síti na pracovišti v konfiguraci sítě Facebook** části portálu Azure do odpovídajícího pole:
+10. Zadejte hodnoty hello zkopírovaných z hello **síti na pracovišti v konfiguraci sítě Facebook** části hello portálu Azure do odpovídajícího pole hello:
 
-    *   V **SAML URL** text vložte hodnotu **jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.
-    *   V **URL vystavitele SAML** textové pole, vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure.
-    *   V **SAML odhlášení přesměrovat (volitelné)**, vložte hodnotu **Sign-Out URL**, který jste zkopírovali z portálu Azure.
-    *   Otevřete váš **certifikátu s kódováním base-64** v poznámkovém bloku stáhli z portálu Azure. Zkopírujte obsah ho do schránky a vložte jej do **certifikátu SAML** textové pole.
+    *   V **SAML URL** textového pole, vložte hodnotu hello **jeden přihlašování adresa URL služby**, který jste zkopírovali z hello portálu Azure.
+    *   V **URL vystavitele SAML** textového pole, vložte hodnotu hello **SAML Entity ID**, který jste zkopírovali z hello portálu Azure.
+    *   V **SAML odhlášení přesměrovat (volitelné)**, vložte hodnotu hello **Sign-Out URL**, který jste zkopírovali z hello portálu Azure.
+    *   Otevřete váš **certifikátu s kódováním base-64** v poznámkovém bloku stáhli z portálu Azure hello. Kopírovat obsah hello ho do schránky a pak ji vložit toothe **certifikátu SAML** textové pole.
 
-11. Možná budete muset zadat adresu URL cílové skupiny příjemce adresy URL a adresy URL služby ACS (služba Assertion příjemce), uvedené v části **konfigurace SAML** části.
+11. Může být nutné cílovou skupinu hello tooenter adresu URL, příjemce adresy URL a služby ACS (služba Assertion příjemce) adresy URL, které jsou uvedené v části hello **konfigurace SAML** části.
 
-12. Přejděte do dolní části a vyberte **Test jednotného přihlašování k**. Automaticky otevírané okno se zobrazí se na přihlašovací stránku služby Azure AD. K ověření, zadejte přihlašovací údaje jako normální. Ujistěte se, e-mailovou adresu vrátil zpět z Azure AD je stejný jako pracovní účet, který jste se přihlásili.
+12. Posuňte zobrazení dolní toohello hello oddílu a vyberte **Test jednotného přihlašování k**. Automaticky otevírané okno se zobrazí s přihlašovací stránku hello Azure AD. tooauthenticate, zadejte své přihlašovací údaje jako normální. Ujistěte se, stejně jako hello pracovní účet, kterým jste přihlášeni s je hello hello e-mailovou adresu, která je vrácena zpět z Azure AD.
 
-13. Pokud se test byl úspěšně dokončen, přejděte do dolní části stránky a vyberte **Uložit**.
+13. Pokud hello testu se úspěšně dokončil, posuňte toohello dolní části stránky hello a vyberte **Uložit**.
 
 14. Každý, kdo používá síti na pracovišti se teď zobrazí s Azure AD přihlašovací stránka pro ověřování.
 
-Můžete nakonfigurovat přihlašování SAML adresu URL, který můžete použít tak, aby odkazoval na odhlašovací stránky Azure AD. Pokud je toto nastavení povolené a nakonfigurované, uživatel se přesměruje už k síti na pracovišti odhlašovací stránky. Místo toho se uživatel přesměruje na adresu URL, která byla přidána do nastavení odhlášení přesměrování SAML.
+Můžete tooconfigure SAML odhlaste se adresa URL, která lze použít toopoint na odhlášení stránku hello Azure AD. Pokud je toto nastavení povolené a nakonfigurované, hello uživatel je již směrovanou toohello síti na pracovišti odhlašovací stránky. Místo toho uživatel hello je přesměrovaného toohello URL, která byla přidána do nastavení odhlášení přesměrování SAML hello.
 
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco k nastavení aplikace. Po přidání této aplikace z **služby Active Directory** > **podnikové aplikace, které** jednoduše vyberte **jednotné přihlašování** kartě a přístup vložené dokumentace prostřednictvím **konfigurace** v dolní části. Si můžete přečíst informace o funkci embedded dokumentace v [Azure AD vložených dokumentaci]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello. Po přidání této aplikace z hello **služby Active Directory** > **podnikové aplikace, které** jednoduše vyberte hello **jednotné přihlašování** kartě a přístup hello vložené dokumentace prostřednictvím hello **konfigurace** části dolnímu hello. Další informace o funkci hello embedded dokumentace v hello [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="configure-reauthentication-frequency"></a>Nakonfigurovat četnost opětovné ověření
 
-Můžete nakonfigurovat síti na pracovišti, aby se zobrazila výzva pro kontrolu SAML každý den, tři dny jeden týden, dva týdny, jeden měsíc, nebo vůbec.
+Můžete nakonfigurovat tooprompt síti na pracovišti pro kontrolu SAML každý den, tři dny jeden týden, dva týdny, jeden měsíc, nebo vůbec.
 
 > [!NOTE] 
->Minimální hodnota pro kontrolu SAML na mobilní aplikace nastavena na jeden týden.
+>Hello minimální hodnota hello SAML kontroly na mobilní aplikace nastavena tooone týden.
 
-Můžete taky přinutit SAML obnovit pro všechny uživatele. Chcete-li to provést, použijte **vyžadovat ověřování SAML pro všechny uživatele nyní** tlačítko.
+Můžete taky přinutit SAML obnovit pro všechny uživatele. toodo se použití hello **vyžadovat ověřování SAML pro všechny uživatele nyní** tlačítko.
 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
 
 ![Vytvořit uživatele Azure AD][100]
 
-1. V **portál Azure**, v levém podokně vyberte **Azure Active Directory**.
+1. V hello **portál Azure**, v levém podokně text hello, vyberte **Azure Active Directory**.
 
-    ![Tlačítko Azure Active Directory](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_01.png) 
+    ![tlačítko Azure Active Directory Hello](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a vyberte **všichni uživatelé**.
+2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin**a vyberte **všichni uživatelé**.
     
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_02.png) 
+    ![Hello "Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, vyberte **přidat**.
+3. tooopen hello **uživatele** dialogové okno, vyberte **přidat**.
  
-    ![Tlačítko Přidat](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_03.png) 
+    ![tlačítko Přidat Hello](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_03.png) 
 
-4. V **uživatele** dialogové okno pole, postupujte takto:
+4. V hello **uživatele** dialogové okno pole, hello následující:
  
-    ![Dialogové okno uživatele](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_04.png) 
+    ![Dialogové okno uživatelského Hello](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textového pole, typ **BrittaSimon**.
+    a. V hello **název** textového pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textového pole, zadejte **e-mailová adresa** z BrittaSimon.
+    b. V hello **uživatelské jméno** textového pole, typ hello **e-mailová adresa** z BrittaSimon.
 
     c. Vyberte **zobrazit hesla**a poznamenejte si ho.
 
@@ -182,50 +182,50 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
 V této části uživatele volat Britta Simon vytvoří v síti na pracovišti Facebook. Síti na pracovišti ve službě Facebook podporuje za běhu zřizování, který je ve výchozím nastavení povolené.
 
-Neexistuje žádná akce pro vás v této části. Pokud uživatel neexistuje v síti na pracovišti ve službě Facebook, nový vytvoří se při pokusu o přístup k síti na pracovišti Facebook.
+Neexistuje žádná akce pro vás v této části. Pokud uživatel neexistuje v síti na pracovišti ve službě Facebook, je vytvořen nový pokusíte-li tooaccess síti na pracovišti ve službě Facebook.
 
 >[!Note]
->Pokud je potřeba ručně vytvořit uživateli, obraťte se [síti na pracovišti tým podpory klienta sítě Facebook](https://workplace.fb.com/faq/).
+>Pokud potřebujete toocreate uživatel ručně, obraťte se na hello [síti na pracovišti tým podpory klienta sítě Facebook](https://workplace.fb.com/faq/).
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Přiřadit hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon chcete použít Azure jednotného přihlašování k udělení přístupu k síti na pracovišti ve službě Facebook.
+V této části povolíte Britta Simon toouse Azure jednotného přihlašování k udělení přístupu tooWorkplace ve službě Facebook.
 
 ![Přiřadit uživatele][200] 
 
-1. Na portálu Azure otevřete zobrazení aplikace. Přejděte do zobrazení adresáře, přejděte na **podnikové aplikace, které**a potom vyberte **všechny aplikace**.
+1. V hello Azure aplikace hello portálu, otevřete zobrazení. Přejděte toohello directory zobrazení, přejděte příliš**podnikové aplikace, které**a potom vyberte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **síti na pracovišti ve službě Facebook**.
+2. V seznamu aplikace hello vyberte **síti na pracovišti ve službě Facebook**.
 
-    ![K síti na pracovišti podle propojení sítě Facebook v seznamu aplikací](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_app.png) 
+    ![Hello síti na pracovišti podle propojení sítě Facebook v seznamu aplikace hello](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_app.png) 
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce hello na levé straně hello vyberte **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202] 
+    ![odkaz "Uživatelé a skupiny" Hello][202] 
 
-4. Vyberte **Přidat**. Potom v **přidat přiřazení** podokně, vyberte **uživatelů a skupin**.
+4. Vyberte **Přidat**. Potom v hello **přidat přiřazení** podokně, vyberte **uživatelů a skupin**.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přidružení Hello][203]
 
-5. V **uživatelů a skupin** dialogové okno, vyberte **Britta Simon** v seznamu uživatelů.
+5. V hello **uživatelů a skupin** dialogové okno, vyberte **Britta Simon** v seznamu uživatelé hello.
 
-6. V **uživatelů a skupin** dialogové okno, vyberte **vyberte**.
+6. V hello **uživatelů a skupin** dialogové okno, vyberte **vyberte**.
 
-7. V **přidat přiřazení** dialogové okno, vyberte **přiřadit**.
+7. V hello **přidat přiřazení** dialogové okno, vyberte **přiřadit**.
     
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-Pokud chcete otestovat nastavení jednotného přihlašování, otevřete Panel přístupu.
-Další informace najdete v tématu [Úvod do přístupového panelu](active-directory-saas-access-panel-introduction.md).
+Pokud chcete tootest nastavení jednotného přihlašování, otevřete hello přístupového panelu.
+Další informace najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Najdete v článku [seznam kurzů k integraci aplikací SaaS v Azure Active Directory](active-directory-saas-tutorial-list.md).
+* V tématu hello [seznam kurzů toointegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md).
 * Čtení [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
-* Další informace o tom, jak [konfiguraci zřizování uživatelů](active-directory-saas-facebook-at-work-provisioning-tutorial.md).
+* Další informace o příliš[konfiguraci zřizování uživatelů](active-directory-saas-facebook-at-work-provisioning-tutorial.md).
 
 
 

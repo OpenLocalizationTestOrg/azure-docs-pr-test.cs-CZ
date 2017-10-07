@@ -1,6 +1,6 @@
 ---
-title: "Globální distribuční kurz pro Azure Cosmos DB pro rozhraní Graph API | Microsoft Docs"
-description: "Zjistěte, jak nastavit globální distribuční databázi Cosmos Azure pomocí rozhraní Graph API."
+title: "kurz globální distribuční databáze Cosmos aaaAzure pro rozhraní Graph API | Microsoft Docs"
+description: "Zjistěte, jak pomocí globální distribuční databázi Cosmos Azure toosetup hello rozhraní Graph API."
 services: cosmos-db
 keywords: "globální distribuční, grafu, gremlin"
 documentationcenter: 
@@ -15,44 +15,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: denlee
-ms.openlocfilehash: 3c8794fe33c2ff5aa79559ea2c323cf8d92b426a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1629a31e12a18079f63e07c4909862b36b5f4c0e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-graph-api"></a>Jak nastavit globální distribuční databázi Cosmos Azure pomocí rozhraní Graph API
+# <a name="how-toosetup-azure-cosmos-db-global-distribution-using-hello-graph-api"></a>Jak toosetup Azure Cosmos DB globální distribuční pomocí rozhraní Graph API hello
 
-V tomto článku jsme ukazují, jak pomocí portálu Azure do instalačního programu globální distribuční databázi Cosmos Azure a potom se připojte pomocí rozhraní Graph API (preview).
+V tomto článku ukážeme, jak toouse hello globální distribuční databázi Cosmos Azure Azure portálu toosetup a potom se připojte pomocí hello rozhraní Graph API (preview).
 
-Tento článek obsahuje následující úlohy: 
+Tento článek se zabývá hello následující úlohy: 
 
 > [!div class="checklist"]
-> * Nakonfigurujte globální distribuci pomocí portálu Azure
-> * Nakonfigurujte globální distribuční pomocí [rozhraní Graph API](graph-introduction.md) (preview)
+> * Nakonfigurujte globální distribuci pomocí hello portálu Azure
+> * Nakonfigurujte globální distribuci pomocí hello [rozhraní Graph API](graph-introduction.md) (preview)
 
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
-## <a name="connecting-to-a-preferred-region-using-the-graph-api-using-the-net-sdk"></a>Připojování k upřednostňovaná oblast pomocí rozhraní Graph API pomocí sady .NET SDK
+## <a name="connecting-tooa-preferred-region-using-hello-graph-api-using-hello-net-sdk"></a>Připojení tooa upřednostňovaná oblast pomocí hello rozhraní Graph API pomocí hello .NET SDK
 
-Rozhraní Graph API je k dispozici jako rozšíření knihovny nad DocumentDB SDK.
+Hello rozhraní Graph API je k dispozici jako rozšíření knihovny nad hello DocumentDB SDK.
 
-Aby bylo možné využít výhod [globální distribuční](distribute-data-globally.md), klientské aplikace můžete zadat seznam seřazený předvoleb oblastí se používá k provádění operací dokumentu. Tento krok můžete provést nastavením zásad pro připojení. Na základě konfigurace účtu Azure Cosmos DB, aktuální místní dostupnosti a seznamu předvoleb zadán, bude vybrána optimální koncový bod SDK k provedení operace zápisu a operace čtení.
+V pořadí tootake výhody [globální distribuční](distribute-data-globally.md), klientské aplikace můžete zadat hello seřazené předvoleb seznam oblastí toobe použít tooperform dokumentu operace. Tento krok můžete provést nastavením zásad pro připojení hello. V závislosti na konfiguraci účtu Azure Cosmos DB hello aktuální místní dostupnosti a seznamu předvoleb hello zadat, hello většina optimální koncový bod se zvolí hello SDK tooperform zápisu a operace čtení.
 
-Tento seznam předvoleb je zadána při inicializaci připojení pomocí sady SDK. Sady SDK přijmout volitelný parametr "PreferredLocations" tedy uspořádaný seznam oblastí Azure.
+Tento seznam předvoleb je zadána při inicializaci připojení pomocí sady SDK hello. Hello sady SDK přijmout volitelný parametr "PreferredLocations" tedy uspořádaný seznam oblastí Azure.
 
-* **Zapíše**: Sada SDK bude automaticky posílat zápis všech zápisů na aktuální oblasti.
-* **Přečte**: všechny operace čtení odešle první oblasti k dispozici v seznamu PreferredLocations. Pokud se požadavek nezdaří, klient se nezdaří dolů v seznamu další oblasti a tak dále. Sady SDK se pouze pokusí číst z oblastí, zadaný v PreferredLocations. Ano například pokud Cosmos DB účet je k dispozici v tři oblasti, ale klient pouze určuje pro PreferredLocations dvou oblastí bez zápisu, pak žádné čtení se zpracuje mimo oblast zápisu, i v případě převzetí služeb při selhání.
+* **Zapíše**: hello SDK automaticky odesílat všechny zapíše toohello aktuální zápisu oblasti.
+* **Přečte**: všechny operace čtení zašle toohello první dostupné oblasti v seznamu PreferredLocations hello. Pokud hello požadavek selže, hello klienta se nezdaří dolů hello seznamu toohello další oblasti a tak dále. Hello sady SDK se pouze pokusí tooread z oblastí hello zadaný v PreferredLocations. Ano například pokud hello Cosmos DB účtu je k dispozici v tři oblasti, ale hello klienta pouze určuje pro PreferredLocations dvou oblastí bez zápisu hello, pak žádný čtení se zpracuje mimo oblast hello zápisu, i v případě hello převzetí služeb při selhání.
 
-Aplikace můžete ověřit aktuální koncový bod zápisu a čtení koncový bod vybrali SDK kontrolou dvě vlastnosti WriteEndpoint a ReadEndpoint dostupné ve verzi sady SDK 1.8 a výše. Pokud není nastavena vlastnost PreferredLocations, bude z oblasti aktuální zápisu zpracovat všechny požadavky.
+aplikace Hello můžete ověřte hello aktuální koncový bod zápisu a čtení koncový bod zvolí hello SDK pomocí kontrola dvě vlastnosti WriteEndpoint a ReadEndpoint, k dispozici ve verzi sady SDK 1.8 a vyšší. Pokud není nastavena vlastnost PreferredLocations hello, bude z aktuální oblasti zápisu hello zpracovat všechny požadavky.
 
-### <a name="using-the-sdk"></a>Pomocí sady SDK
+### <a name="using-hello-sdk"></a>Pomocí hello SDK
 
-Například v sadě SDK .NET `ConnectionPolicy` parametr pro `DocumentClient` konstruktor má vlastnost s názvem `PreferredLocations`. Tuto vlastnost lze nastavit na seznam názvů oblast. Zobrazení názvů pro [oblasti Azure] [ regions] lze zadat jako součást `PreferredLocations`.
+Například v hello .NET SDK, hello `ConnectionPolicy` parametr pro hello `DocumentClient` konstruktor má vlastnost s názvem `PreferredLocations`. Tuto vlastnost lze nastavit tooa seznam názvů oblast. Hello zobrazované názvy pro [oblasti Azure] [ regions] lze zadat jako součást `PreferredLocations`.
 
 > [!NOTE]
-> Adresy URL pro koncové body by se neměla považovat jako dlohotrvající konstanty. Služba může aktualizovat tyto v libovolném bodě. Sada SDK zpracovává tuto změnu automaticky.
+> Hello adresy URL pro koncové body hello by se neměla považovat jako dlohotrvající konstanty. Služba Hello může aktualizovat tyto v libovolném bodě. Tato změna zpracovává Hello SDK automaticky.
 >
 >
 
@@ -74,24 +74,24 @@ DocumentClient docClient = new DocumentClient(
     accountKey,
     connectionPolicy);
 
-// connect to Azure Cosmos DB
+// connect tooAzure Cosmos DB
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-Je to, že dokončení tohoto kurzu. Můžete naučit ke správě konzistence účtu globálně replikované načtením [úrovně konzistence v Azure Cosmos DB](consistency-levels.md). A další informace o tom, jak globální replikace databáze v Azure Cosmos DB funguje, najdete v části [distribuci dat globálně pomocí Azure Cosmos DB](distribute-data-globally.md).
+Je to, že dokončení tohoto kurzu. Další informace jak toomanage hello konzistence účtu globálně replikované načtením [úrovně konzistence v Azure Cosmos DB](consistency-levels.md). A další informace o tom, jak globální replikace databáze v Azure Cosmos DB funguje, najdete v části [distribuci dat globálně pomocí Azure Cosmos DB](distribute-data-globally.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provést následující:
+V tomto kurzu provedete krok hello následující:
 
 > [!div class="checklist"]
-> * Nakonfigurujte globální distribuci pomocí portálu Azure
-> * Nakonfigurujte globální distribuční pomocí rozhraní API DocumentDB
+> * Nakonfigurujte globální distribuci pomocí hello portálu Azure
+> * Nakonfigurujte globální distribuci pomocí hello DocumentDB rozhraní API
 
-Nyní můžete přejít k dalším kurzu se dozvíte, jak vyvíjet místně pomocí emulátoru místního Azure Cosmos DB.
+Nyní můžete přejít toohello další kurz toolearn jak hello toodevelop místně pomocí emulátoru místního Azure Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Vývoj místně pomocí emulátoru](local-emulator.md)
+> [Vývoj místně pomocí emulátoru hello](local-emulator.md)
 
 [regions]: https://azure.microsoft.com/regions/
 

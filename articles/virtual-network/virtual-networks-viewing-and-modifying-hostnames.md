@@ -1,6 +1,6 @@
 ---
-title: "Zobrazení a úprava názvy hostitelů | Microsoft Docs"
-description: "Jak zobrazit a změnit názvy hostitelů pro virtuální počítače Azure, webové a rolí pracovního procesu pro překlad"
+title: "aaaViewing a úprava názvy hostitelů | Microsoft Docs"
+description: "Jak tooview a změňte názvy hostitelů pro virtuální počítače Azure, webové a rolí pracovního procesu pro překlad"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,48 +14,48 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: jdial
-ms.openlocfilehash: 9a3a1e1b58dcb828e2d2d09c18f1aab6d46051aa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 17d0dd7911754a94db3f37b924b4687da1c70aca
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Zobrazení a úprava názvy hostitelů
-Pokud chcete povolit instance role bude odkazovat podle názvu hostitele, je nutné nastavit hodnotu pro název hostitele v souboru konfigurace služby pro každou roli. To uděláte tak, že přidáte název požadovaného hostitele má **vmName** atribut **Role** elementu. Hodnota **vmName** atribut slouží jako základ pro název hostitele každá instance role. Například pokud **vmName** je *webrole* a jsou tři instance dané role, bude názvy hostitelů instancí *webrole0*, *webrole1*, a *webrole2*. Není potřeba zadat název hostitele pro virtuální počítače v konfiguračním souboru, protože název hostitele pro virtuální počítač je vyplněný, na základě názvu virtuálního počítače. Další informace o konfiguraci služby Microsoft Azure najdete v tématu [schéma konfigurace služby Azure (.cscfg souboru)](https://msdn.microsoft.com/library/azure/ee758710.aspx)
+tooallow vaše toobe instancí role odkazuje název hostitele, je nutné nastavit hello hodnotu pro název hostitele hello v konfiguračním souboru služby hello pro každou roli. To uděláte tak, že přidáte hello požadovaného hostitele název toohello **vmName** atribut hello **Role** elementu. Hello hodnotu hello **vmName** atribut slouží jako základ pro název hostitele hello každá instance role. Například pokud **vmName** je *webrole* a jsou tři instance dané role, bude názvy hostitelů hello instancí hello *webrole0*, *webrole1* , a *webrole2*. Není nutné toospecify název hostitele pro virtuální počítače v konfiguračním souboru hello, protože je vyplněný hello název hostitele pro virtuální počítač, na základě názvu virtuálního počítače hello. Další informace o konfiguraci služby Microsoft Azure najdete v tématu [schéma konfigurace služby Azure (.cscfg souboru)](https://msdn.microsoft.com/library/azure/ee758710.aspx)
 
 ## <a name="viewing-hostnames"></a>Zobrazení názvů hostitelů
-Názvy hostitelů virtuálních počítačů a instancí rolí můžete zobrazit v cloudové službě pomocí některé z nástrojů uvedených dole.
+Hello názvy hostitelů virtuálních počítačů a instancí rolí můžete zobrazit v cloudové službě pomocí některé z hello nástrojů uvedených dole.
 
 ### <a name="azure-portal"></a>Azure Portal
-Můžete použít [portál Azure](http://portal.azure.com) zobrazíte názvy hostitelů pro virtuální počítače v okně Přehled pro virtuální počítač. Mějte na paměti, která okna zobrazuje hodnotu pro **název** a **název hostitele**. I když se původně shodují, nebude změna názvu hostitele změňte název virtuálního počítače nebo role instance.
+Můžete použít hello [portál Azure](http://portal.azure.com) tooview hello názvy hostitelů pro virtuální počítače v okně Přehled hello pro virtuální počítač. Mějte na paměti, která hello okno zobrazuje hodnotu pro **název** a **název hostitele**. I když jsou původně hello stejné, změna názvu hostitele hello nedojde ke změně názvu hello hello virtuálního počítače nebo role instance.
 
-Instance rolí lze také zobrazit na portálu Azure, ale když můžete seznam instancí v cloudové službě, se nezobrazí, název hostitele. Zobrazí se název pro každou instanci, ale tento název nepředstavuje název hostitele.
+Instance rolí lze také zobrazit v hello portálu Azure, ale když můžete seznam instancí hello v cloudové službě, název hostitele hello se nezobrazí. Zobrazí se název pro každou instanci, ale tento název nepředstavuje hello název hostitele.
 
 ### <a name="service-configuration-file"></a>Konfigurační soubor služby
-Soubor konfigurace služby pro službu nasazenou z můžete stáhnout **konfigurace** okno služby v portálu Azure. Potom můžete vyhledat **vmName** atribut pro **název Role** element, který zobrazí název hostitele. Uvědomte si, že tento název hostitele slouží jako základ pro název hostitele každá instance role. Například pokud **vmName** je *webrole* a jsou tři instance dané role, bude názvy hostitelů instancí *webrole0*, *webrole1*, a *webrole2*.
+Hello konfigurační soubor služby pro službu nasazenou si můžete stáhnout z hello **konfigurace** okno služby hello v hello portálu Azure. Potom můžete vyhledat hello **vmName** atribut pro hello **název Role** název hostitele hello toosee elementu. Uvědomte si, že tento název hostitele slouží jako základ pro název hostitele hello každá instance role. Například pokud **vmName** je *webrole* a jsou tři instance dané role, bude názvy hostitelů hello instancí hello *webrole0*, *webrole1* , a *webrole2*.
 
 ### <a name="remote-desktop"></a>Vzdálená plocha
-Když povolíte vzdálená plocha (Windows), vzdálené komunikace Windows Powershellu (Windows) nebo připojení SSH (Linux a Windows) pro virtuální počítače nebo instance rolí, můžete zobrazit název hostitele z aktivního připojení vzdálené plochy různými způsoby:
+Po povolení vzdálené plochy (Windows), vzdálené komunikace Windows Powershellu (Windows), nebo SSH (Linux a Windows) připojení tooyour virtuálních počítačů nebo instancí rolí, můžete zobrazit název hostitele hello z aktivního připojení vzdálené plochy různými způsoby:
 
-* Název hostitele napište na příkazový řádek nebo SSH terminálu.
-* Zadáním ipconfig/všechny do příkazového řádku (jenom Windows).
-* Zobrazte název počítače v nastavení systému (jenom Windows).
+* Zadejte název hostitele hello příkazový řádek nebo SSH terminálu.
+* Zadáním ipconfig/vše na hello příkazového řádku (jenom Windows).
+* Název počítače hello zobrazení v systému hello nastavení (jenom Windows).
 
 ### <a name="azure-service-management-rest-api"></a>Rozhraní REST API pro správu služby Azure
 Z klienta REST postupujte podle těchto pokynů:
 
-1. Ujistěte se, že máte certifikát klienta pro připojení k portálu Azure. Pokud chcete získat certifikát klienta, postupujte podle kroků v [postupy: stahování a Import nastavení publikování a informace o předplatném](https://msdn.microsoft.com/library/dn385850.aspx). 
+1. Ujistěte se, že máte toohello tooconnect certifikát klienta portálu Azure. tooobtain klientský certifikát, postupujte podle kroků hello uvedené v [postupy: stahování a Import nastavení publikování a informace o předplatném](https://msdn.microsoft.com/library/dn385850.aspx). 
 2. Nastavte položku záhlaví s názvem x-ms-version s hodnotou 2013-11-01.
-3. Poslat žádost o v následujícím formátu: https://management.core.windows.net/\<subscrition id\>/services/hostedservices/\<název služby\>? vložení detail = true
-4. Vyhledejte **HostName** element pro každou **RoleInstance** element.
+3. Poslat žádost o hello následující formát: https://management.core.windows.net/\<subscrition id\>/services/hostedservices/\<název služby\>? vložení podrobností = true
+4. Vyhledejte hello **HostName** element pro každou **RoleInstance** element.
 
 > [!WARNING]
-> Můžete také zobrazit přípona interní domény pro cloudové služby z odpovědi volání REST kontrolou **InternalDnsSuffix** element, nebo spuštěním ipconfig/všechny z příkazového řádku v relaci vzdálené plochy (Windows) nebo po spuštění cat /etc/resolv.conf z terminálu SSH (Linux).
+> Můžete také zobrazit příponu hello interní domény pro cloudové služby z hello odpovědi volání REST kontrolou hello **InternalDnsSuffix** element, nebo spuštěním ipconfig/všechny z příkazového řádku v relaci vzdálené plochy (Windows) nebo spuštěné cat /etc/resolv.conf z Terminálové SSH (Linux).
 > 
 > 
 
 ## <a name="modifying-a-hostname"></a>Úprava název hostitele
-Název hostitele pro všechny virtuální počítače nebo role instance můžete upravit tím, že nahrajete konfigurační soubor změny služby, nebo přejmenování počítače z relace vzdálené plochy.
+Název hostitele hello u virtuálního počítače nebo role instance můžete upravit tím, že nahrajete konfigurační soubor upravené služby nebo přejmenováním hello počítače z relace vzdálené plochy.
 
 ## <a name="next-steps"></a>Další kroky
 [Překlad adres (DNS)](virtual-networks-name-resolution-for-vms-and-role-instances.md)

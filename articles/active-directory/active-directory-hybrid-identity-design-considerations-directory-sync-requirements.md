@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory hybridní identity aspekty návrhu - určení požadavků na synchronizaci adresáře | Microsoft Docs"
-description: "Určit, jaké požadavky jsou nezbytné k synchronizaci všech uživatelů mezi na = místní a cloudové pro podnik."
+title: "aspekty návrhu rozšíření aaaAzure služby Active Directory hybridní identity – určení požadavků na synchronizaci adresáře | Microsoft Docs"
+description: "Určit, jaké požadavky jsou nezbytné k synchronizaci všech uživatelů hello mezi na = místní a cloud pro hello enterprise."
 documentationcenter: 
 services: active-directory
 author: billmath
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 5ef87e606f055359ca325befd6048353ce57ca2b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 6646e3792c65f37c3d62eecdb6c6f3bd257f04f1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Určení požadavků na synchronizaci adresáře
-Synchronizace slouží k poskytování identity v cloudu na základě jejich identity místní uživatelé. Zda se bude používat synchronizované účet pro ověřování nebo federovaného ověřování, uživatelé budou stále musí být identity v cloudu.  Tato identita muset udržuje a pravidelně aktualizuje.  Aktualizace můžete mít mnoho forem, od title změny změny hesla.  
+Synchronizace slouží k poskytování identity v cloudu hello na základě jejich identity místní uživatelé. Zda se bude používat synchronizované účet pro ověřování nebo federovaného ověřování, hello uživatelé budou potřebovat stále toohave identity v cloudu hello.  Tato identita potřebovat toobe udržuje a pravidelně aktualizuje.  aktualizace Hello mohou mít mnoho forem, od title změny toopassword změny.  
 
-Spusťte vyhodnocením organizace místní identity řešení a uživatelské požadavky. Toto testování je důležité určit technické požadavky na tom, jak bude identit uživatelů vytvářené a udržované v cloudu.  Pro většinu organizací je místní služba Active Directory a místní adresář, který uživatelé budou podle synchronizovány z, ale v některých případech to nebude tak.  
+Spusťte vyhodnocením hello organizace místní řešení a uživatelské požadavky identity. Toto testování je důležité toodefine hello technické požadavky na tom, jak bude vytvářené a udržované v cloudu hello identity uživatelů.  Pro většinu organizací je místní služba Active Directory a hello místní adresář, který uživatelé budou podle synchronizovány z, ale v některých případech to nebudou hello případ.  
 
-Ujistěte se, že odpovězte si na následující otázky:
+Ujistěte se, zda text hello tooanswer následující otázky:
 
 * Máte jednu doménovou strukturu AD, několik nebo žádné?
   
@@ -36,35 +36,35 @@ Ujistěte se, že odpovězte si na následující otázky:
 * Aktuálně máte synchronizace nástroje místně?
   
   * Pokud ano, podporuje vaši uživatelé, pokud uživatelé používají virtuální adresář/integrace identit?
-* Máte k dispozici žádné jiné na místní adresáře, který chcete synchronizovat (například adresář LDAP, databáze HR atd)?
-  * Chystáte se to žádné GALSync?
-  * Co je aktuální stav UPN ve vaší organizaci? 
+* Máte k dispozici žádné jiné na místní adresáře, které chcete toosynchronize (například adresář LDAP, databáze HR atd)?
+  * Budete to žádné GALSync toobe?
+  * Co je hello aktuální stav UPN ve vaší organizaci? 
   * Máte na jiný adresář, který uživatelé ověřování proti?
   * Používá vaše společnost Microsoft Exchange?
     * Jejich plánování toho, že hybridní nasazení systému exchange?
 
-Nyní když máte představu o synchronizačních požadavcích, musíte určit, který nástroj je správná pro splnění těchto požadavků.  Společnost Microsoft poskytuje několik nástrojů k provádění integrace adresáře a synchronizace.  Najdete v článku [hybridní identita directory integrace nástrojů srovnávací tabulka](active-directory-hybrid-identity-design-considerations-tools-comparison.md) Další informace. 
+Teď, když máte představu o synchronizačních požadavcích, musíte toodetermine, který nástroj se správnou jeden toomeet hello tyto požadavky.  Společnost Microsoft poskytuje několik nástrojů pro integraci adresáře tooaccomplish a synchronizace.  V tématu hello [hybridní identita directory integrace nástrojů srovnávací tabulka](active-directory-hybrid-identity-design-considerations-tools-comparison.md) Další informace. 
 
-Nyní když máte synchronizačních požadavcích a nástroj, který bude dosáhnout vaší společnosti, budete muset vyhodnocování aplikací, které používají tyto služby directory. Toto testování je důležité určit požadavky na technické integrovat tyto aplikace do cloudu. Ujistěte se, že odpovězte si na následující otázky:
+Nyní když máte požadavků na synchronizaci a hello nástroj, který bude dosáhnout vaší společnosti, musíte tooevaluate hello aplikace, které používají tyto služby adresáře. Toto testování je důležité toodefine hello toointegrate technické požadavky těchto toohello cloudové aplikace. Ujistěte se, zda text hello tooanswer následující otázky:
 
-* Tyto aplikace se přesune do cloudu a používat adresář?
-* Jsou nějaké speciální atributy, které je nutné synchronizovat do cloudu, můžete tyto aplikace použít úspěšně?
-* Bude potřeba tyto aplikace znovu zapsání využívat cloudové ověřování?
-* Bude pokračovat za provozu místně, zatímco uživatelé přistupovat k nim pomocí cloudové identitě těchto aplikací?
+* Budou tyto aplikace přesunutý toohello cloudu a použít hello adresář?
+* Jsou nějaké speciální atributy, které potřebují toobe synchronizované toohello cloudu, aby se tyto aplikace můžete úspěšně používat?
+* Tyto aplikace potřebovat toobe znovu zapsat tootake výhod cloudové ověřování?
+* Tyto aplikace budou toolive místní při uživatelé přistupovat k nim pomocí hello cloudové identity?
 
-Také budete muset určit synchronizace adresářů požadavky a omezení zabezpečení. Toto testování je důležité získat seznam požadavků, které bude nutné k vytváření a údržbu identity uživatele v cloudu. Ujistěte se, že odpovězte si na následující otázky:
+Budete také potřebovat toodetermine hello zabezpečení požadavky a omezení synchronizace adresářů. Toto testování je důležité tooget seznam hello požadavků, které bude potřeba v pořadí toocreate a udržovat identity uživatele v cloudu hello. Ujistěte se, zda text hello tooanswer následující otázky:
 
-* Kde budou synchronizačním serverem umístěné?
+* Kde budou serveru pro synchronizaci hello umístěné?
 * Bude se připojený k doméně?
-* Bude server nacházet v omezené síti za bránou firewall, jako je například DMZ?
-  * Se nebudete moct otevřít porty brány firewall požadovaná kvůli podpoře synchronizace?
-* Máte v plánu zotavení po havárii pro server synchronizace?
-* Máte účet s správná oprávnění pro všechny doménové struktury, že chcete, aby byla synchronizována s?
-  * Pokud vaše společnost nebude vědět, odpověď pro tuto otázku, projděte si část "Oprávnění pro synchronizaci hesel" v článku [instalace služby Azure Active Directory Sync](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) a zjistit, pokud již máte účet Pomocí těchto oprávnění nebo pokud potřebujete vytvořit.
-* Pokud máte doménovou strukturou třeba synchronizace je synchronizační server nemůže získat pro každou doménovou strukturu?
+* Bude hello server nacházet v omezené síti za bránou firewall, jako je například DMZ?
+  * Bude moct tooopen hello vyžaduje brány firewall porty toosupport synchronizace?
+* Máte v plánu zotavení po havárii pro server synchronizace hello?
+* Máte účet s hello správná oprávnění pro všechny doménové struktury, které chcete toosynch s?
+  * Pokud vaše společnost neví hello odpověď pro tuto otázku, projděte si část hello "Oprávnění pro synchronizaci hesel" v článku hello [hello instalace služby Azure Active Directory Sync](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) a zjistit, pokud již máte účet se tato oprávnění nebo pokud potřebujete toocreate jeden.
+* Pokud máte doménovou strukturou třeba synchronizace je doménové struktury hello synchronizační server dokáže tooget tooeach?
 
 > [!NOTE]
-> Zajistěte, aby poznamenejte každou odpověď a pochopit důvody odpověď. [Stanovení požadavků na reakce na incidenty](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md) budou přenášeny po dostupných možností. Po zodpovězení těchto otázek, které vyberete která možnost nejlépe vyhovuje vaší firmě potřebuje.
+> Ujistěte se, že tootake poznámky u každé odpovědi a pochopit hello důvody, které hello odpovědí. [Stanovení požadavků na reakce na incidenty](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md) budou přenášeny po hello možnosti, které jsou k dispozici. Po zodpovězení těchto otázek, které vyberete která možnost nejlépe vyhovuje vaší firmě potřebuje.
 > 
 > 
 

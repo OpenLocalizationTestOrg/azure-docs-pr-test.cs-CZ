@@ -1,6 +1,6 @@
 ---
-title: "Spravovat sady záznamů DNS a záznamy s Azure DNS | Microsoft Docs"
-description: "Azure DNS poskytuje možnost spravovat sady záznamů DNS a záznamy při hostování vaší domény."
+title: "aaaManage DNS záznam sady a záznamy s Azure DNS | Microsoft Docs"
+description: "Azure DNS poskytuje záznam DNS toomanage schopností hello nastaví a zaznamenává při hostování vaší domény."
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
-ms.openlocfilehash: 001b80ccba43beab44f6a598f820df65a85a345f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2e62d017341589eaf8d1f8df2fe5db4b973381d1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Záznamy DNS spravovat a sady záznamů pomocí portálu Azure
+# <a name="manage-dns-records-and-record-sets-by-using-hello-azure-portal"></a>Spravovat záznamy a sadami záznamů DNS pomocí hello portálu Azure
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
@@ -29,76 +29,76 @@ ms.lasthandoff: 07/11/2017
 > * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
-Tento článek ukazuje, jak spravovat sady záznamů a záznamů zóny DNS pomocí portálu Azure.
+Tento článek ukazuje, jak hello toomanage sady záznamů a záznamů zóny DNS pomocí portálu Azure.
 
-Je důležité si uvědomit rozdíl mezi sady záznamů DNS a jednotlivé záznamy DNS. Sada záznamů je kolekce záznamů v zóně, které mají stejný název a jsou stejného typu. Další informace najdete v tématu [DNS vytvoření sady záznamů a záznamy pomocí portálu Azure](dns-getstarted-create-recordset-portal.md).
+Je důležité toounderstand hello rozdíl mezi sady záznamů DNS a jednotlivé záznamy DNS. Sada záznamů je kolekce záznamů v zóně, které mají hello stejný název a jsou hello stejný typ. Další informace najdete v tématu [DNS vytvoření sady záznamů a záznamy pomocí portálu Azure hello](dns-getstarted-create-recordset-portal.md).
 
 ## <a name="create-a-new-record-set-and-record"></a>Vytvoření nové sady záznamů a záznamů
 
-Vytvoření záznamů na portálu Azure, naleznete v části [záznamy DNS vytvořit pomocí portálu Azure](dns-getstarted-create-recordset-portal.md).
+toocreate záznamů v hello portál Azure, najdete v části [hello záznamy DNS vytvořit pomocí portálu Azure](dns-getstarted-create-recordset-portal.md).
 
 ## <a name="view-a-record-set"></a>Zobrazení sady záznamů
 
-1. V portálu Azure přejděte do **zónu DNS** okno.
-2. Hledání pro sadu záznamů a vyberte jej. Otevře vlastnosti sady záznamů.
+1. V hello portálu Azure, přejděte toohello **zónu DNS** okno.
+2. Hledání pro sadu záznamů hello a vyberte jej. Otevře vlastnosti hello sady záznamů.
 
     ![Vyhledejte sady záznamů](./media/dns-operations-recordsets-portal/searchset500.png)
 
-## <a name="add-a-new-record-to-a-record-set"></a>Přidejte nový záznam do sady záznamů
+## <a name="add-a-new-record-tooa-record-set"></a>Přidat novou sadu záznamů tooa záznamů
 
-Můžete přidat až 20 záznamů pro všechny sady záznamů. Sada záznamů nesmí obsahovat dva identické záznamy. Prázdný sady záznamů (s nulový počet záznamů) mohou být vytvořeny, ale nejsou zobrazeny na názvových serverů Azure DNS. Sady záznamů typu CNAME může obsahovat maximálně jeden záznam.
+Můžete přidat do sady záznamů tooany too20 záznamy. Sada záznamů nesmí obsahovat dva identické záznamy. Prázdný sady záznamů (s nulový počet záznamů) mohou být vytvořeny, ale nejsou zobrazeny na názvových serverů Azure DNS hello. Sady záznamů typu CNAME může obsahovat maximálně jeden záznam.
 
-1. Na **záznam nastavit vlastnosti** pro zónu DNS, klikněte na sadu záznamů, které chcete přidat záznam do.
+1. Na hello **vlastnosti sady záznamů** okno pro vaši zónu DNS, klikněte na tlačítko záznam hello nastavit, že chcete tooadd záznam o.
 
     ![Vyberte sady záznamů](./media/dns-operations-recordsets-portal/selectset500.png)
 
-2. Zadejte, že záznam nastaven vlastnosti vyplnění polí.
+2. Zadejte vlastnosti sady záznamů hello vyplněním hello polí.
 
     ![Přidání záznamu](./media/dns-operations-recordsets-portal/addrecord500.png)
 
-3. Klikněte na tlačítko **Uložit** v horní části okna nastavení uložte. Zavřete okno.
-4. V horním uvidíte, zda je ukládání záznamu.
+3. Klikněte na tlačítko **Uložit** v hello horní části okna toosave hello nastavení. Zavřete okno hello.
+4. V horním hello uvidíte, zda je ukládání hello záznamu.
 
     ![Ukládání sady záznamů](./media/dns-operations-recordsets-portal/saving150.png)
 
-Záznam po uložení, hodnoty na **zóny DNS** okně se projeví nový záznam.
+Po uložení hello záznamu, hello hodnot hello **zónu DNS** okně se projeví hello nový záznam.
 
 ## <a name="update-a-record"></a>Aktualizovat záznam
 
-Při aktualizaci záznamu v existující sady záznamů pole, která můžete aktualizovat závisí na vybraném typu záznamu, kterými pracujete.
+Při aktualizaci záznamu v existující sady záznamů hello pole, která můžete aktualizovat závisí na hello typu záznamu, kterými pracujete.
 
-1. Na **vlastnosti sady záznamů** okna pro vaše sadu záznamů, vyhledejte záznam.
-2. Upravte záznamu. Když upravíte záznam, můžete změnit nastavení k dispozici pro tento záznam. V následujícím příkladu **IP adresu** pole je vybrána, a IP adresu právě upravována.
+1. Na hello **vlastnosti sady záznamů** okna pro vaše sadu záznamů, vyhledejte záznam hello.
+2. Upravte záznamu hello. Když upravíte záznam, můžete změnit hello dostupná nastavení pro záznam hello. V následujícím příkladu hello, hello **IP adresu** vybrat pole a hello IP adresa je v procesu hello upravována.
 
     ![Upravte záznam](./media/dns-operations-recordsets-portal/modifyrecord500.png)
 
-3. Klikněte na tlačítko **Uložit** v horní části okna nastavení uložte. V pravém horním rohu uvidíte oznámení, které byly uloženy v záznamu.
+3. Klikněte na tlačítko **Uložit** v hello horní části okna toosave hello nastavení. V horním pravém rohu hello uvidíte hello oznámení, že záznam hello se uložila.
 
     ![Uložit záznamovou sadu](./media/dns-operations-recordsets-portal/saved150.png)
 
-Po uložení záznamu, nastavte hodnoty pro záznam na **zónu DNS** okně se projeví aktualizovaný záznam.
+Po uložení hello záznamu, hello hodnoty pro záznam hello nastavené na hello **zónu DNS** okně se projeví hello aktualizovat záznam.
 
 ## <a name="remove-a-record-from-a-record-set"></a>Odebrat záznam ze sady záznamů
 
-Na portálu Azure můžete odebrat záznamy ze sady záznamů. Všimněte si, že odstraněním poslední záznam ze záznamů sady nedojde k odstranění sady záznamů.
+Můžete použít hello Azure portálu tooremove záznamy ze sady záznamů. Všimněte si, že odstraněním hello poslední záznam ze záznamů sady neodstraní hello sady záznamů.
 
-1. Na **vlastnosti sady záznamů** okna pro vaše sadu záznamů, vyhledejte záznam.
-2. Klikněte na záznam, který chcete odebrat. Potom vyberte **odebrat**.
+1. Na hello **vlastnosti sady záznamů** okna pro vaše sadu záznamů, vyhledejte záznam hello.
+2. Klikněte na tlačítko, které chcete tooremove záznam hello. Potom vyberte **odebrat**.
 
     ![Odebrat záznam](./media/dns-operations-recordsets-portal/removerecord500.png)
 
-3. Klikněte na tlačítko **Uložit** v horní části okna nastavení uložte.
-4. Po odebrání záznamu, hodnoty pro záznam na **zónu DNS** okně se projeví odebrání.
+3. Klikněte na tlačítko **Uložit** v hello horní části okna toosave hello nastavení.
+4. Po odebrání záznamu hello hello hodnoty pro záznam hello na hello **zónu DNS** okně se projeví odebrání hello.
 
 ## <a name="delete"></a>Odstranit sadu záznamů
 
-1. Na **vlastnosti sady záznamů** pro vaše sadu záznamů, klikněte na **odstranit**.
+1. Na hello **vlastnosti sady záznamů** pro vaše sadu záznamů, klikněte na **odstranit**.
 
     ![Odstranit sadu záznamů](./media/dns-operations-recordsets-portal/deleterecordset500.png)
 
-2. Zobrazí se zpráva s dotazem, pokud chcete odstranit záznamovou sadu.
-3. Zkontrolujte, zda název odpovídá sady záznamů, který chcete odstranit a potom klikněte na **Ano**.
-4. Na **zóny DNS** okno, ověřte, zda sada záznamů je již nebudou viditelné.
+2. Zobrazí dotaz, pokud chcete, aby sada záznamů toodelete hello.
+3. Ověřte, zda text hello název odpovídá hello záznam nastavena má toodelete a pak klikněte na tlačítko **Ano**.
+4. Na hello **zónu DNS** okno, ověřte, zda sada záznamů hello je už nebude viditelné.
 
 ## <a name="work-with-ns-and-soa-records"></a>Práce se záznamy NS a SOA
 
@@ -106,22 +106,22 @@ Záznamy NS a SOA, které se automaticky vytvoří spravuje odlišně od ostatn�
 
 ### <a name="modify-soa-records"></a>Upravit záznamy SOA
 
-Nelze přidat nebo odebrat záznamy z automaticky vytvořený záznam SOA nastavit ve vrcholu zóny (název = "@"). Ale můžete upravit některý z parametrů v rámci záznamu SOA (s výjimkou "hostitel") a hodnota TTL sady záznamu.
+Nelze přidat nebo odebrat záznamy z hello automaticky vytvořil záznam SOA nastavit na vrcholu zóny hello (název = "@"). Ale můžete upravit některý z parametrů hello v rámci hello záznam SOA (s výjimkou "hostitel") a záznam hello nastavit hodnotu TTL.
 
-### <a name="modify-ns-records-at-the-zone-apex"></a>Upravit NS záznamů ve vrcholu zóny
+### <a name="modify-ns-records-at-hello-zone-apex"></a>Upravit NS záznamy na vrcholu zóny hello
 
-S každou zónou DNS se automaticky vytvoří záznam NS nastavit ve vrcholu zóny. Obsahuje názvy názvových serverů Azure DNS přiřadit do zóny.
+Nastavte na vrcholu zóny hello záznam NS Hello se vytvoří automaticky s každou zónou DNS. Obsahuje názvy hello hello Azure DNS název servery přiřazené toohello zóny.
 
-Můžete přidat další název nastavit servery na tento záznam NS, podporuje společné hosting domén s více než jednoho poskytovatele DNS. Můžete také upravit TTL a metadat pro tuto sadu záznamů. Však nelze odebrat ani změnit předem vyplněná názvových serverů Azure DNS.
+Můžete přidat další název servery toothis NS sady záznamů, toosupport společně s více než jednoho poskytovatele DNS hostování domény. Můžete také upravit hello TTL a metadat pro tuto sadu záznamů. Však nelze odebrat ani změnit hello předem vyplněná názvových serverů Azure DNS.
 
-Všimněte si, že vztahuje se pouze na vrcholu zóny sady záznamů NS. Jiné sady záznamů NS v pásmu (jak je používá delegovat podřízených zónách) můžete změnit bez omezení.
+Všimněte si, že platí pouze toohello NS sady záznamů na vrcholu zóny hello. Další NS sady záznamů ve vaší zóně (jako podřízené zóny použité toodelegate) můžete změnit bez omezení.
 
 ### <a name="delete-soa-or-ns-record-sets"></a>Odstranění sady záznamů SOA nebo NS
 
-Nelze odstranit, SOA a sady záznamů NS ve vrcholu zóny (název = "@"), jsou vytvořeny automaticky při vytváření zóny. Jsou automaticky odstraněny při odstranění zóny.
+Nelze odstranit hello SOA a NS sady záznamů na vrcholu zóny hello (název = "@"), automaticky vytvoří při vytvoření zóny hello. Jsou automaticky odstraněny při odstranění zóny hello.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o službě Azure DNS najdete v tématu [přehled Azure DNS](dns-overview.md).
-* Další informace o automatizaci DNS najdete v tématu [vytvoření DNS zóny a sad záznamů pomocí sady .NET SDK](dns-sdk.md).
+* Další informace o službě Azure DNS najdete v tématu hello [přehled Azure DNS](dns-overview.md).
+* Další informace o automatizaci DNS najdete v tématu [vytvoření DNS zóny a sad záznamů pomocí .NET SDK hello](dns-sdk.md).
 * Další informace o zpětné záznamy DNS, najdete v části [přehled zpětné DNS a podpory v Azure](dns-reverse-dns-overview.md).

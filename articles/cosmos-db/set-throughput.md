@@ -1,6 +1,6 @@
 ---
-title: "Zřízení propustnost pro Azure Cosmos DB | Microsoft Docs"
-description: "Zjistěte, jak nastavit zřízená propustnost pro containsers, kolekce, grafy a tabulky Azure Cosmos DB."
+title: propustnost aaaProvision pro Azure Cosmos DB | Microsoft Docs
+description: "Zjistěte, jak tooset zřízené propustnosti pro containsers, kolekce, grafy a tabulky Azure Cosmos DB."
 services: cosmos-db
 author: mimig1
 manager: jhubbard
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: mimig
-ms.openlocfilehash: d541bb19ba7e5ecb44c9fe91b1e232d4d9c2170e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c143f4aace466b7109168a50e2eb80ddeca6400e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="set-throughput-for-azure-cosmos-db-containers"></a>Nastavit propustnost pro Azure Cosmos DB kontejnery
 
-Propustnost lze nastavit pro Azure Cosmos DB kontejnerů na portálu Azure nebo pomocí sady SDK klienta. 
+Můžete nastavit propustnost pro Azure Cosmos DB kontejnerů v hello portál Azure nebo pomocí hello klientské sady SDK. 
 
-Následující tabulka uvádí k dispozici pro kontejnery propustnost:
+Hello následující tabulka uvádí hello propustnost, které jsou k dispozici pro kontejnery:
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
@@ -46,43 +46,43 @@ Následující tabulka uvádí k dispozici pro kontejnery propustnost:
     </tbody>
 </table>
 
-## <a name="to-set-the-throughput-by-using-the-azure-portal"></a>Chcete-li nastavit propustnost pomocí portálu Azure
+## <a name="tooset-hello-throughput-by-using-hello-azure-portal"></a>propustnost hello tooset pomocí hello portálu Azure
 
-1. V novém okně, otevřete [portál Azure](https://portal.azure.com).
-2. Na levém panelu klikněte na tlačítko **Azure Cosmos DB**, nebo klikněte na tlačítko **více služeb** v dolní části, posuňte se k **databáze**a potom klikněte na **Azure Cosmos DB**.
+1. V novém okně, otevřete hello [portál Azure](https://portal.azure.com).
+2. Na levém panelu hello, klikněte na tlačítko **Azure Cosmos DB**, nebo klikněte na tlačítko **více služeb** v dolní části hello, posuňte se příliš**databáze**a pak klikněte na tlačítko **Azure Cosmos DB**.
 3. Vyberte svůj účet Cosmos DB.
-4. V novém okně klikněte na **Data Explorer (Preview)** v navigační nabídce.
-5. V novém okně rozbalte databázi a kontejneru a pak klikněte na tlačítko **škálování & nastavení**.
-6. V novém okně zadejte novou hodnotu propustnost v **propustnost** pole a pak klikněte na **Uložit**.
+4. V novém okně hello, klikněte na tlačítko **Data Explorer (Preview)** v navigační nabídce hello.
+5. V novém okně hello, rozbalte databázi a kontejneru a pak klikněte na tlačítko **škálování & nastavení**.
+6. V novém okně hello, zadejte novou hodnotu propustnosti hello v hello **propustnost** pole a pak klikněte na **Uložit**.
 
 <a id="set-throughput-sdk"></a>
 
-## <a name="to-set-the-throughput-by-using-the-documentdb-api-for-net"></a>Chcete-li nastavit propustnost pomocí DocumentDB rozhraní API pro .NET
+## <a name="tooset-hello-throughput-by-using-hello-documentdb-api-for-net"></a>propustnost hello tooset pomocí hello DocumentDB rozhraní API pro .NET
 
 ```C#
-//Fetch the resource to be updated
+//Fetch hello resource toobe updated
 Offer offer = client.CreateOfferQuery()
     .Where(r => r.ResourceLink == collection.SelfLink)    
     .AsEnumerable()
     .SingleOrDefault();
 
-// Set the throughput to the new value, for example 12,000 request units per second
+// Set hello throughput toohello new value, for example 12,000 request units per second
 offer = new OfferV2(offer, 12000);
 
-//Now persist these changes to the database by replacing the original resource
+//Now persist these changes toohello database by replacing hello original resource
 await client.ReplaceOfferAsync(offer);
 ```
 
 ## <a name="throughput-faq"></a>Propustnost – nejčastější dotazy
 
-**Můžete nastavit Moje propustnosti na méně než 400 RU/s**
+**Můžete nastavit Moje tooless propustnost než 400 RU/s**
 
-400 RU/s je k dispozici na kolekce tvořené jedním oddílem Cosmos DB (2 500 RU/s je minimální pro dělené kolekce) minimální propustnost. Žádost jednotky jsou nastaveny v intervalech 100 RU/s, ale propustnost nelze nastavit na 100 RU/s nebo jakoukoli hodnotu menší než 400 RU/s. Pokud hledáte nákladově efektivní metodu pro vývoj a testování Cosmos DB, můžete použít bezplatnou [emulátoru DB Cosmos Azure](local-emulator.md), které můžete nasadit místně bez nákladů. 
+400 RU/s je minimální propustnost hello k dispozici na kolekce tvořené jedním oddílem Cosmos DB (hello minimální pro dělené kolekce je 2 500 RU/s). Žádost jednotky jsou nastaveny v intervalech 100 RU/s, ale propustnost nelze nastavit too100 RU/s nebo jakoukoli hodnotu menší než 400 RU/s. Pokud hledáte nákladově efektivní způsob toodevelop a testování Cosmos DB, můžete použít hello volné [emulátoru DB Cosmos Azure](local-emulator.md), které můžete nasadit místně bez nákladů. 
 
-**Jak lze nastavit pomocí rozhraní API MongoDB througput?**
+**Jak lze nastavit pomocí hello MongoDB API througput?**
 
-Nedojde k rozšíření rozhraní API MongoDB nastavit propustnost. Doporučuje se používat rozhraní API DocumentDB, jak je znázorněno v [nastavení propustnost pomocí DocumentDB rozhraní API pro .NET](#set-throughput-sdk).
+Neexistuje žádné propustnost tooset rozšíření rozhraní API MongoDB. Hello doporučení je toouse hello DocumentDB rozhraní API, jak je znázorněno v [tooset hello propustnost pomocí hello DocumentDB rozhraní API pro .NET](#set-throughput-sdk).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o zřizování a probíhající planetu měřítku s Cosmos DB, najdete v části [dělení a škálování s Cosmos DB](partition-data.md).
+toolearn Další informace o zřizování a probíhající planetu měřítku s Cosmos databáze, najdete v části [dělení a škálování s Cosmos DB](partition-data.md).

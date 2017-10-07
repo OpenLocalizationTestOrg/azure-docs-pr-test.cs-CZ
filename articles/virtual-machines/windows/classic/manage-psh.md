@@ -1,6 +1,6 @@
 ---
-title: "Správa virtuálních počítačů pomocí Azure PowerShell | Microsoft Docs"
-description: "Další příkazy, které můžete použít k automatizaci úloh v správu virtuálních počítačů."
+title: "aaaManage virtuálních počítačů pomocí Azure PowerShell | Microsoft Docs"
+description: "Další příkazy, které můžete použít tooautomate úkoly při správě virtuálních počítačů."
 services: virtual-machines-windows
 documentationcenter: windows
 author: singhkays
@@ -15,44 +15,44 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/12/2016
 ms.author: kasing
-ms.openlocfilehash: fd2df7e1029ced11974d0b832258bed2cf3bbb27
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e4ca6f098519243a321eac98b6692790fe18c22c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-your-virtual-machines-by-using-azure-powershell"></a>Správa virtuálních počítačů pomocí Azure PowerShellu
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Pro běžné příkazy prostředí PowerShell pomocí modelu Resource Manager, najdete v části [zde](../../virtual-machines-windows-ps-common-ref.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello. Pro běžné příkazy prostředí PowerShell pomocí modelu Resource Manager hello, najdete v části [zde](../../virtual-machines-windows-ps-common-ref.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Mnoho úloh, které se každý den ke správě virtuálních počítačů je možné automatizovat pomocí rutin prostředí Azure PowerShell. Tento článek vám příklady příkazů pro jednodušší úlohy a odkazy na články, které se zobrazí příkazy pro složitější úlohy.
+Pomocí rutin prostředí Azure PowerShell je možné automatizovat celou řadu úloh dělat každý den toomanage virtuální počítače. Tento článek vám příklady příkazů pro jednodušší úlohy a tooarticles odkazy, který zobrazí hello příkazy pro složitější úlohy.
 
 > [!NOTE]
-> Pokud ještě nainstalován a nakonfigurován prostředí Azure PowerShell ještě můžete získat pokyny v článku [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+> Pokud ještě nainstalován a nakonfigurován prostředí Azure PowerShell ještě můžete získat pokyny v článku hello [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 > 
 > 
 
-## <a name="how-to-use-the-example-commands"></a>Jak používat příkazy v příkladu
-Budete muset část textu v příkazech nahraďte text, který je vhodný pro vaše prostředí. < a > symboly uvést, budete muset nahraďte text. Při nahrazení textu odebrat symboly, ale ponechte uvozovek nahoře na místě.
+## <a name="how-toouse-hello-example-commands"></a>Jak toouse hello příklady příkazů
+Budete potřebovat tooreplace některé z textu hello v hello příkazy pomocí text, který je vhodný pro vaše prostředí. Hello < a > symboly indikovat potřebujete tooreplace text. Při nahrazení textu hello odebrat hello symboly, ale ponechte hello uvozovek nahoře na místě.
 
 ## <a name="get-a-vm"></a>Získat virtuální počítač
-Toto je základní úlohy, které budete používat často. Ji použijte k získání informací o virtuální počítač, provádějí úlohy na virtuálním počítači nebo získat výstup pro uložit jako proměnnou.
+Toto je základní úlohy, které budete používat často. Používat tooget informace o virtuální počítač, provádět úlohy na virtuálním počítači nebo získat výstup toostore v proměnné.
 
-Chcete-li získat informace o virtuálním počítači, spusťte tento příkaz, nahraďte vše v uvozovkách, včetně < a > znaky:
+tooget informace o hello virtuálního počítače, spusťte tento příkaz, přičemž vše v uvozovkách hello, včetně hello < a > znaků:
 
      Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
-Chcete-li uložit výstup do proměnné $vm, spusťte:
+hello toostore výstup do proměnné $vm, spusťte:
 
     $vm = Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
-## <a name="log-on-to-a-windows-based-vm"></a>Přihlaste se k systému Windows virtuálního počítače
+## <a name="log-on-tooa-windows-based-vm"></a>Přihlaste se tooa virtuálních počítačů na bázi Windows
 Spusťte tyto příkazy:
 
 > [!NOTE]
-> Název virtuálního počítače a cloudové služby můžete získat z výstupu **Get-AzureVM** příkaz.
+> Hello virtuálního počítače a název cloudové služby můžete získat z hello zobrazení hello **Get-AzureVM** příkaz.
 > 
-> $svcName = "<cloud service name>" $vmName = "<virtual machine name>" $localPath = "< jednotku a složku umístění a uložte stažený soubor RDP, například: c:\temp >" $localFile = $localPath + "\" + $vmname +".rdp"Get-AzureRemoteDesktopFile - ServiceName $svcName-název $vmName - Místnícesta $localFile – spuštění
+> $svcName = "<cloud service name>" $vmName = "<virtual machine name>" $localPath = "< jednotku a složku umístění toostore hello stáhnout soubor RDP, například: c:\temp >" $localFile = $localPath + "\" + $vmname +".rdp"Get-AzureRemoteDesktopFile - ServiceName $svcName-název $vmName - Místnícesta $localFile – spuštění
 > 
 > 
 
@@ -62,7 +62,7 @@ Spusťte tento příkaz:
     Stop-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
 > [!IMPORTANT]
-> Tento parametr použijte v případě, že je poslední virtuální počítač v rámci této cloudové služby zachovat virtuální IP (VIP) cloudové služby. <br><br> Pokud použijete parametr StayProvisioned, stále platit budete pro virtuální počítač.
+> Použijte tento parametr tookeep hello virtuální IP (VIP) hello cloudu služeb v případě, že je hello poslední virtuální počítač v rámci této cloudové služby. <br><br> Pokud použijete parametr StayProvisioned hello, stále platit budete pro hello virtuálních počítačů.
 > 
 > 
 
@@ -72,19 +72,19 @@ Spusťte tento příkaz:
     Start-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
 ## <a name="attach-a-data-disk"></a>Připojení datového disku
-Tato úloha vyžaduje několik kroků. Nejprve pomocí *** Add-AzureDataDisk *** rutiny disk přidat do objektu $vm. Potom použít **aktualizace-AzureVM** rutiny se aktualizovat konfiguraci virtuálního počítače.
+Tato úloha vyžaduje několik kroků. Nejprve pomocí hello *** Add-AzureDataDisk *** tooadd hello disku toohello $vm a jeho objekt rutiny. Potom použít **aktualizace-AzureVM** rutiny tooupdate hello konfiguraci hello virtuálních počítačů.
 
-Musíte se také rozhodnout, jestli se má připojit nový disk, nebo disk, který obsahuje data. Příkaz pro nový disk, vytvoří soubor VHD a připojí jej.
+Budete také potřebovat toodecide zda tooattach nový disk nebo jeden, který obsahuje data. Pro nový disk hello příkaz vytvoří soubor VHD hello a připojí jej.
 
-Pokud chcete připojit nový disk, spusťte tento příkaz:
+tooattach nový disk, spusťte tento příkaz:
 
     Add-AzureDataDisk -CreateNew -DiskSizeInGB 128 -DiskLabel "<main>" -LUN <0> -VM $vm | Update-AzureVM
 
-Pokud chcete připojit stávající datový disk, spusťte tento příkaz:
+tooattach stávající datový disk, spusťte tento příkaz:
 
     Add-AzureDataDisk -Import -DiskName "<MyExistingDisk>" -LUN <0> | Update-AzureVM
 
-Chcete-li datových disků připojit z existujícího souboru VHD v úložišti objektů blob, spusťte tento příkaz:
+tooattach datové disky z existujícího souboru VHD v úložišti objektů blob, spusťte tento příkaz:
 
     Add-AzureDataDisk -ImportFrom -MediaLocation `
               "<https://mystorage.blob.core.windows.net/mycontainer/MyExistingDisk.vhd>" `
@@ -92,7 +92,7 @@ Chcete-li datových disků připojit z existujícího souboru VHD v úložišti 
               Update-AzureVM
 
 ## <a name="create-a-windows-based-vm"></a>Vytvoření virtuálního počítače založené na systému Windows
-K vytvoření nového virtuálního počítače založené na systému Windows v Azure, postupujte podle pokynů v [pomocí prostředí Azure PowerShell k vytvoření a nastavení virtuálních počítačích se systémem Windows](create-powershell.md). Tento postup téma vám pomůže vytvořit prostředí Azure PowerShell sady příkazů, který vytvoří virtuální počítač systému Windows, který může být předkonfigurované:
+toocreate nového systému Windows virtuálního počítače v Azure, použijte pokyny hello v [toocreate pomocí Azure PowerShell a předem nakonfigurujte virtuálních počítačích se systémem Windows](create-powershell.md). Tento postup téma vás provede hello vytvoření prostředí Azure PowerShell sady příkazů, který vytvoří virtuální počítač systému Windows, který může být předkonfigurované:
 
 * S členství v doméně služby Active Directory.
 * S další disky.

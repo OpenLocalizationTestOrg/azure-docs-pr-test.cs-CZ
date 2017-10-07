@@ -1,6 +1,6 @@
 ---
-title: "Přidání uživatele do virtuálního počítače s Linuxem v Azure | Microsoft Docs"
-description: "Přidání uživatele do virtuálního počítače s Linuxem v Azure."
+title: "aaaAdd tooa uživatele virtuálního počítače s Linuxem v Azure | Microsoft Docs"
+description: "Přidejte uživatele tooa virtuálního počítače s Linuxem v Azure."
 services: virtual-machines-linux
 documentationcenter: 
 author: vlivech
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: v-livech
-ms.openlocfilehash: a95157f57c0cbd1f2a9ed68a0fe83140d7c9ec40
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: eed050154adf0cbed2c168e7aa675bd3ded85fcd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-a-user-to-an-azure-vm"></a>Přidání uživatele do virtuálního počítače Azure
-Jedním z první úlohy na žádné nové virtuální počítače Linux je vytvoření nového uživatele.  V tomto článku jsme provede procesem vytvoření sudo uživatelský účet, nastavení hesla, přidání SSH veřejných klíčů a nakonec použít `visudo` umožňující sudo bez zadání hesla.
+# <a name="add-a-user-tooan-azure-vm"></a>Přidat uživatele tooan virtuálního počítače Azure
+Jedním z první úlohy hello na žádné nové virtuální počítače Linux je toocreate nového uživatele.  V tomto článku jsme provede procesem vytvoření sudo uživatelský účet, heslo hello nastavení, přidání SSH veřejných klíčů a nakonec použít `visudo` tooallow sudo bez zadání hesla.
 
-Požadavky jsou: [účet Azure](https://azure.microsoft.com/pricing/free-trial/), [veřejné a soukromé klíče SSH](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), skupinu prostředků Azure a rozhraní příkazového řádku Azure nainstalovaný a přepnout do režimu Azure Resource Manager pomocí `azure config mode arm`.
+Požadavky jsou: [účet Azure](https://azure.microsoft.com/pricing/free-trial/), [veřejné a soukromé klíče SSH](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), skupinu prostředků Azure a hello rozhraní příkazového řádku Azure nainstalované a přepnout pomocí režimu Resource Manager tooAzure `azure config mode arm`.
 
 ## <a name="quick-commands"></a>Rychlé příkazy
 ```bash
@@ -40,30 +40,30 @@ Enter new UNIX password:
 Retype new UNIX password:
 passwd: password updated successfully
 
-# Copy the SSH Public Key to the new user
+# Copy hello SSH Public Key toohello new user
 ssh-copy-id -i ~/.ssh/id_rsa exampleuser@exampleserver
 
-# Change sudoers to allow no password
-# Execute visudo as root to edit the /etc/sudoers file
+# Change sudoers tooallow no password
+# Execute visudo as root tooedit hello /etc/sudoers file
 visudo
 
 # On RedHat family distros uncomment this line:
 ## Same thing without a password
 # %wheel        ALL=(ALL)       NOPASSWD: ALL
 
-# to this
+# toothis
 ## Same thing without a password
 %wheel        ALL=(ALL)       NOPASSWD: ALL
 
 # On Debian family distros change this line:
-# Allow members of group sudo to execute any command
+# Allow members of group sudo tooexecute any command
 %sudo   ALL=(ALL:ALL) ALL
 
-# to this
+# toothis
 %sudo   ALL=(ALL) NOPASSWD:ALL
 
 # Verify everything
-# Verify the SSH keys & User account
+# Verify hello SSH keys & User account
 bill@slackware$ ssh -i ~/.ssh/id_rsa exampleuser@exampleserver
 
 # Verify sudo access
@@ -72,23 +72,23 @@ sudo top
 
 ## <a name="detailed-walkthrough"></a>Podrobný postup
 ### <a name="introduction"></a>Úvod
-Jedním z první a nejběžnější úlohy s nový server je k přidání uživatelského účtu.  By mělo být zakázáno přihlášení kořenové a kořenového účtu samotné nepoužívejte server Linux, pouze sudo.  Poskytnutí zvýšení oprávnění pomocí příkazu sudo kořenové uživatele je správný způsob, jak spravovat a použít Linux.
+Jedním z hello první a nejběžnější úlohy na nový server je tooadd uživatelský účet.  By mělo být zakázáno přihlášení kořenové a nepoužívejte hello kořenového účtu samotné s server Linux, pouze sudo.  Udělení oprávnění pomocí příkazu "sudo" jej hello správný způsob tooadminister a používat Linux eskalace kořenové uživatele.
 
-Pomocí příkazu `useradd` přidáváme uživatelské účty do virtuálního počítače s Linuxem.  Spuštění `useradd` upraví `/etc/passwd`, `/etc/shadow`, `/etc/group`, a `/etc/gshadow`.  Přidáváme příkazového řádku příznak, který `useradd` příkazu také přidat nového uživatele do skupiny správné sudo v systému Linux.  I Zvu tě `useradd` vytvoří položku do `/etc/passwd` není přidělit nový uživatelský účet heslo.  Vytváříme počátečního hesla pro nového uživatele pomocí jednoduché `passwd` příkaz.  Posledním krokem je upravit pravidla sudo umožňující tohoto uživatele k provádění příkazů s oprávněními sudo bez nutnosti zadávat heslo pro každý příkaz.  Přihlášení pomocí soukromého klíče jsme se za předpokladu, že uživatelský účet je před nesprávnými účastníky a se má povolit přístup sudo bez zadání hesla.  
+Pomocí příkazu hello `useradd` přidáváme uživatelské účty toohello virtuálního počítače s Linuxem.  Spuštění `useradd` upraví `/etc/passwd`, `/etc/shadow`, `/etc/group`, a `/etc/gshadow`.  Přidáváme příkazového řádku příznak toohello `useradd` příkaz tooalso přidat hello novou toohello správné sudo skupinu uživatelů v systému Linux.  I Zvu tě `useradd` vytvoří položku do `/etc/passwd` neudělí hello nový uživatelský účet heslo.  Vytváříme počátečního hesla pro nového uživatele hello pomocí jednoduchého hello `passwd` příkaz.  posledním krokem Hello je toomodify hello sudo pravidla tooallow příkazy tooexecute tohoto uživatele s oprávněními sudo bez nutnosti tooenter heslo pro každý příkaz.  Přihlášení pomocí soukromého klíče hello jsme se za předpokladu, že uživatelský účet je před nesprávnými účastníky a budou tooallow sudo přístup bez zadání hesla.  
 
-### <a name="adding-a-single-sudo-user-to-an-azure-vm"></a>Přidání uživatele jeden sudo na virtuální počítač Azure
-Přihlaste se k virtuálnímu počítači Azure pomocí klíče SSH.  Pokud máte instalaci SSH veřejného klíče získat přístup, proveďte v tomto článku nejprve [pomocí ověření veřejného klíče s Azure](http://link.to/article).  
+### <a name="adding-a-single-sudo-user-tooan-azure-vm"></a>Přidávání jednoho sudo uživatele tooan virtuálního počítače Azure
+Přihlaste se toohello virtuálního počítače Azure pomocí klíče SSH.  Pokud máte instalaci SSH veřejného klíče získat přístup, proveďte v tomto článku nejprve [pomocí ověření veřejného klíče s Azure](http://link.to/article).  
 
-`useradd` Příkaz dokončí následující úkoly:
+Hello `useradd` dokončení příkazu hello následující úlohy:
 
 * Vytvořit nový uživatelský účet
-* Vytvořte novou skupinu uživatelů se stejným názvem
-* prázdná položka k přidání`/etc/passwd`
-* prázdná položka k přidání`/etc/gpasswd`
+* Vytvořit novou skupinu uživatelů s hello stejným názvem
+* Přidat prázdná položka příliš`/etc/passwd`
+* Přidat prázdná položka příliš`/etc/gpasswd`
 
-`-G` Příkazového řádku příznak přidá nový uživatelský účet do správné skupiny Linux udělíte oprávnění eskalace kořenového nový uživatelský účet.
+Hello `-G` příkazového řádku příznak přidá hello novou účet toohello správné Linux skupinu uživatelů udělíte oprávnění eskalace kořenového hello nový uživatelský účet.
 
-#### <a name="add-the-user"></a>Přidejte uživatele
+#### <a name="add-hello-user"></a>Přidat uživatele hello
 ```bash
 # On RedHat family distros
 sudo useradd -G wheel exampleUser
@@ -98,7 +98,7 @@ sudo useradd -G sudo exampleUser
 ```
 
 #### <a name="set-a-password"></a>Nastavení hesla
-`useradd` Příkaz vytvoří uživatele a přidá položku do obou `/etc/passwd` a `/etc/gpasswd` , ale ve skutečnosti nenastaví heslo.  Heslo je přidaný do položky pomocí `passwd` příkaz.
+Hello `useradd` příkaz vytvoří hello uživatele a přidá položka tooboth `/etc/passwd` a `/etc/gpasswd` , ale ve skutečnosti nenastaví hello heslo.  Hello heslo je přidána toohello položky na základě hello `passwd` příkaz.
 
 ```bash
 sudo passwd exampleUser
@@ -107,43 +107,43 @@ Retype new UNIX password:
 passwd: password updated successfully
 ```
 
-Uživatel s oprávněními sudo máme teď na serveru.
+Uživatel s oprávněními sudo máme teď na serveru hello.
 
-### <a name="add-your-ssh-public-key-to-the-new-user-account"></a>Přidat váš veřejný klíč SSH pro nový uživatelský účet
-Z počítače, použijte `ssh-copy-id` příkaz pomocí nového hesla.
+### <a name="add-your-ssh-public-key-toohello-new-user-account"></a>Přidejte veřejný klíč SSH toohello nového uživatelského účtu
+Z počítače, použijte hello `ssh-copy-id` s hello nové heslo.
 
 ```bash
 ssh-copy-id -i ~/.ssh/id_rsa exampleuser@exampleserver
 ```
 
-### <a name="using-visudo-to-allow-sudo-usage-without-a-password"></a>Pomocí visudo umožňující použití sudo bez zadání hesla
-Pomocí `visudo` upravit `/etc/sudoers` souboru přidá několik vrstev ochranu proti nesprávně změny tohoto souboru důležité.  Při provádění `visudo`, `/etc/sudoers` soubor je uzamčený, aby žádný jiný uživatel provádět změny, když je aktivně upravována.  `/etc/sudoers` Chyb, kterých se také zkontrolována souboru `visudo` při pokusu uložit nebo ukončení, nelze uložit soubor porušený sudoers.
+### <a name="using-visudo-tooallow-sudo-usage-without-a-password"></a>Pomocí visudo tooallow sudo využití bez zadání hesla
+Pomocí `visudo` tooedit hello `/etc/sudoers` souboru přidá několik vrstev ochranu proti nesprávně změny tohoto souboru důležité.  Při provádění `visudo`, hello `/etc/sudoers` soubor je uzamčené tooensure žádný jiný uživatel provádět změny, když je aktivně upravována.  Hello `/etc/sudoers` chyb, kterých se také zkontrolována souboru `visudo` při pokus toosave nebo ukončení, nelze uložit soubor porušený sudoers.
 
-Připravili jsme uživatelé ve skupině správné výchozí pro přístup k příkazu "sudo".  Teď se zaměříme chcete povolit tyto skupiny používat sudo bez hesla.
+Připravili jsme uživatelé hello správné výchozí skupiny pro přístup k příkazu "sudo".  Teď se zaměříme tooenable sudo toouse tyto skupiny bez hesla.
 
 ```bash
-# Execute visudo as root to edit the /etc/sudoers file
+# Execute visudo as root tooedit hello /etc/sudoers file
 visudo
 
 # On RedHat family distros uncomment this line:
 ## Same thing without a password
 # %wheel        ALL=(ALL)       NOPASSWD: ALL
 
-# to this
+# toothis
 ## Same thing without a password
 %wheel        ALL=(ALL)       NOPASSWD: ALL
 
 # On Debian family distros change this line:
-# Allow members of group sudo to execute any command
+# Allow members of group sudo tooexecute any command
 %sudo   ALL=(ALL:ALL) ALL
 
-# to this
+# toothis
 %sudo   ALL=(ALL) NOPASSWD:ALL
 ```
 
-### <a name="verify-the-user-ssh-keys-and-sudo"></a>Ověření uživatele, ssh klíče a sudo
+### <a name="verify-hello-user-ssh-keys-and-sudo"></a>Ověření uživatele hello ssh klíče a sudo
 ```bash
-# Verify the SSH keys & User account
+# Verify hello SSH keys & User account
 ssh -i ~/.ssh/id_rsa exampleuser@exampleserver
 
 # Verify sudo access

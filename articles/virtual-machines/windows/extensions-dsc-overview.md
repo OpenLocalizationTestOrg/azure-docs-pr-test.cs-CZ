@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace požadovaného stavu Azure přehled | Microsoft Docs"
-description: "Přehled pro používání obslužná rutina rozšíření Microsoft Azure pro konfigurace požadovaného stavu prostředí PowerShell. Včetně požadavky, architektura, rutiny..."
+title: "aaaDesired stavu konfigurace pro přehled Azure | Microsoft Docs"
+description: "Přehled pro používání hello Microsoft Azure rozšíření obslužné rutiny pro konfigurace požadovaného stavu prostředí PowerShell. Včetně požadavky, architektura, rutiny..."
 services: virtual-machines-windows
 documentationcenter: 
 author: zjalexander
@@ -16,83 +16,83 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 01/09/2017
 ms.author: zachal
-ms.openlocfilehash: c05c2d541a5f526f362f9cd72fe6d878374112b6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b0337a2f1124f35e5e40c1478bd7530427e59d44
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Úvod do rozšíření obslužné rutiny konfigurace požadovaného stavu Azure
+# <a name="introduction-toohello-azure-desired-state-configuration-extension-handler"></a>Obslužná rutina rozšíření Úvod toohello konfigurace požadovaného stavu Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-Agent virtuálního počítače Azure a související rozšíření jsou součástí infrastrukturní služby Microsoft Azure. Rozšíření virtuálního počítače jsou softwarové komponenty, které rozšiřují funkce virtuálních počítačů a zjednodušit různé operace správy virtuálních počítačů. Například slouží rozšíření VMAccess k resetování hesla správce nebo rozšíření vlastních skriptů můžete použít ke spuštění skriptu ve virtuálním počítači.
+Hello agenta virtuálního počítače Azure a související rozšíření jsou součástí hello infrastrukturní služby Microsoft Azure. Rozšíření virtuálního počítače jsou softwarové komponenty, které rozšiřovat funkce virtuálního počítače hello a zjednodušit různé operace správy virtuálních počítačů. Například může být použité tooreset hesla správce hello rozšíření VMAccess, nebo hello vlastní skript rozšíření lze použít tooexecute skript na hello virtuálních počítačů.
 
-Tento článek představuje rozšíření prostředí PowerShell požadovaného stavu konfigurace (DSC) pro virtuální počítače Azure v rámci sady Azure SDK prostředí PowerShell. Nové rutiny můžete používat k odesílání a použití konfigurace DSC prostředí PowerShell ve virtuálním počítači Azure s příponou DSC prostředí PowerShell povolené. DSC prostředí PowerShell rozšíření volání do prostředí PowerShell DSC uplatní obdržená konfigurace DSC do virtuálního počítače. Tato funkce je také k dispozici prostřednictvím portálu Azure.
+Tento článek představuje hello rozšíření prostředí PowerShell požadovaného stavu konfigurace (DSC) pro virtuální počítače Azure v rámci hello Azure PowerShell SDK. Můžete použít nové rutiny tooupload a použití konfigurace DSC prostředí PowerShell ve virtuálním počítači Azure s hello rozšíření DSC prostředí PowerShell povolené. volání rozšíření DSC Powershellu Hello do prostředí PowerShell DSC tooenact hello přijal konfiguraci DSC na hello virtuálních počítačů. Tato funkce je také k dispozici prostřednictvím hello portálu Azure.
 
 ## <a name="prerequisites"></a>Požadavky
-**Místní počítač** pro interakci s rozšíření virtuálního počítače Azure, budete muset použít portál Azure nebo Azure PowerShell SDK. 
+**Místní počítač** toointeract s hello rozšíření virtuálního počítače Azure, třeba toouse buď hello portál Azure nebo Azure PowerShell SDK hello. 
 
-**Agent hosta** virtuálního počítače Azure, který je nakonfigurovaný pomocí konfigurace DSC musí být operační systém, který podporuje buď Windows Management Framework (WMF) 4.0 nebo 5.0. Úplný seznam podporovaných verzí operačního systému najdete na [historie verzí rozšíření DSC](https://blogs.msdn.microsoft.com/powershell/2014/11/20/release-history-for-the-azure-dsc-extension/).
+**Agent hosta** hello virtuálního počítače Azure, který je nakonfigurovaný hello DSC konfigurace musí toobe operační systém, který podporuje buď Windows Management Framework (WMF) 4.0 nebo 5.0. Hello úplný seznam podporovaných verzí operačního systému najdete na hello [historie verzí rozšíření DSC](https://blogs.msdn.microsoft.com/powershell/2014/11/20/release-history-for-the-azure-dsc-extension/).
 
 ## <a name="terms-and-concepts"></a>Podmínky a koncepty
-Tato příručka předpokládá znalost následující koncepty:
+Tato příručka předpokládá znalost hello následující koncepty:
 
 Konfigurace – dokumentu konfigurace DSC. 
 
-Uzel - cíle pro konfigurace DSC. V tomto dokumentu vždy "uzel" odkazuje na virtuální počítač Azure.
+Uzel - cíle pro konfigurace DSC. V tomto dokumentu odkazuje "uzel" vždy tooan virtuálního počítače Azure.
 
 Konfigurační Data - .psd1 soubor obsahující data prostředí pro konfiguraci
 
 ## <a name="architectural-overview"></a>Přehled architektury
-Rozšíření Azure DSC používá rozhraní agenta virtuálního počítače Azure, aby doručily, uplatní a sestav o konfiguracích DSC běžící na virtuálních počítačích Azure. Rozšíření DSC očekává, že soubor ZIP obsahující alespoň dokumentu konfigurace a sadu parametrů zadaných prostřednictvím sady SDK Azure PowerShell nebo prostřednictvím portálu Azure.
+Hello rozšíření Azure DSC používá toodeliver framework hello agenta virtuálního počítače Azure, uplatní a ohlásí o konfiguracích DSC běžící na virtuálních počítačích Azure. Hello rozšíření DSC očekává soubor ZIP obsahující alespoň dokumentu konfigurace a sadu parametrů poskytuje prostřednictvím hello Azure PowerShell SDK nebo prostřednictvím hello portálu Azure.
 
-Při prvním volání rozšíření, spustí instalační proces. Tento proces nainstaluje verzi Windows Management Framework (WMF), ke pomocí následujícího postupu:
+Při rozšíření hello volání pro hello poprvé, spustí instalační proces. Tento proces nainstaluje verzi hello Windows Management Framework (WMF) pomocí následujících logiku hello:
 
-1. Je-li operačním systémem virtuálního počítače Azure Windows Server 2016, nebyla provedena žádná akce. Windows Server 2016 již nejnovější verzi prostředí PowerShell nainstalovaný.
-2. Pokud `wmfVersion` je zadána vlastnost, je nainstalovaná této verze WMF, pokud není kompatibilní s operačním systémem Virtuálního počítače.
-3. Pokud žádné `wmfVersion` je zadána vlastnost, je nainstalovaná nejnovější verze WMF, která je použít.
+1. Pokud hello operačním systémem virtuálního počítače Azure se systémem Windows Server 2016, nebyla provedena žádná akce. Windows Server 2016 již hello nejnovější verzi prostředí PowerShell nainstalovaný.
+2. Pokud hello `wmfVersion` je zadána vlastnost, je nainstalovaná této verze hello WMF, pokud není kompatibilní s operačním systémem hello Virtuálního počítače.
+3. Pokud žádné `wmfVersion` vlastnost určena, hello nejnovější použít hello WMF je nainstalovaná verze.
 
-Instalace WMF vyžaduje restart. Po restartování rozšíření stáhne zadaný v souboru ZIP `modulesUrl` vlastnost. Pokud toto umístění je v Azure blob storage, SAS token lze zadat v `sasToken` vlastnost, která má přístup k souboru. Po stažení a vybaleno ZIP funkce konfigurace definované v `configurationFunction` běží ke generování souboru MOF. Rozšíření se pak spustí `Start-DscConfiguration -Force` na vygenerovaný soubor MOF. Přípona zachytí výstup a zápis zpátky stav kanál Azure. Z tohoto bodu na DSC LCM zpracovává monitorování a oprava jako normální. 
+Instalace hello WMF vyžaduje restart. Po restartování hello rozšíření stáhne soubor ZIP hello zadaný v hello `modulesUrl` vlastnost. Pokud toto umístění je v Azure blob storage, SAS token lze zadat v hello `sasToken` vlastnost tooaccess hello souboru. Po stažení a vybaleno hello .zip hello konfigurace funkci definovanou v `configurationFunction` spuštění souboru MOF toogenerate hello. pak spustí Hello rozšíření `Start-DscConfiguration -Force` v souboru MOF hello vygenerovat. rozšíření Hello zaznamená výstup a zapíše zpět na toohello kanál stavu Azure. Z tohoto bodu na hello DSC LCM zpracovává monitorování a oprava jako normální. 
 
 ## <a name="powershell-cmdlets"></a>Rutiny prostředí PowerShell
-Rutiny prostředí PowerShell použít s Azure Resource Manager nebo modelu nasazení classic do balíčku, publikovat a monitorování nasazení rozšíření DSC. Moduly nasazení classic jsou následující rutiny uvedené, ale lze "Azure" nahradit "AzureRm" pomocí modelu Azure Resource Manager. Například `Publish-AzureVMDscConfiguration` používá model nasazení classic, kde `Publish-AzureRmVMDscConfiguration` používá Azure Resource Manager. 
+Rutiny prostředí PowerShell je možné pomocí Azure Resource Manageru nebo hello toopackage modelu nasazení classic, publikovat a monitorování nasazení rozšíření DSC. Hello jsou následující rutiny uvedené moduly hello nasazení classic, ale "Azure" lze nahradit pomocí modelu "AzureRm" toouse hello Azure Resource Manager. Například `Publish-AzureVMDscConfiguration` používá hello modelu nasazení classic, kde `Publish-AzureRmVMDscConfiguration` používá Azure Resource Manager. 
 
-`Publish-AzureVMDscConfiguration`trvá v konfiguračním souboru, hledá závislé prostředky DSC a vytvoří soubor ZIP obsahující konfiguraci a potřebné k uplatní konfiguraci prostředků DSC. Můžete také vytvořit balíček místně pomocí `-ConfigurationArchivePath` parametr. Jinak publikuje soubor .zip do Azure blob storage a zabezpečuje s tokenem SAS.
+`Publish-AzureVMDscConfiguration`trvá v konfiguračním souboru, hledá závislé prostředky DSC a vytvoří soubor ZIP obsahující hello konfigurace a konfigurace DSC prostředky potřebné tooenact hello. Můžete také vytvořit balíček hello místně pomocí hello `-ConfigurationArchivePath` parametr. V opačném případě publikuje úložiště objektů blob tooAzure soubor .zip hello a zabezpečuje s tokenem SAS.
 
-Soubor .zip vytvořených touto rutinou má .ps1 konfigurační skript v kořenové složce archivu. Prostředky mít složce modulu, který je umístěn ve složce archivu. 
+soubor ZIP Hello vytvořených touto rutinou má hello .ps1 konfigurační skript v hello kořenové složky archivu hello. Prostředky mít složku modulu hello umístěny ve složce archivu hello. 
 
-`Set-AzureVMDscExtension`Vloží nastavení vyžadovaná rozšíření DSC Powershellu do objekt konfigurace virtuálního počítače. V modelu nasazení classic, změny virtuálního počítače je nutné použít na virtuální počítač Azure s `Update-AzureVM`. 
+`Set-AzureVMDscExtension`Vloží hello nastavení vyžadovaná hello rozšíření DSC prostředí PowerShell do objekt konfigurace virtuálního počítače. V modelu nasazení classic hello hello změny virtuálního počítače musí být použité tooan virtuální počítač Azure s `Update-AzureVM`. 
 
-`Get-AzureVMDscExtension`načte stav rozšíření DSC konkrétní virtuálního počítače. 
+`Get-AzureVMDscExtension`načte stav rozšíření DSC hello konkrétní virtuálního počítače. 
 
-`Get-AzureVMDscExtensionStatus`načte stav konfigurace DSC vydaných obslužná rutina rozšíření DSC. Tuto akci lze provést na jeden virtuální počítač nebo skupinu virtuálních počítačů.
+`Get-AzureVMDscExtensionStatus`načte hello stav konfigurace DSC hello vydat hello DSC rozšíření obslužnou rutinou. Tuto akci lze provést na jeden virtuální počítač nebo skupinu virtuálních počítačů.
 
-`Remove-AzureVMDscExtension`Obslužná rutina rozšíření odebere z daného virtuálního počítače. Tato rutina nemá **není** odebrat konfiguraci, WMF odinstalovat nebo změnit nastavení použitá na virtuálním počítači. Odebere pouze obslužná rutina rozšíření. 
+`Remove-AzureVMDscExtension`Odebere obslužnou rutinu rozšíření hello z daného virtuálního počítače. Tato rutina nemá **není** odebrat konfiguraci hello, odinstalovat hello WMF nebo změnit nastavení hello použita na virtuálním počítači hello. Odebere pouze hello rozšíření obslužné rutiny. 
 
 **Hlavní rozdíly ve rutiny ASM a Azure Resource Manager**
 
 * Rutiny Azure Resource Manager jsou synchronní. ASM rutiny jsou asynchronní.
 * Název skupiny prostředků, VMName, ArchiveStorageAccountName, verzi a umístění jsou všechny požadované parametry ve službě Správce prostředků Azure.
-* ArchiveResourceGroupName je nový volitelný parametr pro Azure Resource Manager. Tento parametr můžete zadat, když váš účet úložiště patří do jiné skupině prostředků než ten, kde se má vytvořit virtuální počítač.
+* ArchiveResourceGroupName je nový volitelný parametr pro Azure Resource Manager. Tento parametr můžete zadat, když váš účet úložiště patří tooa jiné skupině prostředků než hello jeden, kde se má vytvořit hello virtuálního počítače.
 * ConfigurationArchive nazývá ArchiveBlobName ve službě Správce prostředků Azure
 * ContainerName nazývá ArchiveContainerName ve službě Správce prostředků Azure
 * StorageEndpointSuffix nazývá ArchiveStorageEndpointSuffix ve službě Správce prostředků Azure
-* Přepínač automatických aktualizací byla přidána do Azure Resource Manager povolit automatické aktualizace rozšíření obslužné rutiny na nejnovější verzi jako a není k dispozici. Všimněte si, že tento parametr má by mohly mít restartování virtuálního počítače po vydání nové verze WMF. 
+* přepínač Hello automatických aktualizací byla přidána tooAzure Resource Manager tooenable automatické aktualizace hello obslužná rutina toohello nejnovější verze rozšíření jako a v případě, že je k dispozici. Všimněte si, že tento parametr má hello potenciální toocause restartování na hello virtuální počítač při hello WMF vydání nové verze. 
 
 ## <a name="azure-portal-functionality"></a>Funkce Azure portálu
-Přejděte do virtuálního počítače. V části Nastavení -> Obecné klikněte na tlačítko "Rozšíření". Vytvoří se nové podokno. Klikněte na tlačítko "Přidat" a vyberte DSC prostředí PowerShell.
+Procházejte tooa virtuálních počítačů. V části Nastavení -> Obecné klikněte na tlačítko "Rozšíření". Vytvoří se nové podokno. Klikněte na tlačítko "Přidat" a vyberte DSC prostředí PowerShell.
 
-Na portálu musí vstup.
-**Konfigurace moduly nebo skriptu**: Toto pole je povinné. Vyžaduje souboru s příponou .ps1 obsahující konfigurační skript, nebo soubor ZIP s .ps1 konfigurační skript v kořenu a všechny závislé zdroje ve složkách modul v rámci ZIP. Může být vytvořen pomocí `Publish-AzureVMDscConfiguration -ConfigurationArchivePath` rutiny, které jsou součástí sady SDK Azure PowerShell. Soubor .zip nahraje do úložiště objektů blob uživatele zabezpečeny SAS token. 
+portál Hello vyžaduje vstup.
+**Konfigurace moduly nebo skriptu**: Toto pole je povinné. Vyžaduje souboru s příponou .ps1 obsahující konfigurační skript, nebo soubor ZIP s konfigurační skript .ps1 hello kořenové a všechny závislé zdroje ve složkách modul v rámci hello .zip. Vytvořením s hello `Publish-AzureVMDscConfiguration -ConfigurationArchivePath` rutiny, které jsou součástí hello Azure PowerShell SDK. soubor ZIP Hello nahraje do úložiště objektů blob uživatele zabezpečeny SAS token. 
 
-**Soubor konfiguračních dat PSD1**: Toto pole je nepovinné. Pokud vaše konfigurace vyžaduje datový soubor konfigurace v .psd1, použijte toto pole vyberte ho a odešlete ji do úložiště objektů blob uživatele, kde je zabezpečená službou SAS token. 
+**Soubor konfiguračních dat PSD1**: Toto pole je nepovinné. Pokud vaše konfigurace vyžaduje datový soubor konfigurace v .psd1, použijte toto pole tooselect ho a nahrajte ho tooyour úložiště objektů blob uživatele, kde je zabezpečená službou SAS token. 
 
-**Modul kvalifikovaný název konfigurace**: soubory .ps1 může mít několik konfiguračních funkcí. Zadejte název skriptu konfigurace .ps1, za nímž následuje '\' a název funkce konfigurace. Například pokud váš skript .ps1 má název "configuration.ps1" a "IisInstall" je konfigurace, můžete zadáním:`configuration.ps1\IisInstall`
+**Modul kvalifikovaný název konfigurace**: soubory .ps1 může mít několik konfiguračních funkcí. Zadejte název hello hello konfigurace .ps1 skriptu následuje '\' a hello název funkce Konfigurace hello. Například pokud má váš skript .ps1 hello název "configuration.ps1" a konfigurace hello je "IisInstall", můžete zadáním:`configuration.ps1\IisInstall`
 
-**Konfigurace argumentů**: Pokud konfigurace funkce přijímá argumenty, zadejte je sem ve formátu `argumentName1=value1,argumentName2=value2`. Všimněte si, že tento formát je do jiného formátu než jak konfigurace argumenty jsou přijímány prostřednictvím rutin prostředí PowerShell nebo šablony Resource Manageru. 
+**Konfigurace argumentů**: Pokud hello konfigurace funkce přijímá argumenty, zadejte je sem ve formátu hello `argumentName1=value1,argumentName2=value2`. Všimněte si, že tento formát je do jiného formátu než jak konfigurace argumenty jsou přijímány prostřednictvím rutin prostředí PowerShell nebo šablony Resource Manageru. 
 
 ## <a name="getting-started"></a>Začínáme
-Rozšíření Azure DSC trvá v dokumentech konfigurace DSC a představuje je na virtuálních počítačích Azure. Následuje jednoduchý příklad konfigurace. Uložte místně jako "IisInstall.ps1":
+Hello rozšíření Azure DSC trvá v dokumentech konfigurace DSC a představuje je na virtuálních počítačích Azure. Následuje jednoduchý příklad konfigurace. Uložte místně jako "IisInstall.ps1":
 
 ```powershell
 configuration IISInstall 
@@ -108,7 +108,7 @@ configuration IISInstall
 }
 ```
 
-Následující kroky umístěte skript IisInstall.ps1 na zadaný virtuální počítač, provedení konfigurace a zpětně hlásit stav.
+Následující kroky místní hello IisInstall.ps1 skriptu na hello Hello zadaný virtuální počítač, provedení konfigurace hello a zpětně hlásit stav.
 ###<a name="classic-model"></a>Klasického modelu
 ```powershell
 #Azure PowerShell cmdlets are required
@@ -117,13 +117,13 @@ Import-Module Azure
 #Use an existing Azure Virtual Machine, 'DscDemo1'
 $demoVM = Get-AzureVM DscDemo1
 
-#Publish the configuration script into user storage.
+#Publish hello configuration script into user storage.
 Publish-AzureVMDscConfiguration -ConfigurationPath ".\IisInstall.ps1" -StorageContext $storageContext -Verbose -Force
 
-#Set the VM to run the DSC configuration
+#Set hello VM toorun hello DSC configuration
 Set-AzureVMDscExtension -VM $demoVM -ConfigurationArchive "IisInstall.ps1.zip" -StorageContext $storageContext -ConfigurationName "IisInstall" -Verbose
 
-#Update the configuration of an Azure Virtual Machine
+#Update hello configuration of an Azure Virtual Machine
 $demoVM | Update-AzureVM -Verbose
 
 #check on status
@@ -136,9 +136,9 @@ $resourceGroup = "dscVmDemo"
 $location = "westus"
 $vmName = "myVM"
 $storageName = "demostorage"
-#Publish the configuration script into user storage
+#Publish hello configuration script into user storage
 Publish-AzureRmVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupName $resourceGroup -StorageAccountName $storageName -force
-#Set the VM to run the DSC configuration
+#Set hello VM toorun hello DSC configuration
 Set-AzureRmVmDscExtension -Version 2.21 -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName iisInstall.ps1.zip -AutoUpdate:$true -ConfigurationName "IISInstall"
 
 ```
@@ -149,11 +149,11 @@ Protokoly jsou umístěny ve:
 C:\WindowsAzure\Logs\Plugins\Microsoft.PowerShell.DSC\[číslo verze]
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o DSC Powershellu [přejděte do centra dokumentace k prostředí PowerShell](https://msdn.microsoft.com/powershell/dsc/overview). 
+Další informace o DSC Powershellu [navštivte centru dokumentace prostředí PowerShell hello](https://msdn.microsoft.com/powershell/dsc/overview). 
 
-Zkontrolujte [šablony Azure Resource Manageru pro rozšíření DSC](extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Zkontrolujte hello [šablony Azure Resource Manageru pro rozšíření hello DSC](extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Najít další funkce, které můžete spravovat pomocí prostředí PowerShell DSC [procházet galerii prostředí PowerShell](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0) pro další prostředky DSC.
+toofind další funkce, které můžete spravovat pomocí prostředí PowerShell DSC [procházet galerii prostředí PowerShell hello](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0) pro další prostředky DSC.
 
-Podrobnosti o předávání citlivých parametry do konfigurace najdete v tématu [spravovat pověření bezpečně s obslužná rutina rozšíření DSC](extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Podrobnosti o předávání citlivých parametry do konfigurace najdete v tématu [spravovat pověření bezpečně s obslužnou rutinou rozšíření hello DSC](extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

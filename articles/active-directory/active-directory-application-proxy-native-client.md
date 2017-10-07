@@ -1,6 +1,6 @@
 ---
-title: "Publikování aplikací pro nativní klient – Azure AD | Microsoft Docs"
-description: "Popisuje postup povolení aplikace nativního klienta ke komunikaci s konektor Proxy aplikace Azure AD poskytnout zabezpečený vzdálený přístup k místní aplikace."
+title: "nativní klientské aplikace aaaPublish – Azure AD | Microsoft Docs"
+description: "Popisuje, jak tooenable nativního klienta aplikace toocommunicate s konektoru Proxy aplikace služby Azure AD tooprovide zabezpečený vzdálený přístup tooyour místní aplikace."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -15,32 +15,32 @@ ms.date: 08/17/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: bdaa5af6ff5331bc310499586615b48a864c3c5e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0ed2be217bf992f034d8321d5e66569b4cace24f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Postup povolení nativního klienta aplikace pro interakci s proxy aplikace
+# <a name="how-tooenable-native-client-apps-toointeract-with-proxy-applications"></a>Jak tooenable nativního klienta aplikace toointeract s proxy aplikace
 
-Kromě webovým aplikacím Proxy aplikace služby Active Directory Azure také slouží k publikování aplikací pro nativní klient systému. Nativní klientské aplikace se liší od webové aplikace, protože se instalují na zařízení, když webové aplikace jsou dostupné prostřednictvím prohlížeče. 
+V aplikacích tooweb přidání Proxy Azure Active Directory aplikace lze také použít toopublish nativní klientské aplikace. Nativní klientské aplikace se liší od webové aplikace, protože se instalují na zařízení, když webové aplikace jsou dostupné prostřednictvím prohlížeče. 
 
 Proxy aplikací podporuje nativní klient aplikace přijímá Azure AD, které jsou vystavené tokeny, které se odesílají v hlavičky standardních autorizovat HTTP.
 
 ![Vztah mezi koncovým uživatelům, Azure Active Directory a publikování aplikace](./media/active-directory-application-proxy-native-client/richclientflow.png)
 
-Knihovnu pro ověřování Azure AD, který se stará o ověřování a podporuje mnoho klienta prostředí, použijte k publikování nativních aplikací. Proxy aplikací zapadá do [nativní aplikace za účelem scénáře webového rozhraní API](develop/active-directory-authentication-scenarios.md#native-application-to-web-api). Tento článek vás provede čtyři kroky k publikování nativní aplikace s Proxy aplikace a knihovna ověřování Azure AD. 
+Použijte hello knihovna ověřování Azure AD, který se stará o ověřování a podporuje mnoho klienta prostředí, toopublish nativních aplikací. Proxy aplikací zapadá do hello [nativní aplikace tooWeb rozhraní API scénář](develop/active-directory-authentication-scenarios.md#native-application-to-web-api). Tento článek vás provede hello čtyři kroky toopublish nativní aplikace s Proxy aplikace a hello knihovna ověřování Azure AD. 
 
 ## <a name="step-1-publish-your-application"></a>Krok 1: Publikování aplikace
-Publikování aplikace proxy, stejně jako všechny ostatní aplikace a přiřadit uživatelům přístup k aplikaci. Další informace najdete v tématu [publikování aplikací pomocí Proxy aplikace](active-directory-application-proxy-publish.md).
+Publikování aplikace proxy, stejně jako všechny ostatní aplikace a přiřaďte tooaccess uživatelů vaší aplikace. Další informace najdete v tématu [publikování aplikací pomocí Proxy aplikace](active-directory-application-proxy-publish.md).
 
 ## <a name="step-2-configure-your-application"></a>Krok 2: Konfigurace aplikace
 Nativní aplikace nakonfigurujte následujícím způsobem:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Přejděte na **Azure Active Directory** > **registrace aplikace**.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
+2. Přejděte příliš**Azure Active Directory** > **registrace aplikace**.
 3. Vyberte **nové registrace aplikace**.
-4. Zadejte název pro vaši aplikaci, vyberte **nativní** jako typ aplikace a zadejte identifikátor URI přesměrování pro aplikaci. 
+4. Zadejte název pro vaši aplikaci, vyberte **nativní** jako typ aplikace hello a zadejte hello identifikátor URI pro přesměrování pro aplikaci. 
 
    ![Vytvořit novou registraci aplikace](./media/active-directory-application-proxy-native-client/create.png)
 5. Vyberte **Vytvořit**.
@@ -48,50 +48,50 @@ Nativní aplikace nakonfigurujte následujícím způsobem:
 Podrobné informace o vytváření nové registrace aplikace, najdete v části [integrace aplikací s Azure Active Directory](.//develop/active-directory-integrating-applications.md).
 
 
-## <a name="step-3-grant-access-to-other-applications"></a>Krok 3: Udělení přístupu k ostatním aplikacím
-Povolte nativní aplikace, které mají být exponovány k ostatním aplikacím ve vašem adresáři:
+## <a name="step-3-grant-access-tooother-applications"></a>Krok 3: Udělení přístupu tooother aplikace
+Povolte hello nativní aplikace toobe zveřejněné tooother aplikace ve vašem adresáři:
 
-1. Pořád ještě v **registrace aplikace**, vyberte novou nativní aplikaci, kterou jste právě vytvořili.
+1. Pořád ještě v **registrace aplikace**, vyberte hello nové nativní aplikaci, kterou jste právě vytvořili.
 2. Vyberte **požadovaná oprávnění**.
 3. Vyberte **Přidat**.
-4. Prvním krokem, otevřete **vybrat rozhraní API**.
-5. Pomocí panelu vyhledávání můžete najít aplikaci Proxy aplikace, kterou jste publikovali v první části. Vyberte aplikaci a pak klikněte na **vyberte**. 
+4. Prvním krokem otevřete hello, **vybrat rozhraní API**.
+5. Pomocí hello vyhledávání panelu toofind hello aplikace Proxy aplikace, která jste publikovali v první části hello. Vyberte aplikaci a pak klikněte na **vyberte**. 
 
-   ![Vyhledejte aplikaci, proxy](./media/active-directory-application-proxy-native-client/select_api.png)
-6. Otevřete druhý krok **vyberte oprávnění**.
-7. Zaškrtnutím políčka pomocí zajišťují vašim nativní aplikace přístup k aplikaci proxy a pak klikněte na **vyberte**.
+   ![Vyhledejte hello proxy aplikace](./media/active-directory-application-proxy-native-client/select_api.png)
+6. Otevřete hello druhý krok, **vyberte oprávnění**.
+7. Použijte nativní aplikace přístup tooyour proxy aplikace hello toogrant zaškrtávací políčko a potom klikněte na tlačítko **vyberte**.
 
-   ![Udělit přístup k proxy aplikace](./media/active-directory-application-proxy-native-client/select_perms.png)
+   ![Udělení přístupu tooproxy aplikace](./media/active-directory-application-proxy-native-client/select_perms.png)
 8. Vyberte **provádí**.
 
 
-## <a name="step-4-edit-the-active-directory-authentication-library"></a>Krok 4: Úprava knihovna ověřování Active Directory
-Upravte kód nativní aplikace v rámci ověřování služby Active Directory Authentication Library (ADAL) zahrnout následující text:
+## <a name="step-4-edit-hello-active-directory-authentication-library"></a>Krok 4: Úprava hello knihovna ověřování Active Directory
+Upravte kód nativní aplikace hello v kontextu ověřování hello hello Active Directory Authentication Library (ADAL) tooinclude hello následující text:
 
 ```
 // Acquire Access Token from AAD for Proxy Application
 AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/<Tenant ID>");
 AuthenticationResult result = authContext.AcquireToken("< External Url of Proxy App >",
-        "<App ID of the Native app>",
-        new Uri("<Redirect Uri of the Native App>"),
+        "<App ID of hello Native app>",
+        new Uri("<Redirect Uri of hello Native App>"),
         PromptBehavior.Never);
 
-//Use the Access Token to access the Proxy Application
+//Use hello Access Token tooaccess hello Proxy Application
 HttpClient httpClient = new HttpClient();
 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >");
 ```
 
-Proměnné v ukázkovém kódu by měla být nahrazená následujícím způsobem:
+Hello proměnné v hello ukázkový kód by měla být nahrazená následujícím způsobem:
 
-* **ID klienta** naleznete na webu Azure portal. Přejděte na **Azure Active Directory** > **vlastnosti** a zkopírujte ID adresáře. 
-* **Externí adresu URL** je front-end adresa URL jste zadali v aplikaci Proxy. Chcete-li tuto hodnotu najít, přejděte na **proxy aplikace** části proxy aplikace.
-* **ID aplikace** nativní aplikace naleznete na **vlastnosti** stránka nativní aplikace.
-* **Identifikátor URI přesměrování nativní aplikace** naleznete na **identifikátory URI přesměrování** stránka nativní aplikace.
+* **ID klienta** lze nalézt v hello portálu Azure. Přejděte příliš**Azure Active Directory** > **vlastnosti** a kopírování hello ID adresáře. 
+* **Externí adresu URL** hello front-end adresa URL, jste zadali v hello Proxy aplikace. toofind, tato hodnota, přejděte toohello **proxy aplikace** části hello proxy aplikace.
+* **ID aplikace** z hello nativní aplikace naleznete na hello **vlastnosti** stránku hello nativní aplikaci.
+* **Identifikátor URI přesměrování nativní aplikace hello** naleznete na hello **identifikátory URI přesměrování** stránku hello nativní aplikaci.
 
 
 ## <a name="see-also"></a>Viz také
 
-Další informace o toku nativní aplikace najdete v tématu [nativní aplikace za účelem webového rozhraní API](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)
+Další informace o toku nativní aplikace hello najdete v tématu [tooweb nativní aplikace API](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)
 
-Nejnovější novinky a aktualizace naleznete na [blogu proxy aplikace](http://blogs.technet.com/b/applicationproxyblog/)
+Hello nejnovější novinky a aktualizace, najdete na naší hello [blogu Proxy aplikace](http://blogs.technet.com/b/applicationproxyblog/)

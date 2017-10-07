@@ -1,5 +1,5 @@
 ---
-title: "Přehled agenta virtuálního počítače Azure | Microsoft Docs"
+title: "aaaAzure virtuální počítač agenta přehled | Microsoft Docs"
 description: "Přehled agenta virtuálního počítače Azure"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,45 +15,45 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: nepeters
-ms.openlocfilehash: 24ad2c2d2872f844e32d3fae559683c3d992bd00
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b03542b9a9c711000fab18ed82e9b17ee5510bbf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Přehled služby Azure agenta virtuálního počítače
 
-Agent virtuálního počítače Microsoft Azure (AM Agent) je zabezpečené, lightweight proces, který spravuje interakci virtuálních počítačů s Kontroleru prostředků infrastruktury Azure. Agent virtuálního počítače má primární roli v povolení a spuštění rozšíření virtuálního počítače Azure. Konfigurace nasazení virtuálních počítačů, jako je instalace a konfigurace softwaru příspěvku povolení rozšíření virtuálního počítače. Rozšíření virtuálního počítače také povolit obnovení funkce jako je resetování hesla pro správu virtuálního počítače. Bez agenta virtuálního počítače Azure nelze spustit, rozšíření virtuálního počítače.
+Hello agenta virtuálního počítače Microsoft Azure (AM Agent) je zabezpečené, lightweight proces, který spravuje interakci virtuálních počítačů s hello Kontroleru prostředků infrastruktury Azure. Hello agenta virtuálního počítače má primární roli v povolení a spuštění rozšíření virtuálního počítače Azure. Konfigurace nasazení virtuálních počítačů, jako je instalace a konfigurace softwaru příspěvku povolení rozšíření virtuálního počítače. Rozšíření virtuálního počítače také povolit obnovení funkce jako je resetování hesla pro správu hello virtuálního počítače. Bez hello agenta virtuálního počítače Azure nelze spustit, rozšíření virtuálního počítače.
 
-Tento dokument podrobně popisuje instalaci, zjištění a odebrání agenta virtuálního počítače Azure.
+Tento dokument podrobně popisuje instalaci, zjištění a odebrání hello agenta virtuálního počítače Azure.
 
-## <a name="install-the-vm-agent"></a>Nainstalujte agenta virtuálního počítače
+## <a name="install-hello-vm-agent"></a>Nainstalujte hello agenta virtuálního počítače
 
 ### <a name="azure-gallery-image"></a>Obrázek v galerii Azure
 
-Na všechny nasazené z Galerie Azure bitové kopie virtuálního počítače Windows ve výchozím nastavení je nainstalovaný Agent virtuálního počítače Azure. Při nasazování bitové kopie Galerie Azure z portálu, prostředí PowerShell, rozhraní příkazového řádku nebo šablonu Azure Resource Manager, je také nainstalován Agent virtuálního počítače Azure. 
+Hello agenta virtuálního počítače Azure je nainstalován na všechny nasazené z Galerie Azure bitové kopie virtuálního počítače Windows ve výchozím nastavení. Při nasazování bitové kopie Galerie Azure z hello portál, prostředí PowerShell, rozhraní příkazového řádku nebo šablonu Azure Resource Manager, hello agenta virtuálního počítače Azure se taky nainstalovat. 
 
 ### <a name="manual-installation"></a>Ruční instalace
 
-Agent virtuálního počítače s Windows můžete ručně nainstalovat pomocí balíčku Instalační služby systému Windows. Ruční instalace může být nutné při vytvoření image vlastní virtuální počítač, který se nasadí v Azure. Při ruční instalaci agenta virtuálního počítače Windows, stáhněte si instalační program agenta virtuálního počítače z tohoto umístění [stáhnout agenta virtuálního počítače Azure Windows](http://go.microsoft.com/fwlink/?LinkID=394789). 
+agent virtuálního počítače Windows Hello lze ručně nainstalovat pomocí balíčku Instalační služby systému Windows. Ruční instalace může být nutné při vytvoření image vlastní virtuální počítač, který se nasadí v Azure. hello toomanually instalace agenta virtuálního počítače Windows, stažení instalačního programu hello agenta virtuálního počítače z tohoto umístění [stáhnout agenta virtuálního počítače Azure Windows](http://go.microsoft.com/fwlink/?LinkID=394789). 
 
-Dvojitým kliknutím na soubor Instalační služby systému windows můžete nainstalovat agenta virtuálního počítače. Pro automatizované nebo bezobslužné instalace agenta virtuálního počítače spusťte následující příkaz.
+dvakrát klikněte na soubor Instalační služby systému windows hello může být instalován Hello agenta virtuálního počítače. Pro automatizované nebo bezobslužné instalace agenta virtuálního počítače hello spusťte následující příkaz hello.
 
 ```cmd
 msiexec.exe /i WindowsAzureVmAgent.2.7.1198.778.rd_art_stable.160617-1120.fre /quiet
 ```
 
-## <a name="detect-the-vm-agent"></a>Zjištění agenta virtuálního počítače
+## <a name="detect-hello-vm-agent"></a>Zjištění hello agenta virtuálního počítače
 
 ### <a name="powershell"></a>PowerShell
 
-Modul Powershellu pro Azure Resource Manager můžete využít k načtení informací o virtuálních počítačích Azure. Spuštění `Get-AzureRmVM` vrátí s bit informace včetně Stav zřizování pro agenta virtuálního počítače Azure.
+modul Powershellu pro Azure Resource Manager Hello lze použít tooretrieve informace o virtuálních počítačích Azure. Spuštění `Get-AzureRmVM` vrátí s bit informace včetně hello zřizování stav hello agenta virtuálního počítače Azure.
 
 ```PowerShell
 Get-AzureRmVM
 ```
 
-Toto je pouze podmnožinu `Get-AzureRmVM` výstup. Upozornění `ProvisionVMAgent` vlastnost vnořit `OSProfile`, tato vlastnost slouží k určení, pokud agent virtuálního počítače byla nasazena do virtuálního počítače.
+Hello následuje pouze podmnožinu hello `Get-AzureRmVM` výstup. Všimněte si hello `ProvisionVMAgent` vlastnost vnořit `OSProfile`, tato vlastnost může být použité toodetermine, pokud agent virtuálního počítače hello byl nasazený toohello virtuálního počítače.
 
 ```PowerShell
 OSProfile                  :
@@ -64,7 +64,7 @@ OSProfile                  :
     EnableAutomaticUpdates : True
 ```
 
-Následující skript lze použít k vrácení stručným seznamu názvy virtuálních počítačů a stav agenta virtuálního počítače.
+Hello následující skript se dá použít tooreturn stručným seznam názvy virtuálních počítačů a stav hello hello agenta virtuálního počítače.
 
 ```PowerShell
 $vms = Get-AzureRmVM
@@ -77,8 +77,8 @@ foreach ($vm in $vms) {
 
 ### <a name="manual-detection"></a>Ruční detekce
 
-Při přihlášení k virtuálnímu počítači Windows Azure, Správce úloh můžete použít k prozkoumání spuštěných procesů. Pokud chcete zkontrolovat pro agenta virtuálního počítače Azure, otevřete Správce úloh > klikněte na kartu s podrobnostmi a vyhledejte název procesu `WindowsAzureGuestAgent.exe`. Přítomnost tento proces naznačuje, že je nainstalovaný agent virtuálního počítače.
+Při přihlášení tooa virtuálního počítače Windows Azure, Správce úloh může být použité tooexamine spuštěných procesů. toocheck pro hello agenta virtuálního počítače Azure, otevřete Správce úloh > klikněte na kartu s podrobnostmi hello a vyhledejte název procesu `WindowsAzureGuestAgent.exe`. Hello přítomnost tento proces naznačuje, že je nainstalovaný agent virtuálního počítače tohoto hello.
 
-## <a name="upgrade-the-vm-agent"></a>Upgrade agenta virtuálního počítače
+## <a name="upgrade-hello-vm-agent"></a>Upgrade hello agenta virtuálního počítače
 
-Virtuální počítač agenta k Azure pro systém Windows automaticky upgradován. Při nasazování nových virtuálních počítačů do Azure, obdrží nejnovější agenta virtuálního počítače. Vlastní Image virtuálních počítačů by měl ručně aktualizovalo se o nový agent virtuálního počítače.
+Hello Azure virtuální počítač agenta pro Windows je automaticky upgradován. Nové virtuální počítače jsou nasazené tooAzure, obdrží hello nejnovější agenta virtuálního počítače. Vlastní Image virtuálních počítačů musí být ručně aktualizovaných tooinclude hello nového virtuálního počítače agenta.

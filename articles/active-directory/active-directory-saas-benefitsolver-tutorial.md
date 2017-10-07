@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Benefitsolver | Microsoft Docs'
-description: "Další informace o použití Benefitsolver s Azure Active Directory umožňující jednotné přihlašování, automatického zřizování a další!"
+description: "Zjistěte, jak toouse Benefitsolver s Azure Active Directory tooenable jednotné přihlašování, automatického zřizování a další!"
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -13,132 +13,132 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 8a13dd5ebd872f86247158379b28bc291a9c9d83
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5bb8511ef9be1e386956188a93e899d6ebe56ed5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefitsolver"></a>Kurz: Azure Active Directory integrace s Benefitsolver
-Cílem tohoto kurzu je zobrazit integraci Azure a Benefitsolver.  
+cílem Hello tohoto kurzu je tooshow hello integrace Azure a Benefitsolver.  
 
-Scénář uvedených v tomto kurzu se předpokládá, že už máte následující položky:
+Hello scénáři uvedeném v tomto kurzu se předpokládá, že už máte hello následující položky:
 
 * Platné předplatné Azure
 * Benefitsolver jednotné přihlašování (SSO) povolené předplatné
 
-Po dokončení tohoto kurzu, bude moct jednotné přihlašování do aplikace pomocí uživatele Azure AD, které jste přiřadili Benefitsolver [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
+Po dokončení tohoto kurzu, budou uživatelé hello Azure AD jste přiřadili tooBenefitsolver možné toosingle přihlášení do aplikace hello pomocí hello [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md).
 
-Scénář uvedených v tomto kurzu se skládá z následujících stavební bloky:
+scénář Hello uvedených v tomto kurzu se skládá z následujících stavební bloky hello:
 
-1. Povolení integrace aplikace pro Benefitsolver
+1. Povolení integrace aplikace hello pro Benefitsolver
 2. Konfigurace jednotného přihlašování (SSO)
 3. Konfiguraci zřizování uživatelů
 4. Přiřazení uživatelů
 
 ![Scénář](./media/active-directory-saas-benefitsolver-tutorial/IC804820.png "scénář")
 
-## <a name="enabling-the-application-integration-for-benefitsolver"></a>Povolení integrace aplikace pro Benefitsolver
-Cílem této části se popisují postup povolení integrace aplikace pro Benefitsolver.
+## <a name="enabling-hello-application-integration-for-benefitsolver"></a>Povolení integrace aplikace hello pro Benefitsolver
+Hello cílem této části je toooutline jak integrace aplikace hello tooenable pro Benefitsolver.
 
-### <a name="to-enable-the-application-integration-for-benefitsolver-perform-the-following-steps"></a>Pokud chcete povolit integraci aplikací pro Benefitsolver, proveďte následující kroky:
-1. V portálu Azure classic, v levém navigačním podokně klikněte na **služby Active Directory**.
+### <a name="tooenable-hello-application-integration-for-benefitsolver-perform-hello-following-steps"></a>Integrace aplikace hello tooenable pro Benefitsolver, proveďte následující kroky hello:
+1. V hello portál Azure classic, na levém navigačním podokně hello, klikněte na **služby Active Directory**.
    
    ![Služby Active Directory](./media/active-directory-saas-benefitsolver-tutorial/IC700993.png "služby Active Directory")
-2. Z **Directory** seznamu, vyberte adresář, pro který chcete povolit integraci adresáře.
-3. Chcete-li otevřít zobrazení aplikací, v zobrazení adresáře, klikněte na tlačítko **aplikace** v horní nabídce.
+2. Z hello **Directory** seznamu, vyberte hello adresář, pro které chcete tooenable integrace adresáře.
+3. Klikněte na zobrazení aplikace hello tooopen, v zobrazení adresáře hello **aplikace** v horní nabídce hello.
    
    ![Aplikace](./media/active-directory-saas-benefitsolver-tutorial/IC700994.png "aplikace")
-4. Klikněte na tlačítko **přidat** v dolní části stránky.
+4. Klikněte na tlačítko **přidat** na hello dolní části stránky hello.
    
    ![Přidat aplikaci](./media/active-directory-saas-benefitsolver-tutorial/IC749321.png "přidat aplikaci")
-5. Na **co chcete udělat** dialogové okno, klikněte na tlačítko **přidat aplikaci z Galerie**.
+5. Na hello **co chcete toodo** dialogové okno, klikněte na tlačítko **přidat aplikaci z Galerie hello**.
    
    ![Přidání aplikace z gallerry](./media/active-directory-saas-benefitsolver-tutorial/IC749322.png "přidat aplikaci z gallerry")
-6. V **vyhledávacího pole**, typ **Benefitsolver**.
+6. V hello **vyhledávacího pole**, typ **Benefitsolver**.
    
    ![Galerie aplikací](./media/active-directory-saas-benefitsolver-tutorial/IC804821.png "galerii aplikací")
-7. V podokně výsledků vyberte **Benefitsolver**a potom klikněte na **Complete** tuto aplikaci přidat.
+7. V podokně výsledků hello, vyberte **Benefitsolver**a potom klikněte na **Complete** tooadd hello aplikace.
    
    ![Benefitssolver](./media/active-directory-saas-benefitsolver-tutorial/IC804822.png "Benefitssolver")
    
 ## <a name="configure-single-sign-on"></a>Konfigurovat jednotné přihlašování
 
-Cílem této části se popisují, jak uživatelům povolit ověřování na Benefitsolver ke svému účtu ve službě Azure AD využívající federaci na základě protokolu SAML.  
+Hello cílem této části je toooutline jak tooBenefitsolver tooauthenticate tooenable uživatelé do svého účtu ve službě Azure AD využívající federaci založené na protokolu SAML hello.  
 
-Aplikace Benefitsolver očekává SAML kontrolní výrazy ve specifickém formátu, který můžete přidat mapování vlastní atribut vyžaduje vaše **atributy tokenu saml** konfigurace. 
+Aplikace Benefitsolver očekává hello SAML kontrolní výrazy ve specifickém formátu, který vyžaduje, abyste tooadd vlastních atributů mapování tooyour **atributy tokenu saml** konfigurace. 
 
-Následující snímek obrazovky ukazuje příklad pro tento.
+Hello následující snímek obrazovky ukazuje příklad pro tento.
 
 ![Atributy](./media/active-directory-saas-benefitsolver-tutorial/IC804823.png "atributy")
 
-**Pokud chcete konfigurovat jednotné přihlašování, proveďte následující kroky:**
+**tooconfigure jednotné přihlašování, proveďte následující kroky hello:**
 
-1. Na portálu Azure classic na **Benefitsolver** stránky integrace aplikací, klikněte na tlačítko **nakonfigurovat jednotné přihlašování** otevřete **nakonfigurovat jednotné přihlašování** dialogové okno.
+1. V portálu Azure classic, na hello hello **Benefitsolver** stránky integrace aplikací, klikněte na tlačítko **nakonfigurovat jednotné přihlašování** tooopen hello **nakonfigurovat jednotné přihlašování** Dialogové okno.
    
    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-benefitsolver-tutorial/IC804824.png "nakonfigurovat jednotné přihlašování")
-2. Na **jak chcete uživatelům se přihlásit Benefitsolver** vyberte **Microsoft Azure AD Single Sign-On**a potom klikněte na **Další**.
+2. Na hello **jak jste by například uživatelé toosign na tooBenefitsolver** vyberte **Microsoft Azure AD Single Sign-On**a potom klikněte na **Další**.
    
    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-benefitsolver-tutorial/IC804825.png "nakonfigurovat jednotné přihlašování")
-3. Na **nakonfigurovat nastavení aplikace** proveďte následující kroky:
+3. Na hello **nakonfigurovat nastavení aplikace** proveďte hello následující kroky:
    
    ![Konfigurovat nastavení aplikace](./media/active-directory-saas-benefitsolver-tutorial/IC804826.png "konfigurovat nastavení aplikace")
    
-   1. V **přihlašovací adresa URL** textovému poli, typ **http://azure.benefitsolver.com**.
-   2. V **adresa URL odpovědi** textovému poli, typ **https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml**.  
+   1. V hello **přihlašovací adresa URL** textovému poli, typ **http://azure.benefitsolver.com**.
+   2. V hello **adresa URL odpovědi** textovému poli, typ **https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml**.  
    3. Klikněte na **Další**.
-4. Na **nakonfigurovat jednotné přihlašování v Benefitsolver** stránku a stáhnout metadata, klikněte na tlačítko **stáhnout metadata**a potom uložte soubor metadat místně na vašem počítači.
+4. Na hello **nakonfigurovat jednotné přihlašování v Benefitsolver** stránky, toodownload metadata, klikněte na tlačítko **stáhnout metadata**a potom uložte soubor metadat hello místně na vašem počítači.
    
    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-benefitsolver-tutorial/IC804827.png "nakonfigurovat jednotné přihlašování")
-5. Odešlete soubor stažený metadat pro váš tým podpory Benefitsolver.
+5. Odešlete hello stáhnout metadata souboru tooyour Benefitsolver tým podpory.
    
    >[!NOTE]
-   >Váš tým podpory Benefitsolver musí provést konfiguraci skutečné jednotné přihlašování. Zobrazí se oznámení, když bylo povoleno jednotné přihlašování pro vaše předplatné.
+   >Váš tým podpory Benefitsolver má toodo hello skutečné jednotné přihlašování konfiguraci. Zobrazí se oznámení, když bylo povoleno jednotné přihlašování pro vaše předplatné.
    >
 
-6. Na portálu Azure classic, vyberte potvrzení konfigurace přihlášení a pak klikněte na tlačítko **Complete** zavřete **nakonfigurovat jednotné přihlašování** dialogové okno.
+6. Na hello portál Azure classic, vyberte hello konfigurace přihlášení potvrzení a pak klikněte na tlačítko **Complete** tooclose hello **nakonfigurovat jednotné přihlašování** dialogové okno.
    
    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-benefitsolver-tutorial/IC804828.png "nakonfigurovat jednotné přihlašování")
-7. V nabídce v horní části, klikněte na tlačítko **atributy** otevřete **atributy tokenu SAML** dialogové okno.
+7. V nabídce hello hello nahoře, klikněte na tlačítko **atributy** tooopen hello **atributy tokenu SAML** dialogové okno.
    
    ![Atributy](./media/active-directory-saas-benefitsolver-tutorial/IC795920.png "atributy")
-8. Pokud chcete přidat mapování požadovaný atribut, proveďte následující kroky:
+8. mapování atributů tooadd hello vyžaduje, proveďte následující kroky hello:
    
    ![Atributy](./media/active-directory-saas-benefitsolver-tutorial/IC804823.png "atributy")
    
    | Název atributu | Hodnota atributu |
    | --- | --- |
-   | ClientID |Budete muset získat tuto hodnotu z váš tým podpory Benefitsolver. |
-   | ClientKey |Budete muset získat tuto hodnotu z váš tým podpory Benefitsolver. |
-   | LogoutURL |Budete muset získat tuto hodnotu z váš tým podpory Benefitsolver. |
-   | Číslo zaměstnance |Budete muset získat tuto hodnotu z váš tým podpory Benefitsolver. |
+   | ClientID |Tooget musíte z váš tým podpory Benefitsolver tuto hodnotu. |
+   | ClientKey |Tooget musíte z váš tým podpory Benefitsolver tuto hodnotu. |
+   | LogoutURL |Tooget musíte z váš tým podpory Benefitsolver tuto hodnotu. |
+   | Číslo zaměstnance |Tooget musíte z váš tým podpory Benefitsolver tuto hodnotu. |
    
-   1. Pro každý řádek dat v předchozí tabulce, klikněte na tlačítko **přidat atribut uživatele**.
-   2. V **název atributu** textovému poli, zadejte název atributu, který je uvedený na příslušném řádku.
-   3. V **hodnota atributu** textovému poli, vyberte hodnotu atributu zobrazený pro tento řádek.
+   1. Pro každý řádek dat v tabulce hello výše, klikněte na tlačítko **přidat atribut uživatele**.
+   2. V hello **název atributu** textovému poli, název atributu pro typ hello zobrazený pro tento řádek.
+   3. V hello **hodnota atributu** textovému poli, hodnota atributu vyberte hello zobrazený pro tento řádek.
    4. Klikněte na **Dokončit**.
 9. Klikněte na tlačítko **změny**.
 
 ## <a name="configure-user-provisioning"></a>Konfiguraci zřizování uživatelů
-Pokud chcete povolit uživatelům Azure AD přihlášení do Benefitsolver, musí být zřízená do Benefitsolver.  
+V pořadí tooenable Azure AD Uživatelé toolog do Benefitsolver musí být zřízená do Benefitsolver.  
 
-V případě Benefitsolver zaměstnanec data jsou v aplikaci naplněno prostřednictvím soubor úplné zjišťování z vašeho systému HRIS (obvykle je každou noc).  
+V případě hello Benefitsolver zaměstnanec data jsou v aplikaci naplněno prostřednictvím soubor úplné zjišťování z vašeho systému HRIS (obvykle je každou noc).  
 
 >[!NOTE]
->Můžete použít všechny ostatní Benefitsolver uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované Benefitsolver zřídit AAD uživatelské účty. 
+>Můžete použít všechny ostatní Benefitsolver uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované Benefitsolver tooprovision AAD uživatelské účty. 
 > 
 
 ## <a name="assigning-users"></a>Přiřazení uživatelů
-Chcete-li otestovat vaši konfiguraci, přidělte uživatelům Azure AD, že které chcete povolit přístup aplikace k němu pomocí jejich přiřazení.
+tootest konfiguraci, je nutné uživatele toogrant hello Azure AD můžete určit tooallow tooit přístup k vaší aplikace pomocí jejich přiřazení.
 
-### <a name="to-assign-users-to-benefitsolver-perform-the-following-steps"></a>Přiřazení uživatelů k Benefitsolver, proveďte následující kroky:
-1. Na portálu Azure classic vytvořte zkušební účet.
-2. Na ** Benefitsolver ** stránky integrace aplikací, klikněte na tlačítko **přiřazení uživatelů**.
+### <a name="tooassign-users-toobenefitsolver-perform-hello-following-steps"></a>tooassign tooBenefitsolver uživatele, proveďte následující kroky hello:
+1. V hello portál Azure classic vytvořte testovací účet.
+2. Na hello ** Benefitsolver ** stránky integrace aplikací, klikněte na tlačítko **přiřazení uživatelů**.
    
    ![Přiřazení uživatelů](./media/active-directory-saas-benefitsolver-tutorial/IC804829.png "přiřazení uživatelů")
-3. Vyberte svého testovacího uživatele, klikněte na **přiřadit**a potom klikněte na **Ano** k potvrzení vaší přiřazení.
+3. Vyberte svého testovacího uživatele, klikněte na **přiřadit**a potom klikněte na **Ano** tooconfirm vaše přiřazení.
    
    ![Ano](./media/active-directory-saas-benefitsolver-tutorial/IC767830.png "Ano")
 
-Pokud chcete testovat vaše nastavení jednotného přihlašování, otevřete Panel přístupu. Další podrobnosti o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
+Pokud chcete tootest vaše nastavení jednotného přihlašování, otevřete hello přístupového panelu. Další podrobnosti o hello přístupového panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md).
 

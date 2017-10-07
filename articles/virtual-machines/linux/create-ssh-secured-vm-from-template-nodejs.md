@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření virtuálního počítače s Linuxem pomocí šablony Azure s Azure CLI 1.0 | Microsoft Docs"
-description: "Vytvoření virtuálního počítače s Linuxem v Azure pomocí Azure CLI 1.0 a šablonu Azure Resource Manager."
+title: "virtuální počítač s Linuxem pomocí šablony Azure s Azure CLI 1.0 aaaCreate | Microsoft Docs"
+description: "Vytvoření virtuálního počítače s Linuxem v Azure pomocí Azure CLI 1.0 hello a šablonu Azure Resource Manager."
 services: virtual-machines-linux
 documentationcenter: 
 author: vlivech
@@ -16,26 +16,26 @@ ms.topic: article
 ms.date: 05/12/2017
 ms.author: v-livech
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33d4aaa78fcdf3bd9e2e236606f2d3049f464a8a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b694cc8247a8431b7ef4b24cc7dc2b4cdb9660ac
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-create-a-linux-vm-using-the-azure-cli-10-an-azure-resource-manager-template"></a>Postup vytvoření virtuálního počítače s Linuxem pomocí Azure CLI 1.0 šablonu Azure Resource Manager
-Tento článek ukazuje, jak rychle nasadit virtuální počítač s Linuxem pomocí Azure CLI 1.0 a šablonu Azure Resource Manager. Tento článek vyžaduje:
+# <a name="how-toocreate-a-linux-vm-using-hello-azure-cli-10-an-azure-resource-manager-template"></a>Jak hello toocreate a virtuální počítač s Linuxem pomocí Azure CLI 1.0 šablonu Azure Resource Manager
+Tento článek ukazuje, jak tooquickly nasadit virtuální počítač s Linuxem pomocí hello Azure CLI 1.0 a šablonu Azure Resource Manager. článek Hello vyžaduje:
 
 * účet Azure ([získejte bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/))
-* [Azure CLI 1.0](../../cli-install-nodejs.md) přihlášení `azure login`.
-* Rozhraní příkazového řádku Azure *musí být v* režimu Azure Resource Manager`azure config mode arm`.
+* Hello [Azure CLI 1.0](../../cli-install-nodejs.md) přihlášení `azure login`.
+* Hello rozhraní příkazového řádku Azure *musí být v* režimu Azure Resource Manager `azure config mode arm`.
 
-Šablonu virtuálního počítače s Linuxem můžete rychle nasadit také pomocí webu [Azure Portal](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Šablonu virtuálního počítače s Linuxem můžete také rychle nasadit pomocí hello [portál Azure](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="cli-versions-to-complete-the-task"></a>Verze rozhraní příkazového řádku pro dokončení úlohy
-K dokončení úlohy můžete využít jednu z následujících verzí rozhraní příkazového řádku:
+## <a name="cli-versions-toocomplete-hello-task"></a>Úloha hello toocomplete verze rozhraní příkazového řádku
+Můžete dokončit hello úloh pomocí jedné z hello následující verze rozhraní příkazového řádku:
 
-- [Azure CLI 1.0](#quick-command-summary) – naše rozhraní příkazového řádku pro classic a resource správu modelech nasazení (v tomto článku)
-- [Azure CLI 2.0](create-ssh-secured-vm-from-template.md) – naše rozhraní příkazového řádku nové generace pro model nasazení správy prostředků
+- [Azure CLI 1.0](#quick-command-summary) – naše rozhraní příkazového řádku pro hello classic a resource správy nasazení modelů (v tomto článku)
+- [Azure CLI 2.0](create-ssh-secured-vm-from-template.md) -naší nové generace rozhraní příkazového řádku pro model nasazení správy prostředků hello
 
 ## <a name="quick-command-summary"></a>Rychlý přehled příkazu
 ```azurecli
@@ -46,12 +46,12 @@ azure group create \
 ```
 
 ## <a name="detailed-walkthrough"></a>Podrobný postup
-Šablony umožňují vytvořit virtuální počítače na platformě Azure s nastavením, které si pak při spouštění upravíte, například uživatelská jména a názvy hostitelů. Pro tento článek spouštíme šablonu Azure využívající virtuální počítač Ubuntu společně se skupinu zabezpečení sítě (NSG) s portem 22 otevřeným pro SSH.
+Šablony umožňují toocreate virtuální počítače na platformě Azure s nastavením, který má toocustomize během spuštění hello, nastavení, jako je uživatelská jména a názvy hostitelů. Pro tento článek spouštíme šablonu Azure využívající virtuální počítač Ubuntu společně se skupinu zabezpečení sítě (NSG) s portem 22 otevřeným pro SSH.
 
-Šablony Azure Resource Manageru jsou soubory JSON, které jde použít k jednoduchým jednorázovým úlohám, jako je spuštění virtuálního počítače Ubuntu VM pro účely tohoto článku.  Šablony Azure jde také použít k vytvoření složitých konfigurací Azure pro celé prostředí, jako je sada pro nasazení testovacího, vývojového nebo produkčního prostředí.
+Šablony Azure Resource Manageru jsou soubory JSON, které jde použít k jednoduchým jednorázovým úlohám, jako je spuštění virtuálního počítače Ubuntu VM pro účely tohoto článku.  Šablony Azure může být také použít tooconstruct komplexní konfigurace Azure celých prostředí jako zásobníky nasazení testování, vývojového nebo produkčního prostředí.
 
-## <a name="create-the-linux-vm"></a>Vytvoření virtuálního počítače s Linuxem
-Následující příklad kódu ukazuje, jak voláním příkazu `azure group create` vytvořit skupinu prostředků a zároveň nasadit virtuální počítač s Linuxem se zabezpečením SSH pomocí [této šablony Azure Resource Manageru](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json). Je třeba myslet na to, že v příkladu musíte použít názvy, které jsou jedinečné pro vaše prostředí. Tento příklad používá *myResourceGroup* jako název skupiny prostředků a *Můjvp* jako název virtuálního počítače.
+## <a name="create-hello-linux-vm"></a>Vytvoření virtuálního počítače s Linuxem hello
+Následující příklad ukazuje kód jak Hello toocall `azure group create` toocreate prostředek skupiny a nasadit virtuální počítač Linux zabezpečením SSH hello současně pomocí [této šablony Azure Resource Manageru](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json). Nezapomeňte, že v příkladu potřebujete toouse názvy, které jsou jedinečné tooyour prostředí. Tento příklad používá *myResourceGroup* jako hello název skupiny prostředků, a *Můjvp* jako hello název virtuálního počítače.
 
 ```azurecli
 azure group create \
@@ -60,14 +60,14 @@ azure group create \
     --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json
 ```
 
-Výstup by měl vypadat jako následující výstupní blok:
+výstup Hello by měl vypadat podobně jako následující bloku výstup hello:
 
 ```azurecli
 info:    Executing command group create
 + Getting resource group myResourceGroup
 + Creating resource group myResourceGroup
 info:    Created resource group myResourceGroup
-info:    Supply values for the following parameters
+info:    Supply values for hello following parameters
 sshKeyData: ssh-rsa AAAAB3Nza<..ssh public key text..>VQgwjNjQ== myAdminUser@myVM
 + Initializing template configurations and parameters
 + Creating a deployment
@@ -81,8 +81,8 @@ data:
 info:    group create command OK
 ```
 
-Tento příklad nasazuje virtuální počítač pomocí parametru `--template-uri`.  Můžete taky šablonu stáhnout nebo ji vytvořit místně a předat ji pomocí parametru `--template-file`cesta k souboru šablony. Rozhraní Azure CLI vás požádá o parametry vyžadované šablonou.
+Například nasazení virtuálního počítače pomocí hello `--template-uri` parametr.  Můžete také stáhnout nebo vytvořit šablonu místně a předat hello šablony pomocí hello `--template-file` parametr s cesta k souboru šablony toohello jako argument. Hello příkazového řádku Azure CLI vás vyzve k zadání parametrů hello požadovaných šablonou hello.
 
 ## <a name="next-steps"></a>Další kroky
-V [galerii šablon](https://azure.microsoft.com/documentation/templates/) se podívejte, jaké aplikační architektury nasadit jako další.
+Hledání hello [galerii šablon](https://azure.microsoft.com/documentation/templates/) toodiscover jaké aplikace rozhraní toodeploy Další.
 

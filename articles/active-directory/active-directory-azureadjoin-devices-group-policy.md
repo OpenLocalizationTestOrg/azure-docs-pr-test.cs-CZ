@@ -1,6 +1,6 @@
 ---
-title: "Připojení zařízení připojených k doméně ke službě Azure AD pro Windows 10 vyskytne | Microsoft Docs"
-description: "Vysvětluje, jak může správce nakonfigurovat zásady skupiny k zařízením povolit, aby doméně k podnikové síti."
+title: "vyskytne aaaConnect tooAzure připojená k doméně AD pro Windows 10 | Microsoft Docs"
+description: "Vysvětluje, jak správci můžou nakonfigurovat zásady skupiny tooenable zařízení toobe připojený k doméně toohello podnikové sítě."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -16,58 +16,58 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 9c91579d20bb84701f6d0b97d944728c84044adf
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9766aa702352dea2ecad3a9a0bdf8d3286ee6d91
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-domain-joined-devices-to-azure-ad-for-windows-10-experiences"></a>Připojení zařízení k doméně služby Azure AD ve Windows 10 – ukázky z praxe
-Připojení k doméně je že tradičním způsobem, jakým organizace mají připojená zařízení pro práci pro posledních 15 let a další. Má povoleno přihlašování ke svým zařízením pomocí práci Windows Server Active Directory (aktivní adresář) nebo školní účty uživatelů a povoleny IT pro plnohodnotnou správu těchto zařízení. Organizace se zpravidla spoléhají na vytváření bitové kopie metody pro zřizování zařízení pro uživatele a obvykle použijte System Center Configuration Manager (SCCM) nebo zásady skupiny k jejich správě.
+# <a name="connect-domain-joined-devices-tooazure-ad-for-windows-10-experiences"></a>Připojení zařízení připojených k doméně tooAzure AD pro prostředí Windows 10
+Připojení k doméně je hello tradiční způsob organizace mají připojená zařízení pro práci pro hello posledních 15 let a další. Aktivoval toosign uživatele v zařízení tootheir pomocí práci Windows Server Active Directory (aktivní adresář) nebo školní účty a povolených toofully IT spravovat tato zařízení. Organizace se zpravidla spoléhají na imaging metody tooprovision zařízení toousers a obecně používat toomanage System Center Configuration Manager (SCCM) nebo zásad skupiny je.
 
 
-Připojení k doméně v systému Windows 10 poskytuje následující výhody po připojení zařízení k Azure Active Directory (Azure AD):
+Připojení k doméně v systému Windows 10 vám poskytne hello po připojení zařízení tooAzure služby Active Directory (Azure AD) následující výhody:
 
-* Jednotné přihlašování (SSO) k prostředkům Azure AD odkudkoli.
-* Přístup k podnikové síti Windows Store pomocí pracovní nebo školní účty (bez účtu Microsoft vyžaduje)
+* Jeden přihlašování (SSO) tooAzure AD prostředkům z libovolného místa
+* Přístup k podnikovým toohello Windows Store pomocí pracovní nebo školní účty (bez účtu Microsoft požadované)
 * Kompatibilní se standardem Enterprise cestovní nastavení uživatele v zařízeních pomocí pracovní nebo školní účty (bez účtu Microsoft požadované)
 * Silné ověřování a pohodlný přihlášení pro pracovní nebo školní účty s Windows Hello pro firmy a Windows Hello
-* Umožňuje omezit přístup jenom na zařízení, které jsou v souladu s nastaveními zásad skupiny organizační zařízení
+* Možnost toorestrict přístup pouze toodevices, že jsou v souladu s nastaveními zásad skupiny organizační zařízení
 
 ## <a name="prerequisites"></a>Požadavky
-Připojení k doméně je nadále užitečné. Ale na získat výhody Azure AD jednotné přihlašování, cestovní nastavení s pracovní nebo školní účty a přístup k Windows Store s pracovní nebo školní účty, budete potřebovat následující:
+Připojení k doméně pokračuje toobe užitečné. Ale tooget hello Azure AD výhody jednotné přihlašování, cestovní nastavení s pracovní nebo školní účty a přístup k úložišti tooWindows s pracovní nebo školní účty, budete potřebovat hello následující:
 
 * Předplatné Azure AD
-* Azure AD Connect místní adresář rozšířit do Azure AD
-* Zásady, které má nastavený na připojení zařízení připojených k doméně ke službě Azure AD
+* Azure AD Connect tooextend hello místní adresář tooAzure AD
+* Zásady, které nastavil tooAzure tooconnect připojená k doméně AD
 * Sestavení Windows 10 (sestavení 10551 nebo novější) pro zařízení
 
-Pokud chcete povolit Windows Hello pro firmy a Windows Hello, budete také potřebovat následující:
+tooenable Windows Hello pro firmy a Windows Hello, budete také potřebovat hello následující:
 
 - **Infrastruktury veřejných klíčů (PKI)** pro vystavování certifikátů uživatele.
 
-- **System Center Configuration Manager aktuální větev** – je potřeba nainstalovat verzi 1606 nebo vyšší.  
+- **System Center Configuration Manager aktuální větve** -potřebovat tooinstall verze 1606 nebo vyšší.  
 Další informace naleznete v tématu: 
     - [Dokumentace pro System Center Configuration Manager](https://technet.microsoft.com/library/mt346023.aspx)
     - [Blog týmu System Center Configuration Manager](http://blogs.technet.com/b/configmgrteam/archive/2015/09/23/now-available-update-for-system-center-config-manager-tp3.aspx)
     - [Windows Hello pro firmy nastavení v nástroji System Center Configuration Manager](https://docs.microsoft.com/sccm/protect/deploy-use/windows-hello-for-business-settings)
 
-Jako alternativu k požadavcích nasazení infrastruktury veřejných KLÍČŮ můžete provést následující:
+Jako alternativní toohello infrastruktury veřejných KLÍČŮ nasazení požadavek, můžete provést následující hello:
 
 * Máte několik řadičů domény s Windows Server 2016 Active Directory Domain Services.
 
-Chcete-li povolit podmíněný přístup, můžete vytvořit nastavení zásad skupiny, které umožňují přístup k zařízení připojených k doméně pomocí žádné další nasazení. Ke správě řízení přístupu podle stavu kompatibility zařízení, budete potřebovat následující:
+tooenable podmíněný přístup, můžete vytvořit nastavení zásad skupiny, které umožňují přístup k zařízení připojená k toodomain s žádné další nasazení. řízení přístupu toomanage založené na dodržování předpisů hello zařízení, budete potřebovat následující hello:
 
 * System Center Configuration Manager aktuální větev (1606 nebo novější) pro Windows Hello pro firmy scénáře
 
 ## <a name="deployment-instructions"></a>Pokyny k nasazení
 
-Pokud chcete nasadit, postupujte podle kroků uvedených v [postup konfigurace automatické registrace zařízení se systémem Windows připojených k doméně se službou Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md)
+toodeploy, postupujte podle kroků hello uvedených v [jak tooconfigure automatické registrace Windows připojených k doméně zařízení s Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md)
 
 ## <a name="next-step"></a>Další krok
-* [Windows 10 pro firmy: Možnosti, jak používat zařízení pro práci](active-directory-azureadjoin-windows10-devices-overview.md)
-* [Rozšíření možností cloudu u zařízení s Windows 10 prostřednictvím služby Azure Active Directory Join](active-directory-azureadjoin-user-upgrade.md)
+* [Windows 10 pro podnik hello: způsoby toouse zařízení pro práci](active-directory-azureadjoin-windows10-devices-overview.md)
+* [Rozšíření cloudových funkcí tooWindows 10 zařízení prostřednictvím Azure Active Directory Join](active-directory-azureadjoin-user-upgrade.md)
 * [Další informace o scénářích použití pro službu Azure AD Join](active-directory-azureadjoin-deployment-aadjoindirect.md)
-* [Připojení zařízení k doméně služby Azure AD ve Windows 10 – ukázky z praxe](active-directory-azureadjoin-devices-group-policy.md)
+* [Připojení zařízení připojených k doméně tooAzure AD pro prostředí Windows 10](active-directory-azureadjoin-devices-group-policy.md)
 * [Nastavení služby Azure AD Join](active-directory-azureadjoin-setup.md)
 

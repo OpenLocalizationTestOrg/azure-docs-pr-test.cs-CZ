@@ -1,6 +1,6 @@
 ---
-title: "Jádra pro poznámkový blok Jupyter na clustery Spark v Azure HDInsight | Microsoft Docs"
-description: "Další informace o jádra PySpark, PySpark3 a Spark pro poznámkový blok Jupyter s clustery Spark v Azure HDInsight k dispozici."
+title: "clusterů aaaKernels pro poznámkový blok Jupyter na Spark v Azure HDInsight | Microsoft Docs"
+description: "Další informace o hello jádra PySpark, PySpark3 a Spark pro poznámkový blok Jupyter s clustery Spark v Azure HDInsight k dispozici."
 keywords: "Poznámkový blok jupyter na spark, jupyter spark"
 services: hdinsight
 documentationcenter: 
@@ -17,21 +17,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: nitinme
-ms.openlocfilehash: 6cfd1c1e7b22f5460b78687c815d149e6c6deac9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 560c944fe850c5753ac9fa90550b804f0c47d14c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Jádra pro poznámkový blok Jupyter na clustery Spark v Azure HDInsight 
 
-Clustery HDInsight Spark poskytují jádra, která můžete použít s poznámkovým blokem Jupyter na Spark pro testování vašich aplikací. Jádro je program, který spouští a interpretuje vašeho kódu. Jsou tři jádra:
+Clustery HDInsight Spark poskytují jádra, která můžete pomocí poznámkového bloku Jupyter hello na Spark pro testování vašich aplikací. Jádro je program, který spouští a interpretuje vašeho kódu. jsou tři jádra Hello:
 
 - **PySpark** – pro aplikace napsané v Python2
 - **PySpark3** – pro aplikace napsané v Python3
 - **Spark** – pro aplikace napsané v jazyce Scala
 
-V tomto článku můžete další informace o použití těchto jádra a výhody jejich používání.
+V tomto článku se dozvíte, jak toouse tyto jádra a výhod hello jejich používání.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,118 +39,118 @@ V tomto článku můžete další informace o použití těchto jádra a výhody
 
 ## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>Vytvoření poznámkového bloku Jupyter v Spark HDInsight
 
-1. Z [portál Azure](https://portal.azure.com/), otevřete váš cluster.  V tématu [seznamu a zobrazit clustery](hdinsight-administer-use-portal-linux.md#list-and-show-clusters) pokyny. Cluster se otevře v novém okně portálu.
+1. Z hello [portál Azure](https://portal.azure.com/), otevřete váš cluster.  V tématu [seznamu a zobrazit clustery](hdinsight-administer-use-portal-linux.md#list-and-show-clusters) pokyny hello. Hello clusteru se otevře v novém okně portálu.
 
-2. Z **rychlé odkazy** klikněte na tlačítko **clusteru řídicí panely** otevřete **clusteru řídicí panely** okno.  Pokud nevidíte **rychlé odkazy**, klikněte na tlačítko **přehled** v levé nabídce v okně.
+2. Z hello **rychlé odkazy** klikněte na tlačítko **clusteru řídicí panely** tooopen hello **clusteru řídicí panely** okno.  Pokud nevidíte **rychlé odkazy**, klikněte na tlačítko **přehled** hello levé nabídce v okně hello.
 
     ![Poznámkový blok Jupyter na Spark](./media/hdinsight-apache-spark-jupyter-notebook-kernels/hdinsight-jupyter-notebook-on-spark.png "Poznámkový blok Jupyter na Spark") 
 
-3. Klikněte na tlačítko **Poznámkový blok Jupyter**. Po vyzvání zadejte přihlašovací údaje správce clusteru.
+3. Klikněte na tlačítko **Poznámkový blok Jupyter**. Pokud se zobrazí výzva, zadejte přihlašovací údaje správce hello hello clusteru.
    
    > [!NOTE]
-   > Otevření následující adresy URL v prohlížeči, mohou také spojit poznámkového bloku Jupyter v clusteru Spark. Nahraďte **CLUSTERNAME** názvem clusteru:
+   > Může také dosáhnout hello Poznámkový blok Jupyter v clusteru Spark pomocí hello otevření následující adresy URL v prohlížeči. Nahraďte **CLUSTERNAME** s hello název clusteru:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    > 
    > 
 
-3. Klikněte na tlačítko **nový**a pak klikněte buď **Pyspark**, **PySpark3**, nebo **Spark** k vytvoření poznámkového bloku. Použijte jádra Spark Scala aplikací, jádra PySpark pro Python2 aplikace a PySpark3 jádra pro Python3 aplikace.
+3. Klikněte na tlačítko **nový**a pak klikněte buď **Pyspark**, **PySpark3**, nebo **Spark** toocreate Poznámkový blok. Používat hello jádra Spark Scala aplikací jádra PySpark pro Python2 aplikace a PySpark3 jádra pro Python3 aplikace.
    
     ![Jádra pro poznámkový blok Jupyter na Spark](./media/hdinsight-apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "jádra pro poznámkový blok Jupyter na Spark") 
 
-4. Poznámkový blok se otevře s jádrem, které jste vybrali.
+4. Poznámkový blok se otevře s hello jádra, který jste vybrali.
 
-## <a name="benefits-of-using-the-kernels"></a>Výhody použití jader
+## <a name="benefits-of-using-hello-kernels"></a>Výhody používání jádra hello
 
-Zde naleznete několik výhod nového jádrech pomocí poznámkového bloku Jupyter na clustery Spark HDInsight.
+Zde naleznete několik výhod nového jádra hello pomocí poznámkového bloku Jupyter na clustery Spark HDInsight.
 
-- **Předvolby kontexty**. S **PySpark**, **PySpark3**, nebo **Spark** jádra, není nutné explicitně nastavovat kontexty Spark nebo Hive před zahájením práce s vašimi aplikacemi. Toto jsou k dispozici ve výchozím nastavení. Tyto kontexty jsou:
+- **Předvolby kontexty**. S **PySpark**, **PySpark3**, nebo hello **Spark** jádra, není nutné tooset kontexty Spark nebo Hive hello explicitně před zahájením práce s vašimi aplikacemi. Toto jsou k dispozici ve výchozím nastavení. Tyto kontexty jsou:
    
    * **sc** – pro kontext Spark
    * **sqlContext** – pro kontext Hive
 
-    Ano nemusíte spouštět příkazy jako je třeba následující příkaz a nastavovat kontexty:
+    Ano nemáte toorun příkazy, jako je třeba hello tooset hello kontexty následující:
 
         sc = SparkContext('yarn-client') sqlContext = HiveContext(sc)
 
-    Místo toho můžete přímo použít přednastavení kontexty ve vaší aplikaci.
+    Místo toho můžete přímo použít hello přednastavení kontexty ve vaší aplikaci.
 
-- **Buňky Magic**. Poskytuje jádra PySpark některé předdefinované "Magic", které jsou speciální příkazy, které můžete volat s `%%` (například `%%MAGIC` <args>). Příkaz magic musí být první slovo v buňce kódu a povolit pro více řádků obsahu. Magic slovo by měl být první slovo v buňce. Přidání nic před magic, i komentáře, výsledkem bude chyba.     Další informace o Magic, které najdete v tématu [zde](http://ipython.readthedocs.org/en/stable/interactive/magics.html).
+- **Buňky Magic**. Hello jádra PySpark poskytuje některé předdefinované "Magic", které jsou speciální příkazy, které můžete volat s `%%` (například `%%MAGIC` <args>). příkaz magic Hello musí být první slovo hello v buňce kódu a povolit pro více řádků obsahu. Hello magic word by měl být hello první slovo v buňce hello. Přidání nic před hello magic, i komentáře, výsledkem bude chyba.     Další informace o Magic, které najdete v tématu [zde](http://ipython.readthedocs.org/en/stable/interactive/magics.html).
    
-    Následující tabulka uvádí různé Magic, které jsou k dispozici prostřednictvím jádrech.
+    Hello následující tabulka uvádí hello různých Magic, které jsou k dispozici prostřednictvím hello jádra.
 
    | Magic | Příklad | Popis |
    | --- | --- | --- |
-   | Pomoc |`%%help` |Vytvoří tabulku všechny dostupné Magic s příklad a popis |
-   | Informace o |`%%info` |Výstupy informací o relaci pro aktuální koncový bod Livy |
-   | Konfigurace |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Nakonfiguruje parametry pro vytvoření relace. Příznak force (-f) je povinný, pokud je relace již bylo vytvořeno, který zajistí, že je relace vyřadit a vytvořit znovu. Podívejte se na [/sessions POST na Livy text žádosti](https://github.com/cloudera/livy#request-body) pro seznam platných parametrů. Parametry musí být předán jako řetězec formátu JSON a musí být na další řádek po magic, jak je znázorněno v příkladu sloupec. |
-   | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Provede dotaz Hive proti sqlContext. Pokud `-o` parametr se předává, výsledek dotazu je uchován v %% lokální kontext Python jako [Pandas](http://pandas.pydata.org/) dataframe. |
-   | místní |`%%local`<br>`a=1` |Všechny kód na další řádek je spustit místně. Kód musí být platný kód Python2 i bez ohledu na jádra, který používáte. Ano, i v případě, že jste vybrali **PySpark3** nebo **Spark** jádra při vytváření poznámkového bloku, pokud použijete `%%local` magic v buňce, dané buňky musí mít pouze platný kód Python2... |
-   | Protokoly |`%%logs` |Protokoly pro aktuální relaci Livy výstupy. |
-   | Odstranit |`%%delete -f -s <session number>` |Odstraní relaci konkrétní aktuální Livy koncového bodu. Poznámka: nelze odstranit iniciovaného relace pro jádra sám sebe. |
-   | Čištění |`%%cleanup -f` |Odstraní všechny relace pro aktuální Livy koncový bod, včetně relace tento poznámkový blok. Příznak force -f je povinný. |
+   | Pomoc |`%%help` |Vytvoří tabulku všechny dostupné Magic hello s příklad a popis |
+   | Informace o |`%%info` |Informace o relaci výstupy pro hello aktuální koncový bod Livy |
+   | Konfigurace |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Nakonfiguruje hello parametry pro vytvoření relace. Hello příznak force (-f) je povinná, pokud relaci již byla vytvořena, což zajistí, že hello relace je vyřadit a vytvořit znovu. Podívejte se na [/sessions POST na Livy text žádosti](https://github.com/cloudera/livy#request-body) pro seznam platných parametrů. Parametry musí být předán jako řetězec formátu JSON a musí být na další řádek hello po hello magic, jak je znázorněno v příkladu sloupec hello. |
+   | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Provede dotaz Hive proti hello sqlContext. Pokud hello `-o` parametr se předává, hello výsledek dotazu hello je uchován v hello %% lokální kontext Python jako [Pandas](http://pandas.pydata.org/) dataframe. |
+   | místní |`%%local`<br>`a=1` |Všechny hello kód v další řádek se spustí místně. Kód musí být platný kód Python2 i bez ohledu na hello jádra, který používáte. Ano, i v případě, že jste vybrali **PySpark3** nebo **Spark** jádra při vytváření hello Poznámkový blok, pokud používáte hello `%%local` magic v buňce, dané buňky musí mít pouze platný kód Python2... |
+   | Protokoly |`%%logs` |Výstupy hello protokoly pro aktuální relaci Livy hello. |
+   | Odstranit |`%%delete -f -s <session number>` |Odstraní konkrétní relace hello aktuální Livy koncového bodu. Všimněte si, že nelze odstranit hello relace iniciovaného pro hello jádra sám sebe. |
+   | Čištění |`%%cleanup -f` |Odstraní všechny hello relace pro hello aktuální Livy koncový bod, včetně relace tento poznámkový blok. platnost Hello příznak -f je povinný. |
 
    > [!NOTE]
-   > Kromě Magic přidal jádra PySpark, můžete také použít [předdefinované Magic IPython](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics), včetně `%%sh`. Můžete použít `%%sh` magic spouštět skripty a blok kódu na headnode clusteru.
+   > Kromě toho toohello Magic, které jsou přidávány hello jádra PySpark, můžete použít také hello [předdefinované Magic IPython](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics), včetně `%%sh`. Můžete použít hello `%%sh` kouzelná toorun skripty a blok kódu na headnode hello clusteru.
    >
    >
-2. **Automaticky vizualizace**. **Pyspark** jádra automaticky vizualizuje výstup dotazy Hive a SQL. Můžete zvolit několika různých typů vizualizace včetně tabulky, kruhový, řádku, oblasti, panelu.
+2. **Automaticky vizualizace**. Hello **Pyspark** jádra automaticky vizualizuje výstup hello dotazů Hive a SQL. Můžete zvolit několika různých typů vizualizace včetně tabulky, kruhový, řádku, oblasti, panelu.
 
-## <a name="parameters-supported-with-the-sql-magic"></a>Parametry podporovány s %% sql magic
-`%%sql` Magic podporuje různé parametry, které můžete použít k řízení druh výstup, která se zobrazí při spuštění dotazů. Následující tabulka uvádí výstup.
+## <a name="parameters-supported-with-hello-sql-magic"></a>Parametry podporovány s hello %% sql magic
+Hello `%%sql` magic podporuje různé parametry, které můžete použít toocontrol hello druh výstup, která se zobrazí při spuštění dotazů. Hello následující tabulka uvádí výstup hello.
 
 | Parametr | Příklad | Popis |
 | --- | --- | --- |
-| -o |`-o <VARIABLE NAME>` |Tento parametr použijte pro uchování v výsledek dotazu, %% lokální kontext Python, jako [Pandas](http://pandas.pydata.org/) dataframe. Název proměnné dataframe je název proměnné, které zadáte. |
-| -q |`-q` |Použijte k vypnutí možnosti vizualizace pro buňky. Pokud nechcete automaticky vizualizovat obsah buňky a chcete jen zaznamenat jako dataframe, potom použijte `-q -o <VARIABLE>`. Pokud chcete vypnout vizualizace bez zaznamenávání výsledky (například pro spuštění příkazu jazyka SQL, jako je třeba `CREATE TABLE` příkaz), použijte `-q` bez zadání `-o` argument. |
-| -m |`-m <METHOD>` |Kde **metoda** je buď **trvat** nebo **ukázka** (výchozí hodnota je **trvat**). Pokud je metoda **trvat**, jádra vybere elementy z horní části datové sady výsledků dotazu určeného MAXROWS (popsané dál v této tabulce). Pokud je metoda **ukázka**, jádra náhodně ukázky elementy sady dat podle `-r` parametr popsána dále v této tabulce. |
-| -r |`-r <FRACTION>` |Zde **ZLOMEK** je číslo s plovoucí desetinnou čárkou mezi 0,0 a 1,0. Pokud je metoda ukázka pro příkaz jazyka SQL `sample`, pak jádra náhodně ukázky zadaný podíl elementy výsledku nastavení za vás. Například pokud spustíte dotaz SQL s argumenty `-m sample -r 0.01`, pak se náhodně vzorkovat 1 % řádků výsledek. |
-| -n |`-n <MAXROWS>` |**MAXROWS** celočíselná hodnota. Jádra omezuje počet řádků výstup do **MAXROWS**. Pokud **MAXROWS** záporné číslo, jako je **-1**, pak není omezený počet řádků v sadě výsledků dotazu. |
+| -o |`-o <VARIABLE NAME>` |Použijte tento parametr toopersist hello výsledek dotazu hello v hello %% lokální kontext Python, jako [Pandas](http://pandas.pydata.org/) dataframe. Hello název proměnné dataframe hello je hello název proměnné, které určíte. |
+| -q |`-q` |Pomocí této tooturn vypnout vizualizace pro hello buňky. Pokud nechcete, aby tooauto-vizualizovat hello obsah buňky a právě chcete toocapture jej jako dataframe, potom použijte `-q -o <VARIABLE>`. Pokud chcete tooturn vypnout vizualizace bez zaznamenávání hello výsledky (například pro spuštění příkazu jazyka SQL, jako je třeba `CREATE TABLE` příkaz), použijte `-q` bez zadání `-o` argument. |
+| -m |`-m <METHOD>` |Kde **metoda** je buď **trvat** nebo **ukázka** (výchozí hodnota je **trvat**). Pokud je metoda hello **trvat**, hello jádra vybere elementy shora hello hello výsledek datových sad určeného MAXROWS (popsané dál v této tabulce). Pokud je metoda hello **ukázka**, hello jádra náhodně ukázky elementy hello datových sad podle příliš`-r` parametr popsána dále v této tabulce. |
+| -r |`-r <FRACTION>` |Zde **ZLOMEK** je číslo s plovoucí desetinnou čárkou mezi 0,0 a 1,0. Pokud je metoda hello ukázky pro dotaz SQL hello `sample`, pak hello jádra náhodně ukázky hello zadaný podíl hello elementy hello výsledku nastavení za vás. Například pokud spustíte dotaz SQL s argumenty hello `-m sample -r 0.01`, pak se náhodně vzorkovat 1 % hello výsledek řádků. |
+| -n |`-n <MAXROWS>` |**MAXROWS** celočíselná hodnota. Hello jádra omezuje hello počet řádků, výstup příliš**MAXROWS**. Pokud **MAXROWS** záporné číslo, jako je **-1**, pak hello počet řádků v sadě výsledků hello není omezen. |
 
 **Příklad:**
 
     %%sql -q -m sample -r 0.1 -n 500 -o query2
     SELECT * FROM hivesampletable
 
-Výše uvedený příkaz provede následující akce:
+příkaz Hello výše hello následující:
 
 * Vybere všechny záznamy z **hivesampletable**.
 * Vzhledem k tomu, že používáme - q, vypne automatické vizualizace.
-* Vzhledem k tomu, že používáme `-m sample -r 0.1 -n 500` náhodně ukázky 10 % řádků v hivesampletable a omezení velikosti sady výsledků do 500 řádků.
-* Nakonec protože jsme použili `-o query2` také uloží výstup do dataframe, nazývá **dotaz2**.
+* Vzhledem k tomu, že používáme `-m sample -r 0.1 -n 500` ho náhodně ukázky 10 % hello řádků v hello hivesampletable a omezení hello velikost hello výsledek sadu too500 řádků.
+* Nakonec protože jsme použili `-o query2` navíc šetří hello výstup do dataframe, nazývá **dotaz2**.
 
-## <a name="considerations-while-using-the-new-kernels"></a>Aspekty při použití nové jádra
+## <a name="considerations-while-using-hello-new-kernels"></a>Aspekty při použití nové jádra hello
 
-Podle toho, která jádra, které používáte, ponechat poznámkových bloků systémem spotřebovává prostředky clusteru.  S těmito jádra protože kontexty jsou předvolby, jednoduše ukončení poznámkových bloků kill není kontextu a proto nadále používat prostředky clusteru. Je vhodné použít **zavřít a zastavit** možnost poznámkového bloku **souboru** nabídky po skončení pomocí poznámkového bloku, který ukončí kontext a poté ukončí poznámkového bloku.     
+Podle toho, která jádra, které používáte, ponechat poznámkových bloků hello systémem spotřebovává prostředky clusteru hello.  S tyto jádra protože jsou přednastavení kontexty hello, jednoduše ukončení poznámkových bloků hello není hello kontextu ukončit a proto hello prostředky clusteru pokračovat toobe používá. Doporučeným postupem je toouse hello **zavřít a zastavit** možnost hello poznámkového bloku **souboru** nabídky, když jste dokončili pomocí hello Poznámkový blok, který ukončí kontext hello a pak ukončí hello poznámkového bloku.     
 
 ## <a name="show-me-some-examples"></a>Ukázat některé příklady
 
-Otevřete Poznámkový blok Jupyter, uvidíte dvě složky k dispozici na kořenové úrovni.
+Otevřete Poznámkový blok Jupyter, uvidíte dvě složky k dispozici na kořenové úrovni hello.
 
-* **PySpark** složka obsahuje ukázkové poznámkových bloků, které používají nové **Python** jádra.
-* **Scala** složka obsahuje ukázkové poznámkových bloků, které používají nové **Spark** jádra.
+* Hello **PySpark** složka obsahuje ukázkové poznámkových bloků této hello použití nové **Python** jádra.
+* Hello **Scala** složka obsahuje ukázkové poznámkových bloků této hello použití nové **Spark** jádra.
 
-Můžete otevřít **00 - [přečtěte si NEJPRVE] funkce jádra Magic Spark** poznámkového bloku z **PySpark** nebo **Spark** složku pro další informace o různých Magic, které jsou k dispozici. Můžete taky dostupná ukázková notebooky pod dvě složky se dozvíte, jak zajistit různé scénáře použití poznámkové bloky Jupyter s clustery HDInsight Spark.
+Můžete otevřít hello **00 - [přečtěte si NEJPRVE] funkce jádra Magic Spark** poznámkového bloku z hello **PySpark** nebo **Spark** složky toolearn o hello různých Magic, které jsou k dispozici. Můžete také použít jak hello k dispozici v části toolearn složky hello dva další poznámkových bloků ukázka tooachieve různé scénáře použití poznámkové bloky Jupyter s clustery HDInsight Spark.
 
-## <a name="where-are-the-notebooks-stored"></a>Kde jsou uložené poznámkových bloků?
+## <a name="where-are-hello-notebooks-stored"></a>Kde jsou uložené poznámkových bloků hello?
 
-Poznámkové bloky Jupyter se uloží do účtu úložiště přidruženého k clusteru pod **/HdiNotebooks** složky.  Poznámkové bloky, textové soubory a složky, které vytvoříte z v rámci Jupyter jsou přístupné z účtu úložiště.  Například, pokud používáte Jupyter vytvořit složku **Moje_složka** a Poznámkový blok **myfolder/mynotebook.ipynb**, dostanete tento poznámkový blok v `/HdiNotebooks/myfolder/mynotebook.ipynb` v rámci účtu úložiště.  Platí také nastavena hodnota true, to znamená, pokud nahrát Poznámkový blok přímo do účtu úložiště na `/HdiNotebooks/mynotebook1.ipynb`, Poznámkový blok je také zobrazit z Jupyter.  Poznámkové bloky zůstat v účtu úložiště i po odstranění clusteru.
+Poznámkové bloky Jupyter ukládají toohello účtu úložiště přidruženého k hello clusteru pod hello **/HdiNotebooks** složky.  Poznámkové bloky, textové soubory a složky, které vytvoříte z v rámci Jupyter jsou přístupné z účtu úložiště hello.  Například, pokud používáte Jupyter toocreate složku **Moje_složka** a Poznámkový blok **myfolder/mynotebook.ipynb**, dostanete tento poznámkový blok v `/HdiNotebooks/myfolder/mynotebook.ipynb` v rámci účtu úložiště hello.  Hello zpětné je také nastavena hodnota true, to znamená, pokud nahrát Poznámkový blok přímo tooyour úložiště účet v `/HdiNotebooks/mynotebook1.ipynb`, hello Poznámkový blok je také zobrazit z Jupyter.  Poznámkové bloky zůstat v účtu úložiště hello i po odstranění clusteru hello.
 
-Způsob, jakým poznámkových bloků se uloží do účtu úložiště je kompatibilní s HDFS. Pokud tedy můžete SSH do clusteru, který můžete použít soubor příkazy pro správu, jak je znázorněno v následujícím fragmentu kódu:
+způsob Hello poznámkových bloků se uloží toohello účet úložiště je kompatibilní s HDFS. Pokud tedy můžete SSH do clusteru hello, které můžete použít soubor příkazy pro správu, jak je znázorněno v následujícím fragmentu kódu hello:
 
-    hdfs dfs -ls /HdiNotebooks                               # List everything at the root directory – everything in this directory is visible to Jupyter from the home page
-    hdfs dfs –copyToLocal /HdiNotebooks                    # Download the contents of the HdiNotebooks folder
-    hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it’s visible from Jupyter
+    hdfs dfs -ls /HdiNotebooks                               # List everything at hello root directory – everything in this directory is visible tooJupyter from hello home page
+    hdfs dfs –copyToLocal /HdiNotebooks                    # Download hello contents of hello HdiNotebooks folder
+    hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb toohello root folder so it’s visible from Jupyter
 
 
-V případě, že nedochází k potížím přístupu k účtu úložiště pro cluster, poznámkových bloků jsou také uloženy na headnode `/var/lib/jupyter`.
+V případě, že nedochází k potížím přístupu k účtu úložiště hello hello clusteru, poznámkových bloků hello jsou také uloženy na hello headnode `/var/lib/jupyter`.
 
 ## <a name="supported-browser"></a>Podporovaný prohlížeč
 
 Poznámkové bloky Jupyter na clustery Spark HDInsight jsou podporovány pouze na Google Chrome.
 
 ## <a name="feedback"></a>Váš názor
-Nové jádrech jsou v vyvíjející se fáze a bude pro dospělé v čase. To může znamenat, že rozhraní API může změnit, protože tyto jádra pro dospělé. Uvítáme jakékoli zpětnou vazbu, která máte při použití těchto nových jádra. To je užitečné v shaping finální verzi nástroje tyto jádra. Můžete ponechat vaše komentáře nebo zpětné vazby v části **komentáře** v dolní části tohoto článku.
+nové jádra Hello jsou v vyvíjející se fáze a bude pro dospělé v čase. To může znamenat, že rozhraní API může změnit, protože tyto jádra pro dospělé. Uvítáme jakékoli zpětnou vazbu, která máte při použití těchto nových jádra. To je užitečné v shaping hello finální verzi nástroje tyto jádra. Můžete ponechat vaše komentáře nebo názory pod hello **komentáře** oddíl hello dolní části tohoto článku.
 
 ## <a name="seealso"></a>Viz také
 * [Přehled: Apache Spark v Azure HDInsight](hdinsight-apache-spark-overview.md)
@@ -158,7 +158,7 @@ Nové jádrech jsou v vyvíjející se fáze a bude pro dospělé v čase. To m�
 ### <a name="scenarios"></a>Scénáře
 * [Spark s BI: Provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](hdinsight-apache-spark-use-bi-tools.md)
 * [Spark s Machine Learning: Používejte Spark v HDInsight pro analýzu teploty v budově pomocí dat HVAC](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-* [Spark s Machine Learning: Používejte Spark v HDInsight k předpovědím výsledků kontrol potravin](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Spark s Machine Learning: používejte Spark v výsledků kontroly potravin toopredict HDInsight](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Datové proudy Spark: Používejte Spark v HDInsight pro sestavení aplikací datových proudů v reálném čase](hdinsight-apache-spark-eventhub-streaming.md)
 * [Analýza protokolu webu pomocí Sparku v HDInsight](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
@@ -167,12 +167,12 @@ Nové jádrech jsou v vyvíjející se fáze a bude pro dospělé v čase. To m�
 * [Vzdálené spouštění úloh na clusteru Sparku pomocí Livy](hdinsight-apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
-* [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](hdinsight-apache-spark-intellij-tool-plugin.md)
-* [Použití modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vzdálené ladění aplikací Spark](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Pomocí modulu plug-in nástroje HDInsight pro IntelliJ IDEA toocreate a odesílání aplikací Spark Scala](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Vzdáleně pomocí modulu plug-in nástroje HDInsight pro IntelliJ IDEA toodebug Spark aplikace](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Použití poznámkových bloků Zeppelin s clusterem Sparku v HDInsight](hdinsight-apache-spark-zeppelin-notebook.md)
 * [Použití externích balíčků s poznámkovými bloky Jupyter](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
-* [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
+* [Do počítače nainstalovat Jupyter a připojte tooan clusteru HDInsight Spark](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Správa prostředků
-* [Správa prostředků v clusteru Apache Spark v Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
+* [Správa prostředků hello cluster Apache Spark v Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 * [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](hdinsight-apache-spark-job-debugging.md)

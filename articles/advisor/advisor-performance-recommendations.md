@@ -1,6 +1,6 @@
 ---
-title: "Azure doporučení služby Advisor výkonu | Microsoft Docs"
-description: "Použití Advisor k optimalizaci výkonu vašich Azure nasazení."
+title: "Poradce při hodnocení výkonu doporučení aaaAzure | Microsoft Docs"
+description: "Použití Advisor toooptimize hello výkon vašich Azure nasazení."
 services: advisor
 documentationcenter: NA
 author: kumudd
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 5fb86c60b2d1f258dde5636ff8854b6f30f7f1c8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: eb3d928664717f6f322132ac740f42015f56b76e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="advisor-performance-recommendations"></a>Poradce při hodnocení výkonu doporučení
 
-Azure doporučení výkonu služby Advisor napomáhají, a zvýšit rychlost a reakce důležitých podnikových aplikací. Výkon doporučení služby Advisor můžete získat **výkonu** Advisor řídicího panelu.
+Doporučení pro optimální výkon Azure Advisor k vylepšování hello rychlost a reakce důležitých podnikových aplikací. Výkon doporučení služby Advisor můžete získat na hello **výkonu** kartě hello Advisor řídicího panelu.
 
 ![Karta výkonu Advisor](./media/advisor-performance-recommendations/advisor-performance-tab.png)
 
 ## <a name="improve-database-performance-with-sql-db-advisor"></a>Zlepšení výkonu databáze službou SQL DB Advisor
 
-Advisor vám poskytne konzistentní, konsolidované zobrazení doporučení pro všechny prostředky Azure. Integruje se službou Advisor databáze SQL, aby vám doporučení pro zlepšení výkonu databáze SQL Azure. Poradce pro funkci SQL Database vyhodnocuje analýzou historii využití výkon vaší databáze SQL Azure. Potom nabízí doporučení, která jsou nejvhodnější pro spuštění typické zatížení databáze. 
+Advisor vám poskytne konzistentní, konsolidované zobrazení doporučení pro všechny prostředky Azure. Se integruje toobring Poradce pro databáze SQL můžete doporučení pro zlepšení výkonu hello vaší databáze SQL Azure. Poradce pro funkci SQL Database vyhodnocuje analýzou historii využití hello výkon vaší databáze SQL Azure. Potom nabízí doporučení, které jsou nejvhodnější pro spuštění databáze hello typické zatížení. 
 
 > [!NOTE]
-> Doporučení získáte databáze musí obsahovat o týden využití, a v daném týdnu musí být některé konzistentní aktivity. Poradce pro databáze SQL můžete optimalizovat snadněji konzistentní dotazu v případě vzorů než pro náhodné shluky aktivity.
+> doporučení tooget databáze musí mít o týden využití, a v daném týdnu musí být některé konzistentní aktivity. Poradce pro databáze SQL můžete optimalizovat snadněji konzistentní dotazu v případě vzorů než pro náhodné shluky aktivity.
 
 Další informace o službě Advisor databáze SQL najdete v tématu [Poradce pro funkci SQL Database](https://azure.microsoft.com/en-us/documentation/articles/sql-database-advisor/).
 
@@ -39,7 +39,7 @@ Další informace o službě Advisor databáze SQL najdete v tématu [Poradce pr
 
 ## <a name="improve-redis-cache-performance-and-reliability"></a>Zlepšení výkonu Redis Cache a spolehlivosti
 
-Advisor identifikuje instance služby Redis Cache kde výkon může být nepříznivě ovlivněn velké množství paměti, zatížení serveru, šířky pásma sítě nebo velký počet připojení klientů. Osvědčené postupy Advisor také poskytuje doporučení, která umožňuje vyhnout se možným problémům. Další informace o doporučení Redis Cache najdete v tématu [Redis Cache Advisor](https://azure.microsoft.com/en-us/documentation/articles/cache-configure/#redis-cache-advisor).
+Advisor identifikuje instance služby Redis Cache kde výkon může být nepříznivě ovlivněn velké množství paměti, zatížení serveru, šířky pásma sítě nebo velký počet připojení klientů. Služba Advisor navíc poskytuje nejlepší postupy předejít problémům toohelp doporučení. Další informace o doporučení Redis Cache najdete v tématu [Redis Cache Advisor](https://azure.microsoft.com/en-us/documentation/articles/cache-configure/#redis-cache-advisor).
 
 
 ## <a name="improve-app-service-performance-and-reliability"></a>Zlepšení výkonu služby App Service a spolehlivosti
@@ -51,27 +51,27 @@ Azure Advisor integruje doporučení pro zlepšení prostředí aplikační slu�
 Další informace o App Services doporučení najdete v tématu [osvědčené postupy pro službu Azure App Service](https://azure.microsoft.com/en-us/documentation/articles/app-service-best-practices/).
 ![Doporučení služby aplikace](./media/advisor-performance-recommendations/advisor-performance-app-service.png)
 
-## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak získat přístup k výkonu doporučení v Advisor
+## <a name="how-tooaccess-performance-recommendations-in-advisor"></a>Jak tooaccess výkonu doporučení v Advisor
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
 
-2. V levém podokně klikněte na **další služby**.
+2. V levém podokně hello, klikněte na **další služby**.
 
-3. V podokně nabídky služby v rámci **monitorování a správu**, klikněte na tlačítko **Azure Advisor**.  
- Se zobrazí řídicí panel služby Advisor.
+3. V hello služby nabídky podokně v části **monitorování a správu**, klikněte na tlačítko **Azure Advisor**.  
+ se zobrazí řídicí panel Advisor Hello.
 
-4. Na řídicím panelu služby Advisor, klikněte na **výkonu** kartě.
+4. Na řídicím panelu hello Advisor, klikněte na tlačítko hello **výkonu** kartě.
 
-5. Vyberte předplatné, pro který chcete dostávat doporučení a potom klikněte na **získat doporučení**.
+5. Vyberte hello předplatné, pro který chcete tooreceive doporučení a pak klikněte na tlačítko **získat doporučení**.
 
 > [!NOTE]
-> Chcete-li získat přístup k doporučení služby Advisor, je nutné nejprve *zaregistrovat předplatné* službou Advisor. Předplatné je zaregistrován při *předplatné vlastníka* spustí Advisor řídicího panelu a klikne na tlačítko **získat doporučení** tlačítko. Toto je *jednorázovou operaci*. Po registraci předplatného dostanete doporučení služby Advisor jako *vlastníka*, *Přispěvatel*, nebo *čtečky* pro předplatné, skupinu prostředků nebo konkrétní prostředek.
+> tooaccess doporučení služby Advisor, musíte nejdřív *zaregistrovat předplatné* službou Advisor. Předplatné je zaregistrován při *předplatné vlastníka* spustí hello Advisor řídicí panel a klikne na tlačítko hello **získat doporučení** tlačítko. Toto je *jednorázovou operaci*. Po registraci předplatného hello dostanete doporučení služby Advisor jako *vlastníka*, *Přispěvatel*, nebo *čtečky* pro předplatné, skupinu prostředků nebo konkrétní prostředek.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o doporučení služby Advisor najdete v tématu:
+toolearn Další informace o doporučení služby Advisor, najdete v části:
 
-* [Úvod do služby Advisor](advisor-overview.md)
+* [TooAdvisor Úvod](advisor-overview.md)
 * [Začínáme se službou Advisor](advisor-get-started.md)
 * [Náklady na doporučení služby Advisor](advisor-performance-recommendations.md)
 * [Doporučení pro vysokou dostupnost služby Advisor](advisor-high-availability-recommendations.md)

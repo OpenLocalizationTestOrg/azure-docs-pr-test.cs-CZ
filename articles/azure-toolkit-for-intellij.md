@@ -1,6 +1,6 @@
 ---
-title: "Azure nástrojů pro IntelliJ | Microsoft Docs"
-description: "Další informace o Azure Toolkit pro IntelliJ."
+title: sada Toolkit pro IntelliJ aaaAzure | Microsoft Docs
+description: "Další informace o hello Azure Toolkit pro IntelliJ."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,36 +14,36 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: robmcm;asirveda
-ms.openlocfilehash: 75a8880f3d28c290236b87677648fdd915effea2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 59daba34200b4e5efcba9af9eba71b648a0bfa98
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-toolkit-for-intellij"></a>Azure Toolkit pro IntelliJ
-Sada Azure pro IntelliJ obsahuje šablony a funkce, které můžete snadno vytvořit, vývoj, testování a nasazení aplikace na platformě Azure pomocí IntelliJ integrované vývojové prostředí (IDE). Jedná o projekt open source, jejichž zdrojový kód je k dispozici v části [licencí MIT z projektu lokality](https://github.com/microsoft/azure-tools-for-java).
+Hello nástrojů Azure pro IntelliJ poskytuje šablony a funkce, které můžete použít tooeasily vytvořit, vývoj, testování a nasazení aplikace na platformě Azure pomocí hello IntelliJ integrované vývojové prostředí (IDE). Jedná o projekt open source, jejichž zdrojový kód je k dispozici v části hello [licencí MIT z projektu hello lokality](https://github.com/microsoft/azure-tools-for-java).
 
 > [!NOTE]
-> Je také Azure nástrojů pro integrovaného vývojového prostředí Eclipse. Další informace najdete v tématu [nástrojů Azure pro Eclipse](azure-toolkit-for-eclipse.md).
+> Je také Azure nástrojů pro hello Eclipse IDE. Další informace najdete v tématu [nástrojů Azure pro Eclipse](azure-toolkit-for-eclipse.md).
 > 
 > 
 
-## <a name="get-started-with-the-azure-toolkit-for-intellij"></a>Začínáme s Azure Toolkit pro IntelliJ
-V následujících článcích můžete začít používat Azure Toolkit pro IntelliJ:
+## <a name="get-started-with-hello-azure-toolkit-for-intellij"></a>Začínáme s hello Azure Toolkit pro IntelliJ
+Hello následující články vám pomůže začít používat hello Azure Toolkit pro IntelliJ:
 
-* [Co je nového v sadě nástrojů Azure pro IntelliJ](azure-toolkit-for-intellij-whats-new.md)
-* [Instalace sady Azure Toolkit pro IntelliJ](azure-toolkit-for-intellij-installation.md)
-* [Přihlášení pokyny pro Azure Toolkit IntelliJ](azure-toolkit-for-intellij-sign-in-instructions.md)
+* [Co je nového v hello nástrojů Azure pro IntelliJ](azure-toolkit-for-intellij-whats-new.md)
+* [Instalace hello Azure Toolkit pro IntelliJ](azure-toolkit-for-intellij-installation.md)
+* [Přihlášení pokyny pro hello Azure Toolkit IntelliJ](azure-toolkit-for-intellij-sign-in-instructions.md)
 * [Vytvoření webové aplikace Hello World pro systém Azure v rámci IntelliJ](app-service-web/app-service-web-intellij-create-hello-world-web-app.md)
 
-## <a name="use-the-azure-toolkit-for-intellij"></a>Použijte Azure sadu nástrojů pro IntelliJ
-V následujících článcích ukazují, pomocí nástrojů Azure pro IntelliJ můžete doplnit funkci Azure do vašich projektů Java:
+## <a name="use-hello-azure-toolkit-for-intellij"></a>Použití hello nástrojů Azure pro IntelliJ
+Hello následující články demonstruje použití hello Azure Toolkit pro IntelliJ tooadd Azure funkce tooyour Java projekty:
 
-* [Spravovat virtuální počítače pomocí Průzkumníku Azure pro IntelliJ](azure-toolkit-for-intellij-managing-storage-accounts-using-azure-explorer.md)
-* [Spravovat účty úložiště pomocí Průzkumníka Azure pro IntelliJ](azure-toolkit-for-intellij-managing-virtual-machines-using-azure-explorer.md)
-* [Publikování aplikace pružiny spouštěcí jako kontejner Docker pomocí nástrojů Azure pro IntelliJ](azure-toolkit-for-intellij-publish-spring-boot-docker-app.md)
-* [Publikování webové aplikace pomocí nástrojů Azure pro IntelliJ jako kontejner Docker](azure-toolkit-for-intellij-publish-as-docker-container.md)
-* [Pomocí modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření aplikací Spark pro cluster služby HDInsight Spark Linux](hdinsight/hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Správa virtuálních počítačů pomocí hello Průzkumník Azure pro IntelliJ](azure-toolkit-for-intellij-managing-storage-accounts-using-azure-explorer.md)
+* [Spravovat účty úložiště pomocí hello Průzkumník Azure pro IntelliJ](azure-toolkit-for-intellij-managing-virtual-machines-using-azure-explorer.md)
+* [Publikování aplikace pružiny spouštěcí jako kontejner Docker pomocí hello Azure Toolkit pro IntelliJ](azure-toolkit-for-intellij-publish-spring-boot-docker-app.md)
+* [Publikovat webovou aplikaci pomocí hello Azure Toolkit pro IntelliJ jako kontejner Docker](azure-toolkit-for-intellij-publish-as-docker-container.md)
+* [Pomocí modulu plug-in nástroje HDInsight pro IntelliJ IDEA toocreate aplikací Spark pro cluster služby HDInsight Spark Linux](hdinsight/hdinsight-apache-spark-intellij-tool-plugin.md)
 
 ## <a name="next-steps"></a>Další kroky
 

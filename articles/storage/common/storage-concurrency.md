@@ -1,6 +1,6 @@
 ---
-title: "Správa souběžnosti v Microsoft Azure Storage"
-description: "Jak spravovat souběžnosti pro služby objektů Blob, fronty, tabulky a soubor"
+title: "aaaManaging souběžnosti v úložišti Microsoft Azure"
+description: "Jak toomanage souběžnosti pro hello službám Blob, fronty, tabulky a souborů"
 services: storage
 documentationcenter: 
 author: jasontang501
@@ -14,47 +14,47 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
-ms.openlocfilehash: 937cca66a0af0674b868e6a87681adbea330e91c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5b8efbe0a9ebc881ded8f3abef5f138e0385f7c6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Správa souběžnosti v Microsoft Azure Storage
 ## <a name="overview"></a>Přehled
-Moderní aplikace na základě Internetu obvykle mají více uživatelů, zobrazování a aktualizace dat současně. To vyžaduje vývojáři aplikace k byste pečlivě zvážit, jak zajistit předvídatelný prostředí pro své koncové uživatele, zejména pro scénáře, kde více uživatelů můžete aktualizovat stejná data. Existují tři strategie souběžnosti hlavní data, které vývojáři obvykle zvážit:  
+Moderní aplikace na základě Internetu obvykle mají více uživatelů, zobrazování a aktualizace dat současně. To vyžaduje toothink vývojáři aplikace pečlivě o tom, jak tooprovide a předvídatelný prostředí tootheir koncovým uživatelům, zejména pro scénáře, kde můžete aktualizovat více uživatelů hello stejná data. Existují tři strategie souběžnosti hlavní data, které vývojáři obvykle zvážit:  
 
-1. Optimistickou metodu souběžného – provádění aplikace, aktualizace bude jako součást jeho aktualizace ověřte, jestli se od aplikace změnil data poslední přečíst data. Například pokud dva uživatelé zobrazení na stránce wikiwebu provádět aktualizace na stejné stránce pak platformou wiki musí zkontrolujte, že druhé aktualizace nepřepíší první aktualizace – a oba uživatele jasné, jestli jejich aktualizace proběhla úspěšně, či nikoli. Tato strategie se nejčastěji používá v webových aplikací.
-2. Pesimistické souběžnosti – aplikace vyhledávání se k provedení aktualizace bude trvat zámek objektu brání aktualizace dat, dokud se uvolní zámek jiných uživatelů. Například v případě hlavní nebo podřízený data replikace kde pouze hlavní provede aktualizace je hlavní server bude obvykle obsahovat výhradní zámek po delší dobu času na data a ujistěte se, že nikdo jiný ji aktualizuje.
-3. Poslední zapisovače služby wins – přístup, která umožňuje všechny operace aktualizace pokračovat bez ověření, pokud jiná aplikace má aktualizovat data od aplikace nejprve číst data. Tato strategie (nebo nedostatečná strategie formální) se obvykle používá kde dat rozdělena na oddíly tak, že neexistuje žádná pravděpodobnost, že více uživatelů se přístup ke stejným datům. Může také být užitečné, kde jsou zpracovávány krátkodobou datové proudy.  
+1. Optimistickou metodu souběžného – provádění aplikace, aktualizace bude jako součást jeho aktualizace ověřte, jestli se od aplikace hello změnil hello data poslední přečíst data. Například pokud dva uživatelé zobrazení na stránce wikiwebu provádět aktualizaci toohello stejné stránku hello wiki platformy musí zajistěte, aby že daná aktualizace druhý hello nepřepisuje hello první aktualizace – a jak uživatelům pochopit, jestli jejich aktualizace proběhla úspěšně, či nikoli. Tato strategie se nejčastěji používá v webových aplikací.
+2. Pesimistické souběžnosti – aplikace vyhledávání tooperform aktualizace bude trvat zámek objektu aktualizace hello dat, dokud nebude vydána hello uzamčení brání jiných uživatelů. Například ve scénáři hlavní nebo podřízený data replikace, kde pouze hlavní hello provede aktualizace hello hlavní bude obvykle obsahovat výhradní zámek pro delší dobu na tooensure hello dat, žádný jiný jeden jej aktualizovat.
+3. Poslední zapisovače služby wins – postup, který umožňuje žádné tooproceed operace aktualizace bez ověření, pokud jiná aplikace aktualizoval hello dat, vzhledem k tomu, že aplikace hello nejdřív přečíst hello data. Tato strategie (nebo nedostatečná strategie formální) se obvykle používá kde dat rozdělena na oddíly tak, že neexistuje žádná pravděpodobnost, že více uživatelů, budou přistupovat k hello stejná data. Může také být užitečné, kde jsou zpracovávány krátkodobou datové proudy.  
 
-Tento článek obsahuje přehled jak platformou Azure Storage usnadňuje vývoj díky prvotřídní podporu pro všechny tři strategie tyto souběžnosti.  
+Tento článek obsahuje přehled jak platformy Azure Storage hello usnadňuje vývoj díky prvotřídní podporu pro všechny tři strategie tyto souběžnosti.  
 
 ## <a name="azure-storage--simplifies-cloud-development"></a>Úložiště Azure – usnadňuje vývoj cloudu
-Služba úložiště Azure podporuje všechny tři strategie, i když je charakteristické v jeho schopnost poskytovat plnou podporu pro pesimistické a optimistickou metodu souběžného zpracování, protože byl navržen zapojení silnou konzistenci model, který zaručuje, že pokud Služba úložiště potvrdí vložení dat nebo operace aktualizace všechny další přistupuje na která data se zobrazí nejnovější aktualizace. Úložiště platformy, které používají model konzistence typu případné mít prodleva mezi, pokud se provádí zápis, jeden uživatel a aktualizovaná data můžete si je prohlížet ostatní uživatelé proto komplikují vývoj klientských aplikací, aby se zabránilo nekonzistence z dopad na koncové uživatele.  
+Hello služba úložiště Azure podporuje všechny tři strategie, i když je kvůli navrženou tooembrace silnou konzistenci model, který zaručuje, že když rozlišovací v jeho možnost tooprovide plnou podporu pro pesimistické a optimistickou metodu souběžného zpracování Hello potvrzení služby úložiště dat vložit nebo aktualizovat operace všechny další získá přístup k datům toothat uvidí hello nejnovější aktualizace. Úložiště platformy, které používají model konzistence typu případné mají prodleva mezi když se provádí zápis jeden uživatel a při aktualizaci hello data lze prohlížet ostatní uživatelé proto komplikují vývoj klientských aplikací v pořadí tooprevent nekonzistence z dopad na koncové uživatele.  
 
-Kromě Výběr strategie odpovídající souběžnosti musí být vývojáři taky vědět, jak úložiště platformy izoluje změn – zvlášť změny do stejného objektu napříč transakce. Služba úložiště Azure používá izolaci snímku umožňující operace čtení provést souběžně operace zápisu v rámci jednoho oddílu. Na rozdíl od jiných úrovních izolace izolaci snímku zaručuje, že všechny operace čtení najdete v části konzistentního snímku dat i když se vyskytnou aktualizace – v podstatě vrácením poslední potvrzené hodnoty při aktualizaci zpracování transakce.  
+Kromě toho tooselecting příslušné souběžnosti strategie vývojáři také měli vědět jak úložiště platformy izoluje změny – zvlášť změny toohello stejný objekt napříč transakce. Hello služba úložiště Azure používá tooallow izolace snímku číst operations toohappen souběžně operace zápisu v rámci jednoho oddílu. Na rozdíl od jiných úrovních izolace zaručuje izolaci snímku, všechny operace čtení najdete v části konzistentního snímku hello dat i během aktualizace jsou – v podstatě vrácením hello poslední potvrzené hodnoty během zpracování transakce aktualizace.  
 
 ## <a name="managing-concurrency-in-blob-storage"></a>Správa souběžnosti v úložišti objektů Blob
-Můžete se rozhodnout používat buď modely pesimistické nebo optimistickou metodu souběžného zpracování můžete spravovat přístup k objektům BLOB a kontejnerů ve službě blob. Pokud nezadáte explicitně strategie poslední zápisy wins je výchozí.  
+Můžete se taky rozhodnout toouse pesimistické nebo optimistickou metodu souběžného zpracování modelů tooblobs toomanage přístup a kontejnery v hello služby objektů blob. Pokud nezadáte explicitně strategie poslední zapíše wins je výchozí hello.  
 
 ### <a name="optimistic-concurrency-for-blobs-and-containers"></a>Optimistickou metodu souběžného pro objekty BLOB a kontejnery
-Služby úložiště přiřadí identifikátor každé objekt uložené. Tento identifikátor se aktualizuje pokaždé, když se operace aktualizace se provádí na objekt. Identifikátor je vrácen do klienta v rámci metody GET protokolu HTTP odpovědi HTTP pomocí hlavičku ETag (značky entity), který je definován v rámci protokolu HTTP. Uživatel provedení aktualizace na takový objekt může odesílat v původní značka ETag společně s podmíněným záhlaví zajistit, aby aktualizace dojde pouze pokud byla splněna určitá podmínka – v takovém případě je podmínka vyhodnocena jako hlavičku "If-Match", který vyžaduje službu úložiště t o Ujistěte se, že hodnota značka ETag zadaná v žádosti o aktualizaci je stejný jako uložené ve službě úložiště.  
+Hello služba úložiště přiřadí identifikátor objektu tooevery uložené. Tento identifikátor se aktualizuje pokaždé, když se operace aktualizace se provádí na objekt. identifikátor Hello je vrácen toohello klienta v rámci pomocí hello hlavičku Etab (značky entity), který je definován v rámci protokolu hello HTTP odpovědi HTTP GET. Uživatel provádění, může poslat aktualizaci na takového objektu v hello původní ETag společně s tooensure podmíněného hlavičky, které aktualizace se vztahuje pouze pokud byla splněna určitá podmínka – v takovém případě je podmínka hello hlavičku "If-Match", který vyžaduje hello úložiště Služba tooensure hello hodnota hello značka ETag zadaná v žádosti o aktualizaci hello je hello stejný jako příkaz, který je uložen v hello služby úložiště.  
 
-Obrys tento proces je následující:  
+Osnova Hello tohoto procesu je následující:  
 
-1. Načtení objektu blob ze služby storage, odpověď obsahuje hodnotu hlavičky protokolu HTTP ETag identifikující aktuální verze objektu ve službě úložiště.
-2. Při aktualizaci objektu blob obsahoval hodnotu značka ETag se vám zobrazila v kroku 1 **If-Match** podmíněného hlavičky požadavku odeslat do služby.
-3. Služba porovnává hodnotu ETag v žádosti se aktuální hodnota ETag objektu blob.
-4. Pokud je aktuální hodnota ETag objektu blob jinou verzi než ETag v **If-Match** podmíněného záhlaví v žádosti o službu vrátí chybu 412 klientovi. To znamená klientovi, že má jiným procesem od klienta jejím načtení aktualizace objektu blob.
-5. Pokud je aktuální hodnota ETag objektu blob stejnou verzi jako značka ETag v **If-Match** podmíněného záhlaví v žádosti o službu provede požadovanou operaci a aktualizuje aktuální hodnota ETag objektu blob ukazují, že bylo vytvořeno novou verzi.  
+1. Načtení objektu blob ze služby úložiště hello, hello odpověď obsahuje hodnotu hlavičky protokolu HTTP ETag identifikující hello aktuální verze objektu hello v úložišti služby hello.
+2. Při aktualizaci objektu blob hello zahrnují hodnota ETag hello získaný v kroku 1 v hello **If-Match** podmíněného hlavičky požadavku hello odeslat toohello služby.
+3. Služba Hello porovná hello ETag hello žádost hodnotu s hello aktuální hodnota ETag objektu hello blob.
+4. Pokud aktuální hodnota ETag hello objektu hello blob je odlišná verze, než hello ETag v hello **If-Match** podmíněného hlavičky v hello žádosti o služby hello vrátí klienta toohello 412 chyby. To znamená toohello klienta jiným procesem aktualizoval hello blob vzhledem k tomu, že jejím načtení hello klienta.
+5. Pokud hello aktuální hodnota objektu hello blob je značka ETag hello stejnou verzi jako hello ETag v hello **If-Match** provede podmíněného hlavičky v hello žádosti o služby hello hello požadovanou operaci a aktualizace hello aktuální hodnota ETag objektu hello blob tooshow, že bylo vytvořeno nové verze.  
 
-Následující (s použitím knihovny klienta úložiště 4.2.0) fragment kódu jazyka C# ukazuje jednoduchý příklad toho, jak vytvořit **AccessCondition If-Match** založená na hodnotě značka ETag, která je k němu přistupovat z vlastnosti objektu blob, která byla dříve buď Vložit ani načíst. Poté použije **AccessCondition** objektu při aktualizaci objektu blob: **AccessCondition** přidá objekt **If-Match** hlavičky k žádosti. Pokud objekt blob byl aktualizován jiným procesem, vrátí se služby objektů blob zpráva stav HTTP 412 (nezdařil se předběžnou podmínku). Si můžete stáhnout úplnou ukázku: [Správa souběžnosti použití služby Azure Storage](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
+Hello následující fragment C# (pomocí hello Klientská knihovna pro úložiště 4.2.0) ukazuje jednoduchý příklad toho, jak tooconstruct **If-Match AccessCondition** podle hello ETag hodnotu, která je k němu přistupovat z hello vlastnosti objektu blob, který byl dříve buď načtena, nebo vložené. Poté použije hello **AccessCondition** objektu při aktualizaci objektu blob hello: hello **AccessCondition** objekt přidá hello **If-Match** záhlaví toohello požadavku. Pokud objekt blob hello byl aktualizován jiným procesem, služby objektů blob hello vrátí zprávu stav HTTP 412 (nezdařil se předběžnou podmínku). Hello úplné ukázku můžete stáhnout tady: [Správa souběžnosti použití služby Azure Storage](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
 
 ```csharp
-// Retrieve the ETag from the newly created blob
+// Retrieve hello ETag from hello newly created blob
 // Etag is already populated as UploadText should cause a PUT Blob call
-// to storage blob service which returns the etag in response.
+// toostorage blob service which returns hello etag in response.
 string orignalETag = blockBlob.Properties.ETag;
 
 // This code simulates an update by a third party.
@@ -65,10 +65,10 @@ blockBlob.UploadText(helloText);
 Console.WriteLine("Blob updated. Updated ETag = {0}",
 blockBlob.Properties.ETag);
 
-// Now try to update the blob using the orignal ETag provided when the blob was created
+// Now try tooupdate hello blob using hello orignal ETag provided when hello blob was created
 try
 {
-    Console.WriteLine("Trying to update blob using orignal etag to generate if-match access condition");
+    Console.WriteLine("Trying tooupdate blob using orignal etag toogenerate if-match access condition");
     blockBlob.UploadText(helloText,accessCondition:
     AccessCondition.GenerateIfMatchCondition(orignalETag));
 }
@@ -77,16 +77,16 @@ catch (StorageException ex)
     if (ex.RequestInformation.HttpStatusCode == (int)HttpStatusCode.PreconditionFailed)
     {
         Console.WriteLine("Precondition failure as expected. Blob's orignal etag no longer matches");
-        // TODO: client can decide on how it wants to handle the 3rd party updated content.
+        // TODO: client can decide on how it wants toohandle hello 3rd party updated content.
     }
     else
         throw;
 }  
 ```
 
-Služba úložiště, jako také zahrnuje podporu pro další podmíněného záhlaví **If-upravit-Since**, **If-Unmodified-Since** a **If-None-Match** a také jejich kombinace. Další informace najdete v tématu [zadání podmíněného hlavičky pro operace služby objektů Blob](http://msdn.microsoft.com/library/azure/dd179371.aspx) na webu MSDN.  
+Hello služba úložiště, jako také zahrnuje podporu pro další podmíněného záhlaví **If-upravit-Since**, **If-Unmodified-Since** a **If-None-Match** a také jejich kombinace. Další informace najdete v tématu [zadání podmíněného hlavičky pro operace služby objektů Blob](http://msdn.microsoft.com/library/azure/dd179371.aspx) na webu MSDN.  
 
-Následující tabulka shrnuje kontejneru operace, které podmíněného hlavičky accept, jako **If-Match** v požadavku a že vrátit hodnotu ETag v odpovědi.  
+Hello následující tabulka shrnuje hello kontejneru operace, které podmíněného hlavičky accept, jako **If-Match** v hello požadavek a vrátí hodnotu, značka ETag v odpovědi hello.  
 
 | Operace | Vrátí hodnotu ETag kontejneru | Přijímá podmíněného hlavičky |
 |:--- |:--- |:--- |
@@ -100,9 +100,9 @@ Následující tabulka shrnuje kontejneru operace, které podmíněného hlavič
 | Zapůjčení kontejneru |Ano |Ano |
 | Seznam objektů BLOB |Ne |Ne |
 
-(*) Oprávnění definované SetContainerACL jsou uložené v mezipaměti a aktualizace těchto oprávnění trvat 30 sekund potřebný k šíření během nichž aktualizace nemusí být konzistentní.  
+hello oprávnění (*) je definované SetContainerACL jsou uložené v mezipaměti a oprávnění toothese aktualizace trvat 30 sekund, po které toopropagate během nichž jsou aktualizace není zaručena toobe konzistentní.  
 
-Následující tabulka shrnuje operace objektů blob, které podmíněného hlavičky accept, jako **If-Match** v požadavku a že vrátit hodnotu ETag v odpovědi.
+Hello následující tabulka shrnuje operace hello objektů blob, které podmíněného hlavičky accept, jako **If-Match** v hello požadavek a vrátí hodnotu, značka ETag v odpovědi hello.
 
 | Operace | Vrátí hodnotu ETag | Přijímá podmíněného hlavičky |
 |:--- |:--- |:--- |
@@ -123,14 +123,14 @@ Následující tabulka shrnuje operace objektů blob, které podmíněného hlav
 | Uveďte stránky |Ano |Ano |
 | Get rozsahů stránek |Ano |Ano |
 
-(*) Objekt Blob zapůjčení nezmění značku ETag na objekt blob.  
+(*) Objekt Blob zapůjčení nezmění hello ETag na objekt blob.  
 
 ### <a name="pessimistic-concurrency-for-blobs"></a>Pesimistické souběžnosti pro objekty BLOB
-Zamknout objekt blob pro výhradní použití, můžete získat [zapůjčení](http://msdn.microsoft.com/library/azure/ee691972.aspx) na něm. Když získáte zapůjčení, určíte, jak dlouho je nutné zapůjčení: to může být pro mezi 15 až 60 sekund nebo nekonečné, která dosáhne výhradní zámek. Můžete obnovit také omezené zapůjčení ji rozšířit, a můžete uvolnit všechny zapůjčení, když jste hotovi s ním. Služba objektů blob automaticky uvolní konečné zapůjčení po vypršení jejich platnosti.  
+toolock objekt blob pro výhradní použití, můžete získat [zapůjčení](http://msdn.microsoft.com/library/azure/ee691972.aspx) na něm. Když získáte zapůjčení, určíte, jak dlouho musí hello zapůjčení: to může být pro mezi 15 sekund too60 nebo nekonečné, který částky tooan výhradní zámek. Můžete obnovit konečné zapůjčení tooextend ho a vy můžete uvolnit všechny zapůjčení až skončíte s ním. služby objektů blob Hello automaticky uvolní konečné zapůjčení po vypršení jejich platnosti.  
 
-Zapůjčení povolit různých synchronizace strategie podporovaná, včetně výhradní zápis / sdílené zápisu pro čtení, výhradní / exkluzivní čtení a zápisu sdílené / číst vylučují. Tam, kde existuje zapůjčení služby úložiště vynucuje výhradní zápisy (put, nastavení a operace odstranění) ale zajistit výhradní právo pro operace čtení vyžaduje vývojáři zajistěte, aby všechny klientské aplikace používají ID zapůjčení, a že pouze jeden klient současně má ID platný zapůjčení. Operace čtení, které neobsahují výsledku ID zapůjčení sdílené čtení.  
+Zapůjčení povolit různých synchronizace strategie toobe podporována, včetně výhradní zápis / sdílené zápisu pro čtení, výhradní / exkluzivní čtení a zápisu sdílené / číst vylučují. Tam, kde existuje zapůjčení služby úložiště hello vynucuje exkluzivní zápisy (put, nastavení a operace odstranění) ale zajistit výhradní právo pro operace čtení vyžaduje tooensure vývojáře hello všechny klientské aplikace používat ID zapůjčení a že pouze jeden klient vždy má platný zapůjčení ID. Operace čtení, které neobsahují výsledku ID zapůjčení sdílené čtení.  
 
-Následující fragment C# ukazuje příklad získávání výhradní zapůjčení pro 30 sekund na objekt blob, aktualizace obsahu objektu blob a potom uvolnění zapůjčení. Pokud je již platná zapůjčení na objekt blob při pokusu o získání nového zapůjčení, služby objektů blob vrátí výsledek stav "Konflikt HTTP (409)". Následující fragment kódu používá **AccessCondition** objekt, který chcete informace o zapůjčení pro zapouzdření při zadávání požadavku k aktualizaci objektu blob ve službě úložiště.  Si můžete stáhnout úplnou ukázku: [Správa souběžnosti použití služby Azure Storage](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
+Hello C# následující fragment kódu ukazuje příklad získávání výhradní zapůjčení pro 30 sekund na objekt blob, aktualizace hello obsahu objektu hello blob a uvolněním hello zapůjčení. Pokud již existuje platný zapůjčení u objektu blob hello při pokusu o tooacquire nové zapůjčení, služby objektů blob hello vrátí výsledek stav "Konflikt HTTP (409)". používá technologie Hello následující fragment kódu **AccessCondition** objektu tooencapsulate informace o zapůjčení hello, pokud má objekt blob hello tooupdate žádosti v úložišti služby hello.  Hello úplné ukázku můžete stáhnout tady: [Správa souběžnosti použití služby Azure Storage](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -143,11 +143,11 @@ var accessCondition = AccessCondition.GenerateLeaseCondition(lease);
 blockBlob.UploadText(helloText, accessCondition: accessCondition);
 Console.WriteLine("Blob updated using an exclusive lease");
 
-//Simulate third party update to blob without lease
+//Simulate third party update tooblob without lease
 try
 {
     // Below operation will fail as no valid lease provided
-    Console.WriteLine("Trying to update blob without valid lease");
+    Console.WriteLine("Trying tooupdate blob without valid lease");
     blockBlob.UploadText("Update without lease, will fail");
 }
 catch (StorageException ex)
@@ -159,9 +159,9 @@ catch (StorageException ex)
 }  
 ```
 
-Pokud se pokusíte operaci zápisu na objekt blob zapůjčených bez předávání ID zapůjčení, požadavek selže s 412 chyby. Všimněte si, že pokud zapůjčení vyprší před voláním **UploadText** metoda ale stále předat ID zapůjčení, požadavek se také nezdaří s **412** chyby. Další informace o správě časy vypršení platnosti zapůjčení a zapůjčení ID najdete v tématu [zapůjčení Blob](http://msdn.microsoft.com/library/azure/ee691972.aspx) dokumentace k REST.  
+Když zkusíte bez předávání hello zapůjčení ID operace zápisu u zapůjčených objektu blob, hello požadavek selže s chybou 412. Všimněte si, že pokud hello zapůjčení vyprší před voláním hello **UploadText** metoda ale stále předat hello zapůjčení ID, hello požadavek také selže s **412** chyby. Další informace o správě časy vypršení platnosti zapůjčení a zapůjčení ID najdete v tématu hello [zapůjčení Blob](http://msdn.microsoft.com/library/azure/ee691972.aspx) dokumentace k REST.  
 
-Následující operace objektů blob můžete použít ke správě pesimistické souběžnosti zapůjčení:  
+Hello následující operace objektů blob můžete použít zapůjčení toomanage pesimistické souběžnosti:  
 
 * Uveďte objektů Blob
 * Získání objektu Blob
@@ -176,14 +176,14 @@ Následující operace objektů blob můžete použít ke správě pesimistické
 * Uveďte stránky
 * Get rozsahů stránek
 * Objekt Blob snímku - ID zapůjčení nepovinná, pokud existuje zapůjčení
-* Kopírování objektu Blob - ID zapůjčení vyžaduje, pokud existuje zapůjčení na cílový objekt blob
-* Abort – objekt Blob kopírování – zapůjčení ID vyžaduje, pokud existuje nekonečné zapůjčení na cílový objekt blob
+* Kopírování objektu Blob - ID zapůjčení vyžaduje, pokud existuje zapůjčení na hello cílový objekt blob
+* Abort – objekt Blob kopírování – zapůjčení ID vyžaduje, pokud existuje nekonečné zapůjčení na cílový objekt blob hello
 * Objekt Blob zapůjčení  
 
 ### <a name="pessimistic-concurrency-for-containers"></a>Pesimistické souběžnosti pro kontejnery
-Zapůjčení kontejnerům povolit stejné strategie synchronizace podporovaný jako na objekty BLOB (exkluzivní zápisu / sdílené zápisu pro čtení, výhradní / exkluzivní čtení a zápisu sdílené / číst exkluzivní) ale na rozdíl od objektů BLOB služby úložiště pouze vynucuje výhradní právo na operace odstranění. Pokud chcete odstranit kontejner s aktivní zapůjčení, klient musí obsahovat ID aktivní zapůjčení s požadavku na odstranění. Všechny ostatní operace kontejneru proběhnout úspěšně při zapůjčených kontejner bez zahrnutí ID zapůjčení v takovém případě jsou sdílené operace. Pokud se vyžaduje výhradní právo na aktualizace (put nebo sadu) nebo operací čtení pak vývojáři měli zajistěte, aby že všichni klienti používat ID zapůjčení a že jen jeden klientský současně má platný zapůjčení ID.  
+Zapůjčení kontejnerům povolit hello stejné strategie toobe synchronizace podporované jako na objekty BLOB (exkluzivní zápisu / sdílené zápisu pro čtení, výhradní / exkluzivní čtení a zápisu sdílené / číst exkluzivní) ale na rozdíl od objektů BLOB služby úložiště hello pouze vynucuje výhradního práva na operace delete. toodelete kontejner s aktivní zapůjčení, klient musí obsahovat ID aktivní zapůjčení hello se žádost o odstranění hello. Všechny ostatní operace kontejneru uspět na kontejner zapůjčených bez včetně hello zapůjčení ID v takovém případě jsou sdílené operace. Pokud se vyžaduje výhradní právo na aktualizace (put nebo sadu) nebo operací čtení pak vývojáři měli zajistěte, aby že všichni klienti používat ID zapůjčení a že jen jeden klientský současně má platný zapůjčení ID.  
 
-Následující operace kontejneru můžete použít ke správě pesimistické souběžnosti zapůjčení:  
+Hello následující operace kontejneru můžete použít zapůjčení toomanage pesimistické souběžnosti:  
 
 * Odstranit kontejner
 * Získat vlastnosti kontejneru
@@ -199,20 +199,20 @@ Další informace naleznete v tématu:
 * [Zapůjčení kontejneru](http://msdn.microsoft.com/library/azure/jj159103.aspx)
 * [Objekt Blob zapůjčení](http://msdn.microsoft.com/library/azure/ee691972.aspx)
 
-## <a name="managing-concurrency-in-the-table-service"></a>Správa souběžnost v služby Table
-Služba table používá optimistickou metodu, souběžnosti kontroly jako výchozí chování při práci s entitami, na rozdíl od služby objektů blob, kde je nutné provést kontroly optimistickou metodu souběžného explicitně vybrat. Rozdíl mezi službami tabulky a objektů blob je, že službou objektů blob můžete spravovat souběžnosti kontejnery a objekty BLOB můžete pouze spravovat souběžnosti chování entit.  
+## <a name="managing-concurrency-in-hello-table-service"></a>Správa souběžnost v hello služby Table
+služby table Hello používá optimistickou metodu, souběžnosti kontroly jako hello výchozí chování při práci s entitami, na rozdíl od služby objektů blob hello, kde je nutné explicitně zvolit tooperform optimistickou metodu souběžného kontroly. Hello jiných rozdíl mezi hello tabulky a objektů blob služby je, že můžete spravovat pouze hello souběžnosti chování entit zatímco s hello služby objektů blob můžete spravovat hello souběžnosti kontejnery a objekty BLOB.  
 
-Chcete-li použít optimistickou metodu souběžného a zkontrolovat, pokud jiný proces upravit entitu vzhledem k tomu, že jste získali z tabulky úložiště služby, můžete hodnota ETag, kterou dostanete při služby table vrátí entity. Obrys tento proces je následující:  
+optimistickou metodu souběžného toouse a toocheck Pokud jiný proces upravit entitu vzhledem k tomu, že jste získali od hello tabulka úložiště služby, můžete použít hello ETag hodnotu, kterou dostanete při služby table hello vrátí entity. Osnova Hello tohoto procesu je následující:  
 
-1. Načtení entity ze služby table storage, odpověď obsahuje hodnotu značka ETag, která identifikuje aktuální identifikátor přidružený ke dané entity v úložišti služby.
-2. Při aktualizaci entity obsahoval hodnotu ETag získaný v kroku 1 v povinné **If-Match** hlavičky požadavku odeslat do služby.
-3. Služba porovnává hodnotu ETag v žádosti se aktuální hodnota ETag entity.
-4. Pokud je aktuální hodnota ETag entity se liší od ETag v povinné **If-Match** záhlaví v žádosti o službu vrátí chybu 412 klientovi. To znamená klientovi, že má jiným procesem od klienta jejím načtení aktualizace entity.
-5. Pokud je aktuální hodnota ETag entity, která je stejná jako značka ETag v povinné **If-Match** hlavičky v požadavku nebo **If-Match** hlavička obsahuje zástupný znak (*), provede služba požadovanou operaci a aktualizuje aktuální hodnota ETag entity, která má zobrazit, že byla aktualizována.  
+1. Načtení entity ze služby úložiště table hello, hello odpověď obsahuje hodnotu značka ETag, který identifikuje hello aktuální identifikátor přidružený ke dané entity v úložišti služby hello.
+2. Při aktualizaci hello entity zahrnují hodnota ETag hello získaný v kroku 1 v hello povinné **If-Match** hlavičky požadavku hello odeslat toohello služby.
+3. Služba Hello porovná hello ETag hello žádost hodnotu s hello aktuální hodnota ETag hello entity.
+4. Pokud je aktuální hodnota ETag hello hello entity se liší od hello ETag v hello povinné **If-Match** hlavičky v hello žádosti o služby hello vrátí klienta toohello 412 chyby. To znamená toohello klienta, že má jiným procesem od klienta hello jejím načtení aktualizace hello entity.
+5. Pokud je hello hello aktuální hodnota ETag hello entity, stejně jako hello ETag v hello povinné **If-Match** hlavičky v požadavku hello nebo hello **If-Match** hlavička obsahuje hello zástupný znak (*), služba hello provede hello požadovanou operaci a aktualizace hello aktuální hodnota ETag hello entity tooshow, aby byla aktualizována.  
 
-Všimněte si, že na rozdíl od služby objektů blob služby table vyžaduje klienta zahrnout **If-Match** záhlaví v žádosti o aktualizaci. Je však možné vynutit nepodmíněné aktualizovat (poslední zapisovače wins strategie) a obejít kontrolách souběžnosti, pokud se nastaví klienta **If-Match** hlavičky k zástupný znak (*) v žádosti.  
+Všimněte si, že na rozdíl od služby objektů blob hello, vyžaduje služby table hello tooinclude klienta hello **If-Match** záhlaví v žádosti o aktualizaci. Je však možné tooforce nepodmíněné aktualizovat (poslední zapisovače wins strategie) a obejít kontrolách souběžnosti, pokud se klient hello nastaví hello **If-Match** záhlaví toohello zástupný znak (*) v žádosti o hello.  
 
-Následující fragment C# ukazuje entitu zákazníka, která byla dříve buď vytvořit nebo načíst s e-mailové adresy aktualizovat. Počáteční vložit nebo načtení operace úložiště ETag hodnoty v objektu zákazníka, a protože ukázku používá stejnou instanci objektu, když se provede operaci nahrazení, automaticky odesílá hodnota ETag zpět do služby table, povolení služby Kontrola souběžnosti porušení. Pokud jiný proces byl aktualizován entity ve službě table storage, službu vrátí zprávu stav HTTP 412 (nezdařil se předběžnou podmínku).  Si můžete stáhnout úplnou ukázku: [Správa souběžnosti použití služby Azure Storage](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
+Následující fragment kódu jazyka C# Hello ukazuje entitu zákazníka, která byla dříve buď vytvořit nebo načíst s e-mailové adresy aktualizovat. Hello počáteční vložit nebo načíst operace úložiště hello ETag hodnotu v objektu hello zákazníka a protože ukázka hello používá hello stejnou instanci objektu, když se provede hello operace nahrazování, automaticky odesílá hello ETag hodnota back toohello tabulky služby povolení hello služby toocheck pro porušení souběžnosti. Pokud jiný proces byl aktualizován hello entity ve službě table storage, vrátí se hello služby zpráva stav HTTP 412 (nezdařil se předběžnou podmínku).  Hello úplné ukázku můžete stáhnout tady: [Správa souběžnosti použití služby Azure Storage](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
 ```csharp
 try
@@ -231,13 +231,13 @@ catch (StorageException ex)
 }  
 ```
 
-Kontrola souběžnosti explicitně zakázat, byste měli nastavit **značka ETag** vlastnost **zaměstnanec** do objektu "*" před spuštěním operaci nahrazení.  
+tooexplicitly zakázat kontrolu souběžnosti hello, měli byste nastavit hello **značka ETag** vlastnost hello **zaměstnanec** objektu příliš "*" před spuštěním operaci nahrazení hello.  
 
 ```csharp
 customer.ETag = "*";  
 ```
 
-Následující tabulka shrnuje, jak používat činnosti tabulka entity ETag hodnoty:
+Hello následující tabulka shrnuje jak hello tabulka entity operations použít ETag hodnoty:
 
 | Operace | Vrátí hodnotu ETag | Vyžaduje hlavička If-Match požadavku |
 |:--- |:--- |:--- |
@@ -249,44 +249,44 @@ Následující tabulka shrnuje, jak používat činnosti tabulka entity ETag hod
 | Vložení nebo nahrazení Entity |Ano |Ne |
 | Vložení nebo sloučení Entity |Ano |Ne |
 
-Všimněte si, že **vložení nebo nahrazení Entity** a **vložení nebo sloučení Entity** provést operace *není* provést jakékoli kontrolách souběžnosti, protože se neodesílají hodnotu značky ETag do tabulky Služba.  
+Všimněte si, že hello **vložení nebo nahrazení Entity** a **vložení nebo sloučení Entity** provést operace *není* provést jakékoli kontrolách souběžnosti, protože se neodesílají hodnotu toohello značka ETag služby Table.  
 
-Obecně vývojáře, kteří používají tabulky se spoléhají na optimistickou metodu souběžného při vývoji škálovatelné aplikace. V případě potřeby pesimistické zamykání může trvat jeden ze způsobů vývojáři při přístupu k tabulky je přiřadit určený objekt blob pro každou tabulku a zkuste provést zapůjčení u objektu blob před operační v tabulce. Tento přístup vyžadují, aby se zajistit všechny cesty k datům přístup získat zapůjčení před operační v tabulce. Také Upozorňujeme, že doba minimální zapůjčení je 15 sekund, což vyžaduje pečlivě zvážit pro škálovatelnost.  
+Obecně vývojáře, kteří používají tabulky se spoléhají na optimistickou metodu souběžného při vývoji škálovatelné aplikace. V případě potřeby pesimistické zamykání jeden ze způsobů vývojáři můžou při přístupu k tabulek je tooassign určený objekt blob pro každou tabulku a zkuste tootake zapůjčení u objektu blob hello před operační v tabulce hello. Tento přístup nevyžaduje tooensure aplikace hello všechny přístup k datům cesty získat hello zapůjčení předchozí toooperating v tabulce hello. Nezapomeňte také, že hello zapůjčení minimální doba je 15 sekund což vyžaduje, aby pečlivě zvážit pro škálovatelnost.  
 
 Další informace naleznete v tématu:  
 
 * [Operace na entity](http://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
-## <a name="managing-concurrency-in-the-queue-service"></a>Správa souběžnost v služby front
-Jeden scénář, ve které souběžnosti je problém v rámci služby Řízení front služby je, kde jsou více klientů načítání zpráv z fronty. Pokud zpráva se načítají z fronty, odpověď obsahuje zprávu a hodnotu pop přijetí, která je potřeba odstranit zprávy. Zpráva není automaticky odstraněn z fronty, ale po byl načteny, se nezobrazuje pro ostatní klienty pro časový interval určený parametrem visibilitytimeout. Očekává se, že klienta, který načte zprávu zprávu odstranit po jeho zpracování a před časem určeného TimeNextVisible element odpovědi, které se počítá na základě hodnoty parametru visibilitytimeout. Čas načtení zprávy k určení hodnoty TimeNextVisible je přidána hodnota visibilitytimeout.  
+## <a name="managing-concurrency-in-hello-queue-service"></a>Správa souběžnost v hello služby front
+Jeden scénář, ve které souběžnosti je důležitou roli v hello služby Řízení front služby je, kde jsou více klientů načítání zpráv z fronty. Pokud zpráva se načítají z fronty hello, hello odpověď obsahuje uvítací zprávu a hodnotu pop přijetí, která je požadovaná toodelete uvítací zprávu. uvítací zprávu není automaticky odstraněn z hello fronty, ale po byl načteny, není viditelné tooother klientů pro hello časový interval určený parametrem visibilitytimeout hello. Hello klienta, který načte zprávu hello je očekávané toodelete uvítací zprávu po jeho zpracování a před hello času určeného hello TimeNextVisible element hello odpovědi, které se počítá na základě hodnoty hello hello visibilitytimeout parametr. Hodnota Hello visibilitytimeout je přidaná toohello čas, na které hello zprávu načíst hodnotu hello toodetermine TimeNextVisible.  
 
-Služba fronty nemá podpora souběžnosti optimistické nebo pesimistické a pro tento důvod klienti zpracování zpráv z fronty načíst by měl zajistěte, aby způsobem idempotent zpracování zpráv. Strategie poslední wins zapisovače se používá pro operace aktualizace, jako je například SetQueueServiceProperties, SetQueueMetaData, SetQueueACL a UpdateMessage.  
+Služba front Hello nemá podpora souběžnosti optimistické nebo pesimistické a pro tento důvod klienti zpracování zpráv z fronty načíst by měl zajistěte, aby způsobem idempotent zpracování zpráv. Strategie poslední wins zapisovače se používá pro operace aktualizace, jako je například SetQueueServiceProperties, SetQueueMetaData, SetQueueACL a UpdateMessage.  
 
 Další informace naleznete v tématu:  
 
 * [Rozhraní API REST služby fronty](http://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [Získávání zpráv](http://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
-## <a name="managing-concurrency-in-the-file-service"></a>Správa souběžnost v služba souborů
-Služba souborů je přístupný pomocí dva koncové body jiný protokol – protokolu SMB a REST. Službu REST nemá podporu pro optimistické zamykání nebo pesimistické zamykání a všechny aktualizace bude postupovat podle strategie poslední zapisovače služby wins. Klienti SMB, které připojení sdílené složky můžete využít soubor systému uzamčení mechanismy můžete spravovat přístup ke sdíleným souborům – včetně schopnost provádět pesimistické zamykání. Když klienti SMB otevře soubor, určuje, jak se přístup k souborům a sdílení režimu. Nastavení možnosti přístup k souborům "Zápisu" nebo "Pro čtení a zápis" spolu s režimem sdílené složky "Žádný" bude v souboru je uzamčený klienti SMB, dokud soubor zavřený. Pokud dojde k pokusu o souboru, kde klienti SMB má soubor uzamčen operaci REST ve službě REST vrátí stavový kód 409 (konflikt) s kódem chyby SharingViolation.  
+## <a name="managing-concurrency-in-hello-file-service"></a>Správa souběžnost v hello služba souborů
+Služba souborů Hello lze přistupovat pomocí dva koncové body jiný protokol – protokolu SMB a REST. Hello služby REST nemá podporu pro optimistické zamykání nebo pesimistické zamykání a všechny aktualizace bude postupovat podle strategie poslední zapisovače služby wins. Klienti SMB, které připojení sdílené složky můžete využít systémových uzamčení mechanismy toomanage přístup tooshared souborů – včetně hello možnost tooperform pesimistické zamykání. Když klienti SMB otevře soubor, určuje hello přístup k souborům a sdílenou složku režimu. Nastavení přístup k souborům možnost "Zápisu" nebo "Pro čtení a zápis" spolu s režimem sdílené složky "Žádný" bude mít za následek hello souboru je uzamčený klienti SMB, dokud hello soubor se zavřel. Pokud dojde k pokusu o souboru, kde klienti SMB má hello soubor uzamčen operace REST hello služby REST vrátí stavový kód 409 (konflikt) s kódem chyby SharingViolation.  
 
-Když klienti SMB otevře soubor pro odstranění, označí soubor jako čekající na vyřízení odstranit, dokud všechny ostatní klienty protokolu SMB jsou uzavřeny otevřenými popisovači v souboru. Když soubor je označen jako čekající na odstranění, všechny operace REST u tohoto souboru vrátí stavový kód 409 (konflikt) s kódem chyby SMBDeletePending. Stavový kód 404 (není nalezena) nevrátí, protože je to možné, odeberte příznak čeká na odstranění před zavírání souboru klientovi SMB. Jinými slovy stavový kód 404 (není nalezena) se očekávají jenom, když soubor byl odebrán. Všimněte si, že soubor je v SMB čeká na odstranění stavu, nebude zahrnutý ve výsledcích seznamu souborů. Všimněte si také, že operace REST odstranit soubor a odstraňte adresář REST se potvrdí atomicky a nezpůsobovalo ve stavu čeká na odstraňování.  
+Když klienti SMB otevře soubor pro odstranění, označí hello soubor jako čekající na vyřízení odstranit, dokud všechny ostatní klienty protokolu SMB jsou uzavřeny otevřenými popisovači v souboru. Když soubor je označen jako čekající na odstranění, všechny operace REST u tohoto souboru vrátí stavový kód 409 (konflikt) s kódem chyby SMBDeletePending. Stavový kód 404 (není nalezena) nevrátí, protože je to možné, hello SMB klienta tooremove hello čeká na odstranění příznak předchozí tooclosing hello souboru. Jinými slovy stavový kód 404 (není nalezena) se očekávají jenom, když hello soubor byl odebrán. Všimněte si, že době souboru v SMB čeká na odstranění stavu, ho nebude součástí hello soubory seznamu výsledků. Všimněte si také, že operace REST odstranit soubor a odstraňte adresář REST hello se potvrdí atomicky a nezpůsobovalo ve stavu čeká na odstraňování.  
 
 Další informace naleznete v tématu:  
 
 * [Správa souborů zamkne](http://msdn.microsoft.com/library/azure/dn194265.aspx)  
 
 ## <a name="summary-and-next-steps"></a>Souhrn a další kroky
-Služby Microsoft Azure Storage byly navržené tak, aby vyhovovaly nejsložitější online aplikace bez vynucení vývojářům ohrozit nebo přehodnotit předpoklady klíče návrh například souběžnosti a konzistenci dat, který se má provést pro oprávnění.  
+Hello byla služba Microsoft Azure Storage určené toomeet hello potřebám hello nejsložitější online aplikace bez vynucení vývojáři toocompromise nebo přehodnotit klíče návrhu předpoklady například konzistence souběžnosti a data budou pocházet tootake pro oprávnění.  
 
-Pro dokončení ukázkovou aplikaci, kterou se odkazuje v tomto blogu:  
+Pro hello proveďte ukázkovou aplikaci, kterou se odkazuje v tomto blogu:  
 
 * [Správa souběžnosti použití služby Azure Storage – ukázková aplikace](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
 
 Další informace o Azure Storage najdete v tématu:  
 
 * [Microsoft Azure Storage domovské stránky](https://azure.microsoft.com/services/storage/)
-* [Úvod do Azure Storage](storage-introduction.md)
+* [Úvod tooAzure úložiště](storage-introduction.md)
 * Začínáme se Storage [Blob](../blobs/storage-dotnet-how-to-use-blobs.md), [tabulky](../../cosmos-db/table-storage-how-to-use-dotnet.md), [fronty](../storage-dotnet-how-to-use-queues.md), a [soubory](../storage-dotnet-how-to-use-files.md)
 * Architektura úložiště – [Azure Storage: vysoce dostupný Cloudová služba úložiště se silnou konzistenci](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

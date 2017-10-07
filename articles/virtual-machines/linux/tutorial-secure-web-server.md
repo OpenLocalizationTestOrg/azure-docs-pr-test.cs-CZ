@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení webového serveru pomocí certifikátů SSL v Azure | Microsoft Docs"
-description: "Zjistěte, jak zabezpečit NGINX webového serveru pomocí certifikátů SSL na virtuální počítač s Linuxem v Azure"
+title: "aaaSecure certifikáty webového serveru pomocí protokolu SSL v Azure | Microsoft Docs"
+description: "Zjistěte, jak certifikáty toosecure hello NGINX webového serveru pomocí protokolu SSL na virtuální počítač s Linuxem v Azure"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,40 +16,40 @@ ms.workload: infrastructure
 ms.date: 07/17/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 181be35aeb61020db3abaeba22aa882848923c31
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d3a62d77ac05c9aa2a44356b7c8e44cb485b81aa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="secure-a-web-server-with-ssl-certificates-on-a-linux-virtual-machine-in-azure"></a>Zabezpečení webového serveru pomocí certifikátů SSL na virtuální počítač s Linuxem v Azure
-Pro zabezpečení webové servery, certifikát později SSL (Secure Sockets) slouží k šifrování webový provoz. Tyto certifikáty SSL můžou být uložená v Azure Key Vault a povolit zabezpečená nasazení certifikátů na virtuálních počítačích (VM) s Linuxem v Azure. V tomto kurzu se naučíte:
+toosecure webových serverů, může být certifikát později SSL (Secure Sockets) používá tooencrypt webový provoz. Tyto certifikáty SSL můžou být uložená v Azure Key Vault a povolit zabezpečená nasazení certifikátů tooLinux virtuálních počítačů (VM) v Azure. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření Azure Key Vault
-> * Generovat nebo nahrajte certifikát do služby Key Vault
-> * Vytvoření virtuálního počítače a nainstalovat webový server NGINX
-> * Vložit certifikát do virtuálního počítače a konfigurace NGINX s vazbou SSL
+> * Generovat nebo nahrát certifikát toohello Key Vault
+> * Vytvoření virtuálního počítače a instalaci hello NGINX webového serveru
+> * Vložit hello certifikát do hello virtuálního počítače a konfigurace NGINX s vazbou SSL
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud si zvolíte instalaci a použití rozhraní příkazového řádku místně, tento kurz vyžaduje, že používáte Azure CLI verze verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).  
+Pokud zvolíte tooinstall a místně pomocí hello rozhraní příkazového řádku, tento kurz vyžaduje, že používáte verzi rozhraní příkazového řádku Azure hello verze 2.0.4 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli).  
 
 
 ## <a name="overview"></a>Přehled
-Azure Key Vault chrání kryptografické klíče a tajné klíče, tyto certifikáty a hesla. Key Vault pomáhá zjednodušit proces správy certifikátů a zajišťuje vám kontrolu nad klíči, které přístup těchto certifikátů. Můžete vytvořit certifikát podepsaný svým držitelem v Key Vault nebo nahrát certifikát existující, důvěryhodné, který už vlastníte.
+Azure Key Vault chrání kryptografické klíče a tajné klíče, tyto certifikáty a hesla. Key Vault pomáhá zjednodušit proces správy certifikátů hello a umožní vám toomaintain kontrolu nad klíči, které přístup těchto certifikátů. Můžete vytvořit certifikát podepsaný svým držitelem v Key Vault nebo nahrát certifikát existující, důvěryhodné, který už vlastníte.
 
-Místo použití vlastní image virtuálního počítače, který zahrnuje certifikáty zaručená v, vložit certifikáty do spuštěného virtuálního počítače. Tento proces zajišťuje, že nejaktuálnější certifikáty jsou nainstalovány na webovém serveru během nasazení. Je-li obnovit nebo nahradit certifikát, nemáte také vytvořit novou vlastní imagi virtuálního počítače. Nejnovější certifikáty jsou automaticky vložit, jako je vytváření dalších virtuálních počítačů. Během celého procesu certifikáty nikdy nechte platformy Azure nebo jsou viditelné ve skriptu, historie příkazového řádku nebo šablony.
+Místo použití vlastní image virtuálního počítače, který zahrnuje certifikáty zaručená v, vložit certifikáty do spuštěného virtuálního počítače. Tento proces zajišťuje instalaci hello nejaktuálnější certifikáty na webovém serveru během nasazení. Je-li obnovit nebo nahradit certifikát, také nemáte toocreate novou vlastní bitovou kopii virtuálního počítače. Hello nejnovější certifikáty jsou automaticky vložit, jako je vytváření dalších virtuálních počítačů. Během celého procesu hello nikdy certifikáty hello nechte hello platformy Azure nebo jsou viditelné ve skriptu, historie příkazového řádku nebo šablony.
 
 
 ## <a name="create-an-azure-key-vault"></a>Vytvoření Azure Key Vault
-Před vytvořením Key Vault a certifikáty, vytvořte skupinu prostředků s [vytvořit skupinu az](/cli/azure/group#create). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupSecureWeb* v *eastus* umístění:
+Před vytvořením Key Vault a certifikáty, vytvořte skupinu prostředků s [vytvořit skupinu az](/cli/azure/group#create). Hello následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupSecureWeb* v hello *eastus* umístění:
 
 ```azurecli-interactive 
 az group create --name myResourceGroupSecureWeb --location eastus
 ```
 
-Dále vytvořte Key Vault s [vytvořit az keyvault](/cli/azure/keyvault#create) a povolit pro použití při nasazení virtuálního počítače. Každý Key Vault vyžaduje jedinečný název a musí být všechny malá písmena. Nahraďte  *<mykeyvault>*  v následujícím příkladu se svůj vlastní jedinečný název pro Key Vault:
+Dále vytvořte Key Vault s [vytvořit az keyvault](/cli/azure/keyvault#create) a povolit pro použití při nasazení virtuálního počítače. Každý Key Vault vyžaduje jedinečný název a musí být všechny malá písmena. Nahraďte  *<mykeyvault>*  v hello následující příklad s svůj vlastní jedinečný název pro Key Vault:
 
 ```azurecli-interactive 
 keyvault_name=<mykeyvault>
@@ -60,7 +60,7 @@ az keyvault create \
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>Vygenerování certifikátu a uložit v Key Vault
-Pro použití v provozním prostředí, měli byste importovat platný certifikát podepsaný službou důvěryhodného zprostředkovatele s [import certifikátu keyvault az](/cli/azure/certificate#import). V tomto kurzu následující příklad ukazuje, jak můžete vygenerovat certifikát podepsaný svým držitelem s [vytvoření certifikátu keyvault az](/cli/azure/certificate#create) používající výchozí zásady certifikátu:
+Pro použití v provozním prostředí, měli byste importovat platný certifikát podepsaný službou důvěryhodného zprostředkovatele s [import certifikátu keyvault az](/cli/azure/certificate#import). V tomto kurzu hello následující příklad ukazuje, jak můžete vygenerovat certifikát podepsaný svým držitelem s [vytvoření certifikátu keyvault az](/cli/azure/certificate#create) používající zásady certifikátů výchozí hello:
 
 ```azurecli-interactive 
 az keyvault certificate create \
@@ -70,7 +70,7 @@ az keyvault certificate create \
 ```
 
 ### <a name="prepare-a-certificate-for-use-with-a-vm"></a>Příprava certifikát pro použití s virtuálního počítače
-K použití certifikátu během virtuálního počítače vytvořit proces, získat číslo ID vašeho certifikátu s [az keyvault verze sdíleného tajného klíče seznam-](/cli/azure/keyvault/secret#list-versions). Převést certifikát s [az virtuálních počítačů formát secret](/cli/azure/vm#format-secret). Následující příklad přiřadí proměnné pro snadné použití v dalších krocích výstup z těchto příkazů:
+certifikát hello toouse během hello virtuálního počítače vytvořit proces, získejte hello ID vašeho certifikátu s [az keyvault verze sdíleného tajného klíče seznam-](/cli/azure/keyvault/secret#list-versions). Převést hello certifikát s [az virtuálních počítačů formát secret](/cli/azure/vm#format-secret). Následující ukázka Hello přiřadí výstup hello toovariables tyto příkazy pro snadné použití v hello další kroky:
 
 ```azurecli-interactive 
 secret=$(az keyvault secret list-versions \
@@ -80,12 +80,12 @@ secret=$(az keyvault secret list-versions \
 vm_secret=$(az vm format-secret --secret "$secret")
 ```
 
-### <a name="create-a-cloud-init-config-to-secure-nginx"></a>Vytvoření konfigurace cloudu init zabezpečit NGINX
-[Init cloudu](https://cloudinit.readthedocs.io) je často používaný přístup k přizpůsobení virtuálního počítače s Linuxem, jako při prvním spuštění. Init cloudu můžete použít k instalaci balíčků a zapisovat soubory nebo konfigurace zabezpečení a uživatelů. Init cloudu běží během úvodního spouštění, nejsou žádné další kroky nebo požadované agenty použít konfiguraci.
+### <a name="create-a-cloud-init-config-toosecure-nginx"></a>Vytvoření toosecure konfigurace cloudu init NGINX
+[Init cloudu](https://cloudinit.readthedocs.io) je často používaný přístup toocustomize virtuálního počítače s Linuxem jako spustí pro hello poprvé. Můžete používat cloudové init tooinstall balíčky a zapisovat soubory, nebo tooconfigure uživatele a zabezpečení. Init cloudu běží během počáteční spouštění hello, neexistují žádné další kroky nebo požadováno agenty tooapply konfiguraci.
 
-Když vytvoříte virtuální počítač, certifikáty a klíče jsou uložené v chráněného */var/lib/příkazwaagent/* adresáře. Pokud chcete automatizovat certifikát se přidává do virtuálního počítače a konfigurace webového serveru, použijte init cloudu. V tomto příkladu jsme nainstalujte a nakonfigurujte NGINX webový server. Stejný postup můžete použít k instalaci a konfiguraci Apache. 
+Když vytvoříte virtuální počítač, certifikáty a klíče jsou uložené v hello chráněné */var/lib/příkazwaagent/* adresáře. Přidání tooautomate hello certifikát toohello virtuálního počítače a konfigurace hello webový server, použijte cloudu init. V tomto příkladu jsme nainstalujte a nakonfigurujte hello NGINX webový server. Můžete použít hello stejné zpracovat tooinstall a nakonfigurujte Apache. 
 
-Vytvořte soubor s názvem *cloudu init webové server.txt* a vložte následující konfiguraci:
+Vytvořte soubor s názvem *cloudu init webové server.txt* a hello vložte následující konfigurace:
 
 ```yaml
 #cloud-config
@@ -110,7 +110,7 @@ runcmd:
 ```
 
 ### <a name="create-a-secure-vm"></a>Vytvoření zabezpečeného virtuálního počítače
-Teď vytvořte virtuální počítač s [vytvořit virtuální počítač az](/cli/azure/vm#create). Data certifikátu je vložili z trezoru klíčů `--secrets` parametr. Předáte v konfiguraci cloudu init s `--custom-data` parametr:
+Teď vytvořte virtuální počítač s [vytvořit virtuální počítač az](/cli/azure/vm#create). data certifikátu Hello je vložili z Key Vault s hello `--secrets` parametr. V konfiguraci cloudu init hello s hello předáte `--custom-data` parametr:
 
 ```azurecli-interactive 
 az vm create \
@@ -123,9 +123,9 @@ az vm create \
     --secrets "$vm_secret"
 ```
 
-Trvá několik minut pro virtuální počítač, který se má vytvořit, balíčky určené k instalaci a aplikaci spusťte. Po vytvoření virtuálního počítače, poznamenejte si `publicIpAddress` zobrazí pomocí rozhraní příkazového řádku Azure. Tato adresa se používá k přístupu k webu ve webovém prohlížeči.
+Jak dlouho trvá několik minut, než toobe hello virtuálního počítače vytvořena, hello balíčky tooinstall a toostart aplikace hello. Po vytvoření hello virtuálních počítačů, poznamenejte si hello `publicIpAddress` zobrazí hello rozhraní příkazového řádku Azure. Tato adresa je použité tooaccess váš web ve webovém prohlížeči.
 
-Povolit zabezpečený webový provoz připojit virtuální počítač, otevřete port 443 z Internetu s [az virtuálních počítačů open-port](/cli/azure/vm#open-port):
+tooallow zabezpečit webové přenosy tooreach virtuální počítač, otevřete port 443 ze hello Internet s [az virtuálních počítačů open-port](/cli/azure/vm#open-port):
 
 ```azurecli-interactive 
 az vm open-port \
@@ -135,27 +135,27 @@ az vm open-port \
 ```
 
 
-### <a name="test-the-secure-web-app"></a>Testování zabezpečení webové aplikace
-Nyní můžete otevřít webový prohlížeč a zadejte *https://<publicIpAddress>*  na panelu Adresa. Zadejte vlastní veřejná IP adresa z virtuálního počítače vytvořit proces. Pokud použijete certifikát podepsaný svým držitelem, přijměte upozornění zabezpečení:
+### <a name="test-hello-secure-web-app"></a>Testování hello zabezpečení webové aplikace
+Nyní můžete otevřít webový prohlížeč a zadejte *https://<publicIpAddress>*  v panelu Adresa hello. Zadejte vlastní veřejná IP adresa z hello virtuálního počítače vytvořit proces. Přijměte upozornění zabezpečení hello, pokud se používá certifikát podepsaný svým držitelem:
 
 ![Přijetí upozornění zabezpečení webového prohlížeče](./media/tutorial-secure-web-server/browser-warning.png)
 
-Zabezpečené NGINX webu se následně zobrazí jako v následujícím příkladu:
+Zabezpečené NGINX webu se následně zobrazí jako hello následující ukázka:
 
 ![Zobrazit spuštěná zabezpečené NGINX Web](./media/tutorial-secure-web-server/secured-nginx.png)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu webového serveru se službou NGINX zabezpečená certifikátem SSL uložené v Azure Key Vault. Jste se dozvěděli, jak na:
+V tomto kurzu webového serveru se službou NGINX zabezpečená certifikátem SSL uložené v Azure Key Vault. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Vytvoření Azure Key Vault
-> * Generovat nebo nahrajte certifikát do služby Key Vault
-> * Vytvoření virtuálního počítače a nainstalovat webový server NGINX
-> * Vložit certifikát do virtuálního počítače a konfigurace NGINX s vazbou SSL
+> * Generovat nebo nahrát certifikát toohello Key Vault
+> * Vytvoření virtuálního počítače a instalaci hello NGINX webového serveru
+> * Vložit hello certifikát do hello virtuálního počítače a konfigurace NGINX s vazbou SSL
 
-Tento odkaz zobrazíte ukázky skriptu předdefinovaných virtuálního počítače.
+Použijte tento odkaz toosee předem vytvořené ukázky skript virtuálního počítače.
 
 > [!div class="nextstepaction"]
 > [Ukázky skriptu Windows virtuálního počítače](./cli-samples.md)

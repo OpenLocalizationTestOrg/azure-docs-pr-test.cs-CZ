@@ -1,6 +1,6 @@
 ---
-title: "Jak používat Azure Mobile Apps SDK pro Android | Microsoft Docs"
-description: "Jak používat Azure Mobile Apps SDK pro Android"
+title: aaaHow toouse hello Azure Mobile Apps SDK pro Android | Microsoft Docs
+description: Jak toouse hello Azure Mobile Apps SDK pro Android
 services: app-service\mobile
 documentationcenter: android
 author: ggailey777
@@ -13,46 +13,46 @@ ms.devlang: java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: glenga
-ms.openlocfilehash: 4b15d024ca6d5bbafe83d321a64021aecd78c4a8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 56eb73c4e1703d69877be499a09fc2130f1d68e0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Jak používat Azure Mobile Apps SDK pro Android
+# <a name="how-toouse-hello-azure-mobile-apps-sdk-for-android"></a>Jak toouse hello Azure Mobile Apps SDK pro Android
 
-Tento průvodce vám ukáže, jak používat klienta Android SDK pro Mobile Apps k implementaci běžné scénáře, jako například:
+Tento průvodce vám ukáže, jak toouse hello Android klienta SDK pro Mobile Apps tooimplement běžné scénáře, jako například:
 
 * Dotazování na data (vložení, aktualizace a odstranění).
 * Ověřování.
 * Zpracování chyb.
-* Vlastní nastavení klienta.
+* Přizpůsobení hello klienta.
 
-Tato příručka se zaměřuje na straně klienta SDK pro Android.  Další informace o serverové sady SDK pro Mobile Apps naleznete v tématu [pracovat s .NET back-end SDK] [ 10] nebo [použití back-end Node.js SDK][11].
+Tato příručka se zaměřuje na hello klientské sady SDK pro Android.  Další informace o hello serverové sady SDK pro Mobile Apps naleznete v tématu toolearn [pracovat s .NET back-end SDK] [ 10] nebo [jak toouse hello back-end Node.js SDK] [ 11].
 
 ## <a name="reference-documentation"></a>Referenční dokumentace
 
-Můžete najít [referenční dokumentace rozhraní API Javadocs] [ 12] Android klientské knihovny na Githubu.
+Můžete najít hello [referenční dokumentace rozhraní API Javadocs] [ 12] pro Android klientské knihovny hello na Githubu.
 
 ## <a name="supported-platforms"></a>Podporované platformy
 
-Azure Mobile Apps SDK pro Android podporuje rozhraní API úrovně 19 až 24 (KitKat prostřednictvím cukrovinkách typu nugát) pro telefon i tablet velikostem.  Ověřování, zejména využívá běžně webové framework získat přihlašovací údaje.  Ověřování serveru toku nefunguje s malé formuláře Multi-Factor zařízení, jako jsou sleduje.
+Hello Azure Mobile Apps SDK pro Android podporuje rozhraní API úrovně 19 až 24 (KitKat prostřednictvím cukrovinkách typu nugát) pro telefon i tablet velikostem.  Ověřování, zejména využívá běžné webové framework přístup toogather přihlašovací údaje.  Ověřování serveru toku nefunguje s malé formuláře Multi-Factor zařízení, jako jsou sleduje.
 
 ## <a name="setup-and-prerequisites"></a>Instalační program a požadavky
 
-Dokončení [využít postup rychlého spuštění Mobile Apps](app-service-mobile-android-get-started.md) kurzu.  Tato úloha zajistí, že byly splněny všechny požadavky pro Azure Mobile Apps pro vývoj.  Rychlý Start také vám pomůže nakonfigurovat svůj účet a vytvoření vaší první back-endu mobilní aplikace.
+Dokončení hello [využít postup rychlého spuštění Mobile Apps](app-service-mobile-android-get-started.md) kurzu.  Tato úloha zajistí, že byly splněny všechny požadavky pro Azure Mobile Apps pro vývoj.  Hello rychlý start také vám pomůže nakonfigurovat svůj účet a vytvoření vaší první back-endu mobilní aplikace.
 
-Pokud se rozhodnete není k dokončení tohoto kurzu rychlý start, proveďte následující úlohy:
+Pokud se rozhodnete není toocomplete hello rychlý úvodní kurz, dokončete hello následující úlohy:
 
-* [Vytvořte back-end mobilní aplikace] [ 13] pro použití s aplikací systému Android.
-* V nástroji Android Studio [aktualizace Gradle sestavení souborů](#gradle-build).
+* [Vytvořte back-end mobilní aplikace] [ 13] toouse s vaší aplikací pro Android.
+* V nástroji Android Studio [aktualizace hello Gradle sestavení souborů](#gradle-build).
 * [Povolit oprávnění internet](#enable-internet).
 
-### <a name="gradle-build"></a>Aktualizovat soubor sestavení Gradle
+### <a name="gradle-build"></a>Aktualizace hello Gradle vytvoření souboru
 
 Obě změnit **build.gradle** soubory:
 
-1. Přidejte tento kód, který *projektu* úroveň **build.gradle** souboru uvnitř *buildscript* značky:
+1. Přidejte tento kód toohello *projektu* úroveň **build.gradle** souboru uvnitř hello *buildscript* značky:
 
     ```text
     buildscript {
@@ -62,17 +62,17 @@ Obě změnit **build.gradle** soubory:
     }
     ```
 
-2. Přidejte tento kód, který *modulu aplikace* úroveň **build.gradle** souboru uvnitř *závislosti* značky:
+2. Přidejte tento kód toohello *modulu aplikace* úroveň **build.gradle** souboru uvnitř hello *závislosti* značky:
 
     ```text
     compile 'com.microsoft.azure:azure-mobile-android:3.3.0'
     ```
 
-    Nejnovější verze je aktuálně 3.3.0. Podporované verze jsou uvedeny [na panelu koše][14].
+    Aktuálně hello nejnovější verze je 3.3.0. Hello podporované verze jsou uvedeny [na panelu koše][14].
 
 ### <a name="enable-internet"></a>Povolit oprávnění internet
 
-Pro přístup k Azure, vaše aplikace musí mít povolené oprávnění Internetu. Pokud ještě není povolené, přidejte následující řádek kódu do vaší **AndroidManifest.xml** souboru:
+tooaccess Azure, aplikace musí mít povolené oprávnění INTERNET hello. Pokud ještě není povolené, přidejte následující řádek kódu tooyour hello **AndroidManifest.xml** souboru:
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
@@ -80,26 +80,26 @@ Pro přístup k Azure, vaše aplikace musí mít povolené oprávnění Internet
 
 ## <a name="create-a-client-connection"></a>Umožňuje vytvořit připojení klienta
 
-Azure Mobile Apps poskytuje čtyři funkce pro mobilní aplikace:
+Azure Mobile Apps poskytuje čtyři funkce tooyour mobilních aplikací:
 
 * Přístup k datům a Offline synchronizace s služby mobilní aplikace Azure.
-* Volání rozhraní API vlastní napsané pomocí Azure Mobile Apps Server SDK.
+* Volání rozhraní API vlastní napsané pomocí hello Azure Mobile Apps Server SDK.
 * Ověřování pomocí služby Azure App Service ověřování a autorizace.
 * Registrace nabízených oznámení v Notification Hubs.
 
-Každá z těchto funkcí vyžaduje nejprve vytvoření `MobileServiceClient` objektu.  Pouze jeden `MobileServiceClient` objekt by měl být vytvořen v rámci vašeho mobilního klienta (to znamená, musí být Singleton vzor).  Chcete-li vytvořit `MobileServiceClient` objektu:
+Každá z těchto funkcí vyžaduje nejprve vytvoření `MobileServiceClient` objektu.  Pouze jeden `MobileServiceClient` objekt by měl být vytvořen v rámci vašeho mobilního klienta (to znamená, musí být Singleton vzor).  toocreate `MobileServiceClient` objektu:
 
 ```java
 MobileServiceClient mClient = new MobileServiceClient(
-    "<MobileAppUrl>",       // Replace with the Site URL
+    "<MobileAppUrl>",       // Replace with hello Site URL
     this);                  // Your application Context
 ```
 
-`<MobileAppUrl>` Je řetězec nebo objekt adresy URL, která odkazuje na vaše mobilní back-end.  Pokud používáte Azure App Service k hostování vaší mobilní back-end, pak se ujistěte, můžete použít zabezpečené `https://` verze adresy URL.
+Hello `<MobileAppUrl>` je řetězec nebo objekt adresy URL, která bodů mobilního back-endu tooyour.  Pokud používáte Azure App Service toohost mobilního back-endu, pak se ujistěte, použijte zabezpečené hello `https://` verze hello adresy URL.
 
-Klient taky vyžaduje přístup k aktivity nebo kontextu - `this` parametr v příkladu.  Měly by během proběhnout konstrukce MobileServiceClient `onCreate()` metoda aktivity odkazuje v `AndroidManifest.xml` souboru.
+Hello klient také vyžaduje přístup toohello aktivity nebo kontextu - hello `this` parametr v příkladu hello.  měly by během hello proběhnout Hello konstrukce MobileServiceClient `onCreate()` metoda hello aktivity odkazuje v hello `AndroidManifest.xml` souboru.
 
-Jako osvědčený postup by měl abstraktní komunikace serveru do vlastní třídy (singleton-pattern).  V takovém případě by měla předávat aktivitu v rámci konstruktoru správně nakonfigurovat službu.  Například:
+Jako osvědčený postup by měl abstraktní komunikace serveru do vlastní třídy (singleton-pattern).  V takovém případě by měla předávat hello aktivity v rámci hello konstruktor tooappropriately konfigurace služby hello.  Například:
 
 ```java
 package com.example.appname.services;
@@ -141,21 +141,21 @@ public AzureServiceAdapter {
 }
 ```
 
-Nyní můžete volat `AzureServiceAdapter.Initialize(this);` v `onCreate()` metoda hlavní činnosti.  Žádné jiné metody potřebovali mít přístup k použití klienta `AzureServiceAdapter.getInstance();` získat odkaz na službu adaptéru.
+Nyní můžete volat `AzureServiceAdapter.Initialize(this);` v hello `onCreate()` metoda hlavní činnosti.  Použít jiné metody, kteří potřebují přístup toohello klienta `AzureServiceAdapter.getInstance();` tooobtain adaptérem odkaz toohello služby.
 
 ## <a name="data-operations"></a>Operace s daty
 
-Základní sady Azure Mobile Apps SDK je poskytnout přístup k datům uloženým v rámci SQL Azure na back-end mobilní aplikace.  Můžete přístup k těmto datům pomocí silného typu třídy (doporučeno) nebo netypová dotazy (nedoporučuje se).  Hromadným Tato část se zabývá pomocí třídy silného typu.
+Hello jádrem hello Azure Mobile Apps SDK je toodata tooprovide přístup na back-end mobilní aplikace hello uložená v SQL Azure.  Můžete přístup k těmto datům pomocí silného typu třídy (doporučeno) nebo netypová dotazy (nedoporučuje se).  hromadné Hello této části se zabývá pomocí třídy silného typu.
 
 ### <a name="define-client-data-classes"></a>Definování datových tříd, klienta
 
-Pro přístup k datům z tabulek SQL Azure, definujte klienta datových tříd, které odpovídají na tabulky v back-end mobilní aplikace. Příklady v tomto tématu předpokládat tabulku s názvem **MyDataTable**, který má následující sloupce:
+tooaccess data z tabulek SQL Azure, definovat klienta datových tříd, které odpovídají toohello tabulek v back-end mobilní aplikace hello. Příklady v tomto tématu předpokládat tabulku s názvem **MyDataTable**, který má hello následující sloupce:
 
 * id
 * Text
 * Dokončení
 
-Objekt odpovídající typu klienta se nachází v souboru s názvem **MyDataTable.java**:
+Hello odpovídající typu objektu na straně klienta se nachází v souboru s názvem **MyDataTable.java**:
 
 ```java
 public class ToDoItem {
@@ -165,40 +165,40 @@ public class ToDoItem {
 }
 ```
 
-Přidejte metody getter a setter metody pro každé pole, které přidáte.  Pokud SQL Azure tabulka obsahuje více sloupců, přidáte by odpovídající pole pro tuto třídu.  Například pokud DTO sloupec s prioritou celé číslo bylo (objekt přenosu dat) a pak může přidejte toto pole, společně s její metody getter a setter metody:
+Přidejte metody getter a setter metody pro každé pole, které přidáte.  Pokud SQL Azure tabulka obsahuje více sloupců, měli byste přidat hello odpovídající pole toothis třídy.  Například, pokud hello DTO sloupec s prioritou celé číslo bylo (objekt přenosu dat) a pak může přidejte toto pole, společně s její metody getter a setter metody:
 
 ```java
 private Integer priority;
 
 /**
-* Returns the item priority
+* Returns hello item priority
 */
 public Integer getPriority() {
     return mPriority;
 }
 
 /**
-* Sets the item priority
+* Sets hello item priority
 *
 * @param priority
-*            priority to set
+*            priority tooset
 */
 public final void setPriority(Integer priority) {
     mPriority = priority;
 }
 ```
 
-Další postup vytvoření dalších tabulek v váš back-end Mobile Apps naleznete v tématu [postupy: definování řadič tabulky] [ 15] (.NET back-end) nebo [definovat tabulky pomocí dynamické schématu] [ 16] (back-end Node.js).
+toolearn jak zjistit, toocreate dalších tabulek v váš back-end mobilní aplikace [postupy: definování řadič tabulky] [ 15] (.NET back-end) nebo [definovat tabulky pomocí dynamické schématu] [ 16] (Back-end Node.js).
 
-Tabulce back-end Azure Mobile Apps definuje pět speciální pole, čtyři, které jsou dostupné klientům:
+Tabulce back-end Azure Mobile Apps definuje pět speciální pole, čtyři, které jsou k dispozici tooclients:
 
-* `String id`: Globálně jedinečné ID záznamu.  Jako osvědčený postup, ujistěte se, id řetězcovou reprezentaci [UUID] [ 17] objektu.
-* `DateTimeOffset updatedAt`: Datum a čas poslední aktualizace.  Pole updatedAt nastavena serverem a musí být nastavena nikdy váš klientský kód.
-* `DateTimeOffset createdAt`: Datum a čas vytvořený objekt.  Pole createdAt nastavena serverem a musí být nastavena nikdy váš klientský kód.
-* `byte[] version`: Obvykle vyjádřený jako řetězec, verze je také nastavená serverem.
-* `boolean deleted`: Označuje, že záznam má byla odstraněna ale ještě nebyla odstraněna.  Nepoužívejte `deleted` jako vlastnost v třídě.
+* `String id`: hello globálně jedinečné ID pro záznam hello.  Jako osvědčený postup, ujistěte se, hello id hello řetězcovou reprezentaci [UUID] [ 17] objektu.
+* `DateTimeOffset updatedAt`: hello datum a čas poslední aktualizace hello.  Hello updatedAt pole je nastaven serverem hello a musí být nastavena nikdy váš klientský kód.
+* `DateTimeOffset createdAt`: hello datum a čas byl vytvořen tento objekt hello.  Hello createdAt pole je nastaven serverem hello a musí být nastavena nikdy váš klientský kód.
+* `byte[] version`: Obvykle vyjádřený jako řetězec, hello verze je také nastavit server hello.
+* `boolean deleted`: Označuje, že záznam hello má byla odstraněna ale ještě není vyprázdní.  Nepoužívejte `deleted` jako vlastnost v třídě.
 
-`id` Pole je povinné.  `updatedAt` Pole a `version` pole se používají pro offline synchronizace (pro přírůstkové synchronizace a dojde ke konfliktu řešení v uvedeném pořadí).  `createdAt` Pole je odkaz na pole a není používán klienta.  Názvy jsou názvy "přes přenosu" vlastnosti a nejsou upravit.  Můžete však vytvořit mapování mezi objektu a názvy "přes přenosu" pomocí [gson] [ 3] knihovny.  Například:
+Hello `id` pole je povinné.  Hello `updatedAt` pole a `version` pole se používají pro offline synchronizace (pro přírůstkové synchronizace a dojde ke konfliktu řešení v uvedeném pořadí).  Hello `createdAt` pole je odkaz na pole a není používán hello klienta.  Hello názvy jsou názvy "přes přenosu" hello vlastností a nejsou upravit.  Však vytvořit mapování mezi objektem a hello "přes přenosu" názvy pomocí hello [gson] [ 3] knihovny.  Například:
 
 ```java
 package com.example.zumoappname;
@@ -258,7 +258,7 @@ public class ToDoItem
 
 ### <a name="create-a-table-reference"></a>Vytvořit odkaz na tabulku
 
-Chcete-li získat přístup k tabulce, nejprve vytvořit [MobileServiceTable] [ 8] objekt voláním **jít** metodu [MobileServiceClient][9].  Tato metoda má dva přetížení:
+tooaccess tabulku, nejprve vytvořit [MobileServiceTable] [ 8] objekt ve volání hello **jít** metodu hello [MobileServiceClient][9].  Tato metoda má dva přetížení:
 
 ```java
 public class MobileServiceClient {
@@ -267,13 +267,13 @@ public class MobileServiceClient {
 }
 ```
 
-V následujícím kódu **mClient** je odkaz na MobileServiceClient objektu.  První přetížení se používá, kde název třídy a název tabulky jsou stejné, a ten, používá se v rychlé spuštění:
+V následující kód, hello **mClient** je MobileServiceClient tooyour referenční objekt.  první přetížení Hello se používá, kde název třídy hello a název tabulky hello jsou hello stejné, a hello jeden slouží v hello rychlý start:
 
 ```java
 MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable(ToDoItem.class);
 ```
 
-Druhý přetížení se používá při liší od názvu třídy název tabulky: první parametr je název tabulky.
+Hello druhý přetížení se používá při hello název tabulky se liší od názvu třídy hello: první parametr hello je název tabulky hello.
 
 ```java
 MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable("ToDoItemBackup", ToDoItem.class);
@@ -281,31 +281,31 @@ MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable("ToDoItemBackup", ToD
 
 ## <a name="query"></a>Dotazování tabulky back-end
 
-Nejprve získejte odkaz na tabulku.  Potom spusťte dotaz na odkaz na tabulku.  Dotaz je libovolnou kombinaci:
+Nejprve získejte odkaz na tabulku.  Potom spusťte dotaz na odkaz na tabulku hello.  Dotaz je libovolnou kombinaci:
 
 * A `.where()` [klauzuli filtru](#filtering).
 * `.orderBy()` [Řazení klauzule](#sorting).
 * A `.select()` [klauzule výběr pole](#selection).
 * A `.skip()` a `.top()` pro [stránkovaného výsledky](#paging).
 
-Klauzulích musí být uvedené v předchozí.
+klauzule Hello musí uvedené v předcházející pořadí hello.
 
 ### <a name="filter"></a>Filtrování výsledků
 
-Obecná forma dotazu je:
+Obecné formuláře Hello dotazu je:
 
 ```java
 List<MyDataTable> results = mDataTable
     // More filters here
     .execute()          // Returns a ListenableFuture<E>
-    .get()              // Converts the async into a sync result
+    .get()              // Converts hello async into a sync result
 ```
 
-V předchozím příkladu vrací všechny výsledky (až maximální velikost stránky nastavená serverem).  `.execute()` Metoda provede daný dotaz na back-end.  Dotaz je převést na [OData v3] [ 19] Dotázat se před přenosem na back-end mobilní aplikace.  Back-end mobilní aplikace na přijetí, převede dotaz na příkazu SQL před provedením v instanci SQL Azure.  Vzhledem k tomu, že nějakou dobu, trvá síťové aktivity `.execute()` metoda vrátí [ `ListenableFuture<E>` ] [ 18].
+Hello předchozí příklad vrací všechny výsledky (až toohello maximální velikost stránky nastavená serverem hello).  Hello `.execute()` metoda provede hello dotaz na back-end hello.  Hello dotaz je převeden tooan [OData v3] [ 19] Dotázat se před přenosem toohello Mobile Apps back-end.  Back-end mobilní aplikace hello na přijetí, převede hello dotazu příkazu SQL před provedením na instanci SQL Azure hello.  Vzhledem k tomu, že nějakou dobu trvá síťové aktivity, hello `.execute()` metoda vrátí [ `ListenableFuture<E>` ] [ 18].
 
 ### <a name="filtering"></a>Filtr vrátil data
 
-Provádění následující dotaz vrátí všechny položky z **ToDoItem** tabulky kde **dokončení** rovná **false**.
+Hello následující spuštění dotazu vrátí všechny položky z hello **ToDoItem** tabulky kde **dokončení** rovná **false**.
 
 ```java
 List<ToDoItem> result = mToDoTable
@@ -315,11 +315,11 @@ List<ToDoItem> result = mToDoTable
     .get();
 ```
 
-**mToDoTable** se odkaz na tabulku mobilní službu, která jsme vytvořili dříve.
+**mToDoTable** je hello referenční toohello mobilní služby tabulku, kterou jsme vytvořili dříve.
 
-Definujte filtr pomocí **kde** volání metody na odkaz na tabulku. **Kde** metoda následuje **pole** metoda následuje metodu, která určuje logické predikátu. Zahrnout možných metod predikátem **eq** (rovná), **ne** (nerovná), **gt** (větší než), **ge** (větší než nebo rovno), **lt** (méně než), **le** (je menší než nebo rovno). Tyto metody umožňují porovnat řetězec a číslo pole na konkrétní hodnoty.
+Definujte filtr pomocí hello **kde** volání metody na odkaz na tabulku hello. Hello **kde** metoda následuje **pole** metoda následuje metodu, která určuje hello logické predikátu. Zahrnout možných metod predikátem **eq** (rovná), **ne** (nerovná), **gt** (větší než), **ge** (větší než nebo rovno), **lt** (méně než), **le** (je menší než nebo rovno). Tyto metody umožňují porovnat číslo a řetězec polí toospecific hodnoty.
 
-Můžete filtrovat podle data. Následující metody umožňují porovnat pole pro celý datum nebo částí data: **roku**, **měsíc**, **den**, **hodinu**, **minutu**, a **druhý**. Následující příklad přidá filtr pro položky jejichž *datum splatnosti* rovná 2013.
+Můžete filtrovat podle data. Hello následující metody umožňují porovnat pole pro celý datum hello nebo její části datum hello: **roku**, **měsíc**, **den**, **hodinu**, **minutu**, a **druhý**. Hello následující příklad přidá filtr pro položky jejichž *datum splatnosti* rovná 2013.
 
 ```java
 List<ToDoItem> results = MToDoTable
@@ -329,7 +329,7 @@ List<ToDoItem> results = MToDoTable
     .get();
 ```
 
-Následující metody podporují komplexní filtry na polí s řetězcem: **startsWith**, **endsWith**, **concat**, **subString**, **indexOf**, **nahradit**, **toLower**, **toUpper**, **trim**, a **délka**. Následující příklad filtry pro tabulku řádků, kde *text* sloupec začíná "PRI0."
+Hello následující metody podporují komplexní filtry na polí s řetězcem: **startsWith**, **endsWith**, **concat**, **subString**, **indexOf**, **nahradit**, **toLower**, **toUpper**, **trim**, a  **Délka**. Následující příklad filtry pro tabulku řádků, kde hello Hello *text* sloupec začíná "PRI0."
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -339,7 +339,7 @@ List<ToDoItem> results = mToDoTable
     .get();
 ```
 
-Následující operátor metody jsou podporovány na pole s počtem: **přidat**, **sub**, **mul**, **div**, **mod**, **podlaží**, **mezní hodnoty**, a **ZAOKROUHLIT**. Následující příklad filtry pro tabulku řádků, kde **doba trvání** je číslo sudé.
+podporovány jsou Hello následující metody operátor pro pole s počtem: **přidat**, **sub**, **mul**, **div**, **mod**, **podlaží**, **mezní hodnoty**, a **ZAOKROUHLIT**. Následující příklad filtry pro tabulku řádků, kde hello Hello **doba trvání** je číslo sudé.
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -349,7 +349,7 @@ List<ToDoItem> results = mToDoTable
     .get();
 ```
 
-Predikáty můžete kombinovat s tyto logické metody: **a**, **nebo** a **není**. Následující příklad kombinuje dva v předchozích příkladech.
+Predikáty můžete kombinovat s tyto logické metody: **a**, **nebo** a **není**. Následující ukázka Hello kombinuje dvě hello předcházející příklady.
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -373,11 +373,11 @@ List<ToDoItem> results = mToDoTable
     .execute().get();
 ```
 
-Podrobnější diskuzi a příklady filtrování, najdete v části [zkoumat bohatost modelu dotazu Android klienta][20].
+Podrobnější diskuzi a příklady filtrování, najdete v části [zkoumat hello bohatost modelu dotazu Android klienta hello][20].
 
 ### <a name="sorting"></a>Řazení vrátil data
 
-Následující kód vrátí všechny položky z tabulky **ToDoItems** seřadit vzestupně podle *text* pole. *mToDoTable* se odkaz na tabulku back-end, který jste vytvořili dříve:
+Hello následující kód vrátí všechny položky z tabulky **ToDoItems** seřadit vzestupně podle hello *text* pole. *mToDoTable* je hello referenční toohello back-end tabulku, kterou jste vytvořili dříve:
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -386,11 +386,11 @@ List<ToDoItem> results = mToDoTable
     .get();
 ```
 
-První parametr **orderBy** metoda je stejný jako název pole, ve kterém se má seřadit řetězec. Druhý parametr používá **QueryOrder** výčtu k určení, jestli se má seřadit vzestupně nebo sestupně.  Filtrování pomocí ***kde*** metody ***kde*** metoda musí být volána před ***orderBy*** metoda.
+první parametr hello Hello **orderBy** metoda je rovna toohello názvu řetězce hello pole, na které toosort. druhý parametr Hello používá hello **QueryOrder** výčtu toospecify zda toosort vzestupném nebo sestupném.  Filtrování pomocí hello ***kde*** metoda, hello ***kde*** metoda musí být volána před hello ***orderBy*** metoda.
 
 ### <a name="selection"></a>Vyberte konkrétní sloupce
 
-Následující kód ukazuje, jak vrátit všechny položky z tabulky **ToDoItems**, ale zobrazuje jenom **dokončení** a **text** pole. **mToDoTable** se odkaz na tabulku back-end, která jsme vytvořili dříve.
+Hello následující kód ukazuje, jak tooreturn všechny položky z tabulky **ToDoItems**, ale zobrazuje jenom hello **dokončení** a **text** pole. **mToDoTable** je hello referenční toohello back-end tabulku, kterou jsme vytvořili dříve.
 
 ```java
 List<ToDoItemNarrow> result = mToDoTable
@@ -399,13 +399,13 @@ List<ToDoItemNarrow> result = mToDoTable
     .get();
 ```
 
-Parametry vyberte funkce jsou řetězec názvy sloupců v tabulce, které chcete vrátit.  **Vyberte** musí postupovat podle metody, třeba metoda **kde** a **orderBy**. Může následovat stránkování metody, třeba **přeskočit** a **horní**.
+Vyberte funkce toohello Hello parametry jsou hello řetězec názvy sloupců hello tabulky, které chcete tooreturn.  Hello **vyberte** toofollow metody, třeba musí metoda **kde** a **orderBy**. Může následovat stránkování metody, třeba **přeskočit** a **horní**.
 
 ### <a name="paging"></a>Vrátit data na stránkách
 
-Data jsou **vždy** vrátil na stránkách.  Maximální počet záznamů vrácených nastavena serverem.  Pokud klient požaduje další záznamy, server vrátí maximální počet záznamů.  Ve výchozím nastavení je maximální velikost stránky na serveru 50 záznamů.
+Data jsou **vždy** vrátil na stránkách.  maximální počet záznamů vrácených Hello nastavena serverem hello.  Pokud hello klient požádá o další záznamy, vrátí hello server hello maximální počet záznamů.  Ve výchozím nastavení je hello maximální velikost stránky na hello server 50 záznamů.
 
-V prvním příkladu ukazuje, jak vybrat prvních pět položek z tabulky. Dotaz vrátí položky z tabulky **ToDoItems**. **mToDoTable** se odkaz na tabulku back-end, který jste vytvořili dříve:
+Hello první příklad ukazuje, jak tooselect hello prvních pět položek z tabulky. Hello dotaz vrátí hello položky z tabulky **ToDoItems**. **mToDoTable** je hello referenční toohello back-end tabulku, kterou jste vytvořili dříve:
 
 ```java
 List<ToDoItem> result = mToDoTable
@@ -414,7 +414,7 @@ List<ToDoItem> result = mToDoTable
     .get();
 ```
 
-Zde je dotaz, který přeskočí první pěti položek a vrátí další pět:
+Zde je dotaz přeskočí hello prvních pět položek, a potom vrátí hello další pět:
 
 ```java
 List<ToDoItem> result = mToDoTable
@@ -423,7 +423,7 @@ List<ToDoItem> result = mToDoTable
     .get();
 ```
 
-Pokud chcete získat všechny záznamy v tabulce, implementaci kódu Iterujte přes všechny stránky:
+Pokud chcete tooget všechny záznamy v tabulce implementaci kódu tooiterate přes všechny stránky:
 
 ```java
 List<MyDataModel> results = new List<MyDataModel>();
@@ -440,14 +440,14 @@ do {
 } while (nResults > 0);
 ```
 
-Žádost o pro všechny záznamy pomocí této metody vytvoří minimálně dva požadavky na back-end mobilní aplikace.
+Žádost o pro všechny záznamy pomocí této metody vytvoří minimálně dva požadavky toohello Mobile Apps back-end.
 
 > [!TIP]
-> Volba velikosti pravá stránka je rovnováhu mezi využití paměti při žádosti se děje, využití šířky pásma a zpoždění při přijímání dat úplně.  Výchozí hodnota (50 záznamy) je vhodná pro všechna zařízení.  Pokud provozujete výhradně na větší paměti zařízení, zvýšit až 500.  Našli jsme, zvýšení velikosti stránky nad rámec 500 zaznamenává výsledky v zpožděním a velké paměti problémy.
+> Výběrem možnosti velikost pravá stránka hello je rovnováhu mezi využití paměti při žádosti o hello se děje, využití šířky pásma a zpoždění při příjmu dat hello úplně.  Výchozí Hello (50 záznamy) je vhodná pro všechna zařízení.  Pokud provozujete výhradně na větší paměti zařízení, zvýšit až too500.  Našli jsme tato roste velikost stránky hello nad rámec 500 zaznamenává výsledky v zpožděním a velké paměti problémy.
 
 ### <a name="chaining"></a>Postupy: řetězení metody dotazů
 
-Může být zřetězen metody použité v dotazování tabulky back-end. Řetězení metody dotazů můžete vybrat konkrétní sloupce filtrované řádků, které jsou seřazené a stránkovaného fondu. Můžete vytvořit komplexní logické filtry.  Každá metoda dotaz vrátí objekt dotazu. Pokud chcete ukončit řady metod a ve skutečnosti spusťte dotaz, volání **provést** metoda. Například:
+může být zřetězen Hello metody používané v dotazování tabulky back-end. Řetězení dotazu metody vám umožní tooselect určité sloupce filtrované řádků, které jsou seřazené a stránkovaného fondu. Můžete vytvořit komplexní logické filtry.  Každá metoda dotaz vrátí objekt dotazu. tooend hello řady metod a ve skutečnosti spuštění hello dotaz, volání hello **provést** metoda. Například:
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -463,26 +463,26 @@ List<ToDoItem> results = mToDoTable
         .get();
 ```
 
-Zřetězené dotazu metody musejí být seřazeny následujícím způsobem:
+Hello zřetězené dotaz, který metody musejí být seřazeny následujícím způsobem:
 
 1. Filtrování (**kde**) metody.
 2. Řazení (**orderBy**) metody.
 3. Výběr (**vyberte**) metody.
 4. stránkování (**přeskočit** a **horní**) metody.
 
-## <a name="binding"></a>Vytvoření vazby dat s uživatelským rozhraním
+## <a name="binding"></a>Vytvoření vazby dat toohello uživatelské rozhraní
 
 Datová vazba zahrnuje tři komponenty:
 
-* Zdroj dat
-* Na obrazovce rozložení
-* Adaptér, který sváže dva společně.
+* zdroj dat Hello
+* rozložení obrazovky Hello
+* adaptér Hello že ties hello dva společně.
 
-V našem ukázkový kód jsme vrátit data z tabulky Mobile Apps SQL Azure **ToDoItem** na pole. Tato aktivita je běžný vzor pro data aplikací.  Databázové dotazy často vracet kolekci řádků, které klient získá v seznamu nebo pole. V této ukázce je pole zdroje dat.  Kód určuje rozložení obrazovky, který definuje zobrazení dat, která se zobrazí v zařízení.  Dva jsou svázané s společně s adaptér, který tento kód je rozšířením z **ArrayAdapter&lt;ToDoItem&gt;**  třídy.
+V našem ukázkový kód vrátíme hello data z tabulky Mobile Apps SQL Azure hello **ToDoItem** na pole. Tato aktivita je běžný vzor pro data aplikací.  Databázové dotazy často vracet kolekci řádků, které hello klient získá v seznamu nebo pole. V této ukázce hello pole je zdroj dat hello.  Kód Hello určuje rozložení obrazovky, který definuje zobrazení hello hello dat, který se zobrazí na zařízení hello.  Hello dva jsou svázané s společně s adaptér, který tento kód je rozšířením hello **ArrayAdapter&lt;ToDoItem&gt;**  třídy.
 
-#### <a name="layout"></a>Definování rozložení
+#### <a name="layout"></a>Definování hello rozložení
 
-Rozložení je definována několik fragmenty kódu XML. Vzhledem existující rozložení, následující kód představuje **ListView** chceme naplnění našich dat serveru.
+rozložení Hello je definována několik fragmenty kódu XML. Existující rozložení zadána hello následující kód představuje hello **ListView** chceme toopopulate pomocí našich dat serveru.
 
 ```xml
     <ListView
@@ -493,7 +493,7 @@ Rozložení je definována několik fragmenty kódu XML. Vzhledem existující r
     </ListView>
 ```
 
-V předchozí kód *listitem* atribut určuje id rozložení pro jednotlivých řádků v seznamu. Tento kód určuje zaškrtávací políčko a jeho přidružené textu a získá instanci jednou pro každou položku v seznamu. Toto rozložení nezobrazí **id** pole a složitější rozložení by zadejte další pole v zobrazení. Tento kód je v **row_list_to_do.xml** souboru.
+V předchozích kód hello, hello *listitem* atribut určuje hello id hello rozložení jednotlivých řádků v seznamu hello. Tento kód určuje zaškrtávací políčko a jeho přidružené textu a získá instanci jednou pro každou položku v seznamu hello. Toto rozložení nezobrazí hello **id** pole a složitější rozložení by zadejte další pole v zobrazení hello. Tento kód je v hello **row_list_to_do.xml** souboru.
 
 ```java
 <?xml version="1.0" encoding="utf-8"?>
@@ -509,15 +509,15 @@ V předchozí kód *listitem* atribut určuje id rozložení pro jednotlivých �
 </LinearLayout>
 ```
 
-#### <a name="adapter"></a>Zadejte adaptér
-Vzhledem k tomu, že je zdroj dat naše zobrazení pole **ToDoItem**, jsme podtřídami adaptéru v našem **ArrayAdapter&lt;ToDoItem&gt;**  třídy. Tato podtřídami vytvoří zobrazení pro každý **ToDoItem** pomocí **row_list_to_do** rozložení.  V našem kódu jsme definovali následující třídy, která je rozšířením **ArrayAdapter&lt;E&gt;**  třídy:
+#### <a name="adapter"></a>Zadejte adaptér hello
+Vzhledem k tomu, že zdroj dat hello naše zobrazení je pole **ToDoItem**, jsme podtřídami adaptéru v našem **ArrayAdapter&lt;ToDoItem&gt;**  třídy. Tato podtřídami vytvoří zobrazení pro každý **ToDoItem** pomocí hello **row_list_to_do** rozložení.  V našem kódu jsme definovali hello následující třídy, která je rozšířením hello **ArrayAdapter&lt;E&gt;**  třídy:
 
 ```java
 public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 }
 ```
 
-Přepsání adaptéry **getView** metoda. Například:
+Přepsání hello adaptéry **getView** metoda. Například:
 
 ```
     @Override
@@ -560,16 +560,16 @@ Vytvoříme instance této třídy v našem aktivity následujícím způsobem:
     mAdapter = new ToDoItemAdapter(this, R.layout.row_list_to_do);
 ```
 
-Druhý parametr konstruktoru ToDoItemAdapter je odkaz na rozložení. Nyní jsme můžete vytvořit instanci **ListView** a přiřaďte adaptér, který má **ListView**.
+Hello druhý parametr toohello ToDoItemAdapter konstruktor je rozložení toohello odkaz. Jsme teď vytvořit instanci hello **ListView** a přiřaďte hello adaptér toohello **ListView**.
 
 ```java
     ListView listViewToDo = (ListView) findViewById(R.id.listViewToDo);
     listViewToDo.setAdapter(mAdapter);
 ```
 
-#### <a name="use-adapter"></a>Adaptér pro vazbu na uživatelské rozhraní
+#### <a name="use-adapter"></a>Použít hello adaptér tooBind toohello uživatelského rozhraní
 
-Nyní jste připraveni používat datové vazby. Následující kód ukazuje, jak získat položky v tabulce a výplní místní adaptéru s vrácené položky.
+Nyní je připraven toouse datové vazby. Hello následující kód ukazuje, jak tooget položky v tabulce hello a výplněmi hello místní adaptéru s hello vrátil položky.
 
 ```java
     public void showAll(View view) {
@@ -598,13 +598,13 @@ Nyní jste připraveni používat datové vazby. Následující kód ukazuje, ja
     }
 ```
 
-Volání adaptér vždy, když upravíte **ToDoItem** tabulky. Vzhledem k tomu, že změny se provádí na základě záznamu podle, můžete zpracovat jeden řádek místo kolekce. Když vložíte položku, volání **přidat** metoda na adaptéru; při odstraňování, volání **odebrat** metoda.
+Volání hello adaptér kdykoli upravit hello **ToDoItem** tabulky. Vzhledem k tomu, že změny se provádí na základě záznamu podle, můžete zpracovat jeden řádek místo kolekce. Při vložení položku volání hello **přidat** metoda na hello adaptér; při odstraňování, volání hello **odebrat** metoda.
 
-Kompletní příklad v můžete najít [projekt Android rychlý Start][21].
+Úplný příklad můžete najít v hello [projekt Android rychlý Start][21].
 
-## <a name="inserting"></a>Vložení dat do back-end
+## <a name="inserting"></a>Vložení dat do back-end hello
 
-Vytvoří instanci *ToDoItem* a nastavit jeho vlastnosti.
+Vytvoří instanci hello *ToDoItem* a nastavit jeho vlastnosti.
 
 ```java
 ToDoItem item = new ToDoItem();
@@ -612,7 +612,7 @@ item.text = "Test Program";
 item.complete = false;
 ```
 
-Potom pomocí **insert()** o vložení objektu:
+Potom pomocí **insert()** tooinsert objekt:
 
 ```java
 ToDoItem entity = mToDoTable
@@ -620,21 +620,21 @@ ToDoItem entity = mToDoTable
     .get();
 ```
 
-Odpovídá vrácenou entitu data vložená do tabulky back-end, obsahovala ID a všechny ostatní hodnoty (například `createdAt`, `updatedAt`, a `version` pole) nastavte na back-end.
+Hello vrátil entity odpovídá hello data vložená do tabulky hello back-end, zahrnuté hello ID a všechny ostatní hodnoty (například hello `createdAt`, `updatedAt`, a `version` polí) nastavte na back-end hello.
 
-Mobile Apps tabulky vyžadují sloupec primárního klíče s názvem **id**. Tento sloupec musí být řetězec. Výchozí hodnota ID sloupce je identifikátor GUID.  Můžete zadat další jedinečné hodnoty, například e-mailové adresy nebo uživatelských jmen. Pokud není zadána hodnota ID řetězec vloženého záznamu, back-end generuje nový identifikátor GUID.
+Mobile Apps tabulky vyžadují sloupec primárního klíče s názvem **id**. Tento sloupec musí být řetězec. Výchozí hodnota Hello hello ID sloupce je identifikátor GUID.  Můžete zadat další jedinečné hodnoty, například e-mailové adresy nebo uživatelských jmen. Pokud není zadána hodnota ID řetězec vloženého záznamu, back-end hello generuje nový identifikátor GUID.
 
-Hodnota ID řetězec poskytuje následující výhody:
+Řetězcové hodnoty ID poskytují hello následující výhody:
 
-* ID může být generována bez provedení výměnu zpráv do databáze.
-* Záznamy jsou usnadňují sloučení z různých tabulek nebo databází.
+* ID může být generována bez provedení databáze toohello odezvy.
+* Záznamy jsou jednodušší toomerge z různých tabulek nebo databází.
 * Hodnoty ID lépe integrovat logiku aplikace.
 
-Řetězec ID hodnoty jsou **REQUIRED** pro podporu offline synchronizace.  Id nelze změnit, jakmile je uložen v databázi back-end.
+Řetězec ID hodnoty jsou **REQUIRED** pro podporu offline synchronizace.  Id nelze změnit, jakmile je uložen v databázi back-end hello.
 
 ## <a name="updating"></a>Aktualizovat data v mobilní aplikaci
 
-Pokud chcete aktualizovat data v tabulce, předat nový objekt, který má **update()** metoda.
+tooupdate data v tabulce, předat hello nový objekt toohello **update()** metoda.
 
 ```java
 mToDoTable
@@ -642,18 +642,18 @@ mToDoTable
     .get();
 ```
 
-V tomto příkladu *položky* je odkaz na řádek *ToDoItem* tabulku, která se použila některé změny.  Řádek se stejným **id** se aktualizuje.
+V tomto příkladu *položky* je odkaz na řádek tooa v hello *ToDoItem* tabulku, která se použila tooit některé změny provedené v.  Hello řádek s hello stejné **id** se aktualizuje.
 
 ## <a name="deleting"></a>Odstranit data v mobilní aplikaci
 
-Následující kód ukazuje, jak k odstranění dat z tabulky zadáním datový objekt.
+Hello následující kód ukazuje, jak toodelete data z tabulky zadáním hello datový objekt.
 
 ```java
 mToDoTable
     .delete(item);
 ```
 
-Můžete také odstranit položku zadáním **id** pole řádku odstranit.
+Můžete také odstranit položku zadáním hello **id** pole z toodelete řádek hello.
 
 ```java
 String myRowId = "2FA404AB-E458-44CD-BC1B-3BC847EF0902";
@@ -663,7 +663,7 @@ mToDoTable
 
 ## <a name="lookup"></a>Vyhledat konkrétní položky podle Id
 
-Vyhledání položky s konkrétní **id** pole s **lookUp()** metoda:
+Vyhledání položky s konkrétní **id** pole s hello **lookUp()** metoda:
 
 ```java
 ToDoItem result = mToDoTable
@@ -673,11 +673,11 @@ ToDoItem result = mToDoTable
 
 ## <a name="untyped"></a>Postupy: práce s daty bez typu
 
-Netypové programovací model poskytuje přesnou kontrolu nad serializace JSON.  Existují některé běžné scénáře, kde můžete chtít použít bez typu programovací model. Pokud například vaše back-end tabulka obsahuje mnoho sloupců a potřebujete odkazovat na podmnožinu sloupců.  Typové modelu vyžaduje definování všechny sloupce definované v back-end mobilní aplikace v třídě data.  Většina volání rozhraní API pro přístup k datům je podobný typu programovací volání. Hlavní rozdíl je, že v netypové modelu můžete volat metody na **MobileServiceJsonTable** objekt, místo **MobileServiceTable** objektu.
+netypové programovací model Hello vám dává přesnou kontrolu nad serializace JSON.  Existují některé běžné scénáře, kde můžete toouse netypové programovací model. Například pokud back-end tabulka obsahuje mnoho sloupců a potřebujete jenom tooreference podmnožinu sloupců hello.  Hello typu modelu vyžaduje toodefine všechny hello sloupce definované v back-end mobilní aplikace hello v třídě data.  Většina hello volání rozhraní API pro přístup k datům jsou podobné toohello zadali programovací volání. Hello hlavní rozdíl je, že v modelu netypové hello volat metody na hello **MobileServiceJsonTable** objektu, nikoli hello **MobileServiceTable** objektu.
 
 ### <a name="json_instance"></a>Vytvoření instance bez typu tabulky
 
-Podobně jako u typu modelu, můžete začít nastavením odkaz na tabulku, ale v takovém případě je **MobileServicesJsonTable** objektu. Získat odkaz na voláním **jít** metoda na instanci klienta:
+Podobné toohello typu modelu, můžete začít nastavením odkaz na tabulku, ale v takovém případě je **MobileServicesJsonTable** objektu. Získejte odkaz na hello volání hello **jít** metoda na instanci hello klienta:
 
 ```java
 private MobileServiceJsonTable mJsonToDoTable;
@@ -685,10 +685,10 @@ private MobileServiceJsonTable mJsonToDoTable;
 mJsonToDoTable = mClient.getTable("ToDoItem");
 ```
 
-Po vytvoření instance **MobileServiceJsonTable**, má skoro stejný API, které jsou k dispozici jako s typem programovací model. V některých případech metody trvat bez typu parametru místo typu parametru.
+Po vytvoření instance hello **MobileServiceJsonTable**, ho má prakticky hello stejné rozhraní API k dispozici jako s typem programovací model hello. V některých případech hello metody přijímají bez typu parametru místo typu parametru.
 
 ### <a name="json_insert"></a>Vložit do tabulky bez typu
-Následující kód ukazuje, jak udělat typu vložení. Prvním krokem je vytvoření [JsonObject][1], který je součástí [gson] [ 3] knihovny.
+Následující kód ukazuje, jak Hello toodo typu vložení. Hello prvním krokem je toocreate [JsonObject][1], který je součástí hello [gson] [ 3] knihovny.
 
 ```java
 JsonObject jsonItem = new JsonObject();
@@ -696,7 +696,7 @@ jsonItem.addProperty("text", "Wake up");
 jsonItem.addProperty("complete", false);
 ```
 
-Poté použijte **insert()** netypové objekt vložit do tabulky.
+Poté použijte **insert()** tooinsert hello bez typu objektu do tabulky hello.
 
 ```java
 JsonObject insertedItem = mJsonToDoTable
@@ -704,13 +704,13 @@ JsonObject insertedItem = mJsonToDoTable
     .get();
 ```
 
-Pokud potřebujete získat ID vložené objektu, použijte **getAsJsonPrimitive()** metoda.
+Pokud potřebujete tooget hello ID objektu hello vložit, použijte hello **getAsJsonPrimitive()** metoda.
 
 ```java
 String id = insertedItem.getAsJsonPrimitive("id").getAsString();
 ```
 ### <a name="json_delete"></a>Odstraňte z bez typu tabulky
-Následující kód ukazuje, jak odstranit instance, v takovém případě stejnou instanci **JsonObject** který byl vytvořen v předchozího *vložit* příklad. Kód je stejný jako s typem případ, ale metoda má jiný podpis, protože odkazuje na **JsonObject**.
+Hello následující kód ukazuje, jak toodelete na instance, v takovém případě hello stejnou instanci **JsonObject** který byl vytvořen v hello před *vložit* příklad. Kód Hello je hello stejné jako u hello zadali případ, ale metoda hello má jiný podpis, protože odkazuje na **JsonObject**.
 
 ```java
 mToDoTable
@@ -724,7 +724,7 @@ mToDoTable.delete(ID);
 ```
 
 ### <a name="json_get"></a>Vrátí všechny řádky z tabulky aplikace bez typu
-Následující kód ukazuje, jak načíst celou tabulku. Vzhledem k tomu, že používáte JSON tabulky, můžete selektivně načíst jenom některé sloupce v tabulce.
+Následující kód ukazuje, jak Hello tooretrieve celou tabulku. Vzhledem k tomu, že používáte JSON tabulky, můžete selektivně načíst jenom některé sloupce tabulky hello.
 
 ```java
 public void showAllUntyped(View view) {
@@ -760,20 +760,20 @@ public void showAllUntyped(View view) {
 }
 ```
 
-Stejnou sadu filtrování, filtrování a stránkování metody, které jsou k dispozici pro typové modelu jsou k dispozici bez typu modelu.
+Hello stejnou sadu filtrování, filtrování a stránkování metody, které jsou k dispozici pro hello typu modelu jsou k dispozici pro hello bez typu modelu.
 
 ## <a name="offline-sync"></a>Implementace Offline synchronizace
 
-Azure Mobile Apps Client SDK také implementuje offline synchronizace dat s použitím databáze SQLite k uložení kopie dat serveru místně.  Operace provedené v offline tabulce nevyžadují mobilní připojení fungovat.  Offline synchronizace je výhodné při odolnost a výkon za cenu složitější logiku pro řešení konfliktů.  Azure Mobile Apps Client SDK implementuje následující funkce:
+Hello Azure Mobile Apps Client SDK také implementuje offline synchronizace dat s použitím toostore databáze SQLite kopii dat serveru hello místně.  Operace provedené v offline tabulce nevyžadují toowork mobilní připojení.  Offline synchronizace je výhodné při odolnost a výkon při hello nákladů na složitější logiku pro řešení konfliktů.  Hello Azure Mobile Apps Client SDK implementuje hello následující funkce:
 
 * Přírůstkové synchronizace: Pouze aktualizované a nové záznamy se stáhnou, ukládání spotřebu šířky pásma a paměti.
-* Optimistickou metodu souběžného: Operace se předpokládá, že proběhla úspěšně.  Řešení konfliktů je odložení, dokud nebude aktualizace se provádí na serveru.
-* Řešení konfliktů: Sada SDK zjistí, že změna způsobující konflikt byl změněn na serveru a poskytuje háky k upozornění uživatele.
-* Obnovitelného odstranění: Odstraněné záznamy jsou označené odstraněné, povolení jiná zařízení k aktualizaci mezipaměti v režimu offline.
+* Optimistickou metodu souběžného: Operace se předpokládá, že toosucceed.  Řešení konfliktů je odložení, dokud nebude aktualizace se na hello server.
+* Řešení konfliktů: hello SDK zjistí, že změna způsobující konflikt byl na hello server a poskytuje zachytí tooalert hello uživatele.
+* Obnovitelného odstranění: Odstraněné záznamy jsou označené odstraněné, povolení dalších zařízení tooupdate offline mezipaměti.
 
 ### <a name="initialize-offline-sync"></a>Inicializaci Offline synchronizace
 
-Každá tabulka offline musí být definován v mezipaměti offline před použitím.  Za normálních okolností se okamžitě po vytvoření klienta provádí definici tabulky:
+Každá tabulka offline musí být definován v mezipaměti offline hello před použitím.  Za normálních okolností se okamžitě po vytvoření hello hello klienta provádí definici tabulky:
 
 ```java
 AsyncTask<Void, Void, Void> initializeStore(MobileServiceClient mClient)
@@ -789,7 +789,7 @@ AsyncTask<Void, Void, Void> initializeStore(MobileServiceClient mClient)
                 }
                 SQLiteLocalStore localStore = new SQLiteLocalStore(mClient.getContext(), "offlineStore", null, 1);
 
-                // Create a table definition.  As a best practice, store this with the model definition and return it via
+                // Create a table definition.  As a best practice, store this with hello model definition and return it via
                 // a static method
                 Map<String, ColumnDataType> toDoItemDefinition = new HashMap<String, ColumnDataType>();
                 toDoItemDefinition.put("id", ColumnDataType.String);
@@ -798,13 +798,13 @@ AsyncTask<Void, Void, Void> initializeStore(MobileServiceClient mClient)
                 toDoItemDefinition.put("version", ColumnDataType.String);
                 toDoItemDefinition.put("updatedAt", ColumnDataType.DateTimeOffset);
 
-                // Now define the table in the local store
+                // Now define hello table in hello local store
                 localStore.defineTable("ToDoItem", toDoItemDefinition);
 
                 // Specify a sync handler for conflict resolution
                 SimpleSyncHandler handler = new SimpleSyncHandler();
 
-                // Initialize the local store
+                // Initialize hello local store
                 syncContext.initialize(localStore, handler).get();
             } catch (final Exception e) {
                 createAndShowDialogFromTask(e, "Error");
@@ -816,7 +816,7 @@ AsyncTask<Void, Void, Void> initializeStore(MobileServiceClient mClient)
 }
 ```
 
-### <a name="obtain-a-reference-to-the-offline-cache-table"></a>Získat odkaz na tabulky mezipaměti v režimu Offline
+### <a name="obtain-a-reference-toohello-offline-cache-table"></a>Získat odkaz na toohello Offline tabulky mezipaměti
 
 Pro online tabulky, můžete použít `.getTable()`.  K offline tabulky, použijte `.getSyncTable()`:
 
@@ -824,11 +824,11 @@ Pro online tabulky, můžete použít `.getTable()`.  K offline tabulky, použij
 MobileServiceTable<ToDoItem> mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
 ```
 
-Všechny metody, které jsou k dispozici pro online tabulky (včetně filtrování, řazení, stránkování, vkládání dat, aktualizace dat a odstraňování dat) pracovat stejně dobře u tabulek se online a offline.
+Všechny metody, které jsou k dispozici pro online tabulky (včetně filtrování, řazení, stránkování, vkládání dat, aktualizace dat a odstraňování dat) pracovat stejně hello i na tabulkách online a offline.
 
-### <a name="synchronize-the-local-offline-cache"></a>Synchronizovat místní mezipaměti v režimu Offline
+### <a name="synchronize-hello-local-offline-cache"></a>Synchronizovat hello místní mezipaměti v režimu Offline
 
-Synchronizace je v rámci prvku aplikace.  Tady je příklad metoda synchronizace:
+Synchronizace je v rámci ovládacího prvku hello vaší aplikace.  Tady je příklad metoda synchronizace:
 
 ```java
 private AsyncTask<Void, Void, Void> sync(MobileServiceClient mClient) {
@@ -849,23 +849,23 @@ private AsyncTask<Void, Void, Void> sync(MobileServiceClient mClient) {
 }
 ```
 
-Pokud je pro zadaný název dotazu `.pull(query, queryname)` metoda pak přírůstkové synchronizace se používá k vrácení pouze záznamy, které byly vytvořeny nebo změněné od posledního úspěšně dokončit vyžádání obsahu.
+Pokud název dotazu je zadaný toohello `.pull(query, queryname)` metoda pak přírůstkové synchronizace je použité tooreturn pouze záznamy, které byly vytvořené nebo změněné od vyžadování hello poslední byla úspěšně dokončena.
 
 ### <a name="handle-conflicts-during-offline-synchronization"></a>Zpracování konfliktů během Offline synchronizace
 
-Pokud dojde ke konfliktu při `.push()` operace, `MobileServiceConflictException` je vyvolána výjimka.   Položka server vydal vložené do výjimku, může načíst `.getItem()` na výjimku.  Upravte nabízeného oznámení při volání objektu MobileServiceSyncContext následující položky:
+Pokud dojde ke konfliktu při `.push()` operace, `MobileServiceConflictException` je vyvolána výjimka.   Položka server vydal Hello vložené v hello výjimek a může načíst `.getItem()` na hello výjimce.  Upravte hello nabízené pomocí volání hello u objektu MobileServiceSyncContext hello následující položky:
 
 *  `.cancelAndDiscardItem()`
 *  `.cancelAndUpdateItem()`
 *  `.updateOperationAndItem()`
 
-Jakmile se všechny konflikty jsou označené jako nechcete, volání `.push()` znovu a vyřešte všechny konflikty.
+Jakmile se všechny konflikty jsou označené jako nechcete, volání `.push()` znovu tooresolve všechny hello je v konfliktu.
 
 ## <a name="custom-api"></a>Volání vlastní rozhraní API
 
-Vlastní rozhraní API umožňuje definovat vlastní koncové body, které zveřejňují funkce serveru které není mapovat k typu vložení, aktualizaci, odstranění nebo operace čtení. Pomocí vlastního rozhraní API, může mít větší kontrolu nad zasílání zpráv, včetně čtení a nastavení hlavičky protokolu HTTP zpráv a definování formátu textu zprávy kromě formátu JSON.
+Vlastní rozhraní API umožňuje toodefine vlastní koncové body, které zveřejňují funkce serveru které není mapování tooan vložení, aktualizaci, odstranění nebo operace čtení. Pomocí vlastního rozhraní API, může mít větší kontrolu nad zasílání zpráv, včetně čtení a nastavení hlavičky protokolu HTTP zpráv a definování formátu textu zprávy kromě formátu JSON.
 
-V klientovi aplikace Android zavoláte **invokeApi** metoda k volání vlastní koncový bod rozhraní API. Následující příklad ukazuje způsob volání rozhraní API koncový bod s názvem **completeAll**, který vrátí kolekce třídy s názvem **MarkAllResult**.
+V klientovi aplikace Android volání hello **invokeApi** metoda toocall hello vlastní koncový bod rozhraní API. Hello následující příklad ukazuje, jak toocall koncový bod rozhraní API s názvem **completeAll**, který vrátí kolekce třídy s názvem **MarkAllResult**.
 
 ```java
 public void completeItem(View view) {
@@ -885,46 +885,46 @@ public void completeItem(View view) {
 }
 ```
 
-**InvokeApi** metoda je volána v klientovi, který odešle požadavek POST do nové vlastní rozhraní API. Výsledek vrácený vlastního rozhraní API zobrazí v dialogu zprávy, jako jsou všechny chyby. Jiné verze **invokeApi** umožňují volitelně odesílat objekt v textu požadavku, zadejte metodu protokolu HTTP a odeslat parametry dotazu s požadavkem. Netypová verze **invokeApi** k dispozici jsou také.
+Hello **invokeApi** metoda je volána na hello klienta, který odesílá příspěvku na žádosti toohello nové vlastní rozhraní API. Hello výsledek vrácený vlastního rozhraní API hello zobrazí v dialogu zprávy, jako jsou všechny chyby. Jiné verze **invokeApi** umožňují volitelně odesílat objekt v textu žádosti hello, zadejte metodu hello HTTP a odeslat parametry dotazu hello požadavku. Netypová verze **invokeApi** k dispozici jsou také.
 
-## <a name="authentication"></a>Přidání ověřování do aplikace
+## <a name="authentication"></a>Přidat aplikaci tooyour ověřování
 
-Podrobné kurzy již popisují postup přidání těchto funkcí.
+Kurzy již podrobně popisují, jak tooadd tyto funkce.
 
-App Service podporuje [ověřování uživatelů aplikace](app-service-mobile-android-get-started-users.md) pomocí různých zprostředkovatelů externí identity: Facebook, Google, Microsoft Account, Twitter a Azure Active Directory. Můžete nastavit oprávnění pro tabulky, pokud chcete omezit přístup pro určité operace pouze ověřené uživatele. Můžete také použít identitu ověřeného uživatele k implementaci autorizační pravidla v váš back-end.
+App Service podporuje [ověřování uživatelů aplikace](app-service-mobile-android-get-started-users.md) pomocí různých zprostředkovatelů externí identity: Facebook, Google, Microsoft Account, Twitter a Azure Active Directory. Oprávnění můžete nastavit na tabulky toorestrict přístup pro určité operace tooonly ověřeného uživatele. Můžete taky hello identity ověřené uživatele tooimplement autorizačních pravidel v váš back-end.
 
-Jsou podporovány dva ověřování toky: **server** toku a **klienta** toku. Tok serveru poskytuje nejjednodušší zkušeností ověřování, jako je závislé na webové rozhraní pro zprostředkovatele identity.  Žádné další sady SDK jsou nutné k implementaci tok ověřování serveru. Tok ověřování serveru neposkytuje těsná integrace do mobilního zařízení a doporučuje se pouze pro testování konceptu scénáře.
+Jsou podporovány dva ověřování toky: **server** toku a **klienta** toku. Vývojový server Hello poskytuje hello nejjednodušší ověřování, jako je závislé na hello identity poskytovatelů webové rozhraní.  Žádné další sady SDK jsou požadované tooimplement serveru tok ověřování. Tok ověřování serveru neposkytuje těsná integrace do mobilních zařízení hello a doporučuje se pouze pro testování konceptu scénáře.
 
-Tok klienta umožňuje hlubší integrace s funkcí konkrétní zařízení, jako je jednotné přihlašování jako přitom spoléhá na sady SDK od zprostředkovatele identity.  Například můžete integrovat Facebook SDK do své mobilní aplikace.  Mobilního klienta umožňuje přepnout do aplikace Facebook a potvrdí, vaše přihlášení před odkládací zpět do mobilní aplikace.
+tok klienta Hello umožňuje hlubší integrace s funkcí konkrétní zařízení, jako je jednotné přihlašování jako přitom spoléhá na sady SDK poskytované poskytovatelem identity hello.  Například můžete integrovat hello Facebook SDK do své mobilní aplikace.  Hello mobilního klienta umožňuje přepnout do aplikace Facebook hello a potvrdí, vaše přihlášení před odkládací back tooyour mobilní aplikace.
 
-Čtyři kroky jsou nezbytné pro povolení ověřování v aplikaci:
+Čtyři kroky jsou požadované tooenable ověřování ve vaší aplikaci:
 
 * Registrace aplikace pro ověřování pomocí zprostředkovatele identity.
 * Konfigurace back-end vaší služby App Service.
-* Omezte oprávnění tabulka ověřeného uživatele pouze na back-end služby App Service.
-* Přidání ověřovacího kódu do vaší aplikace.
+* Umožňuje omezte uživatele tooauthenticated tabulky oprávnění pouze na hello back-end služby App Service.
+* Přidáte aplikaci tooyour kód ověřování.
 
-Můžete nastavit oprávnění pro tabulky, pokud chcete omezit přístup pro určité operace pouze ověřené uživatele. Identifikátor SID ověřeného uživatele můžete také upravit požadavky.  Další informace najdete v tématu [Začínáme s ověřováním] a v dokumentaci k serveru SDK postupy.
+Oprávnění můžete nastavit na tabulky toorestrict přístup pro určité operace tooonly ověřeného uživatele. Můžete taky hello SID ověřenému uživateli toomodify požadavky.  Další informace najdete v tématu [Začínáme s ověřováním] a hello serveru SDK postupy dokumentaci.
 
 ### <a name="caching"></a>Ověřování: Tok serveru
 
-Následující kód spustí proces serveru toku přihlášení pomocí zprostředkovatele Google.  Z důvodu požadavků na zabezpečení u zprostředkovatele Google není nutná další konfigurace:
+Hello následující kód spustí proces serveru toku přihlášení pomocí zprostředkovatele hello Google.  Další konfigurace je vyžadován kvůli hello požadavky zabezpečení pro zprostředkovatele Google hello:
 
 ```java
 MobileServiceUser user = mClient.login(MobileServiceAuthenticationProvider.Google, "{url_scheme_of_your_app}", GOOGLE_LOGIN_REQUEST_CODE);
 ```
 
-Kromě toho přidejte následující metodu do hlavní třídy aktivity:
+Kromě toho přidejte následující hlavní třída aktivit metoda toohello hello:
 
 ```java
-// You can choose any unique number here to differentiate auth providers from each other. Note this is the same code at login() and onActivityResult().
+// You can choose any unique number here toodifferentiate auth providers from each other. Note this is hello same code at login() and onActivityResult().
 public static final int GOOGLE_LOGIN_REQUEST_CODE = 1;
 
 @Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     // When request completes
     if (resultCode == RESULT_OK) {
-        // Check the request code matches the one we send in the login request
+        // Check hello request code matches hello one we send in hello login request
         if (requestCode == GOOGLE_LOGIN_REQUEST_CODE) {
             MobileServiceActivityResult result = mClient.onActivityResult(data);
             if (result.isLoggedIn()) {
@@ -932,7 +932,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
                 createAndShowDialog(String.format("You are now logged in - %1$2s", mClient.getCurrentUser().getUserId()), "Success");
                 createTable();
             } else {
-                // login failed, check the error message
+                // login failed, check hello error message
                 String errorMessage = result.getErrorMessage();
                 createAndShowDialog(errorMessage, "Error");
             }
@@ -941,9 +941,9 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ```
 
-`GOOGLE_LOGIN_REQUEST_CODE` Definované v vaší hlavní aktivita se používá pro `login()` metoda a v `onActivityResult()` metoda.  Jedinečné číslo, můžete tak dlouho, dokud se v rámci používá stejné číslo `login()` metoda a `onActivityResult()` metoda.  Pokud jste abstraktní kód klienta do služby adaptér (jak je uvedeno výše), by měly volat metody odpovídající na adaptéru služby.
+Hello `GOOGLE_LOGIN_REQUEST_CODE` definované v vaší hlavní aktivita se používá pro hello `login()` metoda a v rámci hello `onActivityResult()` metoda.  Jedinečné číslo, můžete tak dlouho, dokud hello se používá stejné číslo v rámci hello `login()` metoda a hello `onActivityResult()` metoda.  Pokud jste abstraktní hello kód klienta do služby adaptér (jak je uvedeno výše), by měly volat metody odpovídající hello na adaptéru služby hello.
 
-Musíte také nakonfigurovat projekt pro customtabs.  Nejdřív zadejte adresu URL přesměrování.  Přidejte následující fragment k `AndroidManifest.xml`:
+Budete také potřebovat pro customtabs tooconfigure hello projektu.  Nejdřív zadejte adresu URL přesměrování.  Přidejte následující fragment kódu příliš hello`AndroidManifest.xml`:
 
 ```xml
 <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity">
@@ -956,7 +956,7 @@ Musíte také nakonfigurovat projekt pro customtabs.  Nejdřív zadejte adresu U
 </activity>
 ```
 
-Přidat **redirectUriScheme** k `build.gradle` souboru aplikace:
+Přidat hello **redirectUriScheme** toohello `build.gradle` souboru aplikace:
 
 ```text
 android {
@@ -973,7 +973,7 @@ android {
 }
 ```
 
-Nakonec přidejte `com.android.support:customtabs:23.0.1` v seznamu závislostí `build.gradle` souboru:
+Nakonec přidejte `com.android.support:customtabs:23.0.1` toohello aplikací v hello `build.gradle` souboru:
 
 ```text
 dependencies {
@@ -987,24 +987,24 @@ dependencies {
 }
 ```
 
-Získání ID přihlášeného uživatele z **MobileServiceUser** pomocí **reprezentuje getUserId** metoda. Příklad použití tříd Future k volání asynchronní přihlášení rozhraní API, naleznete v části [Začínáme s ověřováním].
+Získat ID hello hello přihlášeného uživatele z **MobileServiceUser** pomocí hello **reprezentuje getUserId** metoda. Příklad jak toouse Futures toocall hello asynchronní přihlášení rozhraní API, naleznete v části [Začínáme s ověřováním].
 
 > [!WARNING]
-> Schéma adresy URL uvedené rozlišuje velká a malá písmena.  Ujistěte se, že všechny výskyty `{url_scheme_of_you_app}` malá a velká písmena.
+> Hello schéma adresy URL uvedené rozlišuje velká a malá písmena.  Ujistěte se, že všechny výskyty `{url_scheme_of_you_app}` malá a velká písmena.
 
 ### <a name="caching"></a>Tokeny ověřování do mezipaměti
 
-Ukládání do mezipaměti tokeny ověřování vyžaduje, abyste pro ukládání ID uživatele a ověřovací token místně na zařízení. Při příštím spuštění aplikace, zkontrolujte mezipaměti, a pokud nejsou tyto hodnoty, můžete přeskočit protokolu v postupu a rehydrataci při spotřebě klienta se tato data. Ale tato data jsou citlivé a by měly být uložené šifrována pro zabezpečení v případě, že získá odcizení telefonu.  Zobrazí úplný příklad toho, jak do mezipaměti ověřování tokenů v [mezipaměti část tokeny ověřování][7].
+Ukládání do mezipaměti tokeny ověřování vyžaduje toostore hello ID uživatele a ověřovací token místně na hello zařízení. Hello příštím spuštění aplikace hello, můžete zkontrolujte hello mezipaměti, a pokud nejsou tyto hodnoty, můžete přeskočit hello protokolu v postupu a rehydrataci při spotřebě hello klienta s těmito daty. Ale tato data jsou citlivé a by měly být uložené šifrována pro zabezpečení v případě, že získá odcizení hello phone.  Zobrazí kompletní příklad, jak jak toocache ověřování tokenů v [mezipaměti část tokeny ověřování][7].
 
-Když se pokusíte použít tokenu vypršela platnost, zobrazí se *401 Neautorizováno* odpovědi. Může zpracovávat ověřování chyb pomocí filtrů.  Filtry zachycení požadavků na back-end služby App Service. Kód filtru testy odpovědi na 401, spustí proces přihlášení a potom obnoví žádost, která generovala kód 401.
+Když zkusíte toouse tokenu vypršela platnost, zobrazí se *401 Neautorizováno* odpovědi. Může zpracovávat ověřování chyb pomocí filtrů.  Filtry intercept požadavky toohello back-end služby App Service. kód filtru Hello testy hello odpovědi na 401, aktivuje hello přihlašovací proces a potom obnoví hello žádosti, která vygenerovala hello 401.
 
 ### <a name="refresh"></a>Použití obnovovacích tokenů
 
-Token vrácený Azure App Service ověřování a autorizace má definovaná životnosti jednu hodinu.  Po uplynutí této doby musí novému ověření uživatele.  Pokud používáte dlohotrvající token, který jste obdrželi prostřednictvím ověřování tok klienta a pak můžete novému ověření pomocí Azure App Service ověřování a autorizace pomocí jednoho tokenu.  Další token služby Azure App Service je vytvořen s novou životnost.
+Hello token vrácený Azure App Service ověřování a autorizace má definovaná životnosti jednu hodinu.  Po uplynutí této doby musí novému ověření uživatele hello.  Pokud jste dlohotrvající token, který jste obdrželi prostřednictvím ověřování tok klienta a pak můžete novému ověření pomocí Azure App Service ověřování a autorizace pomocí hello stejný token.  Další token služby Azure App Service je vytvořen s novou životnost.
 
-Můžete také registrovat zprostředkovatele, který má použít aktualizaci tokeny.  Aktualizovat Token není vždy k dispozici.  Je vyžadována další konfigurace:
+Můžete také registrovat toouse hello poskytovatele aktualizaci tokeny.  Aktualizovat Token není vždy k dispozici.  Je vyžadována další konfigurace:
 
-* Pro **Azure Active Directory**, nakonfigurovat sdílený tajný klíč klienta pro aplikaci Azure Active Directory.  Zadejte sdílený tajný klíč klienta v Azure App Service při konfiguraci ověřování Azure Active Directory.  Při volání metody `.login()`, předat `response_type=code id_token` jako parametr:
+* Pro **Azure Active Directory**, nakonfigurujte tajný klíč klienta pro hello aplikaci služby Azure Active Directory.  Zadejte sdílený tajný klíč klienta hello v hello Azure App Service při konfiguraci ověřování Azure Active Directory.  Při volání metody `.login()`, předat `response_type=code id_token` jako parametr:
 
     ```java
     HashMap<String, String> parameters = new HashMap<String, String>();
@@ -1016,7 +1016,7 @@ Můžete také registrovat zprostředkovatele, který má použít aktualizaci t
         parameters);
     ```
 
-* Pro **Google**, předat `access_type=offline` jako parametr:
+* Pro **Google**, předat hello `access_type=offline` jako parametr:
 
     ```java
     HashMap<String, String> parameters = new HashMap<String, String>();
@@ -1028,9 +1028,9 @@ Můžete také registrovat zprostředkovatele, který má použít aktualizaci t
         parameters);
     ```
 
-* Pro **Account Microsoft**, vyberte `wl.offline_access` oboru.
+* Pro **Account Microsoft**, vyberte hello `wl.offline_access` oboru.
 
-Chcete-li aktualizovat token, volejte `.refreshUser()`:
+volání toorefresh token, `.refreshUser()`:
 
 ```java
 MobileServiceUser user = mClient
@@ -1038,15 +1038,15 @@ MobileServiceUser user = mClient
     .get();
 ```
 
-Jako osvědčený postup vytvoření filtru, který zjistí 401 odpověď ze serveru a pokusí se aktualizovat token uživatele.
+Jako osvědčený postup vytvoření filtru, který zjistí 401 odpověď ze serveru hello a pokusí toorefresh hello uživatelského tokenu.
 
 ## <a name="log-in-with-client-flow-authentication"></a>Přihlaste se pomocí ověřování tok klienta
 
-Obecný postup přihlášení pomocí ověřování tok klienta vypadá takto:
+Obecný postup Hello přihlášení pomocí ověřování tok klienta vypadá takto:
 
 * Konfigurace Azure App Service ověřování a autorizaci, stejně jako server tok ověřování.
-* Integrate zprostředkovatele ověřování SDK pro ověřování a vytvořit token přístupu.
-* Volání `.login()` metoda následujícím způsobem:
+* Integrate zprostředkovatele ověřování hello SDK pro ověřování tooproduce přístupový token.
+* Volání hello `.login()` metoda následujícím způsobem:
 
     ```java
     JSONObject payload = new JSONObject();
@@ -1064,14 +1064,14 @@ Obecný postup přihlášení pomocí ověřování tok klienta vypadá takto:
     });
     ```
 
-Nahraďte `onSuccess()` metoda s ať kódu je chcete použít v úspěšném přihlášení.  `{provider}` Řetězec je platný zprostředkovatel: **aad** (Azure Active Directory), **facebook**, **google**, **microsoftaccount**, nebo **twitter**.  Pokud jste implementovali vlastní ověřování, můžete také použít poskytovatele značky vlastního ověřování.
+Nahraďte hello `onSuccess()` metoda s ať vám kód chcete toouse na úspěšného přihlášení.  Hello `{provider}` řetězec je platný zprostředkovatel: **aad** (Azure Active Directory), **facebook**, **google**, **microsoftaccount**, nebo **twitter**.  Pokud jste implementovali vlastní ověřování, můžete také použít hello vlastního ověřování zprostředkovatele značky.
 
-### <a name="adal"></a>Ověřování uživatelů pomocí Active Directory Authentication Library (ADAL)
+### <a name="adal"></a>Ověřuje uživatele pomocí hello Active Directory Authentication Library (ADAL)
 
-Active Directory Authentication Library (ADAL) můžete použít pro přihlášení uživatelů do vaší aplikace pomocí Azure Active Directory. Pomocí přihlášení toku klienta je často vhodnější než použít `loginAsync()` metody jak poskytuje více nativní UX chování a umožňuje pro další přizpůsobení.
+Můžete vytvořit hello Active Directory Authentication Library (ADAL) toosign uživatelů do vaší aplikace pomocí Azure Active Directory. Pomocí přihlášení toku klienta je často vhodnější toousing hello `loginAsync()` metody jak poskytuje více nativní UX chování a umožňuje pro další přizpůsobení.
 
-1. Podle konfigurace váš back-end mobilní aplikace při přihlášení AAD [jak nakonfigurovat App Service pro přihlášení služby Active Directory] [ 22] kurzu. Ujistěte se, že dokončení volitelný krok registrace nativní klientskou aplikaci.
-2. Nainstalujte ADAL úpravou souboru build.gradle zahrnout následující definice:
+1. Nakonfigurujte následující hello váš back-end mobilní aplikace při přihlášení AAD [jak tooconfigure aplikaci služby pro služby Active Directory přihlášení] [ 22] kurzu. Ujistěte se, že toocomplete hello volitelný krok registrace nativní klientskou aplikaci.
+2. Nainstalujte ADAL změnou vaší hello tooinclude souboru build.gradle následující definice:
 
 ```
 repositories {
@@ -1096,12 +1096,12 @@ dependencies {
 }
 ```
 
-1. Přidejte následující kód k vaší aplikaci, provedení náhrady následující:
+1. Přidejte následující kód tooyour aplikace, která hello následující náhrady hello:
 
-* Nahraďte **INSERT. AUTORITY zde** s názvem klienta, ve kterém jste zřídili vaší aplikace. Formát by měl být https://login.microsoftonline.com/contoso.onmicrosoft.com.
-* Nahraďte **INSERT-RESOURCE-ID-zde** s ID klienta pro váš back-end mobilní aplikace. Můžete získat ID klienta z **Upřesnit** v části **nastavení Azure Active Directory** na portálu.
-* Nahraďte **INSERT klienta ID zde** s ID klienta, který jste zkopírovali z nativní klientskou aplikaci.
-* Nahraďte **vložení PŘESMĚROVÁNÍ URI zde** s vaší lokality */.auth/login/done* koncový bod, pomocí schéma HTTPS. Tato hodnota by měla být podobná *https://contoso.azurewebsites.net/.auth/login/done*.
+* Nahraďte **INSERT. AUTORITY zde** s názvem hello hello klienta, ve kterém jste zřídili vaší aplikace. Hello formát by měl být https://login.microsoftonline.com/contoso.onmicrosoft.com.
+* Nahraďte **INSERT-RESOURCE-ID-zde** s ID klienta hello back-endu mobilní aplikace. ID klienta hello můžete získat z hello **Upřesnit** v části **nastavení Azure Active Directory** hello portálu.
+* Nahraďte **INSERT klienta ID zde** s ID klienta hello jste zkopírovali ze hello nativní klientskou aplikaci.
+* Nahraďte **vložení PŘESMĚROVÁNÍ URI zde** s vaší lokality */.auth/login/done* koncový bod, pomocí hello schéma HTTPS. Tato hodnota by mělo být podobné příliš*https://contoso.azurewebsites.net/.auth/login/done*.
 
 ```java
 private AuthenticationContext mContext;
@@ -1166,19 +1166,19 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ```
 
-## <a name="filters"></a>Upravit komunikaci klienta se serverem
+## <a name="filters"></a>Upravit hello komunikaci klienta se serverem
 
-Připojení klienta je obvykle základní připojení HTTP pomocí základní knihovny HTTP součástí sady SDK pro Android.  Tady je několik důvodů, proč byste měli změnit, který:
+Hello připojení klienta je obvykle základní připojení HTTP pomocí hello základní knihovna HTTP dodává s hello sady SDK pro Android.  Tady je několik důvodů, proč byste měli toochange který:
 
-* Chcete použít alternativní knihovny HTTP upravit vypršení časových limitů.
-* Chcete poskytovat indikátor průběhu.
-* Chcete přidat vlastní hlavičku pro podporu funkcí správy rozhraní API.
-* Chcete zachytit neúspěšných odpovědí proto, že můžete implementovat opětovné ověření.
-* Chcete protokolovat požadavky na back-end do služby analýzy.
+* Chcete toouse alternativní HTTP knihovny tooadjust vypršení časových limitů.
+* Chcete tooprovide indikátor průběhu.
+* Chcete tooadd funkce správy toosupport rozhraní API vlastní hlavičky.
+* Chcete toointercept neúspěšných odpovědí proto, že můžete implementovat opětovné ověření.
+* Chcete toolog back-end požadavky tooan analytics službu.
 
 ### <a name="using-an-alternate-http-library"></a>Pomocí alternativní knihovny HTTP
 
-Volání `.setAndroidHttpClientFactory()` metoda ihned po vytvoření odkaz na klienta.  Chcete-li například nastavit časový limit připojení na 60 sekund (místo výchozího 10 sekund):
+Volání hello `.setAndroidHttpClientFactory()` metoda ihned po vytvoření odkaz na klienta.  Například tooset hello připojení časový limit too60 v sekundách (namísto výchozí hello 10 sekund):
 
 ```java
 mClient = new MobileServiceClient("https://myappname.azurewebsites.net");
@@ -1195,7 +1195,7 @@ mClient.setAndroidHttpClientFactory(new OkHttpClientFactory() {
 
 ### <a name="implement-a-progress-filter"></a>Implementace filtru průběh
 
-Zachycení každou žádost můžete implementovat implementací `ServiceFilter`.  Následující aktualizace například předem vytvořené indikátor průběhu:
+Zachycení každou žádost můžete implementovat implementací `ServiceFilter`.  Například následující hello aktualizací indikátor průběhu předem vytvořené:
 
 ```java
 private class ProgressFilter implements ServiceFilter {
@@ -1232,7 +1232,7 @@ private class ProgressFilter implements ServiceFilter {
 }
 ```
 
-Tento filtr je možné připojit klienta následujícím způsobem:
+Tento klient toohello filtru můžete připojit následujícím způsobem:
 
 ```java
 mClient = new MobileServiceClient(applicationUrl).withFilter(new ProgressFilter());
@@ -1240,7 +1240,7 @@ mClient = new MobileServiceClient(applicationUrl).withFilter(new ProgressFilter(
 
 ### <a name="customize-request-headers"></a>Přizpůsobení hlavičky požadavku
 
-Použijte následující `ServiceFilter` a připojte filtr stejným způsobem jako `ProgressFilter`:
+Použijte hello `ServiceFilter` a připojte hello filtru v hello stejným způsobem jako hello `ProgressFilter`:
 
 ```java
 private class CustomHeaderFilter implements ServiceFilter {
@@ -1265,7 +1265,7 @@ private class CustomHeaderFilter implements ServiceFilter {
 
 ### <a name="conversions"></a>Konfigurace automatického serializace
 
-Můžete zadat převod strategie, která platí pro každý sloupec s použitím [gson] [ 3] rozhraní API. Android Klientská knihovna používá [gson] [ 3] na pozadí a serializovat objekty Java do formátu JSON data předtím, než odešle data do služby Azure App Service.  Následující kód používá **setFieldNamingStrategy()** metoda k nastavení strategie. Tento příklad odstraní počáteční znak ("m") a pak malá další znak, pro každý název pole. Například ho by zapnout "střední" do "id".  Implementace převod strategie pro snížení nároků na `SerializedName()` poznámky na většina polí.
+Můžete zadat převod strategie, která se použije tooevery sloupce s použitím hello [gson] [ 3] rozhraní API. Hello Android Klientská knihovna používá [gson] [ 3] pozadí hello tooserialize Java objekty tooJSON dat před odesláním dat hello tooAzure služby App Service.  Hello následující kód používá hello **setFieldNamingStrategy()** metoda tooset hello strategie. Tento příklad odstraní hello počáteční znak ("m") a pak malá hello další znak, pro každý název pole. Například ho by zapnout "střední" do "id".  Implementace převod strategie tooreduce hello nutnost `SerializedName()` poznámky na většina polí.
 
 ```java
 FieldNamingStrategy namingStrategy = new FieldNamingStrategy() {
@@ -1282,7 +1282,7 @@ client.setGsonBuilder(
 );
 ```
 
-Tento kód musí být spuštěn před vytvořením odkazu mobilního klienta pomocí **MobileServiceClient**.
+Tento kód musí být spuštěn před vytvořením mobilního klienta odkaz pomocí hello **MobileServiceClient**.
 
 <!-- URLs. -->
 [Get started with Azure Mobile Apps]: app-service-mobile-android-get-started.md

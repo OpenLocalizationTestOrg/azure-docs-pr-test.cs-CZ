@@ -1,6 +1,6 @@
 ---
-title: "Funkce šablon Azure Resource Manager - porovnání | Microsoft Docs"
-description: "Popisuje funkce pro použití pro porovnání hodnot v šablonu Azure Resource Manager."
+title: "funkce pro šablony správce prostředků ze aaaAzure - porovnání | Microsoft Docs"
+description: "Popisuje funkce toouse hello hodnoty toocompare šablony Azure Resource Manager."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: 521e5ed06c138bcd374913588f06a2e6c1e99963
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ebcfc9ed6c93f8b540ec4c066e9457c621800b7b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Porovnání funkce pro šablony Azure Resource Manager
 
@@ -39,16 +39,16 @@ Kontroluje, zda dvě hodnoty rovny navzájem.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int, string, pole nebo objekt |První hodnota ke kontrole rovnosti. |
-| arg2 |Ano |int, string, pole nebo objekt |Druhá hodnota ke kontrole rovnosti. |
+| arg1 |Ano |int, string, pole nebo objekt |Hello první hodnota toocheck rovnosti. |
+| arg2 |Ano |int, string, pole nebo objekt |Hello druhá hodnota toocheck rovnosti. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **True** Pokud hodnoty jsou stejné, jinak hodnota **False**.
+Vrátí **True** Pokud hello hodnoty jsou stejné, jinak hodnota **False**.
 
 ### <a name="remarks"></a>Poznámky
 
-Funkce rovná se často používá u `condition` elementu, který chcete otestovat, zda je nasazená prostředku.
+Hello funkce rovná se často používá u hello `condition` element tootest tom, jestli je nasazený prostředku.
 
 ```json
 {
@@ -67,7 +67,7 @@ Funkce rovná se často používá u `condition` elementu, který chcete otestov
 
 ### <a name="example"></a>Příklad
 
-Příklad šablony kontroluje různé typy hodnot rovnosti. Všechny výchozí hodnoty vrátí hodnotu True.
+Příklad šablony Hello kontroluje různé typy hodnot rovnosti. Všechny hello výchozí hodnoty, vrátí hodnotu True.
 
 ```json
 {
@@ -130,7 +130,7 @@ Příklad šablony kontroluje různé typy hodnot rovnosti. Všechny výchozí h
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -140,7 +140,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | checkObjects | BOOL | True |
 
 
-Následující příklad používá [není](resource-group-template-functions-logical.md#not) s **rovná**.
+Hello následující příklad používá [není](resource-group-template-functions-logical.md#not) s **rovná**.
 
 ```json
 {
@@ -156,7 +156,7 @@ Následující příklad používá [není](resource-group-template-functions-lo
     }
 ```
 
-Výstup z předchozího příkladu je:
+výstup Hello z hello předchozím příkladu je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -166,22 +166,22 @@ Výstup z předchozího příkladu je:
 ## <a name="greater"></a>větší
 `greater(arg1, arg2)`
 
-Kontroluje, zda je první hodnota je větší než druhá hodnota.
+Kontroluje, zda text hello, první hodnota je větší než druhá hodnota, která hello.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int nebo string |První hodnota větší porovnání. |
-| arg2 |Ano |int nebo string |Druhá hodnota, pro větší porovnání. |
+| arg1 |Ano |int nebo string |Hello první hodnotu pro porovnání větší hello. |
+| arg2 |Ano |int nebo string |Druhá hodnota Hello větší porovnání hello. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **True** Pokud první hodnota je větší než druhá hodnota, jinak hodnota **False**.
+Vrátí **True** Pokud hello první hodnota je větší než druhá hodnota, která hello; v opačném **False**.
 
 ### <a name="example"></a>Příklad
 
-Příklad šablony zkontroluje, zda je větší než druhá jednu hodnotu.
+Příklad šablony Hello zkontroluje, zda je větší než hello jiných hello jednu hodnotu.
 
 ```json
 {
@@ -220,7 +220,7 @@ Příklad šablony zkontroluje, zda je větší než druhá jednu hodnotu.
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -231,22 +231,22 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="greaterorequals"></a>greaterOrEquals
 `greaterOrEquals(arg1, arg2)`
 
-Kontroluje, zda je první hodnota je větší než nebo rovna hodnotě druhá hodnota.
+Kontroluje, zda text hello, první hodnota je větší než nebo rovna toohello druhá hodnota.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int nebo string |První hodnotu pro porovnání větší nebo rovna. |
-| arg2 |Ano |int nebo string |Druhá hodnota pro porovnání větší nebo rovna. |
+| arg1 |Ano |int nebo string |Hello první hodnotu pro porovnání větší nebo rovna hello. |
+| arg2 |Ano |int nebo string |Druhá hodnota Hello hello větší nebo rovna porovnání. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **True** Pokud první hodnota je větší než nebo rovno druhá hodnota, jinak hodnota **False**.
+Vrátí **True** Pokud hello první hodnota je druhá hodnota větší než nebo rovna toohello; jinak **False**.
 
 ### <a name="example"></a>Příklad
 
-Příklad šablony kontroluje, zda jedna hodnota je větší než nebo rovna hodnotě dalších.
+Hello příklad šablony kontroluje, zda text hello jedna hodnota je větší než nebo rovna toohello jiné.
 
 ```json
 {
@@ -285,7 +285,7 @@ Příklad šablony kontroluje, zda jedna hodnota je větší než nebo rovna hod
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -297,22 +297,22 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="less"></a>menší
 `less(arg1, arg2)`
 
-Kontroluje, zda je první hodnota menší než druhá hodnota.
+Kontroluje, zda text hello první hodnota je menší než hello druhá hodnota.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int nebo string |První hodnota menší porovnání. |
-| arg2 |Ano |int nebo string |Druhá hodnota pro menší porovnání. |
+| arg1 |Ano |int nebo string |Hello první hodnota hello méně porovnání. |
+| arg2 |Ano |int nebo string |Hello druhá hodnota pro hello méně porovnání. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **True** Pokud první hodnota je menší než druhá hodnota, jinak hodnota **False**.
+Vrátí **True** Pokud hello první hodnota je menší než hello druhý hodnotu; jinak **False**.
 
 ### <a name="example"></a>Příklad
 
-Příklad šablony kontroluje, zda jedna hodnota je menší než druhý.
+Hello příklad šablony kontroluje, zda hello jedna hodnota je menší než hello jiné.
 
 ```json
 {
@@ -351,7 +351,7 @@ Příklad šablony kontroluje, zda jedna hodnota je menší než druhý.
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -362,22 +362,22 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="lessorequals"></a>lessOrEquals
 `lessOrEquals(arg1, arg2)`
 
-Kontroluje, zda je první hodnota menší než nebo rovna hodnotě druhá hodnota.
+Zkontroluje, zda text hello, první hodnota je menší než nebo rovna toohello druhá hodnota.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int nebo string |První hodnota je menší nebo rovná porovnání. |
-| arg2 |Ano |int nebo string |Druhá hodnota je menší nebo rovná porovnání. |
+| arg1 |Ano |int nebo string |první hodnota Hello hello menší nebo rovná porovnání. |
+| arg2 |Ano |int nebo string |Druhá hodnota, která pro hello Hello menší nebo rovno porovnání. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **True** Pokud první hodnota je menší než nebo rovna hodnotě druhý; jinak hodnota **False**.
+Vrátí **True** Pokud hello první hodnota je menší než nebo rovna toohello druhá hodnota, jinak hodnota **False**.
 
 ### <a name="example"></a>Příklad
 
-Příklad šablony kontroluje, zda jedna hodnota je menší než nebo rovna na druhý.
+Hello příklad šablony zkontroluje, zda hello jedna hodnota je menší než nebo rovna toohello jiné.
 
 ```json
 {
@@ -416,7 +416,7 @@ Příklad šablony kontroluje, zda jedna hodnota je menší než nebo rovna na d
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -426,8 +426,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 
 ## <a name="next-steps"></a>Další kroky
-* Popis v částech šablonu Azure Resource Manager naleznete v tématu [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md).
-* Sloučit několik šablon, najdete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
-* K iteraci v zadaného počtu opakování při vytváření typu prostředku, najdete v části [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md).
-* Postup nasazení šablony, které jste vytvořili, najdete v sekci [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
+* Popis části hello šablonu Azure Resource Manager naleznete v tématu [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md).
+* toomerge několik šablon, najdete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
+* tooiterate zadaného počtu opakování při vytváření typu prostředku, najdete v části [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md).
+* toosee způsobu toodeploy hello šablony vytvoříte, najdete v [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
 

@@ -14,17 +14,17 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: saeedakhter-msft
-ms.openlocfilehash: d5a3c0a323b31696d39e3d2b36317dec3a2337d7
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 6f00995e54c9f9ef27cc51e38f3de07cd5817cc1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C: Konfigurace ve vlastních zásadách pro přizpůsobení uživatelského rozhraní
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Po dokončení tohoto článku, budete mít vlastní zásady registrace a přihlášení pomocí značky a vzhled. S Azure Active Directory B2C (Azure AD B2C), můžete získat téměř plnou kontrolu nad obsah HTML a CSS, který se zobrazí uživatelům. Pokud používáte vlastní zásadu, nakonfigurujete přizpůsobení uživatelského rozhraní v kódu XML místo použití ovládacích prvků na portálu Azure. 
+Po dokončení tohoto článku, budete mít vlastní zásady registrace a přihlášení pomocí značky a vzhled. S Azure Active Directory B2C (Azure AD B2C), můžete získat téměř plnou kontrolu nad hello obsah HTML a CSS, má uvedené toousers. Pokud používáte vlastní zásadu, nakonfigurujete přizpůsobení uživatelského rozhraní v kódu XML místo použití ovládacích prvků v hello portálu Azure. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,15 +32,15 @@ Než začnete, dokončení [Začínáme s vlastními zásadami](active-directory
 
 ## <a name="page-ui-customization"></a>Přizpůsobení uživatelského rozhraní stránky
 
-Pomocí funkce přizpůsobení uživatelského rozhraní stránky můžete přizpůsobit vzhled a chování žádné vlastní zásady. Můžete také udržovat značky a visual konzistenci mezi aplikací a Azure AD B2C.
+Pomocí funkce přizpůsobení uživatelského rozhraní stránky hello můžete přizpůsobit hello vzhledu a chování žádné vlastní zásady. Můžete také udržovat značky a visual konzistenci mezi aplikací a Azure AD B2C.
 
-Zde je, jak to funguje: Azure AD B2C spuštěním kódu v prohlížeči vašeho zákazníka a používá moderní přístup názvem [sdílení prostředků různých původů (CORS)](http://www.w3.org/TR/cors/). Nejdřív zadejte adresu URL ve vlastních zásadách s přizpůsobený obsah HTML. Azure AD B2C sloučí elementy uživatelského rozhraní pomocí obsah HTML, který je načten z vaší adresy URL a potom zobrazí stránku zákazník.
+Zde je, jak to funguje: Azure AD B2C spuštěním kódu v prohlížeči vašeho zákazníka a používá moderní přístup názvem [sdílení prostředků různých původů (CORS)](http://www.w3.org/TR/cors/). Nejdřív zadejte adresu URL ve vlastních zásadách hello s přizpůsobený obsah HTML. Azure AD B2C sloučí elementy uživatelského rozhraní pomocí hello obsah HTML, který je načten z vaší adresy URL a potom zobrazí hello stránky toohello zákazníka.
 
 ## <a name="create-your-html5-content"></a>Vytvoření vaší HTML5 obsahu
 
-Vytváření obsahu s názvem vašeho produktu značky HTML v názvu.
+Vytváření obsahu s názvem vašeho produktu značky HTML v hlavě hello.
 
-1. Zkopírujte následující fragment kódu HTML. Je ve správném formátu názvem HTML5 s prázdný element  *\<div id = "api"\>\</div\>*  umístěné v rámci  *\<textu\>*  značky. Tento element určuje, kde Azure AD B2C obsah má být vložen.
+1. Zkopírujte hello následující fragment kódu HTML. Je ve správném formátu názvem HTML5 s prázdný element  *\<div id = "api"\>\</div\>*  umístěné v rámci hello  *\<textu\>*  značky. Tento element určuje, kde je obsah Azure AD B2C toobe vložit.
 
    ```html
    <!DOCTYPE html>
@@ -55,60 +55,60 @@ Vytváření obsahu s názvem vašeho produktu značky HTML v názvu.
    ```
 
    >[!NOTE]
-   >Z bezpečnostních důvodů je používání jazyka JavaScript aktuálně blokován pro přizpůsobení.
+   >Z bezpečnostních důvodů je aktuálně blokován hello pomocí jazyka JavaScript pro přizpůsobení.
 
-2. Vložte zkopírovaný fragment v textovém editoru a pak soubor uložte jako *přizpůsobit ui.html*.
+2. Vložte fragment hello zkopírovali v textovém editoru a pak uložte soubor hello jako *přizpůsobit ui.html*.
 
 ## <a name="create-an-azure-blob-storage-account"></a>Vytvoření účtu úložiště objektů Blob v Azure
 
 >[!NOTE]
-> V tomto článku používáme úložiště objektů Blob v Azure k hostování náš obsah. Je možné hostovat obsah na webovém serveru, ale musíte [povolení CORS na vašem webovém serveru](https://enable-cors.org/server.html).
+> V tomto článku používáme toohost úložiště objektů Blob v Azure náš obsah. Můžete zvolit toohost obsah na webovém serveru, ale musíte [povolení CORS na vašem webovém serveru](https://enable-cors.org/server.html).
 
-Chcete-li hostovat tento obsah HTML v úložišti objektů Blob, postupujte takto:
+toohost tento obsah HTML v úložišti objektů Blob, hello následující:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na **rozbočovače** nabídce vyberte možnost **nový** > **úložiště** > **účet úložiště**.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
+2. Na hello **rozbočovače** nabídce vyberte možnost **nový** > **úložiště** > **účet úložiště**.
 3. Zadejte jedinečný **název** pro váš účet úložiště.
 4. **Model nasazení** může zůstat **Resource Manager**.
-5. Změna **druh účtu** k **úložiště objektů Blob**.
+5. Změna **druh účtu** příliš**úložiště objektů Blob**.
 6. **Výkon** může zůstat **standardní**.
 7. **Replikace** může zůstat **RA-GRS**.
 8. **Úroveň přístupu** může zůstat **horká**.
 9. **Šifrování služby úložiště** může zůstat **zakázané**.
 10. Vyberte **předplatné** pro váš účet úložiště.
 11. Vytvoření **skupiny prostředků** nebo vyberte nějaký existující.
-12. Vyberte **zeměpisné polohy** pro váš účet úložiště.
-13. Vytvořte účet úložiště kliknutím na **Vytvořit**.  
-    Po dokončení nasazení **účet úložiště** automaticky otevře se okno.
+12. Vyberte hello **zeměpisné polohy** pro váš účet úložiště.
+13. Klikněte na tlačítko **vytvořit** účet úložiště toocreate hello.  
+    Po dokončení nasazení hello hello **účet úložiště** automaticky otevře se okno.
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Pokud chcete vytvořit veřejném kontejneru v úložiště objektů Blob, postupujte takto:
+toocreate veřejném kontejneru v úložiště objektů Blob, hello následující:
 
-1. Klikněte **přehled** kartě.
+1. Klikněte na tlačítko hello **přehled** kartě.
 2. Klikněte na tlačítko **kontejneru**.
 3. Pro **název**, typ **$root**.
-4. Nastavit **přistupovat typu** k **Blob**.
-5. Klikněte na tlačítko **$root** otevřete nový kontejner.
+4. Nastavit **přistupovat typu** příliš**Blob**.
+5. Klikněte na tlačítko **$root** tooopen hello nový kontejner.
 6. Klikněte na **Odeslat**.
-7. Klikněte na ikonu složky vedle **vyberte soubor**.
-8. Přejděte na **přizpůsobit ui.html**, který jste vytvořili předtím v [přizpůsobení uživatelského rozhraní stránky](#the-page-ui-customization-feature) části.
+7. Klikněte na ikonu složky hello další příliš**vyberte soubor**.
+8. Přejděte příliš**přizpůsobit ui.html**, který jste vytvořili dříve v hello [přizpůsobení uživatelského rozhraní stránky](#the-page-ui-customization-feature) části.
 9. Klikněte na **Odeslat**.
-10. Vyberte objekt blob přizpůsobit ui.html, který jste nahráli.
-11. Vedle **URL**, klikněte na tlačítko **kopie**.
-12. V prohlížeči vložte zkopírovanou adresu URL a přejděte na web. Pokud je lokalita nedostupné, ujistěte se, že typ přístupu kontejneru je nastaven na **blob**.
+10. Vyberte hello přizpůsobit ui.html objekt blob, který jste nahráli.
+11. Další příliš**URL**, klikněte na tlačítko **kopie**.
+12. V prohlížeči vložte adresu URL zkopírovat hello a toohello společnosti. Pokud lokalita hello je nedostupné, ujistěte se, typ přístupu kontejneru hello je nastaven příliš**blob**.
 
 ## <a name="configure-cors"></a>Konfigurace CORS
 
-Konfigurace úložiště objektů Blob pro sdílení prostředků různého původu následujícím způsobem:
+Nakonfigurujte úložiště objektů Blob pro sdílení prostředků různého původu pomocí hello následující:
 
 >[!NOTE]
->Chcete vyzkoušet funkce přizpůsobení uživatelského rozhraní pomocí naše ukázka HTML a CSS obsahu? Nabízíme [jednoduché pomocný nástroj](active-directory-b2c-reference-ui-customization-helper-tool.md) , odešle a nakonfiguruje naše ukázkový obsah na vašem účtu úložiště objektů Blob. Pokud použijete nástroj, přeskočit na [upravte registrace nebo přihlášení vlastní zásady](#modify-your-sign-up-or-sign-in-custom-policy).
+>Chcete tootry out hello funkce přizpůsobení uživatelského rozhraní pomocí našich ukázkový kód HTML a CSS obsah? Nabízíme [jednoduché pomocný nástroj](active-directory-b2c-reference-ui-customization-helper-tool.md) , odešle a nakonfiguruje naše ukázkový obsah na vašem účtu úložiště objektů Blob. Pokud použijete nástroj hello, přeskočit příliš[upravte registrace nebo přihlášení vlastní zásady](#modify-your-sign-up-or-sign-in-custom-policy).
 
-1. Na **úložiště** okno, v části **nastavení**, otevřete **CORS**.
+1. Na hello **úložiště** okno, v části **nastavení**, otevřete **CORS**.
 2. Klikněte na tlačítko **Přidat**.
 3. Pro **povolené zdroje**, zadejte hvězdičku (\*).
-4. V **povolených operací** rozevíracího seznamu, vyberte **získat** a **možnosti**.
+4. V hello **povolených operací** rozevíracího seznamu, vyberte **získat** a **možnosti**.
 5. Pro **povolené hlavičky**, zadejte hvězdičku (\*).
 6. Pro **zveřejněné hlavičky**, zadejte hvězdičku (\*).
 7. Pro **maximální stáří (v sekundách)**, typ **200**.
@@ -116,15 +116,15 @@ Konfigurace úložiště objektů Blob pro sdílení prostředků různého pův
 
 ## <a name="test-cors"></a>Test CORS
 
-Ověřte, že jste připraveni následujícím způsobem:
+Ověřte, že jste připraveni díky hello následující:
 
-1. Přejděte na [test cors.org](http://test-cors.org/) webu a vložte adresu URL v **vzdálenou adresou URL** pole.
+1. Přejděte toohello [test cors.org](http://test-cors.org/) webu a vložte adresu URL hello v hello **vzdálenou adresou URL** pole.
 2. Klikněte na tlačítko **poslat žádost o**.  
-    Pokud se zobrazí chyba, ujistěte se, že vaše [nastavení CORS](#configure-cors) jsou správné. Může se také muset vymazat mezipaměť prohlížeče nebo otevřete relaci procházení v privátní stisknutím kombinace kláves Ctrl + Shift + P.
+    Pokud se zobrazí chyba, ujistěte se, že vaše [nastavení CORS](#configure-cors) jsou správné. Může také potřebovat tooclear vaší mezipaměti prohlížeče nebo otevřít relaci procházení v privátní stisknutím kombinace kláves Ctrl + Shift + P.
 
 ## <a name="modify-your-sign-up-or-sign-in-custom-policy"></a>Upravit vlastní zásady registrace nebo přihlášení
 
-V části nejvyšší úrovně  *\<TrustFrameworkPolicy\>*  značka, byste měli najít  *\<BuildingBlocks\>*  značky. V rámci  *\<BuildingBlocks\>*  přidat značky,  *\<ContentDefinitions\>*  značky tak, že zkopírujete následující příklad. Nahraďte *your_storage_account* s názvem účtu úložiště.
+V části hello nejvyšší úrovně  *\<TrustFrameworkPolicy\>*  značka, byste měli najít  *\<BuildingBlocks\>*  značky. V rámci hello  *\<BuildingBlocks\>*  přidat značky,  *\<ContentDefinitions\>*  značky zkopírováním hello následující ukázka. Nahraďte *your_storage_account* hello název účtu úložiště.
 
   ```xml
   <BuildingBlocks>
@@ -138,16 +138,16 @@ V části nejvyšší úrovně  *\<TrustFrameworkPolicy\>*  značka, byste měli
 
 ## <a name="upload-your-updated-custom-policy"></a>Nahrát váš aktualizované vlastní zásady
 
-1. V [portál Azure](https://portal.azure.com), [přepnout do kontextu klienta služby Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a pak otevřete **Azure AD B2C** okno.
+1. V hello [portál Azure](https://portal.azure.com), [přepnout do kontextu hello klienta služby Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a pak otevřete hello **Azure AD B2C** okno.
 2. Klikněte na tlačítko **všechny zásady**.
 3. Klikněte na tlačítko **nahrát zásady**.
-4. Nahrát `SignUpOrSignin.xml` s  *\<ContentDefinitions\>*  značky, které jste přidali dříve.
+4. Nahrát `SignUpOrSignin.xml` s hello  *\<ContentDefinitions\>*  značky, které jste přidali dříve.
 
-## <a name="test-the-custom-policy-by-using-run-now"></a>Otestovat pomocí vlastních zásad **spustit nyní**
+## <a name="test-hello-custom-policy-by-using-run-now"></a>Otestovat pomocí vlastních zásad pro hello **spustit nyní**
 
-1. Na **Azure AD B2C** okno, přejděte na **všechny zásady**.
-2. Vyberte vlastní zásady, který jste nahráli a klikněte na **spustit nyní** tlačítko.
-3. Nyní byste měli mít přihlásit pomocí e-mailovou adresu.
+1. Na hello **Azure AD B2C** okně přejděte příliš**všechny zásady**.
+2. Vyberte hello vlastní zásadu, kterou jste nahráli a klikněte na tlačítko hello **spustit nyní** tlačítko.
+3. Až byste měli mít toosign pomocí e-mailovou adresu.
 
 ## <a name="reference"></a>Referenční informace
 
@@ -157,7 +157,7 @@ Pro přizpůsobení uživatelského rozhraní Zde můžete najít ukázkové ša
 git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 ```
 
-Složka sample_templates/wingtip obsahuje následující soubory HTML:
+Hello sample_templates/wingtip složka obsahuje následující soubory HTML hello:
 
 | HTML5 šablony | Popis |
 |----------------|-------------|
@@ -167,20 +167,20 @@ Složka sample_templates/wingtip obsahuje následující soubory HTML:
 | *Unified.HTML* | Tento soubor jako šablonu použijte pro jednotné stránku registrace nebo přihlášení. |
 | *updateprofile.HTML* | Tento soubor jako šablonu použijte pro stránku aktualizace profilu. |
 
-V [upravte část vaší vlastní zásady registrace nebo přihlášení](#modify-your-sign-up-or-sign-in-custom-policy), jste nakonfigurovali obsahu definice `api.idpselections`. Kompletní obsah definice ID, která rozpoznává rozhraní Azure AD B2C identity prostředí a jejich popisy jsou v následující tabulce:
+V hello [upravte část vaší vlastní zásady registrace nebo přihlášení](#modify-your-sign-up-or-sign-in-custom-policy), jste nakonfigurovali hello obsahu definice `api.idpselections`. úplnou sadu Hello obsahu definice ID, které jsou rozpoznány identity prostředí hello Azure AD B2C a jejich popisy jsou v následující tabulce hello:
 
 | ID obsahu definice | Popis | 
 |-----------------------|-------------|
 | *API.Error* | **Chybové stránky**. Tato stránka se zobrazí, když je došlo k výjimce nebo došlo k chybě. |
-| *API.idpselections* | **Stránka Výběr zprostředkovatele identity**. Tato stránka obsahuje seznam zprostředkovatelů identity, které může uživatel vybírat během přihlášení. Tyto možnosti jsou poskytovatelů identit enterprise, poskytovatelů identit sociálních třeba Facebook a Google + nebo místním účtům. |
-| *API.idpselections.Signup* | **Výběr zprostředkovatele identity pro registraci**. Tato stránka obsahuje seznam poskytovatelů identity, které může uživatel vybírat během registrace. Tyto možnosti jsou poskytovatelů identit enterprise, poskytovatelů identit sociálních třeba Facebook a Google + nebo místním účtům. |
-| *API.localaccountpasswordreset* | **Zapomněli jste heslo**. Tato stránka obsahuje formulář, který uživatel musí dokončit zahájíte resetování hesla.  |
-| *API.localaccountsignin* | **Přihlašovací stránka místní účet**. Tato stránka obsahuje formulář přihlášení pro přihlášení pomocí místního účtu, který je založený na e-mailovou adresu nebo uživatelské jméno. Formulář může obsahovat vstupní textové pole a pole pro zadání hesla. |
-| *API.localaccountsignup* | **Místní účet stránku**. Tato stránka obsahuje registrační formulář pro registraci pro místní účet, který je založený na e-mailovou adresu nebo uživatelské jméno. Formulář může obsahovat různé vstupní ovládací prvky, jako je například vstupní textové pole, pole pro zadání hesla, přepínače, pole rozevíracího seznamu vyberte jeden a vybrat víc zaškrtávací políčka. |
+| *API.idpselections* | **Stránka Výběr zprostředkovatele identity**. Tato stránka obsahuje seznam identity, které můžete zvolit zprostředkovatelé, kteří hello uživatele při přihlášení. Tyto možnosti jsou poskytovatelů identit enterprise, poskytovatelů identit sociálních třeba Facebook a Google + nebo místním účtům. |
+| *API.idpselections.Signup* | **Výběr zprostředkovatele identity pro registraci**. Tato stránka obsahuje seznam identity, které můžete zvolit zprostředkovatelé, kteří hello uživatele během registrace. Tyto možnosti jsou poskytovatelů identit enterprise, poskytovatelů identit sociálních třeba Facebook a Google + nebo místním účtům. |
+| *API.localaccountpasswordreset* | **Zapomněli jste heslo**. Tato stránka obsahuje formuláře tento uživatel hello musíte dokončit tooinitiate pro resetování hesla.  |
+| *API.localaccountsignin* | **Přihlašovací stránka místní účet**. Tato stránka obsahuje formulář přihlášení pro přihlášení pomocí místního účtu, který je založený na e-mailovou adresu nebo uživatelské jméno. Hello formulář může obsahovat vstupní textové pole a pole pro zadání hesla. |
+| *API.localaccountsignup* | **Místní účet stránku**. Tato stránka obsahuje registrační formulář pro registraci pro místní účet, který je založený na e-mailovou adresu nebo uživatelské jméno. Hello formulář může obsahovat různé vstupní ovládací prvky, jako je například vstupní textové pole, pole pro zadání hesla, přepínače, pole rozevíracího seznamu vyberte jeden a vybrat víc zaškrtávací políčka. |
 | *API.phonefactor* | **Stránka služby Multi-Factor authentication**. Na této stránce uživatelé mohli ověřit jejich telefonní čísla (pomocí textové nebo hlasové) během registrace nebo přihlášení. |
-| *API.selfasserted* | **Stránku pro přihlášení sociálních účet**. Tato stránka obsahuje registrační formulář, který uživatelé musí dokončit při registraci pomocí stávající účet od poskytovatele identity sociálních třeba Facebook nebo Google +. Tato stránka je podobný na předchozí sociálních registrační stránku účtu, s výjimkou pole pro zadání hesla. |
-| *API.selfasserted.profileupdate* | **Stránka pro aktualizaci profilu**. Tato stránka obsahuje formulář, který uživatelé lze použít k aktualizaci svůj profil. Tato stránka je podobná registrační stránku sociálních účtu, s výjimkou pole pro zadání hesla. |
-| *API.signuporsignin* | **Jednotná stránku registrace nebo přihlášení**. Tato stránka zpracovává registrace i přihlášení uživatelů, kteří můžou využívat poskytovatelů identit enterprise, poskytovatelů identit sociálních třeba Facebook nebo Google + nebo místní účty.  |
+| *API.selfasserted* | **Stránku pro přihlášení sociálních účet**. Tato stránka obsahuje registrační formulář, který uživatelé musí dokončit při registraci pomocí stávající účet od poskytovatele identity sociálních třeba Facebook nebo Google +. Tato stránka je podobné toohello předcházející sociálních účet stránku pro přihlášení, s výjimkou pole pro zadání hesla hello. |
+| *API.selfasserted.profileupdate* | **Stránka pro aktualizaci profilu**. Tato stránka obsahuje formuláře, které uživatelé mohou používat tooupdate svůj profil. Tato stránka je podobné toohello sociálních registrační stránku účtu, s výjimkou pole pro zadání hesla hello. |
+| *API.signuporsignin* | **Jednotná stránku registrace nebo přihlášení**. Tato stránka zpracuje obě hello registrace a přihlašování uživatelů, kteří můžou využívat poskytovatelů identit enterprise, poskytovatelů identit sociálních třeba Facebook nebo Google + nebo místní účty.  |
 
 ## <a name="next-steps"></a>Další kroky
 

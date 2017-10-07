@@ -1,5 +1,5 @@
 ---
-title: "Klíč účtu Azure CLI skriptu – znovu vygenerovat Azure Cosmos DB | Microsoft Docs"
+title: "klíč účtu aaaAzure rozhraní příkazového řádku skriptu – znovu vygenerovat Azure Cosmos DB | Microsoft Docs"
 description: "Ukázka skriptu Azure CLI – znovu vygenerovat klíč účtu databázi Azure Cosmos"
 services: cosmos-db
 documentationcenter: cosmosdb
@@ -16,27 +16,27 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/02/2017
 ms.author: mimig
-ms.openlocfilehash: 1a0ff3f8b8fb3eaf398d9fa925ef027b2481d47a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ca77e05039775c90d7541899eeffc45a76d60657
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="regenerate-an-azure-cosmos-db-account-key-using-the-azure-cli"></a>Znovu vygenerovat klíč účtu databázi Cosmos Azure pomocí rozhraní příkazového řádku Azure
+# <a name="regenerate-an-azure-cosmos-db-account-key-using-hello-azure-cli"></a>Znovu vygenerovat klíč účtu databázi Cosmos Azure pomocí hello rozhraní příkazového řádku Azure
 
-Tato ukázka regeneruje jakýkoli druh klíč účtu Azure Cosmos DB pomocí rozhraní příkazového řádku Azure. 
+Tato ukázka regeneruje jakýkoli druh klíč účtu Azure Cosmos DB pomocí hello rozhraní příkazového řádku Azure. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud zvolte tooinstall a místně pomocí hello rozhraní příkazového řádku, v tomto tématu vyžaduje, že používáte hello Azure CLI verze 2.0 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-azurecli-interactive[hlavní](../../../cli_scripts/cosmosdb/secure-cosmosdb-regenerate-keys/secure-cosmosdb-regenerate-keys.sh?highlight=27-31 "klíče účtu obnovit databázi Cosmos Azure")]
+[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/secure-cosmosdb-regenerate-keys/secure-cosmosdb-regenerate-keys.sh?highlight=27-31 "Regenerate Azure Cosmos DB account keys")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Po spuštění ukázka skriptu, následující příkaz lze použít k odebrání skupiny prostředků a všechny prostředky, které jsou s ním spojená.
+Po spuštění ukázka skriptu hello hello následující příkaz může být skupiny prostředků použít tooremove hello a všechny prostředky, které jsou s ním spojená.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
@@ -44,7 +44,7 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá hello následující příkazy. Každý příkaz v hello tabulky odkazů toocommand konkrétní dokumentaci.
 
 | Příkaz | Poznámky |
 |---|---|
@@ -55,6 +55,6 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
+Další informace o hello rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
 
-Další ukázky skript příkazového řádku DB Cosmos Azure lze nalézt v [dokumentace Azure Cosmos DB CLI](../cli-samples.md).
+Další ukázky skript příkazového řádku DB Cosmos Azure lze nalézt v hello [dokumentace Azure Cosmos DB CLI](../cli-samples.md).

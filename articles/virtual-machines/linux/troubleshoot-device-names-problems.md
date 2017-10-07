@@ -1,6 +1,6 @@
 ---
-title: "Názvy zařízení virtuálního počítače s Linuxem se změní v Azure | Microsoft Docs"
-description: "Vysvětluje důvod, proč se změní názvy zařízení a poskytují řešení tohoto problému."
+title: "názvy zařízení aaaLinux virtuálního počítače se změní v Azure | Microsoft Docs"
+description: "Vysvětluje hello proč názvy zařízení se změní a nabízí řešení tohoto problému."
 services: virtual-machines-linux
 documentationcenter: 
 author: genlin
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 07/12/2017
 ms.author: genli
-ms.openlocfilehash: 789f4580901a22dc3aaae9599c7205c76f268403
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: 4d3a5853d61edd2c8e8b85ab69e5ed3b3bc00bb8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting-linux-vm-device-names-are-changed"></a>Řešení potíží: Názvy zařízení virtuálního počítače s Linuxem se změnilo
 
-Tento článek vysvětluje, proč se po restartování systému Linux virtuálního počítače (VM), nebo znovu připojte disky změnit názvy zařízení. Také poskytuje řešení tohoto problému.
+Hello článek vysvětluje, proč se po restartování systému Linux virtuálního počítače (VM), nebo znovu připojte hello disky změnit názvy zařízení. Poskytuje také hello řešení tohoto problému.
 
 ## <a name="symptom"></a>Příznaky
 
-Následující problémy se můžete setkat, když běží virtuální počítače s Linuxem v Microsoft Azure.
+Může dojít k následujícím problémům, když běží virtuální počítače s Linuxem v Microsoft Azure hello.
 
-- Virtuální počítač se nepodaří spustit po restartování.
+- Hello virtuálního počítače selže tooboot po restartu.
 
-- Pokud jsou datové disky odpojit a znovu připojit, se mění názvy zařízení pro disky.
+- Pokud datových disků jsou odpojit a znovu připojit, se mění hello názvy zařízení pro disky.
 
-- Aplikace nebo skriptu, který odkazuje na disk pomocí názvu zařízení se nezdaří. Zjistíte, že se změnil název zařízení disku.
+- Aplikace nebo skriptu, který odkazuje na disk pomocí názvu zařízení se nezdaří. Zjistíte, že hello se změnil název zařízení hello disku.
 
 ## <a name="cause"></a>Příčina
 
-Zařízení cesty v systému Linux nemusí být konzistentní napříč restartování. Název zařízení se skládá z hlavní (písmeno) a menší čísla.  Pokud ovladač zařízení úložiště Linux zjistí nové zařízení, přiřadí čísla hlavní a podverze zařízení k němu z rozsahu k dispozici. Při odebrání zařízení se znovu později použije uvolněno čísla zařízení.
+Zařízení cesty v systému Linux se nezaručuje, že toobe konzistentní napříč restartování. Název zařízení se skládá z hlavní (písmeno) a menší čísla.  Pokud ovladač zařízení úložiště Linux hello zjistí nové zařízení, přiřadí tooit čísla hlavní a podverze zařízení z rozsahu hello k dispozici. Při odebrání zařízení jsou čísla zařízení hello uvolněné toobe znovu později.
 
-K problému dochází, protože zařízení kontrolu v systému Linux naplánované subsystémem SCSI probíhá asynchronně. Pojmenování cesta konečné zařízení se může lišit mezi restarty. 
+Hello k problému dochází kvůli hello zařízení kontrolu v systému Linux naplánované subsystémem SCSI hello probíhá asynchronně. pojmenování cesta Hello konečné zařízení se může lišit mezi restarty. 
 
 ## <a name="solution"></a>Řešení
 
-Chcete-li vyřešit tento problém, použijte trvalé názvy. Existují čtyři metody do trvalé pojmenování – prostřednictvím filesystem štítek, uuid, podle id a cestu. Doporučujeme popisek systému souborů a UUID metody pro virtuální počítače Linux Azure. 
+tooresolve tento problém používat trvalé názvy. Existují čtyři metody toopersistent pojmenování - prostřednictvím systému souborů štítek, uuid, id a cestu. Doporučujeme hello filesystem popisek a UUID metody pro virtuální počítače Linux Azure. 
 
-Většina distribuce taky zadat buď **nofail** nebo **nobootwait** fstab možnosti. Tyto možnosti Povolit systému spustit i v případě, že na disku se nepodaří připojit při spuštění. Další informace o těchto parametrů jsou uvedeny v dokumentaci distribuce. Další informace o tom, jak nakonfigurovat virtuální počítač s Linuxem používat UUID, když přidáte datový disk najdete v tématu [připojit k virtuálního počítače s Linuxem připojit nový disk](add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk). 
+Většina distribuce taky zadat buď hello **nofail** nebo **nobootwait** fstab možnosti. Tyto možnosti Povolit tooboot systému i v případě selhání disku hello toomount při spuštění. Další informace o těchto parametrů jsou uvedeny v dokumentaci distribuční hello. Další informace o tom, jak tooconfigure virtuálního počítače s Linuxem toouse UUID, když přidáte datový disk, najdete v části [připojit toohello virtuálního počítače s Linuxem toomount hello nový disk](add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk). 
 
-Pokud na virtuálním počítači je nainstalován agent nástroje Azure Linux, používá pravidla Udev vytvořit sadu symbolické odkazy v části **/dev/disk/azure**. Tato pravidla Udev lze použít aplikace a skripty k identifikaci disky jsou připojené k virtuálnímu počítači, jejich typu a logickou jednotku LUN.
+Když hello Azure Linux agent nainstalovaný na virtuálním počítači, používá Udev pravidla tooconstruct sadu symbolické odkazy v části **/dev/disk/azure**. Tato pravidla Udev lze použít aplikace a skripty tooidentify disky připojené toohello virtuálních počítačů, jejich typu a hello logické jednotky.
 
 ## <a name="more-information"></a>Další informace
 
 ### <a name="identify-disk-luns"></a>Identifikovat logické diskové jednotky
 
-Aplikace můžete použít logické jednotky LUN najít všechny připojené disky a vytváření symbolické odkazy. Azure Linux agent teď obsahuje udev pravidla, která nastavit symbolické odkazy z logické jednotky do zařízení, následujícím způsobem:
+Aplikace můžete použít toofind logických jednotek, všechny hello připojené disky a vytváření symbolické odkazy. Hello Azure Linux agent teď obsahuje udev pravidla, která nastavit symbolické odkazy z zařízeních toohello logickou jednotku LUN, následujícím způsobem:
 
     $ tree /dev/disk/azure
 
@@ -70,7 +70,7 @@ Aplikace můžete použít logické jednotky LUN najít všechny připojené dis
         └── lun1-part3 -> ../../../sdd3                                    
                                  
 
-Informace o logických jednotkách můžete také načíst z hosta Linux pomocí lsscsi nebo podobné nástroj následujícím způsobem.
+Informace o logických jednotkách můžete také načíst z hosta hello Linux pomocí lsscsi nebo podobné nástroj následujícím způsobem.
 
        $ sudo lsscsi
 
@@ -84,7 +84,7 @@ Informace o logických jednotkách můžete také načíst z hosta Linux pomocí
 
       [5:0:0:1] disk Msft Virtual Disk 1.0 /dev/sdd
 
-Tato informace o logických jednotkách hosta lze s metadaty předplatné Azure pro určení umístění v úložišti Azure virtuálního pevného disku, která ukládá data oddílu. Například použijte rozhraní příkazového řádku az:
+Tato informace o logických jednotkách hosta lze použít s předplatného Azure metadata tooidentify hello umístění v úložišti Azure hello virtuálního pevného disku, která ukládá data oddílu hello. Například použijte hello az rozhraní příkazového řádku:
 
     $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks                                        
     [                                                                                                                                                                  
@@ -116,7 +116,7 @@ Tato informace o logických jednotkách hosta lze s metadaty předplatné Azure 
 
 ### <a name="discover-filesystem-uuids-by-using-blkid"></a>Zjišťovat identifikátory UUID systému souborů pomocí blkid
 
-Soubor skriptu nebo aplikace může číst výstup blkid nebo podobné zdroje informací a vytvořit symbolické odkazy v **/dev** pro použití. Výstup bude zobrazovat identifikátory UUID všech disků připojených k virtuálnímu počítači a soubor zařízení, ke kterému jsou přidružené:
+Soubor skriptu nebo aplikace může číst výstup hello blkid nebo podobné zdroje informací a vytvořit symbolické odkazy v **/dev** pro použití. výstup Hello zobrazí hello identifikátory UUID všech disků připojených toohello virtuálních počítačů a hello zařízení souboru toowhich jsou přidružené:
 
     $ sudo blkid -s UUID
 
@@ -125,7 +125,7 @@ Soubor skriptu nebo aplikace může číst výstup blkid nebo podobné zdroje in
     /dev/sdb1: UUID="176250df-9c7c-436f-94e4-d13f9bdea744"
     /dev/sdc1: UUID="b0048738-4ecc-4837-9793-49ce296d2692"
 
-Příkaz waagent udev pravidla vytvořit sadu symbolické odkazy v části **/dev/disk/azure**:
+Hello příkaz waagent udev pravidla vytvořit sadu symbolické odkazy v části **/dev/disk/azure**:
 
 
     $ ls -l /dev/disk/azure
@@ -137,24 +137,24 @@ Příkaz waagent udev pravidla vytvořit sadu symbolické odkazy v části **/de
     lrwxrwxrwx 1 root root 10 Jun  2 23:17 root-part1 -> ../../sda1
 
 
-Tyto informace můžete použít aplikaci identifikovat spouštěcí disk zařízení a prostředků (dočasné) disku. V Azure, by měla aplikace označují **/dev/disk/azure/root-part1** nebo **/dev/disk/azure-resource-part1** ke zjištění těchto oddílů.
+Tyto informace můžete použít aplikace Hello identifikovat hello spouštěcí disk zařízení a prostředků (dočasné) disku hello. V Azure, aplikace by měla odkazovat příliš**/dev/disk/azure/root-part1** nebo **/dev/disk/azure-resource-part1** toodiscover tyto oddíly.
 
-Pokud existují další oddíly ze seznamu blkid, jsou umístěny na datový disk. Aplikace můžete udržovat identifikátor UUID pro tyto oddíly a použijte cestu jako zjištění názvu zařízení v době běhu níže:
+Pokud existují další oddíly hello blkid seznamu, jsou umístěny na datový disk. Aplikace můžete udržovat hello UUID pro tyto oddíly a použijte cestu jako hello níže název zařízení hello toodiscover za běhu:
 
     $ ls -l /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692
 
     lrwxrwxrwx 1 root root 10 Jun 19 15:57 /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692 -> ../../sdc1
 
     
-### <a name="get-the-latest-azure-storage-rules"></a>Získat nejnovější pravidla úložiště Azure
+### <a name="get-hello-latest-azure-storage-rules"></a>Získat nejnovější pravidla úložiště Azure hello
 
-Nejnovější pravidla úložiště Azure spuštěním následujících příkazů:
+toohello nejnovější pravidla úložiště Azure, spuštěním následujících příkazů:
 
     # sudo curl -o /etc/udev/rules.d/66-azure-storage.rules https://raw.githubusercontent.com/Azure/WALinuxAgent/master/config/66-azure-storage.rules
     # sudo udevadm trigger --subsystem-match=block
 
 
-Další informace najdete v následujících článcích:
+Další informace najdete v tématu hello následující články:
 
 - [Ubuntu: Pomocí UUID](https://help.ubuntu.com/community/UsingUUID)
 
@@ -162,5 +162,5 @@ Další informace najdete v následujících článcích:
 
 - [Linux: Co identifikátory UUID využití.](https://www.linux.com/news/what-uuids-can-do-you)
 
-- [Proces Udev: Úvod do správy zařízení v nástroji moderní systému Linux](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system)
+- [Proces Udev: Úvod tooDevice správy v moderní systému Linux](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system)
 

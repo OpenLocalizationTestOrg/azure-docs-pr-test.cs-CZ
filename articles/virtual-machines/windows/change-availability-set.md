@@ -1,6 +1,6 @@
 ---
-title: "Změna nastavení dostupnosti virtuální počítače | Microsoft Docs"
-description: "Zjistěte, jak změnit sadu dostupnosti pro virtuální počítače pomocí Azure PowerShell a modelu nasazení Resource Manager."
+title: "aaaChange sadu dostupnosti virtuálních počítačů | Microsoft Docs"
+description: "Zjistěte, jak sadu toochange hello dostupnosti pro virtuální počítače pomocí Azure PowerShell a modelu nasazení Resource Manager hello."
 keywords: 
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,19 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: drewm
-ms.openlocfilehash: d1daa01191480eaeb81727416b2134b00c698dc3
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 3b1cc010a6d4c4883f2e34da9cfca4372aec92cb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="change-the-availability-set-for-a-windows-vm"></a>Změňte sadu dostupnosti pro virtuální počítač s Windows
-Následující kroky popisují postup změna nastavení dostupnosti virtuálního počítače pomocí Azure PowerShell. Virtuální počítač můžete přidat jenom při vytvoření sadu dostupnosti. Chcete-li změnit dostupnost nastaven, je potřeba odstranit a znovu vytvořte virtuální počítač. 
+# <a name="change-hello-availability-set-for-a-windows-vm"></a>Změnit hello sadu dostupnosti pro virtuální počítač s Windows
+Hello následující kroky popisují, jak toochange hello skupinu dostupnosti virtuálního počítače pomocí Azure PowerShell. Virtuální počítač lze přidat pouze tooan dostupnosti při jeho vytvoření. V nastavení dostupnosti hello pořadí toochange třeba toodelete a znovu vytvořte hello virtuálního počítače. 
 
-## <a name="change-the-availability-set-using-powershell"></a>Změnit skupinu dostupnosti pomocí prostředí PowerShell
-1. Zaznamenejte následující podrobnosti klíče z virtuálního počítače, který má být změněn.
+## <a name="change-hello-availability-set-using-powershell"></a>Změnit hello dostupnosti pomocí prostředí PowerShell
+1. Zaznamenejte hello následujících podrobnosti klíče z toobe hello virtuálního počítače upravit.
    
-    Název virtuálního počítače
+    Název hello virtuálních počítačů
    
     ```powershell
     $vm = Get-AzureRmVM -ResourceGroupName <Name-of-resource-group> -Name <name-of-VM>
@@ -41,7 +41,7 @@ Následující kroky popisují postup změna nastavení dostupnosti virtuálníh
     $vm.HardwareProfile.VmSize
     ```
    
-    Primární síťové rozhraní sítě a volitelné síťových rozhraní, pokud existují ve virtuálním počítači
+    Primární síťové rozhraní sítě a volitelné síťových rozhraní, pokud existují na hello virtuálních počítačů
    
     ```powershell
     $vm.NetworkProfile.NetworkInterfaces[0].Id
@@ -67,17 +67,17 @@ Následující kroky popisují postup změna nastavení dostupnosti virtuálníh
     ```powershell
     $vm.Extensions
     ```
-2. Odstranění virtuálního počítače bez odstranění disky nebo síťová rozhraní.
+2. Odstranění hello virtuálních počítačů bez odstraněním některého hello disků nebo hello síťových rozhraní.
    
     ```powershell
     Remove-AzureRmVM -ResourceGroupName <resourceGroupName> -Name <vmName> 
     ```
-3. Vytvořit skupinu dostupnosti Pokud ještě neexistuje
+3. Vytvoření hello dostupnost nastavená, pokud ještě neexistuje
    
     ```powershell
     New-AzureRmAvailabilitySet -ResourceGroupName <resourceGroupName> -Name <availabilitySetName> -Location "<location>" 
     ```
-4. Znovu vytvořte virtuální počítač pomocí nové sady dostupnosti.
+4. Znovu vytvořte hello virtuálního počítače pomocí hello nové sady dostupnosti.
    
     ```powershell
     $vm2 = New-AzureRmVMConfig -VMName <VM-name> -VMSize <vm-size> -AvailabilitySetId <availability-set-id>
@@ -88,10 +88,10 @@ Následující kroky popisují postup změna nastavení dostupnosti virtuálníh
    
     New-AzureRmVM -ResourceGroupName <resourceGroupName> -Location <location> -VM <vmConfig>
     ``` 
-5. Přidejte datových disků a rozšíření. Další informace najdete v tématu [připojit datový Disk k virtuálnímu počítači](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [rozšíření v šablonách Resource Manageru](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#extensions). Datové disky a rozšíření lze přidat do virtuálního počítače pomocí prostředí PowerShell nebo rozhraní příkazového řádku Azure.
+5. Přidejte datových disků a rozšíření. Další informace najdete v tématu [připojit datový Disk tooVM](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [rozšíření v šablonách Resource Manageru](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#extensions). Datové disky a rozšíření lze přidat toohello virtuálních počítačů pomocí prostředí PowerShell nebo rozhraní příkazového řádku Azure.
 
 ## <a name="example-script"></a>Ukázkový skript
-Následující skript představuje příklad shromažďování požadované informace, odstranit původní virtuální počítač a potom je znovu vytvořit v nové sady dostupnosti.
+Hello následující skript představuje příklad shromažďování hello požadované informace, odstraňování hello původní virtuální počítač a potom je znovu vytvořit v nové sady dostupnosti.
 
 ```powershell
     #set variables
@@ -103,7 +103,7 @@ Následující skript představuje příklad shromažďování požadované info
     #Get VM Details
     $OriginalVM = get-azurermvm -ResourceGroupName $rg -Name $vmName
 
-    #Output VM details to file
+    #Output VM details toofile
     "VM Name: " | Out-File -FilePath $outFile 
     $OriginalVM.Name | Out-File -FilePath $outFile -Append
 
@@ -127,7 +127,7 @@ Následující skript představuje příklad shromažďování požadované info
     $OriginalVM.StorageProfile.DataDisks | Out-File -FilePath $outFile -Append
     }
 
-    #Remove the original VM
+    #Remove hello original VM
     Remove-AzureRmVM -ResourceGroupName $rg -Name $vmName
 
     #Create new availability set if it does not exist
@@ -136,7 +136,7 @@ Následující skript představuje příklad shromažďování požadované info
     $availset = New-AzureRmAvailabilitySet -ResourceGroupName $rg -Name $newAvailSetName -Location $OriginalVM.Location
     }
 
-    #Create the basic configuration for the replacement VM
+    #Create hello basic configuration for hello replacement VM
     $newVM = New-AzureRmVMConfig -VMName $OriginalVM.Name -VMSize $OriginalVM.HardwareProfile.VmSize -AvailabilitySetId $availSet.Id
     Set-AzureRmVMOSDisk -VM $NewVM -VhdUri $OriginalVM.StorageProfile.OsDisk.Vhd.Uri  -Name $OriginalVM.Name -CreateOption Attach -Windows
 
@@ -150,10 +150,10 @@ Následující skript představuje příklad shromažďování požadované info
         Add-AzureRmVMNetworkInterface -VM $NewVM -Id $nic
     }
 
-    #Create the VM
+    #Create hello VM
     New-AzureRmVM -ResourceGroupName $rg -Location $OriginalVM.Location -VM $NewVM -DisableBginfoExtension
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Přidejte další úložiště k virtuálnímu počítači tak, že přidáte další [datový disk](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Přidejte další úložiště tooyour virtuálních počítačů tak, že přidáte další [datový disk](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

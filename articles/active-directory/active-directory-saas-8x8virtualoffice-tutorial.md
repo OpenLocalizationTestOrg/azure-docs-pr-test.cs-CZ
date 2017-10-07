@@ -1,6 +1,6 @@
 ---
 title: "Kurz: Azure Active Directory integrace s Office virtuální 8 x 8 | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a 8 x 8 virtuální Office."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a 8 x 8 virtuální Office."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,120 +13,120 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: d8dcf0171b93fec15347e810a1b525bd815dbf04
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: df5c5de77285cd3912b68cc3b1e3eee274aa951c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-8x8-virtual-office"></a>Kurz: Azure Active Directory integrace s Office virtuální 8 x 8
 
-V tomto kurzu zjistěte, jak integrovat 8 x 8 virtuální Office s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate 8 x 8 virtuální Office s Azure Active Directory (Azure AD).
 
-Integrace 8 x 8 virtuální Office s Azure AD poskytuje následující výhody:
+Integrace 8 x 8 virtuální Office s Azure AD umožňuje hello následující výhody:
 
-- Můžete řídit ve službě Azure AD, kdo má přístup k Office virtuální 8 x 8
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Office virtuální 8 x 8 (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup too8x8 virtuální Office
+- Můžete povolit uživatelům získat tooautomatically přihlášeného too8x8 virtuální Office (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s 8 x 8 virtuální Office, potřebujete následující položky:
+tooconfigure integrace Azure AD s 8 x 8 virtuální Office, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - 8 x 8 virtuální Office jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Office virtuální 8 x 8 z Galerie
+1. Přidání Office virtuální 8 x 8 z Galerie hello
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-8x8-virtual-office-from-the-gallery"></a>Přidání Office virtuální 8 x 8 z Galerie
-Při konfiguraci integrace Office virtuální 8 x 8 do služby Azure AD, potřebujete přidat 8 x 8 virtuální Office z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-8x8-virtual-office-from-hello-gallery"></a>Přidání Office virtuální 8 x 8 z Galerie hello
+tooconfigure hello integrace Office virtuální 8 x 8 do služby Azure AD, je nutné tooadd 8 x 8 virtuální Office hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat virtuální Office 8 x 8 z galerie, proveďte následující kroky:**
+**provedení virtuální Office z Galerie hello tooadd 8 x 8 hello následující kroky:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **8 x 8 virtuální Office**.
+4. Hello vyhledávacího pole zadejte **8 x 8 virtuální Office**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_search.png)
 
-5. Na panelu výsledků vyberte **8 x 8 virtuální Office**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků hello vyberte **8 x 8 virtuální Office**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s 8 x 8, které virtuální Office podle testovacího uživatele názvem "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, jaké příslušného uživatele v 8 x 8 virtuální Office je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské 8 x 8 virtuální Office musí navázat.
+Pro toowork jeden přihlašování Azure AD musí tooknow, jaké hello příslušného uživatele v Office virtuální 8 x 8 je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello 8 x 8 virtuální Office musí toobe navázat.
 
-V systému Office virtuální 8 x 8 přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V systému Office virtuální 8 x 8 přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s 8 x 8 virtuální Office, musíte dokončit následující stavební bloky:
+tooconfigure a testování Azure AD jednotné přihlašování s 8 x 8 virtuální Office, je třeba toocomplete hello stavební bloky následující:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele virtuální Office 8 x 8](#creating-a-8x8-virtual-office-test-user)**  – Pokud chcete mít protějšek Britta Simon v Office virtuální 8 x 8, propojené služby Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele virtuální Office 8 x 8](#creating-a-8x8-virtual-office-test-user)**  -toohave protějšek Britta Simon v Office virtuální 8 x 8, která je propojená toohello Azure AD reprezentace uživatele.
+4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Office virtuální 8 x 8.
+V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci Office virtuální 8 x 8.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s 8 x 8 virtuální Office, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s 8 x 8 virtuální Office, proveďte následující kroky hello:**
 
-1. Na portálu Azure na **8 x 8 virtuální Office** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **8 x 8 virtuální Office** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_samlbase.png)
 
-3. Na **8 x 8 virtuální Office domény a adresy URL** část, proveďte následující kroky:
+3. Na hello **8 x 8 virtuální Office domény a adresy URL** část, proveďte následující kroky hello:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
+    a. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:
 
     | `https://sso.8x8.com/<companyname>` |
     | `https://www.8x8.com/<companyname>` |
     | `https://sso.8x8pilot.com/<companyname>` |
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
+    b. V hello **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí hello následující vzoru:
 
     | `https://<subdomain>.8x8.com/saml2` |
     | `https://<subdomain>.8x8pilot.com/saml2`|
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se na [tým podpory virtuální Office 8 x 8](https://www.8x8.com/about-us/contact-us) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte pomocí hello skutečné identifikátor dotazů a odpovědí adresy URL. Obraťte se na [tým podpory virtuální Office 8 x 8](https://www.8x8.com/about-us/contact-us) tooget tyto hodnoty.
  
 
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Raw)** a potom uložte soubor certifikátu v počítači.
+4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Raw)** a potom uložte soubor certifikátu hello ve vašem počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_certificate.png) 
 
@@ -134,25 +134,25 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_general_400.png)
 
-6. Na **8 x 8 virtuální Office konfigurace** klikněte na tlačítko **virtuální Office konfigurovat 8 x 8** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+6. Na hello **8 x 8 virtuální Office konfigurace** klikněte na tlačítko **virtuální Office konfigurovat 8 x 8** tooopen **konfigurovat přihlášení** okno. Kopírování hello **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_configure.png) 
 
-7. Přihlášení ke klientovi 8 x 8 virtuální Office jako správce.
+7. Klient virtuální Office přihlašování tooyour 8 x 8 jako správce.
 
 8. Vyberte **virtuální Office účet Mgr** na panelu aplikace.
    
     ![Konfigurace na straně aplikace](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
 
-9. Vyberte **obchodní** účet, který chcete spravovat a klikněte na tlačítko **přihlásit** tlačítko.
+9. Vyberte **obchodní** účet toomanage a klikněte na tlačítko **přihlásit** tlačítko.
    
     ![Konfigurace na straně aplikace](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
 
-10. Klikněte na tlačítko **účty** karta v seznamu v nabídce.
+10. Klikněte na tlačítko **účty** kartě hello v seznamu v nabídce.
    
     ![Konfigurace na straně aplikace](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
 
-11. Klikněte na tlačítko **jednotné přihlašování** v seznamu účtů.
+11. Klikněte na tlačítko **jednotné přihlašování** v hello seznam účtů.
    
     ![Konfigurace na straně aplikace](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
@@ -160,73 +160,73 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     ![Konfigurace na straně aplikace](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
 
-13. Kopírování **jednotné přihlašování SAML URL**, **jednotné Sing se adresa URL služby** a **URL vystavitele** z Azure AD **přihlašovací adresa URL**, **Odhlásit se adresa URL** a **URL vystavitele** v 8 x 8 virtuální Office. 
+13. Kopírování **URL jednotné přihlašování SAML**, **jeden Sing se adresa URL služby** a **URL vystavitele** z Azure AD příliš**přihlášení v adrese URL**, **přihlašovací adresy URL odhlašovací stránky**  a **URL vystavitele** v 8 x 8 virtuální Office. 
     
     ![Konfigurace na straně aplikace](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_006.png)
     
-14. Klikněte na tlačítko **prohlížeče** tlačítko odeslat certifikát, který jste si stáhli z Azure AD a klikněte na tlačítko **Uložit** tlačítko.
+14. Klikněte na tlačítko **prohlížeče** tlačítko tooupload hello certifikát, který jste si stáhli z Azure AD a klikněte na tlačítko hello **Uložit** tlačítko.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-8x8virtualoffice-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-8x8virtualoffice-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-8x8virtualoffice-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-8x8virtualoffice-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V hello **název** textovému poli, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-8x8-virtual-office-test-user"></a>Vytvoření zkušebního uživatele virtuální Office 8 x 8
 
-Cílem této části je vytvoření uživatele volal Britta Simon v Office virtuální 8 x 8. 8 x 8 virtuální Office podporuje za běhu zřizování, který je ve výchozím nastavení povolené.
+Hello cílem této části je toocreate uživatel volal Britta Simon v Office virtuální 8 x 8. 8 x 8 virtuální Office podporuje za běhu zřizování, který je ve výchozím nastavení povolené.
 
-Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Office virtuální 8 x 8, pokud ještě neexistuje. 
+Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o tooaccess 8 x 8 virtuální Office Pokud ještě neexistuje. 
 
 >[!NOTE]
->Pokud potřebujete ručně vytvořit uživatele, budete muset kontaktovat [tým podpory virtuální Office 8 x 8](https://www.8x8.com/about-us/contact-us). 
+>Pokud potřebujete toocreate uživatel ručně, je nutné toocontact hello [tým podpory virtuální Office 8 x 8](https://www.8x8.com/about-us/contact-us). 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu 8 x 8 virtuální Office.
+V této části povolíte Britta Simon toouse Azure jednotné přihlašování tak, že udělíte přístup too8x8 virtuální Office.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon 8 x 8 virtuální Office, proveďte následující kroky:**
+**tooassign Britta Simon too8x8 virtuální Office, proveďte následující kroky hello:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **8 x 8 virtuální Office**.
+2. V seznamu aplikace hello vyberte **8 x 8 virtuální Office**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -234,7 +234,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -242,14 +242,14 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
 
-Když kliknete na dlaždici 8 x 8 virtuální Office na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci virtuální Office 8 x 8.
-Další informace o na přístupovém panelu najdete v tématu [Úvod do přístupového panelu](active-directory-saas-access-panel-introduction.md)
+Když kliknete na dlaždici virtuální Office hello 8 x 8 v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour 8 x 8 Office virtuální aplikace.
+Další informace o na přístupovém panelu najdete v tématu [Úvod toohello přístupového panelu](active-directory-saas-access-panel-introduction.md)
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

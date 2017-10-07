@@ -1,6 +1,6 @@
 ---
-title: "Azure fakturace rozhraní API Enterprise - poplatky Marketplace | Microsoft Docs"
-description: "Další informace o rozhraních API vytváření sestav, které umožňují zákazníkům Enterprise Azure a si vyžádá data spotřeby prostřednictvím kódu programu."
+title: "aaaAzure fakturace Enterprise rozhraní API - poplatky Marketplace | Microsoft Docs"
+description: "Další informace o vytváření sestav rozhraní API, která umožňují Enterprise Azure zákazníků toopull spotřeby dat prostřednictvím kódu programu hello."
 services: 
 documentationcenter: 
 author: aedwin
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: 5539623f7ae35e14b6dafe6fdf9efe4bcaba4fd3
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: cdf2836b52df06a4bf5ed71a476fe33662c5363c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reporting-apis-for-enterprise-customers---marketplace-store-charge"></a>Generování sestav rozhraní API pro podnikové zákazníky - poplatků úložiště Marketplace.
 
-Rozhraní API Marketplace úložiště poplatků vrátí rozpis poplatky na základě využití marketplace podle den v zadaném období fakturace nebo počáteční a koncové datum (jednou poplatky nejsou součástí).
+Hello Marketplace úložiště poplatků API vrátí hello na základě využití marketplace poplatky rozpis podle dne pro hello zadané fakturační období nebo počáteční a koncové datum (jednou poplatky nejsou součástí).
 
 ##<a name="request"></a>Žádost 
-Nejsou zadány společných vlastností hlavičky, které je třeba přidat [zde](billing-enterprise-api.md). Pokud není zadán fakturační období, je vrácena data pro aktuální fakturační období. Vlastní časových rozsahů lze určit spuštění a ukončení datum parametry, které jsou ve formátu RRRR MM-dd, maximální podporovaná časový rozsah je 36 měsíců.  
+Nejsou zadány společných vlastností hlavičky, které je třeba přidat toobe [zde](billing-enterprise-api.md). Pokud není zadán fakturační období, pak data pro aktuální fakturaci hello období vrácena. Vlastní čas rozsahy lze určit hello počáteční a koncovou datum parametry, které jsou v hello formát rrrr MM-dd hello maximální podporované, když je rozsah 36 měsíců.  
 
 |Metoda | Identifikátor URI požadavku|
 |-|-|
@@ -35,7 +35,7 @@ Nejsou zadány společných vlastností hlavičky, které je třeba přidat [zde
 |GET|https://consumption.Azure.com/v2/enrollments/ {enrollmentNumber} / marketplacechargesbycustomdate? startTime = 2017-01-01 & endTime = 2017-01-10|
 
 > [!Note]
-> Pokud chcete používat verzi preview rozhraní API, nahraďte v2 v1 v výše uvedenou adresu URL.
+> verze preview hello toouse rozhraní API, nahraďte v2 v1 v hello výše adresy URL.
 >
 
 ## <a name="response"></a>Odpověď
@@ -76,29 +76,29 @@ Nejsou zadány společných vlastností hlavičky, které je třeba přidat [zde
 
 |Název vlastnosti| Typ| Popis
 |-|-|-|
-|id|Řetězec|Jedinečné Id pro položku poplatků marketplace.|
-|subscriptionGuid|Identifikátor GUID|Guid předplatného|
-|Název_předplatného|Řetězec|Název odběru|
-|meterId|Řetězec|ID pro emitovaného měření|
-|usageStartDate|Data a času|Počáteční čas pro záznam využití|
-|usageEndDate|Data a času|Koncový čas pro záznam využití|
-|offerName|Řetězec|Název nabídky|
-|Skupina prostředků|Řetězec|Skupiny prostředků|
+|id|Řetězec|Jedinečné Id pro položku poplatků hello marketplace.|
+|subscriptionGuid|Identifikátor GUID|Hello Guid předplatného|
+|Název_předplatného|Řetězec|Hello název odběru|
+|meterId|Řetězec|ID pro hello vygenerované měření|
+|usageStartDate|Data a času|Počáteční čas pro záznam využití hello|
+|usageEndDate|Data a času|Koncový čas pro záznam využití hello|
+|offerName|Řetězec|Název nabídky Hello|
+|Skupina prostředků|Řetězec|Hello prostředků skupiny|
 |identifikátor instanceId|Řetězec|Instance Id|
 |additionalInfo|Řetězec|Další informace o řetězce formátu JSON|
 |tags|Řetězec|Řetězce formátu JSON značky|
-|orderNumber|Řetězec|Pořadové číslo|
-|unitOfMeasure|Řetězec|Měrné jednotky pro měřidla|
-|CostCenter|Řetězec|Nákladové středisko|
-|ID účtu|celá čísla|Id účtu|
-|název účtu|Řetězec |Název účtu|
-|accountOwnerId|Řetězec|Id vlastníka účtu|
-|departmentId|celá čísla|Oddělení Id|
-|DepartmentName|Řetězec|Název oddělení|
-|publisherName|Řetězec|Název vydavatele|
-|planName|Řetězec|Název plánu|
+|orderNumber|Řetězec|číslo objednávky Hello|
+|unitOfMeasure|Řetězec|Měrné jednotky pro měření hello|
+|CostCenter|Řetězec|center Hello náklady.|
+|ID účtu|celá čísla|Id účtu Hello|
+|název účtu|Řetězec |Hello název účtu|
+|accountOwnerId|Řetězec|Hello Id vlastníka účtu|
+|departmentId|celá čísla|oddělení Hello Id|
+|DepartmentName|Řetězec|název oddělení Hello|
+|publisherName|Řetězec|Název vydavatele Hello|
+|planName|Řetězec|Název plánu Hello|
 |consumedQuantity|Decimal|Spotřebované množství během tohoto období|
-|resourceRate|Decimal|Jednotkové ceny pro měřidla|
+|resourceRate|Decimal|Jednotkové ceny pro měření hello|
 |extendedCost|Decimal|Odhadované poplatků na základě objemu spotřebovaného a rozšířené náklady|
 <br/>
 ## <a name="see-also"></a>Viz také

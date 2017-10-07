@@ -1,6 +1,6 @@
 ---
 title: "Požadavky na Azure AD SSPR dat | Microsoft Docs"
-description: "Požadavky na data pro hesla pomocí samoobslužné služby Azure AD pro resetování a postup jejich splnění"
+description: "Obnovení dat požadavky pro hesla pomocí samoobslužné služby Azure AD a jak toosatisfy je"
 services: active-directory
 keywords: 
 documentationcenter: 
@@ -16,24 +16,24 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 2d1afd2d1265b371e0d311ed70fffbc55874b0a7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b68a1d7914dcd0bb4509d0e94914dc4309f4463a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Nasazení bez nutnosti registrace koncového uživatele pro vytvoření nového hesla
 
-Nasazení samoobslužného resetování hesla (SSPR) vyžaduje ověřování dat být k dispozici. Některé organizace mají své uživatele, zadejte svoje data ověřování sami, ale v mnoha organizacích je synchronizovat s existujícími daty ve službě Active Directory. Pokud jste správně formátovaných dat ve vašem místním adresáři a nakonfigurovat [Azure AD Connect pomocí expresního nastavení](./connect/active-directory-aadconnect-get-started-express.md), že dat je k dispozici pro Azure AD a SSPR se nevyžaduje zásah uživatele.
+Nasazení samoobslužného resetování hesla (SSPR) vyžaduje ověřování dat toobe přítomen. Některé organizace mají své uživatele, zadejte svoje data ověřování sami, ale celá řada organizací preferuje toosynchronize s existujícími daty ve službě Active Directory. Pokud jste správně formátovaných dat ve vašem místním adresáři a nakonfigurovat [Azure AD Connect pomocí expresního nastavení](./connect/active-directory-aadconnect-get-started-express.md), že data budou k dispozici tooAzure AD a SSPR se nevyžaduje zásah uživatele.
 
-Žádné telefonní číslo musí být ve formátu + CountryCode PhoneNumber příklad: + 1 4255551234 správně fungovat.
+Žádné telefonní číslo musí být ve formátu hello + CountryCode PhoneNumber příklad: + 1 4255551234 toowork správně.
 
 > [!NOTE]
-> Resetování hesla nepodporuje telefonní klapky. I ve formátu 12345 4255551234 + 1 X jsou rozšíření odebrat před uvedením volání.
+> Resetování hesla nepodporuje telefonní klapky. I v hello 12345 formátu 4255551234 + 1 X předtím, než je uskutečněn hovor hello odebrané rozšíření.
 
 ## <a name="fields-populated"></a>Pole se vyplní
 
-Pokud použijete výchozí nastavení v Azure AD Connect jsou provedeny následující mapování.
+Pokud použijete výchozí nastavení hello v Azure AD Connect hello následující mapování jsou vytvářeny.
 
 | Místní AD | Azure AD | Azure AD Authentication kontaktní údaje |
 | --- | --- | --- |
@@ -43,21 +43,21 @@ Pokud použijete výchozí nastavení v Azure AD Connect jsou provedeny následu
 
 ## <a name="security-questions-and-answers"></a>Bezpečnostní otázky a odpovědi
 
-Bezpečnostní otázky a odpovědi jsou bezpečně uloženy v klientovi služby Azure AD a jsou přístupné prostřednictvím jenom [portálu pro registraci SSPR](https://aka.ms/ssprsetup). Správci nelze zobrazit ani upravovat obsah jiného uživatele otázky a odpovědi.
+Bezpečnostní otázky a odpovědi jsou bezpečně uloženy v klientovi služby Azure AD a jsou pouze přístupné toousers prostřednictvím hello [portálu pro registraci SSPR](https://aka.ms/ssprsetup). Správci nelze zobrazit ani upravit obsah hello jiného uživatele otázek a odpovědí.
 
 ### <a name="what-happens-when-a-user-registers"></a>Co se stane, když se uživatel zaregistruje
 
-Když se uživatel zaregistruje, nastavuje registrační stránce následující pole:
+Když se uživatel zaregistruje, nastaví hello registrační stránku hello následující pole:
 
 * Telefon pro ověření
 * Ověření e-mailu
 * Bezpečnostní otázky a odpovědi
 
-Pokud jste zadali hodnotu **mobilní telefon** nebo **alternativní e-mailovou**, uživatelé mohou okamžitě pomocí tyto hodnoty resetovat vlastní hesla i v případě, že nebyly registrovány pro službu. Kromě toho uživatelé zobrazit tyto hodnoty při první registraci a je upravit, pokud si přejí. Po jejich úspěšně zaregistrovat, budou tyto hodnoty v jako trvalý **telefon pro ověření** a **ověřování e-mailu** pole, v uvedeném pořadí.
+Pokud jste zadali hodnotu **mobilní telefon** nebo **alternativní e-mailovou**, uživatelé mohou okamžitě používat tyto hodnoty tooreset jejich hesla, i v případě, že nebyly registrovány pro službu hello. Kromě toho uživatele při registraci pro hello poprvé, najdete v části tyto hodnoty a je upravit, pokud si přejí. Po jejich úspěšně zaregistrovat, budou tyto hodnoty zachovat v hello **telefon pro ověření** a **ověřování e-mailu** pole, v uvedeném pořadí.
 
 ## <a name="set-and-read-authentication-data-using-powershell"></a>Nastavit a číst data ověřování pomocí prostředí PowerShell
 
-Následující pole se dá nastavit pomocí prostředí PowerShell
+Následující pole Hello se dá nastavit pomocí prostředí PowerShell
 
 * Alternativní e-mailu
 * Mobilní telefon
@@ -65,7 +65,7 @@ Následující pole se dá nastavit pomocí prostředí PowerShell
 
 ### <a name="using-powershell-v1"></a>Pomocí prostředí PowerShell V1
 
-Chcete-li začít pracovat, je potřeba [stáhněte a nainstalujte modul Azure AD PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). Až budete mít nainstalováno, můžete provést kroky, které provést při konfiguraci každé pole.
+tooget spuštění, budete potřebovat příliš[stáhněte a nainstalujte modul Azure AD PowerShell hello](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). Až budete mít nainstalováno, můžete provést hello kroky, které následují tooconfigure každé pole.
 
 #### <a name="set-authentication-data-with-powershell-v1"></a>Nastavení ověření dat pomocí prostředí PowerShell V1
 
@@ -91,7 +91,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select PhoneNumber
 Get-MsolUser | select DisplayName,UserPrincipalName,AlternateEmailAddresses,MobilePhone,PhoneNumber | Format-Table
 ```
 
-#### <a name="authentication-phone-and-authentication-email-can-only-be-read-using-powershell-v1-using-the-commands-that-follow"></a>Telefon pro ověření a e-mailu ověřování lze číst pouze pomocí prostředí Powershell V1 pomocí příkazů, které následují
+#### <a name="authentication-phone-and-authentication-email-can-only-be-read-using-powershell-v1-using-hello-commands-that-follow"></a>Telefon pro ověření a e-mailu ověřování lze číst pouze pomocí prostředí Powershell V1 hello pomocí následujících příkazů
 
 ```
 Connect-MsolService
@@ -101,9 +101,9 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 ### <a name="using-powershell-v2"></a>Pomocí prostředí PowerShell V2
 
-Chcete-li začít pracovat, je potřeba [stáhněte a nainstalujte modul prostředí PowerShell Azure AD V2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure%20AD%20Cmdlets/AzureAD/index.md). Až budete mít nainstalováno, můžete provést kroky, které provést při konfiguraci každé pole.
+tooget spuštění, budete potřebovat příliš[stáhněte a nainstalujte modul prostředí PowerShell hello Azure AD V2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure%20AD%20Cmdlets/AzureAD/index.md). Až budete mít nainstalováno, můžete provést hello kroky, které následují tooconfigure každé pole.
 
-K instalaci rychle z nejnovější verze prostředí PowerShell, které podporují instalaci modulu, spuštěním těchto příkazů (první řádek jednoduše kontroluje, zda je již nainstalována):
+tooinstall rychle z nejnovější verze prostředí PowerShell, které podporují instalaci modulu, spuštěním těchto příkazů (první řádek hello jednoduše kontroluje toosee Pokud je už nainstalovaná):
 
 ```
 Get-Module AzureADPreview
@@ -137,14 +137,14 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 
 ## <a name="next-steps"></a>Další kroky
 
-Na následujících odkazech najdete další informace o resetování hesla pomocí Azure AD
+Hello následující odkazy obsahují další informace o resetování hesla pomocí služby Azure AD
 
 * [**Rychlý Start**](active-directory-passwords-getting-started.md) – Zprovozněte samoobslužné resetování hesla Azure AD. 
 * [**Správa licencí**](active-directory-passwords-licensing.md) – Konfigurujte licencování Azure AD.
-* [**Uvedení**](active-directory-passwords-best-practices.md) – Naplánujte a nasaďte pro své uživatele samoobslužné resetování hesla pomocí zde uvedených pokynů.
-* [**Přizpůsobení**](active-directory-passwords-customize.md) – Přizpůsobte vzhled a chování samoobslužného resetování hesla pro vaši společnost.
+* [**Zavedení** ](active-directory-passwords-best-practices.md) -plánování a nasazení SSPR tooyour uživatelů podle pokynů hello je zde uveden
+* [**Přizpůsobení** ](active-directory-passwords-customize.md) -přizpůsobit hello vzhledu a chování hello SSPR prostředí pro vaši společnost.
 * [**Zásady**](active-directory-passwords-policy.md) – Pochopte a nastavte zásady hesel Azure AD.
 * [**Vytváření sestav**](active-directory-passwords-reporting.md) – Zjistěte, jestli, kdy a kde vaši uživatelé používají funkci samoobslužného resetování hesla.
-* [**Podrobné technické informace**](active-directory-passwords-how-it-works.md) – Nahlédněte za oponu a pochopte, jak to funguje.
-* [**Nejčastější dotazy**](active-directory-passwords-faq.md) – Jak? Proč? Co? Kde? Kdo? Kdy? – Odpovědi na otázky, na které jste se vždy chtěli zeptat.
-* [**Řešení potíží**](active-directory-passwords-troubleshoot.md) – Zjistěte, jak řešit běžné problémy, ke kterým dochází u samoobslužného resetování hesla.
+* [**Podrobné technické informace** ](active-directory-passwords-how-it-works.md) -přejděte za hello závěsem toounderstand, jak to funguje
+* [**Nejčastější dotazy**](active-directory-passwords-faq.md) – Jak? Proč? Co? Kde? Kdo? Kdy? -Odpovědi tooquestions vždy chtěli tooask
+* [**Řešení potíží s** ](active-directory-passwords-troubleshoot.md) – zjistěte, jak tooresolve běžné problémy, že vidíte s SSPR

@@ -1,6 +1,6 @@
 ---
-title: "Automatizované zálohování pro virtuální počítače serveru SQL (klasické) | Microsoft Docs"
-description: "Vysvětluje funkci automatizované zálohování pro SQL Server běžící ve virtuálních počítačích Azure pomocí Resource Manager. "
+title: "aaaAutomated zálohování pro SQL Server virtuální počítače (klasické) | Microsoft Docs"
+description: "Vysvětluje funkci hello automatizované zálohování pro SQL Server běžící ve virtuálních počítačích Azure pomocí Resource Manager. "
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/05/2017
 ms.author: jroth
-ms.openlocfilehash: f7664291c2f45c422d52f682d08dbb67ab32b099
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5d8f0412578c2d86edc6e54093a5da4891d3847e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Automatizované zálohování pro SQL Server na virtuálních počítačích Azure (klasický)
 > [!div class="op_single_selector"]
@@ -28,13 +28,13 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Automatizované zálohování automaticky nakonfiguruje [spravovaného zálohování Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) pro všechny stávající a nové databáze na virtuální počítač Azure SQL Server 2014 Standard nebo Enterprise. To umožňuje nakonfigurovat standardní databázi zálohování, které využívají služby odolné Azure blob storage. Automatizované zálohování závisí na [rozšíření agenta systému SQL Server IaaS](../classic/sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Automatizované zálohování automaticky nakonfiguruje [tooMicrosoft spravovaného zálohování Azure](https://msdn.microsoft.com/library/dn449496.aspx) pro všechny stávající a nové databáze na virtuální počítač Azure SQL Server 2014 Standard nebo Enterprise. To vám umožní tooconfigure standardní databázi zálohování, které využívají služby odolné Azure blob storage. Automatizované zálohování závisí na hello [rozšíření agenta systému SQL Server IaaS](../classic/sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Resource Manager verzi v tomto článku najdete v tématu [automatizované zálohování pro SQL Server ve službě Správce prostředků virtuálních počítačů Azure](../sql/virtual-machines-windows-sql-automated-backup.md).
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello. tooview hello Resource Manager verze tohoto článku, najdete v části [automatizované zálohování pro SQL Server ve službě Správce prostředků virtuálních počítačů Azure](../sql/virtual-machines-windows-sql-automated-backup.md).
 
 ## <a name="prerequisites"></a>Požadavky
-Pomocí automatizovaného zálohování, zvažte následující požadavky:
+toouse automatizované zálohování, vezměte v úvahu hello následující požadavky:
 
 **Operační systém**:
 
@@ -54,30 +54,30 @@ Pomocí automatizovaného zálohování, zvažte následující požadavky:
 
 **Konfigurace databáze**:
 
-* Cílové databáze musí mít úplném modelu obnovení.
+* Cílové databáze musí mít hello úplném modelu obnovení.
 
 **Prostředí Azure PowerShell**:
 
-* [Nainstalujte nejnovější příkazy prostředí Azure PowerShell](/powershell/azure/overview).
+* [Nainstalujte nejnovější příkazy prostředí Azure PowerShell hello](/powershell/azure/overview).
 
 **Rozšíření systému SQL Server IaaS**:
 
-* [Nainstalujte rozšíření SQL Server IaaS](../classic/sql-server-agent-extension.md).
+* [Nainstalujte hello rozšíření systému SQL Server IaaS](../classic/sql-server-agent-extension.md).
 
 ## <a name="settings"></a>Nastavení
-Následující tabulka popisuje možnosti, které lze konfigurovat pro automatizované zálohování. Pro klasické virtuální počítače musíte použít PowerShell k nakonfigurování těchto nastavení.
+Hello následující tabulka popisuje možnosti hello, které lze konfigurovat pro automatizované zálohování. Pro klasické virtuální počítače je nutné použít PowerShell tooconfigure těchto nastavení.
 
 | Nastavení | Rozsah (výchozí) | Popis |
 | --- | --- | --- |
 | **Automatizované zálohování** |Povolí nebo zakáže (zakázáno) |Povolí nebo zakáže automatizované zálohování pro virtuální počítač Azure SQL Server 2014 Standard nebo Enterprise. |
-| **Doba uchování dat** |1 až 30 dní (30 dní) |Počet dní, které chcete zachovat zálohu. |
-| **Účet úložiště** |Účet úložiště Azure (pro zadaný virtuální počítač vytvořit účet úložiště) |Účet úložiště Azure pro ukládání souborů automatizovaného zálohování do úložiště objektů blob. Kontejner se vytvoří v tomto umístění pro uložení všechny záložní soubory. Zásady vytváření názvů záložní soubor obsahuje datum, čas a název počítače. |
-| **Šifrování** |Povolí nebo zakáže (zakázáno) |Povolí nebo zakáže šifrování. Když je povolené šifrování, certifikátů používaných pro obnovení zálohy jsou umístěné v zadaný účet úložiště ve stejném kontejneru automaticbackup pomocí stejné zásady vytváření názvů. Pokud se změní heslo, se toto heslo se vygeneruje nový certifikát, ale pořád starý certifikát pro obnovení předchozí zálohy. |
-| **Heslo** |Text heslo, (None) |Heslo pro šifrovací klíče. Toto je pouze vyžaduje, pokud je povolené šifrování. Chcete-li obnovit šifrované zálohování, musí mít správné heslo a související certifikátu, který byl použit v době, kdy bylo provedeno zálohování. | **Systém zálohování databáze** | Povolí nebo zakáže (zakázáno) | Proveďte úplné zálohování Master, Model a databázi MSDB |
-| **Konfigurovat plán zálohování** | Ruční nebo automatické (Automated) | Vyberte **automatizovaná** automatické provést úplné a zálohy založené na protokolu růst protokolování. Vyberte **ruční** zadat plán pro úplnou a protokolu zálohování. |
+| **Doba uchování dat** |1 až 30 dní (30 dní) |Hello počet dní tooretain zálohu. |
+| **Účet úložiště** |Účet úložiště Azure (hello účtu úložiště vytvořeném pro hello zadané virtuálního počítače) |Toouse účet úložiště Azure pro ukládání souborů automatizovaného zálohování do úložiště objektů blob. Kontejner se vytvoří v této toostore umístění všechny záložní soubory. záložní soubor Hello zásady vytváření názvů zahrnuje hello date, time a název počítače. |
+| **Šifrování** |Povolí nebo zakáže (zakázáno) |Povolí nebo zakáže šifrování. Když je povolené šifrování, hello certifikáty používané toorestore hello zálohování jsou umístěné v hello zadaný účet úložiště v hello pomocí stejné automaticbackup kontejneru hello stejné zásady vytváření názvů. Pokud se změní heslo hello, se toto heslo se vygeneruje nový certifikát, ale starý certifikát hello zůstane toorestore předchozí zálohy. |
+| **Heslo** |Text heslo, (None) |Heslo pro šifrovací klíče. Toto je pouze vyžaduje, pokud je povolené šifrování. V pořadí toorestore šifrované zálohování, musíte mít hello správné heslo a související certifikátu, který byl použit v době hello hello zálohy. | **Systém zálohování databáze** | Povolí nebo zakáže (zakázáno) | Proveďte úplné zálohování Master, Model a databázi MSDB |
+| **Konfigurovat plán zálohování** | Ruční nebo automatické (Automated) | Vyberte **automatizovaná** tooautomatically provést úplné a protokolu zálohy založené na protokolu růst. Vyberte **ruční** toospecify hello plán pro úplnou a protokolu zálohování. |
 
 ## <a name="configuration-with-powershell"></a>Konfigurace pomocí prostředí PowerShell
-V následujícím příkladu prostředí PowerShell automatizované zálohování je nakonfigurován pro existující virtuální počítač SQL Server 2014. **New-AzureVMSqlServerAutoBackupConfig** příkaz nakonfiguruje nastavení automatizovaného zálohování pro ukládání záloh v určené proměnnou $storageaccount účtu úložiště Azure. Tyto zálohy bude uchovávat 10 dní. **Set-AzureVMSqlServerExtension** příkaz aktualizuje zadaný virtuální počítač Azure s těmito nastaveními.
+V následující příklad PowerShell text hello automatizované zálohování je nakonfigurován pro existující virtuální počítač SQL Server 2014. Hello **New-AzureVMSqlServerAutoBackupConfig** příkaz nakonfiguruje hello automatizovaného zálohování nastavení toostore zálohy v účtu úložiště Azure hello určené proměnnou hello $storageaccount. Tyto zálohy bude uchovávat 10 dní. Hello **Set-AzureVMSqlServerExtension** příkaz aktualizace hello zadaný virtuální počítač Azure s těmito nastaveními.
 
     $storageaccount = "<storageaccountname>"
     $storageaccountkey = (Get-AzureStorageKey -StorageAccountName $storageaccount).Primary
@@ -86,9 +86,9 @@ V následujícím příkladu prostředí PowerShell automatizované zálohován�
 
     Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoBackupSettings $autobackupconfig | Update-AzureVM
 
-Ho může trvat několik minut k instalaci a konfiguraci IaaS Agent serveru SQL Server.
+Ho může trvat několik minut tooinstall a nakonfigurujte hello IaaS agenta systému SQL Server.
 
-Pokud chcete povolit šifrování, upravte předchozí skript k předání parametru EnableEncryption společně s pro parametr CertificatePassword heslo (zabezpečený řetězec). Následující skript umožňuje nastavení automatizovaného zálohování v předchozím příkladu a přidá šifrování.
+tooenable šifrování, upravte hello předchozí skript toopass hello EnableEncryption parametr společně s heslo (zabezpečený řetězec) pro parametr CertificatePassword hello. Hello následující skript umožňuje hello nastavení automatizovaného zálohování v předchozím příkladu hello a přidá šifrování.
 
     $storageaccount = "<storageaccountname>"
     $storageaccountkey = (Get-AzureStorageKey -StorageAccountName $storageaccount).Primary
@@ -99,17 +99,17 @@ Pokud chcete povolit šifrování, upravte předchozí skript k předání param
 
     Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoBackupSettings $autobackupconfig | Update-AzureVM
 
-Chcete-li zakázat automatické zálohování, spusťte stejný skript bez **-povolit** parametru **New-AzureVMSqlServerAutoBackupConfig**. Stejně jako u instalace, se může trvat několik minut zakázat automatizovaného zálohování.
+toodisable automatické zálohování, spusťte hello stejný skript bez hello **-povolit** parametr toohello **New-AzureVMSqlServerAutoBackupConfig**. Stejně jako u instalace může trvat několik minut toodisable automatizované zálohování.
 
 > [!NOTE]
-> Zakázání a odinstalace agenta systému SQL Server IaaS neodebere dřív nakonfigurovaná nastavení spravovaného zálohování. Měli byste zakázat automatizovaného zálohování před zakázáním nebo odinstalace agenta systému SQL Server IaaS.
+> Zakázání a odinstalace agenta systému SQL Server IaaS hello neodebere hello dříve nakonfigurované nastavení spravovaného zálohování. Měli byste zakázat automatizovaného zálohování před zakázáním nebo odinstalací hello IaaS agenta systému SQL Server.
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-Automatizované zálohování nakonfiguruje spravovaného zálohování na virtuálních počítačích Azure. Proto je důležité [najdete v dokumentaci pro spravovanou zálohu](https://msdn.microsoft.com/library/dn449496.aspx) pochopit chování a důsledky.
+Automatizované zálohování nakonfiguruje spravovaného zálohování na virtuálních počítačích Azure. Proto je důležité příliš[hello v dokumentaci pro spravovanou zálohu](https://msdn.microsoft.com/library/dn449496.aspx) toounderstand hello chování a důsledky.
 
-Můžete najít další zálohování a obnovení pokyny pro SQL Server na virtuálních počítačích Azure v následujícím tématu: [zálohování a obnovení pro SQL Server v Azure Virtual Machines](../sql/virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+Můžete najít další zálohování a obnovení pokyny pro SQL Server na virtuálních počítačích Azure v následujícím tématu hello: [zálohování a obnovení pro SQL Server v Azure Virtual Machines](../sql/virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 
 Informace o dalších úlohách, k dispozici automation najdete v tématu [rozšíření agenta systému SQL Server IaaS](../classic/sql-server-agent-extension.md).
 

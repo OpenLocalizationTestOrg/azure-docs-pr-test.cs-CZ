@@ -1,6 +1,6 @@
 ---
-title: "Nakonfigurovat privátní IP adresy pro virtuální počítače (klasické) - prostředí Azure PowerShell | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat privátní IP adresy pro virtuální počítače (klasické) pomocí prostředí PowerShell."
+title: "aaaConfigure privátních IP adres pro virtuální počítače (klasické) - prostředí Azure PowerShell | Microsoft Docs"
+description: "Zjistěte, jak tooconfigure privátní IP adresy pro virtuální počítače (klasické) pomocí prostředí PowerShell."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5da2992fad89a703086b7645c88f6d8e1a39e4b3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 99546ee9c2c4eb9aa7b67f30721d37ef9b2944f1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>Nakonfigurovat privátní IP adresy pro virtuální počítač (klasický) pomocí prostředí PowerShell
 
@@ -30,14 +30,14 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Tento článek se týká modelu nasazení Classic. Můžete také [spravovat statickou privátní IP adresou v modelu nasazení Resource Manager](virtual-networks-static-private-ip-arm-ps.md).
+Tento článek se týká modelu nasazení classic hello. Můžete také [spravovat statickou privátní IP adresou v modelu nasazení Resource Manager hello](virtual-networks-static-private-ip-arm-ps.md).
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-Vzorové příkazy prostředí PowerShell níže očekávat jednoduché prostředí již vytvořeny. Pokud chcete ke spuštění příkazů, jak jsou zobrazeny v tomto dokumentu, nejprve vytvořit testovací prostředí popsané v [vytvoření virtuální sítě](virtual-networks-create-vnet-classic-netcfg-ps.md).
+Následující příkazy prostředí PowerShell ukázkový Hello očekávat jednoduché prostředí již vytvořeny. Pokud chcete příkazy hello toorun, jak jsou zobrazeny v tomto dokumentu, nejprve sestavení hello testovací prostředí popsané v [vytvoření virtuální sítě](virtual-networks-create-vnet-classic-netcfg-ps.md).
 
-## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Postup ověření, pokud je k dispozici konkrétní IP adresu
-Chcete-li ověřit, pokud IP adresa *192.168.1.101* je k dispozici ve virtuální síti s názvem *TestVNet*, spusťte následující příkaz prostředí PowerShell a potom ověřte hodnotu pro *IsAvailable*:
+## <a name="how-tooverify-if-a-specific-ip-address-is-available"></a>Jak tooverify, pokud je k dispozici konkrétní IP adresu
+tooverify Pokud hello IP adresu *192.168.1.101* je k dispozici ve virtuální síti s názvem *TestVNet*, spusťte následující příkaz prostředí PowerShell hello a ověření hello hodnoty pro *IsAvailable*:
 
     Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 192.168.1.101 
 
@@ -49,8 +49,8 @@ Očekávaný výstup:
     OperationId          : fd3097e1-5f4b-9cac-8afa-bba1e3492609
     OperationStatus      : Succeeded
 
-## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>Postup při vytváření virtuálního počítače zadat statickou privátní IP adresu
-Následující skript prostředí PowerShell vytvoří novou cloudovou službu s názvem *TestService*, potom načte bitovou kopii z Azure, vytvoří virtuální počítač s názvem *DNS01* v rámci nové cloudové služby pomocí načtené bitové kopie, nastaví virtuálního počítače být v podsíti s názvem *front-endu*a nastaví *192.168.1.7* jako statickou privátní IP adresu pro virtuální počítač:
+## <a name="how-toospecify-a-static-private-ip-address-when-creating-a-vm"></a>Jak toospecify statickou privátní IP adresy při vytvoření virtuálního počítače
+Hello následující skript prostředí PowerShell vytvoří novou cloudovou službu s názvem *TestService*, potom načte bitovou kopii z Azure, vytvoří virtuální počítač s názvem *DNS01* v hello novou cloudovou službu pomocí hello načíst image, nastaví Hello toobe virtuálního počítače v podsíti s názvem *front-endu*a nastaví *192.168.1.7* jako statickou privátní IP adresou pro hello virtuálních počítačů:
 
     New-AzureService -ServiceName TestService -Location "Central US"
     $image = Get-AzureVMImage | where {$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
@@ -68,8 +68,8 @@ Očekávaný výstup:
     New-AzureService     fcf705f1-d902-011c-95c7-b690735e7412 Succeeded      
     New-AzureVM          3b99a86d-84f8-04e5-888e-b6fc3c73c4b9 Succeeded  
 
-## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Jak načíst statickou privátní IP adresu informace pro virtuální počítač
-Chcete-li zobrazit statické soukromé informace IP adresu pro virtuální počítač vytvořený pomocí skriptu pro výše uvedené, spusťte následující příkaz prostředí PowerShell a sledovat hodnoty pro *IpAddress*:
+## <a name="how-tooretrieve-static-private-ip-address-information-for-a-vm"></a>Jak tooretrieve statickou privátní IP adresu pro virtuální počítač
+tooview hello statickou privátní IP adresu pro hello virtuální počítač vytvořen pomocí skriptu hello výše, spusťte následující příkaz prostředí PowerShell hello a sledovat hello hodnoty pro *IpAddress*:
 
     Get-AzureVM -Name DNS01 -ServiceName TestService
 
@@ -102,8 +102,8 @@ Očekávaný výstup:
     OperationId                 : 34c1560a62f0901ab75cde4fed8e8bd1
     OperationStatus             : OK
 
-## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>Postup odebrání statickou privátní IP adresu z virtuálního počítače
-Odeberte statickou privátní IP adresu přidat do virtuálního počítače ve skriptu výše, spusťte následující příkaz prostředí PowerShell:
+## <a name="how-tooremove-a-static-private-ip-address-from-a-vm"></a>Jak tooremove statickou privátní IP adresu z virtuálního počítače
+tooremove hello statickou privátní IP adresou přidána toohello virtuálních počítačů ve skriptu hello nad spuštění hello následující příkaz prostředí PowerShell:
 
     Get-AzureVM -ServiceName TestService -Name DNS01 |
       Remove-AzureStaticVNetIP |
@@ -115,8 +115,8 @@ Očekávaný výstup:
     -------------------- -----------                          ---------------
     Update-AzureVM       052fa6f6-1483-0ede-a7bf-14f91f805483 Succeeded
 
-## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Postup přidání statickou privátní IP adresu do stávajícího virtuálního počítače
-Chcete-li přidat statického privátní IP adresu, které se virtuální počítač vytvořený skript výše, o následující příkaz:
+## <a name="how-tooadd-a-static-private-ip-address-tooan-existing-vm"></a>Jak tooadd statickou privátní IP adresa tooan existující virtuální počítač
+tooadd statickou privátní IP adresu toohello virtuálních počítačů, které jsou vytvořené pomocí skriptu hello výše, o následující příkaz:
 
     Get-AzureVM -ServiceName TestService -Name DNS01 |
       Set-AzureStaticVNetIP -IPAddress 192.168.1.7 |
@@ -131,5 +131,5 @@ Očekávaný výstup:
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [vyhrazené veřejné IP adresy](virtual-networks-reserved-public-ip.md) adresy.
 * Další informace o [veřejné IP (splnění) na úrovni instance](virtual-networks-instance-level-public-ip.md) adresy.
-* Obrátit [vyhrazené IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx).
+* Poraďte se hello [vyhrazené IP rozhraní REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx).
 

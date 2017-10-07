@@ -1,5 +1,5 @@
 ---
-title: "Řešení potíží se přes rozšíření virtuálního počítače s Windows | Microsoft Docs"
+title: "chyby rozšíření virtuálního počítače s Windows aaaTroubleshooting | Microsoft Docs"
 description: "Další informace o řešení potíží se přes rozšíření virtuálního počítače Windows Azure"
 services: virtual-machines-windows
 documentationcenter: 
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: 4dba196e1b838f2092b30972fb070514bd2a4b25
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d24544743d9e0cb1a68ec9ab7718716f918054f8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Řešení potíží se přes rozšíření virtuálního počítače Windows Azure
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
 
 ## <a name="viewing-extension-status"></a>Zobrazení stavu rozšíření
-Šablony Azure Resource Manager lze spustit z prostředí Azure PowerShell. Jakmile se spustí šablony, lze zobrazit stav rozšíření z Průzkumníka prostředků Azure nebo nástroje příkazového řádku.
+Šablony Azure Resource Manager lze spustit z prostředí Azure PowerShell. Jakmile se spustí hello šablony, lze zobrazit stav rozšíření hello z Průzkumníka prostředků Azure nebo hello nástroje příkazového řádku.
 
 Zde naleznete příklad:
 
@@ -33,7 +33,7 @@ Azure PowerShell:
 
       Get-AzureRmVM -ResourceGroupName $RGName -Name $vmName -Status
 
-Zde je ukázkový výstup:
+Tady je ukázkový výstup hello:
 
       Extensions:  {
       "ExtensionType": "Microsoft.Compute.CustomScriptExtension",
@@ -59,12 +59,12 @@ Zde je ukázkový výstup:
   ]
 
 ## <a name="troubleshooting-extension-failures"></a>Řešení potíží s chyby rozšíření
-### <a name="re-running-the-extension-on-the-vm"></a>Opětovné spuštění rozšíření ve virtuálním počítači
-Pokud se spouštění skriptů na virtuálním počítači pomocí rozšíření vlastních skriptů, může někdy spustit došlo k chybě, kde byl virtuální počítač úspěšně vytvořen, ale došlo k selhání skriptu. Doporučený způsob obnovení z této chyby je v rámci těchto podmínek, odeberte rozšíření a znovu spustit šablonu.
-Poznámka: V budoucnosti, tato funkce by vylepšit odebrat potřeba odinstalovat rozšíření.
+### <a name="re-running-hello-extension-on-hello-vm"></a>Opětovné spuštění rozšíření hello na hello virtuálních počítačů
+Pokud používáte skripty na hello virtuálního počítače pomocí rozšíření vlastních skriptů, může někdy spustit došlo k chybě, kde virtuálního počítače byla úspěšně vytvořena, ale došlo k selhání skriptu hello. Za těchto podmínek hello doporučená toorecover způsob, jak z této chyby je tooremove hello rozšíření a znovu spustit šablonu hello.
+Poznámka: V budoucnosti, tato funkce bude rozšířené tooremove hello potřebu odinstalace hello rozšíření.
 
-#### <a name="remove-the-extension-from-azure-powershell"></a>Odeberte rozšíření z prostředí Azure PowerShell
+#### <a name="remove-hello-extension-from-azure-powershell"></a>Odebrat rozšíření hello z prostředí Azure PowerShell
     Remove-AzureRmVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
 
-Po odebrání rozšíření šablony lze spouštět skripty ve virtuálním počítači znovu spustit.
+Po odebrání rozšíření hello hello šablonou může být znovu spustit toorun hello skripty na hello virtuálních počítačů.
 

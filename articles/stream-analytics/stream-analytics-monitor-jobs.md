@@ -1,6 +1,6 @@
 ---
-title: "Prostřednictvím kódu programu Sledování úloh v Stream Analytics | Microsoft Docs"
-description: "Naučte se monitorovat prostřednictvím kódu programu úlohy Stream Analytics vytvořené pomocí rozhraní REST API, Azure SDK nebo prostředí PowerShell."
+title: "Sledování úloh aaaProgrammatically v Stream Analytics | Microsoft Docs"
+description: "Zjistěte, jak tooprogrammatically monitorování úlohy Stream Analytics vytvořené pomocí rozhraní REST API, Azure SDK nebo prostředí PowerShell."
 keywords: "monitorování .net, monitorování úloh monitorování aplikace"
 services: stream-analytics
 documentationcenter: 
@@ -15,35 +15,35 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeffstok
-ms.openlocfilehash: 0d39e77316a03a705586af3ba970a7be1208ec85
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 44a9c29c2161ee81ea76ece4646a8691bf5d5b48
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Vytváření monitorování úlohy Stream Analytics prostřednictvím kódu programu
 
-Tento článek ukazuje, jak povolit monitorování v rámci úlohy Stream Analytics. Úlohy analýzy datového proudu, které jsou vytvořené pomocí rozhraní REST API, Azure SDK nebo prostředí PowerShell nemají povoleno ve výchozím nastavení monitorování. Můžete ručně ji povolit na portálu Azure přejděte na stránku úlohy monitorování a kliknutím na tlačítko Povolit nebo tento proces můžete automatizovat pomocí kroků v tomto článku. Data sledování se zobrazí v oblasti metriky portál Azure pro vaše úloha Stream Analytics.
+Tento článek ukazuje, jak tooenable monitorování u úlohy Stream Analytics. Úlohy analýzy datového proudu, které jsou vytvořené pomocí rozhraní REST API, Azure SDK nebo prostředí PowerShell nemají povoleno ve výchozím nastavení monitorování. Můžete ručně ji povolit v hello portálu Azure tak, že přejdete na stránku toohello úlohy monitorování a hello kliknutím na tlačítko Povolit nebo tento proces můžete automatizovat pomocí následujících kroků hello v tomto článku. Hello dat monitorování se zobrazí v oblasti metriky hello hello portál Azure pro vaše úloha Stream Analytics.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před zahájením tohoto procesu, musíte mít následující:
+Před zahájením tohoto procesu, musíte mít následující hello:
 
 * Visual Studio 2017 nebo 2015
 * [Azure .NET SDK](https://azure.microsoft.com/downloads/) staženy a nainstalovány
-* Existující úloha Stream Analytics, který musí mít povoleno monitorování
+* Existující úlohy Stream Analytics vyžadující toohave monitoring je povolena.
 
 ## <a name="create-a-project"></a>Vytvoření projektu
 
 1. Vytvořte konzolovou aplikaci Visual Studio C# .NET.
-2. V konzole Správce balíčků spusťte následující příkazy instalace balíčků NuGet. První z nich je Azure Stream Analytics správu .NET SDK. Druhá je Azure SDK pro monitorování, který se použije k povolení monitorování. Poslední je klient Azure Active Directory, který se použije pro ověřování.
+2. V hello Konzola správce balíčků hello spusťte následující příkazy balíčky NuGet tooinstall hello. Hello nejprve jeden je hello .NET SDK služby Azure Stream Analytics správy. Hello druhá je hello Azure SDK monitorování, který se použije tooenable monitorování. Hello poslední jedním je hello klienta Azure Active Directory, který se použije pro ověřování.
    
    ```
    Install-Package Microsoft.Azure.Management.StreamAnalytics
    Install-Package Microsoft.Azure.Insights -Pre
    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
    ```
-3. Přidejte následující oddíl appSettings do souboru App.config.
+3. Přidejte následující soubor App.config toohello oddílu appSettings hello.
    
    ```
    <appSettings>
@@ -60,12 +60,12 @@ Před zahájením tohoto procesu, musíte mít následující:
      <add key="ActiveDirectoryTenantId" value="YOUR TENANT ID" />
    </appSettings>
    ```
-   Nahraďte hodnoty pro *SubscriptionId* a *ActiveDirectoryTenantId* s Azure ID předplatného a klienta. Tyto hodnoty můžete získat spuštěním následující rutiny prostředí PowerShell:
+   Nahraďte hodnoty pro *SubscriptionId* a *ActiveDirectoryTenantId* s Azure ID předplatného a klienta. Tyto hodnoty můžete získat spuštěním následující rutiny prostředí PowerShell hello:
    
    ```
    Get-AzureAccount
    ```
-4. Přidejte následující příkazy ke zdrojovému souboru (Program.cs) v projektu.
+4. Přidejte následující hello pomocí příkazů toohello zdrojový soubor (Program.cs) v projektu hello.
    
    ```
      using System;
@@ -114,12 +114,12 @@ Před zahájením tohoto procesu, musíte mít následující:
                  return result.AccessToken;
              }
    
-             throw new InvalidOperationException("Failed to acquire token");
+             throw new InvalidOperationException("Failed tooacquire token");
      }
 
 ## <a name="create-management-clients"></a>Vytvoření klientů pro správu
 
-Následující kód nastaví nezbytné proměnné a správy klientů.
+Hello následující kód bude nastavení hello nezbytné proměnné a správy klientů.
 
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
     string streamAnalyticsJobName = "<YOUR STREAM ANALYTICS JOB NAME>";
@@ -141,16 +141,16 @@ Následující kód nastaví nezbytné proměnné a správy klientů.
 
 ## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Povolit monitorování pro existující úlohy Stream Analytics
 
-Následující kód umožňuje monitorování pro **existující** úlohy služby Stream Analytics. První část kód provede požadavek GET službu Stream Analytics k načtení informací o konkrétní úloze Stream Analytics. Použije *Id* vlastnost (získané z požadavek GET) jako parametr pro metodu Put ve druhé polovině kódu, který odesílá PUT žádost o službě Statistika povolení monitorování pro úlohu služby Stream Analytics.
+Hello následující kód povolí monitorování **existující** úlohy služby Stream Analytics. první část Hello hello kód provede požadavek GET hello Stream Analytics služby tooretrieve informace o konkrétní úloze Stream Analytics hello. Používá hello *Id* vlastnost (získané z požadavek GET hello) jako parametr pro hello metodu Put v hello druhé polovině tématu hello kód, který odešle požadavek PUT toohello Statistika služby tooenable monitorování hello Stream Analytics úloha.
 
 >[!WARNING]
->Pokud jste dříve povolili monitorování pro různé úlohy služby Stream Analytics, buď prostřednictvím portálu Azure nebo prostřednictvím kódu programu níže uvedeného kódu, **doporučujeme zadat stejný název účtu úložiště, který jste použili, když jste povolili dříve monitorování.**
+>Pokud jste dříve povolili monitorování pro různé úlohy služby Stream Analytics, buď prostřednictvím hello portál Azure nebo prostřednictvím kódu programu hello níže uvedeného kódu, **doporučujeme zadat hello stejný název účtu úložiště, můžete použít, když jste dřív povolené monitorování.**
 > 
-> Účet úložiště souvisí oblast, které jste vytvořili vaší úloze Stream Analytics, není určený speciálně pro úlohy sám sebe.
+> účet úložiště Hello je propojené toohello oblast, který jste vytvořili vaší úloze Stream Analytics v není konkrétně úlohy toohello sám sebe.
 > 
-> Všechny služby Stream Analytics úlohy (a všechny ostatní prostředky služby Azure) v této oblasti stejné sdílet tento účet úložiště pro ukládání dat monitorování. Pokud zadáte jiný účet úložiště, se může způsobit nečekané vedlejší účinky v sledování jiné úlohy Stream Analytics nebo jiných prostředků Azure.
+> Všechny služby Stream Analytics úlohy (a všechny ostatní prostředky služby Azure) v této oblasti stejné sdílet tento toostore účet úložiště dat monitorování. Pokud zadáte jiný účet úložiště, se může způsobit nečekané vedlejší účinky v hello sledování jiné úlohy Stream Analytics nebo jiných prostředků Azure.
 > 
-> Název účtu úložiště, který můžete použít k nahrazení `<YOUR STORAGE ACCOUNT NAME>` v následujícím kódu by měla být účet úložiště, který je ve stejném předplatném jako úlohu služby Stream Analytics, který chcete povolit monitorování.
+> název účtu úložiště Hello použít tooreplace `<YOUR STORAGE ACCOUNT NAME>` hello následující kód musí být účet úložiště, který je v hello stejnému předplatnému jako úlohy služby Stream Analytics hello, který chcete povolit monitorování.
 > 
 > 
 
@@ -179,7 +179,7 @@ Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://so
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
+* [Úvod tooAzure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)

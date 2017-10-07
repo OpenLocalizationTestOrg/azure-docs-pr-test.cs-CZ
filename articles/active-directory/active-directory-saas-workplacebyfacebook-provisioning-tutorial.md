@@ -1,6 +1,6 @@
 ---
 title: "Kurz: Azure Active Directory integrace s síti na pracovišti ve službě Facebook. | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a síti na pracovišti ve službě Facebook."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a síti na pracovišti ve službě Facebook."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,87 +13,87 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 9b22679c304248ed7ba7a6bd9eaf82b64f7143cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 551ec353a5ec1da936373587688c299a6f4acca7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-configuring-workplace-by-facebook-for-user-provisioning"></a>Kurz: Konfigurace síti na pracovišti ve službě Facebook pro zřizování uživatelů
 
-Cílem tohoto kurzu je tak, aby zobrazovalo kroky, které je třeba provést v síti na pracovišti Facebook a Azure AD a automaticky zřizovat a zrušte zřízení uživatelských účtů ze služby Azure AD k firemní síti pomocí sítě Facebook.
+cílem Hello tohoto kurzu je tooshow hello kroky nutné tooperform v síti na pracovišti podle Facebook a Azure AD tooautomatically zřídit a deaktivace zřízení uživatelských účtů z Azure AD tooWorkplace ve službě Facebook.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD se na pracovišti ve službě Facebook, potřebujete následující položky:
+tooconfigure integrace Azure AD se na pracovišti ve službě Facebook, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - Firemní síti pomocí sítě Facebook jednotného přihlašování povolené předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="assigning-users-to-workplace-by-facebook"></a>Přiřazování uživatelů k síti na pracovišti ve službě Facebook.
+## <a name="assigning-users-tooworkplace-by-facebook"></a>Přiřazení uživatelů tooWorkplace ve službě Facebook.
 
-Azure Active Directory používá koncept označované jako "úlohy" k určení uživatelů, kteří obdrželi přístup k vybrané aplikace. V kontextu uživatele automatické zřizování účtu se synchronizují pouze uživatelé a skupiny, které byly "přiřazeny" aplikace ve službě Azure AD.
+Azure Active Directory používá koncept názvem "přiřazení" toodetermine uživatelů, kteří obdrželi přístup tooselected aplikace. V kontextu hello zřizování účtu automatické uživatele se synchronizují pouze hello uživatelů a skupin, které byly "přiřazeny" tooan aplikace ve službě Azure AD.
 
-Před konfigurací a povolení zřizování služby, musíte rozhodnout, jaké uživatelů nebo skupin ve službě Azure AD představují uživatele, kteří potřebují přístup k pracovní ploše aplikace Facebook. Jakmile se rozhodli, můžete přiřadit těmto uživatelům k pracovní ploše aplikace Facebook podle pokynů tady:
+Než nakonfigurujete a povolíte hello zřizování služby, je nutné toodecide, jaké uživatelů nebo skupin ve službě Azure AD představují hello uživatele, kteří potřebují přístup k síti na pracovišti tooyour aplikace Facebook. Jakmile se rozhodli, můžete přiřadit tyto uživatele tooyour síti na pracovišti aplikace Facebook podle pokynů hello tady:
 
-[Přiřazení uživatele nebo skupiny do aplikace enterprise](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Přiřadit uživatele nebo skupinu tooan firemní aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-workplace-by-facebook"></a>Důležité tipy pro přiřazování uživatelů k síti na pracovišti ve službě Facebook.
+### <a name="important-tips-for-assigning-users-tooworkplace-by-facebook"></a>Důležité tipy pro přiřazení tooWorkplace uživatelů ve službě Facebook.
 
-*   Dále je doporučeno jednoho uživatele Azure AD je přiřazena k síti na pracovišti ve službě Facebook otestovat konfiguraci zřizování. Další uživatele nebo skupiny může být přiřazen později.
+*   Dále je doporučeno jednoho uživatele Azure AD je přiřazena tooWorkplace službou Facebook tootest hello zřizování konfigurace. Další uživatele nebo skupiny může být přiřazen později.
 
-*   Při přiřazení uživatele k firemní síti pomocí sítě Facebook, musíte vybrat platné uživatelské role. Roli "Výchozí přístup" nefunguje pro zřizování.
+*   Při přiřazování tooWorkplace uživatele ve službě Facebook, musíte vybrat platné uživatelské role. role "Výchozí přístup" Hello nefunguje pro zřizování.
 
 ## <a name="enable-user-provisioning"></a>Povolit zřizování uživatelů
 
-Tato část vás provede připojení k síti na pracovišti uživatelský účet na Facebooku pro zřizování rozhraní API služby Azure AD a konfiguraci zřizování službu, kterou chcete vytvořit, aktualizovat a zakažte přiřazené uživatelské účty v síti na pracovišti ve službě Facebook podle přiřazení uživatelů a skupin ve službě Azure AD.
+Tato část vás provede připojení tooWorkplace vaší služby Azure AD, uživatelský účet na Facebooku pro zřizování rozhraní API a konfiguraci hello zřizování služby toocreate, aktualizovat a zakázat přiřazené uživatelské účty v síti na pracovišti ve službě Facebook na základě uživatele a skupiny přiřazení ve službě Azure AD.
 
 >[!Tip]
->Můžete také povolit na základě SAML jednotné přihlašování pro pracoviště ve službě Facebook, postupujte podle pokynů uvedených v [portál Azure](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce doplnění navzájem.
+>Můžete také zvolit tooenabled na základě SAML jednotné přihlašování pro pracoviště podle Facebook, hello pokynů uvedených v [portál Azure](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce doplnění navzájem.
 
-### <a name="to-configure-user-account-provisioning-to-workplace-by-facebook-in-azure-ad"></a>Konfigurace účtu zřizování uživatelů k firemní síti pomocí sítě Facebook v Azure AD:
+### <a name="tooconfigure-user-account-provisioning-tooworkplace-by-facebook-in-azure-ad"></a>uživatelský účet tooconfigure zřizování tooWorkplace ve službě Facebook ve službě Azure AD:
 
-Cílem této části se popisují postup povolení zřizování uživatelských účtů služby Active Directory k firemní síti pomocí sítě Facebook.
+Hello cílem této části je toooutline jak tooenable zřizování služby Active Directory uživatelské účty tooWorkplace ve službě Facebook.
 
-Azure AD podporuje možnost automaticky synchronizovat Podrobnosti účtu přiřazené uživatelů k firemní síti pomocí sítě Facebook. Toto automatické synchronizace umožňuje síti na pracovišti ve službě Facebook se získat data, je nutné autorizovat uživatele pro přístup, než je pokus o přihlášení za poprvé. Také zrušte technologii uživatelům v síti na pracovišti ve službě Facebook při odvolání přístupu ve službě Azure AD.
+Azure AD podporuje možnost tooautomatically hello synchronizovat Podrobnosti účtu hello přiřadit tooWorkplace uživatelů ve službě Facebook. Toto automatické synchronizace umožňuje síti na pracovišti Facebook tooget hello data tooauthorize uživatelů pro přístup, je nutné před je prvním pokusem o toosign v pro hello. Také zrušte technologii uživatelům v síti na pracovišti ve službě Facebook při odvolání přístupu ve službě Azure AD.
 
-1. V [portál Azure](https://portal.azure.com), vyhledejte **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace** části.
+1. V hello [portál Azure](https://portal.azure.com), procházet toohello **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace** části.
 
-2. Pokud jste již nakonfigurovali síti na pracovišti ve službě Facebook pro jednotné přihlašování, vyhledejte instanci síti na pracovišti ve službě Facebook pomocí pole hledání. Jinak vyberte možnost **přidat** a vyhledejte **síti na pracovišti ve službě Facebook** v galerii aplikací. Vyberte síti na pracovišti ve službě Facebook ve výsledcích hledání a přidejte ji do seznamu aplikací.
+2. Pokud jste již nakonfigurovali síti na pracovišti ve službě Facebook pro jednotné přihlašování, vyhledejte instanci síti na pracovišti podle Facebook pomocí hello vyhledávací pole. Jinak vyberte možnost **přidat** a vyhledejte **síti na pracovišti ve službě Facebook** v galerii aplikací hello. Vyberte síti na pracovišti ve službě Facebook z výsledků hledání hello a přidejte ji tooyour seznam aplikací.
 
-3. Vyberte instanci síti na pracovišti ve službě Facebook a pak vyberte **zřizování** kartě.
+3. Vyberte instanci síti na pracovišti ve službě Facebook a pak vyberte hello **zřizování** kartě.
 
-4. Nastavte **režimu zřizování** k **automatické**. 
+4. Sada hello **režimu zřizování** příliš**automatické**. 
 
     ![Zřizování](./media/active-directory-saas-workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. V části **přihlašovací údaje správce** zadejte tajný klíč tokenu a URL klienta ze svého pracoviště správcem sítě Facebook.
+5. V části hello **přihlašovací údaje správce** části zadejte hello tajný klíč tokenu a hello URL klienta ze svého pracoviště správcem sítě Facebook.
 
-6. Na portálu Azure klikněte na tlačítko **Test připojení** zajistit Azure AD může připojit k pracovní ploše aplikace Facebook. Pokud se nepovede připojit, zajistěte, aby že vaše pracoviště Facebook účet má oprávnění správce týmu.
+6. V hello portálu Azure, klikněte na **Test připojení** tooensure Azure AD můžete připojit tooyour síti na pracovišti aplikace Facebook. Pokud hello připojení selže, zajistěte, aby že vaše pracoviště Facebook účet má oprávnění správce týmu.
 
-7. Zadejte e-mailovou adresu uživatele nebo skupiny, který by měly dostávat oznámení zřizování Chyba v **e-mailové oznámení** pole a zaškrtnutím políčka.
+7. Zadejte hello e-mailovou adresu uživatele nebo skupiny, který by měly dostávat oznámení zřizování Chyba v hello **e-mailové oznámení** pole a zaškrtněte políčko hello.
 
 8. Klikněte na tlačítko **uložit.**
 
-9. V části mapování vyberte **synchronizaci Azure Active Directory Users k firemní síti pomocí sítě Facebook.**
+9. V části hello části mapování, vyberte **tooWorkplace synchronizaci uživatelů Azure Active Directory ve službě Facebook.**
 
-10. V **mapování atributů** , projděte si uživatelské atributy, které jsou synchronizovány z Azure AD k firemní síti pomocí sítě Facebook. Atributy vybrán jako **párování** vlastnosti jsou používány tak, aby odpovídaly uživatelské účty v síti na pracovišti Facebook pro operace aktualizace. Kliknutím na tlačítko Uložit potvrzení změny.
+10. V hello **mapování atributů** , projděte si hello uživatelské atributy, které jsou synchronizované z Azure AD tooWorkplace ve službě Facebook. Hello atributy vybrán jako **párování** vlastnosti jsou použité toomatch hello uživatelské účty v síti na pracovišti ve službě Facebook pro operace aktualizace. Vyberte toocommit tlačítko hello uložit změny.
 
-11. Povolit Azure AD zřizování služby pro pracoviště ve službě Facebook, změňte **Stav zřizování** k **na** v **nastavení** části
+11. tooenable hello zřizování služby Azure AD pro pracoviště podle Facebook, změna hello **Stav zřizování** příliš**na** v hello **nastavení** části
 
 12. Klikněte na tlačítko **uložit.**
 
-Další informace o tom, jak nakonfigurovat automatické zřizování najdete v tématu [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
+Další informace o tom, tooconfigure automatické zřizování, najdete v části [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
 
-Nyní můžete vytvořit testovací účet. Chcete-li ověřit, že účet byl synchronizován k síti na pracovišti ve službě Facebook Počkejte až 20 minut.
+Nyní můžete vytvořit testovací účet. Počkejte, až minut too20 tooverify, který hello účet byl synchronizován tooWorkplace ve službě Facebook.
 
 ## <a name="additional-resources"></a>Další zdroje
 

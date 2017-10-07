@@ -1,5 +1,5 @@
 ---
-title: Podpora protokolu HTTP nebo 2 v Azure CDN | Microsoft Docs
+title: Podpora aaaHTTP nebo 2 v Azure CDN | Microsoft Docs
 description: "Další informace o podpoře protokolu HTTP/2 a CDN."
 services: cdn
 documentationcenter: 
@@ -13,36 +13,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
 ms.author: rli
-ms.openlocfilehash: 4f8dd685c3ae89535217d7a17a01c5129ca7e6e4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2e5e5345e8cf5c40e080ebf18b4f13a239a5aac5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="http2-support-in-azure-cdn"></a>Podpora protokolu HTTP nebo 2 v Azure CDN
 
-HTTP/2 je hlavní revizi k HTTP/1.1\. Nabízí rychlejší webové výkon, sníženou odezvu a vylepšené uživatelské prostředí, při zachování známé metody HTTP, stavové kódy a sémantiku. I když HTTP/2 je navržený na práci s protokoly HTTP a HTTPS, mnoha webových prohlížečích klienta přes protokol TLS podporují pouze HTTP/2.
+HTTP/2 je tooHTTP/1.1\ hlavní revize. Nabízí rychlejší webové výkon, sníženou odezvu a vylepšené uživatelské prostředí, při zachování hello známé metody HTTP, stavové kódy a sémantiku. I když HTTP/2 je navrženou toowork přes protokol HTTP a HTTPS, mnoha webových prohlížečích klienta přes protokol TLS podporují pouze HTTP/2.
 
 ###<a name="http2-benefits"></a>Výhody HTTP/2
 
-Příklady výhod HTTP/2:
+Příklady výhod Hello HTTP/2:
 
 *   **Multiplexní a souběžnost**
 
-    Pomocí protokolu HTTP 1.1, více provádění více požadavků prostředků vyžaduje více připojení TCP a každé připojení má zatížení s ním spojená. HTTP/2 umožňuje více prostředky vyžadované na jednoho připojení TCP.
+    Pomocí protokolu HTTP 1.1, více provádění více požadavků prostředků vyžaduje více připojení TCP a každé připojení má zatížení s ním spojená. HTTP/2 umožňuje více prostředků toobe požadovaný jednoho připojení TCP.
 
 *   **Komprese záhlaví**
 
-    Komprimací hlavičky protokolu HTTP pro obsloužit prostředky, se výrazně snižuje čas v drátové síti.
+    Komprimací hello HTTP hlavičky pro obsloužit prostředky se výrazně snižuje času na hello přenosová.
 
 *   **Datový proud závislosti**
 
-    Datový proud závislosti umožňují klientu označení serveru, který prostředků mají prioritu.
+    Datový proud závislosti povolit hello klienta tooindicate toohello server, který prostředků prioritou.
 
 
 ##<a name="http2-browser-support"></a>Podpora prohlížeče HTTP/2
 
-Všechny hlavní prohlížeče v jejich aktuální verze implementovat podporu protokolu HTTP nebo 2. Nepodporovaná prohlížečů bude automaticky záložnímu HTTP/1.1.
+Všechny hlavní prohlížeče hello v jejich aktuální verze implementovat podporu protokolu HTTP nebo 2. Nepodporovaná prohlížečů bude automaticky záložní tooHTTP/1.1.
 
 |Prohlížeč|Minimální verze|
 |-------------|------------|
@@ -58,12 +58,12 @@ Aktuálně je aktivní pro podporu protokolu HTTP/2 **Azure CDN společnosti Aka
 
 ##<a name="next-steps"></a>Další kroky
 
-Výhody HTTP/2 v praxi, najdete v sekci [tuto ukázku společnosti Akamai](https://http2.akamai.com/demo).
+toosee hello výhody HTTP/2 v praxi, najdete v části [tuto ukázku společnosti Akamai](https://http2.akamai.com/demo).
 
-Další informace o protokolu HTTP nebo 2, najdete v následujících zdrojích informací:
+Další informace o protokolu HTTP nebo 2, toolearn najdete na adrese hello následující prostředky:
 
 *   [Specifikace protokolu HTTP/2 domovské stránky](https://http2.github.io/)
 *   [Oficiální HTTP/2 – nejčastější dotazy](https://http2.github.io/faq/)
 *   [Informace o Akamai HTTP/2](https://http2.akamai.com/)
 
-Další informace o dostupných funkcí Azure CDN najdete v tématu [přehled CDN Azure](https://azure.microsoft.com/documentation/articles/cdn-overview/).
+toolearn Další informace o dostupných funkcí Azure CDN, najdete v části hello [přehled CDN Azure](https://azure.microsoft.com/documentation/articles/cdn-overview/).

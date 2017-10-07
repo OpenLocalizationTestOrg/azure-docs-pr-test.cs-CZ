@@ -1,6 +1,6 @@
 ---
 title: "Přizpůsobení uživatelského rozhraní (UI) – Azure AD B2C | Microsoft Docs"
-description: "Téma o funkce přizpůsobení uživatelského rozhraní (UI) v Azure Active Directory B2C"
+description: "Téma o hello uživatelské rozhraní (UI) přizpůsobení funkcí v Azure Active Directory B2C"
 services: active-directory-b2c
 documentationcenter: 
 author: saeedakhter-msft
@@ -14,42 +14,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeedakhter-msft
-ms.openlocfilehash: 122fa997ea11b369aae3c59edf0043ab19d21aea
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 04f8c5f1277f8d4409cd10971d22a0ebd2024785
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Přizpůsobení uživatelského rozhraní (UI) Azure AD B2C
+# <a name="azure-active-directory-b2c-customize-hello-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Přizpůsobení hello Azure AD B2C uživatelské rozhraní (UI)
 
-Činnost koncového uživatele je prvořadá v zákazníků, kterým čelí aplikace.  Růst zákazníkovi základní tím, že vytvoří koncových uživatelů s vzhledu a chování vaší značkou. Azure Active Directory B2C (Azure AD B2C) umožňuje přizpůsobit profil registrace, přihlášení, úpravy a resetování hesla stránky s ovládacím prvkem dokonalou pixelů.
+Činnost koncového uživatele je prvořadá v zákazníků, kterým čelí aplikace.  Růst zákazníkovi základní tím, že vytvoří koncových uživatelů s hello vzhledu a chování vaší značkou. Azure Active Directory B2C (Azure AD B2C) umožňuje přizpůsobit profil registrace, přihlášení, úpravy a resetování hesla stránky s ovládacím prvkem dokonalou pixelů.
 
 > [!NOTE]
-> Funkce přizpůsobení uživatelského rozhraní stránky popsané v tomto článku se nevztahuje pouze zásad přihlašování, jeho doprovodné stránku pro reset hesla a ověření e-mailů.  Tyto funkce používají [firemního brandingu funkce](../active-directory/active-directory-add-company-branding.md) místo.
+> Hello stránce uživatelského rozhraní přizpůsobení funkce popsané v tomto článku se nevztahuje toohello přihlásit pouze zásady, doprovodné stránku pro reset hesla a ověřovacích e-mailů.  Tyto funkce používají hello [firemního brandingu funkce](../active-directory/active-directory-add-company-branding.md) místo.
 >
 
-Tento článek obsahuje následující témata:
+Tento článek se zabývá hello následující témata:
 
-* Funkce pro přizpůsobení uživatelského rozhraní stránky.
-* Nástroj pro nahrávání obsahu HTML do úložiště objektů Blob Azure pro použití s přizpůsobení funkcí uživatelského rozhraní stránky.
-* Prvky uživatelského rozhraní používá Azure AD B2C, kterou si můžete přizpůsobit pomocí stylů CSS (Cascading Style).
+* funkce pro přizpůsobení uživatelského rozhraní stránky Hello.
+* Nástroj pro nahrávání obsahu tooAzure HTML úložiště objektů Blob pro použití s funkce přizpůsobení uživatelského rozhraní stránky hello.
+* prvky uživatelského rozhraní Hello používá Azure AD B2C, kterou si můžete přizpůsobit pomocí stylů CSS (Cascading Style).
 * Osvědčené postupy při výkonu této funkce.
 
-## <a name="the-page-ui-customization-feature"></a>Přizpůsobení funkce uživatelského rozhraní stránky
+## <a name="hello-page-ui-customization-feature"></a>funkce přizpůsobení uživatelského rozhraní stránky Hello
 
-Můžete přizpůsobit vzhled a chování registrace a přihlášení se heslo zákazníka resetování a úpravy profilu stránky (nakonfigurováním [zásady](active-directory-b2c-reference-policies.md)). Vaši zákazníci získat integrované prostředí při přechodu mezi vaší aplikace a stránky obsluhuje Azure AD B2C.
+Můžete přizpůsobit hello vzhledu a chování registrace a přihlášení se heslo zákazníka resetování a úpravy profilu stránky (nakonfigurováním [zásady](active-directory-b2c-reference-policies.md)). Vaši zákazníci získat integrované prostředí při přechodu mezi vaší aplikace a stránky obsluhuje Azure AD B2C.
 
-Na rozdíl od jiných služeb, kde možnosti uživatelského rozhraní, Azure AD B2C používá jednoduché a moderní přístupu k přizpůsobení uživatelského rozhraní.
+Na rozdíl od jiných služeb, kde možnosti uživatelského rozhraní, používá Azure AD B2C a jednoduché a moderní přístupu tooUI přizpůsobení.
 
-Zde je, jak to funguje: Azure AD B2C spuštěním kódu v prohlížeči vašeho zákazníka a používá moderní přístup názvem [sdílení prostředků různých původů (CORS)](http://www.w3.org/TR/cors/).  Při spuštění je obsah načten z adresy URL, který určíte v zásadách. Můžete zadat různé adresy URL pro různé stránky. Po obsah načíst z vaše adresa URL je sloučen s fragment HTML, který je vložen z Azure AD B2C, stránka se zobrazí zákazníkovi. Je potřeba udělat je:
+Zde je, jak to funguje: Azure AD B2C spuštěním kódu v prohlížeči vašeho zákazníka a používá moderní přístup názvem [sdílení prostředků různých původů (CORS)](http://www.w3.org/TR/cors/).  Při spuštění je obsah načten z adresy URL, který určíte v zásadách. Můžete zadat různé adresy URL pro různé stránky. Po obsah načíst z vaše adresa URL je sloučen s fragment HTML, který je vložen z Azure AD B2C, stránka hello je zobrazené tooyour zákazníka. Stačí toodo je:
 
-1. Vytváření obsahu s prázdnou ve správném formátu HTML5 `<div id="api"></div>` element nachází někde v `<body>`. Tento element značky, které je vložen obsahu Azure AD B2C.
+1. Vytváření obsahu s prázdnou ve správném formátu HTML5 `<div id="api"></div>` element nachází někde v hello `<body>`. Tento element značky, které je vložen hello obsahu Azure AD B2C.
 1. Hostovat obsah na koncový bod HTTPS (s CORS povoleny). Všimněte si, jak získat a možnosti požadavek metody musí být povolena při konfiguraci CORS.
-1. K úpravě stylu prvky uživatelského rozhraní, které Azure AD B2C vloží pomocí šablon stylů CSS.
+1. Použití šablon stylů CSS toostyle hello prvky uživatelského rozhraní, vloží Azure AD B2C.
 
 ### <a name="a-basic-example-of-customized-html"></a>Základní příklad přizpůsobené HTML
 
-V následujícím příkladu je nejzákladnější obsah HTML, který můžete použít k testování této funkci. Použití [pomocným nástrojem pro](active-directory-b2c-reference-ui-customization-helper-tool.md) nahrání a konfigurace tohoto obsahu ve službě Azure Blob storage. Následně můžete ověřit, že základní, stylizované tlačítka & polí formuláře na každé stránce jsou zobrazené a funkční.
+Následující ukázka Hello je hello nejzákladnější, které můžete použít tootest tato funkce obsah HTML. Použití hello [pomocným nástrojem pro](active-directory-b2c-reference-ui-customization-helper-tool.md) tooupload a konfiguraci tohoto obsahu ve službě Azure Blob storage. Následně můžete ověřit, že hello základní, stylizované tlačítka & polí formuláře na každé stránce jsou zobrazené a funkční.
 
 ```HTML
 <!DOCTYPE html>
@@ -63,21 +63,21 @@ V následujícím příkladu je nejzákladnější obsah HTML, který můžete p
 </html>
 ```
 
-## <a name="test-out-the-ui-customization-feature"></a>Otestování funkce přizpůsobení uživatelského rozhraní
+## <a name="test-out-hello-ui-customization-feature"></a>Otestování hello funkce přizpůsobení uživatelského rozhraní
 
-Chcete vyzkoušet funkce přizpůsobení uživatelského rozhraní pomocí naše ukázka HTML a CSS obsahu?  Nabízíme vám [pomocný nástroj](active-directory-b2c-reference-ui-customization-helper-tool.md) , odešle a nakonfiguruje ukázkový obsah v Azure Blob storage.
+Chcete tootry out hello funkce přizpůsobení uživatelského rozhraní pomocí našich ukázkový kód HTML a CSS obsah?  Nabízíme vám [pomocný nástroj](active-directory-b2c-reference-ui-customization-helper-tool.md) , odešle a nakonfiguruje ukázkový obsah v Azure Blob storage.
 
 > [!NOTE]
-> Je možné hostovat kdekoli obsah uživatelského rozhraní: na webových serverech, sítím CDN, AWS S3, sdílení systémy souborů atd. Tak dlouho, dokud je obsah uložený na veřejně dostupný koncový bod HTTPS s povolením CORS, můžete se pustit do práce. Úložiště objektů Blob v Azure se používá pouze pro ilustraci.
+> Je možné hostovat kdekoli obsah uživatelského rozhraní: na webových serverech, sítím CDN, AWS S3, sdílení systémy souborů atd. Tak dlouho, dokud hello je hostován na veřejně dostupný koncový bod HTTPS s povolením CORS, jste dobrý toogo. Úložiště objektů Blob v Azure se používá pouze pro ilustraci.
 >
 
-## <a name="the-ui-fragments-embedded-by-azure-ad-b2c"></a>Fragmenty uživatelského rozhraní vložených pomocí Azure AD B2C
+## <a name="hello-ui-fragments-embedded-by-azure-ad-b2c"></a>fragmenty uživatelského rozhraní Hello vložených pomocí Azure AD B2C
 
-Následující části uvádějí fragmentů jazyka HTML5, které Azure AD B2C sloučí `<div id="api"></div>` element umístěné v obsahu. **Nevkládejte tyto Fragmenty HTML 5 obsah.** Služba Azure AD B2C vloží je do za běhu. Použijte tyto fragmenty jako pomůcku při navrhování vlastních stylů CSS (Cascading Style).
+Hello následující části uvádějí fragmenty hello HTML5, které Azure AD B2C sloučí hello `<div id="api"></div>` element umístěné v obsahu. **Nevkládejte tyto Fragmenty HTML 5 obsah.** Hello služby Azure AD B2C vloží je do za běhu. Použijte tyto fragmenty jako pomůcku při navrhování vlastních stylů CSS (Cascading Style).
 
-### <a name="fragment-inserted-into-the-identity-provider-selection-page"></a>Fragment vloženy do "zprostředkovatele výběr stránky identit"
+### <a name="fragment-inserted-into-hello-identity-provider-selection-page"></a>Fragment vloženy do hello "Stránka Výběr zprostředkovatele Identity"
 
-Tato stránka obsahuje seznam poskytovatelů identity, které může uživatel vybírat během registrace nebo přihlášení. Tato tlačítka zahrnují zprostředkovatelů identity sociálních třeba Facebook a Google + nebo místní účty (podle e-mailové adresy nebo uživatelské jméno).
+Tato stránka obsahuje seznam identity, které můžete zvolit zprostředkovatelé, kteří hello uživatele během registrace nebo přihlášení. Tato tlačítka zahrnují zprostředkovatelů identity sociálních třeba Facebook a Google + nebo místní účty (podle e-mailové adresy nebo uživatelské jméno).
 
 ```HTML
 <div id="api" data-name="IdpSelections">
@@ -101,18 +101,18 @@ Tato stránka obsahuje seznam poskytovatelů identity, které může uživatel v
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-local-account-sign-up-page"></a>Fragment vloženy do "místní účet stránku pro přihlášení"
+### <a name="fragment-inserted-into-hello-local-account-sign-up-page"></a>Fragment vloženy do hello "místní účet stránku pro přihlášení"
 
-Tato stránka obsahuje formulář založený na e-mailovou adresu nebo uživatelské jméno pro místní účet pro zápis. Formulář může obsahovat různé vstupní ovládací prvky jako vstupní textové pole, pole pro zadání hesla, přepínač, polí rozevíracího seznamu vyberte jeden a více vyberte zaškrtávací políčka.
+Tato stránka obsahuje formulář založený na e-mailovou adresu nebo uživatelské jméno pro místní účet pro zápis. Hello formulář může obsahovat různé vstupní ovládací prvky jako vstupní textové pole, pole pro zadání hesla, přepínač, polí rozevíracího seznamu vyberte jeden a více vyberte zaškrtávací políčka.
 
 ```HTML
 <div id="api" data-name="SelfAsserted">
     <div class="intro">
-        <p>Create your account by providing the following details</p>
+        <p>Create your account by providing hello following details</p>
     </div>
 
     <div id="attributeVerification">
-        <div class="errorText" id="passwordEntryMismatch" style="display: none;">The password entry fields do not match. Please enter the same password in both fields and try again.</div>
+        <div class="errorText" id="passwordEntryMismatch" style="display: none;">hello password entry fields do not match. Please enter hello same password in both fields and try again.</div>
         <div class="errorText" id="requiredFieldMissing" style="display: none;">A required field is missing. Please fill out all required fields and try again.</div>
         <div class="errorText" id="fieldIncorrect" style="display: none;">One or more fields are filled out incorrectly. Please check your entries and try again.</div>
         <div class="errorText" id="claimVerificationServerError" style="display: none;"></div>
@@ -122,17 +122,17 @@ Tato stránka obsahuje formulář založený na e-mailovou adresu nebo uživatel
                     <div class="attrEntry validate">
                         <div>
                             <div class="verificationInfoText" id="email_intro" style="display: inline;">Verification is necessary. Please click Send button.</div>
-                            <div class="verificationInfoText" id="email_info" style="display:none">Verification code has been sent to your inbox. Please copy it to the input box below.</div>
+                            <div class="verificationInfoText" id="email_info" style="display:none">Verification code has been sent tooyour inbox. Please copy it toohello input box below.</div>
                             <div class="verificationSuccessText" id="email_success" style="display:none">E-mail address verified. You can now continue.</div>
                             <div class="verificationErrorText" id="email_fail_retry" style="display:none">Incorrect code, try again.</div>
-                            <div class="verificationErrorText" id="email_fail_no_retry" style="display:none">Exceeded number of retries you need to send new code.</div>
+                            <div class="verificationErrorText" id="email_fail_no_retry" style="display:none">Exceeded number of retries you need toosend new code.</div>
                             <div class="verificationErrorText" id="email_fail_server" style="display:none">Server error, please try again</div>
                             <div class="verificationErrorText" id="email_incorrect_format" style="display:none">Incorect format.</div>
                         </div>
 
                     <div class="helpText show">This information is required</div>
                         <label>Email</label>
-                        <input id="email" class="textInput" type="text" placeholder="Email" required="" autofocus=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Email address that can be used to contact you.');" class="tiny">What is this?</a>
+                        <input id="email" class="textInput" type="text" placeholder="Email" required="" autofocus=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Email address that can be used toocontact you.');" class="tiny">What is this?</a>
 
                     <div class="buttons verify" claim_id="email">
                         <div id="email_ver_wait" class="working" style="display: none;"></div>
@@ -148,9 +148,9 @@ Tato stránka obsahuje formulář založený na e-mailovou adresu nebo uživatel
                 </li>
                 <li>
                     <div class="attrEntry">
-                        <div class="helpText">8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ " ( ) ; .This information is required</div>
+                        <div class="helpText">8-16 characters, containing 3 out of 4 of hello following: Lowercase characters, uppercase characters, digits (0-9), and one or more of hello following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ " ( ) ; .This information is required</div>
                         <label>Enter password</label>
-                        <input id="password" class="textInput" type="password" placeholder="Enter password" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$" title="8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ &quot; ( ) ; ." required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Enter password');" class="tiny">What is this?</a>
+                        <input id="password" class="textInput" type="password" placeholder="Enter password" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$" title="8-16 characters, containing 3 out of 4 of hello following: Lowercase characters, uppercase characters, digits (0-9), and one or more of hello following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ &quot; ( ) ; ." required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Enter password');" class="tiny">What is this?</a>
                     </div>
                 </li>
                 <li>
@@ -202,7 +202,7 @@ Tato stránka obsahuje formulář založený na e-mailovou adresu nebo uživatel
                     <div class="attrEntry">
                         <div class="helpText">This information is required</div>
                         <label>Zip code</label>
-                        <input id="postalCode" class="textInput" type="text" placeholder="Zip code" required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('The postal code of your address.');" class="tiny">What is this?</a>
+                        <input id="postalCode" class="textInput" type="text" placeholder="Zip code" required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('hello postal code of your address.');" class="tiny">What is this?</a>
                     </div>
                 </li>
             </ul>
@@ -216,11 +216,11 @@ Tato stránka obsahuje formulář založený na e-mailovou adresu nebo uživatel
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-social-account-sign-up-page"></a>Fragment vloženy do "" sociálních účet stránku pro přihlášení"
+### <a name="fragment-inserted-into-hello-social-account-sign-up-page"></a>Fragment vloženy do hello "" sociálního account stránku pro přihlášení"
 
-Tato stránka se mohou objevit při registraci pomocí existujícího účtu od poskytovatele identity sociálních třeba Facebook nebo Google +.  Používá se při dalších informace musí být shromažďovány z koncového uživatele pomocí registračního formuláře. Tato stránka je podobný na místní účet stránku pro přihlášení (zobrazené v předchozí části) s výjimkou pole pro zadání hesla.
+Tato stránka se mohou objevit při registraci pomocí existujícího účtu od poskytovatele identity sociálních třeba Facebook nebo Google +.  Používá se při dalších informace musí být shromažďovány z hello koncového uživatele pomocí registračního formuláře. Tato stránka je podobné toohello místní účet stránku pro přihlášení (zobrazené v předchozí části hello) s výjimkou hello hello pole zadání hesla.
 
-### <a name="fragment-inserted-into-the-unified-sign-up-or-sign-in-page"></a>Fragment vloženy do "Unified registrace nebo přihlášení stránku"
+### <a name="fragment-inserted-into-hello-unified-sign-up-or-sign-in-page"></a>Fragment vloženy do hello "Unified stránku registrace nebo přihlášení"
 
 Tato stránka zpracovává jak registrace a přihlášení zákazníků, kteří můžou využívat zprostředkovatelů identity sociálních třeba Facebook nebo Google + nebo místní účty.
 
@@ -273,7 +273,7 @@ Tato stránka zpracovává jak registrace a přihlášení zákazníků, kteří
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-multi-factor-authentication-page"></a>Fragment vloženy do "stránka vícefaktorového ověřování"
+### <a name="fragment-inserted-into-hello-multi-factor-authentication-page"></a>Fragment vloženy do hello "stránka vícefaktorového ověřování"
 
 Na této stránce si uživatelé mohli ověřit jejich telefonních čísel (pomocí textové nebo hlasové) během registrace nebo přihlášení.
 
@@ -281,7 +281,7 @@ Na této stránce si uživatelé mohli ověřit jejich telefonních čísel (pom
 <div id="api" data-name="Phonefactor">
     <div id="phonefactor_initial">
         <div class="intro">
-            <p>Enter a number below that we can send a code via SMS or phone to authenticate you.</p>
+            <p>Enter a number below that we can send a code via SMS or phone tooauthenticate you.</p>
         </div>
         <div class="errorText" id="errorMessage" style="display:none"></div>
         <div class="phoneEntry" id="phoneEntry">
@@ -317,31 +317,31 @@ Na této stránce si uživatelé mohli ověřit jejich telefonních čísel (pom
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-error-page"></a>Fragment vloženy do "" chybové stránky"
+### <a name="fragment-inserted-into-hello-error-page"></a>Fragment vloženy do hello "Stránka" Chyba"
 
 ```HTML
 <div id="api" class="error-page-content" data-name="GlobalException">
     <h2>Sorry, but we're having trouble signing you in.</h2>
-    <div class="error-page-help">We track these errors automatically, but if the problem persists feel free to contact us. In the meantime, please try again.</div>
+    <div class="error-page-help">We track these errors automatically, but if hello problem persists feel free toocontact us. In hello meantime, please try again.</div>
     <div class="error-page-messagedetails">Your administrator hasn't provided any contact details.</div>
     <div class="error-page-messagedetails">
         <div class="error-page-correlationid">Correlation ID:1c4f0397-c6e4-4afe-bf74-42f488f2f15f</div>
         <div>Timestamp:2015-09-14 23:22:35Z</div>
-        <div class="error-page-detail">AADB2C90065: A B2C client-side error 'Access is denied.' has occurred requesting the remote resource.</div>
+        <div class="error-page-detail">AADB2C90065: A B2C client-side error 'Access is denied.' has occurred requesting hello remote resource.</div>
     </div>
 </div>
 ```
 
 ## <a name="localizing-your-html-content"></a>Lokalizace obsah HTML
 
-Je možné lokalizovat obsah HTML zapnutím ['Jazyk přizpůsobení'](active-directory-b2c-reference-language-customization.md).  Povolení této funkce umožňuje Azure AD B2C předávat parametr Open ID Connect `ui-locales`, na váš koncový bod.  Vaše servery obsahu můžete zajistit vlastní stránky HTML, které jsou specifické pro jazyk použít tento parametr.
+Je možné lokalizovat obsah HTML zapnutím ['Jazyk přizpůsobení'](active-directory-b2c-reference-language-customization.md).  Povolení této funkce umožňuje Azure AD B2C tooforward hello Open ID Connect parametr `ui-locales`, tooyour koncový bod.  Vaše servery obsahu můžete použít tento parametr tooprovide přizpůsobit HTML stránky, které jsou specifické pro jazyk.
 
-## <a name="things-to-remember-when-building-your-own-content"></a>Pamatujte při vytváření vlastní obsah
+## <a name="things-tooremember-when-building-your-own-content"></a>Tooremember věcí při vytváření vlastní obsah
 
-Pokud máte v úmyslu používat funkci přizpůsobení uživatelského rozhraní stránky, projděte si následující osvědčené postupy:
+Pokud plánujete funkce přizpůsobení uživatelského rozhraní stránky hello toouse, projděte si následující osvědčené postupy hello:
 
-* Nemáte kopírovat obsah výchozí Azure AD B2C a pokuste se upravit. Je nejvhodnější k sestavení obsahu HTML5 od začátku a používat výchozí obsah jako výchozí.
-* Z bezpečnostních důvodů jsme nemáte umožňují zahrnout všechny JavaScript do vašeho obsahu. Většina co potřebujete, by měly být dostupné z pole. Pokud ne, použít [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) požádat o nové funkce.
+* Nemáte kopírovat obsah hello Azure AD B2C je výchozí a pokus toomodify ho. Ho je nejlepší toobuild HTML5 obsah od začátku a toouse výchozí obsah jako odkaz.
+* Z bezpečnostních důvodů neumožňují, tooinclude žádné JavaScript v obsahu. Většina co potřebujete, by měly být dostupné předinstalované hello. Pokud ne, použít [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) toorequest nové funkce.
 * Podporované verze prohlížeče:
   * Internet Explorer 11, 10, Edge
   * Omezená podpora pro Internet Explorer 9, 8

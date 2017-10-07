@@ -1,6 +1,6 @@
 ---
-title: "Vytvořit webovou aplikaci Java a MySQL v Azure"
-description: "Zjistěte, jak získat aplikaci Java, která se připojuje ke službě databáze Azure MySQL práce v Azure App Service."
+title: aaaBuild webovou aplikaci Java a MySQL v Azure
+description: "Zjistěte, jak tooget aplikace v jazyce Java, připojí se služba databáze Azure MySQL toohello práce v Azure App Service."
 services: app-service\web
 documentationcenter: Java
 author: bbenz
@@ -15,15 +15,15 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: eb2d59939c4e4486bb14bb143a4a18f9bc1478e1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0820ee9c2b7bf8fcaa22287c27a7ab848a1c4927
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="build-a-java-and-mysql-web-app-in-azure"></a>Vytvořit webovou aplikaci Java a MySQL v Azure
 
-Tento kurz ukazuje, jak vytvořit webovou aplikaci Java v Azure a připojte ho k databázi MySQL. Jakmile budete hotovi, budete mít [pružiny spouštěcí](https://projects.spring.io/spring-boot/) ukládání dat v aplikaci [Azure Database pro databázi MySQL](https://docs.microsoft.com/azure/mysql/overview) systémem [Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview).
+Tento kurz ukazuje, jak toocreate Java webové aplikace v Azure a připojte ho tooa databáze MySQL. Jakmile budete hotovi, budete mít [pružiny spouštěcí](https://projects.spring.io/spring-boot/) ukládání dat v aplikaci [Azure Database pro databázi MySQL](https://docs.microsoft.com/azure/mysql/overview) systémem [Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview).
 
 ![Java aplikace spuštěné v Azure App Service](./media/app-service-web-tutorial-java-mysql/appservice-web-app.png)
 
@@ -31,44 +31,44 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření databáze MySQL v Azure
-> * Ukázkovou aplikaci připojit k databázi
-> * Nasazení aplikace do Azure
-> * Aktualizace a opětovné nasazení aplikace
+> * Připojit ukázkové aplikaci toohello databáze
+> * Nasazení aplikace tooAzure hello
+> * Aktualizace a znovu nasaďte aplikace hello
 > * Diagnostické protokoly datového proudu z Azure
-> * Sledování aplikace na portálu Azure
+> * Monitorování aplikace hello v hello portálu Azure
 
 
 ## <a name="prerequisites"></a>Požadavky
 
 1. [Stáhněte a nainstalujte Git](https://git-scm.com/)
-1. [Stáhněte a nainstalujte sadu JDK Java 7 nebo novější](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+1. [Stáhněte a nainstalujte hello Java 7 JDK nebo novější](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 1. [Stáhnout, nainstalovat a spustit MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud zvolte tooinstall a místně pomocí hello rozhraní příkazového řádku, v tomto tématu vyžaduje, že používáte hello Azure CLI verze 2.0 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="prepare-local-mysql"></a>Příprava místního MySQL 
 
-V tomto kroku vytvoříte databázi v místním serveru MySQL pro použití při testování aplikace místně na vašem počítači.
+V tomto kroku vytvoříte databázi v místním serveru MySQL pro použití v testování aplikace hello místně na vašem počítači.
 
-### <a name="connect-to-mysql-server"></a>Připojení k serveru databáze MySQL
+### <a name="connect-toomysql-server"></a>Připojení serveru tooMySQL
 
-Okno terminálu připojte k místní server MySQL. Chcete-li spustit všechny příkazy v tomto kurzu můžete toto okno terminálu.
+V okně terminálu připojte místní server MySQL tooyour. Všechny příkazy hello toto okno terminálu toorun můžete použít v tomto kurzu.
 
 ```bash
 mysql -u root -p
 ```
 
-Pokud se zobrazí výzva k zadání hesla, zadejte heslo pro `root` účtu. Pokud si nepamatujete heslo kořenového účtu, najdete v části [MySQL: jak resetovat hesla kořenového](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html).
+Pokud se zobrazí výzva k zadání hesla, zadejte heslo hello hello `root` účtu. Pokud si nepamatujete heslo kořenového účtu, najdete v části [MySQL: jak tooReset hello kořenové heslo](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html).
 
-Pokud váš příkaz úspěšně proběhne, serveru databáze MySQL již spuštěna. Pokud ne, ujistěte se, zda je místní server MySQL spuštěná pomocí následujících [kroky po instalaci MySQL](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html).
+Pokud váš příkaz úspěšně proběhne, serveru databáze MySQL již spuštěna. Pokud ne, ujistěte se, že místní server MySQL se spustí následující hello [kroky po instalaci MySQL](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html).
 
 ### <a name="create-a-database"></a>Vytvoření databáze 
 
-V `mysql` výzvu, vytvořte databázi a tabulku položkami seznamu úkolů.
+V hello `mysql` výzvu, vytvořte databázi a tabulku hello položkami seznamu úkolů.
 
 ```sql
 CREATE DATABASE tododb;
@@ -80,49 +80,49 @@ Ukončení připojení k serveru zadáním `quit`.
 quit
 ```
 
-## <a name="create-and-run-the-sample-app"></a>Vytvoření a spuštění ukázkové aplikace 
+## <a name="create-and-run-hello-sample-app"></a>Vytvořte a spusťte ukázkové aplikace hello 
 
-V tomto kroku klonovat ukázkové pružiny spouštěcí aplikace, bude sloužit místní databázi MySQL a spustit ve vašem počítači. 
+V tomto kroku naklonujte ukázkovou aplikaci spouštěcí pružiny, ho nakonfigurovat místní databázi MySQL toouse hello a spustit ve vašem počítači. 
 
-### <a name="clone-the-sample"></a>Clone – ukázka
+### <a name="clone-hello-sample"></a>Ukázka hello klonování
 
-V okně terminálu přejděte do pracovního adresáře a klonovat úložiště v ukázkové. 
+V okně terminálu hello přejděte tooa práce adresáře a naklonujte úložiště ukázkové hello. 
 
 ```bash
 git clone https://github.com/azure-samples/mysql-spring-boot-todo
 ```
 
-### <a name="configure-the-app-to-use-the-mysql-database"></a>Nakonfiguruje aplikaci, kterou chcete použít databázi MySQL
+### <a name="configure-hello-app-toouse-hello-mysql-database"></a>Konfiguraci databáze MySQL hello toouse aplikace hello
 
-Aktualizace `spring.datasource.password` a hodnota v *spring-boot-mysql-todo/src/main/resources/application.properties* pomocí stejného hesla kořenové použitý k otevření MySQL řádku:
+Aktualizace hello `spring.datasource.password` a hodnota v *spring-boot-mysql-todo/src/main/resources/application.properties* s hello používá stejné kořenové heslo tooopen hello MySQL řádku:
 
 ```
 spring.datasource.password=mysqlpass
 ```
 
-### <a name="build-and-run-the-sample"></a>Sestavit a spustit ukázku
+### <a name="build-and-run-hello-sample"></a>Sestavení a spuštění ukázkových hello
 
-Sestavit a spustit ukázku pomocí obálku Maven zahrnuté v úložišti:
+Sestavení a spuštění hello ukázku pomocí obálku Maven hello součástí hello úložiště:
 
 ```bash
 cd spring-boot-mysql-todo
 mvnw package spring-boot:run
 ```
 
-Otevřete prohlížeč na adrese http://localhost: 8080 zobrazíte v ukázce v akci. Při přidávání úkolů do seznamu, použijte následující příkazy SQL v řádku MySQL k zobrazení dat uložených v MySQL.
+Otevřete váš prohlížeč toohttp://localhost:8080 toosee v ukázce hello v akci. Při přidávání seznamu toohello úlohy, použijte následující příkaz SQL příkazů v hello MySQL výzva tooview hello data uložená v MySQL hello.
 
 ```SQL
 use testdb;
 select * from todo_item;
 ```
 
-Zastavte aplikaci zasažení `Ctrl` + `C` v terminálu. 
+Zastavte aplikaci hello stiskne `Ctrl` + `C` v terminálu hello. 
 
 ## <a name="create-an-azure-mysql-database"></a>Vytvoření databáze MySQL na Azure
 
-V tomto kroku vytvoříte [Azure Database pro databázi MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md) pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Nakonfigurujete ukázkovou aplikaci pro tuto databázi použít později v tomto kurzu.
+V tomto kroku vytvoříte [Azure Database pro databázi MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md) instanci pomocí hello [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Nakonfigurujete hello ukázkové aplikace toouse tuto databázi později v kurzu hello.
 
-Pomocí Azure CLI 2.0 na okno terminálu vytvořit prostředky potřebné k hostování aplikace v jazyce Java v Azure App Service. Přihlaste se k předplatnému Azure pomocí příkazu [az login](/cli/azure/#login) a postupujte podle pokynů na obrazovce. 
+Hello použití Azure CLI 2.0 v okno terminálu toocreate hello prostředky potřebné toohost aplikace v jazyce Java v Azure App Service. Přihlaste se tooyour předplatné s hello [az přihlášení](/cli/azure/#login) příkazů a postupujte podle hello na obrazovce pokynů. 
 
 ```azurecli-interactive 
 az login 
@@ -130,20 +130,20 @@ az login
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvoření [skupiny prostředků](../azure-resource-manager/resource-group-overview.md) s [vytvořit skupinu az](/cli/azure/group#create) příkaz. Skupinu prostředků Azure je logický kontejner, kde jsou související prostředky jako webové aplikace, databáze a účtů úložiště nasadit a spravovat. 
+Vytvoření [skupiny prostředků](../azure-resource-manager/resource-group-overview.md) s hello [vytvořit skupinu az](/cli/azure/group#create) příkaz. Skupinu prostředků Azure je logický kontejner, kde jsou související prostředky jako webové aplikace, databáze a účtů úložiště nasadit a spravovat. 
 
-Následující příklad vytvoří skupinu prostředků v oblasti Severní Evropa:
+Hello následující příklad vytvoří skupinu prostředků v oblasti Severní Evropa hello:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "North Europe"
 ```    
 
-Zobrazíte možné hodnoty, které můžete použít pro `--location`, použijte [míst seznamu služby App Service az](/cli/azure/appservice#list-locations) příkaz.
+toosee hello možných hodnot můžete použít pro `--location`, použijte hello [míst seznamu služby App Service az](/cli/azure/appservice#list-locations) příkaz.
 
 ### <a name="create-a-mysql-server"></a>Vytvoření databáze MySQL serveru
 
-Vytvoření serveru ve službě Azure Database pro databázi MySQL (Preview) pomocí [az mysql server vytvořit](/cli/azure/mysql/server#create) příkaz.    
-Nahraďte vlastní jedinečný název serveru databáze MySQL, kde uvidíte `<mysql_server_name>` zástupný symbol. Tento název je součástí název hostitele serveru MySQL, `<mysql_server_name>.mysql.database.azure.com`, takže ho musí být globálně jedinečný. Také nahraďte `<admin_user>` a `<admin_password>` vlastními hodnotami.
+Vytvoření serveru ve službě Azure Database pro databázi MySQL (Preview) s hello [az mysql server vytvořit](/cli/azure/mysql/server#create) příkaz.    
+Nahraďte vlastní jedinečný název serveru databáze MySQL, kde uvidíte hello `<mysql_server_name>` zástupný symbol. Tento název je součástí název hostitele serveru MySQL, `<mysql_server_name>.mysql.database.azure.com`, takže je nutné toobe globálně jedinečný. Také nahraďte `<admin_user>` a `<admin_password>` vlastními hodnotami.
 
 ```azurecli-interactive
 az mysql server create --name <mysql_server_name> \ 
@@ -153,7 +153,7 @@ az mysql server create --name <mysql_server_name> \
     --admin-password <admin_password>
 ```
 
-Při vytvoření serveru MySQL rozhraní příkazového řádku Azure obsahuje informace o podobně jako v následujícím příkladu:
+Při vytvoření hello MySQL serveru je hello rozhraní příkazového řádku Azure obsahuje informace o podobné toohello následující ukázka:
 
 ```json
 {
@@ -171,7 +171,7 @@ Při vytvoření serveru MySQL rozhraní příkazového řádku Azure obsahuje i
 
 ### <a name="configure-server-firewall"></a>Konfigurace brány firewall serveru
 
-Vytvořte pravidlo brány firewall pro váš server MySQL a povolíte připojení klienta pomocí [az mysql pravidla brány firewall-vytvořit](/cli/azure/mysql/server/firewall-rule#create) příkaz. 
+Vytvořit pravidlo brány firewall pro klientské MySQL serveru tooallow připojení pomocí hello [az mysql pravidla brány firewall-vytvořit](/cli/azure/mysql/server/firewall-rule#create) příkaz. 
 
 ```azurecli-interactive
 az mysql server firewall-rule create \
@@ -183,11 +183,11 @@ az mysql server firewall-rule create \
 ```
 
 > [!NOTE]
-> Azure databáze pro databázi MySQL (Preview) automaticky aktuálně neumožňuje připojení ze služby Azure. Jak budou dynamicky přiřazovat IP adresy v Azure, je lepší, pokud chcete povolit všechny IP adresy pro nyní. Služba se stále jeho verze preview, lepší metody pro zabezpečení databáze bude povolena.
+> Azure databáze pro databázi MySQL (Preview) automaticky aktuálně neumožňuje připojení ze služby Azure. Jak budou dynamicky přiřazovat IP adresy v Azure, je lepší tooenable všechny IP adresy pro teď. Služba hello stále jeho verze preview, lepší metody pro zabezpečení databáze bude povolena.
 
-## <a name="configure-the-azure-mysql-database"></a>Konfiguraci databáze MySQL na Azure
+## <a name="configure-hello-azure-mysql-database"></a>Konfiguraci databáze Azure MySQL hello
 
-V okně terminálu ve vašem počítači připojte k serveru databáze MySQL v Azure. Použít hodnotu zadanou dříve pro `<admin_user>` a `<mysql_server_name>`.
+V okně terminálu hello ve vašem počítači připojte server toohello MySQL v Azure. Použít hodnotu hello jste zadali dřív pro `<admin_user>` a `<mysql_server_name>`.
 
 ```bash
 mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com -P 3306 -p
@@ -195,7 +195,7 @@ mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.
 
 ### <a name="create-a-database"></a>Vytvoření databáze 
 
-V `mysql` výzvu, vytvořte databázi a tabulku položkami seznamu úkolů.
+V hello `mysql` výzvu, vytvořte databázi a tabulku hello položkami seznamu úkolů.
 
 ```sql
 CREATE DATABASE tododb;
@@ -203,11 +203,11 @@ CREATE DATABASE tododb;
 
 ### <a name="create-a-user-with-permissions"></a>Vytvořit uživatele s oprávněními
 
-Vytvoření uživatele databáze a pojmenujte ho všechna oprávnění `tododb` databáze. Nahraďte zástupné symboly `<Javaapp_user>` a `<Javaapp_password>` s vlastními jedinečným názvem aplikace.
+Vytvoření uživatele databáze a pojmenujte ho všechna oprávnění v hello `tododb` databáze. Nahraďte zástupné symboly hello `<Javaapp_user>` a `<Javaapp_password>` s vlastními jedinečným názvem aplikace.
 
 ```sql
 CREATE USER '<Javaapp_user>' IDENTIFIED BY '<Javaapp_password>'; 
-GRANT ALL PRIVILEGES ON tododb.* TO '<Javaapp_user>';
+GRANT ALL PRIVILEGES ON tododb.* too'<Javaapp_user>';
 ```
 
 Ukončení připojení k serveru zadáním `quit`.
@@ -216,9 +216,9 @@ Ukončení připojení k serveru zadáním `quit`.
 quit
 ```
 
-## <a name="deploy-the-sample-to-azure-app-service"></a>Ukázka nasazení do Azure App Service
+## <a name="deploy-hello-sample-tooazure-app-service"></a>Nasazení ukázkové tooAzure hello služby App Service
 
-Vytvořit plán aplikační služby Azure s **volné** cenová úroveň pomocí [vytvořit plán aplikační služby az](/cli/azure/appservice/plan#create) rozhraní příkazového řádku příkaz. Plán aplikační služby definuje fyzické prostředky, které jsou použity k hostování vaší aplikace. Všechny aplikace, které jsou přiřazené plán služby App Service sdílení těchto prostředků, což umožňuje uložit nákladů při hostování více aplikací. 
+Vytvořte plán aplikační služby Azure s hello **volné** cenová úroveň pomocí hello [vytvořit plán aplikační služby az](/cli/azure/appservice/plan#create) rozhraní příkazového řádku příkaz. plán aplikační služby Hello definuje toohost hello fyzické prostředky, které používá vaše aplikace. Všechny aplikace, které jsou přiřazené plán aplikační služby tooan sdílení těchto prostředků, umožní vám toosave nákladů při hostování více aplikací. 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -227,7 +227,7 @@ az appservice plan create \
     --sku FREE
 ```
 
-Až bude plán připravena, rozhraní příkazového řádku Azure ukazuje podobné výstupu v následujícím příkladu:
+Při plánování hello je připraven, výstup hello rozhraní příkazového řádku Azure zobrazuje podobné toohello následující ukázka:
 
 ```json
 { 
@@ -247,7 +247,7 @@ Až bude plán připravena, rozhraní příkazového řádku Azure ukazuje podob
 
 ### <a name="create-an-azure-web-app"></a>Vytvoření webové aplikace Azure
 
- Použití [az webapp vytvořit](/cli/azure/appservice/web#create) rozhraní příkazového řádku příkaz k vytvoření definice webové aplikace v `myAppServicePlan` plán služby App Service. Definice webové aplikace adresa URL pro přístup k vaší aplikace pomocí poskytuje a konfiguruje celou řadu možností pro nasazení kódu do Azure. 
+ Použití hello [az webapp vytvořit](/cli/azure/appservice/web#create) rozhraní příkazového řádku příkaz toocreate definici webové aplikace v hello `myAppServicePlan` plán služby App Service. definice Hello webové aplikace poskytuje tooaccess adresa URL vaší aplikace pomocí a konfiguruje několik možností toodeploy tooAzure vašeho kódu. 
 
 ```azurecli-interactive
 az webapp create \
@@ -256,9 +256,9 @@ az webapp create \
     --plan myAppServicePlan
 ```
 
-Nahraďte `<app_name>` zástupný symbol vlastní jedinečným názvem aplikace. Tento jedinečný název je součástí výchozí název domény pro webovou aplikaci, tak název musí být jedinečný v rámci všech aplikací v Azure. Můžete namapovat zadání názvu vlastní domény do webové aplikace ještě před zveřejněním pro vaše uživatele.
+SUBSTITUTE hello `<app_name>` zástupný symbol vlastní jedinečným názvem aplikace. Tento jedinečný název je součástí hello výchozí název domény pro webovou aplikaci hello, takže název hello musí toobe jedinečný mezi všechny aplikace v Azure. Můžete namapovat vlastní doménu název položky toohello webové aplikace ještě před zveřejněním tooyour uživatele.
 
-Při definici webové aplikace je připraven, rozhraní příkazového řádku Azure uvádí informace podobně jako v následujícím příkladu: 
+Při definici hello webové aplikace je připraven, hello rozhraní příkazového řádku Azure ukazuje následující příklad podobné toohello informace: 
 
 ```json 
 {
@@ -277,9 +277,9 @@ Při definici webové aplikace je připraven, rozhraní příkazového řádku A
 
 ### <a name="configure-java"></a>Konfigurace Java 
 
-Nastavení konfigurace modulu runtime Java, která vaše aplikace, musí se [aktualizace konfigurace webové služby App Service az](/cli/azure/appservice/web/config#update) příkaz.
+Nastavení konfigurace hello Java runtime, která vaše aplikace, musí se hello [aktualizace konfigurace webové služby App Service az](/cli/azure/appservice/web/config#update) příkaz.
 
-Následující příkaz nakonfiguruje webové aplikace ke spuštění na poslední JDK 8 Java a [Apache Tomcat](http://tomcat.apache.org/) 8.0.
+Hello následující příkaz nakonfiguruje hello webové aplikace toorun na poslední JDK 8 Java a [Apache Tomcat](http://tomcat.apache.org/) 8.0.
 
 ```azurecli-interactive
 az webapp config set \ 
@@ -290,11 +290,11 @@ az webapp config set \
     --java-container-version 8.0
 ```
 
-### <a name="configure-the-app-to-use-the-azure-sql-database"></a>Konfigurace aplikace, které chcete použít databázi Azure SQL
+### <a name="configure-hello-app-toouse-hello-azure-sql-database"></a>Konfigurace hello aplikace toouse hello Azure SQL database
 
-Než spustíte ukázkovou aplikaci, nastavte nastavení aplikace na webovou aplikaci k používání databáze MySQL na Azure, kterou jste vytvořili v Azure. Tyto vlastnosti jsou umístěny do webové aplikace jako proměnné prostředí a přepsat s hodnotami nastavenými v application.properties uvnitř zabalené webové aplikace. 
+Před spuštěním hello ukázkové aplikace, nastavení aplikací na hello webové aplikace toouse hello Azure databáze MySQL, kterou jste vytvořili v Azure. Tyto vlastnosti jsou zveřejněné toohello webové aplikace jako proměnné prostředí a přepsat hello hodnotami nastavenými v hello application.properties uvnitř hello zabalené webové aplikace. 
 
-Nastavení aplikace pomocí [az webapp konfigurace appsettings](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings) v rozhraní příkazového řádku:
+Nastavení aplikace pomocí [az webapp konfigurace appsettings](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings) v hello rozhraní příkazového řádku:
 
 ```azurecli-interactive
 az webapp config appsettings set \
@@ -318,9 +318,9 @@ az webapp config appsettings set \
 ```
 
 ### <a name="get-ftp-deployment-credentials"></a>Získat přihlašovací údaje pro nasazení serveru FTP 
-Můžete nasadit aplikace do služby Azure App Service různými způsoby, včetně FTP, místní Git, GitHub, Visual Studio Team Services a BitBucket. V tomto příkladu FTP k nasazení. Soubor WAR dříve vytvořené na místním počítači do služby Azure App Service.
+Můžete nasadit vaše aplikace tooAzure služby App Service různými způsoby, včetně FTP, místní Git, GitHub, Visual Studio Team Services a BitBucket. V tomto příkladu FTP toodeploy hello. Soubor WAR dříve vytvořené na vašem místním počítači tooAzure služby App Service.
 
-Chcete-li zjistit, jaké přihlašovací údaje předávat podél příkaz ftp do webové aplikace, použijte [az služby App Service web nasazení seznamu publikování profily](https://docs.microsoft.com/cli/azure/appservice/web/deployment#list-publishing-profiles) příkaz: 
+toodetermine co pověření toopass společně v ftp příkaz toohello webové aplikace, použijte [az služby App Service web nasazení seznamu publikování profily](https://docs.microsoft.com/cli/azure/appservice/web/deployment#list-publishing-profiles) příkaz: 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles \ 
@@ -340,13 +340,13 @@ az webapp deployment list-publishing-profiles \
 ]
 ```
 
-### <a name="upload-the-app-using-ftp"></a>Nahrání aplikace pomocí protokolu FTP
+### <a name="upload-hello-app-using-ftp"></a>Nahrání aplikace hello pomocí protokolu FTP
 
-Vaše oblíbené nástroje FTP použít k nasazení. Soubor WAR */site/wwwroot/webapps* složky na adresu serveru, který je převzat ze `URL` pole v předchozí příkaz. Odeberte existující adresář aplikace výchozí (uživatel ROOT) a nahraďte existující ROOT.war s. Soubor WAR součástí výše v tomto kurzu.
+Použijte váš oblíbený hello toodeploy nástroj FTP. Toohello soubor WAR */site/wwwroot/webapps* složky na adresu serveru hello převzaty z hello `URL` v předchozí příkaz hello. Odeberte hello existující adresář aplikace výchozí (uživatel ROOT) a nahraďte hello existující ROOT.war s hello. Soubor WAR součástí hello v kurzu hello.
 
 ```bash
 ftp waws-prod-blu-069.ftp.azurewebsites.windows.net
-Connected to waws-prod-blu-069.drip.azurewebsites.windows.net.
+Connected toowaws-prod-blu-069.drip.azurewebsites.windows.net.
 220 Microsoft FTP Service
 Name (waws-prod-blu-069.ftp.azurewebsites.windows.net:raisa): app_name\$app_name
 331 Password required
@@ -357,26 +357,26 @@ rmdir ROOT/
 put target/TodoDemo-0.0.1-SNAPSHOT.war ROOT.war
 ```
 
-### <a name="test-the-web-app"></a>Test webové aplikace
+### <a name="test-hello-web-app"></a>Testování hello webové aplikace
 
-Přejděte do `http://<app_name>.azurewebsites.net/` a přidejte do seznamu několik úloh. 
+Procházet příliš`http://<app_name>.azurewebsites.net/` a přidání seznamu toohello několik úloh. 
 
 ![Java aplikace spuštěné v Azure App Service](./media/app-service-web-tutorial-java-mysql/appservice-web-app.png)
 
 **Blahopřejeme!** Používáte datové aplikace v jazyce Java v Azure App Service.
 
-## <a name="update-the-app-and-redeploy"></a>Aktualizace a opětovné nasazení aplikace
+## <a name="update-hello-app-and-redeploy"></a>Aktualizace aplikace hello a znovu ho zaveďte
 
-Aktualizujte aplikaci pro zahrnutí sloupec v seznamu úkolů určitý den, položka byla vytvořena. Spouštěcí pružiny zpracovává aktualizace schématu databáze pro vás jako změn datových modelů beze změny stávajících záznamů databáze.
+Aktualizujte tooinclude aplikace hello sloupec v seznamu úkolů hello, pro jaké den hello položka byla vytvořena. Spouštěcí pružiny zpracovává aktualizace schématu databáze hello můžete jako změn datových modelů hello beze změny stávajících záznamů databáze.
 
-1. V lokálním systému, otevře *src/main/java/com/example/fabrikam/TodoItem.java* a přidejte následující importy pro třídu:   
+1. V lokálním systému, otevře *src/main/java/com/example/fabrikam/TodoItem.java* a přidejte následující hello importuje toohello třídy:   
 
     ```java
     import java.text.SimpleDateFormat;
     import java.util.Calendar;
     ```
 
-2. Přidat `String` vlastnost `timeCreated` k *src/main/java/com/example/fabrikam/TodoItem.java*, inicializace s časovým razítkem na vytvoření objektu. Přidání mechanismy získání nebo nastavení pro nové `timeCreated` vlastnost během úprav tohoto souboru.
+2. Přidat `String` vlastnost `timeCreated` příliš*src/main/java/com/example/fabrikam/TodoItem.java*, inicializace s časovým razítkem na vytvoření objektu. Přidat mechanismy získání nebo nastavení pro nové hello `timeCreated` vlastnost během úprav tohoto souboru.
 
     ```java
     private String name;
@@ -400,7 +400,7 @@ Aktualizujte aplikaci pro zahrnutí sloupec v seznamu úkolů určitý den, polo
     }
     ```
 
-3. Aktualizace *src/main/java/com/example/fabrikam/TodoDemoController.java* řádek v `updateTodo` metodu a nastavit časové razítko:
+3. Aktualizace *src/main/java/com/example/fabrikam/TodoDemoController.java* řádek v hello `updateTodo` metoda tooset hello časové razítko:
 
     ```java
     item.setComplete(requestItem.isComplete());
@@ -409,7 +409,7 @@ Aktualizujte aplikaci pro zahrnutí sloupec v seznamu úkolů určitý den, polo
     repository.save(item);
     ```
 
-4. Přidáte podporu pro nové pole v šabloně Thymeleaf. Aktualizace *src/main/resources/templates/index.html* s novou hlavičkou tabulky pro časové razítko a nové pole, které chcete zobrazit hodnotu časového razítka v každém řádku dat tabulky.
+4. Přidáte podporu pro nové pole hello v šabloně Thymeleaf hello. Aktualizace *src/main/resources/templates/index.html* s novou hlavičkou tabulky pro časové razítko hello a nová hodnota toodisplay hello pole hello časového razítka v každém řádku dat tabulky.
 
     ```html
     <th>Name</th>
@@ -422,23 +422,23 @@ Aktualizujte aplikaci pro zahrnutí sloupec v seznamu úkolů určitý den, polo
     <td><input type="checkbox" th:checked="${item.complete} == true" th:field="*{todoList[__${i.index}__].complete}"/></td>
     ```
 
-5. Znovu sestavte aplikaci:
+5. Opětovné sestavení aplikace hello:
 
     ```bash
     mvnw clean package 
     ```
 
-6. FTP aktualizaci. WAR jako před, odebrání stávající *lokality/wwwroot/webapps/ROOT* adresáře a *ROOT.war*, pak odesílání aktualizovaný. Soubor WAR jako ROOT.war. 
+6. Aktualizovat hello FTP. WAR jako před, odebrání stávající hello *lokality/wwwroot/webapps/ROOT* adresáře a *ROOT.war*, pak odesílání hello aktualizovat. Soubor WAR jako ROOT.war. 
 
-Při aktualizaci aplikace, **čas vytvoření** sloupec je nyní viditelné. Když přidáte novou úlohu, aplikace bude naplnit časové razítko. Stávající úlohy zůstat beze změny a pracovat s aplikací, i když základní datový model byl změněn. 
+Při aktualizaci aplikace hello **čas vytvoření** sloupec je nyní viditelné. Když přidáte novou úlohu, aplikace hello automaticky naplnit hello časové razítko. Vaše stávající úlohy zůstat beze změny a pracovat s aplikací hello to i v případě, že došlo ke změně hello základní datový model. 
 
 ![Aplikace v jazyce Java aktualizovat pomocí nového sloupce](./media/app-service-web-tutorial-java-mysql/appservice-updates-java.png)
       
 ## <a name="stream-diagnostic-logs"></a>Diagnostické protokoly datového proudu 
 
-Při spuštění aplikace v jazyce Java v Azure App Service, můžete získat protokoly konzoly přesměruje přímo do terminálu. Tímto způsobem můžete získat stejné diagnostické zprávy pomoci při ladění chyb aplikace.
+Při spuštění aplikace v jazyce Java v Azure App Service, můžete získat hello konzoly protokoly přesměruje přímo tooyour terminálu. Tímto způsobem můžete získat hello stejné diagnostické zprávy toohelp ladění chyb aplikace.
 
-Spusťte protokolu streamování pomocí [az webapp protokolu poškozené databáze za](/cli/azure/appservice/web/log#tail) příkaz.
+toostart protokolu streamování, použijte hello [az webapp protokolu poškozené databáze za](/cli/azure/appservice/web/log#tail) příkaz.
 
 ```azurecli-interactive 
 az webapp log tail \
@@ -448,19 +448,19 @@ az webapp log tail \
 
 ## <a name="manage-your-azure-web-app"></a>Správa Azure webové aplikace
 
-Přejděte na portálu Azure najdete v části webové aplikace, kterou jste vytvořili.
+Přejděte toohello Azure portálu toosee hello webovou aplikaci, kterou jste vytvořili.
 
-Chcete-li to provést, přihlaste se na adrese [https://portal.azure.com](https://portal.azure.com).
+toodo, přihlaste se příliš[https://portal.azure.com](https://portal.azure.com).
 
-V levé nabídce klikněte na **App Service** a pak klikněte na název vaší webové aplikace Azure.
+V levé nabídce hello, klikněte na **služby App Service**, pak klikněte na název hello Azure webové aplikace.
 
-![Navigace portálem k webové aplikaci Azure](./media/app-service-web-tutorial-java-mysql/access-portal.png)
+![Portálu tooAzure webové aplikace](./media/app-service-web-tutorial-java-mysql/access-portal.png)
 
-Ve výchozím nastavení bude okno vaší webové aplikace obsahovat stránku **Přehled**. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Zde můžete také provést úlohy správy, jako zastavení, spuštění, restartování a delete. Karty na levé straně okna obsahují další stránky konfigurace, které můžete otevřít.
+Ve výchozím nastavení, zobrazí okno vaší webové aplikace hello **přehled** stránky. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Zde můžete také provést úlohy správy, jako zastavení, spuštění, restartování a delete. Hello karty na levé straně okna hello hello zobrazit stránky hello jinou konfiguraci, které můžete otevřít.
 
 ![Okno App Service na webu Azure Portal](./media/app-service-web-tutorial-java-mysql/web-app-blade.png)
 
-Tyto karty v okně zobrazují mnoho skvělých funkcí, které můžete do své webové aplikace přidat. Následující seznam obsahuje jen několik možností:
+Tyto karty v okně hello zobrazit hello mnoho funkcí můžete přidat tooyour webové aplikace. Hello následující seznam vám poskytuje několik možností, jak hello:
 * Mapování vlastního názvu DNS
 * Vazba vlastního certifikátu SSL
 * Konfigurace průběžného nasazování
@@ -469,7 +469,7 @@ Tyto karty v okně zobrazují mnoho skvělých funkcí, které můžete do své 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nepotřebujete tyto prostředky pro jiné kurzu (najdete v části [další kroky](#next)), můžete je odstranit spuštěním následujícího příkazu: 
+Pokud nepotřebujete tyto prostředky pro jiné kurzu (najdete v části [další kroky](#next)), můžete je odstranit spuštěním hello následující příkaz: 
   
 ```azurecli-interactive
 az group delete --name myResourceGroup 
@@ -481,13 +481,13 @@ az group delete --name myResourceGroup
 
 > [!div class="checklist"]
 > * Vytvoření databáze MySQL v Azure
-> * Připojení k MySQL ukázkovou aplikaci Java
-> * Nasazení aplikace do Azure
-> * Aktualizace a opětovné nasazení aplikace
+> * Připojit toohello aplikace Java ukázkové databáze MySQL
+> * Nasazení aplikace tooAzure hello
+> * Aktualizace a znovu nasaďte aplikace hello
 > * Diagnostické protokoly datového proudu z Azure
-> * Spravovat aplikaci na portálu Azure
+> * Spravovat aplikace hello v hello portálu Azure
 
-Přechodu na dalším kurzu se dozvíte, jak namapovat vlastní název DNS do aplikace.
+Posunutí toohello další kurz toolearn jak toomap vlastní DNS název toohello aplikace.
 
 > [!div class="nextstepaction"] 
-> [Mapování existujícího vlastního názvu DNS na Azure Web Apps](app-service-web-tutorial-custom-domain.md)
+> [Mapovat existující vlastní DNS název tooAzure webové aplikace](app-service-web-tutorial-custom-domain.md)

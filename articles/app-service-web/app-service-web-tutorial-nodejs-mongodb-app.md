@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření webové aplikace Node.js a MongoDB v Azure | Microsoft Docs"
-description: "Další informace o získání aplikace Node.js v Azure, funguje s připojením k databázi Cosmos DB s připojovacím řetězcem MongoDB."
+title: aaaBuild webovou aplikaci Node.js a MongoDB v Azure | Microsoft Docs
+description: "Zjistěte, jak tooget aplikace Node.js v Azure funguje, s tooa připojení Cosmos DB databáze s připojovacím řetězcem MongoDB."
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -15,15 +15,15 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 3b309382be8cdf8d48b396207fd482a5dc5ed934
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 532251c51ed6f8513e6e366393e889b67a85e5b9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure"></a>Vytvoření webové aplikace Node.js a MongoDB v Azure
 
-Azure Web Apps nabízí vysoce škálovatelnou a automatických oprav webové hostitelské služby. Tento kurz ukazuje, jak vytvořit webovou aplikaci Node.js v Azure a připojte ho k databázi MongoDB. Když jste hotovi, budete mít střední aplikace (MongoDB, Express, AngularJS a Node.js) spuštěná v [Azure App Service](app-service-web-overview.md). Pro jednoduchost, ukázková aplikace používá [MEAN.js webová architektura](http://meanjs.org/).
+Azure Web Apps nabízí vysoce škálovatelnou a automatických oprav webové hostitelské služby. Tento kurz ukazuje, jak toocreate Node.js webové aplikace v Azure a připojte ho tooa databázi MongoDB. Když jste hotovi, budete mít střední aplikace (MongoDB, Express, AngularJS a Node.js) spuštěná v [Azure App Service](app-service-web-overview.md). Pro jednoduchost, hello ukázková aplikace používá hello [MEAN.js webová architektura](http://meanjs.org/).
 
 ![Aplikace MEAN.js spuštěná v rámci služby Azure App Service](./media/app-service-web-tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
@@ -31,15 +31,15 @@ Získáte informace:
 
 > [!div class="checklist"]
 > * Vytvořit databázi MongoDB v Azure
-> * Připojení aplikace Node.js pro MongoDB
-> * Nasazení aplikace do Azure
-> * Aktualizovat datový model a aplikaci znovu nasaďte
+> * Připojit tooMongoDB aplikace Node.js
+> * Nasazení aplikace tooAzure hello
+> * Aktualizovat hello datový model a znovu nasaďte aplikace hello
 > * Diagnostické protokoly datového proudu z Azure
-> * Spravovat aplikaci na portálu Azure
+> * Spravovat aplikace hello v hello portálu Azure
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+toocomplete v tomto kurzu:
 
 1. [Nainstalovat Git](https://git-scm.com/).
 1. [Nainstalovat Node.js a NPM](https://nodejs.org/).
@@ -50,41 +50,41 @@ Pro absolvování tohoto kurzu potřebujete:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud zvolte tooinstall a místně pomocí hello rozhraní příkazového řádku, v tomto tématu vyžaduje, že používáte hello Azure CLI verze 2.0 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="test-local-mongodb"></a>Test místní MongoDB
 
-Otevřete okno terminálu a `cd` k `bin` adresář instalace MongoDB. Chcete-li spustit všechny příkazy v tomto kurzu můžete toto okno terminálu.
+Hello otevřete okno terminálu a `cd` toohello `bin` adresář instalace MongoDB. Všechny příkazy hello toto okno terminálu toorun můžete použít v tomto kurzu.
 
-Spustit `mongo` v terminálu pro připojení k místní server MongoDB.
+Spustit `mongo` v hello terminálu tooconnect tooyour místního serveru MongoDB.
 
 ```bash
 mongo
 ```
 
-Pokud připojení úspěšné, pak databázi MongoDB je již spuštěna. Pokud ne, ujistěte se, zda je spuštěná místní databázi MongoDB podle kroků v [nainstalujte MongoDB Community Edition](https://docs.mongodb.com/manual/administration/install-community/). Často je nainstalovaná MongoDB, ale potřebujete spusťte ji spuštěním `mongod`. 
+Pokud připojení úspěšné, pak databázi MongoDB je již spuštěna. Pokud ne, ujistěte se, zda je spuštěná místní databázi MongoDB pomocí následujících kroků hello v [nainstalujte MongoDB Community Edition](https://docs.mongodb.com/manual/administration/install-community/). Často je nainstalovaná MongoDB, ale stále potřebujete toostart ho spuštěním `mongod`. 
 
-Po dokončení testování vaší databázi MongoDB, zadejte `Ctrl+C` v terminálu. 
+Po dokončení testování vaší databázi MongoDB, zadejte `Ctrl+C` v terminálu hello. 
 
 ## <a name="create-local-nodejs-app"></a>Vytvořit místní aplikace Node.js
 
-V tomto kroku nastavíte místní projekt Node.js.
+V tomto kroku nastavíte místní projekt Node.js hello.
 
-### <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
+### <a name="clone-hello-sample-application"></a>Klonování hello ukázkové aplikace
 
-V okně terminálu `cd` do pracovního adresáře.  
+V okně terminálu hello `cd` tooa pracovní adresář.  
 
-Ukázkové úložiště naklonujete spuštěním následujícího příkazu. 
+Spusťte následující příkaz tooclone hello Ukázka úložiště hello. 
 
 ```bash
 git clone https://github.com/Azure-Samples/meanjs.git
 ```
 
-Tato ukázka úložiště obsahuje kopii [MEAN.js úložiště](https://github.com/meanjs/mean). Je upravit pro spouštění v App Service (Další informace najdete v tématu úložiště MEAN.js [souboru README](https://github.com/Azure-Samples/meanjs/blob/master/README.md)).
+Tato ukázka úložiště obsahuje kopii hello [MEAN.js úložiště](https://github.com/meanjs/mean). Je upravený toorun v App Service (Další informace najdete v tématu hello MEAN.js úložiště [souboru README](https://github.com/Azure-Samples/meanjs/blob/master/README.md)).
 
-### <a name="run-the-application"></a>Spuštění aplikace
+### <a name="run-hello-application"></a>Spuštění aplikace hello
 
-Spusťte následující příkazy pro instalaci požadovaných balíčků a spusťte aplikaci.
+Spusťte následující příkazy tooinstall hello požadované balíčky hello a spustit aplikaci hello.
 
 ```bash
 cd meanjs
@@ -92,7 +92,7 @@ npm install
 npm start
 ```
 
-Po úplným načtením aplikace se zobrazí podobná následující zpráva:
+Když je aplikace hello úplným načtením, uvidíte něco podobné toohello následující zprávou:
 
 ```
 --
@@ -106,25 +106,25 @@ MEAN.JS version: 0.5.0
 --
 ```
 
-Přejděte na http://localhost: 3000 v prohlížeči. Klikněte na tlačítko **zaregistrovat** v horní nabídce a vytvoření zkušebního uživatele. 
+Přejděte toohttp://localhost:3000 v prohlížeči. Klikněte na tlačítko **zaregistrovat** v hello horní nabídce a vytvoření zkušebního uživatele. 
 
-Ukázková aplikace MEAN.js ukládá data uživatelů v databázi. Pokud jste při vytváření uživatele a přihlášení úspěšné, pak aplikace je zápis dat do místní databáze MongoDB.
+Hello MEAN.js ukázkové aplikace ukládá data uživatele v databázi hello. Pokud jste při vytváření uživatele a přihlášení úspěšné, je vaše aplikace zápis dat toohello místní databázi MongoDB.
 
-![Aplikace MEAN.js se úspěšně připojí k databázi MongoDB](./media/app-service-web-tutorial-nodejs-mongodb-app/mongodb-connect-success.png)
+![MEAN.js připojí úspěšně tooMongoDB](./media/app-service-web-tutorial-nodejs-mongodb-app/mongodb-connect-success.png)
 
-Vyberte **správce > Správa článků** přidat některé články.
+Vyberte **správce > Správa článků** tooadd některé články.
 
-Kdykoli zastavit Node.js, stiskněte klávesu `Ctrl+C` v terminálu. 
+stiskněte klávesu Node.js kdykoli toostop `Ctrl+C` v terminálu hello. 
 
 ## <a name="create-production-mongodb"></a>Vytvořit produkční MongoDB
 
-V tomto kroku vytvoříte databázi MongoDB v Azure. Po nasazení aplikace do Azure se používá tato databáze cloudu.
+V tomto kroku vytvoříte databázi MongoDB v Azure. Pokud je vaše aplikace nasazené tooAzure, používá tato databáze cloudu.
 
 Pro MongoDB, tento kurz používá [Azure Cosmos DB](/azure/documentdb/). Cosmos DB podporuje připojení klienta MongoDB.
 
-### <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+### <a name="log-in-tooazure"></a>Přihlaste se tooAzure
 
-Pomocí rozhraní Azure CLI 2.0 vytvoříte prostředky potřebné k hostování vaší aplikace v Azure. Přihlaste se k předplatnému Azure pomocí příkazu [az login](/cli/azure/#login) a postupujte podle pokynů na obrazovce.
+Hello Azure CLI 2.0 toocreate hello prostředky potřebné toohost budete používat aplikace v Azure. Přihlaste se tooyour předplatné s hello [az přihlášení](/cli/azure/#login) příkazů a postupujte podle hello na obrazovce pokynů.
 
 ```azurecli-interactive
 az login
@@ -132,23 +132,23 @@ az login
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create).
+Vytvořte skupinu prostředků s hello [vytvořit skupinu az](/cli/azure/group#create) příkaz.
 
 [!INCLUDE [Resource group intro](../../includes/resource-group.md)]
 
-Následující příklad vytvoří skupinu prostředků pro oblast Západní Evropa.
+Hello následující příklad vytvoří skupinu prostředků v oblasti západní Evropa hello.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "West Europe"
 ```
 
-Použití [az služby App Service seznamu umístění](/cli/azure/appservice#list-locations) příkaz rozhraní příkazového řádku Azure k seznamu dostupných umístění. 
+Použití hello [míst seznamu služby App Service az](/cli/azure/appservice#list-locations) rozhraní příkazového řádku Azure příkaz toolist dostupná umístění. 
 
 ### <a name="create-a-cosmos-db-account"></a>Vytvoření účtu Cosmos DB
 
-Vytvoření účtu Cosmos DB s [vytvořit az cosmosdb](/cli/azure/cosmosdb#create) příkaz.
+Vytvořte účet Cosmos DB s hello [vytvořit az cosmosdb](/cli/azure/cosmosdb#create) příkaz.
 
-V následujícím příkazu nahraďte jedinečný název databáze Cosmos  *\<cosmosdb_name >* zástupný symbol. Tento název se používá jako součást Cosmos DB koncového bodu, `https://<cosmosdb_name>.documents.azure.com/`, takže název musí být jedinečný v rámci všech Cosmos DB účty v Azure. Název musí obsahovat jenom malá písmena, číslice a pomlčky (-) a musí být v rozmezí 3 až 50 znaků.
+Následující příkaz a nahraďte v hello jedinečný název databáze Cosmos hello  *\<cosmosdb_name >* zástupný symbol. Tento název se používá jako součást hello hello Cosmos DB koncového bodu, `https://<cosmosdb_name>.documents.azure.com/`, takže název hello musí toobe jedinečný mezi všechny Cosmos DB účty v Azure. Hello název musí obsahovat jenom malá písmena, číslice a znak hello pomlčku (-) a musí být v rozmezí 3 až 50 znaků.
 
 ```azurecli-interactive
 az cosmosdb create \
@@ -157,9 +157,9 @@ az cosmosdb create \
     --kind MongoDB
 ```
 
-*– Druhu MongoDB* parametr povolí připojení klientů MongoDB.
+Hello *– druhu MongoDB* parametr povolí připojení klientů MongoDB.
 
-Při vytvoření účtu Cosmos DB rozhraní příkazového řádku Azure obsahuje informace o podobně jako v následujícím příkladu:
+Při vytvoření hello Cosmos DB účet je hello rozhraní příkazového řádku Azure obsahuje informace o podobné toohello následující ukázka:
 
 ```json
 {
@@ -177,19 +177,19 @@ Při vytvoření účtu Cosmos DB rozhraní příkazového řádku Azure obsahuj
 }
 ```
 
-## <a name="connect-app-to-production-mongodb"></a>Připojení aplikace do produkčního prostředí MongoDB
+## <a name="connect-app-tooproduction-mongodb"></a>Připojení aplikace tooproduction MongoDB
 
-V tomto kroku připojíte MEAN.js ukázkovou aplikaci do databáze Cosmos databáze, kterou jste právě vytvořili, pomocí připojovacího řetězce MongoDB. 
+V tomto kroku připojíte MEAN.js ukázkové aplikace toohello Cosmos DB databázi, kterou jste právě vytvořili, pomocí připojovacího řetězce MongoDB. 
 
-### <a name="retrieve-the-database-key"></a>Načíst klíč databáze
+### <a name="retrieve-hello-database-key"></a>Načíst klíč databáze hello
 
-Pro připojení k databázi Cosmos DB, musíte klíč databáze. Pro načtení primárního klíče použijte příkaz [az cosmosdb list-keys](/cli/azure/cosmosdb#list-keys).
+tooconnect toohello Cosmos DB databáze, je nutné klíč databáze hello. Použití hello [az cosmosdb seznamu klíčů](/cli/azure/cosmosdb#list-keys) příkaz tooretrieve hello primární klíč.
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
 ```
 
-Rozhraní příkazového řádku Azure uvádí informace podobně jako v následujícím příkladu:
+Hello rozhraní příkazového řádku Azure ukazuje následující příklad podobné toohello informace:
 
 ```json
 {
@@ -200,19 +200,19 @@ Rozhraní příkazového řádku Azure uvádí informace podobně jako v násled
 }
 ```
 
-Zkopírujte hodnotu `primaryMasterKey`. Tyto informace budete potřebovat v dalším kroku.
+Zkopírujte hodnotu hello `primaryMasterKey`. Je třeba tyto informace v dalším kroku hello.
 
 <a name="devconfig"></a>
-### <a name="configure-the-connection-string-in-your-nodejs-application"></a>Konfigurace připojovacího řetězce v aplikaci Node.js
+### <a name="configure-hello-connection-string-in-your-nodejs-application"></a>Konfigurace v aplikaci Node.js hello připojovací řetězec
 
 Ve svém úložišti MEAN.js otevřete _config/env/production.js_.
 
-V `db` objektu, aktualizujte hodnotu `uri`:
+V hello `db` objektu, aktualizujte hodnotu hello `uri`:
 
-* Nahraďte dva  *\<cosmosdb_name >* zástupných symbolů nahraďte názvem databáze Cosmos DB.
-* Nahraďte  *\<primary_master_key >* zástupný text klíčem, který jste zkopírovali v předchozím kroku.
+* Nahraďte hello dva  *\<cosmosdb_name >* zástupných symbolů nahraďte názvem databáze Cosmos DB.
+* Nahraďte hello  *\<primary_master_key >* zástupný text klíčem hello jste zkopírovali v předchozím kroku hello.
 
-Následující kód ukazuje `db` objektu:
+Hello následující kód ukazuje hello `db` objektu:
 
 ```javascript
 db: {
@@ -221,27 +221,27 @@ db: {
 },
 ```
 
-`ssl=true` Možnost je povinná, protože [Cosmos DB vyžaduje SSL](../cosmos-db/connect-mongodb-account.md#connection-string-requirements). 
+Hello `ssl=true` možnost je povinná, protože [Cosmos DB vyžaduje SSL](../cosmos-db/connect-mongodb-account.md#connection-string-requirements). 
 
 Uložte provedené změny.
 
-### <a name="test-the-application-in-production-mode"></a>Testování aplikace v provozním režimu 
+### <a name="test-hello-application-in-production-mode"></a>Testovací aplikace hello v produkčním režimu 
 
-Spusťte následující příkaz k minifikaci a sady skriptů pro produkční prostředí. Tento proces generuje soubory potřebné v provozním prostředí.
+Spusťte následující příkaz toominify a sady skriptů pro produkční prostředí hello hello. Tento proces generuje soubory hello vyžaduje hello produkčního prostředí.
 
 ```bash
 gulp prod
 ```
 
-Pomocí následujícího příkazu použít připojovací řetězec, který jste nakonfigurovali v _config/env/production.js_.
+Spuštění hello následující příkaz toouse hello připojovací řetězec jste nakonfigurovali v _config/env/production.js_.
 
 ```bash
 NODE_ENV=production node server.js
 ```
 
-`NODE_ENV=production`Nastaví proměnné prostředí, která sděluje Node.js ke spuštění v produkčním prostředí.  `node server.js`Spustí server Node.js s `server.js` v kořenovém úložišti. Toto je, jak aplikace Node.js je načten do platformy Azure. 
+`NODE_ENV=production`Nastaví proměnné prostředí hello, která říká službě Node.js toorun hello produkčního prostředí.  `node server.js`Spustí hello Node.js server s `server.js` v kořenovém úložišti. Toto je, jak aplikace Node.js je načten do platformy Azure. 
 
-Když aplikace je načtena, ujistěte se, zda je spuštěna v provozním prostředí:
+Pokud aplikace hello je načtena, zkontrolujte toomake se, že je spuštěna v provozním prostředí hello:
 
 ```
 --
@@ -254,27 +254,27 @@ App version:     0.5.0
 MEAN.JS version: 0.5.0
 ```
 
-Přejděte do http://localhost:8443 v prohlížeči. Klikněte na tlačítko **zaregistrovat** v horní nabídce a vytvoření zkušebního uživatele. Pokud jste vytváření uživatele a přihlášení úspěšné, pak aplikace je zápis dat do databáze Cosmos DB v Azure. 
+Přejděte toohttp://localhost:8443 v prohlížeči. Klikněte na tlačítko **zaregistrovat** v hello horní nabídce a vytvoření zkušebního uživatele. Pokud jste vytváření uživatele a přihlášení úspěšné, pak aplikace zapisuje data toohello Cosmos DB databáze v Azure. 
 
-V terminálu, zastavte Node.js zadáním `Ctrl+C`. 
+V terminálu hello, zastavte Node.js zadáním `Ctrl+C`. 
 
-## <a name="deploy-app-to-azure"></a>Nasazení aplikace do Azure
+## <a name="deploy-app-tooazure"></a>Nasazení aplikace tooAzure
 
-V tomto kroku nasadíte aplikace Node.js MongoDB připojení do služby Azure App Service.
+V tomto kroku nasadíte tooAzure vaše připojení MongoDB Node.js aplikace služby App Service.
 
 ### <a name="create-an-app-service-plan"></a>Vytvoření plánu služby App Service
 
-Pomocí příkazu [az appservice plan create](/cli/azure/appservice/plan#create) vytvořte plán služby App Service. 
+Vytvořte plán služby App Service s hello [vytvořit plán aplikační služby az](/cli/azure/appservice/plan#create) příkaz. 
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-Následující příklad vytvoří plán služby App Service s názvem _myAppServicePlan_ pomocí **volné** cenové úrovně:
+Hello následující příklad vytvoří plán služby App Service s názvem _myAppServicePlan_ pomocí hello **volné** cenové úrovně:
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
 ```
 
-Když je vytvořen plán služby App Service, rozhraní příkazového řádku Azure uvádí informace podobně jako v následujícím příkladu:
+Při vytvoření hello plán služby App Service je hello rozhraní příkazového řádku Azure obsahuje informace o podobné toohello následující ukázka:
 
 ```json 
 { 
@@ -294,17 +294,17 @@ Když je vytvořen plán služby App Service, rozhraní příkazového řádku A
 
 ### <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-Vytvoření webové aplikace v `myAppServicePlan` plán služby App Service pomocí [az webapp vytvořit](/cli/azure/webapp#create) příkaz. 
+Vytvoření webové aplikace v hello `myAppServicePlan` plán služby App Service se hello [az webapp vytvořit](/cli/azure/webapp#create) příkaz. 
 
-Webová aplikace získáte hostování místa k nasazení kódu a poskytuje adresu URL zobrazení nasazené aplikace. Použijte k vytvoření webové aplikace. 
+Hello webové aplikace poskytuje můžete hostování místo toodeploy kódu a poskytuje adresu URL pro vás tooview hello nasazené aplikace. Použití toocreate hello webové aplikace. 
 
-V následujícím příkazu nahraďte  *\<app_name >* zástupný symbol s jedinečným názvem aplikace. Tento název se používá jako součást výchozí adresa URL pro webovou aplikaci, tak název musí být jedinečný v rámci všech aplikací v Azure App Service. 
+Následující příkaz a nahraďte v hello hello  *\<app_name >* zástupný symbol s jedinečným názvem aplikace. Tento název se používá jako součást hello hello výchozí adresa URL pro webovou aplikaci hello, takže název hello musí toobe jedinečný mezi všechny aplikace v Azure App Service. 
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
 ```
 
-Po vytvoření webové aplikace se v rozhraní příkazového řádku Azure CLI zobrazí podobné informace jako v následujícím příkladu: 
+Po vytvoření webové aplikace hello hello rozhraní příkazového řádku Azure zobrazuje informace podobné toohello následující ukázka: 
 
 ```json 
 {
@@ -323,11 +323,11 @@ Po vytvoření webové aplikace se v rozhraní příkazového řádku Azure CLI 
 
 ### <a name="configure-an-environment-variable"></a>Nakonfigurujte proměnné prostředí
 
-V tomto kurzu jste pevně zakódované připojení k databázi řetězce v _config/env/production.js_. V souladu s nejlepším způsobem zabezpečení, které chcete uchovat tyto důvěrné osobní údaje z úložiště Git. Pro vaši aplikaci běžící v Azure budete používat proměnné prostředí.
+Výše v hello kurz, je pevně zakódované hello připojovací řetězec databáze v _config/env/production.js_. V souladu s nejlepším způsobem zabezpečení chcete tookeep tyto důvěrné osobní údaje z úložiště Git. Pro vaši aplikaci běžící v Azure budete používat proměnné prostředí.
 
-Ve službě App Service, můžete nastavit proměnné prostředí jako _nastavení aplikace_ pomocí [aktualizovat az webapp konfigurace appsettings](/cli/azure/webapp/config/appsettings#update) příkaz. 
+Ve službě App Service, můžete nastavit proměnné prostředí jako _nastavení aplikace_ pomocí hello [aktualizovat az webapp konfigurace appsettings](/cli/azure/webapp/config/appsettings#update) příkaz. 
 
-Následující příklad konfiguruje `MONGODB_URI` nastavení aplikace v Azure webové aplikace. Nahraďte  *\<app_name >*,  *\<cosmosdb_name >*, a  *\<primary_master_key >* zástupné symboly.
+Hello následující příklad konfiguruje `MONGODB_URI` nastavení aplikace v Azure webové aplikace. Nahraďte hello  *\<app_name >*,  *\<cosmosdb_name >*, a  *\<primary_master_key >* zástupné symboly.
 
 ```azurecli-interactive
 az webapp config appsettings update \
@@ -338,13 +338,13 @@ az webapp config appsettings update \
 
 V kódu Node.js, je přístup k nastavení této aplikace s `process.env.MONGODB_URI`, stejně, jako by přístup všechny proměnné prostředí. 
 
-Teď vrátit zpět všechny změny _config/env/production.js_ pomocí následujícího příkazu:
+Teď vrátit zpět too_config/env/production.js_ vaše změny se hello následující příkaz:
 
 ```bash
 git checkout -- .
 ```
 
-Otevřete _config/env/production.js_ znovu. Všimněte si, že výchozí MEAN.js aplikace je již nakonfigurován pro použití `MONGODB_URI` proměnné prostředí, který jste vytvořili.
+Otevřete _config/env/production.js_ znovu. Všimněte si, že hello výchozí MEAN.js aplikace je již nakonfigurované toouse hello `MONGODB_URI` proměnné prostředí, který jste vytvořili.
 
 ```javascript
 db: {
@@ -355,41 +355,41 @@ db: {
 
 ### <a name="configure-local-git-deployment"></a>Konfigurace nasazení místního gitu 
 
-Použití [nastavený uživatel nasazení webapp az](/cli/azure/webapp/deployment/user#set) příkazu vytvořit přihlašovací údaje pro nasazení.
+Použití hello [nastavený uživatel nasazení webapp az](/cli/azure/webapp/deployment/user#set) příkaz toocreate přihlašovací údaje pro nasazení.
 
-Můžete nasadit aplikace do služby Azure App Service různými způsoby, včetně FTP, Git místní, GitHub, Visual Studio Team Services a BitBucket. Pro místní Git a FTP je potřeba mít nasazení uživateli nakonfigurovanému na serveru k ověření nasazení. Tento uživatel nasazení je úrovni účtu a se liší od účtu předplatného Azure. Potřebujete jenom jednou konfiguraci tohoto nasazení uživatele.
+Můžete nasadit aplikace tooAzure služby App Service různými způsoby, včetně FTP, Git místní, GitHub, Visual Studio Team Services a BitBucket. Pro místní Git a FTP, je nutné toohave uživatele nasazení nakonfigurovali na serveru tooauthenticate hello nasazení. Tento uživatel nasazení je úrovni účtu a se liší od účtu předplatného Azure. Potřebujete jenom tooconfigure tohoto uživatele nasazení jednou.
 
-V následujícím příkazu nahraďte hodnoty *\<user-name>* a *\<password>* novým uživatelským jménem a heslem. Uživatelské jméno musí být jedinečné. Heslo musí obsahovat aspoň osm znaků a musí v něm být použity minimálně dva z následujících typů znaků: písmena, čísla a symboly. Pokud se zobrazí chyba ` 'Conflict'. Details: 409`, změňte uživatelské jméno. Pokud se zobrazí chyba ` 'Bad Request'. Details: 400`, použijte silnější heslo.
+Následující příkaz a nahraďte v hello  *\<uživatelské jméno >* a  *\<heslo >* s nové uživatelské jméno a heslo. Hello uživatelské jméno musí být jedinečný. Hello heslo musí obsahovat alespoň osm znaků, se dvěma hello následující tři prvky: písmena, symboly a čísla. Pokud dojde ` 'Conflict'. Details: 409` chyby, uživatelské jméno změnit hello. Pokud se zobrazí chyba ` 'Bad Request'. Details: 400`, použijte silnější heslo.
 
 ```azurecli-interactive
 az appservice web deployment user set --user-name <username> --password <password>
 ```
 
-Záznam uživatelského jména a hesla pro použití v dalších krocích při nasazení aplikace.
+Záznam hello uživatelské jméno a heslo pro použití v dalších krocích při nasazení aplikace hello.
 
-Použití [az webapp nasazení zdroj konfigurace místní git](/cli/azure/webapp/deployment/source#config-local-git) příkaz, který nakonfiguruje místní Git přístup k webové aplikace Azure. 
+Použití hello [az webapp nasazení zdroj konfigurace místní git](/cli/azure/webapp/deployment/source#config-local-git) příkaz tooconfigure místní Git přístup toohello webové aplikace Azure. 
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group myResourceGroup
 ```
 
-Pokud uživatel nasazení je nakonfigurován, rozhraní příkazového řádku Azure zobrazuje adresu URL nasazení pro Azure webové aplikace v následujícím formátu:
+Pokud je nakonfigurován uživatel nasazení hello, hello rozhraní příkazového řádku Azure zobrazuje hello URL nasazení pro Azure webové aplikace v hello následující formát:
 
 ```bash 
 https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git 
 ``` 
 
-Zkopírujte výstup z terminálu, jako se použije v dalším kroku. 
+Kopírovat výstup z terminálu hello hello se použije v dalším kroku hello. 
 
-### <a name="push-to-azure-from-git"></a>Přenos z Gitu do Azure
+### <a name="push-tooazure-from-git"></a>Z Git push tooAzure
 
-Přidejte vzdálené úložiště Azure do místního úložiště Gitu. 
+Přidejte místní úložiště Git Azure vzdálené tooyour. 
 
 ```bash
 git remote add azure <paste_copied_url_here> 
 ```
 
-Doručte do Azure vzdálené nasazení aplikace Node.js. Zobrazí se výzva k zadání hesla, které jste zadali dříve v rámci vytváření nasazení uživatele. 
+Push toohello Azure vzdálené toodeploy aplikace Node.js. Jste vyzváni k hello heslo, které jste zadali dříve v rámci vytváření hello hello nasazení uživatele. 
 
 ```bash
 git push azure master
@@ -399,7 +399,7 @@ Během nasazení Azure App Service komunikuje s Gitem jejím průběhu.
 
 ```bash
 Counting objects: 5, done.
-Delta compression using up to 4 threads.
+Delta compression using up too4 threads.
 Compressing objects: 100% (5/5), done.
 Writing objects: 100% (5/5), 489 bytes | 0 bytes/s, done.
 Total 5 (delta 3), reused 0 (delta 0)
@@ -413,40 +413,40 @@ remote: Handling node.js deployment.
 .
 .
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+toohttps://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ``` 
 
-Můžete si všimnout, že proces nasazení spouští [Gulp](http://gulpjs.com/) po `npm install`. Služby App Service nespustí Gulp nebo Grunt úloh během nasazení, takže toto úložiště ukázka má dva další soubory v jeho kořenový adresář povolit: 
+Můžete si všimnout, že proces nasazení hello spouští [Gulp](http://gulpjs.com/) po `npm install`. Služby App Service nespouští Gulp nebo Grunt úloh během nasazení, tak toto úložiště ukázka má dva další soubory v jeho kořenový adresář tooenable ho: 
 
-- _.Deployment_ – tento soubor informuje služby App Service ke spuštění `bash deploy.sh` jako vlastní nasazení skriptu.
-- _Deploy.SH_ -skript vlastní nasazení. Při kontrole souboru je se zobrazí, že běží `gulp prod` po `npm install` a `bower install`. 
+- _.Deployment_ – tento soubor informuje služby App Service toorun `bash deploy.sh` jako hello vlastní nasazení skriptu.
+- _Deploy.SH_ -hello vlastní nasazení skriptu. Při kontrole souboru hello je se zobrazí, že běží `gulp prod` po `npm install` a `bower install`. 
 
-Tento postup můžete použít k přidání jakéhokoli kroku k nasazení na základě Git. Pokud restartujete Azure webové aplikace v libovolném bodě, služby App Service není spusťte znovu tyto úlohy automatizace.
+Tento přístup tooadd můžete použít všechny krok tooyour nasazení na základě Git. Pokud restartujete Azure webové aplikace v libovolném bodě, služby App Service není spusťte znovu tyto úlohy automatizace.
 
-### <a name="browse-to-the-azure-web-app"></a>Přejděte do webové aplikace Azure 
+### <a name="browse-toohello-azure-web-app"></a>Procházet toohello webové aplikace Azure 
 
-Přejděte do nasazené webové aplikace pomocí webového prohlížeče. 
+Procházet toohello nasadit webovou aplikaci pomocí webového prohlížeče. 
 
 ```bash 
 http://<app_name>.azurewebsites.net 
 ``` 
 
-Klikněte na tlačítko **zaregistrovat** v horní nabídce a vytvořte fiktivní uživatele. 
+Klikněte na tlačítko **zaregistrovat** v hello horní nabídce a vytvořte fiktivní uživatele. 
 
-Pokud jste úspěšné a aplikace automaticky přihlásí do vytvořeného uživatele, MEAN.js aplikace v Azure má připojení k databázi MongoDB (Cosmos databáze). 
+Pokud jste úspěšné a aplikace hello automaticky přihlásí toohello vytvoří uživatele a potom MEAN.js aplikace v Azure má databázi MongoDB (Cosmos DB) toohello připojení. 
 
 ![Aplikace MEAN.js spuštěná v rámci služby Azure App Service](./media/app-service-web-tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
-Vyberte **správce > Správa článků** přidat některé články. 
+Vyberte **správce > Správa článků** tooadd některé články. 
 
 **Blahopřejeme!** Používáte datové aplikace Node.js ve službě Azure App Service.
 
 ## <a name="update-data-model-and-redeploy"></a>Aktualizace datový model a znovu ho zaveďte
 
-V tomto kroku, můžete změnit `article` dat modelu a publikovat změny do Azure.
+V tomto kroku změnit hello `article` dat modelu a publikovat tooAzure vaše změny.
 
-### <a name="update-the-data-model"></a>Aktualizovat data modelu
+### <a name="update-hello-data-model"></a>Aktualizace hello datový model
 
 Otevřete _modules/articles/server/models/article.server.model.js_.
 
@@ -467,15 +467,15 @@ var ArticleSchema = new Schema({
 });
 ```
 
-### <a name="update-the-articles-code"></a>Aktualizujte kód články
+### <a name="update-hello-articles-code"></a>Aktualizujte kód články hello
 
-Aktualizovat zbytek vaší `articles` kódu pro použití `comment`.
+Aktualizovat zbytek hello vaše `articles` code toouse `comment`.
 
-Je pět souborů, budete muset upravit: řadičem serveru a zobrazení čtyři klientů. 
+Je pět souborů, které budete potřebovat toomodify: hello serveru řadiče a zobrazení hello čtyři klientů. 
 
 Otevřete _modules/articles/server/controllers/articles.server.controller.js_.
 
-V `update` fungovat, přidejte přiřazení pro `article.comment`. Následující kód ukazuje dokončené `update` funkce:
+V hello `update` fungovat, přidejte přiřazení pro `article.comment`. Hello následující kód ukazuje hello Dokončit `update` funkce:
 
 ```javascript
 exports.update = function (req, res) {
@@ -491,7 +491,7 @@ exports.update = function (req, res) {
 
 Otevřete _modules/articles/client/views/view-article.client.view.html_.
 
-Nad uzavírací `</section>` značky, přidejte následující řádek zobrazíte `comment` spolu s ostatními data článku:
+Nad hello ukončovací `</section>` značky, přidejte následující řádek toodisplay hello `comment` společně s hello zbytek hello článku dat:
 
 ```HTML
 <p class="lead" ng-bind="vm.article.comment"></p>
@@ -499,7 +499,7 @@ Nad uzavírací `</section>` značky, přidejte následující řádek zobrazít
 
 Otevřete _modules/articles/client/views/list-articles.client.view.html_.
 
-Nad uzavírací `</a>` značky, přidejte následující řádek zobrazíte `comment` spolu s ostatními data článku:
+Nad hello ukončovací `</a>` značky, přidejte následující řádek toodisplay hello `comment` společně s hello zbytek hello článku dat:
 
 ```HTML
 <p class="list-group-item-text" ng-bind="article.comment"></p>
@@ -507,7 +507,7 @@ Nad uzavírací `</a>` značky, přidejte následující řádek zobrazíte `com
 
 Otevřete _modules/articles/client/views/admin/list-articles.client.view.html_.
 
-Uvnitř `<div class="list-group">` elementu a nad uzavírací `</a>` značky, přidejte následující řádek zobrazíte `comment` spolu s ostatními data článku:
+Uvnitř hello `<div class="list-group">` elementu a nad hello ukončovací `</a>` značky, přidejte následující řádek toodisplay hello `comment` společně s hello zbytek hello článku dat:
 
 ```HTML
 <p class="list-group-item-text" data-ng-bind="article.comment"></p>
@@ -515,7 +515,7 @@ Uvnitř `<div class="list-group">` elementu a nad uzavírací `</a>` značky, p�
 
 Otevřete _modules/articles/client/views/admin/form-article.client.view.html_.
 
-Najít `<div class="form-group">` elementu, který obsahuje tlačítko pro odeslání, který vypadá podobně jako tento:
+Najde hello `<div class="form-group">` elementu, který obsahuje tlačítko pro odeslání hello, jež vypadá takto:
 
 ```HTML
 <div class="form-group">
@@ -523,7 +523,7 @@ Najít `<div class="form-group">` elementu, který obsahuje tlačítko pro odesl
 </div>
 ```
 
-Nad tuto značku, přidejte další `<div class="form-group">` element, který umožňuje uživatelům upravit `comment` pole. Nového elementu by měl vypadat takto:
+Nad tuto značku, přidejte další `<div class="form-group">` element, který umožňuje uživatelům upravit hello `comment` pole. Nového elementu by měl vypadat takto:
 
 ```HTML
 <div class="form-group">
@@ -544,56 +544,56 @@ NODE_ENV=production node server.js
 ```
 
 > [!NOTE]
-> Nezapomeňte, že vaše _config/env/production.js_ obnovila a `MONGODB_URI` – proměnná prostředí je nastavit pouze v Azure web app a ne na místním počítači. Pokud se podíváte na konfigurační soubor, zjistíte, že konfigurace produkční výchozí použít místní databázi MongoDB. Tím je zajištěno, že nemáte touch provozních dat při testování změn kódu místně.
+> Nezapomeňte, že vaše _config/env/production.js_ byl vrácen a hello `MONGODB_URI` proměnná prostředí je nastavit pouze v Azure web app a ne na místním počítači. Pokud se podíváte na hello konfiguračního souboru, zjistíte, že hello produkční konfigurace výchozí toouse místní databázi MongoDB. Tím je zajištěno, že nemáte touch provozních dat při testování změn kódu místně.
 
-Přejděte na `http://localhost:8443` v prohlížeči a ujistěte se, že jste přihlášení.
+Přejděte příliš`http://localhost:8443` v prohlížeči a ujistěte se, že jste přihlášení.
 
-Vyberte **správce > Správa článků**, pak výběrem přidat článek  **+**  tlačítko.
+Vyberte **správce > Správa článků**, pak výběrem hello přidat článek  **+**  tlačítko.
 
-Zobrazí nové `Comment` nyní textové pole.
+Zobrazí hello nové `Comment` nyní textové pole.
 
-![Přidání komentářů pole článků](./media/app-service-web-tutorial-nodejs-mongodb-app/added-comment-field.png)
+![Pole tooArticles přidané komentář](./media/app-service-web-tutorial-nodejs-mongodb-app/added-comment-field.png)
 
-V terminálu, zastavte Node.js zadáním `Ctrl+C`. 
+V terminálu hello, zastavte Node.js zadáním `Ctrl+C`. 
 
-### <a name="publish-changes-to-azure"></a>Publikování změn do Azure
+### <a name="publish-changes-tooazure"></a>Publikování změn tooAzure
 
-Potvrdit změny v úložišti Git a potom odešlete změny kódu do Azure.
+Potvrdit změny v úložišti Git a potom push tooAzure změny kódu hello.
 
 ```bash
 git commit -am "added article comment"
 git push azure master
 ```
 
-Jednou `git push` je dokončení, přejděte do vaší webové aplikace Azure a vyzkoušet nové funkce.
+Jednou hello `git push` dokončení, přejděte tooyour webové aplikace Azure a vyzkoušet nové funkce hello.
 
-![Model a databáze změny, které jsou publikovány do služby Azure](media/app-service-web-tutorial-nodejs-mongodb-app/added-comment-field-published.png)
+![Model a databáze změny publikovány tooAzure](media/app-service-web-tutorial-nodejs-mongodb-app/added-comment-field-published.png)
 
-Pokud jste dříve přidali všechny články, je stále můžete vidíte. Stávající data v databázi vaší Cosmos není ztraceny. Navíc vaše aktualizace schématu dat a svoje existující data zůstanou zachovány.
+Pokud jste dříve přidali všechny články, je stále můžete vidíte. Stávající data v databázi vaší Cosmos není ztraceny. Navíc schéma data aktualizace toohello a svoje existující data zůstanou zachovány.
 
 ## <a name="stream-diagnostic-logs"></a>Diagnostické protokoly datového proudu 
 
-Při spuštění vaší aplikace Node.js ve službě Azure App Service můžete získat protokoly konzoly přesměruje do terminálu. Tímto způsobem můžete získat stejné diagnostické zprávy pomoci při ladění chyb aplikace.
+Při spuštění vaší aplikace Node.js ve službě Azure App Service můžete získat hello konzoly protokoly vytvoření kanálu tooyour terminálu. Tímto způsobem můžete získat hello stejné diagnostické zprávy toohelp ladění chyb aplikace.
 
-Spusťte protokolu streamování pomocí [az webapp protokolu poškozené databáze za](/cli/azure/webapp/log#tail) příkaz.
+toostart protokolu streamování, použijte hello [az webapp protokolu poškozené databáze za](/cli/azure/webapp/log#tail) příkaz.
 
 ```azurecli-interactive
 az webapp log tail --name <app_name> --resource-group myResourceGroup
 ``` 
 
-Po zahájení vysílání datového proudu protokolu, aktualizujte Azure webové aplikace v prohlížeči získat některé webový provoz. Zobrazí protokoly konzoly přesměruje do terminálu.
+Po zahájení vysílání datového proudu protokolu, aktualizujte Azure webové aplikace v prohlížeči tooget hello některé webový provoz. Nyní uvidíte, protokoly konzoly přesměruje tooyour terminálu.
 
 Zastavení protokolu streamování kdykoli zadáním `Ctrl+C`. 
 
 ## <a name="manage-your-azure-web-app"></a>Správa Azure webové aplikace
 
-Přejděte na [portál Azure](https://portal.azure.com) zobrazíte webové aplikace, které jste vytvořili.
+Přejděte toohello [portál Azure](https://portal.azure.com) toosee hello webovou aplikaci jste vytvořili.
 
-V levé nabídce klikněte na **App Services** a pak klikněte na název vaší webové aplikace Azure.
+V levé nabídce hello, klikněte na **App Services**, pak klikněte na název hello Azure webové aplikace.
 
-![Navigace portálem k webové aplikaci Azure](./media/app-service-web-tutorial-nodejs-mongodb-app/access-portal.png)
+![Portálu tooAzure webové aplikace](./media/app-service-web-tutorial-nodejs-mongodb-app/access-portal.png)
 
-Ve výchozím nastavení, zobrazí na portálu vaší webové aplikace **přehled** stránky. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Karty na levé straně stránky zobrazí stránek jinou konfiguraci, že můžete otevřít.
+Ve výchozím nastavení, hello portál zobrazuje vaší webové aplikace **přehled** stránky. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Hello karty na levé straně stránky hello hello zobrazit stránky hello jinou konfiguraci, které můžete otevřít.
 
 ![Stránka služby App Service na webu Azure Portal](./media/app-service-web-tutorial-nodejs-mongodb-app/web-app-blade.png)
 
@@ -606,13 +606,13 @@ Co jste se naučili:
 
 > [!div class="checklist"]
 > * Vytvořit databázi MongoDB v Azure
-> * Připojení aplikace Node.js pro MongoDB
-> * Nasazení aplikace do Azure
-> * Aktualizovat datový model a aplikaci znovu nasaďte
-> * Datový proud protokolů z Azure terminálu
-> * Spravovat aplikaci na portálu Azure
+> * Připojit tooMongoDB aplikace Node.js
+> * Nasazení aplikace tooAzure hello
+> * Aktualizovat hello datový model a znovu nasaďte aplikace hello
+> * Datový proud protokolů z Azure tooyour terminálu
+> * Spravovat aplikace hello v hello portálu Azure
 
-Přechodu na dalším kurzu se dozvíte, jak namapovat vlastní název DNS do vaší webové aplikace.
+Posunutí toohello další kurz toolearn jak toomap vlastní DNS název tooyour webové aplikace.
 
 > [!div class="nextstepaction"] 
-> [Mapování existujícího vlastního názvu DNS na Azure Web Apps](app-service-web-tutorial-custom-domain.md)
+> [Mapovat existující vlastní DNS název tooAzure webové aplikace](app-service-web-tutorial-custom-domain.md)

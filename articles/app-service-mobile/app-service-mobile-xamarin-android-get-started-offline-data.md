@@ -1,6 +1,6 @@
 ---
-title: "Zapnutí offline synchronizace pro mobilní aplikace Azure (Xamarin Android)"
-description: "Další informace o použití aplikace služby mobilní aplikace do mezipaměti a synchronizaci dat offline v aplikaci Xamarin Android"
+title: "offline synchronizace aaaEnable mobilní aplikace Azure (Xamarin Android)"
+description: "Zjistěte, jak toouse aplikace služby mobilní aplikace toocache a synchronizaci dat offline v aplikaci Xamarin Android"
 documentationcenter: xamarin
 author: ggailey777
 manager: syntaxc4
@@ -14,65 +14,65 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 471433c7ef2f6f128210ed145f685b42b44eea92
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 216ba76ae49f583273cc61b63114a415eca2477b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enable-offline-sync-for-your-xamarinandroid-mobile-app"></a>Zapnutí offline synchronizace pro mobilní aplikace Xamarin.Android
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 ## <a name="overview"></a>Přehled
-Tento kurz představuje offline synchronizace funkci Azure Mobile Apps pro Xamarin.Android. Offline synchronizace umožňuje koncovým uživatelům pracovat s mobilní aplikací – zobrazení, přidání nebo úprava dat – i když dojde k dispozici žádné síťové připojení. Změny se ukládají do místní databáze.
-Když je zařízení do režimu online, tyto změny se synchronizují s vzdálené služby.
+Tento kurz představuje hello offline synchronizace funkci Azure Mobile Apps pro Xamarin.Android. Offline synchronizace umožňuje koncovým uživatelům toointeract s mobilní aplikací – zobrazení, přidání nebo úprava dat – i když dojde k dispozici žádné síťové připojení. Změny se ukládají do místní databáze.
+Jakmile hello zařízení do režimu online, tyto změny se synchronizují s hello vzdálené služby.
 
-V tomto kurzu aktualizujete projektu klienta z tohoto kurzu [vytvořit aplikaci Xamarin Android] pro podporu offline funkce Azure Mobile Apps. Pokud použijete serverový projekt stažené rychlý start, je nutné přidat data přístup rozšiřující balíčky do projektu. Další informace o balíčcích rozšíření serveru najdete v tématu [pracovat s .NET back-end serveru SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+V tomto kurzu aktualizujete hello projektu klienta z hello kurzu [vytvoření aplikace Xamarin.Android] toosupport hello offline funkce Azure Mobile Apps. Pokud nepoužijete hello stáhli úvodní serverový projekt, je nutné přidat hello data přístup rozšíření balíčky tooyour projektu. Další informace o balíčcích rozšíření serveru najdete v tématu [pracovat s hello .NET back-end serveru SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-Další informace o funkci offline synchronizace, naleznete v tématu [Offline synchronizací dat v Azure Mobile Apps].
+toolearn Další informace o funkci hello offline synchronizace, najdete v tématu hello [Offline synchronizací dat v Azure Mobile Apps].
 
-## <a name="update-the-client-app-to-support-offline-features"></a>Aktualizace klienta aplikace pro podporu funkcím offline
-Offline funkce mobilní aplikace Azure umožňují interakci s místní databázi, pokud jste v offline scénář. V aplikaci použít tyto funkce, inicializovat [SyncContext] do místního úložiště. Potom referenční tabulku přes rozhraní [IMobileServiceSyncTable] [IMobileServiceSyncTable]. SQLite slouží jako místní úložiště v zařízení.
+## <a name="update-hello-client-app-toosupport-offline-features"></a>Aktualizovat hello klientských aplikací toosupport offline funkcí
+Offline funkce mobilní aplikace Azure umožňuje toointeract s místní databází v případě, že jste ve scénáři s offline. toouse inicializaci tyto funkce ve vaší aplikaci [SyncContext] tooa místního úložiště. Potom referenční tabulku prostřednictvím hello [IMobileServiceSyncTable] [IMobileServiceSyncTable] rozhraní. SQLite slouží jako místní úložiště hello na hello zařízení.
 
-1. V sadě Visual Studio, otevřete Správce balíčků NuGet v projektu, který jste dokončili v [vytvořit aplikaci Xamarin Android] kurzu.  Vyhledat a nainstalovat **Microsoft.Azure.Mobile.Client.SQLiteStore** balíček NuGet.
-2. Otevřete soubor ToDoActivity.cs a zrušte komentář u `#define OFFLINE_SYNC_ENABLED` definice.
-3. V sadě Visual Studio, stiskněte **F5** klíč znovu sestavit a spustit klientskou aplikaci. Aplikace funguje stejným způsobem jako před jste povolili offline synchronizace. Však místní databáze je nyní obsahuje data, která lze použít v případě pomocí offline.
+1. V sadě Visual Studio, otevřete Správce balíčků NuGet hello v hello projekt, který jste dokončili v hello [vytvoření aplikace Xamarin.Android] kurzu.  Vyhledání a instalace hello **Microsoft.Azure.Mobile.Client.SQLiteStore** balíček NuGet.
+2. Otevřete soubor ToDoActivity.cs hello a zrušte komentář u hello `#define OFFLINE_SYNC_ENABLED` definice.
+3. V sadě Visual Studio, stiskněte klávesu hello **F5** klíčů toorebuild a spuštění hello klientskou aplikaci. aplikace Hello funguje stejně jako jeho nebyla předtím, než jste povolili offline synchronizace hello. Však hello místní databáze je nyní obsahuje data, která lze použít v případě pomocí offline.
 
-## <a name="update-sync"></a>Aktualizace aplikace k odpojení od back-end
-V této části Zrušení propojení na váš back-end mobilní aplikace k simulaci offline situaci. Když přidáte datových položek, vaše obslužná rutina výjimky zprávou, že aplikace je v offline režimu. V tomto stavu nové položky přidány v místním úložišti a jsou synchronizované do back-end mobilní aplikace při push v připojeném stavu.
+## <a name="update-sync"></a>Aktualizovat toodisconnect aplikace hello z back-end hello
+V této části můžete rozdělit hello připojení tooyour mobilní aplikace back-end toosimulate offline situaci. Když přidáte datových položek, vaší obslužné rutiny výjimek zjistíte, že tuto aplikaci hello je v offline režimu. V tomto stavu nové položky přidán do místní hello ukládání a jsou synchronizované s back-end mobilní aplikace hello při push v připojeném stavu.
 
-1. Upravte ToDoActivity.cs v sdílený projekt. Změna **applicationURL** tak, aby odkazovalo na neplatnou adresu URL:
+1. Upravte ToDoActivity.cs v hello sdílený projekt. Změna hello **applicationURL** toopoint tooan neplatná adresa URL:
 
          const string applicationURL = @"https://your-service.azurewebsites.fail";
 
-    Zakázání Wi-Fi a mobilní sítě na zařízení nebo pomocí režim v letadle, může také ukázat offline chování.
-2. Stiskněte klávesu **F5** sestavení a spuštění aplikace. Všimněte si vaše synchronizace se nezdařila při obnovení při spuštění aplikace.
-3. Zadejte nové položky a Všimněte si, že nabízené nezdaří se stavem [CancelledByNetworkError] pokaždé, když kliknete na tlačítko **Uložit**. Však nové položky todo existovat v místním úložišti, dokud se můžou poslat na back-end mobilní aplikace.  V produkční aplikace je-li potlačit tyto výjimky klientské aplikace chová, jako by se stále připojeni k back-end mobilní aplikace.
-4. Zavřete aplikaci a restartujte ji k ověření, že nové položky, které jste vytvořili, jsou nastavené jako trvalé do místního úložiště.
-5. (Volitelné) V sadě Visual Studio otevřete **Průzkumníka serveru**. Přejděte k vaší databázi v **Azure**->**databází SQL**. Klikněte pravým tlačítkem na databázi a vyberte **otevřít v Průzkumníku objektů systému SQL Server**. Teď můžete procházet tabulku databáze SQL a její obsah. Ověřte, že se nezměnil na data v databázi back-end.
-6. (Volitelné) Dotaz na vaše mobilní back-end, pomocí dotazu GET ve formuláři pomocí REST nástroje, jako je Fiddler nebo Postman `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem`.
+    Zakázání Wi-Fi a mobilní sítě na hello zařízení nebo pomocí režim v letadle, může také ukázat offline chování.
+2. Stiskněte klávesu **F5** toobuild a spuštění aplikace hello. Všimněte si vaše synchronizace se nezdařila při obnovení hello při spuštění aplikace.
+3. Zadejte nové položky a Všimněte si, že nabízené nezdaří se stavem [CancelledByNetworkError] pokaždé, když kliknete na tlačítko **Uložit**. Však nové položky todo hello existovat v místním úložišti hello, dokud se můžou poslat back-end mobilní aplikace toohello.  V produkční aplikace, je-li potlačit tyto výjimky, které se chová hello klientskou aplikaci, pokud je stále připojená back-end mobilní aplikace toohello.
+4. Zavření aplikace hello a restartujte ji tooverify že hello nové položky, kterou jste vytvořili jsou trvalé toohello místního úložiště.
+5. (Volitelné) V sadě Visual Studio otevřete **Průzkumníka serveru**. Přejděte tooyour databáze v **Azure**->**databází SQL**. Klikněte pravým tlačítkem na databázi a vyberte **otevřít v Průzkumníku objektů systému SQL Server**. Teď můžete procházet tooyour tabulce databáze SQL a její obsah. Ověřte, že se nezměnil hello data v databázi back-end hello.
+6. (Volitelné) Použijte nástroj REST, například aplikaci Fiddler nebo Postman tooquery vaší mobilní back-end, pomocí dotazu GET ve tvaru `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem`.
 
-## <a name="update-online-app"></a>Aktualizace aplikace se znovu připojit váš back-end mobilní aplikace
-V této části znovu připojte aplikaci back-end mobilní aplikace. Při prvním spuštění aplikace, `OnCreate` volání obslužné rutiny události `OnRefreshItemsSelected`. Tato metoda volá `SyncAsync` synchronizaci místního úložiště s databází back-end.
+## <a name="update-online-app"></a>Aktualizovat tooreconnect aplikace hello váš back-end mobilní aplikace
+V této části se znovu připojte back-end hello aplikace toohello mobilní aplikace. Při prvním spuštění aplikace hello, hello `OnCreate` volání obslužné rutiny události `OnRefreshItemsSelected`. Tato metoda volá `SyncAsync` toosync na místní ukládání s databází hello back-end.
 
-1. Otevřete v projektu sdíleného ToDoActivity.cs a obnovit vaše změna **applicationURL** vlastnost.
-2. Stiskněte **F5** klíč znovu sestavte a spusťte aplikaci. Aplikace synchronizuje místní změny s použitím operací nabízení a vyžadování back-end mobilní aplikace Azure při `OnRefreshItemsSelected` metody.
-3. (Volitelné) Zobrazte aktualizovaná data pomocí Průzkumníka objektů systému SQL Server nebo REST nástroje, například aplikaci Fiddler. Všimněte si data umístění byl synchronizován mezi databázi back-end mobilní aplikace Azure a místní úložiště.
-4. V aplikaci klikněte na zaškrtávací políčko vedle několik položek k jejich dokončení v místním úložišti.
+1. Otevřete v projektu sdíleného hello ToDoActivity.cs a obnovit vaše změna hello **applicationURL** vlastnost.
+2. Stiskněte klávesu hello **F5** klíčů toorebuild a aplikaci spusťte hello. Hello aplikace synchronizuje místní změny s back-end mobilní aplikace Azure hello pomocí nabízení a vyžadování operace při hello `OnRefreshItemsSelected` metody.
+3. (Volitelné) Zobrazení hello aktualizovaná data pomocí Průzkumníka objektů systému SQL Server nebo REST nástroje, například aplikaci Fiddler. Všimněte si hello data umístění byl synchronizován mezi databáze back-end mobilní aplikace Azure hello a hello místní úložiště.
+4. V aplikaci hello, klikněte na tlačítko zaškrtnutí hello pole vedle několik položek toocomplete je v místním úložišti hello.
 
-   `CheckItem`volání `SyncAsync` k položce každý byla úspěšně dokončena synchronizace s back-end mobilní aplikace. `SyncAsync`volá nabízení a vyžadování. **Vždy, když je spustit vyžádání pro tabulku, která klient udělal změny, push vždy provést automaticky**. Tím se zajistí, že všechny tabulky v místním úložišti společně s vztahy zůstaly konzistentní. Toto chování může způsobit neočekávané push. Další informace o toto chování najdete v tématu [Offline synchronizací dat v Azure Mobile Apps].
+   `CheckItem`volání `SyncAsync` položku toosync každý byla dokončena s back-end mobilní aplikace hello. `SyncAsync`volá nabízení a vyžadování. **Při každém spuštění přijetí změn pro tabulku tohoto klienta hello udělal změny, push se vždycky spustí automaticky**. Tím se zajistí, že všechny tabulky v místním úložišti společně s vztahy zůstaly konzistentní. Toto chování může způsobit neočekávané push. Další informace o toto chování najdete v tématu [Offline synchronizací dat v Azure Mobile Apps].
 
-## <a name="review-the-client-sync-code"></a>Zkontrolujte kód synchronizace klienta
-Projekt Xamarin klienta, který jste stáhli, když jste dokončili kurz [vytvořit aplikaci Xamarin Android] již obsahuje kód podpora offline synchronizace pomocí místní databáze SQLite. Zde je stručný přehled co je již zahrnut v kurzu kódu. Koncepční přehled funkce, najdete v části [Offline synchronizací dat v Azure Mobile Apps].
+## <a name="review-hello-client-sync-code"></a>Zkontrolujte kód synchronizace klienta hello
+Hello Xamarin klientského projektu, který jste stáhli, když jste dokončili kurz hello [vytvoření aplikace Xamarin.Android] již obsahuje kód podpora offline synchronizace pomocí místní databáze SQLite. Zde je stručný přehled co je již součástí hello kódu. Koncepční přehled hello funkce, najdete v tématu [Offline synchronizací dat v Azure Mobile Apps].
 
-* Před provedením jakékoli operace s tabulkou, musí být inicializován místní úložiště. Místní úložiště databáze inicializovaná při `ToDoActivity.OnCreate()` provede `ToDoActivity.InitLocalStoreAsync()`. Tato metoda vytvoří místní databázi SQLite pomocí `MobileServiceSQLiteStore` třída poskytnutý klientem Azure Mobile Apps SDK.
+* Před provedením jakékoli operace s tabulkou, musí být inicializován hello místního úložiště. Hello místního úložiště databáze inicializovaná při `ToDoActivity.OnCreate()` provede `ToDoActivity.InitLocalStoreAsync()`. Tato metoda vytvoří místní databázi SQLite pomocí hello `MobileServiceSQLiteStore` třída poskytované hello Azure Mobile Apps klienta SDK.
 
-    `DefineTable` Metoda vytvoří tabulku v místním úložišti odpovídající pole v zadaný typ `ToDoItem` v tomto případě. Typ nemusí obsahovat všechny sloupce, které jsou v vzdálené databáze. Je možné k uložení právě podmnožinu sloupců.
+    Hello `DefineTable` metoda vytvoří tabulku v hello místního úložiště, který odpovídá hello polí v hello zadaný typ, `ToDoItem` v tomto případě. Typ Hello nemá tooinclude všechny hello sloupců, které jsou v hello vzdálené databáze. Je možné toostore pouze podmnožinu sloupců.
 
         // ToDoActivity.cs
         private async Task InitLocalStoreAsync()
         {
-            // new code to initialize the SQLite store
+            // new code tooinitialize hello SQLite store
             string path = Path.Combine(System.Environment
                 .GetFolderPath(System.Environment.SpecialFolder.Personal), localDbFilename);
 
@@ -84,18 +84,18 @@ Projekt Xamarin klienta, který jste stáhli, když jste dokončili kurz [vytvo�
             var store = new MobileServiceSQLiteStore(path);
             store.DefineTable<ToDoItem>();
 
-            // Uses the default conflict handler, which fails on conflict
-            // To use a different conflict handler, pass a parameter to InitializeAsync.
+            // Uses hello default conflict handler, which fails on conflict
+            // toouse a different conflict handler, pass a parameter tooInitializeAsync.
             // For more details, see http://go.microsoft.com/fwlink/?LinkId=521416.
             await client.SyncContext.InitializeAsync(store);
         }
-* `toDoTable` Členem `ToDoActivity` je `IMobileServiceSyncTable` zadejte místo `IMobileServiceTable`. IMobileServiceSyncTable směrovat všechny vytvářet, číst, aktualizovat a odstranit tabulku operace do místního úložiště databáze.
+* Hello `toDoTable` členem `ToDoActivity` je hello `IMobileServiceSyncTable` zadejte místo `IMobileServiceTable`. Hello IMobileServiceSyncTable směrovat všechny vytvářet, číst, aktualizovat a odstraňovat (CRUD) tabulky operations toohello místního úložiště databáze.
 
-    Rozhodnete, když se změny odesílají na back-end mobilní aplikace Azure voláním `IMobileServiceSyncContext.PushAsync()`. Kontext synchronizace umožňuje zachovat relace mezi tabulkami sledováním a vkládání změny ve všech tabulkách klientské aplikace změnil při `PushAsync` je volána.
+    Rozhodnete, když jsou změny nabídnutých back-end mobilní aplikace Azure toohello voláním `IMobileServiceSyncContext.PushAsync()`. Hello kontext synchronizace umožňuje zachovat relace mezi tabulkami sledováním a vkládání změny ve všech tabulkách klientské aplikace změnil při `PushAsync` je volána.
 
-    Zadaný kód zavolá metodu `ToDoActivity.SyncAsync()` pro synchronizaci pokaždé, když se aktualizují seznamu todoitem nebo úkolu je přidána nebo byla dokončena. Synchronizace kódu po každé změně místní.
+    Hello zadat kód zavolá metodu `ToDoActivity.SyncAsync()` toosync pokaždé, když se aktualizují hello todoitem seznamu nebo úkolu je přidána nebo byla dokončena. Hello synchronizacemi kódu po každé změně místní.
 
-    Zadaný kód všechny zaznamenává ve vzdáleném `TodoItem` tabulky jsou předmětem dotazování, ale je také možné filtrování záznamů předáním id dotazu a dotazy s cílem `PushAsync`. Další informace najdete v části *přírůstkové synchronizace* v [Offline synchronizací dat v Azure Mobile Apps].
+    V kódu hello poskytuje všechny zaznamenává hello vzdálené `TodoItem` tabulky jsou předmětem dotazování, ale je také možné toofilter záznamy předáním id dotazu a dotaz příliš`PushAsync`. Další informace najdete v tématu hello *přírůstkové synchronizace* v [Offline synchronizací dat v Azure Mobile Apps].
 
         // ToDoActivity.cs
         private async Task SyncAsync()
@@ -104,7 +104,7 @@ Projekt Xamarin klienta, který jste stáhli, když jste dokončili kurz [vytvo�
                 await client.SyncContext.PushAsync();
                 await toDoTable.PullAsync("allTodoItems", toDoTable.CreateQuery()); // query ID is used for incremental sync
             } catch (Java.Net.MalformedURLException) {
-                CreateAndShowDialog (new Exception ("There was an error creating the Mobile Service. Verify the URL"), "Error");
+                CreateAndShowDialog (new Exception ("There was an error creating hello Mobile Service. Verify hello URL"), "Error");
             } catch (Exception e) {
                 CreateAndShowDialog (e, "Error");
             }
@@ -115,7 +115,7 @@ Projekt Xamarin klienta, který jste stáhli, když jste dokončili kurz [vytvo�
 * [Mobilní aplikace Azure .NET SDK postupy][8]
 
 <!-- URLs. -->
-[vytvořit aplikaci Xamarin Android]: ../app-service-mobile-xamarin-android-get-started.md
+[vytvoření aplikace Xamarin.Android]: ../app-service-mobile-xamarin-android-get-started.md
 [Offline synchronizací dat v Azure Mobile Apps]: ../app-service-mobile-offline-data-sync.md
 
 <!-- Images -->

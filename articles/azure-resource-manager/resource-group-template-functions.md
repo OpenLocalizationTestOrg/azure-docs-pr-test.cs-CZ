@@ -1,6 +1,6 @@
 ---
-title: "Funkce šablony Resource Manageru | Microsoft Docs"
-description: "Popisuje funkce pro použití v šablonu Azure Resource Manager k získávání hodnot, pracovat s řetězce a numerické hodnoty a načíst informace o nasazení."
+title: "aaaResource funkce šablon Manager | Microsoft Docs"
+description: "Popisuje funkce toouse hello v hodnoty tooretrieve šablony Azure Resource Manager pracovat řetězce a numerické hodnoty a načíst informace o nasazení."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: 1324bed07e991e9d84cb6832afe78bdb2d3348fa
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d1b2e68a33d75058f83d6972dadb33a6390d49b2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-resource-manager-template-functions"></a>Funkce šablony Azure Resource Manager
-Toto téma popisuje všechny funkce, které můžete použít v šablonu Azure Resource Manager.
+Toto téma popisuje všechny hello funkce, které můžete použít v šablonu Azure Resource Manager.
 
-Přidání funkce v šablonách uzavřené v závorkách: `[` a `]`, v uvedeném pořadí. Výraz se vyhodnotí během nasazování. Při zápisu jako řetězcový literál, může být výsledkem vyhodnocení výrazu jiného typu formátu JSON, jako je například pole, objektu nebo celé číslo. Jenom jako v jazyce JavaScript, volání funkce jsou formátovány jako `functionName(arg1,arg2,arg3)`. Vlastnosti odkazovat pomocí operátorů dot a [index].
+Přidání funkce v šablonách uzavřené v závorkách: `[` a `]`, v uvedeném pořadí. výraz Hello se vyhodnotí během nasazování. Při zápisu jako řetězcový literál, může být výsledkem vyhodnocení výrazu hello hello jiného typu formátu JSON, jako je například pole, objektu nebo celé číslo. Jenom jako v jazyce JavaScript, volání funkce jsou formátovány jako `functionName(arg1,arg2,arg3)`. Vlastnosti odkazovat pomocí operátorů dot a [index] hello.
 
 Výraz šablony nesmí překročit 24,576 znaků.
 
-Šablony funkcí a jejich parametrů se velká a malá písmena. Například správce prostředků přeloží **variables('var1')** a **VARIABLES('VAR1')** jako stejné. Při hodnocení, pokud funkci výslovně upraví případ (například toUpper nebo toLower), funkce zachovává malá a velká. Některé typy prostředků může mít případu požadavky bez ohledu na to, jak se vyhodnocují funkce.
+Šablony funkcí a jejich parametrů se velká a malá písmena. Například správce prostředků přeloží **variables('var1')** a **VARIABLES('VAR1')** jako hello stejné. Při hodnocení, pokud funkce hello výslovně upraví případ (například toUpper nebo toLower), funkce hello zachovává hello případu. Některé typy prostředků může mít případu požadavky bez ohledu na to, jak se vyhodnocují funkce.
 
 <a id="array" />
 <a id="coalesce" />
@@ -87,7 +87,7 @@ Resource Manager poskytuje několik funkcí pro porovnání ve vašich šablon.
 <a id="variables" />
 
 ## <a name="deployment-value-functions"></a>Hodnota funkce nasazení
-Resource Manager poskytuje následující funkce pro získání hodnoty z části šablony a hodnoty týkající se nasazení:
+Resource Manager poskytuje hello následující funkce pro získání hodnoty z části hello šablony a hodnoty související toohello nasazení:
 
 * [nasazení](resource-group-template-functions-deployment.md#deployment)
 * [Parametry](resource-group-template-functions-deployment.md#parameters)
@@ -105,7 +105,7 @@ Resource Manager poskytuje následující funkce pro získání hodnoty z část
 <a id="sub" />
 
 ## <a name="logical-functions"></a>Logické funkce
-Resource Manager poskytuje následující funkce pro práci s logických podmínek:
+Resource Manager poskytuje následující funkce pro práci s logických podmínek hello:
 
 * [a](resource-group-template-functions-logical.md#and)
 * [BOOL](resource-group-template-functions-logical.md#bool)
@@ -114,7 +114,7 @@ Resource Manager poskytuje následující funkce pro práci s logických podmín
 * [nebo](resource-group-template-functions-logical.md#or)
 
 ## <a name="numeric-functions"></a>Numerické funkce
-Resource Manager poskytuje následující funkce pro práci s celými čísly:
+Resource Manager poskytuje následující funkce pro práci s celými čísly hello:
 
 * [Přidat](resource-group-template-functions-numeric.md#add)
 * [copyIndex](resource-group-template-functions-numeric.md#copyindex)
@@ -136,7 +136,7 @@ Resource Manager poskytuje následující funkce pro práci s celými čísly:
 <a id="subscription" />
 
 ## <a name="resource-functions"></a>Funkce prostředků
-Resource Manager poskytuje následující funkce pro získání hodnoty prostředku:
+Resource Manager poskytuje následující funkce pro načtení prostředků hodnot hello:
 
 * [listKeys a seznamu {Value}](resource-group-template-functions-resource.md#listkeys)
 * [Zprostředkovatelé](resource-group-template-functions-resource.md#providers)
@@ -176,7 +176,7 @@ Resource Manager poskytuje následující funkce pro získání hodnoty prostře
 <a id="uricomponenttostring" />
 
 ## <a name="string-functions"></a>Řetězcové funkce
-Resource Manager poskytuje následující funkce pro práci s řetězce:
+Resource Manager poskytuje následující funkce pro práci s řetězci hello:
 
 * [formátu Base64.](resource-group-template-functions-string.md#base64)
 * [base64ToJson](resource-group-template-functions-string.md#base64tojson)
@@ -210,8 +210,8 @@ Resource Manager poskytuje následující funkce pro práci s řetězce:
 
 
 ## <a name="next-steps"></a>Další kroky
-* Popis v částech šablonu Azure Resource Manager naleznete v tématu [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md)
-* Sloučit několik šablon, najdete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md)
-* K iteraci v zadaného počtu opakování při vytváření typu prostředku, najdete v části [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md)
-* Postup nasazení šablony, které jste vytvořili, najdete v sekci [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md)
+* Popis části hello šablonu Azure Resource Manager naleznete v tématu [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md)
+* toomerge několik šablon, najdete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md)
+* tooiterate zadaného počtu opakování při vytváření typu prostředku, najdete v části [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md)
+* toosee způsobu toodeploy hello šablony vytvoříte, najdete v [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md)
 

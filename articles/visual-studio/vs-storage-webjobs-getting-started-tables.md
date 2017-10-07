@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s Azure storage a Visual Studio připojené služeb (webové úlohy projekty)"
-description: "Jak začít používat Azure Table storage v Azure WebJobs projektu v sadě Visual Studio po připojení k účtu úložiště pomocí sady Visual Studio připojené služby"
+title: "aaaGetting Začínáme s Azure storage a Visual Studio připojené služeb (webové úlohy projekty)"
+description: "Jak tooget spustit po připojení tooa účet úložiště pomocí sady Visual Studio připojené služby pomocí Azure Table storage v Azure WebJobs projektu v sadě Visual Studio"
 services: storage
 documentationcenter: 
 author: kraigb
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
-ms.openlocfilehash: 0bf51f9113c45c747cd4fd3f76bdabd4a4c1f8e2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 80d9f8d8b493ce612623dfed7e89325fb154a1c0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Začínáme s Azure Storage (webová úloha Azure projekty)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Přehled
-Tento článek obsahuje C# ukázek kódu, které ukazují ukazují, jak používat Azure WebJobs SDK verze 1.x s služby úložiště Azure table. Kód – ukázky použití [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) verze 1.x.
+Tento článek obsahuje zobrazit C# ukázek kódu, které ukazují, jak toouse hello Azure WebJobs SDK verze 1.x s hello služby úložiště Azure table. Ukázky kódu Hello použít hello [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) verze 1.x.
 
-Služba úložiště Azure Table umožňuje ukládat velké množství strukturovaná data. Služba je úložištěm dat typu NoSQL, která přijímá ověřených volání z uvnitř i vně cloudu Azure. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat.  V tématu [Začínáme s Azure Table storage pomocí rozhraní .NET](../cosmos-db/table-storage-how-to-use-dotnet.md#create-a-table) Další informace.
+Hello služba úložiště Azure Table umožňuje toostore velkých objemů strukturovaná data. Hello služba je úložištěm dat typu NoSQL, která přijímá ověřených volání z vnitřní a vnější hello cloudu Azure. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat.  V tématu [Začínáme s Azure Table storage pomocí rozhraní .NET](../cosmos-db/table-storage-how-to-use-dotnet.md#create-a-table) Další informace.
 
-Některé zobrazit fragmenty kódu **tabulky** atribut používaných ve funkcích, které se nazývají ručně, tedy ne prostřednictvím jeden z atributů aktivační události.
+Některé hello fragmenty kódu ukazují hello **tabulky** atribut používaných ve funkcích, které se nazývají ručně, tedy ne prostřednictvím jeden z atributů hello aktivační události.
 
-## <a name="how-to-add-entities-to-a-table"></a>Postup přidání entity do tabulky
-K přidání entity do tabulky, použijte **tabulky** atribut s **ICollector<T>**  nebo **IAsyncCollector<T>**  parametr kde **T** Určuje schéma entity, které chcete přidat. Konstruktoru atributu přijímá řetězcový parametr, který určuje název tabulky.
+## <a name="how-tooadd-entities-tooa-table"></a>Jak tooadd entity tooa tabulky
+tooadd entity tooa tabulky, použijte hello **tabulky** atribut s **ICollector<T>**  nebo **IAsyncCollector<T>**  parametr kde **T** Určuje schéma hello hello entit chcete tooadd. konstruktoru atributu Hello přijímá řetězcový parametr, který určuje název hello hello tabulky.
 
-Následující ukázka kódu přidá **osoba** entity do tabulky s názvem *příjem příchozích dat*.
+Přidá technologie Hello následující ukázka kódu **osoba** entity tooa tabulku s názvem *příjem příchozích dat*.
 
         [NoAutomaticTrigger]
         public static void IngressDemo(
@@ -50,7 +50,7 @@ Následující ukázka kódu přidá **osoba** entity do tabulky s názvem *př�
             }
         }
 
-Obvykle typ můžete používat s **ICollector** je odvozena z **TableEntity** nebo implementuje **ITableEntity**, ale nemusí to. Z následujících **osoba** třídy práce s kódem zobrazeným v předchozím **příjem příchozích dat** metoda.
+Obvykle hello typ můžete používat s **ICollector** je odvozena z **TableEntity** nebo implementuje **ITableEntity**, ale nemusí to. Některý z následujících hello **osoba** třídy práce s kódem hello uvedené v předchozí hello **příjem příchozích dat** metoda.
 
         public class Person : TableEntity
         {
@@ -64,25 +64,25 @@ Obvykle typ můžete používat s **ICollector** je odvozena z **TableEntity** n
             public string Name { get; set; }
         }
 
-Pokud chcete pracovat přímo s úložištěm Azure API, můžete přidat **CloudStorageAccount** parametru podpis metody.
+Pokud chcete toowork přímo s hello úložiště Azure API, můžete přidat **CloudStorageAccount** podpis metody toohello parametr.
 
 ## <a name="real-time-monitoring"></a>Sledování v reálném čase
-Protože funkce příchozí přenos dat často zpracování velkých objemů dat, řídicím panelu WebJobs SDK poskytuje data monitorování v reálném čase. **Volání protokolu** části oznamuje, zda je stále spuštěna funkce.
+Protože funkce příchozí přenos dat často zpracování velkých objemů dat, hello řídicím panelu WebJobs SDK poskytuje data monitorování v reálném čase. Hello **volání protokolu** části řekne, pokud je stále spuštěná hello funkce.
 
 ![Příjem příchozích dat funkci spouštění](./media/vs-storage-webjobs-getting-started-tables/ingressrunning.png)
 
-**Volání podrobnosti** stránky sestavy průběhu funkce (počet entit, které jsou zapsány) je spuštěn a vám dává příležitost k přerušení ho.
+Hello **volání podrobnosti** stránky sestavy hello funkce průběh (počet entit, které jsou zapsány) při běží a poskytuje tooabort možnost ho.
 
 ![Příjem příchozích dat funkci spouštění](./media/vs-storage-webjobs-getting-started-tables/ingressprogress.png)
 
-Po dokončení funkce **volání podrobnosti** stránky sestavy počet řádků, které jsou zapsány.
+Když funkce hello dokončení hello **volání podrobnosti** stránky sestavy hello počet řádků, které jsou zapsány.
 
 ![Funkce pro příjem příchozích dat bylo dokončeno](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
-## <a name="how-to-read-multiple-entities-from-a-table"></a>Jak si více entit z tabulky.
-Čtení tabulky, použijte **tabulky** atribut s **IQueryable<T>**  parametr kde zadejte **T** je odvozena z **TableEntity** nebo implementuje **ITableEntity**.
+## <a name="how-tooread-multiple-entities-from-a-table"></a>Jak tooread více entit z tabulky.
+tooread tabulky, použijte hello **tabulky** atribut s **IQueryable<T>**  parametr kde zadejte **T** je odvozena z **TableEntity**nebo implementuje **ITableEntity**.
 
-Následující ukázka kódu čte a zaznamená všechny řádky z **příjem příchozích dat** tabulky:
+Hello následující ukázka kódu čte a zaznamená všechny řádky z hello **příjem příchozích dat** tabulky:
 
         public static void ReadTable(
             [Table("Ingress")] IQueryable<Person> tableBinding,
@@ -96,10 +96,10 @@ Následující ukázka kódu čte a zaznamená všechny řádky z **příjem př
             }
         }
 
-### <a name="how-to-read-a-single-entity-from-a-table"></a>Informace o načtení jedné entity z tabulky.
-Je **tabulky** konstruktoru atributu s dva další parametry, které umožňují zadat klíč oddílu a klíč řádku, pokud chcete vytvořit vazbu k jedné tabulky entity.
+### <a name="how-tooread-a-single-entity-from-a-table"></a>Jak tooread jedné entity z tabulky.
+Je **tabulky** konstruktoru atributu s dva další parametry, které umožňují určit hello klíč oddílu a klíč řádku, pokud chcete toobind tooa jedné tabulky entity.
 
-Následující ukázka kódu čte pro řádek tabulky **osoba** entit na základě oddílu klíč a řádek hodnot klíče dostali zprávu fronty:  
+Hello následující ukázka kódu čte pro řádek tabulky **osoba** entit na základě oddílu klíč a řádek hodnot klíče dostali zprávu fronty:  
 
         public static void ReadTableEntity(
             [QueueTrigger("inputqueue")] Person personInQueue,
@@ -119,12 +119,12 @@ Následující ukázka kódu čte pro řádek tabulky **osoba** entit na základ
         }
 
 
-**Osoba** třídy v tomto příkladu není nutné implementovat **ITableEntity**.
+Hello **osoba** třídy v tomto příkladu nemá tooimplement **ITableEntity**.
 
-## <a name="how-to-use-the-net-storage-api-directly-to-work-with-a-table"></a>Jak používat rozhraní API .NET úložiště přímo do tabulky
-Můžete také **tabulky** atribut s **CloudTable** objekt pro větší flexibilitu při práci s tabulkou.
+## <a name="how-toouse-hello-net-storage-api-directly-toowork-with-a-table"></a>Jak toouse hello .NET API úložiště přímo toowork s tabulkou
+Můžete taky hello **tabulky** atribut s **CloudTable** objekt pro větší flexibilitu při práci s tabulkou.
 
-Následující kód používá ukázka **CloudTable** objekt, který chcete přidat do jedné entity *příjem příchozích dat* tabulky.
+Hello následující kód používá ukázka **CloudTable** objektu tooadd jedné entity toohello *příjem příchozích dat* tabulky.
 
         public static void UseStorageAPI(
             [Table("Ingress")] CloudTable tableBinding,
@@ -140,11 +140,11 @@ Následující kód používá ukázka **CloudTable** objekt, který chcete při
             tableBinding.Execute(insertOperation);
         }
 
-Další informace o tom, jak používat **CloudTable** objektu, najdete v části [Začínáme s Azure Table storage pomocí rozhraní .NET](../storage/storage-dotnet-how-to-use-tables.md).
+Další informace o tom, toouse hello **CloudTable** objektu, najdete v části [Začínáme s Azure Table storage pomocí rozhraní .NET](../storage/storage-dotnet-how-to-use-tables.md).
 
-## <a name="related-topics-covered-by-the-queues-how-to-article"></a>Související témata předmětem článek s postupy fronty
-Informace o způsobu zpracování zpracování tabulky aktivovány zprávu fronty, nebo pro scénáře WebJobs SDK, které nejsou specifické pro zpracování tabulky, najdete v části [Začínáme s Azure Queue storage a Visual Studio připojené služeb (webové úlohy projekty)](../storage/vs-storage-webjobs-getting-started-queues.md).
+## <a name="related-topics-covered-by-hello-queues-how-tooarticle"></a>Související témata předmětem hello fronty postupy tooarticle
+Informace o tom, jak zpracování tabulky toohandle aktivaci zprávu fronty, a to pro webové úlohy scénáře SDK není zpracování, najdete v části konkrétní tootable [Začínáme s Azure Queue storage a Visual Studio připojené služeb (webové úlohy projekty) ](../storage/vs-storage-webjobs-getting-started-queues.md).
 
 ## <a name="next-steps"></a>Další kroky
-Tento článek poskytl ukázek kódu, které ukazují, jak zpracovat běžné scénáře pro práci s tabulek Azure. Další informace o tom, jak používat Azure WebJobs a WebJobs SDK najdete v tématu [zdrojů dokumentace Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
+Tento článek poskytl kódu ukázky, zobrazující jak toohandle běžné scénáře pro práci s tabulek Azure. Další informace o tom, jak toouse Azure WebJobs a hello WebJobs SDK najdete v části [zdrojů dokumentace Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Identity Protection playbook | Microsoft Docs
-description: "Zjistěte, jak Azure AD Identity Protection umožňuje omezit možnost útočník zneužít ohroženými identity nebo zařízení a zabezpečit identity nebo zařízení, která byla dříve by mohly vzbuzovat podezření nebo známé došlo k narušení."
+title: Active Directory Identity Protection playbook aaaAzure | Microsoft Docs
+description: "Zjistěte, jak Azure AD Identity Protection vám umožní toolimit hello schopnost útočník tooexploit ohroženými identity nebo zařízení a toosecure identity nebo zařízení, která byla dříve toobe podezření nebo známých ohrožení zabezpečení."
 services: active-directory
 keywords: "ochrany identit Azure active directory, cloud app discovery,. Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení"
 documentationcenter: 
@@ -15,120 +15,120 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 2ecd07faed785fa6aa179ac1cca35a70d965e1dc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 6252bc133fc0c0f84800ee245a04bbf62d4cd25b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure seznam strategií ochrany identit Active Directory
 Tato playbook vám pomůže:
 
-* Naplnění dat v prostředí Identity Protection simulace rizikových událostech a ohrožení zabezpečení
-* Nastavit zásady podmíněného přístupu na základě riziko a otestovat vliv těchto zásad
+* Naplnění dat v prostředí Identity Protection hello simulace rizikových událostech a ohrožení zabezpečení
+* Nastavit zásady podmíněného přístupu na základě riziko a testování hello vliv těchto zásad
 
 ## <a name="simulating-risk-events"></a>Simulaci rizikových událostí
-Tato část vám poskytne kroky pro simulaci následující typy událostí rizika:
+Tato část vám poskytne kroky pro simulaci hello následující typy událostí rizika:
 
 * Přihlášení z anonymních IP adres (snadno)
 * Přihlášení z neznámých míst (střední)
-* Nemožná cesta do netypických míst (obtížné)
+* Neuskutečnitelná cesta tooatypical umístění (obtížné)
 
 Další události riziko nelze simulated zabezpečeným způsobem.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Přihlášení z anonymních IP adres
-Tento typ události riziko identifikuje uživatele, kteří mají úspěšném přihlášení z IP adresy, která byla zjištěna jako IP adresa anonymního proxy serveru. Tyto servery proxy jsou používány osob, které chcete skrýt IP adresu své zařízení a mohou být použity pro zlými úmysly.
+Tento typ události riziko identifikuje uživatele, kteří mají úspěšném přihlášení z IP adresy, která byla zjištěna jako IP adresa anonymního proxy serveru. Tyto servery proxy jsou uživatelé, kteří mají toohide používá IP adresu své zařízení a mohou být použity pro zlými úmysly.
 
-**Pro simulaci přihlášení z anonymních IP adresy, proveďte následující kroky**:
+**toosimulate přihlášení z anonymních IP adresy, proveďte následující kroky hello**:
 
-1. Stažení [Tor prohlížeče](https://www.torproject.org/projects/torbrowser.html.en).
-2. Pomocí prohlížeče Tor, přejděte na [https://myapps.microsoft.com](https://myapps.microsoft.com).   
-3. Zadejte přihlašovací údaje účtu, který se má zobrazit v **přihlášení z anonymních IP adres** sestavy.
+1. Stáhnout hello [Tor prohlížeče](https://www.torproject.org/projects/torbrowser.html.en).
+2. Pomocí hello Tor prohlížeče, přejděte příliš[https://myapps.microsoft.com](https://myapps.microsoft.com).   
+3. Zadejte přihlašovací údaje hello hello účtu má tooappear v hello **přihlášení z anonymních IP adres** sestavy.
 
-Přihlášení se zobrazí na řídicím panelu ochrany identit během pěti minut. 
+přihlášení Hello se zobrazí na řídicím panelu Identity Protection hello během pěti minut. 
 
 ### <a name="sign-ins-from-unfamiliar-locations"></a>Přihlášení z neznámých míst
-Riziko neznámých míst je v reálném čase vyhodnocení přihlášení mechanismus, který zvažuje po přihlášení umístění (IP, zeměpisné šířky nebo zeměpisnou délku a ASN) k určení nového / neznámého umístění. Systém ukládá předchozí IP adresy, zeměpisné šířky nebo zeměpisnou délku a čísla ASN uživatele a tyto být známé umístění zvažuje. Umístění přihlášení je považován za obeznámeni, pokud umístění přihlášení neodpovídá žádnému z existující známé umístění.
+Hello neznámých míst riziko je v reálném čase vyhodnocení přihlášení mechanismus, který zvažuje po přihlášení umístění (IP, zeměpisné šířky nebo zeměpisnou délku a ASN) toodetermine nové / neznámého umístění. systém Hello ukládá předchozí IP adresy, zeměpisné šířky nebo zeměpisnou délku a čísla ASN uživatele a zvažuje těchto toobe známé umístění. Umístění přihlášení je považován za obeznámeni, pokud hello přihlášení umístění neodpovídá žádnému z existující známé umístění hello.
 
 Ochrany identit Azure Active Directory:  
 
 * má po počáteční learning dobu 14 dnů, za které není příznak jiných umístění jako neznámých míst.
-* ignoruje přihlášení ze známé zařízení a umístění, které jsou geograficky blízko existující známé umístění.
+* ignoruje přihlášení ze známé zařízení a umístění, které jsou geograficky zavřít tooan existující známé umístění.
 
-Pro simulaci neznámých míst, budete muset přihlásit z umístění a zařízení, které účet nebyl přihlášení z před. 
+toosimulate neznámých míst, máte v umístění a zařízení, která hello účet nebyl přihlášení z před toosign. 
 
-**Pro simulaci přihlášení z neznámého umístění, proveďte následující kroky**:
+**toosimulate přihlášení z neznámého umístění, proveďte následující kroky hello**:
 
 1. Vyberte účet, který má aspoň 14 dnů přihlášení historie. 
 2. Proveďte:
    
-   a. Při použití sítě VPN, přejděte na [https://myapps.microsoft.com](https://myapps.microsoft.com) a zadejte přihlašovací údaje účtu, kterou chcete simulovat riziko událost.
+   a. Při použití sítě VPN, přejděte příliš[https://myapps.microsoft.com](https://myapps.microsoft.com) a zadejte přihlašovací údaje hello hello účtu má toosimulate hello riziko událost pro.
    
-   b. Požádejte přidružení v jiném umístění se přihlásit pomocí přihlašovacích údajů účtu (nedoporučuje se).
+   b. Požádejte přidružení v jiné umístění toosign pomocí pověření účtu hello (nedoporučuje se).
 
-Přihlášení se zobrazí na řídicím panelu ochrany identit během pěti minut.
+přihlášení Hello se zobrazí na řídicím panelu Identity Protection hello během pěti minut.
 
-### <a name="impossible-travel-to-atypical-location"></a>Nemožná cesta do netypických umístění
-Simulaci podmínku neuskutečnitelná cesta je složité, protože algoritmus využívá strojové učení k odstraňování plevele na hodnotu false pozitivních třeba neuskutečnitelná cesta ze známé zařízení, nebo přihlášení z sítě VPN, které se používají jinými uživateli v adresáři. Kromě toho algoritmus vyžaduje 3 až 14 dní historii přihlášení pro uživatele před zahájením generování rizikových událostí.
+### <a name="impossible-travel-tooatypical-location"></a>Neuskutečnitelná cesta tooatypical umístění
+Simulaci hello neuskutečnitelná cesta podmínka je složité, protože algoritmus hello používá machine learning tooweed na hodnotu false pozitivních třeba neuskutečnitelná cesta ze známé zařízení, nebo přihlášení z sítě VPN, které jsou používány jiných uživatelů v adresáři hello. Kromě toho hello algoritmus vyžaduje 3 dny too14 historii přihlášení pro uživatele hello před zahájením generování rizikových událostech.
 
-**Pro simulaci nemožná cesta do netypických umístění, proveďte následující kroky**:
+**toosimulate tooatypical na neuskutečnitelná cesta umístění provést následující kroky hello**:
 
-1. Pomocí standardní prohlížeč, přejděte do [https://myapps.microsoft.com](https://myapps.microsoft.com).  
-2. Zadejte přihlašovací údaje účtu, pomocí kterého chcete generovat událost riziko neuskutečnitelná cesta pro.
+1. Pomocí standardní prohlížeči přejděte příliš[https://myapps.microsoft.com](https://myapps.microsoft.com).  
+2. Zadejte přihlašovací údaje hello hello účet, který chcete toogenerate událost riziko neuskutečnitelná cesta pro.
 3. Změna uživatelského agenta. Můžete změnit uživatelský agent v aplikaci Internet Explorer z nástrojů pro vývojáře, nebo změnit váš uživatelský agent v Firefox nebo Chrome pomocí doplňku přepínači uživatelského agenta.
 4. Změníte IP adresu. Můžete změnit IP adresu pomocí sítě VPN, rozšíření Tor nebo otáčí nový počítač v Azure v různých datových center.
-5. Přihlaste se do [https://myapps.microsoft.com](https://myapps.microsoft.com) pomocí stejných přihlašovacích údajů jako před a během několika minut po předchozí přihlášení.
+5. Přihlaste se příliš[https://myapps.microsoft.com](https://myapps.microsoft.com) pomocí stejných přihlašovacích údajů jako před a během několika minut po hello předchozí přihlášení hello.
 
-Přihlášení se zobrazí v řídicím panelu ochrany identit v rámci 2 – 4 hodiny.<br>
-Z důvodu složitých strojového učení modely související se situací je možné, že se ho nebude získat převzata.<br> Můžete chtít replikovat tyto kroky pro více účtů Azure AD.
+přihlášení Hello se zobrazí v řídicím panelu hello ochrany identit v rámci 2 – 4 hodiny.<br>
+Z důvodu hello komplexní modelů strojového učení související se situací je možné, že se ho nebude získat převzata.<br> Můžete chtít tooreplicate tyto kroky pro více účtů Azure AD.
 
 ## <a name="simulating-vulnerabilities"></a>Simulaci ohrožení zabezpečení
-Ohrožení zabezpečení jsou slabá místa v prostředí Azure AD, které může zneužít objektu actor chybný. Aktuálně jsou prezentované 3 typy ohrožení zabezpečení v Azure AD Identity Protection, které využít další funkce služby Azure AD. Tyto chyby zabezpečení se zobrazí na řídicím panelu ochrany identit automaticky po tyto funkce jsou nastavené.
+Ohrožení zabezpečení jsou slabá místa v prostředí Azure AD, které může zneužít objektu actor chybný. Aktuálně jsou prezentované 3 typy ohrožení zabezpečení v Azure AD Identity Protection, které využít další funkce služby Azure AD. Tyto chyby zabezpečení se zobrazí na řídicím panelu Identity Protection hello automaticky po tyto funkce jsou nastavené.
 
 * Azure AD [služby Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md)
 * Azure AD [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md).
 * Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md). 
 
 ## <a name="user-compromise-risk"></a>Riziko ohrožení zabezpečení pro uživatele
-**K testování riziko ohrožení zabezpečení pro uživatele, proveďte následující kroky**:
+**tootest riziko ohrožení zabezpečení pro uživatele, proveďte následující kroky hello**:
 
-1. Přihlaste se do [https://portal.azure.com](https://portal.azure.com) pomocí přihlašovacích údajů globálního správce pro vašeho klienta.
-2. Přejděte na **ochrany identit**. 
-3. V hlavním **Azure AD Identity Protection** okně klikněte na tlačítko **nastavení**. 
-4. Na **nastavení portálu** okno, v části **pravidla zabezpečení**, klikněte na tlačítko **riziko ohrožení zabezpečení uživatele**. 
-5. Na **přihlášení riziko** okně zapnout **Povolit pravidlo** vypnout a potom klikněte na **Uložit** nastavení.
-6. Pro daný uživatelský účet, simulovat neznámého umístění nebo anonymní IP riziko událost. To bude zvýšit úroveň rizika uživatele pro daného uživatele k **střední**.
+1. Přihlaste se příliš[https://portal.azure.com](https://portal.azure.com) pomocí přihlašovacích údajů globálního správce pro vašeho klienta.
+2. Přejděte příliš**Identity Protection**. 
+3. Na hlavní hello **Azure AD Identity Protection** okně klikněte na tlačítko **nastavení**. 
+4. Na hello **nastavení portálu** okno, v části **pravidla zabezpečení**, klikněte na tlačítko **riziko ohrožení zabezpečení uživatele**. 
+5. Na hello **přihlášení riziko** okně zapnout **Povolit pravidlo** vypnout a potom klikněte na **Uložit** nastavení.
+6. Pro daný uživatelský účet, simulovat neznámého umístění nebo anonymní IP riziko událost. To bude zvýšit úroveň rizika hello uživatele pro daného uživatele příliš**střední**.
 7. Počkejte několik minut a ověřte, že úrovni uživatele pro vaše uživatele je **střední**.
-8. Přejděte na **nastavení portálu** okno.
-9. Na **riziko ohrožení zabezpečení uživatele** okno, v části **Povolit pravidlo**, vyberte **na** . 
-10. Vyberte jednu z následujících možností:
+8. Přejděte toohello **nastavení portálu** okno.
+9. Na hello **riziko ohrožení zabezpečení uživatele** okno, v části **Povolit pravidlo**, vyberte **na** . 
+10. Vyberte jednu z hello následující možnosti:
     
-    a. Blok, vyberte **střední** pod **bloku přihlásit**.
+    a. tooblock, vyberte **střední** pod **bloku přihlásit**.
     
-    b. Pokud chcete vynutit zabezpečené heslo změnit, vyberte **střední** pod **vyžadovat vícefaktorové ověřování**.
+    b. Změna tooenforce zabezpečeného hesla, vyberte **střední** pod **vyžadovat vícefaktorové ověřování**.
 11. Klikněte na **Uložit**.
-12. Nyní můžete otestovat podmíněného přístupu na základě riziko podle přihlášení pomocí uživatel s oprávněním vyšší úrovně rizika úrovní. Pokud je uživatel riziko střední, v závislosti na konfiguraci zásad, vaše přihlášení je buď zablokuje nebo je vynucen ke změně hesla. 
+12. Nyní můžete otestovat podmíněného přístupu na základě riziko podle přihlášení pomocí uživatel s oprávněním vyšší úrovně rizika úrovní. Pokud uživatel riziko hello střední, v závislosti na konfiguraci hello zásad, vaše přihlášení je buď zablokuje nebo je vynucen toochange heslo. 
     <br><br>
     ![Playbook](./media/active-directory-identityprotection-playbook/201.png "Playbook")
     <br>
 
 ## <a name="sign-in-risk"></a>Riziko přihlášení
-**K testování znaménkem v riziko, proveďte následující kroky:**
+**tootest přihlášení riziko, proveďte následující kroky hello:**
 
-1. Přihlaste se do [https://portal.azure.com ](https://portal.azure.com) pomocí přihlašovacích údajů globálního správce pro vašeho klienta.
-2. Přejděte na **ochrany identit**.
-3. V hlavním **Azure AD Identity Protection** okně klikněte na tlačítko **nastavení**. 
-4. Na **nastavení portálu** okno, v části **pravidla zabezpečení**, klikněte na tlačítko **přihlášení riziko**.
-5. Na ** přihlásit riziko ** vyberte **na** pod **Povolit pravidlo**. 
-6. Vyberte jednu z následujících možností:
+1. Přihlaste se příliš[https://portal.azure.com ](https://portal.azure.com) pomocí přihlašovacích údajů globálního správce pro vašeho klienta.
+2. Přejděte příliš**Identity Protection**.
+3. Na hlavní hello **Azure AD Identity Protection** okně klikněte na tlačítko **nastavení**. 
+4. Na hello **nastavení portálu** okno, v části **pravidla zabezpečení**, klikněte na tlačítko **přihlášení riziko**.
+5. Na hello ** přihlásit riziko ** vyberte **na** pod **Povolit pravidlo**. 
+6. Vyberte jednu z hello následující možnosti:
    
-   a. Blokování, vyberte **střední** pod **bloku přihlášení**
+   a. tooblock, vyberte **střední** pod **bloku přihlášení**
    
-   b. Pokud chcete vynutit zabezpečené heslo změnit, vyberte **střední** pod **vyžadovat vícefaktorové ověřování**.
-7. Blokování, vyberte v části přihlášení bloku střední.
-8. Chcete-li vynutit ověřování Multi-Factor authentication, vyberte **střední** pod **vyžadovat vícefaktorové ověřování**.
+   b. Změna tooenforce zabezpečeného hesla, vyberte **střední** pod **vyžadovat vícefaktorové ověřování**.
+7. tooblock, vyberte střední v rámci bloku přihlášení.
+8. tooenforce služby Multi-Factor authentication, vyberte **střední** pod **vyžadovat vícefaktorové ověřování**.
 9. Klikněte na **Uložit**.
-10. Nyní můžete otestovat podmíněného přístupu na základě riziko tak, že simuluje neznámých míst nebo anonymní IP riziko události, protože jsou oba **střední** rizik události.
+10. Nyní můžete otestovat podmíněného přístupu na základě riziko tak, že simuluje neznámých míst hello nebo anonymní IP riziko události, protože jsou oba **střední** rizik události.
 
 
 ![Playbook](./media/active-directory-identityprotection-playbook/200.png "Playbook")

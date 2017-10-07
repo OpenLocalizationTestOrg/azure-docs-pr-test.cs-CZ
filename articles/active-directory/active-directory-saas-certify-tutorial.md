@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Certify | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Certify."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Certify."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,106 +13,106 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: bbb2357d17535de438555a0b1f8256b134c8a40e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 000bef7b679a6f291b1f3cb42e10cb3ed424b25d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certify"></a>Kurz: Azure Active Directory integrace s Certify
 
-V tomto kurzu zjistěte, jak integrovat Certify s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate certifikovat službou Azure Active Directory (Azure AD).
 
-Integrace Certify s Azure AD poskytuje následující výhody:
+Integrace Certify s Azure AD poskytuje hello následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k Certify
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Certify (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup tooCertify
+- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooCertify (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Certify, potřebujete následující položky:
+integrace tooconfigure Azure AD s Certify, je nutné hello následující položky:
 
 - Předplatné služby Azure AD
 - Certify jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Certify z Galerie
+1. Přidání Certify z Galerie hello
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-certify-from-the-gallery"></a>Přidání Certify z Galerie
-Při konfiguraci integrace Certify do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Certify z galerie.
+## <a name="adding-certify-from-hello-gallery"></a>Přidání Certify z Galerie hello
+tooconfigure hello integrace Certify do Azure AD, je nutné tooadd Certify hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Certify z galerie, proveďte následující kroky:**
+**tooadd Certify z Galerie hello, proveďte následující kroky hello:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Certify**.
+4. Hello vyhledávacího pole zadejte **Certify**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-certify-tutorial/tutorial_certify_search.png)
 
-5. Na panelu výsledků vyberte **Certify**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků hello vyberte **Certify**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-certify-tutorial/tutorial_certify_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Certify podle testovacího uživatele názvem "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Certify je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Certify musí navázat.
+Pro toowork jeden přihlašování Azure AD musí tooknow hello příslušného uživatele v Certify je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v Certify musí toobe navázat.
 
-V Certify přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V Certify přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Certify, je třeba dokončit následující stavební bloky:
+tooconfigure a testování Azure AD jednotné přihlašování s Certify, potřebujete následující stavební bloky hello toocomplete:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Certify](#creating-a-certify-test-user)**  – Pokud chcete mít protějšek Britta Simon v Certify propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Certify](#creating-a-certify-test-user)**  -toohave protějšek Britta Simon v Certify, která je propojená toohello Azure AD reprezentace uživatele.
+4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Certify.
+V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci Certify.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Certify, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s Certify, proveďte následující kroky hello:**
 
-1. Na portálu Azure na **Certify** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **Certify** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-certify-tutorial/tutorial_certify_samlbase.png)
 
-3. Na **certifikovat domény a adresy URL** část, proveďte následující kroky:
+3. Na hello **certifikovat domény a adresy URL** část, proveďte následující kroky hello:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-certify-tutorial/tutorial_certify_url.png)
 
-    V **identifikátor** textovému poli, zadejte adresu URL:`https://www.certify.com`
+    V hello **identifikátor** textovému poli, hello zadat adresu URL:`https://www.certify.com`
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Raw)** a potom uložte soubor certifikátu v počítači.
+4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Raw)** a potom uložte soubor certifikátu hello ve vašem počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-certify-tutorial/tutorial_certify_certificate.png) 
 
@@ -120,73 +120,73 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-certify-tutorial/tutorial_general_400.png)
 
-6. Na **certifikovat konfigurace** klikněte na tlačítko **konfigurace certifikovat** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+6. Na hello **certifikovat konfigurace** klikněte na tlačítko **konfigurace certifikovat** tooopen **konfigurovat přihlášení** okno. Kopírování hello **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-certify-tutorial/tutorial_certify_configure.png) 
 
-7. Konfigurace jednotného přihlašování na **Certify** straně, budete muset odeslat stažené **Certificate(Raw)** a **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** k [tým podpory Certify](mailto:support@certify.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+7. tooconfigure jednotného přihlašování na **Certify** straně, je nutné stáhnout hello toosend **Certificate(Raw)** a **Sign-Out URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby**příliš[tým podpory Certify](mailto:support@certify.com). Nastavují hello toohave tato nastavení jednotného přihlašování SAML připojení správně nastavena na obou stranách.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-certify-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-certify-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-certify-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-certify-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V hello **název** textovému poli, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-certify-test-user"></a>Vytvoření zkušebního uživatele Certify
 
-Cílem této části je vytvoření uživatele v Certify nazývá Britta Simon. Certifikujte podporuje v běhu zřizování, který je ve výchozím nastavení povolené.
+Hello cílem této části je toocreate volal Britta Simon v Certify uživatele. Certifikujte podporuje v běhu zřizování, který je ve výchozím nastavení povolené.
 
-Neexistuje žádná položka akce pro vás v této části. Vytvoří se nový uživatel během pokusu o přístup k Certify, pokud ještě neexistuje.
+Neexistuje žádná položka akce pro vás v této části. Pokud ještě neexistuje, se během pokusu o tooaccess Certify vytvoří nového uživatele.
 
 >[!NOTE]
->Pokud potřebujete vytvořit uživatele s ručně, budete muset kontaktovat [tým podpory Certify](mailto:support@certify.com). 
+>Pokud potřebujete toocreate uživatelé ručně, je nutné toocontact hello [tým podpory Certify](mailto:support@certify.com). 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Certify.
+V této části povolíte tak, že udělíte přístup tooCertify toouse Britta Simon Azure jednotné přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon Certify, proveďte následující kroky:**
+**tooassign Britta Simon tooCertify, proveďte následující kroky hello:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Certify**.
+2. V seznamu aplikace hello vyberte **Certify**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-certify-tutorial/tutorial_certify_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -194,7 +194,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -202,13 +202,13 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-Cílem této části je testování konfigurace Azure AD jednotného přihlašování k použití na přístupovém panelu.  
+Hello cílem této části je tootest pomocí konfigurace Azure AD jednotného přihlašování k přístupovému panelu hello.  
 
-Když kliknete na dlaždici Certify na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Certify.
+Když kliknete na dlaždici Certify hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour Certify aplikace.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

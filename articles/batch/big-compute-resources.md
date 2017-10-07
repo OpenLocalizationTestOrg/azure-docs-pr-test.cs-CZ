@@ -1,6 +1,6 @@
 ---
-title: "Prostředky pro batch a prostředí HPC v cloudu Azure | Microsoft Docs"
-description: "Uvádí technické zdroje pro pomoc při spuštění vaší rozsáhlé paralelní, batch a vysokovýkonného výpočetního prostředí (HPC) úlohy v Azure."
+title: "aaaResources pro batch a prostředí HPC v cloudu Azure hello | Microsoft Docs"
+description: "Uvádí technické zdroje toohelp spuštění vaší rozsáhlé paralelní, batch a vysokovýkonného výpočetního prostředí (HPC) úlohy v Azure."
 services: batch, cloud-services, virtual-machines
 documentationcenter: 
 author: dlepow
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: big-compute
 ms.date: 03/17/2017
 ms.author: danlep
-ms.openlocfilehash: 18be9f503b57117a7e8f5f0a4e9c93614cc7755b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ab8ba24678bd7ec090306b501d29ca63c4fb83ee
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="big-compute-in-azure-technical-resources-for-batch-and-high-performance-computing"></a>Velké výpočetní v Azure: technických prostředcích pro batch a vysoce výkonné výpočty
-Toto je Průvodce technické zdroje pro pomoc při spuštění vaše rozsáhlé paralelní, batch a vysoce výkonné výpočty (HPC) úlohy v Azure. Rozšířit existující batch nebo úlohy v prostředí HPC do cloudu Azure nebo vytvářet nové řešení Big Compute pomocí služby rozsah Azure.
+Toto je toohelp Průvodce tootechnical prostředky spouštění vaše rozsáhlé paralelní, batch a vysoce výkonné výpočty (HPC) úlohy v Azure. Rozšířit existující batch nebo toohello úlohy HPC cloudu Azure nebo vytvářet nové řešení Big Compute pomocí služby rozsah Azure.
 
 ## <a name="solutions-options"></a>Možnosti řešení
-Další informace o možnosti Big Compute v Azure a vyberte správný přístup pro vaše úlohy a obchodní potřeby.
+Další informace o možnostech Big Compute v Azure a zvolte hello správný přístup pro vaše úlohy a obchodní potřeby.
 
 * [Řešení pro batch a HPC](batch-hpc-solutions.md)
-* [Video: Big Compute v cloudu pomocí Azure a prostředí HPC](https://azure.microsoft.com/documentation/videos/teched-europe-2014-big-compute-in-the-cloud-with-high-performance-computing-on-azure/)
+* [Video: Big Compute v hello cloudu s Azure a prostředí HPC](https://azure.microsoft.com/documentation/videos/teched-europe-2014-big-compute-in-the-cloud-with-high-performance-computing-on-azure/)
 
 ## <a name="azure-batch"></a>Azure Batch
-[Batch](https://azure.microsoft.com/services/batch/) je služba platformy, která usnadňuje povolení cloudové aplikace Linux a Windows a spusťte úlohy bez nastavení a správu clusteru a úlohy plánovače. Použití sady SDK k integraci klientských aplikací s Azure Batch pomocí různých jazyků, fáze dat do Azure a sestavte kanály provádění úlohy.
+[Batch](https://azure.microsoft.com/services/batch/) je služba platformy, která umožňuje snadno toocloud povolit vaše aplikace Linux a Windows a spuštění úlohy bez nastavení a správu clusteru a úlohy plánovače. Používání hello SDK toointegrate klientských aplikací s Azure Batch prostřednictvím různých jazyků, fáze tooAzure dat a sestavte kanály provádění úlohy.
 
 * [Dokumentace](https://azure.microsoft.com/documentation/services/batch/)
 * [Rozhraní .NET](https://msdn.microsoft.com/library/azure/mt348682.aspx), [Python](http://azure-sdk-for-python.readthedocs.io/latest/), [Node.js](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/), [Java](http://azure.github.io/azure-sdk-for-java/), a [REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) referenční dokumentace rozhraní API
@@ -40,7 +40,7 @@ Další informace o možnosti Big Compute v Azure a vyberte správný přístup 
 * [Batch videa](https://azure.microsoft.com/documentation/videos/index/?services=batch)
 
 ## <a name="hpc-cluster-solutions"></a>Řešení clusteru prostředí HPC
-Nasaďte, nebo rozšířit existující cluster Windows nebo Linux HPC k Azure a spustit výpočetní zatížení s intenzivním.  
+Nasaďte, nebo rozšířit vaše stávající Windows nebo Linux HPC clusteru tooAzure toorun vaše úloh náročných na výkon.  
 
 ### <a name="microsoft-hpc-pack"></a>Sady Microsoft HPC Pack
 HPC Pack je společnosti Microsoft volné HPC řešení založen na technologiích Microsoft Azure a Windows Server, schopný spustit Windows a Linux HPC úlohy.  
@@ -49,12 +49,12 @@ HPC Pack je společnosti Microsoft volné HPC řešení založen na technologií
 * [Stáhnout prostředí HPC Pack 2012 R2 s aktualizací 3](https://www.microsoft.com/download/details.aspx?id=49922)
 * [Dokumentace](https://technet.microsoft.com/library/jj899572.aspx)
 * Možnosti clusteru HPC Pack v Azure: [Linux](../virtual-machines/linux/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a [Windows](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 
-* [Rozšíření do instancí pracovního procesu systému Azure pomocí sady HPC Pack](https://technet.microsoft.com/library/gg481749.aspx)
-* [Rozšíření do Azure Batch pomocí sady HPC Pack](https://technet.microsoft.com/library/mt612877.aspx)
+* [Rozšíření tooAzure instancí pracovního procesu pomocí sady HPC Pack](https://technet.microsoft.com/library/gg481749.aspx)
+* [Shluků tooAzure Batch pomocí sady HPC Pack](https://technet.microsoft.com/library/mt612877.aspx)
 * [Fóra Windows HPC](https://social.microsoft.com/Forums/home?category=windowshpc)
 
 ### <a name="linux-and-oss-cluster-solutions"></a>Řešení clusteru pro Linux a operačních systémů
-Použijte tyto šablony Azure k nasazení clusterů Linux HPC.
+Pomocí těchto toodeploy šablony Azure, které clusterů Linux HPC.
 
 * [Začne pracovat SLURM cluster](https://azure.microsoft.com/documentation/templates/slurm/) a [příspěvku na blogu](http://blogs.technet.com/b/windowshpc/archive/2015/06/06/deploy-a-slurm-cluster-on-azure.aspx)
 * [Číselníku Torque clusteru](https://azure.microsoft.com/documentation/templates/torque-cluster/)
@@ -69,23 +69,23 @@ Použijte tyto šablony Azure k nasazení clusterů Linux HPC.
 
 
 ## <a name="microsoft-mpi"></a>Microsoft MPI
-[Microsoft MPI](https://msdn.microsoft.com/library/bb524831.aspx) (MS-MPI) je standardní rozhraní předávání zpráv pro vývoj a spouštění paralelní aplikace na platformě Windows implementace společnosti Microsoft.
+[Microsoft MPI](https://msdn.microsoft.com/library/bb524831.aspx) (MS-MPI) je implementace Microsoft hello zpráva předávání rozhraní standard pro vývoj a spouštění paralelních aplikací na platformu Windows hello.
 
 * [Stáhněte si MS MPI](http://go.microsoft.com/FWLink/p/?LinkID=389556)
 * [MS-MPI odkaz](https://msdn.microsoft.com/library/dn473458.aspx)
 * [Fórum MPI](https://social.microsoft.com/Forums/en-us/home?forum=windowshpcmpi)
 
 ## <a name="compute-intensive-instances"></a>Instance náročné na výpočetní prostředí
-Azure nabízí [velikosti rozsah virtuálních počítačů](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), včetně [náročné H-series](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) instancí, které lze připojit k back-end RDMA síť, ke spuštění úlohy Linux a Windows HPC. 
+Azure nabízí [velikosti rozsah virtuálních počítačů](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), včetně [náročné H-series](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) instancí, které lze připojit síť RDMA tooa back-end, toorun úlohy Linux a Windows HPC. 
 
-* [Nastavení clusteru s podporou Linux RDMA ke spuštění aplikací MPI](../virtual-machines/linux/classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [Nastavení clusteru s podporou Windows RDMA pomocí sady Microsoft HPC Pack ke spouštění aplikací MPI](../virtual-machines/windows/classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Nastavení aplikací MPI toorun clusteru Linux RDMA](../virtual-machines/linux/classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Nastavení clusteru s podporou Windows RDMA s aplikací MPI toorun Microsoft HPC Pack](../virtual-machines/windows/classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 Pro úlohy náročné na grafický procesor, podívejte se na [velikosti NC a vs](https://azure.microsoft.com/blog/azure-n-series-general-availability-on-december-1/).
 
 ## <a name="samples-and-demos"></a>Ukázky a ukázky
 * [Ukázky kódu Azure Batch C# a Python](https://github.com/Azure/azure-batch-samples)
-* [Batch loděnice](https://azure.github.io/batch-shipyard/) nástrojů pro snadné nasazení stylu batch Dockerized úloh do Azure Batch
+* [Batch loděnice](https://azure.github.io/batch-shipyard/) nástrojů pro snadné nasazení stylu batch Dockerized úlohy tooAzure Batch
 * [doAzureParallel](http://www.github.com/Azure/doAzureParallel) balíček R, postavená na Azure Batch
 * [Vyzkoušejte SUSE Linux Enterprise Server pro HPC](https://azure.microsoft.com/marketplace/partners/suse/suselinuxenterpriseserver12optimizedforhighperformancecompute/)
 
@@ -119,6 +119,6 @@ Pro úlohy náročné na grafický procesor, podívejte se na [velikosti NC a vs
 * [UberCloud](https://simulation.azure.com/casestudies/Team-182-ABB-UC-Final.pdf)
 
 ## <a name="next-steps"></a>Další kroky
-* Podívejte se na aktuální novinky na [blogu týmu pro Microsoft HPC a Batch](http://blogs.technet.com/b/windowshpc/) a [blogu Azure](https://azure.microsoft.com/blog/tag/hpc/).
-* Viz také [co je nového ve službě Batch](https://azure.microsoft.com/updates/?service=batch) nebo přihlášení k odběru [informačního kanálu RSS](https://azure.microsoft.com/updates/feed/?service=batch).
+* Hello nejnovější oznámení, naleznete v části hello [blog týmu Microsoft HPC a Batch](http://blogs.technet.com/b/windowshpc/) a hello [Azure blog](https://azure.microsoft.com/blog/tag/hpc/).
+* Viz také [co je nového ve službě Batch](https://azure.microsoft.com/updates/?service=batch) nebo přihlášení k odběru toohello [informačního kanálu RSS](https://azure.microsoft.com/updates/feed/?service=batch).
 

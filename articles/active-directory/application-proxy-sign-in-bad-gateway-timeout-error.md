@@ -1,6 +1,6 @@
 ---
-title: "Nelze získat přístup k této chybě podnikové aplikace při použití aplikace Proxy aplikace | Microsoft Docs"
-description: "Jak řešit obvyklé problémy přístup s aplikací Azure AD Application Proxy."
+title: "AAA \"nelze získat přístup k této chybě podnikové aplikace při použití aplikace Proxy aplikace | Microsoft Docs\""
+description: "Jak běžné přístup tooresolve problémy s aplikací Azure AD Application Proxy."
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,101 +13,101 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 78ff8763a461162cbcfa04c6a86123973271928a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 490b106b7d774ee43fc076cc5d082997a1df85e9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Chyba "Nelze podnikové k této aplikaci přístup" při použití aplikace Proxy aplikace
 
-Tento článek pomoci při řešení běžných problémů s potýkají až uvidíte chybu "Tato podnikové aplikace nelze získat přístup" v aplikaci Azure AD Application Proxy.
+Tento článek vám pomohou tootroubleshoot běžné problémy potýkají až uvidíte chybu "Tato podnikové aplikace nelze získat přístup" v aplikaci Azure AD Application Proxy.
 
 ## <a name="overview"></a>Přehled
-Když se zobrazí tato chyba, stránky také sdílet stavový kód. Tento kód je jedním z následujících akcí:
+Když se zobrazí tato chyba, stránku hello také sdílet stavový kód. Tento kód je jedním z následujících hello:
 
--   **Vypršel časový limit brány**: Proxy aplikace služby je možné vás zastihnout konektor. To obvykle znamená potíže s přiřazením konektoru, konektor sám, nebo sítě pravidla kolem konektor.
+-   **Vypršel časový limit brány**: hello Proxy aplikace služby je nelze tooreach hello konektor. To obvykle znamená potíže s přiřazení hello konektoru, konektor sám nebo hello sítě pravidla kolem hello konektor.
 
--   **Chybná brána**: konektor se nelze spojit s back-end aplikace. To může znamenat nesprávnou konfiguraci aplikace.
+-   **Chybná brána**: hello konektor je nelze tooreach hello back-end aplikace. To může znamenat nesprávnou konfiguraci aplikace hello.
 
--   **Je zakázané**: uživatel nemá oprávnění pro přístup k aplikaci. Tato situace může nastat, když uživatel není přiřazen k aplikaci v Azure Active Directory nebo pokud na back-end uživatel nemá oprávnění pro přístup k aplikaci.
+-   **Je zakázané**: hello uživatel není autorizovaný tooaccess hello aplikace. Tomu může dojít, když uživatel hello není přiřazen toohello aplikace v Azure Active Directory nebo pokud na back-end hello hello uživatel nemá oprávnění tooaccess hello aplikace.
 
-Pokud chcete najít kód, podívejte se na text v levém dolním chybové zprávy pro pole "Kód stavu". Také vyhledejte případné poznámky v velmi dolní části stránky s další typy.
+toofind hello kód, podívejte se na text hello v hello spodní levé části hello chybovou zprávu pro pole "Stavový kód" hello. Také vyhledejte případné poznámky v hello velmi dolní části stránky hello s další typy.
 
    ![Chyba vypršení časového limitu brány](./media/application-proxy/connection-problem.png)
 
-Podrobnosti o tom, jak vyřešit hlavní příčinu tyto chyby a další podrobnosti o navrhované opravy najdete v části odpovídající níže.
+Podrobnosti o tom, jak tootroubleshoot hello hlavní příčinu tyto chyby a další podrobnosti o navrhované opravy najdete v části hello odpovídající části.
 
 ## <a name="gateway-timeout-errors"></a>Chyby vypršení časového limitu brány
 
-Vypršel časový limit brány dojde, pokud služba se pokusí kontaktovat konektor a nemůže časovém limitu. To je obvykle způsobena aplikace přiřazené ke skupině konektoru se žádný pracovní konektory nebo některé porty vyžadované službou konektoru nejsou otevřené.
+Časovému limitu brány nastane, když služba hello pokusí tooreach hello konektoru a nelze toowithin hello časový limit okno. To je obvykle způsobena aplikace přiřazené tooa konektor skupiny s konektory žádné pracovní nebo některé porty vyžadované službou hello konektor nejsou otevřené.
 
 
 ## <a name="bad-gateway-errors"></a>Chybný chyby brány
 
-Chybná brána chyby označuje, že konektor je možné vás zastihnout na back-end aplikace. Ujistěte se, že jste publikovali správnou aplikaci. Běžné chyby, které tato chyba způsobit:
+Chybná brána chyba znamená, že konektor hello je nelze tooreach hello back-end aplikace. Ujistěte se, že jste publikovali hello správnou aplikaci. Běžné chyby, které tato chyba způsobit:
 
--   Máte překlep nebo chybu v interní adresa URL
+-   Máte překlep nebo chybu v interní adresa URL hello
 
--   Publikování není kořenové aplikace. Například publikování <http://expenses/reimbursement> , ale při pokusu o přístup <http://expenses>
+-   Není publikování hello kořenové aplikace hello. Například publikování <http://expenses/reimbursement> , ale při tooaccess <http://expenses>
 
--   Problémy s konfigurací protokolu Kerberos vynuceným delegování použitím (KCD)
+-   Problémy s konfigurací protokolu Kerberos vynuceným delegování použitím (KCD) hello
 
--   Problémy s back-end aplikace
+-   Problémy s back-end aplikace hello
 
 ## <a name="forbidden-errors"></a>Zakázané chyby
 
-Pokud se zobrazí chyba zakázané, uživateli nebyla přiřazena k aplikaci. To může být buď v Azure Active Directory nebo na back-end aplikace.
+Pokud se zobrazí chyba zakázané, hello uživateli nebyla přiřazena toohello aplikace. To může být buď v Azure Active Directory nebo na back-end aplikace hello.
 
-Naučte se přiřazovat uživatele k aplikaci v Azure, najdete v článku [konfigurace dokumentaci](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal#add-a-test-user).
+toolearn jak tooassign uživatelé toohello aplikaci v Azure, najdete v části hello [konfigurace dokumentaci](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal#add-a-test-user).
 
-Pokud můžete potvrdit, že uživatel je přiřazen k aplikaci v Azure, zkontrolujte konfiguraci uživatele v aplikaci back-end. Pokud používáte ověřování systému Windows omezeného delegování nebo integrovaný protokolu Kerberos, se zobrazí stránka našeho řešení potíží s použitím KCD některé pokyny.
+Pokud potvrdíte, že uživatel hello je přiřazen toohello aplikaci v Azure, zkontrolujte konfiguraci uživatele hello v back-end aplikace hello. Pokud používáte ověřování systému Windows omezeného delegování nebo integrovaný protokolu Kerberos, se zobrazí stránka našeho řešení potíží s použitím KCD některé pokyny.
 
-## <a name="check-the-applications-internal-url"></a>Zkontrolujte interní adresa URL aplikace.
+## <a name="check-hello-applications-internal-url"></a>Zkontrolujte interní adresa URL aplikace hello
 
-Jako první krok rychlý, Překontrolujte kontrola a oprava interní adresa URL otevřením aplikace prostřednictvím **podnikové aplikace, které**, pak výběrem **Proxy aplikace** nabídky. Ověřte, že toto je správná interní adresa URL, použili z vaší místní sítě pro přístup k aplikaci.
+Jako první krok rychlý, Překontrolujte kontrola a oprava interní adresa URL hello otevřením aplikace hello prostřednictvím **podnikové aplikace, které**, pak výběrem hello **Proxy aplikace** nabídky. Ověřte, že toto je hello správnou interní adresu URL, hello používá z vaší místní síti tooaccess hello aplikace.
 
-## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>Zkontrolujte, že aplikace je přiřazenou funkční konektor skupiny
+## <a name="check-hello-application-is-assigned-tooa-working-connector-group"></a>Zkontrolujte, že aplikace hello je přiřazenou tooa práce konektor skupiny
 
-K ověření aplikace je přiřazen k funkční konektor skupiny:
+aplikace hello tooverify přiřazen tooa práce konektor skupiny:
 
-1.  Otevřete aplikaci na portálu přejděte na **Azure Active Directory**, kliknutím na na **podnikové aplikace, které**, pak **všechny aplikace.** Otevřete aplikaci a pak vyberte **Proxy aplikace** v levé nabídce.
+1.  Otevřete aplikaci hello portálu hello přechodem příliš**Azure Active Directory**, kliknutím na na **podnikové aplikace, které**, pak **všechny aplikace.** Otevřete aplikaci hello a pak vyberte **Proxy aplikace** hello levé nabídce.
 
-2.  Podívejte se na pole konektor skupiny. Pokud nejsou žádné aktivní konektory ve skupině, zobrazí se upozornění. Pokud nevidíte žádné upozornění, přejděte na "ověřit všechny požadované porty jsou seznam povolených adres".
+2.  Podívejte se na pole skupiny konektor hello. Pokud skupina hello neobsahuje žádné aktivní konektory, zobrazí se upozornění. Pokud nevidíte žádné upozornění, přesuňte příliš "ověřit všechny požadované porty jsou seznam povolených adres".
 
-3.  Pokud je to nesprávné skupině konektor, použijte rozevírací dolů vyberte správné skupině a potvrďte, že už se nezobrazují žádné upozornění. Pokud je zamýšlené skupiny konektor, klikněte na tlačítko upozornění otevřete stránku s konektoru správy.
+3.  Pokud je to hello nesprávné skupině konektor pomocí hello rozevíracího seznamu správný skupiny hello tooselect a potvrďte, že už se nezobrazují žádné upozornění. Pokud je to hello určena skupiny konektor, klikněte na tlačítko hello hello stránka tooopen zprávy upozornění se správou konektor.
 
-4.  Tady je několik způsobů, jak přejít k podrobnostem Další:
+4.  Tady je několik způsobů toodrill v další:
 
-  * Přesunout do skupiny pro konektor služby active: Pokud máte aktivní konektor, musí patřit do této skupiny a má směrem pohledu do cílové aplikace back-end, konektor můžete přesunout do skupiny přiřazené. Chcete-li to provést, klikněte na tlačítko konektor. V poli "Konektor skupina" pomocí rozevíracího seznamu vyberte správné skupině, a klikněte na Uložit.
+  * Konektor služby active přesunout do skupiny hello: Pokud máte active konektor, který by měly patřit toothis skupiny a má směrem pohledu toohello cílová back-end aplikace, hello konektoru můžete přesunout do skupiny hello přiřazen. toodo proto, klikněte na hello konektor. V poli "Konektor skupinu" hello použijte správnou skupinu hello hello tooselect rozevíracího seznamu a klikněte na Uložit.
 
-  * Stáhněte si nový konektor pro tuto skupinu: na této stránce můžete získat odkaz na [stáhnout nový konektor](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Konektor musí být nainstalovaný na počítači s přímé směrem pohledu na back-end aplikace a je obvykle umístěny na stejném serveru jako aplikace. Použijte stahování konektoru odkaz ke stažení konektoru na cílovém počítači. V dalším kroku klikněte na konektor a ujistěte se, že patří do správné skupiny pomocí "Konektor skupinu" rozevíracího seznamu.
+  * Stáhněte si nový konektor pro tuto skupinu: na této stránce můžete získat odkaz hello příliš[stáhnout nový konektor](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). hello Hello konektor potřebám toobe nainstalovaná na počítači s přímé směrem pohledu toohello back-end aplikace a je obvykle umístěny na stejném serveru jako aplikace hello. Použití hello stáhnout konektor odkaz toodownload konektor na hello cílový počítač. V dalším kroku klikněte hello konektoru a použijte toomake rozevíracího seznamu "Konektor skupinu" hello se, že patří toohello správné skupiny.
 
-  * Prozkoumat neaktivní konektor: Pokud se konektor zobrazovat jako neaktivní, je možné vás zastihnout na službu. Toto je obvykle kvůli některé požadované porty blokován. Pokud chcete tento problém vyřešit, přesuňte na "ověřit všechny požadované porty jsou seznam povolených adres".
+  * Prozkoumat neaktivní konektor: Pokud se konektor zobrazovat jako neaktivní, je nelze tooreach hello služby. To je obvykle kvůli toosome požadované porty blokován. toosolve tento problém, přesuňte na příliš "ověřit všechny požadované porty jsou seznam povolených adres".
 
-Po použití těchto kroků zkontrolujte, že aplikace je přiřadit ke skupině se práce konektory, testovat aplikaci znovu. Pokud ještě není funkční, pokračujte v další části.
+Po dokončení těchto kroků tooensure hello aplikace je skupina přiřazené tooa s práce konektory, testovací hello aplikaci znovu. Pokud ještě není funkční, pokračujte v další části toohello.
 
 ## <a name="check-all-required-ports-are-whitelisted"></a>Zkontrolujte všechny požadované porty jsou seznam povolených adres
 
-Pokud chcete ověřit, že všechny požadované, jsou otevřené porty, najdete v dokumentaci na Otevřít porty. Pokud jsou otevřené požadované porty, přejděte na další části.
+tooverify všechny požadované porty jsou otevřená, dokumentaci k naší na Otevřít porty. Pokud všechny hello jsou otevřené požadované porty, přesuňte toohello další části.
 
 ## <a name="check-for-other-connector-errors"></a>Zkontrolujte další chyby konektoru
 
-Pokud žádná z výše uvedeného problém vyřešit, je dalším krokem hledání problémy a chyby s konektor sám. Zobrazí se některé běžné chyby v [Poradce při potížích dokumentu](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors). 
+Pokud žádná z výše uvedených hello hello problém vyřešit, je dalším krokem hello toolook problémy a chyby s hello konektor sám. Zobrazí se některé běžné chyby v hello [Poradce při potížích dokumentu](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors). 
 
-Můžete také zobrazit přímo v protokolech konektoru k identifikaci případné chyby. Mnoho z našich chybových zpráv moci sdílet více konkrétní doporučení pro opravy. Další postupy k zobrazení protokolů najdete v tématu [dokumentaci konektory](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors#under-the-hood).
+Můžete také zobrazit přímo na hello konektor protokoly tooidentify případné chyby. Mnoho z našich chybových zpráv být schopný tooshare více konkrétní doporučení pro opravy. jak zjistit, protokoly hello tooview toolearn [dokumentaci konektory](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors#under-the-hood).
 
 ## <a name="additional-resolutions"></a>Další řešení
 
-Pokud se výše nepomohly problém vyřešit, existuje několik různých důvodů. Chcete-li identifikovat problém:
+Pokud hello výše nebyla hello problém odstranit, existuje několik různých možných příčin. problém tooidentify hello:
 
-Pokud vaše aplikace je nakonfigurovaný na použití integrovaného ověřování systému Windows (IWA), testování aplikace bez jednotného přihlašování. Pokud ne, přechod na další odstavec. Chcete-li zkontrolovat aplikaci bez jednotného přihlašování, otevřete aplikaci prostřednictvím **podnikové aplikace,** a přejděte na **jednotné přihlašování** nabídky. Změňte rozevíracího z "Integrované ověřování systému Windows" na "Azure AD jednotné přihlašování zakázáno". 
+Pokud je vaše aplikace nakonfigurovaná toouse integrované ověřování systému Windows (IWA), testovací aplikace hello bez jednotného přihlašování. Pokud ne, přesuňte toohello další odstavce. aplikace hello toocheck bez jednotného přihlašování, otevřete aplikaci prostřednictvím **podnikové aplikace,** a přejděte toohello **jednotné přihlašování** nabídky. Změna hello rozevírací nabídku od "Integrované ověřování systému Windows" příliš "Azure AD jednotné přihlašování zakázáno". 
 
-Nyní otevřete prohlížeč a snaží o přístup k aplikaci znovu. Měla zobrazit výzva k ověřování a dostat se do aplikace. Pokud toto funguje, je ale problém s konfigurací protokolu Kerberos vynuceným delegování použitím (KCD), která umožňuje jednotné přihlašování. najdete v části řešení potíží s použitím KCD stránky.
+Nyní otevřete prohlížeč a zkuste to tooaccess hello aplikaci znovu. Měla zobrazit výzva k ověřování a získání do aplikace hello. Pokud toto funguje, je ale hello problém s konfigurací hello protokolu Kerberos vynuceným delegování použitím (KCD), která umožňuje hello jednotné přihlašování. najdete v části řešení potíží s použitím KCD stránku hello.
 
-Pokud budete pokračovat zobrazí chyba, přejděte k počítači, kde je konektor nainstalovaný, spusťte prohlížeč a se pokoušejí připojit interní adresa URL pro aplikaci. Konektor funguje jako jiného klienta ze stejného počítače. Pokud aplikace není možné dosáhnout, zjistěte, proč tento počítač se nepodařilo dosáhnout aplikace, nebo použít konektor na serveru, který se bude moct získat přístup k aplikaci.
+Pokud budete pokračovat toosee hello chyby, přejděte toohello počítače, kde hello konektor je nainstalována, otevřete prohlížeč a pokus o tooreach hello interní adresa URL použitá pro aplikaci hello. Hello konektor funguje jako jiného klienta z hello stejný počítač. Pokud nebudou moci připojit aplikace hello, zjistěte, proč tento počítač je aplikace hello nelze tooreach nebo použít konektor na serveru, který je možné tooaccess hello aplikace.
 
-Pokud chcete vyhledat potíže či chyby s konektor sám aplikace z počítače, může dosáhnout. Zobrazí se některé běžné chyby v [Poradce při potížích dokumentu](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors). Můžete také zobrazit přímo v protokolech konektoru k identifikaci případné chyby. Mnoho z našich chybových zpráv moci sdílet více konkrétní doporučení pro opravy. Další postupy k zobrazení protokolů najdete v tématu [dokumentaci konektory](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors#under-the-hood).
+Pokud aplikace hello z tohoto počítače, toolook problémy a chyby s hello konektor sám může dosáhnout. Zobrazí se některé běžné chyby v hello [Poradce při potížích dokumentu](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors). Můžete také zobrazit přímo na hello konektor protokoly tooidentify případné chyby. Mnoho z našich chybových zpráv být schopný tooshare více konkrétní doporučení pro opravy. jak zjistit, protokoly hello tooview toolearn [dokumentaci konektory](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors#under-the-hood).
 
 ## <a name="next-steps"></a>Další kroky
 [Pochopení konektory proxy aplikace služby Azure AD](application-proxy-understand-connectors.md)

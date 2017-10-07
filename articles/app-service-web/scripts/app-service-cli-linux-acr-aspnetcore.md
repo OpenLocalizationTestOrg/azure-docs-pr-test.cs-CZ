@@ -1,5 +1,5 @@
 ---
-title: "Azure CLI skriptu ukázkové – vytvoření webové aplikace ASP.NET Core v kontejner Docker z registru kontejner Azure | Microsoft Docs"
+title: "aaaAzure ukázka skriptu rozhraní příkazového řádku - vytvoření webové aplikace ASP.NET Core v kontejner Docker z registru kontejner Azure | Microsoft Docs"
 description: "Azure CLI skriptu ukázkové – vytvoření webové aplikace ASP.NET Core v kontejner Docker z registru kontejner Azure"
 services: appservice
 documentationcenter: appservice
@@ -16,42 +16,42 @@ ms.workload: web
 ms.date: 06/19/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 2556947d7cdd1475ae82ac2e1d61ad30ebd0d29f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0d4b1e706c2401ef813f48ef4de3d17fa2b6c9e0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-aspnet-core-web-app-in-a-docker-container-from-azure-container-registry"></a>Vytvoření webové aplikace ASP.NET Core v kontejner Docker z registru kontejner Azure
 
-V tomto scénáři se dozvíte, jak vytvořit skupinu prostředků, Linux plán služby app service a webové aplikace a nasazovat aplikaci ASP.NET Core pomocí kontejner Docker z registru kontejner Azure.
+V tomto scénáři se dozvíte, jak toocreate skupinu prostředků Linux aplikace služby plánování a webové aplikace a nasazení aplikace technologie ASP.NET Core pomocí kontejner Docker z hello registru kontejner Azure.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud zvolte tooinstall a místně pomocí hello rozhraní příkazového řádku, v tomto tématu vyžaduje, že používáte hello Azure CLI verze 2.0 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-azurecli-interactive[hlavní](../../../cli_scripts/app-service/deploy-linux-acr/deploy-linux-acr.sh?highlight=6-9 "registru kontejner Azure Linux")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-linux-acr/deploy-linux-acr.sh?highlight=6-9 "Linux Azure Container Registry")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření skupiny prostředků, webové aplikace a všechny související prostředky. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá hello následující příkazy toocreate skupinu prostředků, webové aplikace a všechny související prostředky. Každý příkaz v hello tabulky odkazů toocommand konkrétní dokumentaci.
 
 | Příkaz | Poznámky |
 |---|---|
 | [Vytvoření skupiny az](https://docs.microsoft.com/cli/azure/group#create) | Vytvoří skupinu prostředků, ve kterém jsou uložené všechny prostředky. |
 | [Vytvořit plán aplikační služby az](https://docs.microsoft.com/cli/azure/appservice/plan#create) | Vytvoří plán služby App Service. Toto je jako serverové farmy pro Azure webové aplikace. |
 | [Vytvoření az webapp](https://docs.microsoft.com/cli/azure/webapp#create) | Vytvoří webové aplikace Azure. |
-| [AZ webapp konfigurace kontejneru sady](https://docs.microsoft.com/cli/azure/webapp/config/container#set) | Nastaví kontejner Docker pro webové aplikace Azure. |
+| [AZ webapp konfigurace kontejneru sady](https://docs.microsoft.com/cli/azure/webapp/config/container#set) | Nastaví kontejner Docker hello hello webové aplikace Azure. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
+Další informace o hello rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).
 
-Další ukázky skript aplikace služby rozhraní příkazového řádku najdete v [dokumentaci služby Azure App Service](../app-service-cli-samples.md).
+Další ukázky skriptu rozhraní příkazového řádku služby aplikace naleznete v hello [dokumentaci služby Azure App Service](../app-service-cli-samples.md).

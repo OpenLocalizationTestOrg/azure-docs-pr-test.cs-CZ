@@ -1,6 +1,6 @@
 ---
-title: "Vytvořte bitovou kopii virtuálního počítače s Linuxem v Azure pomocí rozhraní příkazového řádku 2.0 | Microsoft Docs"
-description: "Vytvořte bitovou kopii virtuálního počítače Azure pro velkokapacitní nasazení pomocí Azure CLI 2.0."
+title: "aaaCapture bitové kopie virtuálního počítače s Linuxem v Azure pomocí rozhraní příkazového řádku 2.0 | Microsoft Docs"
+description: "Vytvořte bitovou kopii virtuálnímu počítači Azure toouse velkokapacitního nasazení pomocí hello 2.0 rozhraní příkazového řádku Azure."
 services: virtual-machines-linux
 documentationcenter: 
 author: cynthn
@@ -15,55 +15,55 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 19b573f77f2ee84600955d00d30bdb16c84e3623
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 9558332a86186b282775097428df462709373012
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Postup vytvoření bitové kopie virtuálního počítače nebo virtuální pevný disk
+# <a name="how-toocreate-an-image-of-a-virtual-machine-or-vhd"></a>Jak toocreate bitové kopie virtuálního počítače nebo virtuální pevný disk
 
-<!-- generalize, image - extended version of the tutorial-->
+<!-- generalize, image - extended version of hello tutorial-->
 
-Pokud chcete vytvořit více kopií virtuálního počítače (VM) pro použití v Azure, vytvořte bitovou kopii virtuálního počítače nebo virtuální pevný disk operačního systému. Pokud chcete vytvořit bitovou kopii, je nutné odebrat informace osobního účtu, takže je bezpečnější nasadit více než jednou.. V následujících krocích zrušení zřízení existující virtuální počítač, navrácení a vytvořit bitovou kopii. Tuto bitovou kopii můžete použít k vytvoření virtuálních počítačů v libovolné skupině prostředků v rámci vašeho předplatného.
+toocreate více kopií toouse virtuální počítač (VM) v Azure, vytvořte bitovou kopii hello virtuálního počítače nebo hello virtuálního pevného disku operačního systému. toocreate bitovou kopii, je nutné odebrat informace osobního účtu, takže je bezpečnější toodeploy vícekrát. V hello postupu zrušení zřízení existující virtuální počítač, navrácení a vytvořit bitovou kopii. Můžete použít tento toocreate bitové kopie virtuálních počítačů v libovolné skupině prostředků v rámci vašeho předplatného.
 
-Pokud chcete vytvořit kopii existující virtuální počítač Linux zálohování nebo ladění, nebo nahrát specializované Linux virtuální pevný disk z virtuálního počítače místní najdete v tématu [nahrát a vytvoření virtuálního počítače s Linuxem z bitové kopie disku vlastní](upload-vhd.md).  
+Pokud chcete použít pro zálohování nebo ladění toocreate kopii vaše stávající virtuální počítač s Linuxem nebo nahrát specializované Linux virtuální pevný disk z virtuálního počítače místní, přečtěte si téma [nahrát a vytvoření virtuálního počítače s Linuxem z bitové kopie disku vlastní](upload-vhd.md).  
 
-Můžete také použít **balírna** k vytvoření vlastní konfigurace. Další informace o používání balírna najdete v tématu [postup k vytvoření bitové kopie virtuálních počítačů Linux v Azure použijte balírna](build-image-with-packer.md).
+Můžete také použít **balírna** toocreate vlastní konfigurace. Další informace o používání balírna najdete v tématu [jak Image toouse balírna toocreate Linux virtuálního počítače v nástroji Azure](build-image-with-packer.md).
 
 
 ## <a name="before-you-begin"></a>Než začnete
-Ujistěte se, že splňujete následující požadavky:
+Ujistěte se, že splňujete hello následující požadavky:
 
-* Je nutné virtuální počítač Azure vytvořené v modelu nasazení Resource Manager pomocí spravovaných disků. Pokud jste nevytvořili virtuální počítač s Linuxem, můžete použít [portál](quick-create-portal.md), [rozhraní příkazového řádku Azure](quick-create-cli.md), nebo [šablony Resource Manageru](create-ssh-secured-vm-from-template.md). Podle potřeby nakonfigurujte virtuální počítač. Například [přidat datových disků](add-disk.md), aktualizace a instalovat aplikace. 
+* Je nutné virtuální počítač Azure vytvořené v modelu nasazení Resource Manager hello pomocí spravovaných disků. Pokud jste nevytvořili virtuální počítač s Linuxem, můžete použít hello [portál](quick-create-portal.md), hello [rozhraní příkazového řádku Azure](quick-create-cli.md), nebo [šablony Resource Manageru](create-ssh-secured-vm-from-template.md). Nakonfigurujte hello virtuální počítač podle potřeby. Například [přidat datových disků](add-disk.md), aktualizace a instalovat aplikace. 
 
-* Také je potřeba mít nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a být přihlášení k účtu Azure pomocí [az přihlášení](/cli/azure/#login).
+* Musíte taky toohave hello nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a být přihlášeni pomocí účtu Azure tooan [az přihlášení](/cli/azure/#login).
 
 ## <a name="quick-commands"></a>Rychlé příkazy
 
-Zjednodušené verzi tohoto tématu pro testování, vyhodnocení nebo získávání informací o virtuálních počítačů v Azure, naleznete v části [vytvořit vlastní image virtuálního počítače Azure pomocí rozhraní příkazového řádku](tutorial-custom-images.md).
+Zjednodušené verzi tohoto tématu pro testování, vyhodnocení nebo získávání informací o virtuálních počítačů v Azure, naleznete v části [vytvořit vlastní image virtuálního počítače Azure pomocí rozhraní příkazového řádku hello](tutorial-custom-images.md).
 
 
-## <a name="step-1-deprovision-the-vm"></a>Krok 1: Zrušení zřízení virtuálního počítače
-Můžete zrušit jejich zřízení virtuálního počítače pomocí agenta virtuálního počítače Azure se odstranit počítače konkrétní soubory a data. Použití `waagent` s *-deprovision + uživatele* parametr na svůj zdroj virtuálního počítače s Linuxem. Další informace najdete v tématu [Azure Linux Agent uživatelská příručka](../windows/agent-user-guide.md).
+## <a name="step-1-deprovision-hello-vm"></a>Krok 1: Zrušení zřízení hello virtuálních počítačů
+Můžete zrušit jejich zřízení hello virtuální počítač pomocí hello agenta virtuálního počítače Azure, toodelete počítače konkrétní soubory a data. Použití hello `waagent` s hello *-deprovision + uživatele* parametr na svůj zdroj virtuálního počítače s Linuxem. Další informace najdete v tématu hello [Azure Linux Agent uživatelská příručka](../windows/agent-user-guide.md).
 
-1. Připojte k virtuálním počítačům s Linuxem pomocí klienta SSH.
-2. V okně SSH zadejte následující příkaz:
+1. Připojte tooyour virtuálního počítače s Linuxem pomocí klienta SSH.
+2. V okně hello SSH zadejte následující příkaz hello:
    
     ```bash
     sudo waagent -deprovision+user
     ```
 <br>
    > [!NOTE]
-   > Tento příkaz lze spusťte pouze na virtuální počítač, který máte v úmyslu bitovou kopii. Není zaručeno, že bitovou kopii vymaže všechny citlivých informací nebo je vhodný pro opětovnou distribuci. *+ Uživatele* parametr také odebere poslední účet zřízení uživatele. Pokud chcete zachovat přihlašovací údaje účtu ve virtuálním počítači, použijte *-deprovision* opustit uživatelský účet na místě.
+   > Spusťte pouze na virtuálním počítači tento příkaz, že máte v úmyslu toocapture jako obrázek. Nezaručuje se této bitové kopie hello vymaže všechny citlivých informací nebo je vhodný pro opětovnou distribuci. Hello *+ uživatele* parametr také odebere poslední účet zřízení uživatele hello. Pokud chcete, aby tookeep přihlašovací údaje hello virtuálních počítačů, použijte *-deprovision* tooleave hello uživatelský účet na místě.
  
-3. Typ **y** pokračujte. Můžete přidat **-force** parametr předejdete tento krok potvrzení.
-4. Po dokončení příkazu, zadejte **ukončete**. Tento krok zavře použije klient SSH.
+3. Typ **y** toocontinue. Můžete přidat hello **-force** parametr tooavoid tento krok potvrzení.
+4. Po dokončení příkazu hello zadejte **ukončete**. Tento krok zavře klient SSH hello.
 
 ## <a name="step-2-create-vm-image"></a>Krok 2: Vytvoření image virtuálního počítače
-Pomocí Azure CLI 2.0 označit virtuální počítač jako zobecněn a zachycení bitové kopie. V následujících příkladech nahraďte názvy parametrů příklad vlastní hodnoty. Zahrnout názvy parametrů příklad *myResourceGroup*, *myVnet*, a *Můjvp*.
+Použijte hello Azure CLI 2.0 toomark hello virtuálního počítače jako zobecněn a zachycení bitové kopie hello. Následující příklady, v hello nahraďte názvy parametrů příklad vlastními hodnotami. Zahrnout názvy parametrů příklad *myResourceGroup*, *myVnet*, a *Můjvp*.
 
-1. Zrušit přidělení virtuálního počítače, který jste se zrušit [az OM deallocate](/cli//azure/vm#deallocate). Následující příklad zruší přidělení virtuálního počítače s názvem *Můjvp* ve skupině prostředků s názvem *myResourceGroup*:
+1. Deallocate hello virtuální počítač, který jste se zrušit [az OM deallocate](/cli//azure/vm#deallocate). Hello následující příklad zruší přidělení hello virtuálního počítače s názvem *Můjvp* v hello skupinu prostředků s názvem *myResourceGroup*:
    
     ```azurecli
     az vm deallocate \
@@ -71,7 +71,7 @@ Pomocí Azure CLI 2.0 označit virtuální počítač jako zobecněn a zachycen�
       --name myVM
     ```
 
-2. Označit virtuální počítač jako zobecněn s [az virtuálních počítačů zobecní](/cli//azure/vm#generalize). Následující příklad značky virtuální počítač s názvem *Můjvp* ve skupině prostředků s názvem *myResourceGroup* jako zobecněn:
+2. Označit hello virtuálního počítače jako zobecněn s [az virtuálních počítačů zobecní](/cli//azure/vm#generalize). Následující příklad značky hello hello virtuálních počítačů s názvem Hello *Můjvp* v hello skupinu prostředků s názvem *myResourceGroup* jako zobecněn:
    
     ```azurecli
     az vm generalize \
@@ -79,7 +79,7 @@ Pomocí Azure CLI 2.0 označit virtuální počítač jako zobecněn a zachycen�
       --name myVM
     ```
 
-3. Nyní vytvoření bitové kopie prostředků virtuálního počítače s [vytvoření bitové kopie az](/cli//azure/image#create). Následující příklad vytvoří bitovou kopii s názvem *myImage* ve skupině prostředků s názvem *myResourceGroup* pomocí prostředků virtuálního počítače s názvem *Můjvp*:
+3. Nyní vytvořit bitovou kopii hello prostředků virtuálního počítače s [vytvoření bitové kopie az](/cli//azure/image#create). Hello následující příklad vytvoří bitovou kopii s názvem *myImage* v hello skupinu prostředků s názvem *myResourceGroup* pomocí hello prostředků virtuálního počítače s názvem *Můjvp*:
    
     ```azurecli
     az image create \
@@ -88,10 +88,10 @@ Pomocí Azure CLI 2.0 označit virtuální počítač jako zobecněn a zachycen�
     ```
    
    > [!NOTE]
-   > Obrázek se vytvoří ve stejné skupině prostředků jako vašeho zdrojového virtuálního počítače. Virtuální počítače můžete vytvořit v libovolné skupině prostředků v rámci vašeho předplatného z této bitové kopie. Z hlediska správy můžete chtít vytvořit skupinu prostředků specifické pro vaše prostředky virtuálních počítačů a bitové kopie.
+   > Hello bitové kopie je vytvořen v hello stejné skupině prostředků jako vašeho zdrojového virtuálního počítače. Virtuální počítače můžete vytvořit v libovolné skupině prostředků v rámci vašeho předplatného z této bitové kopie. Z hlediska správy můžete toocreate určité skupiny zdrojů pro vaše prostředky virtuálních počítačů a bitové kopie.
 
-## <a name="step-3-create-a-vm-from-the-captured-image"></a>Krok 3: Vytvoření virtuálního počítače ze zaznamenané bitové kopie
-Vytvoření virtuálního počítače pomocí bitové kopie vytvořené pomocí [vytvořit virtuální počítač az](/cli/azure/vm#create). Následující příklad vytvoří virtuální počítač s názvem *myVMDeployed* z bitové kopie s názvem *myImage*:
+## <a name="step-3-create-a-vm-from-hello-captured-image"></a>Krok 3: Vytvoření virtuálního počítače z hello zachycení image
+Vytvoření virtuálního počítače pomocí bitové kopie hello jste vytvořili pomocí [vytvořit virtuální počítač az](/cli/azure/vm#create). Hello následující příklad vytvoří virtuální počítač s názvem *myVMDeployed* z hello image s názvem *myImage*:
 
 ```azurecli
 az vm create \
@@ -102,9 +102,9 @@ az vm create \
    --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-### <a name="creating-the-vm-in-another-resource-group"></a>Vytvoření virtuálního počítače v jiné skupině prostředků 
+### <a name="creating-hello-vm-in-another-resource-group"></a>Vytváření hello virtuálních počítačů v jiné skupině prostředků 
 
-Virtuální počítače můžete vytvořit z image v libovolné skupině prostředků v rámci vašeho předplatného. Pokud chcete vytvořit virtuální počítač v jiné skupině prostředků než bitovou kopii, zadejte je úplné ID prostředku do bitové kopie. Použití [seznamu obrázků az](/cli/azure/image#list) zobrazení seznamu obrázků. Výstup se podobá následujícímu příkladu:
+Virtuální počítače můžete vytvořit z image v libovolné skupině prostředků v rámci vašeho předplatného. toocreate virtuální počítač v jiné skupině prostředků než hello image, zadejte hello úplné prostředků ID tooyour bitovou kopii. Použití [seznamu obrázků az](/cli/azure/image#list) tooview seznam bitové kopie. Hello výstup je podobné toohello následující ukázka:
 
 ```json
 "id": "/subscriptions/guid/resourceGroups/MYRESOURCEGROUP/providers/Microsoft.Compute/images/myImage",
@@ -112,7 +112,7 @@ Virtuální počítače můžete vytvořit z image v libovolné skupině prostř
    "name": "myImage",
 ```
 
-Následující příklad používá [vytvořit virtuální počítač az](/cli/azure/vm#create) vytvoření virtuálního počítače v jiné skupině prostředků než zdrojové bitové kopie zadáním ID prostředku bitové kopie:
+Hello následující příklad používá [vytvořit virtuální počítač az](/cli/azure/vm#create) toocreate virtuální počítač v jiné skupině prostředků než hello zdrojové bitové kopie zadáním hello ID prostředku bitové kopie:
 
 ```azurecli
 az vm create \
@@ -124,9 +124,9 @@ az vm create \
 ```
 
 
-## <a name="step-4-verify-the-deployment"></a>Krok 4: Ověření nasazení
+## <a name="step-4-verify-hello-deployment"></a>Krok 4: Ověření nasazení hello
 
-Nyní SSH k virtuálnímu počítači, který jste vytvořili pro ověření nasazení a začít používat nový virtuální počítač. Pro připojení pomocí protokolu SSH, najít IP adresu nebo plně kvalifikovaný název domény vašeho virtuálního počítače s [az virtuálních počítačů zobrazit](/cli/azure/vm#show):
+Nyní SSH toohello virtuálního počítače jste vytvořili tooverify hello nasazení a spuštění pomocí hello nového virtuálního počítače. tooconnect pomocí protokolu SSH, najít hello IP adresu nebo plně kvalifikovaný název domény vašeho virtuálního počítače s [az virtuálních počítačů zobrazit](/cli/azure/vm#show):
 
 ```azurecli
 az vm show \
@@ -136,11 +136,11 @@ az vm show \
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Můžete vytvořit víc virtuálních počítačů z vaší zdrojové bitové kopie virtuálního počítače. Pokud potřebujete provést změny do bitové kopie: 
+Můžete vytvořit víc virtuálních počítačů z vaší zdrojové bitové kopie virtuálního počítače. Pokud budete potřebovat image tooyour toomake změny: 
 
 - Vytvořte virtuální počítač z bitové kopie.
 - Nastavit všechny aktualizace nebo změny konfigurace.
-- Postup opakujte zrušení zřízení, navrácení, generalize a vytvořte bitovou kopii.
-- Použijte tuto novou bitovou kopii pro budoucí nasazení. V případě potřeby odstraňte původní bitové kopie.
+- Postupujte podle hello kroky opakujte toodeprovision, navrácení, generalize a vytvořte bitovou kopii.
+- Použijte tuto novou bitovou kopii pro budoucí nasazení. V případě potřeby odstraňte původní image hello.
 
-Další informace týkající se správy virtuálních počítačů pomocí rozhraní příkazového řádku najdete v tématu [Azure CLI 2.0](/cli/azure/overview).
+Další informace týkající se správy virtuálních počítačů s hello rozhraní příkazového řádku najdete v tématu [Azure CLI 2.0](/cli/azure/overview).

@@ -1,6 +1,6 @@
 ---
-title: "Stav monitorování přehled Azure Application Gateway. | Microsoft Docs"
-description: "Další informace o možnosti monitorování v Azure Application Gateway"
+title: "Přehled monitorování pro Azure Application Gateway aaaHealth | Microsoft Docs"
+description: "Další informace o hello funkcemi sledováním v Azure Application Gateway"
 services: application-gateway
 documentationcenter: na
 author: georgewallace
@@ -15,30 +15,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2016
 ms.author: gwallace
-ms.openlocfilehash: 899115d213e626f17e58c2e5f01313f760f9e7f4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5091d80394a354ff849ce7ccee8cc9d2fd0456db
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Monitorování přehled stavu aplikace brány
 
-Ve výchozím nastavení služba Azure Application Gateway monitoruje stav všechny prostředky v jeho fond back-end a automaticky odebere jakémukoli prostředku, považoval za poškozený z fondu. Aplikační brána pokračuje v monitorování není v pořádku instancí a přidá je zpět do fondu back-end v pořádku, jakmile jsou k dispozici a reagovat na sondy stavu. Aplikační brána odešle sondy stavu s stejný port, který je definován v nastavení HTTP back-end. Tato konfigurace zajistí, že tato kontrola je testování stejný port, který zákazníky se používají pro připojení k back-end.
+Ve výchozím nastavení služba Azure Application Gateway monitoruje stav hello všechny prostředky v jeho fond back-end a automaticky odebere všechny prostředků z fondu hello považoval za poškozený. Aplikační brána pokračuje toomonitor hello není v pořádku instancí a přidá je zpět toohello pořádku fond back-end, jakmile budou k dispozici a reakce toohealth testy. Aplikační brána odešle sondy stavu hello s hello stejný port, který je definován v nastavení HTTP back-end hello. Tato konfigurace zajistí, že tento test hello je testování hello stejný port, že zákazníci by pomocí tooconnect toohello back-end.
 
 ![Příklad testu brány aplikace][1]
 
-Kromě použití výchozího stavu testu monitorování, můžete také upravit test stavu podle potřeb vaší aplikace. V tomto článku jsou popsané výchozí i vlastní stavu sondy.
+Přidání toousing výchozí stav testu monitorování, můžete také přizpůsobit toosuit test stavu hello požadavky vaší aplikace. V tomto článku jsou popsané výchozí i vlastní stavu sondy.
 
 > [!NOTE]
-> Pokud je skupina NSG na podsítě brány aplikace, musí být otevřen rozsahy portů 65503 65534 na podsíť aplikační brány pro příchozí provoz. Tyto porty jsou povinné pro back-end stav rozhraní API pro práci.
+> Pokud je skupina NSG na podsítě brány aplikace, musí být otevřen rozsahy portů 65503 65534 v podsíti hello aplikační brány pro příchozí provoz. Tyto porty jsou povinné pro hello back-end stavu rozhraní API toowork.
 
 ## <a name="default-health-probe"></a>Výchozí kontroly stavu
 
-Služby application gateway automaticky nakonfiguruje výchozí kontrolu stavu, když nemáte nastavíte žádnou konfiguraci vlastní test paměti. Monitorování chování funguje tak, že požadavek HTTP na IP adresy nakonfigurované pro fond back-end. Pro výchozí sondy Pokud nastavení http back-end jsou nakonfigurované pro protokol HTTPS, že test využívá protokol HTTPS také k testování stavu back-EndY.
+Služby application gateway automaticky nakonfiguruje výchozí kontrolu stavu, když nemáte nastavíte žádnou konfiguraci vlastní test paměti. monitorování chování Hello funguje tak, že, ze kterého navázalo HTTP žádost toohello IP adresy nakonfigurované pro fond back-end hello. Pro výchozí sondy Pokud jsou nastavení http back-end hello nakonfigurovány pro protokol HTTPS, test hello používá protokol HTTPS jako dobře tootest stav back-EndY hello.
 
-Příklad: Konfigurace brány aplikace používat back-end serverů A, B a C přijímat síťový provoz protokolu HTTP na portu 80. Sledování stavu výchozí testy tři servery každých 30 sekund pro pořádku odpověď HTTP. Je v pořádku odpovědi HTTP [stavový kód](https://msdn.microsoft.com/library/aa287675.aspx) 200 až 399.
+Příklad: konfigurace vaší aplikace brány toouse back-end serverů A, B a C tooreceive HTTP síťový provoz na portu 80. sledování stavu výchozí Hello testy tři servery hello každých 30 sekund pro pořádku odpověď HTTP. Je v pořádku odpovědi HTTP [stavový kód](https://msdn.microsoft.com/library/aa287675.aspx) 200 až 399.
 
-Pokud kontrola výchozí test nezdaří serveru A, služby application gateway odstraní ji z jeho fond back-end a síťový provoz bude zastaven k tomuto serveru. Výchozí kontroly stále bude kontrolovat pro server každých 30 sekund. Pokud serveru A odpoví na žádost o jeden z výchozí stav kontroly úspěšně, ho je přidat do fondu back-end zpět jako v pořádku a provozu spustí předávaných na server znovu.
+Pokud kontrola test výchozí hello nezdaří pro server A, hello Aplikační brána se odebere z jeho fond back-end a síťový provoz bude zastaven toothis serveru. Hello výchozí kontroly stále přetrvává toocheck pro server každých 30 sekund. Server A odpovídá úspěšně tooone žádosti z výchozí kontrolu stavu, je znovu přidal jako v pořádku toohello fond back-end a provoz začnou komunikovat toohello server znovu.
 
 ### <a name="default-health-probe-settings"></a>Výchozí nastavení kontroly stavu
 
@@ -47,36 +47,36 @@ Pokud kontrola výchozí test nezdaří serveru A, služby application gateway o
 | Adresa URL testu |http://127.0.0.1:\<portu\>/ |Cesta adresy URL |
 | Interval |30 |Interval testu paměti v sekundách |
 | Časový limit |30 |Časový limit testu v sekundách |
-| Prahová hodnota špatného stavu |3 |Počet opakování testu. Back-end serverů je označena po počet po sobě jdoucích test selhání dosáhne prahová hodnota špatného stavu. |
+| Prahová hodnota špatného stavu |3 |Počet opakování testu. Hello back-end serveru je označena po počet po sobě jdoucích test selhání hello dosáhne hello prahová hodnota špatného stavu. |
 
 > [!NOTE]
-> Port je stejný port jako nastavení HTTP back-end.
+> Hello portu je hello stejný port jako nastavení HTTP back-end hello.
 
-Výchozí kontroly zjistí pouze http://127.0.0.1:\<port\> k určení stavu. Pokud potřebujete nakonfigurovat test stavu na Přejít na vlastní adresu URL nebo změnit další nastavení, musíte použít vlastní testy paměti, jak je popsáno v následujících krocích:
+Hello výchozí kontroly zjistí pouze http://127.0.0.1:\<port\> toodetermine stav. Pokud potřebujete tooconfigure hello stav testu toogo tooa vlastní adresu URL nebo změnit další nastavení, musíte použít vlastní testy paměti, jak je popsáno v hello následující kroky:
 
 ## <a name="custom-health-probe"></a>Test vlastní stavu
 
-Vlastní testy paměti umožňují podrobnější ovládat sledování stavu. Pokud používáte vlastní testy paměti, můžete nakonfigurovat interval testu, adresu URL a cesty k testování a kolik neúspěšných odpovědí tak, aby přijímal před označením fond back-end instance jako chybné.
+Vlastní testy paměti umožní toohave podrobnější řídit hello sledování stavu. Pokud používáte vlastní testy paměti, můžete nakonfigurovat interval testu hello hello adresy URL a cesty tootest a kolik neúspěšných odpovědí tooaccept před označením hello fond back-end instance jako chybné.
 
 ### <a name="custom-health-probe-settings"></a>Nastavení testu vlastní stavu
 
-Následující tabulka obsahuje definice pro vlastnosti test vlastní stavu.
+Hello následující tabulka obsahuje definice pro vlastnosti hello vlastní stav kontroly.
 
 | Vlastnost testu | Popis |
 | --- | --- |
-| Name (Název) |Název kontroly. Tento název se používá k odkazování na test v nastavení HTTP back-end. |
-| Protocol (Protokol) |Protokol používaný k odesílání sonda. Tato kontrola používá protokol definované v nastavení HTTP back-end |
-| Hostitel |Název hostitele k odeslání test. Platí jenom v případě více lokalit je nakonfigurovaná na aplikační bránu, v opačném případě použijte "127.0.0.1". Tato hodnota se liší od název hostitele virtuálního počítače. |
-| Cesta |Relativní cesta kontroly. Platná cesta spustí z '/'. |
-| Interval |Interval testu paměti v sekundách. Tato hodnota je časový interval mezi dvě po sobě jdoucích sondy. |
-| Časový limit |Časový limit testu v sekundách. Pokud není platnou odpověď v rámci tento časový limit, tato kontrola je označeno jeho selhání.  |
-| Prahová hodnota špatného stavu |Počet opakování testu. Back-end serverů je označena po počet po sobě jdoucích test selhání dosáhne prahová hodnota špatného stavu. |
+| Name (Název) |Název testu hello. Tento název je použité toorefer toohello testu v nastavení HTTP back-end. |
+| Protocol (Protokol) |Používá protokol toosend hello testu. Test Hello používá protokol hello definované v nastavení HTTP back-end hello |
+| Hostitel |Hostitele název toosend hello testu. Platí jenom v případě více lokalit je nakonfigurovaná na aplikační bránu, v opačném případě použijte "127.0.0.1". Tato hodnota se liší od název hostitele virtuálního počítače. |
+| Cesta |Relativní cesta hello kontroly. platná cesta Hello spustí z '/'. |
+| Interval |Interval testu paměti v sekundách. Tato hodnota je hello časový interval mezi dvě po sobě jdoucích sondy. |
+| Časový limit |Časový limit testu v sekundách. Pokud není platnou odpověď v rámci tento časový limit, hello probe je označen jako se nezdařilo.  |
+| Prahová hodnota špatného stavu |Počet opakování testu. Hello back-end serveru je označena po počet po sobě jdoucích test selhání hello dosáhne hello prahová hodnota špatného stavu. |
 
 > [!IMPORTANT]
-> Pokud aplikace brána je nakonfigurovaná pro jednu lokalitu, ve výchozím nastavení hostitele název musí být zadán jako "127.0.0.1", pokud nebudou jinak nakonfigurovaná v vlastní test paměti.
-> Pro referenci vlastní test paměti posílá \<protokol\>://\<hostitele\>:\<port\>\<cestu\>. Port používaný bude stejný port, jak jsou definovány v nastavení HTTP back-end.
+> Pokud aplikace brána je nakonfigurovaná pro jednu lokalitu, ve výchozím nastavení hello hostitele název musí být zadán jako "127.0.0.1", pokud nebudou jinak nakonfigurovaná v vlastní test paměti.
+> Pro referenci vlastní test paměti se odesílají příliš\<protokol\>://\<hostitele\>:\<port\>\<cestu\>. Hello port používá, bude text hello stejný port, jak jsou definovány v nastavení HTTP back-end hello.
 
 ## <a name="next-steps"></a>Další kroky
-Po informací o sledování stavu Application Gateway, můžete nakonfigurovat [test vlastní stavu](application-gateway-create-probe-portal.md) na portálu Azure nebo [test vlastní stavu](application-gateway-create-probe-ps.md) pomocí prostředí PowerShell a modelu nasazení Azure Resource Manager.
+Po informací o sledování stavu Application Gateway, můžete nakonfigurovat [test vlastní stavu](application-gateway-create-probe-portal.md) v hello portál Azure nebo [test vlastní stavu](application-gateway-create-probe-ps.md) pomocí prostředí PowerShell a hello Azure Resource Manager model nasazení.
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png

@@ -1,5 +1,5 @@
 ---
-title: "Ukázky konfigurace směrovače zákazníka ExpressRoute | Microsoft Docs"
+title: "Ukázky konfigurace směrovače zákazníka aaaExpressRoute | Microsoft Docs"
 description: "Tato stránka obsahuje ukázky konfigurace směrovače pro směrovače Cisco a Juniper."
 documentationcenter: na
 services: expressroute
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
-ms.openlocfilehash: 83a7da2db537a3c900e90432455d59e8ac56d917
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b5faca0666bda6173e54abb0b6560d5f8bf8bfc2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Ukázky konfigurace směrovače nastavit a spravovat NAT
-Tato stránka obsahuje ukázky konfigurace NAT pro směrovače Cisco ASA a Juniper SRX řady. Tyto by měla být ukázky jenom pokyny a nesmí se používat, protože je. Můžete pracovat s vaším dodavatelem spolu s odpovídající konfigurací pro vaši síť. 
+# <a name="router-configuration-samples-tooset-up-and-manage-nat"></a>Konfigurace směrovače ukázky tooset nahoru a spravovat NAT
+Tato stránka obsahuje ukázky konfigurace NAT pro směrovače Cisco ASA a Juniper SRX řady. Tyto jsou ukázky určený toobe pouze pokyny a nesmí se používat, protože je. Můžete pracovat s vaší toocome dodavatele s odpovídající konfigurací pro vaši síť. 
 
 > [!IMPORTANT]
-> Ukázky na této stránce by měla být čistě pokyny. Musíte pracovat se od dodavatele prodeje / technické vaší síťových adaptérů a spolu s odpovídající konfigurací podle svých potřeb. Problémy související s konfigurací, které jsou uvedené na této stránce nebudou podpory společnosti Microsoft. Pro problémy podpory, bude nutné kontaktovat dodavatele zařízení.
+> Ukázky na této stránce jsou toobe určený výhradně pro pokyny. Musíte pracovat se tým prodeje / technické od dodavatele a vaší sítě team toocome až s odpovídající konfigurací toomeet vašim potřebám. Microsoft nebude podporovat problémy související s tooconfigurations uvedené na této stránce. Pro problémy podpory, bude nutné kontaktovat dodavatele zařízení.
 > 
 > 
 
-* Následující ukázky konfigurace směrovače platí pro partnerské vztahy Azure veřejné a společnosti Microsoft. Nakonfigurujete nesmí NAT pro soukromý partnerský vztah Azure. Zkontrolujte [partnerských vztahů ExpressRoute](expressroute-circuit-peerings.md) a [požadavky ExpressRoute NAT](expressroute-nat.md) další podrobnosti.
+* Následující ukázky konfigurace směrovače použít partnerských vztahů tooAzure veřejné a společnosti Microsoft. Nakonfigurujete nesmí NAT pro soukromý partnerský vztah Azure. Zkontrolujte [partnerských vztahů ExpressRoute](expressroute-circuit-peerings.md) a [požadavky ExpressRoute NAT](expressroute-nat.md) další podrobnosti.
 
-* Je nutné použít samostatné fondy IP adres NAT pro připojení k Internetu a ExpressRoute. Pomocí stejného fondu IP adres NAT v Internetu a ExpressRoute bude mít za následek asymetrické směrování a ztráty připojení.
+* Je nutné použít samostatné fondy IP adres NAT pro toohello připojení k Internetu a ExpressRoute. Pomocí stejné IP adres NAT fond napříč hello hello internet a ExpressRoute způsobí asymetrické směrování a ztráty připojení.
 
 
 ## <a name="cisco-asa-firewalls"></a>Brány firewall Cisco ASA
-### <a name="pat-configuration-for-traffic-from-customer-network-to-microsoft"></a>Jan konfigurace pro provoz ze sítě zákazníků společnosti Microsoft
+### <a name="pat-configuration-for-traffic-from-customer-network-toomicrosoft"></a>Jan konfigurace pro provoz z tooMicrosoft sítě zákazníka
     object network MSFT-PAT
       range <SNAT-START-IP> <SNAT-END-IP>
 
@@ -54,12 +54,12 @@ Tato stránka obsahuje ukázky konfigurace NAT pro směrovače Cisco ASA a Junip
 
     nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
 
-### <a name="pat-configuration-for-traffic-from-microsoft-to-customer-network"></a>Jan konfigurace pro provoz od společnosti Microsoft do sítě zákazníka
+### <a name="pat-configuration-for-traffic-from-microsoft-toocustomer-network"></a>Jan konfigurace pro data z Microsoft toocustomer sítě
 
 **Rozhraní a směr:**
 
-    Source Interface (where the traffic enters the ASA): inside
-    Destination Interface (where the traffic exits the ASA): outside
+    Source Interface (where hello traffic enters hello ASA): inside
+    Destination Interface (where hello traffic exits hello ASA): outside
 
 **Konfigurace:**
 
@@ -87,10 +87,10 @@ NAT příkazy:
 
 
 ## <a name="juniper-srx-series-routers"></a>Juniper SRX řady směrovače
-### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. Vytvoření redundantní rozhraní sítě Ethernet pro cluster
+### <a name="1-create-redundant-ethernet-interfaces-for-hello-cluster"></a>1. Vytvoření redundantní rozhraní sítě Ethernet pro hello cluster
     interfaces {
         reth0 {
-            description "To Internal Network";
+            description "tooInternal Network";
             vlan-tagging;
             redundant-ether-options {
                 redundancy-group 1;
@@ -103,13 +103,13 @@ NAT příkazy:
             }
         }
         reth1 {
-            description "To Microsoft via Edge Router";
+            description "tooMicrosoft via Edge Router";
             vlan-tagging;
             redundant-ether-options {
                 redundancy-group 2;
             }
             unit 100 {
-                description "To Microsoft via Edge Router";
+                description "tooMicrosoft via Edge Router";
                 vlan-id 100;
                 family inet {
                     address <IP-Address/Subnet-mask>;
@@ -121,8 +121,8 @@ NAT příkazy:
 
 ### <a name="2-create-two-security-zones"></a>2. Vytvořte dvě zóny zabezpečení
 * Vztah důvěryhodnosti zóny pro interní sítě a Untrust zóny pro externí síť směřující hraniční směrovače
-* Přiřaďte odpovídající rozhraní zóny
-* Povolit službám v rozhraních
+* Přiřaďte odpovídající rozhraní toohello zóny
+* Povolit službám na rozhraní hello
 
     zabezpečení {zón {zóny zabezpečení důvěryhodnosti {-příchozí-přenosů dat hostitelského {systému services {ping;                   } protokoly {bgp;                   rozhraní}} {reth0.100;               }} Untrust zóny zabezpečení {-příchozí-přenosů dat hostitelského {systému services {ping;                   } protokoly {bgp;                   rozhraní}} {reth1.100;               }           }       }   }
 
@@ -159,8 +159,8 @@ NAT příkazy:
 
 
 ### <a name="4-configure-nat-policies"></a>4. Nakonfigurovat zásady NAT
-* Vytvořte dva NAT fondy. Jeden se použije k NAT provoz odchozí společnosti Microsoft a jiných od společnosti Microsoft pro zákazníka.
-* Umožňuje vytvořit pravidla pro NAT odpovídající provoz
+* Vytvořte dva NAT fondy. Jeden z toohello zákazníků společnosti Microsoft bude tooMicrosoft odchozí provoz použité tooNAT a další.
+* Vytvoření pravidel tooNAT hello odpovídající provoz
   
        security {
            nat {
@@ -183,7 +183,7 @@ NAT příkazy:
                    }
                    rule-set Outbound_NAT {
                        from routing-instance Internal;
-                       to routing-instance External-ExpressRoute;
+                       toorouting-instance External-ExpressRoute;
                        rule SNAT-Out {
                            match {
                                source-address 0.0.0.0/0;
@@ -199,7 +199,7 @@ NAT příkazy:
                    }
                    rule-set Inbound-NAT {
                        from routing-instance External-ExpressRoute;
-                       to routing-instance Internal;
+                       toorouting-instance Internal;
                        rule SNAT-In {
                            match {
                                source-address 0.0.0.0/0;
@@ -217,8 +217,8 @@ NAT příkazy:
            }
        }
 
-### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Nakonfigurovat protokol BGP inzerovat selektivní předpony v každém směru
-Odkazovat na ukázky v [ukázky konfigurace směrování ](expressroute-config-samples-routing.md) stránky.
+### <a name="5-configure-bgp-tooadvertise-selective-prefixes-in-each-direction"></a>5. Konfigurace protokolu BGP tooadvertise selektivní předpony v každém směru
+Odkazovat toosamples v [ukázky konfigurace směrování ](expressroute-config-samples-routing.md) stránky.
 
 ### <a name="6-create-policies"></a>6. Vytvoření zásad
     routing-options {
@@ -316,5 +316,5 @@ Odkazovat na ukázky v [ukázky konfigurace směrování ](expressroute-config-s
     }
 
 ## <a name="next-steps"></a>Další kroky
-Další podrobnosti najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
+V tématu hello [ExpressRoute – nejčastější dotazy](expressroute-faqs.md) další podrobnosti.
 

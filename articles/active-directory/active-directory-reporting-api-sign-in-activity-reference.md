@@ -1,6 +1,6 @@
 ---
-title: "Přihlašovací aktivity sestav Azure Active Directory referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Referenční dokumentace rozhraní API sestavy přihlašovací aktivita služby Azure Active Directory"
+title: "Sestava aktivit aaaAzure přihlášení služby Active Directory referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Referenční dokumentace pro sestavu aktivit hello přihlášení k Azure Active Directory rozhraní API"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,29 +15,29 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d83f1a899ba38dab2c1c1661adede87db6f88c20
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 8123f308a291503f2c61ac5de26696806c6402ba
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-reference"></a>Přihlašovací aktivity sestav Azure Active Directory referenční dokumentace rozhraní API
-Toto téma je součástí kolekce témat o službě Azure Active Directory, vytváření sestav rozhraní API.  
-Generování sestav služby Azure AD poskytuje rozhraní API, která umožňuje přístup k datům sestavy přihlašovací aktivita pomocí kódu nebo související nástroje.
-Obor tohoto tématu je k poskytování referenční informace o **API sestavy aktivity přihlášení**.
+Toto téma je součástí kolekce témat o hello Azure Active Directory reporting rozhraní API.  
+Generování sestav služby Azure AD poskytuje rozhraní API, které vám umožní tooaccess přihlašovací aktivita sestavu dat pomocí kódu nebo související nástroje.
+Hello obor tohoto tématu je tooprovide vám referenční informace o hello **API sestavy aktivity přihlášení**.
 
 Přejděte na téma:
 
 * [Přihlašovací aktivity](active-directory-reporting-azure-portal.md#activity-reports) další koncepční informace
-* [Začínáme s Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md) Další informace o rozhraní API pro generování sestav.
+* [Začínáme s Azure Active Directory Reporting API hello](active-directory-reporting-api-getting-started.md) Další informace o hello reporting rozhraní API.
 
 
-## <a name="who-can-access-the-api-data"></a>Kdo má přístup k rozhraní API data?
-* Uživatelé a objekty služby v roli správce zabezpečení nebo čtečky zabezpečení
+## <a name="who-can-access-hello-api-data"></a>Kdo může přistupovat k datům hello rozhraní API?
+* Uživatelé a objekty služby v roli správce zabezpečení nebo zabezpečení čtečky hello
 * Globální správci
-* Jakékoli aplikaci, která má oprávnění pro přístup k rozhraní API (autorizace služby app lze pouze na základě oprávnění globálního správce)
+* Jakékoli aplikaci, která má autorizaci tooaccess hello rozhraní API (autorizace služby app lze pouze na základě oprávnění globálního správce)
 
-Pokud chcete konfigurovat přístup k aplikaci pro přístup k zabezpečení rozhraní API, jako jsou například události přihlášení, použijte tuto Powershellovou přidat aplikace objektu služby do role Čtenář zabezpečení
+tooconfigure přístup aplikaci tooaccess zabezpečení rozhraní API jako jsou například události přihlášení, použijte hello následující aplikace hello tooadd prostředí PowerShell objektu služby do role zabezpečení čtečky hello
 
 ```PowerShell
 Connect-MsolService
@@ -47,54 +47,54 @@ Add-MsolRoleMember -RoleObjectId $role.ObjectId -RoleMemberType ServicePrincipal
 ```
 
 ## <a name="prerequisites"></a>Požadavky
-Přístup k této sestavě prostřednictvím rozhraní API pro vytváření sestav, musíte mít:
+tooaccess to sestavy prostřednictvím hello reporting rozhraní API, musíte mít:
 
 * [Edici Azure Active Directory Premium P1 a P2](active-directory-editions.md)
-* Byla dokončena [požadavky pro přístup k Azure AD reporting rozhraní API](active-directory-reporting-api-prerequisites.md). 
+* Dokončené hello [požadavky tooaccess hello Azure AD reporting API](active-directory-reporting-api-prerequisites.md). 
 
-## <a name="accessing-the-api"></a>Přístup k rozhraní API
-Můžete buď přístup toto rozhraní API prostřednictvím [Explorer grafu](https://graphexplorer2.cloudapp.net) nebo prostřednictvím kódu programu, například pomocí prostředí PowerShell. Aby PowerShell správně interpretovat syntaxe filtru OData, který se používá při voláních REST grafu AAD, je nutné použít backtick (neboli: čárka) znak "řídicí" znak $. Backtick znak, který slouží jako [Powershellu řídicí znak](https://technet.microsoft.com/library/hh847755.aspx), povolení prostředí PowerShell provést literálu výklad znak $, a zamezit tak složitá jako název proměnné prostředí PowerShell (ie: $filter).
+## <a name="accessing-hello-api"></a>Přístup k hello API
+Toto rozhraní API můžete buď přistupovat prostřednictvím hello [grafu Explorer](https://graphexplorer2.cloudapp.net) nebo prostřednictvím kódu programu, například pomocí prostředí PowerShell. V pořadí pro prostředí PowerShell toocorrectly interpretovat se syntaxí filtru OData hello používá při voláních REST grafu AAD, je nutné použít hello backtick (neboli: čárka) znak příliš "znaku" hello $. Hello backtick znak slouží jako [Powershellu řídicí znak](https://technet.microsoft.com/library/hh847755.aspx), povolení prostředí PowerShell toodo literálu výklad hello znak $ a zabránit složitá jako název proměnné prostředí PowerShell (ie: $filter).
 
-Graf Explorer je aktivní v tomto tématu. V příkladu prostředí PowerShell najdete [skript prostředí PowerShell](active-directory-reporting-api-sign-in-activity-samples.md#powershell-script).
+hello grafu Explorer je aktivní Hello tohoto tématu. V příkladu prostředí PowerShell najdete [skript prostředí PowerShell](active-directory-reporting-api-sign-in-activity-samples.md#powershell-script).
 
 ## <a name="api-endpoint"></a>Koncový bod rozhraní API
-Toto rozhraní API pomocí následující základní identifikátor URI se můžete dostat:  
+Toto rozhraní API pomocí hello následující základní identifikátor URI se můžete dostat:  
 
     https://graph.windows.net/contoso.com/activities/signinEvents?api-version=beta  
 
 
 
-Z důvodu objem dat toto rozhraní API může mít jeden milión vrácené záznamy. 
+Z důvodu toohello objem dat toto rozhraní API může mít jeden milión vrácené záznamy. 
 
-Toto volání se vrátí data v dávkách. Má každé dávky nesmí být delší než 1 000 záznamů.  
-Chcete-li získat další dávky záznamů, použijte odkaz na další. Získat [skiptoken](https://msdn.microsoft.com/library/dd942121.aspx) informace z první sady vrácené záznamy. Token přeskočit bude na konci výsledek nastaveno.  
+Toto volání se vrátí hello data v dávkách. Má každé dávky nesmí být delší než 1 000 záznamů.  
+hello další dávku tooget záznamů, použijte odkaz Další hello. Získat hello [skiptoken](https://msdn.microsoft.com/library/dd942121.aspx) informace z první sady hello vrácené záznamy. token přeskočit Hello bude na konci hello hello sadu výsledků dotazu.  
 
     https://graph.windows.net/$tenantdomain/activities/signinEvents?api-version=beta&%24skiptoken=-1339686058
 
 
 ## <a name="supported-filters"></a>Podporované filtry
-Počet záznamů, které se vrátí pomocí rozhraní API můžete zúžit volání v podobě filtru.  
-Pro přihlášení rozhraní API související data, jsou podporovány následující filtry:
+Můžete zúžit hello počet záznamů, které se vrátí pomocí rozhraní API volat v podobě filtru.  
+Pro přihlášení rozhraní API související data, hello následující filtry jsou podporovány:
 
-* **$top =\<počet vrácených\>**  – Pokud chcete omezit počet vrácených záznamů. Toto je náročná operace. Tento filtr byste neměli používat, pokud chcete vrátit tisíce objektů.  
-* **$filter =\<údajů filtru\>**  – Pokud chcete zadat typ záznamy, na kterých vám nejvíc záleží na základě pole podporovaný filtr
+* **$top =\<počet toobe záznamů vrácených\>**  -toolimit hello počet vrácených záznamů. Toto je náročná operace. Pokud chcete, aby tooreturn tisíc objektů, které byste neměli používat tento filtr.  
+* **$filter =\<údajů filtru\>**  -toospecify na základě hello podporovaný filtr polí, hello typ záznamy, na kterých vám nejvíc záleží
 
 ## <a name="supported-filter-fields-and-operators"></a>Pole podporovaný filtr a operátory
-Pokud chcete zadat typ záznamů, které se zajímáte o, můžete vytvořit filtr příkaz, který může obsahovat jedno nebo kombinaci následující pole filtru:
+toospecify hello typu záznamů, které se zajímáte o, můžete vytvořit filtr příkaz, který může obsahovat jedno nebo kombinaci hello následující pole filtru:
 
 * [signinDateTime](#signindatetime) -definuje datum nebo rozsah dat
-* [ID uživatele](#userid) -definuje konkrétní uživatele na základě ID uživatele.
-* [userPrincipalName](#userprincipalname) -definuje konkrétní uživatele na základě uživatele hlavní název uživatele (UPN)
-* [appId](#appid) -definuje konkrétní aplikace na základě ID aplikace
-* [appDisplayName](#appdisplayname) -definuje konkrétní aplikace na základě aplikace zobrazovaný název
-* [loginStatus](#loginStatus) -definuje stav přihlášení (úspěch nebo chyba)
+* [ID uživatele](#userid) -definuje ID uživatele konkrétního uživatele na základě hello.
+* [userPrincipalName](#userprincipalname) -definuje uživatele hello konkrétního uživatele na základě hlavní název uživatele (UPN)
+* [appId](#appid) -definuje ID aplikace konkrétní aplikaci na základě hello
+* [appDisplayName](#appdisplayname) -definuje aplikace hello konkrétní aplikaci na základě zobrazovaný název
+* [loginStatus](#loginStatus) -definuje hello stav přihlášení hello (úspěch nebo chyba)
 
 > [!NOTE]
-> Při použití Průzkumníku grafu, je potřeba mít správnou velikost pro každý písmeno je vaše pole filtru.
+> Při používání nástroje Průzkumník grafu, třeba můžete hello toouse hello správný, že je vaše pole Filtr případu pro každý písmeno.
 > 
 > 
 
-Chcete-li zúžit rozsah vrácená data, můžete vytvořit kombinace podporované filtry a pole filtru. Například následující příkaz vrátí top 10 záznamy mezi 1. července 2016 a července 2016 6.:
+toonarrow dolů hello oboru hello vrátil data, můžete vytvořit kombinace hello podporované filtry a pole filtru. Například hello následující příkaz vrátí hello top 10 záznamy mezi 1. července 2016 a července 2016 6.:
 
     https://graph.windows.net/contoso.com/activities/signinEvents?api-version=beta&$top=10&$filter=signinDateTime+ge+2016-07-01T17:05:21Z+and+signinDateTime+le+2016-07-07T00:00:00Z
 
@@ -118,7 +118,7 @@ Použití rozsahu dat.
 
 **Poznámky k**:
 
-Parametr data a času musí být ve formátu UTC 
+Parametr Hello data a času musí být ve formátu UTC hello 
 
 - - -
 ### <a name="userid"></a>ID uživatele
@@ -130,7 +130,7 @@ Parametr data a času musí být ve formátu UTC
 
 **Poznámky k**:
 
-Hodnota ID uživatele je řetězcová hodnota
+Hello hodnota userId je řetězcová hodnota
 
 - - -
 ### <a name="userprincipalname"></a>UserPrincipalName
@@ -143,7 +143,7 @@ Hodnota ID uživatele je řetězcová hodnota
 
 **Poznámky k**:
 
-Hodnota userPrincipalName je řetězcová hodnota
+Hodnota Hello userPrincipalName je řetězcová hodnota
 
 - - -
 ### <a name="appid"></a>appId
@@ -157,7 +157,7 @@ Hodnota userPrincipalName je řetězcová hodnota
 
 **Poznámky k**:
 
-Hodnota appId je řetězcová hodnota
+Hodnota Hello appId je řetězcová hodnota
 
 - - -
 ### <a name="appdisplayname"></a>appDisplayName
@@ -170,7 +170,7 @@ Hodnota appId je řetězcová hodnota
 
 **Poznámky k**:
 
-Hodnota appDisplayName je řetězcová hodnota
+Hodnota Hello appDisplayName je řetězcová hodnota
 
 - - -
 ### <a name="loginstatus"></a>loginStatus
@@ -183,10 +183,10 @@ Hodnota appDisplayName je řetězcová hodnota
 
 **Poznámky k**:
 
-Existují dvě možnosti pro loginStatus: 0 - Úspěch, 1 – Chyba
+Existují dvě možnosti pro hello loginStatus: 0 - Úspěch, 1 – Chyba
 
 - - -
 ## <a name="next-steps"></a>Další kroky
-* Chcete příklady pro filtrovaný přihlašovací aktivity? Podívejte se [ukázky sestavy rozhraní API služby Azure Active Directory přihlašovací aktivita](active-directory-reporting-api-sign-in-activity-samples.md).
-* Opravdu chcete získat další informace o generování sestav rozhraní API Azure AD? V tématu [Začínáme s Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md).
+* Chcete pro filtrovaný přihlašovací aktivity toosee příklady? Podívejte se na hello [ukázky sestavy rozhraní API služby Azure Active Directory přihlašovací aktivita](active-directory-reporting-api-sign-in-activity-samples.md).
+* Chcete, aby tooknow Další informace o vytváření sestav API hello Azure AD? V tématu [Začínáme s Azure Active Directory Reporting API hello](active-directory-reporting-api-getting-started.md).
 

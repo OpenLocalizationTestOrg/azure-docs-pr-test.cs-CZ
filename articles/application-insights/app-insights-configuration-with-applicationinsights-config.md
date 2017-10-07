@@ -1,5 +1,5 @@
 ---
-title: Odkaz na soubor ApplicationInsights.config - Azure | Microsoft Docs
+title: "referenční dokumentace aaaApplicationInsights.config - Azure | Microsoft Docs"
 description: "Povolte nebo zakažte moduly shromažďování dat a přidejte čítače výkonu a dalších parametrů."
 services: application-insights
 documentationcenter: 
@@ -14,54 +14,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/3/2017
 ms.author: bwren
-ms.openlocfilehash: 7737f47d4181b5e920434f3a5372991efb58f63e
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 76cb11349d87dfc508ec8b1c454259a0b079c48a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
-Application Insights .NET SDK se skládá z počet balíčků NuGet. [Základní balíček](http://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro odesílání telemetrie Application insights. [Další balíčky](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují telemetrie *moduly* a *inicializátory* pro automaticky sledování telemetrie z vaší aplikace a jeho kontextu. Úpravou konfiguračního souboru, můžete povolit nebo zakázat telemetrii moduly a inicializátory a nastavit parametry pro některé z nich.
+# <a name="configuring-hello-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace hello Application Insights SDK souboru ApplicationInsights.config či .xml
+Hello Application Insights .NET SDK se skládá z řady balíčky NuGet. [Základní balíček](http://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje hello rozhraní API pro odesílání telemetrie do hello Application Insights. [Další balíčky](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují telemetrie *moduly* a *inicializátory* pro automaticky sledování telemetrie z vaší aplikace a jeho kontextu. Úpravou konfiguračního souboru hello můžete povolit nebo zakázat telemetrii moduly a inicializátory a nastavit parametry pro některé z nich.
 
-Konfigurační soubor je s názvem `ApplicationInsights.config` nebo `ApplicationInsights.xml`, v závislosti na typu aplikace. Je automaticky přidán do projektu když jste [nainstalujte většina verze sady SDK][start]. Je také přidán do webové aplikace pomocí [monitorování stavu na serveru se službou IIS][redfield], nebo když vyberete Appplication Insights [rozšíření pro webové stránky Azure, nebo virtuální počítač](app-insights-azure-web-apps.md).
+konfigurační soubor Hello jmenuje `ApplicationInsights.config` nebo `ApplicationInsights.xml`, v závislosti na typu hello vaší aplikace. Je automaticky přidán tooyour projektu, když jste [instalaci většiny verzích hello SDK][start]. Je také přidán tooa webové aplikace pomocí [monitorování stavu na serveru se službou IIS][redfield], nebo když vyberete hello Appplication Insights [rozšíření pro webové stránky Azure, nebo virtuální počítač](app-insights-azure-web-apps.md).
 
-Není k dispozici soubor ekvivalentní k řízení [SDK na webové stránce][client].
+Není k dispozici ekvivalentní soubor toocontrol hello [SDK na webové stránce][client].
 
-Tento dokument popisuje oddílů, které se zobrazí v konfiguraci souboru, jak budou řídit komponenty sady SDK, a které balíčky NuGet načíst těchto součástí.
+Tento dokument popisuje hello oddíly, které vidíte v konfiguraci hello souboru, jak budou řídit hello součástí hello SDK, a které balíčky NuGet načtení těchto součástí.
 
 ## <a name="telemetry-modules-aspnet"></a>Telemetrie moduly (ASP.NET)
-Každý modul telemetrie shromažďuje konkrétní typ dat a používá základní rozhraní API odeslat data. Moduly jsou nainstalovány jiné balíčky NuGet, které také přidat do souboru .config požadovaných řádků.
+Každý modul telemetrie shromažďuje konkrétní typ dat a používá hello jádra rozhraní API toosend hello data. Hello moduly jsou nainstalovány jiné balíčky NuGet, které také přidat soubor .config toohello hello požadovaných řádků.
 
-V souboru konfigurace pro každý modul není uzlu. Zakázat modul, odstraňte uzlu nebo ho nastavte jako komentář.
+V hello konfiguračního souboru pro každý modul je uzel. toodisable modul, odstraňte hello uzlu nebo ho nastavte jako komentář.
 
 ### <a name="dependency-tracking"></a>Sledování závislostí
-[Závislost sledování](app-insights-asp-net-dependencies.md) shromažďuje telemetrická data o volání aplikace provede databáze a externí služby a databáze. Chcete-li povolit tento modul pro práci v serveru se službou IIS, je potřeba [nainstalujte monitorování stavu][redfield]. Pro použití ve službě Azure web apps nebo virtuálních počítačů, [vyberte rozšíření Application Insights](app-insights-azure-web-apps.md).
+[Závislost sledování](app-insights-asp-net-dependencies.md) shromažďuje telemetrická data o volání aplikace umožňuje toodatabases a externích služeb a databází. tooallow tento modul toowork v serveru se službou IIS, je třeba příliš[nainstalujte monitorování stavu][redfield]. toouse ji ve službě Azure web apps nebo virtuálních počítačů, [vyberte rozšíření Application Insights hello](app-insights-azure-web-apps.md).
 
-Můžete taky napsat vlastní závislost sledování kódu pomocí [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
+Můžete taky napsat vlastní závislost sledování kódu pomocí hello [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
 
 * `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.DependencyCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) balíček NuGet.
 
 ### <a name="performance-collector"></a>Kolekce výkonu
-[Shromažďuje čítače výkonu systému](app-insights-performance-counters.md) například CPU, paměť a síť načíst z instalace služby IIS. Můžete zadat čítače, které mají shromažďovat, včetně čítačů výkonu, které jste nastavili sami.
+[Shromažďuje čítače výkonu systému](app-insights-performance-counters.md) například CPU, paměť a síť načíst z instalace služby IIS. Můžete určit, které toocollect čítače, včetně čítačů výkonu, které jste nastavili sami.
 
 * `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule`
 * [Microsoft.ApplicationInsights.PerfCounterCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) balíček NuGet.
 
 ### <a name="application-insights-diagnostics-telemetry"></a>Telemetrii Diagnostics Application Insights
-`DiagnosticsTelemetryModule` Sestavy chyb v samotný kód instrumentace Application Insights. Například pokud kód nelze získat přístup k čítače výkonu nebo `ITelemetryInitializer` vyvolá výjimku. Trasování telemetrie sleduje tento modul se zobrazí v [diagnostické vyhledávání][diagnostic]. Odešle dc.services.vsallin.net diagnostická data.
+Hello `DiagnosticsTelemetryModule` sestavy chyb v hello samotný kód instrumentace Application Insights. Například pokud hello kód nemůže přistupovat k čítače výkonu nebo `ITelemetryInitializer` vyvolá výjimku. Trasování telemetrie sleduje tento modul se zobrazí v hello [diagnostické vyhledávání][diagnostic]. Odešle toodc.services.vsallin.net diagnostická data.
 
 * `Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule`
-* [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) balíček NuGet. Pokud máte pouze instalaci tohoto balíčku, není soubor ApplicationInsights.config vytvoří automaticky.
+* [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) balíček NuGet. Pokud máte pouze instalaci tohoto balíčku, není soubor ApplicationInsights.config hello vytvoří automaticky.
 
 ### <a name="developer-mode"></a>Režim vývojáře
-`DeveloperModeWithDebuggerAttachedTelemetryModule`Vynutí Application Insights `TelemetryChannel` k odesílání dat okamžitě, jeden telemetrie položky v době, kdy je připojen ladicí program na proces aplikace. Tím se zkracuje dobu mezi odhalením Pokud vaše aplikace sleduje telemetrie a pokud se zobrazí na portálu služby Application Insights. Způsobuje významné režijní náklady v procesoru a šířku pásma sítě.
+`DeveloperModeWithDebuggerAttachedTelemetryModule`Vynutí hello Application Insights `TelemetryChannel` toosend data okamžitě, jeden telemetrie položky v době, kdy je ladicí program připojených toohello proces aplikace. To snižuje hello množství času mezi hello chvíli, když vaše aplikace sleduje telemetrie a když se zobrazí na portálu služby Application Insights hello. Způsobuje významné režijní náklady v procesoru a šířku pásma sítě.
 
 * `Microsoft.ApplicationInsights.WindowsServer.DeveloperModeWithDebuggerAttachedTelemetryModule`
 * [Application Insights systému Windows Server](http://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) balíček NuGet
 
 ### <a name="web-request-tracking"></a>Sledování webové žádosti
-Sestavy [čas a výsledek kód odpovědi](app-insights-asp-net.md) požadavků HTTP.
+Sestavy hello [čas a výsledek kód odpovědi](app-insights-asp-net.md) požadavků HTTP.
 
 * `Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.Web](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) balíček NuGet
@@ -76,64 +76,64 @@ Sestavy [čas a výsledek kód odpovědi](app-insights-asp-net.md) požadavků H
 * [Application Insights systému Windows Server](http://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) balíček NuGet.
 
 ### <a name="eventsource-tracking"></a>EventSource sledování
-`EventSourceTelemetryModule`Umožňuje nakonfigurovat událostí EventSource k odeslání do Application Insights jako trasování. Informace o sledování událostí EventSource najdete v tématu [pomocí událostí EventSource](app-insights-asp-net-trace-logs.md#using-eventsource-events).
+`EventSourceTelemetryModule`Umožňuje vám tooconfigure toobe událostí EventSource odeslána tooApplication Insights jako trasování. Informace o sledování událostí EventSource najdete v tématu [pomocí událostí EventSource](app-insights-asp-net-trace-logs.md#using-eventsource-events).
 
 * `Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule`
 * [Microsoft.ApplicationInsights.EventSourceListener](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
 
 ### <a name="etw-event-tracking"></a>Sledování událostí trasování událostí pro Windows
-`EtwCollectorTelemetryModule`Umožňuje nakonfigurovat události od zprostředkovatelů trasování událostí pro Windows k odeslání do Application Insights jako trasování. Informace o sledování události trasování událostí pro Windows najdete v tématu [události trasování událostí pro Windows pomocí](app-insights-asp-net-trace-logs.md#using-etw-events).
+`EtwCollectorTelemetryModule`Umožňuje tooconfigure události z toobe zprostředkovatelé trasování událostí pro Windows odeslány tooApplication Insights jako trasování. Informace o sledování události trasování událostí pro Windows najdete v tématu [události trasování událostí pro Windows pomocí](app-insights-asp-net-trace-logs.md#using-etw-events).
 
 * `Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule`
 * [Microsoft.ApplicationInsights.EtwCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
 
 ### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
-Balíček Microsoft.ApplicationInsights poskytuje [základní rozhraní API](https://msdn.microsoft.com/library/mt420197.aspx) sady SDK. Další moduly telemetrie použít, a můžete také [použijte jej k definování vlastní telemetrii](app-insights-api-custom-events-metrics.md).
+balíček Microsoft.ApplicationInsights Hello poskytuje hello [základní rozhraní API](https://msdn.microsoft.com/library/mt420197.aspx) z hello SDK. Hello telemetrická data z ostatních modulů použít, a můžete také [použít toodefine vlastní telemetrii](app-insights-api-custom-events-metrics.md).
 
 * Žádný záznam v souboru ApplicationInsights.config.
 * [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) balíček NuGet. Pokud instalujete právě tento NuGet, vygeneruje se žádný soubor .config.
 
 ## <a name="telemetry-channel"></a>Kanál telemetrie
-Kanál telemetrie spravuje ukládání do vyrovnávací paměti a přenos telemetrie do služby Application Insights.
+kanál telemetrie Hello spravuje ukládání do vyrovnávací paměti a přenos telemetrie toohello služby Application Insights.
 
-* `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel`je výchozím kanálu pro služby. Data ukládány v paměti.
-* `Microsoft.ApplicationInsights.PersistenceChannel`představuje alternativu pro konzolové aplikace. Žádná unflushed data ho můžete uložit do trvalého úložiště, když vaše aplikace zavře a odešle ho při spuštění aplikace znovu.
+* `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel`je výchozím hello kanálu pro služby. Data ukládány v paměti.
+* `Microsoft.ApplicationInsights.PersistenceChannel`představuje alternativu pro konzolové aplikace. Jakékoli úložiště toopersistent unflushed data ho můžete uložit, když vaše aplikace zavře a odešle ho při spuštění aplikace hello znovu.
 
 ## <a name="telemetry-initializers-aspnet"></a>Inicializátory telemetrie (ASP.NET)
 Inicializátory telemetrie nastavit kontext vlastnosti, které se odesílají společně s každou položkou telemetrie.
 
-Můžete [zápisu vlastní inicializátory](app-insights-api-filtering-sampling.md#add-properties) pro nastavení vlastností kontextu.
+Můžete [zápisu vlastní inicializátory](app-insights-api-filtering-sampling.md#add-properties) tooset vlastností kontextu.
 
-Standardní inicializátory jsou nastavené buď webové nebo Windows Server NuGet balíčků:
+Standardní inicializátory Hello jsou nastavené buď hello Web nebo Windows Server NuGet balíčky:
 
-* `AccountIdTelemetryInitializer`Nastaví vlastnost ID účtu.
-* `AuthenticatedUserIdTelemetryInitializer`Nastaví vlastnost AuthenticatedUserId jako sada SDK jazyka JavaScript.
-* `AzureRoleEnvironmentTelemetryInitializer`aktualizace `RoleName` a `RoleInstance` vlastnosti `Device` kontext pro všechny položky telemetrie s informacemi, které jsou extrahovány z Azure běhové prostředí.
-* `BuildInfoConfigComponentVersionTelemetryInitializer`aktualizace `Version` vlastnost `Component` kontext pro všechny položky telemetrie s hodnotou z extrahovat `BuildInfo.config` souboru vytvořeného pomocí MS Build.
-* `ClientIpHeaderTelemetryInitializer`aktualizace `Ip` vlastnost `Location` na základě kontextu všechny položky telemetrii `X-Forwarded-For` hlavičky protokolu HTTP žádosti.
-* `DeviceTelemetryInitializer`aktualizuje následující vlastnosti `Device` kontext pro všechny položky telemetrie.
-  * `Type`je nastavena na "Počítač"
-  * `Id`je nastavena na název domény počítače, kde je spuštěna webová aplikace.
-  * `OemName`je nastaven na hodnotu z extrahovat `Win32_ComputerSystem.Manufacturer` pole pomocí služby WMI.
-  * `Model`je nastaven na hodnotu z extrahovat `Win32_ComputerSystem.Model` pole pomocí služby WMI.
-  * `NetworkType`je nastaven na hodnotu z extrahovat `NetworkInterface`.
-  * `Language`je nastavena na název `CurrentCulture`.
-* `DomainNameRoleInstanceTelemetryInitializer`aktualizace `RoleInstance` vlastnost `Device` kontext pro všechny položky telemetrie s názvem domény počítače, kde je spuštěna webová aplikace.
-* `OperationNameTelemetryInitializer`aktualizace `Name` vlastnost `RequestTelemetry` a `Name` vlastnost `Operation` kontextu všechny položky telemetrie podle metoda HTTP, jakož i názvy ASP.NET MVC jsou řadič MVC a akce vyvolaná při zpracování požadavku.
-* `OperationIdTelemetryInitializer`nebo `OperationCorrelationTelemetryInitializer` aktualizace `Operation.Id` vlastností kontextu všechny položky telemetrie sledovat při zpracování žádosti o se automaticky generované `RequestTelemetry.Id`.
-* `SessionTelemetryInitializer`aktualizace `Id` vlastnost `Session` kontext pro všechny položky telemetrie s hodnotou z extrahovat `ai_session` generované kód ApplicationInsights JavaScript instrumentace spouštění v prohlížeči uživatele soubor cookie.
-* `SyntheticTelemetryInitializer`nebo `SyntheticUserAgentTelemetryInitializer` aktualizace `User`, `Session` a `Operation` kontexty vlastnosti všech položek telemetrie sledovat při zpracování požadavku z syntetické zdroje, například dostupnosti testů nebo vyhledávání modul robota. Ve výchozím nastavení [Průzkumníku metrik](app-insights-metrics-explorer.md) nezobrazí syntetické telemetrie.
+* `AccountIdTelemetryInitializer`Nastaví vlastnost AccountId hello.
+* `AuthenticatedUserIdTelemetryInitializer`Nastaví vlastnost AuthenticatedUserId hello jako sada podle hello JavaScript SDK.
+* `AzureRoleEnvironmentTelemetryInitializer`aktualizace hello `RoleName` a `RoleInstance` vlastnosti hello `Device` kontext pro všechny položky telemetrie vyplní hello Azure běhového prostředí.
+* `BuildInfoConfigComponentVersionTelemetryInitializer`aktualizace hello `Version` vlastnost hello `Component` kontext pro všechny položky telemetrie s hodnotou hello extrahoval z hello `BuildInfo.config` souboru vytvořeného pomocí MS Build.
+* `ClientIpHeaderTelemetryInitializer`aktualizace `Ip` vlastnost hello `Location` kontextu všechny položky telemetrie podle hello `X-Forwarded-For` hlavičky protokolu HTTP žádosti hello.
+* `DeviceTelemetryInitializer`aktualizace hello následující vlastnosti hello `Device` kontext pro všechny položky telemetrie.
+  * `Type`je nastaven příliš "Počítač"
+  * `Id`je nastavit název domény toohello hello počítače se spuštěným hello webové aplikace.
+  * `OemName`je nastavena hodnota toohello extrahoval z hello `Win32_ComputerSystem.Manufacturer` pole pomocí služby WMI.
+  * `Model`je nastavena hodnota toohello extrahoval z hello `Win32_ComputerSystem.Model` pole pomocí služby WMI.
+  * `NetworkType`je nastavena hodnota toohello extrahoval z hello `NetworkInterface`.
+  * `Language`je nastaven toohello název hello `CurrentCulture`.
+* `DomainNameRoleInstanceTelemetryInitializer`aktualizace hello `RoleInstance` vlastnost hello `Device` kontext pro všechny položky telemetrie s názvem domény hello hello počítače se spuštěným hello webové aplikace.
+* `OperationNameTelemetryInitializer`aktualizace hello `Name` vlastnost hello `RequestTelemetry` a hello `Name` vlastnost hello `Operation` kontextu všechny položky telemetrie podle metoda hello HTTP, jakož i názvy ASP.NET MVC kontroleru a akce vyvolaná tooprocess hello požadavek.
+* `OperationIdTelemetryInitializer`nebo `OperationCorrelationTelemetryInitializer` aktualizace hello `Operation.Id` vlastností kontextu všechny položky telemetrie sledovat při zpracování požadavku s hello automaticky generovány `RequestTelemetry.Id`.
+* `SessionTelemetryInitializer`aktualizace hello `Id` vlastnost hello `Session` kontext pro všechny položky telemetrie s hodnotou z hello extrahovat `ai_session` souboru cookie generované hello kód instrumentace ApplicationInsights JavaScript v prohlížeči hello uživatele.
+* `SyntheticTelemetryInitializer`nebo `SyntheticUserAgentTelemetryInitializer` aktualizace hello `User`, `Session` a `Operation` kontexty vlastnosti všech položek telemetrie sledovat při zpracování požadavku z syntetické zdroje, například dostupnosti testů nebo vyhledávání modul robota. Ve výchozím nastavení [Průzkumníku metrik](app-insights-metrics-explorer.md) nezobrazí syntetické telemetrie.
 
-    `<Filters>` Nastavte výchozí určující vlastnosti žádosti.
-* `UserAgentTelemetryInitializer`aktualizace `UserAgent` vlastnost `User` na základě kontextu všechny položky telemetrii `User-Agent` hlavičky protokolu HTTP žádosti.
-* `UserTelemetryInitializer`aktualizace `Id` a `AcquisitionDate` vlastnosti `User` kontext pro všechny položky telemetrie se extrahují z hodnoty `ai_user` souboru cookie generované kód instrumentace Application Insights JavaScript, který je spuštěný v prohlížeče uživatele.
-* `WebTestTelemetryInitializer`Nastaví id uživatele, id relace a vlastnosti syntetické zdroje pro požadavky HTTP, která pocházejí z [testy dostupnosti](app-insights-monitor-web-app-availability.md).
-  `<Filters>` Nastavte výchozí určující vlastnosti žádosti.
+    Hello `<Filters>` nastavte výchozí určující vlastnosti hello požadavků.
+* `UserAgentTelemetryInitializer`aktualizace hello `UserAgent` vlastnost hello `User` kontextu všechny položky telemetrie podle hello `User-Agent` hlavičky protokolu HTTP žádosti hello.
+* `UserTelemetryInitializer`aktualizace hello `Id` a `AcquisitionDate` vlastnosti `User` kontext pro všechny položky telemetrie s hodnotami z hello extrahovat `ai_user` souboru cookie generované kód instrumentace Application Insights JavaScript hello spuštěný v hello prohlížeče uživatele.
+* `WebTestTelemetryInitializer`Nastaví hello id uživatele, id relace a vlastnosti syntetické zdroje pro požadavky HTTP, která pocházejí z [testy dostupnosti](app-insights-monitor-web-app-availability.md).
+  Hello `<Filters>` nastavte výchozí určující vlastnosti hello požadavků.
 
-Pro aplikace .NET běžící v Service Fabric, můžete zahrnout `Microsoft.ApplicationInsights.ServiceFabric` balíček NuGet. Tento balíček obsahuje `FabricTelemetryInitializer`, přidává vlastnosti Service Fabric položkám telemetrie. Další informace najdete v tématu [GitHub stránce](https://go.microsoft.com/fwlink/?linkid=848457) o vlastnostech přidal tento balíček NuGet.
+Pro aplikace .NET běžící v Service Fabric, můžete zahrnout hello `Microsoft.ApplicationInsights.ServiceFabric` balíček NuGet. Tento balíček obsahuje `FabricTelemetryInitializer`, který přidává Service Fabric vlastnosti tootelemetry položky. Další informace najdete v tématu hello [GitHub stránce](https://go.microsoft.com/fwlink/?linkid=848457) o vlastnostech hello přidal tento balíček NuGet.
 
 ## <a name="telemetry-processors-aspnet"></a>Telemetrie procesorů (ASP.NET)
-Telemetrie procesory můžete filtrovat a upravit každou položku telemetrie těsně před odesláním ze sady SDK k portálu.
+Telemetrie procesory můžete filtrovat a upravit každou položku telemetrie těsně před odesláním z portálu toohello SDK hello.
 
 Můžete [psát vlastní telemetrii procesory](app-insights-api-filtering-sampling.md#filtering).
 
@@ -150,7 +150,7 @@ Tato možnost je ve výchozím nastavení zapnutá. Pokud vaše aplikace odešle
 
 ```
 
-Parametr poskytuje cíl, který algoritmus se pokusí dosáhnout. Každá instance sady SDK funguje nezávisle, takže pokud je server clusteru s podporou několik počítačů, skutečný objem telemetrie se násobí odpovídajícím způsobem.
+Parametr Hello poskytuje hello cíl, který hello algoritmus pokusí tooachieve. Nezávisle, každou instanci hello SDK funguje, takže pokud je server clusteru s podporou několik počítačů, skutečný objem hello telemetrie se násobí odpovídajícím způsobem.
 
 [Další informace o vzorkování](app-insights-sampling.md).
 
@@ -162,7 +162,7 @@ Je také standardní [vzorkování procesoru telemetrie](app-insights-api-filter
     <TelemetryProcessors>
      <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
 
-     <!-- Set a percentage close to 100/N where N is an integer. -->
+     <!-- Set a percentage close too100/N where N is an integer. -->
      <!-- E.g. 50 (=100/2), 33.33 (=100/3), 25 (=100/4), 20, 1 (=100/100), 0.1 (=100/1000) -->
      <SamplingPercentage>10</SamplingPercentage>
      </Add>
@@ -173,10 +173,10 @@ Je také standardní [vzorkování procesoru telemetrie](app-insights-api-filter
 
 
 ## <a name="channel-parameters-java"></a>Parametry kanálu (Java)
-Tyto parametry vliv na způsob sady Java SDK měli uložit a vyprázdnit telemetrická data, která shromažďuje.
+Tyto parametry vliv na způsob hello sady Java SDK měli uložit a vyprázdnění hello telemetrická data, která shromažďuje.
 
 #### <a name="maxtelemetrybuffercapacity"></a>MaxTelemetryBufferCapacity
-Počet položek telemetrie, které mohou být uloženy v úložišti sady SDK v paměti. Při dosažení tohoto počtu vyprázdní vyrovnávací paměť telemetrie – to znamená, položky telemetrie posílají se na serveru Application Insights.
+Hello počet položek telemetrie, které mohou být uloženy v úložišti hello SDK v paměti. Při dosažení tohoto počtu vyprázdní vyrovnávací paměť telemetrie hello – tedy hello telemetrie položky odesláním toohello Application Insights serveru.
 
 * Min: 1
 * Maximální počet: 1 000
@@ -194,7 +194,7 @@ Počet položek telemetrie, které mohou být uloženy v úložišti sady SDK v 
 ```
 
 #### <a name="flushintervalinseconds"></a>FlushIntervalInSeconds
-Určuje, jak často mají být data, která je uložená v úložišti v paměti vyprázdněny (odeslané do služby Application Insights).
+Určuje, jak často hello data, která je uložená v úložišti hello v paměti by měla být vyprázdněn (odeslané tooApplication Insights).
 
 * Min: 1
 * Maximální počet: 300
@@ -212,7 +212,7 @@ Určuje, jak často mají být data, která je uložená v úložišti v paměti
 ```
 
 #### <a name="maxtransmissionstoragecapacityinmb"></a>MaxTransmissionStorageCapacityInMB
-Určuje maximální velikost v MB, která je vymezena pro trvalé úložiště na místním disku. Toto úložiště se používá pro zachování telemetrie položky, které se nepodařilo přenést do koncového bodu služby Application Insights. Pokud velikost úložiště byly splněny, nové položky telemetrie se zahodí.
+Určuje hello maximální velikost v Megabajtech, která je vymezena toohello trvalé úložiště na místním disku hello. Toto úložiště se používá pro zachování telemetrie položky, které toobe přenášených toohello Application Insights koncového bodu se nezdařilo. Pokud velikost úložiště hello byly splněny, nové položky telemetrie se zahodí.
 
 * Min: 1
 * Maximální počet: 100
@@ -232,11 +232,11 @@ Určuje maximální velikost v MB, která je vymezena pro trvalé úložiště n
 
 
 ## <a name="instrumentationkey"></a>InstrumentationKey
-Určuje prostředek Application Insights, ve kterém se zobrazí data. Obvykle vytvoříte prostředek samostatné samostatné klíčem pro každý z vašich aplikací.
+Určuje, ve kterém se zobrazí data prostředek Application Insights hello. Obvykle vytvoříte prostředek samostatné samostatné klíčem pro každý z vašich aplikací.
 
-Pokud chcete nastavit klíč dynamicky – například pokud chcete odeslat výsledky z vaší aplikace do různých prostředků – můžete vynechat klíč z konfiguračního souboru a nastavení v kódu.
+Pokud chcete klíč hello tooset dynamicky – například, pokud chcete výsledky toosend z vašich prostředků toodifferent aplikace – můžete vynechat hello klíč z hello konfiguračního souboru a nastavení v kódu.
 
-Klíč pro všechny instance TelemetryClient, včetně standardní telemetrie moduly nastavit klíč v TelemetryConfiguration.Active. V metodě inicializace, jako jsou například souboru global.aspx.cs v službě ASP.NET, postupujte takto:
+klíč hello tooset pro všechny instance TelemetryClient, včetně standardní telemetrie moduly hello v nastavit TelemetryConfiguration.Active. V metodě inicializace, jako jsou například souboru global.aspx.cs v službě ASP.NET, postupujte takto:
 
 ```C#
 
@@ -249,7 +249,7 @@ Klíč pro všechny instance TelemetryClient, včetně standardní telemetrie mo
       //...
 ```
 
-Pokud chcete odeslat sadu událostí na jiný prostředek, můžete nastavit klíč pro konkrétní TelemetryClient:
+Pokud chcete toosend konkrétní sada události tooa různých prostředků, můžete nastavit hello klíč pro konkrétní TelemetryClient:
 
 ```C#
 
@@ -260,10 +260,10 @@ Pokud chcete odeslat sadu událostí na jiný prostředek, můžete nastavit kl�
 
 ```
 
-Chcete-li získat nový klíč, [vytvoření nového prostředku na portálu služby Application Insights][new].
+tooget nový klíč, [vytvořte nový prostředek Application Insights portálu hello][new].
 
 ## <a name="next-steps"></a>Další kroky
-[Další informace o rozhraní API][api].
+[Další informace o hello rozhraní API][api].
 
 <!--Link references-->
 

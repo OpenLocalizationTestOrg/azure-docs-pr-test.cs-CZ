@@ -1,5 +1,5 @@
 ---
-title: "Elementy Azure Active Directory s B2B spolupráce e-mailová pozvánka | Microsoft Docs"
+title: "prvky aaaThe e-mailová pozvánka hello Azure Active Directory s B2B spolupráce | Microsoft Docs"
 description: "Azure Active Directory s B2B spolupráce pozvánku e-mailové šablony"
 services: active-directory
 documentationcenter: 
@@ -15,60 +15,60 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: 458a2cab13b7e83f120e0926a95d454070181dfb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f4908014d71a63442bbdca2182f54c7a79675a82
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="the-elements-of-the-b2b-collaboration-invitation-email"></a>Elementy e-mail pozvánku spolupráce B2B
+# <a name="hello-elements-of-hello-b2b-collaboration-invitation-email"></a>elementy Hello hello e-mailová pozvánka pro spolupráci B2B
 
-E-mailů pozvánku je zásadní součástí a převeďte partnery na palubě jako uživatelé spolupráce B2B ve službě Azure AD. Můžete je používat k příjemce důvěryhodnosti zvýšit. můžete přidat legitimitu a sociálních ověření k e-mailu, abyste měli jistotu příjemce funguje celý výběr **Začínáme** tlačítko pro přijetí pozvánky. Tento vztah důvěryhodnosti je, že klíč znamená snížení sdílení tření. A budete chtít také zajistit e-mailu vypadají skvěle!
+E-mailů pozvánku jsou partnery toobring zásadní součástí na palubě jako uživatelé spolupráce B2B ve službě Azure AD. Můžete je používat důvěryhodnosti tooincrease hello příjemce. můžete přidat legitimitu a sociálních doklad toohello e-mailu, zda text hello příjemce toomake funguje celý výběr hello **Začínáme** tlačítko tooaccept hello pozvánku. Tento vztah důvěryhodnosti je, že klíč znamená tooreduce sdílení tření. A je také potřeba toomake hello e-mailu vzhledu skvělé!
 
 ![E-mailová pozvánka Azure AD s B2b](media/active-directory-b2b-invitation-email/invitation-email.png)
 
-## <a name="explaining-the-email"></a>Vysvětlení e-mailu
-Podívejme se na několik elementy e-mailu, abyste věděli, jak nejlépe používat jejich funkce.
+## <a name="explaining-hello-email"></a>Vysvětlení hello e-mailu
+Podívejme na několik elementy hello e-mailů, abyste věděli, jak nejlepší toouse jejich možnosti.
 
 ### <a name="subject"></a>Předmět
-Předmět e-mailu se následující následující: přijměte naše pozvání &lt;tenantname&gt; organizace
+Hello předmět e-mailu hello následuje hello následující vzor: přijměte naše pozvání toohello &lt;tenantname&gt; organizace
 
 ### <a name="from-address"></a>Z adresy
-Používáme LinkedIn jako vzor pro adresa odesílatele.  Musí být jasné, kdo je pozvání odeslal a ze společnosti a také vysvětlení, že e-mailu, pochází z Microsoftu e-mailovou adresu. Formát je: &lt;zobrazovaný název pozvánky&gt; z &lt;tenantname&gt; (přes Microsoft) <invites@microsoft.com&gt;
+Používáme LinkedIn jako vzor pro hello z adresy.  Měli byste být zrušte kdo je hello pozvánky a ze společnosti a také vysvětlení, že e-mailové hello pochází z e-mailovou adresu společnosti Microsoft. Formát Hello: &lt;zobrazovaný název pozvánky&gt; z &lt;tenantname&gt; (přes Microsoft) <invites@microsoft.com&gt;
 
 ### <a name="reply-to"></a>Odpovědět
-Odpověď pro e-mailu je nastavena k e-mailu pozval vás, pokud je k dispozici, takže odpovídání na e-mailu, odešle e-mailem zpátky do pozvání odeslal.
+Hello odpovědi tooemail nastavena e-mailu pozval toohello vás, pokud je k dispozici, tak, aby odeslání odpovědi, že odešle e-mailu toohello back toohello pozvánky e-mailu.
 
 ### <a name="branding"></a>Branding
-Pozvánku e-mailů z vašeho používání klienta firemního brandingu, které může nastavili pro vašeho klienta. Pokud budete chtít využít tuto funkci využít [sem](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) jsou uvedeny podrobnosti o tom, jak ho nakonfigurovat. Banner s logem se zobrazí v e-mailu. Postupujte podle velikost bitové kopie kvality pokyny a [sem](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) pro dosažení co nejlepších výsledků. Kromě toho název společnosti také se zobrazí v volání akce.
+Hello pozvánku e-mailů z vašeho klienta použít hello firemní branding, který může mít nastavíte pro vašeho klienta. Pokud chcete tuto funkci využít tootake [sem](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) jsou hello podrobnosti o tom, tooconfigure ho. Hello banner s logem se zobrazí v e-mailu hello. Postupujte podle hello velikost bitové kopie kvality pokyny a [sem](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) pro dosažení co nejlepších výsledků. Kromě toho název společnosti hello taky se zobrazí v tooaction volání hello.
 
-### <a name="call-to-action"></a>Výzva k akci
-Volání akce se skládá ze dvou částí: vysvětlením, proč příjemce přijal e-mailu a co příjemce je se zobrazí dotaz, jak je řešit.
-- V části "Proč" lze řešit pomocí následujícího vzorce: jste byli pozváni přístup k aplikacím v &lt;tenantname&gt; organizace
+### <a name="call-tooaction"></a>Volání tooaction
+Hello volání tooaction se skládá ze dvou částí: vysvětlením, proč hello příjemce přijal hello e-mailu a jaké příjemce hello je požadováno toodo o něm.
+- Hello "Proč" části se dají řešit pomocí hello následující vzor: jste byla pozvané tooaccess aplikace v hello &lt;tenantname&gt; organizace
 
-- A "co zobrazí se výzva k provést" části je indikován přítomnost **Začínáme** tlačítko. Pokud příjemce byl přidán bez nutnosti pozvánky, toto tlačítko nezobrazí.
+- A hello "co jste se se zobrazí dotaz, toodo" část je indikován hello přítomnost hello **Začínáme** tlačítko. Pokud příjemce hello přidala bez nutnosti hello pozvánky, toto tlačítko nezobrazí.
 
 ### <a name="inviters-information"></a>Pozval vás na informace
-Pozvání odeslal na zobrazované jméno je obsažena v e-mailu. A kromě toho, pokud jste nastavili profilový obrázek pro váš účet Azure AD, pozváním e-mailu, budou obsahovat tento obrázek také. Oba mají zvýšit důvěru vaše příjemce e-mailu.
+Odesílatel Hello pozvánky zobrazovaný název je součástí hello e-mailu. A kromě toho, pokud jste nastavili profilový obrázek pro váš účet Azure AD, hello pozvání e-mailu budou obsahovat tento obrázek také. Obě jsou určený tooincrease vaše příjemce důvěru hello e-mailu.
 
-Pokud jste ještě profilový obrázek, se zobrazí ikona s iniciály pozvání odeslal na místo na obrázku:
+Pokud jste ještě profilový obrázek, se zobrazí ikona s pozval hello vás iniciály místo hello obrázek:
 
-  ![Zobrazení pozvánky iniciály](media/active-directory-b2b-invitation-email/inviters-initials.png)
+  ![zobrazení iniciály pozvánky hello](media/active-directory-b2b-invitation-email/inviters-initials.png)
 
 ### <a name="body"></a>Tělo
-Text obsahuje zprávu, která vytvoří pozvání odeslal nebo předána pozvánku rozhraní API. Je textová oblast, takže nezpracovává značky HTML z bezpečnostních důvodů.
+Hello text obsahuje uvítací zprávu této pozvánky hello vytvoří nebo předána hello pozvánku rozhraní API. Je textová oblast, takže nezpracovává značky HTML z bezpečnostních důvodů.
 
 ### <a name="footer-section"></a>Sekce zápatí
-Zápatí obsahuje značky společnosti Microsoft a umožňuje příjemce vědět, pokud e-mailu byla odeslaná z Nesledované alias. Zvláštní případy:
+zápatí Hello obsahuje hello značky společnosti Microsoft a umožňuje hello příjemce vědět, pokud e-mailu hello byla odeslaná z Nesledované alias. Zvláštní případy:
 
-- Pozvání odeslal nemá e-mailovou adresu v pozváním klientů
+- Odesílatel Hello pozvánky nemá e-mailovou adresu v hello pozvání klientů
 
-  ![Obrázek pozval vás nemá e-mailovou adresu v pozváním klientů](media/active-directory-b2b-invitation-email/inviter-no-email.png)
+  ![Obrázek pozval vás nemá e-mailovou adresu v hello pozvání klientů](media/active-directory-b2b-invitation-email/inviter-no-email.png)
 
 
-- Příjemce nemusí uplatnit pozvánku
+- příjemce Hello nepotřebuje tooredeem hello Pozvánka
 
-  ![Pokud není třeba uplatnit pozvánku k příjemce](media/active-directory-b2b-invitation-email/when-recipient-doesnt-redeem.png)
+  ![Pokud příjemce nepotřebuje tooredeem Pozvánka](media/active-directory-b2b-invitation-email/when-recipient-doesnt-redeem.png)
 
 
 ## <a name="next-steps"></a>Další kroky

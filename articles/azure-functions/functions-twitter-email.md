@@ -1,6 +1,6 @@
 ---
-title: "Vytvoří funkci, která se integruje se službou Azure Logic Apps | Microsoft Docs"
-description: "Vytvoří funkci, která se integruje se službou Azure Logic Apps a kognitivní služby Azure ke kategorizaci postojích tweet a odesílání oznámení, když postojích je nízký."
+title: "aaaCreate funkci, která se integruje se službou Azure Logic Apps | Microsoft Docs"
+description: "Vytvoří funkci, která se integruje se službou Azure Logic Apps a kognitivní služby Azure postojích toocategorize tweet a odesílání oznámení, když postojích je nízký."
 services: functions, logic-apps, cognitive-services
 keywords: "pracovní postup, cloudové aplikace, cloudové služby, firemní procesy, systémová integrace, integrace podnikových aplikací, enterprise application integration, EAI"
 documentationcenter: 
@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 4a5dc668e21c5328b308c8f5852aaa922232374d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e176bd946af9a3684b3ad0e4b1bed1c3ee344019
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Vytvoří funkci, která se integruje se službou Azure Logic Apps
 
-Azure Functions se integruje se službou Azure Logic Apps v Návrháři logiku aplikace. Tato integrace umožňuje využívat výpočetní výkon funkcí v orchestrations s jinými Azure a služby třetích stran. 
+Azure Functions se integruje s Azure Logic Apps v hello návrhář aplikace logiky. Tato integrace umožňuje použít hello výpočetní výkon funkcí v orchestrations s jinými Azure a služby třetích stran. 
 
-V tomto kurzu se dozvíte, jak použít funkce s Logic Apps a kognitivní služby Azure k analýze postojích z příspěvky služby Twitter. Funkce protokolu HTTP aktivované rozděluje tweetů jako zelené, žluté nebo červené podle skóre postojích. E-mail je odeslán, když je zjištěna nízký postojích. 
+Tento kurz ukazuje, jak funguje toouse s Logic Apps a kognitivní služby Azure postojích tooanalyze z příspěvky služby Twitter. Funkce protokolu HTTP aktivované rozděluje tweetů jako zelené, žluté nebo červené podle skóre postojích hello. E-mail je odeslán, když je zjištěna nízký postojích. 
 
 ![první dva kroky Image aplikace v návrháři aplikace logiky](media/functions-twitter-email/designer1.png)
 
@@ -35,68 +35,68 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvoření účtu kognitivní Services.
 > * Vytvoří funkci, která rozděluje tweet postojích.
-> * Vytvoření aplikace logiky, která se připojuje ke službě Twitter.
-> * Detekce postojích přidáte do aplikace logiky. 
-> * Připojení aplikace logiky funkce.
-> * Odešlete e-mail podle odpověď z funkce.
+> * Vytvoření aplikace logiky, která se připojuje tooTwitter.
+> * Přidáte aplikaci logiky toohello postojích detekce. 
+> * Připojte hello logiku aplikace toohello funkce.
+> * Odešlete e-mail podle hello odpověď z funkce hello.
 
 ## <a name="prerequisites"></a>Požadavky
 
 + Aktivní [Twitter](https://twitter.com/) účtu. 
 + [Outlook.com](https://outlook.com/) účet (pro posílání oznámení).
-+ Toto téma používá jako výchozí bod prostředky, které jste vytvořili v kroku [Vytvoření první funkce na portálu Azure Portal](functions-create-first-azure-function.md).  
-Pokud jste tak již neučinili, dokončete tyto kroky teď k vytvoření aplikace funkce.
++ Toto téma se používá jako jeho výchozí prostředky hello bodu vytvořené v [vytvořit svoji první funkci z portálu Azure hello](functions-create-first-azure-function.md).  
+Pokud jste tak již neučinili, dokončete tyto kroky nyní toocreate funkce aplikace.
 
 ## <a name="create-a-cognitive-services-account"></a>Vytvoření účtu kognitivní Services
 
-Účet kognitivní Services je požadovaná pro zjištění myšlenkou tweetů monitorovány.
+Účet kognitivní Services je postojích hello požadované toodetect z tweetů monitorovány.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
 
-2. Klikněte na tlačítko **Nový** v levém horním rohu webu Azure Portal.
+2. Klikněte na tlačítko hello **nový** nalezeno tlačítko na hello levém horním rohu hello portálu Azure.
 
-3. Klikněte na tlačítko **Data + analýzy** > **kognitivní služby**. Pak používat nastavení zadané v tabulce, přijměte podmínky a zkontrolujte **připnout na řídicí panel**.
+3. Klikněte na tlačítko **Data + analýzy** > **kognitivní služby**. Pak použít nastavení hello jako zadaný v tabulce hello, přijměte podmínky hello a zkontrolujte **Pin toodashboard**.
 
     ![Vytvoření okna kognitivní účtu](media/functions-twitter-email/cog_svcs_account.png)
 
     | Nastavení      |  Navrhovaná hodnota   | Popis                                        |
     | --- | --- | --- |
     | **Název** | MyCognitiveServicesAccnt | Zvolte název jedinečný účet. |
-    | **Typ rozhraní API** | Rozhraní Text Analytics API | Rozhraní API použít k analýze textu.  |
+    | **Typ rozhraní API** | Rozhraní Text Analytics API | Rozhraní API používá tooanalyze text.  |
     | **Umístění** | Západní USA | V současné době pouze **západní USA** je k dispozici pro Analýza textu. |
-    | **Cenová úroveň** | F0 | Začněte s nejnižší úroveň. Pokud spustíte z volání, škálovat na vyšší úroveň.|
-    | **Skupina prostředků** | myResourceGroup | Používejte stejnou skupinu prostředků pro všechny služby v tomto kurzu.|
+    | **Cenová úroveň** | F0 | Začněte s nejnižší úroveň hello. Pokud spustíte z volání, škálovat tooa vyšší úroveň.|
+    | **Skupina prostředků** | myResourceGroup | Použití hello stejnou skupinu prostředků pro všechny služby v tomto kurzu.|
 
-4. Klikněte na tlačítko **vytvořit** k vytvoření účtu. Po vytvoření účtu klikněte na tlačítko vaší nové kognitivní služby účet připnuli k řídicímu panelu. 
+4. Klikněte na tlačítko **vytvořit** toocreate váš účet. Po vytvoření účtu hello, klikněte na tlačítko nový řídicí panel kognitivní služby definovaného toohello účtu. 
 
-5. V rámci účtu, klikněte na **klíče**a poté zkopírujte hodnotu **klíč 1** a uložte ho. Tento klíč použijete pro připojení k účtu služby kognitivní aplikaci logiky. 
+5. V hello účet, klikněte na **klíče**a poté zkopírujte hodnotu hello **klíč 1** a uložte ho. Můžete použít tento klíč tooconnect hello logiku aplikace tooyour účtu kognitivní Services. 
  
     ![Klíče](media/functions-twitter-email/keys.png)
 
-## <a name="create-the-function"></a>Vytvoření funkce
+## <a name="create-hello-function"></a>Vytvoření funkce hello
 
-Funkce nabízí skvělý způsob, jak přesměrování zpracování úloh zpracování v pracovním postupu logiku aplikace. Tento kurz používá funkce protokolu HTTP aktivované ke zpracování tweet postojích skóre z kognitivní služeb a vrátit hodnotu kategorie.  
+Funkce nabízí skvělý způsob toooffload úloh zpracování v pracovním postupu logiku aplikace. Tento kurz používá protokolu HTTP aktivované funkce tooprocess tweet postojích skóre z kognitivní služeb a vrátí hodnotu kategorie.  
 
-1. Rozbalte funkce aplikace, klikněte na tlačítko  **+**  vedle položky **funkce**, klikněte na tlačítko **HTTPTrigger** šablony. Typ `CategorizeSentiment` pro funkci **název** a klikněte na tlačítko **vytvořit**.
+1. Rozbalte funkce aplikace, klikněte na tlačítko hello  **+**  tlačítko vedle příliš**funkce**, klikněte na tlačítko hello **HTTPTrigger** šablony. Typ `CategorizeSentiment` pro funkci hello **název** a klikněte na tlačítko **vytvořit**.
 
     ![Okno aplikace funkce, funkce +](media/functions-twitter-email/add_fun.png)
 
-2. Nahraďte obsah souboru run.csx následující kód a potom klikněte na **Uložit**:
+2. Nahraďte hello obsah souboru run.csx hello hello následující kód a potom klikněte na **Uložit**:
 
     ```c#
     using System.Net;
     
     public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
     {
-        // The sentiment category defaults to 'GREEN'. 
+        // hello sentiment category defaults too'GREEN'. 
         string category = "GREEN";
     
-        // Get the sentiment score from the request body.
+        // Get hello sentiment score from hello request body.
         double score = await req.Content.ReadAsAsync<double>();
-        log.Info(string.Format("The sentiment score received is '{0}'.",
+        log.Info(string.Format("hello sentiment score received is '{0}'.",
                     score.ToString()));
     
-        // Set the category based on the sentiment score.
+        // Set hello category based on hello sentiment score.
         if (score < .3)
         {
             category = "RED";
@@ -108,56 +108,56 @@ Funkce nabízí skvělý způsob, jak přesměrování zpracování úloh zpraco
         return req.CreateResponse(HttpStatusCode.OK, category);
     }
     ```
-    Tento kód funkce vrátí barevné kategorie podle skóre postojích přijaté v požadavku. 
+    Tento kód funkce vrátí barevné kategorie podle skóre postojích hello dostali hello požadavku. 
 
-3. Chcete-li otestovat funkci, klikněte na tlačítko **testování** na pravém rozbalte karta testu. Zadejte hodnotu `0.2` pro **text žádosti**a potom klikněte na **spustit**. Hodnota **RED** je vrácený v textu odpovědi. 
+3. Funkce hello tootest, klikněte na tlačítko **Test** v karta hello nejvíce vpravo tooexpand hello testu. Zadejte hodnotu `0.2` pro hello **text žádosti**a potom klikněte na **spustit**. Hodnota **RED** je vrácený v textu hello hello odpovědi. 
 
-    ![Testování funkce na portálu Azure](./media/functions-twitter-email/test.png)
+    ![Testování funkce hello v hello portálu Azure](./media/functions-twitter-email/test.png)
 
 Nyní máte funkci, která rozděluje postojích skóre. Dále vytvoříte aplikaci logiky, která integruje funkce s vaše účty služby Twitter a kognitivní služby. 
 
 ## <a name="create-a-logic-app"></a>Vytvoření aplikace logiky   
 
-1. Na portálu Azure klikněte **nový** nalezeno tlačítko v levém horním rohu portálu Azure.
+1. V hello portálu Azure, klikněte na tlačítko hello **nový** nalezeno tlačítko na hello levém horním rohu hello portálu Azure.
 
-2. Klikněte na tlačítko **Enterprise integrace** > **aplikace logiky**. Pak používat nastavení zadané v tabulce, zkontrolujte **připnout na řídicí panel**a klikněte na tlačítko **vytvořit**.
+2. Klikněte na tlačítko **Enterprise integrace** > **aplikace logiky**. Poté použití hello nastavení zadané v tabulce hello, zkontrolujte **Pin toodashboard**a klikněte na tlačítko **vytvořit**.
  
-4. Poté zadejte **název** jako `TweetSentiment`používat nastavení zadané v tabulce, přijměte podmínky a zkontrolujte **připnout na řídicí panel**.
+4. Poté zadejte **název** jako `TweetSentiment`, použijte nastavení hello uvedeného v tabulce hello, přijměte podmínky hello a zkontrolujte **Pin toodashboard**.
 
-    ![Vytvoření aplikace logiky na portálu Azure](./media/functions-twitter-email/new_logicApp.png)
+    ![Vytvoření aplikace logiky v hello portálu Azure](./media/functions-twitter-email/new_logicApp.png)
 
     | Nastavení      |  Navrhovaná hodnota   | Popis                                        |
     | ----------------- | ------------ | ------------- |
     | **Název** | TweetSentiment | Vyberte vhodný název pro vaši aplikaci. |
-    | **Skupina prostředků** | myResourceGroup | Rozhraní API použít k analýze textu.  |
-    | **Umístění** | Východ USA | Vyberte umístění blízko vás. |
-    | **Skupina prostředků** | myResourceGroup | Zvolte stejné existující skupinu prostředků, jako před.|
+    | **Skupina prostředků** | myResourceGroup | Rozhraní API používá tooanalyze text.  |
+    | **Umístění** | Východ USA | Zvolte tooyou zavřít umístění. |
+    | **Skupina prostředků** | myResourceGroup | Zvolte hello stejné existující skupině prostředků jako předtím.|
 
-4. Klikněte na tlačítko **vytvořit** k vytvoření aplikace logiky. Po vytvoření aplikace, klikněte na nové aplikace logiky připnuli k řídicímu panelu. Potom v návrháři aplikace logiky, přejděte dolů a kliknutím **prázdné aplikace logiky** šablony. 
+4. Klikněte na tlačítko **vytvořit** toocreate svou aplikaci logiky. Po vytvoření aplikace hello klikněte na tlačítko nový řídicí panel definovaného toohello aplikace logiky. Pak v hello návrhář aplikace logiky, posuňte se dolů a klikněte na hello **prázdné aplikace logiky** šablony. 
 
     ![Prázdná šablona aplikace logiky](media/functions-twitter-email/blank.png)
 
-Návrhář aplikace logiky teď můžete přidat do aplikace služeb a aktivační události.
+Teď můžete použít hello logiku aplikace Návrhář tooadd služby a aktivuje tooyour aplikace.
 
-## <a name="connect-to-twitter"></a>Připojení k Twitteru
+## <a name="connect-tootwitter"></a>Připojit tooTwitter
 
-Nejprve vytvořte připojení ke svému účtu služby Twitter. Aplikace logiky se dotazuje na tweetů, které aktivují aplikaci spustit.
+Nejprve vytvořte připojení tooyour účtu sítě Twitter. aplikace logiky Hello se dotazuje na tweetů, které aktivují toorun aplikace hello.
 
-1. V návrháři, klikněte na tlačítko **Twitter** služby a klikněte na tlačítko **při odeslání nové tweet** aktivační události. Přihlaste se k účtu služby Twitter a autorizaci Logic Apps, abyste používat svůj účet.
+1. V Návrháři hello, klikněte na tlačítko hello **Twitter** služby a klikněte na tlačítko hello **při odeslání nové tweet** aktivační události. Přihlaste se tooyour účtu sítě Twitter a autorizovat Logic Apps toouse váš účet.
 
-2. Použijte nastavení aktivační události služby Twitter jako zadaný v tabulce. 
+2. Použijte nastavení aktivační události služby Twitter hello jako tabulka hello. 
 
     ![Nastavení konektoru služby Twitter.](media/functions-twitter-email/azure_tweet.png)
 
     | Nastavení      |  Navrhovaná hodnota   | Popis                                        |
     | ----------------- | ------------ | ------------- |
-    | **Hledaný text** | #Azure | Použijte hashtagu, který je dostatečně oblíbených pro generovat nové tweetů zvolené intervalu. Při použití úroveň Free a vaše hashtag je příliš oblíbených, můžete rychle použít až transakce ve vašem účtu kognitivní služby. |
-    | **Frekvence** | Minuta | Frekvence jednotka použít pro cyklické dotazování služby Twitter.  |
-    | **Interval** | 15 | Uplynulý čas mezi požadavků služby Twitter, v jednotkách frekvence. |
+    | **Hledaný text** | #Azure | Použijte hashtagu, který je dostatečně oblíbených pro nové tweetů toogenerate hello vybrali intervalu. Při použití úroveň Free hello a vaše hashtag je příliš oblíbených, můžete rychle použít hello transakce ve vašem účtu kognitivní služby. |
+    | **Frekvence** | Minuta | jednotka frekvence Hello sloužící pro cyklické dotazování služby Twitter.  |
+    | **Interval** | 15 | Uplynulý čas Hello mezi požadavků služby Twitter, v jednotkách frekvence. |
 
-3.  Klikněte na tlačítko **Uložit** pro připojení k účtu služby Twitter. 
+3.  Klikněte na tlačítko **Uložit** tooconnect tooyour účtu sítě Twitter. 
 
-Aplikace je teď připojený k Twitter. V dalším kroku připojíte k Analýza textu k detekci myšlenkou shromážděných tweetů.
+Nyní je vaše aplikace připojená tooTwitter. V dalším kroku připojíte tootext analytics toodetect hello představu o shromážděných tweetů.
 
 ## <a name="add-sentiment-detection"></a>Přidat postojích detekce
 
@@ -165,23 +165,23 @@ Aplikace je teď připojený k Twitter. V dalším kroku připojíte k Analýza 
 
     ![Nový krok a potom přidat akci.](media/functions-twitter-email/new_step.png)
 
-2. V **vybrat akci**, klikněte na tlačítko **Analýza textu**a pak klikněte na tlačítko **zjistit postojích** akce.
+2. V **vybrat akci**, klikněte na tlačítko **Analýza textu**a potom klikněte na hello **zjistit postojích** akce.
 
     ![Zjištění postojích](media/functions-twitter-email/detect_sent.png)
 
-3. Zadejte například název připojení `MyCognitiveServicesConnection`, vložte klíč pro vaše kognitivní služby účtu, který jste uložili a klikněte na tlačítko **vytvořit**.  
+3. Zadejte například název připojení `MyCognitiveServicesConnection`, vložte hello klíč pro vaše kognitivní služby účtu, který jste uložili a klikněte na tlačítko **vytvořit**.  
 
-4. Klikněte na tlačítko **Text k analýze** > **Tweet text**a potom klikněte na **Uložit**.  
+4. Klikněte na tlačítko **Text tooanalyze** > **Tweet text**a potom klikněte na **Uložit**.  
 
     ![Zjištění postojích](media/functions-twitter-email/ds_tta.png)
 
-Teď, když je nakonfigurovaná postojích detekce, můžete přidat připojení k vaší funkci, která spotřebovává výstup postojích skóre.
+Teď, když je nakonfigurovaná postojích detekce, můžete přidat funkci tooyour připojení, která využívá hello postojích skóre výstup.
 
-## <a name="connect-sentiment-output-to-your-function"></a>Připojení k vaší funkci postojích výstup
+## <a name="connect-sentiment-output-tooyour-function"></a>Připojit postojích výstup tooyour funkce
 
-1. V návrháři aplikace logiky, klikněte na tlačítko **nový krok** > **přidat akci**a potom klikněte na **Azure Functions**. 
+1. V hello návrhář aplikace logiky, klikněte na **nový krok** > **přidat akci**a potom klikněte na **Azure Functions**. 
 
-2. Klikněte na tlačítko **zvolte Azure funkce**, vyberte **CategorizeSentiment** funkce, které jste vytvořili dříve.  
+2. Klikněte na tlačítko **zvolte Azure funkce**, vyberte hello **CategorizeSentiment** funkce, které jste vytvořili dříve.  
 
     ![Azure funkce pole zobrazující zvolte Azure funkce](media/functions-twitter-email/choose_fun.png)
 
@@ -189,69 +189,69 @@ Teď, když je nakonfigurovaná postojích detekce, můžete přidat připojení
 
     ![Hodnocení](media/functions-twitter-email/trigger_score.png)
 
-Nyní funkce se aktivuje, když postojích skóre se odesílá z aplikace logiky. Barevně kategorie je do aplikace logiky vráceným funkcí. Dál přidejte e-mailové oznámení, odeslaný při hodnotu postojích **RED** se vrátí z funkce. 
+Nyní funkce se aktivuje, když postojích skóre se odesílá z aplikace logiky hello. Barevně kategorie je aplikace logiky toohello vrácené funkcí hello. Dál přidejte e-mailové oznámení, odeslaný při hodnotu postojích **RED** je vrácen z funkce hello. 
 
 ## <a name="add-email-notifications"></a>Přidání e-mailových oznámení
 
-Poslední část pracovního postupu je pro aktivaci e-mailu, když myšlenkou skóre pro magnitudu jako _RED_. Toto téma používá konektor Outlook.com. Abyste mohli provést podobné kroky k používání konektoru z Gmailu nebo Office 365 Outlook.   
+poslední část Hello hello pracovního postupu je tootrigger e-mailu, když hello postojích skóre pro magnitudu jako _RED_. Toto téma používá konektor Outlook.com. Můžete provést podobné kroky toouse konektor z Gmailu nebo Office 365 Outlook.   
 
-1. V návrháři aplikace logiky, klikněte na tlačítko **nový krok** > **přidat podmínku**. 
+1. V hello návrhář aplikace logiky, klikněte na **nový krok** > **přidat podmínku**. 
 
 2. Klikněte na tlačítko **zvolte hodnotu**, pak klikněte na tlačítko **textu**. Vyberte **rovná**, klikněte na tlačítko **zvolte hodnotu** a typ `RED`a klikněte na tlačítko **Uložit**. 
 
-    ![Přidáte podmínku do aplikace logiky.](media/functions-twitter-email/condition.png)
+    ![Přidáte aplikaci logiky toohello podmínku.](media/functions-twitter-email/condition.png)
 
-3. V **Pokud ano, NEDĚLAT nic**, klikněte na tlačítko **přidat akci**, vyhledejte `outlook.com`, klikněte na tlačítko **e-mailovou zprávu**a přihlaste se ke svému účtu Outlook.com.
+3. V **Pokud ano, NEDĚLAT nic**, klikněte na tlačítko **přidat akci**, vyhledejte `outlook.com`, klikněte na tlačítko **e-mailovou zprávu**a přihlaste se tooyour účet Outlook.com.
     
-    ![Vyberte akci pro podmínku.](media/functions-twitter-email/outlook.png)
+    ![Vyberte akci pro podmínku hello.](media/functions-twitter-email/outlook.png)
 
     > [!NOTE]
     > Pokud nemáte účet Outlook.com, můžete vybrat jiný konektor, třeba z Gmailu nebo Office 365 Outlook
 
-4. V **e-mailovou zprávu** akce, použijte nastavení e-mailu jako zadané v tabulce. 
+4. V hello **e-mailovou zprávu** akci, zadat nastavení e-mailu hello použijte jako v tabulce hello. 
 
-    ![Konfigurace e-mailu pro odeslání e-mailu akce.](media/functions-twitter-email/sendemail.png)
+    ![Nakonfigurujte hello e-mailu pro odeslání hello akce e-mailu.](media/functions-twitter-email/sendemail.png)
 
     | Nastavení      |  Navrhovaná hodnota   | Popis  |
     | ----------------- | ------------ | ------------- |
-    | **K** | Zadejte e-mailovou adresu | E-mailovou adresu, která bude přijímat oznámení. |
-    | **Předmět** | Záporné tweet postojích zjistil  | Předmět e-mailové oznámení.  |
-    | **Text** | Text tweet, umístění | Klikněte **Tweet text** a **umístění** parametry. |
+    | **K** | Zadejte e-mailovou adresu | Hello e-mailovou adresu, která obdrží oznámení hello. |
+    | **Předmět** | Záporné tweet postojích zjistil  | Hello předmět hello e-mailové oznámení.  |
+    | **Text** | Text tweet, umístění | Klikněte na tlačítko hello **Tweet text** a **umístění** parametry. |
 
 5.  Klikněte na **Uložit**.
 
-Teď, když je dokončení pracovního postupu, můžete povolit aplikaci logiky a najdete v části funkce v práci.
+Teď, když pracovní postup hello je dokončen, můžete povolit aplikaci logiky hello a najdete v části funkce hello v práci.
 
-## <a name="test-the-workflow"></a>Testování pracovního postupu
+## <a name="test-hello-workflow"></a>Pracovní postup testovacího hello
 
-1. V návrháři aplikace logiky, klikněte na tlačítko **spustit** a spusťte aplikaci.
+1. V hello návrhář aplikace logiky, klikněte na **spustit** toostart hello aplikace.
 
-2. V levém sloupci klikněte na tlačítko **přehled** zobrazíte stav aplikace logiky. 
+2. V levém sloupci hello, klikněte na **přehled** toosee hello stav hello logiku aplikace. 
  
     ![Stav spuštění aplikace logiky](media/functions-twitter-email/over1.png)
 
-3. (Volitelné) Klikněte na jednu z spuštění pro podrobné informace o provádění.
+3. (Volitelné) Klikněte na jednu z hello spustí toosee podrobnosti o provádění hello.
 
-4. Přejděte na funkce, protokoly a ověřte, že postojích hodnoty byly přijme a zpracuje.
+4. Přejděte tooyour funkce, hello protokoly a ověřte, že postojích hodnoty byly přijme a zpracuje.
  
     ![Zobrazit protokoly – funkce](media/functions-twitter-email/sent.png)
 
-5. Když se zjistí potenciálně záporné postojích, obdržíte e-mail. Pokud jste neobdrželi e-mailu, můžete změnit kód funkce vrátit RED pokaždé, když:
+5. Když se zjistí potenciálně záporné postojích, obdržíte e-mail. Pokud jste neobdrželi e-mailu, můžete změnit hello funkce kód tooreturn RED pokaždé, když:
 
         return req.CreateResponse(HttpStatusCode.OK, "RED");
 
-    Po ověření e-mailová oznámení, změňte zpátky na původní kód:
+    Po ověření e-mailová oznámení, změňte back toohello původní kód:
 
         return req.CreateResponse(HttpStatusCode.OK, category);
 
     > [!IMPORTANT]
-    > Po dokončení tohoto kurzu, měli byste zakázat aplikaci logiky. Zakázáním aplikace se vyhnout se účtovat pro spuštění a pomocí transakce ve vašem účtu kognitivní služby.
+    > Po dokončení tohoto kurzu, měli byste zakázat aplikaci logiky hello. Zakázáním aplikace hello se vyhnout se účtovat pro spuštění a pomocí hello transakce ve vašem účtu kognitivní služby.
 
-Nyní jste viděli, jak je snadné pro integraci funkcí do pracovního postupu Logic Apps.
+Nyní jste viděli, jak je snadné toointegrate funkce do pracovního postupu Logic Apps.
 
-## <a name="disable-the-logic-app"></a>Vypnout aplikaci logiky
+## <a name="disable-hello-logic-app"></a>Vypnout aplikaci logiky hello
 
-Chcete-li zakázat aplikaci logiky, klikněte na tlačítko **přehled** a pak klikněte na **zakázat** v horní části obrazovky. To zastaví aplikace logiky spuštěná a nabíhání poplatků za bez odstranění aplikace. 
+aplikace logiky hello toodisable, klikněte na tlačítko **přehled** a pak klikněte na **zakázat** hello horní části úvodní obrazovka. To zastaví hello aplikace logiky spuštěná a nabíhání poplatků za bez odstranění aplikace hello. 
 
 ![Protokoly – funkce](media/functions-twitter-email/disable-logic-app.png)
 
@@ -262,15 +262,15 @@ V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Vytvoření účtu kognitivní Services.
 > * Vytvoří funkci, která rozděluje tweet postojích.
-> * Vytvoření aplikace logiky, která se připojuje ke službě Twitter.
-> * Detekce postojích přidáte do aplikace logiky. 
-> * Připojení aplikace logiky funkce.
-> * Odešlete e-mail podle odpověď z funkce.
+> * Vytvoření aplikace logiky, která se připojuje tooTwitter.
+> * Přidáte aplikaci logiky toohello postojích detekce. 
+> * Připojte hello logiku aplikace toohello funkce.
+> * Odešlete e-mail podle hello odpověď z funkce hello.
 
-Přechodu na v dalším kurzu se dozvíte, jak vytvořit bez serveru rozhraní API pro funkce.
+Jak zálohy další kurz toolearn toohello toocreate bez serveru rozhraní API pro funkce.
 
 > [!div class="nextstepaction"] 
 > [Vytvoření rozhraní API bez serveru pomocí služby Azure Functions](functions-create-serverless-api.md)
 
-Další informace o Logic Apps najdete v tématu [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md).
+toolearn Další informace o Logic Apps, najdete v části [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md).
 

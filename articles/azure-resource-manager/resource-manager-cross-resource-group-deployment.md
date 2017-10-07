@@ -1,6 +1,6 @@
 ---
-title: "Nasazení prostředků Azure do několika skupin prostředků | Microsoft Docs"
-description: "Ukazuje, jak mít více než jedné skupiny prostředků Azure během nasazení."
+title: "skupiny prostředků toomultiple aaaDeploy prostředky Azure | Microsoft Docs"
+description: "Ukazuje, jak tootarget více než jeden prostředek Azure skupiny během nasazení."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: d8b041213b269775175a810e585103d3c538557f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 93a39a26e0ca18dfcb5c6e8de95c38a64186d6de
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-azure-resources-to-more-than-one-resource-group"></a>Nasadit Azure prostředky do více než jedné skupiny prostředků
+# <a name="deploy-azure-resources-toomore-than-one-resource-group"></a>Nasazení prostředků Azure toomore než jedné skupiny prostředků
 
-Zpravidla nasazujete, všechny prostředky ve vaší šablony jedna skupina prostředků. Existují však scénáře, ve které chcete nasadit sadu prostředků společně, ale je umístit do jiné skupiny prostředků. Můžete například nasazení zálohování virtuálního počítače pro Azure Site Recovery na skupinu samostatné prostředků a umístění. Resource Manager umožňuje použití vnořených šablon pro různé skupiny prostředků než použití v šabloně nadřazené skupiny prostředků.
+Zpravidla nasazujete, všechny prostředky hello ve vaší skupině pro jediný zdroj tooa šablony. Existují však scénářích, kdy chcete toodeploy sadu prostředků společně, ale je umístit do jiné skupiny prostředků. Například můžete toodeploy hello zálohování virtuálního počítače pro skupinu tooa samostatné prostředků Azure Site Recovery a umístění. Resource Manager umožňuje toouse vnořené šablony tootarget různé skupiny prostředků než skupina prostředků hello používá hello nadřazené šablony.
 
-Skupina prostředků je kontejner životního cyklu pro aplikace a jeho kolekce prostředků. Vytvořte skupinu prostředků mimo šablonu a zadejte skupinu prostředků pro během nasazení. Úvod do skupiny prostředků, najdete v části [přehled Azure Resource Manageru](resource-group-overview.md).
+Skupina prostředků Hello je kontejner hello životního cyklu aplikace hello a jeho kolekce prostředků. Vytvořte skupinu prostředků hello mimo hello šablony a zadat tootarget skupiny prostředků hello během nasazování. Úvod tooresource skupiny, najdete v části [přehled Azure Resource Manageru](resource-group-overview.md).
 
 ## <a name="example-template"></a>Příklad šablony
 
-Pokud chcete zacílit na různé zdroje, musíte použít šablonu vnořené nebo propojené během nasazení. `Microsoft.Resources/deployments` Nabízí typ prostředku `resourceGroup` parametr, který umožňuje určit jinou skupinu prostředků pro vnořené nasazení. Všechny skupiny prostředků musí existovat před spuštěním nasazení. Následující příklad nasadí dva účty úložiště – jeden ve skupině prostředků, které se zadávají během nasazení a po jednom v skupinu prostředků s názvem `crossResourceGroupDeployment`:
+tootarget různých prostředků, musíte použít šablonu vnořené nebo propojené během nasazení. Hello `Microsoft.Resources/deployments` nabízí typ prostředku `resourceGroup` parametr, který umožňuje toospecify jiné skupině prostředků pro hello vnořené nasazení. Všechny skupiny zdrojů hello musí existovat před spuštěním nasazení hello. Hello následující příklad nasadí dva účty úložiště – jeden ve skupině prostředků hello zadávají během nasazení a po jednom v skupinu prostředků s názvem `crossResourceGroupDeployment`:
 
 ```json
 {
@@ -83,11 +83,11 @@ Pokud chcete zacílit na různé zdroje, musíte použít šablonu vnořené neb
 }
 ```
 
-Pokud nastavíte `resourceGroup` název skupiny prostředků, který ještě neexistuje, nasazení se nezdaří. Pokud nezadáte hodnotu `resourceGroup`, správce prostředků používá nadřazené skupiny prostředků.  
+Pokud nastavíte `resourceGroup` toohello název skupiny prostředků, který ještě neexistuje, nasazení hello se nezdaří. Pokud nezadáte hodnotu `resourceGroup`, správce prostředků používá skupinu prostředků nadřazené hello.  
 
-## <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-hello-template"></a>Nasazení šablony hello
 
-Pokud chcete nasadit šablonu příklad, můžete portálu, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure. Pro prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure musíte použít verzi z může 2017 nebo novější. Příklady předpokládají, že šablona byla uložena místně jako soubor s názvem **crossrgdeployment.json**.
+toodeploy hello příklad šablony, můžete použít hello portálu, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure. Pro prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure musíte použít verzi z může 2017 nebo novější. Příklady Hello předpokládají hello šablona byla uložena místně jako soubor s názvem **crossrgdeployment.json**.
 
 Pro prostředí PowerShell:
 
@@ -117,9 +117,9 @@ Po dokončení nasazení uvidíte dvě skupiny prostředků. Každé skupině pr
 
 ## <a name="use-resourcegroup-function"></a>Pomocí funkce resourceGroup()
 
-Pro různé nasazení skupiny prostředků, [resouceGroup() funkce](resource-group-template-functions-resource.md#resourcegroup) vyřeší různě v závislosti na tom, jak je zadat vnořené šablony. 
+Pro různé nasazení skupiny prostředků, hello [resouceGroup() funkce](resource-group-template-functions-resource.md#resourcegroup) vyřeší různě v závislosti na tom, jak je zadat vnořené šablony hello. 
 
-Pokud vložit jednu šablonu v rámci jiné šablony resouceGroup() v šabloně vnořené přeloží do nadřazené skupiny prostředků. Šablonu embedded používá následující formát:
+Pokud vložit jednu šablonu v rámci jiné šablony resouceGroup() v šabloně vnořené hello přeloží toohello nadřazené prostředků skupiny. Šablonu embedded používá hello následující formát:
 
 ```json
 "apiVersion": "2017-05-10",
@@ -130,12 +130,12 @@ Pokud vložit jednu šablonu v rámci jiné šablony resouceGroup() v šabloně 
     "mode": "Incremental",
     "template": {
         ...
-        resourceGroup() refers to parent resource group
+        resourceGroup() refers tooparent resource group
     }
 }
 ```
 
-Pokud jste odkaz na šablonu samostatné, resouceGroup() v šabloně propojené přeloží na skupině vnořeného prostředku. Propojené šablona používá následující formát:
+Pokud jste šablonu samostatné tooa, resouceGroup() v šabloně propojené hello přeloží toohello vnořeného prostředku skupiny. Propojené šablona používá hello následující formát:
 
 ```json
 "apiVersion": "2017-05-10",
@@ -146,13 +146,13 @@ Pokud jste odkaz na šablonu samostatné, resouceGroup() v šabloně propojené 
     "mode": "Incremental",
     "templateLink": {
         ...
-        resourceGroup() in linked template refers to linked resource group
+        resourceGroup() in linked template refers toolinked resource group
     }
 }
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-* Chcete-li pochopit, jak definovat parametry v šabloně, přečtěte si téma [pochopit strukturu a syntaxe šablon Azure Resource Manager](resource-group-authoring-templates.md).
+* jak zjistit, toodefine parametry v šabloně, toounderstand [pochopit strukturu hello a syntaxe šablon Azure Resource Manager](resource-group-authoring-templates.md).
 * Tipy k řešení běžných chyb při nasazení, naleznete v části [odstraňování běžných chyb nasazení Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
 * Informace o nasazení šablony, která vyžaduje tokenu SAS naleznete v tématu [privátní šablony nasazení s tokenem SAS](resource-manager-powershell-sas-token.md).

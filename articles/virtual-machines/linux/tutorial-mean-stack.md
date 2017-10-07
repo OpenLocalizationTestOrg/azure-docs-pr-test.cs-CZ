@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření střední hodnotu zásobníku na virtuální počítač s Linuxem v Azure | Microsoft Docs"
-description: "Naučte se vytvářet zásobníku MongoDB, Express, AngularJS a Node.js (střední) na virtuální počítač s Linuxem v Azure."
+title: "aaaCreate střední hodnotu zásobníku na virtuální počítač s Linuxem v Azure | Microsoft Docs"
+description: "Zjistěte, jak toocreate MongoDB, Express, AngularJS a Node.js (střední) zásobníku na virtuální počítač s Linuxem v Azure."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: davidmu1
@@ -16,34 +16,34 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.openlocfilehash: 892d3481b4ec70fb8434cb25013c5cfd8ab85051
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 82a8e34e60d2bb6e6670ee007faa1113ea78b716
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-vm-in-azure"></a>Na virtuální počítač s Linuxem v Azure vytvořit zásobníku MongoDB, Express, AngularJS a Node.js (střední)
 
-V tomto kurzu se dozvíte, jak implementovat zásobníku MongoDB, Express, AngularJS a Node.js (střední) na virtuální počítač s Linuxem v Azure. Střední zásobníku, který vytvoříte umožňuje přidávání, odstraňování a výpis knihy v databázi. Získáte informace o těchto tématech:
+Tento kurz ukazuje, jak tooimplement MongoDB, Express, AngularJS a Node.js (střední) zásobníku na virtuální počítač s Linuxem v Azure. Hello střední zásobníku, který vytvoříte umožňuje přidávání, odstraňování a výpis knihy v databázi. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření virtuálního počítače s Linuxem
 > * Instalovat Node.js
-> * Nainstalujte MongoDB a nastavení serveru
-> * Expresní instalace a nastavení trasy k serveru
-> * Přístup k tras se AngularJS
-> * Spuštění aplikace
+> * Nainstalujte MongoDB a nastavit hello server
+> * Expresní instalace a nastavení serveru toohello trasy
+> * Přístup hello tras se AngularJS
+> * Spuštění aplikace hello
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud si zvolíte instalaci a použití rozhraní příkazového řádku místně, tento kurz vyžaduje, že používáte Azure CLI verze verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Pokud zvolíte tooinstall a místně pomocí hello rozhraní příkazového řádku, tento kurz vyžaduje, že používáte verzi rozhraní příkazového řádku Azure hello verze 2.0.4 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 
 ## <a name="create-a-linux-vm"></a>Vytvoření virtuálního počítače s Linuxem
 
-Vytvořte skupinu prostředků s [vytvořit skupinu az](https://docs.microsoft.com/cli/azure/group#create) příkazů a vytvoření virtuálního počítače s Linuxem pomocí [vytvořit virtuální počítač az](https://docs.microsoft.com/cli/azure/vm#create) příkaz. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Vytvořte skupinu prostředků s hello [vytvořit skupinu az](https://docs.microsoft.com/cli/azure/group#create) příkazů a vytvoření virtuálního počítače s Linuxem pomocí hello [vytvořit virtuální počítač az](https://docs.microsoft.com/cli/azure/vm#create) příkaz. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Následující příklad používá rozhraní příkazového řádku Azure k vytvoření skupiny prostředků s názvem *myResourceGroupMEAN* v *eastus* umístění. Virtuální počítač je vytvořen s názvem *Můjvp* s klíči SSH, pokud už neexistují ve výchozím umístění klíče. Pokud chcete použít konkrétní sady klíčů, použijte možnost--ssh klíč hodnota.
+Hello následující příklad používá toocreate hello rozhraní příkazového řádku Azure s názvem skupiny prostředků *myResourceGroupMEAN* v hello *eastus* umístění. Virtuální počítač je vytvořen s názvem *Můjvp* s klíči SSH, pokud už neexistují ve výchozím umístění klíče. toouse konkrétní sada klíčů, použijte hello – možnost ssh klíč hodnota.
 
 ```azurecli-interactive
 az group create --name myResourceGroupMEAN --location eastus
@@ -57,7 +57,7 @@ az vm create \
 az vm open-port --port 3300 --resource-group myResourceGroupMEAN --name myVM
 ```
 
-Po vytvoření virtuálního počítače Azure CLI uvádí informace podobně jako v následujícím příkladu: 
+Po vytvoření hello virtuálních počítačů, hello rozhraní příkazového řádku Azure ukazuje následující příklad podobné toohello informace: 
 
 ```azurecli-interactive
 {
@@ -71,9 +71,9 @@ Po vytvoření virtuálního počítače Azure CLI uvádí informace podobně ja
   "resourceGroup": "myResourceGroupMEAN"
 }
 ```
-Poznamenejte si `publicIpAddress`. Tato adresa se používá pro přístup k virtuálnímu počítači.
+Poznamenejte si hello `publicIpAddress`. Tato adresa je použité tooaccess hello virtuálních počítačů.
 
-Použijte následující příkaz k vytvoření relace SSH s virtuálním Počítačem. Nezapomeňte použít správné veřejnou IP adresu. V našem příkladu výše naše IP adresa byla 13.72.77.9.
+Použití hello následující příkaz toocreate na relace SSH s hello virtuálních počítačů. Zajistěte, aby toouse hello správné veřejnou IP adresu. V našem příkladu výše naše IP adresa byla 13.72.77.9.
 
 ```bash
 ssh azureuser@13.72.77.9
@@ -81,25 +81,25 @@ ssh azureuser@13.72.77.9
 
 ## <a name="install-nodejs"></a>Instalovat Node.js
 
-[Node.js](https://nodejs.org/en/) je prostředí JavaScript runtime, který je založený na JavaScript v8: modul pro Chrome. Node.js se používá v tomto kurzu nastavit Express trasy a AngularJS řadiče.
+[Node.js](https://nodejs.org/en/) je prostředí JavaScript runtime, který je založený na JavaScript v8: modul pro Chrome. Node.js se používá v tento kurz tooset hello Express tras a AngularJS řadiče.
 
-Ve virtuálním počítači, pomocí prostředí bash, kterou jste otevřeli pomocí protokolu SSH nainstalujte si Node.js.
+Na hello virtuální počítač pomocí prostředí bash hello, kterou jste otevřeli pomocí protokolu SSH nainstalujte si Node.js.
 
 ```bash
 sudo apt-get install -y nodejs
 ```
 
-## <a name="install-mongodb-and-set-up-the-server"></a>Nainstalujte MongoDB a nastavení serveru
-[MongoDB](http://www.mongodb.com) ukládá data v dokumentech flexibilní, jako JSON. Pole v databázi se může lišit z dokumentu do dokumentu a struktura dat lze změnit v čase. Pro naše ukázková aplikace přidáváme kniha záznamy MongoDB, které obsahují název adresáře, číslo isbn, autora a počet stránek. 
+## <a name="install-mongodb-and-set-up-hello-server"></a>Nainstalujte MongoDB a nastavit hello server
+[MongoDB](http://www.mongodb.com) ukládá data v dokumentech flexibilní, jako JSON. Pole v databázi se můžou lišit od toodocument dokumentu a struktura dat lze změnit v čase. Pro naše ukázková aplikace přidáváme tooMongoDB kniha záznamy, které obsahují název adresáře, číslo isbn, autora a počet stránek. 
 
-1. Ve virtuálním počítači, pomocí prostředí bash, kterou jste otevřeli pomocí protokolu SSH nastavte klíč MongoDB.
+1. Na hello virtuální počítač pomocí prostředí bash hello, kterou jste otevřeli pomocí protokolu SSH nastavte klíč hello MongoDB.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
     echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
     ```
 
-2. Aktualizujte správce balíčků s klíčem.
+2. Aktualizujte správce balíčků hello klíčem hello.
   
     ```bash
     sudo apt-get update
@@ -111,27 +111,27 @@ sudo apt-get install -y nodejs
     sudo apt-get install -y mongodb
     ```
 
-4. Spuštění serveru.
+4. Spusťte hello server.
 
     ```bash
     sudo service mongodb start
     ```
 
-5. Také je potřeba nainstalovat [textu analyzátor](https://www.npmjs.com/package/body-parser-json) balíček a pomoci tak zpracování JSON předané požadavky na server.
+5. Potřebujeme tooinstall hello [textu analyzátor](https://www.npmjs.com/package/body-parser-json) balíček toohelp nám zpracovat hello JSON předané požadavky toohello serveru.
 
-    Nainstalujte npm Správce balíčků.
+    Nainstalujte Správce balíčků npm hello.
 
     ```bash
     sudo apt-get install npm
     ```
 
-    Nainstalujte balíček analyzátor textu.
+    Instalovat balíček analyzátor textu hello.
     
     ```bash
     sudo npm install body-parser
     ```
 
-6. Vytvořte složku s názvem *knihy* a přidejte do ní s názvem souboru *server.js* obsahující konfigurace na webovém serveru.
+6. Vytvořte složku s názvem *knihy* a přidejte souboru tooit s názvem *server.js* obsahující hello konfigurace pro webový server hello.
 
     ```node.js
     var express = require('express');
@@ -146,9 +146,9 @@ sudo apt-get install -y nodejs
     });
     ```
 
-## <a name="install-express-and-set-up-routes-to-the-server"></a>Expresní instalace a nastavení trasy k serveru
+## <a name="install-express-and-set-up-routes-toohello-server"></a>Expresní instalace a nastavení serveru toohello trasy
 
-[Express](https://expressjs.com) je minimalistické a flexibilní Node.js webové aplikace rozhraní, které poskytuje funkce pro webové a mobilní aplikace. Express se používá v tomto kurzu předat sešit informací na Internet a z našich databáze MongoDB. [Mongoose](http://mongoosejs.com) poskytuje jednoduché a na základě schématu řešení pro modelování data aplikací. Mongoose se používá v tomto kurzu poskytuje schéma adresáře pro databázi.
+[Express](https://expressjs.com) je minimalistické a flexibilní Node.js webové aplikace rozhraní, které poskytuje funkce pro webové a mobilní aplikace. Express se používá v tento kurz toopass kniha informace tooand v naší databázi MongoDB. [Mongoose](http://mongoosejs.com) poskytuje jednoduché a na základě schématu řešení toomodel data aplikací. Mongoose se používá v tento kurz tooprovide schématu adresáře pro databázi hello.
 
 1. Expresní instalace a Mongoose.
 
@@ -156,7 +156,7 @@ sudo apt-get install -y nodejs
     sudo npm install express mongoose
     ```
 
-2. V *knihy* složky, vytvořte složku s názvem *aplikace* a přidejte do souboru s názvem *routes.js* s express trasy definované.
+2. V hello *knihy* složky, vytvořte složku s názvem *aplikace* a přidejte do souboru s názvem *routes.js* s hello express trasy definované.
 
     ```node.js
     var Book = require('./models/book');
@@ -186,7 +186,7 @@ sudo apt-get install -y nodejs
         Book.findOneAndRemove(req.query, function(err, result) {
           if ( err ) throw err;
           res.json( {
-            message: "Successfully deleted the book",
+            message: "Successfully deleted hello book",
             book: result
           });
         });
@@ -198,7 +198,7 @@ sudo apt-get install -y nodejs
     };
     ```
 
-3. V *aplikace* složky, vytvořte složku s názvem *modely* a přidejte do souboru s názvem *book.js* pomocí modelu konfigurace adresáře definované.  
+3. V hello *aplikace* složky, vytvořte složku s názvem *modely* a přidejte do souboru s názvem *book.js* pomocí hello kniha model konfigurace definované.  
 
     ```node.js
     var mongoose = require('mongoose');
@@ -216,11 +216,11 @@ sudo apt-get install -y nodejs
     module.exports = mongoose.model('Book', bookSchema); 
     ```
 
-## <a name="access-the-routes-with-angularjs"></a>Přístup k tras se AngularJS
+## <a name="access-hello-routes-with-angularjs"></a>Přístup hello tras se AngularJS
 
-[AngularJS](https://angularjs.org) poskytuje webové rozhraní pro vytváření dynamického zobrazení v webových aplikací. V tomto kurzu používáme AngularJS připojit naše webové stránky s Express a provádět akce na databázi našich seznamu.
+[AngularJS](https://angularjs.org) poskytuje webové rozhraní pro vytváření dynamického zobrazení v webových aplikací. V tomto kurzu jsme použít AngularJS tooconnect naše webové stránky s Express a provádět akce na našem databázi seznamu.
 
-1. Změna adresáře zpět do *knihy* (`cd ../..`) a pak vytvořte složku s názvem *veřejné* a přidejte do souboru s názvem *script.js* s konfigurací řadiče definované.
+1. Změnit adresář, hello zálohování příliš*knihy* (`cd ../..`) a pak vytvořte složku s názvem *veřejné* a přidejte do souboru s názvem *script.js* s řadičem hello konfigurace definované.
 
     ```node.js
     var app = angular.module('myApp', []);
@@ -262,7 +262,7 @@ sudo apt-get install -y nodejs
     });
     ```
     
-2. V *veřejné* složky, vytvořte soubor s názvem *index.html* s webovou stránkou definované.
+2. V hello *veřejné* složky, vytvořte soubor s názvem *index.html* s webovou stránku hello definované.
 
     ```html
     <!doctype html>
@@ -315,41 +315,41 @@ sudo apt-get install -y nodejs
     </html>
     ```
 
-##  <a name="run-the-application"></a>Spuštění aplikace
+##  <a name="run-hello-application"></a>Spuštění aplikace hello
 
-1. Změna adresáře zpět do *knihy* (`cd ..`) a spustí se server tak, že spustíte tento příkaz:
+1. Změnit adresář, hello zálohování příliš*knihy* (`cd ..`) a spusťte hello server spuštěním tohoto příkazu:
 
     ```bash
     nodejs server.js
     ```
 
-2. Otevřete webový prohlížeč na adrese, které jste si poznamenali pro virtuální počítač. Například *http://13.72.77.9:3300*. Měli byste vidět něco podobného jako na následující stránce:
+2. Otevřete webovou adresu toohello prohlížeče, které jste si poznamenali pro hello virtuálních počítačů. Například *http://13.72.77.9:3300*. Měli byste vidět něco podobného jako hello následující stránky:
 
     ![Záznam adresáře](media/tutorial-mean/meanstack-init.png)
 
-3. Zadejte data do textových polí a klikněte na tlačítko **přidat**. Například:
+3. Zadejte data do textových polí hello a klikněte na tlačítko **přidat**. Například:
 
     ![Přidejte záznam adresáře](media/tutorial-mean/meanstack-add.png)
 
-4. Po aktualizaci stránky, měli byste vidět něco podobného jako na této stránce:
+4. Po obnovení hello stránky, byste měli vidět něco podobného jako na této stránce:
 
     ![Seznam záznamů adresáře](media/tutorial-mean/meanstack-list.png)
 
-5. Uživatel může klepnout **odstranit** a odebrat záznam adresáře z databáze.
+5. Uživatel může klepnout **odstranit** a odebrat záznam adresáře hello z databáze hello.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili webovou aplikaci, která uchovává informace o seznamu záznamů pomocí střední hodnotu zásobníku na virtuální počítač s Linuxem. Jste se dozvěděli, jak na:
+V tomto kurzu jste vytvořili webovou aplikaci, která uchovává informace o seznamu záznamů pomocí střední hodnotu zásobníku na virtuální počítač s Linuxem. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Vytvoření virtuálního počítače s Linuxem
 > * Instalovat Node.js
-> * Nainstalujte MongoDB a nastavení serveru
-> * Expresní instalace a nastavení trasy k serveru
-> * Přístup k tras se AngularJS
-> * Spuštění aplikace
+> * Nainstalujte MongoDB a nastavit hello server
+> * Expresní instalace a nastavení serveru toohello trasy
+> * Přístup hello tras se AngularJS
+> * Spuštění aplikace hello
 
-Přechodu na v dalším kurzu se dozvíte, jak zabezpečit webové servery s certifikáty protokolu SSL.
+Jak zálohy další kurz toolearn toohello toosecure webových serverů s certifikáty protokolu SSL.
 
 > [!div class="nextstepaction"]
 > [Zabezpečení webového serveru pomocí protokolu SSL](tutorial-secure-web-server.md)

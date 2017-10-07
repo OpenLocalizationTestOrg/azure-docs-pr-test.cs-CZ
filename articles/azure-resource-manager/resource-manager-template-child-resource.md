@@ -1,6 +1,6 @@
 ---
-title: "Definování podřízených prostředků v šablony Azure | Microsoft Docs"
-description: "Ukazuje, jak nastavit typ prostředku a název pro podřízený prostředek v šablonu Azure Resource Manager"
+title: "aaaDefine podřízený prostředek šablony Azure | Microsoft Docs"
+description: "Ukazuje, jak tooset hello typ prostředku a název pro podřízený prostředek v šablonu Azure Resource Manager"
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: 5b6ce5526f354008eb4a697deec737876f22391f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c502c589100d7ae864d7fb01b5ba10ddfaf92592
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="set-name-and-type-for-child-resource-in-resource-manager-template"></a>Nastavte název a typ pro podřízený prostředek v šabloně Resource Manager
-Při vytváření šablony, musíte často obsahují podřízený prostředek, který souvisí se nadřazený prostředek. Vaše šablona může obsahovat třeba SQL server a databáze. SQL server je nadřazený prostředek a databáze je podřízený prostředek. 
+Při vytváření šablony, je často nutné tooinclude podřízené prostředku, který je související tooa nadřazený prostředek. Vaše šablona může obsahovat třeba SQL server a databáze. Hello SQL server je hello nadřazený prostředek a hello databáze je hello podřízených prostředků. 
 
-Není ve formátu podřízený typ prostředku:`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
+Formát Hello typu prostředku podřízené hello je:`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
 
-Formát názvu podřízené prostředků je:`{parent-resource-name}/{child-resource-name}`
+Hello formát názvu prostředku podřízené hello je:`{parent-resource-name}/{child-resource-name}`
 
-Však zadejte název a typ v šabloně různě v závislosti na tom, jestli je vnořen do nadřazený prostředek, nebo na vlastní na nejvyšší úrovni. Toto téma ukazuje, jak zpracovat obou přístupů.
+Můžete však zadat hello typ a název v šabloně různě v závislosti na tom, jestli je vnořen do hello nadřazený prostředek, nebo na vlastní na nejvyšší úrovni hello. Toto téma ukazuje, jak se blíží toohandle obou.
 
-Při vytváření plně kvalifikovaný odkaz na prostředek, není jednoduše zřetězení těchto dvou pořadí kombinovat segmenty z typu a název.  Místo toho po oboru názvů, použijte posloupnost *nebo název typu* dvojice z nejméně specifická k nejvíce:
+Při vytváření prostředku tooa plně kvalifikovaný odkaz, hello pořadí toocombine segmenty ze hello typ a název je jednoduše zřetězení hello dva.  Místo toho po hello oboru názvů, použijte posloupnost *nebo název typu* páry z nejméně specifická toomost konkrétní:
 
 ```json
 {resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]*
@@ -40,7 +40,7 @@ Například:
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt`správnost `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` není správný
 
 ## <a name="nested-child-resource"></a>Vnořené podřízené prostředků
-Nejjednodušší způsob, jak definovat podřízených prostředků je vnořit v nadřazeném prostředku. Následující příklad ukazuje vnořené v systému SQL Server databáze SQL.
+Nejjednodušší způsob, jak toodefine Hello podřízených prostředků je toonest ho v rámci hello nadřazený prostředek. Hello následující příklad ukazuje vnořené v systému SQL Server databáze SQL.
 
 ```json
 {
@@ -59,10 +59,10 @@ Nejjednodušší způsob, jak definovat podřízených prostředků je vnořit v
 }
 ```
 
-Pro podřízený prostředek, je typ nastaven `databases` , ale jeho typ prostředku úplné `Microsoft.Sql/servers/databases`. Nezadáte `Microsoft.Sql/servers/` se předpokládá z nadřazeného typu prostředku. Název prostředku podřízené je nastaven `exampledatabase` ale úplný název obsahuje název nadřazené. Nezadáte `exampleserver` se předpokládá z nadřazené prostředku.
+Pro podřízený prostředek hello, typ hello je nastaven příliš`databases` , ale jeho typ prostředku úplné `Microsoft.Sql/servers/databases`. Nezadáte `Microsoft.Sql/servers/` se předpokládá z typu prostředek nadřazené hello. název prostředku podřízené Hello je nastaven příliš`exampledatabase` ale hello úplný název obsahuje název nadřazené hello. Nezadáte `exampleserver` se předpokládá z hello nadřazený prostředek.
 
 ## <a name="top-level-child-resource"></a>Nejvyšší úrovně podřízené prostředků
-Můžete definovat podřízených prostředků na nejvyšší úrovni. Tento postup můžete použít, pokud nadřazený prostředek není nasazený ve stejné šablony, nebo pokud chcete použít `copy` vytvořit více podřízené prostředky. S tímto přístupem musíte zadat typ prostředku úplné a zahrnout název nadřazené prostředku v názvu prostředku podřízené.
+Můžete definovat hello podřízených prostředků na nejvyšší úrovni hello. Můžete použít tuto metodu v případě hello nadřazený prostředek není nasazený ve hello stejné šablony, nebo, pokud chcete toouse `copy` toocreate více podřízené prostředky. S tímto přístupem musíte zadat typ prostředku úplné hello a zahrnout název prostředku nadřazené hello název prostředku podřízené hello.
 
 ```json
 {
@@ -81,8 +81,8 @@ Můžete definovat podřízených prostředků na nejvyšší úrovni. Tento pos
 }
 ```
 
-Databáze je podřízený prostředek k serveru, i když jsou definovány na stejné úrovni v šabloně.
+Hello databáze je server toohello podřízených prostředků, i když jsou definovány na stejné úrovni v šabloně hello hello.
 
 ## <a name="next-steps"></a>Další kroky
-* Doporučení, jak vytvořit šablony, najdete v části [osvědčené postupy pro vytváření šablon Azure Resource Manager](resource-manager-template-best-practices.md).
+* Pro doporučení, jak toocreate šablony, viz [osvědčené postupy pro vytváření šablon Azure Resource Manager](resource-manager-template-best-practices.md).
 * Příklad vytvoření několika podřízenými prostředky, najdete v části [nasadit několik instancí prostředků v šablonách Azure Resource Manager](resource-group-create-multiple.md).

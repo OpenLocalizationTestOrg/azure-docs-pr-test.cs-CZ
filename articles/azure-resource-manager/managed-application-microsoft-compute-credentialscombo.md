@@ -1,6 +1,6 @@
 ---
-title: "Azure spravované aplikace CredentialsCombo elementu uživatelského rozhraní | Microsoft Docs"
-description: "Popisuje element Microsoft.Compute.CredentialsCombo uživatelského rozhraní pro spravované aplikace Azure"
+title: "element uživatelského rozhraní CredentialsCombo spravované aplikace aaaAzure | Microsoft Docs"
+description: "Popisuje hello elementu Microsoft.Compute.CredentialsCombo uživatelského rozhraní pro spravované aplikace Azure"
 services: azure-resource-manager
 documentationcenter: na
 author: tabrezm
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
-ms.openlocfilehash: 254f383ee6f7cb9f7051fa135d85319a22c3c369
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d44a3929ebb7a5ff78b72f9eaeb6e52b098e266f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Element Microsoft.Compute.CredentialsCombo uživatelského rozhraní
 Skupina ovládacích prvků pomocí integrované ověřování systému Windows a Linux hesla a veřejného klíče SSH. Pomocí tohoto prvku při [vytváření spravovaných aplikací Azure](managed-application-publishing.md).
@@ -26,7 +26,7 @@ Skupina ovládacích prvků pomocí integrované ověřování systému Windows 
 ![Microsoft.Compute.CredentialsCombo](./media/managed-application-elements/microsoft.compute.credentialscombo.png)
 
 ## <a name="schema"></a>Schéma
-Pokud `osPlatform` je **Windows**, je použita na následující schéma:
+Pokud `osPlatform` je **Windows**, hello následující schéma bude použit:
 ```json
 {
   "name": "element1",
@@ -41,7 +41,7 @@ Pokud `osPlatform` je **Windows**, je použita na následující schéma:
   "constraints": {
     "required": true,
     "customPasswordRegex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",
-    "customValidationMessage": "The password must contain at least 8 characters, with at least 1 letter and 1 number."
+    "customValidationMessage": "hello password must contain at least 8 characters, with at least 1 letter and 1 number."
   },
   "options": {
     "hideConfirmation": false
@@ -51,7 +51,7 @@ Pokud `osPlatform` je **Windows**, je použita na následující schéma:
 }
 ```
 
-Pokud `osPlatform` je **Linux**, je použita na následující schéma:
+Pokud `osPlatform` je **Linux**, hello následující schéma bude použit:
 ```json
 {
   "name": "element1",
@@ -70,7 +70,7 @@ Pokud `osPlatform` je **Linux**, je použita na následující schéma:
   "constraints": {
     "required": true,
     "customPasswordRegex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",
-    "customValidationMessage": "The password must contain at least 8 characters, with at least 1 letter and 1 number."
+    "customValidationMessage": "hello password must contain at least 8 characters, with at least 1 letter and 1 number."
   },
   "options": {
     "hideConfirmation": false,
@@ -83,13 +83,13 @@ Pokud `osPlatform` je **Linux**, je použita na následující schéma:
 
 ## <a name="remarks"></a>Poznámky
 - `osPlatform`musí být zadán, a může být buď **Windows** nebo **Linux**.
-- Pokud `constraints.required` je nastaven na **true**, pak heslo nebo SSH veřejného klíče textová pole musí obsahovat hodnoty úspěšně ověřit. Výchozí hodnota je **true**.
-- Pokud `options.hideConfirmation` je nastaven na **true**, druhé textové pole pro potvrzení hesla je skrytý. Výchozí hodnota je **false**.
-- Pokud `options.hidePassword` je nastaven na **true**, možnost použít ověřování hesla je skrytý. Lze jej použít pouze tehdy, když `osPlatform` je **Linux**. Výchozí hodnota je **false**.
-- Další omezení povolených hesel můžete implementovat pomocí `customPasswordRegex` vlastnost. Řetězec v `customValidationMessage` se zobrazí, pokud heslo vlastní ověřování se nezdaří. Výchozí hodnota pro obě vlastnosti je **null**.
+- Pokud `constraints.required` je nastaven příliš**true**, pak hello heslo nebo SSH veřejného klíče textová pole musí obsahovat hodnoty toovalidate úspěšně. Hello výchozí hodnota je **true**.
+- Pokud `options.hideConfirmation` je nastaven příliš**true**, hello druhé textové pole pro potvrzení hesla hello uživatele je skrytý. Hello výchozí hodnota je **false**.
+- Pokud `options.hidePassword` je nastaven příliš**true**, ověřování hesla toouse možnost hello je skrytý. Lze jej použít pouze tehdy, když `osPlatform` je **Linux**. Výchozí hodnota je **false**.
+- Další omezení hello povolené hesel můžete implementovat pomocí hello `customPasswordRegex` vlastnost. Hello řetězec v `customValidationMessage` se zobrazí, pokud heslo vlastní ověřování se nezdaří. Hello výchozí hodnota pro obě vlastnosti je **null**.
 
 ## <a name="sample-output"></a>Ukázkový výstup
-Pokud `osPlatform` je **Windows**, nebo uživatele zadali heslo místo veřejný klíč SSH a pak se očekává následující výstup:
+Pokud `osPlatform` je **Windows**, nebo hello uživatele zadali heslo místo veřejný klíč SSH a pak hello následující výstup očekává se:
 
 ```json
 {
@@ -98,7 +98,7 @@ Pokud `osPlatform` je **Windows**, nebo uživatele zadali heslo místo veřejný
 }
 ```
 
-Pokud uživatel zadaný veřejný klíč SSH, je očekáván následující výstup:
+Pokud zadaná uživatelem hello veřejný klíč SSH, pak hello následující výstup se předpokládá, že:
 ```json
 {
   "authenticationType": "sshPublicKey",
@@ -107,6 +107,6 @@ Pokud uživatel zadaný veřejný klíč SSH, je očekáván následující výs
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* Úvod do spravovaných aplikací, najdete v části [Azure spravovaných aplikací – přehled](managed-application-overview.md).
-* Úvod do vytváření definic uživatelského rozhraní, najdete v části [Začínáme s CreateUiDefinition](managed-application-createuidefinition-overview.md).
+* Úvod toomanaged aplikace naleznete v [Azure spravovaných aplikací – přehled](managed-application-overview.md).
+* Úvod toocreating uživatelského rozhraní definice naleznete v tématu [Začínáme s CreateUiDefinition](managed-application-createuidefinition-overview.md).
 * Popis společných vlastností v prvky uživatelského rozhraní najdete v tématu [CreateUiDefinition elementy](managed-application-createuidefinition-elements.md).

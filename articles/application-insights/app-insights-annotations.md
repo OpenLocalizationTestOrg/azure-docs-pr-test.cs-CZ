@@ -1,6 +1,6 @@
 ---
-title: "Verze poznámky pro službu Application Insights | Microsoft Docs"
-description: "Přidání nasazení nebo vytvořit značek do grafů Průzkumníku metrik ve službě Application Insights."
+title: "aaaRelease poznámky pro službu Application Insights | Microsoft Docs"
+description: "Přidání nasazení nebo vytvořit značek tooyour metriky explorer grafů ve službě Application Insights."
 services: application-insights
 documentationcenter: .net
 author: CFreemanwa
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: bwren
-ms.openlocfilehash: f7eb2f3cba535eb64db5544c498289c9e895987a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: e802d22701cb69e96fd1a6b469ea67454195f77a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky u metriky grafů ve službě Application Insights
-Poznámky na [Průzkumníku metrik](app-insights-metrics-explorer.md) grafy zobrazují, kde jste nasadili nového sestavení nebo jinou významnou událost. Ujistěte se snadno zjistit, zda změny měla vliv na výkon vaší aplikace. Můžete být automaticky vytvoří pomocí [Visual Studio Team Services sestavení systému](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs). Můžete také vytvořit poznámky pro všechny události, které si přejete, a příznak [jejich vytváření z prostředí PowerShell](#create-annotations-from-powershell).
+Poznámky na [Průzkumníku metrik](app-insights-metrics-explorer.md) grafy zobrazují, kde jste nasadili nového sestavení nebo jinou významnou událost. Provádění ho snadno toosee zda změny měla vliv na výkon vaší aplikace. Můžete být automaticky vytvoří pomocí hello [Visual Studio Team Services sestavení systému](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs). Můžete také vytvořit poznámky tooflag všechny události, které chcete pomocí [jejich vytváření z prostředí PowerShell](#create-annotations-from-powershell).
 
 ![Příklad poznámky s viditelné korelace s doba odezvy serveru](./media/app-insights-annotations/00.png)
 
@@ -28,54 +28,54 @@ Poznámky na [Průzkumníku metrik](app-insights-metrics-explorer.md) grafy zobr
 
 ## <a name="release-annotations-with-vsts-build"></a>Poznámky k verzi s služby VSTS sestavení
 
-Poznámky k verzi jsou funkce cloudového sestavování a verzí služby Visual Studio Team Services. 
+Poznámky k verzi jsou funkce hello cloudového sestavování a verzí služby Visual Studio Team Services. 
 
-### <a name="install-the-annotations-extension-one-time"></a>Nainstalujte rozšíření poznámky (jednou)
-Abyste mohli vytvořit poznámky k verzi, musíte nainstalovat některou z mnoha rozšíření Team služeb, která je k dispozici ve Visual Studio Marketplace.
+### <a name="install-hello-annotations-extension-one-time"></a>Nainstalujte rozšíření poznámky hello (jednou)
+toobe možné toocreate verze poznámky, budete potřebovat tooinstall jeden z hello mnoho rozšíření Team služeb k dispozici v hello Visual Studio Marketplace.
 
-1. Přihlaste se k vaší [Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/setup/sign-up-for-visual-studio-online) projektu.
-2. V sadě Visual Studio Marketplace [získat rozšíření verze poznámek](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)a přidejte ji do vašeho účtu Team Services.
+1. Přihlaste se tooyour [Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/setup/sign-up-for-visual-studio-online) projektu.
+2. V sadě Visual Studio Marketplace [získat hello poznámky k verzi rozšíření](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)a přidejte ji tooyour účtu Team Services.
 
 ![Top na pravé straně Team Services webové stránky, otevřete Marketplace. Vyberte Visual Team Services a potom v části sestavení a verze, zvolte najdete v části více.](./media/app-insights-annotations/10.png)
 
-Stačí k tomu jednou pro váš účet Visual Studio Team Services. Poznámky k verzi se teď dá nakonfigurovat pro každý projekt ve vašem účtu. 
+Potřebujete jenom toodo tomto jednou pro váš účet Visual Studio Team Services. Poznámky k verzi se teď dá nakonfigurovat pro každý projekt ve vašem účtu. 
 
 ### <a name="configure-release-annotations"></a>Konfigurace verze poznámek
 
-Je nutné získat samostatné klíč rozhraní API pro každou verzi šablony služby VSTS.
+Ke každé šabloně verze služby VSTS musíte klíč tooget samostatné rozhraní API.
 
-1. Přihlaste se k [portálu Microsoft Azure](https://portal.azure.com) a otevřete prostředek Application Insights, který monitoruje vaše aplikace. (Nebo [vytvořit nový](app-insights-overview.md), pokud jste tak ještě neučinili.)
+1. Přihlaste se toohello [portálu Microsoft Azure](https://portal.azure.com) a otevřete prostředek Application Insights hello, který monitoruje vaše aplikace. (Nebo [vytvořit nový](app-insights-overview.md), pokud jste tak ještě neučinili.)
 2. Otevřete **přístup pomocí rozhraní API**, **Application Insights Id**.
    
-    ![Na stránce portal.azure.com otevřete prostředek Application Insights a zvolte nastavení. Otevřete přístup pomocí rozhraní API. Zkopírujte ID aplikace](./media/app-insights-annotations/20.png)
+    ![Na stránce portal.azure.com otevřete prostředek Application Insights a zvolte nastavení. Otevřete přístup pomocí rozhraní API. Zkopírujte hello ID aplikace](./media/app-insights-annotations/20.png)
 
-4. V samostatném okně prohlížeče otevřete (nebo vytvořte) verzi šablony, která spravuje vaše nasazení z Visual Studio Team Services. 
+4. V samostatném okně prohlížeče otevřete (nebo vytvořte) hello verzi šablony, která spravuje vaše nasazení z Visual Studio Team Services. 
    
-    Přidat úlohu a vyberte úlohu Application Insights verze poznámky z nabídky.
+    Přidat úlohu a vyberte úlohu hello Application Insights verze poznámky z nabídky hello.
    
-    Vložení **Id aplikace** který jste zkopírovali v okně přístup pomocí rozhraní API.
+    Vložení hello **Id aplikace** který jste zkopírovali ze hello okno přístup pomocí rozhraní API.
    
-    ![Ve Visual Studio Team Services otevřete verzi, vyberte verzi definice a zvolte Upravit. Klikněte na tlačítko Přidat úloha a vyberte Application Insights verze poznámky. Vložte ID Application Insights.](./media/app-insights-annotations/30.png)
-4. Nastavte **APIKey** pole k proměnné `$(ApiKey)`.
+    ![Ve Visual Studio Team Services otevřete verzi, vyberte verzi definice a zvolte Upravit. Klikněte na tlačítko Přidat úloha a vyberte Application Insights verze poznámky. Vložte hello ID Application Insights.](./media/app-insights-annotations/30.png)
+4. Sada hello **APIKey** proměnné pole tooa `$(ApiKey)`.
 
-5. Zpět v okně Azure vytvořte nový klíč rozhraní API a provést jeho kopii.
+5. Zpět v hello okno Azure vytvořte nový klíč rozhraní API a provést jeho kopii.
    
-    ![V okně přístup pomocí rozhraní API v okně Azure klikněte na tlačítko vytvořit klíč rozhraní API. Zadejte komentář, zkontrolujte poznámky zápisu a klikněte na tlačítko vygenerovat klíč. Zkopírujte nový klíč.](./media/app-insights-annotations/40.png)
+    ![V okně přístup pomocí rozhraní API v Azure okno hello hello klikněte na tlačítko vytvořit klíč rozhraní API. Zadejte komentář, zkontrolujte poznámky zápisu a klikněte na tlačítko vygenerovat klíč. Zkopírujte nový klíč hello.](./media/app-insights-annotations/40.png)
 
-6. Otevřete kartu Konfigurace šablony verze.
+6. Otevřete kartu Konfigurace hello hello verze šablony.
    
     Vytvoření proměnné definice pro `ApiKey`.
    
-    Vložte klíč rozhraní API k definici ApiKey proměnné.
+    Vložte klíče toohello rozhraní API ApiKey definicí proměnné.
    
-    ![V okně Team Services vyberte na kartě Konfigurace a klikněte na tlačítko Přidat proměnnou. Nastavte název pro ApiKey a do hodnoty, vložte klíč, který jste právě vygenerovali a klikněte na ikonu zámku.](./media/app-insights-annotations/50.png)
-7. Nakonec **Uložit** definici verze.
+    ![V okně hello Team Services vyberte na kartě Konfigurace hello a klikněte na tlačítko Přidat proměnnou. Nastavte název tooApiKey hello do hello hodnotu, vložte hello klíče, který jste právě vygenerovali a klikněte na ikonu zámku hello.](./media/app-insights-annotations/50.png)
+7. Nakonec **Uložit** hello verze definice.
 
 
 ## <a name="view-annotations"></a>Zobrazení poznámky
-Nyní vždy, když použijete šablonu verze nasadit novou verzi, poznámky odešle do služby Application Insights. Poznámky se zobrazí v grafech v Průzkumníku metrik.
+Nyní vždy, když používáte hello verze šablony toodeploy novou verzi, poznámky odešle tooApplication statistiky. Hello poznámky se zobrazí v grafech v Průzkumníku metrik.
 
-Klikněte na všechny značky poznámky otevřít podrobnosti o verze, včetně žadatele, zdroj ovládacího prvku větve, verze definice, prostředí a další.
+Klikněte na žádné poznámky značky tooopen podrobnosti o hello verze, včetně žadatele, zdroj ovládacího prvku větve, definice vydání, prostředí a další.
 
 ![Klikněte na možnost všechny značky poznámky verze.](./media/app-insights-annotations/60.png)
 
@@ -83,11 +83,11 @@ Klikněte na všechny značky poznámky otevřít podrobnosti o verze, včetně 
 Můžete také vytvořit poznámky z jakýkoli proces, který chcete (bez použití VS Team System). 
 
 
-1. Vytvořit místní kopii [skript prostředí Powershell z Githubu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
+1. Vytvořit místní kopii hello [skript prostředí Powershell z Githubu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
 
-2. Získání ID aplikace a vytvořte klíč rozhraní API v okně přístup pomocí rozhraní API.
+2. Získejte hello ID aplikace a vytvořte klíč rozhraní API z hello okno přístup pomocí rozhraní API.
 
-3. Volání skriptu takto:
+3. Volání skriptu hello takto:
 
 ```PS
 
@@ -100,7 +100,7 @@ Můžete také vytvořit poznámky z jakýkoli proces, který chcete (bez použi
           "TriggerBy"="My Name" }
 ```
 
-Je snadné a upravte skript, například vytvořit poznámky za poslední.
+Je snadno toomodify hello skriptu, například toocreate poznámky pro posledních hello.
 
 ## <a name="next-steps"></a>Další kroky
 

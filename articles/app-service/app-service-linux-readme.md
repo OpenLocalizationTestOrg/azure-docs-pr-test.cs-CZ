@@ -1,6 +1,6 @@
 ---
-title: "Webová aplikace v systému Linux | Microsoft Docs"
-description: "Co je webová aplikace v systému Linux? Úvod do webové aplikace v systému Linux."
+title: "aaaWeb aplikace v systému Linux | Microsoft Docs"
+description: "Co je webová aplikace v systému Linux? TooWeb Úvod aplikace v systému Linux."
 keywords: "služby Azure app service, linux, operačních systémů"
 services: app-service
 documentationcenter: 
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: naziml
-ms.openlocfilehash: 4207da871572cf60e3c33cafd68e8e122ce2028c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2be7bb3446aa5fcf206264370fb1e1ebcdfc44d5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="web-app-on-linux-documentation"></a>Webové aplikace v dokumentaci k systému Linux
-Webové aplikace v systému Linux je aktuálně ve verzi Public Preview a umožňuje zákazníkům nativně spouští své webové aplikace na platformě Linux. To umožňuje lepší kompatibilitu aplikací pro určité typy aplikací a usnadňuje migrovat existující webové aplikace hostované na platformě Linux jinde na Azure App Services.
+Webové aplikace v systému Linux je aktuálně ve verzi Public Preview a umožňuje zákazníkům toorun své webové aplikace na platformě Linux nativně. To umožňuje lepší kompatibilitu aplikací pro určité typy aplikací a umožňuje jednodušší toomigrate existující webové aplikace hostované na platformě Linux jinde na Azure App Services.
 
 Zákazníci vytvářet webové aplikace v systému Linux jenom v systémem Linux povolené plán služby App Service a tento plán služby App Service můžou hostovat pouze systémem Linux webové aplikace. 
 
-> Veřejné ceně za verzi Preview pro webovou aplikaci v systému Linux je 50 % regulární ceny a ceny se vypočítává podle halving počet výpočetních hodin spotřebovávají plán aplikační služby.
+> Veřejné ceně za verzi Preview pro webovou aplikaci v systému Linux je 50 % hello regulární ceny a ceny hello je vypočítána halving hello počet výpočetních hodin spotřebovávají plán aplikační služby.
 > 
-> Žádné SLA je nabídnuta během období ve verzi public preview. 
+> Žádné SLA je nabídnuta během období hello verzi public preview. 
 > 
 > 
 

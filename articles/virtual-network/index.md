@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace ke službě Azure Virtual Network – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se používat virtuální síť v cloudu. Dokumentace ukazuje, jak nasadit virtuální síť, využít ji ke spuštění prostředků a integrovat s místní sítí."
+title: "aaaAzure dokumentace k virtuálním sítím - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Zjistěte, jak toouse do virtuální sítě v hello cloudové. Dokumentace popisuje, jak toodeploy virtuální síť, používat ji toolaunch prostředky a integraci s místní sítě."
 services: virtual-network
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: c3535b428fa4cb4ca3fc348e4f57eab8a0def1e9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ecaecfab31a2bbfb46a712a035e07a059fa40be7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="virtual-network-documentation"></a>Dokumentace ke službě Virtual Network
 
-Naučte se používat Virtual Network (VNet), logickou reprezentaci vaší vlastní sítě v cloudu. Dokumentace ukazuje, jak nastavit a spravovat virtuální síť, jak ji využít ke spuštění služby Virtual Machines nebo Cloud Services, jak připojit virtuální síť k místní síti na pracovišti a jak rozšířit síť do cloudu a zachovat si přitom kontrolu nad prostředky.
+Zjistěte, jak cloudové toouse virtuální síť (VNet), znázornění logické sítě v hello. Dokumentace ukazuje můžete jak nastavit a spravovat virtuální sítě, použijte ji toolaunch virtuální počítače nebo cloudové služby, připojte hello virtuální síť tooyour do místní sítě a rozbalte nabídku vaší cloudové síťové toohello zachováním kontrolu nad prostředky.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ Naučte se používat Virtual Network (VNet), logickou reprezentaci vaší vlast
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme se službou Virtual Network s využitím webu Azure Portal</h3>
+                        <h3>Začínáme s virtuální sítě pomocí hello portálu Azure</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ Naučte se používat Virtual Network (VNet), logickou reprezentaci vaší vlast
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme se službou Virtual Network pomocí rozhraní Azure CLI</h3>
+                        <h3>Začínáme s virtuální sítě pomocí hello rozhraní příkazového řádku Azure</h3>
                     </div>
                 </div>
             </div>

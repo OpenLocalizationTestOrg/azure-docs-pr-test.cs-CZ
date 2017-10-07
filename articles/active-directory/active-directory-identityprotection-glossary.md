@@ -1,5 +1,5 @@
 ---
-title: "Slovník ochrany identit Azure Active Directory | Microsoft Docs"
+title: "aaaAzure slovník ochrany Identity služby Active Directory | Microsoft Docs"
 description: "Slovník ochrany identit Azure Active Directory"
 services: active-directory
 keywords: "ochrany identit Azure active directory, cloud app discovery,. Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení, Glosář"
@@ -15,33 +15,33 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 2cf64925cff9a78cf83532a1cfd231f7a1d98304
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ff2e96d20e2a3f1df24b78e66be5a0c6807e60a3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Slovník ochrany identit Azure Active Directory
 ### <a name="at-risk-user"></a>Riziko (uživatel)
 Uživatel se jeden nebo více událostí active riziko. 
 
 ### <a name="atypical-sign-in-location"></a>Umístění netypických přihlášení
-Přihlášení z zeměpisné polohy, který není typické pro konkrétního uživatele, podobně jako uživatele nebo klienta.
+Přihlášení z zeměpisné polohy, který není typické pro konkrétního uživatele hello, podobně jako uživatele nebo hello klienta.
 
 ### <a name="azure-ad-identity-protection"></a>Azure AD Identity Protection
 Modul zabezpečení služby Azure Active Directory, která poskytuje ucelený přehled o rizikových událostech a potenciální ohrožení zabezpečení, které ovlivňují identity organizace.
 
 ### <a name="conditional-access"></a>Podmíněný přístup
-Zásadu zabezpečení přístupu k prostředkům. Pravidla podmíněného přístupu se ukládají ve službě Azure Active Directory a vyhodnocují se službou Azure Active Directory před udělením přístupu k prostředku.  Příklad pravidla zahrnují také omezení přístupu podle umístění uživatele, metodu ověřování stavu nebo uživatel zařízení.
+Zásady pro zabezpečení tooresources přístup. Pravidla podmíněného přístupu jsou uložené v hello Azure Active Directory a vyhodnocují se službou Azure Active Directory před udělením přístupu toohello prostředků.  Příklad pravidla zahrnují také omezení přístupu podle umístění uživatele, metodu ověřování stavu nebo uživatel zařízení.
 
 ### <a name="credentials"></a>Přihlašovací údaje
-Informace, které zahrnují identifikace a ověření identifikaci, který slouží k získání přístupu k místním a síťovým prostředkům. Příkladem přihlašovací údaje jsou uživatelská jména a hesla, čipové karty a certifikáty.
+Informace, které zahrnují identifikace a ověření identifikaci, který je použité toogain přístup toolocal a síťových prostředků. Příkladem přihlašovací údaje jsou uživatelská jména a hesla, čipové karty a certifikáty.
 
 ### <a name="event"></a>Událost
 Záznam aktivity v Azure Active Directory.
 
 ### <a name="false-positive-risk-event"></a>Falešně pozitivní (riziko událost)
-Stav události riziko podle ochrany identit uživatelů, označující, že událost riziko byl prozkoumat a byla nesprávně označený jako událost riziko nastavit ručně.
+Stav události riziko podle ochrany identit uživatelů, indikující, že událost riziko hello byl prozkoumat a byla nesprávně označený jako událost riziko nastavit ručně.
 
 ### <a name="identity"></a>Identita
 Osoba nebo entita, které se musí ověřit prostřednictvím ověřování, na základě kritérií, například heslo nebo certifikát.
@@ -50,88 +50,88 @@ Osoba nebo entita, které se musí ověřit prostřednictvím ověřování, na 
 AAD událost, která byla označena jako neobvyklé službou Identity Protection a může znamenat, že byl napaden identity.
 
 ### <a name="ignored-risk-event"></a>Ignorovat (riziko událost)
-Stav události riziko podle ochrany identit uživatelů, která určuje, že událost riziko je uzavřena bez nutnosti převádět akci automatické nápravy nastavit ručně.
+Stav události riziko podle ochrany identit uživatelů, což značí, že tuto událost riziko hello je uzavřený bez nutnosti převádět akci automatické nápravy nastavit ručně.
 
 ### <a name="impossible-travel-from-atypical-locations"></a>Neuskutečnitelná cesta z netypických míst
-Událost riziko, aktivuje se při zjištění dvě přihlášení pro stejného uživatele, kde alespoň jeden z nich je z umístění netypických přihlášení, a čas mezi přihlášení je kratší než minimální hodnota času, které by byly třeba k fyzicky dostavit mezi těchto umístění.  
+Událost související s riziko aktivované, když se dvě přihlášení pro hello stejného uživatele jsou zjištěny, kde alespoň jeden z nich je z netypických umístění přihlášení a tam, kde je kratší než minimální hello hello čas mezi přihlášení hello čas by trvat toophysically při přenosu mezi tyto umístění.  
 
 ### <a name="investigation"></a>Šetření
-Proces kontroly aktivity, protokoly a další důležité informace vztahující se k události riziko rozhodnout, zda jsou nutné, kroky ke zmírnění nebo nápravy porozumění, zda a jak identity došlo k ohrožení a pochopit použití ohroženými identity.
+Hello kontroly hello aktivity, protokoly a další důležité informace související s procesem tooa riziko událostí toodecide zda zmírnění nebo nápravy kroky jsou nezbytné, zjištění, zda a jak hello identity došlo k ohrožení a pochopit, jak hello. byl použit ohroženými identity.
 
 ### <a name="leaked-credentials"></a>Uniklé přihlašovací údaje
-Událost riziko, aktivuje, když přihlašovací údaje uživatele (uživatelské jméno a heslo) se nacházejí ve tmavý webu veřejně odeslány naše výzkumní pracovníci.
+Ve webové tmavý hello naše výzkumní pracovníci odeslány veřejně riziko událostí, aktivuje, když jsou nalezeny přihlašovací údaje uživatele (uživatelské jméno a heslo).
 
 ### <a name="mitigation"></a>Omezení rizik
-Akci, kterou chcete omezit nebo odstranit schopnost útočník zneužít ohroženými identity nebo zařízení bez obnovení identity nebo zařízení do bezpečného stavu. Zmírnění nevyřeší předchozí rizikových událostech spojených s identity nebo zařízení.
+Toolimit akce nebo odstranit hello možnost útočník tooexploit ohroženými identity nebo zařízení bez hello identity nebo zařízení tooa bezpečné stavu obnovení. Zmírnění nevyřeší předchozí rizikových událostech spojených s hello identity nebo zařízení.
 
 ### <a name="multi-factor-authentication"></a>Ověřování pomocí služby Multi-Factor Authentication
-Metoda ověřování, která vyžaduje dva nebo více metod ověřování, které mohou zahrnovat něco, aby uživatel má tento certifikát; něco uživatel zná, například uživatelská jména, hesla či fráze průchodu; fyzické atributy, jako je například thumbprint; a osobní atributy, jako například osobní podpis.
+Metoda ověřování, která vyžaduje dva nebo více metod ověřování, které mohou zahrnovat něco, co má uživatel hello, tento certifikát; něco hello uživatel zná, například uživatelská jména, hesla či fráze průchodu; fyzické atributy, jako je například thumbprint; a osobní atributy, jako například osobní podpis.
 
 ### <a name="offline-detection"></a>Offline detekce
-Detekce anomálií a vyhodnocení rizik na událost, jako je například pokus o přihlášení ve skutečnosti, událost, která již došlo.
+Hello detekce anomálií a vyhodnocení rizik hello události například pokus o přihlášení po hello fakt událost, která již došlo.
 
 ### <a name="policy-condition"></a>Stav zásad
-Část zásad zabezpečení, který definuje entity (skupiny uživatelů, aplikace, platformy zařízení, stavy zařízení, rozsahy IP adres, typů klientů) obsažena v zásadách nebo z něj vyloučeny.
+Část zásad zabezpečení, který definuje hello entity (skupiny uživatelů, aplikace, platformy zařízení, stavy zařízení, rozsahy IP adres, typů klientů) obsažena v zásadách hello nebo z něj vyloučeny.
 
 ### <a name="policy-rule"></a>Pravidlo zásad
-Část zásad zabezpečení, která popisuje okolnosti, které by aktivovat zásady a akce prováděné při aktivaci zásady.
+Hello část zásad zabezpečení, která popisuje hello okolnosti, které by aktivovat hello zásady a hello akce prováděné při aktivaci hello zásad.
 
 ### <a name="prevention"></a>Prevention (Prevence)
-Akci, která má nedošlo k poškození organizace prostřednictvím zneužití identity nebo zařízení by mohly vzbuzovat podezření nebo vědět, došlo k narušení. Prevence akce nezabezpečuje identity nebo zařízení a nevyřeší předchozí rizikových událostech.
+Akce tooprevent škody toohello organizace prostřednictvím zneužití identity nebo zařízení by mohly vzbuzovat podezření nebo znát toobe ohrožení zabezpečení. Prevence akce nezabezpečuje hello zařízení nebo identity a nevyřeší předchozí rizikových událostech.
 
 ### <a name="privileged-user"></a>Privilegovaný (uživatel)
-Uživatel, který v době události riziko, měli oprávnění správce trvalé nebo dočasné na jeden nebo více prostředků v Azure Active Directory, jako je například globální správce, správce fakturace, Správce služby, Správce uživatelů a správce hesel. 
+Uživatel, který v době hello riziko události, jako trvalé nebo dočasné správce oprávnění tooone nebo více prostředků v Azure Active Directory, jako je například globální správce, správce fakturace, Správce služby, správce uživatele a heslo Správce. 
 
 ### <a name="real-time"></a>V reálném čase
 V tématu detekce v reálném čase.
 
 ### <a name="real-time-detection"></a>Detekce v reálném čase
-Detekce anomálií a vyhodnocení rizik na událost, jako je například pokus přihlášení před událostí může pokračovat.
+Hello detekci anomálií a vyhodnocení rizik hello události například pokus přihlášení před událostí hello je umožněno tooproceed.
 
 ### <a name="remediated-risk-event"></a>Opravené (riziko událost)
-Stav události riziko automaticky nastavuje ochranu Identity, která určuje, že událost riziko nápravy pomocí standardní nápravy akce pro tento typ události riziko. Například když se resetuje heslo uživatele, mnoho událostí rizik, které označují, že došlo k ohrožení předchozí heslo napravují automaticky.
+Stav události riziko automaticky nastavuje ochrany identit, což značí, že tuto událost riziko hello nápravy pomocí hello standardní nápravné akce pro tento typ události riziko. Například když se resetuje heslo uživatele hello, mnoho událostí riziko, který indikuje, že došlo k ohrožení toto heslo předchozí hello napravují automaticky.
 
 ### <a name="remediation"></a>Nápravy
-Akce, abyste mohli zabezpečit identity nebo zařízení, které byly dříve by mohly vzbuzovat podezření nebo známé došlo k narušení. Akce nápravy obnoví identity nebo zařízení do bezpečného stavu a odstraňuje předchozí rizikových událostech spojených s identity nebo zařízení.
+Akci toosecure identity nebo zařízení, které byly dříve by mohly vzbuzovat podezření nebo známé toobe ohrožení. Akce nápravy obnoví hello identity nebo zařízení tooa bezpečné stav a odstraňuje předchozí rizikových událostech spojených s hello identity nebo zařízení.
 
 ### <a name="resolved-risk-event"></a>Vyřešit (riziko událost)
-Stav události riziko nastavit ručně uživatelem ochrany identit, indikující, že by uživatel provedl akci odpovídající nápravu mimo ochranu Identity a, měli byste zvážit událostí riziko uzavřít.
+Stav událostí riziko podle ochrany identit uživatelů, označující, že uživatel hello trvalo akce odpovídající nápravu mimo ochrany identit a považovat za tuto událost riziko hello nastavit ručně ukončeno.
 
 ### <a name="risk-event-status"></a>Riziko stav události.
-Vlastnosti události riziko, která udává, zda je událost aktivní a pokud zavřená, důvod zavřením.
+Vlastnosti události riziko, která udává, zda text hello událostí je aktivní a pokud zavřená, hello důvod pro zavření ho.
 
 ### <a name="risk-event-type"></a>Typ události rizik
-Kategorie události riziko, označující typ anomálií, která způsobila, že události považovat za rizikové.
+Kategorie pro hello rizik událost, která určuje typ hello anomálií, která způsobila, že toobe hello událost považována za rizikové.
 
 ### <a name="risk-level-risk-event"></a>Úroveň rizika (riziko událost)
-Označení (vysoká, střední nebo nízká) závažnosti události riziko pomoci uživatelům Identity Protection prioritu akce vstoupení pro snížení rizika pro jejich organizaci. 
+Označení (vysoká, střední nebo nízká) hello závažnosti hello riziko událostí toohelp ochrany identit uživatelů prioritu hello akce jejich trvat tooreduce hello riziko tootheir organizace. 
 
 ### <a name="risk-level-sign-in"></a>Úroveň rizika (sign-in)
-Uvedení (vysoká, střední nebo nízká) pravděpodobnost, že pro konkrétní sign-in, někdo se pokouší použít identitu uživatele.
+Uvedení (vysoká, střední nebo nízká) hello pravděpodobnost, že pro konkrétní sign-in, někdo jiný pokouší identitu uživatele hello toouse.
 
 ### <a name="risk-level-user-compromise"></a>Úroveň rizika (ohrožení zabezpečení uživatele)
-Uvedení (vysoká, střední nebo nízká) pravděpodobnost, že byl napaden identity.
+Uvedení (vysoká, střední nebo nízká) hello pravděpodobnost, že byl napaden identity.
 
 ### <a name="risk-level-vulnerability"></a>Úroveň rizika (chyba)
-Uvedení (vysoká, střední nebo nízká) závažnost ohrožení zabezpečení, aby pomohla uživatelům Identity Protection prioritu akce vstoupení pro snížení rizika pro jejich organizaci.
+Označení (vysoká, střední nebo nízká) hello závažnosti hello ohrožení zabezpečení toohelp ochrany identit uživatelů prioritu hello akce jejich trvat tooreduce hello riziko tootheir organizace.
 
 ### <a name="secure-identity"></a>Zabezpečení (identity)
-Akce nápravy třeba změnit heslo nebo počítač obnovování obnovení potenciálně ohroženými identity neohrožený stavu.
+Akce nápravy třeba změnit heslo nebo počítač obnovování toorestore tooan neohrožený stavu potenciálně ohroženými identity.
 
 ### <a name="security-policy"></a>Zásady zabezpečení
-Kolekce pravidel zásad a podmínku. Zásady je použít pro entity, jako jsou uživatelé, skupiny, aplikace, zařízení, platformy zařízení, stavy zařízení, rozsahy IP adres a Auth2.0 typů klientů. Pokud je povoleno zásadu, vyhodnotí se vždy, když je entita obsažena v zásadách vystaví token pro prostředek.
+Kolekce pravidel zásad a podmínku. Zásada může být použité tooentities, jako jsou uživatelé, skupiny, aplikace, zařízení, platformy zařízení, stavy zařízení, rozsahy IP adres a Auth2.0 typů klientů. Pokud je povoleno zásadu, vyhodnotí se vždy, když je obsažena v zásadách hello entity vystaví token pro prostředek.
 
 ### <a name="sign-in-v"></a>Přihlaste se (v)
-K ověření identity v Azure Active Directory.
+Identita tooan tooauthenticate v Azure Active Directory.
 
 ### <a name="sign-in-n"></a>Přihlášení (ne)
-Proces nebo akce ověřování identity v Azure Active Directory a událostí, který zachycuje tuto operaci.
+proces Hello nebo akce ověřování identity v Azure Active Directory a hello událostí, který zachycuje tuto operaci.
 
 ### <a name="sign-in-from-anonymous-ip-address"></a>Přihlášení z anonymních IP adresy
 Riziko událost se spustí po úspěšného přihlášení z IP adresy, které bylo zjištěno, že IP adresa anonymního proxy serveru.
 
 ### <a name="sign-in-from-infected-device"></a>Přihlášení z nakažených zařízení
-Událost riziko, aktivuje, když přihlášení pochází z IP adresy, která se označuje použije jeden nebo více ohroženými zařízeními, které jsou aktivně pokouší komunikovat se serverem robota.
+Událost riziko, aktivuje, když přihlášení pochází z IP adresy, která se označuje toobe používá jedno nebo více ohroženého zařízení, které se pokoušíte aktivně toocommunicate se serverem robota.
 
 ### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>Přihlášení z IP adres s podezřelou aktivitou
 Riziko události aktivované po úspěšného přihlášení z IP adres s vysoký počet neúspěšných pokusů o přihlášení několika uživatelským účtům během krátké doby času.
@@ -143,7 +143,7 @@ Událost riziko, aktivuje, když se uživatel úspěšně přihlásí z nového 
 V tématu riziko úroveň (sign-in)
 
 ### <a name="sign-in-risk-policy"></a>Zásady přihlášení rizik
-Zásady podmíněného přístupu, která vyhodnotí riziko pro konkrétní přihlášení a použije způsoby zmírnění rizik na základě předem definované podmínky a pravidla.
+Zásady podmíněného přístupu, která vyhodnotí hello riziko tooa konkrétní přihlášení a použije způsoby zmírnění rizik na základě předem definované podmínky a pravidla.
 
 ### <a name="user-compromise-risk"></a>Riziko ohrožení zabezpečení pro uživatele
 V tématu riziko úroveň (ohrožení zabezpečení uživatele)
@@ -152,13 +152,13 @@ V tématu riziko úroveň (ohrožení zabezpečení uživatele)
 V tématu riziko úroveň (ohrožení zabezpečení uživatele).
 
 ### <a name="user-risk-policy"></a>Riziko zásady uživatele
-Zásady podmíněného přístupu, který zvažuje přihlášení a způsoby zmírnění rizik na základě předem definované podmínky a pravidla se vztahují.
+Zásady podmíněného přístupu, který zvažuje hello přihlásit a způsoby zmírnění rizik na základě předem definované podmínky a pravidla se vztahují.
 
 ### <a name="users-flagged-for-risk"></a>Uživatelé označení příznakem rizika
 Uživatelé, kteří mají rizikových událostech, které jsou aktivní nebo napravených
 
 ### <a name="vulnerability"></a>Ohrožení zabezpečení
-Konfigurace nebo podmínku v Azure Active Directory, který adresář náchylné k zneužití nebo hrozeb.
+Konfigurace nebo podmínku v Azure Active Directory, takže je náchylný tooexploits directory hello nebo hrozeb.
 
 ## <a name="see-also"></a>Viz také
 * [Ochrany identit Azure Active Directory](active-directory-identityprotection.md)

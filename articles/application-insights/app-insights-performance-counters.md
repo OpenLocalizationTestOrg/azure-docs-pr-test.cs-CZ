@@ -1,5 +1,5 @@
 ---
-title: "Čítače výkonu ve službě Application Insights | Microsoft Docs"
+title: "čítače aaaPerformance ve službě Application Insights | Microsoft Docs"
 description: "Systém monitorování a vlastní čítače výkonu .NET ve službě Application Insights."
 services: application-insights
 documentationcenter: 
@@ -13,45 +13,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2016
 ms.author: bwren
-ms.openlocfilehash: 038d6e051be8112b9264e7efa6485965d11e32c8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 0a51c225f1d1124c9e7fe89f34e747cb26a3589e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Čítače výkonu systému ve službě Application Insights
-Systém Windows nabízí širokou škálu [čítače výkonu](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) například obsazení procesoru, paměti, disku a využití sítě. Můžete také definovat vlastní. [Application Insights](app-insights-overview.md) můžete zobrazit tyto čítače výkonu, pokud vaše aplikace běží v rámci služby IIS na místního hostitele nebo virtuální počítač, ke kterému mají přístup pro správu. Grafy znamenat prostředky k dispozici pro vaše živé aplikace a může pomoct identifikovat nevyváženou zatížení mezi instancemi serveru.
+Systém Windows nabízí širokou škálu [čítače výkonu](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) například obsazení procesoru, paměti, disku a využití sítě. Můžete také definovat vlastní. [Application Insights](app-insights-overview.md) můžete zobrazit tyto čítače výkonu, pokud vaše aplikace běží v rámci služby IIS na toowhich místního hostitele nebo virtuálního počítače budete mít přístup pro správu. grafy Hello znamenat hello prostředky k dispozici tooyour živé aplikace a může pomoct tooidentify nevyváženou zatížení mezi instancemi serveru.
 
-Čítače výkonu se zobrazí v okně servery, které obsahuje tabulku této segmenty instance serveru.
+Čítače výkonu se zobrazí v okně hello servery, které obsahuje tabulku této segmenty instance serveru.
 
 ![Čítače výkonu, které jsou hlášeny ve službě Application Insights](./media/app-insights-performance-counters/counters-by-server-instance.png)
 
-(Čítače výkonu nejsou k dispozici pro webové aplikace Azure. Ale můžete [odesílání Azure Diagnostics Application Insights](app-insights-azure-diagnostics.md).)
+(Čítače výkonu nejsou k dispozici pro webové aplikace Azure. Ale můžete [odesílání Azure Diagnostics tooApplication Insights](app-insights-azure-diagnostics.md).)
 
 ## <a name="view-counters"></a>Zobrazení čítačů
-V okně servery ukazuje výchozí sadu čítačů výkonu. 
+okno servery Hello ukazuje výchozí sadu čítačů výkonu. 
 
-Informace o jiných čítačů, buď upravit grafy v okně servery nebo otevřete nové [Průzkumníku metrik](app-insights-metrics-explorer.md) okno a přidejte nové grafy. 
+toosee jiných čítačů buď upravit hello grafy v okně servery hello nebo otevřete nové [Průzkumníku metrik](app-insights-metrics-explorer.md) okno a přidejte nové grafy. 
 
-K dispozici čítače jsou označeny jako metriky, když se upravit graf.
+k dispozici čítače Hello jsou označeny jako metriky, když se upravit graf.
 
 ![Čítače výkonu, které jsou hlášeny ve službě Application Insights](./media/app-insights-performance-counters/choose-performance-counters.png)
 
-Chcete-li zobrazit všechny nejužitečnější grafy na jednom místě, vytvořte [řídicí panel](app-insights-dashboards.md) a kód pin je k němu.
+Vytvořte všechny nejužitečnější grafy na jednom místě, toosee [řídicí panel](app-insights-dashboards.md) a připnete ji tooit.
 
 ## <a name="add-counters"></a>Přidání čítačů
-Není-li čítač výkonu, který má být zobrazena v seznamu metriky, je to způsobeno Application Insights SDK není shromažďování ve vašem webovém serveru. Můžete nakonfigurovat ji tak.
+Pokud není hello čítače výkonu, které chcete zobrazit v seznamu hello metrik, protože hello Application Insights SDK není shromažďování ve vašem webovém serveru. Můžete ho nakonfigurovat toodo tak.
 
-1. Zjistěte, jaké čítače jsou k dispozici na vašem serveru pomocí tohoto příkazu Powershellu na serveru:
+1. Zjistěte, jaké čítače jsou k dispozici na vašem serveru pomocí tohoto příkazu Powershellu na serveru hello:
    
     `Get-Counter -ListSet *`
    
     (Viz [ `Get-Counter` ](https://technet.microsoft.com/library/hh849685.aspx).)
 2. Otevřete soubor ApplicationInsights.config.
    
-   * Pokud jste přidali Application Insights do vaší aplikace během vývoje, upravit soubor ApplicationInsights.config ve vašem projektu a pak znovu nasadit na vaše servery.
-   * Pokud jste použili monitorování stavu instrumentovat webové aplikace za běhu, najít soubor ApplicationInsights.config v kořenovém adresáři aplikace ve službě IIS. Aktualizaci existuje v každé instanci serveru.
-3. Úpravy – direktiva kolekce výkonu:
+   * Pokud jste přidali aplikaci tooyour Application Insights během vývoje, upravit soubor ApplicationInsights.config ve vašem projektu a poté ji znovu nasadit tooyour servery.
+   * Pokud jste použili tooinstrument monitorování stavu webové aplikace za běhu, najít soubor ApplicationInsights.config v kořenovém adresáři hello hello aplikace ve službě IIS. Aktualizaci existuje v každé instanci serveru.
+3. Úpravy – direktiva kolekce výkonu hello:
    
 ```XML
    
@@ -66,14 +66,14 @@ Není-li čítač výkonu, který má být zobrazena v seznamu metriky, je to zp
 
 Můžete zaznamenat standardní čítače i těch, které že jste implementovali sami. `\Objects\Processes`Příkladem standardní čítač je k dispozici na všechny systémy Windows. `\Sales(photo)\# Items Sold`je příklad vlastní čítače, který může být implementována ve webové službě. 
 
-Formát je `\Category(instance)\Counter"`, nebo kategorie, které nemají instancí, právě `\Category\Counter`.
+Formát Hello je `\Category(instance)\Counter"`, nebo kategorie, které nemají instancí, právě `\Category\Counter`.
 
-`ReportAs`je vyžadována pro názvy čítačů, které se neshodují `[a-zA-Z()/-_ \.]+` – to znamená, že obsahovat znaky, které nejsou v následujících sadách: písmena, kulaté závorky, lomítkem, pomlčky, podtržítka, místo, tečka.
+`ReportAs`je vyžadována pro názvy čítačů, které se neshodují `[a-zA-Z()/-_ \.]+` – to znamená, obsahují znaky, které nejsou v hello následující sady: písmena, kulaté závorky, lomítkem, pomlčky, podtržítka, místo, tečka.
 
-Pokud zadáte instance, budou shromažďovány jako dimenze "CounterInstanceName" hlášené metriky.
+Pokud zadáte instance, budou shromážděna metrika udávaný dimenzi "CounterInstanceName" Dobrý den.
 
 ### <a name="collecting-performance-counters-in-code"></a>Shromažďování čítače výkonu v kódu
-Pokud chcete shromáždit čítače výkonu systému a jejich odeslání do služby Application Insights, můžete přizpůsobit fragmentu níže:
+výkon systému toocollect čítače a jejich odeslání tooApplication statistiky, můžete přizpůsobit hello fragment kódu níže:
 
 
 ``` C#
@@ -84,7 +84,7 @@ Pokud chcete shromáždit čítače výkonu systému a jejich odeslání do slu�
     perfCollectorModule.Initialize(TelemetryConfiguration.Active);
 ```
 
-Nebo můžete provést totéž s vlastní metriky, které jste vytvořili:
+Nebo to můžete provést hello samé s vlastní metriky, které jste vytvořili:
 
 ``` C#
     var perfCollectorModule = new PerformanceCollectorModule();
@@ -96,28 +96,28 @@ Nebo můžete provést totéž s vlastní metriky, které jste vytvořili:
 ## <a name="performance-counters-in-analytics"></a>Čítače výkonu v Analytics
 Můžete vyhledat a zobrazit sestavy čítače výkonu v [Analytics](app-insights-analytics.md).
 
-**Čítače výkonu** schématu zpřístupní `category`, `counter` název, a `instance` název jednotlivých čítačů výkonu.  V telemetrii pro každou aplikaci zobrazí se pouze čítačů pro tuto aplikaci. Například pokud chcete zobrazit jsou k dispozici co čítače: 
+Hello **čítače výkonu** schématu zpřístupní hello `category`, `counter` název, a `instance` název jednotlivých čítačů výkonu.  V hello telemetrických dat pro každou aplikaci zobrazí se pouze hello čítače pro tuto aplikaci. Například toosee čítače, které jsou k dispozici: 
 
 ![Čítače výkonu v analytics Application Insights](./media/app-insights-performance-counters/analytics-performance-counters.png)
 
-('Instance, zde označují instance čítače výkonu, není instance počítače role nebo serveru. Název instance čítače výkonu obvykle segmenty čítače například využití procesoru podle názvu procesu nebo aplikace.)
+('Instance, zde označují toohello instance čítače výkonu, není hello role nebo serveru instance počítače. Název instance čítače výkonu Hello obvykle segmenty čítače například využití procesoru podle názvu hello hello procesu nebo aplikace.)
 
-Pokud chcete získat graf dostupné paměti za poslední období: 
+tooget graf dostupné paměti přes hello poslední období: 
 
 ![Paměť timechart v analytics Application Insights](./media/app-insights-performance-counters/analytics-available-memory.png)
 
-Jako další telemetrií **čítače výkonu** také má sloupec `cloud_RoleInstance` určující identita instance hostitele serveru, na kterém aplikace běží. Chcete-li například porovnat výkon vaší aplikace na různé počítače: 
+Jako další telemetrií **čítače výkonu** také má sloupec `cloud_RoleInstance` určující hello identitu hello hostitele serveru instance, na kterém aplikace běží. Například toocompare hello výkonu vaší aplikace na různé počítače hello: 
 
 ![Výkon oddělených instance role ve službě Application Insights analytics](./media/app-insights-performance-counters/analytics-metrics-role-instance.png)
 
 ## <a name="aspnet-and-application-insights-counts"></a>Technologie ASP.NET a počty Application Insights
-*Jaký je rozdíl mezi rychlost výjimky a výjimky metriky?*
+*Co je hello rozdíl mezi rychlost hello výjimky a výjimky metriky?*
 
-* *Míra výjimka* je čítače výkonu systému. Modul CLR spočítá všechny zpracovávaný a neošetřené výjimky, které jsou vyvolány a součet vydělí v intervalu vzorkování prahovou hodnotou délku intervalu. Application Insights SDK shromažďuje tento výsledek a odešle ji do portálu.
-* *Výjimky* je počet přijatých portálu v intervalu vzorkování grafu TrackException sestavy. Obsahuje pouze zpracovávaný výjimky, kde jste napsali TrackException zavolá do vašeho kódu a neobsahuje všechny [neošetřené výjimky](app-insights-asp-net-exceptions.md). 
+* *Míra výjimka* je čítače výkonu systému. Hello CLR spočítá všechny hello zpracovat a neošetřených výjimek, které jsou vyvolány a vydělí hello celkem v intervalu vzorkování prahovou hodnotou hello délka intervalu hello. Hello Application Insights SDK shromažďuje tento výsledek a odešle ji toohello portálu.
+* *Výjimky* je počet hello TrackException sestavy přijatých hello portálu v intervalu vzorkování hello hello grafu. Obsahuje pouze hello zpracovává výjimky, kde jste napsali TrackException zavolá do vašeho kódu a neobsahuje všechny [neošetřené výjimky](app-insights-asp-net-exceptions.md). 
 
 ## <a name="alerts"></a>Výstrahy
-Jako další metriky můžete [nastavit upozornění](app-insights-alerts.md) varovat, pokud čítače výkonu přejde mimo omezení zadáte. Otevřete okno Výstrahy a klikněte na tlačítko Přidat výstrahy.
+Jako další metriky můžete [nastavit upozornění](app-insights-alerts.md) toowarn, pokud čítače výkonu ocitne mimo omezení zadáte. Otevřete okno hello výstrahy a klikněte na tlačítko Přidat výstrahy.
 
 ## <a name="next"></a>Další kroky
 * [Sledování závislostí](app-insights-asp-net-dependencies.md)

@@ -1,6 +1,6 @@
 ---
-title: "Nástroj diagnostiky pro zařízení StorSimple 8000 Poradce při potížích | Microsoft Docs"
-description: "Popisuje režimy zařízení StorSimple a vysvětluje, jak pomocí prostředí Windows PowerShell pro StorSimple ke změně režimu zařízení."
+title: "zařízení StorSimple 8000 tootroubleshoot nástroj aaaDiagnostics | Microsoft Docs"
+description: "Popisuje režimy zařízení StorSimple hello a vysvětluje, jak toouse Windows Powershellu pro StorSimple toochange hello režim zařízení."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,86 +14,86 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 8fae7bb357f8e5e8eff249edfe3a2aaafe04283c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e8b7fdbc44d2533973b63da841335ba73ba0014b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Nástroj diagnostiky StorSimple potíží pomocí 8000 řady zařízení
+# <a name="use-hello-storsimple-diagnostics-tool-tootroubleshoot-8000-series-device-issues"></a>Použít hello StorSimple Diagnostika tootroubleshoot 8000 řady zařízení problémy
 
 ## <a name="overview"></a>Přehled
 
-Nástroj diagnostiky StorSimple diagnostikuje problémy související s stav součásti systému, výkonu, sítě a hardwaru pro zařízení StorSimple. Nástroj diagnostiky lze použít v různých situacích. Mezi tyto scénáře patří úlohy plánování, nasazení zařízení StorSimple, vyhodnocovat síťové prostředí a určení výkon provozní zařízení. Tento článek obsahuje přehled nástroje pro diagnostiku a popisuje, jak nástroj lze použít s zařízení StorSimple.
+Hello StorSimple Diagnostika diagnostikuje problémy související toosystem, výkon, sítě a stavu součásti hardwaru pro zařízení StorSimple. Nástroj diagnostiky Hello lze použít v různých situacích. Mezi tyto scénáře patří úlohy plánování, nasazení zařízení StorSimple, vyhodnocování hello síťové prostředí a určení hello výkon provozní zařízení. Tento článek obsahuje přehled hello Diagnostika a popisuje, jak nástroj hello lze použít s zařízení StorSimple.
 
-Nástroj diagnostiky je primárně určený pro řadu zařízení StorSimple 8000 místní (8100 a 8600).
+Nástroj diagnostiky Hello je primárně určený pro řadu zařízení StorSimple 8000 místní (8100 a 8600).
 
 ## <a name="run-diagnostics-tool"></a>Spustit diagnostické nástroje
 
-Tento nástroj můžete spustit pomocí rozhraní Windows PowerShell zařízení StorSimple. Existují dva způsoby pro přístup k místní rozhraní zařízení:
+Tento nástroj můžete spustit pomocí rozhraní Windows PowerShell hello zařízení StorSimple. Existují dva způsoby tooaccess hello místního rozhraní zařízení:
 
-* [Použití klienta PuTTY k připojení ke konzole sériového portu zařízení](storsimple-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-* [Vzdálený přístup nástroj prostřednictvím Windows Powershellu pro StorSimple](storsimple-remote-connect.md).
+* [Konzole sériového portu toohello zařízení PuTTY tooconnect pro použití](storsimple-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
+* [Vzdálený přístup hello nástroj prostřednictvím hello Windows Powershellu pro StorSimple](storsimple-remote-connect.md).
 
-V tomto článku předpokládáme, že jste připojení ke konzole sériového portu zařízení prostřednictvím PuTTY.
+V tomto článku předpokládáme, že jste připojení toohello konzoly sériového portu zařízení prostřednictvím PuTTY.
 
-#### <a name="to-run-the-diagnostics-tool"></a>Chcete-li spustit nástroj diagnostiky
+#### <a name="toorun-hello-diagnostics-tool"></a>Nástroj diagnostiky toorun hello
 
-Jakmile se připojíte k rozhraní Windows PowerShell zařízení, proveďte následující kroky ke spuštění rutiny.
-1. Přihlaste se k konzole sériového portu zařízení podle pokynů v [použití klienta PuTTY k připojení ke konzole sériového portu zařízení](storsimple-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
+Po připojení rozhraní Windows PowerShell toohello hello zařízení, proveďte následující kroky toorun hello rutiny hello.
+1. Přihlaste se pomocí následujících kroků hello v konzole sériového portu zařízení toohello [konzoly sériového portu toohello zařízení tooconnect pro použití klienta PuTTY](storsimple-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
 
-2. Zadejte následující příkaz:
+2. Zadejte hello následující příkaz:
 
     `Invoke-HcsDiagnostics`
 
-    Pokud není zadán parametr oboru, rutina provede všechny diagnostické testy. Tyto testy zahrnují systému, stav součásti hardwaru, síť a výkonu. 
+    Pokud není zadán parametr oboru hello, spustí rutina hello hello diagnostické testy. Tyto testy zahrnují systému, stav součásti hardwaru, síť a výkonu. 
     
-    Pokud chcete spustit pouze konkrétní test, zadejte parametr oboru. Například spusťte pouze test sítě, zadejte
+    toorun pouze konkrétní test, zadejte parametr oboru hello. Například toorun pouze hello test sítě, typ
 
     `Invoke-HcsDiagnostics -Scope Network`
 
-3. Vyberte a zkopírujte výstup z okna PuTTY do textového souboru k další analýze.
+3. Vyberte a zkopírujte výstup hello z hello PuTTY okna do textového souboru k další analýze.
 
-## <a name="scenarios-to-use-the-diagnostics-tool"></a>Scénáře použití nástroje diagnostiky
+## <a name="scenarios-toouse-hello-diagnostics-tool"></a>Scénáře toouse hello diagnostického nástroje
 
-Použijte nástroj Diagnostika k řešení potíží se stavem sítě, výkon, systém a hardware systému. Tady je několik možných scénářů:
+Použijte hello diagnostiky nástroj tootroubleshoot hello sítě, výkon, systém a hardwaru stav hello systému. Tady je několik možných scénářů:
 
-* **Zařízení do offline režimu** -zařízení řady StorSimple 8000 si je offline. Však z rozhraní Windows PowerShell, zdá se, že jsou oběma řadičům spuštěná.
-    * Tento nástroj můžete pak určit stav sítě.
+* **Zařízení do offline režimu** -zařízení řady StorSimple 8000 si je offline. Z rozhraní Windows PowerShell text hello, ale zdá, že jsou oba řadiče hello spuštěná.
+    * Tento nástroj můžete použít toothen určení stavu sítě hello.
          
          > [!NOTE]
-         > Nepoužívejte tento nástroj pro vyhodnocení nastavení sítě a výkonu v zařízení než registrace (nebo konfigurace prostřednictvím Průvodce instalací). Platnou IP je přiřazený k zařízení během registrace a Průvodce instalací. Tuto rutinu můžete spustit na zařízení, který není zaregistrován pro stav hardwaru a systému. Používejte parametr oboru, například:
+         > Nepoužívejte tento nástroj tooassess výkonu a nastavení sítě na zařízení než registrace hello (nebo konfigurace prostřednictvím Průvodce instalací). Platnou IP je přiřazen toohello zařízení během registrace a Průvodce instalací. Tuto rutinu můžete spustit na zařízení, který není zaregistrován pro stav hardwaru a systému. Používejte hello parametr rozsahu, například:
          >
          > `Invoke-HcsDiagnostics -Scope Hardware`
          >
          > `Invoke-HcsDiagnostics -Scope System`
 
-* **Problémy s trvalé zařízení** -dochází k zařízení problémy, které se zdá, že zachovat. Například registrace se nedaří. Můžete také vykazuje problémy zařízení po zařízení je úspěšně registrovaná a funkční nějakou dobu.
-    * V takovém případě použijte tento nástroj pro předběžné odstraňování před přihlášením žádost o služby s Microsoft Support. Doporučujeme, abyste tento nástroj spustit a zachycení výstup tohoto nástroje. Potom můžete zadat Tento výstup pro podporu, aby urychlit řešení potíží.
+* **Problémy s trvalé zařízení** -dochází k problémům zařízení, které pravděpodobně toopersist. Například registrace se nedaří. Můžete také vykazuje problémy zařízení po hello zařízení je úspěšně registrovaná a funkční nějakou dobu.
+    * V takovém případě použijte tento nástroj pro předběžné odstraňování před přihlášením žádost o služby s Microsoft Support. Doporučujeme vám, že spustíte tento výstup hello nástroj a zachycení tento nástroj. Potom můžete zadat Tento výstup tooSupport tooexpedite řešení potíží.
     * Pokud jsou všechny součásti nebo clusteru selhání hardwaru, je zapotřebí přihlásit v žádosti o podporu.
 
 * **Nedostatek výkonu zařízení** -zařízení StorSimple si je pomalé.
-    * V takovém případě spusťte tuto rutinu s parametrem oboru nastavena na výkon. Analýza výstupu. Získat cloudu latenci pro čtení a zápis. Používat oznámených latencí jako maximální dosažitelný cíl, zohlednit v některé zatížení pro vnitřní zpracování dat a potom nasaďte úlohy v systému. Další informace, přejděte na [použít testovací sítě k řešení potíží s výkonem zařízení](#network-test).
+    * V takovém případě spusťte tuto rutinu s tooperformance sadu parametr oboru. Analýza výstup hello. Získat hello cloudu latenci pro čtení a zápis. Použití hello hlášené zohlednit v některé zatížení pro vnitřní zpracování dat hello latence maximální dosažitelný cíl a pak nasadit hello zatížení systému hello. Další informace, přejděte příliš[použít hello sítě testování tootroubleshoot zařízení výkonu](#network-test).
 
 
 ## <a name="diagnostics-test-and-sample-outputs"></a>Výstupy testů a ukázkové diagnostiky
 
 ### <a name="hardware-test"></a>Test na hardwaru
 
-Tento test Určuje stav hardwarové součásti, Seznam USM firmware a firmware disku spuštěny v systému.
+Tento test Určuje stav hello hello hardwarové součásti, hello Seznam USM firmware a firmware disku hello spuštěny v systému.
 
-* Hardwarové součásti hlášené jsou tyto součásti, které se nezdařily testu nebo nejsou k dispozici v systému.
-* Seznam USM verzí firmwaru firmwaru a disku jsou hlášené pro řadič 0, 1 řadiče a sdílené součásti v systému. Úplný seznam hardwarové součásti přejděte na:
+* hardwarové součásti Hello hlášené jsou tyto součásti se nezdařilo hello testu nebo nejsou k dispozici v systému hello.
+* Hello Seznam USM firmwaru a disku verzí firmwaru jsou hlášené pro hello řadič 0, 1 řadiče a sdílené součásti v systému. Úplný seznam hardwarové součásti přejděte na:
 
     * [Součásti v primární skříň](storsimple-monitor-hardware-status.md#component-list-for-primary-enclosure-of-storsimple-device)
     * [Součásti v EBOD skříň](storsimple-monitor-hardware-status.md#component-list-for-ebod-enclosure-of-storsimple-device)
 
 > [!NOTE]
-> Pokud test na hardwaru ohlásí selhání součásti, [protokolu v žádosti o služby se Microsoft Support](storsimple-contact-microsoft-support.md).
+> Pokud test na hardwaru hello ohlásí selhání součásti, [protokolu v žádosti o služby se Microsoft Support](storsimple-contact-microsoft-support.md).
 
 #### <a name="sample-output-of-hardware-test-run-on-an-8100-device"></a>Ukázkový výstup spustí na zařízení s 8100 test na hardwaru
 
-Tady je ukázkový výstup ze zařízení StorSimple 8100. Skříň EBOD ve model zařízení 8100, není nainstalována. Proto nejsou hlášené komponenty EBOD řadiče.
+Tady je ukázkový výstup ze zařízení StorSimple 8100. V zařízení 8100 modelu hello hello EBOD skříň není nainstalována. Proto nejsou hlášené hello EBOD řadiče součásti.
 
 ```
 Controller0>Invoke-HcsDiagnostics -Scope Hardware
@@ -205,17 +205,17 @@ DisksFirmware       : SmrtStor:TXA2D20400GA6XYR:KZ50
 
 ### <a name="system-test"></a>Testovací systém
 
-Tento test hlásí informace o systému, dostupné aktualizace, informace o clusteru a informace služby pro vaše zařízení.
+Tento test sestav hello systémové informace, hello aktualizace k dispozici, informace o clusteru hello a informace o službě hello pro vaše zařízení.
 
-* Informace o systému zahrnuje modelu, sériové číslo zařízení, časové pásmo, stav řadiče a verze softwaru podrobné spuštěných v systému. Chcete-li pochopit různé parametry systému hlášené jako výstup, přejděte na [interpretace informace o systému](#appendix-interpreting-system-information).
+* informace o systému Hello zahrnuje hello modelu, sériové číslo zařízení, časové pásmo, stav řadiče a verze podrobné softwaru hello běžící na systému hello. hello toounderstand různé parametry systému hlášené jako výstup hello přejděte příliš[interpretace informace o systému](#appendix-interpreting-system-information).
 
-* Dostupnost aktualizace oznámí, zda režimů regular a údržby nejsou k dispozici a jejich názvy přidruženého balíčku. Pokud `RegularUpdates` a `MaintenanceModeUpdates` jsou `false`, to znamená, že aktualizace nejsou k dispozici. Zařízení je aktuální.
-* Informace o clusteru obsahuje informace o různých logických součástí všech skupin HCS clusteru a jejich příslušné stavy. Pokud uvidíte skupinu offline clusteru v této části sestavy, [kontaktovat Microsoft Support](storsimple-contact-microsoft-support.md).
-* Informace o službě obsahuje názvy a stavy všech HCS a položek konfigurace služby spuštěné na zařízení. Tyto informace jsou užitečné pro systém Microsoft Support při řešení potíží problém zařízení.
+* Dostupnost aktualizace Hello ohlásí, zda je k dispozici režimy hello regular a údržby a jejich názvy přidruženého balíčku. Pokud `RegularUpdates` a `MaintenanceModeUpdates` jsou `false`, znamená to, zda text hello aktualizace nejsou k dispozici. Zařízení je aktuální.
+* informace o clusteru Hello obsahuje hello informace o různých logické součásti všechny skupiny clusteru HCS hello a jejich příslušné stavy. Pokud uvidíte skupinu offline clusteru v této části sestavy hello [kontaktovat Microsoft Support](storsimple-contact-microsoft-support.md).
+* informace o službě Hello zahrnuje hello názvy a stavy všech hello HCS a položek konfigurace služby spuštěné na zařízení. Tyto informace jsou užitečné pro hello Microsoft Support při řešení potíží problém hello zařízení.
 
 #### <a name="sample-output-of-system-test-run-on-an-8100-device"></a>Ukázkový výstup testu systému spustí na zařízení s 8100
 
-Tady je ukázkový výstup testu systému spustí na zařízení s 8100.
+Tady je ukázkový výstup testu systému hello spustí na zařízení s 8100.
 
 ```
 Controller0>Invoke-HcsDiagnostics -Scope System
@@ -322,20 +322,20 @@ hcs_startup                                   Stopped hcs_startup
 
 ### <a name="network-test"></a>Test sítě
 
-Tento test ověřuje stav síťových rozhraní, porty, DNS a NTP připojení k serveru, SSL certifikátů, přihlašovacích údajů účtu úložiště, připojení k serverům aktualizace, a připojení k proxy serveru webu na zařízení StorSimple.
+Tento test ověřuje stav hello hello síťových rozhraní, porty, DNS a NTP připojení k serveru, SSL certifikátů, přihlašovacích údajů účtu úložiště, servery pro aktualizaci toohello připojení a připojení k proxy serveru webu na zařízení StorSimple.
 
 #### <a name="sample-output-of-network-test-when-only-data0-is-enabled"></a>Ukázkový výstup sítě testů, pokud je povoleno pouze DATA0
 
-Tady je ukázkový výstup zařízení 8100. Zobrazí se ve výstupu který:
+Tady je ukázkový výstup hello zařízení 8100. Zobrazí se ve výstupu hello který:
 * Pouze DATA 0 a síťová rozhraní DATA 1 jsou povolené a nakonfigurované.
-* DATA 2 až 5 nejsou povolené v portálu.
-* Konfigurace serveru DNS je platný, a zařízení se můžete připojit pomocí serveru DNS.
-* Připojení k serveru NTP je také v pořádku.
-* Jsou otevřené porty 80 a 443. Port 9354 však je blokován. Na základě [požadavky na systém sítě](storsimple-system-requirements.md), je třeba otevřít tento port pro komunikaci se service bus.
-* Certifikáty SSL je platný.
-* Zařízení se může připojit k účtu úložiště: _myss8000storageacct_.
-* Připojení k serverům aktualizace je platný.
-* Webový proxy server není nakonfigurován na tomto zařízení.
+* DATA 2 až 5 nejsou povolené hello portálu.
+* Konfigurace serveru DNS Hello je platný a hello zařízení můžete připojit přes hello DNS server.
+* připojení k serveru NTP Hello je také v pořádku.
+* Jsou otevřené porty 80 a 443. Port 9354 však je blokován. Podle hello [požadavky na systém sítě](storsimple-system-requirements.md), musíte tento port pro tooopen pro hello service bus komunikaci.
+* certifikáty SSL Hello je platný.
+* Hello zařízení může připojit účet úložiště toohello: _myss8000storageacct_.
+* servery tooUpdate připojení Hello je platný.
+* na toto zařízení není nakonfigurován Hello webový proxy server.
 
 #### <a name="sample-output-of-network-test-when-data0-and-data1-are-enabled"></a>Ukázkový výstup testu sítě, pokud jsou povolené DATA0 a DATA1
 
@@ -367,29 +367,29 @@ Web proxy                               Not enabled         Web proxy is not...
 
 ### <a name="performance-test"></a>Test výkonnosti
 
-Tento test sestavy výkon cloudu prostřednictvím latenci pro čtení a zápis cloudu pro vaše zařízení. Tento nástroj slouží k stanovení základní úrovně výkonu cloudu, můžete dosáhnout s StorSimple. Nástroj hlásí maximální výkon (nejlepší scénář pro latenci pro čtení a zápis), které můžete získat pro připojení.
+Tento test hlásí hello cloudu výkonu prostřednictvím latenci pro čtení a zápis hello cloudu pro vaše zařízení. Tento nástroj se dá použít tooestablish základní úroveň výkonu hello cloudu, který můžete dosáhnout s StorSimple. Hello nástroj sestavy hello maximální výkon (nejlepší scénář pro latenci pro čtení a zápis), které můžete získat pro připojení.
 
-Jak nástroj sestavy maximální možná výkonu, můžeme použít oznámených latencí pro čtení a zápis jako cíle při nasazování úlohy.
+Jak nástroj hello sestavy hello maximální možná výkonu, můžeme použít hello oznamuje latenci pro čtení a zápis jako cíle při nasazování hello úlohy.
 
-Test simuluje velikosti objektu blob přidružené typy jiný svazek v zařízení. Víceúrovňová Regular a zálohování místně vázaných svazků velikost objektu blob 64 KB. Vrstvené svazky s možností archivu zaškrtnuta možnost použít velikost dat blob 512 KB. Pokud vaše zařízení má vrstvené a místně vázaných svazků konfigurace, pouze test odpovídající do objektu blob 64 KB, velikost dat je spuštěna.
+Hello test simuluje velikosti objektu blob hello přidružené typy hello jiný svazek v zařízení hello. Víceúrovňová Regular a zálohování místně vázaných svazků velikost objektu blob 64 KB. Vrstvené svazky s možností archivu zaškrtnuta možnost použít velikost dat blob 512 KB. Pokud vaše zařízení má vrstvené a místně vázaných svazků konfigurace, pouze hello testovací odpovídající too64 KB objekt blob, který je velikost dat spustit.
 
-Chcete-li tento nástroj používat, proveďte následující kroky:
+toouse tento nástroj, proveďte následující kroky hello:
 
-1.  Nejprve vytvořte směs vrstvené svazky a vrstvené svazky s archivovaný možnost zaškrtnutí. Tato akce zajistíte, že nástroj spustí testy pro 64 KB a 512 KB velikosti objektu blob.
+1.  Nejprve vytvořte směs vrstvené svazky a vrstvené svazky s archivovaný možnost zaškrtnutí. Tato akce zajistí, že tento nástroj hello spustí testy hello 64 KB a 512 KB velikosti objektu blob.
 
-2. Spusťte rutinu po po vytvoření a konfiguraci svazky. Zadejte:
+2. Spusťte rutinu hello po po vytvoření a konfiguraci hello svazky. Zadejte:
 
     `Invoke-HcsDiagnostics -Scope Performance`
 
-3. Poznamenejte si latenci pro čtení a zápis hlášené nástroj. Tento test může trvat několik minut, který bude spuštěn před ohlásí výsledky.
+3. Poznamenejte si latenci pro čtení a zápis hello hlášené nástrojem hello. Tento test může trvat několik minut toorun předtím, než se oznámí hello výsledky.
 
-4. Latence připojení jsou pod očekávaný rozsah, pak latence hlášené nástroj lze nastavit jako maximální dosažitelný cíl při nasazování úlohy. Dvoufaktorového v některé zatížení pro vnitřní zpracování dat.
+4. Pokud latence připojení hello všechny pod hello očekávaný rozsah a potom hello latence hlášené hello nástroj lze použít jako maximální dosažitelný cíl při nasazování hello úlohy. Dvoufaktorového v některé zatížení pro vnitřní zpracování dat.
 
-    Pokud jsou vysoké latenci pro čtení a zápis hlášené nástroj diagnostiky:
+    Pokud latence pro čtení a zápis hello hlášené jsou vysoké hello diagnostického nástroje:
 
-    1. Konfigurace pro služby blob Storage Analytics a analyzovat výstup pochopit latence pro účet úložiště Azure. Podrobné pokyny najdete v tématu [povolení a konfigurace úložiště analýzy](../storage/common/storage-enable-and-view-metrics.md). Pokud tyto latence jsou také vysokou a porovnatelný z hlediska na čísla, který jste dostali od nástroj diagnostiky StorSimple, budete muset přihlásit žádost o služby s Azure storage.
+    1. Konfigurace pro služby blob Storage Analytics a analyzujte hello výstup toounderstand hello latence pro hello účtu úložiště Azure. Podrobné pokyny najdete příliš[povolení a konfigurace úložiště analýzy](../storage/common/storage-enable-and-view-metrics.md). Pokud jsou tyto latence také vysoké a porovnatelný z hlediska toohello čísla, který jste dostali od hello StorSimple Diagnostika, musíte toolog žádost o služby s Azure storage.
 
-    2. Pokud jsou nízkou latenci účet úložiště, obraťte se na správce sítě prozkoumat problémy s latencí ve vaší síti.
+    2. Pokud jsou nízkou latenci účet úložiště hello, obraťte se na tooinvestigate správce vaší sítě žádné latence problémy ve vaší síti.
 
 #### <a name="sample-output-of-performance-test-run-on-an-8100-device"></a>Ukázkový výstup testu výkonnosti spustí na zařízení s 8100
 
@@ -411,34 +411,34 @@ Controller0>
 
 ## <a name="appendix-interpreting-system-information"></a>Dodatek: interpretace informace o systému
 
-Zde je popisující, co různé parametry prostředí Windows PowerShell v systémové informace o mapování pro tabulku. 
+Zde je tabulku popisující jaké hello mapovat různé parametry prostředí Windows PowerShell hello systémové informace. 
 
 | Parametr prostředí PowerShell    | Popis  |
 |-------------------------|------------------|
 | ID instance             | Každý řadič má jedinečný identifikátor nebo identifikátor GUID s ním spojená.|
-| Name (Název)                    | Popisný název zařízení, jak nakonfigurovat prostřednictvím portálu Azure při nasazení zařízení. Popisný název výchozí je sériové číslo zařízení. |
-| Model                   | Model zařízení řady StorSimple 8000. Model může být 8100 nebo 8600.|
-| sériové číslo            | Sériové číslo zařízení se přiřadí v objektu pro vytváření a 15 znaků. Například 8600 SHX0991003G44HT určuje:<br> 8600 – je model zařízení.<br>TVX – je místo výroby.<br> 0991003 - je konkrétní produkt. <br> G44HT-, které jsou k vytvoření jedinečné sériová čísla zvýší posledních 5 číslic. Toto nemusí být sekvenční sada.|
-| Časové pásmo                | Časové pásmo zařízení podle konfigurace v portálu Azure během nasazování zařízení.|
-| CurrentController       | Řadiče, které jste připojeni přes rozhraní prostředí Windows PowerShell zařízení StorSimple.|
-| ActiveController        | Na řadič, který je v zařízení aktivní a je řízení všech síťových a diskových operací. To může být řadič 0 nebo 1 řadiče.  |
-| Controller0Status       | Stav řadič 0 na vašem zařízení. Stav řadič může být normálního v režimu obnovení, nebo je nedostupný.|
-| Controller1Status       | Stav řadič 1 na vašem zařízení.  Stav řadič může být normálního v režimu obnovení, nebo je nedostupný.|
-| SystemMode              | Celkový stav zařízení StorSimple. Stav zařízení může být normální údržby, nebo vyřazení (odpovídá deaktivováno na portálu Azure).|
-| FriendlySoftwareVersion | Popisný řetězec, který odpovídá verzi softwaru zařízení. U systému, který používá aktualizace 4 verze popisný softwaru bude StorSimple 8000 řady aktualizace 4.0.|
-| HcsSoftwareVersion      | Verze softwaru HCS spuštěné na vašem zařízení. Například verze softwaru HCS odpovídající StorSimple 8000 řady aktualizace 4.0 je 6.3.9600.17820. |
-| ApiVersion              | Verze softwaru rozhraní API prostředí PowerShell systému Windows HCS zařízení.|
-| VhdVersion              | Verze softwaru vytváření bitové kopie, který byl součástí zařízení. Pokud zařízení resetujete do výchozího, pak spustí tato verze softwaru.|
-| OSVersion               | Verze softwaru operačního systému Windows Server spuštěné na zařízení. Zařízení StorSimple je založena na Windows Server 2012 R2, která odpovídá 6.3.9600.|
-| CisAgentVersion         | Verze pro agenta položek konfigurace pro spuštění v zařízení StorSimple. Tento agent pomáhá komunikovat se službou StorSimple Manager běží v Azure.|
-| MdsAgentVersion         | Verze odpovídající Mds agenta spuštěného v zařízení StorSimple. Tento agent přesune data monitorování a Diagnostika služby MDS ().|
-| Lsisas2Version          | Verze odpovídající LSI ovladače zařízení StorSimple.|
-| Kapacita                | Celkový počet zařízení v bajtech.|
-| RemoteManagementMode    | Určuje, zda zařízení můžete vzdáleně spravovat přes jeho rozhraní Windows PowerShell. |
-| FipsMode                | Určuje, zda režim Spojených států informace o zpracování Standard FIPS (Federal) povolena na vašem zařízení. Standard FIPS 140 definuje kryptografické algoritmy pro použití schváleno nám Federal government počítačových systémů pro ochranu citlivá data. Pro zařízení se systémem Update 4 nebo novější je ve výchozím nastavení povolen režim FIPS. |
+| Name (Název)                    | Hello popisný název zařízení hello jako nakonfigurovaný pomocí portálu Azure hello během nasazování zařízení. popisný název výchozí Hello je sériové číslo zařízení hello. |
+| Model                   | Hello model zařízení řady StorSimple 8000. Hello modelu může být 8100 nebo 8600.|
+| sériové číslo            | sériové číslo zařízení Hello je přiřazena na hello objekt pro vytváření a 15 znaků. Například 8600 SHX0991003G44HT určuje:<br> 8600 – je model zařízení hello.<br>TVX – je hello výrobní lokality.<br> 0991003 - je konkrétní produkt. <br> Sériová čísla jedinečná toocreate zvýší G44HT-hello jsou posledních 5 číslic. Toto nemusí být sekvenční sada.|
+| Časové pásmo                | Hello zařízení časové pásmo jako nakonfigurovaný v hello portál Azure během nasazování zařízení.|
+| CurrentController       | Hello řadiče, že jste rozhraní Windows PowerShell připojené toothrough hello zařízení StorSimple.|
+| ActiveController        | Hello řadiče, který je aktivní na vašem zařízení a řídí všechny operace hello sítě a disku. To může být řadič 0 nebo 1 řadiče.  |
+| Controller0Status       | Stav Hello řadič 0 na vašem zařízení. Stav řadiče Hello může být normálního v režimu obnovení, nebo je nedostupný.|
+| Controller1Status       | Hello stav řadič 1 na vašem zařízení.  Stav řadiče Hello může být normálního v režimu obnovení, nebo je nedostupný.|
+| SystemMode              | Hello celkového stavu zařízení StorSimple. Stav zařízení Hello může být normální údržby, nebo vyřazení (odpovídá toodeactivated v hello portál Azure).|
+| FriendlySoftwareVersion | Hello popisný řetězec, který odpovídá verzi softwaru toohello zařízení. U systému, který používá aktualizace 4 verze hello popisný softwaru bude StorSimple 8000 řady aktualizace 4.0.|
+| HcsSoftwareVersion      | verze softwaru HCS Hello spuštěné na vašem zařízení. Například hello HCS software verze odpovídající tooStorSimple 8000 je 6.3.9600.17820 4.0 Update řady. |
+| ApiVersion              | verze softwaru Hello hello rozhraní API prostředí PowerShell systému Windows hello HCS zařízení.|
+| VhdVersion              | verze softwaru Hello hello tovární image, která hello zařízení byl součástí. Pokud obnovíte výchozí nastavení vašeho zařízení toofactory, pak spustí tato verze softwaru.|
+| OSVersion               | verze softwaru Hello spuštěné na zařízení hello hello operační systém Windows Server. zařízení StorSimple Hello je založena na Windows Server 2012 R2, která odpovídá too6.3.9600 hello.|
+| CisAgentVersion         | Hello verze pro agenta položek konfigurace pro spuštění v zařízení StorSimple. Tento agent pomáhá komunikovat se službou StorSimple Manager hello běžící v Azure.|
+| MdsAgentVersion         | Hello verze odpovídající toohello Mds agenta spuštěného v zařízení StorSimple. Tento agent přesune data toohello monitorování a Diagnostika služby MDS ().|
+| Lsisas2Version          | Hello verze odpovídající toohello LSI ovladače zařízení StorSimple.|
+| Kapacita                | Celková kapacita Hello hello zařízení v bajtech.|
+| RemoteManagementMode    | Určuje, zda hello zařízení můžete vzdáleně spravovat přes jeho rozhraní Windows PowerShell. |
+| FipsMode                | Určuje, zda hello Spojených států informace o zpracování Standard FIPS (Federal) režimu povolena na vašem zařízení. standard Hello FIPS 140 definuje kryptografické algoritmy pro použití schváleno nám Federal government počítačových systémů hello ochranu citlivá data. Pro zařízení se systémem Update 4 nebo novější je ve výchozím nastavení povolen režim FIPS. |
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace [syntaxe rutiny Invoke-HcsDiagnostics](https://technet.microsoft.com/library/mt795371.aspx).
+* Další informace hello [syntaxe rutiny hello Invoke-HcsDiagnostics](https://technet.microsoft.com/library/mt795371.aspx).
 
-* Další informace o tom, jak [potíží s nasazením](storsimple-troubleshoot-deployment.md) zařízení StorSimple.
+* Další informace o příliš[potíží s nasazením](storsimple-troubleshoot-deployment.md) zařízení StorSimple.

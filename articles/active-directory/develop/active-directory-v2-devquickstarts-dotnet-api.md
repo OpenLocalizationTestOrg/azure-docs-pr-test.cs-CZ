@@ -1,6 +1,6 @@
 ---
-title: "Přidání přihlášení do .NET MVC webového rozhraní API pomocí koncového bodu v2.0 Azure AD | Microsoft Docs"
-description: "Jak sestavit Web Api MVC .NET, které přijímá tokeny z obou osobní Account Microsoft a pracovní nebo školní účty."
+title: "pomocí přihlášení tooa webového rozhraní API .NET MVC aaaAdd hello koncového bodu v2.0 Azure AD | Microsoft Docs"
+description: "Jak toobuild .NET MVC webové rozhraní Api, které přijímá tokeny z Account Microsoft i osobní a pracovní nebo školní účty."
 services: active-directory
 documentationcenter: .net
 author: dstrockis
@@ -15,30 +15,30 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: b2d7bbfcd9218698f71e9dfdb1ad5d9ff8740f5e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4e517145422bb6e9368e82a7eef4a5c57cce530a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="secure-an-mvc-web-api"></a>Zabezpečení webového rozhraní API MVC
-S Azure Active Directory koncový bod v2.0, budete moci chránit webového rozhraní API pomocí [OAuth 2.0](active-directory-v2-protocols.md) přístup tokeny, povolení uživatelé s i osobní účet Microsoft a pracovní nebo školní účty k bezpečnému přístupu k vaší webové rozhraní API.
+S koncovým bodem v2.0 hello Azure Active Directory, budete moci chránit webového rozhraní API pomocí [OAuth 2.0](active-directory-v2-protocols.md) přístupových tokenů, povolení uživatelé s i osobní účet Microsoft a pracovní nebo školní účty toosecurely přístup vašeho webového rozhraní API.
 
 > [!NOTE]
-> Ne všechny scénáře Azure Active Directory a funkce jsou podporovány koncového bodu v2.0.  Pokud chcete zjistit, pokud byste měli používat koncový bod v2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
+> Ne všechny scénáře Azure Active Directory a funkce jsou podporovány koncového bodu v2.0 hello.  toodetermine Pokud byste měli používat koncového bodu v2.0 hello, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
 >
 >
 
-V rozhraní ASP.NET web API můžete to provést pomocí middlewaru OWIN společnosti Microsoft, zahrnutá v rozhraní .NET Framework 4.5.  Zde použijeme OWIN sestavit Web API MVC "Seznam úkolů", která umožňuje klientům vytváření a čtení úkolů ze seznamu úkolů uživatele.  Webové rozhraní API ověří, že příchozí požadavky obsahovat platné přístupový token a odmítnout všechny požadavky, které nepředávejte ověření na chráněných trase.  Tato ukázka byla vytvořená s využitím sady Visual Studio 2015.
+V rozhraní ASP.NET web API můžete to provést pomocí middlewaru OWIN společnosti Microsoft, zahrnutá v rozhraní .NET Framework 4.5.  Zde použijeme toobuild OWIN Web API MVC "tooDo seznamu", která umožňuje klientům úlohy toocreate a čtení ze seznamu úkolů uživatele.  Hello webového rozhraní API ověří, že příchozí požadavky obsahovat platné přístupový token a odmítnout všechny požadavky, které nepředávejte ověření na chráněných trase.  Tato ukázka byla vytvořená s využitím sady Visual Studio 2015.
 
 ## <a name="download"></a>Ke stažení
-Kód k tomuto kurzu je udržovaný [na GitHubu](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet).  Chcete-li sledovat, můžete [stáhnout kostru aplikace jako ZIP](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) nebo tuto kostru klonovat:
+Hello kód v tomto kurzu se udržuje [na Githubu](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet).  toofollow společně, můžete [stáhnout kostru aplikace hello jako ZIP](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) nebo hello kostru klonovat:
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
 ```
 
-Kostru aplikace zahrnuje často používaný kód pro jednoduché rozhraní API, ale všechny součásti související s identity chybí. Pokud nechcete, aby se podle nich zorientujete, můžete místo toho klonovat nebo [stažení je hotová ukázka](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/complete.zip).
+kostru aplikace Hello zahrnuje všechny hello často používaný kód pro jednoduché rozhraní API, ale chybí všechny součásti související s identity hello. Pokud nechcete, aby toofollow společně, můžete místo toho klonovat nebo [stažení ukázky hello Dokončit](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/complete.zip).
 
 ```
 git clone https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
@@ -47,16 +47,16 @@ git clone https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
 ## <a name="register-an-app"></a>Registrace aplikace
 Vytvoření nové aplikace v [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), nebo postupujte podle těchto [podrobné kroky](active-directory-v2-app-registration.md).  Zkontrolujte, že:
 
-* Zkopírování **Id aplikace** přiřazené vaší aplikaci, budete ho potřebovat brzy k dispozici.
+* Poznamenejte hello **Id aplikace** přiřazen tooyour aplikace, budete ho potřebovat brzy k dispozici.
 
-Toto řešení sady visual studio také obsahuje "TodoListClient", což je jednoduchou aplikaci WPF.  TodoListClient se používá k předvedení jak uživatel přihlásí, a jak můžete vydat požadavky pro webové rozhraní API klienta.  V takovém případě TodoListClient i TodoListService jsou reprezentované pomocí stejné aplikaci.  Pokud chcete nakonfigurovat TodoListClient, měli byste také:
+Toto řešení sady visual studio také obsahuje "TodoListClient", což je jednoduchou aplikaci WPF.  Hello TodoListClient je použité toodemonstrate jak uživatel přihlásí, a jak můžete vydat klient požaduje tooyour webového rozhraní API.  V takovém případě hello TodoListClient i hello TodoListService jsou reprezentované pomocí hello stejná aplikace.  tooconfigure hello TodoListClient, měli byste také:
 
-* Přidat **Mobile** platformu pro vaši aplikaci.
+* Přidat hello **Mobile** platformu pro vaši aplikaci.
 
 ## <a name="install-owin"></a>Instalace OWIN
-Teď, když jste registrováni aplikace, musíte nastavit aplikaci ke komunikaci s koncovým bodem v2.0, aby bylo možné ověřit příchozí žádosti a tokeny.
+Teď, když jste registrováni aplikace, musíte tooset až toocommunicate vaší aplikace s koncovým bodem v2.0 hello v pořadí toovalidate příchozí žádosti a tokeny.
 
-* Pokud chcete začít, otevřete řešení a přidání balíčků NuGet middleware OWIN projekt TodoListService pomocí konzoly Správce balíčků.
+* toobegin, otevřete řešení hello a přidejte hello OWIN middleware NuGet balíčky toohello TodoListService projekt pomocí hello Konzola správce balíčků.
 
 ```
 PM> Install-Package Microsoft.Owin.Security.OAuth -ProjectName TodoListService
@@ -66,8 +66,8 @@ PM> Install-Package Microsoft.IdentityModel.Protocol.Extensions -ProjectName Tod
 ```
 
 ## <a name="configure-oauth-authentication"></a>Konfigurace ověřování OAuth
-* Přidejte třídu OWIN při spuštění do projektu TodoListService názvem `Startup.cs`.  Klikněte pravým tlačítkem na projekt--> **přidat** --> **nová položka** --> vyhledejte "OWIN".  Middleware OWIN při spuštění vaší aplikace vyvolá metodu `Configuration(…)`.
-* Změňte deklaraci třídy k `public partial class Startup` -již implementovali jsme součástí této třídy pro vás v jiném souboru.  V `Configuration(…)` metoda, zkontrolujte zavolá ConfgureAuth(...) nastavení ověřování pro webovou aplikaci.
+* Přidat OWIN při spuštění třída toohello TodoListService projekt s názvem `Startup.cs`.  Klikněte pravým tlačítkem na projekt hello--> **přidat** --> **nová položka** --> vyhledejte "OWIN".  Hello OWIN middleware vyvolá hello `Configuration(…)` metoda při spuštění aplikace.
+* Změňte deklaraci třídy hello příliš`public partial class Startup` -již implementovali jsme součástí této třídy pro vás v jiném souboru.  V hello `Configuration(…)` metoda, ujistěte se, volání tooConfgureAuth(...) tooset až ověřování pro webovou aplikaci.
 
 ```C#
 public partial class Startup
@@ -79,34 +79,34 @@ public partial class Startup
 }
 ```
 
-* Otevřete soubor `App_Start\Startup.Auth.cs` a implementovat `ConfigureAuth(…)` metoda, která bude přijímat tokeny z koncového bodu v2.0 nastavení webového rozhraní API.
+* Soubor otevřete hello `App_Start\Startup.Auth.cs` a implementovat hello `ConfigureAuth(…)` metodu, která bude nastavit hello webového rozhraní API tooaccept tokeny z koncového bodu v2.0 hello.
 
 ```C#
 public void ConfigureAuth(IAppBuilder app)
 {
         var tvps = new TokenValidationParameters
         {
-                // In this app, the TodoListClient and TodoListService
-                // are represented using the same Application Id - we use
-                // the Application Id to represent the audience, or the
+                // In this app, hello TodoListClient and TodoListService
+                // are represented using hello same Application Id - we use
+                // hello Application Id toorepresent hello audience, or the
                 // intended recipient of tokens.
 
                 ValidAudience = clientId,
 
                 // In a real applicaiton, you might use issuer validation to
-                // verify that the user's organization (if applicable) has
-                // signed up for the app.  Here, we'll just turn it off.
+                // verify that hello user's organization (if applicable) has
+                // signed up for hello app.  Here, we'll just turn it off.
 
                 ValidateIssuer = false,
         };
 
-        // Set up the OWIN pipeline to use OAuth 2.0 Bearer authentication.
-        // The options provided here tell the middleware about the type of tokens
-        // that will be recieved, which are JWTs for the v2.0 endpoint.
+        // Set up hello OWIN pipeline toouse OAuth 2.0 Bearer authentication.
+        // hello options provided here tell hello middleware about hello type of tokens
+        // that will be recieved, which are JWTs for hello v2.0 endpoint.
 
-        // NOTE: The usual WindowsAzureActiveDirectoryBearerAuthenticaitonMiddleware uses a
-        // metadata endpoint which is not supported by the v2.0 endpoint.  Instead, this
-        // OpenIdConenctCachingSecurityTokenProvider can be used to fetch & use the OpenIdConnect
+        // NOTE: hello usual WindowsAzureActiveDirectoryBearerAuthenticaitonMiddleware uses a
+        // metadata endpoint which is not supported by hello v2.0 endpoint.  Instead, this
+        // OpenIdConenctCachingSecurityTokenProvider can be used toofetch & use hello OpenIdConnect
         // metadata document.
 
         app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
@@ -116,7 +116,7 @@ public void ConfigureAuth(IAppBuilder app)
 }
 ```
 
-* Nyní můžete pomocí `[Authorize]` atributy chránit řadiče a akce s ověřování nosiče OAuth 2.0.  Uspořádání `Controllers\TodoListController.cs` se značky autorizovat.  Tato akce vynutí uživatele k přihlášení před přístupem k této stránce.
+* Nyní můžete pomocí `[Authorize]` atributy tooprotect řadiče a akce s ověřování nosiče OAuth 2.0.  Uspořádání hello `Controllers\TodoListController.cs` se značky autorizovat.  Tato akce vynutí hello toosign uživatele v před přístupem k této stránce.
 
 ```C#
 [Authorize]
@@ -124,14 +124,14 @@ public class TodoListController : ApiController
 {
 ```
 
-* Když oprávnění volající úspěšně vyvolá jeden z `TodoListController` rozhraní API, akce může potřebovat přístup k informacím o volajícím.  OWIN poskytuje přístup k deklarace identity uvnitř tokenu nosiče prostřednictvím `ClaimsPrincpal` objektu.  
+* Když oprávnění volající úspěšně vyvolá jeden hello `TodoListController` rozhraní API, hello akce může potřebovat přístup k tooinformation o hello volajícího.  OWIN poskytuje přístup toohello deklarace identity uvnitř tokenu nosiče hello prostřednictvím hello `ClaimsPrincpal` objektu.  
 
 ```C#
 public IEnumerable<TodoItem> Get()
 {
-    // You can use the ClaimsPrincipal to access information about the
-    // user making the call.  In this case, we use the 'sub' or
-    // NameIdentifier claim to serve as a key for the tasks in the data store.
+    // You can use hello ClaimsPrincipal tooaccess information about the
+    // user making hello call.  In this case, we use hello 'sub' or
+    // NameIdentifier claim tooserve as a key for hello tasks in hello data store.
 
     Claim subject = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier);
 
@@ -141,30 +141,30 @@ public IEnumerable<TodoItem> Get()
 }
 ```
 
-* Nakonec otevřete `web.config` souboru v kořenovém adresáři projektu TodoListService a zadejte svoje hodnoty konfigurace v `<appSettings>` oddílu.
-  * Vaše `ida:Audience` je **Id aplikace** aplikace, kterou jste zadali v portálu.
+* Nakonec otevřete hello `web.config` souboru v kořenovém hello hello TodoListService projektu a zadejte hodnoty konfigurace v hello `<appSettings>` části.
+  * Vaše `ida:Audience` je hello **Id aplikace** hello aplikace, kterou jste zadali v portálu hello.
 
-## <a name="configure-the-client-app"></a>Nakonfigurovat klientské aplikace
-Než budete moct vidět službu seznamu úkolů v akci, budete muset nakonfigurovat klienta seznamu úkolů, můžete získat tokeny z koncového bodu v2.0 a provádět volání do služby.
+## <a name="configure-hello-client-app"></a>Konfigurace klienta aplikace hello
+Než budete moct vidět hello služby seznamu úkolů v akci, je nutné tooconfigure hello klienta seznamu úkolů, můžete získat tokeny z koncového bodu v2.0 hello a ujistěte se, volání toohello služby.
 
-* Otevřete v projektu TodoListClient `App.config` a zadejte svoje hodnoty konfigurace v `<appSettings>` oddílu.
-  * Vaše `ida:ClientId` Id aplikace, které jste zkopírovali z portálu.
+* V projektu TodoListClient hello otevřete `App.config` a zadejte hodnoty konfigurace v hello `<appSettings>` části.
+  * Vaše `ida:ClientId` Id aplikace, které jste zkopírovali z portálu hello.
 
-Nakonec vyčistit, sestavte a spusťte každý projekt!  Nyní máte rozhraní .NET MVC webové rozhraní API, které přijímá tokeny z obou osobní účty Microsoft a pracovní nebo školní účty.  Přihlaste se k TodoListClient a volání webového rozhraní api pro přidání úkolů do seznamu úkolů uživatele.
+Nakonec vyčistit, sestavte a spusťte každý projekt!  Nyní máte rozhraní .NET MVC webové rozhraní API, které přijímá tokeny z obou osobní účty Microsoft a pracovní nebo školní účty.  Přihlaste se k hello TodoListClient a volání webového rozhraní api tooadd úlohy toohello uživatele na seznam úkolů.
 
-Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) [je k dispozici jako ZIP zde](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/complete.zip), nebo ji můžete klonovat z Githubu:
+Pro referenci hello dokončit ukázka (bez vašich hodnot nastavení) [je k dispozici jako ZIP zde](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/complete.zip), nebo ji můžete klonovat z Githubu:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git```
 
 ## <a name="next-steps"></a>Další kroky
-Nyní se můžete přesunout na další témata.  Můžete se pokusit:
+Nyní se můžete přesunout na další témata.  Může být vhodné tootry:
 
 [Volání webového rozhraní API z webové aplikace >>](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)
 
 Další zdroje projděte si:
 
-* [Příručka vývojáře v2.0 >>](active-directory-appmodel-v2-overview.md)
+* [Příručka vývojáře v2.0 Hello >>](active-directory-appmodel-v2-overview.md)
 * [Značka StackOverflow "azure-active-directory" >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ## <a name="get-security-updates-for-our-products"></a>Získejte bezpečnostní aktualizace našich produktů
-Doporučujeme vám získávat oznámení o bezpečnostních incidentech tak, že navštívíte [tuto stránku](https://technet.microsoft.com/security/dd252948) a přihlásíte se k odběru služby Security Advisory Alerts.
+Doporučujeme vám tooget oznámení o bezpečnostních incidentech navštivte stránky [tuto stránku](https://technet.microsoft.com/security/dd252948) a přihlášení k odběru tooSecurity Advisory Alerts.

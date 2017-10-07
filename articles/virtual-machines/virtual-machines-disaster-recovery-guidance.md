@@ -1,6 +1,6 @@
 ---
-title: "Scénáře zotavení po havárii pro virtuální počítače Azure | Microsoft Docs"
-description: "Zjistěte, co dělat v případě, že přerušení služby Azure má dopad na virtuálních počítačích Azure."
+title: "aaaDisaster scénáře obnovení pro virtuální počítače Azure | Microsoft Docs"
+description: "Zjistěte, jaké toodo hello události, přerušení služby Azure má to dopad na virtuálních počítačích Azure."
 services: virtual-machines
 documentationcenter: 
 author: kmouss
@@ -15,35 +15,35 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: kmouss;aglick
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb986a41e33501ee71c93a48457ac4114e33c671
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 839c6f9c51a7f35b48ef3636bc346eef332bb06d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Co dělat v případě, že přerušení služby Azure má dopad na virtuálních počítačích Azure
-Ve společnosti Microsoft můžeme fungovat pevného a ujistěte se, že našich služeb jsou vždy k dispozici a když je potřebujete. Vynutí nad rámec naše řízení někdy vliv nám způsoby, které způsobit přerušení poskytování služeb neplánované.
+# <a name="what-toodo-in-hello-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Jaké toodo hello události, přerušení služby Azure má to dopad na virtuálních počítačích Azure
+Společnost Microsoft se jsme fungovat pevný toomake se, že našich služeb jsou vždy k dispozici tooyou až je budete potřebovat. Vynutí nad rámec naše řízení někdy vliv nám způsoby, které způsobit přerušení poskytování služeb neplánované.
 
-Společnost Microsoft poskytuje smlouvy úroveň služeb (SLA) pro jeho služby jako závazek provozu a připojení. Smlouva SLA pro jednotlivé služby Azure najdete na [smlouvy o úrovni služeb Azure](https://azure.microsoft.com/support/legal/sla/).
+Společnost Microsoft poskytuje smlouvy úroveň služeb (SLA) pro jeho služby jako závazek provozu a připojení. Hello SLA pro jednotlivé služby Azure naleznete na adrese [smlouvy o úrovni služeb Azure](https://azure.microsoft.com/support/legal/sla/).
 
 Azure již obsahuje mnoho funkcí integrovanou platformu, které podporují aplikace s vysokou dostupností. Další informace o těchto službách, přečtěte si [zotavení po havárii a vysoká dostupnost pro aplikace Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-Tento článek se zabývá true zotavení po havárii, když dojde výpadku způsobeného hlavní přírodní katastrofě nebo přerušení služeb rozšířeným celou oblast. Toto jsou výjimečných výskytů, ale je nutné připravit možnost, že je k výpadku celou oblast. Když celou oblast dojde přerušení služby, místně redundantní kopie dat by být dočasně k dispozici. Pokud jste povolili geografická replikace, tři další kopie objektů BLOB služby Azure Storage a tabulek jsou uložené v jiné oblasti. V případě výpadku dokončení místní nebo havárii, ve kterém není použitelná pro obnovení primární oblasti znovu mapuje Azure, všechny položky DNS pro danou oblast geograficky replikované.
+Tento článek se zabývá true zotavení po havárii, když dojde k výpadku kvůli toomajor přírodní katastrofě nebo přerušení rozšířeným služby celou oblast. Toto jsou výjimečných výskytů, ale je nutné připravit pro možnost hello se k výpadku celou oblast. Pokud celou oblast dojde k přerušení služby, hello místně redundantní kopie dat by být dočasně k dispozici. Pokud jste povolili geografická replikace, tři další kopie objektů BLOB služby Azure Storage a tabulek jsou uložené v jiné oblasti. V případě hello dokončení regionální výpadku nebo havárii, ve které hello primární oblast není použitelná pro obnovení znovu mapuje Azure, všechny hello DNS položky toohello geograficky replikované oblasti.
 
-Chcete-li zpracovat tyto výjimečných výskytů, poskytujeme následující pokyny pro virtuální počítače Azure v případě přerušení služby celé oblasti, kde je virtuální počítač Azure aplikaci nasadit.
+toohelp zpracování těchto výjimečných výskytů, poskytujeme hello pokynů pro virtuální počítače Azure v případě hello přerušení služby hello celé oblasti, kde je virtuální počítač Azure aplikaci nasadit.
 
 ## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>Možnost 1: Spuštění převzetí služeb při selhání pomocí Azure Site Recovery
-Azure Site Recovery pro virtuální počítače můžete nakonfigurovat tak, aby vaše aplikace s jedním kliknutím v několika minut můžete obnovit. Můžete replikovat do oblasti Azure podle svého výběru a není omezen na spárované oblasti. Abyste mohli začít podle [replikaci virtuálních počítačů](https://aka.ms/a2a-getting-started). Můžete [vytvoření plánu obnovení](../site-recovery/site-recovery-create-recovery-plans.md) tak, aby můžete automatizovat proces celý převzetí služeb při selhání pro vaši aplikaci. Můžete [testování vaší převzetí služeb při selhání](../site-recovery/site-recovery-test-failover-to-azure.md) předem, bez dopadu na produkční aplikace nebo probíhající replikace. V případě přerušení primární oblasti, jste právě [zahájení převzetí služeb při selhání](../site-recovery/site-recovery-failover.md) a převeďte aplikace v cílové oblasti.
+Azure Site Recovery pro virtuální počítače můžete nakonfigurovat tak, aby vaše aplikace s jedním kliknutím v několika minut můžete obnovit. Můžete provádět replikaci tooAzure oblast podle svého výběru a není omezená toopaired oblastí. Abyste mohli začít podle [replikaci virtuálních počítačů](https://aka.ms/a2a-getting-started). Můžete [vytvoření plánu obnovení](../site-recovery/site-recovery-create-recovery-plans.md) tak, aby můžete automatizovat proces hello celý převzetí služeb při selhání pro vaši aplikaci. Můžete [testování vaší převzetí služeb při selhání](../site-recovery/site-recovery-test-failover-to-azure.md) předem, bez dopadu na produkční aplikaci nebo hello probíhající replikace. V případě hello narušení primární oblasti, jste právě [zahájení převzetí služeb při selhání](../site-recovery/site-recovery-failover.md) a převeďte aplikace v cílové oblasti.
 
 
 ## <a name="option-2-wait-for-recovery"></a>Možnost 2: Čekání pro obnovení
-V takovém případě není třeba žádné akce z vaší strany. Vědět, že pracujeme usilovně obnovit dostupnost služeb. Zobrazí aktuální stav služby na našem [řídicím panelu stavu služeb Azure](https://azure.microsoft.com/status/).
+V takovém případě není třeba žádné akce z vaší strany. Vědět, že pracujeme usilovně toorestore dostupnost služeb. Zobrazí aktuální stav služby hello na našem [řídicím panelu stavu služeb Azure](https://azure.microsoft.com/status/).
 
-Toto je nejlepší možnost, pokud jste nenastavili Azure Site Recovery, geograficky redundantní úložiště s přístupem pro čtení nebo geograficky redundantní úložiště před přerušení. Pokud jste se nastavili geograficky redundantní úložiště nebo geograficky redundantní úložiště s přístupem pro čtení pro účet úložiště, kde jsou uloženy vaše virtuální počítač virtuální pevné disky (VHD), můžete zobrazovat obnovit základní image virtuálního pevného disku a opakujte ke zřízení nového virtuálního počítače z něj. Toto není upřednostňovanou možnost, protože nejsou k dispozici žádné záruky synchronizace dat. V důsledku toho tato možnost není zaručena.
+Toto je nejlepší možnost hello, pokud jste nenastavili Azure Site Recovery, geograficky redundantní úložiště s přístupem pro čtení nebo přerušení předchozí toohello geograficky redundantní úložiště. Pokud jste nastavili geograficky redundantní úložiště nebo geograficky redundantní úložiště s přístupem pro čtení pro účet úložiště hello kde jsou uloženy vaše virtuální počítač virtuální pevné disky (VHD), můžete hledat toorecover hello základní image virtuálního pevného disku a opakujte tooprovision nový virtuální počítač z něj. Toto není upřednostňovanou možnost, protože nejsou k dispozici žádné záruky synchronizace dat. Tato možnost v důsledku toho není zaručena toowork.
 
 
 > [!NOTE]
-> Uvědomte si, že nemáte žádné kontrolu nad tento proces a se vztahuje pouze na přerušení služeb celou oblast. Z tohoto důvodu musíte také spoléhat na další specifické pro aplikaci Zálohování strategie k dosažení nejvyšší úroveň dostupnosti. Další informace najdete v části na [Data strategie zotavení po havárii](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications#data-strategies-for-disaster-recovery).
+> Uvědomte si, že nemáte žádné kontrolu nad tento proces a se vztahuje pouze na přerušení služeb celou oblast. Z tohoto důvodu musíte také spoléhat na jiné strategii zálohování konkrétní aplikace tooachieve hello nejvyšší úroveň dostupnosti. Další informace najdete v tématu část hello na [Data strategie zotavení po havárii](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications#data-strategies-for-disaster-recovery).
 >
 >
 
@@ -51,9 +51,9 @@ Toto je nejlepší možnost, pokud jste nenastavili Azure Site Recovery, geograf
 
 - Spustit [chrání vaše aplikace spuštěné na virtuálních počítačích Azure](https://aka.ms/a2a-getting-started) pomocí Azure Site Recovery
 
-- Další informace o tom, jak implementovat strategie vysoké dostupnosti a zotavení po havárii, najdete v části [zotavení po havárii a vysoká dostupnost pro aplikace Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
+- Další informace o tom, jak tooimplement zotavení po havárii a strategie vysoké dostupnosti, najdete v části toolearn [zotavení po havárii a vysoká dostupnost pro aplikace Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-- K vývoji podrobné technické vysvětlení funkcí Cloudová platforma, najdete v části [technické pokyny Azure odolnosti](../resiliency/resiliency-technical-guidance.md).
+- toodevelop podrobné technické vysvětlení funkcí Cloudová platforma, najdete v části [technické pokyny Azure odolnosti](../resiliency/resiliency-technical-guidance.md).
 
 
-- Pokud tyto pokyny jsou vymazat, nebo pokud chcete, aby operace vaším jménem, obraťte se na [zákaznickou podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Pokud nejsou jasné pokyny hello nebo pokud chcete Microsoft toodo hello operations vaším jménem, obraťte se na [zákaznickou podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

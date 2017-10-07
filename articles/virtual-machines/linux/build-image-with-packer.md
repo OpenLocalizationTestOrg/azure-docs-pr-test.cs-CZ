@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření Image virtuálních počítačů Azure Linux s balírna | Microsoft Docs"
-description: "Další informace o použití balírna k vytvoření bitové kopie virtuálních počítačích s Linuxem v Azure"
+title: "aaaHow toocreate Image virtuálních počítačů Azure Linux s balírna | Microsoft Docs"
+description: "Zjistěte, jak toouse balírna toocreate bitové kopie virtuálních počítačích s Linuxem v Azure"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 49a74648bd3953647d581c4e7c548985c5000f17
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5990598859e73efac477884bc8de5fd5138bf6e3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Jak používat balírna k vytvoření bitové kopie virtuálních počítačů Linux v Azure
-Každý virtuální počítač (VM) v Azure je vytvořený z image, která definuje distribuci systému Linux a verzi operačního systému. Bitové kopie může zahrnovat předinstalované aplikace a konfigurace. Azure Marketplace poskytuje celou řadu imagí první a třetí strany pro aplikaci v prostředích a nejběžnější distribuce, nebo můžete vytvořit vlastní vlastních bitových kopií přizpůsobit svým potřebám. Tento článek popisuje, jak používat nástroj open source [balírna](https://www.packer.io/) definovat a vytvářet vlastní bitové kopie v Azure.
+# <a name="how-toouse-packer-toocreate-linux-virtual-machine-images-in-azure"></a>Jak Image toouse balírna toocreate Linux virtuálního počítače v Azure
+Každý virtuální počítač (VM) v Azure je vytvořený z image, která definuje hello distribuční Linux a verzi operačního systému. Bitové kopie může zahrnovat předinstalované aplikace a konfigurace. Hello Azure Marketplace poskytuje celou řadu imagí první a třetí strany pro aplikaci v prostředích a nejběžnější distribuce, nebo můžete vytvořit vlastní vlastních bitových kopií přizpůsobit tooyour potřeb. Tento článek popisuje, jak toouse hello otevřete nástroj zdroje [balírna](https://www.packer.io/) toodefine a sestavení vlastní Image ve službě Azure.
 
 
 ## <a name="create-azure-resource-group"></a>Vytvoření skupiny prostředků Azure.
-Během procesu vytváření balírna vytvoří dočasný prostředky Azure, jako sestavuje zdrojového virtuálního počítače. Když Pokud chcete zachytit tohoto zdrojového virtuálního počítače pro použití jako bitovou kopii, je nutné zadat skupinu prostředků. Výstup z procesu sestavení balírna je uložený v této skupině prostředků.
+Během procesu sestavení hello balírna vytvoří dočasný prostředky Azure, jako sestavuje hello zdrojového virtuálního počítače. toocapture, který zdroj virtuálního počítače pro použití jako bitovou kopii, je nutné zadat skupinu prostředků. Hello výstup z procesu sestavení balírna hello je uložený v této skupině prostředků.
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v *eastus* umístění:
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create). Hello následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v hello *eastus* umístění:
 
 ```azurecli
 az group create -n myResourceGroup -l eastus
@@ -36,15 +36,15 @@ az group create -n myResourceGroup -l eastus
 
 
 ## <a name="create-azure-credentials"></a>Vytvořit přihlašovací údaje Azure
-Balírna ověřuje s Azure pomocí objektu služby. Objektu zabezpečení služby Azure je identita zabezpečení, která můžete použít s aplikací, služeb a automatizace nástroje, například balírna. Můžete řídit a definovat oprávnění, jaké operace objektu služby můžete provádět v Azure.
+Balírna ověřuje s Azure pomocí objektu služby. Objektu zabezpečení služby Azure je identita zabezpečení, která můžete použít s aplikací, služeb a automatizace nástroje, například balírna. Můžete řídit a definovat hello oprávnění objektu služby hello toowhat operace můžete provádět v rámci Azure.
 
-Vytvoření služby hlavní s [az ad sp vytvořit pro rbac](/cli/azure/ad/sp#create-for-rbac) a výstupní přihlašovací údaje, které potřebuje balírna:
+Vytvoření služby hlavní s [az ad sp vytvořit pro rbac](/cli/azure/ad/sp#create-for-rbac) a výstup hello pověření, které potřebuje balírna:
 
 ```azurecli
 az ad sp create-for-rbac --query [appId,password,tenant]
 ```
 
-Příklad výstupu z předchozích příkazů vypadá takto:
+Příklad výstupu hello z předchozích příkazů hello vypadá takto:
 
 ```azurecli
 "f5b6a5cf-fbdf-4a9f-b3b8-3c2cd00225a4",
@@ -52,28 +52,28 @@ Příklad výstupu z předchozích příkazů vypadá takto:
 "72f988bf-86f1-41af-91ab-2d7cd011db47"
 ```
 
-K ověření do Azure, musíte také získat svoje ID předplatného Azure s [az účet zobrazit](/cli/azure/account#show):
+tooauthenticate tooAzure, musíte taky tooobtain ID vašeho předplatného Azure s [az účet zobrazit](/cli/azure/account#show):
 
 ```azurecli
 az account show --query [id] --output tsv
 ```
 
-V dalším kroku použijete výstup z těchto dvou příkazů.
+V dalším kroku hello používáte hello výstup z těchto dvou příkazů.
 
 
 ## <a name="define-packer-template"></a>Definovat balírna šablonu
-K vytvoření bitové kopie, vytvořit šablonu jako soubor ve formátu JSON. V šabloně definujete tvůrce a provisioners, které provádějí procesu skutečné sestavení. Má balírna [zajištění webu pro Azure](https://www.packer.io/docs/builders/azure.html) , což vám umožní definovat prostředky Azure, jako jsou hlavní přihlašovací údaje služby vytvořili v předchozím kroku.
+toobuild Image, vytvořit šablonu jako soubor ve formátu JSON. V šabloně hello můžete definovat počítačů a provisioners, které provádějí hello skutečný proces sestavení. Má balírna [zajištění webu pro Azure](https://www.packer.io/docs/builders/azure.html) , což vám umožní toodefine Azure prostředky, například hello hlavní přihlašovací údaje služby vytvořené v předchozím kroku hello.
 
-Vytvořte soubor s názvem *ubuntu.json* a vložte následující obsah. Zadejte vlastní hodnoty pro následující:
+Vytvořte soubor s názvem *ubuntu.json* a hello vložte následující obsah. Zadejte vlastní hodnoty pro hello následující:
 
-| Parametr                           | Kde můžete získat |
+| Parametr                           | Kde tooobtain |
 |-------------------------------------|----------------------------------------------------|
 | *client_id*                         | První řádek výstupu z `az ad sp` vytvoření příkazu - *appId* |
 | *tajný klíč client_secret*                     | Druhý řádek výstupu z `az ad sp` vytvoření příkazu - *heslo* |
 | *tenant_id*                         | Třetí řádek výstupu z `az ad sp` vytvoření příkazu - *klienta* |
 | *ID_ODBĚRU*                   | Výstup z `az account show` příkaz |
-| *managed_image_resource_group_name* | Název skupiny prostředků, kterou jste vytvořili v prvním kroku |
-| *managed_image_name*                | Název bitové kopie spravovaného disku, který je vytvořen |
+| *managed_image_resource_group_name* | Název skupiny prostředků, kterou jste vytvořili v prvním kroku hello |
+| *managed_image_name*                | Název bitové kopie hello spravovaného disku, který je vytvořen |
 
 
 ```json
@@ -117,23 +117,23 @@ Vytvořte soubor s názvem *ubuntu.json* a vložte následující obsah. Zadejte
 }
 ```
 
-Tato šablona vytvoří bitovou kopii Ubuntu 16.04 LTS, nainstaluje NGINX a pak deprovisions virtuálního počítače.
+Tato šablona vytvoří bitovou kopii Ubuntu 16.04 LTS, nainstaluje NGINX a pak deprovisions hello virtuálních počítačů.
 
 > [!NOTE]
-> Pokud rozbalíte na šabloně této zřízení uživatelských přihlašovacích údajů, upravte příkaz zajištění webu, který deprovisions agent Azure číst `-deprovision` místo `deprovision+user`.
-> `+user` Příznak odebere všechny uživatelské účty ze zdrojového virtuálního počítače.
+> Pokud rozbalíte na tuto šablonu tooprovision uživatelských přihlašovacích údajů, upravte příkaz hello zajištění webu, deprovisions hello tooread Azure agent `-deprovision` místo `deprovision+user`.
+> Hello `+user` příznak odebere všechny uživatelské účty z hello zdrojového virtuálního počítače.
 
 
 ## <a name="build-packer-image"></a>Sestavení balírna bitové kopie
-Pokud ještě nemáte balírna nainstalována na místním počítači, [postupujte podle pokynů pro instalaci balírna](https://www.packer.io/docs/install/index.html).
+Pokud ještě nemáte balírna nainstalována na místním počítači, [postupujte podle pokynů pro instalaci balírna hello](https://www.packer.io/docs/install/index.html).
 
-Vytvořit bitovou kopii zadáním vaší balírna soubor šablony následujícím způsobem:
+Sestavení hello bitové kopie zadáním vaší balírna soubor šablony následujícím způsobem:
 
 ```bash
 ./packer build ubuntu.json
 ```
 
-Příklad výstupu z předchozích příkazů vypadá takto:
+Příklad výstupu hello z předchozích příkazů hello vypadá takto:
 
 ```bash
 azure-arm output will be in this color.
@@ -152,21 +152,21 @@ azure-arm output will be in this color.
 ==> azure-arm: Deploying deployment template ...
 ==> azure-arm:  -> ResourceGroupName : ‘packer-Resource-Group-swtxmqm7ly’
 ==> azure-arm:  -> DeploymentName    : ‘pkrdpswtxmqm7ly’
-==> azure-arm: Getting the VM’s IP address ...
+==> azure-arm: Getting hello VM’s IP address ...
 ==> azure-arm:  -> ResourceGroupName   : ‘packer-Resource-Group-swtxmqm7ly’
 ==> azure-arm:  -> PublicIPAddressName : ‘packerPublicIP’
 ==> azure-arm:  -> NicName             : ‘packerNic’
 ==> azure-arm:  -> Network Connection  : ‘PublicEndpoint’
 ==> azure-arm:  -> IP Address          : ‘40.76.218.147’
-==> azure-arm: Waiting for SSH to become available...
-==> azure-arm: Connected to SSH!
+==> azure-arm: Waiting for SSH toobecome available...
+==> azure-arm: Connected tooSSH!
 ==> azure-arm: Provisioning with shell script: /var/folders/h1/ymh5bdx15wgdn5hvgj1wc0zh0000gn/T/packer-shell868574263
-    azure-arm: WARNING! The waagent service will be stopped.
+    azure-arm: WARNING! hello waagent service will be stopped.
     azure-arm: WARNING! Cached DHCP leases will be deleted.
-    azure-arm: WARNING! root password will be disabled. You will not be able to login as root.
+    azure-arm: WARNING! root password will be disabled. You will not be able toologin as root.
     azure-arm: WARNING! /etc/resolvconf/resolv.conf.d/tail and /etc/resolvconf/resolv.conf.d/original will be deleted.
     azure-arm: WARNING! packer account and entire home directory will be deleted.
-==> azure-arm: Querying the machine’s properties ...
+==> azure-arm: Querying hello machine’s properties ...
 ==> azure-arm:  -> ResourceGroupName : ‘packer-Resource-Group-swtxmqm7ly’
 ==> azure-arm:  -> ComputeName       : ‘pkrvmswtxmqm7ly’
 ==> azure-arm:  -> Managed OS Disk   : ‘/subscriptions/guid/resourceGroups/packer-Resource-Group-swtxmqm7ly/providers/Microsoft.Compute/disks/osdisk’
@@ -182,11 +182,11 @@ azure-arm output will be in this color.
 ==> azure-arm:  -> Image Location            : ‘eastus’
 ==> azure-arm: Deleting resource group ...
 ==> azure-arm:  -> ResourceGroupName : ‘packer-Resource-Group-swtxmqm7ly’
-==> azure-arm: Deleting the temporary OS disk ...
+==> azure-arm: Deleting hello temporary OS disk ...
 ==> azure-arm:  -> OS Disk : skipping, managed disk was used...
 Build ‘azure-arm’ finished.
 
-==> Builds finished. The artifacts of successful builds are:
+==> Builds finished. hello artifacts of successful builds are:
 --> azure-arm: Azure.ResourceManagement.VMImage:
 
 ManagedImageResourceGroupName: myResourceGroup
@@ -196,7 +196,7 @@ ManagedImageLocation: eastus
 
 
 ## <a name="create-vm-from-azure-image"></a>Vytvoření virtuálního počítače z Azure Image
-Nyní můžete vytvořit virtuální počítač z bitové kopie s [vytvořit virtuální počítač az](/cli/azure/vm#create). Určuje obrázek, který jste vytvořili pomocí `--image` parametr. Následující příklad vytvoří virtuální počítač s názvem *Můjvp* z *myPackerImage* a generuje klíče SSH, pokud už neexistují:
+Nyní můžete vytvořit virtuální počítač z bitové kopie s [vytvořit virtuální počítač az](/cli/azure/vm#create). Zadejte hello bitové kopie, které jste vytvořili pomocí hello `--image` parametr. Hello následující příklad vytvoří virtuální počítač s názvem *Můjvp* z *myPackerImage* a generuje klíče SSH, pokud už neexistují:
 
 ```azurecli
 az vm create \
@@ -207,9 +207,9 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Jak dlouho trvá několik minut pro vytvoření virtuálního počítače. Po vytvoření virtuálního počítače, poznamenejte si `publicIpAddress` zobrazí pomocí rozhraní příkazového řádku Azure. Tato adresa se používá pro přístup k webu NGINX prostřednictvím webového prohlížeče.
+Jak dlouho trvá několik minut toocreate hello virtuálních počítačů. Po vytvoření hello virtuálních počítačů, poznamenejte si hello `publicIpAddress` zobrazí hello rozhraní příkazového řádku Azure. Tato adresa je použité tooaccess hello NGINX web prostřednictvím webového prohlížeče.
 
-Povolit webový provoz připojit virtuální počítač, otevřete port 80 z Internetu s [az virtuálních počítačů open-port](/cli/azure/vm#open-port):
+tooallow webový provoz tooreach virtuální počítač, otevřete port 80 z hello Internet s [az virtuálních počítačů open-port](/cli/azure/vm#open-port):
 
 ```azurecli
 az vm open-port \
@@ -219,12 +219,12 @@ az vm open-port \
 ```
 
 ## <a name="test-vm-and-nginx"></a>Testovací virtuální počítač a NGINX
-Nyní můžete otevřít webový prohlížeč a zadejte `http://publicIpAddress` na panelu Adresa. Zadejte vlastní veřejná IP adresa z virtuálního počítače vytvořit proces. Výchozí NGINX stránky se zobrazí jako v následujícím příkladu:
+Nyní můžete otevřít webový prohlížeč a zadejte `http://publicIpAddress` v panelu Adresa hello. Zadejte vlastní veřejná IP adresa z hello virtuálního počítače vytvořit proces. Hello výchozí NGINX stránky se zobrazí jako hello následující ukázka:
 
 ![Výchozí web NGINX](./media/build-image-with-packer/nginx.png) 
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto příkladu jste použili balírna k vytvoření image virtuálního počítače s NGINX již nainstalován. Můžete tuto bitovou kopii virtuálního počítače spolu s existující pracovní postupy nasazení, například k nasazení vaší aplikace na virtuální počítače vytvořené z bitové kopie s Ansible, Chef nebo Puppet.
+V tomto příkladu jste použili balírna toocreate image virtuálního počítače s NGINX již nainstalován. Můžete použít tuto bitovou kopii virtuálního počítače spolu s existující pracovní postupy nasazení, například toodeploy tooVMs vaší aplikace vytvořené z bitové kopie s Ansible, Chef nebo Puppet hello.
 
 Další příklad šablony balírna pro ostatní distribucích systému Linux, najdete v části [toto úložiště GitHub](https://github.com/hashicorp/packer/tree/master/examples/azure).

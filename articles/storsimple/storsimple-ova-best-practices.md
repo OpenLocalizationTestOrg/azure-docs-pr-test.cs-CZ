@@ -1,6 +1,6 @@
 ---
-title: "Osvědčené postupy pro pole virtuální zařízení StorSimple | Microsoft Docs"
-description: "Popisuje osvědčené postupy pro nasazení a Správa pole virtuální zařízení StorSimple."
+title: "aaaBest postupy pro pole virtuální zařízení StorSimple | Microsoft Docs"
+description: "Popisuje hello osvědčené postupy pro nasazení a správě hello pole virtuální zařízení StorSimple."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,81 +14,81 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 264764c5e9c32574d97beb2cc3c1bb1cfb555568
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f242364365e07f86b78e2f9bb2acfb3aa98e83e2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Osvědčené postupy pole virtuální zařízení StorSimple
 ## <a name="overview"></a>Přehled
-Microsoft Azure StorSimple virtuální pole je řešení integrované úložiště, který spravuje úlohy úložiště mezi virtuální zařízení s místně spuštěnou v hypervisoru a cloudového úložiště Microsoft Azure. Pole virtuální zařízení StorSimple je alternativu efektivní a nákladově efektivní k poli fyzické řady 8000. Virtuální pole můžete spustit na vaší stávající infrastruktury hypervisoru, podporuje iSCSI a protokoly SMB a pro vzdálené office/pobočkách vhodné. Další informace o řešení StorSimple, přejděte na [přehled Microsoft Azure StorSimple](https://www.microsoft.com/en-us/server-cloud/products/storsimple/overview.aspx).
+Microsoft Azure StorSimple virtuální pole je řešení integrované úložiště, který spravuje úlohy úložiště mezi virtuální zařízení s místně spuštěnou v hypervisoru a cloudového úložiště Microsoft Azure. Pole virtuální zařízení StorSimple je efektivní a nákladově efektivní alternativní toohello 8000 fyzické pole řady. pole virtuálním Hello můžete spustit na vaší stávající infrastruktury hypervisoru, podporuje hello iSCSI a protokoly SMB hello a pro vzdálené office/pobočkách vhodné. Další informace o řešení StorSimple hello přejděte příliš[přehled Microsoft Azure StorSimple](https://www.microsoft.com/en-us/server-cloud/products/storsimple/overview.aspx).
 
-Tento článek popisuje osvědčené postupy implementována během počáteční instalace, nasazení a správu pole virtuální zařízení StorSimple. Tyto doporučené postupy pro poskytují ověřené pokyny pro nastavení a správu virtuálních pole. Tento článek je zaměřena na správce IT, kteří nasadit a spravovat virtuální pole ve svých datacentrech.
+Tento článek popisuje osvědčené postupy hello implementována během počáteční instalace hello, nasazení a správu hello pole virtuální zařízení StorSimple. Tyto doporučené postupy pro poskytují ověřené pokyny pro nastavení hello a správu virtuálních pole. Tento článek je určeno směrem hello IT správce, kteří nasadit a spravovat hello virtuální pole ve svých datacentrech.
 
-Doporučujeme, abyste pravidelné kontroly osvědčených postupů k zajištění, že zařízení je stále v dodržování předpisů při změně instalační nebo provozní toku. Měli jste dojde k potížím při implementaci těchto osvědčených postupů na vaše virtuální pole [kontaktovat Microsoft Support](storsimple-virtual-array-log-support-ticket.md) o pomoc.
+Doporučujeme, abyste pravidelných kontrol hello osvědčené postupy toohelp Ujistěte se, že zařízení je stále v dodržování předpisů při změně toohello instalační nebo provozní toku. Měli jste dojde k potížím při implementaci těchto osvědčených postupů na vaše virtuální pole [kontaktovat Microsoft Support](storsimple-virtual-array-log-support-ticket.md) o pomoc.
 
 ## <a name="configuration-best-practices"></a>Osvědčenými postupy konfigurace
-Tyto doporučené postupy zahrnují pokyny, které musí být sledována během počáteční instalace a nasazení virtuálních polí. Tyto doporučené postupy zahrnují související zřízení virtuálního počítače, nastavení zásad skupiny, změna velikosti, nastavení sítě, konfiguraci účtů úložiště a vytváření sdílených složek a svazků pro virtuální pole. 
+Tyto doporučené postupy zahrnují hello pokyny, které je třeba toobe a potom během počáteční instalace hello a nasazení virtuálních polí hello. Tyto doporučené postupy zahrnují tyto související toohello zřizování hello virtuálního počítače, nastavení zásad skupiny, změna velikosti, nastavení hello sítě, konfiguraci účtů úložiště a vytvoření sdílených složek a svazků pro hello virtuální pole. 
 
 ### <a name="provisioning"></a>Zřizování
-Pole virtuální zařízení StorSimple je virtuální počítač (VM) zřízený v hypervisoru (Hyper-V nebo VMware) hostitelského serveru. Při zřizování virtuálního počítače, zkontrolujte, že váš hostitel je schopen věnovaly dostatek prostředků. Další informace, přejděte na [minimální požadavky na zdroje](storsimple-virtual-array-deploy2-provision-hyperv.md#step-1-ensure-that-the-host-system-meets-minimum-virtual-array-requirements) ke zřízení pole.
+Pole virtuální zařízení StorSimple je virtuální počítač (VM) zřízený hello hypervisoru (Hyper-V nebo VMware) hostitelského serveru. Při zřizování hello virtuálního počítače, ujistěte se, že váš hostitel je schopný toodedicate dostatek prostředků. Další informace, přejděte příliš[minimální požadavky na zdroje](storsimple-virtual-array-deploy2-provision-hyperv.md#step-1-ensure-that-the-host-system-meets-minimum-virtual-array-requirements) tooprovision pole.
 
-Implementujte následující osvědčené postupy při zřizování virtuální pole:
+Implementace hello následující osvědčené postupy při zřizování virtuální pole hello:
 
 |  | Hyper-V | VMware |
 | --- | --- | --- |
 | **Typ virtuálního počítače** |**2. generace** virtuálního počítače pro použití se systémem Windows Server 2012 nebo novější a *.vhdx* bitové kopie. <br></br> **Generace 1** virtuálního počítače pro použití se systémem Windows Server 2008 nebo novějším a *VHD* bitové kopie. |Při použití použít virtuální počítač verze 8-11 *vmdk* bitové kopie. |
-| **Typ paměti** |Konfigurace jako **statická paměť**. <br></br> Nepoužívejte **dynamické paměti** možnost. | |
-| **Datový typ disku** |Zřízení jako **dynamicky se zvětšující**.<br></br> **Pevná velikost** trvá příliš dlouho. <br></br> Nepoužívejte **rozdílových** možnost. |Použití **dynamického zřizování** možnost. |
-| **Úprava dat disku** |Rozšíření nebo zmenšení není povoleno. Pokus o Uděláte to tak vede ke ztrátě všech místních dat v zařízení. |Rozšíření nebo zmenšení není povoleno. Pokus o Uděláte to tak vede ke ztrátě všech místních dat v zařízení. |
+| **Typ paměti** |Konfigurace jako **statická paměť**. <br></br> Nepoužívejte hello **dynamické paměti** možnost. | |
+| **Datový typ disku** |Zřízení jako **dynamicky se zvětšující**.<br></br> **Pevná velikost** trvá příliš dlouho. <br></br> Nepoužívejte hello **rozdílových** možnost. |Použití hello **dynamického zřizování** možnost. |
+| **Úprava dat disku** |Rozšíření nebo zmenšení není povoleno. Pokusu o toodo proto výsledkem hello ke ztrátě všech hello místní data na zařízení. |Rozšíření nebo zmenšení není povoleno. Pokusu o toodo proto výsledkem hello ke ztrátě všech hello místní data na zařízení. |
 
 ### <a name="sizing"></a>Nastavení velikosti
-Když pro změnu velikosti pole virtuální zařízení StorSimple, zvažte následující faktory:
+Když pro změnu velikosti pole virtuální zařízení StorSimple, zvažte hello následující faktory:
 
-* Místní rezervaci pro svazky nebo sdílené složky. Přibližně 12 % prostoru je vyhrazená na místní úrovni pro každou zřízené vrstvený svazek nebo sdílenou složku. Také je přibližně 10 % prostoru vyhrazený pro místně vázaný svazek pro systém souborů.
-* Režie snímku. Přibližně 15 % místa na místní úrovni je vyhrazená pro snímky.
-* Třeba pro obnovení. Pokud to obnovit jako novou operaci, nastavení velikosti by měl účet pro prostor potřebný pro obnovení. Sdílené složky nebo svazku stejnou velikost je provést obnovení.
+* Místní rezervaci pro svazky nebo sdílené složky. Přibližně 12 % prostoru hello je rezervovaná na hello místní vrstvy pro každou zřízené vrstvený svazek nebo sdílenou složku. Také je přibližně 10 % místa hello vyhrazený pro místně vázaný svazek pro systém souborů.
+* Režie snímku. Přibližně 15 % místa na místní úrovni hello je vyhrazená pro snímky.
+* Třeba pro obnovení. Pokud to obnovit jako novou operaci, nastavení velikosti by měl účet pro prostor hello potřebná pro obnovení. Obnovení se provádí tooa sdílení nebo svazku hello stejnou velikost.
 * Některé vyrovnávací paměti by měla být přidělená pro všechny neočekávané růstu.
 
-Na základě na předchozích faktorech, požadavky na velikost může být reprezentovaný následující rovnice:
+Podle předchozích faktorech hello, hello dimenzování požadavky může být reprezentovaný hello následující rovnice:
 
 `Total usable local disk size = (Total provisioned locally pinned volume/share size including space for file system) + (Max (local reservation for a volume/share) for all tiered volumes/share) + (Local reservation for all tiered volumes/shares)`
 
 `Data disk size = Total usable local disk size + Snapshot overhead + buffer for unexpected growth or new share or volume`
 
-Následující příklady znázorňují, jak můžete velikost virtuálního pole podle svých požadavků.
+Hello následující příklady znázorňují, jak můžete velikost virtuálního pole podle svých požadavků.
 
 #### <a name="example-1"></a>Příklad 1:
-Na virtuální pole chcete mít možnost
+Na vaše virtuální pole chcete toobe moct
 
 * zřídit 2 TB vrstvený svazek nebo sdílenou složku.
 * zřídit 1 TB vrstvený svazek nebo sdílenou složku.
 * zřídit 300 GB místně vázaný svazek nebo sdílenou složkou.
 
-Pro předchozí svazky nebo sdílené složky dejte nám vypočítejte požadavky na místo na místní úrovni.
+Pro hello předchozí svazky nebo sdílené složky, dejte nám vypočítat požadavky na místo hello na místní úrovni hello.
 
-Nejprve pro každý vrstvený svazek nebo sdílenou složku, místní rezervace by být roven 12 % velikosti svazku nebo sdílené složky. Pro místně vázaný svazek nebo sdílenou složku místní rezervace je 10 % velikosti místně vázaný svazek nebo sdílenou složku (kromě velikost zřízeného). V tomto příkladu potřebujete
+Pro každý vrstvený svazek nebo sdílenou složku, nejdřív místní rezervace by rovna too12 % velikosti hello sdílení nebo svazku. Pro hello místně vázaný svazek nebo sdílenou složku místní rezervace je 10 % hello místně připnutý velikost svazku nebo sdílené složky (kromě toohello zřízený velikost). V tomto příkladu potřebujete
 
 * Místní rezervace 240 GB (2 TB víceúrovňová sdílení nebo svazku)
 * Místní rezervace 120 GB (1 TB víceúrovňová sdílení nebo svazku)
-* 330 GB pro místně vázaný svazek nebo sdílenou složku (přidání 10 % místní rezervace velikosti 300 GB zřízený)
+* 330 GB pro místně vázaný svazek nebo sdílenou složku (přidání 10 % velikosti 300 GB zřízený toohello místní rezervace)
 
-Celkové požadované místo na místní vrstvy, pokud je: 240 GB + 120 GB + 330 GB = 690 GB.
+Hello celkový obsahuje požadované místo na místní úrovni hello, pokud je: 240 GB + 120 GB + 330 GB = 690 GB.
 
-Druhý potřebujeme alespoň tolik místa na místní úrovni jako největší jeden rezervace. Toto množství navíc se používá v případě, že potřebujete obnovit z cloudový snímek. V tomto příkladu je největší místní rezervace 330 GB (včetně rezervace pro systém souborů), takže byste přidali, že 690 GB: 690 GB + 330 GB = 1020 GB.
-Pokud jsme provedli následující další obnovení, jsme vždy uvolněte místo z předchozí operace obnovení.
+Druhý potřebujeme alespoň tolik místa na místní úrovni hello jako největší jeden rezervace hello. Toto množství navíc se používá v případě, že potřebujete toorestore z cloudový snímek. V tomto příkladu je největší místní rezervace hello 330 GB (včetně rezervace pro systém souborů), měli byste přidat tento toohello 690 GB: 690 GB + 330 GB = 1020 GB.
+Pokud jsme provedli následující další obnovení, jsme vždy uvolněte místo hello z předchozí operace obnovení hello.
 
-Třetí potřebujeme vaše celkové volné místo, pokud k uložení místní snímky, 15 %, aby pouze 85 % je k dispozici. V tomto příkladu, který byl kolem 1020 GB = 0.85&ast;zřízené data na disku TB. Ano, bude zřízené datový disk (1020&ast;(1/0.85)) = 1 200 GB = 1,20 TB ~ 1,25 TB (zaokrouhlení na nejbližší QUARTIL)
+Třetí, potřebujeme 15 % na celkový místní místo dosavadní toostore místní snímky, aby pouze 85 % je k dispozici. V tomto příkladu, který byl kolem 1020 GB = 0.85&ast;zřízené data na disku TB. Ano, bude hello zřízené datový disk (1020&ast;(1/0.85)) = 1 200 GB = 1,20 TB ~ 1,25 TB (zaokrouhlení QUARTIL toonearest)
 
 Řešení v neočekávané růstu a nové obnovení, by měl zřídit místní disk kolem 1,25-1,5 TB.
 
 > [!NOTE]
-> Doporučujeme také, zda je místní disk tence zřízený. Toto doporučení je, protože místo obnovení je potřeba, pouze pokud chcete obnovit data, která je starší než pět dní. Obnovení na úrovni položek umožňuje obnovení dat za posledních pět dní bez nutnosti volné místo pro obnovení.
+> Doporučujeme také, že je tence zřízený tento hello místní disk. Toto doporučení se totiž hello obnovení prostor je potřebný jenom, když chcete, aby toorestore data, která je starší než pět dní. Obnovení na úrovni položek vám umožní toorestore data pro hello posledních pět dnů bez nutnosti hello místo navíc je pro obnovení.
 
 
 #### <a name="example-2"></a>Příklad 2:
-Na virtuální pole chcete mít možnost
+Na vaše virtuální pole chcete toobe moct
 
 * zřídit 2 TB vrstvené svazku
 * 300 GB místně vázaný svazek zřídit
@@ -96,192 +96,192 @@ Na virtuální pole chcete mít možnost
 Podle % 12 rezervace volné místo pro vrstvené svazky nebo sdílené složky a 10 % místně vázaných svazků nebo sdílených složek, potřebujeme
 
 * Místní rezervace 240 GB (2 TB víceúrovňová sdílení nebo svazku)
-* 330 GB pro místně vázaný svazek nebo sdílenou složku (přidání 10 % místní rezervace do místa zřizovat 300 GB)
+* 330 GB pro místně vázaný svazek nebo sdílenou složku (přidání 10 % místní rezervace toohello zřízený 300 GB místa)
 
-Celkové požadované místo na místní vrstvy je: 240 GB + 330 GB = 570 GB
+Celkové požadované místo na místní vrstvy hello je: 240 GB + 330 GB = 570 GB
 
-Minimální volné místo potřebné pro obnovení je 330 GB.
+minimální volné místo Hello potřebná pro obnovení je 330 GB.
 
-15 % celkové disku se používá pro ukládání snímků tak, aby pouze 0.85 je k dispozici. Ano, je velikost disku (900&ast;(1/0.85)) = 1.06 TB ~ 1,25 TB (zaokrouhlení na nejbližší QUARTIL)
+15 % celkové disku je použité toostore snímky tak, aby pouze 0.85 je k dispozici. Ano, je velikost disku hello (900&ast;(1/0.85)) = 1.06 TB ~ 1,25 TB (zaokrouhlení QUARTIL toonearest)
 
 Řešení v jakékoli neočekávané růst, můžete zřídit na místní disk 1,25-1,5 TB.
 
 ### <a name="group-policy"></a>Zásady skupiny
-Zásady skupiny jsou infrastruktura, která umožňuje implementovat konkrétní konfigurace pro uživatele a počítače. Nastavení zásad skupiny jsou obsažené v objektech zásad skupiny (GPO), které jsou propojeny s následující kontejnery služby Active Directory Domain Services (AD DS): weby, domény nebo organizační jednotky (OU). 
+Zásady skupiny jsou infrastruktura, která vám umožní tooimplement konkrétní konfigurace pro uživatele a počítače. Nastavení zásad skupiny jsou obsažené v objektech zásad skupiny (GPO), které jsou propojené toohello následující kontejnery služby Active Directory Domain Services (AD DS): weby, domény nebo organizační jednotky (OU). 
 
-Pokud vaše virtuální pole je připojený k doméně, může na něho použít objekty zásad skupiny. Tyto objekty zásad skupiny můžete nainstalovat aplikace, jako je antivirový software, který může nepříznivě ovlivnit operaci pole virtuální zařízení StorSimple.
+Pokud vaše virtuální pole je připojený k doméně, může být objekty zásad skupiny použité tooit. Tyto objekty zásad skupiny můžete nainstalovat aplikace, jako je antivirový software, který může nepříznivě ovlivnit hello operace hello pole virtuální zařízení StorSimple.
 
 Proto doporučujeme, aby vám:
 
 * Zajistěte, aby byl virtuální pole ve vlastní organizační jednotku (OU) pro službu Active Directory.
-* Ujistěte se, že žádné objekty zásad skupiny (GPO) se použijí pro vaše virtuální pole. Můžete zablokovat dědičnost zajistit, že virtuální pole (podřízený uzel) nedědí automaticky žádnými objekty zásad skupiny z nadřazeného objektu. Další informace, přejděte na [zablokovat dědičnost](https://technet.microsoft.com/library/cc731076.aspx).
+* Ujistěte se, že žádné objekty zásad skupiny (GPO) jsou použité tooyour virtuální pole. Můžete zablokovat dědičnost tooensure, který hello virtuální pole (podřízený uzel) z nadřazené hello automaticky nedědí žádnými objekty zásad skupiny. Další informace, přejděte příliš[zablokovat dědičnost](https://technet.microsoft.com/library/cc731076.aspx).
 
 ### <a name="networking"></a>Sítě
-Konfigurace sítě pro vaše virtuální pole se provádí prostřednictvím místního webového uživatelského rozhraní. Rozhraní virtuální sítě je povolená díky hypervisoru, ve kterém je zřízený virtuální pole. Použití [nastavení sítě](storsimple-virtual-array-deploy3-fs-setup.md) můžete nakonfigurovat IP adresu rozhraní virtuální sítě, podsítě a bránu.  Můžete také nakonfigurovat primární a sekundární server DNS, nastavení času a volitelná nastavení proxy serveru pro vaše zařízení. Většinu konfiguraci sítě je jednorázové instalační program. Zkontrolujte [StorSimple sítě požadavky](storsimple-ova-system-requirements.md#networking-requirements) před nasazením virtuální pole.
+Hello konfiguraci sítě pro vaše virtuální pole se provádí prostřednictvím hello místního webového uživatelského rozhraní. Rozhraní virtuální sítě je povolená díky hello hypervisoru, ve kterém je zřízený virtuální pole hello. Použití hello [nastavení sítě](storsimple-virtual-array-deploy3-fs-setup.md) stránka tooconfigure hello virtuální sítě rozhraní IP adresu podsítě a bránu.  Můžete také konfigurovat hello primární a sekundární server DNS, nastavení času a volitelná nastavení proxy serveru pro vaše zařízení. Většinu konfiguraci sítě hello je jednorázové instalační program. Zkontrolujte hello [StorSimple sítě požadavky](storsimple-ova-system-requirements.md#networking-requirements) předchozí toodeploying hello virtuální pole.
 
 Pokud nasazujete virtuální pole, doporučujeme dodržovat tyto osvědčené postupy:
 
-* Zajistěte, aby síť, ve kterém je virtuální pole nasazená vždy kapacitu vyhradit 5 šířky pásma Internetu MB/s (nebo více).
+* Zajistěte, aby byl tuto hello síť, ve které hello virtuální pole je nasazena vždy hello kapacity toodedicate 5 šířky pásma Internetu MB/s (nebo více).
   
-  * Třeba šířky pásma Internetu se liší v závislosti na vaší charakteristiky zatížení a rychlosti změny dat.
-  * Změny dat, která může být zpracována je přímo úměrná pásma vašeho internetového připojení. Například při zálohování 5 MB/s šířky pásma zvládne přibližně 18 GB změny dat v 8 hodin. Čtyřikrát větší šířka pásma (20 MB/s) může zpracovávat čtyřikrát další změny dat (72 GB).
-* Zkontrolujte, zda je vždy k dispozici připojení k Internetu. Připojení k Internetu výskyt občasný, nebo nespolehlivé na zařízení může dojít ke ztrátě přístupu k datům v cloudu a může mít za následek nepodporované konfigurace.
-* Pokud plánujete nasazení zařízení jako iSCSI server:
+  * Třeba šířky pásma Internetu se liší v závislosti na charakteristiky zatížení a hello rychlosti změny dat.
+  * Hello změny dat, která může být zpracována je přímo úměrná tooyour šířky pásma Internetu. Například při zálohování 5 MB/s šířky pásma zvládne přibližně 18 GB změny dat v 8 hodin. Čtyřikrát větší šířka pásma (20 MB/s) může zpracovávat čtyřikrát další změny dat (72 GB).
+* Zajistěte, aby toohello připojení k Internetu je vždy k dispozici. Výskyt občasný, nebo nespolehlivé internetové připojení toohello zařízení může mít za následek ztrátu přístupu toodata v cloudu hello a může mít za následek nepodporované konfigurace.
+* Pokud máte v plánu toodeploy zařízení jako iSCSI server:
   
-  * Doporučujeme zakázat **získat IP adresu automaticky** možnost (DHCP).
+  * Doporučujeme zakázat hello **získat IP adresu automaticky** možnost (DHCP).
   * Konfigurace statické IP adresy. Je nutné nakonfigurovat primární a sekundární server DNS.
-  * Pokud definování více síťových rozhraní na vaše virtuální pole, pouze první síťové rozhraní (ve výchozím nastavení, toto rozhraní je **Ethernet**) dosáhnout cloudu. Chcete-li řídit typ provozu, můžete vytvořit více rozhraní virtuální sítě na vaše virtuální pole (nakonfigurovaný jako server se službou iSCSI) a připojení těchto rozhraní k různým podsítím.
-* Omezení šířky pásma cloudu pouze (používá pole virtuální), konfigurace omezení na směrovači nebo brány firewall. Pokud definujete omezení ve vašem hypervisoru, bude ho omezení všechny protokoly, včetně iSCSI a SMB místo právě cloudu šířky pásma.
-* Ujistěte se, že synchronizaci času pro hypervisory je povoleno. Pokud vaše virtuální pole pomocí technologie Hyper-V, vyberte ve Správci technologie Hyper-V, přejděte na **nastavení &gt; integrační služby**a ujistěte se, že **synchronizace času** je zaškrtnuté.
+  * Pokud na vaše virtuální pole definování více síťových rozhraní, hello pouze první síťové rozhraní (ve výchozím nastavení, toto rozhraní je **Ethernet**) dosáhnout hello cloudu. Typ hello toocontrol přenosů dat, můžete vytvořit více rozhraní virtuální sítě na vaše virtuální pole (nakonfigurovaný jako server se službou iSCSI) a připojení těchto podsítí toodifferent rozhraní.
+* toothrottle hello cloudu šířky pásma pouze (používá pole virtuálním hello), konfigurace omezení na hello směrovače nebo brány firewall hello. Pokud definujete omezení ve vašem hypervisoru, bude ho omezení všechny protokoly hello včetně iSCSI a SMB místo právě šířky pásma cloudu hello.
+* Ujistěte se, že synchronizaci času pro hypervisory je povoleno. Pokud pomocí technologie Hyper-V, vybrat virtuální pole v hello Správce technologie Hyper-V, přejděte příliš**nastavení &gt; integrační služby**a ujistěte se, že hello **synchronizace času** je zaškrtnuté.
 
 ### <a name="storage-accounts"></a>Účty úložiště
-Pole virtuální zařízení StorSimple může být přidružena k účtu jedno úložiště. Tento účet úložiště může být účet úložiště automaticky generovaného účtu ve stejném předplatném jako služba, nebo do jiného předplatného souvisejících s účtem úložiště. Další informace najdete v tématu Jak [Správa účtů úložiště pro vaše virtuální pole](storsimple-virtual-array-manage-storage-accounts.md).
+Pole virtuální zařízení StorSimple může být přidružena k účtu jedno úložiště. Tento účet úložiště může být účet úložiště automaticky generovaného účtu v hello stejnému předplatnému jako hello služby nebo účet úložiště související tooanother předplatné. Další informace najdete v tématu Jak příliš[Správa účtů úložiště pro vaše virtuální pole](storsimple-virtual-array-manage-storage-accounts.md).
 
-Pomocí následujících doporučení pro účty úložiště přidružené virtuální pole.
+Následující doporučení pro účty úložiště přidružené virtuální pole použití hello.
 
-* Při propojování více virtuální pole s účtem jedno úložiště, zohlednit maximální kapacity (64 TB) pro virtuální pole a maximální velikost (500 TB) pro účet úložiště. To omezuje počet plné velikosti virtuální pole, které lze přidružit k tomuto účtu úložiště do asi 7.
+* Při propojování více virtuální pole s účtem jedno úložiště, dvoufaktorového hello maximální kapacity (64 TB) pro virtuální pole a maximální velikost hello (500 TB) pro účet úložiště. Toto nastavení omezuje počet hello v plné velikosti virtuální pole, které může být přidružen účet tooabout tohoto úložiště 7.
 * Při vytváření nového účtu úložiště
   
-  * Doporučujeme vytvořit ji v oblasti nejblíže k vzdáleného office nebo firemní pobočku, kde je nasazená pole virtuální zařízení StorSimple pro minimalizaci latence.
+  * Doporučujeme vytvořit hello oblast nejbližší toohello vzdálené office/pobočce kde pole virtuální zařízení StorSimple je nasazené toominimize latenci.
   * Berte v úvahu, že nemůžete přesunout účet úložiště v různých oblastech. Službu nelze také přesouvat mezi odběry.
-  * Použijte účet úložiště, který implementuje redundance mezi v datacentrech. GEO-Redundant Storage (GRS), zóny redundantní úložiště (ZRS) a místně redundantní úložiště (LRS) jsou všechny podporované pro použití s virtuální pole. Další informace o různých typech účtů úložiště, přejděte na [replikace Azure storage](../storage/common/storage-redundancy.md).
+  * Použijte účet úložiště, který implementuje redundance mezi datovými centry hello. GEO-Redundant Storage (GRS), zóny redundantní úložiště (ZRS) a místně redundantní úložiště (LRS) jsou všechny podporované pro použití s virtuální pole. Další informace o hello různé typy účtů úložiště, přejděte příliš[replikace Azure storage](../storage/common/storage-redundancy.md).
 
 ### <a name="shares-and-volumes"></a>Sdílené složky a svazky
-Pro pole virtuální zařízení StorSimple můžete zřídit sdílené složky, když je nakonfigurovaný jako souborový server a svazky, když je nakonfigurovaný jako server se službou iSCSI. Osvědčené postupy pro vytváření sdílených složek a svazky se vztahují na velikost a typ konfigurovaný.
+Pro pole virtuální zařízení StorSimple můžete zřídit sdílené složky, když je nakonfigurovaný jako souborový server a svazky, když je nakonfigurovaný jako server se službou iSCSI. Typ velikosti a hello toohello nakonfigurovat jsou příslušných Hello osvědčené postupy pro vytváření sdílených složek a svazky.
 
 #### <a name="volumeshare-size"></a>Velikost svazku nebo sdílené složky
-Na virtuální pole můžete zřídit sdílené složky, když je nakonfigurovaný jako souborový server a svazky, když je nakonfigurovaný jako server se službou iSCSI. Osvědčené postupy pro vytváření sdílených složek a svazky se týkají velikost a typ konfigurovaný. 
+Na virtuální pole můžete zřídit sdílené složky, když je nakonfigurovaný jako souborový server a svazky, když je nakonfigurovaný jako server se službou iSCSI. Hello osvědčené postupy pro vytváření sdílených složek a svazky se týkají toohello velikost a typ konfigurovaný hello. 
 
-Při zřizování sdílené složky nebo svazky na virtuální zařízení mějte na paměti následující osvědčené postupy.
+Mějte na paměti hello následující osvědčené postupy při zřizování sdílené složky nebo svazky na virtuální zařízení.
 
-* Velikosti souborů relativně k velikost zřízeného vrstvené sdílené složky může ovlivnit vrstvení výkon. Práce s velkými soubory by mohla způsobit pomalé vrstvy. Při práci s velkých souborů, doporučujeme vám, že na největší soubor je menší než velikost sdílené složky % 3.
-* Na virtuální pole lze vytvořit maximálně 16 svazky nebo sdílené složky. Limity velikosti místně vázaný a vrstvené svazky nebo sdílené složky, vždy najdete v části [omezuje pole virtuální zařízení StorSimple](storsimple-ova-limits.md).
-* Při vytváření svazku, faktorem při spotřebě očekávaným objemem dat a také budoucímu růstu. Svazek nelze rozšířit později.
-* Po vytvoření svazku nelze zmenšit velikost svazku v zařízení StorSimple.
-* Při zápisu do vrstvený svazek v zařízení StorSimple, když data svazek dosáhne určitým prahem (relativní vůči volné místo vyhrazené pro daný svazek), je omezen vstupně-výstupní operace. Pokračovat k zápisu do tohoto svazku zpomaluje vstupně-výstupní výrazně. I když můžete zapisovat vrstvený svazek nad rámec jeho zřízená kapacita (jsme nedojde k zastavení aktivně uživateli zápis nad rámec zřízená kapacita), zobrazí se oznámení o tom, které mají oversubscribed výstrahy. Jakmile se zobrazí výstraha, je nutné provést nápravné opatření, například odstranit data na svazku (svazek rozšíření není aktuálně podporována.).
-* Pro případy použití pro zotavení po havárii jako je počet povolených sdílených složek nebo svazků 16 a maximální počet sdílené složky nebo svazky, které lze zpracovat paralelní je také 16, počtu sdílených složek nebo svazků nemá vliv na plánovaný bod obnovení a RTO.
+* Hello velikosti relativní toohello zřízený velikost souboru vrstvené sdílená složka může ovlivnit výkon vrstvení hello. Práce s velkými soubory by mohla způsobit pomalé vrstvy. Při práci s velkých souborů, doporučujeme, že soubor největší hello je menší než 3 % hello velikost sdílené složky.
+* V poli virtuálním hello lze vytvořit maximálně 16 svazky nebo sdílené složky. Omezení velikosti hello hello místně připnutý a vrstvené svazky nebo sdílené složky, vždy naleznete toohello [omezuje pole virtuální zařízení StorSimple](storsimple-ova-limits.md).
+* Při vytváření svazku, faktorem spotřeby dat hello očekávání, jakož i budoucímu růstu. Hello svazek nelze rozšířit později.
+* Po vytvoření svazku hello nelze zmenšit velikost hello hello svazek v zařízení StorSimple.
+* Při zápisu tooa vrstvené svazek v zařízení StorSimple, když data hello svazek dosáhne určitým prahem (relativní toohello místní místa vyhrazeného pro svazek hello), je omezen hello vstupně-výstupní operace. Pokračováním toowrite toothis svazku zpomaluje hello vstupně-výstupní operace výrazně. I když můžete napsat tooa vrstvené svazku nad rámec jeho zřízená kapacita (jsme nedojde k zastavení aktivně hello uživatele z zápis nad hello zřídit kapacitu), najdete v části vliv toohello oznámení výstrah, které mají oversubscribed. Jakmile se zobrazí výstraha hello, je nutné podniknout nápravné opatření, například odstranit data svazku hello (svazku rozšíření není aktuálně podporována.).
+* Pro případy použití pro zotavení po havárii jako je hello počet povolených sdílené složky nebo svazky 16 a hello maximální počet sdílené složky nebo svazky, které lze zpracovat paralelní je také 16, hello počtu sdílených složek nebo svazků nemá vliv na plánovaný bod obnovení a RTO.
 
 #### <a name="volumeshare-type"></a>Typ svazku nebo sdílené složky
-StorSimple podporuje dva typy sdílení nebo svazku na základě využití: místně ukotvena a vrstvené. Místně vázaných svazků nebo sdílených složek je tlustě zřízený, zatímco jsou dynamicky zajišťované vrstvené svazky nebo sdílené složky. Nelze převést místně vázaný svazek nebo sdílenou složku na vrstvené nebo *naopak* po vytvoření.
+StorSimple podporuje dva typy sdílení nebo svazku na základě využití hello: místně ukotvena a vrstvené. Místně vázaných svazků nebo sdílených složek je tlustě zřízený, zatímco hello vrstvené svazky nebo sdílené složky jsou dynamicky zajišťované. Nelze převést tootiered místně vázaný svazek nebo sdílenou složku nebo *naopak* po vytvoření.
 
-Doporučujeme implementovat následující osvědčené postupy, při konfiguraci StorSimple svazky nebo sdílené složky:
+Doporučujeme vám, že můžete implementovat hello následující osvědčené postupy při konfiguraci StorSimple svazky nebo sdílené složky:
 
-* Určete typ svazku založené na jiné úlohy, které máte v úmyslu nasadit před vytvořením svazku. Použijte pro úlohy, které vyžadují místní záruky dat (i během výpadku cloud) a které vyžadují, nízkou cloudu latence místně vázaných svazků. Jakmile vytvoříte svazek na vaše virtuální pole, nelze změnit typ svazku z místně vázaný na vrstvené nebo *naopak*. Jako příklad vytváření místně vázaných svazků při nasazování SQL úlohy nebo úlohy hostování virtuálních počítačů (VM); použijte pro úlohy sdílené složky souboru vrstvené svazky.
-* Zaškrtněte možnost pro archivní data s méně často používaných při plánování práce s velikostí velkých souborů. Větší velikost bloku dat odstranění duplicit 512 kB se používá, pokud je tato možnost povolena urychlit přenos dat do cloudu.
+* Určete typ svazku hello podle hello úlohy, který chcete toodeploy, před vytvořením svazku. Použijte pro úlohy, které vyžadují místní záruky dat (i během výpadku cloud) a které vyžadují, nízkou cloudu latence místně vázaných svazků. Jakmile vytvoříte svazek na vaše virtuální pole, nelze změnit typ svazku hello z místně vázaný tootiered nebo *naopak*. Jako příklad vytváření místně vázaných svazků při nasazování SQL úlohy nebo úlohy hostování virtuálních počítačů (VM); použijte pro úlohy sdílené složky souboru vrstvené svazky.
+* Zkontrolujte hello možnost pro archivní data s méně často používaných při plánování práce s velikostí velkých souborů. Větší velikost bloku dat odstranění duplicit 512 kB se používá, pokud je tato možnost povolena příchozí přenos dat hello tooexpedite toohello cloudu.
 
 #### <a name="volume-format"></a>Formát svazku
-Po vytvoření svazky zařízení StorSimple na vašem serveru iSCSI, musíte inicializovat, připojení a formátování svazků. Tato operace se provádí na hostiteli připojen k zařízení StorSimple. Doporučujeme následující osvědčené postupy při připojení a formátování svazků na hostiteli StorSimple.
+Po vytvoření svazky zařízení StorSimple na vašem serveru iSCSI, budete potřebovat tooinitialize, připojení a formát hello svazky. Tato operace provádí na zařízení StorSimple tooyour hostování připojené hello. Doporučujeme následující osvědčené postupy při připojení a formátování svazků zařízení StorSimple hostiteli hello.
 
 * Proveďte rychlé formátování na všechny svazky zařízení StorSimple.
-* Při formátování svazek StorSimple, použijte velikost alokační jednotky (Austrálie) 64 kB (výchozí hodnota je 4 KB). 64 KB Austrálie je založena na testování provádí interně pro běžné úlohy StorSimple a další úlohy.
-* Pokud používáte pole virtuální zařízení StorSimple, který je nakonfigurovaný jako server se službou iSCSI, nepoužívejte rozložené svazky nebo dynamické disky jako tyto svazky nebo disky nejsou podporovány StorSimple.
+* Při formátování svazek StorSimple, použijte velikost alokační jednotky (Austrálie) 64 kB (výchozí hodnota je 4 KB). Hello 64 KB Austrálie je založena na testování provádí interně pro běžné úlohy StorSimple a další úlohy.
+* Při použití hello pole virtuální zařízení StorSimple nakonfigurovaný jako server se službou iSCSI, nepoužívejte rozložené svazky nebo dynamické disky jako tyto svazky nebo disky nejsou podporovány StorSimple.
 
 #### <a name="share-access"></a>Přístup ke sdílené složce
 Při vytváření sdílené složky na souborovém serveru virtuální pole, postupujte podle těchto pokynů:
 
 * Když vytváříte sdílenou složku, přiřadíte skupinu uživatelů jako správce a sdílené složky namísto jednoho uživatele.
-* Po vytvoření sdílené složky tak, že upravíte sdílených složek pomocí Průzkumníka Windows, může spravovat oprávnění systému souborů NTFS.
+* Po vytvoření sdílené složky hello úpravou hello sdílených složek pomocí Průzkumníka Windows, můžete spravovat oprávnění NTFS hello.
 
 #### <a name="volume-access"></a>Přístup ke svazku
-Při konfiguraci iSCSI svazky na pole virtuální zařízení StorSimple, je důležité pro řízení přístupu, kdykoli je to nutné. Pokud chcete zjistit, které hostitelské servery můžete získat přístup ke svazkům, vytvořte a přidružte svazky zařízení StorSimple záznamy řízení přístupu (ACRs).
+Při konfiguraci hello iSCSI svazky na pole virtuální zařízení StorSimple, je důležité toocontrol přístup, kdykoli je to nutné. toodetermine, která je hostitelem serverů můžete získat přístup ke svazkům, vytvořit a přidružit svazky zařízení StorSimple záznamy řízení přístupu (ACRs).
 
-Při konfiguraci ACRs pro svazky zařízení StorSimple, použijte následující osvědčené postupy:
+Použijte následující osvědčené postupy při konfiguraci ACRs pro svazky zařízení StorSimple hello:
 
 * Alespoň jeden ACR vždy přidružte svazku.
 
-* Při přiřazování ACR více než jeden svazek, ujistěte se, že svazek není vystavení způsobem, kde můžete současně přistupovat ve více než jeden neclusterovaného hostitele. Pokud jste přiřadili více ACRs na svazek, upozornění se zobrazí pro vás k posouzení konfiguraci.
+* Při přiřazování více než jeden svazek tooa ACR, ujistěte se, že hello svazek není vystavení způsobem, kde můžete současně přistupovat ve více než jeden neclusterovaného hostitele. Pokud jste přiřadili více ACRs tooa svazku, upozornění se zobrazí pro tooreview můžete konfiguraci.
 
 ### <a name="data-security-and-encryption"></a>Zabezpečení dat a šifrování
-Pole virtuální zařízení StorSimple je funkce zabezpečení a šifrování dat, které zajistit důvěrnost a integritu dat. Při používání těchto funkcí, doporučujeme dodržovat tyto osvědčené postupy: 
+Pole virtuální zařízení StorSimple je funkce zabezpečení a šifrování dat, které zajištění důvěrnosti hello a integritu dat. Při používání těchto funkcí, doporučujeme dodržovat tyto osvědčené postupy: 
 
-* Zadejte šifrovací klíč cloudového úložiště pro generování šifrování AES 256 před odesláním dat z vaší virtuální pole do cloudu. Tento klíč se nevyžaduje, pokud vaše data se šifrují na začátku. Klíč může generovat a uchovávat bezpečné pomocí systémem správy klíčů, jako třeba [Azure trezoru klíčů](../key-vault/key-vault-whatis.md).
-* Při konfiguraci účtu úložiště prostřednictvím služby StorSimple Manager, zkontrolujte, zda povolit režim SSL vytvořit zabezpečený kanál pro síťovou komunikaci mezi zařízení StorSimple a cloudem.
-* Vygenerování klíčů pro účty úložiště (podle přístupu ke službě Azure Storage) pravidelně na účet pro přístup k veškeré změny podle změněné seznamu správců.
-* Data na vaše virtuální pole jsou komprimované a odstranění duplicit před odesláním do služby Azure. Nedoporučujeme používat službu role odstranění duplicitních dat na hostiteli s Windows Server.
+* Před odesláním dat hello z vašeho cloudu toohello virtuální pole, definujte toogenerate klíče AES 256 šifrování úložiště cloudu. Tento klíč se nevyžaduje, pokud vaše data jsou šifrovaná toobegin s. Hello klíč může generovat a uchovávat bezpečné pomocí systémem správy klíčů, jako třeba [Azure trezoru klíčů](../key-vault/key-vault-whatis.md).
+* Při konfiguraci účtu úložiště hello prostřednictvím hello služby StorSimple Manager, ujistěte se, abyste povolili toocreate režimu SSL hello zabezpečený kanál pro síťovou komunikaci mezi zařízení StorSimple a hello cloudu.
+* Opětovné vytváření hello klíče pro účty úložiště (podle přístup ke službě Azure Storage hello) pravidelně tooaccount pro jakékoli změny tooaccess podle hello změnit seznamu správců.
+* Data na vaše virtuální pole jsou komprimované a odstranění duplicit před odesláním tooAzure. Nedoporučujeme používat službu role odstranění duplicitních dat hello na hostiteli s Windows Server.
 
 ## <a name="operational-best-practices"></a>Aplikovatelné nejlepší postupy
-Aplikovatelné nejlepší postupy jsou pokyny, které musí být sledována během operace virtuální pole nebo každodenní správu. Tyto postupy zahrnují určité úlohy správy například umožňoval vytvářet zálohy, obnovení ze zálohovacího skladu, provádění převzetí služeb při selhání, deaktivace a odstranění poli monitorování systému využití a stavu a spuštění virů kontrol na vaše virtuální pole.
+Hello aplikovatelné nejlepší postupy jsou pokyny, které musí být sledována během operace hello virtuální pole nebo hello každodenní správu. Tyto postupy zahrnují určité úlohy správy například umožňoval vytvářet zálohy, obnovení ze zálohovacího skladu, provádění převzetí služeb při selhání, deaktivace a odstraňování hello pole, monitorování využití systémové a stavu, a spouští virů kontrolu na vaše virtuální pole.
 
 ### <a name="backups"></a>Zálohování
-Data na vaše virtuální pole je zálohována do cloudu dvěma způsoby, výchozí automatizované denní zálohování celého zařízení spouštění ve 22:30 nebo prostřednictvím ručního zálohování na vyžádání. Ve výchozím nastavení zařízení automaticky vytvoří denní cloudových snímků všechna data, které se nacházejí na něm. Další informace, přejděte na [zálohování pole virtuální zařízení StorSimple](storsimple-virtual-array-backup.md).
+Hello data na vaše virtuální pole je zálohována toohello cloudu dvěma způsoby, výchozí automatizované denní zálohování hello zařízení spouštění ve 22:30 nebo prostřednictvím ručního zálohování na vyžádání. Ve výchozím nastavení hello zařízení automaticky vytvoří denní cloudové snímky dat hello umístěný na něm. Další informace, přejděte příliš[zálohování pole virtuální zařízení StorSimple](storsimple-virtual-array-backup.md).
 
-Nelze změnit četnost a uchovávání, přidružené zálohy výchozí ale můžete nakonfigurovat čas, kdy denní zálohy se spouští každý den. Při konfiguraci čas zahájení pro automatické zálohování, doporučujeme:
+Hello četnost a uchování přidružené hello výchozí zálohování nelze změnit, ale můžete konfigurovat hello dobu, na které hello denní zálohy se spouští každý den. Při konfiguraci hello počáteční čas pro hello automaticky zálohování, doporučujeme:
 
 * Plán zálohování pro hodiny mimo špičku. Pokud čas spuštění zálohování se neshoduje se množství hostitele vstupně-výstupní operace.
-* Spustit ruční zálohování na vyžádání při plánování provedení převzetí služeb při selhání zařízení nebo před pro správu a údržbu k ochraně dat ve vaší virtuální pole.
+* Při plánování tooperform zahájit převzetí služeb při selhání zařízení nebo předchozí toohello časové období údržby, tooprotect hello dat na vaše virtuální pole ruční zálohy na vyžádání.
 
 ### <a name="restore"></a>Obnovení
-Můžete obnovit ze zálohy nastavit dvěma způsoby: obnovení do jiného svazku nebo sdílené složky nebo provádět obnovení na úrovni položek (k dispozici pouze u virtuálních pole nakonfigurovaný jako souborový server). Obnovení na úrovni položek lze provádět podrobné obnovení souborů a složek z cloudu zálohu všechny sdílené složky v zařízení StorSimple. Další informace, přejděte na [obnovit ze zálohy](storsimple-virtual-array-clone.md).
+Můžete obnovit ze zálohy nastavit dvěma způsoby: Obnovte tooanother svazek nebo sdílenou složku nebo provést obnovení na úrovni položek (k dispozici pouze u virtuálních pole nakonfigurovaný jako souborový server). Obnovení na úrovni položek umožňuje toodo podrobné obnovení souborů a složek ze záloh cloudu všechny hello sdílené složky v zařízení StorSimple hello. Další informace, přejděte příliš[obnovit ze zálohy](storsimple-virtual-array-clone.md).
 
-Při provádění obnovení, mějte tyto pokyny:
+Při provádění obnovení, Udržovat hello pokyny na paměti následující:
 
-* Pole virtuální zařízení StorSimple nepodporuje obnovení na místě. To může ale být snadno dosáhnout dvoustupňový proces: Uvolněte na virtuální pole a pak obnovení do jiného svazku nebo sdílené složky.
-* Při obnovení na místním svazku, mějte na paměti obnovení bude operace probíhající dlouhou dobu. V případě, že svazek může rychle režimu online, data i nadále možné HYDRATOVANÝ na pozadí.
-* Typ svazku zůstane stejný během procesu obnovení. Vrstvený svazek je obnovena na jiné vrstvený svazek a místně vázaný svazek na jiný místně připnutý svazku.
-* Při pokusu o obnovení ze zálohy na svazek nebo sdílenou složku, pokud úloha obnovení selže, nastavte cílový svazek nebo sdílenou složku stále možné vytvářet na portálu. Je důležité odstranit tento nepoužívané cílový svazek nebo sdílenou složku na portálu, chcete-li minimalizovat budoucí potíží vzniklých tohoto elementu.
+* Pole virtuální zařízení StorSimple nepodporuje obnovení na místě. To může ale být snadno dosáhnout dvoustupňový proces: Uvolněte na virtuálním hello pole a potom obnovte tooanother svazek nebo sdílenou složku.
+* Při obnovování na místním svazku, mějte na paměti hello obnovení bude operace probíhající dlouhou dobu. I když hello svazku může rychle režimu online, pokračuje hello data toobe HYDRATOVANÝ hello pozadí.
+* Hello svazku typu zůstane stejný hello během procesu obnovení hello. Vrstvený svazek je obnoven tooanother vrstvené svazky tooanother místně vázaný místně vázaný svazek a.
+* Při pokusu o toorestore svazek nebo sdílenou složku ze zálohovacího skladu, pokud se nezdaří úlohy obnovení hello, cílový svazek nebo sdílenou složku stále možné vytvářet hello portálu. Je důležité odstranit tohoto nepoužívané cílového svazku nebo sdílené složky v portálu toominimize hello budoucí potíží vzniklých tohoto elementu.
 
 ### <a name="failover-and-disaster-recovery"></a>Převzetí služeb při selhání a zotavení po havárii
-Selhání zařízení umožňuje migrovat data z *zdroj* zařízení v datovém centru do jiného *cíl* zařízení umístěné ve stejné nebo jiné zeměpisné umístění. Převzetí služeb při selhání zařízení je ze zařízení. Během převzetí služeb při selhání Cloudová data zdrojového zařízení změny vlastnictví u cílové zařízení.
+Selhání zařízení vám umožní toomigrate svá data z *zdroj* zařízení v datovém centru tooanother hello *cíl* zařízení nachází v hello stejné nebo jiné zeměpisné umístění. Hello zařízení převzetí služeb při selhání je pro zařízení hello. Data v cloudu hello hello zdrojového zařízení během převzetí služeb při selhání, změní vlastnictví toothat hello cílové zařízení.
 
-Pro pole virtuální zařízení StorSimple můžete můžete pouze převzetí služeb při selhání na jiný virtuální pole spravuje stejnou službu StorSimple Manager. Převzetí služeb při selhání do zařízení se systémem řady 8000 nebo pole spravovány jinou službu StorSimple Manager (než ten, který pro zdrojového zařízení) není povoleno. Další informace o aspektech převzetí služeb při selhání, přejděte na [požadavky pro převzetí služeb při selhání zařízení](storsimple-virtual-array-failover-dr.md).
+Pro pole virtuální zařízení StorSimple, můžete pouze převzetí služeb při selhání virtuální pole tooanother spravuje hello stejné služby StorSimple Manager. Zařízení řady tooan 8000 převzetí služeb při selhání nebo pole spravovány jinou službu StorSimple Manager (než hello jednu pro hello zdrojového zařízení) není povoleno. toolearn Další informace o hello aspekty převzetí služeb při selhání, přejděte příliš[požadavky pro převzetí služeb při selhání hello zařízení](storsimple-virtual-array-failover-dr.md).
 
-Při provádění selhání přes pro vaše virtuální pole, mějte následující:
+Při provádění selhání přes pro vaše virtuální pole, mějte hello následující skutečnosti:
 
-* Plánované převzetí služeb je součástí osvědčeného postupu provést všechny svazky nebo sdílené složky offline před zahájením převzetí služeb při selhání. Postupujte podle pokynů specifické pro operační systém a trvat svazky nebo sdílené složky do offline režimu na hostiteli první a pak proveďte ty offline na virtuální zařízení.
-* Souborový server zotavení po havárii (DR) doporučujeme, aby se automaticky vyřeší oprávnění ke sdílení připojení cílového zařízení do stejné domény jako zdroj. V této verzi je podporována pouze převzetí služeb při selhání na cílovém zařízení ve stejné doméně.
-* Po úspěšném dokončení DR zdrojového zařízení se automaticky odstraní. Když zařízení již není k dispozici, je virtuální počítač, který jste zřídili v hostitelském systému nadále spotřebovávají prostředky. Doporučujeme odstranit tento virtuální počítač z hostitele systému a zabránit nabíhání poplatků.
-* Všimněte si, že i když převzetí služeb při selhání je úspěšné, **data je bezpečné vždy v cloudu**. Vezměte v úvahu následující tři scénáře, ve kterých převzetí služeb při selhání nebyla úspěšně dokončena:
+* Plánované převzetí služeb je doporučené osvědčené praxi tootake všechny hello svazky nebo sdílené složky offline předchozí tooinitiating hello převzetí služeb při selhání. Postupujte podle pokynů specifické pro operační systém hello tootake hello svazky nebo sdílené složky offline na hello nejprve hostitele a pak proveďte ty offline na virtuální zařízení.
+* Souboru serveru zotavení po havárii (DR) doporučujeme hello cílové zařízení toohello automaticky vyřešeny stejné domény jako zdroj hello, který hello oprávnění ke sdílení připojení k. Pouze hello převzetí služeb při selhání tooa cílové zařízení v hello stejné domény je podporovaná v této verzi.
+* Jakmile hello zotavení po Havárii je úspěšně dokončen, hello zdrojového zařízení se automaticky odstraní. I když hello zařízení již není k dispozici, je hello virtuálního počítače, kterou jste zřídili v systému hostitele hello nadále spotřebovávají prostředky. Doporučujeme vám, že odstraníte tento virtuální počítač z vaší tooprevent systému hostitele ze nabíhání poplatků.
+* Všimněte si, že i když je úspěšné, převzetí služeb při selhání hello **hello dat je bezpečné vždy v cloudu hello**. Vezměte v úvahu hello následující tři scénáře, ve které hello převzetí služeb při selhání nebyla úspěšně dokončena:
   
-  * Došlo k chybě v úvodní fázích převzetí služeb při selhání, například když se provádí předběžné kontroly zotavení po Havárii. V takovém případě je stále možné použít cílové zařízení. Může pokus zopakovat převzetí služeb při selhání na stejné cílové zařízení.
-  * Došlo k chybě během procesu skutečné převzetí služeb při selhání. V takovém případě je označena cílové zařízení nepoužitelný. Musíte zřídit a nakonfigurovat jiné cílové virtuální pole a použijte k převzetí služeb při selhání.
-  * Dokončení, po který byl odstraněn zdrojového zařízení se převzetí služeb při selhání, ale cílové zařízení má problémy a nemůžou přistupovat žádná data. Data jsou stále bezpečné v cloudu a dá snadno načíst vytváření jiný virtuální pole a následným použitím jako cílové zařízení pro zotavení po Havárii.
+  * Došlo k chybě v hello počáteční fáze hello převzetí služeb při selhání například když se provádí předběžné kontroly hello zotavení po Havárii. V takovém případě je stále možné použít cílové zařízení. Můžete zkusit hello převzetí služeb při selhání na hello stejné cílové zařízení.
+  * Došlo k chybě během procesu hello skutečné převzetí služeb při selhání. V takovém případě je označena hello cílové zařízení nepoužitelný. Musíte zřídit a nakonfigurovat jiné cílové virtuální pole a použijte k převzetí služeb při selhání.
+  * Hello převzetí služeb při selhání je úplná následující, které zařízení hello zdroj byl odstraněn, ale hello cílové zařízení má problémy a nemůžou přistupovat žádná data. Hello data se stále bezpečné v cloudu hello a dá snadno načíst vytvořením jiný virtuální pole a pak ho pomocí jako cílové zařízení pro zotavení po Havárii hello.
 
 ### <a name="deactivate"></a>Deaktivace
-Pokud deaktivujete o pole virtuální zařízení StorSimple, server se připojení mezi zařízením a odpovídající služby StorSimple Manager. Deaktivace je **trvalé** operace a nelze ji vrátit zpět. Deaktivované zařízení nemůže být zaregistrován u služby StorSimple Manager znovu. Další informace, přejděte na [deaktivovat a odstranit pole virtuální zařízení StorSimple](storsimple-virtual-array-deactivate-and-delete-device.md).
+Pokud deaktivujete o pole virtuální zařízení StorSimple, můžete server hello připojení mezi hello zařízení a služby StorSimple Manager odpovídající hello. Deaktivace je **trvalé** operace a nelze ji vrátit zpět. Deaktivované zařízení nemůže být zaregistrován u hello služby StorSimple Manager znovu. Další informace, přejděte příliš[deaktivovat a odstranit pole virtuální zařízení StorSimple](storsimple-virtual-array-deactivate-and-delete-device.md).
 
-Následující osvědčené postupy při mějte deaktivace virtuální pole:
+Udržovat hello následující osvědčené postupy v paměti, když deaktivace virtuální pole:
 
-* Pořízení snímku cloudu všechna data před deaktivace virtuálního zařízení. Pokud deaktivujete virtuální pole, dojde ke ztrátě všech dat místní zařízení. Pořízení snímku cloudu vám umožní obnovit data v pozdější fázi.
-* Před deaktivací o pole virtuální zařízení StorSimple, zajistěte, aby pro zastavení nebo odstranit klienty a hostitele, které jsou závislé na tomto zařízení.
+* Pořízení snímku cloudu všechny hello data předchozí toodeactivating virtuálního zařízení. Když deaktivujete virtuální pole, dojde ke ztrátě všech dat hello místní zařízení. Pořízení snímku cloudu vám umožní toorecover data v pozdější fázi.
+* Před deaktivací o pole virtuální zařízení StorSimple, ujistěte se, že toostop nebo odstranit klienty a hostitele, které jsou závislé na tomto zařízení.
 * Odstraňte deaktivované zařízení, pokud už používáte, takže ho nebude nabíhat poplatky.
 
 ### <a name="monitoring"></a>Monitorování
-Zajistěte, aby vaše pole virtuální zařízení StorSimple v průběžné stavu v pořádku, musíte ke sledování pole a ujistěte se, zda se zobrazila informace ze systému, včetně výstrahy. Ke sledování celkového stavu virtuální pole, implementujte následující osvědčené postupy:
+tooensure, který je pole virtuální zařízení StorSimple v průběžné stavu v pořádku, je nutné toomonitor hello pole a ujistěte se, zda přijímají informace ze systému hello včetně výstrahy. toomonitor hello celkového stavu hello virtuální pole, implementujte hello následující osvědčené postupy:
 
-* Konfigurace monitorování ke sledování využití disku virtuální pole datový disk jako disk operačního systému. Pokud s technologií Hyper-V, můžete použít kombinaci System Center Virtual Machine Manager (SCVMM) a System Center Operations Manager (SCOM) k monitorování hostitelů virtualizace.
-* Konfigurace e-mailová oznámení na vaše virtuální pole pro odeslání výstrah na určité úrovni využití.                                                                                                                                                                                                
+* Konfigurace monitorování využití disku hello tootrack vaše virtuální pole datový disk, stejně jako disk s operačním systémem hello. Pokud s technologií Hyper-V, můžete použít kombinaci System Center Virtual Machine Manager (SCVMM) a System Center Operations Manager (SCOM) toomonitor virtualizační hostitele.
+* Konfigurace e-mailová oznámení na vaše virtuální pole toosend výstrahy na určité úrovni využití.                                                                                                                                                                                                
 
 ### <a name="index-search-and-virus-scan-applications"></a>Index vyhledávání a antivirové kontroly aplikací
-Pole virtuální zařízení StorSimple můžete automaticky vrstvy dat z místní vrstvy do cloudu Microsoft Azure. Pokud aplikace například prohledání indexu nebo antivirovou kontrolu slouží ke kontrole dat uložených na zařízení StorSimple, budete muset Ujistěte se, že data v cloudu nepodporuje získat přístup a vyžádat zpět do místní vrstvy.
+Pole virtuální zařízení StorSimple můžete automaticky vrstvy data z hello místní vrstvy toohello cloudu Microsoft Azure. Pokud aplikace například prohledání indexu nebo antivirovou kontrolu je použité tooscan hello dat uložených na zařízení StorSimple, je potřeba tootake pozor, že data v cloudu hello nepodporuje získat přístup a vyžádat zpět toohello místní vrstvy.
 
-Doporučujeme implementovat následující osvědčené postupy, při konfiguraci skenování indexu vyhledávání nebo virů na vaše virtuální pole:
+Doporučujeme vám, že implementujete hello následující osvědčené postupy při konfiguraci hello indexu vyhledávání nebo antivirové kontroly na vaše virtuální pole:
 
 * Zakažte všechny operace automaticky konfigurované úplnou kontrolu.
-* Pro vrstvené svazky nakonfigurujte aplikaci indexu vyhledávání nebo antivirové kontroly provedení přírůstkových kontroly. To by kontrolu pouze nové dat pravděpodobně umístěný na místní úrovni. Během operace přírůstkové není přístupu k datům, který vrstveny do cloudu.
-* Zkontrolujte nastavení a hledání správné filtry jsou nakonfigurovány tak, aby získat zkontrolovat určený typy souborů. Například bitovou kopii souborů (JPEG, GIF a TIFF) a technici výkresy nesmí zkontrolován během index úplné nebo přírůstkové sestavení.
+* Pro vrstvené svazky nakonfigurujte hello indexu vyhledávání nebo antivirové kontroly aplikací tooperform přírůstkové skenování. To by kontrolovat jenom hello nové dat pravděpodobně umístěný na místní vrstvy hello. během operace přírůstkové není přístup Hello data, která je vrstvené toohello cloudu.
+* Zkontrolujte hello hledání správné filtry a nastavení jsou nakonfigurovaná tak, aby získat zkontrolovat pouze hello určené typy souborů. Například bitovou kopii souborů (JPEG, GIF a TIFF) a technické výkresy nesmí zkontrolován během opětovné sestavení indexu úplné nebo přírůstkové hello.
 
 Pokud používáte Windows indexování procesu, postupujte podle následujících pokynů:
 
-* Nepoužívejte Windows indexeru pro vrstvené svazky, protože vyhledává velké objemy dat (TBs) z cloudu, pokud potřebujete často znovu sestavit index. Znovu sestavit index by načíst všechny typy souborů do indexu obsah.
-* Použití Windows indexování proces místně vázaných svazků, jako to by pouze přístup k datům v místních vrstvách a sestavení indexu (Cloudová data nebudou přístupná).
+* Nepoužívejte Windows Indexer hello pro vrstvené svazky, protože vyhledává velké objemy dat (TBs) z cloudu hello, pokud potřebuje toobe často znovu sestavit hello index. Znovu sestavit hello index by načíst všechny typy tooindex soubor jejich obsah.
+* Použijte Windows hello indexování proces místně vázaných svazků, jako to by pouze přístup k datům v hello místních vrstvách toobuild hello indexu (hello cloud, nebude mít přístup dat).
 
 ### <a name="byte-range-locking"></a>Zamykání rozsahu bajtů
-Aplikace můžete uzamknout zadaný rozsah bajtů v souborech. Pokud v aplikacích, které jsou zápis do vašeho zařízení StorSimple je povolený zámek rozsah bajtů, pak vrstvení nefunguje na vaše virtuální pole. Pro vrstvení fungovat, musí být všechny oblasti souborů získat přístup k odemknout. Zamykání rozsah bajtů není podporována u vrstvené svazky na vaše virtuální pole.
+Aplikace můžete uzamknout zadaný rozsah bajtů v rámci hello soubory. Pokud na hello aplikace, které jsou zápis tooyour StorSimple je povolený zámek rozsah bajtů, pak vrstvení nefunguje na vaše virtuální pole. Pro vrstvení toowork hello musí být všechny oblasti hello souborů přístup odemknout. Zamykání rozsah bajtů není podporována u vrstvené svazky na vaše virtuální pole.
 
-Doporučená opatření ke zmírnění zamykání rozsah bajtů patří:
+Doporučujeme míry zamykání rozsah bajtů tooalleviate zahrnují:
 
 * Vypněte rozsah bajtů zamykání logiky aplikace.
-* Použití místně připnutý svazky (místo víceúrovňová) pro data přidružená k této aplikaci. Místně vázaných svazků není vrstvy do cloudu.
-* Při použití místně vázaný svazky s povoleno uzamčení rozsah bajtů, můžou mít svazek online před dokončením obnovení. V těchto případech je nutné počkat na dokončení obnovení.
+* Použití místně připnutý svazky (místo víceúrovňová) pro hello data přidružená k této aplikaci. Místně vázaných svazků není vrstvy do cloudu hello.
+* Při použití místně vázaný svazky s povoleno uzamčení rozsah bajtů, můžou mít svazek hello online před dokončením hello obnovení. V těchto případech je nutné počkat hello obnovení toobe dokončení.
 
 ## <a name="multiple-arrays"></a>Několik polí
-Několik polí virtuální chtít nasadit na účet pro rostoucí pracovní sadu dat, která by mohla distribuována do cloudu, tak ovlivnit výkon zařízení. V těchto případech je nejvhodnější pro škálování zařízení s růstem pracovní sady. To vyžaduje jeden nebo více zařízení k přidání do místního datového centra. Při přidávání zařízení, může:
+Několik polí virtuální může být nutné nasadit toobe tooaccount pro rostoucí pracovní sadu dat, která by mohla distribuována do cloudu hello tak ovlivnit výkon hello hello zařízení. V těchto případech je nejlepší tooscale zařízení s růstem hello pracovní sady. To vyžaduje jeden nebo více zařízení toobe přidali v hello místního datového centra. Při přidávání hello zařízení, může:
 
-* Rozdělení aktuální sadu dat.
-* Nasazení nových úloh do nového zařízení.
-* Pokud nasazení několik virtuálních polí, doporučujeme, aby ze služby Vyrovnávání zatížení perspektivy, distribuovat do hostitelů hypervisoru jiné pole.
-* Několik virtuálních polí (Pokud je nakonfigurovaný jako souborový server nebo server se službou iSCSI) se dá nasadit v distribuované Namespace systému souborů. Podrobné kroky, přejděte na [distribuované soubor řešení systému Namespace s hybridní cloudové úložiště Deployment Guide](https://www.microsoft.com/download/details.aspx?id=45507). Replikaci distribuovaného systému souborů se aktuálně nedoporučuje pro použití s poli virtuální. 
+* Aktuální rozdělení hello sada data.
+* Nasaďte nové úlohy toonew zařízení.
+* Pokud nasazení několik virtuálních polí, doporučujeme, aby ze služby Vyrovnávání zatížení perspektivy, distribuci hello pole přes hostitele jiný hypervisoru.
+* Několik virtuálních polí (Pokud je nakonfigurovaný jako souborový server nebo server se službou iSCSI) se dá nasadit v distribuované Namespace systému souborů. Podrobný postup je uveden příliš[distribuované soubor řešení systému Namespace s hybridní cloudové úložiště Deployment Guide](https://www.microsoft.com/download/details.aspx?id=45507). Replikaci distribuovaného systému souborů se aktuálně nedoporučuje používat s polem virtuálním hello. 
 
 ## <a name="see-also"></a>Viz také
-Zjistěte, jak [spravovat vaše pole virtuální zařízení StorSimple](storsimple-virtual-array-manager-service-administration.md) přes službu StorSimple Manager.
+Zjistěte, jak příliš[spravovat vaše pole virtuální zařízení StorSimple](storsimple-virtual-array-manager-service-administration.md) prostřednictvím hello služby StorSimple Manager.
 

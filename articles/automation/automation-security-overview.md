@@ -1,6 +1,6 @@
 ---
-title: "Úvod do ověřování ve službě Azure Automation | Dokumentace Microsoftu"
-description: "Tento článek nabízí přehled zabezpečení služby Automation a různé metody ověřování, které jsou dostupné pro účty Automation ve službě Azure Automation."
+title: "aaaIntro tooauthentication ve službě Azure Automation | Microsoft Docs"
+description: "Tento článek obsahuje přehled zabezpečení automatizace a hello různé metody ověřování k dispozici pro účty Automation ve službě Azure Automation."
 services: automation
 documentationcenter: 
 author: MGoedtel
@@ -16,39 +16,39 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2017
 ms.author: magoedte
 ROBOTS: NOINDEX
-ms.openlocfilehash: 91c98f8dda6f24c2db2730a5e0df5ea43e151c61
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4b4409b5be010c16f7bf00a9a0f617e3617d4663
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-authentication-in-azure-automation"></a>Úvod do ověřování ve službě Azure Automation  
-Azure Automation umožňuje automatizovat úlohy s prostředky v Azure, místně a u jiných poskytovatelů cloudu, například Amazon Web Services (AWS).  Aby mohl runbook provádět požadované akce, musí mít oprávnění pro bezpečný přístup k prostředkům s minimálními požadovanými právy v rámci předplatného.
+# <a name="introduction-tooauthentication-in-azure-automation"></a>Úvod tooauthentication ve službě Azure Automation  
+Automatizace Azure umožňuje tooautomate úlohy s prostředky v Azure, místně a u jiných poskytovatelů cloudu, například Amazon Web Services (AWS).  Aby runbook tooperform požadované akce, musí mít oprávnění toosecurely přístup k hello prostředkům s minimálními požadovanými v rámci předplatného hello právy hello.
 
-Tento článek se bude zabývat různými scénáři ověřování, které Azure Automation podporuje, a ukáže vám, jak začít pracovat s ohledem na prostředí, které nebo která potřebujete spravovat.  
+Tento článek se zabývá hello podporují různé scénáře ověřování ve službě Azure Automation a zobrazit, jak začít tooget na základě hello prostředí nebo prostředí budete potřebovat toomanage.  
 
 ## <a name="automation-account-overview"></a>Přehled účtu Automation
-Při prvním spuštění služby Azure Automation vytvořte alespoň jeden účet Automation. Účty Automation umožňují izolovat vaše prostředky Automation (runbooky, assety, konfigurace) od prostředků, které jsou obsažené v jiných účtech Automation. Účty Automation můžete použít k oddělení prostředků do samostatných logických prostředí. Jeden účet můžete například použít pro vývoj, druhý k produkci a další pro svoje místní prostředí.  Účet Azure Automation se liší od účtu Microsoft a účtů vytvořených v rámci vašeho předplatného Azure.
+Při spuštění služby Azure Automation pro hello poprvé, musíte vytvořit alespoň jeden účet Automation. Účty Automation umožňují tooisolate vaše prostředky Automation (runbooky, prostředků, konfigurace) od hello prostředky obsažené v jiných účtech Automation. Můžete vytvořit prostředky tooseparate účty Automation do samostatných logických prostředí. Jeden účet můžete například použít pro vývoj, druhý k produkci a další pro svoje místní prostředí.  Účet Azure Automation se liší od účtu Microsoft a účtů vytvořených v rámci vašeho předplatného Azure.
 
-Prostředky Automation jednotlivých účtů Automation jsou přidružené k jedné oblasti Azure, ale účty Automation mohou spravovat veškeré prostředky v rámci předplatného. Hlavním důvodem k vytvoření účtů Automation v různých oblastech by byla situace, kdy máte zásady, které vyžadují izolaci dat a prostředků v určité oblasti.
+Hello prostředky Automation jednotlivých účtů Automation jsou přidružené k jedné oblasti Azure, ale účty Automation můžou spravovat všechny prostředky hello ve vašem předplatném. Hello hlavním důvodem toocreate účty Automation v různých oblastech by, pokud máte zásady, které vyžadují datům a prostředkům toobe izolované tooa určité oblasti.
 
 > [!NOTE]
-> Účty Automation a v nich obsažené prostředky, které jsou vytvořené pomocí portálu Azure, nemůžete otevírat pomocí portálu Azure Classic. Pokud chcete tyto účty nebo jejich prostředky spravovat pomocí rozhraní Windows PowerShell, použijte moduly Azure Resource Manageru.
+> Účty Automation a hello prostředky, které obsahují jsou vytvořené v hello portálu Azure, nelze získat přístup v hello portál Azure classic. Pokud chcete toomanage tyto účty nebo jejich prostředky pomocí prostředí Windows PowerShell, je nutné použít hello moduly Azure Resource Manageru.
 >
 
-Všechny úlohy, které s prostředky provádíte pomocí správce Azure Resource Manager a rutin Azure ve službě Azure Automation, se musí ověřovat pro službu Azure pomocí ověření na základě přihlašovacích údajů organizační identity v Azure Active Directory.  Ověřování pomocí certifikátů bylo původní metodou ověřování v režimu Azure Service Management, ale jeho instalace byla složitá.  Ověřování v Azure pomocí uživatele Azure AD bylo znovu zavedeno v roce 2014, nejen kvůli zjednodušení procesu konfigurace ověřovacího účtu, ale také kvůli podpoře možnosti neinteraktivního ověření pro Azure pomocí jediného uživatelského účtu, který pracoval s nástrojem Azure Resource Manager a klasickými prostředky.   
+Všechny hello úlohy, které můžete provádět proti prostředků pomocí Azure Resource Manager a hello rutin Azure ve službě Azure Automation musí ověřit tooAzure použití ověřování na základě přihlašovacích údajů organizační identity Azure Active Directory.  Ověřování pomocí certifikátů bylo původní metodou ověřování hello v režimu Azure Service Management, ale byl složitý toosetup.  Ověřování tooAzure pomocí uživatele Azure AD bylo zavedeno v 2014 toonot pouze zjednodušit tooconfigure proces hello účet pro ověřování, ale také možnost podpory hello toonon interaktivně ověření tooAzure pomocí jediného uživatelského účtu, který odpracoval s Azure Resource Manager i klasické prostředky.   
 
-Momentálně, když na portálu Azure vytvoříte nový účet Automation, účet automaticky vytvoří následující:
+Teď, když vytvoříte nový účet služby Automation v hello portálu Azure, automaticky vytvoří:
 
-* Účet Spustit jako, který vytvoří nový objekt služby v Azure Active Directory (certifikát) a přiřadí přispěvateli řízení přístupu na základě rolí (RBAC), které se bude používat ke správě prostředků Resource Managera pomocí runbooků.
-* Účet Spustit jako pro Azure Classic tím, že odešle certifikát správy, který bude použit ke správě služby Azure Service Management nebo klasických prostředků pomocí runbooků.  
+* Účet Spustit jako, který vytvoří nový objekt služby v Azure Active Directory, certifikát a přiřadí hello Přispěvatel přístupu na základě role řízení (RBAC), který bude použit toomanage prostředky Resource Manageru pomocí sad runbook.
+* Classic účet Spustit jako tím, že nahrajete certifikát správy, který bude možné použít toomanage Azure Service Management nebo klasické prostředky pomocí runbooků.  
 
-Řízení přístupu na základě role je dostupné v aplikaci Azure Resource Manager pro udělování povolených akcí na uživatelském účtu služby Azure AD a účtu Spustit jako a ověřování takového objektu služby.  Přečtěte si článek [Řízení přístupu na základě role ve službě Azure Automation](automation-role-based-access-control.md), kde najdete další informace, které vám pomůžou s vývojem vašeho modelu pro správu oprávnění ve službě Automation.  
+Řízení přístupu na základě role je k dispozici s Azure Resource Manager toogrant povolené akce tooan Azure AD uživatelský účet a účet Spustit jako a ověřování takového objektu služby.  Přečtěte si prosím [řízení přístupu na základě Role v Azure Automation článku](automation-role-based-access-control.md) pro další informace o toohelp vývojem vašeho modelu pro správu oprávnění automatizace.  
 
-Runbooky, které běží v procesu Hybrid Runbook Worker ve vašem datovém centru nebo s výpočetními službami v AWS, nemůžou používat stejné metody, které se obvykle používají pro runbooky ověřované pro prostředky Azure.  Důvodem je to, že tyto prostředky jsou spuštěné mimo Azure a budou proto vyžadovat svoje vlastní zabezpečovací přihlašovací údaje definované ve službě Automation, aby se ověřovaly v prostředcích, ke kterým budou přistupovat místně.  
+Runbook spuštěných v Hybrid Runbook Worker ve vašem datovém centru nebo s výpočetními službami v AWS nelze použít hello stejné metody, která se obvykle používá pro ověřování tooAzure prostředky sad runbook.  Je to proto, že tyto prostředky jsou spuštěné mimo Azure a budou proto vyžadovat svoje vlastní zabezpečovací přihlašovací údaje definované v tooresources tooauthenticate automatizace, které budou přistupovat místně.  
 
 ## <a name="authentication-methods"></a>Metody ověřování
-Následující tabulka shrnuje různé metody ověřování pro jednotlivá prostředí podporovaná službou Azure Automation a články popisující, jak nastavit ověřování runbooků.
+Hello následující tabulka shrnuje hello různé metody ověřování pro jednotlivá prostředí podporovaná službou Azure Automation a hello článek popisující, jak toosetup ověřování runbooků.
 
 | Metoda | Prostředí | Článek |
 | --- | --- | --- |

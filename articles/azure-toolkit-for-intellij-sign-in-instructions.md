@@ -1,6 +1,6 @@
 ---
-title: "Přihlášení pokyny pro Azure Toolkit IntelliJ | Microsoft Docs"
-description: "Zjistěte, jak se přihlásit do služby Microsoft Azure pomocí sady nástrojů Azure pro IntelliJ."
+title: aaaSign v pokyny pro hello Azure Toolkit IntelliJ | Microsoft Docs
+description: "Zjistěte, jak hello toosign v tooMicrosoft Azure pomocí Azure Toolkit pro IntelliJ."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,144 +14,144 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: 4e2ed072bdaea0a71fef042c0c72b7656a42bbe8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2de781fc19267cce133b1e6456481497e165fce4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="sign-in-instructions-for-the-azure-toolkit-for-intellij"></a>Přihlášení pokyny pro Azure Toolkit IntelliJ
+# <a name="sign-in-instructions-for-hello-azure-toolkit-for-intellij"></a>Přihlášení pokyny pro hello Azure Toolkit IntelliJ
 
-Sada nástrojů Azure pro IntelliJ nabízí dvě metody pro přihlášení k účtu Azure:
+Hello nástrojů Azure pro IntelliJ nabízí dvě metody pro přihlášení tooyour účet Azure:
 
-  * **Interaktivní**: Zadejte vaše přihlašovací údaje Azure při každém přihlášení k účtu Azure.
-  * **Automatizované**: Vytvořte soubor přihlašovacích údajů, který můžete použít automatické přihlášení k účtu Azure.
+  * **Interaktivní**: zadáte pokaždé, když jste přihlášení pro přihlašovací údaje Azure v tooyour účet Azure.
+  * **Automatizované**: vytvoření souboru přihlašovací údaje používané přihlašovací tooautomatically v tooyour účet Azure.
 
-Následující části popisují způsob použití každé metody.
+Hello následující části popisují, jak toouse každá z metod.
 
 [!INCLUDE [azure-toolkit-for-intellij-prerequisites](../includes/azure-toolkit-for-intellij-prerequisites.md)]
 
-## <a name="sign-in-to-your-azure-account-interactively"></a>Interaktivní přihlášení k účtu Azure
+## <a name="sign-in-tooyour-azure-account-interactively"></a>Interaktivní přihlášení tooyour účet Azure
 
-Přihlaste se k Azure tak, že ručně zadáte vaše přihlašovací údaje Azure, takto:
+toosign v tooAzure ručně zadáním vaše přihlašovací údaje Azure hello následující:
 
 1. Otevřete projekt s IntelliJ IDEA.
 
-2. Klikněte na tlačítko **nástroje**, přejděte na příkaz **Azure**a potom klikněte na **přihlásit k Azure**.
+2. Klikněte na tlačítko **nástroje**, bod příliš**Azure**a potom klikněte na **přihlásit k Azure**.
 
-   ![Příkaz IntelliJ Azure Sign In][I01]
+   ![Hello příkaz IntelliJ Azure Sign In][I01]
 
-3. V **přihlásit k Azure** vyberte **interaktivní**a potom klikněte na **přihlášení**.
+3. V hello **přihlásit k Azure** vyberte **interaktivní**a potom klikněte na **přihlášení**.
 
-   ![Okno Azure přihlásit s interaktivní vybrané][I02]
+   ![Hello přihlásit k Azure okno s interaktivní vybrané][I02]
 
-4. V **přihlásit k Azure** dialogové okno se zobrazí, zadejte přihlašovací údaje Azure a pak klikněte na tlačítko **přihlášení**.
+4. V hello **přihlásit k Azure** dialogové okno se zobrazí, zadejte přihlašovací údaje Azure a pak klikněte na tlačítko **přihlášení**.
 
-   ![Okno dialogovém okně pro přihlášení k Azure][I03]
+   ![Hello Azure přihlášení dialogového okna][I03]
 
-5. V **vyberte odběry** dialogové okno Vyberte předplatné, které chcete použít a pak klikněte na tlačítko **OK**.
+5. V hello **vyberte odběry** dialogové okno, vyberte hello odběry mají toouse a pak klikněte na tlačítko **OK**.
 
-   ![Dialogové okno Vybrat odběrů][I04]
+   ![Dialogové okno Vybrat odběry Hello][I04]
 
 ## <a name="sign-out-of-your-azure-account-after-you-have-signed-in-interactively"></a>Po registraci interaktivním se odhlásit z účtu Azure
 
-Po dokončení konfigurace účtu pomocí předchozího postupu automaticky odhlásíte se z účtu Azure pokaždé, když je restartovat IntelliJ IDEA. Ale pokud se chcete odhlásit z účtu Azure *bez* restartování IntelliJ IDEA, postupujte takto.
+Po dokončení konfigurace účtu pomocí hello předchozích kroků automaticky odhlásíte se z účtu Azure pokaždé, když je restartovat IntelliJ IDEA. Ale pokud chcete toosign mimo účtu Azure *bez* restartování IntelliJ IDEA hello následující.
 
-1. V IntelliJ IDEA na **nástroje** nabídky, přejděte na příkaz **Azure**a potom klikněte na **Azure Odhlásit**.
+1. V IntelliJ IDEA na hello **nástroje** nabídce bodu příliš**Azure**a potom klikněte na **Azure Odhlásit**.
 
-   ![Příkaz IntelliJ Azure odhlásit][L01]
+   ![Hello IntelliJ Azure přihlašovací Vystoupením – příkaz][L01]
 
-2. V **Azure Odhlásit** okno pro potvrzení, klikněte na tlačítko **Ano**.
+2. V hello **Azure Odhlásit** okno pro potvrzení, klikněte na tlačítko **Ano**.
 
-   ![Okno potvrzení Azure odhlásit][L02]
+   ![Hello Azure odhlásit potvrzovacím okně][L02]
 
-## <a name="sign-in-to-your-azure-account-automatically"></a>Přihlaste se k účtu Azure automaticky
+## <a name="sign-in-tooyour-azure-account-automatically"></a>Automaticky přihlásit tooyour účet Azure
 
-Tato část vás provede procesem vytváření pověření souboru, který obsahuje hlavní data služby. Po dokončení tohoto procesu se používá Eclipse automaticky pro přihlášení do Azure při každém otevření projektu soubor s přihlašovacími údaji.
+Tato část vás provede procesem vytváření pověření souboru, který obsahuje hlavní data služby. Po dokončení tohoto procesu, otevřete prostředí Eclipse používá hello přihlašovací údaje souboru tooautomatically přihlášení, že v každém tooAzure času jste projekt.
 
 1. Otevřete projekt s IntelliJ IDEA.
 
-2. Na **nástroje** nabídky, přejděte na příkaz **Azure**a potom klikněte na **přihlásit k Azure**.
+2. Na hello **nástroje** nabídce bodu příliš**Azure**a potom klikněte na **přihlásit k Azure**.
 
-   ![Příkaz IntelliJ Azure Sign In][A01]
+   ![Hello příkaz IntelliJ Azure Sign In][A01]
 
-3. V **přihlásit k Azure** vyberte **automatizovaná**a potom klikněte na **nový**.
+3. V hello **přihlásit k Azure** vyberte **automatizovaná**a potom klikněte na **nový**.
 
-   ![Okno Azure přihlásit s automatizovaná vybrané][A02]
+   ![Hello přihlásit k Azure okno s automatizovaná vybrané][A02]
 
-4. V **dialogovém okně pro přihlášení k Azure** okno, zadejte přihlašovací údaje Azure a pak klikněte na tlačítko **přihlášení**.
+4. V hello **dialogovém okně pro přihlášení k Azure** okno, zadejte přihlašovací údaje Azure a pak klikněte na tlačítko **přihlášení**.
 
-   ![Okno dialogovém okně pro přihlášení k Azure][A03]
+   ![Hello Azure přihlášení dialogového okna][A03]
 
-5. V **vytvářet soubory ověřování** okně vyberte předplatné, které chcete použít, vyberte cílový adresář a pak klikněte na tlačítko **spustit**.
+5. V hello **vytvářet soubory ověřování** okno, vyberte hello odběry mají toouse, vyberte cílový adresář a pak klikněte na tlačítko **spustit**.
 
-   ![Okno vytvořit soubory ověřování][A04]
+   ![okno vytvořit soubory ověřování Hello][A04]
 
-6. V **stav vytváření objektu služby** dialogové okno, jakmile vaše soubory byly úspěšně vytvořeny, klikněte na tlačítko **OK**.
+6. V hello **stav vytváření objektu služby** dialogové okno, jakmile vaše soubory byly úspěšně vytvořeny, klikněte na tlačítko **OK**.
 
-   ![Dialogové okno Stav vytvoření instančního objektu][A05]
+   ![Hello dialogové okno Stav vytvoření instančního objektu][A05]
 
-7. V **přihlásit k Azure** okně klikněte na tlačítko **přihlášení**.
+7. V hello **přihlásit k Azure** okně klikněte na tlačítko **přihlášení**.
 
    ![Dialogové okno Přihlášení do Azure][A06]
 
-8. V **vyberte odběry** dialogové okno Vyberte předplatné, které chcete použít a pak klikněte na tlačítko **OK**.
+8. V hello **vyberte odběry** dialogové okno, vyberte hello odběry mají toouse a pak klikněte na tlačítko **OK**.
 
-   ![Dialogové okno Vybrat odběrů][A07]
+   ![Dialogové okno Vybrat odběry Hello][A07]
 
 ## <a name="sign-out-of-your-azure-account-after-you-have-signed-in-automatically"></a>Po přihlášení automaticky se odhlásit z účtu Azure
 
-Po dokončení konfigurace účtu pomocí předchozího postupu nástrojů Azure automaticky přihlásí můžete ke svému účtu Azure pokaždé, když je restartovat IntelliJ IDEA. Ale pokud chcete odhlásit z účtu Azure a zabránit automatickému přihlašování nástrojů Azure, postupujte takto:
+Po dokončení konfigurace účtu pomocí hello předchozích kroků hello nástrojů Azure automaticky přihlašovat při tooyour pokaždé, když je restartovat IntelliJ IDEA účet Azure. Ale toosign mimo účtu Azure a zabránit hello nástrojů Azure z vás přihlásit automaticky, hello následující:
 
-1. V IntelliJ IDEA na **nástroje** nabídky, přejděte na příkaz **Azure**a potom klikněte na **Azure Odhlásit**.
+1. V IntelliJ IDEA na hello **nástroje** nabídce bodu příliš**Azure**a potom klikněte na **Azure Odhlásit**.
 
-   ![Příkaz IntelliJ Azure odhlásit][L01]
+   ![Hello IntelliJ Azure přihlašovací Vystoupením – příkaz][L01]
 
-2. V **Azure Odhlásit** okno pro potvrzení, klikněte na tlačítko **Ano**.
+2. V hello **Azure Odhlásit** okno pro potvrzení, klikněte na tlačítko **Ano**.
 
-   ![Okno potvrzení Azure odhlásit][L03]
+   ![Hello Azure odhlásit potvrzovacím okně][L03]
 
-## <a name="sign-in-to-your-azure-account-automatically-by-using-an-existing-credentials-file"></a>Přihlásit k účtu Azure automaticky pomocí existující soubor přihlašovacích údajů
+## <a name="sign-in-tooyour-azure-account-automatically-by-using-an-existing-credentials-file"></a>Přihlaste se tooyour účtu Azure automaticky pomocí existující soubor přihlašovacích údajů
 
-Pokud podepíšete mimo účtu Azure, když používáte IntelliJ IDEA, musíte použít existující soubor přihlašovacích údajů se automaticky znovu přihlásit k účtu. Konfigurace sady nástrojů Azure pro prostředí Eclipse, aby používal existující soubor přihlašovacích údajů, postupujte takto:
+Pokud podepíšete mimo účtu Azure, když používáte IntelliJ IDEA, je nutné použít symbolem tooautomatically existující soubor přihlašovacích údajů zpět v toohello účtu. tooconfigure hello Azure Toolkit pro Eclipse toouse existující soubor přihlašovacích údajů, hello následující:
 
 1. Otevřete projekt s IntelliJ IDEA.
 
-2. Na **nástroje** nabídky, přejděte na příkaz **Azure**a potom klikněte na **přihlásit k Azure**.
+2. Na hello **nástroje** nabídce bodu příliš**Azure**a potom klikněte na **přihlásit k Azure**.
 
-   ![Příkaz IntelliJ Azure Sign In][A01]
+   ![Hello příkaz IntelliJ Azure Sign In][A01]
 
-3. V **přihlásit k Azure** vyberte **automatizovaná**a potom klikněte na **Procházet**.
+3. V hello **přihlásit k Azure** vyberte **automatizovaná**a potom klikněte na **Procházet**.
 
-   ![Okno Azure přihlásit s automatizovaná vybrané][A02]
+   ![Hello přihlásit k Azure okno s automatizovaná vybrané][A02]
 
-4. V **vyberte soubor pro ověření** dialogové okno, vyberte soubor dříve vytvořenou přihlašovací údaje a pak klikněte na tlačítko **vyberte**.
+4. V hello **vyberte soubor pro ověření** dialogové okno, vyberte soubor dříve vytvořenou přihlašovací údaje a pak klikněte na tlačítko **vyberte**.
 
-   ![Vyberte soubor pro ověření dialogových oken][A08]
+   ![Dialogové okno Vybrat soubor pro ověření Hello][A08]
 
-5. V **přihlásit k Azure** okně klikněte na tlačítko **přihlášení**.
+5. V hello **přihlásit k Azure** okně klikněte na tlačítko **přihlášení**.
 
-   ![Okno Azure přihlásit s automatizovaná vybrané][A06]
+   ![Hello přihlásit k Azure okno s automatizovaná vybrané][A06]
 
-6. V **vyberte odběry** dialogové okno Vyberte předplatné, které chcete použít a pak klikněte na tlačítko **OK**.
+6. V hello **vyberte odběry** dialogové okno, vyberte hello odběry mají toouse a pak klikněte na tlačítko **OK**.
 
-   ![Dialogové okno Vybrat odběrů][A07]
+   ![Dialogové okno Vybrat odběry Hello][A07]
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o sadách Azure Toolkit pro integrovaná vývojová prostředí pro Javu najdete na následujících odkazech:
+Další informace o hello sadách Azure pro integrovaného vývojového prostředí Java najdete v tématu hello následující odkazy:
 
 * [Azure nástrojů pro Eclipse]
-  * [Co je nového v sadě nástrojů Azure pro Eclipse]
-  * [Instalace sady Azure Toolkit pro Eclipse]
-  * [Pokyny přihlášení k Azure nástrojů pro Eclipse]
+  * [Co je nového v hello nástrojů Azure pro Eclipse]
+  * [Instalace hello nástrojů Azure pro Eclipse]
+  * [Přihlášení pokyny pro hello nástrojů Azure pro Eclipse]
   * [Vytvoření webové aplikace Hello World služby Azure v prostředí Eclipse]
 * [Sada Azure Toolkit pro IntelliJ]
-  * [Co je nového v sadě nástrojů Azure pro IntelliJ]
-  * [Instalace sady Azure Toolkit pro IntelliJ]
-  * *Přihlášení pokyny pro Azure Toolkit IntelliJ* (v tomto článku)
+  * [Co je nového v hello nástrojů Azure pro IntelliJ]
+  * [Instalace hello Azure Toolkit pro IntelliJ]
+  * *Přihlášení pokyny pro hello Azure Toolkit IntelliJ* (v tomto článku)
   * [Vytvoření webové aplikace Hello World pro systém Azure v rámci IntelliJ]
 
-Další informace o používání Javy v Azure najdete na webu [Středisko pro vývojáře Java] a [Java Tools for Visual Studio Team Services] (Nástroje Java pro Visual Studio Team Services).
+Další informace o používání Azure v jazyce Java, najdete v tématu hello [Azure střediska pro vývojáře Java] a hello [Java nástrojů pro Visual Studio Team Services].
 
 <!-- URL List -->
 
@@ -159,15 +159,15 @@ Další informace o používání Javy v Azure najdete na webu [Středisko pro v
 [Sada Azure Toolkit pro IntelliJ]: ./azure-toolkit-for-intellij.md
 [Vytvoření webové aplikace Hello World pro Azure v prostředí Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
 [Vytvoření webové aplikace Hello World pro systém Azure v rámci IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
-[Instalace sady Azure Toolkit pro Eclipse]: ./azure-toolkit-for-eclipse-installation.md
-[Instalace sady Azure Toolkit pro IntelliJ]: ./azure-toolkit-for-intellij-installation.md
-[Pokyny přihlášení k Azure nástrojů pro Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
-[Sign-in instructions for the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
-[Co je nového v sadě nástrojů Azure pro Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
-[Co je nového v sadě nástrojů Azure pro IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
+[Instalace hello nástrojů Azure pro Eclipse]: ./azure-toolkit-for-eclipse-installation.md
+[Instalace hello Azure Toolkit pro IntelliJ]: ./azure-toolkit-for-intellij-installation.md
+[Přihlášení pokyny pro hello nástrojů Azure pro Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[Sign-in instructions for hello Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
+[Co je nového v hello nástrojů Azure pro Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
+[Co je nového v hello nástrojů Azure pro IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
-[Středisko pro vývojáře Java]: https://azure.microsoft.com/develop/java/
-[Java Tools for Visual Studio Team Services]: https://java.visualstudio.com/
+[Azure středisko pro vývojáře v jazyce Java]: https://azure.microsoft.com/develop/java/
+[Java nástrojů pro Visual Studio Team Services]: https://java.visualstudio.com/
 
 <!-- IMG List -->
 

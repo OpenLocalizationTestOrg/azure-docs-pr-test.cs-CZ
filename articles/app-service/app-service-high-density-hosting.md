@@ -1,5 +1,5 @@
 ---
-title: "S vysokou hustotou hostování na Azure App Service | Microsoft Docs"
+title: "aaaHigh hustotu hostování na Azure App Service | Microsoft Docs"
 description: "S vysokou hustotou hostování na Azure App Service"
 author: btardif
 manager: erikre
@@ -14,28 +14,28 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: byvinyal
-ms.openlocfilehash: 459a310a719695f6366470976d857ec2f9d6f4a1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a10cb81ace13ba6992b572a44361061ecf72b266
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="high-density-hosting-on-azure-app-service"></a>S vysokou hustotou hostování na Azure App Service
-Při používání služby App Service, odpojené od kapacitu přidělených dvěma konceptů aplikace:
+Při používání služby App Service, odpojené od hello kapacity přidělené tooit dvěma konceptů aplikace:
 
-* **Aplikace:** představuje aplikace a jeho konfigurace modulu runtime. Například obsahuje verze rozhraní .NET, která by se měly načíst modul runtime, nastavení aplikace.
-* **Plán služby App Service:** definuje vlastnosti kapacitu, sada k dispozici funkcí a polohu aplikace. Charakteristiky může být například velký počítač (4 jádra), čtyři instancí, prémiové funkce v oblasti Východ USA.
+* **Hello aplikace:** představuje hello aplikace a jeho konfigurace modulu runtime. Například obsahuje hello by se měly načíst verzi rozhraní .NET, která hello runtime, nastavení aplikace hello.
+* **Plán služby App Service Hello:** definuje vlastnosti hello hello kapacitu, sada k dispozici funkcí a polohu aplikace hello. Charakteristiky může být například velký počítač (4 jádra), čtyři instancí, prémiové funkce v oblasti Východ USA.
 
-Aplikace je vždy spojen plán služby App Service, ale plán služby App Service může poskytnout dostatečnou kapacitu pro jednu nebo více aplikací.
+Aplikace je vždy propojené tooan plán služby App Service, ale plán služby App Service můžete poskytovat tooone kapacity nebo další aplikace.
 
-V důsledku toho platformou poskytuje možnost izolovat aplikace na jeden nebo více aplikacemi sdílet prostředky sdílením plán služby App Service.
+V důsledku toho hello platforma poskytuje flexibilitu tooisolate hello jenom jedna aplikace nebo mít víc aplikací sdílení prostředků ve sdílení plán služby App Service.
 
 Ale při více aplikací sdílet plán služby App Service, instance této aplikace běží na všechny instance tohoto plánu služby App Service.
 
 ## <a name="per-app-scaling"></a>Pokud na škálování aplikace
 *Pokud na škálování aplikace* je funkce, která může být povolena na úrovni plán služby App Service a pak se použije na aplikaci.
 
-Jednotlivé aplikace škáluje škálování aplikace nezávisle plán služby App Service, který je hostitelem ho. Tímto způsobem plán služby App Service můžete škálovat na 10 instancí, ale aplikace může být nastaven na použití pouze pěti.
+Jednotlivé aplikace škáluje škálování aplikace nezávisle plán služby App Service, který je hostitelem ho. Tímto způsobem aplikační službu plán lze škálovat instance too10, ale aplikace lze nastavit pouze pět toouse.
 
    >[!NOTE]
    >Jednotlivé aplikace škálování je dostupná jenom pro **Premium** plánů služby App Service SKU
@@ -43,7 +43,7 @@ Jednotlivé aplikace škáluje škálování aplikace nezávisle plán služby A
 
 ### <a name="per-app-scaling-using-powershell"></a>Jednotlivé aplikace příjmu pomocí Powershellu
 
-Můžete vytvořit plán nakonfigurovaný jako *za škálování aplikace* plán předáním v ```-perSiteScaling $true``` atribut ```New-AzureRmAppServicePlan``` PowerShell.
+Můžete vytvořit plán nakonfigurovaný jako *za škálování aplikace* plán předáním v hello ```-perSiteScaling $true``` atribut toohello ```New-AzureRmAppServicePlan``` PowerShell.
 
 ```
 New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
@@ -52,51 +52,51 @@ New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePla
                             -NumberofWorkers 5 -PerSiteScaling $true
 ```
 
-Pokud chcete aktualizovat existující plán služby App Service k použití této funkce: 
+Pokud chcete, aby tooupdate stávající službu App Service plánování toouse této funkce: 
 
-- získat plán cíl```Get-AzureRmAppServicePlan```
-- Úprava vlastností místně```$newASP.PerSiteScaling = $true```
-- uložení změn zpět do azure```Set-AzureRmAppServicePlan``` 
+- získat hello cílový plán```Get-AzureRmAppServicePlan```
+- Úprava vlastností hello místně```$newASP.PerSiteScaling = $true```
+- publikování vaši tooazure zpět změny```Set-AzureRmAppServicePlan``` 
 
 ```
-# Get the new App Service Plan and modify the "PerSiteScaling" property.
+# Get hello new App Service Plan and modify hello "PerSiteScaling" property.
 $newASP = Get-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan
 $newASP
 
-#Modify the local copy to use "PerSiteScaling" property.
+#Modify hello local copy toouse "PerSiteScaling" property.
 $newASP.PerSiteScaling = $true
 $newASP
     
-#Post updated app service plan back to azure
+#Post updated app service plan back tooazure
 Set-AzureRmAppServicePlan $newASP
 ```
 
-Na úrovni aplikace je potřeba nakonfigurovat počet instancí, které aplikace můžete používat v plánu služby app service.
+Na úrovni aplikace hello potřebujeme tooconfigure hello počet instancí, které aplikace hello můžete používat v hello plán služby app service.
 
-V následujícím příkladu je omezený na dvě instance bez ohledu na to, kolik instancí základní plán služby app service horizontálně navýší kapacitu pro aplikaci.
+V níže uvedeném příkladu hello aplikace hello je omezená tootwo instance bez ohledu na to, kolik instancí hello základní aplikace služby plán měřítka se k.
 
 ```
-# Get the app we want to configure to use "PerSiteScaling"
+# Get hello app we want tooconfigure toouse "PerSiteScaling"
 $newapp = Get-AzureRmWebApp -ResourceGroupName $ResourceGroup -Name $webapp
     
-# Modify the NumberOfWorkers setting to the desired value.
+# Modify hello NumberOfWorkers setting toohello desired value.
 $newapp.SiteConfig.NumberOfWorkers = 2
     
-# Post updated app back to azure
+# Post updated app back tooazure
 Set-AzureRmWebApp $newapp
 ```
 
 > [!IMPORTANT]
-> $newapp. SiteConfig.NumberOfWorkers je různá $newapp. MaxNumberOfWorkers. Jednotlivé aplikace používá škálování $newapp. SiteConfig.NumberOfWorkers k určení charakteristik škálování aplikace.
+> $newapp. SiteConfig.NumberOfWorkers je různá $newapp. MaxNumberOfWorkers. Jednotlivé aplikace používá škálování $newapp. SiteConfig.NumberOfWorkers toodetermine hello škálování charakteristiky aplikace hello.
 
 ### <a name="per-app-scaling-using-azure-resource-manager"></a>Pokud na škálování aplikace pomocí Azure Resource Manager
 
-Následující *šablony Azure Resource Manageru* vytvoří:
+Následující Hello *šablony Azure Resource Manageru* vytvoří:
 
-- Plán služby App Service, která je škálovat na 10 instancí
-- aplikace, který je nakonfigurovaný škálování na maximální pět instancí.
+- Plán služby App Service, která je škálovat na více systémů too10 instancí
+- aplikace, který byl nakonfigurován tooscale tooa maximálně pět instancí.
 
-Plán služby App Service se nastaví **PerSiteScaling** vlastnost na hodnotu true ```"perSiteScaling": true```. Aplikace se nastaví **počet pracovních procesů** sloužící k 5 ```"properties": { "numberOfWorkers": "5" }```.
+Hello plán služby App Service je nastavení hello **PerSiteScaling** tootrue vlastnost ```"perSiteScaling": true```. aplikace Hello je nastavení hello **počet pracovních procesů** toouse too5 ```"properties": { "numberOfWorkers": "5" }```.
 
 ```
 {
@@ -146,19 +146,19 @@ Plán služby App Service se nastaví **PerSiteScaling** vlastnost na hodnotu tr
 ```
 
 ## <a name="recommended-configuration-for-high-density-hosting"></a>Doporučenou konfiguraci pro hostování s vysokou hustotou
-Za škálování aplikace je funkce, která je povolena v globální oblastí Azure a prostředí App Service. Doporučená strategie je však používat prostředí App Service k využívat jejich pokročilých funkcí a větší fondy kapacity.  
+Za škálování aplikace je funkce, která je povolena v globální oblastí Azure a prostředí App Service. Ale hello doporučoval strategie je použití prostředí App Service tootake výhod jejich pokročilých funkcí a větší fondy hello kapacity.  
 
-Postupujte podle těchto kroků nakonfigurujete vysokou hustotou hostování pro vaše aplikace:
+Postupujte podle těchto kroků tooconfigure s vysokou hustotou hostování pro vaše aplikace:
 
-1. Konfigurace služby App Service Environment a vyberte fond pracovních procesů, který je vyhrazen pro hostování scénáři s vysokou hustotou.
-1. Vytvoření jednoho plánu služby App Service a škálujte ji používat všechny dostupné kapacity ve fondu pracovních procesů.
-1. Nastavte příznak PerSiteScaling plán aplikační služby na hodnotu true.
-1. Nové aplikace jsou vytvořeny a přiřazené plán služby App Service pomocí **numberOfWorkers** vlastnost nastavena na hodnotu **1**. Pomocí této konfigurace poskytuje nejvyšší hustotou možné u tohoto fondu pracovního procesu.
-1. Počet pracovních procesů může být nakonfigurováno nezávisle na aplikaci podle potřeby udělovat další prostředky. Například:
-    - Můžete nastavit aplikaci intenzivně využívaných **numberOfWorkers** k **3** tak, aby měl větší kapacitu zpracování pro tuto aplikaci. 
-    - Nízká použití aplikace se nastavuje **numberOfWorkers** k **1**.
+1. Nakonfigurujte hello App Service Environment a vyberte fond pracovních procesů, který je vyhrazený toohello hustotou hostování scénář.
+1. Vytvoření jednoho plánu služby App Service a škálování ho toouse všechny hello dostupné kapacity ve fondu pracovních procesů hello.
+1. Nastavte hello PerSiteScaling příznak tootrue hello plán služby App Service.
+1. Nové aplikace jsou vytvořeny a přiřazeny toothat plán služby App Service pomocí **numberOfWorkers** vlastností nastavenou příliš**1**. Pomocí této konfigurace vypočítá hello nejvyšší hustotou možné u tohoto fondu pracovního procesu.
+1. Hello počet pracovních procesů lze nakonfigurovat nezávisle na aplikaci toogrant další prostředky podle potřeby. Například:
+    - Můžete nastavit aplikaci intenzivně využívaných **numberOfWorkers** příliš**3** toohave další zpracování kapacity pro tuto aplikaci. 
+    - Nízká použití aplikace se nastavuje **numberOfWorkers** příliš**1**.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Podrobný přehled plánů služby Azure App Service](azure-web-sites-web-hosting-plans-in-depth-overview.md)
-- [Úvod do prostředí App Service](../app-service-web/app-service-app-service-environment-intro.md)
+- [Úvod tooApp Service Environment](../app-service-web/app-service-app-service-environment-intro.md)

@@ -1,5 +1,5 @@
 ---
-title: "Auditování a vytváření sestav služby Azure Active Directory s B2B spolupráce uživatele | Microsoft Docs"
+title: "aaaAuditing a vytváření sestav služby Azure Active Directory s B2B spolupráce uživatele | Microsoft Docs"
 description: "Vlastnosti uživatele Guest se dají konfigurovat v spolupráce Azure Active Directory s B2B"
 services: active-directory
 documentationcenter: 
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 04/12/2017
 ms.author: sasubram
-ms.openlocfilehash: ba782270f3280e52235bc13148d232284b55762a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 24ee5f7a2e9585a5edcdd795ec0ffc7124756c11
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Auditování a vytváření sestav uživatele spolupráce B2B
-Uživatele typu Host máte auditování podobné možnosti jako s uživateli člen. Tady je příklad pozvánky a uplatnění historii pozvaný Sam Oogle:
+Uživatele typu Host máte auditování funkcí podobných toowith člen uživatelů. Tady je příklad hello pozvánky a uplatnění historii pozvaný Sam Oogle:
 
 ![Protokol auditování](./media/active-directory-b2b-auditing-and-reporting/audit-log.png)
 
-Můžete podrobně každou z těchto událostí získat podrobnosti. Například podíváme se na podrobnosti o přijetí.
+Můžete podrobně každou z těchto událostí tooget hello podrobnosti. Například podíváme se na podrobnosti přijetí hello.
 
 ![Podrobnosti o aktivitě](./media/active-directory-b2b-auditing-and-reporting/activity-details.png)
 
-Můžete také exportovat tyto protokoly z Azure AD a používat nástroj pro vytváření sestav podle svého výběru k získání přizpůsobených sestav.
+Tyto protokoly můžete také exportovat z Azure AD a použijte nástroj pro vytváření sestav hello z vaše volba tooget přizpůsobené sestavy.
 
 ### <a name="next-steps"></a>Další kroky
 
@@ -38,7 +38,7 @@ Projděte si naše další články ohledně spolupráce B2B ve službě Azure A
 
 * [Co je spolupráce B2B ve službě Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Vlastnosti uživatele spolupráce B2B](active-directory-b2b-user-properties.md)
-* [Přidání uživatele spolupráce B2B k roli](active-directory-b2b-add-guest-to-role.md)
+* [Přidání role uživatele tooa spolupráce B2B](active-directory-b2b-add-guest-to-role.md)
 * [Delegovat pozvánek B2bB spolupráce](active-directory-b2b-delegate-invitations.md)
 * [Dynamické skupiny a spolupráci B2B](active-directory-b2b-dynamic-groups.md)
 * [Kód spolupráce B2B a ukázky prostředí PowerShell](active-directory-b2b-code-samples.md)
