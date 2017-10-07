@@ -1,6 +1,6 @@
 ---
-title: "Správa Azure Data Lake Analytics pomocí sady Azure Java SDK | Microsoft Docs"
-description: "Použití sady Java SDK Azure Data Lake Analytics k vývoji aplikací"
+title: "aaaManage Azure Data Lake Analytics pomocí Azure Java SDK | Microsoft Docs"
+description: "Použití sady Java SDK Azure Data Lake Analytics toodevelop aplikace"
 services: data-lake-analytics
 documentationcenter: 
 author: matt1883
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: saveenr
-ms.openlocfilehash: 8a0c1c7aab89f3bb62d0eb9f42e8ac65309d617e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 79e5fa1bacd5fd65072a1c3c480482a8e51d94b6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage--azure-data-lake-analytics-using-java-sdk"></a><span data-ttu-id="40397-103">Správa Azure Data Lake Analytics pomocí sady Java SDK</span><span class="sxs-lookup"><span data-stu-id="40397-103">Manage  Azure Data Lake Analytics using Java SDK</span></span>
+# <a name="manage--azure-data-lake-analytics-using-java-sdk"></a><span data-ttu-id="ddca1-103">Správa Azure Data Lake Analytics pomocí sady Java SDK</span><span class="sxs-lookup"><span data-stu-id="ddca1-103">Manage  Azure Data Lake Analytics using Java SDK</span></span>
 
-<span data-ttu-id="40397-104">V tomto kurzu budete vyvíjet konzolovou aplikaci Java, která provádí běžných operací pro Azure Data Lake.</span><span class="sxs-lookup"><span data-stu-id="40397-104">In this tutorial, you develop a Java console application that performs common operations for Azure Data Lake.</span></span>
+<span data-ttu-id="ddca1-104">V tomto kurzu budete vyvíjet konzolovou aplikaci Java, která provádí běžných operací pro Azure Data Lake.</span><span class="sxs-lookup"><span data-stu-id="ddca1-104">In this tutorial, you develop a Java console application that performs common operations for Azure Data Lake.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="40397-105">Požadavky</span><span class="sxs-lookup"><span data-stu-id="40397-105">Prerequisites</span></span>
-* <span data-ttu-id="40397-106">**Java Development Kit (JDK) 8** (využívající jazyk Java verze 1.8).</span><span class="sxs-lookup"><span data-stu-id="40397-106">**Java Development Kit (JDK) 8** (using Java version 1.8).</span></span>
-* <span data-ttu-id="40397-107">**IntelliJ** nebo jiné vhodné vývojové prostředí Java.</span><span class="sxs-lookup"><span data-stu-id="40397-107">**IntelliJ** or another suitable Java development environment.</span></span> <span data-ttu-id="40397-108">Pokyny v tomto dokumentu používají IntelliJ.</span><span class="sxs-lookup"><span data-stu-id="40397-108">The instructions in this document use IntelliJ.</span></span>
-* <span data-ttu-id="40397-109">Vytvoření aplikace Azure Active Directory (AAD) a načtení **ID klienta**, **ID tenanta**, a **Klíče**.</span><span class="sxs-lookup"><span data-stu-id="40397-109">Create an Azure Active Directory (AAD) application and retrieve its **Client ID**, **Tenant ID**, and **Key**.</span></span> <span data-ttu-id="40397-110">Další informace o aplikacích AAD a pokyny k získání ID klienta naleznete v tématu [Vytvoření aplikace Active Directory a objektu služby pomocí portálu](../azure-resource-manager/resource-group-create-service-principal-portal.md).</span><span class="sxs-lookup"><span data-stu-id="40397-110">For more information about AAD applications and instructions on how to get a client ID, see [Create Active Directory application and service principal using portal](../azure-resource-manager/resource-group-create-service-principal-portal.md).</span></span> <span data-ttu-id="40397-111">Reply URI a klíč je dostupná z portálu, jakmile je aplikace vytvořené a generování klíče.</span><span class="sxs-lookup"><span data-stu-id="40397-111">The Reply URI and Key is available from the portal once you have the application created and key generated.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="ddca1-105">Požadavky</span><span class="sxs-lookup"><span data-stu-id="ddca1-105">Prerequisites</span></span>
+* <span data-ttu-id="ddca1-106">**Java Development Kit (JDK) 8** (využívající jazyk Java verze 1.8).</span><span class="sxs-lookup"><span data-stu-id="ddca1-106">**Java Development Kit (JDK) 8** (using Java version 1.8).</span></span>
+* <span data-ttu-id="ddca1-107">**IntelliJ** nebo jiné vhodné vývojové prostředí Java.</span><span class="sxs-lookup"><span data-stu-id="ddca1-107">**IntelliJ** or another suitable Java development environment.</span></span> <span data-ttu-id="ddca1-108">Hello pokyny v tomto dokumentu používají IntelliJ.</span><span class="sxs-lookup"><span data-stu-id="ddca1-108">hello instructions in this document use IntelliJ.</span></span>
+* <span data-ttu-id="ddca1-109">Vytvoření aplikace Azure Active Directory (AAD) a načtení **ID klienta**, **ID tenanta**, a **Klíče**.</span><span class="sxs-lookup"><span data-stu-id="ddca1-109">Create an Azure Active Directory (AAD) application and retrieve its **Client ID**, **Tenant ID**, and **Key**.</span></span> <span data-ttu-id="ddca1-110">Další informace o AAD aplikace a pokyny o tom, najdete v části tooget ID klienta, [vytvoření aplikace Active Directory a objektu zabezpečení pomocí portálu](../azure-resource-manager/resource-group-create-service-principal-portal.md).</span><span class="sxs-lookup"><span data-stu-id="ddca1-110">For more information about AAD applications and instructions on how tooget a client ID, see [Create Active Directory application and service principal using portal](../azure-resource-manager/resource-group-create-service-principal-portal.md).</span></span> <span data-ttu-id="ddca1-111">až budete mít hello aplikace vytvořené a generování klíče, je dostupná z portálu, hello Hello Reply URI a klíč.</span><span class="sxs-lookup"><span data-stu-id="ddca1-111">hello Reply URI and Key is available from hello portal once you have hello application created and key generated.</span></span>
 
-## <a name="authenticating-using-azure-active-directory"></a><span data-ttu-id="40397-112">Ověřování pomocí služby Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="40397-112">Authenticating using Azure Active Directory</span></span>
+## <a name="authenticating-using-azure-active-directory"></a><span data-ttu-id="ddca1-112">Ověřování pomocí služby Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="ddca1-112">Authenticating using Azure Active Directory</span></span>
 
-<span data-ttu-id="40397-113">Následující fragment kódu obsahuje kód pro kód **neinteraktivní** ověřování, kdy aplikace poskytuje svoje vlastní přihlašovací údaje.</span><span class="sxs-lookup"><span data-stu-id="40397-113">The code following snippet provides code for **non-interactive** authentication, where the application provides its own credentials.</span></span>
+<span data-ttu-id="ddca1-113">Následující fragment kódu obsahuje kód pro kód Hello **neinteraktivní** ověřování, kde hello aplikace poskytuje svoje vlastní přihlašovací údaje.</span><span class="sxs-lookup"><span data-stu-id="ddca1-113">hello code following snippet provides code for **non-interactive** authentication, where hello application provides its own credentials.</span></span>
 
-## <a name="create-a-java-application"></a><span data-ttu-id="40397-114">Vytvoření aplikace Java</span><span class="sxs-lookup"><span data-stu-id="40397-114">Create a Java application</span></span>
-1. <span data-ttu-id="40397-115">Otevřete IntelliJ a vytvoření projektu Java pomocí **aplikace příkazového řádku** šablony.</span><span class="sxs-lookup"><span data-stu-id="40397-115">Open IntelliJ and create a Java project using the **Command-Line App** template.</span></span>
-2. <span data-ttu-id="40397-116">Klikněte pravým tlačítkem na projekt na levé straně obrazovky a klikněte na možnost **Přidat podporu architektury**.</span><span class="sxs-lookup"><span data-stu-id="40397-116">Right-click on the project on the left-hand side of your screen and click **Add Framework Support**.</span></span> <span data-ttu-id="40397-117">Vyberte možnost **Maven** a klikněte na tlačítko **OK**.</span><span class="sxs-lookup"><span data-stu-id="40397-117">Choose **Maven** and click **OK**.</span></span>
-3. <span data-ttu-id="40397-118">Otevřete nově vytvořený soubor **pom.xml** a mezi značky **\</version>** a **\</project>** přidejte následující fragment textu:</span><span class="sxs-lookup"><span data-stu-id="40397-118">Open the newly created **"pom.xml"** file and add the following snippet of text between the **\</version>** tag and the **\</project>** tag:</span></span>
+## <a name="create-a-java-application"></a><span data-ttu-id="ddca1-114">Vytvoření aplikace Java</span><span class="sxs-lookup"><span data-stu-id="ddca1-114">Create a Java application</span></span>
+1. <span data-ttu-id="ddca1-115">Otevřete IntelliJ a vytvoření projektu Java pomocí hello **aplikace příkazového řádku** šablony.</span><span class="sxs-lookup"><span data-stu-id="ddca1-115">Open IntelliJ and create a Java project using hello **Command-Line App** template.</span></span>
+2. <span data-ttu-id="ddca1-116">Klikněte pravým tlačítkem na projekt hello na hello levé straně obrazovky a klikněte na tlačítko **přidat podporu architektury**.</span><span class="sxs-lookup"><span data-stu-id="ddca1-116">Right-click on hello project on hello left-hand side of your screen and click **Add Framework Support**.</span></span> <span data-ttu-id="ddca1-117">Vyberte možnost **Maven** a klikněte na tlačítko **OK**.</span><span class="sxs-lookup"><span data-stu-id="ddca1-117">Choose **Maven** and click **OK**.</span></span>
+3. <span data-ttu-id="ddca1-118">Otevřete hello nově vytvořený **"pom.xml"** souboru a přidejte následující fragment textu mezi hello hello  **\</version >** značky a hello  **\< /project >** značky:</span><span class="sxs-lookup"><span data-stu-id="ddca1-118">Open hello newly created **"pom.xml"** file and add hello following snippet of text between hello **\</version>** tag and hello **\</project>** tag:</span></span>
 
 ```
 <repositories>
@@ -89,9 +89,9 @@ ms.lasthandoff: 08/03/2017
 </dependencies>
 ```
 
-<span data-ttu-id="40397-119">Přejděte na **soubor > Nastavení > sestavení > provádění > nasazení**.</span><span class="sxs-lookup"><span data-stu-id="40397-119">Go to **File > Settings > Build > Execution > Deployment**.</span></span> <span data-ttu-id="40397-120">Vyberte **nástroje sestavení > Maven > Import**.</span><span class="sxs-lookup"><span data-stu-id="40397-120">Select **Build Tools > Maven > Importing**.</span></span> <span data-ttu-id="40397-121">Zkontrolujte **automaticky importovat projekty Maven**.</span><span class="sxs-lookup"><span data-stu-id="40397-121">Then check **Import Maven projects automatically**.</span></span>
+<span data-ttu-id="ddca1-119">Přejděte příliš**soubor > Nastavení > sestavení > provádění > nasazení**.</span><span class="sxs-lookup"><span data-stu-id="ddca1-119">Go too**File > Settings > Build > Execution > Deployment**.</span></span> <span data-ttu-id="ddca1-120">Vyberte **nástroje sestavení > Maven > Import**.</span><span class="sxs-lookup"><span data-stu-id="ddca1-120">Select **Build Tools > Maven > Importing**.</span></span> <span data-ttu-id="ddca1-121">Zkontrolujte **automaticky importovat projekty Maven**.</span><span class="sxs-lookup"><span data-stu-id="ddca1-121">Then check **Import Maven projects automatically**.</span></span>
 
-<span data-ttu-id="40397-122">Otevřete `Main.java` a stávající blok kódu nahraďte následující fragment kódu:</span><span class="sxs-lookup"><span data-stu-id="40397-122">Open `Main.java` and replace the existing code block with the following code snippet:</span></span>
+<span data-ttu-id="ddca1-122">Otevřete `Main.java` a nahraďte hello stávající blok kódu s hello následující fragment kódu:</span><span class="sxs-lookup"><span data-stu-id="ddca1-122">Open `Main.java` and replace hello existing code block with hello following code snippet:</span></span>
 
 ```
 package com.company;
@@ -175,10 +175,10 @@ public class Main {
         WaitForNewline("File created.", "Submitting a job.");
 
         // ----------------------------------------
-        // Submit a job to Data Lake Analytics
+        // Submit a job tooData Lake Analytics
         // ----------------------------------------
 
-string script = "@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extractors.Csv(); OUTPUT @input TO @\"/output1.csv\" USING Outputters.Csv();", "testJob";
+string script = "@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extractors.Csv(); OUTPUT @input too@\"/output1.csv\" USING Outputters.Csv();", "testJob";
         UUID jobId = SubmitJobByScript(script);
         WaitForNewline("Job submitted.", "Getting job status.");
 
@@ -201,21 +201,21 @@ string script = "@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extrac
 }
 ```
 
-<span data-ttu-id="40397-123">Zadejte hodnoty pro parametry ve fragmentu kódu:</span><span class="sxs-lookup"><span data-stu-id="40397-123">Provide the values for parameters called out in the code snippet:</span></span>
+<span data-ttu-id="ddca1-123">Zadejte hello hodnoty pro parametry ve fragmentu kódu hello:</span><span class="sxs-lookup"><span data-stu-id="ddca1-123">Provide hello values for parameters called out in hello code snippet:</span></span>
 * `localFolderPath`
 * `_adlaAccountName`
 * `_adlsAccountName`
 * `_resourceGroupName`
 
-<span data-ttu-id="40397-124">Nahraďte zástupné symboly pro:</span><span class="sxs-lookup"><span data-stu-id="40397-124">Replace the placeholders for:</span></span>
-* <span data-ttu-id="40397-125">`CLIENT-ID`,</span><span class="sxs-lookup"><span data-stu-id="40397-125">`CLIENT-ID`,</span></span>
-* <span data-ttu-id="40397-126">`CLIENT-SECRET`,</span><span class="sxs-lookup"><span data-stu-id="40397-126">`CLIENT-SECRET`,</span></span>
+<span data-ttu-id="ddca1-124">Nahraďte zástupné symboly hello:</span><span class="sxs-lookup"><span data-stu-id="ddca1-124">Replace hello placeholders for:</span></span>
+* <span data-ttu-id="ddca1-125">`CLIENT-ID`,</span><span class="sxs-lookup"><span data-stu-id="ddca1-125">`CLIENT-ID`,</span></span>
+* <span data-ttu-id="ddca1-126">`CLIENT-SECRET`,</span><span class="sxs-lookup"><span data-stu-id="ddca1-126">`CLIENT-SECRET`,</span></span>
 * `TENANT-ID`
 * `SUBSCRIPTION-ID`
 
-## <a name="helper-functions"></a><span data-ttu-id="40397-127">Podpůrné funkce</span><span class="sxs-lookup"><span data-stu-id="40397-127">Helper functions</span></span>
+## <a name="helper-functions"></a><span data-ttu-id="ddca1-127">Podpůrné funkce</span><span class="sxs-lookup"><span data-stu-id="ddca1-127">Helper functions</span></span>
 
-### <a name="setup-clients"></a><span data-ttu-id="40397-128">Instalace klientů</span><span class="sxs-lookup"><span data-stu-id="40397-128">Setup clients</span></span>
+### <a name="setup-clients"></a><span data-ttu-id="ddca1-128">Instalace klientů</span><span class="sxs-lookup"><span data-stu-id="ddca1-128">Setup clients</span></span>
 
 ```
 public static void SetupClients(ServiceClientCredentials creds)
@@ -231,7 +231,7 @@ public static void SetupClients(ServiceClientCredentials creds)
 ```
 
 
-### <a name="wait-for-input"></a><span data-ttu-id="40397-129">Čekání na vstup</span><span class="sxs-lookup"><span data-stu-id="40397-129">Wait for input</span></span>
+### <a name="wait-for-input"></a><span data-ttu-id="ddca1-129">Čekání na vstup</span><span class="sxs-lookup"><span data-stu-id="ddca1-129">Wait for input</span></span>
 
 ```
 public static void WaitForNewline(String reason, String nextAction)
@@ -239,7 +239,7 @@ public static void WaitForNewline(String reason, String nextAction)
     if (nextAction == null)
         nextAction = "";
 
-    System.out.println(reason + "\r\nPress ENTER to continue...");
+    System.out.println(reason + "\r\nPress ENTER toocontinue...");
     try{System.in.read();}
     catch(Exception e){}
 
@@ -250,7 +250,7 @@ public static void WaitForNewline(String reason, String nextAction)
 }
 ```
 
-### <a name="create-accounts"></a><span data-ttu-id="40397-130">Vytvoření účtů</span><span class="sxs-lookup"><span data-stu-id="40397-130">Create accounts</span></span>
+### <a name="create-accounts"></a><span data-ttu-id="ddca1-130">Vytvoření účtů</span><span class="sxs-lookup"><span data-stu-id="ddca1-130">Create accounts</span></span>
 
 ```
 public static void CreateAccounts() throws InterruptedException, CloudException, IOException 
@@ -284,7 +284,7 @@ public static void CreateAccounts() throws InterruptedException, CloudException,
 }
 ```
 
-### <a name="create-a-file"></a><span data-ttu-id="40397-131">Vytvoření souboru</span><span class="sxs-lookup"><span data-stu-id="40397-131">Create a file</span></span>
+### <a name="create-a-file"></a><span data-ttu-id="ddca1-131">Vytvoření souboru</span><span class="sxs-lookup"><span data-stu-id="ddca1-131">Create a file</span></span>
 
 ```
 public static void CreateFile(String path, String contents, boolean force) throws IOException, CloudException 
@@ -295,7 +295,7 @@ public static void CreateFile(String path, String contents, boolean force) throw
 }
 ```
 
-### <a name="delete-a-file"></a><span data-ttu-id="40397-132">Odstranění souboru</span><span class="sxs-lookup"><span data-stu-id="40397-132">Delete a file</span></span>
+### <a name="delete-a-file"></a><span data-ttu-id="ddca1-132">Odstranění souboru</span><span class="sxs-lookup"><span data-stu-id="ddca1-132">Delete a file</span></span>
 
 ```
 public static void DeleteFile(String filePath) throws IOException, CloudException 
@@ -304,7 +304,7 @@ public static void DeleteFile(String filePath) throws IOException, CloudExceptio
 }
 ```
 
-### <a name="download-a-file"></a><span data-ttu-id="40397-133">Stažení souboru</span><span class="sxs-lookup"><span data-stu-id="40397-133">Download a file</span></span>
+### <a name="download-a-file"></a><span data-ttu-id="ddca1-133">Stažení souboru</span><span class="sxs-lookup"><span data-stu-id="ddca1-133">Download a file</span></span>
 
 ```
 public static void DownloadFile(String srcPath, String destPath) throws IOException, CloudException 
@@ -336,7 +336,7 @@ public static void DownloadFile(String srcPath, String destPath) throws IOExcept
 }
 ```
 
-### <a name="submit-a-u-sql-job"></a><span data-ttu-id="40397-134">Odeslání úlohy U-SQL</span><span class="sxs-lookup"><span data-stu-id="40397-134">Submit a U-SQL job</span></span>
+### <a name="submit-a-u-sql-job"></a><span data-ttu-id="ddca1-134">Odeslání úlohy U-SQL</span><span class="sxs-lookup"><span data-stu-id="ddca1-134">Submit a U-SQL job</span></span>
 
 ```
 public static UUID SubmitJobByScript(String script, String jobName) throws IOException, CloudException 
@@ -367,7 +367,7 @@ public static JobResult WaitForJob(UUID jobId) throws IOException, CloudExceptio
 }
 ```
 
-### <a name="retrieve-job-status"></a><span data-ttu-id="40397-135">Načíst stav úlohy</span><span class="sxs-lookup"><span data-stu-id="40397-135">Retrieve job status</span></span>
+### <a name="retrieve-job-status"></a><span data-ttu-id="ddca1-135">Načíst stav úlohy</span><span class="sxs-lookup"><span data-stu-id="ddca1-135">Retrieve job status</span></span>
 
 ```
 public static String GetJobStatus(UUID jobId) throws IOException, CloudException 
@@ -377,8 +377,8 @@ public static String GetJobStatus(UUID jobId) throws IOException, CloudException
 }
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="40397-136">Další kroky</span><span class="sxs-lookup"><span data-stu-id="40397-136">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="ddca1-136">Další kroky</span><span class="sxs-lookup"><span data-stu-id="ddca1-136">Next steps</span></span>
 
-* <span data-ttu-id="40397-137">Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md) a [Referenční informace pro jazyk U-SQL](http://go.microsoft.com/fwlink/?LinkId=691348).</span><span class="sxs-lookup"><span data-stu-id="40397-137">To learn U-SQL, see [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md), and [U-SQL language reference](http://go.microsoft.com/fwlink/?LinkId=691348).</span></span>
-* <span data-ttu-id="40397-138">Informace týkající se úloh správy najdete v tématu [Správa služby Azure Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-manage-use-portal.md).</span><span class="sxs-lookup"><span data-stu-id="40397-138">For management tasks, see [Manage Azure Data Lake Analytics using Azure portal](data-lake-analytics-manage-use-portal.md).</span></span>
-* <span data-ttu-id="40397-139">Přehled Data Lake Analytics najdete v tématu [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).</span><span class="sxs-lookup"><span data-stu-id="40397-139">To get an overview of Data Lake Analytics, see [Azure Data Lake Analytics overview](data-lake-analytics-overview.md).</span></span>
+* <span data-ttu-id="ddca1-137">toolearn U-SQL, najdete v části [Začínáme s jazykem Azure Data Lake Analytics U-SQL](data-lake-analytics-u-sql-get-started.md), a [referenční příručka jazyka U-SQL](http://go.microsoft.com/fwlink/?LinkId=691348).</span><span class="sxs-lookup"><span data-stu-id="ddca1-137">toolearn U-SQL, see [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md), and [U-SQL language reference](http://go.microsoft.com/fwlink/?LinkId=691348).</span></span>
+* <span data-ttu-id="ddca1-138">Informace týkající se úloh správy najdete v tématu [Správa služby Azure Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-manage-use-portal.md).</span><span class="sxs-lookup"><span data-stu-id="ddca1-138">For management tasks, see [Manage Azure Data Lake Analytics using Azure portal](data-lake-analytics-manage-use-portal.md).</span></span>
+* <span data-ttu-id="ddca1-139">tooget uvádí přehled Data Lake Analytics najdete v části [přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).</span><span class="sxs-lookup"><span data-stu-id="ddca1-139">tooget an overview of Data Lake Analytics, see [Azure Data Lake Analytics overview](data-lake-analytics-overview.md).</span></span>

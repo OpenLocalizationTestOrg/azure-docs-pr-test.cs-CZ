@@ -1,6 +1,6 @@
 ---
-title: "Přidejte konektor Facebook ve vašich Logic Apps | Microsoft Docs"
-description: "Přehled konektoru Facebook s parametry rozhraní REST API"
+title: "konektor služby Facebook hello aaaAdd ve vašich Logic Apps | Microsoft Docs"
+description: "Přehled konektoru Facebook hello s parametry rozhraní REST API"
 services: 
 documentationcenter: 
 author: MandiOhlinger
@@ -15,34 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: e10a30ccef3e81cb3d7749696453d82b8958d076
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 962c6ed5d36e465de9d485d50e5c6dca6d44f470
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-facebook-connector"></a><span data-ttu-id="7c78f-103">Začínáme s konektorem služby Facebook</span><span class="sxs-lookup"><span data-stu-id="7c78f-103">Get started with the Facebook connector</span></span>
-<span data-ttu-id="7c78f-104">Připojení k síti Facebook a příspěvků na timeline, získat kanálů stránek a další.</span><span class="sxs-lookup"><span data-stu-id="7c78f-104">Connect to Facebook and post to a timeline, get a page feed, and more.</span></span> <span data-ttu-id="7c78f-105">Facebook můžete:</span><span class="sxs-lookup"><span data-stu-id="7c78f-105">With Facebook, you can:</span></span>
+# <a name="get-started-with-hello-facebook-connector"></a><span data-ttu-id="af94a-103">Začínáme s konektorem služby Facebook hello</span><span class="sxs-lookup"><span data-stu-id="af94a-103">Get started with hello Facebook connector</span></span>
+<span data-ttu-id="af94a-104">Připojit tooFacebook a konečná časová osa tooa, získat kanálů stránek a další.</span><span class="sxs-lookup"><span data-stu-id="af94a-104">Connect tooFacebook and post tooa timeline, get a page feed, and more.</span></span> <span data-ttu-id="af94a-105">Facebook můžete:</span><span class="sxs-lookup"><span data-stu-id="af94a-105">With Facebook, you can:</span></span>
 
-* <span data-ttu-id="7c78f-106">Sestavení vaší firmy toku na základě dat, které máte ze sítě Facebook.</span><span class="sxs-lookup"><span data-stu-id="7c78f-106">Build your business flow based on the data you get from Facebook.</span></span> 
-* <span data-ttu-id="7c78f-107">Používejte aktivační událost, když je obdržena nového příspěvku.</span><span class="sxs-lookup"><span data-stu-id="7c78f-107">Use a trigger when a new post is received.</span></span>
-* <span data-ttu-id="7c78f-108">Použití akce, které odeslání na časové ose získat kanálů stránek a další.</span><span class="sxs-lookup"><span data-stu-id="7c78f-108">Use actions that post to your timeline, get a page feed, and more.</span></span> <span data-ttu-id="7c78f-109">Tyto akce se odpověď a pak proveďte výstup k dispozici pro další akce.</span><span class="sxs-lookup"><span data-stu-id="7c78f-109">These actions get a response, and then make the output available for other actions.</span></span> <span data-ttu-id="7c78f-110">Například po nového příspěvku na časové ose můžete provést tento post a push na váš informační kanál sítě Twitter.</span><span class="sxs-lookup"><span data-stu-id="7c78f-110">For example, when there is a new post on your timeline, you can take that post and push it to your Twitter feed.</span></span> 
+* <span data-ttu-id="af94a-106">Sestavení vaší firmy toku na základě hello dat, které máte ze sítě Facebook.</span><span class="sxs-lookup"><span data-stu-id="af94a-106">Build your business flow based on hello data you get from Facebook.</span></span> 
+* <span data-ttu-id="af94a-107">Používejte aktivační událost, když je obdržena nového příspěvku.</span><span class="sxs-lookup"><span data-stu-id="af94a-107">Use a trigger when a new post is received.</span></span>
+* <span data-ttu-id="af94a-108">Použití akce, které post na časové ose tooyour získat kanálů stránek a další.</span><span class="sxs-lookup"><span data-stu-id="af94a-108">Use actions that post tooyour timeline, get a page feed, and more.</span></span> <span data-ttu-id="af94a-109">Tyto akce se odpověď a pak proveďte výstup hello k dispozici pro další akce.</span><span class="sxs-lookup"><span data-stu-id="af94a-109">These actions get a response, and then make hello output available for other actions.</span></span> <span data-ttu-id="af94a-110">Například po nového příspěvku na časové ose můžete provést tohoto příspěvku a poslat ho tooyour informační kanál sítě Twitter.</span><span class="sxs-lookup"><span data-stu-id="af94a-110">For example, when there is a new post on your timeline, you can take that post and push it tooyour Twitter feed.</span></span> 
 
-<span data-ttu-id="7c78f-111">Můžete začít s vytvářením aplikace logiky teď najdete v tématu [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).</span><span class="sxs-lookup"><span data-stu-id="7c78f-111">You can get started by creating a logic app now, see [Create a logic app](../logic-apps/logic-apps-create-a-logic-app.md).</span></span>
+<span data-ttu-id="af94a-111">Můžete začít s vytvářením aplikace logiky teď najdete v tématu [vytvoření aplikace logiky](../logic-apps/logic-apps-create-a-logic-app.md).</span><span class="sxs-lookup"><span data-stu-id="af94a-111">You can get started by creating a logic app now, see [Create a logic app](../logic-apps/logic-apps-create-a-logic-app.md).</span></span>
 
-## <a name="create-a-connection-to-facebook"></a><span data-ttu-id="7c78f-112">Umožňuje vytvořit připojení k síti Facebook</span><span class="sxs-lookup"><span data-stu-id="7c78f-112">Create a connection to Facebook</span></span>
-<span data-ttu-id="7c78f-113">Když přidáte tento konektor aplikace logiky, musíte je nejdříve autorizovat logic apps, abyste připojení k vaší službě Facebook.</span><span class="sxs-lookup"><span data-stu-id="7c78f-113">When you add this connector to your logic apps, you must authorize logic apps to connect to your Facebook.</span></span>
+## <a name="create-a-connection-toofacebook"></a><span data-ttu-id="af94a-112">Vytvoření připojení tooFacebook</span><span class="sxs-lookup"><span data-stu-id="af94a-112">Create a connection tooFacebook</span></span>
+<span data-ttu-id="af94a-113">Když přidáte tento konektor tooyour logiku aplikace, musíte je nejdříve autorizovat logiku aplikace tooconnect tooyour Facebook.</span><span class="sxs-lookup"><span data-stu-id="af94a-113">When you add this connector tooyour logic apps, you must authorize logic apps tooconnect tooyour Facebook.</span></span>
 
-1. <span data-ttu-id="7c78f-114">Přihlaste se k účtu služby Facebook</span><span class="sxs-lookup"><span data-stu-id="7c78f-114">Sign in to your Facebook account</span></span>
-2. <span data-ttu-id="7c78f-115">Vyberte **Authorize**a povolit logic apps, abyste připojit a používat vaší sítě Facebook.</span><span class="sxs-lookup"><span data-stu-id="7c78f-115">Select **Authorize**, and allow your logic apps to connect and use your Facebook.</span></span> 
+1. <span data-ttu-id="af94a-114">Přihlaste se tooyour účet služby Facebook</span><span class="sxs-lookup"><span data-stu-id="af94a-114">Sign in tooyour Facebook account</span></span>
+2. <span data-ttu-id="af94a-115">Vyberte **Authorize**a povolit vaší tooconnect logiku aplikace a používat vaší sítě Facebook.</span><span class="sxs-lookup"><span data-stu-id="af94a-115">Select **Authorize**, and allow your logic apps tooconnect and use your Facebook.</span></span> 
 
-> [!INCLUDE [Steps to create a connection to Facebook](../../includes/connectors-create-api-facebook.md)]
+> [!INCLUDE [Steps toocreate a connection tooFacebook](../../includes/connectors-create-api-facebook.md)]
 > 
 
 
-## <a name="connector-specific-details"></a><span data-ttu-id="7c78f-116">Podrobnosti o konkrétní konektor</span><span class="sxs-lookup"><span data-stu-id="7c78f-116">Connector-specific details</span></span>
+## <a name="connector-specific-details"></a><span data-ttu-id="af94a-116">Podrobnosti o konkrétní konektor</span><span class="sxs-lookup"><span data-stu-id="af94a-116">Connector-specific details</span></span>
 
-<span data-ttu-id="7c78f-117">Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/facebook/).</span><span class="sxs-lookup"><span data-stu-id="7c78f-117">View any triggers and actions defined in the swagger, and also see any limits in the [connector details](/connectors/facebook/).</span></span>
+<span data-ttu-id="af94a-117">Zobrazit všechny aktivační události a akce definované v hello swagger a také zobrazit žádné limity v hello [connector – podrobnosti](/connectors/facebook/).</span><span class="sxs-lookup"><span data-stu-id="af94a-117">View any triggers and actions defined in hello swagger, and also see any limits in hello [connector details](/connectors/facebook/).</span></span>
 
-## <a name="more-connectors"></a><span data-ttu-id="7c78f-118">Více konektorů</span><span class="sxs-lookup"><span data-stu-id="7c78f-118">More connectors</span></span>
-<span data-ttu-id="7c78f-119">Přejděte zpět [rozhraní API seznamu](apis-list.md).</span><span class="sxs-lookup"><span data-stu-id="7c78f-119">Go back to the [APIs list](apis-list.md).</span></span>
+## <a name="more-connectors"></a><span data-ttu-id="af94a-118">Více konektorů</span><span class="sxs-lookup"><span data-stu-id="af94a-118">More connectors</span></span>
+<span data-ttu-id="af94a-119">Přejděte zpět toohello [rozhraní API seznamu](apis-list.md).</span><span class="sxs-lookup"><span data-stu-id="af94a-119">Go back toohello [APIs list](apis-list.md).</span></span>

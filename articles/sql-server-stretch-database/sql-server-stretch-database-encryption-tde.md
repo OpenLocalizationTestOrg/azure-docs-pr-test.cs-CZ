@@ -1,5 +1,5 @@
 ---
-title: "Povolit transparentní šifrování dat pro funkce Stretch Database - Azure | Microsoft Docs"
+title: "aaaEnable transparentní šifrování dat pro funkci Stretch Database - Azure | Microsoft Docs"
 description: "Povolit transparentní šifrování dat (šifrování TDE) pro SQL Server Stretch Database na Azure"
 services: sql-server-stretch-database
 documentationcenter: 
@@ -14,43 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2016
 ms.author: douglasl
-ms.openlocfilehash: ceb355d2ba872ed5d3886c6dc82ca75b1854db0a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1d6bff455030ac8851b2184c1e8097afd61361d9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a><span data-ttu-id="ad3ac-103">Povolit transparentní šifrování dat (šifrování TDE) pro funkce Stretch Database na Azure</span><span class="sxs-lookup"><span data-stu-id="ad3ac-103">Enable Transparent Data Encryption (TDE) for Stretch Database on Azure</span></span>
+# <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a><span data-ttu-id="146a5-103">Povolit transparentní šifrování dat (šifrování TDE) pro funkce Stretch Database na Azure</span><span class="sxs-lookup"><span data-stu-id="146a5-103">Enable Transparent Data Encryption (TDE) for Stretch Database on Azure</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="ad3ac-104">Azure Portal</span><span class="sxs-lookup"><span data-stu-id="ad3ac-104">Azure portal</span></span>](sql-server-stretch-database-encryption-tde.md)
-> * [<span data-ttu-id="ad3ac-105">TSQL</span><span class="sxs-lookup"><span data-stu-id="ad3ac-105">TSQL</span></span>](sql-server-stretch-database-tde-tsql.md)
+> * [<span data-ttu-id="146a5-104">Azure Portal</span><span class="sxs-lookup"><span data-stu-id="146a5-104">Azure portal</span></span>](sql-server-stretch-database-encryption-tde.md)
+> * [<span data-ttu-id="146a5-105">TSQL</span><span class="sxs-lookup"><span data-stu-id="146a5-105">TSQL</span></span>](sql-server-stretch-database-tde-tsql.md)
 >
 >
 
-<span data-ttu-id="ad3ac-106">Transparentní šifrování šifrování dat (TDE) pomáhá chránit před ohrožením škodlivých aktivit provedením v reálném čase šifrování a dešifrování databáze, přidružených záloh a souborů protokolů transakci bez nutnosti změny aplikace.</span><span class="sxs-lookup"><span data-stu-id="ad3ac-106">Transparent Data Encryption (TDE) helps protect against the threat of malicious activity by performing real-time encryption and decryption of the database, associated backups, and transaction log files at rest without requiring changes to the application.</span></span>
+<span data-ttu-id="146a5-106">Transparentní šifrování šifrování dat (TDE) pomáhá chránit před ohrožením hello škodlivých aktivit provedením v reálném čase šifrování a dešifrování hello databáze, přidružených záloh a souborů protokolů transakci bez nutnosti změny toohello aplikace.</span><span class="sxs-lookup"><span data-stu-id="146a5-106">Transparent Data Encryption (TDE) helps protect against hello threat of malicious activity by performing real-time encryption and decryption of hello database, associated backups, and transaction log files at rest without requiring changes toohello application.</span></span>
 
-<span data-ttu-id="ad3ac-107">Šifrování TDE zašifruje úložiště celé databáze pomocí symetrický klíč s názvem šifrovací klíč databáze.</span><span class="sxs-lookup"><span data-stu-id="ad3ac-107">TDE encrypts the storage of an entire database by using a symmetric key called the database encryption key.</span></span> <span data-ttu-id="ad3ac-108">Šifrovací klíč databáze je chráněn certifikát integrovaného serveru.</span><span class="sxs-lookup"><span data-stu-id="ad3ac-108">The database encryption key is protected by a built-in server certificate.</span></span> <span data-ttu-id="ad3ac-109">Certifikát integrovaného serveru je jedinečný pro každý server Azure.</span><span class="sxs-lookup"><span data-stu-id="ad3ac-109">The built-in server certificate is unique for each Azure server.</span></span> <span data-ttu-id="ad3ac-110">Microsoft automaticky otočí tyto certifikáty alespoň jednou za 90 dní.</span><span class="sxs-lookup"><span data-stu-id="ad3ac-110">Microsoft automatically rotates these certificates at least every 90 days.</span></span> <span data-ttu-id="ad3ac-111">Obecný popis TDE, najdete v části [transparentní šifrování šifrování dat (TDE)].</span><span class="sxs-lookup"><span data-stu-id="ad3ac-111">For a general description of TDE, see [Transparent Data Encryption (TDE)].</span></span>
+<span data-ttu-id="146a5-107">Šifrování TDE zašifruje úložiště hello celé databáze pomocí symetrického klíče volané hello šifrovací klíč databáze.</span><span class="sxs-lookup"><span data-stu-id="146a5-107">TDE encrypts hello storage of an entire database by using a symmetric key called hello database encryption key.</span></span> <span data-ttu-id="146a5-108">šifrovací klíč databáze Hello je chráněn certifikát integrovaného serveru.</span><span class="sxs-lookup"><span data-stu-id="146a5-108">hello database encryption key is protected by a built-in server certificate.</span></span> <span data-ttu-id="146a5-109">certifikát integrovaného serveru Hello je jedinečný pro každý server Azure.</span><span class="sxs-lookup"><span data-stu-id="146a5-109">hello built-in server certificate is unique for each Azure server.</span></span> <span data-ttu-id="146a5-110">Microsoft automaticky otočí tyto certifikáty alespoň jednou za 90 dní.</span><span class="sxs-lookup"><span data-stu-id="146a5-110">Microsoft automatically rotates these certificates at least every 90 days.</span></span> <span data-ttu-id="146a5-111">Obecný popis TDE, najdete v části [transparentní šifrování šifrování dat (TDE)].</span><span class="sxs-lookup"><span data-stu-id="146a5-111">For a general description of TDE, see [Transparent Data Encryption (TDE)].</span></span>
 
-## <a name="enabling-encryption"></a><span data-ttu-id="ad3ac-112">Povolení šifrování</span><span class="sxs-lookup"><span data-stu-id="ad3ac-112">Enabling Encryption</span></span>
-<span data-ttu-id="ad3ac-113">Chcete-li povolit šifrování TDE Azure migrovat databázi, která ukládá data z databáze serveru SQL povolenou funkcí Stretch, provádět následující akce:</span><span class="sxs-lookup"><span data-stu-id="ad3ac-113">To enable TDE for an Azure database that's storing the data migrated from a Stretch-enabled SQL Server database, do the following things:</span></span>
+## <a name="enabling-encryption"></a><span data-ttu-id="146a5-112">Povolení šifrování</span><span class="sxs-lookup"><span data-stu-id="146a5-112">Enabling Encryption</span></span>
+<span data-ttu-id="146a5-113">tooenable TDE pro databázi aplikace Azure, která ukládá hello, které se migrují data z databáze povolenou funkcí Stretch SQL Server hello následující věci:</span><span class="sxs-lookup"><span data-stu-id="146a5-113">tooenable TDE for an Azure database that's storing hello data migrated from a Stretch-enabled SQL Server database, do hello following things:</span></span>
 
-1. <span data-ttu-id="ad3ac-114">Otevřít v databázi [portálu Azure](https://portal.azure.com)</span><span class="sxs-lookup"><span data-stu-id="ad3ac-114">Open the database in the [Azure portal](https://portal.azure.com)</span></span>
-2. <span data-ttu-id="ad3ac-115">V okně databáze klikněte na **nastavení** tlačítko</span><span class="sxs-lookup"><span data-stu-id="ad3ac-115">In the database blade, click the **Settings** button</span></span>
-3. <span data-ttu-id="ad3ac-116">Vyberte **transparentní šifrování dat** možnost![][1]</span><span class="sxs-lookup"><span data-stu-id="ad3ac-116">Select the **Transparent data encryption** option ![][1]</span></span>
-4. <span data-ttu-id="ad3ac-117">Vyberte **na** nastavení a potom vyberte **uložit**
-   ![][2]</span><span class="sxs-lookup"><span data-stu-id="ad3ac-117">Select the **On** setting, and then select **Save**
+1. <span data-ttu-id="146a5-114">Otevřete hello databáze v hello [portálu Azure](https://portal.azure.com)</span><span class="sxs-lookup"><span data-stu-id="146a5-114">Open hello database in hello [Azure portal](https://portal.azure.com)</span></span>
+2. <span data-ttu-id="146a5-115">V okně databáze hello, klikněte na tlačítko hello **nastavení** tlačítko</span><span class="sxs-lookup"><span data-stu-id="146a5-115">In hello database blade, click hello **Settings** button</span></span>
+3. <span data-ttu-id="146a5-116">Vyberte hello **transparentní šifrování dat** možnost![][1]</span><span class="sxs-lookup"><span data-stu-id="146a5-116">Select hello **Transparent data encryption** option ![][1]</span></span>
+4. <span data-ttu-id="146a5-117">Vyberte hello **na** nastavení a potom vyberte **uložit**
+   ![][2]</span><span class="sxs-lookup"><span data-stu-id="146a5-117">Select hello **On** setting, and then select **Save**
 ![][2]</span></span>
 
-## <a name="disabling-encryption"></a><span data-ttu-id="ad3ac-118">Zakázáním šifrování</span><span class="sxs-lookup"><span data-stu-id="ad3ac-118">Disabling Encryption</span></span>
-<span data-ttu-id="ad3ac-119">Zakázat šifrování TDE Azure migrovat databázi, která ukládá data z databáze povolenou funkcí Stretch SQL Server, provádět následující akce:</span><span class="sxs-lookup"><span data-stu-id="ad3ac-119">To disable TDE for an Azure database that's storing the data migrated from a Stretch-enabled SQL Server database, do the following things:</span></span>
+## <a name="disabling-encryption"></a><span data-ttu-id="146a5-118">Zakázáním šifrování</span><span class="sxs-lookup"><span data-stu-id="146a5-118">Disabling Encryption</span></span>
+<span data-ttu-id="146a5-119">toodisable TDE pro databázi aplikace Azure, která ukládá hello, které se migrují data z databáze povolenou funkcí Stretch SQL Server hello následující věci:</span><span class="sxs-lookup"><span data-stu-id="146a5-119">toodisable TDE for an Azure database that's storing hello data migrated from a Stretch-enabled SQL Server database, do hello following things:</span></span>
 
-1. <span data-ttu-id="ad3ac-120">Otevřít v databázi [portálu Azure](https://portal.azure.com)</span><span class="sxs-lookup"><span data-stu-id="ad3ac-120">Open the database in the [Azure portal](https://portal.azure.com)</span></span>
-2. <span data-ttu-id="ad3ac-121">V okně databáze klikněte na **nastavení** tlačítko</span><span class="sxs-lookup"><span data-stu-id="ad3ac-121">In the database blade, click the **Settings** button</span></span>
-3. <span data-ttu-id="ad3ac-122">Vyberte **transparentní šifrování dat** možnost</span><span class="sxs-lookup"><span data-stu-id="ad3ac-122">Select the **Transparent data encryption** option</span></span>
-4. <span data-ttu-id="ad3ac-123">Vyberte **vypnout** nastavení a potom vyberte **uložit**</span><span class="sxs-lookup"><span data-stu-id="ad3ac-123">Select the **Off** setting, and then select **Save**</span></span>
+1. <span data-ttu-id="146a5-120">Otevřete hello databáze v hello [portálu Azure](https://portal.azure.com)</span><span class="sxs-lookup"><span data-stu-id="146a5-120">Open hello database in hello [Azure portal](https://portal.azure.com)</span></span>
+2. <span data-ttu-id="146a5-121">V okně databáze hello, klikněte na tlačítko hello **nastavení** tlačítko</span><span class="sxs-lookup"><span data-stu-id="146a5-121">In hello database blade, click hello **Settings** button</span></span>
+3. <span data-ttu-id="146a5-122">Vyberte hello **transparentní šifrování dat** možnost</span><span class="sxs-lookup"><span data-stu-id="146a5-122">Select hello **Transparent data encryption** option</span></span>
+4. <span data-ttu-id="146a5-123">Vyberte hello **vypnout** nastavení a potom vyberte **uložit**</span><span class="sxs-lookup"><span data-stu-id="146a5-123">Select hello **Off** setting, and then select **Save**</span></span>
 
 <!--Anchors-->
-<span data-ttu-id="ad3ac-124">[transparentní šifrování šifrování dat (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx</span><span class="sxs-lookup"><span data-stu-id="ad3ac-124">[Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx</span></span>
+[transparentní šifrování šifrování dat (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
 
 
 <!--Image references-->

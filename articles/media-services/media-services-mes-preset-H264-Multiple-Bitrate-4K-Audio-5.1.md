@@ -1,6 +1,6 @@
 ---
-title: "264 více přenosovou rychlostí 4K zvuk 5.1 | Microsoft Docs"
-description: "Téma nabízí přehled ** 264 přednastavení úloh Multiple Bitrate 4K zvuk 5.1* *."
+title: "aaa264 více přenosovou rychlostí 4K zvuk 5.1 | Microsoft Docs"
+description: "Hello téma nabízí přehled hello ** 264 přednastavení úloh Multiple Bitrate 4K zvuk 5.1* *."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 10e5c41be42b73e3e1458adac9642547c182530b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ea0169a86b132002233488ba748a6583fe08d51b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="h264-multiple-bitrate-4k-audio-51"></a><span data-ttu-id="3692c-103">H264 Zvuk přenosovou rychlostí 4K více 5.1</span><span class="sxs-lookup"><span data-stu-id="3692c-103">H264 Multiple Bitrate 4K Audio 5.1</span></span>
-<span data-ttu-id="3692c-104">`Media Encoder Standard`definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování.</span><span class="sxs-lookup"><span data-stu-id="3692c-104">`Media Encoder Standard` defines a set of encoding presets you can use when creating encoding jobs.</span></span> <span data-ttu-id="3692c-105">Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média.</span><span class="sxs-lookup"><span data-stu-id="3692c-105">You can either use a `preset name` to specify into which format you would like to encode your media file.</span></span> <span data-ttu-id="3692c-106">Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16.</span><span class="sxs-lookup"><span data-stu-id="3692c-106">Or, you can create your own JSON or XML-based presets (using UTF-8 or UTF-16 encoding.</span></span> <span data-ttu-id="3692c-107">By pak předejte vlastní přednastavení kodéru.</span><span class="sxs-lookup"><span data-stu-id="3692c-107">You would then pass the custom preset to the encoder.</span></span> <span data-ttu-id="3692c-108">Seznam všech názvů přednastavené podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).</span><span class="sxs-lookup"><span data-stu-id="3692c-108">For the list of all the preset names supported by this `Media Encoder Standard` encoder, see [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md).</span></span>  
+# <a name="h264-multiple-bitrate-4k-audio-51"></a><span data-ttu-id="d7822-103">H264 Zvuk přenosovou rychlostí 4K více 5.1</span><span class="sxs-lookup"><span data-stu-id="d7822-103">H264 Multiple Bitrate 4K Audio 5.1</span></span>
+<span data-ttu-id="d7822-104">`Media Encoder Standard`definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování.</span><span class="sxs-lookup"><span data-stu-id="d7822-104">`Media Encoder Standard` defines a set of encoding presets you can use when creating encoding jobs.</span></span> <span data-ttu-id="d7822-105">Můžete použít `preset name` toospecify do formátu, který chcete tooencode mediálního souboru.</span><span class="sxs-lookup"><span data-stu-id="d7822-105">You can either use a `preset name` toospecify into which format you would like tooencode your media file.</span></span> <span data-ttu-id="d7822-106">Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16.</span><span class="sxs-lookup"><span data-stu-id="d7822-106">Or, you can create your own JSON or XML-based presets (using UTF-8 or UTF-16 encoding.</span></span> <span data-ttu-id="d7822-107">By pak předejte kodér vlastní přednastavené toohello hello.</span><span class="sxs-lookup"><span data-stu-id="d7822-107">You would then pass hello custom preset toohello encoder.</span></span> <span data-ttu-id="d7822-108">Hello seznam všech hello přednastavení názvy podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).</span><span class="sxs-lookup"><span data-stu-id="d7822-108">For hello list of all hello preset names supported by this `Media Encoder Standard` encoder, see [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md).</span></span>  
   
- <span data-ttu-id="3692c-109">Toto téma ukazuje `H264 Multiple Bitrate 4K Audio 5.1` přednastavení ve formátu XML a JSON.</span><span class="sxs-lookup"><span data-stu-id="3692c-109">This topic shows the `H264 Multiple Bitrate 4K Audio 5.1` preset in XML and JSON format.</span></span>  
+ <span data-ttu-id="d7822-109">Toto téma ukazuje hello `H264 Multiple Bitrate 4K Audio 5.1` přednastavení ve formátu XML a JSON.</span><span class="sxs-lookup"><span data-stu-id="d7822-109">This topic shows hello `H264 Multiple Bitrate 4K Audio 5.1` preset in XML and JSON format.</span></span>  
   
- <span data-ttu-id="3692c-110">Tato předvolba vytvoří sadu 12 soubory MP4 zarovnaný GOP od 20000 kb/s až 1 000 kB/s a zvuku AAC 5.1.</span><span class="sxs-lookup"><span data-stu-id="3692c-110">This preset produces a set of 12 GOP-aligned MP4 files, ranging from 20000 kbps to 1000 kbps, and AAC 5.1 audio.</span></span> <span data-ttu-id="3692c-111">Podrobné informace o profilu přenosovou rychlostí, vzorkování rychlost atd tohoto přednastavení, zkontrolovat, XML nebo JSON definovaná níže.</span><span class="sxs-lookup"><span data-stu-id="3692c-111">For detailed information about profile, bitrate, sampling rate, etc. of this preset, examine the XML or JSON defined below.</span></span> <span data-ttu-id="3692c-112">Vysvětlení znamená, co každý prvek a platné hodnoty pro každý element, najdete v článku [Media Encoder Standard schématu](media-services-mes-schema.md).</span><span class="sxs-lookup"><span data-stu-id="3692c-112">For explanations of what each element means, and the valid values for each element, see the [Media Encoder Standard schema](media-services-mes-schema.md).</span></span>  
-  
-> [!NOTE]
->  <span data-ttu-id="3692c-113">Měli byste obdržet jednotku rezervovanou Premium kóduje typ s 4 kB.</span><span class="sxs-lookup"><span data-stu-id="3692c-113">You should get the Premium reserved unit type with 4K encodes.</span></span> <span data-ttu-id="3692c-114">Další informace najdete v tématu [postup škálování kódování](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).</span><span class="sxs-lookup"><span data-stu-id="3692c-114">For more information, see [How to Scale Encoding](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).</span></span>  
+ <span data-ttu-id="d7822-110">Tato předvolba vytvoří sadu 12 souborů zarovnaný GOP MP4, od kb/s too1000 20000 kb/s a zvuku AAC 5.1.</span><span class="sxs-lookup"><span data-stu-id="d7822-110">This preset produces a set of 12 GOP-aligned MP4 files, ranging from 20000 kbps too1000 kbps, and AAC 5.1 audio.</span></span> <span data-ttu-id="d7822-111">Podrobné informace o profilu přenosovou rychlostí, vzorkování rychlost atd tohoto přednastavení, zkontrolujte hello XML nebo JSON definovaná níže.</span><span class="sxs-lookup"><span data-stu-id="d7822-111">For detailed information about profile, bitrate, sampling rate, etc. of this preset, examine hello XML or JSON defined below.</span></span> <span data-ttu-id="d7822-112">Vysvětlení znamená, co každý prvek a hello platné hodnoty pro každý element, najdete v tématu hello [Media Encoder Standard schématu](media-services-mes-schema.md).</span><span class="sxs-lookup"><span data-stu-id="d7822-112">For explanations of what each element means, and hello valid values for each element, see hello [Media Encoder Standard schema](media-services-mes-schema.md).</span></span>  
   
 > [!NOTE]
->  <span data-ttu-id="3692c-115">Při úpravě `Width` a `Height` hodnot v rámci vrstvy, ujistěte se, aby zůstala konzistentní poměr stran.</span><span class="sxs-lookup"><span data-stu-id="3692c-115">When modifying the `Width` and `Height` values across layers, make sure that the aspect ratio remains consistent.</span></span> <span data-ttu-id="3692c-116">Příklad: 1920 × 1080, 1280 × 720, 1080 x 576 640 x 360.</span><span class="sxs-lookup"><span data-stu-id="3692c-116">For example: 1920x1080, 1280x720, 1080x576, 640x360.</span></span> <span data-ttu-id="3692c-117">Neměli byste používat směs poměrům stran, jako například: 1280 × 720, 720 x 480, 640 x 360.</span><span class="sxs-lookup"><span data-stu-id="3692c-117">You should not use a mixture of aspect ratios, such as: 1280x720, 720x480, 640x360.</span></span>  
+>  <span data-ttu-id="d7822-113">Měli byste obdržet hello Premium vyhrazené kóduje typ jednotky s 4 kB.</span><span class="sxs-lookup"><span data-stu-id="d7822-113">You should get hello Premium reserved unit type with 4K encodes.</span></span> <span data-ttu-id="d7822-114">Další informace najdete v tématu [jak tooScale kódování](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).</span><span class="sxs-lookup"><span data-stu-id="d7822-114">For more information, see [How tooScale Encoding](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).</span></span>  
   
- <span data-ttu-id="3692c-118">XML</span><span class="sxs-lookup"><span data-stu-id="3692c-118">XML</span></span>  
+> [!NOTE]
+>  <span data-ttu-id="d7822-115">Při úpravě hello `Width` a `Height` hodnot v rámci vrstvy, ujistěte se, že poměr stran hello konzistentní.</span><span class="sxs-lookup"><span data-stu-id="d7822-115">When modifying hello `Width` and `Height` values across layers, make sure that hello aspect ratio remains consistent.</span></span> <span data-ttu-id="d7822-116">Příklad: 1920 × 1080, 1280 × 720, 1080 x 576 640 x 360.</span><span class="sxs-lookup"><span data-stu-id="d7822-116">For example: 1920x1080, 1280x720, 1080x576, 640x360.</span></span> <span data-ttu-id="d7822-117">Neměli byste používat směs poměrům stran, jako například: 1280 × 720, 720 x 480, 640 x 360.</span><span class="sxs-lookup"><span data-stu-id="d7822-117">You should not use a mixture of aspect ratios, such as: 1280x720, 720x480, 640x360.</span></span>  
+  
+ <span data-ttu-id="d7822-118">XML</span><span class="sxs-lookup"><span data-stu-id="d7822-118">XML</span></span>  
   
 ```  
 <?xml version="1.0" encoding="utf-16"?>  
@@ -240,7 +240,7 @@ ms.lasthandoff: 08/29/2017
 </Preset>  
 ```  
   
- <span data-ttu-id="3692c-119">JSON</span><span class="sxs-lookup"><span data-stu-id="3692c-119">JSON</span></span>  
+ <span data-ttu-id="d7822-119">JSON</span><span class="sxs-lookup"><span data-stu-id="d7822-119">JSON</span></span>  
   
 ```  
 {  

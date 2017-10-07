@@ -1,6 +1,6 @@
 ---
 title: "Simulované zařízení & brány Azure IoT - lekci 1: nastavení NUC | Microsoft Docs"
-description: "Nastavte Intel NUC fungovat jako bránu IoT mezi senzor a Azure IoT Hub a shromažďovat informace o senzor odeslat do služby IoT Hub."
+description: "Nastavte Intel NUC toowork jako bránu IoT mezi senzor a Azure IoT Hub toocollect senzor informace a odeslat tooIoT rozbočovače."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,86 +17,86 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: b87974be9570f7d03fe84ae0a1d1fa7e346ff189
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c2146c7cd8ca54adbd0af279364ec8484be1b45b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="set-up-intel-nuc-as-an-iot-gateway"></a><span data-ttu-id="e6f1a-104">Nastavit Intel NUC jako bránu IoT</span><span class="sxs-lookup"><span data-stu-id="e6f1a-104">Set up Intel NUC as an IoT gateway</span></span>
+# <a name="set-up-intel-nuc-as-an-iot-gateway"></a><span data-ttu-id="30b00-104">Nastavit Intel NUC jako bránu IoT</span><span class="sxs-lookup"><span data-stu-id="30b00-104">Set up Intel NUC as an IoT gateway</span></span>
 
-## <a name="what-you-will-do"></a><span data-ttu-id="e6f1a-105">Co provedete</span><span class="sxs-lookup"><span data-stu-id="e6f1a-105">What you will do</span></span>
+## <a name="what-you-will-do"></a><span data-ttu-id="30b00-105">Co provedete</span><span class="sxs-lookup"><span data-stu-id="30b00-105">What you will do</span></span>
 
-- <span data-ttu-id="e6f1a-106">Nastavte Intel NUC jako bránu IoT.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-106">Set up Intel NUC as an IoT gateway.</span></span>
-- <span data-ttu-id="e6f1a-107">Nainstalujte balíček Azure IoT Edge na Intel NUC.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-107">Install the Azure IoT Edge package on Intel NUC.</span></span>
-- <span data-ttu-id="e6f1a-108">Spuštění ukázkové aplikace na "hello_world" Intel NUC ověření funkci brány.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-108">Run a "hello_world" sample application on Intel NUC to verify the gateway functionality.</span></span>
-<span data-ttu-id="e6f1a-109">Pokud máte potíže, vyhledejte řešení na [řešení potíží s stránky](iot-hub-gateway-kit-c-sim-troubleshooting.md).</span><span class="sxs-lookup"><span data-stu-id="e6f1a-109">If you have any problems, look for solutions on the [troubleshooting page](iot-hub-gateway-kit-c-sim-troubleshooting.md).</span></span>
+- <span data-ttu-id="30b00-106">Nastavte Intel NUC jako bránu IoT.</span><span class="sxs-lookup"><span data-stu-id="30b00-106">Set up Intel NUC as an IoT gateway.</span></span>
+- <span data-ttu-id="30b00-107">Nainstalujte balíček Azure IoT Edge hello Intel NUC.</span><span class="sxs-lookup"><span data-stu-id="30b00-107">Install hello Azure IoT Edge package on Intel NUC.</span></span>
+- <span data-ttu-id="30b00-108">Spuštění ukázkové aplikace na "hello_world" funkci Intel NUC tooverify hello brány.</span><span class="sxs-lookup"><span data-stu-id="30b00-108">Run a "hello_world" sample application on Intel NUC tooverify hello gateway functionality.</span></span>
+<span data-ttu-id="30b00-109">Pokud máte potíže, vyhledejte řešení na hello [řešení potíží s stránky](iot-hub-gateway-kit-c-sim-troubleshooting.md).</span><span class="sxs-lookup"><span data-stu-id="30b00-109">If you have any problems, look for solutions on hello [troubleshooting page](iot-hub-gateway-kit-c-sim-troubleshooting.md).</span></span>
 
-## <a name="what-you-will-learn"></a><span data-ttu-id="e6f1a-110">Co se dozvíte</span><span class="sxs-lookup"><span data-stu-id="e6f1a-110">What you will learn</span></span>
+## <a name="what-you-will-learn"></a><span data-ttu-id="30b00-110">Co se dozvíte</span><span class="sxs-lookup"><span data-stu-id="30b00-110">What you will learn</span></span>
 
-<span data-ttu-id="e6f1a-111">V této lekci se dozvíte:</span><span class="sxs-lookup"><span data-stu-id="e6f1a-111">In this lesson, you will learn:</span></span>
+<span data-ttu-id="30b00-111">V této lekci se dozvíte:</span><span class="sxs-lookup"><span data-stu-id="30b00-111">In this lesson, you will learn:</span></span>
 
-- <span data-ttu-id="e6f1a-112">Postup připojení Intel NUC s periferních zařízení.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-112">How to connect Intel NUC with peripherals.</span></span>
-- <span data-ttu-id="e6f1a-113">Postup instalace a aktualizace požadované balíčky na Intel NUC pomocí inteligentní Správce balíčků.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-113">How to install and update the required packages on Intel NUC using the Smart Package Manager.</span></span>
-- <span data-ttu-id="e6f1a-114">Postup spuštění ukázkové aplikace "hello_world" ověření funkci brány.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-114">How to run the "hello_world" sample application to verify the gateway functionality.</span></span>
+- <span data-ttu-id="30b00-112">Jak tooconnect Intel NUC s periferních zařízení.</span><span class="sxs-lookup"><span data-stu-id="30b00-112">How tooconnect Intel NUC with peripherals.</span></span>
+- <span data-ttu-id="30b00-113">Jak tooinstall a aktualizace hello požadované balíčky na Intel NUC pomocí hello inteligentní Správce balíčků.</span><span class="sxs-lookup"><span data-stu-id="30b00-113">How tooinstall and update hello required packages on Intel NUC using hello Smart Package Manager.</span></span>
+- <span data-ttu-id="30b00-114">Jak toorun hello "hello_world" ukázkové aplikace tooverify hello brány funkce.</span><span class="sxs-lookup"><span data-stu-id="30b00-114">How toorun hello "hello_world" sample application tooverify hello gateway functionality.</span></span>
 
-## <a name="what-you-need"></a><span data-ttu-id="e6f1a-115">Co potřebujete</span><span class="sxs-lookup"><span data-stu-id="e6f1a-115">What you need</span></span>
+## <a name="what-you-need"></a><span data-ttu-id="30b00-115">Co potřebujete</span><span class="sxs-lookup"><span data-stu-id="30b00-115">What you need</span></span>
 
-- <span data-ttu-id="e6f1a-116">Intel NUC Kit DE3815TYKE s sadě Intel IoT brány (Linux větru oblasti * 7.0.0.13) předinstalována.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-116">An Intel NUC Kit DE3815TYKE with the Intel IoT Gateway Software Suite (Wind River Linux *7.0.0.13) preinstalled.</span></span>
-- <span data-ttu-id="e6f1a-117">Kabel Ethernet.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-117">An Ethernet cable.</span></span>
-- <span data-ttu-id="e6f1a-118">Klávesnice.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-118">A keyboard.</span></span>
-- <span data-ttu-id="e6f1a-119">HDMI nebo VGA kabel.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-119">An HDMI or VGA cable.</span></span>
-- <span data-ttu-id="e6f1a-120">Monitorování s k portu HDMI nebo VGA.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-120">A monitor with an HDMI or VGA port.</span></span>
+- <span data-ttu-id="30b00-116">Intel NUC Kit DE3815TYKE s hello Intel IoT brány softwaru Suite (Linux větru oblasti * 7.0.0.13) předinstalována.</span><span class="sxs-lookup"><span data-stu-id="30b00-116">An Intel NUC Kit DE3815TYKE with hello Intel IoT Gateway Software Suite (Wind River Linux *7.0.0.13) preinstalled.</span></span>
+- <span data-ttu-id="30b00-117">Kabel Ethernet.</span><span class="sxs-lookup"><span data-stu-id="30b00-117">An Ethernet cable.</span></span>
+- <span data-ttu-id="30b00-118">Klávesnice.</span><span class="sxs-lookup"><span data-stu-id="30b00-118">A keyboard.</span></span>
+- <span data-ttu-id="30b00-119">HDMI nebo VGA kabel.</span><span class="sxs-lookup"><span data-stu-id="30b00-119">An HDMI or VGA cable.</span></span>
+- <span data-ttu-id="30b00-120">Monitorování s k portu HDMI nebo VGA.</span><span class="sxs-lookup"><span data-stu-id="30b00-120">A monitor with an HDMI or VGA port.</span></span>
 
 ![Brána Kit](media/iot-hub-gateway-kit-lessons/lesson1/kit_without_sensortag.png)
 
-## <a name="connect-intel-nuc-with-the-peripherals"></a><span data-ttu-id="e6f1a-122">Připojit Intel NUC s periferních zařízení</span><span class="sxs-lookup"><span data-stu-id="e6f1a-122">Connect Intel NUC with the peripherals</span></span>
+## <a name="connect-intel-nuc-with-hello-peripherals"></a><span data-ttu-id="30b00-122">Připojit Intel NUC s hello periferních zařízení</span><span class="sxs-lookup"><span data-stu-id="30b00-122">Connect Intel NUC with hello peripherals</span></span>
 
-<span data-ttu-id="e6f1a-123">Následující obrázek je příkladem NUC Intel, který je připojen k různým periferních zařízení:</span><span class="sxs-lookup"><span data-stu-id="e6f1a-123">The image below is an example of Intel NUC that is connected with various peripherals:</span></span>
+<span data-ttu-id="30b00-123">Následující obrázek Hello je příkladem NUC Intel, který je připojen k různým periferních zařízení:</span><span class="sxs-lookup"><span data-stu-id="30b00-123">hello image below is an example of Intel NUC that is connected with various peripherals:</span></span>
 
-1. <span data-ttu-id="e6f1a-124">Připojení k klávesnici.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-124">Connected to a keyboard.</span></span>
-2. <span data-ttu-id="e6f1a-125">Připojené k monitorování kabel VGA nebo HDMI kabel.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-125">Connected to the monitor by a VGA cable or HDMI cable.</span></span>
-3. <span data-ttu-id="e6f1a-126">Připojený k drátové síti pomocí kabelu Ethernet.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-126">Connected to a wired network by an Ethernet cable.</span></span>
-4. <span data-ttu-id="e6f1a-127">Připojení k napájení s napájecí kabel.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-127">Connected to the power supply with a power cable.</span></span>
+1. <span data-ttu-id="30b00-124">Připojené tooa klávesnice.</span><span class="sxs-lookup"><span data-stu-id="30b00-124">Connected tooa keyboard.</span></span>
+2. <span data-ttu-id="30b00-125">Připojení toohello monitorování kabel VGA nebo HDMI kabel.</span><span class="sxs-lookup"><span data-stu-id="30b00-125">Connected toohello monitor by a VGA cable or HDMI cable.</span></span>
+3. <span data-ttu-id="30b00-126">Připojené tooa drátové síti pomocí kabelu Ethernet.</span><span class="sxs-lookup"><span data-stu-id="30b00-126">Connected tooa wired network by an Ethernet cable.</span></span>
+4. <span data-ttu-id="30b00-127">Zdroj napájení připojené toohello s napájecí kabel.</span><span class="sxs-lookup"><span data-stu-id="30b00-127">Connected toohello power supply with a power cable.</span></span>
 
-![Intel NUC připojené k periferních zařízení](media/iot-hub-gateway-kit-lessons/lesson1/nuc.png)
+![Intel NUC připojené tooperipherals](media/iot-hub-gateway-kit-lessons/lesson1/nuc.png)
 
-## <a name="connect-to-the-intel-nuc-system-from-host-computer-via-secure-shell-ssh"></a><span data-ttu-id="e6f1a-129">Připojení k systému Intel NUC od hostitelského počítače pomocí protokolu Secure Shell (SSH)</span><span class="sxs-lookup"><span data-stu-id="e6f1a-129">Connect to the Intel NUC system from host computer via Secure Shell (SSH)</span></span>
+## <a name="connect-toohello-intel-nuc-system-from-host-computer-via-secure-shell-ssh"></a><span data-ttu-id="30b00-129">Připojení systému Intel NUC toohello od hostitelského počítače pomocí protokolu Secure Shell (SSH)</span><span class="sxs-lookup"><span data-stu-id="30b00-129">Connect toohello Intel NUC system from host computer via Secure Shell (SSH)</span></span>
 
-<span data-ttu-id="e6f1a-130">Zde je třeba klávesnice a monitorování, který chcete získat IP adresu vašeho NUC zařízení.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-130">Here you need keyboard and monitor to get the IP address of your NUC device.</span></span> <span data-ttu-id="e6f1a-131">Pokud už znáte IP adresu, můžete přeskočit ke kroku 3 v této části.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-131">If you already know the IP address, you can skip to step 3 in this section.</span></span>
+<span data-ttu-id="30b00-130">Zde je třeba klávesnice a monitorování tooget hello IP adresa vašeho NUC zařízení.</span><span class="sxs-lookup"><span data-stu-id="30b00-130">Here you need keyboard and monitor tooget hello IP address of your NUC device.</span></span> <span data-ttu-id="30b00-131">Pokud už znáte hello IP adresu, můžete přeskočit toostep 3 v této části.</span><span class="sxs-lookup"><span data-stu-id="30b00-131">If you already know hello IP address, you can skip toostep 3 in this section.</span></span>
 
-1. <span data-ttu-id="e6f1a-132">Zapněte Intel NUC stisknutím tlačítka napájení a protokolu v systému.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-132">Turn on Intel NUC by pressing the Power button and log in the system.</span></span>
+1. <span data-ttu-id="30b00-132">Zapněte Intel NUC stisknutím tlačítka napájení hello a protokolu systému hello.</span><span class="sxs-lookup"><span data-stu-id="30b00-132">Turn on Intel NUC by pressing hello Power button and log in hello system.</span></span>
 
-   <span data-ttu-id="e6f1a-133">Výchozí uživatelské jméno a heslo jsou obě `root`.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-133">The default user name and password are both `root`.</span></span>
+   <span data-ttu-id="30b00-133">Hello výchozí uživatelské jméno a heslo jsou obě `root`.</span><span class="sxs-lookup"><span data-stu-id="30b00-133">hello default user name and password are both `root`.</span></span>
 
-2. <span data-ttu-id="e6f1a-134">Získat IP adresu NUC spuštěním `ifconfig` příkaz.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-134">Get the IP address of NUC by running the `ifconfig` command.</span></span> <span data-ttu-id="e6f1a-135">Tento krok se provádí na NUC zařízení.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-135">This step is done on the NUC device.</span></span>
+2. <span data-ttu-id="30b00-134">Získat IP adresu hello NUC spuštěním hello `ifconfig` příkaz.</span><span class="sxs-lookup"><span data-stu-id="30b00-134">Get hello IP address of NUC by running hello `ifconfig` command.</span></span> <span data-ttu-id="30b00-135">Tento krok se provádí na hello NUC zařízení.</span><span class="sxs-lookup"><span data-stu-id="30b00-135">This step is done on hello NUC device.</span></span>
 
-   <span data-ttu-id="e6f1a-136">Tady je příklad výstupu příkazu.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-136">Here is an example of the command output.</span></span>
+   <span data-ttu-id="30b00-136">Tady je příklad výstupu příkazu hello.</span><span class="sxs-lookup"><span data-stu-id="30b00-136">Here is an example of hello command output.</span></span>
 
    ![výstup ifconfig zobrazující NUC IP](media/iot-hub-gateway-kit-lessons/lesson1/ifconfig.png)
 
-   <span data-ttu-id="e6f1a-138">V tomto příkladu hodnota, která odpovídá `inet addr:` je IP adresa, která musíte, když máte v plánu připojit se k Intel NUC vzdáleně z hostitelského počítače.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-138">In this example, the value that follows `inet addr:` is the IP address that you need when you plan to connect remotely from a host computer to Intel NUC.</span></span>
+   <span data-ttu-id="30b00-138">V tomto příkladu hello hodnotu, která odpovídá `inet addr:` je hello IP adresu, které musíte při plánování tooconnect vzdáleně z počítače tooIntel hostitele NUC.</span><span class="sxs-lookup"><span data-stu-id="30b00-138">In this example, hello value that follows `inet addr:` is hello IP address that you need when you plan tooconnect remotely from a host computer tooIntel NUC.</span></span>
 
-3. <span data-ttu-id="e6f1a-139">Použijte jeden z následující klienti SSH ze hostitelský počítač připojit k Intel NUC.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-139">Use one of the following SSH clients from your host machine to connect to Intel NUC.</span></span>
+3. <span data-ttu-id="30b00-139">Použijte jeden z následujících klientů SSH z vaší hostitele počítače tooconnect tooIntel NUC hello.</span><span class="sxs-lookup"><span data-stu-id="30b00-139">Use one of hello following SSH clients from your host machine tooconnect tooIntel NUC.</span></span>
 
-   - <span data-ttu-id="e6f1a-140">[PuTTY](http://www.putty.org/) pro systém Windows.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-140">[PuTTY](http://www.putty.org/) for Windows.</span></span>
-   - <span data-ttu-id="e6f1a-141">Sestavení v SSH klienta na Ubuntu nebo systému macOS.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-141">The build-in SSH client on Ubuntu or macOS.</span></span>
+   - <span data-ttu-id="30b00-140">[PuTTY](http://www.putty.org/) pro systém Windows.</span><span class="sxs-lookup"><span data-stu-id="30b00-140">[PuTTY](http://www.putty.org/) for Windows.</span></span>
+   - <span data-ttu-id="30b00-141">Hello sestavení v klient SSH na Ubuntu nebo systému macOS.</span><span class="sxs-lookup"><span data-stu-id="30b00-141">hello build-in SSH client on Ubuntu or macOS.</span></span>
 
-   <span data-ttu-id="e6f1a-142">Je efektivnější a produktivitu pracovat Intel NUC z hostitelského počítače.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-142">It is more efficient and productive to operate on Intel NUC from a host computer.</span></span> <span data-ttu-id="e6f1a-143">Je nutné IP adresu, uživatelské jméno a heslo pro připojení NUC prostřednictvím klient SSH.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-143">You need the the IP address, user name and password to connect the NUC via SSH client.</span></span> <span data-ttu-id="e6f1a-144">Tady je příklad použití SSH klienta v systému macOS.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-144">Here is the example use SSH client on macOS.</span></span>
-   <span data-ttu-id="e6f1a-145">![Klient SSH, které jsou spuštěné v systému macOS](media/iot-hub-gateway-kit-lessons/lesson1/ssh.png)</span><span class="sxs-lookup"><span data-stu-id="e6f1a-145">![SSH client running on macOS](media/iot-hub-gateway-kit-lessons/lesson1/ssh.png)</span></span>
+   <span data-ttu-id="30b00-142">Je efektivnější a produktivitu toooperate na Intel NUC z hostitelského počítače.</span><span class="sxs-lookup"><span data-stu-id="30b00-142">It is more efficient and productive toooperate on Intel NUC from a host computer.</span></span> <span data-ttu-id="30b00-143">Budete potřebovat hello hello IP adresu, uživatelské jméno a heslo tooconnect hello NUC prostřednictvím klient SSH.</span><span class="sxs-lookup"><span data-stu-id="30b00-143">You need hello hello IP address, user name and password tooconnect hello NUC via SSH client.</span></span> <span data-ttu-id="30b00-144">Zde je klient hello příklad použití SSH v systému macOS.</span><span class="sxs-lookup"><span data-stu-id="30b00-144">Here is hello example use SSH client on macOS.</span></span>
+   <span data-ttu-id="30b00-145">![Klient SSH, které jsou spuštěné v systému macOS](media/iot-hub-gateway-kit-lessons/lesson1/ssh.png)</span><span class="sxs-lookup"><span data-stu-id="30b00-145">![SSH client running on macOS](media/iot-hub-gateway-kit-lessons/lesson1/ssh.png)</span></span>
 
-## <a name="install-the-azure-iot-edge-package"></a><span data-ttu-id="e6f1a-146">Nainstalovat balíček Azure IoT Edge</span><span class="sxs-lookup"><span data-stu-id="e6f1a-146">Install the Azure IoT Edge package</span></span>
+## <a name="install-hello-azure-iot-edge-package"></a><span data-ttu-id="30b00-146">Nainstalovat balíček Azure IoT Edge hello</span><span class="sxs-lookup"><span data-stu-id="30b00-146">Install hello Azure IoT Edge package</span></span>
 
-<span data-ttu-id="e6f1a-147">Balíček Azure IoT Edge obsahuje předem kompilovaném binární soubory sady SDK a jeho závislosti.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-147">The Azure IoT Edge package contains the pre-compiled binaries of the SDK and its dependencies.</span></span> <span data-ttu-id="e6f1a-148">Tyto binární soubory jsou Azure IoT Edge, sady SDK Azure IoT a odpovídající nástroje.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-148">These binaries are Azure IoT Edge, the Azure IoT SDK and the corresponding tools.</span></span> <span data-ttu-id="e6f1a-149">Balíček obsahuje také "hello_world" ukázkovou aplikaci, která slouží k ověření funkci brány.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-149">The package also contains a "hello_world" sample application that is used to validate the gateway functionality.</span></span> <span data-ttu-id="e6f1a-150">IoT okraj je základní součástí brány.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-150">IoT Edge is the core part of the gateway.</span></span> <span data-ttu-id="e6f1a-151">K instalaci balíčku, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="e6f1a-151">To install the package, follow these steps:</span></span>
+<span data-ttu-id="30b00-147">balíček Azure IoT Edge Hello obsahuje hello předem kompilovaném binární soubory hello SDK a jeho závislosti.</span><span class="sxs-lookup"><span data-stu-id="30b00-147">hello Azure IoT Edge package contains hello pre-compiled binaries of hello SDK and its dependencies.</span></span> <span data-ttu-id="30b00-148">Tyto binární soubory jsou Azure IoT Edge, hello sady SDK Azure IoT a odpovídající nástroje hello.</span><span class="sxs-lookup"><span data-stu-id="30b00-148">These binaries are Azure IoT Edge, hello Azure IoT SDK and hello corresponding tools.</span></span> <span data-ttu-id="30b00-149">balíček Hello také obsahuje ukázkovou aplikaci "hello_world", která je funkcí brány použité toovalidate hello.</span><span class="sxs-lookup"><span data-stu-id="30b00-149">hello package also contains a "hello_world" sample application that is used toovalidate hello gateway functionality.</span></span> <span data-ttu-id="30b00-150">IoT okraj je hello základní součástí hello brány.</span><span class="sxs-lookup"><span data-stu-id="30b00-150">IoT Edge is hello core part of hello gateway.</span></span> <span data-ttu-id="30b00-151">tooinstall hello balíček, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="30b00-151">tooinstall hello package, follow these steps:</span></span>
 
-1. <span data-ttu-id="e6f1a-152">Přidejte úložiště cloudu IoT spuštěním následujících příkazů v okně terminálu:</span><span class="sxs-lookup"><span data-stu-id="e6f1a-152">Add the IoT cloud repository by running the following commands in a terminal window:</span></span>
+1. <span data-ttu-id="30b00-152">Spuštěním následujících příkazů v okně terminálu hello přidejte hello IoT cloudové úložiště:</span><span class="sxs-lookup"><span data-stu-id="30b00-152">Add hello IoT cloud repository by running hello following commands in a terminal window:</span></span>
 
    ```bash
    rpm --import http://iotdk.intel.com/misc/iot_pub.key
    smart channel --add IoT_Cloud type=rpm-md name="IoT_Cloud" baseurl=http://iotdk.intel.com/repos/iot-cloud/wrlinux7/rcpl13/ -y
    ```
 
-   <span data-ttu-id="e6f1a-153">`rpm` Příkaz importuje klíč ot. / min.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-153">The `rpm` command imports the rpm key.</span></span> <span data-ttu-id="e6f1a-154">`smart channel` Příkaz přidá rpm kanál pro inteligentní Správce balíčků.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-154">The `smart channel` command adds the rpm channel to the Smart Package Manager.</span></span> <span data-ttu-id="e6f1a-155">Před spuštěním `smart update` příkazu, uvidíte výstup jako níže.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-155">Before you run the `smart update` command, you see an output like below.</span></span>
+   <span data-ttu-id="30b00-153">Hello `rpm` příkaz importuje hello klíč ot. / min.</span><span class="sxs-lookup"><span data-stu-id="30b00-153">hello `rpm` command imports hello rpm key.</span></span> <span data-ttu-id="30b00-154">Hello `smart channel` příkaz přidá hello rpm kanálu toohello inteligentní Správce balíčků.</span><span class="sxs-lookup"><span data-stu-id="30b00-154">hello `smart channel` command adds hello rpm channel toohello Smart Package Manager.</span></span> <span data-ttu-id="30b00-155">Před spuštěním hello `smart update` příkazu, uvidíte výstup jako níže.</span><span class="sxs-lookup"><span data-stu-id="30b00-155">Before you run hello `smart update` command, you see an output like below.</span></span>
 
    ![ot. / min a inteligentní kanál příkazy výstup](media/iot-hub-gateway-kit-lessons/lesson1/rpm_smart_channel.png)
 
@@ -104,36 +104,36 @@ ms.lasthandoff: 07/11/2017
    smart update
    ```
 
-2. <span data-ttu-id="e6f1a-157">Nainstalujte balíček spuštěním následujícího příkazu:</span><span class="sxs-lookup"><span data-stu-id="e6f1a-157">Install the package by running the following command:</span></span>
+2. <span data-ttu-id="30b00-157">Instalovat balíček hello spuštěním hello následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="30b00-157">Install hello package by running hello following command:</span></span>
 
    ```bash
    smart install packagegroup-cloud-azure -y
    ```
 
-   <span data-ttu-id="e6f1a-158">`packagegroup-cloud-azure`je název balíčku.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-158">`packagegroup-cloud-azure` is the name of the package.</span></span> <span data-ttu-id="e6f1a-159">`smart install` Příkaz slouží k instalaci balíčku.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-159">The `smart install` command is used to install the package.</span></span>
+   <span data-ttu-id="30b00-158">`packagegroup-cloud-azure`je název hello hello balíčku.</span><span class="sxs-lookup"><span data-stu-id="30b00-158">`packagegroup-cloud-azure` is hello name of hello package.</span></span> <span data-ttu-id="30b00-159">Hello `smart install` příkaz je použité tooinstall hello balíčku.</span><span class="sxs-lookup"><span data-stu-id="30b00-159">hello `smart install` command is used tooinstall hello package.</span></span>
 
-   <span data-ttu-id="e6f1a-160">Po instalaci balíčku Intel NUC budou fungovat jako brána.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-160">After the package is installed, Intel NUC is expected to work as a gateway.</span></span>
+   <span data-ttu-id="30b00-160">Po instalaci balíčku hello Intel NUC je očekávané toowork jako brána.</span><span class="sxs-lookup"><span data-stu-id="30b00-160">After hello package is installed, Intel NUC is expected toowork as a gateway.</span></span>
 
-## <a name="run-the-azure-iot-edge-helloworld-sample-application"></a><span data-ttu-id="e6f1a-161">Spuštění ukázkové aplikace Azure IoT Edge "hello_world"</span><span class="sxs-lookup"><span data-stu-id="e6f1a-161">Run the Azure IoT Edge "hello_world" sample application</span></span>
+## <a name="run-hello-azure-iot-edge-helloworld-sample-application"></a><span data-ttu-id="30b00-161">Spustit hello Azure IoT Edge "hello_world" ukázkové aplikace</span><span class="sxs-lookup"><span data-stu-id="30b00-161">Run hello Azure IoT Edge "hello_world" sample application</span></span>
 
-<span data-ttu-id="e6f1a-162">Přejděte na `azureiotgatewaysdk/samples` a spusťte ukázkové "hello_world" ukázkovou aplikaci.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-162">Go to `azureiotgatewaysdk/samples` and run the sample "hello_world" sample application.</span></span> <span data-ttu-id="e6f1a-163">Tato ukázková aplikace vytvoří brány z `hello_world.json` soubor a používá základní součásti architektury Azure IoT okraj do protokolu zprávu hello world soubor každých 5 sekund.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-163">This sample application creates a gateway from the `hello_world.json` file and uses the fundamental components of the Azure IoT Edge architecture to log a hello world message to a file every 5 seconds.</span></span>
+<span data-ttu-id="30b00-162">Přejděte příliš`azureiotgatewaysdk/samples` a spusťte hello ukázka "hello_world" ukázkovou aplikaci.</span><span class="sxs-lookup"><span data-stu-id="30b00-162">Go too`azureiotgatewaysdk/samples` and run hello sample "hello_world" sample application.</span></span> <span data-ttu-id="30b00-163">Tato ukázková aplikace vytvoří brány z hello `hello_world.json` soubor a používá základní součástí hello Azure IoT Edge architektura toolog souboru tooa zprávy hello world hello každých 5 sekund.</span><span class="sxs-lookup"><span data-stu-id="30b00-163">This sample application creates a gateway from hello `hello_world.json` file and uses hello fundamental components of hello Azure IoT Edge architecture toolog a hello world message tooa file every 5 seconds.</span></span>
 
-<span data-ttu-id="e6f1a-164">Ukázka "hello_world" ukázkovou aplikaci můžete spustit tak, že spustíte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="e6f1a-164">You can run the sample "hello_world" sample application by running the following command:</span></span>
+<span data-ttu-id="30b00-164">Hello ukázka "hello_world" ukázkovou aplikaci můžete spustit spuštěním hello následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="30b00-164">You can run hello sample "hello_world" sample application by running hello following command:</span></span>
 
 ```bash
 cd /usr/share/azureiotgatewaysdk/samples/hello_world/
 ./hello_world hello_world.json
 ```
 
-<span data-ttu-id="e6f1a-165">Pokud funkci brány funguje správně, vytvoří ukázkovou aplikaci následující výstup:</span><span class="sxs-lookup"><span data-stu-id="e6f1a-165">The sample application produces the following output if the gateway functionality is working correctly:</span></span>
+<span data-ttu-id="30b00-165">Ukázková aplikace Hello vytváří hello následující výstup, pokud funkci brány hello funguje správně:</span><span class="sxs-lookup"><span data-stu-id="30b00-165">hello sample application produces hello following output if hello gateway functionality is working correctly:</span></span>
 
 ![výstup aplikace](media/iot-hub-gateway-kit-lessons/lesson1/hello_world.png)
 
-<span data-ttu-id="e6f1a-167">Pokud máte potíže, vyhledejte řešení na [řešení potíží s stránky](iot-hub-gateway-kit-c-troubleshooting.md).</span><span class="sxs-lookup"><span data-stu-id="e6f1a-167">If you have any problems, look for solutions on the [troubleshooting page](iot-hub-gateway-kit-c-troubleshooting.md).</span></span>
+<span data-ttu-id="30b00-167">Pokud máte potíže, vyhledejte řešení na hello [řešení potíží s stránky](iot-hub-gateway-kit-c-troubleshooting.md).</span><span class="sxs-lookup"><span data-stu-id="30b00-167">If you have any problems, look for solutions on hello [troubleshooting page](iot-hub-gateway-kit-c-troubleshooting.md).</span></span>
 
-## <a name="summary"></a><span data-ttu-id="e6f1a-168">Souhrn</span><span class="sxs-lookup"><span data-stu-id="e6f1a-168">Summary</span></span>
+## <a name="summary"></a><span data-ttu-id="30b00-168">Souhrn</span><span class="sxs-lookup"><span data-stu-id="30b00-168">Summary</span></span>
 
-<span data-ttu-id="e6f1a-169">Blahopřejeme!</span><span class="sxs-lookup"><span data-stu-id="e6f1a-169">Congratulations!</span></span> <span data-ttu-id="e6f1a-170">Dokončili jste nastavení Intel NUC jako brána.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-170">You've finished setting up Intel NUC as a gateway.</span></span> <span data-ttu-id="e6f1a-171">Teď jste připravení přejít Další lekce nastavit hostitelského počítače, vytvoření služby Azure IoT hub a zaregistrovat logické zařízení Azure IoT hub.</span><span class="sxs-lookup"><span data-stu-id="e6f1a-171">Now you're ready to move on to the next lesson to set up your host computer, create an Azure IoT hub and register your Azure IoT hub logical device.</span></span>
+<span data-ttu-id="30b00-169">Blahopřejeme!</span><span class="sxs-lookup"><span data-stu-id="30b00-169">Congratulations!</span></span> <span data-ttu-id="30b00-170">Dokončili jste nastavení Intel NUC jako brána.</span><span class="sxs-lookup"><span data-stu-id="30b00-170">You've finished setting up Intel NUC as a gateway.</span></span> <span data-ttu-id="30b00-171">Nyní jste připraveni toomove na toohello Další lekce tooset až hostitelského počítače vytvoření služby Azure IoT hub a zaregistrujte logické zařízení Azure IoT hub.</span><span class="sxs-lookup"><span data-stu-id="30b00-171">Now you're ready toomove on toohello next lesson tooset up your host computer, create an Azure IoT hub and register your Azure IoT hub logical device.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="e6f1a-172">Další kroky</span><span class="sxs-lookup"><span data-stu-id="e6f1a-172">Next steps</span></span>
-[<span data-ttu-id="e6f1a-173">Příprava hostitelský počítač a Azure IoT hub</span><span class="sxs-lookup"><span data-stu-id="e6f1a-173">Get your host computer and Azure IoT hub ready</span></span>](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-win32.md)
+## <a name="next-steps"></a><span data-ttu-id="30b00-172">Další kroky</span><span class="sxs-lookup"><span data-stu-id="30b00-172">Next steps</span></span>
+[<span data-ttu-id="30b00-173">Příprava hostitelský počítač a Azure IoT hub</span><span class="sxs-lookup"><span data-stu-id="30b00-173">Get your host computer and Azure IoT hub ready</span></span>](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-win32.md)

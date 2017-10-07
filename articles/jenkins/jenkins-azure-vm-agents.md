@@ -1,5 +1,5 @@
 ---
-title: "Použití agentů virtuálních počítačů Azure pro průběžnou integraci pomocí Jenkinse"
+title: "virtuální počítač Azure agenty aaaUse pro nepřetržitou integraci s volaných."
 description: "Agenti virtuálních počítačů Azure jako podřízené servery Jenkinse"
 services: multiple
 documentationcenter: 
@@ -15,66 +15,66 @@ ms.topic: hero-article
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 0b22a559fbc03158a6d4398603d1a7d2874d7b67
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2388e6919d0280372166fbd325d80dafb00d7550
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-azure-vm-agents-for-continuous-integration-with-jenkins"></a><span data-ttu-id="ceee7-103">Použití agentů virtuálních počítačů Azure pro průběžnou integraci pomocí Jenkinse</span><span class="sxs-lookup"><span data-stu-id="ceee7-103">Use Azure VM agents for continuous integration with Jenkins.</span></span>
+# <a name="use-azure-vm-agents-for-continuous-integration-with-jenkins"></a><span data-ttu-id="af351-103">Použití agentů virtuálních počítačů Azure pro průběžnou integraci pomocí Jenkinse</span><span class="sxs-lookup"><span data-stu-id="af351-103">Use Azure VM agents for continuous integration with Jenkins.</span></span>
 
-<span data-ttu-id="ceee7-104">Tento rychlý start předvádí, jak pomocí modulu plug-in Jenkins Azure VM Agents vytvořit v Azure linuxového (Ubuntu) agenta na vyžádání.</span><span class="sxs-lookup"><span data-stu-id="ceee7-104">This quickstart shows how to use the Jenkins Azure VM Agents plugin to create an on-demand Linux (Ubuntu) agent in Azure.</span></span>
+<span data-ttu-id="af351-104">Tento rychlý start ukazuje, jak toouse hello agenty virtuálních počítačů Azure volaných modul plug-in toocreate agenta Linux (Ubuntu) na vyžádání v Azure.</span><span class="sxs-lookup"><span data-stu-id="af351-104">This quickstart shows how toouse hello Jenkins Azure VM Agents plugin toocreate an on-demand Linux (Ubuntu) agent in Azure.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="ceee7-105">Požadavky</span><span class="sxs-lookup"><span data-stu-id="ceee7-105">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="af351-105">Požadavky</span><span class="sxs-lookup"><span data-stu-id="af351-105">Prerequisites</span></span>
 
-<span data-ttu-id="ceee7-106">K dokončení tohoto rychlého startu je potřeba:</span><span class="sxs-lookup"><span data-stu-id="ceee7-106">To complete this quickstart:</span></span>
+<span data-ttu-id="af351-106">toocomplete tento rychlý start:</span><span class="sxs-lookup"><span data-stu-id="af351-106">toocomplete this quickstart:</span></span>
 
-* <span data-ttu-id="ceee7-107">Pokud ještě nemáte hlavní server Jenkinse, můžete začít s využitím [šablony řešení](install-jenkins-solution-template.md).</span><span class="sxs-lookup"><span data-stu-id="ceee7-107">If you do not already have a Jenkins master, you can start with the [Solution Template](install-jenkins-solution-template.md)</span></span> 
-* <span data-ttu-id="ceee7-108">Pokud ještě nemáte instanční objekt Azure, přečtěte si téma [Vytvoření instančního objektu Azure pomocí Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="ceee7-108">Refer to [Create an Azure Service principal with Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) if you do not already have an Azure service principal.</span></span>
+* <span data-ttu-id="af351-107">Pokud již nemáte volaných master, můžete začít s hello [šablona řešení](install-jenkins-solution-template.md)</span><span class="sxs-lookup"><span data-stu-id="af351-107">If you do not already have a Jenkins master, you can start with hello [Solution Template](install-jenkins-solution-template.md)</span></span> 
+* <span data-ttu-id="af351-108">Odkazovat příliš[vytvořit objekt služby Azure pomocí Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) Pokud již nemáte objektu zabezpečení služby Azure.</span><span class="sxs-lookup"><span data-stu-id="af351-108">Refer too[Create an Azure Service principal with Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) if you do not already have an Azure service principal.</span></span>
 
-## <a name="install-azure-vm-agents-plugin"></a><span data-ttu-id="ceee7-109">Instalace modulu plug-in Azure VM Agents</span><span class="sxs-lookup"><span data-stu-id="ceee7-109">Install Azure VM Agents plugin</span></span>
+## <a name="install-azure-vm-agents-plugin"></a><span data-ttu-id="af351-109">Instalace modulu plug-in Azure VM Agents</span><span class="sxs-lookup"><span data-stu-id="af351-109">Install Azure VM Agents plugin</span></span>
 
-<span data-ttu-id="ceee7-110">Pokud začínáte z [šablony řešení](install-jenkins-solution-template.md), modul plug-in Azure VM Agents je nainstalovaný na hlavním serveru Jenkinse.</span><span class="sxs-lookup"><span data-stu-id="ceee7-110">If you start from the [Solution Template](install-jenkins-solution-template.md), the Azure VM Agent plugin is installed in the Jenkins master.</span></span>
+<span data-ttu-id="af351-110">Když spustíte z hello [šablona řešení](install-jenkins-solution-template.md), modul plug-in hello agenta virtuálního počítače Azure je nainstalován v předloze volaných hello.</span><span class="sxs-lookup"><span data-stu-id="af351-110">If you start from hello [Solution Template](install-jenkins-solution-template.md), hello Azure VM Agent plugin is installed in hello Jenkins master.</span></span>
 
-<span data-ttu-id="ceee7-111">Jinak nainstalujte modul plug-in **Azure VM Agents** z řídicího panelu Jenkinse.</span><span class="sxs-lookup"><span data-stu-id="ceee7-111">Otherwise, install the **Azure VM Agents** plugin from within the Jenkins dashboard.</span></span>
+<span data-ttu-id="af351-111">Jinak, instalovat hello **agenti virtuálních počítačů Azure** modulu plug-in v rámci hello volaných řídicího panelu.</span><span class="sxs-lookup"><span data-stu-id="af351-111">Otherwise, install hello **Azure VM Agents** plugin from within hello Jenkins dashboard.</span></span>
 
-## <a name="configure-the-plugin"></a><span data-ttu-id="ceee7-112">Konfigurace modulu plug-in</span><span class="sxs-lookup"><span data-stu-id="ceee7-112">Configure the plugin</span></span>
+## <a name="configure-hello-plugin"></a><span data-ttu-id="af351-112">Konfigurace modulu plug-in hello</span><span class="sxs-lookup"><span data-stu-id="af351-112">Configure hello plugin</span></span>
 
-* <span data-ttu-id="ceee7-113">Na řídicím panelu Jenkinse klikněte na **Manage Jenkins (Správa Jenkinse) -> Configure System (Konfigurace systému)**.</span><span class="sxs-lookup"><span data-stu-id="ceee7-113">Within the Jenkins dashboard, click **Manage Jenkins -> Configure System ->**.</span></span> <span data-ttu-id="ceee7-114">Přejděte do dolní části stránky a vyhledejte část s rozevíracím seznamem **Add new cloud** (Přidat nový cloud).</span><span class="sxs-lookup"><span data-stu-id="ceee7-114">Scroll to the bottom of the page and find the section with the dropdown **Add new cloud**.</span></span> <span data-ttu-id="ceee7-115">Z nabídky vyberte **Microsoft Azure VM Agents**.</span><span class="sxs-lookup"><span data-stu-id="ceee7-115">From the menu, select **Microsoft Azure VM Agents**</span></span>
-* <span data-ttu-id="ceee7-116">Vyberte existující účet z rozevíracího seznamu Azure Credentials (Přihlašovací údaje Azure).</span><span class="sxs-lookup"><span data-stu-id="ceee7-116">Select an existing account from the Azure Credentials dropdown.</span></span>  <span data-ttu-id="ceee7-117">Pokud chcete přidat nový **Microsoft Azure Service Principal** (Instanční objekt Microsoft Azure), zadejte následující hodnoty: Subscription ID (ID předplatného), Client ID (ID klienta), Client Secret (Tajný klíč klienta) a OAuth 2.0 Token Endpoint (Koncový bod tokenu OAuth 2.0).</span><span class="sxs-lookup"><span data-stu-id="ceee7-117">To add a new **Microsoft Azure Service Principal,** enter the following values: Subscription ID, Client ID, Client Secret, and OAuth 2.0 Token Endpoint.</span></span>
+* <span data-ttu-id="af351-113">V rámci hello volaných řídicí panel, klikněte na **volaných spravovat -> Konfigurovat systém ->**.</span><span class="sxs-lookup"><span data-stu-id="af351-113">Within hello Jenkins dashboard, click **Manage Jenkins -> Configure System ->**.</span></span> <span data-ttu-id="af351-114">Posuňte se toohello dolní části stránky hello a najít oddíl hello s rozevíracím hello **přidat nové cloudové**.</span><span class="sxs-lookup"><span data-stu-id="af351-114">Scroll toohello bottom of hello page and find hello section with hello dropdown **Add new cloud**.</span></span> <span data-ttu-id="af351-115">Hello nabídce vyberte **agenti virtuálního počítače Microsoft Azure**</span><span class="sxs-lookup"><span data-stu-id="af351-115">From hello menu, select **Microsoft Azure VM Agents**</span></span>
+* <span data-ttu-id="af351-116">Z rozevíracího seznamu hello přihlašovací údaje Azure vyberte existující účet.</span><span class="sxs-lookup"><span data-stu-id="af351-116">Select an existing account from hello Azure Credentials dropdown.</span></span>  <span data-ttu-id="af351-117">tooadd nový **Microsoft Azure Service Principal** zadejte hello následující hodnoty: ID předplatného, ID klienta, sdílený tajný klíč klienta a koncový bod tokenu OAuth 2.0.</span><span class="sxs-lookup"><span data-stu-id="af351-117">tooadd a new **Microsoft Azure Service Principal,** enter hello following values: Subscription ID, Client ID, Client Secret, and OAuth 2.0 Token Endpoint.</span></span>
 
 ![Přihlašovací údaje Azure](./media/jenkins-azure-vm-agents/service-principal.png)
 
-* <span data-ttu-id="ceee7-119">Klikněte na **Verify configuration** (Ověřit konfiguraci) a zkontrolujte správnost konfigurace profilu.</span><span class="sxs-lookup"><span data-stu-id="ceee7-119">Click **Verify configuration** to make sure that the profile configuration is correct.</span></span>
-* <span data-ttu-id="ceee7-120">Uložte konfiguraci a pokračujte k dalšímu kroku.</span><span class="sxs-lookup"><span data-stu-id="ceee7-120">Save the configuration, and continue to the next step.</span></span>
+* <span data-ttu-id="af351-119">Klikněte na tlačítko **ověřte konfiguraci** toomake, že tato konfigurace profilu hello je správná.</span><span class="sxs-lookup"><span data-stu-id="af351-119">Click **Verify configuration** toomake sure that hello profile configuration is correct.</span></span>
+* <span data-ttu-id="af351-120">Uložte konfiguraci hello a pokračovat dalším krokem toohello.</span><span class="sxs-lookup"><span data-stu-id="af351-120">Save hello configuration, and continue toohello next step.</span></span>
 
-## <a name="template-configuration"></a><span data-ttu-id="ceee7-121">Konfigurace šablony</span><span class="sxs-lookup"><span data-stu-id="ceee7-121">Template configuration</span></span>
+## <a name="template-configuration"></a><span data-ttu-id="af351-121">Konfigurace šablony</span><span class="sxs-lookup"><span data-stu-id="af351-121">Template configuration</span></span>
 
-### <a name="general-configuration"></a><span data-ttu-id="ceee7-122">Obecná konfigurace</span><span class="sxs-lookup"><span data-stu-id="ceee7-122">General configuration</span></span>
-<span data-ttu-id="ceee7-123">Dále nakonfigurujte šablonu, která se použije k definování agenta virtuálního počítače Azure.</span><span class="sxs-lookup"><span data-stu-id="ceee7-123">Next, configure a template for use to define an Azure VM agent.</span></span> 
+### <a name="general-configuration"></a><span data-ttu-id="af351-122">Obecná konfigurace</span><span class="sxs-lookup"><span data-stu-id="af351-122">General configuration</span></span>
+<span data-ttu-id="af351-123">Potom nakonfigurujte šablonu pro použití toodefine agenta virtuálního počítače Azure.</span><span class="sxs-lookup"><span data-stu-id="af351-123">Next, configure a template for use toodefine an Azure VM agent.</span></span> 
 
-* <span data-ttu-id="ceee7-124">Kliknutím na **Add** (Přidat) přidejte šablonu.</span><span class="sxs-lookup"><span data-stu-id="ceee7-124">Click **Add** to add a template.</span></span> 
-* <span data-ttu-id="ceee7-125">Zadejte název nové šablony.</span><span class="sxs-lookup"><span data-stu-id="ceee7-125">Provide a name for your new template.</span></span> 
-* <span data-ttu-id="ceee7-126">Jako popisek zadejte ubuntu.</span><span class="sxs-lookup"><span data-stu-id="ceee7-126">For the label, enter  "ubuntu."</span></span> <span data-ttu-id="ceee7-127">Tento popisek se používá během konfigurace úlohy.</span><span class="sxs-lookup"><span data-stu-id="ceee7-127">This label is used during the job configuration.</span></span>
-* <span data-ttu-id="ceee7-128">V poli se seznamem vyberte požadovanou oblast.</span><span class="sxs-lookup"><span data-stu-id="ceee7-128">Select the desired region from the combo box.</span></span>
-* <span data-ttu-id="ceee7-129">Vyberte požadovanou velikost virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="ceee7-129">Select the desired VM size.</span></span>
-* <span data-ttu-id="ceee7-130">Zadejte název účtu Azure Storage. Pokud pole ponecháte prázdné, použije se výchozí název jenkinsarmst.</span><span class="sxs-lookup"><span data-stu-id="ceee7-130">Specify the Azure Storage account name or leave it blank to use the default name "jenkinsarmst."</span></span>
-* <span data-ttu-id="ceee7-131">Zadejte dobu uchování v minutách.</span><span class="sxs-lookup"><span data-stu-id="ceee7-131">Specify the retention time in minutes.</span></span> <span data-ttu-id="ceee7-132">Toto nastavení definuje počet minut, po které může Jenkins čekat před automatickým odstraněním nečinného agenta.</span><span class="sxs-lookup"><span data-stu-id="ceee7-132">This setting defines the number of minutes Jenkins can wait before automatically deleting an idle agent.</span></span> <span data-ttu-id="ceee7-133">Pokud nechcete, aby se nečinní agenti automaticky odstraňovali, zadejte 0.</span><span class="sxs-lookup"><span data-stu-id="ceee7-133">Specify 0 if you do not want idle agents to be deleted automatically.</span></span>
+* <span data-ttu-id="af351-124">Klikněte na tlačítko **přidat** tooadd šablonu.</span><span class="sxs-lookup"><span data-stu-id="af351-124">Click **Add** tooadd a template.</span></span> 
+* <span data-ttu-id="af351-125">Zadejte název nové šablony.</span><span class="sxs-lookup"><span data-stu-id="af351-125">Provide a name for your new template.</span></span> 
+* <span data-ttu-id="af351-126">Pro hello štítek zadejte "ubuntu."</span><span class="sxs-lookup"><span data-stu-id="af351-126">For hello label, enter  "ubuntu."</span></span> <span data-ttu-id="af351-127">Tento popisek se používá během hello úlohy konfigurace.</span><span class="sxs-lookup"><span data-stu-id="af351-127">This label is used during hello job configuration.</span></span>
+* <span data-ttu-id="af351-128">Vyberte požadovanou oblast hello z pole se seznamem hello.</span><span class="sxs-lookup"><span data-stu-id="af351-128">Select hello desired region from hello combo box.</span></span>
+* <span data-ttu-id="af351-129">Vyberte hello potřeby velikost virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="af351-129">Select hello desired VM size.</span></span>
+* <span data-ttu-id="af351-130">Zadejte název účtu úložiště Azure hello nebo necháte prázdné toouse hello výchozí název "jenkinsarmst."</span><span class="sxs-lookup"><span data-stu-id="af351-130">Specify hello Azure Storage account name or leave it blank toouse hello default name "jenkinsarmst."</span></span>
+* <span data-ttu-id="af351-131">Zadejte dobu uchování hello v minutách.</span><span class="sxs-lookup"><span data-stu-id="af351-131">Specify hello retention time in minutes.</span></span> <span data-ttu-id="af351-132">Toto nastavení definuje hello počet minut, po které může volaných čekat před odstraněním automaticky nečinnosti agenta.</span><span class="sxs-lookup"><span data-stu-id="af351-132">This setting defines hello number of minutes Jenkins can wait before automatically deleting an idle agent.</span></span> <span data-ttu-id="af351-133">Pokud nechcete, aby automaticky odstraněn toobe nečinnosti agenty, zadejte 0.</span><span class="sxs-lookup"><span data-stu-id="af351-133">Specify 0 if you do not want idle agents toobe deleted automatically.</span></span>
 
 ![Obecná konfigurace](./media/jenkins-azure-vm-agents/general-config.png)
 
-### <a name="image-configuration"></a><span data-ttu-id="ceee7-135">Konfigurace image</span><span class="sxs-lookup"><span data-stu-id="ceee7-135">Image configuration</span></span>
+### <a name="image-configuration"></a><span data-ttu-id="af351-135">Konfigurace image</span><span class="sxs-lookup"><span data-stu-id="af351-135">Image configuration</span></span>
 
-<span data-ttu-id="ceee7-136">Pokud chcete vytvořit linuxového (Ubuntu) agenta, vyberte **Image reference** (Odkaz na image) a použijte následující konfiguraci jako příklad.</span><span class="sxs-lookup"><span data-stu-id="ceee7-136">To create a Linux (Ubuntu) agent, select **Image reference** and use the following configuration as an example.</span></span> <span data-ttu-id="ceee7-137">Nejnovější podporované image Azure najdete na webu [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1).</span><span class="sxs-lookup"><span data-stu-id="ceee7-137">Refer to [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) for the latest Azure supported images.</span></span>
+<span data-ttu-id="af351-136">toocreate agenta Linux (Ubuntu), vyberte **referenční bitové kopie** a hello použijte následující konfiguraci jako příklad.</span><span class="sxs-lookup"><span data-stu-id="af351-136">toocreate a Linux (Ubuntu) agent, select **Image reference** and use hello following configuration as an example.</span></span> <span data-ttu-id="af351-137">Odkazovat příliš[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) hello nejnovější Azure podporováno obrázky.</span><span class="sxs-lookup"><span data-stu-id="af351-137">Refer too[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) for hello latest Azure supported images.</span></span>
 
-* <span data-ttu-id="ceee7-138">Image Publisher (Vydavatel image): Canonical</span><span class="sxs-lookup"><span data-stu-id="ceee7-138">Image Publisher: Canonical</span></span>
-* <span data-ttu-id="ceee7-139">Image Offer (Nabídka image): UbuntuServer</span><span class="sxs-lookup"><span data-stu-id="ceee7-139">Image Offer: UbuntuServer</span></span>
-* <span data-ttu-id="ceee7-140">Image Sku (Skladová jednotka image): 14.04.5-LTS</span><span class="sxs-lookup"><span data-stu-id="ceee7-140">Image Sku: 14.04.5-LTS</span></span>
-* <span data-ttu-id="ceee7-141">Image version (Verze image): latest (nejnovější)</span><span class="sxs-lookup"><span data-stu-id="ceee7-141">Image version: latest</span></span>
-* <span data-ttu-id="ceee7-142">OS Type (Typ operačního systému): Linux</span><span class="sxs-lookup"><span data-stu-id="ceee7-142">OS Type: Linux</span></span>
-* <span data-ttu-id="ceee7-143">Launch method (Metoda spuštění): SSH</span><span class="sxs-lookup"><span data-stu-id="ceee7-143">Launch method: SSH</span></span>
-* <span data-ttu-id="ceee7-144">Zadejte přihlašovací údaje správce</span><span class="sxs-lookup"><span data-stu-id="ceee7-144">Provide an admin credentials</span></span>
-* <span data-ttu-id="ceee7-145">Jako skript pro inicializaci virtuálního počítače zadejte:</span><span class="sxs-lookup"><span data-stu-id="ceee7-145">For VM initialization script, enter:</span></span>
+* <span data-ttu-id="af351-138">Image Publisher (Vydavatel image): Canonical</span><span class="sxs-lookup"><span data-stu-id="af351-138">Image Publisher: Canonical</span></span>
+* <span data-ttu-id="af351-139">Image Offer (Nabídka image): UbuntuServer</span><span class="sxs-lookup"><span data-stu-id="af351-139">Image Offer: UbuntuServer</span></span>
+* <span data-ttu-id="af351-140">Image Sku (Skladová jednotka image): 14.04.5-LTS</span><span class="sxs-lookup"><span data-stu-id="af351-140">Image Sku: 14.04.5-LTS</span></span>
+* <span data-ttu-id="af351-141">Image version (Verze image): latest (nejnovější)</span><span class="sxs-lookup"><span data-stu-id="af351-141">Image version: latest</span></span>
+* <span data-ttu-id="af351-142">OS Type (Typ operačního systému): Linux</span><span class="sxs-lookup"><span data-stu-id="af351-142">OS Type: Linux</span></span>
+* <span data-ttu-id="af351-143">Launch method (Metoda spuštění): SSH</span><span class="sxs-lookup"><span data-stu-id="af351-143">Launch method: SSH</span></span>
+* <span data-ttu-id="af351-144">Zadejte přihlašovací údaje správce</span><span class="sxs-lookup"><span data-stu-id="af351-144">Provide an admin credentials</span></span>
+* <span data-ttu-id="af351-145">Jako skript pro inicializaci virtuálního počítače zadejte:</span><span class="sxs-lookup"><span data-stu-id="af351-145">For VM initialization script, enter:</span></span>
 ```
 # Install Java
 sudo apt-get -y update
@@ -84,28 +84,28 @@ sudo apt-get install -y openjdk-7-jdk
 ```
 ![Konfigurace image](./media/jenkins-azure-vm-agents/image-config.png)
 
-* <span data-ttu-id="ceee7-147">Kliknutím na **Verify Template** (Ověřit šablonu) ověřte konfiguraci.</span><span class="sxs-lookup"><span data-stu-id="ceee7-147">Click **Verify Template** to verify the configuration.</span></span>
-* <span data-ttu-id="ceee7-148">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="ceee7-148">Click **Save**.</span></span>
+* <span data-ttu-id="af351-147">Klikněte na tlačítko **ověřte šablony** tooverify hello konfigurace.</span><span class="sxs-lookup"><span data-stu-id="af351-147">Click **Verify Template** tooverify hello configuration.</span></span>
+* <span data-ttu-id="af351-148">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="af351-148">Click **Save**.</span></span>
 
-## <a name="create-a-job-in-jenkins"></a><span data-ttu-id="ceee7-149">Vytvoření úlohy v Jenkinsu</span><span class="sxs-lookup"><span data-stu-id="ceee7-149">Create a job in Jenkins</span></span>
+## <a name="create-a-job-in-jenkins"></a><span data-ttu-id="af351-149">Vytvoření úlohy v Jenkinsu</span><span class="sxs-lookup"><span data-stu-id="af351-149">Create a job in Jenkins</span></span>
 
-* <span data-ttu-id="ceee7-150">Na řídicím panelu Jenkinse klikněte na **New Item** (Nová položka).</span><span class="sxs-lookup"><span data-stu-id="ceee7-150">Within the Jenkins dashboard, click **New Item**.</span></span> 
-* <span data-ttu-id="ceee7-151">Zadejte název, vyberte **Freestyle project** (Volný projekt) a klikněte na **OK**.</span><span class="sxs-lookup"><span data-stu-id="ceee7-151">Enter a name and select **Freestyle project** and click **OK**.</span></span>
-* <span data-ttu-id="ceee7-152">Na kartě **General** (Obecné) vyberte možnost „Restrict where project can be run“ (Omezit, kde je možné projekt spustit) a do pole Label Expression (Výraz popisku) zadejte ubuntu.</span><span class="sxs-lookup"><span data-stu-id="ceee7-152">In the **General** tab, select "Restrict where project can be run" and type "ubuntu" in Label Expression.</span></span> <span data-ttu-id="ceee7-153">V rozevíracím seznamu se teď zobrazí ubuntu.</span><span class="sxs-lookup"><span data-stu-id="ceee7-153">You now see "ubuntu" in the dropdown.</span></span>
-* <span data-ttu-id="ceee7-154">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="ceee7-154">Click **Save**.</span></span>
+* <span data-ttu-id="af351-150">V rámci hello volaných řídicí panel, klikněte na **novou položku**.</span><span class="sxs-lookup"><span data-stu-id="af351-150">Within hello Jenkins dashboard, click **New Item**.</span></span> 
+* <span data-ttu-id="af351-151">Zadejte název, vyberte **Freestyle project** (Volný projekt) a klikněte na **OK**.</span><span class="sxs-lookup"><span data-stu-id="af351-151">Enter a name and select **Freestyle project** and click **OK**.</span></span>
+* <span data-ttu-id="af351-152">V hello **Obecné** karty, vyberte možnost "Omezit, kde je možné spustit projekt" a typ "ubuntu" ve výrazu popisku.</span><span class="sxs-lookup"><span data-stu-id="af351-152">In hello **General** tab, select "Restrict where project can be run" and type "ubuntu" in Label Expression.</span></span> <span data-ttu-id="af351-153">Zobrazí "ubuntu" v rozevírací nabídce hello.</span><span class="sxs-lookup"><span data-stu-id="af351-153">You now see "ubuntu" in hello dropdown.</span></span>
+* <span data-ttu-id="af351-154">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="af351-154">Click **Save**.</span></span>
 
 ![Nastavení úlohy](./media/jenkins-azure-vm-agents/job-config.png)
 
-## <a name="build-your-new-project"></a><span data-ttu-id="ceee7-156">Sestavení nového projektu</span><span class="sxs-lookup"><span data-stu-id="ceee7-156">Build your new project</span></span>
+## <a name="build-your-new-project"></a><span data-ttu-id="af351-156">Sestavení nového projektu</span><span class="sxs-lookup"><span data-stu-id="af351-156">Build your new project</span></span>
 
-* <span data-ttu-id="ceee7-157">Vraťte se na řídicí panel Jenkinse.</span><span class="sxs-lookup"><span data-stu-id="ceee7-157">Go back to the Jenkins dashboard.</span></span>
-* <span data-ttu-id="ceee7-158">Klikněte pravým tlačítkem na novou úlohu, kterou jste vytvořili, a pak klikněte na **Build now** (Sestavit).</span><span class="sxs-lookup"><span data-stu-id="ceee7-158">Right-click the new job you created, then click **Build now**.</span></span> <span data-ttu-id="ceee7-159">Spustí se sestavování.</span><span class="sxs-lookup"><span data-stu-id="ceee7-159">A build is kicked off.</span></span> 
-* <span data-ttu-id="ceee7-160">Jakmile bude sestavování dokončeno, přejděte na **Console output** (Výstup konzoly).</span><span class="sxs-lookup"><span data-stu-id="ceee7-160">Once the build is complete, go to **Console output**.</span></span> <span data-ttu-id="ceee7-161">Uvidíte, že se sestavení provedlo vzdáleně v Azure.</span><span class="sxs-lookup"><span data-stu-id="ceee7-161">You see that the build was performed remotely on Azure.</span></span>
+* <span data-ttu-id="af351-157">Vraťte se zpátky toohello volaných řídicího panelu.</span><span class="sxs-lookup"><span data-stu-id="af351-157">Go back toohello Jenkins dashboard.</span></span>
+* <span data-ttu-id="af351-158">Vytvořit novou úlohu hello klikněte pravým tlačítkem, poté klikněte na tlačítko **sestavení teď**.</span><span class="sxs-lookup"><span data-stu-id="af351-158">Right-click hello new job you created, then click **Build now**.</span></span> <span data-ttu-id="af351-159">Spustí se sestavování.</span><span class="sxs-lookup"><span data-stu-id="af351-159">A build is kicked off.</span></span> 
+* <span data-ttu-id="af351-160">Po dokončení sestavení hello přejděte příliš**konzole výstup**.</span><span class="sxs-lookup"><span data-stu-id="af351-160">Once hello build is complete, go too**Console output**.</span></span> <span data-ttu-id="af351-161">Uvidíte, že sestavení hello byla provedena vzdáleně na platformě Azure.</span><span class="sxs-lookup"><span data-stu-id="af351-161">You see that hello build was performed remotely on Azure.</span></span>
 
 ![Výstup konzoly](./media/jenkins-azure-vm-agents/console-output.png)
 
-## <a name="reference"></a><span data-ttu-id="ceee7-163">Referenční informace</span><span class="sxs-lookup"><span data-stu-id="ceee7-163">Reference</span></span>
+## <a name="reference"></a><span data-ttu-id="af351-163">Referenční informace</span><span class="sxs-lookup"><span data-stu-id="af351-163">Reference</span></span>
 
-* <span data-ttu-id="ceee7-164">Video Azure Friday: [Průběžná integrace pomocí Jenkinse s využitím agentů virtuálních počítačů Azure](https://channel9.msdn.com/Shows/Azure-Friday/Continuous-Integration-with-Jenkins-Using-Azure-VM-Agents)</span><span class="sxs-lookup"><span data-stu-id="ceee7-164">Azure Friday video: [Continuous Integration with Jenkins using Azure VM agents](https://channel9.msdn.com/Shows/Azure-Friday/Continuous-Integration-with-Jenkins-Using-Azure-VM-Agents)</span></span>
-* <span data-ttu-id="ceee7-165">Informace o podpoře a možnosti konfigurace: [Wikiweb modulu plug-in Azure VM Agent pro Jenkins](https://wiki.jenkins-ci.org/display/JENKINS/Azure+VM+Agents+Plugin)</span><span class="sxs-lookup"><span data-stu-id="ceee7-165">Support information and configuration options:  [Azure VM Agent Jenkins Plugin Wiki](https://wiki.jenkins-ci.org/display/JENKINS/Azure+VM+Agents+Plugin)</span></span> 
+* <span data-ttu-id="af351-164">Video Azure Friday: [Průběžná integrace pomocí Jenkinse s využitím agentů virtuálních počítačů Azure](https://channel9.msdn.com/Shows/Azure-Friday/Continuous-Integration-with-Jenkins-Using-Azure-VM-Agents)</span><span class="sxs-lookup"><span data-stu-id="af351-164">Azure Friday video: [Continuous Integration with Jenkins using Azure VM agents](https://channel9.msdn.com/Shows/Azure-Friday/Continuous-Integration-with-Jenkins-Using-Azure-VM-Agents)</span></span>
+* <span data-ttu-id="af351-165">Informace o podpoře a možnosti konfigurace: [Wikiweb modulu plug-in Azure VM Agent pro Jenkins](https://wiki.jenkins-ci.org/display/JENKINS/Azure+VM+Agents+Plugin)</span><span class="sxs-lookup"><span data-stu-id="af351-165">Support information and configuration options:  [Azure VM Agent Jenkins Plugin Wiki](https://wiki.jenkins-ci.org/display/JENKINS/Azure+VM+Agents+Plugin)</span></span> 
 

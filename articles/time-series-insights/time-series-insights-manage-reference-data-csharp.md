@@ -1,6 +1,6 @@
 ---
-title: "Spravovat referenčních dat pro prostředí Statistika řady čas Azure pomocí jazyka C# | Microsoft Docs"
-description: "Tento kurz se zaměřuje na postup správy referenčních dat pro prostředí Azure časové řady Statistika s použitím jazyka C#"
+title: "aaaManage referenčních dat pro prostředí Azure časové řady Statistika s použitím jazyka C# | Microsoft Docs"
+description: "Tento kurz popisuje, jak toomanage referenční data pro prostředí Azure časové řady Statistika s použitím jazyka C#"
 keywords: 
 services: time-series-insights
 documentationcenter: 
@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: venkatja
-ms.openlocfilehash: d3afa81286227fa0cc270c5911a8dd5913eb7e6c
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 77b85aa7f9a5dc46c132afa56c82df48f41577fd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a><span data-ttu-id="0a590-103">Spravovat referenčních dat pro prostředí Statistika řady čas Azure pomocí jazyka C#</span><span class="sxs-lookup"><span data-stu-id="0a590-103">Manage reference data for an Azure Time Series Insights environment by using C#</span></span>
+# <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a><span data-ttu-id="51c0a-103">Spravovat referenčních dat pro prostředí Statistika řady čas Azure pomocí jazyka C#</span><span class="sxs-lookup"><span data-stu-id="51c0a-103">Manage reference data for an Azure Time Series Insights environment by using C#</span></span>
 
-<span data-ttu-id="0a590-104">Tato ukázka C# ukazuje, jak spravovat referenčních dat pro prostředí Statistika Azure časové řady.</span><span class="sxs-lookup"><span data-stu-id="0a590-104">This C# sample demonstrates how to manage reference data for an Azure Time Series Insights environment.</span></span>
-<span data-ttu-id="0a590-105">Před spuštěním ukázky, ujistěte se, že následující kroky.</span><span class="sxs-lookup"><span data-stu-id="0a590-105">Before running the sample, ensure the following steps are completed.</span></span>
-1. <span data-ttu-id="0a590-106">Byl vytvořen referenční datové sady pomocí [v tomto článku](time-series-insights-add-reference-data-set.md).</span><span class="sxs-lookup"><span data-stu-id="0a590-106">A reference data set has been created using [this article](time-series-insights-add-reference-data-set.md).</span></span>
-2. <span data-ttu-id="0a590-107">Přístupový token, který používá při spuštění aplikace je získané prostřednictvím rozhraní API Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="0a590-107">The access token used when running the application is acquired through the Azure Active Directory API.</span></span> <span data-ttu-id="0a590-108">Tento token musí být předán `Authorization` záhlaví každého požadavku rozhraní API dotazu.</span><span class="sxs-lookup"><span data-stu-id="0a590-108">This token should be passed in the `Authorization` header of every Query API request.</span></span> <span data-ttu-id="0a590-109">Nastavení neinteraktivní aplikace, najdete v článku [ověřování a autorizace](time-series-insights-authentication-and-authorization.md) článku.</span><span class="sxs-lookup"><span data-stu-id="0a590-109">For setting up non-interactive applications, see the [Authentication and authorization](time-series-insights-authentication-and-authorization.md) article.</span></span>
-3. <span data-ttu-id="0a590-110">Všechny konstanty definované na začátku ukázky jsou správně nastaveny.</span><span class="sxs-lookup"><span data-stu-id="0a590-110">All the constants defined at the beginning of the sample are correctly set.</span></span>
+<span data-ttu-id="51c0a-104">Tento příklad C# znázorňuje, jak toomanage referenční data pro prostředí Statistika Azure časové řady.</span><span class="sxs-lookup"><span data-stu-id="51c0a-104">This C# sample demonstrates how toomanage reference data for an Azure Time Series Insights environment.</span></span>
+<span data-ttu-id="51c0a-105">Před spuštěné ukázkový text hello zkontrolujte, zda jsou dokončeny hello následující kroky.</span><span class="sxs-lookup"><span data-stu-id="51c0a-105">Before running hello sample, ensure hello following steps are completed.</span></span>
+1. <span data-ttu-id="51c0a-106">Byl vytvořen referenční datové sady pomocí [v tomto článku](time-series-insights-add-reference-data-set.md).</span><span class="sxs-lookup"><span data-stu-id="51c0a-106">A reference data set has been created using [this article](time-series-insights-add-reference-data-set.md).</span></span>
+2. <span data-ttu-id="51c0a-107">přístupový token Hello používá při spuštění aplikace hello je získaná hello API služby Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="51c0a-107">hello access token used when running hello application is acquired through hello Azure Active Directory API.</span></span> <span data-ttu-id="51c0a-108">Tento token musí být předán hello `Authorization` záhlaví každého požadavku rozhraní API dotazu.</span><span class="sxs-lookup"><span data-stu-id="51c0a-108">This token should be passed in hello `Authorization` header of every Query API request.</span></span> <span data-ttu-id="51c0a-109">Nastavení neinteraktivní aplikace, najdete v části hello [ověřování a autorizace](time-series-insights-authentication-and-authorization.md) článku.</span><span class="sxs-lookup"><span data-stu-id="51c0a-109">For setting up non-interactive applications, see hello [Authentication and authorization](time-series-insights-authentication-and-authorization.md) article.</span></span>
+3. <span data-ttu-id="51c0a-110">Všechny konstanty hello definované od začátku hello hello ukázky jsou správně nastaveny.</span><span class="sxs-lookup"><span data-stu-id="51c0a-110">All hello constants defined at hello beginning of hello sample are correctly set.</span></span>
 
-## <a name="c-sample"></a><span data-ttu-id="0a590-111">Ukázka v jazyce C#</span><span class="sxs-lookup"><span data-stu-id="0a590-111">C# sample</span></span>
+## <a name="c-sample"></a><span data-ttu-id="51c0a-111">Ukázka v jazyce C#</span><span class="sxs-lookup"><span data-stu-id="51c0a-111">C# sample</span></span>
 
 ```csharp
 // Copyright (c) Microsoft Corporation.  All rights reserved.
@@ -46,24 +46,24 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 {
     public static class Program
     {
-        // SET the environment fqdn.
+        // SET hello environment fqdn.
         private static string EnvironmentFqdn = "#DUMMY#.env.timeseries.azure.com";
 
-        // SET the environment reference data set name used when creating it.
+        // SET hello environment reference data set name used when creating it.
         private static string EnvironmentReferenceDataSetName = "#DUMMY#";
 
         // For automated execution under application identity,
         // use application created in Active Directory.
-        // To create the application in AAD, follow the steps provided here:
+        // toocreate hello application in AAD, follow hello steps provided here:
         // https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization
 
-        // SET the application ID of application registered in your Azure Active Directory
+        // SET hello application ID of application registered in your Azure Active Directory
         private static string ApplicationClientId = "#DUMMY#";
 
-        // SET the application key of the application registered in your Azure Active Directory
+        // SET hello application key of hello application registered in your Azure Active Directory
         private static string ApplicationClientSecret = "#DUMMY#";
 
-        // SET the Azure Active Directory tenant.
+        // SET hello Azure Active Directory tenant.
         private static string Tenant = "#DUMMY#.onmicrosoft.com";
 
         private static async Task DemoReferenceDataAsync()
@@ -155,7 +155,7 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
             if (ApplicationClientId == "#DUMMY#" || ApplicationClientSecret == "#DUMMY#" || Tenant.StartsWith("#DUMMY#"))
             {
                 throw new Exception(
-                    $"Use the link {"https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization"} to update the values of 'ApplicationClientId', 'ApplicationClientSecret' and 'Tenant'.");
+                    $"Use hello link {"https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization"} tooupdate hello values of 'ApplicationClientId', 'ApplicationClientSecret' and 'Tenant'.");
             }
 
             var authenticationContext = new AuthenticationContext(
@@ -168,7 +168,7 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
                     clientId: ApplicationClientId,
                     clientSecret: ApplicationClientSecret));
 
-            // Show interactive logon dialog to acquire token on behalf of the user.
+            // Show interactive logon dialog tooacquire token on behalf of hello user.
             // Suitable for native apps, and not on server-side of a web application.
             //AuthenticationResult token = await authenticationContext.AcquireTokenAsync(
             //    resource: "https://api.timeseries.azure.com/",
@@ -232,6 +232,6 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 }
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="0a590-112">Další kroky</span><span class="sxs-lookup"><span data-stu-id="0a590-112">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="51c0a-112">Další kroky</span><span class="sxs-lookup"><span data-stu-id="51c0a-112">Next steps</span></span>
 
-<span data-ttu-id="0a590-113">Úplnou referenční dokumentaci k rozhraní API najdete v dokumentu [Rozhraní API referenčních dat](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api).</span><span class="sxs-lookup"><span data-stu-id="0a590-113">For the complete API reference, see [Reference Data API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) document.</span></span>
+<span data-ttu-id="51c0a-113">Hello úplný referenční dokumentace rozhraní API, najdete v části [dat referenční dokumentace rozhraní API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) dokumentu.</span><span class="sxs-lookup"><span data-stu-id="51c0a-113">For hello complete API reference, see [Reference Data API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) document.</span></span>

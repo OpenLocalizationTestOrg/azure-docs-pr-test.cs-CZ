@@ -1,6 +1,6 @@
 ---
-title: "Vložení dat do virtuálních počítačů Windows v Azure | Microsoft Docs"
-description: "Toto téma popisuje, jak se vložit vlastních dat do virtuálního počítače Azure při vytvoření instance a hledání vlastních dat v systému Windows nebo Linux."
+title: "aaaInject data do virtuálních počítačů Windows v Azure | Microsoft Docs"
+description: "Toto téma popisuje, jak tooinject vlastních dat do Azure virtuální počítače, když je vytvořena hello instance a jak toolocate hello vlastních dat v systému Windows nebo Linux."
 services: virtual-machines-windows
 documentationcenter: 
 author: squillace
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2016
 ms.author: rasquill
-ms.openlocfilehash: 7836577f16940b618a2912012ba8a8e7160980e8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2b2a12e5d0942fa957387ace7e38a353dbf27197
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="injecting-custom-data-into-an-azure-virtual-machine"></a><span data-ttu-id="f8e8c-103">Vložení vlastní data do virtuálního počítače Azure</span><span class="sxs-lookup"><span data-stu-id="f8e8c-103">Injecting custom data into an Azure virtual machine</span></span>
+# <a name="injecting-custom-data-into-an-azure-virtual-machine"></a><span data-ttu-id="d6396-103">Vložení vlastní data do virtuálního počítače Azure</span><span class="sxs-lookup"><span data-stu-id="d6396-103">Injecting custom data into an Azure virtual machine</span></span>
 > [!IMPORTANT] 
-> <span data-ttu-id="f8e8c-104">Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="f8e8c-104">Azure has two different deployment models for creating and working with resources: [Resource Manager and Classic](../../../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="f8e8c-105">Tento článek se zabývá pomocí modelu nasazení Classic.</span><span class="sxs-lookup"><span data-stu-id="f8e8c-105">This article covers using the Classic deployment model.</span></span> <span data-ttu-id="f8e8c-106">Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="f8e8c-106">Microsoft recommends that most new deployments use the Resource Manager model.</span></span> <span data-ttu-id="f8e8c-107">Informace o rozšíření vlastních skriptů pomocí modelu Resource Manager najdete v tématu [zde](../extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="f8e8c-107">For information about using the Custom Script Extension with the Resource Manager model, see [here](../extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span>
+> <span data-ttu-id="d6396-104">Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="d6396-104">Azure has two different deployment models for creating and working with resources: [Resource Manager and Classic](../../../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="d6396-105">Tento článek se zabývá pomocí modelu nasazení Classic hello.</span><span class="sxs-lookup"><span data-stu-id="d6396-105">This article covers using hello Classic deployment model.</span></span> <span data-ttu-id="d6396-106">Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello.</span><span class="sxs-lookup"><span data-stu-id="d6396-106">Microsoft recommends that most new deployments use hello Resource Manager model.</span></span> <span data-ttu-id="d6396-107">Informace o pomocí modelu Resource Manager hello hello rozšíření vlastních skriptů najdete v tématu [zde](../extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="d6396-107">For information about using hello Custom Script Extension with hello Resource Manager model, see [here](../extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span>
 
 [!INCLUDE [virtual-machines-common-classic-inject-custom-data](../../../../includes/virtual-machines-common-classic-inject-custom-data.md)]
 

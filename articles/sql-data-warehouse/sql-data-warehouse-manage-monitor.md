@@ -1,6 +1,6 @@
 ---
-title: "Monitorování úlohy pomocí zobrazení dynamické správy | Microsoft Docs"
-description: "Naučte se monitorovat pomocí zobrazení dynamické správy úlohy."
+title: "aaaMonitor úlohy pomocí zobrazení dynamické správy | Microsoft Docs"
+description: "Zjistěte, jak toomonitor úlohy pomocí zobrazení dynamické správy."
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
@@ -15,41 +15,41 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
-ms.openlocfilehash: 7ce6c2cdf1e28852da536414533ccdcdaeb437e5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: acccf952d165ccec3de3b4b1c633b18bbbf78077
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="monitor-your-workload-using-dmvs"></a><span data-ttu-id="a27a9-103">Monitorování vaší úlohy pomocí DMV</span><span class="sxs-lookup"><span data-stu-id="a27a9-103">Monitor your workload using DMVs</span></span>
-<span data-ttu-id="a27a9-104">Tento článek popisuje, jak sledovat vaše úlohy a prozkoumat provádění dotazů v Azure SQL Data Warehouse pomocí zobrazení dynamické správy (zobrazení dynamické správy).</span><span class="sxs-lookup"><span data-stu-id="a27a9-104">This article describes how to use Dynamic Management Views (DMVs) to monitor your workload and investigate query execution in Azure SQL Data Warehouse.</span></span>
+# <a name="monitor-your-workload-using-dmvs"></a><span data-ttu-id="5d803-103">Monitorování vaší úlohy pomocí DMV</span><span class="sxs-lookup"><span data-stu-id="5d803-103">Monitor your workload using DMVs</span></span>
+<span data-ttu-id="5d803-104">Tento článek popisuje, jak toouse zobrazení dynamické správy (zobrazení dynamické správy) toomonitor vaše úlohy a prozkoumejte provádění dotazů v Azure SQL Data Warehouse.</span><span class="sxs-lookup"><span data-stu-id="5d803-104">This article describes how toouse Dynamic Management Views (DMVs) toomonitor your workload and investigate query execution in Azure SQL Data Warehouse.</span></span>
 
-## <a name="permissions"></a><span data-ttu-id="a27a9-105">Oprávnění</span><span class="sxs-lookup"><span data-stu-id="a27a9-105">Permissions</span></span>
-<span data-ttu-id="a27a9-106">Dotaz zobrazení dynamické správy v tomto článku, musíte stav zobrazení databáze nebo řízení oprávnění.</span><span class="sxs-lookup"><span data-stu-id="a27a9-106">To query the DMVs in this article, you need either VIEW DATABASE STATE or CONTROL permission.</span></span> <span data-ttu-id="a27a9-107">Stav databáze poskytující zobrazení obvykle je upřednostňovaný oprávnění, protože to je mnohem víc omezující.</span><span class="sxs-lookup"><span data-stu-id="a27a9-107">Usually granting VIEW DATABASE STATE is the preferred permission as it is much more restrictive.</span></span>
+## <a name="permissions"></a><span data-ttu-id="5d803-105">Oprávnění</span><span class="sxs-lookup"><span data-stu-id="5d803-105">Permissions</span></span>
+<span data-ttu-id="5d803-106">tooquery hello zobrazení dynamické správy v tomto článku, potřebujete oprávnění stav zobrazení databáze nebo ovládací PRVEK.</span><span class="sxs-lookup"><span data-stu-id="5d803-106">tooquery hello DMVs in this article, you need either VIEW DATABASE STATE or CONTROL permission.</span></span> <span data-ttu-id="5d803-107">Stav databáze poskytující zobrazení obvykle je hello preferované oprávnění, protože to je mnohem víc omezující.</span><span class="sxs-lookup"><span data-stu-id="5d803-107">Usually granting VIEW DATABASE STATE is hello preferred permission as it is much more restrictive.</span></span>
 
 ```sql
-GRANT VIEW DATABASE STATE TO myuser;
+GRANT VIEW DATABASE STATE toomyuser;
 ```
 
-## <a name="monitor-connections"></a><span data-ttu-id="a27a9-108">Monitorování připojení</span><span class="sxs-lookup"><span data-stu-id="a27a9-108">Monitor connections</span></span>
-<span data-ttu-id="a27a9-109">Všechny přihlášení k SQL Data Warehouse jsou zaznamenány do [sys.dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].</span><span class="sxs-lookup"><span data-stu-id="a27a9-109">All logins to SQL Data Warehouse are logged to [sys.dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].</span></span>  <span data-ttu-id="a27a9-110">Tato DMV obsahuje posledních 10 000 přihlášení.</span><span class="sxs-lookup"><span data-stu-id="a27a9-110">This DMV contains the last 10,000 logins.</span></span>  <span data-ttu-id="a27a9-111">Session_id je primární klíč a je přiřazen postupně pro každou novou přihlášení.</span><span class="sxs-lookup"><span data-stu-id="a27a9-111">The session_id is the primary key and is assigned sequentially for each new logon.</span></span>
+## <a name="monitor-connections"></a><span data-ttu-id="5d803-108">Monitorování připojení</span><span class="sxs-lookup"><span data-stu-id="5d803-108">Monitor connections</span></span>
+<span data-ttu-id="5d803-109">Všechny přihlášení tooSQL datového skladu se protokolují příliš[sys.dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].</span><span class="sxs-lookup"><span data-stu-id="5d803-109">All logins tooSQL Data Warehouse are logged too[sys.dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].</span></span>  <span data-ttu-id="5d803-110">Tato DMV obsahuje hello posledních 10 000 přihlášení.</span><span class="sxs-lookup"><span data-stu-id="5d803-110">This DMV contains hello last 10,000 logins.</span></span>  <span data-ttu-id="5d803-111">Hello session_id je hello primární klíč a je přiřazen postupně pro každou novou přihlášení.</span><span class="sxs-lookup"><span data-stu-id="5d803-111">hello session_id is hello primary key and is assigned sequentially for each new logon.</span></span>
 
 ```sql
 -- Other Active Connections
 SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <> session_id();
 ```
 
-## <a name="monitor-query-execution"></a><span data-ttu-id="a27a9-112">Při provádění dotazu monitorování</span><span class="sxs-lookup"><span data-stu-id="a27a9-112">Monitor query execution</span></span>
-<span data-ttu-id="a27a9-113">Všechny dotazy spouštěné v SQL Data Warehouse jsou zaznamenány do [sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests].</span><span class="sxs-lookup"><span data-stu-id="a27a9-113">All queries executed on SQL Data Warehouse are logged to [sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests].</span></span>  <span data-ttu-id="a27a9-114">Tato DMV obsahuje posledních 10 000 dotazy spouštěné.</span><span class="sxs-lookup"><span data-stu-id="a27a9-114">This DMV contains the last 10,000 queries executed.</span></span>  <span data-ttu-id="a27a9-115">Request_id jednoznačně identifikuje každý dotaz a je primární klíč pro tento DMV.</span><span class="sxs-lookup"><span data-stu-id="a27a9-115">The request_id uniquely identifies each query and is the primary key for this DMV.</span></span>  <span data-ttu-id="a27a9-116">Request_id postupně přiřazen při každém novém dotazu a je s předponou QID, který zastupuje ID dotazu.</span><span class="sxs-lookup"><span data-stu-id="a27a9-116">The request_id is assigned sequentially for each new query and is prefixed with QID, which stands for query ID.</span></span>  <span data-ttu-id="a27a9-117">Dotaz na tento DMV pro danou session_id uvedeny všechny dotazy pro danou přihlášení.</span><span class="sxs-lookup"><span data-stu-id="a27a9-117">Querying this DMV for a given session_id shows all queries for a given logon.</span></span>
+## <a name="monitor-query-execution"></a><span data-ttu-id="5d803-112">Při provádění dotazu monitorování</span><span class="sxs-lookup"><span data-stu-id="5d803-112">Monitor query execution</span></span>
+<span data-ttu-id="5d803-113">Všechny dotazy spouštěné v SQL Data Warehouse se protokolují příliš[sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests].</span><span class="sxs-lookup"><span data-stu-id="5d803-113">All queries executed on SQL Data Warehouse are logged too[sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests].</span></span>  <span data-ttu-id="5d803-114">Tato DMV obsahuje hello posledních 10 000 dotazy spouštěné.</span><span class="sxs-lookup"><span data-stu-id="5d803-114">This DMV contains hello last 10,000 queries executed.</span></span>  <span data-ttu-id="5d803-115">Hello request_id jednoznačně identifikuje každý dotaz a je hello primární klíč pro tento DMV.</span><span class="sxs-lookup"><span data-stu-id="5d803-115">hello request_id uniquely identifies each query and is hello primary key for this DMV.</span></span>  <span data-ttu-id="5d803-116">Hello request_id postupně přiřazen při každém novém dotazu a je s předponou QID, který zastupuje ID dotazu.</span><span class="sxs-lookup"><span data-stu-id="5d803-116">hello request_id is assigned sequentially for each new query and is prefixed with QID, which stands for query ID.</span></span>  <span data-ttu-id="5d803-117">Dotaz na tento DMV pro danou session_id uvedeny všechny dotazy pro danou přihlášení.</span><span class="sxs-lookup"><span data-stu-id="5d803-117">Querying this DMV for a given session_id shows all queries for a given logon.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="a27a9-118">Uložené procedury použít víc ID požadavku.</span><span class="sxs-lookup"><span data-stu-id="a27a9-118">Stored procedures use multiple Request IDs.</span></span>  <span data-ttu-id="a27a9-119">ID požadavku přiřazené postupně.</span><span class="sxs-lookup"><span data-stu-id="a27a9-119">Request IDs are assigned in sequential order.</span></span> 
+> <span data-ttu-id="5d803-118">Uložené procedury použít víc ID požadavku.</span><span class="sxs-lookup"><span data-stu-id="5d803-118">Stored procedures use multiple Request IDs.</span></span>  <span data-ttu-id="5d803-119">ID požadavku přiřazené postupně.</span><span class="sxs-lookup"><span data-stu-id="5d803-119">Request IDs are assigned in sequential order.</span></span> 
 > 
 > 
 
-<span data-ttu-id="a27a9-120">Tady jsou kroků k prozkoumání plány provádění dotazů a časy pro konkrétní dotaz.</span><span class="sxs-lookup"><span data-stu-id="a27a9-120">Here are steps to follow to investigate query execution plans and times for a particular query.</span></span>
+<span data-ttu-id="5d803-120">Tady jsou kroky toofollow tooinvestigate dotazu provádění plány a časy pro konkrétní dotaz.</span><span class="sxs-lookup"><span data-stu-id="5d803-120">Here are steps toofollow tooinvestigate query execution plans and times for a particular query.</span></span>
 
-### <a name="step-1-identify-the-query-you-wish-to-investigate"></a><span data-ttu-id="a27a9-121">Krok 1: Identifikace dotaz, který chcete prozkoumat</span><span class="sxs-lookup"><span data-stu-id="a27a9-121">STEP 1: Identify the query you wish to investigate</span></span>
+### <a name="step-1-identify-hello-query-you-wish-tooinvestigate"></a><span data-ttu-id="5d803-121">Krok 1: Identifikace hello dotaz, zda že chcete tooinvestigate</span><span class="sxs-lookup"><span data-stu-id="5d803-121">STEP 1: Identify hello query you wish tooinvestigate</span></span>
 ```sql
 -- Monitor active queries
 SELECT * 
@@ -63,18 +63,18 @@ SELECT TOP 10 *
 FROM sys.dm_pdw_exec_requests 
 ORDER BY total_elapsed_time DESC;
 
--- Find a query with the Label 'My Query'
--- Use brackets when querying the label column, as it it a key word
+-- Find a query with hello Label 'My Query'
+-- Use brackets when querying hello label column, as it it a key word
 SELECT  *
 FROM    sys.dm_pdw_exec_requests
 WHERE   [label] = 'My Query';
 ```
 
-<span data-ttu-id="a27a9-122">Z předchozí výsledky dotazu **si poznamenejte ID žádosti o** dotazu, který chcete prozkoumat.</span><span class="sxs-lookup"><span data-stu-id="a27a9-122">From the preceding query results, **note the Request ID** of the query that you would like to investigate.</span></span>
+<span data-ttu-id="5d803-122">Z předchozích výsledky dotazu hello **Poznámka hello ID požadavku** hello dotazu, které chcete tooinvestigate.</span><span class="sxs-lookup"><span data-stu-id="5d803-122">From hello preceding query results, **note hello Request ID** of hello query that you would like tooinvestigate.</span></span>
 
-<span data-ttu-id="a27a9-123">Dotazy v **pozastaveno** stavu jsou zařazena do fronty z důvodu omezení souběžnosti.</span><span class="sxs-lookup"><span data-stu-id="a27a9-123">Queries in the **Suspended** state are being queued due to concurrency limits.</span></span> <span data-ttu-id="a27a9-124">Tyto dotazy se zobrazí také v dotazu počká sys.dm_pdw_waits s typem UserConcurrencyResourceType.</span><span class="sxs-lookup"><span data-stu-id="a27a9-124">These queries also appear in the sys.dm_pdw_waits waits query with a type of UserConcurrencyResourceType.</span></span> <span data-ttu-id="a27a9-125">V tématu [souběžnosti a úlohy správy] [ Concurrency and workload management] další podrobnosti o souběžnosti omezení.</span><span class="sxs-lookup"><span data-stu-id="a27a9-125">See [Concurrency and workload management][Concurrency and workload management] for more details on concurrency limits.</span></span> <span data-ttu-id="a27a9-126">Dotazy můžete taky počkat z jiných důvodů, jako pro zámek objektu.</span><span class="sxs-lookup"><span data-stu-id="a27a9-126">Queries can also wait for other reasons such as for object locks.</span></span>  <span data-ttu-id="a27a9-127">Pokud váš dotaz je čeká na prostředek, přečtěte si téma [příčin dotazy čekání na prostředky] [ Investigating queries waiting for resources] další dolů v tomto článku.</span><span class="sxs-lookup"><span data-stu-id="a27a9-127">If your query is waiting for a resource, see [Investigating queries waiting for resources][Investigating queries waiting for resources] further down in this article.</span></span>
+<span data-ttu-id="5d803-123">Dotazy v hello **pozastaveno** stavu jsou zařazena do fronty z důvodu omezení tooconcurrency.</span><span class="sxs-lookup"><span data-stu-id="5d803-123">Queries in hello **Suspended** state are being queued due tooconcurrency limits.</span></span> <span data-ttu-id="5d803-124">Tyto dotazy se zobrazí také v hello sys.dm_pdw_waits počká dotazu s typem UserConcurrencyResourceType.</span><span class="sxs-lookup"><span data-stu-id="5d803-124">These queries also appear in hello sys.dm_pdw_waits waits query with a type of UserConcurrencyResourceType.</span></span> <span data-ttu-id="5d803-125">V tématu [souběžnosti a úlohy správy] [ Concurrency and workload management] další podrobnosti o souběžnosti omezení.</span><span class="sxs-lookup"><span data-stu-id="5d803-125">See [Concurrency and workload management][Concurrency and workload management] for more details on concurrency limits.</span></span> <span data-ttu-id="5d803-126">Dotazy můžete taky počkat z jiných důvodů, jako pro zámek objektu.</span><span class="sxs-lookup"><span data-stu-id="5d803-126">Queries can also wait for other reasons such as for object locks.</span></span>  <span data-ttu-id="5d803-127">Pokud váš dotaz je čeká na prostředek, přečtěte si téma [příčin dotazy čekání na prostředky] [ Investigating queries waiting for resources] další dolů v tomto článku.</span><span class="sxs-lookup"><span data-stu-id="5d803-127">If your query is waiting for a resource, see [Investigating queries waiting for resources][Investigating queries waiting for resources] further down in this article.</span></span>
 
-<span data-ttu-id="a27a9-128">Pro zjednodušení vyhledávací dotaz v tabulce sys.dm_pdw_exec_requests, použijte [popisek] [ LABEL] přiřadit váš dotaz, který lze vyhledávat v zobrazení sys.dm_pdw_exec_requests komentář.</span><span class="sxs-lookup"><span data-stu-id="a27a9-128">To simplify the lookup of a query in the sys.dm_pdw_exec_requests table, use [LABEL][LABEL] to assign a comment to your query that can be looked up in the sys.dm_pdw_exec_requests view.</span></span>
+<span data-ttu-id="5d803-128">vyhledávání hello toosimplify dotazu v tabulce sys.dm_pdw_exec_requests hello, použijte [popisek] [ LABEL] tooassign dotaz tooyour komentář, který lze vyhledávat v zobrazení sys.dm_pdw_exec_requests hello.</span><span class="sxs-lookup"><span data-stu-id="5d803-128">toosimplify hello lookup of a query in hello sys.dm_pdw_exec_requests table, use [LABEL][LABEL] tooassign a comment tooyour query that can be looked up in hello sys.dm_pdw_exec_requests view.</span></span>
 
 ```sql
 -- Query with Label
@@ -84,11 +84,11 @@ OPTION (LABEL = 'My Query')
 ;
 ```
 
-### <a name="step-2-investigate-the-query-plan"></a><span data-ttu-id="a27a9-129">Krok 2: Prozkoumat plán dotazu</span><span class="sxs-lookup"><span data-stu-id="a27a9-129">STEP 2: Investigate the query plan</span></span>
-<span data-ttu-id="a27a9-130">Umožňuje načíst distribuované plán SQL (DSQL) dotazu z ID požadavku [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps].</span><span class="sxs-lookup"><span data-stu-id="a27a9-130">Use the Request ID to retrieve the query's distributed SQL (DSQL) plan from [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps].</span></span>
+### <a name="step-2-investigate-hello-query-plan"></a><span data-ttu-id="5d803-129">Krok 2: Prozkoumat plán dotazu hello</span><span class="sxs-lookup"><span data-stu-id="5d803-129">STEP 2: Investigate hello query plan</span></span>
+<span data-ttu-id="5d803-130">Použít plán hello ID požadavku tooretrieve hello dotazů na distribuovaných SQL (DSQL) z [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps].</span><span class="sxs-lookup"><span data-stu-id="5d803-130">Use hello Request ID tooretrieve hello query's distributed SQL (DSQL) plan from [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps].</span></span>
 
 ```sql
--- Find the distributed query plan steps for a specific query.
+-- Find hello distributed query plan steps for a specific query.
 -- Replace request_id with value from Step 1.
 
 SELECT * FROM sys.dm_pdw_request_steps
@@ -96,51 +96,51 @@ WHERE request_id = 'QID####'
 ORDER BY step_index;
 ```
 
-<span data-ttu-id="a27a9-131">Pokud plán DSQL trvá déle, než se očekávalo, příčinou může být komplexní plán s mnoho kroků DSQL nebo jenom jeden krok trvá příliš dlouho.</span><span class="sxs-lookup"><span data-stu-id="a27a9-131">When a DSQL plan is taking longer than expected, the cause can be a complex plan with many DSQL steps or just one step taking a long time.</span></span>  <span data-ttu-id="a27a9-132">Je-li plán mnoho kroků s několika operace přesunutí, zvažte optimalizaci vaše tabulky distribuce omezit přesun dat.</span><span class="sxs-lookup"><span data-stu-id="a27a9-132">If the plan is many steps with several move operations, consider optimizing your table distributions to reduce data movement.</span></span> <span data-ttu-id="a27a9-133">[Distribuce tabulky] [ Table distribution] článek vysvětluje, proč k vyřešení dotazu je třeba přesunout data a vysvětluje některé distribuční strategie, chcete-li minimalizovat přesun dat.</span><span class="sxs-lookup"><span data-stu-id="a27a9-133">The [Table distribution][Table distribution] article explains why data must be moved to solve a query and explains some distribution strategies to minimize data movement.</span></span>
+<span data-ttu-id="5d803-131">Pokud plán DSQL trvá déle, než se očekávalo, může být příčina hello komplexní plán s mnoho kroků DSQL nebo jenom jeden krok trvá příliš dlouho.</span><span class="sxs-lookup"><span data-stu-id="5d803-131">When a DSQL plan is taking longer than expected, hello cause can be a complex plan with many DSQL steps or just one step taking a long time.</span></span>  <span data-ttu-id="5d803-132">Pokud je plán hello mnoho kroků s několika operace přesunutí, zvažte optimalizaci přesun dat tooreduce k rozdělení tabulky.</span><span class="sxs-lookup"><span data-stu-id="5d803-132">If hello plan is many steps with several move operations, consider optimizing your table distributions tooreduce data movement.</span></span> <span data-ttu-id="5d803-133">Hello [distribuce tabulky] [ Table distribution] článek vysvětluje, proč data musí být přesunutý toosolve dotazu a vysvětluje některé přesun dat toominimize distribuční strategie.</span><span class="sxs-lookup"><span data-stu-id="5d803-133">hello [Table distribution][Table distribution] article explains why data must be moved toosolve a query and explains some distribution strategies toominimize data movement.</span></span>
 
-<span data-ttu-id="a27a9-134">K prozkoumání další podrobnosti o jeden krok, *operation_type* sloupec dlouho běžící krok dotazu a Poznámka **krok Index**:</span><span class="sxs-lookup"><span data-stu-id="a27a9-134">To investigate further details about a single step, the *operation_type* column of the long-running query step and note the **Step Index**:</span></span>
+<span data-ttu-id="5d803-134">tooinvestigate další podrobnosti o jeden krok, hello *operation_type* sloupec hello dlouho běžící dotaz krok a Poznámka hello **krok Index**:</span><span class="sxs-lookup"><span data-stu-id="5d803-134">tooinvestigate further details about a single step, hello *operation_type* column of hello long-running query step and note hello **Step Index**:</span></span>
 
-* <span data-ttu-id="a27a9-135">Pokračujte krok 3a pro **operace SQL**: OnOperation, RemoteOperation, ReturnOperation.</span><span class="sxs-lookup"><span data-stu-id="a27a9-135">Proceed with Step 3a for **SQL operations**: OnOperation, RemoteOperation, ReturnOperation.</span></span>
-* <span data-ttu-id="a27a9-136">Pokračujte krok 3b pro **operace přesunu dat**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.</span><span class="sxs-lookup"><span data-stu-id="a27a9-136">Proceed with Step 3b for **Data Movement operations**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.</span></span>
+* <span data-ttu-id="5d803-135">Pokračujte krok 3a pro **operace SQL**: OnOperation, RemoteOperation, ReturnOperation.</span><span class="sxs-lookup"><span data-stu-id="5d803-135">Proceed with Step 3a for **SQL operations**: OnOperation, RemoteOperation, ReturnOperation.</span></span>
+* <span data-ttu-id="5d803-136">Pokračujte krok 3b pro **operace přesunu dat**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.</span><span class="sxs-lookup"><span data-stu-id="5d803-136">Proceed with Step 3b for **Data Movement operations**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.</span></span>
 
-### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a><span data-ttu-id="a27a9-137">KROK 3a: prozkoumat na distribuované databáze SQL</span><span class="sxs-lookup"><span data-stu-id="a27a9-137">STEP 3a: Investigate SQL on the distributed databases</span></span>
-<span data-ttu-id="a27a9-138">Umožňuje načíst z podrobností o ID žádosti a Index krok [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], který obsahuje informace o provádění kroku dotazu na všechny distribuované databáze.</span><span class="sxs-lookup"><span data-stu-id="a27a9-138">Use the Request ID and the Step Index to retrieve details from [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], which contains execution information of the query step on all of the distributed databases.</span></span>
+### <a name="step-3a-investigate-sql-on-hello-distributed-databases"></a><span data-ttu-id="5d803-137">KROK 3a: prozkoumat na hello distribuované databáze SQL</span><span class="sxs-lookup"><span data-stu-id="5d803-137">STEP 3a: Investigate SQL on hello distributed databases</span></span>
+<span data-ttu-id="5d803-138">Použít hello ID žádosti a hello krok Index tooretrieve z podrobností o [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], který obsahuje informace o provádění hello dotazu kroku na všech hello distribuované databáze.</span><span class="sxs-lookup"><span data-stu-id="5d803-138">Use hello Request ID and hello Step Index tooretrieve details from [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], which contains execution information of hello query step on all of hello distributed databases.</span></span>
 
 ```sql
--- Find the distribution run times for a SQL step.
+-- Find hello distribution run times for a SQL step.
 -- Replace request_id and step_index with values from Step 1 and 3.
 
 SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-<span data-ttu-id="a27a9-139">Po spuštění dotazu krok [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] slouží k načtení odhadované plánu systému SQL Server z mezipaměti plánu systému SQL Server pro krok, spuštění na konkrétní distribuční.</span><span class="sxs-lookup"><span data-stu-id="a27a9-139">When the query step is running, [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] can be used to retrieve the SQL Server estimated plan from the SQL Server plan cache for the step running on a particular distribution.</span></span>
+<span data-ttu-id="5d803-139">Po spuštění dotazu krok hello [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] může být odhadované plánu systému SQL Server používané tooretrieve hello z hello mezipaměti plánu systému SQL Server pro spuštění na konkrétní krok hello distribuce.</span><span class="sxs-lookup"><span data-stu-id="5d803-139">When hello query step is running, [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] can be used tooretrieve hello SQL Server estimated plan from hello SQL Server plan cache for hello step running on a particular distribution.</span></span>
 
 ```sql
--- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
+-- Find hello SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
 -- Replace distribution_id and spid with values from previous query.
 
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a><span data-ttu-id="a27a9-140">Krok 3b: prozkoumat přesun dat v distribuované databáze</span><span class="sxs-lookup"><span data-stu-id="a27a9-140">STEP 3b: Investigate data movement on the distributed databases</span></span>
-<span data-ttu-id="a27a9-141">Použít ID žádosti a Index krok k načtení informací o krok přesun dat spuštěná v každém distribučním z [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers].</span><span class="sxs-lookup"><span data-stu-id="a27a9-141">Use the Request ID and the Step Index to retrieve information about a data movement step running on each distribution from [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers].</span></span>
+### <a name="step-3b-investigate-data-movement-on-hello-distributed-databases"></a><span data-ttu-id="5d803-140">Krok 3b: prozkoumat přesun dat v databázích hello distribuované</span><span class="sxs-lookup"><span data-stu-id="5d803-140">STEP 3b: Investigate data movement on hello distributed databases</span></span>
+<span data-ttu-id="5d803-141">Použít hello ID žádosti a hello krok Index tooretrieve informace o krok přesun dat spuštěná v každém distribučním z [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers].</span><span class="sxs-lookup"><span data-stu-id="5d803-141">Use hello Request ID and hello Step Index tooretrieve information about a data movement step running on each distribution from [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers].</span></span>
 
 ```sql
--- Find the information about all the workers completing a Data Movement Step.
+-- Find hello information about all hello workers completing a Data Movement Step.
 -- Replace request_id and step_index with values from Step 1 and 3.
 
 SELECT * FROM sys.dm_pdw_dms_workers
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-* <span data-ttu-id="a27a9-142">Zkontrolujte *total_elapsed_time* zobrazíte, když konkrétní distribuční trvá výrazně delší než jiné pro přesun dat.</span><span class="sxs-lookup"><span data-stu-id="a27a9-142">Check the *total_elapsed_time* column to see if a particular distribution is taking significantly longer than others for data movement.</span></span>
-* <span data-ttu-id="a27a9-143">Pro dlouhodobé distribuci, zkontrolujte *rows_processed* zobrazíte, pokud počet řádků přesouvaných z příslušné distribuci je podstatně větší než jiné.</span><span class="sxs-lookup"><span data-stu-id="a27a9-143">For the long-running distribution, check the *rows_processed* column to see if the number of rows being moved from that distribution is significantly larger than others.</span></span> <span data-ttu-id="a27a9-144">Pokud ano, může to znamenat zkosení podkladová data.</span><span class="sxs-lookup"><span data-stu-id="a27a9-144">If so, this may indicate skew of your underlying data.</span></span>
+* <span data-ttu-id="5d803-142">Zkontrolujte hello *total_elapsed_time* toosee sloupce, pokud konkrétní distribuční trvá výrazně delší než jiné pro přesun dat.</span><span class="sxs-lookup"><span data-stu-id="5d803-142">Check hello *total_elapsed_time* column toosee if a particular distribution is taking significantly longer than others for data movement.</span></span>
+* <span data-ttu-id="5d803-143">Pro distribuci dlouho běžící hello, zkontrolujte hello *rows_processed* toosee sloupce, pokud hello počet řádků přesouvaných z příslušné distribuci je podstatně větší než jiné.</span><span class="sxs-lookup"><span data-stu-id="5d803-143">For hello long-running distribution, check hello *rows_processed* column toosee if hello number of rows being moved from that distribution is significantly larger than others.</span></span> <span data-ttu-id="5d803-144">Pokud ano, může to znamenat zkosení podkladová data.</span><span class="sxs-lookup"><span data-stu-id="5d803-144">If so, this may indicate skew of your underlying data.</span></span>
 
-<span data-ttu-id="a27a9-145">Pokud dotaz běží, [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] slouží k načtení odhadované plánu systému SQL Server z mezipaměti plánu SQL serveru pro SQL kroku aktuálně spuštěného v rámci konkrétní distribuce.</span><span class="sxs-lookup"><span data-stu-id="a27a9-145">If the query is running, [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] can be used to retrieve the SQL Server estimated plan from the SQL Server plan cache for the currently running SQL Step within a particular distribution.</span></span>
+<span data-ttu-id="5d803-145">Pokud dotaz hello běží, [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] může být odhadované plánu systému SQL Server používané tooretrieve hello z hello mezipaměti plánu systému SQL Server pro hello aktuálně spuštěna v rámci konkrétní krok SQL distribuce.</span><span class="sxs-lookup"><span data-stu-id="5d803-145">If hello query is running, [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] can be used tooretrieve hello SQL Server estimated plan from hello SQL Server plan cache for hello currently running SQL Step within a particular distribution.</span></span>
 
 ```sql
--- Find the SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
+-- Find hello SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
 -- Replace distribution_id and spid with values from previous query.
 
 DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
@@ -148,8 +148,8 @@ DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
 
 <a name="waiting"></a>
 
-## <a name="monitor-waiting-queries"></a><span data-ttu-id="a27a9-146">Monitorování čekání na dotazy</span><span class="sxs-lookup"><span data-stu-id="a27a9-146">Monitor waiting queries</span></span>
-<span data-ttu-id="a27a9-147">Pokud zjistíte, že dotazu nepostupuje vpřed, protože se čeká na prostředek, tady je dotaz, který zobrazuje všechny prostředky, které že se čeká na dotazu.</span><span class="sxs-lookup"><span data-stu-id="a27a9-147">If you discover that your query is not making progress because it is waiting for a resource, here is a query that shows all the resources a query is waiting for.</span></span>
+## <a name="monitor-waiting-queries"></a><span data-ttu-id="5d803-146">Monitorování čekání na dotazy</span><span class="sxs-lookup"><span data-stu-id="5d803-146">Monitor waiting queries</span></span>
+<span data-ttu-id="5d803-147">Pokud zjistíte, že dotazu nepostupuje vpřed, protože se čeká na prostředek, tady je dotaz, který obsahuje všechny prostředky hello že čeká dotazu.</span><span class="sxs-lookup"><span data-stu-id="5d803-147">If you discover that your query is not making progress because it is waiting for a resource, here is a query that shows all hello resources a query is waiting for.</span></span>
 
 ```sql
 -- Find queries 
@@ -171,15 +171,15 @@ WHERE waits.request_id = 'QID####'
 ORDER BY waits.object_name, waits.object_type, waits.state;
 ```
 
-<span data-ttu-id="a27a9-148">Pokud dotaz aktivně čeká na prostředky z jiného dotazu, pak bude stav **AcquireResources**.</span><span class="sxs-lookup"><span data-stu-id="a27a9-148">If the query is actively waiting on resources from another query, then the state will be **AcquireResources**.</span></span>  <span data-ttu-id="a27a9-149">Pokud dotaz obsahuje všechny požadované prostředky, pak bude stav **udělit**.</span><span class="sxs-lookup"><span data-stu-id="a27a9-149">If the query has all the required resources, then the state will be **Granted**.</span></span>
+<span data-ttu-id="5d803-148">Pokud dotaz hello aktivně čeká na prostředky z jiného dotazu, pak bude mít stav hello **AcquireResources**.</span><span class="sxs-lookup"><span data-stu-id="5d803-148">If hello query is actively waiting on resources from another query, then hello state will be **AcquireResources**.</span></span>  <span data-ttu-id="5d803-149">Pokud dotaz hello má všechny hello požadované prostředky, pak bude mít stav hello **udělit**.</span><span class="sxs-lookup"><span data-stu-id="5d803-149">If hello query has all hello required resources, then hello state will be **Granted**.</span></span>
 
-## <a name="monitor-tempdb"></a><span data-ttu-id="a27a9-150">Databáze tempdb monitorování</span><span class="sxs-lookup"><span data-stu-id="a27a9-150">Monitor tempdb</span></span>
-<span data-ttu-id="a27a9-151">Databáze tempdb vysoké využití může být hlavní příčinou nízký výkon a mimo problémy s pamětí.</span><span class="sxs-lookup"><span data-stu-id="a27a9-151">High tempdb utilization can be the root cause for slow performance and out of memory issues.</span></span> <span data-ttu-id="a27a9-152">Zkontrolujte nejprve Pokud máte rowgroups kvality zkosení nebo nízký dat a proveďte příslušné akce.</span><span class="sxs-lookup"><span data-stu-id="a27a9-152">Please first check if you have data skew or poor quality rowgroups and take the appropriate actions.</span></span> <span data-ttu-id="a27a9-153">Vezměte v úvahu škálování datového skladu, pokud zjistíte, tempdb dosažení jeho omezení během provádění dotazu.</span><span class="sxs-lookup"><span data-stu-id="a27a9-153">Consider scaling your data warehouse if you find tempdb reaching its limits during query execution.</span></span> <span data-ttu-id="a27a9-154">Následující část popisuje postup identifikovat využití databáze tempdb na jeden dotaz na každém uzlu.</span><span class="sxs-lookup"><span data-stu-id="a27a9-154">The following describes how to identify tempdb usage per query on each node.</span></span> 
+## <a name="monitor-tempdb"></a><span data-ttu-id="5d803-150">Databáze tempdb monitorování</span><span class="sxs-lookup"><span data-stu-id="5d803-150">Monitor tempdb</span></span>
+<span data-ttu-id="5d803-151">Databáze tempdb vysoké využití může být hello příčiny nízký výkon a mimo problémy s pamětí.</span><span class="sxs-lookup"><span data-stu-id="5d803-151">High tempdb utilization can be hello root cause for slow performance and out of memory issues.</span></span> <span data-ttu-id="5d803-152">Zkontrolujte nejprve Pokud máte rowgroups kvality zkosení nebo nízký dat a proveďte příslušné akce hello.</span><span class="sxs-lookup"><span data-stu-id="5d803-152">Please first check if you have data skew or poor quality rowgroups and take hello appropriate actions.</span></span> <span data-ttu-id="5d803-153">Vezměte v úvahu škálování datového skladu, pokud zjistíte, tempdb dosažení jeho omezení během provádění dotazu.</span><span class="sxs-lookup"><span data-stu-id="5d803-153">Consider scaling your data warehouse if you find tempdb reaching its limits during query execution.</span></span> <span data-ttu-id="5d803-154">Hello následující text popisuje, jak tooidentify využití databáze tempdb na jeden dotaz na každém uzlu.</span><span class="sxs-lookup"><span data-stu-id="5d803-154">hello following describes how tooidentify tempdb usage per query on each node.</span></span> 
 
-<span data-ttu-id="a27a9-155">Vytvořte následující zobrazení přidružit id odpovídající uzlu pro sys.dm_pdw_sql_requests.</span><span class="sxs-lookup"><span data-stu-id="a27a9-155">Create the following view to associate the appropriate node id for sys.dm_pdw_sql_requests.</span></span> <span data-ttu-id="a27a9-156">To vám umožní využít další průchozí zobrazení dynamické správy a zapojit tyto tabulky s sys.dm_pdw_sql_requests.</span><span class="sxs-lookup"><span data-stu-id="a27a9-156">This will enable you to leverage other pass-through DMVs and join those tables with sys.dm_pdw_sql_requests.</span></span>
+<span data-ttu-id="5d803-155">Vytvořte následující zobrazení tooassociate hello příslušný uzel id pro sys.dm_pdw_sql_requests hello.</span><span class="sxs-lookup"><span data-stu-id="5d803-155">Create hello following view tooassociate hello appropriate node id for sys.dm_pdw_sql_requests.</span></span> <span data-ttu-id="5d803-156">To povolí tooleverage můžete další průchozí zobrazení dynamické správy a připojte tyto tabulky s sys.dm_pdw_sql_requests.</span><span class="sxs-lookup"><span data-stu-id="5d803-156">This will enable you tooleverage other pass-through DMVs and join those tables with sys.dm_pdw_sql_requests.</span></span>
 
 ```sql
--- sys.dm_pdw_sql_requests with the correct node id
+-- sys.dm_pdw_sql_requests with hello correct node id
 CREATE VIEW sql_requests AS
 (SELECT
        sr.request_id,
@@ -200,7 +200,7 @@ CREATE VIEW sql_requests AS
 FROM sys.pdw_distributions AS d
 RIGHT JOIN sys.dm_pdw_sql_requests AS sr ON d.distribution_id = sr.distribution_id)
 ```
-<span data-ttu-id="a27a9-157">Spusťte následující dotaz pro databázi tempdb monitorování:</span><span class="sxs-lookup"><span data-stu-id="a27a9-157">Run the following query to monitor tempdb:</span></span>
+<span data-ttu-id="5d803-157">Spusťte následující dotaz toomonitor tempdb hello:</span><span class="sxs-lookup"><span data-stu-id="5d803-157">Run hello following query toomonitor tempdb:</span></span>
 
 ```sql
 -- Monitor tempdb
@@ -231,11 +231,11 @@ WHERE DB_NAME(ssu.database_id) = 'tempdb'
     AND es.login_name <> 'sa' 
 ORDER BY sr.request_id;
 ```
-## <a name="monitor-memory"></a><span data-ttu-id="a27a9-158">Sledování paměti</span><span class="sxs-lookup"><span data-stu-id="a27a9-158">Monitor memory</span></span>
+## <a name="monitor-memory"></a><span data-ttu-id="5d803-158">Sledování paměti</span><span class="sxs-lookup"><span data-stu-id="5d803-158">Monitor memory</span></span>
 
-<span data-ttu-id="a27a9-159">Paměť může být hlavní příčinou nízký výkon a mimo problémy s pamětí.</span><span class="sxs-lookup"><span data-stu-id="a27a9-159">Memory can be the root cause for slow performance and out of memory issues.</span></span> <span data-ttu-id="a27a9-160">Zkontrolujte nejprve Pokud máte rowgroups kvality zkosení nebo nízký dat a proveďte příslušné akce.</span><span class="sxs-lookup"><span data-stu-id="a27a9-160">Please first check if you have data skew or poor quality rowgroups and take the appropriate actions.</span></span> <span data-ttu-id="a27a9-161">Zvažte, pokud zjistíte, využití paměti systému SQL Server během provádění dotazu dosažení jeho omezení škálování datového skladu.</span><span class="sxs-lookup"><span data-stu-id="a27a9-161">Consider scaling your data warehouse if you find SQL Server memory usage reaching its limits during query execution.</span></span>
+<span data-ttu-id="5d803-159">Paměť může být hello příčiny nízký výkon a mimo problémy s pamětí.</span><span class="sxs-lookup"><span data-stu-id="5d803-159">Memory can be hello root cause for slow performance and out of memory issues.</span></span> <span data-ttu-id="5d803-160">Zkontrolujte nejprve Pokud máte rowgroups kvality zkosení nebo nízký dat a proveďte příslušné akce hello.</span><span class="sxs-lookup"><span data-stu-id="5d803-160">Please first check if you have data skew or poor quality rowgroups and take hello appropriate actions.</span></span> <span data-ttu-id="5d803-161">Zvažte, pokud zjistíte, využití paměti systému SQL Server během provádění dotazu dosažení jeho omezení škálování datového skladu.</span><span class="sxs-lookup"><span data-stu-id="5d803-161">Consider scaling your data warehouse if you find SQL Server memory usage reaching its limits during query execution.</span></span>
 
-<span data-ttu-id="a27a9-162">Následující dotaz vrátí přetížení využití a paměti paměti systému SQL Server na každém uzlu:</span><span class="sxs-lookup"><span data-stu-id="a27a9-162">The following query returns SQL Server memory usage and memory pressure per node:</span></span>   
+<span data-ttu-id="5d803-162">Hello následující dotaz vrátí přetížení využití a paměti paměti systému SQL Server na každém uzlu:</span><span class="sxs-lookup"><span data-stu-id="5d803-162">hello following query returns SQL Server memory usage and memory pressure per node:</span></span> 
 ```sql
 -- Memory consumption
 SELECT
@@ -257,8 +257,8 @@ WHERE
 pc1.counter_name = 'Total Server Memory (KB)'
 AND pc2.counter_name = 'Target Server Memory (KB)'
 ```
-## <a name="monitor-transaction-log-size"></a><span data-ttu-id="a27a9-163">Velikost protokolu transakcí monitorování</span><span class="sxs-lookup"><span data-stu-id="a27a9-163">Monitor transaction log size</span></span>
-<span data-ttu-id="a27a9-164">Následující dotaz vrátí velikost protokolu transakcí v každém distribučním.</span><span class="sxs-lookup"><span data-stu-id="a27a9-164">The following query returns the transaction log size on each distribution.</span></span> <span data-ttu-id="a27a9-165">Zkontrolujte, pokud máte rowgroups kvality zkosení nebo nízký dat a proveďte příslušné akce.</span><span class="sxs-lookup"><span data-stu-id="a27a9-165">Please check if you have data skew or poor quality rowgroups and take the appropriate actions.</span></span> <span data-ttu-id="a27a9-166">Pokud jeden ze souborů protokolu dosahuje 160GB, měli byste zvážit vertikálním navýšení kapacity instanci nebo omezíte velikost vašeho transakce.</span><span class="sxs-lookup"><span data-stu-id="a27a9-166">If one of the log files is reaching 160GB, you should consider scaling up your instance or limiting your transaction size.</span></span> 
+## <a name="monitor-transaction-log-size"></a><span data-ttu-id="5d803-163">Velikost protokolu transakcí monitorování</span><span class="sxs-lookup"><span data-stu-id="5d803-163">Monitor transaction log size</span></span>
+<span data-ttu-id="5d803-164">Hello následující dotaz vrátí velikost protokolu transakcí hello v každém distribučním.</span><span class="sxs-lookup"><span data-stu-id="5d803-164">hello following query returns hello transaction log size on each distribution.</span></span> <span data-ttu-id="5d803-165">Zkontrolujte, pokud máte rowgroups kvality zkosení nebo nízký dat a proveďte příslušné akce hello.</span><span class="sxs-lookup"><span data-stu-id="5d803-165">Please check if you have data skew or poor quality rowgroups and take hello appropriate actions.</span></span> <span data-ttu-id="5d803-166">Pokud některý ze souborů protokolu hello dosahuje 160GB, měli byste zvážit vertikálním navýšení kapacity instanci nebo omezíte velikost vašeho transakce.</span><span class="sxs-lookup"><span data-stu-id="5d803-166">If one of hello log files is reaching 160GB, you should consider scaling up your instance or limiting your transaction size.</span></span> 
 ```sql
 -- Transaction log size
 SELECT
@@ -271,8 +271,8 @@ instance_name like 'Distribution_%'
 AND counter_name = 'Log File(s) Used Size (KB)'
 AND counter_name = 'Target Server Memory (KB)'
 ```
-## <a name="monitor-transaction-log-rollback"></a><span data-ttu-id="a27a9-167">Monitorování odvolání transakce protokolu</span><span class="sxs-lookup"><span data-stu-id="a27a9-167">Monitor transaction log rollback</span></span>
-<span data-ttu-id="a27a9-168">Pokud vaše dotazy se nedaří nebo trvá příliš dlouho chcete-li pokračovat, můžete zkontrolovat a monitorování, pokud máte jakékoli transakce vrácení zpět.</span><span class="sxs-lookup"><span data-stu-id="a27a9-168">If your queries are failing or taking a long time to proceed, you can check and monitor if you have any transactions rolling back.</span></span>
+## <a name="monitor-transaction-log-rollback"></a><span data-ttu-id="5d803-167">Monitorování odvolání transakce protokolu</span><span class="sxs-lookup"><span data-stu-id="5d803-167">Monitor transaction log rollback</span></span>
+<span data-ttu-id="5d803-168">Pokud se nedaří své dotazy nebo trvá dlouho tooproceed, můžete zkontrolovat a monitorování, pokud máte jakékoli transakce vrácení zpět.</span><span class="sxs-lookup"><span data-stu-id="5d803-168">If your queries are failing or taking a long time tooproceed, you can check and monitor if you have any transactions rolling back.</span></span>
 ```sql
 -- Monitor rollback
 SELECT 
@@ -284,9 +284,9 @@ JOIN sys.dm_pdw_nodes nod ON t.pdw_node_id = nod.pdw_node_id
 GROUP BY t.pdw_node_id, nod.[type]
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="a27a9-169">Další kroky</span><span class="sxs-lookup"><span data-stu-id="a27a9-169">Next steps</span></span>
-<span data-ttu-id="a27a9-170">V tématu [zobrazení systému] [ System views] Další informace o zobrazení dynamické správy.</span><span class="sxs-lookup"><span data-stu-id="a27a9-170">See [System views][System views] for more information on DMVs.</span></span>
-<span data-ttu-id="a27a9-171">V tématu [osvědčené postupy pro SQL Data Warehouse] [ SQL Data Warehouse best practices] Další informace o osvědčených postupů</span><span class="sxs-lookup"><span data-stu-id="a27a9-171">See [SQL Data Warehouse best practices][SQL Data Warehouse best practices] for more information about best practices</span></span>
+## <a name="next-steps"></a><span data-ttu-id="5d803-169">Další kroky</span><span class="sxs-lookup"><span data-stu-id="5d803-169">Next steps</span></span>
+<span data-ttu-id="5d803-170">V tématu [zobrazení systému] [ System views] Další informace o zobrazení dynamické správy.</span><span class="sxs-lookup"><span data-stu-id="5d803-170">See [System views][System views] for more information on DMVs.</span></span>
+<span data-ttu-id="5d803-171">V tématu [osvědčené postupy pro SQL Data Warehouse] [ SQL Data Warehouse best practices] Další informace o osvědčených postupů</span><span class="sxs-lookup"><span data-stu-id="5d803-171">See [SQL Data Warehouse best practices][SQL Data Warehouse best practices] for more information about best practices</span></span>
 
 <!--Image references-->
 

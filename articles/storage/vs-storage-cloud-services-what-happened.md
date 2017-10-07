@@ -1,6 +1,6 @@
 ---
-title: "Co se stalo s Moje projekt cloudové služby? | Dokumentace Microsoftu"
-description: "Popisuje, co se stane v projektu cloudové služby po připojení k účtu úložiště Azure pomocí sady Visual Studio připojené služby"
+title: "aaaWhat stalo toomy projekt cloudové služby? | Dokumentace Microsoftu"
+description: "Popisuje, co se stane v projektu cloudové služby po připojení tooan účtu úložiště Azure pomocí sady Visual Studio připojené služby"
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: tarcher
-ms.openlocfilehash: 4e0d4864c2fad624fbde39080146dc62ebebff09
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 65662dde45dd75bca1b57022283f76305f95e94a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="what-happened-to-my-cloud-services-project-visual-studio-azure-storage-connected-service"></a><span data-ttu-id="80cba-104">Co se stalo s Moje projekt cloudových služeb (Visual Studio Azure Storage připojeno service)?</span><span class="sxs-lookup"><span data-stu-id="80cba-104">What happened to my cloud services project (Visual Studio Azure Storage connected service)?</span></span>
-## <a name="references-added"></a><span data-ttu-id="80cba-105">Přidanými referencemi</span><span class="sxs-lookup"><span data-stu-id="80cba-105">References added</span></span>
-<span data-ttu-id="80cba-106">Balíček NuGet úložiště Azure byl přidán do projektu sady Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="80cba-106">The Azure Storage NuGet package was added to your Visual Studio project.</span></span>  
-<span data-ttu-id="80cba-107">Tento balíček přidá následující odkazy na rozhraní .NET:</span><span class="sxs-lookup"><span data-stu-id="80cba-107">This package adds the following .NET references:</span></span>
+# <a name="what-happened-toomy-cloud-services-project-visual-studio-azure-storage-connected-service"></a><span data-ttu-id="114b7-104">Co se stalo toomy cloudové služby projektu (Visual Studio Azure Storage připojené service)?</span><span class="sxs-lookup"><span data-stu-id="114b7-104">What happened toomy cloud services project (Visual Studio Azure Storage connected service)?</span></span>
+## <a name="references-added"></a><span data-ttu-id="114b7-105">Přidanými referencemi</span><span class="sxs-lookup"><span data-stu-id="114b7-105">References added</span></span>
+<span data-ttu-id="114b7-106">balíček NuGet úložiště Azure Hello přidala tooyour projektu sady Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="114b7-106">hello Azure Storage NuGet package was added tooyour Visual Studio project.</span></span>  
+<span data-ttu-id="114b7-107">Tento balíček přidá hello následující odkazy na rozhraní .NET:</span><span class="sxs-lookup"><span data-stu-id="114b7-107">This package adds hello following .NET references:</span></span>
 
-* <span data-ttu-id="80cba-108">**Microsoft.Data.Edm**</span><span class="sxs-lookup"><span data-stu-id="80cba-108">**Microsoft.Data.Edm**</span></span>
-* <span data-ttu-id="80cba-109">**Microsoft.Data.OData**</span><span class="sxs-lookup"><span data-stu-id="80cba-109">**Microsoft.Data.OData**</span></span>
-* <span data-ttu-id="80cba-110">**Microsoft.Data.Services.Client**</span><span class="sxs-lookup"><span data-stu-id="80cba-110">**Microsoft.Data.Services.Client**</span></span>
-* <span data-ttu-id="80cba-111">**Microsoft.WindowsAzure.Configuration**</span><span class="sxs-lookup"><span data-stu-id="80cba-111">**Microsoft.WindowsAzure.Configuration**</span></span>
-* <span data-ttu-id="80cba-112">**Microsoft.WindowsAzure.Storage**</span><span class="sxs-lookup"><span data-stu-id="80cba-112">**Microsoft.WindowsAzure.Storage**</span></span>
-* <span data-ttu-id="80cba-113">**Newtonsoft.Json**</span><span class="sxs-lookup"><span data-stu-id="80cba-113">**Newtonsoft.Json**</span></span>
-* <span data-ttu-id="80cba-114">**System.Data**</span><span class="sxs-lookup"><span data-stu-id="80cba-114">**System.Data**</span></span>
-* <span data-ttu-id="80cba-115">**System.Spatial**</span><span class="sxs-lookup"><span data-stu-id="80cba-115">**System.Spatial**</span></span>
+* <span data-ttu-id="114b7-108">**Microsoft.Data.Edm**</span><span class="sxs-lookup"><span data-stu-id="114b7-108">**Microsoft.Data.Edm**</span></span>
+* <span data-ttu-id="114b7-109">**Microsoft.Data.OData**</span><span class="sxs-lookup"><span data-stu-id="114b7-109">**Microsoft.Data.OData**</span></span>
+* <span data-ttu-id="114b7-110">**Microsoft.Data.Services.Client**</span><span class="sxs-lookup"><span data-stu-id="114b7-110">**Microsoft.Data.Services.Client**</span></span>
+* <span data-ttu-id="114b7-111">**Microsoft.WindowsAzure.Configuration**</span><span class="sxs-lookup"><span data-stu-id="114b7-111">**Microsoft.WindowsAzure.Configuration**</span></span>
+* <span data-ttu-id="114b7-112">**Microsoft.WindowsAzure.Storage**</span><span class="sxs-lookup"><span data-stu-id="114b7-112">**Microsoft.WindowsAzure.Storage**</span></span>
+* <span data-ttu-id="114b7-113">**Newtonsoft.Json**</span><span class="sxs-lookup"><span data-stu-id="114b7-113">**Newtonsoft.Json**</span></span>
+* <span data-ttu-id="114b7-114">**System.Data**</span><span class="sxs-lookup"><span data-stu-id="114b7-114">**System.Data**</span></span>
+* <span data-ttu-id="114b7-115">**System.Spatial**</span><span class="sxs-lookup"><span data-stu-id="114b7-115">**System.Spatial**</span></span>
 
-## <a name="connection-string-for-azure-storage-added"></a><span data-ttu-id="80cba-116">Připojovací řetězec pro Azure Storage přidán</span><span class="sxs-lookup"><span data-stu-id="80cba-116">Connection string for Azure Storage added</span></span>
-<span data-ttu-id="80cba-117">Elementy byly vytvořeny s připojovací řetězec a klíč účtu vybrané úložiště.</span><span class="sxs-lookup"><span data-stu-id="80cba-117">Elements were created with the selected storage account's connection string and key.</span></span> <span data-ttu-id="80cba-118">Změny byly provedeny následující soubory:</span><span class="sxs-lookup"><span data-stu-id="80cba-118">Modifications were made to the following files:</span></span>
+## <a name="connection-string-for-azure-storage-added"></a><span data-ttu-id="114b7-116">Připojovací řetězec pro Azure Storage přidán</span><span class="sxs-lookup"><span data-stu-id="114b7-116">Connection string for Azure Storage added</span></span>
+<span data-ttu-id="114b7-117">Elementy byly vytvořeny s připojovací řetězec a klíč účtu úložiště hello vybrané.</span><span class="sxs-lookup"><span data-stu-id="114b7-117">Elements were created with hello selected storage account's connection string and key.</span></span> <span data-ttu-id="114b7-118">Toohello následující soubory byly provedeny úpravy:</span><span class="sxs-lookup"><span data-stu-id="114b7-118">Modifications were made toohello following files:</span></span>
 
-* <span data-ttu-id="80cba-119">**ServiceDefinition.csdef**</span><span class="sxs-lookup"><span data-stu-id="80cba-119">**ServiceDefinition.csdef**</span></span>
-* <span data-ttu-id="80cba-120">**ServiceConfiguration.Cloud.cscfg**</span><span class="sxs-lookup"><span data-stu-id="80cba-120">**ServiceConfiguration.Cloud.cscfg**</span></span>
-* <span data-ttu-id="80cba-121">**ServiceConfiguration.Local.cscfg**</span><span class="sxs-lookup"><span data-stu-id="80cba-121">**ServiceConfiguration.Local.cscfg**</span></span>
+* <span data-ttu-id="114b7-119">**ServiceDefinition.csdef**</span><span class="sxs-lookup"><span data-stu-id="114b7-119">**ServiceDefinition.csdef**</span></span>
+* <span data-ttu-id="114b7-120">**ServiceConfiguration.Cloud.cscfg**</span><span class="sxs-lookup"><span data-stu-id="114b7-120">**ServiceConfiguration.Cloud.cscfg**</span></span>
+* <span data-ttu-id="114b7-121">**ServiceConfiguration.Local.cscfg**</span><span class="sxs-lookup"><span data-stu-id="114b7-121">**ServiceConfiguration.Local.cscfg**</span></span>
 

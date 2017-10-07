@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření Pokročilé kódování pracovních postupů pomocí návrháře pracovních postupů | Microsoft Docs"
-description: "Další informace o tom, jak vytvořit Pokročilé kódování pracovní postupy pomocí Návrháře pracovního postupu."
+title: "aaaCreate Advanced kódování pracovní postupy pomocí Návrháře pracovního postupu | Microsoft Docs"
+description: "Informace o tom, jak toocreate advanced kódování pracovní postupy pomocí Návrháře pracovního postupu."
 services: media-services
 documentationcenter: 
 author: anilmur
@@ -14,81 +14,81 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako;johndeu;anilmur
-ms.openlocfilehash: ef277710713d342eb9aaaf119e2985e8c1d82d0c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3744cde54c78bec7c7b586962ec1a8fe9529c1d2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-advanced-encoding-workflows-with-workflow-designer"></a><span data-ttu-id="45938-103">Vytváření pokročilých pracovních postupů kódování pomocí Návrháře postupu provádění</span><span class="sxs-lookup"><span data-stu-id="45938-103">Create Advanced Encoding Workflows with Workflow Designer</span></span>
-## <a name="overview"></a><span data-ttu-id="45938-104">Přehled</span><span class="sxs-lookup"><span data-stu-id="45938-104">Overview</span></span>
-<span data-ttu-id="45938-105">**Návrhář postupu provádění** je nástroj plochy Windows, který slouží k návrhu a vytvořit vlastní pracovní postupy pro kódování s **Media Encoder Premium pracovního postupu**.</span><span class="sxs-lookup"><span data-stu-id="45938-105">The **Workflow Designer** is a Windows desktop tool that is used to design and build custom workflows for encoding with **Media Encoder Premium Workflow**.</span></span>
-<span data-ttu-id="45938-106">Pomocí možnosti nástroje návrháře pracovního postupu můžete navrhnout a vytvořit komplexní pracovní postupy, které budou spouštět v **Media Encoder Premium**.</span><span class="sxs-lookup"><span data-stu-id="45938-106">By using the power of the workflow designer tool, you can design and create complex workflows that will run in **Media Encoder Premium**.</span></span>  
+# <a name="create-advanced-encoding-workflows-with-workflow-designer"></a><span data-ttu-id="56074-103">Vytváření pokročilých pracovních postupů kódování pomocí Návrháře postupu provádění</span><span class="sxs-lookup"><span data-stu-id="56074-103">Create Advanced Encoding Workflows with Workflow Designer</span></span>
+## <a name="overview"></a><span data-ttu-id="56074-104">Přehled</span><span class="sxs-lookup"><span data-stu-id="56074-104">Overview</span></span>
+<span data-ttu-id="56074-105">Hello **Návrhář postupu provádění** je nástroj plochy Windows, který je použité toodesign a sestavení vlastní pracovní postupy pro kódování s **Media Encoder Premium pracovního postupu**.</span><span class="sxs-lookup"><span data-stu-id="56074-105">hello **Workflow Designer** is a Windows desktop tool that is used toodesign and build custom workflows for encoding with **Media Encoder Premium Workflow**.</span></span>
+<span data-ttu-id="56074-106">Pomocí power hello hello pracovního postupu návrháře nástroje můžete navrhnout a vytvořit komplexní pracovní postupy, které budou spouštět v **Media Encoder Premium**.</span><span class="sxs-lookup"><span data-stu-id="56074-106">By using hello power of hello workflow designer tool, you can design and create complex workflows that will run in **Media Encoder Premium**.</span></span>  
 
-<span data-ttu-id="45938-107">Pracovní postupy můžou obsahovat logiku rozhodnutí zákazníka a vytvoření větve založený na vlastnosti souboru vstupní zdroj.</span><span class="sxs-lookup"><span data-stu-id="45938-107">Workflows can include customer decision logic and branching based on the input source file's properties.</span></span> <span data-ttu-id="45938-108">Pracovní postupy můžete vytvořit pomocí přepisovatelné vlastnosti a dynamické hodnoty tak, aby snadno opakovat a přizpůsobit v cloudu i těch nejsložitějších úlohy kódování.</span><span class="sxs-lookup"><span data-stu-id="45938-108">You can create workflows with overridable properties and dynamic values to make even the most complex encoding tasks easy to repeat and customize in the cloud.</span></span>
+<span data-ttu-id="56074-107">Pracovní postupy může obsahovat logiku rozhodnutí zákazníka a vytvoření větve podle vlastnosti souboru vstupní zdroj hello.</span><span class="sxs-lookup"><span data-stu-id="56074-107">Workflows can include customer decision logic and branching based on hello input source file's properties.</span></span> <span data-ttu-id="56074-108">Můžete vytvořit pracovní postupy pomocí přepisovatelné vlastnosti a dynamické hodnoty toomake hello i těch nejsložitějších kódování úlohy snadno toorepeat a přizpůsobit v cloudu hello.</span><span class="sxs-lookup"><span data-stu-id="56074-108">You can create workflows with overridable properties and dynamic values toomake even hello most complex encoding tasks easy toorepeat and customize in hello cloud.</span></span>
 
-<span data-ttu-id="45938-109">Příklady pracovních postupů, které můžete vytvořit patří:</span><span class="sxs-lookup"><span data-stu-id="45938-109">Example workflows that you can create include:</span></span>
+<span data-ttu-id="56074-109">Příklady pracovních postupů, které můžete vytvořit patří:</span><span class="sxs-lookup"><span data-stu-id="56074-109">Example workflows that you can create include:</span></span>
 
-* <span data-ttu-id="45938-110">Pracovní postupy, které kontrolují zdrojový obsah pro řešení a kódování pouze sleduje požadovaný výstupní založené na rozhodnutí.</span><span class="sxs-lookup"><span data-stu-id="45938-110">Decision based workflows that inspect the source content for resolution and encode only the desired output tracks.</span></span>  <span data-ttu-id="45938-111">Toto je helfpul odstraněním nevyužité sleduje, které by vytvořilo upscaling obsahu neúmyslně zdroje.</span><span class="sxs-lookup"><span data-stu-id="45938-111">This is helfpul by eliminating the wasted tracks that would be generated by upscaling the source content inadvertantly.</span></span>
-* <span data-ttu-id="45938-112">Více vstupní soubory můžete použít pro podporu titulků, překryvů a více společně obsah.</span><span class="sxs-lookup"><span data-stu-id="45938-112">Multiple input files can be used to support captions, overlays and stitching together content.</span></span> 
+* <span data-ttu-id="56074-110">Rozhodnutí na základě pracovních postupů, které kontrolují hello zdrojový obsah pro řešení a kódování pouze sleduje výstup hello potřeby.</span><span class="sxs-lookup"><span data-stu-id="56074-110">Decision based workflows that inspect hello source content for resolution and encode only hello desired output tracks.</span></span>  <span data-ttu-id="56074-111">Toto je helfpul odstraněním sleduje hello ke znehodnocení části, které by vytvořilo upscaling hello zdroj obsahu neúmyslně.</span><span class="sxs-lookup"><span data-stu-id="56074-111">This is helfpul by eliminating hello wasted tracks that would be generated by upscaling hello source content inadvertantly.</span></span>
+* <span data-ttu-id="56074-112">Více vstupní soubory mohou být použité toosupport titulků, překrytí a více společně obsah.</span><span class="sxs-lookup"><span data-stu-id="56074-112">Multiple input files can be used toosupport captions, overlays and stitching together content.</span></span> 
 
-<span data-ttu-id="45938-113">Tento nástroj lze také můžete upravit všechny naše [publikovaná pracovních](media-services-workflow-designer.md#existing_workflows).</span><span class="sxs-lookup"><span data-stu-id="45938-113">This tool can also be used to modify any of our [published workflows](media-services-workflow-designer.md#existing_workflows).</span></span> 
+<span data-ttu-id="56074-113">Tento nástroj může být také použít toomodify některé z našich [publikovaná pracovních](media-services-workflow-designer.md#existing_workflows).</span><span class="sxs-lookup"><span data-stu-id="56074-113">This tool can also be used toomodify any of our [published workflows](media-services-workflow-designer.md#existing_workflows).</span></span> 
 
 > [!NOTE]
-> <span data-ttu-id="45938-114">Pokud chcete získat vaší kopie nástroj Návrhář postupu provádění, obraťte se na mepd@microsoft.com.</span><span class="sxs-lookup"><span data-stu-id="45938-114">To get your copy of the Workflow Designer tool, please contact mepd@microsoft.com.</span></span>
+> <span data-ttu-id="56074-114">tooget vaší kopie aplikace hello nástroj Návrhář postupu provádění, obraťte se na mepd@microsoft.com.</span><span class="sxs-lookup"><span data-stu-id="56074-114">tooget your copy of hello Workflow Designer tool, please contact mepd@microsoft.com.</span></span>
 > 
 > 
 
-<span data-ttu-id="45938-115">Po vytvoření souboru pracovního postupu je možné uložit jako prostředek a pak použije pro kódování mediálních souborů.</span><span class="sxs-lookup"><span data-stu-id="45938-115">Once a workflow file is created, it can be uploaded as an Asset, and then be used for encoding media files.</span></span> <span data-ttu-id="45938-116">Informace o tom, jak kódování s **Media Encoder Premium pracovního postupu** pomocí **.NET**, najdete v části [Advanced kódování s pracovním postupem Premium Media Encoder](media-services-encode-with-premium-workflow.md).</span><span class="sxs-lookup"><span data-stu-id="45938-116">For information on how to encode with **Media Encoder Premium Workflow** using **.NET**, see [Advanced encoding with Media Encoder Premium Workflow](media-services-encode-with-premium-workflow.md).</span></span>
+<span data-ttu-id="56074-115">Po vytvoření souboru pracovního postupu je možné uložit jako prostředek a pak použije pro kódování mediálních souborů.</span><span class="sxs-lookup"><span data-stu-id="56074-115">Once a workflow file is created, it can be uploaded as an Asset, and then be used for encoding media files.</span></span> <span data-ttu-id="56074-116">Informace o tom tooencode s **Media Encoder Premium pracovního postupu** pomocí **.NET**, najdete v části [Advanced kódování s pracovním postupem Premium Media Encoder](media-services-encode-with-premium-workflow.md).</span><span class="sxs-lookup"><span data-stu-id="56074-116">For information on how tooencode with **Media Encoder Premium Workflow** using **.NET**, see [Advanced encoding with Media Encoder Premium Workflow](media-services-encode-with-premium-workflow.md).</span></span>
 
-## <span data-ttu-id="45938-117"><a id="existing_workflows"></a>Úprava stávajících pracovními postupy</span><span class="sxs-lookup"><span data-stu-id="45938-117"><a id="existing_workflows"></a>Modify existing workflows</span></span>
-<span data-ttu-id="45938-118">Výchozí hodnota [publikovaná pracovních](media-services-workflow-designer.md#existing_workflows) se dají změnit pomocí nástroje návrháře.</span><span class="sxs-lookup"><span data-stu-id="45938-118">The default [published workflows](media-services-workflow-designer.md#existing_workflows) can be modified using the designer tool.</span></span> <span data-ttu-id="45938-119">Výchozí nastavení můžete získat soubory pracovního postupu [zde](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows).</span><span class="sxs-lookup"><span data-stu-id="45938-119">You can get the default workflow files [here](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows).</span></span> <span data-ttu-id="45938-120">Složka obsahuje také popis těchto souborů.</span><span class="sxs-lookup"><span data-stu-id="45938-120">The folder also contains the description of these files.</span></span>
+## <span data-ttu-id="56074-117"><a id="existing_workflows"></a>Úprava stávajících pracovními postupy</span><span class="sxs-lookup"><span data-stu-id="56074-117"><a id="existing_workflows"></a>Modify existing workflows</span></span>
+<span data-ttu-id="56074-118">Hello výchozí [publikovaná pracovních](media-services-workflow-designer.md#existing_workflows) lze upravit pomocí návrháře nástroj hello.</span><span class="sxs-lookup"><span data-stu-id="56074-118">hello default [published workflows](media-services-workflow-designer.md#existing_workflows) can be modified using hello designer tool.</span></span> <span data-ttu-id="56074-119">Můžete získat hello výchozí soubory pracovního postupu [zde](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows).</span><span class="sxs-lookup"><span data-stu-id="56074-119">You can get hello default workflow files [here](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows).</span></span> <span data-ttu-id="56074-120">Hello složka obsahuje také popis hello těchto souborů.</span><span class="sxs-lookup"><span data-stu-id="56074-120">hello folder also contains hello description of these files.</span></span>
 
-<span data-ttu-id="45938-121">Následující videa ukazují, jak používat návrháře.</span><span class="sxs-lookup"><span data-stu-id="45938-121">The following videos demonstrate how to use the designer.</span></span>
+<span data-ttu-id="56074-121">Následující videa Hello ukazují, jak toouse hello designer.</span><span class="sxs-lookup"><span data-stu-id="56074-121">hello following videos demonstrate how toouse hello designer.</span></span>
 
-### <a name="day-1--getting-started"></a><span data-ttu-id="45938-122">Den 1 – Začínáme</span><span class="sxs-lookup"><span data-stu-id="45938-122">Day 1 – Getting Started</span></span>
-<span data-ttu-id="45938-123">1 den video obsahuje:</span><span class="sxs-lookup"><span data-stu-id="45938-123">Day 1 video covers:</span></span>
+### <a name="day-1--getting-started"></a><span data-ttu-id="56074-122">Den 1 – Začínáme</span><span class="sxs-lookup"><span data-stu-id="56074-122">Day 1 – Getting Started</span></span>
+<span data-ttu-id="56074-123">1 den video obsahuje:</span><span class="sxs-lookup"><span data-stu-id="56074-123">Day 1 video covers:</span></span>
 
-* <span data-ttu-id="45938-124">Návrhář – přehled</span><span class="sxs-lookup"><span data-stu-id="45938-124">Designer Overview</span></span>
-* <span data-ttu-id="45938-125">Základní pracovní postupy – "Hello, World"</span><span class="sxs-lookup"><span data-stu-id="45938-125">Basic Workflows – "Hello World"</span></span>
-* <span data-ttu-id="45938-126">Vytvoření více výstupní soubory MP4 pro použití se službou Azure Media Services streamování</span><span class="sxs-lookup"><span data-stu-id="45938-126">Creating multiple output MP4 files for use with Azure Media Services streaming</span></span>
+* <span data-ttu-id="56074-124">Návrhář – přehled</span><span class="sxs-lookup"><span data-stu-id="56074-124">Designer Overview</span></span>
+* <span data-ttu-id="56074-125">Základní pracovní postupy – "Hello, World"</span><span class="sxs-lookup"><span data-stu-id="56074-125">Basic Workflows – "Hello World"</span></span>
+* <span data-ttu-id="56074-126">Vytvoření více výstupní soubory MP4 pro použití se službou Azure Media Services streamování</span><span class="sxs-lookup"><span data-stu-id="56074-126">Creating multiple output MP4 files for use with Azure Media Services streaming</span></span>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-1/player]
 > 
 > 
 
-### <a name="day-2"></a><span data-ttu-id="45938-127">Den 2</span><span class="sxs-lookup"><span data-stu-id="45938-127">Day 2</span></span>
-<span data-ttu-id="45938-128">Video den 2 obsahuje:</span><span class="sxs-lookup"><span data-stu-id="45938-128">Day 2 video covers:</span></span>
+### <a name="day-2"></a><span data-ttu-id="56074-127">Den 2</span><span class="sxs-lookup"><span data-stu-id="56074-127">Day 2</span></span>
+<span data-ttu-id="56074-128">Video den 2 obsahuje:</span><span class="sxs-lookup"><span data-stu-id="56074-128">Day 2 video covers:</span></span>
 
-* <span data-ttu-id="45938-129">Různých scénáře souboru zdroje – zpracování zvuk</span><span class="sxs-lookup"><span data-stu-id="45938-129">Varying Source file scenarios – handling audio</span></span>
-* <span data-ttu-id="45938-130">Pracovní postupy s pokročilé logiky</span><span class="sxs-lookup"><span data-stu-id="45938-130">Workflows with advanced Logic</span></span>
-* <span data-ttu-id="45938-131">Fáze grafu</span><span class="sxs-lookup"><span data-stu-id="45938-131">Graph stages</span></span>
+* <span data-ttu-id="56074-129">Různých scénáře souboru zdroje – zpracování zvuk</span><span class="sxs-lookup"><span data-stu-id="56074-129">Varying Source file scenarios – handling audio</span></span>
+* <span data-ttu-id="56074-130">Pracovní postupy s pokročilé logiky</span><span class="sxs-lookup"><span data-stu-id="56074-130">Workflows with advanced Logic</span></span>
+* <span data-ttu-id="56074-131">Fáze grafu</span><span class="sxs-lookup"><span data-stu-id="56074-131">Graph stages</span></span>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-2/player]
 > 
 > 
 
-### <a name="day-3"></a><span data-ttu-id="45938-132">Den 3</span><span class="sxs-lookup"><span data-stu-id="45938-132">Day 3</span></span>
-<span data-ttu-id="45938-133">Den 3 video obsahuje:</span><span class="sxs-lookup"><span data-stu-id="45938-133">Day 3 video covers:</span></span>
+### <a name="day-3"></a><span data-ttu-id="56074-132">Den 3</span><span class="sxs-lookup"><span data-stu-id="56074-132">Day 3</span></span>
+<span data-ttu-id="56074-133">Den 3 video obsahuje:</span><span class="sxs-lookup"><span data-stu-id="56074-133">Day 3 video covers:</span></span>
 
-* <span data-ttu-id="45938-134">Skriptování uvnitř pracovních nebo plány</span><span class="sxs-lookup"><span data-stu-id="45938-134">Scripting inside of Workflows/Blueprints</span></span>
-* <span data-ttu-id="45938-135">Omezení s aktuální kodér</span><span class="sxs-lookup"><span data-stu-id="45938-135">Restrictions with the current Encoder</span></span>
-* <span data-ttu-id="45938-136">MODUL OTÁZKY A ODPOVĚDI</span><span class="sxs-lookup"><span data-stu-id="45938-136">Q&A</span></span>
+* <span data-ttu-id="56074-134">Skriptování uvnitř pracovních nebo plány</span><span class="sxs-lookup"><span data-stu-id="56074-134">Scripting inside of Workflows/Blueprints</span></span>
+* <span data-ttu-id="56074-135">Omezení s hello aktuální kodér</span><span class="sxs-lookup"><span data-stu-id="56074-135">Restrictions with hello current Encoder</span></span>
+* <span data-ttu-id="56074-136">MODUL OTÁZKY A ODPOVĚDI</span><span class="sxs-lookup"><span data-stu-id="56074-136">Q&A</span></span>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-3/player]
 > 
 > 
 
-## <a name="next-step"></a><span data-ttu-id="45938-137">Další krok</span><span class="sxs-lookup"><span data-stu-id="45938-137">Next step</span></span>
-<span data-ttu-id="45938-138">Prohlédněte si mapy kurzů k Media Services.</span><span class="sxs-lookup"><span data-stu-id="45938-138">Review Media Services learning paths.</span></span>
+## <a name="next-step"></a><span data-ttu-id="56074-137">Další krok</span><span class="sxs-lookup"><span data-stu-id="56074-137">Next step</span></span>
+<span data-ttu-id="56074-138">Prohlédněte si mapy kurzů k Media Services.</span><span class="sxs-lookup"><span data-stu-id="56074-138">Review Media Services learning paths.</span></span>
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a><span data-ttu-id="45938-139">Poskytnutí zpětné vazby</span><span class="sxs-lookup"><span data-stu-id="45938-139">Provide feedback</span></span>
+## <a name="provide-feedback"></a><span data-ttu-id="56074-139">Poskytnutí zpětné vazby</span><span class="sxs-lookup"><span data-stu-id="56074-139">Provide feedback</span></span>
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<span data-ttu-id="45938-140">Pokud potřebujete podporu nebo máte otázky o vytváření vlastních pracovních postupů v nástroji Návrhář pracovního postupu, pošlete e-mail na mepd@microsoft.com.</span><span class="sxs-lookup"><span data-stu-id="45938-140">If you need support or have questions about creating custom workflows in the Workflow designer tool, please send email to mepd@microsoft.com.</span></span>
+<span data-ttu-id="56074-140">Pokud potřebujete podporu nebo máte otázky o vytváření vlastních pracovních postupů v nástroji Návrhář hello pracovního postupu, pošlete e-mail toomepd@microsoft.com.</span><span class="sxs-lookup"><span data-stu-id="56074-140">If you need support or have questions about creating custom workflows in hello Workflow designer tool, please send email toomepd@microsoft.com.</span></span>
 
-## <a name="see-also"></a><span data-ttu-id="45938-141">Viz také</span><span class="sxs-lookup"><span data-stu-id="45938-141">See Also</span></span>
-[<span data-ttu-id="45938-142">Azure Premium kodér pracovního postupu návrháře vzdělávání videa</span><span class="sxs-lookup"><span data-stu-id="45938-142">Azure Premium Encoder Workflow Designer Training Videos</span></span>](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
+## <a name="see-also"></a><span data-ttu-id="56074-141">Viz také</span><span class="sxs-lookup"><span data-stu-id="56074-141">See Also</span></span>
+[<span data-ttu-id="56074-142">Azure Premium kodér pracovního postupu návrháře vzdělávání videa</span><span class="sxs-lookup"><span data-stu-id="56074-142">Azure Premium Encoder Workflow Designer Training Videos</span></span>](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 

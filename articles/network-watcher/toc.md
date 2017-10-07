@@ -17,7 +17,7 @@
 ### [CLI 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
 ### [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
 ### [REST](network-watcher-packet-capture-manage-rest.md)
-## Ověření IP toků z a do virtuálního počítače
+## Ověřte tooand toky IP z virtuálního počítače
 ### [Azure Portal](network-watcher-check-ip-flow-verify-portal.md)
 ### [PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
 ### [CLI 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
@@ -59,8 +59,8 @@
 # Postup
 ## [Monitorování VPN Gateway s využitím Azure Automation](network-watcher-monitor-with-azure-automation.md)
 ## [Diagnostika místního připojení prostřednictvím VPN Gateway](network-watcher-diagnose-on-premises-connectivity.md)
-## [Analýza zachytávání paketů ke zjištění anomálií](network-watcher-deep-packet-inspection.md)
-## [Použití zachytávání paketů k proaktivnímu monitorování sítě s využitím Azure Functions](network-watcher-alert-triggered-packet-capture.md)
+## [Analýza paketů zachycení toofind anomálií](network-watcher-deep-packet-inspection.md)
+## [Pomocí paketu zachycení toodo Proaktivní monitorování sítě s Azure Functions](network-watcher-alert-triggered-packet-capture.md)
 ## [Vizualizace protokolů toku s využitím Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 ## [Vizualizace protokolů toku s využitím opensourcových nástrojů](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 ## [Vizualizace provozu sítě s využitím opensourcových nástrojů](network-watcher-using-open-source-tools.md)

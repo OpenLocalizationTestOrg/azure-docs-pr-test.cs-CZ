@@ -1,6 +1,6 @@
 ---
-title: "Šablona řešení Cortana Intelligence architektura pro vytváření prognóz vyžádání energie | Microsoft Docs"
-description: "Architektura Microsoft Cortana Intelligence řešení šablony, která pomáhá prognózy vyžádání pro firmu nástroj energie."
+title: "Architektura šablon Intelligence řešení pro vyžádání prognózy energie aaaCortana | Microsoft Docs"
+description: "Architektura hello Microsoft Cortana Intelligence šablona řešení, pomáhá prognózy vyžádání pro firmu nástroj energie."
 keywords: "řešení akcelerátoru; cortana analytics; prognózy energie"
 services: cortana-analytics
 documentationcenter: 
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2015
 ms.author: garye
-ms.openlocfilehash: 87a27dbe9042973dcfa7e9a5a438773d1bbab4d3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c56fa5abac6240eb9bb9396205a1b882de77d610
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="cortana-intelligence-solution-template-architecture-for-demand-forecasting-of-energy"></a><span data-ttu-id="c866b-104">Šablona řešení Cortana Intelligence architektura pro vytváření prognóz vyžádání energie</span><span class="sxs-lookup"><span data-stu-id="c866b-104">Cortana Intelligence Solution Template architecture for demand forecasting of energy</span></span>
-<span data-ttu-id="c866b-105">Následující obrázek poskytuje přehled architektury aplikace [Cortana Intelligence řešení šablonu pro vyžádání prognózy energie](cortana-analytics-playbook-demand-forecasting-energy.md).</span><span class="sxs-lookup"><span data-stu-id="c866b-105">The diagram below provides an architectural overview of the [Cortana Intelligence Solution Template for demand forecasting of energy](cortana-analytics-playbook-demand-forecasting-energy.md).</span></span>
+# <a name="cortana-intelligence-solution-template-architecture-for-demand-forecasting-of-energy"></a><span data-ttu-id="1ee4a-104">Šablona řešení Cortana Intelligence architektura pro vytváření prognóz vyžádání energie</span><span class="sxs-lookup"><span data-stu-id="1ee4a-104">Cortana Intelligence Solution Template architecture for demand forecasting of energy</span></span>
+<span data-ttu-id="1ee4a-105">Následující diagram Hello poskytuje přehled architektury aplikace hello [Cortana Intelligence řešení šablonu pro vyžádání prognózy energie](cortana-analytics-playbook-demand-forecasting-energy.md).</span><span class="sxs-lookup"><span data-stu-id="1ee4a-105">hello diagram below provides an architectural overview of hello [Cortana Intelligence Solution Template for demand forecasting of energy](cortana-analytics-playbook-demand-forecasting-energy.md).</span></span>
 
-<span data-ttu-id="c866b-106">Plné velikosti verzi diagramu Zde si můžete stáhnout: [diagram architektury: Šablona řešení pro vyžádání prognózy energie](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-energy-forecasting.png).</span><span class="sxs-lookup"><span data-stu-id="c866b-106">You can download a full-size version of the diagram here: [Architecture diagram: Solution Template for demand forecasting of energy](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-energy-forecasting.png).</span></span>
+<span data-ttu-id="1ee4a-106">Plné velikosti verzi hello diagram Zde můžete stáhnout: [diagram architektury: Šablona řešení pro vyžádání prognózy energie](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-energy-forecasting.png).</span><span class="sxs-lookup"><span data-stu-id="1ee4a-106">You can download a full-size version of hello diagram here: [Architecture diagram: Solution Template for demand forecasting of energy](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-energy-forecasting.png).</span></span>
 
 ![Diagram architektury Microsoft Cortana Intelligence řešení šablony pro vyžádání prognózy energie][image]
 

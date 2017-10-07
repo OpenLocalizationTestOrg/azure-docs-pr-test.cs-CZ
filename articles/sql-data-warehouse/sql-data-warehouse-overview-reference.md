@@ -1,5 +1,5 @@
 ---
-title: "Témata s referenčními informacemi SQL Data Warehouse | Microsoft Docs"
+title: "témata odkazů datového skladu aaaSQL | Microsoft Docs"
 description: "Referenční obsahu odkazy pro SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,22 +15,22 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 10/31/2016
 ms.author: barbkess
-ms.openlocfilehash: c56c1c262aa1a88e3f7a3d6638176cb9f97011d3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 649a0b7da81b6817c435ad820642318a8cbf92d1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="reference-topics-for-sql-data-warehouse"></a><span data-ttu-id="1b7c4-103">Témata odkazů pro SQL Data Warehouse</span><span class="sxs-lookup"><span data-stu-id="1b7c4-103">Reference topics for SQL Data Warehouse</span></span>
-<span data-ttu-id="1b7c4-104">Tyto články obsahují referenční informace pro SQL Data Warehouse.</span><span class="sxs-lookup"><span data-stu-id="1b7c4-104">These articles contain reference information for SQL Data Warehouse.</span></span>
+# <a name="reference-topics-for-sql-data-warehouse"></a><span data-ttu-id="ada32-103">Témata odkazů pro SQL Data Warehouse</span><span class="sxs-lookup"><span data-stu-id="ada32-103">Reference topics for SQL Data Warehouse</span></span>
+<span data-ttu-id="ada32-104">Tyto články obsahují referenční informace pro SQL Data Warehouse.</span><span class="sxs-lookup"><span data-stu-id="ada32-104">These articles contain reference information for SQL Data Warehouse.</span></span>
 
-* <span data-ttu-id="1b7c4-105">[Elementy jazyka Transact-SQL][Transact-SQL language elements]</span><span class="sxs-lookup"><span data-stu-id="1b7c4-105">[Transact-SQL language elements][Transact-SQL language elements]</span></span>
-* <span data-ttu-id="1b7c4-106">[Příkaz Transact-SQL příkazy][Transact-SQL statements]</span><span class="sxs-lookup"><span data-stu-id="1b7c4-106">[Transact-SQL statements][Transact-SQL statements]</span></span>
-* <span data-ttu-id="1b7c4-107">[Zobrazení systému Transact-SQL][Transact-SQL system views]</span><span class="sxs-lookup"><span data-stu-id="1b7c4-107">[Transact-SQL system views][Transact-SQL system views]</span></span>
-* <span data-ttu-id="1b7c4-108">[Rutiny prostředí PowerShell][PowerShell cmdlets]</span><span class="sxs-lookup"><span data-stu-id="1b7c4-108">[PowerShell cmdlets][PowerShell cmdlets]</span></span>
+* <span data-ttu-id="ada32-105">[Elementy jazyka Transact-SQL][Transact-SQL language elements]</span><span class="sxs-lookup"><span data-stu-id="ada32-105">[Transact-SQL language elements][Transact-SQL language elements]</span></span>
+* <span data-ttu-id="ada32-106">[Příkaz Transact-SQL příkazy][Transact-SQL statements]</span><span class="sxs-lookup"><span data-stu-id="ada32-106">[Transact-SQL statements][Transact-SQL statements]</span></span>
+* <span data-ttu-id="ada32-107">[Zobrazení systému Transact-SQL][Transact-SQL system views]</span><span class="sxs-lookup"><span data-stu-id="ada32-107">[Transact-SQL system views][Transact-SQL system views]</span></span>
+* <span data-ttu-id="ada32-108">[Rutiny prostředí PowerShell][PowerShell cmdlets]</span><span class="sxs-lookup"><span data-stu-id="ada32-108">[PowerShell cmdlets][PowerShell cmdlets]</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="1b7c4-109">Další kroky</span><span class="sxs-lookup"><span data-stu-id="1b7c4-109">Next steps</span></span>
-<span data-ttu-id="1b7c4-110">Vývoj informace najdete v tématu [přehled vývoje][development overview].</span><span class="sxs-lookup"><span data-stu-id="1b7c4-110">For development information, see [development overview][development overview].</span></span>
+## <a name="next-steps"></a><span data-ttu-id="ada32-109">Další kroky</span><span class="sxs-lookup"><span data-stu-id="ada32-109">Next steps</span></span>
+<span data-ttu-id="ada32-110">Vývoj informace najdete v tématu [přehled vývoje][development overview].</span><span class="sxs-lookup"><span data-stu-id="ada32-110">For development information, see [development overview][development overview].</span></span>
 
 <!--Image references-->
 

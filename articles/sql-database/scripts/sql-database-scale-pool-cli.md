@@ -1,6 +1,6 @@
 ---
-title: "Příklad rozhraní příkazového řádku škáluje SQL elastického fondu Azure SQL Database | Microsoft Docs"
-description: "Azure CLI ukázkový skript škálování elastický fond SQL v databázi SQL Azure"
+title: "Příklad aaaCLI škáluje SQL elastického fondu Azure SQL Database | Microsoft Docs"
+description: "Azure CLI příklad skriptu tooscale elastický fond SQL v databázi SQL Azure"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -16,49 +16,49 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 06/23/2017
 ms.author: janeng
-ms.openlocfilehash: 888d2b7b7c118fede82d39881570a3b3d7b09961
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 436128b8183213f78b9abc2ec46efe2a3ed3c37c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-cli-to-scale-a-sql-elastic-pool-in-azure-sql-database"></a><span data-ttu-id="3e25b-103">Použití rozhraní příkazového řádku pro škálování elastický fond SQL v databázi SQL Azure</span><span class="sxs-lookup"><span data-stu-id="3e25b-103">Use CLI to scale a SQL elastic pool in Azure SQL Database</span></span>
+# <a name="use-cli-tooscale-a-sql-elastic-pool-in-azure-sql-database"></a><span data-ttu-id="27482-103">Pomocí rozhraní příkazového řádku tooscale elastický fond SQL v databázi SQL Azure</span><span class="sxs-lookup"><span data-stu-id="27482-103">Use CLI tooscale a SQL elastic pool in Azure SQL Database</span></span>
 
-<span data-ttu-id="3e25b-104">Tento příklad skriptu rozhraní příkazového řádku Azure vytvoří SQL elastické fondy, přesune databáze ve fondu a změny úrovně výkonu elastického fondu.</span><span class="sxs-lookup"><span data-stu-id="3e25b-104">This Azure CLI script example creates SQL elastic pools, moves pooled databases, and changes elastic pool performance levels.</span></span> 
+<span data-ttu-id="27482-104">Tento příklad skriptu rozhraní příkazového řádku Azure vytvoří SQL elastické fondy, přesune databáze ve fondu a změny úrovně výkonu elastického fondu.</span><span class="sxs-lookup"><span data-stu-id="27482-104">This Azure CLI script example creates SQL elastic pools, moves pooled databases, and changes elastic pool performance levels.</span></span> 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-<span data-ttu-id="3e25b-105">Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější.</span><span class="sxs-lookup"><span data-stu-id="3e25b-105">If you choose to install and use the CLI locally, this topic requires that you are running the Azure CLI version 2.0 or later.</span></span> <span data-ttu-id="3e25b-106">Verzi zjistíte spuštěním příkazu `az --version`.</span><span class="sxs-lookup"><span data-stu-id="3e25b-106">Run `az --version` to find the version.</span></span> <span data-ttu-id="3e25b-107">Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="3e25b-107">If you need to install or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span> 
+<span data-ttu-id="27482-105">Pokud zvolte tooinstall a místně pomocí hello rozhraní příkazového řádku, v tomto tématu vyžaduje, že používáte hello Azure CLI verze 2.0 nebo novější.</span><span class="sxs-lookup"><span data-stu-id="27482-105">If you choose tooinstall and use hello CLI locally, this topic requires that you are running hello Azure CLI version 2.0 or later.</span></span> <span data-ttu-id="27482-106">Spustit `az --version` toofind hello verze.</span><span class="sxs-lookup"><span data-stu-id="27482-106">Run `az --version` toofind hello version.</span></span> <span data-ttu-id="27482-107">Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="27482-107">If you need tooinstall or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span> 
 
-## <a name="sample-script"></a><span data-ttu-id="3e25b-108">Ukázkový skript</span><span class="sxs-lookup"><span data-stu-id="3e25b-108">Sample script</span></span>
+## <a name="sample-script"></a><span data-ttu-id="27482-108">Ukázkový skript</span><span class="sxs-lookup"><span data-stu-id="27482-108">Sample script</span></span>
 
-<span data-ttu-id="3e25b-109">[!code-azurecli-interactive[hlavní](../../../cli_scripts/sql-database/scale-pool/scale-pool.sh "přesun databáze mezi fondy")]</span><span class="sxs-lookup"><span data-stu-id="3e25b-109">[!code-azurecli-interactive[main](../../../cli_scripts/sql-database/scale-pool/scale-pool.sh "Move database between pools")]</span></span>
+[!code-azurecli-interactive[main](../../../cli_scripts/sql-database/scale-pool/scale-pool.sh "Move database between pools")]
 
-## <a name="clean-up-deployment"></a><span data-ttu-id="3e25b-110">Vyčištění nasazení</span><span class="sxs-lookup"><span data-stu-id="3e25b-110">Clean up deployment</span></span>
+## <a name="clean-up-deployment"></a><span data-ttu-id="27482-109">Vyčištění nasazení</span><span class="sxs-lookup"><span data-stu-id="27482-109">Clean up deployment</span></span>
 
-<span data-ttu-id="3e25b-111">Po spuštění ukázka skriptu, následující příkaz lze použít k odebrání skupiny prostředků a všechny prostředky, které jsou s ním spojená.</span><span class="sxs-lookup"><span data-stu-id="3e25b-111">After the script sample has been run, the following command can be used to remove the resource group and all resources associated with it.</span></span>
+<span data-ttu-id="27482-110">Po spuštění ukázka skriptu hello hello následující příkaz může být skupiny prostředků použít tooremove hello a všechny prostředky, které jsou s ním spojená.</span><span class="sxs-lookup"><span data-stu-id="27482-110">After hello script sample has been run, hello following command can be used tooremove hello resource group and all resources associated with it.</span></span>
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="script-explanation"></a><span data-ttu-id="3e25b-112">Vysvětlení skriptu</span><span class="sxs-lookup"><span data-stu-id="3e25b-112">Script explanation</span></span>
+## <a name="script-explanation"></a><span data-ttu-id="27482-111">Vysvětlení skriptu</span><span class="sxs-lookup"><span data-stu-id="27482-111">Script explanation</span></span>
 
-<span data-ttu-id="3e25b-113">Tento skript používá následující příkazy k vytvoření skupiny prostředků, logického serveru, databáze SQL a pravidla brány firewall.</span><span class="sxs-lookup"><span data-stu-id="3e25b-113">This script uses the following commands to create a resource group, logical server, SQL Database, and firewall rules.</span></span> <span data-ttu-id="3e25b-114">Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.</span><span class="sxs-lookup"><span data-stu-id="3e25b-114">Each command in the table links to command specific documentation.</span></span>
+<span data-ttu-id="27482-112">Tento skript používá hello následující příkazy toocreate skupinu prostředků, logického serveru, databáze SQL a pravidla brány firewall.</span><span class="sxs-lookup"><span data-stu-id="27482-112">This script uses hello following commands toocreate a resource group, logical server, SQL Database, and firewall rules.</span></span> <span data-ttu-id="27482-113">Každý příkaz v hello tabulky odkazů toocommand konkrétní dokumentaci.</span><span class="sxs-lookup"><span data-stu-id="27482-113">Each command in hello table links toocommand specific documentation.</span></span>
 
-| <span data-ttu-id="3e25b-115">Příkaz</span><span class="sxs-lookup"><span data-stu-id="3e25b-115">Command</span></span> | <span data-ttu-id="3e25b-116">Poznámky</span><span class="sxs-lookup"><span data-stu-id="3e25b-116">Notes</span></span> |
+| <span data-ttu-id="27482-114">Příkaz</span><span class="sxs-lookup"><span data-stu-id="27482-114">Command</span></span> | <span data-ttu-id="27482-115">Poznámky</span><span class="sxs-lookup"><span data-stu-id="27482-115">Notes</span></span> |
 |---|---|
-| [<span data-ttu-id="3e25b-117">Vytvoření skupiny az</span><span class="sxs-lookup"><span data-stu-id="3e25b-117">az group create</span></span>](https://docs.microsoft.com/cli/azure/group#create) | <span data-ttu-id="3e25b-118">Vytvoří skupinu prostředků, ve kterém jsou uložené všechny prostředky.</span><span class="sxs-lookup"><span data-stu-id="3e25b-118">Creates a resource group in which all resources are stored.</span></span> |
-| [<span data-ttu-id="3e25b-119">Vytvoření az sql serveru</span><span class="sxs-lookup"><span data-stu-id="3e25b-119">az sql server create</span></span>](https://docs.microsoft.com/cli/azure/sql/server#create) | <span data-ttu-id="3e25b-120">Vytvoří logického serveru, který je hostitelem databáze SQL.</span><span class="sxs-lookup"><span data-stu-id="3e25b-120">Creates a logical server that hosts the SQL Database.</span></span> |
-| [<span data-ttu-id="3e25b-121">Vytvoření sql az Elastická fondy</span><span class="sxs-lookup"><span data-stu-id="3e25b-121">az sql elastic-pools create</span></span>](https://docs.microsoft.com/cli/azure/sql/elastic-pool#create) | <span data-ttu-id="3e25b-122">Vytvoří fond elastické databáze v rámci logického serveru.</span><span class="sxs-lookup"><span data-stu-id="3e25b-122">Creates an elastic database pool within the logical server.</span></span> |
-| [<span data-ttu-id="3e25b-123">Vytvoření az sql db</span><span class="sxs-lookup"><span data-stu-id="3e25b-123">az sql db create</span></span>](https://docs.microsoft.com/cli/azure/sql/db#create) | <span data-ttu-id="3e25b-124">Vytvoří databázi SQL v logického serveru.</span><span class="sxs-lookup"><span data-stu-id="3e25b-124">Creates the SQL Database in the logical server.</span></span> |
-| [<span data-ttu-id="3e25b-125">aktualizace elastického fondu sql az</span><span class="sxs-lookup"><span data-stu-id="3e25b-125">az sql elastic-pools update</span></span>](https://docs.microsoft.com/cli/azure/sql/elastic-pool#update) | <span data-ttu-id="3e25b-126">Aktualizace fondu elastické databáze, v tomto příkladu se změní přiřazené eDTU.</span><span class="sxs-lookup"><span data-stu-id="3e25b-126">Updates an elastic database pool, in this example changes the assigned eDTU.</span></span> |
-| [<span data-ttu-id="3e25b-127">Odstranění skupiny az</span><span class="sxs-lookup"><span data-stu-id="3e25b-127">az group delete</span></span>](https://docs.microsoft.com/cli/azure/vm/extension#set) | <span data-ttu-id="3e25b-128">Odstraní skupinu prostředků, včetně všech vnořených prostředků.</span><span class="sxs-lookup"><span data-stu-id="3e25b-128">Deletes a resource group including all nested resources.</span></span> |
+| [<span data-ttu-id="27482-116">Vytvoření skupiny az</span><span class="sxs-lookup"><span data-stu-id="27482-116">az group create</span></span>](https://docs.microsoft.com/cli/azure/group#create) | <span data-ttu-id="27482-117">Vytvoří skupinu prostředků, ve kterém jsou uložené všechny prostředky.</span><span class="sxs-lookup"><span data-stu-id="27482-117">Creates a resource group in which all resources are stored.</span></span> |
+| [<span data-ttu-id="27482-118">Vytvoření az sql serveru</span><span class="sxs-lookup"><span data-stu-id="27482-118">az sql server create</span></span>](https://docs.microsoft.com/cli/azure/sql/server#create) | <span data-ttu-id="27482-119">Vytvoří logického serveru, hostitelé hello databáze SQL.</span><span class="sxs-lookup"><span data-stu-id="27482-119">Creates a logical server that hosts hello SQL Database.</span></span> |
+| [<span data-ttu-id="27482-120">Vytvoření sql az Elastická fondy</span><span class="sxs-lookup"><span data-stu-id="27482-120">az sql elastic-pools create</span></span>](https://docs.microsoft.com/cli/azure/sql/elastic-pool#create) | <span data-ttu-id="27482-121">Vytvoří fond elastické databáze v rámci hello logického serveru.</span><span class="sxs-lookup"><span data-stu-id="27482-121">Creates an elastic database pool within hello logical server.</span></span> |
+| [<span data-ttu-id="27482-122">Vytvoření az sql db</span><span class="sxs-lookup"><span data-stu-id="27482-122">az sql db create</span></span>](https://docs.microsoft.com/cli/azure/sql/db#create) | <span data-ttu-id="27482-123">Vytvoří hello SQL Database v hello logického serveru.</span><span class="sxs-lookup"><span data-stu-id="27482-123">Creates hello SQL Database in hello logical server.</span></span> |
+| [<span data-ttu-id="27482-124">aktualizace elastického fondu sql az</span><span class="sxs-lookup"><span data-stu-id="27482-124">az sql elastic-pools update</span></span>](https://docs.microsoft.com/cli/azure/sql/elastic-pool#update) | <span data-ttu-id="27482-125">Aktualizace fondu elastické databáze v tento příklad změny hello přiřazené eDTU.</span><span class="sxs-lookup"><span data-stu-id="27482-125">Updates an elastic database pool, in this example changes hello assigned eDTU.</span></span> |
+| [<span data-ttu-id="27482-126">Odstranění skupiny az</span><span class="sxs-lookup"><span data-stu-id="27482-126">az group delete</span></span>](https://docs.microsoft.com/cli/azure/vm/extension#set) | <span data-ttu-id="27482-127">Odstraní skupinu prostředků, včetně všech vnořených prostředků.</span><span class="sxs-lookup"><span data-stu-id="27482-127">Deletes a resource group including all nested resources.</span></span> |
 
-## <a name="next-steps"></a><span data-ttu-id="3e25b-129">Další kroky</span><span class="sxs-lookup"><span data-stu-id="3e25b-129">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="27482-128">Další kroky</span><span class="sxs-lookup"><span data-stu-id="27482-128">Next steps</span></span>
 
-<span data-ttu-id="3e25b-130">Další informace o rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="3e25b-130">For more information on the Azure CLI, see [Azure CLI documentation](https://docs.microsoft.com/cli/azure/overview).</span></span>
+<span data-ttu-id="27482-129">Další informace o hello rozhraní příkazového řádku Azure najdete v tématu [dokumentaci k rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="27482-129">For more information on hello Azure CLI, see [Azure CLI documentation](https://docs.microsoft.com/cli/azure/overview).</span></span>
 
-<span data-ttu-id="3e25b-131">Další ukázky skriptu SQL databáze rozhraní příkazového řádku najdete v [dokumentace Azure SQL Database](../sql-database-cli-samples.md).</span><span class="sxs-lookup"><span data-stu-id="3e25b-131">Additional SQL Database CLI script samples can be found in the [Azure SQL Database documentation](../sql-database-cli-samples.md).</span></span>
+<span data-ttu-id="27482-130">Další ukázky skriptu SQL databáze rozhraní příkazového řádku najdete v hello [dokumentace Azure SQL Database](../sql-database-cli-samples.md).</span><span class="sxs-lookup"><span data-stu-id="27482-130">Additional SQL Database CLI script samples can be found in hello [Azure SQL Database documentation](../sql-database-cli-samples.md).</span></span>

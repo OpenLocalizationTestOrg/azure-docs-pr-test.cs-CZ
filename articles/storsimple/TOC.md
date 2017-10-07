@@ -1,7 +1,7 @@
 # StorSimple Virtual Array
 
 ## Přehled
-### [Informace o řešení](storsimple-ova-overview.md)
+### [Co je hello řešení?](storsimple-ova-overview.md)
 
 ## Začínáme
 ### Plánování
@@ -10,7 +10,7 @@
 #### [Kontrola osvědčených postupů](storsimple-ova-best-practices.md)
 
 ### Nasazení
-#### [Příprava nasazení](storsimple-virtual-array-deploy1-portal-prep.md)
+#### [Příprava toodeploy](storsimple-virtual-array-deploy1-portal-prep.md)
 ##### [Nasazení služby StorSimple Manager](storsimple-virtual-array-manage-service.md)
 #### [Zřizování v prostředí Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md)
 #### [Zřizování v prostředí VMWare](storsimple-virtual-array-deploy2-provision-vmware.md)
@@ -53,7 +53,7 @@
 # Řada StorSimple 8000 (Azure Portal)
 
 ## Přehled
-### [Informace o řešení](storsimple-overview.md)
+### [Co je hello řešení?](storsimple-overview.md)
 ### [Mapa kurzů StorSimple](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [Aspekty zabezpečení](storsimple-8000-security.md)
 
@@ -87,12 +87,12 @@
 #### [Použití služby StorSimple Manager](storsimple-8000-manager-service-administration.md)
 ##### [Obnovení ze zálohy](storsimple-8000-restore-from-backup-set-u2.md)
 ##### [Klonování svazku](storsimple-8000-clone-volume-u2.md)
-##### [Vzdálené připojení k zařízení](storsimple-8000-remote-connect.md)
+##### [Vzdálené připojení tooyour zařízení](storsimple-8000-remote-connect.md)
 ##### [Deaktivace a odstranění zařízení](storsimple-8000-deactivate-and-delete-device.md)
 ##### [Převzetí služeb při selhání zařízení](storsimple-8000-device-failover-disaster-recovery.md)
-###### [Převzetí služeb při selhání do fyzického zařízení](storsimple-8000-device-failover-physical-device.md)
-###### [Převzetí služeb při selhání do cloudového zařízení](storsimple-8000-device-failover-cloud-appliance.md)
-###### [Převzetí služeb při selhání do stejného zařízení](storsimple-8000-device-failover-same-device.md)
+###### [Selhání toophysical zařízení](storsimple-8000-device-failover-physical-device.md)
+###### [Selhání toocloud zařízení](storsimple-8000-device-failover-cloud-appliance.md)
+###### [Selhání toosame zařízení](storsimple-8000-device-failover-same-device.md)
 ##### [Správa katalogu záloh](storsimple-8000-manage-backup-catalog.md)
 ##### [Správa zásad zálohování](storsimple-8000-manage-backup-policies-u2.md)
 ##### [Správa účtů úložiště](storsimple-8000-manage-storage-accounts.md)
@@ -132,7 +132,7 @@
 #### [StorSimple s Veeam](storsimple-configure-backup-target-veeam.md)
 #### [StorSimple s Veritas Backup Exec](storsimple-configure-backup-target-using-backup-exec.md)
 #### [StorSimple s Veritas NetBackup](storsimple-configure-backuptarget-netbackup.md)
-#### [Automatizované zotavení souborového serveru po havárii do Azure](storsimple-disaster-recovery-using-azure-site-recovery.md)
+#### [Automatizovat souborový server tooAzure zotavení po Havárii](storsimple-disaster-recovery-using-azure-site-recovery.md)
 #### [StorSimple se službou Express Route](https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content)
 #### [StorSimple s VMware](https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463)
 #### [StorSimple s Hyper-V](https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6)
@@ -163,7 +163,7 @@
 
 ### Migrace
 #### [Z řad 5000–7000](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)
-#### [Z jiných zařízení úložišť](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
+#### [Z jiných zařízení úložišť](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data tooStorSimple Volumes_09-02-15.pdf)
 
 ### Aktualizace
 #### [Instalace aktualizace 5 – aktuální](storsimple-8000-install-update-5.md)
@@ -191,7 +191,7 @@
 # Řada StorSimple 8000 (portál Classic)
 
 ## Přehled
-### [Informace o řešení](storsimple-overview.md)
+### [Co je hello řešení?](storsimple-overview.md)
 ### [Mapa kurzů StorSimple](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [Aspekty zabezpečení](storsimple-8000-security.md)
 
@@ -230,7 +230,7 @@
 ###### [Obnovení ze zálohy](storsimple-restore-from-backup-set.md)
 ##### [Klonování svazku](storsimple-clone-volume-u2.md)
 ###### [Klonování svazku](storsimple-clone-volume.md)
-##### [Vzdálené připojení k zařízení](storsimple-remote-connect.md)
+##### [Vzdálené připojení tooyour zařízení](storsimple-remote-connect.md)
 ##### [Deaktivace a odstranění zařízení](storsimple-deactivate-and-delete-device.md)
 ##### [Převzetí služeb při selhání zařízení](storsimple-device-failover-disaster-recovery.md)
 ##### [Správa katalogu záloh](storsimple-manage-backup-catalog.md)
@@ -273,7 +273,7 @@
 #### [StorSimple s Veeam](storsimple-configure-backup-target-veeam.md)
 #### [StorSimple s Veritas Backup Exec](storsimple-configure-backup-target-using-backup-exec.md)
 #### [StorSimple s Veritas NetBackup](storsimple-configure-backuptarget-netbackup.md)
-#### [Automatizované zotavení souborového serveru po havárii do Azure](storsimple-disaster-recovery-using-azure-site-recovery.md)
+#### [Automatizovat souborový server tooAzure zotavení po Havárii](storsimple-disaster-recovery-using-azure-site-recovery.md)
 #### [StorSimple se službou Express Route](https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content)
 #### [StorSimple s VMware](https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463)
 #### [StorSimple s Hyper-V](https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6)
@@ -302,7 +302,7 @@
 
 ### Migrace
 #### [Z řad 5000–7000](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)
-#### [Z jiných zařízení úložišť](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
+#### [Z jiných zařízení úložišť](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data tooStorSimple Volumes_09-02-15.pdf)
 
 ### Aktualizace
 #### [Instalace aktualizace 4](storsimple-install-update-4.md)
@@ -329,20 +329,20 @@
 # StorSimple Data Manager (Private Preview)
 
 ## Přehled
-### [Informace o řešení](storsimple-data-manager-overview.md)
+### [Co je hello řešení?](storsimple-data-manager-overview.md)
 
 ## Začínáme
 ### [Použití StorSimple Data Manageru](storsimple-data-manager-ui.md)
 
 ## Postup
-### [Použití .NET ke spuštění úloh](storsimple-data-manager-dotnet-jobs.md)
-### [Použití služby Automation ke spuštění úloh](storsimple-data-manager-job-using-automation.md)
+### [Pomocí úloh toostart rozhraní .NET](storsimple-data-manager-dotnet-jobs.md)
+### [Pomocí úloh toostart automatizace](storsimple-data-manager-job-using-automation.md)
 ### [Změna výchozí cesty objektu blob](storsimple-data-manager-change-default-blob-path.md)
 
 # StorSimple pro partnery
 
 ## Přehled
-### [Informace o řešení](storsimple-partner-csp-overview.md)
+### [Co je hello řešení?](storsimple-partner-csp-overview.md)
 
 ## Začínáme
 ### [Nasazení virtuálního pole pro CSP](storsimple-partner-csp-deploy.md)

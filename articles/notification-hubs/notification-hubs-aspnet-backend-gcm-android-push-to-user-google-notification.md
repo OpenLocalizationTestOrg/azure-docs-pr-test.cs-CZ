@@ -1,6 +1,6 @@
 ---
-title: "Azure upozornění uživatelů centra oznámení pro Android s .NET back-end"
-description: "Zjistěte, jak odesílat nabízená oznámení pro uživatele v Azure. Ukázky kódu, které jsou napsané v jazyce Java pro Android"
+title: "aaaAzure upozornění uživatelů centra oznámení pro Android s .NET back-end"
+description: "Zjistěte, jak toosend nabízená oznámení toousers v Azure. Ukázky kódu, které jsou napsané v jazyce Java pro Android"
 documentationcenter: android
 services: notification-hubs
 author: ysxu
@@ -14,32 +14,32 @@ ms.devlang: java
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.openlocfilehash: 418a4b638dfaa3fee33a7a7242433699205c79f7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b042d2e6fb7f7c861c378526a8a0d59ab75beef9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-notification-hubs-notify-users-for-android-with-net-backend"></a><span data-ttu-id="d2af8-104">Azure upozornění uživatelů centra oznámení pro Android s .NET back-end</span><span class="sxs-lookup"><span data-stu-id="d2af8-104">Azure Notification Hubs Notify Users for Android with .NET backend</span></span>
+# <a name="azure-notification-hubs-notify-users-for-android-with-net-backend"></a><span data-ttu-id="e7d0f-104">Azure upozornění uživatelů centra oznámení pro Android s .NET back-end</span><span class="sxs-lookup"><span data-stu-id="e7d0f-104">Azure Notification Hubs Notify Users for Android with .NET backend</span></span>
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-## <a name="overview"></a><span data-ttu-id="d2af8-105">Přehled</span><span class="sxs-lookup"><span data-stu-id="d2af8-105">Overview</span></span>
-<span data-ttu-id="d2af8-106">Podpora nabízená oznámení v Azure umožňuje přístup snadné použití, multiplatform a nabízené škálovanou infrastrukturu, která výrazně zjednodušuje implementaci nabízená oznámení spotřebních a podnikových aplikací pro mobilní platformy.</span><span class="sxs-lookup"><span data-stu-id="d2af8-106">Push notification support in Azure enables you to access an easy-to-use, multiplatform, and scaled-out push infrastructure, which greatly simplifies the implementation of push notifications for both consumer and enterprise applications for mobile platforms.</span></span> <span data-ttu-id="d2af8-107">V tomto kurzu se dozvíte, jak se dají pomocí Azure Notification Hubs posílat nabízená oznámení specifickým uživatelům aplikace na specifickém zařízení.</span><span class="sxs-lookup"><span data-stu-id="d2af8-107">This tutorial shows you how to use Azure Notification Hubs to send push notifications to a specific app user on a specific device.</span></span> <span data-ttu-id="d2af8-108">Backendu ASP.NET WebAPI slouží k ověřování klientů a ke generování oznámení, jak je znázorněno v tématu pokyny [registrace z back-end aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).</span><span class="sxs-lookup"><span data-stu-id="d2af8-108">An ASP.NET WebAPI backend is used to authenticate clients and to generate notifications, as shown in the guidance topic [Registering from your app backend](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).</span></span> <span data-ttu-id="d2af8-109">V tomto kurzu vychází centra oznámení, který jste vytvořili v [Začínáme s Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md) kurzu.</span><span class="sxs-lookup"><span data-stu-id="d2af8-109">This tutorial builds on the notification hub that you created in the [Getting Started with Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md) tutorial.</span></span>
+## <a name="overview"></a><span data-ttu-id="e7d0f-105">Přehled</span><span class="sxs-lookup"><span data-stu-id="e7d0f-105">Overview</span></span>
+<span data-ttu-id="e7d0f-106">Podpora nabízená oznámení v Azure můžete tooaccess snadné použití, multiplatform a nabízené škálovanou infrastrukturu, která výrazně zjednodušuje hello implementace nabízených oznámení spotřebních a podnikových aplikací pro mobilní platformy.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-106">Push notification support in Azure enables you tooaccess an easy-to-use, multiplatform, and scaled-out push infrastructure, which greatly simplifies hello implementation of push notifications for both consumer and enterprise applications for mobile platforms.</span></span> <span data-ttu-id="e7d0f-107">Tento kurz ukazuje, jak Azure Notification Hubs toosend toouse nabízená oznámení tooa konkrétní aplikace uživatele na konkrétní zařízení.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-107">This tutorial shows you how toouse Azure Notification Hubs toosend push notifications tooa specific app user on a specific device.</span></span> <span data-ttu-id="e7d0f-108">Backendu ASP.NET WebAPI je použité tooauthenticate klientů a toogenerate oznámení, jak je znázorněno v tématu pokyny hello [registrace z back-end aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).</span><span class="sxs-lookup"><span data-stu-id="e7d0f-108">An ASP.NET WebAPI backend is used tooauthenticate clients and toogenerate notifications, as shown in hello guidance topic [Registering from your app backend](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).</span></span> <span data-ttu-id="e7d0f-109">V tomto kurzu vychází hello centra oznámení, který jste vytvořili v hello [Začínáme s Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md) kurzu.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-109">This tutorial builds on hello notification hub that you created in hello [Getting Started with Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md) tutorial.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="d2af8-110">V tomto kurzu se předpokládá, že jste vytvořili a nakonfigurovali vaše Centrum oznámení, jak je popsáno v [Začínáme s Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="d2af8-110">This tutorial assumes that you have created and configured your notification hub as described in [Getting Started with Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md).</span></span>
+> <span data-ttu-id="e7d0f-110">V tomto kurzu se předpokládá, že jste vytvořili a nakonfigurovali vaše Centrum oznámení, jak je popsáno v [Začínáme s Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="e7d0f-110">This tutorial assumes that you have created and configured your notification hub as described in [Getting Started with Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md).</span></span>
 > 
 > 
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
-## <a name="create-the-android-project"></a><span data-ttu-id="d2af8-111">Vytvoření projektu pro Android</span><span class="sxs-lookup"><span data-stu-id="d2af8-111">Create the Android Project</span></span>
-<span data-ttu-id="d2af8-112">Dalším krokem je vytvoření aplikace pro Android.</span><span class="sxs-lookup"><span data-stu-id="d2af8-112">The next step is to create the Android application.</span></span>
+## <a name="create-hello-android-project"></a><span data-ttu-id="e7d0f-111">Vytvoření hello projekt pro Android</span><span class="sxs-lookup"><span data-stu-id="e7d0f-111">Create hello Android Project</span></span>
+<span data-ttu-id="e7d0f-112">dalším krokem Hello je aplikace pro Android toocreate hello.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-112">hello next step is toocreate hello Android application.</span></span>
 
-1. <span data-ttu-id="d2af8-113">Postupujte podle [Začínáme s Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md) kurzu vytvořte a nakonfigurujte své aplikace a přijímat nabízená oznámení ze služby GCM.</span><span class="sxs-lookup"><span data-stu-id="d2af8-113">Follow the [Getting Started with Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md) tutorial to create and configure your app to receive push notifications from GCM.</span></span>
-2. <span data-ttu-id="d2af8-114">Otevřete váš **res/layout/activity_main.xml** souboru, nahraďte následujícími definicemi obsahu.</span><span class="sxs-lookup"><span data-stu-id="d2af8-114">Open your **res/layout/activity_main.xml** file, replace the with the following content definitions.</span></span>
+1. <span data-ttu-id="e7d0f-113">Postupujte podle hello [Začínáme s Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md) kurz toocreate a konfiguraci vaší aplikace tooreceive nabízená oznámení ze služby GCM.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-113">Follow hello [Getting Started with Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md) tutorial toocreate and configure your app tooreceive push notifications from GCM.</span></span>
+2. <span data-ttu-id="e7d0f-114">Otevřete váš **res/layout/activity_main.xml** souboru, nahraďte hello hello následující obsahu definice.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-114">Open your **res/layout/activity_main.xml** file, replace hello with hello following content definitions.</span></span>
    
-    <span data-ttu-id="d2af8-115">Tento postup přidá nové EditText ovládací prvky pro přihlášení jako uživatel.</span><span class="sxs-lookup"><span data-stu-id="d2af8-115">This adds new EditText controls for logging in as a user.</span></span> <span data-ttu-id="d2af8-116">Pole je také přidat značky uživatelské jméno, které budou součástí oznámení, která posíláte:</span><span class="sxs-lookup"><span data-stu-id="d2af8-116">Also a field is added for a username tag that will be part of notifications you send:</span></span>
+    <span data-ttu-id="e7d0f-115">Tento postup přidá nové EditText ovládací prvky pro přihlášení jako uživatel.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-115">This adds new EditText controls for logging in as a user.</span></span> <span data-ttu-id="e7d0f-116">Pole je také přidat značky uživatelské jméno, které budou součástí oznámení, která posíláte:</span><span class="sxs-lookup"><span data-stu-id="e7d0f-116">Also a field is added for a username tag that will be part of notifications you send:</span></span>
    
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
@@ -122,7 +122,7 @@ ms.lasthandoff: 07/11/2017
             android:layout_below="@+id/editTextNotificationMessage"
             android:layout_centerHorizontal="true" />
         </RelativeLayout>
-3. <span data-ttu-id="d2af8-117">Otevřete váš **res/values/strings.xml** souboru a nahraďte `send_button` definice s následujícími řádky, které znovu definovat řetězec pro `send_button` a přidejte řetězce pro další ovládací prvky:</span><span class="sxs-lookup"><span data-stu-id="d2af8-117">Open your **res/values/strings.xml** file and replace the `send_button` definition with the following lines that redefine the string for the `send_button` and add strings for the other controls:</span></span>
+3. <span data-ttu-id="e7d0f-117">Otevřete váš **res/values/strings.xml** souboru a nahraďte hello `send_button` definice s následující hello řádků tento řetězec hello předefinovat pro hello `send_button` a přidat další ovládací prvky řetězce pro hello:</span><span class="sxs-lookup"><span data-stu-id="e7d0f-117">Open your **res/values/strings.xml** file and replace hello `send_button` definition with hello following lines that redefine hello string for hello `send_button` and add strings for hello other controls:</span></span>
    
         <string name="usernameHint">Username</string>
         <string name="passwordHint">Password</string>
@@ -132,10 +132,10 @@ ms.lasthandoff: 07/11/2017
             Recipient username tag
         </string>
    
-    <span data-ttu-id="d2af8-118">Grafické rozložení main_activity.xml by měl nyní vypadat takto:</span><span class="sxs-lookup"><span data-stu-id="d2af8-118">Your main_activity.xml graphical layout should now look like this:</span></span>
+    <span data-ttu-id="e7d0f-118">Grafické rozložení main_activity.xml by měl nyní vypadat takto:</span><span class="sxs-lookup"><span data-stu-id="e7d0f-118">Your main_activity.xml graphical layout should now look like this:</span></span>
    
     ![][A1]
-4. <span data-ttu-id="d2af8-119">Vytvořte novou třídu s názvem **RegisterClient** ve stejném balíčku jako vaše `MainActivity` třídy.</span><span class="sxs-lookup"><span data-stu-id="d2af8-119">Create a new class named **RegisterClient** in the same package as your `MainActivity` class.</span></span> <span data-ttu-id="d2af8-120">Pro soubor nové třídy použijte kód níže.</span><span class="sxs-lookup"><span data-stu-id="d2af8-120">Use the code below for the new class file.</span></span>
+4. <span data-ttu-id="e7d0f-119">Vytvořte novou třídu s názvem **RegisterClient** v hello stejný balíček vaší `MainActivity` třídy.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-119">Create a new class named **RegisterClient** in hello same package as your `MainActivity` class.</span></span> <span data-ttu-id="e7d0f-120">Pro nový soubor třídy hello použijte hello kód níže.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-120">Use hello code below for hello new class file.</span></span>
    
         import java.io.IOException;
         import java.io.UnsupportedEncodingException;
@@ -240,15 +240,15 @@ ms.lasthandoff: 07/11/2017
             }
         }
    
-    <span data-ttu-id="d2af8-121">Tato součást implementuje volání REST nutné kontaktovat back-end aplikace, aby bylo možné zaregistrovat pro nabízená oznámení.</span><span class="sxs-lookup"><span data-stu-id="d2af8-121">This component implements the REST calls required to contact the app backend, in order to register for push notifications.</span></span> <span data-ttu-id="d2af8-122">Také místně ukládá *registrationIds* vytvořené Centrum oznámení podle popisu v [registrace z back-end aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).</span><span class="sxs-lookup"><span data-stu-id="d2af8-122">It also locally stores the *registrationIds* created by the Notification Hub as detailed in [Registering from your app backend](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).</span></span> <span data-ttu-id="d2af8-123">Všimněte si, že se používá autorizační token uložené v místní úložiště, když kliknete **přihlásit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="d2af8-123">Note that it uses an authorization token stored in local storage when you click the **Log in** button.</span></span>
-5. <span data-ttu-id="d2af8-124">Ve vaší `MainActivity` třída odebrat nebo komentář vaší privátní pole pro `NotificationHub`, a přidejte pole pro `RegisterClient` třídy a řetězec pro koncový bod backendu ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="d2af8-124">In your `MainActivity` class remove or comment out your private field for `NotificationHub`, and add a field for the `RegisterClient` class and a string for your ASP.NET backend's endpoint.</span></span> <span data-ttu-id="d2af8-125">Nezapomeňte nahradit `<Enter Your Backend Endpoint>` s váš back-end skutečný koncový bod získali dříve.</span><span class="sxs-lookup"><span data-stu-id="d2af8-125">Be sure to replace `<Enter Your Backend Endpoint>` with the your actual backend endpoint obtained previously.</span></span> <span data-ttu-id="d2af8-126">Například, `http://mybackend.azurewebsites.net`.</span><span class="sxs-lookup"><span data-stu-id="d2af8-126">For example, `http://mybackend.azurewebsites.net`.</span></span>
+    <span data-ttu-id="e7d0f-121">Tato součást implementuje hello REST volání požadované toocontact hello back-end aplikace, v pořadí tooregister pro nabízená oznámení.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-121">This component implements hello REST calls required toocontact hello app backend, in order tooregister for push notifications.</span></span> <span data-ttu-id="e7d0f-122">Také místně ukládá hello *registrationIds* vytvořené hello centra oznámení podle popisu v [registrace z back-end aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).</span><span class="sxs-lookup"><span data-stu-id="e7d0f-122">It also locally stores hello *registrationIds* created by hello Notification Hub as detailed in [Registering from your app backend](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).</span></span> <span data-ttu-id="e7d0f-123">Všimněte si, že se používá autorizační token uložená v místním úložišti, po kliknutí na tlačítko hello **přihlásit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-123">Note that it uses an authorization token stored in local storage when you click hello **Log in** button.</span></span>
+5. <span data-ttu-id="e7d0f-124">Ve vaší `MainActivity` třída odebrat nebo komentář vaší privátní pole pro `NotificationHub`, a přidejte pole pro hello `RegisterClient` třídy a řetězec pro koncový bod backendu ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-124">In your `MainActivity` class remove or comment out your private field for `NotificationHub`, and add a field for hello `RegisterClient` class and a string for your ASP.NET backend's endpoint.</span></span> <span data-ttu-id="e7d0f-125">Být jisti tooreplace `<Enter Your Backend Endpoint>` s hello váš koncový bod skutečné back-end získali dříve.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-125">Be sure tooreplace `<Enter Your Backend Endpoint>` with hello your actual backend endpoint obtained previously.</span></span> <span data-ttu-id="e7d0f-126">Například, `http://mybackend.azurewebsites.net`.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-126">For example, `http://mybackend.azurewebsites.net`.</span></span>
 
         //private NotificationHub hub;
         private RegisterClient registerClient;
         private static final String BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
 
 
-1. <span data-ttu-id="d2af8-127">V vaše `MainActivity` třídy v `onCreate` metoda, odeberte nebo komentář inicializace `hub` pole a volání `registerWithNotificationHubs` metoda.</span><span class="sxs-lookup"><span data-stu-id="d2af8-127">In your `MainActivity` class, in the `onCreate` method, remove or comment out the initialization of the `hub` field and the call to the `registerWithNotificationHubs` method.</span></span> <span data-ttu-id="d2af8-128">Pak přidejte kód pro inicializaci instance `RegisterClient` třídy.</span><span class="sxs-lookup"><span data-stu-id="d2af8-128">Then add code to initialize an instance of the `RegisterClient` class.</span></span> <span data-ttu-id="d2af8-129">Metoda by měla obsahovat následující řádky:</span><span class="sxs-lookup"><span data-stu-id="d2af8-129">The method should contain the following lines:</span></span>
+1. <span data-ttu-id="e7d0f-127">Ve vaší `MainActivity` třídy v hello `onCreate` metoda, odeberte nebo komentář hello inicializace hello `hub` pole a hello volání toohello `registerWithNotificationHubs` metoda.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-127">In your `MainActivity` class, in hello `onCreate` method, remove or comment out hello initialization of hello `hub` field and hello call toohello `registerWithNotificationHubs` method.</span></span> <span data-ttu-id="e7d0f-128">Pak přidejte kód tooinitialize instanci hello `RegisterClient` třídy.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-128">Then add code tooinitialize an instance of hello `RegisterClient` class.</span></span> <span data-ttu-id="e7d0f-129">Metoda Hello by měl obsahovat hello následující řádky:</span><span class="sxs-lookup"><span data-stu-id="e7d0f-129">hello method should contain hello following lines:</span></span>
    
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -265,8 +265,8 @@ ms.lasthandoff: 07/11/2017
    
             setContentView(R.layout.activity_main);
         }
-2. <span data-ttu-id="d2af8-130">Ve vašem `MainActivity` třídy, odstraňte nebo nastavte jako komentář celý `registerWithNotificationHubs` metoda.</span><span class="sxs-lookup"><span data-stu-id="d2af8-130">In your `MainActivity` class, delete or comment out the entire `registerWithNotificationHubs` method.</span></span> <span data-ttu-id="d2af8-131">V tomto kurzu nepoužijí.</span><span class="sxs-lookup"><span data-stu-id="d2af8-131">It will not be used in this tutorial.</span></span>
-3. <span data-ttu-id="d2af8-132">Přidejte následující `import` příkazů do vaší **MainActivity.java** souboru.</span><span class="sxs-lookup"><span data-stu-id="d2af8-132">Add the following `import` statements to your **MainActivity.java** file.</span></span>
+2. <span data-ttu-id="e7d0f-130">Ve vaší `MainActivity` třídy, odstranit nebo komentář hello celý `registerWithNotificationHubs` metoda.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-130">In your `MainActivity` class, delete or comment out hello entire `registerWithNotificationHubs` method.</span></span> <span data-ttu-id="e7d0f-131">V tomto kurzu nepoužijí.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-131">It will not be used in this tutorial.</span></span>
+3. <span data-ttu-id="e7d0f-132">Přidejte následující hello `import` příkazy tooyour **MainActivity.java** souboru.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-132">Add hello following `import` statements tooyour **MainActivity.java** file.</span></span>
    
         import android.widget.Button;
         import java.io.UnsupportedEncodingException;
@@ -276,7 +276,7 @@ ms.lasthandoff: 07/11/2017
         import org.apache.http.client.ClientProtocolException;
         import java.io.IOException;
         import org.apache.http.HttpStatus;
-4. <span data-ttu-id="d2af8-133">Pak přidejte následující metody pro zpracování **přihlásit** událostí a odesílání nabízených oznámení, klikněte na tlačítko.</span><span class="sxs-lookup"><span data-stu-id="d2af8-133">Then, add the following methods to handle the **Log in** button click event and sending push notifications.</span></span>
+4. <span data-ttu-id="e7d0f-133">Pak přidejte následující metody toohandle hello hello **přihlásit** událostí a odesílání nabízených oznámení, klikněte na tlačítko.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-133">Then, add hello following methods toohandle hello **Log in** button click event and sending push notifications.</span></span>
    
         @Override
         protected void onStart() {
@@ -296,7 +296,7 @@ ms.lasthandoff: 07/11/2017
                         String regid = gcm.register(SENDER_ID);
                         registerClient.register(regid, new HashSet<String>());
                     } catch (Exception e) {
-                        DialogNotify("MainActivity - Failed to register", e.getMessage());
+                        DialogNotify("MainActivity - Failed tooregister", e.getMessage());
                         return e;
                     }
                     return null;
@@ -320,15 +320,15 @@ ms.lasthandoff: 07/11/2017
         }
    
         /**
-         * This method calls the ASP.NET WebAPI backend to send the notification message
-         * to the platform notification service based on the pns parameter.
+         * This method calls hello ASP.NET WebAPI backend toosend hello notification message
+         * toohello platform notification service based on hello pns parameter.
          *
-         * @param pns     The platform notification service to send the notification message to. Must
-         *                be one of the following ("wns", "gcm", "apns").
-         * @param userTag The tag for the user who will receive the notification message. This string
+         * @param pns     hello platform notification service toosend hello notification message to. Must
+         *                be one of hello following ("wns", "gcm", "apns").
+         * @param userTag hello tag for hello user who will receive hello notification message. This string
          *                must not contain spaces or special characters.
-         * @param message The notification message string. This string must include the double quotes
-         *                to be used as JSON content.
+         * @param message hello notification message string. This string must include hello double quotes
+         *                toobe used as JSON content.
          */
         public void sendPush(final String pns, final String userTag, final String message)
                 throws ClientProtocolException, IOException {
@@ -354,7 +354,7 @@ ms.lasthandoff: 07/11/2017
                             throw new RuntimeException("Error sending notification");
                         }
                     } catch (Exception e) {
-                        DialogNotify("MainActivity - Failed to send " + pns + " notification ", e.getMessage());
+                        DialogNotify("MainActivity - Failed toosend " + pns + " notification ", e.getMessage());
                         return e;
                     }
    
@@ -363,17 +363,17 @@ ms.lasthandoff: 07/11/2017
             }.execute(null, null, null);
         }
 
-    <span data-ttu-id="d2af8-134">`login` Obslužné rutiny pro **přihlásit** tlačítko vytvoří základní ověřování tokenu pomocí na vstupní uživatelské jméno a heslo (Všimněte si, že to představuje všechny token používá vaše schéma ověřování) a pak použije `RegisterClient` na Volejte back-end pro registraci.</span><span class="sxs-lookup"><span data-stu-id="d2af8-134">The `login` handler for the **Log in** button generates a basic authentication token using on the input username and password (note that this represents any token your authentication scheme uses), then it uses `RegisterClient` to call the backend for registration.</span></span>
+    <span data-ttu-id="e7d0f-134">Hello `login` obslužné rutiny pro hello **přihlásit** tlačítko generuje základní ověřování tokenu pomocí na hello vstupní uživatelské jméno a heslo (Všimněte si, že to představuje všechny token používá vaše schéma ověřování) a pak použije `RegisterClient`toocall hello back-end pro registraci.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-134">hello `login` handler for hello **Log in** button generates a basic authentication token using on hello input username and password (note that this represents any token your authentication scheme uses), then it uses `RegisterClient` toocall hello backend for registration.</span></span>
 
-    <span data-ttu-id="d2af8-135">`sendPush` Metoda volá back-end pro aktivaci zabezpečené oznámení pro uživatele na základě ve značce uživatele.</span><span class="sxs-lookup"><span data-stu-id="d2af8-135">The `sendPush` method calls the backend to trigger a secure notification to the user based on the user tag.</span></span> <span data-ttu-id="d2af8-136">Oznámení platformy služby, který `sendPush` cíle závisí na `pns` předaný řetězec.</span><span class="sxs-lookup"><span data-stu-id="d2af8-136">The platform notification service that `sendPush` targets depends on the `pns` string passed in.</span></span>
+    <span data-ttu-id="e7d0f-135">Hello `sendPush` metoda volá hello back-end tootrigger uživatele toohello zabezpečené oznámení podle hello značku uživatele.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-135">hello `sendPush` method calls hello backend tootrigger a secure notification toohello user based on hello user tag.</span></span> <span data-ttu-id="e7d0f-136">Hello platformy oznámení služby, `sendPush` cíle závisí na hello `pns` předaný řetězec.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-136">hello platform notification service that `sendPush` targets depends on hello `pns` string passed in.</span></span>
 
-1. <span data-ttu-id="d2af8-137">Ve vaší `MainActivity` třídy, aktualizaci `sendNotificationButtonOnClick` metoda k volání `sendPush` vybrat metodu s daným uživatelem služeb oznámení platformy následujícím způsobem.</span><span class="sxs-lookup"><span data-stu-id="d2af8-137">In your `MainActivity` class, update the `sendNotificationButtonOnClick` method to call the `sendPush` method with the user's selected platform notification services as follows.</span></span>
+1. <span data-ttu-id="e7d0f-137">Ve vaší `MainActivity` třídy, aktualizaci hello `sendNotificationButtonOnClick` metoda toocall hello `sendPush` vybrat metodu s hello uživatele služby oznámení platformy následujícím způsobem.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-137">In your `MainActivity` class, update hello `sendNotificationButtonOnClick` method toocall hello `sendPush` method with hello user's selected platform notification services as follows.</span></span>
    
        /**
-        * Send Notification button click handler. This method sends the push notification
-        * message to each platform selected.
+        * Send Notification button click handler. This method sends hello push notification
+        * message tooeach platform selected.
         *
-        * @param v The view
+        * @param v hello view
         */
        public void sendNotificationButtonOnClick(View v)
                throws ClientProtocolException, IOException {
@@ -400,16 +400,16 @@ ms.lasthandoff: 07/11/2017
            }
        }
 
-## <a name="run-the-application"></a><span data-ttu-id="d2af8-138">Spuštění aplikace</span><span class="sxs-lookup"><span data-stu-id="d2af8-138">Run the Application</span></span>
-1. <span data-ttu-id="d2af8-139">Spuštění aplikace na zařízení nebo emulátoru pomocí Android Studio.</span><span class="sxs-lookup"><span data-stu-id="d2af8-139">Run the application on a device or an emulator using Android Studio.</span></span>
-2. <span data-ttu-id="d2af8-140">V aplikaci pro Android zadejte uživatelské jméno a heslo.</span><span class="sxs-lookup"><span data-stu-id="d2af8-140">In the Android app, enter a username and password.</span></span> <span data-ttu-id="d2af8-141">Musí být obě stejnou hodnotu řetězce a jejich nesmí obsahovat mezery nebo speciální znaky.</span><span class="sxs-lookup"><span data-stu-id="d2af8-141">They must both be the same string value and they must not contain spaces or special characters.</span></span>
-3. <span data-ttu-id="d2af8-142">V aplikaci pro Android, klikněte na **přihlásit**.</span><span class="sxs-lookup"><span data-stu-id="d2af8-142">In the Android app, click **Log in**.</span></span> <span data-ttu-id="d2af8-143">Počkejte informační zpráva, že **protokolováno v a registrovaný**.</span><span class="sxs-lookup"><span data-stu-id="d2af8-143">Wait for a toast message that states **Logged in and registered**.</span></span> <span data-ttu-id="d2af8-144">Tato akce povolí **odeslat oznámení** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="d2af8-144">This will enable the **Send Notification** button.</span></span>
+## <a name="run-hello-application"></a><span data-ttu-id="e7d0f-138">Spustit hello aplikace</span><span class="sxs-lookup"><span data-stu-id="e7d0f-138">Run hello Application</span></span>
+1. <span data-ttu-id="e7d0f-139">Spusťte aplikaci hello na Android Studio pomocí emulátoru nebo zařízení.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-139">Run hello application on a device or an emulator using Android Studio.</span></span>
+2. <span data-ttu-id="e7d0f-140">V aplikaci pro Android hello zadejte uživatelské jméno a heslo.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-140">In hello Android app, enter a username and password.</span></span> <span data-ttu-id="e7d0f-141">Musí být obě hello stejnou hodnotu řetězce a nesmí obsahovat mezery nebo speciální znaky.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-141">They must both be hello same string value and they must not contain spaces or special characters.</span></span>
+3. <span data-ttu-id="e7d0f-142">V aplikaci pro Android hello, klikněte na **přihlásit**.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-142">In hello Android app, click **Log in**.</span></span> <span data-ttu-id="e7d0f-143">Počkejte informační zpráva, že **protokolováno v a registrovaný**.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-143">Wait for a toast message that states **Logged in and registered**.</span></span> <span data-ttu-id="e7d0f-144">Tato akce povolí hello **odeslat oznámení** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-144">This will enable hello **Send Notification** button.</span></span>
    
     ![][A2]
-4. <span data-ttu-id="d2af8-145">Klikněte na přepínač tlačítka povolit všechny platformy, kdy máte spustili aplikaci a zaregistrovat uživatele.</span><span class="sxs-lookup"><span data-stu-id="d2af8-145">Click the toggle buttons to enable all platforms where you have ran the app and registered a user.</span></span>
-5. <span data-ttu-id="d2af8-146">Zadejte jméno uživatele, která bude přijímat oznámení.</span><span class="sxs-lookup"><span data-stu-id="d2af8-146">Enter the user's name that will receive the notification message.</span></span> <span data-ttu-id="d2af8-147">Tento uživatel musí být zaregistrován pro oznámení v cílovém zařízení.</span><span class="sxs-lookup"><span data-stu-id="d2af8-147">That user must be registered for notifications on the target devices.</span></span>
-6. <span data-ttu-id="d2af8-148">Zadejte zprávu pro uživatele pro příjem jako zprávou nabízených oznámení.</span><span class="sxs-lookup"><span data-stu-id="d2af8-148">Enter a message for the user to receive as a push notification message.</span></span>
-7. <span data-ttu-id="d2af8-149">Klikněte na tlačítko **odeslat oznámení**.</span><span class="sxs-lookup"><span data-stu-id="d2af8-149">Click **Send Notification**.</span></span>  <span data-ttu-id="d2af8-150">Všech zařízení, která má registraci s odpovídající značky uživatelské jméno se zobrazí nabízených oznámení.</span><span class="sxs-lookup"><span data-stu-id="d2af8-150">Each device that has a registration with the matching username tag will receive the push notification.</span></span>
+4. <span data-ttu-id="e7d0f-145">Klikněte na tlačítko hello přepínací tlačítka tooenable všechny platformy, kdy máte spustili aplikace hello a registraci uživatele.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-145">Click hello toggle buttons tooenable all platforms where you have ran hello app and registered a user.</span></span>
+5. <span data-ttu-id="e7d0f-146">Zadejte název hello uživatele, který obdrží oznámení hello.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-146">Enter hello user's name that will receive hello notification message.</span></span> <span data-ttu-id="e7d0f-147">Tento uživatel musí být zaregistrován pro oznámení na hello cílových zařízení.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-147">That user must be registered for notifications on hello target devices.</span></span>
+6. <span data-ttu-id="e7d0f-148">Zadejte zprávu pro uživatele tooreceive hello jako zprávou nabízených oznámení.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-148">Enter a message for hello user tooreceive as a push notification message.</span></span>
+7. <span data-ttu-id="e7d0f-149">Klikněte na tlačítko **odeslat oznámení**.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-149">Click **Send Notification**.</span></span>  <span data-ttu-id="e7d0f-150">Všech zařízení, která má registraci s hello odpovídající značky uživatelské jméno se zobrazí hello nabízených oznámení.</span><span class="sxs-lookup"><span data-stu-id="e7d0f-150">Each device that has a registration with hello matching username tag will receive hello push notification.</span></span>
 
 [A1]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users.png
 [A2]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users-enter-password.png

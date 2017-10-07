@@ -1,6 +1,6 @@
 ---
-title: "Převod dat na IoT brány s hranou Azure IoT | Microsoft Docs"
-description: "Pomocí brány IoT převést formát data snímačů pomocí vlastní modul od Azure IoT okraje."
+title: "Převod aaaData na IoT brány s hranou Azure IoT | Microsoft Docs"
+description: "Použijte IoT brány tooconvert hello formát data snímačů pomocí vlastní modul z Azure IoT okraj."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,88 +15,88 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/25/2017
 ms.author: xshi
-ms.openlocfilehash: d5c735a4adbc59e9526ec4fd40720c5ec136d63d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ae94b1f96f36dfcb4f77fadc0ece3cff3d0bba91
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-iot-gateway-for-sensor-data-transformation-with-azure-iot-edge"></a><span data-ttu-id="376e7-104">Použít bránu IoT pro transformaci dat snímačů s hranou Azure IoT</span><span class="sxs-lookup"><span data-stu-id="376e7-104">Use IoT gateway for sensor data transformation with Azure IoT Edge</span></span>
+# <a name="use-iot-gateway-for-sensor-data-transformation-with-azure-iot-edge"></a><span data-ttu-id="36d5c-104">Použít bránu IoT pro transformaci dat snímačů s hranou Azure IoT</span><span class="sxs-lookup"><span data-stu-id="36d5c-104">Use IoT gateway for sensor data transformation with Azure IoT Edge</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="376e7-105">Než začnete tento kurz, ujistěte se, že jste dokončili následující lekce v pořadí:</span><span class="sxs-lookup"><span data-stu-id="376e7-105">Before you start this tutorial, make sure you’ve completed the following lessons in sequence:</span></span>
-> * [<span data-ttu-id="376e7-106">Nastavení Intel NUC jako brány IoT</span><span class="sxs-lookup"><span data-stu-id="376e7-106">Set up Intel NUC as an IoT gateway</span></span>](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
-> * [<span data-ttu-id="376e7-107">Použití IoT bránu pro připojení akcí k cloudu - SensorTag do služby Azure IoT Hub</span><span class="sxs-lookup"><span data-stu-id="376e7-107">Use IoT gateway to connect things to the cloud - SensorTag to Azure IoT Hub</span></span>](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
+> <span data-ttu-id="36d5c-105">Než začnete tento kurz, ujistěte se, že jste dokončené hello následující lekce v pořadí:</span><span class="sxs-lookup"><span data-stu-id="36d5c-105">Before you start this tutorial, make sure you’ve completed hello following lessons in sequence:</span></span>
+> * [<span data-ttu-id="36d5c-106">Nastavení Intel NUC jako brány IoT</span><span class="sxs-lookup"><span data-stu-id="36d5c-106">Set up Intel NUC as an IoT gateway</span></span>](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
+> * [<span data-ttu-id="36d5c-107">Použít IoT brány tooconnect věcí toohello cloudu - SensorTag tooAzure IoT Hub</span><span class="sxs-lookup"><span data-stu-id="36d5c-107">Use IoT gateway tooconnect things toohello cloud - SensorTag tooAzure IoT Hub</span></span>](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 
-<span data-ttu-id="376e7-108">Jediný účel bránu Iot se má zpracovat shromážděná data před odesláním do cloudu.</span><span class="sxs-lookup"><span data-stu-id="376e7-108">One purpose of an Iot gateway is to process collected data before sending it to the cloud.</span></span> <span data-ttu-id="376e7-109">Azure IoT Edge zavádí moduly, které lze vytvořit a sestaví formuláři zpracování dat pracovního postupu.</span><span class="sxs-lookup"><span data-stu-id="376e7-109">Azure IoT Edge introduces modules which can be created and assembled to form the data processing workflow.</span></span> <span data-ttu-id="376e7-110">Modul přijme nějakou zprávu, provádí některé akce a potom posuňte pro jiné modulů pro zpracování.</span><span class="sxs-lookup"><span data-stu-id="376e7-110">A module receives a message, performs some action on it, and then move it on for other modules to process.</span></span>
+<span data-ttu-id="36d5c-108">Jediný účel bránu Iot tooprocess shromažďovaných dat je před odesláním toohello cloudu.</span><span class="sxs-lookup"><span data-stu-id="36d5c-108">One purpose of an Iot gateway is tooprocess collected data before sending it toohello cloud.</span></span> <span data-ttu-id="36d5c-109">Azure IoT Edge zavádí moduly, které můžou být vytvořené a sestavený tooform hello zpracování dat pracovního postupu.</span><span class="sxs-lookup"><span data-stu-id="36d5c-109">Azure IoT Edge introduces modules which can be created and assembled tooform hello data processing workflow.</span></span> <span data-ttu-id="36d5c-110">Modul přijme nějakou zprávu, provádí některé akce a potom posuňte pro jiné moduly tooprocess.</span><span class="sxs-lookup"><span data-stu-id="36d5c-110">A module receives a message, performs some action on it, and then move it on for other modules tooprocess.</span></span>
 
-## <a name="what-you-learn"></a><span data-ttu-id="376e7-111">Co se naučíte</span><span class="sxs-lookup"><span data-stu-id="376e7-111">What you learn</span></span>
+## <a name="what-you-learn"></a><span data-ttu-id="36d5c-111">Co se naučíte</span><span class="sxs-lookup"><span data-stu-id="36d5c-111">What you learn</span></span>
 
-<span data-ttu-id="376e7-112">Zjistíte, jak vytvořit modul převést zprávy z SensorTag do jiného formátu.</span><span class="sxs-lookup"><span data-stu-id="376e7-112">You learn how to create a module to convert messages from the SensorTag into a different format.</span></span>
+<span data-ttu-id="36d5c-112">Zjistíte, jak toocreate modulu tooconvert zpráv ze hello SensorTag do jiného formátu.</span><span class="sxs-lookup"><span data-stu-id="36d5c-112">You learn how toocreate a module tooconvert messages from hello SensorTag into a different format.</span></span>
 
-## <a name="what-you-do"></a><span data-ttu-id="376e7-113">Co dělat</span><span class="sxs-lookup"><span data-stu-id="376e7-113">What you do</span></span>
+## <a name="what-you-do"></a><span data-ttu-id="36d5c-113">Co dělat</span><span class="sxs-lookup"><span data-stu-id="36d5c-113">What you do</span></span>
 
-* <span data-ttu-id="376e7-114">Modul pro převod do formátu .json přijatou zprávu vytvořte.</span><span class="sxs-lookup"><span data-stu-id="376e7-114">Create a module to convert a received message into the .json format.</span></span>
-* <span data-ttu-id="376e7-115">Zkompilujte modul.</span><span class="sxs-lookup"><span data-stu-id="376e7-115">Compile the module.</span></span>
-* <span data-ttu-id="376e7-116">Přidání modulu k ukázkové aplikaci zakázat od Azure IoT okraje.</span><span class="sxs-lookup"><span data-stu-id="376e7-116">Add the module to the BLE sample application from Azure IoT Edge.</span></span>
-* <span data-ttu-id="376e7-117">Spuštění ukázkové aplikace.</span><span class="sxs-lookup"><span data-stu-id="376e7-117">Run the sample application.</span></span>
+* <span data-ttu-id="36d5c-114">Vytvoření modulu tooconvert přijaté zprávy do formátu .json hello.</span><span class="sxs-lookup"><span data-stu-id="36d5c-114">Create a module tooconvert a received message into hello .json format.</span></span>
+* <span data-ttu-id="36d5c-115">Zkompilujte hello modulu.</span><span class="sxs-lookup"><span data-stu-id="36d5c-115">Compile hello module.</span></span>
+* <span data-ttu-id="36d5c-116">Přidáte hello modulu toohello zakázat ukázkovou aplikaci z Azure IoT okraj.</span><span class="sxs-lookup"><span data-stu-id="36d5c-116">Add hello module toohello BLE sample application from Azure IoT Edge.</span></span>
+* <span data-ttu-id="36d5c-117">Spuštění ukázkové aplikace hello.</span><span class="sxs-lookup"><span data-stu-id="36d5c-117">Run hello sample application.</span></span>
 
-## <a name="what-you-need"></a><span data-ttu-id="376e7-118">Co potřebujete</span><span class="sxs-lookup"><span data-stu-id="376e7-118">What you need</span></span>
+## <a name="what-you-need"></a><span data-ttu-id="36d5c-118">Co potřebujete</span><span class="sxs-lookup"><span data-stu-id="36d5c-118">What you need</span></span>
 
-* <span data-ttu-id="376e7-119">Následující kurzy dokončit v pořadí:</span><span class="sxs-lookup"><span data-stu-id="376e7-119">The following tutorials completed in sequence:</span></span>
-  * [<span data-ttu-id="376e7-120">Nastavení Intel NUC jako brány IoT</span><span class="sxs-lookup"><span data-stu-id="376e7-120">Set up Intel NUC as an IoT gateway</span></span>](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
-  * [<span data-ttu-id="376e7-121">Použití IoT bránu pro připojení akcí k cloudu - SensorTag do služby Azure IoT Hub</span><span class="sxs-lookup"><span data-stu-id="376e7-121">Use IoT gateway to connect things to the cloud - SensorTag to Azure IoT Hub</span></span>](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
-* <span data-ttu-id="376e7-122">Klient SSH, který běží v hostitelském počítači.</span><span class="sxs-lookup"><span data-stu-id="376e7-122">An SSH client that runs on your host computer.</span></span> <span data-ttu-id="376e7-123">V systému Windows se doporučuje puTTY.</span><span class="sxs-lookup"><span data-stu-id="376e7-123">PuTTY is recommended on Windows.</span></span> <span data-ttu-id="376e7-124">Linux a systému macOS již obsahují klientem SSH.</span><span class="sxs-lookup"><span data-stu-id="376e7-124">Linux and macOS already come with an SSH client.</span></span>
-* <span data-ttu-id="376e7-125">IP adresa a uživatelské jméno a heslo pro přístup k bráně z klienta SSH.</span><span class="sxs-lookup"><span data-stu-id="376e7-125">The IP address and the username and password to access the gateway from the SSH client.</span></span>
-* <span data-ttu-id="376e7-126">Připojení k Internetu.</span><span class="sxs-lookup"><span data-stu-id="376e7-126">An Internet connection.</span></span>
+* <span data-ttu-id="36d5c-119">Hello následující kurzy dokončit v pořadí:</span><span class="sxs-lookup"><span data-stu-id="36d5c-119">hello following tutorials completed in sequence:</span></span>
+  * [<span data-ttu-id="36d5c-120">Nastavení Intel NUC jako brány IoT</span><span class="sxs-lookup"><span data-stu-id="36d5c-120">Set up Intel NUC as an IoT gateway</span></span>](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
+  * [<span data-ttu-id="36d5c-121">Použít IoT brány tooconnect věcí toohello cloudu - SensorTag tooAzure IoT Hub</span><span class="sxs-lookup"><span data-stu-id="36d5c-121">Use IoT gateway tooconnect things toohello cloud - SensorTag tooAzure IoT Hub</span></span>](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
+* <span data-ttu-id="36d5c-122">Klient SSH, který běží v hostitelském počítači.</span><span class="sxs-lookup"><span data-stu-id="36d5c-122">An SSH client that runs on your host computer.</span></span> <span data-ttu-id="36d5c-123">V systému Windows se doporučuje puTTY.</span><span class="sxs-lookup"><span data-stu-id="36d5c-123">PuTTY is recommended on Windows.</span></span> <span data-ttu-id="36d5c-124">Linux a systému macOS již obsahují klientem SSH.</span><span class="sxs-lookup"><span data-stu-id="36d5c-124">Linux and macOS already come with an SSH client.</span></span>
+* <span data-ttu-id="36d5c-125">Hello IP adresa a hello uživatelské jméno a heslo tooaccess hello brány z klienta SSH hello.</span><span class="sxs-lookup"><span data-stu-id="36d5c-125">hello IP address and hello username and password tooaccess hello gateway from hello SSH client.</span></span>
+* <span data-ttu-id="36d5c-126">Připojení k Internetu.</span><span class="sxs-lookup"><span data-stu-id="36d5c-126">An Internet connection.</span></span>
 
-## <a name="create-a-module"></a><span data-ttu-id="376e7-127">Vytvoření modulu</span><span class="sxs-lookup"><span data-stu-id="376e7-127">Create a module</span></span>
+## <a name="create-a-module"></a><span data-ttu-id="36d5c-127">Vytvoření modulu</span><span class="sxs-lookup"><span data-stu-id="36d5c-127">Create a module</span></span>
 
-1. <span data-ttu-id="376e7-128">Na hostitelském počítači spusťte použije klient SSH a připojení k bráně IoT.</span><span class="sxs-lookup"><span data-stu-id="376e7-128">On the host computer, run the SSH client and connect to the IoT gateway.</span></span>
-1. <span data-ttu-id="376e7-129">Klonování zdrojové soubory modulu převod z webu GitHub na domovský adresář brány IoT tak, že spustíte následující příkazy:</span><span class="sxs-lookup"><span data-stu-id="376e7-129">Clone the source files of the conversion module from GitHub to the home directory of the IoT gateway by running the following commands:</span></span>
+1. <span data-ttu-id="36d5c-128">Na hostitelském počítači hello spusťte hello klient SSH a připojit toohello IoT bránu.</span><span class="sxs-lookup"><span data-stu-id="36d5c-128">On hello host computer, run hello SSH client and connect toohello IoT gateway.</span></span>
+1. <span data-ttu-id="36d5c-129">Klonování hello zdrojové soubory modulu převod hello z Githubu toohello domovský adresář hello IoT brány spuštěním hello následující příkazy:</span><span class="sxs-lookup"><span data-stu-id="36d5c-129">Clone hello source files of hello conversion module from GitHub toohello home directory of hello IoT gateway by running hello following commands:</span></span>
 
    ```bash
    cd ~
    git clone https://github.com/Azure-Samples/iot-hub-c-intel-nuc-gateway-customized-module.git
    ```
 
-   <span data-ttu-id="376e7-130">Toto je nativní modul Azure Edge napsané v C programovací jazyk.</span><span class="sxs-lookup"><span data-stu-id="376e7-130">This is a native Azure Edge module written in the C programming language.</span></span> <span data-ttu-id="376e7-131">Modul převede formát přijaté zprávy tu následující:</span><span class="sxs-lookup"><span data-stu-id="376e7-131">The module converts the format of received messages into the following one:</span></span>
+   <span data-ttu-id="36d5c-130">Toto je nativní modul Azure Edge napsané v hello programovacího jazyka C.</span><span class="sxs-lookup"><span data-stu-id="36d5c-130">This is a native Azure Edge module written in hello C programming language.</span></span> <span data-ttu-id="36d5c-131">modul Hello převede hello formát přijaté zprávy hello jeden následující:</span><span class="sxs-lookup"><span data-stu-id="36d5c-131">hello module converts hello format of received messages into hello following one:</span></span>
 
    ```json
    {"deviceId": "Intel NUC Gateway", "messageId": 0, "temperature": 0.0}
    ```
 
-## <a name="compile-the-module"></a><span data-ttu-id="376e7-132">Kompilace modulu</span><span class="sxs-lookup"><span data-stu-id="376e7-132">Compile the module</span></span>
+## <a name="compile-hello-module"></a><span data-ttu-id="36d5c-132">Kompilace hello modulu</span><span class="sxs-lookup"><span data-stu-id="36d5c-132">Compile hello module</span></span>
 
-<span data-ttu-id="376e7-133">Kompilace modul, spusťte následující příkazy:</span><span class="sxs-lookup"><span data-stu-id="376e7-133">To compile the module, run the following commands:</span></span>
+<span data-ttu-id="36d5c-133">modul hello toocompile spustit hello následující příkazy:</span><span class="sxs-lookup"><span data-stu-id="36d5c-133">toocompile hello module, run hello following commands:</span></span>
 
 ```bash
 cd iot-hub-c-intel-nuc-gateway-customized-module/my_module
-# change the build script runnable
+# change hello build script runnable
 chmod 777 build.sh
-# remove the invalid windows character
+# remove hello invalid windows character
 sed -i -e "s/\r$//" build.sh
-# run the build shell script
+# run hello build shell script
 ./build.sh
 ```
 
-<span data-ttu-id="376e7-134">Můžete získat `libmy_module.so` souboru po dokončení kompilaci.</span><span class="sxs-lookup"><span data-stu-id="376e7-134">You get a `libmy_module.so` file after the compile is completed.</span></span> <span data-ttu-id="376e7-135">Poznamenejte si tento soubor absolutní cesta.</span><span class="sxs-lookup"><span data-stu-id="376e7-135">Make a note of the absolute path of this file.</span></span>
+<span data-ttu-id="36d5c-134">Můžete získat `libmy_module.so` souboru po dokončení hello kompilace.</span><span class="sxs-lookup"><span data-stu-id="36d5c-134">You get a `libmy_module.so` file after hello compile is completed.</span></span> <span data-ttu-id="36d5c-135">Poznamenejte si hello absolutní cesta tohoto souboru.</span><span class="sxs-lookup"><span data-stu-id="36d5c-135">Make a note of hello absolute path of this file.</span></span>
 
-## <a name="add-the-module-to-the-ble-sample-application"></a><span data-ttu-id="376e7-136">Přidání modulu k ukázkové aplikaci zakázat</span><span class="sxs-lookup"><span data-stu-id="376e7-136">Add the module to the BLE sample application</span></span>
+## <a name="add-hello-module-toohello-ble-sample-application"></a><span data-ttu-id="36d5c-136">Přidání hello modulu toohello zakázat ukázkové aplikace</span><span class="sxs-lookup"><span data-stu-id="36d5c-136">Add hello module toohello BLE sample application</span></span>
 
-1. <span data-ttu-id="376e7-137">Přejděte do složky Ukázky spuštěním následujícího příkazu:</span><span class="sxs-lookup"><span data-stu-id="376e7-137">Go to the samples folder by running the following command:</span></span>
+1. <span data-ttu-id="36d5c-137">Ukázky složky přejděte toohello spuštěním hello následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="36d5c-137">Go toohello samples folder by running hello following command:</span></span>
 
    ```bash
    cd /usr/share/azureiotgatewaysdk/samples
    ```
 
-1. <span data-ttu-id="376e7-138">Otevřete konfigurační soubor tak, že spustíte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="376e7-138">Open the configuration file by running the following command:</span></span>
+1. <span data-ttu-id="36d5c-138">Otevřete konfigurační soubor hello spuštěním hello následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="36d5c-138">Open hello configuration file by running hello following command:</span></span>
 
    ```bash
    vi ble_gateway.json
    ```
 
-1. <span data-ttu-id="376e7-139">Přidat modul vložením následující kód, který `modules` části.</span><span class="sxs-lookup"><span data-stu-id="376e7-139">Add a module by inserting the following code to the `modules` section.</span></span>
+1. <span data-ttu-id="36d5c-139">Přidat modul vložením hello následující kód toohello `modules` části.</span><span class="sxs-lookup"><span data-stu-id="36d5c-139">Add a module by inserting hello following code toohello `modules` section.</span></span>
 
    ```json
    {
@@ -111,8 +111,8 @@ sed -i -e "s/\r$//" build.sh
     },
     ```
 
-1. <span data-ttu-id="376e7-140">Nahraďte `[Your libmy_module.so path]` v kódu s absolutní cesta libmy_module.so' souboru.</span><span class="sxs-lookup"><span data-stu-id="376e7-140">Replace `[Your libmy_module.so path]` in the code with the absolute path of the libmy_module.so\` file.</span></span>
-1. <span data-ttu-id="376e7-141">Nahraďte kód v `links` oddíl s následujícím kódem:</span><span class="sxs-lookup"><span data-stu-id="376e7-141">Replace the code in the `links` section with the following one:</span></span>
+1. <span data-ttu-id="36d5c-140">Nahraďte `[Your libmy_module.so path]` v kódu hello s hello absolutní cesta hello libmy_module.so' souboru.</span><span class="sxs-lookup"><span data-stu-id="36d5c-140">Replace `[Your libmy_module.so path]` in hello code with hello absolute path of hello libmy_module.so\` file.</span></span>
+1. <span data-ttu-id="36d5c-141">Nahraďte kód hello v hello `links` oddíl s hello jeden následující:</span><span class="sxs-lookup"><span data-stu-id="36d5c-141">Replace hello code in hello `links` section with hello following one:</span></span>
 
    ```json
    {
@@ -125,25 +125,25 @@ sed -i -e "s/\r$//" build.sh
    }
    ```
 
-1. <span data-ttu-id="376e7-142">Stiskněte klávesu `ESC`a pak zadejte `:wq` k uložení souboru.</span><span class="sxs-lookup"><span data-stu-id="376e7-142">Press `ESC`, and then type `:wq` to save the file.</span></span>
+1. <span data-ttu-id="36d5c-142">Stiskněte klávesu `ESC`a pak zadejte `:wq` toosave hello souboru.</span><span class="sxs-lookup"><span data-stu-id="36d5c-142">Press `ESC`, and then type `:wq` toosave hello file.</span></span>
 
-## <a name="run-the-sample-application"></a><span data-ttu-id="376e7-143">Spuštění ukázkové aplikace</span><span class="sxs-lookup"><span data-stu-id="376e7-143">Run the sample application</span></span>
+## <a name="run-hello-sample-application"></a><span data-ttu-id="36d5c-143">Spuštění ukázkové aplikace hello</span><span class="sxs-lookup"><span data-stu-id="36d5c-143">Run hello sample application</span></span>
 
-1. <span data-ttu-id="376e7-144">Zapnutí SensorTag.</span><span class="sxs-lookup"><span data-stu-id="376e7-144">Power on the SensorTag.</span></span>
-1. <span data-ttu-id="376e7-145">Nastavte proměnnou prostředí SSL_CERT_FILE spuštěním následujícího příkazu:</span><span class="sxs-lookup"><span data-stu-id="376e7-145">Set the SSL_CERT_FILE environment variable by running the following command:</span></span>
+1. <span data-ttu-id="36d5c-144">Zapnutí hello SensorTag.</span><span class="sxs-lookup"><span data-stu-id="36d5c-144">Power on hello SensorTag.</span></span>
+1. <span data-ttu-id="36d5c-145">Nastavit proměnnou prostředí SSL_CERT_FILE hello spuštěním hello následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="36d5c-145">Set hello SSL_CERT_FILE environment variable by running hello following command:</span></span>
 
    ```bash
    export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
    ```
 
-1. <span data-ttu-id="376e7-146">Spusťte ukázkové aplikace s přidaným modulem spuštěním následujícího příkazu:</span><span class="sxs-lookup"><span data-stu-id="376e7-146">Run the sample application with the added module by running the following command:</span></span>
+1. <span data-ttu-id="36d5c-146">Spusťte hello ukázkovou aplikaci s přidaným modulem hello spuštěním hello následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="36d5c-146">Run hello sample application with hello added module by running hello following command:</span></span>
 
    ```bash
    ./ble_gateway ble_gateway.json
    ```
 
-## <a name="next-steps"></a><span data-ttu-id="376e7-147">Další kroky</span><span class="sxs-lookup"><span data-stu-id="376e7-147">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="36d5c-147">Další kroky</span><span class="sxs-lookup"><span data-stu-id="36d5c-147">Next steps</span></span>
 
-<span data-ttu-id="376e7-148">Bránu IoT jste úspěšně použijte k převedení zprávy z SensorTag do formátu .json.</span><span class="sxs-lookup"><span data-stu-id="376e7-148">You’ve successfully use the IoT gateway to convert the message from SensorTag into the .json format.</span></span>
+<span data-ttu-id="36d5c-148">Úspěšně jste použití hello IoT brány tooconvert hello zprávu od SensorTag do formátu .json hello.</span><span class="sxs-lookup"><span data-stu-id="36d5c-148">You’ve successfully use hello IoT gateway tooconvert hello message from SensorTag into hello .json format.</span></span>
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

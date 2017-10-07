@@ -1,6 +1,6 @@
 ---
-title: "Připojení databáze Azure SQL do Azure Search pomocí indexerů | Microsoft Docs"
-description: "Naučte se načítat data z databáze SQL Azure do indexu Azure Search pomocí indexerů."
+title: "tooAzure aaaConnecting databáze SQL Azure Search pomocí indexerů | Microsoft Docs"
+description: "Zjistěte, jak index toopull dat z Azure SQL Database tooan Azure Search pomocí indexerů."
 services: search
 documentationcenter: 
 author: chaosrealm
@@ -14,53 +14,53 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/13/2017
 ms.author: eugenesh
-ms.openlocfilehash: 49f614fdf3ba84de238139387ea97ee62077b072
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b28a11cf18ef994de99e09af90bbfeb171ef3cde
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Připojení k Azure Search pomocí indexerů Azure SQL Database
+# <a name="connecting-azure-sql-database-tooazure-search-using-indexers"></a>Připojení Azure SQL Database tooAzure vyhledávání pomocí indexery
 
-Předtím, než se můžete dotazovat [indexu Azure Search](search-what-is-an-index.md), musí jeho naplnění vaše data. Pokud data žije v Azure SQL database, **indexer Azure Search pro databázi SQL Azure** (nebo **indexer Azure SQL** pro zkrácení) můžete automatizovat proces indexování, což znamená méně kódu k zápisu a méně infrastrukturu pro zajímají.
+Předtím, než se můžete dotazovat [indexu Azure Search](search-what-is-an-index.md), musí jeho naplnění vaše data. Pokud hello data žije v Azure SQL database, **indexer Azure Search pro databázi SQL Azure** (nebo **indexer Azure SQL** pro zkrácení) můžete automatizovat proces indexování hello, to znamená méně kódu toowrite a méně Infrastruktura toocare o.
 
-Tento článek se zabývá mechanismů pomocí [indexery](search-indexer-overview.md), ale také popisuje funkce, které jsou k dispozici jenom s databází Azure SQL (například integrované sledování změn). 
+Tento článek se zabývá hello mechanismů pomocí [indexery](search-indexer-overview.md), ale také popisuje funkce, které jsou k dispozici jenom s databází Azure SQL (například integrované sledování změn). 
 
-Kromě databází Azure SQL, Azure Search nabízí indexery pro [Azure Cosmos DB](search-howto-index-documentdb.md), [úložiště objektů Azure Blob](search-howto-indexing-azure-blob-storage.md), a [úložiště tabulek Azure](search-howto-indexing-azure-tables.md). Chcete-li požádat o podporu pro další datové zdroje, zadejte svůj názor na [fóru pro zpětnou vazbu Azure Search](https://feedback.azure.com/forums/263029-azure-search/).
+V databázích SQL tooAzure přidání, poskytuje Azure Search indexery pro [Azure Cosmos DB](search-howto-index-documentdb.md), [úložiště objektů Azure Blob](search-howto-indexing-azure-blob-storage.md), a [úložiště tabulek Azure](search-howto-indexing-azure-tables.md). toorequest podpory pro další datové zdroje, zadejte svůj názor na hello [fóru pro zpětnou vazbu Azure Search](https://feedback.azure.com/forums/263029-azure-search/).
 
 ## <a name="indexers-and-data-sources"></a>Indexery a zdroje dat.
 
-A **zdroj dat** Určuje, která data do indexu, přihlašovací údaje pro přístup k datům a zásady, které efektivně identifikovat změny v datech (nové, modified nebo deleted řádky). Je definována jako prostředek nezávisle tak, aby ji můžete použít několik indexerů.
+A **zdroj dat** Určuje, které tooindex dat, přihlašovací údaje pro přístup k datům a zásady, které efektivně identifikovat změny v datech hello (nové, modified nebo deleted řádky). Je definována jako prostředek nezávisle tak, aby ji můžete použít několik indexerů.
 
-**Indexer** je na prostředek, který připojí jeden zdroj dat s indexem cílové vyhledávání. Indexer se používá následujícími způsoby:
+**Indexer** je na prostředek, který připojí jeden zdroj dat s indexem cílové vyhledávání. Indexer se používá v hello následující způsoby:
 
-* Proveďte jednorázové kopii dat k naplnění indexu.
-* Aktualizujte index změnami ve zdroji dat podle plánu.
-* Spusťte na vyžádání se aktualizovat index podle potřeby.
+* Proveďte jednorázové kopii dat toopopulate hello indexu.
+* Aktualizujte index změnami ve zdroji dat hello podle plánu.
+* Spusťte na vyžádání tooupdate index podle potřeby.
 
-Jeden indexeru můžete využívat pouze jednu tabulku nebo zobrazení, ale můžete vytvořit několik indexerů, pokud chcete k naplnění více indexů vyhledávání. Další informace o konceptech najdete v tématu [Indexer Operations: obvyklý pracovní postup](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow).
+Jeden indexeru můžete využívat pouze jednu tabulku nebo zobrazení, ale můžete vytvořit několik indexerů, pokud chcete, aby toopopulate více indexů vyhledávání. Další informace o konceptech najdete v tématu [Indexer Operations: obvyklý pracovní postup](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow).
 
 Můžete nastavit a nakonfigurovat indexer Azure SQL pomocí:
 
-* Průvodce importem dat v [portálu Azure](https://portal.azure.com)
+* Průvodce importem dat v hello [portálu Azure](https://portal.azure.com)
 * Služba Azure Search [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 * Služba Azure Search [rozhraní REST API](https://docs.microsoft.com/en-us/rest/api/searchservice/indexer-operations)
 
-V tomto článku pomocí REST API pro vytvoření **indexery** a **zdroje dat**.
+V tomto článku, použijeme hello REST API toocreate **indexery** a **zdroje dat**.
 
-## <a name="when-to-use-azure-sql-indexer"></a>Kdy použít Azure SQL Indexer
-V závislosti na několika různými faktory týkající se dat používání Azure SQL indexer může nebo nemusí být vhodné. Pokud vaše data splňuje následující požadavky, můžete použít indexer Azure SQL.
+## <a name="when-toouse-azure-sql-indexer"></a>Když toouse Azure SQL Indexer
+V závislosti na několika různými faktory týkající se dat tooyour hello použití indexer Azure SQL může nebo nemusí být vhodné. Pokud se vaše data vejde hello následující požadavky, můžete použít indexer Azure SQL.
 
 | Kritéria | Podrobnosti |
 |----------|---------|
-| Data pocházejí z jedné tabulky nebo zobrazení | Pokud data je rozmístěny na několika tabulkám, můžete vytvořit jediné zobrazení data. Ale pokud používáte zobrazení, nebudete moci používat SQL Server integrovaného detekce změn aktualizovat index s přírůstkové změny položku. Další informace najdete v tématu [zaznamenávání změnit a odstranit řádky](#CaptureChangedRows) níže. |
-| Datové typy jsou kompatibilní | Většina, ale ne všechny typy SQL jsou podporovány v indexu Azure Search. Seznam najdete v tématu [mapování datové typy](#TypeMapping). |
-| Synchronizace dat v reálném čase není vyžadováno | Indexer znovu mohou indexu tabulku maximálně každých pět minut. Pokud potřebujete projeví v indexu během několika sekund nebo minut jeden data často mění a změny, doporučujeme používat [REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) nebo [.NET SDK](search-import-data-dotnet.md) tak, aby nabízel aktualizované řádky přímo. |
-| Přírůstkové indexování je možné | Pokud máte velké sady dat a plán spuštění indexeru podle plánu, musí být schopni efektivně identifikovat nové, změněné nebo odstraněné řádky Azure Search. Bez přírůstkové indexování je povoleno pouze pokud jste indexu na vyžádání (ne podle plánu), nebo indexování méně než 100 000 řádků. Další informace najdete v tématu [zaznamenávání změnit a odstranit řádky](#CaptureChangedRows) níže. |
+| Data pocházejí z jedné tabulky nebo zobrazení | Pokud hello data je rozmístěny na několika tabulkám, můžete vytvořit jediné zobrazení dat hello. Ale pokud používáte zobrazení, nebudete moct toouse SQL Server integrovaného změnu detekce toorefresh index s přírůstkové změny. Další informace najdete v tématu [zaznamenávání změnit a odstranit řádky](#CaptureChangedRows) níže. |
+| Datové typy jsou kompatibilní | Většina, ale ne všechny typy hello SQL jsou podporovány v indexu Azure Search. Seznam najdete v tématu [mapování datové typy](#TypeMapping). |
+| Synchronizace dat v reálném čase není vyžadováno | Indexer znovu mohou indexu tabulku maximálně každých pět minut. Pokud vaše změny dat často a hello změní nutné toobe promítnuta hello index během několika sekund nebo minut jeden, doporučujeme používat hello [REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) nebo [.NET SDK](search-import-data-dotnet.md) toopush přímo aktualizovat řádky. |
+| Přírůstkové indexování je možné | Pokud máte velké sady dat a indexeru hello toorun plán podle plánu, Azure Search musí být schopný tooefficiently identifikovat nové, změněné nebo odstraněné řádků. Bez přírůstkové indexování je povoleno pouze pokud jste indexu na vyžádání (ne podle plánu), nebo indexování méně než 100 000 řádků. Další informace najdete v tématu [zaznamenávání změnit a odstranit řádky](#CaptureChangedRows) níže. |
 
 ## <a name="create-an-azure-sql-indexer"></a>Vytvořením indexeru. Azure SQL
 
-1. Vytvoření zdroje dat:
+1. Vytvoření zdroje dat hello:
 
    ```
     POST https://myservice.search.windows.net/datasources?api-version=2016-09-01
@@ -71,15 +71,15 @@ V závislosti na několika různými faktory týkající se dat používání Az
         "name" : "myazuresqldatasource",
         "type" : "azuresql",
         "credentials" : { "connectionString" : "Server=tcp:<your server>.database.windows.net,1433;Database=<your database>;User ID=<your user name>;Password=<your password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" },
-        "container" : { "name" : "name of the table or view that you want to index" }
+        "container" : { "name" : "name of hello table or view that you want tooindex" }
     }
    ```
 
-   Můžete získat připojovací řetězec z [portál Azure](https://portal.azure.com); použít `ADO.NET connection string` možnost.
+   Můžete získat připojovací řetězec hello hello [portál Azure](https://portal.azure.com); použít hello `ADO.NET connection string` možnost.
 
-2. Pokud již nemáte, vytvořte cílový index Azure Search. Můžete vytvořit index pomocí [portál](https://portal.azure.com) nebo [vytvořit Index rozhraní API](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Zkontrolujte, zda je schéma cílový index kompatibilní se schématem zdrojové tabulky – viz [mapování mezi SQL a služba Azure search datové typy](#TypeMapping).
+2. Pokud již nemáte, vytvořte index Azure Search cíl hello. Můžete vytvořit index pomocí hello [portál](https://portal.azure.com) nebo hello [vytvořit Index rozhraní API](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Ujistěte se, že hello schéma cílový index je kompatibilní s hello schématu hello zdrojové tabulky – viz [mapování mezi SQL a služba Azure search datové typy](#TypeMapping).
 
-3. Vytvořte indexeru tak, že ho pojmenujete a odkazování na index zdrojové a cílové dat:
+3. Vytvořte hello indexer tak, že ho pojmenujete a odkazování na zdrojové a cílové index datových hello:
 
     ```
     POST https://myservice.search.windows.net/indexers?api-version=2016-09-01
@@ -100,14 +100,14 @@ Indexer vytvořené v tomto případě nemá plán. Automaticky spustí, až kdy
 
 Můžete přizpůsobit několik aspektů indexer chování, například velikost dávky a kolik dokumentů mohou být přeskočeny, než se nezdaří spuštění indexeru. Další informace najdete v tématu [vytvoření rozhraní API Indexer](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
 
-Budete muset povolit službám Azure připojit k vaší databázi. V tématu [připojení z Azure](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) pokyny o tom, jak to udělat.
+Může být nutné tooallow služby Azure tooconnect tooyour databáze. V tématu [připojení z Azure](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) pokyny toodo který.
 
-Ke sledování indexer stavu a provádění historii (počet položek indexed, selhání atd.), použijte **indexer stav** žádost:
+toomonitor hello indexer stav a historie provádění (počet položek indexed, selhání atd.), použijte **indexer stav** žádost:
 
     GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2016-09-01
     api-key: admin-key
 
-Odpověď by měl vypadat takto:
+Hello odpověď by měla vypadat podobně jako toohello následující:
 
     {
         "@odata.context":"https://myservice.search.windows.net/$metadata#Microsoft.Azure.Search.V2015_02_28.IndexerExecutionInfo",
@@ -140,11 +140,11 @@ Odpověď by měl vypadat takto:
         ]
     }
 
-Historie provádění obsahuje až 50 nedávno provedených spuštěních, které jsou seřazeny v opačném chronologickém pořadí (tak, aby poslední spuštění bude první v odpovědi).
-Další informace o odpovědi můžete najít v [získání stavu indexeru](http://go.microsoft.com/fwlink/p/?LinkId=528198)
+Historie provádění obsahuje too50 spuštěních hello naposledy byla dokončena, které jsou seřazeny v opačném chronologickém pořadí hello (tak, aby poslední spuštění hello bude první v odpovědi hello).
+Další informace o hello odpovědi můžete najít v [získání stavu indexeru](http://go.microsoft.com/fwlink/p/?LinkId=528198)
 
 ## <a name="run-indexers-on-a-schedule"></a>Indexery spouštět podle plánu
-Můžete také uspořádat indexeru pravidelně spouštět podle plánu. Chcete-li to provést, přidejte **plán** vlastnost při vytváření nebo aktualizaci indexeru. Následující příklad ukazuje požadavek PUT aktualizovat indexer:
+Můžete také uspořádat hello indexer toorun pravidelně podle plánu. toodo, přidejte hello **plán** vlastnost při vytváření nebo aktualizaci hello indexer. Následující příklad Hello ukazuje PUT požadavek tooupdate hello indexer:
 
     PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2016-09-01
     Content-Type: application/json
@@ -156,23 +156,23 @@ Můžete také uspořádat indexeru pravidelně spouštět podle plánu. Chcete-
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-**Interval** parametr je povinný. Interval odkazuje na čas mezi začátkem spuštěních dvě po sobě jdoucích indexer. Nejkratší povolený interval je 5 minut; nejdelší je jeden den. Musí být naformátovaná jako hodnota "hodnoty doby podle" XSD (omezená podmnožina [ISO 8601 trvání](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) hodnotu). Je tento vzor: `P(nD)(T(nH)(nM))`. Příklady: `PT15M` pro každých 15 minut, `PT2H` pro každé 2 hodiny.
+Hello **interval** parametr je povinný. Hello interval odkazuje toohello čas mezi hello začátek spuštěních dvě po sobě jdoucích indexer. Hello Nejmenší povolený interval je 5 minut; Hello nejdelší je jeden den. Musí být naformátovaná jako hodnota "hodnoty doby podle" XSD (omezená podmnožina [ISO 8601 trvání](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) hodnotu). vzor Hello: `P(nD)(T(nH)(nM))`. Příklady: `PT15M` pro každých 15 minut, `PT2H` pro každé 2 hodiny.
 
-Volitelné **startTime** Určuje, kdy by měla být zahájena naplánované spuštění. Pokud je vynechaný, použije se aktuální čas UTC. Tento čas může být v minulosti – naplánoval případ první spuštění jakoby indexeru je spuštěn nepřetržitě od čas spuštění.  
+Hello volitelné **startTime** Určuje, kdy hello naplánované spuštěních by měla být zahájena. Pokud je vynechaný, použije se aktuální čas UTC hello. Tento čas může být v hello po – v takovém případě hello první spuštění je naplánováno, jako kdyby hello indexeru je spuštěn nepřetržitě od hello startTime.  
 
-Najednou můžete spustit pouze jeden spuštění indexeru. Pokud indexeru je spuštěn, když její spuštění je naplánováno, odloží se provádění, dokud dalším naplánovaném čase.
+Najednou můžete spustit pouze jeden spuštění indexeru. Pokud indexeru je spuštěn, když její spuštění je naplánováno, provádění hello posunut až hello dalším naplánovaném čase.
 
-Zvažte příklad udělat konkrétnější. Předpokládejme, že jsme následující hodinový plán nakonfigurovat:
+Pojďme se podívat na příklad toomake to konkrétnější. Předpokládejme, že jsme hello následující hodinový plán nakonfigurovat:
 
     "schedule" : { "interval" : "PT1H", "startTime" : "2015-03-01T00:00:00Z" }
 
 Stane se toto:
 
-1. První spuštění indexeru spustí na nebo přibližně 1. března 2015 12:00 v noci ČAS UTC.
+1. první spuštění indexeru Hello spustí na nebo přibližně 1. března 2015 12:00 v noci ČAS UTC.
 2. Předpokládejme, že spuštění tohoto trvá 20 minut (nebo kdykoli menší než 1 hodina).
-3. Druhý provádění spustí na nebo přibližně 1. března 2015 1:00 ráno
+3. druhý provádění Hello spustí na nebo přibližně 1. března 2015 1:00 ráno
 4. Nyní předpokládejme, že spuštění tohoto trvá víc než jednu hodinu – například 70 minut – tak, aby jeho dokončení přibližně 2:10:00
-5. Je teď 2:00:00, čas pro třetí provádění spustit. Ale protože druhý provádění z ráno 1 je stále spuštěna, třetí provedení je přeskočeno. Třetí provádění spustí ve 3 hodiny.
+5. Je teď 2:00:00, čas pro spuštění toostart třetí hello. Ale protože hello druhý provádění z ráno 1 je stále spuštěna, provedení třetí hello je přeskočeno. třetí provádění Hello spustí ve 3 hodiny.
 
 Můžete přidat, změnit nebo odstranit plán pro existujícího indexeru pomocí **PUT indexer** požadavku.
 
@@ -180,10 +180,10 @@ Můžete přidat, změnit nebo odstranit plán pro existujícího indexeru pomoc
 
 ## <a name="capture-new-changed-and-deleted-rows"></a>Zachycení nové, změny a odstranění řádků
 
-Služba Azure Search používá **přírůstkové indexování** -li se vyhnout opětovné indexování celou tabulku nebo zobrazení pokaždé, když spustí indexer. Vyhledávání systému Azure nabízí že dva změnit zásady detekce pro podporu přírůstkové indexování. 
+Služba Azure Search používá **přírůstkové indexování** tooavoid s toore index hello celou tabulku nebo zobrazení pokaždé, když spustí indexer. Vyhledávání systému Azure nabízí že dva změnit detekce zásady toosupport přírůstkové indexování. 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>Zásady sledování změn s integrací SQL
-Pokud vaše databáze SQL podporuje [sledování změn](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server), doporučujeme používat **SQL integrované změnit způsob sledování**. Toto je zásada maximální efektivitou. Kromě toho umožňuje Azure Search k identifikaci odstraněných řádků bez nutnosti do tabulky přidat sloupec explicitní "obnovitelného odstranění".
+Pokud vaše databáze SQL podporuje [sledování změn](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server), doporučujeme používat **SQL integrované změnit způsob sledování**. Toto je zásada nejúčinnější hello. Kromě toho umožňuje Azure Search tooidentify odstranit řádky bez nutnosti tooadd tabulkou tooyour sloupec aplikace explicitní "obnovitelného odstranění".
 
 #### <a name="requirements"></a>Požadavky 
 
@@ -191,12 +191,12 @@ Pokud vaše databáze SQL podporuje [sledování změn](https://docs.microsoft.c
   * SQL Server 2012 SP3 nebo novější, pokud používáte systém SQL Server na virtuálních počítačích Azure.
   * Azure SQL Database verze 12, pokud používáte Azure SQL Database.
 + Pouze tabulky (žádná zobrazení). 
-+ V databázi [povolit sledování změn](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server) pro tabulku. 
-+ Žádný složené primární klíč (primární klíč obsahující více než jeden sloupec) v tabulce.  
++ V databázi hello [povolit sledování změn](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server) pro tabulku hello. 
++ Žádný složené primární klíč (primární klíč obsahující více než jeden sloupec) v tabulce hello.  
 
 #### <a name="usage"></a>Využití
 
-Pokud chcete tuto zásadu použít, vytvořit nebo aktualizovat zdroj dat takto:
+toouse tato zásada umožňuje vytvořit nebo aktualizovat zdroj dat takto:
 
     {
         "name" : "myazuresqldatasource",
@@ -208,27 +208,27 @@ Pokud chcete tuto zásadu použít, vytvořit nebo aktualizovat zdroj dat takto:
       }
     }
 
-Při použití zásady, sledování změn SQL integrované nezadávejte zásadami detekce odstraňování oddělení dat – tato zásada má integrovanou podporu pro identifikaci odstranit řádky. Ale pro odstranění být zjištěné "automagically", klíč dokumentu v indexu vyhledávání musí být stejný jako primární klíč v tabulce SQL. 
+Při použití zásady, sledování změn SQL integrované nezadávejte zásadami detekce odstraňování oddělení dat – tato zásada má integrovanou podporu pro identifikaci odstranit řádky. Však pro hello odstranění toobe zjistil "automagically" hello klíč dokumentu v indexu vyhledávání musí být hello stejné jako primární klíč hello v hello tabulky SQL. 
 
 <a name="HighWaterMarkPolicy"></a>
 
 ### <a name="high-water-mark-change-detection-policy"></a>Zásady detekce změn horní meze
 
-Tyto zásady detekce změn spoléhá na sloupec "horní mez" zaznamenávání verze nebo čas poslední aktualizace řádek. Pokud používáte zobrazení, musíte použít zásadu horní mez. Horní mez sloupec musí splňovat následující požadavky.
+Tyto zásady detekce změn spoléhá na sloupec "horní mez" zaznamenávání hello verze nebo čas poslední aktualizace řádek. Pokud používáte zobrazení, musíte použít zásadu horní mez. sloupec horní mez Hello musí splňovat následující požadavky hello.
 
 #### <a name="requirements"></a>Požadavky 
 
-* Vloží všechny zadejte hodnotu pro sloupec.
-* Všechny aktualizace k položce také změnit hodnotu pro sloupec.
-* Hodnota v tomto sloupci se zvyšuje s každou insert nebo update.
-* Dotazy s následující kde a klauzule ORDER BY se dají efektivně provádět:`WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
+* Vloží všechny zadejte hodnotu pro sloupec hello.
+* Všechny položky tooan aktualizace také změnit hodnotu hello hello sloupce.
+* Hello hodnotu v tomto sloupci se zvyšuje s každou insert nebo update.
+* Dotazy s hello následující WHERE a klauzule ORDER BY se dají efektivně provádět:`WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
 
 > [!IMPORTANT] 
-> Důrazně doporučujeme pomocí [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) datový typ sloupce horní mez. Pokud se používá jiný typ dat sledování změn není zaručeno zaznamenat všechny změny případě transakce provádění souběžně dotaz indexer. Při použití **rowversion** v konfiguraci s replikami jen pro čtení, musí odkazovat na primární replice indexeru. Scénáře synchronizace dat lze použít pouze primární repliku.
+> Důrazně doporučujeme používat hello [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) datový typ pro sloupec hello horní mez. Pokud se používá jiný typ dat sledování změn není zaručena toocapture všechny změny v hello přítomnost transakce provádění souběžně dotaz indexer. Při použití **rowversion** v konfiguraci s replikami jen pro čtení, musí odkazovat na primární replice hello hello indexer. Scénáře synchronizace dat lze použít pouze primární repliku.
 
 #### <a name="usage"></a>Využití
 
-Použít zásadu horní mez, vytvořit nebo aktualizovat zdroj dat takto:
+toouse zásadu horní mez vytvořit nebo aktualizovat zdroj dat takto:
 
     {
         "name" : "myazuresqldatasource",
@@ -242,11 +242,11 @@ Použít zásadu horní mez, vytvořit nebo aktualizovat zdroj dat takto:
     }
 
 > [!WARNING]
-> Pokud zdrojová tabulka nemá index na sloupci horní mez, dotazy, které používá indexeru SQL může vypršení časového limitu. Konkrétně `ORDER BY [High Water Mark Column]` klauzule vyžaduje index efektivně spouštět, když tabulka obsahuje mnoho řádků.
+> Pokud hello zdrojová tabulka nemá index na sloupci hello horní mez, dotazy, které používá hello SQL indexer vypršet časový limit. Konkrétně hello `ORDER BY [High Water Mark Column]` klauzule vyžaduje indexu toorun efektivně Pokud hello tabulka obsahuje mnoho řádků.
 >
 >
 
-Pokud dojde k vypršení časového limitu, můžete použít `queryTimeout` nastavení konfigurace indexer nastavit časový limit dotazu na hodnotu vyšší než 5 minut výchozí časový limit. Nastavit časový limit na 10 minut, například vytvořit nebo aktualizovat indexer s následující konfigurací:
+Pokud dojde k vypršení časového limitu, můžete použít hello `queryTimeout` indexer konfigurace nastavení tooset hello hodnota časového limitu dotazu tooa vyšší než hello výchozí hodnota 5 minut časového limitu. Například tooset hello časový limit too10 minut, vytvořit nebo aktualizovat hello indexer s hello následující konfigurace:
 
     {
       ... other indexer definition properties
@@ -254,7 +254,7 @@ Pokud dojde k vypršení časového limitu, můžete použít `queryTimeout` nas
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
 
-Můžete také zakázat `ORDER BY [High Water Mark Column]` klauzule. To však není doporučeno, protože pokud se spuštění indexeru je přerušen kvůli chybě, indexeru je znovu zpracovat všechny řádky Pokud později - běží, i v případě indexeru již zpracována téměř všechny řádky v čase, který byl přerušen. Chcete-li zakázat `ORDER BY` klauzule, použijte `disableOrderByHighWaterMarkColumn` nastavení v definici indexer:  
+Můžete také zakázat hello `ORDER BY [High Water Mark Column]` klauzule. To však není doporučeno, protože pokud se spuštění indexeru hello přerušený kvůli chybě, hello indexer má toore proces všechny řádky Pokud běží novější - i v případě indexeru hello má již zpracovává téměř všechny řádky hello hello, když byla přerušena. toodisable hello `ORDER BY` klauzule, použijte hello `disableOrderByHighWaterMarkColumn` nastavení v definici indexer hello:  
 
     {
      ... other indexer definition properties
@@ -263,22 +263,22 @@ Můžete také zakázat `ORDER BY [High Water Mark Column]` klauzule. To však n
     }
 
 ### <a name="soft-delete-column-deletion-detection-policy"></a>Softwarové zásady odstranit detekce odstranění sloupce
-Při odstranění řádků ze zdrojové tabulky, pravděpodobně chcete odstranit tyto řádky z také indexu vyhledávání. Pokud chcete použít zásady sledování změn SQL integrované, to se stará za vás. Ale zásady sledování změn horní meze není vám pomůžou s odstraněných řádků. Co dělat?
+Při odstranění řádků z hello zdrojové tabulky, budete ho zřejmě chtít toodelete z indexu vyhledávání hello také řádky. Pokud používáte integrované hello SQL zásady sledování změn, to se stará za vás. Ale zásady sledování změn horní meze hello není vám pomůžou s odstraněných řádků. Jaké toodo?
 
-Pokud se fyzicky odebrání řádky z tabulky Azure Search nemá žádný způsob, jak odvození přítomnost záznamy, které už existují.  Můžete však technika "soft odstranění" logicky odstranění řádků bez odstranění z tabulky. Přidá sloupec na vaše řádky tabulky nebo zobrazení a označit jako odstranit pomocí sloupce.
+Pokud se fyzicky odebrání hello řádků z tabulky hello Azure Search nemá žádný způsob, jak tooinfer hello přítomnosti záznamy, které už existují.  Můžete však použít hello "soft odstranění" technika toologically odstranění řádků bez odstranění z tabulky hello. Přidat sloupec tooyour tabulku nebo zobrazení a označit řádky jako odstranit pomocí sloupce.
 
-Při použití konfigurace soft odstranění techniku, můžete určit zásadu obnovitelného odstranění takto při vytváření nebo aktualizaci zdroje dat:
+Pokud používáte hello konfigurace soft odstranění techniku, můžete zadat hello obnovitelného odstranění zásadu takto při vytváření nebo aktualizaci hello zdroj dat:
 
     {
         …,
         "dataDeletionDetectionPolicy" : {
            "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",
            "softDeleteColumnName" : "[a column name]",
-           "softDeleteMarkerValue" : "[the value that indicates that a row is deleted]"
+           "softDeleteMarkerValue" : "[hello value that indicates that a row is deleted]"
         }
     }
 
-**SoftDeleteMarkerValue** musí být řetězec – použít řetězcovou reprezentaci skutečnou hodnotu. Například pokud máte sloupec celé číslo, které jsou označeny odstraněných řádků s hodnotou 1, použijte `"1"`. Pokud BIT sloupec, kde jsou označené odstraněných řádků logickou hodnotu true, použijte `"True"`.
+Hello **softDeleteMarkerValue** musí být řetězec – použijte hello řetězcovou reprezentaci skutečnou hodnotu. Například pokud máte sloupec celé číslo, které jsou označené odstraněných řádků hello hodnota 1, použijte `"1"`. Pokud máte BIT sloupce, které jsou označené odstraněných řádků hello logickou hodnotu true, použijte `"True"`.
 
 <a name="TypeMapping"></a>
 
@@ -290,11 +290,11 @@ Při použití konfigurace soft odstranění techniku, můžete určit zásadu o
 | bigint |Edm.Int64 Edm.String | |
 | skutečné, float |Edm.Double Edm.String | |
 | Smallmoney peníze desítková číslice |Edm.String |Vyhledávání systému Azure nepodporuje převod decimal typy do Edm.Double, protože by to ztratit přesnost |
-| Char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Řetězec SQL lze použít k naplnění Collection(Edm.String) pole, pokud řetězec představuje pole JSON řetězců:`["red", "white", "blue"]` |
+| Char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Řetězec SQL může být použité toopopulate Collection(Edm.String) pole, pokud řetězec hello představuje pole JSON řetězců:`["red", "white", "blue"]` |
 | smalldatetime, datetime, datetime2, date, datetimeoffset |Edm.DateTimeOffset Edm.String | |
 | uniqueidentifer |Edm.String | |
-| Geography |Edm.GeographyPoint |Jsou podporovány pouze geography instance typu bodu s SRID 4326 (což je výchozí hodnota) |
-| ROWVERSION |Není k dispozici |Verze řádku sloupce nelze uložit do indexu vyhledávání, ale mohou být použity pro sledování změn |
+| Geography |Edm.GeographyPoint |Jsou podporovány pouze geography instance typu bodu s SRID 4326 (což je výchozí hello) |
+| ROWVERSION |Není k dispozici |Verze řádku sloupce nelze uložit do indexu vyhledávání hello, ale mohou být použity pro sledování změn |
 | Doba, časový interval, binary, varbinary, image, xml, geometry, typy CLR |Není k dispozici |Nepodporuje se |
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
@@ -302,10 +302,10 @@ SQL indexer zpřístupňuje několik nastavení konfigurace:
 
 | Nastavení | Datový typ | Účel | Výchozí hodnota |
 | --- | --- | --- | --- |
-| queryTimeout |Řetězec |Nastaví časový limit pro spuštění dotazu SQL |5 minut ("00: 05:00") |
-| disableOrderByHighWaterMarkColumn |BOOL |Způsobí, že příkaz jazyka SQL, které používají zásady horní mez k vynechejte klauzuli ORDER by. V tématu [zásad horní mez](#HighWaterMarkPolicy) |False |
+| queryTimeout |Řetězec |Nastaví hello časový limit pro spuštění dotazu SQL |5 minut ("00: 05:00") |
+| disableOrderByHighWaterMarkColumn |BOOL |Způsobí, že používané hello horní mez zásad tooomit hello klauzule ORDER by dotazu SQL hello. V tématu [zásad horní mez](#HighWaterMarkPolicy) |False |
 
-Toto nastavení se použije v `parameters.configuration` objektu v definici indexer. Pokud chcete nastavit časový limit dotazu na 10 minut, například vytvořit nebo aktualizovat indexer s následující konfigurací:
+Toto nastavení se použije v hello `parameters.configuration` objektu v definici indexer hello. Například tooset hello dotazu časový limit too10 minut vytvořit nebo aktualizovat hello indexer s hello následující konfigurace:
 
     {
       ... other indexer definition properties
@@ -317,23 +317,23 @@ Toto nastavení se použije v `parameters.configuration` objektu v definici inde
 
 **Otázka: je možné použít indexer Azure SQL s databází SQL spuštěn na virtuální počítače IaaS v Azure?**
 
-Ano. Však musíte povolit svoji službu vyhledávání pro připojení k vaší databázi. Další informace najdete v tématu [konfigurovat spojení z indexer Azure Search na SQL Server na virtuálním počítači Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
+Ano. Ale musíte tooallow databázi tooyour tooconnect vaší vyhledávací služby. Další informace najdete v tématu [nakonfigurovat připojení ze Azure Search indexer tooSQL Server na virtuálním počítači Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
 
 **Otázka: je možné použít indexer Azure SQL s databází SQL místní aplikace?**
 
-Ne přímo. Není doporučujeme nebo podporu přímé připojení, jak je to proto se vyžaduje otevření databází pro provoz sítě Internet. Zákazníci proběhlo úspěšně tento scénář použití most technologií, jako je Azure Data Factory. Další informace najdete v tématu [nabízet data do indexu Azure Search pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
+Ne přímo. Není doporučujeme nebo podporují přímé připojení, jak to proto by vyžadovaly jste tooopen provozu tooInternet databáze. Zákazníci proběhlo úspěšně tento scénář použití most technologií, jako je Azure Data Factory. Další informace najdete v tématu [nabízené data tooan indexu Azure Search pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
 
 **Otázka: je možné použít indexer Azure SQL s databázemi než SQL Server spuštěnou v IaaS v Azure?**
 
-Ne. Tento scénář nepodporujeme, protože nebyly testovány indexeru se žádné databáze než SQL Server.  
+Ne. Tento scénář nepodporujeme, protože nebyly testovány indexer hello se žádné databáze než SQL Server.  
 
 **Otázka: je možné vytvořit několik indexerů spuštěna podle plánu?**
 
-Ano. Ale pouze jeden indexer může být spuštěn v jednom uzlu najednou. Pokud budete potřebovat k současnému spuštění více indexery, vezměte v úvahu škálování služby vyhledávání k více než jednu jednotku vyhledávání.
+Ano. Ale pouze jeden indexer může být spuštěn v jednom uzlu najednou. Pokud budete potřebovat k současnému spuštění více indexery, vezměte v úvahu vertikálním navýšení kapacity vaší vyhledávací služby toomore než jedna jednotka vyhledávání.
 
 **Otázka: funguje s vliv indexer pracovním vytížením můj dotaz?**
 
-Ano. Spuštění indexeru na jednom z uzlů v vaši službu vyhledávání a tento uzel prostředky jsou sdílené mezi indexování a obsluhuje přenosy dotazu a další žádosti o rozhraní API. Pokud spustíte zatížení s intenzivním indexování a dotazů a dojde k vysokou míru 503 chyby nebo odezvy roste, vezměte v úvahu [škálování služby vyhledávání](search-capacity-planning.md).
+Ano. Spuštění indexeru na jednom z uzlů hello ve službě vyhledávání a tento uzel prostředky jsou sdílené mezi indexování a obsluhuje přenosy dotazu a další žádosti o rozhraní API. Pokud spustíte zatížení s intenzivním indexování a dotazů a dojde k vysokou míru 503 chyby nebo odezvy roste, vezměte v úvahu [škálování služby vyhledávání](search-capacity-planning.md).
 
 **Otázka: je možné používat sekundární repliku v [clusteru převzetí služeb při selhání](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) jako zdroj dat?**
 
@@ -343,16 +343,16 @@ Pro přírůstkové indexování změn podporuje Azure Search, dvě zásady dete
 
 U replik, jen pro čtení databáze SQL nepodporuje sledování integrované změn. Proto je nutné použít zásady horní mez. 
 
-Standardní doporučujeme použít rowversion datový typ pro sloupec horní mez. Pomocí rowversion však spoléhá na SQL Database `MIN_ACTIVE_ROWVERSION` funkci, která není podporována u replik, jen pro čtení. Indexer proto musí odkazovat na primární repliku, pokud používáte rowversion.
+Naše standardní doporučení je toouse hello rowversion datový typ pro sloupec hello horní mez. Pomocí rowversion však spoléhá na SQL Database `MIN_ACTIVE_ROWVERSION` funkci, která není podporována u replik, jen pro čtení. Pokud používáte rowversion, proto musí odkazovat hello indexer tooa primární repliky.
 
-Pokud se pokusíte použít rowversion na repliku jen pro čtení, zobrazí se následující chyba: 
+Když zkusíte toouse rowversion na repliku jen pro čtení, zobrazí se následující chyba hello: 
 
-    "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
+    "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update hello datasource and specify a connection toohello primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
 
 **Otázka: je možné použít jako alternativní, bez rowversion sloupec pro sledování změn horní meze?**
 
 Není doporučeno. Pouze **rowversion** umožňuje pro synchronizaci dat spolehlivé. Nicméně, v závislosti na logice aplikace může být bezpečné pokud:
 
-+ Můžete zajistit, že při spuštění indexeru neexistují nezpracovaných transakce v tabulce, který je právě indexovaný (například všechny tabulky, které aktualizace dojít, protože batch na plán a plán indexer Azure Search je nastaven na překrývající se k aktualizaci tabulky naplánovat).  
++ Můžete zajistit, že při spuštění indexeru hello, že nejsou žádné nevyřízené transakce hello tabulky, který je právě indexovaný (například všechny aktualizace tabulky provedena, dávky podle plánu, a plán indexeru hello Azure Search je nastaven tooavoid překrývající se s tabulkou hello plán aktualizace).  
 
-+ Pravidelně provedením úplné nové indexování a pokračovat tam zmeškaných řádky. 
++ Pravidelně provedením úplné nové indexování toopick až zmeškaných řádky. 

@@ -1,6 +1,6 @@
 ---
-title: "Zkontrolujte připojení s sledovací proces sítě Azure – prostředí PowerShell | Microsoft Docs"
-description: "Tato stránka vysvětluje, jak k testování připojení s sledovací proces sítě pomocí prostředí PowerShell"
+title: "aaaCheck připojení s sledovací proces sítě Azure – prostředí PowerShell | Microsoft Docs"
+description: "Tato stránka vysvětluje, jak tootest připojení s sledovací proces sítě pomocí prostředí PowerShell"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -13,51 +13,51 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: gwallace
-ms.openlocfilehash: a8f936cd23838759dc30b04688d3c6544e4895cc
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4bcb90a72f178445c38b7bd7fc5054c5d0c200bb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="check-connectivity-with-azure-network-watcher-using-powershell"></a><span data-ttu-id="31aa2-103">Zkontrolujte připojení s sledovací proces sítě Azure pomocí prostředí PowerShell</span><span class="sxs-lookup"><span data-stu-id="31aa2-103">Check connectivity with Azure Network Watcher using PowerShell</span></span>
+# <a name="check-connectivity-with-azure-network-watcher-using-powershell"></a><span data-ttu-id="7ff7e-103">Zkontrolujte připojení s sledovací proces sítě Azure pomocí prostředí PowerShell</span><span class="sxs-lookup"><span data-stu-id="7ff7e-103">Check connectivity with Azure Network Watcher using PowerShell</span></span>
 
 > [!div class="op_single_selector"]
-> - [<span data-ttu-id="31aa2-104">Azure Portal</span><span class="sxs-lookup"><span data-stu-id="31aa2-104">Portal</span></span>](network-watcher-connectivity-portal.md)
-> - [<span data-ttu-id="31aa2-105">PowerShell</span><span class="sxs-lookup"><span data-stu-id="31aa2-105">PowerShell</span></span>](network-watcher-connectivity-powershell.md)
-> - [<span data-ttu-id="31aa2-106">CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="31aa2-106">CLI 2.0</span></span>](network-watcher-connectivity-cli.md)
-> - [<span data-ttu-id="31aa2-107">Rozhraní API Azure REST</span><span class="sxs-lookup"><span data-stu-id="31aa2-107">Azure REST API</span></span>](network-watcher-connectivity-rest.md)
+> - [<span data-ttu-id="7ff7e-104">Azure Portal</span><span class="sxs-lookup"><span data-stu-id="7ff7e-104">Portal</span></span>](network-watcher-connectivity-portal.md)
+> - [<span data-ttu-id="7ff7e-105">PowerShell</span><span class="sxs-lookup"><span data-stu-id="7ff7e-105">PowerShell</span></span>](network-watcher-connectivity-powershell.md)
+> - [<span data-ttu-id="7ff7e-106">CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="7ff7e-106">CLI 2.0</span></span>](network-watcher-connectivity-cli.md)
+> - [<span data-ttu-id="7ff7e-107">Rozhraní API Azure REST</span><span class="sxs-lookup"><span data-stu-id="7ff7e-107">Azure REST API</span></span>](network-watcher-connectivity-rest.md)
 
-<span data-ttu-id="31aa2-108">Naučte se používat připojení k ověření, pokud lze navázat přímé připojení TCP z virtuálního počítače do daného koncového bodu.</span><span class="sxs-lookup"><span data-stu-id="31aa2-108">Learn how to use connectivity to verify if a direct TCP connection from a virtual machine to a given endpoint can be established.</span></span>
+<span data-ttu-id="7ff7e-108">Zjistěte, jak by bylo možné navázat připojení tooverify toouse Pokud přímé připojení TCP z virtuálního počítače tooa, zadaný koncový bod.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-108">Learn how toouse connectivity tooverify if a direct TCP connection from a virtual machine tooa given endpoint can be established.</span></span>
 
-## <a name="before-you-begin"></a><span data-ttu-id="31aa2-109">Než začnete</span><span class="sxs-lookup"><span data-stu-id="31aa2-109">Before you begin</span></span>
+## <a name="before-you-begin"></a><span data-ttu-id="7ff7e-109">Než začnete</span><span class="sxs-lookup"><span data-stu-id="7ff7e-109">Before you begin</span></span>
 
-<span data-ttu-id="31aa2-110">Tento článek předpokládá, že máte v následujících zdrojích informací:</span><span class="sxs-lookup"><span data-stu-id="31aa2-110">This article assumes you have the following resources:</span></span>
+<span data-ttu-id="7ff7e-110">Tento článek předpokládá, že máte hello následující prostředky:</span><span class="sxs-lookup"><span data-stu-id="7ff7e-110">This article assumes you have hello following resources:</span></span>
 
-* <span data-ttu-id="31aa2-111">Instance sledovací proces sítě v oblasti, které chcete zkontrolovat připojení.</span><span class="sxs-lookup"><span data-stu-id="31aa2-111">An instance of Network Watcher in the region you want to check connectivity.</span></span>
+* <span data-ttu-id="7ff7e-111">Instance sledovací proces sítě v hello oblasti, kterou chcete toocheck připojení.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-111">An instance of Network Watcher in hello region you want toocheck connectivity.</span></span>
 
-* <span data-ttu-id="31aa2-112">Zkontrolujte připojení k virtuálním počítačům.</span><span class="sxs-lookup"><span data-stu-id="31aa2-112">Virtual machines to check connectivity with.</span></span>
+* <span data-ttu-id="7ff7e-112">Virtuální počítače připojení toocheck s.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-112">Virtual machines toocheck connectivity with.</span></span>
 
 [!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 > [!IMPORTANT]
-> <span data-ttu-id="31aa2-113">Kontrola připojení vyžaduje rozšíření virtuálního počítače `AzureNetworkWatcherExtension`.</span><span class="sxs-lookup"><span data-stu-id="31aa2-113">Connectivity check requires a virtual machine extension `AzureNetworkWatcherExtension`.</span></span> <span data-ttu-id="31aa2-114">Instalaci rozšíření na virtuální počítač s Windows najdete v článku [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Windows](../virtual-machines/windows/extensions-nwa.md) a u virtuálního počítače s Linuxem, navštivte [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Linux](../virtual-machines/linux/extensions-nwa.md).</span><span class="sxs-lookup"><span data-stu-id="31aa2-114">For installing the extension on a Windows VM visit [Azure Network Watcher Agent virtual machine extension for Windows](../virtual-machines/windows/extensions-nwa.md) and for Linux VM visit [Azure Network Watcher Agent virtual machine extension for Linux](../virtual-machines/linux/extensions-nwa.md).</span></span>
+> <span data-ttu-id="7ff7e-113">Kontrola připojení vyžaduje rozšíření virtuálního počítače `AzureNetworkWatcherExtension`.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-113">Connectivity check requires a virtual machine extension `AzureNetworkWatcherExtension`.</span></span> <span data-ttu-id="7ff7e-114">Instaluje se rozšíření hello na virtuální počítač s Windows najdete v článku [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Windows](../virtual-machines/windows/extensions-nwa.md) a u virtuálního počítače s Linuxem, navštivte [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Linux](../virtual-machines/linux/extensions-nwa.md).</span><span class="sxs-lookup"><span data-stu-id="7ff7e-114">For installing hello extension on a Windows VM visit [Azure Network Watcher Agent virtual machine extension for Windows](../virtual-machines/windows/extensions-nwa.md) and for Linux VM visit [Azure Network Watcher Agent virtual machine extension for Linux](../virtual-machines/linux/extensions-nwa.md).</span></span>
 
-## <a name="register-the-preview-capability"></a><span data-ttu-id="31aa2-115">Registrace funkce preview</span><span class="sxs-lookup"><span data-stu-id="31aa2-115">Register the preview capability</span></span>
+## <a name="register-hello-preview-capability"></a><span data-ttu-id="7ff7e-115">Zaregistrovat hello funkce preview</span><span class="sxs-lookup"><span data-stu-id="7ff7e-115">Register hello preview capability</span></span>
 
-<span data-ttu-id="31aa2-116">Připojení je aktuálně ve verzi public preview k použití této funkce, které musí být registrováno.</span><span class="sxs-lookup"><span data-stu-id="31aa2-116">Connectivity is currently in public preview, to use this feature it needs to be registered.</span></span> <span data-ttu-id="31aa2-117">Chcete-li to provést, spusťte následující ukázku v prostředí PowerShell:</span><span class="sxs-lookup"><span data-stu-id="31aa2-117">To do this, run the following PowerShell sample:</span></span>
+<span data-ttu-id="7ff7e-116">Připojení je aktuálně ve verzi public preview, toouse tato funkce je nutné toobe zaregistrován.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-116">Connectivity is currently in public preview, toouse this feature it needs toobe registered.</span></span> <span data-ttu-id="7ff7e-117">toodo se spuštění hello následující ukázka prostředí PowerShell:</span><span class="sxs-lookup"><span data-stu-id="7ff7e-117">toodo this, run hello following PowerShell sample:</span></span>
 
 ```powershell
 Register-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace Microsoft.Network
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
-<span data-ttu-id="31aa2-118">Chcete-li ověřit, zda že byla registrace úspěšná, spusťte následující ukázku v prostředí Powershell:</span><span class="sxs-lookup"><span data-stu-id="31aa2-118">To verify the registration was successful, run the following Powershell sample:</span></span>
+<span data-ttu-id="7ff7e-118">tooverify hello registrace byla úspěšná, spusťte hello následující ukázka prostředí Powershell:</span><span class="sxs-lookup"><span data-stu-id="7ff7e-118">tooverify hello registration was successful, run hello following Powershell sample:</span></span>
 
 ```powershell
 Get-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace  Microsoft.Network
 ```
 
-<span data-ttu-id="31aa2-119">Pokud funkci byla správně zaregistrovány, by měl odpovídat následující výstup:</span><span class="sxs-lookup"><span data-stu-id="31aa2-119">If the feature was properly registered, the output should match the following:</span></span>
+<span data-ttu-id="7ff7e-119">Pokud funkce hello byla správně zaregistrovány, hello výstup by měl odpovídat hello následující:</span><span class="sxs-lookup"><span data-stu-id="7ff7e-119">If hello feature was properly registered, hello output should match hello following:</span></span>
 
 ```
 FeatureName         ProviderName      RegistrationState
@@ -65,11 +65,11 @@ FeatureName         ProviderName      RegistrationState
 AllowNetworkWatcherConnectivityCheck  Microsoft.Network Registered
 ```
 
-## <a name="check-connectivity-to-a-virtual-machine"></a><span data-ttu-id="31aa2-120">Zkontrolujte připojení k virtuálnímu počítači</span><span class="sxs-lookup"><span data-stu-id="31aa2-120">Check connectivity to a virtual machine</span></span>
+## <a name="check-connectivity-tooa-virtual-machine"></a><span data-ttu-id="7ff7e-120">Zkontrolujte připojení k tooa virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="7ff7e-120">Check connectivity tooa virtual machine</span></span>
 
-<span data-ttu-id="31aa2-121">Tento příklad zkontroluje připojení k cílovému virtuálnímu počítači přes port 80.</span><span class="sxs-lookup"><span data-stu-id="31aa2-121">This example checks connectivity to a destination virtual machine over port 80.</span></span>
+<span data-ttu-id="7ff7e-121">Tento příklad zkontroluje připojení tooa cílového virtuálního počítače přes port 80.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-121">This example checks connectivity tooa destination virtual machine over port 80.</span></span>
 
-### <a name="example"></a><span data-ttu-id="31aa2-122">Příklad</span><span class="sxs-lookup"><span data-stu-id="31aa2-122">Example</span></span>
+### <a name="example"></a><span data-ttu-id="7ff7e-122">Příklad</span><span class="sxs-lookup"><span data-stu-id="7ff7e-122">Example</span></span>
 
 ```powershell
 $rgName = "ContosoRG"
@@ -87,9 +87,9 @@ $VM2 = Get-AzureRMVM -ResourceGroupName $rgName | Where-Object -Property Name -E
 Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationId $VM2.Id -DestinationPort 80
 ```
 
-### <a name="response"></a><span data-ttu-id="31aa2-123">Odpověď</span><span class="sxs-lookup"><span data-stu-id="31aa2-123">Response</span></span>
+### <a name="response"></a><span data-ttu-id="7ff7e-123">Odpověď</span><span class="sxs-lookup"><span data-stu-id="7ff7e-123">Response</span></span>
 
-<span data-ttu-id="31aa2-124">Následující odpověď je z předchozího příkladu.</span><span class="sxs-lookup"><span data-stu-id="31aa2-124">The following response is from the previous example.</span></span>  <span data-ttu-id="31aa2-125">V této odpovědi `ConnectionStatus` je **Unreachable**.</span><span class="sxs-lookup"><span data-stu-id="31aa2-125">In this response, the `ConnectionStatus` is **Unreachable**.</span></span> <span data-ttu-id="31aa2-126">Uvidíte, že všechny sondy neodesílají se nezdařilo.</span><span class="sxs-lookup"><span data-stu-id="31aa2-126">You can see that all the probes sent failed.</span></span> <span data-ttu-id="31aa2-127">Připojení se nezdařilo u virtuálního zařízení z důvodu nakonfigurován uživatel `NetworkSecurityRule` s názvem **UserRule_Port80**, nakonfigurovaná tak, aby blokovala příchozí přenosy na portu 80.</span><span class="sxs-lookup"><span data-stu-id="31aa2-127">The connectivity failed at the virtual appliance due to a user-configured `NetworkSecurityRule` named **UserRule_Port80**, configured to block incoming traffic on port 80.</span></span> <span data-ttu-id="31aa2-128">Tyto informace můžete použít pro zkoumání problémů s připojením.</span><span class="sxs-lookup"><span data-stu-id="31aa2-128">This information can be used to research connection issues.</span></span>
+<span data-ttu-id="7ff7e-124">Hello následující odpověď je z předchozího příkladu hello.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-124">hello following response is from hello previous example.</span></span>  <span data-ttu-id="7ff7e-125">V této odpovědi hello `ConnectionStatus` je **Unreachable**.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-125">In this response, hello `ConnectionStatus` is **Unreachable**.</span></span> <span data-ttu-id="7ff7e-126">Uvidíte, že všechny hello sondy odeslání se nezdařilo.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-126">You can see that all hello probes sent failed.</span></span> <span data-ttu-id="7ff7e-127">Hello připojení se nezdařilo u virtuálního zařízení hello kvůli tooa uživatelem nakonfigurovaného `NetworkSecurityRule` s názvem **UserRule_Port80**, nakonfigurované tooblock příchozí přenosy na portu 80.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-127">hello connectivity failed at hello virtual appliance due tooa user-configured `NetworkSecurityRule` named **UserRule_Port80**, configured tooblock incoming traffic on port 80.</span></span> <span data-ttu-id="7ff7e-128">Tato informace může být použité tooresearch problémů s připojením.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-128">This information can be used tooresearch connection issues.</span></span>
 
 ```
 ConnectionStatus : Unreachable
@@ -160,11 +160,11 @@ Hops             : [
                    ]
 ```
 
-## <a name="validate-routing-issues"></a><span data-ttu-id="31aa2-129">Ověření směrování problémy</span><span class="sxs-lookup"><span data-stu-id="31aa2-129">Validate routing issues</span></span>
+## <a name="validate-routing-issues"></a><span data-ttu-id="7ff7e-129">Ověření směrování problémy</span><span class="sxs-lookup"><span data-stu-id="7ff7e-129">Validate routing issues</span></span>
 
-<span data-ttu-id="31aa2-130">V příkladu ověří připojení mezi virtuálním počítačem a vzdálený koncový bod.</span><span class="sxs-lookup"><span data-stu-id="31aa2-130">The example checks connectivity between a virtual machine and a remote endpoint.</span></span>
+<span data-ttu-id="7ff7e-130">Příklad Hello ověří připojení mezi virtuálním počítačem a vzdálený koncový bod.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-130">hello example checks connectivity between a virtual machine and a remote endpoint.</span></span>
 
-### <a name="example"></a><span data-ttu-id="31aa2-131">Příklad</span><span class="sxs-lookup"><span data-stu-id="31aa2-131">Example</span></span>
+### <a name="example"></a><span data-ttu-id="7ff7e-131">Příklad</span><span class="sxs-lookup"><span data-stu-id="7ff7e-131">Example</span></span>
 
 ```powershell
 $rgName = "ContosoRG"
@@ -180,9 +180,9 @@ $VM1 = Get-AzureRMVM -ResourceGroupName $rgName | Where-Object -Property Name -E
 Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress 13.107.21.200 -DestinationPort 80
 ```
 
-### <a name="response"></a><span data-ttu-id="31aa2-132">Odpověď</span><span class="sxs-lookup"><span data-stu-id="31aa2-132">Response</span></span>
+### <a name="response"></a><span data-ttu-id="7ff7e-132">Odpověď</span><span class="sxs-lookup"><span data-stu-id="7ff7e-132">Response</span></span>
 
-<span data-ttu-id="31aa2-133">V následujícím příkladu `ConnectionStatus` se zobrazí jako **Unreachable**.</span><span class="sxs-lookup"><span data-stu-id="31aa2-133">In the following example, the `ConnectionStatus` is shown as **Unreachable**.</span></span> <span data-ttu-id="31aa2-134">V `Hops` podrobnosti, můžete zobrazit v části `Issues` blokovaného provoz z důvodu `UserDefinedRoute`.</span><span class="sxs-lookup"><span data-stu-id="31aa2-134">In the `Hops` details, you can see under `Issues` that the traffic was blocked due to a `UserDefinedRoute`.</span></span> 
+<span data-ttu-id="7ff7e-133">V následujícím příkladu hello, hello `ConnectionStatus` se zobrazí jako **Unreachable**.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-133">In hello following example, hello `ConnectionStatus` is shown as **Unreachable**.</span></span> <span data-ttu-id="7ff7e-134">V hello `Hops` podrobnosti, můžete zobrazit v části `Issues` že hello provoz byl zablokován kvůli tooa `UserDefinedRoute`.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-134">In hello `Hops` details, you can see under `Issues` that hello traffic was blocked due tooa `UserDefinedRoute`.</span></span> 
 
 ```
 ConnectionStatus : Unreachable
@@ -225,11 +225,11 @@ Hops             : [
                    ]
 ```
 
-## <a name="check-website-latency"></a><span data-ttu-id="31aa2-135">Zkontrolujte latence webu</span><span class="sxs-lookup"><span data-stu-id="31aa2-135">Check website latency</span></span>
+## <a name="check-website-latency"></a><span data-ttu-id="7ff7e-135">Zkontrolujte latence webu</span><span class="sxs-lookup"><span data-stu-id="7ff7e-135">Check website latency</span></span>
 
-<span data-ttu-id="31aa2-136">Následující příklad zkontroluje připojení k webu.</span><span class="sxs-lookup"><span data-stu-id="31aa2-136">The following example checks the connectivity to a website.</span></span>
+<span data-ttu-id="7ff7e-136">Hello následující příklad zkontroluje hello připojení tooa webu.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-136">hello following example checks hello connectivity tooa website.</span></span>
 
-### <a name="example"></a><span data-ttu-id="31aa2-137">Příklad</span><span class="sxs-lookup"><span data-stu-id="31aa2-137">Example</span></span>
+### <a name="example"></a><span data-ttu-id="7ff7e-137">Příklad</span><span class="sxs-lookup"><span data-stu-id="7ff7e-137">Example</span></span>
 
 ```powershell
 $rgName = "ContosoRG"
@@ -245,9 +245,9 @@ $VM1 = Get-AzureRMVM -ResourceGroupName $rgName | Where-Object -Property Name -E
 Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress http://bing.com/
 ```
 
-### <a name="response"></a><span data-ttu-id="31aa2-138">Odpověď</span><span class="sxs-lookup"><span data-stu-id="31aa2-138">Response</span></span>
+### <a name="response"></a><span data-ttu-id="7ff7e-138">Odpověď</span><span class="sxs-lookup"><span data-stu-id="7ff7e-138">Response</span></span>
 
-<span data-ttu-id="31aa2-139">V následující odpověď, se zobrazí `ConnectionStatus` zobrazuje jako **dostupné**.</span><span class="sxs-lookup"><span data-stu-id="31aa2-139">In the following response, you can see the `ConnectionStatus` shows as **Reachable**.</span></span> <span data-ttu-id="31aa2-140">Pokud je připojení úspěšné, jsou uvedeny hodnoty latence.</span><span class="sxs-lookup"><span data-stu-id="31aa2-140">When a connection is successful, latency values are provided.</span></span>
+<span data-ttu-id="7ff7e-139">V následující odpověď hello, uvidíte hello `ConnectionStatus` zobrazuje jako **dostupné**.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-139">In hello following response, you can see hello `ConnectionStatus` shows as **Reachable**.</span></span> <span data-ttu-id="7ff7e-140">Pokud je připojení úspěšné, jsou uvedeny hodnoty latence.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-140">When a connection is successful, latency values are provided.</span></span>
 
 ```
 ConnectionStatus : Reachable
@@ -278,11 +278,11 @@ Hops             : [
                    ]
 ```
 
-## <a name="check-connectivity-to-a-storage-endpoint"></a><span data-ttu-id="31aa2-141">Zkontrolujte připojení ke koncovému bodu úložiště</span><span class="sxs-lookup"><span data-stu-id="31aa2-141">Check connectivity to a storage endpoint</span></span>
+## <a name="check-connectivity-tooa-storage-endpoint"></a><span data-ttu-id="7ff7e-141">Zkontrolujte připojení koncový bod úložiště tooa</span><span class="sxs-lookup"><span data-stu-id="7ff7e-141">Check connectivity tooa storage endpoint</span></span>
 
-<span data-ttu-id="31aa2-142">Následující příklad Otestuje připojení z virtuálního počítače na účet úložiště blogu.</span><span class="sxs-lookup"><span data-stu-id="31aa2-142">The following example tests the connectivity from a virtual machine to a blog storage account.</span></span>
+<span data-ttu-id="7ff7e-142">Následující ukázka Hello Otestuje připojení hello z účtu úložiště virtuálního počítače tooa blogu.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-142">hello following example tests hello connectivity from a virtual machine tooa blog storage account.</span></span>
 
-### <a name="example"></a><span data-ttu-id="31aa2-143">Příklad</span><span class="sxs-lookup"><span data-stu-id="31aa2-143">Example</span></span>
+### <a name="example"></a><span data-ttu-id="7ff7e-143">Příklad</span><span class="sxs-lookup"><span data-stu-id="7ff7e-143">Example</span></span>
 
 ```powershell
 $rgName = "ContosoRG"
@@ -298,9 +298,9 @@ $VM1 = Get-AzureRMVM -ResourceGroupName $rgName | Where-Object -Property Name -E
 Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://contosostorageexample.blob.core.windows.net/ 
 ```
 
-### <a name="response"></a><span data-ttu-id="31aa2-144">Odpověď</span><span class="sxs-lookup"><span data-stu-id="31aa2-144">Response</span></span>
+### <a name="response"></a><span data-ttu-id="7ff7e-144">Odpověď</span><span class="sxs-lookup"><span data-stu-id="7ff7e-144">Response</span></span>
 
-<span data-ttu-id="31aa2-145">Následujícím kódu json je spustit rutinu předchozí příklad odpověď.</span><span class="sxs-lookup"><span data-stu-id="31aa2-145">The following json is the example response from running the previous cmdlet.</span></span> <span data-ttu-id="31aa2-146">Jako cílové místo je dostupná, `ConnectionStatus` vlastnost zobrazuje jako **dostupné**.</span><span class="sxs-lookup"><span data-stu-id="31aa2-146">As the destination is reachable, the `ConnectionStatus` property shows as **Reachable**.</span></span>  <span data-ttu-id="31aa2-147">Jsou k dispozici podrobnosti týkající se počet skoků potřebná k získání přístupu objektu blob storage a latenci.</span><span class="sxs-lookup"><span data-stu-id="31aa2-147">You are provided the details regarding the number of hops required to reach the storage blob and latency.</span></span>
+<span data-ttu-id="7ff7e-145">Hello následujícím kódu json je hello příklad odpověď z spuštění rutiny předchozí hello.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-145">hello following json is hello example response from running hello previous cmdlet.</span></span> <span data-ttu-id="7ff7e-146">Jako cíl hello je dostupný, hello `ConnectionStatus` vlastnost zobrazuje jako **dostupné**.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-146">As hello destination is reachable, hello `ConnectionStatus` property shows as **Reachable**.</span></span>  <span data-ttu-id="7ff7e-147">Jsou k dispozici hello podrobnosti týkající se hello počet segmentů směrování požadované tooreach hello úložiště objektů blob a latenci.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-147">You are provided hello details regarding hello number of hops required tooreach hello storage blob and latency.</span></span>
 
 ```
 ConnectionStatus : Reachable
@@ -331,11 +331,11 @@ Hops             : [
                    ]
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="31aa2-148">Další kroky</span><span class="sxs-lookup"><span data-stu-id="31aa2-148">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="7ff7e-148">Další kroky</span><span class="sxs-lookup"><span data-stu-id="7ff7e-148">Next steps</span></span>
 
-<span data-ttu-id="31aa2-149">Najít, pokud určité provoz je povolený v nebo z virtuálního počítače navštivte stránky [zkontrolujte IP tok ověření](network-watcher-check-ip-flow-verify-portal.md)</span><span class="sxs-lookup"><span data-stu-id="31aa2-149">Find if certain traffic is allowed in or out of your VM by visiting [Check IP flow verify](network-watcher-check-ip-flow-verify-portal.md)</span></span>
+<span data-ttu-id="7ff7e-149">Najít, pokud určité provoz je povolený v nebo z virtuálního počítače navštivte stránky [zkontrolujte IP tok ověření](network-watcher-check-ip-flow-verify-portal.md)</span><span class="sxs-lookup"><span data-stu-id="7ff7e-149">Find if certain traffic is allowed in or out of your VM by visiting [Check IP flow verify](network-watcher-check-ip-flow-verify-portal.md)</span></span>
 
-<span data-ttu-id="31aa2-150">Pokud je blokován provoz a neměl by být, najdete v části [spravovat skupiny zabezpečení sítě](../virtual-network/virtual-network-manage-nsg-arm-portal.md) sledovat pravidla zabezpečení sítě skupiny a zabezpečení, které jsou definovány.</span><span class="sxs-lookup"><span data-stu-id="31aa2-150">If traffic is being blocked and it should not be, see [Manage Network Security Groups](../virtual-network/virtual-network-manage-nsg-arm-portal.md) to track down the network security group and security rules that are defined.</span></span>
+<span data-ttu-id="7ff7e-150">Pokud je blokován provoz a neměl by být, najdete v části [spravovat skupiny zabezpečení sítě](../virtual-network/virtual-network-manage-nsg-arm-portal.md) tootrack dolů hello pravidla zabezpečení sítě skupiny a zabezpečení, které jsou definovány.</span><span class="sxs-lookup"><span data-stu-id="7ff7e-150">If traffic is being blocked and it should not be, see [Manage Network Security Groups](../virtual-network/virtual-network-manage-nsg-arm-portal.md) tootrack down hello network security group and security rules that are defined.</span></span>
 
 <!-- Image references -->
 

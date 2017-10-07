@@ -1,6 +1,6 @@
 ---
-title: "Použití Node.js k dotazování služby Azure SQL Database | Dokumentace Microsoftu"
-description: "Toto téma vám ukáže, jak pomocí Node.js vytvořit program, který se připojí ke službě Azure SQL Database a bude ji dotazovat s použitím příkazů jazyka Transact-SQL."
+title: aaaUse Node.js tooquery Azure SQL Database | Microsoft Docs
+description: "Toto téma ukazuje, jak toouse Node.js toocreate program, který se připojuje tooan Azure SQL Database a dotazování pomocí příkazů Transact-SQL."
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -15,50 +15,50 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 07/05/2017
 ms.author: carlrab
-ms.openlocfilehash: 1907a95df9132c059d7985b6d5cd913536bf3403
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3870130a486c218eafeb9cf792a4275de7fd6551
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-nodejs-to-query-an-azure-sql-database"></a><span data-ttu-id="86d05-103">Použití Node.js k dotazování databáze SQL Azure</span><span class="sxs-lookup"><span data-stu-id="86d05-103">Use Node.js to query an Azure SQL database</span></span>
+# <a name="use-nodejs-tooquery-an-azure-sql-database"></a><span data-ttu-id="a8ba0-103">Pomocí Node.js tooquery Azure SQL database</span><span class="sxs-lookup"><span data-stu-id="a8ba0-103">Use Node.js tooquery an Azure SQL database</span></span>
 
-<span data-ttu-id="86d05-104">Tento rychlý úvodní kurz ukazuje použití [Node.js](https://nodejs.org/en/) k vytvoření programu pro připojení k databázi SQL Azure a použití příkazů jazyka Transact-SQL k dotazování dat.</span><span class="sxs-lookup"><span data-stu-id="86d05-104">This quick start tutorial demonstrates how to use [Node.js](https://nodejs.org/en/) to create a program to connect to an Azure SQL database and use Transact-SQL statements to query data.</span></span>
+<span data-ttu-id="a8ba0-104">Tento úvodní kurz ukazuje, jak toouse [Node.js](https://nodejs.org/en/) toocreate tooan tooconnect programu Azure SQL databáze a používat data tooquery příkazy jazyka Transact-SQL.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-104">This quick start tutorial demonstrates how toouse [Node.js](https://nodejs.org/en/) toocreate a program tooconnect tooan Azure SQL database and use Transact-SQL statements tooquery data.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="86d05-105">Požadavky</span><span class="sxs-lookup"><span data-stu-id="86d05-105">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="a8ba0-105">Požadavky</span><span class="sxs-lookup"><span data-stu-id="a8ba0-105">Prerequisites</span></span>
 
-<span data-ttu-id="86d05-106">Abyste mohli absolvovat tento rychlý úvodní kurz, ujistěte se, že máte následující:</span><span class="sxs-lookup"><span data-stu-id="86d05-106">To complete this quick start tutorial, make sure you have the following:</span></span>
+<span data-ttu-id="a8ba0-106">toocomplete tento rychlý úvodní kurz, ujistěte se, že máte hello následující:</span><span class="sxs-lookup"><span data-stu-id="a8ba0-106">toocomplete this quick start tutorial, make sure you have hello following:</span></span>
 
-- <span data-ttu-id="86d05-107">Databázi SQL Azure.</span><span class="sxs-lookup"><span data-stu-id="86d05-107">An Azure SQL database.</span></span> <span data-ttu-id="86d05-108">Tento rychlý start používá prostředky vytvořené v některém z těchto rychlých startů:</span><span class="sxs-lookup"><span data-stu-id="86d05-108">This quick start uses the resources created in one of these quick starts:</span></span> 
+- <span data-ttu-id="a8ba0-107">Databázi SQL Azure.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-107">An Azure SQL database.</span></span> <span data-ttu-id="a8ba0-108">Tento rychlý start používá hello prostředky vytvořené v jednom z těchto rychlé spuštění:</span><span class="sxs-lookup"><span data-stu-id="a8ba0-108">This quick start uses hello resources created in one of these quick starts:</span></span> 
 
-   - [<span data-ttu-id="86d05-109">Vytvoření databáze – portál</span><span class="sxs-lookup"><span data-stu-id="86d05-109">Create DB - Portal</span></span>](sql-database-get-started-portal.md)
-   - [<span data-ttu-id="86d05-110">Vytvoření databáze – rozhraní příkazového řádku</span><span class="sxs-lookup"><span data-stu-id="86d05-110">Create DB - CLI</span></span>](sql-database-get-started-cli.md)
-   - [<span data-ttu-id="86d05-111">Vytvoření databáze – PowerShell</span><span class="sxs-lookup"><span data-stu-id="86d05-111">Create DB - PowerShell</span></span>](sql-database-get-started-powershell.md)
+   - [<span data-ttu-id="a8ba0-109">Vytvoření databáze – portál</span><span class="sxs-lookup"><span data-stu-id="a8ba0-109">Create DB - Portal</span></span>](sql-database-get-started-portal.md)
+   - [<span data-ttu-id="a8ba0-110">Vytvoření databáze – rozhraní příkazového řádku</span><span class="sxs-lookup"><span data-stu-id="a8ba0-110">Create DB - CLI</span></span>](sql-database-get-started-cli.md)
+   - [<span data-ttu-id="a8ba0-111">Vytvoření databáze – PowerShell</span><span class="sxs-lookup"><span data-stu-id="a8ba0-111">Create DB - PowerShell</span></span>](sql-database-get-started-powershell.md)
 
-- <span data-ttu-id="86d05-112">[Pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) pro veřejnou IP adresu počítače, který používáte pro tento rychlý úvodní kurz.</span><span class="sxs-lookup"><span data-stu-id="86d05-112">A [server-level firewall rule](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) for the public IP address of the computer you use for this quick start tutorial.</span></span>
-- <span data-ttu-id="86d05-113">Máte nainstalované Node.js a související software pro váš operační systém.</span><span class="sxs-lookup"><span data-stu-id="86d05-113">You have installed Node.js and related software for your operating system.</span></span>
-    - <span data-ttu-id="86d05-114">**MacOS:** Nainstalujte Homebrew a Node.js a potom nainstalujte ovladač ODBC a nástroj SQLCMD.</span><span class="sxs-lookup"><span data-stu-id="86d05-114">**MacOS**: Install Homebrew and Node.js, and then install the ODBC driver and SQLCMD.</span></span> <span data-ttu-id="86d05-115">Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).</span><span class="sxs-lookup"><span data-stu-id="86d05-115">See [Step 1.2 and 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).</span></span>
-    - <span data-ttu-id="86d05-116">**Ubuntu:** Nainstalujte Node.js a potom nainstalujte ovladač ODBC a nástroj SQLCMD.</span><span class="sxs-lookup"><span data-stu-id="86d05-116">**Ubuntu**: Install Node.js, and then install the ODBC driver and SQLCMD.</span></span> <span data-ttu-id="86d05-117">Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).</span><span class="sxs-lookup"><span data-stu-id="86d05-117">See [Step 1.2 and 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/) .</span></span>
-    - <span data-ttu-id="86d05-118">**Windows:** Nainstalujte Chocolatey a Node.js a potom nainstalujte ovladač ODBC a nástroj SQLCMD.</span><span class="sxs-lookup"><span data-stu-id="86d05-118">**Windows**: Install Chocolatey and Node.js, and then install the ODBC driver and SQL CMD.</span></span> <span data-ttu-id="86d05-119">Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).</span><span class="sxs-lookup"><span data-stu-id="86d05-119">See [Step 1.2 and 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).</span></span>
+- <span data-ttu-id="a8ba0-112">A [pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) pro hello veřejnou IP adresu počítače hello použijete pro tento kurz rychlý start.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-112">A [server-level firewall rule](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) for hello public IP address of hello computer you use for this quick start tutorial.</span></span>
+- <span data-ttu-id="a8ba0-113">Máte nainstalované Node.js a související software pro váš operační systém.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-113">You have installed Node.js and related software for your operating system.</span></span>
+    - <span data-ttu-id="a8ba0-114">**Systému MacOS**: Nainstalujte Homebrew a Node.js a potom nainstalujte ovladač ODBC hello a SQLCMD.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-114">**MacOS**: Install Homebrew and Node.js, and then install hello ODBC driver and SQLCMD.</span></span> <span data-ttu-id="a8ba0-115">Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).</span><span class="sxs-lookup"><span data-stu-id="a8ba0-115">See [Step 1.2 and 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).</span></span>
+    - <span data-ttu-id="a8ba0-116">**Ubuntu**: Instalace softwaru Node.js a pak nainstalujte ovladač ODBC hello a SQLCMD.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-116">**Ubuntu**: Install Node.js, and then install hello ODBC driver and SQLCMD.</span></span> <span data-ttu-id="a8ba0-117">Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).</span><span class="sxs-lookup"><span data-stu-id="a8ba0-117">See [Step 1.2 and 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/) .</span></span>
+    - <span data-ttu-id="a8ba0-118">**Windows**: Nainstalujte Chocolatey a Node.js a potom nainstalujte ovladač ODBC hello a SQL CMD.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-118">**Windows**: Install Chocolatey and Node.js, and then install hello ODBC driver and SQL CMD.</span></span> <span data-ttu-id="a8ba0-119">Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).</span><span class="sxs-lookup"><span data-stu-id="a8ba0-119">See [Step 1.2 and 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).</span></span>
 
-## <a name="sql-server-connection-information"></a><span data-ttu-id="86d05-120">Informace o připojení k SQL serveru</span><span class="sxs-lookup"><span data-stu-id="86d05-120">SQL server connection information</span></span>
+## <a name="sql-server-connection-information"></a><span data-ttu-id="a8ba0-120">Informace o připojení k SQL serveru</span><span class="sxs-lookup"><span data-stu-id="a8ba0-120">SQL server connection information</span></span>
 
-<span data-ttu-id="86d05-121">Získejte informace o připojení potřebné pro připojení k databázi SQL Azure.</span><span class="sxs-lookup"><span data-stu-id="86d05-121">Get the connection information needed to connect to the Azure SQL database.</span></span> <span data-ttu-id="86d05-122">V dalších postupech budete potřebovat plně kvalifikovaný název serveru, název databáze a přihlašovací údaje.</span><span class="sxs-lookup"><span data-stu-id="86d05-122">You will need the fully qualified server name, database name, and login information in the next procedures.</span></span>
+<span data-ttu-id="a8ba0-121">Získáte hello připojení informace potřebné tooconnect toohello Azure SQL database.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-121">Get hello connection information needed tooconnect toohello Azure SQL database.</span></span> <span data-ttu-id="a8ba0-122">Budete potřebovat hello serveru plně kvalifikovaný název, název databáze a přihlašovacích údajů v dalším postupu hello.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-122">You will need hello fully qualified server name, database name, and login information in hello next procedures.</span></span>
 
-1. <span data-ttu-id="86d05-123">Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).</span><span class="sxs-lookup"><span data-stu-id="86d05-123">Log in to the [Azure portal](https://portal.azure.com/).</span></span>
-2. <span data-ttu-id="86d05-124">V nabídce vlevo vyberte **SQL Database** a na stránce **Databáze SQL** klikněte na vaši databázi.</span><span class="sxs-lookup"><span data-stu-id="86d05-124">Select **SQL Databases** from the left-hand menu, and click your database on the **SQL databases** page.</span></span> 
-3. <span data-ttu-id="86d05-125">Na stránce **Přehled** pro vaši databázi si prohlédněte plně kvalifikovaný název serveru, jak je znázorněno na následujícím obrázku.</span><span class="sxs-lookup"><span data-stu-id="86d05-125">On the **Overview** page for your database, review the fully qualified server name as shown in the following image.</span></span> <span data-ttu-id="86d05-126">Pokud na název serveru najedete myší, můžete vyvolat možnost **Kopírování kliknutím**.</span><span class="sxs-lookup"><span data-stu-id="86d05-126">You can hover over the server name to bring up the **Click to copy** option.</span></span> 
+1. <span data-ttu-id="a8ba0-123">Přihlaste se toohello [portál Azure](https://portal.azure.com/).</span><span class="sxs-lookup"><span data-stu-id="a8ba0-123">Log in toohello [Azure portal](https://portal.azure.com/).</span></span>
+2. <span data-ttu-id="a8ba0-124">Vyberte **databází SQL** z nabídky na levé straně hello a klikněte na tlačítko databáze na hello **databází SQL** stránky.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-124">Select **SQL Databases** from hello left-hand menu, and click your database on hello **SQL databases** page.</span></span> 
+3. <span data-ttu-id="a8ba0-125">Na hello **přehled** stránky pro vaši databázi hello zkontrolujte plně kvalifikovaný název serveru, jak ukazuje následující obrázek hello.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-125">On hello **Overview** page for your database, review hello fully qualified server name as shown in hello following image.</span></span> <span data-ttu-id="a8ba0-126">Můžete podržet přes toobring název serveru hello až hello **klikněte na tlačítko toocopy** možnost.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-126">You can hover over hello server name toobring up hello **Click toocopy** option.</span></span> 
 
    ![název-serveru](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. <span data-ttu-id="86d05-128">Pokud jste zapomněli přihlašovací informace pro váš server Azure SQL Database, přejděte na stránku serveru SQL Database, abyste zobrazili jméno správce serveru a v případě potřeby resetovali heslo.</span><span class="sxs-lookup"><span data-stu-id="86d05-128">If you have forgotten the login information for your Azure SQL Database server, navigate to the SQL Database server page to view the server admin name and, if necessary, reset the password.</span></span>
+4. <span data-ttu-id="a8ba0-128">Pokud jste zapomněli hello přihlašovací informace pro váš server databáze SQL Azure, přejděte toohello databáze SQL serveru stránky tooview hello serveru správce název a, v případě potřeby obnovit heslo hello.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-128">If you have forgotten hello login information for your Azure SQL Database server, navigate toohello SQL Database server page tooview hello server admin name and, if necessary, reset hello password.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="86d05-129">Musíte mít nastavené pravidlo brány firewall pro veřejnou IP adresu počítače, na kterém provádíte tento kurz.</span><span class="sxs-lookup"><span data-stu-id="86d05-129">You must have a firewall rule in place for the public IP address of the computer on which you perform this tutorial.</span></span> <span data-ttu-id="86d05-130">Pokud jste na jiném počítači nebo máte jinou veřejnou IP adresu, vytvořte [pravidlo brány firewall na úrovni serveru pomocí webu Azure Portal](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).</span><span class="sxs-lookup"><span data-stu-id="86d05-130">If you are on a different computer or have a different public IP address, create a [server-level firewall rule using the Azure portal](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).</span></span> 
+> <span data-ttu-id="a8ba0-129">Pravidlo brány firewall musí mít zavedené hello veřejných IP adres hello počítače, na kterém provádíte tento kurz.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-129">You must have a firewall rule in place for hello public IP address of hello computer on which you perform this tutorial.</span></span> <span data-ttu-id="a8ba0-130">Pokud jsou v jiném počítači nebo mít jinou veřejnou IP adresu, vytvořte [pravidlo brány firewall na úrovni serveru pomocí portálu Azure hello](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).</span><span class="sxs-lookup"><span data-stu-id="a8ba0-130">If you are on a different computer or have a different public IP address, create a [server-level firewall rule using hello Azure portal](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).</span></span> 
 
-## <a name="create-a-nodejs-project"></a><span data-ttu-id="86d05-131">Vytvoření projektu Node.js</span><span class="sxs-lookup"><span data-stu-id="86d05-131">Create a Node.js project</span></span>
+## <a name="create-a-nodejs-project"></a><span data-ttu-id="a8ba0-131">Vytvoření projektu Node.js</span><span class="sxs-lookup"><span data-stu-id="a8ba0-131">Create a Node.js project</span></span>
 
-<span data-ttu-id="86d05-132">Otevřete příkazový řádek a vytvořte složku *sqltest*.</span><span class="sxs-lookup"><span data-stu-id="86d05-132">Open a command prompt and create a folder named *sqltest*.</span></span> <span data-ttu-id="86d05-133">Přejděte do složky, kterou jste vytvořili, a spusťte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="86d05-133">Navigate to the folder you created and run the following command:</span></span>
+<span data-ttu-id="a8ba0-132">Otevřete příkazový řádek a vytvořte složku *sqltest*.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-132">Open a command prompt and create a folder named *sqltest*.</span></span> <span data-ttu-id="a8ba0-133">Přejděte toohello složky můžete vytvořit a spustit hello následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="a8ba0-133">Navigate toohello folder you created and run hello following command:</span></span>
 
     
     npm init -y
@@ -66,17 +66,17 @@ ms.lasthandoff: 08/03/2017
     npm install async
     
 
-## <a name="insert-code-to-query-sql-database"></a><span data-ttu-id="86d05-134">Vložení kódu pro dotazování databáze SQL</span><span class="sxs-lookup"><span data-stu-id="86d05-134">Insert code to query SQL database</span></span>
+## <a name="insert-code-tooquery-sql-database"></a><span data-ttu-id="a8ba0-134">Vložení kódu tooquery SQL database</span><span class="sxs-lookup"><span data-stu-id="a8ba0-134">Insert code tooquery SQL database</span></span>
 
-1. <span data-ttu-id="86d05-135">Ve vývojovém prostředí nebo oblíbeném textovém editoru vytvořte nový soubor **sqltest.js**.</span><span class="sxs-lookup"><span data-stu-id="86d05-135">In your development environment or favorite text editor, create a new file, **sqltest.js**.</span></span>
+1. <span data-ttu-id="a8ba0-135">Ve vývojovém prostředí nebo oblíbeném textovém editoru vytvořte nový soubor **sqltest.js**.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-135">In your development environment or favorite text editor, create a new file, **sqltest.js**.</span></span>
 
-2. <span data-ttu-id="86d05-136">Nahraďte jeho obsah následujícím kódem a přidejte odpovídající hodnoty pro váš server, databázi, uživatele a heslo.</span><span class="sxs-lookup"><span data-stu-id="86d05-136">Replace the contents with the following code and add the appropriate values for your server, database, user, and password.</span></span>
+2. <span data-ttu-id="a8ba0-136">Nahraďte obsah hello hello následující kód a přidat hello odpovídající hodnoty pro server, databáze, uživatele a heslo.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-136">Replace hello contents with hello following code and add hello appropriate values for your server, database, user, and password.</span></span>
 
    ```js
    var Connection = require('tedious').Connection;
    var Request = require('tedious').Request;
 
-   // Create connection to database
+   // Create connection toodatabase
    var config = 
       {
         userName: 'someuser', // update me
@@ -90,7 +90,7 @@ ms.lasthandoff: 08/03/2017
       }
    var connection = new Connection(config);
 
-   // Attempt to connect and execute queries if connection goes through
+   // Attempt tooconnect and execute queries if connection goes through
    connection.on('connect', function(err) 
       {
         if (err) 
@@ -105,7 +105,7 @@ ms.lasthandoff: 08/03/2017
     );
 
    function queryDatabase()
-      { console.log('Reading rows from the Table...');
+      { console.log('Reading rows from hello Table...');
 
           // Read all rows from table
         request = new Request(
@@ -126,23 +126,23 @@ ms.lasthandoff: 08/03/2017
       }
 ```
 
-## <a name="run-the-code"></a><span data-ttu-id="86d05-137">Spuštění kódu</span><span class="sxs-lookup"><span data-stu-id="86d05-137">Run the code</span></span>
+## <a name="run-hello-code"></a><span data-ttu-id="a8ba0-137">Spuštění kódu hello</span><span class="sxs-lookup"><span data-stu-id="a8ba0-137">Run hello code</span></span>
 
-1. <span data-ttu-id="86d05-138">V příkazovém řádku spusťte následující příkazy:</span><span class="sxs-lookup"><span data-stu-id="86d05-138">At the command prompt, run the following commands:</span></span>
+1. <span data-ttu-id="a8ba0-138">Hello příkazového řádku spusťte následující příkazy hello:</span><span class="sxs-lookup"><span data-stu-id="a8ba0-138">At hello command prompt, run hello following commands:</span></span>
 
    ```js
    node sqltest.js
    ```
 
-2. <span data-ttu-id="86d05-139">Ověřte, že se vrátilo prvních 20 řádků, a potom zavřete okno aplikace.</span><span class="sxs-lookup"><span data-stu-id="86d05-139">Verify that the top 20 rows are returned and then close the application window.</span></span>
+2. <span data-ttu-id="a8ba0-139">Ověřte, že horních řádků 20 hello se vrátí a pak zavřete okno aplikace hello.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-139">Verify that hello top 20 rows are returned and then close hello application window.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="86d05-140">Další kroky</span><span class="sxs-lookup"><span data-stu-id="86d05-140">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="a8ba0-140">Další kroky</span><span class="sxs-lookup"><span data-stu-id="a8ba0-140">Next steps</span></span>
 
-- <span data-ttu-id="86d05-141">Informace o [ovladači Microsoft Node.js pro SQL Server](https://docs.microsoft.com/sql/connect/node-js/node-js-driver-for-sql-server/)</span><span class="sxs-lookup"><span data-stu-id="86d05-141">Learn about the [Microsoft Node.js Driver for SQL Server](https://docs.microsoft.com/sql/connect/node-js/node-js-driver-for-sql-server/)</span></span>
-- <span data-ttu-id="86d05-142">Informace o [připojení k databázi SQL Azure a jejím dotazování pomocí .NET Core](sql-database-connect-query-dotnet-core.md) v systému Windows, Linux nebo macOS</span><span class="sxs-lookup"><span data-stu-id="86d05-142">Learn how to [connect and query an Azure SQL database using .NET core](sql-database-connect-query-dotnet-core.md) on Windows/Linux/macOS.</span></span>  
-- <span data-ttu-id="86d05-143">Informace o tom, [jak začít s .NET Core v systému Windows, Linux nebo macOS pomocí příkazového řádku](/dotnet/core/tutorials/using-with-xplat-cli)</span><span class="sxs-lookup"><span data-stu-id="86d05-143">Learn about [Getting started with .NET Core on Windows/Linux/macOS using the command line](/dotnet/core/tutorials/using-with-xplat-cli).</span></span>
-- <span data-ttu-id="86d05-144">Informace o [návrhu první databáze SQL Azure pomocí aplikace SSMS](sql-database-design-first-database.md) nebo [návrhu první databáze SQL Azure pomocí .NET](sql-database-design-first-database-csharp.md)</span><span class="sxs-lookup"><span data-stu-id="86d05-144">Learn how to [Design your first Azure SQL database using SSMS](sql-database-design-first-database.md) or [Design your first Azure SQL database using .NET](sql-database-design-first-database-csharp.md).</span></span>
-- <span data-ttu-id="86d05-145">Informace o [připojení a dotazování pomocí aplikace SSMS](sql-database-connect-query-ssms.md)</span><span class="sxs-lookup"><span data-stu-id="86d05-145">Learn how to [Connect and query with SSMS](sql-database-connect-query-ssms.md)</span></span>
-- <span data-ttu-id="86d05-146">Informace o [připojení a dotazování pomocí Visual Studio Code](sql-database-connect-query-vscode.md)</span><span class="sxs-lookup"><span data-stu-id="86d05-146">Learn how to [Connect and query with Visual Studio Code](sql-database-connect-query-vscode.md).</span></span>
+- <span data-ttu-id="a8ba0-141">Další informace o hello [Microsoft Driver Node.js pro SQL Server](https://docs.microsoft.com/sql/connect/node-js/node-js-driver-for-sql-server/)</span><span class="sxs-lookup"><span data-stu-id="a8ba0-141">Learn about hello [Microsoft Node.js Driver for SQL Server](https://docs.microsoft.com/sql/connect/node-js/node-js-driver-for-sql-server/)</span></span>
+- <span data-ttu-id="a8ba0-142">Zjistěte, jak příliš[připojení a dotazování Azure SQL database pomocí .NET core](sql-database-connect-query-dotnet-core.md) v systému Windows nebo Linux/systému macOS.</span><span class="sxs-lookup"><span data-stu-id="a8ba0-142">Learn how too[connect and query an Azure SQL database using .NET core](sql-database-connect-query-dotnet-core.md) on Windows/Linux/macOS.</span></span>  
+- <span data-ttu-id="a8ba0-143">Další informace o [Začínáme s .NET Core v systému Windows nebo Linux/macOS hello příkazového řádku](/dotnet/core/tutorials/using-with-xplat-cli).</span><span class="sxs-lookup"><span data-stu-id="a8ba0-143">Learn about [Getting started with .NET Core on Windows/Linux/macOS using hello command line](/dotnet/core/tutorials/using-with-xplat-cli).</span></span>
+- <span data-ttu-id="a8ba0-144">Zjistěte, jak příliš[navrhnout první databáze Azure SQL pomocí aplikace SSMS](sql-database-design-first-database.md) nebo [navrhnout první databáze Azure SQL pomocí rozhraní .NET](sql-database-design-first-database-csharp.md).</span><span class="sxs-lookup"><span data-stu-id="a8ba0-144">Learn how too[Design your first Azure SQL database using SSMS](sql-database-design-first-database.md) or [Design your first Azure SQL database using .NET](sql-database-design-first-database-csharp.md).</span></span>
+- <span data-ttu-id="a8ba0-145">Zjistěte, jak příliš[připojit a zadávat dotazy pomocí SSMS](sql-database-connect-query-ssms.md)</span><span class="sxs-lookup"><span data-stu-id="a8ba0-145">Learn how too[Connect and query with SSMS](sql-database-connect-query-ssms.md)</span></span>
+- <span data-ttu-id="a8ba0-146">Zjistěte, jak příliš[připojit a zadávat dotazy s Visual Studio Code](sql-database-connect-query-vscode.md).</span><span class="sxs-lookup"><span data-stu-id="a8ba0-146">Learn how too[Connect and query with Visual Studio Code](sql-database-connect-query-vscode.md).</span></span>
 
 

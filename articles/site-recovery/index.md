@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace ke službě Azure Site Recovery – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se nastavit zotavení po havárii cloudu a provozní kontinuitu pro fyzické servery a virtuální počítače prostřednictvím nasazení a správy replikace."
+title: "aaaAzure dokumentace k obnovení lokality – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Zjistěte, jak tooset až cloudu po havárii obnovení a obchodní kontinuitu fyzických serverů a virtuálních počítačů pomocí nasazení a správy replikace."
 services: site-recovery
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 06/05/2017
 ms.author: carolz
-ms.openlocfilehash: ef7a25de4536cfd54331e1bce7d22f351768585c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 08c295488f2e9058922a495ffac24ee96f33fbda
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="site-recovery-documentation"></a>Dokumentace ke službě Site Recovery
 
-Zjistěte, jak můžete pomocí služby Site Recovery přispět ke strategii kontinuity podnikových procesů a zotavení po havárii a zajistit tak dostupnost aplikací a úloh během výpadků. Kurzy a další články ukazují, jak naplánovat, nasadit a spravovat replikaci, převzetí služeb při selhání a obnovení místních počítačů a virtuálních počítačů Azure.
+Zjistěte, jak toouse Site Recovery toocontribute tooyour obchodní kontinuitu a po havárii strategii zotavení, tookeep aplikace a úlohy zůstaly dostupné během výpadků. Kurzy a další články popisují, jak tooplan, nasazovat a spravovat hello replikace, převzetí služeb při selhání a obnovení místního počítače a virtuální počítače Azure.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -88,7 +88,7 @@ Zjistěte, jak můžete pomocí služby Site Recovery přispět ke strategii kon
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s replikací virtuálních počítačů Hyper-V do Azure (bez VMM)</h3>
+                        <h3>Začínáme s replikací tooAzure virtuálních počítačů Hyper-V (bez VMM)</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ Zjistěte, jak můžete pomocí služby Site Recovery přispět ke strategii kon
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s replikací virtuálních počítačů Hyper-V v cloudech VMM do Azure</h3>
+                        <h3>Začínáme s replikace virtuálních počítačů technologie Hyper-V v tooAzure cloudy VMM</h3>
                     </div>
                 </div>
             </div>

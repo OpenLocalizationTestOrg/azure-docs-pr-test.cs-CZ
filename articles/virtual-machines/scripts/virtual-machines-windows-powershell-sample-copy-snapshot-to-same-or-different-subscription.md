@@ -1,6 +1,6 @@
 ---
-title: "Azure ukázkový skript prostředí PowerShell - kopírování (přesunout) snímek spravovaných disků na stejný nebo jiný předplatné | Microsoft Docs"
-description: "Azure ukázkový skript prostředí PowerShell - kopírování (přesunout) snímek spravovaných disků na stejný nebo jiný odběr"
+title: "aaaAzure ukázka skriptu prostředí PowerShell - kopírování (přesunout) snímek toosame spravovaného disku nebo jiného předplatného | Microsoft Docs"
+description: "Azure ukázkový skript prostředí PowerShell - kopírování (přesunout) snímek toosame spravovaného disku nebo jiného předplatného"
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -15,39 +15,39 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: f7b4869669a2c5e840f9bd384dcd6d6096ba58e2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d7b8a71cc09d1950271f472e89b95bb551323be5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a><span data-ttu-id="19646-103">Kopírování snímku spravovaného disku v rámci stejného předplatného nebo jiného předplatného pomocí prostředí PowerShell</span><span class="sxs-lookup"><span data-stu-id="19646-103">Copy snapshot of a managed disk in same subscription or different subscription with PowerShell</span></span>
+# <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a><span data-ttu-id="5e2b0-103">Kopírování snímku spravovaného disku v rámci stejného předplatného nebo jiného předplatného pomocí prostředí PowerShell</span><span class="sxs-lookup"><span data-stu-id="5e2b0-103">Copy snapshot of a managed disk in same subscription or different subscription with PowerShell</span></span>
 
-<span data-ttu-id="19646-104">Tento skript vytvoří kopii snímku ve stejné stejného předplatného nebo jiné předplatné.</span><span class="sxs-lookup"><span data-stu-id="19646-104">This script creates a copy of a snapshot in the same same subscription or different subscription.</span></span> <span data-ttu-id="19646-105">Pomocí tohoto skriptu přesunout do jiného předplatného pro uchovávání dat snímku.</span><span class="sxs-lookup"><span data-stu-id="19646-105">Use this script to move a snapshot to different subscription for data retention.</span></span> <span data-ttu-id="19646-106">Ukládání snímků v jiném předplatném. můžete chránit před nechtěným odstraněním snímků ve vašem předplatném hlavní.</span><span class="sxs-lookup"><span data-stu-id="19646-106">Storing snapshots in different subscription protect you from accidental deletion of snapshots in your main subscription.</span></span> 
+<span data-ttu-id="5e2b0-104">Tento skript vytvoří kopii snímku v hello stejné předplatné stejné nebo jiné předplatné.</span><span class="sxs-lookup"><span data-stu-id="5e2b0-104">This script creates a copy of a snapshot in hello same same subscription or different subscription.</span></span> <span data-ttu-id="5e2b0-105">Pro uchovávání dat použijte tento skript toomove předplatné toodifferent snímku.</span><span class="sxs-lookup"><span data-stu-id="5e2b0-105">Use this script toomove a snapshot toodifferent subscription for data retention.</span></span> <span data-ttu-id="5e2b0-106">Ukládání snímků v jiném předplatném. můžete chránit před nechtěným odstraněním snímků ve vašem předplatném hlavní.</span><span class="sxs-lookup"><span data-stu-id="5e2b0-106">Storing snapshots in different subscription protect you from accidental deletion of snapshots in your main subscription.</span></span> 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a><span data-ttu-id="19646-107">Ukázkový skript</span><span class="sxs-lookup"><span data-stu-id="19646-107">Sample script</span></span>
+## <a name="sample-script"></a><span data-ttu-id="5e2b0-107">Ukázkový skript</span><span class="sxs-lookup"><span data-stu-id="5e2b0-107">Sample script</span></span>
 
-<span data-ttu-id="19646-108">[!code-powershell[hlavní](../../../powershell_scripts/virtual-machine/copy-snapshot-to-same-or-different-subscription/copy-snapshot-to-same-or-different-subscription.ps1 "kopírování snímku")]</span><span class="sxs-lookup"><span data-stu-id="19646-108">[!code-powershell[main](../../../powershell_scripts/virtual-machine/copy-snapshot-to-same-or-different-subscription/copy-snapshot-to-same-or-different-subscription.ps1 "Copy snapshot")]</span></span>
+[!code-powershell[main](../../../powershell_scripts/virtual-machine/copy-snapshot-to-same-or-different-subscription/copy-snapshot-to-same-or-different-subscription.ps1 "Copy snapshot")]
 
 
-## <a name="script-explanation"></a><span data-ttu-id="19646-109">Vysvětlení skriptu</span><span class="sxs-lookup"><span data-stu-id="19646-109">Script explanation</span></span>
+## <a name="script-explanation"></a><span data-ttu-id="5e2b0-108">Vysvětlení skriptu</span><span class="sxs-lookup"><span data-stu-id="5e2b0-108">Script explanation</span></span>
 
-<span data-ttu-id="19646-110">Tento skript používá následující příkazy pro vytvoření snímku v cílové předplatné pomocí Id zdrojové snímku.</span><span class="sxs-lookup"><span data-stu-id="19646-110">This script uses following commands to create a snapshot in the target subscription using the Id of the source snapshot.</span></span> <span data-ttu-id="19646-111">Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.</span><span class="sxs-lookup"><span data-stu-id="19646-111">Each command in the table links to command specific documentation.</span></span>
+<span data-ttu-id="5e2b0-109">Tento skript používá následující příkazy toocreate snímku hello cílové předplatné pomocí hello Id hello zdroj snímku.</span><span class="sxs-lookup"><span data-stu-id="5e2b0-109">This script uses following commands toocreate a snapshot in hello target subscription using hello Id of hello source snapshot.</span></span> <span data-ttu-id="5e2b0-110">Každý příkaz v hello tabulky odkazů toocommand konkrétní dokumentaci.</span><span class="sxs-lookup"><span data-stu-id="5e2b0-110">Each command in hello table links toocommand specific documentation.</span></span>
 
-| <span data-ttu-id="19646-112">Příkaz</span><span class="sxs-lookup"><span data-stu-id="19646-112">Command</span></span> | <span data-ttu-id="19646-113">Poznámky</span><span class="sxs-lookup"><span data-stu-id="19646-113">Notes</span></span> |
+| <span data-ttu-id="5e2b0-111">Příkaz</span><span class="sxs-lookup"><span data-stu-id="5e2b0-111">Command</span></span> | <span data-ttu-id="5e2b0-112">Poznámky</span><span class="sxs-lookup"><span data-stu-id="5e2b0-112">Notes</span></span> |
 |---|---|
-| [<span data-ttu-id="19646-114">Nové AzureRmSnapshotConfig</span><span class="sxs-lookup"><span data-stu-id="19646-114">New-AzureRmSnapshotConfig</span></span>](/powershell/module/azurerm.compute/New-AzureRmSnapshotConfig) | <span data-ttu-id="19646-115">Vytvoří snímek konfigurace, který se používá pro vytvoření snímku.</span><span class="sxs-lookup"><span data-stu-id="19646-115">Creates snapshot configuration that is used for snapshot creation.</span></span> <span data-ttu-id="19646-116">Obsahuje Id nadřazené snímku a umístění, která je stejná jako nadřazená snímku prostředku.</span><span class="sxs-lookup"><span data-stu-id="19646-116">It includes the resource Id of the parent snapshot and location that is same as the parent snapshot.</span></span>  |
-| [<span data-ttu-id="19646-117">Nové AzureRmSnapshot</span><span class="sxs-lookup"><span data-stu-id="19646-117">New-AzureRmSnapshot</span></span>](/powershell/module/azurerm.compute/New-AzureRmDisk) | <span data-ttu-id="19646-118">Vytvoří snímek pomocí snímek konfigurace, název snímku a předány jako parametry název skupiny prostředků.</span><span class="sxs-lookup"><span data-stu-id="19646-118">Creates a snapshot using snapshot configuration, snapshot name, and resource group name passed as parameters.</span></span> |
+| [<span data-ttu-id="5e2b0-113">Nové AzureRmSnapshotConfig</span><span class="sxs-lookup"><span data-stu-id="5e2b0-113">New-AzureRmSnapshotConfig</span></span>](/powershell/module/azurerm.compute/New-AzureRmSnapshotConfig) | <span data-ttu-id="5e2b0-114">Vytvoří snímek konfigurace, který se používá pro vytvoření snímku.</span><span class="sxs-lookup"><span data-stu-id="5e2b0-114">Creates snapshot configuration that is used for snapshot creation.</span></span> <span data-ttu-id="5e2b0-115">Obsahuje Id hello nadřazené snímku a umístění, které je stejné jako snímek nadřazené hello hello prostředku.</span><span class="sxs-lookup"><span data-stu-id="5e2b0-115">It includes hello resource Id of hello parent snapshot and location that is same as hello parent snapshot.</span></span>  |
+| [<span data-ttu-id="5e2b0-116">Nové AzureRmSnapshot</span><span class="sxs-lookup"><span data-stu-id="5e2b0-116">New-AzureRmSnapshot</span></span>](/powershell/module/azurerm.compute/New-AzureRmDisk) | <span data-ttu-id="5e2b0-117">Vytvoří snímek pomocí snímek konfigurace, název snímku a předány jako parametry název skupiny prostředků.</span><span class="sxs-lookup"><span data-stu-id="5e2b0-117">Creates a snapshot using snapshot configuration, snapshot name, and resource group name passed as parameters.</span></span> |
 
 
-## <a name="next-steps"></a><span data-ttu-id="19646-119">Další kroky</span><span class="sxs-lookup"><span data-stu-id="19646-119">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="5e2b0-118">Další kroky</span><span class="sxs-lookup"><span data-stu-id="5e2b0-118">Next steps</span></span>
 
-[<span data-ttu-id="19646-120">Vytvoření virtuálního počítače ze snímku</span><span class="sxs-lookup"><span data-stu-id="19646-120">Create a virtual machine from a snapshot</span></span>](./virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+[<span data-ttu-id="5e2b0-119">Vytvoření virtuálního počítače ze snímku</span><span class="sxs-lookup"><span data-stu-id="5e2b0-119">Create a virtual machine from a snapshot</span></span>](./virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-<span data-ttu-id="19646-121">Další informace o modulu Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="19646-121">For more information on the Azure PowerShell module, see [Azure PowerShell documentation](/powershell/azure/overview).</span></span>
+<span data-ttu-id="5e2b0-120">Další informace o modulu Azure PowerShell hello najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="5e2b0-120">For more information on hello Azure PowerShell module, see [Azure PowerShell documentation](/powershell/azure/overview).</span></span>
 
-<span data-ttu-id="19646-122">Ukázky skriptu PowerShell další virtuální počítač nachází v [virtuálního počítače Windows Azure dokumentaci](../../app-service-web/app-service-powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="19646-122">Additional virtual machine PowerShell script samples can be found in the [Azure Windows VM documentation](../../app-service-web/app-service-powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span>
+<span data-ttu-id="5e2b0-121">Ukázky skriptu PowerShell další virtuální počítač nachází v hello [virtuálního počítače Windows Azure dokumentaci](../../app-service-web/app-service-powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="5e2b0-121">Additional virtual machine PowerShell script samples can be found in hello [Azure Windows VM documentation](../../app-service-web/app-service-powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span>

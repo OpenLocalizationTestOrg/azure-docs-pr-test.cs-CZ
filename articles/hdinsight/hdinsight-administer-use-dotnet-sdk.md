@@ -1,6 +1,6 @@
 ---
-title: "Správa clusterů systému Hadoop v HDInsight pomocí .NET SDK - Azure | Microsoft Docs"
-description: "Zjistěte, jak k provádění úloh správy pro clusterů systému Hadoop v HDInsight pomocí sady .NET SDK HDInsight."
+title: "aaaManage Hadoop clusterů v HDInsight pomocí .NET SDK - Azure | Microsoft Docs"
+description: "Zjistěte, jak tooperform administrativní úlohy pro hello clusterů systému Hadoop v HDInsight pomocí sady .NET SDK HDInsight."
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -16,32 +16,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: c10471425fa1202ddb7fe35d0adf4ef33509f268
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d8bbf966b7eba3e943dfb2f764d15d8e52b9be71
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a><span data-ttu-id="d833c-103">Správa clusterů systému Hadoop v HDInsight pomocí sady .NET SDK</span><span class="sxs-lookup"><span data-stu-id="d833c-103">Manage Hadoop clusters in HDInsight by using .NET SDK</span></span>
+# <a name="manage-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a><span data-ttu-id="aaea6-103">Správa clusterů systému Hadoop v HDInsight pomocí sady .NET SDK</span><span class="sxs-lookup"><span data-stu-id="aaea6-103">Manage Hadoop clusters in HDInsight by using .NET SDK</span></span>
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-<span data-ttu-id="d833c-104">Zjistěte, jak Správa clusterů HDInsight pomocí [HDInsight.NET SDK](https://msdn.microsoft.com/library/mt271028.aspx).</span><span class="sxs-lookup"><span data-stu-id="d833c-104">Learn how to manage HDInsight clusters using [HDInsight.NET SDK](https://msdn.microsoft.com/library/mt271028.aspx).</span></span>
+<span data-ttu-id="aaea6-104">Zjistěte, jak toomanage HDInsight clusterů pomocí [HDInsight.NET SDK](https://msdn.microsoft.com/library/mt271028.aspx).</span><span class="sxs-lookup"><span data-stu-id="aaea6-104">Learn how toomanage HDInsight clusters using [HDInsight.NET SDK](https://msdn.microsoft.com/library/mt271028.aspx).</span></span>
 
-<span data-ttu-id="d833c-105">**Požadavky**</span><span class="sxs-lookup"><span data-stu-id="d833c-105">**Prerequisites**</span></span>
+<span data-ttu-id="aaea6-105">**Požadavky**</span><span class="sxs-lookup"><span data-stu-id="aaea6-105">**Prerequisites**</span></span>
 
-<span data-ttu-id="d833c-106">Je nutné, abyste před zahájením tohoto článku měli tyto položky:</span><span class="sxs-lookup"><span data-stu-id="d833c-106">Before you begin this article, you must have the following:</span></span>
+<span data-ttu-id="aaea6-106">Před zahájením tohoto článku, musíte mít následující hello:</span><span class="sxs-lookup"><span data-stu-id="aaea6-106">Before you begin this article, you must have hello following:</span></span>
 
-* <span data-ttu-id="d833c-107">**Předplatné Azure**.</span><span class="sxs-lookup"><span data-stu-id="d833c-107">**An Azure subscription**.</span></span> <span data-ttu-id="d833c-108">Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).</span><span class="sxs-lookup"><span data-stu-id="d833c-108">See [Get Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).</span></span>
+* <span data-ttu-id="aaea6-107">**Předplatné Azure**.</span><span class="sxs-lookup"><span data-stu-id="aaea6-107">**An Azure subscription**.</span></span> <span data-ttu-id="aaea6-108">Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).</span><span class="sxs-lookup"><span data-stu-id="aaea6-108">See [Get Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).</span></span>
 
-## <a name="connect-to-azure-hdinsight"></a><span data-ttu-id="d833c-109">Připojení k Azure HDInsight</span><span class="sxs-lookup"><span data-stu-id="d833c-109">Connect to Azure HDInsight</span></span>
+## <a name="connect-tooazure-hdinsight"></a><span data-ttu-id="aaea6-109">Připojit tooAzure HDInsight</span><span class="sxs-lookup"><span data-stu-id="aaea6-109">Connect tooAzure HDInsight</span></span>
 
-<span data-ttu-id="d833c-110">Budete potřebovat následující balíčky Nuget:</span><span class="sxs-lookup"><span data-stu-id="d833c-110">You need the following Nuget packages:</span></span>
+<span data-ttu-id="aaea6-110">Je třeba hello následující balíčky Nuget:</span><span class="sxs-lookup"><span data-stu-id="aaea6-110">You need hello following Nuget packages:</span></span>
 
     Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
     Install-Package Microsoft.Azure.Management.ResourceManager -Pre
     Install-Package Microsoft.Azure.Management.HDInsight
 
-<span data-ttu-id="d833c-111">Následující příklad kódu ukazuje, jak se připojit k Azure, než budete moct spravovat clustery HDInsight v rámci vašeho předplatného Azure.</span><span class="sxs-lookup"><span data-stu-id="d833c-111">The following code sample shows you how to connect to Azure before you can administer HDInsight clusters under your Azure subscription.</span></span>
+<span data-ttu-id="aaea6-111">Hello následující příklad kódu ukazuje, jak tooconnect tooAzure než budete moct spravovat HDInsight clustery v rámci vašeho předplatného Azure.</span><span class="sxs-lookup"><span data-stu-id="aaea6-111">hello following code sample shows you how tooconnect tooAzure before you can administer HDInsight clusters under your Azure subscription.</span></span>
 
     using System;
     using Microsoft.Azure;
@@ -60,7 +60,7 @@ ms.lasthandoff: 07/11/2017
             // Replace with your AAD tenant ID if necessary
             private const string TenantId = UserTokenProvider.CommonTenantId; 
             private const string SubscriptionId = "<Your Azure Subscription ID>";
-            // This is the GUID for the PowerShell client. Used for interactive logins in this example.
+            // This is hello GUID for hello PowerShell client. Used for interactive logins in this example.
             private const string ClientId = "1950a258-227b-4e31-a9cf-717495945fc2";
 
             static void Main(string[] args)
@@ -74,12 +74,12 @@ ms.lasthandoff: 07/11/2017
 
                 // insert code here
 
-                System.Console.WriteLine("Press ENTER to continue");
+                System.Console.WriteLine("Press ENTER toocontinue");
                 System.Console.ReadLine();
             }
 
             /// <summary>
-            /// Authenticate to an Azure subscription and retrieve an authentication token
+            /// Authenticate tooan Azure subscription and retrieve an authentication token
             /// </summary>
             static TokenCloudCredentials Authenticate(string TenantId, string ClientId, string SubscriptionId)
             {
@@ -99,22 +99,22 @@ ms.lasthandoff: 07/11/2017
             /// <param name="authToken">An authentication token for your Azure subscription</param>
             static void EnableHDInsight(TokenCloudCredentials authToken)
             {
-                // Create a client for the Resource manager and set the subscription ID
+                // Create a client for hello Resource manager and set hello subscription ID
                 var resourceManagementClient = new ResourceManagementClient(new TokenCredentials(authToken.Token));
                 resourceManagementClient.SubscriptionId = SubscriptionId;
-                // Register the HDInsight provider
+                // Register hello HDInsight provider
                 var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");
             }
         }
     }
 
-<span data-ttu-id="d833c-112">Zobrazí se výzva a při spuštění tohoto programu.</span><span class="sxs-lookup"><span data-stu-id="d833c-112">You shall see a prompt when you run this program.</span></span>  <span data-ttu-id="d833c-113">Pokud nechcete zobrazí výzva, přečtěte si téma [vytvořit neinteraktivního ověřování aplikace .NET HDInsight](hdinsight-create-non-interactive-authentication-dotnet-applications.md).</span><span class="sxs-lookup"><span data-stu-id="d833c-113">If you don't want to see the prompt, see [Create non-interactive authentication .NET HDInsight applications](hdinsight-create-non-interactive-authentication-dotnet-applications.md).</span></span>
+<span data-ttu-id="aaea6-112">Zobrazí se výzva a při spuštění tohoto programu.</span><span class="sxs-lookup"><span data-stu-id="aaea6-112">You shall see a prompt when you run this program.</span></span>  <span data-ttu-id="aaea6-113">Pokud nechcete, aby toosee hello řádku, přečtěte si téma [vytvořit neinteraktivního ověřování aplikace .NET HDInsight](hdinsight-create-non-interactive-authentication-dotnet-applications.md).</span><span class="sxs-lookup"><span data-stu-id="aaea6-113">If you don't want toosee hello prompt, see [Create non-interactive authentication .NET HDInsight applications](hdinsight-create-non-interactive-authentication-dotnet-applications.md).</span></span>
 
-## <a name="create-clusters"></a><span data-ttu-id="d833c-114">Vytváření clusterů</span><span class="sxs-lookup"><span data-stu-id="d833c-114">Create clusters</span></span>
-<span data-ttu-id="d833c-115">V tématu [vytvořit systémem Linux clusterů v HDInsight pomocí sady .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)</span><span class="sxs-lookup"><span data-stu-id="d833c-115">See [Create Linux-based clusters in HDInsight using the .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)</span></span>
+## <a name="create-clusters"></a><span data-ttu-id="aaea6-114">Vytváření clusterů</span><span class="sxs-lookup"><span data-stu-id="aaea6-114">Create clusters</span></span>
+<span data-ttu-id="aaea6-115">V tématu [hello vytvořit systémem Linux clusterů v HDInsight pomocí sady .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)</span><span class="sxs-lookup"><span data-stu-id="aaea6-115">See [Create Linux-based clusters in HDInsight using hello .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)</span></span>
 
-## <a name="list-clusters"></a><span data-ttu-id="d833c-116">Seznam clustery</span><span class="sxs-lookup"><span data-stu-id="d833c-116">List clusters</span></span>
-<span data-ttu-id="d833c-117">Následující fragment kódu obsahuje clustery a některé vlastnosti:</span><span class="sxs-lookup"><span data-stu-id="d833c-117">The following code snippet lists clusters and some properties:</span></span>
+## <a name="list-clusters"></a><span data-ttu-id="aaea6-116">Seznam clustery</span><span class="sxs-lookup"><span data-stu-id="aaea6-116">List clusters</span></span>
+<span data-ttu-id="aaea6-117">Hello následující fragment kódu obsahuje clustery a některé vlastnosti:</span><span class="sxs-lookup"><span data-stu-id="aaea6-117">hello following code snippet lists clusters and some properties:</span></span>
 
     var results = _hdiManagementClient.Clusters.List();
     foreach (var name in results.Clusters) {
@@ -124,72 +124,72 @@ ms.lasthandoff: 07/11/2017
         Console.WriteLine("\t Cluster version: " + name.Properties.ClusterVersion);
     }
 
-## <a name="delete-clusters"></a><span data-ttu-id="d833c-118">Odstranění clusterů</span><span class="sxs-lookup"><span data-stu-id="d833c-118">Delete clusters</span></span>
-<span data-ttu-id="d833c-119">Pomocí následující fragment kódu můžete odstranit cluster synchronně nebo asynchronně:</span><span class="sxs-lookup"><span data-stu-id="d833c-119">Use the following code snippet to delete a cluster synchronously or asynchronously:</span></span> 
+## <a name="delete-clusters"></a><span data-ttu-id="aaea6-118">Odstranění clusterů</span><span class="sxs-lookup"><span data-stu-id="aaea6-118">Delete clusters</span></span>
+<span data-ttu-id="aaea6-119">Použijte následující toodelete fragmentu kódu cluster synchronně nebo asynchronně hello:</span><span class="sxs-lookup"><span data-stu-id="aaea6-119">Use hello following code snippet toodelete a cluster synchronously or asynchronously:</span></span> 
 
     _hdiManagementClient.Clusters.Delete("<Resource Group Name>", "<Cluster Name>");
     _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Name>");
 
-## <a name="scale-clusters"></a><span data-ttu-id="d833c-120">Škálování clusterů</span><span class="sxs-lookup"><span data-stu-id="d833c-120">Scale clusters</span></span>
-<span data-ttu-id="d833c-121">Funkce škálování clusteru umožňuje změnit počet uzlů pracovního procesu používá cluster, který běží v Azure HDInsight bez nutnosti znovu vytvořit cluster.</span><span class="sxs-lookup"><span data-stu-id="d833c-121">The cluster scaling feature allows you to change the number of worker nodes used by a cluster that is running in Azure HDInsight without having to re-create the cluster.</span></span>
+## <a name="scale-clusters"></a><span data-ttu-id="aaea6-120">Škálování clusterů</span><span class="sxs-lookup"><span data-stu-id="aaea6-120">Scale clusters</span></span>
+<span data-ttu-id="aaea6-121">Hello clusteru škálování funkce vám umožní toochange hello počet uzlů pracovního procesu používá cluster, který běží v Azure HDInsight bez nutnosti toore – vytvoření clusteru hello.</span><span class="sxs-lookup"><span data-stu-id="aaea6-121">hello cluster scaling feature allows you toochange hello number of worker nodes used by a cluster that is running in Azure HDInsight without having toore-create hello cluster.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="d833c-122">Pouze clustery s HDInsight verze 3.1.3 nebo vyšší nejsou podporovány.</span><span class="sxs-lookup"><span data-stu-id="d833c-122">Only clusters with HDInsight version 3.1.3 or higher are supported.</span></span> <span data-ttu-id="d833c-123">Pokud si nejste jistí na verzi vašeho clusteru, můžete zkontrolovat stránku vlastností.</span><span class="sxs-lookup"><span data-stu-id="d833c-123">If you are unsure of the version of your cluster, you can check the Properties page.</span></span>  <span data-ttu-id="d833c-124">V tématu [seznamu a zobrazit clustery](hdinsight-administer-use-portal-linux.md#list-and-show-clusters).</span><span class="sxs-lookup"><span data-stu-id="d833c-124">See [List and show clusters](hdinsight-administer-use-portal-linux.md#list-and-show-clusters).</span></span>
+> <span data-ttu-id="aaea6-122">Pouze clustery s HDInsight verze 3.1.3 nebo vyšší nejsou podporovány.</span><span class="sxs-lookup"><span data-stu-id="aaea6-122">Only clusters with HDInsight version 3.1.3 or higher are supported.</span></span> <span data-ttu-id="aaea6-123">Pokud si nejste jistí hello verze vašeho clusteru, můžete zkontrolovat hello stránku vlastností.</span><span class="sxs-lookup"><span data-stu-id="aaea6-123">If you are unsure of hello version of your cluster, you can check hello Properties page.</span></span>  <span data-ttu-id="aaea6-124">V tématu [seznamu a zobrazit clustery](hdinsight-administer-use-portal-linux.md#list-and-show-clusters).</span><span class="sxs-lookup"><span data-stu-id="aaea6-124">See [List and show clusters](hdinsight-administer-use-portal-linux.md#list-and-show-clusters).</span></span>
 > 
 > 
 
-<span data-ttu-id="d833c-125">Dopad změny v počtu uzlů dat pro každý typ clusteru podporuje HDInsight:</span><span class="sxs-lookup"><span data-stu-id="d833c-125">The impact of changing the number of data nodes for each type of cluster supported by HDInsight:</span></span>
+<span data-ttu-id="aaea6-125">Hello dopad změny hello počet uzlů dat pro každý typ clusteru podporuje HDInsight:</span><span class="sxs-lookup"><span data-stu-id="aaea6-125">hello impact of changing hello number of data nodes for each type of cluster supported by HDInsight:</span></span>
 
-* <span data-ttu-id="d833c-126">Hadoop</span><span class="sxs-lookup"><span data-stu-id="d833c-126">Hadoop</span></span>
+* <span data-ttu-id="aaea6-126">Hadoop</span><span class="sxs-lookup"><span data-stu-id="aaea6-126">Hadoop</span></span>
   
-    <span data-ttu-id="d833c-127">Můžete bez problémů zvýšit počet uzlů pracovního procesu v clusteru Hadoop, který běží bez dopadu na všechny úlohy čekající na vyřízení nebo spuštěné.</span><span class="sxs-lookup"><span data-stu-id="d833c-127">You can seamlessly increase the number of worker nodes in a Hadoop cluster that is running without impacting any pending or running jobs.</span></span> <span data-ttu-id="d833c-128">Nové úlohy můžete také odeslány, když probíhá operace.</span><span class="sxs-lookup"><span data-stu-id="d833c-128">New jobs can also be submitted while the operation is in progress.</span></span> <span data-ttu-id="d833c-129">Selhání v rámci operace škálování pohodlné zpracování tak, aby cluster zůstane vždy ve funkčním stavu.</span><span class="sxs-lookup"><span data-stu-id="d833c-129">Failures in a scaling operation are gracefully handled so that the cluster is always left in a functional state.</span></span>
+    <span data-ttu-id="aaea6-127">Můžete zvýšit bezproblémově hello počet uzlů pracovního procesu v clusteru Hadoop, který běží bez dopadu na všechny úlohy čekající na vyřízení nebo spuštěné.</span><span class="sxs-lookup"><span data-stu-id="aaea6-127">You can seamlessly increase hello number of worker nodes in a Hadoop cluster that is running without impacting any pending or running jobs.</span></span> <span data-ttu-id="aaea6-128">Nové úlohy můžete také odeslány, když probíhá operace hello.</span><span class="sxs-lookup"><span data-stu-id="aaea6-128">New jobs can also be submitted while hello operation is in progress.</span></span> <span data-ttu-id="aaea6-129">Selhání v rámci operace škálování pohodlné zpracování tak, aby hello clusteru vždy zůstává ve funkčním stavu.</span><span class="sxs-lookup"><span data-stu-id="aaea6-129">Failures in a scaling operation are gracefully handled so that hello cluster is always left in a functional state.</span></span>
   
-    <span data-ttu-id="d833c-130">Pokud se Hadoop cluster měřítko snížením počtu uzlů data, některé služby v clusteru restartovat.</span><span class="sxs-lookup"><span data-stu-id="d833c-130">When a Hadoop cluster is scaled down by reducing the number of data nodes, some of the services in the cluster are restarted.</span></span> <span data-ttu-id="d833c-131">To způsobí, že všechny spuštěné a čeká se na úlohy selhání po dokončení operace škálování.</span><span class="sxs-lookup"><span data-stu-id="d833c-131">This causes all running and pending jobs to fail at the completion of the scaling operation.</span></span> <span data-ttu-id="d833c-132">Můžete, ale odešlete znovu úloh po dokončení operace.</span><span class="sxs-lookup"><span data-stu-id="d833c-132">You can, however, resubmit the jobs once the operation is complete.</span></span>
-* <span data-ttu-id="d833c-133">HBase</span><span class="sxs-lookup"><span data-stu-id="d833c-133">HBase</span></span>
+    <span data-ttu-id="aaea6-130">Pokud se Hadoop cluster měřítko snížením hello počet uzlů data, některé služby hello v clusteru hello restartovat.</span><span class="sxs-lookup"><span data-stu-id="aaea6-130">When a Hadoop cluster is scaled down by reducing hello number of data nodes, some of hello services in hello cluster are restarted.</span></span> <span data-ttu-id="aaea6-131">To způsobí, že všechny spuštěné a čeká se na úlohy toofail na dokončení hello hello operace škálování.</span><span class="sxs-lookup"><span data-stu-id="aaea6-131">This causes all running and pending jobs toofail at hello completion of hello scaling operation.</span></span> <span data-ttu-id="aaea6-132">Po dokončení operace hello může, ale odešlete znovu hello úlohy.</span><span class="sxs-lookup"><span data-stu-id="aaea6-132">You can, however, resubmit hello jobs once hello operation is complete.</span></span>
+* <span data-ttu-id="aaea6-133">HBase</span><span class="sxs-lookup"><span data-stu-id="aaea6-133">HBase</span></span>
   
-    <span data-ttu-id="d833c-134">Bezproblémově můžete přidávat nebo odebírat uzly do clusteru HBase, když je spuštěná.</span><span class="sxs-lookup"><span data-stu-id="d833c-134">You can seamlessly add or remove nodes to your HBase cluster while it is running.</span></span> <span data-ttu-id="d833c-135">Místní servery jsou automaticky vyváženy během několika minut po dokončení operace škálování.</span><span class="sxs-lookup"><span data-stu-id="d833c-135">Regional Servers are automatically balanced within a few minutes of completing the scaling operation.</span></span> <span data-ttu-id="d833c-136">Protokolování do headnode clusteru a spuštěním následujících příkazů z okna příkazového řádku však můžete také ručně vyvážit místní servery:</span><span class="sxs-lookup"><span data-stu-id="d833c-136">However, you can also manually balance the regional servers by logging into the headnode of cluster and running the following commands from a command prompt window:</span></span>
+    <span data-ttu-id="aaea6-134">Můžete bezproblémově přidat nebo odebrat uzly clusteru HBase tooyour, když je spuštěná.</span><span class="sxs-lookup"><span data-stu-id="aaea6-134">You can seamlessly add or remove nodes tooyour HBase cluster while it is running.</span></span> <span data-ttu-id="aaea6-135">Místní servery jsou automaticky vyváženy během několika minut od hello operace škálování.</span><span class="sxs-lookup"><span data-stu-id="aaea6-135">Regional Servers are automatically balanced within a few minutes of completing hello scaling operation.</span></span> <span data-ttu-id="aaea6-136">Po přihlášení do hello headnode clusteru a spuštěné hello následujících příkazů z okna příkazového řádku však můžete také ručně vyvážit hello místní servery:</span><span class="sxs-lookup"><span data-stu-id="aaea6-136">However, you can also manually balance hello regional servers by logging into hello headnode of cluster and running hello following commands from a command prompt window:</span></span>
   
         >pushd %HBASE_HOME%\bin
         >hbase shell
         >balancer
-* <span data-ttu-id="d833c-137">Storm</span><span class="sxs-lookup"><span data-stu-id="d833c-137">Storm</span></span>
+* <span data-ttu-id="aaea6-137">Storm</span><span class="sxs-lookup"><span data-stu-id="aaea6-137">Storm</span></span>
   
-    <span data-ttu-id="d833c-138">Můžete bezproblémově přidávat nebo odebírat uzly dat do clusteru Storm, když je spuštěná.</span><span class="sxs-lookup"><span data-stu-id="d833c-138">You can seamlessly add or remove data nodes to your Storm cluster while it is running.</span></span> <span data-ttu-id="d833c-139">Ale po úspěšném dokončení operace škálování, budete muset znovu vyvážit topologii.</span><span class="sxs-lookup"><span data-stu-id="d833c-139">But after a successful completion of the scaling operation, you will need to rebalance the topology.</span></span>
+    <span data-ttu-id="aaea6-138">Můžete bez problémů přidat nebo odebrat cluster Storm tooyour uzly dat je spuštěna.</span><span class="sxs-lookup"><span data-stu-id="aaea6-138">You can seamlessly add or remove data nodes tooyour Storm cluster while it is running.</span></span> <span data-ttu-id="aaea6-139">Ale po úspěšném dokončení hello operace škálování, budete potřebovat toorebalance hello topologie.</span><span class="sxs-lookup"><span data-stu-id="aaea6-139">But after a successful completion of hello scaling operation, you will need toorebalance hello topology.</span></span>
   
-    <span data-ttu-id="d833c-140">Vyrovnává lze dosáhnout dvěma způsoby:</span><span class="sxs-lookup"><span data-stu-id="d833c-140">Rebalancing can be accomplished in two ways:</span></span>
+    <span data-ttu-id="aaea6-140">Vyrovnává lze dosáhnout dvěma způsoby:</span><span class="sxs-lookup"><span data-stu-id="aaea6-140">Rebalancing can be accomplished in two ways:</span></span>
   
-  * <span data-ttu-id="d833c-141">Storm webového uživatelského rozhraní</span><span class="sxs-lookup"><span data-stu-id="d833c-141">Storm web UI</span></span>
-  * <span data-ttu-id="d833c-142">Nástroj pro rozhraní příkazového řádku (CLI)</span><span class="sxs-lookup"><span data-stu-id="d833c-142">Command-line interface (CLI) tool</span></span>
+  * <span data-ttu-id="aaea6-141">Storm webového uživatelského rozhraní</span><span class="sxs-lookup"><span data-stu-id="aaea6-141">Storm web UI</span></span>
+  * <span data-ttu-id="aaea6-142">Nástroj pro rozhraní příkazového řádku (CLI)</span><span class="sxs-lookup"><span data-stu-id="aaea6-142">Command-line interface (CLI) tool</span></span>
     
-    <span data-ttu-id="d833c-143">Podrobnosti najdete [dokumentaci Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) další podrobnosti.</span><span class="sxs-lookup"><span data-stu-id="d833c-143">Please refer to the [Apache Storm documentation](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) for more details.</span></span>
+    <span data-ttu-id="aaea6-143">Podrobnosti najdete toohello [dokumentaci Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) další podrobnosti.</span><span class="sxs-lookup"><span data-stu-id="aaea6-143">Please refer toohello [Apache Storm documentation](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) for more details.</span></span>
     
-    <span data-ttu-id="d833c-144">Uživatelské rozhraní Storm webu je k dispozici v clusteru HDInsight:</span><span class="sxs-lookup"><span data-stu-id="d833c-144">The Storm web UI is available on the HDInsight cluster:</span></span>
+    <span data-ttu-id="aaea6-144">Hello Storm webového uživatelského rozhraní není k dispozici v clusteru HDInsight hello:</span><span class="sxs-lookup"><span data-stu-id="aaea6-144">hello Storm web UI is available on hello HDInsight cluster:</span></span>
     
     ![Obnovte rovnováhu škálování Storm v HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight-portal-scale-cluster-storm-rebalance.png)
     
-    <span data-ttu-id="d833c-146">Tady je příklad jak znovu vyvážit topologie Storm pomocí rozhraní příkazového řádku příkaz:</span><span class="sxs-lookup"><span data-stu-id="d833c-146">Here is an example how to use the CLI command to rebalance the Storm topology:</span></span>
+    <span data-ttu-id="aaea6-146">Tady je příklad jak toouse hello rozhraní příkazového řádku příkaz topologie Storm toorebalance hello:</span><span class="sxs-lookup"><span data-stu-id="aaea6-146">Here is an example how toouse hello CLI command toorebalance hello Storm topology:</span></span>
     
-        ## Reconfigure the topology "mytopology" to use 5 worker processes,
-        ## the spout "blue-spout" to use 3 executors, and
-        ## the bolt "yellow-bolt" to use 10 executors
+        ## Reconfigure hello topology "mytopology" toouse 5 worker processes,
+        ## hello spout "blue-spout" toouse 3 executors, and
+        ## hello bolt "yellow-bolt" toouse 10 executors
         $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
 
-<span data-ttu-id="d833c-147">Následující fragment kódu ukazuje, jak změnit velikost clusteru s podporou synchronně nebo asynchronně:</span><span class="sxs-lookup"><span data-stu-id="d833c-147">The following code snippet shows how to resize a cluster synchronously or asynchronously:</span></span>
+<span data-ttu-id="aaea6-147">Následující kód fragment kódu ukazuje, jak Hello tooresize cluster synchronně nebo asynchronně:</span><span class="sxs-lookup"><span data-stu-id="aaea6-147">hello following code snippet shows how tooresize a cluster synchronously or asynchronously:</span></span>
 
     _hdiManagementClient.Clusters.Resize("<Resource Group Name>", "<Cluster Name>", <New Size>);   
     _hdiManagementClient.Clusters.ResizeAsync("<Resource Group Name>", "<Cluster Name>", <New Size>);   
 
 
-## <a name="grantrevoke-access"></a><span data-ttu-id="d833c-148">Udělení nebo odvolání přístupu</span><span class="sxs-lookup"><span data-stu-id="d833c-148">Grant/revoke access</span></span>
-<span data-ttu-id="d833c-149">Clustery HDInsight mají následující webové služby HTTP (všechny tyto služby mají RESTful koncových bodů):</span><span class="sxs-lookup"><span data-stu-id="d833c-149">HDInsight clusters have the following HTTP web services (all of these services have RESTful endpoints):</span></span>
+## <a name="grantrevoke-access"></a><span data-ttu-id="aaea6-148">Udělení nebo odvolání přístupu</span><span class="sxs-lookup"><span data-stu-id="aaea6-148">Grant/revoke access</span></span>
+<span data-ttu-id="aaea6-149">Clustery HDInsight mít hello následující HTTP webové služby (všechny tyto služby mají RESTful koncových bodů):</span><span class="sxs-lookup"><span data-stu-id="aaea6-149">HDInsight clusters have hello following HTTP web services (all of these services have RESTful endpoints):</span></span>
 
-* <span data-ttu-id="d833c-150">ODBC</span><span class="sxs-lookup"><span data-stu-id="d833c-150">ODBC</span></span>
-* <span data-ttu-id="d833c-151">JDBC</span><span class="sxs-lookup"><span data-stu-id="d833c-151">JDBC</span></span>
-* <span data-ttu-id="d833c-152">Ambari</span><span class="sxs-lookup"><span data-stu-id="d833c-152">Ambari</span></span>
-* <span data-ttu-id="d833c-153">Oozie</span><span class="sxs-lookup"><span data-stu-id="d833c-153">Oozie</span></span>
-* <span data-ttu-id="d833c-154">Templeton</span><span class="sxs-lookup"><span data-stu-id="d833c-154">Templeton</span></span>
+* <span data-ttu-id="aaea6-150">ODBC</span><span class="sxs-lookup"><span data-stu-id="aaea6-150">ODBC</span></span>
+* <span data-ttu-id="aaea6-151">JDBC</span><span class="sxs-lookup"><span data-stu-id="aaea6-151">JDBC</span></span>
+* <span data-ttu-id="aaea6-152">Ambari</span><span class="sxs-lookup"><span data-stu-id="aaea6-152">Ambari</span></span>
+* <span data-ttu-id="aaea6-153">Oozie</span><span class="sxs-lookup"><span data-stu-id="aaea6-153">Oozie</span></span>
+* <span data-ttu-id="aaea6-154">Templeton</span><span class="sxs-lookup"><span data-stu-id="aaea6-154">Templeton</span></span>
 
-<span data-ttu-id="d833c-155">Ve výchozím nastavení jsou tyto služby oprávnění pro přístup.</span><span class="sxs-lookup"><span data-stu-id="d833c-155">By default, these services are granted for access.</span></span> <span data-ttu-id="d833c-156">Vám může odvolání nebo udělit přístup.</span><span class="sxs-lookup"><span data-stu-id="d833c-156">You can revoke/grant the access.</span></span> <span data-ttu-id="d833c-157">K odvolání:</span><span class="sxs-lookup"><span data-stu-id="d833c-157">To revoke:</span></span>
+<span data-ttu-id="aaea6-155">Ve výchozím nastavení jsou tyto služby oprávnění pro přístup.</span><span class="sxs-lookup"><span data-stu-id="aaea6-155">By default, these services are granted for access.</span></span> <span data-ttu-id="aaea6-156">Můžete můžete odvolat nebo udělit přístup hello.</span><span class="sxs-lookup"><span data-stu-id="aaea6-156">You can revoke/grant hello access.</span></span> <span data-ttu-id="aaea6-157">toorevoke:</span><span class="sxs-lookup"><span data-stu-id="aaea6-157">toorevoke:</span></span>
 
     var httpParams = new HttpSettingsParameters
     {
@@ -199,7 +199,7 @@ ms.lasthandoff: 07/11/2017
     };
     _hdiManagementClient.Clusters.ConfigureHttpSettings("<Resource Group Name>, <Cluster Name>, httpParams);
 
-<span data-ttu-id="d833c-158">Udělit:</span><span class="sxs-lookup"><span data-stu-id="d833c-158">To grant:</span></span>
+<span data-ttu-id="aaea6-158">toogrant:</span><span class="sxs-lookup"><span data-stu-id="aaea6-158">toogrant:</span></span>
 
     var httpParams = new HttpSettingsParameters
     {
@@ -211,17 +211,17 @@ ms.lasthandoff: 07/11/2017
 
 
 > [!NOTE]
-> <span data-ttu-id="d833c-159">Pomocí udělení nebo odvolání přístupu, obnoví clusteru uživatelské jméno a heslo.</span><span class="sxs-lookup"><span data-stu-id="d833c-159">By granting/revoking the access, you will reset the cluster user name and password.</span></span>
+> <span data-ttu-id="aaea6-159">Pomocí udělení nebo odvolání přístupu hello, obnoví hello clusteru uživatelské jméno a heslo.</span><span class="sxs-lookup"><span data-stu-id="aaea6-159">By granting/revoking hello access, you will reset hello cluster user name and password.</span></span>
 > 
 > 
 
-<span data-ttu-id="d833c-160">To lze provést také prostřednictvím portálu.</span><span class="sxs-lookup"><span data-stu-id="d833c-160">This can also be done via the Portal.</span></span> <span data-ttu-id="d833c-161">V tématu [spravovat HDInsight pomocí portálu Azure][hdinsight-admin-portal].</span><span class="sxs-lookup"><span data-stu-id="d833c-161">See [Administer HDInsight by using the Azure portal][hdinsight-admin-portal].</span></span>
+<span data-ttu-id="aaea6-160">To lze provést také prostřednictvím hello portálu.</span><span class="sxs-lookup"><span data-stu-id="aaea6-160">This can also be done via hello Portal.</span></span> <span data-ttu-id="aaea6-161">V tématu [hello spravovat HDInsight pomocí portálu Azure][hdinsight-admin-portal].</span><span class="sxs-lookup"><span data-stu-id="aaea6-161">See [Administer HDInsight by using hello Azure portal][hdinsight-admin-portal].</span></span>
 
-## <a name="update-http-user-credentials"></a><span data-ttu-id="d833c-162">Aktualizovat pověření uživatele HTTP</span><span class="sxs-lookup"><span data-stu-id="d833c-162">Update HTTP user credentials</span></span>
-<span data-ttu-id="d833c-163">Je stejným způsobem jako [HTTP udělení nebo odvolání přístupu](#grant/revoke-access). Pokud cluster byl přidělen přístup protokolu HTTP, musí se nejdřív odvolat.</span><span class="sxs-lookup"><span data-stu-id="d833c-163">It is the same procedure as [Grant/revoke HTTP access](#grant/revoke-access).If the cluster has been granted the HTTP access, you must first revoke it.</span></span>  <span data-ttu-id="d833c-164">A pak udělují přístup s novými pověřeními uživatele HTTP.</span><span class="sxs-lookup"><span data-stu-id="d833c-164">And then grant the access with new HTTP user credentials.</span></span>
+## <a name="update-http-user-credentials"></a><span data-ttu-id="aaea6-162">Aktualizovat pověření uživatele HTTP</span><span class="sxs-lookup"><span data-stu-id="aaea6-162">Update HTTP user credentials</span></span>
+<span data-ttu-id="aaea6-163">Je hello stejný postup jako [HTTP udělení nebo odvolání přístupu](#grant/revoke-access). Pokud hello clusteru byla udělena hello přístup protokolu HTTP, musí se nejdřív odvolat.</span><span class="sxs-lookup"><span data-stu-id="aaea6-163">It is hello same procedure as [Grant/revoke HTTP access](#grant/revoke-access).If hello cluster has been granted hello HTTP access, you must first revoke it.</span></span>  <span data-ttu-id="aaea6-164">A pak udělují přístup hello s novými pověřeními uživatele HTTP.</span><span class="sxs-lookup"><span data-stu-id="aaea6-164">And then grant hello access with new HTTP user credentials.</span></span>
 
-## <a name="find-the-default-storage-account"></a><span data-ttu-id="d833c-165">Najít výchozí účet úložiště</span><span class="sxs-lookup"><span data-stu-id="d833c-165">Find the default storage account</span></span>
-<span data-ttu-id="d833c-166">Následující fragment kódu ukazuje, jak získat výchozí název účtu úložiště a výchozí klíč účtu úložiště pro cluster.</span><span class="sxs-lookup"><span data-stu-id="d833c-166">The following code snippet demonstrates how to get the default storage account name and the default storage account key for a cluster.</span></span>
+## <a name="find-hello-default-storage-account"></a><span data-ttu-id="aaea6-165">Najít hello výchozí účet úložiště</span><span class="sxs-lookup"><span data-stu-id="aaea6-165">Find hello default storage account</span></span>
+<span data-ttu-id="aaea6-166">Hello následující fragment kódu ukazuje, jak tooget hello výchozí název účtu úložiště a hello výchozí klíč účtu úložiště pro cluster.</span><span class="sxs-lookup"><span data-stu-id="aaea6-166">hello following code snippet demonstrates how tooget hello default storage account name and hello default storage account key for a cluster.</span></span>
 
     var results = _hdiManagementClient.Clusters.GetClusterConfigurations(<Resource Group Name>, <Cluster Name>, "core-site");
     foreach (var key in results.Configuration.Keys)
@@ -230,37 +230,37 @@ ms.lasthandoff: 07/11/2017
     }
 
 
-## <a name="submit-jobs"></a><span data-ttu-id="d833c-167">Odesílání úloh</span><span class="sxs-lookup"><span data-stu-id="d833c-167">Submit jobs</span></span>
-<span data-ttu-id="d833c-168">**K odesílání úloh MapReduce**</span><span class="sxs-lookup"><span data-stu-id="d833c-168">**To submit MapReduce jobs**</span></span>
+## <a name="submit-jobs"></a><span data-ttu-id="aaea6-167">Odesílání úloh</span><span class="sxs-lookup"><span data-stu-id="aaea6-167">Submit jobs</span></span>
+<span data-ttu-id="aaea6-168">**úlohy MapReduce toosubmit**</span><span class="sxs-lookup"><span data-stu-id="aaea6-168">**toosubmit MapReduce jobs**</span></span>
 
-<span data-ttu-id="d833c-169">V tématu [ukázky spustit Hadoop MapReduce v HDInsight](hdinsight-hadoop-run-samples-linux.md).</span><span class="sxs-lookup"><span data-stu-id="d833c-169">See [Run Hadoop MapReduce samples in HDInsight](hdinsight-hadoop-run-samples-linux.md).</span></span>
+<span data-ttu-id="aaea6-169">V tématu [ukázky spustit Hadoop MapReduce v HDInsight](hdinsight-hadoop-run-samples-linux.md).</span><span class="sxs-lookup"><span data-stu-id="aaea6-169">See [Run Hadoop MapReduce samples in HDInsight](hdinsight-hadoop-run-samples-linux.md).</span></span>
 
-<span data-ttu-id="d833c-170">**K odeslání úloh Hive**</span><span class="sxs-lookup"><span data-stu-id="d833c-170">**To submit Hive jobs**</span></span> 
+<span data-ttu-id="aaea6-170">**toosubmit úloh Hive**</span><span class="sxs-lookup"><span data-stu-id="aaea6-170">**toosubmit Hive jobs**</span></span> 
 
-<span data-ttu-id="d833c-171">V tématu [spouštění dotazů Hive pomocí sady .NET SDK](hdinsight-hadoop-use-hive-dotnet-sdk.md).</span><span class="sxs-lookup"><span data-stu-id="d833c-171">See [Run Hive queries using .NET SDK](hdinsight-hadoop-use-hive-dotnet-sdk.md).</span></span>
+<span data-ttu-id="aaea6-171">V tématu [spouštění dotazů Hive pomocí sady .NET SDK](hdinsight-hadoop-use-hive-dotnet-sdk.md).</span><span class="sxs-lookup"><span data-stu-id="aaea6-171">See [Run Hive queries using .NET SDK](hdinsight-hadoop-use-hive-dotnet-sdk.md).</span></span>
 
-<span data-ttu-id="d833c-172">**K odeslání úlohy Pig**</span><span class="sxs-lookup"><span data-stu-id="d833c-172">**To submit Pig jobs**</span></span>
+<span data-ttu-id="aaea6-172">**úlohy Pig toosubmit**</span><span class="sxs-lookup"><span data-stu-id="aaea6-172">**toosubmit Pig jobs**</span></span>
 
-<span data-ttu-id="d833c-173">V tématu [úlohy spustit Pig pomocí sady .NET SDK](hdinsight-hadoop-use-pig-dotnet-sdk.md).</span><span class="sxs-lookup"><span data-stu-id="d833c-173">See [Run Pig jobs using .NET SDK](hdinsight-hadoop-use-pig-dotnet-sdk.md).</span></span>
+<span data-ttu-id="aaea6-173">V tématu [úlohy spustit Pig pomocí sady .NET SDK](hdinsight-hadoop-use-pig-dotnet-sdk.md).</span><span class="sxs-lookup"><span data-stu-id="aaea6-173">See [Run Pig jobs using .NET SDK](hdinsight-hadoop-use-pig-dotnet-sdk.md).</span></span>
 
-<span data-ttu-id="d833c-174">**K odesílání úloh Sqoop**</span><span class="sxs-lookup"><span data-stu-id="d833c-174">**To submit Sqoop jobs**</span></span>
+<span data-ttu-id="aaea6-174">**toosubmit Sqoop úlohy**</span><span class="sxs-lookup"><span data-stu-id="aaea6-174">**toosubmit Sqoop jobs**</span></span>
 
-<span data-ttu-id="d833c-175">V tématu [použití nástroje Sqoop se HDInsight](hdinsight-hadoop-use-sqoop-dotnet-sdk.md).</span><span class="sxs-lookup"><span data-stu-id="d833c-175">See [Use Sqoop with HDInsight](hdinsight-hadoop-use-sqoop-dotnet-sdk.md).</span></span>
+<span data-ttu-id="aaea6-175">V tématu [použití nástroje Sqoop se HDInsight](hdinsight-hadoop-use-sqoop-dotnet-sdk.md).</span><span class="sxs-lookup"><span data-stu-id="aaea6-175">See [Use Sqoop with HDInsight](hdinsight-hadoop-use-sqoop-dotnet-sdk.md).</span></span>
 
-<span data-ttu-id="d833c-176">**K odesílání úloh Oozie**</span><span class="sxs-lookup"><span data-stu-id="d833c-176">**To submit Oozie jobs**</span></span>
+<span data-ttu-id="aaea6-176">**toosubmit Oozie úlohy**</span><span class="sxs-lookup"><span data-stu-id="aaea6-176">**toosubmit Oozie jobs**</span></span>
 
-<span data-ttu-id="d833c-177">V tématu [Oozie použití se systémem Hadoop k definování a spuštění workflowu v HDInsight](hdinsight-use-oozie-linux-mac.md).</span><span class="sxs-lookup"><span data-stu-id="d833c-177">See [Use Oozie with Hadoop to define and run a workflow in HDInsight](hdinsight-use-oozie-linux-mac.md).</span></span>
+<span data-ttu-id="aaea6-177">V tématu [Oozie použití s Hadoop toodefine a spouštění pracovních postupů v prostředí HDInsight](hdinsight-use-oozie-linux-mac.md).</span><span class="sxs-lookup"><span data-stu-id="aaea6-177">See [Use Oozie with Hadoop toodefine and run a workflow in HDInsight](hdinsight-use-oozie-linux-mac.md).</span></span>
 
-## <a name="upload-data-to-azure-blob-storage"></a><span data-ttu-id="d833c-178">Nahrání dat do úložiště objektů Blob v Azure</span><span class="sxs-lookup"><span data-stu-id="d833c-178">Upload data to Azure Blob storage</span></span>
-<span data-ttu-id="d833c-179">Viz [Nahrání dat do služby HDInsight][hdinsight-upload-data].</span><span class="sxs-lookup"><span data-stu-id="d833c-179">See [Upload data to HDInsight][hdinsight-upload-data].</span></span>
+## <a name="upload-data-tooazure-blob-storage"></a><span data-ttu-id="aaea6-178">Nahrání dat tooAzure Blob storage</span><span class="sxs-lookup"><span data-stu-id="aaea6-178">Upload data tooAzure Blob storage</span></span>
+<span data-ttu-id="aaea6-179">V tématu [nahrát data tooHDInsight][hdinsight-upload-data].</span><span class="sxs-lookup"><span data-stu-id="aaea6-179">See [Upload data tooHDInsight][hdinsight-upload-data].</span></span>
 
-## <a name="see-also"></a><span data-ttu-id="d833c-180">Viz také</span><span class="sxs-lookup"><span data-stu-id="d833c-180">See Also</span></span>
-* [<span data-ttu-id="d833c-181">HDInsight .NET SDK referenční dokumentaci k nástroji</span><span class="sxs-lookup"><span data-stu-id="d833c-181">HDInsight .NET SDK reference documentation</span></span>](https://msdn.microsoft.com/library/mt271028.aspx)
-* <span data-ttu-id="d833c-182">[Spravovat HDInsight pomocí portálu Azure][hdinsight-admin-portal]</span><span class="sxs-lookup"><span data-stu-id="d833c-182">[Administer HDInsight by using the Azure portal][hdinsight-admin-portal]</span></span>
-* <span data-ttu-id="d833c-183">[Spravovat HDInsight pomocí rozhraní příkazového řádku][hdinsight-admin-cli]</span><span class="sxs-lookup"><span data-stu-id="d833c-183">[Administer HDInsight using a command-line interface][hdinsight-admin-cli]</span></span>
-* <span data-ttu-id="d833c-184">[Vytvoření clusterů HDInsight][hdinsight-provision]</span><span class="sxs-lookup"><span data-stu-id="d833c-184">[Create HDInsight clusters][hdinsight-provision]</span></span>
-* <span data-ttu-id="d833c-185">[Nahrání dat do služby HDInsight][hdinsight-upload-data]</span><span class="sxs-lookup"><span data-stu-id="d833c-185">[Upload data to HDInsight][hdinsight-upload-data]</span></span>
-* <span data-ttu-id="d833c-186">[Začínáme se službou Azure HDInsight][hdinsight-get-started]</span><span class="sxs-lookup"><span data-stu-id="d833c-186">[Get started with Azure HDInsight][hdinsight-get-started]</span></span>
+## <a name="see-also"></a><span data-ttu-id="aaea6-180">Viz také</span><span class="sxs-lookup"><span data-stu-id="aaea6-180">See Also</span></span>
+* [<span data-ttu-id="aaea6-181">HDInsight .NET SDK referenční dokumentaci k nástroji</span><span class="sxs-lookup"><span data-stu-id="aaea6-181">HDInsight .NET SDK reference documentation</span></span>](https://msdn.microsoft.com/library/mt271028.aspx)
+* <span data-ttu-id="aaea6-182">[Spravovat HDInsight pomocí hello portálu Azure][hdinsight-admin-portal]</span><span class="sxs-lookup"><span data-stu-id="aaea6-182">[Administer HDInsight by using hello Azure portal][hdinsight-admin-portal]</span></span>
+* <span data-ttu-id="aaea6-183">[Spravovat HDInsight pomocí rozhraní příkazového řádku][hdinsight-admin-cli]</span><span class="sxs-lookup"><span data-stu-id="aaea6-183">[Administer HDInsight using a command-line interface][hdinsight-admin-cli]</span></span>
+* <span data-ttu-id="aaea6-184">[Vytvoření clusterů HDInsight][hdinsight-provision]</span><span class="sxs-lookup"><span data-stu-id="aaea6-184">[Create HDInsight clusters][hdinsight-provision]</span></span>
+* <span data-ttu-id="aaea6-185">[Nahrání dat tooHDInsight][hdinsight-upload-data]</span><span class="sxs-lookup"><span data-stu-id="aaea6-185">[Upload data tooHDInsight][hdinsight-upload-data]</span></span>
+* <span data-ttu-id="aaea6-186">[Začínáme se službou Azure HDInsight][hdinsight-get-started]</span><span class="sxs-lookup"><span data-stu-id="aaea6-186">[Get started with Azure HDInsight][hdinsight-get-started]</span></span>
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/

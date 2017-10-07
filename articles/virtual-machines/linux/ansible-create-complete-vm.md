@@ -1,6 +1,6 @@
 ---
-title: "K vytvoření kompletní virtuální počítač s Linuxem v Azure použijte Ansible | Microsoft Docs"
-description: "Další informace o použití Ansible k vytváření a správě dokončení prostředí Linux virtuálního počítače v Azure"
+title: "aaaUse Ansible toocreate dokončení virtuálního počítače s Linuxem v Azure | Microsoft Docs"
+description: "Zjistěte, jak toouse Ansible toocreate a spravovat dokončení prostředí Linux virtuálního počítače v Azure"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -15,29 +15,29 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2017
 ms.author: iainfou
-ms.openlocfilehash: b2fcc288b40c12a9b3f966156ee2eedf4acca313
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 970b0427f39fc23240f9faab868196ca4f444e0f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a><span data-ttu-id="150ba-103">Vytvořte dokončení prostředí Linux virtuálního počítače v Azure s Ansible</span><span class="sxs-lookup"><span data-stu-id="150ba-103">Create a complete Linux virtual machine environment in Azure with Ansible</span></span>
-<span data-ttu-id="150ba-104">Ansible umožňuje automatizovat nasazení a konfigurace prostředků ve vašem prostředí.</span><span class="sxs-lookup"><span data-stu-id="150ba-104">Ansible allows you to automate the deployment and configuration of resources in your environment.</span></span> <span data-ttu-id="150ba-105">Ansible můžete použít ke správě virtuálních počítačů (VM) v Azure, stejně jako jiný prostředek.</span><span class="sxs-lookup"><span data-stu-id="150ba-105">You can use Ansible to manage your virtual machines (VMs) in Azure, the same as you would any other resource.</span></span> <span data-ttu-id="150ba-106">Tento článek ukazuje, jak vytvořit úplný prostředí Linux a podpůrné prostředky s Ansible.</span><span class="sxs-lookup"><span data-stu-id="150ba-106">This article shows you how to create a complete Linux environment and supporting resources with Ansible.</span></span> <span data-ttu-id="150ba-107">Můžete si také přečíst postup [vytvořit základní virtuální počítač s Ansible](ansible-create-vm.md).</span><span class="sxs-lookup"><span data-stu-id="150ba-107">You can also learn how to [Create a basic VM with Ansible](ansible-create-vm.md).</span></span>
+# <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a><span data-ttu-id="ce635-103">Vytvořte dokončení prostředí Linux virtuálního počítače v Azure s Ansible</span><span class="sxs-lookup"><span data-stu-id="ce635-103">Create a complete Linux virtual machine environment in Azure with Ansible</span></span>
+<span data-ttu-id="ce635-104">Ansible umožňuje tooautomate hello nasazení a konfigurace prostředků ve vašem prostředí.</span><span class="sxs-lookup"><span data-stu-id="ce635-104">Ansible allows you tooautomate hello deployment and configuration of resources in your environment.</span></span> <span data-ttu-id="ce635-105">Můžete použít Ansible toomanage virtuálních počítačů (VM) ve službě Azure, hello stejné jako jiný prostředek.</span><span class="sxs-lookup"><span data-stu-id="ce635-105">You can use Ansible toomanage your virtual machines (VMs) in Azure, hello same as you would any other resource.</span></span> <span data-ttu-id="ce635-106">Tento článek ukazuje, jak toocreate dokončení prostředí Linux a podpůrné prostředky s Ansible.</span><span class="sxs-lookup"><span data-stu-id="ce635-106">This article shows you how toocreate a complete Linux environment and supporting resources with Ansible.</span></span> <span data-ttu-id="ce635-107">Můžete si také přečíst jak příliš[vytvořit základní virtuální počítač s Ansible](ansible-create-vm.md).</span><span class="sxs-lookup"><span data-stu-id="ce635-107">You can also learn how too[Create a basic VM with Ansible](ansible-create-vm.md).</span></span>
 
 
-## <a name="prerequisites"></a><span data-ttu-id="150ba-108">Požadavky</span><span class="sxs-lookup"><span data-stu-id="150ba-108">Prerequisites</span></span>
-<span data-ttu-id="150ba-109">Ke správě prostředků Azure s Ansible, budete potřebovat následující:</span><span class="sxs-lookup"><span data-stu-id="150ba-109">To manage Azure resources with Ansible, you need the following:</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="ce635-108">Požadavky</span><span class="sxs-lookup"><span data-stu-id="ce635-108">Prerequisites</span></span>
+<span data-ttu-id="ce635-109">toomanage Azure prostředky s Ansible, je nutné hello následující:</span><span class="sxs-lookup"><span data-stu-id="ce635-109">toomanage Azure resources with Ansible, you need hello following:</span></span>
 
-- <span data-ttu-id="150ba-110">Ansible a moduly Azure Python SDK v systému hostitele.</span><span class="sxs-lookup"><span data-stu-id="150ba-110">Ansible and the Azure Python SDK modules installed on your host system.</span></span>
-    - <span data-ttu-id="150ba-111">Nainstalujte Ansible [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts), [CentOS 7.3](ansible-install-configure.md#centos-73), a [SLES 12.2 SP2](ansible-install-configure.md#sles-122-sp2)</span><span class="sxs-lookup"><span data-stu-id="150ba-111">Install Ansible on [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts), [CentOS 7.3](ansible-install-configure.md#centos-73), and [SLES 12.2 SP2](ansible-install-configure.md#sles-122-sp2)</span></span>
-- <span data-ttu-id="150ba-112">Přihlašovací údaje Azure a Ansible nakonfigurovat jejich použití.</span><span class="sxs-lookup"><span data-stu-id="150ba-112">Azure credentials, and Ansible configured to use them.</span></span>
-    - [<span data-ttu-id="150ba-113">Vytvořit přihlašovací údaje Azure a nakonfigurovat Ansible</span><span class="sxs-lookup"><span data-stu-id="150ba-113">Create Azure credentials and configure Ansible</span></span>](ansible-install-configure.md#create-azure-credentials)
-- <span data-ttu-id="150ba-114">Azure CLI verze verze 2.0.4 nebo novější.</span><span class="sxs-lookup"><span data-stu-id="150ba-114">Azure CLI version 2.0.4 or later.</span></span> <span data-ttu-id="150ba-115">Verzi zjistíte spuštěním příkazu `az --version`.</span><span class="sxs-lookup"><span data-stu-id="150ba-115">Run `az --version` to find the version.</span></span> 
-    - <span data-ttu-id="150ba-116">Pokud potřebujete upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="150ba-116">If you need to upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span> <span data-ttu-id="150ba-117">Můžete také použít [cloudové prostředí](/azure/cloud-shell/quickstart) z prohlížeče.</span><span class="sxs-lookup"><span data-stu-id="150ba-117">You can also use [Cloud Shell](/azure/cloud-shell/quickstart) from your browser.</span></span>
+- <span data-ttu-id="ce635-110">Ansible a hello moduly Azure Python SDK v systému hostitele.</span><span class="sxs-lookup"><span data-stu-id="ce635-110">Ansible and hello Azure Python SDK modules installed on your host system.</span></span>
+    - <span data-ttu-id="ce635-111">Nainstalujte Ansible [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts), [CentOS 7.3](ansible-install-configure.md#centos-73), a [SLES 12.2 SP2](ansible-install-configure.md#sles-122-sp2)</span><span class="sxs-lookup"><span data-stu-id="ce635-111">Install Ansible on [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts), [CentOS 7.3](ansible-install-configure.md#centos-73), and [SLES 12.2 SP2](ansible-install-configure.md#sles-122-sp2)</span></span>
+- <span data-ttu-id="ce635-112">Přihlašovací údaje Azure a Ansible nakonfigurované toouse je.</span><span class="sxs-lookup"><span data-stu-id="ce635-112">Azure credentials, and Ansible configured toouse them.</span></span>
+    - [<span data-ttu-id="ce635-113">Vytvořit přihlašovací údaje Azure a nakonfigurovat Ansible</span><span class="sxs-lookup"><span data-stu-id="ce635-113">Create Azure credentials and configure Ansible</span></span>](ansible-install-configure.md#create-azure-credentials)
+- <span data-ttu-id="ce635-114">Azure CLI verze verze 2.0.4 nebo novější.</span><span class="sxs-lookup"><span data-stu-id="ce635-114">Azure CLI version 2.0.4 or later.</span></span> <span data-ttu-id="ce635-115">Spustit `az --version` toofind hello verze.</span><span class="sxs-lookup"><span data-stu-id="ce635-115">Run `az --version` toofind hello version.</span></span> 
+    - <span data-ttu-id="ce635-116">Pokud potřebujete tooupgrade, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="ce635-116">If you need tooupgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span> <span data-ttu-id="ce635-117">Můžete také použít [cloudové prostředí](/azure/cloud-shell/quickstart) z prohlížeče.</span><span class="sxs-lookup"><span data-stu-id="ce635-117">You can also use [Cloud Shell](/azure/cloud-shell/quickstart) from your browser.</span></span>
 
 
-## <a name="create-virtual-network"></a><span data-ttu-id="150ba-118">Vytvoření virtuální sítě</span><span class="sxs-lookup"><span data-stu-id="150ba-118">Create virtual network</span></span>
-<span data-ttu-id="150ba-119">V následující části v playbook Ansible vytvoří virtuální síť s názvem *myVnet* v *10.0.0.0/16* adresní prostor:</span><span class="sxs-lookup"><span data-stu-id="150ba-119">The following section in an Ansible playbook creates a virtual network named *myVnet* in the *10.0.0.0/16* address space:</span></span>
+## <a name="create-virtual-network"></a><span data-ttu-id="ce635-118">Vytvoření virtuální sítě</span><span class="sxs-lookup"><span data-stu-id="ce635-118">Create virtual network</span></span>
+<span data-ttu-id="ce635-119">Hello následující části v playbook Ansible vytvoří virtuální síť s názvem *myVnet* v hello *10.0.0.0/16* adresní prostor:</span><span class="sxs-lookup"><span data-stu-id="ce635-119">hello following section in an Ansible playbook creates a virtual network named *myVnet* in hello *10.0.0.0/16* address space:</span></span>
 
 ```yaml
 - name: Create virtual network
@@ -47,7 +47,7 @@ ms.lasthandoff: 07/11/2017
     address_prefixes: "10.10.0.0/16"
 ```
 
-<span data-ttu-id="150ba-120">Chcete-li přidat podsíť, v následující části vytvoří podsíť s názvem *mySubnet* v *myVnet* virtuální sítě:</span><span class="sxs-lookup"><span data-stu-id="150ba-120">To add a subnet, the following section creates a subnet named *mySubnet* in the *myVnet* virtual network:</span></span>
+<span data-ttu-id="ce635-120">tooadd podsíť, následující části hello vytvoří podsíť s názvem *mySubnet* v hello *myVnet* virtuální sítě:</span><span class="sxs-lookup"><span data-stu-id="ce635-120">tooadd a subnet, hello following section creates a subnet named *mySubnet* in hello *myVnet* virtual network:</span></span>
 
 ```yaml
 - name: Add subnet
@@ -59,8 +59,8 @@ ms.lasthandoff: 07/11/2017
 ```
 
 
-## <a name="create-public-ip-address"></a><span data-ttu-id="150ba-121">Vytvoření veřejné IP adresy</span><span class="sxs-lookup"><span data-stu-id="150ba-121">Create public IP address</span></span>
-<span data-ttu-id="150ba-122">Pro přístup k prostředkům přes Internet, vytvořte a přiřaďte veřejnou IP adresu pro virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="150ba-122">To access resources across the Internet, create and assign a public IP address to your VM.</span></span> <span data-ttu-id="150ba-123">V následující části v playbook Ansible vytvoří veřejnou IP adresu s názvem *myPublicIP*:</span><span class="sxs-lookup"><span data-stu-id="150ba-123">The following section in an Ansible playbook creates a public IP address named *myPublicIP*:</span></span>
+## <a name="create-public-ip-address"></a><span data-ttu-id="ce635-121">Vytvoření veřejné IP adresy</span><span class="sxs-lookup"><span data-stu-id="ce635-121">Create public IP address</span></span>
+<span data-ttu-id="ce635-122">tooaccess prostředkům v rámci hello Internetu, vytvořte a přiřaďte tooyour veřejnou adresu IP virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="ce635-122">tooaccess resources across hello Internet, create and assign a public IP address tooyour VM.</span></span> <span data-ttu-id="ce635-123">Hello následující části v playbook Ansible vytvoří veřejnou IP adresu s názvem *myPublicIP*:</span><span class="sxs-lookup"><span data-stu-id="ce635-123">hello following section in an Ansible playbook creates a public IP address named *myPublicIP*:</span></span>
 
 ```yaml
 - name: Create public IP address
@@ -71,8 +71,8 @@ ms.lasthandoff: 07/11/2017
 ```
 
 
-## <a name="create-network-security-group"></a><span data-ttu-id="150ba-124">Vytvořit skupinu zabezpečení sítě</span><span class="sxs-lookup"><span data-stu-id="150ba-124">Create Network Security Group</span></span>
-<span data-ttu-id="150ba-125">Skupiny zabezpečení sítě řídí tok síťový provoz do/z virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="150ba-125">Network Security Groups control the flow of network traffic in and out of your VM.</span></span> <span data-ttu-id="150ba-126">V následující části v playbook Ansible vytvoří skupinu zabezpečení sítě s názvem *myNetworkSecurityGroup* a definuje pravidlo umožňující přenos SSH na TCP port 22:</span><span class="sxs-lookup"><span data-stu-id="150ba-126">The following section in an Ansible playbook creates a network security group named *myNetworkSecurityGroup* and defines a rule to allow SSH traffic on TCP port 22:</span></span>
+## <a name="create-network-security-group"></a><span data-ttu-id="ce635-124">Vytvořit skupinu zabezpečení sítě</span><span class="sxs-lookup"><span data-stu-id="ce635-124">Create Network Security Group</span></span>
+<span data-ttu-id="ce635-125">Skupiny zabezpečení sítě řídit tok hello síťový provoz do/z virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="ce635-125">Network Security Groups control hello flow of network traffic in and out of your VM.</span></span> <span data-ttu-id="ce635-126">Hello následující části v playbook Ansible vytvoří skupinu zabezpečení sítě s názvem *myNetworkSecurityGroup* a definuje přenosem pravidlo tooallow SSH na TCP port 22:</span><span class="sxs-lookup"><span data-stu-id="ce635-126">hello following section in an Ansible playbook creates a network security group named *myNetworkSecurityGroup* and defines a rule tooallow SSH traffic on TCP port 22:</span></span>
 
 ```yaml
 - name: Create Network Security Group that allows SSH
@@ -89,8 +89,8 @@ ms.lasthandoff: 07/11/2017
 ```
 
 
-## <a name="create-virtual-network-interface-card"></a><span data-ttu-id="150ba-127">Vytvořit virtuální síťová karta</span><span class="sxs-lookup"><span data-stu-id="150ba-127">Create virtual network interface card</span></span>
-<span data-ttu-id="150ba-128">Virtuální síťová karta (NIC) připojí k dané virtuální síti, veřejnou IP adresu a skupinu zabezpečení sítě virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="150ba-128">A virtual network interface card (NIC) connects your VM to a given virtual network, public IP address, and network security group.</span></span> <span data-ttu-id="150ba-129">V následující části v playbook Ansible vytvoří virtuální síťový adaptér s názvem *myNIC* připojené k virtuální síťové prostředky, které jste vytvořili:</span><span class="sxs-lookup"><span data-stu-id="150ba-129">The following section in an Ansible playbook creates a virtual NIC named *myNIC* connected to the virtual networking resources you have created:</span></span>
+## <a name="create-virtual-network-interface-card"></a><span data-ttu-id="ce635-127">Vytvořit virtuální síťová karta</span><span class="sxs-lookup"><span data-stu-id="ce635-127">Create virtual network interface card</span></span>
+<span data-ttu-id="ce635-128">Virtuální síťová karta (NIC) připojí vaše tooa virtuálních počítačů daného virtuální sítě, veřejnou IP adresu a skupinu zabezpečení sítě.</span><span class="sxs-lookup"><span data-stu-id="ce635-128">A virtual network interface card (NIC) connects your VM tooa given virtual network, public IP address, and network security group.</span></span> <span data-ttu-id="ce635-129">Hello následující části v playbook Ansible vytvoří virtuální síťový adaptér s názvem *myNIC* připojení virtuálních síťových prostředků toohello jste vytvořili:</span><span class="sxs-lookup"><span data-stu-id="ce635-129">hello following section in an Ansible playbook creates a virtual NIC named *myNIC* connected toohello virtual networking resources you have created:</span></span>
 
 ```yaml
 - name: Create virtual network inteface card
@@ -104,8 +104,8 @@ ms.lasthandoff: 07/11/2017
 ```
 
 
-## <a name="create-virtual-machine"></a><span data-ttu-id="150ba-130">Vytvoření virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="150ba-130">Create virtual machine</span></span>
-<span data-ttu-id="150ba-131">Posledním krokem je vytvoření virtuálního počítače a použít všechny prostředky, které jsou vytvořené.</span><span class="sxs-lookup"><span data-stu-id="150ba-131">The final step is to create a VM and use all the resources created.</span></span> <span data-ttu-id="150ba-132">V následující části v playbook Ansible vytvoří virtuální počítač s názvem *Můjvp* a připojí virtuální síťový adaptér s názvem *myNIC*.</span><span class="sxs-lookup"><span data-stu-id="150ba-132">The following section in an Ansible playbook creates a VM named *myVM* and attaches the virtual NIC named *myNIC*.</span></span> <span data-ttu-id="150ba-133">Zadejte svoje vlastní veřejného klíče data v *key_data* spárujte následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="150ba-133">Enter your own public key data in the *key_data* pair as follows:</span></span>
+## <a name="create-virtual-machine"></a><span data-ttu-id="ce635-130">Vytvoření virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="ce635-130">Create virtual machine</span></span>
+<span data-ttu-id="ce635-131">poslední krok Hello je toocreate virtuálního počítače a použít všechny prostředky hello vytvořené.</span><span class="sxs-lookup"><span data-stu-id="ce635-131">hello final step is toocreate a VM and use all hello resources created.</span></span> <span data-ttu-id="ce635-132">Hello následující části v playbook Ansible vytvoří virtuální počítač s názvem *Můjvp* a připojí hello virtuální síťový adaptér s názvem *myNIC*.</span><span class="sxs-lookup"><span data-stu-id="ce635-132">hello following section in an Ansible playbook creates a VM named *myVM* and attaches hello virtual NIC named *myNIC*.</span></span> <span data-ttu-id="ce635-133">Zadejte svoje vlastní data veřejného klíče v hello *key_data* spárujte následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="ce635-133">Enter your own public key data in hello *key_data* pair as follows:</span></span>
 
 ```yaml
 - name: Create VM
@@ -126,8 +126,8 @@ ms.lasthandoff: 07/11/2017
       version: latest
 ```
 
-## <a name="complete-ansible-playbook"></a><span data-ttu-id="150ba-134">Dokončení Ansible playbook</span><span class="sxs-lookup"><span data-stu-id="150ba-134">Complete Ansible playbook</span></span>
-<span data-ttu-id="150ba-135">Tyto části sdružujícího vytvořit Ansible playbook s názvem *azure_create_complete_vm.yml* a vložte následující obsah:</span><span class="sxs-lookup"><span data-stu-id="150ba-135">To bring all these sections together, create an Ansible playbook named *azure_create_complete_vm.yml* and paste the following contents:</span></span>
+## <a name="complete-ansible-playbook"></a><span data-ttu-id="ce635-134">Dokončení Ansible playbook</span><span class="sxs-lookup"><span data-stu-id="ce635-134">Complete Ansible playbook</span></span>
+<span data-ttu-id="ce635-135">toobring tyto části společně, vytvořit Ansible playbook s názvem *azure_create_complete_vm.yml* a hello vložte následující obsah:</span><span class="sxs-lookup"><span data-stu-id="ce635-135">toobring all these sections together, create an Ansible playbook named *azure_create_complete_vm.yml* and paste hello following contents:</span></span>
 
 ```yaml
 - name: Create Azure VM
@@ -187,19 +187,19 @@ ms.lasthandoff: 07/11/2017
         version: latest
 ```
 
-<span data-ttu-id="150ba-136">Ansible musí nasadit všechny prostředky do skupiny prostředků.</span><span class="sxs-lookup"><span data-stu-id="150ba-136">Ansible needs a resource group to deploy all your resources into.</span></span> <span data-ttu-id="150ba-137">Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/vm#create).</span><span class="sxs-lookup"><span data-stu-id="150ba-137">Create a resource group with [az group create](/cli/azure/vm#create).</span></span> <span data-ttu-id="150ba-138">Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v *eastus* umístění:</span><span class="sxs-lookup"><span data-stu-id="150ba-138">The following example creates a resource group named *myResourceGroup* in the *eastus* location:</span></span>
+<span data-ttu-id="ce635-136">Ansible musí všechny prostředky do toodeploy skupiny prostředků.</span><span class="sxs-lookup"><span data-stu-id="ce635-136">Ansible needs a resource group toodeploy all your resources into.</span></span> <span data-ttu-id="ce635-137">Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/vm#create).</span><span class="sxs-lookup"><span data-stu-id="ce635-137">Create a resource group with [az group create](/cli/azure/vm#create).</span></span> <span data-ttu-id="ce635-138">Hello následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v hello *eastus* umístění:</span><span class="sxs-lookup"><span data-stu-id="ce635-138">hello following example creates a resource group named *myResourceGroup* in hello *eastus* location:</span></span>
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-<span data-ttu-id="150ba-139">Pokud chcete vytvořit úplný prostředí virtuálních počítačů s Ansible, spusťte playbook následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="150ba-139">To create the complete VM environment with Ansible, run the playbook as follows:</span></span>
+<span data-ttu-id="ce635-139">toocreate hello dokončení VM prostředí s Ansible, spusťte hello playbook následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="ce635-139">toocreate hello complete VM environment with Ansible, run hello playbook as follows:</span></span>
 
 ```bash
 ansible-playbook azure_create_complete_vm.yml
 ```
 
-<span data-ttu-id="150ba-140">Výstup bude vypadat podobně jako v následujícím příkladu, který ukazuje, že virtuální počítač se úspěšně vytvořil:</span><span class="sxs-lookup"><span data-stu-id="150ba-140">The output looks similar to the following example that shows the VM has been successfully created:</span></span>
+<span data-ttu-id="ce635-140">výstup Hello vypadá podobně jako toohello následující příklad, který zobrazuje hello že virtuálního počítače byla úspěšně vytvořena:</span><span class="sxs-lookup"><span data-stu-id="ce635-140">hello output looks similar toohello following example that shows hello VM has been successfully created:</span></span>
 
 ```bash
 PLAY [Create Azure VM] ****************************************************
@@ -229,5 +229,5 @@ PLAY RECAP ****************************************************************
 localhost                  : ok=7    changed=6    unreachable=0    failed=0
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="150ba-141">Další kroky</span><span class="sxs-lookup"><span data-stu-id="150ba-141">Next steps</span></span>
-<span data-ttu-id="150ba-142">Tento příklad vytvoří kompletní prostředí virtuálních počítačů, včetně požadované prostředky virtuální sítě.</span><span class="sxs-lookup"><span data-stu-id="150ba-142">This example creates a complete VM environment including the required virtual networking resources.</span></span> <span data-ttu-id="150ba-143">Více přímé příklad k vytvoření virtuálního počítače do stávající síťové prostředky s výchozími možnostmi najdete v tématu [vytvoření virtuálního počítače](ansible-create-vm.md).</span><span class="sxs-lookup"><span data-stu-id="150ba-143">For a more direct example to create a VM into existing network resources with default options, see [Create a VM](ansible-create-vm.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="ce635-141">Další kroky</span><span class="sxs-lookup"><span data-stu-id="ce635-141">Next steps</span></span>
+<span data-ttu-id="ce635-142">Tento příklad vytvoří kompletní prostředí virtuálních počítačů včetně hello požadované virtuálních síťových prostředků.</span><span class="sxs-lookup"><span data-stu-id="ce635-142">This example creates a complete VM environment including hello required virtual networking resources.</span></span> <span data-ttu-id="ce635-143">Více přímé příklad toocreate virtuálního počítače do stávající síťové prostředky s výchozími možnostmi najdete v části [vytvoření virtuálního počítače](ansible-create-vm.md).</span><span class="sxs-lookup"><span data-stu-id="ce635-143">For a more direct example toocreate a VM into existing network resources with default options, see [Create a VM](ansible-create-vm.md).</span></span>

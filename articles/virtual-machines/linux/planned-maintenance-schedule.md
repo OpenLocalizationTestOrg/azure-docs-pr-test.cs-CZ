@@ -1,6 +1,6 @@
 ---
-title: "Naplánování plánované údržby pro virtuální počítače s Linuxem v Azure | Microsoft Docs"
-description: "Zjistěte, jak naplánovat plánované údržby na virtuálních počítačích Azure."
+title: "aaaHow tooSchedule plánovaná údržby pro virtuální počítače s Linuxem v Azure | Microsoft Docs"
+description: "Zjistěte, jak tooschedule plánované údržby na virtuálních počítačích Azure."
 services: virtual-machines-linux
 documentationcenter: 
 author: igalf
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: igalf
-ms.openlocfilehash: 84a61313547e0e7b3715552ab8b20f76eda39db7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4bc026887c74f7fea71720995c062a8476416395
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-schedule-planned-maintenance-on-azure-vms"></a><span data-ttu-id="b6b42-103">Naplánování plánované údržby na virtuálních počítačích Azure</span><span class="sxs-lookup"><span data-stu-id="b6b42-103">How to Schedule Planned Maintenance on Azure VMs</span></span>
+# <a name="how-tooschedule-planned-maintenance-on-azure-vms"></a><span data-ttu-id="56050-103">Jak tooSchedule plánovaná údržby na virtuálních počítačích Azure</span><span class="sxs-lookup"><span data-stu-id="56050-103">How tooSchedule Planned Maintenance on Azure VMs</span></span>
 > [!IMPORTANT]
-> <span data-ttu-id="b6b42-104">Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="b6b42-104">Azure has two different deployment models for creating and working with resources: [Resource Manager and Classic](../../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="b6b42-105">Tento článek se zabývá pomocí modelu nasazení Classic.</span><span class="sxs-lookup"><span data-stu-id="b6b42-105">This article covers using the Classic deployment model.</span></span> <span data-ttu-id="b6b42-106">Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.</span><span class="sxs-lookup"><span data-stu-id="b6b42-106">Microsoft recommends that most new deployments use the Resource Manager model.</span></span> <span data-ttu-id="b6b42-107">Informace o plánované údržbě v modelu Resource Manager najdete v tématu [zde](../windows/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="b6b42-107">For information about planned maintenance in the Resource Manager model, see [here](../windows/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>
+> <span data-ttu-id="56050-104">Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="56050-104">Azure has two different deployment models for creating and working with resources: [Resource Manager and Classic](../../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="56050-105">Tento článek se zabývá pomocí modelu nasazení Classic hello.</span><span class="sxs-lookup"><span data-stu-id="56050-105">This article covers using hello Classic deployment model.</span></span> <span data-ttu-id="56050-106">Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello.</span><span class="sxs-lookup"><span data-stu-id="56050-106">Microsoft recommends that most new deployments use hello Resource Manager model.</span></span> <span data-ttu-id="56050-107">Informace o plánované údržbě v modelu Resource Manager hello najdete v tématu [zde](../windows/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="56050-107">For information about planned maintenance in hello Resource Manager model, see [here](../windows/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>
  
 [!INCLUDE [virtual-machines-common-planned-maintenance-schedule](../../../includes/virtual-machines-common-planned-maintenance-schedule.md)]

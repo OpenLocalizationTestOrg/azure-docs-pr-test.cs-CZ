@@ -1,6 +1,6 @@
 ---
-title: "Vícenásobný přístup v na základě objektu actor Azure mikroslužeb | Microsoft Docs"
-description: "Úvod do vícenásobný přístup pro Service Fabric Reliable Actors"
+title: "aaaReentrancy v na základě objektu actor Azure mikroslužeb | Microsoft Docs"
+description: "Úvod tooreentrancy Service Fabric Reliable actors"
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: 00fcccb379bf1ba3875fbaba57a05b00fa228622
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 61c69bcf0f100e075d19ba155954c05789b71761
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="reliable-actors-reentrancy"></a><span data-ttu-id="01cf1-103">Spolehlivé aktéři vícenásobný přístup</span><span class="sxs-lookup"><span data-stu-id="01cf1-103">Reliable Actors reentrancy</span></span>
-<span data-ttu-id="01cf1-104">Modul runtime Reliable Actors standardně umožňuje vícenásobný přístup na základě kontextu logické volání.</span><span class="sxs-lookup"><span data-stu-id="01cf1-104">The Reliable Actors runtime, by default, allows logical call context-based reentrancy.</span></span> <span data-ttu-id="01cf1-105">To umožňuje aktéři být vícenásobné, pokud jsou v tomtéž řetězu volání kontextu.</span><span class="sxs-lookup"><span data-stu-id="01cf1-105">This allows for actors to be reentrant if they are in the same call context chain.</span></span> <span data-ttu-id="01cf1-106">Například objektu Actor A odešle zprávu do objektu Actor B, který odešle zprávu do objektu Actor C. Jako součást zpracování zpráv Pokud objektu Actor C volání objektu Actor A, zpráva je vícenásobné, takže bude možné.</span><span class="sxs-lookup"><span data-stu-id="01cf1-106">For example, Actor A sends a message to Actor B, who sends a message to Actor C. As part of the message processing, if Actor C calls Actor A, the message is reentrant, so it will be allowed.</span></span> <span data-ttu-id="01cf1-107">Všechny ostatní zprávy, které jsou součástí jiné volání kontextu se zablokuje na objektu Actor A její dokončení zpracování.</span><span class="sxs-lookup"><span data-stu-id="01cf1-107">Any other messages that are part of a different call context will be blocked on Actor A until it finishes processing.</span></span>
+# <a name="reliable-actors-reentrancy"></a><span data-ttu-id="14c92-103">Spolehlivé aktéři vícenásobný přístup</span><span class="sxs-lookup"><span data-stu-id="14c92-103">Reliable Actors reentrancy</span></span>
+<span data-ttu-id="14c92-104">modul runtime Reliable Actors Hello, standardně umožňuje vícenásobný přístup na základě kontextu logické volání.</span><span class="sxs-lookup"><span data-stu-id="14c92-104">hello Reliable Actors runtime, by default, allows logical call context-based reentrancy.</span></span> <span data-ttu-id="14c92-105">To umožňuje vícenásobně aktéři toobe přístupné Pokud jsou v hello stejné volání kontextu řetězu.</span><span class="sxs-lookup"><span data-stu-id="14c92-105">This allows for actors toobe reentrant if they are in hello same call context chain.</span></span> <span data-ttu-id="14c92-106">Například objektu Actor A odešle zprávu tooActor B, který odesílá zprávy tooActor C. Jako součást zpracování zprávy hello Pokud objektu Actor C volání objektu Actor A, uvítací zprávu je vícenásobné, takže bude možné.</span><span class="sxs-lookup"><span data-stu-id="14c92-106">For example, Actor A sends a message tooActor B, who sends a message tooActor C. As part of hello message processing, if Actor C calls Actor A, hello message is reentrant, so it will be allowed.</span></span> <span data-ttu-id="14c92-107">Všechny ostatní zprávy, které jsou součástí jiné volání kontextu se zablokuje na objektu Actor A její dokončení zpracování.</span><span class="sxs-lookup"><span data-stu-id="14c92-107">Any other messages that are part of a different call context will be blocked on Actor A until it finishes processing.</span></span>
 
-<span data-ttu-id="01cf1-108">Existují dvě možnosti k dispozici pro opětovné zadání objektu actor definovaný v `ActorReentrancyMode` výčtu:</span><span class="sxs-lookup"><span data-stu-id="01cf1-108">There are two options available for actor reentrancy defined in the `ActorReentrancyMode` enum:</span></span>
+<span data-ttu-id="14c92-108">Existují dvě možnosti k dispozici pro opětovné zadání objektu actor definované v hello `ActorReentrancyMode` výčtu:</span><span class="sxs-lookup"><span data-stu-id="14c92-108">There are two options available for actor reentrancy defined in hello `ActorReentrancyMode` enum:</span></span>
 
-* <span data-ttu-id="01cf1-109">`LogicalCallContext`(výchozí nastavení)</span><span class="sxs-lookup"><span data-stu-id="01cf1-109">`LogicalCallContext` (default behavior)</span></span>
-* <span data-ttu-id="01cf1-110">`Disallowed`– Zakáže vícenásobný přístup</span><span class="sxs-lookup"><span data-stu-id="01cf1-110">`Disallowed` - disables reentrancy</span></span>
+* <span data-ttu-id="14c92-109">`LogicalCallContext`(výchozí nastavení)</span><span class="sxs-lookup"><span data-stu-id="14c92-109">`LogicalCallContext` (default behavior)</span></span>
+* <span data-ttu-id="14c92-110">`Disallowed`– Zakáže vícenásobný přístup</span><span class="sxs-lookup"><span data-stu-id="14c92-110">`Disallowed` - disables reentrancy</span></span>
 
 ```csharp
 public enum ActorReentrancyMode
@@ -42,9 +42,9 @@ public enum ActorReentrancyMode
     Disallowed(2)
 }
 ```
-<span data-ttu-id="01cf1-111">Vícenásobný přístup se dá nakonfigurovat v `ActorService`na nastavení během registrace.</span><span class="sxs-lookup"><span data-stu-id="01cf1-111">Reentrancy can be configured in an `ActorService`'s settings during registration.</span></span> <span data-ttu-id="01cf1-112">Toto nastavení platí pro všechny instance objektu actor vytvořen v rámci služby objektu actor.</span><span class="sxs-lookup"><span data-stu-id="01cf1-112">The setting applies to all actor instances created in the actor service.</span></span>
+<span data-ttu-id="14c92-111">Vícenásobný přístup se dá nakonfigurovat v `ActorService`na nastavení během registrace.</span><span class="sxs-lookup"><span data-stu-id="14c92-111">Reentrancy can be configured in an `ActorService`'s settings during registration.</span></span> <span data-ttu-id="14c92-112">nastavení Hello platí instancí objektu actor tooall vytvořených pomocí služby objektu actor hello.</span><span class="sxs-lookup"><span data-stu-id="14c92-112">hello setting applies tooall actor instances created in hello actor service.</span></span>
 
-<span data-ttu-id="01cf1-113">Následující příklad ukazuje služby objektu actor, která nastaví režim vícenásobný přístup k `ActorReentrancyMode.Disallowed`.</span><span class="sxs-lookup"><span data-stu-id="01cf1-113">The following example shows an actor service that sets the reentrancy mode to `ActorReentrancyMode.Disallowed`.</span></span> <span data-ttu-id="01cf1-114">V tomto případě, pokud objekt actor odešle vícenásobné zprávu do jiného objektu actor, k výjimce typu `FabricException` bude vyvolána.</span><span class="sxs-lookup"><span data-stu-id="01cf1-114">In this case, if an actor sends a reentrant message to another actor, an exception of type `FabricException` will be thrown.</span></span>
+<span data-ttu-id="14c92-113">Hello následující příklad ukazuje služby objektu actor, která nastaví režim vícenásobný přístup hello příliš`ActorReentrancyMode.Disallowed`.</span><span class="sxs-lookup"><span data-stu-id="14c92-113">hello following example shows an actor service that sets hello reentrancy mode too`ActorReentrancyMode.Disallowed`.</span></span> <span data-ttu-id="14c92-114">V tomto případě, pokud objekt actor odešle vícenásobné zpráva tooanother objektu actor, k výjimce typu `FabricException` bude vyvolána.</span><span class="sxs-lookup"><span data-stu-id="14c92-114">In this case, if an actor sends a reentrant message tooanother actor, an exception of type `FabricException` will be thrown.</span></span>
 
 ```csharp
 static class Program
@@ -109,5 +109,5 @@ static class Program
 ```
 
 
-## <a name="next-steps"></a><span data-ttu-id="01cf1-115">Další kroky</span><span class="sxs-lookup"><span data-stu-id="01cf1-115">Next steps</span></span>
-* <span data-ttu-id="01cf1-116">Další informace o opětovné zadání v [referenční dokumentace rozhraní API objektu Actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)</span><span class="sxs-lookup"><span data-stu-id="01cf1-116">Learn more about reentrancy in the [Actor API reference documentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)</span></span>
+## <a name="next-steps"></a><span data-ttu-id="14c92-115">Další kroky</span><span class="sxs-lookup"><span data-stu-id="14c92-115">Next steps</span></span>
+* <span data-ttu-id="14c92-116">Další informace o opětovné zadání v hello [referenční dokumentace rozhraní API objektu Actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)</span><span class="sxs-lookup"><span data-stu-id="14c92-116">Learn more about reentrancy in hello [Actor API reference documentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)</span></span>

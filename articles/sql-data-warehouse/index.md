@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace ke službě Azure SQL Data Warehouse – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se používat službu SQL Data Warehouse, která kombinuje SQL Server s architekturou MPP (Massively Parallel Processing). Dokumentace ukazuje, jak načítat, analyzovat, spravovat a exportovat data."
+title: "aaaAzure dokumentaci k systému SQL Data Warehouse – kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Zjistěte, jak toouse SQL Data Warehouse, kombinace SQL Server s massively paralelní zpracování. Dokumentace popisuje, jak tooload, analyzovat, spravovat a exportovat data."
 services: sql-data-warehouse
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: b9f5bc85d6fca466be7abbe67b400856e1635459
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a3deb9fe2dbd29cdc250510ca7368b4d71422658
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sql-data-warehouse-documentation"></a>Dokumentace ke službě SQL Data Warehouse
 
-Naučte se používat službu SQL Data Warehouse, která relační databázi kombinuje SQL Serveru s architekturou MPP (Massively Parallel Processing). Kurzy a další dokumentace ukazují, jak načítat data do skladu a potom je analyzovat, spravovat a exportovat.
+Zjistěte, jak toouse SQL datového skladu, který kombinuje relační databáze systému SQL Server hello s masivně paralelní zpracování. Kurzy a další dokumenty popisují, jak tooload dat do skladu hello pak analyzovat, spravovat a exportovat je.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -71,7 +71,7 @@ Naučte se používat službu SQL Data Warehouse, která relační databázi kom
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme vytvářet SQL Data Warehouse s využitím webu Azure Portal</h3>
+                        <h3>Vytvoření SQL Data Warehouse pomocí hello portálu Azure</h3>
                     </div>
                 </div>
             </div>

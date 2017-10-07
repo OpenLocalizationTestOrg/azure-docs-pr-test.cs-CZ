@@ -1,6 +1,6 @@
 ---
-title: "Seznam všech úloh Azure Import/Export | MicrosoftDocs"
-description: "Naučte se seznam všech úloh služby Azure Import/Export v předplatném."
+title: "aaaList všechny úlohy Azure Import/Export | MicrosoftDocs"
+description: "Zjistěte, jak toolist všechny služby Azure Import/Export hello úlohy v předplatném."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 1977bfc0e516088310f45ecdd960287eeed2c2d8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0e12bf3dc3f2084a1987ac362cf8d1041059543c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="enumerating-jobs-in-the-azure-importexport-service"></a><span data-ttu-id="108a5-103">Vytváření výčtu úloh ve službě Azure Import/Export</span><span class="sxs-lookup"><span data-stu-id="108a5-103">Enumerating jobs in the Azure Import/Export service</span></span>
-<span data-ttu-id="108a5-104">Chcete-li vytvořit výčet všech úloh v předplatném, volejte [seznamu úloh](/rest/api/storageimportexport/jobs#Jobs_List) operaci.</span><span class="sxs-lookup"><span data-stu-id="108a5-104">To enumerate all jobs in a subscription, call the [List Jobs](/rest/api/storageimportexport/jobs#Jobs_List) operation.</span></span> <span data-ttu-id="108a5-105">`List Jobs`Vrátí seznam úloh a také následující atributy:</span><span class="sxs-lookup"><span data-stu-id="108a5-105">`List Jobs` returns a list of jobs as well as the following attributes:</span></span>
+# <a name="enumerating-jobs-in-hello-azure-importexport-service"></a><span data-ttu-id="78f66-103">Vytváření výčtu úloh v hello služba Azure Import/Export</span><span class="sxs-lookup"><span data-stu-id="78f66-103">Enumerating jobs in hello Azure Import/Export service</span></span>
+<span data-ttu-id="78f66-104">tooenumerate všechny úlohy v předplatném, volání hello [seznamu úloh](/rest/api/storageimportexport/jobs#Jobs_List) operaci.</span><span class="sxs-lookup"><span data-stu-id="78f66-104">tooenumerate all jobs in a subscription, call hello [List Jobs](/rest/api/storageimportexport/jobs#Jobs_List) operation.</span></span> <span data-ttu-id="78f66-105">`List Jobs`Vrátí seznam úloh, jakož i hello následující atributy:</span><span class="sxs-lookup"><span data-stu-id="78f66-105">`List Jobs` returns a list of jobs as well as hello following attributes:</span></span>
 
--   <span data-ttu-id="108a5-106">Typ úlohy (Import nebo Export)</span><span class="sxs-lookup"><span data-stu-id="108a5-106">The type of job (Import or Export)</span></span>
+-   <span data-ttu-id="78f66-106">Hello typu úlohy (Import nebo Export)</span><span class="sxs-lookup"><span data-stu-id="78f66-106">hello type of job (Import or Export)</span></span>
 
--   <span data-ttu-id="108a5-107">Aktuální stav úlohy</span><span class="sxs-lookup"><span data-stu-id="108a5-107">The current job state</span></span>
+-   <span data-ttu-id="78f66-107">aktuální stav úlohy Hello</span><span class="sxs-lookup"><span data-stu-id="78f66-107">hello current job state</span></span>
 
--   <span data-ttu-id="108a5-108">Úloha přidruženému účtu úložiště</span><span class="sxs-lookup"><span data-stu-id="108a5-108">The job's associated storage account</span></span>
+-   <span data-ttu-id="78f66-108">Úloha Hello přidružený účet úložiště</span><span class="sxs-lookup"><span data-stu-id="78f66-108">hello job's associated storage account</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="108a5-109">Další kroky</span><span class="sxs-lookup"><span data-stu-id="108a5-109">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="78f66-109">Další kroky</span><span class="sxs-lookup"><span data-stu-id="78f66-109">Next steps</span></span>
 
-* [<span data-ttu-id="108a5-110">Pomocí REST API služby importu a exportu</span><span class="sxs-lookup"><span data-stu-id="108a5-110">Using the Import/Export service REST API</span></span>](storage-import-export-using-the-rest-api.md)
+* [<span data-ttu-id="78f66-110">Pomocí REST API služby importu a exportu hello</span><span class="sxs-lookup"><span data-stu-id="78f66-110">Using hello Import/Export service REST API</span></span>](storage-import-export-using-the-rest-api.md)

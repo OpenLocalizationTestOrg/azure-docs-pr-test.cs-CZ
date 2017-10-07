@@ -1,6 +1,6 @@
 ---
-title: "Začínáme se službou Azure IoT Hub (Java) | Dokumentace Microsoftu"
-description: "Zjistěte, jak odesílat zprávy typu zařízení-cloud do služby Azure IoT Hub pomocí sad IoT SDK pro Javu. Vytvořte simulované zařízení a aplikace služeb pro registraci vašeho zařízení, odesílání zpráv a čtení zpráv ze služby IoT Hub."
+title: "aaaGet začít s Azure IoT Hub (Java) | Microsoft Docs"
+description: "Zjistěte, jak toosend zařízení cloud zprávy tooAzure IoT Hub pro jazyk Java pomocí sady SDK služby IoT. Vytvoření simulovaného zařízení a služby aplikace tooregister zařízení, odesílání zpráv a čtení zpráv ze služby IoT hub."
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -15,50 +15,50 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 707356a49970bcd76a55ee1b8a6fbddf6a6ba390
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ac954f0522b46ed2a5b4a819bc611c13be0b9a9e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-device-to-your-iot-hub-using-java"></a><span data-ttu-id="97fd3-104">Připojení zařízení ke službě IoT Hub pomocí Javy</span><span class="sxs-lookup"><span data-stu-id="97fd3-104">Connect your device to your IoT hub using Java</span></span>
+# <a name="connect-your-device-tooyour-iot-hub-using-java"></a><span data-ttu-id="9573f-104">Připojení zařízení tooyour IoT hub pomocí jazyka Java</span><span class="sxs-lookup"><span data-stu-id="9573f-104">Connect your device tooyour IoT hub using Java</span></span>
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-<span data-ttu-id="97fd3-105">Na konci tohoto kurzu budete mít tři konzolové aplikace Java:</span><span class="sxs-lookup"><span data-stu-id="97fd3-105">At the end of this tutorial, you have three Java console apps:</span></span>
+<span data-ttu-id="9573f-105">Na konci hello tohoto kurzu máte tři aplikace konzoly v jazyce Java:</span><span class="sxs-lookup"><span data-stu-id="9573f-105">At hello end of this tutorial, you have three Java console apps:</span></span>
 
-* <span data-ttu-id="97fd3-106">**create-device-identity** vytváří identitu zařízení a přidružený klíč zabezpečení k připojení aplikace pro zařízení.</span><span class="sxs-lookup"><span data-stu-id="97fd3-106">**create-device-identity**, which creates a device identity and associated security key to connect your device app.</span></span>
-* <span data-ttu-id="97fd3-107">**read-d2c-messages** zobrazuje telemetrická data odesílaná aplikací pro zařízení.</span><span class="sxs-lookup"><span data-stu-id="97fd3-107">**read-d2c-messages**, which displays the telemetry sent by your device app.</span></span>
-* <span data-ttu-id="97fd3-108">**simulated-device** propojuje službu IoT Hub s dříve vytvořenou identitou zařízení a každou druhou sekundu zasílá telemetrickou zprávu pomocí protokolu MQTT.</span><span class="sxs-lookup"><span data-stu-id="97fd3-108">**simulated-device**, which connects to your IoT hub with the device identity created earlier, and sends a telemetry message every second using the MQTT protocol.</span></span>
+* <span data-ttu-id="9573f-106">**Create-device-identity**, který vytvoří identitu zařízení a přiřazený bezpečnostní klíč tooconnect aplikace zařízení.</span><span class="sxs-lookup"><span data-stu-id="9573f-106">**create-device-identity**, which creates a device identity and associated security key tooconnect your device app.</span></span>
+* <span data-ttu-id="9573f-107">**Read-d2c-messages**, který zobrazuje hello telemetrické zprávy odesílané aplikace zařízení.</span><span class="sxs-lookup"><span data-stu-id="9573f-107">**read-d2c-messages**, which displays hello telemetry sent by your device app.</span></span>
+* <span data-ttu-id="9573f-108">**simulated-device**, který připojí tooyour IoT hub s dříve vytvořenou identitou zařízení hello a odešle zprávu telemetrie každý druhý pomocí hello MQTT protokolu.</span><span class="sxs-lookup"><span data-stu-id="9573f-108">**simulated-device**, which connects tooyour IoT hub with hello device identity created earlier, and sends a telemetry message every second using hello MQTT protocol.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="97fd3-109">Informace o sadách Azure IoT SDK, s jejichž pomocí můžete vytvářet aplikace pro zařízení i back-end vašeho řešení, najdete v tématu [Sady SDK služby Azure IoT][lnk-hub-sdks].</span><span class="sxs-lookup"><span data-stu-id="97fd3-109">The article [Azure IoT SDKs][lnk-hub-sdks] provides information about the Azure IoT SDKs that you can use to build both apps to run on devices and your solution back end.</span></span>
+> <span data-ttu-id="9573f-109">článek Hello [SDK služby Azure IoT] [ lnk-hub-sdks] poskytuje informace o hello SDK služby Azure IoT, které můžete toobuild toorun obě aplikace na zařízení a back end vašeho řešení.</span><span class="sxs-lookup"><span data-stu-id="9573f-109">hello article [Azure IoT SDKs][lnk-hub-sdks] provides information about hello Azure IoT SDKs that you can use toobuild both apps toorun on devices and your solution back end.</span></span>
 
-<span data-ttu-id="97fd3-110">Pro absolvování tohoto kurzu potřebujete:</span><span class="sxs-lookup"><span data-stu-id="97fd3-110">To complete this tutorial, you need the following:</span></span>
+<span data-ttu-id="9573f-110">toocomplete tohoto kurzu budete potřebovat hello následující:</span><span class="sxs-lookup"><span data-stu-id="9573f-110">toocomplete this tutorial, you need hello following:</span></span>
 
-* <span data-ttu-id="97fd3-111">Nejnovější [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)</span><span class="sxs-lookup"><span data-stu-id="97fd3-111">The latest [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)</span></span> 
-* [<span data-ttu-id="97fd3-112">Maven 3</span><span class="sxs-lookup"><span data-stu-id="97fd3-112">Maven 3</span></span>](https://maven.apache.org/install.html) 
-* <span data-ttu-id="97fd3-113">Aktivní účet Azure.</span><span class="sxs-lookup"><span data-stu-id="97fd3-113">An active Azure account.</span></span> <span data-ttu-id="97fd3-114">(Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)</span><span class="sxs-lookup"><span data-stu-id="97fd3-114">(If you don't have an account, you can create a [free account][lnk-free-trial] in just a couple of minutes.)</span></span>
+* <span data-ttu-id="9573f-111">Hello nejnovější [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)</span><span class="sxs-lookup"><span data-stu-id="9573f-111">hello latest [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)</span></span> 
+* [<span data-ttu-id="9573f-112">Maven 3</span><span class="sxs-lookup"><span data-stu-id="9573f-112">Maven 3</span></span>](https://maven.apache.org/install.html) 
+* <span data-ttu-id="9573f-113">Aktivní účet Azure.</span><span class="sxs-lookup"><span data-stu-id="9573f-113">An active Azure account.</span></span> <span data-ttu-id="9573f-114">(Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)</span><span class="sxs-lookup"><span data-stu-id="9573f-114">(If you don't have an account, you can create a [free account][lnk-free-trial] in just a couple of minutes.)</span></span>
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-<span data-ttu-id="97fd3-115">Na závěr si poznamenejte hodnotu **Primární klíč**.</span><span class="sxs-lookup"><span data-stu-id="97fd3-115">As a final step, make a note of the **Primary key** value.</span></span> <span data-ttu-id="97fd3-116">Potom klikněte na **Koncové body** a na integrovaný koncový bod **Události**.</span><span class="sxs-lookup"><span data-stu-id="97fd3-116">Then click **Endpoints** and the **Events** built-in endpoint.</span></span> <span data-ttu-id="97fd3-117">V okně **Vlastnosti** si poznamenejte **název kompatibilní s centrem událostí** a adresu **koncového bodu kompatibilního s centrem událostí**.</span><span class="sxs-lookup"><span data-stu-id="97fd3-117">On the **Properties** blade, make a note of the **Event Hub-compatible name** and the **Event Hub-compatible endpoint** address.</span></span> <span data-ttu-id="97fd3-118">Tyto tři hodnoty budete potřebovat k vytvoření aplikace **read-d2c-messages**.</span><span class="sxs-lookup"><span data-stu-id="97fd3-118">You need these three values when you create your **read-d2c-messages** app.</span></span>
+<span data-ttu-id="9573f-115">V posledním kroku, si poznamenejte hello **primární klíč** hodnotu.</span><span class="sxs-lookup"><span data-stu-id="9573f-115">As a final step, make a note of hello **Primary key** value.</span></span> <span data-ttu-id="9573f-116">Pak klikněte na tlačítko **koncové body** a hello **události** vestavěným koncovým bodem.</span><span class="sxs-lookup"><span data-stu-id="9573f-116">Then click **Endpoints** and hello **Events** built-in endpoint.</span></span> <span data-ttu-id="9573f-117">Na hello **vlastnosti** okno, poznamenejte hello **název kompatibilní s centrem událostí** a hello **koncový bod kompatibilní s centrem událostí** adresu.</span><span class="sxs-lookup"><span data-stu-id="9573f-117">On hello **Properties** blade, make a note of hello **Event Hub-compatible name** and hello **Event Hub-compatible endpoint** address.</span></span> <span data-ttu-id="9573f-118">Tyto tři hodnoty budete potřebovat k vytvoření aplikace **read-d2c-messages**.</span><span class="sxs-lookup"><span data-stu-id="9573f-118">You need these three values when you create your **read-d2c-messages** app.</span></span>
 
 ![Okno Zasílání zpráv služby IoT Hub na webu Azure Portal][6]
 
-<span data-ttu-id="97fd3-120">Nyní jste vytvořili svůj IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="97fd3-120">You have now created your IoT hub.</span></span> <span data-ttu-id="97fd3-121">Máte název hostitele služby IoT Hub, připojovací řetězec služby IoT Hub, primární klíč služby IoT Hub a název a koncový bod kompatibilní s centrem událostí, které potřebujete k dokončení tohoto kurzu.</span><span class="sxs-lookup"><span data-stu-id="97fd3-121">You have the IoT Hub host name, IoT Hub connection string, IoT Hub Primary Key, Event Hub-compatible name, and Event Hub-compatible endpoint you need to complete this tutorial.</span></span>
+<span data-ttu-id="9573f-120">Nyní jste vytvořili svůj IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="9573f-120">You have now created your IoT hub.</span></span> <span data-ttu-id="9573f-121">Máte hello název hostitele služby IoT Hub, připojovací řetězec služby IoT Hub, IoT Hub primární klíč, název kompatibilní s centrem událostí a koncový bod kompatibilní s centrem událostí je třeba toocomplete v tomto kurzu.</span><span class="sxs-lookup"><span data-stu-id="9573f-121">You have hello IoT Hub host name, IoT Hub connection string, IoT Hub Primary Key, Event Hub-compatible name, and Event Hub-compatible endpoint you need toocomplete this tutorial.</span></span>
 
-## <a name="create-a-device-identity"></a><span data-ttu-id="97fd3-122">Vytvoření identity zařízení</span><span class="sxs-lookup"><span data-stu-id="97fd3-122">Create a device identity</span></span>
-<span data-ttu-id="97fd3-123">V této části vytvoříte konzolovou aplikaci Java, která v registru identit ve službě IoT Hub vytvoří identitu zařízení.</span><span class="sxs-lookup"><span data-stu-id="97fd3-123">In this section, you create a Java console app that creates a device identity in the identity registry in your IoT hub.</span></span> <span data-ttu-id="97fd3-124">Zařízení lze připojit ke službě IoT Hub, pouze pokud má záznam v registru identit.</span><span class="sxs-lookup"><span data-stu-id="97fd3-124">A device cannot connect to IoT hub unless it has an entry in the identity registry.</span></span> <span data-ttu-id="97fd3-125">Další informace najdete v části **Registr identit** v [Příručce pro vývojáře pro službu IoT Hub][lnk-devguide-identity].</span><span class="sxs-lookup"><span data-stu-id="97fd3-125">For more information, see the **Identity Registry** section of the [IoT Hub developer guide][lnk-devguide-identity].</span></span> <span data-ttu-id="97fd3-126">Tato konzolová aplikace po spuštění vygeneruje jedinečné ID zařízení a klíč, s jehož pomocí se zařízení může identifikovat při posílání zpráv typu zařízení-cloud do služby IoT Hub. </span><span class="sxs-lookup"><span data-stu-id="97fd3-126">When you run this console app, it generates a unique device ID and key that your device can use to identify itself when it sends device-to-cloud messages to IoT Hub.</span></span>
+## <a name="create-a-device-identity"></a><span data-ttu-id="9573f-122">Vytvoření identity zařízení</span><span class="sxs-lookup"><span data-stu-id="9573f-122">Create a device identity</span></span>
+<span data-ttu-id="9573f-123">V této části vytvoříte konzolovou aplikaci Java, která vytvoří identitu zařízení v registru identit hello ve službě IoT hub.</span><span class="sxs-lookup"><span data-stu-id="9573f-123">In this section, you create a Java console app that creates a device identity in hello identity registry in your IoT hub.</span></span> <span data-ttu-id="9573f-124">Pokud má záznam v registru identit hello se nemůže připojit zařízení tooIoT rozbočovače.</span><span class="sxs-lookup"><span data-stu-id="9573f-124">A device cannot connect tooIoT hub unless it has an entry in hello identity registry.</span></span> <span data-ttu-id="9573f-125">Další informace najdete v tématu hello **registru identit** části hello [Příručka vývojáře pro službu IoT Hub][lnk-devguide-identity].</span><span class="sxs-lookup"><span data-stu-id="9573f-125">For more information, see hello **Identity Registry** section of hello [IoT Hub developer guide][lnk-devguide-identity].</span></span> <span data-ttu-id="9573f-126">Při spuštění této konzolové aplikace vygeneruje jedinečné ID zařízení a klíč, že vaše zařízení použít tooidentify samotné při odešle zařízení cloud zprávy tooIoT rozbočovače.</span><span class="sxs-lookup"><span data-stu-id="9573f-126">When you run this console app, it generates a unique device ID and key that your device can use tooidentify itself when it sends device-to-cloud messages tooIoT Hub.</span></span>
 
-1. <span data-ttu-id="97fd3-127">Vytvořte prázdnou složku s názvem iot-java-get-started.</span><span class="sxs-lookup"><span data-stu-id="97fd3-127">Create an empty folder called iot-java-get-started.</span></span> <span data-ttu-id="97fd3-128">Ve složce iot-java-get-started vytvořte pomocí následujícího příkazu v příkazovém řádku projekt Maven s názvem **create-device-identity**.</span><span class="sxs-lookup"><span data-stu-id="97fd3-128">In the iot-java-get-started folder, create a Maven project called **create-device-identity** using the following command at your command prompt.</span></span> <span data-ttu-id="97fd3-129">Všimněte si, že se jedná o jeden dlouhý příkaz:</span><span class="sxs-lookup"><span data-stu-id="97fd3-129">Note this is a single, long command:</span></span>
+1. <span data-ttu-id="9573f-127">Vytvořte prázdnou složku s názvem iot-java-get-started.</span><span class="sxs-lookup"><span data-stu-id="9573f-127">Create an empty folder called iot-java-get-started.</span></span> <span data-ttu-id="9573f-128">Ve složce iot-java-get-started hello vytvořte projekt Maven s názvem **create-device-identity** pomocí hello následující příkaz na příkazovém řádku.</span><span class="sxs-lookup"><span data-stu-id="9573f-128">In hello iot-java-get-started folder, create a Maven project called **create-device-identity** using hello following command at your command prompt.</span></span> <span data-ttu-id="9573f-129">Všimněte si, že se jedná o jeden dlouhý příkaz:</span><span class="sxs-lookup"><span data-stu-id="9573f-129">Note this is a single, long command:</span></span>
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=create-device-identity -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. <span data-ttu-id="97fd3-130">Na příkazovém řádku přejděte do složky create-device-identity.</span><span class="sxs-lookup"><span data-stu-id="97fd3-130">At your command prompt, navigate to the create-device-identity folder.</span></span>
+2. <span data-ttu-id="9573f-130">Na příkazovém řádku přejděte toohello složky create-device-identity.</span><span class="sxs-lookup"><span data-stu-id="9573f-130">At your command prompt, navigate toohello create-device-identity folder.</span></span>
 
-3. <span data-ttu-id="97fd3-131">Pomocí textového editoru otevřete ve složce create-device-identity soubor pom.xml a k uzlu **závislosti** přidejte následující závislost.</span><span class="sxs-lookup"><span data-stu-id="97fd3-131">Using a text editor, open the pom.xml file in the create-device-identity folder and add the following dependency to the **dependencies** node.</span></span> <span data-ttu-id="97fd3-132">Tato závislost vám umožní použít v aplikaci balíček iot-service-client:</span><span class="sxs-lookup"><span data-stu-id="97fd3-132">This dependency enables you to use the iot-service-client package in your app:</span></span>
+3. <span data-ttu-id="9573f-131">Pomocí textového editoru, otevřete soubor pom.xml hello ve složce create-device-identity hello a přidejte následující závislost toohello hello **závislosti** uzlu.</span><span class="sxs-lookup"><span data-stu-id="9573f-131">Using a text editor, open hello pom.xml file in hello create-device-identity folder and add hello following dependency toohello **dependencies** node.</span></span> <span data-ttu-id="9573f-132">Tuto závislost umožňuje, aby vám toouse hello klienta služby iot balíček ve vaší aplikaci:</span><span class="sxs-lookup"><span data-stu-id="9573f-132">This dependency enables you toouse hello iot-service-client package in your app:</span></span>
 
     ```xml
     <dependency>
@@ -69,13 +69,13 @@ ms.lasthandoff: 08/29/2017
     ```
 
     > [!NOTE]
-    > <span data-ttu-id="97fd3-133">Můžete vyhledat nejnovější verzi **iot-service-client** pomocí [vyhledávání Maven][lnk-maven-service-search].</span><span class="sxs-lookup"><span data-stu-id="97fd3-133">You can check for the latest version of **iot-service-client** using [Maven search][lnk-maven-service-search].</span></span>
+    > <span data-ttu-id="9573f-133">Můžete zkontrolovat nejnovější verze hello **klienta služby iot** pomocí [Maven vyhledávání][lnk-maven-service-search].</span><span class="sxs-lookup"><span data-stu-id="9573f-133">You can check for hello latest version of **iot-service-client** using [Maven search][lnk-maven-service-search].</span></span>
 
-4. <span data-ttu-id="97fd3-134">Soubor pom.xml uložte a zavřete.</span><span class="sxs-lookup"><span data-stu-id="97fd3-134">Save and close the pom.xml file.</span></span>
+4. <span data-ttu-id="9573f-134">Uložte a zavřete soubor pom.xml hello.</span><span class="sxs-lookup"><span data-stu-id="9573f-134">Save and close hello pom.xml file.</span></span>
 
-5. <span data-ttu-id="97fd3-135">Pomocí textového editoru otevřete soubor create-device-identity\src\main\java\com\mycompany\app\App.java.</span><span class="sxs-lookup"><span data-stu-id="97fd3-135">Using a text editor, open the create-device-identity\src\main\java\com\mycompany\app\App.java file.</span></span>
+5. <span data-ttu-id="9573f-135">Pomocí textového editoru otevřete soubor create-device-identity\src\main\java\com\mycompany\app\App.java hello.</span><span class="sxs-lookup"><span data-stu-id="9573f-135">Using a text editor, open hello create-device-identity\src\main\java\com\mycompany\app\App.java file.</span></span>
 
-6. <span data-ttu-id="97fd3-136">Do souboru přidejte následující příkazy pro **import**:</span><span class="sxs-lookup"><span data-stu-id="97fd3-136">Add the following **import** statements to the file:</span></span>
+6. <span data-ttu-id="9573f-136">Přidejte následující hello **importovat** souboru toohello příkazy:</span><span class="sxs-lookup"><span data-stu-id="9573f-136">Add hello following **import** statements toohello file:</span></span>
 
     ```java
     import com.microsoft.azure.sdk.iot.service.exceptions.IotHubException;
@@ -86,7 +86,7 @@ ms.lasthandoff: 08/29/2017
     import java.net.URISyntaxException;
     ```
 
-7. <span data-ttu-id="97fd3-137">Do třídy **App** přidejte následující proměnné na úrovni třídy a nahraďte zástupné symboly **{yourhubconnectionstring}** hodnotou, kterou jste si předtím poznamenali:</span><span class="sxs-lookup"><span data-stu-id="97fd3-137">Add the following class-level variables to the **App** class, replacing **{yourhubconnectionstring}** with the value your noted earlier:</span></span>
+7. <span data-ttu-id="9573f-137">Přidejte následující proměnné na úrovni toohello hello **aplikace** třídy a nahraďte **{yourhubconnectionstring}** s hello hodnotu vaší uvedené výše:</span><span class="sxs-lookup"><span data-stu-id="9573f-137">Add hello following class-level variables toohello **App** class, replacing **{yourhubconnectionstring}** with hello value your noted earlier:</span></span>
 
     ```java
     private static final String connectionString = "{yourhubconnectionstring}";
@@ -94,13 +94,13 @@ ms.lasthandoff: 08/29/2017
     ```
 [!INCLUDE [iot-hub-pii-note-naming-device](../../includes/iot-hub-pii-note-naming-device.md)]
 
-8. <span data-ttu-id="97fd3-138">Upravte podpis metody **Main** tak, aby zahrnoval následující výjimky:</span><span class="sxs-lookup"><span data-stu-id="97fd3-138">Modify the signature of the **main** method to include the exceptions as follows:</span></span>
+8. <span data-ttu-id="9573f-138">Upravte podpis hello hello **hlavní** metoda tooinclude hello výjimky následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="9573f-138">Modify hello signature of hello **main** method tooinclude hello exceptions as follows:</span></span>
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException, Exception
     ```
 
-9. <span data-ttu-id="97fd3-139">Přidejte následující kód jako obsah metody **Main**.</span><span class="sxs-lookup"><span data-stu-id="97fd3-139">Add the following code as the body of the **main** method.</span></span> <span data-ttu-id="97fd3-140">Tento kód vytvoří v registru identit služby IoT Hub zařízení s názvem *javadevice* (pokud zatím neexistuje).</span><span class="sxs-lookup"><span data-stu-id="97fd3-140">This code creates a device called *javadevice* in your IoT Hub identity registry if doesn't already exist.</span></span> <span data-ttu-id="97fd3-141">Potom zobrazí ID a klíč zařízení, které budete později potřebovat:</span><span class="sxs-lookup"><span data-stu-id="97fd3-141">It then displays the device ID and key that you need later:</span></span>
+9. <span data-ttu-id="9573f-139">Přidejte následující kód jako hello textu hello hello **hlavní** metoda.</span><span class="sxs-lookup"><span data-stu-id="9573f-139">Add hello following code as hello body of hello **main** method.</span></span> <span data-ttu-id="9573f-140">Tento kód vytvoří v registru identit služby IoT Hub zařízení s názvem *javadevice* (pokud zatím neexistuje).</span><span class="sxs-lookup"><span data-stu-id="9573f-140">This code creates a device called *javadevice* in your IoT Hub identity registry if doesn't already exist.</span></span> <span data-ttu-id="9573f-141">Potom zobrazí hello zařízení ID a klíč, který budete potřebovat později:</span><span class="sxs-lookup"><span data-stu-id="9573f-141">It then displays hello device ID and key that you need later:</span></span>
 
     ```java
     RegistryManager registryManager = RegistryManager.createFromConnectionString(connectionString);
@@ -112,7 +112,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     try {
       device = registryManager.addDevice(device);
     } catch (IotHubException iote) {
-      // If the device already exists.
+      // If hello device already exists.
       try {
         device = registryManager.getDevice(deviceId);
       } catch (IotHubException iotf) {
@@ -130,7 +130,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     try {
       device = registryManager.addDevice(device);
     } catch (IotHubException iote) {
-      // If the device already exists.
+      // If hello device already exists.
       try {
         device = registryManager.getDevice(deviceId);
       } catch (IotHubException iotf) {
@@ -144,41 +144,41 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     System.out.println("Device key: " + device.getPrimaryKey());
     ```
 
-10. <span data-ttu-id="97fd3-142">Soubor App.java uložte a zavřete.</span><span class="sxs-lookup"><span data-stu-id="97fd3-142">Save and close the App.java file.</span></span>
+10. <span data-ttu-id="9573f-142">Uložte a zavřete soubor App.java hello.</span><span class="sxs-lookup"><span data-stu-id="9573f-142">Save and close hello App.java file.</span></span>
 
-11. <span data-ttu-id="97fd3-143">Aplikaci **create-device-identity** pomocí nástroje Maven sestavíte tak, že v příkazovém řádku ve složce create-device-identity spustíte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="97fd3-143">To build the **create-device-identity** app using Maven, execute the following command at the command prompt in the create-device-identity folder:</span></span>
+11. <span data-ttu-id="9573f-143">toobuild hello **create-device-identity** aplikace pomocí nástroje Maven, spustit následující příkaz na příkazovém řádku hello ve složce create-device-identity hello hello:</span><span class="sxs-lookup"><span data-stu-id="9573f-143">toobuild hello **create-device-identity** app using Maven, execute hello following command at hello command prompt in hello create-device-identity folder:</span></span>
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
 
-12. <span data-ttu-id="97fd3-144">Aplikaci **create-device-identity** pomocí nástroje Maven spustíte tak, že v příkazovém řádku ve složce create-device-identity spustíte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="97fd3-144">To run the **create-device-identity** app using Maven, execute the following command at the command prompt in the create-device-identity folder:</span></span>
+12. <span data-ttu-id="9573f-144">toorun hello **create-device-identity** aplikace pomocí nástroje Maven, spustit následující příkaz na příkazovém řádku hello ve složce create-device-identity hello hello:</span><span class="sxs-lookup"><span data-stu-id="9573f-144">toorun hello **create-device-identity** app using Maven, execute hello following command at hello command prompt in hello create-device-identity folder:</span></span>
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-13. <span data-ttu-id="97fd3-145">Poznamenejte si **ID zařízení** a **Klíč zařízení**.</span><span class="sxs-lookup"><span data-stu-id="97fd3-145">Make a note of the **Device ID** and **Device key**.</span></span> <span data-ttu-id="97fd3-146">Tyto hodnoty budete potřebovat později při vytváření aplikace, která se ke službě IoT Hub připojí jako zařízení.</span><span class="sxs-lookup"><span data-stu-id="97fd3-146">You need these values later when you create an app that connects to IoT Hub as a device.</span></span>
+13. <span data-ttu-id="9573f-145">Poznamenejte si hello **ID zařízení** a **klíč zařízení**.</span><span class="sxs-lookup"><span data-stu-id="9573f-145">Make a note of hello **Device ID** and **Device key**.</span></span> <span data-ttu-id="9573f-146">Budete potřebovat tyto hodnoty později při vytváření aplikace, která se připojuje tooIoT rozbočovače jako zařízení.</span><span class="sxs-lookup"><span data-stu-id="9573f-146">You need these values later when you create an app that connects tooIoT Hub as a device.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="97fd3-147">V registru identit služby IoT Hub se uchovávají pouze identity zařízení za účelem bezpečného přístupu ke službě IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="97fd3-147">The IoT Hub identity registry only stores device identities to enable secure access to the IoT hub.</span></span> <span data-ttu-id="97fd3-148">Ukládají se tady ID zařízení a jejich klíče, které slouží jako zabezpečené přihlašovací údaje, a příznak povoleno/zakázáno, s jehož pomocí můžete zakázat přístup k jednotlivým zařízením.</span><span class="sxs-lookup"><span data-stu-id="97fd3-148">It stores device IDs and keys to use as security credentials and an enabled/disabled flag that you can use to disable access for an individual device.</span></span> <span data-ttu-id="97fd3-149">Pokud aplikace potřebuje pro zařízení ukládat další metadata, měla by používat úložiště pro konkrétní aplikaci.</span><span class="sxs-lookup"><span data-stu-id="97fd3-149">If your app needs to store other device-specific metadata, it should use an app-specific store.</span></span> <span data-ttu-id="97fd3-150">Další informace najdete v [Příručce pro vývojáře pro službu IoT Hub][lnk-devguide-identity].</span><span class="sxs-lookup"><span data-stu-id="97fd3-150">For more information, see the [IoT Hub developer guide][lnk-devguide-identity].</span></span>
+> <span data-ttu-id="9573f-147">Hello registru identit služby IoT Hub ukládá jenom zařízení identity tooenable zabezpečený přístup toohello IoT hub.</span><span class="sxs-lookup"><span data-stu-id="9573f-147">hello IoT Hub identity registry only stores device identities tooenable secure access toohello IoT hub.</span></span> <span data-ttu-id="9573f-148">Ukládá ID a klíče toouse zařízení jako zabezpečovací přihlašovací údaje a příznak povoleno/zakázáno, které můžete toodisable přístup k jednotlivým zařízením.</span><span class="sxs-lookup"><span data-stu-id="9573f-148">It stores device IDs and keys toouse as security credentials and an enabled/disabled flag that you can use toodisable access for an individual device.</span></span> <span data-ttu-id="9573f-149">Pokud aplikace potřebuje toostore další metadata specifická pro zařízení, měla by používat úložiště specifické pro aplikace.</span><span class="sxs-lookup"><span data-stu-id="9573f-149">If your app needs toostore other device-specific metadata, it should use an app-specific store.</span></span> <span data-ttu-id="9573f-150">Další informace najdete v tématu hello [Příručka vývojáře pro službu IoT Hub][lnk-devguide-identity].</span><span class="sxs-lookup"><span data-stu-id="9573f-150">For more information, see hello [IoT Hub developer guide][lnk-devguide-identity].</span></span>
 
-## <a name="receive-device-to-cloud-messages"></a><span data-ttu-id="97fd3-151">Příjem zpráv typu zařízení-cloud</span><span class="sxs-lookup"><span data-stu-id="97fd3-151">Receive device-to-cloud messages</span></span>
+## <a name="receive-device-to-cloud-messages"></a><span data-ttu-id="9573f-151">Příjem zpráv typu zařízení-cloud</span><span class="sxs-lookup"><span data-stu-id="9573f-151">Receive device-to-cloud messages</span></span>
 
-<span data-ttu-id="97fd3-152">V této části vytvoříte konzolovou aplikaci Java, která čte zprávy typu zařízení-cloud ze služby IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="97fd3-152">In this section, you create a Java console app that reads device-to-cloud messages from IoT Hub.</span></span> <span data-ttu-id="97fd3-153">Služba IoT Hub zpřístupní koncový bod kompatibilní se službou [Event Hub][lnk-event-hubs-overview], který vám umožní číst zprávy typu zařízení-cloud.</span><span class="sxs-lookup"><span data-stu-id="97fd3-153">An IoT hub exposes an [Event Hub][lnk-event-hubs-overview]-compatible endpoint to enable you to read device-to-cloud messages.</span></span> <span data-ttu-id="97fd3-154">Z důvodu zjednodušení vytvoří tento kurz jednoduchou čtečku, která není vhodná pro vysoce výkonná nasazení.</span><span class="sxs-lookup"><span data-stu-id="97fd3-154">To keep things simple, this tutorial creates a basic reader that is not suitable for a high throughput deployment.</span></span> <span data-ttu-id="97fd3-155">Způsoby zpracování zpráv typu zařízení-cloud v různých škálách najdete v kurzu [Zpracování zpráv typu zařízení-cloud][lnk-process-d2c-tutorial].</span><span class="sxs-lookup"><span data-stu-id="97fd3-155">The [Process device-to-cloud messages][lnk-process-d2c-tutorial] tutorial shows you how to process device-to-cloud messages at scale.</span></span> <span data-ttu-id="97fd3-156">Kurz [Začínáme se službou Event Hubs][lnk-eventhubs-tutorial] vám poskytne další informace o zpracování zpráv ze služby Event Hubs a vztahuje se na koncové body kompatibilní s centrem událostí služby IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="97fd3-156">The [Get Started with Event Hubs][lnk-eventhubs-tutorial] tutorial provides further information on how to process messages from Event Hubs and is applicable to the IoT Hub Event Hub-compatible endpoints.</span></span>
+<span data-ttu-id="9573f-152">V této části vytvoříte konzolovou aplikaci Java, která čte zprávy typu zařízení-cloud ze služby IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="9573f-152">In this section, you create a Java console app that reads device-to-cloud messages from IoT Hub.</span></span> <span data-ttu-id="9573f-153">IoT hub zpřístupní [centra událostí][lnk-event-hubs-overview]-koncový bod kompatibilní tooenable jste tooread zpráv typu zařízení cloud.</span><span class="sxs-lookup"><span data-stu-id="9573f-153">An IoT hub exposes an [Event Hub][lnk-event-hubs-overview]-compatible endpoint tooenable you tooread device-to-cloud messages.</span></span> <span data-ttu-id="9573f-154">věcí tookeep jednoduchý, v tomto kurzu vytvoří základní čtečka, která není vhodná pro vysoce výkonná nasazení.</span><span class="sxs-lookup"><span data-stu-id="9573f-154">tookeep things simple, this tutorial creates a basic reader that is not suitable for a high throughput deployment.</span></span> <span data-ttu-id="9573f-155">Hello [zpracování zpráv typu zařízení cloud] [ lnk-process-d2c-tutorial] kurz ukazuje, jak tooprocess zařízení cloud zpráv ve velkém měřítku.</span><span class="sxs-lookup"><span data-stu-id="9573f-155">hello [Process device-to-cloud messages][lnk-process-d2c-tutorial] tutorial shows you how tooprocess device-to-cloud messages at scale.</span></span> <span data-ttu-id="9573f-156">Hello [Začínáme se službou Event Hubs] [ lnk-eventhubs-tutorial] kurz obsahuje další informace o tom, jak tooprocess zpráv ze služby Event Hubs a je použít toohello koncové body kompatibilní s centrem událostí služby IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="9573f-156">hello [Get Started with Event Hubs][lnk-eventhubs-tutorial] tutorial provides further information on how tooprocess messages from Event Hubs and is applicable toohello IoT Hub Event Hub-compatible endpoints.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="97fd3-157">Koncový bod kompatibilní s centrem událostí pro čtení zpráv mezi zařízením a cloudem vždy používá protokol AMQP.</span><span class="sxs-lookup"><span data-stu-id="97fd3-157">The Event Hub-compatible endpoint for reading device-to-cloud messages always uses the AMQP protocol.</span></span>
+> <span data-ttu-id="9573f-157">Hello koncový bod kompatibilní s centrem událostí pro čtení zpráv typu zařízení cloud vždy používá protokol AMQP hello.</span><span class="sxs-lookup"><span data-stu-id="9573f-157">hello Event Hub-compatible endpoint for reading device-to-cloud messages always uses hello AMQP protocol.</span></span>
 
-1. <span data-ttu-id="97fd3-158">Ve složce iot-java-get-started, kterou jste vytvořili v části *Vytvoření identity zařízení*, vytvořte pomocí následujícího příkazu v příkazovém řádku projekt Maven s názvem **read-d2c-messages**.</span><span class="sxs-lookup"><span data-stu-id="97fd3-158">In the iot-java-get-started folder you created in the *Create a device identity* section, create a Maven project called **read-d2c-messages** using the following command at your command prompt.</span></span> <span data-ttu-id="97fd3-159">Všimněte si, že se jedná o jeden dlouhý příkaz:</span><span class="sxs-lookup"><span data-stu-id="97fd3-159">Note this is a single, long command:</span></span>
+1. <span data-ttu-id="9573f-158">Ve složce iot-java-get-started hello jste vytvořili v hello *vytvoření identity zařízení* , vytvořte projekt Maven s názvem **read-d2c-messages** pomocí hello následující příkaz na příkazovém řádku.</span><span class="sxs-lookup"><span data-stu-id="9573f-158">In hello iot-java-get-started folder you created in hello *Create a device identity* section, create a Maven project called **read-d2c-messages** using hello following command at your command prompt.</span></span> <span data-ttu-id="9573f-159">Všimněte si, že se jedná o jeden dlouhý příkaz:</span><span class="sxs-lookup"><span data-stu-id="9573f-159">Note this is a single, long command:</span></span>
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-d2c-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. <span data-ttu-id="97fd3-160">Na příkazovém řádku přejděte do složky read-d2c-messages.</span><span class="sxs-lookup"><span data-stu-id="97fd3-160">At your command prompt, navigate to the read-d2c-messages folder.</span></span>
+2. <span data-ttu-id="9573f-160">Na příkazovém řádku přejděte toohello read-d2c-messages složky.</span><span class="sxs-lookup"><span data-stu-id="9573f-160">At your command prompt, navigate toohello read-d2c-messages folder.</span></span>
 
-3. <span data-ttu-id="97fd3-161">Pomocí textového editoru otevřete ve složce read-d2c-messages soubor pom.xml a k uzlu **závislosti** přidejte následující závislost.</span><span class="sxs-lookup"><span data-stu-id="97fd3-161">Using a text editor, open the pom.xml file in the read-d2c-messages folder and add the following dependency to the **dependencies** node.</span></span> <span data-ttu-id="97fd3-162">Tato závislost umožňuje čtení z koncového bodu kompatibilního s centrem událostí pomocí balíčku eventhubs-client ve vaší aplikaci:</span><span class="sxs-lookup"><span data-stu-id="97fd3-162">This dependency enables you to use the eventhubs-client package in your app to read from the Event Hub-compatible endpoint:</span></span>
+3. <span data-ttu-id="9573f-161">Pomocí textového editoru, otevřete soubor pom.xml hello ve složce read-d2c-messages hello a přidejte následující závislost toohello hello **závislosti** uzlu.</span><span class="sxs-lookup"><span data-stu-id="9573f-161">Using a text editor, open hello pom.xml file in hello read-d2c-messages folder and add hello following dependency toohello **dependencies** node.</span></span> <span data-ttu-id="9573f-162">Tuto závislost umožňuje toouse hello balíčku eventhubs-client ve vaší aplikaci tooread z koncového bodu kompatibilního s centrem událostí hello:</span><span class="sxs-lookup"><span data-stu-id="9573f-162">This dependency enables you toouse hello eventhubs-client package in your app tooread from hello Event Hub-compatible endpoint:</span></span>
 
     ```xml
     <dependency> 
@@ -188,11 +188,11 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     </dependency>
     ```
 
-4. <span data-ttu-id="97fd3-163">Soubor pom.xml uložte a zavřete.</span><span class="sxs-lookup"><span data-stu-id="97fd3-163">Save and close the pom.xml file.</span></span>
+4. <span data-ttu-id="9573f-163">Uložte a zavřete soubor pom.xml hello.</span><span class="sxs-lookup"><span data-stu-id="9573f-163">Save and close hello pom.xml file.</span></span>
 
-5. <span data-ttu-id="97fd3-164">Pomocí textového editoru otevřete soubor  read-d2c-messages\src\main\java\com\mycompany\app\App.java.</span><span class="sxs-lookup"><span data-stu-id="97fd3-164">Using a text editor, open the read-d2c-messages\src\main\java\com\mycompany\app\App.java file.</span></span>
+5. <span data-ttu-id="9573f-164">Pomocí textového editoru otevřete soubor read-d2c-messages\src\main\java\com\mycompany\app\App.java hello.</span><span class="sxs-lookup"><span data-stu-id="9573f-164">Using a text editor, open hello read-d2c-messages\src\main\java\com\mycompany\app\App.java file.</span></span>
 
-6. <span data-ttu-id="97fd3-165">Do souboru přidejte následující příkazy pro **import**:</span><span class="sxs-lookup"><span data-stu-id="97fd3-165">Add the following **import** statements to the file:</span></span>
+6. <span data-ttu-id="9573f-165">Přidejte následující hello **importovat** souboru toohello příkazy:</span><span class="sxs-lookup"><span data-stu-id="9573f-165">Add hello following **import** statements toohello file:</span></span>
 
     ```java
     import java.io.IOException;
@@ -204,13 +204,13 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     import java.util.function.*;
     ```
 
-7. <span data-ttu-id="97fd3-166">Do třídy **App** přidejte následující proměnnou na úrovni třídy.</span><span class="sxs-lookup"><span data-stu-id="97fd3-166">Add the following class-level variable to the **App** class.</span></span> <span data-ttu-id="97fd3-167">Zástupné symboly **{youriothubkey}**, **{youreventhubcompatibleendpoint}** a **{youreventhubcompatiblename}** nahraďte hodnotami, které jste si předtím poznamenali:</span><span class="sxs-lookup"><span data-stu-id="97fd3-167">Replace **{youriothubkey}**, **{youreventhubcompatibleendpoint}**, and **{youreventhubcompatiblename}** with the values you noted previously:</span></span>
+7. <span data-ttu-id="9573f-166">Přidejte následující proměnné toohello úrovni třídy hello **aplikace** třídy.</span><span class="sxs-lookup"><span data-stu-id="9573f-166">Add hello following class-level variable toohello **App** class.</span></span> <span data-ttu-id="9573f-167">Nahraďte **{youriothubkey}**, **{youreventhubcompatibleendpoint}**, a **{youreventhubcompatiblename}** hello hodnotami, které jste si poznamenali dříve:</span><span class="sxs-lookup"><span data-stu-id="9573f-167">Replace **{youriothubkey}**, **{youreventhubcompatibleendpoint}**, and **{youreventhubcompatiblename}** with hello values you noted previously:</span></span>
 
     ```java
     private static String connStr = "Endpoint={youreventhubcompatibleendpoint};EntityPath={youreventhubcompatiblename};SharedAccessKeyName=iothubowner;SharedAccessKey={youriothubkey}";
     ```
 
-8. <span data-ttu-id="97fd3-168">Do třídy **App** přidejte následující metodu **receiveMessages**.</span><span class="sxs-lookup"><span data-stu-id="97fd3-168">Add the following **receiveMessages** method to the **App** class.</span></span> <span data-ttu-id="97fd3-169">Tato metoda vytvoří instanci **EventHubClient** k připojení ke koncovému bodu kompatibilnímu s centrem událostí a poté asynchronně vytvoří instanci **PartitionReceiver** ke čtení z oddílu centra událostí.</span><span class="sxs-lookup"><span data-stu-id="97fd3-169">This method creates an **EventHubClient** instance to connect to the Event Hub-compatible endpoint and then asynchronously creates a **PartitionReceiver** instance to read from an Event Hub partition.</span></span> <span data-ttu-id="97fd3-170">Až do ukončení aplikace se bude nepřetržitě provádět v cyklu a vypisovat podrobnosti o zprávách.</span><span class="sxs-lookup"><span data-stu-id="97fd3-170">It loops continuously and prints the message details until the app terminates.</span></span>
+8. <span data-ttu-id="9573f-168">Přidejte následující hello **receiveMessages** metoda toohello **aplikace** třídy.</span><span class="sxs-lookup"><span data-stu-id="9573f-168">Add hello following **receiveMessages** method toohello **App** class.</span></span> <span data-ttu-id="9573f-169">Tato metoda vytvoří **EventHubClient** instance tooconnect toohello kompatibilní s centrem událostí koncový bod a poté asynchronně vytvoří **PartitionReceiver** instance tooread z centra událostí oddíl.</span><span class="sxs-lookup"><span data-stu-id="9573f-169">This method creates an **EventHubClient** instance tooconnect toohello Event Hub-compatible endpoint and then asynchronously creates a **PartitionReceiver** instance tooread from an Event Hub partition.</span></span> <span data-ttu-id="9573f-170">To nepřetržitě provádět v cyklu a vytiskne hello podrobnosti zprávy, dokud neskončí aplikace hello.</span><span class="sxs-lookup"><span data-stu-id="9573f-170">It loops continuously and prints hello message details until hello app terminates.</span></span>
 
     ```java
     // Create a receiver on a partition.
@@ -219,7 +219,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
       try {
         client = EventHubClient.createFromConnectionStringSync(connStr);
       } catch (Exception e) {
-        System.out.println("Failed to create client: " + e.getMessage());
+        System.out.println("Failed toocreate client: " + e.getMessage());
         System.exit(1);
       }
       try {
@@ -251,33 +251,33 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
                   System.out.println(String.format("Partition: %s, ReceivedBatch Size: %s", partitionId, batchSize));
                 }
               } catch (Exception e) {
-                System.out.println("Failed to receive messages: " + e.getMessage());
+                System.out.println("Failed tooreceive messages: " + e.getMessage());
               }
             }
           });
         } catch (Exception e) {
-          System.out.println("Failed to create receiver: " + e.getMessage());
+          System.out.println("Failed toocreate receiver: " + e.getMessage());
       }
       return client;
     }
     ```
 
    > [!NOTE]
-   > <span data-ttu-id="97fd3-171">Tato metoda při vytváření přijímače používá filtr, aby přijímač četl pouze zprávy odeslané do služby IoT Hub až po jeho spuštění.</span><span class="sxs-lookup"><span data-stu-id="97fd3-171">This method uses a filter when it creates the receiver so that the receiver only reads messages sent to IoT Hub after the receiver starts running.</span></span> <span data-ttu-id="97fd3-172">Tato metoda je užitečná v testovacím prostředí, protože uvidíte aktuální sadu zpráv.</span><span class="sxs-lookup"><span data-stu-id="97fd3-172">This technique is useful in a test environment so you can see the current set of messages.</span></span> <span data-ttu-id="97fd3-173">V produkčním prostředí by měl kód zpracovávat všechny zprávy – další informace najdete v kurzu [Postupy zpracování zpráv typu zařízení-cloud ve službě IoT Hub][lnk-process-d2c-tutorial].</span><span class="sxs-lookup"><span data-stu-id="97fd3-173">In a production environment, your code should make sure that it processes all the messages - for more information, see the [How to process IoT Hub device-to-cloud messages][lnk-process-d2c-tutorial] tutorial.</span></span>
+   > <span data-ttu-id="9573f-171">Tato metoda používá filtr, při vytváření příjemce hello tak, aby hello přijímač četl pouze zprávy odeslané tooIoT Hub až po spuštění hello příjemce.</span><span class="sxs-lookup"><span data-stu-id="9573f-171">This method uses a filter when it creates hello receiver so that hello receiver only reads messages sent tooIoT Hub after hello receiver starts running.</span></span> <span data-ttu-id="9573f-172">Tato metoda je užitečná v testovacím prostředí, abyste viděli hello aktuální sadu zpráv.</span><span class="sxs-lookup"><span data-stu-id="9573f-172">This technique is useful in a test environment so you can see hello current set of messages.</span></span> <span data-ttu-id="9573f-173">V produkčním prostředí by měl váš kód Ujistěte se, že zpracovává všechny zprávy hello – Další informace naleznete v tématu hello [jak tooprocess zpráv typu zařízení cloud IoT Hub] [ lnk-process-d2c-tutorial] kurzu.</span><span class="sxs-lookup"><span data-stu-id="9573f-173">In a production environment, your code should make sure that it processes all hello messages - for more information, see hello [How tooprocess IoT Hub device-to-cloud messages][lnk-process-d2c-tutorial] tutorial.</span></span>
 
-9. <span data-ttu-id="97fd3-174">Upravte podpis metody **Main** tak, aby zahrnoval následující výjimku:</span><span class="sxs-lookup"><span data-stu-id="97fd3-174">Modify the signature of the **main** method to include the exception as follows:</span></span>
+9. <span data-ttu-id="9573f-174">Upravte podpis hello hello **hlavní** metoda tooinclude hello výjimka následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="9573f-174">Modify hello signature of hello **main** method tooinclude hello exception as follows:</span></span>
 
     ```java
     public static void main( String[] args ) throws IOException
     ```
 
-10. <span data-ttu-id="97fd3-175">Ve třídě **App** přidejte do metody **Main** následující kód.</span><span class="sxs-lookup"><span data-stu-id="97fd3-175">Add the following code to the **main** method in the **App** class.</span></span> <span data-ttu-id="97fd3-176">Tento kód vytvoří dvě instance **EventHubClient** a **PartitionReceiver** a umožní vám po dokončení zpracování zpráv zavřít aplikaci:</span><span class="sxs-lookup"><span data-stu-id="97fd3-176">This code creates the two **EventHubClient** and **PartitionReceiver** instances and enables you to close the app when you have finished processing messages:</span></span>
+10. <span data-ttu-id="9573f-175">Přidejte následující kód toohello hello **hlavní** metoda v hello **aplikace** třídy.</span><span class="sxs-lookup"><span data-stu-id="9573f-175">Add hello following code toohello **main** method in hello **App** class.</span></span> <span data-ttu-id="9573f-176">Tento kód vytvoří dvě hello **EventHubClient** a **PartitionReceiver** instance a umožní vám aplikace hello tooclose po dokončení zpracování zpráv:</span><span class="sxs-lookup"><span data-stu-id="9573f-176">This code creates hello two **EventHubClient** and **PartitionReceiver** instances and enables you tooclose hello app when you have finished processing messages:</span></span>
 
     ```java
     // Create receivers for partitions 0 and 1.
     EventHubClient client0 = receiveMessages("0");
     EventHubClient client1 = receiveMessages("1");
-    System.out.println("Press ENTER to exit.");
+    System.out.println("Press ENTER tooexit.");
     System.in.read();
     try {
       client0.closeSync();
@@ -289,28 +289,28 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     ```
 
     > [!NOTE]
-    > <span data-ttu-id="97fd3-177">Tento kód předpokládá, že jste vytvořili službu IoT Hub na úrovni F1 (Free).</span><span class="sxs-lookup"><span data-stu-id="97fd3-177">This code assumes you created your IoT hub in the F1 (free) tier.</span></span> <span data-ttu-id="97fd3-178">Služba IoT Hub na úrovni Free má dva oddíly s názvem „0“ a „1“.</span><span class="sxs-lookup"><span data-stu-id="97fd3-178">A free IoT hub has two partitions named "0" and "1".</span></span>
+    > <span data-ttu-id="9573f-177">Tento kód předpokládá, že jste vytvořili službu IoT hub v úroveň hello F1 (free).</span><span class="sxs-lookup"><span data-stu-id="9573f-177">This code assumes you created your IoT hub in hello F1 (free) tier.</span></span> <span data-ttu-id="9573f-178">Služba IoT Hub na úrovni Free má dva oddíly s názvem „0“ a „1“.</span><span class="sxs-lookup"><span data-stu-id="9573f-178">A free IoT hub has two partitions named "0" and "1".</span></span>
 
-11. <span data-ttu-id="97fd3-179">Soubor App.java uložte a zavřete.</span><span class="sxs-lookup"><span data-stu-id="97fd3-179">Save and close the App.java file.</span></span>
+11. <span data-ttu-id="9573f-179">Uložte a zavřete soubor App.java hello.</span><span class="sxs-lookup"><span data-stu-id="9573f-179">Save and close hello App.java file.</span></span>
 
-12. <span data-ttu-id="97fd3-180">Aplikaci **read-d2c-messages** pomocí nástroje Maven sestavíte tak, že v příkazovém řádku ve složce read-d2c-messages spustíte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="97fd3-180">To build the **read-d2c-messages** app using Maven, execute the following command at the command prompt in the read-d2c-messages folder:</span></span>
+12. <span data-ttu-id="9573f-180">toobuild hello **read-d2c-messages** aplikace pomocí nástroje Maven, spustit následující příkaz na příkazovém řádku hello ve složce read-d2c-messages hello hello:</span><span class="sxs-lookup"><span data-stu-id="9573f-180">toobuild hello **read-d2c-messages** app using Maven, execute hello following command at hello command prompt in hello read-d2c-messages folder:</span></span>
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
 
-## <a name="create-a-device-app"></a><span data-ttu-id="97fd3-181">Vytvoření aplikace pro zařízení</span><span class="sxs-lookup"><span data-stu-id="97fd3-181">Create a device app</span></span>
-<span data-ttu-id="97fd3-182">V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízení odesílající zprávy typu zařízení-cloud do služby IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="97fd3-182">In this section, you create a Java console app that simulates a device that sends device-to-cloud messages to an IoT hub.</span></span>
+## <a name="create-a-device-app"></a><span data-ttu-id="9573f-181">Vytvoření aplikace pro zařízení</span><span class="sxs-lookup"><span data-stu-id="9573f-181">Create a device app</span></span>
+<span data-ttu-id="9573f-182">V této části vytvoříte konzolovou aplikaci Java, která simuluje zařízení odesílající zprávy typu zařízení cloud tooan IoT hub.</span><span class="sxs-lookup"><span data-stu-id="9573f-182">In this section, you create a Java console app that simulates a device that sends device-to-cloud messages tooan IoT hub.</span></span>
 
-1. <span data-ttu-id="97fd3-183">Ve složce iot-java-get-started, kterou jste vytvořili v části *Vytvoření identity zařízení*, vytvořte pomocí následujícího příkazu v příkazovém řádku projekt Maven s názvem **simulated-device**.</span><span class="sxs-lookup"><span data-stu-id="97fd3-183">In the iot-java-get-started folder you created in the *Create a device identity* section, create a Maven project called **simulated-device** using the following command at your command prompt.</span></span> <span data-ttu-id="97fd3-184">Všimněte si, že se jedná o jeden dlouhý příkaz:</span><span class="sxs-lookup"><span data-stu-id="97fd3-184">Note this is a single, long command:</span></span>
+1. <span data-ttu-id="9573f-183">Ve složce iot-java-get-started hello jste vytvořili v hello *vytvoření identity zařízení* , vytvořte projekt Maven s názvem **simulated-device** pomocí hello následující příkaz na příkazovém řádku.</span><span class="sxs-lookup"><span data-stu-id="9573f-183">In hello iot-java-get-started folder you created in hello *Create a device identity* section, create a Maven project called **simulated-device** using hello following command at your command prompt.</span></span> <span data-ttu-id="9573f-184">Všimněte si, že se jedná o jeden dlouhý příkaz:</span><span class="sxs-lookup"><span data-stu-id="9573f-184">Note this is a single, long command:</span></span>
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. <span data-ttu-id="97fd3-185">Na příkazovém řádku přejděte do složky simulated-devices.</span><span class="sxs-lookup"><span data-stu-id="97fd3-185">At your command prompt, navigate to the simulated-device folder.</span></span>
+2. <span data-ttu-id="9573f-185">Na příkazovém řádku přejděte toohello složky simulated Devices.</span><span class="sxs-lookup"><span data-stu-id="9573f-185">At your command prompt, navigate toohello simulated-device folder.</span></span>
 
-3. <span data-ttu-id="97fd3-186">Pomocí textového editoru otevřete ve složce simulated-device soubor pom.xml a k uzlu **závislosti** přidejte následující závislosti.</span><span class="sxs-lookup"><span data-stu-id="97fd3-186">Using a text editor, open the pom.xml file in the simulated-device folder and add the following dependencies to the **dependencies** node.</span></span> <span data-ttu-id="97fd3-187">Tato závislost vám umožní komunikovat se službou IoT Hub a serializovat objekty Java do formátu JSON pomocí balíčku iothub-java-client ve vaší aplikaci:</span><span class="sxs-lookup"><span data-stu-id="97fd3-187">This dependency enables you to use the iothub-java-client package in your app to communicate with your IoT hub and to serialize Java objects to JSON:</span></span>
+3. <span data-ttu-id="9573f-186">Pomocí textového editoru, otevřete soubor pom.xml hello ve složce simulated-device hello a přidejte následující závislosti toohello hello **závislosti** uzlu.</span><span class="sxs-lookup"><span data-stu-id="9573f-186">Using a text editor, open hello pom.xml file in hello simulated-device folder and add hello following dependencies toohello **dependencies** node.</span></span> <span data-ttu-id="9573f-187">Tuto závislost umožňuje, aby vám toouse hello iothub-java-client balíček ve vaší aplikaci toocommunicate s IoT hub a tooserialize tooJSON objekty Java:</span><span class="sxs-lookup"><span data-stu-id="9573f-187">This dependency enables you toouse hello iothub-java-client package in your app toocommunicate with your IoT hub and tooserialize Java objects tooJSON:</span></span>
 
     ```xml
     <dependency>
@@ -326,13 +326,13 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     ```
 
     > [!NOTE]
-    > <span data-ttu-id="97fd3-188">Můžete vyhledat nejnovější verzi **iot-device-client** pomocí [vyhledávání Maven][lnk-maven-device-search].</span><span class="sxs-lookup"><span data-stu-id="97fd3-188">You can check for the latest version of **iot-device-client** using [Maven search][lnk-maven-device-search].</span></span>
+    > <span data-ttu-id="9573f-188">Můžete zkontrolovat nejnovější verze hello **klienta zařízení iot** pomocí [Maven vyhledávání][lnk-maven-device-search].</span><span class="sxs-lookup"><span data-stu-id="9573f-188">You can check for hello latest version of **iot-device-client** using [Maven search][lnk-maven-device-search].</span></span>
 
-4. <span data-ttu-id="97fd3-189">Soubor pom.xml uložte a zavřete.</span><span class="sxs-lookup"><span data-stu-id="97fd3-189">Save and close the pom.xml file.</span></span>
+4. <span data-ttu-id="9573f-189">Uložte a zavřete soubor pom.xml hello.</span><span class="sxs-lookup"><span data-stu-id="9573f-189">Save and close hello pom.xml file.</span></span>
 
-5. <span data-ttu-id="97fd3-190">Pomocí textového editoru otevřete soubor simulated-device\src\main\java\com\mycompany\app\App.java.</span><span class="sxs-lookup"><span data-stu-id="97fd3-190">Using a text editor, open the simulated-device\src\main\java\com\mycompany\app\App.java file.</span></span>
+5. <span data-ttu-id="9573f-190">Pomocí textového editoru otevřete soubor simulated-device\src\main\java\com\mycompany\app\App.java hello.</span><span class="sxs-lookup"><span data-stu-id="9573f-190">Using a text editor, open hello simulated-device\src\main\java\com\mycompany\app\App.java file.</span></span>
 
-6. <span data-ttu-id="97fd3-191">Do souboru přidejte následující příkazy pro **import**:</span><span class="sxs-lookup"><span data-stu-id="97fd3-191">Add the following **import** statements to the file:</span></span>
+6. <span data-ttu-id="9573f-191">Přidejte následující hello **importovat** souboru toohello příkazy:</span><span class="sxs-lookup"><span data-stu-id="9573f-191">Add hello following **import** statements toohello file:</span></span>
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -345,7 +345,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     import java.util.concurrent.ExecutorService;
     ```
 
-7. <span data-ttu-id="97fd3-192">Do třídy **App** přidejte následující proměnné na úrovni třídy.</span><span class="sxs-lookup"><span data-stu-id="97fd3-192">Add the following class-level variables to the **App** class.</span></span> <span data-ttu-id="97fd3-193">Nahraďte hodnotu **{youriothubname}** názvem vaší služby IoT Hub a hodnotu **{yourdevicekey}** klíčem zařízení, který jste vygenerovali v části *Vytvoření identity zařízení*:</span><span class="sxs-lookup"><span data-stu-id="97fd3-193">Replacing **{youriothubname}** with your IoT hub name, and **{yourdevicekey}** with the device key value you generated in the *Create a device identity* section:</span></span>
+7. <span data-ttu-id="9573f-192">Přidejte následující proměnné na úrovni toohello hello **aplikace** třídy.</span><span class="sxs-lookup"><span data-stu-id="9573f-192">Add hello following class-level variables toohello **App** class.</span></span> <span data-ttu-id="9573f-193">Nahrazení **{youriothubname}** názvem služby IoT hub, a **{yourdevicekey}** s hodnotou klíče hello zařízení jste vygenerovali v hello *vytvoření identity zařízení* části:</span><span class="sxs-lookup"><span data-stu-id="9573f-193">Replacing **{youriothubname}** with your IoT hub name, and **{yourdevicekey}** with hello device key value you generated in hello *Create a device identity* section:</span></span>
 
     ```java
     private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myFirstJavaDevice;SharedAccessKey={yourdevicekey}";
@@ -354,9 +354,9 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     private static DeviceClient client;
     ```
    
-    <span data-ttu-id="97fd3-194">Tato ukázková aplikace používá při vytváření instance objektu **DeviceClient** proměnnou **protocol**.</span><span class="sxs-lookup"><span data-stu-id="97fd3-194">This sample app uses the **protocol** variable when it instantiates a **DeviceClient** object.</span></span> <span data-ttu-id="97fd3-195">Ke komunikaci se službou IoT Hub můžete použít protokol MQTT, AMQP nebo HTTP.</span><span class="sxs-lookup"><span data-stu-id="97fd3-195">You can use either the MQTT, AMQP, or HTTP protocol to communicate with IoT Hub.</span></span>
+    <span data-ttu-id="9573f-194">Tato ukázková aplikace používá hello **protokol** proměnná při vytvoření instance **DeviceClient** objektu.</span><span class="sxs-lookup"><span data-stu-id="9573f-194">This sample app uses hello **protocol** variable when it instantiates a **DeviceClient** object.</span></span> <span data-ttu-id="9573f-195">Můžete buď toocommunicate hello MQTT, AMQP nebo HTTP protocol službou IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="9573f-195">You can use either hello MQTT, AMQP, or HTTP protocol toocommunicate with IoT Hub.</span></span>
 
-8. <span data-ttu-id="97fd3-196">Telemetrická data, která vaše zařízení odesílá do služby IoT Hub, určete přidáním následující vnořené třídy **TelemetryDataPoint** do třídy **App**.</span><span class="sxs-lookup"><span data-stu-id="97fd3-196">Add the following nested **TelemetryDataPoint** class inside the **App** class to specify the telemetry data your device sends to your IoT hub:</span></span>
+8. <span data-ttu-id="9573f-196">Přidejte následující hello vnořenou **TelemetryDataPoint** třída uvnitř hello **aplikace** třídy toospecify hello telemetrická data vaše zařízení odesílá tooyour IoT hub:</span><span class="sxs-lookup"><span data-stu-id="9573f-196">Add hello following nested **TelemetryDataPoint** class inside hello **App** class toospecify hello telemetry data your device sends tooyour IoT hub:</span></span>
 
     ```java
     private static class TelemetryDataPoint {
@@ -370,12 +370,12 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
       }
     }
     ```
-9. <span data-ttu-id="97fd3-197">Za účelem zobrazení stavu potvrzení, které služba IoT Hub vrací po zpracování zprávy z aplikace pro zařízení, přidejte do třídy **App** následující vnořenou třídu **EventCallback**.</span><span class="sxs-lookup"><span data-stu-id="97fd3-197">Add the following nested **EventCallback** class inside the **App** class to display the acknowledgement status that the IoT hub returns when it processes a message from the device app.</span></span> <span data-ttu-id="97fd3-198">Tato metoda také po zpracování zprávy upozorní hlavní vlákno v aplikaci:</span><span class="sxs-lookup"><span data-stu-id="97fd3-198">This method also notifies the main thread in the app when the message has been processed:</span></span>
+9. <span data-ttu-id="9573f-197">Přidejte následující hello vnořenou **EventCallback** třída uvnitř hello **aplikace** třída toodisplay hello potvrzení stav, který hello služby IoT hub vrací po zpracování zprávy ze zařízení aplikaci hello.</span><span class="sxs-lookup"><span data-stu-id="9573f-197">Add hello following nested **EventCallback** class inside hello **App** class toodisplay hello acknowledgement status that hello IoT hub returns when it processes a message from hello device app.</span></span> <span data-ttu-id="9573f-198">Tato metoda také upozorňován hello hlavní vlákno v aplikaci hello po zpracování zprávy hello:</span><span class="sxs-lookup"><span data-stu-id="9573f-198">This method also notifies hello main thread in hello app when hello message has been processed:</span></span>
    
     ```java
     private static class EventCallback implements IotHubEventCallback {
       public void execute(IotHubStatusCode status, Object context) {
-        System.out.println("IoT Hub responded to message with status: " + status.name());
+        System.out.println("IoT Hub responded toomessage with status: " + status.name());
    
         if (context != null) {
           synchronized (context) {
@@ -386,7 +386,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     }
     ```
 
-10. <span data-ttu-id="97fd3-199">Do třídy **App** přidejte následující vnořenou třídu **MessageSender**.</span><span class="sxs-lookup"><span data-stu-id="97fd3-199">Add the following nested **MessageSender** class inside the **App** class.</span></span> <span data-ttu-id="97fd3-200">Metoda **run** v této třídě vygeneruje ukázková telemetrická data, která se odešlou do služby IoT Hub, a před odesláním další zprávy počká na potvrzení:</span><span class="sxs-lookup"><span data-stu-id="97fd3-200">The **run** method in this class generates sample telemetry data to send to your IoT hub and waits for an acknowledgement before sending the next message:</span></span>
+10. <span data-ttu-id="9573f-199">Přidejte následující hello vnořenou **MessageSender** třída uvnitř hello **aplikace** třídy.</span><span class="sxs-lookup"><span data-stu-id="9573f-199">Add hello following nested **MessageSender** class inside hello **App** class.</span></span> <span data-ttu-id="9573f-200">Hello **spustit** metoda v této třídě vygeneruje ukázková telemetrická data toosend tooyour IoT hub a počká na potvrzení před odesláním další zprávy hello:</span><span class="sxs-lookup"><span data-stu-id="9573f-200">hello **run** method in this class generates sample telemetry data toosend tooyour IoT hub and waits for an acknowledgement before sending hello next message:</span></span>
 
     ```java
     private static class MessageSender implements Runnable {
@@ -426,9 +426,9 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     }
     ```
 
-    <span data-ttu-id="97fd3-201">Tato metoda odešle novou zprávu typu zařízení-cloud sekundu poté, co služba IoT Hub potvrdí předchozí zprávu.</span><span class="sxs-lookup"><span data-stu-id="97fd3-201">This method sends a new device-to-cloud message one second after the IoT hub acknowledges the previous message.</span></span> <span data-ttu-id="97fd3-202">Zpráva obsahuje objekt serializovaný do formátu JSON, s ID zařízení a náhodně generovanými čísly, který simuluje snímač teploty a snímač vlhkosti.</span><span class="sxs-lookup"><span data-stu-id="97fd3-202">The message contains a JSON-serialized object with the deviceId and randomly generated numbers to simulate a temperature sensor, and a humidity sensor.</span></span>
+    <span data-ttu-id="9573f-201">Tato metoda odesílá novou zprávu typu zařízení cloud sekundu poté, co hello IoT hub potvrdí předchozí zprávu hello.</span><span class="sxs-lookup"><span data-stu-id="9573f-201">This method sends a new device-to-cloud message one second after hello IoT hub acknowledges hello previous message.</span></span> <span data-ttu-id="9573f-202">Hello zpráva obsahuje objekt serializací JSON s ID hello zařízení a náhodně vygenerované čísla toosimulate senzor teploty a vlhkosti senzoru.</span><span class="sxs-lookup"><span data-stu-id="9573f-202">hello message contains a JSON-serialized object with hello deviceId and randomly generated numbers toosimulate a temperature sensor, and a humidity sensor.</span></span>
 
-11. <span data-ttu-id="97fd3-203">Metodu **Main** nahraďte následujícím kódem, který vytvoří vlákno k odesílání zpráv typu zařízení-cloud do služby IoT Hub:</span><span class="sxs-lookup"><span data-stu-id="97fd3-203">Replace the **main** method with the following code that creates a thread to send device-to-cloud messages to your IoT hub:</span></span>
+11. <span data-ttu-id="9573f-203">Nahraďte hello **hlavní** metoda s hello následující kód, který vytvoří vlákno toosend zpráv typu zařízení cloud tooyour IoT rozbočovači:</span><span class="sxs-lookup"><span data-stu-id="9573f-203">Replace hello **main** method with hello following code that creates a thread toosend device-to-cloud messages tooyour IoT hub:</span></span>
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException {
@@ -440,58 +440,58 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
       ExecutorService executor = Executors.newFixedThreadPool(1);
       executor.execute(sender);
     
-      System.out.println("Press ENTER to exit.");
+      System.out.println("Press ENTER tooexit.");
       System.in.read();
       executor.shutdownNow();
       client.closeNow();
     }
     ```
 
-12. <span data-ttu-id="97fd3-204">Soubor App.java uložte a zavřete.</span><span class="sxs-lookup"><span data-stu-id="97fd3-204">Save and close the App.java file.</span></span>
+12. <span data-ttu-id="9573f-204">Uložte a zavřete soubor App.java hello.</span><span class="sxs-lookup"><span data-stu-id="9573f-204">Save and close hello App.java file.</span></span>
 
-13. <span data-ttu-id="97fd3-205">Aplikaci **simulated-device** pomocí nástroje Maven sestavíte tak, že v příkazovém řádku ve složce simulated-device spustíte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="97fd3-205">To build the **simulated-device** app using Maven, execute the following command at the command prompt in the simulated-device folder:</span></span>
+13. <span data-ttu-id="9573f-205">toobuild hello **simulated-device** aplikace pomocí nástroje Maven, spustit následující příkaz na příkazovém řádku hello ve složce simulated-device hello hello:</span><span class="sxs-lookup"><span data-stu-id="9573f-205">toobuild hello **simulated-device** app using Maven, execute hello following command at hello command prompt in hello simulated-device folder:</span></span>
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
 
 > [!NOTE]
-> <span data-ttu-id="97fd3-206">Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování.</span><span class="sxs-lookup"><span data-stu-id="97fd3-206">To keep things simple, this tutorial does not implement any retry policy.</span></span> <span data-ttu-id="97fd3-207">V produkčním kódu byte měli implementovat zásady opakování (například exponenciální opakování), jak je navrženo v článku [Řešení přechodných chyb][lnk-transient-faults] na webu MSDN.</span><span class="sxs-lookup"><span data-stu-id="97fd3-207">In production code, you should implement retry policies (such as an exponential backoff), as suggested in the MSDN article [Transient Fault Handling][lnk-transient-faults].</span></span>
+> <span data-ttu-id="9573f-206">věcí tookeep jednoduchý, tento kurz neimplementuje žádné zásady opakování.</span><span class="sxs-lookup"><span data-stu-id="9573f-206">tookeep things simple, this tutorial does not implement any retry policy.</span></span> <span data-ttu-id="9573f-207">V produkčním kódu, měli byste implementovat zásady opakování (například exponenciální zdvojnásobení) dle pokynů v článku na webu MSDN hello [přechodných chyb][lnk-transient-faults].</span><span class="sxs-lookup"><span data-stu-id="9573f-207">In production code, you should implement retry policies (such as an exponential backoff), as suggested in hello MSDN article [Transient Fault Handling][lnk-transient-faults].</span></span>
 
-## <a name="run-the-apps"></a><span data-ttu-id="97fd3-208">Spouštění aplikací</span><span class="sxs-lookup"><span data-stu-id="97fd3-208">Run the apps</span></span>
+## <a name="run-hello-apps"></a><span data-ttu-id="9573f-208">Spuštění aplikace hello</span><span class="sxs-lookup"><span data-stu-id="9573f-208">Run hello apps</span></span>
 
-<span data-ttu-id="97fd3-209">Nyní jste připraveni aplikaci spustit.</span><span class="sxs-lookup"><span data-stu-id="97fd3-209">You are now ready to run the apps.</span></span>
+<span data-ttu-id="9573f-209">Nyní je připraven toorun hello aplikace.</span><span class="sxs-lookup"><span data-stu-id="9573f-209">You are now ready toorun hello apps.</span></span>
 
-1. <span data-ttu-id="97fd3-210">V příkazovém řádku ve složce read-d2c spusťte následující příkaz, aby se začal monitorovat první oddíl služby IoT Hub:</span><span class="sxs-lookup"><span data-stu-id="97fd3-210">At a command prompt in the read-d2c folder, run the following command to begin monitoring the first partition in your IoT hub:</span></span>
+1. <span data-ttu-id="9573f-210">Na příkazovém řádku ve složce read-d2c hello spusťte následující příkaz toobegin monitorovat první oddíl služby IoT hub hello hello:</span><span class="sxs-lookup"><span data-stu-id="9573f-210">At a command prompt in hello read-d2c folder, run hello following command toobegin monitoring hello first partition in your IoT hub:</span></span>
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Aplikace služby Java IoT Hub pro monitorování zpráv typu zařízení-cloud][7]
+    ![Zprávy typu zařízení cloud Java IoT Hub služby aplikace toomonitor][7]
 
-2. <span data-ttu-id="97fd3-212">V příkazovém řádku ve složce simulated-device spusťte následující příkaz, aby se do služby IoT Hub začala odesílat telemetrická data:</span><span class="sxs-lookup"><span data-stu-id="97fd3-212">At a command prompt in the simulated-device folder, run the following command to begin sending telemetry data to your IoT hub:</span></span>
+2. <span data-ttu-id="9573f-212">Na příkazovém řádku ve složce simulated-device hello spusťte následující příkaz toobegin odesílání telemetrických dat tooyour IoT hub hello:</span><span class="sxs-lookup"><span data-stu-id="9573f-212">At a command prompt in hello simulated-device folder, run hello following command toobegin sending telemetry data tooyour IoT hub:</span></span>
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
     ```
 
-    ![Aplikace zařízení služby Java IoT Hub pro odesílání zpráv typu zařízení-cloud][8]
+    ![Zprávy typu zařízení cloud Java IoT Hub zařízení aplikace toosend][8]
 
-3. <span data-ttu-id="97fd3-214">Na dlaždici **Využití** na webu [Azure Portal][lnk-portal] se zobrazuje počet zpráv odeslaných do služby IoT Hub:</span><span class="sxs-lookup"><span data-stu-id="97fd3-214">The **Usage** tile in the [Azure portal][lnk-portal] shows the number of messages sent to the IoT hub:</span></span>
+3. <span data-ttu-id="9573f-214">Hello **využití** dlaždici v hello [portál Azure] [ lnk-portal] ukazuje hello počet zpráv odeslaných toohello služby IoT hub:</span><span class="sxs-lookup"><span data-stu-id="9573f-214">hello **Usage** tile in hello [Azure portal][lnk-portal] shows hello number of messages sent toohello IoT hub:</span></span>
 
-    ![Dlaždice Použití webu Azure Portal se zobrazením počtu zpráv odeslaných do služby IoT Hub][43]
+    ![Azure portálu využití dlaždice zobrazuje počet zpráv odeslaných tooIoT rozbočovače][43]
 
-## <a name="next-steps"></a><span data-ttu-id="97fd3-216">Další kroky</span><span class="sxs-lookup"><span data-stu-id="97fd3-216">Next steps</span></span>
-<span data-ttu-id="97fd3-217">V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="97fd3-217">In this tutorial, you configured a new IoT hub in the Azure portal, and then created a device identity in the IoT hub's identity registry.</span></span> <span data-ttu-id="97fd3-218">Pomocí identity zařízení jste aplikaci pro zařízení povolili odesílání zpráv typu zařízení-cloud do služby IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="97fd3-218">You used this device identity to enable the device app to send device-to-cloud messages to the IoT hub.</span></span> <span data-ttu-id="97fd3-219">Také jste vytvořili aplikaci, která zobrazuje zprávy přijaté službou IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="97fd3-219">You also created an app that displays the messages received by the IoT hub.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="9573f-216">Další kroky</span><span class="sxs-lookup"><span data-stu-id="9573f-216">Next steps</span></span>
+<span data-ttu-id="9573f-217">V tomto kurzu jste nakonfigurovali novou službu IoT hub v hello portál Azure a poté jste vytvořili identitu zařízení v registru identit služby IoT hub hello.</span><span class="sxs-lookup"><span data-stu-id="9573f-217">In this tutorial, you configured a new IoT hub in hello Azure portal, and then created a device identity in hello IoT hub's identity registry.</span></span> <span data-ttu-id="9573f-218">Použili jste toto zařízení identity tooenable hello zařízení aplikaci toosend zpráv typu zařízení cloud toohello Centrum IoT.</span><span class="sxs-lookup"><span data-stu-id="9573f-218">You used this device identity tooenable hello device app toosend device-to-cloud messages toohello IoT hub.</span></span> <span data-ttu-id="9573f-219">Můžete také vytvořit aplikaci, která zobrazuje hello zprávy přijaté službou hello IoT hub.</span><span class="sxs-lookup"><span data-stu-id="9573f-219">You also created an app that displays hello messages received by hello IoT hub.</span></span>
 
-<span data-ttu-id="97fd3-220">Chcete-li pokračovat v seznamování se službou IoT Hub a prozkoumat další scénáře IoT, podívejte se na tato témata:</span><span class="sxs-lookup"><span data-stu-id="97fd3-220">To continue getting started with IoT Hub and to explore other IoT scenarios, see:</span></span>
+<span data-ttu-id="9573f-220">toocontinue Začínáme se službou IoT Hub a tooexplore najdete v dalších scénářů platformy IoT:</span><span class="sxs-lookup"><span data-stu-id="9573f-220">toocontinue getting started with IoT Hub and tooexplore other IoT scenarios, see:</span></span>
 
-* <span data-ttu-id="97fd3-221">[Připojení zařízení][lnk-connect-device]</span><span class="sxs-lookup"><span data-stu-id="97fd3-221">[Connecting your device][lnk-connect-device]</span></span>
-* <span data-ttu-id="97fd3-222">[Začínáme se správou zařízení][lnk-device-management]</span><span class="sxs-lookup"><span data-stu-id="97fd3-222">[Getting started with device management][lnk-device-management]</span></span>
-* <span data-ttu-id="97fd3-223">[Začínáme se službou Azure IoT Edge][lnk-iot-edge]</span><span class="sxs-lookup"><span data-stu-id="97fd3-223">[Getting started with Azure IoT Edge][lnk-iot-edge]</span></span>
+* <span data-ttu-id="9573f-221">[Připojení zařízení][lnk-connect-device]</span><span class="sxs-lookup"><span data-stu-id="9573f-221">[Connecting your device][lnk-connect-device]</span></span>
+* <span data-ttu-id="9573f-222">[Začínáme se správou zařízení][lnk-device-management]</span><span class="sxs-lookup"><span data-stu-id="9573f-222">[Getting started with device management][lnk-device-management]</span></span>
+* <span data-ttu-id="9573f-223">[Začínáme se službou Azure IoT Edge][lnk-iot-edge]</span><span class="sxs-lookup"><span data-stu-id="9573f-223">[Getting started with Azure IoT Edge][lnk-iot-edge]</span></span>
 
-<span data-ttu-id="97fd3-224">Další informace o tom, jak rozšířit vaše řešení internetu věcí a zpracovávat škálované zprávy typu zařízení-cloud, najdete v kurzu [Zpracování zpráv typu zařízení-cloud][lnk-process-d2c-tutorial].</span><span class="sxs-lookup"><span data-stu-id="97fd3-224">To learn how to extend your IoT solution and process device-to-cloud messages at scale, see the [Process device-to-cloud messages][lnk-process-d2c-tutorial] tutorial.</span></span>
+<span data-ttu-id="9573f-224">toolearn jak tooextend zpráv IoT řešení a proces zařízení cloud ve velkém měřítku, najdete v části hello [zpracování zpráv typu zařízení cloud] [ lnk-process-d2c-tutorial] kurzu.</span><span class="sxs-lookup"><span data-stu-id="9573f-224">toolearn how tooextend your IoT solution and process device-to-cloud messages at scale, see hello [Process device-to-cloud messages][lnk-process-d2c-tutorial] tutorial.</span></span>
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 
 <!-- Images. -->

@@ -1,6 +1,6 @@
 ---
-title: "Rychlý start Azure – Vytvoření virtuálního počítače pomocí PowerShellu | Dokumentace Microsoftu"
-description: "Rychle se naučíte, jak vytvářet virtuální počítače s Linuxem pomocí PowerShellu."
+title: "Rychlý Start - aaaAzure vytvořte VM prostředí PowerShell | Microsoft Docs"
+description: "Naučte se rychle toocreate virtuální počítače s Linuxem pomocí prostředí PowerShell"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
@@ -16,41 +16,41 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: adcf492d4c2d935c880167675a1ed97566156ec7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f05ea7fedafe4fda660dc6084ae57ebf9dced473
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-linux-virtual-machine-with-powershell"></a><span data-ttu-id="ed39e-103">Vytvoření virtuálního počítače s Linuxem pomocí PowerShellu</span><span class="sxs-lookup"><span data-stu-id="ed39e-103">Create a Linux virtual machine with PowerShell</span></span>
+# <a name="create-a-linux-virtual-machine-with-powershell"></a><span data-ttu-id="f61e4-103">Vytvoření virtuálního počítače s Linuxem pomocí PowerShellu</span><span class="sxs-lookup"><span data-stu-id="f61e4-103">Create a Linux virtual machine with PowerShell</span></span>
 
-<span data-ttu-id="ed39e-104">Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech.</span><span class="sxs-lookup"><span data-stu-id="ed39e-104">The Azure PowerShell module is used to create and manage Azure resources from the PowerShell command line or in scripts.</span></span> <span data-ttu-id="ed39e-105">Tento průvodce podrobně popisuje nasazení virtuálního počítače se serverem Ubuntu pomocí modulu Azure PowerShell.</span><span class="sxs-lookup"><span data-stu-id="ed39e-105">This guide details using the Azure PowerShell module to deploy a virtual machine running Ubuntu server.</span></span> <span data-ttu-id="ed39e-106">Po nasazení serveru se vytvoří připojení SSH a nainstaluje se webový server NGINX.</span><span class="sxs-lookup"><span data-stu-id="ed39e-106">Once the server is deployed, an SSH connection is created, and an NGINX webserver is installed.</span></span>
+<span data-ttu-id="f61e4-104">modul Azure PowerShell Hello je použité toocreate a spravovat prostředky Azure z příkazového řádku Powershellu hello nebo ve skriptech.</span><span class="sxs-lookup"><span data-stu-id="f61e4-104">hello Azure PowerShell module is used toocreate and manage Azure resources from hello PowerShell command line or in scripts.</span></span> <span data-ttu-id="f61e4-105">Tento průvodce údaje pomocí toodeploy modulu Azure PowerShell hello virtuálního počítače s Ubuntu server.</span><span class="sxs-lookup"><span data-stu-id="f61e4-105">This guide details using hello Azure PowerShell module toodeploy a virtual machine running Ubuntu server.</span></span> <span data-ttu-id="f61e4-106">Po nasazení hello serveru se vytvoří připojení SSH a je nainstalován webovém serveru NGINX.</span><span class="sxs-lookup"><span data-stu-id="f61e4-106">Once hello server is deployed, an SSH connection is created, and an NGINX webserver is installed.</span></span>
 
-<span data-ttu-id="ed39e-107">Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.</span><span class="sxs-lookup"><span data-stu-id="ed39e-107">If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.</span></span>
+<span data-ttu-id="f61e4-107">Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.</span><span class="sxs-lookup"><span data-stu-id="f61e4-107">If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.</span></span>
 
-<span data-ttu-id="ed39e-108">Tento Rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější.</span><span class="sxs-lookup"><span data-stu-id="ed39e-108">This quick start requires the Azure PowerShell module version 3.6 or later.</span></span> <span data-ttu-id="ed39e-109">Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`.</span><span class="sxs-lookup"><span data-stu-id="ed39e-109">Run ` Get-Module -ListAvailable AzureRM` to find the version.</span></span> <span data-ttu-id="ed39e-110">Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).</span><span class="sxs-lookup"><span data-stu-id="ed39e-110">If you need to install or upgrade, see [Install Azure PowerShell module](/powershell/azure/install-azurerm-ps).</span></span>
+<span data-ttu-id="f61e4-108">Tento úvodní vyžaduje hello prostředí Azure PowerShell verze modulu 3,6 nebo novější.</span><span class="sxs-lookup"><span data-stu-id="f61e4-108">This quick start requires hello Azure PowerShell module version 3.6 or later.</span></span> <span data-ttu-id="f61e4-109">Spustit ` Get-Module -ListAvailable AzureRM` toofind hello verze.</span><span class="sxs-lookup"><span data-stu-id="f61e4-109">Run ` Get-Module -ListAvailable AzureRM` toofind hello version.</span></span> <span data-ttu-id="f61e4-110">Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [modul nainstalovat Azure PowerShell](/powershell/azure/install-azurerm-ps).</span><span class="sxs-lookup"><span data-stu-id="f61e4-110">If you need tooinstall or upgrade, see [Install Azure PowerShell module](/powershell/azure/install-azurerm-ps).</span></span>
 
-<span data-ttu-id="ed39e-111">Veřejný klíč SSH s názvem *id_rsa.pub* musí být nakonec uložen v adresáři *.ssh* vašeho profilu uživatele Windows.</span><span class="sxs-lookup"><span data-stu-id="ed39e-111">Finally, a public SSH key with the name *id_rsa.pub* needs to be stored in the *.ssh* directory of your Windows user profile.</span></span> <span data-ttu-id="ed39e-112">Podrobné informace o vytváření klíčů SSH pro Azure najdete v tématu popisujícím [vytvoření klíčů SSH pro Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="ed39e-112">For detailed information on creating SSH keys for Azure, see [Create SSH keys for Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>
+<span data-ttu-id="f61e4-111">Nakonec veřejný klíč SSH s názvem hello *id_rsa.pub* musí toobe uložené v hello *.ssh* adresář profil uživatele systému Windows.</span><span class="sxs-lookup"><span data-stu-id="f61e4-111">Finally, a public SSH key with hello name *id_rsa.pub* needs toobe stored in hello *.ssh* directory of your Windows user profile.</span></span> <span data-ttu-id="f61e4-112">Podrobné informace o vytváření klíčů SSH pro Azure najdete v tématu popisujícím [vytvoření klíčů SSH pro Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="f61e4-112">For detailed information on creating SSH keys for Azure, see [Create SSH keys for Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>
 
-## <a name="log-in-to-azure"></a><span data-ttu-id="ed39e-113">Přihlaste se k Azure.</span><span class="sxs-lookup"><span data-stu-id="ed39e-113">Log in to Azure</span></span>
+## <a name="log-in-tooazure"></a><span data-ttu-id="f61e4-113">Přihlaste se tooAzure</span><span class="sxs-lookup"><span data-stu-id="f61e4-113">Log in tooAzure</span></span>
 
-<span data-ttu-id="ed39e-114">Přihlaste se k předplatnému Azure pomocí příkazu `Login-AzureRmAccount` a postupujte podle pokynů na obrazovce.</span><span class="sxs-lookup"><span data-stu-id="ed39e-114">Log in to your Azure subscription with the `Login-AzureRmAccount` command and follow the on-screen directions.</span></span>
+<span data-ttu-id="f61e4-114">Přihlaste se tooyour předplatné s hello `Login-AzureRmAccount` příkazů a postupujte podle hello na obrazovce pokynů.</span><span class="sxs-lookup"><span data-stu-id="f61e4-114">Log in tooyour Azure subscription with hello `Login-AzureRmAccount` command and follow hello on-screen directions.</span></span>
 
 ```powershell
 Login-AzureRmAccount
 ```
 
-## <a name="create-resource-group"></a><span data-ttu-id="ed39e-115">Vytvoření skupiny prostředků</span><span class="sxs-lookup"><span data-stu-id="ed39e-115">Create resource group</span></span>
+## <a name="create-resource-group"></a><span data-ttu-id="f61e4-115">Vytvoření skupiny prostředků</span><span class="sxs-lookup"><span data-stu-id="f61e4-115">Create resource group</span></span>
 
-<span data-ttu-id="ed39e-116">Vytvořte skupinu prostředků Azure pomocí příkazu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup).</span><span class="sxs-lookup"><span data-stu-id="ed39e-116">Create an Azure resource group with [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup).</span></span> <span data-ttu-id="ed39e-117">Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.</span><span class="sxs-lookup"><span data-stu-id="ed39e-117">A resource group is a logical container into which Azure resources are deployed and managed.</span></span> 
+<span data-ttu-id="f61e4-116">Vytvořte skupinu prostředků Azure pomocí příkazu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup).</span><span class="sxs-lookup"><span data-stu-id="f61e4-116">Create an Azure resource group with [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup).</span></span> <span data-ttu-id="f61e4-117">Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.</span><span class="sxs-lookup"><span data-stu-id="f61e4-117">A resource group is a logical container into which Azure resources are deployed and managed.</span></span> 
 
 ```powershell
 New-AzureRmResourceGroup -Name myResourceGroup -Location eastus
 ```
 
-## <a name="create-networking-resources"></a><span data-ttu-id="ed39e-118">Vytvoření síťových prostředků</span><span class="sxs-lookup"><span data-stu-id="ed39e-118">Create networking resources</span></span>
+## <a name="create-networking-resources"></a><span data-ttu-id="f61e4-118">Vytvoření síťových prostředků</span><span class="sxs-lookup"><span data-stu-id="f61e4-118">Create networking resources</span></span>
 
-<span data-ttu-id="ed39e-119">Vytvořte virtuální síť, podsíť a veřejnou IP adresu.</span><span class="sxs-lookup"><span data-stu-id="ed39e-119">Create a virtual network, subnet, and a public IP address.</span></span> <span data-ttu-id="ed39e-120">Tyto prostředky slouží k zajištění síťového připojení virtuálnímu počítači a k jeho připojení k internetu.</span><span class="sxs-lookup"><span data-stu-id="ed39e-120">These resources are used to provide network connectivity to the virtual machine and connect it to the internet.</span></span>
+<span data-ttu-id="f61e4-119">Vytvořte virtuální síť, podsíť a veřejnou IP adresu.</span><span class="sxs-lookup"><span data-stu-id="f61e4-119">Create a virtual network, subnet, and a public IP address.</span></span> <span data-ttu-id="f61e4-120">Tyto prostředky jsou použité tooprovide síťové připojení toohello virtuální počítač a připojte ho toohello Internetu.</span><span class="sxs-lookup"><span data-stu-id="f61e4-120">These resources are used tooprovide network connectivity toohello virtual machine and connect it toohello internet.</span></span>
 
 ```powershell
 # Create a subnet configuration
@@ -65,7 +65,7 @@ $pip = New-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup -Location e
 -AllocationMethod Static -IdleTimeoutInMinutes 4 -Name "mypublicdns$(Get-Random)"
 ```
 
-<span data-ttu-id="ed39e-121">Vytvořte skupinu zabezpečení sítě a pravidlo skupiny zabezpečení sítě.</span><span class="sxs-lookup"><span data-stu-id="ed39e-121">Create a network security group and a network security group rule.</span></span> <span data-ttu-id="ed39e-122">Skupina zabezpečení sítě zabezpečuje virtuální počítač pomocí příchozích a odchozích pravidel.</span><span class="sxs-lookup"><span data-stu-id="ed39e-122">The network security group secures the virtual machine using inbound and outbound rules.</span></span> <span data-ttu-id="ed39e-123">V tomto případě se vytvoří příchozí pravidlo pro port 22, které umožní příchozí připojení SSH.</span><span class="sxs-lookup"><span data-stu-id="ed39e-123">In this case, an inbound rule is created for port 22, which allows incoming SSH connections.</span></span> <span data-ttu-id="ed39e-124">Chceme také vytvořit příchozí pravidlo pro port 80, které umožní příchozí webový provoz.</span><span class="sxs-lookup"><span data-stu-id="ed39e-124">We also want to create an inbound rule for port 80, which allows incoming web traffic.</span></span>
+<span data-ttu-id="f61e4-121">Vytvořte skupinu zabezpečení sítě a pravidlo skupiny zabezpečení sítě.</span><span class="sxs-lookup"><span data-stu-id="f61e4-121">Create a network security group and a network security group rule.</span></span> <span data-ttu-id="f61e4-122">Skupina zabezpečení sítě Hello zabezpečuje hello virtuálního počítače pomocí příchozí a odchozí pravidla.</span><span class="sxs-lookup"><span data-stu-id="f61e4-122">hello network security group secures hello virtual machine using inbound and outbound rules.</span></span> <span data-ttu-id="f61e4-123">V tomto případě se vytvoří příchozí pravidlo pro port 22, které umožní příchozí připojení SSH.</span><span class="sxs-lookup"><span data-stu-id="f61e4-123">In this case, an inbound rule is created for port 22, which allows incoming SSH connections.</span></span> <span data-ttu-id="f61e4-124">Chceme také toocreate příchozí pravidlo pro port 80, která umožní příchozí webový provoz.</span><span class="sxs-lookup"><span data-stu-id="f61e4-124">We also want toocreate an inbound rule for port 80, which allows incoming web traffic.</span></span>
 
 ```powershell
 # Create an inbound network security group rule for port 22
@@ -83,7 +83,7 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName myResourceGroup -Locat
 -Name myNetworkSecurityGroup -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 ```
 
-<span data-ttu-id="ed39e-125">Vytvořte pro virtuální počítač síťovou kartu pomocí příkazu [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface).</span><span class="sxs-lookup"><span data-stu-id="ed39e-125">Create a network card with [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) for the virtual machine.</span></span> <span data-ttu-id="ed39e-126">Síťová karta připojuje virtuální počítač k podsíti, skupině zabezpečení sítě a veřejné IP adrese.</span><span class="sxs-lookup"><span data-stu-id="ed39e-126">The network card connects the virtual machine to a subnet, network security group, and public IP address.</span></span>
+<span data-ttu-id="f61e4-125">Vytvoření síťové karty s [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) hello virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="f61e4-125">Create a network card with [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) for hello virtual machine.</span></span> <span data-ttu-id="f61e4-126">Hello síťová karta připojí podsíť tooa hello virtuální počítač, skupina zabezpečení sítě a veřejnou IP adresu.</span><span class="sxs-lookup"><span data-stu-id="f61e4-126">hello network card connects hello virtual machine tooa subnet, network security group, and public IP address.</span></span>
 
 ```powershell
 # Create a virtual network card and associate with public IP address and NSG
@@ -91,9 +91,9 @@ $nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName myResourceGrou
 -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
 ```
 
-## <a name="create-virtual-machine"></a><span data-ttu-id="ed39e-127">Vytvoření virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="ed39e-127">Create virtual machine</span></span>
+## <a name="create-virtual-machine"></a><span data-ttu-id="f61e4-127">Vytvoření virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="f61e4-127">Create virtual machine</span></span>
 
-<span data-ttu-id="ed39e-128">Vytvořte konfiguraci virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="ed39e-128">Create a virtual machine configuration.</span></span> <span data-ttu-id="ed39e-129">Tato konfigurace zahrnuje nastavení, která se používají při nasazení virtuálního počítače, jako je image virtuálního počítače, jeho velikost a konfigurace ověřování.</span><span class="sxs-lookup"><span data-stu-id="ed39e-129">This configuration includes the settings that are used when deploying the virtual machine such as a virtual machine image, size, and authentication configuration.</span></span>
+<span data-ttu-id="f61e4-128">Vytvořte konfiguraci virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="f61e4-128">Create a virtual machine configuration.</span></span> <span data-ttu-id="f61e4-129">Tato konfigurace zahrnuje hello nastavení, které se použijí při nasazení virtuálního počítače hello třeba konfiguraci virtuálního počítače bitové kopie, velikost a ověřování.</span><span class="sxs-lookup"><span data-stu-id="f61e4-129">This configuration includes hello settings that are used when deploying hello virtual machine such as a virtual machine image, size, and authentication configuration.</span></span>
 
 ```powershell
 # Define a credential object
@@ -111,34 +111,34 @@ $sshPublicKey = Get-Content "$env:USERPROFILE\.ssh\id_rsa.pub"
 Add-AzureRmVMSshPublicKey -VM $vmconfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 ```
 
-<span data-ttu-id="ed39e-130">Vytvořte virtuální počítač pomocí příkazu [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).</span><span class="sxs-lookup"><span data-stu-id="ed39e-130">Create the virtual machine with [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).</span></span>
+<span data-ttu-id="f61e4-130">Vytvoření virtuálního počítače hello s [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).</span><span class="sxs-lookup"><span data-stu-id="f61e4-130">Create hello virtual machine with [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).</span></span>
 
 ```powershell
 New-AzureRmVM -ResourceGroupName myResourceGroup -Location eastus -VM $vmConfig
 ```
 
-## <a name="connect-to-virtual-machine"></a><span data-ttu-id="ed39e-131">Připojení k virtuálnímu počítači</span><span class="sxs-lookup"><span data-stu-id="ed39e-131">Connect to virtual machine</span></span>
+## <a name="connect-toovirtual-machine"></a><span data-ttu-id="f61e4-131">Připojte počítač toovirtual</span><span class="sxs-lookup"><span data-stu-id="f61e4-131">Connect toovirtual machine</span></span>
 
-<span data-ttu-id="ed39e-132">Po dokončení nasazení vytvořte připojení SSH k virtuálnímu počítači.</span><span class="sxs-lookup"><span data-stu-id="ed39e-132">After the deployment has completed, create an SSH connection with the virtual machine.</span></span>
+<span data-ttu-id="f61e4-132">Po dokončení nasazení hello vytvoření připojení SSH s hello virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="f61e4-132">After hello deployment has completed, create an SSH connection with hello virtual machine.</span></span>
 
-<span data-ttu-id="ed39e-133">Použijte příkaz [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress), který vrátí veřejnou IP adresu virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="ed39e-133">Use the [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) command to return the public IP address of the virtual machine.</span></span>
+<span data-ttu-id="f61e4-133">Použití hello [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) příkaz tooreturn hello veřejnou IP adresu hello virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="f61e4-133">Use hello [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) command tooreturn hello public IP address of hello virtual machine.</span></span>
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-<span data-ttu-id="ed39e-134">Ze systému s nainstalovaným SSH se pomocí následujícího příkazu připojte k virtuálnímu počítači.</span><span class="sxs-lookup"><span data-stu-id="ed39e-134">From a system with SSH installed, used the following command to connect to the virtual machine.</span></span> <span data-ttu-id="ed39e-135">Pokud pracujete v systému Windows, můžete k vytvoření připojení použít [PuTTy](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-ssh-from-windows?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-private-key-for-putty).</span><span class="sxs-lookup"><span data-stu-id="ed39e-135">If working on Windows, [Putty](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-ssh-from-windows?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-private-key-for-putty) can be used to create the connection.</span></span> 
+<span data-ttu-id="f61e4-134">Ze systému pomocí protokolu SSH nainstalovaná hello použít následující příkaz tooconnect toohello virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="f61e4-134">From a system with SSH installed, used hello following command tooconnect toohello virtual machine.</span></span> <span data-ttu-id="f61e4-135">Pokud funguje v systému Windows, [Putty](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-ssh-from-windows?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-private-key-for-putty) lze použít toocreate hello připojení.</span><span class="sxs-lookup"><span data-stu-id="f61e4-135">If working on Windows, [Putty](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-ssh-from-windows?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-private-key-for-putty) can be used toocreate hello connection.</span></span> 
 
 ```bash 
 ssh <Public IP Address>
 ```
 
-<span data-ttu-id="ed39e-136">Po zobrazení výzvy zadejte uživatelské jméno *azureuser*.</span><span class="sxs-lookup"><span data-stu-id="ed39e-136">When prompted, the login user name is *azureuser*.</span></span> <span data-ttu-id="ed39e-137">Pokud jste při vytváření klíčů SSH zadali heslo, musíte zadat i to.</span><span class="sxs-lookup"><span data-stu-id="ed39e-137">If a passphrase was entered when creating SSH keys, you need to enter this as well.</span></span>
+<span data-ttu-id="f61e4-136">Po zobrazení výzvy hello přihlašovací uživatelské jméno je *azureuser*.</span><span class="sxs-lookup"><span data-stu-id="f61e4-136">When prompted, hello login user name is *azureuser*.</span></span> <span data-ttu-id="f61e4-137">Pokud přístupové heslo bylo zadáno při vytváření klíče SSH, musíte tuto také tooenter.</span><span class="sxs-lookup"><span data-stu-id="f61e4-137">If a passphrase was entered when creating SSH keys, you need tooenter this as well.</span></span>
 
 
-## <a name="install-nginx"></a><span data-ttu-id="ed39e-138">Instalace serveru NGINX</span><span class="sxs-lookup"><span data-stu-id="ed39e-138">Install NGINX</span></span>
+## <a name="install-nginx"></a><span data-ttu-id="f61e4-138">Instalace serveru NGINX</span><span class="sxs-lookup"><span data-stu-id="f61e4-138">Install NGINX</span></span>
 
-<span data-ttu-id="ed39e-139">Pomocí následujícího skriptu bash provedete aktualizaci zdrojů balíčku a nainstalujete nejnovější balíček NGINX.</span><span class="sxs-lookup"><span data-stu-id="ed39e-139">Use the following bash script to update package sources and install the latest NGINX package.</span></span> 
+<span data-ttu-id="f61e4-139">Použití hello následující zdroje balíčků tooupdate skriptů bash a instalovat nejnovější balíček NGINX hello.</span><span class="sxs-lookup"><span data-stu-id="f61e4-139">Use hello following bash script tooupdate package sources and install hello latest NGINX package.</span></span> 
 
 ```bash 
 #!/bin/bash
@@ -150,23 +150,23 @@ apt-get -y update
 apt-get -y install nginx
 ```
 
-## <a name="view-the-ngix-welcome-page"></a><span data-ttu-id="ed39e-140">Zobrazení úvodní stránky serveru NGINX</span><span class="sxs-lookup"><span data-stu-id="ed39e-140">View the NGIX welcome page</span></span>
+## <a name="view-hello-ngix-welcome-page"></a><span data-ttu-id="f61e4-140">Zobrazení hello NGIX úvodní stránka</span><span class="sxs-lookup"><span data-stu-id="f61e4-140">View hello NGIX welcome page</span></span>
 
-<span data-ttu-id="ed39e-141">S nainstalovaným serverem NGINX na virtuálním počítači a nyní otevřeným portem 80 z internetu můžete použít libovolný webový prohlížeč a zobrazit výchozí úvodní stránku serveru NGINX.</span><span class="sxs-lookup"><span data-stu-id="ed39e-141">With NGINX installed and port 80 now open on your VM from the Internet - you can use a web browser of your choice to view the default NGINX welcome page.</span></span> <span data-ttu-id="ed39e-142">Nezapomeňte pro návštěvu výchozí stránky použít veřejnou IP adresu popsanou výše.</span><span class="sxs-lookup"><span data-stu-id="ed39e-142">Be sure to use the public IP address you documented above to visit the default page.</span></span> 
+<span data-ttu-id="f61e4-141">NGINX nainstalován a port 80 nyní otevřete na vašem virtuálním počítači z hello Internetu – můžete použít webový prohlížeč volba tooview hello výchozí NGINX uvítací stránky.</span><span class="sxs-lookup"><span data-stu-id="f61e4-141">With NGINX installed and port 80 now open on your VM from hello Internet - you can use a web browser of your choice tooview hello default NGINX welcome page.</span></span> <span data-ttu-id="f61e4-142">Být, že toouse hello veřejnou IP adresu, kterou popsané výše toovisit hello výchozí stránky.</span><span class="sxs-lookup"><span data-stu-id="f61e4-142">Be sure toouse hello public IP address you documented above toovisit hello default page.</span></span> 
 
 ![Výchozí web NGINX](./media/quick-create-cli/nginx.png) 
 
-## <a name="clean-up-resources"></a><span data-ttu-id="ed39e-144">Vyčištění prostředků</span><span class="sxs-lookup"><span data-stu-id="ed39e-144">Clean up resources</span></span>
+## <a name="clean-up-resources"></a><span data-ttu-id="f61e4-144">Vyčištění prostředků</span><span class="sxs-lookup"><span data-stu-id="f61e4-144">Clean up resources</span></span>
 
-<span data-ttu-id="ed39e-145">Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít příkaz [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).</span><span class="sxs-lookup"><span data-stu-id="ed39e-145">When no longer needed, you can use the [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) command to remove the resource group, VM, and all related resources.</span></span>
+<span data-ttu-id="f61e4-145">Pokud již nepotřebujete, můžete použít hello [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) příkaz skupiny prostředků hello tooremove, virtuálních počítačů a všechny související prostředky.</span><span class="sxs-lookup"><span data-stu-id="f61e4-145">When no longer needed, you can use hello [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) command tooremove hello resource group, VM, and all related resources.</span></span>
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="ed39e-146">Další kroky</span><span class="sxs-lookup"><span data-stu-id="ed39e-146">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="f61e4-146">Další kroky</span><span class="sxs-lookup"><span data-stu-id="f61e4-146">Next steps</span></span>
 
-<span data-ttu-id="ed39e-147">V tomto Rychlém startu jste nasadili jednoduchý virtuální počítač a pravidlo skupiny zabezpečení sítě a nainstalovali jste webový server.</span><span class="sxs-lookup"><span data-stu-id="ed39e-147">In this quick start, you’ve deployed a simple virtual machine, a network security group rule, and installed a web server.</span></span> <span data-ttu-id="ed39e-148">Další informace o virtuálních počítačích Azure najdete v kurzu pro virtuální počítače s Linuxem.</span><span class="sxs-lookup"><span data-stu-id="ed39e-148">To learn more about Azure virtual machines, continue to the tutorial for Linux VMs.</span></span>
+<span data-ttu-id="f61e4-147">V tomto Rychlém startu jste nasadili jednoduchý virtuální počítač a pravidlo skupiny zabezpečení sítě a nainstalovali jste webový server.</span><span class="sxs-lookup"><span data-stu-id="f61e4-147">In this quick start, you’ve deployed a simple virtual machine, a network security group rule, and installed a web server.</span></span> <span data-ttu-id="f61e4-148">toolearn Další informace o virtuálních počítačích Azure, pokračovat v kurzu toohello pro virtuální počítače s Linuxem.</span><span class="sxs-lookup"><span data-stu-id="f61e4-148">toolearn more about Azure virtual machines, continue toohello tutorial for Linux VMs.</span></span>
 
 > [!div class="nextstepaction"]
-> [<span data-ttu-id="ed39e-149">Kurzy pro virtuální počítače Azure s Linuxem</span><span class="sxs-lookup"><span data-stu-id="ed39e-149">Azure Linux virtual machine tutorials</span></span>](./tutorial-manage-vm.md)
+> [<span data-ttu-id="f61e4-149">Kurzy pro virtuální počítače Azure s Linuxem</span><span class="sxs-lookup"><span data-stu-id="f61e4-149">Azure Linux virtual machine tutorials</span></span>](./tutorial-manage-vm.md)

@@ -1,6 +1,6 @@
 ---
-title: "Databáze Azure Cosmos: Sestavení webové aplikace v prostředí .NET s rozhraním API MongoDB | Dokumentace Microsoftu"
-description: "Představuje ukázku kódu .NET, kterou můžete použít k připojení a dotazování do rozhraní API MongoDB databáze Azure Cosmos."
+title: "Azure Cosmos DB: Sestavení webové aplikace pomocí rozhraní .NET a hello MongoDB API | Microsoft Docs"
+description: "Uvede ukázku kódu .NET pomocí dotazu tooand tooconnect hello rozhraní API služby Azure Cosmos DB MongoDB"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -15,47 +15,47 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: 2d30bec75d701b1fd55355d1e139350b6d828c9a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c85cc47f772a19aaa7181611b75a8acaedbc4c42
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-the-azure-portal"></a><span data-ttu-id="c17c9-103">Databáze Azure Cosmos: Sestavení webové aplikace s rozhraním API MongoDB v prostředí .NET a na webu Azure Portal</span><span class="sxs-lookup"><span data-stu-id="c17c9-103">Azure Cosmos DB: Build a MongoDB API web app with .NET and the Azure portal</span></span>
+# <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-hello-azure-portal"></a><span data-ttu-id="13b5c-103">Azure Cosmos DB: Sestavení rozhraní API MongoDB webové aplikace pomocí rozhraní .NET a hello portálu Azure</span><span class="sxs-lookup"><span data-stu-id="13b5c-103">Azure Cosmos DB: Build a MongoDB API web app with .NET and hello Azure portal</span></span>
 
-<span data-ttu-id="c17c9-104">Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku.</span><span class="sxs-lookup"><span data-stu-id="c17c9-104">Azure Cosmos DB is Microsoft’s globally distributed multi-model database service.</span></span> <span data-ttu-id="c17c9-105">Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="c17c9-105">You can quickly create and query document, key/value, and graph databases, all of which benefit from the global distribution and horizontal scale capabilities at the core of Azure Cosmos DB.</span></span> 
+<span data-ttu-id="13b5c-104">Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku.</span><span class="sxs-lookup"><span data-stu-id="13b5c-104">Azure Cosmos DB is Microsoft’s globally distributed multi-model database service.</span></span> <span data-ttu-id="13b5c-105">Můžete rychle vytvořit a dotazovat dokumentu, klíč/hodnota a graf databází, které těžit z globální distribuční hello a možnosti vodorovné škálování jádrem hello Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="13b5c-105">You can quickly create and query document, key/value, and graph databases, all of which benefit from hello global distribution and horizontal scale capabilities at hello core of Azure Cosmos DB.</span></span> 
 
-<span data-ttu-id="c17c9-106">Tento rychlý start popisuje způsob vytvoření účtu databáze Azure Cosmos, databáze dokumentů a kolekce pomocí webu Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="c17c9-106">This quick start demonstrates how to create an Azure Cosmos DB account, document database, and collection using the Azure portal.</span></span> <span data-ttu-id="c17c9-107">Potom sestavíte a nasadíte webovou aplikaci seznamu úkolů založenou na [ovladači .NET MongoDB](https://docs.mongodb.com/ecosystem/drivers/csharp/).</span><span class="sxs-lookup"><span data-stu-id="c17c9-107">You'll then build and deploy a tasks list web app built on the [MongoDB .NET driver](https://docs.mongodb.com/ecosystem/drivers/csharp/).</span></span> 
+<span data-ttu-id="13b5c-106">Tento rychlý start předvádí, jak hello toocreate účet Azure Cosmos DB, dokumentu databáze a kolekce pomocí portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="13b5c-106">This quick start demonstrates how toocreate an Azure Cosmos DB account, document database, and collection using hello Azure portal.</span></span> <span data-ttu-id="13b5c-107">Budete pak sestavení a nasazení webové aplikace seznamu úkolů založený na hello [MongoDB .NET ovladač](https://docs.mongodb.com/ecosystem/drivers/csharp/).</span><span class="sxs-lookup"><span data-stu-id="13b5c-107">You'll then build and deploy a tasks list web app built on hello [MongoDB .NET driver](https://docs.mongodb.com/ecosystem/drivers/csharp/).</span></span> 
 
-## <a name="prerequisites"></a><span data-ttu-id="c17c9-108">Požadavky</span><span class="sxs-lookup"><span data-stu-id="c17c9-108">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="13b5c-108">Požadavky</span><span class="sxs-lookup"><span data-stu-id="13b5c-108">Prerequisites</span></span>
 
-<span data-ttu-id="c17c9-109">Pokud ještě nemáte nainstalovanou sadu Visual Studio 2017, můžete stáhnout a použít **bezplatnou verzi** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/).</span><span class="sxs-lookup"><span data-stu-id="c17c9-109">If you don’t already have Visual Studio 2017 installed, you can download and use the **free** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/).</span></span> <span data-ttu-id="c17c9-110">Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.</span><span class="sxs-lookup"><span data-stu-id="c17c9-110">Make sure that you enable **Azure development** during the Visual Studio setup.</span></span>
+<span data-ttu-id="13b5c-109">Pokud ještě nemáte nainstalované Visual Studio 2017, můžete stáhnout a použít hello **volné** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/).</span><span class="sxs-lookup"><span data-stu-id="13b5c-109">If you don’t already have Visual Studio 2017 installed, you can download and use hello **free** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/).</span></span> <span data-ttu-id="13b5c-110">Ujistěte se, že povolíte **Azure development** při instalaci sady Visual Studio hello.</span><span class="sxs-lookup"><span data-stu-id="13b5c-110">Make sure that you enable **Azure development** during hello Visual Studio setup.</span></span>
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 <a id="create-account"></a>
-## <a name="create-a-database-account"></a><span data-ttu-id="c17c9-111">Vytvoření účtu databáze</span><span class="sxs-lookup"><span data-stu-id="c17c9-111">Create a database account</span></span>
+## <a name="create-a-database-account"></a><span data-ttu-id="13b5c-111">Vytvoření účtu databáze</span><span class="sxs-lookup"><span data-stu-id="13b5c-111">Create a database account</span></span>
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
-## <a name="clone-the-sample-application"></a><span data-ttu-id="c17c9-112">Klonování ukázkové aplikace</span><span class="sxs-lookup"><span data-stu-id="c17c9-112">Clone the sample application</span></span>
+## <a name="clone-hello-sample-application"></a><span data-ttu-id="13b5c-112">Klonování hello ukázkové aplikace</span><span class="sxs-lookup"><span data-stu-id="13b5c-112">Clone hello sample application</span></span>
 
-<span data-ttu-id="c17c9-113">Teď naklonujeme aplikaci rozhraní API MongoDB z GitHubu, nastavíme připojovací řetězec a spustíme ji.</span><span class="sxs-lookup"><span data-stu-id="c17c9-113">Now let's clone a MongoDB API app from github, set the connection string, and run it.</span></span> <span data-ttu-id="c17c9-114">Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu.</span><span class="sxs-lookup"><span data-stu-id="c17c9-114">You'll see how easy it is to work with data programmatically.</span></span> 
+<span data-ttu-id="13b5c-113">Teď umožňuje nastavit připojovací řetězec hello klonování MongoDB API aplikace z githubu a potom ho spusťte.</span><span class="sxs-lookup"><span data-stu-id="13b5c-113">Now let's clone a MongoDB API app from github, set hello connection string, and run it.</span></span> <span data-ttu-id="13b5c-114">Uvidíte, jak je snadné toowork s daty prostřednictvím kódu programu.</span><span class="sxs-lookup"><span data-stu-id="13b5c-114">You'll see how easy it is toowork with data programmatically.</span></span> 
 
-1. <span data-ttu-id="c17c9-115">Otevřete okno terminálu Git, jako je třeba Git Bash, a pomocí `cd` přejděte do pracovního adresáře.</span><span class="sxs-lookup"><span data-stu-id="c17c9-115">Open a git terminal window, such as git bash, and `cd` to a working directory.</span></span>  
+1. <span data-ttu-id="13b5c-115">Otevřete okno terminálu git, jako je například git bash a `cd` tooa pracovní adresář.</span><span class="sxs-lookup"><span data-stu-id="13b5c-115">Open a git terminal window, such as git bash, and `cd` tooa working directory.</span></span>  
 
-2. <span data-ttu-id="c17c9-116">Ukázkové úložiště naklonujete spuštěním následujícího příkazu.</span><span class="sxs-lookup"><span data-stu-id="c17c9-116">Run the following command to clone the sample repository.</span></span> 
+2. <span data-ttu-id="13b5c-116">Spusťte následující příkaz tooclone hello Ukázka úložiště hello.</span><span class="sxs-lookup"><span data-stu-id="13b5c-116">Run hello following command tooclone hello sample repository.</span></span> 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-getting-started.git
     ```
 
-3. <span data-ttu-id="c17c9-117">Potom otevřete soubor řešení v sadě Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="c17c9-117">Then open the solution file in Visual Studio.</span></span> 
+3. <span data-ttu-id="13b5c-117">Poté otevřete soubor řešení hello v sadě Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="13b5c-117">Then open hello solution file in Visual Studio.</span></span> 
 
-## <a name="review-the-code"></a><span data-ttu-id="c17c9-118">Kontrola kódu</span><span class="sxs-lookup"><span data-stu-id="c17c9-118">Review the code</span></span>
+## <a name="review-hello-code"></a><span data-ttu-id="13b5c-118">Zkontrolujte hello kódu</span><span class="sxs-lookup"><span data-stu-id="13b5c-118">Review hello code</span></span>
 
-<span data-ttu-id="c17c9-119">Ještě jednou se stručně podívejme na to, co se v aplikaci děje.</span><span class="sxs-lookup"><span data-stu-id="c17c9-119">Let's make a quick review of what's happening in the app.</span></span> <span data-ttu-id="c17c9-120">Otevřete soubor **Dal.cs** v adresáři **DAL** a zjistíte, že tyto řádky kódu vytvářejí prostředky databáze Azure Cosmos.</span><span class="sxs-lookup"><span data-stu-id="c17c9-120">Open the **Dal.cs** file under the **DAL** directory and you'll find that these lines of code create the Azure Cosmos DB resources.</span></span> 
+<span data-ttu-id="13b5c-119">Provedeme jejich stručný přehled o dění v aplikaci hello.</span><span class="sxs-lookup"><span data-stu-id="13b5c-119">Let's make a quick review of what's happening in hello app.</span></span> <span data-ttu-id="13b5c-120">Otevřete hello **Dal.cs** souboru pod hello **DAL** directory a najdete, že tyto řádky kódu vytvořit hello prostředky Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="13b5c-120">Open hello **Dal.cs** file under hello **DAL** directory and you'll find that these lines of code create hello Azure Cosmos DB resources.</span></span> 
 
-* <span data-ttu-id="c17c9-121">Inicializuje se klient Mongo.</span><span class="sxs-lookup"><span data-stu-id="c17c9-121">Initialize the Mongo Client.</span></span>
+* <span data-ttu-id="13b5c-121">Inicializujte hello Mongo klienta.</span><span class="sxs-lookup"><span data-stu-id="13b5c-121">Initialize hello Mongo Client.</span></span>
 
     ```cs
         MongoClientSettings settings = new MongoClientSettings();
@@ -75,7 +75,7 @@ ms.lasthandoff: 07/11/2017
         MongoClient client = new MongoClient(settings);
     ```
 
-* <span data-ttu-id="c17c9-122">Načte se databáze a kolekce.</span><span class="sxs-lookup"><span data-stu-id="c17c9-122">Retrieve the database and the collection.</span></span>
+* <span data-ttu-id="13b5c-122">Načíst hello databázi a kolekci hello.</span><span class="sxs-lookup"><span data-stu-id="13b5c-122">Retrieve hello database and hello collection.</span></span>
 
     ```cs
     private string dbName = "Tasks";
@@ -85,55 +85,55 @@ ms.lasthandoff: 07/11/2017
     var todoTaskCollection = database.GetCollection<MyTask>(collectionName);
     ```
 
-* <span data-ttu-id="c17c9-123">Načtou se všechny dokumenty.</span><span class="sxs-lookup"><span data-stu-id="c17c9-123">Retrieve all documents.</span></span>
+* <span data-ttu-id="13b5c-123">Načtou se všechny dokumenty.</span><span class="sxs-lookup"><span data-stu-id="13b5c-123">Retrieve all documents.</span></span>
 
     ```cs
     collection.Find(new BsonDocument()).ToList();
     ```
 
-## <a name="update-your-connection-string"></a><span data-ttu-id="c17c9-124">Aktualizace připojovacího řetězce</span><span class="sxs-lookup"><span data-stu-id="c17c9-124">Update your connection string</span></span>
+## <a name="update-your-connection-string"></a><span data-ttu-id="13b5c-124">Aktualizace připojovacího řetězce</span><span class="sxs-lookup"><span data-stu-id="13b5c-124">Update your connection string</span></span>
 
-<span data-ttu-id="c17c9-125">Teď se vraťte zpátky na web Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.</span><span class="sxs-lookup"><span data-stu-id="c17c9-125">Now go back to the Azure portal to get your connection string information and copy it into the app.</span></span>
+<span data-ttu-id="13b5c-125">Nyní přejděte zpět toohello Azure portálu tooget vaše informace o připojovacím řetězci a zkopírujte jej do aplikace hello.</span><span class="sxs-lookup"><span data-stu-id="13b5c-125">Now go back toohello Azure portal tooget your connection string information and copy it into hello app.</span></span>
 
-1. <span data-ttu-id="c17c9-126">Na webu [Azure Portal](http://portal.azure.com/) klikněte v účtu databáze Azure Cosmos v levém navigačním panelu na možnost **Připojovací řetězec** a potom klikněte na **Klíče pro čtení i zápis**.</span><span class="sxs-lookup"><span data-stu-id="c17c9-126">In the [Azure portal](http://portal.azure.com/), in your Azure Cosmos DB account, in the left navigation click **Connection String**, and then click **Read-write Keys**.</span></span> <span data-ttu-id="c17c9-127">V dalším kroku zkopírujete pomocí tlačítek kopírování na pravé straně obrazovky uživatelské jméno, heslo a hostitele do souboru Dal.cs.</span><span class="sxs-lookup"><span data-stu-id="c17c9-127">You'll use the copy buttons on the right side of the screen to copy the Username, Password, and Host into the Dal.cs file in the next step.</span></span>
+1. <span data-ttu-id="13b5c-126">V hello [portál Azure](http://portal.azure.com/), ve vašem Azure Cosmos DB účet, klikněte v levé navigační hello **připojovací řetězec**a potom klikněte na **klíče pro čtení a zápis**.</span><span class="sxs-lookup"><span data-stu-id="13b5c-126">In hello [Azure portal](http://portal.azure.com/), in your Azure Cosmos DB account, in hello left navigation click **Connection String**, and then click **Read-write Keys**.</span></span> <span data-ttu-id="13b5c-127">Do souboru Dal.cs hello v dalším kroku hello použijete hello tlačítka Kopírovat na pravé straně hello hello obrazovky toocopy hello uživatelské jméno, heslo a hostitele.</span><span class="sxs-lookup"><span data-stu-id="13b5c-127">You'll use hello copy buttons on hello right side of hello screen toocopy hello Username, Password, and Host into hello Dal.cs file in hello next step.</span></span>
 
-2. <span data-ttu-id="c17c9-128">Otevřete soubor **Dal.cs** v adresáři **DAL**.</span><span class="sxs-lookup"><span data-stu-id="c17c9-128">Open the **Dal.cs** file in the **DAL** directory.</span></span> 
+2. <span data-ttu-id="13b5c-128">Otevřete hello **Dal.cs** souboru v hello **DAL** adresáře.</span><span class="sxs-lookup"><span data-stu-id="13b5c-128">Open hello **Dal.cs** file in hello **DAL** directory.</span></span> 
 
-3. <span data-ttu-id="c17c9-129">Z portálu zkopírujte hodnotu **username** (pomocí tlačítka kopírování) a nastavte ji jako hodnotu položky **username** v souboru **Dal.cs**.</span><span class="sxs-lookup"><span data-stu-id="c17c9-129">Copy your **username** value from the portal (using the copy button) and make it the value of the **username** in your **Dal.cs** file.</span></span> 
+3. <span data-ttu-id="13b5c-129">Kopírování vaše **uživatelské jméno** hodnoty z portálu hello (pomocí tlačítka kopírování hello) a nastavit jej jako hello hodnotu hello **uživatelské jméno** ve vaší **Dal.cs** souboru.</span><span class="sxs-lookup"><span data-stu-id="13b5c-129">Copy your **username** value from hello portal (using hello copy button) and make it hello value of hello **username** in your **Dal.cs** file.</span></span> 
 
-4. <span data-ttu-id="c17c9-130">Potom z portálu zkopírujte hodnotu **host** a nastavte ji jako hodnotu **host** v souboru **Dal.cs**.</span><span class="sxs-lookup"><span data-stu-id="c17c9-130">Then copy your **host** value from the portal and make it the value of the **host** in your **Dal.cs** file.</span></span> 
+4. <span data-ttu-id="13b5c-130">Zkopírujte vaše **hostitele** hodnoty z portálu hello a nastavit jej jako hello hodnotu hello **hostitele** ve vaší **Dal.cs** souboru.</span><span class="sxs-lookup"><span data-stu-id="13b5c-130">Then copy your **host** value from hello portal and make it hello value of hello **host** in your **Dal.cs** file.</span></span> 
 
-5. <span data-ttu-id="c17c9-131">Nakonec z portálu zkopírujte hodnotu **password** a nastavte ji jako hodnotu **password** v souboru **Dal.cs**.</span><span class="sxs-lookup"><span data-stu-id="c17c9-131">Finally copy your **password** value from the portal and make it the value of the **password** in your **Dal.cs** file.</span></span> 
+5. <span data-ttu-id="13b5c-131">Nakonec zkopírujte vaše **heslo** hodnoty z portálu hello a nastavit jej jako hello hodnotu hello **heslo** v vaše **Dal.cs** souboru.</span><span class="sxs-lookup"><span data-stu-id="13b5c-131">Finally copy your **password** value from hello portal and make it hello value of hello **password** in your **Dal.cs** file.</span></span> 
 
-<span data-ttu-id="c17c9-132">Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s databází Azure Cosmos.</span><span class="sxs-lookup"><span data-stu-id="c17c9-132">You've now updated your app with all the info it needs to communicate with Azure Cosmos DB.</span></span> 
+<span data-ttu-id="13b5c-132">Jste nyní aktualizovat vaši aplikaci s všechny údaje hello potřebuje toocommunicate s Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="13b5c-132">You've now updated your app with all hello info it needs toocommunicate with Azure Cosmos DB.</span></span> 
     
-## <a name="run-the-web-app"></a><span data-ttu-id="c17c9-133">Spuštění webové aplikace</span><span class="sxs-lookup"><span data-stu-id="c17c9-133">Run the web app</span></span>
+## <a name="run-hello-web-app"></a><span data-ttu-id="13b5c-133">Spouštění hello webové aplikace</span><span class="sxs-lookup"><span data-stu-id="13b5c-133">Run hello web app</span></span>
 
-1. <span data-ttu-id="c17c9-134">V sadě Visual Studio klikněte v **Průzkumníku řešení** pravým tlačítkem myši na projekt a potom klikněte na **Spravovat balíčky NuGet**.</span><span class="sxs-lookup"><span data-stu-id="c17c9-134">In Visual Studio, right-click on the project in **Solution Explorer** and then click **Manage NuGet Packages**.</span></span> 
+1. <span data-ttu-id="13b5c-134">V sadě Visual Studio, klikněte pravým tlačítkem na projekt hello v **Průzkumníku řešení** a pak klikněte na **spravovat balíčky NuGet**.</span><span class="sxs-lookup"><span data-stu-id="13b5c-134">In Visual Studio, right-click on hello project in **Solution Explorer** and then click **Manage NuGet Packages**.</span></span> 
 
-2. <span data-ttu-id="c17c9-135">Do pole **Procházet** v NuGetu zadejte *MongoDB.Driver*.</span><span class="sxs-lookup"><span data-stu-id="c17c9-135">In the NuGet **Browse** box, type *MongoDB.Driver*.</span></span>
+2. <span data-ttu-id="13b5c-135">V hello NuGet **Procházet** zadejte *MongoDB.Driver*.</span><span class="sxs-lookup"><span data-stu-id="13b5c-135">In hello NuGet **Browse** box, type *MongoDB.Driver*.</span></span>
 
-3. <span data-ttu-id="c17c9-136">Z výsledků nainstalujte knihovnu **MongoDB.Driver**.</span><span class="sxs-lookup"><span data-stu-id="c17c9-136">From the results, install the **MongoDB.Driver** library.</span></span> <span data-ttu-id="c17c9-137">Tím se nainstaluje balíček MongoDB.Driver a všechny závislosti.</span><span class="sxs-lookup"><span data-stu-id="c17c9-137">This installs the MongoDB.Driver package as well as all dependencies.</span></span>
+3. <span data-ttu-id="13b5c-136">Z výsledků hello nainstalovat hello **MongoDB.Driver** knihovny.</span><span class="sxs-lookup"><span data-stu-id="13b5c-136">From hello results, install hello **MongoDB.Driver** library.</span></span> <span data-ttu-id="13b5c-137">Tím se nainstaluje balíček MongoDB.Driver hello a také všechny závislosti.</span><span class="sxs-lookup"><span data-stu-id="13b5c-137">This installs hello MongoDB.Driver package as well as all dependencies.</span></span>
 
-4. <span data-ttu-id="c17c9-138">Spusťte aplikaci stisknutím CTRL+F5.</span><span class="sxs-lookup"><span data-stu-id="c17c9-138">Click CTRL + F5 to run the application.</span></span> <span data-ttu-id="c17c9-139">Aplikace se zobrazí v prohlížeči.</span><span class="sxs-lookup"><span data-stu-id="c17c9-139">Your app displays in your browser.</span></span> 
+4. <span data-ttu-id="13b5c-138">Klikněte na kombinaci kláves CTRL + F5 toorun hello aplikace.</span><span class="sxs-lookup"><span data-stu-id="13b5c-138">Click CTRL + F5 toorun hello application.</span></span> <span data-ttu-id="13b5c-139">Aplikace se zobrazí v prohlížeči.</span><span class="sxs-lookup"><span data-stu-id="13b5c-139">Your app displays in your browser.</span></span> 
 
-5. <span data-ttu-id="c17c9-140">V prohlížeči klikněte na **Vytvořit** a vytvořte v aplikaci seznamu úkolů několik nových úloh.</span><span class="sxs-lookup"><span data-stu-id="c17c9-140">Click **Create** in the browser and create a few new tasks in your task list app.</span></span>
+5. <span data-ttu-id="13b5c-140">Klikněte na tlačítko **vytvořit** v hello prohlížeče a vytvořit pár nové úlohy ve vaší aplikaci seznamu úkolů.</span><span class="sxs-lookup"><span data-stu-id="13b5c-140">Click **Create** in hello browser and create a few new tasks in your task list app.</span></span>
 
-## <a name="review-slas-in-the-azure-portal"></a><span data-ttu-id="c17c9-141">Ověření smluv SLA na webu Azure Portal</span><span class="sxs-lookup"><span data-stu-id="c17c9-141">Review SLAs in the Azure portal</span></span>
+## <a name="review-slas-in-hello-azure-portal"></a><span data-ttu-id="13b5c-141">Zkontrolujte SLA v hello portálu Azure</span><span class="sxs-lookup"><span data-stu-id="13b5c-141">Review SLAs in hello Azure portal</span></span>
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a><span data-ttu-id="c17c9-142">Vyčištění prostředků</span><span class="sxs-lookup"><span data-stu-id="c17c9-142">Clean up resources</span></span>
+## <a name="clean-up-resources"></a><span data-ttu-id="13b5c-142">Vyčištění prostředků</span><span class="sxs-lookup"><span data-stu-id="13b5c-142">Clean up resources</span></span>
 
-<span data-ttu-id="c17c9-143">Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu z portálu Azure Portal všechny prostředky vytvořené podle tohoto rychlého startu:</span><span class="sxs-lookup"><span data-stu-id="c17c9-143">If you're not going to continue to use this app, delete all resources created by this quickstart in the Azure portal with the following steps:</span></span>
+<span data-ttu-id="13b5c-143">Pokud ale nebudete toocontinue toouse této aplikace, odstraňte všechny prostředky, které jsou vytvořené tento rychlý start v hello portál Azure s hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="13b5c-143">If you're not going toocontinue toouse this app, delete all resources created by this quickstart in hello Azure portal with hello following steps:</span></span>
 
-1. <span data-ttu-id="c17c9-144">V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku.</span><span class="sxs-lookup"><span data-stu-id="c17c9-144">From the left-hand menu in the Azure portal, click **Resource groups** and then click the name of the resource you created.</span></span> 
-2. <span data-ttu-id="c17c9-145">Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.</span><span class="sxs-lookup"><span data-stu-id="c17c9-145">On your resource group page, click **Delete**, type the name of the resource to delete in the text box, and then click **Delete**.</span></span>
+1. <span data-ttu-id="13b5c-144">V levé nabídce hello v hello portálu Azure klikněte na **skupiny prostředků** a pak klikněte na název hello hello prostředků, které jste vytvořili.</span><span class="sxs-lookup"><span data-stu-id="13b5c-144">From hello left-hand menu in hello Azure portal, click **Resource groups** and then click hello name of hello resource you created.</span></span> 
+2. <span data-ttu-id="13b5c-145">Na stránce skupiny prostředků, klikněte na tlačítko **odstranit**hello textového pole zadejte název hello toodelete hello prostředků a pak klikněte na tlačítko **odstranit**.</span><span class="sxs-lookup"><span data-stu-id="13b5c-145">On your resource group page, click **Delete**, type hello name of hello resource toodelete in hello text box, and then click **Delete**.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="c17c9-146">Další kroky</span><span class="sxs-lookup"><span data-stu-id="c17c9-146">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="13b5c-146">Další kroky</span><span class="sxs-lookup"><span data-stu-id="13b5c-146">Next steps</span></span>
 
-<span data-ttu-id="c17c9-147">V tomto rychlém startu jste se seznámili s postupem vytvoření účtu databáze Azure Cosmos a spuštění webové aplikace pomocí rozhraní API pro MongoDB.</span><span class="sxs-lookup"><span data-stu-id="c17c9-147">In this quickstart, you've learned how to create an Azure Cosmos DB account and run a web app using the API for MongoDB.</span></span> <span data-ttu-id="c17c9-148">Teď můžete do účtu databáze Cosmos importovat další data.</span><span class="sxs-lookup"><span data-stu-id="c17c9-148">You can now import additional data to your Cosmos DB account.</span></span> 
+<span data-ttu-id="13b5c-147">V tento rychlý start když jste se naučili jak toocreate účet Azure Cosmos DB a spusťte webovou aplikaci pomocí hello rozhraní API pro MongoDB.</span><span class="sxs-lookup"><span data-stu-id="13b5c-147">In this quickstart, you've learned how toocreate an Azure Cosmos DB account and run a web app using hello API for MongoDB.</span></span> <span data-ttu-id="13b5c-148">Nyní můžete importovat další data tooyour Cosmos DB účtu.</span><span class="sxs-lookup"><span data-stu-id="13b5c-148">You can now import additional data tooyour Cosmos DB account.</span></span> 
 
 > [!div class="nextstepaction"]
-> [<span data-ttu-id="c17c9-149">Import dat do databáze Azure Cosmos pro rozhraní API MongoDB</span><span class="sxs-lookup"><span data-stu-id="c17c9-149">Import data into Azure Cosmos DB for the MongoDB API</span></span>](mongodb-migrate.md)
+> [<span data-ttu-id="13b5c-149">Importovat data do Azure Cosmos DB pro hello MongoDB rozhraní API</span><span class="sxs-lookup"><span data-stu-id="13b5c-149">Import data into Azure Cosmos DB for hello MongoDB API</span></span>](mongodb-migrate.md)
 
