@@ -1,6 +1,6 @@
 ---
-title: "Připojení RedHat Linux virtuálního počítače do Azure Active Directory DS | Microsoft Docs"
-description: "Postup připojení k existující Red Hat Enterprise Linux 7 virtuální počítač do služby Azure Active Directory Domain Services."
+title: "virtuální počítač s Linuxem RedHat tooan Azure Active Directory DS aaaJoin | Microsoft Docs"
+description: "Jak toojoin existující virtuální počítač Red Hat Enterprise Linux 7 tooan Azure Active Directory Domain Services."
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: vlivech
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2016
 ms.author: v-livech
-ms.openlocfilehash: 2e46a0f3c9bdbe267d121b4bf62e25d5d411fcc2
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f3ba3c764e253191753f1cc5fc8c3b85c53818af
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="join-a-redhat-linux-vm-to-an-azure-active-directory-domain-service"></a>Připojení RedHat Linux virtuálního počítače do domény služby Azure Active Directory
+# <a name="join-a-redhat-linux-vm-tooan-azure-active-directory-domain-service"></a>Připojení virtuálního počítače s Linuxem RedHat tooan Azure Active Directory Domain Services
 
-Tento článek ukazuje, jak připojit virtuální počítač Red Hat Enterprise Linux (RHEL) 7 k spravované doméně služby Azure Active Directory Domain Services (AADDS).  Požadavky:
+Tento článek ukazuje, jak toojoin tooan virtuální počítač Red Hat Enterprise Linux (RHEL) 7 Azure Active Directory Domain Services (AADDS) spravované domény.  Hello požadavky jsou:
 
 - [Účet Azure](https://azure.microsoft.com/pricing/free-trial/)
 
@@ -34,7 +34,7 @@ Tento článek ukazuje, jak připojit virtuální počítač Red Hat Enterprise 
 
 _Nahradí všechny příklady s vlastním nastavením._
 
-### <a name="switch-the-azure-cli-to-classic-deployment-mode"></a>Přepínač příkazového řádku azure k nasazení classic
+### <a name="switch-hello-azure-cli-tooclassic-deployment-mode"></a>Přepnutí režimu nasazení tooclassic hello rozhraní příkazového řádku azure
 
 ```azurecli
 azure config mode asm
@@ -59,7 +59,7 @@ azure vm create myVM \
 -l "West US"
 ```
 
-### <a name="ssh-to-the-vm"></a>Přístup k virtuálnímu počítači přes SSH
+### <a name="ssh-toohello-vm"></a>SSH toohello virtuálních počítačů
 
 ```bash
 ssh -i ~/.ssh/id_rsa ahmet@myVM
@@ -77,9 +77,9 @@ sudo yum update
 sudo yum -y install realmd sssd krb5-workstation krb5-libs
 ```
 
-Teď, když požadované balíčky jsou nainstalovány na virtuální počítač Linux, dalším úkolem je připojení virtuálního počítače k spravované doméně.
+Teď, když hello požadované balíčky jsou nainstalovány na hello Linux virtuálního počítače, dalším úkolem hello je toojoin hello virtuálního počítače toohello spravované domény.
 
-### <a name="discover-the-aad-domain-services-managed-domain"></a>Zjistit spravované doméně služby AAD Domain Services
+### <a name="discover-hello-aad-domain-services-managed-domain"></a>Zjistit hello služby AAD Domain Services spravované doméně
 
 ```bash
 sudo realm discover mydomain.com
@@ -87,19 +87,19 @@ sudo realm discover mydomain.com
 
 ### <a name="initialize-kerberos"></a>Inicializace protokolu kerberos
 
-Ujistěte se, že zadáváte uživatel, který patří do skupiny "Administrators AAD řadič domény. Pouze tito uživatelé se může připojit počítače k spravované doméně.
+Ujistěte se, že zadáváte uživatel, který patří skupině toohello 'AAD řadič domény Administrators'. Pouze tito uživatelé mohou připojit počítače toohello spravované domény.
 
 ```bash
 kinit ahmet@mydomain.com
 ```
 
-### <a name="join-the-machine-to-the-domain"></a>Připojení počítače k doméně
+### <a name="join-hello-machine-toohello-domain"></a>Připojení k doméně toohello počítač hello
 
 ```bash
 sudo realm join --verbose mydomain.com -U 'ahmet@mydomain.com'
 ```
 
-### <a name="verify-the-machine-is-joined-to-the-domain"></a>Ověřte, zda že je počítač připojený k doméně
+### <a name="verify-hello-machine-is-joined-toohello-domain"></a>Ověřte, zda text hello počítač je připojený k toohello domény
 
 ```bash
 ssh -l ahmet@mydomain.com mydomain.cloudapp.net
@@ -109,4 +109,4 @@ ssh -l ahmet@mydomain.com mydomain.cloudapp.net
 
 * [Red Hat aktualizace infrastruktury (RHUI) pro na vyžádání Red Hat Enterprise Linux virtuálních počítačů v Azure](update-infrastructure-redhat.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Nastavení pro virtuální počítače ve službě Správce prostředků Azure Key Vault](key-vault-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Nasazení a správě virtuálních počítačů pomocí šablon Azure Resource Manageru a rozhraní příkazového řádku Azure](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Nasazení a správě virtuálních počítačů pomocí šablon Azure Resource Manageru a hello rozhraní příkazového řádku Azure](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

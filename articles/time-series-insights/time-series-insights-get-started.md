@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření prostředí Azure Time Series Insights | Dokumentace Microsoftu"
-description: "V tomto kurzu se naučíte, jak vytvořit prostředí Time Series Insights, jak ho propojit se zdrojem událostí a připravit pro analýzu dat událostí během pár minut."
+title: "aaaCreate prostředí Azure časové řady Insights | Microsoft Docs"
+description: "V tomto kurzu se dozvíte, jak toocreate časové řady prostředí, připojte ho zdroj události tooan a připravené tooanalyze vaše data události v minutách."
 keywords: 
 services: time-series-insights
 documentationcenter: 
@@ -15,42 +15,42 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: omravi
-ms.openlocfilehash: eb710795916a2d7beea75a6408a0982fb4dc8750
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7120fc9a6e4d4a4972f8cb37e4d9945cfb746fd2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Vytvoření nového prostředí Time Series Insights na webu Azure Portal
+# <a name="create-a-new-time-series-insights-environment-in-hello-azure-portal"></a>Vytvoření nového prostředí časové řady statistiky v hello portálu Azure
 
-Prostředí Time Series Insights je prostředek Azure s kapacitou úložiště a příchozího přenosu dat. Zákazníci zřizují prostředí s požadovanou kapacitou přes Azure Portal.
+Prostředí Time Series Insights je prostředek Azure s kapacitou úložiště a příchozího přenosu dat. Zákazníci zřídit s kapacitou hello požadované prostředí prostřednictvím hello portálu Azure.
 
-## <a name="steps-to-create-the-environment"></a>Postup vytvoření prostředí
+## <a name="steps-toocreate-hello-environment"></a>Kroky toocreate hello prostředí
 
-Prostředí vytvoříte podle těchto pokynů:
+Postupujte podle těchto kroků toocreate prostředí:
 
-1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2.  Klikněte na symbol plus (+) v levém horním rohu.
-3.  Do vyhledávacího pole zadejte „Time Series Insights“.
+1.  Přihlaste se toohello [portál Azure](https://portal.azure.com).
+2.  V horní části hello levého horního rohu klikněte na tlačítko hello plus přihlašovací ("+").
+3.  Vyhledejte "Časové řady Insights" hello vyhledávacího pole.
 
-  ![Vytvoření prostředí Time Series Insights](media/get-started/getstarted-create-environment1.png)
+  ![Vytvoření prostředí časové řady Statistika hello](media/get-started/getstarted-create-environment1.png)
 
 4.  Vyberte Time Series Insights a klikněte na Vytvořit.
 
-  ![Vytvoření skupiny prostředků Time Series Insights](media/get-started/getstarted-create-environment2.png)
+  ![Vytvořte skupinu prostředků časové řady Statistika hello](media/get-started/getstarted-create-environment2.png)
 
-5.  Zadejte název prostředí. Tento název bude reprezentovat prostředí v [průzkumníku Time Series Insights](https://insights.timeseries.azure.com).
-6.  Vyberte předplatné. Vyberte to, které obsahuje váš zdroj událostí. Time Series Insights dokáže automaticky rozpoznat prostředky služby Azure IoT Hub a centra událostí, které existují v rámci stejného předplatného.
+5.  Zadejte název prostředí. Tento název bude reprezentovat hello prostředí v [časové řady explorer](https://insights.timeseries.azure.com).
+6.  Vyberte předplatné. Vyberte to, které obsahuje váš zdroj událostí. Statistika časové řady může automaticky rozpoznat Azure IoT Hub a prostředky centra událostí existující v hello stejného předplatného.
 7.  Vyberte nebo vytvořte skupinu prostředků. Skupina prostředků je kolekce společně používaných prostředků Azure.
-8.  Vyberte umístění pro hostování. Abyste se vyhnuli přenášení dat mezi datovými centry, zvolte umístění, které obsahuje váš zdroj událostí.
+8.  Vyberte umístění pro hostování. tooavoid přesunutí dat mezi datového centra, vyberte umístění, které obsahuje váš zdroj událostí.
 9.  Vyberte cenovou úroveň.
 10. Vyberte kapacitu. Kapacitu prostředí můžete po vytvoření změnit.
-11. Vytvořte prostředí. Můžete také připnout prostředí na řídicí panel pro usnadnění přístupu po přihlášení.
+11. Vytvořte prostředí. Můžete taky připnout řídicího panelu toohello prostředí pro snadný přístup při každém přihlášení.
 
-  ![Vytvoření služby Time Series Insights – připnutí na řídicí panel](media/get-started/getstarted-create-environment3.png)
+  ![Vytvoření toodashboard pin časové řady Statistika hello](media/get-started/getstarted-create-environment3.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Definování zásad přístupu k datům](time-series-insights-data-access.md) pro přístup k prostředí na [portálu Time Series Insights](https://insights.timeseries.azure.com)
+* [Definovat zásady přístupu k datům](time-series-insights-data-access.md) tooaccess prostředí v [portálu Statistika časové řady](https://insights.timeseries.azure.com)
 * [Vytvoření zdroje událostí](time-series-insights-add-event-source.md)
-* [Odesílání událostí](time-series-insights-send-events.md) do zdroje událostí
+* [Odesílání událostí](time-series-insights-send-events.md) toohello zdroj události

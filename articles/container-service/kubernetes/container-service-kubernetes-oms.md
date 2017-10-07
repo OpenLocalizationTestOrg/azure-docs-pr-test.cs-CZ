@@ -1,5 +1,5 @@
 ---
-title: "Cluster Azure Kubernetes monitorování - Operations Management | Microsoft Docs"
+title: cluster Azure Kubernetes aaaMonitor - Operations Management | Microsoft Docs
 description: "Monitorování Kubernetes clusteru v Azure Container Service pomocí služby Microsoft Operations Management Suite"
 services: container-service
 documentationcenter: 
@@ -17,29 +17,29 @@ ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: bd5c81435c091d25bc14710589b7c043e9f56a25
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 7474ee1571134ffe43ff8e4041cf5a64f5635bb7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-microsoft-operations-management-suite-oms"></a>Monitorování clusteru Azure Container Service s Operations Management Suite (OMS)
 
 ## <a name="prerequisites"></a>Požadavky
 Tento návod předpokládá, že máte [vytvořit Kubernetes clusteru Azure Container Service pomocí](container-service-kubernetes-walkthrough.md).
 
-Předpokládá také, abyste měli `az` rozhraní příkazového řádku Azure a `kubectl` nástroje nainstalované.
+Také předpokládá, že máte hello `az` rozhraní příkazového řádku Azure a `kubectl` nástroje nainstalované.
 
-Můžete otestovat, pokud máte `az` nainstalovaná, spuštěním nástroje:
+Pokud máte hello můžete otestovat `az` nainstalovaná, spuštěním nástroje:
 
 ```console
 $ az --version
 ```
 
-Pokud nemáte `az` nástroj nainstalovali, jsou k dispozici pokyny [zde](https://github.com/azure/azure-cli#installation).  
-Alternativně můžete použít [prostředí cloudu Azure](https://docs.microsoft.com/en-us/azure/cloud-shell/overview), který má `az` rozhraní příkazového řádku Azure a `kubectl` nástroje pro je již nainstalována.  
+Pokud nemáte hello `az` nástroj nainstalovali, jsou k dispozici pokyny [zde](https://github.com/azure/azure-cli#installation).  
+Alternativně můžete použít [prostředí cloudu Azure](https://docs.microsoft.com/en-us/azure/cloud-shell/overview), který má hello `az` rozhraní příkazového řádku Azure a `kubectl` nástroje pro je již nainstalována.  
 
-Můžete otestovat, pokud máte `kubectl` nainstalovaná, spuštěním nástroje:
+Pokud máte hello můžete otestovat `kubectl` nainstalovaná, spuštěním nástroje:
 
 ```console
 $ kubectl version
@@ -50,12 +50,12 @@ Pokud nemáte `kubectl` nainstalován, můžete spustit:
 $ az acs kubernetes install-cli
 ```
 
-K testování, pokud máte nainstalovaný ve vaší kubectl nástroj, který můžete spustit klíče kubernetes:
+Pokud máte nainstalovaný ve vašem kubectl nástroj klíče kubernetes tootest můžete spustit:
 ```console
 $ kubectl get nodes
 ```
 
-Pokud výše uvedené chyby příkazu si musíte nainstalovat kubernetes clusteru klíče do vaší kubectl nástroje. Můžete to udělat pomocí následujícího příkazu:
+Pokud hello výše příkaz chyby out, musíte do vaší kubectl nástroje tooinstall kubernetes clusteru klíče. Můžete to udělat pomocí hello následující příkaz:
 ```console
 RESOURCE_GROUP=my-resource-group
 CLUSTER_NAME=my-acs-name
@@ -64,46 +64,46 @@ az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUST
 
 ## <a name="monitoring-containers-with-operations-management-suite-oms"></a>Monitorování kontejnery s služby Operations Management Suite (OMS)
 
-Microsoft Operations Management (OMS) je společnosti Microsoft založená na cloudu IT řešení správy, které pomáhá spravovat a chránit místní a cloudové infrastruktury. Kontejner řešení je řešení v OMS analýzy protokolů, který umožňuje zobrazit inventář kontejneru, výkonu a protokoly na jednom místě. Můžete auditovat, řešení potíží s kontejnery zobrazením protokoly v centrálním umístění a najít aktivní využívání nadbytečné kontejneru na hostiteli.
+Microsoft Operations Management (OMS) je společnosti Microsoft založená na cloudu IT řešení správy, které pomáhá spravovat a chránit místní a cloudové infrastruktury. Kontejner řešení je řešení v OMS analýzy protokolů, které vám umožní zobrazit hello kontejneru inventář, výkonu a protokoly na jednom místě. Můžete auditovat, řešení potíží s kontejnery zobrazením hello protokoly v centrálním umístění a najít aktivní využívání nadbytečné kontejneru na hostiteli.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
-Další informace o kontejneru řešení, naleznete [analýzy protokolů řešení kontejneru](../../log-analytics/log-analytics-containers.md).
+Další informace o řešení kontejneru naleznete toothe [analýzy protokolů řešení kontejneru](../../log-analytics/log-analytics-containers.md).
 
 ## <a name="installing-oms-on-kubernetes"></a>Instalace OMS na Kubernetes
 
 ### <a name="obtain-your-workspace-id-and-key"></a>Získání ID a klíč
-Agent komunikovat službu pro OMS je potřeba nakonfigurovat s id pracovního prostoru a klíč pracovního prostoru. Id pracovního prostoru a klíč, je potřeba vytvořit na účet OMS <https://mms.microsoft.com>. Postupujte podle kroků pro vytvoření účtu. Po dokončení vytváření účtu, je nutné získat id a klíč kliknutím **nastavení**, pak **připojené zdroje**a potom **servery se systémem Linux**, jak je uvedeno níže.
+Pro hello služba toohello tootalk agenta OMS musí toobe nakonfigurovat id pracovního prostoru a klíč pracovního prostoru. id pracovního prostoru hello tooget a klíč musíte toocreate OMS účtu v <https://mms.microsoft.com>. Postupujte podle kroků toocreate hello účet. Po dokončení vytváření hello účet, bude třeba tooobtain id a klíč kliknutím **nastavení**, pak **připojené zdroje**a potom **servery se systémem Linux**, jak je uvedeno níže.
 
  ![](media/container-service-monitoring-oms/image5.png)
 
-### <a name="install-the-oms-agent-using-a-daemonset"></a>Instalace agenta OMS pomocí DaemonSet
-DaemonSets Kubernetes používá ke spuštění jednu instanci kontejner na jednotlivých hostitelích v clusteru.
+### <a name="install-hello-oms-agent-using-a-daemonset"></a>Instalace agenta OMS hello pomocí DaemonSet
+DaemonSets používají Kubernetes toorun jednu instanci kontejner na jednotlivých hostitelích v clusteru hello.
 Jsou ideální pro spuštění monitorovací agenty.
 
-Tady je [DaemonSet YAML soubor](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes). Uložit do souboru s názvem `oms-daemonset.yaml` a nahraďte zástupný symbol hodnoty pro `WSID` a `KEY` s vaše id a klíč v souboru.
+Tady je hello [DaemonSet YAML soubor](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes). Uložte ho tooa soubor s názvem `oms-daemonset.yaml` a nahraďte zástupný symbol hodnoty hello `WSID` a `KEY` s vaše id a klíč v souboru hello.
 
-Po přidání vaše ID a klíč v konfiguraci DaemonSet, můžete nainstalovat agenta OMS na cluster s `kubectl` nástroj pro příkazový řádek:
+Po přidání vaše ID a klíč toohello DaemonSet konfigurace, můžete nainstalovat agenta OMS hello v clusteru s hello `kubectl` nástroj pro příkazový řádek:
 
 ```console
 $ kubectl create -f oms-daemonset.yaml
 ```
 
-### <a name="installing-the-oms-agent-using-a-kubernetes-secret"></a>Instalace agenta OMS pomocí Kubernetes tajný klíč
-K ochraně vašeho ID pracovního prostoru OMS a klíče, které můžete použít Kubernetes tajný klíč jako součást DaemonSet YAML souboru.
+### <a name="installing-hello-oms-agent-using-a-kubernetes-secret"></a>Instalace agenta OMS hello pomocí Kubernetes tajný klíč
+tooprotect vaše OMS ID a klíč Kubernetes tajný klíč slouží jako součást DaemonSet YAML souboru.
 
- - Zkopírujte skript, soubor tajný šablonu a soubor DaemonSet YAML (z [úložiště](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)) a ujistěte se, že jsou na stejném adresáři. 
+ - Zkopírujte skript hello, soubor tajný šablony a hello DaemonSet YAML souboru (z [úložiště](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)) a ujistěte se, že jsou na hello stejný adresář. 
       - Generování skriptu - tajný klíč gen.sh tajný klíč
       - Šablona tajné – template.yaml tajný klíč
    - Soubor DaemonSet YAML - omsagent – ds-secrets.yaml
- - Spusťte skript. Skript vyzve pro ID pracovního prostoru OMS a primární klíč. Vložte který. skript se vytvoří soubor tajný yaml, můžete ji spustit.   
+ - Spusťte skript hello. ID pracovního prostoru OMS a primární klíč pro hello vyzve Hello skriptu. Vložte, a hello skript vytvoří soubor tajný yaml, takže je možné spustit.   
    ```
    #> sudo bash ./secret-gen.sh 
    ```
 
-   - Vytvoření tajných klíčů pod spuštěním následujícího:``` kubectl create -f omsagentsecret.yaml ```
+   - Vytvořte hello tajné klíče pod spuštěním hello následující:``` kubectl create -f omsagentsecret.yaml ```
  
-   - Pokud chcete zkontrolovat, spusťte následující: 
+   - toocheck spustit hello následující: 
 
    ``` 
    root@ubuntu16-13db:~# kubectl get secrets
@@ -127,4 +127,4 @@ K ochraně vašeho ID pracovního prostoru OMS a klíče, které můžete použ�
   - Vytvoření vaší omsagent démon set spuštěním``` kubectl create -f omsagent-ds-secrets.yaml ```
 
 ### <a name="conclusion"></a>Závěr
-A to je vše! Po několika minutách byste měli vidět dat odesílaných do řídicího panelu OMS.
+A to je vše! Po několika minutách musí být schopný toosee dat odesílaných tooyour OMS řídicího panelu.

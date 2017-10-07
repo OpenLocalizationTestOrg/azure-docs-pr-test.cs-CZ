@@ -1,5 +1,5 @@
 ---
-title: "Dostupnost a dosah v šablonách Azure Resource Manageru | Microsoft Docs"
+title: "aaaAvailability a škálování v šablonách Azure Resource Manageru | Microsoft Docs"
 description: "Virtuální počítač Azure DotNet základní kurz"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,22 +16,22 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0c0250b8152ed31b9a5d8b42ae139c9b38da0984
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6f830ca0a64e6b65859312bdf31dc0af59e2b978
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="availability-and-scale-in-azure-resource-manager-templates-for-linux-vms"></a>Dostupnost a dosah v šablonách Azure Resource Manageru pro virtuální počítače s Linuxem
 
-Dostupnost a dosah viz provozu a schopnost potřeby. Pokud aplikace musí být 99,9 % času, musí mít architekturu, která umožňuje více souběžných výpočetní prostředky. Například místo jen jeden web, konfigurace s vyšší úrovní dostupnosti obsahuje více instancí stejného webu, vyrovnávání technologie před jejich. V této konfiguraci jednu instanci aplikace můžete ukončena kvůli údržbě, zatímco zbývající i nadále fungovat. Škálování na straně druhé odkazuje aplikace schopnost poskytovat vyžádání. S zatížení vyrovnáváním aplikace, přidání nebo odebrání instance z fondu umožňuje aplikaci škálovat podle požadavků.
+Dostupnost a dosah naleznete toouptime a hello možnost toomeet poptávky. Pokud aplikace musí být 99,9 % času hello, musí toohave architekturu, která umožňuje více souběžných výpočetní prostředky. Například místo jen jeden web, zahrnuje konfigurace s vyšší úrovní dostupnosti více instancí hello stejné vyrovnávání technologie před jejich lokality. V této konfiguraci jednu instanci aplikace hello může být kvůli údržbě vypnutá, zatímco hello zbývající dále toofunction. Škálování na hello druhé straně odkazuje tooan aplikace možnost tooserve vyžádání. S zatížení vyrovnáváním aplikace, přidání nebo odebrání instance z fondu hello umožňuje vyžádání toomeet tooscale aplikace.
 
-Tento dokument podrobně popisuje konfiguraci nasazení ukázkové Hudba úložiště pro dostupnost a škálovatelnost. Jsou vyznačené všechny závislosti a unikátní konfiguraci. Pro dosažení co nejlepších výsledků, předem nasaďte instanci řešení, aby vaše předplatné Azure a pracovní společně s šablony Azure Resource Manageru. Úplnou šablonu naleznete zde – [Hudba úložiště nasazení na Ubuntu](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
+Tento dokument podrobně popisuje, jak je hello Hudba úložiště Ukázka nasazení nakonfigurované pro dostupnost a škálovatelnost. Jsou vyznačené všechny závislosti a unikátní konfiguraci. Nejvhodnější hello předem nasaďte instanci hello řešení tooyour předplatného Azure a pracovní společně s hello šablony Azure Resource Manageru. úplnou šablonu Hello naleznete zde – [Hudba úložiště nasazení na Ubuntu](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
 ## <a name="availability-set"></a>Skupina dostupnosti
-Skupiny dostupnosti logicky platí virtuálních počítačů Azure pro fyzické hostitele a jiné infrastruktury komponenty, například napájení a fyzický síťový hardware. Skupiny dostupnosti Ujistěte se, že během údržby, selhání zařízení nebo jiné výpadek, ne všechny virtuální počítače, budou provedeny. Skupiny dostupnosti mohou být přidány do šablony Azure Resource Manager pomocí Visual Studio nový Průvodce přidáním prostředku nebo vkládání platný kód JSON do šablony.
+Skupiny dostupnosti logicky platí virtuálních počítačů Azure pro fyzické hostitele a jiné infrastruktury komponenty, například napájení a fyzický síťový hardware. Skupiny dostupnosti Ujistěte se, že během údržby, selhání zařízení nebo jiné výpadek, ne všechny virtuální počítače, budou provedeny. Skupiny dostupnosti mohou být přidány tooan šablony Azure Resource Manageru pomocí hello Visual Studio nový Průvodce přidáním prostředku nebo vkládání platný kód JSON do šablony.
 
-Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [sadu dostupnosti](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L387).
+Použijte tento odkaz toosee hello JSON ukázka v rámci šablony Resource Manageru hello – [sadu dostupnosti](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L387).
 
 ```json
 {
@@ -52,7 +52,7 @@ Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [sadu dostupno
 
 Skupiny dostupnosti je deklarován jako vlastnost prostředku virtuálního počítače. 
 
-Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [dostupnost nastavená přidružení virtuálního počítače](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L313).
+Použijte tento odkaz toosee hello JSON ukázka v rámci šablony Resource Manageru hello – [dostupnost nastavená přidružení virtuálního počítače](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L313).
 
 ```json
 "properties": {
@@ -60,16 +60,16 @@ Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [dostupnost na
     "id": "[resourceId('Microsoft.Compute/availabilitySets', variables('availabilitySetName'))]"
   }
 ```
-Dostupnost nastavit, jak je vidět na portálu Azure. Každý virtuální počítač a údaje o konfiguraci jsou podrobně popsané v tomto poli.
+dostupnost Hello nastavit, jak je vidět z hello portálu Azure. Každý virtuální počítač a podrobnosti o konfiguraci hello jsou podrobně popsané v tomto poli.
 
 ![Skupina dostupnosti](./media/dotnet-core-4-availability-scale/aset.png)
 
 Podrobné informace o dostupnosti sadách najdete v tématu [Správa dostupnosti virtuálních počítačů](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
 ## <a name="network-load-balancer"></a>Nástroj pro vyrovnávání zatížení sítě
-Vzhledem k tomu, skupinu dostupnosti aplikace odolnost proti chybám, Vyrovnávání zatížení zpřístupní velký počet instancí aplikace na jednu síťovou adresu. Několik instancí aplikace může být hostovaný na velký počet virtuálních počítačů, každý z nich připojený ke službě Vyrovnávání zatížení. Protože přistupuje k aplikaci, nástroje pro vyrovnávání zatížení směrování příchozího požadavku napříč připojení členové. Nástroj pro vyrovnávání zatížení lze přidat pomocí Visual Studio nový Průvodce přidáním prostředku nebo vložením správně naformátovaný JSON prostředků do šablony Azure Resource Manager.
+Vzhledem k tomu, skupinu dostupnosti aplikace odolnost proti chybám, Vyrovnávání zatížení zpřístupní velký počet instancí aplikace hello na jednu síťovou adresu. Několik instancí aplikace může být hostovaný na velký počet virtuálních počítačů, každý z nich připojený tooa nástroj pro vyrovnávání zatížení. Jako aplikace hello přistupuje, směrování pro vyrovnávání zatížení hello hello příchozí žádost mezi členy hello připojen. Nástroj pro vyrovnávání zatížení lze přidat pomocí hello Visual Studio nový Průvodce přidáním prostředku nebo vložením správně naformátovaný JSON prostředků do šablony Azure Resource Manager hello.
 
-Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [nástroj pro vyrovnávání zatížení sítě](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L208).
+Použijte tento odkaz toosee hello JSON ukázka v rámci šablony Resource Manageru hello – [nástroj pro vyrovnávání zatížení sítě](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L208).
 
 ```json
 {
@@ -84,9 +84,9 @@ Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [nástroj pro 
 }
 ```
 
-Protože ukázkové aplikace je přístup k Internetu s veřejnou IP adresu, tato adresa je přidružena s nástrojem pro vyrovnávání zatížení. 
+Protože hello vzorová aplikace je zveřejněné toohello internet s veřejnou IP adresu, tato adresa je přidružená Vyrovnávání zatížení hello. 
 
-Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [přidružení nástroj pro vyrovnávání zatížení sítě s veřejnou IP adresou](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L221).
+Použijte tento odkaz toosee hello JSON ukázka v rámci šablony Resource Manageru hello – [přidružení nástroj pro vyrovnávání zatížení sítě s veřejnou IP adresou](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L221).
 
 ```json
 "frontendIPConfigurations": [
@@ -101,14 +101,14 @@ Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [přidružení
 ]
 ```
 
-Z portálu Azure zobrazuje přehled nástroje pro vyrovnávání zatížení sítě přidružení veřejnou IP adresu.
+Z hello portálu Azure hello přehled nástroje pro vyrovnávání zatížení sítě zobrazuje hello přidružení hello veřejnou IP adresu.
 
 ![Nástroj pro vyrovnávání zatížení sítě](./media/dotnet-core-4-availability-scale/nlb.png)
 
 ## <a name="load-balancer-rule"></a>Pravidlo Vyrovnávání zatížení.
-Při použití služby Vyrovnávání zatížení, jsou nakonfigurované pravidla, které řídí, jak se data jsou rovnoměrně mezi předpokládaných prostředků. S ukázkovou aplikaci Store Hudba provoz dorazí na portu 80 veřejnou IP adresu a je distribuován do portu 80 všech virtuálních počítačů. 
+Při použití služby Vyrovnávání zatížení, konfigurovaná pravidla, které řídí, jak se data jsou rovnoměrně mezi prostředky hello určený. S hello ukázkovou aplikaci Store Hudba provoz dorazí na portu 80 hello veřejné IP adresy a je distribuován do portu 80 všech virtuálních počítačů. 
 
-Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [pravidlo Vyrovnávání zatížení](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L270).
+Použijte tento odkaz toosee hello JSON ukázka v rámci šablony Resource Manageru hello – [pravidlo Vyrovnávání zatížení](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L270).
 
 ```json
 "loadBalancingRules": [
@@ -134,14 +134,14 @@ Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [pravidlo Vyro
 ]
 ```
 
-Zobrazení pravidlo Vyrovnávání zatížení sítě z portálu.
+Zobrazení hello sítě pravidlo nástroje pro vyrovnávání zatížení z portálu hello.
 
 ![Pravidlo Vyrovnávání zatížení sítě](./media/dotnet-core-4-availability-scale/lbrule.png)
 
 ## <a name="load-balancer-probe"></a>Sondu nástroje pro vyrovnávání zatížení
-Vyrovnávání zatížení musí také monitorovat každý virtuální počítač tak, aby se zpracovat požadavky pouze na systémy. Toto monitorování probíhá podle konstantní zjišťování předem definovaný port. Hudba úložiště nasazení se konfiguruje testovat na zahrnuté všechny virtuální počítače, port 80. 
+Nástroj pro vyrovnávání zatížení Hello také musí toomonitor každý virtuální počítač tak, aby se zpracovat požadavky jenom toorunning systémy. Toto monitorování probíhá podle konstantní zjišťování předem definovaný port. nasazení Hudba úložiště Hello je nakonfigurované tooprobe portu 80 pro všechny zahrnuté virtuálních počítačů. 
 
-Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [sběru dat služby Vyrovnávání zatížení](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L257).
+Použijte tento odkaz toosee hello JSON ukázka v rámci šablony Resource Manageru hello – [sběru dat služby Vyrovnávání zatížení](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L257).
 
 ```json
 "probes": [
@@ -157,16 +157,16 @@ Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [sběru dat sl
 ]
 ```
 
-Sondu nástroje pro vyrovnávání zatížení vidět na portálu Azure.
+sondu nástroje pro vyrovnávání zatížení Hello vidět z hello portálu Azure.
 
 ![Sondu nástroje pro vyrovnávání zatížení sítě](./media/dotnet-core-4-availability-scale/lbprobe.png)
 
 ## <a name="inbound-nat-rules"></a>Příchozí pravidla NAT
-Pokud používáte nástroj pro vyrovnávání zatížení, pravidla potřebovat k uvedení do místo, které poskytují vyrovnáváním přístup bez zatížení pro každý virtuální počítač. Například při vytváření připojení SSH pomocí každý virtuální počítač, tato komunikace by neměl být skupinu s vyrovnáváním zatížení, místo by měl být nakonfigurovaný předem určené cesty. Předem určené cesty se konfiguruje pomocí prostředek příchozí pravidlo NAT. Pomocí tohoto prostředku, příchozí komunikaci lze mapovat na jednotlivé virtuální počítače. 
+Pokud používáte nástroj pro vyrovnávání zatížení, třeba pravidla toobe zavést, které poskytují tooeach vyrovnáváním přístup bez zatížení virtuálního počítače. Například při vytváření připojení SSH pomocí každý virtuální počítač, tato komunikace by neměl být skupinu s vyrovnáváním zatížení, místo by měl být nakonfigurovaný předem určené cesty. Předem určené cesty se konfiguruje pomocí prostředek příchozí pravidlo NAT. Pomocí tohoto prostředku, příchozí komunikace může být namapované tooindividual virtuálních počítačů. 
 
-Se k aplikaci Store Hudba je port od 5000 namapovat port 22 na každém virtuálním počítači pro přístup SSH. `copyindex()` Funkce slouží k zvýšit příchozí port, tak, aby druhý virtuální počítač přijímá port pro příchozí 5001, třetí 5002 a tak dále. 
+S hello aplikaci Store Hudba je port od 5000 namapované tooport 22 na každém virtuálním počítači pro přístup SSH. Hello `copyindex()` funkce je použité tooincrement hello příchozí port, tak, aby se hello druhý virtuální počítač přijímá port pro příchozí 5001, hello třetí 5002 a tak dále. 
 
-Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [příchozí pravidla NAT](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L270). 
+Použijte tento odkaz toosee hello JSON ukázka v rámci šablony Resource Manageru hello – [příchozí pravidla NAT](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L270). 
 
 ```json
 {
@@ -196,16 +196,16 @@ Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [příchozí p
 }
 ```
 
-Jedním z příkladů příchozí pravidlo NAT, jak je vidět na portálu Azure. Pro každý virtuální počítač v nasazení se vytvoří pravidlo SSH NAT.
+Jedním z příkladů příchozí pravidlo NAT jako hello zaznamenané v portálu Azure. Pro každý virtuální počítač v hello nasazení se vytvoří pravidlo SSH NAT.
 
 ![Příchozí pravidlo NAT](./media/dotnet-core-4-availability-scale/natrule.png)
 
-Podrobnější informace o vyrovnávání zatížení sítě Azure, najdete v části [pro infrastrukturu Azure služby Vyrovnávání zatížení](../virtual-machines-linux-load-balance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Podrobnější informace o hello Vyrovnávání zatížení sítě Azure, najdete v části [pro infrastrukturu Azure služby Vyrovnávání zatížení](../virtual-machines-linux-load-balance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="deploy-multiple-vms"></a>Nasazení více virtuálních počítačů
-Nakonec sadu dostupnosti nebo nástroj pro vyrovnávání zatížení efektivně fungovat, jsou požadovány více virtuálních počítačů. Víc virtuálních počítačů můžete nasadit pomocí funkce kopírování šablony Azure Resource Manager. Pomocí funkce kopírování, není nutné definovat omezený počet virtuálních počítačů, místo tuto hodnotu můžete dynamicky poskytovat v době nasazení. Funkci kopírování spotřebuje počet instancí pro vytvoření a nasazení správný počet virtuálních počítačů a přidružených prostředků obslužné rutiny.
+Nakonec pro funkci tooeffectively sady dostupnosti nebo služby Vyrovnávání zatížení, jsou požadovány více virtuálních počítačů. Víc virtuálních počítačů můžete nasadit pomocí funkce kopírování šablony Azure Resource Manager hello. Pomocí funkce kopírování hello, není nutné toodefine omezený počet virtuálních počítačů, místo tuto hodnotu můžete dynamicky poskytovat hello během nasazení. funkci kopírování do Hello spotřebuje hello počet instancí toocreated a obslužných rutin nasazení hello správný počet virtuálních počítačů a přidružených prostředků.
 
-V šabloně Hudba úložiště ukázkové je definován parametr, který přebírá počet instancí. Toto číslo se používá v rámci šablony při vytváření virtuálních počítačů a související prostředky.
+V šabloně Hudba úložiště ukázkový text hello je definován parametr, který přebírá počet instancí. Toto číslo se používá v rámci hello šablonu při vytváření virtuálních počítačů a související prostředky.
 
 ```json
 "numberOfInstances": {
@@ -213,14 +213,14 @@ V šabloně Hudba úložiště ukázkové je definován parametr, který přebí
   "minValue": 1,
   "defaultValue": 1,
   "metadata": {
-    "description": "Number of VM instances to be created behind load balancer."
+    "description": "Number of VM instances toobe created behind load balancer."
   }
 }
 ```
 
-Na prostředek virtuálního počítače je kopírovací smyčkou zadaný název a číslo instance parametru použít k řízení počtu kopií výsledné.
+Na hello prostředek virtuálního počítače hello kopírovací smyčkou je zadaný název a používá toocontrol hello počet kopií výsledné hello počet instancí parametru.
 
-Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [funkci kopírování do virtuálního počítače](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L300). 
+Použijte tento odkaz toosee hello JSON ukázka v rámci šablony Resource Manageru hello – [funkci kopírování do virtuálního počítače](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L300). 
 
 ```json
 "apiVersion": "2015-06-15",
@@ -233,9 +233,9 @@ Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [funkci kopír
 }
 ```
 
-Na aktuální iteraci funkce kopii lze přistupovat pomocí `copyIndex()` funkce. Hodnota indexu kopírování slouží k názvu virtuální počítače a další prostředky. Například pokud se nasazuje dvě instance virtuálního počítače, potřebují mít odlišné názvy. `copyIndex()` Funkci lze použít jako součást název virtuálního počítače vytvoří jedinečný název. Příkladem `copyindex()` funkce použité pro účely pojmenování si můžete prohlédnout ve prostředek virtuálního počítače. Zde, název počítače je tvořen `vmName` parametr a `copyIndex()` funkce. 
+aktuální iteraci Hello funkci kopírování do hello lze přistupovat pomocí hello `copyIndex()` funkce. Hodnota Hello hello kopie index funkce může být použité tooname virtuální počítače a další prostředky. Například pokud se nasazuje dvě instance virtuálního počítače, potřebují mít odlišné názvy. Hello `copyIndex()` funkci lze použít jako součást hello virtuálního počítače názvu toocreate jedinečný název. Příkladem hello `copyindex()` funkce použité pro účely pojmenování si můžete prohlédnout ve hello prostředek virtuálního počítače. Zde je název počítače hello zřetězení hello `vmName` parametr a hello `copyIndex()` funkce. 
 
-Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [funkci kopírování do indexu](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L319). 
+Použijte tento odkaz toosee hello JSON ukázka v rámci šablony Resource Manageru hello – [funkci kopírování do indexu](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L319). 
 
 ```json
 "osProfile": {
@@ -255,9 +255,9 @@ Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [funkci kopír
 }
 ```
 
-`copyIndex` Funkce se používá v šabloně Hudba úložiště ukázkové několikrát. Prostředky a funkce využívá `copyIndex` obsahovat vše specifické pro jednu instanci virtuálního počítače jako síťové rozhraní, pravidla nástroje pro vyrovnávání zatížení, a všechny závisí na funkce. 
+Hello `copyIndex` funkce je používán několikrát hello Hudba úložiště vzorové šablony. Prostředky a funkce využívá `copyIndex` zahrnout cokoli konkrétní tooa jednu instanci hello virtuálního počítače jako síťové rozhraní, pravidla nástroje pro vyrovnávání zatížení, a všechny závisí na funkce. 
 
-Další informace o funkci kopírování najdete v tématu [vytvořit více instancí prostředků ve službě Správce prostředků Azure](../../resource-group-create-multiple.md).
+Další informace o funkci kopírování do hello najdete v tématu [vytvořit více instancí prostředků ve službě Správce prostředků Azure](../../resource-group-create-multiple.md).
 
 ## <a name="next-step"></a>Další krok
 <hr>

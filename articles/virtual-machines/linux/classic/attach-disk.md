@@ -1,6 +1,6 @@
 ---
-title: "Připojit disk do virtuálního počítače s Linuxem v Azure | Microsoft Docs"
-description: "Zjistěte, jak připojit datový disk do virtuálního počítače s Linuxem pomocí modelu nasazení Classic a inicializujte disk tak, aby byl připravený k použití"
+title: "aaaAttach tooa disku virtuálního počítače s Linuxem v Azure | Microsoft Docs"
+description: "Zjistěte, jak tooattach datový disk tooa virtuálního počítače s Linuxem pomocí nasazení Classic hello modelu a inicializovat hello disk tak, aby byl připravený k použití"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,51 +15,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: 017ba7197e11c2b222082833d5acabb9e542b762
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c76d8479ac2b522d2b6df658cd28f242473f30ec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-attach-a-data-disk-to-a-linux-virtual-machine"></a>Tom, jak připojit datový Disk pro virtuální počítač s Linuxem
+# <a name="how-tooattach-a-data-disk-tooa-linux-virtual-machine"></a>Jak tooAttach datový Disk tooa Linux virtuálního počítače
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. V tématu Jak [připojit datový disk pomocí modelu nasazení Resource Manager](../add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello. V tématu Jak příliš[připojit datový disk pomocí modelu nasazení Resource Manager hello](../add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Můžete připojit prázdné disky a disky, které obsahují data pro virtuální počítače Azure. Oba typy disků jsou soubory VHD, které jsou umístěny v účtu úložiště Azure. Jako přidávání každý disk, na počítač s Linuxem, jakmile připojíte disk musíte inicializovat a naformátovat ho tak, aby byl připravený k použití. Tento článek údaje prázdný disků i disků již obsahující data do virtuálních počítačů a také jak pak inicializace a formátování nový disk se připojuje.
+Můžete připojit prázdné disky a disky, které obsahují data tooyour virtuálních počítačích Azure. Oba typy disků jsou soubory VHD, které jsou umístěny v účtu úložiště Azure. Přidávání jakéhokoli počítače Linux tooa disku po připojit hello disk můžete potřebovat tooinitialize a naformátujte ho tak, aby byl připravený k použití. Tento článek údaje prázdný disků i disků již obsahující data tooyour i virtuálních počítačů, jak toothen inicializace a formátování nový disk se připojuje.
 
 > [!NOTE]
-> Je vhodné použít jeden nebo více samostatných disků k ukládání dat virtuálního počítače. Když vytvoříte virtuální počítač Azure, je disk operačního systému a dočasný disk. **Nepoužívejte dočasné disku k uložení dat trvalé.** Jak již název napovídá, obsahuje pouze dočasné úložiště. Vzhledem k tomu, že není uložena v úložišti Azure nabízí žádné redundance nebo zálohování.
-> Je obvykle spravuje Azure Linux Agent a automaticky připojit k dočasným diskovým **/mnt nebo prostředků** (nebo **/mnt** Ubuntu Image). Na druhé straně datový disk může být pojmenován jádrem Linux něco podobného jako `/dev/sdc`, a je třeba k oddílu, formátování a připojte tento prostředek. Najdete v článku [Azure Linux Agent uživatelská příručka] [ Agent] podrobnosti.
+> Je nejlepší postup toouse, jeden nebo více disků toostore oddělení dat virtuálního počítače. Když vytvoříte virtuální počítač Azure, je disk operačního systému a dočasný disk. **Nepoužívejte hello dočasným diskovým toostore trvalá data.** Jak hello název napovídá, obsahuje pouze dočasné úložiště. Vzhledem k tomu, že není uložena v úložišti Azure nabízí žádné redundance nebo zálohování.
+> dočasným diskovým Hello je obvykle spravuje hello Azure Linux Agent a automaticky připojit příliš**/mnt nebo prostředků** (nebo **/mnt** Ubuntu Image). Na hello druhé straně, datový disk může být pojmenován podle hello Linux jádra něco podobného jako `/dev/sdc`, a je třeba toopartition, formátování a připojte tento prostředek. V tématu hello [Azure Linux Agent uživatelská příručka] [ Agent] podrobnosti.
 > 
 > 
 
 [!INCLUDE [howto-attach-disk-windows-linux](../../../../includes/howto-attach-disk-linux.md)]
 
 ## <a name="initialize-a-new-data-disk-in-linux"></a>Inicializace nový datový disk v systému Linux
-1. SSH k virtuálnímu počítači. Další informace najdete v tématu [přihlášení do virtuálního počítače se systémem Linux][Logon].
-2. Dále je třeba najít identifikátor zařízení pro datový disk k chybě při inicializaci. Existují dva způsoby, jak to udělat:
+1. SSH tooyour virtuálních počítačů. Další informace najdete v tématu [jak toolog na tooa virtuální počítač se systémem Linux][Logon].
+2. Dále pro hello datového disku tooinitialize potřebovat identifikátor zařízení toofind hello. Existují dva způsoby toodo který:
    
-    (a) Grep pro zařízení SCSI v protokolech, například následující příkaz:
+    a) Grep pro zařízení SCSI v hello protokoly, například hello následující příkaz:
    
     ```bash
     sudo grep SCSI /var/log/messages
     ```
    
-    Pro poslední Ubuntu distribuce, budete muset použít `sudo grep SCSI /var/log/syslog` protože protokolování tak, aby `/var/log/messages` může ve výchozím nastavení zakázané.
+    Pro poslední Ubuntu distribuce, pravděpodobně bude třeba toouse `sudo grep SCSI /var/log/syslog` protože protokolování příliš`/var/log/messages` může ve výchozím nastavení zakázané.
    
-    Můžete najít identifikátor poslední datový disk, která byla přidána do zpráv, které se zobrazují.
+    Můžete najít identifikátor hello hello poslední datový disk, který se přidal ve hello zprávy, které jsou zobrazeny.
    
-    ![Získávání zpráv disku](./media/attach-disk/scsidisklog.png)
+    ![Získávání zpráv disku hello](./media/attach-disk/scsidisklog.png)
    
     NEBO
    
-    b) použití `lsscsi` příkazu zjistit id zařízení. `lsscsi` můžete nainstalovat pomocí příkazu `yum install lsscsi` (v distribucích založených na Red Hat) nebo `apt-get install lsscsi` (v distribucích založených na Debian). Můžete najít na disku, kterou hledáte podle jeho *lun* nebo **číslo logické jednotky**. Například *lun* pro disky můžete z snadno pohledu `azure vm disk list <virtual-machine>` jako:
+    b) hello použijte `lsscsi` příkaz toofind se id zařízení hello. `lsscsi` může být instalován buď `yum install lsscsi` (na Red Hat na základě distribuce) nebo `apt-get install lsscsi` (na Debian na základě distribuce). Můžete najít disk hello hledáte podle jeho *lun* nebo **číslo logické jednotky**. Například hello *lun* pro připojené disky hello je snadno vidět z `azure vm disk list <virtual-machine>` jako:
 
     ```azurecli
     azure vm disk list myVM
     ```
 
-    Výstup je podobný tomuto:
+    výstup Hello je podobné toohello následující:
 
     ```azurecli
     info:    Executing command vm disk list
@@ -73,7 +73,7 @@ Můžete připojit prázdné disky a disky, které obsahují data pro virtuáln�
     info:    vm disk list command OK
     ```
    
-    Tato data se výstup porovnání `lsscsi` pro stejné ukázkové virtuálního počítače:
+    Porovnat tato data se výstup hello `lsscsi` pro hello stejná ukázková virtuálního počítače:
    
     ```bash
     [1:0:0:0]    cd/dvd  Msft     Virtual CD/ROM   1.0   /dev/sr0
@@ -82,32 +82,32 @@ Můžete připojit prázdné disky a disky, které obsahují data pro virtuáln�
     [5:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sdc
     ```
    
-    Je poslední číslo v řazené kolekci členů v každém řádku *lun*. V tématu `man lsscsi` Další informace.
-3. Do příkazového řádku zadejte následující příkaz k vytvoření vašeho zařízení:
+    Poslední číslo hello řazené kolekce členů v jednotlivých řádcích Hello je hello *lun*. V tématu `man lsscsi` Další informace.
+3. Hello řádku zadejte následující příkaz toocreate hello zařízení:
    
     ```bash
     sudo fdisk /dev/sdc
     ```
 
-4. Po zobrazení výzvy zadejte  **n**  k vytvoření oddílu.
+4. Po zobrazení výzvy zadejte  **n**  toocreate oddílu.
 
     ![Vytvoření zařízení](./media/attach-disk/fdisknewpartition.png)
 
-5. Po zobrazení výzvy zadejte **p** změnit primární oddíl na oddíl. Typ **1** na první oddíl a pak zadejte zadejte přijměte výchozí hodnotu cylindr. U některých systémů může zobrazit výchozí hodnoty, první a poslední sektory, místo cylindr. Můžete tak, aby přijímal tyto výchozí hodnoty.
+5. Po zobrazení výzvy zadejte **p** toomake hello oddílu hello primární oddíl. Typ **1** toomake hello prvního oddílu a poté zadejte zadejte tooaccept hello výchozí hodnota pro cylindr hello. Na některé systémy může zobrazit výchozí hodnoty hello hello první a poslední sektory, místo hello cylindr hello. Tooaccept můžete tyto výchozí hodnoty.
 
     ![Vytvořit oddíl](./media/attach-disk/fdisknewpartdetails.png)
 
 
-6. Typ **p** a zobrazit podrobnosti o disk, který je rozdělena na oddíly.
+6. Typ **p** toosee hello podrobnosti o hello disk, který je rozdělena na oddíly.
 
     ![Informace o disku seznamu](./media/attach-disk/fdiskpartitiondetails.png)
 
 
-7. Typ **w** se zapsat nastavení disku.
+7. Typ **w** toowrite hello nastavení pro hello disk.
 
-    ![Zápis disku změny](./media/attach-disk/fdiskwritedisk.png)
+    ![Zápis hello změny na disku](./media/attach-disk/fdiskwritedisk.png)
 
-8. Nyní můžete vytvořit systém souborů na nový oddíl. Připojit číslo oddílu k ID zařízení (v následujícím příkladu `/dev/sdc1`). Následující příklad vytvoří oddíl ext4 na /dev/sdc1:
+8. Nyní můžete vytvořit systém souborů hello na hello nový oddíl. Připojit ID číslo toohello zařízení hello oddílu (v hello následující ukázka `/dev/sdc1`). Hello následující příklad vytvoří ext4 oddíl na /dev/sdc1:
    
     ```bash
     sudo mkfs -t ext4 /dev/sdc1
@@ -116,33 +116,33 @@ Můžete připojit prázdné disky a disky, které obsahují data pro virtuáln�
     ![Vytvořit systém souborů](./media/attach-disk/mkfsext4.png)
    
    > [!NOTE]
-   > Systémy SuSE Linux Enterprise 11 pro systémy souborů ext4 podporují pouze oprávnění jen pro čtení. Pro tyto systémy doporučujeme formátovat jako ext3, nikoli ext4 nový systém souborů.
+   > Systémy SuSE Linux Enterprise 11 pro systémy souborů ext4 podporují pouze oprávnění jen pro čtení. Pro tyto systémy se doporučuje tooformat hello nový systém souborů jako ext3, nikoli ext4.
 
-9. Aby byl adresář připojit nový systém souborů, následujícím způsobem:
+9. Ujistěte se, adresář toomount hello nový systém souborů, následujícím způsobem:
    
     ```bash
     sudo mkdir /datadrive
     ```
 
-10. Nakonec můžete připojit jednotku, následujícím způsobem:
+10. Nakonec můžete připojit hello jednotku, následujícím způsobem:
    
     ```bash
     sudo mount /dev/sdc1 /datadrive
     ```
    
-    Datový disk je teď připravený k použití jako **/datadrive**.
+    Hello datový disk je nyní připraven toouse jako **/datadrive**.
    
-    ![Vytvoření adresáře a připojit disk](./media/attach-disk/mkdirandmount.png)
+    ![Vytvoření disku hello hello directory a připojení](./media/attach-disk/mkdirandmount.png)
 
-11. Přidejte nový disk /etc/fstab:
+11. Přidejte hello nového disku příliš/atd/fstab:
    
-    K zajištění, že jednotka je znovu připojeny automaticky po restartování systému musí být přidané do souboru/etc/fstab. Kromě toho je důrazně doporučujeme, aby identifikátor UUID (univerzálně jedinečný identifikátor) se používá v /etc/fstab k odkazování na jednotku, nikoli jen název zařízení (tj. /dev/sdc1). Pomocí identifikátoru UUID zabraňuje nesprávnou disku se připojí na určitém místě, když operačního systému zjistí chybu disk během spuštění a všechny zbývající datové disky poté přiřazeny ID těchto zařízení. Chcete-li najít identifikátor UUID nový disk, můžete použít **blkid** nástroj:
+    znovu tooensure hello jednotky je připojeny automaticky po restartování počítače, které musí být přidán toohello /etc/fstab souboru. Kromě toho důrazně doporučujeme tuto hello UUID (univerzálně jedinečný identifikátor) se používá v /etc/fstab toorefer toohello disku, nikoli jen název zařízení hello (tj. /dev/sdc1). Pomocí hello UUID zabraňuje hello nesprávnou disku se připojené tooa zadané umístění, pokud hello OS zjistí chybu disk během spuštění a všechny zbývající datových disků, pak se ty přiřazené ID zařízení. toofind hello UUID hello nový disk, můžete použít hello **blkid** nástroj:
    
     ```bash
     sudo -i blkid
     ```
    
-    Výstup bude vypadat podobně jako v následujícím příkladu:
+    výstup Hello vypadá podobně jako toohello následující ukázka:
    
     ```bash
     /dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
@@ -151,59 +151,59 @@ Můžete připojit prázdné disky a disky, které obsahují data pro virtuáln�
     ```
 
     > [!NOTE]
-    > Nesprávně úpravy **/etc/fstab** soubor může mít za následek nelze spustit systém. Pokud jistí, naleznete distribuční dokumentaci informace o tom, jak správně upravit tento soubor. Dále je doporučeno, jestli je vytvořená záloha souboru /etc/fstab před úpravou.
+    > Nesprávně úpravy hello **/etc/fstab** soubor může mít za následek nelze spustit systém. Pokud si jisti, naleznete v dokumentaci toohello distribuční informace o tom, jak upravit tooproperly tento soubor. Dále je doporučeno, jestli je vytvořená záloha souboru /etc/fstab hello před úpravou.
 
-    Dále otevřete **/etc/fstab** soubor v textovém editoru:
+    Dále otevřete hello **/etc/fstab** soubor v textovém editoru:
 
     ```bash
     sudo vi /etc/fstab
     ```
 
-    V tomto příkladu používáme UUID hodnotu pro nové **/dev/sdc1** zařízení, který byl vytvořen v předchozích krocích a přípojný bod **/datadrive**. Přidejte následující řádek na konec **/etc/fstab** souboru:
+    V tomto příkladu používáme hello UUID hodnotu pro hello nové **/dev/sdc1** zařízení, který byl vytvořen v předchozích krocích hello a přípojný bod hello **/datadrive**. Přidejte následující řádek toohello konec hello hello **/etc/fstab** souboru:
 
     ```sh
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
     ```
 
-    Nebo na systémy založené na systému SuSE Linux budete muset použít mírně odlišný formát:
+    Nebo na systémy založené na systému SuSE Linux může být nutné toouse mírně odlišný formát:
 
     ```sh
     /dev/disk/by-uuid/33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext3   defaults,nofail   1   2
     ```
 
     > [!NOTE]
-    > `nofail` Možnost zajistí, že virtuální počítač spustí i v případě, že systém souborů je poškozený nebo disk neexistuje při spuštění. Bez této možnosti se můžete setkat chování jak je popsáno v [nelze SSH pro virtuální počítač s Linuxem z důvodu chyb FSTAB](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/).
+    > Hello `nofail` možnost zajistí, že hello virtuální počítač spustí i v případě systému souborů hello je poškozený nebo hello disk neexistuje při spuštění. Bez této možnosti se můžete setkat chování jak je popsáno v [nelze SSH tooLinux virtuálních počítačů z důvodu chyby tooFSTAB](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/).
 
-    Nyní můžete otestovat, že systém souborů správně připojený odpojování a pak opakovanému připojení systému souborů, tj. Příklad použití přípojného bodu `/datadrive` vytvořené v dřívějších krocích:
+    Nyní můžete otestovat, zda text hello připojení k systému souborů správně odpojování a pak opakovanému připojení hello systému souborů, tj. pomocí hello příklad přípojného bodu `/datadrive` vytvořené v hello dříve kroky:
 
     ```bash
     sudo umount /datadrive
     sudo mount /datadrive
     ```
 
-    Pokud `mount` příkaz vytvořil chybu, zkontrolujte soubor fstab/etc/pro správnou syntaxi. Pokud budou vytvořeny další datové jednotky nebo oddíly, zadejte je do/etc/fstab také samostatně.
+    Pokud hello `mount` příkaz vytvořil chybu, zkontrolovat, zda text hello/etc/fstab soubor správnou syntaxi. Pokud budou vytvořeny další datové jednotky nebo oddíly, zadejte je do/etc/fstab také samostatně.
 
-    Zkontrolujte jednotku s možností zápisu pomocí tohoto příkazu:
+    Vytvořte jednotku hello zapisovatelné pomocí tohoto příkazu:
 
     ```bash
     sudo chmod go+w /datadrive
     ```
 
     > [!NOTE]
-    > Následně odebrat datový disk bez úprav fstab může způsobit selhání spuštění virtuálního počítače. Pokud je to běžné v situaci, většina distribuce zadejte buď `nofail` nebo `nobootwait` dobou spuštění fstab možnosti, které umožňují spustit i v případě, že na disku se nepodaří připojit v systému. Další informace o těchto parametrů naleznete v dokumentaci vaší distribuce.
+    > Následně odebrat datový disk bez úprav fstab by mohlo způsobit tooboot toofail hello virtuálních počítačů. Pokud je to běžné v situaci, většina distribuce zadejte buď hello `nofail` nebo `nobootwait` fstab možnosti, které umožňují tooboot systému i v případě selhání disku hello toomount při spuštění. Další informace o těchto parametrů naleznete v dokumentaci vaší distribuce.
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>Podpora uvolnění dočasné paměti nebo UNMAP pro Linux v Azure
-Některé Linux jádra podporovat operace TRIM/UNMAP vyřadí nepoužívané bloky na disku. Tyto operace jsou užitečné hlavně v standardní úložiště k informování Azure, které odstraněné stránky již nejsou platné a může být vymazány. Zahození stránky můžete uložit náklady, pokud chcete vytvořit velkých souborů a pak odstraňte je.
+Některé jádra Linux podporují toodiscard operace TRIM/UNMAP nepoužívané bloky na disku hello. Tyto operace jsou užitečné hlavně v tooinform standardní úložiště Azure, které odstraněné stránky již nejsou platné a může být vymazány. Zahození stránky můžete uložit náklady, pokud chcete vytvořit velkých souborů a pak odstraňte je.
 
-Existují dva způsoby, jak povolit TRIM podporují ve virtuálním počítačům s Linuxem. Obvyklým způsobem podívejte se distribuční o doporučený postup:
+Existují dva způsoby tooenable TRIM podporují ve virtuálním počítačům s Linuxem. Obvyklým způsobem podívejte se distribuční hello doporučenému přístupu:
 
-* Použití `discard` připojit možnost v `/etc/fstab`, například:
+* Použití hello `discard` připojit možnost v `/etc/fstab`, například:
 
     ```sh
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
 
-* V některých případech `discard` možnost může mít vliv na výkon. Alternativně můžete spustit `fstrim` ručně příkaz z příkazového řádku, nebo ho přidat do vaší crontab pravidelně spouštět:
+* V některých případech hello `discard` možnost může mít vliv na výkon. Alternativně můžete spustit hello `fstrim` ručně příkaz z příkazového řádku hello, nebo ho přidat tooyour crontab toorun pravidelně:
   
     **Ubuntu**
   
@@ -223,11 +223,11 @@ Existují dva způsoby, jak povolit TRIM podporují ve virtuálním počítačů
 [!INCLUDE [virtual-machines-linux-lunzero](../../../../includes/virtual-machines-linux-lunzero.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o používání virtuálním počítačům s Linuxem v těchto článcích:
+Další informace o používání virtuálním počítačům s Linuxem v hello následující články:
 
-* [Jak se přihlásit do virtuálního počítače se systémem Linux][Logon]
-* [Jak se odpojit disk z virtuálního počítače systému Linux](detach-disk.md)
-* [Pomocí rozhraní příkazového řádku Azure s modelem nasazení Classic](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
+* [Jak toolog na tooa virtuální počítač se systémem Linux][Logon]
+* [Jak toodetach disk z virtuálního počítače systému Linux](detach-disk.md)
+* [Pomocí modelu nasazení Classic hello hello rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [Konfigurace RAID na virtuální počítač s Linuxem v Azure](../configure-raid.md)
 * [Konfigurace LVM na virtuální počítač s Linuxem v Azure](../configure-lvm.md)
 

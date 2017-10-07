@@ -1,6 +1,6 @@
 ---
-title: "Obnovit svazek StorSimple ze zálohy | Microsoft Docs"
-description: "Vysvětluje, jak používat stránky zálohování katalogu služby StorSimple Manager obnovit svazek StorSimple ze zálohovacího skladu."
+title: "aaaRestore svazek StorSimple ze zálohy | Microsoft Docs"
+description: "Vysvětluje, jak toouse hello toorestore stránky zálohování katalogu služby StorSimple Manager svazek StorSimple ze zálohovacího skladu."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,77 +14,77 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.openlocfilehash: 12484338f5b4d489604d70a657ef0992b6267297
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e0efa74b14603be41af0cfc5400de3c39ab8824e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Obnovit svazek StorSimple ze zálohovacího skladu
 [!INCLUDE [storsimple-version-selector-restore-from-backup](../../includes/storsimple-version-selector-restore-from-backup.md)]
 
 ## <a name="overview"></a>Přehled
-**Zálohování katalogu** stránka zobrazuje všechny zálohovací sklady, které vytvářejí, když jsou provedeny ruční nebo automatické zálohy. Můžete tato stránka slouží k zobrazení seznamu všech zálohy pro zásady zálohování nebo svazek, vyberte nebo odstranit zálohy, nebo použít zálohu k obnovení nebo klonování svazku.
+Hello **zálohování katalogu** stránka zobrazuje všechny zálohovací sklady hello, které vytvářejí, když jsou provedeny ruční nebo automatické zálohy. Můžete použít tuto stránku toolist všechny hello zálohy pro zásady zálohování nebo svazek, vyberte nebo odstranit zálohy, nebo použít zálohování toorestore nebo klonování svazku.
 
  ![Zálohování stránky katalogu](./media/storsimple-restore-from-backup-set/HCS_BackupCatalog.png)
 
-Tento kurz vysvětluje, jak používat **zálohování katalogu** stránku obnovit svazek v zařízení ze zálohovacího skladu.
+Tento kurz vysvětluje, jak toouse hello **zálohování katalogu** stránky toorestore svazek v zařízení ze zálohovacího skladu.
 
-## <a name="how-to-use-the-backup-catalog"></a>Použití zálohování katalogu
-**Zálohování katalogu** stránka obsahuje dotaz, který umožňuje zúžit zálohování nastavte výběr. Můžete filtrovat zálohovací sklady, které jsou načteny na základě následujících parametrů:
+## <a name="how-toouse-hello-backup-catalog"></a>Jak toouse hello zálohování katalogu
+Hello **zálohování katalogu** stránka obsahuje dotaz, který vám pomůže toonarrow výběr zálohovacího skladu. Můžete filtrovat hello zálohování sad, které jsou načteny podle hello následující parametry:
 
-* **Zařízení** – zařízení, v němž byla vytvořena zálohovacího skladu.
-* **Zásady zálohování** nebo **svazku** – zásady zálohování nebo svazku přidruženém k tohoto zálohovacího skladu.
-* **Z** a **k** – rozsah data a času v okamžiku vytvoření zálohovacího skladu.
+* **Zařízení** – hello zařízení, na které hello zálohovací sklad vytvořen.
+* **Zásady zálohování** nebo **svazku** – hello zásady zálohování nebo svazku přidruženém k tohoto zálohovacího skladu.
+* **Z** a **k** – hello rozsah data a času v okamžiku vytvoření zálohovacího skladu hello.
 
-Filtrované zálohovací sklady jsou pak poskytovalo na základě následujících atributů:
+Hello filtrované zálohovací sklady jsou pak v tabulce podle hello následující atributy:
 
-* **Název** – název zásady zálohování nebo svazku přidruženém k zálohovacího skladu.
-* **Velikost** – skutečná velikost zálohovacího skladu.
-* **Vytvořit v** – datum a čas, kdy byly vytvořeny zálohy. 
-* **Typ** – zálohovací sklady může být místní snímky nebo cloudových snímků. Místní snímek je zálohování všech dat uložených místně na zařízení, svazku, zatímco cloudový snímek odkazuje na zálohování svazku dat umístěných v cloudu. Místní snímky poskytují rychlejší přístup, že jsou pro záleží na odolnosti dat zvolena cloudových snímků.
-* **Zahájit** – zálohy lze inicializovat automaticky podle plánu nebo ručně uživatelem. (Můžete použít zásady zálohování naplánovat zálohování. Alternativně můžete použít **provést zálohování** možnost provést zálohu interaktivní.)
+* **Název** – hello název zásady zálohování hello nebo svazku přidruženém k hello zálohovacího skladu.
+* **Velikost** – hello skutečná velikost hello zálohovacího skladu.
+* **Vytvořit v** – hello datum a čas, kdy byla vytvořena hello zálohy. 
+* **Typ** – zálohovací sklady může být místní snímky nebo cloudových snímků. Místní snímek je zálohování všech dat uložených místně na zařízení hello svazku, zatímco cloudový snímek odkazuje toohello zálohování svazku dat umístěných v cloudu hello. Místní snímky poskytují rychlejší přístup, že jsou pro záleží na odolnosti dat zvolena cloudových snímků.
+* **Zahájit** – hello zálohy lze inicializovat automaticky podle plánu tooa nebo ručně uživatelem. (Můžete použít zálohování tooschedule zásady zálohování. Alternativně můžete použít hello **provést zálohování** možnost tootake interaktivní zálohování.)
 
-## <a name="how-to-restore-your-storsimple-volume-from-a-backup"></a>Jak obnovit svazek StorSimple ze zálohy
-Můžete použít **zálohování katalogu** stránku obnovit svazek StorSimple ze konkrétní zálohy. 
+## <a name="how-toorestore-your-storsimple-volume-from-a-backup"></a>Jak toorestore svazek StorSimple ze zálohy
+Můžete použít hello **zálohování katalogu** stránka toorestore svazek StorSimple ze konkrétní zálohy. 
 
 > [!WARNING]
-> Obnovení ze zálohy nahradí existující svazky ze zálohy. To může způsobit ztrátu všechna data, která byla zapsána po vytvoření zálohy.
+> Obnovení ze zálohy nahradí existující svazky hello ze zálohy hello. To může způsobit ztrátu hello všechna data, která byla zapsána po hello zálohy.
 > 
 > 
 
-Než zahájíte obnovení ve svazku, ujistěte se, že je svazek offline. Budete muset provést offline svazek na hostiteli první a pak zařízení. Postupujte podle kroků v [do offline režimu svazku](storsimple-manage-volumes.md#take-a-volume-offline). Proveďte následující kroky k obnovení svazku ze zálohovacího skladu.
+Než zahájíte obnovení ve svazku, zajistěte, aby byl hello svazek offline. Budete potřebovat tootake hello svazku do offline režimu na hostiteli hello nejprve a pak hello zařízení. Postupujte podle kroků hello v [do offline režimu svazku](storsimple-manage-volumes.md#take-a-volume-offline). Proveďte následující kroky toorestore svazek ze zálohovacího skladu hello.
 
-### <a name="to-restore-from-a-backup-set"></a>Obnovení ze zálohovacího skladu
-1. Na stránce služby StorSimple Manager, klepněte **katalog zálohování** kartě.
+### <a name="toorestore-from-a-backup-set"></a>toorestore ze zálohovacího skladu
+1. Na stránce služby StorSimple Manager hello, klikněte na hello **katalog zálohování** kartě.
    
     ![Zálohování katalogu](./media/storsimple-restore-from-backup-set/HCS_Restore.png)
 2. Vyberte zálohovací sklad následujícím způsobem:
    
-   1. Vyberte příslušné zařízení.
-   2. V rozevíracím seznamu vyberte svazek nebo zálohování zásady pro zálohu, kterou chcete vybrat.
-   3. Zadejte časový rozsah.
-   4. Klikněte na ikonu zaškrtnutí ![ikona zaškrtnutí](./media/storsimple-restore-from-backup-set/HCS_CheckIcon.png) k provedení tohoto dotazu.
+   1. Vyberte příslušné zařízení hello.
+   2. V rozevíracím seznamu hello výběru hello svazek nebo zálohování zásady zálohování hello chcete tooselect.
+   3. Zadejte časové rozmezí hello.
+   4. Klikněte na ikonu zaškrtnutí hello ![ikona zaškrtnutí](./media/storsimple-restore-from-backup-set/HCS_CheckIcon.png) tooexecute tento dotaz.
       
-      Zálohování přidružené k vybranému svazku nebo zásady zálohování by se měla objevit v seznamu sad záloh.
-3. Rozbalte zálohovací sklad zobrazíte přidružené svazky. Tyto svazky musí být převedeno do režimu offline v hostiteli a zařízení, než bude možné obnovit. Postupujte podle kroků v [do offline režimu svazku](storsimple-manage-volumes.md#take-a-volume-offline).
+      Hello zálohování přidružená k zásadě hello vybraný svazek nebo zálohování by se zobrazit v seznamu hello zálohovací sklady.
+3. Rozbalte hello zálohovacího skladu tooview hello přidružené svazky. Tyto svazky musí být převedeno do režimu offline v hostiteli hello a zařízení, než bude možné obnovit. Postupujte podle kroků hello v [do offline režimu svazku](storsimple-manage-volumes.md#take-a-volume-offline).
    
    > [!IMPORTANT]
-   > Ujistěte se, že jste provedli svazky do offline režimu na hostiteli nejprve, před provedením svazky do režimu offline v zařízení. Pokud neprovedete offline svazky na hostiteli, může potenciálně vést k poškození dat.
+   > Ujistěte se, že jste provedli hello svazky do offline režimu na hostiteli hello nejprve, před provedením hello svazky do režimu offline v zařízení hello. Pokud neprovedete offline hello svazky na hostiteli hello, může potenciálně vést k poškození toodata.
    > 
    > 
-4. Vyberte zálohovacího skladu. Klikněte na tlačítko **obnovení** v dolní části stránky.
+4. Vyberte zálohovacího skladu. Klikněte na tlačítko **obnovení** v hello dolní části stránky hello.
 5. Zobrazí se výzva k potvrzení. 
    
     ![Stránka potvrzení](./media/storsimple-restore-from-backup-set/HCS_ConfirmRestore.png)
-6. Zkontrolovat informace o obnovení a klikněte na ikonu zaškrtnutí ![ikona zaškrtnutí](./media/storsimple-restore-from-backup-set/HCS_CheckIcon.png). Tím zahájíte obnovení úlohu, která si můžete zobrazit přístup **úlohy** stránky. 
-7. Po dokončení obnovení můžete ověřit, že obsah svazků jsou nahrazovány svazků ze zálohy.
+6. Zkontrolujte informace hello obnovení a klikněte na ikonu zaškrtnutí hello ![ikona zaškrtnutí](./media/storsimple-restore-from-backup-set/HCS_CheckIcon.png). Tím zahájíte obnovení úlohu, která můžete zobrazit pomocí přístupu k hello **úlohy** stránky. 
+7. Po dokončení obnovení hello můžete ověřit, že hello obsah svazků jsou nahrazovány svazků ze zálohy hello.
 
-![Dostupné video](./media/storsimple-restore-from-backup-set/Video_icon.png) **Dostupné video**
+![Dostupné video](./media/storsimple-restore-from-backup-set/Video_icon.png)**Dostupné video**
 
-Pokud chcete přehrát video, které ukazuje, jak můžete použít klonu a funkce v zařízení StorSimple obnovit odstraněné soubory obnovit, klikněte na tlačítko [zde](https://azure.microsoft.com/documentation/videos/storsimple-recover-deleted-files-with-storsimple/).
+Klikněte na tlačítko toowatch video, které ukazuje, jak můžete použít klonu hello a obnovení funkcí v zařízení StorSimple toorecover odstranit soubory, [zde](https://azure.microsoft.com/documentation/videos/storsimple-recover-deleted-files-with-storsimple/).
 
 ## <a name="next-steps"></a>Další kroky
-* Zjistěte, jak [svazky spravovat zařízení StorSimple](storsimple-manage-volumes.md).
-* Zjistěte, jak [použít službu StorSimple Manager ke správě zařízení StorSimple](storsimple-manager-service-administration.md).
+* Zjistěte, jak příliš[svazky spravovat zařízení StorSimple](storsimple-manage-volumes.md).
+* Zjistěte, jak příliš[použití hello tooadminister služby StorSimple Manager zařízení StorSimple](storsimple-manager-service-administration.md).
 

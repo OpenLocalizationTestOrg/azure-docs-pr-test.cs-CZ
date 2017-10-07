@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace sítě režimy služby Azure Service Fabric kontejneru | Microsoft Docs"
-description: "Zjistěte, jak nastavit různé režimy sítě, které podporuje Azure Service Fabric."
+title: "aaaConfigure sítě režimy služby Azure Service Fabric kontejneru | Microsoft Docs"
+description: "Zjistěte, jak toosetup hello různé sítě režimy této Azure Service Fabric podporuje."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: f792f9604a5d6e62551ed92c1049d6e2b4216417
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 5c5dd4c590c7698a947503cbe8ef66ff7d6b503a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="service-fabric-container-networking-modes"></a>Režimy sítě kontejneru Service Fabric
 
-Je výchozí sítě režimu nenabízí cluster Service Fabric pro služby kontejneru `nat` sítě režimu. Pomocí `nat` sítě režimu s více než jedna služba kontejnery naslouchání stejný port výsledkem chyby nasazení. Spuštění několik služeb této naslouchání na stejném portu, Service Fabric podporuje `open` sítě režimu (verze 5.7 nebo vyšší). Pomocí `open` sítě režimu, každou službu kontejneru získá dynamicky přiřazenou IP adresu interně povolení více služeb tak, aby naslouchala na stejný port.   
+Hello výchozí sítě režim nenabízí hello Service Fabric clusteru pro kontejner služby je hello `nat` sítě režimu. S hello `nat` sítě režimu s více než jeden kontejnery služby naslouchání toohello stejný port má za následek chyby nasazení. Pro spuštění několika služeb, které naslouchat na stejný port, Service Fabric podporuje hello hello `open` sítě režimu (verze 5.7 nebo vyšší). S hello `open` sítě režimu, každou službu kontejneru získá dynamicky přiřazenou IP adresu interně povolení více služeb toolisten toohello stejný port.   
 
-Proto s jednoho typu služby s koncový bod statické definované v service manifest, nové služby může vytvořit a odstraněn bez chyby nasazení pomocí `open` sítě režimu. Podobně stejné můžete použít jednu `docker-compose.yml` souboru s mapováním statický port pro vytváření více služeb.
+Proto s jednoho typu služby s koncový bod statické definované v hello service manifest, nové služby může vytvořit a odstraněn bez chyby nasazení pomocí hello `open` sítě režimu. Podobně můžete použít jednu hello stejné `docker-compose.yml` souboru s mapováním statický port pro vytváření více služeb.
 
-Použít dynamicky přiřazené IP ke zjištění služby není vhodné od změny IP adresy při restartování služby nebo přesune do jiného uzlu. Použít pouze **Service Fabric Naming Service** nebo **služba DNS** pro zjišťování služby. 
+Pomocí hello dynamicky přiřadit IP toodiscover služby není vhodné od změny IP adresy hello při restartování služby hello nebo přesune tooanother uzlu. Používat pouze hello **Service Fabric Naming Service** nebo hello **služba DNS** pro zjišťování služby. 
 
 
 > [!WARNING]
-> Na virtuální sítě v Azure jsou povoleny pouze celkem 4096 IP adresy. Proto součet počet uzlů a počet instancí kontejneru služby (s `open` sítě) nesmí být delší než 4096 v rámci virtuální sítě. U scénářů s vysokou hustotou `nat` se doporučuje sítě režimu.
+> Na virtuální sítě v Azure jsou povoleny pouze celkem 4096 IP adresy. Proto hello součet hello počet uzlů a hello počet instancí kontejneru služby (s `open` sítě) nesmí být delší než 4096 v rámci virtuální sítě. U scénářů s vysokou hustotou hello `nat` se doporučuje sítě režimu.
 >
 
 ## <a name="setting-up-open-networking-mode"></a>Nastavení sítě režim otevření
 
-1. Nastavení šablony Azure Resource Manageru povolením služby DNS a IP zprostředkovatele v rámci `fabricSettings`. 
+1. Nastavit šablony Azure Resource Manageru hello povolením služby DNS a hello Zprostředkovatel IP v části `fabricSettings`. 
 
     ```json
     "fabricSettings": [
@@ -78,7 +78,7 @@ Použít dynamicky přiřazené IP ke zjištění služby není vhodné od změn
             ],
     ```
 
-2. Nastavte části profil sítě a povolit více IP adres nakonfigurovat na každém uzlu clusteru. Následující příklad nastaví pět IP adres na uzel (proto vám může mít pět instancí služby naslouchání na portu na každém uzlu) pro cluster s podporou Windows Service Fabric.
+2. Nastavte hello síťový profil části tooallow více IP adres toobe nakonfigurované na každém uzlu clusteru hello. Hello následující příklad nastavuje pět IP adresy na jeden uzel (proto vám může mít pět instancí služby naslouchání portu toohello na každém uzlu) pro cluster s podporou Windows Service Fabric.
 
     ```json
     "variables": {
@@ -175,7 +175,7 @@ Použít dynamicky přiřazené IP ke zjištění služby není vhodné od změn
               }
     ```
 
-    Pro Linux clusterů se přidá další konfiguraci veřejných IP adres umožňuje odchozí připojení. Následující fragment kódu nastaví pět IP adres na uzel pro cluster s podporou Linux:
+    Pro Linux clusterů se přidá další konfiguraci veřejných IP adres tooallow odchozí připojení. Hello následující fragment kódu nastavuje pět IP adresy na uzel pro cluster s podporou Linux:
 
     ```json
     "networkProfile": {
@@ -292,14 +292,14 @@ Použít dynamicky přiřazené IP ke zjištění služby není vhodné od změn
               }
     ```
 
-3. Pro clustery Windows nastavte pravidlo NSG otevření portů UDP/53 pro virtuální síť s následujícími hodnotami:
+3. Pro systém Windows, které clustery, nastavit skupiny NSG pravidlo otevření až port UDP/53 pro virtuální síť hello s hello následující hodnoty:
 
    | Priorita |    Name (Název)    |    Zdroj      |  Cíl   |   Služba    | Akce |
    |:--------:|:----------:|:--------------:|:--------------:|:------------:|:------:|
    |     2000 | Custom_Dns | VirtualNetwork | VirtualNetwork | DNS (UDP/53) | Povolit  |
 
 
-4. Zadejte režim sítě v manifest aplikace pro každou službu `<NetworkConfig NetworkType="open">`.  Režim `open` výsledky v rámci služby získávání vyhrazenou IP adresu. Pokud není zadán režim, nastaví se jako výchozí základní `nat` režimu. Proto v následujícím příkladu manifestu `NodeContainerServicePackage1` a `NodeContainerServicePackage2` můžete každý naslouchání ke stejnému portu (obě služby jsou naslouchá na `Endpoint1`).
+4. Zadejte režim sítě hello v manifestu aplikace hello u každé služby `<NetworkConfig NetworkType="open">`.  režim Hello `open` výsledkem hello služby získávání vyhrazenou IP adresu. Pokud není zadán režim, je standardně toohello základní `nat` režimu. Proto v hello následující manifestu ukázka `NodeContainerServicePackage1` a `NodeContainerServicePackage2` můžete každý naslouchání toohello stejný port (obě služby jsou naslouchá na `Endpoint1`).
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -329,7 +329,7 @@ Použít dynamicky přiřazené IP ke zjištění služby není vhodné od změn
       </ServiceManifestImport>
     </ApplicationManifest>
     ```
-Můžete kombinovat a párovat síťové různé režimy ve službách v rámci aplikace pro Windows cluster. Proto může mít některé služby `open` režimu a některé na `nat` sítě režimu. Když je nakonfigurované služby `nat`, naslouchá na portu musí být jedinečný. Kombinování sítě režimy pro různé služby se nepodporuje v clusterech Linux. 
+Můžete kombinovat a párovat síťové různé režimy ve službách v rámci aplikace pro Windows cluster. Proto může mít některé služby `open` režimu a některé na `nat` sítě režimu. Když je nakonfigurované služby `nat`, port hello je naslouchání toomust být jedinečný. Kombinování sítě režimy pro různé služby se nepodporuje v clusterech Linux. 
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -337,5 +337,5 @@ V tomto článku jste se dozvěděli o sítě režimy, které nabízí Service F
 
 * [Model aplikace Service Fabric](service-fabric-application-model.md)
 * [Prostředky manifestu služby Service Fabric](service-fabric-application-model.md)
-* [Nasazení kontejneru systému Windows pro Service Fabric na Windows Server 2016](service-fabric-get-started-containers.md)
-* [Nasadit kontejner Docker do Service Fabric v systému Linux](service-fabric-get-started-containers-linux.md)
+* [Nasazení tooService kontejneru Windows Fabric na Windows Server 2016](service-fabric-get-started-containers.md)
+* [Nasazení tooService kontejner Docker prostředků infrastruktury v systému Linux](service-fabric-get-started-containers-linux.md)

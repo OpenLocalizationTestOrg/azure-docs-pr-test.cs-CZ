@@ -1,5 +1,5 @@
 ---
-title: "Kurz pro Azure instancí kontejnerů – nasazení aplikace | Microsoft Docs"
+title: "kurz instancí kontejnerů aaaAzure – nasazení aplikace | Microsoft Docs"
 description: "Kurz pro Azure instancí kontejnerů – nasazení aplikace"
 services: container-instances
 documentationcenter: 
@@ -17,24 +17,24 @@ ms.workload: na
 ms.date: 08/04/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 54151a5c1850ab7120fe666a46dc5dc99c0f5157
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b9fb098d9491e1073f0be4b14a0b9b1a18f16095
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-a-container-to-azure-container-instances"></a>Nasazení do Azure kontejner instancí kontejneru
+# <a name="deploy-a-container-tooazure-container-instances"></a>Nasazení tooAzure kontejner instancí kontejnerů
 
-Toto je poslední kurzu třemi částmi. V předchozích částech [bitovou kopii kontejner byl vytvořen](container-instances-tutorial-prepare-app.md) a [nabídnutých do služby Azure kontejneru registru](container-instances-tutorial-prepare-acr.md). Tato část dokončení tohoto kurzu nasazením kontejneru na kontejner instancí Azure. Dokončit krokům patří:
+Toto je hello poslední kurzu třemi částmi. V předchozích částech [bitovou kopii kontejner byl vytvořen](container-instances-tutorial-prepare-app.md) a [nabídnutých tooan registru kontejner Azure](container-instances-tutorial-prepare-acr.md). Tato část dokončení kurzu hello nasazením hello kontejneru tooAzure instancí kontejnerů. Dokončit krokům patří:
 
 > [!div class="checklist"]
 > * Definování skupinu kontejneru pomocí šablony Azure Resource Manager
-> * Nasazení kontejneru skupiny, pomocí rozhraní příkazového řádku Azure
+> * Nasazení pomocí rozhraní příkazového řádku Azure hello skupina kontejneru hello
 > * Protokoly kontejner zobrazení
 
-## <a name="deploy-the-container-using-the-azure-cli"></a>Nasaďte kontejner pomocí rozhraní příkazového řádku Azure
+## <a name="deploy-hello-container-using-hello-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure hello kontejneru hello
 
-Rozhraní příkazového řádku Azure umožňuje nasazení kontejner Azure kontejner instancí v jednom příkazu. Vzhledem k tomu, že je kontejner image umístěná v privátní registru kontejner Azure, musí zahrnovat přihlašovací údaje potřebné pro přístup k ní. V případě potřeby se můžete dotazovat je jak je uvedeno níže.
+Hello rozhraní příkazového řádku Azure umožňuje nasazení kontejneru tooAzure kontejner instancí v jednom příkazu. Vzhledem k tomu, že je hello kontejneru image umístěná v hello privátní registru kontejner Azure, je nutné zahrnout požadované tooaccess pověření hello ho. V případě potřeby se můžete dotazovat je jak je uvedeno níže.
 
 Kontejner registru přihlášení server (aktualizace nahraďte názvem registru):
 
@@ -48,23 +48,23 @@ Kontejner registru heslo:
 az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
-K nasazení bitové kopie kontejneru z registru kontejneru se žádost o prostředku procesorového 1 a 1GB paměti, spusťte následující příkaz:
+toodeploy kontejneru image z registru hello kontejneru a zdroj žádosti o 1 jádro procesoru a 1GB paměti, spusťte následující příkaz hello:
 
 ```azurecli-interactive
 az container create --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-password <acrPassword> --ip-address public -g myResourceGroup
 ```
 
-Během pár sekund zobrazí se první odpověď ze Správce prostředků Azure. Pokud chcete zobrazit stav nasazení, použijte:
+Během pár sekund zobrazí se první odpověď ze Správce prostředků Azure. Stav hello tooview hello nasazení, použijte:
 
 ```azurecli-interactive
 az container show --name aci-tutorial-app --resource-group myResourceGroup --query state
 ```
 
-Abychom mohli pokračovat, dokud se stav změní z spuštěním tohoto příkazu *čekající* k *systémem*. Potom jsme můžete pokračovat.
+Abychom mohli pokračovat, dokud hello stav se změní z spuštěním tohoto příkazu *čekající* příliš*systémem*. Potom jsme můžete pokračovat.
 
-## <a name="view-the-application-and-container-logs"></a>Zobrazit protokoly aplikací a kontejneru
+## <a name="view-hello-application-and-container-logs"></a>Zobrazit protokoly aplikací a kontejner hello
 
-Po úspěšné nasazení, otevřete prohlížeč na IP adresu zobrazené ve výstupu příkazu:
+Po úspěšné nasazení hello, otevřete váš prohlížeč toohello IP adresu ukazuje výstup hello hello následující příkaz:
 
 ```bash
 az container show --name aci-tutorial-app --resource-group myResourceGroup --query ipAddress.ip
@@ -74,9 +74,9 @@ az container show --name aci-tutorial-app --resource-group myResourceGroup --que
 "13.88.176.27"
 ```
 
-![Hello world aplikace v prohlížeči][aci-app-browser]
+![Hello world aplikaci v prohlížeči hello][aci-app-browser]
 
-Můžete také zobrazit výstup protokolu kontejneru:
+Můžete také zobrazit výstup hello protokolu hello kontejneru:
 
 ```azurecli-interactive
 az container logs --name aci-tutorial-app -g myResourceGroup
@@ -92,12 +92,12 @@ listening on port 80
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste dokončili proces nasazení kontejnerů do Azure kontejner instancí. Dokončili jste následující kroky:
+V tomto kurzu jste dokončili proces hello nasazení vaší tooAzure kontejnery instancí kontejnerů. byly dokončeny Hello následující kroky:
 
 > [!div class="checklist"]
-> * Nasazení kontejneru z registru kontejner Azure pomocí rozhraní příkazového řádku Azure
-> * Zobrazení aplikace v prohlížeči
-> * Prohlížení protokolů kontejneru
+> * Nasazení kontejneru hello pomocí registru kontejner Azure hello hello rozhraní příkazového řádku Azure
+> * Zobrazení aplikace hello v prohlížeči hello
+> * Zobrazení hello kontejneru protokoly
 
 <!-- LINKS -->
 [prepare-app]: ./container-instances-tutorial-prepare-app.md

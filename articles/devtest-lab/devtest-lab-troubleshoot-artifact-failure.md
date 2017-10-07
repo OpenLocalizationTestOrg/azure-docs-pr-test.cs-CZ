@@ -1,6 +1,6 @@
 ---
-title: "Diagnostikování selhání artefaktů ve virtuálním počítači Azure DevTest Labs | Microsoft Docs"
-description: "Zjistěte, jak vyřešit selhání artefaktů v DevTest Labs"
+title: "aaaDiagnose artefaktů selhání ve virtuálním počítači Azure DevTest Labs | Microsoft Docs"
+description: "Zjistěte, jak tootroubleshoot artefaktů selhání v DevTest Labs"
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: tomarcher
@@ -14,44 +14,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: tarcher
-ms.openlocfilehash: e4f2946d0ba0756f36622aded0e8594acabb9527
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 40b3cea72cf071cc5d9a6d002d309d923c3d3084
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="diagnose-artifact-failures-in-the-lab"></a>Diagnostikování selhání artefaktů v testovacím prostředí 
-Po vytvoření artefakt, můžete zkontrolovat v tématu, pokud byla úspěšná nebo neúspěšná. Protokoly artefaktů v DevTest Labs poskytují informace, které můžete použít k diagnostikování selhání artefaktů. Existuje několik způsobů, můžete zobrazit informace o protokolu artefaktů pro virtuální počítač s Windows.
+# <a name="diagnose-artifact-failures-in-hello-lab"></a>Diagnostikování selhání artefaktů v testovacím prostředí hello 
+Po vytvoření artefakt, můžete zkontrolovat toosee, pokud ji byla úspěšná nebo neúspěšná. Protokoly artefaktů v DevTest Labs poskytují informace, které můžete použít toodiagnose chybu artefaktů. Zobrazí se informace protokolu hello artefaktů pro virtuální počítač s Windows několik různými způsoby.
 
 > [!NOTE]
-> Zajistit, že chyby jsou správně identifikovat a vysvětlení, je důležité, že je správně strukturován artefaktu. Informace o tom, jak správně vytvořit artefakt najdete v tématu [vytvoření vlastních artefaktů](devtest-lab-artifact-author.md). A pokud chcete zobrazit příklad správně strukturovaný artefaktů, podívejte se na to [typy parametrů testovací](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes) artefaktů.
+> tooensure, že chyby jsou správně identifikovat a vysvětlení, je důležité, zda je správně strukturu této hello artefaktů. Informace o tom, jak toocorrectly Vytvořit artefakt najdete v tématu [vytvoření vlastních artefaktů](devtest-lab-artifact-author.md). A toosee příkladem správně strukturovaný artefaktů, podívejte se na to [typy parametrů testovací](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes) artefaktů.
 
-## <a name="troubleshoot-artifact-failures-using-the-azure-portal"></a>Řešení potíží s artefaktů selhání pomocí portálu Azure
-Portál Azure k diagnostikování selhání během vytváření artefaktů, postupujte podle těchto kroků:
+## <a name="troubleshoot-artifact-failures-using-hello-azure-portal"></a>Řešení potíží s artefaktů selhání pomocí hello portálu Azure
+toouse hello Azure portálu toodiagnose selhání během vytváření artefaktů, postupujte takto:
 
-1. V seznamu zdrojů vyberte testovacího prostředí.
+1. Hello seznamu prostředků vyberte testovacího prostředí.
 
-2. Vyberte virtuální počítač Windows, který zahrnuje artefaktu, který chcete prozkoumat.
+2. Vyberte virtuální počítač Windows, který zahrnuje hello artefaktů chcete tooinvestigate hello.
 
-3. V levém podokně v části **Obecné**, zvolte **artefakty**. Zobrazí se seznam artefakty související s tohoto virtuálního počítače, oznamující název artefaktu a jeho stav.
+3. V levém panelu hello pod **Obecné**, zvolte **artefakty**. Artefakty související s tohoto virtuálního počítače se zobrazí seznam, která udává název hello hello artefaktů a jeho stav.
 
    ![Příklad úložišti git artefaktů](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifacts-failure.png)
 
-4. Zvolte artefakt zobrazující stav **se nezdařilo**. Artefaktu otevře a zobrazí zprávu rozšíření, která obsahuje podrobnosti o selhání artefaktu.
+4. Zvolte artefakt zobrazující stav **se nezdařilo**. Hello artefaktů otevře a zobrazí zprávu rozšíření, který obsahuje podrobnosti o selhání hello artefakt hello.
 
    ![Příklad úložišti git artefaktů](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error.png)
 
 
-## <a name="troubleshoot-artifact-failures-from-within-the-vm"></a>Řešení potíží s selhání artefaktů z virtuálního počítače
-Pokud chcete zobrazit protokoly artefaktů z virtuálního počítače, postupujte takto:
+## <a name="troubleshoot-artifact-failures-from-within-hello-vm"></a>Řešení potíží s selhání artefaktů z v rámci hello virtuálních počítačů
+tooview protokoly hello artefaktů z hello virtuálním počítači, postupujte takto:
 
-1. Přihlaste se k virtuálním počítači, který obsahuje artefaktů, které chcete diagnostikovat.
+1. Přihlaste se toohello virtuální počítač, který obsahuje hello artefaktů chcete toodiagnose.
 
-2. Přejděte na C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.9\Status kde "1.9 je číslo verze rozšíření na straně klienta.
+2. Přejděte tooC:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.9\Status kde "1.9 je hello číslo verze rozšíření na straně klienta.
 
    ![Příklad úložišti git artefaktů](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error-vm-status.png)
 
-3. Otevřete **stav** soubor k zobrazení informací, že pomáhá diagnostikování selhání artefaktů tohoto virtuálního počítače.
+3. Otevřete hello **stav** souboru tooview informace, že pomáhá diagnostikování selhání artefaktů tohoto virtuálního počítače.
 
 
 
@@ -59,8 +59,8 @@ Pokud chcete zobrazit protokoly artefaktů z virtuálního počítače, postupuj
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-blog-posts"></a>Příspěvky blogu související
-* [Připojení virtuálního počítače do existující domény AD pomocí šablony správce prostředků v Azure DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+* [Připojení k tooexisting virtuálního počítače domény AD pomocí šablony správce prostředků v Azure DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 ## <a name="next-steps"></a>Další kroky
-* Zjistěte, jak [přidejte úložiště Git do testovacího prostředí](devtest-lab-add-artifact-repo.md).
+* Zjistěte, jak příliš[přidání testovacího prostředí tooa úložiště Git](devtest-lab-add-artifact-repo.md).
 

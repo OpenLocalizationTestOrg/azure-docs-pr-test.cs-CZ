@@ -1,6 +1,6 @@
 ---
-title: "Virtuální počítač Azure Linux Agent přehled | Microsoft Docs"
-description: "Informace o instalaci a konfiguraci agenta systému Linux (příkaz waagent) ke správě virtuálního počítače interakci s Kontroleru prostředků infrastruktury Azure."
+title: "aaaAzure přehled agenta virtuálního počítače systému Linux | Microsoft Docs"
+description: "Zjistěte, jak tooinstall a konfigurace agenta pro Linux (příkaz waagent) toomanage virtuální počítač interakci s Kontroleru prostředků infrastruktury Azure."
 services: virtual-machines-linux
 documentationcenter: 
 author: szarkos
@@ -16,20 +16,20 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: szark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 486ad6bb148583a957fb82b7954ff94f853b12cc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4e08c84d9205f4db7aae6fd1568ec1f15fba395c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="understanding-and-using-the-azure-linux-agent"></a>Informace o používání Azure Linux Agent
+# <a name="understanding-and-using-hello-azure-linux-agent"></a>Informace o používání hello Azure Linux Agent
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="introduction"></a>Úvod
-Microsoft Azure Linux Agent (příkaz waagent) spravuje Linux & FreeBSD zřizování a virtuálních počítačů interakci s Kontroleru prostředků infrastruktury Azure. Poskytuje následující funkce pro systémy Linux a FreeBSD IaaS nasazení:
+Hello Microsoft Azure Linux Agent (příkaz waagent) spravuje Linux & FreeBSD zřizování a virtuálních počítačů interakci s hello Kontroleru prostředků infrastruktury Azure. Poskytuje následující funkce pro nasazení systému Linux a FreeBSD IaaS hello:
 
 > [!NOTE]
-> Viz Azure Linux agent [README](https://github.com/Azure/WALinuxAgent/blob/master/README.md) další podrobnosti.
+> Viz hello Azure Linux agent [README](https://github.com/Azure/WALinuxAgent/blob/master/README.md) další podrobnosti.
 > 
 > 
 
@@ -38,43 +38,43 @@ Microsoft Azure Linux Agent (příkaz waagent) spravuje Linux & FreeBSD zřizov�
   * Vytvoření uživatelského účtu
   * Konfigurace typů ověřování SSH
   * Nasazení veřejné klíče SSH a páry klíčů
-  * Nastavení názvu hostitele
-  * Publikování název hostitele pro platformu DNS
-  * Vytváření sestav otisk klíče SSH hostitele pro platformu
+  * Název hostitele hello nastavení
+  * Hello hostitele název toohello platforma pro publikování DNS
+  * Generování sestav platforma toohello otisk prstu klíče SSH hostitele
   * Správa prostředků disku
-  * Formátování a připojování prostředků disku
+  * Formátování a připojení hello prostředků disku
   * Konfigurace velikosti odkládacího souboru
 * **Sítě**
   
-  * Spravuje trasy zlepšit kompatibilitu s servery DHCP platformy
-  * Zajišťuje stabilitu název síťového rozhraní
+  * Spravuje kompatibility tooimprove trasy se servery DHCP, platformy
+  * Zajišťuje hello stabilitu hello název síťového rozhraní
 * **Jádra**
   
   * Nakonfiguruje virtuální technologie NUMA (zakázat jádra < 2.6.37)
   * Využívá šifrování technologie Hyper-V pro /dev/random
-  * Nakonfiguruje SCSI vypršení časových limitů pro kořenové zařízení (který může být vzdálený)
+  * Nakonfiguruje SCSI vypršení časových limitů pro zařízení hello kořenové, (který může být vzdálený)
 * **Diagnostika**
   
-  * Přesměrování konzoly sériového portu
+  * Konzole přesměrování toohello sériového portu
 * **Nasazení SCVMM**
   
-  * Zjišťuje a bootstraps agenta nástroje VMM pro Linux v prostředí System Center Virtual Machine Manager 2012 R2
+  * Zjišťuje a bootstraps hello VMM agenta pro Linux v prostředí System Center Virtual Machine Manager 2012 R2
 * **Rozšíření virtuálního počítače**
   
-  * Vložit součásti autorem je do virtuálního počítače s Linuxem (IaaS) Chcete-li povolit softwaru a konfigurace automatizace Microsoftu a partnerů.
+  * Vložit součásti autorem Microsoftu a partnerů do automation tooenable software a konfigurace virtuálního počítače s Linuxem (IaaS)
   * Odkaz na implementaci rozšíření virtuálního počítače na [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>Komunikace
-Informace o toku od platformy agenta dojde k prostřednictvím dva kanály:
+prostřednictvím dvou kanálů dojde k Hello toku informací z agenta toohello hello platforem:
 
-* Při spouštění počítače připojit DVD pro nasazení IaaS. Tento disk DVD zahrnuje kompatibilní se standardem OVF konfigurační soubor, který obsahuje všechny informace o zřizování než skutečná keypairs SSH.
-* Koncový bod TCP vystavení rozhraní REST API použít k získání nasazení a konfiguraci topologie.
+* Při spouštění počítače připojit DVD pro nasazení IaaS. Tento disk DVD zahrnuje kompatibilní se standardem OVF konfigurační soubor, který obsahuje všechny informace o zřizování než skutečná keypairs SSH hello.
+* Koncový bod TCP vystavení rozhraní REST API používá tooobtain nasazení a konfiguraci topologie.
 
 ## <a name="requirements"></a>Požadavky
-Tyto systémy byly testovány a jsou známé pro práci s Azure Linux Agent:
+Hello následující systémy, které jsou známé toowork s hello Azure Linux Agent:
 
 > [!NOTE]
-> Tento seznam se můžou lišit od oficiálního seznam podporovaných systémů na platformě Microsoft Azure podle postupu popsaného tady: [http://support.microsoft.com/kb/2805216](http://support.microsoft.com/kb/2805216)
+> Tento seznam se můžou lišit od hello oficiální seznam podporovaných systémů na hello platforma Microsoft Azure podle postupu popsaného tady: [http://support.microsoft.com/kb/2805216](http://support.microsoft.com/kb/2805216)
 > 
 > 
 
@@ -91,7 +91,7 @@ Jiné podporované systémy:
 
 * FreeBSD 10 + (Azure Linux Agent v2.0.10 +)
 
-Agenta systému Linux, aby mohl správně fungovat závisí na některé balíčky systému:
+Hello agenta systému Linux, závisí na některé balíčky systému v pořadí toofunction správně:
 
 * Python 2.6 +
 * OpenSSL 1.0 +
@@ -103,9 +103,9 @@ Agenta systému Linux, aby mohl správně fungovat závisí na některé balíč
 * Podpora jádra pro připojení UDF systémy.
 
 ## <a name="installation"></a>Instalace
-Instalace pomocí ot. / min nebo bázi DEB balíček z úložiště balíčků vaší distribuce je upřednostňovaný způsob instalace a upgrade Azure Linux Agent. Všechny [schválené distribuční zprostředkovatelé](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) balíček Azure Linux agent integrovat do svých bitové kopie a úložiště.
+Instalace pomocí ot. / min nebo bázi DEB balíček z úložiště balíčků vaší distribuce je hello upřednostňovaný způsob instalace a upgrade hello Azure Linux Agent. Všechny hello [schválené distribuční zprostředkovatelé](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) balíček Azure Linux agent hello integrovat do svých bitové kopie a úložiště.
 
-V dokumentaci v [Azure Linux Agent úložišti na Githubu](https://github.com/Azure/WALinuxAgent) pro Upřesnit možnosti instalace, například při instalaci ze zdroje nebo vlastní umístění nebo předpony.
+Naleznete v dokumentaci toohello v hello [Azure Linux Agent úložišti na Githubu](https://github.com/Azure/WALinuxAgent) pro Upřesnit možnosti instalace, například při instalaci z umístění zdroje nebo toocustom nebo předpony.
 
 ## <a name="command-line-options"></a>Možnosti příkazového řádku
 ### <a name="flags"></a>Příznaky
@@ -113,28 +113,28 @@ V dokumentaci v [Azure Linux Agent úložišti na Githubu](https://github.com/Az
 * Vynutit: přeskočit interaktivní potvrzení pro některé příkazy
 
 ### <a name="commands"></a>Příkazy
-* Nápověda: seznam podporovaných příkazů a příznaky.
-* deprovision: Pokus o vyčištění systému a nastavit jej jako vhodný pro zřizování znovu. Tuto operaci odstraněny následující:
+* Nápověda: uvádí hello podporované příkazy a značky.
+* deprovision: Pokus tooclean hello systému a nastavit jej jako vhodný pro zřizování znovu. Tuto operaci odstraněny hello následující:
   
-  * Všechny klíče SSH hostitele (Pokud Provisioning.RegenerateSshHostKeyPair 'y' v konfiguračním souboru)
+  * Všechny klíče SSH hostitele (Pokud Provisioning.RegenerateSshHostKeyPair 'y' v konfiguračním souboru hello)
   * Konfigurace názvový server v /etc/resolv.conf
-  * Kořenové heslo z/etc/shadow (Pokud Provisioning.DeleteRootPassword 'y' v konfiguračním souboru)
+  * Kořenové heslo z/etc/shadow (Pokud Provisioning.DeleteRootPassword 'y' v konfiguračním souboru hello)
   * V mezipaměti klienta zapůjčení DHCP
-  * Resetuje název hostitele na localhost.localdomain
+  * Resetování hostitele toolocalhost.localdomain název
 
 > [!WARNING]
-> Zrušení zřízení nezaručuje, že bitová kopie je nezaškrtnuté všech citlivých informací a je určená pro opětovnou distribuci.
+> Zrušení zřízení nezaručí, že této bitové kopie hello je nezaškrtnuté všech citlivých informací a je určená pro opětovnou distribuci.
 > 
 > 
 
-* deprovision + uživatele: provede vše pod - deprovision (výše) a taky odstraní poslední účet zřízení uživatele (získaný z /var/lib/waagent) a související data. Tento parametr je při jeho rušení obrázek, který byl dříve zřizování v Azure, může být zachycen a znovu použít.
-* verze: Zobrazí verzi příkaz waagent
-* serialconsole: nakonfiguruje GRUB označit ttyS0 (první sériového portu) jako spouštěcí konzoly. To zajišťuje, že jsou protokoly spuštění jádra posílají do sériového portu a k dispozici pro ladění.
-* Démon: Spusťte příkaz waagent jako démon ke správě interakci s platformou. Tento argument je určena k příkaz waagent ve skriptu příkaz waagent init.
+* deprovision + uživatele: provede vše pod - deprovision (výše) a taky odstraní poslední účet zřízení uživatele hello (získaný z /var/lib/waagent) a související data. Tento parametr je při jeho rušení obrázek, který byl dříve zřizování v Azure, může být zachycen a znovu použít.
+* verze: Zobrazí hello verzi příkaz waagent
+* serialconsole: nakonfiguruje GRUB toomark ttyS0 (hello první sériového portu) jako konzola spouštěcí hello. To zajišťuje, že jsou protokoly spuštění jádra odeslané toothe sériového portu a k dispozici pro ladění.
+* Démon: příkaz waagent spustit jako démon toomanage interakci s platformou hello. Tento argument je zadaný toowaagent ve skriptu init příkaz waagent hello.
 * spustit: Spusťte příkaz waagent jako proces na pozadí
 
 ## <a name="configuration"></a>Konfigurace
-Konfigurační soubor (nebo etc/waagent.conf) akce příkaz waagent ovládací prvky. Ukázkový soubor konfigurace je zobrazena níže:
+Konfigurační soubor (nebo etc/waagent.conf) ovládacích prvků hello akce příkaz waagent. Ukázkový soubor konfigurace je zobrazena níže:
 
     Provisioning.Enabled=y
     Provisioning.DeleteRootPassword=n
@@ -158,16 +158,16 @@ Konfigurační soubor (nebo etc/waagent.conf) akce příkaz waagent ovládací p
     HttpProxy.Host=None
     HttpProxy.Port=None
 
-Možnosti konfigurace jsou podrobně popsány v níže. Možnosti konfigurace jsou tři typy; Logická hodnota, řetězec nebo celé číslo. Možnosti konfigurace Boolean lze zadat jako "y" nebo "n". Speciální klíčové slovo "Žádný" může být použita pro některé řetězec typ konfigurace položky podle popisu níže.
+Hello různé možnosti konfigurace jsou podrobně popsány v níže. Možnosti konfigurace jsou tři typy; Logická hodnota, řetězec nebo celé číslo. Možnosti konfigurace Boolean Hello lze zadat jako "y" nebo "n". Hello speciální – klíčové slovo "Žádný" může být použita pro některé řetězec typ konfigurace položky podle popisu níže.
 
 **Provisioning.Enabled:**  
 Typ: logická hodnota  
 Výchozí: y
 
-To umožňuje uživatelům povolit nebo zakázat funkci zřizování v agentovi. Platné hodnoty jsou "y" nebo "n". Pokud zřizování je zakázaná, hostitele a uživatel klíčů SSH na obrázku jsou zachovány a veškeré zadané ve službě Azure zřizování rozhraní API konfigurace je ignorována.
+To umožňuje hello uživatele tooenable nebo zakázat hello zřizování funkce v agentovi hello. Platné hodnoty jsou "y" nebo "n". Pokud zřizování je zakázaná, hostitele a uživatelské klíče SSH hello obrázku jsou zachovány a veškeré zadané v hello Azure zřizování rozhraní API konfigurace je ignorována.
 
 > [!NOTE]
-> `Provisioning.Enabled` Parametr výchozí hodnota je "n" Image Ubuntu cloudu, který použít cloudové init pro zřizování.
+> Hello `Provisioning.Enabled` výchozí hodnoty parametrů příliš "n" Image Ubuntu cloudu, který použít cloudové init pro zřizování.
 > 
 > 
 
@@ -175,27 +175,27 @@ To umožňuje uživatelům povolit nebo zakázat funkci zřizování v agentovi.
 Typ: logická hodnota  
 Výchozí: n
 
-Pokud je sada, kořenové heslo v souboru/etc/stínové vymazat během procesu zřizování.
+Pokud sada hello kořenové heslo v souboru hello/etc/stínové vymazáním během hello procesu zřizování.
 
 **Provisioning.RegenerateSshHostKeyPair:**  
 Typ: logická hodnota  
 Výchozí: y
 
-Pokud během procesu zřizování z etc/ssh/se odstraní sady, všechny hostitele páry klíčů SSH (ecdsa, dsa a rsa). A je generována jeden nový pár klíčů.
+Pokud sadu, všechny hostitele páry klíčů SSH (ecdsa, dsa a rsa), se odstraní při zřizování z etc/ssh/hello. A je generována jeden nový pár klíčů.
 
-Typ šifrování pro nový pár klíčů lze konfigurovat v položce Provisioning.SshHostKeyPairType. Upozorňujeme, že některé distribuce bude znovu vytvořit páry klíčů SSH pro všechny chybějící typy šifrování při restartování démon procesu SSH (například při restartování).
+typ šifrování Hello pro nový pár klíčů hello je možné konfigurovat pomocí hello Provisioning.SshHostKeyPairType položku. Upozorňujeme, že některé distribuce bude znovu vytvořit páry klíčů SSH pro všechny chybějící typy šifrování při restartování démon procesu SSH hello (třeba po restartování).
 
 **Provisioning.SshHostKeyPairType:**  
 Typ: Řetězec  
 Výchozí: rsa
 
-To je možné nastavit na typ algoritmus šifrování, který je podporován proces démon programu SSH na virtuálním počítači. Obvykle podporované hodnoty jsou "rsa", "dsa" a "ecdsa". Všimněte si, že "putty.exe" v systému Windows nepodporuje "ecdsa". Ano Pokud máte v úmyslu použít pro připojení k nasazení Linux putty.exe v systému Windows, použijte "rsa" nebo "dsa".
+To je možné nastavit tooan šifrovací algoritmus typ, který je podporován proces démon programu SSH hello hello virtuálního počítače. Hello obvykle podporované hodnoty jsou "rsa", "dsa" a "ecdsa". Všimněte si, že "putty.exe" v systému Windows nepodporuje "ecdsa". Ano Pokud máte v úmyslu toouse putty.exe na Windows tooconnect tooa Linux nasazení, použijte "rsa" nebo "dsa".
 
 **Provisioning.MonitorHostName:**  
 Typ: logická hodnota  
 Výchozí: y
 
-Pokud nastavíte, příkaz waagent bude monitorovat Linux virtuálního počítače pro název hostitele změny (jak vrácené příkazem "název hostitele") a automaticky aktualizovat v bitové kopii, aby odrážely změny konfigurace sítě. Pro vkládání změnu názvu na servery DNS, sítě restartuje ve virtuálním počítači. To způsobí Stručný postup ke ztrátě připojení k Internetu.
+Pokud nastavíte, příkaz waagent bude monitorovat hello Linux virtuálního počítače pro název hostitele změny (jak vrácené příkazem "název hostitele" hello) a automaticky aktualizovat hello konfigurace sítí v hello image tooreflect hello změn. V názvu hello toopush pořadí změnit toohello servery DNS, sítě bude restartována v hello virtuálního počítače. To způsobí Stručný postup ke ztrátě připojení k Internetu.
 
 **Provisioning.DecodeCustomData**  
 Typ: logická hodnota  
@@ -229,80 +229,80 @@ Délka náhodných salt používá při generování hodnoty hash hesla.
 Typ: logická hodnota  
 Výchozí: y
 
-Pokud nastavíte, prostředků disku poskytované platformou bude formátu a připojené pomocí příkaz waagent, pokud je typ systému souborů požadované uživatelem v "ResourceDisk.Filesystem" jakoukoli jinou hodnotu než "ntfs". Jeden oddíl typu Linux (83) bude k dispozici na disku. Všimněte si, že tento oddíl nebude naformátovaný, pokud ho můžete úspěšně připojit.
+Pokud nastavíte, hello prostředků disku poskytované hello platformy bude formátu a připojené pomocí příkaz waagent, pokud je typ systému souborů hello požadoval uživatel hello v "ResourceDisk.Filesystem" než "ntfs". Jeden oddíl typu Linux (83) bude k dispozici na disku hello. Všimněte si, že tento oddíl nebude naformátovaný, pokud ho můžete úspěšně připojit.
 
 **ResourceDisk.Filesystem:**  
 Typ: Řetězec  
 Výchozí: ext4
 
-Určuje typ systému souborů pro prostředek disku. Podporované hodnoty se liší podle distribuce systému Linux. Pokud je řetězec X, potom mkfs. X by měla být k dispozici na bitovou kopii systému Linux. Bitové kopie SLES 11 by měl obvykle používají 'ext3'. Obrázky FreeBSD tady by měl použít 'ufs2'.
+Určuje typ systému souborů hello hello prostředků disku. Podporované hodnoty se liší podle distribuce systému Linux. Pokud je řetězec hello X, potom mkfs. X by měla být k dispozici na bitovou kopii systému Linux hello. Bitové kopie SLES 11 by měl obvykle používají 'ext3'. Obrázky FreeBSD tady by měl použít 'ufs2'.
 
 **ResourceDisk.MountPoint:**  
 Typ: Řetězec  
 Výchozí hodnota: / mnt nebo prostředků 
 
-Určuje cestu, kde je prostředek disk připojený. Všimněte si, že je disk prostředků *dočasné* na disku a může vyprázdněny, když je virtuální počítač zrušit.
+Toto nastavení určuje hello cestu, kde je připojena hello prostředků disku. Všimněte si, je tento disk hello prostředků *dočasné* na disku a může být vyprázdnit po deprovisioned hello virtuálních počítačů.
 
 **ResourceDisk.MountOptions**  
 Typ: Řetězec  
 Výchozí: žádná
 
-Určuje možnosti připojení disku má být předán příkazu -o připojení. Toto je čárkami oddělený seznam hodnot, např. 'nodev, nosuid'. V tématu mount(8) podrobnosti.
+Určuje disku připojení možnosti toobe předán toohello připojení -o příkaz. Toto je čárkami oddělený seznam hodnot, např. 'nodev, nosuid'. V tématu mount(8) podrobnosti.
 
 **ResourceDisk.EnableSwap:**  
 Typ: logická hodnota  
 Výchozí: n
 
-Pokud nastavení odkládacího souboru (/ swapfile) je vytvořen na prostředku disku a přidat do odkládacího souboru v systému.
+Pokud nastavit odkládacího souboru (/ swapfile) je vytvořen na prostředku disku hello a přidat systému toohello velikosti odkládacího souboru.
 
 **ResourceDisk.SwapSizeMB:**  
 Typ: celé číslo  
 Výchozí: 0
 
-Velikost odkládacího souboru v megabajtech.
+velikost Hello hello odkládacího souboru v megabajtech.
 
 **Logs.Verbose:**  
 Typ: logická hodnota  
 Výchozí: n
 
-Pokud je boosted sady podrobností protokolu. Příkaz Waagent /var/log/waagent.log v protokolech a využívá funkce logrotate systému otočení protokoly.
+Pokud je boosted sady podrobností protokolu. Příkaz Waagent protokoly too/var/log/waagent.log a využívá protokoly toorotate hello systému logrotate funkce.
 
 **OPERAČNÍ SYSTÉM. EnableRDMA**  
 Typ: logická hodnota  
 Výchozí: n
 
-Pokud nastavíte, agent se pokusí nainstalovat a pak můžete načíst ovladač jádra RDMA, která odpovídá verzi firmwaru v základní hardware.
+Pokud nastavíte, hello agent bude pokus tooinstall a pak můžete načíst ovladač jádra RDMA, která odpovídá hello verzi firmwaru hello na hello základní hardware.
 
 **OPERAČNÍ SYSTÉM. RootDeviceScsiTimeout:**  
 Typ: celé číslo  
 Výchozí: 300
 
-Tím se nakonfiguruje SCSI časový limit v sekundách na disku a datové jednotky operačního systému. Pokud není nastavena, systém, které budou použity výchozí hodnoty.
+Tím se nakonfiguruje hello SCSI vypršení časového limitu v sekundách na disku a datové jednotky hello operačního systému. Pokud není nastavena, hello systému, které budou použity výchozí hodnoty.
 
 **OPERAČNÍ SYSTÉM. OpensslPath:**  
 Typ: Řetězec  
 Výchozí: žádná
 
-Tímto lze zadat alternativní cestu ke openssl binární pro kryptografické operace.
+To může být použité toospecify alternativní cestu pro binární toouse hello openssl pro kryptografické operace.
 
 **HttpProxy.Host HttpProxy.Port**  
 Typ: Řetězec  
 Výchozí: žádná
 
-Pokud nastavíte, agent použije tento proxy server pro přístup k Internetu. 
+Pokud nastavíte, hello agent použije tento proxy server tooaccess hello Internetu. 
 
 ## <a name="ubuntu-cloud-images"></a>Ubuntu cloudu obrázků
-Všimněte si, že Ubuntu cloudu Image využívat [cloudu init](https://launchpad.net/ubuntu/+source/cloud-init) mnoho úkoly konfigurace, které by jinak spravovány nástrojem Azure Linux Agent.  Je třeba počítat následující rozdíly:
+Všimněte si, že Ubuntu cloudu Image využívat [cloudu init](https://launchpad.net/ubuntu/+source/cloud-init) tooperform mnoho úlohy konfigurace, které by jinak spravovány nástrojem hello Azure Linux Agent.  Je třeba počítat hello následující rozdíly:
 
-* **Provisioning.Enabled** výchozí hodnota je "n" Image Ubuntu cloudu, který použít cloudové init k provádění úloh pro zřízení.
-* Následující konfigurační parametry nemají vliv na cloudu bitové kopie Ubuntu, použít cloudové init ke správě prostředků disku a záměna prostoru:
+* **Provisioning.Enabled** příliš "n" Image Ubuntu cloudu, využívající cloudu init tooperform zřizování úlohy výchozí hodnoty.
+* Hello následující konfigurační parametry nemají vliv na cloudu bitové kopie Ubuntu, použít cloudové init toomanage hello prostředků disku a velikost odkládacího souboru místo:
   
   * **ResourceDisk.Format**
   * **ResourceDisk.Filesystem**
   * **ResourceDisk.MountPoint**
   * **ResourceDisk.EnableSwap**
   * **ResourceDisk.SwapSizeMB**
-* Podrobnosti najdete v následujících zdrojích nakonfigurovat prostředek disku přípojného bodu a záměna prostoru Ubuntu cloudu Image při zřizování:
+* Zobrazit hello následující prostředky tooconfigure hello prostředků disku přípojného bodu a záměna prostoru Ubuntu cloudu Image při zřizování:
   
   * [Ubuntu Wiki: Konfigurace oddílů Swap](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
   * [Vložení vlastní Data do virtuálního počítače Azure](../windows/classic/inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)

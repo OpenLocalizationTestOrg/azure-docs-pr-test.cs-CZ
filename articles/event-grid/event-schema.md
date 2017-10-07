@@ -1,6 +1,6 @@
 ---
-title: "Azure schématu události událostí mřížky"
-description: "Popisuje vlastnosti, které jsou k dispozici pro události se mřížky událostí Azure."
+title: "schématu události aaaAzure událostí mřížky"
+description: "Popisuje hello vlastnosti, které jsou k dispozici pro události se mřížky událostí Azure."
 services: event-grid
 author: banisadr
 manager: timlt
@@ -8,34 +8,34 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: babanisa
-ms.openlocfilehash: 9e3c7b31ef23b29827d7184dc033227685ed92f8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 37178a5650b93fd9072d9cff3333aae14b2a2ba7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-grid-event-schema"></a>Událost schématu události mřížky
 
-Tento článek poskytuje vlastnosti a schématu pro události. Události obsahují sadu pěti vlastností požadovaný řetězec a požadovanou **data** objektu. Vlastnosti jsou společné pro všechny události z libovolného vydavatele. **Data** objekt obsahuje vlastnosti, které jsou specifické pro každý vydavatele. Témata systému tyto vlastnosti jsou specifické pro poskytovatele prostředků, jako je například úložiště nebo Event Hubs.
+Tento článek obsahuje hello vlastnosti a schématu pro události. Události obsahují sadu pěti vlastností požadovaný řetězec a požadovanou **data** objektu. Hello vlastnosti jsou společné tooall události z libovolného vydavatele. Hello **data** objekt obsahuje vlastnosti, které jsou specifické tooeach vydavatele. Témata systému tyto vlastnosti jsou konkrétní toohello poskytovatele prostředků, jako je například úložiště nebo Event Hubs.
 
-Události se posílají do Azure událostí mřížky ve pole, která může obsahovat více objektů událostí. Pokud existuje jenom jedna událost, má pole o délce 1. 
+Události se posílají tooAzure událostí mřížky ve pole, která může obsahovat více objektů událostí. Pokud existuje jenom jedna událost, má pole hello o délce 1. 
  
 ## <a name="event-properties"></a>Vlastnosti události
 
-Všechny události bude obsahovat stejné dat následující nejvyšší úrovně.
+Všechny události bude obsahovat hello stejné následující dat nejvyšší úrovně.
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| Téma | Řetězec | Úplné prostředků cesta ke zdroji událostí. Toto pole není možné zapisovat. |
-| Předmět | Řetězec | Vydavatel definována cesta předmět události. |
-| Typ události | Řetězec | Jeden z typů událostí registrovaných pro tento zdroj událostí. |
-| eventTime | Řetězec | Čas, který se vygeneruje událost založené na čas UTC poskytovatele. |
-| id | Řetězec | Jedinečný identifikátor pro událost. |
-| data | Objekt | Data události specifické pro poskytovatele prostředků. |
+| Téma | Řetězec | Zdroj události toohello prostředků úplná cesta. Toto pole není možné zapisovat. |
+| Předmět | Řetězec | Vydavatel definované cesta toohello událostí předmět. |
+| Typ události | Řetězec | Jeden z hello registrován typů událostí pro tento zdroj událostí. |
+| eventTime | Řetězec | vygenerování Hello čas hello události na základě času UTC hello zprostředkovatele. |
+| id | Řetězec | Jedinečný identifikátor pro událost hello. |
+| data | Objekt | Zprostředkovatel prostředků konkrétní toohello dat události. |
 
 ## <a name="available-event-sources"></a>Zdroje událostí k dispozici
 
-Následující zdroje událostí publikování událostí pro používání prostřednictvím mřížky událostí:
+Následující zdroje událostí Hello publikování událostí pro používání prostřednictvím mřížky událostí:
 
 * Skupiny prostředků (operace správy)
 * Předplatná Azure (operace správy)
@@ -126,7 +126,7 @@ Skupiny prostředků můžete nyní emitování správu události ze Správce pr
 
 ## <a name="event-hubs"></a>Event Hubs
 
-Události centra událostí jsou aktuálně pouze vygenerované při soubor je automaticky odeslán do úložiště používá funkci zachycení.
+Události centra událostí jsou aktuálně pouze vygenerované při toostorage pomocí funkce zachycení hello je automaticky odeslán soubor.
 
 ### <a name="available-event-types"></a>Typy událostí k dispozici
 
@@ -134,7 +134,7 @@ Události centra událostí jsou aktuálně pouze vygenerované při soubor je a
 
 ### <a name="example-event"></a>Příklad událostí
 
-Tato ukázka událost znázorňuje schéma událost Event Hubs vyvolá, když zachycení ukládá do souboru. 
+Tato ukázka událost ukazuje hello schéma událost Event Hubs vyvolá, když zachycení ukládá do souboru. 
 
 ```json
 [
@@ -173,7 +173,7 @@ Azure Blob Storage v privátní Preview verzi s registrace pro integraci s udál
 
 ### <a name="example-event"></a>Příklad událostí
 
-Tato ukázka událost znázorňuje schéma úložiště události vyvolá, když je vytvořen objekt blob. 
+Tato ukázka událost ukazuje hello schéma úložiště události vyvolá, když je vytvořen objekt blob. 
 
 ```json
 [
@@ -206,11 +206,11 @@ Tato ukázka událost znázorňuje schéma úložiště události vyvolá, když
 
 ## <a name="custom-topics"></a>Vlastní témata
 
-Datová vaše vlastní událostí, které je definované uživatelem a může být jakékoli dobře uvedena ve správném formátu JSON. Data nejvyšší úrovně by měl obsahovat stejná pole jako standardní prostředek definice události. Při publikování událostí do vlastní témata byste měli zvážit, modelování předmět události pro usnadnění směrování a filtrování.
+Hello datovou vaše vlastní událostí, které je definované uživatelem a může být jakékoli dobře uvedena ve správném formátu JSON. Hello dat nejvyšší úrovně by měl obsahovat hello stejné pole jako standardní prostředek definice události. Při publikování události toocustom témata byste měli zvážit, modelování hello předmět vaše události tooaid směrování a filtrování.
 
 ### <a name="example-event"></a>Příklad událostí
 
-Následující příklad ukazuje událost pro vlastní tématu:
+Hello následující příklad zobrazuje událost pro vlastní tématu:
 ````json
 [
   {
@@ -230,5 +230,5 @@ Následující příklad ukazuje událost pro vlastní tématu:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod k mřížce událostí, naleznete v části [co je mřížky událostí?](overview.md)
-* Další informace o vytváření předplatné mřížky událostí najdete v tématu [schématu odběru událostí mřížky](subscription-creation-schema.md).
+* TooEvent Úvod mřížky, najdete v části [co je mřížky událostí?](overview.md)
+* toolearn o vytváření předplatné mřížky událostí najdete v části [schématu odběru událostí mřížky](subscription-creation-schema.md).

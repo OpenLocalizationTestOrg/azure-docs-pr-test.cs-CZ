@@ -1,6 +1,6 @@
 ---
-title: "Řešení potíží s poli virtuální zařízení StorSimple | Microsoft Docs"
-description: "Popisuje Správce zařízení StorSimple diagnostikovat schopnosti a vysvětluje, jak ji použít k řešení potíží s pole virtuální zařízení StorSimple."
+title: "aaaTroubleshoot pole virtuální zařízení StorSimple | Microsoft Docs"
+description: "Popisuje hello diagnostikovat funkce Správce zařízení StorSimple a vysvětluje, jak toouse ho tootroubleshoot pole virtuální zařízení StorSimple."
 services: storsimple
 documentationcenter: 
 author: manuaery
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: a75e68c84a50977b162ca4d3a4a02936ca78cb6b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5b8e05d5ce6000424830059db450a0e662d19238
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>Používat službu StorSimple Manager zařízení k řešení potíží s poli virtuální zařízení StorSimple
+# <a name="use-hello-storsimple-device-manager-service-tootroubleshoot-hello-storsimple-virtual-array"></a>Použít hello Správce zařízení StorSimple služby tootroubleshoot hello pole virtuální zařízení StorSimple
 ## <a name="overview"></a>Přehled
 
-Poskytuje správce zařízení StorSimple **Diagnostikujte a řešení problémů** nastavení v okně Souhrn služby, který označuje některé z nejčastěji se vyskytující problémy, které mohou nastat u vaše virtuální pole a jak je vyřešit. Tento kurz představuje samoobslužný postup řešení potíží funkce poskytované v rámci služby Správce zařízení StorSimple.
+poskytuje technologie Hello Správce zařízení StorSimple **Diagnostikujte a řešení problémů** nastavení v rámci souhrnu okna hello služby, který označuje některé hello nejčastěji se vyskytující problémy, které mohou nastat u vaše virtuální pole a jak toosolve je. Tento kurz představuje hello samoobslužný postup řešení potíží funkce poskytované v rámci hello služby StorSimple Manager zařízení.
 
 ![Diagnostikovat a řešit problémy](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-main.png)
 
 ## <a name="diagnose-and-solve-issues"></a>Diagnostika a řešení potíží
 
-Můžete zobrazit některé běžné problémy s polem virtuální zařízení StorSimple a zkontrolujte řešení do těchto problémů vpravo v okně Souhrn váš správce zařízení StorSimple služby.
+Můžete zobrazit některé hello běžných problémů s hello pole virtuální zařízení StorSimple a zkontrolujte problémy toothose řešení hello přímo z vašeho správce zařízení StorSimple okno Souhrn služby.
 
-#### <a name="to-diagnose-an-issue-with-your-virtual-array"></a>Při diagnostice problému s virtuální pole
+#### <a name="toodiagnose-an-issue-with-your-virtual-array"></a>toodiagnose problém s vaší virtuální pole
 
-1. Klikněte na tlačítko **Diagnostikujte a řešení problémů** nastavení v levém podokně okna souhrnu váš správce zařízení StorSimple služby, chcete-li zobrazit seznam běžných problémů.
+1. Klikněte na tlačítko **Diagnostikujte a řešení problémů** nastavení hello levé podokno vaší tooview souhrnu okna služby StorSimple Manager zařízení seznam běžných problémů.
 
-2. **Rozbalte položku** na tento příznak problému k dochází ke kontrole **doporučené kroky** vám pomohou při řešení problému. Pokud chcete, můžete také zkontrolovat podrobnou dokumentaci odkazů uvedených pro odkaz na další.
+2. **Rozbalte položku** na hello příznakem hello problém narazíte na tooreview **doporučené kroky** tooaid můžete při řešení potíží problém hello. Pokud chcete, můžete také zkontrolovat odkazy podrobnou dokumentaci hello zadaný pro odkaz na další.
    
     ![Vyřešit nějaký problém](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-offline.png)
 
-3. Pokud nelze najít odkaz na problém nebo ho vyřešit, oslovení Microsoft Support o další pomoc.
+3. Pokud jsou nelze toofind problémem tooyour odkaz nebo ho vyřešit, oslovení tooMicrosoft podpory o další pomoc.
 
 ## <a name="next-steps"></a>Další kroky
-Zjistěte, jak [protokolu lístek podpory](storsimple-virtual-array-log-support-ticket.md)
+Zjistěte, jak příliš[protokolu lístek podpory](storsimple-virtual-array-log-support-ticket.md)
 

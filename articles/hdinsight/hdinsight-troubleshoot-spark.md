@@ -1,6 +1,6 @@
 ---
-title: "Řešení potíží Spark pomocí Azure HDInsight | Microsoft Docs"
-description: "Získejte odpovědi na časté otázky týkající se práce s Apache Spark a Azure HDInsight."
+title: "aaaTroubleshoot Spark pomocí Azure HDInsight | Microsoft Docs"
+description: "Získejte odpovědi toocommon dotazy týkající se práce s Apache Spark a Azure HDInsight."
 keywords: "Azure HDInsight Spark, – nejčastější dotazy, řešení potíží s průvodce, běžné problémy, konfigurace aplikace, Ambari"
 services: Azure HDInsight
 documentationcenter: na
@@ -15,79 +15,79 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/7/2017
 ms.author: arijitt
-ms.openlocfilehash: cfed5f0f4f703821e83e3d365810c0e5ad22f035
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: c9f910daf295462238a3143ae2589db6d383097f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-spark-by-using-azure-hdinsight"></a>Řešení potíží Spark pomocí Azure HDInsight
 
-Další informace o hlavních problémů a jejich řešení při práci s Apache Spark datové části v Apache Ambari.
+Další informace o hello nejčastější problémy a jejich řešení při práci s Apache Spark datové části v Apache Ambari.
 
 ## <a name="how-do-i-configure-a-spark-application-by-using-ambari-on-clusters"></a>Konfigurování aplikací Spark pomocí Ambari v clusterech
 
 ### <a name="resolution-steps"></a>Kroky řešení
 
-V prostředí HDInsight byly dříve nastavené hodnoty konfigurace pro tento postup. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že Spark výjimka OutofMemoryError aplikace](#what-causes-a-spark-application-outofmemoryerror-exception). 
+Hello konfigurační hodnoty pro tento postup byly dříve nastavené v prostředí HDInsight. toodetermine které Spark konfigurace potřebovat toobe sady a toowhat hodnoty, najdete v části [co způsobí, že Spark výjimka OutofMemoryError aplikace](#what-causes-a-spark-application-outofmemoryerror-exception). 
 
-1. Vyberte v seznamu clusterů **Spark2**.
+1. V seznamu hello clusterů vyberte **Spark2**.
 
     ![Vyberte cluster, ze seznamu](media/hdinsight-troubleshoot-spark/update-config-1.png)
 
-2. Vyberte **konfigurací** kartě.
+2. Vyberte hello **konfigurací** kartě.
 
-    ![Vyberte kartu konfigurací](media/hdinsight-troubleshoot-spark/update-config-2.png)
+    ![Vyberte kartu konfigurací hello](media/hdinsight-troubleshoot-spark/update-config-2.png)
 
-3. Vyberte v seznamu konfigurací **výchozí hodnoty vlastní spark2**.
+3. V seznamu hello konfigurací vyberte **výchozí hodnoty vlastní spark2**.
 
     ![Vyberte výchozí nastavení vlastní spark](media/hdinsight-troubleshoot-spark/update-config-3.png)
 
-4. Vyhledejte nastavení hodnoty, které je nutné upravit, jako například **spark.executor.memory**. V tomto případě hodnotu **4608m** je příliš vysoká.
+4. Vyhledejte hello hodnotu nastavení, jako třeba tooadjust, **spark.executor.memory**. V takovém případě hello hodnotu **4608m** je příliš vysoká.
 
-    ![Vyberte pole spark.executor.memory](media/hdinsight-troubleshoot-spark/update-config-4.png)
+    ![Vyberte pole spark.executor.memory hello](media/hdinsight-troubleshoot-spark/update-config-4.png)
 
-5. Nastavte hodnotu na doporučené nastavení. Hodnota **2 048 m** se doporučuje pro toto nastavení.
+5. Sada hello hodnota toohello doporučené nastavení. Hello hodnotu **2 048 m** se doporučuje pro toto nastavení.
 
-    ![Změňte hodnotu na 2 048 m](media/hdinsight-troubleshoot-spark/update-config-5.png)
+    ![Změnit hodnotu too2048m](media/hdinsight-troubleshoot-spark/update-config-5.png)
 
-6. Uložit hodnotu a pak konfiguraci uložte. Na panelu nástrojů vyberte **Uložit**.
+6. Uložit hello hodnotu a uložte konfiguraci hello. Na panelu nástrojů hello, vyberte **Uložit**.
 
-    ![Uložte nastavení a konfigurace](media/hdinsight-troubleshoot-spark/update-config-6a.png)
+    ![Uložit hello nastavení a konfigurace](media/hdinsight-troubleshoot-spark/update-config-6a.png)
 
-    Budete upozorněni, pokud všechny konfigurace vyžadují pozornost. Položky a pak vyberte **přesto pokračovat**. 
+    Budete upozorněni, pokud všechny konfigurace vyžadují pozornost. Hello položky a pak vyberte **přesto pokračovat**. 
 
     ![Vyberte přesto pokračovat](media/hdinsight-troubleshoot-spark/update-config-6b.png)
 
-    Napsat poznámku o změny konfigurace a potom vyberte **Uložit**.
+    Napsat poznámku o hello změny konfigurace a potom vyberte **Uložit**.
 
-    ![Zadejte poznámku o provedené změny](media/hdinsight-troubleshoot-spark/update-config-6c.png)
+    ![Zadejte poznámku o provedené změny hello](media/hdinsight-troubleshoot-spark/update-config-6c.png)
 
-7. Vždy, když je uložit konfiguraci, zobrazí se výzva k restartování služby. Vyberte **restartujte**.
+7. Vždy, když je uložit konfiguraci, zobrazí se výzva toorestart hello služby. Vyberte **restartujte**.
 
     ![Vyberte možnost restartování](media/hdinsight-troubleshoot-spark/update-config-7a.png)
 
-    Potvrďte restartování.
+    Potvrďte hello restartování.
 
     ![Vyberte potvrďte restartujte](media/hdinsight-troubleshoot-spark/update-config-7b.png)
 
-    Můžete zkontrolovat procesy, které jsou spuštěny.
+    Můžete zkontrolovat hello procesy, které jsou spuštěny.
 
     ![Zkontrolujte spuštěných procesů](media/hdinsight-troubleshoot-spark/update-config-7c.png)
 
-8. Můžete přidat konfigurace. Vyberte v seznamu konfigurací **výchozí hodnoty vlastní spark2**a potom vyberte **přidat vlastnost**.
+8. Můžete přidat konfigurace. V seznamu hello konfigurací vyberte **výchozí hodnoty vlastní spark2**a potom vyberte **přidat vlastnost**.
 
     ![Vyberte Přidat vlastnost](media/hdinsight-troubleshoot-spark/update-config-8.png)
 
-9. Definujte novou vlastnost. Pomocí dialogového okna pro konkrétní nastavení, jako je datový typ, můžete definovat vlastnosti jediné. Nebo můžete definovat více vlastností pomocí jednu definici na každý řádek. 
+9. Definujte novou vlastnost. Pomocí dialogového okna pro konkrétní nastavení jako datový typ hello můžete definovat vlastnosti jediné. Nebo můžete definovat více vlastností pomocí jednu definici na každý řádek. 
 
-    V tomto příkladu **spark.driver.memory** vlastnost je definován s hodnotou **4g**.
+    V tomto příkladu hello **spark.driver.memory** vlastnost je definován s hodnotou **4g**.
 
     ![Definovat nové vlastnosti](media/hdinsight-troubleshoot-spark/update-config-9.png)
 
-10. Uložte nastavení a potom restartujte službu, jak je popsáno v kroku 6 a 7.
+10. Hello konfiguraci uložit a potom restartujte službu hello, jak je popsáno v kroku 6 a 7.
 
-Tyto změny jsou platné pro celý cluster, ale je možné přepsat při odesílání úlohy Spark.
+Tyto změny jsou platné pro celý cluster, ale je možné přepsat při odesílání úlohy Spark hello.
 
 ### <a name="additional-reading"></a>Další čtení
 
@@ -98,9 +98,9 @@ Tyto změny jsou platné pro celý cluster, ale je možné přepsat při odesíl
 
 ### <a name="resolution-steps"></a>Kroky řešení
 
-1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že Spark výjimka OutofMemoryError aplikace](#what-causes-a-spark-application-outofmemoryerror-exception).
+1. toodetermine které Spark konfigurace potřebovat toobe sady a toowhat hodnoty, najdete v části [co způsobí, že Spark výjimka OutofMemoryError aplikace](#what-causes-a-spark-application-outofmemoryerror-exception).
 
-2. V první buňky blok Jupyter po **%% konfigurace** – direktiva, zadejte konfigurace Spark v platném formátu JSON. Podle potřeby změňte skutečnými hodnotami:
+2. V první buňky hello poznámkového bloku Jupyter hello, po hello **%% konfigurace** – direktiva, zadejte hello Spark konfigurace v platném formátu JSON. Podle potřeby změnit hello skutečnými hodnotami:
 
     ![Přidání konfigurace](media/hdinsight-troubleshoot-spark/add-configuration-cell.png)
 
@@ -113,9 +113,9 @@ Tyto změny jsou platné pro celý cluster, ale je možné přepsat při odesíl
 
 ### <a name="resolution-steps"></a>Kroky řešení
 
-1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že Spark výjimka OutofMemoryError aplikace](#what-causes-a-spark-application-outofmemoryerror-exception). 
+1. toodetermine které Spark konfigurace potřebovat toobe sady a toowhat hodnoty, najdete v části [co způsobí, že Spark výjimka OutofMemoryError aplikace](#what-causes-a-spark-application-outofmemoryerror-exception). 
 
-2. Odesílání aplikací Spark pro Livy pomocí klienta REST jako cURL. Použijte příkaz podobný následujícímu. Podle potřeby změňte skutečnými hodnotami:
+2. Odešlete tooLivy aplikací Spark hello pomocí klienta REST jako cURL. Použijte podobné toohello následující příkaz. Podle potřeby změnit hello skutečnými hodnotami:
 
     ```apache
     curl -k --user 'username:password' -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://container@storageaccountname.blob.core.windows.net/example/jars/sparkapplication.jar", "className":"com.microsoft.spark.application", "numExecutors":4, "executorMemory":"4g", "executorCores":2, "driverMemory":"8g", "driverCores":4}'  
@@ -130,9 +130,9 @@ Tyto změny jsou platné pro celý cluster, ale je možné přepsat při odesíl
 
 ### <a name="resolution-steps"></a>Kroky řešení
 
-1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že Spark výjimka OutofMemoryError aplikace](#what-causes-a-spark-application-outofmemoryerror-exception).
+1. toodetermine které Spark konfigurace potřebovat toobe sady a toowhat hodnoty, najdete v části [co způsobí, že Spark výjimka OutofMemoryError aplikace](#what-causes-a-spark-application-outofmemoryerror-exception).
 
-2. Spusťte prostředí spark pomocí příkazu, který je podobný následujícímu. Podle potřeby změňte skutečné hodnoty konfigurace: 
+2. Spusťte prostředí spark pomocí podobné toohello následující příkaz. Podle potřeby změnit hello skutečná hodnota hello konfigurací: 
 
     ```apache
     spark-submit --master yarn-cluster --class com.microsoft.spark.application --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4 /home/user/spark/sparkapplication.jar
@@ -147,7 +147,7 @@ Tyto změny jsou platné pro celý cluster, ale je možné přepsat při odesíl
 
 ### <a name="detailed-description"></a>Podrobný popis
 
-Aplikace Spark selže s následujícími typy nezachycená výjimky:
+Hello aplikací Spark selže s touto hello následující typy nezachycená výjimky:
 
 ```apache
 ERROR Executor: Exception in task 7.0 in stage 6.0 (TID 439) 
@@ -191,15 +191,15 @@ java.lang.OutOfMemoryError
 
 ### <a name="probable-cause"></a>Pravděpodobná příčina
 
-Nejpravděpodobnější příčinou této výjimky je, že není dostatek paměti haldy je přidělen k virtuálním počítačům Java (JVMs). Tyto JVMs jsou spouštěny jako vykonavatelů nebo ovladače jako součást aplikací Spark. 
+Hello nejpravděpodobnější příčinou této výjimky je, že není dostatek paměti haldy je přidělen toohello Java virtuálních počítačů (JVMs). Tyto JVMs jsou spouštěny jako vykonavatelů nebo ovladače jako součást hello aplikací Spark. 
 
 ### <a name="resolution-steps"></a>Kroky řešení
 
-1. Určit maximální velikost dat Spark aplikace zpracovává. Můžete nastavit odhad, založené na maximální velikost vstupních dat, mezilehlá data, která je produkovaný transformace dat vstupní a výstupní data, která je vytvořena, když aplikace je další transformace mezilehlá data. Tento proces může být iterační, pokud nelze provádět počáteční formální odhad. 
+1. Určete maximální velikost hello hello data hello Spark aplikace popisovače. Můžete nastavit odhad, založeny na maximální velikosti hello hello vstupních dat, hello mezilehlá data, která je vytvořena pomocí transformace hello vstupní data a hello výstupní data, která je vytvořena, když aplikace hello je další transformace hello mezilehlá data. Tento proces může být iterační, pokud nelze provádět počáteční formální odhad. 
 
-2. Ujistěte se, že cluster HDInsight, který se chystáte použít má dostatek paměti a počet jader, aby dokázala pojmout aplikací Spark zdroje. Této služby můžete zjistit zobrazením části clusteru metriky rozhraní YARN pro hodnoty **paměti používá** vs. **Celkem paměti**, a **VCores používá** vs. **Celkový počet VCores**.
+2. Ujistěte se, že budete, že toouse nemá dostatek prostředků z hlediska paměť a počet jader aplikací Spark hello tooaccommodate clusteru HDInsight hello. Této služby můžete zjistit zobrazením hello clusteru metriky části hello uživatelském rozhraní YARN hello hodnoty z **paměti používá** vs. **Celkem paměti**, a **VCores používá** vs. **Celkový počet VCores**.
 
-3. Nastavte následující konfigurace Spark na odpovídající hodnoty, které by neměl být delší než 90 % dostupné paměti a počet jader. Hodnoty by měla být i v rámci požadavky na paměť Spark aplikace: 
+3. Nastavte následující Spark hello tooappropriate hodnoty konfigurace, které by neměl být delší než 90 % hello dostupnou paměť a počet jader. Hello hodnoty by měly být i v rámci požadavky velikost paměti hello hello Spark aplikace: 
 
     ```apache
     spark.executor.instances (Example: 8 for 8 executor count) 
@@ -211,12 +211,12 @@ Nejpravděpodobnější příčinou této výjimky je, že není dostatek pamět
     spark.yarn.driver.memoryOverhead (Example: 384m for 384MB) 
     ```
 
-    Pokud chcete získat celkové množství paměti používané všechny vykonavatelů, spusťte následující příkaz: 
+    tooget hello celkové množství paměti používané všechny vykonavatelů, spusťte následující příkaz hello: 
     
     ```apache
     spark.executor.instances * (spark.executor.memory + spark.yarn.executor.memoryOverhead) 
     ```
-    Pokud chcete získat celkové množství paměti používané ovladače, spusťte následující příkaz:
+    tooget hello celkové množství paměti používané hello ovladač, spusťte následující příkaz hello:
     
     ```apache
     spark.driver.memory + spark.yarn.driver.memoryOverhead

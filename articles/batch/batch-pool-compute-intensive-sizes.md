@@ -1,6 +1,6 @@
 ---
-title: "Pomocí náročné virtuálních počítačích Azure Batch | Microsoft Docs"
-description: "Jak chcete využít výhod podporující RDMA nebo grafický procesor s podporou velikosti virtuálních počítačů ve fondech Azure Batch"
+title: "aaaUse náročné virtuální počítače Azure pomocí služby Batch | Microsoft Docs"
+description: "Jak velikosti tootake výhod podporující RDMA nebo grafický procesor s podporou virtuálních počítačů ve fondech Azure Batch"
 services: batch
 documentationcenter: 
 author: dlepow
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: danlep
-ms.openlocfilehash: c52a054e4fc8f61f871acd9f35b9a3e6247e48ef
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: 6a462a5f2a44ddcec8bf4e5c200d444cac8fafe6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Používání podporující RDMA nebo grafický procesor s podporou instancí ve fondech Batch
 
-Pokud chcete spustit určité úlohy Batch, můžete využít výhod určená pro rozsáhlé výpočtu velikosti virtuálního počítače Azure. Chcete-li například spustit víc instancí [úlohy MPI](batch-mpi.md), můžete zvolit A8, A9, nebo velikosti H-series, které mají síť rozhraní pro vzdálený přímý paměti přístup (RDMA). Tyto velikosti připojit k síti InfiniBand pro komunikaci mezi uzly, které můžou urychlit aplikací MPI. Nebo CUDA aplikace, můžete zvolit N-series velikostí, které zahrnují grafických NVIDIA tesla – Měrná jednotka (GPU) karty.
+toorun určité úlohy Batch můžete chtít tootake výhod určená pro rozsáhlé výpočtu velikosti virtuálního počítače Azure. Například s více instancemi toorun [úlohy MPI](batch-mpi.md), můžete zvolit A8, A9, nebo velikosti H-series, které mají síť rozhraní pro vzdálený přímý paměti přístup (RDMA). Tyto velikosti připojit síť InfiniBand tooan pro komunikaci mezi uzly, které můžou urychlit aplikací MPI. Nebo CUDA aplikace, můžete zvolit N-series velikostí, které zahrnují grafických NVIDIA tesla – Měrná jednotka (GPU) karty.
 
-Tento článek obsahuje pokyny a příklady používat některé z Azure specializované velikosti ve fondech Batch. Specifikace a pozadí najdete v tématu:
+Tento článek obsahuje pokyny a příklady toouse některé specializované velikostí Azure ve fondech Batch. Specifikace a pozadí najdete v tématu:
 
 * Vysoký výkon výpočetní velikosti virtuálních počítačů ([Linux](../virtual-machines/linux/sizes-hpc.md), [Windows](../virtual-machines/windows/sizes-hpc.md)) 
 
@@ -33,20 +33,20 @@ Tento článek obsahuje pokyny a příklady používat některé z Azure special
 
 ## <a name="subscription-and-account-limits"></a>Předplatné a limity účtu
 
-* **Kvóty** – jeden nebo více kvótách Azure může omezit počet nebo typ uzlů, které přidáte do fondu služby Batch. Se pravděpodobně být omezená, když zvolíte podporu rdma, grafický procesor s podporou či jiné vícejádrovými velikosti virtuálních počítačů. V závislosti na typu účtu Batch, kterou jste vytvořili může použít kvóty účtu sám sebe nebo do vašeho předplatného.
+* **Kvóty** – jeden nebo více kvótách Azure může omezit počet hello nebo typ uzlů můžete přidat tooa fondu služby Batch. Jste pravděpodobnější toobe omezené když zvolíte podporu rdma, GPU povoleno, nebo jiné vícejádrovými velikosti virtuálních počítačů. V závislosti na typu hello účtu Batch, kterou jste vytvořili může použít kvóty hello toohello účet sám sebe nebo tooyour předplatné.
 
-    * Pokud jste vytvořili vašeho účtu Batch v **služba Batch** konfigurace, které mají omezenou [kvóty vyhrazené jader na účtu Batch](batch-quota-limit.md#resource-quotas). Ve výchozím nastavení je tato kvóta 20 jader. Samostatné kvóta se vztahuje na [virtuální počítače s nízkou prioritou](batch-low-pri-vms.md), pokud je používáte. 
+    * Pokud jste vytvořili vašeho účtu Batch v hello **služba Batch** konfigurace, je omezeno hello [kvóty vyhrazené jader na účtu Batch](batch-quota-limit.md#resource-quotas). Ve výchozím nastavení je tato kvóta 20 jader. Samostatné kvótu platí příliš[virtuální počítače s nízkou prioritou](batch-low-pri-vms.md), pokud je používáte. 
 
-    * Pokud jste vytvořili účet v **uživatele předplatné** konfigurace, vaše předplatné omezuje počet virtuálních počítačů jader na oblast. V tématu [předplatného Azure a omezení služby, kvóty a omezení](../azure-subscription-service-limits.md). Vaše předplatné platí také místní kvótu pro určité velikosti virtuálních počítačů, včetně HPC a GPU instancí. V konfiguraci uživatele předplatné žádné další kvóty použít k účtu Batch. 
+    * Pokud jste vytvořili účet hello v hello **uživatele předplatné** konfigurace, vaše předplatné omezuje hello počet jader virtuálního počítače na oblast. V tématu [předplatného Azure a omezení služby, kvóty a omezení](../azure-subscription-service-limits.md). Vaše předplatné se týká také místní kvóty toocertain velikosti virtuálních počítačů, včetně HPC a GPU instancí. V konfiguraci předplatné hello uživatele použít žádné další kvóty účtu Batch toohello. 
 
-  Může se stát, že je třeba zvýšit jeden nebo více kvóty při použití specializované velikost virtuálního počítače v dávce. Chcete-li požádat o zvýšení kvóty, otevřete bezplatnou [online žádost o zákaznickou podporu](../azure-supportability/how-to-create-azure-support-request.md).
+  Může být nutné tooincrease jeden nebo více kvóty při použití specializované velikost virtuálního počítače v dávce. toorequest zvýšení kvóty, otevřete [žádost o podporu online zákazníka](../azure-supportability/how-to-create-azure-support-request.md) zdarma.
 
-* **Dostupnost v oblastech** – náročné virtuální počítače nemusí být k dispozici v oblastech, kde můžete vytvořit účty Batch. Pokud chcete zkontrolovat, že velikost je k dispozici, najdete v části [produkty podle oblasti](https://azure.microsoft.com/regions/services/).
+* **Dostupnost v oblastech** – náročné virtuální počítače nemusí být k dispozici v hello oblastech, kde můžete vytvořit účty Batch. toocheck, že velikost je k dispozici, najdete v části [produkty podle oblasti](https://azure.microsoft.com/regions/services/).
 
 
 ## <a name="dependencies"></a>Závislosti
 
-Funkce RDMA a GPU velikostí náročné jsou podporovány pouze v určitých operačních systémech. V závislosti na operačním systému může být potřeba instalovat nebo konfigurovat další ovladače nebo jiný software. Následující tabulka představuje souhrn tyto závislosti. Najdete v článcích propojené podrobnosti. Možnosti konfigurace fondy Batch najdete dále v tomto článku.
+Hello RDMA a možnosti GPU velikostí náročné jsou podporovány pouze v určitých operačních systémech. V závislosti na operačním systému může být nutné tooinstall nebo nakonfigurovat další ovladače nebo jiný software. Následující tabulky Hello shrnují tyto závislosti. Najdete v článcích propojené podrobnosti. Možnosti fondů služby Batch tooconfigure najdete dále v tomto článku.
 
 
 ### <a name="linux-pools---virtual-machine-configuration"></a>Linux fondy - konfigurace virtuálního počítače
@@ -74,7 +74,7 @@ Funkce RDMA a GPU velikostí náročné jsou podporovány pouze v určitých ope
 ### <a name="windows-pools---cloud-services-configuration"></a>Fondy Windows - konfigurace cloudových služeb
 
 > [!NOTE]
-> N-series velikosti nejsou podporovány ve fondech Batch s konfiguraci cloudových služeb.
+> N-series velikosti nejsou podporovány ve fondech Batch s konfigurace hello cloudových služeb.
 >
 
 | Velikost | Schopnost | Operační systémy | Požadovaný software | Nastavení fondu. |
@@ -87,17 +87,17 @@ Funkce RDMA a GPU velikostí náročné jsou podporovány pouze v určitých ope
 
 ## <a name="pool-configuration-options"></a>Možnosti konfigurace fondu
 
-Ke konfiguraci specializované velikost virtuálního počítače pro fondu Batch, nástrojů pro rozhraní API služby Batch a zadejte několik možností instalace požadovaného softwaru a ovladače, včetně:
+tooconfigure specializované velikost virtuálního počítače pro fondu Batch, hello rozhraní API služby Batch a nástroje poskytují různé možnosti tooinstall požadované softwaru nebo ovladačů, včetně:
 
-* [Spouštěcí úkol](batch-api-basics.md#start-task) -nahrajte balíček instalace jako soubor prostředků pro účet úložiště Azure ve stejné oblasti jako účet Batch. Vytvoření spuštění úloh příkazového řádku pro tichou instalaci souboru prostředků při spuštění fondu. Další informace najdete v tématu [dokumentace k REST API](/rest/api/batchservice/add-a-pool-to-an-account#bk_starttask).
+* [Spouštěcí úkol](batch-api-basics.md#start-task) -nahrát instalační balíček jako tooan souborů prostředků účtu úložiště Azure v hello stejné oblasti jako hello účtu Batch. Vytvořte počáteční úlohu příkazového řádku tooinstall hello zdrojový soubor bezobslužně při spuštění hello fondu. Další informace najdete v tématu hello [dokumentace k REST API](/rest/api/batchservice/add-a-pool-to-an-account#bk_starttask).
 
   > [!NOTE] 
-  > Spouštěcí úkol musíte spustit s oprávněními zvýšenými (správce) a musí počkat na úspěšné.
+  > spouštěcí úkol Hello musíte spustit s oprávněními zvýšenými (správce) a musí počkat na úspěšné.
   >
 
-* [Balíček aplikace](batch-application-packages.md) – přidat komprimované instalační balíček do vašeho účtu Batch a nakonfigurovat odkaz na balíček ve fondu. Toto nastavení odešle a unzips balíček na všech uzlech ve fondu. Pokud tento balíček je instalační program, vytvořte počáteční úlohu příkazového řádku k tiché instalaci aplikace na všech uzlech fondu. Volitelně můžete nainstalujte balíček, když je naplánován ke spuštění na uzlu.
+* [Balíček aplikace](batch-application-packages.md) – přidat komprimované instalační balíček tooyour účtu Batch a nakonfigurovat odkaz na balíček ve fondu hello. Toto nastavení odešle a unzips hello balíčku na všech uzlech ve fondu hello. Pokud je balíček hello instalační program, vytvořte spuštění úloh příkazového řádku toosilently instalace hello aplikaci na všech uzlech fondu. Volitelně můžete nainstalujte hello balíček při úloha je naplánovaná toorun na uzlu.
 
-* [Obrázek vlastní fond](batch-api-basics.md#pool) – vytvoření vlastní image Windows nebo virtuálního počítače s Linuxem obsahující ovladače, softwaru, nebo jiné nastavení potřebných pro velikost virtuálního počítače. Pokud jste vytvořili vašeho účtu Batch v odběru konfigurace uživatele, zadejte vlastní image fondu Batch. (Vlastní Image nepodporuje účty v konfiguraci služby Batch.) Vlastní obrázky lze použít pouze s fondy v konfiguraci virtuálního počítače.
+* [Obrázek vlastní fond](batch-api-basics.md#pool) – vytvoření vlastní Windows nebo vyžadované bitovou kopii virtuálního počítače s Linuxem, která obsahuje ovladače, softwaru nebo jiná nastavení pro hello velikost virtuálního počítače. Pokud jste vytvořili vašeho účtu Batch v konfigurace odběru hello uživatele, zadejte vlastní image hello fondu Batch. (Vlastní obrázky nejsou podporovány v účtech v konfiguraci služby Batch hello). Vlastní obrázky lze použít pouze s fondy v konfiguraci virtuálního počítače hello.
 
   > [!IMPORTANT]
   > Ve fondech Batch nemůžete použít aktuálně vlastní image vytvořené s spravované disky nebo s storage úrovně Premium.
@@ -105,17 +105,17 @@ Ke konfiguraci specializované velikost virtuálního počítače pro fondu Batc
 
 
 
-* [Batch loděnice](https://github.com/Azure/batch-shipyard) automaticky konfiguruje GPU a RDMA transparentně pracovat s kontejnerizované úlohy na Azure Batch. Batch loděnice zcela vycházejí s konfiguračními soubory. Existuje mnoho ukázka recepturách konfigurace k dispozici umožňující GPU a RDMA úlohy, jako [CNTK GPU recepturách](https://github.com/Azure/batch-shipyard/tree/master/recipes/CNTK-GPU-OpenMPI) který předem nakonfiguruje ovladače grafického procesoru na virtuálních počítačích N-series a načte kognitivní nástrojů Microsoft software jako bitovou kopii Docker.
+* [Batch loděnice](https://github.com/Azure/batch-shipyard) automaticky nakonfiguruje transparentně s kontejnerizované úlohy v Azure Batch toowork hello GPU a RDMA. Batch loděnice zcela vycházejí s konfiguračními soubory. Existuje mnoho ukázka recepturách konfigurace k dispozici umožňující GPU a RDMA úlohy, jako například hello [CNTK GPU recepturách](https://github.com/Azure/batch-shipyard/tree/master/recipes/CNTK-GPU-OpenMPI) který předem nakonfiguruje ovladače grafického procesoru na virtuálních počítačích N-series a načte kognitivní nástrojů Microsoft software jako bitovou kopii Docker.
 
 
 ## <a name="example-microsoft-mpi-on-an-a8-vm-pool"></a>Příklad: Microsoft MPI u fondu virtuální počítač A8
 
-Ke spouštění aplikací Windows MPI ve fondu Azure A8 uzlů, musíte nainstalovat podporovanou MPI implementace. Tady jsou ukázkový postup instalace [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) na Windows fondu pomocí balíčku aplikace Batch.
+toorun aplikací Windows MPI ve fondu Azure A8 uzlů, je nutné tooinstall podporované MPI implementace. Tady je ukázka kroky tooinstall [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) na Windows fondu pomocí balíčku aplikace Batch.
 
-1. Stažení [instalační balíček](http://go.microsoft.com/FWLink/p/?LinkID=389556) (MSMpiSetup.exe) na nejnovější verzi Microsoft MPI.
-2. Vytvořte soubor zip balíčku.
-3. Nahrání balíčku k účtu Batch. Pokyny najdete v tématu [balíčky aplikací](batch-application-packages.md) pokyny. Zadejte id aplikace, jako *MSMPI*, a verze, jako *8.1*. 
-4. Pomocí rozhraní API služby Batch nebo portálu Azure, vytvořte fond v konfiguraci cloudových služeb s požadovaný počet uzlů a škálování. Následující tabulka uvádí nastavení ukázkových nastavit MPI v bezobslužném režimu pomocí spouštěcí úkol:
+1. Stáhnout hello [instalační balíček](http://go.microsoft.com/FWLink/p/?LinkID=389556) (MSMpiSetup.exe) pro nejnovější verzi Microsoft MPI hello.
+2. Vytvořte soubor zip balíčku hello.
+3. Nahrajte účtu Batch tooyour hello balíčku. Pokyny najdete v tématu hello [balíčky aplikací](batch-application-packages.md) pokyny. Zadejte id aplikace, jako *MSMPI*, a verze, jako *8.1*. 
+4. V konfiguraci hello cloudových služeb s hello požadovaného počtu uzlů a škálování pomocí hello rozhraní API služby Batch nebo portálu Azure, vytvořte fond. Hello následující tabulka uvádí nastavení tooset ukázka až MPI v bezobslužném režimu pomocí spouštěcí úkol:
 
 | Nastavení | Hodnota |
 | ---- | ----- | 
@@ -129,21 +129,21 @@ Ke spouštění aplikací Windows MPI ve fondu Azure A8 uzlů, musíte nainstalo
 
 ## <a name="example-nvidia-tesla-drivers-on-nc-vm-pool"></a>Příklad: NVIDIA tesla – měrná ovladačů ve fondu virtuálních počítačů NC
 
-Ke spuštění CUDA aplikací ve fondu uzlů Linux NC, musíte nainstalovat CUDA Toolkit 8.0 na uzlech. Sada nástrojů nainstaluje potřebné ovladače NVIDIA tesla – měrná GPU. Zde jsou ukázkový postup nasazení vlastní image Ubuntu 16.04 LTS s ovladači GPU:
+toorun CUDA aplikací ve fondu uzlů Linux NC, je nutné tooinstall CUDA Toolkit 8.0 na uzlech hello. Hello Toolkit nainstaluje potřebné ovladače NVIDIA tesla – měrná GPU hello. Zde je ukázka kroky toodeploy vlastní image Ubuntu 16.04 LTS s ovladači GPU hello:
 
-1. Nasaďte virtuální počítač Azure NC6 systémem Ubuntu 16.04 LTS. Můžete například vytvořte virtuální počítač v oblasti USA – jih centrální. Ujistěte se, že vytvoříte virtuální počítač s standardního úložiště, a *bez* spravované disky.
-2. Postupujte podle kroků pro připojení k virtuálnímu počítači a [instalaci ovladačů CUDA](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms).
-3. Zrušení zřízení agenta systému Linux a pak zachytíte image virtuálního počítače s Linuxem pomocí Azure CLI 1.0 příkazy. Pokyny najdete v tématu [zachytit virtuální počítač Linux spuštěné v Azure](../virtual-machines/linux/capture-image-nodejs.md). Poznamenejte si bitové kopie identifikátor URI.
+1. Nasaďte virtuální počítač Azure NC6 systémem Ubuntu 16.04 LTS. Můžete například vytvořte hello virtuálních počítačů v oblasti USA – jih centrální hello. Ujistěte se, že vytvoříte hello virtuálních počítačů s standardního úložiště, a *bez* spravované disky.
+2. Postupujte podle hello kroky tooconnect toohello virtuálních počítačů a [instalaci ovladačů CUDA](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms).
+3. Zrušení zřízení hello agenta systému Linux a pak zachytíte image virtuálního počítače s Linuxem pomocí příkazů hello Azure CLI 1.0. Pokyny najdete v tématu [zachytit virtuální počítač Linux spuštěné v Azure](../virtual-machines/linux/capture-image-nodejs.md). Poznamenejte si hello Image identifikátor URI.
   > [!IMPORTANT]
-  > Nepoužívejte příkazy 2.0 rozhraní příkazového řádku Azure k zachycení bitové kopie pro Azure Batch. Příkazy rozhraní příkazového řádku 2.0 aktuálně zachytit pouze virtuální počítače vytvořené pomocí spravovaného disky.
+  > Nepoužívejte Azure CLI 2.0 příkazy toocapture hello image pro Azure Batch. Příkazy hello 2.0 rozhraní příkazového řádku aktuálně zachytit pouze virtuální počítače vytvořené pomocí spravovaného disky.
   >
-4. Vytvořte účet Batch se konfigurace předplatného uživatele, v oblasti, která podporuje NC virtuálních počítačů.
-5. Pomocí rozhraní API služby Batch nebo portál Azure, vytvoření fondu pomocí vlastní image a požadovaný počet uzlů a škálování. Následující tabulka uvádí nastavení fondu ukázka bitové kopie:
+4. Vytvořte účet Batch se hello konfigurace odběru uživatele, v oblasti, která podporuje virtuální počítače názvového kontextu.
+5. Pomocí hello rozhraní API služby Batch nebo portál Azure, vytvoření fondu pomocí vlastní image hello a s hello požadovaného počtu uzlů a škálování. Hello následující tabulka uvádí nastavení fondu ukázkových hello bitové kopie:
 
 | Nastavení | Hodnota |
 | ---- | ---- |
 | **Obrázek – typ** | Vlastní Image |
-| **Vlastní Image** | Obrázek URI ve tvaru`https://yourstorageaccountdisks.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/MyVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd` |
+| **Vlastní Image** | Obrázek URI hello formuláře`https://yourstorageaccountdisks.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/MyVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd` |
 | **Uzel agenta SKU** | batch.Node.Ubuntu 16.04 |
 | **Velikost uzlu** | NC6 Standard |
 
@@ -151,6 +151,6 @@ Ke spuštění CUDA aplikací ve fondu uzlů Linux NC, musíte nainstalovat CUDA
 
 ## <a name="next-steps"></a>Další kroky
 
-* Spouštění úloh MPI ve fondu Azure Batch, najdete v článku [Windows](batch-mpi.md) nebo [Linux](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) příklady.
+* toorun úloh MPI ve fondu Azure Batch, najdete v části hello [Windows](batch-mpi.md) nebo [Linux](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) příklady.
 
-* Příklady úloh GPU na Batch, najdete v článku [Batch loděnice](https://github.com/Azure/batch-shipyard/) recepty.
+* Příklady úloh GPU na Batch najdete v tématu hello [Batch loděnice](https://github.com/Azure/batch-shipyard/) recepty.

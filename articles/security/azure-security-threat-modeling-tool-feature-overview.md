@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Threat modelování nástroj – Azure | Microsoft Docs"
-description: "Další informace o všech funkcí, které jsou k dispozici v nástroji pro modelování hrozeb"
+title: "aaaMicrosoft nástroj pro modelování hrozeb – Azure | Microsoft Docs"
+description: "Další informace o všech hello funkce dostupné v hello nástroj modelování hrozeb"
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,46 +14,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 621ff305d7e782f85eeaae6c3fb02031673549c6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f9ad5e623e7758063084cb7fc723c5735161a846
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Přehled funkcí nástroje modelování hrozeb
 
-Jsme rádi, že jste se rozhodli použít nástroj modelování hrozeb pro vaše threat modelování potřebám! Pokud jste tak dosud neučinili, navštivte  **[Začínáme s nástrojem modelování hrozeb](./azure-security-threat-modeling-tool-getting-started.md)**  základní informace.
+Jsme rádi, že jste zvolili toouse hello nástroj modelování hrozeb pro vaše threat modelování potřebám! Pokud jste tak dosud neučinili, navštivte  **[Začínáme s hello nástroj modelování hrozeb](./azure-security-threat-modeling-tool-getting-started.md)**  toolearn hello základy.
 
-> Naše nástroj se často aktualizuje, proto tento často najdete v příručce pro naše nejnovější funkce a vylepšení.
+> Naše nástroj se často aktualizuje, takže zaškrtněte toto políčko Průvodce často toosee naše nejnovější funkce a vylepšení.
 
-Kliknutím na tlačítko "Vytvořit nový Model" otevře prázdné úvodní stránka, podobně jako na následujícím obrázku:
+Kliknutím na tlačítko "Vytvořit nový Model" hello otevře prázdné úvodní stránky, podobně jako toohello obrázek níže:
 
 ![Prázdné úvodní stránky](./media/azure-security-threat-modeling-tool/tmtstart.png)
 
-Pomocí model hrozeb vytvořené náš tým v  **[Začínáme](./azure-security-threat-modeling-tool-getting-started.md)**  příkladu budeme najdete všechny funkce, které jsou k dispozici v nástroji ještě dnes.
+Pomocí model hrozeb hello vytvořené náš tým v hello  **[Začínáme](./azure-security-threat-modeling-tool-getting-started.md)**  příkladu budeme podívejte se na všechny dostupné v nástroji hello hello funkce ještě dnes.
 
 ![Model základní hrozeb](./media/azure-security-threat-modeling-tool/basictmt.png)
 
 ## <a name="navigation"></a>Navigace
 
-Než začnete integrované funkce, přejděte přes hlavními součástmi najít v nástroji
+Než začnete hello integrované funkce, přejděte přes nebyly nalezeny v nástroji hello hlavní komponenty hello
 
 ### <a name="menu-items"></a>Položky nabídky
 
-Prostředí by měl vypadat přibližně další produkty společnosti Microsoft. Začněme prostřednictvím položky nabídky nejvyšší úrovně:
+Hello prostředí by měl být podobné tooother produkty společnosti Microsoft. Začněme prostřednictvím položky nabídky nejvyšší úrovně hello:
 
 ![Položky nabídky](./media/azure-security-threat-modeling-tool/menuitems.png)
 
 | Štítek                               | Podrobnosti      |
 | --------------------------------------- | ------------ |
-| **File** | <ul><li>Otevřít, uložte a zavřete soubory</li><li>Účty přihlášení volitelném OneDrive</li><li>Sdílet odkazy (zobrazení a úpravy)</li><li>Zobrazení informací o souboru</li><li>Použít novou šablonu na existující modely</li></ul> |
+| **File** | <ul><li>Otevřít, uložte a zavřete soubory</li><li>Účty přihlášení volitelném OneDrive</li><li>Sdílet odkazy (zobrazení a úpravy)</li><li>Zobrazení informací o souboru</li><li>Použít novou šablonu tooExisting modely</li></ul> |
 | **Upravit** | Zpět/opakování akce, jako dobře kopii, vkládání a odstraňování |
-| **Zobrazení** | <ul><li>Přepínání mezi **Analysis** a **návrhu** zobrazení</li><li>Otevřete uzavřené windows (e.g.stencils, vlastností elementů a zprávy)</li><li>Obnovit výchozí nastavení rozložení</li></ul> |
+| **Zobrazení** | <ul><li>Přepínání mezi **Analysis** a **návrhu** zobrazení</li><li>Otevřete uzavřené windows (e.g.stencils, vlastností elementů a zprávy)</li><li>Resetovat nastavení toodefault rozložení</li></ul> |
 | **Diagram** | Přidání nebo odstranění diagramy a procházení "karty" diagramů |
-| **Sestavy** | Vytváření sestav HTML sdílet s ostatními uživateli |
-| **Pomoc** | Provede můžete použít nástroj |
+| **Sestavy** | Vytvoření sestavy tooshare HTML s ostatními uživateli |
+| **Pomoc** | Provede toohelp použijete nástroj hello |
 
-Ikony jsou zkratky pro nejvyšší úrovně nabídky:
+zástupce pro hello nejvyšší úrovně nabídky jsou ikony Hello:
 
 | Ikona                               | Podrobnosti      |
 | --------------------------------------- | ------------ |
@@ -61,28 +61,28 @@ Ikony jsou zkratky pro nejvyšší úrovně nabídky:
 | **Uložit** | Uloží aktuální soubor |
 | **Návrh** | Klient se přepne do zobrazení návrhu, kde můžete vytvořit modely |
 | **Analýza** | Ukazuje generované hrozby a jejich vlastnosti |
-| **Přidat Diagram** | Přidá nový diagram (podobně jako nové karty v aplikaci Excel) |
+| **Přidat Diagram** | Přidá nový diagram (podobně jako toonew karty v aplikaci Excel) |
 | **Odstranit Diagram** | Odstraní aktuální diagram |
 | **Vyjmutí/kopírování/vkládání** | Kopie nebo kusy/vloží elementy |
 | **Vrátit/opakovat** | Vrátí zpět nebo znovu provede akce |
-| **Přiblížení / oddálení** | Zvětší směřující diagram pro lepší zobrazení |
-| **Váš názor** | Otevře na fóru MSDN |
+| **Přiblížení / oddálení** | Zvětší směřující hello diagram pro lepší zobrazení |
+| **Váš názor** | Otevře hello fórum MSDN |
 
 ### <a name="canvas"></a>Plátno
 
-Místa, kde můžete přetáhnout myší elementy do. Přetažení je nejrychlejší a nejúčinnější způsob, jak vytvářet modely. Může také klikněte pravým tlačítkem a vyberte v nabídce, která přidává obecné verzích prvky, které používáte, jak je uvedeno níže.
+Hello místa, kde můžete přetáhnout myší elementy do. Přetažení je hello nejrychlejší a nejúčinnější způsob, jak toobuild modelů. Může také klikněte pravým tlačítkem a vyberte z nabídky hello, které se přidá obecné verze hello prvků, které používáte, jak je uvedeno níže.
 
-#### <a name="dropping-the-stencil-on-the-canvas"></a>Vyřazení vzorníku na plátno
+#### <a name="dropping-hello-stencil-on-hello-canvas"></a>Vyřazení hello vzorníku na plátně hello
 
 ![Vyřaďte plátno](./media/azure-security-threat-modeling-tool/canvasdrop1.png)
 
-#### <a name="clicking-on-the-stencil"></a>Kliknutím na vzorníku
+#### <a name="clicking-on-hello-stencil"></a>Kliknutím na vzorníku hello
 
 ![Vlastnosti elementů](./media/azure-security-threat-modeling-tool/canvasdrop2.png)
 
 ### <a name="stencils"></a>Vzorníky
 
-Kde můžete najít všechny vzorníky k dispozici pro použití podle vybraná šablona. Pokud nemůžete najít správné elementy, zkuste použít jinou šablonu nebo měnit podle vlastních potřeb. Obecně byste měli nemůže najít kombinaci kategorie, jako jsou následující:
+Tam, kde můžete najít všechny předlohy, k dispozici toouse podle vybraná šablona hello. Pokud nemůžete najít správné elementy hello, zkuste použít jinou šablonu, nebo upravit jeden toofit vašim potřebám. Obecně platí musí být schopný toofind kombinací kategorií jako hello ty, které jsou níže:
 
 | Název vzorníku                               | Podrobnosti      |
 | --------------------------------------- | ------------ |
@@ -97,27 +97,27 @@ Kde můžete najít všechny vzorníky k dispozici pro použití podle vybraná 
 | Komponenta                               | Podrobnosti      |
 | --------------------------------------- | ------------ |
 | **Zprávy** | Interní nástroj pro logiku, která upozorní uživatele, vždy, když dojde k chybě, jako je například žádná data proudí mezi elementy |
-| **Poznámky k** | Ruční poznámky přidaných do souboru vývojové týmy během celého procesu návrhu a revize |
+| **Poznámky k** | Ruční poznámky přidané toohello soubor engineering týmy celková hello návrhu a proces zkontrolovat |
 
 ### <a name="element-properties"></a>Vlastnosti elementů
 
-To se liší podle vybrané elementy. Kromě hranice vztahu důvěryhodnosti všechny ostatní elementy obsahovat 3 obecné možnosti:
+To se liší podle vybrané elementy hello. Kromě hranice vztahu důvěryhodnosti všechny ostatní elementy obsahovat 3 obecné možnosti:
 
 | Vlastnost element                               | Podrobnosti      |
 | --------------------------------------- | ------------ |
-| **Název** | Užitečné pro pojmenování vaší procesů, úložiště, interactors a toky snadno rozpoznat |
-| **Mimo rozsah** | Pokud vyberete, element se dostala mimo matici hrozbu generace (nedoporučuje se) |
-| **Důvod mimo rozsah** | Při zarovnání do bloku pole umožníte uživatelům vědět, proč mimo obor nebyla vybrána. |
+| **Název** | Užitečné pro pojmenování vaší procesů, úložiště, interactors a toky toobe snadno rozpoznat. |
+| **Mimo rozsah** | Pokud vyberete, hello element se dostala mimo hello threat generování matice (nedoporučuje se) |
+| **Důvod mimo rozsah** | Při zarovnání do bloku pole toolet uživatelé věděli, proč je mimo rozsah byla vybrána |
 
-Vlastnosti jsou změnit v rámci každé kategorie elementu. Klikněte na každý prvek zkontrolovat dostupné možnosti, nebo otevřete šablonu, kterou chcete získat další informace. Pojďme do funkcí.
+Vlastnosti jsou změnit v rámci každé kategorie elementu. Klikněte na dostupné možnosti každý element tooinspect hello nebo otevřít další toolearn šablony hello. Pojďme do funkce hello.
 
 ## <a name="welcome-screen"></a>Úvodní obrazovka
 
-Na úvodní obrazovce je první věcí, kterou najdete v části při otevření aplikace.
+úvodní obrazovka Hello je první krok text hello, který se zobrazí při otevření aplikace hello.
 
 ### <a name="open-a-model"></a>Otevřete model
 
-Ukazatele myši na tlačítko "Otevřete modelu" ukazuje možnosti 2 Skrytá: "Otevřete z tento počítač" a "Otevřete z Onedrivu." První otevře soubor otevřete obrazovku, zatímco druhý vás provede v procesu přihlašování pro OneDrive, umožní vám vybrat složky a soubory. Po úspěšném ověření.
+Ukazatele myši na tlačítko "Otevřete modelu" ukazuje možnosti 2 Skrytá: "Otevřete z tento počítač" a "Otevřete z Onedrivu." Hello nejprve otevře úvodní obrazovka otevřít soubor, zatímco hello druhý vás provede hello v procesu přihlašování pro OneDrive, což vám toopick složek a souborů po úspěšném ověření.
 
 ![Otevřete modelu](./media/azure-security-threat-modeling-tool/openmodel.png)
 
@@ -125,31 +125,31 @@ Ukazatele myši na tlačítko "Otevřete modelu" ukazuje možnosti 2 Skrytá: "O
 
 ### <a name="feedback-suggestions-and-issues"></a>Zpětná vazba, návrhy a problémy
 
-Výběrem této možnosti se dostanete na fórech MSDN nástroje SDL. Je skvělým způsobem, jak podívejte se na ostatní uživatelé názory týkající se nástroje, včetně řešení a nových nápadů.
+Výběrem této možnosti se dostanete fórech MSDN toohello nástroje SDL. Je toocheck skvělý způsob, jak jiní lidé produkt hello nástroj, včetně řešení a nových nápadů.
 
 ![Váš názor](./media/azure-security-threat-modeling-tool/feedback.png)
 
 ## <a name="design-view"></a>Návrhové zobrazení
 
-Při každém otevření nebo vytvořit nový model, budete přesměrováni na zobrazení návrhu.
+Při každém otevření nebo vytvořit nový model, budete přesměrováni toohello zobrazení návrhu.
 
 ### <a name="adding-elements"></a>Přidávání elementů
 
-Chcete-li přidat elementů v mřížce 2 způsoby:
+Způsoby 2 tooadd elementů v mřížce hello:
 
-- **Přetáhnout myší** – přetáhněte požadované elementu k mřížce, potom použijte vlastností elementů můžete poskytnout dodatečné informace.
-- **Klikněte pravým tlačítkem na** – klikněte pravým tlačítkem kamkoli na mřížky a vyberte z rozevírací nabídky. Obecná reprezentace tohoto prvku se zobrazí na obrazovce.
+- **Přetáhnout myší** – přetáhněte hello požadovaný element toohello mřížky, potom použijte hello vlastnosti tooprovide Další informace o elementu.
+- **Klikněte pravým tlačítkem na** – klikněte pravým tlačítkem kamkoli na hello mřížky a vyberte z rozevírací nabídky hello. Obecná reprezentace tohoto prvku se zobrazí na úvodní obrazovka.
 
 ### <a name="connecting-elements"></a>Připojení elementy
 
-Prvky v nástroji propojit 2 způsoby:
+Způsoby 2 tooconnect prvky v nástroji hello:
 
-- **Přetáhnout myší** – přetáhněte požadovaného toku dat do mřížky a připojte se k příslušné elementy oba elementy end.
-- **Klikněte na tlačítko + Shift** – klikněte na první prvek (odesílání dat), stiskněte a podržte klávesu Shift a potom vyberte druhý prvkem (přijetí dat). Klikněte pravým tlačítkem a vyberte možnost "Připojit". Pokud používáte toku dat obousměrný, není pořadí jako důležité.
+- **Přetáhnout myší** – přetáhněte hello požadovaného toku dat toohello mřížky a připojte oba elementy end toohello příslušných prvků.
+- **Klikněte na tlačítko + Shift** – klikněte na první prvek hello (odesílání dat), stiskněte a podržte klávesu Shift hello a pak vyberte hello druhý prvkem (přijetí dat). Klikněte pravým tlačítkem a vyberte možnost "Připojit". Pokud používáte toku dat obousměrný, hello pořadí není jako důležité.
 
 ### <a name="properties"></a>Vlastnosti
 
-Zobrazuje všechny vlastnosti, které je možné upravit v vzorníky umístěny v diagramu. Pokud chcete zobrazit vlastnosti, právě klikněte na vzorníku a informace vyplní odpovídajícím způsobem. Následující příklad ukazuje před a po "Databáze" vzorníku je přetáhli diagramu:
+Zobrazuje všechny hello vlastnosti, které je možné upravit v hello vzorníky umístěny v diagramu hello. Vlastnosti hello toosee, právě klikněte na hello vzorníku a hello informace vyplní odpovídajícím způsobem. Následující příklad Hello ukazuje před a po "Databáze" vzorníku je přetáhli hello diagram:
 
 #### <a name="before"></a>Před
 
@@ -161,17 +161,17 @@ Zobrazuje všechny vlastnosti, které je možné upravit v vzorníky umístěny 
 
 ### <a name="messages"></a>Zprávy
 
-Pokud chcete vytvořit model hrozeb a nezapomněli připojení k prvkům toky dat, v okně zprávy upozorní vás tak, aby fungoval. Můžete ho ignorovat nebo postupujte podle pokynů a vyřešte problém. 
+Pokud chcete vytvořit model hrozeb a zapomněli, že tooconnect data proudí tooelements, upozorní vás okno zprávy hello tooact. Můžete si vybrat tooignore ji nebo postupujte podle pokynů toofix hello problém hello. 
 
 ![Zprávy](./media/azure-security-threat-modeling-tool/messages.png)
 
 ### <a name="notes"></a>Poznámky
 
-Přepínání karty ze zprávy k poznámkám umožňuje přidání poznámky do diagramu zaznamenat všechny své myšlenky
+Přepínání karty ze zprávy tooNotes umožňuje vám tooadd poznámky tooyour diagram toocapture své myšlenky
 
 ## <a name="analysis-view"></a>Zobrazení analýzy
 
-Jakmile jste hotovi sestavování diagramu, přejít do zobrazení analysis přejdete na možnosti horní nabídce a zvolením lupy vedle palety Malování.
+Jakmile jste hotovi sestavování diagramu, zobrazení tooanalysis přejít budete vybrané možnosti toohello horní nabídce a zvolením hello lupy další toohello Malování palety.
 
 ![Zobrazení analýzy](./media/azure-security-threat-modeling-tool/analysisview.png)
 
@@ -181,28 +181,28 @@ Když kliknete na hrozbu, můžete využít tři jedinečné funkce:
 
 | Funkce                               | Informace      |
 | --------------------------------------- | ------------ |
-| **Indikátor pro čtení** | <p>Hrozby je nyní označena jako pro čtení, který lze snadno pomoct tak sledovat položky, které už se prostřednictvím</p><p>![Pro čtení nebo nepřečtená indikátoru](./media/azure-security-threat-modeling-tool/readmode.png)</p> |
-| **Interakce fokusu** | <p>Zvýrazní interakci v diagramu patřící do této hrozby</p><p>![Interakce fokusu](./media/azure-security-threat-modeling-tool/interactionfocus.png)</p> |
-| **Vlastnosti hrozeb** | <p>Další informace o riziko, že se importují v okně vlastností hrozeb</p><p>![Vlastnosti hrozeb](./media/azure-security-threat-modeling-tool/threatproperties.png)</p> |
+| **Indikátor pro čtení** | <p>Hrozby je nyní označena jako pro čtení, který lze snadno v aplikaci sledování hello položky, které už se prostřednictvím</p><p>![Pro čtení nebo nepřečtená indikátoru](./media/azure-security-threat-modeling-tool/readmode.png)</p> |
+| **Interakce fokusu** | <p>Zvýrazní interakci v diagramu hello patřící toothat hrozeb</p><p>![Interakce fokusu](./media/azure-security-threat-modeling-tool/interactionfocus.png)</p> |
+| **Vlastnosti hrozeb** | <p>Další informace o ohrožení hello je vložené do hello threat vlastnosti – okno</p><p>![Vlastnosti hrozeb](./media/azure-security-threat-modeling-tool/threatproperties.png)</p> |
 
 ### <a name="priority-change"></a>Priorita změny
 
-Změna úrovně priority jednotlivé generovaného hrozby také změní jejich barvy snadno identifikovat vysoká, střední a nízké priority hrozeb.
+Změna úrovně priority hello jednotlivé generovaného hrozby také změní jejich barvy toomake ho snadno tooidentify vysoká, střední a nízké priority hrozeb.
 
 ![Priorita změny](./media/azure-security-threat-modeling-tool/prioritychange.png)
 
 ### <a name="threat-properties-editable-fields"></a>Upravitelné pole vlastnosti hrozeb
 
-Jak je vidět na předchozím obrázku, uživatelé mohou změnit informace generovaný nástrojem také přidat informace do určitá pole, jako je například zarovnání do bloku. Tato pole jsou generovány šablonou, takže pokud potřebujete další informace na jednotlivé hrozby, můžete se doporučuje, aby změny.
+Jak je vidět v hello obrázku výše, uživatelé mohou změnit hello informace generované nástrojem hello také přidat pole toocertain informace, jako je například zarovnání do bloku. Tato pole jsou generovány šablonou hello, takže pokud potřebujete další informace na jednotlivé hrozby, jste podporovali toomake úpravy.
 
 ![Vlastnosti hrozeb](./media/azure-security-threat-modeling-tool/threatproperties.png)
 
 ## <a name="reports"></a>Reports
 
-Po dokončení změny priority a aktualizaci stavu jednotlivé generovaného hrozby, můžete soubor uložit nebo vytisknout sestavu tak, že přejdete na "Zpráva" a potom "Vytvořit úplná sestava." Zobrazí se výzva k název sestavy a až to uděláte, měli byste vidět něco podobného jako na následujícím obrázku:
+Po dokončení změny priority a aktualizuje hello stav každého z nich generuje hrozeb, můžete soubor hello uložit nebo vytisknout sestavu tak, že budete příliš "Oznamovat" a potom "vytvořit úplná sestava." Zobrazí se výzva tooname hello sestavy a až to uděláte, měli byste vidět něco podobného toohello obrázku níže:
 
 ![Sestava](./media/azure-security-threat-modeling-tool/report.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Přispívat šablonu pro komunity, přejděte prosím do naší  **[Githubu](https://github.com/Microsoft/threat-modeling-templates)**  stránky. **[Stáhněte si](https://aka.ms/tmtpreview)**  nástroje a začněte ještě dnes.
+toocontribute šablonu pro hello komunity, přejděte prosím tooour  **[Githubu](https://github.com/Microsoft/threat-modeling-templates)**  stránky. **[Stáhněte si](https://aka.ms/tmtpreview)**  tooget hello nástroj spustit ještě dnes.

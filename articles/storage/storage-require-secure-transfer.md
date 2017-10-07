@@ -1,6 +1,6 @@
 ---
-title: "Vyžadovat bezpečnému přenosu ve službě Azure Storage | Microsoft Docs"
-description: "Další informace o funkci \"Vyžadovat bezpečnému přenosu\" pro Azure Storage a jak jej povolit."
+title: "zabezpečení přenosu aaaRequire ve službě Azure Storage | Microsoft Docs"
+description: "Další informace o funkci \"Vyžadovat bezpečnému přenosu\" hello pro Azure Storage a jak tooenable ho."
 services: storage
 documentationcenter: na
 author: fhryo-msft
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 06/20/2017
 ms.author: fryu
-ms.openlocfilehash: bc5b7fc79869c632db96958f17aaf953a5fd3b19
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 27f745c5e771b50213c1dbb39dee081947be1f39
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="require-secure-transfer"></a>Vyžádání bezpečného přenosu
 
-Možnost "Zabezpečení přenosu požadované" zvyšuje zabezpečení vašeho účtu úložiště tím, že pouze požadavky na účet úložiště z zabezpečené připojení. Například při volání rozhraní REST API pro přístup k účtu úložiště, je nutné připojit pomocí protokolu HTTPS. Všechny požadavky pomocí protokolu HTTP byly zamítnuty, pokud je povoleno "Zabezpečení přenosu požadované".
+možnost Hello "zabezpečený přenos požadované" zvyšuje zabezpečení hello svého účtu úložiště tím, že pouze požadavky toohello účet úložiště z zabezpečené připojení. Například při volání rozhraní REST API tooaccess účtu úložiště, je nutné připojit pomocí protokolu HTTPS. Všechny požadavky pomocí protokolu HTTP byly zamítnuty, pokud je povoleno "Zabezpečení přenosu požadované".
 
-Pokud používáte službu Azure soubory, žádné připojení bez šifrování se nezdaří, pokud "Zabezpečení přenosu požadované" je povolena. To zahrnuje scénáře s využitím protokolu SMB 2.1, protokolu SMB 3.0 bez šifrování a některých typů klient Linux SMB. 
+Pokud používáte službu Azure souborů hello, žádné připojení bez šifrování se nezdaří, pokud "Zabezpečení přenosu požadované" je povolena. To zahrnuje scénáře s využitím protokolu SMB 2.1, protokolu SMB 3.0 bez šifrování a některých typů hello klient Linux SMB. 
 
-Ve výchozím nastavení je možnost "Zabezpečení přenosu požadované" zakázaná.
+Ve výchozím nastavení hello "zabezpečený přenos požadované" možnost je vypnuta.
 
 > [!NOTE]
 > Vzhledem k tomu, že úložiště Azure nepodporuje protokol HTTPS pro vlastní názvy domén, není tato možnost použita při použití vlastního názvu domény.
 
-## <a name="enable-secure-transfer-required-in-the-azure-portal"></a>Povolit "Zabezpečení přenosu požadované" na portálu Azure
+## <a name="enable-secure-transfer-required-in-hello-azure-portal"></a>Povolit "Požadované bezpečnému přenosu" v hello portálu Azure
 
-"Zabezpečený přenos požadované" při vytvoření účtu úložiště v obě nastavení můžete povolit [portál Azure](https://portal.azure.com)a pro existující účty úložiště.
+Můžete povolit hello "zabezpečený přenos požadované" obě nastavení při vytváření účtu úložiště v hello [portál Azure](https://portal.azure.com)a pro existující účty úložiště.
 
 ### <a name="require-secure-transfer-when-you-create-a-storage-account"></a>Po vytvoření účtu úložiště vyžadovat bezpečnému přenosu
 
-1. Otevřete **vytvořit účet úložiště** okno na portálu Azure.
+1. Otevřete hello **vytvořit účet úložiště** okno v hello portálu Azure.
 1. V části **zabezpečení přenosu požadované**, vyberte **povoleno**.
 
   ![snímek obrazovky](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
 
 ### <a name="require-secure-transfer-for-an-existing-storage-account"></a>Vyžadovat bezpečnému přenosu pro stávající účet úložiště
 
-1. Vyberte stávající účet úložiště na portálu Azure.
-1. Vyberte **konfigurace** pod **nastavení** v okně nabídce účtu úložiště.
+1. Vyberte stávající účet úložiště v hello portálu Azure.
+1. Vyberte **konfigurace** pod **nastavení** v okně nabídce účtu úložiště hello.
 1. V části **zabezpečení přenosu požadované**, vyberte **povoleno**.
 
   ![snímek obrazovky](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
 
 ## <a name="enable-secure-transfer-required-programmatically"></a>Povolit "Zabezpečení přenosu požadované" prostřednictvím kódu programu
 
-Název nastavení je _supportsHttpsTrafficOnly_ ve vlastnosti účtu úložiště. Můžete povolit "Zabezpečený přenos požadované" nastavení pomocí rozhraní REST API, nástroje nebo knihovny:
+Název nastavení Hello je _supportsHttpsTrafficOnly_ ve vlastnosti účtu úložiště. Můžete povolit "Zabezpečený přenos požadované" nastavení pomocí rozhraní REST API, nástroje nebo knihovny:
 
 * **Rozhraní REST API** (verze: 2016-12-01): [balíček verze](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts)
 * **Prostředí PowerShell** (verze: 4.1.0): [balíček verze](https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/set-azurermstorageaccount?view=azurermps-4.1.0)
@@ -64,9 +64,9 @@ Název nastavení je _supportsHttpsTrafficOnly_ ve vlastnosti účtu úložišt�
 
 ### <a name="enable-secure-transfer-required-setting-with-rest-api"></a>Povolit "Zabezpečený přenos požadované" nastavení pomocí rozhraní REST API
 
-Pro zjednodušení testování pomocí rozhraní REST API, můžete použít [ArmClient](https://github.com/projectkudu/ARMClient) volat z příkazového řádku.
+toosimplify testování pomocí rozhraní REST API, můžete použít [ArmClient](https://github.com/projectkudu/ARMClient) toocall z příkazového řádku.
 
- Chcete nastavit pomocí rozhraní REST API můžete použít následující příkaz:
+ Můžete použít následující nastavení hello toocheck příkazového řádku s hello REST API:
 
 ```
 # Login Azure and proceed with your credentials
@@ -75,7 +75,7 @@ Pro zjednodušení testování pomocí rozhraní REST API, můžete použít [Ar
 > armclient GET  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}?api-version=2016-12-01
 ```
 
-V odpovědi můžete najít _supportsHttpsTrafficOnly_ nastavení. Ukázka:
+V hello odpovědi můžete najít _supportsHttpsTrafficOnly_ nastavení. Ukázka:
 
 ```Json
 {
@@ -90,7 +90,7 @@ V odpovědi můžete najít _supportsHttpsTrafficOnly_ nastavení. Ukázka:
 }
 ```
 
-Povolit nastavení pomocí rozhraní REST API můžete použít následující příkaz:
+Můžete použít následující nastavení hello tooenable příkazového řádku s hello REST API:
 
 ```
 # Login Azure and proceed with your credentials
@@ -109,4 +109,4 @@ Ukázka Input.json:
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Úložiště Azure poskytuje komplexní sadu funkcí zabezpečení, které společně umožňují vývojářům vytvářet aplikace zabezpečené. Další podrobnosti naleznete [Průvodce zabezpečením úložiště](storage-security-guide.md).
+Úložiště Azure poskytuje komplexní sadu funkcí zabezpečení, které společně umožňují vývojářům toobuild zabezpečených aplikací. Další podrobnosti najdete v článku hello [Průvodce zabezpečením úložiště](storage-security-guide.md).

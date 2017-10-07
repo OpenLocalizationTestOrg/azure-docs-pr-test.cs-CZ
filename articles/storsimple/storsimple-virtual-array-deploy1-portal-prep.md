@@ -1,6 +1,6 @@
 ---
-title: "Příprava portálu aplikace pro pole virtuální zařízení StorSimple | Microsoft Docs"
-description: "První kurz k nasazení pole virtuální zařízení StorSimple spočívá v přípravě portálu Azure"
+title: "Příprava aaaPortal pro pole virtuální zařízení StorSimple | Microsoft Docs"
+description: "První kurz toodeploy pole virtuální zařízení StorSimple spočívá v přípravě hello portálu Azure"
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,50 +15,50 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d0801053721f98ce7a2b0fcbe3c65da8dbdd8d3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5332b235e7296a9274f2e7dafcdf72f4b9cdadf6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Nasazení pole virtuálního zařízení StorSimple – Příprava portálu Azure
+# <a name="deploy-storsimple-virtual-array---prepare-hello-azure-portal"></a>Nasazení pole virtuálního zařízení StorSimple – Příprava hello portálu Azure
 
 ![](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
 ## <a name="overview"></a>Přehled
 
-Toto je první článku řady kurzy nasazení, které jsou potřebné k nasazení zcela virtuální pole jako souborový server nebo server se službou iSCSI pomocí modelu Resource Manager. Tento článek popisuje přípravu potřebné k vytvoření a konfiguraci služby StorSimple Manager zařízení před zřizování virtuální pole. Tento článek taky obsahuje odkazy na kontrolní seznam konfigurace nasazení a konfigurace požadované součásti.
+Toto je první článek hello v řadě hello kurzy nasazení vyžaduje toocompletely nasadit virtuální pole jako souborový server nebo server se službou iSCSI pomocí modelu Resource Manager hello. Tento článek popisuje hello přípravy požadované toocreate a konfigurace vašeho správce zařízení StorSimple služby předchozí tooprovisioning virtuální pole. Tento článek taky obsahuje odkazy na požadavky konfigurace a kontrolní seznam nasazení konfigurace tooa.
 
-K dokončení této instalace a procesu konfigurace potřebujete oprávnění správce. Doporučujeme, abyste si prošli kontrolní seznam konfigurace nasazení před zahájením. Příprava portálu trvá méně než 10 minut.
+Je třeba správce oprávnění toocomplete hello procesu instalace a konfigurace. Doporučujeme, abyste si prošli kontrolní seznam konfigurace nasazení hello před zahájením. Příprava portálu Hello trvá méně než 10 minut.
 
-Informace zveřejněné v tomto článku se vztahují na nasazení pole virtuální zařízení StorSimple v portálu Azure a cloudu Microsoft Azure Government.
+informace o Hello publikované v tomto článku se vztahuje toohello nasazení pole virtuální zařízení StorSimple v hello portál Azure a cloudu Microsoft Azure Government.
 
 ### <a name="get-started"></a>Začínáme
-Pracovní postup nasazení se skládá z přípravy na portálu, zřizování virtuální pole ve virtualizovaném prostředí a dokončení instalace. Chcete-li začít s nasazením pole virtuální zařízení StorSimple jako souborový server nebo server se službou iSCSI, naleznete v následující tabulce materiálech.
+pracovní postup nasazení Hello se skládá z přípravy hello portál, zřizování virtuální pole ve virtualizovaném prostředí a dokončení instalace hello. tooget začít s hello pole virtuální zařízení StorSimple nasazení jako souborový server nebo server se službou iSCSI, je nutné toorefer toohello následující tabulce prostředky.
 
 #### <a name="deployment-articles"></a>Články nasazení
 
-Nasadit pole virtuální zařízení StorSimple, naleznete v následujících článcích v předepsaných pořadí.
+toodeploy pole virtuální zařízení StorSimple, najdete v toohello následující články v pořadí určeném hello.
 
 | **#** | **V tomto kroku** | **To uděláte...** | **A použijte tyto dokumenty.** |
 | --- | --- | --- | --- |
-| 1. |**Nastavení portálu Azure** |Vytvoření a konfigurace služby StorSimple Manager zařízení před zřizování pole virtuální zařízení StorSimple. |[Příprava na portálu](storsimple-virtual-array-deploy1-portal-prep.md) |
-| 2. |**Zřizování virtuální pole** |Pro Hyper-V zřizování a připojte se k poli virtuální zařízení StorSimple v systému hostitele s technologií Hyper-V v systému Windows Server 2012 R2, Windows Server 2012 nebo Windows Server 2008 R2. <br></br> <br></br> Pro VMware zřizování a připojte se k poli virtuální zařízení StorSimple v hostitelském systému, systémem VMware ESXi 5.5 a vyšší.<br></br> |[Zřídit virtuální pole Hyper-v](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [Zřídit virtuální pole v prostředí VMware](storsimple-virtual-array-deploy2-provision-vmware.md) |
-| 3. |**Nastavit virtuální pole** |Pro souborový server provedení počáteční instalace, zaregistrujte zařízení StorSimple souborového serveru a dokončení instalace zařízení. Potom můžete zřídit sdílené složky protokolu SMB. <br></br> <br></br> Pro váš server iSCSI provedení počáteční instalace, zaregistrujte serveru iSCSI StorSimple a dokončení instalace zařízení. Potom můžete zřídit svazky iSCSI. |[Nastavit virtuální pole jako souborový server](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[Nastavit virtuální pole jako iSCSI server](storsimple-virtual-array-deploy3-iscsi-setup.md) |
+| 1. |**Nastavit hello portálu Azure** |Vytvoření a konfigurace vašeho správce zařízení StorSimple služby předchozí tooprovisioning o pole virtuální zařízení StorSimple. |[Příprava portálu hello](storsimple-virtual-array-deploy1-portal-prep.md) |
+| 2. |**Zřídit hello virtuální pole** |Pro Hyper-V zřídíte a připojit tooa pole virtuální zařízení StorSimple v systému hostitele s technologií Hyper-V v systému Windows Server 2012 R2, Windows Server 2012 nebo Windows Server 2008 R2. <br></br> <br></br> Pro VMware zřídíte a připojit tooa pole virtuální zařízení StorSimple v hostitelském systému, systémem VMware ESXi 5.5 a vyšší.<br></br> |[Zřídit virtuální pole Hyper-v](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [Zřídit virtuální pole v prostředí VMware](storsimple-virtual-array-deploy2-provision-vmware.md) |
+| 3. |**Nastavit hello virtuální pole** |Pro souborový server provedení počáteční instalace, zaregistrujte zařízení StorSimple souborového serveru a dokončení instalace zařízení hello. Potom můžete zřídit sdílené složky protokolu SMB. <br></br> <br></br> Pro váš server iSCSI provedení počáteční instalace, zaregistrujte serveru iSCSI StorSimple a dokončení instalace zařízení hello. Potom můžete zřídit svazky iSCSI. |[Nastavit virtuální pole jako souborový server](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[Nastavit virtuální pole jako iSCSI server](storsimple-virtual-array-deploy3-iscsi-setup.md) |
 
-Teď můžete začít nastavení portálu Azure.
+Teď můžete začít tooset až hello portálu Azure.
 
 ## <a name="configuration-checklist"></a>Kontrolní seznam konfigurace
 
-Kontrolní seznam konfigurace popisuje informace, které je třeba shromáždit před konfigurací softwaru na pole virtuální zařízení StorSimple. Příprava předem tyto informace pomáhají zjednodušit proces nasazení zařízení StorSimple ve vašem prostředí. V závislosti na tom, jestli je vaše pole virtuální zařízení StorSimple nasazený jako souborový server nebo server se službou iSCSI, budete potřebovat následující kontrolní seznamy.
+kontrolní seznam konfigurace Hello popisuje hello informace, je nutné toocollect před konfigurací softwaru hello na pole virtuální zařízení StorSimple. Příprava tyto informace před čas pomáhá zjednodušit hello proces nasazení zařízení StorSimple hello ve vašem prostředí. V závislosti na tom, jestli je vaše pole virtuální zařízení StorSimple nasazený jako souborový server nebo server se službou iSCSI, budete potřebovat hello následující kontrolní seznamy.
 
-* Stažení [StorSimple kontrolní seznam konfigurace virtuální pole souboru](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf).
-* Stažení [pole virtuální zařízení StorSimple iSCSI kontrolní seznam konfigurace serveru](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf).
+* Stáhnout hello [StorSimple virtuální pole souboru serveru kontrolní seznam konfigurace](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf).
+* Stáhnout hello [pole virtuální zařízení StorSimple iSCSI kontrolní seznam konfigurace serveru](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Zde zjistíte požadavky konfigurace služby StorSimple Manager zařízení StorSimple virtuální pole a síti datového centra.
+Zde zjistíte hello požadavky konfigurace služby StorSimple Manager zařízení, pole virtuální zařízení StorSimple a hello síti datového centra.
 
-### <a name="for-the-storsimple-device-manager-service"></a>Služba Správce zařízení StorSimple
+### <a name="for-hello-storsimple-device-manager-service"></a>Pro hello služby StorSimple Manager zařízení
 
 Než začnete, ujistěte se, že:
 
@@ -66,107 +66,107 @@ Než začnete, ujistěte se, že:
 * Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
 * Vaše předplatné Microsoft Azure by měl povolit pro službu StorSimple Manager zařízení.
 
-### <a name="for-the-storsimple-virtual-array"></a>Pro pole virtuální zařízení StorSimple
+### <a name="for-hello-storsimple-virtual-array"></a>Pro hello pole virtuální zařízení StorSimple
 
 Před nasazením virtuální pole, ujistěte se, že:
 
-* Máte přístup k systému hostitele s technologií Hyper-V v systému Windows Server 2008 R2 nebo novější nebo VMware (ESXi 5.5 nebo novější), kterou lze použít k zřízení zařízení.
-* Systém hostitele je možné vyhradit následující prostředky pro zřízení virtuální pole:
+* Máte přístup tooa hostitelský systém s technologií Hyper-V v systému Windows Server 2008 R2 nebo novější nebo VMware (ESXi 5.5 nebo novější), které můžou být použité tooa zřízení zařízení.
+* Hello systém hostitele je možné toodedicate hello následující prostředky tooprovision virtuální pole:
   
   * Minimálně 4 jádra.
-  * Alespoň 8 GB paměti RAM. Pokud chcete konfigurovat virtuální pole jako souborový server, 8 GB podporuje 2 miliony souborů. Je nutné 16 GB paměti RAM pro podporu 2 – 4 miliony souborů.
+  * Alespoň 8 GB paměti RAM. Pokud máte v plánu tooconfigure hello virtuální pole jako souborový server, 8 GB podporuje 2 miliony souborů. Je nutné 16 GB paměti RAM toosupport 2 – 4 miliony souborů.
   * Jedno síťové rozhraní.
   * 500 GB virtuální disk pro data systému.
 
-### <a name="for-the-datacenter-network"></a>Pro síť datového centra
+### <a name="for-hello-datacenter-network"></a>Pro síť datového centra hello
 
 Než začnete, ujistěte se, že:
 
-* Síť ve vašem datovém centru je nakonfigurovaná podle síťové požadavky pro zařízení StorSimple. Další informace najdete v tématu [StorSimple virtuální požadavky na systém pole](storsimple-ova-system-requirements.md).
+* podle hello síťové požadavky pro zařízení StorSimple je nakonfigurován Hello sítě ve vašem datovém centru. Další informace najdete v tématu hello [StorSimple virtuální požadavky na systém pole](storsimple-ova-system-requirements.md).
 * Pole virtuální zařízení StorSimple nemá vyhrazené 5 MB/s šířky pásma Internetu (nebo má více) vždy k dispozici. Tato šířky pásma nesmí sdílet s jinými aplikacemi.
 
 ## <a name="step-by-step-preparation"></a>Krok za krokem přípravy
 
-Použijte následující podrobné pokyny k přípravě portálu pro službu Správce zařízení StorSimple.
+Pomocí portálu hello následující tooprepare podrobné pokyny pro hello služby StorSimple Manager zařízení.
 
 ## <a name="step-1-create-a-new-service"></a>Krok 1: Vytvoření nové služby
 
-Jednu instanci služby StorSimple Manager zařízení můžete spravovat několik polí virtuální zařízení StorSimple. Pomocí následujících kroků vytvořte instanci služby Správce zařízení StorSimple. Pokud máte existující službu StorSimple Manager zařízení spravovat vaše virtuální pole, přeskočte tento krok a přejděte k [krok 2: získání registračního klíče služby](#step-2-get-the-service-registration-key).
+Jedna instance služby StorSimple Manager zařízení hello můžete spravovat několik polí virtuální zařízení StorSimple. Proveďte následující kroky toocreate instanci služby StorSimple Manager zařízení hello hello. Pokud máte vaše virtuální pole stávající služby toomanage Správce zařízení StorSimple, tento krok přeskočte a přejděte příliš[krok 2: registrační klíč služby hello Get](#step-2-get-the-service-registration-key).
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
 > [!IMPORTANT]
-> Pokud jste nepovolili automatické vytvoření účtu úložiště při vytvoření služby, po úspěšném vytvoření služby bude nutné vytvořit alespoň jeden účet úložiště.
+> Pokud jste nepovolili automatické vytvoření účtu úložiště hello s službou, budete potřebovat toocreate alespoň jeden účet úložiště po úspěšném vytvoření služby.
 > 
-> * Pokud jste nevytvořili účet úložiště automaticky, najdete podrobné pokyny k vytvoření účtu v tématu [Konfigurace nového účtu úložiště pro službu](#optional-step-configure-a-new-storage-account-for-the-service).
-> * Pokud jste automatické vytvoření účtu úložiště povolili, pokračujte na [krok 2: Získání registračního klíče služby](#step-2-get-the-service-registration-key).
+> * Pokud nebyl vytvořen účet úložiště automaticky, přejděte příliš[konfigurace nového účtu úložiště pro službu hello](#optional-step-configure-a-new-storage-account-for-the-service) podrobné pokyny.
+> * Pokud jste povolili hello automatické vytvoření účtu úložiště, pokračujte příliš[krok 2: registrační klíč služby hello Get](#step-2-get-the-service-registration-key).
 > 
 > 
 
-## <a name="step-2-get-the-service-registration-key"></a>Krok 2: Získání registračního klíče služby
+## <a name="step-2-get-hello-service-registration-key"></a>Krok 2: Získání registračního klíče služby hello
 
-Po vytvoření a spuštění služby Správce zařízení StorSimple je nutné získat registrační klíč služby. Tento klíč se používá k registraci a připojení zařízení StorSimple ke službě.
+Po hello služby StorSimple Manager zařízení je spuštěný a funkční, budete potřebovat registrační klíč služby hello tooget. Tento klíč je použité tooregister a připojení zařízení StorSimple službou hello.
 
-Proveďte následující kroky v [portál Azure](https://portal.azure.com/).
+Proveďte následující kroky v hello hello [portál Azure](https://portal.azure.com/).
 
 [!INCLUDE [storsimple-virtual-array-get-service-registration-key](../../includes/storsimple-virtual-array-get-service-registration-key.md)]
 
 > [!NOTE]
-> Registrační klíč služby slouží k registraci všech zařízení StorSimple Manager zařízení, které potřebují registrovat ve službě StorSimple Manager zařízení.
+> Hello registrační klíč služby je použité tooregister všechny hello zařízení StorSimple Manager zařízení, která vyžadují tooregister s služby StorSimple Manager zařízení.
 > 
 > 
 
-## <a name="step-3-download-the-virtual-array-image"></a>Krok 3: Stáhnout bitovou kopii virtuálního pole
+## <a name="step-3-download-hello-virtual-array-image"></a>Krok 3: Stáhnout bitovou kopii virtuálního pole hello
 
-Až budete mít registrační klíč služby, musíte stáhnout bitovou kopii odpovídající virtuální pole ke zřízení virtuálních pole v systému hostitele. Image virtuálního pole jsou specifické pro operační systém a lze ji stáhnout ze stránky rychlý Start na portálu Azure.
+Až budete mít registrační klíč služby hello, budete potřebovat toodownload hello příslušné virtuální pole image tooprovision virtuální pole v systému hostitele. Hello virtuální pole Image jsou specifické pro operační systém a lze ji stáhnout ze stránky rychlý Start hello v hello portálu Azure.
 
 > [!IMPORTANT]
-> Software spuštěný na poli virtuální zařízení StorSimple lze použít pouze se službou Správce zařízení StorSimple.
+> Hello software spuštěný na hello pole virtuální zařízení StorSimple lze použít pouze s hello služby StorSimple Manager zařízení.
 > 
 > 
 
-Proveďte následující kroky v [portál Azure](https://portal.azure.com/).
+Proveďte následující kroky v hello hello [portál Azure](https://portal.azure.com/).
 
-#### <a name="to-get-the-virtual-array-image"></a>Chcete-li získat bitovou kopii virtuálního pole
+#### <a name="tooget-hello-virtual-array-image"></a>Obrázek virtuální pole tooget hello
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). 
-2. Na portálu Azure klikněte na tlačítko **procházet > Správci zařízení StorSimple**.
-3. Vyberte existující službu StorSimple Manager zařízení. V **Manager zařízení StorSimple** okně klikněte na tlačítko **rychlý Start**. 
-4. Kliknutím na odkaz odpovídající bitovou kopii, kterou chcete stáhnout z webu Microsoft Download Center. Soubory image jsou přibližně 4,8 GB.
+1. Přihlaste se k hello [portál Azure](https://portal.azure.com/). 
+2. V hello portálu Azure, klikněte na **procházet > Správci zařízení StorSimple**.
+3. Vyberte existující službu StorSimple Manager zařízení. V hello **Manager zařízení StorSimple** okně klikněte na tlačítko **rychlý Start**. 
+4. Klikněte na tlačítko hello odkaz odpovídající toohello bitové kopie, které chcete toodownload z hello Microsoft Download Center. soubory Hello image jsou přibližně 4,8 GB.
    
    * VHDX pro Hyper-V v systému Windows Server 2012 a novější
    * Virtuální pevný disk pro technologii Hyper-V v systému Windows Server 2008 R2 a novější
    * VMDK pro VMWare ESXi 5.5 a novější
-5. Stáhněte a rozbalte soubor na místní disk, což poznámku o kterém se nachází soubor rozbalené.
+5. Stáhněte a rozbalte hello souboru tooa místní disk, provádění poznamenejte si kde je umístěn soubor rozbalené hello.
 
-## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Volitelný krok: Konfigurace nového účtu úložiště pro službu
+## <a name="optional-step-configure-a-new-storage-account-for-hello-service"></a>Volitelný krok: Konfigurace nového účtu úložiště pro službu hello
 
-Tento krok je volitelný a musí provést pouze v případě, že jste nepovolili automatické vytvoření účtu úložiště s vaší služby.
+Tento krok je volitelný a musí provést pouze v případě, že jste nepovolili automatické vytvoření účtu úložiště hello s vaší služby.
 
-Pokud potřebujete vytvořit účet úložiště Azure v jiné oblasti, přečtěte si téma [postup vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account) podrobné pokyny.
+Pokud potřebujete toocreate účet úložiště Azure v jiné oblasti, přečtěte si [jak toocreate účet úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account) podrobné pokyny.
 
-Proveďte následující kroky v [portál Azure](https://ms.portal.azure.com/) na stránce služby StorSimple Manager zařízení přidat existující účet úložiště Microsoft Azure.
+Proveďte následující kroky v hello hello [portál Azure](https://ms.portal.azure.com/) na hello Správce zařízení StorSimple služby stránky tooadd stávající účet úložiště Microsoft Azure.
 
-#### <a name="to-add-a-storage-account-credential-that-has-the-same-azure-subscription-as-the-device-manager-service"></a>Chcete-li přidat přihlašovací údaje účtu úložiště, který má stejné předplatné jako služba Správce zařízení
+#### <a name="tooadd-a-storage-account-credential-that-has-hello-same-azure-subscription-as-hello-device-manager-service"></a>hello tooadd pověření účtu úložiště, který má stejné předplatné jako služba hello Správce zařízení
 
-1. Přejděte do vaší služby Správce zařízení, vyberte a dvakrát na ni klikněte. Tím se otevře **přehled** okno.
-2. Vyberte **přihlašovacích údajů účtu úložiště** v rámci **konfigurace** části.
+1. Přejděte tooyour služby Správce zařízení, vyberte a dvakrát na ni klikněte. Tím se otevře hello **přehled** okno.
+2. Vyberte **přihlašovacích údajů účtu úložiště** v rámci hello **konfigurace** části.
 3. Klikněte na tlačítko **Přidat**.
-4. V **přidání účtu úložiště** okno, postupujte takto:
+4. V hello **přidání účtu úložiště** okně hello následující:
    
     1. Pro **předplatné**, vyberte **aktuální**.
    
-    2. Zadejte název účtu úložiště Azure.
+    2. Zadejte název hello svého účtu úložiště Azure.
    
-    3. Vyberte **povolit** vytvořit zabezpečený kanál pro síťovou komunikaci mezi zařízení StorSimple a cloudem. Vyberte **zakázat** pouze v případě, že pracujete v privátním cloudu.
+    3. Vyberte **povolit** toocreate zabezpečený kanál pro síťovou komunikaci mezi StorSimple zařízení a hello cloudu. Vyberte **zakázat** pouze v případě, že pracujete v privátním cloudu.
    
-    4. Klikněte na tlačítko **Přidat**. Upozornění se zobrazí po úspěšném vytvoření účtu úložiště.<br></br>
+    4. Klikněte na tlačítko **Přidat**. Upozornění se zobrazí po úspěšném vytvoření účtu úložiště hello.<br></br>
    
      ![Přidat existující přihlašovací údaje účtu úložiště](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
 ## <a name="next-step"></a>Další krok
 
-Dalším krokem je zřízení virtuálního počítače pro pole virtuální zařízení StorSimple. V závislosti na operačním systému hostitele najdete podrobné pokyny v:
+dalším krokem Hello je tooprovision virtuálního počítače pro pole virtuální zařízení StorSimple. V závislosti na operačním systému hostitele najdete podrobné pokyny v hello:
 
 * [Zřídit o virtuální zařízení StorSimple pole technologie Hyper-v](storsimple-virtual-array-deploy2-provision-hyperv.md)
 * [Zřídit o virtuální zařízení StorSimple pole v prostředí VMware](storsimple-virtual-array-deploy2-provision-vmware.md)

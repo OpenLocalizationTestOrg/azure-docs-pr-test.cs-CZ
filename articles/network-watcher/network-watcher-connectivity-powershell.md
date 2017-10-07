@@ -1,6 +1,6 @@
 ---
-title: "Zkontrolujte připojení s sledovací proces sítě Azure – prostředí PowerShell | Microsoft Docs"
-description: "Tato stránka vysvětluje, jak k testování připojení s sledovací proces sítě pomocí prostředí PowerShell"
+title: "aaaCheck připojení s sledovací proces sítě Azure – prostředí PowerShell | Microsoft Docs"
+description: "Tato stránka vysvětluje, jak tootest připojení s sledovací proces sítě pomocí prostředí PowerShell"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: gwallace
-ms.openlocfilehash: a8f936cd23838759dc30b04688d3c6544e4895cc
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4bcb90a72f178445c38b7bd7fc5054c5d0c200bb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="check-connectivity-with-azure-network-watcher-using-powershell"></a>Zkontrolujte připojení s sledovací proces sítě Azure pomocí prostředí PowerShell
 
@@ -27,37 +27,37 @@ ms.lasthandoff: 08/18/2017
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
 > - [Rozhraní API Azure REST](network-watcher-connectivity-rest.md)
 
-Naučte se používat připojení k ověření, pokud lze navázat přímé připojení TCP z virtuálního počítače do daného koncového bodu.
+Zjistěte, jak by bylo možné navázat připojení tooverify toouse Pokud přímé připojení TCP z virtuálního počítače tooa, zadaný koncový bod.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento článek předpokládá, že máte v následujících zdrojích informací:
+Tento článek předpokládá, že máte hello následující prostředky:
 
-* Instance sledovací proces sítě v oblasti, které chcete zkontrolovat připojení.
+* Instance sledovací proces sítě v hello oblasti, kterou chcete toocheck připojení.
 
-* Zkontrolujte připojení k virtuálním počítačům.
+* Virtuální počítače připojení toocheck s.
 
 [!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 > [!IMPORTANT]
-> Kontrola připojení vyžaduje rozšíření virtuálního počítače `AzureNetworkWatcherExtension`. Instalaci rozšíření na virtuální počítač s Windows najdete v článku [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Windows](../virtual-machines/windows/extensions-nwa.md) a u virtuálního počítače s Linuxem, navštivte [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Linux](../virtual-machines/linux/extensions-nwa.md).
+> Kontrola připojení vyžaduje rozšíření virtuálního počítače `AzureNetworkWatcherExtension`. Instaluje se rozšíření hello na virtuální počítač s Windows najdete v článku [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Windows](../virtual-machines/windows/extensions-nwa.md) a u virtuálního počítače s Linuxem, navštivte [rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Linux](../virtual-machines/linux/extensions-nwa.md).
 
-## <a name="register-the-preview-capability"></a>Registrace funkce preview
+## <a name="register-hello-preview-capability"></a>Zaregistrovat hello funkce preview
 
-Připojení je aktuálně ve verzi public preview k použití této funkce, které musí být registrováno. Chcete-li to provést, spusťte následující ukázku v prostředí PowerShell:
+Připojení je aktuálně ve verzi public preview, toouse tato funkce je nutné toobe zaregistrován. toodo se spuštění hello následující ukázka prostředí PowerShell:
 
 ```powershell
 Register-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace Microsoft.Network
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
-Chcete-li ověřit, zda že byla registrace úspěšná, spusťte následující ukázku v prostředí Powershell:
+tooverify hello registrace byla úspěšná, spusťte hello následující ukázka prostředí Powershell:
 
 ```powershell
 Get-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace  Microsoft.Network
 ```
 
-Pokud funkci byla správně zaregistrovány, by měl odpovídat následující výstup:
+Pokud funkce hello byla správně zaregistrovány, hello výstup by měl odpovídat hello následující:
 
 ```
 FeatureName         ProviderName      RegistrationState
@@ -65,9 +65,9 @@ FeatureName         ProviderName      RegistrationState
 AllowNetworkWatcherConnectivityCheck  Microsoft.Network Registered
 ```
 
-## <a name="check-connectivity-to-a-virtual-machine"></a>Zkontrolujte připojení k virtuálnímu počítači
+## <a name="check-connectivity-tooa-virtual-machine"></a>Zkontrolujte připojení k tooa virtuálního počítače
 
-Tento příklad zkontroluje připojení k cílovému virtuálnímu počítači přes port 80.
+Tento příklad zkontroluje připojení tooa cílového virtuálního počítače přes port 80.
 
 ### <a name="example"></a>Příklad
 
@@ -89,7 +89,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Odpověď
 
-Následující odpověď je z předchozího příkladu.  V této odpovědi `ConnectionStatus` je **Unreachable**. Uvidíte, že všechny sondy neodesílají se nezdařilo. Připojení se nezdařilo u virtuálního zařízení z důvodu nakonfigurován uživatel `NetworkSecurityRule` s názvem **UserRule_Port80**, nakonfigurovaná tak, aby blokovala příchozí přenosy na portu 80. Tyto informace můžete použít pro zkoumání problémů s připojením.
+Hello následující odpověď je z předchozího příkladu hello.  V této odpovědi hello `ConnectionStatus` je **Unreachable**. Uvidíte, že všechny hello sondy odeslání se nezdařilo. Hello připojení se nezdařilo u virtuálního zařízení hello kvůli tooa uživatelem nakonfigurovaného `NetworkSecurityRule` s názvem **UserRule_Port80**, nakonfigurované tooblock příchozí přenosy na portu 80. Tato informace může být použité tooresearch problémů s připojením.
 
 ```
 ConnectionStatus : Unreachable
@@ -162,7 +162,7 @@ Hops             : [
 
 ## <a name="validate-routing-issues"></a>Ověření směrování problémy
 
-V příkladu ověří připojení mezi virtuálním počítačem a vzdálený koncový bod.
+Příklad Hello ověří připojení mezi virtuálním počítačem a vzdálený koncový bod.
 
 ### <a name="example"></a>Příklad
 
@@ -182,7 +182,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Odpověď
 
-V následujícím příkladu `ConnectionStatus` se zobrazí jako **Unreachable**. V `Hops` podrobnosti, můžete zobrazit v části `Issues` blokovaného provoz z důvodu `UserDefinedRoute`. 
+V následujícím příkladu hello, hello `ConnectionStatus` se zobrazí jako **Unreachable**. V hello `Hops` podrobnosti, můžete zobrazit v části `Issues` že hello provoz byl zablokován kvůli tooa `UserDefinedRoute`. 
 
 ```
 ConnectionStatus : Unreachable
@@ -227,7 +227,7 @@ Hops             : [
 
 ## <a name="check-website-latency"></a>Zkontrolujte latence webu
 
-Následující příklad zkontroluje připojení k webu.
+Hello následující příklad zkontroluje hello připojení tooa webu.
 
 ### <a name="example"></a>Příklad
 
@@ -247,7 +247,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Odpověď
 
-V následující odpověď, se zobrazí `ConnectionStatus` zobrazuje jako **dostupné**. Pokud je připojení úspěšné, jsou uvedeny hodnoty latence.
+V následující odpověď hello, uvidíte hello `ConnectionStatus` zobrazuje jako **dostupné**. Pokud je připojení úspěšné, jsou uvedeny hodnoty latence.
 
 ```
 ConnectionStatus : Reachable
@@ -278,9 +278,9 @@ Hops             : [
                    ]
 ```
 
-## <a name="check-connectivity-to-a-storage-endpoint"></a>Zkontrolujte připojení ke koncovému bodu úložiště
+## <a name="check-connectivity-tooa-storage-endpoint"></a>Zkontrolujte připojení koncový bod úložiště tooa
 
-Následující příklad Otestuje připojení z virtuálního počítače na účet úložiště blogu.
+Následující ukázka Hello Otestuje připojení hello z účtu úložiště virtuálního počítače tooa blogu.
 
 ### <a name="example"></a>Příklad
 
@@ -300,7 +300,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Odpověď
 
-Následujícím kódu json je spustit rutinu předchozí příklad odpověď. Jako cílové místo je dostupná, `ConnectionStatus` vlastnost zobrazuje jako **dostupné**.  Jsou k dispozici podrobnosti týkající se počet skoků potřebná k získání přístupu objektu blob storage a latenci.
+Hello následujícím kódu json je hello příklad odpověď z spuštění rutiny předchozí hello. Jako cíl hello je dostupný, hello `ConnectionStatus` vlastnost zobrazuje jako **dostupné**.  Jsou k dispozici hello podrobnosti týkající se hello počet segmentů směrování požadované tooreach hello úložiště objektů blob a latenci.
 
 ```
 ConnectionStatus : Reachable
@@ -335,7 +335,7 @@ Hops             : [
 
 Najít, pokud určité provoz je povolený v nebo z virtuálního počítače navštivte stránky [zkontrolujte IP tok ověření](network-watcher-check-ip-flow-verify-portal.md)
 
-Pokud je blokován provoz a neměl by být, najdete v části [spravovat skupiny zabezpečení sítě](../virtual-network/virtual-network-manage-nsg-arm-portal.md) sledovat pravidla zabezpečení sítě skupiny a zabezpečení, které jsou definovány.
+Pokud je blokován provoz a neměl by být, najdete v části [spravovat skupiny zabezpečení sítě](../virtual-network/virtual-network-manage-nsg-arm-portal.md) tootrack dolů hello pravidla zabezpečení sítě skupiny a zabezpečení, které jsou definovány.
 
 <!-- Image references -->
 

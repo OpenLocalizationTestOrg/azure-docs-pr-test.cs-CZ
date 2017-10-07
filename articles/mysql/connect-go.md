@@ -1,6 +1,6 @@
 ---
-title: "Připojení k Azure Database for MySQL pomocí Go | Dokumentace Microsoftu"
-description: "V tomto rychlém startu najdete několik vzorových kódů jazyka Go, které můžete použít k připojení a dotazování dat ze služby Azure Database for MySQL."
+title: "Připojit tooAzure databáze pro databázi MySQL pomocí přejděte | Microsoft Docs"
+description: "Tento rychlý start poskytuje několik přejděte ukázky kódu, můžete použít tooconnect a zadávat dotazy na data z databáze Azure pro databázi MySQL."
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
@@ -11,32 +11,32 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: hero-article
 ms.date: 07/18/2017
-ms.openlocfilehash: 42a6b1c37de08971674c8b38f1e13bfd657f8b03
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: e8067b807ee729e04850c5325f476806bcd54983
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí jazyka Go
-Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí kódu napsaného v jazyce [Go](https://golang.org/) z platforem Windows, Ubuntu Linux a Apple macOS. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. V tomto článku se předpokládá, že máte zkušenosti s vývojem pomocí jazyka Go, ale teprve začínáte pracovat se službou Azure Database for MySQL.
+# <a name="azure-database-for-mysql-use-go-language-tooconnect-and-query-data"></a>Azure databáze pro databázi MySQL: přejít pomocí jazyka tooconnect a dotazování dat
+Tento rychlý start předvádí jak tooconnect tooan databáze Azure pro používání MySQL kód napsaný v hello [přejděte](https://golang.org/) jazyka z systému macOS platformy Windows, Ubuntu Linux a Apple. Zobrazuje jak toouse tooquery příkazy SQL, vložit, aktualizovat a odstranit data v databázi hello. Tento článek předpokládá, že jste obeznámeni s vývojem pomocí přejít, ale, že se nový tooworking s Azure Database pro databázi MySQL.
 
 ## <a name="prerequisites"></a>Požadavky
-Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
+Tento rychlý start využívá prostředky hello vytvořené v některém z těchto průvodcích se dozvíte jako výchozí bod:
 - [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 ## <a name="install-go-and-mysql-connector"></a>Instalace jazyka Go a konektoru MySQL
-Nainstalujte na svém počítači jazyk [Go](https://golang.org/doc/install) a ovladač [go-sql-driver for MySQL](https://github.com/go-sql-driver/mysql#installation). V závislosti na vaší platformě postupujte podle příslušných kroků:
+Nainstalujte [přejděte](https://golang.org/doc/install) a hello [přejděte ovladače sql pro databázi MySQL](https://github.com/go-sql-driver/mysql#installation) na vlastním počítači. V závislosti na platformě postupujte podle kroků hello:
 
 ### <a name="windows"></a>Windows
-1. [Stáhněte](https://golang.org/dl/) a nainstalujte jazyk Go pro Microsoft Windows podle [pokynů k instalaci](https://golang.org/doc/install).
-2. Z nabídky Start spusťte příkazový řádek.
+1. [Stáhněte si](https://golang.org/dl/) a nainstalujte přejděte pro Microsoft Windows podle toohello [pokyny k instalaci](https://golang.org/doc/install).
+2. Spusťte příkazový řádek hello z nabídky start hello.
 3. Vytvořte složku pro váš projekt, například: `mkdir  %USERPROFILE%\go\src\mysqlgo`.
-4. Změňte adresář na složku projektu, například `cd %USERPROFILE%\go\src\mysqlgo`.
-5. Nastavte proměnnou prostředí GOPATH tak, aby odkazovala na adresář se zdrojovým kódem. `set GOPATH=%USERPROFILE%\go`.
-6. Nainstalujte ovladač [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) spuštěním příkazu`go get github.com/go-sql-driver/mysql`.
+4. Změnit adresář, do složky hello projektu, například `cd %USERPROFILE%\go\src\mysqlgo`.
+5. Nastavit proměnnou prostředí hello pro GOPATH toopoint toohello zdrojový kód adresář. `set GOPATH=%USERPROFILE%\go`.
+6. Nainstalujte hello [přejděte ovladače sql pro databázi mysql](https://github.com/go-sql-driver/mysql#installation) spuštěním hello `go get github.com/go-sql-driver/mysql` příkaz.
 
-   Stručně řečeno, nainstalujte jazyk Go a potom na příkazovém řádku spusťte následující příkazy:
+   V souhrnu nainstalujte přejděte a potom spusťte tyto příkazy v příkazovém řádku hello:
    ```cmd
    mkdir  %USERPROFILE%\go\src\mysqlgo
    cd %USERPROFILE%\go\src\mysqlgo
@@ -45,12 +45,12 @@ Nainstalujte na svém počítači jazyk [Go](https://golang.org/doc/install) a o
    ```
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-1. Spusťte prostředí Bash. 
+1. Spusťte prostředí Bash hello. 
 2. Nainstalujte jazyk Go spuštěním příkazu `sudo apt-get install golang-go`.
 3. Ve svém domovském adresáři vytvořte složku pro projekt, například `mkdir -p ~/go/src/mysqlgo/`.
-4. Změňte adresář na tuto složku, například `cd ~/go/src/mysqlgo/`.
-5. Nastavte proměnnou prostředí GOPATH tak, aby odkazovala na platný zdrojový adresář, jako je například aktuální složka go ve vašem domovském adresáři. Spuštěním příkazu `export GOPATH=~/go` v prostředí Bash přidejte adresář go jako hodnotu proměnné GOPATH pro aktuální relaci prostředí.
-6. Nainstalujte ovladač [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) spuštěním příkazu`go get github.com/go-sql-driver/mysql`.
+4. Změnit adresář, jako například do složky hello `cd ~/go/src/mysqlgo/`.
+5. Sada hello GOPATH prostředí proměnné toopoint tooa platný zdrojový adresář, jako je vaše aktuální domovské adresáře přejít složku. V prostředí bash hello, spusťte `export GOPATH=~/go` tooadd hello přejděte directory jako hello GOPATH pro aktuální relaci prostředí hello.
+6. Nainstalujte hello [přejděte ovladače sql pro databázi mysql](https://github.com/go-sql-driver/mysql#installation) spuštěním hello `go get github.com/go-sql-driver/mysql` příkaz.
 
    Stručně řečeno, spusťte tyto příkazy Bash:
    ```bash
@@ -62,12 +62,12 @@ Nainstalujte na svém počítači jazyk [Go](https://golang.org/doc/install) a o
    ```
 
 ### <a name="apple-macos"></a>Apple macOS
-1. Stáhněte a nainstalujte jazyk Go podle [pokynů k instalaci](https://golang.org/doc/install) odpovídajících vaší platformě. 
-2. Spusťte prostředí Bash. 
+1. Stáhněte a nainstalujte přejděte podle toohello [pokyny k instalaci](https://golang.org/doc/install) odpovídající vaši platformu. 
+2. Spusťte prostředí Bash hello. 
 3. Ve svém domovském adresáři vytvořte složku pro projekt, například `mkdir -p ~/go/src/mysqlgo/`.
-4. Změňte adresář na tuto složku, například `cd ~/go/src/mysqlgo/`.
-5. Nastavte proměnnou prostředí GOPATH tak, aby odkazovala na platný zdrojový adresář, jako je například aktuální složka go ve vašem domovském adresáři. Spuštěním příkazu `export GOPATH=~/go` v prostředí Bash přidejte adresář go jako hodnotu proměnné GOPATH pro aktuální relaci prostředí.
-6. Nainstalujte ovladač [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) spuštěním příkazu`go get github.com/go-sql-driver/mysql`.
+4. Změnit adresář, jako například do složky hello `cd ~/go/src/mysqlgo/`.
+5. Sada hello GOPATH prostředí proměnné toopoint tooa platný zdrojový adresář, jako je vaše aktuální domovské adresáře přejít složku. V prostředí bash hello, spusťte `export GOPATH=~/go` tooadd hello přejděte directory jako hello GOPATH pro aktuální relaci prostředí hello.
+6. Nainstalujte hello [přejděte ovladače sql pro databázi mysql](https://github.com/go-sql-driver/mysql#installation) spuštěním hello `go get github.com/go-sql-driver/mysql` příkaz.
 
    Stručně řečeno, nainstalujte jazyk Go a potom spusťte tyto příkazy Bash:
    ```bash
@@ -78,32 +78,32 @@ Nainstalujte na svém počítači jazyk [Go](https://golang.org/doc/install) a o
    ```
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
-Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
+Získáte hello připojení informace potřebné tooconnect toohello Azure Database pro databázi MySQL. Musíte hello serveru plně kvalifikovaný název a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
-2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server, například **myserver4demo**.
-3. Klikněte na název serveru **myserver4demo**.
-4. Vyberte stránku **Vlastnosti** serveru. Poznamenejte si **Název serveru** a **Přihlašovací jméno správce serveru**.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
+2. Hello levé nabídce na portálu Azure, klikněte na tlačítko **všechny prostředky** a vyhledejte hello serveru můžete mít pokrčené, jako například **myserver4demo**.
+3. Klikněte na název serveru hello **myserver4demo**.
+4. Vyberte hello serveru **vlastnosti** stránky. Poznamenejte si hello **název serveru** a **přihlašovací jméno pro Server správce**.
  ![Azure Database for MySQL – přihlašovací jméno správce serveru](./media/connect-go/1_server-properties-name-login.png)
-5. Pokud zapomenete přihlašovací údaje k serveru, přejděte na stránku **Přehled**, kde můžete zobrazit přihlašovací jméno správce serveru a v případě potřeby resetovat heslo.
+5. Pokud zapomenete vaše přihlašovací údaje serveru, přejděte toohello **přehled** stránka tooview hello serveru správce přihlašovací jméno a v případě potřeby obnovit heslo hello.
    
 
 ## <a name="build-and-run-go-code"></a>Sestavení a spuštění kódu jazyka Go 
-1. K psaní kódu jazyka Go můžete použít jednoduchý textový editor, jako je Poznámkový blok v systému Microsoft Windows, [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) nebo [Nano](https://www.nano-editor.org/) v systému Ubuntu nebo TextEdit v systému macOS. Pokud dáváte přednost bohatšímu integrovanému vývojovému prostředí (IDE), vyzkoušejte [Gogland](https://www.jetbrains.com/go/) od JetBrains, [Visual Studio Code](https://code.visualstudio.com/) od Microsoftu nebo [Atom](https://atom.io/).
-2. Kód jazyka Go z dalších částí vložte do textových souborů a tyto soubory uložte do složky vašeho projektu s příponou \*.go, například `%USERPROFILE%\go\src\mysqlgo\createtable.go` (cesta ve Windows) nebo `~/go/src/mysqlgo/createtable.go` (cesta v Linuxu).
-3. V kódu vyhledejte konstanty `HOST`, `DATABASE`, `USER` a `PASSWORD` a příklady hodnot nahraďte vlastními hodnotami. 
-4. Spusťte příkazový řádek nebo prostředí Bash. Změňte adresář na složku vašeho projektu. Například ve Windows pomocí příkazu `cd %USERPROFILE%\go\src\mysqlgo\`. V Linuxu pomocí příkazu `cd ~/go/src/mysqlgo/`.  Některá ze zmíněných integrovaných vývojových prostředí (IDE) nabízejí možnosti ladění a modulu runtime, které nevyžadují příkazy prostředí.
-5. Spusťte kód zadáním příkazu `go run createtable.go`, který aplikaci zkompiluje a spustí. 
-6. Alternativně, pokud z kódu chcete sestavit nativní aplikaci, spusťte příkaz `go build createtable.go` a pak aplikaci spusťte pomocí souboru `createtable.exe`.
+1. toowrite Golang kódu, můžete použít jednoduchý textový editor, například Poznámkový blok v systému Windows [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) nebo [Nano](https://www.nano-editor.org/) v Ubuntu nebo TextEdit v systému macOS. Pokud dáváte přednost bohatšímu integrovanému vývojovému prostředí (IDE), vyzkoušejte [Gogland](https://www.jetbrains.com/go/) od JetBrains, [Visual Studio Code](https://code.visualstudio.com/) od Microsoftu nebo [Atom](https://atom.io/).
+2. Vložte hello kód přejít z hello oddílech do textových souborů a uložit do složky projektu s příponou \*.go, například Windows – cesta `%USERPROFILE%\go\src\mysqlgo\createtable.go` nebo Linux cestu `~/go/src/mysqlgo/createtable.go`.
+3. Vyhledejte hello `HOST`, `DATABASE`, `USER`, a `PASSWORD` konstanty v hello kód a nahraďte hello ukázkové hodnoty vlastními hodnotami. 
+4. Spusťte příkazový řádek hello nebo bash prostředí. Změňte adresář na složku vašeho projektu. Například ve Windows pomocí příkazu `cd %USERPROFILE%\go\src\mysqlgo\`. V Linuxu pomocí příkazu `cd ~/go/src/mysqlgo/`.  Některé editory hello IDE uvedená nabízí možnosti ladění a runtime bez nutnosti příkazů prostředí.
+5. Spuštění kódu hello zadáním příkazu hello `go run createtable.go` toocompile hello aplikace a potom ho spusťte. 
+6. Alternativně toobuild hello kód do nativní aplikace `go build createtable.go`, spusťte `createtable.exe` toorun hello aplikace.
 
 ## <a name="connect-create-table-and-insert-data"></a>Připojení, vytvoření tabulky a vložení dat
-Pomocí následujícího kódu se připojte k serveru, vytvořte tabulku a nahrajte data s využitím příkazu **INSERT** jazyka SQL. 
+Použití hello následující kód serveru toohello tooconnect, vytvořit tabulku a načtení dat pomocí hello **vložit** příkaz jazyka SQL. 
 
-Kód importuje tři balíčky: [balíček sql](https://golang.org/pkg/database/sql/), balíček [go sql driver for mysql](https://github.com/go-sql-driver/mysql#installation) jako ovladač pro komunikaci se službou Azure Database for MySQL a [balíček fmt](https://golang.org/pkg/fmt/) pro tisk vstupů a výstupů na příkazovém řádku.
+Hello kód importuje tři balíčky: hello [balíček sql](https://golang.org/pkg/database/sql/), hello [ovladače přejděte sql pro databázi mysql](https://github.com/go-sql-driver/mysql#installation) jako ovladač toocommunicate s hello Azure Database pro databázi MySQL a hello [fmt balíček](https://golang.org/pkg/fmt/)pro tištěné vstup a výstup hello příkazového řádku.
 
-Kód volá metodu [sql.Open()](http://go-database-sql.org/accessing.html) pro připojení ke službě Azure Database for MySQL a pomocí metody [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) zkontroluje stav připojení. Po celou dobu se používá [popisovač databáze](https://golang.org/pkg/database/sql/#DB), který uchovává fond připojení pro databázový server. Kód několikrát volá metodu [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) pro spuštění několika příkazů jazyka DDL. Kód také pomocí metod [Prepare()](http://go-database-sql.org/prepared.html) a Exec() spouští připravené příkazy s různými parametry pro vložení tří řádků. Pokaždé se pomocí vlastní metody checkError() zkontroluje, jestli nedošlo k chybě, a pokud k nějaké dojde, kód se nouzově ukončí.
+Hello kód zavolá metodu [sql. Open()](http://go-database-sql.org/accessing.html) tooconnect tooAzure databáze MySQL a kontroly hello připojení pomocí metody [db. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). A [popisovač databáze](https://golang.org/pkg/database/sql/#DB) se používá napříč, která uchovává hello fondu připojení pro server databáze hello. Hello kód volání hello [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) metoda několikrát toorun několik příkazy DDL. Hello kód také používá hello [Prepare()](http://go-database-sql.org/prepared.html) a Exec() toorun připravené příkazy s odlišnými parametry tooinsert tři řádky. Pokaždé, když metoda vlastní checkError() je použité toocheck, pokud došlo k chybě a mít obavy tooexit.
 
-Nahraďte konstanty `host`, `database`, `user` a `password` vlastními hodnotami. 
+Nahraďte hello `host`, `database`, `user`, a `password` konstanty vlastními hodnotami. 
 
 ```Go
 package main
@@ -140,7 +140,7 @@ func main() {
 
     err = db.Ping()
     checkError(err)
-    fmt.Println("Successfully created connection to database.")
+    fmt.Println("Successfully created connection toodatabase.")
 
     // Drop previous table of same name if one exists.
     _, err = db.Exec("DROP TABLE IF EXISTS inventory;")
@@ -174,13 +174,13 @@ func main() {
 ```
 
 ## <a name="read-data"></a>Čtení dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **SELECT** jazyka SQL. 
+Použití hello následující kód tooconnect a čtení dat pomocí hello **vyberte** příkaz jazyka SQL. 
 
-Kód importuje tři balíčky: [balíček sql](https://golang.org/pkg/database/sql/), balíček [go sql driver for mysql](https://github.com/go-sql-driver/mysql#installation) jako ovladač pro komunikaci se službou Azure Database for MySQL a [balíček fmt](https://golang.org/pkg/fmt/) pro tisk vstupů a výstupů na příkazovém řádku.
+Hello kód importuje tři balíčky: hello [balíček sql](https://golang.org/pkg/database/sql/), hello [ovladače přejděte sql pro databázi mysql](https://github.com/go-sql-driver/mysql#installation) jako ovladač toocommunicate s hello Azure Database pro databázi MySQL a hello [fmt balíček](https://golang.org/pkg/fmt/)pro tištěné vstup a výstup hello příkazového řádku.
 
-Kód volá metodu [sql.Open()](http://go-database-sql.org/accessing.html) pro připojení ke službě Azure Database for MySQL a pomocí metody [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) zkontroluje stav připojení. Po celou dobu se používá [popisovač databáze](https://golang.org/pkg/database/sql/#DB), který uchovává fond připojení pro databázový server. Kód volá metodu [Query()](https://golang.org/pkg/database/sql/#DB.Query) pro spuštění příkazu select. Potom spustí metodu [Next()](https://golang.org/pkg/database/sql/#Rows.Next) pro iteraci sadou výsledků dotazu a metodu [Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) pro parsování hodnot sloupců a uložení těchto hodnot do proměnných. Pokaždé se pomocí vlastní metody checkError() zkontroluje, jestli nedošlo k chybě, a pokud k nějaké dojde, kód se nouzově ukončí.
+Hello kód zavolá metodu [sql. Open()](http://go-database-sql.org/accessing.html) tooconnect tooAzure databáze MySQL a kontroly hello připojení pomocí metody [db. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). A [popisovač databáze](https://golang.org/pkg/database/sql/#DB) se používá napříč, která uchovává hello fondu připojení pro server databáze hello. Hello kód volání hello [Query()](https://golang.org/pkg/database/sql/#DB.Query) metoda toorun hello vyberte příkaz. Pak spustí [Next()](https://golang.org/pkg/database/sql/#Rows.Next) tooiterate prostřednictvím sadu výsledků hello a [Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) tooparse hodnoty ve sloupcích hello, ukládání hello hodnotu do proměnné. Pokaždé, když metoda vlastní checkError() je použité toocheck, pokud došlo k chybě a mít obavy tooexit.
 
-Nahraďte konstanty `host`, `database`, `user` a `password` vlastními hodnotami. 
+Nahraďte hello `host`, `database`, `user`, a `password` konstanty vlastními hodnotami. 
 
 ```Go
 package main
@@ -217,7 +217,7 @@ func main() {
 
     err = db.Ping()
     checkError(err)
-    fmt.Println("Successfully created connection to database.")
+    fmt.Println("Successfully created connection toodatabase.")
 
     // Variables for printing column data when scanned.
     var (
@@ -226,7 +226,7 @@ func main() {
         quantity int
     )
 
-    // Read some data from the table.
+    // Read some data from hello table.
     rows, err := db.Query("SELECT id, name, quantity from inventory;")
     checkError(err)
     defer rows.Close()
@@ -243,13 +243,13 @@ func main() {
 ```
 
 ## <a name="update-data"></a>Aktualizace dat
-Pomocí následujícího kódu se připojte a aktualizujte data s využitím příkazu **UPDATE** jazyka SQL. 
+Použití hello následující kód tooconnect a aktualizovat data pomocí hello **aktualizace** příkaz jazyka SQL. 
 
-Kód importuje tři balíčky: [balíček sql](https://golang.org/pkg/database/sql/), balíček [go sql driver for mysql](https://github.com/go-sql-driver/mysql#installation) jako ovladač pro komunikaci se službou Azure Database for MySQL a [balíček fmt](https://golang.org/pkg/fmt/) pro tisk vstupů a výstupů na příkazovém řádku.
+Hello kód importuje tři balíčky: hello [balíček sql](https://golang.org/pkg/database/sql/), hello [ovladače přejděte sql pro databázi mysql](https://github.com/go-sql-driver/mysql#installation) jako ovladač toocommunicate s hello Azure Database pro databázi MySQL a hello [fmt balíček](https://golang.org/pkg/fmt/)pro tištěné vstup a výstup hello příkazového řádku.
 
-Kód volá metodu [sql.Open()](http://go-database-sql.org/accessing.html) pro připojení ke službě Azure Database for MySQL a pomocí metody [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) zkontroluje stav připojení. Po celou dobu se používá [popisovač databáze](https://golang.org/pkg/database/sql/#DB), který uchovává fond připojení pro databázový server. Kód volá metodu [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) pro spuštění příkazu update. Pokaždé se pomocí vlastní metody checkError() zkontroluje, jestli nedošlo k chybě, a pokud k nějaké dojde, kód se nouzově ukončí.
+Hello kód zavolá metodu [sql. Open()](http://go-database-sql.org/accessing.html) tooconnect tooAzure databáze MySQL a kontroly hello připojení pomocí metody [db. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). A [popisovač databáze](https://golang.org/pkg/database/sql/#DB) se používá napříč, která uchovává hello fondu připojení pro server databáze hello. Hello kód volání hello [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) příkaz metoda toorun hello aktualizace. Pokaždé, když metoda vlastní checkError() je použité toocheck, pokud došlo k chybě a mít obavy tooexit.
 
-Nahraďte konstanty `host`, `database`, `user` a `password` vlastními hodnotami. 
+Nahraďte hello `host`, `database`, `user`, a `password` konstanty vlastními hodnotami. 
 
 ```Go
 package main
@@ -286,7 +286,7 @@ func main() {
 
     err = db.Ping()
     checkError(err)
-    fmt.Println("Successfully created connection to database.")
+    fmt.Println("Successfully created connection toodatabase.")
 
     // Modify some data in table.
     rows, err := db.Exec("UPDATE inventory SET quantity = ? WHERE name = ?", 200, "banana")
@@ -298,13 +298,13 @@ func main() {
 ```
 
 ## <a name="delete-data"></a>Odstranění dat
-Pomocí následujícího kódu se připojte a odeberte data s využitím příkazu **DELETE** jazyka SQL. 
+Použití hello následující kód tooconnect a odebrat pomocí data **odstranit** příkaz jazyka SQL. 
 
-Kód importuje tři balíčky: [balíček sql](https://golang.org/pkg/database/sql/), balíček [go sql driver for mysql](https://github.com/go-sql-driver/mysql#installation) jako ovladač pro komunikaci se službou Azure Database for MySQL a [balíček fmt](https://golang.org/pkg/fmt/) pro tisk vstupů a výstupů na příkazovém řádku.
+Hello kód importuje tři balíčky: hello [balíček sql](https://golang.org/pkg/database/sql/), hello [ovladače přejděte sql pro databázi mysql](https://github.com/go-sql-driver/mysql#installation) jako ovladač toocommunicate s hello Azure Database pro databázi MySQL a hello [fmt balíček](https://golang.org/pkg/fmt/)pro tištěné vstup a výstup hello příkazového řádku.
 
-Kód volá metodu [sql.Open()](http://go-database-sql.org/accessing.html) pro připojení ke službě Azure Database for MySQL a pomocí metody [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) zkontroluje stav připojení. Po celou dobu se používá [popisovač databáze](https://golang.org/pkg/database/sql/#DB), který uchovává fond připojení pro databázový server. Kód volá metodu [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) pro spuštění příkazu delete. Pokaždé se pomocí vlastní metody checkError() zkontroluje, jestli nedošlo k chybě, a pokud k nějaké dojde, kód se nouzově ukončí.
+Hello kód zavolá metodu [sql. Open()](http://go-database-sql.org/accessing.html) tooconnect tooAzure databáze MySQL a kontroly hello připojení pomocí metody [db. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). A [popisovač databáze](https://golang.org/pkg/database/sql/#DB) se používá napříč, která uchovává hello fondu připojení pro server databáze hello. Hello kód volání hello [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) metoda toorun hello odstranit příkaz. Pokaždé, když metoda vlastní checkError() je použité toocheck, pokud došlo k chybě a mít obavy tooexit.
 
-Nahraďte konstanty `host`, `database`, `user` a `password` vlastními hodnotami. 
+Nahraďte hello `host`, `database`, `user`, a `password` konstanty vlastními hodnotami. 
 
 ```Go
 package main
@@ -340,7 +340,7 @@ func main() {
 
     err = db.Ping()
     checkError(err)
-    fmt.Println("Successfully created connection to database.")
+    fmt.Println("Successfully created connection toodatabase.")
 
     // Modify some data in table.
     rows, err := db.Exec("DELETE FROM inventory WHERE name = ?", "orange")

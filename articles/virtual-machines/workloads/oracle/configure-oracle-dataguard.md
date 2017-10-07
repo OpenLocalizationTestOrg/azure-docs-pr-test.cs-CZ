@@ -1,5 +1,5 @@
 ---
-title: "Implementace Oracle Data Guard na virtuálním počítači Azure Linux | Microsoft Docs"
+title: "aaaImplement Oracle Data Guard na virtuálním počítači Azure Linux | Microsoft Docs"
 description: "Rychle získáte Oracle Data Guard nahoru a spouštění v prostředí Azure."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,31 +15,31 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: rclaus
-ms.openlocfilehash: 11492b85e95ddb39489e36c572af2a168b4c7af8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 6bb530098737e3ca7dd8bab3f4306ecbb620f3f8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Implementace Oracle Data Guard na virtuálním počítači Azure Linux 
 
-Rozhraní příkazového řádku Azure slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tento článek popisuje, jak používat rozhraní příkazového řádku Azure k nasazení databázi Oracle Database 12c z image Azure Marketplace. Tento článek ukazuje pak můžete krok za krokem, jak nainstalovat a nakonfigurovat ochranu dat na virtuální počítač Azure (VM).
+Rozhraní příkazového řádku Azure je použité toocreate a spravovat prostředky Azure z hello příkazového řádku nebo ve skriptech. Tento článek popisuje, jak toodeploy toouse rozhraní příkazového řádku Azure k databázi Oracle 12c databáze z Azure Marketplace hello bitové kopie. Tento článek pak ukazuje, krok za krokem, jak tooinstall a nakonfigurovat ochranu dat na virtuální počítač Azure (VM).
 
-Než začnete, ujistěte se, že je nainstalované rozhraní příkazového řádku Azure. Další informace najdete v tématu [Průvodce instalací Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Než začnete, ujistěte se, že je nainstalované rozhraní příkazového řádku Azure. Další informace najdete v tématu hello [Průvodce instalací Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-## <a name="prepare-the-environment"></a>Příprava prostředí
+## <a name="prepare-hello-environment"></a>Příprava prostředí hello
 ### <a name="assumptions"></a>Předpoklady
 
-Pokud chcete nainstalovat Oracle Data Guard, potřebujete vytvořit dva virtuální počítače Azure ve stejné skupině dostupnosti:
+tooinstall Oracle Data Guard, budete potřebovat toocreate dva virtuální počítače Azure na hello stejné skupině dostupnosti:
 
-- Primární virtuální počítač (myVM1) má spuštěnou instanci Oracle.
-- V úsporném režimu virtuálních počítačů (Můjvp2) je nainstalován pouze software Oracle.
+- Hello primárního virtuálního počítače (myVM1) má spuštěnou instanci Oracle.
+- Hello pohotovostní virtuálních počítačů (Můjvp2) je nainstalován pouze software Oracle hello.
 
-Marketplace obrázku, který použijete k vytvoření virtuálních počítačů je Oracle: Oracle – databáze-Ee:12.1.0.2:latest.
+Hello Marketplace image použít toocreate hello virtuálních počítačů je Oracle: Oracle – databáze-Ee:12.1.0.2:latest.
 
-### <a name="sign-in-to-azure"></a>Přihlášení k Azure 
+### <a name="sign-in-tooazure"></a>Přihlaste se tooAzure 
 
-Přihlaste se k předplatnému Azure pomocí [az přihlášení](/cli/azure/#login) příkazů a postupujte podle na obrazovce pokynů.
+Přihlaste se pomocí hello tooyour předplatného Azure [az přihlášení](/cli/azure/#login) příkazů a postupujte podle hello na obrazovce pokynů.
 
 ```azurecli
 az login
@@ -47,9 +47,9 @@ az login
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků s použitím [vytvořit skupinu az](/cli/azure/group#create) příkaz. Skupinu prostředků Azure je logický kontejner, ve které jsou nasazené a spravované prostředky. 
+Vytvořte skupinu prostředků s použitím hello [vytvořit skupinu az](/cli/azure/group#create) příkaz. Skupinu prostředků Azure je logický kontejner, ve které jsou nasazené a spravované prostředky. 
 
-Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v `westus` umístění:
+Hello následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v hello `westus` umístění:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -69,9 +69,9 @@ az vm availability-set create \
 
 ### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvoření virtuálního počítače pomocí [vytvořit virtuální počítač az](/cli/azure/vm#create) příkaz. 
+Vytvoření virtuálního počítače pomocí hello [vytvořit virtuální počítač az](/cli/azure/vm#create) příkaz. 
 
-Následující příklad vytvoří dva virtuální počítače s názvem `myVM1` a `myVM2`. Pokud už neexistují v umístění klíče výchozí klíče SSH, vytvoří se také. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
+Hello následující příklad vytvoří dva virtuální počítače s názvem `myVM1` a `myVM2`. Pokud už neexistují v umístění klíče výchozí klíče SSH, vytvoří se také. toouse konkrétní nastavení klíčů, použijte hello `--ssh-key-value` možnost.
 
 Vytvořte myVM1 (primární):
 ```azurecli
@@ -85,7 +85,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Po vytvoření virtuálního počítače, rozhraní příkazového řádku Azure se zobrazují informace podobně jako v následujícím příkladu. Poznamenejte si hodnotu `publicIpAddress`. Použijte tuto adresu přístup k virtuálnímu počítači.
+Po vytvoření hello virtuálních počítačů, rozhraní příkazového řádku Azure znázorňuje následující ukázka podobné toohello informace. Poznamenejte si hodnotu hello `publicIpAddress`. Můžete použít tuto adresu tooaccess hello virtuálních počítačů.
 
 ```azurecli
 {
@@ -112,13 +112,13 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Poznamenejte si hodnotu `publicIpAddress` po vytvoření Můjvp2.
+Poznamenejte si hodnotu hello `publicIpAddress` po vytvoření Můjvp2.
 
-### <a name="open-the-tcp-port-for-connectivity"></a>Otevřete port TCP pro připojení k síti
+### <a name="open-hello-tcp-port-for-connectivity"></a>Otevřete port TCP hello pro připojení k síti
 
-Tento krok nakonfiguruje externí koncové body, které umožňují vzdálený přístup k databázi Oracle.
+Tento krok nakonfiguruje externí koncové body, které umožňují databáze Oracle toohello vzdáleného přístupu.
 
-Otevřete port pro myVM1:
+Otevřete port hello pro myVM1:
 
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup\
@@ -128,7 +128,7 @@ az network nsg rule create --resource-group myResourceGroup\
     --destination-address-prefix '*' --destination-port-range 1521 --access allow
 ```
 
-Výsledek by měl vypadat podobně jako následující odpověď:
+výsledek Hello by měl vypadat podobně jako toohello následující odpověď:
 
 ```bash
 {
@@ -149,7 +149,7 @@ Výsledek by měl vypadat podobně jako následující odpověď:
 }
 ```
 
-Otevřete port pro Můjvp2:
+Otevřete port hello pro Můjvp2:
 
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup\
@@ -159,25 +159,25 @@ az network nsg rule create --resource-group myResourceGroup\
     --destination-address-prefix '*' --destination-port-range 1521 --access allow
 ```
 
-### <a name="connect-to-the-virtual-machine"></a>Připojení k virtuálnímu počítači
+### <a name="connect-toohello-virtual-machine"></a>Připojit toohello virtuálního počítače
 
-Pomocí následujícího příkazu vytvořte s virtuálním počítačem relaci SSH. Nahraďte na IP adresu `publicIpAddress` hodnotu pro virtuální počítač.
+Použití hello následující příkaz toocreate na relace SSH s hello virtuálního počítače. Nahraďte IP adresu hello hello `publicIpAddress` hodnotu pro virtuální počítač.
 
 ```bash 
 $ ssh azureuser@<publicIpAddress>
 ```
 
-### <a name="create-the-database-on-myvm1-primary"></a>Vytvořit databázi na myVM1 (primární)
+### <a name="create-hello-database-on-myvm1-primary"></a>Vytvořit databázi hello na myVM1 (primární)
 
-Oracle software je již nainstalována na bitovou kopii Marketplace, takže dalším krokem je pro instalaci databáze. 
+Hello Oracle softwaru je již nainstalován na bitovou kopii Marketplace hello, takže hello dalším krokem je tooinstall hello databáze. 
 
-Přepnout na superuživatel Oracle:
+Superuživatel Oracle toohello přepínače:
 
 ```bash
 $ sudo su - oracle
 ```
 
-Vytvoření databáze:
+Vytvořte databázi hello:
 
 ```bash
 $ dbca -silent \
@@ -198,7 +198,7 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
-Výstupy by měl vypadat podobně jako následující odpověď:
+Výstupy by měl vypadat podobně jako toohello následující odpověď:
 
 ```bash
 Copying database files
@@ -227,17 +227,17 @@ Completing Database Creation
 Creating Pluggable Databases
 78% complete
 100% complete
-Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/cdb1/cdb1.log" for further details.
+Look at hello log file "/u01/app/oracle/cfgtoollogs/dbca/cdb1/cdb1.log" for further details.
 ```
 
-Nastavení proměnných ORACLE_SID a ORACLE_HOME:
+Nastavení proměnných ORACLE_SID a ORACLE_HOME hello:
 
 ```bash
 $ ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 $ ORACLE_SID=cdb1; export ORACLE_SID
 ```
 
-Volitelně můžete přidat ORACLE_HOME a ORACLE_SID soubor /home/oracle/.bashrc, tak, aby tato nastavení se uloží pro budoucí přihlášení:
+Volitelně můžete přidat ORACLE_HOME a ORACLE_SID toohello /home/oracle/.bashrc souboru, tak, aby tato nastavení se uloží pro budoucí přihlášení:
 
 ```bash
 # add oracle home
@@ -279,7 +279,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-Zapnout Flashback (díky čemuž obnovení bylo mnohem snazší) a nastavte pohotovostní\_souboru\_správu, aby automaticky. Ukončete SQL * Plus potom.
+Zapnout Flashback (díky čemuž obnovení bylo mnohem snazší) a nastavte pohotovostní\_soubor\_tooauto správy. Ukončete SQL * Plus potom.
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -289,9 +289,9 @@ SQL> EXIT;
 
 ### <a name="set-up-service-on-myvm1-primary"></a>Nastavení služby v myVM1 (primární)
 
-Upravovat nebo vytvářet tnsnames.ora souboru, který je ve složce ORACLE_HOME\network\admin $.
+Upravovat nebo vytvářet hello tnsnames.ora souboru, který je ve složce ORACLE_HOME\network\admin $ hello.
 
-Přidejte následující položky:
+Přidejte hello následující položky:
 
 ```bash
 cdb1 =
@@ -315,9 +315,9 @@ cdb1_stby =
   )
 ```
 
-Upravovat nebo vytvářet listener.ora souboru, který je ve složce ORACLE_HOME\network\admin $.
+Upravovat nebo vytvářet hello listener.ora souboru, který je ve složce ORACLE_HOME\network\admin $ hello.
 
-Přidejte následující položky:
+Přidejte hello následující položky:
 
 ```bash
 LISTENER =
@@ -346,7 +346,7 @@ $ sqlplus / as sysdba
 SQL> ALTER SYSTEM SET dg_broker_start=true;
 SQL> EXIT;
 ```
-Spuštění nástroje pro sledování:
+Spuštění nástroje pro sledování hello:
 
 ```bash
 $ lsnrctl stop
@@ -355,7 +355,7 @@ $ lsnrctl start
 
 ### <a name="set-up-service-on-myvm2-standby"></a>Nastavení služby v Můjvp2 (pohotovostní)
 
-SSH k Můjvp2:
+SSH toomyVM2:
 
 ```bash 
 $ ssh azureuser@<publicIpAddress>
@@ -367,9 +367,9 @@ Přihlaste se jako Oracle:
 $ sudo su - oracle
 ```
 
-Upravovat nebo vytvářet tnsnames.ora souboru, který je ve složce ORACLE_HOME\network\admin $.
+Upravovat nebo vytvářet hello tnsnames.ora souboru, který je ve složce ORACLE_HOME\network\admin $ hello.
 
-Přidejte následující položky:
+Přidejte hello následující položky:
 
 ```bash
 cdb1 =
@@ -393,9 +393,9 @@ cdb1_stby =
   )
 ```
 
-Upravovat nebo vytvářet listener.ora souboru, který je ve složce ORACLE_HOME\network\admin $.
+Upravovat nebo vytvářet hello listener.ora souboru, který je ve složce ORACLE_HOME\network\admin $ hello.
 
-Přidejte následující položky:
+Přidejte hello následující položky:
 
 ```bash
 LISTENER =
@@ -418,7 +418,7 @@ SID_LIST_LISTENER =
 ADR_BASE_LISTENER = /u01/app/oracle
 ```
 
-Spuštění nástroje pro sledování:
+Spuštění nástroje pro sledování hello:
 
 ```bash
 $ lsnrctl stop
@@ -426,9 +426,9 @@ $ lsnrctl start
 ```
 
 
-### <a name="restore-the-database-to-myvm2-standby"></a>Obnovit databázi do Můjvp2 (pohotovostní)
+### <a name="restore-hello-database-toomyvm2-standby"></a>Obnovení databáze toomyVM2 hello (pohotovostní)
 
-Vytvoří /tmp/initcdb1_stby.ora soubor parametru s následující obsah:
+Vytvořte hello parametr souboru /tmp/initcdb1_stby.ora s hello následující obsah:
 ```bash
 *.db_name='cdb1'
 ```
@@ -447,7 +447,7 @@ Vytvořte soubor heslo:
 ```bash
 $ orapwd file=/u01/app/oracle/product/12.1.0/dbhome_1/dbs/orapwcdb1 password=OraPasswd1 entries=10
 ```
-Spuštění databáze na Můjvp2:
+Spuštění databáze hello na Můjvp2:
 
 ```bash
 $ export ORACLE_SID=cdb1
@@ -457,13 +457,13 @@ SQL> STARTUP NOMOUNT PFILE='/tmp/initcdb1_stby.ora';
 SQL> EXIT;
 ```
 
-Obnovte databázi pomocí nástroje RMAN:
+Obnovení databáze hello pomocí nástroje RMAN hello:
 
 ```bash
 $ rman TARGET sys/OraPasswd1@cdb1 AUXILIARY sys/OraPasswd1@cdb1_stby
 ```
 
-Spusťte následující příkazy v RMAN:
+Spusťte následující příkazy v RMAN hello:
 ```bash
 DUPLICATE TARGET DATABASE
   FOR STANDBY
@@ -474,7 +474,7 @@ DUPLICATE TARGET DATABASE
   NOFILENAMECHECK;
 ```
 
-Po dokončení příkazu, měli byste vidět zpráv podobný následujícímu. Ukončete RMAN.
+Po dokončení příkazu hello byste měli vidět následující toohello podobné zprávy. Ukončete RMAN.
 ```bash
 media recovery complete, elapsed time: 00:00:00
 Finished recover at 29-JUN-17
@@ -483,7 +483,7 @@ Finished Duplicate Db at 29-JUN-17
 RMAN> EXIT;
 ```
 
-Volitelně můžete přidat ORACLE_HOME a ORACLE_SID soubor /home/oracle/.bashrc, tak, aby tato nastavení se uloží pro budoucí přihlášení:
+Volitelně můžete přidat ORACLE_HOME a ORACLE_SID toohello /home/oracle/.bashrc souboru, tak, aby tato nastavení se uloží pro budoucí přihlášení:
 
 ```bash
 # add oracle home
@@ -501,7 +501,7 @@ SQL> EXIT;
 
 ### <a name="configure-data-guard-broker-on-myvm1-primary"></a>Konfigurace zprostředkovatele ochrana dat na myVM1 (primární)
 
-Spusťte správce ochrana dat a přihlaste se pomocí SYS a heslo. (Nepoužívejte ověřování operačního systému.) Postupujte takto:
+Spusťte správce ochrana dat a přihlaste se pomocí SYS a heslo. (Nepoužívejte ověřování operačního systému.) Proveďte následující hello:
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1
@@ -509,7 +509,7 @@ DGMGRL for Linux: Version 12.1.0.2.0 - 64bit Production
 
 Copyright (c) 2000, 2013, Oracle. All rights reserved.
 
-Welcome to DGMGRL, type "help" for information.
+Welcome tooDGMGRL, type "help" for information.
 Connected as SYSDBA.
 DGMGRL> CREATE CONFIGURATION my_dg_config AS PRIMARY DATABASE IS cdb1 CONNECT IDENTIFIER IS cdb1;
 Configuration "my_dg_config" created with primary database "cdb1"
@@ -519,7 +519,7 @@ DGMGRL> ENABLE CONFIGURATION;
 Enabled.
 ```
 
-Zkontrolujte konfiguraci:
+Kontrola konfigurace hello:
 ```bash
 DGMGRL> SHOW CONFIGURATION;
 
@@ -536,13 +536,13 @@ Configuration Status:
 SUCCESS   (status updated 26 seconds ago)
 ```
 
-Po dokončení instalace Oracle Data Guard. V další části se dozvíte, jak k testování připojení a přepínačů.
+Po dokončení instalace Oracle Data Guard hello. Hello další části se dozvíte, jak tootest hello připojení a přepínačů.
 
-### <a name="connect-the-database-from-the-client-machine"></a>Připojení databáze z klientského počítače
+### <a name="connect-hello-database-from-hello-client-machine"></a>Připojit databáze hello z hello klientský počítač
 
-Aktualizujte nebo vytvoření souboru tnsnames.ora v klientském počítači. Tento soubor je obvykle v $ORACLE_HOME\network\admin.
+Aktualizujte nebo vytvoření souboru tnsnames.ora hello v klientském počítači. Tento soubor je obvykle v $ORACLE_HOME\network\admin.
 
-Nahraďte IP adresy s vaší `publicIpAddress` hodnoty myVM1 a Můjvp2:
+Nahraďte hello IP adresy s vaší `publicIpAddress` hodnoty myVM1 a Můjvp2:
 
 ```bash
 cdb1=
@@ -582,15 +582,15 @@ Copyright (c) 1982, 2016, Oracle.  All rights reserved.
 
 Connected to:
 Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
-With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
+With hello Partitioning, OLAP, Advanced Analytics and Real Application Testing options
 
 SQL>
 ```
-## <a name="test-the-data-guard-configuration"></a>Otestujte konfiguraci Data Guard
+## <a name="test-hello-data-guard-configuration"></a>Konfigurace testovací hello Data Guard
 
-### <a name="switch-over-the-database-on-myvm1-primary"></a>Přepínač pro databázi na myVM1 (primární)
+### <a name="switch-over-hello-database-on-myvm1-primary"></a>Přepínač přes hello databáze na myVM1 (primární)
 
-Přepnutí z primární do úsporného režimu (cdb1 k cdb1_stby):
+tooswitch z primární toostandby (cdb1 toocdb1_stby):
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1
@@ -598,12 +598,12 @@ DGMGRL for Linux: Version 12.1.0.2.0 - 64bit Production
 
 Copyright (c) 2000, 2013, Oracle. All rights reserved.
 
-Welcome to DGMGRL, type "help" for information.
+Welcome tooDGMGRL, type "help" for information.
 Connected as SYSDBA.
-DGMGRL> SWITCHOVER TO cdb1_stby;
+DGMGRL> SWITCHOVER toocdb1_stby;
 Performing switchover NOW, please wait...
-Operation requires a connection to instance "cdb1" on database "cdb1_stby"
-Connecting to instance "cdb1"...
+Operation requires a connection tooinstance "cdb1" on database "cdb1_stby"
+Connecting tooinstance "cdb1"...
 Connected as SYSDBA.
 New primary database "cdb1_stby" is opening...
 Operation requires start up of instance "cdb1" on database "cdb1"
@@ -614,7 +614,7 @@ Switchover succeeded, new primary is "cdb1_stby"
 DGMGRL>
 ```
 
-Nyní můžete připojit k databázi pohotovostní.
+Teď se můžete připojit toohello pohotovostní databáze.
 
 Spusťte SQL * Plus:
 
@@ -627,26 +627,26 @@ Copyright (c) 1982, 2016, Oracle.  All rights reserved.
 
 Connected to:
 Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
-With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
+With hello Partitioning, OLAP, Advanced Analytics and Real Application Testing options
 
 SQL>
 ```
 
-### <a name="switch-over-the-database-on-myvm2-standby"></a>Přepínač pro databázi na Můjvp2 (pohotovostní)
+### <a name="switch-over-hello-database-on-myvm2-standby"></a>Přepínač přes hello databáze na Můjvp2 (pohotovostní)
 
-Na přepnutí, spusťte na Můjvp2 následující:
+tooswitch přes, spusťte na Můjvp2 hello následující:
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1_stby
 DGMGRL for Linux: Version 12.1.0.2.0 - 64bit Production
 
 Copyright (c) 2000, 2013, Oracle. All rights reserved.
 
-Welcome to DGMGRL, type "help" for information.
+Welcome tooDGMGRL, type "help" for information.
 Connected as SYSDBA.
-DGMGRL> SWITCHOVER TO cdb1;
+DGMGRL> SWITCHOVER toocdb1;
 Performing switchover NOW, please wait...
-Operation requires a connection to instance "cdb1" on database "cdb1"
-Connecting to instance "cdb1"...
+Operation requires a connection tooinstance "cdb1" on database "cdb1"
+Connecting tooinstance "cdb1"...
 Connected as SYSDBA.
 New primary database "cdb1" is opening...
 Operation requires start up of instance "cdb1" on database "cdb1_stby"
@@ -656,7 +656,7 @@ Database mounted.
 Switchover succeeded, new primary is "cdb1"
 ```
 
-Znovu musí teď nebudete moct připojit k primární databázi.
+Znovu nyní měli být schopný tooconnect toohello primární databáze.
 
 Spusťte SQL * Plus:
 
@@ -669,17 +669,17 @@ Copyright (c) 1982, 2016, Oracle.  All rights reserved.
 
 Connected to:
 Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
-With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
+With hello Partitioning, OLAP, Advanced Analytics and Real Application Testing options
 
 SQL>
 ```
 
-Dokončení instalace a konfigurace Data Guard na Oracle Linux.
+Dokončili jste hello instalaci a konfiguraci Data Guard na Oracle Linux.
 
 
-## <a name="delete-the-virtual-machine"></a>Odstranění virtuálního počítače
+## <a name="delete-hello-virtual-machine"></a>Odstranění hello virtuálního počítače
 
-Když virtuální počítač již nepotřebujete, můžete odebrat skupinu prostředků, virtuální počítač a všechny související prostředky následující příkaz:
+Když už nebude potřebovat hello virtuálních počítačů, můžete použít následující příkaz tooremove hello prostředků skupiny virtuálních počítačů a všechny související prostředky hello:
 
 ```azurecli
 az group delete --name myResourceGroup

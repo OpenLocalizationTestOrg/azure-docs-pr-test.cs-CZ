@@ -1,6 +1,6 @@
 ---
-title: "Nasazení kontejnerů s Helm v Azure Kubernetes | Microsoft Docs"
-description: "Pomocí nástroje balení Helm nasazení kontejnerů v clusteru s podporou Kubernetes v Azure Container Service"
+title: kontejnery aaaDeploy s Helm v Azure Kubernetes | Microsoft Docs
+description: "Použití hello Helm balení nástroj toodeploy kontejnerů na cluster Kubernetes v Azure Container Service"
 services: container-service
 documentationcenter: 
 author: sauryadas
@@ -16,20 +16,20 @@ ms.workload: na
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 3cfcc5abbee03ca8fbbec4e4eae711e7c2d9deae
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c7bd780afe00084ebe4e3a14873e1e340a29d144
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>Použít k nasazení kontejnerů v clusteru s podporou Kubernetes Helm 
+# <a name="use-helm-toodeploy-containers-on-a-kubernetes-cluster"></a>Použití kontejnerů toodeploy Helm na clusteru s podporou Kubernetes 
 
-[Helm](https://github.com/kubernetes/helm/) je nástroj balení open source, který vám pomůže nainstalovat a spravovat životní cyklus aplikace Kubernetes. Podobně jako u správce balíčku Linux například byt č get a Yum, Helm slouží ke správě Kubernetes grafy, které jsou balíčky předkonfigurované Kubernetes prostředků. Tento článek ukazuje, jak pracovat s Helm na clusteru s podporou Kubernetes nasazené v Azure Container Service.
+[Helm](https://github.com/kubernetes/helm/) je nástroj balení open source, který vám pomůže nainstalovat a spravovat životní cyklus hello Kubernetes aplikací. Podobně jako správce balíčku tooLinux například byt č get a Yum Helm je použité toomanage Kubernetes grafy, které jsou balíčky předkonfigurované Kubernetes prostředků. Tento článek ukazuje, jak se toowork s Helm na clusteru s podporou Kubernetes nasadit v Azure Container Service.
 
 Helm má dvě součásti: 
-* **Helm CLI** je klient, který běží na vašem počítači místně nebo v cloudu  
+* Hello **Helm CLI** je klient, který běží na vašem počítači místně nebo v cloudu hello  
 
-* **Výšce kormidelní páky** je server, který běží na clusteru Kubernetes a spravuje životní cyklus aplikace Kubernetes 
+* **Výšce kormidelní páky** je server, který běží na clusteru Kubernetes hello a spravuje životní cyklus aplikace Kubernetes hello 
  
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,72 +41,72 @@ Helm má dvě součásti:
 
 ## <a name="helm-basics"></a>Základy Helm 
 
-Chcete-li zobrazit informace o clusteru Kubernetes, že instalujete výšce kormidelní páky a nasazení vašich aplikací, zadejte následující příkaz:
+tooview informace o hello Kubernetes clusteru, že instalujete výšce kormidelní páky a nasazení aplikace na, zadejte následující příkaz hello:
 
 ```bash
 kubectl cluster-info 
 ```
 ![kubectl cluster-info](./media/container-service-kubernetes-helm/clusterinfo.png)
  
-Po instalaci Helm nainstalujte výšce kormidelní páky Kubernetes cluster tak, že zadáte následující příkaz:
+Po instalaci Helm nainstalujte výšce kormidelní páky v clusteru Kubernetes zadáním hello následující příkaz:
 
 ```bash
 helm init --upgrade
 ```
-Po úspěšném dokončení, zobrazí se výstup takto:
+Po úspěšném dokončení, zobrazí se výstup jako hello následující:
 
 ![Instalace výšce kormidelní páky](./media/container-service-kubernetes-helm/tiller-install.png)
  
  
  
  
-Chcete-li zobrazit dostupné Helm grafy v úložišti, zadejte následující příkaz:
+tooview všechny hello Helm grafy k dispozici v úložišti hello, hello zadejte následující příkaz:
 
 ```bash 
 helm search 
 ```
 
-Zobrazí výstup takto:
+Zobrazí výstup jako hello následující:
 
 ![Helm vyhledávání](./media/container-service-kubernetes-helm/helm-search.png)
  
-Chcete-li aktualizovat grafy získat nejnovější verze, zadejte:
+tooupdate hello grafy tooget hello nejnovější verze, zadejte:
 
 ```bash 
 helm repo update 
 ```
 ## <a name="deploy-an-nginx-ingress-controller-chart"></a>Nasazení grafu řadič aplikace Nginx příjem příchozích dat 
  
-Chcete-li nasadit grafu řadič aplikace Nginx příjem příchozích dat, zadejte jeden příkaz:
+toodeploy Nginx příjem příchozích dat řadiče grafu, zadejte jeden příkaz:
 
 ```bash
 helm install stable/nginx-ingress 
 ```
 ![Nasazení řadiče příjem příchozích dat](./media/container-service-kubernetes-helm/nginx-ingress.png)
 
-Pokud zadáte `kubectl get svc` Pokud chcete zobrazit všechny služby, které běží na clusteru, uvidíte, jestli řadič příjem příchozích dat je přiřazené IP adresy. (Když probíhá přiřazení, uvidíte `<pending>`. Trvá několik minut na dokončení.) 
+Pokud zadáte `kubectl get svc` tooview všechny služby, které jsou spuštěné v clusteru hello, uvidíte, IP adresa je přiřazen toohello příjem příchozích dat řadiče. (Když probíhá hello přiřazení, uvidíte `<pending>`. Trvá několik minut toocomplete.) 
 
-Po IP je přiřazená adresa, přejděte na hodnotu externí IP adresu, kterou najdete v části s back-end Nginx. 
+Po přiřazení hello IP adresu, přejděte toohello hodnotu hello externí IP adresu toosee hello Nginx back-end systémem. 
  
 ![Příjem příchozích dat IP adres](./media/container-service-kubernetes-helm/ingress-ip-address.png)
 
 
-Chcete-li zobrazit seznam grafy nainstalován v clusteru, zadejte:
+toosee seznam grafy nainstalován v clusteru, zadejte:
 
 ```bash
 helm list 
 ```
 
-Příkaz k můžete zkrátit `helm ls`.
+Příkaz hello můžete zkrátit příliš`helm ls`.
  
  
  
  
 ## <a name="deploy-a-mariadb-chart-and-client"></a>Nasazení klienta a graf MariaDB
 
-Teď nasaďte MariaDB graf a MariaDB klienta se můžete připojit k databázi.
+Teď nasaďte MariaDB graf a MariaDB klienta tooconnect toohello databáze.
 
-Pokud chcete nasadit MariaDB grafu, zadejte následující příkaz:
+toodeploy hello MariaDB grafu, hello zadejte následující příkaz:
 
 ```bash
 helm install --name v1 stable/mariadb
@@ -115,42 +115,42 @@ helm install --name v1 stable/mariadb
 kde `--name` je značku používá pro verze.
 
 > [!TIP]
-> Pokud se nasazení nezdaří, spusťte `helm repo update` a zkuste to znovu.
+> Pokud hello nasazení nezdaří, spusťte `helm repo update` a zkuste to znovu.
 >
  
  
-Chcete-li zobrazit všechny grafy nasazené v clusteru, zadejte:
+tooview všechny grafy hello nasadit v clusteru, zadejte:
 
 ```bash 
 helm list
 ```
  
-Pokud chcete zobrazit všechna nasazení, které jsou spuštěné v clusteru, zadejte:
+tooview všechna nasazení, které běží v clusteru, zadejte:
 
 ```bash
 kubectl get deployments 
 ``` 
  
  
-Nakonec spustit pod pro přístup k klienta, zadejte:
+Nakonec toorun pod tooaccess hello klienta, zadejte:
 
 ```bash
 kubectl run v1-mariadb-client --rm --tty -i --image bitnami/mariadb --command -- bash  
 ``` 
  
  
-Pokud chcete připojit ke klientovi, zadejte následující příkaz, nahraďte `v1-mariadb` s názvem vašeho nasazení:
+tooconnect toohello klienta hello zadejte následující příkaz, nahraďte `v1-mariadb` s názvem hello nasazení:
 
 ```bash
 sudo mysql –h v1-mariadb
 ```
  
  
-Nyní můžete standardní příkazy SQL k vytvoření databáze, tabulek atd. Například `Create DATABASE testdb1;` vytvoří prázdnou databázi. 
+Teď můžete použít standardní databáze toocreate příkazy SQL, tabulek atd. Například `Create DATABASE testdb1;` vytvoří prázdnou databázi. 
  
  
  
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o správě Kubernetes grafy, najdete v článku [Helm dokumentaci](https://github.com/kubernetes/helm/blob/master/docs/index.md). 
+* Další informace o správě Kubernetes grafy, najdete v části hello [Helm dokumentaci](https://github.com/kubernetes/helm/blob/master/docs/index.md). 
 

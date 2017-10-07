@@ -1,6 +1,6 @@
 ---
-title: "Místní aplikace pomocí úložiště objektů blob (Java) | Microsoft Docs"
-description: "Naučte se vytvářet konzolovou aplikaci, která odesílá bitovou kopii do Azure a potom zobrazí obrázek v prohlížeči. Ukázky kódu v jazyce Java."
+title: "aaaOn místní aplikace pomocí úložiště objektů blob (Java) | Microsoft Docs"
+description: "Zjistěte, jak toocreate konzolovou aplikaci, která odešle tooAzure bitové kopie a potom zobrazí hello bitové kopie v prohlížeči. Ukázky kódu v jazyce Java."
 services: storage
 documentationcenter: java
 author: mmacy
@@ -14,29 +14,29 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/17/2016
 ms.author: marsma
-ms.openlocfilehash: a172b881fa38a69f4510df94f5797b7a56940c52
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ed8eb4c1045691c25abe94bf6c1b18b797adc3e3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="on-premises-application-with-blob-storage"></a>Místní aplikace pomocí úložiště objektů blob
 ## <a name="overview"></a>Přehled
-Následující příklad ukazuje, jak můžete použít úložiště Azure pro uložení bitové kopie v Azure. Kód v tomto článku je konzolovou aplikaci, která odesílá bitovou kopii do Azure a poté vytvoří souboru HTML, který zobrazí obrázek v prohlížeči.
+Hello následující příklad ukazuje, je použití úložiště Azure pro uložení bitové kopie v Azure. Hello kód v tomto článku je konzolovou aplikaci, která odešle tooAzure bitové kopie a poté vytvoří souboru HTML, který se zobrazí v prohlížeči obrázek hello.
 
 ## <a name="prerequisites"></a>Požadavky
 * Java Developer Kit (JDK), verze 1.6 nebo novější, je nainstalována.
-* Je nainstalována sada Azure SDK.
-* JAR pro knihovny Azure Libraries for Java a všechny příslušné závislostí JAR jsou nainstalované a jsou v cestě sestavení používané vaší kompilátor Javy. Informace o instalaci knihovny Azure Libraries for Java najdete v tématu [stáhněte si sadu Azure SDK pro jazyk Java](../java-download-azure-sdk.md).
-* Má nastaven účet úložiště Azure. Název účtu a klíč účtu pro účet úložiště se použije kód v tomto článku. V tématu [postup vytvoření účtu úložiště](storage-create-storage-account.md#create-a-storage-account) informace o vytvoření účtu úložiště, a [zobrazení a zkopírování přístupových klíčů úložiště](storage-create-storage-account.md#view-and-copy-storage-access-keys) informace o načtení klíč účtu.
-* Vytvoříte místní bitové kopie souboru s názvem uložené na jednotce c: cesta\\myimages\\image1.jpg. Můžete taky upravit **FileInputStream** konstruktor v příkladu je název a cesta k souboru jinou bitovou kopii.
+* je nainstalována Hello Azure SDK.
+* Hello JAR pro hello knihovny Azure Libraries for Java a všechny příslušné závislostí JAR jsou nainstalované a jsou v cestě sestavení hello používá vaše kompilátor Javy. Informace o instalaci hello knihovny Azure Libraries for Java najdete v tématu [hello stažení sady Azure SDK pro jazyk Java](../java-download-azure-sdk.md).
+* Má nastaven účet úložiště Azure. Hello název účtu a klíč účtu pro účet úložiště hello se použije hello kód v tomto článku. V tématu [jak tooCreate účet úložiště](storage-create-storage-account.md#create-a-storage-account) informace o vytvoření účtu úložiště, a [zobrazení a zkopírování přístupových klíčů úložiště](storage-create-storage-account.md#view-and-copy-storage-access-keys) informace o načtení hello klíč účtu.
+* Vytvoříte místní bitové kopie souboru s názvem uložené v hello cesta c:\\myimages\\image1.jpg. Můžete taky upravit **FileInputStream** konstruktor v hello příklad toouse název a cesta k souboru jinou bitovou kopii.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="to-use-azure-blob-storage-to-upload-a-file"></a>Používání úložiště objektů blob v Azure pro nahrání souboru
-Podrobný postup je uveden zde. Pokud chcete přeskočit celý kód se zobrazí později v tomto článku.
+## <a name="toouse-azure-blob-storage-tooupload-a-file"></a>tooupload úložiště objektů blob v Azure toouse soubor
+Podrobný postup je uveden zde. Pokud chcete tooskip dopředu, se zobrazí celý kód hello později v tomto článku.
 
-Začněte tím, že importy pro třídy úložiště Azure základní třídy klienta objektů blob v Azure, třídy Java vstupně-výstupní operace, včetně kódu a **URISyntaxException** třídy.
+Začněte tím, že včetně importy pro třídy úložiště Azure základní hello, hello třídy klienta objektů blob v Azure, hello Java vstupně-výstupní operace třídy a hello hello kódu **URISyntaxException** třídy.
 
 ```java
 import com.microsoft.azure.storage.*;
@@ -45,13 +45,13 @@ import java.io.*;
 import java.net.URISyntaxException;
 ```
 
-Deklarace třídy s názvem **StorageSample**a zahrnovat otevřete závorky **{**.
+Deklarace třídy s názvem **StorageSample**a zahrnovat hello závorka, **{**.
 
 ```java
 public class StorageSample {
 ```
 
-V rámci **StorageSample** třídy, deklarovat proměnnou string, který bude obsahovat výchozí koncový bod protokol, název účtu úložiště a přístupový klíč k úložišti, jak je uvedeno v účtu úložiště Azure. Nahraďte zástupný symbol hodnoty **vaše\_účet\_název** a **vaše\_účet\_klíč** vlastní účet názvu a klíče účtu, v uvedeném pořadí.
+V rámci hello **StorageSample** třídy, deklarovat proměnnou string, který bude obsahovat hello výchozí koncový bod protokol, název účtu úložiště a přístupový klíč k úložišti, jak je uvedeno v účtu úložiště Azure. Nahraďte zástupný symbol hodnoty hello **vaše\_účet\_název** a **vaše\_účet\_klíč** s vlastní název účtu a klíč účtu v uvedeném pořadí.
 
 ```java
 public static final String storageConnectionString =
@@ -60,7 +60,7 @@ public static final String storageConnectionString =
     "AccountKey=your_account_name";
 ```
 
-Přidat do vaší deklaraci pro **hlavní**, zahrnout **zkuste** blokovat a zahrnovat potřeby otevřete hranatých závorkách **{**.
+Přidat do vaší deklaraci pro **hlavní**, zahrnout **zkuste** blokovat a zahrnovat hello potřeby otevřete závorky, **{**.
 
 ```java
     public static void main(String[] args)
@@ -69,12 +69,12 @@ Přidat do vaší deklaraci pro **hlavní**, zahrnout **zkuste** blokovat a zahr
         {
 ```
 
-Deklarujte proměnné následujícího typu (popis je pro jejich použití v tomto příkladu):
+Deklarace proměnné hello následující typ (hello popisy jsou pro jejich použití v tomto příkladu):
 
-* **CloudStorageAccount**: slouží k inicializaci objektu účtu se název účtu úložiště Azure a klíč a pro vytvoření klientského objektu blob.
-* **CloudBlobClient**: slouží k přístupu k služby objektů blob.
-* **CloudBlobContainer**: slouží k vytvoření kontejneru objektů blob, seznam objektů BLOB v kontejneru a odstranit kontejner.
-* **CloudBlockBlob**: umožňuje nahrát obrázek místní soubor do kontejneru.
+* **CloudStorageAccount**: používané tooinitialize hello účet objekt s váš název účtu úložiště Azure a klíč a toocreate klientského objektu blob.
+* **CloudBlobClient**: používá služby objektů blob tooaccess hello.
+* **CloudBlobContainer**: používané toocreate kontejner objektů blob seznamu objektů BLOB v kontejneru hello a odstranění hello kontejneru.
+* **CloudBlockBlob**: používané tooupload kontejner toothe obrázek místní soubor.
 
 <!-- -->
 
@@ -85,79 +85,79 @@ Deklarujte proměnné následujícího typu (popis je pro jejich použití v tom
     CloudBlockBlob blob;
 ```
 
-Přiřazení hodnoty k **účet** proměnné.
+Přiřadit hodnotu toohello **účet** proměnné.
 
 ```java
 account = CloudStorageAccount.parse(storageConnectionString);
 ```
 
-Přiřazení hodnoty k **serviceClient** proměnné.
+Přiřadit hodnotu toohello **serviceClient** proměnné.
 
 ```java
 serviceClient = account.createCloudBlobClient();
 ```
 
-Přiřazení hodnoty k **kontejneru** proměnné. Budete se nám získat odkaz na kontejner s názvem **gettingstarted**.
+Přiřadit hodnotu toohello **kontejneru** proměnné. Budete se nám získat odkaz na kontejner tooa s názvem **gettingstarted**.
 
 ```java
 // Container name must be lower case.
 container = serviceClient.getContainerReference("gettingstarted");
 ```
 
-Vytvoření kontejneru. Tato metoda vytvoří kontejner, pokud neexistuje (a vrátit **true**). Pokud kontejner neexistuje, vrátí **false**. Alternativu k **createIfNotExists** je **vytvořit** (která vrátí chybu, pokud kontejner již existuje).
+Vytvoření kontejneru hello. Tato metoda vytvoří kontejner hello, pokud neexistuje (a vrátit **true**). Pokud hello kontejner neexistuje, vrátí **false**. Alternativu příliš**createIfNotExists** je hello **vytvořit** (která vrátí chybu, pokud kontejner hello již existuje).
 
 ```java
 container.createIfNotExists();
 ```
 
-Pro kontejner nastaven anonymní přístup.
+Nastavit anonymní přístup pro kontejner hello.
 
 ```java
-// Set anonymous access on the container.
+// Set anonymous access on hello container.
 BlobContainerPermissions containerPermissions;
 containerPermissions = new BlobContainerPermissions();
 containerPermissions.setPublicAccess(BlobContainerPublicAccessType.CONTAINER);
 container.uploadPermissions(containerPermissions);
 ```
 
-Získáte odkaz na objekt blob bloku, která bude představovat objektů blob v úložišti Azure.
+Získání referenční dokumentace toohello objekt blob bloku, která bude představovat hello objektů blob v úložišti Azure.
 
 ```java
 blob = container.getBlockBlobReference("image1.jpg");
 ```
 
-Použití **souboru** konstruktor získat odkaz na soubor místně vytvořené, který bude nahrávat. Zkontrolujte, zda že jste vytvořili tento soubor před spuštěním kódu.
+Použití hello **souboru** konstruktor tooget soubor toohello místně vytvořené odkaz, který bude nahrávat. Zkontrolujte, zda že jste vytvořili tento soubor před spuštěním kódu hello.
 
 ```java
 File fileReference = new File ("c:\\myimages\\image1.jpg");
 ```
 
-Nahrát místního souboru prostřednictvím volání **CloudBlockBlob.upload** metoda. První parametr **CloudBlockBlob.upload** je metoda **FileInputStream** objekt, který představuje místní soubor, který bude nahrán do úložiště Azure. Druhý parametr je velikost v bajtech souboru.
+Nahrát hello místního souboru prostřednictvím volání toohello **CloudBlockBlob.upload** metoda. první parametr toohello Hello **CloudBlockBlob.upload** je metoda **FileInputStream** objektu, že představuje hello místního souboru, který bude nahrán tooAzure úložiště. druhý parametr Hello je hello velikost v bajtech, hello souboru.
 
 ```java
 blob.upload(new FileInputStream(fileReference), fileReference.length());
 ```
 
-Volání pomocné funkce s názvem **MakeHTMLPage**, aby základní stránky HTML, který obsahuje  **&lt;image&gt;**  element se zdrojem nastaven na objekt blob, který je teď ve vašem účtu úložiště Azure. Kód pro **MakeHTMLPage** bude probírat později v tomto článku.
+Volání pomocné funkce s názvem **MakeHTMLPage**, toomake základní HTML stránky, která obsahuje  **&lt;image&gt;**  element s hello zdroje sady toohello blob, který je teď ve vašem Azure účet úložiště. Hello kód pro **MakeHTMLPage** bude probírat později v tomto článku.
 
 ```java
 MakeHTMLPage(container);
 ```
 
-Vytiskněte stavové zprávy a informace o vytvoření stránky HTML.
+Vytiskněte stavové zprávy a informace o hello vytvořit stránku HTML.
 
 ```java
 System.out.println("Processing complete.");
-System.out.println("Open index.html to see the images stored in your storage account.");
+System.out.println("Open index.html toosee hello images stored in your storage account.");
 ```
 
-Zavřete **zkuste** bloku vložením znak pravé hranaté závorky: **}**
+Zavřít hello **zkuste** bloku vložením znak pravé hranaté závorky: **}**
 
-Zpracování následující výjimky:
+Popisovač hello následující výjimky:
 
-* **FileNotFoundException**: může být vyvolána **FileInputStream** nebo **FileOutputStream** konstruktory.
-* **StorageException**: může být vyvolána knihovny klienta Azure storage.
-* **URISyntaxException**: může být vyvolána **ListBlobItem.getUri** metoda.
+* **FileNotFoundException**: může být vyvolána hello **FileInputStream** nebo **FileOutputStream** konstruktory.
+* **StorageException**: může být vyvolána hello Azure Klientská knihovna pro úložiště.
+* **URISyntaxException**: může být vyvolána hello **ListBlobItem.getUri** metoda.
 * **Výjimka**: Obecné výjimek.
 
 <!-- -->
@@ -191,7 +191,7 @@ catch (Exception e)
 
 Zavřete **hlavní** vložením znak pravé hranaté závorky: **}**
 
-Vytvořit metodu s názvem **MakeHTMLPage** pro vytvoření základní stránky HTML. Tato metoda má parametr typu **CloudBlobContainer**, který se použije k iteraci v rámci seznamu nahrané objekty BLOB. Tato metoda vyvolá výjimku výjimky typu **FileNotFoundException**, který může být vyvolána **FileOutputStream** konstruktoru, a **URISyntaxException**, který může být vyvolána **ListBlobItem.getUri** metoda. Zahrnout levá hranatá závorka, **{**.
+Vytvořit metodu s názvem **MakeHTMLPage** toocreate základní HTML stránky. Tato metoda má parametr typu **CloudBlobContainer**, které budou použité tooiterate prostřednictvím hello seznam nahrané objekty BLOB. Tato metoda vyvolá výjimku výjimky typu **FileNotFoundException**, což může být vyvolána hello **FileOutputStream** konstruktoru, a **URISyntaxException**, což může být vyvolané hello **ListBlobItem.getUri** metoda. Zahrnout levá hranatá závorka, **{**.
 
 ```java
 public static void MakeHTMLPage(CloudBlobContainer container) throws FileNotFoundException, URISyntaxException
@@ -205,7 +205,7 @@ PrintStream stream;
 stream = new PrintStream(new FileOutputStream("index.html"));
 ```
 
-Zapisovat do místního souboru, přidání do  **&lt;html&gt;**,  **&lt;záhlaví&gt;**, a  **&lt;textu&gt;**  elementy.
+Zápisu místního souboru toohello přidávání hello  **&lt;html&gt;**,  **&lt;záhlaví&gt;**, a  **&lt;textu&gt;**  elementy.
 
 ```java
 stream.println("<html>");
@@ -213,27 +213,27 @@ stream.println("<header/>");
 stream.println("<body>");
 ```
 
-Iteraci v rámci seznamu nahrané objekty BLOB. Pro každý objekt blob, vytvořte na stránce HTML  **&lt;img&gt;**  element, který má jeho **src** atribut odeslaný na identifikátor URI objektu blob, protože existuje ve vašem účtu úložiště Azure.
+Iterace hello seznam nahrané objekty BLOB. Pro každý objekt blob stránky hello HTML vytvořit  **&lt;img&gt;**  element, který má jeho **src** atribut odeslaný hello identifikátor URI objektu hello blob, protože existuje ve vašem účtu úložiště Azure.
 I když jste přidali pouze jeden obrázek v této ukázce, pokud jste přidali více, by tento kód iteraci všechny z nich.
 
-Pro zjednodušení tento příklad předpokládá, že každý nahraném objektu blob je bitovou kopii. Pokud jste aktualizovali objektů BLOB než bitové kopie nebo objekty BLOB stránky místo objekty BLOB bloku, podle potřeby upravte kód.
+Pro zjednodušení tento příklad předpokládá, že každý nahraném objektu blob je bitovou kopii. Pokud jste aktualizovali objektů BLOB než bitové kopie nebo objekty BLOB stránky místo objekty BLOB bloku, upravte kód hello podle potřeby.
 
 ```java
-// Enumerate the uploaded blobs.
+// Enumerate hello uploaded blobs.
 for (ListBlobItem blobItem : container.listBlobs()) {
-// List each blob as an <img> element in the HTML body.
+// List each blob as an <img> element in hello HTML body.
 stream.println("<img src='" + blobItem.getUri() + "'/><br/>");
 }
 ```
 
-Zavřít  **&lt;textu&gt;**  elementu a  **&lt;html&gt;**  element.
+Zavřít hello  **&lt;textu&gt;**  elementu a hello  **&lt;html&gt;**  element.
 
 ```java
 stream.println("</body>");
 stream.println("</html>");
 ```
 
-Zavřete místní soubor.
+Zavřít hello místního souboru.
 
 ```java
 stream.close();
@@ -243,7 +243,7 @@ Zavřete **MakeHTMLPage** vložením znak pravé hranaté závorky: **}**
 
 Zavřete **StorageSample** vložením znak pravé hranaté závorky: **}**
 
-Následuje kompletní kód v tomto příkladu. Nezapomeňte upravit zástupné hodnoty **vaše\_účet\_název** a **vaše\_účet\_klíč** použít název účtu a klíč účtu, v uvedeném pořadí.
+Hello následuje hello kompletní kód v tomto příkladu. Mějte na paměti, toomodify hello zástupné hodnoty **vaše\_účet\_název** a **vaše\_účet\_klíč** toouse název účtu a účet v uvedeném pořadí klíče.
 
 ```java
 import com.microsoft.azure.storage.*;
@@ -251,9 +251,9 @@ import com.microsoft.azure.storage.blob.*;
 import java.io.*;
 import java.net.URISyntaxException;
 
-// Create an image, c:\myimages\image1.jpg, prior to running this sample.
-// Alternatively, change the value used by the FileInputStream constructor
-// to use a different image path and file that you have already created.
+// Create an image, c:\myimages\image1.jpg, prior toorunning this sample.
+// Alternatively, change hello value used by hello FileInputStream constructor
+// toouse a different image path and file that you have already created.
 public class StorageSample {
 
     public static final String storageConnectionString =
@@ -274,7 +274,7 @@ public class StorageSample {
             container = serviceClient.getContainerReference("gettingstarted");
             container.createIfNotExists();
 
-            // Set anonymous access on the container.
+            // Set anonymous access on hello container.
             BlobContainerPermissions containerPermissions;
             containerPermissions = new BlobContainerPermissions();
             containerPermissions.setPublicAccess(BlobContainerPublicAccessType.CONTAINER);
@@ -286,12 +286,12 @@ public class StorageSample {
             File fileReference = new File("c:\\myimages\\image1.jpg");
             blob.upload(new FileInputStream(fileReference), fileReference.length());
 
-            // At this point the image is uploaded.
-            // Next, create an HTML page that lists all of the uploaded images.
+            // At this point hello image is uploaded.
+            // Next, create an HTML page that lists all of hello uploaded images.
             MakeHTMLPage(container);
 
             System.out.println("Processing complete.");
-            System.out.println("Open index.html to see the images stored in your storage account.");
+            System.out.println("Open index.html toosee hello images stored in your storage account.");
 
         } catch (FileNotFoundException fileNotFoundException) {
             System.out.print("FileNotFoundException encountered: ");
@@ -312,46 +312,46 @@ public class StorageSample {
         }
     }
 
-    // Create an HTML page that can be used to display the uploaded images.
-    // This example assumes all of the blobs are for images.
+    // Create an HTML page that can be used toodisplay hello uploaded images.
+    // This example assumes all of hello blobs are for images.
     public static void MakeHTMLPage(CloudBlobContainer container) throws FileNotFoundException, URISyntaxException
     {
         PrintStream stream;
         stream = new PrintStream(new FileOutputStream("index.html"));
 
-        // Create the opening <html>, <header>, and <body> elements.
+        // Create hello opening <html>, <header>, and <body> elements.
         stream.println("<html>");
         stream.println("<header/>");
         stream.println("<body>");
 
-        // Enumerate the uploaded blobs.
+        // Enumerate hello uploaded blobs.
         for (ListBlobItem blobItem : container.listBlobs()) {
-            // List each blob as an <img> element in the HTML body.
+            // List each blob as an <img> element in hello HTML body.
             stream.println("<img src='" + blobItem.getUri() + "'/><br/>");
         }
 
         stream.println("</body>");
 
-        // Complete the <html> element and close the file.
+        // Complete hello <html> element and close hello file.
         stream.println("</html>");
         stream.close();
     }
 }
 ```
 
-Kromě obrázek místní soubor se nahrává do úložiště Azure, příklad kódu vytvoří namedindex.html místního souboru, které lze otevřít v prohlížeči zobrazit nahrané image.
+Přidání toouploading obrázek místní soubor tooAzure úložiště, hello příklad kódu vytvoří namedindex.html místního souboru, který lze otevřít v toosee váš prohlížeč nahrané image.
 
-Protože kód obsahuje název účtu a klíč účtu, ujistěte se, že zdrojový kód je bezpečné.
+Protože kód hello obsahuje název účtu a klíč účtu, zajistěte, aby byl zdrojový kód zabezpečení.
 
-## <a name="to-delete-a-container"></a>Chcete-li odstranit kontejner
-Vzhledem k tomu, že musíte platit za úložiště, můžete chtít odstranit **gettingstarted** kontejner po skončení experimentování se v tomto příkladu. Pokud chcete odstranit kontejner, použijte **CloudBlobContainer.delete** metoda.
+## <a name="toodelete-a-container"></a>toodelete kontejner
+Vzhledem k tomu, že musíte platit za úložiště, může být vhodné toodelete **gettingstarted** kontejner po skončení experimentování se v tomto příkladu. toodelete kontejner, použijte hello **CloudBlobContainer.delete** metoda.
 
 ```java
 container = serviceClient.getContainerReference("gettingstarted");
 container.delete();
 ```
 
-K volání **CloudBlobContainer.delete** metoda, proces inicializace **CloudStorageAccount**, **ClodBlobClient**, a **CloudBlobContainer** objektů je stejný, jak je uvedeno pro **createIfNotExist** metoda. Tady je kompletní příklad, který odstraní kontejner s názvem **gettingstarted**.
+toocall hello **CloudBlobContainer.delete** metoda, hello proces inicializace **CloudStorageAccount**, **ClodBlobClient**, a  **CloudBlobContainer** objektů je hello stejná jak je uvedeno pro **createIfNotExist** metoda. Hello následuje kompletní příklad, odstraní hello kontejner s názvem **gettingstarted**.
 
 ```java
 import com.microsoft.azure.storage.*;
@@ -397,10 +397,10 @@ public class DeleteContainer {
 }
 ```
 
-Přehled jiné třídy úložiště objektů blob a metody, najdete v tématu [používání úložiště Blob z Javy](storage-java-how-to-use-blob-storage.md).
+Přehled jiné třídy úložiště objektů blob a metody, najdete v tématu [jak toouse úložiště Blob z Javy](storage-java-how-to-use-blob-storage.md).
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o složitějších úlohách úložiště na následujících odkazech.
+Použijte tyto odkazy toolearn Další informace o složitějších úlohách úložiště.
 
 * [Úložiště Azure SDK pro jazyk Java](https://github.com/azure/azure-storage-java)
 * [Odkaz na sadu SDK klienta úložiště Azure](http://dl.windowsazure.com/storage/javadoc/)

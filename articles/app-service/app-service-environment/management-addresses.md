@@ -1,6 +1,6 @@
 ---
-title: "Adresy pro správu Azure App Service Environment"
-description: "Zobrazí seznam adres správy používá k příkazu služby App Service Environment"
+title: "adresy pro správu aaaAzure App Service Environment"
+description: "Seznamy hello správy adresy použity toocommand služby App Service Environment"
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: e97a084772fd16252d925b62498d2e696629a25d
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: b34b6266dc3a35915421b14bf34eddc07c2825c0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="app-service-environment-management-addresses"></a>Adresy pro správu App Service Environment
 
-Environment(ASE) služby aplikace je nasazení služby Azure App Service na podsíť ve virtuální síti Azure (VNet).  App Service Environment musí být přístupné ze služby Azure App Service, tak, aby bylo možné jej spravovat.  Tento provoz správy App Service Environment prochází sítí pod kontrolou uživatele.  Pochází ze serverů pro správu služby Azure App Service na veřejné VIP, který je přidružen App Service Environment.  Podrobnosti o App Service Environment sítě závislosti číst [sítě aspekty a App Service Environment][networking].  Obecné informace o App Service Environment můžete spustit v [Úvod do služby App Service Environment][intro].
+Hello App Service Environment(ASE) je nasazení hello Azure App Service na podsíť ve virtuální síti Azure (VNet).  Hello App Service Environment musí být dostupný z hello Azure App Service, tak, aby bylo možné jej spravovat.  Tento provoz správy App Service Environment prochází hello pod kontrolou uživatele sítě.  Pochází ze služby Azure App Service management servery toohello veřejné VIP přidružený hello App Service Environment.  Podrobnosti o App Service Environment hello sítě závislosti číst [sítě aspekty a hello App Service Environment][networking].  Obecné informace o App Service Environment hello můžete spustit v [toohello Úvod App Service Environment][intro].
 
-Tento dokument uvádí zdrojové IP adresy pro přenos pro správu na App Service Environment. Tyto adresy můžete použít k vytvoření skupin zabezpečení sítě pro zamknout příchozí provoz nebo je používat v směrovací tabulky podle potřeby.  Tyto informace používat, budete muset použít:
+Tento dokument uvádí hello zdrojové IP adresy pro správu provoz toohello App Service Environment. Můžete použít tyto adresy toocreate skupin zabezpečení sítě toolock dolů příchozí provoz nebo je podle potřeby použijte v směrovací tabulky.  toouse tyto informace budete potřebovat toouse:
 
-* IP adresy, které jsou uvedené pro všechny oblasti
-* IP adresy, které odpovídají oblast, která vaše App Service Environment je nasazena do.
+* Hello IP adresy, které jsou uvedeny pro všechny oblasti
+* Hello IP adresy, že shoda toohello oblast, kterou vaše App Service Environment je nasazený do.
 
-Příchozí přenosy dat správy pochází z těchto IP adres na portech 454 a 455.
+příchozí provoz správy Hello pochází z těchto IP adres tooports 454 a 455.
 
 | Oblast | Adresy |
 |--------|-----------|

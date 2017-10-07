@@ -1,6 +1,6 @@
 ---
-title: "Vzdálené připojení k zařízení StorSimple | Microsoft Docs"
-description: "Vysvětluje, jak nakonfigurovat zařízení pro vzdálenou správu a jak se připojit k Windows Powershellu pro StorSimple prostřednictvím protokolu HTTP nebo HTTPS."
+title: "aaaConnect vzdáleně tooyour zařízení StorSimple | Microsoft Docs"
+description: "Vysvětluje, jak tooconfigure zařízení pro vzdálenou správu a jak tooconnect tooWindows Powershellu pro StorSimple prostřednictvím protokolu HTTP nebo HTTPS."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -15,133 +15,133 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b916173e127394d3ea06eded36285bdbbf884b12
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 55ed8fcdd997901301e0adc164a302216cde0332
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Vzdálené připojení k zařízení řady StorSimple 8000
+# <a name="connect-remotely-tooyour-storsimple-8000-series-device"></a>Vzdálené připojení zařízení řady StorSimple 8000 tooyour
 
 ## <a name="overview"></a>Přehled
-Vzdálená komunikace prostředí Windows PowerShell můžete použít pro připojení k zařízení StorSimple. Když připojíte tímto způsobem, neuvidíte nabídky. (Zobrazí nabídky pouze v případě, že použijete konzole sériového portu v zařízení pro připojení.) Díky vzdálenou komunikaci prostředí Windows PowerShell můžete připojit k konkrétní prostředí runspace. Můžete také zadat jazyk zobrazení. 
+Můžete použít zařízení StorSimple tooyour tooconnect vzdálenou komunikaci prostředí Windows PowerShell. Když připojíte tímto způsobem, neuvidíte nabídky. (Zobrazí nabídky pouze v případě, že používáte hello konzoly sériového portu v zařízení tooconnect hello.) Díky vzdálené komunikace Windows Powershellu připojit tooa konkrétní prostředí runspace. Můžete také zadat hello jazyk zobrazení. 
 
-Další informace o používání vzdálenou komunikaci prostředí Windows PowerShell ke správě vašich zařízení, přejděte na [pomocí Windows Powershellu pro StorSimple ke správě zařízení StorSimple](storsimple-windows-powershell-administration.md).
+Další informace o použití toomanage vzdálenou komunikaci prostředí Windows PowerShell zařízení, přejděte příliš[pomocí Windows Powershellu pro StorSimple tooadminister zařízení StorSimple](storsimple-windows-powershell-administration.md).
 
-Tento kurz vysvětluje, jak nakonfigurovat zařízení pro vzdálenou správu a jak se připojit k Windows Powershellu pro StorSimple. Připojení přes vzdálenou komunikaci prostředí Windows PowerShell můžete použít protokol HTTP nebo HTTPS. Při výběru jak se připojit k Windows Powershellu pro StorSimple, však zvažte následující: 
+Tento kurz vysvětluje, jak tooconfigure zařízení pro vzdálenou správu a pak tooconnect tooWindows Powershellu pro StorSimple. Pomocí protokolu HTTP nebo HTTPS tooconnect přes vzdálenou komunikaci prostředí Windows PowerShell. Ale při rozhodování jak tooconnect tooWindows Powershellu pro StorSimple, zvažte následující hello: 
 
-* Připojení přímo ke konzole sériového portu zařízení je bezpečné, ale připojující se ke konzole sériového portu přes síťové přepínače není. Buďte opatrní rizika zabezpečení při připojování ke konzole sériového portu zařízení přes síťové přepínače. 
-* Připojení přes relaci protokolu HTTP může nabízí lepší zabezpečení než připojení prostřednictvím sériové konzoly přes síť. I když to není nejbezpečnější metodou, je přijatelné v důvěryhodných sítích. 
-* Připojení prostřednictvím relace HTTPS se certifikát podepsaný svým držitelem je nejbezpečnější a doporučená možnost.
+* Připojení přímo toohello konzoly sériového portu zařízení je bezpečné, ale není připojování konzoly sériového portu toohello přes síťové přepínače. Buďte opatrní hello rizika zabezpečení při připojování konzoly sériového portu zařízení toohello přes síťové přepínače. 
+* Připojení přes relaci protokolu HTTP může nabízí lepší zabezpečení než připojení prostřednictvím sériové konzoly hello přes síť hello. I když to není hello nejbezpečnější metodou, je přijatelné v důvěryhodných sítích. 
+* Připojení prostřednictvím relace HTTPS se certifikát podepsaný svým držitelem je hello nejbezpečnější a doporučená možnost hello.
 
-Můžete vzdáleně připojit k rozhraní Windows PowerShell. Ve výchozím nastavení však není povolen vzdálený přístup k zařízení StorSimple pomocí rozhraní Windows PowerShell. Je nutné nejprve povolit vzdálené správy na zařízení, a pak v klientském počítači používané pro přístup k zařízení.
+Můžete vzdáleně připojit toohello rozhraní Windows PowerShell. Zařízení StorSimple tooyour vzdáleného přístupu prostřednictvím rozhraní Windows PowerShell hello však není povoleno ve výchozím nastavení. Je třeba tooenable vzdálené správy na zařízení hello první a potom na hello klienta, který je použité tooaccess zařízení.
 
-Podle pokynů popsaných v tomto článku byly provedeny v hostitelském systému, systémem Windows Server 2012 R2.
+Hello kroky popsané v tomto článku byly provedeny v hostitelském systému, systémem Windows Server 2012 R2.
 
 ## <a name="connect-through-http"></a>Připojení prostřednictvím protokolu HTTP
-Připojení k Windows Powershellu pro StorSimple přes relaci protokolu HTTP poskytuje lepší zabezpečení než připojení prostřednictvím konzoly sériového portu zařízení StorSimple. I když to není nejbezpečnější metodou, je přijatelné v důvěryhodných sítích.
+Připojení tooWindows Powershellu pro StorSimple přes relaci protokolu HTTP poskytuje lepší zabezpečení než připojení prostřednictvím sériové konzoly hello zařízení StorSimple. I když to není hello nejbezpečnější metodou, je přijatelné v důvěryhodných sítích.
 
-Konfigurace vzdálené správy můžete portál Azure classic nebo konzole sériového portu. Vyberte z následujících postupů:
+Můžete použít buď hello portál Azure classic nebo vzdálenou správu tooconfigure hello konzoly sériového portu. Vyberte z následujících postupů hello:
 
-* [Povolení vzdálené správy přes protokol HTTP pomocí portálu Azure classic](#use-the-azure-classic-portal-to-enable-remote-management-over-http)
-* [Povolení vzdálené správy přes protokol HTTP pomocí konzoly sériového portu](#use-the-serial-console-to-enable-remote-management-over-http)
+* [Používání hello Azure classic portálu tooenable vzdálené správy přes protokol HTTP](#use-the-azure-classic-portal-to-enable-remote-management-over-http)
+* [Používání hello konzoly sériového portu tooenable vzdálené správy přes protokol HTTP](#use-the-serial-console-to-enable-remote-management-over-http)
 
-Po povolení vzdálené správy pomocí následujícího postupu Příprava klienta pro vzdálené připojení.
+Po povolení vzdálené správy, použijte následující postup tooprepare hello klienta pro připojení ke vzdálené hello.
 
-* [Příprava klienta pro připojení ke vzdálené](#prepare-the-client-for-remote-connection)
+* [Připravit hello klienta pro připojení ke vzdálené](#prepare-the-client-for-remote-connection)
 
-### <a name="use-the-azure-classic-portal-to-enable-remote-management-over-http"></a>Povolení vzdálené správy přes protokol HTTP pomocí portálu Azure classic
-Proveďte následující kroky na portálu Azure classic povolení vzdálené správy přes protokol HTTP.
+### <a name="use-hello-azure-classic-portal-tooenable-remote-management-over-http"></a>Používání hello Azure classic portálu tooenable vzdálené správy přes protokol HTTP
+Proveďte následující kroky v hello Azure classic portálu tooenable vzdálené správy přes protokol HTTP hello.
 
-#### <a name="to-enable-remote-management-through-the-azure-classic-portal"></a>Chcete-li povolit vzdálenou správu prostřednictvím portálu Azure classic
+#### <a name="tooenable-remote-management-through-hello-azure-classic-portal"></a>tooenable vzdálenou správu prostřednictvím hello portál Azure classic
 1. Přístup k **zařízení** > **konfigurace** pro vaše zařízení.
-2. Přejděte dolů do části **Vzdálená správa**.
-3. U položky **Povolit vzdálenou správu** zvolte **Ano**.
-4. Teď můžete zvolit připojení pomocí protokolu HTTP. (Ve výchozím nastavení se připojují přes protokol HTTPS.) Ujistěte se, že je vybraný HTTP.
+2. Projděte dolů toohello **vzdálenou správu** části.
+3. Nastavit **povolit vzdálenou správu** příliš**Ano**.
+4. Teď můžete zvolit tooconnect pomocí protokolu HTTP. (výchozí hello je tooconnect přes protokol HTTPS.) Ujistěte se, že je vybraný HTTP.
    
    > [!NOTE]
    > Připojení pomocí protokolu HTTP je přijatelné jenom v důvěryhodných sítích.
    > 
    > 
-5. V dolní části stránky klikněte na **Uložit**.
+5. Klikněte na tlačítko **Uložit** v hello dolní části stránky hello.
 
-### <a name="use-the-serial-console-to-enable-remote-management-over-http"></a>Povolení vzdálené správy přes protokol HTTP pomocí konzoly sériového portu
-Proveďte následující kroky na konzole sériového portu zařízení povolení vzdálené správy.
+### <a name="use-hello-serial-console-tooenable-remote-management-over-http"></a>Používání hello konzoly sériového portu tooenable vzdálené správy přes protokol HTTP
+Proveďte následující kroky na hello zařízení konzoly sériového portu tooenable vzdálenou správu hello.
 
-#### <a name="to-enable-remote-management-through-the-device-serial-console"></a>Chcete-li povolit vzdálenou správu prostřednictvím konzole sériového portu zařízení
-1. V nabídce konzoly sériového portu vyberte možnost 1. Další informace o používání konzoly sériového portu v zařízení, přejděte na [připojit k Windows Powershellu pro StorSimple prostřednictvím konzoly sériového portu zařízení](storsimple-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
-2. Do příkazového řádku zadejte:`Enable-HcsRemoteManagement –AllowHttp`
-3. Budete informováni o ohrožení zabezpečení zabezpečení pomocí protokolu HTTP pro připojení k zařízení. Po zobrazení výzvy potvrďte zadáním **Y**.
+#### <a name="tooenable-remote-management-through-hello-device-serial-console"></a>tooenable vzdálenou správu prostřednictvím konzoly sériového portu zařízení hello
+1. V nabídce konzoly sériového portu hello vyberte možnost 1. Další informace o používání konzoly sériového portu hello na hello zařízení, přejděte příliš[připojení tooWindows Powershellu pro StorSimple prostřednictvím konzoly sériového portu zařízení](storsimple-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
+2. Hello řádku zadejte:`Enable-HcsRemoteManagement –AllowHttp`
+3. Budete informováni o ohrožení zabezpečení hello pomocí protokolu HTTP tooconnect toohello zařízení. Po zobrazení výzvy potvrďte zadáním **Y**.
 4. Ověřte, že je povolený protokol HTTP zadáním:`Get-HcsSystem`
-5. Ověřte, zda **RemoteManagementMode** pole ukazuje **HttpsAndHttpEnabled**. Následující obrázek znázorňuje tato nastavení v PuTTY.
+5. Ověřte, že hello **RemoteManagementMode** pole ukazuje **HttpsAndHttpEnabled**.hello následující obrázek ukazuje tato nastavení v PuTTY.
    
      ![Sériového portu HTTPS a HTTP povoleno](./media/storsimple-remote-connect/HCS_SerialHttpsAndHttpEnabled.png)
 
-### <a name="prepare-the-client-for-remote-connection"></a>Příprava klienta pro připojení ke vzdálené
-Proveďte následující kroky na klientovi se povolení vzdálené správy.
+### <a name="prepare-hello-client-for-remote-connection"></a>Připravit hello klienta pro připojení ke vzdálené
+Proveďte následující kroky na vzdálenou správu serveru signálu hello klienta tooenable hello.
 
-#### <a name="to-prepare-the-client-for-remote-connection"></a>Příprava klienta pro připojení ke vzdálené
+#### <a name="tooprepare-hello-client-for-remote-connection"></a>tooprepare hello klienta pro připojení ke vzdálené
 1. Spusťte relaci prostředí Windows PowerShell jako správce.
-2. Zadejte následující příkaz Přidat IP adresu zařízení StorSimple do seznamu důvěryhodných hostitelů klienta: 
+2. Zadejte následující příkaz tooadd hello IP adresu ze seznamu důvěryhodných hostitelů hello StorSimple zařízení toohello klienta hello: 
    
      `Set-Item wsman:\localhost\Client\TrustedHosts <device_ip> -Concatenate -Force`
    
-     Nahraďte <*device_ip*> s IP adresou vašeho zařízení; například: 
+     Nahraďte <*device_ip*> s hello IP adresa vašeho zařízení; například: 
    
      `Set-Item wsman:\localhost\Client\TrustedHosts 10.126.173.90 -Concatenate -Force`
-3. Zadejte následující příkaz pro uložení přihlašovacích údajů zařízení v proměnné: 
+3. Zadejte následující příkaz toosave hello přihlašovací údaje zařízení v proměnné hello: 
    
     ```
     $cred = Get-Credential
     ```
     
-4. V dialogovém okně, které se zobrazí:
+4. V dialogovém okně hello které se zobrazí:
    
-   1. Zadejte uživatelské jméno v tomto formátu: *device_ip\SSAdmin*.
-   2. Zadejte heslo správce zařízení, která byla nastavena, když v zařízení byl nakonfigurovaný pomocí Průvodce instalací. Výchozí heslo je *Heslo1*.
-5. Spusťte relaci prostředí Windows PowerShell na zařízení tak, že zadáte tento příkaz:
+   1. Zadejte jméno uživatele hello v tomto formátu: *device_ip\SSAdmin*.
+   2. Zadejte heslo správce zařízení hello, který byl nastaven při konfiguraci zařízení hello pomocí Průvodce instalací hello. výchozí heslo Hello je *Heslo1*.
+5. Spusťte relaci prostředí Windows PowerShell na zařízení hello zadáním následujícího příkazu:
    
      `Enter-PSSession -Credential $cred -ConfigurationName SSAdminConsole -ComputerName <device_ip>`
    
    > [!NOTE]
-   > Chcete-li vytvořit relaci prostředí Windows PowerShell pro použití s virtuální zařízení StorSimple, připojte `–Port` parametr a zadejte veřejný port, který jste nakonfigurovali v vzdálenou komunikaci pro virtuální zařízení StorSimple.
+   > toocreate relaci prostředí Windows PowerShell pro použití s hello virtuálního zařízení StorSimple, připojit hello `–Port` parametr a zadejte hello veřejný port, který jste nakonfigurovali v vzdálenou komunikaci pro virtuální zařízení StorSimple.
    > 
    > 
    
-     V tomto okamžiku byste měli mít aktivní vzdálené relace prostředí Windows PowerShell na zařízení.
+     V tomto okamžiku by měl mít zařízení aktivní toohello vzdálené relace prostředí Windows PowerShell.
    
     ![Vzdálená komunikace prostředí PowerShell pomocí protokolu HTTP](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTP.png)
 
 ## <a name="connect-through-https"></a>Připojení přes protokol HTTPS
-Připojení k Windows Powershellu pro StorSimple prostřednictvím relace HTTPS je nejbezpečnější a doporučená metoda vzdáleně připojit k zařízení s Microsoft Azure StorSimple. Následující postupy popisují, jak nastavit sériové konzoly a klientské počítače tak, že použijete protokol HTTPS pro připojení k Windows Powershellu pro StorSimple.
+Připojení tooWindows Powershellu pro StorSimple prostřednictvím relace HTTPS je hello nejbezpečnější a doporučená metoda zařízení Microsoft Azure StorSimple pro vzdálené připojení tooyour. Hello následující postupy popisují, jak tooset až hello sériové konzoly a klientské počítače tak, aby HTTPS tooconnect tooWindows prostředí PowerShell můžete použít pro StorSimple.
 
-Konfigurace vzdálené správy můžete portál Azure classic nebo konzole sériového portu. Vyberte z následujících postupů:
+Můžete použít buď hello portál Azure classic nebo vzdálenou správu tooconfigure hello konzoly sériového portu. Vyberte z následujících postupů hello:
 
-* [Povolení vzdálené správy přes protokol HTTPS pomocí portálu Azure classic](#use-the-azure-classic-portal-to-enable-remote-management-over-https)
-* [Povolení vzdálené správy přes protokol HTTPS pomocí konzoly sériového portu](#use-the-serial-console-to-enable-remote-management-over-https)
+* [Použít vzdálenou správu Azure classic portálu tooenable hello přes protokol HTTPS](#use-the-azure-classic-portal-to-enable-remote-management-over-https)
+* [Použít hello konzoly sériového portu tooenable vzdálené správy přes protokol HTTPS](#use-the-serial-console-to-enable-remote-management-over-https)
 
-Po povolení vzdálené správy pomocí následujících postupů můžete připravit hostitele pro vzdálenou správu a připojte k zařízení od vzdáleného hostitele.
+Po povolení vzdálené správy, použijte následující postupy tooprepare hello hostitele pro vzdálenou správu hello a připojení zařízení toohello hello vzdáleného hostitele.
 
-* [Příprava pro vzdálenou správu hostitele](#prepare-the-host-for-remote-management)
-* [Připojení k zařízení od vzdáleného hostitele](#connect-to-the-device-from-the-remote-host)
+* [Příprava pro vzdálenou správu hostitele hello](#prepare-the-host-for-remote-management)
+* [Připojte zařízení toohello hello vzdáleného hostitele](#connect-to-the-device-from-the-remote-host)
 
-### <a name="use-the-azure-classic-portal-to-enable-remote-management-over-https"></a>Povolení vzdálené správy přes protokol HTTPS pomocí portálu Azure classic
-Proveďte následující kroky na portálu Azure classic povolení vzdálené správy přes protokol HTTPS.
+### <a name="use-hello-azure-classic-portal-tooenable-remote-management-over-https"></a>Použít vzdálenou správu Azure classic portálu tooenable hello přes protokol HTTPS
+Proveďte následující kroky v hello Azure classic portálu tooenable vzdálené správy přes protokol HTTPS hello.
 
-#### <a name="to-enable-remote-management-over-https-from-the-azure-classic-portal"></a>Povolení vzdálené správy přes protokol HTTPS z portálu Azure classic
+#### <a name="tooenable-remote-management-over-https-from-hello-azure-classic-portal"></a>tooenable vzdálené správy přes protokol HTTPS z hello portál Azure classic
 1. Přístup k **zařízení** > **konfigurace** pro vaše zařízení.
-2. Přejděte dolů do části **Vzdálená správa**.
-3. U položky **Povolit vzdálenou správu** zvolte **Ano**.
-4. Nyní můžete připojit pomocí protokolu HTTPS. (Ve výchozím nastavení se připojují přes protokol HTTPS.) Ujistěte se, že je vybraný protokol HTTPS. 
-5. Klikněte na tlačítko **stáhnout certifikát pro vzdálenou správu**. Zadejte umístění pro uložení tohoto souboru. Musíte nainstalovat tento certifikát na klientský nebo hostitelský počítač, který budete používat pro připojení k zařízení.
-6. V dolní části stránky klikněte na **Uložit**.
+2. Projděte dolů toohello **vzdálenou správu** části.
+3. Nastavit **povolit vzdálenou správu** příliš**Ano**.
+4. Teď můžete zvolit tooconnect pomocí protokolu HTTPS. (výchozí hello je tooconnect přes protokol HTTPS.) Ujistěte se, že je vybraný protokol HTTPS. 
+5. Klikněte na tlačítko **stáhnout certifikát pro vzdálenou správu**. Zadejte umístění toosave tento soubor. Je nutné tooinstall tento certifikát na hello klientský nebo hostitelský počítač, že budete používat tooconnect toohello zařízení.
+6. Klikněte na tlačítko **Uložit** v hello dolní části stránky hello.
 
-### <a name="use-the-serial-console-to-enable-remote-management-over-https"></a>Povolení vzdálené správy přes protokol HTTPS pomocí konzoly sériového portu
-Proveďte následující kroky na konzole sériového portu zařízení povolení vzdálené správy.
+### <a name="use-hello-serial-console-tooenable-remote-management-over-https"></a>Použít hello konzoly sériového portu tooenable vzdálené správy přes protokol HTTPS
+Proveďte následující kroky na hello zařízení konzoly sériového portu tooenable vzdálenou správu hello.
 
-#### <a name="to-enable-remote-management-through-the-device-serial-console"></a>Chcete-li povolit vzdálenou správu prostřednictvím konzole sériového portu zařízení
-1. V nabídce konzoly sériového portu vyberte možnost 1. Další informace o používání konzoly sériového portu v zařízení, přejděte na [připojit k Windows Powershellu pro StorSimple prostřednictvím konzoly sériového portu zařízení](storsimple-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
-2. Do příkazového řádku zadejte: 
+#### <a name="tooenable-remote-management-through-hello-device-serial-console"></a>tooenable vzdálenou správu prostřednictvím konzoly sériového portu zařízení hello
+1. V nabídce konzoly sériového portu hello vyberte možnost 1. Další informace o používání konzoly sériového portu hello na hello zařízení, přejděte příliš[připojení tooWindows Powershellu pro StorSimple prostřednictvím konzoly sériového portu zařízení](storsimple-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
+2. Hello řádku zadejte: 
    
      `Enable-HcsRemoteManagement`
    
@@ -150,89 +150,89 @@ Proveďte následující kroky na konzole sériového portu zařízení povolen�
    
      `Get-HcsSystem`
    
-    Ujistěte se, že **RemoteManagementMode** pole ukazuje **HttpsEnabled**. Následující obrázek znázorňuje tato nastavení v PuTTY.
+    Ujistěte se, že hello **RemoteManagementMode** pole ukazuje **HttpsEnabled**.hello následující obrázek ukazuje tato nastavení v PuTTY.
    
      ![Sériového portu HTTPS povoleno](./media/storsimple-remote-connect/HCS_SerialHttpsEnabled.png)
-4. Z výstupu `Get-HcsSystem`, zkopírujte sériové číslo zařízení a uložit pro pozdější použití.
+4. Z výstupu hello `Get-HcsSystem`, zkopírujte sériové číslo zařízení hello hello a uložit pro pozdější použití.
    
    > [!NOTE]
-   > Sériové číslo se mapuje na název CN certifikátu.
+   > sériové číslo Hello mapuje toohello název CN certifikátu hello.
    > 
    > 
 5. Získejte certifikát pro vzdálenou správu zadáním: 
    
      `Get-HcsRemoteManagementCert`
    
-    Zobrazí se certifikát podobný následujícímu.
+    Zobrazí se následující toohello podobně jako na certifikát.
    
     ![Získání certifikátu vzdálené správy](./media/storsimple-remote-connect/HCS_GetRemoteManagementCertificate.png)
-6. Zkopírujte informace v certifikátu z **---BEGIN CERTIFICATE---** k **---END CERTIFICATE---** do textového editoru, například Poznámkový blok a uložte ho jako soubor .cer. (Bude tento soubor je zkopírovat do vzdáleného hostitele při přípravě hostitele.)
+6. Zkopírujte hello informace v certifikátu hello z **---BEGIN CERTIFICATE---** příliš**---END CERTIFICATE---** do textového editoru, například Poznámkový blok a uložte ho jako soubor .cer. (Tento soubor tooyour vzdálený hostitel se zkopírujte při přípravě hello hostitele.)
    
    > [!NOTE]
-   > Pokud chcete vygenerovat nový certifikát, použijte `Set-HcsRemoteManagementCert` rutiny.
+   > toogenerate nový certifikát, použijte hello `Set-HcsRemoteManagementCert` rutiny.
    > 
    > 
 
-### <a name="prepare-the-host-for-remote-management"></a>Příprava pro vzdálenou správu hostitele
-Pro přípravu na hostitelském počítači vzdáleného připojení, který používá relaci protokolu HTTPS, proveďte následující postupy:
+### <a name="prepare-hello-host-for-remote-management"></a>Příprava pro vzdálenou správu hostitele hello
+tooprepare hello hostitelského počítače pro vzdálené připojení, který používá relace HTTPS, proveďte následující postupy hello:
 
-* [Importovat soubor .cer do kořenového úložiště klienta nebo vzdálený hostitel](#to-import-the-certificate-on-the-remote-host).
-* [Sériová čísla zařízení přidat do souboru hostitelů na vzdáleného hostitele](#to-add-device-serial-numbers-to-the-remote-host).
+* [Soubor .cer hello importu do kořenového úložiště hello hello klienta nebo vzdálený hostitel](#to-import-the-certificate-on-the-remote-host).
+* [Přidání souboru hostitelů hello zařízení sériová čísla toohello na vzdáleného hostitele](#to-add-device-serial-numbers-to-the-remote-host).
 
 Každá z těchto postupů je popsána níže.
 
-#### <a name="to-import-the-certificate-on-the-remote-host"></a>Chcete-li importovat certifikát u vzdáleného hostitele
-1. Klikněte pravým tlačítkem na soubor .cer a vyberte **instalace certifikátu**. Tím se spustí Průvodce importem certifikátu.
+#### <a name="tooimport-hello-certificate-on-hello-remote-host"></a>tooimport hello certifikát u vzdáleného hostitele hello
+1. Klikněte pravým tlačítkem na soubor .cer hello a vyberte **instalace certifikátu**. Tato akce spustí hello Průvodce importem certifikátu.
    
     ![Průvodce importem certifikátu 1](./media/storsimple-remote-connect/HCS_CertificateImportWizard1.png)
 2. Pro **umístění úložiště**, vyberte **místního počítače**a potom klikněte na **Další**.
-3. Vyberte **všechny certifikáty umístit v následujícím úložišti**a potom klikněte na **Procházet**. Přejděte do kořenového úložiště vzdáleného hostitele a pak klikněte na tlačítko **Další**.
+3. Vyberte **všechny certifikáty umístit v následujícím úložiště hello**a potom klikněte na **Procházet**. Přejděte toohello kořenového úložiště vzdáleného hostitele a pak klikněte na tlačítko **Další**.
    
     ![Průvodce importem certifikátu 2](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
-4. Klikněte na **Dokončit**. Zobrazí se zpráva, která vám ukáže, že import proběhl úspěšně.
+4. Klikněte na **Dokončit**. Zobrazí zpráva informující o úspěšném importu hello.
    
     ![Průvodce importem certifikátu 3](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
 
-#### <a name="to-add-device-serial-numbers-to-the-remote-host"></a>Chcete-li přidat sériová čísla zařízení se vzdáleným hostitelem
-1. Spusťte jako správce program Poznámkový blok a pak otevřete soubor hosts umístěný ve \Windows\System32\Drivers\etc.
-2. Přidejte následující tři položky do souboru hostitele: **DATA 0 IP adresu**, **řadič 0 pevné IP adresy**, a **řadič 1 pevné IP adresy**.
-3. Zadejte sériové číslo zařízení, který jste předtím uložili. Mapování těchto na IP adresu, jak je znázorněno na následujícím obrázku. Pro řadič 0 a řadič 1 připojit **Controller0** a **Controller1** na konci sériové číslo (CN název).
+#### <a name="tooadd-device-serial-numbers-toohello-remote-host"></a>tooadd zařízení sériová čísla toohello vzdáleného hostitele
+1. Spusťte jako správce program Poznámkový blok a pak otevřete soubor hosts hello umístěný ve \Windows\System32\Drivers\etc.
+2. Přidejte následující tři položky tooyour hostitele soubor hello: **DATA 0 IP adresu**, **řadič 0 pevné IP adresy**, a **řadič 1 pevné IP adresy**.
+3. Zadejte sériové číslo zařízení hello, který jste předtím uložili. Tato IP adresa toohello mapování, jak ukazuje následující obrázek hello. Pro řadič 0 a řadič 1 připojit **Controller0** a **Controller1** na konci hello hello sériové číslo (CN název).
    
-    ![Název CN přidání do souboru hostitelů](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)
-4. Uložte soubor hostitelů.
+    ![Přidání souboru toohosts název CN](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)
+4. Uložení souboru hostitelů hello.
 
-### <a name="connect-to-the-device-from-the-remote-host"></a>Připojení k zařízení od vzdáleného hostitele
-Zadejte relaci SSAdmin na zařízení ze vzdáleného hostitele nebo klienta pomocí prostředí Windows PowerShell a SSL. Relace SSAdmin se mapuje na možnost 1 v [konzoly sériového portu](storsimple-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) nabídky vašeho zařízení.
+### <a name="connect-toohello-device-from-hello-remote-host"></a>Připojte zařízení toohello hello vzdáleného hostitele
+Pomocí prostředí Windows PowerShell a SSL tooenter na SSAdmin relaci na vašem zařízení ze vzdáleného hostitele nebo klienta. relace SSAdmin Hello mapuje toooption 1 v hello [konzoly sériového portu](storsimple-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) nabídky vašeho zařízení.
 
-Následující postup proveďte v počítači, ze kterého chcete pro vzdálené připojení prostředí Windows PowerShell.
+Proveďte následující postup u hello počítačů, ze kterého mají být připojení ke vzdálené prostředí Windows PowerShell toomake hello hello.
 
-#### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-ssl"></a>K zadání relaci SSAdmin na zařízení pomocí prostředí Windows PowerShell a SSL
+#### <a name="tooenter-an-ssadmin-session-on-hello-device-by-using-windows-powershell-and-ssl"></a>tooenter na relaci SSAdmin na zařízení hello pomocí prostředí Windows PowerShell a SSL
 1. Spusťte relaci prostředí Windows PowerShell jako správce.
-2. Přidejte IP adresu zařízení do důvěryhodných hostitelů klienta zadáním:
+2. Přidání důvěryhodných hostitelů hello zařízení IP adres toohello klienta zadáním:
    
      `Set-Item wsman:\localhost\Client\TrustedHosts <device_ip> -Concatenate -Force`
    
-    Kde <*device_ip*> je IP adresa vašeho zařízení, třeba: 
+    Kde <*device_ip*> je hello IP adresa zařízení, třeba: 
    
      `Set-Item wsman:\localhost\Client\TrustedHosts 10.126.173.90 -Concatenate -Force`
 3. Vytvoření nového pověření zadáním: 
    
      `$cred = New-Object pscredential @("<IP of target device>\SSAdmin", (ConvertTo-SecureString -Force -AsPlainText "<Device Administrator Password>"))`
    
-    Kde <*IP cílové zařízení*> je IP adresa DATA 0 pro vaše zařízení; například **10.126.173.90** jak je vidět na předchozím obrázku souboru hostitelů. Zadejte také heslo správce pro vaše zařízení.
+    Kde <*IP cílové zařízení*> je IP adresa hello DATA 0 pro vaše zařízení; například **10.126.173.90** jak je znázorněno v předchozích bitovou kopii souboru hostitelů hello hello. Zadejte také hello heslo správce pro vaše zařízení.
 4. Vytvořte relaci zadáním:
    
      `$session = New-PSSession -UseSSL -ComputerName <Serial number of target device> -Credential $cred -ConfigurationName "SSAdminConsole"`
    
-    Pro parametr - ComputerName do rutiny, zadejte <*sériové číslo cílového zařízení*>. Toto sériové číslo bylo mapováno na IP adresu DATA 0 v souboru hostitelů na vzdáleném hostiteli; například **SHX0991003G44MT** jak je znázorněno na následujícím obrázku.
+    Pro parametr - ComputerName hello v hello rutiny, zadejte hello <*sériové číslo cílového zařízení*>. Toto sériové číslo bylo mapováno toohello IP adresu DATA 0 v souboru hostitelů hello na vzdáleném hostiteli; například **SHX0991003G44MT** jak ukazuje následující obrázek hello.
 5. Zadejte: 
    
      `Enter-PSSession $session`
-6. Budete muset několik minut počkat a potom budete připojeni do zařízení pomocí protokolu HTTPS přes protokol SSL. Zobrazí se zpráva, která určuje, že jste připojeni k zařízení.
+6. Budete potřebovat toowait několik minut a pak bude zařízení připojených tooyour přes HTTPS přes protokol SSL. Zobrazí se zpráva, která označuje, že jsou připojené tooyour zařízení.
    
     ![Vzdálená komunikace prostředí PowerShell pomocí protokolu HTTPS a SSL](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o [pomocí prostředí Windows PowerShell ke správě zařízení StorSimple](storsimple-windows-powershell-administration.md).
-* Další informace o [pomocí služby StorSimple Manager ke správě zařízení StorSimple](storsimple-manager-service-administration.md).
+* Další informace o [pomocí prostředí Windows PowerShell tooadminister zařízení StorSimple](storsimple-windows-powershell-administration.md).
+* Další informace o [pomocí hello tooadminister služby StorSimple Manager zařízení StorSimple](storsimple-manager-service-administration.md).
 

@@ -1,5 +1,5 @@
 ---
-title: "Načíst kontejnery vyrovnávání v clusteru Azure DC/OS | Microsoft Docs"
+title: "kontejnery vyrovnávání aaaLoad v clusteru Azure DC/OS | Microsoft Docs"
 description: "Vyrovnávání zatížení v rámci několika kontejnerů na clusteru Azure Container Service DC/OS."
 services: container-service
 documentationcenter: 
@@ -16,23 +16,23 @@ ms.workload: na
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 78725c9d23e13d307821a188028ef573d1def038
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2249cb06880cdb7e9a3aa94c0750c6a27316d349
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Kontejnery Vyrovnávání zatížení v clusteru služby Azure Container Service DC/OS
-V tomto článku jsme zjistit, jak vytvořit interní nástroj v DC/OS spravované Azure Container Service pomocí Marathon-LB. Tato konfigurace umožňuje škálování aplikací vodorovně. Také umožňuje využít výhod agenta veřejné a privátní clustery umístěním nástroje pro vyrovnávání zatížení na vaše kontejnery aplikací v clusteru, privátní a veřejné clusteru. V tomto kurzu jste:
+V tomto článku jsme prozkoumejte spravováni Azure Container Service pomocí Marathon-LB toocreate interní zátěže v DC/OS. Tato konfigurace umožňuje vám tooscale vodorovně vaší aplikace. Můžete taky využít tootake hello veřejné a privátní agenta clusterů tím, že nástroje pro vyrovnávání zatížení v clusteru veřejné hello a vaše kontejnery aplikací v clusteru privátní hello. V tomto kurzu jste:
 
 > [!div class="checklist"]
 > * Konfigurace služby Vyrovnávání zatížení Marathon
-> * Nasazení aplikace pomocí nástroje pro vyrovnávání zatížení
+> * Nasazení aplikace pomocí nástroje pro vyrovnávání zatížení hello
 > * Konfigurace a nástroj pro vyrovnávání zatížení Azure
 
-Je třeba cluster služby ACS DC/OS, pokud chcete provést kroky v tomto kurzu. V případě potřeby [tento ukázkový skript](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) můžete vytvořit za vás.
+Budete potřebovat DC/OS ACS clusteru toocomplete hello kroky v tomto kurzu. V případě potřeby [tento ukázkový skript](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) můžete vytvořit za vás.
 
-Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Tento kurz vyžaduje hello Azure CLI verze verze 2.0.4 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooupgrade, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -40,15 +40,15 @@ Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spu�
 
 Existují dvě vrstvy Vyrovnávání zatížení v clusteru služby Azure Container Service DC/OS: 
 
-**Azure nástroj pro vyrovnávání zatížení** poskytuje veřejné vstupní body (ty, které koncovým uživatelům přístup k). Azure LB automaticky poskytuje Azure Container Service a je ve výchozím nastavení nakonfigurován tak, aby vystavit port 80 a 443 8080.
+**Azure nástroj pro vyrovnávání zatížení** poskytuje veřejné vstupní body (ty, které této koncoví uživatelé přístup hello). Azure LB automaticky poskytuje Azure Container Service a je ve výchozím nastavení nakonfigurované tooexpose port 80 a 443 8080.
 
-**Vyrovnávání zatížení (marathon-lb) Marathon** trasy příchozí požadavky na kontejner instancí, které tyto žádosti o služby. Škály kontejnerů, které poskytují naše webové služby, marathon-lb dynamicky přizpůsobení. Tento nástroj pro vyrovnávání zatížení není dostupné ve výchozím nastavení v kontejneru služby, ale lze snadno nainstalovat.
+**Hello Marathon nástroj pro vyrovnávání zatížení (marathon-lb)** trasy příchozí požadavky toocontainer instancí, které tyto žádosti o služby. Škály hello kontejnerů, které poskytují naše webové služby, hello marathon-lb dynamicky přizpůsobení. Tento nástroj pro vyrovnávání zatížení není dostupné ve výchozím nastavení v kontejneru služby, ale je snadno tooinstall.
 
 ## <a name="configure-marathon-load-balancer"></a>Konfigurace pro vyrovnávání zatížení Marathon
 
-Marathon Load Balancer se sám dynamicky rekonfiguruje na základě kontejnerů, které jste nasadili. Je také odolný vůči ztrátě kontejneru nebo agenta – Pokud k tomu dojde, restartuje kontejner na jiném místě Apache Mesos a marathon-lb přizpůsobení.
+Nástroj pro vyrovnávání zatížení Marathon dynamicky změní konfiguraci založena na hello kontejnery, které jste nasadili. Je také odolný toohello ztrátě kontejneru nebo agenta – Pokud k tomu dojde, restartuje hello kontejner na jiném místě Apache Mesos a marathon-lb přizpůsobení.
 
-Spusťte následující příkaz pro instalaci nástroje pro vyrovnávání zatížení marathon v clusteru veřejného agenta.
+Spusťte následující příkaz tooinstall hello marathon nástroj pro vyrovnávání zatížení v clusteru hello veřejného agenta hello.
 
 ```azurecli-interactive
 dcos package install marathon-lb
@@ -56,15 +56,15 @@ dcos package install marathon-lb
 
 ## <a name="deploy-load-balanced-application"></a>Nasazení aplikace skupinu s vyrovnáváním zatížení
 
-Jakmile máme balíček marathon-lb, můžeme nasadit kontejner aplikace, u kterého chceme vyrovnávat zatížení. 
+Teď, když máme balíček marathon-lb hello, můžeme nasadit kontejner aplikace, že nám chcete vyrovnávat tooload. 
 
-Nejdřív získáte plně kvalifikovaný název domény veřejně vystavené agentů.
+Nejdřív získáte hello plně kvalifikovaný název domény hello veřejně vystaven agentů.
 
 ```azurecli-interactive
 az acs list --resource-group myResourceGroup --query "[0].agentPoolProfiles[0].fqdn" --output tsv
 ```
 
-Dále vytvořte soubor s názvem *hello web.json* a zkopírujte následující obsah. `HAPROXY_0_VHOST` Popisek je třeba aktualizovat pomocí plně kvalifikovaný název domény agentů DC/OS. 
+Dále vytvořte soubor s názvem *hello web.json* a kopírování v hello následující obsah. Hello `HAPROXY_0_VHOST` popisku musí toobe aktualizováno hello plně kvalifikovaný název domény hello agentů DC/OS. 
 
 ```json
 {
@@ -100,32 +100,32 @@ Dále vytvořte soubor s názvem *hello web.json* a zkopírujte následující o
 }
 ```
 
-Pomocí rozhraní příkazového řádku DC/OS a spusťte aplikaci. Ve výchozím nastavení nasadí Marathonu aplikace do privátní clusteru. To znamená, že výše nasazení je pouze přístupné přes nástroj pro vyrovnávání zatížení, který je obvykle toto chování žádoucí.
+Hello rozhraní příkazového řádku DC/OS toorun hello aplikaci použijte. Ve výchozím nastavení nasadí Marathon hello hello aplikace toohello privátní clusteru. To znamená, že hello výše nasazení je pouze přístupné přes nástroj pro vyrovnávání zatížení, která je obvykle hello požadovaného chování.
 
 ```azurecli-interactive
 dcos marathon app add hello-web.json
 ```
 
-Jakmile je aplikace nasazená, přejděte na plně kvalifikovaný název clusteru agenta zobrazíte skupinu s vyrovnáváním zatížení aplikace.
+Jakmile aplikace hello nasazen, procházejte toohello plně kvalifikovaný název domény aplikace hello agenta clusteru tooview skupinu s vyrovnáváním zatížení.
 
 ![Bitové kopie aplikace skupinu s vyrovnáváním zatížení](./media/container-service-load-balancing/lb-app.png)
 
 ## <a name="configure-azure-load-balancer"></a>Konfigurace pro vyrovnávání zatížení Azure
 
-Služba Azure Load Balancer ve výchozím nastavení zpřístupňuje porty 80, 8080 a 443. Pokud používáte některý z těchto tří portů (jako my v příkladu výše), není třeba provádět žádnou další akci. Nyní byste měli mít dosáhl agenta nástroj pro vyrovnávání zatížení je plně kvalifikovaný název domény a pokaždé, když aktualizujete, můžete budete použít jeden ze tří webových serverů v kruhového dotazování. 
+Služba Azure Load Balancer ve výchozím nastavení zpřístupňuje porty 80, 8080 a 443. Pokud používáte některý z těchto tří portů (jako My v hello výše příkladu), pak není co že budete potřebovat toodo. Musí být schopný toohit plně kvalifikovaný název domény služby Vyrovnávání zatížení agenta a pokaždé, když aktualizujete, můžete budete použít jeden ze tří webových serverů v kruhového dotazování. 
 
-Pokud používáte jiný port, budete muset přidat pravidlo kruhového dotazování a najít na Vyrovnávání zatížení pro port, který jste použili. To lze udělat z [rozhraní příkazového řádku Azure](../../azure-resource-manager/xplat-cli-azure-resource-manager.md) pomocí příkazů `azure network lb rule create` a `azure network lb probe create`.
+Pokud používáte jiný port, musíte pravidlo tooadd kruhového dotazování a kontroly na Vyrovnávání zatížení hello hello portu, který jste použili pro. Můžete to provést z hello [rozhraní příkazového řádku Azure](../../azure-resource-manager/xplat-cli-azure-resource-manager.md), pomocí příkazů hello `azure network lb rule create` a `azure network lb probe create`.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se dozvěděli o vyrovnávání zatížení v rámci služby ACS se Marathon i Azure Vyrovnávání zatížení, včetně následujících akcí:
+V tomto kurzu jste se dozvěděli o vyrovnávání zatížení v ACS s hello Marathon i zatížení Azure včetně služby Vyrovnávání hello následující akce:
 
 > [!div class="checklist"]
 > * Konfigurace služby Vyrovnávání zatížení Marathon
-> * Nasazení aplikace pomocí nástroje pro vyrovnávání zatížení
+> * Nasazení aplikace pomocí nástroje pro vyrovnávání zatížení hello
 > * Konfigurace a nástroj pro vyrovnávání zatížení Azure
 
-Přechodu na v dalším kurzu se dozvíte o integraci Azure storage s DC/OS v Azure.
+Posunutí další kurz toolearn toohello o integraci Azure storage s DC/OS v Azure.
 
 > [!div class="nextstepaction"]
 > [Azure připojit sdílenou složku v clusteru DC/OS](container-service-dcos-fileshare.md)

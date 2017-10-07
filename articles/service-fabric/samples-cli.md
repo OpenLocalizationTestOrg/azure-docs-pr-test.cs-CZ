@@ -1,5 +1,5 @@
 ---
-title: "Ukázky rozhraní příkazového řádku Azure Service Fabric"
+title: "aaaAzure ukázky rozhraní příkazového řádku Service Fabric"
 description: "Ukázky rozhraní příkazového řádku Azure Service Fabric"
 services: service-fabric
 documentationcenter: service-fabric
@@ -16,18 +16,18 @@ ms.workload: service-fabric
 ms.date: 08/22/2017
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: ffe94435d7d606506cbba2abb794f40fe9104df0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: dee855a78d9cc99c82cf720dbd79b0e2bf72a5d1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-service-fabric-cli-samples"></a>Ukázky rozhraní příkazového řádku Azure Service Fabric
 
-Následující tabulka obsahuje odkazy na [Service Fabric rozhraní příkazového řádku](service-fabric-cli.md) skriptů vzorků, které správu clusterů Service Fabric, aplikací a služeb.
+Hello následující tabulka obsahuje odkazy příliš[Service Fabric rozhraní příkazového řádku](service-fabric-cli.md) skriptů vzorků, které správu clusterů Service Fabric, aplikací a služeb.
 
 | | |
 |-|-|
 | **Správa aplikací** ||
-| [Nasazení aplikace](./scripts/cli-deploy-application.md)| Nasazení aplikace do clusteru.|
+| [Nasazení aplikace](./scripts/cli-deploy-application.md)| Nasazení clusteru tooa aplikace.|
 | [Odebrání aplikace](./scripts/cli-remove-application.md)| Odebrání aplikace z clusteru.|

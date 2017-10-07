@@ -1,6 +1,6 @@
 ---
 title: "Odkazovat na existující virtuální síť v šablonu sady Azure škálování | Microsoft Docs"
-description: "Informace o postupu přidání virtuální sítě do stávající šablony sadu škálování virtuálního počítače Azure"
+description: "Zjistěte, jak tooadd a virtuální sítě šablony tooan existující sadu škálování virtuálního počítače Azure"
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: negat
-ms.openlocfilehash: 28117d467b491704aed8d45e5eba42530579dfa2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c3034b577e17abc4643dc26d7c38ad643fa26322
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Přidat odkaz na existující virtuální síť v šablonu sady Azure škálování
+# <a name="add-reference-tooan-existing-virtual-network-in-an-azure-scale-set-template"></a>Přidat odkaz na tooan existující virtuální síť v šablonu sady Azure škálování
 
-Tento článek ukazuje, jak upravit [minimální přijatelná měřítko nastavit šablonu](./virtual-machine-scale-sets-mvss-start.md) k nasazení do existující virtuální síť místo vytvoření nové.
+Tento článek ukazuje, jak toomodify hello [minimální přijatelná měřítko nastavit šablonu](./virtual-machine-scale-sets-mvss-start.md) toodeploy do existující virtuální síť místo vytvoření nové.
 
-## <a name="change-the-template-definition"></a>Změna definice šablony
+## <a name="change-hello-template-definition"></a>Změna definice šablony hello
 
-Nakonfigurujte šablonu naše minimální přijatelná škálování si můžete prohlédnout [sem](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), a naše šablony pro nasazení do existující virtuální síť sad škálování si můžete prohlédnout [zde](https://raw.githubusercontent.com/gatneil/mvss/existing-vnet/azuredeploy.json). Podívejme se na rozdílové použít k vytvoření této šablony (`git diff minimum-viable-scale-set existing-vnet`) část podle část:
+Nakonfigurujte šablonu naše minimální přijatelná škálování si můžete prohlédnout [sem](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), a naše šablona pro nasazování sad do existující virtuální síť hello škálování si můžete prohlédnout [zde](https://raw.githubusercontent.com/gatneil/mvss/existing-vnet/azuredeploy.json). Podívejme se na toocreate hello rozdílové použít tuto šablonu (`git diff minimum-viable-scale-set existing-vnet`) část podle část:
 
-Nejprve přidáme `subnetId` parametr. Tento řetězec se předají do konfigurace sady škálování, povolení k identifikaci předem vytvořené podsítě k nasazení virtuálních počítačů do sad škálování. Tento řetězec musí být ve tvaru: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`. Například nasazení měřítka nastavení do existující virtuální síť s názvem `myvnet`, podsíť `mysubnet`, skupinu prostředků `myrg`a předplatné `00000000-0000-0000-0000-000000000000`, by subnetId: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
+Nejprve přidáme `subnetId` parametr. Tento řetězec se předají do konfigurace sady škálování hello, což sady škálování hello tooidentify hello předem vytvořené podsíť toodeploy virtuálních počítačů do. Tento řetězec musí být ve formátu hello: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`. Pro instanci sady škálování hello toodeploy do existující virtuální síť s názvem `myvnet`, podsíť `mysubnet`, skupinu prostředků `myrg`a předplatné `00000000-0000-0000-0000-000000000000`, bude hello subnetId: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
 
 ```diff
      },
@@ -42,7 +42,7 @@ Nejprve přidáme `subnetId` parametr. Tento řetězec se předají do konfigura
    },
 ```
 
-V dalším kroku jsme odstranit virtuální síť prostředek z `resources` pole, protože jsme se použití existující virtuální sítě a není nutné nasazovat nové.
+V dalším kroku prostředků hello virtuální sítě můžete odstranit z hello `resources` pole, protože jsme se použití existující virtuální sítě a nepotřebujete toodeploy novou.
 
 ```diff
    "variables": {},
@@ -70,7 +70,7 @@ V dalším kroku jsme odstranit virtuální síť prostředek z `resources` pole
 -    },
 ```
 
-Virtuální sítě už existuje před nasazením šablony, takže není nutné specifikovat klauzuli dependsOn od stupnice nastavit do virtuální sítě. Proto jsme odstranit tyto řádky:
+Hello virtuální sítě už před nasazením šablony hello, takže není bez nutnosti toospecify klauzuli dependsOn od stupnice hello nastavit toohello virtuální sítě. Proto jsme odstranit tyto řádky:
 
 ```diff
      {
@@ -86,7 +86,7 @@ Virtuální sítě už existuje před nasazením šablony, takže není nutné s
          "capacity": 2
 ```
 
-Nakonec jsme předávat `subnetId` parametr nastavený uživatelem (místo použití `resourceId` získat id virtuální sítě v jednom nasazení, který je co minimální přijatelná měřítko nastavit šablonu nemá).
+Nakonec jsme předat hello `subnetId` parametr nastavit uživatelem hello (místo použití `resourceId` tooget hello id virtuální sítě v hello nemá stejné nasazení, která je šablona sady škálování minimální přijatelná jaké hello).
 
 ```diff
                        "name": "myIpConfig",

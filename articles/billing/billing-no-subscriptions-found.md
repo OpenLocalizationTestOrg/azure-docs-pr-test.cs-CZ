@@ -1,6 +1,6 @@
 ---
-title: "Žádné předplatné Nenalezeno Chyba při pokusu o přihlášení k portálu Azure nebo centra účtů Azure | Microsoft Docs"
-description: "Poskytuje řešení problému, ve kterém žádné předplatné Nenalezeno, dojde k chybě při přihlášení k portálu Azure nebo centra účtů Azure."
+title: "odběry aaaNo zjištěna chyba při akci toosign v tooAzure portálu nebo centra účtů Azure | Microsoft Docs"
+description: "Poskytuje hello řešení problému, ve kterém žádné předplatné Nenalezeno, dojde k chybě při přihlášení tooAzure portálu nebo centra účtů Azure."
 services: 
 documentationcenter: 
 author: genlin
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: genli
-ms.openlocfilehash: a4ce9b219c05f8469379c2aac5241fcfffd16033
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: def4d4a1f883dd948fe8132f2d85abc4c23ae624
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="no-subscriptions-found-error-in-azure-portal-or-azure-account-center"></a>Žádná předplatná nalezena chyba na portálu Azure nebo centra účtů Azure
-Může zobrazit chybová zpráva "Nebyla nalezena žádná předplatná", při pokusu o přihlášení k aplikaci [portál Azure](https://portal.azure.com/) nebo [centra účtů Azure](https://account.windowsazure.com/Subscriptions). Tento článek poskytuje řešení tohoto problému.
+Může zobrazit chybová zpráva "Nebyla nalezena žádná předplatná", když zkusíte toosign v toohello [portál Azure](https://portal.azure.com/) nebo hello [centra účtů Azure](https://account.windowsazure.com/Subscriptions). Tento článek poskytuje řešení tohoto problému.
 
 ## <a name="symptom"></a>Příznaky
 
-Při pokusu o přihlášení k aplikaci [portál Azure](https://portal.azure.com/) nebo [centra účtů Azure](https://account.windowsazure.com/Subscriptions), zobrazí se následující chybová zpráva: "Nebyla nalezena žádná předplatná".
+Když se pokusíte toosign v toohello [portál Azure](https://portal.azure.com/) nebo hello [centra účtů Azure](https://account.windowsazure.com/Subscriptions), obdržíte hello následující chybová zpráva: "Nebyla nalezena žádná předplatná".
 
 ## <a name="cause"></a>Příčina
 
@@ -34,26 +34,26 @@ K tomuto problému dochází, pokud váš účet nemá dostatečná oprávnění
 
 ## <a name="solution"></a>Řešení
 
-Ujistěte se, přihlásit se jako správce správné. Účet správce můžete přistupovat pouze centra účtů. Správci služby (SA) a Spolusprávci (CA) mají oprávnění k jenom na portálu Azure nebo portálu Azure classic.
+Ujistěte se, přihlásit se jako správce správné hello. Účet správce můžete přistupovat pouze centra účtů hello. Správci služby (SA) a Spolusprávci (CA) mají přístup oprávnění pouze toohello portál Azure nebo hello portál Azure classic.
 
-### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>Scénář 1: Chybová zpráva se dostali [portálu Azure](https://portal.azure.com)
+### <a name="scenario-1-error-message-is-received-in-hello-azure-portalhttpsportalazurecom"></a>Scénář 1: Chybová zpráva se získaly v hello [portálu Azure](https://portal.azure.com)
 
-Pokud chcete tento problém vyřešit:
+toofix tohoto problému:
 
-* Zkontrolujte, že správné adresář Azure je vybrána kliknutím na váš účet v pravé horní.
+* Ujistěte se, že hello správný, že adresáře Azure je vybrán kliknutím svůj účet na vpravo nahoře hello.
 
-  ![Vyberte adresář, v horní pravé části portálu Azure](./media/billing-no-subscriptions-found/directory-switch.png)
+  ![Vyberte hello adresář v hello top napravo od hello portálu Azure](./media/billing-no-subscriptions-found/directory-switch.png)
 
-* Pokud je zaškrtnuto vpravo Azure directory, ale stále zobrazí se chybová zpráva, [byl váš účet přidán jako vlastníka](billing-add-change-azure-subscription-administrator.md).
+* Pokud hello právo Azure directory je vybrána, ale stále hello chybová zpráva, [byl váš účet přidán jako vlastníka](billing-add-change-azure-subscription-administrator.md).
 
-### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>Scénář 2: Chybová zpráva se dostali [centra účtů Azure](https://account.windowsazure.com/Subscriptions)
+### <a name="scenario-2-error-message-is-received-in-hello-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>Scénář 2: Chybová zpráva se získaly v hello [centra účtů Azure](https://account.windowsazure.com/Subscriptions)
 
-Zkontrolujte, zda je účet, který jste použili účet správce. Pokud chcete ověřit, kdo je účet správce, postupujte takto:
+Zkontrolujte, zda text hello účet, který jste použili je hello správce účtu. je tooverify, kdo hello účet správce, postupujte takto:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V nabídce centra vyberte **předplatné**.
-3. Vyberte předplatné, které chcete kontrolovat, a potom vyberte **nastavení**.
-4. Vyberte **vlastnosti**. Správce účtu předplatného se zobrazí v **správce účtu** pole.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
+2. V nabídce centra hello vyberte **předplatné**.
+3. Vyberte předplatné hello má toocheck a pak vyberte **nastavení**.
+4. Vyberte **vlastnosti**. Správce účtu Hello hello předplatného se zobrazí v hello **správce účtu** pole.
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
-Pokud stále potřebujete pomoc, [obraťte se na podporu](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409) získat rychle vyřešit problém. 
+Pokud stále potřebujete pomoc, [obraťte se na podporu](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409) tooget rychle vyřešit problém. 

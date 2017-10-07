@@ -1,6 +1,6 @@
 ---
-title: Co se stalo s Moje projekt ASP.NET? | Dokumentace Microsoftu
-description: "Popisuje, co se stane po přidání do projektu ASP.NET pomocí sady Visual Studio Azure Storage services"
+title: aaaWhat stalo projekt ASP.NET toomy? | Dokumentace Microsoftu
+description: "Popisuje, co se stane po přidání projekt ASP.NET tooa Azure Storage pomocí sady Visual Studio připojené služby"
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: tarcher
-ms.openlocfilehash: e2cdc2ff4df85f0224352bd32a3ec62480c3e6e5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a78f4b46bb1f5e6bc258723ebebad96ca7da5f67
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="what-happened-to-my-aspnet-project-visual-studio-azure-storage-connected-service"></a>Co se stalo s Moje projekt ASP.NET (Visual Studio Azure Storage připojeno service)?
+# <a name="what-happened-toomy-aspnet-project-visual-studio-azure-storage-connected-service"></a>Co se stalo toomy projekt ASP.NET (Visual Studio Azure Storage připojeno service)?
 ## <a name="references-added"></a>Přidanými referencemi
-Balíček NuGet úložiště Azure byl přidán do projektu sady Visual Studio.  
-Tento balíček přidá následující odkazy na rozhraní .NET:
+balíček NuGet úložiště Azure Hello přidala tooyour projektu sady Visual Studio.  
+Tento balíček přidá hello následující odkazy na rozhraní .NET:
 
 * **Microsoft.Data.Edm**
 * **Microsoft.Data.OData**
@@ -35,7 +35,7 @@ Tento balíček přidá následující odkazy na rozhraní .NET:
 * **System.Spatial**
 
 ## <a name="connection-string-for-azure-storage-added"></a>Připojovací řetězec pro Azure Storage přidán
-V souboru web.config vašeho projektu byl vytvořen element připojovací řetězec a klíč účtu vybrané úložiště.
+V souboru web.config hello projektu byl vytvořen element připojovací řetězec a klíč účtu úložiště hello vybrané.
 
 Další informace najdete v tématu [ASP.NET](http://www.asp.net).
 

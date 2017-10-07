@@ -1,6 +1,6 @@
 ---
-title: "Pole virtuální zařízení StorSimple webového uživatelského rozhraní správy | Microsoft Docs"
-description: "Popisuje, jak provádět úlohy správy základní zařízení StorSimple virtuální pole webového uživatelského rozhraní."
+title: "aaaStorSimple virtuální pole webového uživatelského rozhraní správy | Microsoft Docs"
+description: "Popisuje, jak Správa základní zařízení tooperform úkoly hello pole virtuální zařízení StorSimple webového uživatelského rozhraní."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,100 +14,100 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: 989e7b697f9b527df549fb32be18edd1d3c8d224
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 31a20a587c4302231f027fcf772a50df33b23407
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>Pomocí webového uživatelského rozhraní pro správu pole virtuální zařízení StorSimple
+# <a name="use-hello-web-ui-tooadminister-your-storsimple-virtual-array"></a>Použití webového uživatelského rozhraní tooadminister hello pole virtuální zařízení StorSimple
 ![tok procesu instalace](./media/storsimple-ova-web-ui-admin/manage4.png)
 
 ## <a name="overview"></a>Přehled
-Kurzy v tomto článku se vztahují na Microsoft Azure StorSimple virtuální pole (také označované jako místní virtuální zařízení StorSimple) verzí obecné dostupnosti (GA). března 2016. Tento článek popisuje některé komplexní pracovní postupy a úlohy správy, které lze provést v poli virtuální zařízení StorSimple. Pole virtuální zařízení StorSimple pomocí StorSimple Manager můžete spravovat služby uživatelského rozhraní (označované jako portál uživatelského rozhraní) a místní webového uživatelského rozhraní pro zařízení. Tento článek se zaměřuje na úlohách, že můžete provádět pomocí webového uživatelského rozhraní.
+kurzy Hello v tomto článku se vztahují toohello Microsoft Azure StorSimple virtuální pole (také označované jako hello místní virtuální zařízení StorSimple) spuštěné. března 2016 obecné dostupnosti (GA) verze. Tento článek popisuje některé hello komplexní pracovní postupy a úlohy správy, které lze provést na hello pole virtuální zařízení StorSimple. Můžete spravovat hello poli virtuální zařízení StorSimple pomocí služby StorSimple Manager hello uživatelského rozhraní (označují tooas hello portál uživatelského rozhraní) a hello místního webového uživatelského rozhraní pro hello zařízení. Tento článek se zaměřuje na hello úlohy, že můžete provádět pomocí hello webového uživatelského rozhraní.
 
-Tento článek obsahuje následující kurzy:
+Tento článek obsahuje hello následující kurzy:
 
-* Získání šifrovacího klíče dat služby
+* Získání šifrovacího klíče dat služby hello
 * Řešení chyb instalace webového uživatelského rozhraní
 * Generovat balíček protokolu
 * Vypnutí nebo restartování zařízení
 
-## <a name="get-the-service-data-encryption-key"></a>Získání šifrovacího klíče dat služby
-Šifrovací klíč dat služby se vygeneruje, když zaregistrujete svoje první zařízení pomocí služby StorSimple Manager. Tento klíč je pak potřeba s registrační klíč služby k registraci dalších zařízení pomocí služby StorSimple Manager.
+## <a name="get-hello-service-data-encryption-key"></a>Získání šifrovacího klíče dat služby hello
+Šifrovací klíč dat služby se vygeneruje, když se zaregistrujete svoje první zařízení hello služby StorSimple Manager. Tento klíč je pak potřeba s hello služby registrace klíče tooregister další zařízení s hello služby StorSimple Manager.
 
-Pokud budete mít k jejich chybnému umístění šifrovacího klíče dat služby a nutnost jejich načtení, proveďte následující kroky v místní webového uživatelského rozhraní zařízení zaregistrovali služby.
+Pokud jste k jejich chybnému umístění šifrovacího klíče dat služby a potřebovat tooretrieve, proveďte následující hello kroky v hello místního webového uživatelského rozhraní hello zařízení zaregistrovali služby.
 
-#### <a name="to-get-the-service-data-encryption-key"></a>Chcete-li získat šifrovacího klíče dat služby
-1. Připojte k místní webového uživatelského rozhraní. Přejděte na **konfigurace** > **nastavení cloudu**.
-2. V dolní části stránky klikněte na tlačítko **šifrovacího klíče dat služby Get**. Zobrazí se klíč. Zkopírujte a uložte tento klíč.
+#### <a name="tooget-hello-service-data-encryption-key"></a>šifrovací klíč dat služby tooget hello
+1. Připojte toohello místního webového uživatelského rozhraní. Přejděte příliš**konfigurace** > **nastavení cloudu**.
+2. V dolní části hello hello stránky, klikněte na tlačítko **šifrovacího klíče dat služby Get**. Zobrazí se klíč. Zkopírujte a uložte tento klíč.
    
     ![získání šifrovacího klíče dat služby 1](./media/storsimple-ova-web-ui-admin/image27.png)
 
 ## <a name="troubleshoot-web-ui-setup-errors"></a>Řešení chyb instalace webového uživatelského rozhraní
-V některých případech při konfiguraci zařízení prostřednictvím místního webového uživatelského rozhraní, může dojít k chybám. Při diagnostice a řešení těchto chyb, můžete spustit testy diagnostiky.
+V některých případech při konfiguraci zařízení hello hello místního webového uživatelského rozhraní, může dojít k chybám. toodiagnose a vyřešte tyto chyby, je možné spustit testy diagnostiky hello.
 
-#### <a name="to-run-the-diagnostic-tests"></a>Spustit diagnostické testy
-1. V místní webového uživatelského rozhraní, přejděte do **Poradce při potížích s** > **diagnostických testů**.
+#### <a name="toorun-hello-diagnostic-tests"></a>toorun hello diagnostických testů
+1. Hello místního webového uživatelského rozhraní, přejděte v příliš**Poradce při potížích s** > **diagnostických testů**.
    
     ![spustit diagnostiku 1](./media/storsimple-ova-web-ui-admin/image29.png)
-2. V dolní části stránky klikněte na tlačítko **spuštění diagnostických testů**. Tím zahájíte testy při diagnostice všech možných problémů s vaší sítě, zařízení, webový proxy server, čas nebo nastavení cloudu. Budete informováni, že je na zařízení spuštěný testy.
-3. Po dokončení testů, se zobrazí výsledky. Následující příklad ukazuje výsledky diagnostických testů. Upozorňujeme, že nastavení webového proxy serveru nebyly nakonfigurovány na tomto zařízení a proto nebyl spuštěn test webového proxy serveru. Všechny ostatní testy pro nastavení sítě, DNS server a nastavení času byly úspěšné.
+2. V dolní části hello hello stránky, klikněte na tlačítko **spuštění diagnostických testů**. Tím zahájíte testy toodiagnose všech možných problémů s sítí, zařízení, webový proxy server, čas nebo nastavení cloudu. Budete informováni, že toto zařízení hello zpracovává testy.
+3. Po dokončení testů hello, zobrazí se výsledky hello. Hello následující příklad ukazuje výsledky hello diagnostických testů. Upozorňujeme, že nebyly na toto zařízení nakonfigurované nastavení proxy serveru webové hello a proto nebyl spuštěn test proxy webu hello. Všechny hello jiné testy pro nastavení sítě, DNS server a nastavení času byly úspěšné.
    
     ![spustit diagnostiku 2](./media/storsimple-ova-web-ui-admin/image30.png)
 
 ## <a name="generate-a-log-package"></a>Generovat balíček protokolu
-Balíček protokol se skládá z příslušné protokoly, které vám mohou pomoci Microsoft Support s potíží jakékoli zařízení. V této verzi můžete generovat balíček protokolu prostřednictvím místního webového uživatelského rozhraní.
+Balíček protokol se skládá z všechny relevantní protokoly hello, které mohou pomoci Microsoft Support s potíží jakékoli zařízení. V této verzi můžete generovat balíček protokolu pomocí hello místního webového uživatelského rozhraní.
 
-#### <a name="to-generate-the-log-package"></a>Pro vygenerování balíčku protokolu
-1. V místní webového uživatelského rozhraní, přejděte do **Poradce při potížích s** > **protokoly systému**.
+#### <a name="toogenerate-hello-log-package"></a>toogenerate hello protokolu balíčku
+1. Hello místního webového uživatelského rozhraní, přejděte v příliš**Poradce při potížích s** > **protokoly systému**.
    
     ![Generovat balíček protokolu 1](./media/storsimple-ova-web-ui-admin/image31.png)
-2. V dolní části stránky klikněte na tlačítko **vytvořit balíček protokolu**. Bude vytvořen balíček protokolů systému. Bude to trvat několik minut.
+2. V dolní části hello hello stránky, klikněte na tlačítko **vytvořit balíček protokolu**. Bude vytvořen balíček protokolů systému hello. Bude to trvat několik minut.
    
     ![Generovat balíček protokolu 2](./media/storsimple-ova-web-ui-admin/image32.png)
    
-    Po úspěšném vytvoření balíčku se a stránky se aktualizují na označuje čas a datum vytvoření balíčku, budete upozorněni.
+    Po hello balíček je úspěšně vytvořen a hello stránka bude aktualizována tooindicate hello čas a datum vytvoření balíčku hello, budete upozorněni.
    
     ![Generovat balíček protokolu 3](./media/storsimple-ova-web-ui-admin/image33.png)
 3. Klikněte na tlačítko **balíček ke stažení protokolů**. Komprimované balíčku budou staženy ve vašem systému.
    
     ![Generovat balíček protokolu 4](./media/storsimple-ova-web-ui-admin/image34.png)
-4. Můžete rozbalte balíček stažené protokolu a zobrazit soubory protokolů systému.
+4. Můžete rozbalte balíček stažené protokolu hello a zobrazit hello systémových souborech protokolu.
 
 ## <a name="shut-down-and-restart-your-device"></a>Vypnutí a restartování zařízení
-Můžete vypnout nebo restartovat virtuální zařízení pomocí místní webového uživatelského rozhraní. Jsme doporučujeme před restartováním, trvat svazky nebo sdílené složky do offline režimu na hostiteli a poté zařízení. Tím se minimalizují možnost poškození dat. 
+Můžete vypnout nebo restartovat virtuální zařízení pomocí místní hello webového uživatelského rozhraní. Doporučujeme, aby před restartovat, trvat hello svazky nebo sdílené složky do offline režimu na hostiteli hello a pak hello zařízení. Tím se minimalizují možnost poškození dat. 
 
-#### <a name="to-shut-down-your-virtual-device"></a>Vypnutí virtuálního zařízení
-1. V místní webového uživatelského rozhraní, přejděte do **údržby** > **nastavení napájení**.
-2. V dolní části stránky klikněte na tlačítko **vypnutí**.
+#### <a name="tooshut-down-your-virtual-device"></a>tooshut dolů virtuálního zařízení
+1. Hello místního webového uživatelského rozhraní, přejděte v příliš**údržby** > **nastavení napájení**.
+2. V dolní části hello hello stránky, klikněte na tlačítko **vypnutí**.
    
     ![vypnutí zařízení 1](./media/storsimple-ova-web-ui-admin/image36.png)
-3. Zobrazí se upozornění, s informacemi o tom, že vypnutí zařízení přeruší všechny vstupně-výstupní operace které byly v průběhu, což vede výpadku. Klikněte na ikonu zaškrtnutí ![ikona zaškrtnutí](./media/storsimple-ova-web-ui-admin/image3.png).
+3. Zobrazí se upozornění, s informacemi o tom, že vypnutí hello zařízení přeruší všechny vstupně-výstupní operace které byly v průběhu, což vede výpadku. Klikněte na ikonu zaškrtnutí hello ![ikona zaškrtnutí](./media/storsimple-ova-web-ui-admin/image3.png).
    
     ![upozornění vypnutí zařízení](./media/storsimple-ova-web-ui-admin/image37.png)
    
-    Budete informováni, že byla inicializována ukončení.
+    Budete informováni, že tento vypnout hello byla inicializována.
    
     ![vypnutí zařízení spuštění](./media/storsimple-ova-web-ui-admin/image38.png)
    
-    Zařízení bude nyní ukončena. Pokud chcete spustit zařízení, musíte to provést pomocí Správce technologie Hyper-V.
+    Hello zařízení bude nyní ukončena. Pokud chcete toostart zařízení, budete potřebovat toodo, která prostřednictvím hello Správce technologie Hyper-V.
 
-#### <a name="to-restart-your-virtual-device"></a>Restartování virtuálního zařízení
-1. V místní webového uživatelského rozhraní, přejděte do **údržby** > **nastavení napájení**.
-2. V dolní části stránky klikněte na tlačítko **restartujte**.
+#### <a name="toorestart-your-virtual-device"></a>toorestart virtuální zařízení
+1. Hello místního webového uživatelského rozhraní, přejděte v příliš**údržby** > **nastavení napájení**.
+2. V dolní části hello hello stránky, klikněte na tlačítko **restartujte**.
    
     ![restartování zařízení](./media/storsimple-ova-web-ui-admin/image36.png)
-3. Zobrazí se upozornění, s informacemi o tom, že restartování zařízení přeruší všechny IOs, které byly v průběhu, což vede výpadku. Klikněte na ikonu zaškrtnutí ![ikona zaškrtnutí](./media/storsimple-ova-web-ui-admin/image3.png).
+3. Zobrazí se upozornění, oznamující, že toto restartování zařízení hello přeruší všechny IOs, které byly v průběhu, což vede výpadku. Klikněte na ikonu zaškrtnutí hello ![ikona zaškrtnutí](./media/storsimple-ova-web-ui-admin/image3.png).
    
     ![upozornění na restartování](./media/storsimple-ova-web-ui-admin/image37.png)
    
-    Budete informováni, zda bylo zahájeno restartování.
+    Budete informováni, bylo zahájeno restartování hello.
    
     ![restartování, inicializovat](./media/storsimple-ova-web-ui-admin/image39.png)
    
-    Když probíhá restartování, dojde ke ztrátě připojení k rozhraní. Pravidelně aktualizujte uživatelské rozhraní můžete sledovat na restartování. Alternativně můžete sledovat stav restartování zařízení pomocí Správce technologie Hyper-V.
+    Když probíhá hello restartování, dojde ke ztrátě připojení toohello hello uživatelského rozhraní. Pravidelně aktualizujte hello uživatelského rozhraní můžete monitorovat hello restartování. Alternativně můžete monitorovat stav restartování zařízení hello prostřednictvím hello Správce technologie Hyper-V.
 
 ## <a name="next-steps"></a>Další kroky
-Zjistěte, jak [používat službu StorSimple Manager ke správě vašich zařízení](storsimple-virtual-array-manager-service-administration.md).
+Zjistěte, jak příliš[použití hello toomanage služby StorSimple Manager zařízení](storsimple-virtual-array-manager-service-administration.md).
 

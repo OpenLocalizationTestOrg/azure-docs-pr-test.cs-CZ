@@ -1,6 +1,6 @@
 ---
-title: "Tok protokolů NSG pro čtení | Microsoft Docs"
-description: "Tento článek ukazuje, jak k analýze protokolů NSG toku"
+title: aaaRead NSG toku protokoly | Microsoft Docs
+description: "Tento článek ukazuje, jak tooparse NSG toku protokolů"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -13,69 +13,69 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: gwallace
-ms.openlocfilehash: 9bb48157b2b8e483e063058f761c3a8f531927f9
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: b4f0f64639c7b2a6b4db50e54d15056bfd809e48
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="read-nsg-flow-logs"></a>Tok protokolů NSG pro čtení
 
-Zjistěte, jak číst záznamů protokolů NSG toku pomocí prostředí PowerShell.
+Zjistěte, jak tooread NSG toku protokoly položky v prostředí PowerShell.
 
-Skupina NSG toku protokoly jsou uloženy v účtu úložiště v [objekty BLOB bloků](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs.md#about-block-blobs). Objekty BLOB bloku jsou tvořeny menší bloky. Objekt blob bloku samostatné, aby se vygenerovala každou hodinu je každý protokol. Nové protokoly jsou generovány každou hodinu, protokoly jsou aktualizované o nové položky každých několik minut s nejnovější data. V tomto článku a zjistěte, jak číst části toku protokolů.
+Skupina NSG toku protokoly jsou uloženy v účtu úložiště v [objekty BLOB bloků](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs.md#about-block-blobs). Objekty BLOB bloku jsou tvořeny menší bloky. Objekt blob bloku samostatné, aby se vygenerovala každou hodinu je každý protokol. Nové protokoly jsou generovány každou hodinu, hello protokoly jsou aktualizované o nové položky každých několik minut s hello nejnovější data. V tomto článku zjistíte, jak tooread části hello toku protokoly.
 
 ## <a name="scenario"></a>Scénář
 
-V následujícím scénáři máte protokol toku příklad, který je uložený v účtu úložiště. jsme projděte jak můžete selektivně přečíst nejnovější události v toku protokolů NSG. V tomto článku budeme používat prostředí PowerShell, ale koncepty popsanou v článku nejsou omezeny na programovací jazyk a platí pro všechny jazyky, které podporuje rozhraní API úložiště Azure
+V následujícím scénáři hello máte protokol toku příklad, který je uložený v účtu úložiště. jsme projděte jak můžete selektivně číst hello nejnovější události v toku protokolů NSG. V tomto článku budeme používat prostředí PowerShell, ale hello koncepty popsané v článku hello nejsou omezené toohello programovací jazyk nebo použít tooall jazyků – podpora hello rozhraní API úložiště Azure
 
 ## <a name="setup"></a>Nastavení
 
-Než začnete, musíte mít síťové zabezpečení skupiny toku povoleným protokolováním na jeden nebo více skupin zabezpečení sítě ve vašem účtu. Pokyny k povolení zabezpečení sítě toku protokolů, najdete v následujícím článku: [Úvod do toku protokolování pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
+Než začnete, musíte mít síťové zabezpečení skupiny toku povoleným protokolováním na jeden nebo více skupin zabezpečení sítě ve vašem účtu. Pokyny k povolení zabezpečení sítě toku protokolů, najdete v následujícím článku toohello: [Úvod tooflow protokolování pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
 
-## <a name="retrieve-the-block-list"></a>Načtení do seznamu zakázaných položek
+## <a name="retrieve-hello-block-list"></a>Načtení seznamu blokovaných hello
 
-Následující PowerShell nastavuje proměnné potřebné pro dotaz na objekt blob NSG toku protokolu a seznam bloků v rámci [CloudBlockBlob](https://docs.microsoft.com/en-us/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azurestorage-8.1.3) objekt blob bloku. Aktualizujte skript tak, aby obsahovala platné hodnoty pro vaše prostředí.
+Hello následující prostředí PowerShell nastaví proměnné hello potřeby tooquery hello NSG toku protokolu objektů blob a seznam bloků hello hello [CloudBlockBlob](https://docs.microsoft.com/en-us/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azurestorage-8.1.3) objekt blob bloku. Aktualizujte hello skriptu toocontain platné hodnoty pro vaše prostředí.
 
 ```powershell
-# The SubscriptionID to use
+# hello SubscriptionID toouse
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
 
-# Resource group that contains the Network Security Group
+# Resource group that contains hello Network Security Group
 $resourceGroupName = "<resourceGroupName>"
 
-# The name of the Network Security Group
+# hello name of hello Network Security Group
 $nsgName = "NSGName"
 
-# The storage account name that contains the NSG logs
+# hello storage account name that contains hello NSG logs
 $storageAccountName = "<storageAccountName>" 
 
-# The date and time for the log to be queried, logs are stored in hour intervals.
+# hello date and time for hello log toobe queried, logs are stored in hour intervals.
 [datetime]$logtime = "06/16/2017 20:00"
 
-# Retrieve the primary storage account key to access the NSG logs
+# Retrieve hello primary storage account key tooaccess hello NSG logs
 $StorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName).Value[0]
 
-# Setup a new storage context to be used to query the logs
+# Setup a new storage context toobe used tooquery hello logs
 $ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
 # Container name used by NSG flow logs
 $ContainerName = "insights-logs-networksecuritygroupflowevent"
 
-# Name of the blob that contains the NSG flow log
+# Name of hello blob that contains hello NSG flow log
 $BlobName = "resourceId=/SUBSCRIPTIONS/${subscriptionId}/RESOURCEGROUPS/${resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/${nsgName}/y=$($logtime.Year)/m=$(($logtime).ToString("MM"))/d=$(($logtime).ToString("dd"))/h=$(($logtime).ToString("HH"))/m=00/PT1H.json"
 
-# Gets the storage blog
+# Gets hello storage blog
 $Blob = Get-AzureStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
 
-# Gets the block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from the storage blob
+# Gets hello block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from hello storage blob
 $CloudBlockBlob = [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob
 
-# Stores the block list in a variable from the block blob.
+# Stores hello block list in a variable from hello block blob.
 $blockList = $CloudBlockBlob.DownloadBlockList()
 ```
 
-`$blockList` Proměnné vrátí seznam bloků v objektu blob. Každý objekt blob bloku obsahuje alespoň dva bloky.  První blok má délku `21` bajtů, tento blok obsahuje otvírací závorky protokolu json. Další blok není pravé hranaté závorky a má délku `9` bajtů.  Jak je vidět v následujícím příkladu protokolu má sedm položky v něm, každý se jednotlivé položky. Všechny nové položky v protokolu jsou přidány na konec bezprostředně před posledního bloku.
+Hello `$blockList` proměnné vrátí seznam bloků hello v objektu blob hello. Každý objekt blob bloku obsahuje alespoň dva bloky.  Hello první blok má délku `21` bajtů, obsahuje tento blok hello otevírání závorky hello json protokolu. Hello jiných je hello uzavírací hranaté závorce a má délku `9` bajtů.  Jak můžete vidět hello následující příklad protokolu má sedm položky v něm, každý se jednotlivé položky. Všechny nové položky v protokolu hello se přidají toohello end bezprostředně před hello posledního bloku.
 
 ```
 Name                                         Length Committed
@@ -91,45 +91,45 @@ Mzk1YzQwM2U0ZWY1ZDRhOWFlMTNhYjQ3OGVhYmUzNjk=   2675      True
 ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      9      True
 ```
 
-## <a name="read-the-block-blob"></a>Čtení objektů blob bloku
+## <a name="read-hello-block-blob"></a>Objekt blob bloku hello pro čtení
 
-Další potřebujeme ke čtení `$blocklist` proměnná načíst data. V tomto příkladu, které jsme iteraci v rámci blocklist čtení bajtů z každého bloku a scénáře je v matici. Používáme [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metoda načíst data.
+Dále je třeba tooread hello `$blocklist` proměnné tooretrieve hello data. V tomto příkladu, které jsme iteraci v rámci hello blocklist číst bajty hello z každého bloku a scénáře je v matici. Používáme hello [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metoda tooretrieve hello data.
 
 ```powershell
-# Set the size of the byte array to the largest block
+# Set hello size of hello byte array toohello largest block
 $maxvalue = ($blocklist | measure Length -Maximum).Maximum
 
-# Create an array to store values in
+# Create an array toostore values in
 $valuearray = @()
 
-# Define the starting index to track the current block being read
+# Define hello starting index tootrack hello current block being read
 $index = 0
 
-# Loop through each block in the block list
+# Loop through each block in hello block list
 for($i=0; $i -lt $blocklist.count; $i++)
 {
 
-# Create a byte array object to story the bytes from the block
+# Create a byte array object toostory hello bytes from hello block
 $downloadArray = New-Object -TypeName byte[] -ArgumentList $maxvalue
 
-# Download the data into the ByteArray, starting with the current index, for the number of bytes in the current block. Index is increased by 3 when reading to remove preceding comma.
+# Download hello data into hello ByteArray, starting with hello current index, for hello number of bytes in hello current block. Index is increased by 3 when reading tooremove preceding comma.
 $CloudBlockBlob.DownloadRangeToByteArray($downloadArray,0,$index+3,$($blockList[$i].Length-1)) | Out-Null
 
-# Increment the index by adding the current block length to the previous index
+# Increment hello index by adding hello current block length toohello previous index
 $index = $index + $blockList[$i].Length
 
-# Retrieve the string from the byte array
+# Retrieve hello string from hello byte array
 
 $value = [System.Text.Encoding]::ASCII.GetString($downloadArray)
 
-# Add the log entry to the value array
+# Add hello log entry toohello value array
 $valuearray += $value
 }
 ```
 
-Nyní `$valuearray` pole obsahuje hodnotu řetězce každého bloku. Ověření vstupu, získat druhý poslední hodnota z pole spuštěním `$valuearray[$valuearray.Length-2]`. Jsme nechcete, aby poslední hodnotu je právě pravá závorka.
+Nyní hello `$valuearray` pole obsahuje hodnotu řetězce hello každého bloku. tooverify hello položky get hello druhá toohello poslední hodnota z pole hello spuštěním `$valuearray[$valuearray.Length-2]`. Jsme nechcete, aby poslední hodnotu hello je právě hello pravá závorka.
 
-Následující příklad ukazuje výsledky této hodnoty:
+Hello výsledky této hodnoty jsou zobrazeny v hello následující ukázka:
 
 ```json
         {
@@ -151,11 +151,11 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
         }
 ```
 
-Tento scénář je příklad čtení položek v toku protokolů NSG bez nutnosti analyzovat celý protokol. Nové položky v protokolu může číst, jako jsou zapsané pomocí ID bloku nebo sledování délka bloky, které jsou uložené v objekt blob bloku. To umožňuje číst pouze nové položky.
+Tento scénář je příkladem jak tooread položek v NSG toku protokoly bez nutnosti tooparse hello celý protokol. Nové položky v protokolu hello může číst, jako jsou zapsané pomocí ID bloku hello nebo sledování hello délka bloků, které jsou uložené v hello objekt blob bloku. To vám umožní tooread pouze hello nové položky.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Navštivte [vizualizovat protokolů toku NSG sledovací proces sítě Azure pomocí nástroje s otevřeným zdrojem](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) Další informace o k zobrazení protokolů NSG toku.
+Navštivte [vizualizovat protokolů toku NSG sledovací proces sítě Azure pomocí nástroje s otevřeným zdrojem](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) toolearn Další informace o jiných způsobech tooview NSG toku protokoly.
 
-Další informace o úložiště objektů BLOB najdete: [vazby úložiště objektů Blob v Azure funkce](../azure-functions/functions-bindings-storage-blob.md)
+toolearn najdete další informace o objektů BLOB storage: [vazby úložiště objektů Blob v Azure funkce](../azure-functions/functions-bindings-storage-blob.md)

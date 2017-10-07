@@ -1,6 +1,6 @@
 ---
-title: "Plánování úloh službou Azure IoT Hub (Java) | Microsoft Docs"
-description: "Popisuje, jak naplánovat úlohu služby Azure IoT Hub vyvolat přímé metodu a nastavit požadovanou vlastnost na několika zařízeních. Použití zařízení Azure IoT SDK pro jazyk Java k implementaci aplikace simulovaného zařízení a sady SDK pro jazyk Java k implementaci aplikační služby, který chcete spustit úlohu služby Azure IoT."
+title: "úlohy aaaSchedule službou Azure IoT Hub (Java) | Microsoft Docs"
+description: "Jak tooschedule Azure IoT Hub úlohy tooinvoke přímé metodu a nastavit požadovanou vlastnost na několika zařízeních. Použití zařízení Azure IoT hello SDK pro aplikace v jazyce Java tooimplement hello simulované zařízení a hello sady SDK služby Azure IoT pro Java tooimplement úlohu služby toorun aplikace hello."
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -13,48 +13,48 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: dobett
-ms.openlocfilehash: 003a548ef2da2921a699df1aa9f7aee366d341ab
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b1b05fa56c3ce96af0b33d4cca0dd54da0f4e927
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Úlohy plán a všesměrového vysílání (Java)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
-K plánování a sledování úloh, které aktualizují miliony zařízení pomocí služby Azure IoT Hub. Pomocí úloh:
+Pomocí Azure IoT Hub tooschedule a sledování úloh, které aktualizují miliony zařízení. Pomocí úloh:
 
 * Aktualizace požadovaných vlastností
 * Aktualizace značky
 * Vyvolání metody přímé
 
-Úloha zabalí jednu z těchto akcí a sleduje provádění na sadu zařízení. Dotaz zařízení twin definuje sadu zařízení, která provede úlohu proti. Například můžete použít back-end aplikačním úlohu k vyvolání přímé metodu na 10 000 zařízení, která restartování zařízení. Zadejte sadu zařízení s dotazem twin zařízení a úlohu naplánovat na spuštění v budoucnosti. Průběh úlohy sleduje jako každé zařízení obdrží a provést přímý metodu restartování.
+Úlohu zabalí jednu z těchto akcí a sleduje hello vůči sadu zařízení. Dotaz zařízení twin definuje hello sadu zařízení, která provede úlohu hello proti. Back-end aplikačním můžete například použít úlohy tooinvoke přímá metoda na 10 000 zařízení, která restartuje hello zařízení. Zadejte hello sadu zařízení s dotazem twin zařízení a naplánovat úlohu toorun hello na datum v budoucnosti. sleduje průběh úlohy Hello jako každý hello zařízení obdrží a provést přímý metodu hello restartování.
 
-Další informace o každém z těchto funkcí najdete v tématu:
+v tématu toolearn Další informace o každé z těchto funkcí:
 
 * Dvojče zařízení a vlastností: [začít pracovat s dvojčata zařízení](iot-hub-java-java-twin-getstarted.md)
 * Přímé metody: [Příručka vývojáře pro službu IoT Hub - přímé metody](iot-hub-devguide-direct-methods.md) a [kurz: použijte přímý metody](iot-hub-java-java-direct-methods.md)
 
 V tomto kurzu získáte informace o následujících postupech:
 
-* Vytvoření aplikace zařízení, která implementuje přímé metodu s názvem **lockDoor**. Aplikace zařízení také přijme požadovanou vlastnost změny z back-end aplikace.
-* Vytvořit aplikaci back-end, která vytvoří úlohu k volání **lockDoor** přímá metoda na několika zařízeních. Jiná úloha odešle aktualizace požadované vlastností do více zařízení.
+* Vytvoření aplikace zařízení, která implementuje přímé metodu s názvem **lockDoor**. aplikace Hello zařízení také obdrží požadovanou vlastnost změny z back-end aplikace hello.
+* Vytvořit aplikaci back-end, která vytvoří úlohy toocall hello **lockDoor** přímá metoda na několika zařízeních. Jiná úloha odešle požadovanou vlastnost aktualizací toomultiple zařízení.
 
-Na konci tohoto kurzu máte zařízení konzolovou aplikaci java a back-end konzolovou aplikaci java:
+Na konci hello tohoto kurzu máte zařízení konzolovou aplikaci java a back-end konzolovou aplikaci java:
 
-**simulated-device** která se připojuje ke službě IoT hub, implementuje **lockDoor** přímá metoda a zpracovává potřeby změny vlastností.
+**simulated-device** , připojí tooyour IoT hub, implementuje hello **lockDoor** přímá metoda a zpracovává potřeby změny vlastností.
 
-**plán úlohy** , úlohy využít k volání **lockDoor** přímá metoda a aktualizovat vlastnosti twin požadovaného zařízení na několika zařízeních.
+**plán úlohy** , které využívají úloh toocall hello **lockDoor** přímá metoda a aktualizace hello dvojče zařízení požadovaných vlastností na několika zařízeních.
 
 > [!NOTE]
-> Článek [SDK služby Azure IoT](iot-hub-devguide-sdks.md) poskytuje informace o SDK služby Azure IoT, můžete použít k tvorbě aplikací, zařízení a back-end.
+> článek Hello [SDK služby Azure IoT](iot-hub-devguide-sdks.md) poskytuje informace o hello SDK služby Azure IoT, které můžete použít toobuild zařízení i back-end aplikace.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+toocomplete tohoto kurzu potřebujete:
 
-* Nejnovější [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* Hello nejnovější [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](https://maven.apache.org/install.html)
 * Aktivní účet Azure. (Pokud nemáte účet, můžete vytvořit [bezplatný účet](http://azure.microsoft.com/pricing/free-trial/) si během několika minut.)
 
@@ -62,26 +62,26 @@ Pro absolvování tohoto kurzu potřebujete:
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-Pokud dáváte přednost pro vytvoření identity zařízení prostřednictvím kódu programu, najdete v příslušné části [připojení zařízení do služby IoT hub pomocí jazyka Java](iot-hub-java-java-getstarted.md#create-a-device-identity) článku. Můžete také [iothub-explorer](https://github.com/Azure/iothub-explorer) nástroje pro přidání zařízení do služby IoT hub.
+Pokud dáváte přednost identitu zařízení hello toocreate prostřednictvím kódu programu, najdete v hello hello odpovídající části [připojit zařízení tooyour IoT hub pomocí jazyka Java](iot-hub-java-java-getstarted.md#create-a-device-identity) článku. Můžete taky hello [iothub-explorer](https://github.com/Azure/iothub-explorer) tooadd nástroj zařízení tooyour IoT hub.
 
-## <a name="create-the-service-app"></a>Vytvořit aplikaci aplikační služby
+## <a name="create-hello-service-app"></a>Vytvoření aplikace hello service
 
 V této části vytvoříte konzolovou aplikaci Java, která používá úloh:
 
-* Volání **lockDoor** přímá metoda na několika zařízeních.
-* Požadované vlastnosti poslat více zařízení.
+* Volání hello **lockDoor** přímá metoda na několika zařízeních.
+* Odešlete zařízení toomultiple požadované vlastnosti.
 
-Vytvoření aplikace:
+aplikace hello toocreate:
 
 1. Na vývojovém počítači, vytvořte prázdnou složku s názvem `iot-java-schedule-jobs`.
 
-1. V `iot-java-schedule-jobs` složku vytvořit projekt Maven s názvem **plán úloh** pomocí následujícího příkazu na příkazovém řádku. Všimněte si, že se jedná o jeden dlouhý příkaz:
+1. V hello `iot-java-schedule-jobs` složku vytvořit projekt Maven s názvem **plán úloh** pomocí hello následující příkaz na příkazovém řádku. Všimněte si, že se jedná o jeden dlouhý příkaz:
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=schedule-jobs -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. Na příkazovém řádku přejděte do `schedule-jobs` složky.
+1. Na příkazovém řádku přejděte toohello `schedule-jobs` složky.
 
-1. Pomocí textového editoru, otevřete `pom.xml` v soubor `schedule-jobs` složky a přidejte následující závislost na **závislosti** uzlu. Tuto závislost umožňuje používat **klienta služby iot** balíček ve vaší aplikaci pro komunikaci se službou IoT hub:
+1. Pomocí textového editoru otevřete hello `pom.xml` souboru v hello `schedule-jobs` složky a přidejte následující závislost toohello hello **závislosti** uzlu. Tuto závislost vám umožní toouse hello **klienta služby iot** balíček ve vaší aplikaci toocommunicate službou IoT hub:
 
     ```xml
     <dependency>
@@ -93,9 +93,9 @@ Vytvoření aplikace:
     ```
 
     > [!NOTE]
-    > Můžete zkontrolovat pro nejnovější verzi **klienta služby iot** pomocí [Maven vyhledávání](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
+    > Můžete zkontrolovat nejnovější verze hello **klienta služby iot** pomocí [Maven vyhledávání](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-1. Přidejte následující **sestavení** uzlu po **závislosti** uzlu. Tato konfigurace se dá pokyn Maven k sestavení aplikace pomocí Java 1.8:
+1. Přidejte následující hello **sestavení** uzlu po hello **závislosti** uzlu. Tato konfigurace se dá pokyn hello aplikace v jazyce Java 1,8 toobuild Maven toouse:
 
     ```xml
     <build>
@@ -113,11 +113,11 @@ Vytvoření aplikace:
     </build>
     ```
 
-1. Uložte a zavřete `pom.xml` souboru.
+1. Uložte a zavřete hello `pom.xml` souboru.
 
-1. Pomocí textového editoru, otevřete `schedule-jobs\src\main\java\com\mycompany\app\App.java` souboru.
+1. Pomocí textového editoru otevřete hello `schedule-jobs\src\main\java\com\mycompany\app\App.java` souboru.
 
-1. Do souboru přidejte následující příkazy pro **import**:
+1. Přidejte následující hello **importovat** souboru toohello příkazy:
 
     ```java
     import com.microsoft.azure.sdk.iot.service.devicetwin.DeviceTwinDevice;
@@ -135,18 +135,18 @@ Vytvoření aplikace:
     import java.util.UUID;
     ```
 
-1. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahraďte `{youriothubconnectionstring}` IoT hub připojovacím řetězcem jste si poznamenali v *vytvoření služby IoT Hub* části:
+1. Přidejte následující proměnné na úrovni toohello hello **aplikace** třídy. Nahraďte `{youriothubconnectionstring}` IoT hub připojovacím řetězcem jste si poznamenali v hello *vytvoření služby IoT Hub* části:
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
     public static final String deviceId = "myDeviceId";
 
-    // How long the job is permitted to run without
-    // completing its work on the set of devices
+    // How long hello job is permitted toorun without
+    // completing its work on hello set of devices
     private static final long maxExecutionTimeInSeconds = 30;
     ```
 
-1. Přidejte následující metodu do **aplikace** třída naplánovat úlohu, která aktualizuje **vytváření** a **podlaží** požadovaných vlastností v dvojče zařízení:
+1. Přidejte následující metodu toohello hello **aplikace** tooschedule třídy úlohy tooupdate hello **vytváření** a **podlaží** požadovaných vlastností v hello dvojče zařízení:
 
     ```java
     private static JobResult scheduleJobSetDesiredProperties(JobClient jobClient, String jobId) {
@@ -158,7 +158,7 @@ Vytvoření aplikace:
       // Optimistic concurrency control
       twin.setETag("*");
 
-      // Schedule the update twin job to run now
+      // Schedule hello update twin job toorun now
       // against a single device
       System.out.println("Schedule job " + jobId + " for device " + deviceId);
       try {
@@ -176,13 +176,13 @@ Vytvoření aplikace:
     }
     ```
 
-1. Naplánování úlohy k volání **lockDoor** metoda, přidejte následující metodu do **aplikace** třídy:
+1. tooschedule úlohy toocall hello **lockDoor** metoda, přidejte následující metodu toohello hello **aplikace** třídy:
 
     ```java
     private static JobResult scheduleJobCallDirectMethod(JobClient jobClient, String jobId) {
-      // Schedule a job now to call the lockDoor direct method
+      // Schedule a job now toocall hello lockDoor direct method
       // against a single device. Response and connection
-      // timeouts are set to 5 seconds.
+      // timeouts are set too5 seconds.
       System.out.println("Schedule job " + jobId + " for device " + deviceId);
       try {
         JobResult jobResult = jobClient.scheduleDeviceMethod(jobId,
@@ -200,7 +200,7 @@ Vytvoření aplikace:
     };
     ```
 
-1. Monitorování úlohy, přidejte následující metodu do **aplikace** třídy:
+1. toomonitor úlohu, přidejte následující metodu toohello hello **aplikace** třídy:
 
     ```java
     private static void monitorJob(JobClient jobClient, String jobId) {
@@ -211,7 +211,7 @@ Vytvoření aplikace:
           System.out.println("No JobResult for: " + jobId);
           return;
         }
-        // Check the job result until it's completed
+        // Check hello job result until it's completed
         while(jobResult.getJobStatus() != JobStatus.completed)
         {
           Thread.sleep(100);
@@ -227,33 +227,33 @@ Vytvoření aplikace:
     }
     ```
 
-1. Se dotázat na podrobnosti o úlohách, které jste spustili, přidejte následující metodu:
+1. tooquery podrobnosti hello hello úloh, které jste spustili, přidejte následující metodu hello:
 
     ```java
     private static void queryDeviceJobs(JobClient jobClient, String start) throws Exception {
       System.out.println("\nQuery device jobs since " + start);
 
-      // Create a jobs query using the time the jobs started
+      // Create a jobs query using hello time hello jobs started
       Query deviceJobQuery = jobClient
           .queryDeviceJob(SqlQuery.createSqlQuery("*", SqlQuery.FromType.JOBS, "devices.jobs.startTimeUtc > '" + start + "'", null).getQuery());
 
-      // Iterate over the list of jobs and print the details
+      // Iterate over hello list of jobs and print hello details
       while (jobClient.hasNextJob(deviceJobQuery)) {
         System.out.println(jobClient.getNextJob(deviceJobQuery));
       }
     }
     ```
 
-1. Aktualizace **hlavní** podpis metody k patří `throws` klauzule:
+1. Aktualizace hello **hlavní** metoda podpis tooinclude hello následující `throws` klauzule:
 
     ```java
     public static void main( String[] args ) throws Exception
     ```
 
-1. Ke spuštění a monitorování dvě úlohy postupně, přidejte následující kód, který **hlavní** metoda:
+1. sledování a toorun dvě úlohy postupně, přidejte následující kód toohello hello **hlavní** metoda:
 
     ```java
-    // Record the start time
+    // Record hello start time
     String start = Instant.now().toString();
 
     // Create JobClient
@@ -271,29 +271,29 @@ Vytvoření aplikace:
     scheduleJobCallDirectMethod(jobClient, directMethodJobId);
     monitorJob(jobClient, directMethodJobId);
 
-    // Run a query to show the job detail
+    // Run a query tooshow hello job detail
     queryDeviceJobs(jobClient, start);
 
     System.out.println("Shutting down schedule-jobs app");
     ```
 
-1. Uložte a zavřete `schedule-jobs\src\main\java\com\mycompany\app\App.java` souboru
+1. Uložte a zavřete hello `schedule-jobs\src\main\java\com\mycompany\app\App.java` souboru
 
-1. Sestavení **plán úloh** aplikace a opravte všechny chyby. Na příkazovém řádku přejděte do `schedule-jobs` složky a spusťte následující příkaz:
+1. Sestavení hello **plán úloh** aplikace a opravte všechny chyby. Na příkazovém řádku přejděte toohello `schedule-jobs` složky a spuštění hello následující příkaz:
 
     `mvn clean package -DskipTests`
 
 ## <a name="create-a-device-app"></a>Vytvoření aplikace pro zařízení
 
-V této části vytvoříte konzolovou aplikaci Java, která zpracovává požadované vlastnosti odeslané ze služby IoT Hub a implementuje volání přímé metody.
+V této části vytvoříte konzolovou aplikaci Java, která zpracovává hello požadované vlastnosti odeslaný IoT Hub a implementuje volání přímá metoda hello.
 
-1. V `iot-java-schedule-jobs` složku vytvořit projekt Maven s názvem **simulated-device** pomocí následujícího příkazu na příkazovém řádku. Všimněte si, že se jedná o jeden dlouhý příkaz:
+1. V hello `iot-java-schedule-jobs` složku vytvořit projekt Maven s názvem **simulated-device** pomocí hello následující příkaz na příkazovém řádku. Všimněte si, že se jedná o jeden dlouhý příkaz:
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. Na příkazovém řádku přejděte do `simulated-device` složky.
+1. Na příkazovém řádku přejděte toohello `simulated-device` složky.
 
-1. Pomocí textového editoru, otevřete `pom.xml` v soubor `simulated-device` složky a přidejte následující závislosti na **závislosti** uzlu. Tuto závislost umožňuje používat **klienta zařízení iot** balíček ve vaší aplikaci pro komunikaci se službou IoT hub:
+1. Pomocí textového editoru otevřete hello `pom.xml` souboru v hello `simulated-device` složky a přidejte následující závislosti toohello hello **závislosti** uzlu. Tuto závislost vám umožní toouse hello **klienta zařízení iot** balíček ve vaší aplikaci toocommunicate službou IoT hub:
 
     ```xml
     <dependency>
@@ -304,9 +304,9 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
     ```
 
     > [!NOTE]
-    > Můžete zkontrolovat pro nejnovější verzi **klienta zařízení iot** pomocí [Maven vyhledávání](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
+    > Můžete zkontrolovat nejnovější verze hello **klienta zařízení iot** pomocí [Maven vyhledávání](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-1. Přidejte následující **sestavení** uzlu po **závislosti** uzlu. Tato konfigurace se dá pokyn Maven k sestavení aplikace pomocí Java 1.8:
+1. Přidejte následující hello **sestavení** uzlu po hello **závislosti** uzlu. Tato konfigurace se dá pokyn hello aplikace v jazyce Java 1,8 toobuild Maven toouse:
 
     ```xml
     <build>
@@ -324,11 +324,11 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
     </build>
     ```
 
-1. Uložte a zavřete `pom.xml` souboru.
+1. Uložte a zavřete hello `pom.xml` souboru.
 
-1. Pomocí textového editoru, otevřete `simulated-device\src\main\java\com\mycompany\app\App.java` souboru.
+1. Pomocí textového editoru otevřete hello `simulated-device\src\main\java\com\mycompany\app\App.java` souboru.
 
-1. Do souboru přidejte následující příkazy pro **import**:
+1. Přidejte následující hello **importovat** souboru toohello příkazy:
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -339,7 +339,7 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
     import java.util.Scanner;
     ```
 
-1. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahrazení `{youriothubname}` názvem služby IoT hub, a `{yourdevicekey}` klíčem zařízení hodnotou, kterou jste vygenerovaných *vytvoření identity zařízení* části:
+1. Přidejte následující proměnné na úrovni toohello hello **aplikace** třídy. Nahrazení `{youriothubname}` názvem služby IoT hub, a `{yourdevicekey}` s hodnotou klíče hello zařízení jste vygenerovali v hello *vytvoření identity zařízení* části:
 
     ```java
     private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myDeviceID;SharedAccessKey={yourdevicekey}";
@@ -348,31 +348,31 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
     private static final int METHOD_NOT_DEFINED = 404;
     ```
 
-    Tato ukázková aplikace používá při vytváření instance objektu **DeviceClient** proměnnou **protocol**. V současné době používat funkce twin zařízení musí používat protokol MQTT.
+    Tato ukázková aplikace používá hello **protokol** proměnná při vytvoření instance **DeviceClient** objektu. V současné době toouse twin funkce zařízení je nutné použít protokol MQTT hello.
 
-1. Tisknout oznámení twin zařízení ke konzole, přidejte následující vnořenou třídu k **aplikace** třídy:
+1. tooprint zařízení twin oznámení toohello konzole, přidejte následující hello vnořené třídy toohello **aplikace** třídy:
 
     ```java
     // Handler for device twin operation notifications from IoT Hub
     protected static class DeviceTwinStatusCallBack implements IotHubEventCallback {
       public void execute(IotHubStatusCode status, Object context) {
-        System.out.println("IoT Hub responded to device twin operation with status " + status.name());
+        System.out.println("IoT Hub responded toodevice twin operation with status " + status.name());
       }
     }
     ```
 
-1. Tisknout přímá metoda oznámení ke konzole, přidejte následující vnořenou třídu k **aplikace** třídy:
+1. tooprint přímá metoda oznámení toohello konzole, přidejte následující hello vnořené třídy toohello **aplikace** třídy:
 
     ```java
     // Handler for direct method notifications from IoT Hub
     protected static class DirectMethodStatusCallback implements IotHubEventCallback {
       public void execute(IotHubStatusCode status, Object context) {
-        System.out.println("IoT Hub responded to direct method operation with status " + status.name());
+        System.out.println("IoT Hub responded toodirect method operation with status " + status.name());
       }
     }
     ```
 
-1. Pro zpracování přímá metoda volání ze služby IoT Hub, přidejte následující vnořenou třídu k **aplikace** třídy:
+1. toohandle přímá metoda volání ze služby IoT Hub, přidejte následující hello vnořené třídy toohello **aplikace** třídy:
 
     ```java
     // Handler for direct method calls from IoT Hub
@@ -397,21 +397,21 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
     }
     ```
 
-1. Aktualizace **hlavní** podpis metody k patří `throws` klauzule:
+1. Aktualizace hello **hlavní** metoda podpis tooinclude hello následující `throws` klauzule:
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException
     ```
 
-1. Přidejte následující kód, který **hlavní** metody:
-    * Vytvoření klienta zařízení pro komunikaci se službou IoT Hub.
-    * Vytvoření **zařízení** objekt pro uložení twin vlastnosti zařízení.
+1. Přidejte následující kód toohello hello **hlavní** metody:
+    * Vytvořte zařízení klienta toocommunicate službou IoT Hub.
+    * Vytvoření **zařízení** toostore hello zařízení twin vlastnosti objektu.
 
     ```java
     // Create a device client
     DeviceClient client = new DeviceClient(connString, protocol);
 
-    // An object to manage device twin desired and reported properties
+    // An object toomanage device twin desired and reported properties
     Device dataCollector = new Device() {
       @Override
       public void PropertyCall(String propertyKey, Object propertyValue, Object context)
@@ -421,13 +421,13 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
     };
     ```
 
-1. Spuštění služby klienta zařízení, přidejte následující kód, který **hlavní** metoda:
+1. toostart hello zařízení klienta služby, přidejte následující kód toohello hello **hlavní** metoda:
 
     ```java
     try {
-      // Open the DeviceClient
-      // Start the device twin services
-      // Subscribe to direct method calls
+      // Open hello DeviceClient
+      // Start hello device twin services
+      // Subscribe toodirect method calls
       client.open();
       client.startDeviceTwin(new DeviceTwinStatusCallBack(), null, dataCollector, null);
       client.subscribeToDeviceMethod(new DirectMethodCallback(), null, new DirectMethodStatusCallback(), null);
@@ -439,11 +439,11 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
     }
     ```
 
-1. Čekání na uživatele ke stisknutí **Enter** klíče před ukončením, přidejte následující kód do konce **hlavní** metoda:
+1. toowait pro hello uživatele toopress hello **Enter** klíče před ukončením, přidejte následující kód toohello konec hello hello **hlavní** metoda:
 
     ```java
-    // Close the app
-    System.out.println("Press any key to exit...");
+    // Close hello app
+    System.out.println("Press any key tooexit...");
     Scanner scanner = new Scanner(System.in);
     scanner.nextLine();
     dataCollector.clean();
@@ -451,37 +451,37 @@ V této části vytvoříte konzolovou aplikaci Java, která zpracovává požad
     scanner.close();
     ```
 
-1. Uložte a zavřete `simulated-device\src\main\java\com\mycompany\app\App.java` souboru.
+1. Uložte a zavřete hello `simulated-device\src\main\java\com\mycompany\app\App.java` souboru.
 
-1. Sestavení **simulated-device** aplikace a opravte všechny chyby. Na příkazovém řádku přejděte do `simulated-device` složky a spusťte následující příkaz:
+1. Sestavení hello **simulated-device** aplikace a opravte všechny chyby. Na příkazovém řádku přejděte toohello `simulated-device` složky a spuštění hello následující příkaz:
 
     `mvn clean package -DskipTests`
 
-## <a name="run-the-apps"></a>Spouštění aplikací
+## <a name="run-hello-apps"></a>Spuštění aplikace hello
 
-Nyní jste připraveni ke spuštění aplikace konzoly.
+Nyní je připraven toorun hello konzole aplikace.
 
-1. Na příkazovém řádku v `simulated-device` složky, spusťte následující příkaz a spusťte aplikaci zařízení naslouchání pro požadovanou vlastnost změny a volání přímé metod:
+1. Na příkazovém řádku v hello `simulated-device` složky, spusťte následující příkaz toostart hello zařízení aplikace naslouchá pro požadovanou vlastnost změny a volání metod přímé hello:
 
     `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
 
-    ![Spuštění klienta zařízení](media/iot-hub-java-java-schedule-jobs/device-app-1.png)
+    ![spuštění klienta zařízení Hello](media/iot-hub-java-java-schedule-jobs/device-app-1.png)
 
-1. Na příkazovém řádku v `schedule-jobs` složky, spusťte následující příkaz ke spuštění **plán úloh** aplikační služby ke spuštění dvě úlohy. První nastaví hodnoty požadovanou vlastnost, druhý volá metodu přímé:
+1. Na příkazovém řádku v hello `schedule-jobs` složky, spusťte následující příkaz toorun hello hello **plán úloh** služby aplikace toorun dvě úlohy. Hello nejprve nastaví hodnoty vlastností hello potřeby, druhé volání hello hello přímá metoda:
 
     `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
 
     ![Aplikace služby Java IoT Hub vytvoří dvě úlohy](media/iot-hub-java-java-schedule-jobs/service-app-1.png)
 
-1. Aplikace zařízení zpracovává změnu požadované vlastnosti a volání přímé metody:
+1. aplikace zařízení Hello zpracovává změnu vlastnosti hello potřeby a volání metody přímé hello:
 
-    ![Klient v zařízení reaguje na změny](media/iot-hub-java-java-schedule-jobs/device-app-2.png)
+    ![Hello zařízení klient odpoví toohello změny](media/iot-hub-java-java-schedule-jobs/device-app-2.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Vytvořili jste back-end aplikačním spustit dvě úlohy. První úlohy nastavte hodnoty požadované vlastnosti a druhý úloha s názvem přímá metoda.
+V tomto kurzu jste nakonfigurovali novou službu IoT hub v hello portál Azure a poté jste vytvořili identitu zařízení v registru identit služby IoT hub hello. Vytvoříte back-end aplikačním toorun dvě úlohy. první úlohy Hello nastavit hodnoty požadované vlastnosti a druhý úlohy hello přímá metoda volána.
 
-Použijte v následujících zdrojích informací další postup:
+Použití hello následující toolearn prostředky jak pro:
 
-* Odesílat telemetrická data ze zařízení pomocí [Začínáme se službou IoT Hub](iot-hub-java-java-getstarted.md) kurzu.
-* S kontroly nad zařízeními interaktivně (například zapnutí ventilátor z aplikace řízené uživatele) [použít přímé metody](iot-hub-java-java-direct-methods.md) kurzu.
+* Odesílat telemetrická data ze zařízení s hello [Začínáme se službou IoT Hub](iot-hub-java-java-getstarted.md) kurzu.
+* Kontroly nad zařízeními interaktivně (například zapnutí ventilátor z aplikace řízené uživatele) s hello [použít přímé metody](iot-hub-java-java-direct-methods.md) kurzu.

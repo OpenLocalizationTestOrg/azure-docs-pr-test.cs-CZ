@@ -1,5 +1,5 @@
 ---
-title: "Pomocí SAP na virtuální počítače s Linuxem | Microsoft Docs"
+title: "aaaUsing SAP na virtuální počítače s Linuxem | Microsoft Docs"
 description: "Přečtěte si o používání systému SAP na virtuálních počítačích s Linuxem v prostředí Microsoft Azure."
 services: virtual-machines-linux,virtual-network,storage
 documentationcenter: saponazure
@@ -16,23 +16,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: na
 ms.date: 10/04/2016
 ms.author: sedusch
-ms.openlocfilehash: 078865245989578d17b6eb0b59b379aa2056f31c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a805cdecb515239057e185a92bf5c4d4e707f72f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-sap-on-linux-virtual-machines-in-azure"></a>Pomocí SAP na virtuální počítače s Linuxem v Azure
-Cloud Computing je často používaný termín, který získává v oblasti IT čím dál větší význam – od malých firem až po velké a nadnárodní společnosti. Microsoft Azure je platforma cloudových služeb od společnosti Microsoft, která nabízí široké spektrum nových možností. Nyní mohou zákazníci rychle zřizovat a zrušit aplikace jako cloudové služby, takže už nejsou omezeni technickými nebo rozpočtovými limity. Namísto investování času a prostředků do hardwarové infrastruktury se společností můžou zaměřit na aplikace, obchodní procesy a jejich výhody pro zákazníky a uživatele.
+Cloud Computing je často používaný termín, který je získání více význam v rámci hello IT odvětví, z malých společností až toolarge a mezinárodních společnosti. Microsoft Azure je hello cloudové služby společnosti Microsoft, který nabízí široké spektrum nové možnosti. Nyní zákazníci jsou zřídit a deaktivace zřízení aplikací mít toorapidly jako cloudové služby, takže nejsou omezené tootechnical nebo rozpočet omezení. Společnosti můžete místo času a investovat do hardwaru infrastruktury, soustředit na aplikace hello, podnikové procesy a jeho výhody pro zákazníky a uživatele.
 
-S virtuálními počítači Microsoft Azure společnost Microsoft nabízí komplexní infrastruktury jako služby (IaaS) platformu. Služba Azure Virtual Machines teď v rámci IaaS podporuje aplikace využívající SAP NetWeaver. Dokumenty White Paper níže popisují, jak naplánovat a implementovat aplikace SAP NetWeaver založené na virtuálních počítačích s Windows v Azure. Můžete taky implementovat SAP NetWeaver na základě aplikací na [virtuální počítače s Windows](../../windows/classic/sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+S virtuálními počítači Microsoft Azure společnost Microsoft nabízí komplexní infrastruktury jako služby (IaaS) platformu. Služba Azure Virtual Machines teď v rámci IaaS podporuje aplikace využívající SAP NetWeaver. Hello dokumenty White Paper níže popisují, jak tooplan a implementujte SAP NetWeaver na základě aplikací na virtuálních počítačích s Windows v Azure. Můžete taky implementovat SAP NetWeaver na základě aplikací na [virtuální počítače s Windows](../../windows/classic/sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-classic-sap-get-started](../../../../includes/virtual-machines-common-classic-sap-get-started.md)]
 
 ## <a name="sap-netweaver-on-azure-suse-linux-virtual-machines"></a>SAP NetWeaver na virtuálních počítačích Azure SUSE Linux
-Title: Testování SAP NetWeaver na virtuálních počítačích Microsoft Azure SUSE Linux
+Title: aaaTesting SAP NetWeaver na virtuálních počítačích Microsoft Azure SUSE Linux
 
-Souhrn: Neexistuje žádná oficiální SAP podpora pro spouštění SAP NetWeaver na virtuálních počítačích Azure Linux v daném okamžiku. Nicméně zákazníci chtít provést některé testování nebo zvažte spustit ukázkový SAP nebo systémy školení na virtuálních počítačích Azure Linux, dokud není nutné pro kontaktování podpory SAP. Tento článek by měly pomoci nastavení virtuálních počítačích Azure SUSE Linux ke spuštění SAP a nabízí několik základních informací, aby se zabránilo Potenciální nástrahy běžné.
+Souhrn: Neexistuje žádná oficiální SAP podpora pro spouštění SAP NetWeaver na virtuálních počítačích Azure Linux v daném okamžiku. Nicméně zákazníci můžou toodo některé testování nebo zvažte toorun SAP ukázku nebo školení systémů na virtuálních počítačích Azure Linux, dokud není nutné pro kontaktování podpory SAP. Tento článek by měly pomoci nastavení virtuálních počítačích Azure SUSE Linux ke spuštění SAP a poskytuje společné Potenciální nástrahy tooavoid některé základní pomocné parametry v pořadí.
 
 Aktualizované: Prosince 2015
 

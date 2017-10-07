@@ -1,6 +1,6 @@
 ---
-title: "Nasazení vaší první aplikace do cloudu Foundry v Microsoft Azure | Microsoft Docs"
-description: "Nasazení aplikace do cloudu Foundry v Azure"
+title: "aaaDeploy první aplikaci tooCloud Foundry v Microsoft Azure | Microsoft Docs"
+description: "Nasazení aplikace tooCloud Foundry v Azure"
 services: virtual-machines-linux
 documentationcenter: 
 author: seanmck
@@ -16,136 +16,136 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: b617127fc0a3f8dcae293e356ea669edcfa5deff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 878da38f6eabe32a339f02aa0ead811d6e5af9a8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Nasazení vaší první aplikace do cloudu Foundry v Microsoft Azure
+# <a name="deploy-your-first-app-toocloud-foundry-on-microsoft-azure"></a>Nasazení první aplikaci tooCloud Foundry v Microsoft Azure
 
-[Cloud Foundry](http://cloudfoundry.org) je platforma oblíbených open-source aplikace k dispozici na Microsoft Azure. V tomto článku jsme ukazují, jak nasadit a spravovat aplikaci v cloudu Foundry v prostředí Azure.
+[Cloud Foundry](http://cloudfoundry.org) je platforma oblíbených open-source aplikace k dispozici na Microsoft Azure. V tomto článku ukážeme, jak toodeploy a spravovat aplikaci v cloudu Foundry v prostředí Azure.
 
 ## <a name="create-a-cloud-foundry-environment"></a>Vytvořte prostředí cloudu Foundry
 
 Existuje několik možností pro vytvoření Foundry cloudové prostředí v Azure:
 
-- Použití [nabídka hrají cloudu Foundry] [ pcf-azuremarketplace] v Azure Marketplace vytvořit standardní prostředí, které obsahuje PCF Ops Manager a službu Azure Service Broker. Můžete najít [úplné pokyny] [ pcf-azuremarketplace-pivotaldocs] pro nasazení webu marketplace nabízí v hrají dokumentaci.
+- Použití hello [nabídka hrají cloudu Foundry] [ pcf-azuremarketplace] v Azure Marketplace toocreate hello standardní prostředí, které obsahuje PCF Ops Manager a hello Azure Service Broker. Můžete najít [úplné pokyny] [ pcf-azuremarketplace-pivotaldocs] pro nasazení hello marketplace nabízí v hello hrají dokumentaci.
 - Vytvořit vlastní prostředí pomocí [ručního nasazení hrají cloudu Foundry][pcf-custom].
-- [Nasazení balíčků cloudu Foundry open-source přímo] [ oss-cf-bosh] nastavením [BOSH](http://bosh.io) ředitel, virtuální počítač, který koordinuje nasazení Foundry cloudové prostředí.
+- [Nasazení balíčků cloudu Foundry open-source hello přímo] [ oss-cf-bosh] nastavením [BOSH](http://bosh.io) ředitel, virtuální počítač, který koordinuje hello nasazení hello Foundry cloudové prostředí.
 
 > [!IMPORTANT] 
-> Pokud nasazujete PCF z Azure Marketplace, poznamenejte si SYSTEMDOMAINURL a přihlašovací údaje správce potřebné pro přístup správce hrají aplikace, které jsou popsané v Průvodci nasazením aplikace marketplace. Že jsou nutné k dokončení tohoto kurzu. Pro nasazení webu marketplace je SYSTEMDOMAINURL v https://system formuláře. *ip adresu*. cf.pcfazure.com.
+> Pokud nasazujete PCF z hello Azure Marketplace, poznamenejte si hello SYSTEMDOMAINURL a přihlašovací údaje správce hello požadované tooaccess hello hrají Správce aplikací, které jsou popsané v příručce pro nasazení webu marketplace hello. Že jsou potřebné toocomplete v tomto kurzu. Pro nasazení webu marketplace je hello SYSTEMDOMAINURL v https://system hello formuláře. *ip adresu*. cf.pcfazure.com.
 
-## <a name="connect-to-the-cloud-controller"></a>Připojení k řadiči cloudu
+## <a name="connect-toohello-cloud-controller"></a>Připojit toohello Kontroleru cloudu
 
-Kontroleru cloudu je primárním vstupním bodem do cloudu Foundry prostředí pro nasazení a správu aplikací. Základní rozhraní API řadiče v cloudu (CCAPI) je rozhraní REST API, ale je přístupný prostřednictvím různých nástrojů. V takovém případě budeme pracovat s ním prostřednictvím [cloudu Foundry rozhraní příkazového řádku][cf-cli]. Rozhraní příkazového řádku můžete nainstalovat na systému Linux, systému MacOS nebo Windows, ale pokud chcete raději nechcete instalovat ho vůbec, je k dispozici předinstalován v [prostředí cloudu Azure][cloudshell-docs].
+Hello Kontroleru cloudu je hello primární vstupní bod tooa Foundry cloudové prostředí pro nasazení a Správa aplikací. základní Hello cloudu řadiče rozhraní API (CCAPI) je rozhraní REST API, ale je přístupný prostřednictvím různých nástrojů. V takovém případě budeme pracovat s ním prostřednictvím hello [cloudu Foundry rozhraní příkazového řádku][cf-cli]. Hello rozhraní příkazového řádku můžete nainstalovat na systému Linux, systému MacOS nebo Windows, ale pokud si přejete není tooinstall ho vůbec, je k dispozici předinstalován v hello [prostředí cloudu Azure][cloudshell-docs].
 
-K přihlášení, předřadit `api` k SYSTEMDOMAINURL, který jste získali z marketplace nasazení. Vzhledem k tomu, že výchozí nasazení používá certifikát podepsaný svým držitelem, musí rovněž zahrnovat `skip-ssl-validation` přepínače.
+toolog, předřadit `api` toohello SYSTEMDOMAINURL, který jste získali z marketplace nasazení hello. Vzhledem k tomu, že nasazení výchozí hello používá certifikát podepsaný svým držitelem, musí rovněž zahrnovat hello `skip-ssl-validation` přepínače.
 
 ```bash
 cf login -a https://api.SYSTEMDOMAINURL --skip-ssl-validation
 ```
 
-Zobrazí se výzva k přihlášení do Kontroleru cloudu. Použijte přihlašovací údaje účtu správce, které jste získali z kroků nasazení marketplace.
+Jste výzvami toolog v toohello Kontroleru cloudu. Pomocí pověření účtu správce hello, které jste získali z kroků nasazení hello marketplace.
 
-Poskytuje cloudu Foundry *orgs* a *prostory* jako obory názvů izolovat týmy a prostředí v rámci sdílené nasazení. Nasazení webu marketplace PCF zahrnuje výchozí *systému* organizace a sadu prostorů vytvořit tak, aby obsahovala základní součásti, jako třeba službu automatické škálování a zprostředkovatele služby Azure. Nyní, vyberte *systému* místa.
+Poskytuje cloudu Foundry *orgs* a *prostory* jako týmy hello tooisolate obory názvů a prostředí v rámci sdílené nasazení. Hello PCF marketplace nasazení obsahuje výchozí hello *systému* organizace a sadu prostorů vytvořit toocontain hello základní součásti, jako je služba hello automatické škálování a zprostředkovatele služby Azure hello. Nyní, vyberte hello *systému* místa.
 
 
 ## <a name="create-an-org-and-space"></a>Vytvoření organizace a místa
 
-Pokud zadáte `cf apps`, najdete v části sadu systému aplikací, které jsou nasazené v prostoru systému v rámci org. systému 
+Pokud zadáte `cf apps`, najdete v části sadu aplikací systému, které jsou nasazené v prostoru hello systému v rámci systému org. hello 
 
-Byste měli mít *systému* org vyhrazena pro aplikace, systému, tak vytvoření organizace a místa pro uložení naše ukázková aplikace.
+Byste měli mít hello *systému* org vyhrazena pro aplikace, systému, takže vytvořte organizace a místo toohouse naše ukázková aplikace.
 
 ```bash
 cf create-org myorg
 cf create-space dev -o myorg
 ```
 
-Použijte příkaz cíl přepnout do nové organizace a místa:
+Použijte hello cíl příkazu tooswitch toohello nové organizace a místa:
 
 ```bash
 cf target -o testorg -s dev
 ```
 
-Teď když nasadíte aplikaci, je vytvořeno automaticky v nové organizace a místa. Chcete-li potvrdit, že aktuálně neexistují žádné aplikace v nové organizace/prostor, zadejte `cf apps` znovu.
+Teď když nasadíte aplikaci, je vytvořeno automaticky v nové organizace hello a místo. tooconfirm, která aktuálně nejsou k dispozici žádné aplikace. v nové organizace hello/prostor, zadejte `cf apps` znovu.
 
 > [!NOTE] 
-> Další informace o orgs a prostory a jak mohou být použity pro řízení přístupu na základě role (RBAC) najdete v tématu [dokumentace cloudu Foundry][cf-orgs-spaces-docs].
+> Další informace o orgs a prostory a jak mohou být použity pro řízení přístupu na základě role (RBAC) najdete v tématu hello [dokumentace cloudu Foundry][cf-orgs-spaces-docs].
 
 ## <a name="deploy-an-application"></a>Nasazení aplikace
 
-Můžeme použít ukázkové aplikace cloudu Foundry názvem Hello pružiny cloudu, což je napsanou v jazyce Java a na základě [pružiny Framework](http://spring.io) a [pružiny spouštěcí](http://projects.spring.io/spring-boot/).
+Můžeme použít ukázkové aplikace cloudu Foundry názvem Hello pružiny cloudu, což je napsanou v jazyce Java a podle hello [pružiny Framework](http://spring.io) a [pružiny spouštěcí](http://projects.spring.io/spring-boot/).
 
-### <a name="clone-the-hello-spring-cloud-repository"></a>Klonovat úložiště v cloudu pružiny Hello
+### <a name="clone-hello-hello-spring-cloud-repository"></a>Klonování hello Hello pružiny cloudové úložiště
 
-Ukázková aplikace Hello pružiny cloudu je k dispozici na Githubu. Klonování pro vaše prostředí a změňte do nového adresáře:
+Hello Hello pružiny cloudu ukázkové aplikace je k dispozici na Githubu. Naklonujte tooyour prostředí a změňte do nového adresáře hello:
 
 ```bash
 git clone https://github.com/cloudfoundry-samples/hello-spring-cloud
 cd hello-spring-cloud
 ```
 
-### <a name="build-the-application"></a>Sestavení aplikace
+### <a name="build-hello-application"></a>Vytvoření aplikace hello
 
-Sestavení aplikace pomocí [Apache Maven](http://maven.apache.org).
+Sestavení hello aplikace pomocí [Apache Maven](http://maven.apache.org).
 
 ```bash
 mvn clean package
 ```
 
-### <a name="deploy-the-application-with-cf-push"></a>Nasazení aplikace pomocí nabízených CR
+### <a name="deploy-hello-application-with-cf-push"></a>Nasazení aplikace hello s nabízené CR
 
-Většina aplikací pomocí Foundry cloudu můžete nasadit `push` příkaz:
+Většina aplikací tooCloud Foundry můžete nasadit pomocí hello `push` příkaz:
 
 ```bash
 cf push
 ```
 
-Když jste *nabízená* aplikace cloudu Foundry zjistí typ aplikace (v tomto případě aplikace v jazyce Java) a identifikuje jeho závislosti (v tomto případě pružiny framework). Potom balíčky vše potřebné ke spuštění kódu do kontejneru bitovou kopii samostatné říká *droplet*. Nakonec cloudu Foundry plány aplikace na jednu z dostupných počítačů ve vašem prostředí a vytvoří adresa URL, kde můžete dosáhnout, která je k dispozici ve výstupu příkazu.
+Pokud jste *nabízené* aplikace, cloudu Foundry zjistí hello typu aplikace (v tomto případě aplikace v jazyce Java) a identifikuje jeho závislosti (v tomto případě rámci pružiny hello). Pak balíčky všechno požadované toorun kódu do kontejneru bitovou kopii samostatné říká *droplet*. Nakonec cloudu Foundry plány hello aplikaci na některém hello dostupných počítačů ve vašem prostředí a vytvoří adresa URL, kde můžete dosáhnout, která je dostupná v hello výstup hello příkazu.
 
 ![Výstup z příkazu nabízené CR][cf-push-output]
 
-Pokud chcete zobrazit aplikace hello pružiny cloud, otevřete zadané adresy URL v prohlížeči:
+toosee hello hello. pružiny cloudových aplikací, otevřete hello zadat adresu URL v prohlížeči:
 
 ![Výchozí nastavení uživatelského rozhraní pro cloudové pružiny Hello][hello-spring-cloud-basic]
 
 > [!NOTE] 
-> Další informace o tom co se stane při `cf push`, najdete v části [jak jsou připraveny aplikace] [ cf-push-docs] v dokumentaci k Foundry cloudu.
+> toolearn více informací o co se stane, že během `cf push`, najdete v části [jak jsou připraveny aplikace] [ cf-push-docs] v hello cloudu Foundry dokumentaci.
 
 ## <a name="view-application-logs"></a>Zobrazit protokoly aplikací
 
-Pokud chcete zobrazit protokoly pro aplikaci, jeho název můžete použít rozhraní příkazového řádku Foundry cloudu:
+Jeho název můžete použít protokoly tooview hello cloudu Foundry rozhraní příkazového řádku pro aplikaci:
 
 ```bash
 cf logs hello-spring-cloud
 ```
 
-Ve výchozím nastavení, v protokolech příkaz používá *tail*, který zobrazuje nové protokoly, jako jsou zapsané. Pokud chcete zobrazit nové protokoly se zobrazí, aktualizujte hello pružiny cloudové aplikace v prohlížeči.
+Ve výchozím nastavení, protokoly hello používá příkaz *tail*, který zobrazuje nové protokoly, jako jsou zapsané. toosee nové protokoly se zobrazí, aktualizujte hello hello pružiny cloud aplikaci v prohlížeči hello.
 
-Chcete-li zobrazit protokoly, které již byla zapsána, přidejte `recent` přepínače:
+tooview protokoly, které již byla zapsána, přidejte hello `recent` přepínače:
 
 ```bash
 cf logs --recent hello-spring-cloud
 ```
 
-## <a name="scale-the-application"></a>Škálování aplikace
+## <a name="scale-hello-application"></a>Škálování aplikace hello
 
-Ve výchozím nastavení `cf push` pouze vytvoří jednu instanci aplikace. K zajištění vysoké dostupnosti a povolit škálování pro vyšší propustnost, chcete obecně spustit více než jednu instanci aplikace. Můžete snadno škálovat již nasazené aplikace pomocí `scale` příkaz:
+Ve výchozím nastavení `cf push` pouze vytvoří jednu instanci aplikace. tooensure vysokou dostupnost a povolit škálování pro vyšší propustnost, chcete obecně toorun více než jednu instanci aplikace. Můžete snadno škálovat již nasazené aplikace pomocí hello `scale` příkaz:
 
 ```bash
 cf scale -i 2 hello-spring-cloud
 ```
 
-Spuštění `cf app` příkaz u aplikace zobrazí, že cloudové Foundry vytváří jiná instance aplikace. Po spuštění aplikace Foundry cloudu se automaticky spustí přenosů do ní služby Vyrovnávání zatížení.
+Spuštěné hello `cf app` příkaz na hello aplikace zobrazí, že cloudové Foundry vytváří jiná instance aplikace hello. Po zahájení aplikace hello, Foundry cloudu se automaticky spustí provoz tooit Vyrovnávání zatížení.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přečtěte si dokumentaci cloudu Foundry][cloudfoundry-docs]
-- [Nastavení modulu plug-in Visual Studio Team Services pro Cloud Foundry][vsts-plugin]
-- [Konfigurace trysek Analýza protokolů Microsoft pro Cloud Foundry][loganalytics-nozzle]
+- [Čtení hello dokumentace cloudu Foundry][cloudfoundry-docs]
+- [Nastavení modulu plug-in hello Visual Studio Team Services pro Cloud Foundry][vsts-plugin]
+- [Konfigurace hello trysek Analýza protokolů Microsoft pro Cloud Foundry][loganalytics-nozzle]
 
 <!-- LINKS -->
 

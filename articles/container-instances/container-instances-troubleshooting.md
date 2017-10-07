@@ -1,6 +1,6 @@
 ---
-title: "Řešení potíží s instancí Azure kontejnerů"
-description: "Zjistěte, jak vyřešit problémy s instancí kontejnerů Azure"
+title: "aaaTroubleshooting instancí kontejnerů Azure"
+description: "Zjistěte, jak tootroubleshoot problémy s instancemi Azure kontejneru"
 services: container-instances
 documentationcenter: 
 author: seanmck
@@ -17,25 +17,25 @@ ms.workload: na
 ms.date: 08/03/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 86fa4b7dca7c362f95c0243a33f03d1f2dd3ab42
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: dfec636a0a174c74a6f2e9d9c4da6e871f8d2fda
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a>Řešení potíží s nasazením s instancemi Azure kontejneru
 
-Tento článek ukazuje, jak vyřešit problémy při nasazení kontejnerů do Azure kontejner instancí. Také popisuje některé běžné problémy, které může spustit do.
+Tento článek ukazuje, jak tootroubleshoot problémy při nasazení tooAzure kontejnery instancí kontejnerů. Popisuje také některé hello běžné problémy, které může spustíte do.
 
 ## <a name="getting-diagnostic-events"></a>Získání diagnostických událostí
 
-Chcete-li zobrazit protokoly z kódu aplikace v rámci kontejneru, můžete použít [az kontejneru protokoly](/cli/azure/container#logs) příkaz. Ale pokud vaše kontejneru není úspěšně nasazena, je potřeba zkontrolovat diagnostické informace poskytované poskytovatelem prostředků Azure kontejner instancí. Pokud chcete zobrazit události pro vaše kontejneru, spusťte následující příkaz:
+tooview protokolů z vašeho kódu aplikace v rámci kontejneru, můžete použít hello [az kontejneru protokoly](/cli/azure/container#logs) příkaz. Ale pokud vaše kontejneru není úspěšně nasazena, je třeba tooreview hello diagnostické informace poskytované poskytovatelem prostředků Azure kontejner instancí hello. tooview hello události pro váš kontejner, spusťte následující příkaz hello:
 
 ```azurecli-interactive
 az container show -n mycontainername -g myresourcegroup
 ```
 
-Výstup obsahuje základní vlastnosti kontejneru, společně s událostí nasazení:
+výstup Hello zahrnuje hello základní vlastnosti kontejneru, společně s událostí nasazení:
 
 ```bash
 {
@@ -91,9 +91,9 @@ Výstup obsahuje základní vlastnosti kontejneru, společně s událostí nasaz
 
 Tento účet pro většinu chyb v nasazení existuje několik běžných problémů.
 
-### <a name="unable-to-pull-image"></a>Nelze pro vyžádání obsahu image
+### <a name="unable-toopull-image"></a>Obrázek nelze toopull
 
-Pokud instance kontejner Azure nemůže původně vyžádání bitové kopie, se pokusí po nějakou dobu před selháním nakonec. Pokud nelze načíst obrázek, jsou uvedeny událostmi, jako je následující:
+Pokud Azure kontejner instancí je nelze toopull bitové kopie na začátku se pokusí po nějakou dobu před selháním nakonec. Pokud nelze načíst obrázek hello, jsou uvedeny událostmi, jako je hello následující:
 
 ```bash
 "events": [
@@ -108,7 +108,7 @@ Pokud instance kontejner Azure nemůže původně vyžádání bitové kopie, se
     "count": 1,
     "firstTimestamp": "2017-08-03T22:19:32+00:00",
     "lastTimestamp": "2017-08-03T22:19:32+00:00",
-    "message": "Failed: Failed to pull image \"microsoft/aci-hellowrld\": rpc error: code 2 desc Error: image microsoft/aci-hellowrld:latest not found",
+    "message": "Failed: Failed toopull image \"microsoft/aci-hellowrld\": rpc error: code 2 desc Error: image microsoft/aci-hellowrld:latest not found",
     "type": "Warning"
   },
   {
@@ -121,11 +121,11 @@ Pokud instance kontejner Azure nemůže původně vyžádání bitové kopie, se
 ]
 ```
 
-Vyřešit, odstraňte kontejneru a opakujte vaše nasazení, platící zvýšené pozornosti, že jste správně zadali název bitové kopie.
+tooresolve, odstraňte hello kontejneru a opakujte vaše nasazení, platící zvýšené pozornosti, že je správně zadán název bitové kopie hello.
 
 ### <a name="container-continually-exits-and-restarts"></a>Ukončení a restartování průběžně kontejneru
 
-Kontejner instancí Azure v současné době podporuje pouze dlouhodobé služby. Pokud vaše kontejneru se používá k dokončení a ukončí, automaticky restartuje a znovu spustí. V takovém případě se zobrazí událostmi, jako je následující. Všimněte si, že kontejner úspěšně spustí a potom rychle restartuje. Zahrnuje rozhraní API instancí kontejneru `retryCount` restartování vlastnost, která ukazuje, jak často konkrétním kontejneru.
+Kontejner instancí Azure v současné době podporuje pouze dlouhodobé služby. Pokud vaše kontejneru používá toocompletion a ukončí, automaticky restartuje a znovu spustí. V takovém případě se zobrazí událostmi, jako je následující. Poznámka: Tento kontejner hello úspěšně spustí a potom rychle restartuje. zahrnuje technologie Hello kontejner instancí rozhraní API `retryCount` restartování vlastnost, která ukazuje, jak často konkrétním kontejneru.
 
 ```bash
 "events": [
@@ -189,13 +189,13 @@ Kontejner instancí Azure v současné době podporuje pouze dlouhodobé služby
 ```
 
 > [!NOTE]
-> Většina kontejneru bitových kopií pro Linuxových distribucích prostředí, jako je například bash, nastavit jako výchozí příkaz. Vzhledem k tomu, že prostředí svoje vlastní není služba dlouho běžící, tyto kontejnery okamžitě ukončit a spadají do smyčku restartování.
+> Většina kontejneru bitových kopií pro Linuxových distribucích nastavit prostředí, jako je například bash, jako výchozí příkaz hello. Vzhledem k tomu, že prostředí svoje vlastní není služba dlouho běžící, tyto kontejnery okamžitě ukončit a spadají do smyčku restartování.
 
-### <a name="container-takes-a-long-time-to-start"></a>Kontejner trvá dlouhou dobu spuštění
+### <a name="container-takes-a-long-time-toostart"></a>Kontejner trvá dlouho toostart
 
-Pokud vaše kontejneru trvá dlouhou dobu spuštění, ale nakonec úspěšná, začít hledáním na velikost bitové kopie kontejneru. Protože Azure kontejner instancí vrátí kontejner image na vyžádání, čas spuštění, které zaznamenáte přímo souvisí s jeho velikost.
+Pokud vaše kontejneru trvá dlouho toostart, ale nakonec úspěšná, spusťte prohlížením hello velikost bitové kopie kontejneru. Vzhledem k tomu instancí kontejnerů Azure vrátí kontejner image na vyžádání, je čas spuštění hello zaznamenáte přímo související tooits velikost.
 
-Velikost vaší image kontejneru pomocí rozhraní příkazového řádku Dockeru můžete zobrazit:
+Můžete zobrazit hello velikost bitové kopie kontejneru pomocí příkazového řádku Dockeru hello:
 
 ```bash
 docker images
@@ -208,6 +208,6 @@ REPOSITORY                             TAG                 IMAGE ID            C
 microsoft/aci-helloworld               latest              7f78509b568e        13 days ago         68.1MB
 ```
 
-Klíč k udržování velikosti obrázků malé zajišťuje, že finální image neobsahuje nic, který není nutný za běhu. Jeden ze způsobů, jak provést toto je s [více fáze sestavení](https://docs.docker.com/engine/userguide/eng-image/multistage-build/). Více fáze sestavení zkontrolujte usnadňují zajistěte, aby finální image obsahuje pouze artefakty potřebné pro vaši aplikaci a ne všechny nadbytečné obsahu, kterou nebyla nutná v čase vytvoření buildu.
+malá velikost obrázků klíče tookeeping Hello zajišťuje, že finální image neobsahuje nic, který není nutný za běhu. Toto je s jedním ze způsobů toodo [více fáze sestavení](https://docs.docker.com/engine/userguide/eng-image/multistage-build/). Více fáze sestavení bylo snadné tooensure hello finální image obsahuje pouze hello artefakty potřebné pro aplikaci, a nikoli jakákoliv hello navíc obsahu, kterou nebyla nutná v čase vytvoření buildu.
 
-Jiný způsob, jak snížit dopad vyžádání obsahu bitové kopie na vaše kontejneru spuštění je hostitelem kontejneru image pomocí klíče registru kontejner Azure ve stejné oblasti, kde chcete používat Azure kontejner instancí. To zkracuje síťové cestě, která bitovou kopii kontejneru je potřeba cestují, výrazně zkrátit dobu stahování.
+Hello další způsob tooreduce hello dopad hello vyžádání bitové kopie na vaše kontejneru spuštění je toohost hello kontejneru image pomocí hello registru kontejner Azure v hello stejné oblasti, kde chcete toouse Azure kontejner instancí. Hello síťové cestě, která hello kontejneru image musí tootravel, výrazně zkrátit dobu stahování hello se zkrátí.

@@ -1,6 +1,6 @@
 ---
-title: "Více IP adres pro virtuální počítače Azure - Portal | Microsoft Docs"
-description: "Zjistěte, jak přiřadit více IP adres k virtuálnímu počítači pomocí portálu Azure | Správce prostředků."
+title: "aaaMultiple IP adresy pro virtuální počítače Azure - Portal | Microsoft Docs"
+description: "Zjistěte, jak tooassign více IP adres tooa virtuálního počítače pomocí hello portálu Azure | Správce prostředků."
 services: virtual-network
 documentationcenter: na
 author: anavinahar
@@ -15,94 +15,94 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: annahar
-ms.openlocfilehash: d264bd47d76db8015a64f09248c57c94572e2693
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 34075766ac68c8de38c258a4d70e35881f28bb0b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Přiřadit více IP adres virtuálních počítačů pomocí portálu Azure
+# <a name="assign-multiple-ip-addresses-toovirtual-machines-using-hello-azure-portal"></a>Přiřadit více IP adres toovirtual počítačů pomocí hello portálu Azure
 
 >[!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 >
-Tento článek vysvětluje, jak vytvořit virtuální počítač (VM) pomocí modelu nasazení Azure Resource Manager pomocí portálu Azure. Nelze přiřadit více IP adres k prostředkům, které jsou vytvořené pomocí modelu nasazení classic. Další informace o modelech nasazení Azure, najdete [pochopit modely nasazení](../resource-manager-deployment-model.md) článku.
+Tento článek vysvětluje, jak hello toocreate virtuální počítač (VM) pomocí modelu nasazení Azure Resource Manager hello pomocí portálu Azure. Tooresources vytvořené pomocí modelu nasazení classic hello nelze přiřadit více IP adres. Další informace o modelech nasazení Azure, přečtěte si hello toolearn [pochopit modely nasazení](../resource-manager-deployment-model.md) článku.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name = "create"></a>Vytvoření virtuálního počítače s více IP adres
 
-Pokud chcete vytvořit virtuální počítač s více IP adres nebo statickou privátní IP adresu, musíte vytvořit pomocí prostředí PowerShell nebo rozhraní příkazového řádku Azure. Klikněte na možnosti prostředí PowerShell nebo rozhraní příkazového řádku v horní části v tomto článku se dozvíte jak. Virtuální počítač můžete vytvořit pomocí jediné dynamické privátní IP adresy a (volitelně) jednu veřejnou IP adresu pomocí kroků v portálu [vytvoření virtuálního počítače s Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md) nebo [vytvoření virtuálního počítače s Linuxem](../virtual-machines/linux/quick-create-portal.md) články. Po vytvoření virtuálního počítače, můžete změnit typ IP adresy z dynamického na statické a přidejte další IP adresy pomocí portálu podle následujících kroků v [přidat IP adresy pro virtuální počítač](#add) tohoto článku.
+Pokud chcete toocreate virtuálního počítače s více IP adres nebo statickou privátní IP adresu, musíte vytvořit pomocí prostředí PowerShell nebo hello rozhraní příkazového řádku Azure. Klikněte na tlačítko hello prostředí PowerShell nebo rozhraní příkazového řádku možnosti hello horní části tohoto článku toolearn jak. Virtuální počítač můžete vytvořit pomocí jediné dynamické privátní IP adresy a (volitelně) jednu veřejnou IP adresu pomocí hello portálu podle následujících kroků hello v hello [vytvoření virtuálního počítače s Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md) nebo [vytvoření virtuálního počítače s Linuxem](../virtual-machines/linux/quick-create-portal.md) články. Po vytvoření hello virtuálních počítačů, můžete změnit typ hello IP adresy z dynamické toostatic a přidejte další IP adresy pomocí hello portálu podle následujících kroků v hello [přidat IP adresy virtuálních počítačů tooa](#add) tohoto článku.
 
-## <a name="add"></a>Přidání IP adres pro virtuální počítač
+## <a name="add"></a>Přidat tooa IP adresy virtuálních počítačů
 
-Provedením následujících kroků můžete přidat privátní a veřejné IP adresy pro síťový adaptér. Příklady v následujících částech předpokládají, že už máte virtuální počítač s tři konfigurace protokolu IP, které jsou popsané v [scénář](#Scenario) v tomto článku, ale není to nutné, abyste provedli.
+Privátní a veřejné IP adresy tooa síťovou kartu můžete přidat pomocí hello kroků, které následují. Hello příklady v následující části hello předpokládají, že už máte virtuální počítač s konfigurací protokolu IP hello tři popsané v hello [scénář](#Scenario) v tomto článku, ale není to nutné, abyste provedli.
 
 ### <a name="coreadd"></a>Základní kroky
 
-1. Přejděte na portál Azure na adrese https://portal.azure.com a přihlaste do ní, v případě potřeby.
-2. Na portálu, klikněte na tlačítko **další služby** > typ *virtuální počítače* pole filtru, a pak klikněte na **virtuální počítače**.
-3. V **virtuální počítače** okno, klikněte na virtuální počítač, který chcete přidat IP adres k. Klikněte na tlačítko **síťových rozhraní** ve virtuálním počítači okno, které se zobrazí a potom vyberte síťové rozhraní, které chcete přidat IP adres k. V příkladu znázorněno na následujícím obrázku s názvem síťový adaptér *myNIC* z virtuálního počítače s názvem *Můjvp* je vybrán:
+1. Procházet toohello portálu Azure v https://portal.azure.com a přihlášení do ní, v případě potřeby.
+2. Hello portálu, klikněte na tlačítko **další služby** > typ *virtuální počítače* v hello pole filtru a potom klikněte na **virtuální počítače**.
+3. V hello **virtuální počítače** okně klikněte na virtuální počítač má tooadd IP adres k hello. Klikněte na tlačítko **síťových rozhraní** v zobrazeném okně hello virtuálního počítače a pak vyberte hello sítě rozhraní chcete tooadd hello IP adres k. Následující obrázek, hello hello příkladu v hello síťový adaptér s názvem *myNIC* z hello virtuálního počítače s názvem *Můjvp* je vybrán:
 
     ![Síťové rozhraní](./media/virtual-network-multiple-ip-addresses-portal/figure1.png)
 
-4. V okně, který se zobrazí pro síťový adaptér, který jste vybrali, klikněte na tlačítko **konfigurace protokolu IP**.
+4. V hello zobrazeném okně pro hello seskupování, které jste vybrali, klikněte na **konfigurace protokolu IP**.
 
-Proveďte kroky v jednom z následujících, na základě typu IP adresu, kterou chcete přidat.
+Dokončení hello kroky v jednom z hello oddíly, které následují, v závislosti na typu hello IP adresy chcete tooadd.
 
 ### <a name="add-a-private-ip-address"></a>**Přidejte privátní IP adresy**
 
-Proveďte následující postup pro přidání nové privátní IP adresy:
+Proveďte následující kroky tooadd novou privátní IP adresu hello:
 
-1. Proveďte kroky v [základní kroky](#coreadd) tohoto článku.
-2. Klikněte na tlačítko **Přidat**. V **přidat IP konfigurace** okno, které se zobrazí, vytvořit konfiguraci IP adres s názvem *IPConfig 4* s *10.0.0.7* jako *statické* privátní IP adres a pak klikněte na **OK**.
+1. Kroky dokončení hello hello [základní kroky](#coreadd) tohoto článku.
+2. Klikněte na tlačítko **Přidat**. V hello **přidat IP konfigurace** okno, které se zobrazí, vytvořit konfiguraci IP adres s názvem *IPConfig 4* s *10.0.0.7* jako *statické* privátní IP adres a pak klikněte na **OK**.
 
     > [!NOTE]
-    > Při přidávání statickou IP adresu, musíte zadat Nepoužívané, platná adresa v podsíti, které síťový adaptér je připojen k. Pokud není k dispozici na adresu, kterou vyberete, portálu se zobrazí X pro IP adresu a budete muset vybrat jinou krychli.
+    > Při přidávání statickou IP adresu, zadejte v hello hello podsítě, které síťový adaptér je připojen k nepoužívané, platná adresa. Pokud není k dispozici hello adresu, kterou vyberete, hello portálu se zobrazí X pro hello IP adresu a tooselect budete potřebovat jiný.
 
-3. Po kliknutí na tlačítko OK, okno se zavře a zobrazí se nová konfigurace IP uvedené. Klikněte na tlačítko **OK** zavřete **přidat IP konfigurace** okno.
-4. Můžete kliknout na **přidat** přidat další konfigurace protokolu IP, nebo zavřete všechna otevřená okna dokončíte přidání IP adres.
-5. Přidání privátních IP adres do operačního systému virtuálního počítače pomocí kroků pro operační systém v [přidat IP adresy na operační systém virtuálního počítače](#os-config) tohoto článku.
+3. Po kliknutí na tlačítko OK, hello okno se zavře a zobrazí se nová konfigurace IP hello uvedené. Klikněte na tlačítko **OK** tooclose hello **přidat IP konfigurace** okno.
+4. Můžete kliknout na **přidat** tooadd další konfigurace protokolu IP, nebo zavřete všechny otevřené okna toofinish přidávání IP adresy.
+5. Přidat hello privátní IP adresy toohello virtuálních počítačů operačního systému pomocí kroků hello operačního systému v hello [přidání IP adres pro operační systém virtuálního počítače tooa](#os-config) tohoto článku.
 
 ### <a name="add-a-public-ip-address"></a>Přidejte veřejnou IP adresu
 
-Veřejná IP adresa se přidá tím, že přidružíte prostředek veřejné IP adresy na novou konfiguraci protokolu IP nebo existující konfiguraci IP adres.
+Veřejná IP adresa se přidá spojením veřejnou IP adresu prostředku tooeither na novou konfiguraci protokolu IP nebo existující konfiguraci IP adres.
 
 > [!NOTE]
-> Veřejné IP adresy mají nominální poplatek. Další informace o cenách IP adresu, najdete [IP adresu ceny](https://azure.microsoft.com/pricing/details/ip-addresses) stránky. Maximální počet veřejné IP adresy, které lze použít v předplatném je. Další informace o omezeních najdete v článku o [omezeních Azure](../azure-subscription-service-limits.md#networking-limits).
+> Veřejné IP adresy mají nominální poplatek. více informací o IP adresy, ceny, toolearn číst hello [ceny IP adresu](https://azure.microsoft.com/pricing/details/ip-addresses) stránky. Existuje limit toohello, počet veřejné IP adresy, které lze použít v předplatném. Další informace o omezení hello, přečtěte si hello toolearn [Azure omezuje](../azure-subscription-service-limits.md#networking-limits) článku.
 > 
 
 ### <a name="create-public-ip"></a>Vytvořte prostředek veřejné IP adresy
 
-Veřejná IP adresa je jedno nastavení pro prostředek veřejné IP adresy. Pokud máte na veřejnou IP adresu prostředek, který není aktuálně přidružena ke konfiguraci IP adres, kterou chcete přidružit k konfiguraci IP adres, následující kroky přeskočte a dokončete kroky v jednom z následujících, potřebujete. Pokud nemáte k dispozici prostředek veřejné adresy IP, proveďte následující kroky k jeho vytvoření:
+Veřejná IP adresa je jedno nastavení pro prostředek veřejné IP adresy. Pokud máte na veřejnou IP adresu prostředek, který není aktuálně přidružené tooan konfigurace protokolu IP, který chcete konfiguraci IP adresy tooan tooassociate, přeskočte hello následující kroky a proveďte hello kroky v jednom z hello oddíly, které následují, potřebujete. Pokud nemáte k dispozici prostředek veřejné adresy IP, proveďte následující kroky toocreate jeden hello:
 
-1. Přejděte na portál Azure na adrese https://portal.azure.com a přihlaste do ní, v případě potřeby.
-3. Na portálu, klikněte na tlačítko **nový** > **sítě** > **veřejnou IP adresu**.
-4. V **vytvoření veřejné IP adresy** okno, které se zobrazí, zadejte **název**, vyberte možnost **přiřazení IP adresy** typ, **předplatné**, **Skupiny prostředků**a **umístění**, pak klikněte na tlačítko **vytvořit**, jak je znázorněno na následujícím obrázku:
+1. Procházet toohello portálu Azure v https://portal.azure.com a přihlášení do ní, v případě potřeby.
+3. Hello portálu, klikněte na tlačítko **nový** > **sítě** > **veřejnou IP adresu**.
+4. V hello **vytvoření veřejné IP adresy** okno, které se zobrazí, zadejte **název**, vyberte možnost **přiřazení IP adresy** typ, **předplatné**, **Skupiny prostředků**a **umístění**, pak klikněte na tlačítko **vytvořit**, jak ukazuje následující obrázek hello:
 
     ![Vytvořte prostředek veřejné IP adresy](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)
 
-5. Proveďte kroky v jednom z následujících přidružit prostředek veřejné IP adresy pro konfiguraci IP adres.
+5. Dokončení hello kroky v jednom z následujících tooassociate hello veřejnou IP adresu tooan IP konfigurace prostředků hello částech.
 
-#### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>Přidružte prostředek veřejné IP adresy na novou konfiguraci protokolu IP
+#### <a name="associate-hello-public-ip-address-resource-tooa-new-ip-configuration"></a>Přidružení hello veřejné IP adresy prostředků tooa nová konfigurace IP
 
-1. Proveďte kroky v [základní kroky](#coreadd) tohoto článku.
-2. Klikněte na tlačítko **Přidat**. V **přidat IP konfigurace** okno, které se zobrazí, vytvořit konfiguraci IP adres s názvem *IPConfig 4*. Povolit **veřejnou IP adresu** a vybrat stávající, k dispozici veřejnou IP adresu prostředek z **zvolte veřejnou IP adresu** okno, které se zobrazí.
+1. Kroky dokončení hello hello [základní kroky](#coreadd) tohoto článku.
+2. Klikněte na tlačítko **Přidat**. V hello **přidat IP konfigurace** okno, které se zobrazí, vytvořit konfiguraci IP adres s názvem *IPConfig 4*. Povolit hello **veřejnou IP adresu** a vyberte existující, k dispozici prostředek veřejné IP adresy z hello **zvolte veřejnou IP adresu** okno, které se zobrazí.
 
-    Po dokončení výběru prostředek veřejné IP adresy, klikněte na tlačítko **OK** a okno se zavře. Pokud nemáte existující veřejnou IP adresu, můžete vytvořit jeden pomocí kroků v [vytvořte prostředek veřejné IP adresy](#create-public-ip) tohoto článku. 
+    Po dokončení výběru prostředek hello veřejné IP adresy, klikněte na tlačítko **OK** a hello okno se zavře. Pokud nemáte existující veřejnou IP adresu, můžete vytvořit jeden pomocí kroků hello v hello [vytvořte prostředek veřejné IP adresy](#create-public-ip) tohoto článku. 
 
-3. Zkontrolujte novou konfiguraci protokolu IP. Přestože privátní IP adresa nebyla přiřazena explicitně, jeden byl automaticky přiřazen ke konfiguraci IP adresy, protože všechny konfigurace protokolu IP, musí mít privátní IP adresy.
-4. Můžete kliknout na **přidat** přidat další konfigurace protokolu IP, nebo zavřete všechna otevřená okna dokončíte přidání IP adres.
-5. Přidání privátní IP adresu do operačního systému virtuálního počítače pomocí kroků pro operační systém v [přidat IP adresy na operační systém virtuálního počítače](#os-config) tohoto článku. Nepřidávejte veřejnou IP adresu do operačního systému.
+3. Zkontrolujte hello nová konfigurace IP. To i v případě, že privátní IP adresa nebyla přiřazena explicitně, jeden byla automaticky přiřadí toohello konfiguraci IP adresy, protože všechny konfigurace protokolu IP, musí mít privátní IP adresy.
+4. Můžete kliknout na **přidat** tooadd další konfigurace protokolu IP, nebo zavřete všechny otevřené okna toofinish přidávání IP adresy.
+5. Přidat hello privátní IP adresu toohello virtuálních počítačů operačního systému pomocí kroků hello operačního systému v hello [přidání IP adres pro operační systém virtuálního počítače tooa](#os-config) tohoto článku. Nepřidávejte hello veřejnou IP adresu toohello operačního systému.
 
-#### <a name="associate-the-public-ip-address-resource-to-an-existing-ip-configuration"></a>Přidružte prostředek veřejné IP adresy na existující konfiguraci IP adres
+#### <a name="associate-hello-public-ip-address-resource-tooan-existing-ip-configuration"></a>Přidružení hello veřejné konfiguraci IP adresy prostředků tooan stávající IP
 
-1. Proveďte kroky v [základní kroky](#coreadd) tohoto článku.
-2. Klikněte na tlačítko chcete přidat prostředek veřejné IP adresy pro konfiguraci protokolu IP.
-3. V okně IPConfig, který se zobrazí, klikněte na tlačítko **IP adresu**.
-4. V **zvolte veřejnou IP adresu** okno, které se zobrazí, vyberte veřejnou IP adresu.
-5. Klikněte na tlačítko **Uložit** a okna se zavře. Pokud nemáte existující veřejnou IP adresu, můžete vytvořit jeden pomocí kroků v [vytvořte prostředek veřejné IP adresy](#create-public-ip) tohoto článku.
-3. Zkontrolujte novou konfiguraci protokolu IP.
-4. Můžete kliknout na **přidat** přidat další konfigurace protokolu IP, nebo zavřete všechna otevřená okna dokončíte přidání IP adres. Nepřidávejte veřejnou IP adresu do operačního systému.
+1. Kroky dokončení hello hello [základní kroky](#coreadd) tohoto článku.
+2. Klikněte na tlačítko požadovaná tooadd hello prostředek veřejné IP adresy do konfigurace IP hello.
+3. V okně hello IPConfig, který se zobrazí, klikněte na tlačítko **IP adresu**.
+4. V hello **zvolte veřejnou IP adresu** okno, které se zobrazí, vyberte veřejnou IP adresu.
+5. Klikněte na tlačítko **Uložit** a bude hello okna zavřete. Pokud nemáte existující veřejnou IP adresu, můžete vytvořit jeden pomocí kroků hello v hello [vytvořte prostředek veřejné IP adresy](#create-public-ip) tohoto článku.
+3. Zkontrolujte hello nová konfigurace IP.
+4. Můžete kliknout na **přidat** tooadd další konfigurace protokolu IP, nebo zavřete všechny otevřené okna toofinish přidávání IP adresy. Nepřidávejte hello veřejnou IP adresu toohello operačního systému.
 
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

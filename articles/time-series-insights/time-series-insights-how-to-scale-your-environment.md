@@ -1,6 +1,6 @@
 ---
-title: "Postup škálování Azure časové řady Přehled prostředí | Microsoft Docs"
-description: "Tento kurz se zaměřuje na postup škálování Azure časové řady Přehled prostředí"
+title: "aaaHow tooscale prostředí Azure časové řady Insights | Microsoft Docs"
+description: "Tento kurz se zaměřuje na tom, jak tooscale prostředí Statistika Azure časové řady"
 keywords: 
 services: time-series-insights
 documentationcenter: 
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/19/2017
 ms.author: edett
-ms.openlocfilehash: 8f6c66ea2173c98179ec899d6626c2ab6f7ec4b6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 55eda388997589185bd34228762b95e182b228ba
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-scale-your-time-series-insights-environment"></a>Postup škálování prostředí Statistika časové řady
+# <a name="how-tooscale-your-time-series-insights-environment"></a>Jak tooscale prostředí Statistika časové řady
 
-Tento kurz se zaměřuje na postup škálování prostředí Statistika časové řady.
+Tento kurz se zaměřuje na tom, jak tooscale prostředí Statistika časové řady.
 
 > [!NOTE]
 > Rozšiřování škálování využívajících typů sku není povoleno. Prostředí s S1 Sku nelze převést do prostředí S2.
@@ -44,12 +44,12 @@ Tento kurz se zaměřuje na postup škálování prostředí Statistika časové
 
 Kapacity lineárně, takže S1 sku s kapacitou 2 podporuje 2 GB (2 miliony) událostí za den příchozího rychlost a 60 GB (60 milión událostí) za měsíc.
 
-## <a name="changing-the-capacity-of-your-environment"></a>Změna kapacitu vašeho prostředí
+## <a name="changing-hello-capacity-of-your-environment"></a>Změna hello kapacitu vašeho prostředí
 
-1. Na portálu Azure vyberte prostředí, jehož kapacitu, kterou chcete změnit.
+1. V hello portálu Azure, vyberte text hello prostředí jejichž kapacity chcete toochange.
 1. V části nastavení klikněte na tlačítko Konfigurovat.
-1. Posuvníkem kapacity vyberte kapacitu, který splňuje požadavky pro příjem příchozích dat sazby a kapacitu úložiště.
+1. Použijte hello kapacity posuvníku tooselect hello kapacitu, který splňuje požadavky hello sazby příjem příchozích dat a kapacitu úložiště.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Ověřte, že nové kapacity dostatečná k zabránění, omezení šířky pásma. Další podrobnosti najdete v tématu *prostředí může získávání omezeny* části [zde](time-series-insights-diagnose-and-solve-problems.md).
+* Ověřte, zda je dostatek nové kapacity hello tooprevent omezení. Další podrobnosti najdete v tématu hello *prostředí může získávání omezeny* části [zde](time-series-insights-diagnose-and-solve-problems.md).

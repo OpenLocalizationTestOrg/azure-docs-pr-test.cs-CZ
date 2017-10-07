@@ -1,6 +1,6 @@
 ---
-title: "Virtuální počítač Azure s Linuxem velikostí - GPU | Microsoft Docs"
-description: "Seznamy různých GPU optimalizované velikosti, které jsou k dispozici pro virtuální počítače s Linuxem v Azure."
+title: "aaaAzure virtuálního počítače s Linuxem velikostí - GPU | Microsoft Docs"
+description: "Uvádí hello různé GPU optimalizované velikosti k dispozici pro virtuální počítače s Linuxem v Azure."
 services: virtual-machines-linux
 documentationcenter: 
 author: jonbeck7
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/28/2017
 ms.author: jonbeck
-ms.openlocfilehash: 5c9bf89feba519147b07f2810fe4da882664e89e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e98f720499be37df4048aeb513aa4f6b187b7335
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="gpu-linux-vm-sizes"></a>Velikost virtuálního počítače s Linuxem GPU
 
@@ -34,7 +34,7 @@ Postup instalace a ověření ovladačů najdete v tématu [instalaci ovladačů
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
-* Nedoporučujeme instalaci X server nebo jiné systémy, které používat ovladač nouveau na virtuálních počítačích Ubuntu názvového kontextu. Před instalací NVIDIA GPU ovladače, je nutné zakázat nouveau ovladače.  
+* Nedoporučujeme instalaci X server nebo jiné systémy, které používat ovladač nouveau hello na virtuálních počítačích Ubuntu názvového kontextu. Před instalací NVIDIA GPU ovladačů, musíte toodisable hello nouveau ovladačů.  
 
 ## <a name="other-sizes"></a>Další velikosti
 - [Obecné účely](sizes-general.md)

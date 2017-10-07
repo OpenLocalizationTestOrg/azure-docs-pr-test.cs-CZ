@@ -1,6 +1,6 @@
 ---
-title: "Monitorování výkonu databáze ve službě Azure SQL Database | Dokumentace Microsoftu"
-description: "Seznamte se s možnostmi monitorování vaší databáze pomocí nástrojů Azure a zobrazení dynamické správy."
+title: "výkon databáze aaaMonitoring ve službě Azure SQL Database | Microsoft Docs"
+description: "Informace o možnostech hello monitorování vaší databáze pomocí nástrojů Azure a zobrazení dynamické správy."
 keywords: "monitorování databáze, výkon cloudové databáze"
 services: sql-database
 documentationcenter: 
@@ -16,35 +16,35 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: e11ed3275413b428523eef78a5a89b537f6a4afc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b13771183d4ccf37f58e2fc518b9b14de38212dc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>Monitorování výkonu databáze ve službě Azure SQL Database
-Monitorování výkonu databáze SQL v Azure začíná sledováním využití prostředků relativně ke zvolené úrovni výkonu databáze. Monitorování vám pomůže určit, zda má databáze nadbytečnou kapacitu nebo zda má naopak potíže s vyčerpáním prostředků, a podle toho se můžete rozhodnout, zda je třeba změnit úroveň výkonu nebo [úroveň služeb](sql-database-service-tiers.md) vaší databáze. Databázi můžete monitorovat pomocí grafických nástrojů na [portálu Azure](https://portal.azure.com) nebo pomocí [zobrazení dynamické správy SQL](https://msdn.microsoft.com/library/ms188754.aspx).
+Sledování výkonu hello databáze SQL v Azure začíná sledováním využití hello prostředků relativní toohello úroveň výkonu databáze, které zvolíte. Monitorování vám pomůže určit, zda vaše databáze má přebytečnou kapacitou, nebo má potíže s, protože prostředky jsou podle toho, se a pak rozhodnout, zda je úroveň výkonu hello tooadjust čas a [vrstvy služby](sql-database-service-tiers.md) vaší databáze. Můžete monitorovat pomocí grafických nástrojů v hello databáze [portál Azure](https://portal.azure.com) nebo pomocí nástroje SQL [zobrazení dynamické správy](https://msdn.microsoft.com/library/ms188754.aspx).
 
-## <a name="monitor-databases-using-the-azure-portal"></a>Monitorování databází na portálu Azure
-Na [portálu Azure](https://portal.azure.com/) můžete monitorovat využití izolované databáze jednoduše tak, že vyberete databázi a kliknete na graf **Monitorování**. Zobrazí se okno **Metrika**, které můžete upravit kliknutím na **Upravit graf**. Přidejte následující metriky:
+## <a name="monitor-databases-using-hello-azure-portal"></a>Monitorování databází pomocí hello portálu Azure
+V hello [portál Azure](https://portal.azure.com/), můžete monitorovat využití izolované databáze vyberete databázi a kliknutím na hello **monitorování** grafu. Po výběru této možnosti **metrika** okno, které můžete změnit kliknutím hello **upravit graf** tlačítko. Přidejte následující metriky hello:
 
 * Procento CPU
 * Procento DTU
 * Procento datových V/V
 * Procento velikosti databáze
 
-Jakmile přidáte tyto metriky, můžete pokračovat jejich zobrazením v grafu **Monitorování** s dalšími podrobnostmi v okně **Metrika**. Tyto čtyři metriky uvádějí průměrné využití v procentech vzhledem k hodnotě **DTU** vaší databáze. Podrobnosti o jednotkách DTU najdete v článku o [úrovních služeb](sql-database-service-tiers.md).
+Jakmile přidáte tyto metriky, můžete pokračovat v tooview je v hello **monitorování** graf s další podrobnosti o hello **metrika** okno. Všechny čtyři metriky uvádějí hello průměrné využití procento relativní toohello **DTU** vaší databáze. V tématu hello [úrovních služeb](sql-database-service-tiers.md) podrobnosti o jednotkách Dtu najdete v článku.
 
 ![Monitorování výkonu databáze v rámci úrovně služeb](./media/sql-database-service-tiers/sqldb_service_tier_monitoring.png)
 
-Můžete také nastavit upozornění na výkonové metriky. Klikněte na tlačítko **Přidat upozornění** v okně **Metrika**. Nastavte upozornění podle pokynů průvodce. Můžete určit, zda chcete být upozorněni na překročení zadané prahové hodnoty, nebo naopak když metrika poklesne pod zadanou mez.
+Výstrahy můžete nakonfigurovat také na metriky výkonu hello. Klikněte na tlačítko hello **přidat upozornění** tlačítka na hello **metrika** okno. Postupujte podle průvodce tooconfigure hello upozornění. Máte možnost tooalert hello, pokud hello překročení zadané prahové hodnoty nebo pokud hello metrika poklesne pod určitou mez.
 
-Například pokud očekáváte nárůst zatížení databáze, můžete nastavit e-mailové upozornění pro případ, že databáze překročí 80 % kterékoli výkonové metriky. Máte tak možnost předběžného varování, aby byl čas rozhodnout, zda nenastal čas přechodu na vyšší úroveň výkonu.
+Například pokud očekáváte hello zatížení na toogrow vaší databáze, můžete tooconfigure e-mailové upozornění pokaždé, když vaše databáze překročí 80 % kterékoli hello metrik výkonu. Můžete použít jako včasné upozornění toofigure se při může být tooswitch toohello vyšší úroveň výkonu.
 
-Metrika výkonu vám také pomůže zjistit, zda je možné úroveň výkonu snížit. Předpokládejme, že používáte databáze S2 v úrovni Standard a všechny metriky ukazují, že databáze v průměru nevyužívá více než 10 % dostupného výkonu. Je pravděpodobné, že databáze bude dobře fungovat i v úrovni Standard S1. Než se však rozhodnete ke snížení úrovně výkonu, zvažte možnost výskytu špiček nebo náhlého kolísání zátěže.
+metriky výkonu Hello také můžete zjistit, zda je možné toodowngrade tooa nižší úroveň výkonu. Předpokládají se používá databáze Standard S2 a zobrazit všechny metriky výkonu, který hello databáze v průměru nevyužívá více než 10 % v daném okamžiku. Je pravděpodobné, že hello databáze bude fungovat i v úrovni Standard S1. Však být vědomi úlohy, které špiček nebo náhlého před provedením hello rozhodnutí toomove tooa nižší úroveň výkonu.
 
 ## <a name="monitor-databases-using-dmvs"></a>Monitorování databází pomocí zobrazení dynamické správy
-Stejné metriky, které jsou přístupné na portálu, můžete zobrazit také prostřednictvím systémových zobrazení: [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) v logické **hlavní** databázi vašeho serveru a [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) v uživatelské databázi. Pomocí zobrazení **sys.resource_stats** můžete sledovat hrubší data v delších časových obdobích. Pomocí zobrazení **sys.dm_db_resource_stats** můžete sledovat data s větším rozlišením a v kratších úsecích. Další informace najdete v tématu [Azure SQL Database – průvodce výkonem](sql-database-single-database-monitor.md#monitor-resource-use).
+Hello stejné metriky, které jsou zveřejněné hello portálu jsou taky dostupné prostřednictvím systémových zobrazení: [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) v hello logické **hlavní** databázi vašeho serveru a [sys.dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) v hello uživatelské databáze. Použití **sys.resource_stats** Pokud potřebujete toomonitor méně granulární dat napříč delší časové období. Použití **sys.dm_db_resource_stats** Pokud potřebujete toomonitor podrobnější data v kratších úsecích. Další informace najdete v tématu [Azure SQL Database – průvodce výkonem](sql-database-single-database-monitor.md#monitor-resource-use).
 
 > [!NOTE]
 > **Sys.dm_db_resource_stats** vrací prázdný výsledek při použití pro databáze s úrovněmi Web a Business, které jsou již ukončené.
@@ -61,9 +61,9 @@ Můžete také sledovat využití pomocí těchto dvou zobrazení:
 * [Sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
 #### <a name="sysdmdbresourcestats"></a>Sys.dm_db_resource_stats
-Můžete použít [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) zobrazení v každé databázi SQL. **Sys.dm_db_resource_stats** zobrazení ukazuje poslední data použití prostředků relativně k vrstvě služby. Průměrnou procentuální hodnotu pro procesor, vstupů/výstupů dat, protokolu zápisy a paměti se zaznamenávají každých 15 sekund a jsou uchovávány 1 hodina.
+Můžete použít hello [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) zobrazení v každé databázi SQL. Hello **sys.dm_db_resource_stats** zobrazení ukazuje poslední prostředků pomocí datové relativní toohello služby vrstvě. Průměrnou procentuální hodnotu pro procesor, vstupů/výstupů dat, protokolu zápisy a paměti se zaznamenávají každých 15 sekund a jsou uchovávány 1 hodina.
 
-Protože toto zobrazení nabízí podrobnější pohled na využití prostředků, použijte **sys.dm_db_resource_stats** první pro nějakou analýzu aktuální stav nebo řešení potíží. Například tento dotaz zobrazí průměrnou a maximální prostředky používané pro aktuální databázi přes poslední hodinu:
+Protože toto zobrazení nabízí podrobnější pohled na využití prostředků, použijte **sys.dm_db_resource_stats** první pro nějakou analýzu aktuální stav nebo řešení potíží. Tento dotaz zobrazí například, že hello průměrný a maximální prostředků používat pro aktuální databázi hello prostřednictvím hello poslední hodiny:
 
     SELECT  
         AVG(avg_cpu_percent) AS 'Average CPU use in percent',
@@ -76,45 +76,45 @@ Protože toto zobrazení nabízí podrobnější pohled na využití prostředk�
         MAX(avg_memory_usage_percent) AS 'Maximum memory use in percent'
     FROM sys.dm_db_resource_stats;  
 
-Pro jiné dotazy, podívejte se na příklady v [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
+Pro jiné dotazy hello příklady naleznete v [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
 
 #### <a name="sysresourcestats"></a>Sys.resource_stats
-[Sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) zobrazit v **hlavní** databáze obsahuje další informace, které můžete sledovat výkon vaší databázi SQL na úrovni konkrétní službu a výkonu. Data se shromažďují pro každých 5 minut a bude zachována pro účely přibližně 35 dnů. Toto zobrazení je užitečné pro dlouhodobější analýzu historie používání prostředků vaší databázi SQL.
+Hello [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) zobrazení v hello **hlavní** databáze obsahuje další informace, které můžete sledovat výkon hello vaší databáze SQL na úrovni konkrétní službu a výkonu . Hello data se shromažďují pro každých 5 minut a bude zachována pro účely přibližně 35 dnů. Toto zobrazení je užitečné pro dlouhodobější analýzu historie používání prostředků vaší databázi SQL.
 
-Následující graf ukazuje procesoru využití prostředků pro databáze Premium P2 úrovní výkonu pro každou hodinu v týdnu. Tento graf začíná v pondělí, zobrazuje 5 pracovních dní a poté zobrazí víkendu, když se stane mnohem méně na aplikaci.
+Hello následující graf ukazuje hello využití procesoru prostředků u databáze Premium P2 úroveň výkonu hello pro každou hodinu v týdnu. Tento graf začíná v pondělí, zobrazuje 5 pracovních dní a poté zobrazí víkendu, když se u aplikace hello stane mnohem méně.
 
 ![Využití prostředků databáze SQL](./media/sql-database-performance-guidance/sql_db_resource_utilization.png)
 
-Z dat, má tato databáze aktuálně zatížení procesoru ve špičce právě víc než 50 % využití procesoru relativně k úroveň výkonu P2 (poledne úterý). Pokud procesor dominantní hrají roli v profilu aplikace prostředků, může rozhodnout, že P2 je na úroveň výkonu správné zaručit, že zatížení vždy vyhovuje. Pokud očekáváte aplikace v čase, je vhodné mít vyrovnávací paměť navíc prostředků tak, aby aplikace nebude nikdy dosáhne omezení úroveň výkonu. Pokud zvýšíte úroveň výkonu, můžete pomoct vyhnout zákazníka viditelné chybách, ke kterým může dojít, když databáze nemá dostatek power zpracovávat požadavky efektivně, zejména v prostředích citlivý na latenci. Příkladem je databáze, která podporuje aplikace, která vybarví webové stránky, na základě výsledků volání databáze.
+Z dat hello tuto databázi aktuálně má zatížení procesoru ve špičce právě více než 50 procent procesoru použít relativní toohello P2 úroveň výkonu (poledne úterý). Pokud procesor hello dominantní faktor v profilu aplikace hello prostředků, může rozhodnout, že P2 je, že vyhovuje tooguarantee úrovni výkonu, který hello zatížení vždy hello. Pokud očekáváte toogrow aplikaci v čase, je vhodné toohave vyrovnávací paměť navíc prostředků tak, aby aplikace hello není někdy dosáhla limitu úroveň výkonu hello. Pokud zvýšíte úroveň výkonu hello, můžete vyhnout zákazníka viditelné chybách, ke kterým může dojít, když databáze nemá dostatek požadavky tooprocess power efektivně, zejména v prostředích citlivý na latenci. Příkladem je databáze, která podporuje aplikace, která vybarví webové stránky, na základě výsledků hello volání databáze.
 
-Jinými typy aplikací odlišně může přeložit do stejného grafu. Například pokud aplikace pokusí zpracovat data mzdy každý den a má stejné grafu, tento druh modelu "dávkovou úlohu" může provádět bez problémů na úroveň výkonu P1. Úroveň výkonu P1 má 100 Dtu ve srovnání s 200 Dtu na úrovni výkonu P2. Úroveň výkonu P1 poskytuje poloviční výkon P2 úroveň výkonu. Ano 50 procent hodnoty využití procesoru v P2 rovná 100 procent využití procesoru v P1. Pokud aplikace nemá vypršení časových limitů, nemusí je důležité, pokud úloha trvá 2 hodiny nebo 2,5 hodin, pokud získá dnes Hotovo. Aplikace v této kategorii pravděpodobně můžete použít úroveň výkonu P1. Můžete využít výhod skutečnost, že jsou dobu během dne, kdy je využití prostředků nižší, tak, aby všechny "velký ve špičce" může distribuována do jedné žlaby později v den. Úroveň výkonu P1 může být vhodné pro tento typ aplikace (a uložte peníze), tak dlouho, dokud na čas každý den může dokončení úlohy.
+Jinými typy aplikací může vyhodnotit hello stejné graf jinak. Například pokud aplikace pokusí data mzdy tooprocess každý den a má hello stejném grafu, tento druh modelu "dávkovou úlohu" může udělat bez problémů na úroveň výkonu P1. Hello úroveň výkonu P1 má 100 Dtu too200 Dtu porovnání v hello P2 úroveň výkonu. Hello úroveň výkonu P1 poskytuje poloviční hello výkon hello P2 úroveň výkonu. Ano 50 procent hodnoty využití procesoru v P2 rovná 100 procent využití procesoru v P1. Pokud aplikace hello nemá vypršení časových limitů, je nemusí důležité, zda úloha trvá 2 hodiny nebo toofinish 2,5 hodiny, pokud získá dnes provést. Aplikace v této kategorii pravděpodobně můžete použít úroveň výkonu P1. Můžete využít výhod hello fakt, že jsou dobu během dne hello, pokud je využití prostředků nižší, tak, aby všechny "velký ve špičce" může distribuována do jedné žlaby hello později v den hello. tak dlouho, dokud hello úloh můžete dokončit na čas každý den, může být vhodné pro tento typ aplikace (a uložte peníze) Hello úroveň výkonu P1.
 
-Azure SQL Database zpřístupňuje využívat informace o prostředcích pro každou aktivní databáze v **sys.resource_stats** zobrazení **hlavní** databází v každém serveru. Data v tabulce se shromažďují pro 5 minutách. S úrovně služeb Basic, Standard a Premium dat může trvat déle než 5 minut, než se objeví v tabulce, tak, aby tato data užitečnější pro historické analýzy, nikoli analysis téměř v reálném čase. Dotaz **sys.resource_stats** zobrazení zobrazíte nejnovější historii databáze a k ověření, jestli rezervace zvolíte doručit výkonu, které chcete v případě potřeby.
+Azure SQL Database zpřístupňuje využívat informace o prostředcích pro každou aktivní databáze v hello **sys.resource_stats** zobrazení hello **hlavní** databází v každém serveru. Hello data v tabulce hello se shromažďují pro 5 minutách. S hello Basic, Standard a Premium úrovně služeb hello dat může trvat víc než 5 minut tooappear v tabulce hello tak, aby tato data užitečnější pro historické analýzy, nikoli analysis téměř v reálném čase. Dotaz hello **sys.resource_stats** zobrazení toosee hello nedávné historii databáze a toovalidate, zda text hello rezervace zvolíte doručit hello výkonu, které chcete v případě potřeby.
 
 > [!NOTE]
-> Musíte být připojeni k **hlavní** databáze logické databáze serveru SQL pro dotaz **sys.resource_stats** v následujících příkladech.
+> Musí být připojené toohello **hlavní** databáze vaše logické tooquery databáze serveru SQL **sys.resource_stats** v hello následující příklady.
 > 
 > 
 
-Tento příklad ukazuje, jak je vystaven data v tomto zobrazení:
+Tento příklad ukazuje, jak je vystaven hello data v tomto zobrazení:
 
     SELECT TOP 10 *
     FROM sys.resource_stats
     WHERE database_name = 'resource1'
     ORDER BY start_time DESC
 
-![Zobrazení katalogu sys.resource_stats](./media/sql-database-performance-guidance/sys_resource_stats.png)
+![zobrazení katalogu sys.resource_stats Hello](./media/sql-database-performance-guidance/sys_resource_stats.png)
 
-Další příklad ukazuje, různé způsoby, které můžete použít **sys.resource_stats** katalogu zobrazení a získat informace o používání prostředků vaší databázi SQL:
+Hello další příklad ukazuje, různé způsoby, které můžete použít hello **sys.resource_stats** katalogu zobrazit tooget informace o používání prostředků vaší databázi SQL:
 
-1. Podívat se na minulého týdne prostředků použít pro userdb1 databáze, můžete spustit tento dotaz:
+1. toolook v hello za týden prostředků použít pro userdb1 hello databáze, můžete spustit tento dotaz:
    
         SELECT *
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND
               start_time > DATEADD(day, -7, GETDATE())
         ORDER BY start_time DESC;
-2. Pokud chcete vyhodnotit, jak dobře vaše úlohy vyhovuje úroveň výkonu, je potřeba k podrobnostem každý aspekt metrika prostředků: procesoru, čtení, zápisu, počet pracovních procesů a počet relací. Tady je revidované dotazování pomocí **sys.resource_stats** nahlásit průměrný a maximální hodnoty metrik těchto prostředků:
+2. tooevaluate jak dobře vaše úlohy odpovídá hello úroveň výkonu, je nutné toodrill dolů do každý aspekt metrika prostředků hello: procesoru, čtení, zápisu, počet pracovních procesů a počet relací. Tady je revidované dotazování pomocí **sys.resource_stats** tooreport hello průměrný a maximální hodnoty metrik těchto prostředků:
    
         SELECT
             avg(avg_cpu_percent) AS 'Average CPU use in percent',
@@ -129,11 +129,11 @@ Další příklad ukazuje, různé způsoby, které můžete použít **sys.reso
             max(max_worker_percent) AS 'Maximum % of workers'
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
-3. Tyto informace o průměrnou a maximální hodnoty každého prostředku metriky a můžete vyhodnotit, jak dobře vaše úlohy zapadá do úroveň výkonu, které jste zvolili. Obvykle, průměrná hodnoty z **sys.resource_stats** poskytují dobrý směrného plánu používat pro cílovou velikost. Mělo by být váš primární měření Flash disk. Příklad by mohla využívat vrstvě služby na úrovni Standard S2 úroveň výkonu. Průměr pomocí procenta pro procesor a vstupně-výstupní operace čtení a zápisů jsou pod 40 procent, průměrný počet pracovních procesů je menší než 50 a průměrný počet relací, které je nižší než 200. Vaše zatížení může začlenit do úrovní výkonu S1. Je snadno zjistit, jestli vaše databáze se vejde limity pracovního procesu a relace. Pokud chcete zobrazit, zda databáze zapadá do nižší úroveň výkonu s ohledem na využití procesoru, čte a zápisu a dělit počet jednotek DTU na nižší úroveň výkonu podle počtu jednotek DTU vaše aktuální úroveň výkonu a výsledek vynásobit 100:
+3. Tyto informace o hello průměrný a maximální hodnoty každého prostředku metriky a můžete vyhodnotit, jak dobře vaše úlohy zapadá do hello úroveň výkonu, které vyberete. Obvykle, průměrná hodnoty z **sys.resource_stats** poskytují základní funkční toouse proti hello cílovou velikost. Mělo by být váš primární měření Flash disk. Příklad by mohla využívat hello vrstvy služby na úrovni Standard S2 úroveň výkonu. průměr Hello pomocí procenta pro procesor a vstupně-výstupní operace čtení a zápisů jsou pod 40 procent, hello průměrný počet pracovních procesů je menší než 50 a hello průměrný počet relací, které je nižší než 200. Vaše zatížení může začlenit do hello úrovní výkonu S1. Je snadno toosee zda databáze se vejde hello worker a omezení relací. toosee, zda databáze zapadá do nižší úroveň výkonu s jde o tooCPU, čtení a zápisu, vydělte hello DTU počet nižší úroveň výkonu hello hello DTU počet vaše aktuální úroveň výkonu a výsledek hello vynásobit 100:
    
     **S1 DTU / S2 DTU * 100 = 20 NEBO 50 * 100 = 40**
    
-    Výsledkem je relativní výkon rozdíl mezi úrovněmi dvě výkonu v procentech. Pokud vaše využití prostředků nepřekročí toto množství, může vaše úlohy začlenit do nižší úroveň výkonu. Však musíte vyhledat všechny rozsahy hodnot použití prostředků a zjistit, v procentech, jak často by se vešla vaše databáze úlohy s nižší úrovní výkonu. Následující dotaz vypíše shody procento na dimenzi prostředků, podle prahové hodnoty 40 procent vypočtené v tomto příkladu:
+    Výsledkem Hello je hello relativní výkon rozdíl mezi hello dvě úrovně výkonu v procentech. Pokud vaše využití prostředků nepřekročí toto množství, může vaše úlohy začlenit do hello nižší úroveň výkonu. Ale potřebovat toolook na všechny rozsahy hodnot použití prostředků a zjistit, v procentech, jak často by vaše databáze úlohy se vešla do hello nižší úroveň výkonu. Hello následující dotaz vypíše, že hello přizpůsobit procento na dimenzi prostředků, podle hello prahovou hodnotu 40 procent vypočtené v tomto příkladu:
    
         SELECT
             (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU Fit Percent'
@@ -142,15 +142,15 @@ Další příklad ukazuje, různé způsoby, které můžete použít **sys.reso
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
    
-    Podle vaší databáze cíle na úrovni služby (SLO), můžete rozhodnout, zda vyhovuje vaše úlohy s nižší úrovní výkonu. Pokud vaše databáze úlohy SLO je 99,9 % a předchozí dotaz vrátí hodnoty vyšší než 99,9 % pro všechny tři prostředků dimenze, vaše úlohy pravděpodobně zapadá do nižší úroveň výkonu.
+    Podle vaší databáze cíle na úrovni služby (SLO), můžete rozhodnout, jestli vaše úlohy zapadá do hello nižší úroveň výkonu. Pokud vaše databáze úlohy SLO je 99,9 % a hello předchozí dotaz vrátí hodnoty vyšší než 99,9 % pro všechny tři prostředků dimenze, vaše úlohy pravděpodobně zapadá do hello nižší úroveň výkonu.
    
-    Prohlížení shody procento také získáte přehled o tom, jestli měli byste přejít na další vyšší úroveň výkonu na splňují vaše SLO. Například userdb1 uvádí následující využití procesoru za uplynulý týden:
+    Prohlížení hello přizpůsobit procento také získáte přehled o tom, jestli je možné přesunout toohello další vyšší výkon úrovně toomeet vaše SLO. Například userdb1 zobrazuje hello následující využití procesoru pro hello uplynulý týden:
    
    | Průměrné využití procesoru v procentech | Maximální procento využití procesoru |
    | --- | --- |
    | 24.5 |100.00 |
    
-    Průměrné využití procesoru je o čtvrtletí omezení úrovně výkonu, které by se vešla do úroveň výkonu databáze. Ale maximální hodnota ukazuje, že databáze dosáhne limitu úrovně výkonu. Je třeba přesunout do další vyšší úroveň výkonu? Podívejte se na to, jak tolikrát, kolikrát vaše úlohy dosáhnou 100 procent a porovnejte je s vaše databáze úlohy SLO.
+    průměrné využití procesoru Hello je o čtvrtletí hello omezení hello úroveň výkonu, které by se vešla do úroveň výkonu hello hello databáze. Ale maximální hodnota hello ukazuje, že hello databáze dosáhne hello limit úroveň výkonu hello. Potřebujete toomove toohello vyšší úroveň výkonu? Podívejte se na to, jak tolikrát, kolikrát vaše úlohy dosáhnou 100 procent a porovnejte je zatížení databáze tooyour SLO.
    
         SELECT
         (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU fit percent'
@@ -159,44 +159,44 @@ Další příklad ukazuje, různé způsoby, které můžete použít **sys.reso
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
    
-    Pokud tento dotaz vrací hodnotu menší než 99,9 % pro některá z dimenzí tři prostředků, zvažte přechod na další vyšší úroveň výkonu nebo snížení zatížení databáze SQL pomocí techniky optimalizace pro aplikace.
-4. Tento postup také zvažuje zvýšení vaší předpokládané úlohy v budoucnu.
+    Pokud tento dotaz vrací hodnotu menší než 99,9 % pro některá z dimenzí hello tři prostředků, zvažte buď přesunutí toohello vyšší úroveň výkonu nebo použijte optimalizace pro aplikace techniky tooreduce hello zatížení v databázi SQL hello.
+4. Tento postup také zvažuje vaší předpokládané úlohy zvýšení hello budoucí.
 
-U elastických fondů můžete monitorovat jednotlivé databáze ve fondu pomocí technik popsaných v této části. Můžete ale také monitorovat fond jako celek. Další informace najdete v tématu [Monitorování a správa elastického fondu](sql-database-elastic-pool-manage-portal.md).
+Pro elastické fondy můžete monitorovat jednotlivé databáze ve fondu hello s hello technik popsaných v této části. Ale můžete také sledovat hello fond jako celek. Další informace najdete v tématu [Monitorování a správa elastického fondu](sql-database-elastic-pool-manage-portal.md).
 
 
 ### <a name="maximum-concurrent-requests"></a>Maximální souběžných požadavků
-Pokud chcete zjistit počet souběžných požadavků, spusťte tento dotaz jazyka Transact-SQL ve vaší databázi SQL:
+toosee hello počet souběžných požadavků, spusťte tento dotaz jazyka Transact-SQL na databázi SQL:
 
     SELECT COUNT(*) AS [Concurrent_Requests]
     FROM sys.dm_exec_requests R
 
-Chcete-li analyzovat zatížení místní databáze systému SQL Server, upravte tento dotaz pro filtrování v konkrétní databázi, že které chcete analyzovat. Například pokud máte místní databázi s názvem databáze, tento dotaz jazyka Transact-SQL vrátí počet souběžných požadavků v databázi:
+Tento dotaz toofilter upravit zatížení hello tooanalyze místní databáze systému SQL Server, na konkrétní databázi hello chcete tooanalyze. Pokud máte místní databázi s názvem databáze, tento dotaz jazyka Transact-SQL vrátí hello počet souběžných požadavků v databázi:
 
     SELECT COUNT(*) AS [Concurrent_Requests]
     FROM sys.dm_exec_requests R
     INNER JOIN sys.databases D ON D.database_id = R.database_id
     AND D.name = 'MyDatabase'
 
-Toto je právě snímku na jednom místě v čase. Chcete-li získat lepší pochopení zatížení a požadavky na počtu souběžných požadavků, budete muset shromažďovat mnoha ukázek v čase.
+Toto je právě snímku na jednom místě v čase. tooget lépe porozumět zatížení a požadavky na počtu souběžných požadavků, budete potřebovat toocollect mnoha ukázek v čase.
 
 ### <a name="maximum-concurrent-logins"></a>Maximální souběžných přihlášení
-Můžete analyzovat vašim vzorům uživatelů a aplikací, kde získáte představu četnost přihlášení. Skutečné zatížení taky můžete spustit v testovacím prostředí, abyste měli jistotu, že nejsou stiskne to nebo další omezení, které v tomto článku probereme. Není k dispozici jeden dotaz nebo zobrazení dynamické správy (DMV), která umožňuje zobrazit souběžných, že počty přihlášení nebo historie.
+Můžete analyzovat vaše uživatele a aplikace vzory tooget představu o hello frekvenci přihlášení. Skutečné zatížení taky můžete spustit v toomake testovací prostředí, zda nejsou stiskne to nebo další omezení, které v tomto článku probereme. Není k dispozici jeden dotaz nebo zobrazení dynamické správy (DMV), která umožňuje zobrazit souběžných, že počty přihlášení nebo historie.
 
-V případě, že více klientů používat stejný připojovací řetězec, ověří služba každé přihlášení. Pokud 10 uživatelů najednou připojit k databázi pomocí stejné uživatelské jméno a heslo, by 10 souběžných přihlášení. Toto omezení se vztahuje pouze na dobu trvání přihlášení a ověřování. Pokud stejný 10 uživatelé připojit k databázi postupně, počet souběžných přihlášení by být nikdy větší než 1.
+Pokud používat více klientů hello stejný připojovací řetězec, hello služby ověřuje každé přihlášení. Pokud 10 uživatelů najednou připojit tooa databáze pomocí hello stejné uživatelské jméno a heslo, bude 10 souběžných přihlášení. Toto omezení se vztahuje pouze toohello trvání hello přihlášení a ověřování. Pokud uživatelé hello stejné 10 připojit databázi toohello postupně, by nikdy hello počet souběžných přihlášení být větší než 1.
 
 > [!NOTE]
-> V současné době toto omezení se nevztahuje k databázím v elastické fondy.
+> V současné době toto omezení neplatí toodatabases v elastické fondy.
 > 
 > 
 
 ### <a name="maximum-sessions"></a>Maximální počet relací
-Pokud chcete zjistit počet aktuální aktivních relací, spusťte tento dotaz jazyka Transact-SQL ve vaší databázi SQL:
+toosee hello počet aktuální aktivních relací, spusťte tento dotaz jazyka Transact-SQL ve vaší databázi SQL:
 
     SELECT COUNT(*) AS [Sessions]
     FROM sys.dm_exec_connections
 
-Pokud při analýze pracovního vytížení místní systém SQL Server, změňte dotaz a zaměřit se na konkrétní databáze. Tento dotaz vám pomůže určit, je možné relace pro databázi Pokud uvažujete o ani ji přesunout do Azure SQL Database.
+Pokud při analýze pracovního vytížení místní systém SQL Server, upravte dotaz toofocus hello určitou databázi. Tento dotaz vám pomůže určit možné relace potřeby hello databáze Pokud uvažujete o přesunutím tooAzure databáze SQL.
 
     SELECT COUNT(*)  AS [Sessions]
     FROM sys.dm_exec_connections C
@@ -204,6 +204,6 @@ Pokud při analýze pracovního vytížení místní systém SQL Server, změňt
     INNER JOIN sys.databases D ON (D.database_id = S.database_id)
     WHERE D.name = 'MyDatabase'
 
-Tyto dotazy znovu, vrátí počet bodu v čase. Pokud shromažďujete více ukázky v čase, budete mít nejlepší Principy relace použít.
+Tyto dotazy znovu, vrátí počet bodu v čase. Pokud shromažďujete více ukázky v čase, budete mít hello je nejlepší Principy relace použít.
 
-Pro analýzu databáze SQL, můžete získat historická statistiky u relací pomocí dotazu [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) zobrazení a kontrola **active_session_count** sloupce. 
+Pro analýzu SQL Database, můžete získat historická statistiky u relací dotazováním hello [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) zobrazení a kontrola hello **active_session_count** sloupce. 

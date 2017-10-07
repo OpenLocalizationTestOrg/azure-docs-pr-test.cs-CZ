@@ -1,6 +1,6 @@
 ---
-title: "Sledování výkonu mnoho databází Azure SQL v aplikaci SaaS víceklientské | Microsoft Docs"
-description: "Sledování a správa výkonu databáze a fondy aplikací SaaS Wingtip databáze SQL Azure"
+title: "výkon aaaMonitor mnoho databází Azure SQL v aplikaci SaaS víceklientské | Microsoft Docs"
+description: "Sledování a správa výkonu databáze a fondy v aplikaci Azure SQL Database Wingtip SaaS hello"
 keywords: kurz k sql database
 services: sql-database
 documentationcenter: 
@@ -16,73 +16,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: sstein
-ms.openlocfilehash: 42f727aa40e744916b1a8adf634c10d55880bef0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f0d7ba456c485b7de249a56abac3cf4be3857285
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="monitor-performance-of-the-wingtip-saas-application"></a>Sledování výkonu Wingtip SaaS aplikace
+# <a name="monitor-performance-of-hello-wingtip-saas-application"></a>Sledování výkonu hello Wingtip SaaS aplikace
 
-V tomto kurzu jsou prozkoumali několik klíčových scénářů správy používány aplikací SaaS. Pomocí generátoru zatížení simulovat aktivity mezi všechny databáze klienta, integrované monitorování a výstrah funkce SQL Database a elastické fondy je ukázán.
+V tomto kurzu jsou prozkoumali několik klíčových scénářů správy používány aplikací SaaS. Použití aktivitu zatížení generátor toosimulate ve všech databází klienta, hello integrované monitorování a výstrah funkce SQL Database a elastické fondy je ukázán.
 
-Aplikace Wingtip SaaS používá klienta jeden datový model, kde každý místo (klient) má své vlastní databázi. Stejně jako u většiny aplikací SaaS je předpokládaný vzorek úloh tenanta nepředvídatelný a sporadický. Jinými slovy to znamená, že prodej lístků může probíhat kdykoli. Abyste mohli využít výhod tohoto typického vzoru používání databáze, databáze tenantů se nasazují do elastických databázových fondů. Elastické fondy optimalizují náklady na řešení prostřednictvím sdílení prostředků mezi mnoha databázemi. S tímto typem vzorců je důležité monitorovat využití databáze a prostředků fondu k zajištění, že jsou přiměřeně vyvážená přetížení mezi jednotlivými fondy. Je také potřeba zajistit, že jednotlivé databáze mají adekvátní prostředky a že fondy nedosahují limitů [eDTU](sql-database-what-is-a-dtu.md). Tento kurz se věnuje způsobům monitorování a správy databází a fondů a uvádí, jak se provádějí nápravné akce v reakci na variace v úloze.
+aplikace Wingtip SaaS Hello používá klienta jeden datový model, kde každý místo (klient) má své vlastní databázi. Mnoho aplikací SaaS, jako je hello očekává, že vzor zatížení klienta je nepředvídatelným a ojediněle. Jinými slovy to znamená, že prodej lístků může probíhat kdykoli. tootake výhodou tohoto vzoru typické databáze využití, klienta, které databáze jsou nasazeny do fondů elastické databáze. Elastické fondy optimalizovat náklady hello řešení sdílení prostředků mezi mnoha databázemi. U tohoto typu vzor je důležité toomonitor databáze a tooensure využití prostředků fondu, který načítá se to bude přiměřeně rovnoměrně mezi fondy. Musíte taky tooensure splnit jednotlivé databáze s dostatkem prostředků a že nejsou stiskne fondy jejich [eDTU](sql-database-what-is-a-dtu.md) omezení. V tomto kurzu jsou zde popsány toomonitor způsoby a spravovat databáze a fondy a jak tootake opravné akce v odpovědi toovariations v zatížení.
 
-Co se v tomto kurzu naučíte:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 
-> * Simulace použití v databázích tenantů pomocí dodaného generátoru zatížení
-> * Monitorování databází tenantů při reakci na zvýšení zatížení
-> * Vertikální navýšení kapacity elastického fondu v reakci na zvýšení zatížení databáze
-> * Zřízení druhého elastického fondu pro vyrovnání zatížení činnosti databáze
+> * Simulovat využití v databázích hello klienta spuštěním generátor zadaný zatížení
+> * Databáze monitorování hello klienta jako jejich reagovat toohello zvýšení zatížení
+> * Škálování hello elastického fondu v odpovědi toohello databáze zvýšené zatížení
+> * Zřídit aktivitu databáze služby druhý elastický fond tooload zůstatek
 
 
-Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
+toocomplete dokončení tohoto kurzu, ujistěte se, hello následující požadavky:
 
-* Adresář Wingtip SaaS aplikace je nasazená. Nasazení za méně než pět minut najdete v tématu [nasazení a seznamte se s Wingtip SaaS aplikace](sql-database-saas-tutorial.md)
+* Hello Wingtip SaaS aplikace je nasazená. toodeploy za méně než pět minut, najdete v části [nasazení a seznamte se s hello Wingtip SaaS aplikace](sql-database-saas-tutorial.md)
 * Je nainstalované prostředí Azure PowerShell. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
-## <a name="introduction-to-saas-performance-management-patterns"></a>Úvod k modelům správy výkonu SaaS
+## <a name="introduction-toosaas-performance-management-patterns"></a>Vzory správy výkonu tooSaaS Úvod
 
-Správa výkonu databáze sestává z kompilování a analýz dat výkonu a následného reagování na tato data prostřednictvím úpravy parametrů pro řízení přijatelné doby odezvy na aplikaci. Při hostování více tenantů představují fondy elastické databáze nenákladný způsob zajištění a správy prostředků pro skupinu databází s nepředvídatelnými úlohami. Při určitých vzorcích úloh může být správa ve fondu užitečná pro pouhé dvě databáze S3.
+Správa výkonu databáze se skládá z kompilování a analýza dat výkonu a pak reaktivní toothis dat úpravou parametrů toomaintain přijatelnou dobu odezvy pro vaši aplikaci. Při hostování více klientů, fondy elastické databáze jsou nákladově efektivní způsob tooprovide a spravovat prostředky pro skupinu databází s nepředvídatelným úlohy. Při určitých vzorcích úloh může být správa ve fondu užitečná pro pouhé dvě databáze S3.
 
 ![média](./media/sql-database-saas-tutorial-performance-monitoring/app-diagram.png)
 
-Fondy a databází ve fondech, je potřeba sledovat zajistit, že zůstanou v rámci přijatelné rozsahů výkonu. Vyladění konfigurace fondu podle potřeb pracovního vytížení agregační všech databází, zajistíte, že Edtu fondu jsou vhodné pro celkové zatížení. Upravte maximální a minimální hodnoty eDTU jednotlivých databází na vhodné hodnoty pro vaše konkrétní aplikační požadavky.
+Fondy a hello databází ve fondech, by měla být monitorovaná tooensure, které zůstanou v rámci přijatelné rozsahů výkonu. Vyladění konfigurace fondu hello toomeet hello potřebám hello agregační zatížení všech databází, zajistíte, že Edtu fondu hello jsou vhodné pro hello celkové zatížení. Upravte hello jednotlivé databáze min a -database max eDTU hodnoty tooappropriate hodnoty pro vaše konkrétní požadavky aplikací.
 
 ### <a name="performance-management-strategies"></a>Strategie výkonu aplikací
 
-* Abyste se vyhnuli nutnosti ručně sledovat výkon, je nejúčinnější k **nastavit výstrahy, které aktivují, když databáze nebo fondy Stray Zbloudilá mimo normální rozsahy**.
-* V reakci na krátkodobé kolísání v agregované úrovni výkonu fondu je možné **vertikálně navýšit nebo snížit kapacitu úrovně eDTU fondu**. Pokud k tomuto kolísání dochází pravidelně nebo je předvídatelné, **je možné naplánovat automatické škálování fondu**. Pokud například víte, že je úloha malého rozsahu, třeba přes noc nebo o víkendech, můžete vertikálně snížit kapacitu.
-* Pokud chcete reagovat na dlouhodobější kolísání nebo změny počtu databází, **je možné přesunout jednotlivé databáze do jiných fondů**.
-* Reakce na krátkodobou nárůstu *jednotlivých* zatížení databáze **jednotlivé databáze může být převzaté z fondu a přiřazení úroveň výkonu jednotlivých**. Po snížení zatížení je možné databázi vrátit do fondu. Když je znám předem, databází můžete přesunout pre-emptively, zajistěte, aby byl vždy prostředky, které potřebuje databázi a vyhnout se dopad na jiné databáze ve fondu. Pokud je tento požadavek předvídatelný, například v místě, kde se předpokládá navýšení prodeje lístků na oblíbenou akci, je možné toto chování správy začlenit do aplikace.
+* tooavoid s toomanually monitorování výkonu, je příliš co nejúčinnější**nastavit výstrahy, které aktivují, když databáze nebo fondy Stray Zbloudilá mimo normální rozsahy**.
+* hello toorespond tooshort termín kolísání hello úroveň agregační výkonu fondu, **úroveň eDTU fondu je možné rozšířit nahoru nebo dolů**. Pokud dojde k této kolísání na základě pravidelných nebo předvídatelný **škálování hello fond může být naplánované toooccur automaticky**. Pokud například víte, že je úloha malého rozsahu, třeba přes noc nebo o víkendech, můžete vertikálně snížit kapacitu.
+* toorespond toolonger termín kolísání nebo změny v hello počet databází, **jednotlivé databáze lze přesunout do jiných fondů**.
+* termín tooshort toorespond nárůstu *jednotlivých* zatížení databáze **jednotlivé databáze může být převzaté z fondu a přiřazení úroveň výkonu jednotlivých**. Jakmile se snižuje zatížení hello, hello databáze můžete vracen toohello fondu. Když je znám předem, databáze se dají přesunout pre-emptively, že databáze hello tooensure vždy má hello prostředky, které potřebuje a tooavoid dopad na jiné databáze ve fondu hello. Pokud tento požadavek je předvídatelný, jako je místo, má expresní prodeje lístků oblíbených události, může toto chování správy integrovaná do aplikace hello.
 
-[Azure Portal](https://portal.azure.com) poskytuje integrované monitorování a upozorňování pro většinu prostředků. Ve službě SQL Database je monitorování a upozorňování k dispozici v databázích a fondech. Toto integrované monitorování a výstrah je konkrétní prostředky, takže je možné použít pro malý počet prostředků, ale není možnost je užitečná při práci s množství prostředků.
+Hello [portál Azure](https://portal.azure.com) poskytuje integrované monitorování a výstrahy na nejvíce zdrojů. Ve službě SQL Database je monitorování a upozorňování k dispozici v databázích a fondech. Toto integrované monitorování a výstrah je konkrétní prostředky, takže je vhodné toouse pro malý počet prostředků, ale není možnost je užitečná při práci s množství prostředků.
 
-Pro rozsáhlé scénáře, kde pracujete s mnoha reources [analýzy protokolů (OMS)](sql-database-saas-tutorial-log-analytics.md) lze použít. Toto je samostatný služba Azure, která nabízí v porovnání s emitovaného diagnostické protokoly a telemetrie získané v pracovním prostoru analýzy protokolů analýzy. Analýzy protokolů můžete shromažďovat telemetrická data z mnoha služeb a použije k dotazování a nastavit výstrahy.
+Pro rozsáhlé scénáře, kde pracujete s mnoha reources [analýzy protokolů (OMS)](sql-database-saas-tutorial-log-analytics.md) lze použít. Toto je samostatný služba Azure, která nabízí v porovnání s emitovaného diagnostické protokoly a telemetrie získané v pracovním prostoru analýzy protokolů analýzy. Analýzy protokolů můžete shromažďovat telemetrická data z mnoha služeb a být použité tooquery a nastavit výstrahy.
 
-## <a name="get-the-wingtip-application-source-code-and-scripts"></a>Zdrojový kód Wingtip aplikace a skripty
+## <a name="get-hello-wingtip-application-source-code-and-scripts"></a>Zdrojový kód hello Wingtip aplikace a skripty
 
-Adresář Wingtip SaaS skripty a zdrojový kód aplikace, které jsou k dispozici v [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) úložiště github. [Postup stažení skripty Wingtip SaaS](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts).
+Hello Wingtip SaaS skripty a zdrojový kód aplikace jsou k dispozici v hello [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) úložiště github. [Kroky toodownload hello Wingtip SaaS skripty](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts).
 
 ## <a name="provision-additional-tenants"></a>Zřízení dalších tenantů
 
-I když fondy můžou být nákladově efektivní jenom se dvěma databázemi S3, platí, že čím více databází fond obsahuje, tím efektivnější z hlediska nákladů začne být efekt zprůměrování. Pro zajištění správného porozumění fungování monitorování a správy výkonu na škále vyžaduje tento kurz, abyste měli nasazených nejméně 20 databází.
+Fondy mohou být nákladově efektivní s pouze dvěma databázemi S3, hello další databáze, které jsou v hello fondu hello cenově výhodnější stane hello průměrování vliv. Pro zajištění správného porozumění fungování monitorování a správy výkonu na škále vyžaduje tento kurz, abyste měli nasazených nejméně 20 databází.
 
-Pokud dávky klientů, které se už zřízené v předchozí kurzu, pokračujte [simulovat využití na všechny databáze klienta](#simulate-usage-on-all-tenant-databases) části.
+Pokud už zřízené dávky klienty v předchozí kurzu, přeskočte toohello [simulovat využití na všechny databáze klienta](#simulate-usage-on-all-tenant-databases) části.
 
-1. Otevřete... \\Učení moduly\\sledování výkonu a správy\\*ukázku PerformanceMonitoringAndManagement.ps1* v *prostředí PowerShell ISE*. Tento skript nechte otevřený, protože během tohoto kurzu budete spouštět několik scénářů.
+1. Otevřete... \\Learning moduly\\sledování výkonu a správy\\*ukázku PerformanceMonitoringAndManagement.ps1* v hello *prostředí PowerShell ISE*. Tento skript nechte otevřený, protože během tohoto kurzu budete spouštět několik scénářů.
 1. Nastavte **$DemoScenario** = **1**, **Zřízení dávky tenantů**
-1. Stisknutím klávesy **F5** spusťte skript.
+1. Stiskněte klávesu **F5** toorun hello skriptu.
 
-Skript nasadí 17 tenantů za méně než pět minut.
+skript Hello nasadí 17 klientů v méně než pět minut.
 
-*New-TenantBatch* skript používá sadu vnořené nebo propojené [Resource Manager](../azure-resource-manager/index.md) šablony, které vytvoření dávky klientů, který ve výchozím nastavení zkopíruje databázi **basetenantdb**na serveru katalog pro vytvoření nového klienta databáze, pak zaregistruje v katalogu a nakonec je inicializuje s typem klientovi název a místo. To je konzistentní s způsob, jakým aplikace zřídí nového klienta. Některé změny provedené *basetenantdb* se použijí pro žádné nové klienty zřízený po tomto datu. Najdete v článku [Správa schématu kurzu](sql-database-saas-tutorial-schema-management.md) chcete zjistit, jak provést změny schématu *existující* klienta databáze (včetně *basetenantdb* databáze).
+Hello *New-TenantBatch* skript používá sadu vnořené nebo propojené [Resource Manager](../azure-resource-manager/index.md) šablony, které vytvoření dávky klientů, který ve výchozím nastavení zkopíruje databáze hello **basetenantdb** na hello katalogu serveru toocreate hello nové klienta databáze, pak zaregistruje v katalogu hello a nakonec je inicializuje hello klientovi název a místo typu. To je konzistentní způsob hello aplikace hello zřídí nového klienta. Veškeré změny provedené příliš*basetenantdb* jsou použité tooany nové klienty zřízený po tomto datu. V tématu hello [Správa schématu kurzu](sql-database-saas-tutorial-schema-management.md) toosee jak změní schéma toomake příliš*existující* klienta databáze (včetně hello *basetenantdb* databáze).
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Simulace využití ve všech databázích tenantů
 
-*Ukázku PerformanceMonitoringAndManagement.ps1* je skript zadaný, který simuluje zatížení spuštěným pro všechny databáze klienta. Zatížení je generována pomocí jednoho z dostupných zatížení scénářů:
+Hello *ukázku PerformanceMonitoringAndManagement.ps1* je skript zadaný, který simuluje zatížení spuštěným pro všechny databáze klienta. Hello zatížení je generována pomocí jednoho z dostupných zatížení scénářů hello:
 
 | Ukázka | Scénář |
 |:--|:--|
@@ -92,159 +92,159 @@ Skript nasadí 17 tenantů za méně než pět minut.
 | 5 | Generování normálního a vysokého zatížení v jednom tenantovi (přibližně 95 DTU)|
 | 6 | Generování nevyváženého zatížení mezi více fondy|
 
-Generátor zatížení použije *syntetické* zatížení jenom pro CPU na každé databázi tenantů. Generátor spustí úlohu pro každou databázi tenantů, která pravidelně volá uloženou proceduru generující zatížení. Úrovně zatížení (v eDTU), doba trvání a intervaly jsou napříč všemi databázemi různé, což simuluje nepředvídanou činnost tenanta.
+Generátor zatížení Hello se vztahuje *syntetické* jen procesoru zatížení tooevery klienta databáze. Generátor Hello spustí úlohu pro každého klienta databáze, která volá uložené procedury pravidelně který generuje hello zatížení. mezi všechny databáze, simulaci aktivity nepředvídatelným klienta jsou nastaveny úrovně zatížení Hello (v Edtu), doba trvání a intervaly.
 
-1. Otevřete... \\Učení moduly\\sledování výkonu a správy\\*ukázku PerformanceMonitoringAndManagement.ps1* v *prostředí PowerShell ISE*. Tento skript nechte otevřený, protože během tohoto kurzu budete spouštět několik scénářů.
+1. Otevřete... \\Learning moduly\\sledování výkonu a správy\\*ukázku PerformanceMonitoringAndManagement.ps1* v hello *prostředí PowerShell ISE*. Tento skript nechte otevřený, protože během tohoto kurzu budete spouštět několik scénářů.
 1. Nastavit **$DemoScenario** = **2**, *generování normální intenzitou zatížení*.
-1. Stisknutím klávesy **F5** použijte zatížení u všech databází tenantů.
+1. Stiskněte klávesu **F5** tooapply tooall zatížení databáze klienta.
 
-Adresář Wingtip je aplikace SaaS a skutečné zatížení aplikace SaaS je obvykle ojediněle a nepředvídatelným. Abychom takovýto scénář nasimulovali, vytváří generátor zatížení náhodné zatížení rozdělené mezi všechny tenanty. Několik minut, je potřeba pro vzor zatížení objeví, takže spuštění generátor zatížení po dobu 3 až 5 minut před pokusem o monitorování zatížení v následujících částech.
+Adresář Wingtip je aplikace SaaS a hello reálného zatížení aplikace SaaS je obvykle ojediněle a nepředvídatelným. toosimulate to hello zatížení generátor vytváří náhodnou zatížení rozložené mezi všechny klienty. Několik minut, je potřeba pro tooemerge vzor zatížení hello, takže spustit hello zatížení generátor pro 3 až 5 minut před pokusem o toomonitor hello zatížení v následující části hello.
 
 > [!IMPORTANT]
-> Generátor zatížení běží jako řada úloh v místní relaci prostředí PowerShell. Nechte otevřenou kartu *Demo-PerformanceMonitoringAndManagement.ps1*. Pokud tuto kartu zavřete nebo pozastavíte počítač, generátor zatížení se zastaví. Generátor zatížení zůstává ve *vyvolání úlohy* stavu, kde vygeneruje zatížení žádné nové klienty, které jsou zřízené po spuštění generátor. Použití *Ctrl-C* zastavení vyvolání nové úlohy a ukončení skript. Generátor zatížení bude nadále spouštět, ale jenom na stávající klienty.
+> Generátor zatížení Hello běží jako řadu úloh v místní relace prostředí PowerShell. Zachovat hello *ukázku PerformanceMonitoringAndManagement.ps1* otevřenou kartou! Pokud zavřete kartu hello nebo pozastavit váš počítač, generátor zatížení hello se zastaví. Generátor Hello zatížení zůstává ve *vyvolání úlohy* stavu, kde vygeneruje zatížení žádné nové klienty, které jsou zřízené po spuštění generátor hello. Použití *Ctrl-C* toostop vyvolání nové úlohy a ukončení hello skriptu. Generátor zatížení Hello bude toorun, ale jenom na stávající klienty.
 
-## <a name="monitor-resource-usage-using-the-azure-portal"></a>Sledování využití prostředků pomocí portálu Azure
+## <a name="monitor-resource-usage-using-hello-azure-portal"></a>Sledování využití prostředků pomocí hello portálu Azure
 
-Pokud chcete monitorovat využití prostředků, která je výsledkem zatížení, které jsou aplikovány, otevřete portál na fond, který obsahuje databáze klienta:
+využití prostředků hello toomonitor, která způsobují hello načíst aplikovány, otevřete hello portálu toohello fond, který obsahuje hello klienta databází:
 
-1. Otevřete [portál Azure](https://portal.azure.com) a přejděte do *tenants1 -&lt;uživatele&gt;*  serveru.
-1. Přejděte dolů na elastické fondy a klikněte na **Pool1**. Tento fond obsahuje všechny dosud vytvořené databáze tenantů.
+1. Otevřete hello [portál Azure](https://portal.azure.com) a procházet toohello *tenants1 -&lt;uživatele&gt;*  serveru.
+1. Přejděte dolů na elastické fondy a klikněte na **Pool1**. Tento fond obsahuje všechny databáze klienta hello dosud vytvořili.
 
-Sledovat **elastického fondu monitorování** a **elastické databáze monitorování** grafy.
+Sledovat hello **elastického fondu monitorování** a **elastické databáze monitorování** grafy.
 
-Využití prostředků fondu je agregační databáze využití pro všechny databáze ve fondu. Databáze graf zobrazuje pět nejprodávanějších databází:
+Hello využití prostředků fondu je hello agregační databáze využití pro všechny databáze ve fondu hello. Hello databáze graf znázorňuje hello pět nejprodávanějších databází:
 
 ![](./media/sql-database-saas-tutorial-performance-monitoring/pool1.png)
 
-Vzhledem k tomu, že existují další databáze ve fondu nad horní pět, využití fondu ukazuje aktivity, která se neodrazí v horní grafu pět databáze. Další podrobnosti získáte kliknutím na **využití prostředků databáze**:
+Vzhledem k tomu, že existují další databáze ve fondu hello nad rámec hello nejvyšší pět, využití fondu hello zobrazuje aktivity, která se neodrazí v hello nejvyšší pět databáze grafu. Další podrobnosti získáte kliknutím na **využití prostředků databáze**:
 
 ![](./media/sql-database-saas-tutorial-performance-monitoring/database-utilization.png)
 
 
-## <a name="set-performance-alerts-on-the-pool"></a>Nastavení výstrah výkonu ve fondu
+## <a name="set-performance-alerts-on-hello-pool"></a>Nastavit výstrahy výkonu u fondu hello
 
-Nastavit výstrahy na fond, který aktivuje na \>75 % využití následujícím způsobem:
+Nastavit výstrahy na hello fondu, která aktivuje na \>75 % využití následujícím způsobem:
 
-1. Otevřete *Pool1* (na serveru *tenants1-\<user\>*) na portálu [Azure Portal](https://portal.azure.com).
+1. Otevřete *Pool1* (na hello *tenants1 -\<uživatele\>*  serveru) v hello [portál Azure](https://portal.azure.com).
 1. Klikněte na **Pravidla výstrah** a potom na **+ Přidat výstrahu**:
 
    ![přidání výstrahy](media/sql-database-saas-tutorial-performance-monitoring/add-alert.png)
 
 1. Zadejte název, například **High DTU**,
-1. Nastavte následující hodnoty:
+1. Nastavte hello následující hodnoty:
    * **Metrika = procento eDTU**
    * **Podmínka = je větší než**.
    * **Prahová hodnota = 75**.
-   * **Období = více než posledních 30 minut**.
-1. Přidání e-mailovou adresu k *další správce email(s)* pole a klikněte na tlačítko **OK**.
+   * **Období = přes hello posledních 30 minut**.
+1. Přidat e-mailovou adresu toohello *další správce email(s)* pole a klikněte na tlačítko **OK**.
 
    ![nastavení upozornění](media/sql-database-saas-tutorial-performance-monitoring/alert-rule.png)
 
 
 ## <a name="scale-up-a-busy-pool"></a>Vertikální navýšení kapacity zaneprázdněného fondu
 
-Pokud se agregovaná úroveň zatížení ve fondu zvýší na bod, která fond navyšuje na maximální hodnotu a dosáhne 100% využití eDTU, má to vliv na individuální výkon databáze a potenciálně vykazuje pomalejší doby odezvy pro všechny databáze ve fondu.
+Úroveň agregační zatížení hello zvyšuje v bodě toohello fondu, maxes out hello fondu a dosáhne využití eDTU 100 %, pak jednotlivé databáze ovlivňuje výkon, potenciálně zpomalení odezvy dotazů pro všechny databáze ve fondu hello.
 
-**Krátkodobý**, zvažte vertikálním navýšení kapacity fondu se mají poskytnout další prostředky, nebo odebráním databází z fondu (jejich přesunutí do jiných fondů nebo mimo fondu vrstvu samostatné služby).
+**Krátkodobý**, zvažte vertikálním navýšení kapacity hello fondu tooprovide další prostředky, nebo odebráním databází z fondu hello (jejich přesunutí tooother fondy, nebo mimo hello fondu tooa samostatnou službu úroveň).
 
-**Dlouhodobější**, zvažte optimalizaci dotazů nebo indexu využití ke zlepšení výkonu databáze. Podle toho, jak je aplikace citlivá na problémy s výkonem, se osvědčilo navýšit kapacitu fondu předtím, než dosáhne 100% využití eDTU. Použijte výstrahu, abyste byli předem upozornění.
+**Dlouhodobější**, zvažte optimalizaci dotazů nebo index výkonu databáze tooimprove využití. V závislosti na hello tooperformance citlivosti aplikačním vydává jeho osvědčených postupů tooscale fond si před dosažením využití eDTU 100 %. Použití výstrah toowarn můžete předem.
 
-Zaneprázdněný fond můžete simulovat tak, že zvýšíte zatížení vytvořené generátorem. Způsobuje databáze, burst častěji a pro zvýšení agregační zatížení ve fondu, aniž byste museli měnit požadavky na jednotlivé databáze. Škálování fondu se snadno provádí na portálu nebo z prostředí PowerShell. Při tomto cvičení se používá portál.
+Můžete simulovat zaneprázdněn fondu většího zatížení hello vyprodukované generátor hello. Což hello databáze tooburst častěji a pro delší a roste hello agregační zatížení ve fondu hello beze změny hello požadavky jednotlivých databází hello. Vertikálním navýšení kapacity fondu hello se provádí snadno hello portálu nebo z prostředí PowerShell. Tento postup používá portál hello.
 
-1. Nastavte možnost *$DemoScenario* = **3**, _Generování zatížení s delšími a častějšími nárůsty zatížení na databázi_ na zvýšení intenzity agregovaného zatížení ve fondu beze změny vrcholového zatížení požadovaného jednotlivými databázemi.
-1. Stisknutím klávesy **F5** použijte zatížení u všech databází tenantů.
+1. Nastavit *$DemoScenario* = **3**, _generování zatížení s delší a častější shluky na databázi_ tooincrease hello intenzitou hello agregační zatížení fond Hello beze změny zátěž ve špičce hello vyžadovanou každou databázi.
+1. Stiskněte klávesu **F5** tooapply tooall zatížení databáze klienta.
 
-1. Přejděte na **Pool1** na portálu Azure.
+1. Přejděte příliš**Pool1** v hello portálu Azure.
 
-Sledování využití eDTU vyšší fondu v horní grafu. Trvá několik minut, než nové vyšší zátěž nové, ale měli byste vidět rychle začít dosáhl maximální využití fondu a jako zatížení steadies do nové vzor, rychle přetížení fondu.
+Monitorování hello vyšší využití eDTU fondu v horní grafu hello. Trvá několik minut hello nové vyšší zatížení tookick, ale měli byste vidět rychle začít toohit maximální využití fondu hello a jako zatížení hello steadies hello nové vzoru, rychle přetížení hello fondu.
 
-1. Škálování fondu, klikněte na tlačítko **konfigurace fondu** v horní části **Pool1** stránky.
-1. Upravit **eDTU fondu** nastavení **100**. Změna eDTU fondu se nemění podle nastavení databáze (což je stále maximálně 50 eDTU na databázi). Jednotlivé databáze nastavení můžete zobrazit na pravé straně **konfigurace fondu** stránky.
-1. Klikněte na tlačítko **Uložit** odeslat žádost o škálování fondu.
+1. Klikněte na tlačítko tooscale až hello fondu, **konfigurace fondu** hello horní části hello **Pool1** stránky.
+1. Upravit hello **eDTU fondu** nastavení příliš**100**. Změna eDTU fondu hello nezmění nastavení pro jednotlivé databáze hello, (což je stále 50 eDTU max na databázi). Nastavení pro jednotlivé databáze hello uvidíte na pravé straně hello hello **konfigurace fondu** stránky.
+1. Klikněte na tlačítko **Uložit** toosubmit hello požadavek tooscale hello fondu.
 
-Přejděte zpět na **Pool1** > **přehled** zobrazení monitorování grafy. Sledování účinku fondu poskytování více prostředků (i když několik databází a náhodnou zatížení není vždy snadno zjistit jednoznačně, dokud nespustíte nějakou dobu). Při interpretaci grafů mějte na paměti, že 100 % v horním grafu teď reprezentuje 100 eDTU, zatímco v dolním grafu je 100 % vždy 50 eDTU, protože maximum na databázi je 50 eDTU.
+Přejděte zpět příliš**Pool1** > **přehled** tooview hello monitorování grafy. Sledování účinku hello hello fondu poskytování více prostředků (i když několik databází a náhodnou zatížení není vždy snadno toosee jednoznačně dokud nespustíte nějakou dobu). Když se díváte hello grafy opatřeny Pamatujte, že 100 % na horním hello teď grafu představuje 100 Edtu, při na hello nižší grafu 100 %, je stále 50 Edtu jako hello jednotlivé databáze maximální je stále 50 Edtu.
 
-Databáze je v průběhu procesu online a plně dostupná. A nakonec – protože je každá databáze připravená k aktivaci s eDTU nového fondu, bude každé aktivní propojení přerušeno. Kód aplikace by měl vždy být zapsán tak, aby se znovu pokoušel obnovit porušené propojení a tím pádem se znovu připojí k databázi ve fondu s navýšenou kapacitou.
+Databáze zůstat online a plně dostupné v celém procesu hello. V hello poslední chvíli jako každou databázi je připraven toobe povolit nové eDTU fondu hello žádné aktivní připojení jsou přerušená. Kód aplikace vždy budou zasílány připojení tooretry vyřadit a tak se znovu připojit databázi toohello ve vertikálním navýšením kapacity fondu hello.
 
 ## <a name="load-balance-between-pools"></a>Vyrovnávání zatížení mezi fondy
 
-Jako alternativu navýšení kapacity fondu vytvořte druhý fond a přemístěte do něho databáze, aby se vyrovnalo zatížení mezi dvěma fondy. K tomu je potřeba vytvořit tento nový fond na stejném serveru jako první.
+Alternativní tooscaling až hello fondu, vytvořte druhý fond a přesunutí databází do ní toobalance hello zatížení mezi hello dvou fondů. toodo, které tento nový fond hello se musí vytvořit na stejném serveru jako hello hello nejdřív.
 
-1. V [portál Azure](https://portal.azure.com), otevřete **tenants1 -&lt;uživatele&gt;**  serveru.
-1. Klikněte na tlačítko **+ nový fond** vytvoření fondu na aktuálním serveru.
-1. Na **fond elastické databáze** šablony:
+1. V hello [portál Azure](https://portal.azure.com), otevřete hello **tenants1 -&lt;uživatele&gt;**  serveru.
+1. Klikněte na tlačítko **+ nový fond** toocreate fondu na aktuální server hello.
+1. Na hello **fond elastické databáze** šablony:
 
-    1. Nastavit **název** k *Pool2*.
-    1. Cenovou úroveň nechte jako **Fond Standard**.
+    1. Nastavit **název** příliš*Pool2*.
+    1. Nechte hello cenová úroveň jako **standardní fond**.
     1. Klikněte na **Konfigurovat fond**
-    1. Nastavit **eDTU fondu** k *50 eDTU*.
-    1. Klikněte na tlačítko **přidat databáze** zobrazíte seznam databází na serveru, který lze přidat do *Pool2*.
-    1. Vyberte všechny 10 databáze přesunout do nového fondu a potom klikněte na **vyberte**. Pokud jste byla spuštěna generátor zatížení, služba již ví, že váš profil výkonu vyžaduje fond větší než velikost 50 eDTU výchozí a doporučuje od 100 nastavení eDTU.
+    1. Nastavit **eDTU fondu** příliš*50 eDTU*.
+    1. Klikněte na tlačítko **přidat databáze** toosee seznam databází na serveru hello, který jde přidat příliš*Pool2*.
+    1. Vyberte všechny toomove 10 databáze tyto toohello nový fond a pak klikněte na tlačítko **vyberte**. Pokud jste byla spuštěna hello zatížení generátor, hello služby již ví, že váš profil výkonu vyžaduje fond větší než velikost 50 eDTU hello výchozí a doporučuje od 100 nastavení eDTU.
 
     ![Doporučení](media/sql-database-saas-tutorial-performance-monitoring/configure-pool.png)
 
-    1. V tomto kurzu ponechte výchozí hodnota 50 Edtu a klikněte na tlačítko **vyberte** znovu.
-    1. Vyberte **OK** k vytvoření nového fondu a přesunout vybrané databáze do ní.
+    1. V tomto kurzu ponechte výchozí hello 50 Edtu a klikněte na tlačítko **vyberte** znovu.
+    1. Vyberte **OK** hello hello toocreate nový fond a toomove vybrané databáze do ní.
 
-Vytvoření fondu a přesunutí databáze trvá několik minut. Jak je, že zůstat online a plně dostupné až do okamžiku, velmi poslední přesunu databází, v tomto okamžiku jsou uzavřeny žádné otevřené připojení. Tak dlouho, dokud máte některé logika opakovaných pokusů, klienti se potom připojují k databázi v nového fondu.
+Vytvoření fondu hello a přesunutí databází hello trvá několik minut. Jak je, že zůstat online a plně dostupné až hello velmi poslední chvíli přesunu databází, okamžiku jsou uzavřeny žádné otevřené připojení. Tak dlouho, dokud máte některé logika opakovaných pokusů, klienti pak připojí toohello databáze v hello nový fond.
 
-Přejděte do **Pool2** (na *tenants1* serveru) otevřete fondu a sledovat jeho výkon. Pokud ho nevidíte, počkejte zřizování nového fondu k dokončení.
+Procházet příliš**Pool2** (na hello *tenants1* serveru) tooopen hello fondu a sledovat jeho výkon. Pokud ho nevidíte, počkejte zřizování nový fond toocomplete hello.
 
 Nyní uvidíte že využití prostředků na *Pool1* klesla a že *Pool2* je nyní podobně načtena.
 
 ## <a name="manage-performance-of-a-single-database"></a>Správa výkonu služby jedné databáze
 
-Pokud má izolovaná databáze ve fondu stabilně vysoké zatížení, může mít v závislosti na konfiguraci fondu tendenci dominovat prostředkům ve fondu a ovlivňovat ostatní databáze. Pokud je aktivita může pokračovat po určitou dobu, můžete databáze dočasně přesunul z fondu. To umožňuje databázi do mají další prostředky potřebuje a izoluje z jiných databází.
+Pokud jedné databáze ve fondu vyskytne dlouhodobě vysoké zatížení, v závislosti na konfiguraci fondu hello, může mívají toodominate hello prostředky ve fondu hello a mít vliv na jiné databáze. Pokud aktivita hello pravděpodobně toocontinue nějakou dobu, může hello databáze dočasně přesunout mimo hello fondu. To umožňuje hello databáze toohave hello další prostředky, které potřebuje a izoluje od hello jiné databáze.
 
-Toto cvičení simuluje vliv vysokého zatížení při prodeji lístků na populární koncert v Koncertním sále Contoso.
+Toto cvičení simuluje hello účinku Hall vzájemné součinnosti Contoso zaznamenat vysokého zatížení při lístků, přejděte na prodej pro oblíbené vzájemné součinnosti.
 
-1. Otevřete... \\ *Ukázku PerformanceMonitoringAndManagement.ps1* skriptu.
+1. Otevřete hello... \\ *Ukázku PerformanceMonitoringAndManagement.ps1* skriptu.
 1. Nastavte **$DemoScenario = 5, Generování normálního a vysokého zatížení v jednom tenantovi (přibližně 95 DTU).**
 1. Nastavte **$SingleTenantDatabaseName = contosoconcerthall**
-1. Skript proveďte pomocí **F5**.
+1. Spuštění pomocí skriptu hello **F5**.
 
 
-1. V [portál Azure](https://portal.azure.com) otevřete **Pool1**.
-1. Zkontrolujte **elastického fondu monitorování** grafu a vyhledejte využití eDTU vyšší fondu. Po jedné až dvou minutách by mělo začít zvýšené zatížení a měli byste rychle zaznamenat, že fond dosáhl 100% využití.
-1. Zkontrolujte **elastické databáze monitorování** zobrazení, která zobrazuje nejprodávanějších databáze za poslední hodinu. *Contosoconcerthall* databáze by měla brzy zobrazí jako jedna z pěti nejprodávanějších databází.
-1. **Klikněte na monitorování elastické databáze** **grafu** a otevře se **využití prostředků databáze** stránky, kde můžete sledovat některé z databází. Díky tomu si zobrazení pro izolovat *contosoconcerthall* databáze.
-1. Ze seznamu databází, klikněte na tlačítko **contosoconcerthall**.
-1. Klikněte na tlačítko **cenová úroveň (škálování Dtu)** otevřete **konfigurace výkonu** stránky, kde můžete nastavit úroveň samostatné výkonu databáze.
-1. Kliknutím na kartu **Standardní** otevřete možnosti škálování ve standardní vrstvě.
-1. Posuňte **DTU posuvníku** vpravo vyberte **100** Dtu. Poznámka: odpovídá cíl služby **S3**.
-1. Klikněte na tlačítko **použít** přesunout databázi z fondu a změňte ji *úrovně Standard S3* databáze.
-1. Po dokončení škálování sledujte účinek na databázi contosoconcerthall a Pool1 v elastickém fondu a databáze oknech.
+1. V hello [portál Azure](https://portal.azure.com) otevřete **Pool1**.
+1. Zkontrolujte hello **elastického fondu monitorování** grafu a vyhledejte hello vyšší využití eDTU fondu. Po minutu nebo dvě hello vyšší zatížení by se měl spustit tookick v a rychle byste měli vidět, že fond hello dotkne využití 100 %.
+1. Zkontrolujte hello **elastické databáze monitorování** zobrazení, která zobrazuje hello nejprodávanějších databází v hello poslední hodinu. Hello *contosoconcerthall* databáze mají brzy zobrazit jako jeden z pěti hello nejprodávanějších databáze.
+1. **Klikněte na monitorování elastické databáze hello** **grafu** a otevře se hello **využití prostředků databáze** stránky, kde můžete sledovat některé z databází hello. Díky tomu můžete izolovat hello zobrazení pro hello *contosoconcerthall* databáze.
+1. Ze seznamu hello databáze, klikněte na tlačítko **contosoconcerthall**.
+1. Klikněte na tlačítko **cenová úroveň (škálování Dtu)** tooopen hello **konfigurace výkonu** stránky, kde můžete nastavit úroveň samostatné výkonu pro databázi hello.
+1. Klikněte na hello **standardní** kartě Možnosti škálování hello tooopen ve standardní vrstvě hello.
+1. Vysuňte hello **DTU posuvníku** tooright tooselect **100** Dtu. Poznámka: odpovídá cíl služby toohello, **S3**.
+1. Klikněte na tlačítko **použít** toomove hello databáze mimo hello fondu a nastavte jej *úrovně Standard S3* databáze.
+1. Škálování po dokončení, monitorování hello vliv na hello contosoconcerthall databáze a Pool1 v elastickém fondu a databáze oknech hello.
 
-Jakmile vysokého zatížení v databázi contosoconcerthall subvence by měl neprodleně vrátí do fondu na snížení nákladů na jeho. Pokud je při tom nejasné po který se stane, můžete nastavit upozornění na databázi, se aktivuje při jeho využití v jednotkách DTU klesne pod jednotlivé databáze maximální ve fondu. Přesunutí databáze do fondu je popsáno v cvičení 5.
+Jakmile subvence hello vysokým zatížením hello contosoconcerthall databáze by měl neprodleně vrátí toohello fondu tooreduce jeho náklady. Pokud je při tom nejasné po který se stane, můžete nastavit upozornění na hello databáze, se aktivuje při jeho využití v jednotkách DTU klesne pod hello jednotlivé databáze ve fondu hello maximální. Přesunutí databáze do fondu je popsáno v cvičení 5.
 
 ## <a name="other-performance-management-patterns"></a>Další vzorce správy výkonu
 
-**Preemptivní škálování** v cvičení výše kde jste prozkoumali postup škálování izolované databáze, budete vědět, databázi, kterou chcete vyhledat. Pokud správu Contoso vzájemné součinnosti Hall měl informován Wingtips brzké prodeje lístků, databázi přesunuta mimo fondu pre-emptively. Jinak by to vyžadovalo výstrahu ve fondu nebo v databázi s cílem zjistit, co se stalo. Pravděpodobně byste to nechtěli zjistit proto, že by si ostatní tenanti ve fondu stěžovali na snížený výkon. A kdyby mohli tenanti předvídat, na jak dlouho by potřebovali další prostředky, můžete nastavit runbook Azure Automation na přesunutí databáze mimo fond a potom zpět podle předem definovaného plánu.
+**Preemptivní škálování** v výše uvedeného cvičení hello, kde jste prozkoumali jak tooscale izolované databáze, budete vědět, které toolook databáze pro. Pokud hello správu Contoso vzájemné součinnosti Hall měl informován Wingtips hello brzké prodej lístků, databáze hello přesunuta mimo hello fondu pre-emptively. Jinak by pravděpodobně mít vyžadovala výstrahu na fond hello nebo hello databáze toospot co se děje. Chcete nebude toolearn informace z hello jiných klientů v hello fondu nesouhlasících z snížení výkonu. A pokud hello klienta můžete odhadnout, jak dlouho budou potřebovat další prostředky, můžete nastavení databáze Azure Automation runbook toomove hello mimo hello fondu a pak znovu zpět na definovaný plán.
 
-**Samoobslužné škálování tenanta**  Protože škálování je úkol, který se snadno volá prostřednictvím rozhraní API pro škálu, můžete snadno vytvořit možnost škálovat databáze tenantů do aplikace směřující k tenantovi a nabízet ji jako funkci služby SaaS. Můžete například umožnit tenantům samoobslužné vertikální navýšení a snížení kapacity navázané přímo na fakturaci.
+**Samoobslužná služba klienta škálování** škálování je úloha snadno vytvořit prostřednictvím rozhraní API pro správu hello, a proto snadno vytvářet hello možnost databáze klienta tooscale do své aplikace na straně klienta a nabízet ho jako součást služby SaaS. Například umožnit klientům self-administer škálování nahoru a dolů, případně přímo spojeny fakturace tootheir!
 
-**Škálování fondu nahoru a dolů na plán tak, aby odpovídaly vzorce používání**
+**Škálování fondu nahoru a dolů na vzorce používání toomatch plán**
 
-Tam, kde agregované využití tenanta probíhá podle předvídatelných vzorců použití, můžete pomocí Azure Automation podle plánu vertikálně zvyšovat nebo snižovat kapacitu fondu. Můžete například snížit kapacitu fondu po 6. hodině večer a navýšit před 6. hodinou ráno ve dnech, kdy víte, že existuje pokles požadavků na prostředky.
+Použití agregační klienta odpovídá vzorce používání předvídatelné, můžete použít Azure Automation tooscale fond nahoru a dolů podle plánu. Můžete například snížit kapacitu fondu po 6. hodině večer a navýšit před 6. hodinou ráno ve dnech, kdy víte, že existuje pokles požadavků na prostředky.
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Co se v tomto kurzu naučíte:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Simulace použití v databázích tenantů pomocí dodaného generátoru zatížení
-> * Monitorování databází tenantů při reakci na zvýšení zatížení
-> * Vertikální navýšení kapacity elastického fondu v reakci na zvýšení zatížení databáze
-> * Zřízení druhého elastického fondu pro vyrovnání zatížení činnosti databáze
+> * Simulovat využití v databázích hello klienta spuštěním generátor zadaný zatížení
+> * Databáze monitorování hello klienta jako jejich reagovat toohello zvýšení zatížení
+> * Škálování hello elastického fondu v odpovědi toohello databáze zvýšené zatížení
+> * Zřídit druhý elastický fond tooload vyrovnávání hello databáze aktivitu
 
 [Kurz Obnovení jednoho tenanta](sql-database-saas-tutorial-restore-single-tenant.md)
 
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* Další [návodů, které stavět na adresář Wingtip SaaS nasazení aplikace](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
+* Další [návodů, které stavějí hello nasazení Wingtip SaaS aplikace](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastické fondy SQL](sql-database-elastic-pool.md)
 * [Azure Automation](../automation/automation-intro.md)
 * [Log Analytics](sql-database-saas-tutorial-log-analytics.md) – kurz Nastavení a používání Log Analytics

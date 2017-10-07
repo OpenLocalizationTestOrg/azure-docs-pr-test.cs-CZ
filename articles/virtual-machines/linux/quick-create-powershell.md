@@ -1,6 +1,6 @@
 ---
-title: "Rychlý start Azure – Vytvoření virtuálního počítače pomocí PowerShellu | Dokumentace Microsoftu"
-description: "Rychle se naučíte, jak vytvářet virtuální počítače s Linuxem pomocí PowerShellu."
+title: "Rychlý Start - aaaAzure vytvořte VM prostředí PowerShell | Microsoft Docs"
+description: "Naučte se rychle toocreate virtuální počítače s Linuxem pomocí prostředí PowerShell"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
@@ -16,25 +16,25 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: adcf492d4c2d935c880167675a1ed97566156ec7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f05ea7fedafe4fda660dc6084ae57ebf9dced473
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-linux-virtual-machine-with-powershell"></a>Vytvoření virtuálního počítače s Linuxem pomocí PowerShellu
 
-Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech. Tento průvodce podrobně popisuje nasazení virtuálního počítače se serverem Ubuntu pomocí modulu Azure PowerShell. Po nasazení serveru se vytvoří připojení SSH a nainstaluje se webový server NGINX.
+modul Azure PowerShell Hello je použité toocreate a spravovat prostředky Azure z příkazového řádku Powershellu hello nebo ve skriptech. Tento průvodce údaje pomocí toodeploy modulu Azure PowerShell hello virtuálního počítače s Ubuntu server. Po nasazení hello serveru se vytvoří připojení SSH a je nainstalován webovém serveru NGINX.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Tento Rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Tento úvodní vyžaduje hello prostředí Azure PowerShell verze modulu 3,6 nebo novější. Spustit ` Get-Module -ListAvailable AzureRM` toofind hello verze. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [modul nainstalovat Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
-Veřejný klíč SSH s názvem *id_rsa.pub* musí být nakonec uložen v adresáři *.ssh* vašeho profilu uživatele Windows. Podrobné informace o vytváření klíčů SSH pro Azure najdete v tématu popisujícím [vytvoření klíčů SSH pro Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Nakonec veřejný klíč SSH s názvem hello *id_rsa.pub* musí toobe uložené v hello *.ssh* adresář profil uživatele systému Windows. Podrobné informace o vytváření klíčů SSH pro Azure najdete v tématu popisujícím [vytvoření klíčů SSH pro Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-tooazure"></a>Přihlaste se tooAzure
 
-Přihlaste se k předplatnému Azure pomocí příkazu `Login-AzureRmAccount` a postupujte podle pokynů na obrazovce.
+Přihlaste se tooyour předplatné s hello `Login-AzureRmAccount` příkazů a postupujte podle hello na obrazovce pokynů.
 
 ```powershell
 Login-AzureRmAccount
@@ -50,7 +50,7 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location eastus
 
 ## <a name="create-networking-resources"></a>Vytvoření síťových prostředků
 
-Vytvořte virtuální síť, podsíť a veřejnou IP adresu. Tyto prostředky slouží k zajištění síťového připojení virtuálnímu počítači a k jeho připojení k internetu.
+Vytvořte virtuální síť, podsíť a veřejnou IP adresu. Tyto prostředky jsou použité tooprovide síťové připojení toohello virtuální počítač a připojte ho toohello Internetu.
 
 ```powershell
 # Create a subnet configuration
@@ -65,7 +65,7 @@ $pip = New-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup -Location e
 -AllocationMethod Static -IdleTimeoutInMinutes 4 -Name "mypublicdns$(Get-Random)"
 ```
 
-Vytvořte skupinu zabezpečení sítě a pravidlo skupiny zabezpečení sítě. Skupina zabezpečení sítě zabezpečuje virtuální počítač pomocí příchozích a odchozích pravidel. V tomto případě se vytvoří příchozí pravidlo pro port 22, které umožní příchozí připojení SSH. Chceme také vytvořit příchozí pravidlo pro port 80, které umožní příchozí webový provoz.
+Vytvořte skupinu zabezpečení sítě a pravidlo skupiny zabezpečení sítě. Skupina zabezpečení sítě Hello zabezpečuje hello virtuálního počítače pomocí příchozí a odchozí pravidla. V tomto případě se vytvoří příchozí pravidlo pro port 22, které umožní příchozí připojení SSH. Chceme také toocreate příchozí pravidlo pro port 80, která umožní příchozí webový provoz.
 
 ```powershell
 # Create an inbound network security group rule for port 22
@@ -83,7 +83,7 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName myResourceGroup -Locat
 -Name myNetworkSecurityGroup -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 ```
 
-Vytvořte pro virtuální počítač síťovou kartu pomocí příkazu [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface). Síťová karta připojuje virtuální počítač k podsíti, skupině zabezpečení sítě a veřejné IP adrese.
+Vytvoření síťové karty s [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) hello virtuálního počítače. Hello síťová karta připojí podsíť tooa hello virtuální počítač, skupina zabezpečení sítě a veřejnou IP adresu.
 
 ```powershell
 # Create a virtual network card and associate with public IP address and NSG
@@ -93,7 +93,7 @@ $nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName myResourceGrou
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvořte konfiguraci virtuálního počítače. Tato konfigurace zahrnuje nastavení, která se používají při nasazení virtuálního počítače, jako je image virtuálního počítače, jeho velikost a konfigurace ověřování.
+Vytvořte konfiguraci virtuálního počítače. Tato konfigurace zahrnuje hello nastavení, které se použijí při nasazení virtuálního počítače hello třeba konfiguraci virtuálního počítače bitové kopie, velikost a ověřování.
 
 ```powershell
 # Define a credential object
@@ -111,34 +111,34 @@ $sshPublicKey = Get-Content "$env:USERPROFILE\.ssh\id_rsa.pub"
 Add-AzureRmVMSshPublicKey -VM $vmconfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 ```
 
-Vytvořte virtuální počítač pomocí příkazu [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
+Vytvoření virtuálního počítače hello s [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
 
 ```powershell
 New-AzureRmVM -ResourceGroupName myResourceGroup -Location eastus -VM $vmConfig
 ```
 
-## <a name="connect-to-virtual-machine"></a>Připojení k virtuálnímu počítači
+## <a name="connect-toovirtual-machine"></a>Připojte počítač toovirtual
 
-Po dokončení nasazení vytvořte připojení SSH k virtuálnímu počítači.
+Po dokončení nasazení hello vytvoření připojení SSH s hello virtuálního počítače.
 
-Použijte příkaz [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress), který vrátí veřejnou IP adresu virtuálního počítače.
+Použití hello [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) příkaz tooreturn hello veřejnou IP adresu hello virtuálního počítače.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-Ze systému s nainstalovaným SSH se pomocí následujícího příkazu připojte k virtuálnímu počítači. Pokud pracujete v systému Windows, můžete k vytvoření připojení použít [PuTTy](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-ssh-from-windows?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-private-key-for-putty). 
+Ze systému pomocí protokolu SSH nainstalovaná hello použít následující příkaz tooconnect toohello virtuálního počítače. Pokud funguje v systému Windows, [Putty](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-ssh-from-windows?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-private-key-for-putty) lze použít toocreate hello připojení. 
 
 ```bash 
 ssh <Public IP Address>
 ```
 
-Po zobrazení výzvy zadejte uživatelské jméno *azureuser*. Pokud jste při vytváření klíčů SSH zadali heslo, musíte zadat i to.
+Po zobrazení výzvy hello přihlašovací uživatelské jméno je *azureuser*. Pokud přístupové heslo bylo zadáno při vytváření klíče SSH, musíte tuto také tooenter.
 
 
 ## <a name="install-nginx"></a>Instalace serveru NGINX
 
-Pomocí následujícího skriptu bash provedete aktualizaci zdrojů balíčku a nainstalujete nejnovější balíček NGINX. 
+Použití hello následující zdroje balíčků tooupdate skriptů bash a instalovat nejnovější balíček NGINX hello. 
 
 ```bash 
 #!/bin/bash
@@ -150,15 +150,15 @@ apt-get -y update
 apt-get -y install nginx
 ```
 
-## <a name="view-the-ngix-welcome-page"></a>Zobrazení úvodní stránky serveru NGINX
+## <a name="view-hello-ngix-welcome-page"></a>Zobrazení hello NGIX úvodní stránka
 
-S nainstalovaným serverem NGINX na virtuálním počítači a nyní otevřeným portem 80 z internetu můžete použít libovolný webový prohlížeč a zobrazit výchozí úvodní stránku serveru NGINX. Nezapomeňte pro návštěvu výchozí stránky použít veřejnou IP adresu popsanou výše. 
+NGINX nainstalován a port 80 nyní otevřete na vašem virtuálním počítači z hello Internetu – můžete použít webový prohlížeč volba tooview hello výchozí NGINX uvítací stránky. Být, že toouse hello veřejnou IP adresu, kterou popsané výše toovisit hello výchozí stránky. 
 
 ![Výchozí web NGINX](./media/quick-create-cli/nginx.png) 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít příkaz [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).
+Pokud již nepotřebujete, můžete použít hello [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) příkaz skupiny prostředků hello tooremove, virtuálních počítačů a všechny související prostředky.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -166,7 +166,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto Rychlém startu jste nasadili jednoduchý virtuální počítač a pravidlo skupiny zabezpečení sítě a nainstalovali jste webový server. Další informace o virtuálních počítačích Azure najdete v kurzu pro virtuální počítače s Linuxem.
+V tomto Rychlém startu jste nasadili jednoduchý virtuální počítač a pravidlo skupiny zabezpečení sítě a nainstalovali jste webový server. toolearn Další informace o virtuálních počítačích Azure, pokračovat v kurzu toohello pro virtuální počítače s Linuxem.
 
 > [!div class="nextstepaction"]
 > [Kurzy pro virtuální počítače Azure s Linuxem](./tutorial-manage-vm.md)

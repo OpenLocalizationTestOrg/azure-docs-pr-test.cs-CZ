@@ -1,5 +1,5 @@
 ---
-title: "Kurz pro Azure Container Service – Příprava aplikace | Microsoft Docs"
+title: "kurz pro službu kontejneru aaaAzure – Příprava aplikace | Microsoft Docs"
 description: "Kurz pro Azure Container Service – Příprava aplikace"
 services: container-service
 documentationcenter: 
@@ -17,62 +17,62 @@ ms.workload: na
 ms.date: 07/25/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: f02ee61ef1cd3b3dfaa051cfabe52866e3e7e838
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b537ecc9ff50358fb65b128bfe6eb894dd088cc4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-container-images-to-be-used-with-azure-container-service"></a>Vytvoření bitové kopie kontejneru, který se má použít s Azure Container Service
+# <a name="create-container-images-toobe-used-with-azure-container-service"></a>Vytvoření kontejneru toobe Image použít s Azure Container Service
 
 V tomto kurzu, 7, první část je více kontejnerové aplikace připravené pro použití v Kubernetes. Dokončit krokům patří:  
 
 > [!div class="checklist"]
 > * Klonování zdroje aplikace z GitHubu  
-> * Vytvoření kontejneru image ze zdroje aplikace
-> * Testování aplikace v místním prostředí Docker
+> * Vytvoření kontejneru image ze zdroje aplikace hello
+> * Testování aplikace hello v místním prostředí Docker
 
-Po dokončení následující aplikace je dostupné ve vašem místním vývojovém prostředí.
+Po dokončení hello následující aplikace je dostupné ve vašem místním vývojovém prostředí.
 
 ![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-V následujících kurzech bitovou kopii kontejneru se nahraje registru kontejneru služby Azure a pak spustit v Azure hostovaná Kubernetes clusteru.
+V následujících kurzech hello kontejneru image je nahrané tooan registru kontejner Azure a pak spustit v Azure hostovaná Kubernetes clusteru.
 
 ## <a name="before-you-begin"></a>Než začnete
 
 V tomto kurzu se předpokládá základní znalost klíčových konceptů Dockeru, jako jsou kontejnery, image kontejnerů a základní příkazy Dockeru. V případě potřeby najdete základní informace o kontejnerech v článku [Get started with Docker]( https://docs.docker.com/get-started/) (Začínáme s Dockerem). 
 
-K dokončení tohoto kurzu potřebujete vývojové prostředí pro Docker. Docker nabízí balíčky pro snadnou konfiguraci Dockeru na jakémkoli systému [Mac](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) nebo [Linux](https://docs.docker.com/engine/installation/#supported-platforms).
+toocomplete tohoto kurzu budete potřebovat Docker vývojovém prostředí. Docker nabízí balíčky pro snadnou konfiguraci Dockeru na jakémkoli systému [Mac](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) nebo [Linux](https://docs.docker.com/engine/installation/#supported-platforms).
 
 ## <a name="get-application-code"></a>Získání kódu aplikace
 
-Ukázková aplikace používá v tomto kurzu je základní hlasovací aplikaci. Aplikace se skládá z front-endové webové součásti a instanci Redis back-end. Součást webové je zabalené do bitové kopie vlastní kontejner. Redis instance používá image beze změny z úložiště Docker Hub.  
+Ukázková aplikace Hello použili v tomto kurzu je základní hlasovací aplikaci. Hello aplikace se skládá z front-endové webové součásti a instanci Redis back-end. součást webové Hello je zabalené do bitové kopie vlastní kontejner. Hello Redis instance používá image beze změny z úložiště Docker Hub.  
 
-Pomocí git stáhnout kopii aplikace na svoje vývojové prostředí.
+Pomocí git toodownload kopii hello aplikace tooyour vývojové prostředí.
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-V adresáři klonovaný je zdrojový kód aplikace, předem vytvořené Docker compose soubor a soubor manifestu Kubernetes. Tyto soubory se používají k vytvoření prostředky v celé sadě kurzu. 
+Uvnitř hello klonovaný adresář je zdrojovému kódu aplikace hello, předem vytvořené Docker compose soubor a soubor manifestu Kubernetes. Tyto soubory jsou použité toocreate prostředky v rámci kurzu sadu hello. 
 
 ## <a name="create-container-images"></a>Vytvořit kontejner bitové kopie
 
-[Docker Compose](https://docs.docker.com/compose/) můžete použít k automatizaci sestavení mimo kontejner bitové kopie a nasazení aplikací s více kontejneru.
+[Docker Compose](https://docs.docker.com/compose/) lze použít sestavení hello tooautomate mimo kontejner bitové kopie a hello nasazení aplikací s více kontejneru.
 
-Spusťte soubor docker-compose.yml na vytvoření bitové kopie kontejneru, stáhněte bitovou kopii Redis a spusťte aplikaci.
+Spustit hello docker-compose.yml souboru toocreate hello kontejneru image, stažení hello Redis bitové kopie a spusťte aplikaci hello.
 
 ```bash
 docker-compose -f ./azure-voting-app-redis/docker-compose.yml up -d
 ```
 
-Po dokončení použít [imagí dockeru](https://docs.docker.com/engine/reference/commandline/images/) příkazu zobrazte vytvořené bitové kopie.
+Po dokončení použít hello [imagí dockeru](https://docs.docker.com/engine/reference/commandline/images/) příkaz toosee hello vytvoření bitové kopie.
 
 ```bash
 docker images
 ```
 
-Všimněte si, že tři bitové kopie byly staženy nebo vytvořeny. *Azure hlas front* image obsahuje aplikace. Byl odebrán z *nginx flask* bitové kopie. Bitovou kopii Redis byl stažen z úložiště Docker Hub.
+Všimněte si, že tři bitové kopie byly staženy nebo vytvořeny. Hello *azure hlas front* image obsahuje aplikace hello. Je odvozený z hello *nginx flask* bitové kopie. Obrázek Redis Hello byl stažen z úložiště Docker Hub.
 
 ```bash
 REPOSITORY                   TAG        IMAGE ID            CREATED             SIZE
@@ -81,7 +81,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Spustit [docker ps](https://docs.docker.com/engine/reference/commandline/ps/) příkazu zobrazte spuštěných kontejnerů.
+Spustit hello [docker ps](https://docs.docker.com/engine/reference/commandline/ps/) hello toosee příkaz spuštěných kontejnerů.
 
 ```bash
 docker ps
@@ -97,38 +97,38 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 
 ## <a name="test-application-locally"></a>Testovací aplikace místně
 
-Přejděte na adrese http://localhost: 8080 zobrazíte běžící aplikaci.
+Procházejte hello toosee toohttp://localhost:8080 spuštění aplikace.
 
 ![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/azure-vote.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Teď, když funkce aplikace byl ověřen, může spuštěných kontejnerů zastavena a odebrat. Neodstraňujte kontejneru bitové kopie. *Azure hlas front* bitové kopie se nahraje instanci Azure Container registru v dalším kurzu.
+Teď, když ověřila funkčnost aplikace hello spuštěných kontejnerů můžete zastavit a odebrat. Neodstraňujte hello kontejneru Image. Hello *azure hlas front* bitové kopie je instance nahrané tooan Azure kontejneru registru v dalším kurzu hello.
 
-Spusťte následující příkaz k zastavení spuštěných kontejnerů.
+Spusťte hello následující toostop hello spuštěných kontejnerů.
 
 ```bash
 docker-compose -f ./azure-voting-app-redis/docker-compose.yml stop
 ```
 
-Odstranění zastaven kontejnerů pomocí následujícího příkazu.
+Odstranění kontejnerů hello zastavena s hello následující příkaz.
 
 ```bash
 docker-compose -f ./azure-voting-app-redis/docker-compose.yml rm
 ```
 
-Při dokončení máte kontejneru bitovou kopii, která obsahuje aplikaci Azure hlas.
+Při dokončení máte kontejneru bitovou kopii, která obsahuje aplikaci Azure hlas hello.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu aplikace byla testována a vytvořit kontejner bitových kopií pro aplikaci. Dokončili jste následující kroky:
+V tomto kurzu se testoval aplikace a bitové kopie kontejneru pro aplikace hello. byly dokončeny Hello následující kroky:
 
 > [!div class="checklist"]
-> * Klonování zdroje aplikace z GitHubu  
+> * Klonování zdroj aplikace hello z Githubu  
 > * Vytvořené bitové kopie kontejneru z zdroj aplikace
-> * Testování aplikace v místním prostředí Docker
+> * Otestované hello aplikace v místním prostředí Docker
 
-Přejděte k dalšímu kurzu, ve kterém se seznámíte s ukládáním imagí kontejnerů ve službě Azure Container Registry.
+Posunutí další kurz toolearn toohello o ukládání bitových kopií kontejneru v registru kontejneru služby Azure.
 
 > [!div class="nextstepaction"]
-> [Nahrávání imagí do služby Azure Container Registry](./container-service-tutorial-kubernetes-prepare-acr.md)
+> [Push bitové kopie tooAzure registru kontejneru](./container-service-tutorial-kubernetes-prepare-acr.md)

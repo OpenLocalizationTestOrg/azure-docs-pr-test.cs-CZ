@@ -1,6 +1,6 @@
 ---
 title: "Konfigurovat bránu VPN: portál classic: Azure | Microsoft Docs"
-description: "Tento článek vás provede konfiguraci virtuální sítě VPN gateway a změna brány směrování typ sítě VPN. Tento postup platí pro model nasazení classic a portálu classic."
+description: "Tento článek vás provede konfiguraci virtuální sítě VPN gateway a změna brány směrování typ sítě VPN. Tento postup platí toohello nasazení classic modelu a hello portálu classic."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,120 +15,120 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2017
 ms.author: cherylmc
-ms.openlocfilehash: 2ea4e6bb86b1ba6f7b501b193d0713d3901457af
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 00d2fa18bab6eb24b33ddb18113f2a557db638d8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-a-vpn-gateway-in-the-classic-portal"></a>Konfigurovat bránu VPN na portálu classic 
-Pokud chcete vytvořit zabezpečený mezi různými místy připojení mezi Azure a vaše místní umístění, budete muset vytvořit bránu virtuální sítě. Brána sítě VPN je konkrétní typ brány virtuální sítě. V modelu nasazení classic, brána sítě VPN může být jeden ze dvou typů směrování sítě VPN: statické nebo dynamické. Typ sítě VPN, který zvolíte, závisí na váš plán návrhu sítě i místní zařízení VPN, které chcete použít. Další informace o zařízeních VPN najdete v tématu [o zařízeních VPN](vpn-gateway-about-vpn-devices.md).
+# <a name="configure-a-vpn-gateway-in-hello-classic-portal"></a>Konfigurovat bránu VPN portálu classic hello 
+Pokud chcete, aby toocreate zabezpečené mezi různými místy připojení mezi Azure a vaše místní umístění, je třeba toocreate bránu virtuální sítě. Brána sítě VPN je konkrétní typ brány virtuální sítě. V modelu nasazení classic hello brány VPN může být jeden ze dvou typů směrování sítě VPN: statické nebo dynamické. Hello typ sítě VPN, který zvolíte, závisí na vaší plánování návrhu sítě i zařízení VPN místní hello chcete toouse. Další informace o zařízeních VPN najdete v tématu [o zařízeních VPN](vpn-gateway-about-vpn-devices.md).
 
 **O modelech nasazení Azure**
 
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="configuration-overview"></a>Přehled konfigurace
-Následující postup vás provede procesem konfigurace vaší brány sítě VPN na portálu classic. Tento postup platí pro brány pro virtuální sítě, které byly vytvořené pomocí modelu nasazení classic. Ne všechny nastavení konfigurace pro brány v současné době jsou k dispozici na portálu Azure. Když jsou, vytvoříme novou sadu pokynů, které se vztahují k portálu Azure.
+Hello následující postup vás provede procesem konfigurace vaší brány sítě VPN v portálu classic hello. Tento postup platí toogateways pro virtuální sítě, které byly vytvořené pomocí modelu nasazení classic hello. Ne všechny hello nastavení konfigurace pro brány v současné době jsou k dispozici v hello portálu Azure. Když jsou, vytvoříme novou sadu pokynů, které se vztahují toohello portálu Azure.
 
 ### <a name="before-you-begin"></a>Než začnete
-Než začnete konfigurovat bránu, musíte nejprve vytvořit virtuální síť. Pokyny k vytvoření virtuální sítě pro připojení mezi různými místy, najdete v části [konfigurace virtuální sítě pomocí připojení site-to-site VPN](vpn-gateway-site-to-site-create.md), nebo [konfigurace virtuální sítě pomocí připojení VPN point-to-site](vpn-gateway-point-to-site-create.md). Pak použijte následující kroky konfigurace brány sítě VPN a shromáždit informace, které je nutné nakonfigurovat zařízení VPN. 
+Než začnete konfigurovat bránu, musíte nejprve toocreate vaší virtuální sítě. Kroky toocreate virtuální sítě pro připojení mezi různými místy, najdete v části [konfigurace virtuální sítě pomocí připojení site-to-site VPN](vpn-gateway-site-to-site-create.md), nebo [konfigurace virtuální sítě pomocí připojení VPN point-to-site](vpn-gateway-point-to-site-create.md). Pak použijte následující kroky tooconfigure hello VPN gateway hello a shromažďovat hello informace, které budete potřebovat tooconfigure zařízení VPN. 
 
-Pokud již máte bránu VPN a chcete změnit typ směrování sítě VPN, najdete v článku [jak změnit typ směrování sítě VPN pro bránu](#how-to-change-the-vpn-routing-type-for-your-gateway).
+Pokud již máte bránu VPN a chcete toochange hello typ směrování sítě VPN, přečtěte si téma [jak toochange hello směrování typ sítě VPN pro bránu](#how-to-change-the-vpn-routing-type-for-your-gateway).
 
 ## <a name="create-a-vpn-gateway"></a>Vytvořit bránu VPN
-1. V [portál Azure classic](https://manage.windowsazure.com)na **sítě** ověřte, že je u virtuální sítě ve sloupci Stav **vytvořená**.
-2. V **název** sloupce, klikněte na název virtuální sítě.
-3. Na **řídicí panel** stránky, Všimněte si, že tato virtuální síť nemá brána ještě nakonfigurovaná. Tento stav se zobrazí, jak projít kroky konfigurace vaší brány.
+1. V hello [portál Azure classic](https://manage.windowsazure.com), na hello **sítě** ověřte, že ve sloupci Stav hello pro vaši virtuální síť je **vytvořená**.
+2. V hello **název** sloupce, klikněte na název hello virtuální sítě.
+3. Na hello **řídicí panel** stránky, Všimněte si, že tato virtuální síť nemá brána ještě nakonfigurovaná. Tento stav se zobrazí, jak projít kroky tooconfigure hello bránu.
 
 ![Brána nebyla vytvořena](./media/vpn-gateway-configure-vpn-gateway-mp/IC717025.png)
 
-Potom v dolní části stránky klikněte na tlačítko **vytvořit bránu**. Můžete vybrat, zda *statické směrování* nebo *dynamické směrování*. Typ směrování sítě VPN, který jste vybrali, závisí na několika faktorech. Například co podporuje vaše zařízení VPN a jestli potřebujete pro podporu připojení point-to-site. Zkontrolujte [o zařízeních VPN pro připojení k virtuální síti](vpn-gateway-about-vpn-devices.md) ověření směrování typ sítě VPN, které potřebujete. Po vytvoření brány, nemůžete změnit mezi typy směrování brány VPN bez odstranit a znovu vytvořit bránu. Když v systému vás vyzve k potvrzení, že chcete bránu vytvořit, klikněte na tlačítko **Ano**.
+V dalším kroku v hello dolní části stránky hello, klikněte na položku **vytvořit bránu**. Můžete vybrat, zda *statické směrování* nebo *dynamické směrování*. Hello směrování typ sítě VPN, kterou vyberete, závisí na několika faktorech. Například co podporuje vaše zařízení VPN a jestli je potřeba toosupport připojení point-to-site. Zkontrolujte [o zařízeních VPN pro připojení k virtuální síti](vpn-gateway-about-vpn-devices.md) tooverify hello směrování typ sítě VPN, které potřebujete. Po vytvoření brány hello nemůžete změnit mezi typy směrování brány VPN bez odstranit a znovu vytvořit bránu hello. Když hello systém zobrazí výzvu tooconfirm, který chcete hello bránu vytvořit, klikněte na tlačítko **Ano**.
 
 ![Typ směrování brány sítě VPN](./media/vpn-gateway-configure-vpn-gateway-mp/IC717026.png)
 
-Při vytváření je bránu, Všimněte si obrázek brány na stránce se změní na žlutý a uvádí *vytváření brány*. To může trvat až 45 minut pro vytvoření brány. Počkejte, dokud brány dokončení, než budete pokračovat dál s jiným nastavením konfigurace.
+Při vytváření je bránu, Všimněte si hello brány obrázku na stránce hello změny tooyellow a uvádí *vytváření brány*. To může trvat až minut too45 toocreate hello brány. Počkejte, dokud hello brány dokončení, než budete pokračovat dál s jiným nastavením konfigurace.
 
 ![Vytvoření brány](./media/vpn-gateway-configure-vpn-gateway-mp/IC717027.png)
 
-Když změny brány *připojení*, můžete shromáždit informace budete potřebovat pro vaše zařízení VPN.
+Když příliš hello změny brány*připojení*, můžete shromáždit informace hello budete potřebovat pro vaše zařízení VPN.
 
 ![Připojení brány](./media/vpn-gateway-configure-vpn-gateway-mp/IC717028.png)
 
 ## <a name="site-to-site-connections"></a>Připojení typu Site-to-Site
 
 ### <a name="step-1-gather-information-for-your-vpn-device-configuration"></a>Krok 1. Shromážděte informace pro konfiguraci zařízení VPN
-Pokud vytváříte připojení Site-to-Site, po vytvoření brány, shromážděte informace o konfiguraci zařízení VPN. Tyto informace se nachází na **řídicí panel** stránky pro vaši virtuální síť:
+Po vytvoření brány hello při vytváření připojení Site-to-Site, shromážděte informace o konfiguraci zařízení VPN. Tyto informace se nachází na hello **řídicí panel** stránky pro vaši virtuální síť:
 
-1. **IP adresa brány -** IP adresu můžete najít na **řídicí panel** stránky. Nebudete moci zobrazit jeho až po dokončení vytvoření brány.
-2. **Sdílený klíč -** klikněte na tlačítko **Správa klíče** v dolní části obrazovky. Klikněte na ikonu vedle klíč zkopírujte jej do schránky a potom vložte a uložte klíč. Toto tlačítko je funkční pouze po jednom tunel S2S VPN. Pokud máte více tunelů S2S VPN, použijte *získat virtuální sítě sdílený klíč brány* rozhraní API nebo rutiny prostředí PowerShell.
+1. **IP adresa brány -** hello IP adresu můžete najít na hello **řídicí panel** stránky. Nebudete moct toosee se až po vaší brány dokončí vytváření.
+2. **Sdílený klíč -** klikněte na tlačítko **Správa klíče** v hello dolní části obrazovky hello. Klikněte na tlačítko hello ikonu další toohello klíče toocopy ho tooyour schránky a vložte a uložit klíč hello. Toto tlačítko je funkční pouze po jednom tunel S2S VPN. Pokud máte více tunelů S2S VPN, použijte hello *získat virtuální sítě sdílený klíč brány* rozhraní API nebo rutiny prostředí PowerShell.
 
 ![Spravovat klíč](./media/vpn-gateway-configure-vpn-gateway-mp/IC717029.png)
 
 ### <a name="step-2--configure-your-vpn-device"></a>Krok 2.  Konfigurace zařízení VPN
-Připojení Site-to-Site k místní síti vyžadují zařízení VPN. Protože neposkytujeme kroky konfigurace pro všechna zařízení VPN, můžete najít užitečné informace v následujících odkazech:
+Připojení Site-to-Site tooan do místní sítě vyžaduje zařízení VPN. Když jsme neposkytují kroky konfigurace pro všechna zařízení VPN, možná v hello následující odkazy, které jsou užitečné informace hello:
 
 - Další informace o kompatibilních zařízeních VPN najdete v tématu s popisem [zařízení VPN](vpn-gateway-about-vpn-devices.md). 
-- Odkazy na nastavení konfigurace zařízení najdete v popisu [ověřených zařízení VPN](vpn-gateway-about-vpn-devices.md#devicetable). Při poskytování těchto odkazů se snažíme maximálně vyhovět. Vždycky je nejlepší obrátit se na výrobce zařízení a vyžádat si nejnovější informace o konfiguraci.
+- Nastavení konfigurace toodevice odkazy, najdete v části [ověřit zařízení VPN](vpn-gateway-about-vpn-devices.md#devicetable). Při poskytování těchto odkazů se snažíme maximálně vyhovět. Vždycky je nejlepší toocheck se na výrobce zařízení hello nejnovější informace o konfiguraci.
 - Informace o úpravách ukázek konfigurace zařízení najdete v tématu popisujícím [úpravy ukázek](vpn-gateway-about-vpn-devices.md#editing).
 - Parametry protokolu IPsec/IKE najdete v popisu [parametrů](vpn-gateway-about-vpn-devices.md#ipsec).
-- Před konfigurací zařízení VPN zkontrolujte [známé problémy s kompatibilitou zařízení](vpn-gateway-about-vpn-devices.md#known) pro zařízení VPN, které chcete použít.
+- Před konfigurací zařízení VPN, zkontrolujte pro žádné [známé problémy s kompatibilitou zařízení](vpn-gateway-about-vpn-devices.md#known) pro hello zařízení VPN, které chcete toouse.
 
-Při konfiguraci zařízení VPN budete potřebovat následující položky:
+Při konfiguraci zařízení VPN, budete potřebovat hello následující položky:
 
-- Veřejnou IP adresu vaší brány virtuální sítě. Najdete ji tak, že přejdete do okna **Přehled** pro vaši virtuální síť.
-- Sdílený klíč. Jedná se o stejný sdílený klíč, který zadáváte při vytváření připojení VPN Site-to-Site. V našich ukázkách používáme velmi základní sdílený klíč. Pro použití byste měli generovat složitější klíč.
+- Hello veřejnou IP adresu brány virtuální sítě. To můžete najít ve budete toohello **přehled** okno pro vaši virtuální síť.
+- Sdílený klíč. To je hello stejný sdílený klíč, který zadáte při vytváření připojení Site-to-Site VPN. V našich ukázkách používáme velmi základní sdílený klíč. Složitější klíče toouse měl generovat.
 
-Po konfiguraci zařízení VPN můžete zobrazit vaše aktualizované informace připojení na stránce řídicího panelu pro vaši virtuální síť.
+Po hello zařízení VPN je nakonfigurovaný, můžete zobrazit vaše aktualizované informace připojení na stránce řídicího panelu hello sítě vnet.
 
 ### <a name="step-3-verify-your-local-network-ranges-and-vpn-gateway-ip-address"></a>Krok 3. Ověřte rozsahy adres místní sítě a IP adresu brány VPN
 #### <a name="verify-your-vpn-gateway-ip-address"></a>Ověřte, IP adresa brány VPN
-Pro bránu pro připojení správně musí být IP adresu pro vaše zařízení VPN správně nakonfigurován pro místní síť, kterou jste zadali pro konfiguraci mezi různými místy. To je obvykle konfigurovaná během procesu konfigurace site-to-site. Pokud jste dřív použili tento místní sítě s jiného zařízení nebo došlo ke změně IP adresu pro tuto místní síť, ale upravte nastavení a zadejte správnou adresu IP brány.
+Pro tooconnect brány správně, hello IP adresu pro vaše zařízení VPN musí být správně nakonfigurován pro hello místní síť, kterou jste zadali pro konfiguraci mezi různými místy. To je obvykle konfigurovaná během procesu konfigurace site-to-site hello. Pokud jste dřív použili tento místní sítě s jiného zařízení nebo došlo ke změně hello IP adresu pro tuto místní síť, ale upravte hello nastavení toospecify hello správná IP adresa brány.
 
-1. Chcete-li ověřit vaše IP adresa brány, klikněte na tlačítko **sítě** v levém podokně portálu a potom vyberte **místní sítě** v horní části stránky. Zobrazí adresu brány VPN pro každou místní síť, kterou jste vytvořili. Chcete-li upravit IP adresu, vyberte virtuální sítě a klikněte na **upravit** v dolní části stránky.
-2. Na **zadejte podrobnosti o vaší místní síti** stránky, upravte IP adresu a klikněte na šipku další v dolní části stránky.
-3. Na **zadejte adresní prostor** klikněte na značku zaškrtnutí vpravo dole uložte nastavení.
+1. tooverify IP adresu brány, klikněte na tlačítko **sítě** hello levém podokně portálu a pak vyberte **místní sítě** hello horní části stránky hello. Uvidíte hello adresu brány sítě VPN pro každou místní síť, kterou jste vytvořili. tooedit hello IP adresu, vyberte hello virtuální sítě a klikněte na **upravit** v hello dolní části stránky hello.
+2. Na hello **zadejte podrobnosti o vaší místní síti** stránky, upravit hello IP adresu a potom klikněte na šipku další hello v hello dolní části stránky hello.
+3. Na hello **zadejte hello adresní prostor** klikněte na značku zaškrtnutí hello v hello nižší správné toosave nastavení.
 
-#### <a name="verify-the-address-ranges-for-your-local-networks"></a>Ověřte rozsahy adres pro místní sítě
-Pro správný provoz procházet skrz bránu na vaše místní umístění budete muset ověřte, zda je zadán každý rozsah IP adres. Každý rozsah musí být uvedené v vaší Azure **místní sítě** konfigurace. V závislosti na konfiguraci sítě vaše místní umístění může to být poněkud velkých úloh. Provoz, který je vázaný IP adresu, která je obsažena v seznamu rozsahů odešle přes bránu virtuální sítě VPN. Rozsahy, které uvedete v seznamu nemusí být rozsahy privátních, i když se chcete ověřit, že místní konfigurací může přijímat příchozí provoz.
+#### <a name="verify-hello-address-ranges-for-your-local-networks"></a>Ověřte hello rozsahy adres pro místní sítě
+Pro správný provoz tooflow hello prostřednictvím hello brány tooyour místní umístění budete potřebovat tooverify, zda je zadán každý rozsah IP adres. Každý rozsah musí být uvedené v vaší Azure **místní sítě** konfigurace. V závislosti na konfiguraci sítě hello vaše místní umístění může to být poněkud velkých úloh. Provoz, který je vázaný IP adresu, která je obsažena v hello uvedené rozsahy budou odeslány prostřednictvím brány VPN hello virtuální sítě. Hello rozsahy, uvedete v seznamu nemají rozsahy privátních toobe, i když budete chtít tooverify, který může přijímat konfiguraci místní hello příchozí přenosy.
 
-Můžete přidat nebo upravit nastavení pro místní síť, použijte následující postup:
+hello rozsahy tooadd nebo upravit v místní síti, použijte hello následující kroky:
 
-1. Chcete-li upravit rozsahy IP adres pro místní síť, klikněte na tlačítko **sítě** v levém podokně portálu a potom vyberte **místní sítě** v horní části stránky. Na portálu, je nejjednodušší způsob, jak zobrazit rozsahy, které jste uvedli v **upravit** stránky. Informace o vaší rozsahy, vyberte virtuální sítě a klikněte na **upravit** v dolní části stránky.
-2. Na **zadejte podrobnosti o vaší místní síti** stránky, nemusíte nic měnit. Klikněte na šipku další v dolní části stránky.
-3. Na **zadejte adresní prostor** vyberte změny adresního prostoru vaší sítě. Klikněte na značku zaškrtnutí uložte konfiguraci.
+1. rozsahy tooedit hello IP adres pro místní síť, klikněte na tlačítko **sítě** hello levém podokně portálu a pak vyberte **místní sítě** hello horní části stránky hello. Hello portálu, je hello nejjednodušší způsob, jak tooview hello rozsahy, které jste uvedli v hello **upravit** stránky. toosee rozsahy, vyberte hello virtuální sítě a klikněte na tlačítko **upravit** v hello dolní části stránky hello.
+2. Na hello **zadejte podrobnosti o vaší místní síti** stránky, nemusíte nic měnit. Klikněte na šipku další hello v hello dolní části stránky hello.
+3. Na hello **zadejte hello adresní prostor** vyberte změny adresního prostoru vaší sítě. Klikněte na tlačítko zaškrtnutí toosave hello konfiguraci.
 
-## <a name="how-to-view-gateway-traffic"></a>Postup zobrazení provoz brány
+## <a name="how-tooview-gateway-traffic"></a>Jak přenosy tooview brány
 Můžete zobrazit brány a brány provoz z vaší virtuální sítě **řídicí panel** stránky.
 
-Na **řídicí panel** stránky můžete zobrazit následující:
+Na hello **řídicí panel** stránky můžete zobrazit následující hello:
 
-* Množství dat, která je předávaných mezi bránu, data a data.
-* Názvy serverů DNS, které jsou určené pro vaši virtuální síť.
-* Připojení mezi bránou a vaše zařízení VPN.
-* Sdílený klíč, který slouží ke konfiguraci brány připojení k zařízení VPN.
+* Hello množství dat, která je předávaných mezi bránu, data a data.
+* názvy Hello hello serverů DNS, které jsou určené pro vaši virtuální síť.
+* Hello připojení mezi bránou a vaše zařízení VPN.
+* Hello sdílený klíč, který je použité tooconfigure zařízení brány tooyour připojení VPN.
 
-## <a name="how-to-change-the-vpn-routing-type-for-your-gateway"></a>Postup při změně typu směrování VPN pro bránu
-Protože některé konfigurace připojení jsou dostupná jenom pro některé typy směrování brány, můžete zjistit, že budete muset změnit bránu VPN směrování typ existující bránu VPN. Například můžete přidat do již existující připojení site-to-site, který má statická brána připojení point-to-site. Připojení point-to-site vyžadují dynamické brány. To znamená, konfigurace připojení P2S, budete muset změnit bránu směrování typ sítě VPN ze statické na dynamický.
+## <a name="how-toochange-hello-vpn-routing-type-for-your-gateway"></a>Jak toochange hello směrování typ sítě VPN pro bránu
+Protože některé konfigurace připojení jsou dostupná jenom pro některé typy směrování brány, můžete zjistit, je nutné, aby toochange hello brány VPN směrování typ existující bránu VPN. Například můžete tooadd připojení point-to-site tooan stávající site-to-site připojení, které má statické bránu. Připojení point-to-site vyžadují dynamické brány. To znamená tooconfigure připojení P2S, máte toochange bránu směrování typ sítě VPN ze statické toodynamic.
 
-Pokud potřebujete změnit brány směrování typ sítě VPN, budete odstraňte existující bránu a poté vytvořit novou bránu s novým typem směrování. Nemusíte odstranit celý virtuální síť, chcete-li změnit typ směrování brány.
+Pokud potřebujete toochange brány směrování typ sítě VPN, budete odstranit existující bránu hello a poté vytvořit novou bránu s hello nový typ směrování. Nepotřebujete toodelete hello celý toochange hello typ brány virtuální sítě směrování.
 
-Před změnou bránu směrování typ sítě VPN, nezapomeňte ověřit, jestli vaše zařízení VPN podporuje směrování typ, který chcete použít. Stáhněte si nový směrování ukázky konfigurace a zkontrolujte požadavky na zařízení VPN najdete v tématu [o zařízeních VPN pro připojení k virtuální síti](vpn-gateway-about-vpn-devices.md).
+Před změnou bránu směrování typ sítě VPN, být jisti tooverify, že vaše zařízení VPN podporuje hello typ směrování, které chcete toouse. Ukázky nové konfigurace směrování toodownload a zkontrolujte požadavky na zařízení VPN, najdete v části [o zařízeních VPN pro připojení k virtuální síti](vpn-gateway-about-vpn-devices.md).
 
 > [!IMPORTANT]
-> Pokud odstraníte bránu VPN virtuální sítě, virtuální IP adresy přiřazené k bráně vydání. Při opětovném vytvoření brány, je k němu přiřazen nový virtuální IP adresy.
+> Pokud odstraníte bránu virtuální sítě VPN, vydání hello VIP přiřazené toohello brány. Pokud je znovu vytvořit bránu hello, nový virtuální IP adresy přiřazené tooit.
 > 
 > 
 
-1. **Odstraňte existující bránu VPN.**
+1. **Odstraňte existující bránu VPN hello.**
    
-    Na **řídicí panel** pro vaši virtuální síť, přejděte do dolní části stránky a klikněte na tlačítko **odstranit bránu**. Počkejte, než pro oznámení, že brány byla odstraněna. Jakmile se zobrazí oznámení na obrazovce odstraněný bránu, můžete vytvořit novou bránu.
+    Na hello **řídicí panel** pro vaši virtuální síť, přejděte toohello dolní části stránky hello a klikněte na tlačítko **odstranit bránu**. Počkejte, než hello oznámení, že hello brány byla odstraněna. Jakmile se zobrazí oznámení hello na úvodní obrazovka odstraněný bránu, můžete vytvořit novou bránu.
 2. **Vytvořte novou bránu VPN.**
    
-    Vytvořit novou bránu pomocí postupu v horní části stránky: [vytvořit bránu VPN](#create-a-vpn-gateway).
+    Pomocí postupu hello hello horní části stránky toocreate hello novou bránu: [vytvořit bránu VPN](#create-a-vpn-gateway).
 
 ## <a name="next-steps"></a>Další kroky
-Můžete přidávat virtuální počítače do svojí virtuální sítě. Viz [Vytvoření vlastního virtuálního počítače](../virtual-machines/windows/classic/createportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Můžete přidat virtuální počítače tooyour virtuální sítě. V tématu [jak toocreate vlastního virtuálního počítače](../virtual-machines/windows/classic/createportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-Pokud chcete provést konfiguraci připojení point-to-site VPN, přečtěte si téma [konfigurace připojení typu point-to-site VPN](vpn-gateway-point-to-site-create.md).
+Pokud chcete připojení tooconfigure point-to-site VPN, najdete v části [konfigurace připojení typu point-to-site VPN](vpn-gateway-point-to-site-create.md).
 

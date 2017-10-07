@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace ke službě Azure Time Series Insights – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se spouštět analýzy IoT v cloudu s plně spravovaným zpracováním událostí. Analyzujte data v reálném čase z aplikací, senzorů, zařízení a dalších zdrojů."
+title: "aaaAzure čas řady přehled dokumentace - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Zjistěte, jak cloudové toorun IoT analýzy v hello s zpracování událostí plně spravovaná. Analyzujte data v reálném čase z aplikací, senzorů, zařízení a dalších zdrojů."
 services: time-series-insights
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/13/2017
 ms.author: carolz
-ms.openlocfilehash: d22a3f0484da78d03dbe8411e74eb408185b1f30
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2301d20aa2fb685279e2efc657ffcd41571af0c0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-time-series-insights-documentation"></a>Dokumentace ke službě Azure Time Series Insights 
  
-Nastavení prostředí služby Time Series Insights, prozkoumání a analýza dat časové řady řešení IoT nebo připojených věcí. Dokumentace obsahuje požadavky, návody, odkazy na rozhraní API a další dokumentaci, která vám pomůže začít práci v řádu minut. 
+Zjistěte, jak tooset časové řady Statistika prostředí zkoumat a analyzovat data řady doba řešení IoT nebo připojené věcí. Dokumentace sdílí hello požadavků, jak, odkazuje rozhraní API a další dokumentaci toohelp tooget můžete spustit v minutách. 
  
 <ul class="panelContent cardsFTitle"> 
     <li> 

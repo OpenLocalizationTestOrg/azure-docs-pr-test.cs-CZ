@@ -1,6 +1,6 @@
 ---
-title: "Vytvořte základní virtuální počítač s Linuxem v Azure pomocí Ansible | Microsoft Docs"
-description: "Další informace o použití Ansible k vytváření a správě základní virtuální počítač s Linuxem v Azure"
+title: "aaaUse Ansible toocreate základní virtuální počítač s Linuxem v Azure | Microsoft Docs"
+description: "Zjistěte, jak toouse Ansible toocreate a spravovat základní virtuální počítač s Linuxem v Azure"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -15,35 +15,35 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2017
 ms.author: iainfou
-ms.openlocfilehash: 526f3522334450564500c4ba0e401a683cae55f6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ffe278b3f846924ff9c4d026120565146f951152
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-basic-virtual-machine-in-azure-with-ansible"></a>Vytvoření základního virtuálního počítače v Azure pomocí Ansible
-Ansible umožňuje automatizovat nasazení a konfigurace prostředků ve vašem prostředí. Ansible můžete použít ke správě virtuálních počítačů (VM) v Azure, stejně jako jiný prostředek. Tento článek ukazuje, jak vytvořit základní virtuální počítač s Ansible. Můžete si také přečíst postup [vytvořit úplný prostředí virtuálních počítačů s Ansible](ansible-create-complete-vm.md).
+Ansible umožňuje tooautomate hello nasazení a konfigurace prostředků ve vašem prostředí. Můžete použít Ansible toomanage virtuálních počítačů (VM) ve službě Azure, hello stejné jako jiný prostředek. Tento článek ukazuje, jak toocreate základní virtuální počítač s Ansible. Můžete si také přečíst jak příliš[vytvořit úplný prostředí virtuálních počítačů s Ansible](ansible-create-complete-vm.md).
 
 
 ## <a name="prerequisites"></a>Požadavky
-Ke správě prostředků Azure s Ansible, budete potřebovat následující:
+toomanage Azure prostředky s Ansible, je nutné hello následující:
 
-- Ansible a moduly Azure Python SDK v systému hostitele.
+- Ansible a hello moduly Azure Python SDK v systému hostitele.
     - Nainstalujte Ansible [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts), [CentOS 7.3](ansible-install-configure.md#centos-73), a [SLES 12.2 SP2](ansible-install-configure.md#sles-122-sp2)
-- Přihlašovací údaje Azure a Ansible nakonfigurovat jejich použití.
+- Přihlašovací údaje Azure a Ansible nakonfigurované toouse je.
     - [Vytvořit přihlašovací údaje Azure a nakonfigurovat Ansible](ansible-install-configure.md#create-azure-credentials)
-- Azure CLI verze verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. 
-    - Pokud potřebujete upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). Můžete také použít [cloudové prostředí](/azure/cloud-shell/quickstart) z prohlížeče.
+- Azure CLI verze verze 2.0.4 nebo novější. Spustit `az --version` toofind hello verze. 
+    - Pokud potřebujete tooupgrade, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli). Můžete také použít [cloudové prostředí](/azure/cloud-shell/quickstart) z prohlížeče.
 
 
 ## <a name="create-supporting-azure-resources"></a>Vytvoření Podpora prostředků Azure
-V tomto příkladu vytvoříme sadu runbook, která nasadí virtuální počítač do existující infrastruktury. Nejprve vytvořte skupinu prostředků s [vytvořit skupinu az](/cli/azure/vm#create). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v *eastus* umístění:
+V tomto příkladu vytvoříme sadu runbook, která nasadí virtuální počítač do existující infrastruktury. Nejprve vytvořte skupinu prostředků s [vytvořit skupinu az](/cli/azure/vm#create). Hello následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v hello *eastus* umístění:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Vytvoření virtuální sítě pro virtuální počítač s [vytvoření sítě vnet az](/cli/azure/network/vnet#create). Následující příklad vytvoří virtuální síť s názvem *myVnet* a podsíť s názvem *mySubnet*:
+Vytvoření virtuální sítě pro virtuální počítač s [vytvoření sítě vnet az](/cli/azure/network/vnet#create). Hello následující příklad vytvoří virtuální síť s názvem *myVnet* a podsíť s názvem *mySubnet*:
 
 ```azurecli
 az network vnet create \
@@ -56,7 +56,7 @@ az network vnet create \
 
 
 ## <a name="create-and-run-ansible-playbook"></a>Vytvoření a spuštění Ansible playbook
-Vytvoření Ansible playbook s názvem **azure_create_vm.yml** a vložte následující obsah. Tento příklad vytvoří jeden virtuální počítač a nakonfiguruje pověření SSH. Zadejte svoje vlastní veřejného klíče data v *key_data* spárujte následujícím způsobem:
+Vytvoření Ansible playbook s názvem **azure_create_vm.yml** a hello vložte následující obsah. Tento příklad vytvoří jeden virtuální počítač a nakonfiguruje pověření SSH. Zadejte svoje vlastní data veřejného klíče v hello *key_data* spárujte následujícím způsobem:
 
 ```yaml
 - name: Create Azure VM
@@ -80,13 +80,13 @@ Vytvoření Ansible playbook s názvem **azure_create_vm.yml** a vložte násled
         version: latest
 ```
 
-Pokud chcete vytvořit virtuální počítač s Ansible, spusťte playbook následujícím způsobem:
+toocreate hello virtuálního počítače s Ansible, spusťte hello playbook následujícím způsobem:
 
 ```bash
 ansible-playbook azure_create_vm.yml
 ```
 
-Výstup bude vypadat podobně jako v následujícím příkladu, který ukazuje, že virtuální počítač se úspěšně vytvořil:
+výstup Hello vypadá podobně jako toohello následující příklad, který zobrazuje hello že virtuálního počítače byla úspěšně vytvořena:
 
 ```bash
 PLAY [Create Azure VM] ****************************************************
@@ -103,4 +103,4 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0
 
 
 ## <a name="next-steps"></a>Další kroky
-Tento příklad vytvoří virtuální počítač v existující skupinu prostředků a virtuální síť už nasazená. Podrobnější příklad o tom, jak použít Ansible k vytvoření doprovodné materiály, jako je například virtuální sítě a pravidel skupin zabezpečení sítě najdete v tématu [vytvořit úplný prostředí virtuálních počítačů s Ansible](ansible-create-complete-vm.md).
+Tento příklad vytvoří virtuální počítač v existující skupinu prostředků a virtuální síť už nasazená. Podrobnější příklad, jak toouse Ansible toocreate podpůrné prostředkům, například virtuální sítě a pravidel skupin zabezpečení sítě najdete v části [vytvořit úplný prostředí virtuálních počítačů s Ansible](ansible-create-complete-vm.md).

@@ -1,5 +1,5 @@
 ---
-title: "Řešení potíží s hybridní Azure Active Directory nižší úrovně zařízení připojená k | Microsoft Docs"
+title: "nižší úrovně zařízení připojená k hybridní aaaTroubleshooting Azure Active Directory | Microsoft Docs"
 description: "Řešení potíží s hybridní Azure Active Directory připojené zařízení nižší úrovně."
 services: active-directory
 documentationcenter: 
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 715fca79e488ae3759926181c244a42026f4a554
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: edd56b89579fac6b427732902284ad9c568b87b4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Nižší úrovně zařízení připojená k řešení potíží s hybridní Azure Active Directory 
 
-Toto téma se vztahuje pouze na následujících zařízeních: 
+Toto téma se vztahuje pouze toohello následující zařízení: 
 
 - Windows 7 
 - Windows 8.1 
@@ -33,7 +33,7 @@ Toto téma se vztahuje pouze na následujících zařízeních:
 
 Pro Windows 10 nebo Windows Server 2016, najdete v části [hybridní Poradce při potížích s Azure Active Directory připojené zařízení s Windows 10 a Windows Server 2016](device-management-troubleshoot-hybrid-join-windows-current.md).
 
-Toto téma předpokládá, že máte [nakonfigurované hybridní Azure Active Directory zařízení připojená k](device-management-hybrid-azuread-joined-devices-setup.md) k podporují následující scénáře:
+Toto téma předpokládá, že máte [nakonfigurované hybridní Azure Active Directory zařízení připojená k](device-management-hybrid-azuread-joined-devices-setup.md) toosupport hello následující scénáře:
 
 - Podmíněný přístup využívající zařízení
 
@@ -45,35 +45,35 @@ Toto téma předpokládá, že máte [nakonfigurované hybridní Azure Active Di
 
 
 
-Toto téma poskytuje pokyny o tom, jak vyřešit potenciální problémy při řešení potíží.  
+Toto téma poskytuje pokyny o tom, jak tooresolve potenciální problémy při řešení potíží.  
 
 **Co byste měli vědět:** 
 
-- Maximální počet zařízení na uživatele je zaměřená na zařízení. Například pokud *jdoe* a *jharnett* Přihlaste se do zařízení, samostatné registrace (DeviceID) se vytvoří pro každou z nich **uživatele** informace o kartě.  
+- maximální počet zařízení na uživatele Hello je zaměřená na zařízení. Například pokud *jdoe* a *jharnett* přihlášení tooa zařízení samostatných registrací (DeviceID) se vytvoří pro každý z nich v hello **uživatele** informace o kartě.  
 
-- Počáteční registrace / připojení k zařízení, je nakonfigurována se provést k pokusu o přihlášení nebo uzamčení nebo odemčení. Může dojít k 5 minut zpoždění aktivovány úloh služby Plánovač úloh. 
+- Hello počáteční registrace / join zařízení je nakonfigurované tooperform k pokusu o přihlášení nebo zámku a odemknout. Může dojít k 5 minut zpoždění aktivovány úloh služby Plánovač úloh. 
 
-- Přeinstalujte operační systém nebo ruční unregister a zopakujte registraci na Azure AD může vytvořit nové registrace a má za následek více položek na kartě informace uživatele na portálu Azure. 
+- Přeinstalujte hello operačního systému nebo ruční unregister a zopakujte registraci na Azure AD může vytvořit nové registrace a má za následek více položek kartě údaje uživatele hello v hello portálu Azure. 
 
 
-## <a name="step-1-retrieve-the-registration-status"></a>Krok 1: Načíst stav registrace 
+## <a name="step-1-retrieve-hello-registration-status"></a>Krok 1: Načíst stav registrace hello 
 
-**Chcete-li ověřit stav registrace:**  
+**Stav registrace tooverify hello:**  
 
-1. Otevřete příkazový řádek jako správce 
+1. Hello otevřete příkazový řádek jako správce 
 
 2. Typ`"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /i"`
 
-Tento příkaz zobrazí dialogové okno, které vám poskytne další informace o stavu připojení.
+Tento příkaz zobrazí dialogové okno, které vám poskytne další informace o stavu připojení k hello.
 
 ![Připojení k síti na pracovišti pro Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/01.png)
 
 
-## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Krok 2: Vyhodnoťte hybridní stav připojení k Azure AD 
+## <a name="step-2-evaluate-hello-hybrid-azure-ad-join-status"></a>Krok 2: Posouzení stavu připojení k Azure AD hybridní hello 
 
-Pokud připojení k Azure AD hybridní nebyla úspěšná, dialogové okno vám poskytuje podrobnosti o problému, který došlo k chybě.
+Pokud hello hybridní Azure AD join nebyla úspěšná, dialogové okno hello poskytuje podrobnosti o hello problém, který došlo k chybě.
 
-**Nejběžnějším problémům, jsou:**
+**Většina běžných potíží s Hello jsou:**
 
 - Konfigurace služby AD FS nebo služby Azure AD
 
@@ -87,26 +87,26 @@ Pokud připojení k Azure AD hybridní nebyla úspěšná, dialogové okno vám 
 
     ![Připojení k síti na pracovišti pro Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/04.png)
 
-- Služba nereaguje. 
+- Služba Hello neodpovídá 
 
     ![Připojení k síti na pracovišti pro Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/05.png)
 
-Informace o stavu můžete také najít v protokolu událostí v části **aplikace a služby Log\Microsoft-pracovišti**.
+Informace o stavu hello můžete také najít v protokolu událostí hello v části **aplikace a služby Log\Microsoft-pracovišti**.
   
-**Nejběžnější příčiny selhání hybridní Azure AD join jsou:** 
+**Hello nejběžnější příčiny selhání hybridní spojení Azure AD jsou:** 
 
-- Váš počítač není v interní síti organizace nebo síť VPN bez připojení k místní řadič domény AD.
+- Váš počítač není v interní síti organizace hello nebo síť VPN bez připojení tooan místní řadič domény AD.
 
-- Jste přihlášeni k počítači pomocí účtu místního počítače. 
+- Jste přihlášeni tooyour počítači pomocí účtu místního počítače. 
 
 - Problémy s konfigurací služby: 
 
-  - Federační server nakonfigurovaný pro podporu **WIAORMULTIAUTHN**. 
+  - Hello federační server, musí být nakonfigurované toosupport **WIAORMULTIAUTHN**. 
 
-  - Neexistuje žádný objekt spojovací bod služby, který odkazuje na název ověřené domény ve službě Azure AD v doménové struktuře AD, pokud je počítač členem.
+  - Neexistuje žádný objekt spojovací bod služby, který odkazuje tooyour název ověřené domény ve službě Azure AD v doménové struktuře hello AD kde hello počítač patří do.
 
-  - Uživatel byl dosažen maximální počet zařízení. 
+  - Uživatel dosáhl limitu hello zařízení. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Otázky, najdete v článku [nejčastější dotazy ke správě zařízení](device-management-faq.md)  
+Máte dotazy, viz hello [nejčastější dotazy ke správě zařízení](device-management-faq.md)  

@@ -1,6 +1,6 @@
 ---
-title: "Vytvořte profil Traffic Manageru v Azure | Microsoft Docs"
-description: "Tento článek popisuje postup vytvoření profilu Traffic Manageru"
+title: aaaCreate profil Traffic Manageru v Azure | Microsoft Docs
+description: "Tento článek popisuje, jak toocreate profil Traffic Manageru"
 services: traffic-manager
 documentationcenter: 
 author: kumudd
@@ -14,57 +14,57 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: kumud
-ms.openlocfilehash: 3792c9eca3d3a281cc12d241d46fbf5e5bc8e6b6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5cd3d2903552c9a0427da41a73f6f38f6b0afc1d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-traffic-manager-profile"></a>Vytvoření profilu Traffic Manageru
 
-Tento článek popisuje, jak profil s **s prioritou** typ směrování je možné vytvořit trasu uživatelům dva koncové body Azure Web Apps. Pomocí **s prioritou** směrování typu, veškerý provoz se směruje na první koncový bod při druhý se ukládají jako záložní. Uživatelé mohou být v důsledku toho směrovány na druhý koncový bod, pokud první koncový bod se změní na není v pořádku.
+Tento článek popisuje, jak profil s **s prioritou** tooroute koncové body Azure Web Apps tootwo uživatelů lze vytvořit typ směrování. Pomocí hello **s prioritou** směrování typu, veškerý provoz je první koncový bod směrované toohello při hello druhý se ukládají jako záložní. Uživatelé v důsledku toho může být směrované toohello druhý koncový bod, pokud první koncový bod hello se změní na není v pořádku.
 
-V tomto článku jsou přidružené k tomuto nově vytvořený profil služby Traffic Manager dva koncové body vytvořené webové aplikace Azure. Další informace o tom, jak vytvořit webovou aplikaci Azure koncové body, najdete [stránce dokumentace Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/). Můžete přidat libovolný koncový bod, který má název DNS a je dostupný prostřednictvím veřejného Internetu a že jako příklad používáme koncové body Azure Web Apps.
+V tomto článku jsou dva koncové body vytvořené webové aplikace Azure přidružené toothis nově vytvořený profil služby Traffic Manager. Další informace o tom toolearn koncových bodů webové aplikace Azure toocreate, navštivte hello [stránce dokumentace Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/). Můžete přidat libovolný koncový bod, který má název DNS a je dostupný přes hello veřejný internet, a že jako příklad používáme koncové body Azure Web Apps.
 
 ### <a name="create-a-traffic-manager-profile"></a>Vytvoření profilu Traffic Manageru
-1. V prohlížeči se přihlaste k webu [Azure Portal](http://portal.azure.com). Pokud účet nemáte, můžete pro registraci [bezplatnou zkušební verzi jeden měsíc](https://azure.microsoft.com/free/). 
-2. V nabídce **Centrum** klikněte na **Nový** >  **Sítě** > **Zobrazit vše** a pak na profil **Traffic Manager**, otevřete okno **Vytvořit profil Traffic** Manageru, kde klikněte na **Vytvořit**.
-3. Okno **Vytvořit profil Traffic Manageru** vyplňte následovně:
-    1. Do pole **Název** zadejte název profilu. Tento název musí být jedinečný v rámci zóny trafficmanager.net a výsledkem název DNS <name>, trafficmanager.net, který se používá pro přístup k vašeho profilu Traffic Manageru.
-    2. Jakou **Metodu směrování** vyberte **Priorita**.
-    3. V poli **Předplatné** vyberte předplatné, v rámci kterého chcete profil vytvořit.
-    4. V části **Skupina prostředků** vytvořte novou skupinu prostředků, do které chcete profil umístit.
-    5. V poli **Umístění skupiny prostředků** vyberte umístění skupiny prostředků. Toto nastavení se týká umístění skupiny prostředků a nemá žádný vliv na profil Traffic Manageru, který se nasadí globálně.
+1. V prohlížeči přihlásit toohello [portál Azure](http://portal.azure.com). Pokud účet nemáte, můžete pro registraci [bezplatnou zkušební verzi jeden měsíc](https://azure.microsoft.com/free/). 
+2. Na hello **rozbočovače** nabídky, klikněte na tlačítko **nový** > **sítě** > **zobrazit všechny**, klikněte na tlačítko **provoz Správce** profil tooopen hello **profil služby Traffic Manager vytvořit** okno, pak klikněte na tlačítko **vytvořit**.
+3. Na hello **profil služby Traffic Manager vytvořit** okně dokončení následujícím způsobem:
+    1. Do pole **Název** zadejte název profilu. Tento název musí toobe jedinečné v rámci zóny trafficmanager.net hello a výsledkem název DNS hello <name>, trafficmanager.net, což je použité tooaccess vašeho profilu Traffic Manageru.
+    2. V **metoda směrování**, vyberte hello **s prioritou** metody směrování.
+    3. V **předplatné**, vyberte předplatné hello toocreate chcete tento profil v části
+    4. V **skupiny prostředků**, vytvořit nové tooplace skupiny prostředků v tomto profilu.
+    5. V **umístění skupiny prostředků**, vyberte umístění hello hello skupiny prostředků. Toto nastavení odkazuje toohello umístění skupiny prostředků hello a nemá žádný vliv na hello profil Traffic Manageru, která bude nasazena globálně.
     6. Klikněte na možnost **Vytvořit**.
-    7. Po dokončení globálního nasazení profilu Traffic Manageru bude uveden jako jeden z prostředků v příslušné skupině prostředků.
+    7. Po dokončení nasazení globální hello vašeho profilu Traffic Manager je uveden ve skupině příslušných prostředků jako jeden z prostředků hello.
 
     ![Vytvoření profilu Traffic Manageru](./media/traffic-manager-create-profile/Create-traffic-manager-profile.png)
 
 ## <a name="add-traffic-manager-endpoints"></a>Přidat koncové body Traffic Manager
 
-1. V panelu vyhledávání na portálu, vyhledejte **profil služby Traffic Manager** název, který jste vytvořili v předchozí části a klikněte na profil správce provozu ve výsledcích, zobrazené.
-2. V okně **Profil služby Traffic Manager** v části **Nastavení** klikněte na **Koncové body**.
-3. V zobrazeném okně **Koncové body** klikněte na **Přidat**.
-4. Okno **Přidat koncový bod** vyplňte následujícím způsobem:
+1. V panelu vyhledávání hello portál, vyhledejte hello **profil služby Traffic Manager** výsledky této hello zobrazí název, který jste vytvořili v předcházející části a klikněte na profil správce provozu hello v hello hello.
+2. V hello **profil služby Traffic Manager** okno, v hello **nastavení** klikněte na tlačítko **koncové body**.
+3. V hello **koncové body** okno, které se zobrazí, klikněte na tlačítko **přidat**.
+4. V hello **přidání koncového bodu** okně dokončení následujícím způsobem:
     1. V části **Typ** klikněte na **Koncový bod Azure**.
-    2. Zadejte **Název**, podle kterého tento koncový bod rozpoznáte.
+    2. Zadejte **název** podle kterého chcete toorecognize tento koncový bod.
     3. Pro **cíle typ prostředku**, klikněte na tlačítko **služby App Service**.
-    4. Pro **cíle prostředků**, klikněte na tlačítko **vybrat aplikační službu** zobrazíte seznam webových aplikací v rámci stejného předplatného. V **prostředků** okno, které se zobrazí, vyberte, kterou chcete přidat jako první koncový bod služby App service.
-    5. V části **Priorita** vyberte **1**. Výsledkem bude, že veškerý provoz bude přicházet do tohoto koncového bodu, pokud bude v pořádku.
+    4. Pro **cíle prostředků**, klikněte na tlačítko **vybrat aplikační službu** tooshow hello seznam hello webové aplikace v rámci hello stejného předplatného. V hello **prostředků** okno, které se zobrazí, vyberte hello má tooadd jako hello první koncový bod služby App service.
+    5. V části **Priorita** vyberte **1**. Výsledkem je veškerý provoz směřující toothis koncový bod, pokud je v pořádku.
     6. Políčko **Přidat jako zakázaný** ponechte nezaškrtnuté.
     7. Klikněte na tlačítko **OK**.
-5.  Zopakujte kroky 3 a 4 pro další koncový bod Azure Web Apps. Nezapomeňte ho přidat s hodnotou **Priorita** nastavenou na **2**.
-6.  Po přidání se oba koncové body zobrazí v okně **Profil služby Traffic Manager** a jejich stav monitorování bude **Online**.
+5.  Zopakujte kroky 3 a 4 pro hello další koncový bod Azure Web Apps. Ujistěte se, že tooadd se s jeho **s prioritou** hodnota nastavena na **2**.
+6.  Po dokončení přidávání hello obou koncových bodů jsou zobrazeny v hello **profil služby Traffic Manager** okno spolu s jejich stav monitorování jako **Online**.
 
     ![Přidání koncového bodu Traffic Manager](./media/traffic-manager-create-profile/add-traffic-manager-endpoint.png)
 
-## <a name="use-the-traffic-manager-profile"></a>Použít profil služby Traffic Manager
-1.  V panelu vyhledávání na portálu, vyhledejte **profil služby Traffic Manager** název, který jste vytvořili v předchozí části. V výsledky, které se zobrazí klikněte na profil správce provozu.
-2. V **profil služby Traffic Manager** okně klikněte na tlačítko **přehled**.
-3. **Profil služby Traffic Manager** zobrazuje název DNS vašeho nově vytvořený profil služby Traffic Manager. Tímto lze všechny klienty (například tak, že přejdete do ní pomocí webového prohlížeče) k získání směruje na pravý koncový bod jako Určuje typ směrování. V takovém případě všechny požadavky jsou směrovány do první koncový bod a Traffic Manager zjistí, je-li být není v pořádku, provoz automaticky přejde na další koncový bod.
+## <a name="use-hello-traffic-manager-profile"></a>Použít profil služby Traffic Manager hello
+1.  V panelu vyhledávání hello portál, vyhledejte hello **profil služby Traffic Manager** název, který jste vytvořili v předcházející části hello. V hello výsledky, které se zobrazí klikněte na profil správce provozu hello.
+2. V hello **profil služby Traffic Manager** okně klikněte na tlačítko **přehled**.
+3. Hello **profil služby Traffic Manager** zobrazuje název DNS hello vaše nově vytvořený profil služby Traffic Manager. Toho můžete využít všechny klienty (například přechodem tooit pomocí webového prohlížeče) tooget směrovány toohello pravý koncový bod určeného typ směrování hello. V takovém případě všechny požadavky jsou směrované toohello první koncový bod a Traffic Manager zjistí, je-li být není v pořádku, provoz hello automaticky převezme toohello další koncový bod.
 
-## <a name="delete-the-traffic-manager-profile"></a>Odstranit profil služby Traffic Manager
-Pokud již nepotřebujete, odstraňte skupinu prostředků a profil služby Traffic Manager, který jste vytvořili. To pokud chcete udělat, vyberte skupinu prostředků z **profil služby Traffic Manager** a klikněte na **odstranit**.
+## <a name="delete-hello-traffic-manager-profile"></a>Odstranit profil služby Traffic Manager hello
+Pokud již nepotřebujete, odstraňte skupinu prostředků hello a hello profil služby Traffic Manager, kterou jste vytvořili. toodo Ano, vyberte skupinu prostředků hello z hello **profil služby Traffic Manager** a klikněte na **odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

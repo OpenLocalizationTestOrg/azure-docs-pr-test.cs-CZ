@@ -1,6 +1,6 @@
 ---
-title: "Spravovat katalog záloh StorSimple | Microsoft Docs"
-description: "Vysvětluje, jak používat stránky zálohování katalogu služby StorSimple Manager k seznamu, vyberte a odstraňte zálohovací sklady pro svazek."
+title: "aaaManage katalog záloh StorSimple | Microsoft Docs"
+description: "Vysvětluje, jak toouse hello StorSimple Manager služby zálohování katalogu stránky toolist, vyberte a odstranit zálohovací sklady pro svazek."
 services: storsimple
 documentationcenter: NA
 author: SharS
@@ -14,80 +14,80 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/28/2016
 ms.author: v-sharos
-ms.openlocfilehash: 5ee9855e1428c7a2d871d9c215d302c5c3b7101a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 14f565c174a10da2c9e2f934a533a5e493f77226
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-storsimple-manager-service-to-manage-your-backup-catalog"></a>Použít službu StorSimple Manager ke správě katalog záloh
+# <a name="use-hello-storsimple-manager-service-toomanage-your-backup-catalog"></a>Použít toomanage služby StorSimple Manager hello katalog záloh
 ## <a name="overview"></a>Přehled
-Služby StorSimple Manager **zálohování katalogu** stránka zobrazuje všechny zálohovací sklady, které vytvářejí, když jsou provedeny ruční nebo plánované zálohy. Můžete tato stránka slouží k zobrazení seznamu všech zálohy pro zásady zálohování nebo svazek, vyberte nebo odstranit zálohy, nebo použít zálohu k obnovení nebo klonování svazku.
+Hello služby StorSimple Manager **zálohování katalogu** stránka zobrazuje všechny zálohovací sklady hello, které vytvářejí, když jsou provedeny ruční nebo plánované zálohy. Můžete použít tuto stránku toolist všechny hello zálohy pro zásady zálohování nebo svazek, vyberte nebo odstranit zálohy, nebo použít zálohování toorestore nebo klonování svazku.
 
-Tento kurz vysvětluje, jak zobrazit seznam, vyberte a odstraňte zálohovacího skladu. Chcete-li se dozvědět, jak obnovit ze zálohy zařízení, přejděte na [obnovit vaše zařízení ze zálohovacího skladu](storsimple-restore-from-backup-set.md). Chcete-li se dozvědět, jak vytvořit kopii svazku, přejděte na [klonovat svazek StorSimple](storsimple-clone-volume.md).
+Tento kurz popisuje, jak toolist, vyberte a delete zálohovacího skladu. toolearn jak toorestore zařízení ze zálohy, přejděte příliš[obnovit vaše zařízení ze zálohovacího skladu](storsimple-restore-from-backup-set.md). jak tooclone svazku, přejděte příliš toolearn[klonovat svazek StorSimple](storsimple-clone-volume.md).
 
 ![Zálohování katalogu](./media/storsimple-manage-backup-catalog/backupcatalog.png) 
 
-**Zálohování katalogu** stránka obsahuje dotaz, chcete-li zúžit zálohování sadu výběr. Můžete filtrovat zálohovací sklady, které jsou načteny, na základě následujících parametrů:
+Hello **zálohování katalogu** stránka obsahuje dotaz toonarrow výběr zálohovacího skladu. Můžete filtrovat hello zálohovací sklady, které jsou načteny podle hello následující parametry:
 
-* **Zařízení** – zařízení, v němž byla vytvořena zálohovacího skladu.
-* **Zálohování zásady nebo svazek** – zásady zálohování nebo svazku přidruženém k tohoto zálohovacího skladu.
-* **Od a do** – rozsah data a času v okamžiku vytvoření zálohovacího skladu.
+* **Zařízení** – hello zařízení, na které hello zálohovací sklad vytvořen.
+* **Zálohování zásady nebo svazek** – hello zásady zálohování nebo svazku přidruženém k tohoto zálohovacího skladu.
+* **Od a do** – hello rozsah data a času v okamžiku vytvoření zálohovacího skladu hello.
 
-Filtrované zálohovací sklady jsou pak poskytovalo na základě následujících atributů:
+Hello filtrované zálohovací sklady jsou pak v tabulce podle hello následující atributy:
 
-* **Název** – název zásady zálohování nebo svazku přidruženém k zálohovacího skladu.
-* **Velikost** – skutečná velikost zálohovacího skladu.
-* **Vytvořit na** – datum a čas, kdy byly vytvořeny zálohy. 
-* **Typ** – zálohovací sklady může být místní snímky nebo cloudových snímků. Místní snímek je zálohování všech dat uložených místně na zařízení, svazku, zatímco cloudový snímek odkazuje na zálohování svazku dat umístěných v cloudu. Místní snímky poskytují rychlejší přístup, že jsou pro záleží na odolnosti dat zvolena cloudových snímků.
-* **Iniciováno** – zálohy lze inicializovat automaticky podle plánu nebo ručně uživatelem. Zásady zálohování můžete naplánovat zálohování. Alternativně můžete použít **provést zálohování** možnost provedení ruční zálohy.
+* **Název** – hello název zásady zálohování hello nebo svazku přidruženém k hello zálohovacího skladu.
+* **Velikost** – hello skutečná velikost hello zálohovacího skladu.
+* **Vytvořit na** – hello datum a čas, kdy byla vytvořena hello zálohy. 
+* **Typ** – zálohovací sklady může být místní snímky nebo cloudových snímků. Místní snímek je zálohování všech dat uložených místně na zařízení hello svazku, zatímco cloudový snímek odkazuje toohello zálohování svazku dat umístěných v cloudu hello. Místní snímky poskytují rychlejší přístup, že jsou pro záleží na odolnosti dat zvolena cloudových snímků.
+* **Iniciováno** – hello zálohy lze inicializovat automaticky podle plánu nebo ručně uživatelem. Můžete použít zálohování tooschedule zásady zálohování. Alternativně můžete použít hello **provést zálohování** tootake možnost ručního zálohování.
 
 ## <a name="list-backup-sets-for-a-volume"></a>Seznam zálohovací sklady pro svazek clusteru
-Pomocí následujících kroků na seznamu všechny zálohy svazku.
+Proveďte následující kroky toolist hello všechny hello zálohy pro svazek.
 
-#### <a name="to-list-backup-sets"></a>Do seznamu zálohovací sklady
-1. Na stránce služby StorSimple Manager, klepněte **katalog zálohování** kartě.
-2. Výběr filtru následujícím způsobem:
+#### <a name="toolist-backup-sets"></a>zálohovací sklady toolist
+1. Na stránce služby StorSimple Manager hello, klikněte na hello **katalog zálohování** kartě.
+2. Filtrovat hello výběr následujícím způsobem:
    
-   1. Vyberte příslušné zařízení.
-   2. V rozevíracím seznamu vyberte svazek k zobrazení odpovídající zálohy.
-   3. Zadejte časový rozsah.
-   4. Klikněte na ikonu zaškrtnutí ![Ikona zaškrtnutí](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) k provedení tohoto dotazu.
+   1. Vyberte příslušné zařízení hello.
+   2. V rozevíracím seznamu hello vyberte svazek tooview hello odpovídající hello zálohy.
+   3. Zadejte časové rozmezí hello.
+   4. Klikněte na ikonu zaškrtnutí hello ![Ikona zaškrtnutí](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) tooexecute tento dotaz.
       
-      Zálohování přidružené k vybranému svazku by se zobrazit v seznamu sad záloh.
+      zálohování Hello přidružené hello vybraný svazek by se zobrazit v seznamu hello zálohovací sklady.
 
 ## <a name="select-a-backup-set"></a>Vyberte zálohovací sklad
-Pomocí následujících kroků vyberte zálohovacího skladu pro svazek nebo zásady zálohování.
+Proveďte následující kroky tooselect zálohu nastavení pro zásadu svazek nebo zálohování hello.
 
-#### <a name="to-select-a-backup-set"></a>Chcete-li vybrat zálohovacího skladu
-1. Na stránce služby StorSimple Manager, klepněte **katalog zálohování** kartě.
-2. Výběr filtru následujícím způsobem:
+#### <a name="tooselect-a-backup-set"></a>tooselect zálohovacího skladu
+1. Na stránce služby StorSimple Manager hello, klikněte na hello **katalog zálohování** kartě.
+2. Filtrovat hello výběr následujícím způsobem:
    
-   1. Vyberte příslušné zařízení.
-   2. V rozevíracím seznamu vyberte svazek nebo zálohování zásady pro zálohu, kterou chcete vybrat.
-   3. Zadejte časový rozsah.
-   4. Klikněte na ikonu zaškrtnutí ![Ikona zaškrtnutí](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) k provedení tohoto dotazu.
+   1. Vyberte příslušné zařízení hello.
+   2. V rozevíracím seznamu hello výběru hello svazek nebo zálohování zásady zálohování hello chcete tooselect.
+   3. Zadejte časové rozmezí hello.
+   4. Klikněte na ikonu zaškrtnutí hello ![Ikona zaškrtnutí](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) tooexecute tento dotaz.
       
-      Zálohování přidružené k vybranému svazku nebo zásady zálohování by se měla objevit v seznamu sad záloh.
-3. Vyberte a rozbalte zálohovacího skladu. **Obnovení** a **odstranit** možnosti se zobrazí v dolní části stránky. Můžete provést některé z těchto akcí na zálohovací sklad, který jste vybrali.
+      Hello zálohování přidružená k zásadě hello vybraný svazek nebo zálohování by se zobrazit v seznamu hello zálohovací sklady.
+3. Vyberte a rozbalte zálohovacího skladu. Hello **obnovení** a **odstranit** možnosti se zobrazí v dolní části hello hello stránky. Můžete provést některý z těchto akcí na hello zálohovacího skladu, který jste vybrali.
 
 ## <a name="delete-a-backup-set"></a>Odstranit zálohovacího skladu
-Odstraňte zálohy, když už chcete zachovat data s ním spojená. Proveďte následující kroky a odstraňte zálohovacího skladu.
+Odstraňte zálohy, když už nechcete tooretain hello data s ním spojená. Proveďte následující kroky toodelete zálohovacího skladu hello.
 
-#### <a name="to-delete-a-backup-set"></a>Chcete-li odstranit zálohovacího skladu
-1. Na stránce služby StorSimple Manager, klepněte **katalog zálohování karta**.
-2. Výběr filtru následujícím způsobem:
+#### <a name="toodelete-a-backup-set"></a>toodelete zálohovacího skladu
+1. Na stránce služby StorSimple Manager hello, klikněte na hello **katalog zálohování karta**.
+2. Filtrovat hello výběr následujícím způsobem:
    
-   1. Vyberte příslušné zařízení.
-   2. V rozevíracím seznamu vyberte svazek nebo zálohování zásady pro zálohu, kterou chcete vybrat.
-   3. Zadejte časový rozsah.
-   4. Klikněte na ikonu zaškrtnutí ![Ikona zaškrtnutí](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) k provedení tohoto dotazu.
+   1. Vyberte příslušné zařízení hello.
+   2. V rozevíracím seznamu hello výběru hello svazek nebo zálohování zásady zálohování hello chcete tooselect.
+   3. Zadejte časové rozmezí hello.
+   4. Klikněte na ikonu zaškrtnutí hello ![Ikona zaškrtnutí](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) tooexecute tento dotaz.
       
-      Zálohování přidružené k vybranému svazku nebo zásady zálohování by se měla objevit v seznamu sad záloh.
-3. Vyberte a rozbalte zálohovacího skladu. **Obnovení** a **odstranit** možnosti se zobrazí v dolní části stránky. Klikněte na **Odstranit**.
-4. Při odstranění je v průběhu a kdy má úspěšně dokončena, budete upozorněni. Po odstranění probíhá, aktualizujte dotaz na této stránce. Odstraněné zálohovací sklad se nebude zobrazovat v seznamu sad záloh.
+      Hello zálohování přidružená k zásadě hello vybraný svazek nebo zálohování by se zobrazit v seznamu hello zálohovací sklady.
+3. Vyberte a rozbalte zálohovacího skladu. Hello **obnovení** a **odstranit** možnosti se zobrazí v dolní části hello hello stránky. Klikněte na **Odstranit**.
+4. Při odstranění hello právě probíhá a při úspěšně dokončil, budete upozorněni. Po odstranění hello probíhá, aktualizujte hello dotazů na této stránce. zálohovací sklad Hello odstranit se nebude zobrazovat v hello seznamu sad záloh.
 
 ## <a name="next-steps"></a>Další kroky
-* Zjistěte, jak [zálohování katalog používat k obnovení vašeho zařízení ze zálohovacího skladu](storsimple-restore-from-backup-set.md).
-* Zjistěte, jak [použít službu StorSimple Manager ke správě zařízení StorSimple](storsimple-manager-service-administration.md).
+* Zjistěte, jak příliš[použití hello zálohování katalogu toorestore zařízení ze zálohovacího skladu](storsimple-restore-from-backup-set.md).
+* Zjistěte, jak příliš[použití hello tooadminister služby StorSimple Manager zařízení StorSimple](storsimple-manager-service-administration.md).
 

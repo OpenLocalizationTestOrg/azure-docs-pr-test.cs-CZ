@@ -1,6 +1,6 @@
 ---
-title: "Zásady zálohování Snapshot Manager zařízení StorSimple | Microsoft Docs"
-description: "Popisuje, jak pomocí modulu snap-in konzoly MMC StorSimple Snapshot Manager vytvořit a spravovat zásady zálohování, které řídí naplánovaných záloh."
+title: "zásady zálohování aaaStorSimple Snapshot Manager | Microsoft Docs"
+description: "Popisuje, jak toouse hello toocreate modul snap-in konzoly MMC Snapshot Manager zařízení StorSimple a spravovat zásady zálohování hello, které řídí naplánovaných záloh."
 services: storsimple
 documentationcenter: NA
 author: SharS
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.openlocfilehash: 218c89e403673c16c72da95aa2c1d685bbed5a86
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c2ae75a8d0568090add6018da18de73eb56e6590
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Pomocí StorSimple Snapshot Manager vytvořit a spravovat zásady zálohování
+# <a name="use-storsimple-snapshot-manager-toocreate-and-manage-backup-policies"></a>Použít toocreate Snapshot Manager zařízení StorSimple a spravovat zásady zálohování
 ## <a name="overview"></a>Přehled
-Zásady zálohování vytvoří plán pro zálohování dat svazku místně nebo v cloudu. Když vytvoříte zásadu zálohování, můžete také zadat zásady uchovávání informací. (Můžete uchovávat maximálně 64 snímky.) Další informace o zásady zálohování najdete v tématu [zálohování typy](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies) v [řady StorSimple 8000: hybridní cloudové řešení](storsimple-overview.md).
+Zásady zálohování vytvoří plán pro zálohování dat svazku místně nebo v cloudu hello. Když vytvoříte zásadu zálohování, můžete také zadat zásady uchovávání informací. (Můžete uchovávat maximálně 64 snímky.) Další informace o zásady zálohování najdete v tématu [zálohování typy](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies) v [řady StorSimple 8000: hybridní cloudové řešení](storsimple-overview.md).
 
 Tento kurz vysvětluje postup:
 
@@ -31,65 +31,65 @@ Tento kurz vysvětluje postup:
 * Odstranit zásady zálohování
 
 ## <a name="create-a-backup-policy"></a>Vytvořit zásady zálohování
-Použijte následující postup k vytvoření nové zásady zálohování.
+Použijte následující postup toocreate nové zásady zálohování hello.
 
-#### <a name="to-create-a-backup-policy"></a>Chcete-li vytvořit zásady zálohování
-1. Klikněte na ikonu plochy spusťte StorSimple Snapshot Manager.
-2. V **oboru** podokně klikněte pravým tlačítkem na **zásady zálohování**a klikněte na tlačítko **vytvořit zásadu zálohování**.
+#### <a name="toocreate-a-backup-policy"></a>toocreate zásady zálohování
+1. Klikněte na ploše ikona toostart hello StorSimple Snapshot Manager.
+2. V hello **oboru** podokně klikněte pravým tlačítkem na **zásady zálohování**a klikněte na tlačítko **vytvořit zásadu zálohování**.
 
     ![Vytvořit zásady zálohování](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_BU_policy.png)
 
-    **Vytvořit zásadu** zobrazí se dialogové okno.
+    Hello **vytvořit zásadu** zobrazí se dialogové okno.
 
     ![Vytvoření zásady – karta Obecné](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_general.png)
-3. Na **Obecné** proveďte následující informace:
+3. Na hello **Obecné** kartě, dokončení hello následující informace:
 
-   1. V **název** textového pole zadejte název pro tuto zásadu.
-   2. V **svazku skupiny** textového pole, zadejte název skupiny svazku přidružených k zásadě.
+   1. V hello **název** textového pole zadejte název zásady hello.
+   2. V hello **svazku skupiny** textového pole, název typu hello hello svazku skupiny přidružené k hello zásad.
    3. Vyberte buď **místní snímek** nebo **cloudových snímků**.
-   4. Vyberte počet snímků, které chcete zachovat. Pokud vyberete **všechny**, 64 snímky bude zachována (maximum).
-4. Klikněte **plán** kartě.
+   4. Vyberte počet hello tooretain snímky. Pokud vyberete **všechny**, budou se uchovávat 64 snímky (hello maximální).
+4. Klikněte na tlačítko hello **plán** kartě.
 
     ![Vytvoření zásady – karta plán](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_schedule.png)
-5. Na **plán** proveďte následující informace:
+5. Na hello **plán** kartě, dokončení hello následující informace:
 
-   1. Klikněte **povolit** políčko naplánovat další zálohování.
+   1. Klikněte na tlačítko hello **povolit** políčko tooschedule hello další zálohování.
    2. V části **nastavení**, vyberte **jednou**, **denní**, **týdenní**, nebo **měsíční**.
-   3. V **spustit** textového pole, klikněte na ikonu kalendáři a vyberte počáteční datum.
+   3. V hello **spustit** textového pole, klikněte na ikonu hello kalendáře a vyberte počáteční datum.
    4. V části **Upřesnit nastavení**, můžete nastavit volitelné opakování plány a koncové datum.
    5. Klikněte na **OK**.
 
-Po vytvoření zásady zálohování, tyto informace se zobrazí v **výsledky** podokně:
+Po vytvoření zásady zálohování hello následující informace se zobrazí v hello **výsledky** podokně:
 
-* **Název** – název zásady zálohování.
+* **Název** – hello název zásady zálohování.
 * **Typ** – místní snímek nebo cloudový snímek.
-* **Svazek skupiny** – skupině svazku přidružených k zásadě.
-* **Uchování** – počet snímků uchovávají; maximální počet je 64.
-* **Vytvořit** – datum, tato zásada byla vytvořena.
-* **Povolit** – jestli zásady je aktuálně v platnosti: **True** označuje, že je v platnosti; **False** signalizuje, že není platný.
+* **Svazek skupiny** – hello spojené s hello zásadami skupiny svazku.
+* **Uchování** – hello uchovávají počet snímků; hello maximální 64.
+* **Vytvořit** – hello datum vytvoření tuto zásadu.
+* **Povolit** – jestli hello zásad je aktuálně v platnosti: **True** označuje, že je v platnosti; **False** signalizuje, že není platný.
 
 ## <a name="edit-a-backup-policy"></a>Upravit zásady zálohování
-Chcete-li upravit existující zásady zálohování použijte následující postup.
+Použijte následující postup tooedit existující zásady zálohování hello.
 
-#### <a name="to-edit-a-backup-policy"></a>Chcete-li upravit zásady zálohování
-1. Klikněte na ikonu plochy spusťte StorSimple Snapshot Manager.
-2. V **oboru** podokně klikněte **zásady zálohování** uzlu. Zobrazí všechny zásady zálohování v **výsledky** podokně.
-3. Klikněte pravým tlačítkem na zásadu, kterou chcete upravit a pak klikněte na tlačítko **upravit**.
+#### <a name="tooedit-a-backup-policy"></a>tooedit zásady zálohování
+1. Klikněte na ploše ikona toostart hello StorSimple Snapshot Manager.
+2. V hello **oboru** podokně klikněte na tlačítko hello **zásady zálohování** uzlu. Zobrazí všechny zásady zálohování hello v hello **výsledky** podokně.
+3. Klikněte pravým tlačítkem na zásadu hello má tooedit a pak klikněte na tlačítko **upravit**.
 
     ![Upravit zásady zálohování](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Edit_BU_policy.png)
-4. Když **vytvořit zásadu** okno se zobrazí, zadejte změny a pak klikněte na tlačítko **OK**.
+4. Když hello **vytvořit zásadu** okno se zobrazí, zadejte změny a pak klikněte na tlačítko **OK**.
 
 ## <a name="delete-a-backup-policy"></a>Odstranit zásady zálohování
-Pomocí následujícího postupu můžete odstranit zásady zálohování.
+Použijte následující postup toodelete zásady zálohování hello.
 
-#### <a name="to-delete-a-backup-policy"></a>Chcete-li odstranit zásady zálohování
-1. Klikněte na ikonu plochy spusťte StorSimple Snapshot Manager.
-2. V **oboru** podokně klikněte **zásady zálohování** uzlu. Zobrazí všechny zásady zálohování v **výsledky** podokně.
-3. Klikněte pravým tlačítkem na zásadu zálohování, který chcete odstranit a potom klikněte na **odstranit**.
-4. Jakmile se zobrazí zpráva o potvrzení, klikněte na tlačítko **Ano**.
+#### <a name="toodelete-a-backup-policy"></a>toodelete zásady zálohování
+1. Klikněte na ploše ikona toostart hello StorSimple Snapshot Manager.
+2. V hello **oboru** podokně klikněte na tlačítko hello **zásady zálohování** uzlu. Zobrazí všechny zásady zálohování hello v hello **výsledky** podokně.
+3. Klikněte pravým tlačítkem na zásady zálohování hello má toodelete a pak klikněte na tlačítko **odstranit**.
+4. Jakmile se zobrazí potvrzovací zpráva hello, klikněte na tlačítko **Ano**.
 
     ![Odstranit zásady zálohování potvrzení](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
 
 ## <a name="next-steps"></a>Další kroky
-* Zjistěte, jak [použít ke správě vašeho řešení StorSimple Snapshot Manager zařízení StorSimple](storsimple-snapshot-manager-admin.md).
-* Zjistěte, jak [pomocí StorSimple Snapshot Manager můžete zobrazit a spravovat úlohy zálohování](storsimple-snapshot-manager-manage-backup-jobs.md).
+* Zjistěte, jak příliš[pomocí vašeho řešení StorSimple Snapshot Manager zařízení StorSimple tooadminister](storsimple-snapshot-manager-admin.md).
+* Zjistěte, jak příliš[použít tooview Snapshot Manager zařízení StorSimple a spravovat úlohy zálohování](storsimple-snapshot-manager-manage-backup-jobs.md).

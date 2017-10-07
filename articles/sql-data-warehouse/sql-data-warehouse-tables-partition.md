@@ -1,5 +1,5 @@
 ---
-title: "Vytváření oddílů tabulky v SQL Data Warehouse | Microsoft Docs"
+title: aaaPartitioning tabulek v SQL Data Warehouse | Microsoft Docs
 description: "Začínáme s vytváření oddílů tabulky v Azure SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 10/31/2016
 ms.author: shigu;barbkess
-ms.openlocfilehash: 3edfd34d368228be32afef48688739639a3b03ed
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: aa63c51562f3e6f83063320860b195e135a721e1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>Vytváření oddílů tabulky v SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -33,28 +33,28 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Vytváření oddílů je podporován u všech typů tabulek SQL Data Warehouse; včetně clusterových columnstore, clusterovaný index a haldy.  Vytváření oddílů je podporováno také na všechny typy distribučních, včetně hodnoty hash nebo kruhové dotazování distribuován.  Vytváření oddílů umožňuje vám data rozdělíte do menší skupiny dat a ve většině případů dělení se provádí na sloupci, datum.
+Vytváření oddílů je podporován u všech typů tabulek SQL Data Warehouse; včetně clusterových columnstore, clusterovaný index a haldy.  Vytváření oddílů je podporováno také na všechny typy distribučních, včetně hodnoty hash nebo kruhové dotazování distribuován.  Vytváření oddílů umožňuje toodivide, které vaše data do menší skupiny dat a ve většině případů dělení se provádí na sloupci, datum.
 
 ## <a name="benefits-of-partitioning"></a>Výhody dělení
-Vytváření oddílů využívat data výkonu údržby a dotazů.  Jestli výhody oba, nebo pouze jeden, je závislá na tom, jak načíst data a zda na stejný sloupec lze použít pro obě účely, protože vytváření oddílů je možné provést pouze na jeden sloupec.
+Vytváření oddílů využívat data výkonu údržby a dotazů.  Jestli výhody oba, nebo pouze jeden, je závislá na tom, jak načíst data a jestli hello stejný sloupec lze použít pro obě účely, protože vytváření oddílů je možné provést pouze na jeden sloupec.
 
-### <a name="benefits-to-loads"></a>Výhody zatížení
-Hlavní výhoda vytváření oddílů v SQL Data Warehouse je zvýšit efektivitu a výkon načtení dat pomocí použití odstranění oddílu, přepínání a slučování.  Ve většině případů jsou data rozdělena na sloupec data, která úzce souvisí pořadí, ve kterém je načíst data do databáze.  Jednou z výhod použití oddíly pro zachování dat největší ho předcházení protokolování transakcí.  Když jednoduše vkládání, aktualizaci nebo odstranění dat může být nejjednodušší způsob, s malým množstvím myšlenku a úsilí, pomocí dělení během procesu vaše zatížení může podstatně zlepšit výkon.
+### <a name="benefits-tooloads"></a>Výhody tooloads
+Hello Hlavní výhoda vytváření oddílů v SQL Data Warehouse je zvýšit efektivitu hello a výkon načítání dat pomocí odstranění oddílu, přepínání a slučování.  Ve většině případů, které jsou data rozdělena na datum vázaný sloupec, který je úzce toohello pořadí datových hello je načíst toohello databáze.  Jeden z hello největší výhody použití dat toomaintain oddíly ho hello předcházení protokolování transakcí.  Když jednoduše vkládání, aktualizaci nebo odstranění dat může být hello nejjednodušší způsob, s malým množstvím myšlenku a úsilí, pomocí dělení během procesu vaše zatížení může podstatně zlepšit výkon.
 
-Přepnutí oddílu umožňuje rychle odeberte nebo nahraďte oddíl tabulky.  Tabulka faktů prodeje například může obsahovat jen data po dobu posledních 36 měsíců.  Na konci každého měsíce se odstraní nejstarší měsíc prodejních dat z tabulky.  Tato data může odstranit pomocí příkazu delete k odstranění dat nejstarší měsíc.  Ale odstraňování velké množství dat řádek po řádku příkazem delete může trvat velmi dlouho, stejně jako vytvořit riziko velké transakcí, které může trvat dlouhou dobu vrátit zpět, pokud dojde k chybě.  Více optimální metodu je jednoduše vyřadit nejstarší oddílu data.  Kde odstranění jednotlivých řádků může trvat hodiny, odstraňování celý oddíl může trvat sekund.
+Přepnutí oddílu můžete být použité tooquickly odeberte nebo nahraďte oddíl tabulky.  Tabulka faktů prodeje například může obsahovat pouze data pro hello posledních 36 měsíců.  Na konci hello v každém měsíci hello nejstarší měsíc prodejních dat je odstraněn z tabulky hello.  Tato data může odstranit pomocí odstranit příkaz toodelete hello data pro hello nejstarší měsíc.  Ale odstraňování velké množství dat řádek po řádku příkazem delete může trvat velmi dlouho, stejně jako hello riziko velké transakcí, které může trvat dlouhou dobu toorollback, pokud dojde k chybě.  Více optimální přístup je toosimply rozevírací hello nejstarší oddílu data.  Kde odstranění jednotlivých řádků hello může trvat hodiny, odstraňování celý oddíl může trvat sekund.
 
-### <a name="benefits-to-queries"></a>Výhody pro dotazy
-Vytváření oddílů můžete použít také pro zlepšení výkonu dotazů.  Pokud dotaz použije filtr na sloupec rozdělení, to můžete omezit prohledávání pouze opravňující oddíly, které můžou být mnohem menší podmnožinu dat, zabraňující prohledání úplnou tabulky.  Se zavedením Clusterované indexy columnstore jsou méně výhodné predikátem odstranění výkonnostních výhod, ale v některých případech může být výhoda dotazy.  Například pokud tabulka faktů prodeje jsou rozděleny do 36 měsíců pomocí pole Datum prodeje a potom se dotazuje tento filtr na datum prodej můžete přeskočit hledání v oddíly, které neodpovídají filtru.
+### <a name="benefits-tooqueries"></a>Výhody tooqueries
+Dělení může být také použít tooimprove výkon dotazů.  Pokud dotaz použije filtr na sloupec rozdělení, to můžete omezit hello kontroly tooonly hello kvalifikující oddíly, které můžou být mnohem menší podmnožinu dat hello, zabraňující prohledání úplnou tabulky.  Při zavedení hello Clusterované indexy columnstore jsou méně výhodné hello predikátem odstranění výkonnostních výhod, ale v některých případech může být tooqueries výhody.  Například pokud hello prodeje fakt tabulka je rozdělena na oddíly do 36 měsíců pomocí hello datum prodeje pole, pak dotazy, které filtrovat hello prodej datum můžete přeskočit hledání v oddíly, které neodpovídají hello filtru.
 
 ## <a name="partition-sizing-guidance"></a>Pokyny k dimenzování oddílu
-Při vytváření oddílů lze použít ke zlepšení výkonu některých scénářích, vytváření tabulku s **příliš mnoho** oddíly může narušit výkonnost za určitých okolností.  Tyto problémy jsou především pro Clusterované tabulky columnstore.  Pro dělení být užitečné, je důležité pochopit, kdy použít vytváření oddílů a počet oddílů pro vytvoření.  Není pevný rychlé pravidlo, kolik oddíly jsou příliš mnoho, závisí na vaše data a kolik oddíly jsou načítání současně.  Ale jako obecné pravidlo, vezměte v úvahu přidávání 10s k 100s oddílů není 1000s.
+Při vytváření oddílů lze použít tooimprove výkonu některých scénářích, vytvoření tabulky s **příliš mnoho** oddíly může narušit výkonnost za určitých okolností.  Tyto problémy jsou především pro Clusterované tabulky columnstore.  U oddílů toobe užitečné, je důležité toounderstand při toouse vytváření oddílů a hello počet toocreate oddíly.  Existuje žádné pevné pravidlo rychlé jako toohow mnoha oddílů jsou příliš mnoho, závisí na vaše data a kolik oddíly jsou načítání toosimultaneously.  Ale jako obecné pravidlo, vezměte v úvahu přidávání 10s too100s oddílů není 1000s.
 
-Při vytváření dělení na **Clusterové columnstore** tabulky, je důležité zvážit, kolik řádků se nebude zobrazovat v každém oddílu.  Pro optimální komprese a výkon Clusterované tabulky columnstore je potřeba minimálně 1 milionu řádků na distribuce a oddíl.  Před vytvořením oddíly, SQL Data Warehouse každá tabulka již rozdělí na 60 distribuované databáze.  Všechny oddíly přidat do tabulky je kromě distribuce vytvořen na pozadí.  V tomto příkladu, pokud tabulka faktů prodeje obsažené 36 měsíční oddíly a vzhledem k tomu, že SQL Data Warehouse je 60 distribuce, pak tabulky faktů prodeje by měl obsahovat 60 milionu řádků měsíčně nebo 2.1 miliardy řádků při zaplnění všechny měsíce.  Pokud tabulka obsahuje výrazně méně řádků, než je minimální doporučený počet řádků na jeden oddíl, zvažte použití méně oddíly aby bylo možné zvýšit počet řádků na jeden oddíl.  Viz také [indexování] [ Index] článek, který obsahuje dotazy, které lze spustit v SQL Data Warehouse k vyhodnocení kvality indexy columnstore clusteru.
+Při vytváření dělení na **Clusterové columnstore** tabulky, je důležité tooconsider, kolik řádků se nebude zobrazovat v každém oddílu.  Pro optimální komprese a výkon Clusterované tabulky columnstore je potřeba minimálně 1 milionu řádků na distribuce a oddíl.  Před vytvořením oddíly, SQL Data Warehouse každá tabulka již rozdělí na 60 distribuované databáze.  Žádné rozdělení přidané tooa tabulce je navíc toohello distribuce vytvořit pozadí hello.  V tomto příkladu, pokud tabulka faktů prodeje hello obsažené 36 měsíční oddíly a vzhledem k tomu, že SQL Data Warehouse je 60 distribuce hello prodeje fakt, že tabulky by měl obsahovat 60 milionu řádků měsíčně nebo 2.1 miliardy řádků, když jsou naplněny všechny měsíce.  Pokud tabulka obsahuje výrazně méně řádků než hello Doporučená minimální počet řádků na jeden oddíl, zvažte použití méně oddíly v pořadí toomake zvýšení hello počet řádků na jeden oddíl.  Viz také hello [indexování] [ Index] článek, který obsahuje dotazy, které lze spustit v SQL Data Warehouse tooassess hello kvalitu indexy columnstore clusteru.
 
 ## <a name="syntax-difference-from-sql-server"></a>Syntaxe rozdíl oproti systému SQL Server
-SQL Data Warehouse zavádí zjednodušenou definice oddíly, který se mírně liší od systému SQL Server.  Vytváření oddílů funkce a schémata nejsou použity v SQL Data Warehouse, jako jsou v systému SQL Server.  Místo toho, které musíte udělat je identifikaci oddílů sloupce a body hranic.  Syntaxe vytváření oddílů se mírně liší v systému SQL Server, se základními koncepty jsou stejné.  SQL Server a SQL Data Warehouse podporují jeden sloupec oddílu na jednu tabulku, která může být pohyboval oddílu.  Další informace o oddílech najdete v tématu [rozdělena na oddíly tabulky a indexy][Partitioned Tables and Indexes].
+SQL Data Warehouse zavádí zjednodušenou definice oddíly, který se mírně liší od systému SQL Server.  Vytváření oddílů funkce a schémata nejsou použity v SQL Data Warehouse, jako jsou v systému SQL Server.  Místo toho stačí toodo je identifikovat oddílů sloupce a hello hranic body.  Hello syntaxe vytváření oddílů se mírně liší v systému SQL Server, jsou hello stejné základní koncepty hello.  SQL Server a SQL Data Warehouse podporují jeden sloupec oddílu na jednu tabulku, která může být pohyboval oddílu.  toolearn Další informace o vytváření oddílů, najdete v části [rozdělena na oddíly tabulky a indexy][Partitioned Tables and Indexes].
 
-Následujícím příkladu SQL Data Warehouse rozdělena na oddíly [CREATE TABLE] [ CREATE TABLE] příkaz oddíly tabulka FactInternetSales na sloupci OrderDateKey:
+Hello následujícím příkladu SQL Data Warehouse rozdělena na oddíly [CREATE TABLE] [ CREATE TABLE] příkaz oddíly tabulka FactInternetSales hello hello OrderDateKey sloupec:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -81,12 +81,12 @@ WITH
 ```
 
 ## <a name="migrating-partitioning-from-sql-server"></a>Migrace, vytváření oddílů v systému SQL Server
-Pokud chcete migrovat definice oddíl systému SQL Server do SQL Data Warehouse jednoduše:
+toomigrate systému SQL Server jednoduše oddílu tooSQL definice datového skladu:
 
-* Odstranění serveru SQL Server [schéma oddílu][partition scheme].
-* Přidat [oddílu funkce] [ partition function] definici tak, aby vaše CREATE TABLE.
+* Odstranění hello systému SQL Server [schéma oddílu][partition scheme].
+* Přidat hello [oddílu funkce] [ partition function] definice tooyour vytvořit tabulku.
 
-Pokud provádíte migraci dělenou tabulku z instance systému SQL Server nižší než SQL vám může pomoci zjistěte počet řádků, které jsou v každém oddílu.  Uvědomte si, že pokud se v SQL Data Warehouse používá stejnou členitost rozdělení, počet řádků na jeden oddíl se sníží o faktor 60.  
+Pokud migrujete dělenou tabulku z hello instance serveru SQL pod SQL vám může pomoct toointerrogate hello počet řádků, které jsou v každém oddílu.  Uvědomte si, že pokud hello stejnou členitost rozdělení se používá v SQL Data Warehouse, hello počet řádků na jeden oddíl se sníží o faktor 60.  
 
 ```sql
 -- Partition information for a SQL Server Database
@@ -123,9 +123,9 @@ GROUP BY    s.[name]
 ```
 
 ## <a name="workload-management"></a>Správa zatížení
-Jeden aspekt poslední díl okolnosti rozhodnutí oddílu tabulky je [úlohy správy][workload management].  Úlohy správy v SQL Data Warehouse je primárně správy paměti a souběžnosti.  Maximální paměť přidělená pro každý distribuční během provádění dotazů v SQL Data Warehouse je třídy upraveny prostředků.  V ideálním případě bude mít velikost oddílů s ohledem na dalších faktorech, jako je potřebnou velikost paměti pro vytváření Clusterované indexy columnstore.  Clusterovaný benefit indexy columnstore výrazně při jejich přidělení více paměti.  Proto můžete zajistit, že nové vytvoření oddílu indexu není nedostatek paměti. Při přechodu z výchozí role, smallrc, jeden z jiných rolí, například largerc lze dosáhnout zvýšení množství paměti k dispozici pro dotaz.
+Jeden aspekt toofactor poslední díl v toohello tabulce oddílu rozhodnutí je [úlohy správy][workload management].  Úlohy správy v SQL Data Warehouse je primárně hello Správa paměti a souběžnosti.  V SQL Data Warehouse hello je maximální velikost paměti přidělené tooeach distribuční během provádění dotazu třídy upraveny prostředků.  V ideálním případě budou vaše oddíly velké s ohledem na dalších faktorech, jako je vytváření Clusterované indexy columnstore hello paměti potřebám.  Clusterovaný benefit indexy columnstore výrazně při jejich přidělení více paměti.  Proto je vhodné tooensure, který znovu sestavit index oddílu není nedostatek paměti. Zvýšení hello množství paměti k dispozici tooyour dotazu lze dosáhnout přepínání z hello výchozí role, smallrc, tooone z jiných rolí, například largerc hello.
 
-Informace o přidělení paměti na jeden distribuční je k dispozici pomocí dotazu na zobrazení dynamické správy Správce prostředků. Ve skutečnosti vaší přidělení paměti bude menší než údaje níže. To však poskytuje úroveň pokyny, které můžete použít, když vaše oddíly pro operace správy dat pro definování velikosti.  Pokuste se vyhnout, změna velikosti vašeho oddíly nad rámec poskytovaný třída velmi velké prostředků přidělení paměti. Pokud vaše oddíly růst nad rámec tohoto obrázku spuštěním riziko přetížení paměti, což pak vede k menší optimální komprese.
+Informace o hello přidělení paměti na jeden distribuční je k dispozici pomocí dotazu na zobrazení dynamické správy Správce prostředků hello. Ve skutečnosti vaší přidělení paměti bude menší než následující hello obrázky. To však poskytuje úroveň pokyny, které můžete použít, když vaše oddíly pro operace správy dat pro definování velikosti.  Zkuste tooavoid Změna velikosti vašeho oddíly nad rámec poskytovaný Třída prostředků se velmi velké hello přidělení paměti hello. Pokud vaše oddíly růst nad rámec tohoto obrázku spuštěním hello riziko přetížení paměti, což pak vede tooless optimální komprese.
 
 ```sql
 SELECT  rp.[name]                                AS [pool_name]
@@ -144,12 +144,12 @@ AND     rp.[name]    = 'SloDWPool'
 ```
 
 ## <a name="partition-switching"></a>Přepnutí oddílu
-SQL Data Warehouse podporuje oddílu rozdělení, sloučení a přepínání. Každá z těchto funkcí je excuted pomocí [příkaz ALTER TABLE] [ ALTER TABLE] příkaz.
+SQL Data Warehouse podporuje oddílu rozdělení, sloučení a přepínání. Každá z těchto funkcí je excuted pomocí hello [příkaz ALTER TABLE] [ ALTER TABLE] příkaz.
 
-Přepnout oddíly mezi dvěma tabulkami musíte zajistit, že oddíly zarovnat na jejich odpovídající hranice a jestli se shodují definice tabulky. Protože nejsou k dispozici pro vynucení rozsahu hodnot v tabulce omezení check zdrojové tabulky musí obsahovat stejné hranice oddílů jako cílová tabulka. Pokud tomu tak není, pak přepínače oddílu selžou, protože metadata oddílu nebudou synchronizovány.
+oddíly tooswitch mezi dvěma tabulkami musíte zajistit, že oddíly hello zarovnat na jejich odpovídající hranice a jestli se shodují hello Definice tabulky. Jako omezení check nejsou k dispozici tooenforce hello rozsahu hodnot v tabulce hello zdrojová tabulka musí obsahovat hello stejná jako cílová tabulka hello oddílu hranice. Pokud to není hello případ, pak hello oddílu přepínače selžou, protože metadata oddílu hello se nebudou synchronizovat.
 
-### <a name="how-to-split-a-partition-that-contains-data"></a>Jak rozdělit oddíl, který obsahuje data
-Nejúčinnější metodou rozdělit oddíl, který už obsahuje data je použití `CTAS` příkaz. Pokud je tabulka oddílů Clusterové columnstore pak oddíl tabulky musí být prázdná předtím, než je možné rozdělit.
+### <a name="how-toosplit-a-partition-that-contains-data"></a>Jak toosplit oddílu, který obsahuje data
+Hello nejúčinnější metoda toosplit oddíl, který už obsahuje data je toouse `CTAS` příkaz. Pokud je tabulka oddílů hello Clusterové columnstore pak hello tabulky oddíl musí být prázdný předtím, než je možné rozdělit.
 
 Níže je ukázka tabulku oddílů columnstore obsahující jeden řádek v každém oddílu:
 
@@ -185,11 +185,11 @@ CREATE STATISTICS Stat_dbo_FactInternetSales_OrderDateKey ON dbo.FactInternetSal
 ```
 
 > [!NOTE]
-> Vytvořením objektu statistiky jsme Ujistěte se, že tento metadat tabulky je přesnější. Pokud jsme vynechat, vytváření statistik, SQL Data Warehouse použije výchozí hodnoty. Pro Zkontrolujte prosím podrobnosti o statistiky [statistiky][statistics].
+> Objekt pro vytváření hello statistiky jsme Ujistěte se, že tento metadat tabulky je přesnější. Pokud jsme vynechat, vytváření statistik, SQL Data Warehouse použije výchozí hodnoty. Pro Zkontrolujte prosím podrobnosti o statistiky [statistiky][statistics].
 > 
 > 
 
-Jsme dotaz s využitím počet řádků `sys.partitions` katalogu zobrazení:
+Jsme dotazu pro počet řádků hello pomocí hello `sys.partitions` katalogu zobrazení:
 
 ```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
@@ -206,15 +206,15 @@ WHERE t.[name] = 'FactInternetSales'
 ;
 ```
 
-Pokud jsme zkuste rozdělit tuto tabulku, jsme dojde k chybě:
+Pokud tato tabulka pokusíme toosplit jsme dojde k chybě:
 
 ```sql
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Msg 35346, úroveň 15, State 1, řádek 44 ROZDĚLIT klauzule příkazu ALTER partition se nezdařila, protože oddíl není prázdný.  V lze rozdělit jen prázdné oddíly, když existuje columnstore index v tabulce. Zvažte zakázání index columnstore před spuštěním příkazu ALTER PARTITION příkazu a pak znovu sestavit columnstore index po dokončení příkazu ALTER PARTITION.
+Msg 35346, úroveň 15, State 1, řádek 44 ROZDĚLIT klauzule příkazu ALTER partition se nezdařila, protože hello oddíl není prázdný.  V lze rozdělit jen prázdné oddíly, když existuje columnstore index v tabulce hello. Zvažte zakázání hello index columnstore před spuštěním příkazu ALTER PARTITION hello a pak znovu sestavit hello columnstore index po dokončení příkazu ALTER PARTITION.
 
-Ale můžeme použít `CTAS` vytvořit novou tabulku pro naše data.
+Ale můžeme použít `CTAS` toocreate nové tabulky toohold naše data.
 
 ```sql
 CREATE TABLE dbo.FactInternetSales_20000101
@@ -232,15 +232,15 @@ WHERE   1=2
 ;
 ```
 
-Jako hranice oddílů jsou v souladu přepínači je povolená. Zdrojová tabulka to bude nechte prázdné oddílu, který může následně rozdělit.
+Jako hranice oddílů hello je zarovnán přepínač je povolená. Zdrojová tabulka hello to bude nechte prázdné oddílu, který může následně rozdělit.
 
 ```sql
-ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 PARTITION 2;
+ALTER TABLE FactInternetSales SWITCH PARTITION 2 too FactInternetSales_20000101 PARTITION 2;
 
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Již zbývá udělat, je zarovnat naše data do nové hranice oddílů pomocí `CTAS` a přepínače naše data zpět do hlavní tabulky
+Všechno, co je ponechán toodo je tooalign naše data toohello oddílu nové hranice pomocí `CTAS` a přepněte zpět v hlavní tabulka toohello našich dat
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
@@ -258,19 +258,19 @@ WHERE   [OrderDateKey] >= 20000101
 AND     [OrderDateKey] <  20010101
 ;
 
-ALTER TABLE dbo.FactInternetSales_20000101_20010101 SWITCH PARTITION 2 TO dbo.FactInternetSales PARTITION 2;
+ALTER TABLE dbo.FactInternetSales_20000101_20010101 SWITCH PARTITION 2 toodbo.FactInternetSales PARTITION 2;
 ```
 
-Po dokončení přesunu dat je vhodné aktualizovat statistiku v cílové tabulce zajistit, že se přesně odrážel novou rozdělení dat v jejich příslušné oddíly:
+Po dokončení hello pohybů hello dat je statistické údaje vhodné toorefresh hello na hello cílové tabulky tooensure hello nový distribuční hello dat v jejich příslušné oddíly přesně odrážel:
 
 ```sql
 UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
 ### <a name="table-partitioning-source-control"></a>Tabulka dělení zdrojového kódu
-Aby se zabránilo vaše definice tabulky z **koroze** v systému správy zdrojů je vhodné vzít v úvahu následující postup:
+tooavoid vaše definice tabulky z **koroze** v systému správy zdrojů může být vhodné tooconsider hello následující postup:
 
-1. Vytvořit tabulku jako tabulku oddílů, ale žádné hodnoty pro oddíl
+1. Vytvoření tabulky hello jako dělenou tabulku, ale žádné hodnoty pro oddíl
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -294,10 +294,10 @@ WITH
 ;
 ```
 
-1. `SPLIT`v tabulce v rámci procesu nasazení:
+1. `SPLIT`Hello tabulky jako součást procesu nasazení hello:
 
 ```sql
--- Create a table containing the partition boundaries
+-- Create a table containing hello partition boundaries
 
 CREATE TABLE #partitions
 WITH
@@ -321,7 +321,7 @@ FROM    (
         ) a
 ;
 
--- Iterate over the partition boundaries and split the table
+-- Iterate over hello partition boundaries and split hello table
 
 DECLARE @c INT = (SELECT COUNT(*) FROM #partitions)
 ,       @i INT = 1                                 --iterator for while loop
@@ -347,10 +347,10 @@ END
 DROP TABLE #partitions;
 ```
 
-S tímto přístupem zůstane statické kód ve správě zdrojového kódu a dělení hodnoty hranic mohou být dynamické; vyvíjející se k skladu v čase.
+S Tento přístup hello zůstane statické kódu ve správě zdrojového kódu a dělení hodnoty hranice hello jsou povoleny toobe dynamické; vyvíjejí hello skladu v čase.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v článcích na [tabulky přehled][Overview], [tabulky datové typy][Data Types], [distribuci tabulku] [ Distribute], [Indexování tabulku][Index], [zachování statistiky tabulky] [ Statistics] a [Dočasných tabulek][Temporary].  Další informace o osvědčených postupech najdete v tématu [SQL Data Warehouse osvědčené postupy][SQL Data Warehouse Best Practices].
+články hello toolearn více, najdete na [tabulky přehled][Overview], [tabulky datové typy][Data Types], [distribuci tabulku] [ Distribute], [Indexování tabulku][Index], [zachování statistiky tabulky] [ Statistics] a [ Dočasné tabulky][Temporary].  Další informace o osvědčených postupech najdete v tématu [SQL Data Warehouse osvědčené postupy][SQL Data Warehouse Best Practices].
 
 <!--Image references-->
 

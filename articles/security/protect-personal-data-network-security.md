@@ -1,5 +1,5 @@
 ---
-title: "Ochrana osobních dat pomocí funkce zabezpečení sítě Azure | Microsoft Docs"
+title: "funkce zabezpečení v síti aaaProtect osobní data v Azure | Microsoft Docs"
 description: "Ochrana osobních dat pomocí funkce zabezpečení sítě Azure"
 services: security
 documentationcenter: na
@@ -15,130 +15,130 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: b7a6343f37f890b65d9536eac34e1069d24ad97e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: be112a9408d327ccedf871656afe800fc7f775e3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="protect-personal-data-with-network-security-features-azure-application-gateway-and-network-security-groups"></a>Ochrana osobních dat pomocí funkce zabezpečení sítě: Azure Application Gateway a skupiny zabezpečení sítě
 
-Tento článek obsahuje informace a postupy, které vám pomohou používat Azure Application Gateway a skupiny zabezpečení sítě na ochranu osobních údajů.
+Tento článek obsahuje informace a postupy, které vám pomůže používat Azure Application Gateway a skupiny zabezpečení sítě tooprotect osobní data.
 
-Důležitým prvkem v strategie víceúrovňová zabezpečení k ochraně osobních údajů osobních údajů je obrana proti běžné zneužití ohrožení zabezpečení, například Injektáž SQL nebo skriptování mezi servery. Zachování nežádoucí síťový provoz z vaší Azure virtuální sítě přispívá k ochraně proti potenciální ohrožení citlivých dat a Microsoft Azure nabízí nástroje, které pomáhají chránit vaše data proti útočníkům.
+Důležitým prvkem v víceúrovňová zabezpečení strategie tooprotect hello ochrany osobních údajů osobních údajů je obrana proti běžné zneužití ohrožení zabezpečení, například Injektáž SQL nebo skriptování mezi servery. Zachování nežádoucí síťový provoz z virtuální sítě Azure pomáhá chránit proti potenciální ohrožení citlivých dat a nástroje toohelp chránit vaše data před útočníkům poskytuje Microsoft Azure.
 
 ## <a name="scenario"></a>Scénář
 
-Velké výletních společnosti, centrálou ve Spojených státech amerických, je rozšířit jeho operací a nabídnout itineráře v Středomoří, Jaderského a baltský moři, jakož i Britské ostrovy. Při podpoře těchto úsilí získala menší výletních Víceřádkový na základě v Itálii, Německo, Dánsko a Spojeném království
+Velké výletních společnosti, centrálou ve Spojených státech amerických hello je rozšířit jeho itineráře toooffer operace v hello Středozemního, Jaderského a baltský moři, jakož i hello Britské ostrovy. Při podpoře těchto úsilí, získala několik menších výletní řádky na základě v Itálii, Německo, Dánsko a hello Spojené království
 
-Společnost používá Microsoft Azure k ukládání firemních dat v cloudu a spouštět aplikace na virtuální počítače, které zpracovat a přístup k těmto datům. Tato data obsahují osobní identifikovatelné údaje, například jména, adresy, telefonních čísel a informace o kreditní kartě z jeho základní globální zákazníka. Ve všech umístěních zahrnuje také tradiční informace lidských zdrojů, jako jsou adresy, telefonních čísel, daň identifikačními čísly a lékařské informace o zaměstnance společnosti. Na řádku výletních také udržuje velké databáze potřebu a věrnost program členů, která zahrnuje osobní údaje ke sledování vztahů se zákazníky aktuální a starší.
+Hello společnost používá Microsoft Azure cloud toostore podnikových dat v hello a spouštět aplikace na virtuální počítače, které zpracovat a přístup k těmto datům. Tato data obsahují osobní identifikovatelné údaje, například jména, adresy, telefonních čísel a informace o kreditní kartě z jeho základní globální zákazníka. Ve všech umístěních zahrnuje také tradiční informace lidských zdrojů, jako jsou adresy, telefonních čísel, daň identifikačními čísly a lékařské informace o zaměstnance společnosti. Hello výletních řádku také udržuje velké databáze potřebu a věrnost program členů, která zahrnuje osobní údaje tootrack vztahů se zákazníky aktuální a starší.
 
-Zaměstnanci společnosti přístup k síti ze vzdálených pobočkách společnosti a agenty cesta umístěné po celém světě mají přístup k některým prostředkům společnosti a pracovat s ním pomocí webové aplikace hostované ve virtuálních počítačích Azure.
+Zaměstnanci společnosti přístupu hello síti ze vzdálených pobočkách a agenty cesta nachází kolem hello, world hello společnosti mají přístup k prostředkům společnosti toosome a používat webové aplikace hostované ve virtuálních počítačích Azure toointeract s ním.
 
 ## <a name="problem-statement"></a>Popis problému
 
-Společnosti musí chránit ochranu osobních údajů zákazníků a zaměstnanců osobních dat od útočníky, kteří zneužívají ohrožení zabezpečení softwaru ke spuštění škodlivého kódu, který mohla vystavit osobní data uložená nebo použít cloudových aplikací společnosti.
+Hello společnosti musí chránit hello ochranu osobních údajů zákazníků a osobní data zaměstnanců útočníky, kteří využívají softwaru ohrožení zabezpečení toorun škodlivého kódu, který mohla vystavit osobní data uložená nebo používané hello společnosti cloudové aplikace.
 
 ## <a name="company-goal"></a>Cílem společnosti
 
-Cílem společnosti zajistit, že neoprávněné osoby přístup k podnikovým virtuálních sítí Azure a aplikace a data, která jsou umístěny existuje zneužitím známých chyb zabezpečení. 
+Hello tooensure cílem společnosti, který neoprávněné osoby nemají přístup k podnikové sítě virtuální Azure a hello aplikace a data, která jsou umístěny existuje zneužitím známých chyb zabezpečení. 
 
 ## <a name="solutions"></a>Řešení
 
-Microsoft Azure nabízí mechanismy zabezpečení, aby pomohly zabránit nežádoucí provoz zadávání virtuálních sítí Azure. Řízení příchozí a odchozí přenosy tradičně provádí brány firewall. V Azure můžete službu Application Gateway s brány Firewall webových aplikací a skupin zabezpečení sítě (NSG), které slouží jako jednoduchý distribuovanou bránou firewall. Tyto nástroje vám umožňují detekovat a blokovat nežádoucí síťový provoz.
+Microsoft Azure poskytuje zabezpečení mechanismy toohelp zabránit nežádoucí provoz v přechodu do virtuálních sítí Azure. Řízení příchozí a odchozí přenosy tradičně provádí brány firewall. V Azure můžete použít hello Application Gateway s hello brány Firewall webových aplikací a skupin zabezpečení sítě (NSG), které fungují jako jednoduchý distribuovanou bránou firewall. Tyto nástroje umožňují toodetect a blokovat nežádoucí síťový provoz.
 
 ### <a name="application-gatewayweb-application-firewall"></a>Brány Firewall aplikací brány nebo webové aplikace
 
-[Brány Firewall webových aplikací](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) součást (firewall webových aplikací) [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) chrání webových aplikací, které jsou stále cíle nebezpečné útoky, které využívají známé běžné chyby zabezpečení. Centralizované firewall webových aplikací chrání před útoky na web a zjednodušuje správu zabezpečení bez nutnosti změny aplikace.
+Hello [brány Firewall webových aplikací](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) (firewall webových aplikací) součást hello [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) chrání webových aplikací, které jsou stále cíle nebezpečné útoky, které využívají známé běžné chyby zabezpečení. Centralizované firewall webových aplikací chrání před útoky na web a zjednodušuje správu zabezpečení bez nutnosti změny aplikace.
 
 Různé kategorie útoku, včetně Injektáž SQL, skriptování mezi weby, porušení protokolu HTTP a anomálií, robotů, prohledávací moduly, skenerů, časté nesprávné konfigurace aplikace, HTTP Denial of Service a další běžné útoky, jako adresy Azure firewall webových aplikací příkaz vkládání, požadavek HTTP pašování, rozdělení odpovědi HTTP a útoky zahrnutí vzdáleného souboru. 
 
-Můžete vytvořit služby application gateway s firewall webových aplikací nebo existující aplikační brány přidat firewall webových aplikací. V obou případech Azure Application Gateway vyžaduje vlastní podsíti.
+Můžete vytvořit služby application gateway s firewall webových aplikací nebo přidat firewall webových aplikací tooan existující aplikační brány. V obou případech Azure Application Gateway vyžaduje vlastní podsíti.
 
 #### <a name="how-do-i-create-an-application-gateway-with-waf"></a>Vytvoření služby application gateway s firewall webových aplikací 
 
-Pokud chcete vytvořit novou aplikační bránu s povolen firewall webových aplikací, postupujte takto:
+toocreate novou aplikační bránu s firewall webových aplikací povoleno, hello následující:
 
-1. Přihlaste se k portálu Azure a v **Oblíbené** podokně portálu, klikněte na tlačítko **nový**
+1. Protokol v toohello portál Azure a hello **Oblíbené** podokně hello portálu, klikněte na tlačítko **nový**
 
-2. V okně **Nový** klikněte na **Sítě**.
+2. V hello **nový** okně klikněte na tlačítko **sítě**.
 
 3. Klikněte na tlačítko **Aplikační brána**.
 
-4. Přejděte na portál Azure, **kliknutím na tlačítko Nová \> sítě \> Application Gateway.**
+4. Přejděte toohello portál Azure, **kliknutím na tlačítko Nová \> sítě \> Application Gateway.**
 
    ![vytváření application Gateway](media/protect-netsec/app-gateway-01.png)
 
-5. V **Základy** okno, které se zobrazí, zadejte hodnoty pro následující pole: název, vrstvy (Standard nebo firewall webových aplikací), velikost SKU (malé, střední nebo velké) Instance počet (2 pro zajištění vysoké dostupnosti), předplatné, skupinu prostředků a umístění.
+5. V hello **Základy** okno, které se zobrazí, zadejte hodnoty hello hello následující pole: název, vrstvy (Standard nebo firewall webových aplikací), velikost SKU (malé, střední nebo velké) Instance počet (2 pro zajištění vysoké dostupnosti), předplatné, skupinu prostředků, a Umístění.
 
-6. V **nastavení** okno, které se zobrazí pod **virtuální síť**, klikněte na tlačítko **vyberte virtuální síť**. Tento krok se otevře, zadejte v okně vyberte virtuální síť.
+6. V hello **nastavení** okno, které se zobrazí pod **virtuální síť**, klikněte na tlačítko **vyberte virtuální síť**. Tento krok, který otevře zadejte hello vyberte okna virtuální sítě.
 
-7. Klikněte na tlačítko **vytvořit nový** otevřete **vytvořit virtuální síť** okno.
+7. Klikněte na tlačítko **vytvořit nový** tooopen hello **vytvořit virtuální síť** okno.
 
-8. Zadejte následující hodnoty: název, adresní prostor, název podsítě, rozsah adres podsítě. Klikněte na **OK**.
+8. Zadejte následující hodnoty hello: název, adresní prostor, název podsítě, rozsah adres podsítě. Klikněte na **OK**.
 
-9. Na **nastavení** okno pod **konfigurace IP front-endu**, vyberte typ IP adresy.
+9. Na hello **nastavení** okno pod **konfigurace IP front-endu**, vyberte typ hello IP adresy.
 
 10. Klikněte na tlačítko **zvolte veřejnou IP adresu,** pak **vytvořit nové.**
 
-11. Přijměte výchozí hodnotu a klikněte na tlačítko **OK.**
+11. Přijměte výchozí hodnotu hello a klikněte na tlačítko **OK.**
 
-12. Na **nastavení** okno pod **konfiguraci naslouchacího procesu**, vyberte pomocí protokolu HTTP nebo HTTPS v části **protokol**. K používání protokolu HTTPS, je požadovaný certifikát.
+12. Na hello **nastavení** okno pod **konfiguraci naslouchacího procesu**, vyberte toouse protokolu HTTP nebo HTTPS v části **protokol**. toouse HTTPS, je vyžadován certifikát.
 
-13. Konfigurovat konkrétní nastavení firewall webových aplikací: **brány Firewall stav** (**povoleno**) a **režimu brány Firewall** (**prevence**). Pokud se rozhodnete **detekce** režim, je provoz jenom protokolována.
+13. Konfigurovat konkrétní nastavení hello firewall webových aplikací: **brány Firewall stav** (**povoleno**) a **režimu brány Firewall** (**prevence**). Pokud se rozhodnete **detekce** jako hello režimu, je provoz jenom protokolována.
 
-14. Zkontrolujte **Souhrn** a klikněte na tlačítko **OK**. Službu application gateway je nyní zařazen do fronty a vytvořit.
+14. Zkontrolujte hello **Souhrn** a klikněte na tlačítko **OK**. Aplikační brána hello je nyní zařazen do fronty a vytvořit.
 
-Po vytvoření služby application gateway, můžete přejít na ni na portálu a pokračovat v konfiguraci služby application gateway.
+Po vytvoření hello aplikační bránu, můžete přejděte tooit hello portálu a pokračovat v konfiguraci hello aplikační brány.
 
 ![Vytvoření aplikační brány](media/protect-netsec/adatum-app-gateway.png)
 
-#### <a name="how-do-i-add-waf-to-an-existing-application"></a>Jak přidat firewall webových aplikací na existující aplikaci?
+#### <a name="how-do-i-add-waf-tooan-existing-application"></a>Jak přidat firewall webových aplikací tooan stávající aplikaci?
 
-Pokud chcete aktualizovat existující aplikační brány pro podporu firewall webových aplikací v režimu prevence, postupujte takto:
+tooupdate existující aplikaci brány toosupport firewall webových aplikací v režimu prevence hello následující:
 
-1. Na webu Azure Portal v podokně **Oblíbené** klikněte na **Všechny prostředky**.
+1. V portálu Azure hello **Oblíbené** podokně klikněte na tlačítko **všechny prostředky**.
 
-2. Klikněte na existující aplikační brána v **všechny prostředky** okno. 
+2. Klikněte na tlačítko hello existující aplikační brána v hello **všechny prostředky** okno. 
 >[!NOTE]
-Poznámka: Pokud odběr, který jste již vybrali neobsahuje několik prostředků, můžete zadat název ve filtru podle názvu... pro snadný přístup k zóně DNS.
-3. Klikněte na tlačítko **brány firewall webových aplikací** a aktualizovat nastavení aplikační brány: **upgradujte firewall webových aplikací úrovně** (zaškrtnuto), **brány Firewall stav** (povoleno),  **Režimu brány firewall** (prevence). Musíte také nakonfigurovat sadu pravidel a nakonfigurovat zakázaná pravidla.
+Poznámka: Pokud hello odběr, který jste již vybrali neobsahuje několik prostředků, můžete zadat název hello v hello filtr podle názvu... pole tooeasily přístup hello DNS zóny.
+3. Klikněte na tlačítko **brány firewall webových aplikací** a aktualizovat nastavení služby application gateway hello: **Upgrade tooWAF vrstvy** (zaškrtnuto), **brány Firewall stav** (povoleno),  **Režimu brány firewall** (prevence). Musíte taky tooconfigure hello sada pravidel a nakonfigurujte zakázaná pravidla.
 
-Podrobnější informace o tom, jak vytvořit novou aplikační bránu firewall webových aplikací a jak přidat firewall webových aplikací do existující aplikace bránu, najdete v části [vytvoření služby application gateway pomocí brány firewall webových aplikací pomocí portálu.](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal)
+Podrobné informace o tom, toocreate novou aplikační bránu s firewall webových aplikací a jak tooadd firewall webových aplikací tooan existující aplikační bránu, najdete v části [vytvoření služby application gateway pomocí brány firewall webových aplikací pomocí portálu hello.](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal)
 
 ### <a name="network-security-groups"></a>Network Security Groups (Skupiny zabezpečení sítě)
 
-A [skupinu zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (NSG) obsahuje seznam pravidel zabezpečení, která povolují nebo odpírají síťový provoz prostředky připojenými k [virtuálních sítí Azure](https://docs.microsoft.com/azure/virtual-network/) (VNet). Skupiny Nsg můžou být přidružena k podsítě nebo jednotlivé virtuální počítače. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla se vztahují na všechny prostředky, které jsou připojené k příslušné podsíti. Provoz se dá dále omezit přidružením skupiny zabezpečení sítě k virtuálnímu počítači nebo síťové kartě.
+A [skupinu zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (NSG) obsahuje seznam pravidel zabezpečení, která povolují nebo odepírají tooresources provoz sítě připojené příliš[virtuálních sítí Azure](https://docs.microsoft.com/azure/virtual-network/) (VNet). Skupiny Nsg můžou být přidružené toosubnets nebo jednotlivé virtuální počítače. Pokud skupinu NSG přidružená tooa podsíť, hello pravidla použít tooall prostředky připojené toohello podsítě. Provoz se dá dál omezit tím, že také přidružíte NSG tooa virtuálního počítače nebo síťový adaptér.
 
 Skupiny Nsg obsahují čtyři vlastnosti: název, oblast, skupinu prostředků a pravidla.
 >[!Note]
-Ačkoli skupina zabezpečení sítě existuje ve skupině prostředků, dá se přidružit k prostředkům v libovolné skupině prostředků, pokud příslušný prostředek patří do stejné oblasti Azure jako příslušná skupina zabezpečení sítě.
+Ačkoli skupina NSG existuje ve skupině prostředků, může být přidružené tooresources v libovolné skupině prostředků, tak dlouho, dokud prostředek hello je součástí hello stejné oblasti Azure jako hello NSG.
 
-Pravidla NSG obsahují devět vlastnosti: název, protokol (TCP, UDP nebo \*, což zahrnuje ICMP a také protokolu UDP a TCP), zdroj rozsah portů, rozsah cílových portů, zdrojová adresa předpony, předpona cílové adresy směr (příchozí nebo odchozí), () s prioritou rozsahu od 100 do 4096) a přístup k typu (povolit nebo zakázat). Všechny skupiny Nsg obsahují sadu výchozích pravidel, která je možné odstranit, nebo přepsat pravidly, které vytvoříte.
+Pravidla NSG obsahují devět vlastnosti: název, protokol (TCP, UDP nebo \*, což zahrnuje ICMP a také protokolu UDP a TCP), zdroj rozsah portů, rozsah cílových portů, zdrojová adresa předpony, předpona cílové adresy směr (příchozí nebo odchozí), () s prioritou rozsahu od 100 do 4096) a přístup k typu (povolit nebo zakázat). Všechny skupiny Nsg obsahují sadu výchozích pravidel, která je možné odstranit, nebo přepsat hello pravidla, která vytvoříte.
 
 #### <a name="how-do-i-implement-nsgs"></a>Jak implementovat skupiny Nsg?
 
-Implementací skupin Nsg vyžaduje plánování a existuje několik aspekty návrhu, které je třeba vzít v úvahu. Patří mezi ně omezení pro počet skupin Nsg na předplatné a pravidla na skupinu NSG; Virtuální síť a podsíť návrhu, zvláštní pravidla, provoz protokolu ICMP, izolace vrstev s podsítí, nástroje pro vyrovnávání zatížení a další.
+Implementací skupin Nsg vyžaduje plánování a je nutné tootake v úvahu několik aspektů návrhu. Patří mezi ně omezení hello počet skupin Nsg na předplatné a pravidla na skupinu NSG; Virtuální síť a podsíť návrhu, zvláštní pravidla, provoz protokolu ICMP, izolace vrstev s podsítí, nástroje pro vyrovnávání zatížení a další.
 
 Další pokyny plánování a implementace skupiny Nsg a vzorový scénář nasazení najdete v tématu [filtrování provozu sítě přenosů se skupinami zabezpečení sítě.](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)
 
 #### <a name="how-do-i-create-rules-in-an-nsg"></a>Vytvoření pravidla v skupinu NSG
 
-Pokud chcete vytvořit příchozích pravidel v existující skupině, postupujte takto:
+toocreate příchozí pravidla v existující skupině, hello následující:
 
 1. Klikněte na tlačítko **Procházet**a potom **skupin zabezpečení sítě**.
 
-2. V seznamu skupin Nsg, klikněte na **NSG front-endu**a potom **příchozí pravidla zabezpečení.**
+2. Hello seznamu skupin Nsg, klikněte na **NSG front-endu**a potom **příchozí pravidla zabezpečení.**
 
-3. V seznamu příchozí pravidla zabezpečení, klikněte na **přidat.**
+3. V seznamu hello příchozí pravidla zabezpečení, klikněte na tlačítko **přidat.**
 
-4. Zadejte hodnoty do následujících polí: název, Priority, zdroj, protokol, zdrojový rozsah, cíl, cílový rozsah portů a akce.
+4. Zadejte hodnoty hello v hello následující pole: název, Priority, zdroj, protokol, zdrojový rozsah, cíl, cílový rozsah portů a akce.
 
-Nové pravidlo se zobrazí v této skupině za několik sekund.
+nové pravidlo Hello se zobrazí v hello NSG za několik sekund.
 
 ![pravidla zabezpečení sítě](media/protect-netsec/inbound-security.png)
 
-Další pokyny o tom, jak vytvářet skupiny Nsg v podsítích, vytvořit pravidla a přidružit skupinu NSG k podsíti front-end a back-end, najdete v části [vytvoření skupin zabezpečení sítě pomocí portálu Azure.](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-nsg-arm-pportal)
+Další pokyny, jak toocreate skupin Nsg v podsítích, vytvořte pravidla a přidružte skupinu NSG podsíť front-end a back-end, najdete v tématu [vytvoření skupin zabezpečení sítě pomocí hello portálu Azure.](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-nsg-arm-pportal)
 
 ## <a name="next-steps"></a>Další kroky
 

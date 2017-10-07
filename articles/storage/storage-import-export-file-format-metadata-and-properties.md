@@ -1,6 +1,6 @@
 ---
-title: "Azure Import/Export metadat a vlastnosti formát souboru | Microsoft Docs"
-description: "Zjistěte, jak určit metadata a vlastnosti pro jeden nebo více objektů BLOB, které jsou součástí importu nebo exportu úlohy."
+title: "aaaAzure importu a exportu metadat a vlastnosti souboru formátu | Microsoft Docs"
+description: "Zjistěte, jak toospecify metadata a vlastnosti pro jeden nebo více objektů BLOB, jsou součástí importu nebo exportu úlohy."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 3f728ad94cdcbd32092b677f11a737ae91376720
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bb13c1f1a27baea77298cb224970cd521d02d8c0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Azure Import/Export metadat a vlastnosti souboru formát služby
-Metadata a vlastnosti pro jeden nebo více objektů BLOB můžete zadat jako součást úlohy importu nebo úlohy exportu. Pokud chcete nastavit vlastnosti pro objekty BLOB vytváří jako součást úlohy importu nebo metadata, poskytnete metadata nebo vlastnosti souboru na pevný disk obsahující data, která bude importována. Pro úlohy exportu metadat a vlastnosti se zapisují do metadata nebo vlastnosti souboru, který je zahrnut na pevný disk, který vrátil pro vás.  
+Metadata a vlastnosti pro jeden nebo více objektů BLOB můžete zadat jako součást úlohy importu nebo úlohy exportu. vlastnosti pro objekty BLOB vytváří jako součást úlohy importu nebo tooset metadata, je třeba zadat soubor metadat nebo vlastnosti na hello pevný disk obsahující toobe hello data importovat. Pro úlohy exportu metadat a vlastnosti jsou zapsány do tooa metadata nebo vlastnosti souboru, který je zahrnut na pevném disku hello vrátil tooyou.  
   
 ## <a name="metadata-file-format"></a>Formát souboru metadat  
-Formát souboru metadat je následující:  
+Hello formát souboru metadat je následující:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -37,11 +37,11 @@ Formát souboru metadat je následující:
   
 |XML Element|Typ|Popis|  
 |-----------------|----------|-----------------|  
-|`Metadata`|Kořenový element|Kořenový element soubor metadat.|  
-|`metadata-name`|Řetězec|Volitelné. XML element určuje název metadata pro objekt blob a jeho hodnota určuje hodnota nastavení metadat.|  
+|`Metadata`|Kořenový element|kořenový element Hello hello metadata souboru.|  
+|`metadata-name`|Řetězec|Volitelné. Hello – element XML určuje název hello hello metadata pro objekt blob hello a jeho hodnota určuje hello hodnotu nastavení metadata hello.|  
   
 ## <a name="properties-file-format"></a>Formát souboru vlastnosti  
-Formát souboru vlastnosti vypadá takto:  
+Hello formát souboru vlastnosti vypadá takto:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -59,15 +59,15 @@ Formát souboru vlastnosti vypadá takto:
   
 |XML Element|Typ|Popis|  
 |-----------------|----------|-----------------|  
-|`Properties`|Kořenový element|Kořenový element souboru vlastnosti.|  
-|`Last-Modified`|Řetězec|Volitelné. Čas poslední úpravy pro tento objekt blob. Pro export pouze úlohy.|  
-|`Etag`|Řetězec|Volitelné. Hodnota objektu blob značka ETag. Pro export pouze úlohy.|  
-|`Content-Length`|Řetězec|Volitelné. Velikost objektu blob v bajtech. Pro export pouze úlohy.|  
-|`Content-Type`|Řetězec|Volitelné. Typ obsahu objektu blob.|  
-|`Content-MD5`|Řetězec|Volitelné. Hodnota hash MD5 objektu blob.|  
-|`Content-Encoding`|Řetězec|Volitelné. Obsah objektu blob kódování.|  
-|`Content-Language`|Řetězec|Volitelné. Jazyk obsahu objektu blob.|  
-|`Cache-Control`|Řetězec|Volitelné. Řetězec ovládací prvek mezipaměti pro tento objekt blob.|  
+|`Properties`|Kořenový element|kořenový element Hello hello vlastnosti souboru.|  
+|`Last-Modified`|Řetězec|Volitelné. Hello čas poslední změny pro objekt blob hello. Pro export pouze úlohy.|  
+|`Etag`|Řetězec|Volitelné. Hello hodnota ETag objektu blob. Pro export pouze úlohy.|  
+|`Content-Length`|Řetězec|Volitelné. Hello velikost objektu blob hello v bajtech. Pro export pouze úlohy.|  
+|`Content-Type`|Řetězec|Volitelné. Typ obsahu Hello objektu hello blob.|  
+|`Content-MD5`|Řetězec|Volitelné. Hello hodnota hash MD5 objektu blob.|  
+|`Content-Encoding`|Řetězec|Volitelné. Hello obsahu objektu blob kódování.|  
+|`Content-Language`|Řetězec|Volitelné. Hello jazyk obsahu objektu blob.|  
+|`Cache-Control`|Řetězec|Volitelné. Hello řetězec ovládací prvek mezipaměti pro objekt blob hello.|  
 
 ## <a name="next-steps"></a>Další kroky
 

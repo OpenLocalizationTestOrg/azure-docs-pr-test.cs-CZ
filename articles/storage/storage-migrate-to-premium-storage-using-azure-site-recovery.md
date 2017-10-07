@@ -1,6 +1,6 @@
 ---
-title: "Migrace na Azure Premium Storage pomocí Azure Site Recovery | Microsoft Docs"
-description: "Migrace stávajících virtuálních počítačů do Azure Premium Storage pomocí Site Recovery. Premium Storage nabízí podporu vysoce výkonné, nízkou latencí disku pro I náročnými úlohy běžící na virtuálních počítačích Azure."
+title: "aaaMigrating tooAzure pomocí Azure Site Recovery Storage úrovně Premium | Microsoft Docs"
+description: "Migrujte existující virtuální počítače tooAzure pomocí Site Recovery Storage úrovně Premium. Premium Storage nabízí podporu vysoce výkonné, nízkou latencí disku pro I náročnými úlohy běžící na virtuálních počítačích Azure."
 services: storage
 cloud: Azure
 documentationcenter: na
@@ -14,148 +14,148 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/06/2017
 ms.author: luywang
-ms.openlocfilehash: cc364bdae49068a50ec86c537c3b878670b8b8b7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: cb71c06e4a1a73d484e226a573d1ade48c87664d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="migrating-to-premium-storage-using-azure-site-recovery"></a>Migrace na Storage úrovně Premium pomocí Azure Site Recovery
+# <a name="migrating-toopremium-storage-using-azure-site-recovery"></a>Migrace tooPremium úložiště pomocí Azure Site Recovery
 
-[Azure Premium Storage](storage-premium-storage.md) nabízí podporu vysoce výkonné, nízkou latencí disků pro virtuální počítače (VM), které jsou spuštěny I náročnými úlohy. Účelem této příručky je pomoci uživatelům migraci jejich disky virtuálních počítačů z standardní účet úložiště na prémiový účet úložiště pomocí [Azure Site Recovery](../site-recovery/site-recovery-overview.md).
+[Azure Premium Storage](storage-premium-storage.md) nabízí podporu vysoce výkonné, nízkou latencí disků pro virtuální počítače (VM), které jsou spuštěny I náročnými úlohy. Hello účel tohoto průvodce je uživatelé toohelp migraci jejich disky virtuálních počítačů z tooa účet standardního úložiště prémiový účet úložiště pomocí [Azure Site Recovery](../site-recovery/site-recovery-overview.md).
 
-Site Recovery je služba Azure, která přispívá ke strategii obnovení kontinuity a po havárii obchodní orchestrací replikace místní fyzických serverů a virtuálních počítačů do cloudu (Azure) nebo do sekundárního datacentra. Pokud dojde k výpadkům ve vašem primárním umístění, můžete převzetí služeb při selhání do sekundárního umístění, aby aplikace a úlohy zůstaly dostupné. Nedodržíte zpět do primárního umístění, až se obnoví do normálního provozu. Site Recovery poskytuje testovací převzetí služeb při selhání na Nácvik zotavení po havárii aniž by to ovlivňovalo produkční prostředí. Když spustíte převzetí služeb při selhání s minimálními ztrátami dat (podle četnosti replikací) pro neočekávané havárie. Ve scénáři migrace na Storage úrovně Premium, můžete použít [převzetí služeb při selhání ve službě Site Recovery](../site-recovery/site-recovery-failover.md) v Azure Site Recovery k migraci disků target na prémiový účet úložiště.
+Site Recovery je služba Azure, která přispívá tooyour provozní kontinuitu a strategie zotavení po havárii tím, že orchestruje hello replikace místní fyzických serverů a virtuálních počítačů toohello cloudu (Azure) nebo tooa sekundárního datacentra. Pokud dojde k výpadkům ve vašem primárním umístění, můžete převzít toohello sekundárního umístění tookeep aplikace a úlohy zůstaly dostupné. Primární umístění back tooyour nezdaří, až se obnoví toonormal operaci. Site Recovery poskytuje testovací převzetí služeb při selhání projde obnovení po havárii toosupport aniž by to ovlivňovalo produkční prostředí. Když spustíte převzetí služeb při selhání s minimálními ztrátami dat (podle četnosti replikací) pro neočekávané havárie. V hello scénáře migrace tooPremium úložiště, můžete použít hello [převzetí služeb při selhání ve službě Site Recovery](../site-recovery/site-recovery-failover.md) v Azure Site Recovery toomigrate cílové disky tooa prémiový účet úložiště.
 
-Doporučujeme, abyste migrace na Storage úrovně Premium pomocí Site Recovery, protože tato možnost nabízí minimální dobou výpadku a zabraňuje provádění ruční kopírování disků a vytvoření nové virtuální počítače. Site Recovery bude systematičtěji zkopírujte vaše disky a vytvořte nové virtuální počítače během převzetí služeb při selhání. Site Recovery podporuje několik typů převzetí služeb při selhání s minimální nebo žádný výpadek. Naplánovat odstávka a odhadnout ztrátě dat, přečtěte si téma [typy převzetí služeb při selhání](../site-recovery/site-recovery-failover.md) tabulky v Site Recovery. Pokud jste [Příprava připojení k virtuálním počítačům Azure po převzetí služeb při selhání](../site-recovery/site-recovery-vmware-to-azure.md), musí být možné se připojit k virtuálnímu počítači Azure po převzetí služeb při selhání pomocí protokolu RDP.
+Doporučujeme migraci tooPremium úložiště pomocí Site Recovery, protože tato možnost nabízí minimální dobou výpadku a zabraňuje hello provádění ruční kopírování disků a vytvoření nové virtuální počítače. Site Recovery bude systematičtěji zkopírujte vaše disky a vytvořte nové virtuální počítače během převzetí služeb při selhání. Site Recovery podporuje několik typů převzetí služeb při selhání s minimální nebo žádný výpadek. tooplan vaše ztrátě dat výpadky a odhad, najdete v části hello [typy převzetí služeb při selhání](../site-recovery/site-recovery-failover.md) tabulky v Site Recovery. Pokud jste [Příprava tooconnect tooAzure virtuální počítače po převzetí služeb při selhání](../site-recovery/site-recovery-vmware-to-azure.md), byste měli mít tooconnect toohello virtuálního počítače Azure pomocí protokolu RDP po převzetí služeb při selhání.
 
 ![][1]
 
 ## <a name="azure-site-recovery-components"></a>Součásti Azure Site Recovery
 
-Toto jsou součásti Site Recovery, které jsou relevantní pro tento scénář migrace.
+Toto jsou součásti Site Recovery hello, které jsou relevantní toothis scénář migrace.
 
-* **Konfigurační server** je virtuální počítač Azure, která koordinuje komunikaci a spravuje procesy data replikace a obnovení. Na tomto virtuálním počítači spustíte souboru jednoho instalačního programu nainstalujte konfigurační server a další komponentu, názvem procesní server, jako replikační brána. Přečtěte si informace o [požadavky konfigurace serveru](../site-recovery/site-recovery-vmware-to-azure.md). Konfigurační server jenom je potřeba nakonfigurovat jednou a lze použít pro všechny migrace do stejné oblasti.
+* **Konfigurační server** je virtuální počítač Azure, která koordinuje komunikaci a spravuje procesy data replikace a obnovení. Na tomto virtuálním počítači budete spouštět nastavení jedním souboru tooinstall hello konfigurační server a další komponentu, názvem procesní server, jako replikační brána. Přečtěte si informace o [požadavky konfigurace serveru](../site-recovery/site-recovery-vmware-to-azure.md). Konfigurační server pouze musí toobe nakonfigurovaný jednou a lze použít pro všechny migrace toohello stejné oblasti.
 
-* **Procesový server** replikační brána, která přijímá data replikace z zdrojové virtuální počítače optimalizuje dat pomocí ukládání do mezipaměti, komprese a šifrování, a odešle ji do účtu úložiště. Také obstará nabízenou instalaci služby mobility na zdrojový virtuální počítače a provádí automatického zjišťování zdrojové virtuální počítače. Výchozí proces server je nainstalována na konfiguračním serveru. Můžete nasadit další samostatných serverů proces škálování vašeho nasazení. Přečtěte si informace o [osvědčené postupy pro nasazení procesového serveru](https://azure.microsoft.com/blog/best-practices-for-process-server-deployment-when-protecting-vmware-and-physical-workloads-with-azure-site-recovery/) a [nasazení serverů pro další proces](../site-recovery/site-recovery-plan-capacity-vmware.md#deploy-additional-process-servers). Procesový server jenom je potřeba nakonfigurovat jednou a lze použít pro všechny migrace do stejné oblasti.
+* **Procesový server** replikační brána, která přijímá data replikace z zdrojové virtuální počítače optimalizuje hello dat pomocí ukládání do mezipaměti, komprese a šifrování, a odešle ji tooa účet úložiště. Také obstará nabízenou instalaci hello mobility service toosource virtuální počítače a provádí automatického zjišťování zdrojové virtuální počítače. Hello Výchozí procesový server je nainstalována na hello konfiguračním serveru. Můžete nasadit další samostatný proces servery tooscale vaše nasazení. Přečtěte si informace o [osvědčené postupy pro nasazení procesového serveru](https://azure.microsoft.com/blog/best-practices-for-process-server-deployment-when-protecting-vmware-and-physical-workloads-with-azure-site-recovery/) a [nasazení serverů pro další proces](../site-recovery/site-recovery-plan-capacity-vmware.md#deploy-additional-process-servers). Procesový server pouze potřebuje toobe nakonfigurovaný jednou a lze použít pro všechny migrace toohello stejné oblasti.
 
-* **Služba mobility** je komponenta, která je nasazena v každé standardní virtuálních počítačů, které chcete replikovat. Se zaznamenává datové zápisy na standardní virtuální počítač a předává je na procesní server. Přečtěte si informace o [replikovat počítače požadavky](../site-recovery/site-recovery-vmware-to-azure.md).
+* **Služba mobility** je komponenta, která je nasazena v každé standardní virtuální počítač má tooreplicate. Zachycení datové zápisy na hello standardní virtuální počítač a předává je toohello procesový server. Přečtěte si informace o [replikovat počítače požadavky](../site-recovery/site-recovery-vmware-to-azure.md).
 
 Tento obrázek znázorňuje interakci těchto součástí.
 
 ![][15]
 
 > [!NOTE]
-> Site Recovery nepodporuje migraci disků prostorů úložiště.
+> Site Recovery nepodporuje migraci hello disků prostorů úložiště.
 
-Další součásti pro další scénáře, naleznete v [architekturu scénáře](../site-recovery/site-recovery-vmware-to-azure.md).
+Další součásti pro další scénáře naleznete příliš[architekturu scénáře](../site-recovery/site-recovery-vmware-to-azure.md).
 
 ## <a name="azure-essentials"></a>Azure essentials
 
-Toto jsou požadavky na Azure pro tento scénář migrace.
+Tyto jsou hello Azure požadavky pro tento scénář migrace.
 
 * Předplatné Azure
-* Účet služby Azure Premium storage k ukládání replikovaných dat
-* Virtuální sítě Azure (VNet) ke kterému se připojí virtuální počítače, když jste vytvořili v převzetí služeb při selhání. Virtuální síť Azure musí být ve stejné oblasti jako ta, ve kterém běží služby Site Recovery
-* Azure standardní účet úložiště pro uložení protokoly replikace. To může být stejný účet úložiště jako migrovaného disky virtuálních počítačů
+* Toostore účet úložiště Azure Premium replikovaná data
+* Pokud jste vytvořili v převzetí služeb při selhání se budou připojovat virtuální síti Azure (VNet) toowhich virtuálních počítačů. Hello virtuální síť Azure musí být v hello stejné oblasti jako jeden ve které hello Site Recovery běží hello
+* Azure standardní účet úložiště v které toostore protokoly replikace. Může se jednat jako disky hello virtuálních počítačů se migruje hello stejný účet úložiště
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Seznámení s komponentami scénář relevantní migrace v předchozí části
-* Naplánovat odstávka metodou učení o [převzetí služeb při selhání ve službě Site Recovery](../site-recovery/site-recovery-failover.md)
+* Pochopit součásti scénáře hello relevantní migrace v předcházející části hello
+* Naplánovat odstávka metodou učení o hello [převzetí služeb při selhání ve službě Site Recovery](../site-recovery/site-recovery-failover.md)
 
 ## <a name="setup-and-migration-steps"></a>Postup instalace a migrace
 
-Site Recovery můžete použít k migraci virtuálních počítačů Azure IaaS mezi regiony nebo v rámci stejné oblasti. Mají se přizpůsobit podle následujících pokynů pro tento scénář migrace z článku [replikovat virtuální počítače VMware nebo fyzických serverů do Azure](../site-recovery/site-recovery-vmware-to-azure.md). Podrobné odkazy podle kroků v další pokyny v tomto článku.
+Site Recovery toomigrate virtuální počítače Azure IaaS můžete použít mezi regiony nebo v rámci stejné oblasti. Hello následující pokyny mít byla přizpůsobit pro tento scénář migrace z článku hello [replikovat virtuální počítače VMware nebo fyzických serverů tooAzure](../site-recovery/site-recovery-vmware-to-azure.md). Postupujte podle hello odkazy podrobný popis kroků v další toohello pokyny v tomto článku.
 
-1. **Vytvoření trezoru služeb zotavení**. Vytvoření a správa trezoru Site Recovery prostřednictvím [portál Azure](https://portal.azure.com). Klikněte na tlačítko **nové** > **správy** > **zálohování** a **lokality obnovení (OMS)**. Případně můžete kliknout na **Procházet** > **trezoru služeb zotavení** > **přidat**. Virtuální počítače budou replikovány do oblasti, které určíte v tomto kroku. Pro účely migrace ve stejné oblasti vyberte oblast, kde jsou zdrojové virtuální počítače a účty zdrojové úložiště. Všimněte si, že migrace na účty úložiště Premium se podporuje jenom v [portál Azure](https://portal.azure.com), nikoli [portálu classic](https://manage.windowsazure.com).
+1. **Vytvoření trezoru služeb zotavení**. Vytvoření a správa hello trezoru Site Recovery prostřednictvím hello [portál Azure](https://portal.azure.com). Klikněte na tlačítko **nové** > **správy** > **zálohování** a **lokality obnovení (OMS)**. Případně můžete kliknout na **Procházet** > **trezoru služeb zotavení** > **přidat**. Virtuální počítače budou replikované toohello oblasti, které určíte v tomto kroku. Hello za účelem migrace v hello stejné oblasti, vyberte hello oblast, kdy jsou vaše zdrojové virtuální počítače a účty zdrojové úložiště. Všimněte si, že účty úložiště migrace tooPremium je podporována pouze v hello [portál Azure](https://portal.azure.com), není hello [portálu classic](https://manage.windowsazure.com).
 
-2. Následující postup vám pomůže **volba cílů ochrany**.
+2. Hello následující postup vám pomůže **volba cílů ochrany**.
 
-    2a. Na virtuálním počítači, kam chcete nainstalovat konfigurační server, otevřete [portál Azure](https://portal.azure.com). Přejděte na **trezory služeb zotavení** > **nastavení**. V části **nastavení**, vyberte **Site Recovery**. V části **Site Recovery**, vyberte **krok 1: připravte infrastrukturu**. V části **připravit infrastrukturu**, vyberte **cíl ochrany**.
+    2a. Na hello virtuálního počítače, kam chcete tooinstall hello konfigurační server, otevřete hello [portál Azure](https://portal.azure.com). Přejděte příliš**trezory služeb zotavení** > **nastavení**. V části **nastavení**, vyberte **Site Recovery**. V části **Site Recovery**, vyberte **krok 1: připravte infrastrukturu**. V části **připravit infrastrukturu**, vyberte **cíl ochrany**.
 
     ![][2]
 
-    2b. V části **cíl ochrany**, v prvním rozevíracím seznamu vyberte **do Azure**. Vyberte v rozevíracím seznamu druhý **není virtualizované / jiné**a potom klikněte na **OK**.
+    2b. V části **cíl ochrany**, v prvním rozevíracím seznamu text hello, vyberte **tooAzure**. V rozevíracím seznamu druhý hello vyberte **není virtualizované / jiné**a potom klikněte na **OK**.
 
     ![][3]
 
-3. Následující postup vám pomůže **nastavení zdrojového prostředí (konfigurační server)**.
+3. Hello následující postup vám pomůže **nastavit hello zdrojové prostředí (konfigurační server)**.
 
-    3a. Stažení **Unified instalace nástroje Azure Site Recovery** a **registrační klíč trezoru** přechodem na **připravit infrastrukturu** > **připravit zdroj** > **přidat Server** okno. Budete potřebovat registrační klíč trezoru spustit jednotnou instalaci. Klíč je platný 5 dní od jeho vygenerování.
+    3a. Stáhnout hello **Unified instalace nástroje Azure Site Recovery** a hello **registrační klíč trezoru** podle budete toohello **připravit infrastrukturu**  >  **Připravit zdroj** > **přidat Server** okno. Budete potřebovat hello nastavení hello unified klíče toorun registrace trezoru. Hello klíč je platný 5 dní od jeho vygenerování.
 
     ![][4]
 
-    3b. Přidejte konfigurační Server v **přidat Server** okno.
+    3b. Přidání konfigurace serveru v hello **přidat Server** okno.
 
     ![][5]
 
-    3c. Ve virtuálním počítači, který používáte jako konfigurační server spusťte Unified instalačního programu nainstalujte konfigurační server a procesový server. Si můžete projít na snímcích obrazovky [sem](../site-recovery/site-recovery-vmware-to-azure.md) k dokončení instalace. Najdete na následujících snímcích obrazovky kroky zadaný pro tento scénář migrace.
+    3c. Na hello virtuálního počítače, který používáte jako hello konfigurační server spusťte instalační program Unified tooinstall hello konfigurační server a procesový server hello. Si můžete projít snímky obrazovky hello [sem](../site-recovery/site-recovery-vmware-to-azure.md) toocomplete hello instalace. Je možné odkazovat toohello následující snímky obrazovky pro kroky zadaný pro tento scénář migrace.
 
-    Na stránce **Než začnete** vyberte **Nainstalovat konfigurační server a procesový server**.
+    V **před zahájením**, vyberte **nainstalovat hello konfigurační server a procesový server**.
 
     ![][6]
 
-    3D. V **registrace**, vyhledejte a vyberte registrační klíč stažený z trezoru.
+    3D. V **registrace**, procházet a vyberte registrační klíč hello jste si stáhli z trezoru hello.
 
     ![][7]
 
-    3E. Na stránce **Podrobnosti o prostředí** vyberte, zda se chystáte replikovat virtuální počítače VMware. Pro tento scénář migrace zvolte **ne**.
+    3E. V **prostředí podrobnosti**vyberte, jestli budete virtuální počítače VMware tooreplicate. Pro tento scénář migrace zvolte **ne**.
 
     ![][8]
 
-    3f. Po dokončení instalace se zobrazí **Microsoft Azure Site Recovery konfigurační Server** okno. Použít **Správa účtů** pro automatické zjišťování můžete použít kartu k vytvoření účtu obnovení lokality. (Ve scénáři o ochraně fyzické počítače, nastavení účtu není relevantní, ale musíte mít alespoň jeden účet, aby měla jedna z následujících kroků. V tomto případě můžete pojmenovat účet a heslo jako kterákoli.) Použití **registrace trezoru** kartě nahrát soubor s přihlašovacími údaji trezoru.
+    3f. Po dokončení instalace hello uvidíte hello **Microsoft Azure Site Recovery konfigurační Server** okno. Použít hello **Správa účtů** kartě toocreate hello účet, který Site Recovery můžete použít pro automatické zjišťování. (V případě hello o ochraně fyzické počítače, nastavení účtu hello není relevantní, ale musíte mít alespoň jeden tooenable účet, jednu z následujících kroků hello. V tomto případě můžete pojmenovat hello účet a heslo jako kterákoli.) Použití hello **registrace trezoru** soubor s přihlašovacími údaji trezoru karta tooupload hello.
 
     ![][9]
 
-4. **Nastavení cílového prostředí**. Klikněte na tlačítko **připravit infrastrukturu** > **cíl**a zadejte model nasazení, kterou chcete použít pro virtuální počítače po převzetí služeb při selhání. Můžete zvolit **Classic** nebo **Resource Manager**, v závislosti na vašem scénáři.
+4. **Nastavení cílového prostředí hello**. Klikněte na tlačítko **připravit infrastrukturu** > **cíl**a zadejte model nasazení hello toouse chcete pro virtuální počítače po převzetí služeb při selhání. Můžete zvolit **Classic** nebo **Resource Manager**, v závislosti na vašem scénáři.
 
     ![][10]
 
-    Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a účet úložiště Azure. Poznámka: Pokud pro replikovaná data používáte účet úložiště Premium, budete muset nastavit další standardní účet úložiště k ukládání protokolů replikace.
+    Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a účet úložiště Azure. Všimněte si, že pokud pro replikovaná data používáte účet úložiště Premium, je třeba tooset replikaci toostore účtu další standardní úložiště protokolů.
 
-5. **Nakonfigurování nastavení replikace**. Postupujte podle [nakonfigurování nastavení replikace](../site-recovery/site-recovery-vmware-to-azure.md) k ověřte, zda je konfigurační server úspěšně přidružené k zásadě replikace, který vytvoříte.
+5. **Nakonfigurování nastavení replikace**. Postupujte podle [nakonfigurování nastavení replikace](../site-recovery/site-recovery-vmware-to-azure.md) tooverify, který je úspěšně přidružený k zásadě replikace hello vytvoříte konfigurační server.
 
-6. **Plánování kapacity**. Použití [Plánovač kapacity](../site-recovery/site-recovery-capacity-planner.md) přesně odhadnout šířku pásma sítě, úložiště a dalších požadavků na provádění vaší replikace potřebuje. Až budete hotoví, vyberte **Ano** v **dokončili jste plánování kapacity?**.
+6. **Plánování kapacity**. Použití hello [Plánovač kapacity](../site-recovery/site-recovery-capacity-planner.md) tooaccurately odhad šířky pásma sítě, úložiště a další požadavky toomeet musí vaší replikace. Až budete hotoví, vyberte **Ano** v **dokončili jste plánování kapacity?**.
 
     ![][11]
 
-7. Následující postup vám pomůže **instalaci služby mobility a zapnout replikaci**.
+7. Hello následující postup vám pomůže **instalaci služby mobility a zapnout replikaci**.
 
-    7a. Můžete se rozhodnout [nabízená instalace](../site-recovery/site-recovery-vmware-to-azure.md) pro vaše zdrojové virtuální počítače nebo na [ručně instalaci služby mobility](../site-recovery/site-recovery-vmware-to-azure-install-mob-svc.md) na zdrojové virtuální počítače. Můžete najít požadavek nabízené instalace a cestu ruční instalační program v odkazu. Při provádění ruční instalace, možná budete muset použít interní IP adresu najít konfigurační server.
+    7a. Můžete zvolit příliš[nabízená instalace](../site-recovery/site-recovery-vmware-to-azure.md) tooyour zdrojové virtuální počítače nebo příliš[ručně instalaci služby mobility](../site-recovery/site-recovery-vmware-to-azure-install-mob-svc.md) na zdrojové virtuální počítače. Požadavek hello vkládání instalace a cestu hello hello ruční Instalační služby systému můžete najít v hello uvedeného odkazu. Pokud provádíte ruční instalace, bude pravděpodobně nutné toouse interní IP adresu toofind hello konfigurace serveru.
 
     ![][12]
 
-    Virtuální počítač při selhání bude mít dva dočasné disky: jedné z primárního virtuálního počítače a dalších vytvořené při zřizování virtuálních počítačů v oblasti obnovení. Vyloučit dočasným diskovým před replikaci, nainstalujte službu mobility před povolením replikace. Další informace o tom, jak vyloučit dočasného disku, najdete v tématu [z replikace vyloučit disky](../site-recovery/site-recovery-vmware-to-azure.md).
+    Hello virtuálních počítačů při selhání bude mít dva dočasné disky: jeden z hello primární virtuální počítač a hello jiných vytvořené při zřizování hello virtuálního počítače v oblasti obnovení hello. tooexclude hello dočasným diskovým před replikace, nainstalujte službu mobility hello před povolením replikace. toolearn Další informace o jak tooexclude hello dočasného disku odkazovat příliš[z replikace vyloučit disky](../site-recovery/site-recovery-vmware-to-azure.md).
 
     7b. Teď následujícím způsobem povolte replikaci:
-      * Klikněte na tlačítko **replikujte aplikaci** > **zdroj**. Po povolení replikace poprvé, klikněte na tlačítko + replikovat v trezoru povolíte replikaci pro další počítače.
+      * Klikněte na tlačítko **replikujte aplikaci** > **zdroj**. Po povolení replikace pro hello poprvé, klikněte na tlačítko + replikovat v hello trezoru tooenable replikaci pro další počítače.
       * V kroku 1 nastavte zdroj procesový server.
-      * V kroku 2 zadejte model nasazení post-převzetí služeb při selhání, prémiový účet úložiště k migraci na standardní účet úložiště k ukládání protokolů a virtuální sítě, aby v případě selhání.
-      * V kroku 3 přidejte chráněných virtuálních počítačů pomocí IP adresy (může být nutné interní IP adresu, kde je najít).
-      * V kroku 4 nakonfigurujte vlastnosti výběrem účty, které jste dřív nastavili na procesovém serveru.
-      * V kroku 5 vyberte zásadu replikace, kterou jste vytvořili dříve, nastavte nastavení replikace.
+      * V kroku 2 zadejte model nasazení hello post-převzetí služeb při selhání, toomigrate účet úložiště Premium informace k, protokoly toosave účet standardního úložiště a toofail virtuální sítě k.
+      * V kroku 3, přidejte chráněných virtuálních počítačů pomocí IP adresy (může být nutné k interní IP adresu toofind je).
+      * V kroku 4 konfigurujte vlastnosti hello výběrem hello účty, které jste dřív nastavili na hello procesový server.
+      * V kroku 5 zvolte hello replikace zásadu, kterou jste vytvořili dříve, nastavte nastavení replikace.
       Klikněte na tlačítko **OK** a zapnout replikaci.
 
     > [!NOTE]
-    > Když virtuální počítač Azure je navrácena a spustit znovu, není zaručeno, že se budou získávat stejnou IP adresu. Pokud se změní IP adresu serveru, proces serveru nebo konfigurace nebo chráněné virtuální počítače Azure, replikace v tomto scénáři nemusí fungovat správně.
+    > Když virtuální počítač Azure je navrácena a spustit znovu, neexistuje žádná záruka, které se budou získávat hello stejnou IP adresu. Pokud IP adresa hello hello konfigurace proces serveru nebo serveru nebo hello chráněné virtuální počítače Azure změnu, hello replikace v tomto scénáři nemusí fungovat správně.
 
     ![][13]
 
-    Když navrhujete prostředí Azure Storage, doporučujeme použít účty samostatné úložiště pro každý virtuální počítač v nastavení dostupnosti. Doporučujeme vám postupovat podle osvědčených postupů ve vrstvě úložiště pro [používat více účtů úložiště pro každou skupinu dostupnosti](../virtual-machines/windows/manage-availability.md). Distribuci disky virtuálních počítačů k několika účtům úložiště pomáhá zvýšit dostupnost úložiště a rozděluje vstupy/výstupy na infrastruktuře úložiště Azure. Pokud jsou vaše virtuální počítače v nastavení dostupnosti, namísto replikace disků všechny virtuální počítače do jeden účet úložiště, důrazně doporučujeme migraci víc virtuálních počítačů vícekrát, tak, aby virtuální počítače ve stejné sadě dostupnosti nesdílejí účet jednoho úložiště. Použití **povolit replikaci** okno Nastavit cílový účet úložiště pro každý virtuální počítač, po jednom. Podle potřeby vašeho můžete vybrat model nasazení post-převzetí služeb při selhání. Pokud si zvolíte Resource Manager (RM) jako model nasazení post-převzetí služeb při selhání, můžete převzít RM virtuálního počítače na virtuální počítač RM nebo přebírány classic virtuálního počítače na virtuální počítač RM.
+    Když navrhujete prostředí Azure Storage, doporučujeme použít účty samostatné úložiště pro každý virtuální počítač v nastavení dostupnosti. Doporučujeme podle hello osvědčený postup ve vrstvě úložiště hello příliš[používat více účtů úložiště pro každou skupinu dostupnosti](../virtual-machines/windows/manage-availability.md). Distribuce účtů úložiště toomultiple disky virtuálních počítačů pomáhá dostupnost úložiště tooimprove a rozděluje hello vstupně-výstupních operací na hello infrastruktury úložiště Azure. Pokud jsou vaše virtuální počítače v nastavení dostupnosti, namísto replikace disků všechny virtuální počítače do jeden účet úložiště, důrazně doporučujeme migraci víc virtuálních počítačů vícekrát, tak, aby hello hello virtuální počítače ve stejné sady dostupnosti. nesdílejí účet jednoho úložiště. Použití hello **povolit replikaci** okno tooset až cílový účet úložiště pro každý virtuální počítač, po jednom. Můžete podle potřeby tooyour model nasazení post-převzetí služeb při selhání. Pokud si zvolíte Resource Manager (RM) jako model nasazení post-převzetí služeb při selhání, můžete převzít tooan RM virtuálních počítačů RM VM nebo přebírány classic tooan virtuálních počítačů RM VM.
 
-8. **Spustit testovací převzetí služeb**. Pokud chcete zkontrolovat, jestli se váš replikace nedokončí, klikněte na možnost obnovení lokality a pak klikněte na **nastavení** > **replikované položky**. Zobrazí se stav a procento replikační proces. Po dokončení počáteční replikace spustit testovací převzetí služeb při selhání ověření strategie replikace. Podrobný postup testovacího převzetí služeb při selhání, naleznete v [spustit testovací převzetí služeb ve službě Site Recovery](../site-recovery/site-recovery-vmware-to-azure.md). Zobrazí se stav převzetí služeb při selhání v **nastavení** > **úlohy** > **YOUR_FAILOVER_PLAN_NAME**. V okně uvidíte rozpis kroků a výsledky úspěch nebo selhání. V případě selhání testu převzetí služeb v kterémkoliv kroku klikněte na tlačítko kroku najdete v chybové zprávě. Zajistěte, aby že virtuální počítače a strategie replikace požadavkům před spuštěním převzetí služeb při selhání. Čtení [testovací převzetí služeb při selhání do Azure ve službě Site Recovery](../site-recovery/site-recovery-test-failover-to-azure.md) pro další informace a pokyny testovací převzetí služeb při selhání.
+8. **Spustit testovací převzetí služeb**. toocheck jestli vaší replikace skončí, klikněte na možnost obnovení lokality a pak klikněte na tlačítko **nastavení** > **replikované položky**. Zobrazí se stav hello a procento replikační proces. Po počáteční replikaci je kompletní, spustit testovací převzetí služeb při selhání toovalidate strategie replikace. Podrobný postup testovacího převzetí služeb při selhání naleznete příliš[spustit testovací převzetí služeb ve službě Site Recovery](../site-recovery/site-recovery-vmware-to-azure.md). Zobrazí se stav hello testovací převzetí služeb při selhání v **nastavení** > **úlohy** > **YOUR_FAILOVER_PLAN_NAME**. V okně hello uvidíte rozpis hello kroků a výsledky úspěch nebo selhání. Pokud se nezdaří hello testovací převzetí služeb při selhání v kterémkoliv kroku, klikněte na tlačítko hello krok toocheck hello chybová zpráva. Zajistěte, aby že virtuální počítače a strategie replikace splňovat požadavky hello před spuštěním převzetí služeb při selhání. Čtení [tooAzure testovací převzetí služeb při selhání ve službě Site Recovery](../site-recovery/site-recovery-test-failover-to-azure.md) pro další informace a pokyny testovací převzetí služeb při selhání.
 
-9. **Spuštění převzetí služeb při selhání**. Po testu je dokončit převzetí služeb při selhání, spusťte převzetí služeb při selhání k migraci disků do úložiště úrovně Premium a replikovat instance virtuálních počítačů. Postupujte podle podrobných pokynů v [spustit převzetí služeb při selhání](../site-recovery/site-recovery-failover.md#run-a-failover). Zkontrolujte, zda jste vybrali **vypněte virtuální počítače a synchronizovat nejnovější data** k určení, že Site Recovery opakovat vypněte chráněných virtuálních počítačů a synchronizace dat tak, aby nejnovější verzi dat převezme služby při selhání. Pokud tuto možnost nevyberete nebo neúspěchu pokus převzetí služeb při selhání bude z posledního bodu obnovení k dispozici pro virtuální počítač. Site Recovery se vytvoří instance virtuálního počítače, jejichž typ je stejný jako nebo podobné k virtuálnímu počítači Premium Storage – výkonný. Můžete zkontrolovat výkon a cenu instancí virtuálních počítačů v různých přechodem na [ceny virtuálních počítačů Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) nebo [ceny virtuálních počítačů Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+9. **Spuštění převzetí služeb při selhání**. Po dokončení hello testovací převzetí služeb při selhání, spusťte převzetí služeb při selhání toomigrate tooPremium vaše disky úložiště a replikovat hello instance virtuálních počítačů. Postupujte podle hello podrobné kroky v [spustit převzetí služeb při selhání](../site-recovery/site-recovery-failover.md#run-a-failover). Zkontrolujte, zda jste vybrali **vypněte virtuální počítače a synchronizovat nejnovější data hello** toospecify, že by měl Site Recovery zkuste tooshut dolů hello chráněné virtuální počítače a synchronizovat hello data tak, aby hello nejnovější verzi dat hello převezme služby při selhání. Pokud tuto možnost nevyberete nebo pokus o hello k neúspěchu hello převzetí služeb při selhání bude od hello nejnovější dostupný bod obnovení pro hello virtuálních počítačů. Site Recovery vytvoří instanci virtuálního počítače, jejichž typ je hello stejný jako nebo podobné tooa Premium Storage – výkonný virtuálních počítačů. Můžete zkontrolovat hello výkon a cenu různých instancí virtuálních počítačů tak, že přejdete příliš[ceny virtuálních počítačů Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) nebo [ceny virtuálních počítačů Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 ## <a name="post-migration-steps"></a>Kroky po migraci
 
-1. **Nakonfigurovat replikované virtuální počítače pro skupinu dostupnosti případně**. Site Recovery nepodporuje migraci virtuálních počítačů spolu s skupiny dostupnosti. V závislosti na nasazení replikované virtuální počítač proveďte jednu z následujících akcí:
-  * Pro virtuální počítač, vytvořené pomocí modelu nasazení classic: Přidání virtuálního počítače pro skupinu dostupnosti na portálu Azure. Podrobné kroky, přejděte na [přidat existující virtuální počítač do skupiny dostupnosti](../virtual-machines/windows/classic/configure-availability.md#addmachine).
-  * Pro model nasazení Resource Manager: Uložit konfiguraci virtuálního počítače a pak odstraňte a znovu vytvořit virtuální počítače v sadě dostupnosti. Uděláte to tak, použijte skript v [nastavit Azure Resource Manager virtuálních počítačů sady dostupnosti](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4). Zkontrolujte omezení tento skript a plánování výpadku před spuštěním skriptu.
+1. **Konfigurace replikované toohello dostupnosti virtuálních počítačů, nastavit, pokud je k dispozici**. Site Recovery nepodporuje migraci virtuálních počítačů společně se skupinou dostupnosti hello. V závislosti na nasazení hello replikované virtuální počítač proveďte jednu z následujících hello:
+  * Pro virtuální počítač, vytvořené pomocí modelu nasazení classic hello: přidejte hello virtuálních počítačů toohello skupinou dostupnosti ve hello portálu Azure. Podrobný postup je uveden příliš[přidat stávající sadu dostupnosti virtuálního počítače tooan](../virtual-machines/windows/classic/configure-availability.md#addmachine).
+  * Pro model nasazení Resource Manager hello: Uložit konfiguraci hello virtuálních počítačů a potom odstraňte a znovu vytvořit hello virtuálních počítačů v nastavení dostupnosti hello. toodo Ano, použít skript hello v [nastavit Azure Resource Manager virtuálních počítačů sady dostupnosti](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4). Zkontrolujte hello omezení tento skript a plánování výpadku před spuštěním skriptu hello.
 
-2. **Odstranit staré virtuální počítače a disky**. Před odstraněním těchto, zkontrolujte, zda jsou konzistentní s zdrojové disky prémiové disky a nové virtuální počítače provádí stejnou funkci jako zdrojové virtuální počítače. V modelu nasazení Resource Manager (RM) odstraňte virtuální počítač a odstraňte disky ze zdrojového účtů úložiště na portálu Azure. V modelu nasazení classic můžete odstranit virtuální počítač a disky v portálu classic nebo portálu Azure. Pokud nastane problém neodstraní disku i v případě, že jste odstranili virtuálního počítače, naleznete v tématu [řešení chyb při odstranění virtuální pevné disky](storage-resource-manager-cannot-delete-storage-account-container-vhd.md).
+2. **Odstranit staré virtuální počítače a disky**. Před odstraněním těchto, zkontrolujte, zda text hello prémiové disky jsou konzistentní s zdrojové disky a hello nové virtuální počítače provést hello stejné funkce jako zdroj hello virtuálních počítačů. V modelu nasazení Resource Manager (RM) hello odstraňte hello virtuálních počítačů a odstranit hello disky ze zdrojového účty úložiště v hello portálu Azure. V modelu nasazení classic hello můžete odstranit hello virtuálních počítačů a disky v portálu classic hello nebo portálu Azure. Pokud nastane problém v které hello disku neodstraní, i když jste odstranili hello virtuálních počítačů, naleznete v tématu [řešení chyb při odstranění virtuální pevné disky](storage-resource-manager-cannot-delete-storage-account-container-vhd.md).
 
-3. **Vyčištění infrastruktury Azure Site Recovery**. Pokud Site Recovery je již nepotřebujete, můžete smazat jeho infrastruktury odstranit replikované položky, že konfigurační server a obnovení zásad, a pak odstranění trezoru Azure Site Recovery.
+3. **Vyčištění hello infrastruktury Azure Site Recovery**. Pokud Site Recovery je již nepotřebujete, můžete odstranit replikované položky, hello konfigurační server a hello obnovení zásad, a pak odstranění trezoru Azure Site Recovery hello smazat svoji infrastrukturu.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -164,14 +164,14 @@ Site Recovery můžete použít k migraci virtuálních počítačů Azure IaaS 
 
 ## <a name="next-steps"></a>Další kroky
 
-Najdete v následujících materiálech u konkrétních scénářů pro migraci virtuálních počítačů:
+V tématu hello následující prostředků u konkrétních scénářů pro migraci virtuálních počítačů:
 
 * [Migrovat virtuální počítače, které jsou mezi účty úložiště Azure](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
-* [Vytvoření a nahrání virtuálního pevného disku serveru Windows do Azure.](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-* [Vytváření a odesílání virtuální pevný Disk, který obsahuje operační systém Linux](../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [Migrace virtuálních počítačů z Amazon AWS k Microsoft Azure](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
+* [Vytvoření a nahrání virtuálního pevného disku serveru Windows tooAzure.](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Vytvoření a nahrání virtuálního pevného disku tohoto hello obsahuje operační systém Linux](../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Migrace virtuálních počítačů z Amazon AWS tooMicrosoft Azure](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
-Zkontrolujte také, další informace o Azure Storage a virtuální počítače Azure v následujících zdrojích:
+Viz také hello následující prostředky toolearn Další informace o Azure Storage a virtuálních počítačích Azure:
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Virtuální počítače Azure](https://azure.microsoft.com/documentation/services/virtual-machines/)

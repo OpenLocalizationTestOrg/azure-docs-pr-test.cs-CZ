@@ -1,6 +1,6 @@
 ---
-title: "Linuxových výpočetních virtuálních počítačů v clusteru služby HPC Pack | Microsoft Docs"
-description: "Postup vytvoření a používání clusteru HPC Pack v Azure pro Linux s vysokým výkonem úloh (prostředí HPC)"
+title: "aaaLinux výpočetní virtuálních počítačů v clusteru služby HPC Pack | Microsoft Docs"
+description: "Zjistěte, jak toocreate a použití HPC Pack clusteru v Azure pro Linux s vysokým výkonem úloh (prostředí HPC)"
 services: virtual-machines-linux
 documentationcenter: 
 author: dlepow
@@ -15,35 +15,35 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-ms.openlocfilehash: 809d3944311badf265117d353b65642e044d900c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9ed20d6cd69a6472a00666caf8965e9d022698a6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Začínáme s výpočetními uzly Linuxu v clusteru HPC Pack v Azure
-Nastavení [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029.aspx) clusteru v Azure, který obsahuje hlavního uzlu se systémem Windows Server a několika výpočetních uzlech systémem podporované distribuce systému Linux. Prozkoumejte možnosti pro přesun dat mezi uzly Linux a Windows hlavnímu uzlu clusteru. Zjistěte, jak k odesílání úloh Linux HPC do clusteru.
+Nastavení [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029.aspx) clusteru v Azure, který obsahuje hlavního uzlu se systémem Windows Server a několika výpočetních uzlech systémem podporované distribuce systému Linux. Prozkoumejte možnosti toomove dat mezi uzly Linux hello a hello Windows hlavního uzlu clusteru hello. Zjistěte, jak toosubmit Linux HPC úlohy toohello clusteru.
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
-Následující diagram znázorňuje na vysoké úrovni clusteru HPC Pack vytváření a práci s.
+Na vysoké úrovni, hello následující diagram znázorňuje clusteru HPC Pack hello vytváření a práci s.
 
 ![Cluster HPC Pack s uzly Linux][scenario]
 
-Další možnosti spuštění úloh HPC pro Linux v Azure najdete v tématu [technických prostředcích pro batch a vysoce výkonné výpočty](../../../batch/big-compute-resources.md).
+Pro další možnosti toorun Linux HPC najdete v části úlohy v Azure, [technických prostředcích pro batch a vysoce výkonné výpočty](../../../batch/big-compute-resources.md).
 
 ## <a name="deploy-an-hpc-pack-cluster-with-linux-compute-nodes"></a>Nasazení clusteru HPC Pack s Linux výpočetních uzlů
-Tento článek ukazuje, že jste dvě možnosti pro nasazení clusteru HPC Pack v Azure s Linuxem výpočetních uzlů. Obě metody k vytvoření hlavního uzlu použít image pořízenou prostřednictvím Marketplace systému Windows Server s HPC Pack. 
+Tento článek popisuje dvě možnosti toodeploy clusteru HPC Pack služby v Azure, s Linuxových výpočetních uzlů. Obě metody použít image pořízenou prostřednictvím Marketplace systému Windows Server s HPC Pack toocreate hello hlavního uzlu. 
 
-* **Šablona Azure Resource Manageru** -použít šablonu z Azure Marketplace nebo šabloně pro rychlý start od komunity, k automatizovanému vytvoření clusteru v modelu nasazení Resource Manager. Například [clusteru HPC Pack pro Linux úlohy](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) šablony v Azure Marketplace vytvoří kompletní infrastruktura clusteru HPC Pack pro Linux HPC úlohy.
-* **Skript prostředí PowerShell** -použití [skript nasazení Microsoft HPC Pack IaaS](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) (**New-HpcIaaSCluster.ps1**) k automatizaci nasazení clusterů v modelu nasazení classic. Tento skript prostředí Azure PowerShell používá bitovou kopii prostředí HPC Pack virtuálních počítačů v Azure Marketplace pro rychlé nasazení a poskytuje komplexní sadu parametrů konfigurace pro nasazení systému Linux výpočetních uzlů.
+* **Šablona Azure Resource Manageru** -použít šablonu z Azure Marketplace hello nebo šabloně pro rychlý start z hello komunity, tooautomate vytváření clusteru hello v modelu nasazení Resource Manager hello. Například hello [clusteru HPC Pack pro Linux úlohy](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) šablony v hello Azure Marketplace vytvoří kompletní infrastruktura clusteru HPC Pack pro Linux HPC úlohy.
+* **Skript prostředí PowerShell** -použití hello [skript nasazení Microsoft HPC Pack IaaS](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) (**New-HpcIaaSCluster.ps1**) tooautomate nasazení clusterů v modelu nasazení classic hello. Tento skript prostředí Azure PowerShell používá bitovou kopii prostředí HPC Pack virtuálních počítačů v hello Azure Marketplace pro rychlé nasazení a poskytuje komplexní sadu toodeploy parametry konfigurace Linuxových výpočetních uzlů.
 
-Další informace o možnostech nasazení clusteru HPC Pack v Azure najdete v tématu [clusteru možnosti k vytváření a správě vysoce výkonné výpočty (HPC) v Azure pomocí sady Microsoft HPC Pack](../hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Další informace o možnostech nasazení clusteru HPC Pack v Azure najdete v tématu [možnosti toocreate a spravovat cluster vysoce výkonné výpočty (HPC) v Azure pomocí sady Microsoft HPC Pack](../hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ### <a name="prerequisites"></a>Požadavky
-* **Předplatné Azure** -předplatné můžete použít ve službě Azure globální nebo Azure China. Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) si během několika minut.
-* **Kvóta jader** -může být potřeba zvýšit kvótu jádra, obzvláště pokud se rozhodnete nasadit několik uzlů clusteru s vícejádrovými velikosti virtuálních počítačů. Chcete-li zvýšit kvótu, otevřete žádosti o podporu online zákazníka zdarma.
-* **Linuxových distribucích** -aktuálně HPC Pack podporuje následující Linuxových distribucích pro výpočetní uzly. Můžete použít Marketplace verze těchto distribuce, pokud jsou k dispozici, nebo zadat vlastní.
+* **Předplatné Azure** -v buď hello globální Azure nebo Azure China služby uživatelům pomocí odběru. Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) si během několika minut.
+* **Kvóta jader** -může být nutné tooincrease hello kvóty jader, obzvláště pokud se rozhodnete toodeploy několik uzlů clusteru s vícejádrovými velikosti virtuálních počítačů. tooincrease kvótu, otevřete žádosti o podporu online zákazníka zdarma.
+* **Linuxových distribucích** -aktuálně HPC Pack podporuje hello následující Linuxových distribucích pro výpočetní uzly. Můžete použít Marketplace verze těchto distribuce, pokud jsou k dispozici, nebo zadat vlastní.
   
   * **Na základě centOS**: 6.5, 6.6, 6.7, 7.0, 7.1, 7.2, verze 6.5 HPC, 7.1 HPC
   * **Red Hat Enterprise Linux**: 6.7, 6.8, 7.2
@@ -51,49 +51,49 @@ Další informace o možnostech nasazení clusteru HPC Pack v Azure najdete v t�
   * **Ubuntu Server**: 14.04 LTS, 16.04 LTS
     
     > [!TIP]
-    > Pro použití sítě Azure RDMA s jedním z velikosti virtuálních počítačů podporuje RDMA, zadejte SUSE Linux Enterprise Server 12 HPC nebo na základě CentOS HPC bitovou kopii z Azure Marketplace. Další informace najdete v tématu [vysokovýkonné výpočetní velikosti virtuálních počítačů](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    > toouse hello Azure RDMA síť s jedním velikostí virtuálních počítačů hello podporu rdma, zadejte SUSE Linux Enterprise Server 12 HPC nebo na základě CentOS HPC bitovou kopii z hello Azure Marketplace. Další informace najdete v tématu [vysokovýkonné výpočetní velikosti virtuálních počítačů](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
     > 
     > 
 
-Další požadavky na nasazení clusteru pomocí skriptu prostředí HPC Pack IaaS nasazení:
+Další požadavky toodeploy hello clusteru pomocí skriptu nasazení HPC Pack IaaS hello:
 
-* **Klientský počítač** -potřebujete počítač klienta se systémem Windows pro spuštění skriptu nasazení clusteru.
+* **Klientský počítač** -je nutné klienta se systémem Windows toorun hello clusteru skript nasazení do počítače.
 * **Prostředí Azure PowerShell** - [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview) (verze 0.8.10 nebo novější) na klientském počítači.
-* **Skript nasazení HPC Pack IaaS** – stáhněte a rozbalte nejnovější verzi skript z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949). Verze skriptu můžete zkontrolovat spuštěním `.\New-HPCIaaSCluster.ps1 –Version`. Tento článek je založen na verzi 4.4.1 nebo později skript.
+* **Skript nasazení HPC Pack IaaS** – stáhněte a rozbalte hello nejnovější verzi hello skript z hello [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949). Verze hello hello skriptu můžete zkontrolovat spuštěním `.\New-HPCIaaSCluster.ps1 –Version`. Tento článek je založen na verzi 4.4.1 nebo později hello skriptu.
 
 ### <a name="deployment-option-1-use-a-resource-manager-template"></a>Možnost nasazení 1. Pomocí šablony Resource Manageru
-1. Přejděte na [clusteru HPC Pack pro Linux úlohy](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) šablony Azure Marketplace, a klikněte na **nasadit**.
-2. Na portálu Azure, zkontrolujte informace a pak klikněte na tlačítko **vytvořit**.
+1. Přejděte toohello [clusteru HPC Pack pro Linux úlohy](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) šablony v hello Azure Marketplace a klikněte na **nasadit**.
+2. V hello portálu Azure, zkontrolujte hello informace a pak klikněte na tlačítko **vytvořit**.
    
     ![Vytvoření portálu][portal]
-3. Na **Základy** okno, zadejte název clusteru, který také názvy hlavního uzlu virtuálního počítače. Můžete vybrat existující skupinu prostředků nebo vytvořte skupinu pro nasazení v umístění, které je k dispozici. Umístění má vliv na dostupnost určité velikosti virtuálních počítačů a dalším službám Azure (viz [produkty podle oblasti](https://azure.microsoft.com/regions/services/)).
-4. Na **hlavního uzlu nastavení** okně pro první nasazení, můžete obvykle přijmout výchozí nastavení. 
+3. Na hello **Základy** okno, zadejte název clusteru hello, což také názvy hello hlavního uzlu virtuálního počítače. Můžete vybrat existující skupinu prostředků nebo vytvořte skupinu pro hello nasazení v umístění, které je k dispozici tooyou. Hello umístění má vliv na dostupnost hello určité velikosti virtuálních počítačů a dalším službám Azure (viz [produkty podle oblasti](https://azure.microsoft.com/regions/services/)).
+4. Na hello **hlavního uzlu nastavení** okně pro první nasazení, můžete obvykle přijmout výchozí nastavení hello. 
    
    > [!NOTE]
-   > **Adresu URL skriptu po konfiguraci** je volitelné nastavení k určení veřejně dostupné skript prostředí Windows PowerShell, který chcete spustit z hlavního uzlu virtuálního počítače, jakmile je spuštěna. 
+   > Hello **adresu URL skriptu po konfiguraci** je volitelné nastavení toospecify veřejně dostupné skript prostředí Windows PowerShell, které mají toorun hello hlavního uzlu virtuálního počítače po je spuštěná. 
    > 
    > 
-5. Na **výpočetní uzel nastavení** okně vyberte pojmenování vzor pro uzly, počet a velikost uzlů a distribuci systému Linux k nasazení.
-6. Na **nastavení infrastruktury** okno, zadejte názvy pro virtuální sítě a služby Active Directory domény, domény a přihlašovací údaje Správce virtuálních počítačů a vzoru pro pojmenovávání pro účty úložiště.
+5. Na hello **výpočetní uzel nastavení** okně vyberte vzoru pro pojmenovávání pro hello uzly, hello počet a velikost uzlů hello a hello toodeploy distribuce systému Linux.
+6. Na hello **nastavení infrastruktury** okno, zadejte pro hello virtuální sítě a služby Active Directory název domény, domény a přihlašovací údaje Správce virtuálních počítačů a vzoru pro pojmenovávání pro účty úložiště hello.
    
    > [!NOTE]
-   > HPC Pack používá domény služby Active Directory k ověřování uživatelů clusteru. 
+   > HPC Pack používá hello služby Active Directory domény tooauthenticate clusteru uživatele. 
    > 
    > 
-7. Po spuštění ověřovacích testů a přečtěte si podmínky použití, klikněte na tlačítko **nákupu**.
+7. Po spuštění hello ověřovací testy a zkontrolujte hello podmínky použití, klikněte na tlačítko **nákupu**.
 
-### <a name="deployment-option-2-use-the-iaas-deployment-script"></a>Možnost nasazení 2. Pomocí tohoto skriptu nasazení IaaS
-Toto jsou další požadavky na nasazení clusteru pomocí skriptu prostředí HPC Pack IaaS nasazení:
+### <a name="deployment-option-2-use-hello-iaas-deployment-script"></a>Možnost nasazení 2. Použít skript nasazení IaaS hello
+Toto jsou další požadavky toodeploy hello clusteru pomocí skriptu nasazení HPC Pack IaaS hello:
 
-* **Klientský počítač** -potřebujete počítač klienta se systémem Windows pro spuštění skriptu nasazení clusteru.
+* **Klientský počítač** -je nutné klienta se systémem Windows toorun hello clusteru skript nasazení do počítače.
 * **Prostředí Azure PowerShell** - [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview) (verze 0.8.10 nebo novější) na klientském počítači.
-* **Skript nasazení HPC Pack IaaS** – stáhněte a rozbalte nejnovější verzi skript z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949). Verze skriptu můžete zkontrolovat spuštěním `.\New-HPCIaaSCluster.ps1 –Version`. Tento článek je založen na verzi 4.4.1 nebo později skript.
+* **Skript nasazení HPC Pack IaaS** – stáhněte a rozbalte hello nejnovější verzi hello skript z hello [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949). Verze hello hello skriptu můžete zkontrolovat spuštěním `.\New-HPCIaaSCluster.ps1 –Version`. Tento článek je založen na verzi 4.4.1 nebo později hello skriptu.
 
 **Konfigurační soubor XML.**
 
-Skript nasazení HPC Pack IaaS používá k popisu clusteru HPC konfigurační soubor XML jako vstup. Následující vzorový konfigurační soubor Určuje malé cluster obsahuje hlavnímu uzlu HPC Pack a dvě velikost A7 CentOS 7.0 Linux výpočetních uzlů. 
+Hello skript nasazení HPC Pack IaaS používá konfigurační soubor XML jako vstupní toodescribe clusteru HPC hello. Hello následující vzorový konfigurační soubor Určuje malé cluster obsahuje hlavnímu uzlu HPC Pack a dvě velikost A7 CentOS 7.0 Linux výpočetních uzlů. 
 
-Upravte soubor podle potřeby pro vaše prostředí a konfiguraci požadovaných clusteru a uložte s názvem, jako je například HPCDemoConfig.xml. Například musíte zadat název vašeho odběru a název účtu úložiště jedinečný a cloudových název služby. Kromě toho můžete vybrat jiný obrázek Linux podporované pro výpočetní uzly. Další informace o elementy v konfiguračním souboru, najdete v souboru Manual.rtf ve složce skriptu a [vytvoření clusteru prostředí HPC pomocí skriptu pro nasazení HPC Pack IaaS](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Upravte soubor hello podle potřeby pro vaše prostředí a konfiguraci požadovaných clusteru a uložte s názvem, jako je například HPCDemoConfig.xml. Například musíte toosupply název předplatného a jedinečný název účtu úložiště a název cloudové služby. Kromě toho můžete chtít podporovaném toochoose jinou bitovou kopii systému Linux pro hello výpočetních uzlů. Další informace o hello elementy v konfiguračním souboru hello najdete v tématu hello Manual.rtf souboru ve složce hello skriptu a [vytvoření clusteru prostředí HPC s hello skript nasazení HPC Pack IaaS](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ```
 <?xml version="1.0" encoding="utf-8" ?>
@@ -131,63 +131,63 @@ Upravte soubor podle potřeby pro vaše prostředí a konfiguraci požadovaných
 </IaaSClusterConfig>
 ```
 
-**Pro spuštění skriptu nasazení HPC Pack IaaS**
+**toorun hello skript nasazení HPC Pack IaaS**
 
-1. Otevřete prostředí Windows PowerShell v klientském počítači jako správce.
-2. Změnit adresář na složku, kde je skript nainstalovaný (E:\IaaSClusterScript v tomto příkladu).
+1. Otevřete prostředí Windows PowerShell v klientském počítači hello jako správce.
+2. Změna toohello adresář, kde je skript hello nainstalovaný (E:\IaaSClusterScript v tomto příkladu).
    
     ```powershell
     cd E:\IaaSClusterScript
     ```
-3. Spusťte následující příkaz k nasazení clusteru HPC Pack. Tento příklad předpokládá, že konfigurační soubor nachází v E:\HPCDemoConfig.xml
+3. Spusťte následující příkaz toodeploy hello HPC Pack clusteru hello. Tento příklad předpokládá, že hello konfigurační soubor se nachází v E:\HPCDemoConfig.xml
    
     ```powershell
     .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
     ```
    
-    a. Protože **AdminPassword** není zadané v předchozí příkaz, zobrazí se výzva k zadání hesla pro uživatele *MyAdminName*.
+    a. Protože hello **AdminPassword** není zadán v hello předcházející příkaz, jsou výzvami tooenter hello heslo pro uživatele *MyAdminName*.
    
-    b. Chcete-li ověřit konfigurační soubor pak spustí skript. Může trvat až několik minut v závislosti na síťové připojení.
+    b. skript Hello pak spustí toovalidate hello konfigurační soubor. To může trvat až tooseveral minut v závislosti na hello síťové připojení.
    
     ![Ověření][validate]
    
-    c. Po ověření úspěšně, skript zobrazí seznam prostředků clusteru k vytvoření. Zadejte *Y* pokračujte.
+    c. Po ověření úspěšně, uvádí hello skriptu toocreate prostředky clusteru hello. Zadejte *Y* toocontinue.
    
     ![Zdroje][resources]
    
-    d. Skript spustí nasazení clusteru HPC Pack a dokončení konfigurace bez další ruční kroky. Tento skript můžete spustit několik minut.
+    d. skript Hello clusteru HPC Pack hello toodeploy při spuštění a dokončení konfigurace hello bez další ruční kroky. Hello skript můžete spustit několik minut.
    
     ![Nasazení][deploy]
    
    > [!NOTE]
-   > V tomto příkladu skript generuje soubor protokolu automaticky od **- LogFile** není zadán parametr. Protokoly nezapisují v reálném čase, ale se shromažďují na konci ověření a nasazení. Pokud proces prostředí PowerShell je zastavena, když je skript spuštěn, některé protokoly jsou ztraceny.
+   > V tomto příkladu hello skript generuje soubor protokolu automaticky od hello **- LogFile** není zadán parametr. protokoly Hello nezapisují v reálném čase, ale se shromažďují na konci hello hello vyhodnocení a nasazení hello. Pokud hello procesu prostředí PowerShell je zastavena v průběhu hello skript spuštěn, budou ztraceny některé protokoly.
    > 
    > 
 
-## <a name="connect-to-the-head-node"></a>Připojení k hlavnímu uzlu
-Po nasazení clusteru HPC Pack v Azure, [připojit pomocí vzdálené plochy](../../windows/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) k hlavnímu uzlu virtuálních počítačů využívající tuto doménu můžete zadané údaje po nasazení clusteru (například *hpc\\clusteradmin*). Spravujete z hlavního uzlu clusteru.
+## <a name="connect-toohello-head-node"></a>Připojit toohello hlavního uzlu
+Po nasazení clusteru HPC Pack hello v Azure, [připojit pomocí vzdálené plochy](../../windows/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) toohello hlavního uzlu virtuální počítač pomocí hello pověření domény, které jste zadali při nasazení clusteru hello (například *hpc\\ clusteradmin*). Spravujete hello clusteru z hlavního uzlu hello.
 
-Z hlavního uzlu spusťte Správce clusteru HPC a zkontrolujte stav clusteru HPC Pack. Můžete spravovat a monitorování Linuxových výpočetních uzlů stejným způsobem jako pracujete s Windows výpočetních uzlů. Například zobrazí Linuxových uzlů uvedené v **Správa prostředků** (tyto uzly jsou nasazeny pomocí **LinuxNode** šablony).
+Hello hlavního uzlu spusťte Správce clusteru HPC toocheck hello stav clusteru HPC Pack hello. Můžete spravovat a monitorovat Linux výpočetní uzly hello stejným způsobem jako pracujete s Windows výpočetních uzlů. Například můžete zjistit uzly Linux hello uvedené v **Správa prostředků** (tyto uzly se nasadí s hello **LinuxNode** šablony).
 
 ![Uzel správy][management]
 
-Zobrazí také Linux uzlů **Heat mapa** zobrazení.
+Zobrazí také hello Linuxových uzlů v hello **Heat mapa** zobrazení.
 
 ![Heat mapa][heatmap]
 
-## <a name="how-to-move-data-in-a-cluster-with-linux-nodes"></a>Jak přesunout data v clusteru s uzly Linux
-Máte několik možností pro přesun dat mezi uzly Linux a Windows hlavnímu uzlu clusteru. Tady jsou tři běžné metody další podrobně popsány v následujících částech:
+## <a name="how-toomove-data-in-a-cluster-with-linux-nodes"></a>Jak toomove data v clusteru s uzly Linux
+Máte několik možností toomove dat mezi uzly Linux a hello Windows hlavního uzlu clusteru hello. Tady jsou tři běžné metody popsané v podrobněji hello následující části:
 
-* **Azure File** -zpřístupní spravované sdílení souborů SMB pro ukládají datové soubory v úložišti Azure. Uzly Windows a Linux uzly můžete připojit Azure sdílené složky jako jednotky nebo složku ve stejnou dobu, i v případě, že nasazené v různých virtuálních sítích.
-* **Sdílet hlavního uzlu SMB** -připojí standardní sdílené složky systému Windows z hlavního uzlu na Linuxových uzlů.
+* **Azure File** -zpřístupňuje spravované sdílené složky toostore dat souboru protokolu SMB soubory v úložišti Azure. Uzly Windows a Linux uzly můžete připojit Azure sdílené složky jako jednotky nebo složku v hello stejný čas, i v případě, že nasazené v různých virtuálních sítích.
+* **Sdílet hlavního uzlu SMB** -připojí standardní sdílené složky Windows hello hlavního uzlu na Linuxových uzlů.
 * **Server systému souborů NFS uzlu HEAD** -poskytuje řešení sdílení souborů pro smíšená prostředí systému Windows a Linux.
 
 ### <a name="azure-file-storage"></a>Úložiště Azure File
-[Azure File](https://azure.microsoft.com/services/storage/files/) služby zpřístupní sdílené složky, které používají standardní protokol SMB 2.1. Virtuální počítače Azure a cloudových služeb můžou sdílet souborová data mezi komponentami aplikace přes sdílené složky a místní aplikace můžou k souborovým datům ve sdílené složce prostřednictvím rozhraní API úložiště File. 
+Hello [Azure File](https://azure.microsoft.com/services/storage/files/) služby zpřístupní sdílené složky pomocí standardní protokol SMB 2.1 hello. Virtuální počítače Azure a cloudových služeb můžou sdílet souborová data mezi komponentami aplikace přes sdílené složky a místní aplikace můžou k souborovým datům ve sdílené složce prostřednictvím hello API služby File storage. 
 
-Podrobné pokyny k vytvoření Azure sdílené složky a připojte ho z hlavního uzlu, najdete v části [Začínáme s Azure File storage ve Windows](../../../storage/files/storage-how-to-use-files-windows.md). Připojit sdílenou složku Azure File na Linuxových uzlů, najdete v části [postup používání Azure File storage s Linuxem](../../../storage/files/storage-how-to-use-files-linux.md). Nastavení trvalých připojení, naleznete v tématu [Persisting připojení k Microsoft Azure Files](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx).
+Podrobné kroky toocreate Azure File sdílet a připojit ho hello hlavního uzlu, najdete v části [Začínáme s Azure File storage ve Windows](../../../storage/files/storage-how-to-use-files-windows.md). sdílenou složku Azure File hello toomount na uzlech hello Linux, najdete v části [jak toouse Azure File storage s Linuxem](../../../storage/files/storage-how-to-use-files-linux.md). tooset až zachování připojení, najdete v části [Persisting připojení tooMicrosoft Azure Files](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx).
 
-V následujícím příkladu vytvoření účtu úložiště Azure sdílené složky. Chcete-li připojit sdílenou složku z hlavního uzlu, otevřete příkazový řádek a zadejte následující příkazy:
+V následujícím příkladu hello vytvoření účtu úložiště Azure sdílené složky. toomount hello sdílet hello hlavního uzlu, otevřete příkazový řádek a zadejte hello následující příkazy:
 
 ```command
 cmdkey /add:allvhdsje.file.core.windows.net /user:allvhdsje /pass:<storageaccountkey>
@@ -195,11 +195,11 @@ cmdkey /add:allvhdsje.file.core.windows.net /user:allvhdsje /pass:<storageaccoun
 net use Z: \\allvhdje.file.core.windows.net\rdma /persistent:yes
 ```
 
-V tomto příkladu allvhdsje je váš název účtu úložiště, storageaccountkey je klíč účtu úložiště a rdma je název sdílené složky Azure File. Sdílenou složku Azure File je připojit jako Z: z hlavního uzlu.
+V tomto příkladu allvhdsje je váš název účtu úložiště, storageaccountkey je klíč účtu úložiště a rdma je název sdílené složky Azure File hello. sdílenou složku Azure File Hello je připojit jako Z: hello hlavního uzlu.
 
-Chcete-li připojit sdílenou složku Azure File na uzlech Linux, spusťte **clusrun** příkaz z hlavního uzlu. **[Clusrun](https://technet.microsoft.com/library/cc947685.aspx)**  je užitečným nástrojem HPC Pack provádět úlohy správy ve více uzlech. (Viz také [Clusrun pro Linuxové uzly](#Clusrun-for-Linux-nodes) v tomto článku.)
+sdílenou složku Azure File hello toomount na uzlech Linux, spusťte **clusrun** příkaz hello hlavního uzlu. **[Clusrun](https://technet.microsoft.com/library/cc947685.aspx)**  je užitečné toocarry nástroj HPC Pack Správce úloh ve více uzlech. (Viz také [Clusrun pro Linuxové uzly](#Clusrun-for-Linux-nodes) v tomto článku.)
 
-Otevřete okno prostředí Windows PowerShell a zadejte následující příkazy:
+Otevřete okno prostředí Windows PowerShell a zadejte hello následující příkazy:
 
 ```powershell
 clusrun /nodegroup:LinuxNodes mkdir -p /rdma
@@ -207,22 +207,22 @@ clusrun /nodegroup:LinuxNodes mkdir -p /rdma
 clusrun /nodegroup:LinuxNodes mount -t cifs //allvhdsje.file.core.windows.net/rdma /rdma -o vers=2.1`,username=allvhdsje`,password=<storageaccountkey>'`,dir_mode=0777`,file_mode=0777
 ```
 
-První příkaz vytvoří složku s názvem /rdma ve všech uzlech v LinuxNodes skupiny. V druhém příkazu připojí allvhdsjw.file.core.windows.net/rdma sdílenou složku Azure File do složky /rdma s dir a souborů režimu bits nastavený na 777. V druhém příkazu allvhdsje je váš název účtu úložiště a storageaccountkey je klíč účtu úložiště.
+První příkaz Hello vytvoří složku s názvem /rdma ve všech uzlech v hello LinuxNodes skupiny. druhý příkaz Hello připojí allvhdsjw.file.core.windows.net/rdma sdílenou složku Azure File hello do složky /rdma hello s dir a soubor too777 sadu bitů režimu. V druhém příkazu hello allvhdsje je váš název účtu úložiště a storageaccountkey je klíč účtu úložiště.
 
 > [!NOTE]
-> "\`" Symbol v druhém příkazu je symbol řídicí pro prostředí PowerShell. "\`," znamená, že "," (čárku) se část příkazu.
+> Hello "\`" symbol v druhém příkazu hello je symbol řídicí pro prostředí PowerShell. "\`,"znamená, že hello"," (čárku) je součástí příkaz hello.
 > 
 > 
 
 ### <a name="head-node-share"></a>Sdílené složky hlavního uzlu
-Alternativně připojte sdílenou složku hlavního uzlu na Linuxových uzlů. Sdílené složky poskytuje nejjednodušší způsob, jak sdílet soubory, ale hlavního uzlu a všech uzlech Linux musí být nasazeny ve stejné virtuální síti. Tady jsou kroky.
+Alternativně připojte sdílenou složku hello hlavního uzlu na Linuxových uzlů. Sdílené složky poskytuje hello nejjednodušší způsob, jak tooshare soubory, ale hello hlavního uzlu a všech uzlech Linux musí být nasazený v hello stejné virtuální síti. Tady jsou kroky hello.
 
-1. Vytvořte složku z hlavního uzlu a sdílet ho pro všechny uživatele s oprávněními pro čtení a zápisu. Například sdílet D:\OpenFOAM z hlavního uzlu jako \\CentOS7RDMA HN\OpenFOAM. Zde CentOS7RDMA HN je název hostitele hlavního uzlu.
+1. Vytvořte složku hello hlavního uzlu a sdílet tooEveryone se oprávnění pro čtení a zápis. Například sdílet D:\OpenFOAM hello hlavního uzlu jako \\CentOS7RDMA HN\OpenFOAM. Zde je CentOS7RDMA HN hello hostname hello hlavního uzlu.
    
     ![Oprávnění ke sdílené složce][fileshareperms]
    
     ![Sdílení souborů][filesharing]
-2. Otevřete okno prostředí Windows PowerShell a spusťte následující příkazy:
+2. Otevřete okno prostředí Windows PowerShell a spusťte následující příkazy hello:
    
     ```powershell
     clusrun /nodegroup:LinuxNodes mkdir -p /openfoam
@@ -230,19 +230,19 @@ Alternativně připojte sdílenou složku hlavního uzlu na Linuxových uzlů. S
     clusrun /nodegroup:LinuxNodes mount -t cifs //CentOS7RDMA-HN/OpenFOAM /openfoam -o vers=2.1`,username=<username>`,password='<password>'`,dir_mode=0777`,file_mode=0777
     ```
 
-První příkaz vytvoří složku s názvem /openfoam ve všech uzlech v LinuxNodes skupiny. V druhém příkazu připojí //CentOS7RDMA-HN/OpenFOAM sdílené složky do složky s dir a souborů režimu bits nastavený na 777. Uživatelské jméno a heslo v příkazu musí být uživatelské jméno a heslo uživatele z hlavního uzlu clusteru. (Viz [přidat nebo odebrat uživatele clusteru](https://technet.microsoft.com/library/ff919330.aspx).)
+První příkaz Hello vytvoří složku s názvem /openfoam ve všech uzlech v hello LinuxNodes skupiny. druhý příkaz Hello připojí //CentOS7RDMA-HN/OpenFOAM hello sdílené složky do složky hello s dir a soubor too777 sadu bitů režimu. Hello uživatelské jméno a heslo v příkazu hello by měl být hello uživatelské jméno a heslo uživatele hello hlavního uzlu clusteru. (Viz [přidat nebo odebrat uživatele clusteru](https://technet.microsoft.com/library/ff919330.aspx).)
 
 > [!NOTE]
-> "\`" Symbol v druhém příkazu je symbol řídicí pro prostředí PowerShell. "\`," znamená, že "," (čárku) se část příkazu.
+> Hello "\`" symbol v druhém příkazu hello je symbol řídicí pro prostředí PowerShell. "\`,"znamená, že hello"," (čárku) je součástí příkaz hello.
 > 
 > 
 
 ### <a name="nfs-server"></a>Server systému souborů NFS
-Služby systému souborů NFS můžete sdílet a migrace souborů mezi počítači s operačním systémem Windows Server 2012 pomocí protokolu SMB a počítačů se systémem Linux pomocí protokolu NFS. Server systému souborů NFS a všechny ostatní uzly mají být nasazeny ve stejné virtuální síti. Poskytuje lepší kompatibilitu s Linux uzly ve srovnání s sdílené složce SMB. Například podporuje odkazy souboru.
+Hello systému souborů NFS služby vám umožní tooshare nebo migrace souborů mezi počítače se systémem Windows Server 2012 hello operačního systému pomocí protokolu SMB hello a počítačů se systémem Linux pomocí protokolu NFS hello. Hello systému souborů NFS server a všechny ostatní uzly mají toobe nasazené v hello stejné virtuální síti. Poskytuje lepší kompatibilitu s Linux uzly ve srovnání s sdílené složce SMB. Například podporuje odkazy souboru.
 
-1. K instalaci a nastavení serveru NFS, postupujte podle kroků v [Server pro systém první sdílení souborů pro kompletní](http://blogs.technet.com/b/filecab/archive/2012/10/08/server-for-network-file-system-first-share-end-to-end.aspx).
+1. tooinstall a nastavení serveru NFS, postupujte podle kroků hello v [Server pro systém první sdílení souborů pro kompletní](http://blogs.technet.com/b/filecab/archive/2012/10/08/server-for-network-file-system-first-share-end-to-end.aspx).
    
-    Můžete například vytvořte sdílené složky NFS s názvem systému souborů nfs s následujícími vlastnostmi:
+    Můžete například vytvořte sdílené složky NFS s názvem systému souborů nfs se hello následující vlastnosti:
    
     ![Autorizace systému souborů NFS][nfsauth]
    
@@ -251,7 +251,7 @@ Služby systému souborů NFS můžete sdílet a migrace souborů mezi počíta�
     ![Oprávnění NTFS pro systém souborů NFS][nfsperm]
    
     ![Vlastnosti správy systému souborů NFS][nfsmanage]
-2. Otevřete okno prostředí Windows PowerShell a spusťte následující příkazy:
+2. Otevřete okno prostředí Windows PowerShell a spusťte následující příkazy hello:
    
     ```powershell
     clusrun /nodegroup:LinuxNodes mkdir -p /nfsshare
@@ -259,47 +259,47 @@ Služby systému souborů NFS můžete sdílet a migrace souborů mezi počíta�
     clusrun /nodegroup:LinuxNodes mount CentOS7RDMA-HN:/nfs /nfsshared
     ```
    
-   První příkaz vytvoří složku s názvem /nfsshared ve všech uzlech v LinuxNodes skupiny. V druhém příkazu připojí CentOS7RDMA HN sdílené složky NFS: nebo systému souborů nfs na složku. Zde CentOS7RDMA HN: systém souborů nfs je složka vzdálené sdílené složky NFS.
+   První příkaz Hello vytvoří složku s názvem /nfsshared ve všech uzlech v hello LinuxNodes skupiny. Hello druhý příkaz připojení zařízení hello systému souborů NFS sdílet CentOS7RDMA HN: / systému souborů nfs na hello složky. Zde CentOS7RDMA HN: systém souborů nfs je hello vzdálené cestě sdílené složky NFS.
 
-## <a name="how-to-submit-jobs"></a>Postup odeslání úlohy
-K odesílání úloh do clusteru HPC Pack několika způsoby:
+## <a name="how-toosubmit-jobs"></a>Jak toosubmit úlohy
+Existuje několik způsobů toosubmit úlohy toohello HPC Pack clusteru:
 
 * Správce clusteru HPC nebo grafického uživatelského rozhraní Správce úloh HPC
 * Webového portálu HPC
 * REST API
 
-Odesílání úloh do clusteru v Azure pomocí nástroje HPC Pack grafickým uživatelským rozhraním a webového portálu HPC jsou stejné jako u Windows výpočetních uzlů. V tématu [Správce úloh HPC Pack](https://technet.microsoft.com/library/ff919691.aspx) a [postup odesílání úloh z klientského počítače k místní](../../windows/hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Odeslání úlohy clusteru toohello v Azure přes HPC Pack grafického uživatelského rozhraní nástroje a webového portálu HPC hello jsou hello stejné jako u Windows výpočetních uzlů. V tématu [Správce úloh HPC Pack](https://technet.microsoft.com/library/ff919691.aspx) a [jak toosubmit úlohy z klientského počítače k místní](../../windows/hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Odesílání úloh přes REST API, najdete v tématu [vytváření a odesílání úloh pomocí rozhraní API REST v Microsoft HPC Pack](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx). K odesílání úloh z klienta systému Linux, se také podívat na vzorku Python v [HPC Pack SDK](https://www.microsoft.com/download/details.aspx?id=47756).
+úlohy toosubmit prostřednictvím hello REST API najdete příliš[vytváření a odesílání úloh pomocí rozhraní API REST v Microsoft HPC Pack hello](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx). toosubmit úlohy z klienta Linux najdete také toohello Python vzorkováním hello [HPC Pack SDK](https://www.microsoft.com/download/details.aspx?id=47756).
 
 ## <a name="clusrun-for-linux-nodes"></a>Clusrun pro Linuxové uzly
-HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) nástroj lze použít ke spuštění příkazů na Linuxových uzlů buď prostřednictvím příkazového řádku nebo Správce clusteru HPC. Tady jsou některé základní příklady.
+Hello HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) nástroj lze použít tooexecute příkazů na Linuxových uzlů buď prostřednictvím příkazového řádku nebo Správce clusteru HPC. Tady jsou některé základní příklady.
 
-* Zobrazit aktuální uživatelská jména na všech uzlech v clusteru.
+* Zobrazit aktuální uživatelská jména na všech uzlech v clusteru hello.
   
     ```command
     clusrun whoami
     ```
-* Nainstalujte **gdb** ladicí nástroj s **yum** na všechny uzly v linuxnodes skupiny a pak restartujte uzly po 10 minutách.
+* Nainstalujte hello **gdb** ladicí nástroj s **yum** ve všech uzlech v hello linuxnodes skupiny a pak restartujte hello uzly po 10 minutách.
   
     ```command
     clusrun /nodegroup:linuxnodes yum install gdb –y; shutdown –r 10
     ```
-* Vytvořit skript prostředí zobrazení všechna čísla 1 až 10 pro jednu sekundu v každém Linux uzlu v clusteru, spusťte ji a zobrazit výstup z uzlů okamžitě.
+* Vytvořit zobrazení všechna čísla 1 až 10 pro jednu sekundu v každém Linux uzlu v clusteru hello skript prostředí, spustit a zobrazit výstup hello uzlů okamžitě.
   
     ```command
     clusrun /interleaved /nodegroup:linuxnodes echo \"for i in {1..10}; do echo \\\"\$i\\\"; sleep 1; done\" ^> script.sh; chmod +x script.sh; ./script.sh
     ```
 
 > [!NOTE]
-> Možná budete muset použít určité řídicí znaky v **clusrun** příkazy. Jak je znázorněno v tomto příkladu, použijte ^ v příkazovém řádku, abyste se vyhnuli ">" symbol.
+> Může být nutné toouse určité řídicí znaky v **clusrun** příkazy. Jak je znázorněno v tomto příkladu, použijte ^ v příkazovém řádku tooescape hello ">" symbol.
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-* Zkuste škálování na větší počet uzlů clusteru, nebo zkuste spustit úlohu Linux v clusteru. Příklad, naleznete v části [spustit NAMD pomocí sady Microsoft HPC Pack v systému Linux výpočetních uzlech v Azure](hpcpack-cluster-namd.md).
-* Zkuste cluster s [virtuální počítače podporuje RDMA, náročné](../../windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ke spuštění úlohy MPI. Příklad, naleznete v části [spustit OpenFOAM pomocí sady Microsoft HPC Pack na Linux RDMA cluster v Azure](hpcpack-cluster-openfoam.md).
-* Pokud vás zajímá při práci s Linux uzly v clusteru HPC Pack služby místně, najdete v článku [TechNet pokyny](https://technet.microsoft.com/library/mt595803.aspx).
+* Zkuste vertikálním navýšení kapacity hello clusteru tooa větší počet uzlů, nebo zkuste spustit úlohu Linux na hello clusteru. Příklad, naleznete v části [spustit NAMD pomocí sady Microsoft HPC Pack v systému Linux výpočetních uzlech v Azure](hpcpack-cluster-namd.md).
+* Zkuste cluster s [virtuální počítače podporuje RDMA, náročné](../../windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) úlohy MPI toorun. Příklad, naleznete v části [spustit OpenFOAM pomocí sady Microsoft HPC Pack na Linux RDMA cluster v Azure](hpcpack-cluster-openfoam.md).
+* Pokud vás zajímá při práci s Linux uzly v clusteru HPC Pack služby místně, najdete v části hello [TechNet pokyny](https://technet.microsoft.com/library/mt595803.aspx).
 
 <!--Image references-->
 [scenario]:media/hpcpack-cluster/scenario.png

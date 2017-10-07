@@ -1,5 +1,5 @@
 ---
-title: "Kurz pro Azure Container Service – aktualizace aplikací | Microsoft Docs"
+title: "kurz pro službu kontejneru aaaAzure – aktualizace aplikací | Microsoft Docs"
 description: "Kurz pro Azure Container Service – aktualizace aplikace"
 services: container-service
 documentationcenter: 
@@ -17,47 +17,47 @@ ms.workload: na
 ms.date: 07/26/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: db580da3e2d70892bc37305394df5be609ebb8a3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: c467498bab7952926a18e45ffbb21051a98739d5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="update-an-application-in-kubernetes"></a>Aktualizace aplikace v Kubernetes
 
-Po nasazení aplikace v Kubernetes, můžete aktualizovat tak, že zadáte novou bitovou kopii kontejneru nebo verze bitové kopie. Při aktualizaci aplikace je zavedení aktualizace připraveny tak, aby souběžně se aktualizuje pouze část nasazení. Tato dvoufázové instalace aktualizace umožňuje aplikaci běžet během aktualizace a poskytuje mechanismus vrácení zpět, pokud dojde k selhání nasazení. 
+Po nasazení aplikace v Kubernetes, můžete aktualizovat tak, že zadáte novou bitovou kopii kontejneru nebo verze bitové kopie. Při aktualizaci aplikace zavedení aktualizace hello je vynášené, aby pouze část nasazení hello souběžně se aktualizuje. Tato dvoufázové instalace aktualizace umožňuje tookeep aplikace hello během aktualizace hello a poskytuje mechanismus vrácení zpět, pokud dojde k selhání nasazení. 
 
-V tomto kurzu, součástí půl 7, se aktualizuje ukázkovou aplikaci Azure hlas. Úlohy, které zahrnují:
+V tomto kurzu se aktualizuje půl součástí sedm, hello ukázkovou aplikaci Azure hlas. Úlohy, které zahrnují:
 
 > [!div class="checklist"]
-> * Aktualizace kód aplikace front-endu
+> * Aktualizace kód aplikace front-endu hello
 > * Vytvoření bitové kopie aktualizované kontejneru
-> * Když zavedete bitovou kopii kontejneru registru kontejner Azure
-> * Nasazení bitové kopie aktualizované kontejneru
+> * Vkládání hello kontejneru image tooAzure registru kontejneru
+> * Nasazení bitové kopie hello aktualizované kontejneru
 
-V následujících kurzech Operations Management Suite nakonfigurován ke sledování Kubernetes clusteru.
+V následujících kurzech Operations Management Suite je nakonfigurované toomonitor hello Kubernetes clusteru.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V předchozích kurzech byla aplikace zabalené do kontejneru image, image nahrané do registru kontejner Azure a cluster Kubernetes vytvořili. Aplikace pak byl na Kubernetes clusteru spusťte. 
+V předchozí kurzy byla aplikace zabalené do kontejneru image, hello image nahráli tooAzure registru kontejneru a cluster Kubernetes vytvořit. Hello aplikace pak byl na hello Kubernetes clusteru spusťte. 
 
-Pokud jste nedokončili tyto kroky a chcete sledovat, vrátit [kurzu 1 – Vytvoření kontejneru image](./container-service-tutorial-kubernetes-prepare-app.md). 
+Pokud jste nedokončili tyto kroky a chcete toofollow společně, vrátí příliš[kurzu 1 – Vytvoření kontejneru image](./container-service-tutorial-kubernetes-prepare-app.md). 
 
 ## <a name="update-application"></a>Aktualizace aplikace
 
-Pokud chcete provést kroky v tomto kurzu, musí mít klonovat kopie aplikace Azure hlas. V případě potřeby vytvořte tato klonovaný kopie pomocí následujícího příkazu:
+toocomplete hello kroky v tomto kurzu, budete musí mít klonovat kopii hello hlas Azure aplikace. V případě potřeby vytvořte tato klonovaný kopie s hello následující příkaz:
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-Otevřete `config_file.cfg` soubor pomocí libovolného editoru kódu nebo text. Můžete najít tento soubor v následujícím adresáři klonovaný úložišti.
+Otevřete hello `config_file.cfg` soubor pomocí libovolného editoru kódu nebo text. Tento soubor v následujícím adresáři hello klonovat úložiště hello můžete najít.
 
 ```bash
  /azure-voting-app-redis/azure-vote/azure-vote/config_file.cfg
 ```
 
-Změnit hodnoty nastavení `VOTE1VALUE` a `VOTE2VALUE`a pak soubor uložte.
+Změnit hodnoty hello `VOTE1VALUE` a `VOTE2VALUE`a pak hello soubor uložte.
 
 ```bash
 # UI Configurations
@@ -67,7 +67,7 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-Použití [docker compose](https://docs.docker.com/compose/) znovu vytvořit bitovou kopii front-endu a spustit aktualizovanou aplikaci.
+Použití [docker compose](https://docs.docker.com/compose/) toore-vytvořit hello front-end bitové kopie a spuštění hello aktualizovat aplikaci.
 
 ```bash
 docker-compose -f ./azure-voting-app-redis/docker-compose.yml up --build -d
@@ -75,27 +75,27 @@ docker-compose -f ./azure-voting-app-redis/docker-compose.yml up --build -d
 
 ## <a name="test-application-locally"></a>Testovací aplikace místně
 
-Přejděte do `http://localhost:8080` zobrazíte aktualizovanou aplikaci.
+Procházet příliš`http://localhost:8080` toosee hello aktualizovat aplikaci.
 
 ![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
 ## <a name="tag-and-push-images"></a>Značky a nabízených bitové kopie
 
-Značka *azure hlas front* bitovou kopii s loginServer registru kontejneru.
+Značka hello *azure hlas front* bitovou kopii s loginServer hello hello kontejneru registru.
 
-Pokud používáte Azure kontejneru registru, získat přihlašovací jméno pro server s [az acr seznamu](/cli/azure/acr#list) příkaz.
+Pokud používáte Azure kontejneru registru, získat název serveru hello přihlášení s hello [az acr seznamu](/cli/azure/acr#list) příkaz.
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Použití [docker značky](https://docs.docker.com/engine/reference/commandline/tag/) k označení bitovou kopii. Nahraďte `<acrLoginServer>` se název serveru registru kontejner Azure přihlášení nebo registru veřejný název hostitele.
+Použití [docker značka](https://docs.docker.com/engine/reference/commandline/tag/) tootag hello image. Nahraďte `<acrLoginServer>` se název serveru registru kontejner Azure přihlášení nebo registru veřejný název hostitele.
 
 ```bash
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-Použití [docker nabízené](https://docs.docker.com/engine/reference/commandline/push/) Odeslat bitovou kopii do registru. Nahraďte `<acrLoginServer>` se název serveru registru kontejner Azure přihlášení nebo registru veřejný název hostitele.
+Použití [docker nabízené](https://docs.docker.com/engine/reference/commandline/push/) tooupload hello image tooyour registru. Nahraďte `<acrLoginServer>` se název serveru registru kontejner Azure přihlášení nebo registru veřejný název hostitele.
 
 ```bash
 docker push <acrLoginServer>/azure-vote-front:redis-v2
@@ -103,7 +103,7 @@ docker push <acrLoginServer>/azure-vote-front:redis-v2
 
 ## <a name="deploy-update-application"></a>Nasazení aktualizace aplikace
 
-Aby maximální doba provozu, musí být spuštěna více instancí pod aplikace. Ověřte, tato konfigurace se [kubectl získat pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) příkaz.
+Maximální doba provozu tooensure, musí být spuštěna více instancí pod aplikace hello. Tuto konfiguraci ověříte s hello [kubectl získat pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) příkaz.
 
 ```bash
 kubectl get pod
@@ -119,20 +119,20 @@ azure-vote-front-233282510-dhrtr   1/1       Running   0          10m
 azure-vote-front-233282510-pqbfk   1/1       Running   0          10m
 ```
 
-Pokud nemáte k dispozici více pracovními stanicemi soustředěnými kolem systémem bitovou kopii azure hlas front, škálování *azure hlas front* nasazení.
+Pokud nemáte k dispozici více pracovními stanicemi soustředěnými kolem systémem azure hlas front hello bitové kopie, škálovat hello *azure hlas front* nasazení.
 
 
 ```azurecli-interactive
 kubectl scale --replicas=3 deployment/azure-vote-front
 ```
 
-Chcete-li aktualizovat aplikace, použijte [kubectl sady](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#set) příkaz. Aktualizace `<acrLoginServer>` s přihlášení serveru nebo název hostitele vašeho kontejneru registru.
+tooupdate hello aplikace, použijte hello [kubectl sady](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#set) příkaz. Aktualizace `<acrLoginServer>` s hello přihlášení serveru nebo název hostitele vašeho kontejneru registru.
 
 ```azurecli-interactive
 kubectl set image deployment azure-vote-front azure-vote-front=<acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-Ke sledování nasazení, použijte [kubectl získat pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) příkaz. Jako aktualizované aplikace nasazena, jsou vaše pracovními stanicemi soustředěnými kolem ukončena a znovu vytvořit s novou bitovou kopii kontejneru.
+toomonitor hello nasazení, použijte hello [kubectl získat pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) příkaz. Jako hello aktualizovat aplikace nasazena, jsou vaše pracovními stanicemi soustředěnými kolem ukončena a znovu vytvořit s hello novou bitovou kopii kontejneru.
 
 ```azurecli-interactive
 kubectl get pod
@@ -150,27 +150,27 @@ azure-vote-front-1297194256-zktw9   1/1       Terminating   0         1m
 
 ## <a name="test-updated-application"></a>Testovací aktualizovat aplikaci
 
-Získat externí IP adresu *azure hlas front* služby.
+Získat hello externí IP adresu hello *azure hlas front* služby.
 
 ```azurecli-interactive
 kubectl get service azure-vote-front
 ```
 
-Přejděte na IP adresu, kterou najdete v části aktualizovanou aplikaci.
+Procházet toohello IP adresu toosee hello aktualizovat aplikaci.
 
 ![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu aktualizovat aplikaci a vrátit se tato aktualizace na clusteru s podporou Kubernetes. Byly dokončit následující úlohy:
+V tomto kurzu aktualizovat aplikaci a nasazuje clusteru Kubernetes tooa této aktualizace. byly dokončeny Hello následující úlohy:
 
 > [!div class="checklist"]
-> * Aktualizovat kód aplikace front-endu
+> * Kód aplikace front-endu aktualizované hello
 > * Vytvořit bitovou kopii aktualizované kontejneru
-> * Nainstaluje bitovou kopii kontejneru do registru kontejner Azure
-> * Aktualizovaná aplikace nasazena
+> * Poslat hello kontejneru image tooAzure registru kontejneru
+> * Aplikace nasazené hello aktualizovat
 
-Přechodu na v dalším kurzu se dozvíte o tom, jak sledovat Kubernetes s Operations Management Suite.
+Posunutí další kurz toolearn toohello o toomonitor Kubernetes s Operations Management Suite.
 
 > [!div class="nextstepaction"]
 > [Monitorování Kubernetes pomocí OMS](./container-service-tutorial-kubernetes-monitor.md)

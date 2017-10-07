@@ -1,6 +1,6 @@
 ---
-title: "Azure velikosti virtuálních počítačů Windows - úložiště | Microsoft Docs"
-description: "Uvádí jiného úložiště optimalizované velikosti k dispozici pro virtuální počítače s Windows v Azure."
+title: "velikost virtuálního počítače s Windows aaaAzure - úložiště | Microsoft Docs"
+description: "Seznamy hello jiného úložiště optimalizované velikosti, které jsou k dispozici pro virtuální počítače s Windows v Azure."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 586b77c357f64f853374a7ba59e766b015d572c2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 205207c28c6266cc4daa15cc190bfeb0c00821b1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="storage-optimized"></a>Optimalizované z hlediska úložiště
 

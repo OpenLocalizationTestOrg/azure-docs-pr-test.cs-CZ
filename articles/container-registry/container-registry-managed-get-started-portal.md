@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření soukromého registru Dockeru – Azure Portal | Dokumentace Microsoftu"
-description: "Začínáme vytvářet a spravovat soukromé registry kontejnerů Dockeru pomocí webu Azure Portal"
+title: "aaaCreate privátní registru Docker - portálu Azure | Microsoft Docs"
+description: "Začínáme vytváření a správě privátního registrech kontejner Docker s hello portálu Azure"
 services: container-registry
 documentationcenter: 
 author: neilpeterson
@@ -17,57 +17,57 @@ ms.workload: na
 ms.date: 07/11/2017
 ms.author: nepeters
 ms.custom: na
-ms.openlocfilehash: 560aee42b0c5a61c37c594d7937f833ab7183d49
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: cf3ce0dcf3036d0e9cd1eaf01721deccb00248d2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-managed-container-registry-using-the-azure-portal"></a>Vytvoření spravovaného registru kontejnerů pomocí webu Azure Portal
+# <a name="create-a-managed-container-registry-using-hello-azure-portal"></a>Vytvoření spravované kontejneru registru pomocí hello portálu Azure
 
-Azure Container Registry je spravovaná služba registru kontejnerů Dockeru sloužící k ukládání privátních imagí kontejnerů Dockeru. Tato příručka podrobně popisuje vytvoření spravované instance služby Azure Container Registry pomocí webu Azure Portal.
+Azure Container Registry je spravovaná služba registru kontejnerů Dockeru sloužící k ukládání privátních imagí kontejnerů Dockeru. Tato příručka podrobně popisuje vytváření spravované pomocí instance registru kontejner Azure hello portálu Azure.
 
 Spravované registry kontejnerů Azure jsou ve verzi Preview a nejsou dostupné ve všech oblastech.
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-tooazure"></a>Přihlaste se tooAzure
 
-Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
+Přihlaste se toohello portál Azure na http://portal.azure.com.
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
-1. Klikněte na tlačítko **Nový** v levém horním rohu portálu Azure Portal.
+1. Klikněte na tlačítko hello **nový** nalezeno tlačítko na hello levém horním rohu hello portálu Azure.
 
-2. Na webu Marketplace vyhledejte a vyberte **Azure Container Registry**.
+2. Hledání hello marketplace pro **kontejner Azure registru** a vyberte ho.
 
-3. Klikněte na **Vytvořit**. Otevře se okno pro vytvoření služby ACR.
+3. Klikněte na tlačítko **vytvořit** které se otevře okno pro vytvoření ACR hello.
 
     ![Nastavení registru kontejnerů](./media/container-registry-get-started-portal/managed-container-registry-settings.png)
 
-4. V okně **Azure Container Registry** zadejte následující informace. Až budete hotovi, klikněte na **Vytvořit**.
+4. V hello **registru kontejner Azure** okno, zadejte následující informace hello. Až budete hotovi, klikněte na **Vytvořit**.
 
-    a. **Název registru:** Globálně jedinečný název domény nejvyšší úrovně konkrétního registru. V tomto příkladu je název registru *myAzureContainerRegistry1*, ale nahraďte jej vlastním jedinečným názvem. Název může obsahovat pouze písmena a číslice.
+    a. **Název registru:** Globálně jedinečný název domény nejvyšší úrovně konkrétního registru. V tomto příkladu je název registru hello *myAzureContainerRegistry1*, ale nahraďte vlastní jedinečný název. Hello název může obsahovat jenom písmena a číslice.
 
-    b. **Skupina prostředků:** Vyberte existující [skupinu prostředků](../azure-resource-manager/resource-group-overview.md#resource-groups) nebo zadejte název nové skupiny prostředků.
+    b. **Skupina prostředků**: Vyberte existující [skupiny prostředků](../azure-resource-manager/resource-group-overview.md#resource-groups) nebo název typu hello nové.
 
-    c. **Umístění:** Vyberte umístění datového centra Azure, ve kterém je tato služba [dostupná](https://azure.microsoft.com/regions/services/), například **Střed USA – jih**.
+    c. **Umístění**: Vyberte datové centrum Azure umístění, kde je služba hello [k dispozici](https://azure.microsoft.com/regions/services/), jako například **jihu USA**.
 
-    d. **Uživatel s právy pro správu:** Pokud chcete, povolte uživateli s právy pro správu přístup k registru. Toto nastavení můžete po vytvoření registru změnit.
+    d. **Uživatel s oprávněními správce**: Pokud chcete, povolení registru hello tooaccess uživatele správce. Toto nastavení po vytvoření hello registru můžete změnit.
 
-    e. **Použít spravovaný registr:** Vyberte Ano, pokud chcete, aby služba ACR automaticky spravovala úložiště registru a používala webhooky a ověřování AAD.
+    e. **Použití spravovaných registru**: klepněte na tlačítko Ano toohave ACR automaticky spravovat úložiště hello registru, pomocí webhooků a použít ověřování AAD.
 
     f. **Cenová úroveň:** Vyberte cenovou úroveň; další informace najdete tady v cenách služby ACR.
 
-## <a name="log-in-to-acr-instance"></a>Přihlášení k instanci služby ACR
+## <a name="log-in-tooacr-instance"></a>Přihlaste se tooACR instance
 
-Před odesíláním a vyžadováním imagí kontejnerů se musíte přihlásit k instanci služby ACR. 
+Před vkládání a stahování kontejneru bitové kopie, musíte být přihlášení toohello ACR instance. 
 
-Použijte k tomu Azure CLI 2.0. Nejprve se pomocí příkazu [az login](/cli/azure/#login) přihlaste do Azure, pokud je to potřeba. 
+toodo Ano, použít hello 2.0 rozhraní příkazového řádku Azure. Nejprve v případě potřeby, přihlaste se k Azure pomocí hello [az přihlášení](/cli/azure/#login) příkaz. 
 
 ```azurecli
 az login
 ```
 
-Potom se pomocí příkazu [az acr login](/cli/azure/acr#login) přihlaste ke službě Azure Container Registry.
+Pak pomocí hello [az acr přihlášení](/cli/azure/acr#login) příkaz toolog v toohello registru kontejner Azure.
 
 ```azurecli-interactive
 az acr login --name myAzureContainerRegistry1
@@ -77,14 +77,14 @@ az acr login --name myAzureContainerRegistry1
 
 ### <a name="list-container-images"></a>Výpis imagí kontejnerů
 
-Pomocí příkazů rozhraní příkazového řádku `az acr` se můžete dotazovat na obrázky a značky v úložišti.
+Použití hello `az acr` příkazy rozhraní příkazového řádku tooquery hello Image a značky v úložišti.
 
 > [!NOTE]
-> Container Registry v současné době nepodporuje použití příkazu `docker search` k dotazování obrázků a značek.
+> Kontejner registru v současné době nepodporuje hello `docker search` tooquery příkaz pro bitové kopie a značky.
 
 ### <a name="list-repositories"></a>Výpis úložišť
 
-Následující příklad zobrazí seznam úložišť v registru ve formátu JSON (JavaScript Object Notation):
+Hello následující příklad uvádí hello úložiště v registru, ve formátu JSON (JavaScript Object Notation):
 
 ```azurecli
 az acr repository list -n myContainerRegistry1 -o json
@@ -92,7 +92,7 @@ az acr repository list -n myContainerRegistry1 -o json
 
 ### <a name="list-tags"></a>Výpis značek
 
-Následující příklad zobrazí seznam značek na úložišti **samples/nginx** ve formátu JSON:
+Hello následující příklad vypíše značky hello na hello **ukázky/nginx** úložiště, ve formátu JSON:
 
 ```azurecli
 az acr repository show-tags -n myContainerRegistry1 --repository samples/nginx -o json
@@ -100,7 +100,7 @@ az acr repository show-tags -n myContainerRegistry1 --repository samples/nginx -
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili spravovanou instanci služby Azure Container Registry pomocí webu Azure Portal.
+V této úvodní jste vytvořili spravované instance registru kontejner Azure pomocí hello portálu Azure.
 
 > [!div class="nextstepaction"]
-> [Nahrání první image pomocí rozhraní příkazového řádku Dockeru](container-registry-get-started-docker-cli.md)
+> [Push vaší první image pomocí příkazového řádku Dockeru hello](container-registry-get-started-docker-cli.md)

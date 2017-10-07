@@ -1,5 +1,5 @@
 ---
-title: Replikace dat v Azure Storage | Microsoft Docs
+title: "aaaData replikace ve službě Azure Storage | Microsoft Docs"
 description: "Data ve vašem účtu úložiště Microsoft Azure se replikují pro odolnost a vysokou dostupnost. Možnosti replikace zahrnují místně redundantní úložiště (LRS), zónově redundantní úložiště (ZRS), geograficky redundantní úložiště (GRS) a geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)."
 services: storage
 documentationcenter: 
@@ -14,36 +14,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: marsma
-ms.openlocfilehash: b9354484ff5b81e2561d017d039bf2c07a21a423
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 539bc54f57fe8cb661665d2788961a0783b5ae7e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-storage-replication"></a>Účet replikace Azure Storage
 
-Data na vašem účtu Microsoft Azure Storage se vždy replikují, aby byla zajištěna jejich stálost a vysoká dostupnost. Replikace zkopíruje data, a to buď v rámci stejného datového centra, nebo do druhého datového centra (v závislosti na možnosti replikace, kterou zvolíte). Replikace chrání vaše data a udrží vaše aplikace v provozu v případě krátkodobého selhání hardwaru. Pokud vaše data se replikují do druhého datového centra, je chráněn v primárním umístění závažné selhání.
+Hello data v Microsoft Azure účet úložiště se vždy replikují tooensure odolnost a vysokou dostupnost. Replikace kopie dat, buď v rámci hello stejném datovém centru nebo tooa druhý datového centra, v závislosti na možnosti replikace, kterou zvolíte. Replikace chrání vaše data a chrání vaše aplikace doby provozu v případě hello selhání hardwaru. Pokud vaše data jsou replikované tooa druhý datové centrum, je chráněný před závažné chybě v primárním umístění hello.
 
-Replikace zajišťuje, že váš účet úložiště splňuje [smlouvu o úrovni služeb (SLA) pro Storage](https://azure.microsoft.com/support/legal/sla/storage/) i při selhání. Podívejte se do smlouvy SLA na informace o zárukách služby Azure Storage na stálost a dostupnost.
+Replikace zajišťuje, že váš účet úložiště splňuje hello [smlouvy úrovně služeb (SLA) pro úložiště](https://azure.microsoft.com/support/legal/sla/storage/) i v hello vzhled chyb. Zjistit informace o službě Azure Storage hello SLA zaručuje pro odolnost a dostupnost.
 
-Při vytvoření účtu úložiště si můžete vybrat jednu z těchto možností replikace:
+Při vytváření účtu úložiště, můžete vybrat jednu z hello následující možnosti replikace:
 
 * [Místně redundantní úložiště (LRS)](#locally-redundant-storage)
 * [Zónově redundantní úložiště (ZRS)](#zone-redundant-storage)
 * [Geograficky redundantní úložiště (GRS)](#geo-redundant-storage)
 * [Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](#read-access-geo-redundant-storage)
 
-Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) je výchozí možností při vytváření účtu úložiště.
+Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) je hello výchozí možnost, při vytváření účtu úložiště.
 
-Následující tabulka poskytuje rychlý přehled o rozdílech mezi LRS, ZRS, GRS a RA-GRS, zatímco dalších částech adres každý typ replikace podrobněji.
+Hello následující tabulka poskytuje rychlý přehled o hello rozdíly mezi LRS, ZRS, GRS a RA-GRS, zatímco dalších částech adres každý typ replikace podrobněji.
 
 | Strategie replikace | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
 | Data se replikují přes několik datových center. |Ne |Ano |Ano |Ano |
-| Ze sekundární lokality, stejně jako primární umístění můžete číst data. |Ne |Ne |Ne |Ano |
+| Ze sekundárního umístění a také hello primární umístění můžete číst data. |Ne |Ne |Ne |Ano |
 | Počet kopií dat uchovávaných na samostatných uzlech |3 |3 |6 |6 |
 
-V tématu [Azure Storage – ceny](https://azure.microsoft.com/pricing/details/storage/) pro informace o cenách pro možnosti různých redundance.
+V tématu [Azure Storage – ceny](https://azure.microsoft.com/pricing/details/storage/) pro informace o cenách za hello redundance různé možnosti.
 
 > [!NOTE]
 > Premium Storage podporuje pouze místně redundantní úložiště (LRS). Informace o Premium Storage najdete v tématu [úložiště Premium: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](storage-premium-storage.md).
@@ -54,42 +54,42 @@ V tématu [Azure Storage – ceny](https://azure.microsoft.com/pricing/details/s
 >
 
 ## <a name="locally-redundant-storage"></a>Místně redundantní úložiště
-Místně redundantní úložiště (LRS) replikuje data třikrát v rámci jednotky škálování úložiště, který je hostován v datacentru v oblasti, ve které jste vytvořili účet úložiště. Žádost o zápis vrátí úspěšně pouze po jeho byla zapsána na všechny tři repliky. Tyto tři repliky každý nacházet v domén samostatné selhání a upgradu domén v rámci jedné škálovací jednotky úložiště.
+Místně redundantní úložiště (LRS) replikuje data třikrát v rámci jednotky škálování úložiště, který je hostován v datacentru v hello oblasti, ve které jste vytvořili účet úložiště. Žádost o zápis vrátí úspěšně pouze po jejím napsané tooall tři repliky. Tyto tři repliky každý nacházet v domén samostatné selhání a upgradu domén v rámci jedné škálovací jednotky úložiště.
 
-Jednotka škálování úložiště je kolekce stojany uzlů úložiště. (FD) domény selhání je skupina uzlů, které představují fyzická jednotka selhání a lze považovat za uzly, které patří do stejné fyzické racku. Upgradovací doméně (UD) je skupina uzlů, které jsou upgradovány společně během procesu upgradu služby (zavedení). Tři repliky jsou rozloženy UDs a FDs v rámci jedné jednotky škálování úložiště zajistit, že data je k dispozici i v případě selhání hardwaru má dopad na jednom racku, nebo když jsou uzly upgradován během zavedení.
+Jednotka škálování úložiště je kolekce stojany uzlů úložiště. (FD) domény selhání je skupina uzlů, které představují fyzická jednotka selhání a lze považovat za uzlech náležících toohello stejné fyzické racku. Upgradovací doméně (UD) je skupina uzlů, které jsou upgradovány společně hello během upgradu služby (zavedení). Hello tři repliky jsou rozloženy UDs a FDs v rámci jednoho úložiště škálovací jednotky tooensure data jsou k dispozici i v případě selhání hardwaru má dopad na jednom racku, nebo když jsou uzly upgradován během zavedení.
 
-LRS je nejnižší náklady na možnost a nabízí minimálně odolnost ve srovnání s dalšími možnostmi. V případě havárie úrovně datového centra (aktivuje, zahlcení atd.) může být všechny tři repliky ztracena nebo neopravitelné. Chcete-li toto riziko snížilo, geograficky redundantní úložiště (GRS) se doporučuje pro většinu aplikací.
+LRS se hello nejnižší náklady na možnost a nabízí možnosti tooother minimálně odolnost porovnání. V případě hello úrovně katastrofě datového centra (aktivuje, zahlcení atd.) může být všechny tři repliky ztracena nebo neopravitelné. toomitigate toto riziko, geograficky redundantní úložiště (GRS) se doporučuje pro většinu aplikací.
 
 Místně redundantní úložiště, stále může být žádoucí v některých scénářích:
 
 * Poskytuje nejvyšší maximální šířka pásma možnosti replikace Azure Storage.
 * Pokud aplikace ukládá data, která může být snadno znovu vytvořena, můžete zvolit LRS.
-* Některé aplikace jsou omezeny na replikaci dat pouze v rámci země z důvodu požadavky zásad správného řízení data. Spárované oblast může být v jiné zemi. Další informace o páry oblast, najdete v části [oblastí Azure](https://azure.microsoft.com/regions/).
+* Některé aplikace jsou data s omezeným přístupem tooreplicating pouze v rámci země z důvodu toodata požadavky zásad správného řízení. Spárované oblast může být v jiné zemi. Další informace o páry oblast, najdete v části [oblastí Azure](https://azure.microsoft.com/regions/).
 
 ## <a name="zone-redundant-storage"></a>Zónově redundantní úložiště
-Zónově redundantní úložiště (ZRS) asynchronně replikuje data mezi datovými centry v rámci jednoho nebo dvou oblastech kromě ukládání tři repliky podobný LRS, a zajišťuje tak větší odolnost LRS. Data uložená v ZRS byla odolná i v případě, že primární datové centrum není k dispozici nebo neopravitelné.
-Zákazníci, kteří v úmyslu používat ZRS měli vědět:
+Zónově redundantní úložiště (ZRS) asynchronně replikuje data mezi datovými centry v rámci jednoho nebo dvou oblastí v přidání toostoring tři repliky podobný tooLRS, a zajišťuje tak větší odolnost LRS. Data uložená v ZRS byla odolná i v případě, že primární datové centrum hello je k dispozici nebo je nejde obnovit.
+Zákazníky, kteří plánují toouse ZRS měli vědět:
 
 * ZRS je dostupná jenom pro objekty BLOB bloku v účtech úložiště pro obecné účely a je podporována pouze v úložišti služby verze 2014-02-14 a novější.
-* Vzhledem k tomu, že asynchronní replikaci zahrnuje zpoždění, v případě havárie místní je možné, že změny, které ještě nebyla replikována na sekundární se ztratí možné obnovit data z primární.
-* Repliky nemusí být k dispozici, dokud Microsoft zahájí převzetí služeb při selhání na sekundární.
-* ZRS účty nelze převést na LRS nebo GRS později. Podobně existující účet LRS nebo GRS nelze převést na účet ZRS.
+* Vzhledem k tomu, že asynchronní replikaci zahrnuje zpoždění, hello události místní po havárii, je možné, že změny, které ještě nebyly replikovány toohello sekundární bude ztracena, pokud hello data nelze obnovit z primární hello.
+* Hello repliky nemusí být dostupné, dokud Microsoft zahájí převzetí služeb při selhání toohello sekundární.
+* ZRS účty nelze převést novější tooLRS nebo GRS. Podobně existující účet LRS nebo GRS nelze převést tooa ZRS účtu.
 * ZRS účty nemají metriky nebo možnosti protokolování.
 
 ## <a name="geo-redundant-storage"></a>Geograficky redundantní úložiště
-Geograficky redundantní úložiště (GRS) replikuje data do sekundární oblasti, která je stovky miles od primární oblasti. Pokud má váš účet úložiště GRS povoleno, vaše data byla odolná i v případě výpadku dokončení místní nebo havárii, ve kterém není použitelná pro obnovení primární oblasti.
+Geograficky redundantní úložiště (GRS) replikuje vaše data tooa sekundární oblast, která je stovky miles od primární oblasti hello. Pokud má váš účet úložiště GRS povoleno, vaše data byla odolná i v případě hello dokončení regionální výpadku nebo havárii, ve které hello primární oblast není použitelná pro obnovení.
 
-Účet úložiště GRS povolena je nejprve aktualizace potvrzena pro primární oblasti, kde se replikují třikrát. Aktualizace se pak replikují asynchronně sekundární oblast, kde se také replikují třikrát.
+Účet úložiště GRS povolena je aktualizace první potvrdit toohello primární oblasti, kde se replikují třikrát. Pak je hello aktualizace replikují asynchronně toohello sekundární oblasti, kde se také replikují třikrát.
 
-S GRS primární a sekundární oblasti spravovat repliky v rámci domén samostatné selhání a upgradu domén v rámci jednotce škálování úložiště, jak je popsáno s LRS.
+S GRS obou hello primární a sekundární oblasti spravovat repliky v rámci domén samostatné selhání a upgradu domén v rámci jednotce škálování úložiště, jak je popsáno s LRS.
 
 Aspekty:
 
-* Vzhledem k tomu, že asynchronní replikaci zahrnuje zpoždění, v případě havárie regionální je možné, že od primární oblasti nelze obnovit data budou ztracena změny, které ještě nebyla replikována do sekundární oblasti.
-* Replika není k dispozici, pokud Microsoft zahájí převzetí služeb při selhání pro sekundární oblast. Pokud Microsoft zahájit převzetí služeb při selhání pro sekundární oblast, budete mít ke čtení a zápis do dat po převzetí služeb po dokončení. Další informace najdete v tématu [pokyny pro zotavení po havárii](storage-disaster-recovery-guidance.md). 
-* Pokud aplikace chce číst ze sekundární oblasti, uživatel by měl povolit RA-GRS.
+* Vzhledem k tomu, že asynchronní replikaci zahrnuje zpoždění, hello události regionální po havárii, které je možné, že se změní, která ještě nebyla replikována toohello sekundární oblasti se ztratí, pokud hello data nelze obnovit z primární oblasti hello.
+* Hello repliky není k dispozici, dokud Microsoft zahájí sekundární oblasti toohello převzetí služeb při selhání. Pokud Microsoft iniciovat sekundární oblasti toohello převzetí služeb při selhání, budete mít oprávnění ke čtení a zápisu dat toothat po dokončení převzetí služeb při selhání hello. Další informace najdete v tématu [pokyny pro zotavení po havárii](storage-disaster-recovery-guidance.md). 
+* Pokud aplikace chce tooread ze sekundární oblasti hello, hello uživatel by měl povolit RA-GRS.
 
-Pokud vytvoříte účet úložiště, vyberte primární oblasti pro účet. Sekundární oblast je určen na základě primární oblasti a nelze změnit. V následující tabulce jsou uvedeny dvojice primární a sekundární oblast.
+Když vytvoříte účet úložiště, vyberete hello primární oblasti pro účet hello. sekundární oblast Hello je určen na základě hello primární oblasti a nelze změnit. Hello následující tabulka ukazuje dvojice primární a sekundární oblasti hello.
 
 | Primární | Sekundární |
 | --- | --- |
@@ -129,64 +129,64 @@ Pokud vytvoříte účet úložiště, vyberte primární oblasti pro účet. Se
 Aktuální informace o oblastech podporovaných v Azure najdete v tématu [oblastí Azure](https://azure.microsoft.com/regions/).
 
 >[!NOTE]  
-> USA – verze pro státní správu Virginia sekundární oblast je Texas nám verze pro státní správu. Dříve nám verze pro státní správu Virginia využité nám verze pro státní správu Iowa jako sekundární oblasti. Účty úložiště stále využití nám verze pro státní správu Iowa jako sekundární oblasti se migruje nám verze pro státní správu Texas jako sekundární oblast. 
+> USA – verze pro státní správu Virginia sekundární oblast je Texas nám verze pro státní správu. Dříve nám verze pro státní správu Virginia využité nám verze pro státní správu Iowa jako sekundární oblasti. Účty úložiště stále využití nám verze pro státní správu Iowa jako sekundární oblasti probíhá migrovat tooUS verze pro státní správu Texas jako sekundární oblast. 
 > 
 > 
 
 ## <a name="read-access-geo-redundant-storage"></a>Geograficky redundantní úložiště s přístupem pro čtení
-Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) maximalizuje dostupnost pro váš účet úložiště, tím, že poskytuje přístup jen pro čtení k datům v sekundárním umístění, kromě replikace rámci dvou oblastí poskytované GRS.
+Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) maximalizuje dostupnost pro váš účet úložiště, tím, že poskytuje přístup jen pro čtení toohello data v hello sekundárního umístění, kromě replikace toohello rámci dvou oblastí poskytované GRS.
 
-Když povolíte přístup jen pro čtení k datům v sekundární oblasti, vaše data jsou k dispozici na sekundárním koncovým bodem, kromě primární koncový bod pro váš účet úložiště. Sekundární koncový bod je podobná primární koncový bod, ale připojí přípona `–secondary` k názvu účtu. Například, pokud je váš primární koncový bod služby objektů Blob `myaccount.blob.core.windows.net`, pak je sekundární koncový bod `myaccount-secondary.blob.core.windows.net`. Přístupové klíče účtu úložiště jsou stejné pro obě primární a sekundární koncové body.
+Když povolíte přístup jen pro čtení dat tooyour v sekundární oblasti hello, vaše data jsou k dispozici na koncový bod sekundární v přidání toohello primární koncový bod pro váš účet úložiště. sekundární koncový bod Hello je podobné primární koncový bod toohello, ale připojí přípona hello `–secondary` toohello název účtu. Například pokud váš primární koncový bod pro hello služby objektů Blob je `myaccount.blob.core.windows.net`, pak je sekundární koncový bod `myaccount-secondary.blob.core.windows.net`. Hello přístupové klíče účtu úložiště jsou hello stejné pro obě hello primární a sekundární koncové body.
 
 Aspekty:
 
-* Aplikace má ke správě kterému koncovému bodu je interakci s při použití RA-GRS.
-* Vzhledem k tomu, že asynchronní replikaci zahrnuje zpoždění, v případě havárie regionální je možné, že od primární oblasti nelze obnovit data budou ztracena změny, které ještě nebyla replikována do sekundární oblasti.
-* Pokud Microsoft zahájí převzetí služeb při selhání pro sekundární oblast, budete mít ke čtení a zápis do dat po převzetí služeb po dokončení. Další informace najdete v tématu [pokyny pro zotavení po havárii](storage-disaster-recovery-guidance.md). 
-* RA-GRS, je určena pro účely vysokou dostupnost. Pokyny k škálovatelnost, přečtěte si [kontrolní seznam výkonu](storage-performance-checklist.md).
+* Aplikace má toomanage kterému koncovému bodu je interakci s při použití RA-GRS.
+* Vzhledem k tomu, že asynchronní replikaci zahrnuje zpoždění, hello události regionální po havárii, které je možné, že se změní, která ještě nebyla replikována toohello sekundární oblasti se ztratí, pokud hello data nelze obnovit z primární oblasti hello.
+* Iniciuje-li Microsoft sekundární oblasti toohello převzetí služeb při selhání, budete mít oprávnění ke čtení a zápisu dat toothat po dokončení převzetí služeb při selhání hello. Další informace najdete v tématu [pokyny pro zotavení po havárii](storage-disaster-recovery-guidance.md). 
+* RA-GRS, je určena pro účely vysokou dostupnost. Škálovatelnost pokyny najdete v tématu hello [kontrolní seznam výkonu](storage-performance-checklist.md).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 <a id="howtochange"></a>
-#### <a name="1-how-can-i-change-the-geo-replication-type-of-my-storage-account"></a>1. Jak můžete změnit typ geografické replikace pro svůj účet úložiště?
+#### <a name="1-how-can-i-change-hello-geo-replication-type-of-my-storage-account"></a>1. Jak můžete změnit typ replikace geograficky hello svůj účet úložiště?
 
-   Můžete změnit typ geografická replikace účtu úložiště mezi LRS, GRS a RA-GRS pomocí [portál Azure](https://portal.azure.com/), [prostředí Azure Powershell](storage-powershell-guide-full.md) nebo programově pomocí jednoho z našich mnoho knihovny klienta úložiště . Upozorňujeme, že účty ZRS nemůže být převedená LRS nebo GRS. Podobně existující účet LRS nebo GRS nelze převést na účet ZRS.
+   Můžete změnit hello geografické replikace typ účtu úložiště mezi LRS, GRS a RA-GRS pomocí hello [portál Azure](https://portal.azure.com/), [prostředí Azure Powershell](storage-powershell-guide-full.md) nebo programově pomocí jednoho z našich mnoho klienta úložiště Knihovny. Upozorňujeme, že účty ZRS nemůže být převedená LRS nebo GRS. Podobně existující účet LRS nebo GRS nelze převést tooa ZRS účtu.
 
 <a id="changedowntime"></a>
-#### <a name="2-will-there-be-any-down-time-if-i-change-the-replication-type-of-my-storage-account"></a>2. Bude k dispozici žádný výpadek když změníte typ replikace pro svůj účet úložiště?
+#### <a name="2-will-there-be-any-down-time-if-i-change-hello-replication-type-of-my-storage-account"></a>2. Bude k dispozici žádný výpadek Pokud dojde ke změně hello typ replikace pro svůj účet úložiště?
 
    Ne, nebude dostupný žádný výpadek.
 
 <a id="changecost"></a>
-#### <a name="3-will-there-be-any-additional-cost-if-i-change-the-replication-type-of-my-storage-account"></a>3. Bude k dispozici žádné další náklady když změníte typ replikace pro svůj účet úložiště?
+#### <a name="3-will-there-be-any-additional-cost-if-i-change-hello-replication-type-of-my-storage-account"></a>3. Bude k dispozici žádné další náklady Pokud dojde ke změně hello typ replikace pro svůj účet úložiště?
 
-   Ano. Pokud změníte z LRS GRS (nebo RA-GRS) pro účet úložiště, by to být účtovány dalších poplatků odchozí účastnící se kopírování existujících dat z primárního umístění do sekundárního umístění. Po počáteční data se zkopírují je bezplatná další další odchozí pro geografickou replikaci dat z primárního na sekundární umístění. Podrobnosti o poplatky šířky pásma můžete najít na [Azure Storage – ceny stránky](https://azure.microsoft.com/pricing/details/storage/blobs/). Pokud změníte na LRS GRS, je bez dalších nákladů, ale data se odstraní ze sekundárního umístění.
+   Ano. Pokud změníte z LRS tooGRS (nebo RA-GRS) pro účet úložiště, by to být účtovány dalších poplatků odchozí účastnící se kopírování existujících dat z primárního umístění toohello sekundárního umístění. Jakmile hello počáteční data se zkopírují neexistuje žádné další další odchozí zdarma pro geografickou replikaci dat hello z umístění primární toosecondary hello. Hello podrobnosti poplatky šířky pásma můžete najít na hello [Azure Storage – ceny stránky](https://azure.microsoft.com/pricing/details/storage/blobs/). Pokud změníte z GRS tooLRS, je bez dalších nákladů, ale data se odstraní ze sekundárního umístění hello.
 
 <a id="ragrsbenefits"></a>
 #### <a name="4-how-can-ra-grs-help-me"></a>4. Jak RA-GRS mi může pomoci?
    
-   GRS úložiště poskytuje replikaci vašich dat z primárního na sekundární oblasti, která je stovky miles od primární oblasti. V takovém případě vaše data byla odolná i v případě výpadku dokončení místní nebo havárii, ve kterém není použitelná pro obnovení primární oblasti. RA-GRS úložiště zahrnuje to a přidá možnost číst data ze sekundárního umístění. Některé měli představu o tom, jak využít tuto možnost, naleznete v [navrhování vysoce dostupné aplikace pomocí úložiště RA-GRS](storage-designing-ha-apps-with-ragrs.md). 
+   GRS úložiště poskytuje replikaci vašich dat z primární tooa sekundární oblasti, která je stovky miles od primární oblasti hello. V takovém případě vaše data byla odolná i v případě hello dokončení regionální výpadku nebo havárii, ve které hello primární oblast není použitelná pro obnovení. RA-GRS úložiště zahrnuje to a přidá hello možnost tooread hello data ze sekundárního umístění hello. Pro některé své nápady, jak tooleverage tuto možnost, naleznete v příliš[navrhování vysoce dostupné aplikace pomocí úložiště RA-GRS](storage-designing-ha-apps-with-ragrs.md). 
 
 <a id="lastsynctime"></a>
-#### <a name="5-is-there-a-way-for-me-to-figure-out-how-long-it-takes-to-replicate-my-data-from-the-primary-to-the-secondary-region"></a>5. Existuje způsob, jak mi zjistěte, jak dlouho trvá replikaci Moje dat z primárního na sekundární oblast?
+#### <a name="5-is-there-a-way-for-me-toofigure-out-how-long-it-takes-tooreplicate-my-data-from-hello-primary-toohello-secondary-region"></a>5. Existuje způsob, jak pro mě nejlepší toofigure na jak dlouho trvalo tooreplicate svá data ze sekundární oblasti hello primární toohello?
    
-   Pokud používáte RA-GRS úložiště, můžete zkontrolovat, čas poslední synchronizace účtu úložiště. Čas poslední synchronizace je hodnota, datum a čas GMT; všechny primární zápisy před čas poslední synchronizace byla úspěšně zapsána do sekundárního umístění, které střední jsou k dispozici čtení ze sekundárního umístění. Primární zapíše po čas poslední synchronizace může nebo nemusí být k dispozici pro čtení ještě. Tato hodnota pomocí se můžete dotazovat [portál Azure](https://portal.azure.com/), [prostředí Azure PowerShell](storage-powershell-guide-full.md), nebo programově pomocí rozhraní REST API nebo jeden z knihovny klienta úložiště. 
+   Pokud používáte RA-GRS úložiště, můžete zkontrolovat hello čas poslední synchronizace účtu úložiště. Čas poslední synchronizace je hodnota, datum a čas GMT; všechny primární zápisy před hello čas poslední synchronizace mít byla úspěšně zapsána toohello sekundárního umístění, což znamená, že jsou k dispozici toobe čtení ze sekundárního umístění hello. Primární zapíše po hello čas poslední synchronizace může nebo nemusí být k dispozici pro čtení ještě. Můžete dát dotaz na tuto hodnotu pomocí hello [portál Azure](https://portal.azure.com/), [prostředí Azure PowerShell](storage-powershell-guide-full.md), nebo programově pomocí rozhraní REST API nebo jeden z hello knihovny klienta úložiště hello. 
 
 <a id="outage"></a>
-#### <a name="6-how-can-i-switch-to-the-secondary-region-if-there-is-an-outage-in-the-primary-region"></a>6. Jak lze přepnout sekundární oblast, pokud dojde k výpadku v primární oblasti?
+#### <a name="6-how-can-i-switch-toohello-secondary-region-if-there-is-an-outage-in-hello-primary-region"></a>6. Jak můžete přepnout toohello sekundární oblast, pokud dojde k výpadku v primární oblasti hello?
    
-   Podrobnosti najdete v článku na [co dělat, když dojde k výpadku Azure Storage](storage-disaster-recovery-guidance.md) další podrobnosti.
+   Naleznete v článku toohello [co toodo, když dojde k výpadku Azure Storage](storage-disaster-recovery-guidance.md) další podrobnosti.
 
 <a id="rpo-rto"></a>
-#### <a name="7-what-is-the-rpo-and-rto-with-grs"></a>7. Co je plánovaný bod obnovení a RTO s GRS?
+#### <a name="7-what-is-hello-rpo-and-rto-with-grs"></a>7. Co je hello plánovaný bod obnovení a RTO s GRS?
    
-   Cíl bodu obnovení (RPO): V GRS a RA-GRS, úložiště služby asynchronně geo replikují data z primární na sekundární umístění. Pokud dojde k havárii hlavní místní a převzetí služeb při selhání musí být provedena, může dojít ke ztrátě poslední rozdílové změny, které nebyly geograficky replikované. Počet minut potenciální – ztráta dat se označuje jako plánovaný bod obnovení (což znamená bod v čase, do kterých můžete obnovit data). Obvykle máme plánovaný bod obnovení méně než 15 minut, i když je aktuálně trvá žádné SLA na jak dlouho se geografická replikace.
+   Cíl bodu obnovení (RPO): V GRS a RA-GRS, hello úložiště služby asynchronně geograficky replikují hello data ze sekundárního umístění primární toohello hello. Pokud dojde k havárii hlavní místní a převzetí služeb při selhání má toobe provést, mohou být ztraceny poslední rozdílové změny, které nebyly geograficky replikované. Hello počet minut potenciální – ztráta dat je odkazované tooas hello RPO (což znamená, může být obnoven hello bod v časových toowhich dat). Obvykle máme plánovaný bod obnovení méně než 15 minut, i když je aktuálně trvá žádné SLA na jak dlouho se geografická replikace.
 
-   Cíli času obnovení (RTO): Toto je míra o tom, jak dlouho trvalo nám dělat převzetí služeb při selhání a získat zpět do režimu online účet úložiště, pokud bychom měli udělat převzetí služeb při selhání. Čas převzetí služeb při selhání zahrnují následující:
-    * Čas, kdy trvá nám prozkoumat a určete, jestli jsme můžete obnovit data v primární lokalitě nebo pokud je potřeba udělat převzetí služeb při selhání.
-    * Převzetí služeb při selhání účet změnou primární záznamy DNS tak, aby odkazovaly do sekundárního umístění.
+   Cíli času obnovení (RTO): Toto je míra jak dlouho trvá toodo hello převzetí služeb při selhání a získat účet úložiště hello zpět online Pokud bychom měli toodo převzetí služeb při selhání. převzetí služeb při selhání Hello čas toodo hello zahrnuje hello následující:
+    * čas Hello přebírá nám tooinvestigate a určete, jestli jsme můžete obnovit data hello hello primární umístění, nebo pokud bychom někdy potřebovali toodo převzetí služeb při selhání.
+    * Převzetí služeb při selhání hello účet změnou hello primární DNS položky toopoint toohello sekundárního umístění.
 
-   Jsme převzít odpovědnost velmi vážně uchování dat tak, aby pokud je pravděpodobné, že obnovení dat, jsme zdržovat provádění převzetí služeb při selhání a zaměřit se na obnovení dat v primárním umístění. V budoucnu plánujeme zajistit rozhraní API, která umožňuje spustit převzetí služeb při selhání na úrovni účtu, který by pak umožňuje kontrolovat RTO sami, ale to ještě není k dispozici.
+   Jsme trvat velmi vážně zachování dat tak, aby pokud je pravděpodobné, že obnovení dat hello, jsme zdržovat provádění hello převzetí služeb při selhání a zaměřit se na obnovení dat hello v primárním umístění hello zodpovědností hello. V budoucích hello, plánujeme tooallow tooprovide rozhraní API můžete tootrigger převzetí služeb při selhání na úrovni účtu, který pak umožní toocontrol hello RTO sami, ale to ještě není k dispozici.
    
 ## <a name="next-steps"></a>Další kroky
 * [Návrh aplikace s vysokou dostupností pomocí RA-GRS úložiště](storage-designing-ha-apps-with-ragrs.md)

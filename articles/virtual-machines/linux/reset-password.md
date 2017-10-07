@@ -1,6 +1,6 @@
 ---
-title: "Jak obnovit heslo místního Linux na virtuálních počítačích Azure | Microsoft Docs"
-description: "Zavést postup obnovit heslo místního Linux na virtuálním počítači Azure"
+title: "aaaHow tooreset místní Linux heslo na virtuálních počítačích Azure | Microsoft Docs"
+description: "Zavést hello kroky tooreset hello místní Linux heslo pro virtuální počítač Azure"
 services: virtual-machines-linux
 documentationcenter: 
 author: Deland-Han
@@ -15,41 +15,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/3/2017
 ms.author: delhan
-ms.openlocfilehash: bd48128a078821b7a4baa02d5d7ceecc6de99608
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b28a679a36bf93c6881633eefa03aef3cd33e804
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Jak obnovit heslo místního Linux na virtuálních počítačích Azure
+# <a name="how-tooreset-local-linux-password-on-azure-vms"></a>Jak tooreset místní heslo Linux na virtuálních počítačích Azure
 
-Tento článek představuje několik metod k resetování hesel místní systém Linux virtuálního počítače (VM). Pokud vypršela platnost uživatelského účtu nebo jenom chcete vytvořit nový účet, můžete použít následující metody vytvořit nový účet místního správce a znovu získat přístup k virtuálnímu počítači.
+Tento článek představuje několik metod tooreset místní systém Linux virtuálního počítače (VM) hesla. Pokud vypršela platnost hello uživatelský účet nebo jenom chcete toocreate nový účet, můžete použít následující metody toocreate nový účet místního správce hello a znovu získat přístup k toohello virtuálních počítačů.
 
 ## <a name="symptoms"></a>Příznaky
 
-Se nemůže přihlásit k virtuálnímu počítači a obdržíte zprávu, která označuje, že je nesprávné heslo, které jste použili. Kromě toho nelze použít VMAgent k resetování hesla na portálu Azure. 
+Se nemůže přihlásit toohello virtuálních počítačů a obdržíte zprávu, která označuje, že toto hello heslo, které jste použili není správné. Kromě toho nelze použít VMAgent tooreset heslo na hello portálu Azure. 
 
 ## <a name="manual-password-reset-procedure"></a>Ruční postup vytvoření nového hesla
 
-1.  Odstraňte virtuální počítač a zachovat připojených disků.
+1.  Odstraňte hello virtuálních počítačů a zachovat hello připojené disky.
 
-2.  Připojte jednotku operačního systému jako datový disk k jiné dočasné virtuálních počítačů ve stejném umístění.
+2.  Připojte hello jednotce operačního systému jako tooanother disku data dočasný virtuální počítač v hello stejné umístění.
 
-3.  Pomocí následujícího příkazu SSH na dočasný virtuální počítač stane nadtypem uživatele.
+3.  Spusťte následující příkazu SSH na hello dočasné virtuálních počítačů toobecome hello nadtypem uživatele.
 
 
     ~~~~
     sudo su
     ~~~~
 
-4.  Spustit **fdisk -l** nebo v protokolech systému najít nově připojený disk. Vyhledejte název jednotky připojit. Pak na dočasný virtuální počítač, zkontrolujte soubor protokolu relevantní.
+4.  Spustit **fdisk -l** nebo pohled na systém protokoly toofind hello nově připojený disk. Vyhledejte toomount název jednotky hello. Potom na hello dočasný virtuální počítač, naleznete v příslušných hello souboru protokolu.
 
     ~~~~
     grep SCSI /var/log/kern.log (ubuntu)
     grep SCSI /var/log/messages (centos, suse, oracle)
     ~~~~
 
-    Následuje příklad výstupu příkazu grep:
+    Hello následuje příklad výstupu příkazu grep hello:
 
     ~~~~
     kernel: [ 9707.100572] sd 3:0:0:0: [sdc] Attached SCSI disk
@@ -61,7 +61,7 @@ Se nemůže přihlásit k virtuálnímu počítači a obdržíte zprávu, která
     mkdir /tempmount
     ~~~~
 
-6.  Připojte disk operačního systému na přípojného bodu. Obvykle potřebujete připojit sdc1 nebo sdc2. To bude záviset na hostování oddílu v adresáři/etc z disku porušený počítače.
+6.  Připojte disk hello operačního systému na hello přípojného bodu. Obvykle potřebujete toomount sdc1 nebo sdc2. To bude záviset na hello hostování oddílu v adresáři/etc z disku porušený počítače hello.
 
     ~~~~
     mount /dev/sdc1 /tempmount
@@ -78,13 +78,13 @@ Se nemůže přihlásit k virtuálnímu počítači a obdržíte zprávu, která
     cp /tempmount/etc/shadow /tempmount/etc/shadow_orig
     ~~~~
 
-8.  Resetovat heslo uživatele, které budete potřebovat:
+8.  Resetování hesla hello uživatele, který budete potřebovat:
 
     ~~~~
     passwd <<USER>> 
     ~~~~
 
-9.  Přesuňte změněné soubory do správného umístění na disku porušený počítače.
+9.  Přesunutí hello upravit soubory toohello správném umístění na hello poškozený disk počítače.
 
     ~~~~
     cp /etc/passwd /tempmount/etc/passwd
@@ -92,18 +92,18 @@ Se nemůže přihlásit k virtuálnímu počítači a obdržíte zprávu, která
     cp /etc/passwd_orig /etc/passwd
     cp /etc/shadow_orig /etc/shadow
     
-10. Go back to the root and unmount the disk.
+10. Go back toohello root and unmount hello disk.
 
     ~~~~
     CD / umount /tempmount
     ~~~~
 
-11. Detach the disk from the management portal.
+11. Detach hello disk from hello management portal.
 
-12. Recreate the VM.
+12. Recreate hello VM.
 
 ## Next steps
 
-* [Troubleshoot Azure VM by attaching OS disk to another Azure VM](http://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
+* [Troubleshoot Azure VM by attaching OS disk tooanother Azure VM](http://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
 
-* [Azure CLI: How to delete and re-deploy a VM from VHD](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)
+* [Azure CLI: How toodelete and re-deploy a VM from VHD](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)

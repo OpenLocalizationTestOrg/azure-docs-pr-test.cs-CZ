@@ -1,5 +1,5 @@
 ---
-title: "Ukázková konfigurace pro rozšíření virtuálního počítače s Linuxem | Microsoft Docs"
+title: "Konfigurace aaaSample pro rozšíření virtuálního počítače s Linuxem | Microsoft Docs"
 description: "Ukázková konfigurace k vytváření šablon s rozšířeními pro virtuální počítače s Linuxem"
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2016
 ms.author: kundanap
-ms.openlocfilehash: 7bdc28328f29005ae48cc281a05fce7067c96556
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bc19b8d7d6fdb1783be99ec7fdd5cde5e1f8ca80
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="linux-vm-extension-configuration-samples"></a>Ukázky konfigurace rozšíření virtuálních počítačů s Linuxem
 > [!div class="op_single_selector"]
@@ -32,14 +32,14 @@ ms.lasthandoff: 07/11/2017
 
 Tento článek obsahuje ukázkové konfiguraci pro konfiguraci virtuálního počítače Azure rozšíření pro virtuální počítače s Linuxem.
 
-Další informace o těchto rozšířeních, klikněte sem: [přehled rozšíření virtuálního počítače Azure.](../windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Další informace o těchto rozšíření kliknutím sem toolearn: [přehled rozšíření virtuálního počítače Azure.](../windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-Další informace o vytváření rozšíření šablony klikněte sem: [vytváření šablon rozšíření.](../windows/extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Další informace o vytváření šablon rozšíření kliknutím sem toolearn: [vytváření šablon rozšíření.](../windows/extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-V tomto článku jsou uvedeny hodnoty očekávané konfiguraci pro některá z rozšíření systému Linux.
+V tomto článku jsou uvedeny hodnoty očekávané konfiguraci pro některé hello Linux rozšíření.
 
 ## <a name="sample-template-snippet-for-vm-extensions"></a>Ukázka fragment kódu šablony pro rozšíření virtuálního počítače.
-Fragmentu šablony pro nasazení rozšíření vypadá jako následující:
+Hello fragment kódu šablony pro nasazení rozšíření vypadá jako následující:
 
       {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -80,9 +80,9 @@ Fragmentu šablony pro nasazení rozšíření vypadá jako následující:
                   }
                 }
 
-Před nasazením rozšíření zkontrolujte nejnovější verzi rozšíření a nahraďte "typeHandlerVersion" s nejnovější verzí.
+Před nasazením hello rozšíření zkontrolujte nejnovější verze rozšíření hello a nahraďte hello nejnovější verzí hello "typeHandlerVersion".
 
-Zbývající části článku poskytuje ukázkové konfigurace pro rozšíření virtuálních počítačů Linux.
+Zbývající části článku hello poskytuje ukázkové konfigurace pro rozšíření virtuálních počítačů Linux.
 
 ### <a name="cloudlink-securevm-agent"></a>CloudLink SecureVM agenta
           {
@@ -90,7 +90,7 @@ Zbývající části článku poskytuje ukázkové konfigurace pro rozšíření
             "type": "CloudLinkSecureVMLinuxAgent",
             "typeHandlerVersion": "4.0",
             "settings": {
-              "CloudLinkCenter" : "specify valid IP/FQDN to CloudLinkCenter"
+              "CloudLinkCenter" : "specify valid IP/FQDN tooCloudLinkCenter"
             }
           }
 
@@ -132,23 +132,23 @@ Zbývající části článku poskytuje ukázkové konfigurace pro rozšíření
         }
 
 ### <a name="vm-access-extension-password-reset"></a>Rozšíření pro přístup virtuálních počítačů (resetování hesla)
-Aktualizované schéma najdete v části [VMAccessForLinux dokumentace](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)
+Aktualizované schéma najdete v části toohello [VMAccessForLinux dokumentace](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)
 
         {
           "publisher": "Microsoft.OSTCExtensions",
           "type": "VMAccessForLinux",
           "typeHandlerVersion": "1.2",
           "protectedSettings": {
-            "username": "(required, string) the name of the user",
-            "password": "(optional, string) the password of the user",
-            "reset_ssh": "(optional, boolean) whether or not reset the ssh",
-            "ssh_key": "(optional, string) the public key of the user, base64 encoded pem",
-            "remove_user": "(optional, string) the user name to remove"
+            "username": "(required, string) hello name of hello user",
+            "password": "(optional, string) hello password of hello user",
+            "reset_ssh": "(optional, boolean) whether or not reset hello ssh",
+            "ssh_key": "(optional, string) hello public key of hello user, base64 encoded pem",
+            "remove_user": "(optional, string) hello user name tooremove"
           }
         }
 
 ### <a name="os-patching"></a>Opravy operačního systému
-Aktualizované schéma najdete v části [OSPatching dokumentace](https://github.com/Azure/azure-linux-extensions/tree/master/OSPatching)
+Aktualizované schéma najdete v části toohello [OSPatching dokumentace](https://github.com/Azure/azure-linux-extensions/tree/master/OSPatching)
 
         {
         "publisher": "Microsoft.OSTCExtensions",
@@ -173,7 +173,7 @@ Aktualizované schéma najdete v části [OSPatching dokumentace](https://github
         }
 
 ### <a name="docker-extension"></a>Rozšíření docker
-Aktualizované schéma najdete v části [Docker rozšíření dokumentace](https://github.com/Azure/azure-docker-extension/blob/master/README.md#1-configuration-schema)
+Aktualizované schéma najdete v části toohello [Docker rozšíření dokumentace](https://github.com/Azure/azure-docker-extension/blob/master/README.md#1-configuration-schema)
 
         {
           "publisher": "Microsoft.Azure.Extensions ",
@@ -199,8 +199,8 @@ Aktualizované schéma najdete v části [Docker rozšíření dokumentace](http
 
         ### Linux Diagnostics Extension
         {
-        "storageAccountName": "storage account to receive data",
-        "storageAccountKey": "key of the account",
+        "storageAccountName": "storage account tooreceive data",
+        "storageAccountKey": "key of hello account",
         "perfCfg": [
         {
             "query": "SELECT PercentAvailableMemory, AvailableMemory, UsedMemory ,PercentUsedSwap FROM SCX_MemoryStatisticalInformation",
@@ -215,7 +215,7 @@ Aktualizované schéma najdete v části [Docker rozšíření dokumentace](http
         ]
         }
 
-Ve výše uvedených příkladech nahraďte číslo verze nejnovější číslo verze.
+V příkladech hello výše nahraďte číslo verze hello hello nejnovější číslo verze.
 
 Tady je kompletní šablonu virtuálního počítače pro vytvoření virtuálního počítače s Linuxem pomocí rozšíření:
 

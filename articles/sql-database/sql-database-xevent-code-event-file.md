@@ -1,6 +1,6 @@
 ---
-title: "Kód soubor události XEvent pro SQL Database | Microsoft Docs"
-description: "Příklad dvoufázového kód, který ukazuje soubor událostí cíl v rozšířené události v databázi SQL Azure poskytuje prostředí PowerShell a Transact-SQL. Azure Storage je požadovaných součástí tohoto scénáře."
+title: "aaaXEvent soubor událostí kód pro databázi SQL. | Microsoft Docs"
+description: "Příklad dvoufázového kód, který ukazuje soubor událostí cíl hello v rozšířené události v databázi SQL Azure poskytuje prostředí PowerShell a Transact-SQL. Azure Storage je požadovaných součástí tohoto scénáře."
 services: sql-database
 documentationcenter: 
 author: MightyPen
@@ -16,27 +16,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: genemi
-ms.openlocfilehash: e8c7a9af11ac4c22be00426337ab7c8b8ff0860f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4457bd3250f4644b54da2f7daddb9da12070e93a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Kód cílový soubor události pro rozšířené události v databázi SQL
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-Chcete úplného příkladu kódu pro robustní způsob, jak informace o zachycení a sestav pro rozšířené události.
+Chcete úplného příkladu kódu informace robustní způsob toocapture a sestav pro rozšířené události.
 
-V systému Microsoft SQL Server [cílový soubor událostí](http://msdn.microsoft.com/library/ff878115.aspx) se používá k ukládání výstupy události do souboru pevného disku. Ale tyto soubory nejsou k dispozici pro Azure SQL Database. Místo toho jsme používat službu Azure Storage pro podporu cílový soubor událostí.
+V systému Microsoft SQL Server hello [cílový soubor událostí](http://msdn.microsoft.com/library/ff878115.aspx) je použité toostore výstupy události do souboru pevného disku. Ale tyto soubory nejsou k dispozici tooAzure databáze SQL. Místo toho jsme použití hello Azure Storage service toosupport hello soubor událostí cíle.
 
 Toto téma představuje ukázka dvoufázového kódu:
 
-* Prostředí PowerShell, chcete-li vytvořit kontejner Azure Storage v cloudu.
+* Prostředí PowerShell, toocreate kontejner Azure Storage v cloudu hello.
 * Příkaz Transact-SQL:
   
-  * Kontejner úložiště Azure přiřadit cíl soubor událostí.
-  * Chcete-li vytvořit a zahájit relaci události a tak dále.
+  * tooassign hello Azure Storage kontejneru tooan soubor událostí cíl.
+  * toocreate a spusťte relaci události hello a tak dále.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,29 +45,29 @@ Toto téma představuje ukázka dvoufázového kódu:
   
   * Volitelně můžete [vytvořit **AdventureWorksLT** ukázkovou databázi](sql-database-get-started.md) v minutách.
 * SQL Server Management Studio (ssms.exe), v ideálním případě její nejnovější měsíční aktualizace verzi. 
-  Si můžete stáhnout nejnovější ssms.exe z:
+  Si můžete stáhnout nejnovější ssms.exe hello z:
   
   * Téma s názvem [stáhnout SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).
-  * [Přímý odkaz na stažení.](http://go.microsoft.com/fwlink/?linkid=616025)
-* Musíte mít [modulů prostředí Azure PowerShell](http://go.microsoft.com/?linkid=9811175) nainstalována.
+  * [Stahování toohello přímý odkaz.](http://go.microsoft.com/fwlink/?linkid=616025)
+* Musíte mít hello [modulů prostředí Azure PowerShell](http://go.microsoft.com/?linkid=9811175) nainstalována.
   
-  * Moduly zadejte příkazy, jako třeba - **New-AzureStorageAccount**.
+  * moduly Hello zadejte příkazy, jako třeba - **New-AzureStorageAccount**.
 
 ## <a name="phase-1-powershell-code-for-azure-storage-container"></a>Fáze 1: Kód prostředí PowerShell pro Azure Storage kontejneru
 
-Toto prostředí PowerShell je fáze 1 dvoufázového příklad.
+Toto prostředí PowerShell je fáze 1 dvoufázového příklad hello.
 
-Skript se spustí pomocí příkazů odstraňování až po předchozí možného spustit a je rerunnable.
+skript Hello začíná příkazy tooclean po předchozí možného spustit a je rerunnable.
 
-1. Vložte skript prostředí PowerShell do jednoduchého textového editoru, například Notepad.exe a uložíte skript jako soubor s příponou **.ps1**.
+1. Vložte skript prostředí PowerShell hello do jednoduchého textového editoru, například Notepad.exe a uložíte skript hello jako soubor s příponou hello **.ps1**.
 2. Spusťte prostředí PowerShell ISE jako správce.
-3. Na příkazovém řádku zadejte<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>a stiskněte klávesu Enter.
-4. V prostředí PowerShell ISE otevřete váš **.ps1** souboru. Spusťte skript.
-5. Skript spustí nejprve nové okno, ve kterém se přihlásit k Azure.
+3. Hello řádku zadejte<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>a stiskněte klávesu Enter.
+4. V prostředí PowerShell ISE otevřete váš **.ps1** souboru. Spusťte skript hello.
+5. skript Hello prvním spuštění nové okno, ve kterém přihlášení tooAzure.
    
-   * Pokud skript bez nutnosti přerušení vaší relace, máte vhodnou možnost komentování se **Add-AzureAccount** příkaz.
+   * Pokud hello skript bez nutnosti přerušení vaší relace, máte hello vhodnou možnost komentování out hello **Add-AzureAccount** příkaz.
 
-![Prostředí PowerShell ISE s Azure modul nainstalovaný, připraven ke spuštění skriptu.][30_powershell_ise]
+![Prostředí PowerShell ISE s Azure modul nainstalovaný, připravené toorun skriptu.][30_powershell_ise]
 
 
 ### <a name="powershell-code"></a>Prostředí PowerShell kódu
@@ -79,10 +79,10 @@ Skript se spustí pomocí příkazů odstraňování až po předchozí možnéh
 
 
 # You can comment out or skip this Add-AzureAccount
-# command after the first run.
-# Current PowerShell environment retains the successful outcome.
+# command after hello first run.
+# Current PowerShell environment retains hello successful outcome.
 
-'Expect a pop-up window in which you log in to Azure.'
+'Expect a pop-up window in which you log in tooAzure.'
 
 
 Add-AzureAccount
@@ -91,11 +91,11 @@ Add-AzureAccount
 
 
 '
-TODO: Edit the values assigned to these variables, especially the first few!
+TODO: Edit hello values assigned toothese variables, especially hello first few!
 '
 
-# Ensure the current date is between
-# the Expiry and Start time values that you edit here.
+# Ensure hello current date is between
+# hello Expiry and Start time values that you edit here.
 
 $subscriptionName    = 'YOUR_SUBSCRIPTION_NAME'
 $policySasExpiryTime = '2016-01-28T23:44:56Z'
@@ -115,11 +115,11 @@ $policySasPermission = 'rwl'
 #--------------- 3 -----------------------
 
 
-# The ending display lists your Azure subscriptions.
-# One should match the $subscriptionName value you assigned
+# hello ending display lists your Azure subscriptions.
+# One should match hello $subscriptionName value you assigned
 #   earlier in this PowerShell script. 
 
-'Choose an existing subscription for the current PowerShell environment.'
+'Choose an existing subscription for hello current PowerShell environment.'
 
 
 Select-AzureSubscription -SubscriptionName $subscriptionName
@@ -129,7 +129,7 @@ Select-AzureSubscription -SubscriptionName $subscriptionName
 
 
 '
-Clean up the old Azure Storage Account after any previous run, 
+Clean up hello old Azure Storage Account after any previous run, 
 before continuing this new run.'
 
 
@@ -157,7 +157,7 @@ New-AzureStorageAccount `
 
 
 '
-Get the primary access key for your storage account.
+Get hello primary access key for your storage account.
 '
 
 
@@ -174,9 +174,9 @@ Remainder of PowerShell .ps1 script continues.
 #--------------- 6 -----------------------
 
 
-# The context will be needed to create a container within the storage account.
+# hello context will be needed toocreate a container within hello storage account.
 
-'Create a context object from the storage account and its primary access key.
+'Create a context object from hello storage account and its primary access key.
 '
 
 $context = New-AzureStorageContext `
@@ -184,7 +184,7 @@ $context = New-AzureStorageContext `
     -StorageAccountKey  $primaryAccessKey_ForStorageAccount
 
 
-'Create a container within the storage account.
+'Create a container within hello storage account.
 '
 
 
@@ -193,7 +193,7 @@ $containerObjectInStorageAccount = New-AzureStorageContainer `
     -Context $context
 
 
-'Create a security policy to be applied to the SAS token.
+'Create a security policy toobe applied toohello SAS token.
 '
 
 New-AzureStorageContainerStoredAccessPolicy `
@@ -205,7 +205,7 @@ New-AzureStorageContainerStoredAccessPolicy `
     -StartTime  $policySasStartTime 
 
 '
-Generate a SAS token for the container.
+Generate a SAS token for hello container.
 '
 Try
 {
@@ -222,7 +222,7 @@ Catch
 #-------------- 7 ------------------------
 
 
-'Display the values that YOU must edit into the Transact-SQL script next!:
+'Display hello values that YOU must edit into hello Transact-SQL script next!:
 '
 
 "storageAccountName: $storageAccountName"
@@ -234,42 +234,42 @@ REMINDER: sasTokenWithPolicy here might start with "?" character, which you must
 '
 
 '
-(Later, return here to delete your Azure Storage account. See the preceding - Remove-AzureStorageAccount -StorageAccountName $storageAccountName)'
+(Later, return here toodelete your Azure Storage account. See hello preceding - Remove-AzureStorageAccount -StorageAccountName $storageAccountName)'
 
 '
-Now shift to the Transact-SQL portion of the two-part code sample!'
+Now shift toohello Transact-SQL portion of hello two-part code sample!'
 
 # EOFile
 ```
 
 
-Poznamenejte si několik pojmenovaných hodnot, které skript prostředí PowerShell vytiskne při jeho ukončení. Je nutné upravit tyto hodnoty do skriptu jazyka Transact-SQL, který následuje fáze 2.
+Poznamenejte si hello několik pojmenovaných hodnot, které skript prostředí PowerShell hello vytiskne při jeho ukončení. Je nutné upravit tyto hodnoty do hello skript Transact-SQL, který následuje fáze 2.
 
 ## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>Fáze 2: Kód Transact-SQL, který používá kontejner úložiště Azure
 
-* V této ukázce kódu fáze 1 jste spustili skript prostředí PowerShell vytvořit kontejner úložiště Azure.
-* Další ve fázi 2, musíte použít následující skript jazyka Transact-SQL kontejneru.
+* V této ukázce kódu fáze 1 jste spustili toocreate skript prostředí PowerShell kontejner Azure Storage.
+* Dále v fáze 2 hello následující skript jazyka Transact-SQL musíte použít hello kontejneru.
 
-Skript se spustí pomocí příkazů odstraňování až po předchozí možného spustit a je rerunnable.
+skript Hello začíná příkazy tooclean po předchozí možného spustit a je rerunnable.
 
-Skript prostředí PowerShell vytištěny několik pojmenovaných hodnot, kdy se dokončila. Je nutné upravit skript Transact-SQL pro použití těchto hodnot. Najít **TODO** ve skriptu jazyka Transact-SQL pro vyhledání bodů upravit.
+Hello skript prostředí PowerShell vytištěny několik pojmenovaných hodnot, kdy se dokončila. Hello Transact-SQL skriptu toouse je nutné upravit tyto hodnoty. Najít **TODO** ve hello Transact-SQL skriptu toolocate hello upravit body.
 
 1. Spusťte aplikaci SQL Server Management Studio (ssms.exe).
-2. Připojení k vaší databázi Azure SQL Database.
-3. Kliknutím otevřete nové podokno dotazu.
-4. Vložte následující skript jazyka Transact-SQL do podokna dotazu.
-5. Najít každých **TODO** ve skriptu a proveďte příslušné úpravy.
-6. Uložte a pak spusťte skript.
+2. Připojte databáze Azure SQL Database tooyour.
+3. Klikněte na tlačítko tooopen nové podokno dotazu.
+4. Vložte následující skript jazyka Transact-SQL do podokna dotazu hello hello.
+5. Najít každých **TODO** v hello skript a proveďte příslušné úpravy hello.
+6. Uložte a pak spusťte skript hello.
 
 
 > [!WARNING]
-> Hodnotu klíče SAS generované předchozí skript prostředí PowerShell může začínat '?' (otazník). Pokud použijete klíč SAS v následujícím skriptu T-SQL, musíte *odebrat úvodního '?'* . V opačném případě mohou vaše úsilí blokovány zabezpečení.
+> Hello hodnotu klíče SAS generované hello předcházející skript prostředí PowerShell může začínat '?' (otazník). Pokud použijete klíč SAS hello v hello následující skriptu T-SQL, musíte *odebrat úvodní hello '?'* . V opačném případě mohou vaše úsilí blokovány zabezpečení.
 
 
 ### <a name="transact-sql-code"></a>Kód jazyka Transact-SQL
 
 ```sql
----- TODO: First, run the PowerShell portion of this two-part code sample.
+---- TODO: First, run hello PowerShell portion of this two-part code sample.
 ---- TODO: Second, find every 'TODO' in this Transact-SQL file, and edit each.
 
 ---- Transact-SQL code for Event File target on Azure SQL Database.
@@ -322,11 +322,11 @@ GO
 
 IF EXISTS
     (SELECT * FROM sys.database_scoped_credentials
-        -- TODO: Assign AzureStorageAccount name, and the associated Container name.
+        -- TODO: Assign AzureStorageAccount name, and hello associated Container name.
         WHERE name = 'https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent')
 BEGIN
     DROP DATABASE SCOPED CREDENTIAL
-        -- TODO: Assign AzureStorageAccount name, and the associated Container name.
+        -- TODO: Assign AzureStorageAccount name, and hello associated Container name.
         [https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent] ;
 END
 GO
@@ -336,18 +336,18 @@ CREATE
     DATABASE SCOPED
     CREDENTIAL
         -- use '.blob.',   and not '.queue.' or '.table.' etc.
-        -- TODO: Assign AzureStorageAccount name, and the associated Container name.
+        -- TODO: Assign AzureStorageAccount name, and hello associated Container name.
         [https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent]
     WITH
         IDENTITY = 'SHARED ACCESS SIGNATURE',  -- "SAS" token.
-        -- TODO: Paste in the long SasToken string here for Secret, but exclude any leading '?'.
+        -- TODO: Paste in hello long SasToken string here for Secret, but exclude any leading '?'.
         SECRET = 'sv=2014-02-14&sr=c&si=gmpolicysastoken&sig=EjAqjo6Nu5xMLEZEkMkLbeF7TD9v1J8DNB2t8gOKTts%3D'
     ;
 GO
 
 
 ------  Step 3.  Create (define) an event session.  --------
-------  The event session has an event with an action,
+------  hello event session has an event with an action,
 ------  and a has a target.
 
 IF EXISTS
@@ -376,8 +376,8 @@ CREATE
     ADD TARGET
         package0.event_file
             (
-            -- TODO: Assign AzureStorageAccount name, and the associated Container name.
-            -- Also, tweak the .xel file name at end, if you like.
+            -- TODO: Assign AzureStorageAccount name, and hello associated Container name.
+            -- Also, tweak hello .xel file name at end, if you like.
             SET filename =
                 'https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent/anyfilenamexel242b.xel'
             )
@@ -388,12 +388,12 @@ CREATE
 GO
 
 
-------  Step 4.  Start the event session.  ----------------
-------  Issue the SQL Update statements that will be traced.
-------  Then stop the session.
+------  Step 4.  Start hello event session.  ----------------
+------  Issue hello SQL Update statements that will be traced.
+------  Then stop hello session.
 
-------  Note: If the target fails to attach,
-------  the session must be stopped and restarted.
+------  Note: If hello target fails tooattach,
+------  hello session must be stopped and restarted.
 
 ALTER
     EVENT SESSION
@@ -425,7 +425,7 @@ ALTER
 GO
 
 
--------------- Step 5.  Select the results. ----------
+-------------- Step 5.  Select hello results. ----------
 
 SELECT
         *, 'CLICK_NEXT_CELL_TO_BROWSE_ITS_RESULTS!' as [CLICK_NEXT_CELL_TO_BROWSE_ITS_RESULTS],
@@ -433,7 +433,7 @@ SELECT
     FROM
         sys.fn_xe_file_target_read_file
             (
-                -- TODO: Fill in Storage Account name, and the associated Container name.
+                -- TODO: Fill in Storage Account name, and hello associated Container name.
                 'https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent/anyfilenamexel242b',
                 null, null, null
             );
@@ -449,7 +449,7 @@ DROP
 GO
 
 DROP DATABASE SCOPED CREDENTIAL
-    -- TODO: Assign AzureStorageAccount name, and the associated Container name.
+    -- TODO: Assign AzureStorageAccount name, and hello associated Container name.
     [https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent]
     ;
 GO
@@ -457,12 +457,12 @@ GO
 DROP TABLE gmTabEmployee;
 GO
 
-PRINT 'Use PowerShell Remove-AzureStorageAccount to delete your Azure Storage account!';
+PRINT 'Use PowerShell Remove-AzureStorageAccount toodelete your Azure Storage account!';
 GO
 ```
 
 
-Pokud cílový se nepodaří připojit při spuštění, musíte zastavit a restartovat relaci události:
+Pokud cílový hello selže tooattach při spuštění, musíte zastavit a restartovat relaci události hello:
 
 ```sql
 ALTER EVENT SESSION ... STATE = STOP;
@@ -474,7 +474,7 @@ GO
 
 ## <a name="output"></a>Výstup
 
-Po dokončení skriptu jazyka Transact-SQL, klikněte na buňku v části **event_data_XML** záhlaví sloupce. Jeden  **<event>**  element se zobrazuje, který zobrazuje jeden příkaz aktualizace.
+Po dokončení hello skript Transact-SQL, klikněte na buňku pod hello **event_data_XML** záhlaví sloupce. Jeden  **<event>**  element se zobrazuje, který zobrazuje jeden příkaz aktualizace.
 
 Tady je jeden  **<event>**  element, který byl vygenerován při testování:
 
@@ -519,32 +519,32 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 ```
 
 
-Uvedený skript Transact-SQL použít následující funkce systému ke čtení event_file:
+Hello předchozí hello používá skript Transact-SQL systému funkce tooread hello event_file následující:
 
 * [Sys.fn_xe_file_target_read_file (Transact-SQL)](http://msdn.microsoft.com/library/cc280743.aspx)
 
-Vysvětlení rozšířené možnosti pro zobrazení dat z rozšířených událostí je k dispozici na:
+Vysvětlení rozšířené možnosti pro hello zobrazení dat z rozšířených událostí je k dispozici na:
 
 * [Rozšířené zobrazení cílová Data z rozšířených událostí](http://msdn.microsoft.com/library/mt752502.aspx)
 
 
-## <a name="converting-the-code-sample-to-run-on-sql-server"></a>Převádění ukázkový kód pro spuštění na serveru SQL
+## <a name="converting-hello-code-sample-toorun-on-sql-server"></a>Převádění toorun ukázkový kód hello na serveru SQL Server
 
-Předpokládejme, že chcete spustit v předchozím příkladu Transact-SQL na serveru Microsoft SQL Server.
+Předpokládejme, že jste chtěli toorun hello předchozích ukázkových Transact-SQL na serveru Microsoft SQL Server.
 
-* Pro jednoduchost, by chcete úplně nahradit použití kontejner úložiště Azure jednoduchého souboru, jako **C:\myeventdata.xel**. Soubor by byla zapsána na místní pevný disk počítače, který je hostitelem systému SQL Server.
+* Pro jednoduchost, kterou by chcete toocompletely nahradit použít hello kontejneru úložiště Azure s jednoduchého souboru, jako **C:\myeventdata.xel**. soubor Hello by byla zapsána místní pevný disk toohello hello počítače, který je hostitelem systému SQL Server.
 * Nebude potřeba jakýkoli druh příkazy jazyka Transact-SQL pro **CREATE MASTER KEY** a **vytvoření pověření**.
-* V **vytvořit událost relace** příkaz v jeho **přidat cíl** klauzule, měli byste nahradit Http hodnotu přiřazenou provedené **filename =** řetězcem úplnou cestu jako **C:\myfile.xel**.
+* V hello **vytvořit událost relace** příkaz v jeho **přidat cíl** klauzule, měli byste nahradit hello Http hodnotu přiřazenou provedené příliš**filename =** řetězcem úplnou cestu jako  **C:\MyFile.xel**.
   
   * Žádný účet úložiště Azure musí být zahrnut.
 
 ## <a name="more-information"></a>Další informace
 
-Další informace o účtech a kontejnerů ve službě Azure Storage najdete v tématu:
+Další informace o účtech a kontejnery v hello služby Azure Storage najdete v tématu:
 
-* [Používání úložiště Blob z rozhraní .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
+* [Jak toouse úložiště Blob z rozhraní .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [Pojmenování a odkazování na kontejnerů, objektů BLOB a metadat](http://msdn.microsoft.com/library/azure/dd135715.aspx)
-* [Práce s Kořenový kontejner](http://msdn.microsoft.com/library/azure/ee395424.aspx)
+* [Práce s hello Kořenový kontejner](http://msdn.microsoft.com/library/azure/ee395424.aspx)
 * [Lekce 1: Vytvoření zásady uložené přístup a sdílený přístupový podpis na kontejner Azure](http://msdn.microsoft.com/library/dn466430.aspx)
   * [Lekce 2: Vytvoření přihlašovacích údajů systému SQL Server pomocí sdíleného přístupového podpisu](http://msdn.microsoft.com/library/dn466435.aspx)
 

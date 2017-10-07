@@ -1,6 +1,6 @@
 ---
-title: "Kurz – sestavení vysokou dostupnost aplikací na virtuálních počítačích Azure | Microsoft Docs"
-description: "Naučte se vytvořit vysoce dostupné a zabezpečení aplikací v rámci tři virtuální počítače Windows se nástroj pro vyrovnávání zatížení v Azure"
+title: "aaaTutorial - sestavení vysokou dostupnost aplikací na virtuálních počítačích Azure | Microsoft Docs"
+description: "Zjistěte, jak toocreate vysoká dostupnost a zabezpečení aplikací mezi tři virtuální počítače Windows se nástroj pro vyrovnávání zatížení v Azure"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: davidmu1
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/30/2017
 ms.author: davidmu
-ms.openlocfilehash: 4b8690a11ec0e711782a112622e1193c24292289
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f9eff96be4f3999651c4108f0334e4eaa1a39c0c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="build-a-load-balanced-highly-available-application-on-windows-virtual-machines-in-azure"></a>Sestavení zatížení vyrovnáváním, vysokou dostupnost aplikací na virtuálních počítačích s Windows v Azure
 
-V tomto kurzu vytvoříte vysoce dostupné aplikace, která je odolné vůči události údržby. Aplikace používá nástroj pro vyrovnávání zatížení, skupinu dostupnosti a tři Windows virtuální počítače (VM). V tomto kurzu nainstaluje službu IIS, i když v tomto kurzu můžete použít k nasazení jinou aplikaci rozhraní pomocí stejné komponenty vysokou dostupnost a pokyny. 
+V tomto kurzu vytvoříte vysoce dostupné aplikace, která je odolný toomaintenance události. aplikace Hello používá nástroj pro vyrovnávání zatížení, skupinu dostupnosti a tři Windows virtuální počítače (VM). V tomto kurzu nainstaluje službu IIS, i když můžete použít tento kurz toodeploy framework jinou aplikaci pomocí hello stejné komponenty vysokou dostupnost a pokyny. 
 
 ## <a name="step-1---azure-prerequisites"></a>Krok 1 – požadavky Azure
 
-K dokončení tohoto kurzu, ujistěte se, že jste nainstalovali nejnovější [prostředí Azure PowerShell](/powershell/azure/overview) modulu.
+toocomplete tohoto kurzu, ujistěte se, že jste nainstalovali hello nejnovější [prostředí Azure PowerShell](/powershell/azure/overview) modulu.
 
-První, přihlaste se k předplatnému Azure pomocí příkazu Login-AzureRmAccount a postupujte podle na obrazovce pokynů.
+Nejdřív přihlásit tooyour předplatné s hello příkaz Login-AzureRmAccount a postupujte podle hello na obrazovce pokynů.
 
 ```powershell
 Login-AzureRmAccount
 ```
 
-Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Před vytvořením veškeré prostředky Azure, je nutné vytvořit skupinu prostředků s [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v `westeurope` oblasti: 
+Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Před vytvořením veškeré prostředky Azure, je nutné toocreate skupinu prostředků s [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Hello následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v hello `westeurope` oblasti: 
 
 ```powershell
 New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location westeurope
@@ -43,9 +43,9 @@ New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location westeurope
 
 ## <a name="step-2---create-availability-set"></a>Krok 2 – Vytvoření sady dostupnosti.
 
-Virtuální počítače lze vytvořit v logické chyby a aktualizaci domény. Každé logické domény představuje část hardwaru v datovém centru základní Azure. Když vytvoříte dva nebo více virtuálních počítačů, výpočetní a úložnou kapacitu jsou rozmístěny v těchto doménách. Tento distribuční udržuje dostupnost aplikace, pokud hardwarová komponenta potřebuje údržby. Skupiny dostupnosti umožňují definovat tyto logické domény selhání a aktualizace.
+Virtuální počítače lze vytvořit v logické chyby a aktualizaci domény. Každé logické domény představuje část hardwaru v datovém základní Azure hello. Když vytvoříte dva nebo více virtuálních počítačů, výpočetní a úložnou kapacitu jsou rozmístěny v těchto doménách. Tento distribuční udržuje hello dostupnosti vaší aplikace, pokud hardwarová komponenta potřebuje údržby. Skupiny dostupnosti umožňují definovat tyto logické domény selhání a aktualizace.
 
-Vytvořit sadu s dostupnosti [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset). Následující příklad vytvoří sadu s názvem dostupnosti `myAvailabilitySet`:
+Vytvořit sadu s dostupnosti [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset). Hello následující příklad vytvoří sadu s názvem dostupnosti `myAvailabilitySet`:
 
 ```powershell
 $availabilitySet = New-AzureRmAvailabilitySet `
@@ -59,11 +59,11 @@ $availabilitySet = New-AzureRmAvailabilitySet `
 
 ## <a name="step-3---create-load-balancer"></a>Krok 3 – vytvoření zatížení vyrovnávání
 
-K nástroji pro vyrovnávání zatížení Azure rozděluje zatížení mezi sadu definované virtuálních počítačů pomocí pravidla nástroje pro vyrovnávání zatížení. Test stavu monitoruje zadaný port pro každý virtuální počítač a distribuuje jenom přenosy na provozní virtuální počítač.
+K nástroji pro vyrovnávání zatížení Azure rozděluje zatížení mezi sadu definované virtuálních počítačů pomocí pravidla nástroje pro vyrovnávání zatížení. Test stavu monitoruje zadaný port pro každý virtuální počítač a distribuuje jenom provoz tooan provozní virtuálních počítačů.
 
 ### <a name="create-public-ip-address"></a>Vytvoření veřejné IP adresy
 
-Pro přístup k vaší aplikace na Internetu, přiřaďte veřejnou IP adresu nástroji pro vyrovnávání zatížení. Vytvoření veřejné IP adresy s [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress). Následující příklad vytvoří veřejnou IP adresu s názvem `myPublicIP`:
+tooaccess vaši aplikaci ve hello Internetu, přiřaďte veřejnou IP adresu toohello služby Vyrovnávání zatížení. Vytvoření veřejné IP adresy s [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress). Hello následující příklad vytvoří veřejnou IP adresu s názvem `myPublicIP`:
 
 ```powershell
 $pip = New-AzureRmPublicIpAddress `
@@ -75,19 +75,19 @@ $pip = New-AzureRmPublicIpAddress `
 
 ### <a name="create-load-balancer"></a>Vytvořit nástroj pro vyrovnávání zatížení
 
-Vytvoření front-endovou IP adresy s [New-AzureRmLoadBalancerFrontendIpConfig](/powershell/module/azurerm.network/new-azurermloadbalancerfrontendipconfig). Následující příklad vytvoří na front-endovou IP adresu s názvem `myFrontEndPool`: 
+Vytvoření front-endovou IP adresy s [New-AzureRmLoadBalancerFrontendIpConfig](/powershell/module/azurerm.network/new-azurermloadbalancerfrontendipconfig). Hello následující příklad vytvoří na front-endovou IP adresu s názvem `myFrontEndPool`: 
 
 ```powershell
 $frontendIP = New-AzureRmLoadBalancerFrontendIpConfig -Name myFrontEndPool -PublicIpAddress $pip
 ```
 
-Vytvořit fond adres back-end s [New-AzureRmLoadBalancerBackendAddressPoolConfig](/powershell/module/azurerm.network/new-azurermloadbalancerbackendaddresspoolconfig). Následující příklad vytvoří fond back-end adresy s názvem `myBackEndPool`:
+Vytvořit fond adres back-end s [New-AzureRmLoadBalancerBackendAddressPoolConfig](/powershell/module/azurerm.network/new-azurermloadbalancerbackendaddresspoolconfig). Hello následující příklad vytvoří fond back-end adresy s názvem `myBackEndPool`:
 
 ```powershell
 $backendPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name myBackEndPool
 ```
 
-Nyní, vytvoří se službou Vyrovnávání zatížení s [New-AzureRmLoadBalancer](/powershell/module/azurerm.network/new-azurermloadbalancer). Následující příklad vytvoří nástroj pro vyrovnávání zatížení s názvem `myLoadBalancer` pomocí `myPublicIP` adresa:
+Teď vytvořte hello Vyrovnávání zatížení s [New-AzureRmLoadBalancer](/powershell/module/azurerm.network/new-azurermloadbalancer). Hello následující příklad vytvoří nástroj pro vyrovnávání zatížení s názvem `myLoadBalancer` pomocí hello `myPublicIP` adresa:
 
 ```powershell
 $lb = New-AzureRmLoadBalancer `
@@ -100,9 +100,9 @@ $lb = New-AzureRmLoadBalancer `
 
 ### <a name="create-health-probe"></a>Vytvoření test stavu
 
-Povolit službu Vyrovnávání zatížení k monitorování stavu aplikace, použijte Test stavu. Test stavu dynamicky přidá nebo odebere virtuálních počítačů z otočení nástroje pro vyrovnávání zatížení, podle jejich reakce na kontroly stavu. Ve výchozím nastavení odeberou se virtuální počítač z distribuce nástroje pro vyrovnávání zatížení po dvě po sobě jdoucích selhání v intervalech 15 sekund.
+tooallow hello stavu služby Vyrovnávání zatížení toomonitor hello vaší aplikace, použijte Test stavu. Test stavu Hello dynamicky přidá nebo odebere virtuálních počítačů z otočení nástroje pro vyrovnávání zatížení hello podle jejich kontroly toohealth odpovědi. Ve výchozím nastavení odeberou se virtuální počítač z distribuce nástroje pro vyrovnávání zatížení hello po dvě po sobě jdoucích selhání v intervalech 15 sekund.
 
-Vytvoření test stavu s [přidat AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig). Následující příklad vytvoří kontrolu stavu s názvem `myHealthProbe` který monitoruje každý virtuální počítač:
+Vytvoření test stavu s [přidat AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig). Hello následující příklad vytvoří sondu stavu s názvem `myHealthProbe` který monitoruje každý virtuální počítač:
 
 ```powershell
 Add-AzureRmLoadBalancerProbeConfig -Name myHealthProbe `
@@ -115,9 +115,9 @@ Add-AzureRmLoadBalancerProbeConfig -Name myHealthProbe `
 
 ### <a name="create-load-balancer-rule"></a>Vytvořit pravidlo Vyrovnávání zatížení.
 
-Pravidlo Vyrovnávání zatížení se používá k definování, jak se provoz rozděluje k virtuálním počítačům.
+Pravidlo Vyrovnávání zatížení je použité toodefine jak přenosy jsou distribuované toohello virtuálních počítačů.
 
-Vytvořit pravidlo Vyrovnávání zatížení s [přidat AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/add-azurermloadbalancerruleconfig). Následující příklad vytvoří pravidlo Vyrovnávání zatížení s názvem `myLoadBalancerRule` a vyrovnává přenosy na portu `80`:
+Vytvořit pravidlo Vyrovnávání zatížení s [přidat AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/add-azurermloadbalancerruleconfig). Hello následující příklad vytvoří pravidlo Vyrovnávání zatížení s názvem `myLoadBalancerRule` a vyrovnává přenosy na portu `80`:
 
 ```powershell
 Add-AzureRmLoadBalancerRuleConfig -Name myLoadBalancerRule `
@@ -129,7 +129,7 @@ Add-AzureRmLoadBalancerRuleConfig -Name myLoadBalancerRule `
   -BackendPort 80
 ```
 
-Aktualizace se službou Vyrovnávání zatížení s [Set-AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer):
+Aktualizovat hello Vyrovnávání zatížení s [Set-AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer):
 
 ```powershell
 Set-AzureRmLoadBalancer -LoadBalancer $lb
@@ -137,17 +137,17 @@ Set-AzureRmLoadBalancer -LoadBalancer $lb
 
 ## <a name="step-4---configure-networking"></a>Krok 4 – konfigurace sítí
 
-Každý virtuální počítač má jeden nebo více virtuálních síťových karet (NIC) připojených k virtuální síti. Tato virtuální síť, je zabezpečena k filtrování provozu založené na definovaných pravidel přístupu.
+Každý virtuální počítač má jeden nebo více virtuálních síťových karet (NIC) připojujících tooa virtuální sítě. Tato virtuální síť, je zabezpečena toofilter provozu založené na definovaných pravidel přístupu.
 
 ### <a name="create-virtual-network"></a>Vytvoření virtuální sítě
 
-Nejprve nakonfigurujte podsíť s [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Následující příklad vytvoří podsíť s názvem `mySubnet`:
+Nejprve nakonfigurujte podsíť s [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Hello následující příklad vytvoří podsíť s názvem `mySubnet`:
 
 ```powershell
 $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
 ```
 
-Chcete-li poskytovat připojení k síti virtuálních počítačů, vytvořte virtuální síť s [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork). Následující příklad vytvoří virtuální síť s názvem `myVnet` s `mySubnet`:
+tooprovide síťové připojení tooyour virtuální počítače, vytvořte virtuální síť s [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork). Hello následující příklad vytvoří virtuální síť s názvem `myVnet` s `mySubnet`:
 
 ```powershell
 $vnet = New-AzureRmVirtualNetwork `
@@ -162,7 +162,7 @@ $vnet = New-AzureRmVirtualNetwork `
 
 Azure [skupinu zabezpečení sítě](../../virtual-network/virtual-networks-nsg.md) (NSG) řídí příchozí a odchozí přenosy pro jeden nebo více virtuálních počítačů. Pravidla skupiny zabezpečení sítě, povolit nebo odepřít síťový provoz na konkrétní port nebo rozsah portů. Tato pravidla může zahrnovat předpona zdrojové adresy tak, aby jenom přenosy v předdefinované zdroj může komunikovat s virtuálním počítačem.
 
-Povolit webový provoz k dosažení vaší aplikace, vytvořte pravidlo skupiny zabezpečení sítě s [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig). Následující příklad vytvoří pravidlo skupiny zabezpečení sítě s názvem `myNetworkSecurityGroupRule`:
+tooallow tooreach provoz webové aplikace, vytvořte pravidlo skupiny zabezpečení sítě s [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig). Hello následující příklad vytvoří pravidlo skupiny zabezpečení sítě s názvem `myNetworkSecurityGroupRule`:
 
 ```powershell
 $nsgRule = New-AzureRmNetworkSecurityRuleConfig `
@@ -177,7 +177,7 @@ $nsgRule = New-AzureRmNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-Vytvořit skupinu zabezpečení sítě s [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup). Následující příklad vytvoří skupinu NSG s názvem `myNetworkSecurityGroup`:
+Vytvořit skupinu zabezpečení sítě s [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup). Hello následující příklad vytvoří skupinu NSG s názvem `myNetworkSecurityGroup`:
 
 ```powershell
 $nsg = New-AzureRmNetworkSecurityGroup `
@@ -187,7 +187,7 @@ $nsg = New-AzureRmNetworkSecurityGroup `
   -SecurityRules $nsgRule
 ```
 
-Přidat skupinu zabezpečení sítě pro podsíť s [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig):
+Přidat hello toohello podsíť skupiny zabezpečení sítě s [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig):
 
 ```powershell
 Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet `
@@ -196,7 +196,7 @@ Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet `
   -AddressPrefix 192.168.1.0/24
 ```
 
-Aktualizace virtuální sítě s [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork):
+Aktualizace hello virtuální síť s [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork):
 
 ```powershell
 Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
@@ -204,9 +204,9 @@ Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 
 ### <a name="create-virtual-network-interface-cards"></a>Vytvořit virtuální síťové karty
 
-Načíst funkce Vyrovnávání prostředků virtuální síťový adaptér, nikoli skutečné virtuálního počítače. Virtuální síťový adaptér je připojený ke službě Vyrovnávání zatížení a potom připojen k virtuálnímu počítači.
+Funkce hello virtuální síťový adaptér prostředků nástroje pro vyrovnávání zatížení a nikoli hello skutečné virtuálních počítačů. Hello virtuální síťovou kartu připojené toohello služba Vyrovnávání zatížení a pak připojit tooa virtuálních počítačů.
 
-Vytvořit virtuální síťovou kartu s [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface). Následující příklad vytvoří tři virtuálních síťových karet. (Jeden virtuální síťovou kartu pro každý virtuální počítač vytvoříte pro vaši aplikaci v následujících krocích):
+Vytvořit virtuální síťovou kartu s [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface). Hello následující příklad vytvoří tři virtuálních síťových karet. (Jeden virtuální síťovou kartu pro každý virtuální počítač vytvoříte pro aplikace v rámci hello následující kroky):
 
 
 ```powershell
@@ -223,15 +223,15 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="step-5---create-virtual-machines"></a>Krok 5 – vytvoření virtuálních počítačů
 
-S všechny základní součásti v místě nyní můžete vytvořit vysoce dostupné virtuální počítače ke spouštění vaší aplikace. 
+S všechny hello základní součásti v místě nyní můžete vytvořit vysoce dostupné virtuální počítače toorun vaší aplikace. 
 
-Uživatelské jméno a heslo, které potřebuje pro účet správce na virtuálním počítači s [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+Získat hello uživatelské jméno a heslo, které potřebuje pro účet správce hello na hello virtuální počítač s [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
 
 ```powershell
 $cred = Get-Credential
 ```
 
-Vytvoření virtuálních počítačů s [nové AzureRmVMConfig](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/new-azurermvmconfig), [Set-AzureRmVMOperatingSystem](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmoperatingsystem), [Set-AzureRmVMSourceImage](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmsourceimage), [Set-AzureRmVMOSDisk](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmosdisk), [přidat AzureRmVMNetworkInterface](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/add-azurermvmnetworkinterface), a [nové AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Následující příklad vytvoří tři virtuální počítače:
+Vytvoření hello virtuálních počítačů s [New-AzureRmVMConfig](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/new-azurermvmconfig), [Set-AzureRmVMOperatingSystem](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmoperatingsystem), [Set-AzureRmVMSourceImage](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmsourceimage), [Set-AzureRmVMOSDisk](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/set-azurermvmosdisk), [Přidat AzureRmVMNetworkInterface](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.8.0/add-azurermvmnetworkinterface), a [nové AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Hello následující ukázka vytvoří tři virtuální počítače:
 
 ```powershell
 for ($i=1; $i -le 3; $i++)
@@ -247,13 +247,13 @@ for ($i=1; $i -le 3; $i++)
 
 ```
 
-Trvá několik minut vytvořit a nakonfigurovat všechny tři virtuální počítače. Test stavu nástroje pro vyrovnávání zatížení automaticky rozpozná, když aplikace běží na každém virtuálním počítači. Jakmile aplikace běží, spustí se pravidlo Vyrovnávání zatížení k distribuci přenosů.
+Trvá několik minut toocreate a nakonfigurovat všechny tři virtuální počítače. Hello test stavu nástroje pro vyrovnávání zatížení automaticky zjišťuje, když na každém virtuálním počítači běží aplikace hello. Jakmile hello aplikace běží, se spustí pravidlo Vyrovnávání zatížení hello toodistribute provoz.
 
-### <a name="install-the-app"></a>Nainstalujte aplikaci 
+### <a name="install-hello-app"></a>Instalace aplikace hello 
 
-Rozšíření virtuálního počítače Azure se používají k automatizaci úloh konfigurace virtuálního počítače jako je instalace aplikací a konfigurace operačního systému. [Rozšíření vlastních skriptů pro systém Windows](./../virtual-machines-windows-extensions-customscript.md) se používá ke spuštění všech skriptů prostředí PowerShell na virtuálním počítači. Skript může uložena v úložišti Azure, žádný dostupný koncový bod HTTP nebo vložené v konfiguraci rozšíření vlastních skriptů. Pokud používáte rozšíření vlastních skriptů, agent virtuálního počítače Azure spravuje provádění skriptu.
+Rozšíření virtuálního počítače Azure jsou úlohy konfigurace virtuálního počítače používané tooautomate jako je instalace aplikací a konfigurace hello operačního systému. Hello [rozšíření vlastních skriptů pro systém Windows](./../virtual-machines-windows-extensions-customscript.md) je použité toorun všech skriptů prostředí PowerShell na virtuálním počítači hello. Hello skriptu můžete uložené v úložišti Azure, žádný dostupný koncový bod HTTP nebo vložené v konfiguraci rozšíření vlastních skriptů hello. Pokud používáte rozšíření vlastních skriptů hello, spravuje agenta virtuálního počítače Azure hello hello provádění skriptu.
 
-Použití [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) k instalaci rozšíření vlastních skriptů. Spustí rozšíření `powershell Add-WindowsFeature Web-Server` nainstalovat webový server služby IIS:
+Použití [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rozšíření vlastních skriptů tooinstall hello. Hello rozšíření spustí `powershell Add-WindowsFeature Web-Server` webový server IIS tooinstall hello:
 
 ```powershell
 for ($i=1; $i -le 3; $i++)
@@ -271,59 +271,59 @@ for ($i=1; $i -le 3; $i++)
 
 ### <a name="test-your-app"></a>Testování aplikace
 
-Získat veřejnou IP adresu nástroj pro vyrovnávání zatížení s [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Následující příklad, získá IP adresu pro `myPublicIP` vytvořili dříve:
+Získat hello veřejnou IP adresu nástroj pro vyrovnávání zatížení s [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Hello následující příklad získá hello IP adresu pro `myPublicIP` vytvořili dříve:
 
 ```powershell
 Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroup -Name myPublicIP | select IpAddress
 ```
 
-Zadejte veřejnou IP adresu ve webovém prohlížeči. Pomocí pravidel NSG na místě se zobrazí výchozí web služby IIS. 
+Zadejte ve webovém prohlížeči tooa hello veřejnou IP adresu. S hello pravidla NSG v místě se zobrazí výchozí web služby IIS hello. 
 
 ![Výchozí web služby IIS](media/load-balanced-iis-tutorial/iis.png)
 
 ## <a name="step-6--management-tasks"></a>Krok 6 – úlohy správy
 
-Potřebujete provést údržbu na virtuální počítače používající vaši aplikaci, například při instalaci aktualizace operačního systému. Jak nakládat s zvýšení provozu do vaší aplikace, musíte pro přidání dalších virtuálních počítačů. V této části se dozvíte, jak odebrat nebo přidat virtuální počítač z nástroje pro vyrovnávání zatížení. 
+Může být nutné tooperform údržby na hello virtuální počítače používající vaši aplikaci, například při instalaci aktualizace operačního systému. toodeal zvýšení provozu tooyour aplikace, může být nutné tooadd dalších virtuálních počítačů. V této části se dozvíte, jak tooremove nebo přidat virtuální počítač z nástroje pro vyrovnávání zatížení hello. 
 
-### <a name="remove-a-vm-from-the-load-balancer"></a>Odebrat virtuální počítač z nástroje pro vyrovnávání zatížení
+### <a name="remove-a-vm-from-hello-load-balancer"></a>Odebrat virtuální počítač z nástroje pro vyrovnávání zatížení hello
 
-Virtuální počítač odeberte z fondu adres back-end resetováním vlastnost pravidlo LoadBalancerBackendAddressPools karty síťového rozhraní.
+Virtuální počítač odeberte z fondu adres back-end hello resetováním hello pravidlo LoadBalancerBackendAddressPools vlastnost hello karty síťového rozhraní.
 
-Získat karty síťového rozhraní s [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface):
+Získat hello síťová karta s [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface):
 
 ```powershell
 $nic = Get-AzureRmNetworkInterface -ResourceGroupName myResourceGroup -Name myNic2
 ``` 
 
-Nastaví vlastnost pravidlo LoadBalancerBackendAddressPools karty síťového rozhraní na $null:
+Nastaví vlastnost pravidlo LoadBalancerBackendAddressPools hello hello síťová karta příliš$ null:
 
 ```powershell
 $nic.Ipconfigurations[0].LoadBalancerBackendAddressPools=$null
 ```
 
-Aktualizace síťovou kartu:
+Aktualizace hello síťovou kartu:
 
 ```powershell
 Set-AzureRmNetworkInterface -NetworkInterface $nic
 ```
 
-### <a name="add-a-vm-to-the-load-balancer"></a>Přidat virtuální počítač ke službě Vyrovnávání zatížení
+### <a name="add-a-vm-toohello-load-balancer"></a>Přidání toohello virtuálního počítače, služby pro vyrovnávání zatížení
 
-Po provedení údržby virtuálních počítačů, nebo pokud potřebujete rozšířit kapacitu, přidání síťový adaptér virtuálního počítače do fondu back-end adresy služby Vyrovnávání zatížení.
+Po provedení údržby virtuálních počítačů, nebo pokud potřebujete tooexpand kapacitu, přidání hello síťový adaptér virtuálních počítačů toohello back-end fondu adres nástroje pro vyrovnávání zatížení hello.
 
-Získáte nástroje pro vyrovnávání zatížení:
+Získejte nástroj pro vyrovnávání zatížení hello:
 
 ```powershell
 $lb = Get-AzureRMLoadBalancer -ResourceGroupName myResourceGroup -Name myLoadBalancer 
 ```
 
-Back-endových adres nástroje pro vyrovnávání zatížení přidáte do karty síťového rozhraní:
+Přidejte fond adres back-end hello hello zatížení vyrovnávání toohello síťovou kartu:
 
 ```powershell
 $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$lb.BackendAddressPools[0]
 ```
 
-Aktualizace síťovou kartu:
+Aktualizace hello síťovou kartu:
 
 ```powershell
 Set-AzureRmNetworkInterface -NetworkInterface $nic
