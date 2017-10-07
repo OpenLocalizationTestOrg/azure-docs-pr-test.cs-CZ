@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace ke službě Azure Cloud Services – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Kurzy, reference k rozhraní API a další dokumentace ukazují, jak využívat Cloud Services k hostování a spouštění vysoce dostupných a škálovatelných cloudových aplikací a rozhraní API."
+title: "aaaAzure cloudové služby dokumentace - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Kurzy, odkazy na rozhraní API a další dokumentaci ukazují, jak toohost toouse cloudové služby a spusťte vysoce dostupné a škálovatelné cloudové aplikace a rozhraní API."
 services: cloud-services
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 16bbb9953db91bfe031e5e87e14aac84d32799b3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 80793de5a66c9f125c23caf2664fbf08015298ab
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="cloud-services-documentation"></a>Dokumentace ke službě Cloud Services
 
-Naučte se používat Cloud Services k hostování a spouštění vysoce dostupných škálovatelných cloudových aplikací a rozhraní API.  Kurzy, reference k rozhraní API a další dokumentace ukazují, jak spravovat hostitele virtuálních počítačů a konfigurovat, opravovat a instalovat software.
+Zjistěte, jak toouse cloudové služby toohost a spouštět vysoce dostupné a škálovatelné cloudové aplikace a rozhraní API.  Kurzy, odkazy na rozhraní API a další dokumentaci ukazují, jak je hostitelem toomanage virtuálního počítače a konfiguraci, opravy a instalovat software.
 
 <ul class="panelContent cardsFTitle">
     <li>

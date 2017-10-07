@@ -1,6 +1,6 @@
 ---
-title: "Zprovoznit modely vytvořené Spark počítač learning | Microsoft Docs"
-description: "Jak načíst a stanovíte jeho skóre learning modely uložené v Azure Blob Storage (WASB) s Python."
+title: "aaaOperationalize vytvořené Spark modelů strojového učení | Microsoft Docs"
+description: "Jak tooload a skóre učení modely uložené v Azure Blob Storage (WASB) s Python."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,64 +14,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 00fec675bed0137473f7e3c5ddfe9c3c0e8344c6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c5fadcb13257b94dcb28a522be454f6e03dfa991
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="operationalize-spark-built-machine-learning-models"></a><span data-ttu-id="4b579-103">Zprovoznit learning modely vytvořené Spark počítače</span><span class="sxs-lookup"><span data-stu-id="4b579-103">Operationalize Spark-built machine learning models</span></span>
+# <a name="operationalize-spark-built-machine-learning-models"></a><span data-ttu-id="9e0db-103">Zprovoznit learning modely vytvořené Spark počítače</span><span class="sxs-lookup"><span data-stu-id="9e0db-103">Operationalize Spark-built machine learning models</span></span>
 [!INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]
 
-<span data-ttu-id="4b579-104">Toto téma ukazuje, jak zprovoznit model uložené machine learning (ML) používá Python v clusterech HDInsight Spark.</span><span class="sxs-lookup"><span data-stu-id="4b579-104">This topic shows how to operationalize a saved machine learning model (ML) using Python on HDInsight Spark clusters.</span></span> <span data-ttu-id="4b579-105">Popisuje jak načíst machine learning modely, které jste vytvořili pomocí Spark MLlib a uložené v Azure Blob Storage (WASB) a jak je skóre s datové sady, které byly uloženy také v WASB.</span><span class="sxs-lookup"><span data-stu-id="4b579-105">It describes how to load machine learning models that have been built using Spark MLlib and stored in Azure Blob Storage (WASB), and how to score them with datasets that have also been stored in WASB.</span></span> <span data-ttu-id="4b579-106">Zobrazuje postup předběžné zpracování vstupních dat, transformace funkcí s použitím funkce indexování a kódování v sadě nástrojů MLlib a jak vytvořit datový objekt s popiskem bod, který lze použít jako vstup pro vyhodnocování s modely ML.</span><span class="sxs-lookup"><span data-stu-id="4b579-106">It shows how to pre-process the input data, transform features using the indexing and encoding functions in the MLlib toolkit, and how to create a labeled point data object that can be used as input for scoring with the ML models.</span></span> <span data-ttu-id="4b579-107">Modely použité pro vyhodnocování zahrnují lineární regrese, Logistic Regression, náhodné modely doménové struktury a modely stromu přechodu zvyšovat skóre.</span><span class="sxs-lookup"><span data-stu-id="4b579-107">The models used for scoring include Linear Regression, Logistic Regression, Random Forest Models, and Gradient Boosting Tree Models.</span></span>
+<span data-ttu-id="9e0db-104">Toto téma ukazuje, jak toooperationalize modelu uloženého strojového učení (ML) používá Python na HDInsight Spark clusterů.</span><span class="sxs-lookup"><span data-stu-id="9e0db-104">This topic shows how toooperationalize a saved machine learning model (ML) using Python on HDInsight Spark clusters.</span></span> <span data-ttu-id="9e0db-105">Popisuje, jak tooload počítač learning modely, které byly vytvořené pomocí Spark MLlib a uložené v Azure Blob Storage (WASB) a jak tooscore je s datové sady, které byly uloženy také v WASB.</span><span class="sxs-lookup"><span data-stu-id="9e0db-105">It describes how tooload machine learning models that have been built using Spark MLlib and stored in Azure Blob Storage (WASB), and how tooscore them with datasets that have also been stored in WASB.</span></span> <span data-ttu-id="9e0db-106">Zobrazuje jak toopre proces hello vstupní data, pomocí funkce transformace hello indexování a kódování funkce v sadě nástrojů MLlib hello a jak toocreate s popiskem bodu datový objekt, který lze použít jako vstup pro vyhodnocování s modely hello ML.</span><span class="sxs-lookup"><span data-stu-id="9e0db-106">It shows how toopre-process hello input data, transform features using hello indexing and encoding functions in hello MLlib toolkit, and how toocreate a labeled point data object that can be used as input for scoring with hello ML models.</span></span> <span data-ttu-id="9e0db-107">Hello modely použité pro vyhodnocování zahrnují lineární regrese, Logistic Regression, náhodné modely doménové struktury a modely stromu přechodu zvyšovat skóre.</span><span class="sxs-lookup"><span data-stu-id="9e0db-107">hello models used for scoring include Linear Regression, Logistic Regression, Random Forest Models, and Gradient Boosting Tree Models.</span></span>
 
-## <a name="spark-clusters-and-jupyter-notebooks"></a><span data-ttu-id="4b579-108">Clustery Spark a poznámkové bloky Jupyter</span><span class="sxs-lookup"><span data-stu-id="4b579-108">Spark clusters and Jupyter notebooks</span></span>
-<span data-ttu-id="4b579-109">Kroky instalace a kód, který zprovoznit ML model jsou uvedené v tomto názorném postupu pro používání clusteru služby HDInsight Spark 1.6, jakož i cluster Spark 2.0.</span><span class="sxs-lookup"><span data-stu-id="4b579-109">Setup steps and the code to operationalize an ML model are provided in this walkthrough for using an HDInsight Spark 1.6 cluster as well as a Spark 2.0 cluster.</span></span> <span data-ttu-id="4b579-110">Kód pro tyto postupy je také součástí poznámkové bloky Jupyter.</span><span class="sxs-lookup"><span data-stu-id="4b579-110">The code for these procedures is also provided in Jupyter notebooks.</span></span>
+## <a name="spark-clusters-and-jupyter-notebooks"></a><span data-ttu-id="9e0db-108">Clustery Spark a poznámkové bloky Jupyter</span><span class="sxs-lookup"><span data-stu-id="9e0db-108">Spark clusters and Jupyter notebooks</span></span>
+<span data-ttu-id="9e0db-109">Postup instalace a toooperationalize kód hello ML model jsou uvedené v tomto názorném postupu pro používání clusteru služby HDInsight Spark 1.6, jakož i cluster Spark 2.0.</span><span class="sxs-lookup"><span data-stu-id="9e0db-109">Setup steps and hello code toooperationalize an ML model are provided in this walkthrough for using an HDInsight Spark 1.6 cluster as well as a Spark 2.0 cluster.</span></span> <span data-ttu-id="9e0db-110">Hello kód pro tyto postupy jsou také uvedené v poznámkové bloky Jupyter.</span><span class="sxs-lookup"><span data-stu-id="9e0db-110">hello code for these procedures is also provided in Jupyter notebooks.</span></span>
 
-### <a name="notebook-for-spark-16"></a><span data-ttu-id="4b579-111">Poznámkový blok pro Spark 1.6</span><span class="sxs-lookup"><span data-stu-id="4b579-111">Notebook for Spark 1.6</span></span>
-<span data-ttu-id="4b579-112">[PySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) Poznámkový blok Jupyter ukazuje, jak zprovoznit model uložené v clusterech prostředí HDInsight pomocí Pythonu.</span><span class="sxs-lookup"><span data-stu-id="4b579-112">The [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) Jupyter notebook shows how to operationalize a saved model using Python on HDInsight clusters.</span></span> 
+### <a name="notebook-for-spark-16"></a><span data-ttu-id="9e0db-111">Poznámkový blok pro Spark 1.6</span><span class="sxs-lookup"><span data-stu-id="9e0db-111">Notebook for Spark 1.6</span></span>
+<span data-ttu-id="9e0db-112">Hello [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) Poznámkový blok Jupyter ukazuje, jak toooperationalize uložené model používá Python v HDInsight clustery.</span><span class="sxs-lookup"><span data-stu-id="9e0db-112">hello [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) Jupyter notebook shows how toooperationalize a saved model using Python on HDInsight clusters.</span></span> 
 
-### <a name="notebook-for-spark-20"></a><span data-ttu-id="4b579-113">Poznámkový blok pro Spark 2.0</span><span class="sxs-lookup"><span data-stu-id="4b579-113">Notebook for Spark 2.0</span></span>
-<span data-ttu-id="4b579-114">Pokud chcete upravit poznámkového bloku Jupyter pro 1.6 Spark pro použití s clusteru služby HDInsight Spark 2.0, nahradit soubor kód Python s [tento soubor](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py).</span><span class="sxs-lookup"><span data-stu-id="4b579-114">To modify the Jupyter notebook for Spark 1.6 to use with an HDInsight Spark 2.0 cluster, replace the Python code file with [this file](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py).</span></span> <span data-ttu-id="4b579-115">Tento kód ukazuje, jak využívat modelů vytvořených v Spark 2.0.</span><span class="sxs-lookup"><span data-stu-id="4b579-115">This code shows how to consume the models created in Spark 2.0.</span></span>
+### <a name="notebook-for-spark-20"></a><span data-ttu-id="9e0db-113">Poznámkový blok pro Spark 2.0</span><span class="sxs-lookup"><span data-stu-id="9e0db-113">Notebook for Spark 2.0</span></span>
+<span data-ttu-id="9e0db-114">hello toomodify Poznámkový blok Jupyter pro toouse Spark 1.6 pomocí clusteru služby HDInsight Spark 2.0 nahradit soubor kód Python hello s [tento soubor](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py).</span><span class="sxs-lookup"><span data-stu-id="9e0db-114">toomodify hello Jupyter notebook for Spark 1.6 toouse with an HDInsight Spark 2.0 cluster, replace hello Python code file with [this file](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py).</span></span> <span data-ttu-id="9e0db-115">Tento kód ukazuje, jak tooconsume hello modely vytvořené v Spark 2.0.</span><span class="sxs-lookup"><span data-stu-id="9e0db-115">This code shows how tooconsume hello models created in Spark 2.0.</span></span>
 
 
-## <a name="prerequisites"></a><span data-ttu-id="4b579-116">Požadavky</span><span class="sxs-lookup"><span data-stu-id="4b579-116">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="9e0db-116">Požadavky</span><span class="sxs-lookup"><span data-stu-id="9e0db-116">Prerequisites</span></span>
 
-1. <span data-ttu-id="4b579-117">Budete potřebovat účet Azure a Spark 1.6 (nebo Spark 2.0) clusteru HDInsight k dokončení tohoto postupu.</span><span class="sxs-lookup"><span data-stu-id="4b579-117">You need an Azure account and a Spark 1.6 (or Spark 2.0) HDInsight cluster to complete this walkthrough.</span></span> <span data-ttu-id="4b579-118">Najdete v článku [přehled o vědecké zpracování dat pomocí Spark v Azure HDInsight](machine-learning-data-science-spark-overview.md) pokyny o tom, jak splnit tyto požadavky.</span><span class="sxs-lookup"><span data-stu-id="4b579-118">See the [Overview of Data Science using Spark on Azure HDInsight](machine-learning-data-science-spark-overview.md) for instructions on how to satisfy these requirements.</span></span> <span data-ttu-id="4b579-119">Toto téma obsahuje také popis NYC 2013 taxíkem data použít se zde a pokyny, jak provést kód z poznámkového bloku Jupyter v clusteru Spark.</span><span class="sxs-lookup"><span data-stu-id="4b579-119">That topic also contains a description of the NYC 2013 Taxi data used here and instructions on how to execute code from a Jupyter notebook on the Spark cluster.</span></span> 
-2. <span data-ttu-id="4b579-120">Musíte taky vytvořit strojového učení modely, které se má vypočítat zde skóre projdete [zkoumání dat a modelování pomocí Spark](machine-learning-data-science-spark-data-exploration-modeling.md) téma je určené pro cluster Spark 1.6 nebo poznámkových bloků Spark 2.0.</span><span class="sxs-lookup"><span data-stu-id="4b579-120">You must also create the machine learning models to be scored here by working through the [Data exploration and modeling with Spark](machine-learning-data-science-spark-data-exploration-modeling.md) topic for the Spark 1.6 cluster or the Spark 2.0 notebooks.</span></span> 
-3. <span data-ttu-id="4b579-121">Poznámkové bloky Spark 2.0 používat další datové sady pro úlohu klasifikace, dobře známé letecká společnost na čas odeslání datové sady z 2011 a 2012.</span><span class="sxs-lookup"><span data-stu-id="4b579-121">The Spark 2.0 notebooks use an additional data set for the classification task, the well-known Airline On-time departure dataset from 2011 and 2012.</span></span> <span data-ttu-id="4b579-122">Popis poznámkových bloků a odkazy na ně jsou součástí [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) úložiště Githubu, které je obsahují.</span><span class="sxs-lookup"><span data-stu-id="4b579-122">A description of the notebooks and links to them are provided in the [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) for the GitHub repository containing them.</span></span> <span data-ttu-id="4b579-123">Kromě toho kód sem a v propojených poznámkových bloků je obecný a by měla fungovat v jakémkoliv clusteru Spark.</span><span class="sxs-lookup"><span data-stu-id="4b579-123">Moreover, the code here and in the linked notebooks is generic and should work on any Spark cluster.</span></span> <span data-ttu-id="4b579-124">Pokud nepoužíváte HDInsight Spark, může být mírně lišit od co je tady uvedené kroky nastavení a Správa clusteru.</span><span class="sxs-lookup"><span data-stu-id="4b579-124">If you are not using HDInsight Spark, the cluster setup and management steps may be slightly different from what is shown here.</span></span> 
+1. <span data-ttu-id="9e0db-117">Budete potřebovat účet Azure a Spark 1.6 (nebo Spark 2.0) cluster HDInsight toocomplete tohoto návodu.</span><span class="sxs-lookup"><span data-stu-id="9e0db-117">You need an Azure account and a Spark 1.6 (or Spark 2.0) HDInsight cluster toocomplete this walkthrough.</span></span> <span data-ttu-id="9e0db-118">V tématu hello [přehled o vědecké zpracování dat pomocí Spark v Azure HDInsight](machine-learning-data-science-spark-overview.md) pokyny toosatisfy tyto požadavky.</span><span class="sxs-lookup"><span data-stu-id="9e0db-118">See hello [Overview of Data Science using Spark on Azure HDInsight](machine-learning-data-science-spark-overview.md) for instructions on how toosatisfy these requirements.</span></span> <span data-ttu-id="9e0db-119">Toto téma obsahuje také popis hello NYC 2013 taxíkem dat použít se zde a pokyny, jak tooexecute kód z poznámkového bloku Jupyter v clusteru Spark hello.</span><span class="sxs-lookup"><span data-stu-id="9e0db-119">That topic also contains a description of hello NYC 2013 Taxi data used here and instructions on how tooexecute code from a Jupyter notebook on hello Spark cluster.</span></span> 
+2. <span data-ttu-id="9e0db-120">Musíte taky vytvořit hello modely machine learning toobe skóre pro magnitudu zde projdete hello [zkoumání dat a modelování pomocí Spark](machine-learning-data-science-spark-data-exploration-modeling.md) téma je určené pro cluster hello Spark 1.6 nebo poznámkových bloků hello Spark 2.0.</span><span class="sxs-lookup"><span data-stu-id="9e0db-120">You must also create hello machine learning models toobe scored here by working through hello [Data exploration and modeling with Spark](machine-learning-data-science-spark-data-exploration-modeling.md) topic for hello Spark 1.6 cluster or hello Spark 2.0 notebooks.</span></span> 
+3. <span data-ttu-id="9e0db-121">poznámkových bloků Hello Spark 2.0 používat další datové sady pro hello klasifikace úkol hello dobře známé letecká společnost na čas odeslání datové sady z 2011 a 2012.</span><span class="sxs-lookup"><span data-stu-id="9e0db-121">hello Spark 2.0 notebooks use an additional data set for hello classification task, hello well-known Airline On-time departure dataset from 2011 and 2012.</span></span> <span data-ttu-id="9e0db-122">Popis toothem hello poznámkových bloků a odkazy jsou uvedeny v hello [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) hello Githubu úložiště, které je obsahují.</span><span class="sxs-lookup"><span data-stu-id="9e0db-122">A description of hello notebooks and links toothem are provided in hello [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) for hello GitHub repository containing them.</span></span> <span data-ttu-id="9e0db-123">Kromě toho hello kód sem a v poznámkových bloků hello propojené je obecný a by měla fungovat v jakémkoliv clusteru Spark.</span><span class="sxs-lookup"><span data-stu-id="9e0db-123">Moreover, hello code here and in hello linked notebooks is generic and should work on any Spark cluster.</span></span> <span data-ttu-id="9e0db-124">Pokud nepoužíváte HDInsight Spark, může být kroky instalace a správy clusteru hello mírně lišit od co se zobrazí tady.</span><span class="sxs-lookup"><span data-stu-id="9e0db-124">If you are not using HDInsight Spark, hello cluster setup and management steps may be slightly different from what is shown here.</span></span> 
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a><span data-ttu-id="4b579-125">Instalace: umístění úložiště, knihovny a kontext přednastavené Spark</span><span class="sxs-lookup"><span data-stu-id="4b579-125">Setup: storage locations, libraries, and the preset Spark context</span></span>
-<span data-ttu-id="4b579-126">Spark se bude moct číst a zapisovat do Azure úložiště objektů Blob (WASB).</span><span class="sxs-lookup"><span data-stu-id="4b579-126">Spark is able to read and write to an Azure Storage Blob (WASB).</span></span> <span data-ttu-id="4b579-127">Takže existující data uložená existuje může zpracovat pomocí Spark a výsledky uložené v WASB znovu.</span><span class="sxs-lookup"><span data-stu-id="4b579-127">So any of your existing data stored there can be processed using Spark and the results stored again in WASB.</span></span>
+## <a name="setup-storage-locations-libraries-and-hello-preset-spark-context"></a><span data-ttu-id="9e0db-125">Instalační program: umístění úložiště, knihovny a hello přednastavení Spark kontextu</span><span class="sxs-lookup"><span data-stu-id="9e0db-125">Setup: storage locations, libraries, and hello preset Spark context</span></span>
+<span data-ttu-id="9e0db-126">Spark je možné tooan tooread a zápisu objektů Blob Azure Storage (WASB).</span><span class="sxs-lookup"><span data-stu-id="9e0db-126">Spark is able tooread and write tooan Azure Storage Blob (WASB).</span></span> <span data-ttu-id="9e0db-127">Takže existující data v ní uloženy může zpracovat pomocí Spark a hello výsledky uložené v znovu WASB.</span><span class="sxs-lookup"><span data-stu-id="9e0db-127">So any of your existing data stored there can be processed using Spark and hello results stored again in WASB.</span></span>
 
-<span data-ttu-id="4b579-128">Cesta k uložení modely nebo souborů v WASB, je třeba zadat správně.</span><span class="sxs-lookup"><span data-stu-id="4b579-128">To save models or files in WASB, the path needs to be specified properly.</span></span> <span data-ttu-id="4b579-129">Výchozí kontejner, který je připojen ke clusteru Spark se může odkazovat pomocí cesty počínaje: *"wasb / /"*.</span><span class="sxs-lookup"><span data-stu-id="4b579-129">The default container attached to the Spark cluster can be referenced using a path beginning with: *"wasb//"*.</span></span> <span data-ttu-id="4b579-130">Následující příklad kódu určuje umístění dat ke čtení a cesty k adresáři modelu úložiště, kde je uložen výstupní modelu.</span><span class="sxs-lookup"><span data-stu-id="4b579-130">The following code sample specifies the location of the data to be read and the path for the model storage directory to which the model output is saved.</span></span> 
+<span data-ttu-id="9e0db-128">modely toosave či soubory v WASB, musí cesta hello toobe zadán správně.</span><span class="sxs-lookup"><span data-stu-id="9e0db-128">toosave models or files in WASB, hello path needs toobe specified properly.</span></span> <span data-ttu-id="9e0db-129">Hello clusteru Spark toohello výchozí kontejner připojené můžete odkazovat pomocí cesty počínaje: *"wasb / /"*.</span><span class="sxs-lookup"><span data-stu-id="9e0db-129">hello default container attached toohello Spark cluster can be referenced using a path beginning with: *"wasb//"*.</span></span> <span data-ttu-id="9e0db-130">Hello následující ukázka kódu určuje hello umístění toobe hello dat pro čtení a uložena hello cesta pro model výstup hello directory toowhich hello modelu úložiště.</span><span class="sxs-lookup"><span data-stu-id="9e0db-130">hello following code sample specifies hello location of hello data toobe read and hello path for hello model storage directory toowhich hello model output is saved.</span></span> 
 
-### <a name="set-directory-paths-for-storage-locations-in-wasb"></a><span data-ttu-id="4b579-131">Nastavení cesty adresáře pro umístění úložiště v WASB</span><span class="sxs-lookup"><span data-stu-id="4b579-131">Set directory paths for storage locations in WASB</span></span>
-<span data-ttu-id="4b579-132">Modely se ukládají do: "wasb: / / / uživatel/remoteuser/NYCTaxi/modely".</span><span class="sxs-lookup"><span data-stu-id="4b579-132">Models are saved in: "wasb:///user/remoteuser/NYCTaxi/Models".</span></span> <span data-ttu-id="4b579-133">Pokud tato cesta není správně nastavena, modely nenačtou pro vyhodnocování.</span><span class="sxs-lookup"><span data-stu-id="4b579-133">If this path is not set properly, models are not loaded for scoring.</span></span>
+### <a name="set-directory-paths-for-storage-locations-in-wasb"></a><span data-ttu-id="9e0db-131">Nastavení cesty adresáře pro umístění úložiště v WASB</span><span class="sxs-lookup"><span data-stu-id="9e0db-131">Set directory paths for storage locations in WASB</span></span>
+<span data-ttu-id="9e0db-132">Modely se ukládají do: "wasb: / / / uživatel/remoteuser/NYCTaxi/modely".</span><span class="sxs-lookup"><span data-stu-id="9e0db-132">Models are saved in: "wasb:///user/remoteuser/NYCTaxi/Models".</span></span> <span data-ttu-id="9e0db-133">Pokud tato cesta není správně nastavena, modely nenačtou pro vyhodnocování.</span><span class="sxs-lookup"><span data-stu-id="9e0db-133">If this path is not set properly, models are not loaded for scoring.</span></span>
 
-<span data-ttu-id="4b579-134">Scored výsledky byly uloženy v: "wasb: / / / uživatel/remoteuser/NYCTaxi/ScoredResults".</span><span class="sxs-lookup"><span data-stu-id="4b579-134">The scored results have been saved in: "wasb:///user/remoteuser/NYCTaxi/ScoredResults".</span></span> <span data-ttu-id="4b579-135">Pokud cesta ke složce není v pořádku, výsledky nejsou uloženy v této složce.</span><span class="sxs-lookup"><span data-stu-id="4b579-135">If the path to folder is incorrect, results are not saved in that folder.</span></span>   
+<span data-ttu-id="9e0db-134">Hello scored výsledky byly uloženy v: "wasb: / / / uživatel/remoteuser/NYCTaxi/ScoredResults".</span><span class="sxs-lookup"><span data-stu-id="9e0db-134">hello scored results have been saved in: "wasb:///user/remoteuser/NYCTaxi/ScoredResults".</span></span> <span data-ttu-id="9e0db-135">Pokud cesta toofolder hello není v pořádku, výsledky nejsou uloženy v této složce.</span><span class="sxs-lookup"><span data-stu-id="9e0db-135">If hello path toofolder is incorrect, results are not saved in that folder.</span></span>   
 
 > [!NOTE]
-> <span data-ttu-id="4b579-136">Cesta k umístění souborů lze kopírovat a vložit do zástupných symbolů v tento kód z výstupu poslední buňky **machine-learning-data-science-spark-data-exploration-modeling.ipynb** poznámkového bloku.</span><span class="sxs-lookup"><span data-stu-id="4b579-136">The file path locations can be copied and pasted into the placeholders in this code from the output of the last cell of the **machine-learning-data-science-spark-data-exploration-modeling.ipynb** notebook.</span></span>   
+> <span data-ttu-id="9e0db-136">umístění souboru cest Hello lze kopírovat a vložit do zástupné symboly hello tento kód hello výstup hello poslední buňku hello **machine-learning-data-science-spark-data-exploration-modeling.ipynb** poznámkového bloku.</span><span class="sxs-lookup"><span data-stu-id="9e0db-136">hello file path locations can be copied and pasted into hello placeholders in this code from hello output of hello last cell of hello **machine-learning-data-science-spark-data-exploration-modeling.ipynb** notebook.</span></span>   
 > 
 > 
 
-<span data-ttu-id="4b579-137">Tady je kód pro nastavení cesty k adresáři:</span><span class="sxs-lookup"><span data-stu-id="4b579-137">Here is the code to set directory paths:</span></span> 
+<span data-ttu-id="9e0db-137">Tady je cesty adresářů tooset hello kódu:</span><span class="sxs-lookup"><span data-stu-id="9e0db-137">Here is hello code tooset directory paths:</span></span> 
 
-    # LOCATION OF DATA TO BE SCORED (TEST DATA)
+    # LOCATION OF DATA tooBE SCORED (TEST DATA)
     taxi_test_file_loc = "wasb://mllibwalkthroughs@cdspsparksamples.blob.core.windows.net/Data/NYCTaxi/JoinedTaxiTripFare.Point1Pct.Test.tsv";
 
-    # SET THE MODEL STORAGE DIRECTORY PATH 
-    # NOTE THE LAST BACKSLASH IN THIS PATH IS NEEDED
+    # SET hello MODEL STORAGE DIRECTORY PATH 
+    # NOTE hello LAST BACKSLASH IN THIS PATH IS NEEDED
     modelDir = "wasb:///user/remoteuser/NYCTaxi/Models/" 
 
     # SET SCORDED RESULT DIRECTORY PATH
-    # NOTE THE LAST BACKSLASH IN THIS PATH IS NEEDED
+    # NOTE hello LAST BACKSLASH IN THIS PATH IS NEEDED
     scoredResultDir = "wasb:///user/remoteuser/NYCTaxi/ScoredResults/"; 
 
-    # FILE LOCATIONS FOR THE MODELS TO BE SCORED
+    # FILE LOCATIONS FOR hello MODELS tooBE SCORED
     logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-04-1817_40_35.796789"
     linearRegFileLoc = modelDir + "LinearRegressionWithSGD_2016-04-1817_44_00.993832"
     randomForestClassificationFileLoc = modelDir + "RandomForestClassification_2016-04-1817_42_58.899412"
@@ -83,12 +83,12 @@ ms.lasthandoff: 07/11/2017
     import datetime
     datetime.datetime.now()
 
-<span data-ttu-id="4b579-138">**VÝSTUP:**</span><span class="sxs-lookup"><span data-stu-id="4b579-138">**OUTPUT:**</span></span>
+<span data-ttu-id="9e0db-138">**VÝSTUP:**</span><span class="sxs-lookup"><span data-stu-id="9e0db-138">**OUTPUT:**</span></span>
 
-<span data-ttu-id="4b579-139">DateTime.DateTime (2016, 4, 25, 23, 56, 19, 229403)</span><span class="sxs-lookup"><span data-stu-id="4b579-139">datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)</span></span>
+<span data-ttu-id="9e0db-139">DateTime.DateTime (2016, 4, 25, 23, 56, 19, 229403)</span><span class="sxs-lookup"><span data-stu-id="9e0db-139">datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)</span></span>
 
-### <a name="import-libraries"></a><span data-ttu-id="4b579-140">Importovat knihovny</span><span class="sxs-lookup"><span data-stu-id="4b579-140">Import libraries</span></span>
-<span data-ttu-id="4b579-141">Nastavit kontext spark a importovat potřebné knihovny s následujícím kódem</span><span class="sxs-lookup"><span data-stu-id="4b579-141">Set spark context and import necessary libraries with the following code</span></span>
+### <a name="import-libraries"></a><span data-ttu-id="9e0db-140">Importovat knihovny</span><span class="sxs-lookup"><span data-stu-id="9e0db-140">Import libraries</span></span>
+<span data-ttu-id="9e0db-141">Nastavit kontext spark a importovat potřebné knihovny s hello následující kód</span><span class="sxs-lookup"><span data-stu-id="9e0db-141">Set spark context and import necessary libraries with hello following code</span></span>
 
     #IMPORT LIBRARIES
     import pyspark
@@ -106,24 +106,24 @@ ms.lasthandoff: 07/11/2017
     import datetime
 
 
-### <a name="preset-spark-context-and-pyspark-magics"></a><span data-ttu-id="4b579-142">Předvolby kontextu Spark a Magic PySpark</span><span class="sxs-lookup"><span data-stu-id="4b579-142">Preset Spark context and PySpark magics</span></span>
-<span data-ttu-id="4b579-143">Jádra PySpark, které jsou k dispozici s poznámkovými bloky Jupyter mít přednastavené kontextu.</span><span class="sxs-lookup"><span data-stu-id="4b579-143">The PySpark kernels that are provided with Jupyter notebooks have a preset context.</span></span> <span data-ttu-id="4b579-144">Proto není potřeba nastavit Spark nebo vývoji Hive kontexty explicitně před zahájením práce s aplikací.</span><span class="sxs-lookup"><span data-stu-id="4b579-144">So you do not need to set the Spark or Hive contexts explicitly before you start working with the application you are developing.</span></span> <span data-ttu-id="4b579-145">Tyto jsou dostupné ve výchozím nastavení.</span><span class="sxs-lookup"><span data-stu-id="4b579-145">These are available for you by default.</span></span> <span data-ttu-id="4b579-146">Tyto kontexty jsou:</span><span class="sxs-lookup"><span data-stu-id="4b579-146">These contexts are:</span></span>
+### <a name="preset-spark-context-and-pyspark-magics"></a><span data-ttu-id="9e0db-142">Předvolby kontextu Spark a Magic PySpark</span><span class="sxs-lookup"><span data-stu-id="9e0db-142">Preset Spark context and PySpark magics</span></span>
+<span data-ttu-id="9e0db-143">Hello jádra PySpark, které jsou k dispozici s poznámkovými bloky Jupyter mít přednastavené kontextu.</span><span class="sxs-lookup"><span data-stu-id="9e0db-143">hello PySpark kernels that are provided with Jupyter notebooks have a preset context.</span></span> <span data-ttu-id="9e0db-144">Proto není nutné tooset kontexty Spark nebo Hive hello explicitně před zahájením práce s hello aplikací, které vyvíjíte.</span><span class="sxs-lookup"><span data-stu-id="9e0db-144">So you do not need tooset hello Spark or Hive contexts explicitly before you start working with hello application you are developing.</span></span> <span data-ttu-id="9e0db-145">Tyto jsou dostupné ve výchozím nastavení.</span><span class="sxs-lookup"><span data-stu-id="9e0db-145">These are available for you by default.</span></span> <span data-ttu-id="9e0db-146">Tyto kontexty jsou:</span><span class="sxs-lookup"><span data-stu-id="9e0db-146">These contexts are:</span></span>
 
-* <span data-ttu-id="4b579-147">sc - pro Spark</span><span class="sxs-lookup"><span data-stu-id="4b579-147">sc - for Spark</span></span> 
-* <span data-ttu-id="4b579-148">sqlContext - pro Hive</span><span class="sxs-lookup"><span data-stu-id="4b579-148">sqlContext - for Hive</span></span>
+* <span data-ttu-id="9e0db-147">sc - pro Spark</span><span class="sxs-lookup"><span data-stu-id="9e0db-147">sc - for Spark</span></span> 
+* <span data-ttu-id="9e0db-148">sqlContext - pro Hive</span><span class="sxs-lookup"><span data-stu-id="9e0db-148">sqlContext - for Hive</span></span>
 
-<span data-ttu-id="4b579-149">Poskytuje jádra PySpark některé předdefinované "Magic", které jsou speciální příkazy, které můžete volat s %%.</span><span class="sxs-lookup"><span data-stu-id="4b579-149">The PySpark kernel provides some predefined “magics”, which are special commands that you can call with %%.</span></span> <span data-ttu-id="4b579-150">Existují dva takové příkazy, které se používají v tyto ukázky kódu.</span><span class="sxs-lookup"><span data-stu-id="4b579-150">There are two such commands that are used in these code samples.</span></span>
+<span data-ttu-id="9e0db-149">Hello jádra PySpark poskytuje některé předdefinované "Magic", které jsou speciální příkazy, které můžete volat s %%.</span><span class="sxs-lookup"><span data-stu-id="9e0db-149">hello PySpark kernel provides some predefined “magics”, which are special commands that you can call with %%.</span></span> <span data-ttu-id="9e0db-150">Existují dva takové příkazy, které se používají v tyto ukázky kódu.</span><span class="sxs-lookup"><span data-stu-id="9e0db-150">There are two such commands that are used in these code samples.</span></span>
 
-* <span data-ttu-id="4b579-151">**%% místní** zadat, že kód v další řádek se spustí místně.</span><span class="sxs-lookup"><span data-stu-id="4b579-151">**%%local** Specified that the code in subsequent lines is executed locally.</span></span> <span data-ttu-id="4b579-152">Kód musí být platný kód Python.</span><span class="sxs-lookup"><span data-stu-id="4b579-152">Code must be valid Python code.</span></span>
-* <span data-ttu-id="4b579-153">**%% sql -o<variable name>**</span><span class="sxs-lookup"><span data-stu-id="4b579-153">**%%sql -o <variable name>**</span></span> 
-* <span data-ttu-id="4b579-154">Provede dotaz Hive proti sqlContext.</span><span class="sxs-lookup"><span data-stu-id="4b579-154">Executes a Hive query against the sqlContext.</span></span> <span data-ttu-id="4b579-155">Pokud je předán parametr -o, výsledek dotazu je uchován v %% lokální kontext Python jako Pandas dataframe.</span><span class="sxs-lookup"><span data-stu-id="4b579-155">If the -o parameter is passed, the result of the query is persisted in the %%local Python context as a Pandas dataframe.</span></span>
+* <span data-ttu-id="9e0db-151">**%% místní** zadat, že je kód hello v dalších řádcích spuštěn místně.</span><span class="sxs-lookup"><span data-stu-id="9e0db-151">**%%local** Specified that hello code in subsequent lines is executed locally.</span></span> <span data-ttu-id="9e0db-152">Kód musí být platný kód Python.</span><span class="sxs-lookup"><span data-stu-id="9e0db-152">Code must be valid Python code.</span></span>
+* <span data-ttu-id="9e0db-153">**%% sql -o<variable name>**</span><span class="sxs-lookup"><span data-stu-id="9e0db-153">**%%sql -o <variable name>**</span></span> 
+* <span data-ttu-id="9e0db-154">Provede dotaz Hive proti hello sqlContext.</span><span class="sxs-lookup"><span data-stu-id="9e0db-154">Executes a Hive query against hello sqlContext.</span></span> <span data-ttu-id="9e0db-155">Pokud není předán parametr -o hello hello výsledek dotazu hello je uchován v hello %% lokální kontext Python jako Pandas dataframe.</span><span class="sxs-lookup"><span data-stu-id="9e0db-155">If hello -o parameter is passed, hello result of hello query is persisted in hello %%local Python context as a Pandas dataframe.</span></span>
 
-<span data-ttu-id="4b579-156">Pro další informace o jádrech pro poznámkové bloky Jupyter a předdefinovanou "magics", poskytují, najdete v části [jádra dostupná pro poznámkové bloky Jupyter s HDInsight Spark Linux clusterů v HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).</span><span class="sxs-lookup"><span data-stu-id="4b579-156">For more information on the kernels for Jupyter notebooks and the predefined "magics" that they provide, see [Kernels available for Jupyter notebooks with HDInsight Spark Linux clusters on HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).</span></span>
+<span data-ttu-id="9e0db-156">Pro další informace o hello jádra pro poznámkové bloky Jupyter a hello předdefinované "magics", poskytují, najdete v části [jádra dostupná pro poznámkové bloky Jupyter s HDInsight Spark Linux clusterů v HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).</span><span class="sxs-lookup"><span data-stu-id="9e0db-156">For more information on hello kernels for Jupyter notebooks and hello predefined "magics" that they provide, see [Kernels available for Jupyter notebooks with HDInsight Spark Linux clusters on HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).</span></span>
 
-## <a name="ingest-data-and-create-a-cleaned-data-frame"></a><span data-ttu-id="4b579-157">Načítání dat a vytvořte rámeček vyčištěnými dat</span><span class="sxs-lookup"><span data-stu-id="4b579-157">Ingest data and create a cleaned data frame</span></span>
-<span data-ttu-id="4b579-158">Tato část obsahuje kód pro řadu úkoly vyžadované ke zpracování příjmu dat do má vypočítat skóre.</span><span class="sxs-lookup"><span data-stu-id="4b579-158">This section contains the code for a series of tasks required to ingest the data to be scored.</span></span> <span data-ttu-id="4b579-159">Číst v připojené k ukázce 0,1 % taxíkem služební cestě a tarif souboru (uložený jako soubor TSV), formát data a poté vytvoří vyčištění dat rámce.</span><span class="sxs-lookup"><span data-stu-id="4b579-159">Read in a joined 0.1% sample of the taxi trip and fare file (stored as a .tsv file), format the data, and then creates a clean data frame.</span></span>
+## <a name="ingest-data-and-create-a-cleaned-data-frame"></a><span data-ttu-id="9e0db-157">Načítání dat a vytvořte rámeček vyčištěnými dat</span><span class="sxs-lookup"><span data-stu-id="9e0db-157">Ingest data and create a cleaned data frame</span></span>
+<span data-ttu-id="9e0db-158">Tato část obsahuje hello kód pro řadu úloh vyžaduje tooingest hello data toobe vypočítat skóre.</span><span class="sxs-lookup"><span data-stu-id="9e0db-158">This section contains hello code for a series of tasks required tooingest hello data toobe scored.</span></span> <span data-ttu-id="9e0db-159">Čtení v připojené k ukázce 0,1 % hello taxíkem služební cestě a tarif souboru (uložený jako soubor TSV), formát hello dat a poté vytvoří vyčištění dat rámce.</span><span class="sxs-lookup"><span data-stu-id="9e0db-159">Read in a joined 0.1% sample of hello taxi trip and fare file (stored as a .tsv file), format hello data, and then creates a clean data frame.</span></span>
 
-<span data-ttu-id="4b579-160">Taxíkem služební cestě a tarif soubory byly spojené na základě na postup uvedený v: [Team datové vědy procesu v akci: pomocí clusterů systému HDInsight Hadoop](machine-learning-data-science-process-hive-walkthrough.md) tématu.</span><span class="sxs-lookup"><span data-stu-id="4b579-160">The taxi trip and fare files were joined based on the procedure provided in the: [The Team Data Science Process in action: using HDInsight Hadoop clusters](machine-learning-data-science-process-hive-walkthrough.md) topic.</span></span>
+<span data-ttu-id="9e0db-160">Hello taxíkem služební cestě a tarif soubory byly spojené na základě na hello postup uvedený v: [hello proces vědecké účely Team dat v akci: pomocí clusterů systému HDInsight Hadoop](machine-learning-data-science-process-hive-walkthrough.md) tématu.</span><span class="sxs-lookup"><span data-stu-id="9e0db-160">hello taxi trip and fare files were joined based on hello procedure provided in the: [hello Team Data Science Process in action: using HDInsight Hadoop clusters](machine-learning-data-science-process-hive-walkthrough.md) topic.</span></span>
 
     # INGEST DATA AND CREATE A CLEANED DATA FRAME
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 07/11/2017
     # IMPORT FILE FROM PUBLIC BLOB
     taxi_test_file = sc.textFile(taxi_test_file_loc)
 
-    # GET SCHEMA OF THE FILE FROM HEADER
+    # GET SCHEMA OF hello FILE FROM HEADER
     taxi_header = taxi_test_file.filter(lambda l: "medallion" in l)
 
     # PARSE FIELDS AND CONVERT DATA TYPE FOR SOME FIELDS
@@ -142,7 +142,7 @@ ms.lasthandoff: 07/11/2017
                             float(p[11]),float(p[12]),p[13],p[14],p[15],p[16],p[17],p[18],float(p[19]),
                             float(p[20]),float(p[21]),float(p[22]),float(p[23]),float(p[24]),int(p[25]),int(p[26])))
 
-    # GET SCHEMA OF THE FILE FROM HEADER
+    # GET SCHEMA OF hello FILE FROM HEADER
     schema_string = taxi_test_file.first()
     fields = [StructField(field_name, StringType(), True) for field_name in schema_string.split('\t')]
     fields[7].dataType = IntegerType() #Pickup hour
@@ -178,24 +178,24 @@ ms.lasthandoff: 07/11/2017
     # REGISTER DATA-FRAME AS A TEMP-TABLE IN SQL-CONTEXT
     taxi_df_test_cleaned.registerTempTable("taxi_test")
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
-<span data-ttu-id="4b579-161">**VÝSTUP:**</span><span class="sxs-lookup"><span data-stu-id="4b579-161">**OUTPUT:**</span></span>
+<span data-ttu-id="9e0db-161">**VÝSTUP:**</span><span class="sxs-lookup"><span data-stu-id="9e0db-161">**OUTPUT:**</span></span>
 
-<span data-ttu-id="4b579-162">Doba k provedení výše buňky: 46.37 sekund</span><span class="sxs-lookup"><span data-stu-id="4b579-162">Time taken to execute above cell: 46.37 seconds</span></span>
+<span data-ttu-id="9e0db-162">Doba trvání tooexecute nad buňku: 46.37 sekund</span><span class="sxs-lookup"><span data-stu-id="9e0db-162">Time taken tooexecute above cell: 46.37 seconds</span></span>
 
-## <a name="prepare-data-for-scoring-in-spark"></a><span data-ttu-id="4b579-163">Příprava dat pro vyhodnocování v Spark</span><span class="sxs-lookup"><span data-stu-id="4b579-163">Prepare data for scoring in Spark</span></span>
-<span data-ttu-id="4b579-164">V této části ukazuje, jak index, kódovat a škálování kategorií funkce, které chcete připravit je pro použití v MLlib pod dohledem learning algoritmy pro klasifikaci a regrese.</span><span class="sxs-lookup"><span data-stu-id="4b579-164">This section shows how to index, encode, and scale categorical features to prepare them for use in MLlib supervised learning algorithms for classification and regression.</span></span>
+## <a name="prepare-data-for-scoring-in-spark"></a><span data-ttu-id="9e0db-163">Příprava dat pro vyhodnocování v Spark</span><span class="sxs-lookup"><span data-stu-id="9e0db-163">Prepare data for scoring in Spark</span></span>
+<span data-ttu-id="9e0db-164">Tato část popisuje, jak tooindex, kódovat a škálování kategorií funkce tooprepare je pro použití v algoritmů učení MLlib pod dohledem pro klasifikaci a regrese.</span><span class="sxs-lookup"><span data-stu-id="9e0db-164">This section shows how tooindex, encode, and scale categorical features tooprepare them for use in MLlib supervised learning algorithms for classification and regression.</span></span>
 
-### <a name="feature-transformation-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a><span data-ttu-id="4b579-165">Funkce transformace: index a kódování kategorií funkce pro vstup do modely pro vyhodnocování</span><span class="sxs-lookup"><span data-stu-id="4b579-165">Feature transformation: index and encode categorical features for input into models for scoring</span></span>
-<span data-ttu-id="4b579-166">V této části ukazuje, jak index kategorizovaná data pomocí `StringIndexer` a kódování funkcí s `OneHotEncoder` vstup na modely.</span><span class="sxs-lookup"><span data-stu-id="4b579-166">This section shows how to index categorical data using a `StringIndexer` and encode features with `OneHotEncoder` input into the models.</span></span>
+### <a name="feature-transformation-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a><span data-ttu-id="9e0db-165">Funkce transformace: index a kódování kategorií funkce pro vstup do modely pro vyhodnocování</span><span class="sxs-lookup"><span data-stu-id="9e0db-165">Feature transformation: index and encode categorical features for input into models for scoring</span></span>
+<span data-ttu-id="9e0db-166">Tato část uvádí, jak tooindex kategorizovaná data pomocí `StringIndexer` a kódování funkcí s `OneHotEncoder` vstup na modely hello.</span><span class="sxs-lookup"><span data-stu-id="9e0db-166">This section shows how tooindex categorical data using a `StringIndexer` and encode features with `OneHotEncoder` input into hello models.</span></span>
 
-<span data-ttu-id="4b579-167">[StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) kóduje sloupec řetězce popisků ke sloupci popisek indexy.</span><span class="sxs-lookup"><span data-stu-id="4b579-167">The [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) encodes a string column of labels to a column of label indices.</span></span> <span data-ttu-id="4b579-168">Indexy jsou seřazené podle četnosti popisek.</span><span class="sxs-lookup"><span data-stu-id="4b579-168">The indices are ordered by label frequencies.</span></span> 
+<span data-ttu-id="9e0db-167">Hello [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) kóduje sloupec řetězce popisky tooa sloupce popisek indexů.</span><span class="sxs-lookup"><span data-stu-id="9e0db-167">hello [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) encodes a string column of labels tooa column of label indices.</span></span> <span data-ttu-id="9e0db-168">Hello indexy, které jsou seřazené podle četnosti popisek.</span><span class="sxs-lookup"><span data-stu-id="9e0db-168">hello indices are ordered by label frequencies.</span></span> 
 
-<span data-ttu-id="4b579-169">[OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) mapuje sloupec popisek indexů ke sloupci binárního vektory, s maximálně jednu jeden – hodnotu.</span><span class="sxs-lookup"><span data-stu-id="4b579-169">The [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) maps a column of label indices to a column of binary vectors, with at most a single one-value.</span></span> <span data-ttu-id="4b579-170">Toto kódování umožňuje algoritmy, které očekávají průběžné cenná funkce, jako je logistic regression, má být použita pro kategorií funkce.</span><span class="sxs-lookup"><span data-stu-id="4b579-170">This encoding allows algorithms that expect continuous valued features, such as logistic regression, to be applied to categorical features.</span></span>
+<span data-ttu-id="9e0db-169">Hello [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) mapuje sloupec popisek indexy tooa sloupce binární vektorů s maximálně jednu jeden – hodnotu.</span><span class="sxs-lookup"><span data-stu-id="9e0db-169">hello [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) maps a column of label indices tooa column of binary vectors, with at most a single one-value.</span></span> <span data-ttu-id="9e0db-170">Toto kódování umožňuje algoritmy, které očekávají průběžné cenná funkce, jako je logistic regression funkce toocategorical toobe použít.</span><span class="sxs-lookup"><span data-stu-id="9e0db-170">This encoding allows algorithms that expect continuous valued features, such as logistic regression, toobe applied toocategorical features.</span></span>
 
     #INDEX AND ONE-HOT ENCODE CATEGORICAL FEATURES
 
@@ -224,7 +224,7 @@ ms.lasthandoff: 07/11/2017
 
     # INDEX AND ONE-HOT ENCODING
     stringIndexer = StringIndexer(inputCol="vendor_id", outputCol="vendorIndex")
-    model = stringIndexer.fit(taxi_df_test_with_newFeatures) # Input data-frame is the cleaned one from above
+    model = stringIndexer.fit(taxi_df_test_with_newFeatures) # Input data-frame is hello cleaned one from above
     indexed = model.transform(taxi_df_test_with_newFeatures)
     encoder = OneHotEncoder(dropLast=False, inputCol="vendorIndex", outputCol="vendorVec")
     encoded1 = encoder.transform(indexed)
@@ -250,19 +250,19 @@ ms.lasthandoff: 07/11/2017
     encoder = OneHotEncoder(dropLast=False, inputCol="TrafficTimeBinsIndex", outputCol="TrafficTimeBinsVec")
     encodedFinal = encoder.transform(indexed)
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
-<span data-ttu-id="4b579-171">**VÝSTUP:**</span><span class="sxs-lookup"><span data-stu-id="4b579-171">**OUTPUT:**</span></span>
+<span data-ttu-id="9e0db-171">**VÝSTUP:**</span><span class="sxs-lookup"><span data-stu-id="9e0db-171">**OUTPUT:**</span></span>
 
-<span data-ttu-id="4b579-172">Doba k provedení výše buňky: 5.37 sekund</span><span class="sxs-lookup"><span data-stu-id="4b579-172">Time taken to execute above cell: 5.37 seconds</span></span>
+<span data-ttu-id="9e0db-172">Doba trvání tooexecute nad buňku: 5.37 sekund</span><span class="sxs-lookup"><span data-stu-id="9e0db-172">Time taken tooexecute above cell: 5.37 seconds</span></span>
 
-### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a><span data-ttu-id="4b579-173">Vytvoření RDD objektů s poli funkce pro vstup na modely</span><span class="sxs-lookup"><span data-stu-id="4b579-173">Create RDD objects with feature arrays for input into models</span></span>
-<span data-ttu-id="4b579-174">Tato část obsahuje kód, který ukazuje, jak index kategorií textová data jako objekt RDD a jeden horkou zakódovat je, proto ji můžete použít pro trénování a testování MLlib logistic regression a na základě stromu modely.</span><span class="sxs-lookup"><span data-stu-id="4b579-174">This section contains code that shows how to index categorical text data as an RDD object and one-hot encode it so it can be used to train and test MLlib logistic regression and tree-based models.</span></span> <span data-ttu-id="4b579-175">Indexované data jsou uložena v [odolné distribuované datovou sadu (RDD)](http://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) objekty.</span><span class="sxs-lookup"><span data-stu-id="4b579-175">The indexed data is stored in [Resilient Distributed Dataset (RDD)](http://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) objects.</span></span> <span data-ttu-id="4b579-176">Jedná se o základní abstrakci v Spark.</span><span class="sxs-lookup"><span data-stu-id="4b579-176">These are the basic abstraction in Spark.</span></span> <span data-ttu-id="4b579-177">Objekt RDD představuje kolekci neměnné, oddílů elementů, které lze provozovat na paralelně s Spark.</span><span class="sxs-lookup"><span data-stu-id="4b579-177">An RDD object represents an immutable, partitioned collection of elements that can be operated on in parallel with Spark.</span></span>
+### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a><span data-ttu-id="9e0db-173">Vytvoření RDD objektů s poli funkce pro vstup na modely</span><span class="sxs-lookup"><span data-stu-id="9e0db-173">Create RDD objects with feature arrays for input into models</span></span>
+<span data-ttu-id="9e0db-174">Tato část obsahuje kód, který popisuje, jak tooindex kategorií textová data jako RDD objektů a jeden horkou zakódovat je tedy možné ji použít tootrain a testování MLlib logistic regression a na základě stromu modely.</span><span class="sxs-lookup"><span data-stu-id="9e0db-174">This section contains code that shows how tooindex categorical text data as an RDD object and one-hot encode it so it can be used tootrain and test MLlib logistic regression and tree-based models.</span></span> <span data-ttu-id="9e0db-175">Hello indexované data jsou uložena v [odolné distribuované datovou sadu (RDD)](http://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) objekty.</span><span class="sxs-lookup"><span data-stu-id="9e0db-175">hello indexed data is stored in [Resilient Distributed Dataset (RDD)](http://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) objects.</span></span> <span data-ttu-id="9e0db-176">Jedná se o základní abstrakce hello v Spark.</span><span class="sxs-lookup"><span data-stu-id="9e0db-176">These are hello basic abstraction in Spark.</span></span> <span data-ttu-id="9e0db-177">Objekt RDD představuje kolekci neměnné, oddílů elementů, které lze provozovat na paralelně s Spark.</span><span class="sxs-lookup"><span data-stu-id="9e0db-177">An RDD object represents an immutable, partitioned collection of elements that can be operated on in parallel with Spark.</span></span>
 
-<span data-ttu-id="4b579-178">Také obsahuje kód, který ukazuje, jak škálování dat pomocí `StandardScalar` poskytované MLlib pro použití v lineární regrese s Stochastického přechodu klesání (SGD), oblíbených algoritmus pro trénování širokou škálu modely machine learning.</span><span class="sxs-lookup"><span data-stu-id="4b579-178">It also contains code that shows how to scale data with the `StandardScalar` provided by MLlib for use in linear regression with Stochastic Gradient Descent (SGD), a popular algorithm for training a wide range of machine learning models.</span></span> <span data-ttu-id="4b579-179">[StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) se používá funkce, které chcete odchylku jednotky škálování.</span><span class="sxs-lookup"><span data-stu-id="4b579-179">The [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) is used to scale the features to unit variance.</span></span> <span data-ttu-id="4b579-180">Funkce škálování, známé taky jako data normalizaci zajistí, že funkce široce Celková uhrazená hodnotami není zadaný nadměrné naváží ve funkci cíle.</span><span class="sxs-lookup"><span data-stu-id="4b579-180">Feature scaling, also known as data normalization, insures that features with widely disbursed values are not given excessive weigh in the objective function.</span></span> 
+<span data-ttu-id="9e0db-178">Také obsahuje kód, který ukazuje, jak tooscale dat pomocí hello `StandardScalar` poskytované MLlib pro použití v lineární regrese s Stochastického přechodu klesání (SGD), oblíbených algoritmus pro trénování širokou škálu modely machine learning.</span><span class="sxs-lookup"><span data-stu-id="9e0db-178">It also contains code that shows how tooscale data with hello `StandardScalar` provided by MLlib for use in linear regression with Stochastic Gradient Descent (SGD), a popular algorithm for training a wide range of machine learning models.</span></span> <span data-ttu-id="9e0db-179">Hello [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) je použité tooscale hello funkce toounit odchylky.</span><span class="sxs-lookup"><span data-stu-id="9e0db-179">hello [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) is used tooscale hello features toounit variance.</span></span> <span data-ttu-id="9e0db-180">Funkce škálování, známé taky jako data normalizaci zajistí, že funkce široce Celková uhrazená hodnotami není zadaný nadměrné naváží ve funkci cíle hello.</span><span class="sxs-lookup"><span data-stu-id="9e0db-180">Feature scaling, also known as data normalization, insures that features with widely disbursed values are not given excessive weigh in hello objective function.</span></span> 
 
     # CREATE RDD OBJECTS WITH FEATURE ARRAYS FOR INPUT INTO MODELS
 
@@ -324,17 +324,17 @@ ms.lasthandoff: 07/11/2017
     oneHotTESTreg.cache();
     oneHotTESTregScaled.cache();
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
-<span data-ttu-id="4b579-181">**VÝSTUP:**</span><span class="sxs-lookup"><span data-stu-id="4b579-181">**OUTPUT:**</span></span>
+<span data-ttu-id="9e0db-181">**VÝSTUP:**</span><span class="sxs-lookup"><span data-stu-id="9e0db-181">**OUTPUT:**</span></span>
 
-<span data-ttu-id="4b579-182">Doba k provedení výše buňky: 11.72 sekund</span><span class="sxs-lookup"><span data-stu-id="4b579-182">Time taken to execute above cell: 11.72 seconds</span></span>
+<span data-ttu-id="9e0db-182">Doba trvání tooexecute nad buňku: 11.72 sekund</span><span class="sxs-lookup"><span data-stu-id="9e0db-182">Time taken tooexecute above cell: 11.72 seconds</span></span>
 
-## <a name="score-with-the-logistic-regression-model-and-save-output-to-blob"></a><span data-ttu-id="4b579-183">Stanovení skóre s modelem Logistic Regression a ukládání výstupu do objektu blob</span><span class="sxs-lookup"><span data-stu-id="4b579-183">Score with the Logistic Regression Model and save output to blob</span></span>
-<span data-ttu-id="4b579-184">Kód v této části ukazuje, jak načíst Logistic regresní Model, který byl uložen v úložišti objektů blob v Azure a použít ho k předvídání, zda je na cestě taxíkem placené tip, skóre s standardní klasifikace metriky a potom uložte a vykreslení výsledky do objektu blob stora ge.</span><span class="sxs-lookup"><span data-stu-id="4b579-184">The code in this section shows how to load a Logistic Regression Model that has been saved in Azure blob storage and use it to predict whether or not a tip is paid on a taxi trip, score it with standard classification metrics, and then save and plot the results to blob storage.</span></span> <span data-ttu-id="4b579-185">Scored výsledky jsou uloženy v RDD objekty.</span><span class="sxs-lookup"><span data-stu-id="4b579-185">The scored results are stored in RDD objects.</span></span> 
+## <a name="score-with-hello-logistic-regression-model-and-save-output-tooblob"></a><span data-ttu-id="9e0db-183">Stanovení skóre s hello Logistic regresní Model a uložte tooblob výstup</span><span class="sxs-lookup"><span data-stu-id="9e0db-183">Score with hello Logistic Regression Model and save output tooblob</span></span>
+<span data-ttu-id="9e0db-184">Hello kód v této části popisuje, jak úložiště objektů blob tooload Logistic regresní Model, který byl uložen v Azure a použít na cestě taxíkem toopredict, jestli je tip placené, skóre s standardní klasifikace metriky a potom uložte a vykreslení tooblob výsledky hello úložiště.</span><span class="sxs-lookup"><span data-stu-id="9e0db-184">hello code in this section shows how tooload a Logistic Regression Model that has been saved in Azure blob storage and use it toopredict whether or not a tip is paid on a taxi trip, score it with standard classification metrics, and then save and plot hello results tooblob storage.</span></span> <span data-ttu-id="9e0db-185">Hello skóre pro magnitudu výsledky jsou uloženy v RDD objekty.</span><span class="sxs-lookup"><span data-stu-id="9e0db-185">hello scored results are stored in RDD objects.</span></span> 
 
     # SCORE AND EVALUATE LOGISTIC REGRESSION MODEL
 
@@ -348,26 +348,26 @@ ms.lasthandoff: 07/11/2017
     savedModel = LogisticRegressionModel.load(sc, logisticRegFileLoc)
     predictions = oneHotTESTbinary.map(lambda features: (float(savedModel.predict(features))))
 
-    ## SAVE SCORED RESULTS (RDD) TO BLOB
+    ## SAVE SCORED RESULTS (RDD) tooBLOB
     datestamp = unicode(datetime.datetime.now()).replace(' ','').replace(':','_');
     logisticregressionfilename = "LogisticRegressionWithLBFGS_" + datestamp + ".txt";
     dirfilename = scoredResultDir + logisticregressionfilename;
     predictions.saveAsTextFile(dirfilename)
 
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds";
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds";
 
-<span data-ttu-id="4b579-186">**VÝSTUP:**</span><span class="sxs-lookup"><span data-stu-id="4b579-186">**OUTPUT:**</span></span>
+<span data-ttu-id="9e0db-186">**VÝSTUP:**</span><span class="sxs-lookup"><span data-stu-id="9e0db-186">**OUTPUT:**</span></span>
 
-<span data-ttu-id="4b579-187">Doba k provedení výše buňky: 19.22 sekund</span><span class="sxs-lookup"><span data-stu-id="4b579-187">Time taken to execute above cell: 19.22 seconds</span></span>
+<span data-ttu-id="9e0db-187">Doba trvání tooexecute nad buňku: 19.22 sekund</span><span class="sxs-lookup"><span data-stu-id="9e0db-187">Time taken tooexecute above cell: 19.22 seconds</span></span>
 
-## <a name="score-a-linear-regression-model"></a><span data-ttu-id="4b579-188">Určení skóre modelu lineární regrese</span><span class="sxs-lookup"><span data-stu-id="4b579-188">Score a Linear Regression Model</span></span>
-<span data-ttu-id="4b579-189">Použili jsme [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) ke cvičení model lineární regrese pomocí Stochastického přechodu klesání (SGD) pro optimalizaci k předvídání množství tip placené.</span><span class="sxs-lookup"><span data-stu-id="4b579-189">We used [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) to train a linear regression model using Stochastic Gradient Descent (SGD) for optimization to predict the amount of tip paid.</span></span> 
+## <a name="score-a-linear-regression-model"></a><span data-ttu-id="9e0db-188">Určení skóre modelu lineární regrese</span><span class="sxs-lookup"><span data-stu-id="9e0db-188">Score a Linear Regression Model</span></span>
+<span data-ttu-id="9e0db-189">Použili jsme [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) tootrain placené model lineární regrese pomocí Stochastického přechodu klesání (SGD) pro optimalizaci toopredict hello množství tip.</span><span class="sxs-lookup"><span data-stu-id="9e0db-189">We used [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) tootrain a linear regression model using Stochastic Gradient Descent (SGD) for optimization toopredict hello amount of tip paid.</span></span> 
 
-<span data-ttu-id="4b579-190">Kód v této části ukazuje, jak načíst Model lineární regrese z Azure blob storage, stanovení skóre pomocí škálovat proměnné a poté uložte výsledky zpět na objekt blob.</span><span class="sxs-lookup"><span data-stu-id="4b579-190">The code in this section shows how to load a Linear Regression Model from Azure blob storage, score using scaled variables, and then save the results back to the blob.</span></span>
+<span data-ttu-id="9e0db-190">Hello kód v této části ukazuje, jak tooload Model lineární regrese z Azure blob storage, stanovení skóre pomocí škálovat proměnných a potom uložte hello výsledky zpět toohello objektů blob.</span><span class="sxs-lookup"><span data-stu-id="9e0db-190">hello code in this section shows how tooload a Linear Regression Model from Azure blob storage, score using scaled variables, and then save hello results back toohello blob.</span></span>
 
     #SCORE LINEAR REGRESSION MODEL
 
@@ -387,22 +387,22 @@ ms.lasthandoff: 07/11/2017
     dirfilename = scoredResultDir + linearregressionfilename;
     predictions.saveAsTextFile(dirfilename)
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 
-<span data-ttu-id="4b579-191">**VÝSTUP:**</span><span class="sxs-lookup"><span data-stu-id="4b579-191">**OUTPUT:**</span></span>
+<span data-ttu-id="9e0db-191">**VÝSTUP:**</span><span class="sxs-lookup"><span data-stu-id="9e0db-191">**OUTPUT:**</span></span>
 
-<span data-ttu-id="4b579-192">Doba k provedení výše buňky: 16.63 sekund</span><span class="sxs-lookup"><span data-stu-id="4b579-192">Time taken to execute above cell: 16.63 seconds</span></span>
+<span data-ttu-id="9e0db-192">Doba trvání tooexecute nad buňku: 16.63 sekund</span><span class="sxs-lookup"><span data-stu-id="9e0db-192">Time taken tooexecute above cell: 16.63 seconds</span></span>
 
-## <a name="score-classification-and-regression-random-forest-models"></a><span data-ttu-id="4b579-193">Stanovení skóre klasifikace a regrese náhodných modely doménové struktury</span><span class="sxs-lookup"><span data-stu-id="4b579-193">Score classification and regression Random Forest Models</span></span>
-<span data-ttu-id="4b579-194">Kód v této části ukazuje, jak načíst uložené klasifikace a regrese náhodných doménové struktury modely uloží do úložiště objektů blob v Azure, stanovení skóre výkonu s standardní třídění a regrese míry a potom uložte výsledky zpět do úložiště objektů blob.</span><span class="sxs-lookup"><span data-stu-id="4b579-194">The code in this section shows how to load the saved classification and regression Random Forest Models saved in Azure blob storage, score their performance with standard classifier and regression measures, and then save the results back to blob storage.</span></span>
+## <a name="score-classification-and-regression-random-forest-models"></a><span data-ttu-id="9e0db-193">Stanovení skóre klasifikace a regrese náhodných modely doménové struktury</span><span class="sxs-lookup"><span data-stu-id="9e0db-193">Score classification and regression Random Forest Models</span></span>
+<span data-ttu-id="9e0db-194">Hello kód v této části ukazuje, jak uložit tooload hello klasifikace a regrese náhodných doménové struktury modely uloží do úložiště objektů blob v Azure, stanovení skóre výkonu s standardní třídění a regrese míry a potom uložte hello výsledky zpět tooblob úložiště.</span><span class="sxs-lookup"><span data-stu-id="9e0db-194">hello code in this section shows how tooload hello saved classification and regression Random Forest Models saved in Azure blob storage, score their performance with standard classifier and regression measures, and then save hello results back tooblob storage.</span></span>
 
-<span data-ttu-id="4b579-195">[Náhodné doménových strukturách](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) jsou komplety rozhodovací stromy.</span><span class="sxs-lookup"><span data-stu-id="4b579-195">[Random forests](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) are ensembles of decision trees.</span></span>  <span data-ttu-id="4b579-196">Že kombinují mnoho rozhodovacích stromů, aby se snížilo riziko overfitting.</span><span class="sxs-lookup"><span data-stu-id="4b579-196">They combine many decision trees to reduce the risk of overfitting.</span></span> <span data-ttu-id="4b579-197">Náhodné doménových struktur dokáže zpracovat kategorií funkce rozšíření pro nastavení více třídami klasifikace, nevyžadují funkce škálování a mohli zaznamenat nelineárností a funkci interakce.</span><span class="sxs-lookup"><span data-stu-id="4b579-197">Random forests can handle categorical features, extend to the multiclass classification setting, do not require feature scaling, and are able to capture non-linearities and feature interactions.</span></span> <span data-ttu-id="4b579-198">Náhodné doménových strukturách jsou jedním z těch nejúspěšnějších strojového učení modely pro klasifikaci a regrese.</span><span class="sxs-lookup"><span data-stu-id="4b579-198">Random forests are one of the most successful machine learning models for classification and regression.</span></span>
+<span data-ttu-id="9e0db-195">[Náhodné doménových strukturách](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) jsou komplety rozhodovací stromy.</span><span class="sxs-lookup"><span data-stu-id="9e0db-195">[Random forests](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) are ensembles of decision trees.</span></span>  <span data-ttu-id="9e0db-196">Že kombinují mnoho rozhodovací stromy tooreduce hello riziko overfitting.</span><span class="sxs-lookup"><span data-stu-id="9e0db-196">They combine many decision trees tooreduce hello risk of overfitting.</span></span> <span data-ttu-id="9e0db-197">Náhodné doménových struktur dokáže zpracovat kategorií funkce rozšířit nastavení toohello více třídami klasifikace, nevyžadují funkce škálování a jsou možné toocapture nelineárností a funkce, interakce.</span><span class="sxs-lookup"><span data-stu-id="9e0db-197">Random forests can handle categorical features, extend toohello multiclass classification setting, do not require feature scaling, and are able toocapture non-linearities and feature interactions.</span></span> <span data-ttu-id="9e0db-198">Náhodné doménových strukturách jsou jedním z hello těch nejúspěšnějších modelů strojového učení pro klasifikaci a regrese.</span><span class="sxs-lookup"><span data-stu-id="9e0db-198">Random forests are one of hello most successful machine learning models for classification and regression.</span></span>
 
-<span data-ttu-id="4b579-199">[Spark.mllib](http://spark.apache.org/mllib/) podporuje náhodných doménové struktury pro více třídami a binární klasifikaci a pro regresní pomocí funkce nepřetržitý a kategorií.</span><span class="sxs-lookup"><span data-stu-id="4b579-199">[spark.mllib](http://spark.apache.org/mllib/) supports random forests for binary and multiclass classification and for regression, using both continuous and categorical features.</span></span> 
+<span data-ttu-id="9e0db-199">[Spark.mllib](http://spark.apache.org/mllib/) podporuje náhodných doménové struktury pro více třídami a binární klasifikaci a pro regresní pomocí funkce nepřetržitý a kategorií.</span><span class="sxs-lookup"><span data-stu-id="9e0db-199">[spark.mllib](http://spark.apache.org/mllib/) supports random forests for binary and multiclass classification and for regression, using both continuous and categorical features.</span></span> 
 
     # SCORE RANDOM FOREST MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -413,7 +413,7 @@ ms.lasthandoff: 07/11/2017
     from pyspark.mllib.tree import RandomForest, RandomForestModel
 
 
-    # CLASSIFICATION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK TO BLOB
+    # CLASSIFICATION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK tooBLOB
     savedModel = RandomForestModel.load(sc, randomForestClassificationFileLoc)
     predictions = savedModel.predict(indexedTESTbinary)
 
@@ -424,7 +424,7 @@ ms.lasthandoff: 07/11/2017
     predictions.saveAsTextFile(dirfilename)
 
 
-    # REGRESSION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK TO BLOB
+    # REGRESSION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK tooBLOB
     savedModel = RandomForestModel.load(sc, randomForestRegFileLoc)
     predictions = savedModel.predict(indexedTESTreg)
 
@@ -434,21 +434,21 @@ ms.lasthandoff: 07/11/2017
     dirfilename = scoredResultDir + rfregressionfilename;
     predictions.saveAsTextFile(dirfilename)
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds";
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds";
 
-<span data-ttu-id="4b579-200">**VÝSTUP:**</span><span class="sxs-lookup"><span data-stu-id="4b579-200">**OUTPUT:**</span></span>
+<span data-ttu-id="9e0db-200">**VÝSTUP:**</span><span class="sxs-lookup"><span data-stu-id="9e0db-200">**OUTPUT:**</span></span>
 
-<span data-ttu-id="4b579-201">Doba k provedení výše buňky: 31.07 sekund</span><span class="sxs-lookup"><span data-stu-id="4b579-201">Time taken to execute above cell: 31.07 seconds</span></span>
+<span data-ttu-id="9e0db-201">Doba trvání tooexecute nad buňku: 31.07 sekund</span><span class="sxs-lookup"><span data-stu-id="9e0db-201">Time taken tooexecute above cell: 31.07 seconds</span></span>
 
-## <a name="score-classification-and-regression-gradient-boosting-tree-models"></a><span data-ttu-id="4b579-202">Stanovení skóre klasifikace a regrese přechodu zvyšovat skóre stromu modely</span><span class="sxs-lookup"><span data-stu-id="4b579-202">Score classification and regression Gradient Boosting Tree Models</span></span>
-<span data-ttu-id="4b579-203">Kód v této části ukazuje, jak načíst klasifikace a regrese přechodu zvyšovat skóre stromu modely z Azure blob storage, stanovení skóre výkonu s standardní třídění a regrese opatření a poté uložte výsledky zpět do úložiště objektů blob.</span><span class="sxs-lookup"><span data-stu-id="4b579-203">The code in this section shows how to load classification and regression Gradient Boosting Tree Models from Azure blob storage, score their performance with standard classifier and regression measures, and then save the results back to blob storage.</span></span> 
+## <a name="score-classification-and-regression-gradient-boosting-tree-models"></a><span data-ttu-id="9e0db-202">Stanovení skóre klasifikace a regrese přechodu zvyšovat skóre stromu modely</span><span class="sxs-lookup"><span data-stu-id="9e0db-202">Score classification and regression Gradient Boosting Tree Models</span></span>
+<span data-ttu-id="9e0db-203">Hello kód v této části ukazuje, jak tooload klasifikace a regrese přechodu zvyšovat skóre stromu modely z Azure blob storage, stanovení skóre výkonu s standardní třídění a regrese míry a potom uložte hello výsledky zpět tooblob úložiště.</span><span class="sxs-lookup"><span data-stu-id="9e0db-203">hello code in this section shows how tooload classification and regression Gradient Boosting Tree Models from Azure blob storage, score their performance with standard classifier and regression measures, and then save hello results back tooblob storage.</span></span> 
 
-<span data-ttu-id="4b579-204">**Spark.mllib** podporuje GBTs pro binární klasifikaci a pro regresní pomocí funkce nepřetržitý a kategorií.</span><span class="sxs-lookup"><span data-stu-id="4b579-204">**spark.mllib** supports GBTs for binary classification and for regression, using both continuous and categorical features.</span></span> 
+<span data-ttu-id="9e0db-204">**Spark.mllib** podporuje GBTs pro binární klasifikaci a pro regresní pomocí funkce nepřetržitý a kategorií.</span><span class="sxs-lookup"><span data-stu-id="9e0db-204">**spark.mllib** supports GBTs for binary classification and for regression, using both continuous and categorical features.</span></span> 
 
-<span data-ttu-id="4b579-205">[Přechodu zvyšovat skóre stromy](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) jsou komplety rozhodovací stromy.</span><span class="sxs-lookup"><span data-stu-id="4b579-205">[Gradient Boosting Trees](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) are ensembles of decision trees.</span></span> <span data-ttu-id="4b579-206">GBTs cvičení stromů rozhodnutí interaktivně, aby se minimalizoval funkci ztrátu.</span><span class="sxs-lookup"><span data-stu-id="4b579-206">GBTs train decision trees iteratively to minimize a loss function.</span></span> <span data-ttu-id="4b579-207">GBTs může zpracovat kategorií funkce, nevyžadují funkce škálování a mohli zaznamenat nelineárností a funkci interakce.</span><span class="sxs-lookup"><span data-stu-id="4b579-207">GBTs can handle categorical features, do not require feature scaling, and are able to capture non-linearities and feature interactions.</span></span> <span data-ttu-id="4b579-208">Můžete také používají v nastavení multiclass klasifikace.</span><span class="sxs-lookup"><span data-stu-id="4b579-208">They can also be used in a multiclass-classification setting.</span></span>
+<span data-ttu-id="9e0db-205">[Přechodu zvyšovat skóre stromy](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) jsou komplety rozhodovací stromy.</span><span class="sxs-lookup"><span data-stu-id="9e0db-205">[Gradient Boosting Trees](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) are ensembles of decision trees.</span></span> <span data-ttu-id="9e0db-206">GBTs train rozhodovací stromy interaktivně toominimize funkci ztrátu.</span><span class="sxs-lookup"><span data-stu-id="9e0db-206">GBTs train decision trees iteratively toominimize a loss function.</span></span> <span data-ttu-id="9e0db-207">GBTs může zpracovat kategorií funkce, nevyžadují funkce škálování a jsou možné toocapture nelineárností a funkce, interakce.</span><span class="sxs-lookup"><span data-stu-id="9e0db-207">GBTs can handle categorical features, do not require feature scaling, and are able toocapture non-linearities and feature interactions.</span></span> <span data-ttu-id="9e0db-208">Můžete také používají v nastavení multiclass klasifikace.</span><span class="sxs-lookup"><span data-stu-id="9e0db-208">They can also be used in a multiclass-classification setting.</span></span>
 
     # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -458,9 +458,9 @@ ms.lasthandoff: 07/11/2017
     #IMPORT MLLIB LIBRARIES
     from pyspark.mllib.tree import GradientBoostedTrees, GradientBoostedTreesModel
 
-    # CLASSIFICATION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK TO BLOB
+    # CLASSIFICATION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK tooBLOB
 
-    #LOAD AND SCORE THE MODEL
+    #LOAD AND SCORE hello MODEL
     savedModel = GradientBoostedTreesModel.load(sc, BoostedTreeClassificationFileLoc)
     predictions = savedModel.predict(indexedTESTbinary)
 
@@ -471,7 +471,7 @@ ms.lasthandoff: 07/11/2017
     predictions.saveAsTextFile(dirfilename)
 
 
-    # REGRESSION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK TO BLOB
+    # REGRESSION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK tooBLOB
 
     # LOAD AND SCORE MODEL 
     savedModel = GradientBoostedTreesModel.load(sc, BoostedTreeRegressionFileLoc)
@@ -484,16 +484,16 @@ ms.lasthandoff: 07/11/2017
     predictions.saveAsTextFile(dirfilename)
 
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
-<span data-ttu-id="4b579-209">**VÝSTUP:**</span><span class="sxs-lookup"><span data-stu-id="4b579-209">**OUTPUT:**</span></span>
+<span data-ttu-id="9e0db-209">**VÝSTUP:**</span><span class="sxs-lookup"><span data-stu-id="9e0db-209">**OUTPUT:**</span></span>
 
-<span data-ttu-id="4b579-210">Doba k provedení nad buňku: 14.6 sekund</span><span class="sxs-lookup"><span data-stu-id="4b579-210">Time taken to execute above cell: 14.6 seconds</span></span>
+<span data-ttu-id="9e0db-210">Doba trvání tooexecute nad buňku: 14.6 sekund</span><span class="sxs-lookup"><span data-stu-id="9e0db-210">Time taken tooexecute above cell: 14.6 seconds</span></span>
 
-## <a name="clean-up-objects-from-memory-and-print-scored-file-locations"></a><span data-ttu-id="4b579-211">Vyčištění objektů z paměti a tisk skóre pro magnitudu umístění souborů</span><span class="sxs-lookup"><span data-stu-id="4b579-211">Clean up objects from memory and print scored file locations</span></span>
+## <a name="clean-up-objects-from-memory-and-print-scored-file-locations"></a><span data-ttu-id="9e0db-211">Vyčištění objektů z paměti a tisk skóre pro magnitudu umístění souborů</span><span class="sxs-lookup"><span data-stu-id="9e0db-211">Clean up objects from memory and print scored file locations</span></span>
     # UNPERSIST OBJECTS CACHED IN MEMORY
     taxi_df_test_cleaned.unpersist()
     indexedTESTbinary.unpersist();
@@ -503,7 +503,7 @@ ms.lasthandoff: 07/11/2017
     oneHotTESTregScaled.unpersist();
 
 
-    # PRINT OUT PATH TO SCORED OUTPUT FILES
+    # PRINT OUT PATH tooSCORED OUTPUT FILES
     print "logisticRegFileLoc: " + logisticregressionfilename;
     print "linearRegFileLoc: " + linearregressionfilename;
     print "randomForestClassificationFileLoc: " + rfclassificationfilename;
@@ -512,53 +512,53 @@ ms.lasthandoff: 07/11/2017
     print "BoostedTreeRegressionFileLoc: " + btregressionfilename;
 
 
-<span data-ttu-id="4b579-212">**VÝSTUP:**</span><span class="sxs-lookup"><span data-stu-id="4b579-212">**OUTPUT:**</span></span>
+<span data-ttu-id="9e0db-212">**VÝSTUP:**</span><span class="sxs-lookup"><span data-stu-id="9e0db-212">**OUTPUT:**</span></span>
 
-<span data-ttu-id="4b579-213">logisticRegFileLoc: LogisticRegressionWithLBFGS_2016-05-0317_22_38.953814.txt</span><span class="sxs-lookup"><span data-stu-id="4b579-213">logisticRegFileLoc: LogisticRegressionWithLBFGS_2016-05-0317_22_38.953814.txt</span></span>
+<span data-ttu-id="9e0db-213">logisticRegFileLoc: LogisticRegressionWithLBFGS_2016-05-0317_22_38.953814.txt</span><span class="sxs-lookup"><span data-stu-id="9e0db-213">logisticRegFileLoc: LogisticRegressionWithLBFGS_2016-05-0317_22_38.953814.txt</span></span>
 
-<span data-ttu-id="4b579-214">linearRegFileLoc: LinearRegressionWithSGD_2016-05-0317_22_58.878949</span><span class="sxs-lookup"><span data-stu-id="4b579-214">linearRegFileLoc: LinearRegressionWithSGD_2016-05-0317_22_58.878949</span></span>
+<span data-ttu-id="9e0db-214">linearRegFileLoc: LinearRegressionWithSGD_2016-05-0317_22_58.878949</span><span class="sxs-lookup"><span data-stu-id="9e0db-214">linearRegFileLoc: LinearRegressionWithSGD_2016-05-0317_22_58.878949</span></span>
 
-<span data-ttu-id="4b579-215">randomForestClassificationFileLoc: RandomForestClassification_2016-05-0317_23_15.939247.txt</span><span class="sxs-lookup"><span data-stu-id="4b579-215">randomForestClassificationFileLoc: RandomForestClassification_2016-05-0317_23_15.939247.txt</span></span>
+<span data-ttu-id="9e0db-215">randomForestClassificationFileLoc: RandomForestClassification_2016-05-0317_23_15.939247.txt</span><span class="sxs-lookup"><span data-stu-id="9e0db-215">randomForestClassificationFileLoc: RandomForestClassification_2016-05-0317_23_15.939247.txt</span></span>
 
-<span data-ttu-id="4b579-216">randomForestRegFileLoc: RandomForestRegression_2016-05-0317_23_31.459140.txt</span><span class="sxs-lookup"><span data-stu-id="4b579-216">randomForestRegFileLoc: RandomForestRegression_2016-05-0317_23_31.459140.txt</span></span>
+<span data-ttu-id="9e0db-216">randomForestRegFileLoc: RandomForestRegression_2016-05-0317_23_31.459140.txt</span><span class="sxs-lookup"><span data-stu-id="9e0db-216">randomForestRegFileLoc: RandomForestRegression_2016-05-0317_23_31.459140.txt</span></span>
 
-<span data-ttu-id="4b579-217">BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-0317_23_49.648334.txt</span><span class="sxs-lookup"><span data-stu-id="4b579-217">BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-0317_23_49.648334.txt</span></span>
+<span data-ttu-id="9e0db-217">BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-0317_23_49.648334.txt</span><span class="sxs-lookup"><span data-stu-id="9e0db-217">BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-0317_23_49.648334.txt</span></span>
 
-<span data-ttu-id="4b579-218">BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt</span><span class="sxs-lookup"><span data-stu-id="4b579-218">BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt</span></span>
+<span data-ttu-id="9e0db-218">BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt</span><span class="sxs-lookup"><span data-stu-id="9e0db-218">BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt</span></span>
 
-## <a name="consume-spark-models-through-a-web-interface"></a><span data-ttu-id="4b579-219">Využívat modely Spark pomocí webového rozhraní</span><span class="sxs-lookup"><span data-stu-id="4b579-219">Consume Spark Models through a web interface</span></span>
-<span data-ttu-id="4b579-220">Spark poskytuje mechanismus vzdáleně odeslat úlohy batch nebo interaktivní dotazy pomocí rozhraní REST s komponenty s názvem Livy.</span><span class="sxs-lookup"><span data-stu-id="4b579-220">Spark provides a mechanism to remotely submit batch jobs or interactive queries through a REST interface with a component called Livy.</span></span> <span data-ttu-id="4b579-221">Livy je povoleno ve výchozím nastavení v clusteru HDInsight Spark.</span><span class="sxs-lookup"><span data-stu-id="4b579-221">Livy is enabled by default on your HDInsight Spark cluster.</span></span> <span data-ttu-id="4b579-222">Další informace o Livy najdete v tématu: [úlohy odeslání Spark vzdáleně pomocí Livy](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md).</span><span class="sxs-lookup"><span data-stu-id="4b579-222">For more information on Livy, see: [Submit Spark jobs remotely using Livy](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md).</span></span> 
+## <a name="consume-spark-models-through-a-web-interface"></a><span data-ttu-id="9e0db-219">Využívat modely Spark pomocí webového rozhraní</span><span class="sxs-lookup"><span data-stu-id="9e0db-219">Consume Spark Models through a web interface</span></span>
+<span data-ttu-id="9e0db-220">Spark poskytuje mechanismus tooremotely odeslání dávkových úloh nebo interaktivních dotazů prostřednictvím REST rozhraní s komponenty s názvem Livy.</span><span class="sxs-lookup"><span data-stu-id="9e0db-220">Spark provides a mechanism tooremotely submit batch jobs or interactive queries through a REST interface with a component called Livy.</span></span> <span data-ttu-id="9e0db-221">Livy je povoleno ve výchozím nastavení v clusteru HDInsight Spark.</span><span class="sxs-lookup"><span data-stu-id="9e0db-221">Livy is enabled by default on your HDInsight Spark cluster.</span></span> <span data-ttu-id="9e0db-222">Další informace o Livy najdete v tématu: [úlohy odeslání Spark vzdáleně pomocí Livy](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md).</span><span class="sxs-lookup"><span data-stu-id="9e0db-222">For more information on Livy, see: [Submit Spark jobs remotely using Livy](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md).</span></span> 
 
-<span data-ttu-id="4b579-223">Livy můžete vzdáleně odeslat úlohu, která dávky skóre soubor, který je uložený v objektu blob Azure a pak zapíše výsledky do jiného objektu blob.</span><span class="sxs-lookup"><span data-stu-id="4b579-223">You can use Livy to remotely submit a job that batch scores a file that is stored in an Azure blob and then writes the results to another blob.</span></span> <span data-ttu-id="4b579-224">K tomuto účelu můžete odeslat skript Python z</span><span class="sxs-lookup"><span data-stu-id="4b579-224">To do this, you upload the Python script from</span></span>  
-<span data-ttu-id="4b579-225">[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) do objektu blob clusteru Spark.</span><span class="sxs-lookup"><span data-stu-id="4b579-225">[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) to the blob of the Spark cluster.</span></span> <span data-ttu-id="4b579-226">Můžete použít nástroje, jako je **Microsoft Azure Storage Explorer** nebo **AzCopy** zkopírujte skript do objektu blob clusteru.</span><span class="sxs-lookup"><span data-stu-id="4b579-226">You can use a tool like **Microsoft Azure Storage Explorer** or **AzCopy** to copy the script to the cluster blob.</span></span> <span data-ttu-id="4b579-227">V našem případě jsme skript, který chcete nahrát ***wasb:///example/python/ConsumeGBNYCReg.py***.</span><span class="sxs-lookup"><span data-stu-id="4b579-227">In our case we uploaded the script to ***wasb:///example/python/ConsumeGBNYCReg.py***.</span></span>   
+<span data-ttu-id="9e0db-223">Můžete použít Livy tooremotely odeslat úlohu, která dávky skóre soubor, který je uložený v objektu blob Azure a pak zapíše hello výsledky tooanother objektů blob.</span><span class="sxs-lookup"><span data-stu-id="9e0db-223">You can use Livy tooremotely submit a job that batch scores a file that is stored in an Azure blob and then writes hello results tooanother blob.</span></span> <span data-ttu-id="9e0db-224">toodo, můžete nahrávat na server hello skript v jazyce Python z</span><span class="sxs-lookup"><span data-stu-id="9e0db-224">toodo this, you upload hello Python script from</span></span>  
+<span data-ttu-id="9e0db-225">[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) toohello blob clusteru Spark hello.</span><span class="sxs-lookup"><span data-stu-id="9e0db-225">[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) toohello blob of hello Spark cluster.</span></span> <span data-ttu-id="9e0db-226">Můžete použít nástroje, jako je **Microsoft Azure Storage Explorer** nebo **AzCopy** toocopy hello skriptu toohello clusteru blob.</span><span class="sxs-lookup"><span data-stu-id="9e0db-226">You can use a tool like **Microsoft Azure Storage Explorer** or **AzCopy** toocopy hello script toohello cluster blob.</span></span> <span data-ttu-id="9e0db-227">V našem případě jsme příliš nahrán hello skriptu***wasb:///example/python/ConsumeGBNYCReg.py***.</span><span class="sxs-lookup"><span data-stu-id="9e0db-227">In our case we uploaded hello script too***wasb:///example/python/ConsumeGBNYCReg.py***.</span></span>   
 
 > [!NOTE]
-> <span data-ttu-id="4b579-228">Přístupové klávesy, které budete potřebovat naleznete na portálu pro účet úložiště související s clusterem Spark.</span><span class="sxs-lookup"><span data-stu-id="4b579-228">The access keys that you need can be found on the portal for the storage account associated with the Spark cluster.</span></span> 
+> <span data-ttu-id="9e0db-228">Hello přístupové klíče, které můžete potřebovat naleznete na portálu hello pro účet úložiště hello spojené s clusterem Spark hello.</span><span class="sxs-lookup"><span data-stu-id="9e0db-228">hello access keys that you need can be found on hello portal for hello storage account associated with hello Spark cluster.</span></span> 
 > 
 > 
 
-<span data-ttu-id="4b579-229">Po nahrání do tohoto umístění tento skript se spouští v rámci clusteru Spark v distribuované kontextu.</span><span class="sxs-lookup"><span data-stu-id="4b579-229">Once uploaded to this location, this script runs within the Spark cluster in a distributed context.</span></span> <span data-ttu-id="4b579-230">Načítá modelu a spouští na vstupní soubory na základě modelu předpovědi.</span><span class="sxs-lookup"><span data-stu-id="4b579-230">It loads the model and runs predictions on input files based on the model.</span></span>  
+<span data-ttu-id="9e0db-229">Po nahrání toothis umístění tento skript se spouští v rámci clusteru Spark hello v distribuované kontextu.</span><span class="sxs-lookup"><span data-stu-id="9e0db-229">Once uploaded toothis location, this script runs within hello Spark cluster in a distributed context.</span></span> <span data-ttu-id="9e0db-230">Načítá hello modelu a spouští předpovědi na vstupní soubory na základě modelu hello.</span><span class="sxs-lookup"><span data-stu-id="9e0db-230">It loads hello model and runs predictions on input files based on hello model.</span></span>  
 
-<span data-ttu-id="4b579-231">Tento skript můžete spustit vzdáleně pomocí jednoduchého požadavku HTTPS nebo REST na Livy.</span><span class="sxs-lookup"><span data-stu-id="4b579-231">You can invoke this script remotely by making a simple HTTPS/REST request on Livy.</span></span>  <span data-ttu-id="4b579-232">Zde je příkaz curl k vytvoření žádosti HTTP určený k vyvolání skript Pythonu vzdáleně.</span><span class="sxs-lookup"><span data-stu-id="4b579-232">Here is a curl command to construct the HTTP request to invoke the Python script remotely.</span></span> <span data-ttu-id="4b579-233">Nahraďte příslušnými hodnotami pro váš cluster Spark CLUSTERLOGIN, CLUSTERPASSWORD, název clusteru.</span><span class="sxs-lookup"><span data-stu-id="4b579-233">Replace CLUSTERLOGIN, CLUSTERPASSWORD, CLUSTERNAME with the appropriate values for your Spark cluster.</span></span>
+<span data-ttu-id="9e0db-231">Tento skript můžete spustit vzdáleně pomocí jednoduchého požadavku HTTPS nebo REST na Livy.</span><span class="sxs-lookup"><span data-stu-id="9e0db-231">You can invoke this script remotely by making a simple HTTPS/REST request on Livy.</span></span>  <span data-ttu-id="9e0db-232">Zde je vzdáleně curl příkaz tooconstruct hello HTTP žádost tooinvoke hello skript v jazyce Python.</span><span class="sxs-lookup"><span data-stu-id="9e0db-232">Here is a curl command tooconstruct hello HTTP request tooinvoke hello Python script remotely.</span></span> <span data-ttu-id="9e0db-233">Nahraďte CLUSTERLOGIN, CLUSTERPASSWORD, CLUSTERNAME hello odpovídající hodnoty pro váš cluster Spark.</span><span class="sxs-lookup"><span data-stu-id="9e0db-233">Replace CLUSTERLOGIN, CLUSTERPASSWORD, CLUSTERNAME with hello appropriate values for your Spark cluster.</span></span>
 
-    # CURL COMMAND TO INVOKE PYTHON SCRIPT WITH HTTP REQUEST
+    # CURL COMMAND tooINVOKE PYTHON SCRIPT WITH HTTP REQUEST
 
     curl -k --user "CLUSTERLOGIN:CLUSTERPASSWORD" -X POST --data "{\"file\": \"wasb:///example/python/ConsumeGBNYCReg.py\"}" -H "Content-Type: application/json" https://CLUSTERNAME.azurehdinsight.net/livy/batches
 
-<span data-ttu-id="4b579-234">Jakýkoli jazyk ve vzdáleném systému slouží k vyvolání úlohy Spark pomocí Livy tím, že jednoduché volání HTTPS se základním ověřováním.</span><span class="sxs-lookup"><span data-stu-id="4b579-234">You can use any language on the remote system to invoke the Spark job through Livy by making a simple HTTPS call with Basic Authentication.</span></span>   
+<span data-ttu-id="9e0db-234">Můžete použít jakýkoli jazyk u hello vzdálený systém tooinvoke hello Spark úlohy pomocí Livy tím, že jednoduché volání HTTPS se základním ověřováním.</span><span class="sxs-lookup"><span data-stu-id="9e0db-234">You can use any language on hello remote system tooinvoke hello Spark job through Livy by making a simple HTTPS call with Basic Authentication.</span></span>   
 
 > [!NOTE]
-> <span data-ttu-id="4b579-235">Je vhodné na používání knihovny, Python požadavky při provádění této volání protokolu HTTP, ale není momentálně nainstalována ve výchozím nastavení v Azure Functions.</span><span class="sxs-lookup"><span data-stu-id="4b579-235">It would be convenient to use the Python Requests library when making this HTTP call, but it is not currently installed by default in Azure Functions.</span></span> <span data-ttu-id="4b579-236">Aby se místo toho používat starší knihovny HTTP.</span><span class="sxs-lookup"><span data-stu-id="4b579-236">So older HTTP libraries are used instead.</span></span>   
+> <span data-ttu-id="9e0db-235">Je vhodné toouse hello Python požadavky knihovny při provádění této volání protokolu HTTP, ale není momentálně nainstalována ve výchozím nastavení v Azure Functions.</span><span class="sxs-lookup"><span data-stu-id="9e0db-235">It would be convenient toouse hello Python Requests library when making this HTTP call, but it is not currently installed by default in Azure Functions.</span></span> <span data-ttu-id="9e0db-236">Aby se místo toho používat starší knihovny HTTP.</span><span class="sxs-lookup"><span data-stu-id="9e0db-236">So older HTTP libraries are used instead.</span></span>   
 > 
 > 
 
-<span data-ttu-id="4b579-237">Tady je kód Python pro volání protokolu HTTP:</span><span class="sxs-lookup"><span data-stu-id="4b579-237">Here is the Python code for the HTTP call:</span></span>
+<span data-ttu-id="9e0db-237">Zde je kód Python hello hello HTTP volání:</span><span class="sxs-lookup"><span data-stu-id="9e0db-237">Here is hello Python code for hello HTTP call:</span></span>
 
     #MAKE AN HTTPS CALL ON LIVY. 
 
     import os
 
-    # OLDER HTTP LIBRARIES USED HERE INSTEAD OF THE REQUEST LIBRARY AS THEY ARE AVAILBLE BY DEFAULT
+    # OLDER HTTP LIBRARIES USED HERE INSTEAD OF hello REQUEST LIBRARY AS THEY ARE AVAILBLE BY DEFAULT
     import httplib, urllib, base64
 
     # REPLACE VALUE WITH ONES FOR YOUR SPARK CLUSTER
@@ -571,24 +571,24 @@ ms.lasthandoff: 07/11/2017
     auth = base64.encodestring('%s:%s' % (username, password)).replace('\n', '')
     headers = {'Content-Type': 'application/json', 'Authorization': 'Basic %s' % auth}
 
-    # SPECIFY THE PYTHON SCRIPT TO RUN ON THE SPARK CLUSTER
-    # IN THE FILE PARAMETER OF THE JSON POST REQUEST BODY
+    # SPECIFY hello PYTHON SCRIPT tooRUN ON hello SPARK CLUSTER
+    # IN hello FILE PARAMETER OF hello JSON POST REQUEST BODY
     r=conn.request("POST", '/livy/batches', '{"file": "wasb:///example/python/ConsumeGBNYCReg.py"}', headers )
     response = conn.getresponse().read()
     print(response)
     conn.close()
 
 
-<span data-ttu-id="4b579-238">Můžete také přidat tento kód Python, aby [Azure Functions](https://azure.microsoft.com/documentation/services/functions/) k aktivaci úlohy odeslání Spark, která skóre na základě různých událostí jako časovače, vytvoření nebo aktualizace objektu blob objektu blob.</span><span class="sxs-lookup"><span data-stu-id="4b579-238">You can also add this Python code to [Azure Functions](https://azure.microsoft.com/documentation/services/functions/) to trigger a Spark job submission that scores a blob based on various events like a timer, creation, or update of a blob.</span></span> 
+<span data-ttu-id="9e0db-238">Můžete také přidat tento kód Python příliš[Azure Functions](https://azure.microsoft.com/documentation/services/functions/) tootrigger odeslání úlohy Spark, která skóre objekt blob podle různých událostí jako časovače, vytvoření nebo aktualizace objektu blob.</span><span class="sxs-lookup"><span data-stu-id="9e0db-238">You can also add this Python code too[Azure Functions](https://azure.microsoft.com/documentation/services/functions/) tootrigger a Spark job submission that scores a blob based on various events like a timer, creation, or update of a blob.</span></span> 
 
-<span data-ttu-id="4b579-239">Pokud dáváte přednost volné klientského prostředí kódu, použijte [Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) k vyvolání Spark dávkového vyhodnocování definováním akce HTTP na **logiku aplikace Návrhář** a nastavení jeho parametry.</span><span class="sxs-lookup"><span data-stu-id="4b579-239">If you prefer a code free client experience, use the [Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) to invoke the Spark batch scoring by defining an HTTP action on the **Logic Apps Designer** and setting its parameters.</span></span> 
+<span data-ttu-id="9e0db-239">Pokud dáváte přednost volné klientského prostředí kódu, použijte hello [Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) tooinvoke hello Spark dávkového vyhodnocování definováním akce HTTP na hello **logiku aplikace Návrhář** a nastavení jeho parametry.</span><span class="sxs-lookup"><span data-stu-id="9e0db-239">If you prefer a code free client experience, use hello [Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) tooinvoke hello Spark batch scoring by defining an HTTP action on hello **Logic Apps Designer** and setting its parameters.</span></span> 
 
-* <span data-ttu-id="4b579-240">Z portálu Azure vytvořit novou aplikaci logiky výběrem **+ nový** -> **Web + mobilní** -> **aplikace logiky**.</span><span class="sxs-lookup"><span data-stu-id="4b579-240">From Azure portal, create a new Logic App by selecting **+New** -> **Web + Mobile** -> **Logic App**.</span></span> 
-* <span data-ttu-id="4b579-241">Se zprovoznit **logiku aplikace Návrhář**, zadejte název aplikace logiky a plán služby App Service.</span><span class="sxs-lookup"><span data-stu-id="4b579-241">To bring up the **Logic Apps Designer**, enter the name of the Logic App and App Service Plan.</span></span>
-* <span data-ttu-id="4b579-242">Vyberte akci HTTP a zadejte parametry vidět na následujícím obrázku:</span><span class="sxs-lookup"><span data-stu-id="4b579-242">Select an HTTP action and enter the parameters shown in the following figure:</span></span>
+* <span data-ttu-id="9e0db-240">Z portálu Azure vytvořit novou aplikaci logiky výběrem **+ nový** -> **Web + mobilní** -> **aplikace logiky**.</span><span class="sxs-lookup"><span data-stu-id="9e0db-240">From Azure portal, create a new Logic App by selecting **+New** -> **Web + Mobile** -> **Logic App**.</span></span> 
+* <span data-ttu-id="9e0db-241">toobring až hello **logiku aplikace Návrhář**, zadejte název hello hello aplikace logiky a plán služby App Service.</span><span class="sxs-lookup"><span data-stu-id="9e0db-241">toobring up hello **Logic Apps Designer**, enter hello name of hello Logic App and App Service Plan.</span></span>
+* <span data-ttu-id="9e0db-242">Vyberte akci HTTP a zadejte parametry hello znázorňuje následující obrázek hello:</span><span class="sxs-lookup"><span data-stu-id="9e0db-242">Select an HTTP action and enter hello parameters shown in hello following figure:</span></span>
 
 ![Návrhář aplikace logiky](./media/machine-learning-data-science-spark-model-consumption/spark-logica-app-client.png)
 
-## <a name="whats-next"></a><span data-ttu-id="4b579-244">Co dále?</span><span class="sxs-lookup"><span data-stu-id="4b579-244">What's next?</span></span>
-<span data-ttu-id="4b579-245">**Křížové ověření a hyperparameter (vymetání) komínů**: najdete v části [Advanced zkoumání dat a modelování pomocí Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) na tom, jak může být modely Trénink pomocí sweeping křížové ověření a technologie hyper parametr.</span><span class="sxs-lookup"><span data-stu-id="4b579-245">**Cross-validation and hyperparameter sweeping**: See [Advanced data exploration and modeling with Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) on how models can be trained using cross-validation and hyper-parameter sweeping.</span></span>
+## <a name="whats-next"></a><span data-ttu-id="9e0db-244">Co dále?</span><span class="sxs-lookup"><span data-stu-id="9e0db-244">What's next?</span></span>
+<span data-ttu-id="9e0db-245">**Křížové ověření a hyperparameter (vymetání) komínů**: najdete v části [Advanced zkoumání dat a modelování pomocí Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) na tom, jak může být modely Trénink pomocí sweeping křížové ověření a technologie hyper parametr.</span><span class="sxs-lookup"><span data-stu-id="9e0db-245">**Cross-validation and hyperparameter sweeping**: See [Advanced data exploration and modeling with Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) on how models can be trained using cross-validation and hyper-parameter sweeping.</span></span>
 

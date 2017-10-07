@@ -1,6 +1,6 @@
 ---
-title: "Kopírování objektů blob z účtu úložiště do prostředek služby Azure Media Services | Microsoft Docs"
-description: "Toto téma ukazuje, jak chcete zkopírovat existující objekt blob do služby Asset média. V příkladu rozšíření Azure Media Services .NET SDK."
+title: "aaaCopying objekty BLOB z účtu úložiště do prostředku Azure Media Services | Microsoft Docs"
+description: "Toto téma ukazuje, jak toocopy existující objekt blob do služby Asset média. Příklad Hello používá rozšíření Azure Media Services .NET SDK."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,44 +14,44 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: juliako
-ms.openlocfilehash: 2bc1f0114a096920d4a7c9cb57e44c9b3612bf86
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 40660e5cbb3698fb2b0bdf414751e47d367794da
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="copying-existing-blobs-into-a-media-services-asset"></a><span data-ttu-id="c75ac-104">Kopírování do služby Asset média existující objekty BLOB</span><span class="sxs-lookup"><span data-stu-id="c75ac-104">Copying existing blobs into a Media Services Asset</span></span>
-<span data-ttu-id="c75ac-105">Toto téma ukazuje, jak chcete zkopírovat objekty BLOB z účtu úložiště do nového prostředku Azure Media Services (AMS) pomocí [rozšíření Azure Media Services .NET SDK](https://github.com/Azure/azure-sdk-for-media-services-extensions/).</span><span class="sxs-lookup"><span data-stu-id="c75ac-105">This topic shows how to copy blobs from a storage account into a new Azure Media Services (AMS) asset using [Azure Media Services .NET SDK Extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions/).</span></span>
+# <a name="copying-existing-blobs-into-a-media-services-asset"></a><span data-ttu-id="ec954-104">Kopírování do služby Asset média existující objekty BLOB</span><span class="sxs-lookup"><span data-stu-id="ec954-104">Copying existing blobs into a Media Services Asset</span></span>
+<span data-ttu-id="ec954-105">Toto téma ukazuje, jak toocopy objektů blob z účtu úložiště do nového prostředku Azure Media Services (AMS) pomocí [rozšíření Azure Media Services .NET SDK](https://github.com/Azure/azure-sdk-for-media-services-extensions/).</span><span class="sxs-lookup"><span data-stu-id="ec954-105">This topic shows how toocopy blobs from a storage account into a new Azure Media Services (AMS) asset using [Azure Media Services .NET SDK Extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions/).</span></span>
 
-<span data-ttu-id="c75ac-106">Rozšiřující metody funguje s:</span><span class="sxs-lookup"><span data-stu-id="c75ac-106">The extension methods works with:</span></span>
+<span data-ttu-id="ec954-106">metody rozšíření Hello funguje s:</span><span class="sxs-lookup"><span data-stu-id="ec954-106">hello extension methods works with:</span></span>
 
-- <span data-ttu-id="c75ac-107">Regulární prostředky.</span><span class="sxs-lookup"><span data-stu-id="c75ac-107">Regular assets.</span></span>
-- <span data-ttu-id="c75ac-108">Živé archivu prostředky (FragBlob format).</span><span class="sxs-lookup"><span data-stu-id="c75ac-108">Live archive assets (FragBlob format).</span></span>
-- <span data-ttu-id="c75ac-109">Zdrojové a cílové prostředky, které patří do různých účtech Media Services (i v rámci různých datových střediscích).</span><span class="sxs-lookup"><span data-stu-id="c75ac-109">Source and destination assets belonging to different Media Services accounts (even across different data centers).</span></span> <span data-ttu-id="c75ac-110">Však může být poplatky za tímto způsobem.</span><span class="sxs-lookup"><span data-stu-id="c75ac-110">However, there may be charges incurred by doing so.</span></span> <span data-ttu-id="c75ac-111">Další informace o cenách najdete v tématu [přenosů dat](https://azure.microsoft.com/pricing/#header-11).</span><span class="sxs-lookup"><span data-stu-id="c75ac-111">For more information about pricing, see [Data Transfers](https://azure.microsoft.com/pricing/#header-11).</span></span>
+- <span data-ttu-id="ec954-107">Regulární prostředky.</span><span class="sxs-lookup"><span data-stu-id="ec954-107">Regular assets.</span></span>
+- <span data-ttu-id="ec954-108">Živé archivu prostředky (FragBlob format).</span><span class="sxs-lookup"><span data-stu-id="ec954-108">Live archive assets (FragBlob format).</span></span>
+- <span data-ttu-id="ec954-109">Zdrojové a cílové prostředky patřící toodifferent Media Services účty (i v rámci různých datových střediscích).</span><span class="sxs-lookup"><span data-stu-id="ec954-109">Source and destination assets belonging toodifferent Media Services accounts (even across different data centers).</span></span> <span data-ttu-id="ec954-110">Však může být poplatky za tímto způsobem.</span><span class="sxs-lookup"><span data-stu-id="ec954-110">However, there may be charges incurred by doing so.</span></span> <span data-ttu-id="ec954-111">Další informace o cenách najdete v tématu [přenosů dat](https://azure.microsoft.com/pricing/#header-11).</span><span class="sxs-lookup"><span data-stu-id="ec954-111">For more information about pricing, see [Data Transfers](https://azure.microsoft.com/pricing/#header-11).</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="c75ac-112">Chcete-li změnit obsah kontejnery objektů blob, které byly vygenerovány Media Services bez použití rozhraní API služby Media byste neměli.</span><span class="sxs-lookup"><span data-stu-id="c75ac-112">You should not attempt to change the contents of blob containers that were generated by Media Services without using Media Service APIs.</span></span>
+> <span data-ttu-id="ec954-112">Byste neměli toochange hello obsah kontejnery objektů blob, které byly vygenerovány Media Services bez použití rozhraní API služby Media.</span><span class="sxs-lookup"><span data-stu-id="ec954-112">You should not attempt toochange hello contents of blob containers that were generated by Media Services without using Media Service APIs.</span></span>
 > 
 
-<span data-ttu-id="c75ac-113">Toto téma vás seznámí dvě ukázky kódu:</span><span class="sxs-lookup"><span data-stu-id="c75ac-113">The topic shows two code samples:</span></span>
+<span data-ttu-id="ec954-113">Hello téma ukazuje dva ukázky kódu:</span><span class="sxs-lookup"><span data-stu-id="ec954-113">hello topic shows two code samples:</span></span>
 
-1. <span data-ttu-id="c75ac-114">Zkopírujte objekty BLOB z prostředek v jednom účtu AMS do nového prostředku na jiném účtu AMS.</span><span class="sxs-lookup"><span data-stu-id="c75ac-114">Copy blobs from an asset in one AMS account into a new asset in another AMS account.</span></span>
-2. <span data-ttu-id="c75ac-115">Zkopírujte objekty BLOB z některé účtu úložiště do nového prostředku v účtu AMS.</span><span class="sxs-lookup"><span data-stu-id="c75ac-115">Copy blobs from some storage account into a new asset in an AMS account.</span></span>
+1. <span data-ttu-id="ec954-114">Zkopírujte objekty BLOB z prostředek v jednom účtu AMS do nového prostředku na jiném účtu AMS.</span><span class="sxs-lookup"><span data-stu-id="ec954-114">Copy blobs from an asset in one AMS account into a new asset in another AMS account.</span></span>
+2. <span data-ttu-id="ec954-115">Zkopírujte objekty BLOB z některé účtu úložiště do nového prostředku v účtu AMS.</span><span class="sxs-lookup"><span data-stu-id="ec954-115">Copy blobs from some storage account into a new asset in an AMS account.</span></span>
 
-## <a name="copy-blobs-between-two-ams-accounts"></a><span data-ttu-id="c75ac-116">Kopírování objektů BLOB mezi dva účty AMS</span><span class="sxs-lookup"><span data-stu-id="c75ac-116">Copy blobs between two AMS accounts</span></span>  
+## <a name="copy-blobs-between-two-ams-accounts"></a><span data-ttu-id="ec954-116">Kopírování objektů BLOB mezi dva účty AMS</span><span class="sxs-lookup"><span data-stu-id="ec954-116">Copy blobs between two AMS accounts</span></span>  
 
-### <a name="prerequisites"></a><span data-ttu-id="c75ac-117">Požadavky</span><span class="sxs-lookup"><span data-stu-id="c75ac-117">Prerequisites</span></span>
+### <a name="prerequisites"></a><span data-ttu-id="ec954-117">Požadavky</span><span class="sxs-lookup"><span data-stu-id="ec954-117">Prerequisites</span></span>
 
-<span data-ttu-id="c75ac-118">Dva účty služby Media Services.</span><span class="sxs-lookup"><span data-stu-id="c75ac-118">Two Media Services accounts.</span></span> <span data-ttu-id="c75ac-119">Další informace najdete v tématu [Vytvoření účtu Media Services](media-services-portal-create-account.md).</span><span class="sxs-lookup"><span data-stu-id="c75ac-119">See the topic [How to Create a Media Services Account](media-services-portal-create-account.md).</span></span>
+<span data-ttu-id="ec954-118">Dva účty služby Media Services.</span><span class="sxs-lookup"><span data-stu-id="ec954-118">Two Media Services accounts.</span></span> <span data-ttu-id="ec954-119">V tématu hello [jak tooCreate účtu Media Services](media-services-portal-create-account.md).</span><span class="sxs-lookup"><span data-stu-id="ec954-119">See hello topic [How tooCreate a Media Services Account](media-services-portal-create-account.md).</span></span>
 
-### <a name="download-sample"></a><span data-ttu-id="c75ac-120">Stažení ukázky</span><span class="sxs-lookup"><span data-stu-id="c75ac-120">Download sample</span></span>
-<span data-ttu-id="c75ac-121">Můžete provést kroky v tomto článku nebo si můžete stáhnout vzorek, který obsahuje kód popsané v tomto článku [zde](https://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/).</span><span class="sxs-lookup"><span data-stu-id="c75ac-121">You can follow the steps in this article or you can download a sample that contains the code described in this article from [here](https://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/).</span></span>
+### <a name="download-sample"></a><span data-ttu-id="ec954-120">Stažení ukázky</span><span class="sxs-lookup"><span data-stu-id="ec954-120">Download sample</span></span>
+<span data-ttu-id="ec954-121">Můžete provést hello kroky v tomto článku nebo si můžete stáhnout ukázku, která obsahuje kód hello popsané v tomto článku [zde](https://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/).</span><span class="sxs-lookup"><span data-stu-id="ec954-121">You can follow hello steps in this article or you can download a sample that contains hello code described in this article from [here](https://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/).</span></span>
 
-### <a name="set-up-your-project"></a><span data-ttu-id="c75ac-122">Nastavení projektu</span><span class="sxs-lookup"><span data-stu-id="c75ac-122">Set up your project</span></span>
+### <a name="set-up-your-project"></a><span data-ttu-id="ec954-122">Nastavení projektu</span><span class="sxs-lookup"><span data-stu-id="ec954-122">Set up your project</span></span>
 
-1. <span data-ttu-id="c75ac-123">Nastavení vývojového prostředí, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md).</span><span class="sxs-lookup"><span data-stu-id="c75ac-123">Set up your development environment as described in [Media Services development with .NET](media-services-dotnet-how-to-use.md).</span></span> 
-2. <span data-ttu-id="c75ac-124">Přidejte další reference, které jsou požadovány pro tento projekt: System.Configuration.</span><span class="sxs-lookup"><span data-stu-id="c75ac-124">Add other references that are required for this project: System.Configuration.</span></span>
-3. <span data-ttu-id="c75ac-125">Přidejte oddíl appSettings do souboru .config a aktualizujte hodnoty na základě svých účtů Media Services, cílový účet úložiště a ID zdroje asset.</span><span class="sxs-lookup"><span data-stu-id="c75ac-125">Add the appSettings section to the .config file and update the values based on your Media Services accounts, the destination storage account and the source asset ID.</span></span>  
+1. <span data-ttu-id="ec954-123">Nastavení vývojového prostředí, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md).</span><span class="sxs-lookup"><span data-stu-id="ec954-123">Set up your development environment as described in [Media Services development with .NET](media-services-dotnet-how-to-use.md).</span></span> 
+2. <span data-ttu-id="ec954-124">Přidejte další reference, které jsou požadovány pro tento projekt: System.Configuration.</span><span class="sxs-lookup"><span data-stu-id="ec954-124">Add other references that are required for this project: System.Configuration.</span></span>
+3. <span data-ttu-id="ec954-125">Přidání hello appSettings části toohello .config souboru a aktualizace hello hodnot na základě svých účtů Media Services, hello cílový účet úložiště a hello ID zdroje asset.</span><span class="sxs-lookup"><span data-stu-id="ec954-125">Add hello appSettings section toohello .config file and update hello values based on your Media Services accounts, hello destination storage account and hello source asset ID.</span></span>  
 
 ```   
 <appSettings>
@@ -65,9 +65,9 @@ ms.lasthandoff: 08/29/2017
 </appSettings>
 ```
 
-### <a name="copy-blobs-from-an-asset-in-one-ams-account-into-an-asset-in-another-ams-account"></a><span data-ttu-id="c75ac-126">Kopírování objektů blob z prostředek v jednom účtu AMS do prostředku na jiném účtu AMS</span><span class="sxs-lookup"><span data-stu-id="c75ac-126">Copy blobs from an asset in one AMS account into an asset in another AMS account</span></span>
+### <a name="copy-blobs-from-an-asset-in-one-ams-account-into-an-asset-in-another-ams-account"></a><span data-ttu-id="ec954-126">Kopírování objektů blob z prostředek v jednom účtu AMS do prostředku na jiném účtu AMS</span><span class="sxs-lookup"><span data-stu-id="ec954-126">Copy blobs from an asset in one AMS account into an asset in another AMS account</span></span>
 
-<span data-ttu-id="c75ac-127">Následující kód používá rozšíření **IAsset.Copy** metoda zkopíruje všechny soubory v prostředku zdrojového do cílového prostředku pomocí jedné rozšíření.</span><span class="sxs-lookup"><span data-stu-id="c75ac-127">The following code uses extension **IAsset.Copy** method to copy all files in the source asset into the destination asset using a single extension.</span></span>
+<span data-ttu-id="ec954-127">Hello následující kód používá rozšíření **IAsset.Copy** metoda toocopy všechny soubory v hello zdroj asset do hello cílový prostředek pomocí jednoho rozšíření.</span><span class="sxs-lookup"><span data-stu-id="ec954-127">hello following code uses extension **IAsset.Copy** method toocopy all files in hello source asset into hello destination asset using a single extension.</span></span>
 
 ```
 using System;
@@ -98,23 +98,23 @@ namespace CopyExistingBlobsIntoAsset
             var tokenCredentials2 = new AzureAdTokenCredentials(_destAADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
             var tokenProvider2 = new AzureAdTokenProvider(tokenCredentials2);
 
-            // Create the context for your source Media Services account.
+            // Create hello context for your source Media Services account.
             _sourceContext = new CloudMediaContext(new Uri(_sourceRESTAPIEndpoint), tokenProvider1);
 
-            // Create the context for your destination Media Services account.
+            // Create hello context for your destination Media Services account.
             _destContext = new CloudMediaContext(new Uri(_destRESTAPIEndpoint), tokenProvider2);
 
-            // Get the credentials of the default Storage account bound to your destination Media Services account.
+            // Get hello credentials of hello default Storage account bound tooyour destination Media Services account.
             StorageCredentials destinationStorageCredentials =
                 new StorageCredentials(_destStorageAccountName, _destStorageAccountKey);
 
-            // Get a reference to the source asset in the source context.
+            // Get a reference toohello source asset in hello source context.
             IAsset sourceAsset = _sourceContext.Assets.Where(a => a.Id == _sourceAssetID).First();
 
-            // Create an empty destination asset in the destination context.
+            // Create an empty destination asset in hello destination context.
             IAsset destinationAsset = _destContext.Assets.Create(sourceAsset.Name, AssetCreationOptions.None);
 
-            // Copy the files in the source asset instance into the destination asset instance.
+            // Copy hello files in hello source asset instance into hello destination asset instance.
             sourceAsset.Copy(destinationAsset, destinationStorageCredentials);
 
             Console.WriteLine("Done");
@@ -123,18 +123,18 @@ namespace CopyExistingBlobsIntoAsset
 }
 ```
 
-## <a name="copy-blobs-from-a-storage-account-into-an-ams-account"></a><span data-ttu-id="c75ac-128">Kopírování objektů blob z účtu úložiště k účtu AMS</span><span class="sxs-lookup"><span data-stu-id="c75ac-128">Copy blobs from a storage account into an AMS account</span></span> 
+## <a name="copy-blobs-from-a-storage-account-into-an-ams-account"></a><span data-ttu-id="ec954-128">Kopírování objektů blob z účtu úložiště k účtu AMS</span><span class="sxs-lookup"><span data-stu-id="ec954-128">Copy blobs from a storage account into an AMS account</span></span> 
 
-### <a name="prerequisites"></a><span data-ttu-id="c75ac-129">Požadavky</span><span class="sxs-lookup"><span data-stu-id="c75ac-129">Prerequisites</span></span>
+### <a name="prerequisites"></a><span data-ttu-id="ec954-129">Požadavky</span><span class="sxs-lookup"><span data-stu-id="ec954-129">Prerequisites</span></span>
 
-- <span data-ttu-id="c75ac-130">Jeden účet úložiště, ze kterého chcete zkopírovat objekty BLOB.</span><span class="sxs-lookup"><span data-stu-id="c75ac-130">One Storage account from which you want to copy blobs.</span></span>
-- <span data-ttu-id="c75ac-131">Jeden účet AMS, do kterého chcete zkopírovat objekty BLOB.</span><span class="sxs-lookup"><span data-stu-id="c75ac-131">One AMS account into which you want to copy blobs.</span></span>
+- <span data-ttu-id="ec954-130">Jeden účet úložiště, ze kterého mají být toocopy objekty BLOB.</span><span class="sxs-lookup"><span data-stu-id="ec954-130">One Storage account from which you want toocopy blobs.</span></span>
+- <span data-ttu-id="ec954-131">Jeden účet AMS, do kterého chcete toocopy objekty BLOB.</span><span class="sxs-lookup"><span data-stu-id="ec954-131">One AMS account into which you want toocopy blobs.</span></span>
 
-### <a name="set-up-your-project"></a><span data-ttu-id="c75ac-132">Nastavení projektu</span><span class="sxs-lookup"><span data-stu-id="c75ac-132">Set up your project</span></span>
+### <a name="set-up-your-project"></a><span data-ttu-id="ec954-132">Nastavení projektu</span><span class="sxs-lookup"><span data-stu-id="ec954-132">Set up your project</span></span>
 
-1. <span data-ttu-id="c75ac-133">Nastavení vývojového prostředí, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md).</span><span class="sxs-lookup"><span data-stu-id="c75ac-133">Set up your development environment as described in [Media Services development with .NET](media-services-dotnet-how-to-use.md).</span></span> 
-2. <span data-ttu-id="c75ac-134">Přidejte další reference, které jsou požadovány pro tento projekt: System.Configuration.</span><span class="sxs-lookup"><span data-stu-id="c75ac-134">Add other references that are required for this project: System.Configuration.</span></span>
-3. <span data-ttu-id="c75ac-135">Přidejte oddíl appSettings do souboru .config a aktualizujte hodnoty na základě vaší zdrojové úložiště a cílový účtů AMS.</span><span class="sxs-lookup"><span data-stu-id="c75ac-135">Add the appSettings section to the .config file and update the values based on your source storage and destination AMS accounts.</span></span>
+1. <span data-ttu-id="ec954-133">Nastavení vývojového prostředí, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md).</span><span class="sxs-lookup"><span data-stu-id="ec954-133">Set up your development environment as described in [Media Services development with .NET](media-services-dotnet-how-to-use.md).</span></span> 
+2. <span data-ttu-id="ec954-134">Přidejte další reference, které jsou požadovány pro tento projekt: System.Configuration.</span><span class="sxs-lookup"><span data-stu-id="ec954-134">Add other references that are required for this project: System.Configuration.</span></span>
+3. <span data-ttu-id="ec954-135">Přidejte hello appSettings části souboru .config toohello a aktualizace hello hodnot na základě vašeho zdrojového úložiště a cílový AMS účty.</span><span class="sxs-lookup"><span data-stu-id="ec954-135">Add hello appSettings section toohello .config file and update hello values based on your source storage and destination AMS accounts.</span></span>
 
 ```
 <appSettings>
@@ -147,12 +147,12 @@ namespace CopyExistingBlobsIntoAsset
 </appSettings>
 ```
 
-### <a name="copy-blobs-from-some-storage-account-into-a-new-asset-in-a-ams-account"></a><span data-ttu-id="c75ac-136">Kopírování objektů blob z některé účtu úložiště do nového prostředku v účtu AMS</span><span class="sxs-lookup"><span data-stu-id="c75ac-136">Copy blobs from some storage account into a new asset in a AMS account</span></span>
+### <a name="copy-blobs-from-some-storage-account-into-a-new-asset-in-a-ams-account"></a><span data-ttu-id="ec954-136">Kopírování objektů blob z některé účtu úložiště do nového prostředku v účtu AMS</span><span class="sxs-lookup"><span data-stu-id="ec954-136">Copy blobs from some storage account into a new asset in a AMS account</span></span>
 
-<span data-ttu-id="c75ac-137">Následující kód zkopíruje objekty BLOB z účtu úložiště do asset Media Services.</span><span class="sxs-lookup"><span data-stu-id="c75ac-137">The following code copies blobs from a storage account into a Media Services asset.</span></span> 
+<span data-ttu-id="ec954-137">Hello následující kód kopie objekty BLOB z účtu úložiště do asset Media Services.</span><span class="sxs-lookup"><span data-stu-id="ec954-137">hello following code copies blobs from a storage account into a Media Services asset.</span></span> 
 
 >[!NOTE]
-><span data-ttu-id="c75ac-138">Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy).</span><span class="sxs-lookup"><span data-stu-id="c75ac-138">There is a limit of 1,000,000 policies for different AMS policies (for example, for Locator policy or ContentKeyAuthorizationPolicy).</span></span> <span data-ttu-id="c75ac-139">Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad.</span><span class="sxs-lookup"><span data-stu-id="c75ac-139">You should use the same policy ID if you are always using the same days / access permissions, for example, policies for locators that are intended to remain in place for a long time (non-upload policies).</span></span> <span data-ttu-id="c75ac-140">Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.</span><span class="sxs-lookup"><span data-stu-id="c75ac-140">For more information, see [this](media-services-dotnet-manage-entities.md#limit-access-policies) topic.</span></span>
+><span data-ttu-id="ec954-138">Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy).</span><span class="sxs-lookup"><span data-stu-id="ec954-138">There is a limit of 1,000,000 policies for different AMS policies (for example, for Locator policy or ContentKeyAuthorizationPolicy).</span></span> <span data-ttu-id="ec954-139">Měli byste použít hello stejné ID zásad, pokud vždy používáte hello stejné dny / přístupová oprávnění, například zásady pro lokátory, které jsou určený tooremain zavedené po dlouhou dobu (bez odeslání zásady).</span><span class="sxs-lookup"><span data-stu-id="ec954-139">You should use hello same policy ID if you are always using hello same days / access permissions, for example, policies for locators that are intended tooremain in place for a long time (non-upload policies).</span></span> <span data-ttu-id="ec954-140">Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.</span><span class="sxs-lookup"><span data-stu-id="ec954-140">For more information, see [this](media-services-dotnet-manage-entities.md#limit-access-policies) topic.</span></span>
 
 ```
 using System;
@@ -167,7 +167,7 @@ namespace CopyExistingBlobsIntoAsset
 {
     class Program
     {
-        // Read values from the App.config file.
+        // Read values from hello App.config file.
         private static readonly string _AMSAADTenantDomain =
             ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _AMSRESTAPIEndpoint =
@@ -192,7 +192,7 @@ namespace CopyExistingBlobsIntoAsset
                 AzureEnvironments.AzureCloudEnvironment);
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
-            // Create the context for your source Media Services account.
+            // Create hello context for your source Media Services account.
             _context = new CloudMediaContext(new Uri(_AMSRESTAPIEndpoint), tokenProvider);
             
             _sourceStorageAccount =
@@ -226,7 +226,7 @@ namespace CopyExistingBlobsIntoAsset
             ILocator destinationLocator =
                 _context.Locators.CreateLocator(LocatorType.Sas, asset, writePolicy);
 
-            // Get the asset container URI and Blob copy from mediaContainer to assetContainer. 
+            // Get hello asset container URI and Blob copy from mediaContainer tooassetContainer. 
             CloudBlobContainer destAssetContainer =
                 destBlobStorage.GetContainerReference((new Uri(destinationLocator.Path)).Segments[1]);
 
@@ -258,14 +258,14 @@ namespace CopyExistingBlobsIntoAsset
             destinationLocator.Delete();
             writePolicy.Delete();
 
-            // Set the primary asset file.
+            // Set hello primary asset file.
             // If, for example, we copied a set of Smooth Streaming files, 
-            // set the .ism file to be the primary file. 
-            // If we, for example, copied an .mp4, then the mp4 would be the primary file. 
+            // set hello .ism file toobe hello primary file. 
+            // If we, for example, copied an .mp4, then hello mp4 would be hello primary file. 
             var ismAssetFile = asset.AssetFiles.ToList().
                 Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase)).ToArray().FirstOrDefault();
 
-            // The following code assigns the first .ism file as the primary file in the asset.
+            // hello following code assigns hello first .ism file as hello primary file in hello asset.
             // An asset should have one .ism file.  
             if (ismAssetFile != null)
             {
@@ -277,10 +277,10 @@ namespace CopyExistingBlobsIntoAsset
         }
 
         /// <summary>
-        /// Copies the specified blob into the specified container.
+        /// Copies hello specified blob into hello specified container.
         /// </summary>
-        /// <param name="sourceBlob">The source container.</param>
-        /// <param name="destinationContainer">The destination container.</param>
+        /// <param name="sourceBlob">hello source container.</param>
+        /// <param name="destinationContainer">hello destination container.</param>
         static private void CopyBlob(ICloudBlob sourceBlob, CloudBlobContainer destinationContainer)
         {
             var signature = sourceBlob.GetSharedAccessSignature(new SharedAccessBlobPolicy
@@ -298,17 +298,17 @@ namespace CopyExistingBlobsIntoAsset
             else
             {
 
-                // Display the size of the source blob.
+                // Display hello size of hello source blob.
                 Console.WriteLine(sourceBlob.Properties.Length);
 
-                Console.WriteLine(string.Format("Copy blob '{0}' to '{1}'", sourceBlob.Uri, destinationBlob.Uri));
+                Console.WriteLine(string.Format("Copy blob '{0}' too'{1}'", sourceBlob.Uri, destinationBlob.Uri));
                 destinationBlob.StartCopyFromBlob(new Uri(sourceBlob.Uri.AbsoluteUri + signature));
 
                 while (true)
                 {
-                    // The StartCopyFromBlob is an async operation, 
-                    // so we want to check if the copy operation is completed before proceeding. 
-                    // To do that, we call FetchAttributes on the blob and check the CopyStatus. 
+                    // hello StartCopyFromBlob is an async operation, 
+                    // so we want toocheck if hello copy operation is completed before proceeding. 
+                    // toodo that, we call FetchAttributes on hello blob and check hello CopyStatus. 
                     destinationBlob.FetchAttributes();
                     if (destinationBlob.CopyState.Status != CopyStatus.Pending)
                     {
@@ -318,7 +318,7 @@ namespace CopyExistingBlobsIntoAsset
                     System.Threading.Thread.Sleep(1000);
                 }
 
-                // Display the size of the destination blob.
+                // Display hello size of hello destination blob.
                 Console.WriteLine(destinationBlob.Properties.Length);
 
             }
@@ -326,15 +326,15 @@ namespace CopyExistingBlobsIntoAsset
     }
 }
 ```
-## <a name="next-steps"></a><span data-ttu-id="c75ac-141">Další kroky</span><span class="sxs-lookup"><span data-stu-id="c75ac-141">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="ec954-141">Další kroky</span><span class="sxs-lookup"><span data-stu-id="ec954-141">Next steps</span></span>
 
-<span data-ttu-id="c75ac-142">Nyní můžete kódovat nahrané assety.</span><span class="sxs-lookup"><span data-stu-id="c75ac-142">You can now encode your uploaded assets.</span></span> <span data-ttu-id="c75ac-143">Další informace najdete v tématu [Kódování assetů](media-services-portal-encode.md).</span><span class="sxs-lookup"><span data-stu-id="c75ac-143">For more information, see [Encode assets](media-services-portal-encode.md).</span></span>
+<span data-ttu-id="ec954-142">Nyní můžete kódovat nahrané assety.</span><span class="sxs-lookup"><span data-stu-id="ec954-142">You can now encode your uploaded assets.</span></span> <span data-ttu-id="ec954-143">Další informace najdete v tématu [Kódování assetů](media-services-portal-encode.md).</span><span class="sxs-lookup"><span data-stu-id="ec954-143">For more information, see [Encode assets](media-services-portal-encode.md).</span></span>
 
-<span data-ttu-id="c75ac-144">Můžete také použít službu Azure Functions k aktivaci úlohy kódování při příchodu souboru do nakonfigurovaného kontejneru.</span><span class="sxs-lookup"><span data-stu-id="c75ac-144">You can also use Azure Functions to trigger an encoding job based on a file arriving in the configured container.</span></span> <span data-ttu-id="c75ac-145">Další informace najdete v [této ukázce](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).</span><span class="sxs-lookup"><span data-stu-id="c75ac-145">For more information, see [this sample](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).</span></span>
+<span data-ttu-id="ec954-144">Můžete také použít Azure Functions tootrigger úlohu kódování na základě souboru přicházejících do kontejneru hello nakonfigurované.</span><span class="sxs-lookup"><span data-stu-id="ec954-144">You can also use Azure Functions tootrigger an encoding job based on a file arriving in hello configured container.</span></span> <span data-ttu-id="ec954-145">Další informace najdete v [této ukázce](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).</span><span class="sxs-lookup"><span data-stu-id="ec954-145">For more information, see [this sample](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).</span></span>
 
-## <a name="media-services-learning-paths"></a><span data-ttu-id="c75ac-146">Mapy kurzů ke službě Media Services</span><span class="sxs-lookup"><span data-stu-id="c75ac-146">Media Services learning paths</span></span>
+## <a name="media-services-learning-paths"></a><span data-ttu-id="ec954-146">Mapy kurzů ke službě Media Services</span><span class="sxs-lookup"><span data-stu-id="ec954-146">Media Services learning paths</span></span>
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a><span data-ttu-id="c75ac-147">Poskytnutí zpětné vazby</span><span class="sxs-lookup"><span data-stu-id="c75ac-147">Provide feedback</span></span>
+## <a name="provide-feedback"></a><span data-ttu-id="ec954-147">Poskytnutí zpětné vazby</span><span class="sxs-lookup"><span data-stu-id="ec954-147">Provide feedback</span></span>
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 

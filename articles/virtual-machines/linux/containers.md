@@ -1,6 +1,6 @@
 ---
-title: "Kontejnery na virtuálních počítačích Linux Azure | Microsoft Docs"
-description: "Popisuje virtuální počítače, Docker a Linux kontejnery a jejich využití ve skupinách jednotlivých v Azure, včetně výhod jednotlivých a scénáře, ve kterých každý přístup velmi dobře funguje."
+title: "aaaContainers v Azure virtuální počítače s Linuxem | Microsoft Docs"
+description: "Popisuje virtuální počítače, Docker a Linux kontejnery a jejich využití ve skupinách jednotlivých v Azure, včetně hello výhody jednotlivých a scénáře, ve kterých každý přístup velmi dobře funguje."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: squillace
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/23/2016
 ms.author: rasquill
-ms.openlocfilehash: 3ca47d67e513c73fde040461be9c403a085503ca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7e41e424e44359f0b17e5ee42b6798cac32e52f9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="virtual-machines-vs-containers-in-azure"></a><span data-ttu-id="47e47-103">Virtual Machines vs. Kontejnery v Azure</span><span class="sxs-lookup"><span data-stu-id="47e47-103">Virtual Machines vs. Containers in Azure</span></span>
+# <a name="virtual-machines-vs-containers-in-azure"></a><span data-ttu-id="b829e-103">Virtual Machines vs. Kontejnery v Azure</span><span class="sxs-lookup"><span data-stu-id="b829e-103">Virtual Machines vs. Containers in Azure</span></span>
 [!INCLUDE [virtual-machines-common-and-containers](../../../includes/virtual-machines-common-containers.md)]
 

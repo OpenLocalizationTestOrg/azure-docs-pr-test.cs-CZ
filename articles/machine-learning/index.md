@@ -1,5 +1,5 @@
 ---
-title: "Dokumentace ke službě Azure Machine Learning – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+title: "aaaAzure Machine Learning dokumentace - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
 description: "Dokumentace, videa a ukázkové modely pro Machine Learning, cloudovou službu pro vědce pracující s daty a vývojáře, kteří v aplikacích používají prediktivní analýzy"
 services: machine-learning
 author: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 241cf0904f1c410575017f586c65f41ee3efc753
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7307d83a6c8059e581a37910d3af5a66fc502d0b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="azure-machine-learning-documentation"></a>Dokumentace ke službě Azure Machine Learning
 
-Naučte se, jakým způsobem můžou odborníci přes data a vývojáři použít Machine Learning k zahrnutí prediktivní analýzy do aplikací. Kurzy, videa a ukázkové modely ukazují, jak vytvářet a nasazovat modely Machine Learningu.
+Zjistěte, jak datových vědců a vývojářů pomocí Machine Learning tooembed prediktivní analýzy do aplikace. Kurzy, videa a modely příklad ukáže, jak toobuild a nasazovat modely machine learning.
 
 <ul class="panelContent cardsFTitle">
     <li>

@@ -1,6 +1,6 @@
 ---
-title: "Zálohování a obnovení databáze 12c databáze Oracle na virtuálním počítači Azure Linux | Microsoft Docs"
-description: "Zjistěte, jak zálohovat a obnovit databázi Oracle Database 12c v prostředí Azure."
+title: "aaaBack nahoru a obnovit databázi Oracle 12c databáze na virtuálním počítači Azure Linux | Microsoft Docs"
+description: "Zjistěte, jak tooback nahoru a obnovit databázi Oracle 12c databáze v prostředí Azure."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
@@ -15,40 +15,40 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 5/17/2017
 ms.author: rclaus
-ms.openlocfilehash: 9a2293f13b90e9a4cb11b4169fad969dd622a9a6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 68846f4efce5eabdb71cd71772e003838154e93b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a><span data-ttu-id="29112-103">Zálohování a obnovení databáze 12c databáze Oracle na virtuálním počítači Azure Linux</span><span class="sxs-lookup"><span data-stu-id="29112-103">Back up and recover an Oracle Database 12c database on an Azure Linux virtual machine</span></span>
+# <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a><span data-ttu-id="30fdd-103">Zálohování a obnovení databáze 12c databáze Oracle na virtuálním počítači Azure Linux</span><span class="sxs-lookup"><span data-stu-id="30fdd-103">Back up and recover an Oracle Database 12c database on an Azure Linux virtual machine</span></span>
 
-<span data-ttu-id="29112-104">Rozhraní příkazového řádku Azure můžete vytvořit a spravovat prostředky Azure na příkazovém řádku nebo pomocí skriptů.</span><span class="sxs-lookup"><span data-stu-id="29112-104">You can use Azure CLI to create and manage Azure resources at a command prompt, or use scripts.</span></span> <span data-ttu-id="29112-105">V tomto článku používáme skripty rozhraní příkazového řádku Azure k nasazení databázi Oracle Database 12c z Galerie image Azure Marketplace.</span><span class="sxs-lookup"><span data-stu-id="29112-105">In this article, we use Azure CLI scripts to deploy an Oracle Database 12c database from an Azure Marketplace gallery image.</span></span>
+<span data-ttu-id="30fdd-104">Můžete použít rozhraní příkazového řádku Azure toocreate a spravovat prostředky Azure na příkazovém řádku nebo pomocí skriptů.</span><span class="sxs-lookup"><span data-stu-id="30fdd-104">You can use Azure CLI toocreate and manage Azure resources at a command prompt, or use scripts.</span></span> <span data-ttu-id="30fdd-105">V tomto článku používáme rozhraní příkazového řádku Azure skripty toodeploy databázi Oracle Database 12c z Galerie image Azure Marketplace.</span><span class="sxs-lookup"><span data-stu-id="30fdd-105">In this article, we use Azure CLI scripts toodeploy an Oracle Database 12c database from an Azure Marketplace gallery image.</span></span>
 
-<span data-ttu-id="29112-106">Než začnete, ujistěte se, že je nainstalované rozhraní příkazového řádku Azure.</span><span class="sxs-lookup"><span data-stu-id="29112-106">Before you begin, make sure that Azure CLI is installed.</span></span> <span data-ttu-id="29112-107">Další informace najdete v tématu [Průvodce instalací Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="29112-107">For more information, see the [Azure CLI installation guide](https://docs.microsoft.com/cli/azure/install-azure-cli).</span></span>
+<span data-ttu-id="30fdd-106">Než začnete, ujistěte se, že je nainstalované rozhraní příkazového řádku Azure.</span><span class="sxs-lookup"><span data-stu-id="30fdd-106">Before you begin, make sure that Azure CLI is installed.</span></span> <span data-ttu-id="30fdd-107">Další informace najdete v tématu hello [Průvodce instalací Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="30fdd-107">For more information, see hello [Azure CLI installation guide](https://docs.microsoft.com/cli/azure/install-azure-cli).</span></span>
 
-## <a name="prepare-the-environment"></a><span data-ttu-id="29112-108">Příprava prostředí</span><span class="sxs-lookup"><span data-stu-id="29112-108">Prepare the environment</span></span>
+## <a name="prepare-hello-environment"></a><span data-ttu-id="30fdd-108">Příprava prostředí hello</span><span class="sxs-lookup"><span data-stu-id="30fdd-108">Prepare hello environment</span></span>
 
-### <a name="step-1-prerequisites"></a><span data-ttu-id="29112-109">Krok 1: požadavky</span><span class="sxs-lookup"><span data-stu-id="29112-109">Step 1: Prerequisites</span></span>
+### <a name="step-1-prerequisites"></a><span data-ttu-id="30fdd-109">Krok 1: požadavky</span><span class="sxs-lookup"><span data-stu-id="30fdd-109">Step 1: Prerequisites</span></span>
 
-*   <span data-ttu-id="29112-110">Chcete-li provést proces zálohování a obnovení, musíte nejdřív vytvořit virtuální počítač Linux, který má nainstalovanou instanci databáze Oracle 12c.</span><span class="sxs-lookup"><span data-stu-id="29112-110">To perform the backup and recovery process, you must first create a Linux VM that has an installed instance of Oracle Database 12c.</span></span> <span data-ttu-id="29112-111">Název bitové kopie Marketplace, které použijete k vytvoření virtuálního počítače *Oracle: Oracle – databáze-Ee:12.1.0.2:latest*.</span><span class="sxs-lookup"><span data-stu-id="29112-111">The Marketplace image you use to create the VM is named *Oracle:Oracle-Database-Ee:12.1.0.2:latest*.</span></span>
+*   <span data-ttu-id="30fdd-110">tooperform hello procesu zálohování a obnovení, musíte nejdřív vytvořit virtuální počítač Linux, který má nainstalovanou instanci databáze Oracle 12c.</span><span class="sxs-lookup"><span data-stu-id="30fdd-110">tooperform hello backup and recovery process, you must first create a Linux VM that has an installed instance of Oracle Database 12c.</span></span> <span data-ttu-id="30fdd-111">Hello Marketplace image použijete toocreate hello názvem virtuálního počítače *Oracle: Oracle – databáze-Ee:12.1.0.2:latest*.</span><span class="sxs-lookup"><span data-stu-id="30fdd-111">hello Marketplace image you use toocreate hello VM is named *Oracle:Oracle-Database-Ee:12.1.0.2:latest*.</span></span>
 
-    <span data-ttu-id="29112-112">Naučte se vytvořit databázi Oracle, najdete v článku [Oracle vytvořit rychlý start databáze](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).</span><span class="sxs-lookup"><span data-stu-id="29112-112">To learn how to create an Oracle database, see the [Oracle create database quickstart](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).</span></span>
+    <span data-ttu-id="30fdd-112">toolearn jak toocreate databáze Oracle, najdete v části hello [Oracle vytvořit rychlý start databáze](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).</span><span class="sxs-lookup"><span data-stu-id="30fdd-112">toolearn how toocreate an Oracle database, see hello [Oracle create database quickstart](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).</span></span>
 
 
-### <a name="step-2-connect-to-the-vm"></a><span data-ttu-id="29112-113">Krok 2: Připojení k virtuálnímu počítači</span><span class="sxs-lookup"><span data-stu-id="29112-113">Step 2: Connect to the VM</span></span>
+### <a name="step-2-connect-toohello-vm"></a><span data-ttu-id="30fdd-113">Krok 2: Připojení toohello virtuálních počítačů</span><span class="sxs-lookup"><span data-stu-id="30fdd-113">Step 2: Connect toohello VM</span></span>
 
-*   <span data-ttu-id="29112-114">Pro vytvoření relace Secure Shell (SSH) s virtuálním Počítačem, použijte následující příkaz.</span><span class="sxs-lookup"><span data-stu-id="29112-114">To create a Secure Shell (SSH) session with the VM, use the following command.</span></span> <span data-ttu-id="29112-115">Nahraďte adresu IP a názvem hostitele s `publicIpAddress` hodnotu pro virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="29112-115">Replace the IP address and the host name combination with the `publicIpAddress` value for your VM.</span></span>
+*   <span data-ttu-id="30fdd-114">toocreate relaci Secure Shell (SSH) s hello virtuálních počítačů, použijte následující příkaz hello.</span><span class="sxs-lookup"><span data-stu-id="30fdd-114">toocreate a Secure Shell (SSH) session with hello VM, use hello following command.</span></span> <span data-ttu-id="30fdd-115">Nahraďte hello hello IP adresu a název hostitele hello `publicIpAddress` hodnotu pro virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="30fdd-115">Replace hello IP address and hello host name combination with hello `publicIpAddress` value for your VM.</span></span>
 
     ```bash 
     ssh <publicIpAddress>
     ```
 
-### <a name="step-3-prepare-the-database"></a><span data-ttu-id="29112-116">Krok 3: Příprava databáze</span><span class="sxs-lookup"><span data-stu-id="29112-116">Step 3: Prepare the database</span></span>
+### <a name="step-3-prepare-hello-database"></a><span data-ttu-id="30fdd-116">Krok 3: Příprava hello databáze</span><span class="sxs-lookup"><span data-stu-id="30fdd-116">Step 3: Prepare hello database</span></span>
 
-1.  <span data-ttu-id="29112-117">Tento krok předpokládá, že máte instanci Oracle (cdb1), která běží na virtuálním počítači s názvem *Můjvp*.</span><span class="sxs-lookup"><span data-stu-id="29112-117">This step assumes that you have an Oracle instance (cdb1) that is running on a VM named *myVM*.</span></span>
+1.  <span data-ttu-id="30fdd-117">Tento krok předpokládá, že máte instanci Oracle (cdb1), která běží na virtuálním počítači s názvem *Můjvp*.</span><span class="sxs-lookup"><span data-stu-id="30fdd-117">This step assumes that you have an Oracle instance (cdb1) that is running on a VM named *myVM*.</span></span>
 
-    <span data-ttu-id="29112-118">Spustit *oracle* kořenové superuživatele a pak inicializovat naslouchací proces:</span><span class="sxs-lookup"><span data-stu-id="29112-118">Run the *oracle* superuser root, and then initialize the listener:</span></span>
+    <span data-ttu-id="30fdd-118">Spustit hello *oracle* superuživatel kořenové a potom hello inicializovat naslouchací proces:</span><span class="sxs-lookup"><span data-stu-id="30fdd-118">Run hello *oracle* superuser root, and then initialize hello listener:</span></span>
 
     ```bash
     $ sudo su - oracle
@@ -58,11 +58,11 @@ ms.lasthandoff: 07/11/2017
     Starting /u01/app/oracle/product/12.1.0/dbhome_1/bin/tnslsnr: please wait...
 
     TNSLSNR for Linux: Version 12.1.0.2.0 - Production
-    Log messages written to /u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
+    Log messages written too/u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
     Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=myVM.twltkue3xvsujaz1bvlrhfuiwf.dx.internal.cloudapp.net)(PORT=1521)))
 
-    Connecting to (ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521))
-    STATUS of the LISTENER
+    Connecting too(ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521))
+    STATUS of hello LISTENER
     ------------------------
     Alias                     LISTENER
     Version                   TNSLSNR for Linux: Version 12.1.0.2.0 - Production
@@ -74,11 +74,11 @@ ms.lasthandoff: 07/11/2017
     Listener Log File         /u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
     Listening Endpoints Summary...
     (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=myVM.twltkue3xvsujaz1bvlrhfuiwf.dx.internal.cloudapp.net)(PORT=1521)))
-    The listener supports no services
-    The command completed successfully
+    hello listener supports no services
+    hello command completed successfully
     ```
 
-2.  <span data-ttu-id="29112-119">(Volitelné) Ujistěte se, že databáze je v režimu protokolu archivu:</span><span class="sxs-lookup"><span data-stu-id="29112-119">(Optional) Make sure the database is in archive log mode:</span></span>
+2.  <span data-ttu-id="30fdd-119">(Volitelné) Zkontrolujte, zda text hello databáze je v režimu protokolu archivu:</span><span class="sxs-lookup"><span data-stu-id="30fdd-119">(Optional) Make sure hello database is in archive log mode:</span></span>
 
     ```bash
     $ sqlplus / as sysdba
@@ -94,16 +94,16 @@ ms.lasthandoff: 07/11/2017
     SQL> ALTER DATABASE OPEN;
     SQL> ALTER SYSTEM SWITCH LOGFILE;
     ```
-3.  <span data-ttu-id="29112-120">(Volitelné) Vytvořte tabulku pro testování potvrzení:</span><span class="sxs-lookup"><span data-stu-id="29112-120">(Optional) Create a table to test the commit:</span></span>
+3.  <span data-ttu-id="30fdd-120">(Volitelné) Vytvoření potvrzení změn tabulky tootest hello:</span><span class="sxs-lookup"><span data-stu-id="30fdd-120">(Optional) Create a table tootest hello commit:</span></span>
 
     ```bash
     SQL> alter session set "_ORACLE_SCRIPT"=true ;
     Session altered.
     SQL> create user scott identified by tiger;
     User created.
-    SQL> grant create session to scott;
+    SQL> grant create session tooscott;
     Grant succeeded.
-    SQL> grant create table to scott;
+    SQL> grant create table tooscott;
     Grant succeeded.
     SQL> alter user scott quota 100M on users;
     User altered.
@@ -115,7 +115,7 @@ ms.lasthandoff: 07/11/2017
     SQL> commit;
     Commit complete.
     ```
-4.  <span data-ttu-id="29112-121">Ověřte nebo změňte umístění záložního souboru a velikost:</span><span class="sxs-lookup"><span data-stu-id="29112-121">Verify or change the backup file location and size:</span></span>
+4.  <span data-ttu-id="30fdd-121">Ověřte nebo změňte hello záložní soubor umístění a velikost:</span><span class="sxs-lookup"><span data-stu-id="30fdd-121">Verify or change hello backup file location and size:</span></span>
 
     ```bash
     $ sqlplus / as sysdba
@@ -125,20 +125,20 @@ ms.lasthandoff: 07/11/2017
     db_recovery_file_dest                string      /u01/app/oracle/fast_recovery_area
     db_recovery_file_dest_size           big integer 4560M
     ```
-5. <span data-ttu-id="29112-122">Použijte k zálohování databáze Oracle obnovení správce (RMAN):</span><span class="sxs-lookup"><span data-stu-id="29112-122">Use Oracle Recovery Manager (RMAN) to back up the database:</span></span>
+5. <span data-ttu-id="30fdd-122">Použijte Oracle obnovení správce (RMAN) tooback zálohu databáze hello:</span><span class="sxs-lookup"><span data-stu-id="30fdd-122">Use Oracle Recovery Manager (RMAN) tooback up hello database:</span></span>
 
     ```bash
     $ rman target /
     RMAN> backup database plus archivelog;
     ```
 
-### <a name="step-4-application-consistent-backup-for-linux-vms"></a><span data-ttu-id="29112-123">Krok 4: Zálohování konzistentní s aplikací pro virtuální počítače s Linuxem</span><span class="sxs-lookup"><span data-stu-id="29112-123">Step 4: Application-consistent backup for Linux VMs</span></span>
+### <a name="step-4-application-consistent-backup-for-linux-vms"></a><span data-ttu-id="30fdd-123">Krok 4: Zálohování konzistentní s aplikací pro virtuální počítače s Linuxem</span><span class="sxs-lookup"><span data-stu-id="30fdd-123">Step 4: Application-consistent backup for Linux VMs</span></span>
 
-<span data-ttu-id="29112-124">Zálohování konzistentní s aplikací je nová funkce v Azure Backup.</span><span class="sxs-lookup"><span data-stu-id="29112-124">Application-consistent backups is a new feature in Azure Backup.</span></span> <span data-ttu-id="29112-125">Můžete vytvořit a vyberte skripty provést před a po snímek virtuálního počítače (snímek před a po pořízení snímku).</span><span class="sxs-lookup"><span data-stu-id="29112-125">You can create and select scripts to execute before and after the VM snapshot (pre-snapshot and post-snapshot).</span></span>
+<span data-ttu-id="30fdd-124">Zálohování konzistentní s aplikací je nová funkce v Azure Backup.</span><span class="sxs-lookup"><span data-stu-id="30fdd-124">Application-consistent backups is a new feature in Azure Backup.</span></span> <span data-ttu-id="30fdd-125">Můžete vytvořit a vyberte tooexecute skriptů před a po hello snímku virtuálního počítače (snímek před a po pořízení snímku).</span><span class="sxs-lookup"><span data-stu-id="30fdd-125">You can create and select scripts tooexecute before and after hello VM snapshot (pre-snapshot and post-snapshot).</span></span>
 
-1. <span data-ttu-id="29112-126">Stažení souboru JSON.</span><span class="sxs-lookup"><span data-stu-id="29112-126">Download the JSON file.</span></span>
+1. <span data-ttu-id="30fdd-126">Stažení souboru JSON hello.</span><span class="sxs-lookup"><span data-stu-id="30fdd-126">Download hello JSON file.</span></span>
 
-    <span data-ttu-id="29112-127">Stáhněte si VMSnapshotScriptPluginConfig.json z https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig.</span><span class="sxs-lookup"><span data-stu-id="29112-127">Download VMSnapshotScriptPluginConfig.json from https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig.</span></span> <span data-ttu-id="29112-128">Obsah souboru vypadat nějak takto:</span><span class="sxs-lookup"><span data-stu-id="29112-128">The file contents look similar to the following:</span></span>
+    <span data-ttu-id="30fdd-127">Stáhněte si VMSnapshotScriptPluginConfig.json z https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig.</span><span class="sxs-lookup"><span data-stu-id="30fdd-127">Download VMSnapshotScriptPluginConfig.json from https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig.</span></span> <span data-ttu-id="30fdd-128">obsah souboru Hello vypadat podobně jako toohello následující:</span><span class="sxs-lookup"><span data-stu-id="30fdd-128">hello file contents look similar toohello following:</span></span>
 
     ```azurecli
     {
@@ -155,7 +155,7 @@ ms.lasthandoff: 07/11/2017
     }
     ```
 
-2. <span data-ttu-id="29112-129">Vytvořte složku /etc/azure na virtuální počítač:</span><span class="sxs-lookup"><span data-stu-id="29112-129">Create the /etc/azure folder on the VM:</span></span>
+2. <span data-ttu-id="30fdd-129">Vytvořte složku /etc/azure hello na hello virtuálních počítačů:</span><span class="sxs-lookup"><span data-stu-id="30fdd-129">Create hello /etc/azure folder on hello VM:</span></span>
 
     ```bash
     $ sudo su -
@@ -163,13 +163,13 @@ ms.lasthandoff: 07/11/2017
     # cd /etc/azure
     ```
 
-3. <span data-ttu-id="29112-130">Zkopírujte soubor JSON.</span><span class="sxs-lookup"><span data-stu-id="29112-130">Copy the JSON file.</span></span>
+3. <span data-ttu-id="30fdd-130">Zkopírujte soubor JSON hello.</span><span class="sxs-lookup"><span data-stu-id="30fdd-130">Copy hello JSON file.</span></span>
 
-    <span data-ttu-id="29112-131">Zkopírujte VMSnapshotScriptPluginConfig.json do složky /etc/azure.</span><span class="sxs-lookup"><span data-stu-id="29112-131">Copy VMSnapshotScriptPluginConfig.json to the /etc/azure folder.</span></span>
+    <span data-ttu-id="30fdd-131">Zkopírujte složku /etc/azure toohello VMSnapshotScriptPluginConfig.json.</span><span class="sxs-lookup"><span data-stu-id="30fdd-131">Copy VMSnapshotScriptPluginConfig.json toohello /etc/azure folder.</span></span>
 
-4. <span data-ttu-id="29112-132">Upravte soubor JSON.</span><span class="sxs-lookup"><span data-stu-id="29112-132">Edit the JSON file.</span></span>
+4. <span data-ttu-id="30fdd-132">Upravte soubor JSON hello.</span><span class="sxs-lookup"><span data-stu-id="30fdd-132">Edit hello JSON file.</span></span>
 
-    <span data-ttu-id="29112-133">Upravte soubor VMSnapshotScriptPluginConfig.json zahrnout `PreScriptLocation` a `PostScriptlocation` parametry.</span><span class="sxs-lookup"><span data-stu-id="29112-133">Edit the VMSnapshotScriptPluginConfig.json file to include the `PreScriptLocation` and `PostScriptlocation` parameters.</span></span> <span data-ttu-id="29112-134">Například:</span><span class="sxs-lookup"><span data-stu-id="29112-134">For example:</span></span>
+    <span data-ttu-id="30fdd-133">Upravit hello VMSnapshotScriptPluginConfig.json souboru tooinclude hello `PreScriptLocation` a `PostScriptlocation` parametry.</span><span class="sxs-lookup"><span data-stu-id="30fdd-133">Edit hello VMSnapshotScriptPluginConfig.json file tooinclude hello `PreScriptLocation` and `PostScriptlocation` parameters.</span></span> <span data-ttu-id="30fdd-134">Například:</span><span class="sxs-lookup"><span data-stu-id="30fdd-134">For example:</span></span>
 
     ```azurecli
     {
@@ -186,11 +186,11 @@ ms.lasthandoff: 07/11/2017
     }
     ```
 
-5. <span data-ttu-id="29112-135">Vytvoření snímku před a po pořízení snímku skriptu souborů.</span><span class="sxs-lookup"><span data-stu-id="29112-135">Create the pre-snapshot and post-snapshot script files.</span></span>
+5. <span data-ttu-id="30fdd-135">Vytvořte hello soubory skriptu snímek před a po vytvoření snímku.</span><span class="sxs-lookup"><span data-stu-id="30fdd-135">Create hello pre-snapshot and post-snapshot script files.</span></span>
 
-    <span data-ttu-id="29112-136">Tady je příklad snímku před a po pořízení snímku skripty pro "cold zálohování" (zálohu do offline režimu, vypnutí a restartování):</span><span class="sxs-lookup"><span data-stu-id="29112-136">Here's an example of pre-snapshot and post-snapshot scripts for a "cold backup" (an offline backup, with shutdown and restart):</span></span>
+    <span data-ttu-id="30fdd-136">Tady je příklad snímku před a po pořízení snímku skripty pro "cold zálohování" (zálohu do offline režimu, vypnutí a restartování):</span><span class="sxs-lookup"><span data-stu-id="30fdd-136">Here's an example of pre-snapshot and post-snapshot scripts for a "cold backup" (an offline backup, with shutdown and restart):</span></span>
 
-    <span data-ttu-id="29112-137">Pro /etc/azure/pre_script.sh:</span><span class="sxs-lookup"><span data-stu-id="29112-137">For /etc/azure/pre_script.sh:</span></span>
+    <span data-ttu-id="30fdd-137">Pro /etc/azure/pre_script.sh:</span><span class="sxs-lookup"><span data-stu-id="30fdd-137">For /etc/azure/pre_script.sh:</span></span>
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -199,7 +199,7 @@ ms.lasthandoff: 07/11/2017
     su - $ORA_OWNER -c "$ORA_HOME/bin/dbshut $ORA_HOME" > /etc/azure/pre_script_$v_date.log
     ```
 
-    <span data-ttu-id="29112-138">Pro /etc/azure/post_script.sh:</span><span class="sxs-lookup"><span data-stu-id="29112-138">For /etc/azure/post_script.sh:</span></span>
+    <span data-ttu-id="30fdd-138">Pro /etc/azure/post_script.sh:</span><span class="sxs-lookup"><span data-stu-id="30fdd-138">For /etc/azure/post_script.sh:</span></span>
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -208,7 +208,7 @@ ms.lasthandoff: 07/11/2017
     su - $ORA_OWNER -c "$ORA_HOME/bin/dbstart $ORA_HOME" > /etc/azure/post_script_$v_date.log
     ```
 
-    <span data-ttu-id="29112-139">Tady je příklad snímku před a po pořízení snímku skripty pro "za zálohování" (online zálohování):</span><span class="sxs-lookup"><span data-stu-id="29112-139">Here's an example of pre-snapshot and post-snapshot scripts for a "hot backup" (an online backup):</span></span>
+    <span data-ttu-id="30fdd-139">Tady je příklad snímku před a po pořízení snímku skripty pro "za zálohování" (online zálohování):</span><span class="sxs-lookup"><span data-stu-id="30fdd-139">Here's an example of pre-snapshot and post-snapshot scripts for a "hot backup" (an online backup):</span></span>
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -217,7 +217,7 @@ ms.lasthandoff: 07/11/2017
     su - $ORA_OWNER -c "sqlplus / as sysdba @/etc/azure/pre_script.sql" > /etc/azure/pre_script_$v_date.log
     ```
 
-    <span data-ttu-id="29112-140">Pro /etc/azure/post_script.sh:</span><span class="sxs-lookup"><span data-stu-id="29112-140">For /etc/azure/post_script.sh:</span></span>
+    <span data-ttu-id="30fdd-140">Pro /etc/azure/post_script.sh:</span><span class="sxs-lookup"><span data-stu-id="30fdd-140">For /etc/azure/post_script.sh:</span></span>
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -226,7 +226,7 @@ ms.lasthandoff: 07/11/2017
     su - $ORA_OWNER -c "sqlplus / as sysdba @/etc/azure/post_script.sql" > /etc/azure/pre_script_$v_date.log
     ```
 
-    <span data-ttu-id="29112-141">/Etc/azure/pre_script.sql upravte obsah souboru podle požadavků:</span><span class="sxs-lookup"><span data-stu-id="29112-141">For /etc/azure/pre_script.sql, modify the contents of the file per your requirements:</span></span>
+    <span data-ttu-id="30fdd-141">/Etc/azure/pre_script.sql upravte obsah hello hello soubor pro vaše požadavky:</span><span class="sxs-lookup"><span data-stu-id="30fdd-141">For /etc/azure/pre_script.sql, modify hello contents of hello file per your requirements:</span></span>
 
     ```bash
     alter tablespace SYSTEM begin backup;
@@ -236,7 +236,7 @@ ms.lasthandoff: 07/11/2017
     alter system archive log stop;
     ```
 
-    <span data-ttu-id="29112-142">/Etc/azure/post_script.sql upravte obsah souboru podle požadavků:</span><span class="sxs-lookup"><span data-stu-id="29112-142">For /etc/azure/post_script.sql, modify the contents of the file per your requirements:</span></span>
+    <span data-ttu-id="30fdd-142">/Etc/azure/post_script.sql upravte obsah hello hello soubor pro vaše požadavky:</span><span class="sxs-lookup"><span data-stu-id="30fdd-142">For /etc/azure/post_script.sql, modify hello contents of hello file per your requirements:</span></span>
 
     ```bash
     alter tablespace SYSTEM end backup;
@@ -245,7 +245,7 @@ ms.lasthandoff: 07/11/2017
     alter system archive log start;
     ```
 
-6. <span data-ttu-id="29112-143">Změna oprávnění k souboru:</span><span class="sxs-lookup"><span data-stu-id="29112-143">Change file permissions:</span></span>
+6. <span data-ttu-id="30fdd-143">Změna oprávnění k souboru:</span><span class="sxs-lookup"><span data-stu-id="30fdd-143">Change file permissions:</span></span>
 
     ```bash
     # chmod 600 /etc/azure/VMSnapshotScriptPluginConfig.json
@@ -253,75 +253,75 @@ ms.lasthandoff: 07/11/2017
     # chmod 700 /etc/azure/post_script.sh
     ```
 
-7. <span data-ttu-id="29112-144">Testovat skripty.</span><span class="sxs-lookup"><span data-stu-id="29112-144">Test the scripts.</span></span>
+7. <span data-ttu-id="30fdd-144">Testování skriptů hello.</span><span class="sxs-lookup"><span data-stu-id="30fdd-144">Test hello scripts.</span></span>
 
-    <span data-ttu-id="29112-145">K testování skriptů, nejprve, přihlaste se jako kořenový.</span><span class="sxs-lookup"><span data-stu-id="29112-145">To test the scripts, first, sign in as root.</span></span> <span data-ttu-id="29112-146">Potom zkontrolujte, že nejsou žádné chyby:</span><span class="sxs-lookup"><span data-stu-id="29112-146">Then, ensure that there are no errors:</span></span>
+    <span data-ttu-id="30fdd-145">tootest hello skripty, nejprve, přihlaste se jako kořenového adresáře.</span><span class="sxs-lookup"><span data-stu-id="30fdd-145">tootest hello scripts, first, sign in as root.</span></span> <span data-ttu-id="30fdd-146">Potom zkontrolujte, že nejsou žádné chyby:</span><span class="sxs-lookup"><span data-stu-id="30fdd-146">Then, ensure that there are no errors:</span></span>
 
     ```bash
     # /etc/azure/pre_script.sh
     # /etc/azure/post_script.sh
     ```
 
-<span data-ttu-id="29112-147">Další informace najdete v tématu [zálohování konzistentní s aplikací pro virtuální počítače s Linuxem](https://azure.microsoft.com/en-us/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).</span><span class="sxs-lookup"><span data-stu-id="29112-147">For more information, see [Application-consistent backup for Linux VMs](https://azure.microsoft.com/en-us/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).</span></span>
+<span data-ttu-id="30fdd-147">Další informace najdete v tématu [zálohování konzistentní s aplikací pro virtuální počítače s Linuxem](https://azure.microsoft.com/en-us/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).</span><span class="sxs-lookup"><span data-stu-id="30fdd-147">For more information, see [Application-consistent backup for Linux VMs](https://azure.microsoft.com/en-us/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).</span></span>
 
 
-### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a><span data-ttu-id="29112-148">Krok 5: Trezory služeb zotavení Azure pomocí zálohování virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="29112-148">Step 5: Use Azure Recovery Services vaults to back up the VM</span></span>
+### <a name="step-5-use-azure-recovery-services-vaults-tooback-up-hello-vm"></a><span data-ttu-id="30fdd-148">Krok 5: Trezory služeb zotavení Azure pomocí tooback až hello virtuálních počítačů</span><span class="sxs-lookup"><span data-stu-id="30fdd-148">Step 5: Use Azure Recovery Services vaults tooback up hello VM</span></span>
 
-1.  <span data-ttu-id="29112-149">Na portálu Azure, vyhledejte **trezory služeb zotavení**.</span><span class="sxs-lookup"><span data-stu-id="29112-149">In the Azure portal, search for **Recovery Services vaults**.</span></span>
+1.  <span data-ttu-id="30fdd-149">V hello portálu Azure, vyhledejte **trezory služeb zotavení**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-149">In hello Azure portal, search for **Recovery Services vaults**.</span></span>
 
     ![Stránka trezory služby zotavení](./media/oracle-backup-recovery/recovery_service_01.png)
 
-2.  <span data-ttu-id="29112-151">Na **trezory služeb zotavení** okno pro přidání nové úložiště, klikněte na tlačítko **přidat**.</span><span class="sxs-lookup"><span data-stu-id="29112-151">On the **Recovery Services vaults** blade, to add a new vault, click **Add**.</span></span>
+2.  <span data-ttu-id="30fdd-151">Na hello **trezory služeb zotavení** , tooadd nové úložiště, klikněte na **přidat**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-151">On hello **Recovery Services vaults** blade, tooadd a new vault, click **Add**.</span></span>
 
     ![Trezory služeb zotavení přidat stránku](./media/oracle-backup-recovery/recovery_service_02.png)
 
-3.  <span data-ttu-id="29112-153">Chcete-li pokračovat, klikněte na tlačítko **myVault**.</span><span class="sxs-lookup"><span data-stu-id="29112-153">To continue, click **myVault**.</span></span>
+3.  <span data-ttu-id="30fdd-153">toocontinue, klikněte na tlačítko **myVault**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-153">toocontinue, click **myVault**.</span></span>
 
     ![Stránku podrobností trezory služeb zotavení](./media/oracle-backup-recovery/recovery_service_03.png)
 
-4.  <span data-ttu-id="29112-155">Na **myVault** okně klikněte na tlačítko **zálohování**.</span><span class="sxs-lookup"><span data-stu-id="29112-155">On the **myVault** blade, click **Backup**.</span></span>
+4.  <span data-ttu-id="30fdd-155">Na hello **myVault** okně klikněte na tlačítko **zálohování**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-155">On hello **myVault** blade, click **Backup**.</span></span>
 
     ![Trezory služeb zotavení zálohování stránky](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  <span data-ttu-id="29112-157">Na **cíl zálohování** okně použít výchozí hodnoty **Azure** a **virtuální počítač**.</span><span class="sxs-lookup"><span data-stu-id="29112-157">On the **Backup Goal** blade, use the default values of **Azure** and **Virtual machine**.</span></span> <span data-ttu-id="29112-158">Klikněte na **OK**.</span><span class="sxs-lookup"><span data-stu-id="29112-158">Click **OK**.</span></span>
+5.  <span data-ttu-id="30fdd-157">Na hello **cíl zálohování** okně použití hello výchozí hodnoty **Azure** a **virtuální počítač**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-157">On hello **Backup Goal** blade, use hello default values of **Azure** and **Virtual machine**.</span></span> <span data-ttu-id="30fdd-158">Klikněte na **OK**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-158">Click **OK**.</span></span>
 
     ![Stránku podrobností trezory služeb zotavení](./media/oracle-backup-recovery/recovery_service_05.png)
 
-6.  <span data-ttu-id="29112-160">Pro **zálohování zásad**, použijte **DefaultPolicy**, nebo vyberte **vytvořit novou zásadu**.</span><span class="sxs-lookup"><span data-stu-id="29112-160">For **Backup policy**, use **DefaultPolicy**, or select **Create New policy**.</span></span> <span data-ttu-id="29112-161">Klikněte na **OK**.</span><span class="sxs-lookup"><span data-stu-id="29112-161">Click **OK**.</span></span>
+6.  <span data-ttu-id="30fdd-160">Pro **zálohování zásad**, použijte **DefaultPolicy**, nebo vyberte **vytvořit novou zásadu**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-160">For **Backup policy**, use **DefaultPolicy**, or select **Create New policy**.</span></span> <span data-ttu-id="30fdd-161">Klikněte na **OK**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-161">Click **OK**.</span></span>
 
     ![Stránka podrobnosti zásady zálohování trezory služeb zotavení](./media/oracle-backup-recovery/recovery_service_06.png)
 
-7.  <span data-ttu-id="29112-163">Na **vybrat virtuální počítače** okně, vyberte **myVM1** zaškrtněte políčko a potom klikněte na **OK**.</span><span class="sxs-lookup"><span data-stu-id="29112-163">On the **Select virtual machines** blade, select the **myVM1** check box, and then click **OK**.</span></span> <span data-ttu-id="29112-164">Klikněte **povolit zálohování** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="29112-164">Click the **Enable backup** button.</span></span>
+7.  <span data-ttu-id="30fdd-163">Na hello **vybrat virtuální počítače** okně, vyberte hello **myVM1** zaškrtněte políčko a potom klikněte na **OK**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-163">On hello **Select virtual machines** blade, select hello **myVM1** check box, and then click **OK**.</span></span> <span data-ttu-id="30fdd-164">Klikněte na tlačítko hello **povolit zálohování** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="30fdd-164">Click hello **Enable backup** button.</span></span>
 
-    ![Položek trezory služeb zotavení na stránku podrobností zálohování](./media/oracle-backup-recovery/recovery_service_07.png)
+    ![Obnovení služby trezory položky toohello zálohování podrobností stránky](./media/oracle-backup-recovery/recovery_service_07.png)
 
     > [!IMPORTANT]
-    > <span data-ttu-id="29112-166">Po kliknutí na tlačítko **povolit zálohování**, proces zálohování nelze spustit, až do vypršení platnosti naplánovaném čase.</span><span class="sxs-lookup"><span data-stu-id="29112-166">After you click **Enable backup**, the backup process doesn't start until the scheduled time expires.</span></span> <span data-ttu-id="29112-167">Nastavit okamžitou zálohu, proveďte další krok.</span><span class="sxs-lookup"><span data-stu-id="29112-167">To set up an immediate backup, complete the next step.</span></span>
+    > <span data-ttu-id="30fdd-166">Po kliknutí na tlačítko **povolit zálohování**, proces zálohování hello nespustí do hello naplánovanou dobu vypršení platnosti.</span><span class="sxs-lookup"><span data-stu-id="30fdd-166">After you click **Enable backup**, hello backup process doesn't start until hello scheduled time expires.</span></span> <span data-ttu-id="30fdd-167">tooset si zálohu okamžitě, dokončení hello další krok.</span><span class="sxs-lookup"><span data-stu-id="30fdd-167">tooset up an immediate backup, complete hello next step.</span></span>
 
-8.  <span data-ttu-id="29112-168">Na **myVault - zálohování položek** okno, v části **zálohování počet položek**, vyberte počet zálohování položek.</span><span class="sxs-lookup"><span data-stu-id="29112-168">On the **myVault - Backup items** blade, under **BACKUP ITEM COUNT**, select the backup item count.</span></span>
+8.  <span data-ttu-id="30fdd-168">Na hello **myVault - zálohování položek** okno, v části **zálohování počet položek**, vyberte počet zálohování položek hello.</span><span class="sxs-lookup"><span data-stu-id="30fdd-168">On hello **myVault - Backup items** blade, under **BACKUP ITEM COUNT**, select hello backup item count.</span></span>
 
     ![Stránka Podrobnosti o obnovení služby trezory myVault](./media/oracle-backup-recovery/recovery_service_08.png)
 
-9.  <span data-ttu-id="29112-170">Na **zálohování položek (virtuální počítač Azure)** okno na pravé straně stránky klikněte na tlačítko se třemi tečkami (**...** ) tlačítko a potom klikněte na **zálohovat nyní**.</span><span class="sxs-lookup"><span data-stu-id="29112-170">On the **Backup Items (Azure Virtual Machine)** blade, on the right side of the page, click the ellipsis (**...**) button, and then click **Backup now**.</span></span>
+9.  <span data-ttu-id="30fdd-170">Na hello **zálohování položek (virtuální počítač Azure)** okno na pravé straně hello hello stránky, klikněte na nabídku s výpustkou hello (**...** ) tlačítko a potom klikněte na **zálohovat nyní**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-170">On hello **Backup Items (Azure Virtual Machine)** blade, on hello right side of hello page, click hello ellipsis (**...**) button, and then click **Backup now**.</span></span>
 
     ![Zálohování teď příkaz trezory služeb zotavení](./media/oracle-backup-recovery/recovery_service_09.png)
 
-10. <span data-ttu-id="29112-172">Klikněte **zálohování** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="29112-172">Click the **Backup** button.</span></span> <span data-ttu-id="29112-173">Počkejte na dokončení procesu zálohování.</span><span class="sxs-lookup"><span data-stu-id="29112-173">Wait for the backup process to finish.</span></span> <span data-ttu-id="29112-174">Potom přejděte na [krok 6: odebrat soubory databáze](#step-6-remove-the-database-files).</span><span class="sxs-lookup"><span data-stu-id="29112-174">Then, go to [Step 6: Remove the database files](#step-6-remove-the-database-files).</span></span>
+10. <span data-ttu-id="30fdd-172">Klikněte na tlačítko hello **zálohování** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="30fdd-172">Click hello **Backup** button.</span></span> <span data-ttu-id="30fdd-173">Počkejte toofinish hello proces zálohování.</span><span class="sxs-lookup"><span data-stu-id="30fdd-173">Wait for hello backup process toofinish.</span></span> <span data-ttu-id="30fdd-174">Pak přejděte příliš[krok 6: odebrat soubory databáze hello](#step-6-remove-the-database-files).</span><span class="sxs-lookup"><span data-stu-id="30fdd-174">Then, go too[Step 6: Remove hello database files](#step-6-remove-the-database-files).</span></span>
 
-    <span data-ttu-id="29112-175">Chcete-li zobrazit stav úlohy zálohování, klikněte na tlačítko **úlohy**.</span><span class="sxs-lookup"><span data-stu-id="29112-175">To view the status of the backup job, click **Jobs**.</span></span>
+    <span data-ttu-id="30fdd-175">Stav hello tooview hello úloha zálohování, klikněte na tlačítko **úlohy**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-175">tooview hello status of hello backup job, click **Jobs**.</span></span>
 
     ![Trezory služeb zotavení úlohy stránky](./media/oracle-backup-recovery/recovery_service_10.png)
 
-    <span data-ttu-id="29112-177">Na následujícím obrázku se zobrazí stav úlohy zálohování:</span><span class="sxs-lookup"><span data-stu-id="29112-177">The status of the backup job appears in the following image:</span></span>
+    <span data-ttu-id="30fdd-177">Stav Hello hello úloha zálohování se zobrazí v hello následující bitové kopie:</span><span class="sxs-lookup"><span data-stu-id="30fdd-177">hello status of hello backup job appears in hello following image:</span></span>
 
     ![Stránka se stavem úlohy trezory služeb zotavení](./media/oracle-backup-recovery/recovery_service_11.png)
 
-11. <span data-ttu-id="29112-179">Zálohování konzistentní s aplikací vyřešte všechny chyby v souboru protokolu.</span><span class="sxs-lookup"><span data-stu-id="29112-179">For an application-consistent backup, address any errors in the log file.</span></span> <span data-ttu-id="29112-180">Soubor protokolu se nachází v /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.</span><span class="sxs-lookup"><span data-stu-id="29112-180">The log file is located at /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.</span></span>
+11. <span data-ttu-id="30fdd-179">Zálohování konzistentní s aplikací vyřešte všechny chyby v souboru protokolu hello.</span><span class="sxs-lookup"><span data-stu-id="30fdd-179">For an application-consistent backup, address any errors in hello log file.</span></span> <span data-ttu-id="30fdd-180">soubor protokolu Hello se nachází v /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.</span><span class="sxs-lookup"><span data-stu-id="30fdd-180">hello log file is located at /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.</span></span>
 
-### <a name="step-6-remove-the-database-files"></a><span data-ttu-id="29112-181">Krok 6: Odebrat soubory databáze</span><span class="sxs-lookup"><span data-stu-id="29112-181">Step 6: Remove the database files</span></span> 
-<span data-ttu-id="29112-182">Později v tomto článku se dozvíte testování procesu obnovení.</span><span class="sxs-lookup"><span data-stu-id="29112-182">Later in this article, you'll learn how to test the recovery process.</span></span> <span data-ttu-id="29112-183">Chcete-li otestovat proces obnovení, budete muset odebrat soubory databáze.</span><span class="sxs-lookup"><span data-stu-id="29112-183">Before you can test the recovery process, you have to remove the database files.</span></span>
+### <a name="step-6-remove-hello-database-files"></a><span data-ttu-id="30fdd-181">Krok 6: Odebrat soubory databáze hello</span><span class="sxs-lookup"><span data-stu-id="30fdd-181">Step 6: Remove hello database files</span></span> 
+<span data-ttu-id="30fdd-182">Později v tomto článku se dozvíte, jak tootest hello proces obnovení.</span><span class="sxs-lookup"><span data-stu-id="30fdd-182">Later in this article, you'll learn how tootest hello recovery process.</span></span> <span data-ttu-id="30fdd-183">Chcete-li otestovat proces obnovení hello, máte tooremove hello databázové soubory.</span><span class="sxs-lookup"><span data-stu-id="30fdd-183">Before you can test hello recovery process, you have tooremove hello database files.</span></span>
 
-1.  <span data-ttu-id="29112-184">Odebrání souborů tabulkového prostoru a zálohování:</span><span class="sxs-lookup"><span data-stu-id="29112-184">Remove the tablespace and backup files:</span></span>
+1.  <span data-ttu-id="30fdd-184">Odebrání souborů hello tabulkového prostoru a zálohování:</span><span class="sxs-lookup"><span data-stu-id="30fdd-184">Remove hello tablespace and backup files:</span></span>
 
     ```bash
     $ sudo su - oracle
@@ -331,7 +331,7 @@ ms.lasthandoff: 07/11/2017
     $ rm -rf *
     ```
     
-2.  <span data-ttu-id="29112-185">(Volitelné) Vypněte instanci Oracle:</span><span class="sxs-lookup"><span data-stu-id="29112-185">(Optional) Shut down the Oracle instance:</span></span>
+2.  <span data-ttu-id="30fdd-185">(Volitelné) Vypněte instanci Oracle hello:</span><span class="sxs-lookup"><span data-stu-id="30fdd-185">(Optional) Shut down hello Oracle instance:</span></span>
 
     ```bash
     $ sqlplus / as sysdba
@@ -339,38 +339,38 @@ ms.lasthandoff: 07/11/2017
     ORACLE instance shut down.
     ```
 
-## <a name="restore-the-deleted-files-from-the-recovery-services-vaults"></a><span data-ttu-id="29112-186">Obnovení odstraněných souborů z trezory služeb zotavení</span><span class="sxs-lookup"><span data-stu-id="29112-186">Restore the deleted files from the Recovery Services vaults</span></span>
-<span data-ttu-id="29112-187">Obnovení odstraněných souborů, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="29112-187">To restore the deleted files, complete the following steps:</span></span>
+## <a name="restore-hello-deleted-files-from-hello-recovery-services-vaults"></a><span data-ttu-id="30fdd-186">Obnovit soubory hello odstraněn z hello trezory služeb zotavení</span><span class="sxs-lookup"><span data-stu-id="30fdd-186">Restore hello deleted files from hello Recovery Services vaults</span></span>
+<span data-ttu-id="30fdd-187">toorestore hello odstranit soubory, dokončení hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="30fdd-187">toorestore hello deleted files, complete hello following steps:</span></span>
 
-1. <span data-ttu-id="29112-188">Na portálu Azure, vyhledejte *myVault* položky trezory služeb zotavení.</span><span class="sxs-lookup"><span data-stu-id="29112-188">In the Azure portal, search for the *myVault* Recovery Services vaults item.</span></span> <span data-ttu-id="29112-189">Na **přehled** okno, v části **zálohování položek**, vyberte počet položek.</span><span class="sxs-lookup"><span data-stu-id="29112-189">On the **Overview** blade, under **Backup items**, select the number of items.</span></span>
+1. <span data-ttu-id="30fdd-188">V hello portálu Azure, vyhledejte hello *myVault* položky trezory služeb zotavení.</span><span class="sxs-lookup"><span data-stu-id="30fdd-188">In hello Azure portal, search for hello *myVault* Recovery Services vaults item.</span></span> <span data-ttu-id="30fdd-189">Na hello **přehled** okno, v části **zálohování položek**, vyberte hello počet položek.</span><span class="sxs-lookup"><span data-stu-id="30fdd-189">On hello **Overview** blade, under **Backup items**, select hello number of items.</span></span>
 
     ![Obnovení služby trezory myVault zálohování položek](./media/oracle-backup-recovery/recovery_service_12.png)
 
-2. <span data-ttu-id="29112-191">V části **počet položek zálohování**, vyberte počet položek.</span><span class="sxs-lookup"><span data-stu-id="29112-191">Under **BACKUP ITEM COUNT**, select the number of items.</span></span>
+2. <span data-ttu-id="30fdd-191">V části **počet položek zálohování**, vyberte hello počet položek.</span><span class="sxs-lookup"><span data-stu-id="30fdd-191">Under **BACKUP ITEM COUNT**, select hello number of items.</span></span>
 
     ![Počet položek. zálohování virtuálního počítače Azure trezory služeb zotavení](./media/oracle-backup-recovery/recovery_service_13.png)
 
-3. <span data-ttu-id="29112-193">Na **myvm1** okně klikněte na tlačítko **obnovení souboru (Preview)**.</span><span class="sxs-lookup"><span data-stu-id="29112-193">On the **myvm1** blade, click **File Recovery (Preview)**.</span></span>
+3. <span data-ttu-id="30fdd-193">Na hello **myvm1** okně klikněte na tlačítko **obnovení souboru (Preview)**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-193">On hello **myvm1** blade, click **File Recovery (Preview)**.</span></span>
 
-    ![Snímek obrazovky služeb zotavení trezory stránka obnovení souboru](./media/oracle-backup-recovery/recovery_service_14.png)
+    ![Snímek obrazovky hello služeb zotavení trezory stránka obnovení souboru](./media/oracle-backup-recovery/recovery_service_14.png)
 
-4. <span data-ttu-id="29112-195">Na **obnovení souboru (Preview)** podokně klikněte na tlačítko **stáhnout skript**.</span><span class="sxs-lookup"><span data-stu-id="29112-195">On the **File Recovery (Preview)** pane, click **Download Script**.</span></span> <span data-ttu-id="29112-196">Potom uložte soubor ke stažení (.sh) do složky v klientském počítači.</span><span class="sxs-lookup"><span data-stu-id="29112-196">Then, save the download (.sh) file to a folder on the client computer.</span></span>
+4. <span data-ttu-id="30fdd-195">Na hello **obnovení souboru (Preview)** podokně klikněte na tlačítko **stáhnout skript**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-195">On hello **File Recovery (Preview)** pane, click **Download Script**.</span></span> <span data-ttu-id="30fdd-196">Potom uložte hello stahování (.sh) soubor tooa složku na klientském počítači hello.</span><span class="sxs-lookup"><span data-stu-id="30fdd-196">Then, save hello download (.sh) file tooa folder on hello client computer.</span></span>
 
     ![Stáhnout možnosti uloží soubor skriptu](./media/oracle-backup-recovery/recovery_service_15.png)
 
-5. <span data-ttu-id="29112-198">Zkopírujte soubor .sh k virtuálnímu počítači.</span><span class="sxs-lookup"><span data-stu-id="29112-198">Copy the .sh file to the VM.</span></span>
+5. <span data-ttu-id="30fdd-198">Zkopírujte hello .sh souboru toohello virtuálních počítačů.</span><span class="sxs-lookup"><span data-stu-id="30fdd-198">Copy hello .sh file toohello VM.</span></span>
 
-    <span data-ttu-id="29112-199">Následující příklad ukazuje, jak používat zabezpečený kopie (scp) příkaz přesunout soubor k virtuálnímu počítači.</span><span class="sxs-lookup"><span data-stu-id="29112-199">The following example shows how you to use a secure copy (scp) command to move the file to the VM.</span></span> <span data-ttu-id="29112-200">Také můžete zkopírovat obsah do schránky a vložte obsah do nového souboru, který je nastavený na virtuálním počítači.</span><span class="sxs-lookup"><span data-stu-id="29112-200">You also can copy the contents to the clipboard, and then paste the contents in a new file that is set up on the VM.</span></span>
+    <span data-ttu-id="30fdd-199">Hello následující příklad ukazuje, jak toouse zabezpečené kopírování (scp) příkaz toomove hello toohello soubor virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="30fdd-199">hello following example shows how you toouse a secure copy (scp) command toomove hello file toohello VM.</span></span> <span data-ttu-id="30fdd-200">Do nového souboru, který je nastavený na hello virtuálních počítačů můžete zkopírovat také hello obsah toohello schránky a vložte obsah hello.</span><span class="sxs-lookup"><span data-stu-id="30fdd-200">You also can copy hello contents toohello clipboard, and then paste hello contents in a new file that is set up on hello VM.</span></span>
 
     > [!IMPORTANT]
-    > <span data-ttu-id="29112-201">V následujícím příkladu Ujistěte se, aktualizaci hodnoty IP adres a složky.</span><span class="sxs-lookup"><span data-stu-id="29112-201">In the following example, ensure that you update the IP address and folder values.</span></span> <span data-ttu-id="29112-202">Hodnoty musí být mapována na složku, kam je uložena souboru.</span><span class="sxs-lookup"><span data-stu-id="29112-202">The values must map to the folder where the file is saved.</span></span>
+    > <span data-ttu-id="30fdd-201">V následujícím příkladu hello Ujistěte se, aktualizovat hello IP adresu a složku hodnoty.</span><span class="sxs-lookup"><span data-stu-id="30fdd-201">In hello following example, ensure that you update hello IP address and folder values.</span></span> <span data-ttu-id="30fdd-202">Hello hodnoty musí být mapována toohello složku, kde je uložený soubor hello.</span><span class="sxs-lookup"><span data-stu-id="30fdd-202">hello values must map toohello folder where hello file is saved.</span></span>
 
     ```bash
     $ scp Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh <publicIpAddress>:/<folder>
     ```
-6. <span data-ttu-id="29112-203">Změňte souboru tak, aby vlastníkem kořenu.</span><span class="sxs-lookup"><span data-stu-id="29112-203">Change the file, so that it's owned by the root.</span></span>
+6. <span data-ttu-id="30fdd-203">Změňte hello souboru tak, aby vlastníkem je kořenový hello.</span><span class="sxs-lookup"><span data-stu-id="30fdd-203">Change hello file, so that it's owned by hello root.</span></span>
 
-    <span data-ttu-id="29112-204">V následujícím příkladu změňte soubor tak, aby vlastníkem kořenu.</span><span class="sxs-lookup"><span data-stu-id="29112-204">In the following example, change the file so that it's owned by the root.</span></span> <span data-ttu-id="29112-205">Potom změňte oprávnění.</span><span class="sxs-lookup"><span data-stu-id="29112-205">Then, change permissions.</span></span>
+    <span data-ttu-id="30fdd-204">V následujícím příkladu hello změňte hello souboru tak, aby vlastníkem je kořenový hello.</span><span class="sxs-lookup"><span data-stu-id="30fdd-204">In hello following example, change hello file so that it's owned by hello root.</span></span> <span data-ttu-id="30fdd-205">Potom změňte oprávnění.</span><span class="sxs-lookup"><span data-stu-id="30fdd-205">Then, change permissions.</span></span>
 
     ```bash 
     $ ssh <publicIpAddress>
@@ -379,24 +379,24 @@ ms.lasthandoff: 07/11/2017
     # chmod 755 /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     # /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     ```
-    <span data-ttu-id="29112-206">Následující příklad ukazuje, co byste měli vidět po spuštění uvedený skript.</span><span class="sxs-lookup"><span data-stu-id="29112-206">The following example shows what you should see after you run the preceding script.</span></span> <span data-ttu-id="29112-207">Když se zobrazí výzva, chcete-li pokračovat, zadejte **Y**.</span><span class="sxs-lookup"><span data-stu-id="29112-207">When you're prompted to continue, enter **Y**.</span></span>
+    <span data-ttu-id="30fdd-206">Hello následující příklad ukazuje, co byste měli vidět po spuštění hello předcházející skriptu.</span><span class="sxs-lookup"><span data-stu-id="30fdd-206">hello following example shows what you should see after you run hello preceding script.</span></span> <span data-ttu-id="30fdd-207">Když se zobrazí výzva toocontinue, zadejte **Y**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-207">When you're prompted toocontinue, enter **Y**.</span></span>
 
     ```bash
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
-    The script requires 'open-iscsi' and 'lshw' to run.
-    Do you want us to install 'open-iscsi' and 'lshw' on this machine?
-    Please press 'Y' to continue with installation, 'N' to abort the operation. : Y
+    hello script requires 'open-iscsi' and 'lshw' toorun.
+    Do you want us tooinstall 'open-iscsi' and 'lshw' on this machine?
+    Please press 'Y' toocontinue with installation, 'N' tooabort hello operation. : Y
     Installing 'open-iscsi'....
     Installing 'lshw'....
 
-    Connecting to recovery point using ISCSI service...
+    Connecting toorecovery point using ISCSI service...
 
     Connection succeeded!
 
-    Please wait while we attach volumes of the recovery point to this machine...
+    Please wait while we attach volumes of hello recovery point toothis machine...
 
-    ************ Volumes of the recovery point and their mount paths on this machine ************
+    ************ Volumes of hello recovery point and their mount paths on this machine ************
 
     Sr.No.  |  Disk  |  Volume  |  MountPath
 
@@ -404,20 +404,20 @@ ms.lasthandoff: 07/11/2017
 
     2)  | /dev/sde  |  /dev/sde2  |  /root/myVM-20170517093913/Volume2
 
-    ************ Open File Explorer to browse for files. ************
+    ************ Open File Explorer toobrowse for files. ************
 
-    After recovery, to remove the disks and close the connection to the recovery point, please click 'Unmount Disks' in step 3 of the portal.
+    After recovery, tooremove hello disks and close hello connection toohello recovery point, please click 'Unmount Disks' in step 3 of hello portal.
 
-    Please enter 'q/Q' to exit...
+    Please enter 'q/Q' tooexit...
     ```
 
-7. <span data-ttu-id="29112-208">Přístup k připojené svazky je potvrzen.</span><span class="sxs-lookup"><span data-stu-id="29112-208">Access to the mounted volumes is confirmed.</span></span>
+7. <span data-ttu-id="30fdd-208">Přístup k toohello připojené svazky je potvrzen.</span><span class="sxs-lookup"><span data-stu-id="30fdd-208">Access toohello mounted volumes is confirmed.</span></span>
 
-    <span data-ttu-id="29112-209">Chcete-li ukončit, zadejte **q**a poté vyhledejte připojených svazků.</span><span class="sxs-lookup"><span data-stu-id="29112-209">To exit, enter **q**, and then search for the mounted volumes.</span></span> <span data-ttu-id="29112-210">Chcete-li vytvořit seznam přidaných svazky, na příkazovém řádku, zadejte **df – KB**.</span><span class="sxs-lookup"><span data-stu-id="29112-210">To create a list of the added volumes, at a command prompt, enter **df -k**.</span></span>
+    <span data-ttu-id="30fdd-209">tooexit, zadejte **q**a poté vyhledejte hello připojené svazky.</span><span class="sxs-lookup"><span data-stu-id="30fdd-209">tooexit, enter **q**, and then search for hello mounted volumes.</span></span> <span data-ttu-id="30fdd-210">seznam hello Přidat svazky, na příkazovém řádku, zadejte toocreate **df – KB**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-210">toocreate a list of hello added volumes, at a command prompt, enter **df -k**.</span></span>
 
-    ![-K DF – příkaz](./media/oracle-backup-recovery/recovery_service_16.png)
+    ![příkaz -k df Hello](./media/oracle-backup-recovery/recovery_service_16.png)
 
-8. <span data-ttu-id="29112-212">Ke zkopírování chybějící soubory zpět do složky použijte následující skript:</span><span class="sxs-lookup"><span data-stu-id="29112-212">Use the following script to copy the missing files back to the folders:</span></span>
+8. <span data-ttu-id="30fdd-212">Použití hello následující skript toocopy hello chybějící soubory a složky back toohello:</span><span class="sxs-lookup"><span data-stu-id="30fdd-212">Use hello following script toocopy hello missing files back toohello folders:</span></span>
 
     ```bash
     # cd /root/myVM-2017XXXXXXX/Volume2/u01/app/oracle/fast_recovery_area/CDB1/backupset/2017_xx_xx
@@ -429,7 +429,7 @@ ms.lasthandoff: 07/11/2017
     # cd /u01/app/oracle/oradata/cdb1
     # chown oracle:oinstall *.dbf
     ```
-9. <span data-ttu-id="29112-213">V následující skript použijte k obnovení databázi RMAN:</span><span class="sxs-lookup"><span data-stu-id="29112-213">In the following script, use RMAN to recover the database:</span></span>
+9. <span data-ttu-id="30fdd-213">V následující skript hello použijte RMAN toorecover hello databáze:</span><span class="sxs-lookup"><span data-stu-id="30fdd-213">In hello following script, use RMAN toorecover hello database:</span></span>
 
     ```bash
     # sudo su - oracle
@@ -441,93 +441,93 @@ ms.lasthandoff: 07/11/2017
     RMAN> SELECT * FROM scott.scott_table;
     ```
     
-10. <span data-ttu-id="29112-214">Odpojte disk.</span><span class="sxs-lookup"><span data-stu-id="29112-214">Unmount the disk.</span></span>
+10. <span data-ttu-id="30fdd-214">Odpojte hello disk.</span><span class="sxs-lookup"><span data-stu-id="30fdd-214">Unmount hello disk.</span></span>
 
-    <span data-ttu-id="29112-215">Na portálu Azure na **obnovení souboru (Preview)** okně klikněte na tlačítko **odpojit disky**.</span><span class="sxs-lookup"><span data-stu-id="29112-215">In the Azure portal, on the **File Recovery (Preview)** blade, click **Unmount Disks**.</span></span>
+    <span data-ttu-id="30fdd-215">V portálu Azure, na hello hello **obnovení souboru (Preview)** okně klikněte na tlačítko **odpojit disky**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-215">In hello Azure portal, on hello **File Recovery (Preview)** blade, click **Unmount Disks**.</span></span>
 
     ![Odpojení příkaz disky](./media/oracle-backup-recovery/recovery_service_17.png)
 
-## <a name="restore-the-entire-vm"></a><span data-ttu-id="29112-217">Obnovit celý virtuální počítač</span><span class="sxs-lookup"><span data-stu-id="29112-217">Restore the entire VM</span></span>
+## <a name="restore-hello-entire-vm"></a><span data-ttu-id="30fdd-217">Obnovení hello celý virtuální počítač</span><span class="sxs-lookup"><span data-stu-id="30fdd-217">Restore hello entire VM</span></span>
 
-<span data-ttu-id="29112-218">Místo obnovení odstraněných souborů ze trezory služeb zotavení, můžete obnovit celý virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="29112-218">Instead of restoring the deleted files from the Recovery Services vaults, you can restore the entire VM.</span></span>
+<span data-ttu-id="30fdd-218">Místo hello odstranit soubory obnovení ze hello trezory služeb zotavení, můžete obnovit hello celý virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="30fdd-218">Instead of restoring hello deleted files from hello Recovery Services vaults, you can restore hello entire VM.</span></span>
 
-### <a name="step-1-delete-myvm"></a><span data-ttu-id="29112-219">Krok 1: Odstranění Můjvp</span><span class="sxs-lookup"><span data-stu-id="29112-219">Step 1: Delete myVM</span></span>
+### <a name="step-1-delete-myvm"></a><span data-ttu-id="30fdd-219">Krok 1: Odstranění Můjvp</span><span class="sxs-lookup"><span data-stu-id="30fdd-219">Step 1: Delete myVM</span></span>
 
-*   <span data-ttu-id="29112-220">V portálu Azure přejděte do **myVM1** trezoru a potom vyberte **odstranit**.</span><span class="sxs-lookup"><span data-stu-id="29112-220">In the Azure portal, go to the **myVM1** vault, and then select **Delete**.</span></span>
+*   <span data-ttu-id="30fdd-220">V hello portálu Azure, přejděte toohello **myVM1** trezoru a potom vyberte **odstranit**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-220">In hello Azure portal, go toohello **myVM1** vault, and then select **Delete**.</span></span>
 
     ![Příkaz delete trezoru](./media/oracle-backup-recovery/recover_vm_01.png)
 
-### <a name="step-2-recover-the-vm"></a><span data-ttu-id="29112-222">Krok 2: Obnovení virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="29112-222">Step 2: Recover the VM</span></span>
+### <a name="step-2-recover-hello-vm"></a><span data-ttu-id="30fdd-222">Krok 2: Obnovení hello virtuálních počítačů</span><span class="sxs-lookup"><span data-stu-id="30fdd-222">Step 2: Recover hello VM</span></span>
 
-1.  <span data-ttu-id="29112-223">Přejděte na **trezory služeb zotavení**a potom vyberte **myVault**.</span><span class="sxs-lookup"><span data-stu-id="29112-223">Go to **Recovery Services vaults**, and then select **myVault**.</span></span>
+1.  <span data-ttu-id="30fdd-223">Přejděte příliš**trezory služeb zotavení**a potom vyberte **myVault**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-223">Go too**Recovery Services vaults**, and then select **myVault**.</span></span>
 
     ![Položka myVault](./media/oracle-backup-recovery/recover_vm_02.png)
 
-2.  <span data-ttu-id="29112-225">Na **přehled** okno, v části **zálohování položek**, vyberte počet položek.</span><span class="sxs-lookup"><span data-stu-id="29112-225">On the **Overview** blade, under **Backup items**, select the number of items.</span></span>
+2.  <span data-ttu-id="30fdd-225">Na hello **přehled** okno, v části **zálohování položek**, vyberte hello počet položek.</span><span class="sxs-lookup"><span data-stu-id="30fdd-225">On hello **Overview** blade, under **Backup items**, select hello number of items.</span></span>
 
     ![myVault zálohování položek](./media/oracle-backup-recovery/recover_vm_03.png)
 
-3.  <span data-ttu-id="29112-227">Na **zálohování položek (virtuální počítač Azure)** vyberte **myvm1**.</span><span class="sxs-lookup"><span data-stu-id="29112-227">On the **Backup Items (Azure Virtual Machine)** blade, select **myvm1**.</span></span>
+3.  <span data-ttu-id="30fdd-227">Na hello **zálohování položek (virtuální počítač Azure)** vyberte **myvm1**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-227">On hello **Backup Items (Azure Virtual Machine)** blade, select **myvm1**.</span></span>
 
     ![Stránku obnovení virtuálního počítače](./media/oracle-backup-recovery/recover_vm_04.png)
 
-4.  <span data-ttu-id="29112-229">Na **myvm1** okně klikněte na tlačítko se třemi tečkami (**...** ) tlačítko a potom klikněte na **obnovit virtuální počítač**.</span><span class="sxs-lookup"><span data-stu-id="29112-229">On the **myvm1** blade, click the ellipsis (**...**) button,  and then click **Restore VM**.</span></span>
+4.  <span data-ttu-id="30fdd-229">Na hello **myvm1** okně klikněte na tlačítko se třemi tečkami hello (**...** ) tlačítko a potom klikněte na **obnovit virtuální počítač**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-229">On hello **myvm1** blade, click hello ellipsis (**...**) button,  and then click **Restore VM**.</span></span>
 
     ![Virtuální počítač příkazu Obnovit](./media/oracle-backup-recovery/recover_vm_05.png)
 
-5.  <span data-ttu-id="29112-231">Na **vyberte bod obnovení** okno, vyberte položku, kterou chcete obnovit a pak klikněte na tlačítko **OK**.</span><span class="sxs-lookup"><span data-stu-id="29112-231">On the **Select restore point** blade, select the item that you want to restore, and then click **OK**.</span></span>
+5.  <span data-ttu-id="30fdd-231">Na hello **vyberte bod obnovení** okně, vyberte hello položka má toorestore a pak klikněte na tlačítko **OK**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-231">On hello **Select restore point** blade, select hello item that you want toorestore, and then click **OK**.</span></span>
 
-    ![Vyberte bod obnovení](./media/oracle-backup-recovery/recover_vm_06.png)
+    ![Bod obnovení vyberte hello](./media/oracle-backup-recovery/recover_vm_06.png)
 
-    <span data-ttu-id="29112-233">Pokud jste povolili zálohování konzistentní s aplikací, se zobrazí modré svislá čára.</span><span class="sxs-lookup"><span data-stu-id="29112-233">If you have enabled application-consistent backup, a vertical blue bar appears.</span></span>
+    <span data-ttu-id="30fdd-233">Pokud jste povolili zálohování konzistentní s aplikací, se zobrazí modré svislá čára.</span><span class="sxs-lookup"><span data-stu-id="30fdd-233">If you have enabled application-consistent backup, a vertical blue bar appears.</span></span>
 
-6.  <span data-ttu-id="29112-234">Na **obnovit konfiguraci** okně, vyberte název virtuálního počítače, vyberte skupinu prostředků a pak klikněte na tlačítko **OK**.</span><span class="sxs-lookup"><span data-stu-id="29112-234">On the **Restore configuration** blade, select the virtual machine name, select the resource group, and then click **OK**.</span></span>
+6.  <span data-ttu-id="30fdd-234">Na hello **obnovit konfiguraci** okně vyberte hello název virtuálního počítače, vyberte skupinu prostředků hello a pak klikněte na tlačítko **OK**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-234">On hello **Restore configuration** blade, select hello virtual machine name, select hello resource group, and then click **OK**.</span></span>
 
     ![Obnovení hodnoty konfigurace](./media/oracle-backup-recovery/recover_vm_07.png)
 
-7.  <span data-ttu-id="29112-236">Chcete-li obnovit virtuální počítač, klikněte na tlačítko **obnovení** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="29112-236">To restore the VM, click the **Restore** button.</span></span>
+7.  <span data-ttu-id="30fdd-236">toorestore hello virtuální počítač, klikněte na tlačítko hello **obnovení** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="30fdd-236">toorestore hello VM, click hello **Restore** button.</span></span>
 
-8.  <span data-ttu-id="29112-237">Chcete-li zobrazit stav procesu obnovení, klikněte na tlačítko **úlohy**a potom klikněte na **úlohy zálohování**.</span><span class="sxs-lookup"><span data-stu-id="29112-237">To view the status of the restore process, click **Jobs**, and then click **Backup Jobs**.</span></span>
+8.  <span data-ttu-id="30fdd-237">Stav hello tooview hello procesu obnovení, klikněte na tlačítko **úlohy**a potom klikněte na **úlohy zálohování**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-237">tooview hello status of hello restore process, click **Jobs**, and then click **Backup Jobs**.</span></span>
 
     ![Příkaz Stav úlohy zálohování](./media/oracle-backup-recovery/recover_vm_08.png)
 
-    <span data-ttu-id="29112-239">Následující obrázek ukazuje stav procesu obnovení:</span><span class="sxs-lookup"><span data-stu-id="29112-239">The following figure shows the status of the restore process:</span></span>
+    <span data-ttu-id="30fdd-239">Hello následující obrázek znázorňuje hello stav procesu obnovení hello:</span><span class="sxs-lookup"><span data-stu-id="30fdd-239">hello following figure shows hello status of hello restore process:</span></span>
 
-    ![Stav procesu obnovení](./media/oracle-backup-recovery/recover_vm_09.png)
+    ![Stav procesu obnovení hello](./media/oracle-backup-recovery/recover_vm_09.png)
 
-### <a name="step-3-set-the-public-ip-address"></a><span data-ttu-id="29112-241">Krok 3: Nastavte veřejnou IP adresu</span><span class="sxs-lookup"><span data-stu-id="29112-241">Step 3: Set the public IP address</span></span>
-<span data-ttu-id="29112-242">Po obnovení virtuálního počítače, nastavte veřejnou IP adresu.</span><span class="sxs-lookup"><span data-stu-id="29112-242">After the VM is restored, set up the public IP address.</span></span>
+### <a name="step-3-set-hello-public-ip-address"></a><span data-ttu-id="30fdd-241">Krok 3: Nastavte hello veřejnou IP adresu</span><span class="sxs-lookup"><span data-stu-id="30fdd-241">Step 3: Set hello public IP address</span></span>
+<span data-ttu-id="30fdd-242">Po dokončení hello je obnovit virtuální počítač nastavte hello veřejnou IP adresu.</span><span class="sxs-lookup"><span data-stu-id="30fdd-242">After hello VM is restored, set up hello public IP address.</span></span>
 
-1.  <span data-ttu-id="29112-243">Do vyhledávacího pole zadejte **veřejnou IP adresu**.</span><span class="sxs-lookup"><span data-stu-id="29112-243">In the search box, enter **public IP address**.</span></span>
+1.  <span data-ttu-id="30fdd-243">Hello vyhledávacího pole zadejte **veřejnou IP adresu**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-243">In hello search box, enter **public IP address**.</span></span>
 
     ![Seznam veřejné IP adresy](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  <span data-ttu-id="29112-245">Na **veřejné IP adresy** okně klikněte na tlačítko **přidat**.</span><span class="sxs-lookup"><span data-stu-id="29112-245">On the **Public IP addresses** blade, click **Add**.</span></span> <span data-ttu-id="29112-246">Na **vytvoření veřejné IP adresy** okně pro **název**, vyberte název veřejné IP adresy.</span><span class="sxs-lookup"><span data-stu-id="29112-246">On the **Create public IP address** blade, for **Name**, select the public IP name.</span></span> <span data-ttu-id="29112-247">V části **Skupina prostředků** vyberte **Použít existující**.</span><span class="sxs-lookup"><span data-stu-id="29112-247">For **Resource group**, select **Use existing**.</span></span> <span data-ttu-id="29112-248">Poté klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="29112-248">Then, click **Create**.</span></span>
+2.  <span data-ttu-id="30fdd-245">Na hello **veřejné IP adresy** okně klikněte na tlačítko **přidat**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-245">On hello **Public IP addresses** blade, click **Add**.</span></span> <span data-ttu-id="30fdd-246">Na hello **vytvoření veřejné IP adresy** okně pro **název**, vyberte název veřejné IP adresy hello.</span><span class="sxs-lookup"><span data-stu-id="30fdd-246">On hello **Create public IP address** blade, for **Name**, select hello public IP name.</span></span> <span data-ttu-id="30fdd-247">V části **Skupina prostředků** vyberte **Použít existující**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-247">For **Resource group**, select **Use existing**.</span></span> <span data-ttu-id="30fdd-248">Poté klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-248">Then, click **Create**.</span></span>
 
     ![Vytvoření IP adresy](./media/oracle-backup-recovery/create_ip_01.png)
 
-3.  <span data-ttu-id="29112-250">Chcete-li přidružit veřejnou IP adresu pro virtuální počítač se síťovým rozhraním, vyhledejte a vyberte **myVMip**.</span><span class="sxs-lookup"><span data-stu-id="29112-250">To associate the public IP address with the network interface for the VM, search for and select **myVMip**.</span></span> <span data-ttu-id="29112-251">Potom klikněte na **přidružit**.</span><span class="sxs-lookup"><span data-stu-id="29112-251">Then, click **Associate**.</span></span>
+3.  <span data-ttu-id="30fdd-250">hledání tooassociate hello veřejnou IP adresu s hello síťové rozhraní pro hello virtuálních počítačů a vyberte možnost **myVMip**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-250">tooassociate hello public IP address with hello network interface for hello VM, search for and select **myVMip**.</span></span> <span data-ttu-id="30fdd-251">Potom klikněte na **přidružit**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-251">Then, click **Associate**.</span></span>
 
     ![Přiřadit IP adresu](./media/oracle-backup-recovery/create_ip_02.png)
 
-4.  <span data-ttu-id="29112-253">Pro **typ prostředku**, vyberte **síťové rozhraní**.</span><span class="sxs-lookup"><span data-stu-id="29112-253">For **Resource type**, select **Network interface**.</span></span> <span data-ttu-id="29112-254">Vyberte síťové rozhraní, které používá Můjvp instance a pak klikněte na tlačítko **OK**.</span><span class="sxs-lookup"><span data-stu-id="29112-254">Select the network interface that is used by the myVM instance, and then click **OK**.</span></span>
+4.  <span data-ttu-id="30fdd-253">Pro **typ prostředku**, vyberte **síťové rozhraní**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-253">For **Resource type**, select **Network interface**.</span></span> <span data-ttu-id="30fdd-254">Vyberte hello síťové rozhraní, které používá hello Můjvp instance a pak klikněte na tlačítko **OK**.</span><span class="sxs-lookup"><span data-stu-id="30fdd-254">Select hello network interface that is used by hello myVM instance, and then click **OK**.</span></span>
 
     ![Vyberte typ prostředku a hodnoty síťový adaptér](./media/oracle-backup-recovery/create_ip_03.png)
 
-5.  <span data-ttu-id="29112-256">Vyhledejte a otevřete instanci Můjvp, který je přenést z portálu.</span><span class="sxs-lookup"><span data-stu-id="29112-256">Search for and open the instance of myVM that is ported from the portal.</span></span> <span data-ttu-id="29112-257">IP adresu, která souvisí s virtuálním Počítačem se zobrazí na Můjvp **přehled** okno.</span><span class="sxs-lookup"><span data-stu-id="29112-257">The IP address that is associated with the VM appears on the myVM **Overview** blade.</span></span>
+5.  <span data-ttu-id="30fdd-256">Vyhledejte a otevřete hello instanci Můjvp, který je přenést z portálu hello.</span><span class="sxs-lookup"><span data-stu-id="30fdd-256">Search for and open hello instance of myVM that is ported from hello portal.</span></span> <span data-ttu-id="30fdd-257">Hello IP adresu, která souvisí s hello virtuálního počítače se zobrazí na hello Můjvp **přehled** okno.</span><span class="sxs-lookup"><span data-stu-id="30fdd-257">hello IP address that is associated with hello VM appears on hello myVM **Overview** blade.</span></span>
 
     ![IP adresa hodnotu](./media/oracle-backup-recovery/create_ip_04.png)
 
-### <a name="step-4-connect-to-the-vm"></a><span data-ttu-id="29112-259">Krok 4: Připojení k virtuálnímu počítači</span><span class="sxs-lookup"><span data-stu-id="29112-259">Step 4: Connect to the VM</span></span>
+### <a name="step-4-connect-toohello-vm"></a><span data-ttu-id="30fdd-259">Krok 4: Připojení toohello virtuálních počítačů</span><span class="sxs-lookup"><span data-stu-id="30fdd-259">Step 4: Connect toohello VM</span></span>
 
-*   <span data-ttu-id="29112-260">Pokud chcete připojit k virtuálnímu počítači, použijte následující skript:</span><span class="sxs-lookup"><span data-stu-id="29112-260">To connect to the VM, use the following script:</span></span>
+*   <span data-ttu-id="30fdd-260">tooconnect toohello virtuální počítač, použijte hello následující skript:</span><span class="sxs-lookup"><span data-stu-id="30fdd-260">tooconnect toohello VM, use hello following script:</span></span>
 
     ```bash 
     ssh <publicIpAddress>
     ```
 
-### <a name="step-5-test-whether-the-database-is-accessible"></a><span data-ttu-id="29112-261">Krok 5: Test, zda databáze je přístupná</span><span class="sxs-lookup"><span data-stu-id="29112-261">Step 5: Test whether the database is accessible</span></span>
-*   <span data-ttu-id="29112-262">K otestování usnadnění, použijte následující skript:</span><span class="sxs-lookup"><span data-stu-id="29112-262">To test accessibility, use the following script:</span></span>
+### <a name="step-5-test-whether-hello-database-is-accessible"></a><span data-ttu-id="30fdd-261">Krok 5: Test, zda text hello databáze je přístupná</span><span class="sxs-lookup"><span data-stu-id="30fdd-261">Step 5: Test whether hello database is accessible</span></span>
+*   <span data-ttu-id="30fdd-262">usnadnění tootest, použijte hello následující skript:</span><span class="sxs-lookup"><span data-stu-id="30fdd-262">tootest accessibility, use hello following script:</span></span>
 
     ```bash 
     $ sudo su - oracle
@@ -536,10 +536,10 @@ ms.lasthandoff: 07/11/2017
     ```
 
     > [!IMPORTANT]
-    > <span data-ttu-id="29112-263">Pokud databázi **spuštění** příkaz, vygeneruje se chyba, chcete-li obnovit databázi, přečtěte si téma [krok 6: RMAN použijte k obnovení databázi](#step-6-optional-use-rman-to-recover-the-database).</span><span class="sxs-lookup"><span data-stu-id="29112-263">If the database **startup** command generates an error, to recover the database, see [Step 6: Use RMAN to recover the database](#step-6-optional-use-rman-to-recover-the-database).</span></span>
+    > <span data-ttu-id="30fdd-263">Pokud hello databáze **spuštění** příkaz generuje chybě, toorecover hello databáze najdete v tématu [krok 6: použití RMAN toorecover hello databáze](#step-6-optional-use-rman-to-recover-the-database).</span><span class="sxs-lookup"><span data-stu-id="30fdd-263">If hello database **startup** command generates an error, toorecover hello database, see [Step 6: Use RMAN toorecover hello database](#step-6-optional-use-rman-to-recover-the-database).</span></span>
 
-### <a name="step-6-optional-use-rman-to-recover-the-database"></a><span data-ttu-id="29112-264">Krok 6: (Volitelné) použijte RMAN k obnovení databáze</span><span class="sxs-lookup"><span data-stu-id="29112-264">Step 6: (Optional) Use RMAN to recover the database</span></span>
-*   <span data-ttu-id="29112-265">Chcete-li obnovit databázi, použijte následující skript:</span><span class="sxs-lookup"><span data-stu-id="29112-265">To recover the database, use the following script:</span></span>
+### <a name="step-6-optional-use-rman-toorecover-hello-database"></a><span data-ttu-id="30fdd-264">Krok 6: (Volitelné) použijte RMAN toorecover hello databáze</span><span class="sxs-lookup"><span data-stu-id="30fdd-264">Step 6: (Optional) Use RMAN toorecover hello database</span></span>
+*   <span data-ttu-id="30fdd-265">toorecover hello databáze, použijte hello následující skript:</span><span class="sxs-lookup"><span data-stu-id="30fdd-265">toorecover hello database, use hello following script:</span></span>
 
     ```bash
     # sudo su - oracle
@@ -551,21 +551,21 @@ ms.lasthandoff: 07/11/2017
     RMAN> SELECT * FROM scott.scott_table;
     ```
 
-<span data-ttu-id="29112-266">Zálohování a obnovení databáze 12c databáze Oracle na virtuální počítač Azure Linux je nyní dokončena.</span><span class="sxs-lookup"><span data-stu-id="29112-266">The backup and recovery of the Oracle Database 12c database on an Azure Linux VM is now finished.</span></span>
+<span data-ttu-id="30fdd-266">Hello zálohování a obnovení databáze 12c hello databáze Oracle na virtuální počítač Azure Linux je nyní dokončena.</span><span class="sxs-lookup"><span data-stu-id="30fdd-266">hello backup and recovery of hello Oracle Database 12c database on an Azure Linux VM is now finished.</span></span>
 
-## <a name="delete-the-vm"></a><span data-ttu-id="29112-267">Odstranění virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="29112-267">Delete the VM</span></span>
+## <a name="delete-hello-vm"></a><span data-ttu-id="30fdd-267">Odstranit hello virtuálních počítačů</span><span class="sxs-lookup"><span data-stu-id="30fdd-267">Delete hello VM</span></span>
 
-<span data-ttu-id="29112-268">Když virtuální počítač již nepotřebujete, můžete odebrat skupinu prostředků, virtuální počítač a všechny související prostředky následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="29112-268">When you no longer need the VM, you can use the following command to remove the resource group, the VM, and all related resources:</span></span>
+<span data-ttu-id="30fdd-268">Když už nebude potřebovat hello virtuálních počítačů, můžete použít následující skupiny prostředků hello tooremove příkaz hello virtuálních počítačů a všechny související prostředky hello:</span><span class="sxs-lookup"><span data-stu-id="30fdd-268">When you no longer need hello VM, you can use hello following command tooremove hello resource group, hello VM, and all related resources:</span></span>
 
 ```azurecli
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="29112-269">Další kroky</span><span class="sxs-lookup"><span data-stu-id="29112-269">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="30fdd-269">Další kroky</span><span class="sxs-lookup"><span data-stu-id="30fdd-269">Next steps</span></span>
 
-[<span data-ttu-id="29112-270">Kurz: Vytvoření vysoce dostupné virtuální počítače</span><span class="sxs-lookup"><span data-stu-id="29112-270">Tutorial: Create highly available VMs</span></span>](../../linux/create-cli-complete.md)
+[<span data-ttu-id="30fdd-270">Kurz: Vytvoření vysoce dostupné virtuální počítače</span><span class="sxs-lookup"><span data-stu-id="30fdd-270">Tutorial: Create highly available VMs</span></span>](../../linux/create-cli-complete.md)
 
-[<span data-ttu-id="29112-271">Prozkoumejte ukázky rozhraní příkazového řádku Azure nasazení virtuálních počítačů</span><span class="sxs-lookup"><span data-stu-id="29112-271">Explore VM deployment Azure CLI samples</span></span>](../../linux/cli-samples.md)
+[<span data-ttu-id="30fdd-271">Prozkoumejte ukázky rozhraní příkazového řádku Azure nasazení virtuálních počítačů</span><span class="sxs-lookup"><span data-stu-id="30fdd-271">Explore VM deployment Azure CLI samples</span></span>](../../linux/cli-samples.md)
 
 
 

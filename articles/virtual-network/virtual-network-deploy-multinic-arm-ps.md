@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření virtuálního počítače s více síťovými kartami - prostředí Azure PowerShell | Microsoft Docs"
-description: "Postup vytvoření virtuálního počítače s více síťovými kartami pomocí prostředí PowerShell."
+title: "aaaCreate virtuálního počítače s více síťovými kartami - prostředí Azure PowerShell | Microsoft Docs"
+description: "Zjistěte, jak toocreate virtuálního počítače s více síťovými kartami pomocí prostředí PowerShell."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,55 +16,55 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3a11afd8fbd6a5e6b94cf1ebee7ea20665421bd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 507a413510da3ee69aefed324977ee40e442268b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-vm-with-multiple-nics-using-powershell"></a><span data-ttu-id="5e679-103">Vytvoření virtuálního počítače s více síťovými kartami pomocí prostředí PowerShell</span><span class="sxs-lookup"><span data-stu-id="5e679-103">Create a VM with multiple NICs using PowerShell</span></span>
+# <a name="create-a-vm-with-multiple-nics-using-powershell"></a><span data-ttu-id="365ce-103">Vytvoření virtuálního počítače s více síťovými kartami pomocí prostředí PowerShell</span><span class="sxs-lookup"><span data-stu-id="365ce-103">Create a VM with multiple NICs using PowerShell</span></span>
 
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="5e679-104">PowerShell</span><span class="sxs-lookup"><span data-stu-id="5e679-104">PowerShell</span></span>](virtual-network-deploy-multinic-arm-ps.md)
-> * [<span data-ttu-id="5e679-105">Azure CLI</span><span class="sxs-lookup"><span data-stu-id="5e679-105">Azure CLI</span></span>](virtual-network-deploy-multinic-arm-cli.md)
-> * [<span data-ttu-id="5e679-106">Šablona</span><span class="sxs-lookup"><span data-stu-id="5e679-106">Template</span></span>](virtual-network-deploy-multinic-arm-template.md)
-> * [<span data-ttu-id="5e679-107">PowerShell (Classic)</span><span class="sxs-lookup"><span data-stu-id="5e679-107">PowerShell (Classic)</span></span>](virtual-network-deploy-multinic-classic-ps.md)
-> * [<span data-ttu-id="5e679-108">Rozhraní příkazového řádku Azure (klasický)</span><span class="sxs-lookup"><span data-stu-id="5e679-108">Azure CLI (Classic)</span></span>](virtual-network-deploy-multinic-classic-cli.md)
+> * [<span data-ttu-id="365ce-104">PowerShell</span><span class="sxs-lookup"><span data-stu-id="365ce-104">PowerShell</span></span>](virtual-network-deploy-multinic-arm-ps.md)
+> * [<span data-ttu-id="365ce-105">Azure CLI</span><span class="sxs-lookup"><span data-stu-id="365ce-105">Azure CLI</span></span>](virtual-network-deploy-multinic-arm-cli.md)
+> * [<span data-ttu-id="365ce-106">Šablona</span><span class="sxs-lookup"><span data-stu-id="365ce-106">Template</span></span>](virtual-network-deploy-multinic-arm-template.md)
+> * [<span data-ttu-id="365ce-107">PowerShell (Classic)</span><span class="sxs-lookup"><span data-stu-id="365ce-107">PowerShell (Classic)</span></span>](virtual-network-deploy-multinic-classic-ps.md)
+> * [<span data-ttu-id="365ce-108">Rozhraní příkazového řádku Azure (klasický)</span><span class="sxs-lookup"><span data-stu-id="365ce-108">Azure CLI (Classic)</span></span>](virtual-network-deploy-multinic-classic-cli.md)
 
 [!INCLUDE [virtual-network-deploy-multinic-intro-include.md](../../includes/virtual-network-deploy-multinic-intro-include.md)]
 
 > [!NOTE]
-> <span data-ttu-id="5e679-109">Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="5e679-109">Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).</span></span>  <span data-ttu-id="5e679-110">Tento článek se věnuje modelu nasazení Resource Manager, který Microsoft doporučuje pro většinu nových nasazení namísto [klasického modelu nasazení](virtual-network-deploy-multinic-classic-ps.md).</span><span class="sxs-lookup"><span data-stu-id="5e679-110">This article covers using the Resource Manager deployment model, which Microsoft recommends for most new deployments instead of the [classic deployment model](virtual-network-deploy-multinic-classic-ps.md).</span></span>
+> <span data-ttu-id="365ce-109">Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="365ce-109">Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).</span></span>  <span data-ttu-id="365ce-110">Tento článek popisuje použití modelu nasazení Resource Manager hello, které společnost Microsoft doporučuje pro většinu nasazení nové místo hello [modelu nasazení classic](virtual-network-deploy-multinic-classic-ps.md).</span><span class="sxs-lookup"><span data-stu-id="365ce-110">This article covers using hello Resource Manager deployment model, which Microsoft recommends for most new deployments instead of hello [classic deployment model](virtual-network-deploy-multinic-classic-ps.md).</span></span>
 >
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-<span data-ttu-id="5e679-111">Následující postup použijte skupinu prostředků s názvem *IaaSStory* pro webové servery a skupinu prostředků s názvem *IaaSStory back-end* pro servery DB.</span><span class="sxs-lookup"><span data-stu-id="5e679-111">The following steps use a resource group named *IaaSStory* for the WEB servers and a resource group named *IaaSStory-BackEnd* for the DB servers.</span></span>
+<span data-ttu-id="365ce-111">Hello následující postup použijte skupinu prostředků s názvem *IaaSStory* pro hello webové servery a skupinu prostředků s názvem *IaaSStory back-end* pro servery hello DB.</span><span class="sxs-lookup"><span data-stu-id="365ce-111">hello following steps use a resource group named *IaaSStory* for hello WEB servers and a resource group named *IaaSStory-BackEnd* for hello DB servers.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="5e679-112">Požadavky</span><span class="sxs-lookup"><span data-stu-id="5e679-112">Prerequisites</span></span>
-<span data-ttu-id="5e679-113">Před vytvořením servery DB, je potřeba vytvořit *IaaSStory* skupina prostředků se všechny potřebné prostředky pro tento scénář.</span><span class="sxs-lookup"><span data-stu-id="5e679-113">Before you can create the DB servers, you need to create the *IaaSStory* resource group with all the necessary resources for this scenario.</span></span> <span data-ttu-id="5e679-114">Pokud chcete vytvořit tyto prostředky, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="5e679-114">To create these resources, complete the following steps:</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="365ce-112">Požadavky</span><span class="sxs-lookup"><span data-stu-id="365ce-112">Prerequisites</span></span>
+<span data-ttu-id="365ce-113">Před vytvořením hello servery DB, musíte toocreate hello *IaaSStory* skupina prostředků se všechny hello potřebné prostředky pro tento scénář.</span><span class="sxs-lookup"><span data-stu-id="365ce-113">Before you can create hello DB servers, you need toocreate hello *IaaSStory* resource group with all hello necessary resources for this scenario.</span></span> <span data-ttu-id="365ce-114">dokončení těchto prostředků, toocreate hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="365ce-114">toocreate these resources, complete hello following steps:</span></span>
 
-1. <span data-ttu-id="5e679-115">Přejděte na [na stránku šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC).</span><span class="sxs-lookup"><span data-stu-id="5e679-115">Navigate to [the template page](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC).</span></span>
-2. <span data-ttu-id="5e679-116">Na stránce šablony napravo od **nadřazené skupiny prostředků**, klikněte na tlačítko **nasadit do Azure**.</span><span class="sxs-lookup"><span data-stu-id="5e679-116">In the template page, to the right of **Parent resource group**, click **Deploy to Azure**.</span></span>
-3. <span data-ttu-id="5e679-117">V případě potřeby změňte hodnoty parametrů a potom postupujte podle kroků v portálu Azure preview nasazení skupiny prostředků.</span><span class="sxs-lookup"><span data-stu-id="5e679-117">If needed, change the parameter values, then follow the steps in the Azure preview portal to deploy the resource group.</span></span>
+1. <span data-ttu-id="365ce-115">Přejděte příliš[stránku hello šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC).</span><span class="sxs-lookup"><span data-stu-id="365ce-115">Navigate too[hello template page](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC).</span></span>
+2. <span data-ttu-id="365ce-116">V stránku hello šablony, toohello napravo od **nadřazené skupiny prostředků**, klikněte na tlačítko **nasazení tooAzure**.</span><span class="sxs-lookup"><span data-stu-id="365ce-116">In hello template page, toohello right of **Parent resource group**, click **Deploy tooAzure**.</span></span>
+3. <span data-ttu-id="365ce-117">V případě potřeby změňte hodnoty parametrů hello a potom postupujte podle kroků hello ve skupině prostředků hello toodeploy portálu Azure preview hello.</span><span class="sxs-lookup"><span data-stu-id="365ce-117">If needed, change hello parameter values, then follow hello steps in hello Azure preview portal toodeploy hello resource group.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="5e679-118">Ujistěte se, že vaše názvy účtů úložiště jsou jedinečné.</span><span class="sxs-lookup"><span data-stu-id="5e679-118">Make sure your storage account names are unique.</span></span> <span data-ttu-id="5e679-119">Názvy účtů úložiště duplicitní nemůže mít v Azure.</span><span class="sxs-lookup"><span data-stu-id="5e679-119">You cannot have duplicate storage account names in Azure.</span></span>
+> <span data-ttu-id="365ce-118">Ujistěte se, že vaše názvy účtů úložiště jsou jedinečné.</span><span class="sxs-lookup"><span data-stu-id="365ce-118">Make sure your storage account names are unique.</span></span> <span data-ttu-id="365ce-119">Názvy účtů úložiště duplicitní nemůže mít v Azure.</span><span class="sxs-lookup"><span data-stu-id="365ce-119">You cannot have duplicate storage account names in Azure.</span></span>
 > 
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-the-back-end-vms"></a><span data-ttu-id="5e679-120">Vytvořit virtuální počítače back-end</span><span class="sxs-lookup"><span data-stu-id="5e679-120">Create the back-end VMs</span></span>
-<span data-ttu-id="5e679-121">Virtuální počítače back-end závisí na vytvoření v následujících zdrojích informací:</span><span class="sxs-lookup"><span data-stu-id="5e679-121">The back-end VMs depend on the creation of the following resources:</span></span>
+## <a name="create-hello-back-end-vms"></a><span data-ttu-id="365ce-120">Vytvořit hello back-end virtuální počítače</span><span class="sxs-lookup"><span data-stu-id="365ce-120">Create hello back-end VMs</span></span>
+<span data-ttu-id="365ce-121">Hello virtuálních počítačů v back-end závisí na vytvoření hello hello následující prostředky:</span><span class="sxs-lookup"><span data-stu-id="365ce-121">hello back-end VMs depend on hello creation of hello following resources:</span></span>
 
-* <span data-ttu-id="5e679-122">**Účet úložiště pro datové disky**.</span><span class="sxs-lookup"><span data-stu-id="5e679-122">**Storage account for data disks**.</span></span> <span data-ttu-id="5e679-123">Pro lepší výkon datové disky v databázových serverech použije technologii SSD jednotky (SSD Solid-State Drive), která vyžaduje účet úložiště premium.</span><span class="sxs-lookup"><span data-stu-id="5e679-123">For better performance, the data disks on the database servers will use solid state drive (SSD) technology, which requires a premium storage account.</span></span> <span data-ttu-id="5e679-124">Zajistěte, aby umístění Azure, můžete nasadit pro podporu služby storage úrovně premium.</span><span class="sxs-lookup"><span data-stu-id="5e679-124">Make sure the Azure location you deploy to support premium storage.</span></span>
-* <span data-ttu-id="5e679-125">**Síťové adaptéry**.</span><span class="sxs-lookup"><span data-stu-id="5e679-125">**NICs**.</span></span> <span data-ttu-id="5e679-126">Každý virtuální počítač bude mít dva síťové adaptéry, jeden pro přístup k databázi a jeden pro správu.</span><span class="sxs-lookup"><span data-stu-id="5e679-126">Each VM will have two NICs, one for database access, and one for management.</span></span>
-* <span data-ttu-id="5e679-127">**Skupina dostupnosti**.</span><span class="sxs-lookup"><span data-stu-id="5e679-127">**Availability set**.</span></span> <span data-ttu-id="5e679-128">Všechny databázové servery se zařadí do jedné dostupnosti nastavte, ujistěte se, že nejméně jedna z virtuálních počítačů je nahoru a během údržby.</span><span class="sxs-lookup"><span data-stu-id="5e679-128">All database servers will be added to a single availability set, to ensure at least one of the VMs is up and running during maintenance.</span></span>  
+* <span data-ttu-id="365ce-122">**Účet úložiště pro datové disky**.</span><span class="sxs-lookup"><span data-stu-id="365ce-122">**Storage account for data disks**.</span></span> <span data-ttu-id="365ce-123">Pro lepší výkon použije hello datových disků na serverech databáze hello technologii SSD jednotky (SSD Solid-State Drive), která vyžaduje účet úložiště premium.</span><span class="sxs-lookup"><span data-stu-id="365ce-123">For better performance, hello data disks on hello database servers will use solid state drive (SSD) technology, which requires a premium storage account.</span></span> <span data-ttu-id="365ce-124">Ujistěte se, zda text hello umístění Azure nasazujete toosupport storage úrovně premium.</span><span class="sxs-lookup"><span data-stu-id="365ce-124">Make sure hello Azure location you deploy toosupport premium storage.</span></span>
+* <span data-ttu-id="365ce-125">**Síťové adaptéry**.</span><span class="sxs-lookup"><span data-stu-id="365ce-125">**NICs**.</span></span> <span data-ttu-id="365ce-126">Každý virtuální počítač bude mít dva síťové adaptéry, jeden pro přístup k databázi a jeden pro správu.</span><span class="sxs-lookup"><span data-stu-id="365ce-126">Each VM will have two NICs, one for database access, and one for management.</span></span>
+* <span data-ttu-id="365ce-127">**Skupina dostupnosti**.</span><span class="sxs-lookup"><span data-stu-id="365ce-127">**Availability set**.</span></span> <span data-ttu-id="365ce-128">Všechny databázové servery budou přidány sady dostupnosti. jeden tooa, tooensure alespoň jeden z virtuálních počítačů hello je v provozu během údržby.</span><span class="sxs-lookup"><span data-stu-id="365ce-128">All database servers will be added tooa single availability set, tooensure at least one of hello VMs is up and running during maintenance.</span></span>  
 
-### <a name="step-1---start-your-script"></a><span data-ttu-id="5e679-129">Krok 1 – spustit skript</span><span class="sxs-lookup"><span data-stu-id="5e679-129">Step 1 - Start your script</span></span>
-<span data-ttu-id="5e679-130">Si můžete stáhnout úplné skript prostředí PowerShell použít [zde](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-ps.ps1).</span><span class="sxs-lookup"><span data-stu-id="5e679-130">You can download the full PowerShell script used [here](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-ps.ps1).</span></span> <span data-ttu-id="5e679-131">Postupujte podle pokynů níže změňte skript pro práci ve vašem prostředí.</span><span class="sxs-lookup"><span data-stu-id="5e679-131">Follow the steps below to change the script to work in your environment.</span></span>
+### <a name="step-1---start-your-script"></a><span data-ttu-id="365ce-129">Krok 1 – spustit skript</span><span class="sxs-lookup"><span data-stu-id="365ce-129">Step 1 - Start your script</span></span>
+<span data-ttu-id="365ce-130">Si můžete stáhnout hello úplné použít skript prostředí PowerShell [zde](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-ps.ps1).</span><span class="sxs-lookup"><span data-stu-id="365ce-130">You can download hello full PowerShell script used [here](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-ps.ps1).</span></span> <span data-ttu-id="365ce-131">Postupujte podle kroků hello toochange hello skriptu toowork ve vašem prostředí.</span><span class="sxs-lookup"><span data-stu-id="365ce-131">Follow hello steps below toochange hello script toowork in your environment.</span></span>
 
-1. <span data-ttu-id="5e679-132">Změňte hodnoty proměnných níže podle vaší existující skupinu prostředků, které jsou nasazené výše v [požadavky](#Prerequisites).</span><span class="sxs-lookup"><span data-stu-id="5e679-132">Change the values of the variables below based on your existing resource group deployed above in [Prerequisites](#Prerequisites).</span></span>
+1. <span data-ttu-id="365ce-132">Změnit hello hodnoty proměnných hello níže podle vaší existující skupinu prostředků, které jsou nasazené výše v [požadavky](#Prerequisites).</span><span class="sxs-lookup"><span data-stu-id="365ce-132">Change hello values of hello variables below based on your existing resource group deployed above in [Prerequisites](#Prerequisites).</span></span>
 
     ```powershell
     $existingRGName        = "IaaSStory"
@@ -75,7 +75,7 @@ ms.lasthandoff: 07/11/2017
     $stdStorageAccountName = "wtestvnetstoragestd"
     ```
 
-2. <span data-ttu-id="5e679-133">Změňte hodnoty proměnných níže na základě hodnot, které chcete použít pro vaše nasazení back-end.</span><span class="sxs-lookup"><span data-stu-id="5e679-133">Change the values of the variables below based on the values you want to use for your backend deployment.</span></span>
+2. <span data-ttu-id="365ce-133">Změna hodnoty hello hello proměnných níže na základě hodnot hello chcete toouse pro vaše nasazení back-end.</span><span class="sxs-lookup"><span data-stu-id="365ce-133">Change hello values of hello variables below based on hello values you want toouse for your backend deployment.</span></span>
 
     ```powershell
     $backendRGName         = "IaaSStory-Backend"
@@ -94,7 +94,7 @@ ms.lasthandoff: 07/11/2017
     $ipAddressPrefix       = "192.168.2."
     $numberOfVMs           = 2
     ```
-3. <span data-ttu-id="5e679-134">Načíst existující prostředky potřebné pro vaše nasazení.</span><span class="sxs-lookup"><span data-stu-id="5e679-134">Retrieve the existing resources needed for your deployment.</span></span>
+3. <span data-ttu-id="365ce-134">Načíst hello existující prostředky potřebné pro vaše nasazení.</span><span class="sxs-lookup"><span data-stu-id="365ce-134">Retrieve hello existing resources needed for your deployment.</span></span>
 
     ```powershell
     $vnet                  = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $existingRGName
@@ -103,41 +103,41 @@ ms.lasthandoff: 07/11/2017
     $stdStorageAccount     = Get-AzureRmStorageAccount -Name $stdStorageAccountName -ResourceGroupName $existingRGName
     ```
 
-### <a name="step-2---create-necessary-resources-for-your-vms"></a><span data-ttu-id="5e679-135">Krok 2 – Vytvoření potřebné prostředky pro virtuální počítače</span><span class="sxs-lookup"><span data-stu-id="5e679-135">Step 2 - Create necessary resources for your VMs</span></span>
-<span data-ttu-id="5e679-136">Potřebujete vytvořit novou skupinu prostředků, účet úložiště pro datové disky a sadu dostupnosti pro všechny virtuální počítače.</span><span class="sxs-lookup"><span data-stu-id="5e679-136">You need to create a new resource group, a storage account for the data disks, and an availability set for all VMs.</span></span> <span data-ttu-id="5e679-137">Můžete také potřebovat přihlašovací údaje účtu místního správce pro každý virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="5e679-137">You alos need the local administrator account credentials for each VM.</span></span> <span data-ttu-id="5e679-138">Chcete-li vytvořit těchto prostředků, spusťte následující kroky.</span><span class="sxs-lookup"><span data-stu-id="5e679-138">To create these resources, execute the following steps.</span></span>
+### <a name="step-2---create-necessary-resources-for-your-vms"></a><span data-ttu-id="365ce-135">Krok 2 – Vytvoření potřebné prostředky pro virtuální počítače</span><span class="sxs-lookup"><span data-stu-id="365ce-135">Step 2 - Create necessary resources for your VMs</span></span>
+<span data-ttu-id="365ce-136">Potřebujete toocreate novou skupinu prostředků, účet úložiště pro hello datových disků, a sadu dostupnosti pro všechny virtuální počítače.</span><span class="sxs-lookup"><span data-stu-id="365ce-136">You need toocreate a new resource group, a storage account for hello data disks, and an availability set for all VMs.</span></span> <span data-ttu-id="365ce-137">Také musíte hello přihlašovací údaje účtu místního správce pro každý virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="365ce-137">You alos need hello local administrator account credentials for each VM.</span></span> <span data-ttu-id="365ce-138">spuštění těchto prostředků, toocreate hello následující kroky.</span><span class="sxs-lookup"><span data-stu-id="365ce-138">toocreate these resources, execute hello following steps.</span></span>
 
-1. <span data-ttu-id="5e679-139">Vytvořte novou skupinu prostředků.</span><span class="sxs-lookup"><span data-stu-id="5e679-139">Create a new resource group.</span></span>
+1. <span data-ttu-id="365ce-139">Vytvořte novou skupinu prostředků.</span><span class="sxs-lookup"><span data-stu-id="365ce-139">Create a new resource group.</span></span>
 
     ```powershell
     New-AzureRmResourceGroup -Name $backendRGName -Location $location
     ```
-2. <span data-ttu-id="5e679-140">Vytvořte nový účet úložiště premium ve skupině prostředků vytvořili výše.</span><span class="sxs-lookup"><span data-stu-id="5e679-140">Create a new premium storage account in the resource group created above.</span></span>
+2. <span data-ttu-id="365ce-140">Vytvořte nový účet úložiště premium ve skupině prostředků hello vytvořili výše.</span><span class="sxs-lookup"><span data-stu-id="365ce-140">Create a new premium storage account in hello resource group created above.</span></span>
 
     ```powershell
     $prmStorageAccount = New-AzureRmStorageAccount -Name $prmStorageAccountName `
     -ResourceGroupName $backendRGName -Type Premium_LRS -Location $location
     ```
-3. <span data-ttu-id="5e679-141">Vytvořte novou skupinu dostupnosti.</span><span class="sxs-lookup"><span data-stu-id="5e679-141">Create a new availability set.</span></span>
+3. <span data-ttu-id="365ce-141">Vytvořte novou skupinu dostupnosti.</span><span class="sxs-lookup"><span data-stu-id="365ce-141">Create a new availability set.</span></span>
 
     ```powershell
     $avSet = New-AzureRmAvailabilitySet -Name $avSetName -ResourceGroupName $backendRGName -Location $location
     ```
-4. <span data-ttu-id="5e679-142">Získáte přihlašovací údaje účtu, který se má použít pro každý virtuální počítač místního správce.</span><span class="sxs-lookup"><span data-stu-id="5e679-142">Get the local administrator account credentials to be used for each VM.</span></span>
+4. <span data-ttu-id="365ce-142">Získáte oprávnění místního správce hello toobe přihlašovací údaje účtu použít pro každý virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="365ce-142">Get hello local administrator account credentials toobe used for each VM.</span></span>
 
     ```powershell
-    $cred = Get-Credential -Message "Type the name and password for the local administrator account."
+    $cred = Get-Credential -Message "Type hello name and password for hello local administrator account."
     ```
 
-### <a name="step-3---create-the-nics-and-back-end-vms"></a><span data-ttu-id="5e679-143">Krok 3 – Vytvoření síťové karty a virtuální počítače back-end</span><span class="sxs-lookup"><span data-stu-id="5e679-143">Step 3 - Create the NICs and back-end VMs</span></span>
-<span data-ttu-id="5e679-144">Budete muset použít smyčku vytvořit libovolný počet virtuálních počítačů a vytvořit potřebné síťové karty a virtuální počítače v rámci smyčky.</span><span class="sxs-lookup"><span data-stu-id="5e679-144">You need to use a loop to create as many VMs as you want, and create the necessary NICs and VMs within the loop.</span></span> <span data-ttu-id="5e679-145">Chcete-li vytvořit síťové karty a virtuální počítače, spusťte následující kroky.</span><span class="sxs-lookup"><span data-stu-id="5e679-145">To create the NICs and VMs, execute the following steps.</span></span>
+### <a name="step-3---create-hello-nics-and-back-end-vms"></a><span data-ttu-id="365ce-143">Krok 3 – vytvoření hello síťové karty a virtuální počítače back-end</span><span class="sxs-lookup"><span data-stu-id="365ce-143">Step 3 - Create hello NICs and back-end VMs</span></span>
+<span data-ttu-id="365ce-144">Musíte toouse toocreate smyčky, jak velký počet virtuálních počítačů a vytvořit hello potřebné síťové karty a virtuální počítače v rámci hello smyčky.</span><span class="sxs-lookup"><span data-stu-id="365ce-144">You need toouse a loop toocreate as many VMs as you want, and create hello necessary NICs and VMs within hello loop.</span></span> <span data-ttu-id="365ce-145">toocreate hello síťové karty a virtuální počítače, spusťte hello následující kroky.</span><span class="sxs-lookup"><span data-stu-id="365ce-145">toocreate hello NICs and VMs, execute hello following steps.</span></span>
 
-1. <span data-ttu-id="5e679-146">Spuštění `for` cykly opakování příkazů pro vytvoření virtuálního počítače a dva síťové adaptéry tolikrát, kolikrát podle potřeby, na základě hodnoty z `$numberOfVMs` proměnné.</span><span class="sxs-lookup"><span data-stu-id="5e679-146">Start a `for` loop to repeat the commands to create a VM and two NICs as many times as necessary, based on the value of the `$numberOfVMs` variable.</span></span>
+1. <span data-ttu-id="365ce-146">Spuštění `for` smyčky toorepeat hello příkazy toocreate virtuální počítač a dva síťové adaptéry s funkcí jako mnohokrát podle potřeby podle hello hodnotu hello `$numberOfVMs` proměnné.</span><span class="sxs-lookup"><span data-stu-id="365ce-146">Start a `for` loop toorepeat hello commands toocreate a VM and two NICs as many times as necessary, based on hello value of hello `$numberOfVMs` variable.</span></span>
    
     ```powershell
     for ($suffixNumber = 1; $suffixNumber -le $numberOfVMs; $suffixNumber++){
     ```
 
-2. <span data-ttu-id="5e679-147">Vytvořte síťová karta použitá pro přístup k databázi.</span><span class="sxs-lookup"><span data-stu-id="5e679-147">Create the NIC used for database access.</span></span>
+2. <span data-ttu-id="365ce-147">Vytvořte hello síťový adaptér používá pro přístup k databázi.</span><span class="sxs-lookup"><span data-stu-id="365ce-147">Create hello NIC used for database access.</span></span>
 
     ```powershell
     $nic1Name = $nicNamePrefix + $suffixNumber + "-DA"
@@ -146,7 +146,7 @@ ms.lasthandoff: 07/11/2017
     -Location $location -SubnetId $backendSubnet.Id -PrivateIpAddress $ipAddress1
     ```
 
-3. <span data-ttu-id="5e679-148">Vytvořte na síťový adaptér použitý pro vzdálený přístup.</span><span class="sxs-lookup"><span data-stu-id="5e679-148">Create the NIC used for remote access.</span></span> <span data-ttu-id="5e679-149">Všimněte si, jak má skupinu NSG přidruženou k němu tento síťový adaptér.</span><span class="sxs-lookup"><span data-stu-id="5e679-149">Notice how this NIC has an NSG associated to it.</span></span>
+3. <span data-ttu-id="365ce-148">Vytvořte hello síťový adaptér použitý pro vzdálený přístup.</span><span class="sxs-lookup"><span data-stu-id="365ce-148">Create hello NIC used for remote access.</span></span> <span data-ttu-id="365ce-149">Všimněte si, jak má tento síťový adaptér tooit NSG přidruženou.</span><span class="sxs-lookup"><span data-stu-id="365ce-149">Notice how this NIC has an NSG associated tooit.</span></span>
 
     ```powershell
     $nic2Name = $nicNamePrefix + $suffixNumber + "-RA"
@@ -156,14 +156,14 @@ ms.lasthandoff: 07/11/2017
     -NetworkSecurityGroupId $remoteAccessNSG.Id
     ```
 
-4. <span data-ttu-id="5e679-150">Vytvoření `vmConfig` objektu.</span><span class="sxs-lookup"><span data-stu-id="5e679-150">Create `vmConfig` object.</span></span>
+4. <span data-ttu-id="365ce-150">Vytvoření `vmConfig` objektu.</span><span class="sxs-lookup"><span data-stu-id="365ce-150">Create `vmConfig` object.</span></span>
 
     ```powershell
     $vmName = $vmNamePrefix + $suffixNumber
     $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avSet.Id
     ```
 
-5. <span data-ttu-id="5e679-151">Vytvořte dvě datové disky na virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="5e679-151">Create two data disks per VM.</span></span> <span data-ttu-id="5e679-152">Všimněte si, zda jsou disky dat v účtu úložiště premium vytvořili dříve.</span><span class="sxs-lookup"><span data-stu-id="5e679-152">Notice that the data disks are in the premium storage account created earlier.</span></span>
+5. <span data-ttu-id="365ce-151">Vytvořte dvě datové disky na virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="365ce-151">Create two data disks per VM.</span></span> <span data-ttu-id="365ce-152">Všimněte si, zda jsou disky hello dat v účtu úložiště premium hello vytvořili dříve.</span><span class="sxs-lookup"><span data-stu-id="365ce-152">Notice that hello data disks are in hello premium storage account created earlier.</span></span>
 
     ```powershell
     $dataDisk1Name = $vmName + "-" + $osDiskPrefix + "-1"
@@ -177,21 +177,21 @@ ms.lasthandoff: 07/11/2017
     -VhdUri $data2VhdUri -CreateOption empty -Lun 1
     ```
 
-6. <span data-ttu-id="5e679-153">Konfigurace operačního systému a bitové kopie, který se má použít pro virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="5e679-153">Configure the operating system, and image to be used for the VM.</span></span>
+6. <span data-ttu-id="365ce-153">Nakonfigurujte hello operačního systému a bitové kopie toobe používá pro hello virtuálních počítačů.</span><span class="sxs-lookup"><span data-stu-id="365ce-153">Configure hello operating system, and image toobe used for hello VM.</span></span>
 
     ```powershell
     $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
     $vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig -PublisherName $publisher -Offer $offer -Skus $sku -Version $version
     ```
 
-7. <span data-ttu-id="5e679-154">Přidejte dva síťové adaptéry vytvořili výše `vmConfig` objektu.</span><span class="sxs-lookup"><span data-stu-id="5e679-154">Add the two NICs created above to the `vmConfig` object.</span></span>
+7. <span data-ttu-id="365ce-154">Přidání síťových adaptérů hello dva vytvořili výše toohello `vmConfig` objektu.</span><span class="sxs-lookup"><span data-stu-id="365ce-154">Add hello two NICs created above toohello `vmConfig` object.</span></span>
 
     ```powershell
     $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic1.Id -Primary
     $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic2.Id
     ```
 
-8. <span data-ttu-id="5e679-155">Vytvořte disk operačního systému a vytvoření virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="5e679-155">Create the OS disk and create the VM.</span></span> <span data-ttu-id="5e679-156">Upozornění `}` končící `for` smyčky.</span><span class="sxs-lookup"><span data-stu-id="5e679-156">Notice the `}` ending the `for` loop.</span></span>
+8. <span data-ttu-id="365ce-155">Vytvořte disk s operačním systémem hello a vytvořte hello virtuálních počítačů.</span><span class="sxs-lookup"><span data-stu-id="365ce-155">Create hello OS disk and create hello VM.</span></span> <span data-ttu-id="365ce-156">Všimněte si hello `}` ukončení hello `for` smyčky.</span><span class="sxs-lookup"><span data-stu-id="365ce-156">Notice hello `}` ending hello `for` loop.</span></span>
 
     ```powershell
     $osDiskName = $vmName + "-" + $osDiskSuffix
@@ -201,10 +201,10 @@ ms.lasthandoff: 07/11/2017
     }
     ```
 
-### <a name="step-4---run-the-script"></a><span data-ttu-id="5e679-157">Krok 4 – spuštění skriptu</span><span class="sxs-lookup"><span data-stu-id="5e679-157">Step 4 - Run the script</span></span>
-<span data-ttu-id="5e679-158">Teď, když jste stáhli a změnit skript na základě potřeb, o, které mu skript pro vytvoření back-end databáze virtuálních počítačů s více síťovými kartami.</span><span class="sxs-lookup"><span data-stu-id="5e679-158">Now that you downloaded and changed the script based on your needs, runt he script to create the back end database VMs with multiple NICs.</span></span>
+### <a name="step-4---run-hello-script"></a><span data-ttu-id="365ce-157">Krok 4 – spustit skript hello</span><span class="sxs-lookup"><span data-stu-id="365ce-157">Step 4 - Run hello script</span></span>
+<span data-ttu-id="365ce-158">Teď, když jste stáhli a změnit hello skriptu na základě potřeb, o mu skriptu toocreate hello back-end databáze virtuálních počítačů s více síťovými kartami.</span><span class="sxs-lookup"><span data-stu-id="365ce-158">Now that you downloaded and changed hello script based on your needs, runt he script toocreate hello back end database VMs with multiple NICs.</span></span>
 
-1. <span data-ttu-id="5e679-159">Uložte skript a spusťte jej z **prostředí PowerShell** příkazového řádku, nebo **prostředí PowerShell ISE**.</span><span class="sxs-lookup"><span data-stu-id="5e679-159">Save your script and run it from the **PowerShell** command prompt, or **PowerShell ISE**.</span></span> <span data-ttu-id="5e679-160">Zobrazí se počáteční výstup, následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="5e679-160">You will see the initial output, as follows:</span></span>
+1. <span data-ttu-id="365ce-159">Uložte skript a spusťte jej z hello **prostředí PowerShell** příkazového řádku, nebo **prostředí PowerShell ISE**.</span><span class="sxs-lookup"><span data-stu-id="365ce-159">Save your script and run it from hello **PowerShell** command prompt, or **PowerShell ISE**.</span></span> <span data-ttu-id="365ce-160">Zobrazí se výstup počáteční hello, následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="365ce-160">You will see hello initial output, as follows:</span></span>
 
         ResourceGroupName : IaaSStory-Backend
         Location          : westus
@@ -217,7 +217,7 @@ ms.lasthandoff: 07/11/2017
 
         ResourceId        : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory-Backend
 
-2. <span data-ttu-id="5e679-161">Po několika minutách vyplnit řádku přihlašovací údaje a klikněte na tlačítko **OK**.</span><span class="sxs-lookup"><span data-stu-id="5e679-161">After a few minutes, fill out the credentials prompt and click **OK**.</span></span> <span data-ttu-id="5e679-162">Výstup níže představuje jeden virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="5e679-162">The output below represents a single VM.</span></span> <span data-ttu-id="5e679-163">Všimněte si celý proces trvalo 8 minut na dokončení.</span><span class="sxs-lookup"><span data-stu-id="5e679-163">Notice the entire process took 8 minutes to complete.</span></span>
+2. <span data-ttu-id="365ce-161">Po několika minutách vyplnit řádku hello přihlašovací údaje a klikněte na tlačítko **OK**.</span><span class="sxs-lookup"><span data-stu-id="365ce-161">After a few minutes, fill out hello credentials prompt and click **OK**.</span></span> <span data-ttu-id="365ce-162">výstup Hello níže představuje jeden virtuální počítač.</span><span class="sxs-lookup"><span data-stu-id="365ce-162">hello output below represents a single VM.</span></span> <span data-ttu-id="365ce-163">Všimněte si hello celý proces trvalo toocomplete po 8 minutách.</span><span class="sxs-lookup"><span data-stu-id="365ce-163">Notice hello entire process took 8 minutes toocomplete.</span></span>
 
         ResourceGroupName            :
         Id                           :

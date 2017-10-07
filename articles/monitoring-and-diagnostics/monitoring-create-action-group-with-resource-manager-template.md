@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření skupin akce pomocí šablony Resource Manageru | Microsoft Docs"
-description: "Naučte se vytvořit skupinu akce pomocí šablony Azure Resource Manager."
+title: "skupiny aaaCreate akce pomocí šablony Resource Manageru | Microsoft Docs"
+description: "Zjistěte, jak seskupit toocreate akce pomocí šablony Azure Resource Manager."
 author: anirudhcavale
 manager: orenr
 editor: 
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-ms.openlocfilehash: 76bf353cac13f1c2169380f8dd3c1e163d4f3f41
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9902b33cad99bd99b3deda0cf6f4ff12278c89c3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-action-group-with-a-resource-manager-template"></a><span data-ttu-id="b4df6-103">Vytvořit skupinu akce pomocí šablony Resource Manageru</span><span class="sxs-lookup"><span data-stu-id="b4df6-103">Create an action group with a Resource Manager template</span></span>
-<span data-ttu-id="b4df6-104">V tomto článku se dozvíte, jak používat [šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) ke konfiguraci skupin akce.</span><span class="sxs-lookup"><span data-stu-id="b4df6-104">This article shows you how to use an [Azure Resource Manager template](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) to configure action groups.</span></span> <span data-ttu-id="b4df6-105">Pomocí šablony můžete automaticky nastavit skupiny akce, které lze znovu použít v určitých typů výstrahy.</span><span class="sxs-lookup"><span data-stu-id="b4df6-105">By using templates, you can automatically set up action groups that can be reused in certain types of alerts.</span></span> <span data-ttu-id="b4df6-106">Tyto skupiny akce Ujistěte se, že všechny správné strany se upozorní, když se výstraha.</span><span class="sxs-lookup"><span data-stu-id="b4df6-106">These action groups ensure that all the correct parties are notified when an alert is triggered.</span></span>
+# <a name="create-an-action-group-with-a-resource-manager-template"></a><span data-ttu-id="c54f9-103">Vytvořit skupinu akce pomocí šablony Resource Manageru</span><span class="sxs-lookup"><span data-stu-id="c54f9-103">Create an action group with a Resource Manager template</span></span>
+<span data-ttu-id="c54f9-104">Tento článek ukazuje, jak toouse [šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) tooconfigure akce skupiny.</span><span class="sxs-lookup"><span data-stu-id="c54f9-104">This article shows you how toouse an [Azure Resource Manager template](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) tooconfigure action groups.</span></span> <span data-ttu-id="c54f9-105">Pomocí šablony můžete automaticky nastavit skupiny akce, které lze znovu použít v určitých typů výstrahy.</span><span class="sxs-lookup"><span data-stu-id="c54f9-105">By using templates, you can automatically set up action groups that can be reused in certain types of alerts.</span></span> <span data-ttu-id="c54f9-106">Tyto skupiny akce Ujistěte se, že všechny hello správné strany se upozorní, když se výstraha.</span><span class="sxs-lookup"><span data-stu-id="c54f9-106">These action groups ensure that all hello correct parties are notified when an alert is triggered.</span></span>
 
-<span data-ttu-id="b4df6-107">Toto jsou základní kroky:</span><span class="sxs-lookup"><span data-stu-id="b4df6-107">The basic steps are:</span></span>
+<span data-ttu-id="c54f9-107">Toto jsou základní kroky Hello:</span><span class="sxs-lookup"><span data-stu-id="c54f9-107">hello basic steps are:</span></span>
 
-1. <span data-ttu-id="b4df6-108">Vytvořte šablonu jako soubor JSON, který popisuje, jak vytvořit skupinu akce.</span><span class="sxs-lookup"><span data-stu-id="b4df6-108">Create a template as a JSON file that describes how to create the action group.</span></span>
+1. <span data-ttu-id="c54f9-108">Vytvořte šablonu jako soubor JSON, který popisuje, jak toocreate hello akce skupiny.</span><span class="sxs-lookup"><span data-stu-id="c54f9-108">Create a template as a JSON file that describes how toocreate hello action group.</span></span>
 
-2. <span data-ttu-id="b4df6-109">Nasazení šablony pomocí [libovolnou metodu nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).</span><span class="sxs-lookup"><span data-stu-id="b4df6-109">Deploy the template by using [any deployment method](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).</span></span>
+2. <span data-ttu-id="c54f9-109">Nasazení šablony hello pomocí [libovolnou metodu nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).</span><span class="sxs-lookup"><span data-stu-id="c54f9-109">Deploy hello template by using [any deployment method](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).</span></span>
 
-<span data-ttu-id="b4df6-110">Nejdřív jsme popisují, jak vytvořit šablonu Resource Manageru pro skupinu akcí, kde definice akce jsou pevně zakódovaná v šabloně.</span><span class="sxs-lookup"><span data-stu-id="b4df6-110">First, we describe how to create a Resource Manager template for an action group where the action definitions are hard-coded in the template.</span></span> <span data-ttu-id="b4df6-111">Druhý jsme popisují, jak vytvořit šablonu, která přebírá informace o konfiguraci webhooku jako vstupní parametry při nasazení šablony.</span><span class="sxs-lookup"><span data-stu-id="b4df6-111">Second, we describe how to create a template that takes the webhook configuration information as input parameters when the template is deployed.</span></span>
+<span data-ttu-id="c54f9-110">Nejdřív jsme popisují, jak toocreate šablony Resource Manageru pro akce skupiny, kde definice hello akce jsou pevně zakódovaná v šabloně hello.</span><span class="sxs-lookup"><span data-stu-id="c54f9-110">First, we describe how toocreate a Resource Manager template for an action group where hello action definitions are hard-coded in hello template.</span></span> <span data-ttu-id="c54f9-111">Druhý jsme popisují, jak toocreate šablonu, která přijímá informace o konfiguraci webhooku hello jako vstupní parametry při nasazení šablony hello.</span><span class="sxs-lookup"><span data-stu-id="c54f9-111">Second, we describe how toocreate a template that takes hello webhook configuration information as input parameters when hello template is deployed.</span></span>
 
-## <a name="resource-manager-templates-for-an-action-group"></a><span data-ttu-id="b4df6-112">Šablony Resource Manageru pro skupinu akce</span><span class="sxs-lookup"><span data-stu-id="b4df6-112">Resource Manager templates for an action group</span></span>
+## <a name="resource-manager-templates-for-an-action-group"></a><span data-ttu-id="c54f9-112">Šablony Resource Manageru pro skupinu akce</span><span class="sxs-lookup"><span data-stu-id="c54f9-112">Resource Manager templates for an action group</span></span>
 
-<span data-ttu-id="b4df6-113">Pokud chcete vytvořit skupinu akce pomocí šablony Resource Manageru, vytvořit prostředek typu `Microsoft.Insights/actionGroups`.</span><span class="sxs-lookup"><span data-stu-id="b4df6-113">To create an action group by using a Resource Manager template, you create a resource of the type `Microsoft.Insights/actionGroups`.</span></span> <span data-ttu-id="b4df6-114">Potom můžete vyplnit všech souvisejících vlastností.</span><span class="sxs-lookup"><span data-stu-id="b4df6-114">Then you fill in all related properties.</span></span> <span data-ttu-id="b4df6-115">Tady jsou dvě ukázkové šablony, které vytvořit skupinu akce.</span><span class="sxs-lookup"><span data-stu-id="b4df6-115">Here are two sample templates that create an action group.</span></span>
+<span data-ttu-id="c54f9-113">toocreate skupinu akce pomocí šablony Resource Manageru, vytvořit prostředek typu hello `Microsoft.Insights/actionGroups`.</span><span class="sxs-lookup"><span data-stu-id="c54f9-113">toocreate an action group by using a Resource Manager template, you create a resource of hello type `Microsoft.Insights/actionGroups`.</span></span> <span data-ttu-id="c54f9-114">Potom můžete vyplnit všech souvisejících vlastností.</span><span class="sxs-lookup"><span data-stu-id="c54f9-114">Then you fill in all related properties.</span></span> <span data-ttu-id="c54f9-115">Tady jsou dvě ukázkové šablony, které vytvořit skupinu akce.</span><span class="sxs-lookup"><span data-stu-id="c54f9-115">Here are two sample templates that create an action group.</span></span>
 
 ```json
 {
@@ -43,13 +43,13 @@ ms.lasthandoff: 08/29/2017
     "actionGroupName": {
       "type": "string",
       "metadata": {
-        "description": "Unique name (within the Resource Group) for the Action group."
+        "description": "Unique name (within hello Resource Group) for hello Action group."
       }
     },
     "actionGroupShortName": {
       "type": "string",
       "metadata": {
-        "description": "Short name (maximum 12 characters) for the Action group."
+        "description": "Short name (maximum 12 characters) for hello Action group."
       }
     }
   },
@@ -114,13 +114,13 @@ ms.lasthandoff: 08/29/2017
     "actionGroupName": {
       "type": "string",
       "metadata": {
-        "description": "Unique name (within the Resource Group) for the Action group."
+        "description": "Unique name (within hello Resource Group) for hello Action group."
       }
     },
     "actionGroupShortName": {
       "type": "string",
       "metadata": {
-        "description": "Short name (maximum 12 characters) for the Action group."
+        "description": "Short name (maximum 12 characters) for hello Action group."
       }
     },
     "webhookReceiverName": {
@@ -168,7 +168,7 @@ ms.lasthandoff: 08/29/2017
 ```
 
 
-## <a name="next-steps"></a><span data-ttu-id="b4df6-116">Další kroky</span><span class="sxs-lookup"><span data-stu-id="b4df6-116">Next steps</span></span>
-* <span data-ttu-id="b4df6-117">Další informace o [skupiny akcí](monitoring-action-groups.md).</span><span class="sxs-lookup"><span data-stu-id="b4df6-117">Learn more about [action groups](monitoring-action-groups.md).</span></span>
-* <span data-ttu-id="b4df6-118">Další informace o [výstrahy](monitoring-overview-alerts.md).</span><span class="sxs-lookup"><span data-stu-id="b4df6-118">Learn more about [alerts](monitoring-overview-alerts.md).</span></span>
-* <span data-ttu-id="b4df6-119">Informace o postupu přidání [výstrah pomocí šablony Resource Manageru](monitoring-create-activity-log-alerts-with-resource-manager-template.md).</span><span class="sxs-lookup"><span data-stu-id="b4df6-119">Learn how to add [alerts by using a Resource Manager template](monitoring-create-activity-log-alerts-with-resource-manager-template.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="c54f9-116">Další kroky</span><span class="sxs-lookup"><span data-stu-id="c54f9-116">Next steps</span></span>
+* <span data-ttu-id="c54f9-117">Další informace o [skupiny akcí](monitoring-action-groups.md).</span><span class="sxs-lookup"><span data-stu-id="c54f9-117">Learn more about [action groups](monitoring-action-groups.md).</span></span>
+* <span data-ttu-id="c54f9-118">Další informace o [výstrahy](monitoring-overview-alerts.md).</span><span class="sxs-lookup"><span data-stu-id="c54f9-118">Learn more about [alerts](monitoring-overview-alerts.md).</span></span>
+* <span data-ttu-id="c54f9-119">Zjistěte, jak tooadd [výstrah pomocí šablony Resource Manageru](monitoring-create-activity-log-alerts-with-resource-manager-template.md).</span><span class="sxs-lookup"><span data-stu-id="c54f9-119">Learn how tooadd [alerts by using a Resource Manager template](monitoring-create-activity-log-alerts-with-resource-manager-template.md).</span></span>

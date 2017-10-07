@@ -6,7 +6,7 @@
 ## [Monitorování stavu](application-gateway-probe-overview.md)
 ## [Směrování adres URL](application-gateway-url-route-overview.md)
 ## [Multi-Site](application-gateway-multi-site-overview.md)
-## [Koncový protokol SSL](application-gateway-backend-ssl.md)
+## [Ukončení tooend SSL](application-gateway-backend-ssl.md)
 ## [Zásady protokolu SSL](application-gateway-ssl-policy-overview.md)
 ## [Přesměrování](application-gateway-redirect-overview.md)
 ## [Podpora více tenantů](application-gateway-web-app-overview.md)
@@ -37,7 +37,7 @@
 ### [PowerShell](application-gateway-ssl-arm.md)
 ### [PowerShell (Classic)](application-gateway-ssl.md)
 ### [Azure CLI 2.0](application-gateway-ssl.md)
-### [Koncové řešení](application-gateway-end-to-end-ssl-powershell.md)
+### [End tooend](application-gateway-end-to-end-ssl-powershell.md)
 ### [Zásady protokolu SSL](application-gateway-configure-ssl-policy-powershell.md)
 ## Konfigurace směrování na základě cest URL
 ### [Azure Portal](application-gateway-create-url-route-portal.md)

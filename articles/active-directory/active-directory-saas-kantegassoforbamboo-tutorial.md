@@ -1,6 +1,6 @@
 ---
 title: "Kurz: Azure Active Directory integrace s Kantega jednotné přihlašování pro bambus | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Kantega jednotné přihlašování pro bambus."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Kantega jednotné přihlašování pro bambus."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,311 +13,311 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: cc259bb6f9bdb2293b6935e45e2df52b9fee6873
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: 8bf637ff440e8e3948db882861bee6e73f8aa879
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a><span data-ttu-id="297d5-103">Kurz: Azure Active Directory integrace s Kantega jednotné přihlašování pro bambus</span><span class="sxs-lookup"><span data-stu-id="297d5-103">Tutorial: Azure Active Directory integration with Kantega SSO for Bamboo</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a><span data-ttu-id="efbf5-103">Kurz: Azure Active Directory integrace s Kantega jednotné přihlašování pro bambus</span><span class="sxs-lookup"><span data-stu-id="efbf5-103">Tutorial: Azure Active Directory integration with Kantega SSO for Bamboo</span></span>
 
-<span data-ttu-id="297d5-104">V tomto kurzu zjistěte, jak integrovat Kantega jednotné přihlašování pro bambus s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="297d5-104">In this tutorial, you learn how to integrate Kantega SSO for Bamboo with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="efbf5-104">V tomto kurzu zjistíte, jak toointegrate Kantega jednotné přihlašování pro bambus službou Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="efbf5-104">In this tutorial, you learn how toointegrate Kantega SSO for Bamboo with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="297d5-105">Integrace Kantega jednotné přihlašování pro bambus s Azure AD poskytuje následující výhody:</span><span class="sxs-lookup"><span data-stu-id="297d5-105">Integrating Kantega SSO for Bamboo with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="efbf5-105">Integrace Kantega jednotné přihlašování pro bambus s Azure AD poskytuje hello následující výhody:</span><span class="sxs-lookup"><span data-stu-id="efbf5-105">Integrating Kantega SSO for Bamboo with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="297d5-106">Můžete řídit ve službě Azure AD, kdo má přístup k Kantega jednotné přihlašování pro bambus</span><span class="sxs-lookup"><span data-stu-id="297d5-106">You can control in Azure AD who has access to Kantega SSO for Bamboo</span></span>
-- <span data-ttu-id="297d5-107">Můžete povolit uživatelům, aby automaticky získat přihlášení k Kantega jednotné přihlašování pro bambus (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="297d5-107">You can enable your users to automatically get signed-on to Kantega SSO for Bamboo (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="297d5-108">Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure</span><span class="sxs-lookup"><span data-stu-id="297d5-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="efbf5-106">Můžete řídit ve službě Azure AD, který má přístup tooKantega jednotné přihlašování pro bambus</span><span class="sxs-lookup"><span data-stu-id="efbf5-106">You can control in Azure AD who has access tooKantega SSO for Bamboo</span></span>
+- <span data-ttu-id="efbf5-107">Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooKantega jednotné přihlašování pro bambus (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="efbf5-107">You can enable your users tooautomatically get signed-on tooKantega SSO for Bamboo (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="efbf5-108">Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure</span><span class="sxs-lookup"><span data-stu-id="efbf5-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="297d5-109">Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="297d5-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="efbf5-109">Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="efbf5-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="297d5-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="297d5-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="efbf5-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="efbf5-110">Prerequisites</span></span>
 
-<span data-ttu-id="297d5-111">Ke konfiguraci integrace služby Azure AD pomocí jednotného přihlašování Kantega pro bambus, potřebujete následující položky:</span><span class="sxs-lookup"><span data-stu-id="297d5-111">To configure Azure AD integration with Kantega SSO for Bamboo, you need the following items:</span></span>
+<span data-ttu-id="efbf5-111">Integrace služby Azure AD pomocí jednotného přihlašování Kantega pro bambus tooconfigure, je třeba hello následující položky:</span><span class="sxs-lookup"><span data-stu-id="efbf5-111">tooconfigure Azure AD integration with Kantega SSO for Bamboo, you need hello following items:</span></span>
 
-- <span data-ttu-id="297d5-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="297d5-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="297d5-113">Předplatné povolené Kantega SSO pro bambus jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="297d5-113">A Kantega SSO for Bamboo single sign-on enabled subscription</span></span>
+- <span data-ttu-id="efbf5-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="efbf5-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="efbf5-113">Předplatné povolené Kantega SSO pro bambus jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="efbf5-113">A Kantega SSO for Bamboo single sign-on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="297d5-114">K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="297d5-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="efbf5-114">tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="efbf5-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="297d5-115">Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="297d5-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="efbf5-115">tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="efbf5-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="297d5-116">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="297d5-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="297d5-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="297d5-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="efbf5-116">Nepoužívejte provozním prostředí, pokud to není nutné.</span><span class="sxs-lookup"><span data-stu-id="efbf5-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="efbf5-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="efbf5-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="297d5-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="297d5-118">Scenario description</span></span>
-<span data-ttu-id="297d5-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="297d5-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="297d5-120">Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="297d5-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="efbf5-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="efbf5-118">Scenario description</span></span>
+<span data-ttu-id="efbf5-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="efbf5-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="efbf5-120">Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="efbf5-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="297d5-121">Přidání Kantega jednotné přihlašování pro bambus z Galerie</span><span class="sxs-lookup"><span data-stu-id="297d5-121">Adding Kantega SSO for Bamboo from the gallery</span></span>
-2. <span data-ttu-id="297d5-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="297d5-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="efbf5-121">Přidání Kantega jednotné přihlašování pro bambus z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="efbf5-121">Adding Kantega SSO for Bamboo from hello gallery</span></span>
+2. <span data-ttu-id="efbf5-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="efbf5-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-kantega-sso-for-bamboo-from-the-gallery"></a><span data-ttu-id="297d5-123">Přidání Kantega jednotné přihlašování pro bambus z Galerie</span><span class="sxs-lookup"><span data-stu-id="297d5-123">Adding Kantega SSO for Bamboo from the gallery</span></span>
-<span data-ttu-id="297d5-124">Při konfiguraci integrace Kantega přihlašování pro bambus do služby Azure AD, potřebujete přidat Kantega jednotné přihlašování pro bambus z Galerie si na seznam spravovaných aplikací SaaS.</span><span class="sxs-lookup"><span data-stu-id="297d5-124">To configure the integration of Kantega SSO for Bamboo into Azure AD, you need to add Kantega SSO for Bamboo from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-kantega-sso-for-bamboo-from-hello-gallery"></a><span data-ttu-id="efbf5-123">Přidání Kantega jednotné přihlašování pro bambus z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="efbf5-123">Adding Kantega SSO for Bamboo from hello gallery</span></span>
+<span data-ttu-id="efbf5-124">tooconfigure hello integrace Kantega přihlašování pro bambus do Azure AD, musíte pro bambus hello Galerie tooyour seznamu spravovaných aplikací SaaS tooadd Kantega jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="efbf5-124">tooconfigure hello integration of Kantega SSO for Bamboo into Azure AD, you need tooadd Kantega SSO for Bamboo from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="297d5-125">**Pokud chcete přidat Kantega jednotné přihlašování pro bambus z galerie, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="297d5-125">**To add Kantega SSO for Bamboo from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="efbf5-125">**tooadd Kantega jednotné přihlašování pro bambus z Galerie hello, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="efbf5-125">**tooadd Kantega SSO for Bamboo from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="297d5-126">V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="297d5-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="efbf5-126">V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="efbf5-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="297d5-128">Přejděte na **podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="297d5-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="297d5-129">Pak přejděte na **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="297d5-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="efbf5-128">Přejděte příliš**podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="efbf5-129">Potom přejděte příliš**všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-129">Then go too**All applications**.</span></span>
 
     ![Aplikace][2]
     
-3. <span data-ttu-id="297d5-131">Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="297d5-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="efbf5-131">tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.</span><span class="sxs-lookup"><span data-stu-id="efbf5-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Aplikace][3]
 
-4. <span data-ttu-id="297d5-133">Do vyhledávacího pole zadejte **Kantega jednotné přihlašování pro bambus**.</span><span class="sxs-lookup"><span data-stu-id="297d5-133">In the search box, type **Kantega SSO for Bamboo**.</span></span>
+4. <span data-ttu-id="efbf5-133">Hello vyhledávacího pole zadejte **Kantega jednotné přihlašování pro bambus**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-133">In hello search box, type **Kantega SSO for Bamboo**.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_search.png)
 
-5. <span data-ttu-id="297d5-135">Na panelu výsledků vyberte **Kantega jednotné přihlašování pro bambus**a potom klikněte na **přidat** tlačítko Přidat aplikaci.</span><span class="sxs-lookup"><span data-stu-id="297d5-135">In the results panel, select **Kantega SSO for Bamboo**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="efbf5-135">Na panelu výsledků hello vyberte **Kantega jednotné přihlašování pro bambus**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.</span><span class="sxs-lookup"><span data-stu-id="efbf5-135">In hello results panel, select **Kantega SSO for Bamboo**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="297d5-137">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="297d5-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="297d5-138">V této části konfiguraci a testování Azure AD jednotné přihlašování pomocí jednotného přihlašování Kantega pro bambus podle testovacího uživatele názvem "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="297d5-138">In this section, you configure and test Azure AD single sign-on with Kantega SSO for Bamboo based on a test user called "Britta Simon".</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="efbf5-137">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="efbf5-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="efbf5-138">V této části konfiguraci a testování Azure AD jednotné přihlašování pomocí jednotného přihlašování Kantega pro bambus podle testovacího uživatele názvem "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="efbf5-138">In this section, you configure and test Azure AD single sign-on with Kantega SSO for Bamboo based on a test user called "Britta Simon".</span></span>
 
-<span data-ttu-id="297d5-139">Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějšku Kantega SSO pro bambus je pro uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="297d5-139">For single sign-on to work, Azure AD needs to know what the counterpart user in Kantega SSO for Bamboo is to a user in Azure AD.</span></span> <span data-ttu-id="297d5-140">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské Kantega SSO pro bambus musí navázat.</span><span class="sxs-lookup"><span data-stu-id="297d5-140">In other words, a link relationship between an Azure AD user and the related user in Kantega SSO for Bamboo needs to be established.</span></span>
+<span data-ttu-id="efbf5-139">Pro toowork jeden přihlašování Azure AD musí tooknow, co uživatel protějšku hello Kantega SSO pro bambus je tooa uživatelem ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="efbf5-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in Kantega SSO for Bamboo is tooa user in Azure AD.</span></span> <span data-ttu-id="efbf5-140">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello Kantega SSO pro bambus musí toobe navázat.</span><span class="sxs-lookup"><span data-stu-id="efbf5-140">In other words, a link relationship between an Azure AD user and hello related user in Kantega SSO for Bamboo needs toobe established.</span></span>
 
-<span data-ttu-id="297d5-141">V Kantega jednotné přihlašování pro bambus, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.</span><span class="sxs-lookup"><span data-stu-id="297d5-141">In Kantega SSO for Bamboo, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.</span></span>
+<span data-ttu-id="efbf5-141">V Kantega jednotné přihlašování pro bambus, přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.</span><span class="sxs-lookup"><span data-stu-id="efbf5-141">In Kantega SSO for Bamboo, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
 
-<span data-ttu-id="297d5-142">Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí jednotného přihlašování Kantega pro bambus, je třeba dokončit následující stavební bloky:</span><span class="sxs-lookup"><span data-stu-id="297d5-142">To configure and test Azure AD single sign-on with Kantega SSO for Bamboo, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="efbf5-142">tooconfigure a testování Azure AD jednotné přihlašování pomocí jednotného přihlašování Kantega bambus, potřebujete následující stavební bloky hello toocomplete:</span><span class="sxs-lookup"><span data-stu-id="efbf5-142">tooconfigure and test Azure AD single sign-on with Kantega SSO for Bamboo, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="297d5-143">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.</span><span class="sxs-lookup"><span data-stu-id="297d5-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="297d5-144">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="297d5-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="297d5-145">**[Vytváření Kantega SSO pro testovací uživatele bambus](#creating-a-kantega-sso-for-bamboo-test-user)**  – Pokud chcete mít protějšek Britta Simon Kantega SSO pro bambus propojeném s Azure AD reprezentace daného uživatele.</span><span class="sxs-lookup"><span data-stu-id="297d5-145">**[Creating a Kantega SSO for Bamboo test user](#creating-a-kantega-sso-for-bamboo-test-user)** - to have a counterpart of Britta Simon in Kantega SSO for Bamboo that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="297d5-146">**[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="297d5-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="297d5-147">**[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.</span><span class="sxs-lookup"><span data-stu-id="297d5-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="efbf5-143">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.</span><span class="sxs-lookup"><span data-stu-id="efbf5-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="efbf5-144">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="efbf5-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="efbf5-145">**[Vytváření Kantega SSO pro testovací uživatele bambus](#creating-a-kantega-sso-for-bamboo-test-user)**  -toohave protějšek Britta Simon Kantega SSO pro bambus, která je propojená toohello Azure AD reprezentace uživatele.</span><span class="sxs-lookup"><span data-stu-id="efbf5-145">**[Creating a Kantega SSO for Bamboo test user](#creating-a-kantega-sso-for-bamboo-test-user)** - toohave a counterpart of Britta Simon in Kantega SSO for Bamboo that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="efbf5-146">**[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="efbf5-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="efbf5-147">**[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.</span><span class="sxs-lookup"><span data-stu-id="efbf5-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="297d5-148">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="297d5-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="efbf5-148">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="efbf5-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="297d5-149">V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v vaší Kantega jednotné přihlašování pro aplikace bambus.</span><span class="sxs-lookup"><span data-stu-id="297d5-149">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Kantega SSO for Bamboo application.</span></span>
+<span data-ttu-id="efbf5-149">V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v vaší Kantega jednotné přihlašování pro aplikace bambus.</span><span class="sxs-lookup"><span data-stu-id="efbf5-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your Kantega SSO for Bamboo application.</span></span>
 
-<span data-ttu-id="297d5-150">**Ke konfiguraci Azure AD jednotné přihlašování pomocí jednotného přihlašování Kantega pro bambus, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="297d5-150">**To configure Azure AD single sign-on with Kantega SSO for Bamboo, perform the following steps:**</span></span>
+<span data-ttu-id="efbf5-150">**tooconfigure Azure AD jednotné přihlašování pomocí jednotného přihlašování Kantega pro bambus, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="efbf5-150">**tooconfigure Azure AD single sign-on with Kantega SSO for Bamboo, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="297d5-151">Na portálu Azure na **Kantega jednotné přihlašování pro bambus** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="297d5-151">In the Azure portal, on the **Kantega SSO for Bamboo** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="efbf5-151">V portálu Azure, na hello hello **Kantega jednotné přihlašování pro bambus** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-151">In hello Azure portal, on hello **Kantega SSO for Bamboo** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. <span data-ttu-id="297d5-153">Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.</span><span class="sxs-lookup"><span data-stu-id="297d5-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="efbf5-153">Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="efbf5-153">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_samlbase.png)
 
-3. <span data-ttu-id="297d5-155">V **IDP** spustil v režimu **Kantega SSO bambus domény a adresy URL** části provést následující krok:</span><span class="sxs-lookup"><span data-stu-id="297d5-155">In **IDP** initiated mode, on the **Kantega SSO for Bamboo Domain and URLs** section perform the following step :</span></span>
+3. <span data-ttu-id="efbf5-155">V **IDP** iniciované režimu na hello **Kantega SSO bambus domény a adresy URL** části provést následující krok hello:</span><span class="sxs-lookup"><span data-stu-id="efbf5-155">In **IDP** initiated mode, on hello **Kantega SSO for Bamboo Domain and URLs** section perform hello following step :</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_url1.png)
     
-    <span data-ttu-id="297d5-157">a.</span><span class="sxs-lookup"><span data-stu-id="297d5-157">a.</span></span> <span data-ttu-id="297d5-158">V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`</span><span class="sxs-lookup"><span data-stu-id="297d5-158">In the **Identifier** textbox, type a URL using the following pattern: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`</span></span>
+    <span data-ttu-id="efbf5-157">a.</span><span class="sxs-lookup"><span data-stu-id="efbf5-157">a.</span></span> <span data-ttu-id="efbf5-158">V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`</span><span class="sxs-lookup"><span data-stu-id="efbf5-158">In hello **Identifier** textbox, type a URL using hello following pattern: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`</span></span>
 
-    <span data-ttu-id="297d5-159">b.</span><span class="sxs-lookup"><span data-stu-id="297d5-159">b.</span></span> <span data-ttu-id="297d5-160">V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`</span><span class="sxs-lookup"><span data-stu-id="297d5-160">In the **Reply URL** textbox, type a URL using the following pattern: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`</span></span>
+    <span data-ttu-id="efbf5-159">b.</span><span class="sxs-lookup"><span data-stu-id="efbf5-159">b.</span></span> <span data-ttu-id="efbf5-160">V hello **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`</span><span class="sxs-lookup"><span data-stu-id="efbf5-160">In hello **Reply URL** textbox, type a URL using hello following pattern: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`</span></span>
 
-4. <span data-ttu-id="297d5-161">V **SP** initiated režimu, zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok:</span><span class="sxs-lookup"><span data-stu-id="297d5-161">In **SP** initiated mode, check **Show advanced URL settings** and  perform the following step :</span></span>
+4. <span data-ttu-id="efbf5-161">V **SP** initiated režimu, zkontrolujte **zobrazit upřesňující nastavení adresy URL** a proveďte následující krok hello:</span><span class="sxs-lookup"><span data-stu-id="efbf5-161">In **SP** initiated mode, check **Show advanced URL settings** and  perform hello following step :</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_url2.png)
     
-    <span data-ttu-id="297d5-163">V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`</span><span class="sxs-lookup"><span data-stu-id="297d5-163">In the **Sign-on URL** textbox, type a URL using the following pattern: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`</span></span>
+    <span data-ttu-id="efbf5-163">V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`</span><span class="sxs-lookup"><span data-stu-id="efbf5-163">In hello **Sign-on URL** textbox, type a URL using hello following pattern: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`</span></span>
      
     > [!NOTE] 
-    > <span data-ttu-id="297d5-164">Tyto hodnoty nejsou skutečné.</span><span class="sxs-lookup"><span data-stu-id="297d5-164">These values are not real.</span></span> <span data-ttu-id="297d5-165">Tyto hodnoty aktualizujte se skutečným identifikátorem, adresa URL odpovědi a přihlašovací adresa URL.</span><span class="sxs-lookup"><span data-stu-id="297d5-165">Update these values with the actual Identifier, Reply URL, and Sign-On URL.</span></span> <span data-ttu-id="297d5-166">Tyto hodnoty jsou přijímány během konfigurace bambus modul plug-in, který je vysvětlen později v tomto kurzu.</span><span class="sxs-lookup"><span data-stu-id="297d5-166">These values are recieved during the configuration of Bamboo plugin which is explained later in the tutorial.</span></span>
+    > <span data-ttu-id="efbf5-164">Tyto hodnoty nejsou skutečné.</span><span class="sxs-lookup"><span data-stu-id="efbf5-164">These values are not real.</span></span> <span data-ttu-id="efbf5-165">Aktualizovat tyto hodnoty s hello skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL.</span><span class="sxs-lookup"><span data-stu-id="efbf5-165">Update these values with hello actual Identifier, Reply URL, and Sign-On URL.</span></span> <span data-ttu-id="efbf5-166">Tyto hodnoty jsou přijímány během konfigurace hello bambus modul plug-in, který je vysvětlen později v kurzu hello.</span><span class="sxs-lookup"><span data-stu-id="efbf5-166">These values are recieved during hello configuration of Bamboo plugin which is explained later in hello tutorial.</span></span>
 
-5. <span data-ttu-id="297d5-167">Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="297d5-167">On the **SAML Signing Certificate** section, click **Metadata XML** and then save the metadata file on your computer.</span></span>
+5. <span data-ttu-id="efbf5-167">Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat hello ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="efbf5-167">On hello **SAML Signing Certificate** section, click **Metadata XML** and then save hello metadata file on your computer.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_certificate.png) 
 
-6. <span data-ttu-id="297d5-169">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="297d5-169">Click **Save** button.</span></span>
+6. <span data-ttu-id="efbf5-169">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="efbf5-169">Click **Save** button.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_general_400.png)
     
-7. <span data-ttu-id="297d5-171">V okně prohlížeče jiný web Přihlaste se k vaší bambus na místním serveru jako správce.</span><span class="sxs-lookup"><span data-stu-id="297d5-171">In a different web browser window, log in to your Bamboo  on premise server as an administrator.</span></span>
+7. <span data-ttu-id="efbf5-171">V okně prohlížeče jiný web Přihlaste se jako správce v tooyour bambus na místním serveru.</span><span class="sxs-lookup"><span data-stu-id="efbf5-171">In a different web browser window, log in tooyour Bamboo  on premise server as an administrator.</span></span>
 
-8. <span data-ttu-id="297d5-172">Pozastavte ukazatel myši na ikonu a klikněte na **doplňky**.</span><span class="sxs-lookup"><span data-stu-id="297d5-172">Hover on cog and click the **Add-ons**.</span></span>
+8. <span data-ttu-id="efbf5-172">Pozastavte ukazatel myši na ikonu a klikněte na tlačítko hello **doplňky**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-172">Hover on cog and click hello **Add-ons**.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon1.png)
 
-9. <span data-ttu-id="297d5-174">Karta části doplňky, klikněte na tlačítko **najít nové rozšíření**.</span><span class="sxs-lookup"><span data-stu-id="297d5-174">Under Add-ons tab section, click **Find new add-ons**.</span></span> <span data-ttu-id="297d5-175">Hledání **Kantega jednotné přihlašování pro bambus (SAML & protokolu Kerberos)** a klikněte na tlačítko **nainstalovat** tlačítko k instalaci nové zásuvný modul SAML.</span><span class="sxs-lookup"><span data-stu-id="297d5-175">Search **Kantega SSO for Bamboo (SAML & Kerberos)** and click **Install** button to install the new SAML plugin.</span></span>
+9. <span data-ttu-id="efbf5-174">Karta části doplňky, klikněte na tlačítko **najít nové rozšíření**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-174">Under Add-ons tab section, click **Find new add-ons**.</span></span> <span data-ttu-id="efbf5-175">Hledání **Kantega jednotné přihlašování pro bambus (SAML & protokolu Kerberos)** a klikněte na tlačítko **nainstalovat** tooinstall tlačítko hello nové zásuvný modul SAML.</span><span class="sxs-lookup"><span data-stu-id="efbf5-175">Search **Kantega SSO for Bamboo (SAML & Kerberos)** and click **Install** button tooinstall hello new SAML plugin.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon2.png)
 
-10. <span data-ttu-id="297d5-177">Spustí se instalace modulu plug-in.</span><span class="sxs-lookup"><span data-stu-id="297d5-177">The plugin installation will start.</span></span>
+10. <span data-ttu-id="efbf5-177">Instalace modulu plug-in Hello se spustí.</span><span class="sxs-lookup"><span data-stu-id="efbf5-177">hello plugin installation will start.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon21.png)
 
-11. <span data-ttu-id="297d5-179">Po dokončení instalace.</span><span class="sxs-lookup"><span data-stu-id="297d5-179">Once the installation is complete.</span></span> <span data-ttu-id="297d5-180">Klikněte na **Zavřít**.</span><span class="sxs-lookup"><span data-stu-id="297d5-180">Click **Close**.</span></span>
+11. <span data-ttu-id="efbf5-179">Po dokončení instalace hello.</span><span class="sxs-lookup"><span data-stu-id="efbf5-179">Once hello installation is complete.</span></span> <span data-ttu-id="efbf5-180">Klikněte na **Zavřít**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-180">Click **Close**.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon33.png)
 
-12. <span data-ttu-id="297d5-182">Klikněte na **Manage** (Spravovat).</span><span class="sxs-lookup"><span data-stu-id="297d5-182">Click **Manage**.</span></span>
+12. <span data-ttu-id="efbf5-182">Klikněte na **Manage** (Spravovat).</span><span class="sxs-lookup"><span data-stu-id="efbf5-182">Click **Manage**.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon34.png)
     
-13. <span data-ttu-id="297d5-184">Klikněte na tlačítko **konfigurace** konfigurace nového modulu plug-in.</span><span class="sxs-lookup"><span data-stu-id="297d5-184">Click **Configure** to configure the new plugin.</span></span>    
+13. <span data-ttu-id="efbf5-184">Klikněte na tlačítko **konfigurace** tooconfigure hello nového modulu plug-in.</span><span class="sxs-lookup"><span data-stu-id="efbf5-184">Click **Configure** tooconfigure hello new plugin.</span></span>  
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon3.png)
 
-14. <span data-ttu-id="297d5-186">V **SAML** části.</span><span class="sxs-lookup"><span data-stu-id="297d5-186">In the **SAML** section.</span></span> <span data-ttu-id="297d5-187">Vyberte **Azure Active Directory (Azure AD)** z **zprostředkovatele identity přidat** rozevíracího seznamu.</span><span class="sxs-lookup"><span data-stu-id="297d5-187">Select **Azure Active Directory (Azure AD)** from the **Add identity provider** dropdown.</span></span>
+14. <span data-ttu-id="efbf5-186">V hello **SAML** části.</span><span class="sxs-lookup"><span data-stu-id="efbf5-186">In hello **SAML** section.</span></span> <span data-ttu-id="efbf5-187">Vyberte **Azure Active Directory (Azure AD)** z hello **zprostředkovatele identity přidat** rozevíracího seznamu.</span><span class="sxs-lookup"><span data-stu-id="efbf5-187">Select **Azure Active Directory (Azure AD)** from hello **Add identity provider** dropdown.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon4.png)
 
-15. <span data-ttu-id="297d5-189">Vyberte úroveň předplatné jako **základní**.</span><span class="sxs-lookup"><span data-stu-id="297d5-189">Select subscription level as **Basic**.</span></span>
+15. <span data-ttu-id="efbf5-189">Vyberte úroveň předplatné jako **základní**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-189">Select subscription level as **Basic**.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon5.png)
 
-16. <span data-ttu-id="297d5-191">Na **vlastností aplikace** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="297d5-191">On the **App properties** section, perform following steps:</span></span>
+16. <span data-ttu-id="efbf5-191">Na hello **vlastností aplikace** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="efbf5-191">On hello **App properties** section, perform following steps:</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon6.png)
 
-    <span data-ttu-id="297d5-193">a.</span><span class="sxs-lookup"><span data-stu-id="297d5-193">a.</span></span> <span data-ttu-id="297d5-194">Kopírování **identifikátor ID URI aplikace** hodnotu a použít ho jako **identifikátor, adresa URL odpovědi a přihlašovací adresa URL** na **Kantega SSO bambus domény a adresy URL** části na portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="297d5-194">Copy the **App ID URI** value and use it as **Identifier, Reply URL, and Sign-On URL** on the **Kantega SSO for Bamboo Domain and URLs** section in Azure portal.</span></span>
+    <span data-ttu-id="efbf5-193">a.</span><span class="sxs-lookup"><span data-stu-id="efbf5-193">a.</span></span> <span data-ttu-id="efbf5-194">Kopírování hello **identifikátor ID URI aplikace** hodnotu a použít ho jako **identifikátor, adresa URL odpovědi a přihlašovací adresa URL** na hello **Kantega SSO bambus domény a adresy URL** části na portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="efbf5-194">Copy hello **App ID URI** value and use it as **Identifier, Reply URL, and Sign-On URL** on hello **Kantega SSO for Bamboo Domain and URLs** section in Azure portal.</span></span>
 
-    <span data-ttu-id="297d5-195">b.</span><span class="sxs-lookup"><span data-stu-id="297d5-195">b.</span></span> <span data-ttu-id="297d5-196">Klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="297d5-196">Click **Next**.</span></span>
+    <span data-ttu-id="efbf5-195">b.</span><span class="sxs-lookup"><span data-stu-id="efbf5-195">b.</span></span> <span data-ttu-id="efbf5-196">Klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-196">Click **Next**.</span></span>
 
-17. <span data-ttu-id="297d5-197">Na **import metadat** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="297d5-197">On the **Metadata import** section, perform following steps:</span></span>
+17. <span data-ttu-id="efbf5-197">Na hello **import metadat** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="efbf5-197">On hello **Metadata import** section, perform following steps:</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon7.png)
 
-    <span data-ttu-id="297d5-199">a.</span><span class="sxs-lookup"><span data-stu-id="297d5-199">a.</span></span> <span data-ttu-id="297d5-200">Vyberte **soubor metadat v mém počítači**a metadata souboru k odeslání, který jste si stáhli z portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="297d5-200">Select **Metadata file on my computer**, and upload metadata file, which you have downloaded from Azure portal.</span></span>
+    <span data-ttu-id="efbf5-199">a.</span><span class="sxs-lookup"><span data-stu-id="efbf5-199">a.</span></span> <span data-ttu-id="efbf5-200">Vyberte **soubor metadat v mém počítači**a metadata souboru k odeslání, který jste si stáhli z portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="efbf5-200">Select **Metadata file on my computer**, and upload metadata file, which you have downloaded from Azure portal.</span></span>
 
-    <span data-ttu-id="297d5-201">b.</span><span class="sxs-lookup"><span data-stu-id="297d5-201">b.</span></span> <span data-ttu-id="297d5-202">Klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="297d5-202">Click **Next**.</span></span>
+    <span data-ttu-id="efbf5-201">b.</span><span class="sxs-lookup"><span data-stu-id="efbf5-201">b.</span></span> <span data-ttu-id="efbf5-202">Klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-202">Click **Next**.</span></span>
 
-18. <span data-ttu-id="297d5-203">Na **název a jednotného přihlašování k umístění** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="297d5-203">On the **Name and SSO location** section, perform following steps:</span></span>
+18. <span data-ttu-id="efbf5-203">Na hello **název a jednotného přihlašování k umístění** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="efbf5-203">On hello **Name and SSO location** section, perform following steps:</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon8.png)
 
-    <span data-ttu-id="297d5-205">a.</span><span class="sxs-lookup"><span data-stu-id="297d5-205">a.</span></span> <span data-ttu-id="297d5-206">Přidejte název poskytovatele Identity **název zprostředkovatele Identity** textbox (např. Azure AD).</span><span class="sxs-lookup"><span data-stu-id="297d5-206">Add Name of the Identity Provider in **Identity provider name** textbox (e.g Azure AD).</span></span>
+    <span data-ttu-id="efbf5-205">a.</span><span class="sxs-lookup"><span data-stu-id="efbf5-205">a.</span></span> <span data-ttu-id="efbf5-206">Přidat název hello zprostředkovatele Identity v **název zprostředkovatele Identity** textbox (např. Azure AD).</span><span class="sxs-lookup"><span data-stu-id="efbf5-206">Add Name of hello Identity Provider in **Identity provider name** textbox (e.g Azure AD).</span></span>
 
-    <span data-ttu-id="297d5-207">b.</span><span class="sxs-lookup"><span data-stu-id="297d5-207">b.</span></span> <span data-ttu-id="297d5-208">Klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="297d5-208">Click **Next**.</span></span>
+    <span data-ttu-id="efbf5-207">b.</span><span class="sxs-lookup"><span data-stu-id="efbf5-207">b.</span></span> <span data-ttu-id="efbf5-208">Klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-208">Click **Next**.</span></span>
 
-19. <span data-ttu-id="297d5-209">Ověřte podpisového certifikátu a klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="297d5-209">Verify the Signing certificate and click **Next**.</span></span>  
+19. <span data-ttu-id="efbf5-209">Ověřte hello podpisového certifikátu a klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-209">Verify hello Signing certificate and click **Next**.</span></span>    
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon9.png)
 
-20. <span data-ttu-id="297d5-211">Na **bambus uživatelské účty** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="297d5-211">On the **Bamboo user accounts** section, perform following steps:</span></span>
+20. <span data-ttu-id="efbf5-211">Na hello **bambus uživatelské účty** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="efbf5-211">On hello **Bamboo user accounts** section, perform following steps:</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon10.png)
 
-    <span data-ttu-id="297d5-213">a.</span><span class="sxs-lookup"><span data-stu-id="297d5-213">a.</span></span> <span data-ttu-id="297d5-214">Vyberte **v případě potřeby vytvořte uživatele v adresáři společnosti bambus interní** a zadejte odpovídající název skupiny pro uživatele (může být více ne.</span><span class="sxs-lookup"><span data-stu-id="297d5-214">Select **Create users in Bamboo's internal Directory if needed** and enter the appropriate name of the group for users (can be multiple no.</span></span> <span data-ttu-id="297d5-215">skupin oddělené čárkou).</span><span class="sxs-lookup"><span data-stu-id="297d5-215">of groups separated by comma).</span></span>
+    <span data-ttu-id="efbf5-213">a.</span><span class="sxs-lookup"><span data-stu-id="efbf5-213">a.</span></span> <span data-ttu-id="efbf5-214">Vyberte **v případě potřeby vytvořte uživatele v adresáři společnosti bambus interní** a zadejte vhodný název hello hello skupiny pro uživatele (může být více ne.</span><span class="sxs-lookup"><span data-stu-id="efbf5-214">Select **Create users in Bamboo's internal Directory if needed** and enter hello appropriate name of hello group for users (can be multiple no.</span></span> <span data-ttu-id="efbf5-215">skupin oddělené čárkou).</span><span class="sxs-lookup"><span data-stu-id="efbf5-215">of groups separated by comma).</span></span>
 
-    <span data-ttu-id="297d5-216">b.</span><span class="sxs-lookup"><span data-stu-id="297d5-216">b.</span></span> <span data-ttu-id="297d5-217">Klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="297d5-217">Click **Next**.</span></span>
+    <span data-ttu-id="efbf5-216">b.</span><span class="sxs-lookup"><span data-stu-id="efbf5-216">b.</span></span> <span data-ttu-id="efbf5-217">Klikněte na **Další**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-217">Click **Next**.</span></span>
 
-21. <span data-ttu-id="297d5-218">Klikněte na **Dokončit**.</span><span class="sxs-lookup"><span data-stu-id="297d5-218">Click **Finish**.</span></span>
+21. <span data-ttu-id="efbf5-218">Klikněte na **Dokončit**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-218">Click **Finish**.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon11.png)
 
-22. <span data-ttu-id="297d5-220">Na **známé domén pro Azure AD** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="297d5-220">On the **Known domains for Azure AD** section, perform following steps:</span></span> 
+22. <span data-ttu-id="efbf5-220">Na hello **známé domén pro Azure AD** část, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="efbf5-220">On hello **Known domains for Azure AD** section, perform following steps:</span></span>   
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon12.png)
 
-    <span data-ttu-id="297d5-222">a.</span><span class="sxs-lookup"><span data-stu-id="297d5-222">a.</span></span> <span data-ttu-id="297d5-223">Vyberte **známé domén** v levém panelu stránky.</span><span class="sxs-lookup"><span data-stu-id="297d5-223">Select **Known domains** from the left panel of the page.</span></span>
+    <span data-ttu-id="efbf5-222">a.</span><span class="sxs-lookup"><span data-stu-id="efbf5-222">a.</span></span> <span data-ttu-id="efbf5-223">Vyberte **známé domén** z hello levém panelu hello stránky.</span><span class="sxs-lookup"><span data-stu-id="efbf5-223">Select **Known domains** from hello left panel of hello page.</span></span>
 
-    <span data-ttu-id="297d5-224">b.</span><span class="sxs-lookup"><span data-stu-id="297d5-224">b.</span></span> <span data-ttu-id="297d5-225">Zadejte název domény v **známé domén** textové pole.</span><span class="sxs-lookup"><span data-stu-id="297d5-225">Enter domain name in the **Known domains** textbox.</span></span>
+    <span data-ttu-id="efbf5-224">b.</span><span class="sxs-lookup"><span data-stu-id="efbf5-224">b.</span></span> <span data-ttu-id="efbf5-225">Zadejte název domény v hello **známé domén** textové pole.</span><span class="sxs-lookup"><span data-stu-id="efbf5-225">Enter domain name in hello **Known domains** textbox.</span></span>
 
-    <span data-ttu-id="297d5-226">c.</span><span class="sxs-lookup"><span data-stu-id="297d5-226">c.</span></span> <span data-ttu-id="297d5-227">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="297d5-227">Click **Save**.</span></span>
+    <span data-ttu-id="efbf5-226">c.</span><span class="sxs-lookup"><span data-stu-id="efbf5-226">c.</span></span> <span data-ttu-id="efbf5-227">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-227">Click **Save**.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="297d5-228">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!</span><span class="sxs-lookup"><span data-stu-id="297d5-228">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="297d5-229">Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části.</span><span class="sxs-lookup"><span data-stu-id="297d5-229">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="297d5-230">Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="297d5-230">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="efbf5-228">Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!</span><span class="sxs-lookup"><span data-stu-id="efbf5-228">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="efbf5-229">Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello.</span><span class="sxs-lookup"><span data-stu-id="efbf5-229">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="efbf5-230">Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="efbf5-230">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="297d5-231">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="297d5-231">Creating an Azure AD test user</span></span>
-<span data-ttu-id="297d5-232">Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="297d5-232">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="efbf5-231">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="efbf5-231">Creating an Azure AD test user</span></span>
+<span data-ttu-id="efbf5-232">Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.</span><span class="sxs-lookup"><span data-stu-id="efbf5-232">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Vytvořit uživatele Azure AD][100]
 
-<span data-ttu-id="297d5-234">**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="297d5-234">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="efbf5-234">**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="efbf5-234">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="297d5-235">V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="297d5-235">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="efbf5-235">V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="efbf5-235">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-kantegassoforbamboo-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="297d5-237">Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="297d5-237">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="efbf5-237">toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-237">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-kantegassoforbamboo-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="297d5-239">Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="297d5-239">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="efbf5-239">tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.</span><span class="sxs-lookup"><span data-stu-id="efbf5-239">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-kantegassoforbamboo-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="297d5-241">Na **uživatele** dialogové okno stránky, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="297d5-241">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="efbf5-241">Na hello **uživatele** dialogové okno proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="efbf5-241">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-kantegassoforbamboo-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="297d5-243">a.</span><span class="sxs-lookup"><span data-stu-id="297d5-243">a.</span></span> <span data-ttu-id="297d5-244">V **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="297d5-244">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="efbf5-243">a.</span><span class="sxs-lookup"><span data-stu-id="efbf5-243">a.</span></span> <span data-ttu-id="efbf5-244">V hello **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-244">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="297d5-245">b.</span><span class="sxs-lookup"><span data-stu-id="297d5-245">b.</span></span> <span data-ttu-id="297d5-246">V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="297d5-246">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="efbf5-245">b.</span><span class="sxs-lookup"><span data-stu-id="efbf5-245">b.</span></span> <span data-ttu-id="efbf5-246">V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="efbf5-246">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="297d5-247">c.</span><span class="sxs-lookup"><span data-stu-id="297d5-247">c.</span></span> <span data-ttu-id="297d5-248">Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.</span><span class="sxs-lookup"><span data-stu-id="297d5-248">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="efbf5-247">c.</span><span class="sxs-lookup"><span data-stu-id="efbf5-247">c.</span></span> <span data-ttu-id="efbf5-248">Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-248">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="297d5-249">d.</span><span class="sxs-lookup"><span data-stu-id="297d5-249">d.</span></span> <span data-ttu-id="297d5-250">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="297d5-250">Click **Create**.</span></span>
+    <span data-ttu-id="efbf5-249">d.</span><span class="sxs-lookup"><span data-stu-id="efbf5-249">d.</span></span> <span data-ttu-id="efbf5-250">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-250">Click **Create**.</span></span>
  
-### <a name="creating-a-kantega-sso-for-bamboo-test-user"></a><span data-ttu-id="297d5-251">Vytváření Kantega SSO pro bambus testovacího uživatele</span><span class="sxs-lookup"><span data-stu-id="297d5-251">Creating a Kantega SSO for Bamboo test user</span></span>
+### <a name="creating-a-kantega-sso-for-bamboo-test-user"></a><span data-ttu-id="efbf5-251">Vytváření Kantega SSO pro bambus testovacího uživatele</span><span class="sxs-lookup"><span data-stu-id="efbf5-251">Creating a Kantega SSO for Bamboo test user</span></span>
 
-<span data-ttu-id="297d5-252">Pokud chcete povolit uživatelům Azure AD přihlášení do bambus, musí být zřízená do bambus.</span><span class="sxs-lookup"><span data-stu-id="297d5-252">To enable Azure AD users to log in to Bamboo, they must be provisioned into Bamboo.</span></span> <span data-ttu-id="297d5-253">V Kantega jednotné přihlašování pro bambus zřizování je ruční úloha.</span><span class="sxs-lookup"><span data-stu-id="297d5-253">In Kantega SSO for Bamboo, provisioning is a manual task.</span></span>
+<span data-ttu-id="efbf5-252">Uživatelé toolog tooenable Azure AD v tooBamboo, se musí být zřízená do bambus.</span><span class="sxs-lookup"><span data-stu-id="efbf5-252">tooenable Azure AD users toolog in tooBamboo, they must be provisioned into Bamboo.</span></span> <span data-ttu-id="efbf5-253">V Kantega jednotné přihlašování pro bambus zřizování je ruční úloha.</span><span class="sxs-lookup"><span data-stu-id="efbf5-253">In Kantega SSO for Bamboo, provisioning is a manual task.</span></span>
 
-<span data-ttu-id="297d5-254">**K poskytnutí uživatelského účtu, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="297d5-254">**To provision a user account, perform the following steps:**</span></span>
+<span data-ttu-id="efbf5-254">**tooprovision uživatelský účet, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="efbf5-254">**tooprovision a user account, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="297d5-255">Přihlaste se k vaší bambus na místním serveru jako správce.</span><span class="sxs-lookup"><span data-stu-id="297d5-255">Log in to your Bamboo on premise server as an administrator.</span></span>
+1. <span data-ttu-id="efbf5-255">Tooyour bambus na místním serveru se přihlaste jako správce.</span><span class="sxs-lookup"><span data-stu-id="efbf5-255">Log in tooyour Bamboo on premise server as an administrator.</span></span>
 
-2. <span data-ttu-id="297d5-256">Pozastavte ukazatel myši na ikonu a klikněte na **Správa uživatelů**.</span><span class="sxs-lookup"><span data-stu-id="297d5-256">Hover on cog and click the **User management**.</span></span>
+2. <span data-ttu-id="efbf5-256">Pozastavte ukazatel myši na ikonu a klikněte na tlačítko hello **Správa uživatelů**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-256">Hover on cog and click hello **User management**.</span></span>
 
     ![Můžete přidat zaměstnance](./media/active-directory-saas-kantegassoforbamboo-tutorial/user1.png) 
 
-3. <span data-ttu-id="297d5-258">Klikněte na tlačítko **uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="297d5-258">Click **Users**.</span></span> <span data-ttu-id="297d5-259">V části **přidat uživatele** část, udělejte toto:</span><span class="sxs-lookup"><span data-stu-id="297d5-259">Under the **Add user** section, Perform follwing steps:</span></span>
+3. <span data-ttu-id="efbf5-258">Klikněte na tlačítko **uživatelé**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-258">Click **Users**.</span></span> <span data-ttu-id="efbf5-259">V části hello **přidat uživatele** část, udělejte toto:</span><span class="sxs-lookup"><span data-stu-id="efbf5-259">Under hello **Add user** section, Perform follwing steps:</span></span>
 
     ![Můžete přidat zaměstnance](./media/active-directory-saas-kantegassoforbamboo-tutorial/user2.png) 
 
-    <span data-ttu-id="297d5-261">a.</span><span class="sxs-lookup"><span data-stu-id="297d5-261">a.</span></span> <span data-ttu-id="297d5-262">V **uživatelské jméno** jako typ e-mailu uživatele k textovému poli, Brittasimon@contoso.com.</span><span class="sxs-lookup"><span data-stu-id="297d5-262">In the **Username** textbox, type the email of user like Brittasimon@contoso.com.</span></span>
+    <span data-ttu-id="efbf5-261">a.</span><span class="sxs-lookup"><span data-stu-id="efbf5-261">a.</span></span> <span data-ttu-id="efbf5-262">V hello **uživatelské jméno** jako typ hello e-mailu uživatele k textovému poli, Brittasimon@contoso.com.</span><span class="sxs-lookup"><span data-stu-id="efbf5-262">In hello **Username** textbox, type hello email of user like Brittasimon@contoso.com.</span></span>
     
-    <span data-ttu-id="297d5-263">b.</span><span class="sxs-lookup"><span data-stu-id="297d5-263">b.</span></span> <span data-ttu-id="297d5-264">V **heslo** textovému poli, zadejte heslo uživatele.</span><span class="sxs-lookup"><span data-stu-id="297d5-264">In the **Password** textbox, type the password of user.</span></span>
+    <span data-ttu-id="efbf5-263">b.</span><span class="sxs-lookup"><span data-stu-id="efbf5-263">b.</span></span> <span data-ttu-id="efbf5-264">V hello **heslo** textovému poli, zadejte hello heslo uživatele.</span><span class="sxs-lookup"><span data-stu-id="efbf5-264">In hello **Password** textbox, type hello password of user.</span></span>
 
-    <span data-ttu-id="297d5-265">c.</span><span class="sxs-lookup"><span data-stu-id="297d5-265">c.</span></span> <span data-ttu-id="297d5-266">V **Potvrdit heslo** textovému poli, znovu zadejte heslo uživatele.</span><span class="sxs-lookup"><span data-stu-id="297d5-266">In the **Confirm Password** textbox, reenter the password of user.</span></span>
+    <span data-ttu-id="efbf5-265">c.</span><span class="sxs-lookup"><span data-stu-id="efbf5-265">c.</span></span> <span data-ttu-id="efbf5-266">V hello **Potvrdit heslo** textovému poli, zadejte hello heslo uživatele.</span><span class="sxs-lookup"><span data-stu-id="efbf5-266">In hello **Confirm Password** textbox, reenter hello password of user.</span></span>
     
-    <span data-ttu-id="297d5-267">d.</span><span class="sxs-lookup"><span data-stu-id="297d5-267">d.</span></span> <span data-ttu-id="297d5-268">V **úplný název** textovému poli, úplný název typu uživatele jako Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="297d5-268">In the **Full Name** textbox, type full name of the user like Britta Simon.</span></span>
+    <span data-ttu-id="efbf5-267">d.</span><span class="sxs-lookup"><span data-stu-id="efbf5-267">d.</span></span> <span data-ttu-id="efbf5-268">V hello **úplný název** textovému poli, úplný název typu hello uživatele jako Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="efbf5-268">In hello **Full Name** textbox, type full name of hello user like Britta Simon.</span></span>
     
-    <span data-ttu-id="297d5-269">e.</span><span class="sxs-lookup"><span data-stu-id="297d5-269">e.</span></span> <span data-ttu-id="297d5-270">V **e-mailu** jako typ e-mailovou adresu uživatele k textovému poli, Brittasimon@contoso.com.</span><span class="sxs-lookup"><span data-stu-id="297d5-270">In the **Email** textbox, type the email address of user like Brittasimon@contoso.com.</span></span>
+    <span data-ttu-id="efbf5-269">e.</span><span class="sxs-lookup"><span data-stu-id="efbf5-269">e.</span></span> <span data-ttu-id="efbf5-270">V hello **e-mailu** jako typ hello e-mailovou adresu uživatele k textovému poli, Brittasimon@contoso.com.</span><span class="sxs-lookup"><span data-stu-id="efbf5-270">In hello **Email** textbox, type hello email address of user like Brittasimon@contoso.com.</span></span>
     
-    <span data-ttu-id="297d5-271">f.</span><span class="sxs-lookup"><span data-stu-id="297d5-271">f.</span></span> <span data-ttu-id="297d5-272">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="297d5-272">Click **Save**.</span></span>
+    <span data-ttu-id="efbf5-271">f.</span><span class="sxs-lookup"><span data-stu-id="efbf5-271">f.</span></span> <span data-ttu-id="efbf5-272">Klikněte na **Uložit**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-272">Click **Save**.</span></span>
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="297d5-273">Přiřazení testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="297d5-273">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="efbf5-273">Přiřazení hello Azure AD testovacího uživatele</span><span class="sxs-lookup"><span data-stu-id="efbf5-273">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="297d5-274">V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí jednotného přihlašování k Kantega pro bambus udělení přístupu.</span><span class="sxs-lookup"><span data-stu-id="297d5-274">In this section, you enable Britta Simon to use Azure single sign-on by granting access to Kantega SSO for Bamboo.</span></span>
+<span data-ttu-id="efbf5-274">V této části povolíte tak, že udělíte přístup tooKantega jednotné přihlašování pro bambus Britta Simon toouse Azure jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="efbf5-274">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooKantega SSO for Bamboo.</span></span>
 
 ![Přiřadit uživatele][200] 
 
-<span data-ttu-id="297d5-276">**Pokud chcete přiřadit Britta Simon Kantega jednotné přihlašování pro bambus, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="297d5-276">**To assign Britta Simon to Kantega SSO for Bamboo, perform the following steps:**</span></span>
+<span data-ttu-id="efbf5-276">**tooassign tooKantega Britta Simon jednotného přihlašování pro bambus, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="efbf5-276">**tooassign Britta Simon tooKantega SSO for Bamboo, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="297d5-277">Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="297d5-277">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="efbf5-277">V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-277">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Přiřadit uživatele][201] 
 
-2. <span data-ttu-id="297d5-279">V seznamu aplikací vyberte **Kantega jednotné přihlašování pro bambus**.</span><span class="sxs-lookup"><span data-stu-id="297d5-279">In the applications list, select **Kantega SSO for Bamboo**.</span></span>
+2. <span data-ttu-id="efbf5-279">V seznamu aplikace hello vyberte **Kantega jednotné přihlašování pro bambus**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-279">In hello applications list, select **Kantega SSO for Bamboo**.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_app.png) 
 
-3. <span data-ttu-id="297d5-281">V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="297d5-281">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="efbf5-281">V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="efbf5-281">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Přiřadit uživatele][202] 
 
-4. <span data-ttu-id="297d5-283">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="297d5-283">Click **Add** button.</span></span> <span data-ttu-id="297d5-284">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="297d5-284">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="efbf5-283">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="efbf5-283">Click **Add** button.</span></span> <span data-ttu-id="efbf5-284">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="efbf5-284">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Přiřadit uživatele][203]
 
-5. <span data-ttu-id="297d5-286">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.</span><span class="sxs-lookup"><span data-stu-id="297d5-286">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="efbf5-286">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.</span><span class="sxs-lookup"><span data-stu-id="efbf5-286">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="297d5-287">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="297d5-287">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="efbf5-287">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="efbf5-287">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="297d5-288">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="297d5-288">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="efbf5-288">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="efbf5-288">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="297d5-289">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="297d5-289">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="efbf5-289">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="efbf5-289">Testing single sign-on</span></span>
 
-<span data-ttu-id="297d5-290">V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="297d5-290">In this section, you test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="efbf5-290">V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="efbf5-290">In this section, you test your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="297d5-291">Po kliknutí na tlačítko Kantega jednotné přihlašování pro dlaždici bambus na přístupovém panelu, můžete by měl získat automaticky přihlášení k vaší Kantega jednotné přihlašování pro aplikace bambus.</span><span class="sxs-lookup"><span data-stu-id="297d5-291">When you click the Kantega SSO for Bamboo tile in the Access Panel, you should get automatically signed-on to your Kantega SSO for Bamboo application.</span></span>
-<span data-ttu-id="297d5-292">Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="297d5-292">For more information about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).</span></span> 
+<span data-ttu-id="efbf5-291">Po kliknutí na tlačítko hello Kantega jednotné přihlašování pro dlaždici bambus v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour Kantega jednotné přihlašování pro aplikace bambus.</span><span class="sxs-lookup"><span data-stu-id="efbf5-291">When you click hello Kantega SSO for Bamboo tile in hello Access Panel, you should get automatically signed-on tooyour Kantega SSO for Bamboo application.</span></span>
+<span data-ttu-id="efbf5-292">Další informace o na přístupovém panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="efbf5-292">For more information about the Access Panel, see [Introduction toohello Access Panel](active-directory-saas-access-panel-introduction.md).</span></span> 
 
-## <a name="additional-resources"></a><span data-ttu-id="297d5-293">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="297d5-293">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="efbf5-293">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="efbf5-293">Additional resources</span></span>
 
-* [<span data-ttu-id="297d5-294">Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="297d5-294">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="297d5-295">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="297d5-295">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="efbf5-294">Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="efbf5-294">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="efbf5-295">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="efbf5-295">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 
 

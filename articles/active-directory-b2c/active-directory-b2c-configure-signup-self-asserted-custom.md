@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory B2C: Upravit přihlašovací nahoru v vlastní zásady a nakonfigurovat vlastní prohlašovanou zprostředkovatele"
-description: "Návod k přidání deklarací zaregistrovat a nakonfigurovat uživatelský vstup"
+description: "Návod k přidání deklarací toosign nahoru a nakonfigurovat hello uživatelský vstup"
 services: active-directory-b2c
 documentationcenter: 
 author: rojasja
@@ -14,30 +14,30 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/29/2017
 ms.author: joroja
-ms.openlocfilehash: 64b9d904d7d070052e125b479f4719d208c9ff85
-ms.sourcegitcommit: b0af2a2cf44101a1b1ff41bd2ad795eaef29612a
+ms.openlocfilehash: c31d737263fef3e771bdf451b809b0ca522c8fe0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a><span data-ttu-id="4a12d-103">Azure Active Directory B2C: Upravte přihlašovací nahoru k přidání nových deklarací identity a konfiguraci vstup uživatele.</span><span class="sxs-lookup"><span data-stu-id="4a12d-103">Azure Active Directory B2C: Modify sign up to add new claims and configure user input.</span></span>
+# <a name="azure-active-directory-b2c-modify-sign-up-tooadd-new-claims-and-configure-user-input"></a><span data-ttu-id="1478e-103">Azure Active Directory B2C: Upravte registrace tooadd nových deklarací identity a konfigurovat uživatelský vstup.</span><span class="sxs-lookup"><span data-stu-id="1478e-103">Azure Active Directory B2C: Modify sign up tooadd new claims and configure user input.</span></span>
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-<span data-ttu-id="4a12d-104">V tomto článku přidáte nový záznam uživatel zadal (deklarace identity) vám dobře slouží registrace uživatele.</span><span class="sxs-lookup"><span data-stu-id="4a12d-104">In this article, you will add a new user provided entry (a claim) to your signup user journey.</span></span>  <span data-ttu-id="4a12d-105">Bude nakonfigurovat položku jako rozevírací seznam a definovat v případě potřeby.</span><span class="sxs-lookup"><span data-stu-id="4a12d-105">You will configure the entry as a dropdown, and define if it is required.</span></span>
+<span data-ttu-id="1478e-104">V tomto článku budete přidávat nové registrace uživatele cesty tooyour položka (deklarace identity) uživatel zadal.</span><span class="sxs-lookup"><span data-stu-id="1478e-104">In this article, you will add a new user provided entry (a claim) tooyour signup user journey.</span></span>  <span data-ttu-id="1478e-105">Bude nakonfigurovat hello položku jako rozevírací seznam a definovat v případě potřeby.</span><span class="sxs-lookup"><span data-stu-id="1478e-105">You will configure hello entry as a dropdown, and define if it is required.</span></span>
 
-<span data-ttu-id="4a12d-106">Upravená Sipi se spustit testovací předání.</span><span class="sxs-lookup"><span data-stu-id="4a12d-106">Edited by Sipi to trigger test handoff.</span></span>
+<span data-ttu-id="1478e-106">Upravená Sipi tootrigger testovací předání.</span><span class="sxs-lookup"><span data-stu-id="1478e-106">Edited by Sipi tootrigger test handoff.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="4a12d-107">Požadavky</span><span class="sxs-lookup"><span data-stu-id="4a12d-107">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="1478e-107">Požadavky</span><span class="sxs-lookup"><span data-stu-id="1478e-107">Prerequisites</span></span>
 
-* <span data-ttu-id="4a12d-108">Proveďte kroky v následujícím článku [Začínáme se zásadami vlastní](active-directory-b2c-get-started-custom.md).</span><span class="sxs-lookup"><span data-stu-id="4a12d-108">Complete the steps in the article [Getting Started with Custom Policies](active-directory-b2c-get-started-custom.md).</span></span>  <span data-ttu-id="4a12d-109">Otestujte cesty registrace nebo přihlášení uživatele k registraci nového místní účet, než budete pokračovat.</span><span class="sxs-lookup"><span data-stu-id="4a12d-109">Test the signup/signin user journey to signup a new local account before proceeding.</span></span>
-
-
-<span data-ttu-id="4a12d-110">Shromažďování dat prvotní od uživatelů se dosahuje prostřednictvím registrace nebo přihlášení.</span><span class="sxs-lookup"><span data-stu-id="4a12d-110">Gathering initial data from your users is achieved via signup/signin.</span></span>  <span data-ttu-id="4a12d-111">Další deklarace identity se dají shromáždit později prostřednictvím profilu upravit uživatele cesty.</span><span class="sxs-lookup"><span data-stu-id="4a12d-111">Additional claims can be gathered later via profile edit user journeys.</span></span> <span data-ttu-id="4a12d-112">Kdykoliv Azure AD B2C shromáždí informace o interaktivním přímo od uživatele, používá rozhraní prostředí Identity jeho `selfasserted provider`.</span><span class="sxs-lookup"><span data-stu-id="4a12d-112">Anytime Azure AD B2C gathers information directly from the user interactively, the Identity Experience Framework uses its `selfasserted provider`.</span></span> <span data-ttu-id="4a12d-113">Následující postup použít, kdykoliv se používá tohoto zprostředkovatele.</span><span class="sxs-lookup"><span data-stu-id="4a12d-113">The steps below apply anytime this provider is used.</span></span>
+* <span data-ttu-id="1478e-108">Dokončení hello kroků v článku hello [Začínáme se zásadami vlastní](active-directory-b2c-get-started-custom.md).</span><span class="sxs-lookup"><span data-stu-id="1478e-108">Complete hello steps in hello article [Getting Started with Custom Policies](active-directory-b2c-get-started-custom.md).</span></span>  <span data-ttu-id="1478e-109">Otestujte hello registrace nebo přihlášení uživatele cesty toosignup nové místní účet, než budete pokračovat.</span><span class="sxs-lookup"><span data-stu-id="1478e-109">Test hello signup/signin user journey toosignup a new local account before proceeding.</span></span>
 
 
-## <a name="define-the-claim-its-display-name-and-the-user-input-type"></a><span data-ttu-id="4a12d-114">Zadejte deklarace identity, jeho zobrazovaný název a typ vstupu uživatele</span><span class="sxs-lookup"><span data-stu-id="4a12d-114">Define the claim, its display name and the user input type</span></span>
-<span data-ttu-id="4a12d-115">Umožňuje požádat uživatele pro jejich město.</span><span class="sxs-lookup"><span data-stu-id="4a12d-115">Lets ask the user for their city.</span></span>  <span data-ttu-id="4a12d-116">Přidejte následující elementu, který chcete `<ClaimsSchema>` element v souboru TrustFrameWorkExtensions zásad:</span><span class="sxs-lookup"><span data-stu-id="4a12d-116">Add the following element to the `<ClaimsSchema>` element in the TrustFrameWorkExtensions policy file:</span></span>
+<span data-ttu-id="1478e-110">Shromažďování dat prvotní od uživatelů se dosahuje prostřednictvím registrace nebo přihlášení.</span><span class="sxs-lookup"><span data-stu-id="1478e-110">Gathering initial data from your users is achieved via signup/signin.</span></span>  <span data-ttu-id="1478e-111">Další deklarace identity se dají shromáždit později prostřednictvím profilu upravit uživatele cesty.</span><span class="sxs-lookup"><span data-stu-id="1478e-111">Additional claims can be gathered later via profile edit user journeys.</span></span> <span data-ttu-id="1478e-112">Kdykoliv Azure AD B2C shromáždí informace o přímo od uživatele hello interaktivně, hello Identity Framework prostředí používá jeho `selfasserted provider`.</span><span class="sxs-lookup"><span data-stu-id="1478e-112">Anytime Azure AD B2C gathers information directly from hello user interactively, hello Identity Experience Framework uses its `selfasserted provider`.</span></span> <span data-ttu-id="1478e-113">Hello postup použít, kdykoliv se používá tohoto zprostředkovatele.</span><span class="sxs-lookup"><span data-stu-id="1478e-113">hello steps below apply anytime this provider is used.</span></span>
+
+
+## <a name="define-hello-claim-its-display-name-and-hello-user-input-type"></a><span data-ttu-id="1478e-114">Zadejte hello deklarace identity, jeho zobrazovaný název a hello typ vstupu uživatele</span><span class="sxs-lookup"><span data-stu-id="1478e-114">Define hello claim, its display name and hello user input type</span></span>
+<span data-ttu-id="1478e-115">Umožňuje, požádejte hello uživatele pro jejich město.</span><span class="sxs-lookup"><span data-stu-id="1478e-115">Lets ask hello user for their city.</span></span>  <span data-ttu-id="1478e-116">Přidejte následující element toohello hello `<ClaimsSchema>` element v souboru zásad TrustFrameWorkExtensions hello:</span><span class="sxs-lookup"><span data-stu-id="1478e-116">Add hello following element toohello `<ClaimsSchema>` element in hello TrustFrameWorkExtensions policy file:</span></span>
 
 ```xml
 <ClaimType Id="city">
@@ -47,13 +47,13 @@ ms.lasthandoff: 09/28/2017
   <UserInputType>TextBox</UserInputType>
 </ClaimType>
 ```
-<span data-ttu-id="4a12d-117">Existují další možnosti, které můžete provést zde přizpůsobit deklarace identity.</span><span class="sxs-lookup"><span data-stu-id="4a12d-117">There are additional choices you can make here to customize the claim.</span></span>  <span data-ttu-id="4a12d-118">Úplné schéma, najdete v části **Identity rozhraní Framework technické referenční příručka**.</span><span class="sxs-lookup"><span data-stu-id="4a12d-118">For a full schema, refer to the **Identity Experience Framework Technical Reference Guide**.</span></span>  <span data-ttu-id="4a12d-119">Tato příručka brzy zveřejníme v části odkaz.</span><span class="sxs-lookup"><span data-stu-id="4a12d-119">This guide will be published soon in the reference section.</span></span>
+<span data-ttu-id="1478e-117">Existují další možnosti, které můžete tady vytvořit toocustomize hello deklarací identity.</span><span class="sxs-lookup"><span data-stu-id="1478e-117">There are additional choices you can make here toocustomize hello claim.</span></span>  <span data-ttu-id="1478e-118">Úplné schéma, najdete v části toohello **Identity rozhraní Framework technické referenční příručka**.</span><span class="sxs-lookup"><span data-stu-id="1478e-118">For a full schema, refer toohello **Identity Experience Framework Technical Reference Guide**.</span></span>  <span data-ttu-id="1478e-119">Tato příručka brzy zveřejníme v části odkaz hello.</span><span class="sxs-lookup"><span data-stu-id="1478e-119">This guide will be published soon in hello reference section.</span></span>
 
-* <span data-ttu-id="4a12d-120">`<DisplayName>`je řetězec, který definuje uživatelsky orientovaný *popisek*</span><span class="sxs-lookup"><span data-stu-id="4a12d-120">`<DisplayName>` is a string that defines the user-facing *label*</span></span>
+* <span data-ttu-id="1478e-120">`<DisplayName>`je řetězec, který definuje uživatelsky orientovaný hello *popisek*</span><span class="sxs-lookup"><span data-stu-id="1478e-120">`<DisplayName>` is a string that defines hello user-facing *label*</span></span>
 
-* <span data-ttu-id="4a12d-121">`<UserHelpText>`pomáhá uživateli pochopit, co je požadováno</span><span class="sxs-lookup"><span data-stu-id="4a12d-121">`<UserHelpText>` helps the user understand what is required</span></span>
+* <span data-ttu-id="1478e-121">`<UserHelpText>`pomáhá hello uživateli pochopit, co je požadováno</span><span class="sxs-lookup"><span data-stu-id="1478e-121">`<UserHelpText>` helps hello user understand what is required</span></span>
 
-* <span data-ttu-id="4a12d-122">`<UserInputType>`obsahuje následující čtyři možnosti zvýrazněná níže:</span><span class="sxs-lookup"><span data-stu-id="4a12d-122">`<UserInputType>` has the following four options highlighted below:</span></span>
+* <span data-ttu-id="1478e-122">`<UserInputType>`hello následující čtyři možnosti zdůraznily níže:</span><span class="sxs-lookup"><span data-stu-id="1478e-122">`<UserInputType>` has hello following four options highlighted below:</span></span>
     * `TextBox`
 ```xml
 <ClaimType Id="city">
@@ -64,7 +64,7 @@ ms.lasthandoff: 09/28/2017
 </ClaimType>
 ```
 
-    * <span data-ttu-id="4a12d-123">`RadioSingleSelectduration`-Vynucuje jednoho výběru.</span><span class="sxs-lookup"><span data-stu-id="4a12d-123">`RadioSingleSelectduration` - Enforces a single selection.</span></span>
+    * <span data-ttu-id="1478e-123">`RadioSingleSelectduration`-Vynucuje jednoho výběru.</span><span class="sxs-lookup"><span data-stu-id="1478e-123">`RadioSingleSelectduration` - Enforces a single selection.</span></span>
 ```xml
 <ClaimType Id="city">
   <DisplayName>city where you work</DisplayName>
@@ -78,7 +78,7 @@ ms.lasthandoff: 09/28/2017
 </ClaimType>
 ```
 
-    * <span data-ttu-id="4a12d-124">`DropdownSingleSelect`-Umožňuje výběr pouze platnou hodnotu.</span><span class="sxs-lookup"><span data-stu-id="4a12d-124">`DropdownSingleSelect` - Allows the selection of only valid value.</span></span>
+    * <span data-ttu-id="1478e-124">`DropdownSingleSelect`-Umožňuje výběr hello pouze platné hodnoty.</span><span class="sxs-lookup"><span data-stu-id="1478e-124">`DropdownSingleSelect` - Allows hello selection of only valid value.</span></span>
 
 ![Snímek obrazovky možností rozevíracího seznamu](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 09/28/2017
 ```
 
 
-* <span data-ttu-id="4a12d-126">`CheckboxMultiSelect`Umožňuje výběr jednoho nebo více hodnot.</span><span class="sxs-lookup"><span data-stu-id="4a12d-126">`CheckboxMultiSelect` Allows for the selection of one or more values.</span></span>
+* <span data-ttu-id="1478e-126">`CheckboxMultiSelect`Umožňuje výběr hello jeden nebo více hodnot.</span><span class="sxs-lookup"><span data-stu-id="1478e-126">`CheckboxMultiSelect` Allows for hello selection of one or more values.</span></span>
 
 ![Snímek obrazovky možnost vícenásobného výběru.](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
@@ -115,9 +115,9 @@ ms.lasthandoff: 09/28/2017
 </ClaimType>
 ```
 
-## <a name="add-the-claim-to-the-sign-upsign-in-user-journey"></a><span data-ttu-id="4a12d-128">Přidá deklaraci k přihlašovací nahoru nebo přihlášení uživatele cesty</span><span class="sxs-lookup"><span data-stu-id="4a12d-128">Add the claim to the sign up/sign in user journey</span></span>
+## <a name="add-hello-claim-toohello-sign-upsign-in-user-journey"></a><span data-ttu-id="1478e-128">Přidat až hello deklarace identity toohello přihlášení nebo přihlášení uživatele cesty</span><span class="sxs-lookup"><span data-stu-id="1478e-128">Add hello claim toohello sign up/sign in user journey</span></span>
 
-1. <span data-ttu-id="4a12d-129">Přidání deklarace identity jako `<OutputClaim ClaimTypeReferenceId="city"/>` k TechnicalProfile `LocalAccountSignUpWithLogonEmail` (nalezené v souboru TrustFrameworkBase zásad).</span><span class="sxs-lookup"><span data-stu-id="4a12d-129">Add the claim as an `<OutputClaim ClaimTypeReferenceId="city"/>` to the TechnicalProfile `LocalAccountSignUpWithLogonEmail` (found in the TrustFrameworkBase policy file).</span></span>  <span data-ttu-id="4a12d-130">Všimněte si, že tento TechnicalProfile používá SelfAssertedAttributeProvider.</span><span class="sxs-lookup"><span data-stu-id="4a12d-130">Note this TechnicalProfile uses the SelfAssertedAttributeProvider.</span></span>
+1. <span data-ttu-id="1478e-129">Přidá deklaraci hello jako `<OutputClaim ClaimTypeReferenceId="city"/>` toohello TechnicalProfile `LocalAccountSignUpWithLogonEmail` (nalezené v souboru zásad TrustFrameworkBase hello).</span><span class="sxs-lookup"><span data-stu-id="1478e-129">Add hello claim as an `<OutputClaim ClaimTypeReferenceId="city"/>` toohello TechnicalProfile `LocalAccountSignUpWithLogonEmail` (found in hello TrustFrameworkBase policy file).</span></span>  <span data-ttu-id="1478e-130">Všimněte si, že tento TechnicalProfile používá hello SelfAssertedAttributeProvider.</span><span class="sxs-lookup"><span data-stu-id="1478e-130">Note this TechnicalProfile uses hello SelfAssertedAttributeProvider.</span></span>
 
   ```xml
   <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -142,7 +142,7 @@ ms.lasthandoff: 09/28/2017
       <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
       <OutputClaim ClaimTypeReferenceId="authenticationSource" />
       <OutputClaim ClaimTypeReferenceId="newUser" />
-      <!-- Optional claims, to be collected from the user -->
+      <!-- Optional claims, toobe collected from hello user -->
       <OutputClaim ClaimTypeReferenceId="givenName" />
       <OutputClaim ClaimTypeReferenceId="surName" />
       <OutputClaim ClaimTypeReferenceId="city"/>
@@ -154,7 +154,7 @@ ms.lasthandoff: 09/28/2017
   </TechnicalProfile>
   ```
 
-2. <span data-ttu-id="4a12d-131">Přidá deklaraci do AAD-UserWriteUsingLogonEmail jako `<PersistedClaim ClaimTypeReferenceId="city" />` zápis deklarace identity k adresáři AAD po shromáždění od uživatele.</span><span class="sxs-lookup"><span data-stu-id="4a12d-131">Add the claim to the AAD-UserWriteUsingLogonEmail as a `<PersistedClaim ClaimTypeReferenceId="city" />` to write the claim to the AAD directory after collecting it from the user.</span></span> <span data-ttu-id="4a12d-132">Pokud nechcete zachovat deklarace identity v adresáři pro budoucí použití, může tento krok přeskočte.</span><span class="sxs-lookup"><span data-stu-id="4a12d-132">You may skip this step if you prefer not to persist the claim in the directory for future use.</span></span>
+2. <span data-ttu-id="1478e-131">Přidání deklarace identity toohello hello AAD UserWriteUsingLogonEmail jako `<PersistedClaim ClaimTypeReferenceId="city" />` toowrite hello deklarace identity toohello AAD directory po shromáždění od uživatele hello.</span><span class="sxs-lookup"><span data-stu-id="1478e-131">Add hello claim toohello AAD-UserWriteUsingLogonEmail as a `<PersistedClaim ClaimTypeReferenceId="city" />` toowrite hello claim toohello AAD directory after collecting it from hello user.</span></span> <span data-ttu-id="1478e-132">Pokud dáváte přednost není toopersist hello deklarace identity v adresáři hello pro budoucí použití, může tento krok přeskočte.</span><span class="sxs-lookup"><span data-stu-id="1478e-132">You may skip this step if you prefer not toopersist hello claim in hello directory for future use.</span></span>
 
   ```xml
   <!-- Technical profiles for local accounts -->
@@ -190,14 +190,14 @@ ms.lasthandoff: 09/28/2017
   </TechnicalProfile>
   ```
 
-3. <span data-ttu-id="4a12d-133">Přidá deklaraci k TechnicalProfile, který čte z adresáře, když se uživatel přihlásí jako`<OutputClaim ClaimTypeReferenceId="city" />`</span><span class="sxs-lookup"><span data-stu-id="4a12d-133">Add the claim to the TechnicalProfile that reads from the directory when a user logs in as an `<OutputClaim ClaimTypeReferenceId="city" />`</span></span>
+3. <span data-ttu-id="1478e-133">Přidání deklarace identity toohello hello TechnicalProfile, který čte z adresáře hello, když se uživatel přihlásí jako`<OutputClaim ClaimTypeReferenceId="city" />`</span><span class="sxs-lookup"><span data-stu-id="1478e-133">Add hello claim toohello TechnicalProfile that reads from hello directory when a user logs in as an `<OutputClaim ClaimTypeReferenceId="city" />`</span></span>
 
   ```xml
   <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
     <Metadata>
       <Item Key="Operation">Read</Item>
       <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
-      <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for the provided user ID.</Item>
+      <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for hello provided user ID.</Item>
     </Metadata>
     <IncludeInSso>false</IncludeInSso>
     <InputClaims>
@@ -218,7 +218,7 @@ ms.lasthandoff: 09/28/2017
   </TechnicalProfile>
   ```
 
-4. <span data-ttu-id="4a12d-134">Přidat `<OutputClaim ClaimTypeReferenceId="city" />` zásad RP souboru SignUporSignIn.xml tak tuto deklaraci posílá po úspěšné uživatele cestu aplikace v tokenu.</span><span class="sxs-lookup"><span data-stu-id="4a12d-134">Add the `<OutputClaim ClaimTypeReferenceId="city" />` to the RP policy file SignUporSignIn.xml so this claim is sent to the application in the token after a successful user journey.</span></span>
+4. <span data-ttu-id="1478e-134">Přidat hello `<OutputClaim ClaimTypeReferenceId="city" />` soubor zásad RP toohello SignUporSignIn.xml tak touto deklarací identity se odešlou toohello aplikace v tokenu hello po úspěšné uživatele cesty.</span><span class="sxs-lookup"><span data-stu-id="1478e-134">Add hello `<OutputClaim ClaimTypeReferenceId="city" />` toohello RP policy file SignUporSignIn.xml so this claim is sent toohello application in hello token after a successful user journey.</span></span>
 
   ```xml
   <RelyingParty>
@@ -240,17 +240,17 @@ ms.lasthandoff: 09/28/2017
   </RelyingParty>
   ```
 
-## <a name="test-the-custom-policy-using-run-now"></a><span data-ttu-id="4a12d-135">Otestovat vlastní zásady pomocí "Spustit nyní"</span><span class="sxs-lookup"><span data-stu-id="4a12d-135">Test the custom policy using "Run Now"</span></span>
+## <a name="test-hello-custom-policy-using-run-now"></a><span data-ttu-id="1478e-135">Testování hello "Spustit nyní" pomocí vlastních zásad</span><span class="sxs-lookup"><span data-stu-id="1478e-135">Test hello custom policy using "Run Now"</span></span>
 
-1. <span data-ttu-id="4a12d-136">Otevřete **okno Azure AD B2C** a přejděte do **Identity rozhraní Framework > vlastní zásady**.</span><span class="sxs-lookup"><span data-stu-id="4a12d-136">Open the **Azure AD B2C Blade** and navigate to **Identity Experience Framework > Custom policies**.</span></span>
-2. <span data-ttu-id="4a12d-137">Vyberte vlastní zásady, který jste nahráli a klikněte na **spustit nyní** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="4a12d-137">Select the custom policy that you uploaded, and click the **Run now** button.</span></span>
-3. <span data-ttu-id="4a12d-138">Nyní byste měli mít zaregistrovat pomocí e-mailovou adresu.</span><span class="sxs-lookup"><span data-stu-id="4a12d-138">You should be able to sign up using an email address.</span></span>
+1. <span data-ttu-id="1478e-136">Otevřete hello **okno Azure AD B2C** a přejděte příliš**Identity rozhraní Framework > vlastní zásady**.</span><span class="sxs-lookup"><span data-stu-id="1478e-136">Open hello **Azure AD B2C Blade** and navigate too**Identity Experience Framework > Custom policies**.</span></span>
+2. <span data-ttu-id="1478e-137">Vyberte hello vlastní zásadu, kterou jste nahráli a klikněte na tlačítko hello **spustit nyní** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="1478e-137">Select hello custom policy that you uploaded, and click hello **Run now** button.</span></span>
+3. <span data-ttu-id="1478e-138">Musí být schopný toosign díky e-mailovou adresu.</span><span class="sxs-lookup"><span data-stu-id="1478e-138">You should be able toosign up using an email address.</span></span>
 
-<span data-ttu-id="4a12d-139">Na obrazovce registrace v testovacím režimu by měl vypadat podobně jako tento:</span><span class="sxs-lookup"><span data-stu-id="4a12d-139">The signup screen in test mode should look similar to this:</span></span>
+<span data-ttu-id="1478e-139">úvodní obrazovka registrace v testovacím režimu by měl vypadat podobně jako toothis:</span><span class="sxs-lookup"><span data-stu-id="1478e-139">hello signup screen in test mode should look similar toothis:</span></span>
 
 ![Snímek obrazovky upravené možnost zápisu](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
 
-  <span data-ttu-id="4a12d-141">Token zpět do aplikace bude teď obsahovat `city` deklarace identity, jak je uvedeno níže</span><span class="sxs-lookup"><span data-stu-id="4a12d-141">The token back to your application will now include the `city` claim as shown below</span></span>
+  <span data-ttu-id="1478e-141">Hello tokenu back tooyour aplikace bude teď obsahovat hello `city` deklarace identity, jak je uvedeno níže</span><span class="sxs-lookup"><span data-stu-id="1478e-141">hello token back tooyour application will now include hello `city` claim as shown below</span></span>
 ```json
 {
   "exp": 1493596822,
@@ -271,18 +271,18 @@ ms.lasthandoff: 09/28/2017
 }
 ```
 
-## <a name="optional-remove-email-verification-from-signup-journey"></a><span data-ttu-id="4a12d-142">Volitelné: Ověření e-mailu odeberte z cesty registrace</span><span class="sxs-lookup"><span data-stu-id="4a12d-142">Optional: Remove email verification from signup journey</span></span>
+## <a name="optional-remove-email-verification-from-signup-journey"></a><span data-ttu-id="1478e-142">Volitelné: Ověření e-mailu odeberte z cesty registrace</span><span class="sxs-lookup"><span data-stu-id="1478e-142">Optional: Remove email verification from signup journey</span></span>
 
-<span data-ttu-id="4a12d-143">Pokud chcete přeskočit ověření e-mailu, Autor zásady můžete odebrat `PartnerClaimType="Verified.Email"`.</span><span class="sxs-lookup"><span data-stu-id="4a12d-143">To skip email verification, the policy author can choose to remove `PartnerClaimType="Verified.Email"`.</span></span> <span data-ttu-id="4a12d-144">E-mailová adresa bude potřeba ale není ověřen, pokud "Požadavky" = true se odebere.</span><span class="sxs-lookup"><span data-stu-id="4a12d-144">The email address will be required but not verified, unless “Required” = true is removed.</span></span>  <span data-ttu-id="4a12d-145">Pečlivě zvažte, pokud tato možnost není pravé pro vaše případy použití!</span><span class="sxs-lookup"><span data-stu-id="4a12d-145">Carefully consider if this option is right for your use cases!</span></span>
+<span data-ttu-id="1478e-143">ověření e-mailu tooskip, Autor zásad hello vybrat tooremove `PartnerClaimType="Verified.Email"`.</span><span class="sxs-lookup"><span data-stu-id="1478e-143">tooskip email verification, hello policy author can choose tooremove `PartnerClaimType="Verified.Email"`.</span></span> <span data-ttu-id="1478e-144">Hello e-mailovou adresu bude potřeba, ale není ověřen, pokud: vyžaduje"= true se odebere.</span><span class="sxs-lookup"><span data-stu-id="1478e-144">hello email address will be required but not verified, unless “Required” = true is removed.</span></span>  <span data-ttu-id="1478e-145">Pečlivě zvažte, pokud tato možnost není pravé pro vaše případy použití!</span><span class="sxs-lookup"><span data-stu-id="1478e-145">Carefully consider if this option is right for your use cases!</span></span>
 
-<span data-ttu-id="4a12d-146">Ověřit e-mailu je povolena ve výchozím nastavení `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` v souboru TrustFrameworkBase zásad sadě starter:</span><span class="sxs-lookup"><span data-stu-id="4a12d-146">Verified email is enabled by default in the `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` in the TrustFrameworkBase policy file in the starter pack:</span></span>
+<span data-ttu-id="1478e-146">Ověřit e-mailu je povoleno ve výchozím nastavení v hello `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` v souboru zásad TrustFrameworkBase hello sadě starter hello:</span><span class="sxs-lookup"><span data-stu-id="1478e-146">Verified email is enabled by default in hello `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` in hello TrustFrameworkBase policy file in hello starter pack:</span></span>
 ```xml
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="4a12d-147">Další kroky</span><span class="sxs-lookup"><span data-stu-id="4a12d-147">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="1478e-147">Další kroky</span><span class="sxs-lookup"><span data-stu-id="1478e-147">Next steps</span></span>
 
-<span data-ttu-id="4a12d-148">Přidejte novou deklaraci na toky pro sociálních účet přihlášení změnou TechnicalProfiles uvedené níže.</span><span class="sxs-lookup"><span data-stu-id="4a12d-148">Add the new claim to the flows for social account logins by changing the TechnicalProfiles listed below.</span></span> <span data-ttu-id="4a12d-149">Ty se používají sociálního/federovaný účet přihlášení k zápisu a čtení dat uživatele pomocí alternativeSecurityId jako Lokátor.</span><span class="sxs-lookup"><span data-stu-id="4a12d-149">These are used by social/federated account logins to write and read the user data using the alternativeSecurityId as the locator.</span></span>
+<span data-ttu-id="1478e-148">Změnou hello níže uvedená TechnicalProfiles přidáte hello novou deklaraci identity toohello toky pro sociálních účet přihlášení.</span><span class="sxs-lookup"><span data-stu-id="1478e-148">Add hello new claim toohello flows for social account logins by changing hello TechnicalProfiles listed below.</span></span> <span data-ttu-id="1478e-149">Jsou používané toowrite sociálního/federovaný účet přihlášení a čtení dat uživatele hello pomocí hello alternativeSecurityId jako hello lokátoru.</span><span class="sxs-lookup"><span data-stu-id="1478e-149">These are used by social/federated account logins toowrite and read hello user data using hello alternativeSecurityId as hello locator.</span></span>
 ```xml
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">

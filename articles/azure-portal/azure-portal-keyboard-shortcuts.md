@@ -1,6 +1,6 @@
 ---
-title: "Portál Azure klávesové zkratky | Microsoft Docs"
-description: "Další informace o klávesové zkratky, které fungují na portálu Azure."
+title: "aaaAzure portálu klávesové zkratky | Microsoft Docs"
+description: "Další informace o hello klávesové zkratky, které fungují ve hello portálu Azure."
 services: azure-portal
 documentationcenter: 
 author: flanakin
@@ -15,35 +15,35 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: micflan
 ms.custom: accessibility
-ms.openlocfilehash: d5f837d0017ca885144b91d35f489a6fc0e5670e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7d0130e1d7175cef07038bef0a4c47a4c1291050
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="keyboard-shortcuts-in-the-azure-portal"></a><span data-ttu-id="ec615-103">Klávesové zkratky v portálu Azure</span><span class="sxs-lookup"><span data-stu-id="ec615-103">Keyboard shortcuts in the Azure portal</span></span>
-<span data-ttu-id="ec615-104">Tento článek ukazuje klávesové zkratky, které fungují v celém webu Azure portal.</span><span class="sxs-lookup"><span data-stu-id="ec615-104">This article shows the keyboard shortcuts that work throughout the Azure portal.</span></span> <span data-ttu-id="ec615-105">Jednotlivé služby může mít vlastní klávesové zkratky.</span><span class="sxs-lookup"><span data-stu-id="ec615-105">Individual services may have their own keyboard shortcuts.</span></span>
+# <a name="keyboard-shortcuts-in-hello-azure-portal"></a><span data-ttu-id="bb5f5-103">Klávesové zkratky v hello portálu Azure</span><span class="sxs-lookup"><span data-stu-id="bb5f5-103">Keyboard shortcuts in hello Azure portal</span></span>
+<span data-ttu-id="bb5f5-104">Tento článek ukazuje hello klávesové zkratky, které fungují v celém hello portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="bb5f5-104">This article shows hello keyboard shortcuts that work throughout hello Azure portal.</span></span> <span data-ttu-id="bb5f5-105">Jednotlivé služby může mít vlastní klávesové zkratky.</span><span class="sxs-lookup"><span data-stu-id="bb5f5-105">Individual services may have their own keyboard shortcuts.</span></span>
 
-## <a name="actions"></a><span data-ttu-id="ec615-106">Akce</span><span class="sxs-lookup"><span data-stu-id="ec615-106">Actions</span></span>
-|<span data-ttu-id="ec615-107">Uděláte to tak</span><span class="sxs-lookup"><span data-stu-id="ec615-107">To do this</span></span> |<span data-ttu-id="ec615-108">Stisknutím klávesy</span><span class="sxs-lookup"><span data-stu-id="ec615-108">Press</span></span> |
+## <a name="actions"></a><span data-ttu-id="bb5f5-106">Akce</span><span class="sxs-lookup"><span data-stu-id="bb5f5-106">Actions</span></span>
+|<span data-ttu-id="bb5f5-107">toodo to</span><span class="sxs-lookup"><span data-stu-id="bb5f5-107">toodo this</span></span> |<span data-ttu-id="bb5f5-108">Stisknutím klávesy</span><span class="sxs-lookup"><span data-stu-id="bb5f5-108">Press</span></span> |
 | --- | --- |
-|<span data-ttu-id="ec615-109">Vytvoření nového prostředku</span><span class="sxs-lookup"><span data-stu-id="ec615-109">Create a new resource</span></span>|<span data-ttu-id="ec615-110">G + N</span><span class="sxs-lookup"><span data-stu-id="ec615-110">G+N</span></span>|
-|<span data-ttu-id="ec615-111">Otevření podokna 'Další služby.</span><span class="sxs-lookup"><span data-stu-id="ec615-111">Open the 'More services' pane</span></span>|<span data-ttu-id="ec615-112">G + B</span><span class="sxs-lookup"><span data-stu-id="ec615-112">G+B</span></span>|
-|<span data-ttu-id="ec615-113">Hledat prostředky</span><span class="sxs-lookup"><span data-stu-id="ec615-113">Search resources</span></span>|<span data-ttu-id="ec615-114">G +/</span><span class="sxs-lookup"><span data-stu-id="ec615-114">G+/</span></span>| 
-|<span data-ttu-id="ec615-115">Položky nabídky vyhledávání prostředků</span><span class="sxs-lookup"><span data-stu-id="ec615-115">Search resource menu items</span></span>|<span data-ttu-id="ec615-116">CTRL +/</span><span class="sxs-lookup"><span data-stu-id="ec615-116">CTRL+/</span></span> |
-|<span data-ttu-id="ec615-117">Přesunout vybrané levém podokně položku nahoru</span><span class="sxs-lookup"><span data-stu-id="ec615-117">Move the selected left pane item up</span></span> |<span data-ttu-id="ec615-118">ALT + Shift + šipka nahoru</span><span class="sxs-lookup"><span data-stu-id="ec615-118">ALT+Shift+Up Arrow</span></span>|
-|<span data-ttu-id="ec615-119">Přesunout vybrané levém podokně položku dolů</span><span class="sxs-lookup"><span data-stu-id="ec615-119">Move the selected left pane item down</span></span> |<span data-ttu-id="ec615-120">ALT + Shift + šipka dolů</span><span class="sxs-lookup"><span data-stu-id="ec615-120">ALT+Shift+Down Arrow</span></span>|
+|<span data-ttu-id="bb5f5-109">Vytvoření nového prostředku</span><span class="sxs-lookup"><span data-stu-id="bb5f5-109">Create a new resource</span></span>|<span data-ttu-id="bb5f5-110">G + N</span><span class="sxs-lookup"><span data-stu-id="bb5f5-110">G+N</span></span>|
+|<span data-ttu-id="bb5f5-111">Hello Open podokně více služeb</span><span class="sxs-lookup"><span data-stu-id="bb5f5-111">Open hello 'More services' pane</span></span>|<span data-ttu-id="bb5f5-112">G + B</span><span class="sxs-lookup"><span data-stu-id="bb5f5-112">G+B</span></span>|
+|<span data-ttu-id="bb5f5-113">Hledat prostředky</span><span class="sxs-lookup"><span data-stu-id="bb5f5-113">Search resources</span></span>|<span data-ttu-id="bb5f5-114">G +/</span><span class="sxs-lookup"><span data-stu-id="bb5f5-114">G+/</span></span>| 
+|<span data-ttu-id="bb5f5-115">Položky nabídky vyhledávání prostředků</span><span class="sxs-lookup"><span data-stu-id="bb5f5-115">Search resource menu items</span></span>|<span data-ttu-id="bb5f5-116">CTRL +/</span><span class="sxs-lookup"><span data-stu-id="bb5f5-116">CTRL+/</span></span> |
+|<span data-ttu-id="bb5f5-117">Přesunout hello levém podokně vybrané položky nahoru</span><span class="sxs-lookup"><span data-stu-id="bb5f5-117">Move hello selected left pane item up</span></span> |<span data-ttu-id="bb5f5-118">ALT + Shift + šipka nahoru</span><span class="sxs-lookup"><span data-stu-id="bb5f5-118">ALT+Shift+Up Arrow</span></span>|
+|<span data-ttu-id="bb5f5-119">Hello levém podokně vybrané položky dolů</span><span class="sxs-lookup"><span data-stu-id="bb5f5-119">Move hello selected left pane item down</span></span> |<span data-ttu-id="bb5f5-120">ALT + Shift + šipka dolů</span><span class="sxs-lookup"><span data-stu-id="bb5f5-120">ALT+Shift+Down Arrow</span></span>|
 
-## <a name="navigation"></a><span data-ttu-id="ec615-121">Navigace</span><span class="sxs-lookup"><span data-stu-id="ec615-121">Navigation</span></span>
-|<span data-ttu-id="ec615-122">Uděláte to tak</span><span class="sxs-lookup"><span data-stu-id="ec615-122">To do this</span></span> |<span data-ttu-id="ec615-123">Stisknutím klávesy</span><span class="sxs-lookup"><span data-stu-id="ec615-123">Press</span></span> |
+## <a name="navigation"></a><span data-ttu-id="bb5f5-121">Navigace</span><span class="sxs-lookup"><span data-stu-id="bb5f5-121">Navigation</span></span>
+|<span data-ttu-id="bb5f5-122">toodo to</span><span class="sxs-lookup"><span data-stu-id="bb5f5-122">toodo this</span></span> |<span data-ttu-id="bb5f5-123">Stisknutím klávesy</span><span class="sxs-lookup"><span data-stu-id="bb5f5-123">Press</span></span> |
 | --- | --- |
-|<span data-ttu-id="ec615-124">Přesunout fokus na panel příkazů</span><span class="sxs-lookup"><span data-stu-id="ec615-124">Move focus to command bar</span></span> |<span data-ttu-id="ec615-125">G +</span><span class="sxs-lookup"><span data-stu-id="ec615-125">G+,</span></span> |
-|<span data-ttu-id="ec615-126">Přepnout fokus mezi horním a postranním panelem</span><span class="sxs-lookup"><span data-stu-id="ec615-126">Toggle focus between top bar and side bar</span></span> | <span data-ttu-id="ec615-127">G +.</span><span class="sxs-lookup"><span data-stu-id="ec615-127">G+.</span></span> |
+|<span data-ttu-id="bb5f5-124">Přesunout fokus toocommand panelu</span><span class="sxs-lookup"><span data-stu-id="bb5f5-124">Move focus toocommand bar</span></span> |<span data-ttu-id="bb5f5-125">G +</span><span class="sxs-lookup"><span data-stu-id="bb5f5-125">G+,</span></span> |
+|<span data-ttu-id="bb5f5-126">Přepnout fokus mezi horním a postranním panelem</span><span class="sxs-lookup"><span data-stu-id="bb5f5-126">Toggle focus between top bar and side bar</span></span> | <span data-ttu-id="bb5f5-127">G +.</span><span class="sxs-lookup"><span data-stu-id="bb5f5-127">G+.</span></span> |
 
-## <a name="go-to"></a><span data-ttu-id="ec615-128">Přejít na</span><span class="sxs-lookup"><span data-stu-id="ec615-128">Go to</span></span>
-|<span data-ttu-id="ec615-129">Uděláte to tak</span><span class="sxs-lookup"><span data-stu-id="ec615-129">To do this</span></span> |<span data-ttu-id="ec615-130">Stisknutím klávesy</span><span class="sxs-lookup"><span data-stu-id="ec615-130">Press</span></span> |
+## <a name="go-to"></a><span data-ttu-id="bb5f5-128">Přejít na</span><span class="sxs-lookup"><span data-stu-id="bb5f5-128">Go to</span></span>
+|<span data-ttu-id="bb5f5-129">toodo to</span><span class="sxs-lookup"><span data-stu-id="bb5f5-129">toodo this</span></span> |<span data-ttu-id="bb5f5-130">Stisknutím klávesy</span><span class="sxs-lookup"><span data-stu-id="bb5f5-130">Press</span></span> |
 | --- | --- |
-|<span data-ttu-id="ec615-131">Přejděte na řídicí panel</span><span class="sxs-lookup"><span data-stu-id="ec615-131">Go to dashboard</span></span> |<span data-ttu-id="ec615-132">G + D</span><span class="sxs-lookup"><span data-stu-id="ec615-132">G+D</span></span> |
-|<span data-ttu-id="ec615-133">Přejít na všechny prostředky</span><span class="sxs-lookup"><span data-stu-id="ec615-133">Go to all resources</span></span>|<span data-ttu-id="ec615-134">G + A</span><span class="sxs-lookup"><span data-stu-id="ec615-134">G+A</span></span> |
-|<span data-ttu-id="ec615-135">Přejít na skupiny prostředků</span><span class="sxs-lookup"><span data-stu-id="ec615-135">Go to resource groups</span></span>|<span data-ttu-id="ec615-136">G + R</span><span class="sxs-lookup"><span data-stu-id="ec615-136">G+R</span></span> |
-|<span data-ttu-id="ec615-137">Otevřete položku levém podokně na této pozici</span><span class="sxs-lookup"><span data-stu-id="ec615-137">Open the left pane item at this position</span></span> |<span data-ttu-id="ec615-138">G + číslo</span><span class="sxs-lookup"><span data-stu-id="ec615-138">G+number</span></span>|
+|<span data-ttu-id="bb5f5-131">Přejděte toodashboard</span><span class="sxs-lookup"><span data-stu-id="bb5f5-131">Go toodashboard</span></span> |<span data-ttu-id="bb5f5-132">G + D</span><span class="sxs-lookup"><span data-stu-id="bb5f5-132">G+D</span></span> |
+|<span data-ttu-id="bb5f5-133">Přejděte tooall prostředky</span><span class="sxs-lookup"><span data-stu-id="bb5f5-133">Go tooall resources</span></span>|<span data-ttu-id="bb5f5-134">G + A</span><span class="sxs-lookup"><span data-stu-id="bb5f5-134">G+A</span></span> |
+|<span data-ttu-id="bb5f5-135">Přejděte tooresource skupiny</span><span class="sxs-lookup"><span data-stu-id="bb5f5-135">Go tooresource groups</span></span>|<span data-ttu-id="bb5f5-136">G + R</span><span class="sxs-lookup"><span data-stu-id="bb5f5-136">G+R</span></span> |
+|<span data-ttu-id="bb5f5-137">Otevřete hello levém podokně položky na této pozici</span><span class="sxs-lookup"><span data-stu-id="bb5f5-137">Open hello left pane item at this position</span></span> |<span data-ttu-id="bb5f5-138">G + číslo</span><span class="sxs-lookup"><span data-stu-id="bb5f5-138">G+number</span></span>|

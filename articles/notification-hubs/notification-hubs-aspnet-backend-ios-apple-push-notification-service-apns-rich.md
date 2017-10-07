@@ -1,6 +1,6 @@
 ---
-title: "Azure Notification Hubs bohaté Push"
-description: "Naučte se odesílání bohaté nabízených oznámení do aplikace pro iOS z Azure. Ukázky kódu jsou vytvořeny v Objective-C a C#."
+title: "aaaAzure Push bohaté centra oznámení"
+description: "Zjistěte, jak toosend bohaté nabízená oznámení aplikace iOS tooan z Azure. Ukázky kódu jsou vytvořeny v Objective-C a C#."
 documentationcenter: ios
 services: notification-hubs
 author: ysxu
@@ -14,44 +14,44 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 394efdc2dfaff0666bc23d8a448b0a00d414da99
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5432d8bf47777371bea3521a0c0176ade75fbd9a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-notification-hubs-rich-push"></a><span data-ttu-id="148ca-104">Azure Notification Hubs bohaté Push</span><span class="sxs-lookup"><span data-stu-id="148ca-104">Azure Notification Hubs Rich Push</span></span>
-## <a name="overview"></a><span data-ttu-id="148ca-105">Přehled</span><span class="sxs-lookup"><span data-stu-id="148ca-105">Overview</span></span>
-<span data-ttu-id="148ca-106">Chcete-li zapojení uživatelů rychlých bohaté obsah, aplikace chtít nabízet nad rámec prostý text.</span><span class="sxs-lookup"><span data-stu-id="148ca-106">In order to engage users with instant rich contents, an application might want to push beyond plain text.</span></span> <span data-ttu-id="148ca-107">Tato oznámení zvýšit úroveň, akce uživatelů a existuje obsah, jako jsou adresy URL, zvuky, Image nebo kupóny a další.</span><span class="sxs-lookup"><span data-stu-id="148ca-107">These notifications promote user interactions and  present content such as urls, sounds, images/coupons, and more.</span></span> <span data-ttu-id="148ca-108">V tomto kurzu vychází [upozornění uživatelů](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) tématu a ukazuje, jak odesílat nabízená oznámení, které jsou částí (například obrázek).</span><span class="sxs-lookup"><span data-stu-id="148ca-108">This tutorial builds on the [Notify Users](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) topic, and shows how to send push notifications that incorporate payloads (for example, image).</span></span>
+# <a name="azure-notification-hubs-rich-push"></a><span data-ttu-id="89cd7-104">Azure Notification Hubs bohaté Push</span><span class="sxs-lookup"><span data-stu-id="89cd7-104">Azure Notification Hubs Rich Push</span></span>
+## <a name="overview"></a><span data-ttu-id="89cd7-105">Přehled</span><span class="sxs-lookup"><span data-stu-id="89cd7-105">Overview</span></span>
+<span data-ttu-id="89cd7-106">V pořadí tooengage uživatelům s rychlých bohaté obsah může být vhodné aplikace toopush nad rámec prostý text.</span><span class="sxs-lookup"><span data-stu-id="89cd7-106">In order tooengage users with instant rich contents, an application might want toopush beyond plain text.</span></span> <span data-ttu-id="89cd7-107">Tato oznámení zvýšit úroveň, akce uživatelů a existuje obsah, jako jsou adresy URL, zvuky, Image nebo kupóny a další.</span><span class="sxs-lookup"><span data-stu-id="89cd7-107">These notifications promote user interactions and  present content such as urls, sounds, images/coupons, and more.</span></span> <span data-ttu-id="89cd7-108">V tomto kurzu vychází hello [upozornění uživatelů](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) tématu a ukazuje, jak toosend nabízená oznámení, které jsou částí (například obrázek).</span><span class="sxs-lookup"><span data-stu-id="89cd7-108">This tutorial builds on hello [Notify Users](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) topic, and shows how toosend push notifications that incorporate payloads (for example, image).</span></span>
 
-<span data-ttu-id="148ca-109">V tomto kurzu je kompatibilní s iOS 7 a 8.</span><span class="sxs-lookup"><span data-stu-id="148ca-109">This tutorial is compatible with iOS 7 & 8.</span></span>
+<span data-ttu-id="89cd7-109">V tomto kurzu je kompatibilní s iOS 7 a 8.</span><span class="sxs-lookup"><span data-stu-id="89cd7-109">This tutorial is compatible with iOS 7 & 8.</span></span>
 
   ![][IOS1]
 
-<span data-ttu-id="148ca-110">Na vysoké úrovni:</span><span class="sxs-lookup"><span data-stu-id="148ca-110">At a high level:</span></span>
+<span data-ttu-id="89cd7-110">Na vysoké úrovni:</span><span class="sxs-lookup"><span data-stu-id="89cd7-110">At a high level:</span></span>
 
-1. <span data-ttu-id="148ca-111">Back-end aplikace:</span><span class="sxs-lookup"><span data-stu-id="148ca-111">The app backend:</span></span>
-   * <span data-ttu-id="148ca-112">Ukládá bohaté datová část (v tomto případě obrázek) v úložišti databáze nebo místní back-end</span><span class="sxs-lookup"><span data-stu-id="148ca-112">Stores the rich payload (in this case, image) in the backend database/local storage</span></span>
-   * <span data-ttu-id="148ca-113">Odešle ID tohoto bohaté oznámení do zařízení.</span><span class="sxs-lookup"><span data-stu-id="148ca-113">Sends ID of this rich notification to the device</span></span>
-2. <span data-ttu-id="148ca-114">Aplikace na zařízení:</span><span class="sxs-lookup"><span data-stu-id="148ca-114">App on the device:</span></span>
-   * <span data-ttu-id="148ca-115">Kontaktuje back-end vyžaduje bohaté datovou část s ID obdrží</span><span class="sxs-lookup"><span data-stu-id="148ca-115">Contacts the backend requesting the rich payload with the ID it receives</span></span>
-   * <span data-ttu-id="148ca-116">Odešle oznámení uživatelům na zařízení po načtení dat dokončení a zobrazuje datové části okamžitě, když uživatel klepnutím na další informace</span><span class="sxs-lookup"><span data-stu-id="148ca-116">Sends users notifications on the device when data retrieval is complete, and shows the payload immediately when users tap to learn more</span></span>
+1. <span data-ttu-id="89cd7-111">back-end aplikace Hello:</span><span class="sxs-lookup"><span data-stu-id="89cd7-111">hello app backend:</span></span>
+   * <span data-ttu-id="89cd7-112">Úložiště hello bohaté datová část (v tomto případě obrázek) v úložišti databáze nebo místní hello back-end</span><span class="sxs-lookup"><span data-stu-id="89cd7-112">Stores hello rich payload (in this case, image) in hello backend database/local storage</span></span>
+   * <span data-ttu-id="89cd7-113">Odešle ID tohoto zařízení toohello bohaté oznámení</span><span class="sxs-lookup"><span data-stu-id="89cd7-113">Sends ID of this rich notification toohello device</span></span>
+2. <span data-ttu-id="89cd7-114">Aplikace na zařízení hello:</span><span class="sxs-lookup"><span data-stu-id="89cd7-114">App on hello device:</span></span>
+   * <span data-ttu-id="89cd7-115">Kontakty hello požaduje hello bohaté datovou část s ID hello obdrží back-end</span><span class="sxs-lookup"><span data-stu-id="89cd7-115">Contacts hello backend requesting hello rich payload with hello ID it receives</span></span>
+   * <span data-ttu-id="89cd7-116">Při načítání dat je dokončena a ukazuje datovou část hello okamžitě, když uživatel klepnutím na další toolearn odešle oznámení uživatelům na zařízení hello</span><span class="sxs-lookup"><span data-stu-id="89cd7-116">Sends users notifications on hello device when data retrieval is complete, and shows hello payload immediately when users tap toolearn more</span></span>
 
-## <a name="webapi-project"></a><span data-ttu-id="148ca-117">WebAPI projektu</span><span class="sxs-lookup"><span data-stu-id="148ca-117">WebAPI Project</span></span>
-1. <span data-ttu-id="148ca-118">V sadě Visual Studio, otevřete **AppBackend** projekt, který jste vytvořili v [upozornění uživatelů](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) kurzu.</span><span class="sxs-lookup"><span data-stu-id="148ca-118">In Visual Studio, open the **AppBackend** project that you created in the [Notify Users](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) tutorial.</span></span>
-2. <span data-ttu-id="148ca-119">Získat image, kterou chcete upozornit uživatele a umístí jej **img** složky v adresáři projektu.</span><span class="sxs-lookup"><span data-stu-id="148ca-119">Obtain an image you would like to notify users with, and put it in an **img** folder in your project directory.</span></span>
-3. <span data-ttu-id="148ca-120">Klikněte na tlačítko **zobrazit všechny soubory** v Průzkumníku řešení klikněte pravým tlačítkem složku pro **zahrnout do projektu**.</span><span class="sxs-lookup"><span data-stu-id="148ca-120">Click **Show All Files** in the Solution Explorer, and right-click the folder to **Include In Project**.</span></span>
-4. <span data-ttu-id="148ca-121">Vybraná Image, změnit jeho akce sestavení v okně Vlastnosti a **vložený prostředek**.</span><span class="sxs-lookup"><span data-stu-id="148ca-121">With the image selected, change its Build Action in Properties window to **Embedded Resource**.</span></span>
+## <a name="webapi-project"></a><span data-ttu-id="89cd7-117">WebAPI projektu</span><span class="sxs-lookup"><span data-stu-id="89cd7-117">WebAPI Project</span></span>
+1. <span data-ttu-id="89cd7-118">V sadě Visual Studio otevřete hello **AppBackend** projekt, který jste vytvořili v hello [upozornění uživatelů](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) kurzu.</span><span class="sxs-lookup"><span data-stu-id="89cd7-118">In Visual Studio, open hello **AppBackend** project that you created in hello [Notify Users](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) tutorial.</span></span>
+2. <span data-ttu-id="89cd7-119">Získat bitovou kopii chcete vytvořit toonotify uživatelů s a vložte ho **img** složky v adresáři projektu.</span><span class="sxs-lookup"><span data-stu-id="89cd7-119">Obtain an image you would like toonotify users with, and put it in an **img** folder in your project directory.</span></span>
+3. <span data-ttu-id="89cd7-120">Klikněte na tlačítko **zobrazit všechny soubory** v hello Průzkumníku řešení a klikněte pravým tlačítkem na složku hello příliš**zahrnout do projektu**.</span><span class="sxs-lookup"><span data-stu-id="89cd7-120">Click **Show All Files** in hello Solution Explorer, and right-click hello folder too**Include In Project**.</span></span>
+4. <span data-ttu-id="89cd7-121">Vybraná Image hello, změnit jeho akce sestavení v okně Vlastnosti příliš**vložený prostředek**.</span><span class="sxs-lookup"><span data-stu-id="89cd7-121">With hello image selected, change its Build Action in Properties window too**Embedded Resource**.</span></span>
    
     ![][IOS2]
-5. <span data-ttu-id="148ca-122">V **Notifications.cs**, přidejte následující příkaz using:</span><span class="sxs-lookup"><span data-stu-id="148ca-122">In **Notifications.cs**, add the following using statement:</span></span>
+5. <span data-ttu-id="89cd7-122">V **Notifications.cs**, přidejte hello následující příkaz using:</span><span class="sxs-lookup"><span data-stu-id="89cd7-122">In **Notifications.cs**, add hello following using statement:</span></span>
    
         using System.Reflection;
-6. <span data-ttu-id="148ca-123">Aktualizovat celek **oznámení** třídy následujícím kódem.</span><span class="sxs-lookup"><span data-stu-id="148ca-123">Update the whole **Notifications** class with the following code.</span></span> <span data-ttu-id="148ca-124">Ujistěte se, že nahraďte zástupné symboly vaše přihlašovací údaje centra oznámení a název souboru obrázku.</span><span class="sxs-lookup"><span data-stu-id="148ca-124">Be sure to replace the placeholders with your notification hub credentials and image file name.</span></span>
+6. <span data-ttu-id="89cd7-123">Aktualizace hello celou **oznámení** se hello následující kód.</span><span class="sxs-lookup"><span data-stu-id="89cd7-123">Update hello whole **Notifications** class with hello following code.</span></span> <span data-ttu-id="89cd7-124">Být jisti tooreplace zástupné symboly hello s oznámení centra pověření a název souboru obrázku.</span><span class="sxs-lookup"><span data-stu-id="89cd7-124">Be sure tooreplace hello placeholders with your notification hub credentials and image file name.</span></span>
    
         public class Notification {
             public int Id { get; set; }
-            // Initial notification message to display to users
+            // Initial notification message toodisplay toousers
             public string Message { get; set; }
             // Type of rich payload (developer-defined)
             public string RichType { get; set; }
@@ -67,7 +67,7 @@ ms.lasthandoff: 07/11/2017
             public NotificationHubClient Hub { get; set; }
    
             private Notifications() {
-                // Placeholders: replace with the connection string (with full access) for your notification hub and the hub name from the Azure Classics Portal
+                // Placeholders: replace with hello connection string (with full access) for your notification hub and hello hub name from hello Azure Classics Portal
                 Hub = NotificationHubClient.CreateClientFromConnectionString("{conn string with full access}",  "{hub name}");
             }
    
@@ -93,10 +93,10 @@ ms.lasthandoff: 07/11/2017
         }
    
    > [!NOTE]
-   > <span data-ttu-id="148ca-125">(volitelné) Odkazovat na [postup vložení a přístup k prostředkům pomocí Visual C#](http://support.microsoft.com/kb/319292) Další informace o tom, jak přidat a získat prostředky projektu.</span><span class="sxs-lookup"><span data-stu-id="148ca-125">(optional) Refer to [How to embed and access resources by using Visual C#](http://support.microsoft.com/kb/319292) for more information on how to add and obtain project resources.</span></span>
+   > <span data-ttu-id="89cd7-125">(volitelné) Odkazovat příliš[jak tooembed a přístup k prostředkům pomocí Visual C#](http://support.microsoft.com/kb/319292) Další informace o tom, tooadd a získat prostředky projektu.</span><span class="sxs-lookup"><span data-stu-id="89cd7-125">(optional) Refer too[How tooembed and access resources by using Visual C#](http://support.microsoft.com/kb/319292) for more information on how tooadd and obtain project resources.</span></span>
    > 
    > 
-7. <span data-ttu-id="148ca-126">V **NotificationsController.cs**, znovu definovat **NotificationsController** s následující fragmenty kódu.</span><span class="sxs-lookup"><span data-stu-id="148ca-126">In **NotificationsController.cs**, redefine **NotificationsController**  with the following snippets.</span></span> <span data-ttu-id="148ca-127">To odešle počáteční tichou bohaté oznámení id zařízení a umožňuje načítání klientské bitové kopie:</span><span class="sxs-lookup"><span data-stu-id="148ca-127">This sends an initial silent rich notification id to device and allows client-side retrieval of image:</span></span>
+7. <span data-ttu-id="89cd7-126">V **NotificationsController.cs**, znovu definovat **NotificationsController** s hello následující fragmenty kódu.</span><span class="sxs-lookup"><span data-stu-id="89cd7-126">In **NotificationsController.cs**, redefine **NotificationsController**  with hello following snippets.</span></span> <span data-ttu-id="89cd7-127">To odešle toodevice id počáteční tichou bohaté oznámení a umožňuje klienta načtení obrázku:</span><span class="sxs-lookup"><span data-stu-id="89cd7-127">This sends an initial silent rich notification id toodevice and allows client-side retrieval of image:</span></span>
    
         // Return http response with image binary
         public HttpResponseMessage Get(int id) {
@@ -110,9 +110,9 @@ ms.lasthandoff: 07/11/2017
             return result;
         }
    
-        // Create rich notification and send initial silent notification (containing id) to client
+        // Create rich notification and send initial silent notification (containing id) tooclient
         public async Task<HttpResponseMessage> Post() {
-            // Replace the placeholder with image file name
+            // Replace hello placeholder with image file name
             var richNotificationInTheBackend = Notifications.Instance.CreateNotification("Check this image out!", "img",  "{logo.png}");
    
             var usernameTag = "username:" + HttpContext.Current.User.Identity.Name;
@@ -120,41 +120,41 @@ ms.lasthandoff: 07/11/2017
             // Silent notification with content available
             var aboutUser = "{\"aps\": {\"content-available\": 1, \"sound\":\"\"}, \"richId\": \"" + richNotificationInTheBackend.Id.ToString() + "\",  \"richMessage\": \"" + richNotificationInTheBackend.Message + "\", \"richType\": \"" + richNotificationInTheBackend.RichType + "\"}";
    
-            // Send notification to apns
+            // Send notification tooapns
             await Notifications.Instance.Hub.SendAppleNativeNotificationAsync(aboutUser, usernameTag);
    
             return Request.CreateResponse(HttpStatusCode.OK);
         }
-8. <span data-ttu-id="148ca-128">Nyní jsme bude znovu nasaďte tuto aplikaci na web Azure aby přístupná ze všech zařízení.</span><span class="sxs-lookup"><span data-stu-id="148ca-128">Now we will re-deploy this app to an Azure Website in order to make it accessible from all devices.</span></span> <span data-ttu-id="148ca-129">Klikněte pravým tlačítkem na projekt **AppBackend** a vyberte **Publikovat**.</span><span class="sxs-lookup"><span data-stu-id="148ca-129">Right-click on the **AppBackend** project and select **Publish**.</span></span>
-9. <span data-ttu-id="148ca-130">Vyberte web Azure jako váš cíl publikování.</span><span class="sxs-lookup"><span data-stu-id="148ca-130">Select Azure Website as your publish target.</span></span> <span data-ttu-id="148ca-131">Přihlaste se pomocí účtu Azure a vyberte stávajícího nebo nového webu a poznamenejte si **cílová adresa URL** vlastnost **připojení** kartě.</span><span class="sxs-lookup"><span data-stu-id="148ca-131">Log in with your Azure account and select an existing or new Website, and make a note of the **destination URL** property in the **Connection** tab.</span></span> <span data-ttu-id="148ca-132">Na tuto adresu URL budeme odkazovat jako na *koncový bod back-endu* později v tomto kurzu.</span><span class="sxs-lookup"><span data-stu-id="148ca-132">We will refer to this URL as your *backend endpoint* later in this tutorial.</span></span> <span data-ttu-id="148ca-133">Klikněte na **Publikovat**.</span><span class="sxs-lookup"><span data-stu-id="148ca-133">Click **Publish**.</span></span>
+8. <span data-ttu-id="89cd7-128">Nyní nasadíme znovu tuto aplikaci tooan webu Azure v pořadí toomake je přístupná ze všech zařízení.</span><span class="sxs-lookup"><span data-stu-id="89cd7-128">Now we will re-deploy this app tooan Azure Website in order toomake it accessible from all devices.</span></span> <span data-ttu-id="89cd7-129">Klikněte pravým tlačítkem na hello **AppBackend** projektu a vyberte **publikovat**.</span><span class="sxs-lookup"><span data-stu-id="89cd7-129">Right-click on hello **AppBackend** project and select **Publish**.</span></span>
+9. <span data-ttu-id="89cd7-130">Vyberte web Azure jako váš cíl publikování.</span><span class="sxs-lookup"><span data-stu-id="89cd7-130">Select Azure Website as your publish target.</span></span> <span data-ttu-id="89cd7-131">Přihlaste se pomocí účtu Azure a vyberte stávajícího nebo nového webu a poznamenejte si hello **cílová adresa URL** vlastnost hello **připojení** kartě. Označujeme toothis adresu URL jako vaše *koncový bod back-end* dál v tomto kurzu.</span><span class="sxs-lookup"><span data-stu-id="89cd7-131">Log in with your Azure account and select an existing or new Website, and make a note of hello **destination URL** property in hello **Connection** tab. We will refer toothis URL as your *backend endpoint* later in this tutorial.</span></span> <span data-ttu-id="89cd7-132">Klikněte na **Publikovat**.</span><span class="sxs-lookup"><span data-stu-id="89cd7-132">Click **Publish**.</span></span>
 
-## <a name="modify-the-ios-project"></a><span data-ttu-id="148ca-134">Upravit projekt pro iOS</span><span class="sxs-lookup"><span data-stu-id="148ca-134">Modify the iOS project</span></span>
-<span data-ttu-id="148ca-135">Teď, když jste změnili váš back-end aplikace k odesílání jen na *id* oznámení, se změní aplikace pro iOS k zpracování toto id a načtení bohaté zprávy z vaší back-end.</span><span class="sxs-lookup"><span data-stu-id="148ca-135">Now that you have modified your app backend to send just the *id* of a notification, you will change your iOS app to handle that id and retrieve the rich message from your backend.</span></span>
+## <a name="modify-hello-ios-project"></a><span data-ttu-id="89cd7-133">Upravit projektu iOS hello</span><span class="sxs-lookup"><span data-stu-id="89cd7-133">Modify hello iOS project</span></span>
+<span data-ttu-id="89cd7-134">Teď, když jste změnili jenom hello vaší aplikace back-end toosend *id* oznámení, změníte toto id vaší toohandle aplikace iOS a načíst hello bohaté zprávy z vaší back-end.</span><span class="sxs-lookup"><span data-stu-id="89cd7-134">Now that you have modified your app backend toosend just hello *id* of a notification, you will change your iOS app toohandle that id and retrieve hello rich message from your backend.</span></span>
 
-1. <span data-ttu-id="148ca-136">Otevřete projekt iOS a povolit vzdálenou oznámení tak, že přejdete do cílových hlavní aplikace v **cíle** části.</span><span class="sxs-lookup"><span data-stu-id="148ca-136">Open your iOS project, and enable remote notifications by going to your main app target in the **Targets** section.</span></span>
-2. <span data-ttu-id="148ca-137">Klikněte na **možnosti**, zapnout **režimy pozadí**a zkontrolujte **vzdáleného oznámení** zaškrtávací políčko.</span><span class="sxs-lookup"><span data-stu-id="148ca-137">Click on **Capabilities**, turn on **Background Modes**, and check the **Remote Notifications** checkbox.</span></span>
+1. <span data-ttu-id="89cd7-135">Otevřete projekt iOS a povolte vzdálené oznámení tak, že budete cíl tooyour hlavní aplikace v hello **cíle** části.</span><span class="sxs-lookup"><span data-stu-id="89cd7-135">Open your iOS project, and enable remote notifications by going tooyour main app target in hello **Targets** section.</span></span>
+2. <span data-ttu-id="89cd7-136">Klikněte na **možnosti**, zapnout **režimy pozadí**a zkontrolujte hello **vzdáleného oznámení** zaškrtávací políčko.</span><span class="sxs-lookup"><span data-stu-id="89cd7-136">Click on **Capabilities**, turn on **Background Modes**, and check hello **Remote Notifications** checkbox.</span></span>
    
     ![][IOS3]
-3. <span data-ttu-id="148ca-138">Přejděte na **Main.storyboard**a zajistěte, aby byla řadič zobrazení (uvedená jako Domů řadiče zobrazení v tomto kurzu) z [upozornit uživatele](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) kurzu.</span><span class="sxs-lookup"><span data-stu-id="148ca-138">Go to **Main.storyboard**, and make sure you have a View Controller (refered to as Home View Controller in this tutorial) from [Notify User](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) tutorial.</span></span>
-4. <span data-ttu-id="148ca-139">Přidat **navigační řadič** scénáře a přetáhněte ovládací prvek na Domů zobrazení kontroler, aby bylo **kořenový zobrazení** navigace.</span><span class="sxs-lookup"><span data-stu-id="148ca-139">Add a **Navigation Controller** to your storyboard, and control-drag to Home View Controller to make it the **root view** of navigation.</span></span> <span data-ttu-id="148ca-140">Zajistěte, aby **je počáteční View Controller** v atributech inspector je vybraná řadičem navigace.</span><span class="sxs-lookup"><span data-stu-id="148ca-140">Make sure the **Is Initial View Controller** in Attributes inspector is selected for the Navigation Controller only.</span></span>
-5. <span data-ttu-id="148ca-141">Přidat **View Controller** scénáře a přidat **Image zobrazení**.</span><span class="sxs-lookup"><span data-stu-id="148ca-141">Add a **View Controller** to storyboard and add an **Image View**.</span></span> <span data-ttu-id="148ca-142">Toto je stránka, kterou uživatelé uvidí, když se rozhodnete další informace kliknutím na notifiication.</span><span class="sxs-lookup"><span data-stu-id="148ca-142">This is the page users will see once they choose to learn more by clicking on the notifiication.</span></span> <span data-ttu-id="148ca-143">Vaše scénáře by měla vypadat takto:</span><span class="sxs-lookup"><span data-stu-id="148ca-143">Your storyboard should look as follows:</span></span>
+3. <span data-ttu-id="89cd7-137">Přejděte příliš**Main.storyboard**a zajistěte, aby byla řadič zobrazení (tooas zmíněných Domů řadiče zobrazení v tomto kurzu) z [upozornit uživatele](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) kurzu.</span><span class="sxs-lookup"><span data-stu-id="89cd7-137">Go too**Main.storyboard**, and make sure you have a View Controller (refered tooas Home View Controller in this tutorial) from [Notify User](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) tutorial.</span></span>
+4. <span data-ttu-id="89cd7-138">Přidat **navigační řadič** tooyour scénáře a Ctrl táhnout toomake View Controller tooHome ho hello **kořenový zobrazení** navigace.</span><span class="sxs-lookup"><span data-stu-id="89cd7-138">Add a **Navigation Controller** tooyour storyboard, and control-drag tooHome View Controller toomake it hello **root view** of navigation.</span></span> <span data-ttu-id="89cd7-139">Ujistěte se, zda text hello **je počáteční View Controller** v atributech inspector je vybraná jenom hello navigační řadiče.</span><span class="sxs-lookup"><span data-stu-id="89cd7-139">Make sure hello **Is Initial View Controller** in Attributes inspector is selected for hello Navigation Controller only.</span></span>
+5. <span data-ttu-id="89cd7-140">Přidat **View Controller** toostoryboard a přidejte **Image zobrazení**.</span><span class="sxs-lookup"><span data-stu-id="89cd7-140">Add a **View Controller** toostoryboard and add an **Image View**.</span></span> <span data-ttu-id="89cd7-141">Toto je stránka hello, se zobrazí uživatelům, jakmile toolearn vybírá informace kliknutím na hello notifiication.</span><span class="sxs-lookup"><span data-stu-id="89cd7-141">This is hello page users will see once they choose toolearn more by clicking on hello notifiication.</span></span> <span data-ttu-id="89cd7-142">Vaše scénáře by měla vypadat takto:</span><span class="sxs-lookup"><span data-stu-id="89cd7-142">Your storyboard should look as follows:</span></span>
    
     ![][IOS4]
-6. <span data-ttu-id="148ca-144">Klikněte na **Domů View Controller** scénáře a ujistěte se, že má **homeViewController** jako jeho **vlastní třída** a **Storyboard ID**pod Identity inspector.</span><span class="sxs-lookup"><span data-stu-id="148ca-144">Click on the **Home View Controller** in storyboard, and make sure it has **homeViewController** as its **Custom Class** and **Storyboard ID** under the Identity inspector.</span></span>
-7. <span data-ttu-id="148ca-145">Totéž proveďte pro bitovou kopii řadiče zobrazení jako **imageViewController**.</span><span class="sxs-lookup"><span data-stu-id="148ca-145">Do the same for Image View Controller as **imageViewController**.</span></span>
-8. <span data-ttu-id="148ca-146">Pak vytvořte novou třídu řadiče zobrazení s názvem **imageViewController** pro zpracování uživatelského rozhraní, kterou jste právě vytvořili.</span><span class="sxs-lookup"><span data-stu-id="148ca-146">Then, create a new View Controller class titled **imageViewController** to handle the UI you just created.</span></span>
-9. <span data-ttu-id="148ca-147">V **imageViewController.h**, přidejte následující deklarace rozhraní kontroleru.</span><span class="sxs-lookup"><span data-stu-id="148ca-147">In **imageViewController.h**, add the following to the controller's interface declarations.</span></span> <span data-ttu-id="148ca-148">Nezapomeňte řízení přetažení z bitové kopie zobrazení scénáře pro tyto vlastnosti k propojení dvou:</span><span class="sxs-lookup"><span data-stu-id="148ca-148">Make sure to control-drag from the storyboard image view to these properties to link the two:</span></span>
+6. <span data-ttu-id="89cd7-143">Klikněte na hello **Domů View Controller** scénáře a ujistěte se, že má **homeViewController** jako jeho **vlastní třída** a **Storyboard ID**pod hello Identity inspector.</span><span class="sxs-lookup"><span data-stu-id="89cd7-143">Click on hello **Home View Controller** in storyboard, and make sure it has **homeViewController** as its **Custom Class** and **Storyboard ID** under hello Identity inspector.</span></span>
+7. <span data-ttu-id="89cd7-144">Hello stejné pro bitovou kopii řadiče zobrazení jako **imageViewController**.</span><span class="sxs-lookup"><span data-stu-id="89cd7-144">Do hello same for Image View Controller as **imageViewController**.</span></span>
+8. <span data-ttu-id="89cd7-145">Pak vytvořte novou třídu řadiče zobrazení s názvem **imageViewController** toohandle hello uživatelského rozhraní, kterou jste právě vytvořili.</span><span class="sxs-lookup"><span data-stu-id="89cd7-145">Then, create a new View Controller class titled **imageViewController** toohandle hello UI you just created.</span></span>
+9. <span data-ttu-id="89cd7-146">V **imageViewController.h**, přidejte následující deklarace rozhraní toohello řadiče hello.</span><span class="sxs-lookup"><span data-stu-id="89cd7-146">In **imageViewController.h**, add hello following toohello controller's interface declarations.</span></span> <span data-ttu-id="89cd7-147">Ujistěte se, že toocontrol přetažení z hello storyboard image zobrazení toothese vlastnosti toolink hello dva:</span><span class="sxs-lookup"><span data-stu-id="89cd7-147">Make sure toocontrol-drag from hello storyboard image view toothese properties toolink hello two:</span></span>
    
         @property (weak, nonatomic) IBOutlet UIImageView *myImage;
         @property (strong) UIImage* imagePayload;
-10. <span data-ttu-id="148ca-149">V **imageViewController.m**, přidejte následující na konci **viewDidload**:</span><span class="sxs-lookup"><span data-stu-id="148ca-149">In **imageViewController.m**, add the following at the end of **viewDidload**:</span></span>
+10. <span data-ttu-id="89cd7-148">V **imageViewController.m**, přidejte následující hello na konci hello **viewDidload**:</span><span class="sxs-lookup"><span data-stu-id="89cd7-148">In **imageViewController.m**, add hello following at hello end of **viewDidload**:</span></span>
     
-        // Display the UI Image in UI Image View
+        // Display hello UI Image in UI Image View
         [self.myImage setImage:self.imagePayload];
-11. <span data-ttu-id="148ca-150">V **AppDelegate.m**, import řadičem bitové kopie, který jste vytvořili:</span><span class="sxs-lookup"><span data-stu-id="148ca-150">In **AppDelegate.m**, import the image controller you created:</span></span>
+11. <span data-ttu-id="89cd7-149">V **AppDelegate.m**, import hello image řadiče jste vytvořili:</span><span class="sxs-lookup"><span data-stu-id="89cd7-149">In **AppDelegate.m**, import hello image controller you created:</span></span>
     
         #import "imageViewController.h"
-12. <span data-ttu-id="148ca-151">Přidáte oddíl rozhraní s následující prohlášení:</span><span class="sxs-lookup"><span data-stu-id="148ca-151">Add an interface section with the following declaration:</span></span>
+12. <span data-ttu-id="89cd7-150">Přidáte oddíl, který rozhraní s hello následující prohlášení:</span><span class="sxs-lookup"><span data-stu-id="89cd7-150">Add an interface section with hello following declaration:</span></span>
     
         @interface AppDelegate ()
     
@@ -165,11 +165,11 @@ ms.lasthandoff: 07/11/2017
         // Obtain content from backend with notification id
         - (void)retrieveRichImageWithId:(int)richId completion: (void(^)(NSError*)) completion;
     
-        // Redirect to Image View Controller after notification interaction
+        // Redirect tooImage View Controller after notification interaction
         - (void)redirectToImageViewWithImage: (UIImage *)img;
     
         @end
-13. <span data-ttu-id="148ca-152">V **AppDelegate**, ujistěte se, že vaše aplikace se zaregistruje pro tichou oznámení v **aplikace: didFinishLaunchingWithOptions**:</span><span class="sxs-lookup"><span data-stu-id="148ca-152">In **AppDelegate**, make sure your app registers for silent notifications in **application: didFinishLaunchingWithOptions**:</span></span>
+13. <span data-ttu-id="89cd7-151">V **AppDelegate**, ujistěte se, že vaše aplikace se zaregistruje pro tichou oznámení v **aplikace: didFinishLaunchingWithOptions**:</span><span class="sxs-lookup"><span data-stu-id="89cd7-151">In **AppDelegate**, make sure your app registers for silent notifications in **application: didFinishLaunchingWithOptions**:</span></span>
     
         // Software version
         self.iOS8 = [[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)] && [[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)];
@@ -211,14 +211,14 @@ ms.lasthandoff: 07/11/2017
 
         return YES;
 
-1. <span data-ttu-id="148ca-153">Nahraďte následující implementace pro **aplikace: didRegisterForRemoteNotificationsWithDeviceToken** provést storyboard uživatelského rozhraní se změní v úvahu:</span><span class="sxs-lookup"><span data-stu-id="148ca-153">Subsitute in the following implementation for **application:didRegisterForRemoteNotificationsWithDeviceToken** to take the storyboard UI changes into account:</span></span>
+1. <span data-ttu-id="89cd7-152">Nahraďte v hello následující implementace pro **aplikace: didRegisterForRemoteNotificationsWithDeviceToken** tootake hello storyboard uživatelského rozhraní se změní v úvahu:</span><span class="sxs-lookup"><span data-stu-id="89cd7-152">Subsitute in hello following implementation for **application:didRegisterForRemoteNotificationsWithDeviceToken** tootake hello storyboard UI changes into account:</span></span>
    
-       // Access navigation controller which is at the root of window
+       // Access navigation controller which is at hello root of window
        UINavigationController *nc = (UINavigationController *)self.window.rootViewController;
        // Get home view controller from stack on navigation controller
        homeViewController *hvc = (homeViewController *)[nc.viewControllers objectAtIndex:0];
        hvc.deviceToken = deviceToken;
-2. <span data-ttu-id="148ca-154">Pak přidejte následující metody, které **AppDelegate.m** načíst obrázek z váš koncový bod a odesílat místního oznámení po dokončení načítání.</span><span class="sxs-lookup"><span data-stu-id="148ca-154">Then, add the following methods to **AppDelegate.m** to retrieve the image from your endpoint and send a local notification when retrieval is complete.</span></span> <span data-ttu-id="148ca-155">Ujistěte se, zda jste nahraďte zástupný symbol `{backend endpoint}` s back-end koncový bod:</span><span class="sxs-lookup"><span data-stu-id="148ca-155">Make sure to substitute the placeholder `{backend endpoint}` with your backend endpoint:</span></span>
+2. <span data-ttu-id="89cd7-153">Pak přidejte následující metody příliš hello**AppDelegate.m** tooretrieve hello bitovou kopii z váš koncový bod a odesílání místní oznámení po dokončení načítání.</span><span class="sxs-lookup"><span data-stu-id="89cd7-153">Then, add hello following methods too**AppDelegate.m** tooretrieve hello image from your endpoint and send a local notification when retrieval is complete.</span></span> <span data-ttu-id="89cd7-154">Ujistěte se, že zástupný symbol hello toosubstitute `{backend endpoint}` s back-end koncový bod:</span><span class="sxs-lookup"><span data-stu-id="89cd7-154">Make sure toosubstitute hello placeholder `{backend endpoint}` with your backend endpoint:</span></span>
    
        NSString *const GetNotificationEndpoint = @"{backend endpoint}/api/notifications";
    
@@ -245,7 +245,7 @@ ms.lasthandoff: 07/11/2017
    
                NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;
                if (!error && httpResponse.statusCode == 200) {
-                   // From NSData to UIImage
+                   // From NSData tooUIImage
                    self.imagePayload = [UIImage imageWithData:data];
    
                    completion(nil);
@@ -275,7 +275,7 @@ ms.lasthandoff: 07/11/2017
                        // Send local notification
                        UILocalNotification* localNotification = [[UILocalNotification alloc] init];
    
-                       // "5" is arbitrary here to give you enough time to quit out of the app and receive push notifications
+                       // "5" is arbitrary here toogive you enough time tooquit out of hello app and receive push notifications
                        localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
                        localNotification.userInfo = self.userInfo;
                        localNotification.alertBody = [self.userInfo objectForKey:@"richMessage"];
@@ -295,17 +295,17 @@ ms.lasthandoff: 07/11/2017
                    }
                }];
            }
-           // Add "else if" here to handle more types of rich content such as url, sound files, etc.
+           // Add "else if" here toohandle more types of rich content such as url, sound files, etc.
        }
-3. <span data-ttu-id="148ca-156">Zpracování místního oznámení nad otevřením řadiče zobrazení bitové kopie v **AppDelegate.m** pomocí následujících metod:</span><span class="sxs-lookup"><span data-stu-id="148ca-156">Handle the local notification above by opening up the image view controller in **AppDelegate.m** with the following methods:</span></span>
+3. <span data-ttu-id="89cd7-155">Zpracování hello místního oznámení nad otevřením řadiče zobrazení hello bitové kopie v **AppDelegate.m** s hello následující metody:</span><span class="sxs-lookup"><span data-stu-id="89cd7-155">Handle hello local notification above by opening up hello image view controller in **AppDelegate.m** with hello following methods:</span></span>
    
-       // Helper: redirect users to image view controller
+       // Helper: redirect users tooimage view controller
        - (void)redirectToImageViewWithImage: (UIImage *)img {
            UINavigationController *navigationController = (UINavigationController*) self.window.rootViewController;
            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
                                                                     bundle: nil];
            imageViewController *imgViewController = [mainStoryboard instantiateViewControllerWithIdentifier: @"imageViewController"];
-           // Pass data/image to image view controller
+           // Pass data/image tooimage view controller
            imgViewController.imagePayload = img;
    
            // Redirect
@@ -333,7 +333,7 @@ ms.lasthandoff: 07/11/2017
            {
                [self redirectToImageViewWithImage:self.imagePayload];
            }
-           // Add "else if" here to handle more buttons
+           // Add "else if" here toohandle more buttons
        }
    
        // Handle notification setting actions in iOS8
@@ -345,11 +345,11 @@ ms.lasthandoff: 07/11/2017
            completionHandler();
        }
 
-## <a name="run-the-application"></a><span data-ttu-id="148ca-157">Spuštění aplikace</span><span class="sxs-lookup"><span data-stu-id="148ca-157">Run the Application</span></span>
-1. <span data-ttu-id="148ca-158">V XCode spusťte aplikaci na fyzickém zařízení iOS (nabízených oznámení nebude fungovat v simulátoru).</span><span class="sxs-lookup"><span data-stu-id="148ca-158">In XCode, run the app on a physical iOS device (push notifications will not work in the simulator).</span></span>
-2. <span data-ttu-id="148ca-159">V aplikaci pro iOS uživatelského rozhraní, zadejte uživatelské jméno a heslo na stejnou hodnotu pro ověřování a klikněte na tlačítko **protokolu v**.</span><span class="sxs-lookup"><span data-stu-id="148ca-159">In the iOS app UI, enter a username and password of the same value for authentication and click **Log In**.</span></span>
-3. <span data-ttu-id="148ca-160">Klikněte na tlačítko **odeslat nabízené** a měli byste vidět výstrahu v aplikaci.</span><span class="sxs-lookup"><span data-stu-id="148ca-160">Click **Send push** and you should see an in-app alert.</span></span> <span data-ttu-id="148ca-161">Pokud kliknete na **Další**, je přesměrován zpět na bitovou kopii jste zvolili pro zahrnutí do back-end aplikace.</span><span class="sxs-lookup"><span data-stu-id="148ca-161">If you click on **More**, you will be brought to the image you chose to include in your app backend.</span></span>
-4. <span data-ttu-id="148ca-162">Můžete také kliknout na **odeslat nabízené** a okamžitě stiskněte tlačítko Domů vašeho zařízení.</span><span class="sxs-lookup"><span data-stu-id="148ca-162">You can also click **Send push** and immediately press the home button of your device.</span></span> <span data-ttu-id="148ca-163">Ve chvíli obdržíte nabízená oznámení.</span><span class="sxs-lookup"><span data-stu-id="148ca-163">In a few moments, you will receive a push notification.</span></span> <span data-ttu-id="148ca-164">Pokud klepněte na něm nebo klikněte na tlačítko Další, můžete uvede do vaší aplikace a obsah bohaté image.</span><span class="sxs-lookup"><span data-stu-id="148ca-164">If you tap on it or click More, you will be brought to your app and the rich image content.</span></span>
+## <a name="run-hello-application"></a><span data-ttu-id="89cd7-156">Spustit hello aplikace</span><span class="sxs-lookup"><span data-stu-id="89cd7-156">Run hello Application</span></span>
+1. <span data-ttu-id="89cd7-157">V XCode spusťte aplikaci hello na fyzickém zařízení iOS (nabízených oznámení nebude fungovat v simulátoru hello).</span><span class="sxs-lookup"><span data-stu-id="89cd7-157">In XCode, run hello app on a physical iOS device (push notifications will not work in hello simulator).</span></span>
+2. <span data-ttu-id="89cd7-158">V aplikaci pro iOS hello uživatelského rozhraní, zadejte uživatelské jméno a heslo hello stejné hodnoty pro ověřování a klikněte na tlačítko **protokolu v**.</span><span class="sxs-lookup"><span data-stu-id="89cd7-158">In hello iOS app UI, enter a username and password of hello same value for authentication and click **Log In**.</span></span>
+3. <span data-ttu-id="89cd7-159">Klikněte na tlačítko **odeslat nabízené** a měli byste vidět výstrahu v aplikaci.</span><span class="sxs-lookup"><span data-stu-id="89cd7-159">Click **Send push** and you should see an in-app alert.</span></span> <span data-ttu-id="89cd7-160">Pokud kliknete na **Další**, bude možné přepnout do toohello image, které jste zvolili tooinclude v back-end aplikace.</span><span class="sxs-lookup"><span data-stu-id="89cd7-160">If you click on **More**, you will be brought toohello image you chose tooinclude in your app backend.</span></span>
+4. <span data-ttu-id="89cd7-161">Můžete také kliknout na **odeslat nabízené** a okamžitě stiskněte tlačítko Domů hello vašeho zařízení.</span><span class="sxs-lookup"><span data-stu-id="89cd7-161">You can also click **Send push** and immediately press hello home button of your device.</span></span> <span data-ttu-id="89cd7-162">Ve chvíli obdržíte nabízená oznámení.</span><span class="sxs-lookup"><span data-stu-id="89cd7-162">In a few moments, you will receive a push notification.</span></span> <span data-ttu-id="89cd7-163">Klepněte na něm nebo klikněte na tlačítko Další, bude začlenění obsahu tooyour aplikace a hello bohaté bitové kopie.</span><span class="sxs-lookup"><span data-stu-id="89cd7-163">If you tap on it or click More, you will be brought tooyour app and hello rich image content.</span></span>
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-1.png
 [IOS2]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-2.png

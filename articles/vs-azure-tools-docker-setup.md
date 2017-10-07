@@ -1,6 +1,6 @@
 ---
-title: Konfigurace hostitele Docker s VirtualBox | Microsoft Docs
-description: "Podrobné pokyny ke konfiguraci výchozí instance Docker pomocí Docker počítač a VirtualBox"
+title: aaaConfigure Docker hostitele s VirtualBox | Microsoft Docs
+description: "Podrobné pokyny tooconfigure výchozí Docker instance pomocí Docker počítač a VirtualBox"
 services: azure-container-service
 documentationcenter: na
 author: mlearned
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.openlocfilehash: e9465afb560a73d74f853c19094b3ee75b8c470c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1df2da4482444a803d05e413e019edcc57269062
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-a-docker-host-with-virtualbox"></a><span data-ttu-id="3ed0f-103">Konfigurace hostitele Docker s VirtualBox</span><span class="sxs-lookup"><span data-stu-id="3ed0f-103">Configure a Docker Host with VirtualBox</span></span>
-## <a name="overview"></a><span data-ttu-id="3ed0f-104">Přehled</span><span class="sxs-lookup"><span data-stu-id="3ed0f-104">Overview</span></span>
-<span data-ttu-id="3ed0f-105">Tento článek vás provede konfiguraci výchozí instance Docker pomocí Docker počítač a VirtualBox.</span><span class="sxs-lookup"><span data-stu-id="3ed0f-105">This article guides you through configuring a default Docker instance using Docker Machine and VirtualBox.</span></span> <span data-ttu-id="3ed0f-106">Pokud používáte [Docker pro systém Windows beta](http://beta.docker.com/), tato konfigurace není nutné.</span><span class="sxs-lookup"><span data-stu-id="3ed0f-106">If you’re using the [Docker for Windows beta](http://beta.docker.com/), this configuration is not necessary.</span></span>
+# <a name="configure-a-docker-host-with-virtualbox"></a><span data-ttu-id="bc377-103">Konfigurace hostitele Docker s VirtualBox</span><span class="sxs-lookup"><span data-stu-id="bc377-103">Configure a Docker Host with VirtualBox</span></span>
+## <a name="overview"></a><span data-ttu-id="bc377-104">Přehled</span><span class="sxs-lookup"><span data-stu-id="bc377-104">Overview</span></span>
+<span data-ttu-id="bc377-105">Tento článek vás provede konfiguraci výchozí instance Docker pomocí Docker počítač a VirtualBox.</span><span class="sxs-lookup"><span data-stu-id="bc377-105">This article guides you through configuring a default Docker instance using Docker Machine and VirtualBox.</span></span> <span data-ttu-id="bc377-106">Pokud používáte hello [Docker pro systém Windows beta](http://beta.docker.com/), tato konfigurace není nutné.</span><span class="sxs-lookup"><span data-stu-id="bc377-106">If you’re using hello [Docker for Windows beta](http://beta.docker.com/), this configuration is not necessary.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="3ed0f-107">Požadavky</span><span class="sxs-lookup"><span data-stu-id="3ed0f-107">Prerequisites</span></span>
-<span data-ttu-id="3ed0f-108">Je potřeba nainstalovat následující nástroje.</span><span class="sxs-lookup"><span data-stu-id="3ed0f-108">The following tools need to be installed.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="bc377-107">Požadavky</span><span class="sxs-lookup"><span data-stu-id="bc377-107">Prerequisites</span></span>
+<span data-ttu-id="bc377-108">Hello tyto nástroje musí toobe nainstalována.</span><span class="sxs-lookup"><span data-stu-id="bc377-108">hello following tools need toobe installed.</span></span>
 
-* [<span data-ttu-id="3ed0f-109">Sada nástrojů docker</span><span class="sxs-lookup"><span data-stu-id="3ed0f-109">Docker Toolbox</span></span>](https://www.docker.com/products/overview#/docker_toolbox)
+* [<span data-ttu-id="bc377-109">Sada nástrojů docker</span><span class="sxs-lookup"><span data-stu-id="bc377-109">Docker Toolbox</span></span>](https://www.docker.com/products/overview#/docker_toolbox)
 
-## <a name="configuring-the-docker-client-with-windows-powershell"></a><span data-ttu-id="3ed0f-110">Konfigurace klienta Docker v prostředí Windows PowerShell</span><span class="sxs-lookup"><span data-stu-id="3ed0f-110">Configuring the Docker client with Windows PowerShell</span></span>
-<span data-ttu-id="3ed0f-111">Konfigurace klienta Docker, jednoduše otevřete prostředí Windows PowerShell a proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="3ed0f-111">To configure a Docker client, simply open Windows PowerShell, and perform the following steps:</span></span>
+## <a name="configuring-hello-docker-client-with-windows-powershell"></a><span data-ttu-id="bc377-110">Konfigurace klienta Docker hello pomocí prostředí Windows PowerShell</span><span class="sxs-lookup"><span data-stu-id="bc377-110">Configuring hello Docker client with Windows PowerShell</span></span>
+<span data-ttu-id="bc377-111">tooconfigure Docker klienta, jednoduše otevřete prostředí Windows PowerShell a proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="bc377-111">tooconfigure a Docker client, simply open Windows PowerShell, and perform hello following steps:</span></span>
 
-1. <span data-ttu-id="3ed0f-112">Vytvořte výchozí instance docker hostitele.</span><span class="sxs-lookup"><span data-stu-id="3ed0f-112">Create a default docker host instance.</span></span>
+1. <span data-ttu-id="bc377-112">Vytvořte výchozí instance docker hostitele.</span><span class="sxs-lookup"><span data-stu-id="bc377-112">Create a default docker host instance.</span></span>
    
     ```PowerShell
     docker-machine create --driver virtualbox default
     ```
-2. <span data-ttu-id="3ed0f-113">Ověřte, zda že je výchozí instanci nakonfigurovaná a spuštěná.</span><span class="sxs-lookup"><span data-stu-id="3ed0f-113">Verify the default instance is configured and running.</span></span> <span data-ttu-id="3ed0f-114">(Byste měli vidět instanci s názvem výchozí systémem.</span><span class="sxs-lookup"><span data-stu-id="3ed0f-114">(You should see an instance named \`default' running.</span></span>
+2. <span data-ttu-id="bc377-113">Ověřte, zda text hello výchozí instance je nakonfigurovaná a spuštěná.</span><span class="sxs-lookup"><span data-stu-id="bc377-113">Verify hello default instance is configured and running.</span></span> <span data-ttu-id="bc377-114">(Byste měli vidět instanci s názvem výchozí systémem.</span><span class="sxs-lookup"><span data-stu-id="bc377-114">(You should see an instance named \`default' running.</span></span>
    
     ```PowerShell
     docker-machine ls 
     ```
    
     ![výstup ls počítač docker][0]
-3. <span data-ttu-id="3ed0f-116">Nastavit výchozí jako aktuální hostitel a nakonfigurujte své prostředí.</span><span class="sxs-lookup"><span data-stu-id="3ed0f-116">Set default as the current host, and configure your shell.</span></span>
+3. <span data-ttu-id="bc377-116">Nastavit výchozí jako aktuální hostitel hello a nakonfigurujte své prostředí.</span><span class="sxs-lookup"><span data-stu-id="bc377-116">Set default as hello current host, and configure your shell.</span></span>
    
     ```PowerShell
     docker-machine env default | Invoke-Expression
     ```
-4. <span data-ttu-id="3ed0f-117">Zobrazte aktivní Docker kontejnerů.</span><span class="sxs-lookup"><span data-stu-id="3ed0f-117">Display the active Docker containers.</span></span> <span data-ttu-id="3ed0f-118">V seznamu by měla být prázdná.</span><span class="sxs-lookup"><span data-stu-id="3ed0f-118">The list should be empty.</span></span>
+4. <span data-ttu-id="bc377-117">Zobrazte kontejnery služby active Docker hello.</span><span class="sxs-lookup"><span data-stu-id="bc377-117">Display hello active Docker containers.</span></span> <span data-ttu-id="bc377-118">seznam Hello by měla být prázdná.</span><span class="sxs-lookup"><span data-stu-id="bc377-118">hello list should be empty.</span></span>
    
     ```PowerShell
     docker ps
@@ -58,8 +58,8 @@ ms.lasthandoff: 07/11/2017
     ![výstup ps docker][1]
 
 > [!NOTE]
-> <span data-ttu-id="3ed0f-120">Pokaždé, když restartujete vývojovém počítači, budete muset restartovat místní docker hostiteli.</span><span class="sxs-lookup"><span data-stu-id="3ed0f-120">Each time you reboot your development machine, you’ll need to restart your local docker host.</span></span>
-> <span data-ttu-id="3ed0f-121">K tomuto účelu vydejte následující příkaz na příkazovém řádku: `docker-machine start default`.</span><span class="sxs-lookup"><span data-stu-id="3ed0f-121">To do this, issue the following command at a command prompt: `docker-machine start default`.</span></span>
+> <span data-ttu-id="bc377-120">Pokaždé, když restartujete vývojovém počítači, budete potřebovat toorestart vaše místní docker hostitele.</span><span class="sxs-lookup"><span data-stu-id="bc377-120">Each time you reboot your development machine, you’ll need toorestart your local docker host.</span></span>
+> <span data-ttu-id="bc377-121">toodo se problém hello následující příkaz na příkazovém řádku: `docker-machine start default`.</span><span class="sxs-lookup"><span data-stu-id="bc377-121">toodo this, issue hello following command at a command prompt: `docker-machine start default`.</span></span>
 > 
 > 
 

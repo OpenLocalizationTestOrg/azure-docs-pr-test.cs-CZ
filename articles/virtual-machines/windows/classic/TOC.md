@@ -7,8 +7,8 @@
 ## [Kontejnery](../../virtual-machines-windows-containers.md)
 
 # Začínáme
-## [Vytvoření virtuálního počítače pomocí portálu](tutorial.md)
-## [Přihlášení k virtuálnímu počítači](connect-logon.md)
+## [Vytvoření virtuálního počítače pomocí portálu hello](tutorial.md)
+## [Přihlaste se tooa virtuálních počítačů](connect-logon.md)
 ## [Instalace Azure PowerShellu](/powershell/azure/overview)
 ## [Instalace rozhraní příkazového řádku Azure](../../../cli-install-nodejs.md)
 
@@ -20,9 +20,9 @@
 ### [Použití disku D: jako datového disku](../../virtual-machines-windows-change-drive-letter.md)
 
 ## Síť
-### [Jak nastavit koncové body](setup-endpoints.md)
+### [Jak tooset až koncové body](setup-endpoints.md)
 ### [Propojení virtuálních počítačů pomocí virtuální sítě nebo cloudové služby](connect-vms.md)
-### [Připojení virtuálních sítí Classic k virtuálním sítím Resource Manageru](../../../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
+### [Připojit virtuální sítě Classic tooResource Správce virtuálních sítí](../../../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 ### [Vytvoření nástroje pro vyrovnávání zatížení](../../../load-balancer/load-balancer-get-started-internet-classic-portal.md)
 ### [Správa skupin zabezpečení sítě přes Azure PowerShell](../../../virtual-network/virtual-networks-create-nsg-classic-ps.md)
 
@@ -38,17 +38,17 @@
 ### [Webová aplikace Hello World v Djangu](python-django-web-app.md)
 
 ## Konfigurace
-### [Obnovení hesla služby Vzdálená plocha](../../virtual-machines-windows-reset-rdp.md)
+### [Resetovat heslo nebo hello služby Vzdálená plocha](../../virtual-machines-windows-reset-rdp.md)
 ### [Instalace a konfigurace nástroje Symantec Endpoint Protection](install-symantec.md)
 ### [Instalace a konfigurace nástroje Trend Micro Deep Security jako služby](install-trend.md)
 ### [Konfigurace skupiny dostupnosti](configure-availability.md)
-### [Změna velikosti virtuálního počítače s Windows vytvořeného v klasickém modelu nasazení](resize-vm.md)
+### [Změnit velikost virtuálního počítače Windows vytvořené v modelu nasazení classic hello](resize-vm.md)
 ### [Údržba](planned-maintenance-schedule.md)
 
 ## Spravovat
-### [Migrace z Classicu na Resource Manager](../../virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
+### [Migrace z klasického tooResource Manager](../../virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 ### [Správa virtuálních počítačů přes Azure PowerShell](manage-psh.md)
-### [O agentech a rozšířeních virtuálních počítačů](agents-and-extensions.md)
+### [O hello agenta virtuálního počítače a rozšíření](agents-and-extensions.md)
 ### [Správa rozšíření virtuálních počítačů](manage-extensions.md)
 ### [Rozšíření vlastních skriptů pro virtuální počítače](extensions-customscript.md)
 ### [Vkládání vlastních dat do virtuálního počítače Azure](inject-custom-data.md)
@@ -64,10 +64,10 @@
 #### [Automatické škálování prostředků](hpcpack-cluster-node-autogrowshrink.md)
 #### [Správa výpočetních uzlů](hpcpack-cluster-node-manage.md)
 #### [Vytvoření clusteru](hpcpack-cluster-powershell-script.md)
-#### [Nastavení clusteru pro spouštění aplikací MPI](hpcpack-rdma-cluster.md)
+#### [Nastavení aplikací MPI toorun clusteru](hpcpack-rdma-cluster.md)
 #### [Spuštění úloh aplikace Excel a SOA](../../virtual-machines-windows-excel-cluster-hpcpack.md)
-#### [Vytvoření hlavního uzlu s imagí Marketplace](../../virtual-machines-windows-hpcpack-cluster-headnode.md)
-#### [Odeslání úloh z místního prostředí do Azure](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md)
+#### [Vytvoření hlavního uzlu hello s image pořízenou prostřednictvím Marketplace](../../virtual-machines-windows-hpcpack-cluster-headnode.md)
+#### [Odeslání úlohy z místní tooAzure](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md)
 ### [MongoDB](install-mongodb.md)
 ### [MySQL](mysql-2008r2.md)
 ### [Oracle](../../workloads/oracle/oracle-considerations.md)
@@ -78,11 +78,11 @@
 ## Řešení potíží
 ### [Připojení Vzdálené plochy](../../virtual-machines-windows-troubleshoot-rdp-connection.md)
 ####[Podrobné kroky pro řešení problémů s připojením ke vzdálené ploše](../../virtual-machines-windows-detailed-troubleshoot-rdp.md)
-### [Přístup k aplikaci](../../virtual-machines-windows-troubleshoot-app-connection.md)
+### [Přístup k tooan aplikace](../../virtual-machines-windows-troubleshoot-app-connection.md)
 ### [Potíže s vytvářením nového virtuálního počítače v modelu nasazení Classic](troubleshoot-deployment-new-vm.md)
 ### [Potíže s restartováním nebo změnou velikosti stávajícího virtuálního počítače v modelu nasazení Classic](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
 ### [Resetování hesla protokolu RDP](reset-rdp.md)
-### [Připojení virtuálního pevného disku pro řešení potíží s virtuálním počítačem](troubleshoot-recovery-disks-portal.md)
+### [Připojit virtuální pevný disk tootroubleshooting virtuálních počítačů](troubleshoot-recovery-disks-portal.md)
 
 # Referenční informace
 ## [PowerShell](/powershell/azure/overview)

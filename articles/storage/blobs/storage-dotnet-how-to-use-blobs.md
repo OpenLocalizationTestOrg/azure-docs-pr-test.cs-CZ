@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s Azure Blob Storage (úložiště objektů) pomocí rozhraní .NET | Dokumentace Microsoftu"
-description: "Ukládejte nestrukturovaná data v cloudu pomocí Azure Blob Storage (úložiště objektů)."
+title: "aaaGet začít s Azure Blob storage (úložiště objektů) pomocí rozhraní .NET | Microsoft Docs"
+description: "Ukládání nestrukturovaných dat v cloudu hello s Azure Blob storage (úložiště objektů)."
 services: storage
 documentationcenter: .net
 author: mmacy
@@ -14,34 +14,34 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: marsma
-ms.openlocfilehash: 70c7d6a5e1b9aa9a13481893e0baa56538be097c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3df0cf14b69d85cdc2f62cc3c8b901be102fa026
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-azure-blob-storage-using-net"></a><span data-ttu-id="ba1dd-103">Začínáme s úložištěm Azure Blob pomocí rozhraní .NET</span><span class="sxs-lookup"><span data-stu-id="ba1dd-103">Get started with Azure Blob storage using .NET</span></span>
+# <a name="get-started-with-azure-blob-storage-using-net"></a><span data-ttu-id="c4ee0-103">Začínáme s úložištěm Azure Blob pomocí rozhraní .NET</span><span class="sxs-lookup"><span data-stu-id="c4ee0-103">Get started with Azure Blob storage using .NET</span></span>
 
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
 
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
-<span data-ttu-id="ba1dd-104">Úložiště objektů blob v Azure je služba, která ukládá nestrukturovaná data v cloudu jako objekty nebo objekty blob.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-104">Azure Blob storage is a service that stores unstructured data in the cloud as objects/blobs.</span></span> <span data-ttu-id="ba1dd-105">Do Blob storage se dá ukládat jakýkoli druh textu nebo binárních dat, jako je dokument, soubor médií nebo instalátor aplikace.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-105">Blob storage can store any type of text or binary data, such as a document, media file, or application installer.</span></span> <span data-ttu-id="ba1dd-106">Blob storage se také nazývá úložiště objektů.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-106">Blob storage is also referred to as object storage.</span></span>
+<span data-ttu-id="c4ee0-104">Azure Blob storage je služba, která ukládá Nestrukturovaná data v cloudu hello jako objekty nebo objekty BLOB.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-104">Azure Blob storage is a service that stores unstructured data in hello cloud as objects/blobs.</span></span> <span data-ttu-id="c4ee0-105">Do Blob storage se dá ukládat jakýkoli druh textu nebo binárních dat, jako je dokument, soubor médií nebo instalátor aplikace.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-105">Blob storage can store any type of text or binary data, such as a document, media file, or application installer.</span></span> <span data-ttu-id="c4ee0-106">Úložiště objektů blob je také odkazované tooas objektu úložiště.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-106">Blob storage is also referred tooas object storage.</span></span>
 
-### <a name="about-this-tutorial"></a><span data-ttu-id="ba1dd-107">O tomto kurzu</span><span class="sxs-lookup"><span data-stu-id="ba1dd-107">About this tutorial</span></span>
-<span data-ttu-id="ba1dd-108">Tenhle kurz ukazuje, jak napsat kód .NET pro některé běžné scénáře s využitím Úložiště objektů blob v Azure.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-108">This tutorial shows how to write .NET code for some common scenarios using Azure Blob storage.</span></span> <span data-ttu-id="ba1dd-109">Mezi zahrnuté scénáře patří odesílání, výpis, stahování a odstraňování objektů blob.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-109">Scenarios covered include uploading, listing, downloading, and deleting blobs.</span></span>
+### <a name="about-this-tutorial"></a><span data-ttu-id="c4ee0-107">O tomto kurzu</span><span class="sxs-lookup"><span data-stu-id="c4ee0-107">About this tutorial</span></span>
+<span data-ttu-id="c4ee0-108">Tento kurz ukazuje, jak kód toowrite .NET pro některé běžné scénáře s využitím úložiště objektů Blob v Azure.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-108">This tutorial shows how toowrite .NET code for some common scenarios using Azure Blob storage.</span></span> <span data-ttu-id="c4ee0-109">Mezi zahrnuté scénáře patří odesílání, výpis, stahování a odstraňování objektů blob.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-109">Scenarios covered include uploading, listing, downloading, and deleting blobs.</span></span>
 
-<span data-ttu-id="ba1dd-110">**Požadavky:**</span><span class="sxs-lookup"><span data-stu-id="ba1dd-110">**Prerequisites:**</span></span>
+<span data-ttu-id="c4ee0-110">**Požadavky:**</span><span class="sxs-lookup"><span data-stu-id="c4ee0-110">**Prerequisites:**</span></span>
 
-* [<span data-ttu-id="ba1dd-111">Microsoft Visual Studio</span><span class="sxs-lookup"><span data-stu-id="ba1dd-111">Microsoft Visual Studio</span></span>](https://www.visualstudio.com/)
-* [<span data-ttu-id="ba1dd-112">Klientská knihovna Azure Storage pro .NET</span><span class="sxs-lookup"><span data-stu-id="ba1dd-112">Azure Storage Client Library for .NET</span></span>](https://www.nuget.org/packages/WindowsAzure.Storage/)
-* [<span data-ttu-id="ba1dd-113">Azure Configuration Manager for .NET</span><span class="sxs-lookup"><span data-stu-id="ba1dd-113">Azure Configuration Manager for .NET</span></span>](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
-* <span data-ttu-id="ba1dd-114">[Účet úložiště Azure](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-storage-account)</span><span class="sxs-lookup"><span data-stu-id="ba1dd-114">An [Azure storage account](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-storage-account)</span></span>
+* [<span data-ttu-id="c4ee0-111">Microsoft Visual Studio</span><span class="sxs-lookup"><span data-stu-id="c4ee0-111">Microsoft Visual Studio</span></span>](https://www.visualstudio.com/)
+* [<span data-ttu-id="c4ee0-112">Klientská knihovna Azure Storage pro .NET</span><span class="sxs-lookup"><span data-stu-id="c4ee0-112">Azure Storage Client Library for .NET</span></span>](https://www.nuget.org/packages/WindowsAzure.Storage/)
+* [<span data-ttu-id="c4ee0-113">Azure Configuration Manager for .NET</span><span class="sxs-lookup"><span data-stu-id="c4ee0-113">Azure Configuration Manager for .NET</span></span>](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
+* <span data-ttu-id="c4ee0-114">[Účet úložiště Azure](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-storage-account)</span><span class="sxs-lookup"><span data-stu-id="c4ee0-114">An [Azure storage account](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-storage-account)</span></span>
 
 [!INCLUDE [storage-dotnet-client-library-version-include](../../../includes/storage-dotnet-client-library-version-include.md)]
 
-### <a name="more-samples"></a><span data-ttu-id="ba1dd-115">Další ukázky</span><span class="sxs-lookup"><span data-stu-id="ba1dd-115">More samples</span></span>
-<span data-ttu-id="ba1dd-116">Další příklady použití Blob Storage najdete v článku [Začínáme s Azure Blob Storage v rozhraní .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/).</span><span class="sxs-lookup"><span data-stu-id="ba1dd-116">For additional examples using Blob storage, see [Getting Started with Azure Blob Storage in .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/).</span></span> <span data-ttu-id="ba1dd-117">Můžete si stáhnout a spustit ukázkovou aplikaci nebo si prohlédnout kód na GitHubu.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-117">You can download the sample application and run it, or browse the code on GitHub.</span></span>
+### <a name="more-samples"></a><span data-ttu-id="c4ee0-115">Další ukázky</span><span class="sxs-lookup"><span data-stu-id="c4ee0-115">More samples</span></span>
+<span data-ttu-id="c4ee0-116">Další příklady použití Blob Storage najdete v článku [Začínáme s Azure Blob Storage v rozhraní .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/).</span><span class="sxs-lookup"><span data-stu-id="c4ee0-116">For additional examples using Blob storage, see [Getting Started with Azure Blob Storage in .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/).</span></span> <span data-ttu-id="c4ee0-117">Stáhněte hello ukázkovou aplikaci a potom ho spusťte nebo procházet kód hello na Githubu.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-117">You can download hello sample application and run it, or browse hello code on GitHub.</span></span>
 
 [!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 
@@ -49,8 +49,8 @@ ms.lasthandoff: 08/29/2017
 
 [!INCLUDE [storage-development-environment-include](../../../includes/storage-development-environment-include.md)]
 
-### <a name="add-using-directives"></a><span data-ttu-id="ba1dd-118">Přidání direktiv using</span><span class="sxs-lookup"><span data-stu-id="ba1dd-118">Add using directives</span></span>
-<span data-ttu-id="ba1dd-119">Na začátek souboru `Program.cs` přidejte následující direktivy **using**:</span><span class="sxs-lookup"><span data-stu-id="ba1dd-119">Add the following **using** directives to the top of the `Program.cs` file:</span></span>
+### <a name="add-using-directives"></a><span data-ttu-id="c4ee0-118">Přidání direktiv using</span><span class="sxs-lookup"><span data-stu-id="c4ee0-118">Add using directives</span></span>
+<span data-ttu-id="c4ee0-119">Přidejte následující hello **pomocí** direktivy toohello začátek hello `Program.cs` souboru:</span><span class="sxs-lookup"><span data-stu-id="c4ee0-119">Add hello following **using** directives toohello top of hello `Program.cs` file:</span></span>
 
 ```csharp
 using Microsoft.WindowsAzure; // Namespace for CloudConfigurationManager
@@ -58,89 +58,89 @@ using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
 using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage types
 ```
 
-### <a name="parse-the-connection-string"></a><span data-ttu-id="ba1dd-120">Analýza připojovacího řetězce</span><span class="sxs-lookup"><span data-stu-id="ba1dd-120">Parse the connection string</span></span>
+### <a name="parse-hello-connection-string"></a><span data-ttu-id="c4ee0-120">Analyzovat hello připojovací řetězec</span><span class="sxs-lookup"><span data-stu-id="c4ee0-120">Parse hello connection string</span></span>
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
-### <a name="create-the-blob-service-client"></a><span data-ttu-id="ba1dd-121">Vytvoření klienta služby objektu blob</span><span class="sxs-lookup"><span data-stu-id="ba1dd-121">Create the Blob service client</span></span>
-<span data-ttu-id="ba1dd-122">Třída **CloudBlobClient** umožňuje načíst kontejnery a objekty blob, které jsou uloženy v Blob storage.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-122">The **CloudBlobClient** class enables you to retrieve containers and blobs stored in Blob storage.</span></span> <span data-ttu-id="ba1dd-123">Tady je jeden ze způsobů, jak vytvořit klienta služby:</span><span class="sxs-lookup"><span data-stu-id="ba1dd-123">Here's one way to create the service client:</span></span>
+### <a name="create-hello-blob-service-client"></a><span data-ttu-id="c4ee0-121">Vytvoření klienta služby objektů Blob hello</span><span class="sxs-lookup"><span data-stu-id="c4ee0-121">Create hello Blob service client</span></span>
+<span data-ttu-id="c4ee0-122">Hello **CloudBlobClient** třída umožňuje tooretrieve kontejnery a objekty BLOB uložené v úložišti objektů Blob.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-122">hello **CloudBlobClient** class enables you tooretrieve containers and blobs stored in Blob storage.</span></span> <span data-ttu-id="c4ee0-123">Tady je jedním ze způsobů toocreate hello služby klienta:</span><span class="sxs-lookup"><span data-stu-id="c4ee0-123">Here's one way toocreate hello service client:</span></span>
 
 ```csharp
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 ```
-<span data-ttu-id="ba1dd-124">Teď můžete napsat kód, který bude číst data z Blob storage a bude je tam také zapisovat.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-124">Now you are ready to write code that reads data from and writes data to Blob storage.</span></span>
+<span data-ttu-id="c4ee0-124">Teď je připraven toowrite kód, který načítá a zapisuje data tooBlob úložiště.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-124">Now you are ready toowrite code that reads data from and writes data tooBlob storage.</span></span>
 
-## <a name="create-a-container"></a><span data-ttu-id="ba1dd-125">Vytvoření kontejneru</span><span class="sxs-lookup"><span data-stu-id="ba1dd-125">Create a container</span></span>
+## <a name="create-a-container"></a><span data-ttu-id="c4ee0-125">Vytvoření kontejneru</span><span class="sxs-lookup"><span data-stu-id="c4ee0-125">Create a container</span></span>
 [!INCLUDE [storage-container-naming-rules-include](../../../includes/storage-container-naming-rules-include.md)]
 
-<span data-ttu-id="ba1dd-126">Tento příklad ukazuje, jak vytvořit kontejner, pokud ještě neexistuje:</span><span class="sxs-lookup"><span data-stu-id="ba1dd-126">This example shows how to create a container if it does not already exist:</span></span>
+<span data-ttu-id="c4ee0-126">Tento příklad ukazuje, jak toocreate kontejner, pokud ještě neexistuje:</span><span class="sxs-lookup"><span data-stu-id="c4ee0-126">This example shows how toocreate a container if it does not already exist:</span></span>
 
 ```csharp
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the blob client.
+// Create hello blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Retrieve a reference to a container.
+// Retrieve a reference tooa container.
 CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-// Create the container if it doesn't already exist.
+// Create hello container if it doesn't already exist.
 container.CreateIfNotExists();
 ```
 
-<span data-ttu-id="ba1dd-127">Ve výchozím nastavení je nový kontejner privátní, což znamená, že ke stažení objektů blob z tohoto kontejneru musíte zadat přístupový klíč úložiště.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-127">By default, the new container is private, meaning that you must specify your storage access key to download blobs from this container.</span></span> <span data-ttu-id="ba1dd-128">Když chcete, aby soubory v kontejneru byly k dispozici všem uživatelům, můžete jej pomocí následujícího kódu nastavit jako veřejný:</span><span class="sxs-lookup"><span data-stu-id="ba1dd-128">If you want to make the files within the container available to everyone, you can set the container to be public using the following code:</span></span>
+<span data-ttu-id="c4ee0-127">Ve výchozím nastavení je hello nový kontejner privátní, což znamená, že úložiště objektů BLOB přístup klíče toodownload z tohoto kontejneru musíte zadat.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-127">By default, hello new container is private, meaning that you must specify your storage access key toodownload blobs from this container.</span></span> <span data-ttu-id="c4ee0-128">Pokud chcete soubory hello toomake v rámci dostupné tooeveryone hello kontejneru, můžete nastavit kontejner toobe hello veřejné pomocí hello následující kód:</span><span class="sxs-lookup"><span data-stu-id="c4ee0-128">If you want toomake hello files within hello container available tooeveryone, you can set hello container toobe public using hello following code:</span></span>
 
 ```csharp
 container.SetPermissions(
     new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
 ```
 
-<span data-ttu-id="ba1dd-129">Kdokoli na internetu může vidět objekty blob ve veřejném kontejneru.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-129">Anyone on the Internet can see blobs in a public container.</span></span> <span data-ttu-id="ba1dd-130">Upravit nebo odstranit je ale můžete jenom v případě, že máte příslušný přístupový klíč k účtu nebo sdílený přístupový podpis.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-130">However, you can modify or delete them only if you have the appropriate account access key or a shared access signature.</span></span>
+<span data-ttu-id="c4ee0-129">Kdokoli na hello Internetu může vidět objekty BLOB ve veřejném kontejneru.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-129">Anyone on hello Internet can see blobs in a public container.</span></span> <span data-ttu-id="c4ee0-130">Můžete ale upravit nebo odstranit pouze v případě, že máte přístupový klíč hello odpovídající účtu nebo sdílený přístupový podpis.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-130">However, you can modify or delete them only if you have hello appropriate account access key or a shared access signature.</span></span>
 
-## <a name="upload-a-blob-into-a-container"></a><span data-ttu-id="ba1dd-131">Nahrání objektu blob do kontejneru</span><span class="sxs-lookup"><span data-stu-id="ba1dd-131">Upload a blob into a container</span></span>
-<span data-ttu-id="ba1dd-132">Úložiště objektů blob v Azure podporuje objekty blob bloku a objekty blob stránky.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-132">Azure Blob Storage supports block blobs and page blobs.</span></span>  <span data-ttu-id="ba1dd-133">Ve většině případů se jako vhodný typ k použití doporučuje objekt blob bloku.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-133">In most cases, block blob is the recommended type to use.</span></span>
+## <a name="upload-a-blob-into-a-container"></a><span data-ttu-id="c4ee0-131">Nahrání objektu blob do kontejneru</span><span class="sxs-lookup"><span data-stu-id="c4ee0-131">Upload a blob into a container</span></span>
+<span data-ttu-id="c4ee0-132">Úložiště objektů blob v Azure podporuje objekty blob bloku a objekty blob stránky.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-132">Azure Blob Storage supports block blobs and page blobs.</span></span>  <span data-ttu-id="c4ee0-133">Ve většině případů je objekt blob bloku hello doporučená toouse typu.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-133">In most cases, block blob is hello recommended type toouse.</span></span>
 
-<span data-ttu-id="ba1dd-134">Když chcete nahrát soubor do objektu blob bloku, získejte odkaz na kontejner a použijte ho k získání odkazu objektu blob bloku.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-134">To upload a file to a block blob, get a container reference and use it to get a block blob reference.</span></span> <span data-ttu-id="ba1dd-135">Jakmile získáte odkaz na objekt blob, můžete k němu nahrát jakýkoli proud dat voláním metody **UploadFromStream**.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-135">Once you have a blob reference, you can upload any stream of data to it by calling the **UploadFromStream** method.</span></span> <span data-ttu-id="ba1dd-136">Tahle operace vytvoří objekt blob, pokud ještě dříve neexistoval, nebo ho přepíše, pokud už existoval.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-136">This operation creates the blob if it didn't previously exist, or overwrites it if it does exist.</span></span>
+<span data-ttu-id="c4ee0-134">tooupload objekt blob bloku souboru tooa získejte odkaz na kontejner a použít ho tooget odkaz na objekt blob bloku.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-134">tooupload a file tooa block blob, get a container reference and use it tooget a block blob reference.</span></span> <span data-ttu-id="c4ee0-135">Až budete mít odkaz na objekt blob, můžete nahrát jakýkoli proud dat tooit pomocí volání hello **UploadFromStream** metoda.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-135">Once you have a blob reference, you can upload any stream of data tooit by calling hello **UploadFromStream** method.</span></span> <span data-ttu-id="c4ee0-136">Tato operace vytvoří hello blob, pokud nebyla dříve neexistuje, nebo ho přepíše, pokud neexistuje.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-136">This operation creates hello blob if it didn't previously exist, or overwrites it if it does exist.</span></span>
 
-<span data-ttu-id="ba1dd-137">Následující příklad ukazuje, jak nahrát objekt blob do kontejneru, zároveň předpokládá, že kontejner byl již vytvořen.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-137">The following example shows how to upload a blob into a container and assumes that the container was already created.</span></span>
+<span data-ttu-id="c4ee0-137">Následující příklad ukazuje, jak Hello tooupload objekt blob do kontejneru a předpokládá, že hello kontejner byl již vytvořen.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-137">hello following example shows how tooupload a blob into a container and assumes that hello container was already created.</span></span>
 
 ```csharp
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the blob client.
+// Create hello blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Retrieve reference to a previously created container.
+// Retrieve reference tooa previously created container.
 CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-// Retrieve reference to a blob named "myblob".
+// Retrieve reference tooa blob named "myblob".
 CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
 
-// Create or overwrite the "myblob" blob with contents from a local file.
+// Create or overwrite hello "myblob" blob with contents from a local file.
 using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
 {
     blockBlob.UploadFromStream(fileStream);
 }
 ```
 
-## <a name="list-the-blobs-in-a-container"></a><span data-ttu-id="ba1dd-138">Zobrazí seznam objektů blob v kontejneru</span><span class="sxs-lookup"><span data-stu-id="ba1dd-138">List the blobs in a container</span></span>
-<span data-ttu-id="ba1dd-139">Pokud chcete mít seznam objektů blob v kontejneru, nejdřív získejte odkaz na kontejner.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-139">To list the blobs in a container, first get a container reference.</span></span> <span data-ttu-id="ba1dd-140">Pak můžete použít metodu kontejneru **ListBlobs** a načíst objekty blob a/nebo obsažené adresáře.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-140">You can then use the container's **ListBlobs** method to retrieve the blobs and/or directories within it.</span></span> <span data-ttu-id="ba1dd-141">Pro přístup k bohaté sadě vlastností a metod vrácené položky **IListBlobItem** musíte vysílat na objekt **CloudBlockBlob**, **CloudPageBlob** nebo **CloudBlobDirectory**.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-141">To access the  rich set of properties and methods for a returned **IListBlobItem**, you must cast it to a **CloudBlockBlob**, **CloudPageBlob**, or **CloudBlobDirectory** object.</span></span> <span data-ttu-id="ba1dd-142">Pokud je typ neznámý, můžete použít kontrolu typu a zjistit, na který typ vysílat.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-142">If the type is unknown, you can use a type check to determine which to cast it to.</span></span> <span data-ttu-id="ba1dd-143">Následující kód ukazuje, jak načíst a na výstupu zobrazit identifikátor URI pro každou položku v kontejneru _photos_:</span><span class="sxs-lookup"><span data-stu-id="ba1dd-143">The following code demonstrates how to retrieve and output the URI of each item in the _photos_ container:</span></span>
+## <a name="list-hello-blobs-in-a-container"></a><span data-ttu-id="c4ee0-138">Seznam hello objekty BLOB v kontejneru</span><span class="sxs-lookup"><span data-stu-id="c4ee0-138">List hello blobs in a container</span></span>
+<span data-ttu-id="c4ee0-139">toolist hello objekty BLOB v kontejneru, nejdřív získejte odkaz na kontejner.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-139">toolist hello blobs in a container, first get a container reference.</span></span> <span data-ttu-id="c4ee0-140">Pak můžete použít hello kontejneru **ListBlobs** metoda tooretrieve hello objekty BLOB a/nebo obsažené adresáře.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-140">You can then use hello container's **ListBlobs** method tooretrieve hello blobs and/or directories within it.</span></span> <span data-ttu-id="c4ee0-141">tooaccess hello bohatou sadu vlastností a metod vrácené **IListBlobItem**, musíte vysílat tooa **CloudBlockBlob**, **CloudPageBlob**, nebo  **CloudBlobDirectory** objektu.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-141">tooaccess hello  rich set of properties and methods for a returned **IListBlobItem**, you must cast it tooa **CloudBlockBlob**, **CloudPageBlob**, or **CloudBlobDirectory** object.</span></span> <span data-ttu-id="c4ee0-142">Pokud typ hello neznámý, můžete použít typ kontroly toodetermine které toocast jeho.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-142">If hello type is unknown, you can use a type check toodetermine which toocast it to.</span></span> <span data-ttu-id="c4ee0-143">Hello následující kód ukazuje, jak tooretrieve a výstup hello URI pro každou položku v hello _fotografie_ kontejneru:</span><span class="sxs-lookup"><span data-stu-id="c4ee0-143">hello following code demonstrates how tooretrieve and output hello URI of each item in hello _photos_ container:</span></span>
 
 ```csharp
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the blob client.
+// Create hello blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Retrieve reference to a previously created container.
+// Retrieve reference tooa previously created container.
 CloudBlobContainer container = blobClient.GetContainerReference("photos");
 
-// Loop over items within the container and output the length and URI.
+// Loop over items within hello container and output hello length and URI.
 foreach (IListBlobItem item in container.ListBlobs(null, false))
 {
     if (item.GetType() == typeof(CloudBlockBlob))
@@ -166,9 +166,9 @@ foreach (IListBlobItem item in container.ListBlobs(null, false))
 }
 ```
 
-<span data-ttu-id="ba1dd-144">Zahrnutím informací o cestě do názvu objektu blob můžete vytvořit virtuální adresářovou strukturu, kterou můžete organizovat a procházet podle potřeby jako u tradičních systémů souborů.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-144">By including path information in blob names, you can create a virtual directory structure you can organize and traverse as you would a traditional file system.</span></span> <span data-ttu-id="ba1dd-145">Adresářová struktura je jenom virtuální – jediné prostředky, které jsou dostupné v Blob Storage, jsou kontejnery a objekty blob.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-145">The directory structure is virtual only--the only resources available in Blob storage are containers and blobs.</span></span> <span data-ttu-id="ba1dd-146">Klientská knihovna pro úložiště nabízí objekt **CloudBlobDirectory**, který má odkazovat na virtuální adresář a zjednodušit tak práci s objekty blob, které jsou tímto způsobem uspořádány.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-146">However, the storage client library offers a **CloudBlobDirectory** object to refer to a virtual directory and simplify the process of working with blobs that are organized in this way.</span></span>
+<span data-ttu-id="c4ee0-144">Zahrnutím informací o cestě do názvu objektu blob můžete vytvořit virtuální adresářovou strukturu, kterou můžete organizovat a procházet podle potřeby jako u tradičních systémů souborů.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-144">By including path information in blob names, you can create a virtual directory structure you can organize and traverse as you would a traditional file system.</span></span> <span data-ttu-id="c4ee0-145">struktura adresářů Hello je virtuální pouze – hello jenom prostředky, které jsou k dispozici v úložišti objektů Blob jsou kontejnery a objekty BLOB.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-145">hello directory structure is virtual only--hello only resources available in Blob storage are containers and blobs.</span></span> <span data-ttu-id="c4ee0-146">Však nabízí hello Klientská knihovna pro úložiště **CloudBlobDirectory** objektu toorefer tooa virtuální adresář a zjednodušit proces hello práce s objekty BLOB, které jsou tímto způsobem uspořádány.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-146">However, hello storage client library offers a **CloudBlobDirectory** object toorefer tooa virtual directory and simplify hello process of working with blobs that are organized in this way.</span></span>
 
-<span data-ttu-id="ba1dd-147">Můžete zvolit například následující sadu objektů blob bloku v kontejneru s názvem *photos*:</span><span class="sxs-lookup"><span data-stu-id="ba1dd-147">For example, consider the following set of block blobs in a container named *photos*:</span></span>
+<span data-ttu-id="c4ee0-147">Zvažte například následující sadu objektů BLOB bloku v kontejneru nazvaném hello *fotografie*:</span><span class="sxs-lookup"><span data-stu-id="c4ee0-147">For example, consider hello following set of block blobs in a container named *photos*:</span></span>
 
 ```
 photo1.jpg
@@ -181,7 +181,7 @@ photo1.jpg
 2011/photo7.jpg
 ```
 
-<span data-ttu-id="ba1dd-148">Při volání **ListBlobs** na kontejneru *photos* (viz předchozí fragment kódu) se vrátí hierarchický výpis.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-148">When you call **ListBlobs** on the *photos* container (as in the preceding code snippet), a hierarchical listing is returned.</span></span> <span data-ttu-id="ba1dd-149">Obsahuje oba objekty **CloudBlobDirectory** a **CloudBlockBlob**, které představují adresáře a objekty blob v kontejneru, v uvedeném pořadí.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-149">It contains both **CloudBlobDirectory** and **CloudBlockBlob** objects, representing the directories and blobs in the container, respectively.</span></span> <span data-ttu-id="ba1dd-150">Výsledný výstup vypadá takto:</span><span class="sxs-lookup"><span data-stu-id="ba1dd-150">The resulting output looks like:</span></span>
+<span data-ttu-id="c4ee0-148">Při volání **ListBlobs** na hello *fotografie* kontejneru (jako hello předchozím fragmentu kódu), se vrátí hierarchický výpis.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-148">When you call **ListBlobs** on hello *photos* container (as in hello preceding code snippet), a hierarchical listing is returned.</span></span> <span data-ttu-id="c4ee0-149">Obsahuje oba **CloudBlobDirectory** a **CloudBlockBlob** objekty, která reprezentuje hello adresáře a objekty BLOB v kontejneru hello.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-149">It contains both **CloudBlobDirectory** and **CloudBlockBlob** objects, representing hello directories and blobs in hello container, respectively.</span></span> <span data-ttu-id="c4ee0-150">Hello výsledný výstup vypadá takto:</span><span class="sxs-lookup"><span data-stu-id="c4ee0-150">hello resulting output looks like:</span></span>
 
 ```
 Directory: https://<accountname>.blob.core.windows.net/photos/2010/
@@ -189,17 +189,17 @@ Directory: https://<accountname>.blob.core.windows.net/photos/2011/
 Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 ```
 
-<span data-ttu-id="ba1dd-151">Volitelně můžete nastavit parametr **UseFlatBlobListing** metody **ListBlobs** na hodnotu **true**.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-151">Optionally, you can set the **UseFlatBlobListing** parameter of the **ListBlobs** method to **true**.</span></span> <span data-ttu-id="ba1dd-152">V takovém případě bude každý objekt blob v kontejneru vrácen jako objekt **CloudBlockBlob**.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-152">In this case, every blob in the container is returned as a **CloudBlockBlob** object.</span></span> <span data-ttu-id="ba1dd-153">Volání **ListBlobs** s vráceným plochým výpisem vypadá takhle:</span><span class="sxs-lookup"><span data-stu-id="ba1dd-153">The call to **ListBlobs** to return a flat listing looks like this:</span></span>
+<span data-ttu-id="c4ee0-151">Volitelně můžete nastavit hello **UseFlatBlobListing** parametr hello **ListBlobs** metodu **true**.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-151">Optionally, you can set hello **UseFlatBlobListing** parameter of hello **ListBlobs** method to **true**.</span></span> <span data-ttu-id="c4ee0-152">V takovém případě se každý objekt blob v kontejneru hello vrátí jako **CloudBlockBlob** objektu.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-152">In this case, every blob in hello container is returned as a **CloudBlockBlob** object.</span></span> <span data-ttu-id="c4ee0-153">Hello volání příliš**ListBlobs** tooreturn plochým výpisem vypadá takto:</span><span class="sxs-lookup"><span data-stu-id="c4ee0-153">hello call too**ListBlobs** tooreturn a flat listing looks like this:</span></span>
 
 ```csharp
-// Loop over items within the container and output the length and URI.
+// Loop over items within hello container and output hello length and URI.
 foreach (IListBlobItem item in container.ListBlobs(null, true))
 {
     ...
 }
 ```
 
-<span data-ttu-id="ba1dd-154">a výsledky vypadají takhle:</span><span class="sxs-lookup"><span data-stu-id="ba1dd-154">and the results look like this:</span></span>
+<span data-ttu-id="c4ee0-154">a výsledky hello vypadat takto:</span><span class="sxs-lookup"><span data-stu-id="c4ee0-154">and hello results look like this:</span></span>
 
 ```
 Block blob of length 4: https://<accountname>.blob.core.windows.net/photos/2010/architecture/description.txt
@@ -212,44 +212,44 @@ Block blob of length 399751: https://<accountname>.blob.core.windows.net/photos/
 Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 ```
 
-## <a name="download-blobs"></a><span data-ttu-id="ba1dd-155">Stáhnout objekty blob</span><span class="sxs-lookup"><span data-stu-id="ba1dd-155">Download blobs</span></span>
-<span data-ttu-id="ba1dd-156">Když chcete stáhnout objekty blob, nejdřív načtěte odkaz objektu blob a potom spusťte volání metody **DownloadToStream**.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-156">To download blobs, first retrieve a blob reference and then call the **DownloadToStream** method.</span></span> <span data-ttu-id="ba1dd-157">Následující příklad používá metodu **DownloadToStream** k přenosu obsahu objektu blob na objekt proudu, který potom můžete zachovat trvale v místním souboru.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-157">The following example uses the **DownloadToStream** method to transfer the blob contents to a stream object that you can then persist to a local file.</span></span>
+## <a name="download-blobs"></a><span data-ttu-id="c4ee0-155">Stáhnout objekty blob</span><span class="sxs-lookup"><span data-stu-id="c4ee0-155">Download blobs</span></span>
+<span data-ttu-id="c4ee0-156">toodownload objekty BLOB, nejdřív načtěte odkaz na objekt blob a pak zavolají hello **DownloadToStream** metoda.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-156">toodownload blobs, first retrieve a blob reference and then call hello **DownloadToStream** method.</span></span> <span data-ttu-id="c4ee0-157">Hello následující příklad používá hello **DownloadToStream** metoda tootransfer hello blob obsah tooa objektu stream, potom můžete zachovat tooa místního souboru.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-157">hello following example uses hello **DownloadToStream** method tootransfer hello blob contents tooa stream object that you can then persist tooa local file.</span></span>
 
 ```csharp
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the blob client.
+// Create hello blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Retrieve reference to a previously created container.
+// Retrieve reference tooa previously created container.
 CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-// Retrieve reference to a blob named "photo1.jpg".
+// Retrieve reference tooa blob named "photo1.jpg".
 CloudBlockBlob blockBlob = container.GetBlockBlobReference("photo1.jpg");
 
-// Save blob contents to a file.
+// Save blob contents tooa file.
 using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
 {
     blockBlob.DownloadToStream(fileStream);
 }
 ```
 
-<span data-ttu-id="ba1dd-158">Můžete také použít metodu **DownloadToStream** a stáhnout obsah objektu blob jako textový řetězec.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-158">You can also use the **DownloadToStream** method to download the contents of a blob as a text string.</span></span>
+<span data-ttu-id="c4ee0-158">Můžete taky hello **DownloadToStream** metoda toodownload hello obsah objektu blob jako textový řetězec.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-158">You can also use hello **DownloadToStream** method toodownload hello contents of a blob as a text string.</span></span>
 
 ```csharp
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the blob client.
+// Create hello blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Retrieve reference to a previously created container.
+// Retrieve reference tooa previously created container.
 CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-// Retrieve reference to a blob named "myblob.txt"
+// Retrieve reference tooa blob named "myblob.txt"
 CloudBlockBlob blockBlob2 = container.GetBlockBlobReference("myblob.txt");
 
 string text;
@@ -260,49 +260,49 @@ using (var memoryStream = new MemoryStream())
 }
 ```
 
-## <a name="delete-blobs"></a><span data-ttu-id="ba1dd-159">Odstranění objektů blob</span><span class="sxs-lookup"><span data-stu-id="ba1dd-159">Delete blobs</span></span>
-<span data-ttu-id="ba1dd-160">Pokud chcete odstranit objekt blob, nejdřív získejte odkaz na objekt blob a potom na něm spusťte volání metody **Odstranit**.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-160">To delete a blob, first get a blob reference and then call the **Delete** method on it.</span></span>
+## <a name="delete-blobs"></a><span data-ttu-id="c4ee0-159">Odstranění objektů blob</span><span class="sxs-lookup"><span data-stu-id="c4ee0-159">Delete blobs</span></span>
+<span data-ttu-id="c4ee0-160">toodelete objekt blob, nejdřív získejte odkaz na objekt blob a potom zavolejte **odstranit** metoda na něm.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-160">toodelete a blob, first get a blob reference and then call the **Delete** method on it.</span></span>
 
 ```csharp
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the blob client.
+// Create hello blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Retrieve reference to a previously created container.
+// Retrieve reference tooa previously created container.
 CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-// Retrieve reference to a blob named "myblob.txt".
+// Retrieve reference tooa blob named "myblob.txt".
 CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob.txt");
 
-// Delete the blob.
+// Delete hello blob.
 blockBlob.Delete();
 ```
 
-## <a name="list-blobs-in-pages-asynchronously"></a><span data-ttu-id="ba1dd-161">Asynchronní zobrazení seznamu objektů blob na stránkách</span><span class="sxs-lookup"><span data-stu-id="ba1dd-161">List blobs in pages asynchronously</span></span>
-<span data-ttu-id="ba1dd-162">Když provádíte výpis velkého počtu objektů blob nebo chcete mít přehled o počtu výsledků, které vrátíte v rámci jedné operace výpisu, můžete vytvořit seznam objektů blob na stránkách s výsledky.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-162">If you are listing a large number of blobs, or you want to control the number of results you return in one listing operation, you can list blobs in pages of results.</span></span> <span data-ttu-id="ba1dd-163">Tento příklad ukazuje, jak vracet výsledky na stránkách asynchronně tak, aby čekání na vrácení velké sady výsledků neblokovalo provádění.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-163">This example shows how to return results in pages asynchronously, so that execution is not blocked while waiting to return a large set of results.</span></span>
+## <a name="list-blobs-in-pages-asynchronously"></a><span data-ttu-id="c4ee0-161">Asynchronní zobrazení seznamu objektů blob na stránkách</span><span class="sxs-lookup"><span data-stu-id="c4ee0-161">List blobs in pages asynchronously</span></span>
+<span data-ttu-id="c4ee0-162">Pokud provádíte výpis velkého počtu objektů BLOB nebo chcete toocontrol hello počet výsledků, které vrátíte v rámci jedné operace výpisu, můžete vytvořit seznam objektů blob na stránkách s výsledky.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-162">If you are listing a large number of blobs, or you want toocontrol hello number of results you return in one listing operation, you can list blobs in pages of results.</span></span> <span data-ttu-id="c4ee0-163">Tento příklad ukazuje, jak tooreturn výsledky na stránkách asynchronně, takže čekání tooreturn velké sady výsledků neblokovalo provádění.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-163">This example shows how tooreturn results in pages asynchronously, so that execution is not blocked while waiting tooreturn a large set of results.</span></span>
 
-<span data-ttu-id="ba1dd-164">Tento příklad ukazuje plochý výpis objektu blob, můžete ale také provést hierarchický výpis nastavením parametru _useFlatBlobListing_ metody **ListBlobsSegmentedAsync** na _false_.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-164">This example shows a flat blob listing, but you can also perform a hierarchical listing, by setting the _useFlatBlobListing_ parameter of the **ListBlobsSegmentedAsync** method to _false_.</span></span>
+<span data-ttu-id="c4ee0-164">Tento příklad ukazuje výpis plochého objektu blob ale můžete také provést hierarchický výpis podle nastavení hello _useFlatBlobListing_ parametr hello **ListBlobsSegmentedAsync** too_false_ metoda.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-164">This example shows a flat blob listing, but you can also perform a hierarchical listing, by setting hello _useFlatBlobListing_ parameter of hello **ListBlobsSegmentedAsync** method too_false_.</span></span>
 
-<span data-ttu-id="ba1dd-165">Vzhledem k tomu, že metoda ukázky volá asynchronní metodu, musí být uvedena klíčovým slovem _async_ a musí vrátit objekt **Úloha**.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-165">Because the sample method calls an asynchronous method, it must be prefaced with the _async_ keyword, and it must return a **Task** object.</span></span> <span data-ttu-id="ba1dd-166">Klíčové slovo await, určené pro metodu **ListBlobsSegmentedAsync** pozastaví spuštění metody ukázky až do dokončení úlohy vytváření seznamu.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-166">The await keyword specified for the **ListBlobsSegmentedAsync** method suspends execution of the sample method until the listing task completes.</span></span>
+<span data-ttu-id="c4ee0-165">Protože hello metoda ukázky volá asynchronní metodu, musí být uvedena s hello _asynchronní_ – klíčové slovo a musí vrátit **úloh** objektu.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-165">Because hello sample method calls an asynchronous method, it must be prefaced with hello _async_ keyword, and it must return a **Task** object.</span></span> <span data-ttu-id="c4ee0-166">await – klíčové slovo zadané pro hello Hello **ListBlobsSegmentedAsync** pozastaví spuštění metody ukázky hello až do dokončení úlohy vytváření seznamu hello.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-166">hello await keyword specified for hello **ListBlobsSegmentedAsync** method suspends execution of hello sample method until hello listing task completes.</span></span>
 
 ```csharp
 async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer container)
 {
-    //List blobs to the console window, with paging.
+    //List blobs toohello console window, with paging.
     Console.WriteLine("List blobs in pages:");
 
     int i = 0;
     BlobContinuationToken continuationToken = null;
     BlobResultSegment resultSegment = null;
 
-    //Call ListBlobsSegmentedAsync and enumerate the result segment returned, while the continuation token is non-null.
-    //When the continuation token is null, the last page has been returned and execution can exit the loop.
+    //Call ListBlobsSegmentedAsync and enumerate hello result segment returned, while hello continuation token is non-null.
+    //When hello continuation token is null, hello last page has been returned and execution can exit hello loop.
     do
     {
-        //This overload allows control of the page size. You can return all remaining results by passing null for the maxResults parameter,
+        //This overload allows control of hello page size. You can return all remaining results by passing null for hello maxResults parameter,
         //or by calling a different overload.
         resultSegment = await container.ListBlobsSegmentedAsync("", true, BlobListingDetails.All, 10, continuationToken, null, null);
         if (resultSegment.Results.Count<IListBlobItem>() > 0) { Console.WriteLine("Page {0}:", ++i); }
@@ -312,39 +312,39 @@ async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer cont
         }
         Console.WriteLine();
 
-        //Get the continuation token.
+        //Get hello continuation token.
         continuationToken = resultSegment.ContinuationToken;
     }
     while (continuationToken != null);
 }
 ```
 
-## <a name="writing-to-an-append-blob"></a><span data-ttu-id="ba1dd-167">Zápis do doplňovacího objektu blob</span><span class="sxs-lookup"><span data-stu-id="ba1dd-167">Writing to an append blob</span></span>
-<span data-ttu-id="ba1dd-168">Doplňovací objekt blob je optimalizován pro operace připojení, například protokolování.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-168">An append blob is optimized for append operations, such as logging.</span></span> <span data-ttu-id="ba1dd-169">Podobně jako objekt blob bloku se doplňovací objekt blob skládá z bloků, ale když chcete do doplňovacího objektu blob připojit nový blok, je připojen vždy na konec objektu blob.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-169">Like a block blob, an append blob is comprised of blocks, but when you add a new block to an append blob, it is always appended to the end of the blob.</span></span> <span data-ttu-id="ba1dd-170">Existující blok v doplňovacím objektu blob se nedá aktualizovat ani odstranit.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-170">You cannot update or delete an existing block in an append blob.</span></span> <span data-ttu-id="ba1dd-171">ID bloku pro doplňovací objekt blob nejsou vystavená, protože jsou určená pro objekt blob bloku.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-171">The block IDs for an append blob are not exposed as they are for a block blob.</span></span>
+## <a name="writing-tooan-append-blob"></a><span data-ttu-id="c4ee0-167">Zápis tooan připojit objektů blob</span><span class="sxs-lookup"><span data-stu-id="c4ee0-167">Writing tooan append blob</span></span>
+<span data-ttu-id="c4ee0-168">Doplňovací objekt blob je optimalizován pro operace připojení, například protokolování.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-168">An append blob is optimized for append operations, such as logging.</span></span> <span data-ttu-id="c4ee0-169">Podobně jako objekt blob bloku doplňovací objekt blob se skládá z bloků, ale když přidáte nový objekt blob bloku připojení tooan, je vždy připojením toohello konec objektu blob hello.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-169">Like a block blob, an append blob is comprised of blocks, but when you add a new block tooan append blob, it is always appended toohello end of hello blob.</span></span> <span data-ttu-id="c4ee0-170">Existující blok v doplňovacím objektu blob se nedá aktualizovat ani odstranit.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-170">You cannot update or delete an existing block in an append blob.</span></span> <span data-ttu-id="c4ee0-171">ID Hello bloku pro doplňovací objekt blob nejsou vystavená, protože jsou pro objekt blob bloku.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-171">hello block IDs for an append blob are not exposed as they are for a block blob.</span></span>
 
-<span data-ttu-id="ba1dd-172">Každý blok v doplňovacím objektu blob může mít různou velikost až do 4 MB, každý doplňovací objekt blob může obsahovat maximálně 50 000 bloků.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-172">Each block in an append blob can be a different size, up to a maximum of 4 MB, and an append blob can include a maximum of 50,000 blocks.</span></span> <span data-ttu-id="ba1dd-173">Maximální velikost doplňovacího objektu blob je proto o něco větší než 195 GB (4 MB × 50 000 bloků).</span><span class="sxs-lookup"><span data-stu-id="ba1dd-173">The maximum size of an append blob is therefore slightly more than 195 GB (4 MB X 50,000 blocks).</span></span>
+<span data-ttu-id="c4ee0-172">Každý blok v doplňovacím objektu blob může mít různou velikost, až tooa nesmí být delší než 4 MB volného místa, a doplňovací objekt blob může obsahovat maximálně 50 000 bloků.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-172">Each block in an append blob can be a different size, up tooa maximum of 4 MB, and an append blob can include a maximum of 50,000 blocks.</span></span> <span data-ttu-id="c4ee0-173">Hello maximální velikost doplňovacího objektu BLOB je proto něco větší než 195 GB (4 MB × 50 000 bloků).</span><span class="sxs-lookup"><span data-stu-id="c4ee0-173">hello maximum size of an append blob is therefore slightly more than 195 GB (4 MB X 50,000 blocks).</span></span>
 
-<span data-ttu-id="ba1dd-174">Následující příklad vytvoří nový doplňovací objekt blob a připojí některá data pro simulaci jednoduché operace protokolování.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-174">The example below creates a new append blob and appends some data to it, simulating a simple logging operation.</span></span>
+<span data-ttu-id="c4ee0-174">Následující příklad Hello vytvoří nový doplňovací objekt blob a připojí některá data tooit simulaci jednoduché operace protokolování.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-174">hello example below creates a new append blob and appends some data tooit, simulating a simple logging operation.</span></span>
 
 ```csharp
-//Parse the connection string for the storage account.
+//Parse hello connection string for hello storage account.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-//Create service client for credentialed access to the Blob service.
+//Create service client for credentialed access toohello Blob service.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-//Get a reference to a container.
+//Get a reference tooa container.
 CloudBlobContainer container = blobClient.GetContainerReference("my-append-blobs");
 
-//Create the container if it does not already exist.
+//Create hello container if it does not already exist.
 container.CreateIfNotExists();
 
-//Get a reference to an append blob.
+//Get a reference tooan append blob.
 CloudAppendBlob appendBlob = container.GetAppendBlobReference("append-blob.log");
 
-//Create the append blob. Note that if the blob already exists, the CreateOrReplace() method will overwrite it.
-//You can check whether the blob exists to avoid overwriting it by using CloudAppendBlob.Exists().
+//Create hello append blob. Note that if hello blob already exists, hello CreateOrReplace() method will overwrite it.
+//You can check whether hello blob exists tooavoid overwriting it by using CloudAppendBlob.Exists().
 appendBlob.CreateOrReplace();
 
 int numBlocks = 10;
@@ -354,50 +354,50 @@ Random rnd = new Random();
 byte[] bytes = new byte[numBlocks];
 rnd.NextBytes(bytes);
 
-//Simulate a logging operation by writing text data and byte data to the end of the append blob.
+//Simulate a logging operation by writing text data and byte data toohello end of hello append blob.
 for (int i = 0; i < numBlocks; i++)
 {
     appendBlob.AppendText(String.Format("Timestamp: {0:u} \tLog Entry: {1}{2}",
         DateTime.UtcNow, bytes[i], Environment.NewLine));
 }
 
-//Read the append blob to the console window.
+//Read hello append blob toohello console window.
 Console.WriteLine(appendBlob.DownloadText());
 ```
 
-<span data-ttu-id="ba1dd-175">Další informace o rozdílech mezi třemi typy objektů blob získáte v části [ Vysvětlení objektů blob bloku, objektů blob stránky a doplňovacích objektů blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).</span><span class="sxs-lookup"><span data-stu-id="ba1dd-175">See [Understanding Block Blobs, Page Blobs, and Append Blobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) for more information about the differences between the three types of blobs.</span></span>
+<span data-ttu-id="c4ee0-175">V tématu [objekty BLOB bloku pochopení, objekty BLOB stránky a doplňovacích objektů blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) Další informace o hello rozdíly mezi hello tři typy objektů BLOB.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-175">See [Understanding Block Blobs, Page Blobs, and Append Blobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) for more information about hello differences between hello three types of blobs.</span></span>
 
-## <a name="managing-security-for-blobs"></a><span data-ttu-id="ba1dd-176">Správa zabezpečení pro objekty blob</span><span class="sxs-lookup"><span data-stu-id="ba1dd-176">Managing security for blobs</span></span>
-<span data-ttu-id="ba1dd-177">Úložiště Azure ve výchozím nastavení zajišťuje ochranu dat omezením přístupu k majiteli účtu, který vlastní klíče pro přístup k účtu.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-177">By default, Azure Storage keeps your data secure by limiting access to the account owner, who is in possession of the account access keys.</span></span> <span data-ttu-id="ba1dd-178">Když budete chtít sdílet data objektu blob na svém účtu úložiště, je důležité zajistit, aby nedošlo k ohrožení zabezpečení vašich klíčů pro přístup k účtu.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-178">When you need to share blob data in your storage account, it is important to do so without compromising the security of your account access keys.</span></span> <span data-ttu-id="ba1dd-179">Navíc můžete šifrovat data objektů blob tak, aby byl zaručen jejich zabezpečený přenos přes síť nebo úložiště Azure.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-179">Additionally, you can encrypt blob data to ensure that it is secure going over the wire and in Azure Storage.</span></span>
+## <a name="managing-security-for-blobs"></a><span data-ttu-id="c4ee0-176">Správa zabezpečení pro objekty blob</span><span class="sxs-lookup"><span data-stu-id="c4ee0-176">Managing security for blobs</span></span>
+<span data-ttu-id="c4ee0-177">Ve výchozím nastavení Azure Storage zajišťuje ochranu dat omezením vlastníka účtu toohello přístupu, která je vlastníkem hello přístupových klíčů k účtu.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-177">By default, Azure Storage keeps your data secure by limiting access toohello account owner, who is in possession of hello account access keys.</span></span> <span data-ttu-id="c4ee0-178">Pokud potřebujete tooshare data objektů blob v účtu úložiště, je důležité toodo Ano, aniž by to ohrozilo zabezpečení hello klíče pro přístup k účtu.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-178">When you need tooshare blob data in your storage account, it is important toodo so without compromising hello security of your account access keys.</span></span> <span data-ttu-id="c4ee0-179">Navíc můžete šifrovat tooensure data objektů blob, který je zabezpečený přenos přes přenosu hello a ve službě Azure Storage.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-179">Additionally, you can encrypt blob data tooensure that it is secure going over hello wire and in Azure Storage.</span></span>
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
-### <a name="controlling-access-to-blob-data"></a><span data-ttu-id="ba1dd-180">Kontrola přístupu k datům objektu blob</span><span class="sxs-lookup"><span data-stu-id="ba1dd-180">Controlling access to blob data</span></span>
-<span data-ttu-id="ba1dd-181">Ve výchozím nastavení jsou data objektu blob ve vašem účtu úložiště dostupná pouze majiteli účtu úložiště.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-181">By default, the blob data in your storage account is accessible only to storage account owner.</span></span> <span data-ttu-id="ba1dd-182">Ve výchozím nastavení vyžaduje ověřování požadavků na Blob storage přístupový klíč účtu.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-182">Authenticating requests against Blob storage requires the account access key by default.</span></span> <span data-ttu-id="ba1dd-183">Určitá data objektu blob ale můžete zpřístupnit ostatním uživatelům.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-183">However, you may wish to make certain blob data available to other users.</span></span> <span data-ttu-id="ba1dd-184">Máte dvě možnosti:</span><span class="sxs-lookup"><span data-stu-id="ba1dd-184">You have two options:</span></span>
+### <a name="controlling-access-tooblob-data"></a><span data-ttu-id="c4ee0-180">Řízení přístupu tooblob dat</span><span class="sxs-lookup"><span data-stu-id="c4ee0-180">Controlling access tooblob data</span></span>
+<span data-ttu-id="c4ee0-181">Ve výchozím nastavení hello data objektů blob v účtu úložiště je dostupný pouze vlastník účtu toostorage.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-181">By default, hello blob data in your storage account is accessible only toostorage account owner.</span></span> <span data-ttu-id="c4ee0-182">Ve výchozím nastavení ověřování požadavků na úložiště objektů Blob vyžaduje přístupový klíč účtu hello.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-182">Authenticating requests against Blob storage requires hello account access key by default.</span></span> <span data-ttu-id="c4ee0-183">Můžete ale taky toomake určitých objektů blob data k dispozici tooother uživatele.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-183">However, you may wish toomake certain blob data available tooother users.</span></span> <span data-ttu-id="c4ee0-184">Máte dvě možnosti:</span><span class="sxs-lookup"><span data-stu-id="c4ee0-184">You have two options:</span></span>
 
-* <span data-ttu-id="ba1dd-185">**Anonymní přístup:** můžete nastavit kontejner nebo jeho objekty blob na veřejně dostupné pro anonymní přístup.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-185">**Anonymous access:** You can make a container or its blobs publicly available for anonymous access.</span></span> <span data-ttu-id="ba1dd-186">Další informace viz [Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob](storage-manage-access-to-resources.md).</span><span class="sxs-lookup"><span data-stu-id="ba1dd-186">See [Manage anonymous read access to containers and blobs](storage-manage-access-to-resources.md) for more information.</span></span>
-* <span data-ttu-id="ba1dd-187">**Sdílený přístupový podpis:** Klientům můžete zajistit sdílený přístupový podpis (SAS), který poskytuje delegovaný přístup k prostředku ve vašem účtu úložiště s oprávněními, která jste zadali a v intervalu, který určíte.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-187">**Shared access signatures:** You can provide clients with a shared access signature (SAS), which provides delegated access to a resource in your storage account, with permissions that you specify and over an interval that you specify.</span></span> <span data-ttu-id="ba1dd-188">Další informace najdete v tématu [Použití sdílených přístupových podpisů (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="ba1dd-188">See [Using Shared Access Signatures (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) for more information.</span></span>
+* <span data-ttu-id="c4ee0-185">**Anonymní přístup:** můžete nastavit kontejner nebo jeho objekty blob na veřejně dostupné pro anonymní přístup.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-185">**Anonymous access:** You can make a container or its blobs publicly available for anonymous access.</span></span> <span data-ttu-id="c4ee0-186">V tématu [spravovat toocontainers anonymní přístup pro čtení a objekty BLOB](storage-manage-access-to-resources.md) Další informace.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-186">See [Manage anonymous read access toocontainers and blobs](storage-manage-access-to-resources.md) for more information.</span></span>
+* <span data-ttu-id="c4ee0-187">**Sdílené přístupové podpisy:** klientům můžete zajistit sdílený přístupový podpis (SAS), který poskytuje Delegovaný přístup tooa prostředků ve vašem účtu úložiště s oprávněními, které zadáte a v intervalu, který zadáte.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-187">**Shared access signatures:** You can provide clients with a shared access signature (SAS), which provides delegated access tooa resource in your storage account, with permissions that you specify and over an interval that you specify.</span></span> <span data-ttu-id="c4ee0-188">Další informace najdete v tématu [Použití sdílených přístupových podpisů (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="c4ee0-188">See [Using Shared Access Signatures (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) for more information.</span></span>
 
-### <a name="encrypting-blob-data"></a><span data-ttu-id="ba1dd-189">Šifrování dat objektů blob</span><span class="sxs-lookup"><span data-stu-id="ba1dd-189">Encrypting blob data</span></span>
-<span data-ttu-id="ba1dd-190">Úložiště Azure podporuje šifrování dat objektů blob na straně klienta i na serveru:</span><span class="sxs-lookup"><span data-stu-id="ba1dd-190">Azure Storage supports encrypting blob data both at the client and on the server:</span></span>
+### <a name="encrypting-blob-data"></a><span data-ttu-id="c4ee0-189">Šifrování dat objektů blob</span><span class="sxs-lookup"><span data-stu-id="c4ee0-189">Encrypting blob data</span></span>
+<span data-ttu-id="c4ee0-190">Úložiště Azure podporuje šifrování dat objektů blob na hello klientovi i na serveru hello:</span><span class="sxs-lookup"><span data-stu-id="c4ee0-190">Azure Storage supports encrypting blob data both at hello client and on hello server:</span></span>
 
-* <span data-ttu-id="ba1dd-191">**Šifrování na straně klienta:** Klientská knihovna pro úložiště pro .NET podporuje šifrování dat v rámci klientské aplikace před nahráním do úložiště Azure a dešifrování dat při stahování do klienta.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-191">**Client-side encryption:** The Storage Client Library for .NET supports encrypting data within client applications before uploading to Azure Storage, and decrypting data while downloading to the client.</span></span> <span data-ttu-id="ba1dd-192">Knihovna také podporuje integraci se službou Azure Key Vault pro správu klíčů účtu úložiště.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-192">The library also supports integration with Azure Key Vault for storage account key management.</span></span> <span data-ttu-id="ba1dd-193">Další informace viz [Šifrování na straně klienta s .NET pro úložiště Microsoft Azure](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="ba1dd-193">See [Client-Side Encryption with .NET for Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) for more information.</span></span> <span data-ttu-id="ba1dd-194">Viz také [Kurz: Šifrování a dešifrování objektů blob v úložišti Microsoft Azure pomocí služby Azure Key Vault](storage-encrypt-decrypt-blobs-key-vault.md).</span><span class="sxs-lookup"><span data-stu-id="ba1dd-194">Also see [Tutorial: Encrypt and decrypt blobs in Microsoft Azure Storage using Azure Key Vault](storage-encrypt-decrypt-blobs-key-vault.md).</span></span>
-* <span data-ttu-id="ba1dd-195">**Šifrování na straně serveru**: Úložiště Azure nyní podporuje šifrování na straně serveru.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-195">**Server-side encryption**: Azure Storage now supports server-side encryption.</span></span> <span data-ttu-id="ba1dd-196">Viz [Šifrování služby Azure Storage Service pro Neaktivní uložená data (Náhled)](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="ba1dd-196">See [Azure Storage Service Encryption for Data at Rest (Preview)](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).</span></span>
+* <span data-ttu-id="c4ee0-191">**Šifrování na straně klienta:** hello Klientská knihovna pro úložiště pro .NET podporuje šifrování dat v rámci klientské aplikace před nahráním tooAzure úložiště a dešifrování dat při stahování toohello klienta.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-191">**Client-side encryption:** hello Storage Client Library for .NET supports encrypting data within client applications before uploading tooAzure Storage, and decrypting data while downloading toohello client.</span></span> <span data-ttu-id="c4ee0-192">Hello knihovna také podporuje integraci s Azure Key Vault pro správu klíčů účtu úložiště.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-192">hello library also supports integration with Azure Key Vault for storage account key management.</span></span> <span data-ttu-id="c4ee0-193">Další informace viz [Šifrování na straně klienta s .NET pro úložiště Microsoft Azure](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="c4ee0-193">See [Client-Side Encryption with .NET for Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) for more information.</span></span> <span data-ttu-id="c4ee0-194">Viz také [Kurz: Šifrování a dešifrování objektů blob v úložišti Microsoft Azure pomocí služby Azure Key Vault](storage-encrypt-decrypt-blobs-key-vault.md).</span><span class="sxs-lookup"><span data-stu-id="c4ee0-194">Also see [Tutorial: Encrypt and decrypt blobs in Microsoft Azure Storage using Azure Key Vault](storage-encrypt-decrypt-blobs-key-vault.md).</span></span>
+* <span data-ttu-id="c4ee0-195">**Šifrování na straně serveru**: Úložiště Azure nyní podporuje šifrování na straně serveru.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-195">**Server-side encryption**: Azure Storage now supports server-side encryption.</span></span> <span data-ttu-id="c4ee0-196">Viz [Šifrování služby Azure Storage Service pro Neaktivní uložená data (Náhled)](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="c4ee0-196">See [Azure Storage Service Encryption for Data at Rest (Preview)](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="ba1dd-197">Další kroky</span><span class="sxs-lookup"><span data-stu-id="ba1dd-197">Next steps</span></span>
-<span data-ttu-id="ba1dd-198">Teď, když jste se naučili základy používání Blob storage, podívejte se na následující odkazy a získejte další informace.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-198">Now that you've learned the basics of Blob storage, follow these links to learn more.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="c4ee0-197">Další kroky</span><span class="sxs-lookup"><span data-stu-id="c4ee0-197">Next steps</span></span>
+<span data-ttu-id="c4ee0-198">Teď, když jste se naučili základy používání Blob storage hello, postupujte podle těchto odkazů toolearn Další.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-198">Now that you've learned hello basics of Blob storage, follow these links toolearn more.</span></span>
 
-### <a name="microsoft-azure-storage-explorer"></a><span data-ttu-id="ba1dd-199">Microsoft Azure Storage Explorer</span><span class="sxs-lookup"><span data-stu-id="ba1dd-199">Microsoft Azure Storage Explorer</span></span>
-* <span data-ttu-id="ba1dd-200">[Microsoft Azure Storage Explorer (MASE)](../../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.</span><span class="sxs-lookup"><span data-stu-id="ba1dd-200">[Microsoft Azure Storage Explorer (MASE)](../../vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft that enables you to work visually with Azure Storage data on Windows, macOS, and Linux.</span></span>
+### <a name="microsoft-azure-storage-explorer"></a><span data-ttu-id="c4ee0-199">Microsoft Azure Storage Explorer</span><span class="sxs-lookup"><span data-stu-id="c4ee0-199">Microsoft Azure Storage Explorer</span></span>
+* <span data-ttu-id="c4ee0-200">[Microsoft Azure Storage Explorer (MASE)](../../vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, volná, od společnosti Microsoft, která vám umožní toowork vizuálně s daty Azure Storage ve Windows, systému macOS a Linux.</span><span class="sxs-lookup"><span data-stu-id="c4ee0-200">[Microsoft Azure Storage Explorer (MASE)](../../vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft that enables you toowork visually with Azure Storage data on Windows, macOS, and Linux.</span></span>
 
-### <a name="blob-storage-samples"></a><span data-ttu-id="ba1dd-201">Ukázky Blob Storage</span><span class="sxs-lookup"><span data-stu-id="ba1dd-201">Blob storage samples</span></span>
-* [<span data-ttu-id="ba1dd-202">Začínáme s úložištěm Azure Blob Storage pomocí rozhraní .NET</span><span class="sxs-lookup"><span data-stu-id="ba1dd-202">Getting Started with Azure Blob Storage in .NET</span></span>](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)
+### <a name="blob-storage-samples"></a><span data-ttu-id="c4ee0-201">Ukázky Blob Storage</span><span class="sxs-lookup"><span data-stu-id="c4ee0-201">Blob storage samples</span></span>
+* [<span data-ttu-id="c4ee0-202">Začínáme s úložištěm Azure Blob Storage pomocí rozhraní .NET</span><span class="sxs-lookup"><span data-stu-id="c4ee0-202">Getting Started with Azure Blob Storage in .NET</span></span>](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)
 
-### <a name="blob-storage-reference"></a><span data-ttu-id="ba1dd-203">Odkazy Blob storage</span><span class="sxs-lookup"><span data-stu-id="ba1dd-203">Blob storage reference</span></span>
-* [<span data-ttu-id="ba1dd-204">Klientská knihovna pro úložiště pro .NET – referenční informace</span><span class="sxs-lookup"><span data-stu-id="ba1dd-204">Storage Client Library for .NET reference</span></span>](https://msdn.microsoft.com/library/azure/mt347887.aspx)
-* [<span data-ttu-id="ba1dd-205">REST API – referenční informace</span><span class="sxs-lookup"><span data-stu-id="ba1dd-205">REST API reference</span></span>](/rest/api/storageservices/azure-storage-services-rest-api-reference)
+### <a name="blob-storage-reference"></a><span data-ttu-id="c4ee0-203">Odkazy Blob storage</span><span class="sxs-lookup"><span data-stu-id="c4ee0-203">Blob storage reference</span></span>
+* [<span data-ttu-id="c4ee0-204">Klientská knihovna pro úložiště pro .NET – referenční informace</span><span class="sxs-lookup"><span data-stu-id="c4ee0-204">Storage Client Library for .NET reference</span></span>](https://msdn.microsoft.com/library/azure/mt347887.aspx)
+* [<span data-ttu-id="c4ee0-205">REST API – referenční informace</span><span class="sxs-lookup"><span data-stu-id="c4ee0-205">REST API reference</span></span>](/rest/api/storageservices/azure-storage-services-rest-api-reference)
 
-### <a name="conceptual-guides"></a><span data-ttu-id="ba1dd-206">Koncepční vodítka</span><span class="sxs-lookup"><span data-stu-id="ba1dd-206">Conceptual guides</span></span>
-* [<span data-ttu-id="ba1dd-207">Přenos dat pomocí nástroje příkazového řádku AzCopy</span><span class="sxs-lookup"><span data-stu-id="ba1dd-207">Transfer data with the AzCopy command-line utility</span></span>](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [<span data-ttu-id="ba1dd-208">Začínáme se službou File Storage for .NET</span><span class="sxs-lookup"><span data-stu-id="ba1dd-208">Get started with File storage for .NET</span></span>](../files/storage-dotnet-how-to-use-files.md)
-* [<span data-ttu-id="ba1dd-209">Použití úložiště objektů blob v Azure pomocí WebJobs SDK</span><span class="sxs-lookup"><span data-stu-id="ba1dd-209">How to use Azure blob storage with the WebJobs SDK</span></span>](../../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
+### <a name="conceptual-guides"></a><span data-ttu-id="c4ee0-206">Koncepční vodítka</span><span class="sxs-lookup"><span data-stu-id="c4ee0-206">Conceptual guides</span></span>
+* [<span data-ttu-id="c4ee0-207">Přenos dat pomocí hello příkazového řádku azcopy</span><span class="sxs-lookup"><span data-stu-id="c4ee0-207">Transfer data with hello AzCopy command-line utility</span></span>](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [<span data-ttu-id="c4ee0-208">Začínáme se službou File Storage for .NET</span><span class="sxs-lookup"><span data-stu-id="c4ee0-208">Get started with File storage for .NET</span></span>](../files/storage-dotnet-how-to-use-files.md)
+* [<span data-ttu-id="c4ee0-209">Jak toouse Azure blob storage s hello WebJobs SDK</span><span class="sxs-lookup"><span data-stu-id="c4ee0-209">How toouse Azure blob storage with hello WebJobs SDK</span></span>](../../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)

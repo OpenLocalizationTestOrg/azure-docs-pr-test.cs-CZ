@@ -1,6 +1,6 @@
 ---
-title: "Přesunutí prostředku virtuálního počítače s Windows v Azure | Microsoft Docs"
-description: "Přesuňte virtuální počítač s Windows do jiné předplatné nebo prostředek skupiny Azure v modelu nasazení Resource Manager."
+title: "aaaMove prostředek virtuálního počítače s Windows v Azure | Microsoft Docs"
+description: "Přesunete virtuální počítač s Windows tooanother předplatné nebo skupinu prostředků v modelu nasazení Resource Manager hello."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,31 +15,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 1db25a5d9ff5cb6aa2787a0cafa40cfb010e3b06
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 859e78dce9acf1168780d4ee8e9f6dac0e3c11cf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a><span data-ttu-id="e4412-103">Přesunout virtuální počítač s Windows do Azure jiné předplatné nebo prostředek skupiny</span><span class="sxs-lookup"><span data-stu-id="e4412-103">Move a Windows VM to another Azure subscription or resource group</span></span>
-<span data-ttu-id="e4412-104">Tento článek vás provede jak přesunout virtuální počítač s Windows mezi skupinami prostředků nebo předplatných.</span><span class="sxs-lookup"><span data-stu-id="e4412-104">This article walks you through how to move a Windows VM between resource groups or subscriptions.</span></span> <span data-ttu-id="e4412-105">Přesouvání mezi předplatnými může být užitečné, pokud jste původně vytvořili virtuální počítač v odběru osobní a chcete ho přesunout do předplatného vaší společnosti chcete-li pokračovat v práci.</span><span class="sxs-lookup"><span data-stu-id="e4412-105">Moving between subscriptions can be handy if you originally created a VM in a personal subscription and now want to move it to your company's subscription to continue your work.</span></span>
+# <a name="move-a-windows-vm-tooanother-azure-subscription-or-resource-group"></a><span data-ttu-id="8f561-103">Přesunout virtuální počítač s Windows tooanother předplatné nebo skupinu prostředků</span><span class="sxs-lookup"><span data-stu-id="8f561-103">Move a Windows VM tooanother Azure subscription or resource group</span></span>
+<span data-ttu-id="8f561-104">Tento článek vás provede toomove virtuální počítač s Windows mezi skupinami prostředků nebo předplatných.</span><span class="sxs-lookup"><span data-stu-id="8f561-104">This article walks you through how toomove a Windows VM between resource groups or subscriptions.</span></span> <span data-ttu-id="8f561-105">Přesouvání mezi předplatnými může být užitečné, pokud jste původně vytvořili virtuální počítač v odběru osobní a teď chcete toomove ho tooyour společnosti předplatné toocontinue práci.</span><span class="sxs-lookup"><span data-stu-id="8f561-105">Moving between subscriptions can be handy if you originally created a VM in a personal subscription and now want toomove it tooyour company's subscription toocontinue your work.</span></span>
 
 > [!IMPORTANT]
-><span data-ttu-id="e4412-106">V tuto chvíli nelze přesunout spravované disky.</span><span class="sxs-lookup"><span data-stu-id="e4412-106">You cannot move Managed Disks at this time.</span></span> 
+><span data-ttu-id="8f561-106">V tuto chvíli nelze přesunout spravované disky.</span><span class="sxs-lookup"><span data-stu-id="8f561-106">You cannot move Managed Disks at this time.</span></span> 
 >
-><span data-ttu-id="e4412-107">Nové ID prostředků jsou vytvořené jako součást přesunutí.</span><span class="sxs-lookup"><span data-stu-id="e4412-107">New resource IDs are created as part of the move.</span></span> <span data-ttu-id="e4412-108">Po přesunutí virtuálního počítače je potřeba aktualizovat nástroje a skripty, které pomocí nového ID prostředku.</span><span class="sxs-lookup"><span data-stu-id="e4412-108">Once the VM has been moved, you need to update your tools and scripts to use the new resource IDs.</span></span> 
+><span data-ttu-id="8f561-107">Nové ID prostředků jsou vytvořené jako součást přesunutí hello.</span><span class="sxs-lookup"><span data-stu-id="8f561-107">New resource IDs are created as part of hello move.</span></span> <span data-ttu-id="8f561-108">Jakmile hello virtuálního počítače byl přesunut, musíte tooupdate vaše nástroje a skripty toouse hello nové ID prostředku.</span><span class="sxs-lookup"><span data-stu-id="8f561-108">Once hello VM has been moved, you need tooupdate your tools and scripts toouse hello new resource IDs.</span></span> 
 > 
 > 
 
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
-## <a name="use-powershell-to-move-a-vm"></a><span data-ttu-id="e4412-109">Přesunout virtuální počítač pomocí prostředí Powershell</span><span class="sxs-lookup"><span data-stu-id="e4412-109">Use Powershell to move a VM</span></span>
-<span data-ttu-id="e4412-110">Chcete-li přesunout virtuální počítač do jiné skupiny prostředků, ujistěte se, že také přesunout všechny závislé prostředky.</span><span class="sxs-lookup"><span data-stu-id="e4412-110">To move a virtual machine to another resource group, you need to make sure that you also move all of the dependent resources.</span></span> <span data-ttu-id="e4412-111">Chcete-li použijte rutinu Move-AzureRMResource, potřebujete název prostředku a typ prostředku.</span><span class="sxs-lookup"><span data-stu-id="e4412-111">To use the Move-AzureRMResource cmdlet, you need the resource name and the type of resource.</span></span> <span data-ttu-id="e4412-112">Můžete získat z rutiny najít AzureRMResource i.</span><span class="sxs-lookup"><span data-stu-id="e4412-112">You can get both from the Find-AzureRMResource cmdlet.</span></span>
+## <a name="use-powershell-toomove-a-vm"></a><span data-ttu-id="8f561-109">Pomocí prostředí Powershell toomove virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="8f561-109">Use Powershell toomove a VM</span></span>
+<span data-ttu-id="8f561-110">toomove skupiny prostředků tooanother virtuálního počítače, musíte toomake jistotu, že také přesunout všechny závislé prostředky hello.</span><span class="sxs-lookup"><span data-stu-id="8f561-110">toomove a virtual machine tooanother resource group, you need toomake sure that you also move all of hello dependent resources.</span></span> <span data-ttu-id="8f561-111">rutinu Move-AzureRMResource hello toouse, potřebujete název prostředku hello a hello typ prostředku.</span><span class="sxs-lookup"><span data-stu-id="8f561-111">toouse hello Move-AzureRMResource cmdlet, you need hello resource name and hello type of resource.</span></span> <span data-ttu-id="8f561-112">Můžete získat z rutiny hello najít AzureRMResource i.</span><span class="sxs-lookup"><span data-stu-id="8f561-112">You can get both from hello Find-AzureRMResource cmdlet.</span></span>
 
     Find-AzureRMResource -ResourceGroupNameContains "<sourceResourceGroupName>"
 
 
-<span data-ttu-id="e4412-113">Přesunout virtuální počítač je potřeba přesunout více prostředků.</span><span class="sxs-lookup"><span data-stu-id="e4412-113">To move a VM we need to move multiple resources.</span></span> <span data-ttu-id="e4412-114">Můžeme jenom vytvářet samostatné proměnných pro každý prostředek a potom jejich seznam.</span><span class="sxs-lookup"><span data-stu-id="e4412-114">We can just create separate variables for each resource and then list them.</span></span> <span data-ttu-id="e4412-115">Tento příklad obsahuje většinu základní prostředků pro virtuální počítač, ale můžete přidat více podle potřeby.</span><span class="sxs-lookup"><span data-stu-id="e4412-115">This example includes most of the basic resources for a VM, but you can add more as needed.</span></span>
+<span data-ttu-id="8f561-113">toomove potřebujeme toomove několik prostředků virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="8f561-113">toomove a VM we need toomove multiple resources.</span></span> <span data-ttu-id="8f561-114">Můžeme jenom vytvářet samostatné proměnných pro každý prostředek a potom jejich seznam.</span><span class="sxs-lookup"><span data-stu-id="8f561-114">We can just create separate variables for each resource and then list them.</span></span> <span data-ttu-id="8f561-115">Tento příklad obsahuje většinu hello základní prostředků pro virtuální počítač, ale můžete přidat více podle potřeby.</span><span class="sxs-lookup"><span data-stu-id="8f561-115">This example includes most of hello basic resources for a VM, but you can add more as needed.</span></span>
 
     $sourceRG = "<sourceResourceGroupName>"
     $destinationRG = "<destinationResourceGroupName>"
@@ -54,14 +54,14 @@ ms.lasthandoff: 07/11/2017
 
     Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vm.ResourceId, $storageAccount.ResourceId, $diagStorageAccount.ResourceId, $vNet.ResourceId, $nic.ResourceId, $ip.ResourceId, $nsg.ResourceId
 
-<span data-ttu-id="e4412-116">Chcete-li přesunout prostředky do jiného předplatného, zahrňte **- DestinationSubscriptionId** parametr.</span><span class="sxs-lookup"><span data-stu-id="e4412-116">To move the resources to different subscription, include the **-DestinationSubscriptionId** parameter.</span></span> 
+<span data-ttu-id="8f561-116">toomove hello prostředky předplatného toodifferent, zahrnout hello **- DestinationSubscriptionId** parametr.</span><span class="sxs-lookup"><span data-stu-id="8f561-116">toomove hello resources toodifferent subscription, include hello **-DestinationSubscriptionId** parameter.</span></span> 
 
     Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vm.ResourceId, $storageAccount.ResourceId, $diagStorageAccount.ResourceId, $vNet.ResourceId, $nic.ResourceId, $ip.ResourceId, $nsg.ResourceId
 
 
 
-<span data-ttu-id="e4412-117">Jste vyzváni k potvrzení, že chcete přesunout zadané prostředky.</span><span class="sxs-lookup"><span data-stu-id="e4412-117">You will be asked to confirm that you want to move the specified resources.</span></span> <span data-ttu-id="e4412-118">Typ **Y** potvrďte, že chcete přesunout prostředky.</span><span class="sxs-lookup"><span data-stu-id="e4412-118">Type **Y** to confirm that you want to move the resources.</span></span>
+<span data-ttu-id="8f561-117">Zobrazí se výzva, které chcete toomove hello tooconfirm zadané prostředky.</span><span class="sxs-lookup"><span data-stu-id="8f561-117">You will be asked tooconfirm that you want toomove hello specified resources.</span></span> <span data-ttu-id="8f561-118">Typ **Y** tooconfirm, že chcete toomove hello prostředky.</span><span class="sxs-lookup"><span data-stu-id="8f561-118">Type **Y** tooconfirm that you want toomove hello resources.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="e4412-119">Další kroky</span><span class="sxs-lookup"><span data-stu-id="e4412-119">Next steps</span></span>
-<span data-ttu-id="e4412-120">Mnoho různých typů prostředků můžete přesouvat mezi skupinami prostředků a předplatná.</span><span class="sxs-lookup"><span data-stu-id="e4412-120">You can move many different types of resources between resource groups and subscriptions.</span></span> <span data-ttu-id="e4412-121">Další informace najdete v tématu, které se zabývá [přesunutím prostředků do nové skupiny prostředků nebo předplatného](../../resource-group-move-resources.md).</span><span class="sxs-lookup"><span data-stu-id="e4412-121">For more information, see [Move resources to new resource group or subscription](../../resource-group-move-resources.md).</span></span>    
+## <a name="next-steps"></a><span data-ttu-id="8f561-119">Další kroky</span><span class="sxs-lookup"><span data-stu-id="8f561-119">Next steps</span></span>
+<span data-ttu-id="8f561-120">Mnoho různých typů prostředků můžete přesouvat mezi skupinami prostředků a předplatná.</span><span class="sxs-lookup"><span data-stu-id="8f561-120">You can move many different types of resources between resource groups and subscriptions.</span></span> <span data-ttu-id="8f561-121">Další informace najdete v tématu [přesunout skupiny prostředků toonew prostředků nebo předplatného](../../resource-group-move-resources.md).</span><span class="sxs-lookup"><span data-stu-id="8f561-121">For more information, see [Move resources toonew resource group or subscription](../../resource-group-move-resources.md).</span></span>    
 

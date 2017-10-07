@@ -1,6 +1,6 @@
 ---
 title: "Kurz: Azure Active Directory integration Procore jednotného přihlašování k | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Procore jednotné přihlašování."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Procore jednotné přihlašování."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,259 +13,259 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-ms.openlocfilehash: 042a41eaa6bb21670b4c12068f1b017222f64b99
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bb918617f18ba3f44ddde469e6fc411977752f15
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a><span data-ttu-id="e6437-103">Kurz: Azure Active Directory integrace s Procore jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="e6437-103">Tutorial: Azure Active Directory integration with Procore SSO</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a><span data-ttu-id="f1e74-103">Kurz: Azure Active Directory integrace s Procore jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="f1e74-103">Tutorial: Azure Active Directory integration with Procore SSO</span></span>
 
-<span data-ttu-id="e6437-104">V tomto kurzu zjistěte, jak integrovat Procore jednotné přihlašování s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="e6437-104">In this tutorial, you learn how to integrate Procore SSO with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="f1e74-104">V tomto kurzu zjistíte, jak toointegrate Procore jednotné přihlašování s Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="f1e74-104">In this tutorial, you learn how toointegrate Procore SSO with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="e6437-105">Integrace Procore jednotné přihlašování s Azure AD poskytuje následující výhody:</span><span class="sxs-lookup"><span data-stu-id="e6437-105">Integrating Procore SSO with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="f1e74-105">Integrace Procore jednotné přihlašování s Azure AD poskytuje hello následující výhody:</span><span class="sxs-lookup"><span data-stu-id="f1e74-105">Integrating Procore SSO with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="e6437-106">Můžete řídit ve službě Azure AD, který má přístup k Procore jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="e6437-106">You can control in Azure AD who has access to Procore SSO</span></span>
-- <span data-ttu-id="e6437-107">Můžete povolit uživatelům, aby automaticky získat přihlášení k Procore jednotné přihlašování (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="e6437-107">You can enable your users to automatically get signed-on to Procore SSO (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="e6437-108">Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure</span><span class="sxs-lookup"><span data-stu-id="e6437-108">You can manage your accounts in one central location - the Azure Management portal</span></span>
+- <span data-ttu-id="f1e74-106">Můžete řídit ve službě Azure AD, který má přístup tooProcore jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="f1e74-106">You can control in Azure AD who has access tooProcore SSO</span></span>
+- <span data-ttu-id="f1e74-107">Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooProcore jednotné přihlašování (jednotné přihlášení) s jejich účty Azure AD</span><span class="sxs-lookup"><span data-stu-id="f1e74-107">You can enable your users tooautomatically get signed-on tooProcore SSO (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="f1e74-108">Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure hello</span><span class="sxs-lookup"><span data-stu-id="f1e74-108">You can manage your accounts in one central location - hello Azure Management portal</span></span>
 
-<span data-ttu-id="e6437-109">Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="e6437-109">If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="f1e74-109">Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="f1e74-109">If you want tooknow more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
 <!--## Overview
 
-To enable single sign-on with Procore SSO, it must be configured to use Azure Active Directory as an identity provider. This guide provides information and tips on how to perform this configuration in Procore SSO.
+tooenable single sign-on with Procore SSO, it must be configured toouse Azure Active Directory as an identity provider. This guide provides information and tips on how tooperform this configuration in Procore SSO.
 
 >[!Note]: 
->This embedded guide is brand new in the new Azure portal, and we’d love to hear your thoughts. Use the Feedback ? button at the top of the portal to provide feedback. The older guide for using the [Azure classic portal](https://manage.windowsazure.com) to configure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
+>This embedded guide is brand new in hello new Azure portal, and we’d love toohear your thoughts. Use hello Feedback ? button at hello top of hello portal tooprovide feedback. hello older guide for using hello [Azure classic portal](https://manage.windowsazure.com) tooconfigure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
 
 
-## <a name="prerequisites"></a><span data-ttu-id="e6437-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="e6437-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="f1e74-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="f1e74-110">Prerequisites</span></span>
 
-<span data-ttu-id="e6437-111">Konfigurace integrace Azure AD s Procore jednotné přihlašování, potřebujete následující položky:</span><span class="sxs-lookup"><span data-stu-id="e6437-111">To configure Azure AD integration with Procore SSO, you need the following items:</span></span>
+<span data-ttu-id="f1e74-111">tooconfigure integrace Azure AD pomocí Procore jednotného přihlašování, je třeba hello následující položky:</span><span class="sxs-lookup"><span data-stu-id="f1e74-111">tooconfigure Azure AD integration with Procore SSO, you need hello following items:</span></span>
 
-- <span data-ttu-id="e6437-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="e6437-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="e6437-113">Procore SSO jednotného přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="e6437-113">A Procore SSO single-sign on enabled subscription</span></span>
+- <span data-ttu-id="f1e74-112">Předplatné služby Azure AD</span><span class="sxs-lookup"><span data-stu-id="f1e74-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="f1e74-113">Procore SSO jednotného přihlašování povolené předplatné</span><span class="sxs-lookup"><span data-stu-id="f1e74-113">A Procore SSO single-sign on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="e6437-114">K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="e6437-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="f1e74-114">tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.</span><span class="sxs-lookup"><span data-stu-id="f1e74-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="e6437-115">Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="e6437-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="f1e74-115">tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:</span><span class="sxs-lookup"><span data-stu-id="f1e74-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="e6437-116">Provozním prostředí byste neměli používat, pokud je to nutné.</span><span class="sxs-lookup"><span data-stu-id="e6437-116">You should not use your production environment, unless this is necessary.</span></span>
-- <span data-ttu-id="e6437-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="e6437-117">If you don't have an Azure AD trial environment, you can get an one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="f1e74-116">Provozním prostředí byste neměli používat, pokud je to nutné.</span><span class="sxs-lookup"><span data-stu-id="f1e74-116">You should not use your production environment, unless this is necessary.</span></span>
+- <span data-ttu-id="f1e74-117">Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="f1e74-117">If you don't have an Azure AD trial environment, you can get an one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="e6437-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="e6437-118">Scenario description</span></span>
-<span data-ttu-id="e6437-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="e6437-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="e6437-120">Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="e6437-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="f1e74-118">Popis scénáře</span><span class="sxs-lookup"><span data-stu-id="f1e74-118">Scenario description</span></span>
+<span data-ttu-id="f1e74-119">V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.</span><span class="sxs-lookup"><span data-stu-id="f1e74-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="f1e74-120">Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:</span><span class="sxs-lookup"><span data-stu-id="f1e74-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="e6437-121">Přidání Procore jednotného přihlašování z Galerie</span><span class="sxs-lookup"><span data-stu-id="e6437-121">Adding Procore SSO from the gallery</span></span>
-2. <span data-ttu-id="e6437-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="e6437-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="f1e74-121">Přidání Procore jednotného přihlašování z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="f1e74-121">Adding Procore SSO from hello gallery</span></span>
+2. <span data-ttu-id="f1e74-122">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="f1e74-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-procore-sso-from-the-gallery"></a><span data-ttu-id="e6437-123">Přidání Procore jednotného přihlašování z Galerie</span><span class="sxs-lookup"><span data-stu-id="e6437-123">Adding Procore SSO from the gallery</span></span>
-<span data-ttu-id="e6437-124">Při konfiguraci integrace Procore přihlašování do služby Azure AD, potřebujete přidat Procore jednotného přihlašování z Galerie si na seznam spravovaných aplikací SaaS.</span><span class="sxs-lookup"><span data-stu-id="e6437-124">To configure the integration of Procore SSO into Azure AD, you need to add Procore SSO from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-procore-sso-from-hello-gallery"></a><span data-ttu-id="f1e74-123">Přidání Procore jednotného přihlašování z Galerie hello</span><span class="sxs-lookup"><span data-stu-id="f1e74-123">Adding Procore SSO from hello gallery</span></span>
+<span data-ttu-id="f1e74-124">tooconfigure hello integrace Procore přihlašování do služby Azure AD, je nutné tooadd Procore SSO hello Galerie tooyour seznamu spravovaných aplikací SaaS.</span><span class="sxs-lookup"><span data-stu-id="f1e74-124">tooconfigure hello integration of Procore SSO into Azure AD, you need tooadd Procore SSO from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="e6437-125">**Pokud chcete přidat Procore jednotného přihlašování z galerie, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="e6437-125">**To add Procore SSO from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="f1e74-125">**tooadd Procore jednotného přihlašování z Galerie hello, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="f1e74-125">**tooadd Procore SSO from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="e6437-126">V  **[portálu pro správu Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="e6437-126">In the **[Azure Management Portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="f1e74-126">V hello  **[portálu pro správu Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="f1e74-126">In hello **[Azure Management Portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="e6437-128">Přejděte na **podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="e6437-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="e6437-129">Pak přejděte na **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="e6437-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="f1e74-128">Přejděte příliš**podnikové aplikace, které**.</span><span class="sxs-lookup"><span data-stu-id="f1e74-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="f1e74-129">Potom přejděte příliš**všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="f1e74-129">Then go too**All applications**.</span></span>
 
     ![Aplikace][2]
     
-3. <span data-ttu-id="e6437-131">Klikněte na tlačítko **přidat** tlačítko horní dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="e6437-131">Click **Add** button on the top of the dialog.</span></span>
+3. <span data-ttu-id="f1e74-131">Klikněte na tlačítko **přidat** hello nahoře hello dialogového okna na tlačítko.</span><span class="sxs-lookup"><span data-stu-id="f1e74-131">Click **Add** button on hello top of hello dialog.</span></span>
 
     ![Aplikace][3]
 
-4. <span data-ttu-id="e6437-133">Do vyhledávacího pole zadejte **Procore SSO**.</span><span class="sxs-lookup"><span data-stu-id="e6437-133">In the search box, type **Procore SSO**.</span></span>
+4. <span data-ttu-id="f1e74-133">Hello vyhledávacího pole zadejte **Procore SSO**.</span><span class="sxs-lookup"><span data-stu-id="f1e74-133">In hello search box, type **Procore SSO**.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_search.png)
 
-5. <span data-ttu-id="e6437-135">Na panelu výsledků vyberte **Procore SSO**a potom klikněte na **přidat** tlačítko Přidat aplikaci.</span><span class="sxs-lookup"><span data-stu-id="e6437-135">In the results panel, select **Procore SSO**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="f1e74-135">Na panelu výsledků hello vyberte **Procore jednotného přihlašování k**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.</span><span class="sxs-lookup"><span data-stu-id="f1e74-135">In hello results panel, select **Procore SSO**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="e6437-137">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="e6437-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="e6437-138">V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Procore jednotného přihlašování na základě testovací uživatele, nazývá "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="e6437-138">In this section, you configure and test Azure AD single sign-on with Procore SSO based on a test user called "Britta Simon".</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="f1e74-137">Konfigurace a testování Azure AD jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="f1e74-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="f1e74-138">V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Procore jednotného přihlašování na základě testovací uživatele, nazývá "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="f1e74-138">In this section, you configure and test Azure AD single sign-on with Procore SSO based on a test user called "Britta Simon".</span></span>
 
-<span data-ttu-id="e6437-139">Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějšku Procore SSO je pro uživatele ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="e6437-139">For single sign-on to work, Azure AD needs to know what the counterpart user in Procore SSO is to a user in Azure AD.</span></span> <span data-ttu-id="e6437-140">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské Procore SSO musí navázat.</span><span class="sxs-lookup"><span data-stu-id="e6437-140">In other words, a link relationship between an Azure AD user and the related user in Procore SSO needs to be established.</span></span>
+<span data-ttu-id="f1e74-139">Pro toowork jeden přihlašování Azure AD musí tooknow, co uživatel protějšku hello Procore SSO je tooa uživatelem ve službě Azure AD.</span><span class="sxs-lookup"><span data-stu-id="f1e74-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in Procore SSO is tooa user in Azure AD.</span></span> <span data-ttu-id="f1e74-140">Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello Procore SSO musí toobe navázat.</span><span class="sxs-lookup"><span data-stu-id="f1e74-140">In other words, a link relationship between an Azure AD user and hello related user in Procore SSO needs toobe established.</span></span>
 
-<span data-ttu-id="e6437-141">Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** Procore sso.</span><span class="sxs-lookup"><span data-stu-id="e6437-141">This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Procore SSO.</span></span>
+<span data-ttu-id="f1e74-141">Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** Procore sso.</span><span class="sxs-lookup"><span data-stu-id="f1e74-141">This link relationship is established by assigning hello value of hello **user name** in Azure AD as hello value of hello **Username** in Procore SSO.</span></span>
 
-<span data-ttu-id="e6437-142">Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí jednotného přihlašování služby Procore, je třeba dokončit následující stavební bloky:</span><span class="sxs-lookup"><span data-stu-id="e6437-142">To configure and test Azure AD single sign-on with Procore SSO, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="f1e74-142">tooconfigure a testování Azure AD jednotné přihlašování pomocí jednotného přihlašování služby Procore, potřebujete následující stavební bloky hello toocomplete:</span><span class="sxs-lookup"><span data-stu-id="f1e74-142">tooconfigure and test Azure AD single sign-on with Procore SSO, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="e6437-143">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.</span><span class="sxs-lookup"><span data-stu-id="e6437-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="e6437-144">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="e6437-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="e6437-145">**[Vytvoření zkušebního uživatele Procore SSO](#creating-a-procore-sso-test-user)**  – Pokud chcete mít protějšek Britta Simon Procore SSO propojeném s Azure AD reprezentace jí.</span><span class="sxs-lookup"><span data-stu-id="e6437-145">**[Creating a Procore SSO test user](#creating-a-procore-sso-test-user)** - to have a counterpart of Britta Simon in Procore SSO that is linked to the Azure AD representation of her.</span></span>
-4. <span data-ttu-id="e6437-146">**[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="e6437-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="e6437-147">**[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.</span><span class="sxs-lookup"><span data-stu-id="e6437-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="f1e74-143">**[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.</span><span class="sxs-lookup"><span data-stu-id="f1e74-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="f1e74-144">**[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="f1e74-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="f1e74-145">**[Vytvoření zkušebního uživatele Procore SSO](#creating-a-procore-sso-test-user)**  -toohave protějšek Britta Simon v Procore jednotné přihlašování, která je jí reprezentace toohello propojené služby Azure AD.</span><span class="sxs-lookup"><span data-stu-id="f1e74-145">**[Creating a Procore SSO test user](#creating-a-procore-sso-test-user)** - toohave a counterpart of Britta Simon in Procore SSO that is linked toohello Azure AD representation of her.</span></span>
+4. <span data-ttu-id="f1e74-146">**[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="f1e74-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="f1e74-147">**[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.</span><span class="sxs-lookup"><span data-stu-id="f1e74-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="e6437-148">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="e6437-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="f1e74-148">Konfigurace Azure AD jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="f1e74-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="e6437-149">V této části můžete povolit Azure AD jednotné přihlašování v portálu pro správu Azure a nakonfigurovat jednotné přihlašování v aplikaci Procore jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="e6437-149">In this section, you enable Azure AD single sign-on in the Azure Management portal and configure single sign-on in your Procore SSO application.</span></span>
+<span data-ttu-id="f1e74-149">V této části můžete povolit Azure AD jednotného přihlašování na portálu pro správu Azure hello a nakonfigurovat jednotné přihlašování v aplikaci Procore jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="f1e74-149">In this section, you enable Azure AD single sign-on in hello Azure Management portal and configure single sign-on in your Procore SSO application.</span></span>
 
-<span data-ttu-id="e6437-150">**Ke konfiguraci Azure AD jednotné přihlašování pomocí jednotného přihlašování služby Procore, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="e6437-150">**To configure Azure AD single sign-on with Procore SSO, perform the following steps:**</span></span>
+<span data-ttu-id="f1e74-150">**tooconfigure Azure AD jednotné přihlašování s Procore jednotné přihlašování, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="f1e74-150">**tooconfigure Azure AD single sign-on with Procore SSO, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="e6437-151">Na portálu Azure Management portal na **Procore jednotného přihlašování k** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="e6437-151">In the Azure Management portal, on the **Procore SSO** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="f1e74-151">V hello Azure Management portal na hello **Procore SSO** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.</span><span class="sxs-lookup"><span data-stu-id="f1e74-151">In hello Azure Management portal, on hello **Procore SSO** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. <span data-ttu-id="e6437-153">Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování na.</span><span class="sxs-lookup"><span data-stu-id="e6437-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign on.</span></span>
+2. <span data-ttu-id="f1e74-153">Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** jednotného přihlašování k tooenable.</span><span class="sxs-lookup"><span data-stu-id="f1e74-153">On hello **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** tooenable single sign on.</span></span>
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_samlbase.png)
 
-3. <span data-ttu-id="e6437-155">Na **Procore jednotného přihlašování k doméně a adresy URL** části uživatel nemusí provádět žádné kroky, protože aplikace je už předem integrováno s Azure.</span><span class="sxs-lookup"><span data-stu-id="e6437-155">On the **Procore SSO Domain and URLs** section, the user does not have to perform any steps as the app is already pre-integrated with Azure.</span></span>
+3. <span data-ttu-id="f1e74-155">Na hello **Procore jednotného přihlašování k doméně a adresy URL** část, hello uživatel nemá tooperform žádné kroky jako aplikace hello je už předem integrováno s Azure.</span><span class="sxs-lookup"><span data-stu-id="f1e74-155">On hello **Procore SSO Domain and URLs** section, hello user does not have tooperform any steps as hello app is already pre-integrated with Azure.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_url.png)
 
-4. <span data-ttu-id="e6437-157">Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="e6437-157">On the **SAML Signing Certificate** section, click **Metadata XML** and then save the XML file on your computer.</span></span>
+4. <span data-ttu-id="f1e74-157">Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML hello ve vašem počítači.</span><span class="sxs-lookup"><span data-stu-id="f1e74-157">On hello **SAML Signing Certificate** section, click **Metadata XML** and then save hello XML file on your computer.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_certificate.png) 
 
-5. <span data-ttu-id="e6437-159">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="e6437-159">Click **Save** button.</span></span>
+5. <span data-ttu-id="f1e74-159">Klikněte na tlačítko **Uložit** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="f1e74-159">Click **Save** button.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-procoresso-tutorial/tutorial_general_400.png)
 
-6. <span data-ttu-id="e6437-161">Na **Procore Konfigurace jednotného přihlašování k** klikněte na tlačítko **Konfigurace jednotného přihlašování k Procore** otevřete **konfigurovat přihlášení** okno.</span><span class="sxs-lookup"><span data-stu-id="e6437-161">On the **Procore SSO Configuration** section, click **Configure Procore SSO** to open **Configure sign-on** window.</span></span> <span data-ttu-id="e6437-162">Kopírování **SAML Entity ID a SAML jeden přihlašování adresu URL služby** z **Stručná referenční příručka části.**</span><span class="sxs-lookup"><span data-stu-id="e6437-162">Copy the **SAML Entity ID and SAML Single Sign-On Service URL** from the **Quick Reference section.**</span></span>
+6. <span data-ttu-id="f1e74-161">Na hello **Procore Konfigurace jednotného přihlašování k** klikněte na tlačítko **Konfigurace jednotného přihlašování k Procore** tooopen **konfigurovat přihlášení** okno.</span><span class="sxs-lookup"><span data-stu-id="f1e74-161">On hello **Procore SSO Configuration** section, click **Configure Procore SSO** tooopen **Configure sign-on** window.</span></span> <span data-ttu-id="f1e74-162">Kopírování hello **SAML Entity ID a SAML jeden přihlašování adresu URL služby** z hello **Stručná referenční příručka části.**</span><span class="sxs-lookup"><span data-stu-id="f1e74-162">Copy hello **SAML Entity ID and SAML Single Sign-On Service URL** from hello **Quick Reference section.**</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_configure.png) 
 
-7. <span data-ttu-id="e6437-164">Konfigurace jednotného přihlašování na **Procore SSO** straně, přihlášení k serveru vaší společnosti procore jako správce.</span><span class="sxs-lookup"><span data-stu-id="e6437-164">To configure single sign-on on **Procore SSO** side, login to your procore company site as an administrator.</span></span>
+7. <span data-ttu-id="f1e74-164">tooconfigure jednotného přihlašování na **Procore SSO** straně, lokality procore společnosti tooyour přihlášení jako správce.</span><span class="sxs-lookup"><span data-stu-id="f1e74-164">tooconfigure single sign-on on **Procore SSO** side, login tooyour procore company site as an administrator.</span></span>
 
-8. <span data-ttu-id="e6437-165">V rozevíracím sady nástrojů dolů, klikněte na **správce** otevřete stránku nastavení jednotného přihlašování.</span><span class="sxs-lookup"><span data-stu-id="e6437-165">From the toolbox drop down, click on **Admin** to open the SSO settings page.</span></span>
+8. <span data-ttu-id="f1e74-165">Sada nástrojů rozevíracím hello dolů, klikněte na **správce** tooopen hello jednotného přihlašování k nastavení stránky.</span><span class="sxs-lookup"><span data-stu-id="f1e74-165">From hello toolbox drop down, click on **Admin** tooopen hello SSO settings page.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-procoresso-tutorial/procore_tool_admin.png)
 
-9. <span data-ttu-id="e6437-167">Vložení hodnoty do polí, jak je popsáno níže-</span><span class="sxs-lookup"><span data-stu-id="e6437-167">Paste the values in the boxes as described below-</span></span>
+9. <span data-ttu-id="f1e74-167">Vložit hello hodnoty v polích hello jako popsané níže-</span><span class="sxs-lookup"><span data-stu-id="f1e74-167">Paste hello values in hello boxes as described below-</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-procoresso-tutorial/procore_setting_admin.png)    
 
-    <span data-ttu-id="e6437-169">a.</span><span class="sxs-lookup"><span data-stu-id="e6437-169">a.</span></span> <span data-ttu-id="e6437-170">V **jedné URL přihlašování na vystavitele** pole, vložte SAML Entity ID zkopírovaných z portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="e6437-170">In the **Single Sign On Issuer URL** box, paste the SAML Entity ID copied from the Azure portal.</span></span>
+    <span data-ttu-id="f1e74-169">a.</span><span class="sxs-lookup"><span data-stu-id="f1e74-169">a.</span></span> <span data-ttu-id="f1e74-170">V hello **jedné URL přihlašování na vystavitele** pole, vložte hello SAML Entity ID zkopírovaných z hello portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="f1e74-170">In hello **Single Sign On Issuer URL** box, paste hello SAML Entity ID copied from hello Azure portal.</span></span>
 
-    <span data-ttu-id="e6437-171">b.</span><span class="sxs-lookup"><span data-stu-id="e6437-171">b.</span></span> <span data-ttu-id="e6437-172">V **SAML přihlašovací na cílová adresa URL** pole, vložte SAML jeden přihlašování adresa URL služby zkopírovaných z portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="e6437-172">In the **SAML Sign On Target URL** box, paste the SAML Single Sign-On Service URL copied from the Azure portal.</span></span>
+    <span data-ttu-id="f1e74-171">b.</span><span class="sxs-lookup"><span data-stu-id="f1e74-171">b.</span></span> <span data-ttu-id="f1e74-172">V hello **SAML přihlašovací na cílová adresa URL** pole, vložte hello SAML jeden přihlašování adresa URL služby zkopírovaných z hello portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="f1e74-172">In hello **SAML Sign On Target URL** box, paste hello SAML Single Sign-On Service URL copied from hello Azure portal.</span></span>
 
-    <span data-ttu-id="e6437-173">c.</span><span class="sxs-lookup"><span data-stu-id="e6437-173">c.</span></span> <span data-ttu-id="e6437-174">Nyní otevřete **soubor XML s metadaty** výše si stáhli z portálu Azure a kopírovat ve značce s názvem certifikátu **certifikátu x 509**.</span><span class="sxs-lookup"><span data-stu-id="e6437-174">Now open the **Metadata XML** downloaded above from the Azure portal and copy the certficate in the tag named **X509Certificate**.</span></span> <span data-ttu-id="e6437-175">Vložit zkopírovaný hodnotu do **jednotné přihlašování x509 certifikát** pole.</span><span class="sxs-lookup"><span data-stu-id="e6437-175">Paste the copied value into the **Single Sign On x509 Certificate** box.</span></span>
+    <span data-ttu-id="f1e74-173">c.</span><span class="sxs-lookup"><span data-stu-id="f1e74-173">c.</span></span> <span data-ttu-id="f1e74-174">Nyní otevřete hello **soubor XML s metadaty** výše stažený z hello portál Azure a kopírovat hello certifikátu hello značky s názvem **certifikátu x 509**.</span><span class="sxs-lookup"><span data-stu-id="f1e74-174">Now open hello **Metadata XML** downloaded above from hello Azure portal and copy hello certficate in hello tag named **X509Certificate**.</span></span> <span data-ttu-id="f1e74-175">Vložení hello zkopírují hello hodnotu **jednotné přihlašování x509 certifikát** pole.</span><span class="sxs-lookup"><span data-stu-id="f1e74-175">Paste hello copied value into hello **Single Sign On x509 Certificate** box.</span></span>
 
-10. <span data-ttu-id="e6437-176">Klikněte na **uložit změny**.</span><span class="sxs-lookup"><span data-stu-id="e6437-176">Click on **Save Changes**.</span></span>
+10. <span data-ttu-id="f1e74-176">Klikněte na **uložit změny**.</span><span class="sxs-lookup"><span data-stu-id="f1e74-176">Click on **Save Changes**.</span></span>
 
-11. <span data-ttu-id="e6437-177">Po tato nastavení, musí poslat **název domény** (např **contoso.com**) prostřednictvím které jsou do Procore k protokolování [tým podpory Procore](https://support.procore.com/) a aktivují federované jednotné přihlašování pro tuto doménu.</span><span class="sxs-lookup"><span data-stu-id="e6437-177">After these settings, you needs to send the **domain name** (e.g **contoso.com**) through which you are logging into Procore to the [Procore Support team](https://support.procore.com/) and they will activate federated SSO for that domain.</span></span>
+11. <span data-ttu-id="f1e74-177">Po tato nastavení, musí toosend hello **název domény** (např **contoso.com**) prostřednictvím které přihlašujete Procore toohello [tým podpory Procore](https://support.procore.com/) a ty budou Aktivujte federované jednotné přihlašování pro tuto doménu.</span><span class="sxs-lookup"><span data-stu-id="f1e74-177">After these settings, you needs toosend hello **domain name** (e.g **contoso.com**) through which you are logging into Procore toohello [Procore Support team](https://support.procore.com/) and they will activate federated SSO for that domain.</span></span>
 
 <!--### Next steps
 
-To ensure users can sign-in to Procore SSO after it has been configured to use Azure Active Directory, review the following tasks and topics:
+tooensure users can sign-in tooProcore SSO after it has been configured toouse Azure Active Directory, review hello following tasks and topics:
 
-- User accounts must be pre-provisioned into Procore SSO prior to sign-in. To set this up, see Provisioning.
+- User accounts must be pre-provisioned into Procore SSO prior toosign-in. tooset this up, see Provisioning.
  
-- Users must be assigned access to Procore SSO in Azure AD to sign-in. To assign users, see Users.
+- Users must be assigned access tooProcore SSO in Azure AD toosign-in. tooassign users, see Users.
  
-- To configure access polices for Procore SSO users, see Access Policies.
+- tooconfigure access polices for Procore SSO users, see Access Policies.
  
-- For additional information on deploying single sign-on to users, see [this article](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users).-->
+- For additional information on deploying single sign-on toousers, see [this article](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users).-->
 
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="e6437-178">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="e6437-178">Creating an Azure AD test user</span></span>
-<span data-ttu-id="e6437-179">Cílem této části je vytvoření zkušebního uživatele na portálu správy Azure, názvem Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="e6437-179">The objective of this section is to create a test user in the Azure Management portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="f1e74-178">Vytváření testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="f1e74-178">Creating an Azure AD test user</span></span>
+<span data-ttu-id="f1e74-179">Hello cílem této části je toocreate testovacího uživatele na portálu pro správu Azure hello názvem Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="f1e74-179">hello objective of this section is toocreate a test user in hello Azure Management portal called Britta Simon.</span></span>
 
 ![Vytvořit uživatele Azure AD][100]
 
-<span data-ttu-id="e6437-181">**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="e6437-181">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="f1e74-181">**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="f1e74-181">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="e6437-182">V **portálu pro správu Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="e6437-182">In the **Azure Management portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="f1e74-182">V hello **portálu pro správu Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.</span><span class="sxs-lookup"><span data-stu-id="f1e74-182">In hello **Azure Management portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-procoresso-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="e6437-184">Přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** zobrazíte seznam uživatelů.</span><span class="sxs-lookup"><span data-stu-id="e6437-184">Go to **Users and groups** and click **All users** to display the list of users.</span></span>
+2. <span data-ttu-id="f1e74-184">Přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** toodisplay hello seznam uživatelů.</span><span class="sxs-lookup"><span data-stu-id="f1e74-184">Go too**Users and groups** and click **All users** toodisplay hello list of users.</span></span>
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-procoresso-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="e6437-186">V horní části okna klikněte na tlačítko **přidat** otevřete **uživatele** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="e6437-186">At the top of the dialog click **Add** to open the **User** dialog.</span></span>
+3. <span data-ttu-id="f1e74-186">V horní části hello hello dialogového okna klikněte na tlačítko **přidat** tooopen hello **uživatele** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="f1e74-186">At hello top of hello dialog click **Add** tooopen hello **User** dialog.</span></span>
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-procoresso-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="e6437-188">Na **uživatele** dialogové okno stránky, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="e6437-188">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="f1e74-188">Na hello **uživatele** dialogové okno proveďte hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="f1e74-188">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-procoresso-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="e6437-190">a.</span><span class="sxs-lookup"><span data-stu-id="e6437-190">a.</span></span> <span data-ttu-id="e6437-191">V **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="e6437-191">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="f1e74-190">a.</span><span class="sxs-lookup"><span data-stu-id="f1e74-190">a.</span></span> <span data-ttu-id="f1e74-191">V hello **název** textovému poli, typ **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="f1e74-191">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="e6437-192">b.</span><span class="sxs-lookup"><span data-stu-id="e6437-192">b.</span></span> <span data-ttu-id="e6437-193">V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="e6437-193">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="f1e74-192">b.</span><span class="sxs-lookup"><span data-stu-id="f1e74-192">b.</span></span> <span data-ttu-id="f1e74-193">V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="f1e74-193">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="e6437-194">c.</span><span class="sxs-lookup"><span data-stu-id="e6437-194">c.</span></span> <span data-ttu-id="e6437-195">Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.</span><span class="sxs-lookup"><span data-stu-id="e6437-195">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="f1e74-194">c.</span><span class="sxs-lookup"><span data-stu-id="f1e74-194">c.</span></span> <span data-ttu-id="f1e74-195">Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.</span><span class="sxs-lookup"><span data-stu-id="f1e74-195">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="e6437-196">d.</span><span class="sxs-lookup"><span data-stu-id="e6437-196">d.</span></span> <span data-ttu-id="e6437-197">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="e6437-197">Click **Create**.</span></span>
+    <span data-ttu-id="f1e74-196">d.</span><span class="sxs-lookup"><span data-stu-id="f1e74-196">d.</span></span> <span data-ttu-id="f1e74-197">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="f1e74-197">Click **Create**.</span></span>
  
-### <a name="creating-a-procore-sso-test-user"></a><span data-ttu-id="e6437-198">Vytvoření zkušebního uživatele Procore jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="e6437-198">Creating a Procore SSO test user</span></span>
+### <a name="creating-a-procore-sso-test-user"></a><span data-ttu-id="f1e74-198">Vytvoření zkušebního uživatele Procore jednotného přihlašování</span><span class="sxs-lookup"><span data-stu-id="f1e74-198">Creating a Procore SSO test user</span></span>
 
-<span data-ttu-id="e6437-199">Postupujte níže uvedených pokynů pro vytvoření Procore testovací uživatele na jejich straně.</span><span class="sxs-lookup"><span data-stu-id="e6437-199">Please follow the below steps to create a Procore test user on their side.</span></span>
+<span data-ttu-id="f1e74-199">Postupujte podle hello níže kroky toocreate Procore testovacího uživatele na jejich straně.</span><span class="sxs-lookup"><span data-stu-id="f1e74-199">Please follow hello below steps toocreate a Procore test user on their side.</span></span>
 
-1. <span data-ttu-id="e6437-200">Přihlášení k serveru vaší společnosti procore jako správce.</span><span class="sxs-lookup"><span data-stu-id="e6437-200">Login to your procore company site as an administrator.</span></span>  
+1. <span data-ttu-id="f1e74-200">Lokalita procore společnosti tooyour přihlášení jako správce.</span><span class="sxs-lookup"><span data-stu-id="f1e74-200">Login tooyour procore company site as an administrator.</span></span>  
 
-2. <span data-ttu-id="e6437-201">V rozevíracím sady nástrojů dolů, klikněte na **Directory** chcete otevřít stránku directory společnosti.</span><span class="sxs-lookup"><span data-stu-id="e6437-201">From the toolbox drop down, click on **Directory** to open the company directory page.</span></span>
+2. <span data-ttu-id="f1e74-201">Sada nástrojů rozevíracím hello dolů, klikněte na **Directory** stránky adresáře společnosti tooopen hello.</span><span class="sxs-lookup"><span data-stu-id="f1e74-201">From hello toolbox drop down, click on **Directory** tooopen hello company directory page.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-procoresso-tutorial/Procore_sso_directory.png)
 
-3. <span data-ttu-id="e6437-203">Klikněte na **přidat osobu** možnost Otevřít formulář a zadejte provést následující možnosti -</span><span class="sxs-lookup"><span data-stu-id="e6437-203">Click on **Add a Person** option to open the form and enter perform following options -</span></span>
+3. <span data-ttu-id="f1e74-203">Klikněte na **přidat osobu** možnost tooopen hello formuláře a zadejte provést následující možnosti -</span><span class="sxs-lookup"><span data-stu-id="f1e74-203">Click on **Add a Person** option tooopen hello form and enter perform following options -</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-procoresso-tutorial/Procore_user_add.png)
 
-    <span data-ttu-id="e6437-205">a.</span><span class="sxs-lookup"><span data-stu-id="e6437-205">a.</span></span> <span data-ttu-id="e6437-206">V **křestní jméno** textovému poli, křestní jméno uživatele typu jako **Britta**.</span><span class="sxs-lookup"><span data-stu-id="e6437-206">In the **First Name** textbox, type user's first name like **Britta**.</span></span>
+    <span data-ttu-id="f1e74-205">a.</span><span class="sxs-lookup"><span data-stu-id="f1e74-205">a.</span></span> <span data-ttu-id="f1e74-206">V hello **křestní jméno** textovému poli, křestní jméno uživatele typu jako **Britta**.</span><span class="sxs-lookup"><span data-stu-id="f1e74-206">In hello **First Name** textbox, type user's first name like **Britta**.</span></span>
 
-    <span data-ttu-id="e6437-207">b.</span><span class="sxs-lookup"><span data-stu-id="e6437-207">b.</span></span> <span data-ttu-id="e6437-208">V **příjmení** textovému poli, příjmení uživatele typu jako **Simon**.</span><span class="sxs-lookup"><span data-stu-id="e6437-208">In the **Last name** textbox, type user's last name like **Simon**.</span></span>
+    <span data-ttu-id="f1e74-207">b.</span><span class="sxs-lookup"><span data-stu-id="f1e74-207">b.</span></span> <span data-ttu-id="f1e74-208">V hello **příjmení** textovému poli, příjmení uživatele typu jako **Simon**.</span><span class="sxs-lookup"><span data-stu-id="f1e74-208">In hello **Last name** textbox, type user's last name like **Simon**.</span></span>
 
-    <span data-ttu-id="e6437-209">c.</span><span class="sxs-lookup"><span data-stu-id="e6437-209">c.</span></span> <span data-ttu-id="e6437-210">V **e-mailovou adresu** textovému poli, typu uživatele e-mailovou adresu jako  **BrittaSimon@contoso.com** .</span><span class="sxs-lookup"><span data-stu-id="e6437-210">In the **Email Address** textbox, type user's email address like **BrittaSimon@contoso.com**.</span></span>
+    <span data-ttu-id="f1e74-209">c.</span><span class="sxs-lookup"><span data-stu-id="f1e74-209">c.</span></span> <span data-ttu-id="f1e74-210">V hello **e-mailovou adresu** textovému poli, typu uživatele e-mailovou adresu jako  **BrittaSimon@contoso.com** .</span><span class="sxs-lookup"><span data-stu-id="f1e74-210">In hello **Email Address** textbox, type user's email address like **BrittaSimon@contoso.com**.</span></span>
 
-    <span data-ttu-id="e6437-211">d.</span><span class="sxs-lookup"><span data-stu-id="e6437-211">d.</span></span> <span data-ttu-id="e6437-212">Vyberte **šablona oprávnění** jako **později použít šablonu oprávnění**.</span><span class="sxs-lookup"><span data-stu-id="e6437-212">Select **Permission Template** as **Apply Permission Template Later**.</span></span>
+    <span data-ttu-id="f1e74-211">d.</span><span class="sxs-lookup"><span data-stu-id="f1e74-211">d.</span></span> <span data-ttu-id="f1e74-212">Vyberte **šablona oprávnění** jako **později použít šablonu oprávnění**.</span><span class="sxs-lookup"><span data-stu-id="f1e74-212">Select **Permission Template** as **Apply Permission Template Later**.</span></span>
 
-    <span data-ttu-id="e6437-213">e.</span><span class="sxs-lookup"><span data-stu-id="e6437-213">e.</span></span> <span data-ttu-id="e6437-214">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="e6437-214">Click **Create**.</span></span>
+    <span data-ttu-id="f1e74-213">e.</span><span class="sxs-lookup"><span data-stu-id="f1e74-213">e.</span></span> <span data-ttu-id="f1e74-214">Klikněte na možnost **Vytvořit**.</span><span class="sxs-lookup"><span data-stu-id="f1e74-214">Click **Create**.</span></span>
 
-4. <span data-ttu-id="e6437-215">Zkontrolovat a aktualizovat podrobnosti nově přidané kontakt.</span><span class="sxs-lookup"><span data-stu-id="e6437-215">Check and update the details for the newly added contact.</span></span>
+4. <span data-ttu-id="f1e74-215">Zkontrolujte a aktualizujte hello podrobnosti pro hello nově přidali kontakt.</span><span class="sxs-lookup"><span data-stu-id="f1e74-215">Check and update hello details for hello newly added contact.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-procoresso-tutorial/Procore_user_check.png)
 
-5. <span data-ttu-id="e6437-217">Klikněte na **uložit a odeslat Invitiation** (Pokud pozvání prostřednictvím e-mailu je vyžadována) nebo **Uložit** (uložit přímo) k dokončení registrace uživatele.</span><span class="sxs-lookup"><span data-stu-id="e6437-217">Click on **Save and Send Invitiation** (if an invite through mail is required) or **Save** (Save directly) to complete the user registration.</span></span>
+5. <span data-ttu-id="f1e74-217">Klikněte na **uložit a odeslat Invitiation** (Pokud pozvání prostřednictvím e-mailu je vyžadována) nebo **Uložit** (uložit přímo) toocomplete hello uživatele registrace.</span><span class="sxs-lookup"><span data-stu-id="f1e74-217">Click on **Save and Send Invitiation** (if an invite through mail is required) or **Save** (Save directly) toocomplete hello user registration.</span></span>
     
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-procoresso-tutorial/Procore_user_save.png)    
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="e6437-219">Přiřazení testovacího uživatele Azure AD</span><span class="sxs-lookup"><span data-stu-id="e6437-219">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="f1e74-219">Přiřazení hello Azure AD testovacího uživatele</span><span class="sxs-lookup"><span data-stu-id="f1e74-219">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="e6437-220">V této části povolíte Britta Simon používat Azure jednotné přihlašování tak, že udělíte přístup k Procore jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="e6437-220">In this section, you enable Britta Simon to use Azure single sign-on by granting her access to Procore SSO.</span></span>
+<span data-ttu-id="f1e74-220">V této části povolíte jeho přístup tooProcore jednotné přihlašování, poskytněte Britta Simon toouse Azure jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="f1e74-220">In this section, you enable Britta Simon toouse Azure single sign-on by granting her access tooProcore SSO.</span></span>
 
 ![Přiřadit uživatele][200] 
 
-<span data-ttu-id="e6437-222">**Pokud chcete přiřadit Britta Simon Procore jednotné přihlašování, proveďte následující kroky:**</span><span class="sxs-lookup"><span data-stu-id="e6437-222">**To assign Britta Simon to Procore SSO, perform the following steps:**</span></span>
+<span data-ttu-id="f1e74-222">**tooassign tooProcore Britta Simon jednotné přihlašování, proveďte následující kroky hello:**</span><span class="sxs-lookup"><span data-stu-id="f1e74-222">**tooassign Britta Simon tooProcore SSO, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="e6437-223">V portálu pro správu Azure, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="e6437-223">In the Azure Management portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="f1e74-223">Na portálu pro správu Azure hello, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.</span><span class="sxs-lookup"><span data-stu-id="f1e74-223">In hello Azure Management portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Přiřadit uživatele][201] 
 
-2. <span data-ttu-id="e6437-225">V seznamu aplikací vyberte **Procore SSO**.</span><span class="sxs-lookup"><span data-stu-id="e6437-225">In the applications list, select **Procore SSO**.</span></span>
+2. <span data-ttu-id="f1e74-225">V seznamu aplikace hello vyberte **Procore SSO**.</span><span class="sxs-lookup"><span data-stu-id="f1e74-225">In hello applications list, select **Procore SSO**.</span></span>
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_app.png) 
 
-3. <span data-ttu-id="e6437-227">V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="e6437-227">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="f1e74-227">V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.</span><span class="sxs-lookup"><span data-stu-id="f1e74-227">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Přiřadit uživatele][202] 
 
-4. <span data-ttu-id="e6437-229">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="e6437-229">Click **Add** button.</span></span> <span data-ttu-id="e6437-230">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="e6437-230">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="f1e74-229">Klikněte na tlačítko **přidat** tlačítko.</span><span class="sxs-lookup"><span data-stu-id="f1e74-229">Click **Add** button.</span></span> <span data-ttu-id="f1e74-230">Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="f1e74-230">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Přiřadit uživatele][203]
 
-5. <span data-ttu-id="e6437-232">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.</span><span class="sxs-lookup"><span data-stu-id="e6437-232">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="f1e74-232">Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.</span><span class="sxs-lookup"><span data-stu-id="f1e74-232">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="e6437-233">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="e6437-233">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="f1e74-233">Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="f1e74-233">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="e6437-234">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="e6437-234">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="f1e74-234">Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="f1e74-234">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="e6437-235">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="e6437-235">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="f1e74-235">Testování jednotné přihlašování</span><span class="sxs-lookup"><span data-stu-id="f1e74-235">Testing single sign-on</span></span>
 
-<span data-ttu-id="e6437-236">V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="e6437-236">In this section, you test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="f1e74-236">V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.</span><span class="sxs-lookup"><span data-stu-id="f1e74-236">In this section, you test your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="e6437-237">Pokud chcete testovat vaše nastavení jednotného přihlašování, otevřete Panel přístupu.</span><span class="sxs-lookup"><span data-stu-id="e6437-237">If you want to test your single sign-on settings, open the Access Panel.</span></span> <span data-ttu-id="e6437-238">Další podrobnosti o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586).</span><span class="sxs-lookup"><span data-stu-id="e6437-238">For more details about the Access Panel, see [Introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586).</span></span> <span data-ttu-id="e6437-239">Když kliknete na dlaždici Procore jednotného přihlašování na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Procore jednotné přihlašování.</span><span class="sxs-lookup"><span data-stu-id="e6437-239">When you click the Procore SSO tile in the Access Panel, you should get automatically signed-on to your Procore SSO application.</span></span>
+<span data-ttu-id="f1e74-237">Pokud chcete testovat vaše nastavení jednotného přihlašování, otevřete Panel přístupu.</span><span class="sxs-lookup"><span data-stu-id="f1e74-237">If you want to test your single sign-on settings, open the Access Panel.</span></span> <span data-ttu-id="f1e74-238">Další podrobnosti o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586).</span><span class="sxs-lookup"><span data-stu-id="f1e74-238">For more details about the Access Panel, see [Introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586).</span></span> <span data-ttu-id="f1e74-239">Když kliknete na dlaždici hello Procore jednotné přihlašování v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour Procore jednotného přihlašování k aplikaci.</span><span class="sxs-lookup"><span data-stu-id="f1e74-239">When you click hello Procore SSO tile in hello Access Panel, you should get automatically signed-on tooyour Procore SSO application.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="e6437-240">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="e6437-240">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="f1e74-240">Další zdroje</span><span class="sxs-lookup"><span data-stu-id="f1e74-240">Additional resources</span></span>
 
-* [<span data-ttu-id="e6437-241">Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="e6437-241">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="e6437-242">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="e6437-242">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="f1e74-241">Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="f1e74-241">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="f1e74-242">Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="f1e74-242">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 
 
