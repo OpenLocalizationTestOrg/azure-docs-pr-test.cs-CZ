@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření aplikace Azure Service Fabric Reliable Actors v Javě v Linuxu | Dokumentace Microsoftu"
-description: "Zjistěte, jak za pět minut vytvořit a nasadit aplikaci Service Fabric Reliable Actors v Javě."
+title: "aaaCreate aplikace Java spolehlivé aktéři Azure Service Fabric v systému Linux | Microsoft Docs"
+description: "Zjistěte, jak toocreate a nasazení aplikace Java Service Fabric spolehlivé aktéři za pět minut."
 services: service-fabric
 documentationcenter: java
 author: rwike77
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: ryanwi
-ms.openlocfilehash: baf948587ede31fe3d5b4f6f0981269b4cfe4d3d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 11496b767811c89969c65d1682d843448eb6a922
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Vytvoření první aplikace Service Fabric Reliable Actors v Javě v Linuxu
 > [!div class="op_single_selector"]
@@ -28,15 +28,15 @@ ms.lasthandoff: 08/29/2017
 >
 >
 
-Tento rychlý start vám pomůže během několika minut vytvořit první aplikaci Azure Service Fabric v Javě v linuxovém vývojovém prostředí.  Až budete hotovi, budete mít jednoduchou jednoúčelovou aplikaci v Javě spuštěnou v místním vývojovém clusteru.  
+Tento rychlý start vám pomůže během několika minut vytvořit první aplikaci Azure Service Fabric v Javě v linuxovém vývojovém prostředí.  Jakmile budete hotovi, budete mít jednoduchou aplikaci Java jedním služby systémem hello místní vývojový cluster.  
 
 ## <a name="prerequisites"></a>Požadavky
-Než začnete, nainstalujte sadu Service SDK a Service Fabric CLI a nastavte vývojový cluster ve svém [linuxovém vývojovém prostředí](service-fabric-get-started-linux.md). Pokud používáte Mac OS X, můžete k [nastavení linuxového vývojového prostředí ve virtuálním počítači použít Vagrant](service-fabric-get-started-mac.md).
+Než začnete, instalaci hello Service Fabric SDK, hello Service Fabric rozhraní příkazového řádku a nastavit cluster vývoj ve vaší [vývojového prostředí Linux](service-fabric-get-started-linux.md). Pokud používáte Mac OS X, můžete k [nastavení linuxového vývojového prostředí ve virtuálním počítači použít Vagrant](service-fabric-get-started-mac.md).
 
-Budete také chtít nainstalovat [Service Fabric CLI](service-fabric-cli.md).
+Můžete také tooinstall hello [Service Fabric rozhraní příkazového řádku](service-fabric-cli.md).
 
-### <a name="install-and-set-up-the-generators-for-java"></a>Instalace a nastavení generátorů pro Javu
-Service Fabric nabízí nástroje pro generování uživatelského rozhraní, které vám pomůžou vytvořit aplikaci Service Fabric Java z terminálu pomocí generátoru šablon Yeoman. Postupujte podle následujících kroků, abyste zkontrolovali, že máte na svém počítači funkční generátor šablon Service Fabric yeoman pro Javu.
+### <a name="install-and-set-up-hello-generators-for-java"></a>Instalace a nastavení hello generátory pro jazyk Java
+Service Fabric nabízí nástroje pro generování uživatelského rozhraní, které vám pomůžou vytvořit aplikaci Service Fabric Java z terminálu pomocí generátoru šablon Yeoman. Postupujte podle kroků hello tooensure máte hello Service Fabric yeoman šablony generátor pro jazyk Java pracující na váš počítač.
 1. Instalace nodejs a NPM na počítači
 
   ```bash
@@ -48,85 +48,85 @@ Service Fabric nabízí nástroje pro generování uživatelského rozhraní, kt
   ```bash
   sudo npm install -g yo
   ```
-3. Instalace generátoru aplikací Service Fabric Yeo Java z NPM
+3. Nainstalujte generátor aplikace Service Fabric jo s háčkem nad Java hello z NPM
 
   ```bash
   sudo npm install -g generator-azuresfjava
   ```
 
-## <a name="create-the-application"></a>Vytvoření aplikace
-Aplikace Service Fabric obsahuje jednu nebo víc služeb, z nichž každá má určitou roli při poskytování funkcí aplikace. Generátor, který jste nainstalovali v poslední části, vám usnadní vytvoření první služby a případná další rozšíření později.  Vytvořit, sestavit a nasadit aplikace Service Fabric v Javě můžete také pomocí modulu plug-in pro Eclipse. Viz [Vytvoření a nasazení první aplikace v Javě pomocí Eclipse](service-fabric-get-started-eclipse.md). Pro účely tohoto rychlého startu použijte Yeoman k vytvoření aplikace s jednou službou, která ukládá a získává hodnotu čítače.
+## <a name="create-hello-application"></a>Vytvoření aplikace hello
+Aplikace Service Fabric obsahuje jednu nebo více služeb, každý s určitou roli při poskytování funkcí aplikace hello. Generátor Hello jste nainstalovali v poslední části hello umožňuje snadno toocreate první služby a tooadd více později.  Vytvořit, sestavit a nasadit aplikace Service Fabric v Javě můžete také pomocí modulu plug-in pro Eclipse. Viz [Vytvoření a nasazení první aplikace v Javě pomocí Eclipse](service-fabric-get-started-eclipse.md). Pro tento rychlý start použijte Yeoman toocreate aplikace jedinou službou, která uchovává a získá hodnotu čítače.
 
 1. V terminálu zadejte ``yo azuresfjava``.
 2. Pojmenujte svoji aplikaci.
-3. Vyberte typ první služby a pojmenujte ji. Pro účely tohoto kurzu zvolte službu Reliable Actor. Další informace o ostatních typech služeb najdete v tématu [Přehled programovacího modelu Service Fabric](service-fabric-choose-framework.md).
+3. Vyberte typ hello vaší první služby a pojmenujte ho. Pro účely tohoto kurzu zvolte službu Reliable Actor. Další informace o hello jiné typy služeb, naleznete v části [Service Fabric přehled modelu programování](service-fabric-choose-framework.md).
    ![Generátor Service Fabric Yeoman pro Javu][sf-yeoman]
 
-## <a name="build-the-application"></a>Sestavení aplikace
-Šablony Service Fabric Yeoman zahrnují skript sestavení pro [Gradle](https://gradle.org/), který můžete použít k sestavení aplikace z terminálu.
-Závislosti Service Fabric Java se získávají z Mavenu. Chcete-li sestavovat aplikace Service Fabric Java a pracovat s nimi, musíte zajistit, že máte nainstalovanou sadu JDK a Gradle. Pokud ještě nejsou instalované, můžete nainstalovat sadu JDK(openjdk-8-jdk) a Gradle spuštěním následujícího kódu:
+## <a name="build-hello-application"></a>Vytvoření aplikace hello
+šablony služby Fabric Yeoman Hello zahrnují sestavení skript pro [Gradle](https://gradle.org/), které můžete použít aplikaci hello toobuild z hello terminálu.
+Závislosti Service Fabric Java se získávají z Mavenu. toobuild a práce na hello aplikací Service Fabric Java, je nutné tooensure, že máte JDK a Gradle nainstalována. Pokud dosud není nainstalován, můžete spustit hello tooinstall JDK(openjdk-8-jdk) a Gradle -
 
   ```bash
   sudo apt-get install openjdk-8-jdk-headless
   sudo apt-get install gradle
   ```
 
-Pokud chcete sestavit a zabalit aplikaci, spusťte následující:
+toobuild a balíček hello aplikace, spusťte následující hello:
 
   ```bash
   cd myapp
   gradle
   ```
 
-## <a name="deploy-the-application"></a>Nasazení aplikace
-Jakmile je aplikace sestavená, můžete ji nasadit do místního clusteru.
+## <a name="deploy-hello-application"></a>Nasazení aplikace hello
+Po hello aplikace, můžete ho nasadit toohello místní cluster.
 
-1. Připojte se k místnímu clusteru služby Service Fabric.
+1. Připojte toohello místní cluster Service Fabric.
 
     ```bash
     sfctl cluster select --endpoint http://localhost:19080
     ```
 
-2. Spuštěním instalačního skriptu, který je součástí šablony, zkopírujte balíček aplikace do úložiště imagí clusteru, zaregistrujte typ aplikace a vytvořte její instanci.
+2. Spusťte instalační skript hello zadaný v toocopy hello šablony aplikace hello balíček toohello clusteru úložiště bitových kopií, registrace typu aplikace hello a vytvoření instance aplikace hello.
 
     ```bash
     ./install.sh
     ```
 
-Nasazení sestavené aplikace je stejné jako u všech ostatních aplikací Service Fabric. Podrobné pokyny najdete v dokumentaci s popisem [správy aplikace Service Fabric pomocí Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md).
+Nasazení aplikace hello vytvořené je hello stejně jako všechny ostatní aplikace Service Fabric. Naleznete v dokumentaci k hello na [aplikace Service Fabric s hello Service Fabric rozhraní příkazového řádku pro správu](service-fabric-application-lifecycle-sfctl.md) podrobné pokyny.
 
-Parametry těchto příkazů najdete v generovaných manifestech uvnitř balíčku aplikace.
+Příkazy toothese parametrů naleznete v manifesty hello generuje uvnitř balíčku aplikace hello.
 
-Jakmile je aplikace nasazená, otevřete prohlížeč a přejděte k nástroji [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) na adrese [http://localhost:19080/Explorer](http://localhost:19080/Explorer).
-Pak rozbalte uzel **Aplikace** a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
+Po nasazení aplikace hello, otevřete prohlížeč a přejděte do [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) v [http://localhost: 19080/Explorer](http://localhost:19080/Explorer).
+Potom rozbalte hello **aplikace** uzel a Všimněte si, že nyní položka pro váš typ aplikace a druhý pro hello první instance tohoto typu.
 
-## <a name="start-the-test-client-and-perform-a-failover"></a>Spuštění klienta testování a převzetí služeb při selhání
-Samotné objekty actor nic nedělají – vyžadují, aby jim jiná služba nebo klient posílali zprávy. Šablona actor zahrnuje jednoduchý testovací skript, který můžete použít k interakci se službou actor.
+## <a name="start-hello-test-client-and-perform-a-failover"></a>Spustit hello testovacího klienta a provést převzetí služeb při selhání
+Aktéři udělat nic samostatně, vyžadují jiná služba nebo klienta toosend je zprávy. Šablona objektu actor Hello obsahuje jednoduchá testovací skriptu, které můžete použít toointeract službou objektu actor hello.
 
-1. Spusťte skript pomocí pomocného sledovacího programu a prohlédněte si výstup služby actor.  Testovací skript volá metodu `setCountAsync()` objektu actor pro zvýšení čítače a metodu `getCountAsync()` objektu actor pro získání nové hodnoty čítače, kterou zobrazí v konzole.
+1. Spusťte skript hello pomocí výstup hello hello sledovat nástroj toosee služby objektu actor hello.  Hello zkušební skript volá hello `setCountAsync()` volá metodu tooincrement objektu actor hello čítač, hello `getCountAsync()` metodu hello objektu actor tooget hello nová hodnota čítače a zobrazí, které hodnoty toohello konzoly.
 
     ```bash
     cd myactorsvcTestClient
     watch -n 1 ./testclient.sh
     ```
 
-2. V nástroji Service Fabric Explorer vyhledejte uzel, který je hostitelem primární repliky pro službu objektu actor. Na snímku níže je to uzel 3. Primární replika služby zpracovává operace čtení a zápisu.  Změny stavu služby se následně replikují do sekundárních replik, které jsou na následujícím snímku obrazovku spuštěné na uzlech 0 a 1.
+2. V Service Fabric Explorer vyhledejte hello uzly hostování hello primární replika služby objektu actor hello. Na snímku obrazovky hello níže je uzel 3. obslužné rutiny repliky primární služba Hello operacích čtení a zápisu.  Změny ve stavu service jsou poté replikovány na sekundárních replikách toohello, spuštěná na uzlech 0 a 1 v úvodní obrazovka snímek níže.
 
-    ![Vyhledání primární repliky v Service Fabric Exploreru][sfx-primary]
+    ![Hledání hello primární repliky v Service Fabric Exploreru][sfx-primary]
 
-3. V části **Uzly** klikněte na uzel, který jste našli v předchozím kroku, a pak v nabídce Akce vyberte **Deaktivovat (restartovat)**. Tato akce restartuje uzel spuštěný v primární replice služby a vynutí převzetí služeb při selhání jednou ze sekundárních replik spuštěných na jiném uzlu.  Úroveň této sekundární repliky se zvýší na primární, v jiném uzlu se vytvoří jiná sekundární replika a primární replika začne přijímat operace čtení a zápisu. Při restartování uzlu sledujte výstup z testovacího klienta a všimněte si, že se čítač bez ohledu na převzetí služeb při selhání pořád postupně zvyšuje.
+3. V **uzly**, klikněte na uzel hello v předchozím kroku hello najít a pak vyberte **deaktivovat (restartovat)** z nabídky akce hello. Tato akce restartuje hello uzlu se systémem hello primární služba repliky a vynutí tooone převzetí služeb při selhání replik sekundární hello systémem v jiném uzlu.  Tato sekundární replika je propagovaných tooprimary, jiné sekundární repliky se vytvoří na jiný uzel a primární repliky hello začne tootake operace čtení a zápisu. Při restartování uzlu hello, sledujte hello výstup hello testovacího klienta a Všimněte si, že tento čítač hello pokračuje tooincrement navzdory hello převzetí služeb při selhání.
 
-## <a name="remove-the-application"></a>Odebrání aplikace
-Pomocí odinstalačního skriptu, který je součástí šablony, odstraňte instanci aplikace, zrušte registraci balíčku aplikace a odeberete balíček aplikace z úložiště imagí clusteru.
+## <a name="remove-hello-application"></a>Odebrání aplikace hello
+Použít skript odinstalovat hello uvedený v instanci aplikace hello šablony toodelete hello, zrušení registrace balíčku aplikace hello a odebrání balíčku aplikace hello z úložiště bitových kopií hello clusteru.
 
 ```bash
 ./uninstall.sh
 ```
 
-V nástroji Service Fabric Explorer uvidíte, že se aplikace a typ aplikace už nezobrazují v uzlu **Aplikace**.
+V Service Fabric explorer uvidíte, že aplikace hello a typ aplikace se v již hello **aplikace** uzlu.
 
 ## <a name="service-fabric-java-libraries-on-maven"></a>Knihovny Service Fabric Java v Mavenu
-Hostitelem knihoven Service Fabric Java je Maven. Můžete přidat závislosti do souborů ``pom.xml`` nebo ``build.gradle`` vašich projektů, aby se používaly knihovny Service Fabric Java z úložiště **mavenCentral**.
+Hostitelem knihoven Service Fabric Java je Maven. Můžete přidat závislosti hello v hello ``pom.xml`` nebo ``build.gradle`` knihoven vaše projekty toouse Service Fabric Java z **mavenCentral**.
 
 ### <a name="actors"></a>Objekty actor
 
@@ -173,7 +173,7 @@ Podpora bezstavové služby Service Fabric pro vaši aplikaci.
 ### <a name="others"></a>Ostatní
 #### <a name="transport"></a>Přenos
 
-Podpora přenosové vrstvy pro aplikace Service Fabric Java. Pokud neprogramujete na úrovni přenosové vrstvy, nemusíte tuto závislost do aplikace Reliable Actor nebo aplikace služby explicitně přidávat.
+Podpora přenosové vrstvy pro aplikace Service Fabric Java. Není nutné tooexplicitly přidat tuto závislost tooyour spolehlivé objektu Actor nebo aplikace služby, pokud program v přenosové vrstvě hello.
 
   ```XML
   <dependency>
@@ -194,7 +194,7 @@ Podpora přenosové vrstvy pro aplikace Service Fabric Java. Pokud neprogramujet
 
 #### <a name="fabric-support"></a>Podpora prostředků infrastruktury
 
-Podpora na úrovni systému pro Service Fabric, která komunikuje s modulem runtime nativním pro Service Fabric. Tuto závislost nemusíte do aplikace Reliable Actor nebo aplikace služby explicitně přidávat. Načte se z Mavenu automaticky, jakmile zahrnete ostatní závislosti uvedené výše.
+Systém úrovně podpory pro Service Fabric, která komunikuje toonative modulu runtime Service Fabric. Není nutné tooexplicitly přidat tuto závislost tooyour spolehlivé objektu Actor nebo aplikace služby. To získá automaticky načtených z Maven, jakmile zahrnete hello jiných závislostí uvedených výše.
 
   ```XML
   <dependency>
@@ -213,14 +213,14 @@ Podpora na úrovni systému pro Service Fabric, která komunikuje s modulem runt
   }
   ```
 
-## <a name="migrating-old-service-fabric-java-applications-to-be-used-with-maven"></a>Migrace starých aplikací Service Fabric Java pro použití s Mavenem
-Nedávno jsme přesunuli knihovny Service Fabric Java ze sady Service Fabric Java SDK do úložiště Maven. Zatímco nové aplikace, které vygenerujete pomocí Yeomanu nebo Eclipse, vygenerují nejnovější aktualizované projekty (které budou moct pracovat s Mavenem), můžete vaše stávající bezstavové aplikace nebo aplikace objektu actor v Javě pro Service Fabric, které dřív používali sadu Service Fabric Java SDK, aktualizovat tak, aby používaly závislosti Service Fabric Java z Mavenu. Abyste zajistili fungování starších aplikací s Mavenem, postupujte podle kroků uvedených [tady](service-fabric-migrate-old-javaapp-to-use-maven.md).
+## <a name="migrating-old-service-fabric-java-applications-toobe-used-with-maven"></a>Migrace starého toobe aplikace Service Fabric Java použít s Maven
+Nedávno jsme přesunuli knihovny Service Fabric Java z úložiště tooMaven Service Fabric Java SDK. Při hello nové aplikace, který generovat pomocí Yeoman nebo Eclipse, vygeneruje nejnovější aktualizované projekty (které bude možné toowork s Maven), můžete aktualizovat existující Service Fabric bezstavové nebo objektu actor aplikací Java, které byly pomocí hello služby Fabric Java SDK dříve, toouse hello Service Fabric Java závislostí z Maven. Postupujte podle kroků hello [sem](service-fabric-migrate-old-javaapp-to-use-maven.md) tooensure starší aplikace funguje s Maven.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření první aplikace Service Fabric v Javě v Linuxu pomocí Eclipse](service-fabric-get-started-eclipse.md)
 * [Další informace o Reliable Actors](service-fabric-reliable-actors-introduction.md)
-* [Komunikace s clustery Service Fabric pomocí rozhraní příkazového řádku Service Fabric](service-fabric-cli.md)
+* [Komunikovat s clusterů Service Fabric pomocí hello Service Fabric rozhraní příkazového řádku](service-fabric-cli.md)
 * Informace o [možnostech podpory pro Service Fabric](service-fabric-support.md)
 * [Začínáme se Service Fabric CLI](service-fabric-cli.md)
 

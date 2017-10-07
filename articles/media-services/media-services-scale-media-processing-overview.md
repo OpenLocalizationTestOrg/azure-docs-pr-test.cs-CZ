@@ -1,5 +1,5 @@
 ---
-title: "Škálování zpracování média přehled | Microsoft Docs"
+title: "Přehled zpracování média aaaScaling | Microsoft Docs"
 description: "Toto téma je přehled škálování zpracování média pomocí služby Azure Media Services."
 services: media-services
 documentationcenter: 
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/04/2017
 ms.author: juliako
-ms.openlocfilehash: 1009d8b87cb3a131909f3ae9ee231f9ebb408c04
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d17531f79d4c1e0d0fa544c4fb5c083684e706fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scaling-media-processing-overview"></a>Škálování zpracování média – přehled
-Tato stránka poskytuje přehled toho, jak a proč škálování zpracování média. 
+Tato stránka bude stručně charakterizovat, jak a proč zpracování tooscale média. 
 
 ## <a name="overview"></a>Přehled
-Účet Media Services je přidružený k typu rezervované jednotky, který určuje rychlost zpracování vašich úloh zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: **S1**, **S2** nebo **S3**. Například stejná úloha kódování bude rychlejší, když použijete typ rezervované jednotky **S2**, než kdybyste použili typ **S1**. Další informace najdete v tématu [vyhrazené typy jednotek](https://azure.microsoft.com/blog/high-speed-encoding-with-azure-media-services/).
+Účet Media Services je přidružen vyhrazené jednotky typu, který určuje rychlost hello, ke které se zpracovávají médiu zpracování úlohy. Můžete si vybrat mezi hello následující vyhrazené typy jednotka: **S1**, **S2**, nebo **S3**. Například hello stejné úlohy kódování běží rychleji, pokud použijete hello **S2** jednotku rezervovanou typ porovnání toohello **S1** typu. Další informace najdete v tématu hello [vyhrazené typy jednotek](https://azure.microsoft.com/blog/high-speed-encoding-with-azure-media-services/).
 
-Určení typu jednotku rezervovanou, můžete kromě zadat poskytnutí jednotek rezervovaných pro váš účet. Počet zřízených rezervovaných jednotek určuje počet úloh médií, které je možné v daném účtu zpracovávat současně. Například pokud potom pět média úlohy bude běžet současně, pokud má váš účet jednotky rezervované pro pět, jako jsou úlohy, které mají být zpracovány. Ve zbývajících úkolech bude čekat ve frontě a bude získat zachyceny pro zpracování postupně po dokončení spuštěná úloha. Pokud účet nemá žádné jednotky rezervované pro zřízení, pak úlohy bude být zachyceny postupně. V takovém případě dobu čekání mezi jeden úkol nepřipojujte a další jeden počáteční bude záviset na dostupnost prostředků v systému.
+Kromě toho toospecifying hello vyhrazený typ jednotky, můžete zadat tooprovision účtu s jednotky rezervované. Hello počet jednotek rezervovaných pro zřízené určuje hello počet úloh média, jež lze současně zpracovávat v daném účtu. Například pokud potom pět média úlohy bude běžet současně, pokud má váš účet jednotky rezervované pro pět, jako jsou toobe úlohy zpracování. zbývající úlohy Hello bude čekat ve frontě hello a bude získat zachyceny pro zpracování postupně po dokončení spuštěná úloha. Pokud účet nemá žádné jednotky rezervované pro zřízení, pak úlohy bude být zachyceny postupně. V takovém případě hello čekací doba mezi jeden dokončení úkolů a hello další jeden spuštění bude záviset na hello dostupnost prostředků systému hello.
 
 ## <a name="choosing-between-different-reserved-unit-types"></a>Vybrat jinou jednotku rezervovanou typy
-V následující tabulce pomáhá zajistit rozhodnutí při výběru mezi různými rychlostmi kódování. Také poskytuje několik případů srovnávacího testu a poskytuje adresy URL SAS, který můžete použít ke stažení videa, na kterých můžete provádět vlastní testy:
+Následující tabulka Hello pomáhá zajistit rozhodnutí při výběru mezi různými rychlostmi kódování. Také poskytuje několik případů srovnávacího testu a poskytuje SAS adresy URL, kterou můžete použít toodownload videa, na kterých můžete provádět vlastní testy:
 
 | Scénáře | **S1** | **S2** | **S3** |
 | --- | --- | --- | --- |
 | Zamýšlený případ použití |Kódování jednou přenosovou rychlostí. <br/>Soubory SD nebo pod řešení, není čas citlivé, nízkými náklady. |Jednou přenosovou rychlostí a více kódování přenosovou rychlostí.<br/>Normálního využití pro SD i HD kódování. |Jednou přenosovou rychlostí a více kódování přenosovou rychlostí.<br/>Úplné HD a ovladači 4K videa řešení. Čas, citlivé a rychlejší vyřízení kódování. |
-| Srovnávacího testu |[Vstupní soubor: 5 minut dlouhé 640x360p v 29,97 snímků za sekundu](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_360p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D).<br/><br/>Kódování určené k s jednou přenosovou rychlostí souboru MP4, ve stejném rozlišení, trvá přibližně 11 minut. |[Vstupní soubor: 5 minut dlouhé 1280x720p v 29,97 snímků za sekundu](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_720p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D)<br/><br/>S "H264 jednou přenosovou rychlostí 720p" přednastavení kódování trvá přibližně 5 minut.<br/><br/>Kódování s "H264 Multiple Bitrate 720p" přednastavených trvá přibližně 11.5 minut. |[Vstupní soubor: 5 minut dlouhé 1920x1080p v 29,97 snímků za sekundu](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_1080p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D). <br/><br/>S "H264 jeden Bitrate 1080p" přednastavení kódování trvá přibližně 2.7 minut.<br/><br/>Kódování s "H264 Multiple Bitrate 1080p" přednastavených trvá přibližně 5.7 minut. |
+| Srovnávacího testu |[Vstupní soubor: 5 minut dlouhé 640x360p v 29,97 snímků za sekundu](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_360p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D).<br/><br/>Kódování souboru tooa jednou přenosovou rychlostí MP4, v hello stejné rozlišení, trvá přibližně 11 minut. |[Vstupní soubor: 5 minut dlouhé 1280x720p v 29,97 snímků za sekundu](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_720p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D)<br/><br/>S "H264 jednou přenosovou rychlostí 720p" přednastavení kódování trvá přibližně 5 minut.<br/><br/>Kódování s "H264 Multiple Bitrate 720p" přednastavených trvá přibližně 11.5 minut. |[Vstupní soubor: 5 minut dlouhé 1920x1080p v 29,97 snímků za sekundu](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_1080p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D). <br/><br/>S "H264 jeden Bitrate 1080p" přednastavení kódování trvá přibližně 2.7 minut.<br/><br/>Kódování s "H264 Multiple Bitrate 1080p" přednastavených trvá přibližně 5.7 minut. |
 
 ## <a name="considerations"></a>Požadavky
 > [!IMPORTANT]
@@ -43,19 +43,19 @@ V následující tabulce pomáhá zajistit rozhodnutí při výběru mezi různ�
 > 
 
 * Jednotky rezervované pro fungovat pro paralelním prováděním veškeré zpracování médií, včetně indexování úloh pomocí Azure Media Indexer.  Ale na rozdíl od kódování se úlohy indexování s rychlejšími rezervovanými jednotkami nezpracovávají rychleji.
-* Pokud používáte sdílený fond, to znamená, bez jakékoli jednotky rezervované pak úlohami kódovat mít stejného výkonu stejně jako u S1 RUs. Však neexistuje žádná horní mez do doby, kdy můžete tráví vaše úkoly ve stavu zařazených do fronty, a v každém okamžiku, bude spuštěna maximálně pouze jednu úlohu.
-* Následujících datových centrech nenabízejí **S2** vyhrazený typ jednotky: Brazílie – jih a Indie – západ.
-* Následující datové centrum nenabízí **S3** vyhrazený typ jednotky: Indie – západ.
+* Pokud používáte sdílené hello fondu, který je bez jednotky rezervované pro pak mít vaše úkoly kódovat hello stejného výkonu, stejně jako u S1 RUs. Ale neexistuje žádný čas toohello horní mez, může vaše úkoly strávené v zařazených do fronty stavu a v každém okamžiku, bude spuštěna maximálně pouze jednu úlohu.
+* Hello následujících datových centrech nenabízejí hello **S2** vyhrazený typ jednotky: Brazílie – jih a Indie – západ.
+* Hello následující datového centra nenabízí hello **S3** vyhrazený typ jednotky: Indie – západ.
 
 ## <a name="billing"></a>Fakturace
 
-Budou se vám účtovat skutečné minuty využití rezervovaných jednotek médií. Podrobné vysvětlení, najdete v části Nejčastější dotazy [Media Services ceny](https://azure.microsoft.com/pricing/details/media-services/) stránky.   
+Budou se vám účtovat skutečné minuty využití rezervovaných jednotek médií. Podrobné vysvětlení, najdete v tématu hello – nejčastější dotazy hello [Media Services ceny](https://azure.microsoft.com/pricing/details/media-services/) stránky.   
 
 ## <a name="quotas-and-limitations"></a>Kvóty a omezení
-Informace o kvóty a omezení a jak otevřít lístek podpory najdete v tématu [kvóty a omezení](media-services-quotas-and-limitations.md).
+Informace o kvóty a omezení a jak zjistit, tooopen lístek podpory [kvóty a omezení](media-services-quotas-and-limitations.md).
 
 ## <a name="next-step"></a>Další krok
-Dosáhnout škálování úlohu zpracování média s některou z těchto technologií: 
+Dosáhnout hello škálování média zpracování úlohy s některou z těchto technologií: 
 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encoding-units.md)

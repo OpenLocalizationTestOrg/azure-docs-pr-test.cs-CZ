@@ -1,6 +1,6 @@
 ---
 title: "Kurz: Azure Active Directory integrace s plátno pro správu vzdělávacího procesu | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a plátno pro správu vzdělávacího procesu."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a plátno pro správu vzdělávacího procesu."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 2212b7a81b66d1afd1aa78d1487b07b6d7b84129
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8f4a09266a108e2c92326b0909dd0650b1c84d6a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas-lms"></a>Kurz: Azure Active Directory integrace s plátno pro správu vzdělávacího procesu
 
-V tomto kurzu zjistěte, jak integrovat plátno s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate plátno s Azure Active Directory (Azure AD).
 
-Integrace plátno s Azure AD poskytuje následující výhody:
+Integrace plátno s Azure AD poskytuje hello následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup na plátno
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k plátno (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup tooCanvas
+- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooCanvas (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s plátno, potřebujete následující položky:
+Integrace služby Azure AD plátno tooconfigure, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - Plátně jednotného přihlašování povolené předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání plátno z Galerie
+1. Přidání plátno z Galerie hello
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-canvas-from-the-gallery"></a>Přidání plátno z Galerie
-Při konfiguraci integrace plátno do služby Azure AD potřebujete přidat plátno z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-canvas-from-hello-gallery"></a>Přidání plátno z Galerie hello
+tooconfigure hello integrace plátno do Azure AD, je nutné tooadd plátno hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat plátno z galerie, proveďte následující kroky:**
+**tooadd plátno z Galerie hello, proveďte následující kroky hello:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **plátno**.
+4. Hello vyhledávacího pole zadejte **plátno**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_search.png)
 
-5. Na panelu výsledků vyberte **plátno**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků hello vyberte **plátno**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování plátno podle testovacího uživatele názvem "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v plátno je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské plátno musí navázat.
+Pro toowork jeden přihlašování Azure AD musí tooknow, co uživatel protějšku hello plátno je tooa uživatelem ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello plátno musí toobe navázat.
 
-V plátně přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V plátně přiřadit hodnotu hello hello **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** tooestablish hello odkaz relace.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování plátno, je třeba dokončit následující stavební bloky:
+tooconfigure a testu Azure AD jednotné přihlašování s plátno, potřebujete následující stavební bloky hello toocomplete:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele plátno](#creating-a-canvas-test-user)**  – Pokud chcete mít protějšek Britta Simon plátno propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele plátno](#creating-a-canvas-test-user)**  -toohave protějšek Britta Simon plátno, která je propojená toohello Azure AD reprezentace uživatele.
+4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci plátno.
+V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci plátno.
 
-**Ke konfiguraci Azure AD jednotné přihlašování plátno, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování plátno, proveďte následující kroky hello:**
 
-1. Na portálu Azure na **plátno** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **plátno** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_samlbase.png)
 
-3. Na **plátno domény a adresy URL** část, proveďte následující kroky:
+3. Na hello **plátno domény a adresy URL** část, proveďte následující kroky hello:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<tenant-name>.instructure.com`
+    a. V hello **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<tenant-name>.instructure.com`
 
-    b. V **identifikátor** textovému poli, zadejte hodnotu pomocí následujícího vzorce:`https://<tenant-name>.instructure.com/saml2`
+    b. V hello **identifikátor** textovému poli, typ hello hodnotu pomocí hello následující vzoru:`https://<tenant-name>.instructure.com/saml2`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory plátno klienta](https://community.canvaslms.com/community/help) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečné. Aktualizovat tyto hodnoty s hello skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory plátno klienta](https://community.canvaslms.com/community/help) tooget tyto hodnoty. 
  
-4. Na **SAML podpisový certifikát** část, zkopírujte **kryptografický OTISK** hodnota certifikátu.
+4. Na hello **SAML podpisový certifikát** část, kopie hello **kryptografický OTISK** hodnota certifikátu.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_certificate.png) 
 
@@ -125,85 +125,85 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-canvas-lms-tutorial/tutorial_general_400.png)
 
-6. Na **plátno konfigurace** klikněte na tlačítko **konfigurace plátno** otevřete **konfigurovat přihlášení** okno. Kopírování **heslo změnit adresu URL, adresa URL Sign-Out, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+6. Na hello **plátno konfigurace** klikněte na tlačítko **konfigurace plátno** tooopen **konfigurovat přihlášení** okno. Kopírování hello **heslo změnit adresu URL, adresa URL Sign-Out, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z hello **Stručná referenční příručka části.**
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_configure.png) 
  
-7. V okně prohlížeče jiný web Přihlaste se na váš web společnosti plátno jako správce.
+7. V okně prohlížeče jiný web Přihlaste se jako správce na webu společnosti tooyour plátno.
 
-8. Přejděte na **kurzy \> účty spravované \> Microsoft**.
+8. Přejděte příliš**kurzy \> účty spravované \> Microsoft**.
    
     ![Plátno](./media/active-directory-saas-canvas-lms-tutorial/IC775990.png "plátno")
 
-9. V navigačním podokně na levé straně vyberte **ověřování**a potom klikněte na **přidat nová konfigurace SAML**.
+9. V navigačním podokně hello na levé straně hello vyberte **ověřování**a potom klikněte na **přidat nová konfigurace SAML**.
    
     ![Ověřování](./media/active-directory-saas-canvas-lms-tutorial/IC775991.png "ověřování")
 
-10. Na stránce aktuální integrace proveďte následující kroky:
+10. Na stránce aktuální integrace hello proveďte následující kroky hello:
    
     ![Aktuální integrace](./media/active-directory-saas-canvas-lms-tutorial/IC775992.png "aktuální integrace")
 
-    a. V **IdP Entity ID** textovému poli, vložte hodnotu **SAML Entity ID** který jste zkopírovali z portálu Azure.
+    a. V **IdP Entity ID** textovému poli, vložte hodnotu hello **SAML Entity ID** který jste zkopírovali z portálu Azure.
 
-    b. V **protokolu na adresu URL** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure.
+    b. V **protokolu na adresu URL** textovému poli, vložte hodnotu hello **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure.
 
-    c. V **adresy URL odhlašovací** textovému poli, vložte hodnotu **Sign-Out URL** který jste zkopírovali z portálu Azure.
+    c. V **adresy URL odhlašovací** textovému poli, vložte hodnotu hello **Sign-Out URL** který jste zkopírovali z portálu Azure.
 
-    d. V **odkaz změnit heslo** textovému poli, vložte hodnotu **heslo změnit adresu URL** který jste zkopírovali z portálu Azure. 
+    d. V **odkaz změnit heslo** textovému poli, vložte hodnotu hello **heslo změnit adresu URL** který jste zkopírovali z portálu Azure. 
 
-    e. V **otisků prstů certifikátů** textovému poli, Vložit **kryptografický otisk** hodnota certifikát, který jste zkopírovali z portálu Azure.      
+    e. V **otisků prstů certifikátů** textovému poli, vložte hello **kryptografický otisk** hodnota certifikát, který jste zkopírovali z portálu Azure.      
         
-    f. Z **přihlášení atribut** seznamu, vyberte **NameID**.
+    f. Z hello **přihlášení atribut** seznamu, vyberte **NameID**.
 
-    g. Z **identifikátor formátu** seznamu, vyberte **emailAddress**.
+    g. Z hello **identifikátor formátu** seznamu, vyberte **emailAddress**.
 
     h. Klikněte na tlačítko **uložit nastavení ověřování**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-canvas-lms-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-canvas-lms-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-canvas-lms-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-canvas-lms-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V hello **název** textovému poli, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-canvas-test-user"></a>Vytvoření zkušebního uživatele plátno
 
-Pokud chcete povolit uživatelům Azure AD přihlášení na plátno, musí být zřízená plátno.
+Uživatelé toolog tooenable Azure AD v tooCanvas, se musí být zřízená plátno.
 
 V případě plátně zřizování uživatelů je ruční úloha.
 
-**K poskytnutí uživatelského účtu, proveďte následující kroky:**
+**tooprovision uživatelský účet, proveďte následující kroky hello:**
 
-1. Přihlaste se k vaší **plátno** klienta.
+1. Přihlaste se tooyour **plátno** klienta.
 
-2. Přejděte na **kurzy \> účty spravované \> Microsoft**.
+2. Přejděte příliš**kurzy \> účty spravované \> Microsoft**.
    
    ![Plátno](./media/active-directory-saas-canvas-lms-tutorial/IC775990.png "plátno")
 
@@ -215,40 +215,40 @@ V případě plátně zřizování uživatelů je ruční úloha.
    
    ![Uživatelé](./media/active-directory-saas-canvas-lms-tutorial/IC775996.png "uživatelů")
 
-5. Na stránce Přidat nového uživatele dialogové okno proveďte následující kroky:
+5. V hello přidat nového uživatele dialogové okno stránky proveďte následující kroky hello:
    
    ![Přidat uživatele](./media/active-directory-saas-canvas-lms-tutorial/IC775997.png "přidat uživatele")
    
-   a. V **úplný název** textovému poli, zadejte jméno uživatele, jako je **BrittaSimon**.
+   a. V hello **úplný název** textovému poli, zadejte název hello uživatele jako **BrittaSimon**.
 
-   b. V **e-mailu** textovému poli, zadejte e-mailu uživatele jako  **brittasimon@contoso.com** .
+   b. V hello **e-mailu** textovému poli, zadejte e-mailu hello uživatele jako  **brittasimon@contoso.com** .
 
-   c. V **přihlášení** textovému poli, zadejte uživatele Azure AD e-mailovou adresu jako  **brittasimon@contoso.com** .
+   c. V hello **přihlášení** textovému poli, zadejte hello uživatele Azure AD e-mailovou adresu jako  **brittasimon@contoso.com** .
 
-   d. Vyberte **e-mailu uživatele o vytvoření tohoto účtu**.
+   d. Vyberte **e-mailem hello uživatel o vytvoření tohoto účtu**.
 
    e. Klikněte na tlačítko **přidat uživatele**.
 
 >[!NOTE]
->Můžete použít všechny ostatní plátno uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované plátno zřídit AAD uživatelské účty.
+>Můžete použít všechny ostatní plátno uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované plátno tooprovision AAD uživatelské účty.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu na plátno.
+V této části povolíte tak, že udělíte přístup tooCanvas toouse Britta Simon Azure jednotné přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**Přiřadit Britta Simon na plátno, proveďte následující kroky:**
+**tooassign Britta Simon tooCanvas, proveďte následující kroky hello:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **plátno**.
+2. V seznamu aplikace hello vyberte **plátno**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -256,7 +256,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -264,14 +264,14 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
 
-Když kliknete na dlaždici plátno na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci plátno.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
+Když kliknete na dlaždici plátno hello v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour plátno aplikace.
+Další informace o hello přístupového panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

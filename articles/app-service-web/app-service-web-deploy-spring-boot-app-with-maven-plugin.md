@@ -1,6 +1,6 @@
 ---
-title: "Jak používat modul plug-in Maven pro webové aplikace Azure k nasazení spouštěcí pružiny aplikace do Azure"
-description: "Další informace o použití modulu plug-in Maven pro webové aplikace Azure k nasazení pružiny spouštění aplikace na Azure."
+title: "aaaHow toouse hello Maven modulu plug-in pro Azure Web Apps toodeploy tooAzure pružiny spouštěcí aplikace"
+description: "Zjistěte, jak toouse hello Maven modulu plug-in pro Azure Web Apps toodeploy tooAzure pružiny spuštění aplikace."
 services: app-service\web
 documentationcenter: java
 author: rmcmurray
@@ -14,38 +14,38 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: robmcm;kevinzha
-ms.openlocfilehash: dceb7edf788bd87b1de04aa435a12cd5853755b9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 376fe90fe20621e15d7c9856214937c78b66026a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-the-maven-plugin-for-azure-web-apps-to-deploy-a-spring-boot-app-to-azure"></a>Jak používat modul plug-in Maven pro webové aplikace Azure k nasazení spouštěcí pružiny aplikace do Azure
+# <a name="how-toouse-hello-maven-plugin-for-azure-web-apps-toodeploy-a-spring-boot-app-tooazure"></a>Jak toouse hello Maven modulu plug-in pro Azure Web Apps toodeploy tooAzure pružiny spouštěcí aplikace
 
-[Maven modul plug-in pro Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin) pro [Apache Maven](http://maven.apache.org/) zajišťuje bezproblémovou integraci služby Azure App Service do projekty Maven a zjednodušuje proces pro vývojáře, jak nasadit webové aplikace do služby Azure App Service.
+Hello [Maven modul plug-in pro Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin) pro [Apache Maven](http://maven.apache.org/) zajišťuje bezproblémovou integraci služby Azure App Service do projekty Maven a zjednodušuje proces hello pro vývojáře toodeploy webové aplikace tooAzure služby App Service.
 
-Tento článek ukazuje, pomocí modulu plug-in Maven pro webové aplikace Azure k nasazení ukázkové aplikace pružiny spouštěcí do Azure App Services.
+Tento článek ukazuje použití hello Maven modulu plug-in pro Azure Web Apps toodeploy tooAzure aplikace pružiny spouštěcí ukázkové aplikace služby.
 
 > [!NOTE]
 >
-> Modul plug-in Maven pro Azure Web Apps je aktuálně k dispozici jako náhled. Teď je podporována pouze publikování FTP, i když další funkce, které jsou naplánované pro budoucnost.
+> Hello Maven modul plug-in pro Azure Web Apps je aktuálně k dispozici jako náhled. Teď je podporován pouze publikování FTP, i když další funkce, které jsou naplánované pro budoucí hello.
 >
 
 ## <a name="prerequisites"></a>Požadavky
 
-Aby bylo možné provést kroky v tomto kurzu, musíte mít následující požadavky:
+Pořadí toocomplete hello kroky v tomto kurzu je třeba toohave hello následující požadavky:
 
 * Předplatné Azure; Pokud nemáte předplatné Azure, můžete si aktivovat vaší [výhody pro předplatitele MSDN] nebo si zaregistrovat [bezplatný účet Azure].
-* [Rozhraní příkazového řádku Azure (CLI)].
+* Hello [rozhraní příkazového řádku Azure (CLI)].
 * Aktuální [Java Development Kit (JDK)], verze 1.7 nebo novější.
 * Apache na [Maven] sestavení nástroj (verze 3).
 * A [Git] klienta.
 
-## <a name="clone-the-sample-spring-boot-web-app"></a>Naklonujte ukázkovou webovou aplikaci pružiny spouštěcí
+## <a name="clone-hello-sample-spring-boot-web-app"></a>Klonování hello ukázka pružiny spouštěcí webové aplikace
 
 V této části klonovat hotová aplikace pružiny spouštěcí a otestovat ji místně.
 
-1. Otevřete příkazový řádek nebo okno terminálu a vytvořte místní adresář pro uložení aplikace pružiny spouštěcí a změňte do tohoto adresáře; například:
+1. Otevřete příkazový řádek nebo okno terminálu a vytvářet místní adresář toohold pružiny spouštěcí aplikace a změnit adresář toothat; například:
    ```shell
    md C:\SpringBoot
    cd C:\SpringBoot
@@ -56,52 +56,52 @@ V této části klonovat hotová aplikace pružiny spouštěcí a otestovat ji m
    cd /users/robert/SpringBoot
    ```
 
-1. Klon [pružiny spouštěcí Začínáme] ukázkový projekt do adresáře, který jste vytvořili; například:
+1. Klon hello [pružiny spouštěcí Začínáme] ukázkový projekt do adresáře hello jste vytvořili; například:
    ```shell
    git clone https://github.com/microsoft/gs-spring-boot
    ```
 
-1. Změňte adresář na dokončené projektu. například:
+1. Změnit adresář toohello dokončit projekt; například:
    ```shell
    cd gs-spring-boot/complete
    ```
 
-1. Sestavení na soubor JAR pomocí nástroje Maven; například:
+1. Vytvořit soubor JAR hello pomocí nástroje Maven; například:
    ```shell
    mvn clean package
    ```
 
-1. Po vytvoření webové aplikace, spusťte webovou aplikaci pomocí nástroje Maven; například:
+1. Po vytvoření webové aplikace hello spusťte hello webové aplikace pomocí nástroje Maven; například:
    ```shell
    mvn spring-boot:run
    ```
 
-1. Test webové aplikace tak, že přejde k němu místně pomocí webového prohlížeče. Můžete například použít následující příkaz curl k dispozici máte-li:
+1. Test webové aplikace hello procházení tooit místně pomocí webového prohlížeče. Můžete například použít následující příkaz, pokud máte k dispozici curl hello:
    ```shell
    curl http://localhost:8080
    ```
 
-1. Měli byste vidět zobrazenou následující zprávu: **pozdrav z jara spouštěcí!**
+1. Měli byste vidět hello následující zpráva: **pozdrav z jara spouštěcí!**
 
 ## <a name="create-an-azure-service-principal"></a>Vytvořit objekt služby Azure
 
-V této části vytvoříte Azure instanční objekt, který modul plug-in Maven používá při nasazení webové aplikace v Azure.
+V této části vytvoříte Azure instanční objekt, který hello používá modul plug-in Maven při nasazování tooAzure vaší webové aplikace.
 
 1. Otevřete příkazový řádek.
 
-1. Přihlaste se ke svému účtu Azure pomocí rozhraní příkazového řádku Azure:
+1. Přihlaste se k účtu Azure pomocí hello rozhraní příkazového řádku Azure:
    ```shell
    az login
    ```
-   Postupujte podle pokynů dokončete proces přihlášení.
+   Postup hello pokyny toocomplete hello přihlášení.
 
 1. Vytvořte objekt služby Azure:
    ```shell
    az ad sp create-for-rbac --name "uuuuuuuu" --password "pppppppp"
    ```
-   Kde `uuuuuuuu` je uživatelské jméno a `pppppppp` je heslo pro objekt služby.
+   Kde `uuuuuuuu` je hello uživatelské jméno a `pppppppp` je hello heslo pro hello instanční objekt.
 
-1. Azure odpoví JSON, která se podobá následujícímu příkladu:
+1. Azure odpoví JSON, která se podobá hello následující ukázka:
    ```json
    {
       "appId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
@@ -114,20 +114,20 @@ V této části vytvoříte Azure instanční objekt, který modul plug-in Maven
 
    > [!NOTE]
    >
-   > Pokud nakonfigurujete modul plug-in Maven k nasazení vaší webové aplikace do Azure budete používat hodnoty z této odpovědi JSON. `aaaaaaaa`, `uuuuuuuu`, `pppppppp`, A `tttttttt` jsou zástupné hodnoty, které se používají v tomto příkladu, aby bylo snazší mapovat tyto hodnoty na jejich odpovídající prvky při konfiguraci vašeho Maven `settings.xml` souboru v další části.
+   > Hello hodnoty z této odpovědi JSON budete používat při konfiguraci hello Maven modulu plug-in toodeploy tooAzure vaší webové aplikace. Hello `aaaaaaaa`, `uuuuuuuu`, `pppppppp`, a `tttttttt` jsou zástupné hodnoty, které jsou používány toomake tento příklad je snazší toomap tyto hodnoty tootheir příslušných prvky při konfiguraci vašeho Maven `settings.xml` další soubor v hello oddíl.
    >
    >
 
-## <a name="configure-maven-to-use-your-azure-service-principal"></a>Konfigurace Maven používat Azure instančního objektu
+## <a name="configure-maven-toouse-your-azure-service-principal"></a>Konfigurace Maven toouse Azure instančního objektu
 
-V této části je použít hodnoty ze služby Azure hlavní postup konfigurace ověřování, který Maven používá při nasazení webové aplikace v Azure.
+V této části použijte hello hodnoty z vaší služby Azure hlavní tooconfigure hello ověřování, který Maven používá při nasazování tooAzure vaší webové aplikace.
 
-1. Otevřete váš Maven `settings.xml` soubor v textovém editoru; může být tento soubor v cestě, jako jsou následující příklady:
+1. Otevřete váš Maven `settings.xml` soubor v textovém editoru; může být tento soubor v cestě jako hello následující příklady:
    * `/etc/maven/settings.xml`
    * `%ProgramFiles%\apache-maven\3.5.0\conf\settings.xml`
    * `$HOME/.m2/settings.xml`
 
-1. Přidat nastavení hlavní služby Azure z předchozí části tohoto kurzu k `<servers>` kolekce v *souborech settings.xml* souboru; například:
+1. Přidat nastavení hlavní služby Azure z předchozí části tohoto kurzu toohello hello `<servers>` kolekce v hello *souborech settings.xml* souboru; například:
 
    ```xml
    <servers>
@@ -145,17 +145,17 @@ V této části je použít hodnoty ze služby Azure hlavní postup konfigurace 
    Kde:
    Element | Popis
    ---|---|---
-   `<id>` | Určuje jedinečný název, který používá Maven k vyhledání nastavení zabezpečení při nasazení webové aplikace do Azure.
-   `<client>` | Obsahuje `appId` hodnotu z instanční objekt.
-   `<tenant>` | Obsahuje `tenant` hodnotu z instanční objekt.
-   `<key>` | Obsahuje `password` hodnotu z instanční objekt.
-   `<environment>` | Definuje cílovém prostředí cloudu Azure, což je `AZURE` v tomto příkladu. (Úplný seznam prostředí je k dispozici v [Maven modul plug-in pro Azure Web Apps] dokumentace)
+   `<id>` | Určuje jedinečný název, který Maven používá toolook vaše nastavení zabezpečení při nasazení tooAzure vaší webové aplikace.
+   `<client>` | Obsahuje hello `appId` hodnotu z instanční objekt.
+   `<tenant>` | Obsahuje hello `tenant` hodnotu z instanční objekt.
+   `<key>` | Obsahuje hello `password` hodnotu z instanční objekt.
+   `<environment>` | Definuje hello cílové cloudu Azure prostředí, což je `AZURE` v tomto příkladu. (Úplný seznam prostředí je k dispozici v hello [Maven modul plug-in pro Azure Web Apps] dokumentace)
 
-1. Uložte a zavřete *souborech settings.xml* souboru.
+1. Uložte a zavřete hello *souborech settings.xml* souboru.
 
-## <a name="optional-customize-your-pomxml-before-deploying-your-web-app-to-azure"></a>Volitelné: Přizpůsobení vaší pom.xml před nasazením webové aplikace do Azure
+## <a name="optional-customize-your-pomxml-before-deploying-your-web-app-tooazure"></a>Volitelné: Přizpůsobení vaší pom.xml před nasazením tooAzure vaší webové aplikace
 
-Otevřete `pom.xml` souboru pro vaši aplikaci spouštěcí Spring v textovém editoru a najděte `<plugin>` element pro `azure-webapp-maven-plugin`. Tento element by měl podobat následujícímu příkladu:
+Otevřete hello `pom.xml` souboru pro vaši aplikaci spouštěcí Spring v textovém editoru a najděte hello `<plugin>` element pro `azure-webapp-maven-plugin`. Tento element by měl vypadat hello následující ukázka:
 
    ```xml
    <plugin>
@@ -191,75 +191,75 @@ Otevřete `pom.xml` souboru pro vaši aplikaci spouštěcí Spring v textovém e
    </plugin>
    ```
 
-Existuje několik hodnot, které lze upravit pro modul plug-in Maven a podrobný popis pro každou z těchto elementů je k dispozici v [Maven modul plug-in pro Azure Web Apps] dokumentaci. Která se ale nutné dodat, existuje několik hodnot, které jsou vhodné zvýraznění v tomto článku:
+Existuje několik hodnot, které lze upravit pro modul plug-in hello Maven a podrobný popis pro každou z těchto elementů je k dispozici v hello [Maven modul plug-in pro Azure Web Apps] dokumentaci. Která se ale nutné dodat, existuje několik hodnot, které jsou vhodné zvýraznění v tomto článku:
 
 Element | Popis
 ---|---|---
-`<version>` | Určuje verzi [Maven modul plug-in pro Azure Web Apps]. Verze uvedené v byste měli zkontrolovat [Maven centrální úložiště](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-webapp-maven-plugin%22) zajistit, že používáte nejnovější verzi.
-`<authentication>` | Určuje informace o ověřování pro Azure, který v tomto příkladu obsahuje `<serverId>` elementu, který obsahuje `azure-auth`; Maven používá tuto hodnotu k vyhledání objektu služby Azure hodnoty v vaše Maven *souborech settings.xml* souboru, který jste definovali v předcházející části tohoto článku.
-`<resourceGroup>` | Určuje, cílová skupina prostředků, který je `maven-plugin` v tomto příkladu. Skupina prostředků se vytvoří během nasazení, pokud ještě neexistuje.
-`<appName>` | Určuje název cílového pro webové aplikace. V tomto příkladu je název cílové `maven-web-app-${maven.build.timestamp}`, kde `${maven.build.timestamp}` v tomto příkladu, aby se zabránilo konfliktu se připojí přípona. (Časové razítko je volitelný, můžete zadat všechny jedinečné řetězce pro název aplikace.)
-`<region>` | Určuje cílová oblast, která v tomto příkladu je `westus`. (Úplný seznam je v [Maven modul plug-in pro Azure Web Apps] dokumentaci.)
-`<javaVersion>` | Určuje verzi jazyka Java runtime pro vaši webovou aplikaci. (Úplný seznam je v [Maven modul plug-in pro Azure Web Apps] dokumentaci.)
+`<version>` | Určuje verzi hello hello [Maven modul plug-in pro Azure Web Apps]. Měli byste zkontrolovat hello verze uvedené v hello [Maven centrální úložiště](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-webapp-maven-plugin%22) hello tooensure, který používáte nejnovější verzi.
+`<authentication>` | Určuje hello ověřovací informace pro Azure, který v tomto příkladu obsahuje `<serverId>` elementu, který obsahuje `azure-auth`; Maven používá tuto hodnotu toolook hlavní hodnot hello služba Azure ve vašem Maven *souborech settings.xml* souboru, který jste definovali v předcházející části tohoto článku.
+`<resourceGroup>` | Určuje hello cílová skupina prostředků, který je `maven-plugin` v tomto příkladu. Pokud ještě neexistuje, vytvoří se skupina prostředků Hello během nasazení.
+`<appName>` | Určuje název cílového hello pro vaši webovou aplikaci. V tomto příkladu je název cílové hello `maven-web-app-${maven.build.timestamp}`, kde hello `${maven.build.timestamp}` tímto konfliktem tooavoid příklad se připojí přípona. (hello časové razítko je volitelný, můžete zadat všechny jedinečné řetězce pro název aplikace hello.)
+`<region>` | Určuje hello cílová oblast, která v tomto příkladu je `westus`. (Úplný seznam je v hello [Maven modul plug-in pro Azure Web Apps] dokumentaci.)
+`<javaVersion>` | Určuje verzi modulu runtime hello Java pro vaši webovou aplikaci. (Úplný seznam je v hello [Maven modul plug-in pro Azure Web Apps] dokumentaci.)
 `<deploymentType>` | Určuje typ nasazení pro vaši webovou aplikaci. Prozatím se pouze `ftp` je podporováno, i když podporu pro jiné typy nasazení je ve vývoji.
-`<resources>` | Určuje prostředky a cílové umístění, které Maven používá při nasazení webové aplikace do Azure. V tomto příkladu dvě `<resource>` elementy určit, že budou Maven nasazovat na soubor JAR pro vaši webovou aplikaci a *web.config* souboru z jara spouštěcí projektu.
+`<resources>` | Určuje prostředky a cílové umístění, které Maven používá při nasazování tooAzure vaší webové aplikace. V tomto příkladu dvě `<resource>` prvky zadat, že budou Maven nasazovat soubor JAR hello pro webovou aplikaci a hello *web.config* souboru z projektu pružiny spouštěcí hello.
 
-## <a name="build-and-deploy-your-web-app-to-azure"></a>Sestavení a nasazení webové aplikace do Azure
+## <a name="build-and-deploy-your-web-app-tooazure"></a>Vytváření a nasazování tooAzure vaší webové aplikace
 
-Jakmile nakonfigurujete všechna nastavení v předchozí části tohoto článku, budete chtít nasadit webovou aplikaci do Azure. Chcete-li tak učinit, proveďte následující kroky:
+Po nakonfigurování všech nastavení hello v předchozích částech tohoto článku hello jste připravené toodeploy tooAzure vaší webové aplikace. toodo tedy použijte hello následující kroky:
 
-1. Z příkazového řádku nebo okno terminálu, který jste dříve používali, znovu vytvořit na soubor JAR pomocí nástroje Maven Pokud jste provedli všechny změny *pom.xml* souboru; například:
+1. Z hello příkazový řádek nebo okno terminálu, který jste dříve používali, znovu sestavit pomocí nástroje Maven Pokud jste provedli jakékoli změny toohello soubor JAR hello *pom.xml* souboru; například:
    ```shell
    mvn clean package
    ```
 
-1. Nasazení webové aplikace do Azure pomocí Maven; například:
+1. Nasadit tooAzure vaší webové aplikace pomocí nástroje Maven; například:
    ```shell
    mvn azure-webapp:deploy
    ```
 
-Maven bude nasazení webové aplikace do Azure; Pokud webová aplikace už neexistuje, bude vytvořen.
+Maven nasadí tooAzure vaší webové aplikace; Pokud webová aplikace hello již neexistuje, bude vytvořen.
 
-Pokud váš web nasazen, bude možné spravovat pomocí [portál Azure].
+Pokud váš web nasazen, bude možné toomanage ho pomocí hello [portál Azure].
 
 * Webové aplikace se objeví v **App Services**:
 
    ![Webové aplikace, které jsou uvedené na portálu Azure App Services][AP01]
 
-* A zobrazí se adresa URL pro webovou aplikaci v **přehled** pro webové aplikace:
+* A hello adresu URL pro webové aplikace se objeví v hello **přehled** pro webové aplikace:
 
-   ![Určení adresy URL pro webovou aplikaci][AP02]
+   ![Určení hello adresu URL pro webovou aplikaci][AP02]
 
 <!--
-##  OPTIONAL: Configure the embedded Tomcat server to run on a different port
+##  OPTIONAL: Configure hello embedded Tomcat server toorun on a different port
 
-The embedded Tomcat server in the sample Spring Boot application is configured to run on port 8080 by default. However, if you want to run the embedded Tomcat server to run on a different port, such as port 80 for local testing, you can configure the port by using the following steps.
+hello embedded Tomcat server in hello sample Spring Boot application is configured toorun on port 8080 by default. However, if you want toorun hello embedded Tomcat server toorun on a different port, such as port 80 for local testing, you can configure hello port by using hello following steps.
 
-1. Go to the *resources* directory (or create the directory if it does not exist); for example:
+1. Go toohello *resources* directory (or create hello directory if it does not exist); for example:
    ```shell
    cd src/main/resources
    ```
 
-1. Open the *application.yml* file in a text editor if it exists, or create a new YAML file if it does not exist.
+1. Open hello *application.yml* file in a text editor if it exists, or create a new YAML file if it does not exist.
 
-1. Modify the **server** setting so that the server runs on port 80; for example:
+1. Modify hello **server** setting so that hello server runs on port 80; for example:
    ```yaml
    server:
       port: 80
    ```
 
-1. Save and close the *application.yml* file.
+1. Save and close hello *application.yml* file.
 -->
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o různých technologií, které jsou popsané v tomto článku najdete v následujících článcích:
+Další informace o hello různých technologií, které jsou popsané v tomto článku najdete hello následující články:
 
 * [Maven modul plug-in pro Azure Web Apps]
 
-* [Přihlaste se k Azure z rozhraní příkazového řádku Azure](/azure/xplat-cli-connect)
+* [Přihlaste se tooAzure z hello rozhraní příkazového řádku Azure](/azure/xplat-cli-connect)
 
-* [Jak nasadit kontejnerizované pružiny spouštěcí aplikaci do Azure pomocí modulu plug-in Maven pro webové aplikace Azure](app-service-web-deploy-containerized-spring-boot-app-with-maven-plugin.md)
+* [Jak toouse hello Maven modulu plug-in pro Azure Web Apps toodeploy kontejnerizované tooAzure aplikace pružiny spouštěcí](app-service-web-deploy-containerized-spring-boot-app-with-maven-plugin.md)
 
 * [Vytvořit objekt služby Azure pomocí Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli)
 
@@ -267,7 +267,7 @@ Další informace o různých technologií, které jsou popsané v tomto článk
 
 <!-- URL List -->
 
-[Rozhraní příkazového řádku Azure (CLI)]: /cli/azure/overview
+[rozhraní příkazového řádku Azure (CLI)]: /cli/azure/overview
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
 [portál Azure]: https://portal.azure.com/
 [bezplatný účet Azure]: https://azure.microsoft.com/pricing/free-trial/

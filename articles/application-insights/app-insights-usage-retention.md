@@ -1,6 +1,6 @@
 ---
-title: "Analýza uživatelů uchovávání informací pro webové aplikace pomocí služby Azure Application Insights | Microsoft docs"
-description: "Počet uživatelů, kteří se vrátit do vaší aplikace?"
+title: "Analýza aaaUser uchovávání informací pro webové aplikace pomocí služby Azure Application Insights | Microsoft docs"
+description: "Počet uživatelů, kteří vrátit tooyour aplikace?"
 services: application-insights
 documentationcenter: 
 author: botatoes
@@ -12,42 +12,42 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: bwren
-ms.openlocfilehash: 7f7ca19ab171278bbd82f68e3822bc650b25373d
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8bcee5f1611afbd69016ec3eef27832c304762a4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Analýza uživatelů uchovávání informací pro webové aplikace pomocí Application Insights
 
-Funkci uchování v [Azure Application Insights](app-insights-overview.md) pomáhá analyzovat počet uživatelů, kteří se vraťte do vaší aplikace a jak často provádět konkrétní úlohy nebo dosáhnout cíle. Například pokud spustíte herní lokality, může porovnejte počet uživatelů, kteří vrátit do lokality po ztrátě hry s číslem, kteří se vrátí po hodnocený. Tyto znalosti vám pomůžou líp uživatelské prostředí a obchodní strategie.
+Funkce uchování Hello v [Azure Application Insights](app-insights-overview.md) pomáhá analyzovat počet uživatelů, kteří vrátit tooyour aplikace a jak často provádět konkrétní úlohy nebo dosáhnout cíle. Například pokud spustíte herní lokality, může porovnat hello počet uživatelů, kteří vrátit toohello lokality po ztrátě hry s číslem hello, kteří se vrátí po hodnocený. Tyto znalosti vám pomůžou líp uživatelské prostředí a obchodní strategie.
 
 ## <a name="get-started"></a>Začínáme
 
-Pokud nevidíte ještě dat v nástroji pro uchovávání informací na portálu služby Application Insights [zjistěte, jak začít pracovat s nástroji využití](app-insights-usage-overview.md).
+Pokud nevidíte ještě dat v nástroji uchování hello hello portálu Application Insights, [zjistěte, jak tooget pracovat s nástroji využití hello](app-insights-usage-overview.md).
 
-## <a name="the-retention-tool"></a>Nástroj pro uchování
+## <a name="hello-retention-tool"></a>Nástroj pro uchování Hello
 
 ![Nástroj Udržení](./media/app-insights-usage-retention/retention.png)
 
-1. Panel nástrojů umožňuje uživatelům vytváření nových sestav uchování, otevřete existující sestavy uchování, uloží aktuální sestavu uchování nebo uložit, protože vrátit zpět změny provedené v uložených sestav, aktualizovat data v sestavě, sdílené složky sestav e-mailem nebo přímý odkaz a přístup k na stránce dokumentace. 
-2. Ve výchozím nastavení zobrazuje uchování všichni uživatelé, kteří neprovedli nic, pak se vrátila zpět a neprovedli nic jiného v období. Můžete vybrat různé kombinace události zúžit zaměření na konkrétního uživatele aktivity.
-3. Přidejte jeden nebo více filtry vlastností. Například se můžete soustředit na uživatele v konkrétní země nebo oblasti. Klikněte na tlačítko **aktualizace** po nastavení filtrů. 
-4. Celkové uchování graf zobrazuje souhrn uživatele uchování mezi zvolené časové období. 
-5. Mřížky zobrazuje počet uživatelů, které uchovávají podle Tvůrce dotazů v #. 2. Každý řádek představuje kohorty uživatele, který provedl všechny události v zobrazeném časovém období. Každý buňky v řádku zobrazuje, kolik této kohorty vrátil nejméně jednou za na pozdější dobu. Někteří uživatelé se můžou vrátit ve více než jedno období. 
-6. Statistika karty Zobrazit nejvyšší pět inicializace události a horní pět vrácený události uživatelům lépe porozumět jejich uchovávání dat sestavy. 
+1. Hello nástrojů umožňuje uživatelům toocreate nové sestavy uchování, otevřete stávajících sestav uchování, uložit aktuální sestavu uchování nebo uložit jako, vrátit zpět změny provedené toosaved sestavy a aktualizovat data v sestavě hello, sdílené složky sestavy prostřednictvím e-mailu nebo přímý odkaz a hello přístup stránka dokumentace. 
+2. Ve výchozím nastavení zobrazuje uchování všichni uživatelé, kteří neprovedli nic, pak se vrátila zpět a neprovedli nic jiného v období. Můžete vybrat různé kombinace události toonarrow hello zaměřením na aktivit konkrétního uživatele.
+3. Přidejte jeden nebo více filtry vlastností. Například se můžete soustředit na uživatele v konkrétní země nebo oblasti. Klikněte na tlačítko **aktualizace** po nastavení filtrů hello. 
+4. Hello celkové uchování graf zobrazuje souhrnné údaje o uchování uživatele napříč hello vybrané časové období. 
+5. Hello mřížky ukazuje zachování hello počet uživatelů podle toohello Tvůrce dotazů v #. 2. Každý řádek představuje kohorty uživatele, který provedl všechny události v hello časovém období. Každá buňka hello řádek ukazuje, kolik této kohorty vrátil nejméně jednou za na pozdější dobu. Někteří uživatelé se můžou vrátit ve více než jedno období. 
+6. Hello Statistika karty Zobrazit nejvyšší pět inicializace události a nejvyšší pět vrátil události toogive uživatelé lépe porozumět jejich uchování sestav. 
 
 ![Při přechodu myší uchování](./media/app-insights-usage-retention/hover.png)
 
-Uživatelé mohou pozastavte ukazatel myši nad buněk na nástroj uchování pro přístup k analytics nástroj a tlačítko tipy vysvětlující, co znamená buňky. Tlačítko Analytics trvá uživatelům nástroj pro analýzu s předem vyplněná dotazu generovat uživatelé z buňky. 
+Uživatelé mohou pozastavte ukazatel myši nad buněk na hello uchování nástroj tooaccess hello analytics tlačítko a popisy vysvětlující, co hello buňky prostředky. Tlačítko Analytics Hello trvá nástroj pro analýzu toohello uživatelé s uživateli předem vyplněná dotazu toogenerate z hello buňky. 
 
-## <a name="use-business-events-to-track-retention"></a>Použít obchodní události ke sledování uchování
+## <a name="use-business-events-tootrack-retention"></a>Použít obchodní události tootrack uchování
 
-Nejužitečnější analysis uchování získáte měření události, které představují důležité obchodní aktivity. 
+tooget hello nejužitečnější uchování analýzy, míru události, které představují důležité obchodní aktivity. 
 
-Například může být řada uživatelů otevřete stránku ve vaší aplikaci bez hru, který se zobrazí. Sledování právě zobrazení stránky by proto zadejte nesprávné odhad kolik lidí vrátit ve hře po jeho využívat dříve. Získat přehledné informace o vrácení přehrávače, vaše aplikace by měli poslat vlastní události, když uživatel ve skutečnosti hraje.  
+Například může být řada uživatelů otevřete stránku ve vaší aplikaci bez hraní her hello, který se zobrazí. Sledování právě zobrazení stránky hello by proto zadejte nesprávné odhad kolik lidí vrátit tooplay hello herní po jeho využívat dříve. tooget přehledné informace o vrácení přehrávače, vaše aplikace by měli poslat vlastní události, když uživatel ve skutečnosti hraje.  
 
-Je dobrým zvykem kód vlastní události, které představují klíče obchodní akce a použít pro uchování analýzy. Když Pokud chcete zachytit herní výsledek, budete muset napsat řádek kódu pro odeslání vlastní události Application insights. Pokud píšete ho v kódu webové stránky nebo v Node.JS, vypadá takto:
+Je toocode vhodné vlastní se události, které představují klíče obchodní akce a použít pro uchování analýzy. toocapture hello herní výsledek, musíte toowrite řádek kódu toosend vlastní události tooApplication statistiky. Pokud píšete ho v kódu webové stránky hello nebo v Node.JS, vypadá takto:
 
 ```JavaScript
     appinsights.trackEvent("won game");
@@ -63,8 +63,8 @@ Nebo v serverovém kódu ASP.NET:
 
 
 ## <a name="next-steps"></a>Další kroky
-- Pokud chcete povolit použití možnosti, zahájit odesílání [vlastních událostí](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) nebo [stránky zobrazení](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Pokud jste již odeslat vlastní události nebo zobrazení stránky, prozkoumejte využití nástroje se dozvíte, jak uživatelé používat služby.
+- využití tooenable vyskytne, zahájit odesílání [vlastních událostí](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) nebo [stránky zobrazení](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Pokud už odesílat vlastní události nebo zobrazení stránky, prozkoumejte hello využití nástroje toolearn jak uživatelé používat služby.
     - [Uživatelé, relace, události](app-insights-usage-segmentation.md)
     - [Trychtýře](usage-funnels.md)
     - [Toky uživatele](app-insights-usage-flows.md)

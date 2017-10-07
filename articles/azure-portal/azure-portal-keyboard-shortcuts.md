@@ -1,6 +1,6 @@
 ---
-title: "Portál Azure klávesové zkratky | Microsoft Docs"
-description: "Další informace o klávesové zkratky, které fungují na portálu Azure."
+title: "aaaAzure portálu klávesové zkratky | Microsoft Docs"
+description: "Další informace o hello klávesové zkratky, které fungují ve hello portálu Azure."
 services: azure-portal
 documentationcenter: 
 author: flanakin
@@ -15,35 +15,35 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: micflan
 ms.custom: accessibility
-ms.openlocfilehash: d5f837d0017ca885144b91d35f489a6fc0e5670e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7d0130e1d7175cef07038bef0a4c47a4c1291050
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Klávesové zkratky v portálu Azure
-Tento článek ukazuje klávesové zkratky, které fungují v celém webu Azure portal. Jednotlivé služby může mít vlastní klávesové zkratky.
+# <a name="keyboard-shortcuts-in-hello-azure-portal"></a>Klávesové zkratky v hello portálu Azure
+Tento článek ukazuje hello klávesové zkratky, které fungují v celém hello portálu Azure. Jednotlivé služby může mít vlastní klávesové zkratky.
 
 ## <a name="actions"></a>Akce
-|Uděláte to tak |Stisknutím klávesy |
+|toodo to |Stisknutím klávesy |
 | --- | --- |
 |Vytvoření nového prostředku|G + N|
-|Otevření podokna 'Další služby.|G + B|
+|Hello Open podokně více služeb|G + B|
 |Hledat prostředky|G +/| 
 |Položky nabídky vyhledávání prostředků|CTRL +/ |
-|Přesunout vybrané levém podokně položku nahoru |ALT + Shift + šipka nahoru|
-|Přesunout vybrané levém podokně položku dolů |ALT + Shift + šipka dolů|
+|Přesunout hello levém podokně vybrané položky nahoru |ALT + Shift + šipka nahoru|
+|Hello levém podokně vybrané položky dolů |ALT + Shift + šipka dolů|
 
 ## <a name="navigation"></a>Navigace
-|Uděláte to tak |Stisknutím klávesy |
+|toodo to |Stisknutím klávesy |
 | --- | --- |
-|Přesunout fokus na panel příkazů |G + |
+|Přesunout fokus toocommand panelu |G + |
 |Přepnout fokus mezi horním a postranním panelem | G +. |
 
 ## <a name="go-to"></a>Přejít na
-|Uděláte to tak |Stisknutím klávesy |
+|toodo to |Stisknutím klávesy |
 | --- | --- |
-|Přejděte na řídicí panel |G + D |
-|Přejít na všechny prostředky|G + A |
-|Přejít na skupiny prostředků|G + R |
-|Otevřete položku levém podokně na této pozici |G + číslo|
+|Přejděte toodashboard |G + D |
+|Přejděte tooall prostředky|G + A |
+|Přejděte tooresource skupiny|G + R |
+|Otevřete hello levém podokně položky na této pozici |G + číslo|

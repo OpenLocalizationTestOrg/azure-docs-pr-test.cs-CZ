@@ -1,6 +1,6 @@
 ---
-title: "Co jsou image šablon Azure Remote Appu? | Dokumentace Microsoftu"
-description: "Informace o imagích šablon, které jsou součástí Azure RemoteAppu."
+title: "aaaWhat je v hello Image šablony Azure RemoteApp? | Dokumentace Microsoftu"
+description: "Další informace o imagích šablon hello součástí Azure Remoteappu."
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 9cd4e1a16a7c42bd00d9e543d7b62b72e9de3fc8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ea012cec8dc581a8bd4a5a138ce302de19d5c6af
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="what-is-in-the-azure-remoteapp-template-images"></a>Co jsou image šablon Azure Remote Appu?
+# <a name="what-is-in-hello-azure-remoteapp-template-images"></a>Co jsou Image šablony hello Azure RemoteApp?
 > [!IMPORTANT]
-> Azure RemoteApp se přestává používat dne 31. srpna 2017. Podrobnosti najdete v tomto [oznámení](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp se přestává používat dne 31. srpna 2017. Čtení hello [oznámení](https://go.microsoft.com/fwlink/?linkid=821148) podrobnosti.
 > 
 > 
 
@@ -32,16 +32,16 @@ Vaše předplatné Azure RemoteAppu obsahuje tři image šablon:
 * Microsoft Office 2013 Professional Plus (pouze zkušební verze)
 
 > [!IMPORTANT]
-> Předplatné Azure RemoteAppu vám uděluje přístup k softwaru v imagích, s výjimkou Office 365 ProPlus, který vyžaduje samostatné předplatné, a Office 2013, který nejde použít v produkčním prostředí. To znamená, že můžete sdílet programy nebo aplikace v imagích šablon s uživateli. Pokud vytvoříte kolekci, která využívá image systému Windows Server 2012 R2, můžete publikovat aplikaci System Center Endpoint Protection uživatelům, kteří k ní pak budou mít přístup přes RemoteApp.
+> Vaše předplatné Azure Remoteappu vám uděluje že přístup toohello software v hello Image, s výjimkou hello Office 365 ProPlus, který vyžaduje samostatné předplatné a Office 2013, který nelze použít v produkčním prostředí. To znamená, že můžete sdílet hello programy nebo aplikace v imagích šablon hello s uživateli. Například pokud vytvoříte kolekci, která využívá image systému Windows Server 2012 R2 hello, můžete publikovat System Center Endpoint Protection pro uživatele tooaccess prostřednictvím vzdálené aplikace RemoteApp.
 > 
-> Další informace naleznete v části [Podrobnosti o licencování RemoteAppu](remoteapp-licensing.md). Informace o licencování Officu najde v části [Použití Officu s Azure RemoteAppem](remoteapp-o365.md).
+> Podívejte se na hello [podrobnosti o licencování Remoteappu](remoteapp-licensing.md) Další informace. A [použití Officu s Azure Remoteappem](remoteapp-o365.md) pro hello Office licenční informace.
 > 
 > 
 
 Přečtěte si podrobnosti o tom, co každý image obsahuje.
 
-## <a name="windows-server-2012-r2--the-vanilla-image"></a>Windows Server 2012 R2 (dále jen image vanilla)
-Tento image je založený na operačním systému Microsoft Windows Server 2012 R2 Datacenter a má nainstalované následující role a funkce, aby splnil požadavky pro image šablony Azure RemoteApp:
+## <a name="windows-server-2012-r2--hello-vanilla-image"></a>Windows Server 2012 R2 ("hello vanilla image)
+Tento image je založený na operačním systému Microsoft Windows Server 2012 R2 Datacenter a hello tyto role a funkce nainstaloval toomeet hello požadavky pro Image šablony Azure RemoteApp:
 
 * Rozhraní .NET Framework 4.5, 3.5.1, 3.5
 * Desktopové prostředí
@@ -52,7 +52,7 @@ Tento image je založený na operačním systému Microsoft Windows Server 2012 
 * Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell
 * Podpora subsystémů WoW64
 
-Tento image má také nainstalované následující aplikace:
+Tento image má také následující aplikace nainstalované hello:
 
 * Adobe Flash Player
 * Microsoft Silverlight
@@ -60,23 +60,23 @@ Tento image má také nainstalované následující aplikace:
 * Microsoft Windows Media Player
 
 ## <a name="microsoft-office-365-proplus-subscription-required"></a>Microsoft Office 365 ProPlus (požadován odběr)
-Office 365 je nejpožadovanější aplikace, takže jsme vytvořili „vlastní“ image, se kterým můžete pracovat.
+Office 365 je hello nejvíce požadovaná aplikace, takže jsme vytvořili "vlastní" image pro vás toowork s.
 
-Tento image je rozšířením image vanilla a kromě komponent popsaných v imagi Windows Server 2012 R2 má nainstalované následující komponenty aplikace Microsoft Office 365 ProPlus:
+Tento image je rozšířením hello vanilla image a hello následující komponenty aplikace Microsoft Office 365 ProPlus nainstaloval kromě toohello komponent popsaných v imagi Windows Server 2012 R2 hello:
 
 * Access
 * Excel
 * Lync
 * OneNote
-* OneDrive pro firmy (použití synchronizačního agenta s Azure RemoteAppem se nepodporuje)
+* OneDrive pro firmy (Všimněte si, Tento agent hello synchronizace není podporována pro použití s Azure Remoteappem)
 * Outlook
 * PowerPoint
 * Word
 * Nástroje kontroly pravopisu systému Microsoft Office
 
-Image také zahrnuje Visio Pro a Project Pro.
+Hello image také zahrnuje Visio Pro a Project Pro.
 
-A také následující aplikace:
+A hello aplikací také následující:
 
 * Nativní klient SQL
 * Ovladač ODBC
@@ -86,20 +86,20 @@ A také následující aplikace:
 * PowerQuery
 * PowerMap
 
-Plná funkčnost aplikací Office 365 ProPlus je k dispozici pouze pro uživatele, kteří mají plán Office 365 ProPlus. Další podrobnosti o plánu předplatného aplikace Office 365 najdete v části [Plány služeb Office 365](http://technet.microsoft.com/library/office-365-plan-options.aspx). Máte další otázky? Přečtěte si informace v části [Office 365 + RemoteApp](remoteapp-o365.md). Také si přečtěte nový článek [Použití předplatného služeb Office 365 s Azure RemoteAppem](remoteapp-officesubscription.md).
+Plná funkčnost aplikací Office 365 ProPlus je k dispozici pouze pro uživatele, kteří mají plán Office 365 ProPlus. Další informace o odběru hello Office 365 najdete v části plány [plány služeb Office 365](http://technet.microsoft.com/library/office-365-plan-options.aspx). Máte další otázky? Podívejte se na hello [Office 365 + RemoteApp](remoteapp-o365.md) informace. Seznamte se také hello nový článek, [jak toouse předplatné služeb Office 365 s Azure Remoteappem](remoteapp-officesubscription.md).
 
-Upozorňujeme, že k aplikacím Office 365 ProPlus, Visio Pro a Project Pro potřebujete samostatnou licenci (každá má svou vlastní).
+Všimněte si, že budete potřebovat samostatně toolicense Office 365 ProPlus, Visio Pro a Project Pro – každá má své vlastní licenci.
 
 ## <a name="microsoft-office-2013-professional-plus-trial-only"></a>Microsoft Office 2013 Professional Plus (pouze zkušební verze)
-Během bezplatné zkušební doby můžete testovat službu s imagem Office 2013.
+Během hello bezplatné zkušební doby můžete testovat službu hello s bitovou kopií hello Office 2013.
 
-Tento image je rozšířením image vanilla a kromě komponent popsaných v imagi Windows Server 2012 R2 má nainstalované následující komponenty aplikace Microsoft Office 2013 Professional Plus:
+Tento image je rozšířením hello vanilla image a hello následující komponenty aplikace Microsoft Office 2013 Professional Plus nainstaloval kromě toohello komponent popsaných v imagi Windows Server 2012 R2 hello:
 
 * Access
 * Excel
 * Lync
 * OneNote
-* OneDrive pro firmy (použití synchronizačního agenta s Azure RemoteAppem se nepodporuje)
+* OneDrive pro firmy (Všimněte si, Tento agent hello synchronizace není podporována pro použití s Azure Remoteappem)
 * Outlook
 * PowerPoint
 * Project
@@ -108,7 +108,7 @@ Tento image je rozšířením image vanilla a kromě komponent popsaných v imag
 * Nástroje kontroly pravopisu systému Microsoft Office
 
 > [!IMPORTANT]
-> **Právní informace:** Tento image neobsahuje licenci aplikace Microsoft Office a*nelze ho použít pro produkci*. Image aplikace Professional Plus 2013 Office je určen pouze pro zkušební verzi. Pokud chcete používat aplikace Office v Azure RemoteAppu pro produkci, je třeba použít image Office 365 ProPlus. Další informace o licencování Officu najdete v části [Použití  Officu 365 s Azure RemoteAppem](remoteapp-o365.md).
+> **Právní informace:** Tento image neobsahuje licenci aplikace Microsoft Office a*nelze ho použít pro produkci*. image Office 2013 Professional Plus Hello je určena pouze pro zkušební verzi. Pokud chcete aplikace Office toouse v Azure Remoteappu pro produkci, je nutné image Office 365 ProPlus toouse hello. Další informace o licencování Officu najdete v části [Použití  Officu 365 s Azure RemoteAppem](remoteapp-o365.md).
 > 
 > 
 

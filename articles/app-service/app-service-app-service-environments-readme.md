@@ -1,6 +1,6 @@
 ---
-title: "Služba App Service Environment | Microsoft Docs"
-description: "Co je Azure App Service Environment? Úvod do služby App Service Environment."
+title: "aaaApp prostředí služby | Microsoft Docs"
+description: "Co je Azure App Service Environment? TooApp Úvod Service Environment."
 keywords: "Služba Azure app service environment, virtuální sítě, zabezpečení sítí"
 services: app-service
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: stefsch
-ms.openlocfilehash: 1de3f2c513f4f5ce6fd2ab2b57514122955a9a98
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1b59fed4e5a72d4c4805e1dca203747e07e77103
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="app-service-environment-documentation"></a>Dokumentace prostředí služby App Service
 Služby App Service Environment je [Premium] [ PremiumTier] služby možnost plánu služby Azure App Service, která poskytuje plně izolovaném a vyhrazeném prostředí pro zabezpečené spouštění aplikací Azure App Service ve velkém rozsahu, včetně [webové aplikace][WebApps], [Mobile Apps][MobileApps], a [aplikace API][APIApps].  
@@ -31,9 +31,9 @@ Služby App Service Environment jsou ideální pro aplikační procesy vyžaduj�
 
 Zákazníci vytvářet více prostředí App Service v rámci jedné oblasti Azure, a také nad několika oblastmi Azure.  Tím je ideální pro vodorovně škálování vrstvy aplikace bez stavu na podporu vysoké zatížení RPS prostředí App Service.
 
-Služby App Service Environment jsou izolované spouštění jenom jednoho zákazníka aplikací a vždy nasazených do virtuální sítě.  Zákazníci mají jemně odstupňovanou kontrolu nad obě aplikace příchozí a odchozí síťový provoz pomocí [skupin zabezpečení sítě][NetworkSecurityGroups].  Aplikace můžete také vytvořit vysokorychlostní zabezpečené připojení přes virtuální sítě k firemním prostředkům místně.
+Služby App Service Environment jsou izolované toorunning jenom jednoho zákazníka aplikace a jsou vždy nasazené do virtuální sítě.  Zákazníci mají jemně odstupňovanou kontrolu nad obě aplikace příchozí a odchozí síťový provoz pomocí [skupin zabezpečení sítě][NetworkSecurityGroups].  Aplikace můžete také vytvořit vysokorychlostní zabezpečené připojení přes virtuální sítě tooon místním firemním prostředkům.
 
-Aplikace často potřebují přístup k podnikovým prostředkům, jako jsou třeba interní databáze a webové služby.  Aplikace běžící v prostředí App Service mohou přistupovat k prostředkům, které jsou dostupné prostřednictvím [Site-to-Site] [ SiteToSite] VPN a [Azure ExpressRoute] [ ExpressRoute] připojení.
+Aplikace často potřebují tooaccess podnikovým prostředkům, jako je například interní databází a webové služby.  Aplikace běžící v prostředí App Service mohou přistupovat k prostředkům, které jsou dostupné prostřednictvím [Site-to-Site] [ SiteToSite] VPN a [Azure ExpressRoute] [ ExpressRoute] připojení.
 
 * [Co je služba App Service Environment?](../app-service-web/app-service-app-service-environment-intro.md)
 * [Vytvoření služby App Service Environment](../app-service-web/app-service-web-how-to-create-an-app-service-environment.md)

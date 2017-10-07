@@ -1,5 +1,5 @@
 ---
-title: "Podporované platformy v Azure Security Center | Microsoft Docs"
+title: aaaSupported platformy v Azure Security Center | Microsoft Docs
 description: "Tento dokument obsahuje seznam operatings systémy Windows a Linux podporované v Azure Security Center."
 services: security-center
 documentationcenter: na
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: terrylan
-ms.openlocfilehash: c33e132037d95fa92fd59a8243a9a8a351ae0224
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f73e04970749271fc9d75836f4f468b0a4953f9e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Podporované platformy v Azure Security Center
-Sledování stavu zabezpečení a doporučení jsou k dispozici pro virtuální počítače (VM) vytvořené pomocí modelu nasazení Resource Manager i classic.
+Sledování stavu zabezpečení a doporučení jsou k dispozici pro virtuální počítače (VM) vytvořené pomocí hello classic a modelech nasazení Resource Manager.
 
 > [!NOTE]
-> Další informace o [classic a modelech nasazení Resource Manager](../azure-classic-rm.md) pro prostředky Azure.
+> Další informace o hello [classic a modelech nasazení Resource Manager](../azure-classic-rm.md) pro prostředky Azure.
 >
 >
 
@@ -60,11 +60,11 @@ Podporované operační systémy Linux:
 >
 
 ## <a name="vms-and-cloud-services"></a>Virtuální počítače a cloudové služby
-Virtuální počítače spuštěné v rámci cloudové služby jsou také podporovány. Pouze cloudových služeb webové a pracovní role spuštění v produkčním prostředí, které jsou monitorovány sloty. Další informace o cloudovou službu, najdete v části [cloudové služby přehled](../cloud-services/cloud-services-choose-me.md).
+Virtuální počítače spuštěné v rámci cloudové služby jsou také podporovány. Pouze cloudových služeb webové a pracovní role spuštění v produkčním prostředí, které jsou monitorovány sloty. toolearn Další informace o cloudovou službu, najdete v části [cloudové služby přehled](../cloud-services/cloud-services-choose-me.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Průvodce Azure Security Center plánováním a provozem](security-center-planning-and-operations-guide.md) – zjistěte, jak naplánovat a pochopit aspekty návrhu přijmout službu Azure Security Center
+- [Průvodce Azure Security Center plánováním a provozem](security-center-planning-and-operations-guide.md) – Další informace jak tooplan a pochopit hello návrhu aspekty tooadopt Azure Security Center
 - [Výstrahy zabezpečení podle typu v Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-alerts-type.md#virtual-machine-behavioral-analysis) – Další informace o analýzy chování virtuálního počítače a havárií analýza výpisu paměti v Centru zabezpečení
-- [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby
+- [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – přečtěte si nejčastější dotazy o použití služby hello
 - [Blog o bezpečnosti Azure](http://blogs.msdn.com/b/azuresecurity/) – přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů

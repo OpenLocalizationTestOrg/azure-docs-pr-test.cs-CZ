@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření virtuálního počítače se statickou veřejnou IP adresu - portálu Azure | Microsoft Docs"
-description: "Naučte se vytvořit virtuální počítač se statickou veřejnou IP adresu pomocí portálu Azure."
+title: "aaaCreate virtuální počítač s statickou veřejnou IP adresu - portálu Azure | Microsoft Docs"
+description: "Zjistěte, jak hello toocreate virtuální počítač s statickou veřejnou IP adresu pomocí portálu Azure."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 233e4eea8439320c1c7446e2c2b2e9d379351a3e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f74d2132785f06148757409ee0a44b98d1e4b98e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-portal"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresu pomocí portálu Azure
+# <a name="create-a-vm-with-a-static-public-ip-address-using-hello-azure-portal"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresu pomocí hello portálu Azure
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
@@ -34,34 +34,34 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Resource Manager, které společnost Microsoft doporučuje pro většinu nových nasazení místo modelu nasazení classic.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Resource Manager hello, které společnost Microsoft doporučuje pro většinu nasazení nové místo hello modelu nasazení classic.
 
 [!INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 
 ## <a name="create-a-vm-with-a-static-public-ip"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresu
 
-Postup vytvoření virtuálního počítače se statickou veřejnou IP adresu na portálu Azure, proveďte následující kroky:
+toocreate virtuálního počítače se statickou veřejnou IP adresou v hello portál Azure, dokončení hello následující kroky:
 
-1. V prohlížeči přejděte na portál [Azure Portal](https://portal.azure.com) a v případě potřeby se přihlaste pomocí účtu Azure.
-2. V levém horním rohu portálu, klikněte na tlačítko **nový**>>**výpočetní**>**Windows Server 2012 R2 Datacenter**.
-3. V **vybrat model nasazení** vyberte **Resource Manager** a klikněte na tlačítko **vytvořit**.
-4. V **Základy** okno, zadejte informace o virtuálních počítačů, jak je uvedeno níže a pak klikněte na tlačítko **OK**.
+1. V prohlížeči přejděte toohello [portál Azure](https://portal.azure.com) a v případě potřeby, přihlaste se pomocí účtu Azure.
+2. V levém horním rohu hello hello portálu, klikněte na tlačítko **nový**>>**výpočetní**>**Windows Server 2012 R2 Datacenter**.
+3. V hello **vybrat model nasazení** vyberte **Resource Manager** a klikněte na tlačítko **vytvořit**.
+4. V hello **Základy** okno, zadejte informace o hello virtuálních počítačů, jak je uvedeno níže a pak klikněte na tlačítko **OK**.
    
     ![Portál Azure – základy](./media/virtual-network-deploy-static-pip-arm-portal/figure1.png)
-5. V **zvolte velikost** okně klikněte na tlačítko **A1 standardní** jak je uvedeno níže a potom klikněte na **vyberte**.
+5. V hello **zvolte velikost** okně klikněte na tlačítko **A1 standardní** jak je uvedeno níže a potom klikněte na **vyberte**.
    
     ![Portál Azure – zvolte velikost](./media/virtual-network-deploy-static-pip-arm-portal/figure2.png)
-6. V **nastavení** okně klikněte na tlačítko **veřejnou IP adresu**, potom v **vytvoření veřejné IP adresy** okno, v části **přiřazení**, klikněte na tlačítko **statické** jak je uvedeno níže. A pak klikněte na **OK**.
+6. V hello **nastavení** okně klikněte na tlačítko **veřejnou IP adresu**, potom v hello **vytvoření veřejné IP adresy** okno, v části **přiřazení**, klikněte na **Statické** jak je uvedeno níže. A pak klikněte na **OK**.
    
     ![Portál Azure – vytvoření veřejné IP adresy](./media/virtual-network-deploy-static-pip-arm-portal/figure3.png)
-7. V **nastavení** okně klikněte na tlačítko **OK**.
-8. Zkontrolujte **Souhrn** okno, jak je uvedeno níže a pak klikněte na tlačítko **OK**.
+7. V hello **nastavení** okně klikněte na tlačítko **OK**.
+8. Zkontrolujte hello **Souhrn** okno, jak je uvedeno níže a pak klikněte na tlačítko **OK**.
    
     ![Portál Azure – vytvoření veřejné IP adresy](./media/virtual-network-deploy-static-pip-arm-portal/figure4.png)
-9. Všimněte si nové dlaždice na řídicím panelu.
+9. Všimněte si hello nové dlaždice na řídicím panelu.
    
     ![Portál Azure – vytvoření veřejné IP adresy](./media/virtual-network-deploy-static-pip-arm-portal/figure5.png)
-10. Po vytvoření virtuálního počítače **nastavení** okno se zobrazí, jak je uvedeno níže
+10. Po vytvoření virtuálního počítače hello hello **nastavení** okno se zobrazí, jak je uvedeno níže
     
     ![Portál Azure – vytvoření veřejné IP adresy](./media/virtual-network-deploy-static-pip-arm-portal/figure6.png)
 

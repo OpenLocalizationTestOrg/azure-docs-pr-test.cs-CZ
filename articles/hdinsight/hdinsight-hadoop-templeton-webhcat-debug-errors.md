@@ -1,6 +1,6 @@
 ---
-title: "Rady pro pochopení a řešení chyb WebHCat v HDInsight - Azure | Microsoft Docs"
-description: "Zjistěte, jak k o běžné chyby vrácené WebHCat v HDInsight a způsob jejich řešení."
+title: "aaaUnderstand a vyřešte chyby WebHCat na HDInsight - Azure | Microsoft Docs"
+description: "Zjistěte, jak tooabout běžné chyby vrácené WebHCat v HDInsight a tooresolve je."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,41 +16,41 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/26/2017
 ms.author: larryfr
-ms.openlocfilehash: 6d8162e0d64ec9fc42690392b7c822593c0c2767
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0071a1e9ed448ae146b93c8f4f518e31b95d27c9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Rady pro pochopení a řešení chyb oznámených z WebHCat v HDInsight
 
-Další informace o chyb oznámených při použití WebHCat s HDInsight a způsob jejich řešení. WebHCat se používá interně pomocí klienta nástroje, jako je Azure PowerShell a nástrojů Data Lake pro Visual Studio.
+Další informace o chyb oznámených při použití WebHCat s HDInsight a jak tooresolve je. WebHCat se používá interně pomocí klienta nástroje, jako je Azure PowerShell a hello nástrojů Data Lake pro Visual Studio.
 
 ## <a name="what-is-webhcat"></a>Co je WebHCat
 
-[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) je rozhraní REST API pro [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), tabulka a vrstva správy úložiště pro Hadoop. WebHCat je povoleno ve výchozím nastavení v clusterech prostředí HDInsight a různé nástroje používá k odesílání úloh, bez přihlášení do clusteru můžete získat stav úlohy, atd.
+[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) je rozhraní REST API pro [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), tabulka a vrstva správy úložiště pro Hadoop. WebHCat je povoleno ve výchozím nastavení v clusterech prostředí HDInsight a používají různé úlohy toosubmit nástroje, bez přihlášení toohello clusteru můžete získat stav úlohy, atd.
 
 ## <a name="modifying-configuration"></a>Změny konfigurace
 
 > [!IMPORTANT]
-> Několik chyb uvedených v tomto dokumentu dojít, protože byla překročena maximální nakonfigurované. Při řešení krok uvádí, že můžete změnit hodnotu, musí používat jednu z těchto k provedení změn:
+> Řadu hello chyby uvedené v tomto dokumentu dojít, protože byla překročena maximální nakonfigurované. Pokud krok řešení hello uvádí, že můžete změnit hodnotu, musí používat jednu z hello následující změnu tooperform hello:
 
-* Pro **Windows** clustery: použijte akci skriptu ke konfiguraci hodnota během vytváření clusteru. Další informace najdete v tématu [vývoj akcí skriptů](hdinsight-hadoop-script-actions.md).
+* Pro **Windows** clustery: použijte hodnotu hello tooconfigure akce skriptu při vytváření clusteru. Další informace najdete v tématu [vývoj akcí skriptů](hdinsight-hadoop-script-actions.md).
 
-* Pro **Linux** clustery: použití Ambari (web nebo REST API) změňte hodnotu. Další informace najdete v tématu [spravovat HDInsight pomocí Ambari](hdinsight-hadoop-manage-ambari.md)
+* Pro **Linux** clustery: hodnota hello toomodify pomocí Ambari (web nebo REST API). Další informace najdete v tématu [spravovat HDInsight pomocí Ambari](hdinsight-hadoop-manage-ambari.md)
 
 > [!IMPORTANT]
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ### <a name="default-configuration"></a>Výchozí konfigurace
 
-Pokud se překročí následující výchozí hodnoty, může snížit výkon WebHCat nebo způsobit chyby:
+Pokud se překročí hello následující výchozí hodnoty, může snížit výkon WebHCat nebo způsobit chyby:
 
 | Nastavení | Výsledek | Výchozí hodnota |
 | --- | --- | --- |
-| [yarn.Scheduler.Capacity.maximum – aplikace][maximum-applications] |Maximální počet úloh, které mohou být souběžně aktivní (čekající na vyřízení nebo spuštěné) |10 000 |
-| [templeton.Exec.Max-procs][max-procs] |Maximální počet požadavků, které lze zpracovat současně |20 |
-| [mapreduce.jobhistory.Max stáří ms][max-age-ms] |Počet dní, které úlohy historii jsou uchovány |7 dní |
+| [yarn.Scheduler.Capacity.maximum – aplikace][maximum-applications] |maximální počet úloh, které mohou být souběžně aktivní Hello (čekající na vyřízení nebo spuštěné) |10 000 |
+| [templeton.Exec.Max-procs][max-procs] |maximální počet požadavků, které lze zpracovat současně Hello |20 |
+| [mapreduce.jobhistory.Max stáří ms][max-age-ms] |Hello počet dní, které úlohy historii jsou uchovány |7 dní |
 
 ## <a name="too-many-requests"></a>Příliš mnoho požadavků
 
@@ -58,7 +58,7 @@ Pokud se překročí následující výchozí hodnoty, může snížit výkon We
 
 | Příčina | Řešení |
 | --- | --- |
-| Překročili jste maximální souběžných požadavků zpracovaných WebHCat za minutu (výchozí 20) |Snížení velikosti pracovní zátěže zajistit, že neodešlete více než maximální počet souběžných požadavků nebo zvyšte limit počtu souběžných požadavků úpravou `templeton.exec.max-procs`. Další informace najdete v tématu [Modifying konfigurace](#modifying-configuration) |
+| Překročili jste maximální souběžných požadavků hello zpracovaných za minutu (výchozí 20) WebHCat |Snižte vaše zatížení tooensure, že nemáte odeslat více než hello maximální počet souběžných požadavků nebo zvyšte limit počtu souběžných požadavků hello úpravou `templeton.exec.max-procs`. Další informace najdete v tématu [Modifying konfigurace](#modifying-configuration) |
 
 ## <a name="server-unavailable"></a>Server není dostupný.
 
@@ -66,7 +66,7 @@ Pokud se překročí následující výchozí hodnoty, může snížit výkon We
 
 | Příčina | Řešení |
 | --- | --- |
-| Tento kód stavu obvykle dojde během převzetí služeb při selhání mezi primárním a sekundárním HeadNode pro cluster |Počkejte 2 minuty a potom operaci opakujte |
+| Tento kód stavu obvykle dojde během převzetí služeb při selhání mezi hello primární a sekundární HeadNode pro hello cluster |Počkejte 2 minuty a potom opakujte operaci hello |
 
 ## <a name="bad-request-content-could-not-find-job"></a>Chybný požadavek obsahu: Nelze najít úlohu
 
@@ -74,9 +74,9 @@ Pokud se překročí následující výchozí hodnoty, může snížit výkon We
 
 | Příčina | Řešení |
 | --- | --- |
-| Podrobnosti úlohy byla vyčištěna podle historie úlohy čisticí |Výchozí doba uchování historie úlohy je 7 dní. Výchozí dobu uchování lze změnit úpravou `mapreduce.jobhistory.max-age-ms`. Další informace najdete v tématu [Modifying konfigurace](#modifying-configuration) |
-| Úlohy byl ukončen z důvodu selhání |Opakujte odeslání úlohy pro až dvě minuty. |
-| Neplatné id práce. byl použit. |Kontrola, zda je správný id úlohy |
+| Podrobnosti úlohy byla vyčištěna podle historie úlohy hello čisticí |Hello výchozí dobu uchování historie úlohy je 7 dní. výchozí dobu uchování Hello lze změnit úpravou `mapreduce.jobhistory.max-age-ms`. Další informace najdete v tématu [Modifying konfigurace](#modifying-configuration) |
+| Úlohy byl ukončen z důvodu tooa převzetí služeb při selhání |Opakujte odeslání úlohy pro až tootwo minut |
+| Neplatné id práce. byl použit. |Kontrola, zda je správný hello id úlohy |
 
 ## <a name="bad-gateway"></a>Chybná brána
 
@@ -84,10 +84,10 @@ Pokud se překročí následující výchozí hodnoty, může snížit výkon We
 
 | Příčina | Řešení |
 | --- | --- |
-| Uvolňování paměti interní dochází v rámci procesu WebHCat |Počkejte uvolňování paměti pro dokončení nebo restartujte službu WebHCat |
-| Časový limit čekání na odpověď ze služby ResourceManager. K této chybě může dojít, když počet aktivních aplikací přejde nakonfigurované maximum (výchozí 10 000) |Počkejte aktuálně spuštěné úlohy k dokončení, nebo zvyšte limit souběžných úloh úpravou `yarn.scheduler.capacity.maximum-applications`. Další informace najdete v tématu [Modifying konfigurace](#modifying-configuration) části. |
-| Pokus o načtení všech úloh prostřednictvím [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) volání při `Fields` je nastaven na`*` |Nenačítat *všechny* podrobnosti úlohy. Místo toho použijte `jobid` načíst podrobnosti úlohy pouze větší než id určité úlohy. Nebo, nepoužívejte`Fields` |
-| Služba WebHCat je mimo provoz během převzetí služeb při selhání HeadNode |Počkejte dvou minut a opakujte operaci |
+| Uvolňování paměti interní dochází v rámci hello proces WebHCat |Počkejte toofinish kolekce paměti nebo restartujte službu WebHCat hello |
+| Časový limit čekání na odpověď od hello ResourceManager služby. K této chybě může dojít, když hello počet aktivních aplikací přejde maximální hello nakonfigurovaný (výchozí 10 000) |Počkejte aktuálně spuštěných úloh toocomplete nebo zvyšte limit souběžných úloh hello úpravou `yarn.scheduler.capacity.maximum-applications`. Další informace najdete v tématu hello [Modifying konfigurace](#modifying-configuration) části. |
+| Probíhá pokus tooretrieve všechny úlohy prostřednictvím hello [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) volání při `Fields` je nastaven příliš`*` |Nenačítat *všechny* podrobnosti úlohy. Místo toho použít `jobid` tooretrieve podrobnosti úlohy pouze větší než id určité úlohy. Nebo, nepoužívejte`Fields` |
+| Hello WebHCat služby je mimo provoz během převzetí služeb při selhání HeadNode |Počkejte dvou minut a opakujte operaci hello |
 | Existuje více než 500 čekající úlohy, odeslané prostřednictvím WebHCat |Počkejte na dokončení aktuálně čeká na provedení úloh před odesláním další úlohy |
 
 [maximum-applications]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html

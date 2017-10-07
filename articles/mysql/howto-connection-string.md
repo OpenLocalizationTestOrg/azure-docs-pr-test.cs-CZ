@@ -1,6 +1,6 @@
 ---
-title: "Připojení aplikace k databázi Azure pro databázi MySQL | Microsoft Docs"
-description: "Tento dokument obsahuje seznam aktuálně podporované připojovací řetězce pro aplikace pro připojení s Azure Database pro databázi MySQL, včetně ADO.NET (C#), JDBC, Node.js, rozhraní ODBC, PHP, Python a Ruby."
+title: "aaaConnect aplikace tooAzure databáze pro databázi MySQL | Microsoft Docs"
+description: "Tento dokument uvádí hello aktuálně podporované připojovací řetězce pro tooconnect aplikací s Azure Database pro databázi MySQL, včetně ADO.NET (C#), JDBC, Node.js, rozhraní ODBC, PHP, Python a Ruby."
 services: mysql
 author: mswutao
 ms.author: wuta
@@ -9,25 +9,25 @@ manager: jhubbard
 ms.service: mysql-database
 ms.topic: article
 ms.date: 06/12/2017
-ms.openlocfilehash: 2f40da41bcfda7e35f6fc63ead5d055246ab390c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bbcb2c0ddb4f8e5c225ebef53781e073f5c7b1a8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Postup připojení aplikace k databázi Azure pro databázi MySQL
-Tento dokument uvádí typy řetězec připojení, které podporuje Azure databáze pro databázi MySQL, spolu s šablonami a příklady. V připojovacím řetězci může mít různé parametry a různá nastavení.
+# <a name="how-tooconnect-applications-tooazure-database-for-mysql"></a>Jak aplikace tooAzure tooconnect databáze pro databázi MySQL
+Tento dokument uvádí hello připojovací řetězec typy, které podporuje Azure databáze pro databázi MySQL, spolu s šablonami a příklady. V připojovacím řetězci může mít různé parametry a různá nastavení.
 
-- K získání certifikátu, najdete v části [postup konfigurace protokolu SSL](./howto-configure-ssl.md).
+- tooobtain hello certifikátu, najdete v části [jak tooconfigure SSL](./howto-configure-ssl.md).
 - {your_host} = <servername>. mysql.database.azure.com
-- {your_user}@{servername} správně = formát ID uživatele pro ověřování.  Pomocí právě userID způsobí, že došlo k chybě ověřování.
+- {your_user}@{servername} správně = formát ID uživatele pro ověřování.  Použití právě hello userID způsobí toofail ověřování hello.
 
 ## <a name="adonet"></a>ADO.NET
 ```ado.net
 Server={your_host};Port={your_port};Database={your_database};Uid={username@servername};Pwd={your_password};[SslMode=Required;]
 ```
 
-V tomto příkladu je název serveru `myserver4demo`, název databáze je `wpdb`, uživatelské jméno je `WPAdmin`, a heslo je `mypassword!2`. Pak by měl mít připojovací řetězec:
+V tomto příkladu je název serveru hello `myserver4demo`, název databáze je `wpdb`, uživatelské jméno je `WPAdmin`, a heslo je `mypassword!2`. Potom by měla být hello připojovací řetězec:
 
 ```ado.net
 Server= "myserver4demo.mysql.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@myserver4demo"; Pwd="mypassword!2"; SslMode=Required;
@@ -63,10 +63,10 @@ cnx = mysql.connector.connect(user={username@servername}, password={your_passwor
 client = Mysql2::Client.new(username: {username@servername}, password: {your_password}, database: {your_database}, host: {your_host}, port: {your_port}[, sslca:{ca-cert filename}, sslverify:false, sslcipher:'AES256-SHA'])
 ```
 
-## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Získat podrobnosti o řetězce připojení z portálu Azure
-V [portál Azure](https://portal.azure.com), přejděte k vaší databázi Azure pro server databáze MySQL a pak klikněte na tlačítko **připojovací řetězce** k získání seznamu řetězec pro instanci: ![podokně řetězce připojení ve službě Azure portál](./media/howto-connection-strings/connection-strings-on-portal.png)
+## <a name="get-hello-connection-string-details-from-hello-azure-portal"></a>Získat podrobnosti o řetězce hello připojení z hello portálu Azure
+V hello [portál Azure](https://portal.azure.com), přejděte tooyour Azure databáze pro server databáze MySQL a pak klikněte na tlačítko **připojovací řetězce** tooget řetězec vašeho seznamu pro instanci: ![hello připojovací řetězce podokně hello Portál Azure](./media/howto-connection-strings/connection-strings-on-portal.png)
 
-Řetězec obsahuje podrobné informace jako jsou ovladače, serveru a jiné databázi parametrů připojení. Upravte tyto příklady pomocí vlastních parametrů, jako je název databáze, heslo a tak dále. Pak můžete tento řetězec pro připojení k serveru z vašeho kódu a aplikace.
+řetězec Hello poskytuje podrobnosti, například hello ovladačů, serveru a další parametry připojení databáze. Upravte tyto příklady pomocí vlastních parametrů, jako je název databáze, heslo a tak dále. Pak můžete použít tento řetězec tooconnect toohello server z vašeho kódu a aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace o knihovnách připojení najdete v tématu [koncepty - knihovny připojení](./concepts-connection-libraries.md).

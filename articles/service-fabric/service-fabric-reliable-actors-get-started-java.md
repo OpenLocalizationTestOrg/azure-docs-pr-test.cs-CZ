@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření vaší první na základě objektu actor Azure mikroslužbu v Javě | Microsoft Docs"
-description: "Tento kurz vás provede kroky při vytváření, ladění a nasazení jednoduchého službu založenou na objektu actor pomocí Service Fabric Reliable Actors."
+title: "aaaCreate vaše první na základě objektu actor Azure mikroslužbu v Javě | Microsoft Docs"
+description: "Tento kurz vás provede kroky hello při vytváření, ladění a nasazení jednoduchého službu založenou na objektu actor pomocí Service Fabric Reliable Actors."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2017
 ms.author: vturecek
-ms.openlocfilehash: 288f1ed1016f50031065e66444d2562427194dc7
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 24718a8d7034360c53597f139169580f1a6ce732
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="getting-started-with-reliable-actors"></a>Začínáme s Reliable Actors
 > [!div class="op_single_selector"]
@@ -27,37 +27,37 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-Tento článek vysvětluje základy Azure Service Fabric Reliable Actors a provede vás vytvořením a nasazením jednoduchou aplikaci spolehlivé objektu Actor v jazyce Java.
+Tento článek vysvětluje základy hello Azure Service Fabric Reliable Actors a provede vás vytvořením a nasazením jednoduchou aplikaci spolehlivé objektu Actor v jazyce Java.
 
 ## <a name="installation-and-setup"></a>Instalace a nastavení
-Než začnete, ujistěte se, že máte vývojového prostředí Service Fabric na váš počítač.
-Pokud potřebujete nastavit tak, přejděte na [Začínáme v systému Mac](service-fabric-get-started-mac.md) nebo [Začínáme v systému Linux](service-fabric-get-started-linux.md).
+Než začnete, ujistěte se, že máte hello Service Fabric vývojového prostředí nastavit na vašem počítači.
+Pokud potřebujete tooset ho, přejděte příliš[Začínáme v systému Mac](service-fabric-get-started-mac.md) nebo [Začínáme v systému Linux](service-fabric-get-started-linux.md).
 
 ## <a name="basic-concepts"></a>Základní koncepty
-Začít s Reliable Actors, potřebujete jenom pochopit několik základní koncepty:
+tooget začít s Reliable Actors, můžete pouze potřebovat toounderstand několik základní koncepty:
 
-* **Služby objektu actor**. Spolehlivé služby, které můžou být nasazené v Service Fabric infrastruktury jsou součástí Reliable Actors. Instance objektu actor aktivují v instanci služby s názvem.
-* **Registrace objektu actor**. Jako se službami Reliable Services spolehlivé objektu Actor služby musí být registrováno v modulu runtime Service Fabric. Typ objektu actor kromě toho musí být registrováno s modulem runtime objektu Actor.
-* **Rozhraní objektu actor**. Rozhraní objektu actor se používá k definování silného typu veřejné rozhraní objektu actor. Rozhraní objektu actor v terminologii modelu objektu Actor spolehlivé, definuje typy zprávy, které můžete porozumět objektu actor a proces. Rozhraní objektu actor slouží ostatní aktéři a klientské aplikace "Odeslat" (asynchronně) zpráv do objektu actor. Reliable Actors můžete implementovat více rozhraní.
-* **Třída ActorProxy**. Třída ActorProxy se používá klientskými aplikacemi volat metody vystavenou přes rozhraní objektu actor. Třída ActorProxy poskytuje dvě důležité funkce:
+* **Služby objektu actor**. Spolehlivé služby, které můžou být nasazené v infrastruktuře Service Fabric hello jsou součástí Reliable Actors. Instance objektu actor aktivují v instanci služby s názvem.
+* **Registrace objektu actor**. Jako služba spolehlivé objektu Actor potřebuje se službami Reliable Services toobe zaregistrována modulu runtime Service Fabric hello. Typ objektu actor hello kromě toho musí toobe zaregistrována hello objektu Actor runtime.
+* **Rozhraní objektu actor**. rozhraní objektu actor Hello je použité toodefine silného typu veřejné rozhraní objektu actor. Rozhraní objektu actor hello v hello terminologie modelu objektu Actor spolehlivé, definuje hello typy zpráv, které hello objektu actor můžete pochopit a zpracovat. rozhraní objektu actor Hello používá jiné aktéři a klientské aplikace příliš "Odeslat" (asynchronně) objektu actor toohello zprávy. Reliable Actors můžete implementovat více rozhraní.
+* **Třída ActorProxy**. používá Hello ActorProxy třídy klienta aplikace tooinvoke hello metody vystavenou přes rozhraní objektu actor hello. Hello ActorProxy třída poskytuje dvě důležité funkce:
   
-  * Překlad názvů: je možné najít objektu actor v clusteru (Najít uzlu clusteru, který je hostitelem).
-  * Zpracování selhání: mohou zkuste volání metod a znovu přeložit umístění objektu actor po, například selhání vyžadující objektu actor pro přemístit do jiného uzlu v clusteru.
+  * Překlad názvů: je možné toolocate hello objektu actor v clusteru hello (Najít hello uzel hello clusteru, který je hostitelem).
+  * Zpracování selhání: můžete opakujte volání metod a znovu přeložit umístění objektu actor hello po, například selhání, který vyžaduje hello objektu actor toobe přemístění tooanother uzlu v clusteru hello.
 
-Následující pravidla, které se týkají objektu actor rozhraní jsou důležité zmínit:
+Hello následující pravidla, které se týkají tooactor rozhraní jsou důležité zmínit:
 
 * Metody rozhraní objektu actor nemohou být přetíženy.
 * Rozhraní objektu actor, které se nesmí mít metody, ref nebo volitelné parametry.
 * Obecná rozhraní nejsou podporovány.
 
 ## <a name="create-an-actor-service"></a>Vytvoření služby objektu actor
-Začněte vytvořením nové aplikace Service Fabric. Sada Service Fabric SDK pro Linux zahrnuje Yeoman generátor zajistit generování uživatelského rozhraní pro aplikace Service Fabric pomocí bezstavové služby. Spusťte následující Yeoman spuštěním příkazu:
+Začněte vytvořením nové aplikace Service Fabric. zahrnuje Hello Service Fabric SDK pro Linux Yeoman generování generátor tooprovide hello uživatelského rozhraní pro aplikace Service Fabric pomocí bezstavové služby. Spusťte spuštěním hello následující Yeoman příkaz:
 
 ```bash
 $ yo azuresfjava
 ```
 
-Postupujte podle pokynů vytvořte **spolehlivé služby objektu Actor**. V tomto kurzu, název aplikace "HelloWorldActorApplication" a "HelloWorldActor." objektu actor Vytvoří se následující generování uživatelského rozhraní:
+Postupujte podle pokynů toocreate hello **spolehlivé služby objektu Actor**. V tomto kurzu název hello aplikace "HelloWorldActorApplication" a hello objektu actor "HelloWorldActor." Vytvoří Hello následující generování uživatelského rozhraní:
 
 ```bash
 HelloWorldActorApplication/
@@ -100,10 +100,10 @@ HelloWorldActorApplication/
 ```
 
 ## <a name="reliable-actors-basic-building-blocks"></a>Spolehlivé aktéři základních stavebních bloků
-Základní koncepty dříve popisované převede na základních stavebních bloků služby objektu Actor spolehlivé.
+základní koncepty Hello dříve popisované převede na hello základní stavební bloky služby objektu Actor spolehlivé.
 
 ### <a name="actor-interface"></a>Rozhraní objektu actor
-Tato položka obsahuje definici rozhraní objektu actor. Toto rozhraní definuje kontrakt objektu actor, který sdílí implementace objektu actor a klienti volání objektu actor, proto obvykle má smysl definovat na místě, která je oddělená od objektu actor implementaci a může být sdílen více jiných služeb nebo klientské aplikace.
+Tato položka obsahuje definici rozhraní hello objektu actor hello. Toto rozhraní definuje kontrakt objektu actor hello, který sdílí hello objektu actor implementace a volání objektu actor hello, takže obvykle má smysl toodefine jej do umístění, které je oddělené od implementace objektu actor hello a může být sdílen více jiných klientů hello služby nebo aplikace klienta.
 
 `HelloWorldActorInterface/src/reliableactor/HelloWorldActor.java`:
 
@@ -117,7 +117,7 @@ public interface HelloWorldActor extends Actor {
 ```
 
 ### <a name="actor-service"></a>Služby objektu actor
-Tato položka obsahuje implementace objektu actor a objektu actor registrační kód. Třída objektu actor implementuje rozhraní objektu actor. Toto je, kde vaše objektu actor nemá svou práci.
+Tato položka obsahuje implementace objektu actor a objektu actor registrační kód. Třída objektu actor Hello implementuje rozhraní objektu actor hello. Toto je, kde vaše objektu actor nemá svou práci.
 
 `HelloWorldActor/src/reliableactor/HelloWorldActorImpl`:
 
@@ -148,7 +148,7 @@ public class HelloWorldActorImpl extends ReliableActor implements HelloWorldActo
 ```
 
 ### <a name="actor-registration"></a>Registrace objektu actor
-Služby objektu actor musí být zaregistrován s typem služby v modulu runtime Service Fabric. V pořadí pro službu objektu Actor ke spuštění vaše instance objektu actor musí být typu vašeho objektu actor také zaregistrován u služby objektu Actor. `ActorRuntime` Metoda registrace provede tuto práci pro aktéři.
+služby objektu actor Hello musí být zaregistrován s typem služby v modulu runtime Service Fabric hello. V pořadí pro hello služby objektu Actor toorun vaše instance objektu actor, vašeho typu objektu actor musí být zaregistrovaná taky hello služby objektu Actor. Hello `ActorRuntime` metoda registrace provede tuto práci pro aktéři.
 
 `HelloWorldActor/src/reliableactor/HelloWorldActorHost`:
 
@@ -171,14 +171,14 @@ public class HelloWorldActorHost {
 ```
 
 ### <a name="test-client"></a>Testovacího klienta
-Toto je jednoduchá testovací klientskou aplikaci můžete spustit samostatně z aplikace Service Fabric testování služby objektu actor. Jedná se o příklad použití ActorProxy pro aktivaci a komunikaci s instancí objektu actor. Získat není nasazené pomocí služby.
+Toto je jednoduchá testovací klientskou aplikaci můžete spustit samostatně z tootest aplikace Service Fabric hello služby objektu actor. Jedná se o příklad kde hello ActorProxy můžou být použité tooactivate a komunikaci s instancí objektu actor. Získat není nasazené pomocí služby.
 
-### <a name="the-application"></a>Aplikace
-Nakonec balíčky aplikace služby objektu actor a dalším službám, které byste mohli přidat v budoucnu společně pro nasazení. Obsahuje *ApplicationManifest.xml* a zástupného pro balíček služby objektu actor.
+### <a name="hello-application"></a>aplikace Hello
+Nakonec balíčky aplikací hello hello služby objektu actor a dalším službám, které byste mohli přidat v hello budoucí společně pro nasazení. Obsahuje hello *ApplicationManifest.xml* a zástupného pro balíček služby objektu actor hello.
 
-## <a name="run-the-application"></a>Spuštění aplikace
+## <a name="run-hello-application"></a>Spuštění aplikace hello
 
-Yeoman generování uživatelského rozhraní obsahuje skript gradle sestavení aplikace a skripty pro nasazení a odeberte aplikaci bash. Pokud chcete nasadit aplikaci, nejprve sestavení aplikace s gradlem:
+Hello Yeoman generování uživatelského rozhraní obsahuje gradle skriptu toobuild hello aplikace a bash skripty toodeploy a aplikaci odebrat. toodeploy hello aplikace, první aplikace hello sestavení s gradlem:
 
 ```bash
 $ gradle
@@ -188,8 +188,8 @@ To vytvoří balíček aplikace Service Fabric, které se dá nasadit pomocí n�
 
 ### <a name="deploy-service-fabric-cli"></a>Nasazení Service Fabric rozhraní příkazového řádku
 
-Install.sh skript obsahuje potřebné příkazy Service Fabric rozhraní příkazového řádku (sfctl) k nasazení balíčku aplikace.
-Spusťte skript install.sh k nasazení aplikace.
+Hello install.sh skript obsahuje hello nezbytné Service Fabric rozhraní příkazového řádku (sfctl) příkazy toodeploy hello balíčku aplikace.
+Spuštění aplikace hello hello install.sh skriptu toodeploy.
 
 ```bash
 $ ./install.sh

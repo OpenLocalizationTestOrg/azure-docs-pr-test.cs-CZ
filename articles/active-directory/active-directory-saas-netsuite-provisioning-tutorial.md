@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Netsuite | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Netsuite."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a Netsuite."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,82 +13,82 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 277c393536615fc8bfe8af0bc6d487115f04776c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5bb2989c1296b9f2abc9e8c84855731adc484aab
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Kurz: Konfigurace Netsuite pro zřizování automatické uživatelů
 
-Cílem tohoto kurzu je tak, aby zobrazovalo kroky, které je třeba provést v Netsuite a Azure AD a automaticky zřizovat a zrušte zřízení uživatelských účtů ze služby Azure AD do Netsuite.
+cílem Hello tohoto kurzu je tooshow hello kroky nutné tooperform v Netsuite a Azure AD tooautomatically zřídit a deaktivace zřízení uživatelských účtů z tooNetsuite Azure AD.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář uvedených v tomto kurzu se předpokládá, že už máte následující položky:
+Hello scénáři uvedeném v tomto kurzu se předpokládá, že už máte hello následující položky:
 
 *   Klienta služby Azure Active directory.
 *   Netsuite jednotného přihlašování povolené předplatné.
 *   Uživatelský účet v Netsuite s oprávněními správce týmu.
 
-## <a name="assigning-users-to-netsuite"></a>Přiřazení uživatelů k Netsuite
+## <a name="assigning-users-toonetsuite"></a>Přiřazení uživatelů tooNetsuite
 
-Azure Active Directory používá koncept označované jako "úlohy" k určení uživatelů, kteří obdrželi přístup k vybrané aplikace. V kontextu uživatele automatické zřizování účtu jsou synchronizovány pouze uživatelé a skupiny, které byly "přiřazeny" aplikace ve službě Azure AD.
+Azure Active Directory používá koncept názvem "přiřazení" toodetermine uživatelů, kteří obdrželi přístup tooselected aplikace. V kontextu hello zřizování účtu automatické uživatele jsou synchronizovány pouze hello uživatelů a skupin, které byly "přiřazeny" tooan aplikace ve službě Azure AD.
 
-Před konfigurací a povolení zřizování služby, musíte rozhodnout, jaké uživatelů nebo skupin ve službě Azure AD představují uživatele, kteří potřebují přístup k vaší aplikaci Netsuite. Jakmile se rozhodli, můžete přiřadit těmto uživatelům aplikace Netsuite podle pokynů tady:
+Než nakonfigurujete a povolíte hello zřizování služby, je nutné toodecide, jaké uživatelů nebo skupin v Azure AD představují hello uživatelé, kteří potřebují přístup k aplikaci Netsuite tooyour. Jakmile se rozhodli, můžete přiřadit tyto aplikace Netsuite tooyour uživatelů podle pokynů hello zde:
 
-[Přiřazení uživatele nebo skupiny do aplikace enterprise](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Přiřadit uživatele nebo skupinu tooan firemní aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-netsuite"></a>Důležité tipy pro přiřazování uživatelů do Netsuite
+### <a name="important-tips-for-assigning-users-toonetsuite"></a>Důležité tipy pro přiřazení uživatelů tooNetsuite
 
-*   Dále je doporučeno jednoho uživatele Azure AD se přiřadí ke Netsuite a otestovat konfiguraci zřizování. Další uživatele nebo skupiny může být přiřazen později.
+*   Dále je doporučeno jednoho uživatele Azure AD je přiřazen hello tootest tooNetsuite zřizování konfigurace. Další uživatele nebo skupiny může být přiřazen později.
 
-*   Při přiřazování Netsuite uživatele, musíte vybrat platné uživatelské role. Roli "Výchozí přístup" nefunguje pro zřizování.
+*   Při přiřazování tooNetsuite uživatele, musíte vybrat platné uživatelské role. role "Výchozí přístup" Hello nefunguje pro zřizování.
 
 ## <a name="enable-user-provisioning"></a>Povolit zřizování uživatelů
 
-Tato část vás provede připojení k Netsuite na uživatelský účet zřizování rozhraní API služby Azure AD a konfiguraci zřizování službu, kterou chcete vytvořit, aktualizovat a zakažte přiřazené uživatelské účty v Netsuite podle přiřazení uživatelů a skupin ve službě Azure AD.
+Tato část vás provede připojením vaší služby Azure AD tooNetsuite uživatelský účet zřizování rozhraní API a konfigurace hello zřizování služby toocreate, aktualizovat a zakázat přiřazené uživatelské účty v Netsuite podle přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP] 
-> Můžete také pro Netsuite povoleno na základě SAML jednotné přihlašování, postupujte podle pokynů uvedených v [portál Azure](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce doplnění navzájem.
+> Můžete také zvolit tooenabled na základě SAML jednotné přihlašování pro Netsuite, hello pokynů uvedených v [portál Azure](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce doplnění navzájem.
 
-### <a name="to-configure-user-account-provisioning"></a>Ke konfiguraci zřizování účtu uživatele:
+### <a name="tooconfigure-user-account-provisioning"></a>tooconfigure uživatel účet zřizování:
 
-Cílem této části se popisují postup povolení zřizování uživatelů z uživatelských účtů služby Active Directory pro Netsuite.
+Hello cílem této části je toooutline jak tooenable zřizování uživatelů služby Active Directory uživatele tooNetsuite účty.
 
-1. V [portál Azure](https://portal.azure.com), vyhledejte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
+1. V hello [portál Azure](https://portal.azure.com), procházet toohello **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
 
-2. Pokud jste již nakonfigurovali Netsuite pro jednotné přihlašování, vyhledejte instanci Netsuite pomocí pole hledání. Jinak vyberte možnost **přidat** a vyhledejte **Netsuite** v galerii aplikací. Vyberte Netsuite ve výsledcích hledání a přidejte ji do seznamu aplikací.
+2. Pokud jste již nakonfigurovali Netsuite pro jednotné přihlašování, vyhledejte instanci Netsuite pomocí hello vyhledávací pole. Jinak vyberte možnost **přidat** a vyhledejte **Netsuite** v galerii aplikací hello. Vyberte Netsuite z výsledků hledání hello a přidejte ji tooyour seznam aplikací.
 
-3. Vyberte instanci Netsuite a pak vyberte **zřizování** kartě.
+3. Vyberte instanci Netsuite a pak vyberte hello **zřizování** kartě.
 
-4. Nastavte **režimu zřizování** k **automatické**. 
+4. Sada hello **režimu zřizování** příliš**automatické**. 
 
     ![Zřizování](./media/active-directory-saas-netsuite-provisioning-tutorial/provisioning.png)
 
-5. V části **přihlašovací údaje správce** části, zadejte následující nastavení konfigurace:
+5. V části hello **přihlašovací údaje správce** části, zadejte následující nastavení konfigurace hello:
    
-    a. V **uživatelské jméno správce** textovému poli, zadejte název, který má účtu Netsuite **správce systému** profil v Netsuite.com přiřazen.
+    a. V hello **uživatelské jméno správce** textovému poli, typ Netsuite účet název, který má hello **správce systému** profil v Netsuite.com přiřazen.
    
-    b. V **heslo správce** textovému poli, zadejte heslo pro tento účet.
+    b. V hello **heslo správce** textovému poli, zadejte hello heslo pro tento účet.
       
-6. Na portálu Azure klikněte na tlačítko **Test připojení** zajistit Azure AD může připojit k aplikaci Netsuite.
+6. V hello portálu Azure, klikněte na **Test připojení** tooensure Azure AD můžete připojit tooyour Netsuite aplikaci.
 
-7. V **e-mailové oznámení** pole, zadejte e-mailovou adresu uživatele nebo skupiny, kdo by měly dostávat oznámení zřizování chyby a zaškrtněte políčko.
+7. V hello **e-mailové oznámení** zadejte hello e-mailovou adresu uživatele nebo skupiny, kdo by měly dostávat oznámení zřizování chyby a zaškrtněte políčko hello.
 
 8. Klikněte na tlačítko **uložit.**
 
-9. V části mapování vyberte **synchronizaci Azure Active Directory uživatelům Netsuite.**
+9. V části hello části mapování, vyberte **tooNetsuite synchronizaci uživatelů Azure Active Directory.**
 
-10. V **mapování atributů** , projděte si uživatelské atributy, které jsou synchronizované z Azure AD Netsuite. Všimněte si, že atributy vybrán jako **párování** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Netsuite pro operace aktualizace. Kliknutím na tlačítko Uložit potvrzení změny.
+10. V hello **mapování atributů** , projděte si hello uživatelské atributy, které jsou synchronizované z tooNetsuite Azure AD. Všimněte si, že hello atributy vybrán jako **párování** vlastnosti jsou použité toomatch hello uživatelské účty v Netsuite pro operace aktualizace. Vyberte toocommit tlačítko hello uložit změny.
 
-11. Povolit zřizování služby pro Netsuite Azure AD, změňte **Stav zřizování** k **na** v části Nastavení
+11. tooenable hello zřizování služby Azure AD pro Netsuite, změna hello **Stav zřizování** příliš**na** v části Nastavení hello
 
 12. Klikněte na tlačítko **uložit.**
 
-Spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené k Netsuite v části Uživatelé a skupiny. Všimněte si, že počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 20 minut, dokud se službou provést. Můžete použít **podrobnosti synchronizace** části monitorovat průběh a odkazech zřízení sestavy aktivity, které popisují všechny akce prováděné při zřizování služby ve vaší aplikaci Netsuite.
+Spustí hello počáteční synchronizaci všech uživatelů a skupiny přiřazené tooNetsuite v hello uživatelé a skupiny oddílu. Všimněte si, že počáteční synchronizace hello trvá déle tooperform než následné synchronizace, ke kterým dochází přibližně každých 20 minut, dokud se službou hello. Můžete použít hello **podrobnosti synchronizace** části toomonitor průběh a postupujte podle pokynů odkazy tooprovisioning aktivity sestavy, které popisují všechny akce prováděné hello zřizování služby ve vaší aplikaci Netsuite.
 
-Nyní můžete vytvořit testovací účet. Chcete-li ověřit, že účet byly synchronizovány Netsuite Počkejte až 20 minut.
+Nyní můžete vytvořit testovací účet. Počkejte, až minut too20 tooverify, který hello účet byl synchronizován tooNetsuite.
 
 ## <a name="additional-resources"></a>Další zdroje
 

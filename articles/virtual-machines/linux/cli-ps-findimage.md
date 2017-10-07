@@ -1,6 +1,6 @@
 ---
-title: "Vyberte bitové kopie virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Naučte se používat rozhraní příkazového řádku Azure k určení vydavatele, nabídky, SKU a verze pro Image Marketplace virtuálních počítačů."
+title: "bitové kopie virtuálního počítače s Linuxem aaaSelect s hello rozhraní příkazového řádku Azure | Microsoft Docs"
+description: "Zjistěte, jak toouse hello toodetermine hello vydavatel rozhraní příkazového řádku Azure, nabídky, SKU a verze pro Image Marketplace virtuálních počítačů."
 services: virtual-machines-linux
 documentationcenter: 
 author: dlepow
@@ -16,41 +16,41 @@ ms.workload: infrastructure
 ms.date: 08/24/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e0c27a7ee9e9a7ab1a3b004e070fa556b56a36a5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0b115b8654bc156b5bfadba53a6b002a105acb68
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Postup nalezení bitové kopie virtuálního počítače s Linuxem v Azure Marketplace pomocí Azure CLI
-Toto téma popisuje, jak pomocí Azure CLI 2.0 najít Image virtuálních počítačů v Azure Marketplace. Tyto informace slouží k určení image pořízenou prostřednictvím Marketplace, při vytváření virtuálního počítače s Linuxem.
+# <a name="how-toofind-linux-vm-images-in-hello-azure-marketplace-with-hello-azure-cli"></a>Jak toofind virtuálního počítače s Linuxem Image v nástroji hello Azure Marketplace s hello rozhraní příkazového řádku Azure
+Toto téma popisuje, jak toouse hello Image virtuálních počítačů Azure CLI 2.0 toofind v hello Azure Marketplace. Pomocí této informace toospecify image pořízenou prostřednictvím Marketplace, při vytváření virtuálního počítače s Linuxem.
 
-Ujistěte se, že jste nainstalovali nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) a jsou přihlášení k účtu Azure (`az login`).
+Zajistěte, aby nainstalovat nejnovější hello [Azure CLI 2.0](/cli/azure/install-az-cli2) a jsou zaznamenány v tooan účet Azure (`az login`).
 
 ## <a name="terminology"></a>Terminologie
 
-Obrázky Marketplace jsou určené v rozhraní příkazového řádku a dalších nástrojů Azure podle hierarchie:
+Obrázky Marketplace jsou určené v hello rozhraní příkazového řádku a další nástroje Azure podle tooa hierarchie:
 
-* **Vydavatel** -organizace, který vytvořil bitovou kopii. Příklad: kanonickém tvaru
+* **Vydavatel** -hello organizace, který vytvořili hello image. Příklad: kanonickém tvaru
 * **Nabízejí** -skupina související bitové kopie vytvořené vydavatelem. Příklad: Ubuntu Server
 * **Skladová položka** – instanci nabídku, jako je například hlavní verze distribuce. Příklad: 16.04-LTS
-* **Verze** -číslo verze SKU bitové kopie. Při zadávání bitovou kopii, můžete nahradit číslo verze se "nejnovější", který vybere nejnovější verzi rozdělení.
+* **Verze** -hello číslo verze SKU bitové kopie. Při zadávání hello bitové kopie, můžete nahradit hello číslo verze se "nejnovější", který vybere hello nejnovější verzi distribučních hello.
 
-Pokud chcete zadat image pořízenou prostřednictvím Marketplace, obvykle použít image *URN*. Název URN kombinuje tyto hodnoty oddělené dvojtečkou (:): *vydavatele*:*nabízejí*:*Sku*:*verze*. 
+toospecify image pořízenou prostřednictvím Marketplace, obvykle použijete hello image *URN*. Tyto hodnoty oddělené dvojtečkou (:) znakem hello kombinuje Hello URN: *vydavatele*:*nabízejí*:*Sku*:*verze*. 
 
 
 ## <a name="list-popular-images"></a>Seznam oblíbených obrázků
 
-Spustit [seznamu obrázků virtuálních počítačů az](/cli/azure/vm/image#list) příkazu, aniž by `--all` možnost, podívejte se do seznamu oblíbených Image virtuálních počítačů v Azure Marketplace. Například spusťte následující příkaz, který zobrazí seznam oblíbených bitové kopie v mezipaměti ve formátu tabulky:
+Spustit hello [seznamu obrázků virtuálních počítačů az](/cli/azure/vm/image#list) příkazu, aniž by hello `--all` možnost, toosee Image seznam oblíbených virtuálních počítačů v nástroji hello Azure Marketplace. Například spusťte následující příkaz toodisplay hello seznam oblíbených bitové kopie v mezipaměti ve formátu tabulky:
 
 ```azurecli
 az vm image list --output table
 ```
 
-Výstup obsahuje název URN (hodnota v *Urn* sloupec), který se používá k určení bitovou kopii. Při vytváření virtuálního počítače s jedním z těchto oblíbených bitových kopií Marketplace, můžete alternativně zadat název URN alias, například *UbuntuLTS*.
+výstup Hello zahrnuje hello URN (hello hodnota v hello *Urn* sloupec), které použijete toospecify hello image. Při vytváření virtuálního počítače s jedním z těchto oblíbených bitových kopií Marketplace, můžete alternativně zadat hello URN alias, například *UbuntuLTS*.
 
 ```
-You are viewing an offline list of images, use --all to retrieve an up-to-date list
+You are viewing an offline list of images, use --all tooretrieve an up-to-date list
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
 CentOS         OpenLogic               7.3                 OpenLogic:CentOS:7.3:latest                                     CentOS               latest
@@ -65,9 +65,9 @@ UbuntuServer   Canonical               16.04-LTS           Canonical:UbuntuServe
 
 ## <a name="find-specific-images"></a>Vyhledání konkrétních imagí
 
-Chcete-li vyhledat konkrétní image virtuálního počítače na Marketplace, použijte `az vm image list` s `--all` možnost. Tato verze příkazu trvá delší dobu a lze vrátit zdlouhavé výstup, takže obvykle filtrovat seznam podle `--publisher` nebo jiný parametr. 
+toofind konkrétní image virtuálních počítačů v hello Marketplace, použijte hello `az vm image list` s hello `--all` možnost. Tato verze příkazu hello trvá některé toocomplete čas a vrátit zdlouhavé výstup, takže obvykle filtrovat seznam hello podle `--publisher` nebo jiný parametr. 
 
-Například následující příkaz zobrazí všechny Debian nabídky (Nezapomeňte, že bez `--all` přepnout, prochází pouze místní mezipaměti běžné bitových kopií):
+Například hello následující příkaz zobrazí všechny Debian nabídky (Nezapomeňte, že bez hello `--all` přepnout, prochází pouze místní mezipaměti hello běžné bitových kopií):
 
 ```azurecli
 az vm image list --offer Debian --all --output table 
@@ -102,11 +102,11 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201708040        
 ...
 ```
 
-Použití filtrů podobné s `--location`, `--publisher`, a `--sku` možnosti. Termínem shodují jen částečně můžete provést i na filtrem, třeba hledání `--offer Deb` najít všechny Debian Image.
+Použití filtrů podobné s hello `--location`, `--publisher`, a `--sku` možnosti. Termínem shodují jen částečně můžete provést i na filtrem, třeba hledání `--offer Deb` toofind všechny Debian Image.
 
-Pokud nezadáte konkrétního umístění s `--location` možnost hodnoty `westus` jsou vráceny ve výchozím nastavení. (Spuštěním nastavte jiné výchozí umístění `az configure --defaults location=<location>`.)
+Pokud nezadáte konkrétního umístění s hello `--location` možnost hello hodnoty pro `westus` jsou vráceny ve výchozím nastavení. (Spuštěním nastavte jiné výchozí umístění `az configure --defaults location=<location>`.)
 
-Například následující příkaz zobrazí všechny Debian SKU 8 v `westeurope`:
+Například následující příkaz hello uvádí všechny Debian SKU 8 v `westeurope`:
 
 ```azurecli
 az vm image list --location westeurope --offer Deb --publisher credativ --sku 8 --all --output table
@@ -133,15 +133,15 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201706210        
 ...
 ```
 
-## <a name="navigate-the-images"></a>Přejděte bitové kopie 
-Jiný způsob, jak najít bitovou kopii v umístění je spuštění [bitové kopie virtuálních počítačů az seznamu vydavatelů](/cli/azure/vm/image#list-publishers), [bitové kopie virtuálních počítačů az seznamu nabízí](/cli/azure/vm/image#list-offers), a [bitové kopie virtuálních počítačů az seznamu SKU](/cli/azure/vm/image#list-skus) příkazy v pořadí. Pomocí těchto příkazů určit tyto hodnoty:
+## <a name="navigate-hello-images"></a>Přejděte hello obrázků 
+Jiný způsob toofind bitovou kopii v umístění je toorun hello [bitové kopie virtuálních počítačů az seznamu vydavatelů](/cli/azure/vm/image#list-publishers), [bitové kopie virtuálních počítačů az seznamu nabízí](/cli/azure/vm/image#list-offers), a [bitové kopie virtuálních počítačů az seznamu SKU](/cli/azure/vm/image#list-skus) příkazy v pořadí. Pomocí těchto příkazů určit tyto hodnoty:
 
-1. Vypsat vydavatele imagí.
+1. Seznam vydavatelů image hello.
 2. Pro daného vydavatele vypsat jeho nabídky.
 3. Pro danou nabídku vypsat její skladovou jednotku (SKU).
 
 
-Například následující příkaz seznam vydavatelů bitové kopie v umístění západní USA:
+Například hello následující příkaz seznam vydavatelů hello bitové kopie v hello západní USA umístění:
 
 ```azurecli
 az vm image list-publishers --location westus --output table
@@ -166,7 +166,7 @@ westus      activeeon
 westus      adatao
 ...
 ```
-Tyto informace použijte k vyhledání nabídky od konkrétní vydavatele. Například pokud Canonical vydavatele bitové kopie v umístění západní USA, najít jejich nabídky spuštěním `azure vm image list-offers`. Předejte umístění a vydavatele jako v následujícím příkladu:
+Pomocí této informace toofind nabízí z konkrétní vydavatele. Například pokud Canonical vydavatele bitové kopie v hello umístění západní USA, najít jejich nabídky spuštěním `azure vm image list-offers`. Předejte hello umístění a vydavatele hello jako hello následující ukázka:
 
 ```azurecli
 az vm image list-offers --location westus --publisher Canonical --output table
@@ -185,7 +185,7 @@ westus      Ubuntu_Core
 westus      Ubuntu_Snappy_Core
 westus      Ubuntu_Snappy_Core_Docker
 ```
-Uvidíte, že v oblasti západní USA Canonical publikuje **UbuntuServer** nabídku Azure. Ale co skladové jednotky (SKU)? Chcete-li získat tyto hodnoty, spusťte `azure vm image list-skus` a nastavte umístění, vydavatele a nabídky, které byly zjištěny:
+Uvidíte, že v oblasti západní USA hello publikuje Canonical hello **UbuntuServer** nabídku Azure. Ale co SKU? Spusťte tyto hodnoty tooget `azure vm image list-skus` a nastavte hello umístění, vydavatele a nabídky, které byly zjištěny:
 
 ```azurecli
 az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer --output table
@@ -219,7 +219,7 @@ westus      17.04-DAILY
 westus      17.10-DAILY
 ```
 
-Nakonec použijte `az vm image list` příkazu najděte na konkrétní verzi verze SKU chcete například **16.04 LTS**:
+Nakonec použijte hello `az vm image list` příkaz toofind na konkrétní verzi hello SKU chcete například **16.04 LTS**:
 
 ```azurecli
 az vm image list --location westus --publisher Canonical --offer UbuntuServer --sku 16.04-LTS --all --output table
@@ -257,4 +257,4 @@ UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201
 UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201708151  16.04.201708151
 ```
 ## <a name="next-steps"></a>Další kroky
-Nyní můžete přesněji bitovou kopii, kterou chcete použít provedením Poznámka URN hodnoty. Předat tuto hodnotu s `--image` parametr při vytváření virtuálního počítače s [vytvořit virtuální počítač az](/cli/azure/vm#create) příkaz. Mějte na paměti, že můžete volitelně nahradit číslo verze v název URN "poslední zálohy". Tato verze je vždy nejnovější verzi rozdělení. Pokud chcete rychle vytvořit virtuální počítač pomocí informací o URN, přečtěte si téma [vytvořit a spravovat virtuální počítače s Linuxem pomocí rozhraní příkazového řádku Azure](tutorial-manage-vm.md).
+Teď můžete zvolit přesněji hello obraz chcete toouse podle trvá poznamenejte hello URN hodnotu. Předat tuto hodnotu s hello `--image` parametr při vytváření virtuálního počítače s hello [vytvořit virtuální počítač az](/cli/azure/vm#create) příkaz. Mějte na paměti, že můžete volitelně nahradit hello číslo verze v hello URN "poslední zálohy". Tato verze je vždy hello nejnovější verzi distribučních hello. toocreate virtuální počítač rychle pomocí hello URN informace najdete v tématu [vytvořit a spravovat virtuální počítače s Linuxem pomocí rozhraní příkazového řádku Azure hello](tutorial-manage-vm.md).

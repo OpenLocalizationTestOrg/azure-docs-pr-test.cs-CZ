@@ -1,6 +1,6 @@
 ---
-title: "Jak nakonfigurovat vzájemné ověřování protokolu TLS pro webovou aplikaci"
-description: "Informace o konfiguraci webové aplikace na protokol TLS použít ověřování certifikátu klienta."
+title: "aaaHow tooConfigure vzájemné ověřování TLS pro webovou aplikaci"
+description: "Zjistěte, jak tooconfigure vaší webové aplikace toouse klientský certifikát ověřování na TLS."
 services: app-service
 documentationcenter: 
 author: naziml
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
-ms.openlocfilehash: db69852cffd1ff331ac4a640b04ea4360d00bf75
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8aeb9b35058fac50b8b38f6428207ad4a82d8637
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>Jak nakonfigurovat vzájemné ověřování protokolu TLS pro webovou aplikaci
+# <a name="how-tooconfigure-tls-mutual-authentication-for-web-app"></a>Jak tooConfigure vzájemné ověřování TLS pro webovou aplikaci
 ## <a name="overview"></a>Přehled
-Povolením různé typy ověřování pro něj můžete omezit přístup k vaší webové aplikace Azure. Jedním ze způsobů k tomu je k ověření pomocí klientského certifikátu, pokud je požadavek protokolem TLS/SSL. Tento mechanismus se nazývají vzájemné ověřování TLS nebo klientský certifikát, ověřování a tento článek podrobně popisuje postup nastavení webové aplikace použít ověřování certifikátu klienta.
+Povolením různé typy ověřování pro něj můžete omezit přístup tooyour webové aplikace Azure. Jedním ze způsobů toodo je proto tooauthenticate pomocí klientského certifikátu, když je požadavek hello protokolem TLS/SSL. Tento mechanismus se označuje jako TLS vzájemné ověřování nebo ověřování certifikátu klienta a tento článek podrobně popisuje jak toosetup vaší webové aplikace toouse ověřování pomocí certifikátu klienta.
 
-> **Poznámka:** při přístupu k webu prostřednictvím protokolu HTTP a HTTPS není, neobdržíte žádné klientský certifikát. Proto pokud vaše aplikace vyžaduje klientské certifikáty neměli povolit požadavky do vaší aplikace prostřednictvím protokolu HTTP.
+> **Poznámka:** při přístupu k webu prostřednictvím protokolu HTTP a HTTPS není, neobdržíte žádné klientský certifikát. Proto pokud vaše aplikace vyžaduje klientské certifikáty by neměl povolíte požadavky aplikace tooyour přes protokol HTTP.
 > 
 > 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="configure-web-app-for-client-certificate-authentication"></a>Konfigurovat webovou aplikaci pro ověření certifikátu klienta
-K nastavení vaší webové aplikace na klientské certifikáty vyžadovat musíte přidat nastavení lokality clientCertEnabled pro vaši webovou aplikaci a nastavte ji na hodnotu true. Toto nastavení není aktuálně k dispozici prostřednictvím prostředí pro správu na portálu a bude nutné se k tomu použít rozhraní REST API.
+toosetup vaší webové aplikace toorequire klientské certifikáty, které že budete potřebovat tooadd hello clientCertEnabled lokality nastavení pro webové aplikace a nastavte ji tootrue. Toto nastavení není aktuálně k dispozici prostřednictvím hello prostředí pro správu v hello portál a hello REST API potřebovat tooaccomplish toobe použít.
 
-Můžete použít [ARMClient nástroj](https://github.com/projectkudu/ARMClient) snadno vytvořit volání rozhraní REST API. Jakmile se přihlásíte pomocí nástroje budete muset vydejte následující příkaz:
+Můžete použít hello [ARMClient nástroj](https://github.com/projectkudu/ARMClient) toomake ho snadno toocraft hello volání rozhraní REST API. Po přihlásit hello nástroj budete potřebovat tooissue hello následující příkaz:
 
     ARMClient PUT subscriptions/{Subscription Id}/resourcegroups/{Resource Group Name}/providers/Microsoft.Web/sites/{Website Name}?api-version=2015-04-01 @enableclientcert.json -verbose
 
-Nahraďte všechno ve {} informace pro vaši webovou aplikaci a vytvoření souboru s názvem enableclientcert.json následujícím textem JSON obsahu:
+Nahraďte všechno ve {} informace pro vaši webovou aplikaci a vytvoření souboru s názvem enableclientcert.json s hello následující JSON obsahu:
 
     {
         "location": "My Web App Location",
@@ -46,19 +46,19 @@ Nahraďte všechno ve {} informace pro vaši webovou aplikaci a vytvoření soub
         }
     }
 
-Ujistěte se, chcete-li změnit hodnotu "umístění" k kdekoli vaší webové aplikace se nachází například – Sever střední USA nebo západní USA atd.
+Ujistěte se, že hodnota hello toochange toowherever "umístění", webová aplikace je umístěná například – Sever střední USA nebo západní USA atd.
 
-Můžete také použít https://resources.azure.com k převrácení `clientCertEnabled` vlastnost `true`.
+Můžete taky https://resources.azure.com tooflip hello `clientCertEnabled` vlastnost příliš`true`.
 
-> **Poznámka:** ARMClient při spuštění z prostředí Powershell, budete muset vyhnuli symbol @ pro soubor JSON s back značek '.
+> **Poznámka:** ARMClient při spuštění z prostředí Powershell, budete potřebovat tooescape hello @ symbol pro hello soubor JSON s back značek '.
 > 
 > 
 
-## <a name="accessing-the-client-certificate-from-your-web-app"></a>Přístup k certifikátu klienta z vaší webové aplikace
-Pokud používáte technologii ASP.NET a nakonfigurovat v aplikaci použít ověřování certifikátu klienta, certifikát je k dispozici prostřednictvím **HttpRequest.ClientCertificate** vlastnost. Pro ostatní zásobníky aplikace bude k dispozici ve vaší aplikaci pomocí kódováním base64 hodnoty v hlavičce žádosti "X-směrování žádostí na aplikace-ClientCert" klientského certifikátu. Aplikace můžete vytvořit certifikát od této hodnoty a použít ho pro účely ověřování a autorizace ve vaší aplikaci.
+## <a name="accessing-hello-client-certificate-from-your-web-app"></a>Přístup k hello klientský certifikát z webové aplikace
+Pokud používáte technologii ASP.NET a nakonfigurovat ověřování certifikátu klienta toouse vaší aplikace, bude k dispozici prostřednictvím hello hello certifikát **HttpRequest.ClientCertificate** vlastnost. Pro ostatní zásobníky aplikace bude k dispozici ve vaší aplikaci pomocí kódováním base64 hodnoty v hlavičce žádosti "X-směrování žádostí na aplikace-ClientCert" hello hello klientského certifikátu. Aplikace můžete vytvořit certifikát od této hodnoty a použít ho pro účely ověřování a autorizace ve vaší aplikaci.
 
 ## <a name="special-considerations-for-certificate-validation"></a>Zvláštní upozornění pro ověření certifikátu
-Klientský certifikát, který je odeslán do aplikace neprochází žádné ověření platformou Azure Web Apps. Ověřit tento certifikát má na starosti webové aplikace. Zde je ukázka kódu ASP.NET, která ověřuje vlastnosti certifikátu pro účely ověření.
+Hello klientský certifikát, který je odeslán toohello aplikace neprochází jakéhokoli ověřování podle platformy Azure Web Apps hello. Ověřit tento certifikát je hello odpovědnost hello webové aplikace. Zde je ukázka kódu ASP.NET, která ověřuje vlastnosti certifikátu pro účely ověření.
 
     using System;
     using System.Collections.Specialized;
@@ -81,8 +81,8 @@ Klientský certifikát, který je odeslán do aplikace neprochází žádné ov�
             public bool isValidCert = false;
 
             //
-            // Read the certificate from the header into an X509Certificate2 object
-            // Display properties of the certificate on the page
+            // Read hello certificate from hello header into an X509Certificate2 object
+            // Display properties of hello certificate on hello page
             //
             protected void Page_Load(object sender, EventArgs e)
             {
@@ -124,13 +124,13 @@ Klientský certifikát, který je odeslán do aplikace neprochází žádné ov�
             //
             private bool IsValidClientCertificate()
             {
-                // In this example we will only accept the certificate as a valid certificate if all the conditions below are met:
-                // 1. The certificate is not expired and is active for the current time on server.
-                // 2. The subject name of the certificate has the common name nildevecc
-                // 3. The issuer name of the certificate has the common name nildevecc and organization name Microsoft Corp
-                // 4. The thumbprint of the certificate is 30757A2E831977D8BD9C8496E4C99AB26CB9622B
+                // In this example we will only accept hello certificate as a valid certificate if all hello conditions below are met:
+                // 1. hello certificate is not expired and is active for hello current time on server.
+                // 2. hello subject name of hello certificate has hello common name nildevecc
+                // 3. hello issuer name of hello certificate has hello common name nildevecc and organization name Microsoft Corp
+                // 4. hello thumbprint of hello certificate is 30757A2E831977D8BD9C8496E4C99AB26CB9622B
                 //
-                // This example does NOT test that this certificate is chained to a Trusted Root Authority (or revoked) on the server 
+                // This example does NOT test that this certificate is chained tooa Trusted Root Authority (or revoked) on hello server 
                 // and it allows for self signed certificates
                 //
 
@@ -175,7 +175,7 @@ Klientský certifikát, který je odeslán do aplikace neprochází žádné ov�
                 // 4. Check thumprint of certificate
                 if (String.Compare(certificate.Thumbprint.Trim().ToUpper(), "30757A2E831977D8BD9C8496E4C99AB26CB9622B") != 0) return false;
 
-                // If you also want to test if the certificate chains to a Trusted Root Authority you can uncomment the code below
+                // If you also want tootest if hello certificate chains tooa Trusted Root Authority you can uncomment hello code below
                 //
                 //X509Chain certChain = new X509Chain();
                 //certChain.Build(certificate);

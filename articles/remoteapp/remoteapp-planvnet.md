@@ -1,6 +1,6 @@
 ---
-title: "Plánování virtuální sítě pro kolekci Azure Remoteappu | Microsoft Docs"
-description: "Zjistěte, jak chcete virtuální sítě pro kolekci Azure RemoteApp."
+title: "aaaHow tooplan virtuální sítě pro kolekci Azure Remoteappu | Microsoft Docs"
+description: "Zjistěte, jak tooplan virtuální sítě pro kolekci Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
 author: mghosh1616
@@ -13,47 +13,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
-ms.openlocfilehash: 1eb8115b13fb18074b4c4726b69e3d9faf387c32
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d7eeefc3c66815b18f9338e2e428585e6f81a12a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-plan-your-virtual-network-for-azure-remoteapp"></a>Postup plánování virtuální sítě Azure RemoteApp
+# <a name="how-tooplan-your-virtual-network-for-azure-remoteapp"></a>Jak tooplan virtuální sítě pro Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp se přestává používat dne 31. srpna 2017. Podrobnosti najdete v tomto [oznámení](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp se přestává používat dne 31. srpna 2017. Čtení hello [oznámení](https://go.microsoft.com/fwlink/?linkid=821148) podrobnosti.
 > 
 > 
 
-Tento dokument popisuje, jak nastavit virtuální sítě Azure (VNET) a podsíť pro Azure RemoteApp. Pokud jste obeznámeni s virtuální sítě Azure, je to funkci, která vám pomůže při virtualizaci infrastruktura vaší sítě do cloudu a vytvářet hybridní řešení s Azure a místních prostředků. Další informace si můžete přečíst [tady](../virtual-network/virtual-networks-overview.md).
+Tento dokument popisuje, jak tooset virtuální sítě Azure (VNET) a hello podsíť pro Azure RemoteApp. Pokud jste obeznámeni s virtuální sítě Azure, je to funkci, která pomáhá vám toovirtualize síťové infrastruktury toohello cloudu a toocreate hybridní řešení s Azure a místních prostředků. Další informace si můžete přečíst [tady](../virtual-network/virtual-networks-overview.md).
 
-Pokud chcete definovat zásady zabezpečení pro provozu (příchozí i odchozí) ve virtuální síti kterého nasazujete Azure RemoteApp, důrazně doporučujeme vytvořit samostatnou podsíť pro Azure RemoteApp od zbytku nasazeních ve službě Azure virtuální síť. Další informace o tom, jak definovat zásady zabezpečení na podsíť virtuální sítě Azure, přečtěte si prosím [co je skupina zabezpečení sítě (NSG)?](../virtual-network/virtual-networks-nsg.md).
+Pokud chcete zásady zabezpečení toodefine provozu (příchozí i odchozí) ve virtuální síti kterého nasazujete Azure RemoteApp, důrazně doporučujeme vytvořit samostatnou podsíť pro Azure RemoteApp hello ostatních nasazení v hello Azure virtuální síť. Další informace o tom, jak ve vaší virtuální Azure toodefine zásady zabezpečení sítě podsíť, přečtěte si prosím [co je skupina zabezpečení sítě (NSG)?](../virtual-network/virtual-networks-nsg.md).
 
 ## <a name="types-of-azure-remoteapp-collections-with-azure-virtual-networks"></a>Typy kolekce Azure Remoteappu s virtuální sítě Azure
-Na následujících obrázcích zobrazit dvě možnosti jinou kolekci, pokud chcete používat virtuální síť.
+Hello následující grafiky zobrazte hello dvě možnosti jinou kolekci při toouse virtuální sítě.
 
 ### <a name="azure-remoteapp-cloud-collection-with-vnet"></a>Azure RemoteApp cloudové kolekce s virtuální sítě
  ![Azure RemoteApp - cloudové kolekce s virtuální sítě](./media/remoteapp-planvpn/ra-cloudvpn.png)
 
-Reprezentuje kolekci Azure RemoteApp, kde jsou všechny prostředky, které relaci Remoteappu hostitelé potřebují přístup k nasazené v Azure. Mohou být ve stejné virtuální síti jako virtuální sítě vzdálené aplikace RemoteApp nebo jiný virtuální sítě v Azure.
+Reprezentuje kolekci Azure RemoteApp, kde jsou všechny prostředky hello, hostitele relace vzdálené aplikace RemoteApp hello nutné tooaccess nasazené v Azure. Mohou být v hello stejnou virtuální síť jako hello virtuální sítě vzdálené aplikace RemoteApp nebo jiný virtuální sítě v Azure.
 
 ### <a name="azure-remoteapp-hybrid-collection-with-vnet"></a>Hybridní kolekce Azure RemoteApp s virtuální sítě
 ![Azure RemoteApp - hybridní kolekci s virtuální sítě](./media/remoteapp-planvpn/ra-hybridvpn.png)
 
-Reprezentuje kolekci Azure RemoteApp, kde některé prostředky, které potřebují přístup k hostitele relace vzdálené aplikace RemoteApp jsou nasadit místně. Virtuální sítě vzdálené aplikace RemoteApp se propojí k místní síti pomocí technologie Azure hybridní jako site-to-site VPN nebo Express Route.
+Reprezentuje kolekci Azure RemoteApp, kde některé hello prostředky, třeba hostitele relace vzdálené aplikace RemoteApp hello tooaccess jsou nasadit místně. Hello virtuální sítě vzdálené aplikace RemoteApp je propojené toohello místní síti pomocí technologie Azure hybridní jako site-to-site VPN nebo Express Route.
 
-## <a name="how-the-system-works"></a>Jak funguje v systému
-Azure RemoteApp skrytě nasadí virtuální počítače Azure (s nahrané image) do podsítě virtuální sítě, který jste si zvolili během zřizování. Pokud jste se rozhodli pro hybridní kolekce, pokusíme se přeložit plně kvalifikovaný název domény řadiče domény, které jste zadali v pracovním postupu zřizování s zadaný server DNS ve virtuální síti.  
-Pokud se připojujete k existující virtuální síť, ujistěte se, zda je vystavit nezbytné porty ve skupinách zabezpečení sítě v Azure Remoteappu podsíť. 
+## <a name="how-hello-system-works"></a>Jak funguje hello systému
+V části hello zahrnuje nasadí Azure RemoteApp podsíť virtuální sítě toohello virtuální počítače Azure (s vaší nahraný obrázek), který jste si zvolili během zřizování. Pokud jste se rozhodli pro hybridní kolekce, pokusíme tooresolve hello plně kvalifikovaný název domény řadiče domény hello, které jste zadali do hello zřizování pracovního postupu s hello server DNS poskytovaný ve virtuální síti hello.  
+Pokud se připojujete tooan existující virtuální síť, ujistěte se, že tooexpose hello nezbytné porty ve skupinách zabezpečení sítě v Azure Remoteappu podsíť. 
 
-Doporučujeme použít [dostatečně velké na podsíť pro Azure RemoteApp](remoteapp-vnetsizing.md). Největší nepodporuje Azure virtuální sítě je podsíť/8 (pomocí definice podsítě CIDR). Podsíť musí být dostatečně velký pro uložení všech Azure RemoteApp virtuálních počítačích během škálování při další uživatelé přistupují k aplikace. 
+Doporučujeme použít [dostatečně velké na podsíť pro Azure RemoteApp](remoteapp-vnetsizing.md). podsíť/8 je Hello největší podporovaná Azure virtuální sítí (pomocí definice podsítě CIDR). Podsíť musí být dostatečně velký tooaccommodate všech hello Azure RemoteApp virtuálních počítačů během škálování při další uživatelé přistupují k aplikacím hello. 
 
-Toto je věcí, které budete muset povolit na podsíť virtuální sítě: 
+Následují hello věcí, které budete potřebovat tooenable na podsíť virtuální sítě: 
 
-1. Odchozí přenosy z podsítě má být povoleno na rozsah portů 10175 10101-Document ke komunikaci s jedním z interních služeb Azure RemoteApp.
-2. Odchozí přenosy se má povolit z podsíť pro připojení k Azure Storage na portu 443
-3. Pokud máte služby hostované v Azure Active Directory, ujistěte se, že žádné virtuální počítače v podsíti virtuální sítě pro Azure RemoteApp je možné se připojit k tomuto řadiči domény. DNS ve virtuální síti musí umět přeložit plně kvalifikovaný název domény tohoto řadiče domény.
+1. Odchozí přenosy z podsítě hello má být povoleno na toocommunicate 10175 10101-Document rozsah portů s jedním z interních služeb Azure RemoteApp hello.
+2. Odchozí přenosy, které má být povoleno z vaší podsítě tooconnect tooAzure úložiště na portu 443
+3. Pokud máte služby hostované v Azure Active Directory, zajistěte, aby že žádné virtuální počítače v podsíti virtuální sítě hello pro Azure RemoteApp je řadič domény nemůže tooconnect toothat. Hello DNS ve virtuální síti hello by měl být schopný tooresolve hello plně kvalifikovaný název domény tohoto řadiče domény.
 
 ## <a name="virtual-network-with-forced-tunneling"></a>Virtuální síť s vynucené tunelování
-[Vynuceného tunelování](../vpn-gateway/vpn-gateway-about-forced-tunneling.md) je nyní podporován pro všechny nové kolekce Azure Remoteappu. Aktuálně nepodporujeme migrace existující kolekci pro podporu vynucené tunelování.  Budete muset odstranit všechny existující kolekce pomocí virtuální sítě, které se připojujete k Azure Remoteappu a vytvořte novou získat vynucené tunelování na kolekce povolena. 
+[Vynuceného tunelování](../vpn-gateway/vpn-gateway-about-forced-tunneling.md) je nyní podporován pro všechny nové kolekce Azure Remoteappu. Aktuálně nepodporujeme hello migrace existující kolekci toosupport vynuceného tunelování.  Toodelete budou mít všechny existující kolekce pomocí hello virtuální sítě jsou propojení tooAzure vzdálené aplikace RemoteApp a vytvořit nové jeden tooget vynuceného tunelování na kolekce povolena. 
 

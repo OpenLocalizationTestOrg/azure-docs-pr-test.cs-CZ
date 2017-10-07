@@ -1,6 +1,6 @@
 ---
-title: "Jak používat úložiště objektů Blob (úložiště objektů) z Ruby | Microsoft Docs"
-description: "Ukládejte nestrukturovaná data v cloudu pomocí Azure Blob Storage (úložiště objektů)."
+title: "aaaHow toouse úložiště objektů Blob (úložiště objektů) z Ruby | Microsoft Docs"
+description: "Ukládání nestrukturovaných dat v cloudu hello s Azure Blob storage (úložiště objektů)."
 services: storage
 documentationcenter: ruby
 author: mmacy
@@ -14,21 +14,21 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-ms.openlocfilehash: 7f7d0c52b2b50a360711477e8e0eafc07ddcf374
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 638826777f5a7ae8330fd67cdbb51d5eee1736a5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-blob-storage-from-ruby"></a>Používání úložiště Blob z Ruby
+# <a name="how-toouse-blob-storage-from-ruby"></a>Jak toouse úložiště objektů Blob z Ruby
 [!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Přehled
-Úložiště objektů blob v Azure je služba, která ukládá nestrukturovaná data v cloudu jako objekty nebo objekty blob. Do Blob storage se dá ukládat jakýkoli druh textu nebo binárních dat, jako je dokument, soubor médií nebo instalátor aplikace. Blob storage se také nazývá úložiště objektů.
+Azure Blob storage je služba, která ukládá Nestrukturovaná data v cloudu hello jako objekty nebo objekty BLOB. Do Blob storage se dá ukládat jakýkoli druh textu nebo binárních dat, jako je dokument, soubor médií nebo instalátor aplikace. Úložiště objektů blob je také odkazované tooas objektu úložiště.
 
-Tento průvodce vám ukáže, jak provádět běžné scénáře s využitím úložiště objektů Blob. Ukázky jsou zapsány pomocí rozhraní API Ruby. Pokryté scénáře zahrnují **odesílání, výpis, stahování,** a **odstraňování** objekty BLOB.
+Tento průvodce se dozvíte, jak tooperform běžné scénáře s využitím úložiště objektů Blob. Ukázky Hello jsou zapsány pomocí hello Ruby rozhraní API. Hello pokryté scénáře zahrnují **odesílání, výpis, stahování,** a **odstraňování** objekty BLOB.
 
 [!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
@@ -37,50 +37,50 @@ Tento průvodce vám ukáže, jak provádět běžné scénáře s využitím ú
 ## <a name="create-a-ruby-application"></a>Vytvoření Ruby aplikace
 Vytvořte aplikaci pro poznámky Ruby. Pokyny najdete v tématu [Ruby, na které webové aplikace ve virtuálním počítači Azure](../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md)
 
-## <a name="configure-your-application-to-access-storage"></a>Konfigurace aplikace pro přístup k úložišti
-Pokud chcete používat Azure Storage, musíte stáhnout a použít Ruby azure balíčku, který obsahuje sadu knihoven pohodlí, které komunikují s služby REST úložiště.
+## <a name="configure-your-application-tooaccess-storage"></a>Konfigurace vaší aplikace tooaccess úložiště
+toouse Azure Storage, potřebujete toodownload a použití hello Ruby balíček azure, který obsahuje sadu knihoven pohodlí, které komunikují s služby REST úložiště hello.
 
-### <a name="use-rubygems-to-obtain-the-package"></a>Použití RubyGems získat balíček
+### <a name="use-rubygems-tooobtain-hello-package"></a>Použijte RubyGems tooobtain hello balíček
 1. Pomocí rozhraní příkazového řádku, jako například **prostředí PowerShell** (Windows), **Terminálové** (Mac), nebo **Bash** (Unix).
-2. "Gem instalace azure" zadejte v příkazovém okně instalace gem a závislostí.
+2. Zadejte "gem instalace azure" hello příkazového okna tooinstall hello gem a závislosti.
 
-### <a name="import-the-package"></a>Import balíčku
-Na začátek souboru Ruby, kde máte v úmyslu používat úložiště pomocí svém oblíbeném textovém editoru, přidejte následující:
+### <a name="import-hello-package"></a>Importovat balíček hello
+Pomocí svém oblíbeném textovém editoru, přidejte následující toohello horní části hello Ruby souboru, kde chcete úložiště toouse hello:
 
 ```ruby
 require "azure"
 ```
 
 ## <a name="set-up-an-azure-storage-connection"></a>Nastavit připojení k Azure Storage
-Modul azure, bude číst proměnné prostředí **AZURE\_úložiště\_účet** a **AZURE\_úložiště\_ACCESS_KEY** informace požadované pro připojení k účtu úložiště Azure. Pokud nejsou nastavené těchto proměnných prostředí, je nutné zadat informace o účtu před použitím **Azure::Blob::BlobService** následujícím kódem:
+modul Hello azure, bude číst proměnné prostředí hello **AZURE\_úložiště\_účet** a **AZURE\_úložiště\_ACCESS_KEY** pro účet úložiště Azure tooyour tooconnect jsou požadovány informace. Pokud nejsou nastavené těchto proměnných prostředí, je nutné zadat informace o účtu hello před použitím **Azure::Blob::BlobService** s hello následující kód:
 
 ```ruby
 Azure.config.storage_account_name = "<your azure storage account>"
 Azure.config.storage_access_key = "<your azure storage access key>"
 ```
 
-K získání těchto hodnot z klasický nebo účet správce prostředků úložiště na portálu Azure:
+tooobtain tyto hodnoty ze Správce prostředků úložiště nebo klasický účet v hello portálu Azure:
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-2. Přejděte na účet úložiště, který chcete použít.
-3. V okně nastavení na pravé straně klikněte na tlačítko **přístupové klíče**.
-4. V okně klíče přístup, který se zobrazí uvidíte přístupový klíč 1 a 2 přístupový klíč. Můžete použít kteroukoli z nich.
-5. Kliknutím na ikonu kopírování do schránky zkopírujte klíč.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
+2. Přejděte toohello úložiště účet, že který má toouse.
+3. V okně Nastavení hello na hello správné, klikněte na tlačítko **přístupové klíče**.
+4. V okně klíče přístup hello který se zobrazí uvidíte hello přístupový klíč 1 a 2 přístupový klíč. Můžete použít kteroukoli z nich.
+5. Klikněte na tlačítko hello kopírování ikonu toocopy hello klíče toohello schránky.
 
-K získání těchto hodnot z účtu úložiště classic na portálu Azure classic:
+tooobtain tyto hodnoty z úložiště classic účet na portálu Azure classic hello:
 
-1. Přihlaste se k [portál Azure classic](https://manage.windowsazure.com).
-2. Přejděte na účet úložiště, který chcete použít.
-3. Klikněte na tlačítko **SPRAVOVAT přístupové klíče** v dolní části navigačního podokna.
-4. V dialogovém okně automaticky otevírané okno se zobrazí název účtu úložiště, primární přístupový klíč a sekundární přístupový klíč. Pro přístupový klíč můžete použít primární nebo sekundární jeden.
-5. Kliknutím na ikonu kopírování do schránky zkopírujte klíč.
+1. Přihlaste se toohello [portál Azure classic](https://manage.windowsazure.com).
+2. Přejděte toohello úložiště účet, že který má toouse.
+3. Klikněte na tlačítko **SPRAVOVAT přístupové klíče** na hello dolní části navigačního podokna hello.
+4. V místním dialogovém okně hello zobrazí se název účtu úložiště hello, primární přístupový klíč a sekundární přístupový klíč. Pro přístupový klíč můžete použít buď hello primární nebo sekundární jeden hello.
+5. Klikněte na tlačítko hello kopírování ikonu toocopy hello klíče toohello schránky.
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 [!INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
-**Azure::Blob::BlobService** objekt vám umožňuje spolupracovat s kontejnery a objekty BLOB. Chcete-li vytvořit kontejner, použijte **vytvořit\_container()** metoda.
+Hello **Azure::Blob::BlobService** objekt vám umožňuje spolupracovat s kontejnery a objekty BLOB. toocreate kontejner, použijte hello **vytvořit\_container()** metoda.
 
-Následující příklad kódu vytvoří kontejner nebo vytiskne chybu, pokud existuje.
+Hello následující příklad kódu vytvoří kontejner nebo vytiskne hello chyby, pokud existuje.
 
 ```ruby
 azure_blob_service = Azure::Blob::BlobService.new
@@ -91,32 +91,32 @@ rescue
 end
 ```
 
-Pokud chcete, aby soubory v kontejneru veřejného, můžete nastavit oprávnění kontejneru.
+Pokud chcete soubory hello toomake v kontejneru hello veřejné, můžete nastavit oprávnění hello kontejneru.
 
-Můžete upravit pouze <strong>vytvořit\_container()</strong> volání předat **: veřejné\_přístup\_úroveň** možnost:
+Upravíte na hello <strong>vytvořit\_container()</strong> volání toopass hello **: veřejné\_přístup\_úroveň** možnost:
 
 ```ruby
 container = azure_blob_service.create_container("test-container",
     :public_access_level => "<public access level>")
 ```
 
-Platné hodnoty pro **: veřejné\_přístup\_úroveň** možnosti jsou:
+Platné hodnoty pro hello **: veřejné\_přístup\_úroveň** možnosti jsou:
 
-* **objekt BLOB:** Určuje veřejný přístup pro čtení pro objekty BLOB. Data objektů BLOB v tomto kontejneru může číst přes anonymní žádost, ale kontejneru data nejsou k dispozici. Klienty nelze vytvořit výčet objektů BLOB v kontejneru přes anonymní žádost.
-* **kontejner:** Určuje úplné veřejný přístup pro čtení pro data kontejnerů a objektů blob. Klienti, můžete vytvořit výčet objektů BLOB v kontejneru přes anonymní žádost, ale nemůže vytvořit výčet kontejnery v rámci účtu úložiště.
+* **objekt BLOB:** Určuje veřejný přístup pro čtení pro objekty BLOB. Data objektů BLOB v tomto kontejneru může číst přes anonymní žádost, ale kontejneru data nejsou k dispozici. Klienty nelze vytvořit výčet objektů BLOB v kontejneru hello přes anonymní žádost.
+* **kontejner:** Určuje úplné veřejný přístup pro čtení pro data kontejnerů a objektů blob. Klienti, můžete vytvořit výčet objektů BLOB v kontejneru hello přes anonymní žádost, ale nemůže vytvořit výčet kontejnery v rámci účtu úložiště hello.
 
-Alternativně můžete upravit úroveň veřejný přístup kontejner pomocí **nastavit\_kontejneru\_acl()** metoda k určení úrovně veřejný přístup.
+Alternativně můžete upravit úroveň veřejný přístup hello kontejner pomocí **nastavit\_kontejneru\_acl()** metoda toospecify hello veřejný přístup úroveň.
 
-Následující příklad kódu se změní na úroveň veřejný přístup **kontejneru**:
+Následující ukázka kódu změny hello veřejný přístup úroveň příliš Hello**kontejneru**:
 
 ```ruby
 azure_blob_service.set_container_acl('test-container', "container")
 ```
 
 ## <a name="upload-a-blob-into-a-container"></a>Nahrání objektu blob do kontejneru
-Chcete-li nahrát obsah do objektu blob, použijte **vytvořit\_bloku\_blob()** metodu pro vytvoření objektu blob, použijte jako obsah objektu blob souboru nebo řetězec.
+Objekt blob obsahu tooa tooupload, použijte hello **vytvořit\_bloku\_blob()** metoda toocreate hello objektů blob, použijte soubor nebo řetězec jako hello obsahu objektu hello blob.
 
-Následující kód nahrávání souboru **test.png** jako nový blob s názvem "– Objekt blob image" v kontejneru.
+Hello následující kód odešle hello soubor **test.png** jako nový blob s názvem "– Objekt blob image" v kontejneru hello.
 
 ```ruby
 content = File.open("test.png", "rb") { |file| file.read }
@@ -125,11 +125,11 @@ blob = azure_blob_service.create_block_blob(container.name,
 puts blob.name
 ```
 
-## <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
-K zobrazení seznamu kontejnery, použijte **list_containers()** metoda.
-K zobrazení seznamu objektů BLOB v kontejneru, použijte **seznamu\_blobs()** metoda.
+## <a name="list-hello-blobs-in-a-container"></a>Seznam hello objekty BLOB v kontejneru
+kontejnery hello toolist, používají **list_containers()** metoda.
+použít toolist hello objektů BLOB v kontejneru, **seznamu\_blobs()** metoda.
 
-To výstupy adresy URL všech objektů BLOB v všechny kontejnery pro účet.
+To výstupy hello adresy URL všech objektů BLOB hello v všechny kontejnery hello hello účtu.
 
 ```ruby
 containers = azure_blob_service.list_containers()
@@ -142,9 +142,9 @@ end
 ```
 
 ## <a name="download-blobs"></a>Stáhnout objekty blob
-Chcete-li stáhnout objekty BLOB, použijte **získat\_blob()** metoda můžete načíst obsah.
+objekty BLOB toodownload, použijte hello **získat\_blob()** metoda tooretrieve hello obsah.
 
-Následující příklad kódu ukazuje, jak pomocí **získat\_blob()** ke stažení obsahu "Objekt blob image" a zapisovat do místního souboru.
+Hello následující příklad kódu ukazuje, jak pomocí **získat\_blob()** toodownload hello obsah "Objekt blob image" a zapisují tooa místního souboru.
 
 ```ruby
 blob, content = azure_blob_service.get_blob(container.name,"image-blob")
@@ -152,16 +152,16 @@ File.open("download.png","wb") {|f| f.write(content)}
 ```
 
 ## <a name="delete-a-blob"></a>Odstranit objekt Blob
-Nakonec pokud chcete odstranit objekt blob, použijte **odstranit\_blob()** metoda. Následující příklad kódu ukazuje, jak odstranit objekt blob.
+Nakonec toodelete objekt blob, použijte hello **odstranit\_blob()** metoda. Hello následující příklad kódu ukazuje, jak toodelete objekt blob.
 
 ```ruby
 azure_blob_service.delete_blob(container.name, "image-blob")
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o složitějších úlohách úložiště najdete na následujících odkazech:
+toolearn o složitějších úlohách úložiště, použijte tyto odkazy:
 
 * [Blog týmu Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/)
 * [Azure SDK pro Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) úložišti na Githubu
-* [Přenos dat pomocí nástroje příkazového řádku AzCopy](storage-use-azcopy.md)
+* [Přenos dat pomocí příkazového řádku Azcopy hello](storage-use-azcopy.md)
 

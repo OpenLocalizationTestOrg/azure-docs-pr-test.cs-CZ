@@ -1,5 +1,5 @@
 ---
-title: "Vytvoření první aplikace mikroslužeb Azure v Linuxu pomocí jazyka C# | Dokumentace Microsoftu"
+title: "aaaCreate první aplikace Azure mikroslužeb v systému Linux pomocí jazyka C# | Microsoft Docs"
 description: "Vytvoření a nasazení aplikace Service Fabric pomocí jazyka C#"
 services: service-fabric
 documentationcenter: csharp
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/21/2017
 ms.author: subramar
-ms.openlocfilehash: adcafaa5522fcddc0a01eb1dc8deba04ebfc38f2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 68d685e130be338ebcdb2f1af24b66d1e14f580a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Vytvoření první aplikace Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -28,15 +28,15 @@ ms.lasthandoff: 08/29/2017
 >
 >
 
-Service Fabric poskytuje sady SDK pro vytváření služeb v Linuxu pomocí .NET Core a Javy. V tomto kurzu si projdeme postup vytvoření aplikace pro Linux a vytvoření služby pomocí jazyka C# (.NET Core).
+Service Fabric poskytuje sady SDK pro vytváření služeb v Linuxu pomocí .NET Core a Javy. V tomto kurzu se podíváme na to, jak toocreate aplikace pro systémy Linux a sestavení služby pomocí jazyka C# (.NET Core).
 
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, ujistěte se, že máte [v Linuxu nastavené vývojové prostředí](service-fabric-get-started-linux.md). Pokud používáte Mac OS X, můžete k [nastavení linuxového prostředí ve virtuálním počítači použít Vagrant](service-fabric-get-started-mac.md).
 
-Budete také chtít nainstalovat [Service Fabric CLI](service-fabric-cli.md).
+Můžete také tooinstall hello [Service Fabric rozhraní příkazového řádku](service-fabric-cli.md)
 
-### <a name="install-and-set-up-the-generators-for-csharp"></a>Instalace a nastavení generátorů pro CSharp
-Service Fabric nabízí nástroje pro generování uživatelského rozhraní, které vám pomůžou vytvořit aplikaci Service Fabric CSharp z terminálu pomocí generátoru šablon Yeoman. Postupujte podle následujících kroků, abyste zkontrolovali, že máte na svém počítači funkční generátor šablon Service Fabric yeoman pro CSharp.
+### <a name="install-and-set-up-hello-generators-for-csharp"></a>Instalace a nastavení hello generátory pro CSharp
+Service Fabric nabízí nástroje pro generování uživatelského rozhraní, které vám pomůžou vytvořit aplikaci Service Fabric CSharp z terminálu pomocí generátoru šablon Yeoman. Postupujte podle kroků hello tooensure máte hello Service Fabric yeoman šablony generátor pro CSharp pracující na váš počítač.
 1. Instalace nodejs a NPM na počítači
 
   ```bash
@@ -48,85 +48,85 @@ Service Fabric nabízí nástroje pro generování uživatelského rozhraní, kt
   ```bash
   sudo npm install -g yo
   ```
-3. Instalace generátoru aplikací Service Fabric Yeo Java z NPM
+3. Nainstalujte generátor aplikace Service Fabric jo s háčkem nad Java hello z NPM
 
   ```bash
   sudo npm install -g generator-azuresfcsharp
   ```
 
-## <a name="create-the-application"></a>Vytvoření aplikace
-Aplikace Service Fabric může obsahovat jednu nebo víc služeb, z nichž každá má určitou roli při poskytování funkcí aplikace. Generátor šablon Service Fabric [Yeoman](http://yeoman.io/) pro CSharp, který jste nainstalovali v posledním kroku, vám usnadní vytvoření první služby a případná další rozšíření později. Pomocí generátoru Yeoman vytvoříme aplikaci s jedinou službou.
+## <a name="create-hello-application"></a>Vytvoření aplikace hello
+Aplikace Service Fabric může obsahovat jednu nebo více služeb, každý s určitou roli při poskytování funkcí aplikace hello. Hello Service Fabric [Yeoman](http://yeoman.io/) generátor pro CSharp, který jste nainstalovali v posledním kroku, umožňuje snadno toocreate první služby a tooadd více později. Jedinou službou použijeme Yeoman toocreate aplikace.
 
-1. V terminálu zadejte následující příkaz, který zahájí sestavování základní kostry aplikace: `yo azuresfcsharp`
+1. V terminálu zadejte následující příkaz toostart vytváření generování uživatelského rozhraní hello hello:`yo azuresfcsharp`
 2. Pojmenujte svoji aplikaci.
-3. Vyberte typ první služby a pojmenujte ji. Pro účely tohoto kurzu zvolíme službu Reliable Actor.
+3. Vyberte typ hello vaší první služby a pojmenujte ho. Pro účely hello tohoto kurzu vybereme možnost spolehlivé služby objektu Actor.
 
    ![Generátor Service Fabric Yeoman pro jazyk C#][sf-yeoman]
 
 > [!NOTE]
-> Další informace o možnostech najdete v tématu [Přehled programovacího modelu Service Fabric](service-fabric-choose-framework.md).
+> Další informace o možnostech hello najdete v tématu [Service Fabric přehled modelu programování](service-fabric-choose-framework.md).
 >
 >
 
-## <a name="build-the-application"></a>Sestavení aplikace
-Šablony generátoru Service Fabric Yeoman zahrnují skript sestavení, který můžete použít k sestavení aplikace z terminálu (po přejití do složky aplikace).
+## <a name="build-hello-application"></a>Vytvoření aplikace hello
+šablony služby Fabric Yeoman Hello zahrňte skript sestavení, které můžete použít aplikace hello toobuild z terminálu hello (po přechodu složce toohello aplikace).
 
   ```sh
  cd myapp
  ./build.sh
   ```
 
-## <a name="deploy-the-application"></a>Nasazení aplikace
+## <a name="deploy-hello-application"></a>Nasazení aplikace hello
 
-Jakmile je aplikace sestavená, můžete ji nasadit do místního clusteru.
+Po hello aplikace, můžete ho nasadit toohello místní cluster.
 
-1. Připojte se k místnímu clusteru služby Service Fabric.
+1. Připojte toohello místní cluster Service Fabric.
 
     ```bash
     sfctl cluster select --endpoint http://localhost:19080
     ```
 
-2. Spuštěním instalačního skriptu, který je součástí šablony, zkopírujte balíček aplikace do úložiště imagí clusteru, zaregistrujte typ aplikace a vytvořte její instanci.
+2. Spusťte instalační skript hello zadaný v toocopy hello šablony aplikace hello balíček toohello clusteru úložiště bitových kopií, registrace typu aplikace hello a vytvoření instance aplikace hello.
 
     ```bash
     ./install.sh
     ```
 
-Nasazení sestavené aplikace je stejné jako u všech ostatních aplikací Service Fabric. Podrobné pokyny najdete v dokumentaci s popisem [správy aplikace Service Fabric pomocí Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md).
+Nasazení aplikace hello vytvořené je hello stejně jako všechny ostatní aplikace Service Fabric. Naleznete v dokumentaci k hello na [aplikace Service Fabric s hello Service Fabric rozhraní příkazového řádku pro správu](service-fabric-application-lifecycle-sfctl.md) podrobné pokyny.
 
-Parametry těchto příkazů najdete v generovaných manifestech uvnitř balíčku aplikace.
+Příkazy toothese parametrů naleznete v manifesty hello generuje uvnitř balíčku aplikace hello.
 
-Jakmile je aplikace nasazená, otevřete prohlížeč a přejděte k nástroji [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) na adrese [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Pak rozbalte uzel **Aplikace** a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
+Po nasazení aplikace hello, otevřete prohlížeč a přejděte do [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) v [http://localhost: 19080/Explorer](http://localhost:19080/Explorer). Potom rozbalte hello **aplikace** uzel a Všimněte si, že nyní položka pro váš typ aplikace a druhý pro hello první instance tohoto typu.
 
-## <a name="start-the-test-client-and-perform-a-failover"></a>Spuštění klienta testování a převzetí služeb při selhání
-Projekty Actor samy o sobě nedělají nic. Vyžadují, aby jim jiná služba nebo klient posílali zprávy. Šablona actor zahrnuje jednoduchý testovací skript, který můžete použít k interakci se službou actor.
+## <a name="start-hello-test-client-and-perform-a-failover"></a>Spustit hello testovacího klienta a provést převzetí služeb při selhání
+Projekty Actor samy o sobě nedělají nic. Vyžadují jiná služba nebo klienta toosend je zprávy. Šablona objektu actor Hello obsahuje jednoduchá testovací skriptu, které můžete použít toointeract službou objektu actor hello.
 
-1. Spusťte skript pomocí pomocného sledovacího programu a prohlédněte si výstup služby actor.
+1. Spusťte skript hello pomocí výstup hello hello sledovat nástroj toosee služby objektu actor hello.
 
     ```bash
     cd myactorsvcTestClient
     watch -n 1 ./testclient.sh
     ```
-2. V Service Fabric Exploreru vyhledejte uzel, který je hostitelem primární repliky pro službu actor. Na snímku níže je to uzel 3.
+2. V Service Fabric Exploreru najděte uzel, který je hostitelem primární repliky hello služby objektu actor hello. Na snímku obrazovky hello níže je uzel 3.
 
-    ![Vyhledání primární repliky v Service Fabric Exploreru][sfx-primary]
-3. Klikněte na uzel, který jste našli v předchozím kroku, a potom v nabídce Akce vyberte **Deaktivovat (restartovat)**. Tato akce restartuje jeden uzel v místním clusteru a vynutí převzetí služeb při selhání jednou ze sekundárních replik spuštěných v jiném uzlu. Při provádění této akce věnujte pozornost výstupu z klienta testování a všimněte si, že se čítač bez ohledu na převzetí služeb při selhání pořád postupně zvyšuje.
+    ![Hledání hello primární repliky v Service Fabric Exploreru][sfx-primary]
+3. Klikněte na uzel hello v předchozím kroku hello najít a pak vyberte **deaktivovat (restartovat)** z nabídky akce hello. Tato akce restartuje jeden uzel v místním clusteru vynucení převzetí služeb při selhání tooa sekundární repliky spuštěna na jiném uzlu. Jak provedete tuto akci, věnujte pozornost toohello výstup z hello testovacího klienta a Všimněte si, že tento čítač hello pokračuje tooincrement navzdory hello převzetí služeb při selhání.
 
-## <a name="adding-more-services-to-an-existing-application"></a>Přidání více služeb do stávající aplikace
+## <a name="adding-more-services-tooan-existing-application"></a>Přidání další služby tooan existující aplikace
 
-Pokud chcete přidat další službu do aplikace již vytvořené pomocí `yo`, proveďte následující kroky:
-1. Změňte adresář na kořenovou složku stávající aplikace.  Například `cd ~/YeomanSamples/MyApplication`, pokud `MyApplication` je aplikace vytvořená pomocí Yeomanu.
+tooadd jiná tooan aplikace služby již vytvořené pomocí `yo`, proveďte následující kroky hello:
+1. Změnit kořenový adresář toohello hello existující aplikace.  Například `cd ~/YeomanSamples/MyApplication`, pokud `MyApplication` je vytvořený Yeoman aplikace hello.
 2. Spusťte `yo azuresfcsharp:AddService`.
 
-## <a name="migrating-from-projectjson-to-csproj"></a>Migrace z project.json na .csproj
-1. Spuštění „dotnet migrate“ v kořenovém adresáři projektu provede migraci všech souborů project.json na formát csproj.
-2. V souborech projektu příslušně aktualizujte odkazy projektu na soubory csproj.
-3. V souboru build.sh aktualizujte názvy souborů projektu na soubory csproj.
+## <a name="migrating-from-projectjson-toocsproj"></a>Migrace z project.json too.csproj
+1. Spuštění 'dotnet migraci"v kořenovém adresáři projektu bude migrovat všechny hello project.json toocsproj formátu.
+2. Aktualizace hello projekt odkazuje na odpovídajícím způsobem toocsproj soubory v souborech projektu.
+3. Aktualizujte hello toocsproj soubory názvy souborů projektu v build.sh.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Další informace o Reliable Actors](service-fabric-reliable-actors-introduction.md)
-* [Komunikace s clustery Service Fabric pomocí rozhraní příkazového řádku Service Fabric](service-fabric-cli.md)
+* [Interakci s clusterů Service Fabric pomocí hello Service Fabric rozhraní příkazového řádku](service-fabric-cli.md)
 * Informace o [možnostech podpory pro Service Fabric](service-fabric-support.md)
 * [Začínáme se Service Fabric CLI](service-fabric-cli.md)
 

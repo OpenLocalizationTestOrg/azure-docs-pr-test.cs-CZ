@@ -1,5 +1,5 @@
 ---
-title: "Komunitní Přehled služby Azure Media Services | Microsoft Docs"
+title: "aaaAzure Media Services komunitní přehled | Microsoft Docs"
 description: "Tato stránka komunity Azure Media Services (AMS) popisuje různé způsoby, můžete získat aktualizace o AMS, najdete v části nové videa a podcastů, klást otázky a váš názor. "
 services: media-services
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.openlocfilehash: ef77ed3a4efee7ebcdd716376be78db38ce46f8f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 97329ef099752506af6ec6947a88a00c35d141a3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-media-services-community"></a>Komunita Azure Media Services
 Tato stránka komunity Azure Media Services (AMS) popisuje různé způsoby, můžete získat aktualizace o AMS, zobrazit nové videa a podcastů, klást otázky a váš názor.   
@@ -37,10 +37,10 @@ Tato stránka komunity Azure Media Services (AMS) popisuje různé způsoby, mů
 
 ## <a name="discussion"></a>Diskusní
 ### <a name="twitter"></a>Twitter
-Použití [ @MSFTAzureMedia ](https://twitter.com/MSFTAzureMedia) twitter popisovač pro sledování AMS novinky a aktualizace na Twitteru. Můžete použít [ @AzureSupport ](https://twitter.com/azuresupport) popisovač služby twitter. Požádejte o podporu na Twitteru.  
+Použití hello [ @MSFTAzureMedia ](https://twitter.com/MSFTAzureMedia) twitter popisovač toofollow hello AMS novinky a aktualizace na Twitteru. Můžete použít hello [ @AzureSupport ](https://twitter.com/azuresupport) twitter popisovač toorequest podporu na Twitteru.  
 
 ### <a name="online-forums"></a>Online fóra
-Následující fóra lze použít pro klást otázky o aktuální produktech a funkcích.
+Následující fóra Hello lze použít pro klást otázky o aktuální produktech a funkcích.
 
 V současné době MSDN je primární fórum AMS.
 
@@ -48,10 +48,10 @@ V současné době MSDN je primární fórum AMS.
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](http://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="contact-the-team"></a>Obraťte se na tým
+## <a name="contact-hello-team"></a>Kontaktujte hello team
 Azure primární e-mailovou Media Services je:  **mediaservices@microsoft.com** .
 
-Následující tabulka uvádí e-mailu týmů dílčí funkce:
+Hello následující tabulka uvádí e-mailu týmů dílčí funkce:
 
 | Funkce | E-mail |
 | --- | --- |

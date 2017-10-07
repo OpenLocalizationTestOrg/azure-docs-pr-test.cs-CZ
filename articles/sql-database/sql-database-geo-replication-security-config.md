@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace zabezpečení databáze SQL Azure pro zotavení po havárii | Microsoft Docs"
-description: "Toto téma popisuje důležité informace o zabezpečení pro konfiguraci a správu zabezpečení po obnovení databáze nebo převzetí služeb při selhání na sekundární server v případě výpadku datacentra nebo jiných po havárii"
+title: "aaaConfigure zabezpečení databáze SQL Azure pro zotavení po havárii | Microsoft Docs"
+description: "Toto téma popisuje důležité informace o zabezpečení pro konfiguraci a správu zabezpečení po obnovení databáze nebo sekundární server tooa převzetí služeb při selhání v případě hello výpadku datacentra nebo jiných po havárii"
 services: sql-database
 documentationcenter: na
 author: anosov1960
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 10/13/2016
 ms.author: sashan
-ms.openlocfilehash: de5e1732dab570b80692efcdd08e4ed2d8c98800
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c3172568e1b8ad2a53958200aa6cf19b4a9434ea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurovat a spravovat zabezpečení Azure SQL Database geografické obnovení nebo převzetí služeb při selhání 
 
@@ -28,72 +28,72 @@ ms.lasthandoff: 07/11/2017
 >  
 
 ## <a name="overview-of-authentication-requirements-for-disaster-recovery"></a>Přehled požadavků ověřování pro zotavení po havárii
-Toto téma popisuje požadavky na ověřování, konfigurovat a řídit [aktivní geografickou replikaci](sql-database-geo-replication-overview.md) a kroky potřebné k nastavení přístup uživatelů k sekundární databázi. Také popisuje, jak povolit přístup k obnovené databáze po použití [geografické obnovení](sql-database-recovery-using-backups.md#geo-restore). Další informace o možnostech obnovení najdete v tématu [obchodní kontinuity přehled](sql-database-business-continuity.md).
+Toto téma popisuje tooconfigure požadavky hello ověřování a řízení [aktivní geografickou replikaci](sql-database-geo-replication-overview.md) a hello kroky požadované tooset uživatel přístup toohello sekundární databáze. Také popisuje, jak povolit přístup toohello obnovené databáze po použití [geografické obnovení](sql-database-recovery-using-backups.md#geo-restore). Další informace o možnostech obnovení najdete v tématu [obchodní kontinuity přehled](sql-database-business-continuity.md).
 
 ## <a name="disaster-recovery-with-contained-users"></a>Zotavení po havárii s omezením uživateli
-Na rozdíl od tradičních uživatele, které musí být namapován na přihlášení v hlavní databázi, je uživatele zcela spravuje samotná databáze. To má dvě výhody. Ve scénáři zotavení po havárii uživatelé můžete pokračovat pro připojení k nové primární databáze nebo databáze obnovena pomocí geografické obnovení bez jakékoli dodatečné konfigurace, protože databáze spravuje uživatele. Existují také potenciální škálovatelnost a výkon výhody z této konfigurace z hlediska přihlášení. Další informace najdete v tématu [Uživatelé databáze s omezením – zajištění přenositelnosti databáze](https://msdn.microsoft.com/library/ff929188.aspx). 
+Na rozdíl od tradičních uživatelé uživatele zcela spravuje sama hello databáze, která musí být namapován toologins v hlavní databázi hello. To má dvě výhody. V modulu snap-in scénáře zotavení po havárii hello hello moci uživatelé nadále tooconnect toohello novou primární databázi nebo databázi hello obnovit pomocí geografické obnovení bez jakékoli dodatečné konfigurace, protože databáze hello spravuje hello uživatelé. Existují také potenciální škálovatelnost a výkon výhody z této konfigurace z hlediska přihlášení. Další informace najdete v tématu [Uživatelé databáze s omezením – zajištění přenositelnosti databáze](https://msdn.microsoft.com/library/ff929188.aspx). 
 
-Hlavní kompromis je, že Správa procesu obnovení po havárii ve velkém měřítku je další náročné. Pokud máte více databází, které používají stejné přihlašovací údaje, může zachování přihlašovací údaje ve více databází pomocí uživatelů s omezením negate výhod uživatelů s omezením. Například otočení zásady hesel vyžaduje, aby změny konzistentně ve více databází místo Změna hesla pro přihlášení jednou v hlavní databázi. Z tohoto důvodu, pokud máte více databází, které používají stejné uživatelské jméno a heslo, uživatelů s omezením se nedoporučuje používat. 
+hlavní kompromis Hello je, že je náročnější Správa procesu obnovení po havárii hello ve velkém měřítku. Pokud máte více databází, že použití hello obsaženo stejné přihlášení, udržování hello přihlašovacích údajů pomocí mohou uživatelé v několika databází negate hello výhod uživatelů s omezením. Například hello heslo otočení zásad vyžaduje, že změny konzistentně ve více databází spíše než změna hello heslo pro přihlášení hello jednou v hlavní databázi hello. Z tohoto důvodu, pokud máte více databází, že hello používá stejné uživatelské jméno a heslo, se nedoporučuje používat uživatelů s omezením. 
 
-## <a name="how-to-configure-logins-and-users"></a>Postup konfigurace přihlášení a uživatele
-Pokud používáte přihlášení a uživatele (místo uživatelů s omezením), je nutné provést další kroky zajistit, že v hlavní databázi existují stejné přihlášení. Následující oddíly popisují kroky související se situací a další důležité informace.
+## <a name="how-tooconfigure-logins-and-users"></a>Jak tooconfigure přihlášení a uživatele
+Pokud používáte přihlášení a uživatele (místo uživatelů s omezením), je nutné provést další kroky tooinsure této hello existovat stejné přihlášení v hlavní databázi hello. Hello následující oddíly popisují hello kroky související se situací a další důležité informace.
 
-### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>Nastavit přístup uživatelů k sekundární nebo obnovené databáze
-V pořadí pro sekundární databázi možné používat jako sekundární databáze jen pro čtení a k zajištění řádného přístup k nové primární databáze nebo databáze obnovit pomocí geografické obnovení hlavní databáze cílového serveru musí mít příslušná bezpečnostní konfigurace na místě před obnovení.
+### <a name="set-up-user-access-tooa-secondary-or-recovered-database"></a>Nastavení uživatelského přístupu tooa sekundární nebo obnovené databáze
+Hello sekundární databáze toobe použitelné jako sekundární databázi jen pro čtení a tooensure řádného přístup toohello nové primární databáze nebo hello databázi obnovit pomocí geografické obnovení, hello hlavní databáze hello cílový server musí mít hello příslušná bezpečnostní konfigurace na místě před hello obnovení.
 
-Konkrétní oprávnění pro jednotlivé kroky jsou popsané dále v tomto tématu.
+Hello určitá oprávnění pro jednotlivé kroky jsou popsané dále v tomto tématu.
 
-Příprava přístup uživatelů k sekundární geografická replikace je třeba provést v rámci konfigurace geografická replikace. Příprava uživatelský přístup k databázím geografické obnovení provést kdykoli po online původního serveru (např. jako součást postupu zotavení po Havárii).
+Příprava tooa přístup uživatele sekundární geografická replikace je třeba provést v rámci konfigurace geografická replikace. Příprava přístup uživatelů toohello geografické obnovení databází provést kdykoli po online původní server hello (např. jako součást procházení hello zotavení po Havárii).
 
 > [!NOTE]
-> Pokud jste převzetí služeb při selhání nebo geografické obnovení na server, který nemá správně nakonfigurovanou přihlášení, přístup k němu bude omezena na účet správce serveru.
+> Pokud nedodržíte over nebo geografické obnovení tooa serveru, který nemá správně nakonfigurovanou přihlášení tooit přístupu bude omezený toohello účet správce serveru.
 > 
 > 
 
-Nastavení přihlášení na cílovém serveru zahrnuje tři kroky uvedené níže:
+Nastavení přihlášení na cílový server hello zahrnuje tři kroky uvedené níže:
 
-#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1. Určení přihlášení s přístupem k primární databázi:
-Prvním krokem procesu je určit, které přihlášení musí být duplicitní na cílovém serveru. To je provedeno pomocí pár příkazů SELECT, jeden v logické hlavní databázi na zdrojovém serveru a jeden v primární databázi, sám sebe.
+#### <a name="1-determine-logins-with-access-toohello-primary-database"></a>1. Určení přihlášení s primární databází access toohello:
+prvním krokem Hello procesu hello je toodetermine které přihlášení musí být duplicitní na cílovém serveru hello. To je provedeno pomocí pár příkazů SELECT, jednu v hello logickou hlavní databázi na zdrojovém serveru hello a druhou v samotné primární databáze hello.
 
-Pouze správce serveru nebo člen **LoginManager** role serveru můžete určit přihlášení na zdrojovém serveru s následující příkaz SELECT. 
+Pouze hello správce serveru nebo člen hello **LoginManager** role serveru můžete určit hello přihlášení na zdrojovém serveru hello s hello následující příkaz SELECT. 
 
     SELECT [name], [sid] 
     FROM [sys].[sql_logins] 
     WHERE [type_desc] = 'SQL_Login'
 
-Pouze členové databázové role db_owner, dbo uživatele nebo správce serveru, můžete určit všechny objekty uživatele databáze v primární databázi.
+Pouze členové databázové role db_owner hello, hello dbo uživatele nebo správce serveru, můžete určit všechny objekty uživatele hello databázi v primární databázi hello.
 
     SELECT [name], [sid]
     FROM [sys].[database_principals]
     WHERE [type_desc] = 'SQL_USER'
 
-#### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. Zjistit SID pro přihlášení identifikovaného v kroku 1:
-Porovnání výstup dotazy z předchozí části a odpovídající identifikátory SID, můžete namapovat server přihlášení uživatele databáze. Přihlášení, která mají uživatelé databáze s odpovídajícím SID mít uživatel přístup k databázi jako tento uživatel databáze hlavní. 
+#### <a name="2-find-hello-sid-for-hello-logins-identified-in-step-1"></a>2. Najde hello SID pro přihlášení hello identifikovaného v kroku 1:
+Tak, že porovnáte hello výstup hello dotazy z předchozí části hello a hello odpovídající identifikátory SID, můžete namapovat hello server přihlášení toodatabase uživatele. Přihlášení, která mají uživatelé databáze s odpovídajícím SID mít uživatel přístup toothat databázi jako tento uživatel databáze hlavní. 
 
-Následující dotaz slouží k zobrazení všech objektů uživatele a jejich identifikátory SID v databázi. Tento dotaz můžete spustit jenom člen správce databáze db_owner role nebo serveru.
+Hello následujícího dotazu lze použít toosee všechny objekty hello uživatele a jejich identifikátory SID v databázi. Tento dotaz můžete spustit jenom člen správce hello db_owner databáze role nebo serveru.
 
     SELECT [name], [sid]
     FROM [sys].[database_principals]
     WHERE [type_desc] = 'SQL_USER'
 
 > [!NOTE]
-> **INFORMATION_SCHEMA** a **sys** uživatelů, kteří mají *NULL* identifikátory SID a **hosta** SID je **0x00**. **Dbo** SID může začínat *0x01060000000001648000000000048454*, pokud byla databáze Tvůrce správce serveru místo členem **DbManager**.
+> Hello **INFORMATION_SCHEMA** a **sys** uživatelů, kteří mají *NULL* SID a hello **hosta** SID je **0x00**. Hello **dbo** SID může začínat *0x01060000000001648000000000048454*, pokud Tvůrce databází hello Dobrý den, správce serveru místo členem **DbManager**.
 > 
 > 
 
-#### <a name="3-create-the-logins-on-the-target-server"></a>3. Vytvoření přihlášení na cílovém serveru:
-Posledním krokem je můžete přejít na cílový server nebo servery a generovat přihlášení s odpovídající identifikátory SID. Základní syntaxe je následující.
+#### <a name="3-create-hello-logins-on-hello-target-server"></a>3. Vytvoření přihlášení hello na cílovém serveru hello:
+Hello posledním krokem je toogo toohello cílový server nebo servery a generovat hello přihlášení s hello vhodné identifikátory SID. Základní syntaxe Hello je následující.
 
     CREATE LOGIN [<login name>]
     WITH PASSWORD = <login password>,
     SID = <desired login SID>
 
 > [!NOTE]
-> Pokud chcete udělit přístup uživatelům sekundární, ale není primární, můžete to udělat změnou přihlášení uživatele na primárním serveru pomocí následující syntaxe.
+> Pokud chcete toogrant uživatel přístup toohello sekundární, ale není toohello primární, můžete to udělat změnou hello přihlášení uživatele na primárním serveru hello pomocí následující syntaxe hello.
 > 
 > PŘÍKAZ ALTER LOGIN <login name> ZAKÁZAT
 > 
-> ZAKÁZAT nezmění heslo, takže můžete vždy ji povolit v případě potřeby.
+> ZAKÁZAT nemění hello heslo, můžete ji v případě potřeby vždy povolit.
 > 
 > 
 

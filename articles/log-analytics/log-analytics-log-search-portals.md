@@ -1,6 +1,6 @@
 ---
-title: "Portály pro vytváření a úpravy dotazů protokolu v Azure Log Analytics | Microsoft Docs"
-description: "Tento článek popisuje portály, které můžete použít v Azure Log Analytics můžete vytvářet a upravovat protokolu hledání."
+title: "aaaPortals pro vytváření a úpravy dotazů protokolu v Azure Log Analytics | Microsoft Docs"
+description: "Tento článek popisuje hello portálů, můžete použít v Azure Log Analytics toocreate a upravovat vyhledávání protokolu."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -13,41 +13,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: bwren
-ms.openlocfilehash: 29dfa31d38f85574f84ed351bc5c26224b1a7e16
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7a2657574a132b2c4298511bb31259e68113ac91
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="portals-for-creating-and-editing-log-queries-in-azure-log-analytics"></a>Portály pro vytváření a úpravy dotazů protokolu v Azure Log Analytics
 
 > [!NOTE]
-> Tento článek popisuje portály v Azure Log Analytics jazykem nový dotaz.  Můžete získat další informace o nový jazyk a získat postup upgradu pracovního prostoru v [upgradu pracovní prostor analýzy protokolů Azure na nové hledání protokolu](log-analytics-log-search-upgrade.md).  
+> Tento článek popisuje portály v Azure Log Analytics pomocí dotazovacího jazyka pro nové hello.  Můžete získat další informace o nový jazyk hello a získat hello postup tooupgrade pracovního prostoru v [Upgrade vyhledávání protokolu toonew pracovní prostor analýzy protokolů Azure](log-analytics-log-search-upgrade.md).  
 >
-> Pokud pracovní prostor nebyla upgradována, aby nové dotazovací jazyk, se seznamte s [najít data pomocí protokolu hledání v analýzy protokolů](log-analytics-log-searches.md) informace o aktuální verzi portálu hledání protokolů.
+> Pokud pracovní prostor nebyla upgradovaná toohello nové dotazovací jazyk, se seznamte s příliš[najít data pomocí protokolu hledání v analýzy protokolů](log-analytics-log-searches.md) informace o aktuální verzi portálu hledání protokolů hello hello.
 
-Protokol hledání v různých místech analýzy protokolů se použít k načtení dat z pracovního prostoru.  Ve skutečnosti vytváření a úpravy dotazů kromě práce interaktivně se vrácená data, když, máte dvě možnosti, které jsou popsány níže.  
+Používáte protokol hledání v různých místech analýzy protokolů tooretrieve data z pracovního prostoru hello.  Ve skutečnosti vytváření a úpravy dotazů kromě tooworking interaktivně se ale vrátil data, máte dvě možnosti, které jsou popsány níže.  
 
 ## <a name="log-search-portal"></a>Protokol hledání portálu
-Portál hledání protokolů je dostupný z portálu Azure nebo na portálu OMS.  Je vhodné pro vytvoření základní dotazy, které lze vytvořit na jeden řádek.  Portálu hledání protokolů můžete používat bez spuštění externí portál a slouží k provádění různých funkcí s protokolu hledání, včetně vytvoření pravidla výstrah, vytvoření skupin počítačů a export výsledků dotazu.  
+portál hledání protokolů Hello je dostupné z hello portál Azure nebo na portálu OMS hello.  Je vhodné pro vytvoření základní dotazy, které lze vytvořit na jeden řádek.  portál hledání protokolů Hello lze použít bez spuštění externí portál a můžete ji použít tooperform celou řadu funkcí s protokolu hledání, včetně vytvoření pravidla výstrah, vytvoření skupin počítačů a export výsledků hello hello dotazu.  
 
-Hledání protokolů portál nabízí více funkcí pro úpravy dotazu bez nutnosti úplné znalost dotazovacího jazyka.  Zobrazí souhrn těchto funkcí v [vytvořit protokolu hledání v Azure Log Analytics pomocí portálu hledání protokolů](log-analytics-log-search-log-search-portal.md).
+portál hledání protokolů Hello nabízí více funkcí pro úpravy hello dotazu bez nutnosti úplné znalost dotazovacího jazyka pro hello.  Zobrazí souhrn těchto funkcí v [vytvořit protokolu hledání v Azure Log Analytics pomocí portálu hledání protokolů hello](log-analytics-log-search-log-search-portal.md).
 
 
 ![Protokol hledání portálu](media/log-analytics-log-search-portals/log-search-portal.png)
 
 ## <a name="advanced-analytics-portal"></a>Pokročilé analýzy portálu
-Portálu pro pokročilou analýzu je vyhrazené portál, který poskytuje pokročilé funkce není k dispozici na portálu hledání protokolů.  Funkce zahrnují možnost upravit dotaz na více řádků, selektivně spuštění kódu, závislé na kontextu Intellisense a inteligentní analýzy.  Portál Advanced Analytics je nejvhodnější pro návrh složitých dotazů, které jsou buď jako vyhledávání protokolu uložit nebo kopírovat a vkládat data do jiných elementů analýzy protokolů.  Spuštění portálu Advanced Analytics z odkaz na portálu hledání protokolů.
+portál pokročilou analýzu Hello je vyhrazené portál, který poskytuje pokročilé funkce není k dispozici hello hledání protokolů portálu.  Funkce patří možnost tooedit hello dotaz na více řádků, selektivně spuštění kódu, závislé na kontextu Intellisense a inteligentní analýzy.  portál pokročilé analýzy Hello je nejvhodnější pro návrh složitých dotazů, které jsou buď jako vyhledávání protokolu uložit nebo kopírovat a vkládat data do jiných elementů analýzy protokolů.  Spuštění portálu pokročilé analýzy hello pomocí odkazu v portálu hledání protokolů hello.
 
 ![Pokročilé analýzy portálu](media/log-analytics-log-search-portals/advanced-analytics-portal.png)
 
 
-Z důvodu jeho pokročilé funkce obvykle použijete portálu pokročilou analýzu jako svůj primární nástroj pro vytváření a úpravy dotazů.  Jednou jste zjistili, že dotaz funguje podle očekávání, a potom budete zkopírujte a vložte ho jinde například hledání protokolů portálu nebo Návrhář zobrazení.  Protože portál Advanced Analytics podporuje dotazy s více řádky, i když je nutné vzít v úvahu následující při kopírování dotazu z tento portál.
+Z důvodu jeho pokročilé funkce obvykle použijete portál pokročilou analýzu hello jako svůj primární nástroj pro vytváření a úpravy dotazů.  Jakmile jste zjistili, že dotaz hello funguje podle očekávání, a potom budete zkopírujte a vložte ho jinde například portál hledání protokolů hello nebo Návrhář zobrazení.  Protože portál pokročilé analýzy hello ale podporuje dotazy s více řádky, potřebujete následující hello tootake v úvahu při kopírování dotazu z tento portál.
 
-- Komentáře musí odebrat z dotazu před má zkopírovat a vložit do jiného umístění.  Můžete okomentovat řádek tak, že před s dvě lomítka (/ /).  Když vložíte více dotazu řádku do jednoho řádku, jsou odebrány konce řádků.  Pokud jsou zahrnuty komentáře, jsou všechny znaky po první komentář považovány za součást komentář.
+- Komentáře musí odebrat z dotazu hello před má zkopírovat a vložit do jiného umístění.  Můžete okomentovat řádek tak, že před s dvě lomítka (/ /).  Když vložíte více dotazu řádku do jednoho řádku, jsou odebrány konce řádků.  Pokud jsou zahrnuty komentáře, jsou všechny znaky po první komentář hello považovány za součást hello komentář.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Provede kurz k používání [hledání protokolů portál](log-analytics-log-search-log-search-portal.md) nebo [pokročilé analýzy portál](https://go.microsoft.com/fwlink/?linkid=856587) vytváření dotazů.
-- Podívejte se [kurz na zápis dotazů](https://go.microsoft.com/fwlink/?linkid=856078) pomocí nového dotazu jazyka.
+- Provede kurz k používání hello [hledání protokolů portál](log-analytics-log-search-log-search-portal.md) nebo hello [Advanced Analytics portál](https://go.microsoft.com/fwlink/?linkid=856587) toocreate dotazy.
+- Podívejte se [kurz na zápis dotazů](https://go.microsoft.com/fwlink/?linkid=856078) pomocí dotazovacího jazyka pro nové hello.

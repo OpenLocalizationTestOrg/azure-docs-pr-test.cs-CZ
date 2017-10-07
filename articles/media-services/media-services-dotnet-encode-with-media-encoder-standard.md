@@ -1,6 +1,6 @@
 ---
-title: "Kódování assetu pomocí kodéru Media Encoder Standard pomocí rozhraní .NET | Microsoft Docs"
-description: "Toto téma ukazuje, jak pomocí rozhraní .NET kódování assetu pomocí kodéru standardní média."
+title: "aaaEncode prostředek s Media Encoder Standard pomocí rozhraní .NET | Microsoft Docs"
+description: "Toto téma ukazuje, jak toouse .NET tooencode assetu pomocí kodéru standardní média."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 929592368501c54277748bf46b2160c9058db3fb
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 25e274c3b67168f4afc8b8ab04af2d654c9dd6e4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Kódování assetu pomocí kodéru Media Encoder Standard pomocí rozhraní .NET
-Kódování úloh je jednou z nejběžnějších operací zpracování ve službě Media Services. K převodu mediálních souborů z jednoho kódování do druhého se využívají kódovací úlohy. Při kódování, můžete použít předdefinované Media Encoder Media Services. Můžete také použít kodér poskytovanými partnerem Media Services; třetí strany kodéry jsou k dispozici prostřednictvím Azure Marketplace. 
+Kódování úlohy jsou některé z nejběžnějších operací zpracování hello ve službě Media Services. Z jednoho kódování tooanother vytvoříte kódování úlohy tooconvert mediálních souborů. Při kódování, můžete použít hello předdefinované Media Encoder Media Services. Můžete také použít kodér poskytovanými partnerem Media Services; jsou k dispozici prostřednictvím Azure Marketplace hello kodéry třetích stran. 
 
-Toto téma ukazuje, jak používat .NET určený ke kódování vaše prostředky s Media Encoder Standard (MES). Media Encoder Standard je konfigurován pomocí jedno z přednastavení kodér popsané [zde](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
+Toto téma ukazuje, jak toouse .NET tooencode vaše prostředky s Media Encoder Standard (MES). Media Encoder Standard je konfigurován pomocí jedno z přednastavení kodér hello popsané [zde](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
 
-Doporučuje se vždycky zakódovat zdrojové soubory do sady souborů MP4 adaptivní přenosovou rychlostí a pak sadu převést na požadovaný formát pomocí [dynamické balení](media-services-dynamic-packaging-overview.md). 
+Doporučujeme tooalways zakódovat zdrojové soubory do sady souborů MP4 adaptivní přenosovou rychlostí a pak převést hello sadu toohello požadovaný formát pomocí hello [dynamické balení](media-services-dynamic-packaging-overview.md). 
 
 Pokud výstupní asset používá šifrování úložiště, musíte nakonfigurovat zásady doručení assetu. Další informace najdete v části [konfigurace zásad doručení assetu](media-services-dotnet-configure-asset-delivery-policy.md).
 
 > [!NOTE]
-> MES vytvoří výstupní soubor s názvem, který obsahuje první 32 znaků z názvu vstupní soubor. Název podle zadaných v přednastavené souboru. Například "název souboru": "{Basename} _ {Index} {rozšíření}". {Basename} je nahrazena nejprve 32 znaků z názvu vstupní soubor.
+> Výstupní soubor s názvem, který obsahuje hello nejprve 32 znaků, který vytváří MES hello název vstupního souboru. Název Hello je založen na co jsou uvedeny v souboru přednastavené hello. Například "název souboru": "{Basename} _ {Index} {rozšíření}". {Basename} je nahrazena hello nejprve 32 znaků názvu hello vstupní soubor.
 > 
 > 
 
@@ -38,36 +38,36 @@ Pokud výstupní asset používá šifrování úložiště, musíte nakonfiguro
 [Formáty a kodeky](media-services-media-encoder-standard-formats.md)
 
 ### <a name="mes-presets"></a>Přednastavení MES
-Media Encoder Standard je konfigurován pomocí jedno z přednastavení kodér popsané [zde](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
+Media Encoder Standard je konfigurován pomocí jedno z přednastavení kodér hello popsané [zde](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
 
 ### <a name="input-and-output-metadata"></a>Vstup a výstup metadat
-Při kódování prostředek vstupní (nebo prostředky) pomocí MES získat prostředek výstup na úspěšné dokončení této kódování úloh. Výstupní asset obsahuje video, zvuk, miniatur, manifest atd., které můžete použít přednastavení kódování.
+Při kódování prostředek vstupní (nebo prostředky) pomocí MES, můžete získat prostředek výstup v hello kódování úspěšné dokončení této úlohy. Hello výstupní asset obsahuje video, zvuk, miniatur, manifest atd. hello předvolby kódování, které používáte.
 
-Výstupní asset obsahuje také soubor s metadata o vstupní asset. Název souboru XML metadat má následující formát: < asset_id > _metadata.xml (například 41114ad3-eb5e - 4c 57 8d 92-5354e2b7d4a4_metadata.xml), kde < asset_id > je hodnota ID vstupní prostředku. Schéma tato metadata vstupní XML je popsána [zde](media-services-input-metadata-schema.md).
+Hello výstupní asset obsahuje také soubor s metadata o vstupní asset hello. Hello název souboru XML metadat hello má hello formátu: < asset_id > _metadata.xml (například 41114ad3-eb5e - 4c 57 8d 92-5354e2b7d4a4_metadata.xml), kde < asset_id > je hodnota ID hello hello vstupní asset. Hello schéma tato metadata vstupní XML je popsána [zde](media-services-input-metadata-schema.md).
 
-Výstupní asset obsahuje také soubor s metadata o výstupní asset. Název souboru XML metadat má následující formát: < source_file_name > _manifest.xml (například BigBuckBunny_manifest.xml). Schéma tato metadata výstup XML je popsána [zde](media-services-output-metadata-schema.md).
+Hello výstupní asset obsahuje také soubor s metadata o hello výstupní asset. Hello název souboru XML metadat hello má hello formátu: < source_file_name > _manifest.xml (například BigBuckBunny_manifest.xml). schéma Hello tato metadata výstup XML je popsána [zde](media-services-output-metadata-schema.md).
 
-Pokud chcete prozkoumat buď dva soubory metadat, můžete vytvořit lokátor SAS a stáhněte soubor do místního počítače. Příklad najdete na tom, jak vytvořit lokátor SAS a stáhnout soubor pomocí rozšíření Media Services .NET SDK.
+Pokud chcete, tooexamine buď ze souborů metadat hello dva, můžete vytvořit lokátor SAS a stáhnout hello souboru tooyour místního počítače. Příklad na tom, jak toocreate lokátoru SAS a stahování souboru pomocí hello Media Services můžete nalézt rozšíření sady SDK pro .NET.
 
 ## <a name="download-sample"></a>Stažení ukázky
-Můžete získat a spustit ukázku, která ukazuje, jak ke kódování s MES z [zde](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/).
+Můžete získat a spustit ukázku, která ukazuje, jak tooencode s MES z [zde](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/).
 
 ## <a name="net-sample-code"></a>Ukázkový kód rozhraní .NET
 
-Následující příklad kódu používá sadu Media Services .NET SDK k provádění následujících úloh:
+Následující ukázka kódu Hello používá sadu Media Services .NET SDK tooperform hello následující úlohy:
 
 * Vytvořte úlohu kódování.
-* Získáte odkaz na kodéru Media Encoder Standard.
-* Použít [adaptivní datové proudy](media-services-autogen-bitrate-ladder-with-mes.md) přednastavené. 
-* Přidáte jednoho kódování úkolu do úlohy. 
-* Zadejte vstupní asset, který je zakódován.
-* Vytvoření výstupní asset, který bude obsahovat k zakódovanému assetu.
-* Přidání obslužné rutiny události zkontrolovat průběh úlohy.
-* Odeslání úlohy.
+* Získání kodéru Media Encoder Standard toohello odkaz.
+* Zadejte toouse hello [adaptivní datové proudy](media-services-autogen-bitrate-ladder-with-mes.md) přednastavené. 
+* Přidejte jeden úlohy kódování toohello úloh. 
+* Zadejte vstup hello asset toobe kódování.
+* Vytvoření výstupní asset, který bude obsahovat kódovaný hello asset.
+* Přidejte průběh úlohy toocheck hello událost obslužné rutiny.
+* Odešlete úlohu hello.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
-Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
+Nastavení vývojového prostředí a naplnění souboru app.config hello s informace o připojení, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Příklad 
 
@@ -103,7 +103,7 @@ Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o
                     // Get an uploaded asset.
                     var asset = _context.Assets.FirstOrDefault();
 
-                    // Encode and generate the output using the "Adaptive Streaming" preset.
+                    // Encode and generate hello output using hello "Adaptive Streaming" preset.
                     EncodeToAdaptiveBitrateMP4Set(asset);
 
                     Console.ReadLine();
@@ -113,22 +113,22 @@ Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o
                 {
                     // Declare a new job.
                     IJob job = _context.Jobs.Create("Media Encoder Standard Job");
-                    // Get a media processor reference, and pass to it the name of the 
-                    // processor to use for the specific task.
+                    // Get a media processor reference, and pass tooit hello name of hello 
+                    // processor toouse for hello specific task.
                     IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
-                    // Create a task with the encoding details, using a string preset.
+                    // Create a task with hello encoding details, using a string preset.
                     // In this case "Adaptive Streaming" preset is used.
                     ITask task = job.Tasks.AddNew("My encoding task",
                         processor,
                         "Adaptive Streaming",
                         TaskOptions.None);
 
-                    // Specify the input asset to be encoded.
+                    // Specify hello input asset toobe encoded.
                     task.InputAssets.Add(asset);
-                    // Add an output asset to contain the results of the job. 
+                    // Add an output asset toocontain hello results of hello job. 
                     // This output is specified as AssetCreationOptions.None, which 
-                    // means the output asset is not encrypted. 
+                    // means hello output asset is not encrypted. 
                     task.OutputAssets.AddNew("Output asset",
                         AssetCreationOptions.None);
 
@@ -189,6 +189,6 @@ Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
-[Jak vygenerovat miniaturu pomocí kodéru Media Encoder Standard s .NET](media-services-dotnet-generate-thumbnail-with-mes.md)
+[Jak toogenerate miniaturu pomocí kodéru Media Encoder Standard s .NET](media-services-dotnet-generate-thumbnail-with-mes.md)
 [kódování Přehled služby Media Services](media-services-encode-asset.md)
 

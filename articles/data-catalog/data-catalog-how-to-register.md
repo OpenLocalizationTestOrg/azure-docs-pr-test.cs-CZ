@@ -1,6 +1,6 @@
 ---
-title: "Registrace zdrojů dat v Azure Data Catalog | Microsoft Docs"
-description: "V tomto článku se dozvíte, jak zaregistrovat zdroje dat v Azure Data Catalog, včetně pole metadat extrahovat během registrace."
+title: aaaRegister zdroje dat v Azure Data Catalog | Microsoft Docs
+description: "Tento článek popisuje, jak extrahovat tooregister zdroje dat v Azure Data Catalog, včetně pole metadat hello během registrace."
 services: data-catalog
 documentationcenter: 
 author: steelanddata
@@ -15,45 +15,45 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.openlocfilehash: 30166823b33669dda88b41a4aee2dfc34f01466f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: efc8a852ddc9fb4bbacc7b0280477bd47814936f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Registrace zdrojů dat v Azure Data Catalog
 ## <a name="introduction"></a>Úvod
-Azure Data Catalog je plně spravovaná Cloudová služba, která slouží jako systém registrace a zjišťování datových zdrojů organizace. Jinými slovy Data Catalog umožňuje uživatelům zjišťovat, pochopit a používat zdroje dat a pomáhá organizacím získat větší hodnotu ze své stávající data. Registrace zdroje dat je prvním krokem k vytváření zdroje dat zjistitelný prostřednictvím katalogu Data Catalog.
+Azure Data Catalog je plně spravovaná Cloudová služba, která slouží jako systém registrace a zjišťování datových zdrojů organizace. Jinými slovy Data Catalog umožňuje uživatelům zjišťovat, pochopit a používat zdroje dat a pomáhá organizacím získat větší hodnotu ze své stávající data. první krok toomaking zdroj dat Hello zjistitelný prostřednictvím katalogu Data Catalog je tooregister zdroje dat.
 
 ## <a name="register-data-sources"></a>Registrace zdrojů dat
-Registrace je proces extrakce dat ze zdroje dat a kopírování dat do služby Data Catalog. Data zůstanou uložena tam, kde v současnosti jsou, a zůstávají pod kontrolou správců a zásad aktuálního systému.
+Registrace je proces hello extrakce dat ze zdroje dat hello a kopírování tohoto data toohello služby Data Catalog. Hello data zůstanou kde se nyní nachází, a zůstane pod dohledem hello hello správců a zásady hello aktuálním systému.
 
-Registrovat zdroj dat, postupujte takto:
-1. Na portálu Azure Data Catalog spusťte nástroj registrace zdroje dat katalogu Data Catalog. 
-2. Přihlaste se pomocí pracovního nebo školního účtu pomocí stejných přihlašovacích údajů Azure Active Directory, které používáte pro přihlášení k portálu.
-3. Vyberte zdroj dat, který chcete zaregistrovat.
+tooregister zdroje dat, hello následující:
+1. Na portálu Azure Data Catalog hello spusťte nástroj registrace zdroje dat katalogu Data Catalog hello. 
+2. Přihlaste pomocí svého pracovního nebo školního účtu s hello stejné přihlašovací údaje služby Azure Active Directory použít toosign toohello portálu.
+3. Vyberte zdroj dat hello chcete tooregister.
 
-Další podrobné informace najdete v tématu [Začínáme s Azure Data Catalog](data-catalog-get-started.md) kurzu.
+Další podrobné informace najdete v tématu hello [Začínáme s Azure Data Catalog](data-catalog-get-started.md) kurzu.
 
-Poté, co jste registrováni zdroj dat, katalogu sleduje jeho umístění a indexy jeho metadata. Uživatele můžete vyhledávat, procházet a zjišťovat zdroje dat a pak pomocí umístění, kde k nim připojit pomocí aplikace nebo nástroje, které si sami vyberou.
+Poté, co jste registrováni hello zdroj dat, katalog hello sleduje jeho umístění a indexy jeho metadata. Uživatele můžete vyhledávat, procházet a zjišťovat zdroje dat hello a potom pomocí jeho umístění tooconnect tooit pomocí aplikace hello nebo nástroj podle svého výběru.
 
 ## <a name="supported-data-sources"></a>Podporované zdroje dat
 Seznam aktuálně podporované zdroje dat, naleznete v části [DSR katalogu dat](data-catalog-dsr.md).
 
 ## <a name="structural-metadata"></a>Strukturální metadata
-Při registraci zdroje dat, nástroj pro registraci extrahuje informace o struktuře objekty, které vyberete. Tyto informace se označuje jako strukturální metadata.
+Při registraci zdroje dat, nástroj pro registraci hello extrahuje informace o struktuře hello hello objektů, které vyberete. Tyto informace jsou odkazované tooas strukturální metadata.
 
-Pro všechny objekty zahrnuje tato strukturální metadata umístění objektu, tak, aby uživatelé, kteří data zjišťování můžete použít tyto informace pro připojení k objektu v nástrojích klienta, které si sami vyberou. Další strukturální metadata obsahuje název objektu a typu a zadejte název atributu/sloupce a data.
+Pro všechny objekty zahrnuje tato strukturální metadata umístění hello objektu, tak, aby uživatelé, kteří zjistit hello dat můžete použít tento objekt toohello tooconnect informace v nástrojích klienta hello podle svého výběru. Další strukturální metadata obsahuje název objektu a typu a zadejte název atributu/sloupce a data.
 
 ## <a name="descriptive-metadata"></a>Popisná metadata
-Nástroj registrace zdroje dat kromě základní strukturální metadata rozbalený ze zdroje dat, extrahuje popisných metadat. Pro SQL Server Analysis Services a SQL Server Reporting Services je tato metadata převzat ze vlastnosti popisu vystavené těchto služeb. Pro systém SQL Server, hodnoty poskytnuté pomocí ms\_popis rozšířené vlastnosti je rozbalena. Nástroj pro registraci zdroje dat pro databázi Oracle, extrahuje sloupci KOMENTÁŘE z všechny\_KARTĚ\_zobrazení KOMENTÁŘE.
+Kromě toho toohello základní strukturální metadata, která je extrahována ze zdroje dat hello, nástroj registrace zdroje dat hello extrahuje popisných metadat. Pro SQL Server Analysis Services a SQL Server Reporting Services je tato metadata převzat ze vlastnosti popisu hello vystavené těchto služeb. Pro systém SQL Server, hodnoty poskytnuté pomocí hello ms\_popis rozšířené vlastnosti je rozbalena. Pro databáze Oracle hello zdroj dat registrace nástroj extrahuje hello KOMENTÁŘE sloupec z hello všechny\_KARTĚ\_zobrazení KOMENTÁŘE.
 
-Kromě popisných metadat, které je extrahována ze zdroje dat mohou uživatelé zadávat nástroj registrace zdroje dat pomocí popisných metadat. Uživatele můžete přidat značky a identifikují odborníky pro objekty, které jsou registrované. Tato popisná metadata se zkopíruje do služby Data Catalog společně s strukturální metadata.
+V přidání toohello popisný metadatech, které je extrahována ze zdroje dat hello mohou uživatelé zadávat popisných metadat pomocí nástroj registrace zdroje dat hello. Uživatele můžete přidat značky a identifikují odborníky pro objekty hello registrována. Zkopírovat všechny, které je tato popisná metadata služby Data Catalog toohello společně s hello strukturální metadata.
 
 ## <a name="include-previews"></a>Zahrnout verze Preview
-Ve výchozím nastavení je pouze metadata extrahována ze zdroje dat a zkopírovat do služby Data Catalog, ale které zdroj dat je často snazší když zobrazujete ukázková data, která obsahuje.
+Ve výchozím nastavení je pouze metadata extrahovány ze zdroje dat a zkopírovaný toohello služby Data Catalog, ale které zdroj dat je často snazší když zobrazujete ukázku hello data, která obsahuje.
 
-Pomocí nástroje pro registraci zdroje dat katalogu Data Catalog můžete zahrnout náhled snímek dat v každém tabulky a zobrazení, která je zaregistrovaná. Pokud zvolíte možnost zahrnutí náhledů během registrace, zahrnuje nástroj pro registraci až 20 záznamů z každé tabulky a zobrazení. Tento snímek se pak zkopíruje do katalogu spolu s metadaty strukturální a popisný.
+Pomocí nástroje registrace hello katalogu Data Catalog zdroje dat, můžete zahrnout náhled snímku hello data v každé tabulce a zobrazení, která je zaregistrovaná. Pokud si zvolíte tooinclude náhledy během registrace, nástroj pro registraci hello zahrnuje až too20 záznamů z každé tabulky a zobrazení. Tento snímek se pak zkopíruje toohello katalogu společně s metadata hello strukturální a popisný.
 
 > [!NOTE]
 > Široké tabulky s velkým počtem sloupců může mít méně než 20 záznamů, které jsou zahrnuty v jejich náhled.
@@ -61,16 +61,16 @@ Pomocí nástroje pro registraci zdroje dat katalogu Data Catalog můžete zahrn
 >
 
 ## <a name="include-data-profiles"></a>Zahrnují data profily
-Stejně jako verze Preview včetně může poskytnout cenné kontext pro uživatele, kteří vyhledávat zdroje dat v katalogu Data Catalog, včetně dat profilu můžete usnadnit práci pochopit zjištěných datové zdroje.
+Stejně jako verze Preview včetně může poskytnout cenné kontext pro uživatele, kteří vyhledávat zdroje dat v katalogu Data Catalog, včetně dat profilu může být snazší zdroje dat toounderstand zjištěny.
 
-Pomocí nástroje pro registraci zdroje dat katalogu Data Catalog, můžete zahrnout profil data pro jednotlivé tabulky a zobrazení, která je zaregistrovaná. Pokud se rozhodnete zahrnout profil dat během registrace, nástroj pro registraci zahrnuje souhrnné statistiky o data v každé tabulce a zobrazení, včetně:
+Pomocí nástroje registrace hello katalogu Data Catalog zdroje dat, můžete zahrnout profil data pro jednotlivé tabulky a zobrazení, která je zaregistrovaná. Pokud si zvolíte tooinclude profil dat během registrace, nástroj pro registraci hello zahrnuje souhrnné statistiky o hello dat v každém tabulky a zobrazení, včetně:
 
-* Počet řádků a velikost dat v objektu.
-* Datum poslední aktualizace dat a schématu objekt.
-* Počet záznamů hodnotu null a odlišné hodnoty pro sloupce.
-* Minimum, maximum, průměr a směrodatnou odchylku hodnoty pro sloupce.
+* Hello počtu řádků a velikost dat hello v objektu hello.
+* Hello datum poslední aktualizace hello hello dat a schématu objekt hello.
+* Hello počet záznamů hodnotu null a odlišné hodnoty pro sloupce.
+* Hello hodnoty pro sloupce minimum, maximum, průměr a směrodatné odchylky.
 
-Tyto statistické údaje jsou pak zkopíruje do katalogu spolu s metadaty strukturální a popisný.
+Tyto statistické údaje jsou pak zkopíruje toohello katalogu společně s metadata hello strukturální a popisný.
 
 > [!NOTE]
 > Text a datum sloupce nezahrnují statistiku průměr či směrodatná odchylka v jejich data profilu.
@@ -78,12 +78,12 @@ Tyto statistické údaje jsou pak zkopíruje do katalogu spolu s metadaty strukt
 >
 
 ## <a name="update-registrations"></a>Aktualizovat registrace
-Registrace zdroje dat je zjistitelný v katalogu Data Catalog při použití metadat a volitelné preview extrahovat během registrace. Pokud zdroj dat je třeba aktualizovat v katalogu (například pokud došlo ke změně schématu objektu, původně vyloučené tabulky by měly být zahrnuty nebo chcete aktualizovat data, která je součástí verze Preview), nástroj registrace zdroje dat můžete znovu spustit.
+Registrace zdroje dat je zjistitelný v katalogu Data Catalog při použití hello metadata a volitelné preview extrahovat během registrace. Pokud zdroj dat hello musí toobe aktualizovat v katalogu hello (například pokud došlo ke změně schématu hello objektu, původně vyloučené tabulky by měly být zahrnuty, nebo chcete tooupdate hello data, která je součástí verze Preview hello), nástroj registrace zdroje dat hello opětovně lze spustit.
 
-Opakováním registrace zdroj dat již zaregistrován provede operaci sloučení "upsert": stávající objekty jsou aktualizovány a vytvoření nových objektů. Veškerá metadata uživatele prostřednictvím portálu katalogu Data Catalog poskytuje zůstanou zachovány.
+Opakováním registrace zdroj dat již zaregistrován provede operaci sloučení "upsert": stávající objekty jsou aktualizovány a vytvoření nových objektů. Veškerá metadata, která poskytuje uživatelům prostřednictvím portálu katalogu Data Catalog hello zůstanou zachovány.
 
 ## <a name="summary"></a>Souhrn
-Protože kopíruje strukturální a popisný metadat ze zdroje dat do katalogu služby, registrace zdroje dat v katalogu Data Catalog usnadňuje data vyhledat a pochopit. Po registraci zdroje dat můžete opatřit poznámkami, spravovat a zjistit pomocí portálu katalogu Data Catalog.
+Protože kopíruje strukturální a popisný metadata z katalogu služby toohello zdroje dat, registrace zdroje dat hello v katalogu Data Catalog umožňuje snazší toodiscover hello dat a pochopit. Po registraci zdroje dat hello opatřit poznámkami a spravovat zjistit pomocí portálu hello katalogu Data Catalog.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o registraci zdrojů dat najdete v tématu [Začínáme s Azure Data Catalog](data-catalog-get-started.md) kurzu.
+Další informace o registraci zdrojů dat naleznete v tématu hello [Začínáme s Azure Data Catalog](data-catalog-get-started.md) kurzu.

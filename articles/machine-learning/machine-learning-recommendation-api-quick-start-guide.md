@@ -16,64 +16,64 @@ ms.date: 03/31/2017
 ms.author: luisca
 ROBOTS: NOINDEX
 redirect_url: machine-learning-datamarket-deprecation
-redirect_document_id: TRUE
-ms.openlocfilehash: 0a9d0b6aa1ef734a857ecc16777ba6250909b38d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: d8f98e85f723a1104cb169b26d797934140979f1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="quick-start-guide-for-the-machine-learning-recommendations-api-version-1"></a>Úvodní příručka pro Machine Learning doporučení API (verze 1)
+# <a name="quick-start-guide-for-hello-machine-learning-recommendations-api-version-1"></a>Úvodní příručka pro hello Machine Learning doporučení API (verze 1)
 
 > [!NOTE]
-> Měli byste začít používat [kognitivní služby API doporučení](https://www.microsoft.com/cognitive-services/recommendations-api) místo tuto verzi. Službu kognitivní doporučení budou nahrazení této služby, a všechny nové funkce bude vyvinutý existuje. Obsahuje nové funkce, jako je dávkování podpory, lepší Explorer rozhraní API, čisticí prostředí plochy, konzistentnější registrace nebo fakturace rozhraní API, atd.
+> Měli byste začít používat hello [kognitivní služby API doporučení](https://www.microsoft.com/cognitive-services/recommendations-api) místo tuto verzi. Hello kognitivní službu doporučení budou nahrazení této služby, a všechny nové funkce hello bude vyvinutý existuje. Obsahuje nové funkce, jako je dávkování podpory, lepší Explorer rozhraní API, čisticí prostředí plochy, konzistentnější registrace nebo fakturace rozhraní API, atd.
 >
-> Další informace o [migraci na novou službu kognitivní](http://aka.ms/recomigrate).
+> Další informace o [toohello migrace nové kognitivní služby](http://aka.ms/recomigrate).
 > 
 > 
 
-Tento dokument popisuje, jak se budou registrovat službou nebo aplikací používat Microsoft Azure Machine Learning doporučení. Další informace naleznete na volání rozhraní API doporučení v [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/MachineLearningAPIs/Recommendations-2).
+Tento dokument popisuje, jak tooonboard služby nebo aplikace toouse Microsoft Azure Machine Learning doporučení. Další informace naleznete na hello API doporučení v hello [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/MachineLearningAPIs/Recommendations-2).
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="general-overview"></a>Obecné – přehled
-Pokud chcete používat Azure Machine Learning doporučení, budete muset provést následující kroky:
+toouse Azure Machine Learning doporučení, je třeba tootake hello následující kroky:
 
-* Vytvoření modelu – model je kontejner pro data o využití, data katalogu a model doporučení.
-* Data katalogu import - katalog obsahuje informace o metadatech na položky. 
+* Vytvoření modelu – model je kontejner, data o využití, data katalogu a hello doporučení modelu.
+* Data katalogu import - katalog obsahuje informace o metadatech na hello položky. 
 * Data o využití import - data o využití je možné uložit v jedné ze dvou způsobů (nebo obě):
-  * Tím, že nahrajete soubor, který obsahuje data o využití.
+  * Tím, že nahrajete soubor, který obsahuje data o využití hello.
   * Odesláním dat pořízení události.
-    Obvykle nahrát soubor využití aby mohl vytvořit model počáteční doporučení (zavedení) a jeho použití, dokud systém shromažďuje dostatek dat pomocí formátu data pořízení.
-* Vytvoření modelu doporučení – to je asynchronní operace, ve kterém systém doporučení trvá všech dat o využití a vytvoří model doporučení. Tato operace může trvat několik minut nebo i několik hodin v závislosti na velikosti dat a parametry konfigurace sestavení. Při spuštění sestavení, zobrazí se o ID sestavení. Použijte ho ke kontrole při ukončení procesu sestavení před zahájením využívat doporučení.
+    Obvykle nahrát soubor využití v pořadí toobe možné toocreate model počáteční doporučení (zavedení) a ho používat, dokud systém hello shromažďuje dostatek dat pomocí formátu získávání dat hello.
+* Vytvoření modelu doporučení – to je asynchronní operace, ve které hello doporučení systému trvá všechna data o využití hello a vytvoří model doporučení. Tato operace může trvat několik minut nebo několik hodin v závislosti na hello velikost dat hello a hello sestavení parametry konfigurace. Při spouštění hello sestavení, zobrazí se ID sestavení Používejte toocheck při ukončení procesu sestavení hello před zahájením tooconsume doporučení.
 * Využívat doporučení - Get doporučení pro určitou položku nebo seznam položek.
 
-Všechny výše uvedené kroky se provádějí pomocí rozhraní API služby Azure Machine Learning doporučení.  Si můžete stáhnout ukázkovou aplikaci, která implementuje každý z těchto kroků z [také galerie.](http://1drv.ms/1xeO2F3)
+Všechny výše uvedené kroky hello se provádí prostřednictvím hello rozhraní API služby Azure Machine Learning doporučení.  Si můžete stáhnout ukázkovou aplikaci, která implementuje každý z těchto kroků z hello [také galerie.](http://1drv.ms/1xeO2F3)
 
 ## <a name="limitations"></a>Omezení
-* Maximální počet modelů podle předplatného je 10.
-* Maximální počet položek, které mohou být uloženy katalog je 100 000.
-* Maximální počet bodů využití, které jsou zachovány je ~ 5 000 000. Nejstarší budou odstraněna, pokud nové se nahrál nebo nahlásí.
-* Maximální velikost dat, který může odeslat v BLOGU (například import katalogu dat, data o využití import) je 200MB.
-* Počet transakcí za sekundu pro sestavení modelu doporučení, která není aktivní je ~ 2TPS. Sestavení modelu doporučení, která je aktivní mohou být uloženy do 20TPS.
+* maximální počet modelů jedno předplatné Hello je 10.
+* maximální počet položek, které mohou být uloženy katalog Hello je 100 000.
+* maximální počet bodů využití, které jsou zachovány Hello je ~ 5 000 000. Pokud nové se nahrál nebo nahlásí se odstraní nejstarší Hello.
+* maximální velikost dat, který může odeslat v BLOGU (například import katalogu dat, data o využití import) Hello je 200MB.
+* Hello počet transakcí za sekundu pro sestavení modelu doporučení, která není aktivní, je ~ 2TPS. Až too20TPS mohou být uloženy sestavení modelu doporučení, která je aktivní.
 
 ## <a name="integration"></a>Integrace
 ### <a name="authentication"></a>Authentication
-Microsoft Azure Marketplace podporuje základní nebo OAuth metodu ověřování. Klíče účtu budete moci snadno najít tak, že přejdete na klíče ve marketplace v oddíle [nastavení svého účtu](https://datamarket.azure.com/account/keys). 
+Microsoft Azure Marketplace podporuje buď hello metodu ověřování Basic nebo OAuth. Budete moci snadno najít hello klíče účtu tak, že přejdete toohello klíče v hello marketplace v oddíle [nastavení svého účtu](https://datamarket.azure.com/account/keys). 
 
 #### <a name="basic-authentication"></a>Základní ověřování
-Přidáte hlavičku autorizace:
+Přidáte hlavičku autorizace hello:
 
     Authorization: Basic <creds>
 
     Where <creds> = ConvertToBase64("AccountKey:" + yourAccountKey);  
 
-Převést na Base64 (C#)
+Převést tooBase64 (C#)
 
     var bytes = Encoding.UTF8.GetBytes("AccountKey:" + yourAccountKey);
     var creds = Convert.ToBase64String(bytes);
 
-Převést na Base64 (JavaScript)
+Převést tooBase64 (JavaScript)
 
     var creds = window.btoa("AccountKey" + ":" + yourAccountKey);
 
@@ -81,15 +81,15 @@ Převést na Base64 (JavaScript)
 
 
 ### <a name="service-uri"></a>URI služby
-Kořenový adresář identifikátor URI pro rozhraní API služby Azure Machine Learning doporučení je [sem.](https://api.datamarket.azure.com/amla/recommendations/v2/)
+Hello služby kořenová identifikátor URI pro hello rozhraní API služby Azure Machine Learning doporučení je [sem.](https://api.datamarket.azure.com/amla/recommendations/v2/)
 
-Službu úplný identifikátor URI je vyjádřit pomocí elementů specifikace prostředí OData.
+úplné URI služby Hello je vyjádřit pomocí elementů hello specifikace prostředí OData.
 
 ### <a name="api-version"></a>Verze rozhraní API
-Každé volání rozhraní API bude mít na konci, parametr dotazu s názvem apiVersion, který musí být nastavena na "1.0".
+Každé volání rozhraní API bude mít, na konci hello parametr dotazu s názvem apiVersion, který by mělo být nastavené příliš "1.0".
 
 ### <a name="ids-are-case-sensitive"></a>ID jsou malá a velká písmena
-ID, podle rozhraní API, vrátil malých a velkých písmen a by měl být použit jako takový, při předány jako parametry při následných voláních rozhraní API. ID modelu a ID katalogu pro instanci, jsou malá a velká písmena.
+ID, podle těchto hello rozhraní API, vrátil malých a velkých písmen a by měl být použit jako takový, při předány jako parametry při následných voláních rozhraní API. ID modelu a ID katalogu pro instanci, jsou malá a velká písmena.
 
 ### <a name="create-a-model"></a>Vytvoření modelu
 Vytváří se žádost o "Vytvoření modelu":
@@ -109,8 +109,8 @@ Vytváří se žádost o "Vytvoření modelu":
 
 Kód stavu HTTP: 200
 
-* `feed/entry/content/properties/id`-Obsahuje ID modelu.
-  Všimněte si, že ID modelu je malá a velká písmena.
+* `feed/entry/content/properties/id`-Obsahuje ID hello modelu.
+  Všimněte si, že hello ID modelu je malá a velká písmena.
 
 OData XML
 
@@ -144,7 +144,7 @@ OData XML
 
 
 ### <a name="import-catalog-data"></a>Umožňuje importovat catalog data
-Pokud nahrajete několik katalog souborů do stejného modelu s několika volání, jsme vloží nové položky katalogu. Existující položky zůstane s původními hodnotami.
+Pokud nahrajete několik katalogu soubory toohello stejný model s několika volání, jsme vloží pouze hello nové položky katalogu. Existující položky zůstane s hello původní hodnoty.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -152,18 +152,18 @@ Pokud nahrajete několik katalog souborů do stejného modelu s několika volán
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu (malá a velká písmena) |
-| Název souboru |Textové identifikátor katalogu.<br>Pouze písmena (A-Z, a – z), čísla (0-9), pomlčky (-) a podtržítka (_) jsou povoleny.<br>Maximální délka: 50 |
+| %{ModelID/ |Jedinečný identifikátor modelu hello (malá a velká písmena) |
+| Název souboru |Textové identifikátor hello katalogu.<br>Pouze písmena (A-Z, a – z), čísla (0-9), pomlčky (-) a podtržítka (_) jsou povoleny.<br>Maximální délka: 50 |
 | apiVersion |1.0 |
 |  | |
-| Text žádosti |Data katalogu. Formát:<br>`<Item Id>,<Item Name>,<Item Category>[,<description>]`<br><br><table><tr><th>Name (Název)</th><th>Povinné</th><th>Typ</th><th>Popis</th></tr><tr><td>Id položky</td><td>Ano</td><td>Alfanumerické znaky, maximální délka 50</td><td>Jedinečný identifikátor položky</td></tr><tr><td>Název položky</td><td>Ano</td><td>Alfanumerické znaky, maximální délka 255</td><td>Název položky</td></tr><tr><td>Kategorie položky</td><td>Ano</td><td>Alfanumerické znaky, maximální délka 255</td><td>Kategorie, do které patří tato položka (například vaření knihy, obrázkům...)</td></tr><tr><td>Popis</td><td>Ne</td><td>Alfanumerické znaky, maximální délka je 4000</td><td>Popis této položky</td></tr></table><br>Maximální velikost souboru je 200MB.<br><br>Příklad:<br><code>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book</code> |
+| Text žádosti |Data katalogu. Formát:<br>`<Item Id>,<Item Name>,<Item Category>[,<description>]`<br><br><table><tr><th>Name (Název)</th><th>Povinné</th><th>Typ</th><th>Popis</th></tr><tr><td>Id položky</td><td>Ano</td><td>Alfanumerické znaky, maximální délka 50</td><td>Jedinečný identifikátor položky</td></tr><tr><td>Název položky</td><td>Ano</td><td>Alfanumerické znaky, maximální délka 255</td><td>Název položky</td></tr><tr><td>Kategorie položky</td><td>Ano</td><td>Alfanumerické znaky, maximální délka 255</td><td>Toowhich kategorie, které tato položka patří (například vaření knihy, obrázkům...)</td></tr><tr><td>Popis</td><td>Ne</td><td>Alfanumerické znaky, maximální délka je 4000</td><td>Popis této položky</td></tr></table><br>Maximální velikost souboru je 200MB.<br><br>Příklad:<br><code>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,hello Forgetting Room: A Fiction (Byzantium Book),Book<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book</code> |
 
 **Odpověď**:
 
 Kód stavu HTTP: 200
 
 * `Feed\entry\content\properties\LineCount`-Přijaté počet řádků.
-* `Feed\entry\content\properties\ErrorCount`-Počet řádků, které nebyly vložit z důvodu chyby.
+* `Feed\entry\content\properties\ErrorCount`-Počet řádků, které nebyly vložit z důvodu chyby tooan.
 
 OData XML
 
@@ -191,7 +191,7 @@ OData XML
 
 ### <a name="import-usage-data"></a>Importovat data o využití
 #### <a name="uploading-a-file"></a>Nahrání souboru
-V této části ukazuje, jak odeslat data o využití pomocí souboru. Můžete volat toto rozhraní API se data o využití. Všechna data o využití se uloží pro všechna volání.
+Tato část uvádí, jak data o využití tooupload pomocí souboru. Můžete volat toto rozhraní API se data o využití. Všechna data o využití se uloží pro všechna volání.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -199,18 +199,18 @@ V této části ukazuje, jak odeslat data o využití pomocí souboru. Můžete 
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu (malá a velká písmena) |
-| Název souboru |Textové identifikátor katalogu.<br>Pouze písmena (A-Z, a – z), čísla (0-9), pomlčky (-) a podtržítka (_) jsou povoleny.<br>Maximální délka: 50 |
+| %{ModelID/ |Jedinečný identifikátor modelu hello (malá a velká písmena) |
+| Název souboru |Textové identifikátor hello katalogu.<br>Pouze písmena (A-Z, a – z), čísla (0-9), pomlčky (-) a podtržítka (_) jsou povoleny.<br>Maximální délka: 50 |
 | apiVersion |1.0 |
 |  | |
-| Text žádosti |Data o využití. Formát:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>Name (Název)</th><th>Povinné</th><th>Typ</th><th>Popis</th></tr><tr><td>Id uživatele</td><td>Ano</td><td>Alfanumerické</td><td>Jedinečný identifikátor uživatele</td></tr><tr><td>Id položky</td><td>Ano</td><td>Alfanumerické znaky, maximální délka 50</td><td>Jedinečný identifikátor položky</td></tr><tr><td>Čas</td><td>Ne</td><td>Datum ve formátu: rrrr/MM/ddTHH (například 2013/06/20T10:00:00)</td><td>Čas dat</td></tr><tr><td>Událost</td><td>Ne, pokud zadaný musí taky datum</td><td>Jeden z následujících:<br>• Klikněte na tlačítko<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Nákupu</td><td></td></tr></table><br>Maximální velikost souboru je 200MB.<br><br>Příklad:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
+| Text žádosti |Data o využití. Formát:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>Name (Název)</th><th>Povinné</th><th>Typ</th><th>Popis</th></tr><tr><td>Id uživatele</td><td>Ano</td><td>Alfanumerické</td><td>Jedinečný identifikátor uživatele</td></tr><tr><td>Id položky</td><td>Ano</td><td>Alfanumerické znaky, maximální délka 50</td><td>Jedinečný identifikátor položky</td></tr><tr><td>Čas</td><td>Ne</td><td>Datum ve formátu: rrrr/MM/ddTHH (například 2013/06/20T10:00:00)</td><td>Čas dat</td></tr><tr><td>Událost</td><td>Ne, pokud zadaný musí taky datum</td><td>Jedna z následujících hello:<br>• Klikněte na tlačítko<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Nákupu</td><td></td></tr></table><br>Maximální velikost souboru je 200MB.<br><br>Příklad:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
 
 **Odpověď**:
 
 Kód stavu HTTP: 200
 
 * `Feed\entry\content\properties\LineCount`-Přijaté počet řádků.
-* `Feed\entry\content\properties\ErrorCount`-Počet řádků, které nebyly vložit z důvodu chyby.
+* `Feed\entry\content\properties\ErrorCount`-Počet řádků, které nebyly vložit z důvodu chyby tooan.
 * `Feed\entry\content\properties\FileId`-Souboru identifikátor.
 
 OData XML
@@ -239,7 +239,7 @@ OData XML
 
 
 #### <a name="using-data-acquisition"></a>Pomocí získávání dat
-V této části ukazuje, jak k odesílání událostí v reálném čase na Azure Machine Learning doporučení, obvykle z vašeho webu.
+Tato část uvádí, jak toosend událostí v reálném čas tooAzure Machine Learning doporučení, obvykle z vašeho webu.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -249,7 +249,7 @@ V této části ukazuje, jak k odesílání událostí v reálném čase na Azur
 |:--- |:--- |
 | apiVersion |1.0 |
 |  | |
-| Text žádosti |Vkládání dat události pro všechny události, který chcete poslat. Byste měli odeslat pro stejné relace uživatele nebo prohlížeče stejné ID v poli ID relace. (Viz ukázka textu události, které jsou níže). |
+| Text žádosti |Vkládání dat události pro všechny události chcete toosend. By měli poslat pro hello stejné relace uživatele nebo prohlížeče hello stejným ID v poli SessionId hello. (Viz ukázka textu události, které jsou níže). |
 
 * Příklad pro události, klikněte na tlačítko'.
   
@@ -345,8 +345,8 @@ V této části ukazuje, jak k odesílání událostí v reálném čase na Azur
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu (malá a velká písmena) |
-| userDescription |Textové identifikátor katalogu. Poznámka: Pokud použijete prostory musí zakódovat ho s % 20 místo. Najdete v předchozím příkladu.<br>Maximální délka: 50 |
+| %{ModelID/ |Jedinečný identifikátor modelu hello (malá a velká písmena) |
+| userDescription |Textové identifikátor hello katalogu. Poznámka: Pokud použijete prostory musí zakódovat ho s % 20 místo. Najdete v předchozím příkladu.<br>Maximální délka: 50 |
 | apiVersion |1.0 |
 |  | |
 | Text žádosti |NONE |
@@ -355,9 +355,9 @@ V této části ukazuje, jak k odesílání událostí v reálném čase na Azur
 
 Kód stavu HTTP: 200
 
-Toto je asynchronní rozhraní API. Zobrazí se ID sestavení jako odpověď. Vědět, pokud sestavení skončila, by měly volat rozhraní API "Získat sestavení stavu systému Model" a vyhledejte toto ID sestavení v odpovědi. Všimněte si, že sestavení může trvat minut až hodin v závislosti na velikosti dat.
+Toto je asynchronní rozhraní API. Zobrazí se ID sestavení jako odpověď. tooknow při sestavení hello skončila, měli byste volání rozhraní API "Získat sestavení stavu systému Model" hello a vyhledejte ID toto sestavení v odpovědi hello. Všimněte si, že sestavení může trvat od toohours minut v závislosti na velikosti hello dat hello.
 
-Nemůžete spotřebovat doporučení do sestavení ukončí.
+Doporučení nelze používat, dokud hello sestavení elementy end.
 
 Stav platný sestavení:
 
@@ -369,7 +369,7 @@ Stav platný sestavení:
 * Došlo ke zrušení – sestavení bylo zrušeno.
 * Zrušení – sestavení probíhá její zrušení.
 
-Všimněte si, že ID sestavení naleznete v následující cestě:`Feed\entry\content\properties\Id`
+Všimněte si, že hello sestavení, který ID naleznete v části hello následující cesty:`Feed\entry\content\properties\Id`
 
 OData XML
 
@@ -417,29 +417,29 @@ OData XML
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu (malá a velká písmena) |
-| onlyLastBuild |Označuje, zda vrátit veškerá historie sestavení modelu nebo pouze stav poslední sestavení. |
+| %{ModelID/ |Jedinečný identifikátor modelu hello (malá a velká písmena) |
+| onlyLastBuild |Určuje, zda všechny hello tooreturn sestavit historie hello modelu nebo pouze stav hello hello poslední sestavení. |
 | apiVersion |1.0 |
 
 **Odpověď**:
 
 Kód stavu HTTP: 200
 
-Odpověď obsahuje jeden záznam za sestavení. Každá položka má následující data:
+Hello odpověď obsahuje jeden záznam za sestavení. Každá položka má hello následující data:
 
-* `feed/entry/content/properties/UserName`– Název uživatele.
-* `feed/entry/content/properties/ModelName`– Název modelu.
+* `feed/entry/content/properties/UserName`– Název hello uživatele.
+* `feed/entry/content/properties/ModelName`– Název modelu hello.
 * `feed/entry/content/properties/ModelId`– Model jedinečný identifikátor.
-* `feed/entry/content/properties/IsDeployed`– Jestli (také známa jako nasazení sestavení aktivní sestavení).
+* `feed/entry/content/properties/IsDeployed`– Jestli hello sestavení nasazeno do (také známa jako aktivní sestavení).
 * `feed/entry/content/properties/BuildId`– Vytvořte jedinečný identifikátor.
-* `feed/entry/content/properties/BuildType`-Typ sestavení.
-* `feed/entry/content/properties/Status`– Stav sestavení. Může být jedna z následujících akcí: Chyba, sestavování, zařazeno do fronty, zrušení, zrušení, úspěch
-* `feed/entry/content/properties/StatusMessage`– Zpráva podrobné informace o stavu (platí pouze pro konkrétní stavy).
+* `feed/entry/content/properties/BuildType`-Typ hello sestavení.
+* `feed/entry/content/properties/Status`– Stav sestavení. Může být jedna z následujících hello: Chyba, sestavování, zařazeno do fronty, zrušení, zrušení, úspěch
+* `feed/entry/content/properties/StatusMessage`– Zpráva podrobné informace o stavu (platí pouze toospecific stavy).
 * `feed/entry/content/properties/Progress`– Sestavení průběh (%).
 * `feed/entry/content/properties/StartTime`– Sestavení čas spuštění.
 * `feed/entry/content/properties/EndTime`– Sestavení koncový čas.
 * `feed/entry/content/properties/ExecutionTime`– Sestavení doba trvání.
-* `feed/entry/content/properties/ProgressStep`– Podrobnosti o aktuální fázi, který je v průběhu sestavení v.
+* `feed/entry/content/properties/ProgressStep`– Podrobnosti o hello aktuální fázi, který je v průběhu sestavení v.
 
 Stav platný sestavení:
 
@@ -453,7 +453,7 @@ Stav platný sestavení:
 
 Platné hodnoty pro typ sestavení:
 
-* Pořadí - pořadí sestavení. (Pro pořadí sestavení podrobnosti naleznete v dokumentu "Doporučení Machine Learning API dokumentace".)
+* Pořadí - pořadí sestavení. (Pro pořadí sestavení podrobnosti naleznete v dokumentu "Doporučení Machine Learning API dokumentace" toohello.)
 * Doporučení - doporučení sestavení.
 * Společně fbt - často koupila sestavení.
 
@@ -500,8 +500,8 @@ OData XML
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| %{ModelID/ |Jedinečný identifikátor modelu (malá a velká písmena) |
-| položky ItemID |Textový soubor s oddělovači seznam položek, doporučujeme pro.<br>Maximální délka: 1024 |
+| %{ModelID/ |Jedinečný identifikátor modelu hello (malá a velká písmena) |
+| položky ItemID |Textový soubor s oddělovači seznam hello položky toorecommend pro.<br>Maximální délka: 1024 |
 | numberOfResults |Počet požadovaných výsledků |
 | includeMetatadata |Budoucí použití, vždy hodnotu false. |
 | apiVersion |1.0 |
@@ -510,16 +510,16 @@ OData XML
 
 Kód stavu HTTP: 200
 
-Odpověď obsahuje jeden záznam za doporučené položky. Každá položka má následující data:
+Hello odpověď obsahuje jeden záznam za doporučené položky. Každá položka má hello následující data:
 
 * `Feed\entry\content\properties\Id`– ID Doporučené položky.
-* `Feed\entry\content\properties\Name`-Název položky.
-* `Feed\entry\content\properties\Rating`-Hodnocení doporučení; vyšší číslo znamená vyšší spolehlivosti.
+* `Feed\entry\content\properties\Name`-Název položky hello.
+* `Feed\entry\content\properties\Rating`-Hodnocení hello doporučení; vyšší číslo znamená vyšší spolehlivosti.
 * `Feed\entry\content\properties\Reasoning`-Doporučení reasoning (například vysvětlení doporučení).
 
 OData XML
 
-Následující příklad odpověď obsahuje 10 doporučené položek:
+odpověď příklad Hello níže zahrnuje 10 položek doporučené:
 
     <feed xmlns:base="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
       <title type="text" />
@@ -671,10 +671,10 @@ Následující příklad odpověď obsahuje 10 doporučené položek:
     </feed>
 
 ### <a name="update-model"></a>Aktualizace modelu
-Můžete aktualizovat popis modelu nebo ID aktivního sestavení.
-*ID aktivního sestavení* -každé sestavení pro každý model má sestavení ID. ID aktivního sestavení je prvním úspěšném sestavení každý nový model. Jakmile máte ID aktivního sestavení a proveďte další sestavení pro stejný model, je nutné explicitně nastavit jako výchozí ID sestavení Pokud chcete. Když budete používat doporučení, pokud nezadáte ID sestavení, které chcete použít, výchozí nastavení se použije automaticky.
+Můžete aktualizovat popis modelu hello nebo hello ID aktivního sestavení.
+*ID aktivního sestavení* -každé sestavení pro každý model má sestavení ID. ID aktivního sestavení Hello je hello prvním úspěšném sestavení každý nový model. Jakmile máte ID aktivního sestavení a provádět další sestavení pro hello stejného modelu, je nutné tooexplicitly nastavit jako hello výchozí sestavení ID Pokud budete chtít. Když spotřebujete doporučení, pokud nezadáte ID hello sestavení, který chcete toouse, výchozí hello, jeden budou automaticky použita.
 
-Tento mechanismus umožňuje – až budete mít model doporučení v produkčním prostředí - pro vytvoření nových modelů a testování je před zvýšením úrovně je do produkčního prostředí.
+Tento mechanismus umožňuje - po model doporučení v produkčním prostředí - toobuild nové modely a otestovat je před zvýšením úrovně je tooproduction.
 
 | Metoda HTTP | IDENTIFIKÁTOR URI |
 |:--- |:--- |
@@ -682,10 +682,10 @@ Tento mechanismus umožňuje – až budete mít model doporučení v produkčn�
 
 | Název parametru | Platné hodnoty |
 |:--- |:--- |
-| id |Jedinečný identifikátor modelu (malá a velká písmena) |
+| id |Jedinečný identifikátor modelu hello (malá a velká písmena) |
 | apiVersion |1.0 |
 |  | |
-| Text žádosti |`<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`   <Description>New Description</Description>`<br>`          <ActiveBuildId>-1</ActiveBuildId>`<br>`</ModelUpdateParams>`<br><br>Všimněte si, že značky XML, popis a ActiveBuildId jsou volitelné. Pokud nechcete nastavit popis nebo ActiveBuildId, odeberte celý značky. |
+| Text žádosti |`<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`   <Description>New Description</Description>`<br>`          <ActiveBuildId>-1</ActiveBuildId>`<br>`</ModelUpdateParams>`<br><br>Všimněte si, že hello XML značky popis a ActiveBuildId jsou volitelné. Pokud nechcete, aby tooset popis nebo ActiveBuildId, odeberte celý značky hello. |
 
 **Odpověď**:
 
@@ -703,5 +703,5 @@ OData XML
     </feed>
 
 ## <a name="legal"></a>Právní informace
-Tento dokument je poskytován "jako-je". Informace a názory vyjádřené v tomto dokumentu včetně adres URL a dalších odkazů na internetové weby mohou změnit bez předchozího upozornění. Některé příklady použité v ukázkách jsou jenom ilustrativní a smyšlené. Žádný skutečný vztah nebo připojení je určený nebo událostmi. Tento dokument neposkytuje jste žádná zákonná práva duševního vlastnictví produktů společnosti Microsoft. Můžete kopírovat a tento dokument použít pro interní referenční účely. © 2014 Microsoft. Všechna práva vyhrazena. 
+Tento dokument je poskytován "jako-je". Informace a názory vyjádřené v tomto dokumentu včetně adres URL a dalších odkazů na internetové weby mohou změnit bez předchozího upozornění. Některé příklady použité v ukázkách jsou jenom ilustrativní a smyšlené. Žádný skutečný vztah nebo připojení je určený nebo událostmi. Tento dokument vám neposkytuje žádná zákonná práva tooany týkající se duševního vlastnictví produktů společnosti Microsoft. Můžete kopírovat a tento dokument použít pro interní referenční účely. © 2014 Microsoft. Všechna práva vyhrazena. 
 

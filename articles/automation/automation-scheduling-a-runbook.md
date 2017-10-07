@@ -1,6 +1,6 @@
 ---
-title: "Plánování runbooku ve službě Azure Automation | Microsoft Docs"
-description: "Popisuje, jak vytvořit plán ve službě Azure Automation, takže může automaticky spustit sadu runbook v určitém čase nebo podle plánu opakování."
+title: "aaaScheduling sady runbook ve službě Azure Automation | Microsoft Docs"
+description: "Popisuje, jak toocreate plánu ve službě Azure Automation, aby může automaticky spustit sadu runbook v určitém čase nebo podle plánu opakování."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -15,49 +15,49 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: bwren
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 52f1d55f141bb1b3948e3b7039cfc131a5e407b0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c215b7ff6aa200466f3be566facba3c0cffcc924
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Naplánování runbooku v Azure Automation
-Pokud chcete naplánovat spuštění runbooku ve službě Azure Automation spustit v zadanou dobu, můžete ho propojit s jedním nebo víc plány. Plán můžete nakonfigurovat pro spuštění jednou nebo na nadále hodinové nebo denní plán pro sady runbook na portálu Azure classic a pro sady runbook na portálu Azure, můžete taky naplánovat je na týdně, měsíčně, konkrétní dny v týdnu nebo dny v měsíci nebo určitý den v měsíci.  Sady runbook mohou být spojeny s víc plány a plán může mít víc runbooků.
+tooschedule sady runbook v Azure Automation toostart v zadanou dobu, můžete ho propojit tooone nebo více plánů. Plán může být nakonfigurované tooeither spustit jednou nebo na opakovaném hodinových nebo denních plánu pro sady runbook ve hello portál Azure classic a pro sady runbook ve hello portálu Azure, můžete kromě naplánovat je na týdně, měsíčně, konkrétní dny v týdnu hello nebo dní Dobrý den, měsíc, nebo určitý den v měsíci hello.  Sada runbook může být propojené toomultiple plány a plán může mít několik tooit runbooků.
 
 ## <a name="creating-a-schedule"></a>Vytvoření plánu
-Můžete vytvořit nový plán pro sady runbook na portálu Azure, na klasickém portálu nebo pomocí prostředí Windows PowerShell. Máte také možnost vytvořit nový plán, když připojujete runbook k plánu pomocí portálu Azure classic nebo Azure.
+V hello portál Azure, můžete vytvořit nový plán pro sady runbook na portálu classic hello, nebo pomocí prostředí Windows PowerShell. Máte také možnost hello vytvoření nového plánu, když připojujete runbook tooa plánu pomocí hello Azure classic nebo portálu Azure.
 
 > [!NOTE]
-> Když přidružení plánu k sadě runbook, automatizace ukládá aktuální verze modulů ve vašem účtu a je odkazuje na tento plán.  To znamená, že pokud jste při vytvoření plánu a pak aktualizujte na verzi 2.0 modul měli modul s verze 1.0 ve vašem účtu, plán bude nadále používat 1.0.  Chcete-li použít modul aktualizovanou verzi, musíte vytvořit nový plán. 
+> Když přidružení plánu k sadě runbook, automatizace ukládá hello aktuální verze hello modulů ve vašem účtu a je propojuje toothat plán.  To znamená, že pokud měl modul s verze 1.0 ve vašem účtu při vytvoření plánu a pak aktualizujte hello modulu tooversion 2.0, bude plán hello toouse 1.0.  V pořadí toouse hello modulu aktualizovanou verzi musíte vytvořit nový plán. 
 > 
 > 
 
-### <a name="to-create-a-new-schedule-in-the-azure-classic-portal"></a>Chcete-li vytvořit nový plán na portálu Azure classic
-1. Na portálu Azure classic vyberte automatizace a pak vyberte název účtu automation.
-2. Vyberte **prostředky** kartě.
-3. V dolní části okna klikněte na tlačítko **přidat nastavení**.
+### <a name="toocreate-a-new-schedule-in-hello-azure-classic-portal"></a>toocreate nového plánu v hello portál Azure classic
+1. V hello portál Azure classic vyberte automatizace a pak vyberte název hello účet automation.
+2. Vyberte hello **prostředky** kartě.
+3. V dolní části hello hello okna, klikněte na tlačítko **přidat nastavení**.
 4. Klikněte na tlačítko **přidat plán**.
-5. Zadejte **název** a volitelně **popis** pro nové schedule.your bude spuštěn plán **jednou**, **hodinové**, **denní**, **týdenní**, nebo **měsíční**.
-6. Zadejte **čas spuštění** a další možnosti v závislosti na typu plánu, který jste vybrali.
+5. Zadejte **název** a volitelně **popis** pro nové schedule.your hello bude spuštěn plán **jednou**, **hodinové**, **Denní**, **týdenní**, nebo **měsíční**.
+6. Zadejte **čas spuštění** a další možnosti v závislosti na typu hello plánu, který jste vybrali.
 
-### <a name="to-create-a-new-schedule-in-the-azure-portal"></a>Chcete-li vytvořit nový plán na portálu Azure
-1. Na portálu Azure z vašeho účtu automation, klikněte **prostředky** dlaždici otevřete **prostředky** okno.
-2. Klikněte **plány** dlaždici otevřete **plány** okno.
-3. Klikněte na tlačítko **přidat plán** v horní části okna.
-4. Na **nový plán** okno, zadejte **název** a volitelně **popis** pro nový plán.
-5. Vyberte jestli plán poběží jednorázově nebo podle plánu opakovaném výběrem **jednou** nebo **opakování**.  Pokud vyberete **jednou** zadejte **počáteční čas** a pak klikněte na **vytvořit**.  Pokud vyberete **opakování**, zadejte **počáteční čas** a jak často chcete runbooku opakovat - nástrojem frekvenci **hodinu**, **den**, **týden**, nebo pomocí **měsíc**.  Pokud vyberete **týden** nebo **měsíc** z rozevíracího seznamu **opakování možnost** se zobrazí v okně a při výběru, **opakování možnost** zobrazí okno a den v týdnu můžete vybrat, pokud jste vybrali **týden**.  Pokud jste vybrali **měsíc**, můžete **dny v týdnu** nebo konkrétní dny v měsíci v kalendáři a nakonec chcete spustit poslední den v měsíci, nebo Ne, a potom klikněte na **OK**.   
+### <a name="toocreate-a-new-schedule-in-hello-azure-portal"></a>toocreate nového plánu v hello portálu Azure
+1. V hello portál Azure, z vašeho účtu automation, klikněte na tlačítko hello **prostředky** dlaždice tooopen hello **prostředky** okno.
+2. Klikněte na tlačítko hello **plány** dlaždice tooopen hello **plány** okno.
+3. Klikněte na tlačítko **přidat plán** hello horní části okna hello.
+4. Na hello **nový plán** okno, zadejte **název** a volitelně **popis** pro hello nový plán.
+5. Vyberte, zda plán hello se spustí jednou, nebo podle plánu opakovaném výběrem **jednou** nebo **opakování**.  Pokud vyberete **jednou** zadejte **počáteční čas** a pak klikněte na **vytvořit**.  Pokud vyberete **opakování**, zadejte **počáteční čas** a četnost hello pro interval hello runbook toorepeat - nástrojem **hodinu**, **den**, **týden**, nebo pomocí **měsíc**.  Pokud vyberete **týden** nebo **měsíc** z rozevíracího seznamu hello hello **opakování možnost** se zobrazí v okně hello a při výběru, hello **opakování možnost** zobrazí okno a hello den v týdnu můžete vybrat, pokud jste vybrali **týden**.  Pokud jste vybrali **měsíc**, můžete **dny v týdnu** nebo konkrétní dny v měsíci hello na hello kalendáře a nakonec chcete toorun ho na hello poslední den v měsíci hello nebo Ne a pak klikněte na tlačítko **OK** .   
 
-### <a name="to-create-a-new-schedule-with-windows-powershell"></a>K vytvoření nového plánu pomocí prostředí Windows PowerShell
-Můžete použít [New-AzureAutomationSchedule](http://msdn.microsoft.com/library/azure/dn690271.aspx) vytvořte nový plán ve službě Azure Automation pro classic sady runbook, nebo [New-AzureRmAutomationSchedule](https://msdn.microsoft.com/library/mt603577.aspx) rutiny pro sady runbook na portálu Azure. Musíte zadat čas zahájení pro plán a četnosti, který se má spustit.
+### <a name="toocreate-a-new-schedule-with-windows-powershell"></a>toocreate nového plánu pomocí prostředí Windows PowerShell
+Můžete použít hello [New-AzureAutomationSchedule](http://msdn.microsoft.com/library/azure/dn690271.aspx) rutiny toocreate nový plán ve službě Azure Automation pro classic sady runbook, nebo [New-AzureRmAutomationSchedule](https://msdn.microsoft.com/library/mt603577.aspx) rutiny pro sady runbook ve hello Azure portál. Je nutné zadat počáteční čas hello hello plánu a četnosti hello, který se má spustit.
 
-Následující vzorové příkazy ukazují, jak vytvořit nový plán, který spouští každý den ve 3:30 20 leden 2015 počínaje rutiny Azure Service Management.
+Hello následující vzorové příkazy ukazují, jak toocreate nový plán, spouští každý den ve 3:30 20 leden 2015 počínaje rutiny Azure Service Management.
 
     $automationAccountName = "MyAutomationAccount"
     $scheduleName = "Sample-DailySchedule"
     New-AzureAutomationSchedule –AutomationAccountName $automationAccountName –Name `
     $scheduleName –StartTime "1/20/2016 15:30:00" –DayInterval 1
 
-Následující vzorové příkazy ukazuje, jak vytvořit plán pro 15. dne a 30 v každém měsíci rutinou služby Správce prostředků Azure.
+Hello následující ukázkové příkazy ukazuje jak toocreate plán pro hello 15 a 30 v každém měsíci rutinou služby Správce prostředků Azure.
 
     $automationAccountName = "MyAutomationAccount"
     $scheduleName = "Sample-MonthlyDaysOfMonthSchedule"
@@ -66,27 +66,27 @@ Následující vzorové příkazy ukazuje, jak vytvořit plán pro 15. dne a 30 
     -DaysOfMonth Fifteenth,Thirtieth -ResourceGroupName "ResourceGroup01"
 
 
-## <a name="linking-a-schedule-to-a-runbook"></a>Propojování plánu k sadě runbook
-Sady runbook mohou být spojeny s víc plány a plán může mít víc runbooků. Pokud runbook obsahuje parametry, můžete zadat hodnoty pro ně. Zadejte hodnoty všech povinných parametrů a může poskytnout hodnoty pro všechny volitelné parametry.  Tyto hodnoty se použije při každém spuštění runbooku podle tohoto plánu.  Můžete přiřadit stejné sady runbook jiný plán a zadejte jiné hodnoty parametru.
+## <a name="linking-a-schedule-tooa-runbook"></a>Propojování runbook tooa plán
+Sada runbook může být propojené toomultiple plány a plán může mít několik tooit runbooků. Pokud runbook obsahuje parametry, můžete zadat hodnoty pro ně. Zadejte hodnoty všech povinných parametrů a může poskytnout hodnoty pro všechny volitelné parametry.  Tyto hodnoty se použije při každém spuštění runbooku hello podle tohoto plánu.  Můžete připojit hello stejné tooanother plán sad runbook a zadejte jiné hodnoty parametru.
 
-### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-classic-portal"></a>Pro připojení plánu k sadě runbook pomocí portálu Azure classic
-1. Na portálu Azure classic, vyberte **automatizace** a pak klikněte na název účtu automation.
-2. Vyberte **Runbooky** kartě.
-3. Klikněte na název sady runbook k plánu.
-4. Klikněte **plán** kartě.
-5. Pokud sada runbook není aktuálně propojený s plán, pak budete mít možnost **odkaz na nový plán** nebo **odkaz na existující plán**.  Pokud runbook už připojený k plánu, klikněte na tlačítko **odkaz** v dolní části okna pro přístup k tyto možnosti.
-6. Pokud sada runbook obsahuje parametry, zobrazí se výzva pro jejich hodnot.  
+### <a name="toolink-a-schedule-tooa-runbook-with-hello-azure-classic-portal"></a>toolink runbook tooa plán s hello portál Azure classic
+1. V hello portál Azure classic, vyberte **automatizace** a pak klikněte hello název účtu automation.
+2. Vyberte hello **Runbooky** kartě.
+3. Klikněte na název hello hello runbook tooschedule.
+4. Klikněte na tlačítko hello **plán** kartě.
+5. Pokud hello runbook není aktuálně propojené tooa plán, pak budete mít možnost hello příliš**odkaz tooa nový plán** nebo **odkaz tooan existující plán**.  Pokud je hello runbook aktuálně propojené tooa plán, klikněte na tlačítko **odkaz** v hello dolní části okna tooaccess hello tyto možnosti.
+6. Pokud hello runbook obsahuje parametry, budete vyzváni k jejich hodnot.  
 
-### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-portal"></a>Pro připojení plánu k sadě runbook pomocí portálu Azure
-1. Na portálu Azure z vašeho účtu automation, klikněte na tlačítko **Runbooky** dlaždici otevřete **sady Runbook** okno.
-2. Klikněte na název sady runbook k plánu.
-3. Pokud sada runbook není aktuálně propojena k plánu, pak budete mít možnost vytvořit nový plán nebo odkaz na existující plán.  
-4. Pokud má runbook parametry, můžete vybrat možnost **upravit nastavení spouštění (výchozí: Azure)** a **parametry** okno se zobrazí, kde můžete zadat informace odpovídajícím způsobem.  
+### <a name="toolink-a-schedule-tooa-runbook-with-hello-azure-portal"></a>toolink runbook tooa plán s hello portálu Azure
+1. V hello portál Azure, z vašeho účtu automation, klikněte na tlačítko hello **Runbooky** dlaždice tooopen hello **Runbooky** okno.
+2. Klikněte na název hello hello runbook tooschedule.
+3. Pokud hello runbook není aktuálně propojené tooa plán, bude se daný hello možnost toocreate nový plán nebo na odkaz tooan existující plán.  
+4. Pokud hello runbook obsahuje parametry, můžete vybrat možnost hello **upravit nastavení spouštění (výchozí: Azure)** a hello **parametry** okno se zobrazí, kde můžete zadat informace hello odpovídajícím způsobem.  
 
-### <a name="to-link-a-schedule-to-a-runbook-with-windows-powershell"></a>Pro připojení plánu k sadě runbook pomocí prostředí Windows PowerShell
-Můžete použít [Register-AzureAutomationScheduledRunbook](http://msdn.microsoft.com/library/azure/dn690265.aspx) pro připojení plánu k sadě runbook classic nebo [Register-AzureRmAutomationScheduledRunbook](https://msdn.microsoft.com/library/mt603575.aspx) rutiny pro sady runbook na portálu Azure.  S parametrem parametrů můžete zadat hodnoty pro parametry runbooku. V tématu [spuštění sady Runbook ve službě Azure Automation](automation-starting-a-runbook.md) Další informace o zadání hodnot parametrů.
+### <a name="toolink-a-schedule-tooa-runbook-with-windows-powershell"></a>toolink runbook tooa plánu pomocí prostředí Windows PowerShell
+Můžete použít hello [Register-AzureAutomationScheduledRunbook](http://msdn.microsoft.com/library/azure/dn690265.aspx) toolink classic runbook tooa plán nebo [Register-AzureRmAutomationScheduledRunbook](https://msdn.microsoft.com/library/mt603575.aspx) rutiny pro sady runbook ve hello portálu Azure.  Můžete zadat hodnoty pro parametry runbooku hello s parametrem parametry hello. V tématu [spuštění sady Runbook ve službě Azure Automation](automation-starting-a-runbook.md) Další informace o zadání hodnot parametrů.
 
-Následující vzorové příkazy ukazují, jak propojit plán s rutinou služby Azure Service Management s parametry.
+Hello následující ukázkové příkazy Zobrazit jak toolink plánu pomocí rutiny Azure Service Management s parametry.
 
     $automationAccountName = "MyAutomationAccount"
     $runbookName = "Test-Runbook"
@@ -95,7 +95,7 @@ Následující vzorové příkazy ukazují, jak propojit plán s rutinou služby
     Register-AzureAutomationScheduledRunbook –AutomationAccountName $automationAccountName `
     –Name $runbookName –ScheduleName $scheduleName –Parameters $params
 
-Následující vzorové příkazy ukazují, jak pro připojení plánu k sadě runbook s parametry rutinou služby Správce prostředků Azure.
+Hello následující ukázkové příkazy Zobrazit jak toolink plán tooa runbooku pomocí rutiny Azure Resource Manager s parametry.
 
     $automationAccountName = "MyAutomationAccount"
     $runbookName = "Test-Runbook"
@@ -106,33 +106,33 @@ Následující vzorové příkazy ukazují, jak pro připojení plánu k sadě r
     -ResourceGroupName "ResourceGroup01"
 
 ## <a name="disabling-a-schedule"></a>Zakázání plánu
-Při zakázání plánu všechny runbooky propojené s ho nebude možné spustit na tento plán. Můžete ručně zakázání plánu nebo můžete nastavit dobu vypršení platnosti plány s frekvencí při jejich vytváření. Když je dosaženo času vypršení platnosti, bude plán zakázán.
+Při zakázání plánu všechny runbooky propojené tooit nebude možné spustit na tento plán. Můžete ručně zakázání plánu nebo můžete nastavit dobu vypršení platnosti plány s frekvencí při jejich vytváření. Když je dosaženo času vypršení platnosti hello, hello plán zakázán.
 
-### <a name="to-disable-a-schedule-from-the-azure-classic-portal"></a>Zakázání plánu z portálu Azure classic
-Můžete zakázat plán na portálu Azure classic na stránce Podrobnosti plánu pro plán.
+### <a name="toodisable-a-schedule-from-hello-azure-classic-portal"></a>toodisable plánu z hello portál Azure classic
+Můžete zakázat plán v hello portál Azure classic na stránce hello podrobnosti plánu pro plán hello.
 
-1. Na portálu Azure classic vyberte automatizace a pak klikněte na název účtu automation.
-2. Vyberte kartu prostředky.
-3. Klikněte na název plán, který chcete otevřít stránku s jeho podrobnostmi.
-4. Změna **povoleno** k **ne**.
+1. V hello portál Azure classic vyberte automatizace a pak klikněte hello název účtu automation.
+2. Vyberte kartu prostředky hello.
+3. Klikněte na název hello plán tooopen stránku s jeho podrobnostmi.
+4. Změna **povoleno** příliš**ne**.
 
-### <a name="to-disable-a-schedule-from-the-azure-portal"></a>Zakázání plánu z portálu Azure
-1. Na portálu Azure z vašeho účtu automation, klikněte **prostředky** dlaždici otevřete **prostředky** okno.
-2. Klikněte **plány** dlaždici otevřete **plány** okno.
-3. Klikněte na název plánu a otevřete okno Podrobnosti.
-4. Změna **povoleno** k **ne**.
+### <a name="toodisable-a-schedule-from-hello-azure-portal"></a>toodisable plánu z hello portálu Azure
+1. V hello portál Azure, z vašeho účtu automation, klikněte na tlačítko hello **prostředky** dlaždice tooopen hello **prostředky** okno.
+2. Klikněte na tlačítko hello **plány** dlaždice tooopen hello **plány** okno.
+3. Klikněte na název hello okno Podrobnosti plánu tooopen hello.
+4. Změna **povoleno** příliš**ne**.
 
-### <a name="to-disable-a-schedule-with-windows-powershell"></a>Zakázání plánu pomocí prostředí Windows PowerShell
-Můžete použít [Set-AzureAutomationSchedule](http://msdn.microsoft.com/library/azure/dn690270.aspx) rutiny změnit vlastnosti existující plán pro classic sadu runbook nebo [Set-AzureRmAutomationSchedule](https://msdn.microsoft.com/library/mt603566.aspx) rutiny pro sady runbook na portálu Azure. Pokud chcete zakázat plán, zadejte **false** pro **hodnotu IsEnabled** parametr.
+### <a name="toodisable-a-schedule-with-windows-powershell"></a>toodisable plánu pomocí prostředí Windows PowerShell
+Můžete použít hello [Set-AzureAutomationSchedule](http://msdn.microsoft.com/library/azure/dn690270.aspx) rutiny toochange hello vlastnosti existující plán pro classic sadu runbook nebo [Set-AzureRmAutomationSchedule](https://msdn.microsoft.com/library/mt603566.aspx) rutiny pro sady runbook ve hello Azure portál. toodisable hello naplánovat, zadejte **false** pro hello **hodnotu IsEnabled** parametr.
 
-Následující vzorové příkazy znázorňují postup zakázání plánu pomocí rutiny Azure Service Management.
+Hello následující vzorové příkazy ukazují, jak hello toodisable plán pomocí rutiny Azure Service Management.
 
     $automationAccountName = "MyAutomationAccount"
     $scheduleName = "Sample-DailySchedule"
     Set-AzureAutomationSchedule –AutomationAccountName $automationAccountName `
     –Name $scheduleName –IsEnabled $false
 
-Následující vzorové příkazy ukazují, jak zakázat plán pro sady runbook pomocí rutiny Azure Resource Manager.
+Hello následující ukázkové příkazy Zobrazit jak toodisable plán pro sady runbook pomocí rutiny Azure Resource Manager.
 
     $automationAccountName = "MyAutomationAccount"
     $scheduleName = "Sample-MonthlyDaysOfMonthSchedule"
@@ -141,6 +141,6 @@ Následující vzorové příkazy ukazují, jak zakázat plán pro sady runbook 
 
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o práci s plány najdete v tématu [plán prostředky ve službě Azure Automation](http://msdn.microsoft.com/library/azure/dn940016.aspx)
-* Chcete-li začít pracovat se sadami runbook ve službě Azure Automation, přečtěte si téma [spuštění sady Runbook ve službě Azure Automation](automation-starting-a-runbook.md) 
+* toolearn Další informace o práci s plány, najdete v části [plán prostředky ve službě Azure Automation](http://msdn.microsoft.com/library/azure/dn940016.aspx)
+* tooget kroky s runbooky ve službě Azure Automation najdete v části [spuštění sady Runbook ve službě Azure Automation](automation-starting-a-runbook.md) 
 

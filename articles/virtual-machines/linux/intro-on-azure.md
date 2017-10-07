@@ -1,5 +1,5 @@
 ---
-title: "Úvod do systému Linux v Azure | Microsoft Docs"
+title: aaaIntroduction tooLinux v Azure | Microsoft Docs
 description: "Další informace o použití virtuální počítače s Linuxem v Azure."
 services: virtual-machines-linux
 documentationcenter: python
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: szark
-ms.openlocfilehash: 7bd0c5549a2e1f592681760d5ef464b9570ca4ab
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3a931447ee23ce7000174ca314c3e10abc6b8e74
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-linux-on-azure"></a>Úvod do Linuxu na Azure
-Toto téma obsahuje přehled některých aspektů pomocí virtuální počítače s Linuxem v cloudu Azure. Virtuální počítač s Linuxem nasazení je jednoduchý proces pomocí bitovou kopii z galerie.
+# <a name="introduction-toolinux-on-azure"></a>Úvod tooLinux v Azure
+Toto téma obsahuje přehled některých aspektů pomocí virtuální počítače s Linuxem v hello cloudu Azure. Virtuální počítač s Linuxem nasazení je jednoduchý proces pomocí bitovou kopii z Galerie hello.
 
 ## <a name="authentication-usernames-passwords-and-ssh-keys"></a>Ověřování: Uživatelská jména, hesla a klíče SSH
-Když vytváříte virtuální počítač s Linuxem pomocí portálu Azure, budete vyzváni k zadání buď uživatelské jméno a heslo nebo veřejný klíč SSH. Volba uživatelské jméno pro nasazení virtuální počítač s Linuxem v Azure se vztahují následující omezení: názvy účtů systému (UID < 100), který už ve virtuálním počítači nejsou povoleny, root, třeba.
+Při vytváření virtuální počítač s Linuxem pomocí hello portál Azure, se zobrazí výzva tooprovide buď uživatelské jméno a heslo nebo veřejný klíč SSH. Hello volba uživatelského jména pro nasazení virtuální počítač s Linuxem v Azure je subjektu toohello následující omezení: názvy účtů systému (UID < 100) již existuje v hello virtuálního počítače nejsou povoleny, "kořenový" třeba.
 
 * V tématu [vytvoření virtuálního počítače se systémem Linux](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* V tématu [postup používání SSH s Linuxem v Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* V tématu [jak tooUse SSH s Linuxem v Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="obtaining-superuser-privileges-using-sudo"></a>Získání oprávnění superuživatele pomocí`sudo`
-Uživatelský účet, který je zadán během nasazení instance virtuálních počítačů v Azure je privilegovaný účet. Tento účet je nakonfigurovat pomocí Azure Linux Agent moct zvýšení oprávnění pomocí root (superuživatel účet) `sudo` nástroj. Po přihlášení pomocí tohoto uživatelského účtu, budete moci spustit příkazy jako kořenová pomocí syntaxe příkazu:
+Hello uživatelský účet, který je zadán během nasazení instance virtuálního počítače na platformě Azure je privilegovaný účet. Tento účet je nakonfiguroval hello Azure Linux Agent toobe možné tooelevate oprávnění tooroot (superuživatel účtu) pomocí hello `sudo` nástroj. Po přihlášení pomocí tohoto uživatelského účtu, bude možné toorun příkazy jako kořenová pomocí syntaxe příkazu hello:
 
     # sudo <COMMAND>
 
@@ -40,51 +40,51 @@ Volitelně můžete získat pomocí prostředí kořenové **sudo -s**.
 * V tématu [pomocí oprávnění kořenového na virtuální počítače s Linuxem v Azure](use-root-privileges.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="firewall-configuration"></a>Konfigurace brány firewall
-Azure poskytuje filtr příchozího paketu, který omezuje připojení k portům zadaný na portálu Azure. Ve výchozím nastavení je jenom povolených port SSH. Přístup k další porty na virtuální počítač Linux vám může otevře nakonfigurováním koncových bodů na portálu Azure:
+Azure poskytuje filtr příchozího paketu, který omezuje tooports připojení zadaný v hello portálu Azure. Ve výchozím nastavení, hello pouze povolené port je SSH. Může dojít k otevření až přístupové porty tooadditional na virtuální počítač Linux nakonfigurováním koncové body v hello portálu Azure:
 
-* Přejděte na téma: [jak nastavit koncové body k virtuálnímu počítači](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* Přejděte na téma: [jak tooSet až koncové body tooa virtuálního počítače](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-Nepovolujte Linux obrázků v galerii Azure *iptables* brány firewall ve výchozím nastavení. V případě potřeby lze nakonfigurovat bránu firewall k poskytnutí další filtrování.
+Hello Linux obrázků v Azure Gallery hello nepovolujte hello *iptables* brány firewall ve výchozím nastavení. V případě potřeby lze nakonfigurovat bránu firewall hello tooprovide další filtrování.
 
 ## <a name="hostname-changes"></a>Název hostitele změny
-Když nasadíte původně instanci bitovou kopii systému Linux, musíte zadat název hostitele pro virtuální počítač. Jakmile je virtuální počítač spuštěn, tento název hostitele je publikována na servery DNS platformy, aby více virtuálních počítačů, které jsou vzájemně propojené můžete provádět vyhledávání IP adresy pomocí názvy hostitelů.
+Když nasadíte původně instanci bitovou kopii systému Linux, jste požadované tooprovide název hostitele pro virtuální počítač hello. Po hello virtuální počítač spuštěn, je tento název hostitele serverů DNS publikované toohello platformy, tak, aby více virtuálních počítačů připojený tooeach jiné můžete provádět vyhledávání IP adresy pomocí názvy hostitelů.
 
-Pokud název hostitele změny se požaduje po nasazení virtuálního počítače, použijte příkaz
+Pokud název hostitele změny se požaduje po nasazení virtuálního počítače, použijte příkaz hello
 
     # sudo hostname <newname>
 
-Azure Linux Agent zahrnuje funkci automaticky zjišťovat tato změna názvu a odpovídajícím způsobem konfigurace virtuálního počítače zachovat tuto změnu a publikovat tuto změnu na servery DNS platformy.
+Hello Azure Linux Agent zahrnuje funkci tooautomatically, zjištění této změny názvu a odpovídajícím způsobem konfigurace toopersist hello virtuální počítač tato změna a publikování serverů DNS platformy toohello tuto změnu.
 
 * [Uživatelská příručka k Azure Linux Agent](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="cloud-init"></a>Init cloudu
 **Ubuntu** a **CoreOS** bitové kopie využívat cloudové init na Azure, které poskytuje další funkce pro zavádění virtuálního počítače.
 
-* [Postup vložení vlastních dat](../windows/classic/inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Jak tooInject vlastní Data](../windows/classic/inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 * [Vlastní Data a inicializací cloudu na platformě Microsoft Azure](https://azure.microsoft.com/blog/2014/04/21/custom-data-and-cloud-init-on-windows-azure/)
 * [Vytvoření Azure Swap oddíly používající Init cloudu](https://wiki.ubuntu.com/AzureSwapPartitions)
-* [Jak používat CoreOS v Azure](https://coreos.com/os/docs/latest/booting-on-azure.html)
+* [Jak tooUse CoreOS v Azure](https://coreos.com/os/docs/latest/booting-on-azure.html)
 
 ## <a name="virtual-machine-image-capture"></a>Zachycení Image virtuálního počítače
-Azure umožňuje zaznamenat stav z existujícího virtuálního počítače do bitové kopie, které lze následně použít k nasazení virtuálního počítače další instance. Může být Azure Linux Agent používá k vrácení zpět některé přizpůsobení, která byla provedena během procesu zřizování. Může postupujte podle následujících kroků a zachytit virtuální počítač jako obrázek:
+Azure poskytuje možnost hello toocapture hello stav existující virtuální počítač do bitové kopie, kterou lze následně instance používané toodeploy dalších virtuálních počítačů. Hello Azure Linux Agent může být použité toorollback některé hello přizpůsobení, která byla provedena během procesu zřizování hello. Hello kroků toocapture virtuální počítač může postupujte jako obrázek:
 
-1. Spustit **příkaz waagent-deprovision** zrušit zřizování přizpůsobení. Nebo **příkaz waagent-deprovision + uživatele** volitelně odstranit uživatelský účet zadaný během zřizování a všechna přidružená data.
-2. Vypnout nižší nebo vypnutí virtuálního počítače.
-3. Klikněte na tlačítko **zaznamenat** v portálu Azure nebo pomocí prostředí PowerShell nebo rozhraní příkazového řádku nástroje zachytit virtuální počítač jako obrázek.
+1. Spustit **příkaz waagent-deprovision** tooundo zřizování přizpůsobení. Nebo **příkaz waagent-deprovision + uživatele** toooptionally odstranit hello uživatelský účet zadaný během zřizování a všechna přidružená data.
+2. Vypnout nižší nebo vypnutí hello virtuálního počítače.
+3. Klikněte na tlačítko **zaznamenat** v hello Azure hello portálu nebo pomocí prostředí PowerShell nebo rozhraní příkazového řádku nástroje toocapture hello virtuálního počítače jako obrázek.
    
-   * Přejděte na téma: [jak zachytit Linuxový virtuální počítač pro použití jako šablonu](classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+   * Přejděte na téma: [jak tooCapture tooUse Linuxový virtuální počítač jako šablonu](classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 ## <a name="attaching-disks"></a>Připojení disků
-Každý virtuální počítač má dočasného, místní *prostředků disku* připojen. Protože data na prostředku disku nesmí být trvanlivý po restartování počítače, se často používá aplikace a procesů spuštěných ve virtuálním počítači pro přechodná a **dočasné** úložiště dat. Slouží také k ukládání stránky nebo Prohodit soubory operačního systému.
+Každý virtuální počítač má dočasného, místní *prostředků disku* připojen. Protože data na prostředku disku nesmí být trvanlivý po restartování počítače, se často používá aplikace a procesů spuštěných ve virtuálním počítači hello přechodná a **dočasné** úložiště dat. Je také hello použité toostore stránky nebo swap soubory hello operačního systému.
 
-V systému Linux, je prostředek disku obvykle spravuje Azure Linux Agent a automaticky připojit k **/mnt nebo prostředků** (nebo **/mnt** Ubuntu Image).
+V systému Linux, je obvykle spravuje hello Azure Linux Agent a automaticky připojit příliš hello prostředků disku**/mnt nebo prostředků** (nebo **/mnt** Ubuntu Image).
 
 > [!NOTE]
-> Všimněte si, že je disk prostředků **dočasné** na disku a může se odstraní a naformátována, když je virtuální počítač restartovat.
+> Všimněte si, je tento disk hello prostředků **dočasné** na disku a může se odstraní a naformátována při hello virtuálních počítačů po restartu.
 > 
 > 
 
-V systému Linux datový disk může být s názvem jádrem jako `/dev/sdc`, a uživatelé budou potřebovat k oddílu, formátování a připojte tento prostředek. To je popsané v tomto kurzu krok za krokem: [jak připojit datový Disk k virtuálnímu počítači](../windows/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+V systému Linux hello datový disk může být s názvem podle hello jádra jako `/dev/sdc`, a uživatelé budou potřebovat toopartition, formátování a připojte tento prostředek. To je zahrnutý v kurzu hello krok za krokem: [jak tooAttach tooa datový Disk virtuálního počítače](../windows/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
 * **Viz také:** [konfigurace softwaru diskového pole RAID v systému Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) & [konfigurace LVM na virtuální počítač s Linuxem v Azure](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

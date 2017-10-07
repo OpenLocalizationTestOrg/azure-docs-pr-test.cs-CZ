@@ -1,6 +1,6 @@
 ---
-title: "Knihovny tříd rozhraní .NET pomocí Azure Functions | Microsoft Docs"
-description: "Naučte se vytvářet knihovny tříd rozhraní .NET pro použití s Azure Functions"
+title: "aaaUsing rozhraní .NET třídy knihovny s Azure Functions | Microsoft Docs"
+description: "Zjistěte, jak pomocí knihovny tříd rozhraní .NET tooauthor pro s Azure Functions"
 services: functions
 documentationcenter: na
 author: lindydonna
@@ -16,42 +16,42 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/09/2017
 ms.author: donnam
-ms.openlocfilehash: 0613bb96d3afb85ff7e684246b128e4eef518d23
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4e0fd954b554006ba1d8ecc47403a9fb1c67c3b1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-net-class-libraries-with-azure-functions"></a>Knihovny tříd rozhraní .NET pomocí Azure Functions
 
-Kromě souborů skriptů Azure Functions podporuje publikování knihovny tříd jako implementace pro jednu nebo více funkcí. Doporučujeme vám, že používáte [Azure funkce 2017 nástroje sady Visual Studio](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/).
+Kromě toho tooscript soubory, Azure Functions podporuje publikování knihovny tříd jako hello implementace pro jednu nebo více funkcí. Doporučujeme použít hello [Azure funkce 2017 nástroje sady Visual Studio](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/).
 
 ## <a name="prerequisites"></a>Požadavky 
 
-Tento článek má následující požadavky:
+Tento článek má hello následující požadavky:
 
-- [Visual Studio 2017 15.3 Preview](https://www.visualstudio.com/vs/preview/). Nainstalujte úlohy **ASP.NET a webové vývoj** a **Azure development**.
+- [Visual Studio 2017 15.3 Preview](https://www.visualstudio.com/vs/preview/). Nainstalujte hello úlohy **ASP.NET a webové vývoj** a **Azure development**.
 - [Funkce Azure nástrojů pro Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=AndrewBHall-MSFT.AzureFunctionToolsforVisualStudio2017)
 
 ## <a name="functions-class-library-project"></a>Funkce projektu knihovny tříd
 
-Ze sady Visual Studio vytvořte nový projekt Azure Functions. Nová šablona projektu vytvoří soubory *host.json* a *local.settings.json*. Můžete [přizpůsobit nastavení modulu runtime Azure Functions v host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json). 
+Ze sady Visual Studio vytvořte nový projekt Azure Functions. Nová šablona projektu Hello vytvoří soubory hello *host.json* a *local.settings.json*. Můžete [přizpůsobit nastavení modulu runtime Azure Functions v host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json). 
 
-Soubor *local.settings.json* ukládá nastavení aplikace, řetězce připojení a nastavení nástroje základní funkce Azure. Další informace o jeho strukturu, najdete v části [kód a testovat místně na Azure functions](functions-run-local.md#local-settings).
+soubor Hello *local.settings.json* ukládá nastavení aplikace, řetězce připojení a nastavení nástroje základní funkce Azure. toolearn Další informace o jeho strukturu, najdete v části [kód a testovat místně na Azure functions](functions-run-local.md#local-settings).
 
 ### <a name="functionname-attribute"></a>Atribut %{FunctionName/
 
-Atribut [ `FunctionNameAttribute` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/FunctionNameAttribute.cs) určí metodu jako vstupní bod funkce. Musíte ho použít se přesně jedna aktivační událost a 0 nebo více vstup a výstup vazby.
+atribut Hello [ `FunctionNameAttribute` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/FunctionNameAttribute.cs) určí metodu jako vstupní bod funkce. Musíte ho použít se přesně jedna aktivační událost a 0 nebo více vstup a výstup vazby.
 
-### <a name="conversion-to-functionjson"></a>Převod na function.json
+### <a name="conversion-toofunctionjson"></a>Převod toofunction.json
 
-Během vytváření projektu na Azure Functions se vytvoří soubor `function.json` v adresáři odpovídající název funkce definované `[FunctionName]`. Určuje triggerů a vazeb a odkazuje na sestavení souboru projektu.
+Během vytváření projektu na Azure Functions se vytvoří soubor `function.json` v adresáři hello odpovídající název funkce hello definované `[FunctionName]`. Určuje triggerů a vazeb a soubor sestavení projektu toohello body.
 
-Tento převod provádí balíček NuGet [Microsoft\.NET\.Sdk\.funkce](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). Zdroj je k dispozici v úložišti GitHub [azure\-funkce\-vs\-sestavení\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
+Tento převod je prováděn pomocí balíčku NuGet hello [Microsoft\.NET\.Sdk\.funkce](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). Zdroj Hello je k dispozici v úložišti GitHub hello [azure\-funkce\-vs\-sestavení\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
 
 ## <a name="triggers-and-bindings"></a>Triggery a vazby
 
-Následující tabulka uvádí triggerů a vazeb, které jsou k dispozici v projektu knihovny tříd Azure Functions. Všechny atributy jsou v oboru názvů `Microsoft.Azure.WebJobs`.
+Hello následující tabulka uvádí hello triggerů a vazeb, které jsou k dispozici v projektu knihovny tříd Azure Functions. Všechny atributy jsou v oboru názvů hello `Microsoft.Azure.WebJobs`.
 
 | Vazba | Atribut | Balíček NuGet |
 |------   | ------    | ------        |
@@ -75,7 +75,7 @@ Následující tabulka uvádí triggerů a vazeb, které jsou k dispozici v proj
 
 Azure podporuje aktivaci funkce vstup a výstup vazby pro úložiště objektů Blob v Azure. Další informace o výrazy vazby a metadata, najdete v části [vazby úložiště objektů Blob v Azure funkce](functions-bindings-storage-blob.md).
 
-Aktivační události objektu blob je definovaná pomocí `[BlobTrigger]` atribut. Můžete použít atribut `[StorageAccount]` zadat účet úložiště, který se používá celé funkce nebo třídy.
+Aktivační události objektu blob je definovaná pomocí hello `[BlobTrigger]` atribut. Můžete použít atribut hello `[StorageAccount]` toodefine hello úložiště účet, který se používá celé funkce nebo třídy.
 
 ```csharp
 [StorageAccount("AzureWebJobsStorage")]
@@ -86,7 +86,7 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 }
 ```
 
-Objekt BLOB vstup a výstup jsou definovány pomocí `[Blob]` atribut spolu s `FileAccess` parametr označující číst nebo zapisovat. Následující příklad používá objekt blob aktivační události a objektů blob výstup vazby.
+Objekt BLOB vstup a výstup jsou definovány pomocí hello `[Blob]` atribut spolu s `FileAccess` parametr označující číst nebo zapisovat. Následující příklad používá Hello aktivační události objektu blob a objektů blob výstup vazby.
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -122,9 +122,9 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
 
 ### <a name="cosmos-db-input-and-output-bindings"></a>Cosmos DB vstup a výstup vazby
 
-Azure Functions podporuje vstup a výstup vazby pro Cosmos DB. Další informace o funkcích vazby Cosmos DB najdete v tématu [Azure funkce Cosmos DB vazby](functions-bindings-documentdb.md).
+Azure Functions podporuje vstup a výstup vazby pro Cosmos DB. toolearn Další informace o funkce hello hello Cosmos DB vazby, najdete v části [Azure funkce Cosmos DB vazby](functions-bindings-documentdb.md).
 
-Chcete-li vytvořit vazbu na dokument Cosmos DB, použijte atribut `[DocumentDB]` v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.DocumentDB]. V následujícím příkladu má aktivační procedury fronty a DocumentDB API, výstup vazby:
+toobind tooa Cosmos DB dokumentu pomocí atributu hello `[DocumentDB]` v balíčku NuGet hello [Microsoft.Azure.WebJobs.Extensions.DocumentDB]. Následující ukázka Hello má aktivační procedury fronty a DocumentDB API, výstup vazby:
 
 ```csharp
 [FunctionName("QueueToDocDB")]        
@@ -143,9 +143,9 @@ public static void Run(
 
 Azure Functions podporuje aktivaci a výstupní vazeb pro služby Event Hubs. Další informace najdete v tématu [centra událostí Azure funkce vazby](functions-bindings-event-hubs.md).
 
-Typy `[Microsoft.Azure.WebJobs.ServiceBus.EventHubTriggerAttribute]` a `[Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute]` jsou definovány v balíčku NuGet [Microsoft.Azure.WebJobs.ServiceBus]. 
+Hello typy `[Microsoft.Azure.WebJobs.ServiceBus.EventHubTriggerAttribute]` a `[Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute]` jsou definovány v balíčku NuGet hello [Microsoft.Azure.WebJobs.ServiceBus]. 
 
-Následující příklad používá aktivační procedury Centrum událostí:
+Hello následující příklad používá aktivační procedury Centrum událostí:
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -155,7 +155,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-V následujícím příkladu má centra událostí výstupu pomocí návratovou hodnotu metody jako výstup:
+Hello následujícím příkladu má centra událostí výstupu pomocí hello metoda návratovou hodnotu jako výstup hello:
 
 ```csharp
 [FunctionName("EventHubOutput")]
@@ -171,9 +171,9 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
 
 ### <a name="external-file-input-and-output"></a>Externí soubor vstup a výstup
 
-Azure Functions podporuje aktivační událost, vstup a výstup vazby pro externích souborů, jako je například Google Drive, Dropbox a OneDrive. Další informace najdete v tématu [externí soubor funkce Azure vazby](functions-bindings-external-file.md). Atributy `[ExternalFileTrigger]` a `[ExternalFile]` jsou definovány v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.ApiHub].
+Azure Functions podporuje aktivační událost, vstup a výstup vazby pro externích souborů, jako je například Google Drive, Dropbox a OneDrive. Další, najdete v části toolearn [externí soubor funkce Azure vazby](functions-bindings-external-file.md). Hello atributy `[ExternalFileTrigger]` a `[ExternalFile]` jsou definovány v balíčku NuGet hello [Microsoft.Azure.WebJobs.Extensions.ApiHub].
 
-Následující příklad jazyka C# ukazuje externí soubor vstup a výstup vazby. Kód zkopíruje vstupní soubor do výstupního souboru.
+Následující příklad jazyka C# Hello ukazuje externí soubor vstup a výstup vazby. kopie kódu Hello hello vstupní soubor toohello výstupní soubor.
 
 ```csharp
 [StorageAccount("MyStorageConnection")]
@@ -192,7 +192,7 @@ public static string Run([QueueTrigger("myqueue-items")] string myQueueItem,
 
 ### <a name="http-and-webhooks"></a>HTTP a webhooky
 
-Použití `HttpTrigger` definici na triggeru protokolu HTTP nebo webhooku atributu. Tento atribut je definována v balíček NuGet [Microsoft.Azure.WebJobs.Extensions.Http]. Můžete přizpůsobit oprávnění na úrovni, typ webhooku, trasy a metody. V následujícím příkladu definuje aktivační procedury HTTP s anonymní ověřování a _genericJson_ webhooku typu.
+Použití hello `HttpTrigger` atribut toodefine HTTP aktivační události nebo webhooku. Tento atribut je definována v balíčku NuGet hello [Microsoft.Azure.WebJobs.Extensions.Http]. Můžete přizpůsobit hello oprávnění na úrovni, typ webhooku, trasy a metody. Hello následující příklad definuje aktivační procedury HTTP s anonymní ověřování a _genericJson_ webhooku typu.
 
 ```csharp
 [FunctionName("HttpTriggerCSharp")]
@@ -206,9 +206,9 @@ public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous,
 
 ### <a name="mobile-apps-input-and-output"></a>Mobile Apps vstup a výstup
 
-Azure Functions podporuje vstup a výstup vazby pro Mobile Apps. Další informace najdete v tématu [Azure funkce Mobile Apps vazby](functions-bindings-mobile-apps.md). Atribut `[MobileTable]` je definována v balíček NuGet [Microsoft.Azure.WebJobs.Extensions.MobileApps].
+Azure Functions podporuje vstup a výstup vazby pro Mobile Apps. Další, najdete v části toolearn [Azure funkce Mobile Apps vazby](functions-bindings-mobile-apps.md). atribut Hello `[MobileTable]` je definována v balíčku NuGet hello [Microsoft.Azure.WebJobs.Extensions.MobileApps].
 
-Následující příklad ukazuje Mobile Apps výstup vazby:
+Hello následující příklad ukazuje Mobile Apps výstup vazby:
 
 ```csharp
 [FunctionName("MobileAppsOutput")]        
@@ -223,7 +223,7 @@ public static object Run([QueueTrigger("myqueue-items", Connection = "AzureWebJo
 
 ### <a name="notification-hubs-output"></a>Výstup centra oznámení
 
-Azure Functions podporuje vazbu výstup pro centra oznámení. Další informace najdete v tématu [centra oznámení Azure funkce výstup vazby](functions-bindings-notification-hubs.md). Atribut `[NotificationHub]` je definována v balíček NuGet [Microsoft.Azure.WebJobs.Extensions.NotificationHubs].
+Azure Functions podporuje vazbu výstup pro centra oznámení. Další, najdete v části toolearn [centra oznámení Azure funkce výstup vazby](functions-bindings-notification-hubs.md). atribut Hello `[NotificationHub]` je definována v balíčku NuGet hello [Microsoft.Azure.WebJobs.Extensions.NotificationHubs].
 
 <a name="queue"></a>
 
@@ -231,7 +231,7 @@ Azure Functions podporuje vazbu výstup pro centra oznámení. Další informace
 
 Azure Functions podporuje aktivaci a výstupní vazby pro Azure fronty. Další informace najdete v tématu [Azure funkce Queue Storage vazby](functions-bindings-storage-queue.md).
 
-Následující příklad ukazuje, jak používat návratový typ funkce s výstupní fronty, vazbu, pomocí `[Queue]` atribut. Chcete-li definovat aktivační procedury fronty, použijte `[QueueTrigger]` atribut.
+Hello následující příklad ukazuje, jak funkce hello toouse návratový typ fronty výstup vazby, pomocí hello `[Queue]` atribut. toodefine aktivační procedury fronty, použijte hello `[QueueTrigger]` atribut.
 
 ```csharp
 [StorageAccount("AzureWebJobsStorage")]
@@ -261,11 +261,11 @@ public static class QueueFunctions
 
 ### <a name="sendgrid-output"></a>Sendgrid vám umožňuje výstup
 
-Azure Functions podporuje sendgrid vám umožňuje výstup, vazba pro odesílání e-mailu prostřednictvím kódu programu. Další informace najdete v tématu [sendgrid vám umožňuje funkce Azure vazby](functions-bindings-sendgrid.md).
+Azure Functions podporuje sendgrid vám umožňuje výstup, vazba pro odesílání e-mailu prostřednictvím kódu programu. Další, najdete v části toolearn [sendgrid vám umožňuje funkce Azure vazby](functions-bindings-sendgrid.md).
 
-Atribut `[SendGrid]` je definována v balíček NuGet [Microsoft.Azure.WebJobs.Extensions.SendGrid].
+atribut Hello `[SendGrid]` je definována v balíčku NuGet hello [Microsoft.Azure.WebJobs.Extensions.SendGrid].
 
-Následuje příklad použití aktivační procedury fronty Service Bus a pomocí vazby sendgrid vám umožňuje výstup `SendGridMessage`:
+Hello následuje příklad použití aktivační procedury fronty Service Bus a pomocí vazby sendgrid vám umožňuje výstup `SendGridMessage`:
 
 ```csharp
 [FunctionName("SendEmail")]
@@ -282,7 +282,7 @@ public static void Run(
 
 public class OutgoingEmail
 {
-    public string To { get; set; }
+    public string too{ get; set; }
     public string From { get; set; }
     public string Subject { get; set; }
     public string Body { get; set; }
@@ -295,9 +295,9 @@ public class OutgoingEmail
 
 Azure Functions podporuje aktivaci a výstupní vazby pro fronty sběrnice a témata. Další informace o konfiguraci vazby najdete v tématu [Azure funkce Service Bus vazby](functions-bindings-service-bus.md).
 
-Atributy `[ServiceBusTrigger]` a `[ServiceBus]` jsou definovány v balíčku NuGet [Microsoft.Azure.WebJobs.ServiceBus]. 
+Hello atributy `[ServiceBusTrigger]` a `[ServiceBus]` jsou definovány v balíčku NuGet hello [Microsoft.Azure.WebJobs.ServiceBus]. 
 
-Následuje příklad aktivační procedury fronty sběrnice:
+Hello následuje příklad aktivační procedury fronty sběrnice:
 
 ```csharp
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -307,7 +307,7 @@ public static void Run([ServiceBusTrigger("myqueue", AccessRights.Manage, Connec
 }
 ```
 
-Následuje příklad výstupu Service Bus, vazbu, pomocí návratový typ metody jako výstup:
+Hello tady je příklad výstupu Service Bus, vazbu, pomocí návratový typ metody hello jako výstup hello:
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -323,9 +323,9 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, TraceWriter l
 
 ### <a name="table-storage-input-and-output"></a>Tabulka úložiště vstup a výstup
 
-Azure Functions podporuje vstup a výstup vazby pro Azure Table storage. Další informace najdete v tématu [vazby úložiště Azure Table funkce](functions-bindings-storage-table.md).
+Azure Functions podporuje vstup a výstup vazby pro Azure Table storage. Další, najdete v části toolearn [vazby úložiště Azure Table funkce](functions-bindings-storage-table.md).
 
-V následujícím příkladu je třída s dvě funkce, ukázka tabulky úložiště výstupní a vstupní vazby. 
+Hello následující příklad je třída s dvě funkce, ukázka tabulky úložiště výstupní a vstupní vazby. 
 
 ```csharp
 [StorageAccount("AzureWebJobsStorage")]
@@ -346,7 +346,7 @@ public class TableStorage
         return new MyPoco { PartitionKey = "Http", RowKey = Guid.NewGuid().ToString(), Text = input.Text };
     }
 
-    // use the metadata parameter "queueTrigger" to bind the queue payload
+    // use hello metadata parameter "queueTrigger" toobind hello queue payload
     [FunctionName("TableInput")]
     public static void TableInput([QueueTrigger("table-items")] string input, [Table("MyTable", "Http", "{queueTrigger}")] MyPoco poco, TraceWriter log)
     {
@@ -360,11 +360,11 @@ public class TableStorage
 
 ### <a name="timer-trigger"></a>Trigger časovače
 
-Azure Functions nabízí vazbu aktivační událost časovače, který vám umožní spustit funkce kódu podle definovaného plánu. Další informace o funkcích vazby naleznete v tématu [naplánovat provádění kódu s Azure Functions](functions-bindings-timer.md).
+Azure Functions nabízí vazbu aktivační událost časovače, který vám umožní spustit funkce kódu podle definovaného plánu. toolearn Další informace o funkce hello hello vazby, najdete v části [naplánovat provádění kódu s Azure Functions](functions-bindings-timer.md).
 
-Spotřeba plánu, můžete definovat plány se [výraz CRON](http://en.wikipedia.org/wiki/Cron#CRON_expression). Pokud používáte plánu služby App Service, můžete taky řetězec časový interval. 
+V plánu spotřeby hello, můžete definovat plány se [výraz CRON](http://en.wikipedia.org/wiki/Cron#CRON_expression). Pokud používáte plánu služby App Service, můžete taky řetězec časový interval. 
 
-V následujícím příkladu definuje aktivační událost časovače, která se spouští každých 5 minut:
+Následující ukázka Hello definuje aktivační událost časovače, která se spouští každých 5 minut:
 
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
@@ -378,11 +378,11 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWr
 
 ### <a name="twilio-output"></a>Výstup Twilio
 
-Azure Functions podporuje Twilio výstupní vazby k povolení funkcí k posílání textových zpráv SMS. Další informace najdete v tématu [poslat SMS zprávy z Azure Functions pomocí Twilio výstup vazby](functions-bindings-twilio.md). 
+Azure Functions podporuje Twilio výstupní vazby tooenable vaší funkce toosend SMS zprávy. Další, najdete v části toolearn [poslat SMS zprávy z Azure Functions pomocí hello Twilio výstup vazby](functions-bindings-twilio.md). 
 
-Atribut `[TwilioSms]` je definována v balíčku [Microsoft.Azure.WebJobs.Extensions.Twilio].
+atribut Hello `[TwilioSms]` je definována v balíčku hello [Microsoft.Azure.WebJobs.Extensions.Twilio].
 
-Následující příklad jazyka C# používá fronty aktivační události a Twilio výstupní vazby:
+Hello následující C# příklad používá fronty aktivační události a Twilio výstupní vazby:
 
 ```csharp
 [FunctionName("QueueTwilio")]
@@ -394,7 +394,7 @@ public static SMSMessage Run([QueueTrigger("myqueue-items", Connection = "AzureW
     var message = new SMSMessage()
     {
         Body = $"Hello {order["name"]}, thanks for your order!",
-        To = order["mobileNumber"].ToString()
+        too= order["mobileNumber"].ToString()
     };
 
     return message;
@@ -423,7 +423,7 @@ Další informace o používání Azure Functions v C# skriptování najdete v t
 [Microsoft.Azure.WebJobs.Extensions]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions/2.1.0-beta1
 
 
-<!-- Links to source --> 
+<!-- Links toosource --> 
 [DocumentDBAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs
 [EventHubAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs
 [EventHubTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubTriggerAttribute.cs

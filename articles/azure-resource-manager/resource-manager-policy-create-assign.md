@@ -1,6 +1,6 @@
 ---
-title: "Přiřadit a spravovat zásady prostředků Azure | Microsoft Docs"
-description: "Popisuje, jak chcete použít zásady prostředků Azure pro skupiny prostředků a předplatná a postup zobrazení zásad prostředků."
+title: "aaaAssign a spravovat zásady prostředků Azure | Microsoft Docs"
+description: "Popisuje, jak tooapply skupin prostředků Azure zásady toosubscriptions a prostředků a jak zásady tooview prostředků."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,36 +14,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: b204cffa8fab0ad27a9f78a81c04f0a0225d95f5
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b6999b43bbcc80d2fde9911352fd4352fa453443
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="assign-and-manage-resource-policies"></a>Přiřadit a spravovat zásady prostředků
 
-Chcete-li implementovat zásady, musíte provést tyto kroky:
+tooimplement zásady, je třeba provést tyto kroky:
 
-1. Definice zásad (včetně integrovaných zásad poskytovaný platformou Azure) zkontrolujte, zda jeden již existuje v rámci vašeho předplatného, která splňuje vaše požadavky.
+1. Pokud již existuje v rámci vašeho předplatného, která splňuje vaše požadavky, zkontrolujte toosee zásad definice (včetně integrovaných zásad poskytovaný platformou Azure).
 2. Pokud existuje, získáte její název.
-3. Pokud žádný neexistuje, definovat pravidlo zásad textem JSON a přidejte jej jako definici zásady v rámci vašeho předplatného. Tento krok zpřístupní zásady pro přiřazení, ale není použití pravidel pro vaše předplatné.
-4. V obou případech přiřaďte zásady oboru (například předplatné nebo prostředek skupiny). Pravidla zásad se teď vynucují.
+3. Pokud žádný neexistuje, definovat pravidlo zásad hello textem JSON a přidejte jej jako definici zásady v rámci vašeho předplatného. Tento krok zpřístupní hello zásady pro přiřazení, ale nevztahuje hello pravidla tooyour předplatné.
+4. V obou případech přiřadíte obor tooa zásady hello (například předplatné nebo prostředek skupiny). nevynutí se teď Hello pravidla zásad hello.
 
-Tento článek se zaměřuje na kroky k vytvoření definice zásady a přiřazení této definici obor prostřednictvím REST API, Powershellu nebo rozhraní příkazového řádku Azure. Pokud byste radši chtěli použít portálu přiřadit zásady, najdete v článku [portálu Azure použijte přiřadit a spravovat zásady prostředků](resource-manager-policy-portal.md). V tomto článku není soustředit na syntaxi pro vytvoření definice zásady. Informace o syntaxi zásad najdete v tématu [přehled zásad prostředků](resource-manager-policy.md).
+Tento článek se zaměřuje na hello kroky toocreate definici zásady a přiřazení této definici oboru tooa prostřednictvím REST API, Powershellu nebo rozhraní příkazového řádku Azure. Pokud dáváte přednost toouse hello portálu tooassign zásady, najdete v části [Azure pomocí portálu tooassign a spravovat zásady prostředků](resource-manager-policy-portal.md). V tomto článku není soustředit na hello syntaxe pro vytvoření definice zásady hello. Informace o syntaxi zásad najdete v tématu [přehled zásad prostředků](resource-manager-policy.md).
 
 ## <a name="rest-api"></a>REST API
 
 ### <a name="create-policy-definition"></a>Vytvoření definice zásady
 
-Můžete vytvořit a zásadou [REST API pro definice zásady](/rest/api/resources/policydefinitions). Rozhraní REST API umožňuje vytvářet a odstraňovat definice zásady a získat informace o existující definice.
+Zásady můžete vytvořit pomocí hello [REST API pro definice zásady](/rest/api/resources/policydefinitions). Hello REST API vám umožňuje toocreate a odstraňte definice zásady a získat informace o existující definice.
 
-K vytvoření definice zásady, spusťte příkaz:
+Spusťte toocreate definici zásady:
 
 ```HTTP
 PUT https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.authorization/policydefinitions/{policyDefinitionName}?api-version={api-version}
 ```
 
-Zahrnout obsah žádosti podobně jako v následujícím příkladu:
+Zahrnout podobné toohello v textu požadavku následující ukázka:
 
 ```json
 {
@@ -52,14 +52,14 @@ Zahrnout obsah žádosti podobně jako v následujícím příkladu:
       "allowedLocations": {
         "type": "array",
         "metadata": {
-          "description": "The list of locations that can be specified when deploying resources",
+          "description": "hello list of locations that can be specified when deploying resources",
           "strongType": "location",
           "displayName": "Allowed locations"
         }
       }
     },
     "displayName": "Allowed locations",
-    "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
+    "description": "This policy enables you toorestrict hello locations your organization can specify when deploying resources.",
     "policyRule": {
       "if": {
         "not": {
@@ -77,22 +77,22 @@ Zahrnout obsah žádosti podobně jako v následujícím příkladu:
 
 ### <a name="assign-policy"></a>Přiřazení zásad
 
-Můžete použít definice zásady na požadovaný rozsah prostřednictvím [REST API pro přiřazení zásad](/rest/api/resources/policyassignments). Rozhraní REST API umožňuje vytvářet a odstraňovat přiřazení zásad a získat informace o existující přiřazení.
+Můžete použít definice zásady hello v oboru hello potřeby prostřednictvím hello [REST API pro přiřazení zásad](/rest/api/resources/policyassignments). Hello REST API vám umožňuje toocreate odstranit přiřazení zásad a získat informace o existující přiřazení.
 
-Chcete-li vytvořit přiřazení zásady, spusťte:
+toocreate přiřazení zásady, spusťte:
 
 ```HTTP
 PUT https://management.azure.com /subscriptions/{subscription-id}/providers/Microsoft.authorization/policyassignments/{policyAssignmentName}?api-version={api-version}
 ```
 
-{-Přiřazení zásady} je název přiřazení zásady.
+Hello {přiřazení zásady} je hello název přiřazení zásady hello.
 
-Zahrnout obsah žádosti podobně jako v následujícím příkladu:
+Zahrnout podobné toohello v textu požadavku následující ukázka:
 
 ```json
 {
   "properties":{
-    "displayName":"West US only policy assignment on the subscription ",
+    "displayName":"West US only policy assignment on hello subscription ",
     "description":"Resources can only be provisioned in West US regions",
     "parameters": {
       "allowedLocations": { "value": ["northeurope", "westus"] }
@@ -104,16 +104,16 @@ Zahrnout obsah žádosti podobně jako v následujícím příkladu:
 ```
 
 ### <a name="view-policy"></a>Zobrazení zásad
-Zásady, použijte [získat definice zásady](https://docs.microsoft.com/rest/api/resources/policydefinitions#PolicyDefinitions_Get) operaci.
+tooget zásady a použít hello [získat definice zásady](https://docs.microsoft.com/rest/api/resources/policydefinitions#PolicyDefinitions_Get) operaci.
 
 ### <a name="get-aliases"></a>Získat aliasy
-Můžete načíst aliasy přes rozhraní REST API:
+Můžete načíst aliasy prostřednictvím hello REST API:
 
 ```HTTP
 GET /subscriptions/{id}/providers?$expand=resourceTypes/aliases&api-version=2015-11-01
 ```
 
-Následující příklad ukazuje definici alias. Jak vidíte, definuje alias cesty v různých verzích rozhraní API, i když dojde ke změně názvu vlastnosti. 
+Hello následující příklad ukazuje definici alias. Jak vidíte, definuje alias cesty v různých verzích rozhraní API, i když dojde ke změně názvu vlastnosti. 
 
 ```json
 "aliases": [
@@ -140,16 +140,16 @@ Následující příklad ukazuje definici alias. Jak vidíte, definuje alias ces
 
 ## <a name="powershell"></a>PowerShell
 
-Než budete pokračovat s příklady prostředí PowerShell, zajistěte, aby byla [nainstalovali nejnovější verzi](/powershell/azure/install-azurerm-ps) prostředí Azure PowerShell. Ve verzi 3.6.0 byly přidány zásady parametry. Pokud máte starší verzi, příklady vrátí chybu oznamující, že parametr nebyl nalezen.
+Než budete pokračovat s příklady prostředí PowerShell text hello, zajistěte, aby byla [nainstalovaná nejnovější verze hello](/powershell/azure/install-azurerm-ps) prostředí Azure PowerShell. Ve verzi 3.6.0 byly přidány zásady parametry. Máte starší verzi, příklady hello vrátit že chyba naznačuje hello parametru nebyl nalezen.
 
 ### <a name="view-policy-definitions"></a>Definice zásad zobrazení
-Pokud chcete zobrazit všechny definice zásady v rámci vašeho předplatného, použijte následující příkaz:
+toosee všechny definice zásady v rámci vašeho předplatného, hello použijte následující příkaz:
 
 ```powershell
 Get-AzureRmPolicyDefinition
 ```
 
-Vrátí všechny dostupné zásady definice, včetně integrovaných zásad. Každá zásada se vrátí v následujícím formátu:
+Vrátí všechny dostupné zásady definice, včetně integrovaných zásad. Každá zásada se vrátí v hello následující formát:
 
 ```powershell
 Name               : e56962a6-4747-49cd-b67b-bf8b01975c4c
@@ -157,18 +157,18 @@ ResourceId         : /providers/Microsoft.Authorization/policyDefinitions/e56962
 ResourceName       : e56962a6-4747-49cd-b67b-bf8b01975c4c
 ResourceType       : Microsoft.Authorization/policyDefinitions
 Properties         : @{displayName=Allowed locations; policyType=BuiltIn; description=This policy enables you to
-                     restrict the locations your organization can specify when deploying resources. Use to enforce
+                     restrict hello locations your organization can specify when deploying resources. Use tooenforce
                      your geo-compliance requirements.; parameters=; policyRule=}
 PolicyDefinitionId : /providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c
 ```
 
-Než budete pokračovat k vytvoření definice zásady, podívejte se na integrovaných zásad. Pokud zjistíte předdefinované zásady, které platí omezení, které potřebujete, můžete přeskočit vytvoření definice zásady. Předdefinované zásady místo toho přiřadíte požadovaný rozsah.
+Před pokračováním toocreate definici zásady podívejte se na integrovaných zásad hello. Pokud zjistíte předdefinované zásady, které platí hello omezení, které potřebujete, můžete přeskočit vytvoření definice zásady. Místo toho přiřadíte obor toohello potřeby předdefinované zásady hello.
 
 ### <a name="create-policy-definition"></a>Vytvoření definice zásady
-Můžete vytvořit pomocí definice zásady `New-AzureRmPolicyDefinition` rutiny.
+Můžete vytvořit definici zásady pomocí hello `New-AzureRmPolicyDefinition` rutiny.
 
 ```powershell
-$definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy to specify access tier." -Policy '{
+$definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy toospecify access tier." -Policy '{
   "if": {
     "allOf": [
       {
@@ -193,15 +193,15 @@ $definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Pol
 }'
 ```            
 
-Výstup je uložen v `$definition` objekt, který se používá při přiřazování zásady. 
+výstup Hello je uložen v `$definition` objekt, který se používá při přiřazování zásady. 
 
-Místo zadání JSON jako parametr, můžete zadat cestu k souboru .json, který obsahuje pravidlo zásad.
+Místo zadání hello JSON jako parametr, můžete zadat hello cesta tooa .json souboru, který obsahuje pravidlo zásad hello.
 
 ```powershell
-$definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy to specify access tier." -Policy "c:\policies\coolAccessTier.json"
+$definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy toospecify access tier." -Policy "c:\policies\coolAccessTier.json"
 ```
 
-Následující příklad vytvoří definici zásady, který obsahuje parametry:
+Hello následující příklad vytvoří definici zásady, který obsahuje parametry:
 
 ```powershell
 $policy = '{
@@ -228,26 +228,26 @@ $parameters = '{
     "allowedLocations": {
         "type": "array",
         "metadata": {
-          "description": "The list of locations that can be specified when deploying storage accounts.",
+          "description": "hello list of locations that can be specified when deploying storage accounts.",
           "strongType": "location",
           "displayName": "Allowed locations"
         }
     }
 }' 
 
-$definition = New-AzureRmPolicyDefinition -Name storageLocations -Description "Policy to specify locations for storage accounts." -Policy $policy -Parameter $parameters 
+$definition = New-AzureRmPolicyDefinition -Name storageLocations -Description "Policy toospecify locations for storage accounts." -Policy $policy -Parameter $parameters 
 ```
 
 ### <a name="assign-policy"></a>Přiřazení zásad
 
-Použít v souladu se zásadami požadovaný rozsah pomocí `New-AzureRmPolicyAssignment` rutiny. Následující příklad přiřadí zásady do skupiny prostředků.
+Použít zásady hello v oboru hello potřeby pomocí hello `New-AzureRmPolicyAssignment` rutiny. Následující ukázka Hello přiřadí skupinu prostředků tooa hello zásad.
 
 ```powershell
 $rg = Get-AzureRmResourceGroup -Name "ExampleGroup"
 New-AzureRMPolicyAssignment -Name accessTierAssignment -Scope $rg.ResourceId -PolicyDefinition $definition
 ```
 
-Přiřazení zásad, která vyžaduje parametry, vytvořte a objekt s těmito hodnotami. Následující příklad načte předdefinovaných zásad a předá hodnoty parametrů:
+tooassign zásadu, která vyžaduje parametry, vytvořte a objekt s těmito hodnotami. Hello následující příklad načte předdefinovaných zásad a předá hodnoty parametrů:
 
 ```powershell
 $rg = Get-AzureRmResourceGroup -Name "ExampleGroup"
@@ -259,14 +259,14 @@ New-AzureRMPolicyAssignment -Name locationAssignment -Scope $rg.ResourceId -Poli
 
 ### <a name="view-policy-assignment"></a>Přiřazení zásady zobrazení
 
-Přiřazení konkrétní zásady, použijte:
+tooget přiřazení konkrétní zásady, použijte:
 
 ```powershell
 $rg = Get-AzureRmResourceGroup -Name "ExampleGroup"
 (Get-AzureRmPolicyAssignment -Name accessTierAssignment -Scope $rg.ResourceId
 ```
 
-Chcete-li zobrazit pravidlo zásad pro definici zásady, použijte:
+pravidlo zásad tooview hello definice zásady, použijte:
 
 ```powershell
 (Get-AzureRmPolicyDefinition -Name coolAccessTier).Properties.policyRule | ConvertTo-Json
@@ -274,7 +274,7 @@ Chcete-li zobrazit pravidlo zásad pro definici zásady, použijte:
 
 ### <a name="remove-policy-assignment"></a>Odebrat přiřazení zásady 
 
-Chcete-li odebrat přiřazení zásady, použijte:
+tooremove přiřazení zásady, použijte:
 
 ```powershell
 Remove-AzureRmPolicyAssignment -Name regionPolicyAssignment -Scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
@@ -283,17 +283,17 @@ Remove-AzureRmPolicyAssignment -Name regionPolicyAssignment -Scope /subscription
 ## <a name="azure-cli"></a>Azure CLI
 
 ### <a name="view-policy-definitions"></a>Definice zásad zobrazení
-Pokud chcete zobrazit všechny definice zásady v rámci vašeho předplatného, použijte následující příkaz:
+toosee všechny definice zásady v rámci vašeho předplatného, hello použijte následující příkaz:
 
 ```azurecli
 az policy definition list
 ```
 
-Vrátí všechny dostupné zásady definice, včetně integrovaných zásad. Každá zásada se vrátí v následujícím formátu:
+Vrátí všechny dostupné zásady definice, včetně integrovaných zásad. Každá zásada se vrátí v hello následující formát:
 
 ```azurecli
 {                                                            
-  "description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements.",                      
+  "description": "This policy enables you toorestrict hello locations your organization can specify when deploying resources. Use tooenforce your geo-compliance requirements.",                      
   "displayName": "Allowed locations",
   "id": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",
   "name": "e56962a6-4747-49cd-b67b-bf8b01975c4c",
@@ -312,14 +312,14 @@ Vrátí všechny dostupné zásady definice, včetně integrovaných zásad. Ka�
 }
 ```
 
-Než budete pokračovat k vytvoření definice zásady, podívejte se na integrovaných zásad. Pokud zjistíte předdefinované zásady, které platí omezení, které potřebujete, můžete přeskočit vytvoření definice zásady. Předdefinované zásady místo toho přiřadíte požadovaný rozsah.
+Před pokračováním toocreate definici zásady podívejte se na integrovaných zásad hello. Pokud zjistíte předdefinované zásady, které platí hello omezení, které potřebujete, můžete přeskočit vytvoření definice zásady. Místo toho přiřadíte obor toohello potřeby předdefinované zásady hello.
 
 ### <a name="create-policy-definition"></a>Vytvoření definice zásady
 
-Můžete vytvořit definici zásady pomocí rozhraní příkazového řádku Azure pomocí příkazu definice zásady.
+Můžete vytvořit definici zásady pomocí rozhraní příkazového řádku Azure pomocí příkazu definice zásady hello.
 
 ```azurecli
-az policy definition create --name coolAccessTier --description "Policy to specify access tier." --rules '{
+az policy definition create --name coolAccessTier --description "Policy toospecify access tier." --rules '{
   "if": {
     "allOf": [
       {
@@ -346,7 +346,7 @@ az policy definition create --name coolAccessTier --description "Policy to speci
 
 ### <a name="assign-policy"></a>Přiřazení zásad
 
-Zásady můžete použít k požadovaný rozsah pomocí příkazu přiřazení zásad. Následující příklad přiřadí zásadu do skupiny prostředků.
+Můžete použít obor toohello potřeby zásady hello pomocí příkazu přiřazení zásad hello. Následující ukázka Hello přiřadí skupinu prostředků tooa zásad.
 
 ```azurecli
 az policy assignment create --name coolAccessTierAssignment --policy coolAccessTier --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
@@ -354,7 +354,7 @@ az policy assignment create --name coolAccessTierAssignment --policy coolAccessT
 
 ### <a name="view-policy-assignment"></a>Přiřazení zásady zobrazení
 
-Chcete-li zobrazit přiřazení zásady, zadejte název přiřazení zásady a oboru:
+tooview přiřazení zásady, zadejte název přiřazení zásady hello a oboru hello:
 
 ```azurecli
 az policy assignment show --name coolAccessTierAssignment --scope "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}"
@@ -362,12 +362,12 @@ az policy assignment show --name coolAccessTierAssignment --scope "/subscription
 
 ### <a name="remove-policy-assignment"></a>Odebrat přiřazení zásady 
 
-Chcete-li odebrat přiřazení zásady, použijte:
+tooremove přiřazení zásady, použijte:
 
 ```azurecli
 az policy assignment delete --name coolAccessTier --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](resource-manager-subscription-governance.md).
+* Pokyny k použití Resource Manager tooeffectively podniky můžou spravovat předplatná najdete v tématu [Azure enterprise vygenerované uživatelské rozhraní – zásady správného řízení doporučený předplatné](resource-manager-subscription-governance.md).
 

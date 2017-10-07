@@ -1,6 +1,6 @@
 ---
-title: "Nahrání vlastní webové aplikace v jazyce Java do Azure"
-description: "Tento kurz ukazuje, jak nahrát vlastní webové aplikace v jazyce Java do Azure App Service Web Apps."
+title: "aaaUpload vlastní tooAzure webové aplikace Java"
+description: "Tento kurz ukazuje, jak tooupload vlastní Java webové aplikace tooAzure App Service Web Apps."
 services: app-service\web
 documentationcenter: java
 author: rmcmurray
@@ -14,32 +14,32 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: 9c8f9ee7780859f7640ac82d6ebce85082170ad7
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0cb4a682bb25d86ff08bfd03628c89795c58451e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="upload-a-custom-java-web-app-to-azure"></a>Nahrání vlastní webové aplikace v jazyce Java do Azure
-Toto téma vysvětluje, jak nahrát vlastní webové aplikace Java do [Azure App Service] webové aplikace. Jsou zde zahrnuty informace, která platí pro všechny web nebo webovou aplikaci Java a také některé příklady pro konkrétní aplikace.
+# <a name="upload-a-custom-java-web-app-tooazure"></a>Nahrát vlastní tooAzure webové aplikace Java
+Toto téma vysvětluje, jak tooupload vlastní Java webová aplikace příliš[Azure App Service] webové aplikace. Jsou zde zahrnuty informace, která se použije tooany Java web nebo webovou aplikaci a také některé příklady pro konkrétní aplikace.
 
-Všimněte si, že Azure poskytuje prostředky pro vytvoření webové aplikace v jazyce Java pomocí portálu Azure konfigurace uživatelského rozhraní a Azure Marketplace, jak je uvedeno v [vytvoření webové aplikace Java v Azure App Service](web-sites-java-get-started.md). Tento kurz je určen pro scénáře, ve kterých nechcete používat portál Azure konfigurace uživatelského rozhraní nebo v Azure Marketplace.  
+Všimněte si, že Azure poskytuje prostředky pro vytvoření webové aplikace Java pomocí portálu Azure hello konfigurace uživatelského rozhraní a hello Azure Marketplace, jak je uvedeno v [vytvoření webové aplikace Java v Azure App Service](web-sites-java-get-started.md). Tento kurz je určen pro scénáře, ve kterých není má uživatelské rozhraní konfigurace portálu Azure hello toouse nebo hello Azure Marketplace.  
 
 ## <a name="configuration-guidelines"></a>Pokyny pro konfigurace
-Následující text popisuje nastavení pro vlastní webové aplikace v jazyce Java v Azure.
+Hello následující text popisuje hello nastavení pro vlastní webové aplikace v jazyce Java v Azure.
 
-* Port HTTP používaný procesem Java je dynamicky přiřadit.  Tento proces musí používat port z proměnné prostředí `HTTP_PLATFORM_PORT`.
-* Všechny porty naslouchání než jeden naslouchací proces protokolu HTTP by mělo být zakázáno.  V Tomcat, který obsahuje vypnutí, HTTPS a AJP porty.
-* Kontejner je potřeba nakonfigurovat pro jenom přenosy protokolu IPv4.
-* **Spuštění** příkaz pro aplikace musí být nastavena v konfiguraci.
-* Aplikace, které vyžadují oprávnění zapisovat adresáře se musí nacházet ve službě Azure web app adresář s obsahem, který je **D:\home**.  Proměnnou prostředí `HOME` odkazuje na D:\home.  
+* port HTTP Hello používá hello procesu Java je dynamicky přiřadit.  proces Hello musí používat port hello z proměnné prostředí hello `HTTP_PLATFORM_PORT`.
+* Všechny naslouchat porty jiného, než by mělo být zakázáno hello jeden naslouchací proces protokolu HTTP.  V Tomcat, který obsahuje hello vypnutí, HTTPS a AJP porty.
+* kontejner Hello musí toobe nakonfigurované pro jenom přenosy protokolu IPv4.
+* Hello **spuštění** příkaz pro aplikace hello musí toobe nastavit v konfiguraci hello.
+* Aplikace, které vyžadují oprávnění zapisovat adresáře s potřebovat toobe umístěný v adresáři obsahu hello Azure webovou aplikaci, která je **D:\home**.  proměnné prostředí Hello `HOME` odkazuje tooD:\home.  
 
-Podle potřeby můžete nastavit proměnné prostředí v souboru web.config.
+Podle potřeby můžete nastavit proměnné prostředí v souboru web.config hello.
 
 ## <a name="webconfig-httpplatform-configuration"></a>soubor Web.config httpPlatform konfigurace
-Následující informace popisují **httpPlatform** formátu v souboru web.config.
+Hello následující informace popisují hello **httpPlatform** formátu v souboru web.config.
 
-**argumenty** (výchozí = ""). Argumenty pro spustitelný soubor nebo skript zadaný v **processPath** nastavení.
+**argumenty** (výchozí = ""). Argumenty toohello spustitelný soubor nebo skript zadaný v hello **processPath** nastavení.
 
 Příklady (ukázka s **processPath** zahrnuté):
 
@@ -50,7 +50,7 @@ Příklady (ukázka s **processPath** zahrnuté):
     arguments="-Djava.net.preferIPv4Stack=true -Djetty.port=%HTTP\_PLATFORM\_PORT% -Djetty.base=&quot;%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115&quot; -jar &quot;%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115\start.jar&quot;"
 
 
-**processPath** -cestu k spustitelný soubor nebo skript, který se spustí proces naslouchání požadavkům HTTP.
+**processPath** -cesta toohello spustitelný soubor nebo skript, který se spustí proces naslouchání požadavkům HTTP.
 
 Příklady:
 
@@ -60,31 +60,31 @@ Příklady:
 
     processPath="%HOME%\site\wwwroot\bin\tomcat\bin\catalina.bat"
 
-**rapidFailsPerMinute** (výchozí = 10.) Proces zadaného v **processPath** je dovoleno havárií za minutu. Pokud je tento limit překročen, **HttpPlatformHandler** zastaví spuštění procesu pro zbytek minutu.
+**rapidFailsPerMinute** (výchozí = 10.) Počet opakování, proces hello zadaný v **processPath** je povoleno toocrash za minutu. Pokud je tento limit překročen, **HttpPlatformHandler** zastaví spuštění procesu hello hello zbývající hello minuta.
 
-**requestTimeout** (výchozí = "00: 02:00".) Doba trvání, pro kterou **HttpPlatformHandler** bude čekat na odpověď z procesu naslouchání na portu `%HTTP_PLATFORM_PORT%`.
+**requestTimeout** (výchozí = "00: 02:00".) Doba trvání, pro kterou **HttpPlatformHandler** bude čekat na odpověď od hello proces naslouchání na portu `%HTTP_PLATFORM_PORT%`.
 
-**startupRetryCount** (výchozí = 10.) Počet nezdařených pokusů o **HttpPlatformHandler** se pokusí spustit proces zadaný v **processPath**. V tématu **startupTimeLimit** další podrobnosti.
+**startupRetryCount** (výchozí = 10.) Počet nezdařených pokusů o **HttpPlatformHandler** pokusí toolaunch hello proces zadaný v **processPath**. V tématu **startupTimeLimit** další podrobnosti.
 
-**startupTimeLimit** (výchozí = 10 sekund.) Doba trvání, pro kterou **HttpPlatformHandler** vyčká na spustitelný soubor nebo skript ke spuštění procesu naslouchání na portu.  Pokud je tento časový limit překročen, **HttpPlatformHandler** bude ukončit proces a pokuste se znovu spusťte **startupRetryCount** časy.
+**startupTimeLimit** (výchozí = 10 sekund.) Doba trvání, pro kterou **HttpPlatformHandler** bude čekat hello spustitelný soubor nebo skript toostart proces naslouchání na portu hello.  Pokud je tento časový limit překročen, **HttpPlatformHandler** bude ukončit proces hello a zkuste to toolaunch ho znovu **startupRetryCount** časy.
 
-**stdoutLogEnabled** (výchozí = "true".) V případě hodnoty true **stdout** a **stderr** pro proces zadaný v **processPath** nastavení bude přesměrován na soubor zadaný v **stdoutLogFile** (najdete v části **stdoutLogFile** části).
+**stdoutLogEnabled** (výchozí = "true".) V případě hodnoty true **stdout** a **stderr** pro proces hello zadaný v hello **processPath** bude nastavení přesměrovaného toohello soubor zadaný v  **stdoutLogFile** (viz **stdoutLogFile** části).
 
-**stdoutLogFile** (Default="d:\home\LogFiles\httpPlatformStdout.log".) Absolutní cesty, pro kterou **stdout** a **stderr** z procesu zadaný v **processPath** bude do protokolu.
+**stdoutLogFile** (Default="d:\home\LogFiles\httpPlatformStdout.log".) Absolutní cesty, pro kterou **stdout** a **stderr** z procesu hello zadaný v **processPath** bude do protokolu.
 
 > [!NOTE]
-> `%HTTP_PLATFORM_PORT%`je speciální zástupný symbol, který se musí zadat buď jako součást **argumenty** nebo jako součást **httpPlatform** **environmentVariables** seznamu. To budou nahrazeny ve interně generovaného port **HttpPlatformHandler** tak, aby proces určeného **processPath** můžete naslouchat na tento port.
+> `%HTTP_PLATFORM_PORT%`je speciální zástupný symbol, který se musí buď jako součást toospecified **argumenty** nebo jako součást hello **httpPlatform** **environmentVariables** seznamu. To budou nahrazeny ve interně generovaného port **HttpPlatformHandler** tak, aby proces hello určeného **processPath** můžete naslouchat na tento port.
 > 
 > 
 
 ## <a name="deployment"></a>Nasazení
-Java založené na webové aplikace můžou být nasazené snadno prostřednictvím většinu stejné znamená, že se používají s Internetové informační služby (IIS) na základě webové aplikace.  FTP, Git a Kudu jsou všechny podporované jako nasazení mechanismy, jako je integrované funkce SCM pro webové aplikace. Web Deploy funguje jako protokol, ale jako Java není vyvinuté v sadě Visual Studio, Web Deploy nevejde s případy použití pro nasazení Java webové aplikace.
+Webové aplikace Java na základě můžou být nasazené snadno prostřednictvím většinu hello stejné znamená, které se používají s hello Internetové informační služby (IIS) na základě webové aplikace.  FTP, Git a Kudu jsou všechny podporované jako nasazení mechanismy, jako je hello integrované schopnosti SCM pro webové aplikace. Web Deploy funguje jako protokol, ale jako Java není vyvinuté v sadě Visual Studio, Web Deploy nevejde s případy použití pro nasazení Java webové aplikace.
 
 ## <a name="application-configuration-examples"></a>Konfigurace aplikace příklady
-Konfigurace je pro tyto aplikace, soubor web.config a aplikace k dispozici jako příklady ukazují, jak povolit aplikace v jazyce Java v App Service Web Apps.
+Pro následující aplikace, soubor web.config a hello hello konfigurace aplikace je k dispozici jako příklady tooshow jak tooenable aplikace v jazyce Java v App Service Web Apps.
 
 ### <a name="tomcat"></a>Tomcat
-Když existují dvě varianty na Tomcat, které se dodávají s App Service Web Apps, je stále poměrně možné nahrát určité instance zákazníka. Dole je příklad instalace Tomcat s různých Java Virtual Machine (JVM).
+Existují dvě varianty na Tomcat, které se dodávají s App Service Web Apps, je stále poměrně možné tooupload zákazníka určité instance. Dole je příklad instalace Tomcat s různých Java Virtual Machine (JVM).
 
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>
@@ -97,25 +97,25 @@ Když existují dvě varianty na Tomcat, které se dodávají s App Service Web 
           <environmentVariables>
             <environmentVariable name="CATALINA_OPTS" value="-Dport.http=%HTTP_PLATFORM_PORT%" />
             <environmentVariable name="CATALINA_HOME" value="%HOME%\site\wwwroot\bin\tomcat" />
-            <environmentVariable name="JRE_HOME" value="%HOME%\site\wwwroot\bin\java" /> <!-- optional, if not specified, this will default to %programfiles%\Java -->
+            <environmentVariable name="JRE_HOME" value="%HOME%\site\wwwroot\bin\java" /> <!-- optional, if not specified, this will default too%programfiles%\Java -->
             <environmentVariable name="JAVA_OPTS" value="-Djava.net.preferIPv4Stack=true" />
           </environmentVariables>
         </httpPlatform>
       </system.webServer>
     </configuration>
 
-Na straně Tomcat existuje několik změny konfigurace, které je potřeba provést. Server.xml potřebuje k provádění úprav nastavení:
+U hello Tomcat straně se několik změny konfigurace, které je třeba toobe provedeny. Hello server.xml potřebuje tooset toobe upravit:
 
 * Vypnutí portu = -1
 * Konektor port HTTP = ${port.http}
 * Adresa konektor HTTP = "127.0.0.1"
 * Komentář HTTPS a AJP konektory
-* Nastavení IPv4 lze nastavit i v catalina.properties souboru, ve kterém můžete přidat`java.net.preferIPv4Stack=true`
+* nastavení IPv4 Hello lze nastavit i v souboru catalina.properties hello, kde můžete přidat`java.net.preferIPv4Stack=true`
 
-Direct3D – hovory nejsou podporovány v App Service Web Apps. Zakažte ty, přidejte následující možnost Java měli aplikace těchto volání:`-Dsun.java2d.d3d=false`
+Direct3D – hovory nejsou podporovány v App Service Web Apps. toodisable ty, přidejte následující možnost Java měli aplikace těchto volání hello:`-Dsun.java2d.d3d=false`
 
 ### <a name="jetty"></a>Jetty
-Stejně jako v případě pro Tomcat, zákazníků můžete nahrát vlastní instance pro Jetty. V případě spuštěná úplná instalace Jetty, konfigurace bude vypadat takto:
+Stejně jako hello případě pro Tomcat, zákazníků můžete nahrát vlastní instance pro Jetty. V případě hello spuštěné hello úplné instalace Jetty hello konfigurace bude vypadat takto:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>
@@ -132,10 +132,10 @@ Stejně jako v případě pro Tomcat, zákazníků můžete nahrát vlastní ins
       </system.webServer>
     </configuration>
 
-Je potřeba změnit v start.ini nastavit konfiguraci Jetty `java.net.preferIPv4Stack=true`.
+Hello Jetty je konfiguraci změnit v hello start.ini tooset toobe `java.net.preferIPv4Stack=true`.
 
 ### <a name="springboot"></a>Springboot
-Chcete-li získat Springboot aplikace s muset nahrát soubor JAR nebo WAR a přidejte následující soubor web.config. V souboru web.config přejde do složky wwwroot. V souboru web.config upravte argumenty tak, aby odkazovaly na váš soubor JAR v následujícím příkladu, které na soubor JAR je umístěný ve složce wwwroot.  
+Aplikace s v pořadí tooget Springboot potřebovat tooupload váš soubor JAR nebo WAR a přidejte hello následující soubor web.config. soubor web.config Hello přejde do složky wwwroot hello. V souboru web.config hello upravit soubor JAR hello argumenty toopoint tooyour, v hello následující soubor JAR hello příklad nachází ve složce aplikace hello wwwroot také.  
 
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>
@@ -151,11 +151,11 @@ Chcete-li získat Springboot aplikace s muset nahrát soubor JAR nebo WAR a při
 
 
 ### <a name="hudson"></a>Hudsonem
-Naše testovací používá Hudsonem 3.1.2 war a Tomcat 7.0.50 výchozí instanci, ale bez věcí nastavit pomocí uživatelského rozhraní.  Hudsonem je nástroj pro sestavení softwaru, a proto se doporučuje nainstalovat na vyhrazené instance kde **AlwaysOn** příznak lze nastavit ve webové aplikaci.
+Naše testovací používá hello Hudsonem 3.1.2 war a hello výchozí Tomcat 7.0.50 instanci, ale bez použití hello uživatelského rozhraní tooset věcí.  Vzhledem k tomu Hudsonem je nástroj sestavení, je doporučené tooinstall ho na vyhrazené instance, kde hello **AlwaysOn** příznak lze nastavit na hello webové aplikace.
 
 1. Ve vaší webové aplikaci kořenový adresář, tedy **d:\home\site\wwwroot**, vytvoření **webapps** adresáře (Pokud již existuje) a umístěte Hudson.war v **d:\home\site\wwwroot\webapps**.
 2. Stáhnout apache maven 3.0.5 (kompatibilní s Hudsonem) a umístěte jej v **d:\home\site\wwwroot**.
-3. Vytvoření souboru web.config v **d:\home\site\wwwroot** a vložte následující obsah:
+3. Vytvoření souboru web.config v **d:\home\site\wwwroot** a hello vložte následující obsah v něm:
    
         <?xml version="1.0" encoding="UTF-8"?>
         <configuration>
@@ -177,37 +177,37 @@ Naše testovací používá Hudsonem 3.1.2 war a Tomcat 7.0.50 výchozí instanc
           </system.webServer>
         </configuration>
    
-    Webové aplikace v tomto okamžiku může být restartován provést změny.  Připojte k http://yourwebapp/hudson zahájíte Hudsonem.
-4. Po Hudsonem automaticky nakonfiguruje, byste měli vidět následující obrazovka:
+    Hello webové aplikace v tomto okamžiku může být restartovat tootake hello změny.  Připojte toohttp://yourwebapp/hudson toostart Hudsonem.
+4. Po Hudsonem automaticky nakonfiguruje, měli byste vidět hello následující obrazovka:
    
     ![Hudsonem](./media/web-sites-java-custom-upload/hudson1.png)
-5. Přístup ke stránce Hudsonem konfigurace: klikněte na tlačítko **spravovat Hudsonem**a potom klikněte na **nakonfigurujte systém**.
-6. Nakonfigurujte sadu JDK, jak je uvedeno níže:
+5. Přístup hello stránku konfigurace Hudsonem: klikněte na tlačítko **spravovat Hudsonem**a potom klikněte na **nakonfigurujte systém**.
+6. Nakonfigurujte hello JDK, jak je uvedeno níže:
    
     ![Konfigurace Hudsonem](./media/web-sites-java-custom-upload/hudson2.png)
 7. Konfigurace Maven, jak je uvedeno níže:
    
     ![Konfigurace maven](./media/web-sites-java-custom-upload/maven.png)
-8. Uložte nastavení. Hudsonem by teď měly být konfigurována a připravena k použití.
+8. Uložte nastavení hello. Hudsonem by teď měly být konfigurována a připravena k použití.
 
 Další informace o Hudsonem najdete v tématu [http://hudson-ci.org](http://hudson-ci.org).
 
 ### <a name="liferay"></a>Liferay
-Liferay je podporována v App Service Web Apps. Vzhledem k tomu, že Liferay může vyžadovat velké paměti, webové aplikace je potřeba spustit na střední a velké vyhrazené pracovní, což může zajistit dostatek paměti. Liferay také trvá několik minut, aby bylo možné spustit. Z tohoto důvodu se doporučuje nastavit webové aplikace na **Always On**.  
+Liferay je podporována v App Service Web Apps. Vzhledem k tomu, že Liferay může vyžadovat velké paměti, hello webová aplikace musí toorun na střední a velké vyhrazené pracovní, což může zajistit dostatek paměti. Liferay také trvá několik minut toostart. Z tohoto důvodu se doporučuje nastavit webové aplikace hello příliš**Always On**.  
 
-Pomocí Liferay 6.1.2, které dodávat Community Edition GA3 Tomcat, se po stažení Liferay upravit následující soubory:
+Pomocí Liferay 6.1.2, které dodávat Community Edition GA3 Tomcat, hello následující soubory nebyly upravit po stažení Liferay:
 
 **Server.XML**
 
-* Změňte port ukončení na hodnotu -1.
-* Konektor změnu HTTP`<Connector port="${port.http}" protocol="HTTP/1.1" connectionTimeout="600000" address="127.0.0.1" URIEncoding="UTF-8" />`
-* Komentář AJP konektor.
+* Změňte vypnutí portu příliš-1.
+* Příliš změnit konektor HTTP`<Connector port="${port.http}" protocol="HTTP/1.1" connectionTimeout="600000" address="127.0.0.1" URIEncoding="UTF-8" />`
+* Komentář hello AJP konektor.
 
-V **liferay\tomcat-7.0.40\webapps\ROOT\WEB-INF\classes** složky, vytvořte soubor s názvem **portál ext.properties**. Tento soubor musí obsahovat jeden řádek, jak je vidět tady:
+V hello **liferay\tomcat-7.0.40\webapps\ROOT\WEB-INF\classes** složky, vytvořte soubor s názvem **portál ext.properties**. Tento soubor vyžaduje toocontain jeden řádek, jak je vidět tady:
 
     liferay.home=%HOME%/site/wwwroot/liferay
 
-Na stejné úrovni directory jako složka tomcat 7.0.40, vytvořte soubor s názvem **web.config** s následujícím obsahem:
+V hello stejnou úroveň directory jako složka hello tomcat 7.0.40, vytvořte soubor s názvem **web.config** s hello následující obsah:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>
@@ -231,11 +231,11 @@ Na stejné úrovni directory jako složka tomcat 7.0.40, vytvořte soubor s náz
       </system.webServer>
     </configuration>
 
-V části **httpPlatform** bloku **requestTimeout** je nastaven na "00:10:00".  Může snížit, ale pak budete chtít nejspíš chcete zobrazit některé chyby vypršení časového limitu při Liferay je zavedení spouštěcího programu.  Pokud je tato hodnota změněna, pak se **connectionTimeout** v tomcat je také třeba upravit server.xml.  
+V části hello **httpPlatform** blok hello **requestTimeout** je nastaven příliš "00:10:00".  Může snížit, ale pak budete pravděpodobně toosee, některé chyby vypršení časového limitu při Liferay je zavedení spouštěcího programu.  Pokud je tato hodnota změněna, pak hello **connectionTimeout** v hello tomcat by měl být změněn server.xml.  
 
-Je vhodné poznamenat, že varariable lnstalování JRE_HOME je zadána v souboru web.config výše tak, aby odkazoval na 64-bit JDK. Výchozí hodnota je 32-bit, ale vzhledem k tomu, že Liferay může vyžadovat vysoké úrovně paměti, doporučuje se používat sadu JDK 64-bit.
+Je vhodné poznamenat, že hello JRE_HOME lnstalování varariable je uveden v hello výše web.config toopoint toohello 64-bit JDK. Výchozí hodnota Hello je 32-bit, ale vzhledem k tomu, že Liferay může vyžadovat vysoké úrovně paměti, je doporučeno toouse hello 64-bit JDK.
 
-Po provedení těchto změn, restartujte webovou aplikaci s Liferay pak otevřete http://yourwebapp. Portál Liferay je k dispozici z kořenového adresáře webové aplikace. 
+Po provedení těchto změn, restartujte webovou aplikaci s Liferay pak otevřete http://yourwebapp. portál Liferay Hello je k dispozici z kořenového adresáře aplikace hello webové aplikace. 
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o Liferay najdete v tématu [http://www.liferay.com](http://www.liferay.com).

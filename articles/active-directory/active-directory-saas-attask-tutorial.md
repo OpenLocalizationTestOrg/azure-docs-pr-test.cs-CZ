@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s @Task| Microsoft Docs'
-description: "Naučte se konfigurovat jednotné přihlašování mezi Azure Active Directory a @Task."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a @Task."
 services: active-directory
 documentationcenter: 
 author: jeevansd
@@ -14,108 +14,108 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: jeedes
-ms.openlocfilehash: ebb19ca6cbaf04106fbce937d95651e709854cfd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0840763622086a02a27cfafff3b741bc66cec498
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-task"></a>Kurz: Azure Active Directory integrace s@Task
-Cílem tohoto kurzu je ukazují, jak integrovat @Task službou Azure Active Directory (Azure AD).  
-Integrace @Task s Azure AD poskytuje následující výhody: 
+cílem Hello tohoto kurzu je tooshow můžete jak toointegrate @Task s Azure Active Directory (Azure AD).  
+Integrace @Task s Azure AD poskytuje hello následující výhody: 
 
-* Můžete řídit ve službě Azure AD, kdo má přístup k@Task
-* Můžete povolit uživatelům automaticky přihlášení k získání @Task (jednotné přihlášení) s jejich účty Azure AD
-* Můžete spravovat vaše účty v jednom centrálním místě – portál Azure classic
+* Můžete řídit ve službě Azure AD, který má přístuptoo@Task
+* Můžete povolit uživatelům tooautomatically získat přihlášeného too@Task (jednotné přihlášení) s jejich účty Azure AD
+* Můžete spravovat vaše účty v jednom centrálním místě - hello portál Azure classic
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
-Při konfiguraci integrace Azure AD s @Task, potřebujete následující položky:
+integrace tooconfigure Azure AD s @Task, budete potřebovat hello následující položky:
 
 * Předplatné služby Azure AD
 * @Task Jednotného přihlašování povolené předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 > 
 > 
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 * Provozním prostředí byste neměli používat, pokud je to nutné.
 * Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/). 
 
 ## <a name="scenario-description"></a>Popis scénáře
-Cílem tohoto kurzu je vám umožní testování Azure AD jednotné přihlašování v testovacím prostředí.  
-Scénář uvedených v tomto kurzu se skládá ze tří hlavních stavebních bloků:
+cílem Hello tohoto kurzu je tooenable tootest Azure AD jednotné přihlašování v testovacím prostředí.  
+scénář Hello uvedených v tomto kurzu se skládá ze tří hlavních stavebních bloků:
 
-1. Přidání @Task z Galerie 
+1. Přidání @Task z Galerie hello 
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-task-from-the-gallery"></a>Přidání @Task z Galerie
-Konfigurace integrace @Task do služby Azure AD, je nutné přidat @Task z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-task-from-hello-gallery"></a>Přidání @Task z Galerie hello
+integrace hello tooconfigure @Task do služby Azure AD, je nutné tooadd @Task hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat @Task z galerie, proveďte následující kroky:**
+**tooadd @Task z Galerie hello provést hello následující kroky:**
 
-1. V **portál Azure classic**, v levém navigačním podokně klikněte na tlačítko **služby Active Directory**. 
+1. V hello **portál Azure classic**, na levém navigačním podokně text hello, klikněte na **služby Active Directory**. 
    
     ![Active Directory][1] 
-2. Z **Directory** seznamu, vyberte adresář, pro který chcete povolit integraci adresáře.
-3. Chcete-li otevřít zobrazení aplikací, v zobrazení adresáře, klikněte na tlačítko **aplikace** v horní nabídce.
+2. Z hello **Directory** seznamu, vyberte hello adresář, pro které chcete tooenable integrace adresáře.
+3. Klikněte na zobrazení aplikace hello tooopen, v zobrazení adresáře hello **aplikace** v horní nabídce hello.
    
     ![Aplikace][2] 
-4. Klikněte na tlačítko **přidat** v dolní části stránky.
+4. Klikněte na tlačítko **přidat** na hello dolní části stránky hello.
    
     ![Aplikace][3] 
-5. Na **co chcete udělat** dialogové okno, klikněte na tlačítko **přidat aplikaci z Galerie**.
+5. Na hello **co chcete toodo** dialogové okno, klikněte na tlačítko **přidat aplikaci z Galerie hello**.
    
     ![Aplikace][4] 
-6. Do vyhledávacího pole zadejte  **@Task** .
+6. Hello vyhledávacího pole zadejte  **@Task** .
    
     ![Aplikace][5] 
-7. V podokně výsledků vyberte  **@Task** a potom klikněte na **Complete** tuto aplikaci přidat.
+7. V podokně výsledků hello, vyberte  **@Task** a potom klikněte na **Complete** tooadd hello aplikace.
    
     ![Aplikace][30] 
 
 ## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-Cílem této části je návod, jak nakonfigurovat a otestovat Azure AD jednotné přihlašování s @Task podle testovacího uživatele názvem "Britta Simon".
+Hello cílem této části je tooshow můžete jak tooconfigure a testování Azure AD jednotného přihlašování pomocí @Task podle testovacího uživatele názvem "Britta Simon".
 
-Pro jednotné přihlašování pro práci, musí vědět, jaké příslušného uživatele v Azure AD @Task pro uživatele ve službě Azure AD je. Jinými slovy, odkaz vztah mezi uživatele Azure AD a související uživatelské v @Task musí být vytvořeno.   
-Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v @Task.
+Pro toowork jeden přihlašování, musí Azure AD tooknow hello příslušného uživatele v @Task tooan uživatel ve službě Azure AD. Jinými slovy, odkaz vztah mezi uživatele Azure AD a související uživatelské hello v @Task musí toobe navázat.   
+Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v @Task.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s @Task, je potřeba provést následující stavební bloky:
+tooconfigure a testování Azure AD jednotné přihlašování s @Task, budete potřebovat následující stavební bloky hello toocomplete:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytváření @Tasktest uživatele](#creating-a-halogen-software-test-user)**  – Pokud chcete mít protějšek Britta Simon v @Taskthat je propojený s Azure AD reprezentace jí.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytváření @Tasktest uživatele](#creating-a-halogen-software-test-user)**  -toohave a protějšku Britta Simon v @Taskthat je jí reprezentace toohello propojené služby Azure AD.
+4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlášení
-Cílem této části je chcete povolit Azure AD jednotného přihlašování na portálu Azure classic a nakonfigurovat jednotné přihlašování v vaší @Task aplikace.
+Hello cílem této části je tooenable Azure AD jednotné přihlašování v hello portál Azure classic a tooconfigure jednotné přihlašování v vaší @Task aplikace.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s @Task, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s @Task, proveďte následující kroky hello:**
 
-1. Na portálu Azure classic na  **@Task**  stránky integrace aplikací, klikněte na tlačítko **nakonfigurovat jednotné přihlašování** otevřete **nakonfigurovat jednotné přihlašování** dialogové okno.
+1. V portálu Azure classic, na hello hello  **@Task**  stránky integrace aplikací, klikněte na tlačítko **nakonfigurovat jednotné přihlašování** tooopen hello **nakonfigurovat jednotné přihlašování**  Dialogové okno.
    
     ![Konfigurovat jednotné přihlašování][6] 
-2. Na **jak chcete uživatelům se přihlásit na @Task**  vyberte **Azure AD jednotné přihlašování**a potom klikněte na **Další**.
+2. Na hello **jak můžete jako toosign uživatelé by na too@Task**  vyberte **Azure AD jednotné přihlašování**a potom klikněte na **Další**.
    
     ![Azure AD jednotné přihlášení][7] 
-3. Na **nakonfigurovat nastavení aplikace** dialogové okno proveďte následující kroky:
+3. Na hello **nakonfigurovat nastavení aplikace** dialogové okno proveďte hello následující kroky:
    
     ![Konfigurovat nastavení aplikace][8] 
    
-     a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL používá uživatelům přihlášení k vaší @Task aplikace (např:*https://<Tenant name>.attask ondemand.com*).
+     a. V hello **přihlašovací adresa URL** textovému poli, adresa URL typu hello používá vaši uživatelé toosign na tooyour @Task aplikace (např:*https://<Tenant name>.attask ondemand.com*).
    
      b. Klikněte na **Další**.
-4. Na **nakonfigurovat jednotné přihlašování v @Task**  klikněte na **stáhnout metadata**, uložte soubor metadat místně na vašem počítači a pak klikněte na **Další**.
+4. Na hello **nakonfigurovat jednotné přihlašování v @Task**  klikněte na tlačítko **stáhnout metadata**, uložit soubor metadat hello místně na vašem počítači a pak klikněte na tlačítko **Další**.
    
     ![Co je služba Azure AD Connect][9] 
-5. Přihlášení k vaší @Task společnosti lokality jako správce.
-6. Přejděte na **jednotné přihlašování v konfiguraci**.
-7. Na **jednotné přihlašování** dialogové okno, proveďte následující kroky
+5. Přihlášení tooyour @Task společnosti lokality jako správce.
+6. Přejděte příliš**jedna přihlašovací na konfigurační**.
+7. Na hello **jednotné přihlašování** dialogové okno, proveďte následující kroky hello
    
     ![Konfigurovat jednotné přihlašování][23]
    
@@ -123,118 +123,118 @@ Cílem této části je chcete povolit Azure AD jednotného přihlašování na 
    
     b. Vyberte **služby ID zprostředkovatele**.
    
-    c. Na portálu Azure classic, zkopírujte **vzdálené adresy URL pro přihlášení**a vložte ji do **adresu URL pro přihlášení portálu** textové pole.
+    c. Na portálu Azure classic hello, zkopírujte hello **vzdálené adresy URL pro přihlášení**a pak ji vložit do hello **adresu URL pro přihlášení portálu** textové pole.
    
-    d. Na portálu Azure classic, zkopírujte **jednu adresu URL služby Sign-Out**a vložte ji do **Sign-Out URL** textové pole.
+    d. Na portálu Azure classic hello, zkopírujte hello **jednu adresu URL služby Sign-Out**a pak ji vložit do hello **Sign-Out URL** textové pole.
    
-    e. Na portálu Azure classic, zkopírujte **heslo změnit adresu URL**a vložte ji do **heslo změnit adresu URL** textové pole.
+    e. Na portálu Azure classic hello, zkopírujte hello **heslo změnit adresu URL**a pak ji vložit do hello **heslo změnit adresu URL** textové pole.
    
     f. Klikněte na **Uložit**.
-8. Na portálu Azure classic, vyberte potvrzení konfigurace přihlášení a pak klikněte na tlačítko **Další**. 
+8. Na hello portál Azure classic, vyberte hello konfigurace přihlášení potvrzení a pak klikněte na tlačítko **Další**. 
    
     ![Co je služba Azure AD Connect][10]
-9. Na **jednotné přihlašování potvrzení** klikněte na tlačítko **Complete**.  
+9. Na hello **jednotné přihlašování potvrzení** klikněte na tlačítko **Complete**.  
    
     ![Co je služba Azure AD Connect][11]
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure classic názvem Britta Simon.  
+Hello cílem této části je toocreate testovacího uživatele v hello názvem Britta Simon portál Azure classic.  
 
 ![Vytvořit uživatele Azure AD][20]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portál Azure classic**, v levém navigačním podokně klikněte na tlačítko **služby Active Directory**.
+1. V hello **portál Azure classic**, na levém navigačním podokně text hello, klikněte na **služby Active Directory**.
    
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-attask-tutorial/create_aaduser_02.png) 
-2. Z **Directory** seznamu, vyberte adresář, pro který chcete povolit integraci adresáře.
-3. Chcete-li zobrazit seznam uživatelů, v nabídce v horní části, klikněte na tlačítko **uživatelé**.
+2. Z hello **Directory** seznamu, vyberte hello adresář, pro které chcete tooenable integrace adresáře.
+3. Klikněte na tlačítko toodisplay hello seznam uživatelů, v nabídce hello hello nahoře **uživatelé**.
    
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-attask-tutorial/create_aaduser_03.png) 
-4. Chcete-li otevřít **přidat uživatele** dialogovém okně, na panelu nástrojů v dolní části, klikněte na tlačítko **přidat uživatele**. 
+4. tooopen hello **přidat uživatele** dialogové okno, ve hello nástrojů v dolní části hello, klikněte na tlačítko **přidat uživatele**. 
    
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-attask-tutorial/create_aaduser_04.png) 
-5. Na **Povězte nám o tohoto uživatele** dialogové okno proveďte následující kroky: 
+5. Na hello **Povězte nám o tohoto uživatele** dialogové okno proveďte hello následující kroky: 
    
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-attask-tutorial/create_aaduser_05.png) 
    
     a. Jako typ uživatele vyberte nového uživatele ve vaší organizaci.
    
-    b. V uživatelské jméno **textbox**, typ **BrittaSimon**.
+    b. V hello uživatelské jméno **textbox**, typ **BrittaSimon**.
    
     c. Klikněte na **Další**.
-6. Na **profil uživatele** dialogové okno proveďte následující kroky: 
+6. Na hello **profil uživatele** dialogové okno proveďte hello následující kroky: 
    
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-attask-tutorial/create_aaduser_06.png) 
    
-    a. V **křestní jméno** textovému poli, typ **Britta**.  
+    a. V hello **křestní jméno** textovému poli, typ **Britta**.  
    
-    b. V **příjmení** textovému poli, typ, **Simon**.
+    b. V hello **příjmení** textovému poli, typ, **Simon**.
    
-    c. V **zobrazovaný název** textovému poli, typ **Britta Simon**.
+    c. V hello **zobrazovaný název** textovému poli, typ **Britta Simon**.
    
-    d. V **Role** seznamu, vyberte **uživatele**.
+    d. V hello **Role** seznamu, vyberte **uživatele**.
 
     e. Klikněte na **Další**.
 
-7. Na **získat dočasné heslo** dialogové okno stránky, klikněte na tlačítko **vytvořit**.
+7. Na hello **získat dočasné heslo** dialogové okno stránky, klikněte na tlačítko **vytvořit**.
    
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-attask-tutorial/create_aaduser_07.png) 
-8. Na **získat dočasné heslo** dialogové okno stránky, proveďte následující kroky:
+8. Na hello **získat dočasné heslo** dialogové okno proveďte hello následující kroky:
    
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-attask-tutorial/create_aaduser_08.png) 
    
-    a. Poznamenejte si hodnotu **nové heslo**.
+    a. Poznamenejte si hodnotu hello hello **nové heslo**.
    
     b. Klikněte na **Dokončit**.   
 
 ### <a name="creating-an-task-test-user"></a>Vytvoření @Task testovacího uživatele
-Cílem této části je vytvoření uživatele volal Britta Simon v @Task.
+Hello cílem této části je toocreate uživatel volal Britta Simon v @Task.
 
-**Vytvoření uživatele volal Britta Simon v @Task, proveďte následující kroky:**
+**toocreate uživatel volal Britta Simon v @Task, proveďte následující kroky hello:**
 
-1. Přihlaste se k vaší @Task společnosti lokality jako správce.
-2. V nabídce v horní části, klikněte na tlačítko **osoby**.
+1. Přihlaste se tooyour @Task společnosti lokality jako správce.
+2. V nabídce hello hello nahoře, klikněte na tlačítko **osoby**.
 3. Klikněte na tlačítko **nové osobě**. 
-4. V dialogovém okně nové osobě proveďte následující kroky:
+4. V dialogovém okně hello nové osobě proveďte následující kroky hello:
    
     ![Vytvoření @Task testovacího uživatele][21] 
    
-    a. V **křestní jméno** textovému poli, zadejte "Britta".
+    a. V hello **křestní jméno** textovému poli, zadejte "Britta".
    
-    b. V **příjmení** textovému poli, zadejte "Simon".
+    b. V hello **příjmení** textovému poli, zadejte "Simon".
    
-    c. V **e-mailovou adresu** textovému poli, zadejte e-mailovou adresu Britta Simon v Azure Active Directory.
+    c. V hello **e-mailovou adresu** textovému poli, zadejte e-mailovou adresu Britta Simon v Azure Active Directory.
    
     d. Klikněte na tlačítko **přidat osobu**.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
-Cílem této části je povolení Britta Simon používat Azure jednotné přihlašování, poskytněte svůj přístup k @Task.
+### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
+Hello cílem této části je tooenabling toouse Britta Simon Azure jednotné přihlašování tak, že udělíte přístup too@Task.
 
 ![Přiřadit uživatele][200] 
 
-**Přiřadit Britta Simon k @Task, proveďte následující kroky:**
+**tooassign Britta Simon too@Task, proveďte následující kroky hello:**
 
-1. Na portálu Azure classic, otevřete zobrazení aplikací, v zobrazení adresáře, klikněte na **aplikace** v horní nabídce.
+1. Na hello Azure klikněte na portálu classic, zobrazení aplikace hello tooopen, v zobrazení adresáře hello **aplikace** v horní nabídce hello.
    
     ![Přiřadit uživatele][201] 
-2. V seznamu aplikací vyberte  **@Task** .
+2. V seznamu aplikace hello vyberte  **@Task** .
    
     ![Přiřadit uživatele][202] 
-3. V nabídce v horní části, klikněte na tlačítko **uživatelé**.
+3. V nabídce hello hello nahoře, klikněte na tlačítko **uživatelé**.
    
     ![Přiřadit uživatele][203] 
-4. V seznamu uživatelů vyberte **Britta Simon**.
-5. Na panelu nástrojů v dolní části klikněte na tlačítko **přiřadit**.
+4. V seznamu uživatelé hello vyberte **Britta Simon**.
+5. V panelu nástrojů hello na dolní hello, klikněte na **přiřadit**.
    
     ![Přiřadit uživatele][205]
 
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
-Cílem této části je Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.  
-Když kliknete @Task dlaždici na přístupovém panelu, měli byste obdržet automaticky přihlášení k vaší @Task aplikace.
+Hello cílem této části je tootest pomocí Azure AD konfigurace přihlášení hello přístupového panelu.  
+Když kliknete na tlačítko hello @Task dlaždice v hello přístupového panelu, měli byste obdržet automaticky přihlášeného tooyour @Task aplikace.
 
 ## <a name="additional-resources"></a>Další zdroje
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

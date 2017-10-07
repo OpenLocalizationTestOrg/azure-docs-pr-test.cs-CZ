@@ -1,6 +1,6 @@
 ---
-title: "Prostředí PowerShell příklad obnovení zálohování Azure SQL database | Microsoft Docs"
-description: "Azure PowerShell ukázkový skript k obnovení databáze Azure SQL z geograficky redundantní zálohy"
+title: "aaaPowerShell příklad obnovení zálohování Azure SQL database | Microsoft Docs"
+description: "Azure PowerShell příklad skriptu toorestore Azure SQL database z geograficky redundantní zálohy"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -16,25 +16,25 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 06/23/2017
 ms.author: janeng
-ms.openlocfilehash: ae1d0c828ae1e7e1e7e07dcc7d6157187a3859d3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 68becb89e8a8680aa2efc3de8ad947e674c5fc35
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-powershell-to-restore-an-azure-sql-database-from-backups"></a>Obnovení ze zálohy Azure SQL database pomocí prostředí PowerShell
+# <a name="use-powershell-toorestore-an-azure-sql-database-from-backups"></a>Pomocí prostředí PowerShell toorestore ze zálohy databáze Azure SQL
 
-Tento ukázkový skript prostředí PowerShell obnoví databázi Azure SQL z geograficky redundantní zálohy, obnovení odstraněné databáze Azure SQL v jeho nejnovější zálohu a obnoví Azure SQL database k určitému bodu v čase.  
+Tento ukázkový skript prostředí PowerShell obnoví databázi Azure SQL z geograficky redundantní zálohy, obnoví odstraněné Azure SQL database tooits nejnovější zálohování a obnoví tooa databáze Azure SQL pro určitý bod v čase.  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-powershell[hlavní](../../../powershell_scripts/sql-database/restore-database/restore-database.ps1?highlight=17-18 "vytvoření databáze SQL")]
+[!code-powershell[main](../../../powershell_scripts/sql-database/restore-database/restore-database.ps1?highlight=17-18 "Create SQL Database")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Po spuštění ukázka skriptu, následující příkaz lze použít k odebrání skupiny prostředků a všechny prostředky, které jsou s ním spojená.
+Po spuštění ukázka skriptu hello hello následující příkaz může být skupiny prostředků použít tooremove hello a všechny prostředky, které jsou s ním spojená.
 
 ```powershell
 Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
@@ -42,7 +42,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá hello následující příkazy. Každý příkaz v hello tabulky odkazů toocommand konkrétní dokumentaci.
 
 | Příkaz | Poznámky |
 |---|---|
@@ -56,6 +56,6 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o prostředí Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
+Další informace o hello prostředí Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
 
-Další ukázky skriptu PowerShell databáze SQL najdete v [skriptů prostředí PowerShell databáze SQL Azure](../sql-database-powershell-samples.md).
+Další ukázky skriptu PowerShell databáze SQL naleznete v hello [skriptů prostředí PowerShell databáze SQL Azure](../sql-database-powershell-samples.md).

@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření skupin akce pomocí šablony Resource Manageru | Microsoft Docs"
-description: "Naučte se vytvořit skupinu akce pomocí šablony Azure Resource Manager."
+title: "skupiny aaaCreate akce pomocí šablony Resource Manageru | Microsoft Docs"
+description: "Zjistěte, jak seskupit toocreate akce pomocí šablony Azure Resource Manager."
 author: anirudhcavale
 manager: orenr
 editor: 
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-ms.openlocfilehash: 76bf353cac13f1c2169380f8dd3c1e163d4f3f41
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9902b33cad99bd99b3deda0cf6f4ff12278c89c3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Vytvořit skupinu akce pomocí šablony Resource Manageru
-V tomto článku se dozvíte, jak používat [šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) ke konfiguraci skupin akce. Pomocí šablony můžete automaticky nastavit skupiny akce, které lze znovu použít v určitých typů výstrahy. Tyto skupiny akce Ujistěte se, že všechny správné strany se upozorní, když se výstraha.
+Tento článek ukazuje, jak toouse [šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) tooconfigure akce skupiny. Pomocí šablony můžete automaticky nastavit skupiny akce, které lze znovu použít v určitých typů výstrahy. Tyto skupiny akce Ujistěte se, že všechny hello správné strany se upozorní, když se výstraha.
 
-Toto jsou základní kroky:
+Toto jsou základní kroky Hello:
 
-1. Vytvořte šablonu jako soubor JSON, který popisuje, jak vytvořit skupinu akce.
+1. Vytvořte šablonu jako soubor JSON, který popisuje, jak toocreate hello akce skupiny.
 
-2. Nasazení šablony pomocí [libovolnou metodu nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
+2. Nasazení šablony hello pomocí [libovolnou metodu nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
 
-Nejdřív jsme popisují, jak vytvořit šablonu Resource Manageru pro skupinu akcí, kde definice akce jsou pevně zakódovaná v šabloně. Druhý jsme popisují, jak vytvořit šablonu, která přebírá informace o konfiguraci webhooku jako vstupní parametry při nasazení šablony.
+Nejdřív jsme popisují, jak toocreate šablony Resource Manageru pro akce skupiny, kde definice hello akce jsou pevně zakódovaná v šabloně hello. Druhý jsme popisují, jak toocreate šablonu, která přijímá informace o konfiguraci webhooku hello jako vstupní parametry při nasazení šablony hello.
 
 ## <a name="resource-manager-templates-for-an-action-group"></a>Šablony Resource Manageru pro skupinu akce
 
-Pokud chcete vytvořit skupinu akce pomocí šablony Resource Manageru, vytvořit prostředek typu `Microsoft.Insights/actionGroups`. Potom můžete vyplnit všech souvisejících vlastností. Tady jsou dvě ukázkové šablony, které vytvořit skupinu akce.
+toocreate skupinu akce pomocí šablony Resource Manageru, vytvořit prostředek typu hello `Microsoft.Insights/actionGroups`. Potom můžete vyplnit všech souvisejících vlastností. Tady jsou dvě ukázkové šablony, které vytvořit skupinu akce.
 
 ```json
 {
@@ -43,13 +43,13 @@ Pokud chcete vytvořit skupinu akce pomocí šablony Resource Manageru, vytvoři
     "actionGroupName": {
       "type": "string",
       "metadata": {
-        "description": "Unique name (within the Resource Group) for the Action group."
+        "description": "Unique name (within hello Resource Group) for hello Action group."
       }
     },
     "actionGroupShortName": {
       "type": "string",
       "metadata": {
-        "description": "Short name (maximum 12 characters) for the Action group."
+        "description": "Short name (maximum 12 characters) for hello Action group."
       }
     }
   },
@@ -114,13 +114,13 @@ Pokud chcete vytvořit skupinu akce pomocí šablony Resource Manageru, vytvoři
     "actionGroupName": {
       "type": "string",
       "metadata": {
-        "description": "Unique name (within the Resource Group) for the Action group."
+        "description": "Unique name (within hello Resource Group) for hello Action group."
       }
     },
     "actionGroupShortName": {
       "type": "string",
       "metadata": {
-        "description": "Short name (maximum 12 characters) for the Action group."
+        "description": "Short name (maximum 12 characters) for hello Action group."
       }
     },
     "webhookReceiverName": {
@@ -171,4 +171,4 @@ Pokud chcete vytvořit skupinu akce pomocí šablony Resource Manageru, vytvoři
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [skupiny akcí](monitoring-action-groups.md).
 * Další informace o [výstrahy](monitoring-overview-alerts.md).
-* Informace o postupu přidání [výstrah pomocí šablony Resource Manageru](monitoring-create-activity-log-alerts-with-resource-manager-template.md).
+* Zjistěte, jak tooadd [výstrah pomocí šablony Resource Manageru](monitoring-create-activity-log-alerts-with-resource-manager-template.md).

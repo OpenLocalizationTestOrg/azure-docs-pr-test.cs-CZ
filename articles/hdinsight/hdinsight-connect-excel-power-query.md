@@ -1,6 +1,6 @@
 ---
-title: "Připojení aplikace Excel k systému Hadoop pomocí Power Query - Azure HDInsight | Microsoft Docs"
-description: "Zjistěte, jak využít výhod komponenty business intelligence a použijte Power Query pro Excel přístup k datům uloženým v Hadoop v HDInsight."
+title: "aaaConnect tooHadoop aplikace Excel pomocí doplňku Power Query - Azure HDInsight | Microsoft Docs"
+description: "Zjistěte, jak tootake výhod komponenty business intelligence a používání doplňku Power Query pro Excel tooaccess data uložená v Hadoop v HDInsight."
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -16,66 +16,66 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jgao
-ms.openlocfilehash: 6a15efb091b4faaa7305bb8faa362c62fac595cb
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1213849f1bc04e0ed206750b80766ff2268664b4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-excel-to-hadoop-by-using-power-query"></a>Připojení aplikace Excel k systému Hadoop pomocí Power Query
-Klíčovou vlastností řešení velkých objemů dat společnosti Microsoft je integrace komponenty Microsoft business intelligence (BI) s clustery systému Hadoop v prostředí Azure HDInsight. Primární příkladem je možnost připojit Excel k účtu úložiště Azure, který obsahuje data přidruženého k vašemu clusteru Hadoop pomocí Microsoft Power Query pro doplněk aplikace Excel. Tento článek vás provede procesem nastavení a použití doplňku Power Query k dotazování na data související s clusterem Hadoop spravované s HDInsight.
+# <a name="connect-excel-toohadoop-by-using-power-query"></a>Připojení aplikace Excel tooHadoop pomocí doplňku Power Query
+Klíčovou vlastností řešení velkých objemů dat společnosti Microsoft hello je hello integrace komponenty Microsoft business intelligence (BI) s clustery systému Hadoop v prostředí Azure HDInsight. Primární příkladem je hello možnost tooconnect Excel toohello účet úložiště Azure, který obsahuje data hello přidruženého k vašemu clusteru Hadoop pomocí hello Microsoft Power Query pro doplněk aplikace Excel. Tento článek vás provede tooset nahoru a používání doplňku Power Query tooquery data přidružená k clusteru Hadoop spravováni s HDInsight.
 
 ### <a name="prerequisites"></a>Požadavky
-Před zahájením tohoto článku, musíte mít následující položky:
+Před zahájením tohoto článku, musíte mít hello následující položky:
 
-* **Cluster služby HDInsight**. Nakonfigurujte jeden, najdete v tématu [Začínáme s Azure HDInsight][hdinsight-get-started].
+* **Cluster služby HDInsight**. tooconfigure, najdete v části [Začínáme s Azure HDInsight][hdinsight-get-started].
 * **Pracovní stanice** se systémem Windows 7, Windows Server 2008 R2 nebo novějším operačním systémem.
 * **Office 2016, Office Professional 2013 Plus, Office 365 ProPlus, samostatné aplikace Excel 2013 nebo Office 2010 Professional Plus**.
 
 ## <a name="install-power-query"></a>Instalace doplňku Power Query
 Power Query můžete importovat data, která má výstup, nebo které byla vygenerována v rámci Hadoop úlohy spuštěné v clusteru služby HDInsight.
 
-V aplikaci Excel 2016 Power Query integrovány do dat pásu karet v části Get & transformace. Starší verze Excelu, stáhněte si Microsoft Power Query pro Excel z [Microsoft Download Center] [ powerquery-download] a nainstalujte ji.
+V aplikaci Excel 2016 Power Query integrovány do hello Data pásu karet v části hello Get & části transformace. Pro starší verze aplikace Excel, stáhnout Microsoft Power Query pro Excel z hello [Microsoft Download Center] [ powerquery-download] a nainstalujte ji.
 
 ## <a name="import-hdinsight-data-into-excel"></a>Importovat HDInsight data do aplikace Excel
-Doplněk Power Query pro Excel lze snadno importovat data z clusteru HDInsight do Excelu, kde BI nástroje, jako je doplňku PowerPivot a mapa Power slouží ke kontrole, analyzovat a data k dispozici.
+Hello doplňku Power Query pro Excel umožňuje snadno tooimport data z clusteru HDInsight do Excelu, kde můžete nástrojů BI, například doplňku PowerPivot a mapa Power být použité tooinspect, analyzovat a prezentují hello data.
 
-**Při importu dat z clusteru služby HDInsight**
+**tooimport data z clusteru služby HDInsight**
 
 1. Otevřete aplikaci Excel.
 2. Vytvoření nového prázdného sešitu.
-3. Proveďte následující kroky založeny na verzi aplikace Excel:
+3. Proveďte následující kroky, které jsou založeny na verzi aplikace Excel hello hello:
 
     - Excel 2016
 
-        - Klikněte na tlačítko **Data** nabídky, klikněte na tlačítko **načíst Data** z **Get & transformace dat** pásu karet, klikněte na tlačítko **z Azure**a potom klikněte na **z Azure HDInsight(HDFS)**.
+        - Klikněte na tlačítko hello **Data** nabídky, klikněte na tlačítko **načíst Data** z hello **Get & transformace dat** pásu karet, klikněte na tlačítko **z Azure**a pak klikněte na tlačítko  **Z Azure HDInsight(HDFS)**.
 
         ![HDI. PowerQuery.SelectHdiSource](./media/hdinsight-connect-excel-power-query/hdi.powerquery.selecthdisource.excel2016.png)
 
     - Excel 2013/2010
 
-        - Klikněte na tlačítko **Power Query** nabídky, klikněte na tlačítko **z Azure**a potom klikněte na **z Microsoft Azure HDInsight**.
+        - Klikněte na tlačítko hello **Power Query** nabídky, klikněte na tlačítko **z Azure**a potom klikněte na **z Microsoft Azure HDInsight**.
    
         ![HDI. PowerQuery.SelectHdiSource][image-hdi-powerquery-hdi-source]
        
-        **Poznámka:** Pokud nevidíte **Power Query** nabídky, přejděte na **soubor** > **možnosti** > **doplňky**a vyberte **COM Doplňky** z rozevíracího seznamu **spravovat** pole v dolní části stránky. Vyberte **přejděte...**  tlačítko a ověřte, že bylo zaškrtnuté políčko pro Power Query pro doplněk aplikace Excel.
+        **Poznámka:** Pokud nevidíte hello **Power Query** nabídky, přejděte příliš**soubor** > **možnosti** > **doplňky**a vyberte **COM Doplňky** z rozevíracího seznamu hello **spravovat** pole v hello dolní části stránky hello. Vyberte hello **přejděte...**  tlačítko a ověřte dané pole hello, byl vrácen hello Power Query pro Excel add-in.
        
-        **Poznámka:** Power Query taky umožňuje importovat data z HDFS kliknutím **z jiných zdrojů**.
-4. Pro **název účtu**, zadejte název účtu úložiště objektů Blob Azure přidruženého k vašemu clusteru a pak klikněte na tlačítko **OK**. Tento účet může být [výchozí účet úložiště](hdinsight-administer-use-management-portal.md#find-the-default-storage-account) nebo propojený účet úložiště.  Formát je *https://&lt;StorageAccountName >.blob.core.windows.net/*.
-5. Pro **klíč účtu**, zadejte klíč pro účet úložiště Blob a pak klikněte na tlačítko **Uložit**. (Potřebujete zadejte čas informace pouze první účet přístupu k tomuto úložišti.)
-6. V **Navigátor** podokna na levé straně editoru dotazů, dvakrát klikněte na název kontejneru úložiště objektů Blob. Ve výchozím nastavení je název kontejneru stejný název jako název clusteru.
-7. Vyhledejte **HiveSampleData.txt** v **název** sloupce (je cesta ke složce **... / hive/skladu/hivesampletable/**) a potom klikněte na **binární** na levé straně HiveSampleData.txt. HiveSampleData.txt obsahuje všechny clusteru. Volitelně můžete vytvořit svůj vlastní soubor.
+        **Poznámka:** Power Query lze také tooimport data z HDFS kliknutím **z jiných zdrojů**.
+4. Pro **název účtu**zadejte hello název účtu úložiště objektů Blob v Azure hello přidruženého k vašemu clusteru a pak klikněte na tlačítko **OK**. Tento účet může být hello [výchozí účet úložiště](hdinsight-administer-use-management-portal.md#find-the-default-storage-account) nebo propojený účet úložiště.  Formát Hello je *https://&lt;StorageAccountName >.blob.core.windows.net/*.
+5. Pro **klíč účtu**zadejte hello klíč pro hello účtu úložiště Blob a pak klikněte na tlačítko **Uložit**. (Potřebujete tooenter hello účet informace pouze hello prvním přístupu k tomuto úložišti.)
+6. V hello **Navigátor** levé podokno na hello hello editoru dotazů, dvakrát klikněte na název kontejneru úložiště objektů Blob hello. Ve výchozím nastavení, je název kontejneru hello hello stejný název jako název clusteru hello.
+7. Vyhledejte **HiveSampleData.txt** v hello **název** sloupce (je cesta ke složce hello **... / hive/skladu/hivesampletable/**) a potom klikněte na **binární** na hello nalevo od HiveSampleData.txt. HiveSampleData.txt obsahuje všechny hello clusteru. Volitelně můžete vytvořit svůj vlastní soubor.
    
     ![HDI. PowerQuery.ImportData][image-hdi-powerquery-importdata]
-8. Pokud chcete, můžete přejmenovat názvy sloupců. Až budete připravení, klikněte na tlačítko **zavřete & načíst**.  Data se načetl do vašeho sešitu:
+8. Pokud chcete, můžete přejmenovat hello názvy sloupců. Až budete připravení, klikněte na tlačítko **zavřete & načíst**.  načíst tooyour sešitu byla Hello data:
    
     ![HDI. PowerQuery.ImportedTable][image-hdi-powerquery-imported-table]
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste zjistili, jak k získání dat z prostředí HDInsight do aplikace Excel pomocí doplňku Power Query. Podobně můžete data načíst z prostředí HDInsight do Azure SQL Database. Je také možné nahrát data do HDInsight. Další informace naleznete v následujících článcích:
+V tomto článku jste se naučili jak toouse Power Query tooretrieve data z HDInsight do aplikace Excel. Podobně můžete data načíst z prostředí HDInsight do Azure SQL Database. Je také možné tooupload data do HDInsight. toolearn více, najdete v části hello následující články:
 
-* [Připojení aplikace Excel do HDInsight pomocí ovladače ODBC Microsoft Hive][hdinsight-ODBC]
-* [Nahrání dat do HDInsight][hdinsight-upload-data]
+* [Připojení aplikace Excel tooHDInsight s hello ovladače ODBC Microsoft Hive][hdinsight-ODBC]
+* [Nahrání dat tooHDInsight][hdinsight-upload-data]
 
 [hdinsight-ODBC]: hdinsight-connect-excel-hive-odbc-driver.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md

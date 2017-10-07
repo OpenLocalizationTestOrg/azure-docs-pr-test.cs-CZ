@@ -1,6 +1,6 @@
 ---
-title: "Zprovoznit modely vytvořené Spark počítač learning | Microsoft Docs"
-description: "Jak načíst a stanovíte jeho skóre learning modely uložené v Azure Blob Storage (WASB) s Python."
+title: "aaaOperationalize vytvořené Spark modelů strojového učení | Microsoft Docs"
+description: "Jak tooload a skóre učení modely uložené v Azure Blob Storage (WASB) s Python."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,64 +14,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 00fec675bed0137473f7e3c5ddfe9c3c0e8344c6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c5fadcb13257b94dcb28a522be454f6e03dfa991
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Zprovoznit learning modely vytvořené Spark počítače
 [!INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]
 
-Toto téma ukazuje, jak zprovoznit model uložené machine learning (ML) používá Python v clusterech HDInsight Spark. Popisuje jak načíst machine learning modely, které jste vytvořili pomocí Spark MLlib a uložené v Azure Blob Storage (WASB) a jak je skóre s datové sady, které byly uloženy také v WASB. Zobrazuje postup předběžné zpracování vstupních dat, transformace funkcí s použitím funkce indexování a kódování v sadě nástrojů MLlib a jak vytvořit datový objekt s popiskem bod, který lze použít jako vstup pro vyhodnocování s modely ML. Modely použité pro vyhodnocování zahrnují lineární regrese, Logistic Regression, náhodné modely doménové struktury a modely stromu přechodu zvyšovat skóre.
+Toto téma ukazuje, jak toooperationalize modelu uloženého strojového učení (ML) používá Python na HDInsight Spark clusterů. Popisuje, jak tooload počítač learning modely, které byly vytvořené pomocí Spark MLlib a uložené v Azure Blob Storage (WASB) a jak tooscore je s datové sady, které byly uloženy také v WASB. Zobrazuje jak toopre proces hello vstupní data, pomocí funkce transformace hello indexování a kódování funkce v sadě nástrojů MLlib hello a jak toocreate s popiskem bodu datový objekt, který lze použít jako vstup pro vyhodnocování s modely hello ML. Hello modely použité pro vyhodnocování zahrnují lineární regrese, Logistic Regression, náhodné modely doménové struktury a modely stromu přechodu zvyšovat skóre.
 
 ## <a name="spark-clusters-and-jupyter-notebooks"></a>Clustery Spark a poznámkové bloky Jupyter
-Kroky instalace a kód, který zprovoznit ML model jsou uvedené v tomto názorném postupu pro používání clusteru služby HDInsight Spark 1.6, jakož i cluster Spark 2.0. Kód pro tyto postupy je také součástí poznámkové bloky Jupyter.
+Postup instalace a toooperationalize kód hello ML model jsou uvedené v tomto názorném postupu pro používání clusteru služby HDInsight Spark 1.6, jakož i cluster Spark 2.0. Hello kód pro tyto postupy jsou také uvedené v poznámkové bloky Jupyter.
 
 ### <a name="notebook-for-spark-16"></a>Poznámkový blok pro Spark 1.6
-[PySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) Poznámkový blok Jupyter ukazuje, jak zprovoznit model uložené v clusterech prostředí HDInsight pomocí Pythonu. 
+Hello [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) Poznámkový blok Jupyter ukazuje, jak toooperationalize uložené model používá Python v HDInsight clustery. 
 
 ### <a name="notebook-for-spark-20"></a>Poznámkový blok pro Spark 2.0
-Pokud chcete upravit poznámkového bloku Jupyter pro 1.6 Spark pro použití s clusteru služby HDInsight Spark 2.0, nahradit soubor kód Python s [tento soubor](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py). Tento kód ukazuje, jak využívat modelů vytvořených v Spark 2.0.
+hello toomodify Poznámkový blok Jupyter pro toouse Spark 1.6 pomocí clusteru služby HDInsight Spark 2.0 nahradit soubor kód Python hello s [tento soubor](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py). Tento kód ukazuje, jak tooconsume hello modely vytvořené v Spark 2.0.
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Budete potřebovat účet Azure a Spark 1.6 (nebo Spark 2.0) clusteru HDInsight k dokončení tohoto postupu. Najdete v článku [přehled o vědecké zpracování dat pomocí Spark v Azure HDInsight](machine-learning-data-science-spark-overview.md) pokyny o tom, jak splnit tyto požadavky. Toto téma obsahuje také popis NYC 2013 taxíkem data použít se zde a pokyny, jak provést kód z poznámkového bloku Jupyter v clusteru Spark. 
-2. Musíte taky vytvořit strojového učení modely, které se má vypočítat zde skóre projdete [zkoumání dat a modelování pomocí Spark](machine-learning-data-science-spark-data-exploration-modeling.md) téma je určené pro cluster Spark 1.6 nebo poznámkových bloků Spark 2.0. 
-3. Poznámkové bloky Spark 2.0 používat další datové sady pro úlohu klasifikace, dobře známé letecká společnost na čas odeslání datové sady z 2011 a 2012. Popis poznámkových bloků a odkazy na ně jsou součástí [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) úložiště Githubu, které je obsahují. Kromě toho kód sem a v propojených poznámkových bloků je obecný a by měla fungovat v jakémkoliv clusteru Spark. Pokud nepoužíváte HDInsight Spark, může být mírně lišit od co je tady uvedené kroky nastavení a Správa clusteru. 
+1. Budete potřebovat účet Azure a Spark 1.6 (nebo Spark 2.0) cluster HDInsight toocomplete tohoto návodu. V tématu hello [přehled o vědecké zpracování dat pomocí Spark v Azure HDInsight](machine-learning-data-science-spark-overview.md) pokyny toosatisfy tyto požadavky. Toto téma obsahuje také popis hello NYC 2013 taxíkem dat použít se zde a pokyny, jak tooexecute kód z poznámkového bloku Jupyter v clusteru Spark hello. 
+2. Musíte taky vytvořit hello modely machine learning toobe skóre pro magnitudu zde projdete hello [zkoumání dat a modelování pomocí Spark](machine-learning-data-science-spark-data-exploration-modeling.md) téma je určené pro cluster hello Spark 1.6 nebo poznámkových bloků hello Spark 2.0. 
+3. poznámkových bloků Hello Spark 2.0 používat další datové sady pro hello klasifikace úkol hello dobře známé letecká společnost na čas odeslání datové sady z 2011 a 2012. Popis toothem hello poznámkových bloků a odkazy jsou uvedeny v hello [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) hello Githubu úložiště, které je obsahují. Kromě toho hello kód sem a v poznámkových bloků hello propojené je obecný a by měla fungovat v jakémkoliv clusteru Spark. Pokud nepoužíváte HDInsight Spark, může být kroky instalace a správy clusteru hello mírně lišit od co se zobrazí tady. 
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>Instalace: umístění úložiště, knihovny a kontext přednastavené Spark
-Spark se bude moct číst a zapisovat do Azure úložiště objektů Blob (WASB). Takže existující data uložená existuje může zpracovat pomocí Spark a výsledky uložené v WASB znovu.
+## <a name="setup-storage-locations-libraries-and-hello-preset-spark-context"></a>Instalační program: umístění úložiště, knihovny a hello přednastavení Spark kontextu
+Spark je možné tooan tooread a zápisu objektů Blob Azure Storage (WASB). Takže existující data v ní uloženy může zpracovat pomocí Spark a hello výsledky uložené v znovu WASB.
 
-Cesta k uložení modely nebo souborů v WASB, je třeba zadat správně. Výchozí kontejner, který je připojen ke clusteru Spark se může odkazovat pomocí cesty počínaje: *"wasb / /"*. Následující příklad kódu určuje umístění dat ke čtení a cesty k adresáři modelu úložiště, kde je uložen výstupní modelu. 
+modely toosave či soubory v WASB, musí cesta hello toobe zadán správně. Hello clusteru Spark toohello výchozí kontejner připojené můžete odkazovat pomocí cesty počínaje: *"wasb / /"*. Hello následující ukázka kódu určuje hello umístění toobe hello dat pro čtení a uložena hello cesta pro model výstup hello directory toowhich hello modelu úložiště. 
 
 ### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>Nastavení cesty adresáře pro umístění úložiště v WASB
 Modely se ukládají do: "wasb: / / / uživatel/remoteuser/NYCTaxi/modely". Pokud tato cesta není správně nastavena, modely nenačtou pro vyhodnocování.
 
-Scored výsledky byly uloženy v: "wasb: / / / uživatel/remoteuser/NYCTaxi/ScoredResults". Pokud cesta ke složce není v pořádku, výsledky nejsou uloženy v této složce.   
+Hello scored výsledky byly uloženy v: "wasb: / / / uživatel/remoteuser/NYCTaxi/ScoredResults". Pokud cesta toofolder hello není v pořádku, výsledky nejsou uloženy v této složce.   
 
 > [!NOTE]
-> Cesta k umístění souborů lze kopírovat a vložit do zástupných symbolů v tento kód z výstupu poslední buňky **machine-learning-data-science-spark-data-exploration-modeling.ipynb** poznámkového bloku.   
+> umístění souboru cest Hello lze kopírovat a vložit do zástupné symboly hello tento kód hello výstup hello poslední buňku hello **machine-learning-data-science-spark-data-exploration-modeling.ipynb** poznámkového bloku.   
 > 
 > 
 
-Tady je kód pro nastavení cesty k adresáři: 
+Tady je cesty adresářů tooset hello kódu: 
 
-    # LOCATION OF DATA TO BE SCORED (TEST DATA)
+    # LOCATION OF DATA tooBE SCORED (TEST DATA)
     taxi_test_file_loc = "wasb://mllibwalkthroughs@cdspsparksamples.blob.core.windows.net/Data/NYCTaxi/JoinedTaxiTripFare.Point1Pct.Test.tsv";
 
-    # SET THE MODEL STORAGE DIRECTORY PATH 
-    # NOTE THE LAST BACKSLASH IN THIS PATH IS NEEDED
+    # SET hello MODEL STORAGE DIRECTORY PATH 
+    # NOTE hello LAST BACKSLASH IN THIS PATH IS NEEDED
     modelDir = "wasb:///user/remoteuser/NYCTaxi/Models/" 
 
     # SET SCORDED RESULT DIRECTORY PATH
-    # NOTE THE LAST BACKSLASH IN THIS PATH IS NEEDED
+    # NOTE hello LAST BACKSLASH IN THIS PATH IS NEEDED
     scoredResultDir = "wasb:///user/remoteuser/NYCTaxi/ScoredResults/"; 
 
-    # FILE LOCATIONS FOR THE MODELS TO BE SCORED
+    # FILE LOCATIONS FOR hello MODELS tooBE SCORED
     logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-04-1817_40_35.796789"
     linearRegFileLoc = modelDir + "LinearRegressionWithSGD_2016-04-1817_44_00.993832"
     randomForestClassificationFileLoc = modelDir + "RandomForestClassification_2016-04-1817_42_58.899412"
@@ -88,7 +88,7 @@ Tady je kód pro nastavení cesty k adresáři:
 DateTime.DateTime (2016, 4, 25, 23, 56, 19, 229403)
 
 ### <a name="import-libraries"></a>Importovat knihovny
-Nastavit kontext spark a importovat potřebné knihovny s následujícím kódem
+Nastavit kontext spark a importovat potřebné knihovny s hello následující kód
 
     #IMPORT LIBRARIES
     import pyspark
@@ -107,23 +107,23 @@ Nastavit kontext spark a importovat potřebné knihovny s následujícím kódem
 
 
 ### <a name="preset-spark-context-and-pyspark-magics"></a>Předvolby kontextu Spark a Magic PySpark
-Jádra PySpark, které jsou k dispozici s poznámkovými bloky Jupyter mít přednastavené kontextu. Proto není potřeba nastavit Spark nebo vývoji Hive kontexty explicitně před zahájením práce s aplikací. Tyto jsou dostupné ve výchozím nastavení. Tyto kontexty jsou:
+Hello jádra PySpark, které jsou k dispozici s poznámkovými bloky Jupyter mít přednastavené kontextu. Proto není nutné tooset kontexty Spark nebo Hive hello explicitně před zahájením práce s hello aplikací, které vyvíjíte. Tyto jsou dostupné ve výchozím nastavení. Tyto kontexty jsou:
 
 * sc - pro Spark 
 * sqlContext - pro Hive
 
-Poskytuje jádra PySpark některé předdefinované "Magic", které jsou speciální příkazy, které můžete volat s %%. Existují dva takové příkazy, které se používají v tyto ukázky kódu.
+Hello jádra PySpark poskytuje některé předdefinované "Magic", které jsou speciální příkazy, které můžete volat s %%. Existují dva takové příkazy, které se používají v tyto ukázky kódu.
 
-* **%% místní** zadat, že kód v další řádek se spustí místně. Kód musí být platný kód Python.
+* **%% místní** zadat, že je kód hello v dalších řádcích spuštěn místně. Kód musí být platný kód Python.
 * **%% sql -o<variable name>** 
-* Provede dotaz Hive proti sqlContext. Pokud je předán parametr -o, výsledek dotazu je uchován v %% lokální kontext Python jako Pandas dataframe.
+* Provede dotaz Hive proti hello sqlContext. Pokud není předán parametr -o hello hello výsledek dotazu hello je uchován v hello %% lokální kontext Python jako Pandas dataframe.
 
-Pro další informace o jádrech pro poznámkové bloky Jupyter a předdefinovanou "magics", poskytují, najdete v části [jádra dostupná pro poznámkové bloky Jupyter s HDInsight Spark Linux clusterů v HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).
+Pro další informace o hello jádra pro poznámkové bloky Jupyter a hello předdefinované "magics", poskytují, najdete v části [jádra dostupná pro poznámkové bloky Jupyter s HDInsight Spark Linux clusterů v HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).
 
 ## <a name="ingest-data-and-create-a-cleaned-data-frame"></a>Načítání dat a vytvořte rámeček vyčištěnými dat
-Tato část obsahuje kód pro řadu úkoly vyžadované ke zpracování příjmu dat do má vypočítat skóre. Číst v připojené k ukázce 0,1 % taxíkem služební cestě a tarif souboru (uložený jako soubor TSV), formát data a poté vytvoří vyčištění dat rámce.
+Tato část obsahuje hello kód pro řadu úloh vyžaduje tooingest hello data toobe vypočítat skóre. Čtení v připojené k ukázce 0,1 % hello taxíkem služební cestě a tarif souboru (uložený jako soubor TSV), formát hello dat a poté vytvoří vyčištění dat rámce.
 
-Taxíkem služební cestě a tarif soubory byly spojené na základě na postup uvedený v: [Team datové vědy procesu v akci: pomocí clusterů systému HDInsight Hadoop](machine-learning-data-science-process-hive-walkthrough.md) tématu.
+Hello taxíkem služební cestě a tarif soubory byly spojené na základě na hello postup uvedený v: [hello proces vědecké účely Team dat v akci: pomocí clusterů systému HDInsight Hadoop](machine-learning-data-science-process-hive-walkthrough.md) tématu.
 
     # INGEST DATA AND CREATE A CLEANED DATA FRAME
 
@@ -133,7 +133,7 @@ Taxíkem služební cestě a tarif soubory byly spojené na základě na postup 
     # IMPORT FILE FROM PUBLIC BLOB
     taxi_test_file = sc.textFile(taxi_test_file_loc)
 
-    # GET SCHEMA OF THE FILE FROM HEADER
+    # GET SCHEMA OF hello FILE FROM HEADER
     taxi_header = taxi_test_file.filter(lambda l: "medallion" in l)
 
     # PARSE FIELDS AND CONVERT DATA TYPE FOR SOME FIELDS
@@ -142,7 +142,7 @@ Taxíkem služební cestě a tarif soubory byly spojené na základě na postup 
                             float(p[11]),float(p[12]),p[13],p[14],p[15],p[16],p[17],p[18],float(p[19]),
                             float(p[20]),float(p[21]),float(p[22]),float(p[23]),float(p[24]),int(p[25]),int(p[26])))
 
-    # GET SCHEMA OF THE FILE FROM HEADER
+    # GET SCHEMA OF hello FILE FROM HEADER
     schema_string = taxi_test_file.first()
     fields = [StructField(field_name, StringType(), True) for field_name in schema_string.split('\t')]
     fields[7].dataType = IntegerType() #Pickup hour
@@ -178,24 +178,24 @@ Taxíkem služební cestě a tarif soubory byly spojené na základě na postup 
     # REGISTER DATA-FRAME AS A TEMP-TABLE IN SQL-CONTEXT
     taxi_df_test_cleaned.registerTempTable("taxi_test")
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **VÝSTUP:**
 
-Doba k provedení výše buňky: 46.37 sekund
+Doba trvání tooexecute nad buňku: 46.37 sekund
 
 ## <a name="prepare-data-for-scoring-in-spark"></a>Příprava dat pro vyhodnocování v Spark
-V této části ukazuje, jak index, kódovat a škálování kategorií funkce, které chcete připravit je pro použití v MLlib pod dohledem learning algoritmy pro klasifikaci a regrese.
+Tato část popisuje, jak tooindex, kódovat a škálování kategorií funkce tooprepare je pro použití v algoritmů učení MLlib pod dohledem pro klasifikaci a regrese.
 
 ### <a name="feature-transformation-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>Funkce transformace: index a kódování kategorií funkce pro vstup do modely pro vyhodnocování
-V této části ukazuje, jak index kategorizovaná data pomocí `StringIndexer` a kódování funkcí s `OneHotEncoder` vstup na modely.
+Tato část uvádí, jak tooindex kategorizovaná data pomocí `StringIndexer` a kódování funkcí s `OneHotEncoder` vstup na modely hello.
 
-[StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) kóduje sloupec řetězce popisků ke sloupci popisek indexy. Indexy jsou seřazené podle četnosti popisek. 
+Hello [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) kóduje sloupec řetězce popisky tooa sloupce popisek indexů. Hello indexy, které jsou seřazené podle četnosti popisek. 
 
-[OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) mapuje sloupec popisek indexů ke sloupci binárního vektory, s maximálně jednu jeden – hodnotu. Toto kódování umožňuje algoritmy, které očekávají průběžné cenná funkce, jako je logistic regression, má být použita pro kategorií funkce.
+Hello [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) mapuje sloupec popisek indexy tooa sloupce binární vektorů s maximálně jednu jeden – hodnotu. Toto kódování umožňuje algoritmy, které očekávají průběžné cenná funkce, jako je logistic regression funkce toocategorical toobe použít.
 
     #INDEX AND ONE-HOT ENCODE CATEGORICAL FEATURES
 
@@ -224,7 +224,7 @@ V této části ukazuje, jak index kategorizovaná data pomocí `StringIndexer` 
 
     # INDEX AND ONE-HOT ENCODING
     stringIndexer = StringIndexer(inputCol="vendor_id", outputCol="vendorIndex")
-    model = stringIndexer.fit(taxi_df_test_with_newFeatures) # Input data-frame is the cleaned one from above
+    model = stringIndexer.fit(taxi_df_test_with_newFeatures) # Input data-frame is hello cleaned one from above
     indexed = model.transform(taxi_df_test_with_newFeatures)
     encoder = OneHotEncoder(dropLast=False, inputCol="vendorIndex", outputCol="vendorVec")
     encoded1 = encoder.transform(indexed)
@@ -250,19 +250,19 @@ V této části ukazuje, jak index kategorizovaná data pomocí `StringIndexer` 
     encoder = OneHotEncoder(dropLast=False, inputCol="TrafficTimeBinsIndex", outputCol="TrafficTimeBinsVec")
     encodedFinal = encoder.transform(indexed)
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **VÝSTUP:**
 
-Doba k provedení výše buňky: 5.37 sekund
+Doba trvání tooexecute nad buňku: 5.37 sekund
 
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>Vytvoření RDD objektů s poli funkce pro vstup na modely
-Tato část obsahuje kód, který ukazuje, jak index kategorií textová data jako objekt RDD a jeden horkou zakódovat je, proto ji můžete použít pro trénování a testování MLlib logistic regression a na základě stromu modely. Indexované data jsou uložena v [odolné distribuované datovou sadu (RDD)](http://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) objekty. Jedná se o základní abstrakci v Spark. Objekt RDD představuje kolekci neměnné, oddílů elementů, které lze provozovat na paralelně s Spark.
+Tato část obsahuje kód, který popisuje, jak tooindex kategorií textová data jako RDD objektů a jeden horkou zakódovat je tedy možné ji použít tootrain a testování MLlib logistic regression a na základě stromu modely. Hello indexované data jsou uložena v [odolné distribuované datovou sadu (RDD)](http://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) objekty. Jedná se o základní abstrakce hello v Spark. Objekt RDD představuje kolekci neměnné, oddílů elementů, které lze provozovat na paralelně s Spark.
 
-Také obsahuje kód, který ukazuje, jak škálování dat pomocí `StandardScalar` poskytované MLlib pro použití v lineární regrese s Stochastického přechodu klesání (SGD), oblíbených algoritmus pro trénování širokou škálu modely machine learning. [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) se používá funkce, které chcete odchylku jednotky škálování. Funkce škálování, známé taky jako data normalizaci zajistí, že funkce široce Celková uhrazená hodnotami není zadaný nadměrné naváží ve funkci cíle. 
+Také obsahuje kód, který ukazuje, jak tooscale dat pomocí hello `StandardScalar` poskytované MLlib pro použití v lineární regrese s Stochastického přechodu klesání (SGD), oblíbených algoritmus pro trénování širokou škálu modely machine learning. Hello [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) je použité tooscale hello funkce toounit odchylky. Funkce škálování, známé taky jako data normalizaci zajistí, že funkce široce Celková uhrazená hodnotami není zadaný nadměrné naváží ve funkci cíle hello. 
 
     # CREATE RDD OBJECTS WITH FEATURE ARRAYS FOR INPUT INTO MODELS
 
@@ -324,17 +324,17 @@ Také obsahuje kód, který ukazuje, jak škálování dat pomocí `StandardScal
     oneHotTESTreg.cache();
     oneHotTESTregScaled.cache();
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **VÝSTUP:**
 
-Doba k provedení výše buňky: 11.72 sekund
+Doba trvání tooexecute nad buňku: 11.72 sekund
 
-## <a name="score-with-the-logistic-regression-model-and-save-output-to-blob"></a>Stanovení skóre s modelem Logistic Regression a ukládání výstupu do objektu blob
-Kód v této části ukazuje, jak načíst Logistic regresní Model, který byl uložen v úložišti objektů blob v Azure a použít ho k předvídání, zda je na cestě taxíkem placené tip, skóre s standardní klasifikace metriky a potom uložte a vykreslení výsledky do objektu blob stora ge. Scored výsledky jsou uloženy v RDD objekty. 
+## <a name="score-with-hello-logistic-regression-model-and-save-output-tooblob"></a>Stanovení skóre s hello Logistic regresní Model a uložte tooblob výstup
+Hello kód v této části popisuje, jak úložiště objektů blob tooload Logistic regresní Model, který byl uložen v Azure a použít na cestě taxíkem toopredict, jestli je tip placené, skóre s standardní klasifikace metriky a potom uložte a vykreslení tooblob výsledky hello úložiště. Hello skóre pro magnitudu výsledky jsou uloženy v RDD objekty. 
 
     # SCORE AND EVALUATE LOGISTIC REGRESSION MODEL
 
@@ -348,26 +348,26 @@ Kód v této části ukazuje, jak načíst Logistic regresní Model, který byl 
     savedModel = LogisticRegressionModel.load(sc, logisticRegFileLoc)
     predictions = oneHotTESTbinary.map(lambda features: (float(savedModel.predict(features))))
 
-    ## SAVE SCORED RESULTS (RDD) TO BLOB
+    ## SAVE SCORED RESULTS (RDD) tooBLOB
     datestamp = unicode(datetime.datetime.now()).replace(' ','').replace(':','_');
     logisticregressionfilename = "LogisticRegressionWithLBFGS_" + datestamp + ".txt";
     dirfilename = scoredResultDir + logisticregressionfilename;
     predictions.saveAsTextFile(dirfilename)
 
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds";
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds";
 
 **VÝSTUP:**
 
-Doba k provedení výše buňky: 19.22 sekund
+Doba trvání tooexecute nad buňku: 19.22 sekund
 
 ## <a name="score-a-linear-regression-model"></a>Určení skóre modelu lineární regrese
-Použili jsme [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) ke cvičení model lineární regrese pomocí Stochastického přechodu klesání (SGD) pro optimalizaci k předvídání množství tip placené. 
+Použili jsme [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) tootrain placené model lineární regrese pomocí Stochastického přechodu klesání (SGD) pro optimalizaci toopredict hello množství tip. 
 
-Kód v této části ukazuje, jak načíst Model lineární regrese z Azure blob storage, stanovení skóre pomocí škálovat proměnné a poté uložte výsledky zpět na objekt blob.
+Hello kód v této části ukazuje, jak tooload Model lineární regrese z Azure blob storage, stanovení skóre pomocí škálovat proměnných a potom uložte hello výsledky zpět toohello objektů blob.
 
     #SCORE LINEAR REGRESSION MODEL
 
@@ -387,20 +387,20 @@ Kód v této části ukazuje, jak načíst Model lineární regrese z Azure blob
     dirfilename = scoredResultDir + linearregressionfilename;
     predictions.saveAsTextFile(dirfilename)
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 
 **VÝSTUP:**
 
-Doba k provedení výše buňky: 16.63 sekund
+Doba trvání tooexecute nad buňku: 16.63 sekund
 
 ## <a name="score-classification-and-regression-random-forest-models"></a>Stanovení skóre klasifikace a regrese náhodných modely doménové struktury
-Kód v této části ukazuje, jak načíst uložené klasifikace a regrese náhodných doménové struktury modely uloží do úložiště objektů blob v Azure, stanovení skóre výkonu s standardní třídění a regrese míry a potom uložte výsledky zpět do úložiště objektů blob.
+Hello kód v této části ukazuje, jak uložit tooload hello klasifikace a regrese náhodných doménové struktury modely uloží do úložiště objektů blob v Azure, stanovení skóre výkonu s standardní třídění a regrese míry a potom uložte hello výsledky zpět tooblob úložiště.
 
-[Náhodné doménových strukturách](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) jsou komplety rozhodovací stromy.  Že kombinují mnoho rozhodovacích stromů, aby se snížilo riziko overfitting. Náhodné doménových struktur dokáže zpracovat kategorií funkce rozšíření pro nastavení více třídami klasifikace, nevyžadují funkce škálování a mohli zaznamenat nelineárností a funkci interakce. Náhodné doménových strukturách jsou jedním z těch nejúspěšnějších strojového učení modely pro klasifikaci a regrese.
+[Náhodné doménových strukturách](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) jsou komplety rozhodovací stromy.  Že kombinují mnoho rozhodovací stromy tooreduce hello riziko overfitting. Náhodné doménových struktur dokáže zpracovat kategorií funkce rozšířit nastavení toohello více třídami klasifikace, nevyžadují funkce škálování a jsou možné toocapture nelineárností a funkce, interakce. Náhodné doménových strukturách jsou jedním z hello těch nejúspěšnějších modelů strojového učení pro klasifikaci a regrese.
 
 [Spark.mllib](http://spark.apache.org/mllib/) podporuje náhodných doménové struktury pro více třídami a binární klasifikaci a pro regresní pomocí funkce nepřetržitý a kategorií. 
 
@@ -413,7 +413,7 @@ Kód v této části ukazuje, jak načíst uložené klasifikace a regrese náho
     from pyspark.mllib.tree import RandomForest, RandomForestModel
 
 
-    # CLASSIFICATION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK TO BLOB
+    # CLASSIFICATION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK tooBLOB
     savedModel = RandomForestModel.load(sc, randomForestClassificationFileLoc)
     predictions = savedModel.predict(indexedTESTbinary)
 
@@ -424,7 +424,7 @@ Kód v této části ukazuje, jak načíst uložené klasifikace a regrese náho
     predictions.saveAsTextFile(dirfilename)
 
 
-    # REGRESSION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK TO BLOB
+    # REGRESSION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK tooBLOB
     savedModel = RandomForestModel.load(sc, randomForestRegFileLoc)
     predictions = savedModel.predict(indexedTESTreg)
 
@@ -434,21 +434,21 @@ Kód v této části ukazuje, jak načíst uložené klasifikace a regrese náho
     dirfilename = scoredResultDir + rfregressionfilename;
     predictions.saveAsTextFile(dirfilename)
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds";
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds";
 
 **VÝSTUP:**
 
-Doba k provedení výše buňky: 31.07 sekund
+Doba trvání tooexecute nad buňku: 31.07 sekund
 
 ## <a name="score-classification-and-regression-gradient-boosting-tree-models"></a>Stanovení skóre klasifikace a regrese přechodu zvyšovat skóre stromu modely
-Kód v této části ukazuje, jak načíst klasifikace a regrese přechodu zvyšovat skóre stromu modely z Azure blob storage, stanovení skóre výkonu s standardní třídění a regrese opatření a poté uložte výsledky zpět do úložiště objektů blob. 
+Hello kód v této části ukazuje, jak tooload klasifikace a regrese přechodu zvyšovat skóre stromu modely z Azure blob storage, stanovení skóre výkonu s standardní třídění a regrese míry a potom uložte hello výsledky zpět tooblob úložiště. 
 
 **Spark.mllib** podporuje GBTs pro binární klasifikaci a pro regresní pomocí funkce nepřetržitý a kategorií. 
 
-[Přechodu zvyšovat skóre stromy](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) jsou komplety rozhodovací stromy. GBTs cvičení stromů rozhodnutí interaktivně, aby se minimalizoval funkci ztrátu. GBTs může zpracovat kategorií funkce, nevyžadují funkce škálování a mohli zaznamenat nelineárností a funkci interakce. Můžete také používají v nastavení multiclass klasifikace.
+[Přechodu zvyšovat skóre stromy](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) jsou komplety rozhodovací stromy. GBTs train rozhodovací stromy interaktivně toominimize funkci ztrátu. GBTs může zpracovat kategorií funkce, nevyžadují funkce škálování a jsou možné toocapture nelineárností a funkce, interakce. Můžete také používají v nastavení multiclass klasifikace.
 
     # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -458,9 +458,9 @@ Kód v této části ukazuje, jak načíst klasifikace a regrese přechodu zvyš
     #IMPORT MLLIB LIBRARIES
     from pyspark.mllib.tree import GradientBoostedTrees, GradientBoostedTreesModel
 
-    # CLASSIFICATION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK TO BLOB
+    # CLASSIFICATION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK tooBLOB
 
-    #LOAD AND SCORE THE MODEL
+    #LOAD AND SCORE hello MODEL
     savedModel = GradientBoostedTreesModel.load(sc, BoostedTreeClassificationFileLoc)
     predictions = savedModel.predict(indexedTESTbinary)
 
@@ -471,7 +471,7 @@ Kód v této části ukazuje, jak načíst klasifikace a regrese přechodu zvyš
     predictions.saveAsTextFile(dirfilename)
 
 
-    # REGRESSION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK TO BLOB
+    # REGRESSION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK tooBLOB
 
     # LOAD AND SCORE MODEL 
     savedModel = GradientBoostedTreesModel.load(sc, BoostedTreeRegressionFileLoc)
@@ -484,14 +484,14 @@ Kód v této části ukazuje, jak načíst klasifikace a regrese přechodu zvyš
     predictions.saveAsTextFile(dirfilename)
 
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **VÝSTUP:**
 
-Doba k provedení nad buňku: 14.6 sekund
+Doba trvání tooexecute nad buňku: 14.6 sekund
 
 ## <a name="clean-up-objects-from-memory-and-print-scored-file-locations"></a>Vyčištění objektů z paměti a tisk skóre pro magnitudu umístění souborů
     # UNPERSIST OBJECTS CACHED IN MEMORY
@@ -503,7 +503,7 @@ Doba k provedení nad buňku: 14.6 sekund
     oneHotTESTregScaled.unpersist();
 
 
-    # PRINT OUT PATH TO SCORED OUTPUT FILES
+    # PRINT OUT PATH tooSCORED OUTPUT FILES
     print "logisticRegFileLoc: " + logisticregressionfilename;
     print "linearRegFileLoc: " + linearregressionfilename;
     print "randomForestClassificationFileLoc: " + rfclassificationfilename;
@@ -527,38 +527,38 @@ BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-031
 BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
 
 ## <a name="consume-spark-models-through-a-web-interface"></a>Využívat modely Spark pomocí webového rozhraní
-Spark poskytuje mechanismus vzdáleně odeslat úlohy batch nebo interaktivní dotazy pomocí rozhraní REST s komponenty s názvem Livy. Livy je povoleno ve výchozím nastavení v clusteru HDInsight Spark. Další informace o Livy najdete v tématu: [úlohy odeslání Spark vzdáleně pomocí Livy](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md). 
+Spark poskytuje mechanismus tooremotely odeslání dávkových úloh nebo interaktivních dotazů prostřednictvím REST rozhraní s komponenty s názvem Livy. Livy je povoleno ve výchozím nastavení v clusteru HDInsight Spark. Další informace o Livy najdete v tématu: [úlohy odeslání Spark vzdáleně pomocí Livy](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md). 
 
-Livy můžete vzdáleně odeslat úlohu, která dávky skóre soubor, který je uložený v objektu blob Azure a pak zapíše výsledky do jiného objektu blob. K tomuto účelu můžete odeslat skript Python z  
-[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) do objektu blob clusteru Spark. Můžete použít nástroje, jako je **Microsoft Azure Storage Explorer** nebo **AzCopy** zkopírujte skript do objektu blob clusteru. V našem případě jsme skript, který chcete nahrát ***wasb:///example/python/ConsumeGBNYCReg.py***.   
+Můžete použít Livy tooremotely odeslat úlohu, která dávky skóre soubor, který je uložený v objektu blob Azure a pak zapíše hello výsledky tooanother objektů blob. toodo, můžete nahrávat na server hello skript v jazyce Python z  
+[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) toohello blob clusteru Spark hello. Můžete použít nástroje, jako je **Microsoft Azure Storage Explorer** nebo **AzCopy** toocopy hello skriptu toohello clusteru blob. V našem případě jsme příliš nahrán hello skriptu***wasb:///example/python/ConsumeGBNYCReg.py***.   
 
 > [!NOTE]
-> Přístupové klávesy, které budete potřebovat naleznete na portálu pro účet úložiště související s clusterem Spark. 
+> Hello přístupové klíče, které můžete potřebovat naleznete na portálu hello pro účet úložiště hello spojené s clusterem Spark hello. 
 > 
 > 
 
-Po nahrání do tohoto umístění tento skript se spouští v rámci clusteru Spark v distribuované kontextu. Načítá modelu a spouští na vstupní soubory na základě modelu předpovědi.  
+Po nahrání toothis umístění tento skript se spouští v rámci clusteru Spark hello v distribuované kontextu. Načítá hello modelu a spouští předpovědi na vstupní soubory na základě modelu hello.  
 
-Tento skript můžete spustit vzdáleně pomocí jednoduchého požadavku HTTPS nebo REST na Livy.  Zde je příkaz curl k vytvoření žádosti HTTP určený k vyvolání skript Pythonu vzdáleně. Nahraďte příslušnými hodnotami pro váš cluster Spark CLUSTERLOGIN, CLUSTERPASSWORD, název clusteru.
+Tento skript můžete spustit vzdáleně pomocí jednoduchého požadavku HTTPS nebo REST na Livy.  Zde je vzdáleně curl příkaz tooconstruct hello HTTP žádost tooinvoke hello skript v jazyce Python. Nahraďte CLUSTERLOGIN, CLUSTERPASSWORD, CLUSTERNAME hello odpovídající hodnoty pro váš cluster Spark.
 
-    # CURL COMMAND TO INVOKE PYTHON SCRIPT WITH HTTP REQUEST
+    # CURL COMMAND tooINVOKE PYTHON SCRIPT WITH HTTP REQUEST
 
     curl -k --user "CLUSTERLOGIN:CLUSTERPASSWORD" -X POST --data "{\"file\": \"wasb:///example/python/ConsumeGBNYCReg.py\"}" -H "Content-Type: application/json" https://CLUSTERNAME.azurehdinsight.net/livy/batches
 
-Jakýkoli jazyk ve vzdáleném systému slouží k vyvolání úlohy Spark pomocí Livy tím, že jednoduché volání HTTPS se základním ověřováním.   
+Můžete použít jakýkoli jazyk u hello vzdálený systém tooinvoke hello Spark úlohy pomocí Livy tím, že jednoduché volání HTTPS se základním ověřováním.   
 
 > [!NOTE]
-> Je vhodné na používání knihovny, Python požadavky při provádění této volání protokolu HTTP, ale není momentálně nainstalována ve výchozím nastavení v Azure Functions. Aby se místo toho používat starší knihovny HTTP.   
+> Je vhodné toouse hello Python požadavky knihovny při provádění této volání protokolu HTTP, ale není momentálně nainstalována ve výchozím nastavení v Azure Functions. Aby se místo toho používat starší knihovny HTTP.   
 > 
 > 
 
-Tady je kód Python pro volání protokolu HTTP:
+Zde je kód Python hello hello HTTP volání:
 
     #MAKE AN HTTPS CALL ON LIVY. 
 
     import os
 
-    # OLDER HTTP LIBRARIES USED HERE INSTEAD OF THE REQUEST LIBRARY AS THEY ARE AVAILBLE BY DEFAULT
+    # OLDER HTTP LIBRARIES USED HERE INSTEAD OF hello REQUEST LIBRARY AS THEY ARE AVAILBLE BY DEFAULT
     import httplib, urllib, base64
 
     # REPLACE VALUE WITH ONES FOR YOUR SPARK CLUSTER
@@ -571,21 +571,21 @@ Tady je kód Python pro volání protokolu HTTP:
     auth = base64.encodestring('%s:%s' % (username, password)).replace('\n', '')
     headers = {'Content-Type': 'application/json', 'Authorization': 'Basic %s' % auth}
 
-    # SPECIFY THE PYTHON SCRIPT TO RUN ON THE SPARK CLUSTER
-    # IN THE FILE PARAMETER OF THE JSON POST REQUEST BODY
+    # SPECIFY hello PYTHON SCRIPT tooRUN ON hello SPARK CLUSTER
+    # IN hello FILE PARAMETER OF hello JSON POST REQUEST BODY
     r=conn.request("POST", '/livy/batches', '{"file": "wasb:///example/python/ConsumeGBNYCReg.py"}', headers )
     response = conn.getresponse().read()
     print(response)
     conn.close()
 
 
-Můžete také přidat tento kód Python, aby [Azure Functions](https://azure.microsoft.com/documentation/services/functions/) k aktivaci úlohy odeslání Spark, která skóre na základě různých událostí jako časovače, vytvoření nebo aktualizace objektu blob objektu blob. 
+Můžete také přidat tento kód Python příliš[Azure Functions](https://azure.microsoft.com/documentation/services/functions/) tootrigger odeslání úlohy Spark, která skóre objekt blob podle různých událostí jako časovače, vytvoření nebo aktualizace objektu blob. 
 
-Pokud dáváte přednost volné klientského prostředí kódu, použijte [Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) k vyvolání Spark dávkového vyhodnocování definováním akce HTTP na **logiku aplikace Návrhář** a nastavení jeho parametry. 
+Pokud dáváte přednost volné klientského prostředí kódu, použijte hello [Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) tooinvoke hello Spark dávkového vyhodnocování definováním akce HTTP na hello **logiku aplikace Návrhář** a nastavení jeho parametry. 
 
 * Z portálu Azure vytvořit novou aplikaci logiky výběrem **+ nový** -> **Web + mobilní** -> **aplikace logiky**. 
-* Se zprovoznit **logiku aplikace Návrhář**, zadejte název aplikace logiky a plán služby App Service.
-* Vyberte akci HTTP a zadejte parametry vidět na následujícím obrázku:
+* toobring až hello **logiku aplikace Návrhář**, zadejte název hello hello aplikace logiky a plán služby App Service.
+* Vyberte akci HTTP a zadejte parametry hello znázorňuje následující obrázek hello:
 
 ![Návrhář aplikace logiky](./media/machine-learning-data-science-spark-model-consumption/spark-logica-app-client.png)
 

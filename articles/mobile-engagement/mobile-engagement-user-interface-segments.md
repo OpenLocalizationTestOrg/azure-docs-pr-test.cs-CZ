@@ -1,6 +1,6 @@
 ---
-title: "Azure Mobile Engagement uživatelské rozhraní – segmenty"
-description: "Postup vytvoření a správa segmentů uživatelů pro identifikaci vzorů využití pomocí Azure Mobile Engagement"
+title: "aaaAzure Mobile Engagement uživatelské rozhraní – segmenty"
+description: "Zjistěte, jak toocreate a správa segmentů uživatelů tooidentify vzorce pomocí Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 087f4a1fef420abe9669f8dfe2b84c7a847ce263
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bb214c45d05ebfbf243978658a7e331d4a7c6e0e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-create-and-manage-segments-of-users-to-identify-usage-patterns"></a>Postup vytvoření a správa segmentů uživatelů pro identifikaci vzorů využití
-Tento článek popisuje **SEGMENTY** kartě **Mobile Engagement** portálu. Můžete použít **Mobile Engagement** portálu ke sledování a správě mobilních aplikací.
+# <a name="how-toocreate-and-manage-segments-of-users-tooidentify-usage-patterns"></a>Jak toocreate a správa segmentů uživatelů tooidentify vzorce
+Tento článek popisuje hello **SEGMENTY** kartě hello **Mobile Engagement** portálu. Použít hello **Mobile Engagement** portálu toomonitor a spravovat své mobilní aplikace.
 
-Části segmenty rozhraní umožňuje pracovat na segmentace uživatelů na základě různých chování a analýz, které můžete získat z aplikace a můžete také přistupovat prostřednictvím rozhraní API segmenty. Segmenty se vypočítávají nejprve 24 hodin po jejich vytvoření a jejich jsou přepočítávány každých 24 hodin na základě nejnovější analytics informací. Jakmile se počítá segment, zobrazuje graf "Dne do historie den" každý den.
+část segmenty Hello hello uživatelského rozhraní můžete toowork na segmentace uživatelů na základě hello různé chování a analýz, které můžete získat z aplikace hello a můžete také přistupovat prostřednictvím hello segmenty rozhraní API. Segmenty se vypočítávají nejprve 24 hodin po jejich vytvoření a jejich jsou přepočítávány každých 24 hodin na základě hello nejnovější analytics informací. Jakmile se počítá segment, zobrazuje graf "Den tooday historie" každý den.
 
 > [!NOTE]
-> Mnoho části **Mobile Engagement** portál obsahovat uživatelského rozhraní **zobrazit NÁPOVĚDU k** tlačítko. Chcete-li získat další kontextové informace o oddílu na toto tlačítko.
+> Mnoho oddílů hello **Mobile Engagement** portál uživatelského rozhraní obsahovat hello **zobrazit NÁPOVĚDU k** tlačítko. Stisknutím tohoto tlačítka tooget další kontextové informace o oddílu.
 > 
 > 
 
 ## <a name="create-segments"></a>Vytvoření segmentů
-Můžete vytvořit na základě až 10 kritérií na určitou dobu až na 60 dnů v minulosti z části analytics segment. Můžete například vytvořit segment podle osob, které se mají zobrazit určité stránky nebo vyhledávat konkrétní obsahu v aplikaci během posledních 10 dnů. Tyto informace jsou k dispozici v části analytics. Ano můžete ho vytvořit segment, a pak nastavte nabízených oznámení pro tuto podmnožinu uživatelů potřebujete, aby se vraťte k aplikaci. 
+Můžete vytvořit na základě až too10 kritéria na určitou dobu až too60 dní v hello segment minulosti z oddílu analytics hello. Můžete například vytvořit segment podle hello lidé, kteří mají zobrazit určité stránky nebo vyhledávat konkrétní obsahu v rámci vaší aplikace v rámci hello posledních 10 dnů. Tyto informace jsou k dispozici v části analytics hello. Ano, můžete ho použít toocreate segment a pak nastavit nabízených oznámení tootarget tuto podmnožinu uživatelů tooget je toocome back toohello aplikace. 
 
 > [!NOTE]
-> Jakmile je vypočítána segment, nemůže být upraven; může být pouze klonovat (zkopírovaný) nebo zničení (odstraněno). Segment můžete klonovat stejné aplikace (se stejným ID aplikace), a můžete ho také klonovat do jiných aplikací (s jinou AppID). 
+> Jakmile je vypočítána segment, nemůže být upraven; může být pouze klonovat (zkopírovaný) nebo zničení (odstraněno). Segment můžete klonovat v rámci hello stejnou aplikaci (s hello stejné AppID), a můžete ho také klonovat do jiných aplikací (s jinou AppID). 
 
  ![segments1][35] 
 
 ## <a name="examples-segments"></a>Příklady segmenty
  ![segments2][36]
 
-Segmenty umožní segmentovat koncovým uživatelům vaší aplikace.
-Segmentace vaši uživatelé je důležité marketingové strategie. Azure Mobile Engagement vám umožňuje získat historických dat a vytvořte vlastní segmenty. Tento výkonný nástroj umožňuje další informace o zákazníkům ve vaší aplikaci. Můžete snadno analyzovat segmenty a použít jako cíle nabízené segmenty.
-Běžné případ použití je chcete odesílat oznámení oznámení na podporu koncovým uživatelům, aby hodnocení aplikace v úložišti. Místo odesílání oznámení do všichni vaši koncoví uživatelé, můžete vytvořit segment, který byste zadat jenom uživatelé, kteří použili aplikaci každý den pro poslední měsíc a neměla skvělé uživatelské prostředí. Jakmile odešlete méně, vysoce cílové nabízená oznámení, získáte lepší návratnost investic.
+Segmenty umožní koncovým uživatelům hello toosegment vaší aplikace.
+Segmentace vaši uživatelé je důležité marketingové strategie. Azure Mobile Engagement vám umožní tooget historických dat a vytvořte vlastní segmenty. Tento výkonný nástroj umožňuje toolearn o zákazníkům ve vaší aplikaci. Můžete snadno analyzovat segmenty a použít jako cíle nabízené segmenty.
+Je běžné případ použití, které chcete toosend nabízená oznámení tooencourage vaši koncoví uživatelé toorate aplikace v úložišti hello. Místo odesílání oznámení tooall koncovým uživatelům, můžete vytvořit segment, který byste zadat jenom uživatelé, kteří použili aplikaci každý den pro hello poslední měsíc a neměla skvělé uživatelské prostředí. Jakmile odešlete méně, vysoce cílové nabízená oznámení, získáte lepší návratnost investic.
 
  ![segments3][37]
 
-### <a name="segments-you-can-create-based-on-the-major-azure-mobile-engagement-elements"></a>Segmenty, které můžete vytvořit na základě hlavní Azure Mobile Engagement prvků:
-* Události: vytvoření segment tohoto cíle jeden konkrétní události aplikace, která došlo k více než dvakrát týdně. 
-* Relace: vytvoření segment uživatelů, kteří použili aplikaci více než 5 výskyty minulého týdne.
+### <a name="segments-you-can-create-based-on-hello-major-azure-mobile-engagement-elements"></a>Segmenty, které můžete vytvořit podle hello důležité elementy: Azure Mobile Engagement:
+* Události: vytvoření segment tohoto cíle jeden konkrétní události hello aplikace, která došlo k více než dvakrát týdně. 
+* Relace: vytvoření segment uživatelů, kteří použili aplikaci hello více než 5 výskyty minulého týdne.
 * Aktivita: vytvořte segment uživatelů, kteří použili jednu stránku nebo obsah vyšší nebo nižší než 10 čas poslední měsíc.
 * Úlohu: vytvořte segment uživatelů, kteří dokončili úlohy maximálně dvakrát denně.
-* Havárií: vytvořte segment všechny uživatele, kteří předtím havárie více než 10 výskyty minulého týdne. (Tento segment omluva nebo i kupónů může push!)
-* Chyba: vytvořte segment všechny uživatele, kteří mají došlo k chybě víc než 100krát poslední 3 dny.
-* Informace o aplikaci: vytvořte segment, který cílí vlastní informace o aplikaci, kterým došlo během posledních 25 dnů.
+* Havárií: vytvořte segment všech uživatelů hello, které má havárie více než 10 výskyty minulého týdne. (Tento segment omluva nebo i kupónů může push!)
+* Chyba: vytvořte segment všechny hello uživatele, kteří mají došlo k chybě víc než 100krát poslední 3 dny.
+* Informace o aplikaci: vytvořte segment, který cílí vlastní informace o aplikaci, která nastala v průběhu hello posledních 25 dnů.
   
   ![segments4][38]
 
-Pokud chcete použít Segment s optimálně, musíte provést vlastní integrace sady SDK v aplikaci s označování plánu značek "Informace o aplikaci".
-Potom přejděte na domovskou stránku rozhraní, vyberte aplikaci a klikněte na v části "Segmenty".
+toouse Segment s optimálně, musíte provést vlastní integrace hello SDK v aplikaci s označování plánu značek "Informace o aplikaci".
+Pak přejděte toohello domovskou stránku hello rozhraní, vyberte hello aplikace a klikněte na v oddílu "Segmenty" hello.
 
-1. Vyberte v části "Segmenty".
-2. Klikněte na "nový segment" tlačítko vytvořte nový segment.
+1. Vyberte část "Segmenty" hello.
+2. Klikněte na hello "Nový segment" tlačítko toocreate nový segment.
 
 ## <a name="real-life-example-create-a-simple-segment-based-on-session-information"></a>Skutečné životnosti příklad: Vytvoření jednoduché segmentu na základě informací "Relace"
-Vytvořte segment všichni koncoví uživatelé, kteří použili aplikaci alespoň 50 časy během posledního týdne. Z tohoto místa najít pouze koncovým uživatelům, kteří mají stráví nejméně 30 sekund ve vaší aplikaci na relaci. Zobrazí všichni koncoví uživatelé, kteří mají pozitivní zkušenost ve vaší aplikaci. Potom segment vytvořili může nabízená oznámení pro tyto koncové uživatele a požádat ho o hodnocení aplikace v úložišti.
+Vytvořte segment všichni hello koncoví uživatelé, kteří použili aplikaci alespoň 50 časy v hello minulého týdne. Z tohoto místa najít pouze hello uživatelů, kteří mají stráví nejméně 30 sekund ve vaší aplikaci na relaci. Zobrazí všechny hello koncoví uživatelé, kteří mají pozitivní zkušenost ve vaší aplikaci. Potom hello segment vytvořili může být použité toopush tooask koncoví uživatelé toothese oznámení je toorate aplikace v rámci hello uložit.
 
  ![segments5][39]
 
-1. Chcete-li rychle najít v seznamu "Segment" Zadejte název segment.
-2. Klikněte na tlačítko "Vytvořit".
+1. Pojmenujte segment v pořadí toofind rychle v seznamu "Segment" hello.
+2. Klikněte na hello tlačítko "Vytvořit".
    
    ![segments6][40]
 
@@ -78,34 +78,34 @@ Vyberte relaci.
 
  ![segments7][41]
 
-1. Vyberte dobu "Poslední týden".
+1. Vyberte dobu hello "Poslední týden".
 2. Klikněte na tlačítko Další.
    
    ![segments8][42]
-3. Vyberte operátor, který je v seznamu relevantní: =; ≥, ≤.
-4. Zadejte počet chcete.
-5. Vyberte, chcete, aby výskyt. 
+3. Hello vyberte operátor, který je relevantní mezi seznamu hello: =; ≥, ≤.
+4. Zadejte počet chcete hello.
+5. Vyberte hello výskyt chcete. 
 6. Klikněte na tlačítko Další.
-   V tomto příkladu je nastaven tak přes poslední týden, odpovídající uživatelé, kteří provedli alespoň 50 relací.
+   V tomto příkladu je nastaven tak, že přes hello poslední týden, shodu uživatele, kteří provedli alespoň 50 relací.
    
    ![segments9][43]
 
-V případě segmentace relace můžete délka relace jako kritérium.
+Pro hello relace segmentace můžete hello délka relace jako kritérium.
 
-1. Vyberte operátor, ze seznamu.
-2. Zadejte délku na relaci.
+1. Vyberte ze seznamu hello hello operátor.
+2. Zadejte hello délka relace.
 3. Klikněte na Další.
-   V tomto příkladu se říká, že přes všechny relace, byla segmentované v oddílu výskyt, vyberte pouze uživatelé, kteří mají stráví déle než 30 sekund na relaci.
+   V tomto příkladu se říká, že na všech hello relací, které byly segmentované v oddílu hello výskyt, vyberte pouze hello uživatele, které strávily déle než 30 sekund na relaci.
    
    ![segments10][44]
 
-Chcete-li načíst trychtýře. úplný název kritériem a klikněte na tlačítko Dokončit.
+Název kritériem v pořadí tooretrieve bude v hello dokončit Trychtýřový a klikněte na tlačítko Dokončit.
 
  ![segments11][45]
 
-Po dokončení nastavení kritériem se zobrazí v segmentu trychtýřového grafu.
+Po dokončení nastavení kritériem se zobrazí v segmentu hello trychtýřového grafu.
 Protože segment je na základě analýzy dat, se vypočítávají segmenty jednou za den.
-V tomto příkladu 47,7 % celkový koncoví uživatelé shodná s kritériem. Měly by být uživatele, kteří mají dobrou prostředí a bude může zajistit vyšší hodnocení, pokud je nabízená oznámení, které je vyzývají k hodnocení aplikace v úložišti.
+V tomto příkladu 47,7 % celkový koncoví uživatelé hello shodná hello kritérium. Měly by být hello uživatelů, kteří mají měl kvalitní a bude se pravděpodobně tooprovide vyšší hodnocení, pokud je nabízená oznámení výzvou toorate hello aplikaci ve hello store.
 
 ## <a name="see-also"></a>Viz také
 * [Koncepty][Link 6]

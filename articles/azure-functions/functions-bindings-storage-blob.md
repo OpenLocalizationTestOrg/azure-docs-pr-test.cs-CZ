@@ -1,6 +1,6 @@
 ---
-title: Azure Blob Storage funkce vazby | Microsoft Docs
-description: "Pochopit, jak používat Azure Storage triggerů a vazeb v Azure Functions."
+title: "vazby funkce úložiště objektů Blob aaaAzure | Microsoft Docs"
+description: Pochopit, jak se aktivuje toouse Azure Storage a vazeb v Azure Functions.
 services: functions
 documentationcenter: na
 author: lindydonna
@@ -16,16 +16,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: 8d8f510ec906c0e0420ec48d45d88b93c144658a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: cef44bd2154d0b97cca9220b6c5024a5b620c80d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-blob-storage-bindings"></a>Vazby úložiště Azure Blob funkce
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Tento článek vysvětluje postup konfigurace a práce s Azure Blob storage vazeb v Azure Functions. Azure podporuje aktivaci funkce vstup a výstup vazby pro úložiště objektů Blob v Azure. Funkce, které jsou k dispozici v všechny vazby, najdete v části [Azure Functions triggerů a vazeb koncepty](functions-triggers-bindings.md).
+Tento článek vysvětluje, jak tooconfigure a práce s Azure Blob storage vazeb v Azure Functions. Azure podporuje aktivaci funkce vstup a výstup vazby pro úložiště objektů Blob v Azure. Funkce, které jsou k dispozici v všechny vazby, najdete v části [Azure Functions triggerů a vazeb koncepty](functions-triggers-bindings.md).
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -37,25 +37,25 @@ Tento článek vysvětluje postup konfigurace a práce s Azure Blob storage vaze
 <a name="storage-blob-trigger"></a>
 ## <a name="blob-storage-triggers-and-bindings"></a>Objekt BLOB úložiště triggerů a vazeb
 
-Pomocí aktivační událost úložiště objektů Blob v Azure, kódu funkce je volána, když je zjištěna nová nebo aktualizovaná objektu blob. Obsahu objektu blob jsou uvedeny jako vstup do funkce.
+Pomocí aktivační událost úložiště objektů Blob v Azure hello, kódu funkce je volána, když je zjištěna nová nebo aktualizovaná objektu blob. Hello obsahu objektu blob jsou uvedeny jako vstupní toohello funkce.
 
-Definovat pomocí aktivační události objektu blob úložiště **integrací** na portálu funkce. Vytvoří následující definice v portálu **vazby** části *function.json*:
+Zadejte aktivační události objektu blob úložiště pomocí hello **integrací** kartě hello funkce portálu. Hello portál vytvoří hello následující definice v hello **vazby** části *function.json*:
 
 ```json
 {
-    "name": "<The name used to identify the trigger data in your code>",
+    "name": "<hello name used tooidentify hello trigger data in your code>",
     "type": "blobTrigger",
     "direction": "in",
-    "path": "<container to monitor, and optionally a blob name pattern - see below>",
+    "path": "<container toomonitor, and optionally a blob name pattern - see below>",
     "connection": "<Name of app setting - see below>"
 }
 ```
 
-Objekt BLOB vstup a výstup vazby jsou definovány pomocí `blob` jako typ vazby:
+Objekt BLOB vstup a výstup vazby jsou definovány pomocí `blob` jako typ vazby hello:
 
 ```json
 {
-  "name": "<The name used to identify the blob input in your code>",
+  "name": "<hello name used tooidentify hello blob input in your code>",
   "type": "blob",
   "direction": "in", // other supported directions are "inout" and "out"
   "path": "<Path of input blob - see below>",
@@ -63,38 +63,38 @@ Objekt BLOB vstup a výstup vazby jsou definovány pomocí `blob` jako typ vazby
 },
 ```
 
-* `path` Podporuje vlastnost vazby výrazy a parametry filtrování. V tématu [název vzory](#pattern).
-* `connection` Vlastnost musí obsahovat název nastavení aplikace, který obsahuje připojovací řetězec úložiště. Na portálu Azure, standardního editoru v **integrací** kartě nakonfiguruje toto nastavení aplikace pro vás, když vyberete účet úložiště.
+* Hello `path` podporuje vlastnost vazby výrazy a parametry filtrování. V tématu [název vzory](#pattern).
+* Hello `connection` vlastnost musí obsahovat název hello nastavení aplikace, který obsahuje připojovací řetězec úložiště. V hello portálu Azure, hello standardního editoru v hello **integrací** kartě nakonfiguruje toto nastavení aplikace pro vás, když vyberete účet úložiště.
 
 > [!NOTE]
-> Pokud používáte aktivační události objektu blob na plánu spotřeby, může být až 10 minut zpoždění při zpracování nové objekty BLOB po aplikaci funkce přešel nečinnosti. Po aplikaci funkce běží, objekty BLOB jsou zpracovávány okamžitě. Abyste se vyhnuli Tato počáteční prodleva, zvažte jednu z následujících možností:
+> Pokud používáte aktivační události objektu blob na plánu spotřeby, může být až 10 minut zpoždění tooa při zpracování nové objekty BLOB po aplikaci funkce přešel nečinnosti. Po hello funkce aplikace běží, objekty BLOB jsou zpracovávány okamžitě. Tento počáteční tooavoid zpoždění, zvažte jednu hello následující možnosti:
 > - Plán služby App Service použijte s povolenou funkci Always On.
-> - Použijte jiný mechanismus pro aktivaci objektu blob zpracování, např. zprávu fronty, který obsahuje název objektu blob. Příklad, naleznete v části [vstupní frontě aktivační události s objektem blob vazby](#input-sample).
+> - Použijte jiný mechanismus tootrigger hello blob zpracování, např. zprávu fronty, který obsahuje název objektu blob hello. Příklad, naleznete v části [vstupní frontě aktivační události s objektem blob vazby](#input-sample).
 
 <a name="pattern"></a>
 
 ### <a name="name-patterns"></a>Vzory názvů
-Můžete zadat vzor názvu objektu blob v `path` vlastnosti, která může být výraz filtru nebo vazby. V tématu [vazby výrazy a vzory](functions-triggers-bindings.md#binding-expressions-and-patterns).
+Můžete zadat vzor názvu objektu blob v hello `path` vlastnosti, která může být výraz filtru nebo vazby. V tématu [vazby výrazy a vzory](functions-triggers-bindings.md#binding-expressions-and-patterns).
 
-Například pokud chcete filtrovat, aby objekty BLOB, které začínají řetězcem "původní", použijte následující definice. Tuto cestu vyhledá objekt blob s názvem *původní Blob1.txt* v *vstupní* kontejneru a hodnota `name` proměnná v kódu funkce `Blob1`.
+Tooblobs toofilter, které začínají řetězcem hello "původní", například použít následující definice hello. Tato cesta vyhledá objekt blob s názvem *původní Blob1.txt* v hello *vstupní* kontejneru a hodnota hello hello `name` proměnná v kódu funkce `Blob1`.
 
 ```json
 "path": "input/original-{name}",
 ```
 
-Pokud chcete vytvořit vazbu samostatně na název souboru objektů blob a příponu, použijte dva vzory. Tato cesta také vyhledá objekt blob s názvem *původní Blob1.txt*a hodnota `blobname` a `blobextension` proměnné v kódu funkce jsou *původní Blob1* a *txt*.
+Název souboru objektů blob toohello toobind a příponu samostatně, použijte dva vzory. Tato cesta také vyhledá objekt blob s názvem *původní Blob1.txt*a hodnota hello hello `blobname` a `blobextension` proměnné v kódu funkce jsou *původní Blob1* a *txt*.
 
 ```json
 "path": "input/{blobname}.{blobextension}",
 ```
 
-Typ souboru objektů BLOB můžete omezit pomocí příkazu pevnou hodnotu pro tuto příponu. Například aktivovat pouze u souborů, PNG, používají následující vzorec:
+Typ souboru hello objektů BLOB můžete omezit pomocí pevná hodnota pro příponu souboru hello. Například tootrigger pouze u souborů, PNG, hello použijte následující vzoru:
 
 ```json
 "path": "samples/{name}.png",
 ```
 
-Složené závorky jsou speciální znaky v vzory názvů. Pokud chcete zadat názvy objektů blob, které mají v názvu složené závorky, můžete vyhnuli složené závorky pomocí dvou složené závorky. Následující příklad vyhledá objekt blob s názvem *{20140101}-soundfile.mp3* v *bitové kopie* kontejner a `name` hodnotu proměnné v kód funkce je *soundfile.mp3*. 
+Složené závorky jsou speciální znaky v vzory názvů. názvy objektů blob toospecify, které mají v názvu hello složené závorky, můžete vyhnuli složené závorky hello pomocí dvou složené závorky. Hello následující příklad vyhledá objekt blob s názvem *{20140101}-soundfile.mp3* v hello *bitové kopie* kontejneru a hello `name` hodnotu proměnné v kódu funkce hello je  *soundfile.mp3*. 
 
 ```json
 "path": "images/{{20140101}}-{name}",
@@ -102,50 +102,50 @@ Složené závorky jsou speciální znaky v vzory názvů. Pokud chcete zadat n�
 
 ### <a name="trigger-metadata"></a>Aktivační událost metadat
 
-Aktivační události objektu blob nabízí několik vlastností metadat. Tyto vlastnosti lze použít jako součást výrazů vazby v jiných vazby nebo jako parametry v kódu. Tyto hodnoty mají stejnou sémantiku jako [CloudBlob](https://docs.microsoft.com/en-us/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob?view=azure-dotnet).
+aktivační události objektu blob Hello nabízí několik vlastností metadat. Tyto vlastnosti lze použít jako součást výrazů vazby v jiných vazby nebo jako parametry v kódu. Tyto hodnoty mají hello stejnou sémantiku jako [CloudBlob](https://docs.microsoft.com/en-us/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob?view=azure-dotnet).
 
-- **BlobTrigger**. Zadejte `string`. Spouštěcí objekt blob cesta
-- **Identifikátor URI**. Zadejte `System.Uri`. Identifikátor URI objektu blob pro primární umístění.
-- **Vlastnosti**. Zadejte `Microsoft.WindowsAzure.Storage.Blob.BlobProperties`. Vlastnosti systému objektu blob.
-- **Metadata**. Zadejte `IDictionary<string,string>`. Metadata definovaná uživatelem pro tento objekt blob.
+- **BlobTrigger**. Zadejte `string`. Cesta blobu spouštěcí Hello
+- **Identifikátor URI**. Zadejte `System.Uri`. identifikátor URI objektu Hello blob pro primární umístění hello.
+- **Vlastnosti**. Zadejte `Microsoft.WindowsAzure.Storage.Blob.BlobProperties`. Hello vlastnosti systému objektu blob.
+- **Metadata**. Zadejte `IDictionary<string,string>`. Hello metadata definovaná uživatelem pro objekt blob hello.
 
 <a name="receipts"></a>
 
 ### <a name="blob-receipts"></a>Potvrzení objektů BLOB
-Modulu runtime Azure Functions zajistí, že žádná funkce aktivační události objektu blob volala více než jednou pro stejný objekt blob nové nebo aktualizované. Chcete-li zjistit, pokud byla zpracována na verzi daného objektu blob, udržuje *blob potvrzení*.
+Azure Functions Hello runtime zajistí, že žádná funkce aktivační události objektu blob volala více než jednou pro hello stejné nové nebo aktualizované objektů blob. toodetermine, pokud byla zpracována na verzi daného objektu blob, udržuje *blob potvrzení*.
 
-Azure funkce úložiště objektů blob v kontejneru nazvaném potvrzení *azure. webové úlohy hostitelů* v účtu úložiště Azure pro aplikaci funkce (definované nastavení aplikace `AzureWebJobsStorage`). Potvrzení o objektu blob obsahuje následující informace:
+Azure funkce úložiště objektů blob v kontejneru nazvaném potvrzení *azure. webové úlohy hostitelů* v účtu úložiště Azure pro aplikaci funkce hello (definované nastavení aplikace hello `AzureWebJobsStorage`). Potvrzení o objekt blob má hello následující informace:
 
-* Funkci spouštěná ("*&lt;funkce název aplikace >*. Funkce.  *&lt;název funkce >*", například:"MyFunctionApp.Functions.CopyBlob")
-* Název kontejneru
-* Typ objektu blob ("BlockBlob" nebo "PageBlob")
-* Název objektu blob
-* Značky ETag (identifikátor objektu blob verze, například: "0x8D1DC6E70A277EF")
+* Hello aktivuje funkce ("*&lt;funkce název aplikace >*. Funkce.  *&lt;název funkce >*", například:"MyFunctionApp.Functions.CopyBlob")
+* název kontejneru Hello
+* Typ objektu blob Hello ("BlockBlob" nebo "PageBlob")
+* Název objektu blob Hello
+* Hello ETag (identifikátor objektu blob verze, například: "0x8D1DC6E70A277EF")
 
-Pokud chcete vynutit opětovné zpracování objektu blob, odstranit objekt blob příjmu pro tento objekt blob z *azure. webové úlohy hostitelů* kontejneru ručně.
+tooforce opětovné zpracování objektu blob, odstranit hello přijetí objektů blob pro tento objekt blob z hello *azure. webové úlohy hostitelů* kontejneru ručně.
 
 <a name="poison"></a>
 
 ### <a name="handling-poison-blobs"></a>Zpracování poškozených objektů BLOB
 Pokud funkci aktivační události objektu blob se nezdaří pro daný objekt blob Azure Functions opakovaných pokusů, které funkce celkem 5krát ve výchozím nastavení. 
 
-Pokud selžou všechny 5 pokusů, Azure Functions přidá zprávu do fronty úložiště s názvem *webjobs. blobtrigger poison*. Zprávy ve frontě pro poškozených objekty BLOB je objekt JSON, který obsahuje následující vlastnosti:
+Pokud selžou všechny 5 pokusů, Azure Functions přidá fronta zpráv tooa úložiště s názvem *webjobs. blobtrigger poison*. uvítací zprávu fronty pro poškozených objekty BLOB je objekt JSON, který obsahuje hello následující vlastnosti:
 
-* FunctionId (ve formátu  *&lt;funkce název aplikace >*. Funkce.  *&lt;název funkce >*)
+* FunctionId (ve formátu hello  *&lt;funkce název aplikace >*. Funkce.  *&lt;název funkce >*)
 * BlobType ("BlockBlob" nebo "PageBlob")
 * ContainerName
 * BlobName
 * Značka ETag (identifikátor objektu blob verze, například: "0x8D1DC6E70A277EF")
 
 ### <a name="blob-polling-for-large-containers"></a>Dotazování pro velké kontejnery objektů BLOB
-Pokud kontejner objektů blob, který je monitorován obsahuje více než 10 000 objektů BLOB, přihlaste se kontroly runtime funkce soubory, které chcete sledovat pro nové nebo změněné objekty BLOB. Tento proces není v reálném čase. Funkce nemusí získat aktivuje až několik minut nebo déle po vytvoření objektu blob. Kromě toho [protokol úložiště jsou vytvořené na "best effort"](/rest/api/storageservices/About-Storage-Analytics-Logging) intervalech. Není zaručeno, že jsou zachyceny všechny události. Za určitých podmínek může být načteni protokoly. Pokud budete potřebovat rychlejší a spolehlivější blob zpracování, zvažte vytvoření [zprávu fronty](../storage/queues/storage-dotnet-how-to-use-queues.md) při vytváření objektu blob. Poté použijte [aktivační událost fronty](functions-bindings-storage-queue.md) místo aktivační událost objektu blob ke zpracování objektu blob.
+Pokud kontejner objektů blob hello monitorovaných obsahuje více než 10 000 objektů BLOB, hello toowatch soubory funkcí runtime kontroly protokolu pro nové nebo změněné objekty BLOB. Tento proces není v reálném čase. Funkce nemusí získat aktivuje až několik minut nebo déle po vytvoření objektu blob hello. Kromě toho [protokol úložiště jsou vytvořené na "best effort"](/rest/api/storageservices/About-Storage-Analytics-Logging) intervalech. Není zaručeno, že jsou zachyceny všechny události. Za určitých podmínek může být načteni protokoly. Pokud budete potřebovat rychlejší a spolehlivější blob zpracování, zvažte vytvoření [zprávu fronty](../storage/queues/storage-dotnet-how-to-use-queues.md) při vytváření objektu blob hello. Poté použijte [aktivační událost fronty](functions-bindings-storage-queue.md) namísto objektu blob hello tooprocess aktivační události objektu blob.
 
 <a name="triggerusage"></a>
 
 ## <a name="using-a-blob-trigger-and-input-binding"></a>Pomocí aktivační události objektu blob a vstupní vazby
-V rozhraní .NET funkce, přístup k datům objektu blob pomocí parametru metody, jako třeba `Stream paramName`. Zde `paramName` je hodnota zadaná v [konfigurace aktivační události](#trigger). Ve funkcích Node.js, přístup k datům vstupního objektu blob pomocí `context.bindings.<name>`.
+V rozhraní .NET funkce, přístup k datům objektu blob hello pomocí parametru metody, jako třeba `Stream paramName`. Zde `paramName` je hodnota hello jste zadali v hello [konfigurace aktivační události](#trigger). Ve funkcích Node.js hello přístup vstup, objektů blob dat pomocí `context.bindings.<name>`.
 
-V rozhraní .NET můžete vázat na jakýkoli z typů v níže uvedeném seznamu. Pokud slouží jako vstupní vazby, přičemž některé z těchto typů vyžadují `inout` vazby směr v *function.json*. Tomto směru nepodporuje standardního editoru, je nutné použít rozšířené editoru.
+V rozhraní .NET můžete vázat tooany typů hello hello níže uvedeného seznamu. Pokud slouží jako vstupní vazby, přičemž některé z těchto typů vyžadují `inout` vazby směr v *function.json*. Tomto směru nepodporuje hello standardního editoru, je nutné použít hello advanced editor.
 
 * `TextReader`
 * `Stream`
@@ -154,10 +154,10 @@ V rozhraní .NET můžete vázat na jakýkoli z typů v níže uvedeném seznamu
 * `CloudPageBlob`(vyžaduje "inout" vazba směr)
 * `CloudAppendBlob`(vyžaduje "inout" vazba směr)
 
-Pokud se očekává text objekty BLOB, můžete také vázat na .NET `string` typu. Toto nastavení se doporučuje jenom Pokud velikost objektu blob je malá, protože obsah celý objekt blob jsou načtena do paměti. Obecně platí, je vhodnější použít `Stream` nebo `CloudBlockBlob` typu.
+Pokud se očekává text objekty BLOB, můžete také navázat tooa .NET `string` typu. Toto nastavení se doporučuje jenom Pokud velikost objektu blob hello malé, jako jsou obsahu objektu blob celý hello načten do paměti. Obecně je vhodnější toouse `Stream` nebo `CloudBlockBlob` typu.
 
 ## <a name="trigger-sample"></a>Ukázka aktivační události
-Předpokládejme, že máte následující function.json, která definuje aktivační událost úložiště objektů blob:
+Předpokládejme, že máte hello následující function.json, který definuje aktivační událost úložiště objektů blob:
 
 ```json
 {
@@ -174,7 +174,7 @@ Předpokládejme, že máte následující function.json, která definuje aktiva
 }
 ```
 
-Naleznete v ukázce pro specifický jazyk, který zaznamenává obsah jednotlivých objektů blob, který je přidán do kontejneru monitorovaných.
+V tématu vzorku hello konkrétní jazyk, který je protokoly hello obsah každý objekt blob, který se přidá toohello monitorovaných kontejneru.
 
 * [C#](#triggercsharp)
 * [Node.js](#triggernodejs)
@@ -192,7 +192,7 @@ public static void Run(Stream myBlob, TraceWriter log)
 ```
 
 ```cs
-// Blob trigger binding to a CloudBlockBlob
+// Blob trigger binding tooa CloudBlockBlob
 #r "Microsoft.WindowsAzure.Storage"
 
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -218,9 +218,9 @@ module.exports = function(context) {
 
 ## <a name="using-a-blob-output-binding"></a>Pomocí objektu blob výstup vazby
 
-V rozhraní .NET funkce, měli byste buď použijte `out string` parametr v podpis funkce nebo použijte jeden z typů v následujícím seznamu. V Node.js funkce, přístup k výstupu blob pomocí `context.bindings.<name>`.
+V rozhraní .NET funkce, měli byste buď použijte `out string` parametr v podpis funkce nebo používají jeden z typů hello v následujícím seznamu hello. V Node.js funkce získáte přístup pomocí objektu blob výstup hello `context.bindings.<name>`.
 
-V rozhraní .NET funkce výstup můžete na některý z následujících typů:
+V rozhraní .NET funkce výstup můžete tooany hello následující typy:
 
 * `out string`
 * `TextWriter`
@@ -233,7 +233,7 @@ V rozhraní .NET funkce výstup můžete na některý z následujících typů:
 <a name="input-sample"></a>
 
 ## <a name="queue-trigger-with-blob-input-and-output-sample"></a>Aktivační událost fronty s blob vstupní a výstupní ukázka
-Předpokládejme, že máte následující function.json, který definuje [aktivační událost Queue Storage](functions-bindings-storage-queue.md)úložiště objektů blob vstup a výstup úložiště objektů blob. Všimněte si použití `queueTrigger` vlastnost metadat. v objektu blob vstupní a výstupní `path` vlastnosti:
+Předpokládejme, že máte hello následující function.json, který definuje [aktivační událost Queue Storage](functions-bindings-storage-queue.md)úložiště objektů blob vstup a výstup úložiště objektů blob. Všimněte si použití hello hello `queueTrigger` vlastnost metadat. v objektu blob hello vstup a výstup `path` vlastnosti:
 
 ```json
 {
@@ -264,7 +264,7 @@ Předpokládejme, že máte následující function.json, který definuje [aktiv
 }
 ``` 
 
-Naleznete v ukázce pro specifický jazyk, který kopíruje vstupního objektu blob do výstupního objektu blob.
+V tématu vzorku hello konkrétní jazyk, který zkopíruje hello vstupního objektu blob toohello výstupního objektu blob.
 
 * [C#](#incsharp)
 * [Node.js](#innodejs)
@@ -274,7 +274,7 @@ Naleznete v ukázce pro specifický jazyk, který kopíruje vstupního objektu b
 ### <a name="blob-binding-example-in-c"></a>Příklad vazby objektů BLOB v jazyce C# #
 
 ```cs
-// Copy blob from input to output, based on a queue trigger
+// Copy blob from input toooutput, based on a queue trigger
 public static void Run(string myQueueItem, Stream myInputBlob, out string myOutputBlob, TraceWriter log)
 {
     log.Info($"C# Queue trigger function processed: {myQueueItem}");
@@ -287,7 +287,7 @@ public static void Run(string myQueueItem, Stream myInputBlob, out string myOutp
 ### <a name="blob-binding-example-in-nodejs"></a>Příklad vazby objektů BLOB v Node.js
 
 ```javascript
-// Copy blob from input to output, based on a queue trigger
+// Copy blob from input toooutput, based on a queue trigger
 module.exports = function(context) {
     context.log('Node.js Queue trigger function processed', context.bindings.myQueueItem);
     context.bindings.myOutputBlob = context.bindings.myInputBlob;

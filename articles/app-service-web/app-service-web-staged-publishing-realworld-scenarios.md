@@ -1,6 +1,6 @@
 ---
-title: "Efektivně používat DevOps prostředí pro webovou aplikaci | Microsoft Docs"
-description: "Další informace o použití nasazovací sloty nastavit a spravovat více vývojové prostředí pro vaši aplikaci"
+title: "prostředí DevOps aaaUse efektivně pro vaši webovou aplikaci | Microsoft Docs"
+description: "Zjistěte, jak nasazení toouse přihrádek tooset nahoru a spravovat více vývojové prostředí pro vaši aplikaci"
 services: app-service\web
 documentationcenter: 
 author: sunbuild
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 10/24/2016
 ms.author: sumuth
-ms.openlocfilehash: 25248411659f6c7b2e386e310428c365c44ea2e0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 61a552e735a4ad9769b661d7c988744074ba2962
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-devops-environments-effectively-for-your-web-apps"></a>Efektivně používat DevOps prostředí pro webové aplikace
-Tento článek ukazuje, jak nastavit a spravovat nasazení webové aplikace, pokud několik verzí aplikace jsou v různých prostředích, jako je například vývoj, pracovní, zajištění kvality (QA) a provozní. Každou verzi vaší aplikace lze považovat za vývojového prostředí pro konkrétní účel procesu nasazení. Například mohou vývojáři prostředí QA pro otestování kvality aplikace před jejich odešlete změny do produkčního prostředí.
-Více vývojových prostředí může být složité, protože je potřeba sledovat kódu, spravovat prostředky (výpočetní, webové aplikace, databáze, mezipaměti atd.) a nasazení kódu v rámci prostředí.
+Tento článek ukazuje, jak tooset a Správa nasazení webové aplikace, pokud několik verzí aplikace jsou v různých prostředích, jako je například vývoj, pracovní, zajištění kvality (QA) a provozní. Každou verzi vaší aplikace lze považovat za vývojového prostředí pro konkrétní účel hello procesu nasazení. Například mohou vývojáři hello QA prostředí tootest hello kvalitu hello aplikací před jejich push tooproduction změny hello.
+Více vývojových prostředí může být složité protože potřebujete tootrack kód, spravovat prostředky (výpočetní, webové aplikace, databáze, mezipaměti atd.) a nasazení kódu v rámci prostředí.
 
 ## <a name="set-up-a-non-production-environment-stage-dev-qa"></a>Nastavit mimo produkční prostředí (fáze, vývoj, QA)
-Po produkční webové aplikace je spuštěná, je dalším krokem vytvoření mimo produkční prostředí. Pokud chcete použít nasazovací sloty, ujistěte se, zda jsou spuštěny v režimu plán Standard nebo Premium Azure App Service. Nasazovací sloty jsou za chodu webových aplikací, které mají své vlastní názvy hostitelů. Webové aplikace obsah a konfiguraci elementy lze vzájemně zaměněny mezi dvěma sloty nasazení, včetně produkční slot. Když nasadíte aplikaci pro slot nasazení, získáte následující výhody:
+Po produkční webové aplikace je spuštěná, je dalším krokem hello toocreate mimo produkční prostředí. toouse nasazovací sloty, ujistěte se, že používáte v režimu plán Standard nebo Premium Azure App Service hello. Nasazovací sloty jsou za chodu webových aplikací, které mají své vlastní názvy hostitelů. Webové aplikace obsah a konfiguraci elementy lze vzájemně zaměněny mezi dvěma sloty nasazení, včetně hello produkční slot. Při nasazení vaší aplikace tooa nasazovací slot získáte hello následující výhody:
 
-- Změny webové aplikace ve přípravný slot nasazení můžete ověřit před Prohodit aplikaci pomocí produkčního slotu.
-- Při nasazení webové aplikace do patice nejprve a Prohodit do produkčního prostředí, jsou všechny instance přihrádky jestli před prohazují do produkčního prostředí. Tento proces eliminuje výpadek při nasazení webové aplikace. Přesměrování provozu je bezproblémové a žádné požadavky jsou vyřazeny z důvodu operace prohození. K automatizaci tento celý pracovní postup, nakonfigurujte [Prohodit automaticky](web-sites-staged-publishing.md#configure-auto-swap) při swap předběžné ověření není potřeba.
-- Po prohození přihrádku, která má dříve dvoufázové instalace webové aplikace teď má předchozí produkční webové aplikace. Pokud změny, které jsou vzájemně zaměněny na produkční slot není podle očekávání, můžete provést stejný prohození okamžitě získat webového "poslední známá funkční konfigurace" aplikace zpět.
+- Můžete ověřit změny tooa webové aplikace ve přípravný slot nasazení před Prohodit hello aplikace pomocí hello produkční slot.
+- Při nasazení slot webové aplikace tooa nejprve a Prohodit do produkčního prostředí, jsou všechny instance hello slotu jestli před prohazují do produkčního prostředí. Tento proces eliminuje výpadek při nasazení webové aplikace. přesměrování provozu Hello je bezproblémové a žádné požadavky jsou vyřadit z důvodu tooswap operace. tooautomate tento celý pracovní postup konfigurace [Prohodit automaticky](web-sites-staged-publishing.md#configure-auto-swap) při není potřeba před swap ověření.
+- Po prohození hello slotu, který má hello dříve dvoufázové instalace webové aplikace teď má hello předchozí produkční webové aplikace. Pokud jsou tyto změny hello vzájemně zaměněny do produkčního slotu. hello není podle očekávání, můžete to udělat hello stejné Prohodit okamžitě tooget vaší "poslední známé dobré" back webové aplikace.
 
-Přípravný slot nasazení, naleznete v tématu [nastavení přípravných prostředí pro webové aplikace v Azure App Service](web-sites-staged-publishing.md). Každé prostředí by měla obsahovat vlastní sadu prostředků. Například pokud vaše webová aplikace používá databázi, pak produkční a pracovní webové aplikace by měl použít jiné databáze. Přidáte pracovní prostředí prostředky vývoj například databáze, úložiště nebo mezipaměti nastavit pracovní vývojové prostředí.
+tooset až přípravný slot nasazení, najdete v části [nastavení přípravných prostředí pro webové aplikace v Azure App Service](web-sites-staged-publishing.md). Každé prostředí by měla obsahovat vlastní sadu prostředků. Například pokud vaše webová aplikace používá databázi, pak produkční a pracovní webové aplikace by měl použít jiné databáze. Přidáte pracovní prostředky prostředí vývoj například databáze, úložiště nebo mezipaměti tooset pracovní vývojové prostředí.
 
 ## <a name="examples-of-using-multiple-development-environments"></a>Příklady používání prostředí s více vývoj
-Jakýkoli projekt, postupujte podle správu zdrojového kódu s alespoň dvěma prostředími: vývoj a provozní. Pokud používáte systémy správy obsahu (CMSs), aplikační architektury, atd., nemusí podporovat aplikace v tomto scénáři bez úprav. Tato případě platí pro některé z oblíbených rozhraní, které jsou popsané v následujících částech. Velké množství otázky se do paměti při práci s CMS nebo rozhraní, jako například:
+Jakýkoli projekt, postupujte podle správu zdrojového kódu s alespoň dvěma prostředími: vývoj a provozní. Pokud používáte systémy správy obsahu (CMSs), aplikační architektury, atd., nemusí podporovat aplikace hello tento scénář bez úprav. Tato případě platí pro některé hello oblíbených rozhraní, které jsou popsané v následující části hello. Velký počet otázek pocházet toomind při práci s CMS nebo rozhraní, jako například:
 
-- Jak vám přerušení obsah do různých prostředí?
+- Jak vám přerušení hello obsah do různých prostředí?
 - Jaké soubory můžete změnit bez ovlivnění framework verze aktualizace?
 - Jak budete spravovat konfigurace za prostředí?
-- Jak budete spravovat aktualizace verzí pro moduly, moduly plug-in a rozhraní jádra?
+- Jak budete spravovat aktualizace verzí pro moduly, moduly plug-in a hello core framework?
 
-Existuje mnoho způsobů, jak nastavit prostředí s více pro váš projekt. Následující příklady ukazují jednu metodu pro každou příslušné aplikaci.
+Existuje mnoho způsobů tooset více prostředí pro váš projekt. Hello následující příklady ukazují jednu metodu pro každou příslušné aplikaci.
 
 ### <a name="wordpress"></a>WordPress
-V této části se dozvíte, jak nastavit pracovní postup nasazení pomocí sloty pro WordPress. WordPress, jako je většina řešení CMS, nepodporuje více vývojových prostředí bez úprav. Funkce Web Apps služby Azure App Service má několik funkcí, které usnadňují uložit nastavení konfigurace mimo váš kód.
+V této části se dozvíte, jak tooset si pracovní postup nasazení pomocí přihrádek WordPress. WordPress, jako je většina řešení CMS, nepodporuje více vývojových prostředí bez úprav. Hello funkce Web Apps služby Azure App Service má několik funkcí, které umožňují snadno toostore nastavení konfigurace mimo váš kód.
 
-1. Před vytvořením přípravný slot nastavte na podporu prostředí s více kódu aplikace. Pro podporu prostředí s více v WordPress, budete muset upravit `wp-config.php` na místním vývojovém webu aplikaci a na začátek souboru přidejte následující kód. Tento proces vám umožní aplikaci a vyberte správnou konfiguraci na základě vybraných prostředí.
+1. Před vytvořením přípravný slot nastavte na vaše aplikace kód toosupport prostředí s více. toosupport prostředí s více WordPress, je nutné tooedit `wp-config.php` na lokální vývoj webové aplikace a přidejte následující kód na začátku hello hello souboru hello. Tento proces vám umožní toopick hello správná konfigurace aplikace na základě vybraných prostředí hello.
 
     ```
     // Support multiple environments
-    // set the config file based on current environment
+    // set hello config file based on current environment
     if (strpos($_SERVER['HTTP_HOST'],'localhost') !== false) {
     // local development
      $config_file = 'config/wp-config.local.php';
@@ -61,18 +61,18 @@ V této části se dozvíte, jak nastavit pracovní postup nasazení pomocí slo
     }
     $path = dirname(__FILE__). '/';
     if (file_exists($path. $config_file)) {
-    // include the config file if it exists, otherwise WP is going to fail
+    // include hello config file if it exists, otherwise WP is going toofail
     require_once $path. $config_file;
     ```
 
-2. Vytvořte složku v kořenovém adresáři webové aplikace volá `config`a přidejte `wp-config.azure.php` a `wp-config.local.php` soubory, které představují prostředí Azure a místní prostředí, v uvedeném pořadí.
+2. Vytvořte složku v kořenovém adresáři webové aplikace volá `config`a přidejte hello `wp-config.azure.php` a `wp-config.local.php` soubory, které představují prostředí Azure a místní prostředí, v uvedeném pořadí.
 
-3. Zkopírujte následující `wp-config.local.php`:
+3. Zkopírujte následující hello `wp-config.local.php`:
 
     ```
     <?php
     // MySQL settings
-    /** The name of the database for WordPress */
+    /** hello name of hello database for WordPress */
 
     define('DB_NAME', 'yourdatabasename');
 
@@ -86,7 +86,7 @@ V této části se dozvíte, jak nastavit pracovní postup nasazení pomocí slo
     define('DB_HOST', 'localhost');
     /**
      * For developers: WordPress debugging mode.
-     * * Change this to true to enable the display of notices during development.
+     * * Change this tootrue tooenable hello display of notices during development.
      * It is strongly recommended that plugin and theme developers use WP_DEBUG
      * in their development environments.
      */
@@ -111,14 +111,14 @@ V této části se dozvíte, jak nastavit pracovní postup nasazení pomocí slo
     $table_prefix = 'wp_';
     ```
 
-    Nastavení zabezpečení klíčů, jak je ukázáno v předchozí kód může pomoci zabránit se hacker vaší webové aplikace, takže pomocí jedinečné hodnoty. Pokud potřebujete vygenerování řetězce pro zabezpečení zkratky uvedené v kódu, můžete [přejděte na automatické generátor](https://api.wordpress.org/secret-key/1.1/salt) k vytvoření nové páry klíč/hodnota.
+    Nastavení hello zabezpečení klíčů, jak je ukázáno v předchozí kód hello může pomoct tooprevent vaší webové aplikace z se hacker, proto použijte jedinečné hodnoty. Pokud potřebujete toogenerate hello řetězec pro zabezpečení klíče uvedená v hello kódu, můžete [automatické generátor přejděte toohello](https://api.wordpress.org/secret-key/1.1/salt) toocreate nové dvojice klíč/hodnota.
 
-4. Zkopírujte následující kód v `wp-config.azure.php`:
+4. Kopírování hello následující kód v `wp-config.azure.php`:
 
     ```    
     <?php
     // MySQL settings
-    /** The name of the database for WordPress */
+    /** hello name of hello database for WordPress */
 
     define('DB_NAME', getenv('DB_NAME'));
 
@@ -134,12 +134,12 @@ V této části se dozvíte, jak nastavit pracovní postup nasazení pomocí slo
     /**
     * For developers: WordPress debugging mode.
     *
-    * Change this to true to enable the display of notices during development.
+    * Change this tootrue tooenable hello display of notices during development.
     * It is strongly recommended that plugin and theme developers use WP_DEBUG
     * in their development environments.
-    * Turn on debug logging to investigate issues without displaying to end user. For WP_DEBUG_LOG to
+    * Turn on debug logging tooinvestigate issues without displaying tooend user. For WP_DEBUG_LOG to
     * do anything, WP_DEBUG must be enabled (true). WP_DEBUG_DISPLAY should be used in conjunction
-    * with WP_DEBUG_LOG so that errors are not displayed on the page */
+    * with WP_DEBUG_LOG so that errors are not displayed on hello page */
 
     */
     define('WP_DEBUG', getenv('WP_DEBUG'));
@@ -147,7 +147,7 @@ V této části se dozvíte, jak nastavit pracovní postup nasazení pomocí slo
     define('WP_DEBUG_DISPLAY',false);
 
     //Security key settings
-    /** If you need to generate the string for security keys mentioned above, you can go the automatic generator to create new keys/values: https://api.wordpress.org/secret-key/1.1/salt **/
+    /** If you need toogenerate hello string for security keys mentioned above, you can go hello automatic generator toocreate new keys/values: https://api.wordpress.org/secret-key/1.1/salt **/
     define('AUTH_KEY',getenv('DB_AUTH_KEY'));
     define('SECURE_AUTH_KEY', getenv('DB_SECURE_AUTH_KEY'));
     define('LOGGED_IN_KEY', getenv('DB_LOGGED_IN_KEY'));
@@ -167,9 +167,9 @@ V této části se dozvíte, jak nastavit pracovní postup nasazení pomocí slo
     ```
 
 #### <a name="use-relative-paths"></a>Použít relativní cesty
-Jednu věc konfigurace v aplikaci WordPress je relativní cesty. WordPress ukládá informace o adresách URL v databázi. Toto úložiště umožňuje přesunutí obsah z jednoho prostředí do druhého obtížnější. Je potřeba aktualizovat databázi pokaždé, když přejdete z místní fáze nebo fáze do produkčního prostředí. Chcete-li snížit riziko problémů, které může být způsobeno s nasazením databázi pokaždé, když nasazujete z jednoho prostředí do druhého, použijte [kořenové relativní odkazy modulu plug-in](https://wordpress.org/plugins/root-relative-urls/), které můžete nainstalovat pomocí řídicího panelu WordPress správce.
+Jeden poslední věcí tooconfigure v aplikaci WordPress hello je relativní cesty. WordPress ukládá informace o adrese URL hello databáze. Toto úložiště umožňuje přesunutí obsah z jednoho prostředí tooanother obtížnější. Pokaždé, když přejdete z místní toostage nebo fáze tooproduction prostředí musíte tooupdate hello databáze. riziko hello tooreduce problémy, které může být způsobeno s nasazením databázi pokaždé, když se nasadit z jednoho prostředí tooanother, použijte hello [kořenové relativní odkazy modulu plug-in](https://wordpress.org/plugins/root-relative-urls/), které můžete nainstalovat pomocí Správce WordPress hello řídicí panel.
 
-Přidejte následující položky do vaší `wp-config.php` soubor před `That's all, stop editing!` komentář:
+Přidejte následující položky tooyour hello `wp-config.php` soubor před hello `That's all, stop editing!` komentář:
 
 ```
 
@@ -179,30 +179,30 @@ Přidejte následující položky do vaší `wp-config.php` soubor před `That's
     define('DOMAIN_CURRENT_SITE', filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
 ```
 
-Aktivovat modulu plug-in prostřednictvím `Plugins` nabídky na řídicím panelu WordPress správce. Uložte nastavení trvalý odkaz pro aplikaci WordPress.
+Aktivovat modulu plug-in hello prostřednictvím hello `Plugins` nabídky na řídicím panelu WordPress správce. Uložte nastavení trvalý odkaz pro aplikaci WordPress.
 
-#### <a name="the-final-wp-configphp-file"></a>Konečné `wp-config.php` souboru
-Žádné aktualizace základní WordPress nebude mít vliv na vaše `wp-config.php`, `wp-config.azure.php`, a `wp-config.local.php` soubory. Tady je finální verzi `wp-config.php` souboru:
+#### <a name="hello-final-wp-configphp-file"></a>Hello konečné `wp-config.php` souboru
+Žádné aktualizace základní WordPress nebude mít vliv na vaše `wp-config.php`, `wp-config.azure.php`, a `wp-config.local.php` soubory. Tady je finální verzi hello `wp-config.php` souboru:
 
 ```
 <?php
 /**
- * The base configurations of the WordPress.
+ * hello base configurations of hello WordPress.
  *
- * This file has the following configurations: MySQL settings, Table Prefix,
+ * This file has hello following configurations: MySQL settings, Table Prefix,
  * Secret Keys, and ABSPATH. You can find more information by visiting
  *
- * Codex page. You can get the MySQL settings from your web host.
+ * Codex page. You can get hello MySQL settings from your web host.
  *
- * This file is used by the wp-config.php creation script during the
- * installation. You don't have to use the web web app, you can just copy this file
- * to "wp-config.php" and fill in the values.
+ * This file is used by hello wp-config.php creation script during the
+ * installation. You don't have toouse hello web web app, you can just copy this file
+ * too"wp-config.php" and fill in hello values.
  *
  * @package WordPress
  */
 
 // Support multiple environments
-// set the config file based on current environment
+// set hello config file based on current environment
 if (strpos($_SERVER['HTTP_HOST'],'localhost') !== false) { // local development
   $config_file = 'config/wp-config.local.php';
 }
@@ -213,14 +213,14 @@ elseif ((strpos(getenv('WP_ENV'),'stage') !== false) ||(strpos(getenv('WP_ENV'),
 
 $path = dirname(__FILE__). '/';
 if (file_exists($path. $config_file)) {
-  // include the config file if it exists, otherwise WP is going to fail
+  // include hello config file if it exists, otherwise WP is going toofail
   require_once $path. $config_file;
 }
 
-/** Database Charset to use in creating database tables. */
+/** Database Charset toouse in creating database tables. */
 define('DB_CHARSET', 'utf8');
 
-/** The Database Collate type. Don't change this if in doubt. */
+/** hello Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
 
@@ -231,7 +231,7 @@ define('WP_SITEURL', 'http://'. $_SERVER['HTTP_HOST']);
 define('WP_CONTENT_URL', '/wp-content');
 define('DOMAIN_CURRENT_SITE', $_SERVER['HTTP_HOST']);
 
-/** Absolute path to the WordPress directory. */
+/** Absolute path toohello WordPress directory. */
 if ( !defined('ABSPATH') )
     define('ABSPATH', dirname(__FILE__). '/');
 
@@ -240,21 +240,21 @@ require_once(ABSPATH. 'wp-settings.php');
 ```
 
 #### <a name="set-up-a-staging-environment"></a>Nastavit pracovní prostředí
-1. Pokud již máte webovou aplikaci WordPress systémem vašeho předplatného Azure, přihlaste se k [portál Azure](http://portal.azure.com)a potom přejděte na webové aplikace WordPress. Pokud nemáte webové aplikace WordPress, můžete vytvořit jeden z Azure Marketplace. Další informace najdete v tématu [vytvořit webovou aplikaci WordPress v Azure App Service](web-sites-php-web-site-gallery.md).
-Klikněte na tlačítko **nastavení** > **nasazovací sloty** > **přidat** vytvořit nasazovací slot s názvem *fáze* . Slot nasazení je jiné webové aplikace, který sdílí stejné prostředky jako primární webové aplikace, kterou jste vytvořili dříve.
+1. Pokud již máte webovou aplikaci WordPress systémem vašeho předplatného Azure, přihlaste se toohello [portál Azure](http://portal.azure.com), a potom přejděte na webovou aplikaci WordPress tooyour. Pokud nemáte webové aplikace WordPress, můžete vytvořit jeden z hello Azure Marketplace. Další, najdete v části toolearn [vytvořit webovou aplikaci WordPress v Azure App Service](web-sites-php-web-site-gallery.md).
+Klikněte na tlačítko **nastavení** > **nasazovací sloty** > **přidat** toocreate nasazovací slot s názvem hello *fáze*. Slot nasazení je jiné webové aplikace sdílené složky hello stejné prostředky jako hello primární webovou aplikaci, kterou jste vytvořili dříve.
 
     ![Vytvoření fáze nasazovací slot.](./media/app-service-web-staged-publishing-realworld-scenarios/1setupstage.png)
 
-2. Přidat jiné databáze MySQL, například `wordpress-stage-db`, do skupiny prostředků, `wordpressapp-group`.
+2. Přidat jiné databáze MySQL, například `wordpress-stage-db`, tooyour skupinu prostředků, `wordpressapp-group`.
 
-    ![Přidání databáze MySQL do skupiny prostředků](./media/app-service-web-staged-publishing-realworld-scenarios/2addmysql.png)
+    ![Přidat skupinu tooresource databáze MySQL](./media/app-service-web-staged-publishing-realworld-scenarios/2addmysql.png)
 
-3. Aktualizovat připojovací řetězce pro slot nasazení vaší fáze tak, aby odkazoval na databázi nové `wordpress-stage-db`. Webové aplikace produkční `wordpressprodapp`a pracovní webové aplikace, `wordpressprodapp-stage`, musíte přejít do různých databází.
+3. Aktualizovat hello připojovací řetězce pro fáze nasazení slotu toopoint toohello novou databázi, `wordpress-stage-db`. Webové aplikace produkční `wordpressprodapp`a pracovní webové aplikace, `wordpressprodapp-stage`, musí bodu toodifferent databáze.
 
 #### <a name="configure-environment-specific-app-settings"></a>Konfigurovat nastavení konkrétní prostředí aplikace
-Vývojářům můžete uložit dvojice klíč/hodnota řetězce v Azure jako součást informace o konfiguraci, nazývá **nastavení aplikace**, který je spojen s webovou aplikaci. V době běhu webové aplikace automaticky načtení těchto hodnot a zpřístupnit je kód, který běží ve vaší webové aplikaci. Z hlediska zabezpečení je to dobrý straně výhody způsobeno citlivé informace, například databázové připojovací řetězce, které zahrnují hesla, nikdy zobrazí jako nešifrovaný text v souboru, jako `wp-config.php`.
+Vývojářům můžete uložit dvojice klíč/hodnota řetězce v Azure jako součást informace o konfiguraci hello názvem **nastavení aplikace**, který je spojen s webovou aplikaci. V době běhu webové aplikace automaticky načtení těchto hodnot a aby byly k dispozici toocode, který běží ve vaší webové aplikaci. Z hlediska zabezpečení je to dobrý straně výhody způsobeno citlivé informace, například databázové připojovací řetězce, které zahrnují hesla, nikdy zobrazí jako nešifrovaný text v souboru, jako `wp-config.php`.
 
-Tento proces, který je vysvětlené v následujících odstavcích, je užitečné, protože obsahuje soubor změny a změny v databázi pro aplikaci WordPress:
+Tento proces, který je vysvětlené v následujících odstavcích hello, je užitečné, protože obsahuje soubor změny a změny v databázi pro aplikaci WordPress hello:
 
 * Upgrade verze WordPress
 * Přidat nové nebo upravovat nebo upgradovat moduly plug-in
@@ -268,99 +268,99 @@ Konfigurovat nastavení aplikace pro:
 
 ![Nastavení aplikace pro webové aplikace Wordpress](./media/app-service-web-staged-publishing-realworld-scenarios/3configure.png)
 
-Ujistěte se, přidat následující nastavení aplikace pro slot vaše produkční webové aplikace a fázi. Upozorňujeme, že webové aplikace produkční a pracovní webové aplikace použít jiné databáze.
+Ujistěte se, abyste přidali hello následující nastavení aplikace pro slot vaše produkční webové aplikace a fázi. Všimněte si, že hello produkční webové aplikace a pracovní webovou aplikaci pomocí různých databází.
 
-1. Vymazat **nastavení slotu** zaškrtávací políčko pro všechny parametry nastavení s výjimkou WP_ENV. Tento proces bude odkládacího souboru konfigurace pro vaši webovou aplikaci, obsah souboru a databáze. Pokud **nastavení slotu** je zaškrtnuto, nastavení aplikací webové aplikace a připojovací řetězec konfigurace *není* přesouvat mezi prostředí, když **odkládacího souboru** operaci. Změny databáze, které jsou k dispozici nebudou porušovat produkční webové aplikace.
+1. Vymazat hello **nastavení slotu** zaškrtávací políčko pro všechny parametry nastavení hello kromě WP_ENV. Tento proces bude Prohodit hello konfigurace pro vaši webovou aplikaci, obsah souboru a databáze. Pokud **nastavení slotu** je zaškrtnuto, nastavení aplikací a konfigurace řetězec připojení hello webové aplikace se *není* přesouvat mezi prostředí, když **Prohodit** operaci. Změny databáze, které jsou k dispozici nebudou porušovat produkční webové aplikace.
 
-2. Nasazení místního vývojového prostředí webové aplikace do fáze webovou aplikaci a databázi pomocí služby WebMatrix nebo nástrojů dle vašeho výběru, jako je například FTP, Git nebo PhpMyAdmin.
+2. Nasazení pomocí služby WebMatrix nebo nástrojů dle vašeho výběru, jako je například FTP, Git nebo PhpMyAdmin hello místním vývojovém prostředí webové aplikace toohello fáze webovou aplikaci a databázi.
 
     ![Dialog publikování matice webové pro webové aplikace WordPress](./media/app-service-web-staged-publishing-realworld-scenarios/4wmpublish.png)
 
-3. Procházet a testování vaší pracovní webové aplikace. S ohledem na scénář, kde motivu webové aplikace se mají aktualizovat zde je pracovní webové aplikace.
+3. Procházet a testování vaší pracovní webové aplikace. S ohledem na scénář, kde hello motiv hello webové aplikace je toobe aktualizovat zde je hello pracovní webové aplikace.
 
     ![Procházet pracovní před odkládací sloty webové aplikace](./media/app-service-web-staged-publishing-realworld-scenarios/5wpstage.png)
 
-4. Pokud všechny spokojeni, klikněte na tlačítko **Prohodit** tlačítko na pracovní webové aplikace přesunout obsah do produkčního prostředí. V takovém případě Prohodit webovou aplikaci a databázi prostředích během každé **Swap** operaci.
+4. Pokud všechny spokojeni, klikněte na tlačítko hello **Prohodit** tlačítko na vaše pracovní aplikace toomove webového obsahu toohello provozním prostředí. V takovém případě Prohodit hello webovou aplikaci a databázi hello prostředích během každé **Swap** operaci.
 
     ![Swap – zobrazení náhledu změn WordPress](./media/app-service-web-staged-publishing-realworld-scenarios/6swaps1.png)
 
     > [!NOTE]
-    > Pokud váš scénář potřebuje pouze push souborů (bez aktualizace databáze), zkontrolujte **nastavení slotu** pro všechny vztahující se k databázi *nastavení aplikace* a *připojovací řetězce nastavení* v **nastavení webové aplikace** okno v rámci portálu Azure před tím **odkládacího souboru**. V takovém případě %{db_name/, DB_HOST, DB_PASSWORD, DB_USER a výchozí nastavení připojovacího řetězce nesmí zobrazí v zobrazení náhledu změn při **odkládacího souboru**. V tomto okamžiku po dokončení **Prohodit** operace, webové aplikace WordPress budou mít pouze soubory aktualizace.
+    > Pokud váš scénář potřebuje tooonly nabízené souborů (bez aktualizace databáze), zkontrolujte **nastavení slotu** pro všechny hello vztahující se k databázi *nastavení aplikace* a *připojovací řetězce nastavení*v hello **nastavení webové aplikace** okno v rámci hello portál Azure před provedením hello **odkládacího souboru**. V takovém případě %{db_name/, DB_HOST, DB_PASSWORD, DB_USER a výchozí nastavení připojovacího řetězce nesmí zobrazí v zobrazení náhledu změn při **odkládacího souboru**. V tomto okamžiku po dokončení hello **Prohodit** operace, budou mít hello webové aplikace WordPress hello aktualizuje pouze soubory.
     >
     >
 
-    Před tím **odkládacího souboru**, zde je webové aplikace WordPress produkční.
+    Před tím **odkládacího souboru**, zde je webové aplikace WordPress produkční hello.
     ![Produkční webové aplikaci před odkládací sloty](./media/app-service-web-staged-publishing-realworld-scenarios/7bfswap.png)
 
-    Po **Prohodit** operace, jaký motiv se aktualizovala na produkční webové aplikace.
+    Po hello **Prohodit** operace, motiv hello se aktualizovala na produkční webové aplikace.
 
     ![Produkční webové aplikaci po odkládací sloty](./media/app-service-web-staged-publishing-realworld-scenarios/8afswap.png)
 
-5. Pokud je nutné vrátit zpět, můžete přejít na web produkční **nastavení aplikace**a klikněte na tlačítko **Swap** tlačítko webové aplikace a databáze z výroby přípravný slot prohodit. Pamatujte, že pokud změny databáze jsou součástí **odkládacího souboru** operace, pak při příštím nasazení do webové aplikace pracovní, je třeba nasadit změn databáze do aktuální databáze pro pracovní webovou aplikaci. Aktuální databáze může být předchozí produkční databázi nebo databázi fáze.
+5. Pokud budete potřebovat tooroll zpět, můžete přejít toohello produkční webové **nastavení aplikace**a klikněte na tlačítko hello **Prohodit** tlačítko tooswap hello webovou aplikaci a databázi z produkčního slotu. toostaging. Pamatujte, že pokud jsou součástí změny v databázi **odkládacího souboru** operace a pak hello příštím nasazení tooyour pracovní webové aplikace, musíte toodeploy hello změny toohello aktuální databáze pro pracovní webovou aplikaci. Hello aktuální databáze může být hello předchozí produkční databázi nebo databázi fáze hello.
 
 #### <a name="summary"></a>Souhrn
 Toto je zobecněný proces pro každou aplikaci, která má databáze:
 
-1. Nainstalujte aplikaci na vašem místním prostředí.
+1. Instalace aplikace hello v místním prostředí.
 2. Zahrnout konfigurace specifické pro prostředí (místní a Azure Web Apps).
 3. Nastavte vaše pracovní a provozní prostředí pro webové aplikace.
-4. Pokud máte produkční aplikace už běží v Azure, synchronizujte svůj produkční obsah (soubory nebo kód a databáze) do místní a pracovní prostředí.
+4. Pokud máte produkční aplikace už běží v Azure, synchronizujte vaše produkční obsahu (soubory nebo kód a databáze) toolocal a pracovní prostředí.
 5. Vyvíjet aplikaci na vašem místním prostředí.
-6. Převeďte webové aplikace produkční pod údržby nebo uzamčeném režimu a synchronizace databáze obsahu z produkční do prostředí pracovní a vývojářů.
-7. Nasaďte do pracovní prostředí a testování.
-8. Nasazení do produkčního prostředí.
+6. Převeďte webové aplikace produkční pod údržby nebo uzamčeném režimu a synchronizace databáze obsahu z provozní prostředí toostaging a vývojářů.
+7. Nasaďte toohello pracovní prostředí a testování.
+8. Nasazení tooproduction prostředí.
 9. Opakujte kroky 4 až 6.
 
 ### <a name="umbraco"></a>Umbraco
-V této části se dozvíte, jak Umbraco CMS používá vlastní modul pro nasazení ve více prostředích DevOps. Tento příklad poskytuje jiný přístup ke správě více vývojové prostředí.
+V této části se dozvíte, jak hello Umbraco CMS využívá toodeploy vlastní modul v prostředí s více DevOps. Tento příklad poskytuje jiný přístup toomanaging více vývojové prostředí.
 
-[Umbraco CMS](http://umbraco.com/) je oblíbených řešení .NET CMS, který je používán celá řada vývojářů. Poskytuje [Courier2](http://umbraco.com/products/more-add-ons/courier-2) modulu k nasazení z vývojového do pracovní do produkčního prostředí. Místní vývojové prostředí pro webové aplikace Umbraco CMS můžete snadno vytvořit pomocí sady Visual Studio nebo služby WebMatrix.
+[Umbraco CMS](http://umbraco.com/) je oblíbených řešení .NET CMS, který je používán celá řada vývojářů. Poskytuje hello [Courier2](http://umbraco.com/products/more-add-ons/courier-2) modulu toodeploy z vývojových toostaging tooproduction prostředí. Místní vývojové prostředí pro webové aplikace Umbraco CMS můžete snadno vytvořit pomocí sady Visual Studio nebo služby WebMatrix.
 
 - [Vytvoření webové aplikace Umbraco pomocí sady Visual Studio](https://our.umbraco.org/documentation/Installation/install-umbraco-with-nuget)
 - [Vytvoření webové aplikace Umbraco pomocí služby WebMatrix](http://umbraco.tv/videos/umbraco-v7/implementor/fundamentals/installation/creating-umbraco-site-from-webmatrix-web-gallery/)
 
-Vždy nezapomeňte odebrat `install` ve složce aplikace a nikdy ho nahrát do fáze nebo produkční webové aplikace. Tento kurz používá služba WebMatrix.
+Vždycky mějte na paměti, tooremove hello `install` ve složce aplikace a nikdy nahrajte ho toostage nebo produkční webové aplikace. Tento kurz používá služba WebMatrix.
 
 #### <a name="set-up-a-staging-environment"></a>Nastavit pracovní prostředí
-1. Nasazovací slot vytvořte, jak je uvedeno nahoře pro webovou aplikaci Umbraco CMS, za předpokladu, že již máte webové aplikace Umbraco CMS a spuštěna. Pokud ho použít nechcete, můžete vytvořit jeden z Marketplace.
-2. Aktualizovat připojovací řetězec pro slot nasazení vaší fáze tak, aby odkazoval na nový **umbraco fáze db** databáze. Produkční webové aplikace (umbraositecms-1) a pracovní webové aplikace (umbracositecms fáze 1) *musí* bodu do různých databází.
+1. Jak už bylo zmíněno dříve pro hello za předpokladu, že již máte webové aplikace Umbraco CMS a spuštění webové aplikace Umbraco CMS, vytvořte nasazovací slot. Pokud ho použít nechcete, můžete vytvořit jeden z hello Marketplace.
+2. Aktualizovat hello připojovací řetězec pro vaše fáze nasazení slotu toopoint toohello nové **umbraco fáze db** databáze. Produkční webové aplikace (umbraositecms-1) a pracovní webové aplikace (umbracositecms fáze 1) *musí* bodu toodifferent databáze.
 
     ![Aktualizovat připojovací řetězec pro přípravu webové aplikace s novou pracovní databázi](./media/app-service-web-staged-publishing-realworld-scenarios/9umbconnstr.png)
 
-3. Klikněte na tlačítko **nastavení získat publikování** slotu pro nasazení **fáze**. Tento proces se stáhnout soubor nastavení publikování, který obsahuje všechny informace, který Visual Studio nebo WebMatrix vyžaduje, aby publikovat svoji aplikaci z místní vývoj webové aplikace do webové aplikace Azure.
+3. Klikněte na tlačítko **nastavení získat publikování** pro slot nasazení hello **fáze**. Tento proces se stáhnout soubor nastavení publikování, který obsahuje všechny informace hello, Visual Studio nebo WebMatrix vyžaduje toopublish aplikace hello místní vývoj webové aplikace toohello webové aplikace Azure.
 
-    ![Získat publikovat nastavení pracovní webové aplikace](./media/app-service-web-staged-publishing-realworld-scenarios/10getpsetting.png)
-4. Otevřete místní vývoj webové aplikace ve službě WebMatrix nebo Visual Studio. Tento kurz používá služba WebMatrix. Nejprve je třeba importovat soubor nastavení publikování pro pracovní webovou aplikaci.
+    ![Get publikovat nastavení hello pracovní webové aplikace](./media/app-service-web-staged-publishing-realworld-scenarios/10getpsetting.png)
+4. Otevřete místní vývoj webové aplikace ve službě WebMatrix nebo Visual Studio. Tento kurz používá služba WebMatrix. Nejprve je třeba tooimport hello pro webové aplikace pracovního souboru s nastavením publikování.
 
     ![Import nastavení publikování pro Umbraco pomocí Web Matrix](./media/app-service-web-staged-publishing-realworld-scenarios/11import.png)
 
-5. Zkontrolujte změny v dialogovém okně a nasadíte místní webové aplikace do vaší webové aplikace Azure, *umbracositecms-1fáze*. Pokud nasazujete soubory přímo do pracovní webové aplikace, vynecháte soubory v `~/app_data/TEMP/` složky, protože tyto soubory se vygeneruje, pokud je první fázi webové aplikace spuštěna. Musí také vynechejte `~/app_data/umbraco.config` souboru, který se také znovu vygeneruje.
+5. Zkontrolujte změny v dialogovém okně hello a nasadit Azure webové aplikace místní webové aplikace tooyour *umbracositecms-1fáze*. Pokud nasazujete soubory přímo tooyour pracovní webová aplikace, vynecháte soubory v hello `~/app_data/TEMP/` složky, protože tyto soubory se vygeneruje, když hello fáze webová aplikace je první spuštění. Musí také vynechejte hello `~/app_data/umbraco.config` souboru, který se také znovu vygeneruje.
 
     ![Publikovat změny v matici web](./media/app-service-web-staged-publishing-realworld-scenarios/12umbpublish.png)
 
-6. Po úspěšně publikovat místní webové aplikace Umbraco do pracovní webové aplikace, přejděte do pracovní webové aplikace a spustit několik testů vylučte všechny problémy.
+6. Po úspěšném publikování hello Umbraco místní webové aplikace toohello pracovní webové aplikace, procházet tooyour pracovní webové aplikace a spusťte několik toorule testy na všechny problémy.
 
-#### <a name="set-up-the-courier2-deployment-module"></a>Nastavit modul Courier2 nasazení
-Pomocí [Courier2](http://umbraco.com/products/more-add-ons/courier-2) modul, můžete můžete jednoduše klikněte pravým tlačítkem na předávaný obsah, šablony stylů a vývoj modulů z pracovní webové aplikace do produkčního webové aplikace. Tento proces snižuje riziko nejnovější webové aplikace produkční, když nasazujete aktualizaci nasadit.
-Zakoupit licenci pro Courier2 pro `*.azurewebsites.net` domény a vlastní domény (například http://abc.com). Po zakoupení licence umístit stažený licence (. Soubor – licenční smlouva) v `bin` složky.
+#### <a name="set-up-hello-courier2-deployment-module"></a>Nastavit modul nasazení Courier2 hello
+S hello [Courier2](http://umbraco.com/products/more-add-ons/courier-2) modul, můžete jednoduše pravým tlačítkem toopush obsahu, šablony stylů a vývoj modulů z pracovní webové aplikace tooa produkční webové aplikace. Tento proces snižuje riziko hello nejnovější webové aplikace produkční, když nasazujete aktualizaci nasadit.
+Zakoupit licenci pro Courier2 pro hello `*.azurewebsites.net` domény a vlastní domény (například http://abc.com). Po zakoupení licence hello místní hello stáhnout licenci (. Soubor – licenční smlouva) v hello `bin` složky.
 
 ![Vyřaďte licenční soubor ve složce Koš](./media/app-service-web-staged-publishing-realworld-scenarios/13droplic.png)
 
-1. [Stáhněte si balíček Courier2](https://our.umbraco.org/projects/umbraco-pro/umbraco-courier-2/). Přihlášení do webové aplikace fázi, například http://umbracocms-site-stage.azurewebsites.net/umbraco, klikněte na tlačítko **vývojáře** nabídce a pak klikněte na tlačítko **balíčky** > **místní instalace balíček**.
+1. [Stáhněte si balíček hello Courier2](https://our.umbraco.org/projects/umbraco-pro/umbraco-courier-2/). Přihlášení tooyour fáze webovou aplikaci, například http://umbracocms-site-stage.azurewebsites.net/umbraco, klikněte na tlačítko hello **vývojáře** nabídce a pak klikněte na tlačítko **balíčky** > **instalace místní balíček**.
 
     ![Instalační program balíčku Umbraco](./media/app-service-web-staged-publishing-realworld-scenarios/14umbpkg.png)
 
-2. Nahrání balíčku Courier2 pomocí Instalační služby.
+2. Nahrání balíčku hello Courier2 pomocí instalačního programu hello.
 
     ![Nahrání balíčku pro modul Kurýrní](./media/app-service-web-staged-publishing-realworld-scenarios/15umbloadpkg.png)
 
-3. Ke konfiguraci balíčku, je potřeba aktualizovat soubor do courier.config **konfigurace** složky vaší webové aplikace.
+3. balíček hello tooconfigure, budete potřebovat tooupdate hello courier.config soubor pod hello **konfigurace** složky vaší webové aplikace.
 
     ```xml
     <!-- Repository connection settings -->
-     <!-- For each site, a custom repository must be configured, so Courier knows how to connect and authenticate-->
+     <!-- For each site, a custom repository must be configured, so Courier knows how tooconnect and authenticate-->
      <repositories>
-        <!-- If a custom Umbraco Membership provider is used, specify login & password + set the passwordEncoding to clear: -->
+        <!-- If a custom Umbraco Membership provider is used, specify login & password + set hello passwordEncoding tooclear: -->
         <repository name="production web app" alias="stage" type="CourierWebserviceRepositoryProvider" visible="true">
           <url>http://umbracositecms-1.azurewebsites.net</url>
           <user>0</user>
@@ -371,18 +371,18 @@ Zakoupit licenci pro Courier2 pro `*.azurewebsites.net` domény a vlastní domé
      </repositories>
      ```
 
-4. V části `<repositories>`, zadejte informace o provozním serveru adresu URL a uživatele.
-    Pokud používáte výchozí zprostředkovatel členství Umbraco, přidejte ID pro uživatele správy v &lt;uživatele&gt; části.
-    Pokud používáte vlastní zprostředkovatel členství Umbraco, použijte `<login>`,`<password>` v modulu Courier2 pro připojení k produkční lokality.
-    Další podrobnosti [najdete v dokumentaci pro modul Courier2](http://umbraco.com/help-and-support/customer-area/courier-2-support-and-download/developer-documentation).
+4. V části `<repositories>`, zadejte hello produkční lokality adresy URL a uživatelské informace.
+    Pokud používáte hello výchozí zprostředkovatel členství Umbraco, přidejte v hello hello ID pro uživatele správy hello &lt;uživatele&gt; části.
+    Pokud používáte vlastní zprostředkovatel členství Umbraco, použijte `<login>`,`<password>` v hello Courier2 modulu tooconnect toohello pracoviště.
+    Další podrobnosti [hello v dokumentaci pro modul hello Courier2](http://umbraco.com/help-and-support/customer-area/courier-2-support-and-download/developer-documentation).
 
-5. Podobně nainstalovat modul Courier2 provozního webu a nakonfigurovat ji tak, aby odkazoval na fázi webovou aplikaci ve svém příslušných courier.config souboru, jak je vidět tady.
+5. Podobně nainstalujte modul Courier2 hello na produkční lokality a nakonfigurujte ho toopoint toohello fáze webové aplikace ve svém příslušných courier.config souboru, jak je vidět tady.
 
     ```xml
      <!-- Repository connection settings -->
-     <!-- For each site, a custom repository must be configured, so Courier knows how to connect and authenticate-->
+     <!-- For each site, a custom repository must be configured, so Courier knows how tooconnect and authenticate-->
      <repositories>
-        <!-- If a custom Umbraco Membership provider is used, specify login & password + set the passwordEncoding to clear: -->
+        <!-- If a custom Umbraco Membership provider is used, specify login & password + set hello passwordEncoding tooclear: -->
         <repository name="Stage web app" alias="stage" type="CourierWebserviceRepositoryProvider" visible="true">
           <url>http://umbracositecms-1-stage.azurewebsites.net</url>
           <user>0</user>
@@ -390,55 +390,55 @@ Zakoupit licenci pro Courier2 pro `*.azurewebsites.net` domény a vlastní domé
      </repositories>
     ```
 
-6. Klikněte **Courier2** v řídicím panelu Umbraco CMS webové aplikace a pak klikněte na tlačítko **umístění**. Název úložiště byste měli vidět, jak je uvedeno v `courier.config`. Proveďte tento proces na produkční a pracovní webové aplikace.
+6. Klikněte na tlačítko hello **Courier2** v hello řídicí panel Umbraco CMS webové aplikace a pak klikněte na tlačítko **umístění**. Název úložiště hello byste měli vidět, jak je uvedeno v `courier.config`. Proveďte tento proces na produkční a pracovní webové aplikace.
 
     ![Zobrazení cílové webové aplikace úložiště](./media/app-service-web-staged-publishing-realworld-scenarios/16courierloc.png)
 
-7. Pokud chcete nasadit obsah z webu pracovní na pracoviště, přejděte na **obsah**a zvolte existující stránky nebo vytvořte novou stránku. Z mé webové aplikace, kde je název příslušné stránky se vyberte existující stránky **Začínáme – nové**a potom klikněte na **uložit a publikovat**.
+7. toodeploy obsah z hello pracovní lokality toohello pracoviště, přejděte příliš**obsah**a zvolte existující stránky nebo vytvořte novou stránku. Z mé webové aplikace, kde je název hello stránku hello bude vyberte existující stránky **Začínáme – nové**a potom klikněte na **uložit a publikovat**.
 
     ![Změňte název stránky a publikování](./media/app-service-web-staged-publishing-realworld-scenarios/17changepg.png)
 
-8. Klikněte pravým tlačítkem na upravené stránky zobrazíte všechny možnosti. Klikněte na tlačítko **Kurýrní** otevřete **nasazení** dialogové okno. Klikněte na tlačítko **nasadit** k inicializaci nasazení.
+8. Klikněte pravým tlačítkem na hello upravit stránku tooview všechny možnosti hello. Klikněte na tlačítko **Kurýrní** tooopen hello **nasazení** dialogové okno. Klikněte na tlačítko **nasadit** tooinitiate nasazení.
 
     ![Dialogové okno nasazení Kurýrní modulu](./media/app-service-web-staged-publishing-realworld-scenarios/18dialog1.png)
 
-9. Zkontrolujte změny a pak klikněte na tlačítko **pokračovat**.
+9. Zkontrolujte hello změny a pak klikněte na tlačítko **pokračovat**.
 
     ![Kurýrní modul nasazení dialogové okno Kontrola změn](./media/app-service-web-staged-publishing-realworld-scenarios/19dialog2.png)
 
-    Nasazení protokolu se zobrazuje, pokud nasazení bylo úspěšné.
+    nasazení protokolu Hello se zobrazuje, pokud hello nasazení proběhlo úspěšně.
 
      ![Zobrazit protokoly nasazení z Kurýrní modulu](./media/app-service-web-staged-publishing-realworld-scenarios/20successdlg.png)
 
-10. Procházejte webové aplikace produkční chcete zobrazit, pokud změny se projeví.
+10. Procházet vaše produkční webové aplikace toosee, pokud se projeví hello.
 
      ![Procházet produkční webové aplikace](./media/app-service-web-staged-publishing-realworld-scenarios/21umbpg.png)
 
-Další informace o tom, jak používat Kurýrní, zkontrolujte v dokumentaci.
+Další informace o tom, jak toouse Kurýrní, zkontrolujte hello dokumentaci toolearn.
 
-#### <a name="how-to-upgrade-the-umbraco-cms-version"></a>Postup upgradu na verzi Umbraco CMS
-Kurýrní bude není nápovědy, které upgradujete z jedné verze nástroje Umbraco CMS do jiného. Při upgradu verzi Umbraco CMS, je nutné zkontrolovat pro nekompatibilitu s vlastní moduly nebo moduly od partnerů a Umbraco základní knihovny. Tady jsou osvědčené postupy:
+#### <a name="how-tooupgrade-hello-umbraco-cms-version"></a>Jak tooupgrade hello verze Umbraco CMS
+Kurýrní bude není nápovědy, které upgradujete z jedné verze nástroje tooanother Umbraco CMS. Při upgradu verzi Umbraco CMS, musíte vyhledat nekompatibilitu s vlastní moduly nebo moduly od partnerů a hello Umbraco základní knihovny. Tady jsou osvědčené postupy:
 
-* Vždy zálohování webové aplikace a databáze před upgradem. Na webové aplikace v Azure můžete nastavit automatické zálohování pro své weby pomocí funkce zálohování a obnovení vaší lokality v případě potřeby pomocí funkce obnovení. Další podrobnosti najdete v tématu [zálohování webové aplikace](web-sites-backup.md) a [obnovení webové aplikace](web-sites-restore.md).
-* Zkontrolujte, jestli jsou kompatibilní s verzí, které provádíte upgrade na balíčky od partnerů. V balíčku stránce pro stažení, zkontrolujte kompatibilitu projektu s Umbraco CMS verzí.
+* Vždy zálohování webové aplikace a databáze před upgradem. Na webové aplikace v Azure můžete nastavit automatické zálohování pro své weby pomocí funkce zálohování hello a v případě potřeby pomocí funkce obnovení hello obnovit váš web. Další podrobnosti najdete v tématu [jak tooback až vaše webová aplikace](web-sites-backup.md) a [jak toorestore vaší webové aplikace](web-sites-restore.md).
+* Zkontrolujte, jestli jsou kompatibilní s verzí hello, kterou provádíte upgrade na balíčky od partnerů. V balíčku hello stránce pro stažení, zkontrolujte hello projektu kompatibilitu s verzí Umbraco CMS.
 
-Další informace o tom, jak upgradovat webovou aplikaci místně [najdete obecné pokyny upgradu](https://our.umbraco.org/documentation/getting-started/setup/upgrading/general).
+Další informace o tooupgrade vaši webovou aplikaci místně, [najdete obecné pokyny upgradu hello](https://our.umbraco.org/documentation/getting-started/setup/upgrading/general).
 
-Po upgradu místním vývojovém webu, publikujte změny do pracovní webové aplikace. Testování vaší aplikace. Pokud všechny spokojeni, použijte **Swap** tlačítko Prohodit váš pracovní web na produkční webové aplikaci. Při použití **Prohodit** operace, můžete zobrazit změny, které bude mít vliv v konfiguraci webové aplikace. To **Prohodit** operace prohození webové aplikace a databáze. Po **odkládacího souboru**, produkční webové aplikace bude odkazovat na databázi umbraco fáze db a pracovní webové aplikace bude přejděte do databáze umbraco produkčnímu db.
+Po upgradu místním vývojovém webu, publikujte toohello změny hello pracovní webové aplikace. Testování vaší aplikace. Pokud všechny spokojeni, použijte hello **Prohodit** tlačítko tooswap pracovní lokality toohello produkční webové aplikace. Při použití hello **Prohodit** operace, hello změny, které bude mít vliv na si můžete prohlédnout v konfiguraci webové aplikace. To **Prohodit** operace prohození hello webové aplikace a databáze. Po hello **Prohodit**hello produkční webové aplikace se bod toohello umbraco fáze db databázi a hello pracovní webové aplikace se bod tooumbraco-produkčnímu db databáze.
 
 ![Swap – náhled pro nasazení systému CMS Umbraco](./media/app-service-web-staged-publishing-realworld-scenarios/22umbswap.png)
 
-Zde jsou výhody prohození webové aplikace a databáze:
+Zde jsou výhody odkládací hello webové aplikace a databáze hello:
 
-* Můžete se vrátit zpět na předchozí verzi vaší webové aplikace s jinou **Prohodit** Pokud jsou nějaké problémy aplikace.
-* Pro účely upgradu musíte nasadit soubory a databází z pracovní webové aplikace na produkční webové aplikaci a databázi. Když nasadíte soubory a databáze, můžete přejít nesprávný celou řadu věcí. Pomocí **Prohodit** funkce přihrádky, můžeme zkrátit dobu prostojů při upgradu a snížilo riziko chyby, ke kterým může dojít, když nasazujete změny.
-* Můžete provést **A / B testování** pomocí [testování v produkčním prostředí](https://azure.microsoft.com/documentation/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/) funkce.
+* Můžete se vrátit zpět předchozí verze vaší webové aplikace s jinou toohello **Prohodit** Pokud jsou nějaké problémy aplikace.
+* Pro účely upgradu musíte toodeploy soubory a databáze z hello pracovní webové aplikace toohello produkční webové aplikace a databáze. Když nasadíte soubory a databáze, můžete přejít nesprávný celou řadu věcí. Pomocí hello **Prohodit** funkce přihrádky, můžeme zkrátit dobu prostojů při upgradu a snížilo riziko chyby, ke kterým může dojít, když nasazujete změny hello.
+* Můžete provést **A / B testování** pomocí hello [testování v produkčním prostředí](https://azure.microsoft.com/documentation/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/) funkce.
 
-Tento příklad ukazuje, flexibilní platformu kde můžete vytvořit vlastní moduly podobná Umbraco Kurýrní modul pro správu nasazení v prostředí.
+Tento příklad ukazuje hello flexibilitu hello platformy, kde můžete vytvořit vlastní moduly podobné tooUmbraco Kurýrní modulu toomanage nasazení prostředích.
 
 ## <a name="references"></a>Odkazy
 [Agile software development službou Azure App Service](app-service-agile-software-development.md)
 
 [Nastavení přípravných prostředí pro webové aplikace v Azure App Service](web-sites-staged-publishing.md)
 
-[Blokování webového přístupu k testovacím nasazovací sloty](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
+[Jak tooblock webový přístup k produkční toonon nasazovací sloty](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)

@@ -1,6 +1,6 @@
 ---
-title: "Jak používat služby sendgrid vám umožňuje e-mailů (.NET) | Microsoft Docs"
-description: "Zjistěte, jak odeslat e-mailu pomocí e-mailovou službu sendgrid vám umožňuje v Azure. Ukázky kódu jsou vytvořené v C# a používají .NET API."
+title: "aaaHow toouse hello sendgrid vám umožňuje e-mailovou službu (.NET) | Microsoft Docs"
+description: "Zjistěte, jak odeslat e-mail s hello sendgrid vám umožňuje e-mailovou službu v Azure. Ukázky kódu jsou vytvořené v C# a použití hello .NET API."
 services: app-service-web
 documentationcenter: .net
 author: thinkingserious
@@ -14,20 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
-ms.openlocfilehash: b3a48b3c838763b022a18e55817ec7455fe94c85
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b3d77bb67898b991c7293e6b9086b263f6bcb755
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-send-email-using-sendgrid-with-azure"></a>Postup odesílání e-mailu pomocí sendgrid vám umožňuje pomocí Azure
+# <a name="how-toosend-email-using-sendgrid-with-azure"></a>Jak tooSend e-mailu pomocí sendgrid vám umožňuje pomocí Azure
 ## <a name="overview"></a>Přehled
-Tato příručka ukazuje, jak provádět běžné úkoly programování s e-mailovou službu sendgrid vám umožňuje v Azure. Ukázky jsou napsané v jazyce C\# a podporuje standardní 1.3 .NET. Pokryté scénáře zahrnují vytváření e-mailu, odesílání e-mailu, přidání příloh a povolení různé e-mailu a sledování nastavení. Další informace o sendgrid vám umožňuje a odesílání e-mailu, najdete v článku [další kroky] [ Next steps] části.
+Tato příručka ukazuje, jak tooperform běžné úlohy programování sendgridu e-mailové služby v Azure. Hello ukázky jsou napsané v jazyce C\# a podporuje standardní 1.3 .NET. Hello pokryté scénáře zahrnují vytváření e-mailu, odesílání e-mailu, přidání příloh a povolení různé e-mailu a sledování nastavení. Další informace o sendgrid vám umožňuje a odesílání e-mailu, najdete v části hello [další kroky] [ Next steps] části.
 
-## <a name="what-is-the-sendgrid-email-service"></a>Co je služba sendgrid vám umožňuje e-mailu?
+## <a name="what-is-hello-sendgrid-email-service"></a>Co je hello sendgrid vám umožňuje e-mailovou službu?
 Je sendgrid vám umožňuje [cloudový e-mailovou službu] poskytuje spolehlivé [doručování e-mailem transakční], škálovatelnost a analýzu v reálném čase společně s flexibilní rozhraní API, které umožňují snadnou vlastní integrace. Běžné případy použití sendgrid vám umožňuje patří:
 
-* Automatické odesílání potvrzení nebo potvrzení nákupní zákazníkům.
+* Odesílání automaticky potvrzení nebo toocustomers potvrzení nákupu.
 * Správa distribuce uvádí pro odesílání zákazníkům měsíční letáků a reklamními nabídkami.
 * Shromažďování metriky v reálném čase pro takové věci, jako e-mailu blokovaný a zákaznické engagement.
 * Předávání dotazy zákazníků.
@@ -38,15 +38,15 @@ Další informace najdete v článku [https://sendgrid.com](https://sendgrid.com
 ## <a name="create-a-sendgrid-account"></a>Vytvoření účtu sendgrid vám umožňuje
 [!INCLUDE [sendgrid-sign-up](../../includes/sendgrid-sign-up.md)]
 
-## <a name="reference-the-sendgrid-net-class-library"></a>Odkaz na knihovně tříd rozhraní .NET sendgrid vám umožňuje
-[Balíček NuGet sendgrid vám umožňuje](https://www.nuget.org/packages/Sendgrid) Nejsnadnějším způsobem, chcete-li získat sendgrid vám umožňuje rozhraní API a ke konfiguraci vaší aplikace s všechny závislosti. NuGet je součástí sady Microsoft Visual Studio 2015 rozšíření sady Visual Studio a vyšší usnadňuje instalace a aktualizace knihovny a nástroje.
+## <a name="reference-hello-sendgrid-net-class-library"></a>Referenční dokumentace hello sendgrid vám umožňuje knihovna tříd rozhraní .NET
+Hello [balíček NuGet sendgrid vám umožňuje](https://www.nuget.org/packages/Sendgrid) je hello nejjednodušší způsob, jak tooget hello sendgrid vám umožňuje rozhraní API a tooconfigure vaší aplikace pomocí všechny závislosti. NuGet je Visual Studio rozšíření obsahovala s Microsoft Visual Studio 2015 a vyšší umožňuje snadno tooinstall a aktualizace knihovny a nástroje.
 
 > [!NOTE]
-> Nainstalovat NuGet, pokud používáte verzi sady Visual Studio starší než Visual Studio 2015, najdete [http://www.nuget.org](http://www.nuget.org)a klikněte na **nainstalovat NuGet** tlačítko.
+> tooinstall NuGet, pokud používáte verzi sady Visual Studio starší než Visual Studio 2015, navštivte [http://www.nuget.org](http://www.nuget.org)a klikněte na tlačítko hello **nainstalovat NuGet** tlačítko.
 >
 >
 
-Chcete-li nainstalovat balíček NuGet sendgrid vám umožňuje v aplikaci, postupujte takto:
+hello tooinstall balíček NuGet sendgrid vám umožňuje v aplikaci hello následující:
 
 1. Klikněte na **nový projekt** a vyberte **šablony**.
 
@@ -54,26 +54,26 @@ Chcete-li nainstalovat balíček NuGet sendgrid vám umožňuje v aplikaci, post
 2. V **Průzkumníku řešení**, klikněte pravým tlačítkem na **odkazy**, pak klikněte na tlačítko **spravovat balíčky NuGet**.
 
    ![Balíček NuGet sendgrid vám umožňuje][SendGrid-NuGet-package]
-3. Vyhledejte **sendgrid vám umožňuje** a vyberte **sendgrid vám umožňuje** položky v seznamu výsledků.
-4. Vyberte z rozevíracího seznamu verze mohli pracovat v objektovém modelu nejnovější stabilní verze balíčku Nuget a rozhraní API ukázáno v tomto článku.
+3. Vyhledejte **sendgrid vám umožňuje** a vyberte hello **sendgrid vám umožňuje** položky v seznamu výsledků.
+4. Vyberte hello nejnovější stabilní verze balíčku Nuget hello z hello verze rozevírací toobe možné toowork s hello objektový model a rozhraní API ukázáno v tomto článku.
 
    ![Sendgrid vám umožňuje balíčku][sendgrid-package]
-5. Klikněte na tlačítko **nainstalovat** k dokončení instalace a zavřete toto dialogové okno.
+5. Klikněte na tlačítko **nainstalovat** toocomplete hello instalace a zavřete toto dialogové okno.
 
-Knihovna tříd rozhraní .NET sendgrid vám umožňuje na nazývá **sendgrid vám umožňuje**. Obsahuje následující obory názvů:
+Knihovna tříd rozhraní .NET sendgrid vám umožňuje na nazývá **sendgrid vám umožňuje**. Obsahuje hello následující obory názvů:
 
 * **Sendgrid vám umožňuje** pro komunikaci s rozhraním API sendgrid vám umožňuje společnosti.
-* **SendGrid.Helpers.Mail** pro pomocné metody snadno vytvářet SendGridMessage objekty, které určují, jak odeslat e-mailů.
+* **SendGrid.Helpers.Mail** pomocníka tooeasily metody vytvoření SendGridMessage objekty, které určují, jak toosend e-maily.
 
-Přidejte následující deklarace oborů názvů kódu do horní části souboru žádné C# ve kterém chcete programový přístupu k e-mailovou službu sendgrid vám umožňuje.
+Přidejte následující kód obor názvů deklarace toohello horní jakéhokoliv C# souboru, ve kterém chcete tooprogrammatically přístup hello sendgrid vám umožňuje e-mailovou službu hello.
 
     using SendGrid;
     using SendGrid.Helpers.Mail;
 
 ## <a name="how-to-create-an-email"></a>Postupy: vytvoření e-mailu
-Použití **SendGridMessage** objekt k vytvoření e-mailovou zprávu. Po vytvoření objektu zprávu můžete nastavit vlastnosti a metody, včetně e-mailu odesílatel, příjemce e-mailu a předmět a text e-mailu.
+Použití hello **SendGridMessage** objektu toocreate e-mailovou zprávu. Po vytvoření objektu zpráva hello můžete nastavit vlastnosti a metody, včetně hello odesílatelem e-mailu, hello příjemce e-mailu a hello předmět a text e-mailů hello.
 
-Následující příklad ukazuje, jak vytvořit objekt plně vyplněná e-mailu:
+Hello následující příklad ukazuje, jak toocreate objekt plně vyplněná e-mailu:
 
     var msg = new SendGridMessage();
 
@@ -87,7 +87,7 @@ Následující příklad ukazuje, jak vytvořit objekt plně vyplněná e-mailu:
     };
     msg.AddTos(recipients);
 
-    msg.SetSubject("Testing the SendGrid C# Library");
+    msg.SetSubject("Testing hello SendGrid C# Library");
 
     msg.AddContent(MimeType.Text, "Hello World plain text!");
     msg.AddContent(MimeType.Html, "<p>Hello World!</p>");
@@ -97,9 +97,9 @@ Další informace o všech vlastností a metod podporovaných **sendgrid vám um
 ## <a name="how-to-send-an-email"></a>Postupy: odeslání e-mailu
 Po vytvoření e-mailovou zprávu, můžete ho pomocí rozhraní API sendgrid vám umožňuje společnosti odeslat. Alternativně můžete použít [. NET je součástí knihovny][NET-library].
 
-Odesílání e-mailu vyžaduje, že je klíč rozhraní API sendgrid vám umožňuje zadat. Pokud potřebujete podrobnosti o tom, jak nakonfigurovat klíče rozhraní API, navštivte klíče rozhraní API sendgrid vám umožňuje na [dokumentace][documentation].
+Odesílání e-mailu vyžaduje, že je klíč rozhraní API sendgrid vám umožňuje zadat. Pokud potřebujete informace o tooconfigure klíče rozhraní API, navštivte klíče rozhraní API sendgrid vám umožňuje na [dokumentace][documentation].
 
-Tyto přihlašovací údaje prostřednictvím portálu Azure může uložit kliknutím na tlačítko Nastavení aplikace a přidáním páry klíč/hodnota v části Nastavení aplikace.
+Tyto přihlašovací údaje mohou ukládat prostřednictvím portálu Azure tak, že kliknete na příkaz Nastavení aplikace a přidat páry klíč – hodnota hello v části Nastavení aplikace.
 
  ![Nastavení aplikace Azure][azure_app_settings]
 
@@ -108,7 +108,7 @@ Tyto přihlašovací údaje prostřednictvím portálu Azure může uložit klik
     var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
     var client = new SendGridClient(apiKey);
 
-Následující příklady ukazují, jak odeslat zprávu pomocí webového rozhraní API.
+Hello následující příklady ukazují, jak hello toosend zprávu pomocí webového rozhraní API.
 
     using System;
     using System.Threading.Tasks;
@@ -131,7 +131,7 @@ Následující příklady ukazují, jak odeslat zprávu pomocí webového rozhra
                 var msg = new SendGridMessage()
                 {
                     From = new EmailAddress("test@example.com", "DX Team"),
-                    Subject = "Hello World from the SendGrid CSharp SDK!",
+                    Subject = "Hello World from hello SendGrid CSharp SDK!",
                     PlainTextContent = "Hello, Email!",
                     HtmlContent = "<strong>Hello, Email!</strong>"
                 };
@@ -142,7 +142,7 @@ Následující příklady ukazují, jak odeslat zprávu pomocí webového rozhra
     }
 
 ## <a name="how-to-add-an-attachment"></a>Postupy: Přidání přílohy
-Přílohy mohou být přidány do zprávy voláním **AddAttachment** metoda a minimálně zadáte název souboru a kódováním Base64 obsahu, které chcete připojit. Může obsahovat více přiložených, po pro každý soubor chcete připojit, a to voláním této metody nebo pomocí **AddAttachments** metoda. Následující příklad ukazuje, přidání přílohu zprávu:
+Přílohy lze přidat zprávu tooa pomocí volání hello **AddAttachment** metoda a minimálně zadáte název souboru hello a kódováním Base64 obsahu, které chcete tooattach. Může obsahovat více přiložených, voláním této metody po pro každý soubor chcete tooattach nebo pomocí hello **AddAttachments** metoda. Hello následující příklad ukazuje, přidání zprávu tooa přílohy:
 
     var banner2 = new Attachment()
     {
@@ -154,12 +154,12 @@ Přílohy mohou být přidány do zprávy voláním **AddAttachment** metoda a m
     };
     msg.AddAttachment(banner2);
 
-## <a name="how-to-use-mail-settings-to-enable-footers-tracking-and-analytics"></a>Postupy: nastavení e-mailu slouží k povolení zápatí stránky, sledování a analýzy
-Sendgrid vám umožňuje poskytuje funkce další e-mailu pomocí e-mailu nastavení a nastavení sledování. Tato nastavení lze přidat do e-mailovou zprávu povolit konkrétní funkce, jako je sledování klikněte na tlačítko, Google analytics, předplatné, sledování a tak dále. Úplný seznam aplikací, najdete v článku [nastavení dokumentaci][settings-documentation].
+## <a name="how-to-use-mail-settings-tooenable-footers-tracking-and-analytics"></a>Postupy: použití zápatí tooenable nastavení e-mailu, sledování a analýzy
+Sendgrid vám umožňuje poskytuje další e-mailové funkce prostřednictvím hello použití nastavení pošty a sledování nastavení. Tato nastavení mohou být přidány tooan e-mailové zprávy tooenable konkrétní funkce například klikněte na tlačítko sledování, Google analytics, předplatné, sledování a tak dále. Úplný seznam aplikací, najdete v části hello [nastavení dokumentaci][settings-documentation].
 
-Aplikace lze použít pro **sendgrid vám umožňuje** e-mailové zprávy pomocí metody implementované jako součást **SendGridMessage** třídy. Následující příklady ukazují zápatí a klikněte na tlačítko Sledování filtry:
+Aplikace lze použít příliš**sendgrid vám umožňuje** e-mailové zprávy pomocí metody implementované jako součást hello **SendGridMessage** třídy. Hello následující příklady ukazují hello zápatí a klikněte na tlačítko Sledování filtry:
 
-Následující příklady ukazují zápatí a klikněte na tlačítko Sledování filtry:
+Hello následující příklady ukazují hello zápatí a klikněte na tlačítko Sledování filtry:
 
 ### <a name="footer-settings"></a>Nastavení zápatí
     msg.SetFooterSetting(
@@ -171,22 +171,22 @@ Následující příklady ukazují zápatí a klikněte na tlačítko Sledován�
     msg.SetClickTracking(true);
 
 ## <a name="how-to-use-additional-sendgrid-services"></a>Postupy: použití služeb další sendgrid vám umožňuje
-Sendgrid vám umožňuje nabízí několik rozhraní API a pomocí webhooků, které můžete využít další funkcionalitu v rámci aplikace Azure. Další podrobnosti najdete v tématu [referenční dokumentace rozhraní API sendgrid vám umožňuje][SendGrid API documentation].
+Sendgrid vám umožňuje nabízí několik rozhraní API a pomocí webhooků, které můžete použít další funkce tooleverage v aplikaci Azure. Další podrobnosti najdete v tématu hello [referenční dokumentace rozhraní API sendgrid vám umožňuje][SendGrid API documentation].
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili základy služby sendgrid vám umožňuje e-mailu, postupujte podle následujících odkazech na další informace.
+Teď, když jste se naučili základy hello hello služby sendgrid vám umožňuje e-mailů, použijte tyto odkazy toolearn Další.
 
 * C sendgrid vám umožňuje\# knihovny úložišti: [sendgrid vám umožňuje csharp][sendgrid-csharp]
 * Dokumentaci k rozhraní API sendgrid vám umožňuje: <https://sendgrid.com/docs>
 
 [Next steps]: #next-steps
-[What is the SendGrid Email Service?]: #whatis
+[What is hello SendGrid Email Service?]: #whatis
 [Create a SendGrid Account]: #createaccount
-[Reference the SendGrid .NET Class Library]: #reference
+[Reference hello SendGrid .NET Class Library]: #reference
 [How to: Create an Email]: #createemail
 [How to: Send an Email]: #sendemail
 [How to: Add an Attachment]: #addattachment
-[How to: Use Filters to Enable Footers, Tracking, and Analytics]: #usefilters
+[How to: Use Filters tooEnable Footers, Tracking, and Analytics]: #usefilters
 [How to: Use Additional SendGrid Services]: #useservices
 
 [create-new-project]: ./media/sendgrid-dotnet-how-to-send-email/new-project.png

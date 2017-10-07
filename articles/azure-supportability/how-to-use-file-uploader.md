@@ -1,6 +1,6 @@
 ---
-title: "Nahrát soubor pokyny nástroj žádosti o novou podporu Microsoft Azure | Microsoft Docs"
-description: "Popisuje pokyny při použití Microsoft Azure novou žádost o podporu uložení souborů na server nástroje"
+title: "aaaMicrosoft podporu Azure nové žádosti o pokyny pro nahrání souboru nástroj | Microsoft Docs"
+description: "Popisuje pokyny hello při použití Microsoft Azure novou žádost o podporu uložení souborů na server nástroje"
 services: 
 documentationcenter: 
 author: genlin
@@ -15,28 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: genli
-ms.openlocfilehash: ba6dafd8d890d88478a5e3213dd023921908f4bf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 19e51b40b82a71454b4b04752ebeefd5d26c2db5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Nahrát soubor pokyny nástroj žádosti o novou podporu Microsoft Azure
-Pokud jste [vytvořit žádost o podporu](https://portal.azure.com/#create/Microsoft.Support), nástroj nahrát soubor můžete snadno odesílání diagnostických souborů nebo všechny soubory, které si myslíte, že jsou relevantní pro incident.  
+Pokud jste [vytvořit žádost o podporu](https://portal.azure.com/#create/Microsoft.Support), hello nahrát soubor nástroj může pomoci snadno odesílání diagnostických souborů nebo všechny soubory, které si myslíte, že jsou relevantní toohello incident.  
 
 > [!NOTE]
-> K ochraně vašich osobních údajů, nezahrnujte do vaší nahrávání nějaké osobní informace.
+> tooprotect vaše osobní údaje, nezahrnujte žádné osobní údaje do vaší nahrávání.
 >
 >
 
-Pokud použijete nástroj uložení souborů na server, postupujte podle následujících pokynů:
+Pokud použijete nástroj nahrát soubor hello, postupujte podle následujících pokynů:
 
-* Všechny soubory musí mít příponu názvu souboru, například .docx nebo XLSX. V tabulce najdete seznam povolených přípon souborů.
-* Název souboru musí být delší než 110 znaků.
+* Všechny soubory musí mít příponu názvu souboru, například .docx nebo XLSX. V tabulce hello najdete hello seznamu povolených přípon.
+* Název souboru Hello musí být delší než 110 znaků.
 * Nelze odeslat více než jeden soubor.
 * Soubory nemůže být větší než 4 MB volného místa.
 
-## <a name="table-of-the-allowed-file-name-extensions"></a>Tabulka povolené přípony
+## <a name="table-of-hello-allowed-file-name-extensions"></a>Tabulka hello povolených přípon
 | 0 – 9, A-C    | D-G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
 | .7z         | dat  | .hwl        | .odx  | RAR     | .tdb       | xlam   |

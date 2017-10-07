@@ -1,6 +1,6 @@
 ---
-title: "Globální distribuční kurz pro Azure Cosmos DB pro MongoDB API | Microsoft Docs"
-description: "Zjistěte, jak nastavit globální distribuční databázi Cosmos Azure pomocí rozhraní API pro MongoDB."
+title: "kurz globální distribuční Cosmos DB aaaAzure pro MongoDB API | Microsoft Docs"
+description: "Zjistěte, jak pomocí globální distribuční databázi Cosmos Azure toosetup hello rozhraní API MongoDB."
 services: cosmos-db
 keywords: "globální distribuční, MongoDB"
 documentationcenter: 
@@ -15,26 +15,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: a2747102f4d8cac412b67abc3fd07cfa3661bcee
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 0fc2d670bb4e21ac5f813f9586b407ba06ccf354
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-mongodb-api"></a>Jak nastavit globální distribuční databázi Cosmos Azure pomocí rozhraní API pro MongoDB
+# <a name="how-toosetup-azure-cosmos-db-global-distribution-using-hello-mongodb-api"></a>Jak toosetup Azure Cosmos DB globální distribuční pomocí rozhraní API MongoDB hello
 
-V tomto článku jsme ukazují, jak pomocí portálu Azure nastavit globální distribuční databázi Cosmos Azure a potom se připojte pomocí rozhraní API pro MongoDB.
+V tomto článku ukážeme, jak toouse hello Azure portálu toosetup globální distribuční databázi Cosmos Azure a potom se připojte pomocí hello rozhraní API MongoDB.
 
-Tento článek obsahuje následující úlohy: 
+Tento článek se zabývá hello následující úlohy: 
 
 > [!div class="checklist"]
-> * Nakonfigurujte globální distribuci pomocí portálu Azure
-> * Nakonfigurujte globální distribuční pomocí [MongoDB rozhraní API](mongodb-introduction.md)
+> * Nakonfigurujte globální distribuci pomocí hello portálu Azure
+> * Nakonfigurujte globální distribuci pomocí hello [MongoDB rozhraní API](mongodb-introduction.md)
 
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
-## <a name="verifying-your-regional-setup-using-the-mongodb-api"></a>Ověření vašeho regionální nastavení pomocí rozhraní API pro MongoDB
-Nejjednodušší způsob dvojitou Kontrola globální konfigurace v rámci rozhraní API pro MongoDB je ke spuštění *isMaster()* příkazu z prostředí Mongo.
+## <a name="verifying-your-regional-setup-using-hello-mongodb-api"></a>Ověření vaší místní instalaci pomocí hello MongoDB rozhraní API
+Nejjednodušší způsob Hello dvojitou Kontrola globální konfigurace v rámci rozhraní API pro MongoDB je toorun hello *isMaster()* příkazu z prostředí Mongo hello.
 
 Z vašeho prostředí Mongo:
 
@@ -68,23 +68,23 @@ Příklad výsledků:
       }
    ```
 
-## <a name="connecting-to-a-preferred-region-using-the-mongodb-api"></a>Připojování k upřednostňovaná oblast pomocí rozhraní API pro MongoDB
+## <a name="connecting-tooa-preferred-region-using-hello-mongodb-api"></a>Připojení tooa upřednostňovaná oblast pomocí hello MongoDB rozhraní API
 
-Rozhraní API MongoDB umožňuje určit vaší kolekce čtení předvoleb globálně distribuované databáze. Pro obě nízká latence čtení a globální vysokou dostupnost, doporučujeme, aby nastavení předvoleb čtení vaší kolekce *nejbližší*. Přečtěte si předvolbu *nejbližší* nakonfigurovaný tak, aby číst z nejbližší oblast.
+Hello MongoDB API umožňuje vám toospecify vaší kolekce čtení předvoleb globálně distribuované databáze. Pro obě nízká latence čtení a globální vysokou dostupnost, doporučujeme, aby nastavení předvoleb čtení vaší kolekce příliš*nejbližší*. Přečtěte si předvolbu *nejbližší* je nakonfigurované tooread z hello nejbližší oblast.
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
 collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.Nearest));
 ```
 
-Pro aplikace s primární pro čtení a zápis oblast a sekundární oblasti pro obnovení po havárii (DR) scénáře, doporučujeme, aby nastavení předvoleb čtení vaší kolekce *sekundární upřednostňovaný*. Přečtěte si předvolbu *sekundární upřednostňovaný* nakonfigurovaný tak, aby ke čtení z oblasti sekundární, pokud primární oblasti není k dispozici.
+Pro aplikace s primární pro čtení a zápis oblast a sekundární oblasti pro obnovení po havárii (DR) scénáře, doporučujeme, aby nastavení předvoleb čtení vaší kolekce příliš*sekundární upřednostňovaný*. Přečtěte si předvolbu *sekundární upřednostňovaný* je nakonfigurované tooread ze sekundární oblasti hello, když primární oblasti hello není k dispozici.
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
 collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.SecondaryPreferred));
 ```
 
-Nakonec pokud chcete ručně zadejte vaše čtení oblasti. Oblast značky lze nastavit v rámci vaši volbu pro čtení.
+Nakonec pokud chcete jako toomanually zadejte vaše čtení oblasti. Oblast hello značky lze nastavit v rámci vaši volbu pro čtení.
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
@@ -92,17 +92,17 @@ var tag = new Tag("region", "Southeast Asia");
 collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.Secondary, new[] { new TagSet(new[] { tag }) }));
 ```
 
-Je to, že dokončení tohoto kurzu. Můžete naučit ke správě konzistence účtu globálně replikované načtením [úrovně konzistence v Azure Cosmos DB](consistency-levels.md). A další informace o tom, jak globální replikace databáze v Azure Cosmos DB funguje, najdete v části [distribuci dat globálně pomocí Azure Cosmos DB](distribute-data-globally.md).
+Je to, že dokončení tohoto kurzu. Další informace jak toomanage hello konzistence účtu globálně replikované načtením [úrovně konzistence v Azure Cosmos DB](consistency-levels.md). A další informace o tom, jak globální replikace databáze v Azure Cosmos DB funguje, najdete v části [distribuci dat globálně pomocí Azure Cosmos DB](distribute-data-globally.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provést následující:
+V tomto kurzu provedete krok hello následující:
 
 > [!div class="checklist"]
-> * Nakonfigurujte globální distribuci pomocí portálu Azure
-> * Nakonfigurujte globální distribuční pomocí rozhraní API DocumentDB
+> * Nakonfigurujte globální distribuci pomocí hello portálu Azure
+> * Nakonfigurujte globální distribuci pomocí hello DocumentDB rozhraní API
 
-Nyní můžete přejít k dalším kurzu se dozvíte, jak vyvíjet místně pomocí emulátoru místního Azure Cosmos DB.
+Nyní můžete přejít toohello další kurz toolearn jak hello toodevelop místně pomocí emulátoru místního Azure Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Vývoj místně pomocí emulátoru](local-emulator.md)
+> [Vývoj místně pomocí emulátoru hello](local-emulator.md)

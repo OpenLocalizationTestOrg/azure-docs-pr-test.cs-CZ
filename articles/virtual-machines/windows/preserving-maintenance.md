@@ -1,5 +1,5 @@
 ---
-title: "Virtuální počítač zachování údržby pro virtuální počítače Windows v Azure | Microsoft Docs"
+title: "zachování údržby AAA virtuálních počítačů pro virtuální počítače Windows v Azure | Microsoft Docs"
 description: "Místní migrace virtuálních počítačů pro zachování aktualizace paměti."
 services: virtual-machines-windows
 documentationcenter: 
@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2017
 ms.author: zivr
-ms.openlocfilehash: 8888bafbc3aba24168312b611a9b4fbde25f376d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b798f0afd9d8dc60ca8a78f7cc77435a0ddc76fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="vm-preserving-maintenance-with-in-place-vm-migration"></a>Virtuální počítač zachování údržby pomocí nástroje Migrace virtuálních počítačů na místě
 
-Zatímco většina aktualizace nemají žádný vliv na hostované virtuální počítače, jsou případy, kdy aktualizace služeb nebo komponent způsobit minimální narušení k spuštěných virtuálních počítačů (bez úplné restartování virtuálního počítače).
+Většina hello aktualizací používat žádné dopad toohosted virtuálních počítačů, jsou případy, kdy toocomponents aktualizace nebo služby výsledkem minimální narušení toorunning virtuálních počítačů (bez úplné restartování hello virtuálního počítače).
 
-Tyto aktualizace jsou provést pomocí technologie, která umožňuje migrace za provozu na místě, označované taky jako "zachování paměti update". Při aktualizaci hostitele, virtuální počítač je umístěn do stavu "pozastavení", zachování paměti v paměti RAM, zatímco hostitelské prostředí (například příslušný operační systém) se vztahuje potřebné aktualizace a opravy.
-Virtuální počítač je potom pokračuje v rámci 30 sekund byla pozastavena.
-Po obnovení se hodiny virtuálního počítače automaticky synchronizují.
+Tyto aktualizace jsou provést pomocí technologie, která umožňuje migrace za provozu na místě, označované taky jako "zachování paměti update". Při aktualizaci hello hostitele, hello je umístěn virtuální počítač do stavu "pozastavení", zachování hello paměti RAM, během hello hostitelské prostředí (například příslušný operační systém) hello potřebné aktualizace a opravy.
+Hello virtuálního počítače je pak pokračuje v rámci 30 sekund byla pozastavena.
+Po obnovení, je automaticky synchronizovat hodiny hello hello virtuálního počítače.
 
-Ne všechny aktualizace je možné nasadit pomocí tohoto mechanismu, ale díky krátkému období pozastavení má tento způsob nasazení aktualizací výrazně nižší vliv na virtuální počítače.
+Ne všechny aktualizace můžete nasadit pomocí tento mechanismus, ale dané období krátké pozastavení nasazení aktualizací v tomto způsobem výrazně snižuje dopad toovirtual počítače.
 
 Aktualizace s více instancemi (virtuálních počítačů v nastavení dostupnosti) jsou použité jednu aktualizační doménu najednou.
 
-Některé aplikace může být ovlivněno tyto aktualizace více než jiné. Aplikace, které provádějí zpracování událostí v reálném čase, streamování médií nebo překódování nebo vysokou propustnost sítě scénářů, například nemusí být navržena k tolerovat 30 sekundové pauzy. Aplikace běžící na virtuálním počítači můžete další informace o nadcházejících aktualizace voláním [naplánované události](../virtual-machines-scheduled-events.md) API [Metadata služby Azure](../virtual-machines-instancemetadataservice-overview.md).
+Některé aplikace může být ovlivněno tyto aktualizace více než jiné. Aplikace, které provádějí zpracování událostí v reálném čase, streamování médií nebo překódování nebo vysokou propustnost sítě scénáře, nemusí být například navrženou tootolerate 30 sekundové pauzy. Aplikace běžící na virtuálním počítači můžete další informace o nadcházejících aktualizace pomocí volání hello [naplánované události](../virtual-machines-scheduled-events.md) API hello [Azure Metadata služby](../virtual-machines-instancemetadataservice-overview.md).

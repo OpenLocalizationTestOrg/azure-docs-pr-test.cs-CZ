@@ -1,6 +1,6 @@
 ---
-title: "Implementovat řešení zeměpisné polohy Azure SQL Database | Microsoft Docs"
-description: "Další informace ke konfiguraci Azure SQL Database a aplikace pro převzetí služeb při selhání na replikované databáze a testovací převzetí služeb při selhání."
+title: "aaaImplement zeměpisné polohy řešení Azure SQL Database | Microsoft Docs"
+description: "Přečtěte si tooconfigure Azure SQL Database a aplikace pro převzetí služeb při selhání tooa replikované databáze a testovací převzetí služeb při selhání."
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,21 +16,21 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/26/2017
 ms.author: carlrab
-ms.openlocfilehash: 9f53f318e20dac9248906bdbe898ba4dacb286ac
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9295d33c669405108a1a64ef1e7cb77f582773a1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="implement-a-geo-distributed-database"></a>Implementace geograficky distribuovaná databáze
 
-V tomto kurzu konfigurace Azure SQL database a aplikace pro převzetí služeb při selhání do vzdáleného oblasti a poté otestujte plánu převzetí služeb při selhání. Získáte informace o těchto tématech: 
+V tomto kurzu konfigurace Azure SQL database a aplikace pro vzdálené oblast tooa převzetí služeb při selhání a proveďte test převzetí služeb při selhání plánu. Získáte informace o těchto tématech: 
 
 > [!div class="checklist"]
 > * Vytvoření databáze uživatelů a udělit mu oprávnění
 > * Nastavit pravidlo brány firewall na úrovni databáze
 > * Vytvoření [geografická replikace převzetí služeb při selhání skupiny](sql-database-geo-replication-overview.md)
-> * Vytvoření a kompilace aplikace Java k dotazování databáze Azure SQL
+> * Vytvoření a kompilace tooquery aplikace Java Azure SQL database
 > * Provedení postupu zotavení po havárii
 
 Pokud nemáte předplatné Azure, [vytvořit bezplatný účet](https://azure.microsoft.com/free/) před zahájením.
@@ -38,47 +38,47 @@ Pokud nemáte předplatné Azure, [vytvořit bezplatný účet](https://azure.mi
 
 ## <a name="prerequisites"></a>Požadavky
 
-Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
+toocomplete dokončení tohoto kurzu, ujistěte se, hello následující požadavky:
 
-- Nainstalován nejnovější [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs). 
-- Nainstalovat Azure SQL database. Tento kurz používá ukázkové databáze AdventureWorksLT s názvem **mySampleDatabase** z jednoho z těchto rychlé spuštění:
+- Nejnovější nainstalované hello [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs). 
+- Nainstalovat Azure SQL database. Tento kurz používá ukázkové databáze AdventureWorksLT hello s názvem **mySampleDatabase** z jednoho z těchto rychlé spuštění:
 
    - [Vytvoření databáze – portál](sql-database-get-started-portal.md)
    - [Vytvoření databáze – rozhraní příkazového řádku](sql-database-get-started-cli.md)
    - [Vytvoření databáze – PowerShell](sql-database-get-started-powershell.md)
 
-- Našli metodu pro spuštění skriptů SQL na databázi, můžete použít jednu z následujících nástrojů dotazu:
-   - V editoru dotazů [portál Azure](https://portal.azure.com). Další informace o používání editoru dotazů na portálu Azure najdete v tématu [připojit a zadávat dotazy pomocí editoru dotazů](sql-database-get-started-portal.md#query-the-sql-database).
-   - Nejnovější verzi [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms), což je integrované prostředí pro správu jakékoliv infrastruktury, SQL, z SQL serveru do databáze SQL pro Microsoft Windows.
-   - Nejnovější verzi [Visual Studio Code](https://code.visualstudio.com/docs), což je editor grafické kódu pro Linux, systému macOS, a systém Windows, který podporuje rozšíření, včetně [mssql rozšíření](https://aka.ms/mssql-marketplace) k dotazování systému Microsoft SQL Server, Azure SQL Database a SQL Data Warehouse. Další informace o použití tohoto nástroje s Azure SQL Database, najdete v části [připojit a zadávat dotazy s VS Code](sql-database-connect-query-vscode.md). 
+- Našli metoda tooexecute SQL skripty proti databázi, můžete použít jednu z následujících nástrojů dotazů hello:
+   - editor dotazů Hello v hello [portál Azure](https://portal.azure.com). Další informace o použití editoru dotazů hello v hello portálu Azure najdete v tématu [připojit a zadávat dotazy pomocí editoru dotazů](sql-database-get-started-portal.md#query-the-sql-database).
+   - nejnovější verze Hello [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms), což je integrované prostředí pro správu jakékoliv infrastruktury, SQL, z tooSQL systému SQL Server databáze pro Microsoft Windows.
+   - nejnovější verze Hello [Visual Studio Code](https://code.visualstudio.com/docs), což je editor grafické kódu pro Linux, systému macOS, a Windows, které podporuje rozšíření, včetně hello [mssql rozšíření](https://aka.ms/mssql-marketplace) k dotazování systému Microsoft SQL Server , Azure SQL Database a SQL Data Warehouse. Další informace o použití tohoto nástroje s Azure SQL Database, najdete v části [připojit a zadávat dotazy s VS Code](sql-database-connect-query-vscode.md). 
 
 ## <a name="create-database-users-and-grant-permissions"></a>Vytvoření databáze uživatelů a udělit oprávnění
 
-Připojení k vaší databázi a vytvořte uživatelské účty pomocí jedné z následujících nástrojů dotazu:
+Připojit tooyour databáze a vytvořit uživatelské účty pomocí jedné z následujících nástrojů dotazů hello:
 
-- Editor dotazů na portálu Azure
+- editor dotazů Hello v hello portálu Azure
 - SQL Server Management Studio
 - Visual Studio Code
 
-Tyto uživatelské účty automaticky replikovat do sekundárního serveru (a sesynchronizovávat). Pokud chcete použít SQL Server Management Studio nebo Visual Studio Code, musíte nakonfigurovat pravidlo brány firewall, pokud se připojujete z klienta na adresu IP, pro kterou jste zatím nenakonfigurovali bránou firewall. Podrobné pokyny najdete v tématu [vytvoření pravidla brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
+Tyto uživatelské účty automaticky replikovat tooyour sekundární server (a sesynchronizovávat). toouse SQL Server Management Studio nebo Visual Studio Code, může být nutné tooconfigure pravidlo brány firewall při připojení z klienta na adresu IP, pro kterou jste zatím nenakonfigurovali bránou firewall. Podrobné pokyny najdete v tématu [vytvoření pravidla brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
 
-- V okně dotazu spustíte následující dotaz, který vytvoříte dva uživatelské účty ve vaší databázi. Tento skript uděluje **db_owner** oprávnění k **app_admin** účet a uděluje **vyberte** a **aktualizace** oprávnění k **app_user** účtu. 
+- V okně dotazu spusťte následující dotaz toocreate dva uživatelské účty ve vaší databázi hello. Tento skript uděluje **db_owner** oprávnění toohello **app_admin** účet a uděluje **vyberte** a **aktualizace** toohello oprávnění **app_user** účtu. 
 
    ```sql
    CREATE USER app_admin WITH PASSWORD = 'ChangeYourPassword1';
-   --Add SQL user to db_owner role
+   --Add SQL user toodb_owner role
    ALTER ROLE db_owner ADD MEMBER app_admin; 
    --Create additional SQL user
    CREATE USER app_user WITH PASSWORD = 'ChangeYourPassword1';
-   --grant permission to SalesLT schema
-   GRANT SELECT, INSERT, DELETE, UPDATE ON SalesLT.Product TO app_user;
+   --grant permission tooSalesLT schema
+   GRANT SELECT, INSERT, DELETE, UPDATE ON SalesLT.Product tooapp_user;
    ```
 
 ## <a name="create-database-level-firewall"></a>Vytvoření brány firewall na úrovni databáze
 
-Vytvoření [pravidlo brány firewall na úrovni databáze](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) pro vaši databázi SQL. Toto pravidlo brány firewall na úrovni databáze automaticky replikuje na sekundární server, který vytvoříte v tomto kurzu. Pro zjednodušení (v tomto kurzu) použijte veřejnou IP adresu počítače, na kterém provádíte kroky v tomto kurzu. Adresa IP použitá pro pravidlo brány firewall na úrovni serveru pro váš aktuální počítač, zjistíte v [vytvoření brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).  
+Vytvoření [pravidlo brány firewall na úrovni databáze](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) pro vaši databázi SQL. Toto pravidlo brány firewall na úrovni databáze replikuje automaticky toohello sekundární server, který vytvoříte v tomto kurzu. Pro zjednodušení (v tomto kurzu) použijte hello veřejnou IP adresu hello počítače, na kterém provádíte hello kroky v tomto kurzu. toodetermine hello IP adresa použitá pro hello pravidlo brány firewall na úrovni serveru pro váš aktuální počítač, najdete v části [vytvoření brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).  
 
-- V okně otevřeného dotazu nahraďte tento dotaz, nahraďte IP adresy na příslušné IP adresy pro vaše prostředí předchozího dotazu.  
+- V okně otevřeného dotazu nahraďte předchozího dotazu hello hello následující dotaz, nahraďte hello IP adresy hello odpovídající IP adresy pro vaše prostředí.  
 
    ```sql
    -- Create database-level firewall setting for your public IP address
@@ -87,13 +87,13 @@ Vytvoření [pravidlo brány firewall na úrovni databáze](https://docs.microso
 
 ## <a name="create-an-active-geo-replication-auto-failover-group"></a>Vytvořit skupinu aktivní geografickou replikací automatické převzetí služeb při selhání 
 
-Pomocí Azure PowerShell, vytvořte [aktivní geografickou replikací automatické převzetí služeb při selhání skupiny](sql-database-geo-replication-overview.md) mezi existující server Azure SQL a nový prázdný server Azure SQL v oblasti Azure a poté přidejte ukázkové databáze ke skupině převzetí služeb při selhání.
+Pomocí Azure PowerShell, vytvořte [aktivní geografickou replikací automatické převzetí služeb při selhání skupiny](sql-database-geo-replication-overview.md) mezi existující server Azure SQL a hello nový prázdný server Azure SQL v oblasti Azure, a poté přidejte skupině ukázkové databáze toohello převzetí služeb při selhání.
 
 > [!IMPORTANT]
 > Tyto rutiny vyžadují Azure PowerShell 4.0. [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
 >
 
-1. Naplnění proměnných pro skripty prostředí PowerShell pomocí hodnot pro existující server a ukázkovou databázi a zadejte globálně jedinečná hodnota pro název skupiny pro převzetí služeb při selhání.
+1. Naplnění proměnných pro skripty prostředí PowerShell pomocí hello hodnot pro existující server a ukázkovou databázi a zadejte globálně jedinečná hodnota pro název skupiny pro převzetí služeb při selhání.
 
    ```powershell
    $adminlogin = "ServerAdmin"
@@ -117,7 +117,7 @@ Pomocí Azure PowerShell, vytvořte [aktivní geografickou replikací automatick
    $mydrserver   
    ```
 
-3. Vytvořte skupinu převzetí služeb při selhání mezi dvěma servery.
+3. Vytvořte skupinu převzetí služeb při selhání mezi dvěma servery hello.
 
    ```powershell
    $myfailovergroup = New-AzureRMSqlDatabaseFailoverGroup `
@@ -130,7 +130,7 @@ Pomocí Azure PowerShell, vytvořte [aktivní geografickou replikací automatick
    $myfailovergroup   
    ```
 
-4. Přidejte databázi ke skupině převzetí služeb při selhání.
+4. Přidáte skupinu převzetí služeb při selhání toohello vaší databáze.
 
    ```powershell
    $myfailovergroup = Get-AzureRmSqlDatabase `
@@ -146,10 +146,10 @@ Pomocí Azure PowerShell, vytvořte [aktivní geografickou replikací automatick
 
 ## <a name="install-java-software"></a>Instalace softwaru Java
 
-Kroky v této části předpokládají, že máte zkušenosti s vývojem pomocí Javy a teprve začínáte pracovat se službou Azure SQL Database. 
+Hello kroky v této části Předpokládejme, že jsou obeznámeni s vývojem pomocí Java a jsou nové tooworking s Azure SQL Database. 
 
 ### <a name="mac-os"></a>**Mac OS**
-Otevřete terminál a přejděte do adresáře, kde plánujete vytvoření projektu v Javě. Zadáním následujících příkazů nainstalujte **brew** a **Maven**: 
+Otevřete terminálu a přejděte tooa adresáře, kde plánujete vytvoření projektu Java. Nainstalujte **brew** a **Maven** zadáním hello následující příkazy: 
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -157,23 +157,23 @@ brew update
 brew install maven
 ```
 
-Obsahuje podrobné pokyny k instalaci a konfiguraci prostředí Java a Maven, přejděte [sestavení aplikace pomocí systému SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), vyberte **Java**, vyberte **systému MacOS**a pak postupujte podle podrobné pokyny ke konfiguraci Java a Maven v krok 1.2 a 1.3.
+Obsahuje podrobné pokyny k instalaci a konfiguraci prostředí Java a Maven, přejděte hello [sestavení aplikace pomocí systému SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), vyberte **Java**, vyberte **systému MacOS**a pak postupujte podle Hello podrobné pokyny ke konfiguraci Java a Maven v krok 1.2 a 1.3.
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
-Otevřete terminál a přejděte do adresáře, kde plánujete vytvoření projektu v Javě. Zadáním následujících příkazů nainstalujte **Maven**:
+Otevřete terminálu a přejděte tooa adresáře, kde plánujete vytvoření projektu Java. Nainstalujte **Maven** zadáním hello následující příkazy:
 
 ```bash
 sudo apt-get install maven
 ```
 
-Obsahuje podrobné pokyny k instalaci a konfiguraci prostředí Java a Maven, přejděte [sestavení aplikace pomocí systému SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), vyberte **Java**, vyberte **Ubuntu**a pak postupujte podle podrobné pokyny ke konfiguraci Java a Maven v kroku 1.4, 1.2 a 1.3.
+Obsahuje podrobné pokyny k instalaci a konfiguraci prostředí Java a Maven, přejděte hello [sestavení aplikace pomocí systému SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), vyberte **Java**, vyberte **Ubuntu**a pak postupujte podle Hello podrobné pokyny ke konfiguraci Java a Maven v kroku 1.4, 1.2 a 1.3.
 
 ### <a name="windows"></a>**Windows**
-Nainstalujte [Maven](https://maven.apache.org/download.cgi) pomocí oficiální instalační služby. Používání Maven k správě závislosti, sestavení, otestovat a spustit projekt Java. Obsahuje podrobné pokyny k instalaci a konfiguraci prostředí Java a Maven, přejděte [sestavení aplikace pomocí systému SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), vyberte **Java**, vyberte Windows a pak postupujte podle podrobné pokyny ke konfiguraci Java a Maven v krok 1.2 a 1.3.
+Nainstalujte [Maven](https://maven.apache.org/download.cgi) pomocí instalačního programu oficiální hello. Používání Maven toohelp Správa závislostí, vytvoření, testování a spuštění projektu jazyka Java. Obsahuje podrobné pokyny k instalaci a konfiguraci prostředí Java a Maven, přejděte hello [sestavení aplikace pomocí systému SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), vyberte **Java**vyberte Windows a potom postupujte podle hello podrobné pokyny pro Konfigurace Java a Maven na krok 1.2 a 1.3.
 
 ## <a name="create-sqldbsample-project"></a>Vytvoření projektu SqlDbSample
 
-1. V konzole příkazu (například Bash) vytvořte projekt Maven. 
+1. V konzole příkaz hello (například Bash) vytvořte projekt Maven. 
    ```bash
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
@@ -184,9 +184,9 @@ Nainstalujte [Maven](https://maven.apache.org/download.cgi) pomocí oficiální 
    cd SqlDbSamples
    ```
 
-4. Ve složce projektu pomocí vašeho oblíbeného editoru otevřete soubor pom.xml. 
+4. Ve složce projektu pomocí vašeho oblíbeného editoru otevřete soubor pom.xml hello. 
 
-5. Přidáte ovladač JDBC Microsoft pro systém SQL Server závislost na projekt Maven otevřením svém oblíbeném textovém editoru a kopírování a vkládání následující řádky do souboru pom.xml. Nepřepisovat existující hodnoty naplněnými v souboru. Závislost JDBC musí vložení v rámci větší (část) pro "závislosti".   
+5. Přidejte hello ovladač JDBC Microsoft pro projekt Maven tooyour závislost SQL Server tak, že otevřete svém oblíbeném textovém editoru a kopírování a vkládání hello následující řádky do souboru pom.xml. Nepřepisovat existující hodnoty hello naplněnými v souboru hello. Hello JDBC závislostí musí vložení v rámci (hello větší "závislosti" části).   
 
    ```xml
    <dependency>
@@ -196,7 +196,7 @@ Nainstalujte [Maven](https://maven.apache.org/download.cgi) pomocí oficiální 
    </dependency>
    ```
 
-6. Zadejte verzi jazyka Java kompilace projektu před přidáním v následující části "vlastnosti" do souboru pom.xml po v části "závislosti". 
+6. Zadejte verzi hello Java toocompile hello projektu před přidáním hello následující části "vlastnosti" do souboru pom.xml hello po části "závislosti" hello. 
 
    ```xml
    <properties>
@@ -204,7 +204,7 @@ Nainstalujte [Maven](https://maven.apache.org/download.cgi) pomocí oficiální 
      <maven.compiler.target>1.8</maven.compiler.target>
    </properties>
    ```
-7. Přidejte následující části "vytvoření" po v části "vlastnosti" pro podporu manifestu souborů v JAR do souboru pom.xml.       
+7. Přidejte následující hello "sestavení" části do souboru pom.xml hello po hello "vlastnosti" části toosupport souborů manifestu v JAR.       
 
    ```xml
    <build>
@@ -224,8 +224,8 @@ Nainstalujte [Maven](https://maven.apache.org/download.cgi) pomocí oficiální 
      </plugins>
    </build>
    ```
-8. Soubor pom.xml uložte a zavřete.
-9. Otevřete soubor App.java (C:\apache-maven-3.5.0\SqlDbSample\src\main\java\com\sqldbsamples\App.java) a nahraďte jeho obsah s tímto obsahem. Název skupiny pro převzetí služeb při selhání nahraďte název pro skupinu pro převzetí služeb při selhání. Pokud jste změnili hodnoty pro název databáze, uživatele nebo heslo, změna také tyto hodnoty.
+8. Uložte a zavřete soubor pom.xml hello.
+9. Otevřete soubor App.java hello (C:\apache-maven-3.5.0\SqlDbSample\src\main\java\com\sqldbsamples\App.java) a nahraďte obsah hello hello následující obsah. Nahraďte název skupiny pro převzetí služeb při selhání hello hello název pro skupinu pro převzetí služeb při selhání. Pokud jste změnili hello hodnoty pro název databáze hello, uživatele nebo heslo, změna také tyto hodnoty.
 
    ```java
    package com.sqldbsamples;
@@ -272,7 +272,7 @@ Nainstalujte [Maven](https://maven.apache.org/download.cgi) pomocí oficiální 
    }
 
    private static boolean insertData(int id) {
-      // Insert data into the product table with a unique product name that we can use to find the product again later
+      // Insert data into hello product table with a unique product name that we can use toofind hello product again later
       String sql = "INSERT INTO SalesLT.Product (Name, ProductNumber, Color, StandardCost, ListPrice, SellStartDate) VALUES (?,?,?,?,?,?);";
 
       try (Connection connection = DriverManager.getConnection(READ_WRITE_URL); 
@@ -290,7 +290,7 @@ Nainstalujte [Maven](https://maven.apache.org/download.cgi) pomocí oficiální 
    }
 
    private static boolean selectData(int id) {
-      // Query the data that was previously inserted into the primary database from the geo replicated database
+      // Query hello data that was previously inserted into hello primary database from hello geo replicated database
       String sql = "SELECT Name, Color, ListPrice FROM SalesLT.Product WHERE Name = ?";
 
       try (Connection connection = DriverManager.getConnection(READ_ONLY_URL); 
@@ -305,7 +305,7 @@ Nainstalujte [Maven](https://maven.apache.org/download.cgi) pomocí oficiální 
    }
 
    private static int getHighWaterMarkId() {
-      // Query the high water mark id that is stored in the table to be able to make unique inserts 
+      // Query hello high water mark id that is stored in hello table toobe able toomake unique inserts 
       String sql = "SELECT MAX(ProductId) FROM SalesLT.Product";
       int result = 1;
         
@@ -322,16 +322,16 @@ Nainstalujte [Maven](https://maven.apache.org/download.cgi) pomocí oficiální 
       }
    }
    ```
-6. Soubor App.java uložte a zavřete.
+6. Uložte a zavřete soubor App.java hello.
 
-## <a name="compile-and-run-the-sqldbsample-project"></a>Zkompilování a spuštění projektu SqlDbSample
+## <a name="compile-and-run-hello-sqldbsample-project"></a>Zkompilování a spuštění projektu SqlDbSample hello
 
-1. V konzole pro příkaz spusťte následující příkaz.
+1. V konzole příkaz hello spusťte příkaz toofollowing.
 
    ```bash
    mvn package
    ```
-2. Po dokončení, spusťte následující příkaz ke spuštění aplikace (spuštění o jednu hodinu Pokud zastavíte ručně):
+2. Po dokončení, spusťte následující příkaz toorun hello aplikace (spuštění o jednu hodinu Pokud zastavíte ručně) hello:
 
    ```bash
    mvn -q -e exec:java "-Dexec.mainClass=com.sqldbsamples.App"
@@ -356,7 +356,7 @@ Nainstalujte [Maven](https://maven.apache.org/download.cgi) pomocí oficiální 
    -FailoverGroupName $myfailovergroupname
    ```
 
-2. Pozorovat výsledky aplikace během převzetí služeb při selhání. Některé vloží nezdaří, při obnovení mezipaměti DNS.     
+2. Pozorovat výsledky. aplikace hello během převzetí služeb při selhání. Některé vloží selžou aktualizuje hello mezipaměť DNS.     
 
 3. Zjistěte, jaké role provádí vašeho serveru pro obnovení po havárii.
 
@@ -373,7 +373,7 @@ Nainstalujte [Maven](https://maven.apache.org/download.cgi) pomocí oficiální 
    -FailoverGroupName $myfailovergroupname
    ```
 
-5. Pozorovat výsledky aplikace během navrácení služeb po obnovení. Některé vloží nezdaří, při obnovení mezipaměti DNS.     
+5. Pozorovat výsledky. aplikace hello během navrácení služeb po obnovení. Některé vloží selžou aktualizuje hello mezipaměť DNS.     
 
 6. Zjistěte, jaké role provádí vašeho serveru pro obnovení po havárii.
 

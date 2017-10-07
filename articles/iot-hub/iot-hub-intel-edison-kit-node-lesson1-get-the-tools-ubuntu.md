@@ -1,6 +1,6 @@
 ---
-title: "Připojení k Azure IoT - lekci 1 Intel Edison (uzel): získat nástroje (Ubuntu) | Microsoft Docs"
-description: "Stáhněte a nainstalujte nezbytné nástroje a software pro první ukázkovou aplikaci pro Edison na Ubuntu."
+title: "Připojit Intel Edison (uzel) tooAzure IoT - lekci 1: získání nástroje (Ubuntu) | Microsoft Docs"
+description: "Stáhněte a nainstalujte hello nezbytné nástroje a software pro hello první ukázkovou aplikaci pro Edison na Ubuntu."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,13 +17,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 74c5f06c2b12d140814bfb75125d60b83addf70c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ad1a48708bd74bcc07d09f105f597f18c3f9d2b9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-the-tools-ubuntu-1604"></a>Získání nástrojů (Ubuntu 16.04)
+# <a name="get-hello-tools-ubuntu-1604"></a>Získat nástroje hello (Ubuntu 16.04)
 
 > [!div class="op_single_selector"]
 > * [Windows 7 nebo novější][windows]
@@ -31,25 +31,25 @@ ms.lasthandoff: 07/11/2017
 > * [systému macOS 10.10][macos]
 
 ## <a name="what-you-will-do"></a>Co provedete
-Stažení nástroje pro vývoj a software pro první ukázkovou aplikaci pro váš Edison Intel. Pokud máte potíže, vyhledejte řešení na [řešení potíží s stránky][troubleshooting].
+Stažení nástroje pro vývoj hello a hello softwaru pro hello první ukázkovou aplikaci pro váš Edison Intel. Pokud máte potíže, vyhledejte řešení na hello [řešení potíží s stránky][troubleshooting].
 
 ## <a name="what-you-will-learn"></a>Co se dozvíte
 V tomto článku se dozvíte:
 
-* Jak nainstalovat Git a Node.js
-  * [Git](https://git-scm.com) je systém správy verzí distribuované s otevřeným zdrojem. Ukázkovou aplikaci pro tento článek je uložený na Git.
+* Jak tooinstall Git a Node.js
+  * [Git](https://git-scm.com) je systém správy verzí distribuované s otevřeným zdrojem. Hello ukázkovou aplikaci pro tento článek je uložený na Git.
   * [Node.js](https://nodejs.org/en/) je JavaScript runtime s ekosystém bohaté balíčku.
-* Postup instalace dalších nástrojů pro vývoj Node.js pomocí NPM.
-  * Minimální požadovaná verze Node.js je 4.5 LTS.
-  * [NPM](https://www.npmjs.com) je jedním z vybraných manažerů balíčku pro Node.js.
+* Jak toouse NPM tooinstall další Node.js nástroje pro vývoj.
+  * minimální požadovaná verze Node.js Hello je 4.5 LTS.
+  * [NPM](https://www.npmjs.com) je jedním z hello správce balíčku pro Node.js.
 
 ## <a name="what-you-need"></a>Co potřebujete
-Pro dokončení této operace, budete potřebovat:
-* Připojení k Internetu kvůli stahování nástroje pro vývoj a softwaru.
+toocomplete této operace, budete potřebovat:
+* Toodownload připojení Internetu hello nástroje pro vývoj a hello softwaru.
 * Počítač, který používá Ubuntu 16.04 nebo novější.
 
 ## <a name="install-git-nodejs-and-npm"></a>Nainstalovat Git, Node.js a NPM
-Použijte klávesovou zkratku `Ctrl + Alt + T` otevřete terminál a spusťte následující příkazy:
+Použití hello klávesové zkratky `Ctrl + Alt + T` tooopen hello terminálu a spusťte následující příkazy:
 
 ```bash
 sudo apt-get update
@@ -59,24 +59,24 @@ sudo apt-get install git
 ```
 
 ## <a name="install-additional-nodejs-development-tools"></a>Instalace dalších nástrojů pro vývoj Node.js
-Použití [gulp.js](http://gulpjs.com) k automatizaci nasazení ukázkové aplikace pro Edison.
+Použití [gulp.js](http://gulpjs.com) tooautomate hello nasazení hello ukázkové aplikace tooEdison.
 
-Nainstalujte `gulp` spuštěním následujícího příkazu v terminálu:
+Nainstalujte `gulp` tak, že spustíte následující příkaz v terminálu hello hello:
 
 ```bash
 sudo npm install -g gulp
 ```
 
-Pokud máte problémy instalace Node.js a tyto další vývojové nástroje na Ubuntu, přečtěte si téma [Průvodce odstraňováním potíží s] [ troubleshooting] pro řešení běžných potíží.
+Pokud máte problémy instalace Node.js a tyto další vývojové nástroje na Ubuntu, přečtěte si téma hello [Průvodce odstraňováním potíží s] [ troubleshooting] řešení toocommon problémů.
 
 ## <a name="install-visual-studio-code"></a>Nainstalovat Visual Studio Code
-[Stáhněte si](https://code.visualstudio.com/docs/setup/linux) a nainstalujte Visual Studio Code. Visual Studio Code je editor lightweight, ale výkonnou zdrojového kódu pro Windows, Linux a systému macOS. Použití tohoto editoru později v tomto kurzu upravte ukázkový kód.
+[Stáhněte si](https://code.visualstudio.com/docs/setup/linux) a nainstalujte Visual Studio Code. Visual Studio Code je editor lightweight, ale výkonnou zdrojového kódu pro Windows, Linux a systému macOS. Použití tohoto editoru později v hello kurz tooedit hello ukázkový kód.
 
 ## <a name="summary"></a>Souhrn
-Jste nainstalovali nástroje pro vývoj vyžaduje a software pro první ukázkovou aplikaci. Dalším krokem je vytvoření, nasazení a spuštění ukázkové aplikace na Edison.
+Jste nainstalovali nástroje pro vývoj hello vyžaduje a software pro hello první ukázkovou aplikaci. Další úlohou Hello je toocreate, nasazení a spuštění ukázkové aplikace hello na Edison.
 
 ## <a name="next-steps"></a>Další kroky
-[Vytvoření a nasazení ukázkové aplikace blikání][create-and-deploy-the-blink-application]
+[Vytvoření a nasazení ukázkové aplikace hello blikání][create-and-deploy-the-blink-application]
 <!-- Images and links -->
 
 [troubleshooting]: iot-hub-intel-edison-kit-node-troubleshooting.md

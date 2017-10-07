@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s Azure AD reporting rozhraní API na portálu Azure AD classic | Microsoft Docs"
-description: "Jak začít pracovat s Azure Active Directory, vytváření sestav rozhraní API"
+title: "aaaGetting začít s hello Azure AD reporting API na portálu classic hello Azure AD | Microsoft Docs"
+description: "Jak tooget pracovat s hello reporting rozhraní API Azure Active Directory."
 services: active-directory
 documentationcenter: 
 author: dhanyahk
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/18/2017
 ms.author: dhanyahk;markvi
-ms.openlocfilehash: 5e98b660fe19bb8abebf1c3b996b6295a6c4e728
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 52e22d442650731fc6ed28991fc65f9182af0540
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="getting-started-with-the-azure-active-directory-reporting-api-on-the-azure-ad-classic-portal"></a>Začínáme s Azure Active Directory, vytváření sestav rozhraní API na portálu Azure AD classic
-*Toto téma je součástí [Azure Active Directory průvodce vytvářením sestav](active-directory-reporting-guide.md).*
+# <a name="getting-started-with-hello-azure-active-directory-reporting-api-on-hello-azure-ad-classic-portal"></a>Začínáme s Azure Active Directory reporting rozhraní API na portálu classic hello Azure AD hello
+*Toto téma je součástí hello [Azure Active Directory průvodce vytvářením sestav](active-directory-reporting-guide.md).*
 
-Azure Active Directory nabízí celou řadu sestav. Data z těchto sestav můžou být velmi užitečná pro vaše aplikace, jako jsou systémy SIEM nebo nástroje pro auditování a business intelligence. Rozhraní API pro generování sestav v Azure AD poskytují programový přístup k těmto datům prostřednictvím sady rozhraní API založených na REST. Tato rozhraní API můžete volat z nejrůznějších programovacích jazyků a nástrojů.
+Azure Active Directory nabízí celou řadu sestav. Hello data tyto sestavy může být velmi užitečná tooyour aplikace, jako je například systémů SIEM, auditování a nástroje business intelligence. rozhraní API poskytují programový přístup k datům toohello pomocí sady založené na REST API, vytváření sestav Hello Azure AD. Tato rozhraní API můžete volat z nejrůznějších programovacích jazyků a nástrojů.
 
-Tento článek vám poskytne informace, které potřebujete začít s Azure AD reporting rozhraní API.
-V další části můžete najít další podrobnosti o používání auditu a přihlaste se rozhraní API. Všechny ostatní rozhraní API, najdete v článku [sestav Azure AD a events(preview)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-reports-and-events-preview) článku.
+Tento článek poskytuje hello informace je třeba spustit s vytvářením sestav Azure AD hello tooget rozhraní API.
+V další části hello můžete najít další podrobnosti o používání hello audit a přihlaste se rozhraní API. Všechny ostatní rozhraní API, najdete v části hello [sestav Azure AD a events(preview)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-reports-and-events-preview) článku.
 
 Pro dotazy, problémy nebo připomínky, obraťte se na [AAD Reporting pomoci](mailto:aadreportinghelp@microsoft.com).
 
 ## <a name="learning-map"></a>Výuková mapa
-1. **Příprava** -mohli otestovat vaši ukázky rozhraní API, které potřebujete k dokončení [požadavky pro přístup k Azure AD reporting rozhraní API](active-directory-reporting-api-prerequisites.md).
-2. **Prozkoumejte** -získal první dojem o rozhraní API pro vytváření sestav:
+1. **Příprava** -mohli otestovat vaši ukázky rozhraní API, musíte toocomplete hello [požadavky tooaccess hello Azure AD reporting API](active-directory-reporting-api-prerequisites.md).
+2. **Prozkoumejte** -získal první dojem o hello reporting rozhraní API:
    
-   * [Pomocí ukázky pro audit rozhraní API](active-directory-reporting-api-audit-samples.md) 
-   * [Pomocí ukázky pro sestavu přihlašovací aktivita rozhraní API](active-directory-reporting-api-sign-in-activity-samples.md)
+   * [Pomocí hello ukázky pro audit hello rozhraní API](active-directory-reporting-api-audit-samples.md) 
+   * [Použití hello ukázky pro rozhraní API sestavy hello přihlašovací aktivita](active-directory-reporting-api-sign-in-activity-samples.md)
 3. **Přizpůsobení** -vytvořit vlastní řešení: 
    
-   * [Pomocí auditu referenční dokumentace rozhraní API](active-directory-reporting-api-audit-reference.md) 
-   * [Pomocí odkaz na sestavu API přihlašovací aktivita](active-directory-reporting-api-sign-in-activity-reference.md)
+   * [Pomocí referenční dokumentace rozhraní API auditu hello](active-directory-reporting-api-audit-reference.md) 
+   * [Pomocí sestavy přihlašovací aktivita hello referenční dokumentace rozhraní API](active-directory-reporting-api-sign-in-activity-reference.md)
 
 ## <a name="next-steps"></a>Další kroky
-Pokud jste zvědaví zobrazíte všechny koncové body k dispozici Azure AD Graph API přechodem na [https://graph.windows.net/tenant-name/reports/$ metadata? api-version = beta](https://graph.windows.net/tenant-name/reports/$metadata?api-version=beta).
+Pokud jste zvědaví toosee všechny koncové body k dispozici Azure AD Graph API hello přechodem příliš[https://graph.windows.net/tenant-name/reports/$ metadata? api-version = beta](https://graph.windows.net/tenant-name/reports/$metadata?api-version=beta).
 

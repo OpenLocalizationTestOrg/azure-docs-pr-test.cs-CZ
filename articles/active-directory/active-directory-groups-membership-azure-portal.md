@@ -1,6 +1,6 @@
 ---
-title: "Správa skupin vaše skupina patří v Azure Active Directory | Microsoft Docs"
-description: "Skupiny mohou obsahovat jiné skupiny ve službě Azure Active Directory. Chcete-li spravovat jejich členství."
+title: "skupiny hello aaaManage vaše skupina patří tooin Azure Active Directory | Microsoft Docs"
+description: "Skupiny mohou obsahovat jiné skupiny ve službě Azure Active Directory. Tady je způsob toomanage jejich členství."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,33 +15,33 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08e04a6590176c4084ca47b4bd6cbb22500eca2d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d0a0a1967084de0968e1e802559f9cdfd7ca6ae4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-to-which-groups-a-group-belongs-in-your-azure-active-directory-tenant"></a>Spravovat do skupiny, které patří skupiny v klientovi služby Azure Active Directory
-Skupiny mohou obsahovat jiné skupiny ve službě Azure Active Directory. Chcete-li spravovat jejich členství.
+# <a name="manage-toowhich-groups-a-group-belongs-in-your-azure-active-directory-tenant"></a>Správa skupin toowhich, ke které patří skupiny v klientovi služby Azure Active Directory
+Skupiny mohou obsahovat jiné skupiny ve službě Azure Active Directory. Tady je způsob toomanage jejich členství.
 
-## <a name="how-do-i-find-the-groups-my-group-is-a-member-of"></a>Jak lze najít Moje skupina je členem skupiny?
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je globální správce adresáře.
-2. Vyberte **další služby**, zadejte **uživatelů a skupin** v textovém poli a potom vyberte **Enter**.
+## <a name="how-do-i-find-hello-groups-my-group-is-a-member-of"></a>Jak lze najít hello skupiny, které Moje skupina je členem skupiny?
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com) pomocí účtu, který je globálním správcem adresáře hello.
+2. Vyberte **další služby**, zadejte **uživatelů a skupin** v hello textového pole a pak vyberte **Enter**.
 
    ![Správa uživatelů otevírání](./media/active-directory-groups-membership-azure-portal/search-user-management.png)
-3. Na **uživatelů a skupin** vyberte **všechny skupiny**.
+3. Na hello **uživatelů a skupin** vyberte **všechny skupiny**.
 
-   ![Otevření okna skupiny](./media/active-directory-groups-membership-azure-portal/view-groups-blade.png)
-4. Na **uživatelé a skupiny - všechny skupiny** okně vyberte skupinu.
-5. Na **skupiny - *groupname***  vyberte **členství ve skupinách**.
+   ![Okno skupiny otevírání hello](./media/active-directory-groups-membership-azure-portal/view-groups-blade.png)
+4. Na hello **uživatelé a skupiny - všechny skupiny** okně vyberte skupinu.
+5. Na hello **skupiny - *groupname***  vyberte **členství ve skupinách**.
 
-   ![Otevření okna členství ve skupině](./media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
-6. Přidání skupiny jako členem jiné skupiny, na **skupiny – členství ve skupinách** okně, vyberte **přidat** příkaz.
-7. Vyberte skupinu z **vybrat skupinu** a pak vyberte **vyberte** tlačítko v dolní části okna. Skupiny můžete přidat pouze do jedné skupiny najednou. **Uživatele** pole filtry zobrazení na základě shody zadání vašeho jakékoliv části názvu uživatele nebo zařízení. V tomto poli, jsou přijaty žádné zástupné znaky.
+   ![Okno členství skupiny otevírání hello](./media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
+6. tooadd skupině jako členem jiné skupiny, na hello **skupiny – členství ve skupinách** okně, vyberte hello **přidat** příkaz.
+7. Vyberte skupinu z hello **vybrat skupinu** okna a potom vyberte hello **vyberte** tlačítko v hello dolní části okna hello. Najednou můžete přidat vaší skupiny tooonly jednu skupinu. Hello **uživatele** pole filtry hello zobrazení na základě shody se vaše vstupní tooany součástí názvu uživatele nebo zařízení. V tomto poli, jsou přijaty žádné zástupné znaky.
 
    ![Přidat členství ve skupině](./media/active-directory-groups-membership-azure-portal/add-group-membership.png)
-8. Odebrání skupiny jako členem jiné skupiny, na **skupiny – členství ve skupinách** okně vyberte skupinu.
-9. Na ***groupname*** okně, vyberte **odebrat** příkazů a potvrďte svou volbu příkazového řádku.
+8. tooremove skupině jako členem jiné skupiny, na hello **skupiny – členství ve skupinách** okně vyberte skupinu.
+9. Na hello ***groupname*** okně, vyberte hello **odebrat** příkazů a potvrďte svou volbu příkazového řádku hello.
 
    ![Odeberte příkaz členství](./media/active-directory-groups-membership-azure-portal/remove-group-membership.png)
 10. Po dokončení změn členství ve skupinách pro skupinu, vyberte **Uložit**.

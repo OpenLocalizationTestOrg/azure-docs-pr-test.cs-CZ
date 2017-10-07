@@ -1,6 +1,6 @@
 ---
-title: "Webové úlohy v Azure App Service"
-description: "Naučte se vytvářet webové testy pozadí, pracovat s služby, jako je úložiště a Service Bus a vytvoření naplánované úlohy."
+title: "aaaWebJobs ve službě Azure App Service"
+description: "Zjistěte, jak toobuild pozadí toorun webové testy, komunikují s služby, jako je úložiště a Service Bus a vytvoření naplánované úlohy."
 services: app-service
 documentationcenter: 
 author: christopheranderson
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2015
 ms.author: chrande
-ms.openlocfilehash: 1ca6d2eabe9781a8bb09fc5948ed306e3e8b013c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 25c24bfe71a64036cd48e58f471995b4a06e3b33
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-webjobs-in-azure-app-service"></a>Používání WebJobs v Azure App Service
-Tento článek obsahuje odkazy na zdroje informací k dokumentaci o tom, jak používat Azure WebJobs a Azure WebJobs SDK. Azure WebJobs poskytují snadný způsob, jak spustit skripty nebo programy jako procesy na pozadí [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714). Můžete nahrát a spustit spustitelný soubor, například jako cmd, bat, exe (.NET), ps1, TV, php, py, js a jar. Tyto programy spustit jako webové úlohy podle plánu (cron) nebo nepřetržitě.
+V tomto článku odkazy toodocumentation prostředky o toouse Azure WebJobs a hello Azure WebJobs SDK. Azure WebJobs zadejte snadný způsob toorun skriptů nebo programů jako procesy na pozadí na [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714). Můžete nahrát a spustit spustitelný soubor, například jako cmd, bat, exe (.NET), ps1, TV, php, py, js a jar. Tyto programy spustit jako webové úlohy podle plánu (cron) nebo nepřetržitě.
 
-Sada WebJobs SDK usnadňuje používání Azure Storage. Sada WebJobs SDK má vazba a systém aktivační události, který funguje s Microsoft Azure Storage Blobs, fronty a tabulky, jakož i fronty služby Service Bus.
+Hello WebJobs SDK umožňuje snazší toouse Azure Storage. Hello WebJobs SDK má vazba a systém aktivační události, který funguje s Microsoft Azure Storage Blobs, fronty a tabulky, jakož i fronty služby Service Bus.
 
 Vytváření, nasazování a správě webové úlohy je bezproblémové s integrované nástrojů v sadě Visual Studio. Můžete vytvářet webové úlohy ze šablon, publikovat a spravovat (spuštění nebo zastavení nebo monitorování/debug) je.
 
-Na řídicím panelu WebJobs na portálu Azure poskytuje výkonné funkce, které poskytují plnou kontrolu nad spuštění webové úlohy, včetně možnosti vyvolání jednotlivých funkcí v rámci webové úlohy. Na řídicím panelu zobrazí také funkce moduly runtime a výstup protokolování.
+řídicím panelu WebJobs Hello v hello portál Azure poskytuje výkonné funkce, které poskytují plnou kontrolu nad hello spuštění webové úlohy, včetně hello možnost tooinvoke jednotlivých funkcí v rámci webové úlohy. řídicí panel Hello také zobrazuje funkce moduly runtime a výstup protokolování.
 
 [!INCLUDE [app-service-blueprint-webjobs](../../includes/app-service-blueprint-webjobs.md)]
 

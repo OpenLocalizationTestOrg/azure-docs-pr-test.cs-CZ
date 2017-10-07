@@ -1,5 +1,5 @@
 ---
-title: "Virtuální počítač restartovat údržby pro virtuální počítače s Linuxem v Azure | Microsoft Docs"
+title: "aaaVM restartování údržby pro virtuální počítače s Linuxem v Azure | Microsoft Docs"
 description: "Virtuální počítač restartovat údržby pro virtuální počítače s Linuxem."
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,102 +15,102 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2017
 ms.author: zivr
-ms.openlocfilehash: 25beee157bb869067e562189f86312dab173e68f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 41caa2e56740cdfa95d2ea67278e5c1d15a174c5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="vm-restarting-maintenance"></a>Virtuální počítač restartovat údržby
 
-Existuje několik případů, kdy jsou virtuální počítače restartovat z důvodu plánované údržby základní infrastruktury. Probíhá zvládat na dostupnost virtuální počítače hostované v Azure, tady jsou nyní k dispozici pro použití:
+Existuje několik případů, kde jsou virtuální počítače restartovat z důvodu toohello údržby tooplanned základní infrastruktury. Probíhá zvládat toothe dostupnost virtuální počítače hostované v Azure, následující hello jsou nyní k dispozici pro toouse můžete:
 
--   Minimálně 30 dnů před dopad odesláno oznámení.
+-   Minimálně 30 dnů před hello dopad odesláno oznámení.
 
--   Přehled a viditelnost pro údržbu na každý virtuální počítač.
+-   Viditelnost toohello údržbu na každý virtuální počítač.
 
--   Flexibilita a řízení v nastavení přesný čas údržby měly týkat virtuálních počítačů.
+-   Flexibilita a řízení v nastavení hello přesný čas pro údržbu měly týkat virtuálních počítačů.
 
-Údržby v Microsoft Azure je naplánován v iterací. Počáteční iterací mít menší obor snižte riziko při zavádění nové opravy a funkce. Novější iterací může span více oblastí (nikdy ze stejného páru oblasti). Virtuální počítač je součástí jedné údržby iterací. Pokud byl přerušen iterace, zbývající virtuální počítače jsou součástí jiného, budoucí, iterací.
+Údržby v Microsoft Azure je naplánován v iterací. Počáteční iterací mít menší obor v pořadí tooreduce hello riziko při zavádění nové opravy a funkce. Novější iterací může rozmístěny v několika oblastech (nikdy z hello stejného páru oblasti). Virtuální počítač je součástí jedné údržby iterací. Pokud byl přerušen iterace, zbývající virtuální počítače jsou součástí jiného, budoucí, iterací.
 
-Iterace plánované údržby má dvě fáze: Pre-emptive údržby a naplánovaná údržby.
+Hello plánované údržby iterace má dvě fáze: Pre-emptive údržby a naplánovaná údržby.
 
-**Pre-emptive údržby** vám poskytuje flexibilitu při zahájení údržby na virtuálních počítačů. Díky tomu můžete určit, kdy jsou dopad na virtuální počítače, pořadí aktualizace a čas mezi jednotlivé virtuální počítače, které neudržují. Se můžete dotazovat každý virtuální počítač, který chcete zobrazit, zda je plánovaná pro údržbu a zkontrolujte výsledek vaší poslední žádosti initiated údržby.
+Hello **Pre-emptive údržby** vám poskytne hello flexibilitu tooinitiate hello údržby na virtuálních počítačů. Díky tomu můžete určit, kdy dopad na virtuální počítače, hello pořadí hello aktualizace a hello čas mezi jednotlivé virtuální počítače, které neudržují. Můžete dotazovat toosee každý virtuální počítač, zda je plánovaná pro údržbu a zkontrolujte výsledek hello vaší poslední žádosti initiated údržby.
 
-**Naplánované údržby** je Azure má plánu pro údržbu virtuálních počítačů. Během této doby čas, který následuje preemptivní údržby, můžete stále dotazu pro okna údržby, ale již nebude možné k orchestraci údržby.
+Hello **naplánované údržby** je Azure má plánu virtuálních počítačů pro údržbu hello. Během této doby čas, který následuje preemptivní údržby, můžete pro hello údržby se dotazovat, ale již nebude možné tooorchestrate hello údržby.
 
 ## <a name="availability-considerations-during-planned-maintenance"></a>Důležité informace o dostupnosti během plánované údržby 
 
 ### <a name="paired-regions"></a>Spárované oblastí
 
-Každé oblasti Azure je spárován s jinou oblast v rámci stejné geography, společně provedení pár místní. Při provádění údržby, bude Azure aktualizovat pouze instance virtuálních počítačů v jedné oblasti jeho dvojic. Například při aktualizaci virtuálních počítačů v oblasti Střed USA – sever nebude Azure zároveň aktualizovat žádné virtuální počítače v oblasti Střed USA – jih. To se naplánuje na jindy – díky tomu je umožněno převzetí služeb při selhání nebo vyrovnávání zatížení mezi oblastmi. V ostatních oblastech, jako je Severní Evropa, však může údržba probíhat ve stejnou dobu jako v oblasti Východní USA.
+Každé oblasti Azure je spárován s jinou oblast v rámci hello stejné geography, společně provedení pár místní. Při provádění údržby, bude Azure aktualizovat pouze hello instance virtuálních počítačů v jedné oblasti jeho dvojic. Například při aktualizaci hello virtuálních počítačů v Severní jihu USA, Azure nebude aktualizujte všechny virtuální počítače v jihu USA v hello stejnou dobu. To se naplánuje na jindy – díky tomu je umožněno převzetí služeb při selhání nebo vyrovnávání zatížení mezi oblastmi. Ale jiných oblastech, jako je Severní Evropa může být v rámci údržby v hello stejný čas jako východní USA.
 Další informace o [oblast Azure páry](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 ### <a name="single-instance-vms-vs-availability-set-or-vm-scale-set"></a>Nastavit jediné instance virtuálních počítačů a dostupnosti nebo sady škálování virtuálního počítače
 
-Pokud nasazujete zatížení používání virtuálních počítačů v Azure, můžete vytvořit virtuální počítače v rámci dostupnosti nastavit k zajištění vysoké dostupnosti do vaší aplikace. Tato konfigurace zajistí, že během výpadku nebo údržby událostí, je k dispozici alespoň jeden virtuální počítač.
+Pokud nasazujete zatížení používání virtuálních počítačů v Azure, můžete vytvořit hello virtuálních počítačů v rámci dostupnosti nastavte v pořadí tooprovide vysokou dostupnost tooyour aplikaci. Tato konfigurace zajistí, že během výpadku nebo údržby událostí, je k dispozici alespoň jeden virtuální počítač.
 
-V rámci skupiny dostupnosti jednotlivé virtuální počítače jsou rozloženy až 20 aktualizaci domény. Během plánované údržby je v každém okamžiku dopad pouze jednu aktualizaci domény. Pořadí aktualizace domén ovlivněný nemusí pokračovat postupně během plánované údržby. Pro virtuální počítače jediné instance (není součástí skupiny dostupnosti) neexistuje žádný způsob, jak předpovědi nebo určit, který a společně dopad na tom, kolik virtuálních počítačů.
+V rámci skupiny dostupnosti jednotlivé virtuální počítače jsou rozloženy až too20 aktualizaci domény. Během plánované údržby je v každém okamžiku dopad pouze jednu aktualizaci domény. Hello pořadí aktualizace domén ovlivněný nemusí pokračovat postupně během plánované údržby. Pro jeden instance virtuálních počítačů (není součástí skupiny dostupnosti), neexistuje žádný způsob, jak toopredict nebo určit, který a společně dopad na tom, kolik virtuálních počítačů.
 
-Sady škálování virtuálního počítače se Azure výpočtový prostředek, který umožňuje nasadit a spravovat sadu identické virtuální počítače jako jeden prostředek.
-Škálovací sada poskytuje podobné záruky na dostupnosti nastavit ve formě aktualizaci domény. 
+Sady škálování virtuálního počítače se Azure výpočtový prostředek, který vám umožní toodeploy a spravovat sadu identické virtuální počítače jako jeden prostředek.
+Hello škálovací sadu poskytuje podobné záruky tooan skupinou dostupnosti ve formě aktualizaci domény. 
 
-Další informace o konfiguraci virtuálních počítačů pro zajištění vysoké dostupnosti najdete v tématu [ *Správa dostupnosti virtuálních počítačů Windows*](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Další informace o konfiguraci virtuálních počítačů pro zajištění vysoké dostupnosti najdete v tématu [ *Správa dostupnosti virtuálních počítačů Windows hello*](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ### <a name="scheduled-events"></a>Naplánované události
 
-Služba Azure Metadata umožňuje zjišťovat informace o virtuální počítač hostovaný v Azure. Naplánované události, některou z vystaveného kategorií, povrchy informace týkající se nadcházející události (například restartování) tak, aby vaše aplikace můžete připravit pro ně a omezit přerušení.
+Služba Azure Metadata vám umožní toodiscover informace o virtuální počítač hostovaný v Azure. Naplánované události, některou z kategorií hello vystavený, povrchy informace týkající se nadcházející události (například restartování) tak, aby vaše aplikace můžete připravit pro ně a omezit přerušení.
 
-Další informace o naplánované události, najdete v části [Azure Metadata Service - naplánované události](../virtual-machines-scheduled-events.md).
+Další informace o naplánované události, najdete v části příliš[Azure Metadata Service - naplánované události](../virtual-machines-scheduled-events.md).
 
 ## <a name="maintenance-discovery-and-notifications"></a>Zjišťování údržby a oznámení
 
-Plán údržby je viditelná pro zákazníky na úrovni jednotlivých virtuálních počítačů. Můžete portál Azure, rozhraní API, Powershellu nebo rozhraní příkazového řádku k dotazu pro systém windows preemptivní a plánované údržby. Kromě toho očekávají pro příjem oznámení (e-mailu) v případě, že tam, kde jsou během procesu dopad (minimálně) z virtuálních počítačů.
+Plán údržby je viditelná toocustomers na úrovni hello jednotlivých virtuálních počítačů. Můžete použít Azure portal, tooquery rozhraní API, Powershellu nebo rozhraní příkazového řádku pro windows preemptivní a plánované údržby. Kromě toho, na které přijde upozornění (e-mailu) v případě hello očekávat tam, kde jsou během procesu hello dopad jeden (nebo více) z virtuálních počítačů.
 
-Preemptivní údržby a plánované údržby fáze začínat oznámení. Očekáváte jeden oznámení za předplatné Azure. Oznámení se posílá správce a spolusprávce odběru ve výchozím nastavení. Můžete také nakonfigurovat cílovou skupinu pro oznámení údržby.
+Preemptivní údržby a plánované údržby fáze začínat oznámení. Očekávejte tooreceive jeden oznámení za předplatné Azure. Hello je odesláno oznámení správce a spolusprávce předplatného toohello ve výchozím nastavení. Můžete také nakonfigurovat hello cílová skupina pro oznámení údržby.
 
-### <a name="view-the-maintenance-window-in-the-portal"></a>Zobrazit na portálu pro správu a údržbu 
+### <a name="view-hello-maintenance-window-in-hello-portal"></a>Zobrazení hello údržby hello portálu 
 
-Můžete použít portál Azure a vyhledejte naplánována údržba virtuálních počítačů.
+Můžete použít hello portál Azure a vyhledejte naplánována údržba virtuálních počítačů.
 
-1.  Přihlaste se k portálu Azure.
+1.  Přihlaste se toohello portálu Azure.
 
-2.  Klikněte na tlačítko a otevřete **virtuální počítače** okno.
+2.  Klikněte na tlačítko a otevřete hello **virtuální počítače** okno.
 
-3.  Klikněte **sloupce** tlačítko otevřete seznam dostupných sloupců lze vybírat
+3.  Klikněte na tlačítko hello **sloupce** tlačítko tooopen hello seznam dostupných sloupců toochoose z
 
-4.  Vyberte a přidejte **údržby** sloupce. Virtuální počítače, které jsou naplánovány pro údržbu mít prezentované údržby windows. Jakmile je byla dokončena nebo přerušena z důvodu údržby a, časové období údržby se už nebude zobrazovat.
+4.  Vyberte a přidejte hello **údržby** sloupce. Virtuální počítače, které jsou naplánovány pro údržbu mít hello prezentované časová období údržby. Jakmile je byla dokončena nebo přerušena z důvodu údržby a, časové období údržby se už nebude zobrazovat.
 
-### <a name="query-maintenance-details-using-the-azure-api"></a>Podrobnosti o údržby dotazu pomocí rozhraní API služby Azure
+### <a name="query-maintenance-details-using-hello-azure-api"></a>Podrobnosti o údržby dotazu pomocí hello rozhraní API služby Azure
 
-Použití [získat informace o virtuálních počítačů API](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-get) a vyhledejte zobrazení instance k zjištění podrobností údržby na jednotlivých virtuálních počítačů. Odpověď obsahuje následující prvky:
+Použití hello [získat informace o virtuálních počítačů API](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-get) a vyhledejte hello instance zobrazit toodiscover hello údržby podrobnosti o jednotlivých virtuálních počítačů. Hello odpověď obsahuje hello následující prvky:
 
-  - isCustomerInitiatedMaintenanceAllowed: Určuje, zda nyní můžete zahájit preemptivní znovu ho zaveďte ve virtuálním počítači.
+  - isCustomerInitiatedMaintenanceAllowed: Určuje, zda nyní můžete zahájit preemptivní znovu ho zaveďte na hello virtuálních počítačů.
 
-  - preMaintenanceWindowStartTime: čas zahájení preemptivní údržby.
+  - preMaintenanceWindowStartTime: hello čas zahájení údržby preemptivní hello.
 
-  - preMaintenanceWindowEndTime: koncový čas pro správu a údržbu preemptivní. Po této době jste už nebude moct iniciovat údržby na tomto virtuálním počítači.
+  - preMaintenanceWindowEndTime: hello koncový čas hello preemptivní údržby. Po této době už nebude možné tooinitiate údržby na tomto virtuálním počítači.
     
-  - maintenanceWindowStartTime: čas zahájení okno plánované údržby při dopad na virtuální počítač.
+  - maintenanceWindowStartTime: hello počáteční čas období naplánované údržby hello při dopad na virtuální počítač.
 
-  - maintenanceWindowEndTime: koncový čas okno plánované údržby.
+  - maintenanceWindowEndTime: hello koncový čas hello plánované údržby.
   
-  - lastOperationResultCode: výsledek vaší poslední operace údržby-znovu ho zaveďte.
+  - lastOperationResultCode: hello výsledek vaší poslední operace údržby-znovu ho zaveďte.
  
-  - lastOperationMessage: zpráva popisující výsledek vaší poslední operace údržby-znovu ho zaveďte.
+  - lastOperationMessage: zpráva popisující hello výsledek vaší poslední operace údržby-znovu ho zaveďte.
 
 
 ## <a name="pre-emptive-redeploy"></a>Preemptivní znovu ho zaveďte
 
-Preemptivní znovu ho zaveďte akce poskytuje flexibilní možnost určit čas, kdy se použije údržby pro virtuální počítače v Azure. Plánovaná údržba začíná preemptivní údržby kde se můžete rozhodnout na přesný čas pro jednotlivé virtuální počítače restartovat. Tady jsou případy použití, kde je užitečné tyto funkce:
+Preemptivní znovu ho zaveďte akce poskytuje hello flexibilitu toocontrol hello čas, kdy údržby je použité tooyour virtuálních počítačů v Azure. Plánovaná údržba začíná preemptivní údržby kde se můžete rozhodnout na hello přesný čas pro každé toobe vaše virtuální počítače restartovat. Tady jsou případy použití, kde je užitečné tyto funkce:
 
--   Údržby musí být zajistí koordinaci se koncového zákazníka.
+-   Toobe nutné údržby koordinované s hello koncového zákazníka.
 
--   Okno plánované údržby, které nabízí Azure není dostatečná.
-    Je možné, že okno se stane, jako na nejvytíženější času v týdnu nebo je příliš dlouhá.
+-   okno plánované údržby Hello, které nabízí Azure není dostatečná.
+    Je možné, že hello okno se stane toobe na hello nejvytíženější času v týdnu nebo je příliš dlouhá.
 
--   Pro více instancemi nebo vícevrstvé aplikace budete potřebovat dostatečnou dobu mezi dva virtuální počítače nebo určité pořadí podle.
+-   Pro více instancemi nebo vícevrstvé aplikace budete potřebovat dostatečnou dobu mezi dva virtuální počítače nebo určité pořadí toofollow.
 
-Při volání pro preemptivní znovu ho zaveďte na virtuálním počítači, přesune virtuální počítač již aktualizovaný uzel a potom zapne ji zpět, zachování všech možností konfigurace a přidružených prostředků. Když to uděláte, dočasným diskovým dojde ke ztrátě a dynamické IP adresy přidružené k rozhraní virtuální sítě se aktualizují.
+Při volání pro preemptivní znovu ho zaveďte na virtuálním počítači, přesune ho tooan hello virtuálního počítače již aktualizován uzel a potom zapne ji zpět, zachování všech možností konfigurace a přidružených prostředků. Když to uděláte, dočasným diskovým hello dojde ke ztrátě a dynamické IP adresy přidružené k rozhraní virtuální sítě se aktualizují.
 
-Preemptivní znovu ho zaveďte je povoleno jednou na virtuální počítač. Pokud dojde k chybě během procesu, operace byla zrušena, virtuální počítač není ovlivněná a je vyloučen z iterace plánované údržby. Můžete se kontaktovat v později pomocí nového plánu a nabízí nové příležitosti k plánování a pořadí dopad na virtuální počítače.
+Preemptivní znovu ho zaveďte je povoleno jednou na virtuální počítač. Pokud dojde k chybě během procesu hello, hello operace byla přerušena, hello virtuálního počítače není ovlivněná a je vyloučen z iterace hello plánované údržby. Můžete se kontaktovat v později pomocí nového plánu a nabízí novou možnost tooschedule a pořadí hello dopadu na virtuální počítače.

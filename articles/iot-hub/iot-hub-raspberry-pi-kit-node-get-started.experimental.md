@@ -1,12 +1,12 @@
 ---
-title: "Malinová pí do cloudu (Node.js) - pí malin připojit ke službě Azure IoT Hub | Microsoft Docs"
-description: "Pi malin připojte ke službě Azure IoT Hub malin pí k odesílání dat do cloudu Azure."
+title: "aaaRaspberry pí toocloud (Node.js) – tooAzure připojit malin platformy IoT Hub | Microsoft Docs"
+description: "Připojte tooAzure malin platformy IoT Hub pro platformy malin toosend data toohello cloudu Azure."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "Azure iot Malinová pi, malinová platformy iot hub, malinová pí odesílání dat do cloudu, malinová pí do cloudu"
+keywords: "Azure iot Malinová pi, malinová platformy iot hub, malinová platformy odesílání dat toocloud Malinová platformy toocloud"
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started
 ms.assetid: b0e14bfa-8e64-440a-a6ec-e507ca0f76ba
@@ -17,50 +17,50 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/27/2017
 ms.author: xshi
-ms.openlocfilehash: 956ed5ab0ed38ddebd978b35eb54bc96567f0d57
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 07bc66983c427eab8118be18d91abb25deb03ad3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Připojení ke službě Azure IoT Hub (Node.js) Malinová platformy
+# <a name="connect-raspberry-pi-tooazure-iot-hub-nodejs"></a>Připojit tooAzure malin platformy IoT Hub (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-V tomto kurzu zahájíte učení základní informace o práci s malin platformy, na kterém běží Raspbian. Pak zjistíte, jak bezproblémově připojení zařízení do cloudu pomocí [Azure IoT Hub](iot-hub-what-is-iot-hub.md). Ukázky jádro IoT Windows 10, najdete [Centrum vývojářů pro Windows](http://www.windowsondevices.com/).
+V tomto kurzu zahájíte učení hello základy práce s malin platformy, na kterém běží Raspbian. Pak zjistíte, jak tooseamlessly propojit své cloudové toohello zařízení pomocí [Azure IoT Hub](iot-hub-what-is-iot-hub.md). Jádro IoT Windows 10 ukázek najdete toohello [Centrum vývojářů pro Windows](http://www.windowsondevices.com/).
 
-Nemáte sady ještě? Zkuste [malin pí 3 emulátoru](https://blogs.msdn.microsoft.com/iliast/2016/11/10/how-to-emulate-raspberry-pi/). Nebo zakoupení nové kit [zde](https://azure.microsoft.com/develop/iot/starter-kits).
+Nemáte sady ještě? Zkuste hello [malin pí 3 emulátoru](https://blogs.msdn.microsoft.com/iliast/2016/11/10/how-to-emulate-raspberry-pi/). Nebo zakoupení nové kit [zde](https://azure.microsoft.com/develop/iot/starter-kits).
 
 ## <a name="what-you-do"></a>Co dělat
 
 * Instalační program Malinová pí.
 * Vytvoření služby IoT hub.
 * Registrovat zařízení pro platformy ve službě IoT hub.
-* Spuštění ukázkové aplikace na platformy k odesílání dat snímačů do služby IoT hub.
+* Spuštění ukázkové aplikace na platformy toosend senzor data tooyour IoT hub.
 
-Pi malin připojení do služby IoT hub, který vytvoříte. Pak spusťte ukázkovou aplikaci na platformy ke shromažďování dat teploty a vlhkosti ze BME280 senzoru. Nakonec odeslat data snímačů do služby IoT hub.
+Připojte malin pí tooan IoT hub, který vytvoříte. Pak spusťte ukázkovou aplikaci pro platformy toocollect teploty a vlhkosti data z BME280 senzoru. Nakonec odeslat hello senzor data tooyour IoT hub.
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-* Postup vytvoření služby Azure IoT hub a získat nový připojovací řetězec zařízení.
-* Postup připojení pí s BME280 senzoru.
-* Postup shromažďování dat snímačů spuštěním ukázkovou aplikaci na pí.
-* Jak odesílat data snímačů do služby IoT hub.
+* Jak toocreate služby Azure IoT hub a získat nový připojovací řetězec zařízení.
+* Jak tooconnect pí s BME280 senzoru.
+* Jak data snímačů toocollect spuštěním ukázkovou aplikaci na pí.
+* Jak toosend senzor data tooyour IoT hub.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
 ![Co potřebujete](media/iot-hub-raspberry-pi-kit-node-get-started/0_starter_kit.jpg)
 
-* Malin pí 2 nebo 3 pí malin panelu.
+* Hello malin pí 2 nebo 3 pí malin panelu.
 * Aktivní předplatné Azure. Pokud nemáte účet Azure [vytvořit Bezplatný zkušební účet Azure](https://azure.microsoft.com/free/) za několik minut.
-* Monitorování, USB klávesnice a myši připojujících se k pí.
+* Monitorování, USB klávesnice a myši připojujících tooPi.
 * Mac nebo počítači se systémem Windows nebo Linux.
 * Připojení k Internetu.
 * 16 GB nebo vyšší microSD karta.
-* USB-adaptér nebo microSD karta SD vypálíte image operačního systému na kartě microSD.
-* 5 volt 2 amp napájení s 6 stopy malých kabel USB.
+* USB SD adaptér nebo microSD karta tooburn hello image operačního systému na kartě microSD hello.
+* 5 volt 2 amp napájení s hello 6 stopy malých kabel USB.
 
-Následující položky jsou volitelné:
+Hello následující položky jsou volitelné:
 
 * Sestavený Adafruit BME280 teploty, naléhavost a vlhkosti senzoru.
 * Breadboard.
@@ -68,50 +68,50 @@ Následující položky jsou volitelné:
 * Rozptýlený DIODU 10 mm.
 
   > [!NOTE] 
-  Tyto položky jsou volitelné, protože data snímačů simulated podporu ukázkový kód.
+  Tyto položky jsou volitelné, protože podpora ukázkový kód hello simulated data snímačů.
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
 ## <a name="setup-raspberry-pi"></a>Instalační program Malinová platformy
 
-### <a name="install-the-raspbian-operating-system-for-pi"></a>Instalace operačního systému Raspbian pí
+### <a name="install-hello-raspbian-operating-system-for-pi"></a>Nainstalujte hello Raspbian operační systém pro platformy
 
-Připravte karty microSD pro instalaci bitové kopie Raspbian.
+Připravte hello microSD karta pro instalaci bitové kopie Raspbian hello.
 
 1. Stáhněte si Raspbian.
-   1. [Stáhnout Raspbian Klára s pixelů](https://www.raspberrypi.org/downloads/raspbian/) (soubor .zip).
-   1. Extrahujte Raspbian image do složky v počítači.
-1. Nainstalujte Raspbian microSD karta.
-   1. [Stáhněte a nainstalujte nástroj Etcher SD karty zapisovací jednotka](https://etcher.io/).
-   1. Spusťte Etcher a vyberte Raspbian bitovou kopii, která jste extrahovali v kroku 1.
-   1. Vyberte jednotku microSD karta. Všimněte si, že Etcher může jste již vybrali správnou jednotku.
-   1. Klikněte na tlačítko nainstalovat Raspbian do karty microSD Flash.
-   1. Karta microSD odeberte z počítače, po dokončení instalace. Je bezpečné karty microSD přímo odebrat, protože Etcher automaticky vysune nebo odpojí microSD karta po dokončení.
-   1. Karta microSD vložte do pí.
+   1. [Stáhnout Raspbian Klára s pixelů](https://www.raspberrypi.org/downloads/raspbian/) (soubor .zip hello).
+   1. Extrahujte hello Raspbian image tooa složky v počítači.
+1. Nainstalujte Raspbian toohello microSD karta.
+   1. [Stáhněte a nainstalujte nástroj hello Etcher SD karty zapisovací jednotka](https://etcher.io/).
+   1. Spusťte Etcher a vyberte bitovou kopii hello Raspbian, které jste extrahovali v kroku 1.
+   1. Vyberte jednotku karty microSD hello. Všimněte si, že Etcher může jste již vybrali správnou jednotku hello.
+   1. Klikněte na Flash tooinstall Raspbian toohello microSD karta.
+   1. Po dokončení instalace odeberte hello microSD karta z vašeho počítače. Je bezpečné tooremove hello microSD karta přímo protože Etcher automaticky vysune nebo odpojí hello microSD karta po dokončení.
+   1. Karta microSD hello vložte do pí.
 
 ### <a name="enable-ssh-and-i2c"></a>Povolit SSH a I2C
 
-1. Připojit k monitoru, klávesnice a myši platformy, spusťte platformy a znovu přihlásili Raspbian pomocí `pi` jako uživatelské jméno a `raspberry` jako heslo.
-1. Klikněte na ikonu Malinová > **Předvolby** > **malin pí konfigurace**.
+1. Připojit pí toohello monitoru, klávesnice a myši, spusťte platformy a znovu přihlásili Raspbian pomocí `pi` jako hello uživatelské jméno a `raspberry` jako hello heslo.
+1. Klikněte na tlačítko hello Malinová ikonu > **Předvolby** > **malin pí konfigurace**.
 
-   ![V nabídce Raspbian předvolby](media/iot-hub-raspberry-pi-kit-node-get-started/1_raspbian-preferences-menu.png)
+   ![Hello Raspbian předvolby nabídky](media/iot-hub-raspberry-pi-kit-node-get-started/1_raspbian-preferences-menu.png)
 
-1. Na **rozhraní** nastavte **I2C** a **SSH** k **povolit**a pak klikněte na **OK**. Pokud nemáte fyzické senzory a chcete použít data simulované snímačů, tento krok je volitelný.
+1. Na hello **rozhraní** nastavte **I2C** a **SSH** příliš**povolit**a potom klikněte na **OK**. Pokud nemáte fyzické senzory a chcete data snímačů toouse simulated, tento krok je volitelný.
 
    ![Povolit I2C a SSH na Malinová platformy](media/iot-hub-raspberry-pi-kit-node-get-started/2_enable-i2c-ssh-on-raspberry-pi.png)
 
 > [!NOTE] 
-SSH a I2C povolit, můžete najít další dokumenty odkaz na [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) a [Adafruit.com](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c).
+tooenable SSH a I2C, můžete najít další dokumenty odkaz na [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) a [Adafruit.com](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c).
 
-### <a name="connect-the-sensor-to-pi"></a>Připojit senzoru PI
+### <a name="connect-hello-sensor-toopi"></a>Připojit tooPi senzor hello
 
-Pomocí vedení breadboard a můstek pro připojení DIODU a BME280 PI následujícím způsobem. Pokud nemáte senzoru, tuto část přeskočte.
+Použijte hello breadboard a můstek vodičům tooconnect DIODU a BME280 tooPi následujícím způsobem. Pokud nemáte hello senzor, tuto část přeskočte.
 
-![Připojení malin platformy a senzor](media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
+![Hello malin platformy a senzor připojení](media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
 
-BME280 senzoru teploty a vlhkosti data můžete shromažďovat. A DIODU bude blink – Pokud je komunikace mezi zařízením a cloudem. 
+Hello BME280 senzor teploty a vlhkosti data můžete shromažďovat. A hello DIODU bude blink – Pokud je komunikace mezi zařízením a hello cloudu. 
 
-Senzor kód PIN použijte následující kabeláž:
+Senzor kód PIN použijte následující kabeláž hello:
 
 | Spuštění (senzor & DIODU)     | End (panelu)            | Kabel barev   |
 | -----------------------  | ---------------------- | ------------: |
@@ -122,65 +122,65 @@ Senzor kód PIN použijte následující kabeláž:
 | Indikátor VDD (Pin 18F)        | GPIO 24 (Pin 18)       | Bílé kabel   |
 | Indikátor zem (Pin 17F)        | ZEM (Pin 20)           | Začernit kabel   |
 
-Kliknutím zobrazíte [malin pí 2 a 3 mapování kódu Pin](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) pro vaši informaci.
+Klikněte na tlačítko tooview [malin pí 2 a 3 mapování kódu Pin](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) pro vaši informaci.
 
-Po připojení BME280 úspěšně vaší malin PI, mělo by být jako níže bitové kopie.
+Po úspěšném připojení BME280 tooyour malin Pi, mělo by být jako níže bitové kopie.
 
 ![Připojené platformy a BME280](media/iot-hub-raspberry-pi-kit-node-get-started/4_connected-pi.jpg)
 
-### <a name="connect-pi-to-the-network"></a>Připojení k síti platformy
+### <a name="connect-pi-toohello-network"></a>Připojit síť toohello platformy
 
-Zapněte pí pomocí kabelu USB micro a napájení. Pomocí kabelu Ethernet připojit platformy k drátové síti nebo postupujte podle [pokyny z Foundation pí malin](https://www.raspberrypi.org/learning/software-guide/wifi/) pro připojení k bezdrátové síti pí. Po vaší platformy se úspěšně připojil k síti, budete muset poznamenejte [IP adresa vašeho čísla pí](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address).
+Zapněte pí pomocí kabelu USB malých hello a hello napájení. Použití hello Ethernet kabel tooconnect pí tooyour drátové sítě nebo postupujte podle hello [pokyny z hello malin platformy Foundation](https://www.raspberrypi.org/learning/software-guide/wifi/) tooconnect pí tooyour bezdrátové sítě. Po vaší pí byl úspěšně připojeno toohello sítě, je nutné tootake poznámku o hello [IP adresa vašeho čísla pí](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address).
 
-![Připojení k drátové síti](media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
+![Připojené toowired sítě](media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
 
 > [!NOTE]
-> Ujistěte se, že platformy je připojený ke stejné síti jako počítače. Například pokud je počítač připojen k bezdrátové síti a platformy je připojeno k drátové síti, nemusíte to vidět IP adresu ve výstupu devdisco.
+> Ujistěte se, že platformy je připojený toohello stejné sítě jako váš počítač. Například pokud je počítač připojený tooa bezdrátové sítě připojené tooa drátové síti při instalaci platformy, nemusíte to vidět hello IP adresu ve výstupu devdisco hello.
 
 ## <a name="run-a-sample-application-on-pi"></a>Spuštění ukázkové aplikace na platformy
 
-### <a name="clone-sample-application-and-install-the-prerequisite-packages"></a>Naklonujte ukázkovou aplikaci a nainstalujte požadované balíčky
+### <a name="clone-sample-application-and-install-hello-prerequisite-packages"></a>Naklonujte ukázkovou aplikaci a nainstalujte požadované balíčky hello
 
-1. Použijte jeden z následujících klientů SSH z hostitelského počítače pro připojení k vaší malin platformy.
-    - [PuTTY](http://www.putty.org/) pro systém Windows. Je třeba IP adresa vašeho čísla pí připojit pomocí protokolu SSH.
-    - Integrovaného klienta SSH na Ubuntu nebo systému macOS. Stačí spustit `ssh pi@<ip address of pi>` připojit platformy prostřednictvím SSH.
+1. Použijte jeden z následujících klientů SSH z vaší hostitele počítače tooconnect tooyour malin pí hello.
+    - [PuTTY](http://www.putty.org/) pro systém Windows. Je třeba hello IP adresu vašeho tooconnect pí pomocí SSH.
+    - Hello integrovaného klienta SSH na Ubuntu nebo systému macOS. Stačí spustit `ssh pi@<ip address of pi>` tooconnect platformy prostřednictvím SSH.
 
    > [!NOTE] 
-   Výchozí uživatelské jméno `pi` , a heslo je `raspberry`.
+   výchozí uživatelské jméno Hello `pi` , a je heslo hello `raspberry`.
 
-1. Nainstalujte Node.js a NPM pro vaše platformy.
+1. Nainstalujte Node.js a NPM tooyour pí.
    
-   Nejdřív byste měli zkontrolovat vaše verze Node.js pomocí následujícího příkazu. 
+   Nejdřív byste měli zkontrolovat vaše verze Node.js s hello následující příkaz. 
    
    ```bash
    node -v
    ```
 
-   Pokud verze je nižší než 4.x nebo není žádná Node.js na vaše Pi, spusťte následující příkaz pro instalaci nebo aktualizaci Node.js.
+   Pokud verze hello je nižší než 4.x nebo není žádná Node.js na vaše Pi, spusťte následující příkaz tooinstall hello nebo aktualizovat Node.js.
 
    ```bash
    curl -sL http://deb.nodesource.com/setup_4.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 
-1. Naklonujte ukázkovou aplikaci tak, že spustíte následující příkaz:
+1. Klonování hello ukázkovou aplikaci spuštěním hello následující příkaz:
 
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-client-app
    ```
 
-1. Nainstalujte všechny balíčky podle následujícího příkazu. Obsahuje zařízení Azure IoT SDK, BME280 senzor knihovny a knihovna vzájemné propojení pí.
+1. Nainstalujte všechny balíčky podle hello následující příkaz. Obsahuje zařízení Azure IoT SDK, BME280 senzor knihovny a knihovna vzájemné propojení pí.
 
    ```bash
    cd iot-hub-node-raspberrypi-client-app
    sudo npm install
    ```
    > [!NOTE] 
-   Může trvat několik minut na dokončení této instalace proces denpening na připojení k síti.
+   Tento proces denpening instalace může trvat několik minut toofinish na připojení k síti.
 
-### <a name="configure-the-sample-application"></a>Nakonfigurujte ukázkovou aplikaci
+### <a name="configure-hello-sample-application"></a>Konfigurace hello ukázkové aplikace
 
-1. Otevřete konfigurační soubor spuštěním následujících příkazů:
+1. Otevřete konfigurační soubor hello spuštěním hello následující příkazy:
 
    ```bash
    nano config.json
@@ -188,30 +188,30 @@ Zapněte pí pomocí kabelu USB micro a napájení. Pomocí kabelu Ethernet při
 
    ![Konfigurační soubor](media/iot-hub-raspberry-pi-kit-node-get-started/6_config-file.png)
 
-   Existují dvě položky v tomto souboru můžete configurate. První z nich je `interval`, která definuje časový interval mezi dvě zprávy, které odesílají do cloudu. Druhý `simulatedData`, což je logickou hodnotu pro jestli se má používat data simulované snímačů, nebo ne.
+   Existují dvě položky v tomto souboru můžete configurate. Hello nejprve jeden je `interval`, která definuje hello časový interval mezi dvě zprávy, které odesílají toocloud. Hello druhá `simulatedData`, což je logickou hodnotu pro jestli toouse simulated data snímačů, nebo ne.
 
-   Pokud jste **nemají senzoru**, nastavte `simulatedData` hodnotu `true` aby ukázkovou aplikaci, vytváření a používání dat snímačů simulované.
+   Pokud jste **nemají hello senzor**, nastavte hello `simulatedData` hodnota příliš`true` toomake hello ukázkovou aplikaci vytváření a používání dat snímačů simulované.
 
 1. Uložte a zavřete stisknutím řízení-O > zadejte > CTRL-X.
 
-### <a name="run-the-sample-application"></a>Spuštění ukázkové aplikace
+### <a name="run-hello-sample-application"></a>Spuštění ukázkové aplikace hello
 
-1. Spuštění ukázkové aplikace tak, že spustíte následující příkaz:
+1. Spuštění ukázkové aplikace hello spuštěním hello následující příkaz:
 
    ```bash
    sudo node index.js '<your Azure IoT hub device connection string>'
    ```
 
    > [!NOTE] 
-   Zkontrolujte, zda jste způsobené kopírováním a vkládáním zařízení připojovací řetězec do jednoduchých uvozovek.
+   Zkontrolujte, zda jste způsobené kopírováním a vkládáním hello zařízení připojovací řetězec do jednoduchých uvozovek a být hello.
 
 
-Měli byste vidět následující výstup, který popisuje data snímačů a zprávy, které se odesílají do služby IoT hub.
+Měli byste vidět, že hello následující výstup, že zobrazuje hello senzor dat a hello zpráv, které jsou odeslány tooyour IoT hub.
 
-![Výstup – data snímačů odeslaný malin pí do služby IoT hub](media/iot-hub-raspberry-pi-kit-node-get-started/8_run-output.png)
+![Výstup – data snímačů odeslaný tooyour malin platformy IoT hub](media/iot-hub-raspberry-pi-kit-node-get-started/8_run-output.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Spustíte ukázkovou aplikaci pro shromažďování dat snímačů a odeslat do služby IoT hub.
+Spustil jsem ukázková data snímačů toocollect aplikace a odešlete ji tooyour IoT hub.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

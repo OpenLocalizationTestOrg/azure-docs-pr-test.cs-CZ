@@ -1,6 +1,6 @@
 ---
-title: "Pomocí řízení přístupu na základě rolí pro správu Azure Site Recovery | Microsoft Docs"
-description: "Tento článek popisuje, jak použít a spravovat nasazení Azure Site Recovery pomocí řízení přístupu na základě Role (RBAC)"
+title: "toomanage aaaUsing řízení přístupu na základě Role Azure Site Recovery | Microsoft Docs"
+description: "Tento článek popisuje, jak tooapply a použít na základě rolí řízení přístupu (RBAC) toomanage nasazeních Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: mayanknayar
@@ -14,36 +14,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: manayar
-ms.openlocfilehash: 9dd74014bf05234a83c7678b67b42b96cd8b8d64
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7b721090351e561b28317ccdcf0ff283e0b146ca
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-role-based-access-control-to-manage-azure-site-recovery-deployments"></a>Pomocí řízení přístupu na základě rolí pro správu nasazení Azure Site Recovery
+# <a name="use-role-based-access-control-toomanage-azure-site-recovery-deployments"></a>Použít nasazení s Azure Site Recovery toomanage řízení přístupu na základě Role
 
-Řízení přístupu na základě role v Azure umožňuje přesnou správu přístupu. Pomocí RBAC, můžete v rámci týmu oddělit odpovědnosti a udělit pouze oprávnění k přístupu konkrétním uživatelům podle potřeby k provedení určité úlohy.
+Řízení přístupu na základě role v Azure umožňuje přesnou správu přístupu. Pomocí RBAC, můžete v rámci týmu oddělit odpovědnosti a udělit pouze konkrétní přístup oprávnění toousers jako potřebné tooperform určité úlohy.
 
-Azure Site Recovery poskytuje 3 předdefinovaných rolí k řízení operace správy Site Recovery. Další informace na [předdefinované role Azure RBAC](../active-directory/role-based-access-built-in-roles.md)
+Azure Site Recovery poskytuje 3 předdefinované role toocontrol Site Recovery management operace. Další informace na [předdefinované role Azure RBAC](../active-directory/role-based-access-built-in-roles.md)
 
-* [Lokality obnovení Přispěvatel](../active-directory/role-based-access-built-in-roles.md#site-recovery-contributor) – tato role má všechna oprávnění vyžadovaná ke správě operací Azure Site Recovery v trezoru služeb zotavení. Uživatel k této roli, ale nelze vytvořit nebo odstranit trezor služeb zotavení nebo přiřadit přístupová práva ostatním uživatelům. Tato role je nejvhodnější pro správce obnovení po havárii, kteří můžete povolit a spravovat zotavení po havárii aplikace nebo celé organizace, jako možné.
-* [Operátor obnovení lokality](../active-directory/role-based-access-built-in-roles.md#site-recovery-operator) – tato role nemá oprávnění ke spuštění a převzetí služeb při selhání a navrácení služeb po obnovení operations manager. S touto rolí uživatele nelze povolit nebo zakázat replikaci, vytvořit nebo odstranit trezory, zaregistrujte novou infrastrukturu nebo přiřadit přístupová práva jiným uživatelům. Tato role je nejvhodnější pro operátor obnovení po havárii, kdo může převzetí služeb při selhání virtuálního počítače nebo přejít k podrobnostem aplikace při pokyn vlastníci aplikace a správci IT v situacích skutečná nebo simulované po havárii, jako je například zotavení po Havárii. Po vyřešení po havárii, operátor zotavení po Havárii můžete znovu nastavit ochranu a navrácení služeb po obnovení virtuálních počítačů.
-* [Lokality obnovení čtečky](../active-directory/role-based-access-built-in-roles.md#site-recovery-reader) – tato role nemá oprávnění k zobrazení všech operací správy Site Recovery. Tato role je nejvhodnější pro monitorování vedení IT, který můžete sledovat aktuální stav ochrany a zvýšení lístky žádostí o podporu, pokud je to nutné.
+* [Lokality obnovení Přispěvatel](../active-directory/role-based-access-built-in-roles.md#site-recovery-contributor) – tato role má všechny operace Azure Site Recovery požadované toomanage oprávnění v trezoru služeb zotavení. S touto rolí uživatele však nelze vytvořit nebo odstranit trezor služeb zotavení nebo uživatelé s právy tooother přiřadit přístup. Tato role je nejvhodnější pro správce obnovení po havárii, kteří můžete povolit a spravovat zotavení po havárii aplikace nebo celé organizace, jako může být případ hello.
+* [Operátor obnovení lokality](../active-directory/role-based-access-built-in-roles.md#site-recovery-operator) – tato role nemá oprávnění správce a tooexecute převzetí služeb při selhání a navrácení služeb po obnovení operace. Uživatel k této roli nelze povolit nebo zakázat replikaci, vytvořit nebo odstranit trezory, zaregistrujte novou infrastrukturu nebo přiřadit přístup uživatelé s právy tooother. Tato role je nejvhodnější pro operátor obnovení po havárii, kdo může převzetí služeb při selhání virtuálního počítače nebo přejít k podrobnostem aplikace při pokyn vlastníci aplikace a správci IT v situacích skutečná nebo simulované po havárii, jako je například zotavení po Havárii. POST rozlišení hello po havárii, operátor hello zotavení po Havárii můžete znovu nastavit ochranu a navrácení služeb po obnovení hello virtuálních počítačů.
+* [Lokality obnovení čtečky](../active-directory/role-based-access-built-in-roles.md#site-recovery-reader) – tato role nemá oprávnění tooview všechny operace správy Site Recovery. Tato role je nejvhodnější pro monitorování vedení IT, který můžete sledovat hello aktuální stav ochrany a zvýšení lístky žádostí o podporu, pokud je to nutné.
 
-Pokud hledáte, můžete definovat vlastní role pro ještě větší kontrolu, přečtěte si postup [vytvářet vlastní role](../active-directory/role-based-access-control-custom-roles.md) v Azure.
+Pokud se díváte toodefine vlastní role pro ještě větší kontrolu, najdete v části Jak příliš[vytvářet vlastní role](../active-directory/role-based-access-control-custom-roles.md) v Azure.
 
-## <a name="permissions-required-to-enable-replication-for-new-virtual-machines"></a>Oprávnění potřebná k povolení replikace pro nové virtuální počítače
-Když nový virtuální počítač se replikují do Azure pomocí Azure Site Recovery, se ověří úrovně přístupu uživatele přidružené k zajistěte, aby uživatel měl všechna oprávnění vyžadovaná ke používat prostředky Azure Site Recovery poskytuje.
+## <a name="permissions-required-tooenable-replication-for-new-virtual-machines"></a>TooEnable replikace požadovaná oprávnění pro nové virtuální počítače
+Replikované tooAzure pomocí Azure Site Recovery po nový virtuální počítač úrovně přístupu hello přidruženého uživatele jsou ověřené tooensure, který hello uživatele hello vyžaduje oprávnění toouse hello prostředků Azure poskytuje tooSite obnovení.
 
-Pokud chcete povolit replikaci pro nový virtuální počítač, musí mít uživatel:
-* Oprávnění k vytvoření virtuálního počítače ve vybrané skupině prostředků
-* Oprávnění k vytvoření virtuálního počítače ve vybrané virtuální síti
-* Oprávnění k zápisu do vybraného účtu úložiště
+tooenable replikace pro nový virtuální počítač, musí mít uživatel:
+* Oprávnění toocreate virtuálního počítače v hello vybranou skupinou prostředků.
+* Oprávnění toocreate virtuálního počítače v hello vybranou virtuální síť.
+* Oprávnění toowrite toohello vybraný účet úložiště
 
-Uživatel potřebuje následující oprávnění k dokončení replikace nového virtuálního počítače.
+Uživatel potřebuje hello následující oprávnění toocomplete replikaci nového virtuálního počítače.
 
 > [!IMPORTANT]
->Zajistěte, aby odpovídající oprávnění jsou přidány za model nasazení (Resource Manager / Classic) používá pro nasazení prostředků.
+>Zajistěte, aby odpovídající oprávnění jsou přidány na modelu nasazení hello (Resource Manager / Classic) používá pro nasazení prostředků.
 
 | **Typ prostředku** | **Model nasazení** | **Oprávnění** |
 | --- | --- | --- |
@@ -73,11 +73,11 @@ Uživatel potřebuje následující oprávnění k dokončení replikace nového
 | Skupina prostředků | Resource Manager | Microsoft.Resources/deployments/* |
 |  |  | Microsoft.Resources/subscriptions/resourceGroups/read |
 
-Zvažte použití, Přispěvatel virtuálních počítačů a Přispěvatel Classic virtuálních počítačů [předdefinované role](../active-directory/role-based-access-built-in-roles.md) pro nasazení Resource Manager a klasický modelů v uvedeném pořadí.
+Zvažte použití hello 'Přispěvatel virtuálních počítačů a Přispěvatel Classic virtuálních počítačů [předdefinované role](../active-directory/role-based-access-built-in-roles.md) pro nasazení Resource Manager a klasický modelů v uvedeném pořadí.
 
 ## <a name="next-steps"></a>Další kroky
-* [Řízení přístupu na základě role](../active-directory/role-based-access-control-configure.md): Začínáme s RBAC na portálu Azure.
-* Zjistěte, jak spravovat přístup pomocí:
+* [Řízení přístupu na základě role](../active-directory/role-based-access-control-configure.md): Začínáme s RBAC v hello portálu Azure.
+* Zjistěte, jak přistupovat k toomanage se:
   * [PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)
   * [Azure CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md)
   * [REST API](../active-directory/role-based-access-control-manage-access-rest.md)

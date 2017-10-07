@@ -1,6 +1,6 @@
 ---
-title: "Zadejte spolehlivé aktéři poznámky k objektu actor serializace | Microsoft Docs"
-description: "Popisuje základní požadavky pro definování serializovatelných tříd, které lze použít k definování stavy Service Fabric Reliable Actors a rozhraní"
+title: "Zadejte aaaReliable aktéři poznámky k objektu actor serializace | Microsoft Docs"
+description: "Popisuje základní požadavky pro definování serializovatelných tříd, které se dají použít toodefine stavy Service Fabric Reliable Actors a rozhraní"
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: 4b48b893e5a3bf5620f00a336576efe1ad63def8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d8584e7d90fe1c68af38983e71e5d0a7554689bf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Poznámky k Service Fabric Reliable Actors zadejte serializace
-Argumenty všech metod, typy výsledků úlohy vrácený jednotlivých metod v objektu actor rozhraní a musí být objekty uložené ve Správci stavu objektu actor [kontraktů dat serializovatelný](https://msdn.microsoft.com/library/ms731923.aspx). To platí také pro argumenty metody definované v [objektu actor událostí rozhraní](service-fabric-reliable-actors-events.md). (Metody rozhraní události objektu actor vždy vracet typ void.)
+typy výsledků hello úloh vrácených jednotlivých metod v objektu actor rozhraní Hello argumenty všech metod, a musí být objekty uložené ve Správci stavu objektu actor [kontraktů dat serializovatelný](https://msdn.microsoft.com/library/ms731923.aspx). To platí také toohello argumenty hello metody definované v [objektu actor událostí rozhraní](service-fabric-reliable-actors-events.md). (Metody rozhraní události objektu actor vždy vracet typ void.)
 
 ## <a name="custom-data-types"></a>Vlastní datové typy
-V tomto příkladu následující rozhraní objektu actor definuje metodu, která vrátí vlastních dat typu s názvem `VoicemailBox`:
+V tomto příkladu hello následující rozhraní objektu actor definuje metodu, která vrátí vlastních dat typu s názvem `VoicemailBox`:
 
 ```csharp
 public interface IVoiceMailBoxActor : IActor
@@ -40,7 +40,7 @@ public interface VoiceMailBoxActor extends Actor
 }
 ```
 
-Rozhraní je implementováno modulem objektu actor, který používá správce stavu k uložení `VoicemailBox` objektu:
+Hello rozhraní je implementováno modulem objektu actor, který používá hello stavu manager toostore `VoicemailBox` objektu:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -76,12 +76,12 @@ public class VoiceMailBoxActorImpl extends FabricActor implements VoicemailBoxAc
 
 ```
 
-V tomto příkladu `VoicemailBox` objekt serializován při:
+V tomto příkladu hello `VoicemailBox` objekt serializován při:
 
-* Objekt se přenášejí mezi instancí objektu actor a volající.
-* Objekt se uloží do Správce stavu, kde je uložit trvale na disk a replikované do dalších uzlů.
+* objekt Hello přenosu mezi instanci objektu actor a volající.
+* objekt Hello je uložen v hello správce stavu, kde je trvalý toodisk a replikované tooother uzlů.
 
-Rozhraní objektu Actor spolehlivé používá kontraktu serializace. Proto vlastní datové objekty a jejich členové musí být opatřena poznámkou **kontraktu** a **DataMember** atributy v uvedeném pořadí.
+framework spolehlivé objektu Actor Hello používá kontraktu serializace. Proto hello vlastní datové objekty a jejich členové musí být opatřena hello poznámkou **kontraktu** a **DataMember** atributy v uvedeném pořadí.
 
 ```csharp
 [DataContract]

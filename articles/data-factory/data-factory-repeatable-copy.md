@@ -1,6 +1,6 @@
 ---
-title: "Opakovatelných kopie v Azure Data Factory | Microsoft Docs"
-description: "Jak se vyhnout duplikáty, i když je více než jednou spustit řez, který kopíruje data."
+title: "kopírování aaaRepeatable v Azure Data Factory | Microsoft Docs"
+description: "Zjistěte, jak tooavoid duplicitních to i v případě, že je řez, který kopíruje data spustit více než jednou."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
-ms.openlocfilehash: 5b88a235915bf35fec701eee4a5f80beb4a67632
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 79a3fde2b700bf0a0e167479d6a86c5bee1bf7ec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Opakovatelných kopie v Azure Data Factory
 
 ## <a name="repeatable-read-from-relational-sources"></a>Opakovatelných číst z relační zdrojů
-Při kopírování dat z relačních dat ukládá, uvědomte si, aby se zabránilo neúmyslnému výstupy opakovatelnosti. V Azure Data Factory může řez znovu ručně. Zásady opakovaných pokusů pro datovou sadu můžete také nakonfigurovat tak, aby řez se znovu spustí, když dojde k chybě. Řez se znovu spustí, buď způsobem, musíte zajistit, že stejná data je pro čtení bez ohledu na to kolikrát řez je spustit.  
+Při kopírování dat z relační datové úložiště, mějte opakovatelnosti pamatovat tooavoid nezamýšleným výstupy. V Azure Data Factory může řez znovu ručně. Zásady opakovaných pokusů pro datovou sadu můžete také nakonfigurovat tak, aby řez se znovu spustí, když dojde k chybě. Pokud v obou případech se znovu spustí řez, je potřeba toomake jisti, který hello stejných dat je pro čtení bez ohledu na to jak mnohokrát řez je spustit.  
  
 > [!NOTE]
-> Následující ukázky jsou pro Azure SQL, ale platí pro všechny datové úložiště, které podporuje obdélníková datové sady. Možná budete muset upravit **typ** zdroje a **dotazu** vlastnosti (například: dotazu místo sqlReaderQuery) pro data uložit.   
+> Hello následující ukázky jsou pro Azure SQL, ale jsou příslušné tooany datové úložiště, které podporuje obdélníková datové sady. Můžete mít tooadjust hello **typ** zdroje a hello **dotazu** vlastnosti (například: dotazu místo sqlReaderQuery) pro hello data uložit.   
 
-Obvykle při čtení z relační úložiště, kterou chcete číst pouze data odpovídající této řez. Způsob, jak tomu by pomocí WindowStart a WindowEnd systémové proměnné dostupné v Azure Data Factory. Přečtěte si informace o proměnných a funkce v Azure Data Factory zde v [Azure Data Factory – funkce a systémové proměnné](data-factory-functions-variables.md) článku. Příklad: 
+Obvykle při čtení z relační úložiště, budete chtít tooread pouze hello data odpovídající toothat řez. Způsob toodo tak bude pomocí hello WindowStart WindowEnd systémové proměnné a k dispozici v Azure Data Factory. Přečtěte si informace o proměnných hello a funkcí v datové továrně Azure v hello [Azure Data Factory – funkce a systémové proměnné](data-factory-functions-variables.md) článku. Příklad: 
 
 ```json
 "source": {
@@ -35,9 +35,9 @@ Obvykle při čtení z relační úložiště, kterou chcete číst pouze data o
     "sqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm\\'', WindowStart, WindowEnd)"
 },
 ```
-Tento dotaz načte data, která spadá do rozsahu řez doba trvání (WindowStart -> WindowEnd) z tabulky MyTable. Spusťte tento řez by také vždy zajistěte, že je stejná data pro čtení. 
+Tento dotaz načte data, která se nachází ve hello řez trvání rozsahu (WindowStart -> WindowEnd) z tabulky hello MyTable. Spusťte tento řez by také vždy ujistěte se, že hello je čtení stejná data. 
 
-V jiných případech může chtít přečíst celou tabulku a může sqlReaderQuery definujte takto:
+V jiných případech může přát tooread hello celou tabulku a může definovat hello sqlReaderQuery následujícím způsobem:
 
 ```json
 "source": 
@@ -47,10 +47,10 @@ V jiných případech může chtít přečíst celou tabulku a může sqlReaderQ
 },
 ```
 
-## <a name="repeatable-write-to-sqlsink"></a>Opakovatelných při zápisu do SqlSink
-Při kopírování dat **Azure SQL nebo SQL Server** z jiným úložištím dat, budete muset opakovatelnosti mějte na paměti, aby se zabránilo neúmyslnému výstupy. 
+## <a name="repeatable-write-toosqlsink"></a>TooSqlSink opakovatelných zápisu
+Při kopírování dat příliš**Azure SQL nebo SQL Server** z jiných úložišť dat je třeba tookeep opakovatelnosti v paměti tooavoid nezamýšleným výstupy. 
 
-Při kopírování dat do databáze serveru SQL/SQL Azure, připojí aktivitě kopírování dat do tabulky jímky ve výchozím nastavení. Řekněme, jsou kopírování dat ze souboru CSV (hodnoty oddělené čárkami) obsahující dva záznamy v databázi Azure SQL nebo SQL Server v následující tabulce. Při spuštění se řez, dva záznamy se zkopírují do tabulky SQL. 
+Při kopírování dat tooAzure databázi SQL nebo SQL Server, aktivity kopírování hello připojí tabulky jímky toohello data ve výchozím nastavení. Vyslovte jsou kopírování dat z CSV (hodnoty oddělené čárkami) soubor obsahující dva záznamy toohello následující tabulka v databázi Azure SQL nebo SQL Server. Při spuštění se řez, jsou dva záznamy hello zkopírovaný toohello tabulky SQL. 
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -59,7 +59,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    2            2015-05-01 00:00:00
 ```
 
-Předpokládejme, že byly nalezeny chyby ve zdrojovém souboru a aktualizované množství dolů trubice od 2 do 4. Pokud datový řez pro toto období ručně, najdete v ní dva nové záznamy připojenou k databázi Azure SQL nebo SQL Server. Tento příklad předpokládá, že žádný sloupců v tabulce nemá omezení primárního klíče.
+Předpokládejme, že byly nalezeny chyby ve zdrojovém souboru a aktualizovat hello objemu trubice dolů z 2 too4. Pokud hello datový řez pro toto období ručně, zjistíte, že dva nové záznamy připojí tooAzure databázi SQL nebo SQL Server. Tento příklad předpokládá, že žádný hello sloupců v tabulce hello nemá hello omezení primárního klíče.
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -70,10 +70,10 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Chcete-li tomu zabránit, budete muset zadat UPSERT sémantiku pomocí jedné z následujících dvou mechanismů:
+tooavoid toto chování je třeba toospecify UPSERT sémantiku pomocí jedné z následujících dvou mechanismů hello:
 
 ### <a name="mechanism-1-using-sqlwritercleanupscript"></a>Mechanismus 1: použití sqlWriterCleanupScript
-Můžete použít **sqlWriterCleanupScript** vlastnost vyčistit data z tabulky jímky před vložením dat při spuštění řez. 
+Můžete použít hello **sqlWriterCleanupScript** tooclean vlastnost zálohovat data z tabulky jímky hello před vložením dat hello při spuštění řez. 
 
 ```json
 "sink":  
@@ -83,7 +83,7 @@ Můžete použít **sqlWriterCleanupScript** vlastnost vyčistit data z tabulky 
 }
 ```
 
-Při spuštění se řez, je nejprve spustit skript vyčištění odstranit data, která odpovídá řez z tabulky SQL. Aktivitě kopírování vkládá data do tabulky SQL. Pokud je řez je znovu spustit, množství se aktualizuje podle potřeby.
+Při spuštění se řez, je spustit skript pro vyčištění hello první toodelete data, která odpovídá toohello řez z tabulky SQL hello. Aktivita kopírování Hello vkládá data do hello tabulky SQL. Pokud se znovu spustí hello řez, množství hello je aktualizováno podle potřeby.
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -92,7 +92,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Předpokládejme, že odebrání záznamu ploché podložku z původní sdílený svazek clusteru. Pak znovu spustit řez vznikna následující výsledek: 
+Předpokládejme, že hello ploché podložku záznam se odebere z původní csv hello. Znovu spustit řez hello by pak vytváří hello následující výsledek: 
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -100,17 +100,17 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Aktivita kopírování spustili čištění skript, který chcete odstranit data odpovídající této řez. Pak jej číst vstupní ze souboru csv (což je obsaženy jenom jeden záznam) a vložit do tabulky. 
+Aktivita kopírování Hello spustili hello čištění toodelete hello odpovídající data skriptu pro tento řez. Pak jej číst hello vstup ze souboru csv hello (což je obsaženy jenom jeden záznam) a vložit do hello tabulky. 
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>Mechanismus 2: pomocí sliceIdentifierColumnName
 > [!IMPORTANT]
 > V současné době sliceIdentifierColumnName není podporována pro Azure SQL Data Warehouse. 
 
-Druhý mechanismus k dosažení opakovatelnosti spočívá v použití vyhrazených sloupce (sliceIdentifierColumnName) v cílové tabulce. V tomto sloupci se použije službou Azure Data Factory pro Ujistěte se, že zdrojový a cílový zůstane synchronizovaná. Tento přístup funguje, když je flexibilitu při změně nebo definování schématu cílové tabulky SQL. 
+Hello druhý mechanismus tooachieve opakovatelnosti spočívá v použití vyhrazených sloupce (sliceIdentifierColumnName) v hello cílové tabulky. V tomto sloupci se použije pomocí Azure Data Factory tooensure hello zdrojové a cílové synchronní. Tento přístup funguje, když je flexibilitu při změně nebo definice schématu tabulky SQL cílové hello. 
 
-V tomto sloupci se používá službou Azure Data Factory pro účely opakovatelnost a v procesu Azure Data Factory nebyly provedeny žádné změny schématu tabulky. Způsob použití tohoto přístupu:
+V tomto sloupci se používá službou Azure Data Factory pro účely opakovatelnost a v procesu hello Azure Data Factory zajistěte, aby nebyly žádné schéma změny toohello tabulky. Způsob toouse tohoto přístupu:
 
-1. Definování sloupec typu **binárního souboru (32)** v cílové tabulce SQL. Měla by existovat žádné omezení na tomto sloupci. Název v tomto sloupci jako AdfSliceIdentifier budeme v tomto příkladu.
+1. Definování sloupec typu **binárního souboru (32)** v hello cílové tabulky SQL. Měla by existovat žádné omezení na tomto sloupci. Název v tomto sloupci jako AdfSliceIdentifier budeme v tomto příkladu.
 
 
     Zdrojová tabulka:
@@ -132,7 +132,7 @@ V tomto sloupci se používá službou Azure Data Factory pro účely opakovatel
     )
     ```
 
-2. Ho použijte k aktivitě kopírování následujícím způsobem:
+2. Ho použijte k aktivitě kopírování hello následujícím způsobem:
    
     ```json
     "sink":  
@@ -143,12 +143,12 @@ V tomto sloupci se používá službou Azure Data Factory pro účely opakovatel
     }
     ```
 
-Azure Data Factory naplní tento sloupec podle jeho potřeba zajistit, že zdrojový a cílový zůstane synchronizovaná. Mimo tento kontext není vhodné používat hodnoty daného sloupce. 
+Azure Data Factory naplní tento sloupec podle jeho nutné tooensure hello zdrojové a cílové zůstane synchronizovaná. mimo tento kontext není vhodné používat Hello hodnoty daného sloupce. 
 
-Podobně jako mechanismus 1, aktivity kopírování automaticky vyčistí data pro danou řez z cílového tabulky SQL. Potom vloží data ze zdroje v do cílové tabulky. 
+Podobně jako toomechanism 1, aktivity kopírování automaticky vyčistí hello dat pro danou řez z cílového hello tabulky SQL hello. Potom vloží data ze zdroje v toohello cílové tabulky. 
 
 ## <a name="next-steps"></a>Další kroky
-Zkontrolujte konektor následující články, dokončení příklady JSON: 
+Projděte si následující články konektoru, které pro dokončení JSON příklady hello: 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)
 - [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)

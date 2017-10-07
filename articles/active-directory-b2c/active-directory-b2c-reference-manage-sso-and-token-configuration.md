@@ -12,17 +12,17 @@ ms.topic: article
 ms.devlang: na
 ms.date: 05/02/2017
 ms.author: sama
-ms.openlocfilehash: 8f5703d15766f221517cd89352d41685652d32d6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b65271a22c77ea41eeec2126e4a3ad24364edd17
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-b2c-manage-sso-and-token-customization-with-custom-policies"></a>Azure Active Directory B2C: Správa jednotného přihlašování a tokenu přizpůsobení pomocí vlastních zásad
-Pomocí vlastních zásad poskytuje stejné kontrolu nad token, relací a jeden přihlašování konfigurace (SSO) jako prostřednictvím integrovaných zásad.  Další informace o jaké každé nastavení, najdete v dokumentaci [zde](#active-directory-b2c-token-session-sso).
+Pomocí vlastních zásad poskytuje že Hello stejnou kontrolu nad token, relací a jeden přihlašování konfigurace (SSO) jako prostřednictvím integrovaných zásad.  toolearn jednotlivých možností nastavení neobsahuje, naleznete v dokumentaci hello [zde](#active-directory-b2c-token-session-sso).
 
 ## <a name="token-lifetimes-and-claims-configuration"></a>Token konfigurace životnosti a deklarace identity
-Chcete-li změnit nastavení na vaše životnosti tokenu, je nutné přidat `<ClaimsProviders>` element v souboru předávající strany zásady, které chcete mít vliv.  `<ClaimsProviders>` Element je podřízená `<TrustFrameworkPolicy>`.  Uvnitř budete muset uvést informace, které ovlivní vaše životnosti tokenu.  Soubor XML vypadá takto:
+nastavení hello toochange na vaše životnosti tokenu, je nutné tooadd `<ClaimsProviders>` element v souboru předávající strany hello hello zásad chcete tooimpact.  Hello `<ClaimsProviders>` element je podřízená hello `<TrustFrameworkPolicy>`.  Uvnitř budete potřebovat tooput hello informace, které ovlivní vaše životnosti tokenu.  Hello XML vypadá takto:
 
 ```XML
 <ClaimsProviders>
@@ -44,28 +44,28 @@ Chcete-li změnit nastavení na vaše životnosti tokenu, je nutné přidat `<Cl
 </ClaimsProviders>
 ```
 
-**Přístup k tokenu životnosti** dobu životnosti tokenu přístupu lze změnit úpravou hodnoty uvnitř `<Item>` klíčem = "token_lifetime_secs" v sekundách.  Výchozí hodnota v předdefinované je 3600 sekund (60 minut).
+**Přístup k tokenu životnosti** hello přístup dobu životnosti tokenu lze změnit úpravou hodnoty hello uvnitř hello `<Item>` s hello Key = "token_lifetime_secs" v sekundách.  Výchozí hodnota Hello v předdefinované je 3600 sekund (60 minut).
 
-**Životnost tokenu ID** ID dobu životnosti tokenu lze změnit úpravou hodnoty uvnitř `<Item>` klíčem = "id_token_lifetime_secs" v sekundách.  Výchozí hodnota v předdefinované je 3600 sekund (60 minut).
+**Životnost tokenu ID** životnost tokenu ID hello lze změnit úpravou hodnoty hello uvnitř hello `<Item>` s hello Key = "id_token_lifetime_secs" v sekundách.  Výchozí hodnota Hello v předdefinované je 3600 sekund (60 minut).
 
-**Aktualizujte životnost tokenu** aktualizace dobu životnosti tokenu lze změnit úpravou hodnoty uvnitř `<Item>` klíčem = "refresh_token_lifetime_secs" v sekundách.  Výchozí hodnota v předdefinované je 1209600 sekund (14 dnů).
+**Aktualizujte životnost tokenu** životnost tokenu hello aktualizace lze změnit úpravou hodnoty hello uvnitř hello `<Item>` s hello Key = "refresh_token_lifetime_secs" v sekundách.  Výchozí hodnota Hello v předdefinované je 1209600 sekund (14 dnů).
 
-**Aktualizujte životnost tokenu posuvné okno** Pokud chcete nastavit životnost posuvné okno na obnovovací token, upravte hodnotu uvnitř `<Item>` klíčem = "rolling_refresh_token_lifetime_secs" v sekundách.  Výchozí hodnota v předdefinované je 7776000 (90 dnů).  Pokud nechcete enfore klouzavé období platnosti, nahraďte tento řádek:
+**Aktualizujte životnost tokenu posuvné okno** Pokud chcete tooset posuvné okno životnost tooyour obnovovací token, upravte hodnotu hello uvnitř `<Item>` s hello Key = "rolling_refresh_token_lifetime_secs" v sekundách.  Výchozí hodnota Hello v předdefinované je 7776000 (90 dnů).  Pokud nechcete, aby tooenfore posuvné okno životnost, nahraďte tento řádek:
 ```XML
 <Item Key="allow_infinite_rolling_refresh_token">True</Item>
 ```
 
-**Deklarace identity vystavitele (iss)** Pokud chcete změnit deklarace vystavitele (iss), upravte hodnotu uvnitř `<Item>` klíčem = "IssuanceClaimPattern".  Použitelné hodnoty jsou `AuthorityAndTenantGuid` a `AuthorityWithTfp`.
+**Deklarace identity vystavitele (iss)** Pokud chcete toochange hello vystavitele (iss) deklarace identity, upravte hodnotu hello uvnitř hello `<Item>` s hello Key = "IssuanceClaimPattern".  Hello použitelné hodnoty jsou `AuthorityAndTenantGuid` a `AuthorityWithTfp`.
 
-**Nastavení deklarace představující ID zásad** možnosti pro nastavení této hodnoty jsou TFP (zásady důvěryhodnosti framework) a ACR (authentication kontextu reference).  
-Doporučujeme, abyste tato nastavení na TFP, chcete-li to provést, zkontrolujte `<Item>` se klíč = "AuthenticationContextReferenceClaimPattern" existuje a je hodnota `None`.
+**Nastavení deklarace představující ID zásad** hello možnosti pro nastavení této hodnoty jsou TFP (zásady důvěryhodnosti framework) a ACR (authentication kontextu reference).  
+Jsme doporučujeme toto nastavení této tooTFP toodo, zkontrolujte hello `<Item>` s hello Key = "AuthenticationContextReferenceClaimPattern" existuje a je hodnota hello `None`.
 Ve vašem `<OutputClaims>` položky, přidejte tento element:
 ```XML
 <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />
 ```
-ACR, odeberte `<Item>` klíčem = "AuthenticationContextReferenceClaimPattern".
+U ACR, odebrat hello `<Item>` s hello Key = "AuthenticationContextReferenceClaimPattern".
 
-**Deklarace identity subjektu (pod)** tato možnost je uvedena do výchozího stavu ObjectID, pokud chcete přepnout na `Not Supported`, postupujte takto:
+**Deklarace identity subjektu (pod)** tato možnost je uvedena tooObjectID, pokud chcete tooswitch to příliš`Not Supported`, hello následující:
 
 Nahraďte tento řádek 
 ```XML
@@ -77,7 +77,7 @@ Tento řádek:
 ```
 
 ## <a name="session-behavior-and-sso"></a>Chování relace a jednotné přihlašování
-Pokud chcete změnit chování relace a konfigurace jednotného přihlašování, je nutné přidat `<UserJourneyBehaviors>` elementu `<RelyingParty>` elementu.  `<UserJourneyBehaviors>` Element okamžitě postupujte `<DefaultUserJourney>`.  Uvnitř vaší `<UserJourneyBehavors>` element by měla vypadat takto:
+toochange chování relace a konfigurace jednotného přihlašování, budete potřebovat tooadd `<UserJourneyBehaviors>` element uvnitř hello `<RelyingParty>` elementu.  Hello `<UserJourneyBehaviors>` element okamžitě postupujte hello `<DefaultUserJourney>`.  Hello uvnitř vaší `<UserJourneyBehavors>` element by měla vypadat takto:
 
 ```XML
 <UserJourneyBehaviors>
@@ -86,8 +86,8 @@ Pokud chcete změnit chování relace a konfigurace jednotného přihlašování
    <SessionExpiryInSeconds>86400</SessionExpiryInSeconds>
 </UserJourneyBehaviors>
 ```
-**Konfigurace jednotného přihlašování (SSO)** Pokud chcete změnit konfiguraci přihlášení, budete muset upravit hodnotu `<SingleSignOn>`.  Použitelné hodnoty jsou `Tenant`, `Application`, `Policy` a `Disabled`. 
+**Konfigurace jednotného přihlašování (SSO)** toochange hello jeden přihlašování konfigurace, je třeba hodnotu hello toomodify `<SingleSignOn>`.  Hello použitelné hodnoty jsou `Tenant`, `Application`, `Policy` a `Disabled`. 
 
-**Webovou aplikaci dobu platnosti relace (minuty)** změnit webovou aplikaci dobu platnosti relace, budete muset upravit hodnotu `<SessionExpiryInSeconds>` elementu.  Výchozí hodnota v integrovaných zásad je 86400 sekund (1 440 minut).
+**Webovou aplikaci dobu platnosti relace (minuty)** toochange hello hello webové aplikace dobu platnosti relace, musíte hodnotu toomodify hello `<SessionExpiryInSeconds>` elementu.  Výchozí hodnota Hello v integrovaných zásad je 86400 sekund (1 440 minut).
 
-**Časový limit relace webové aplikace** změnit časový limit relace webové aplikace, budete muset upravit hodnotu `<SessionExpiryType>`.  Použitelné hodnoty jsou `Absolute` a `Rolling`.
+**Časový limit relace webové aplikace** toochange hello webové aplikace časový limit relace, musíte hodnotu hello toomodify `<SessionExpiryType>`.  Hello použitelné hodnoty jsou `Absolute` a `Rolling`.

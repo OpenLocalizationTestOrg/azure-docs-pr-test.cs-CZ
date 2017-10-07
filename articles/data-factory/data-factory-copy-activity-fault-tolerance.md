@@ -1,6 +1,6 @@
 ---
-title: "Přidání odolnost proti chybám v Azure Data Factory kopie aktivity přeskočení nekompatibilní řádků | Microsoft Docs"
-description: "Informace o postupu přidání odolnost proti chybám při aktivitě kopírování objektu pro vytváření dat Azure pomocí přeskočení nekompatibilní řádky během kopírování"
+title: "aaaAdd odolnost proti chybám při aktivitě kopírování objektu pro vytváření dat Azure pomocí přeskočení nekompatibilní řádků | Microsoft Docs"
+description: "Zjistěte, jak tooadd odolnost proti chybám při aktivitě kopírování objektu pro vytváření dat Azure pomocí přeskočení nekompatibilní řádky během kopírování"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -13,36 +13,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jingwang
-ms.openlocfilehash: e2a108752259d5da3b401666c6bdbaad13b7ea90
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e7cf6117655910844b292d340674d8d631450a81
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Přidání odolnost proti chybám v aktivitě kopírování přeskočení nekompatibilní řádků
 
-Azure Data Factory [aktivity kopírování](data-factory-data-movement-activities.md) nabízí dva způsoby, jak zpracovat nekompatibilní řádků při kopírování dat mezi zdroj a jímka úložišti dat:
+Azure Data Factory [aktivity kopírování](data-factory-data-movement-activities.md) nabízí dva způsoby, jak toohandle nekompatibilní řádků při kopírování dat mezi zdroj a jímka úložišti dat:
 
-- Můžete přerušit a selhání kopie aktivity po nekompatibilní data došlo (výchozí nastavení).
-- Kopírování všech dat přidáním odolnost proti chybám a přeskočení řádky nekompatibilní data můžete pokračovat. Kromě toho se můžete přihlásit nekompatibilní řádky úložiště objektů Blob v Azure. Poté můžete prozkoumat do protokolu a zjistěte příčinu selhání, opravte dat ve zdroji dat a zkuste to aktivitě kopírování.
+- Můžete přerušit a selhání hello kopie aktivity po nekompatibilní data došlo (výchozí nastavení).
+- Můžete pokračovat v toocopy všechna data hello přidáním odolnost proti chybám a přeskočení nekompatibilní data řádků. Kromě toho se můžete přihlásit nekompatibilní řádky hello úložiště objektů Blob v Azure. Můžete pak zkontrolujte hello protokolu toolearn hello příčinou selhání hello, opravte hello dat na zdroji dat hello a opakujte aktivity kopírování hello.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 Aktivita kopírování podporuje tři scénáře pro zjišťování, přeskočí a protokolování nekompatibilní data:
 
-- **Nekompatibilita mezi zdrojového datového typu a nativní typ jímky**
+- **Nekompatibilita mezi hello zdrojového datového typu a nativní typ jímky hello**
 
-    Příklad: kopírování dat ze souboru CSV v úložišti objektů Blob k databázi SQL s definici schématu, která obsahuje tři **INT** typ sloupce. Řádků souboru CSV, které obsahují číselné údaje, jako například `123,456,789` jsou úspěšně zkopírovat do úložiště jímky. Však řádky obsahující jiné než číselné hodnoty, například `123,456,abc` jsou rozpoznána jako nekompatibilní a se přeskočí.
+    Příklad: kopírování dat ze souboru CSV v objektu Blob úložiště tooa SQL databáze s definici schématu, která obsahuje tři **INT** typ sloupce. Hello řádků souboru CSV, obsahující číselná data, jako například `123,456,789` zkopírují úspěšně toohello podřízený úložiště. Ale hello řádky, které obsahují jiné než číselné hodnoty, jako například `123,456,abc` jsou rozpoznána jako nekompatibilní a se přeskočí.
 
-- **Neshoda mezi počtem sloupců mezi zdroj a jímka**
+- **Došlo k neshodě v hello počet sloupců mezi hello zdroj a jímka hello**
 
-    Příklad: kopírování dat ze souboru CSV v úložišti objektů Blob k databázi SQL s definici schématu, která obsahuje šest sloupce. Řádky soubor CSV, které obsahují šesti sloupce jsou úspěšně zkopírovat do úložiště jímky. Řádky soubor CSV, které obsahují více nebo méně než šest sloupce jsou rozpoznána jako nekompatibilní a se přeskočí.
+    Příklad: kopírování dat ze souboru CSV v objektu Blob úložiště tooa SQL databáze s definici schématu, která obsahuje šest sloupce. Hello souboru CSV, který řádky, které obsahují šesti sloupce jsou úspěšně zkopírovány toohello podřízený úložiště. Hello CSV souboru řádky, které obsahují více nebo méně než šest sloupce jsou rozpoznána jako nekompatibilní a se přeskočí.
 
-- **Porušení primárního klíče při zápisu do relační databáze**
+- **Porušení primárního klíče při zápisu tooa relační databáze**
 
-    Příklad: kopírování dat z SQL serveru do databáze SQL. Ve službě SQL database podřízený je definovaný primární klíč, ale na zdrojovém serveru SQL je definován žádný primární klíč. Duplicitní řádky, na které existují ve zdroji nelze zkopírovat do jímky. Aktivita kopírování zkopíruje pouze první řádek zdrojová data do jímky. Další zdroje řádky, které obsahují duplicitní hodnotu primárního klíče jsou rozpoznána jako nekompatibilní a se přeskočí.
+    Příklad: kopírování dat z databáze SQL tooa systému SQL server. Primární klíč je definována v hello jímku SQL databáze, ale žádný primární klíč je definována v systému SQL server hello zdroje. Hello duplicitní řádky, které existují v hello zdroj nesmí být zkopírovaný toohello jímky. Aktivita kopírování zkopíruje pouze hello první řádek hello zdroje dat do hello jímky. Hello řádky další zdroje, které obsahují hello duplicitní hodnotu primárního klíče jsou rozpoznána jako nekompatibilní a se přeskočí.
 
 ## <a name="configuration"></a>Konfigurace
-Následující příklad uvádí definici JSON konfigurace přeskočení nekompatibilní řádky v aktivitě kopírování:
+Hello následující příklad uvádí tooconfigure definici JSON přeskočení hello nekompatibilní řádků v aktivitě kopírování:
 
 ```json
 "typeProperties": {
@@ -63,22 +63,22 @@ Následující příklad uvádí definici JSON konfigurace přeskočení nekompa
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
 | **enableSkipIncompatibleRow** | Povolte přeskočení nekompatibilní řádků při kopírování nebo ne. | True<br/>NEPRAVDA (výchozí) | Ne |
-| **redirectIncompatibleRowSettings** | Skupina vlastností, které může být zadán, pokud chcete protokolovat nekompatibilní řádky. | &nbsp; | Ne |
-| **linkedServiceName** | Propojené služby Azure Storage k ukládání protokol, který obsahuje přeskočených řádků. | Název [azurestorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) propojené služby, která odkazuje na instanci úložiště, který chcete použít k uložení souboru protokolu. | Ne |
-| **Cesta** | Cesta souboru protokolu, který obsahuje přeskočených řádků. | Zadejte cestu úložiště objektů Blob, které chcete používat k protokolování nekompatibilní data. Pokud nezadáte cestu, služby pro vás vytvoří kontejner. | Ne |
+| **redirectIncompatibleRowSettings** | Skupinu vlastností, které lze zadat, když chcete toolog hello nekompatibilní řádků. | &nbsp; | Ne |
+| **linkedServiceName** | Hello propojená služba Azure Storage toostore hello protokolu, který obsahuje řádky hello přeskočena. | Název Hello [azurestorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) propojené služby, která odkazuje toohello úložiště instance, že chcete soubor protokolu hello toostore toouse. | Ne |
+| **Cesta** | Hello cesta souboru protokolu hello, který obsahuje hello přeskočen řádků. | Zadejte cestu úložiště objektů Blob hello má toouse toolog hello nekompatibilní data. Pokud nezadáte cestu, služba hello vytvoří kontejner pro vás. | Ne |
 
 ## <a name="monitoring"></a>Monitorování
-Po dokončení kopírování aktivity při spuštění, zobrazí se počet přeskočených řádků v části monitorování:
+Po dokončení aktivity kopírování hello při spuštění, můžete zjistit hello Počet přeskočených řádků v části Sledování hello:
 
 ![Monitorování přeskočen nekompatibilní řádků](./media/data-factory-copy-activity-fault-tolerance/skip-incompatible-rows-monitoring.png)
 
-Pokud nakonfigurujete protokolu nekompatibilní řádky, můžete nějakého najít soubor protokolu v této cestě: `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv` v souboru protokolu, můžete zobrazit na řádky, které byly přeskočeny a hlavní příčinu nekompatibilita.
+Pokud nakonfigurujete toolog hello nekompatibilní řádků, můžete najít soubor protokolu hello v této cestě: `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv` v souboru protokolu hello, můžete zobrazit hello řádky, které byly přeskočeny a hello hlavní příčinu nekompatibilita hello.
 
-Původní data a odpovídající chyby jsou protokolovány v souboru. Příklad obsahu souboru protokolu je následující:
+Původní data hello a odpovídající chyba hello jsou protokolovány v souboru hello. Příklad obsahu souboru protokolu hello vypadá takto:
 ```
-data1, data2, data3, UserErrorInvalidDataValue,Column 'Prop_2' contains an invalid value 'data3'. Cannot convert 'data3' to type 'DateTime'.,
-data4, data5, data6, Violation of PRIMARY KEY constraint 'PK_tblintstrdatetimewithpk'. Cannot insert duplicate key in object 'dbo.tblintstrdatetimewithpk'. The duplicate key value is (data4).
+data1, data2, data3, UserErrorInvalidDataValue,Column 'Prop_2' contains an invalid value 'data3'. Cannot convert 'data3' tootype 'DateTime'.,
+data4, data5, data6, Violation of PRIMARY KEY constraint 'PK_tblintstrdatetimewithpk'. Cannot insert duplicate key in object 'dbo.tblintstrdatetimewithpk'. hello duplicate key value is (data4).
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o aktivitě kopírování objektu pro vytváření dat Azure, najdete v části [přesun dat pomocí aktivity kopírování](data-factory-data-movement-activities.md).
+toolearn Další informace o aktivitě kopírování Azure Data Factory najdete v části [přesun dat pomocí aktivity kopírování](data-factory-data-movement-activities.md).

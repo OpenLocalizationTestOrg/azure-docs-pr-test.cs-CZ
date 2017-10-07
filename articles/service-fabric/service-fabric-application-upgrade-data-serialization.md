@@ -14,43 +14,43 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: 6aa3ac7842df4657fca7f6b4264e1c6fe52dc0c6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1b65dfd3813423550631490640a81953864f58e3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Jak ovlivňuje serializace dat upgradu aplikace
-V [vrácení upgradu aplikace](service-fabric-application-upgrade.md), upgradu se použije pro dílčí sadu uzlů, jednu upgradovací doménu najednou. Během tohoto procesu jsou některé domény upgrade na novější verzi aplikace a jsou některé upgradu domény na starší verzi aplikace. Při zavedení nová verze aplikace musí být možné číst stará verze vaše data a starší verzi aplikace musí být možné číst novou verzi vaše data. Pokud formát dat není vpřed a zpětně kompatibilní, upgrade může selhat nebo horší, mohou být data ztrátě nebo poškození. Tento článek popisuje, co se považuje za vaše formát dat a nabízí osvědčené postupy pro zajištění, aby vaše data byla vpřed a zpětně kompatibilní.
+V [vrácení upgradu aplikace](service-fabric-application-upgrade.md), hello upgrade je použité tooa dílčí sadu uzlů, jednu upgradovací doménu najednou. Během tohoto procesu jsou některé domény upgrade na novější verzi aplikace hello a jsou některé upgradu domény na starší verzi aplikace hello. Při zavedení hello hello novou verzi vaší aplikace musí být schopný tooread hello starší verzi vaše data a hello starší verzi aplikace musí být schopný tooread hello novou verzi vaše data. Pokud formát dat hello není vpřed a zpětně kompatibilní, upgrade hello může selže nebo horší, data mohou být ke ztrátě nebo poškozený. Tento článek popisuje, co se považuje za vaše formát dat a nabízí osvědčené postupy pro zajištění, aby vaše data byla vpřed a zpětně kompatibilní.
 
 ## <a name="what-makes-up-your-data-format"></a>Co tvoří vaše formát dat?
-V Azure Service Fabric data, která je trvale uložila a replikovala pochází z třídy jazyka C#. Pro aplikace, které používají [spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md), že data jsou objekty ve slovnících spolehlivé a fronty. Pro aplikace, které používají [Reliable Actors](service-fabric-reliable-actors-introduction.md), který je základní stav objektu actor. Tyto třídy jazyka C# musí být serializovatelný k trvale uložila a replikovala. Formát dat je proto definované polí a vlastností, které jsou serializovány, a také o tom, že serializovat. Například v `IReliableDictionary<int, MyClass>` data jsou serializovaný seznam `int` a serializovaný seznam `MyClass`.
+V Azure Service Fabric hello data, která je trvale uložila a replikovala pochází z třídy jazyka C#. Pro aplikace, které používají [spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md), že data jsou hello objekty ve slovnících spolehlivé hello a fronty. Pro aplikace, které používají [Reliable Actors](service-fabric-reliable-actors-introduction.md), který je hello zálohování stavu objektu actor hello. Tyto třídy jazyka C# musí být serializovatelný toobe trvale uložila a replikovala. Proto hello formát dat je definován hello polí a vlastností, které jsou serializovány, a také o tom, že serializovat. Například v `IReliableDictionary<int, MyClass>` hello dat je serializovaný seznam `int` a serializovaný seznam `MyClass`.
 
 ### <a name="code-changes-that-result-in-a-data-format-change"></a>Kód změny, které způsobily změnu formátu dat
-Vzhledem k tomu, že formát dat je určen podle třídy jazyka C#, může způsobit změny třídy změně formátu data. Dbát musí zajistit, že postupného upgradu může zpracovat změny dat formátu. Příklady, které by mohly způsobit změny formátu dat:
+Vzhledem k tomu, že formát dat hello je určen podle třídy jazyka C#, může způsobit změny toohello třídy změně formátu data. Musí dát pozor tooensure, který může zpracovat postupného upgradu hello data formátu změnu. Příklady, které by mohly způsobit změny formátu dat:
 
 * Přidání nebo odebrání vlastnosti nebo pole
 * Přejmenování polí a vlastností
-* Změny typu polí a vlastností
-* Změna názvu třídy nebo obor názvů
+* Změna hello typy polí a vlastností
+* Změna názvu třídy hello nebo obor názvů
 
-### <a name="data-contract-as-the-default-serializer"></a>Kontrakt dat jako výchozí serializátor
-Serializátor je obecně odpovědná za čtení dat a deserializaci do aktuální verze i v případě, že data jsou v starší nebo *novější* verze. Výchozí serializátor je [serializátor kontraktu dat](https://msdn.microsoft.com/library/ms733127.aspx), který má pravidla dobře definovaný verzí. Spolehlivé kolekce povolit serializátoru, který má být přepsána, ale Reliable Actors aktuálně nepodporují. Serializátor dat hraje důležitou roli při povolování postupné upgrady. Serializátor kontraktu dat je serializátoru, který doporučujeme pro aplikace Service Fabric.
+### <a name="data-contract-as-hello-default-serializer"></a>Kontrakt dat jako výchozí serializátor hello
+Serializátor Hello je obecně odpovědná za čtení dat hello a deserializaci do aktuální verze hello, i když hello data jsou ve starší nebo *novější* verze. Hello výchozí serializátor je hello [serializátor kontraktu dat](https://msdn.microsoft.com/library/ms733127.aspx), který má pravidla dobře definovaný verzí. Spolehlivé kolekce povolit toobe serializátor hello přepsat, ale Reliable Actors aktuálně nepodporují. Serializátor dat Hello hraje důležitou roli při povolování postupné upgrady. Serializátor kontraktu dat Hello je hello serializátoru, který doporučujeme pro aplikace Service Fabric.
 
-## <a name="how-the-data-format-affects-a-rolling-upgrade"></a>Jak ovlivňuje formát dat postupného upgradu
-Během postupného upgradu, jsou dva základní scénáře, kde serializátor setkat starší nebo *novější* verzi dat:
+## <a name="how-hello-data-format-affects-a-rolling-upgrade"></a>Jak ovlivňuje formát dat hello postupného upgradu
+Během postupného upgradu, jsou dva základní scénáře, kde serializátor hello narazit na starší nebo *novější* verzi dat:
 
-1. Po uzlu upgradu a spuštění zálohování, nové serializátoru, který načte data, která byla trvalé na pevném disku předchozí verzi aplikace.
-2. Během postupného upgradu cluster bude obsahovat kombinací staré a nové verze vašeho kódu. Vzhledem k tomu, že repliky může umístěny v různých doménách upgradu a repliky odesílat data mezi sebou, staré nebo nové verze vaše data mohou být zjištěny staré nebo nové verze vaší serializátor.
+1. Po uzlu upgradu a spuštění zálohování, načte nové serializátor hello hello data, která byla trvalou toodisk hello staré verze.
+2. Během hello vrácení upgradu hello cluster bude obsahovat kombinaci hello staré a nové verze vašeho kódu. Vzhledem k tomu, že repliky může umístěny v různých doménách upgradu a repliky odesílat data tooeach jiných, hello staré nebo nové verze vaše data mohou být zjištěny hello staré nebo nové verze vaší serializátor.
 
 > [!NOTE]
-> "Nové verze" a "staré verze" Zde naleznete na verzi vašeho kódu, který běží. "Nové serializátor" odkazuje na kód serializátoru, který spouští v nové verzi vaší aplikace. "Nová data" odkazuje na serializovaných třída C# z nové verze aplikace.
+> Hello "nové verze" a "staré verze" Zde naleznete toohello verzi váš kód, který běží. Hello "nové serializátor" odkazuje toohello serializátor kód, který spouští v nové verzi hello vaší aplikace. Hello "nová data" odkazuje toohello serializovat C# – třída z hello novou verzi vaší aplikace.
 > 
 > 
 
-Dvě verze formátu kód a data musí být vpřed a zpětně kompatibilní. Pokud nejsou kompatibilní, postupného upgradu může selhat nebo data mohou být ztracena. Postupného upgradu může selhat, protože kód nebo serializátor může výjimku výjimky nebo chybu při zjistí jinou verzi. Data mohou být ztracena, pokud například byla přidána nová vlastnost ale staré serializátor zahodí se během deserializace.
+Hello dvě verze kódu a musí být ve formátu data vpřed a zpětně kompatibilní. Pokud nejsou kompatibilní, hello vrácení upgradu může selhat nebo data mohou být ztracena. vrácení upgradu Hello může selhat, protože hello kód nebo serializátor může výjimku výjimky nebo chybu při zjistí hello jinou verzi. Data mohou být ztracena, pokud například byla přidána nová vlastnost ale staré serializátor hello zahodí se během deserializace.
 
-Kontrakt dat je doporučené řešení pro zajištění, aby vaše data byla kompatibilní. Obsahuje pravidla dobře definovaný verzí pro přidání, odebrání a změna pole. Je také podpora zabývají neznámé pole, zapojování do procesu serializace a deserializace a plánování práce s dědičnosti tříd. Další informace najdete v tématu [pomocí kontrakt dat](https://msdn.microsoft.com/library/ms733127.aspx).
+Kontrakt dat je hello doporučené řešení pro zajištění, aby vaše data byla kompatibilní. Obsahuje pravidla dobře definovaný verzí pro přidání, odebrání a změna pole. Je také podpora zabývají neznámé pole, zapojování do procesu hello serializace a deserializace a plánování práce s dědičnosti tříd. Další informace najdete v tématu [pomocí kontrakt dat](https://msdn.microsoft.com/library/ms733127.aspx).
 
 ## <a name="next-steps"></a>Další kroky
 [Upgrade vaší aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md) vás provede upgrade aplikace pomocí sady Visual Studio.
@@ -59,7 +59,7 @@ Kontrakt dat je doporučené řešení pro zajištění, aby vaše data byla kom
 
 Řídí, jak vaše aplikace upgraduje pomocí [Upgrade parametry](service-fabric-application-upgrade-parameters.md).
 
-Další informace o použití pokročilých funkcí při upgradu vaší aplikace tím, že odkazuje na [Pokročilá témata](service-fabric-application-upgrade-advanced.md).
+Zjistěte, jak toouse pokročilé funkce při upgradu vaší aplikace tím, že odkazuje příliš[Pokročilá témata](service-fabric-application-upgrade-advanced.md).
 
-Řešení běžných potíží v upgradů aplikací podle kroků v části [řešení potíží s aplikací upgrady ](service-fabric-application-upgrade-troubleshooting.md).
+Řešení běžných potíží v upgradů aplikací tím, že odkazuje toohello kroky v [řešení potíží s aplikací upgrady ](service-fabric-application-upgrade-troubleshooting.md).
 

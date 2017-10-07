@@ -1,6 +1,6 @@
 ---
-title: "Bezobslužnou instalaci konektoru Proxy aplikace Azure AD | Microsoft Docs"
-description: "Popisuje, jak provést bezobslužnou instalaci konektoru Proxy aplikace Azure AD poskytnout zabezpečený vzdálený přístup k místní aplikace."
+title: aaaSilent nainstalovat konektor Proxy aplikace Azure AD | Microsoft Docs
+description: "Popisuje, jak tooperform bezobslužnou instalaci konektoru Proxy aplikace služby Azure AD tooprovide zabezpečený vzdálený přístup tooyour místní aplikace."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -15,51 +15,51 @@ ms.date: 08/10/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 9e28c89d8f64f0ae3d4150017ca544e606075c45
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ce796ff45a65ba7d5f0f63c02085bdc6af494548
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="silently-install-the-azure-ad-application-proxy-connector"></a>Tiché instalaci konektoru Proxy aplikace Azure AD
-Chcete být schopni poslat instalační skript pro více serverů systému Windows nebo Windows servery, které nemají povolené uživatelské rozhraní. Toto téma vám pomůže vytvořit skript prostředí Windows PowerShell, která umožňuje bezobslužné instalace a registrace pro Azure konektor Proxy aplikace AD.
+# <a name="silently-install-hello-azure-ad-application-proxy-connector"></a>Bezobslužná instalace hello konektoru Proxy aplikace služby Azure AD
+Chcete mít toosend toobe instalace skript toomultiple Windows servery nebo tooWindows servery, které nemají povolené uživatelské rozhraní. Toto téma vám pomůže vytvořit skript prostředí Windows PowerShell, která umožňuje bezobslužné instalace a registrace pro Azure konektor Proxy aplikace AD.
 
 Tato možnost je užitečná, když chcete:
 
-* Konektor nainstalujte na počítače bez uživatelského rozhraní vrstvy, nebo když nelze RDP k počítači.
+* Na počítače bez uživatelského rozhraní vrstvy, nebo když nelze RDP toohello počítač nainstalujte konektor hello.
 * Nainstalujte a zaregistrujte mnoho konektory najednou.
-* Integrate instalace konektoru a registraci v rámci jiného režimu.
-* Vytvořte standardní serverovou bitovou kopii, která obsahuje službu bits konektor, ale není registrovaný.
+* Integrate hello konektor instalace a registrace jako součást jiného režimu.
+* Vytvořte standardní serverovou bitovou kopii, která obsahuje hello konektor bits, ale není registrovaný.
 
-Proxy aplikací funguje tak, že instalace tenký služba systému Windows Server s názvem konektor uvnitř vaší sítě. Pro konektor Proxy aplikace pro práci se má být registrováno v adresáři služby Azure AD pomocí globálního správce a hesla. Tyto informace se normálně zadá během instalace konektoru v dialogovém okně automaticky otevírané okno. Můžete však použít prostředí Windows PowerShell vytvořit objekt přihlašovacích údajů k zadání informace o registraci. Nebo můžete vytvořit vlastní token a použít ho k zadání informace o registraci.
+Proxy aplikací funguje tak, že instalace tenký služba systému Windows Server s názvem hello konektor uvnitř vaší sítě. Toowork konektor Proxy aplikace hello má toobe zaregistrována adresáře Azure AD pomocí globálního správce a hesla. Tyto informace se normálně zadá během instalace konektoru v dialogovém okně automaticky otevírané okno. Můžete však použít toocreate prostředí Windows PowerShell přihlašovací údaje objektu tooenter informace o registraci. Nebo můžete vytvořit vlastní token a použít ho tooenter informace o registraci.
 
-## <a name="install-the-connector"></a>Instalace konektoru
-Instalace konektoru souborů MSI bez registrace konektoru následujícím způsobem:
+## <a name="install-hello-connector"></a>Instalace konektoru hello
+Instalace konektoru hello souborů MSI bez registrace hello konektor následujícím způsobem:
 
 1. Otevřete příkazový řádek.
-2. Spusťte následující příkaz, ve kterém /q znamená tichá instalace – instalace nevyzve přijmout licenční smlouvu s koncovým uživatelem.
+2. Spusťte následující příkaz, ve které hello /q znamená tichá instalace hello – hello instalace nevyzve tooaccept hello licenční smlouva s koncovým uživatelem.
    
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
-## <a name="register-the-connector-with-azure-ad"></a>Registrace konektoru s Azure AD
-Existují dvě metody, které můžete použít k registraci konektoru:
+## <a name="register-hello-connector-with-azure-ad"></a>Registrace konektoru hello s Azure AD
+Můžete použít konektor hello tooregister dvěma způsoby:
 
-* Registrace konektoru pomocí objekt pověření prostředí Windows PowerShell
-* Registrace konektoru pomocí token vytvořený v režimu offline
+* Zaregistrovat hello connector pomocí objekt pověření prostředí Windows PowerShell
+* Zaregistrovat hello connector pomocí token vytvořený v režimu offline
 
-### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Registrace konektoru pomocí objekt pověření prostředí Windows PowerShell
-1. Vytvořte objekt pověření prostředí PowerShell systému Windows tak, že spustíte tento příkaz. Nahraďte  *\<uživatelské jméno\>*  a  *\<heslo\>*  pomocí uživatelského jména a hesla pro váš adresář:
+### <a name="register-hello-connector-using-a-windows-powershell-credential-object"></a>Zaregistrovat hello connector pomocí objekt pověření prostředí Windows PowerShell
+1. Vytvořte objekt pověření prostředí PowerShell systému Windows hello spuštěním tohoto příkazu. Nahraďte  *\<uživatelské jméno\>*  a  *\<heslo\>*  s hello uživatelské jméno a heslo pro svůj adresář:
    
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
-2. Přejděte na **konektoru Proxy C:\Program Files\Microsoft AAD aplikace** a spusťte skript prostředí PowerShell pomocí přihlašovacích údajů objektu jste vytvořili. Nahraďte *$cred* s názvem PowerShell přihlašovací údaje objektu jste vytvořili:
+2. Přejděte příliš**konektoru Proxy C:\Program Files\Microsoft AAD aplikace** a spusťte skript hello pomocí prostředí PowerShell hello přihlašovací údaje objektu jste vytvořili. Nahraďte *$cred* s názvem hello hello prostředí PowerShell přihlašovací údaje objektu jste vytvořili:
    
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred
 
-### <a name="register-the-connector-using-a-token-created-offline"></a>Registrace konektoru pomocí token vytvořený v režimu offline
-1. Vytvořte token offline pomocí třídy kontextu AuthenticationContext pomocí hodnot ve fragmentu kódu:
+### <a name="register-hello-connector-using-a-token-created-offline"></a>Zaregistrovat hello connector pomocí token vytvořený v režimu offline
+1. Vytvořte token offline pomocí třídy kontextu AuthenticationContext hello pomocí hodnoty hello ve fragmentu kódu hello:
 
         using System;
         using System.Diagnostics;
@@ -69,22 +69,22 @@ Existují dvě metody, které můžete použít k registraci konektoru:
         {
         #region constants
         /// <summary>
-        /// The AAD authentication endpoint uri
+        /// hello AAD authentication endpoint uri
         /// </summary>
         static readonly Uri AadAuthenticationEndpoint = new Uri("https://login.microsoftonline.com/common/oauth2/token?api-version=1.0");
 
         /// <summary>
-        /// The application ID of the connector in AAD
+        /// hello application ID of hello connector in AAD
         /// </summary>
         static readonly string ConnectorAppId = "55747057-9b5d-4bd4-b387-abf52a8bd489";
 
         /// <summary>
-        /// The reply address of the connector application in AAD
+        /// hello reply address of hello connector application in AAD
         /// </summary>
         static readonly Uri ConnectorRedirectAddress = new Uri("urn:ietf:wg:oauth:2.0:oob");
 
         /// <summary>
-        /// The AppIdUri of the registration service in AAD
+        /// hello AppIdUri of hello registration service in AAD
         /// </summary>
         static readonly Uri RegistrationServiceAppIdUri = new Uri("https://proxy.cloudwebappproxy.net/registerapp");
 
@@ -115,11 +115,11 @@ Existují dvě metody, které můžete použít k registraci konektoru:
         }
 
 
-2. Jakmile máte token, vytvořte SecureString pomocí tokenu:
+2. Jakmile máte hello token, vytvořte SecureString pomocí tokenu hello:
 
    `$SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force`
 
-3. Spusťte následující příkaz prostředí Windows PowerShell, nahraďte \<klienta GUID\> s ID vašeho adresáře:
+3. Hello spusťte následující příkaz prostředí Windows PowerShell, nahraďte \<klienta GUID\> s ID vašeho adresáře:
 
    `RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID>`
 

@@ -1,5 +1,5 @@
 ---
-title: "Sledování vlastní operace pomocí .NET SDK služby Azure Application Insights | Microsoft Docs"
+title: "vlastní operace aaaTrack pomocí .NET SDK služby Azure Application Insights | Microsoft Docs"
 description: "Sledování vlastní operace pomocí .NET SDK služby Azure Application Insights"
 services: application-insights
 documentationcenter: .net
@@ -12,19 +12,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/31/2017
 ms.author: sergkanz
-ms.openlocfilehash: b31d38fe2f7060597956a1ee9c66f43ce39d7240
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: fe338d3e2b17a3dae43c96c60a19f57b3f46f0a5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Sledování vlastní operace s Application Insights .NET SDK
 
-Azure sadách Application Insights SDK automaticky sledovat příchozí požadavky HTTP a volání závislých služeb, jako je například požadavků HTTP a dotazy SQL. Sledování a korelace mezi požadavky a závislosti a získáte přehled o rychlost reakce a spolehlivost celou aplikaci přes všechny mikroslužeb, které spojují této aplikace. 
+Azure sadách Application Insights SDK automaticky sledovat HTTP příchozí požadavky a volá toodependent služby, jako je například požadavků HTTP a dotazy SQL. Sledování a korelace mezi požadavky a závislosti a získáte přehled o rychlost reakce a spolehlivost hello celou aplikaci přes všechny mikroslužeb, které spojují této aplikace. 
 
 Existuje třída schémat aplikace, které nepodporují se obecně. Správné sledování tyto vzory vyžaduje ruční kód instrumentace. Tento článek se zabývá několik vzorů, které můžou vyžadovat ruční instrumentace, jako je například vlastní fronty zpracování a spuštění úlohy dlouho běžící na pozadí.
 
-Tento dokument obsahuje pokyny o tom, jak sledovat vlastní operace s Application Insights SDK. Tato dokumentace je důležité pro:
+Tento dokument obsahuje pokyny k jak tootrack vlastní operace s hello Application Insights SDK. Tato dokumentace je důležité pro:
 
 - Application Insights pro rozhraní .NET (také označované jako základní sady SDK) verze 2.4 +.
 - Application Insights pro webové aplikace (používající technologii ASP.NET) verze 2.4 +.
@@ -33,19 +33,19 @@ Tento dokument obsahuje pokyny o tom, jak sledovat vlastní operace s Applicatio
 ## <a name="overview"></a>Přehled
 Operace je logické část práce spustit aplikace. Má název, čas spuštění, doba trvání, výsledek a kontext spuštění jako uživatelské jméno, vlastnosti a výsledek. Pokud byla zahájena operace A operace B, pak operaci B je nastaven jako nadřazený pro A. Operace může mít jen jednu nadřazenou položku, ale může mít mnoho podřízené operací. Další informace o operacích a telemetrie korelace najdete v tématu [Azure Application Insights telemetrie korelace](application-insights-correlation.md).
 
-V Application Insights .NET SDK, je popsán operaci abstraktní třída [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/Extensibility/Implementation/OperationTelemetry.cs) a jeho následníky [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/DataContracts/RequestTelemetry.cs) a [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/DataContracts/DependencyTelemetry.cs).
+V hello Application Insights .NET SDK, je popsán hello operaci hello abstraktní třída [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/Extensibility/Implementation/OperationTelemetry.cs) a jeho následníky [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/DataContracts/RequestTelemetry.cs) a [DependencyTelemetry ](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/DataContracts/DependencyTelemetry.cs).
 
 ## <a name="incoming-operations-tracking"></a>Příchozí operace sledování 
-Webové služby Application Insights SDK automaticky shromažďuje požadavky protokolu HTTP pro aplikace ASP.NET, které běží v kanálu služby IIS a všechny aplikace ASP.NET Core. Nejsou podporované komunity řešení pro jiné platformy a rozhraní. Ale pokud aplikace nepodporují žádné řešení standardní nebo podporována komunity, můžete instrumentovat ji ručně.
+Hello webové služby Application Insights SDK automaticky shromažďuje požadavky protokolu HTTP pro aplikace ASP.NET, které běží v kanálu služby IIS a všechny aplikace ASP.NET Core. Nejsou podporované komunity řešení pro jiné platformy a rozhraní. Ale pokud aplikace hello nepodporuje hello standard nebo podporovaná komunitou řešení, můžete instrumentovat ji ručně.
 
-Další příklad, který vyžaduje vlastní sledování je pracovní proces, který přijme položky z fronty. Pro některé fronty volání přidání zprávy do této fronty sledován jako závislost. Základní operace, která popisuje zpracování zprávy se však nejsou shromažďovány automaticky.
+Další příklad, který vyžaduje vlastní sledování je hello pracovního procesu, která přijímá položky z fronty hello. Pro některé fronty hello volání tooadd zprávu, kterou toothis fronty je sledovat jako závislost. Hello základní operace, která popisuje zpracování zprávy se však nejsou shromažďovány automaticky.
 
 Podívejme se, jak jsme můžete sledovat tyto operace.
 
-Na vysoké úrovni, úloha je vytvoření `RequestTelemetry` a nastavte známých vlastností. Po dokončení operace je sledovat telemetrii. Následující příklad ukazuje tuto úlohu.
+Na vysoké úrovni, úloha hello je toocreate `RequestTelemetry` a nastavte známých vlastností. Po dokončení operace hello je sledovat hello telemetrie. Hello následující příklad ukazuje tuto úlohu.
 
 ### <a name="http-request-in-owin-self-hosted-app"></a>Požadavek HTTP ve vlastním hostováním aplikace Owin
-V tomto příkladu jsme podle [protokolu HTTP pro korelačního](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Jste měli očekávat hlavičky, které jsou popsány existuje.
+V tomto příkladu jsme podle hello [protokolu HTTP pro korelačního](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Byste měli očekávat tooreceive hlavičky, které jsou popsány existuje.
 
 ``` C#
 public class ApplicationInsightsMiddleware : OwinMiddleware
@@ -62,11 +62,11 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
             Name = $"{context.Request.Method} {context.Request.Uri.GetLeftPart(UriPartial.Path)}"
         };
 
-        // If there is a Request-Id received from the upstream service, set the telemetry context accordingly.
+        // If there is a Request-Id received from hello upstream service, set hello telemetry context accordingly.
         if (context.Request.Headers.ContainsKey("Request-Id"))
         {
             var requestId = context.Request.Headers.Get("Request-Id");
-            // Get the operation ID from the Request-Id (if you follow the HTTP Protocol for Correlation).
+            // Get hello operation ID from hello Request-Id (if you follow hello HTTP Protocol for Correlation).
             requestTelemetry.Context.Operation.Id = GetOperationId(requestId);
             requestTelemetry.Context.Operation.ParentId = requestId;
         }
@@ -76,7 +76,7 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
         // and initializes start time and duration on telemetry items.
         var operation = telemetryClient.StartOperation(requestTelemetry);
 
-        // Process the request.
+        // Process hello request.
         try
         {
             await Next.Invoke(context);
@@ -100,14 +100,14 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
                 requestTelemetry.Success = false;
             }
 
-            // Now it's time to stop the operation (and track telemetry).
+            // Now it's time toostop hello operation (and track telemetry).
             telemetryClient.StopOperation(operation);
         }
     }
     
     public static string GetOperationId(string id)
     {
-        // Returns the root ID from the '|' to the first '.' if any.
+        // Returns hello root ID from hello '|' toohello first '.' if any.
         int rootEnd = id.IndexOf('.');
         if (rootEnd < 0)
             rootEnd = id.Length;
@@ -118,31 +118,31 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 }
 ```
 
-Protokol HTTP pro korelačního také deklaruje `Correlation-Context` záhlaví. Nicméně je vynechaný sem pro jednoduchost.
+Hello protokolu HTTP pro korelačního také deklaruje hello `Correlation-Context` záhlaví. Nicméně je vynechaný sem pro jednoduchost.
 
 ## <a name="queue-instrumentation"></a>Fronty instrumentace
-Pro komunikaci pomocí protokolu HTTP vytvořili jsme protokol předat korelace podrobnosti. S protokoly některé fronty můžete předat další metadata, společně s zprávu a s ostatními, které není možné.
+Pro komunikaci pomocí protokolu HTTP vytvořili jsme protokol toopass korelace podrobnosti. S protokoly některé fronty můžete předat další metadata, společně s uvítací zprávu a s ostatními, které není možné.
 
 ### <a name="service-bus-queue"></a>Fronty Service Bus
-S Azure [fronty Service Bus](../service-bus-messaging/index.md), můžete předat kontejneru objektů a dat společně s zprávy. Můžeme použít k předání ID korelace.
+S hello Azure [fronty Service Bus](../service-bus-messaging/index.md), můžete předat kontejneru objektů a dat společně s uvítací zprávu. Použití ID toopass hello korelace.
 
-Fronty Service Bus používá protokoly založených na protokolu TCP. Application Insights nesleduje automaticky operace fronty, takže jsme sledovat ručně. Operace dequeue je rozhraní API nabízené style a nemohli jsme ji sledovat.
+fronty Service Bus Hello používá protokoly založených na protokolu TCP. Application Insights nesleduje automaticky operace fronty, takže jsme sledovat ručně. dequeue – Hello operace je rozhraní API nabízené style a máme nelze tootrack ho.
 
 #### <a name="enqueue"></a>Zařazování
 
 ```C#
 public async Task Enqueue(string payload)
 {
-    // StartOperation is a helper method that initializes the telemetry item
+    // StartOperation is a helper method that initializes hello telemetry item
     // and allows correlation of this operation with its parent and children.
     var operation = telemetryClient.StartOperation<DependencyTelemetry>("enqueue " + queueName);
     operation.Telemetry.Type = "Queue";
     operation.Telemetry.Data = "Enqueue " + queueName;
 
     var message = new BrokeredMessage(payload);
-    // Service Bus queue allows the property bag to pass along with the message.
-    // We will use them to pass our correlation identifiers (and other context)
-    // to the consumer.
+    // Service Bus queue allows hello property bag toopass along with hello message.
+    // We will use them toopass our correlation identifiers (and other context)
+    // toohello consumer.
     message.Properties.Add("ParentId", operation.Telemetry.Id);
     message.Properties.Add("RootId", operation.Telemetry.Context.Operation.Id);
 
@@ -171,13 +171,13 @@ public async Task Enqueue(string payload)
 ```C#
 public async Task Process(BrokeredMessage message)
 {
-    // After the message is taken from the queue, create RequestTelemetry to track its processing.
-    // It might also make sense to get the name from the message.
+    // After hello message is taken from hello queue, create RequestTelemetry tootrack its processing.
+    // It might also make sense tooget hello name from hello message.
     RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "Dequeue " + queueName };
 
     var rootId = message.Properties["RootId"].ToString();
     var parentId = message.Properties["ParentId"].ToString();
-    // Get the operation ID from the Request-Id (if you follow the HTTP Protocol for Correlation).
+    // Get hello operation ID from hello Request-Id (if you follow hello HTTP Protocol for Correlation).
     requestTelemetry.Context.Operation.Id = rootId;
     requestTelemetry.Context.Operation.ParentId = parentId;
 
@@ -201,35 +201,35 @@ public async Task Process(BrokeredMessage message)
 ```
 
 ### <a name="azure-storage-queue"></a>Fronty Azure Storage
-Následující příklad ukazuje, jak sledovat [fronty Azure Storage](../storage/queues/storage-dotnet-how-to-use-queues.md) operace a correlate telemetrie mezi Autor, příjemce a Azure Storage. 
+Následující příklad ukazuje, jak Hello tootrack hello [fronty Azure Storage](../storage/queues/storage-dotnet-how-to-use-queues.md) operace a correlate telemetrie mezi hello producent, hello příjemce a Azure Storage. 
 
-Fronty úložiště používá rozhraní API HTTP. Všechna volání do fronty jsou sledovány kolekce Application Insights závislostí pro požadavky HTTP.
-Zajistěte, aby byla `Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer` v `applicationInsights.config`. Pokud ji nemáte, přidejte ho programově, jak je popsáno v [filtrování a předběžného zpracování v Azure Application Insights SDK](app-insights-api-filtering-sampling.md).
+fronty úložiště Hello používá rozhraní API HTTP. Všechny fronty toohello volání jsou sledovány objektem hello Application Insights závislostí kolekce pro požadavky HTTP.
+Zajistěte, aby byla `Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer` v `applicationInsights.config`. Pokud ji nemáte, přidejte ho programově, jak je popsáno v [filtrování a předzpracování v hello Azure Application Insights SDK](app-insights-api-filtering-sampling.md).
 
 Pokud nakonfigurujete Application Insights ručně, ujistěte se, vytvoření a inicializace `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule` podobně jako:
  
 ``` C#
 DependencyTrackingTelemetryModule module = new DependencyTrackingTelemetryModule();
 
-// You can prevent correlation header injection to some domains by adding it to the excluded list.
-// Make sure you add a Storage endpoint. Otherwise, you might experience request signature validation issues on the Storage service side.
+// You can prevent correlation header injection toosome domains by adding it toohello excluded list.
+// Make sure you add a Storage endpoint. Otherwise, you might experience request signature validation issues on hello Storage service side.
 module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.windows.net");
 module.Initialize(TelemetryConfiguration.Active);
 
-// Do not forget to dispose of the module during application shutdown.
+// Do not forget toodispose of hello module during application shutdown.
 ```
 
-Můžete také chtít korelovat Application Insights ID operace s ID úložiště požadavku. Informace o tom, jak nastavit a získat požadavek klienta úložiště a ID požadavku serveru najdete v tématu [monitorování, Diagnostika a řešení potíží s Azure Storage](../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing).
+Můžete také chtít toocorrelate hello Application Insights ID operace s ID hello úložiště požadavku. Informace o tom, jak tooset a získání úložiště požadavků klienta a ID žádosti serveru najdete v tématu [monitorování, Diagnostika a řešení potíží s Azure Storage](../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing).
 
 #### <a name="enqueue"></a>Zařazování
-Protože toto rozhraní API HTTP podporují fronty úložiště, všechny operace s fronty sledovány automaticky pomocí Application Insights. V mnoha případech tato instrumentace by vám měly dostatečně. Ale ke korelaci trasování na straně příjemce s producent trasování, je nutné předat některé korelace kontextu podobně do jak jsme se v protokolu HTTP pro korelačního. 
+Fronty úložiště nepodporují hello rozhraní API HTTP, všechny operace s frontou hello sledovány automaticky pomocí Application Insights. V mnoha případech tato instrumentace by vám měly dostatečně. Ale toocorrelate trasování na straně příjemce hello s producent trasování, je nutné předat některé korelace kontextu podobně toohow jsme to provést hello protokolu HTTP pro korelačního. 
 
-V tomto příkladu jsme sledovat nepovinný `Enqueue` operaci. Můžete:
+V tomto příkladu jsme sledovat hello volitelné `Enqueue` operaci. Můžete:
 
- - **Korelovat opakovaných pokusů (pokud existuje)**: budou všechny mít jeden společný nadřazených, který má `Enqueue` operaci. Jinak se sledují jako podřízené objekty příchozího požadavku. Pokud se několik logické požadavků do fronty, může být obtížné vyhledat, které volání výsledkem opakování.
+ - **Korelovat opakovaných pokusů (pokud existuje)**: všechny mají jeden společným nadřazeným prvkem, který je hello `Enqueue` operaci. Jinak se sledují jako podřízené objekty hello příchozího požadavku. Pokud existují více logických požadavky toohello fronty, může být obtížné toofind výsledkem které volání opakování.
  - **Korelovat protokoly úložiště (Pokud je potřeba)**: jste korelační s telemetrie Application Insights.
 
-`Enqueue` Operaci je podřízeným nadřazené operace (například příchozí žádosti HTTP). Závislost volání protokolu HTTP je podřízeným `Enqueue` operace a pod podřízená příchozích požadavků:
+Hello `Enqueue` operaci je podřízeným hello nadřazené operace (například příchozí žádosti HTTP). volání závislostí Hello HTTP je podřízeným hello hello `Enqueue` operace a hello pod podřízená hello příchozích požadavků:
 
 ```C#
 public async Task Enqueue(CloudQueue queue, string message)
@@ -239,8 +239,8 @@ public async Task Enqueue(CloudQueue queue, string message)
     operation.Telemetry.Data = "Enqueue " + queue.Name;
 
     // MessagePayload represents your custom message and also serializes correlation identifiers into payload.
-    // For example, if you choose to pass payload serialized to JSON, it might look like
-    // {'RootId' : 'some-id', 'ParentId' : '|some-id.1.2.3.', 'message' : 'your message to process'}
+    // For example, if you choose toopass payload serialized tooJSON, it might look like
+    // {'RootId' : 'some-id', 'ParentId' : '|some-id.1.2.3.', 'message' : 'your message tooprocess'}
     var jsonPayload = JsonConvert.SerializeObject(new MessagePayload
     {
         RootId = operation.Telemetry.Context.Operation.Id,
@@ -250,7 +250,7 @@ public async Task Enqueue(CloudQueue queue, string message)
     
     CloudQueueMessage queueMessage = new CloudQueueMessage(jsonPayload);
 
-    // Add operation.Telemetry.Id to the OperationContext to correlate Storage logs and Application Insights telemetry.
+    // Add operation.Telemetry.Id toohello OperationContext toocorrelate Storage logs and Application Insights telemetry.
     OperationContext context = new OperationContext { ClientRequestID = operation.Telemetry.Id};
 
     try
@@ -272,18 +272,18 @@ public async Task Enqueue(CloudQueue queue, string message)
 }  
 ```
 
-Ke snížení objemu telemetrie aplikace sestavy nebo pokud nechcete, aby ke sledování `Enqueue` operace z jiných důvodů, použijte `Activity` přímo rozhraní API:
+sestavy aplikace tooreduce hello množství telemetrie nebo pokud nechcete, aby tootrack hello `Enqueue` operace z jiných důvodů, použijte hello `Activity` přímo rozhraní API:
 
-- Vytvořit (a spuštění) novou `Activity` místo spuštění operace Application Insights. Provedete *není* je třeba přiřadit žádné vlastnosti v něm kromě název operace.
-- Serializovat `yourActivity.Id` do datové části zprávy místo `operation.Telemetry.Id`. Můžete také použít `Activity.Current.Id`.
+- Vytvořit (a spuštění) novou `Activity` místo spuštění operace hello Application Insights. Provedete *není* potřebovat tooassign žádné vlastnosti v něm kromě název operace hello.
+- Serializovat `yourActivity.Id` do datovou část zprávy hello místo `operation.Telemetry.Id`. Můžete také použít `Activity.Current.Id`.
 
 
 #### <a name="dequeue"></a>Dequeue –
-Podobně jako `Enqueue`, vlastní požadavek HTTP do fronty úložiště je automaticky sledován pomocí Application Insights. Ale `Enqueue` operaci pravděpodobně dojde v kontextu nadřazené, jako je například kontextu příchozí žádosti. Sadách Application Insights SDK automaticky korelovat takovou operaci (a jeho součástí HTTP) s nadřazené žádosti a další telemetrií hlášené ve stejném oboru.
+Podobně příliš`Enqueue`, frontu úložiště služby skutečné HTTP žádost toohello automaticky sledován pomocí Application Insights. Ale hello `Enqueue` operaci pravděpodobně dojde v kontextu nadřazené hello, jako je například kontextu příchozí žádosti. Sadách Application Insights SDK automaticky korelovat takovou operaci (a jeho součástí HTTP) s nadřazenou žádostí hello a další telemetrií uvedený v hello stejný obor.
 
-`Dequeue` Operace je složité. Application Insights SDK automaticky sleduje požadavky HTTP. Ale neví kontext korelace, dokud je analyzován zprávu. Není možné ke korelaci požadavku HTTP k získání zprávy se zbytkem telemetrii.
+Hello `Dequeue` operace je složité. Hello Application Insights SDK automaticky sleduje požadavky HTTP. Ale neví hello korelace kontextu, dokud je analyzována uvítací zprávu. Není možné toocorrelate hello HTTP žádost tooget uvítací zprávu se zbytkem hello hello telemetrie.
 
-V mnoha případech může být užitečné ke korelaci s také další trasování požadavku HTTP do fronty. Následující příklad ukazuje, jak to udělat:
+V mnoha případech může být užitečné toocorrelate toohello fronty požadavků HTTP hello se také další trasování. Hello následující příklad ukazuje, jak toodo ho:
 
 ``` C#
 public async Task<MessagePayload> Dequeue(CloudQueue queue)
@@ -304,13 +304,13 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
         {
             var payload = JsonConvert.DeserializeObject<MessagePayload>(message.AsString);
 
-            // If there is a message, we want to correlate the Dequeue operation with processing.
-            // However, we will only know what correlation ID to use after we get it from the message,
-            // so we will report telemetry after we know the IDs.
+            // If there is a message, we want toocorrelate hello Dequeue operation with processing.
+            // However, we will only know what correlation ID toouse after we get it from hello message,
+            // so we will report telemetry after we know hello IDs.
             telemetry.Context.Operation.Id = payload.RootId;
             telemetry.Context.Operation.ParentId = payload.ParentId;
 
-            // Delete the message.
+            // Delete hello message.
             return payload;
         }
     }
@@ -334,14 +334,14 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 
 #### <a name="process"></a>Proces
 
-V následujícím příkladu jsme trasování příchozí zprávy způsobem podobně pro jak jsme trasování příchozí žádosti HTTP:
+V následujícím příkladu hello, jsme příchozí zprávu trasování způsobem podobně toohow jsme trasování HTTP příchozí žádosti:
 
 ```C#
 public async Task Process(MessagePayload message)
 {
-    // After the message is dequeued from the queue, create RequestTelemetry to track its processing.
+    // After hello message is dequeued from hello queue, create RequestTelemetry tootrack its processing.
     RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "Dequeue " + queueName };
-    // It might also make sense to get the name from the message.
+    // It might also make sense tooget hello name from hello message.
     requestTelemetry.Context.Operation.Id = message.RootId;
     requestTelemetry.Context.Operation.ParentId = message.ParentId;
 
@@ -366,22 +366,22 @@ public async Task Process(MessagePayload message)
 
 Podobně můžete instrumentovány jiné operace fronty. Funkce Náhled operace by měla instrumentována podobným způsobem jako operace dequeue. Instrumentace operace fronty správy není nezbytné. Application Insights sleduje operací, jako je například HTTP a ve většině případů je dost.
 
-Když jste instrumentace odstranění zprávy, nezapomeňte že nastavit operaci identifikátory (korelace). Alternativně můžete použít `Activity` rozhraní API. Pak nemusíte na položky telemetrie nastavit identifikátory operaci, protože Application Insights provede za vás:
+Pokud jste instrumentace odstranění zprávy, ujistěte se, že nastavíte hello operaci identifikátory (korelace). Alternativně můžete použít hello `Activity` rozhraní API. Protože Application Insights provede za vás pak není třeba identifikátory operace tooset na hello telemetrie položky:
 
-- Vytvořte novou `Activity` po vám položky z fronty.
-- Použití `Activity.SetParentId(message.ParentId)` ke korelaci protokolů příjemce a výrobce.
-- Spuštění `Activity`.
-- Sledování dequeue – zpracovat a operace odstranění pomocí `Start/StopOperation` pomocné rutiny. To proveďte z stejného asynchronní řízení toku (kontext spuštění). Tímto způsobem že jste korelační správně.
-- Zastavit `Activity`.
+- Vytvořte novou `Activity` po vám položky z fronty hello.
+- Použití `Activity.SetParentId(message.ParentId)` toocorrelate příjemce a producent protokoly.
+- Spustit hello `Activity`.
+- Sledování dequeue – zpracovat a operace odstranění pomocí `Start/StopOperation` pomocné rutiny. Provést z hello stejné asynchronní řízení toku (kontext spuštění). Tímto způsobem že jste korelační správně.
+- Zastavení hello `Activity`.
 - Použití `Start/StopOperation`, nebo volejte `Track` telemetrie ručně.
 
 ### <a name="batch-processing"></a>Dávkové zpracování
-Některé fronty můžete dequeue – více zpráv s jeden požadavek. Zpracování takové zprávy je pravděpodobně z důvodu nezávislé a patří do různých logických operací. V takovém případě není možné ke korelaci `Dequeue` na konkrétní zprávu zpracování operace.
+Některé fronty můžete dequeue – více zpráv s jeden požadavek. Zpracování takové zprávy je pravděpodobně z důvodu nezávislé a patří toohello různých logických operací. V takovém případě není možné toocorrelate hello `Dequeue` zpracování zprávy tooparticular operaci.
 
-Každá zpráva, měla by být zpracována v jeho vlastní asynchronní řízení toku. Další informace najdete v tématu [sledování závislosti odchozí](#outgoing-dependencies-tracking) části.
+Každá zpráva, měla by být zpracována v jeho vlastní asynchronní řízení toku. Další informace najdete v tématu hello [sledování závislosti odchozí](#outgoing-dependencies-tracking) části.
 
 ## <a name="long-running-background-tasks"></a>Dlouho běžící úlohy na pozadí
-Některé aplikace spusťte dlouhotrvající operace, které mohou být způsobeny požadavků uživatele. Z pohledu trasování nebo instrumentace se neliší od instrumentace požadavku nebo závislost: 
+Některé aplikace spusťte dlouhotrvající operace, které mohou být způsobeny požadavků uživatele. Z hlediska hello trasování nebo instrumentace se neliší od instrumentace požadavku nebo závislost: 
 
 ``` C#
 async Task BackgroundTask()
@@ -393,7 +393,7 @@ async Task BackgroundTask()
         int progress = 0;
         while (progress < 100)
         {
-            // Process the task.
+            // Process hello task.
             telemetryClient.TrackTrace($"done {progress++}%");
         }
         // Update status code and success as appropriate.
@@ -411,24 +411,24 @@ async Task BackgroundTask()
 }
 ```
 
-V tomto příkladu používáme `telemetryClient.StartOperation` k vytvoření `RequestTelemetry` a vyplnění kontext korelace. Řekněme, že máte nadřazené operace, který byl vytvořen příchozích požadavků, které naplánované operace. Tak dlouho, dokud `BackgroundTask` spustí ve stejném asynchronní řízení toku jako příchozí žádosti, je vztažen v této operaci nadřazené. `BackgroundTask`a všechny vnořené telemetrie položky se automaticky korelační s požadavkem, který způsobuje její neočekávané, i po ukončení požadavku.
+V tomto příkladu používáme `telemetryClient.StartOperation` toocreate `RequestTelemetry` a výplně hello korelace kontextu. Řekněme, že máte nadřazené operace, který byl vytvořen příchozích požadavků, které naplánovanou operaci hello. Tak dlouho, dokud `BackgroundTask` spustí v hello stejného asynchronní řízení toku jako příchozí žádosti, je vztažen v této operaci nadřazené. `BackgroundTask`a všechny vnořené telemetrie položky se automaticky korelační s hello požadavek, který způsobil, i po končí hello požadavku.
 
-Při spuštění úlohy ze vlákně na pozadí, který nemá všechny operace (`Activity`) přidružený `BackgroundTask` nemá některé z nadřazených. Ale ho můžete vnořené operace. Všechny položky telemetrie nahlásila úlohy jsou korelována `RequestTelemetry` vytvořené v `BackgroundTask`.
+Při spuštění úlohy hello z vlákna na pozadí hello, který nemá všechny operace (`Activity`) přidružený `BackgroundTask` nemá některé z nadřazených. Ale ho můžete vnořené operace. Všechny položky telemetrie nahlásila hello úloh jsou korelační toohello `RequestTelemetry` vytvořené v `BackgroundTask`.
 
 ## <a name="outgoing-dependencies-tracking"></a>Odchozí závislosti sledování
 Můžete sledovat vlastní typ závislosti nebo operace, který není podporován nástrojem Application Insights.
 
-`Enqueue` Metoda v Service Bus fronty nebo fronty úložiště může sloužit jako příklady takových vlastní sledování.
+Hello `Enqueue` metoda fronty Service Bus hello nebo fronty úložiště hello může sloužit jako příklady takových vlastní sledování.
 
-Je obecný přístup k vlastní závislost sledování:
+Hello obecný přístup k vlastní závislost sledování je:
 
-- Volání `TelemetryClient.StartOperation` metoda (rozšíření), který vyplní celé `DependencyTelemetry` vlastnosti, které jsou potřeba ke korelaci a některé další vlastnosti (čas spuštění razítka, doba trvání).
-- Nastavit další vlastní vlastnosti, na `DependencyTelemetry`, třeba název a další kontext, je nutné.
+- Volání hello `TelemetryClient.StartOperation` metoda (rozšíření), který vyplní celé hello `DependencyTelemetry` vlastnosti, které jsou potřeba ke korelaci a některé další vlastnosti (čas spuštění razítka, doba trvání).
+- Nastavit další vlastnosti, vlastní na hello `DependencyTelemetry`, jako jsou například název hello a další kontext, budete potřebovat.
 - Ujistěte se, volání a počkejte na její závislosti.
-- Zastavte operaci s `StopOperation` po jeho dokončení.
+- Zastavte operaci hello s `StopOperation` po jeho dokončení.
 - Zpracování výjimek.
 
-`StopOperation`zastaví pouze operace, která byla spuštěna. Pokud aktuální běžící operace neodpovídá ten, který chcete zastavit, `StopOperation` se nic nestane. Tato situace může dojít, pokud spustíte více operací paralelně ve stejném kontextu spuštění:
+`StopOperation`pouze zastaví hello operace, která byla spuštěna. Pokud aktuální běžící operace hello neodpovídá hello jeden chcete toostop, `StopOperation` se nic nestane. Tato situace může dojít, pokud spustíte více operací paralelně v hello stejný kontext spuštění:
 
 ```C#
 var firstOperation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");
@@ -440,7 +440,7 @@ var secondTask = RunMyTaskAsync();
 
 await firstTask;
 
-// This will do nothing and will not report telemetry for the first operation
+// This will do nothing and will not report telemetry for hello first operation
 // as currently secondOperation is active.
 telemetryClient.StopOperation(firstOperation); 
 
@@ -470,8 +470,8 @@ public async Task RunMyTaskAsync()
 
 ## <a name="next-steps"></a>Další kroky
 
-- Seznámíte se základy [telemetrie korelace](application-insights-correlation.md) ve službě Application Insights.
-- Najdete v článku [datový model](application-insights-data-model.md) Application Insights typy a data modelu.
-- Sestavy vlastní [události a metriky](app-insights-api-custom-events-metrics.md) Application insights.
+- Další hello Základy [telemetrie korelace](application-insights-correlation.md) ve službě Application Insights.
+- V tématu hello [datový model](application-insights-data-model.md) Application Insights typy a data modelu.
+- Sestavy vlastní [události a metriky](app-insights-api-custom-events-metrics.md) tooApplication statistiky.
 - Podívejte se na standardní [konfigurace](app-insights-configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) pro kolekci vlastností kontextu.
-- Zkontrolujte [System.Diagnostics.Activity uživatelská příručka](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) zobrazíte, jak jsme korelovat telemetrii.
+- Zkontrolujte hello [System.Diagnostics.Activity uživatelská příručka](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) toosee jak jsme korelovat telemetrii.

@@ -1,6 +1,6 @@
 ---
-title: "Skript prostředí PowerShell pro nasazení clusteru Windows HPC | Microsoft Docs"
-description: "Spusťte skript prostředí PowerShell pro nasazení clusteru Windows HPC Pack 2012 R2 ve virtuálních počítačích Azure"
+title: cluster Windows HPC toodeploy skriptu aaaPowerShell | Microsoft Docs
+description: "Spustit cluster Windows HPC Pack 2012 R2 toodeploy skript prostředí PowerShell ve virtuálních počítačích Azure"
 services: virtual-machines-windows
 documentationcenter: 
 author: dlepow
@@ -15,26 +15,26 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: 85b125ab19671b61d2541af6378c95feb88bf952
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 10ce1e9bc4e98954b955549bd72aaaf6106c69fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-windows-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>Vytvoření Windows vysoce výkonné výpočty (HPC) clusteru pomocí skriptu pro nasazení HPC Pack IaaS
-Spusťte nasazení HPC Pack IaaS skript Powershellu pro nasazení dokončení clusteru HPC Pack 2012 R2 pro úlohy Windows ve virtuálních počítačích Azure. Cluster se skládá z služby Active Directory připojené k hlavnímu uzlu systémem Windows Server a Microsoft HPC Pack a dalších Windows výpočetní prostředky, které zadáte. Pokud chcete nasazení clusteru HPC Pack v Azure pro Linux zatížení, přečtěte si téma [vytvořit cluster Linux HPC pomocí skriptu pro nasazení HPC Pack IaaS](../../linux/classic/hpcpack-cluster-powershell-script.md). Šablonu Azure Resource Manager můžete také použít k nasazení clusteru HPC Pack. Příklady najdete v tématu [vytvoření clusteru prostředí HPC](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/) a [vytvoření clusteru prostředí HPC s bitovou kopii vlastní výpočetní uzel](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/).
+# <a name="create-a-windows-high-performance-computing-hpc-cluster-with-hello-hpc-pack-iaas-deployment-script"></a>Vytvoření clusteru se systémem Windows vysoce výkonné výpočty (HPC) s skript nasazení HPC Pack IaaS hello
+Spusťte kompletní clusteru HPC Pack 2012 R2 pro úlohy Windows hello HPC Pack IaaS nasazení prostředí PowerShell skriptu toodeploy ve virtuálních počítačích Azure. Hello clusteru se skládá ze Active Directory připojený hlavního uzlu systémem Windows Server a Microsoft HPC Pack a dalších Windows výpočetní prostředky, které zadáte. Pokud chcete pro Linux úlohy toodeploy clusteru služby HPC Pack v Azure, najdete v části [vytvořit cluster Linux HPC s hello skript nasazení HPC Pack IaaS](../../linux/classic/hpcpack-cluster-powershell-script.md). Můžete použít také toodeploy šablony Azure Resource Manager clusteru služby HPC Pack. Příklady najdete v tématu [vytvoření clusteru prostředí HPC](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/) a [vytvoření clusteru prostředí HPC s bitovou kopii vlastní výpočetní uzel](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/).
 
 > [!IMPORTANT] 
-> Skript prostředí PowerShell popsaný v tomto článku vytváří cluster s podporou Microsoft HPC Pack 2012 R2 v Azure pomocí modelu nasazení classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
-> Kromě toho skriptu popsaného v tomto článku nepodporuje HPC Pack 2016.
+> Hello skript prostředí PowerShell popsaný v tomto článku vytváří cluster s podporou Microsoft HPC Pack 2012 R2 v Azure pomocí modelu nasazení classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello.
+> Kromě toho hello skriptu popsaného v tomto článku nepodporuje HPC Pack 2016.
 
 [!INCLUDE [virtual-machines-common-classic-hpcpack-cluster-powershell-script](../../../../includes/virtual-machines-common-classic-hpcpack-cluster-powershell-script.md)]
 
 ## <a name="example-configuration-files"></a>Příklad konfigurační soubory
-V následujících příkladech nahraďte vlastními hodnotami pro Id předplatného nebo název a název účtu a služby.
+Následující příklady v hello nahraďte vlastní hodnoty pro Id předplatného nebo název a názvy hello účtu a služby.
 
 ### <a name="example-1"></a>Příklad 1
-Následující konfigurační soubor nasazení clusteru služby HPC Pack, která má hlavního uzlu s místní databází a pět výpočetní uzly s operačním systémem Windows Server 2012 R2. Cloudové služby jsou vytvořené přímo v umístění západní USA. Z hlavního uzlu funguje jako řadič domény v doménové struktuře domény.
+Hello následujícího konfiguračního souboru nasazení clusteru služby HPC Pack, který má hlavního uzlu s místní databází a operačním systémem Windows Server 2012 R2 hello pět výpočetních uzlů. Všechny hello cloudové služby jsou vytvořené přímo v hello umístění západní USA. Hello hlavního uzlu funguje jako řadič domény hello domény doménové struktury.
 
 ```Xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -71,8 +71,8 @@ Následující konfigurační soubor nasazení clusteru služby HPC Pack, která
 ```
 
 ### <a name="example-2"></a>Příklad 2
-Následující konfigurační soubor nasadí cluster služby HPC Pack v existující doménové struktuře domény. Cluster má 1 hlavního uzlu s místní databází a 12 výpočetní uzly s příponou BGInfo virtuálních počítačů použít.
-Automatická instalace aktualizací systému Windows je zakázáno pro všechny virtuální počítače v doménové struktuře domény. Cloudové služby jsou vytvořené přímo v umístění ve východní Asii. Výpočetní uzly jsou vytvořené v tři cloudové služby a tři účty úložiště: *MyHPCCN 0001* k *MyHPCCN 0005* v *MyHPCCNService01* a  *mycnstorage01*; *MyHPCCN-0006* k *MyHPCCN0010* v *MyHPCCNService02* a *mycnstorage02*; a  *MyHPCCN-0011* k *MyHPCCN 0012* v *MyHPCCNService03* a *mycnstorage03*). Výpočetní uzly jsou vytvořeny ze stávající privátní image zachyceného v výpočetního uzlu. Automatického zvětšovat a zmenšovat s výchozím nastavení je povolena služba zvětšovat a zmenšovat intervalech.
+Hello následující konfigurační soubor nasadí cluster služby HPC Pack v existující doménové struktuře domény. Hello clusteru má 1 hlavního uzlu s místní databází a 12 výpočetní uzly s hello rozšíření BGInfo virtuálního počítače, které jsou použity.
+Automatická instalace aktualizací systému Windows je zakázáno pro všechny hello virtuálních počítačů v doménové struktuře domény hello. Všechny hello cloudové služby jsou vytvořené přímo v umístění ve východní Asii. Hello výpočetní uzly jsou vytvořené v tři cloudové služby a tři účty úložiště: *MyHPCCN 0001* příliš*MyHPCCN 0005* v *MyHPCCNService01* a  *mycnstorage01*; *MyHPCCN-0006* příliš*MyHPCCN0010* v *MyHPCCNService02* a *mycnstorage02*; a  *MyHPCCN-0011* příliš*MyHPCCN 0012* v *MyHPCCNService03* a *mycnstorage03*). Hello výpočetní uzly jsou vytvořeny ze stávající privátní image zachyceného v výpočetního uzlu. Hello automaticky zvětšovat a zmenšovat s výchozím nastavení je povolena služba zvětšovat a zmenšovat intervalech.
 
 ```Xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -135,7 +135,7 @@ Automatická instalace aktualizací systému Windows je zakázáno pro všechny 
 ```
 
 ### <a name="example-3"></a>Příklad 3
-Následující konfigurační soubor nasadí cluster služby HPC Pack v existující doménové struktuře domény. Cluster obsahuje jeden hlavní uzel, jeden databázový server s 500 GB datový disk, dvě zprostředkovatelské uzly s operačním systémem Windows Server 2012 R2 a pět výpočetní uzly s operačním systémem Windows Server 2012 R2. Cloudové služby MyHPCCNService se vytvoří ve skupině vztahů *MyIBAffinityGroup*, a vytvoří se ve skupině vztahů jiných cloudových služeb *MyAffinityGroup*. Jsou povoleny REST API Scheduleru úloh HPC a webového portálu HPC v hlavního uzlu.
+Hello následující konfigurační soubor nasadí cluster služby HPC Pack v existující doménové struktuře domény. Hello cluster obsahuje jeden hlavní uzel, jeden server databáze s 500 GB datový disk, dva uzly zprostředkovatele spuštěný hello Windows Server 2012 R2 operační systém a operačním systémem Windows Server 2012 R2 hello pět výpočetních uzlů. cloudové služby MyHPCCNService se vytvoří ve skupině vztahů hello Hello *MyIBAffinityGroup*, a hello jiných cloudových služeb, vytvoří se ve skupině vztahů hello *MyAffinityGroup*. jsou povoleny Hello REST API Scheduleru úloh HPC a webového portálu HPC v hello hlavního uzlu.
 
 ```Xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -190,7 +190,7 @@ Následující konfigurační soubor nasadí cluster služby HPC Pack v existuj�
 
 
 ### <a name="example-4"></a>Příklad 4
-Následující konfigurační soubor nasadí cluster služby HPC Pack v existující doménové struktuře domény. Cluster má dvě hlavní uzel s místní databází, dvě šablony Azure uzlu vytvářejí a tři uzly Azure střední velikosti jsou vytvořeny pro šablonu Azure uzlu *AzureTemplate1*. Soubor skriptu se spouští z hlavního uzlu po dokončení konfigurace hlavního uzlu.
+Hello následující konfigurační soubor nasadí cluster služby HPC Pack v existující doménové struktuře domény. Hello cluster má dvě hlavní uzel s místní databází, dvě šablony Azure uzlu vytvářejí a tři uzly Azure střední velikosti jsou vytvořeny pro šablonu Azure uzlu *AzureTemplate1*. Soubor skriptu se spouští hello hlavního uzlu po dokončení konfigurace hlavního uzlu hello.
 
 ```Xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -257,19 +257,19 @@ Následující konfigurační soubor nasadí cluster služby HPC Pack v existuj�
 ```
 
 ## <a name="troubleshooting"></a>Řešení potíží
-* **Chyba "Virtuální síť neexistuje"** – Pokud spustíte skript, který chcete nasadit více clusterů v Azure souběžně v rámci jednoho předplatného, jeden nebo více nasazení může selhat s chybou "virtuální sítě *VNet\_název* neexistuje ".
-  Pokud k této chybě dojde, spusťte skript znovu pro neúspěšné nasazení.
-* **Problémy s přístupem k Internetu z virtuální síť Azure** – Pokud vytvoříte cluster s nový řadič domény pomocí skriptu nasazení, nebo manuálně povýšit hlavního uzlu virtuálního počítače pro řadič domény, může zaznamenat problémy s připojením Virtuální počítače k Internetu. Tomuto problému může dojít, pokud je automaticky nakonfigurovaný server DNS pro předávání na řadiči domény, a tento server DNS pro předávání nepřekládá správně.
+* **Chyba "Virtuální síť neexistuje"** – Pokud spustíte skript toodeploy hello víc clusterů v Azure souběžně v rámci jednoho předplatného, jeden nebo více nasazení může selhat s chybou hello "virtuální sítě *VNet\_název* není Existují".
+  Pokud k této chybě dojde, spusťte skript hello znovu pro nasazení hello se nezdařilo.
+* **Přístup k problému hello Internetu z hello virtuální síť Azure** – Pokud vytvoříte cluster s nový řadič domény pomocí hello skriptu nasazení, nebo manuálně povýšit řadič toodomain hlavního uzlu virtuálního počítače, může dojít k potížím připojení virtuálních počítačů toohello hello Internetu. Tomuto problému může dojít, pokud na řadiči domény hello je automaticky nakonfigurovaný server DNS pro předávání a tento server DNS pro předávání nepřekládá správně.
   
-    K tomuto problému, přihlaste se k řadiči domény a buď odebrat nastavení konfigurace služby pro předávání nebo konfigurace serveru DNS platný server pro předávání. Toto nastavení nakonfigurovat ve Správci serveru klikněte na **nástroje** >
-    **DNS** otevřít Správce DNS, a potom dvakrát klikněte na **předávání**.
-* **Problémy s přístupem k síti RDMA z virtuálních počítačů náročné** – Pokud přidáte výpočetní systém Windows Server nebo zprostředkovatelský uzel virtuálních počítačů pomocí podporou RDMA velikost například A8 a A9, může zaznamenat problémy s připojením k síti aplikace RDMA těchto virtuálních počítačů. Jedním z důvodů, že k tomuto problému dochází, je, pokud rozšíření HpcVmDrivers není správně nainstalován, pokud jsou virtuální počítače přidat do clusteru. Například rozšíření zablokovaná v instalaci stavu.
+    toowork vyřešit tento problém, přihlaste se na řadič domény toohello a nastavení konfigurace služby pro předávání hello buď odeberte nebo konfigurace serveru DNS platný server pro předávání. tooconfigure toto nastavení, ve Správci serveru klikněte na tlačítko **nástroje** >
+    **DNS** tooopen Správce DNS a potom dvakrát klikněte na **předávání**.
+* **Problémy s přístupem k síti RDMA z virtuálních počítačů náročné** – Pokud přidáte výpočetní systém Windows Server nebo zprostředkovatelský uzel virtuálních počítačů pomocí podporou RDMA velikost například A8 a A9, může zaznamenat problémy s připojením tyto sítě virtuálních počítačů toohello RDMA aplikace. Jedním z důvodů, že k tomuto problému dochází je, pokud hello HpcVmDrivers rozšíření není správně nainstalován, po přidání clusteru toohello hello virtuálních počítačů. Například rozšíření zablokovaná v hello stav instalace.
   
-    Chcete-li tento problém obejít, nejprve zkontrolujte stav rozšíření ve virtuálních počítačích. Pokud rozšíření není nainstalován správně, zkuste odebrat uzel z clusteru HPC a poté znovu přidejte uzly. Například můžete přidat výpočetním uzlu virtuální počítače pomocí skriptu přidat HpcIaaSNode.ps1 z hlavního uzlu.
+    toowork vyřešit tento problém, první kontrola stavu hello hello rozšíření ve virtuálních počítačích hello. Pokud rozšíření hello není nainstalován správně, zkuste odebrat hello uzlů z clusteru HPC hello a poté znovu přidejte hello uzly. Například můžete přidat výpočetním uzlu virtuální počítače pomocí skriptu přidat HpcIaaSNode.ps1 hello hello hlavního uzlu.
 
 ## <a name="next-steps"></a>Další kroky
-* Zkuste spustit test zatížení v clusteru. Příklad najdete v tématu HPC Pack [Příručka Začínáme](https://technet.microsoft.com/library/jj884144).
-* Skript nasazení clusteru a spuštění úlohy HPC, na adrese [začít pracovat s clusteru služby HPC Pack v Azure a spuštění aplikace Excel a SOA úloh](../../virtual-machines-windows-excel-cluster-hpcpack.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Zkuste nástroje HPC Pack spustit, zastavit, přidat a odebrat výpočetních uzlů z clusteru, který vytvoříte. V tématu [spravovat výpočetní uzly v prostředí HPC Pack clusteru v Azure](hpcpack-cluster-node-manage.md).
-* Získat k odesílání úloh do clusteru z místního počítače, naleznete v tématu [clusteru HPC odeslání úloh na místní počítač do sady HPC Pack v Azure](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Zkuste spustit test zatížení v clusteru hello. Příklad najdete v tématu hello HPC Pack [Příručka Začínáme](https://technet.microsoft.com/library/jj884144).
+* Kurz tooscript hello nasazení v clusteru a spustíte úlohy HPC, najdete v části [začít pracovat s clusteru služby HPC Pack v aplikaci Excel a SOA úlohy Azure toorun](../../virtual-machines-windows-excel-cluster-hpcpack.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Zkuste HPC Pack nástrojů toostart, zastavit, přidávat a odebírat výpočetních uzlů z clusteru, který vytvoříte. V tématu [spravovat výpočetní uzly v prostředí HPC Pack clusteru v Azure](hpcpack-cluster-node-manage.md).
+* tooget nastavit toosubmit úlohy toohello clusteru z místního počítače, najdete v části [clusteru HPC odeslání úloh místní počítač tooan HPC Pack v Azure](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

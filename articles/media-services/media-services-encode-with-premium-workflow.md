@@ -1,6 +1,6 @@
 ---
-title: "Pokročilé kódování s pracovním postupem Premium Media Encoder | Microsoft Docs"
-description: "Zjistěte, jak ke kódování s pracovním postupem Premium kodér médií. Ukázky kódu jsou napsané v jazyce C# a pomocí sady Media Services SDK pro .NET."
+title: "kódování aaaAdvanced s pracovním postupem Premium Media Encoder | Microsoft Docs"
+description: "Zjistěte, jak tooencode s pracovním postupem Premium kodér médií. Ukázky kódu jsou napsané v jazyce C# a použít hello sady Media Services SDK pro .NET."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: 2b03853bf07e05c07fd730d5e8a8563963887921
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5a1c3d019a5c8fbf9bda2da751a7eff4c4907d97
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Pokročilé kódování s pracovním postupem prostředí Media Encoder Premium
 > [!NOTE]
@@ -29,47 +29,47 @@ ms.lasthandoff: 08/29/2017
 Máte dotazy k kodér premium e-mailu mepd na webu společnosti Microsoft.
 
 ## <a name="overview"></a>Přehled
-Představuje Microsoft Azure Media Services **Media Encoder Premium pracovního postupu** procesor médií. Tato záloha nabízí procesoru kódování funkcí pro vaše pracovní postupy premium na vyžádání.
+Microsoft Azure Media Services představuje hello **Media Encoder Premium pracovního postupu** procesor médií. Tato záloha nabízí procesoru kódování funkcí pro vaše pracovní postupy premium na vyžádání.
 
-Následující témata popisují podrobnosti související s **Media Encoder Premium pracovního postupu**:
+Hello následující témata popisují podrobnosti související příliš**Media Encoder Premium pracovního postupu**:
 
-* [Formáty podporované v pracovním postupu Media Encoder Premium](media-services-premium-workflow-encoder-formats.md) – formáty popisuje soubor a nepodporuje kodeky **Media Encoder Premium pracovního postupu**.
-* [Přehled a porovnání Azure na vyžádání média kodéry](media-services-encode-asset.md) porovná kódování možnosti **Media Encoder Premium pracovního postupu** a **Media Encoder Standard**.
+* [Podporované formáty podle hello Media Encoder Premium pracovního postupu](media-services-premium-workflow-encoder-formats.md) – popisuje formáty souborů hello a kodeky podporované systémem **Media Encoder Premium pracovního postupu**.
+* [Přehled a porovnání Azure na vyžádání média kodéry](media-services-encode-asset.md) porovná hello kódování možnosti **Media Encoder Premium pracovního postupu** a **Media Encoder Standard**.
 
-Toto téma ukazuje, jak ke kódování s **Media Encoder Premium pracovního postupu** pomocí rozhraní .NET.
+Toto téma ukazuje, jak tooencode s **Media Encoder Premium pracovního postupu** pomocí rozhraní .NET.
 
-Úlohy pro kódování **Media Encoder Premium pracovního postupu** vyžadují jiný konfigurační soubor, názvem souboru pracovního postupu. Tyto soubory mají příponu .workflow a jsou vytvořené pomocí [Návrhář postupu provádění](media-services-workflow-designer.md) nástroj.
+Úlohy pro hello kódování **Media Encoder Premium pracovního postupu** vyžadují jiný konfigurační soubor, názvem souboru pracovního postupu. Tyto soubory mít příponu .workflow a jsou vytvořeny pomocí hello [Návrhář postupu provádění](media-services-workflow-designer.md) nástroj.
 
-Můžete také získat výchozí soubory pracovního postupu [zde](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). Složka obsahuje také popis těchto souborů.
+Můžete také získat hello výchozí soubory pracovního postupu [zde](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). Hello složka obsahuje také popis hello těchto souborů.
 
-Soubory pracovního postupu musí být nahrán do vašeho účtu Media Services jako prostředek, a tento prostředek by měl být předané do úlohy kódování.
+soubory pracovního postupu Hello potřebovat účtu Media Services tooyour toobe nahrán jako prostředek, a tento prostředek by měl být předán toohello kódování úloh.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
-Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
+Nastavení vývojového prostředí a naplnění souboru app.config hello s informace o připojení, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="encoding-example"></a>Příklad kódování
 
-Následující příklad ukazuje, jak ke kódování s **Media Encoder Premium pracovního postupu**.
+Hello následující příklad ukazuje, jak tooencode s **Media Encoder Premium pracovního postupu**.
 
-Jsou prováděny následovně:
+jsou prováděny Hello následující kroky:
 
 1. Vytvořte asset a nahrajte soubor pracovního postupu.
 2. Vytvořte asset a nahrajte soubor zdrojového média.
-3. Získáte procesor "Media Encoder Premium Workflow" médií.
+3. Získáte procesor "Media Encoder Premium Workflow" médií hello.
 4. Vytvoření úlohy a úlohy.
 
-    Ve většině případů je prázdný řetězec konfigurace pro úlohu (jako v následujícím příkladu). Existují některé pokročilé scénáře (které vyžadují, abyste na dynamické nastavení vlastnosti runtime) v takovém případě by zadáte řetězec XML úlohy kódování. Mezi příklady takových scénářů jsou: vytváření překrytí, paralelní nebo po sobě jdoucích média ve hřbetu, titulkování.
-5. Přidejte dva vstupní prostředky do úlohy.
+    Ve většině případů je prázdný řetězec hello konfigurace pro úlohu hello (třeba v hello následující příklad). Existují některé pokročilé scénáře (které vyžadují tootooset runtime vlastnosti dynamicky) v takovém případě by poskytnout toohello řetězec XML pro kódování úloh. Mezi příklady takových scénářů jsou: vytváření překrytí, paralelní nebo po sobě jdoucích média ve hřbetu, titulkování.
+5. Přidáte úloha toohello dva vstupní prostředky.
 
-    1. 1. – asset pracovního postupu.
-    2. 2. – asset videa.
+    1. 1. – asset hello pracovního postupu.
+    2. 2. – asset videa hello.
 
     >[!NOTE]
-    >Asset pracovního postupu je nutné přidat úloha před asset média.
-   Řetězec konfigurace pro tato úloha by měla být prázdná.
+    >asset Hello pracovního postupu je nutné přidat úloha toohello před hello média asset.
+   Hello konfigurační řetězec pro tato úloha by měla být prázdná.
    
-6. Odeslání úlohy kódování.
+6. Odeslání úlohy kódování hello.
 
         using System;
         using System.Linq;
@@ -136,42 +136,42 @@ Jsou prováděny následovně:
                 {
                     // Declare a new job.
                     IJob job = _context.Jobs.Create("Premium Workflow encoding job");
-                    // Get a media processor reference, and pass to it the name of the
-                    // processor to use for the specific task.
+                    // Get a media processor reference, and pass tooit hello name of the
+                    // processor toouse for hello specific task.
                     IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Premium Workflow");
 
-                    // Create a task with the encoding details, using a string preset.
+                    // Create a task with hello encoding details, using a string preset.
                     ITask task = job.Tasks.AddNew("Premium Workflow encoding task",
                         processor,
                         "",
                         TaskOptions.None);
 
-                    // Specify the input asset to be encoded.
+                    // Specify hello input asset toobe encoded.
                     task.InputAssets.Add(workflow);
                     task.InputAssets.Add(video); // we add one asset
-                                                 // Add an output asset to contain the results of the job.
+                                                 // Add an output asset toocontain hello results of hello job.
                                                  // This output is specified as AssetCreationOptions.None, which
-                                                 // means the output asset is not encrypted.
+                                                 // means hello output asset is not encrypted.
                     task.OutputAssets.AddNew("Output asset",
                         AssetCreationOptions.None);
 
-                    // Use the following event handler to check job progress.  
+                    // Use hello following event handler toocheck job progress.  
                     job.StateChanged += new
                             EventHandler<JobStateChangedEventArgs>(StateChanged);
 
-                    // Launch the job.
+                    // Launch hello job.
                     job.Submit();
 
-                    // Check job execution and wait for job to finish.
+                    // Check job execution and wait for job toofinish.
                     Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
                     progressJobTask.Wait();
 
-                    // If job state is Error the event handling
+                    // If job state is Error hello event handling
                     // method for job progress should log errors.  Here we check
                     // for error state and exit if needed.
                     if (job.State == JobState.Error)
                     {
-                        throw new Exception("\nExiting method due to job error.");
+                        throw new Exception("\nExiting method due toojob error.");
                     }
 
                     return job.OutputMediaAssets[0];

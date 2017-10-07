@@ -1,6 +1,6 @@
 ---
-title: "V prostředí Eclipse vytvořte Hello World cloudové služby pro Azure."
-description: "Zjistěte, jak vytvořit jednoduchou aplikaci Hello World pomocí nástrojů Azure pro Eclipse."
+title: "aaaCreate Hello World cloudové služby pro Azure v prostředí Eclipse"
+description: "Zjistěte, jak hello toocreate jednoduché aplikace Hello, World pomocí nástrojů Azure pro prostředí Eclipse."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,16 +14,16 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: 9b31f0faeb6ee7b5e7b8fe3a1f2827133d6188e6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dfb81374aaf78e933c0bf83a1dbd98023801491a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-hello-world-cloud-service-for-azure-in-eclipse"></a>V prostředí Eclipse vytvořte Hello World cloudové služby pro Azure.
-Následující kroky ukazují, jak vytvořit a nasadit základní aplikaci JSP do Azure pomocí sady nástrojů pro Azure pro Eclipse. Příklad JSP je uvedený na jednoduchost, ale vysoce podobným způsobem může být vhodné pro Java servlet, co se týče nasazení Azure.
+Hello následující kroky ukazují, jak toocreate a nasazení základní tooAzure aplikaci JSP pomocí hello Azure Toolkit pro Eclipse. Příklad JSP je uvedený na jednoduchost, ale vysoce podobným způsobem může být vhodné pro Java servlet, co se týče nasazení Azure.
 
-Aplikace bude vypadat nějak takto:
+aplikace Hello bude vypadat podobně jako toohello následující:
 
 ![][ic600360]
 
@@ -32,14 +32,14 @@ Aplikace bude vypadat nějak takto:
 * Integrované vývojové prostředí Eclipse pro vývojáře v jazyce Java EE, džínovinu nebo novější. To si můžete stáhnout z <http://www.eclipse.org/downloads/>.
 * Distribuce založené na jazyce Java webový server nebo aplikačního serveru, například Apache Tomcat, GlassFish, aplikační Server JBoss, Jetty nebo jádra Liberty IBM® WebSphere® aplikace serveru.
 * Předplatné Azure, který můžete získat z <http://azure.microsoft.com/pricing/purchase-options/>.
-* Azure nástrojů pro Eclipse. Další informace najdete v tématu [instalaci sady nástrojů Azure pro Eclipse][Installing the Azure Toolkit for Eclipse].
+* Hello nástrojů Azure pro prostředí Eclipse. Další informace najdete v tématu [hello instalace nástrojů Azure pro Eclipse][Installing hello Azure Toolkit for Eclipse].
 
-## <a name="to-create-a-hello-world-application"></a>Vytvoření aplikace Hello World
+## <a name="toocreate-a-hello-world-application"></a>toocreate aplikace Hello World
 Nejdříve začneme s vytvořením projektu Java.
 
-1. Spusťte Eclipse a v nabídce klikněte na položku **soubor**, klikněte na tlačítko **nový**a potom klikněte na **Dynamic Web Project**. (Pokud nevidíte **Dynamic Web Project** uvedené jako dostupné projekt po kliknutí na **soubor**, **nový**, postupujte takto: klikněte na tlačítko **soubor**, klikněte na tlačítko **nový**, klikněte na tlačítko **projektu...** , rozbalte položku **webové**, klikněte na tlačítko **Dynamic Web Project**a klikněte na tlačítko **Další**.)
+1. Spusťte Eclipse a v nabídce hello na **soubor**, klikněte na tlačítko **nový**a potom klikněte na **Dynamic Web Project**. (Pokud nevidíte **Dynamic Web Project** uvedené jako dostupné projekt po kliknutí na **soubor**, **nový**, pak hello následující: klikněte na tlačítko **soubor**, klikněte na tlačítko **nový**, klikněte na tlačítko **projektu...** , rozbalte položku **webové**, klikněte na tlačítko **Dynamic Web Project**a klikněte na tlačítko **Další**.)
 
-1. Pro účely tohoto kurzu, název projektu **MyHelloWorld**. (Ujistěte se, použijte tento název, váš soubor WAR s názvem MyHelloWorld očekávat následné kroky v tomto kurzu). Na obrazovce se zobrazí podobná této:
+1. Pro účely tohoto kurzu, pojmenujte projekt hello **MyHelloWorld**. (Ujistěte se, použijte tento název, vaše toobe soubor WAR s názvem MyHelloWorld očekávat následné kroky v tomto kurzu). Na obrazovce zobrazí podobné toohello následující:
 
    ![][ic589576]
 
@@ -47,13 +47,13 @@ Nejdříve začneme s vytvořením projektu Java.
 
 1. V rámci zobrazení Eclipse na prohlížeči projektu rozbalte **MyHelloWorld**. Klikněte pravým tlačítkem na **WebContent**, pak na **New** (Nový) a nakonec na **JSP File** (Soubor JSP).
 
-1. V **nový soubor JSP** dialogové okno, název souboru **index.jsp**. Nadřazený adresář ponechte na jako **MyHelloWorld/WebContent**, jak je znázorněno v následujícím:
+1. V hello **nový soubor JSP** dialogové okno, název souboru hello **index.jsp**. Zachovat hello nadřazené složky jako **MyHelloWorld/WebContent**, jak ukazuje následující hello:
 
    ![][ic659262]
 
-1. V **vybrat šablonu JSP** dialogové okno pro účely tohoto kurzu možnost **nový soubor JSP (html)** a klikněte na tlačítko **Dokončit**.
+1. V hello **vybrat šablonu JSP** dialogové okno pro účely tohoto kurzu možnost **nový soubor JSP (html)** a klikněte na tlačítko **Dokončit**.
 
-1. Když se soubor index.jsp otevře v prostředí Eclipse, přidejte text dynamicky zobrazíte **Hello, World!** do existujícího elementu `<body>`. Aktualizovaný `<body>` obsah se mají zobrazit jako následující:
+1. Když hello soubor index.jsp otevře v prostředí Eclipse, přidejte v zobrazení textu toodynamically **Hello, World!** v rámci existující hello `<body>` elementu. Aktualizovaný `<body>` obsah se mají zobrazit jako hello následující:
    ```
    <body>
    <b><% out.println("Hello World!"); %></b>
@@ -61,141 +61,141 @@ Nejdříve začneme s vytvořením projektu Java.
    ```
 1. Uložte index.jsp.
 
-## <a name="to-deploy-your-application-to-azure-the-quick-and-simple-way"></a>Pro nasazení aplikace do Azure, rychlý a jednoduchý způsob
-Jakmile máte webové aplikace Java test připraven, můžete následující klávesovou zkratku vyzkoušejte ji přímo na cloudu Azure.
+## <a name="toodeploy-your-application-tooazure-hello-quick-and-simple-way"></a>toodeploy tooAzure aplikace, hello rychlý a jednoduchý způsob,
+Jakmile máte připravené tootest Java webové aplikace, můžete použít následující zástupce tootry ho odhlašování přímo na hello Azure cloud hello.
 
 1. V prohlížeči projektu Eclipse společnosti, klikněte na tlačítko **MyHelloWorld**.
 
-2. Na panelu nástrojů Eclipse klikněte **publikovat** rozevírací tlačítko a pak klikněte na tlačítko **publikovat jako cloudová služba Azure**
+2. V panelu nástrojů Eclipse hello, klikněte na tlačítko hello **publikovat** rozevírací tlačítko a pak klikněte na tlačítko **publikovat jako cloudová služba Azure**
 
    ![][publishDropdownButton]
 
-3. Pokud jsou publikování této aplikace do Azure poprvé a jste dosud nevytvořili projektu nasazení Azure pro tuto aplikaci před, projektu nasazení Azure se vám vytvoří automaticky. Měli byste vidět následující řádek, který také obsahuje seznam balíčků JDK a aplikační server, který se automaticky nasadí do spusťte aplikaci.
+3. Pokud jsou publikování této aplikace tooAzure pro hello poprvé a jste dosud nevytvořili projektu nasazení Azure pro tuto aplikaci před, projektu nasazení Azure se vám vytvoří automaticky. Měli byste vidět hello následující dotaz, který také obsahuje seznam hello JDK balíčku i aplikace server, který bude automaticky nasazen toorun vaší aplikace.
 
    ![][ic789598]
    
-   Tento přístup zástupce umožňuje rychlý a snadný způsob, jak otestovat aplikaci v Azure, aniž by bylo nutné konfigurovat konkrétní server nebo JDK, které se liší od výchozí hodnoty. Pokud budete spokojeni s výchozí hodnoty, můžete kliknout na **OK** Chcete-li pokračovat pomocí následujících kroků.
-   Ale pokud chcete změnit sadu JDK nebo aplikačního serveru chcete použít pro aplikace, můžete to udělat později úpravou projekt nasazení Azure, který byl automaticky vytvořen pro vás, nebo můžete kliknout na **zrušit** teď a čtení  **O nasazení Azure projekty** tohoto kurzu.
+   Tento přístup zástupce umožňuje rychlý a snadný způsob tootest aplikaci v Azure bez nutnosti tooconfigure konkrétní server nebo JDK, které se liší od výchozí hodnoty hello. Pokud budete spokojeni s hello výchozí hodnoty, můžete kliknout na **OK** toocontinue s hello následující kroky.
+   Ale pokud chcete, aby toochange hello JDK nebo toouse serveru aplikace pro aplikaci, můžete to udělat později úpravou hello Azure nasazení projektu, který byl automaticky vytvořen pro vás, nebo můžete kliknout na **zrušit** teď a pro čtení Hello **nasazení Azure o projekty části** tohoto kurzu.
 
-4. V **publikovat do Azure** dialogové okno:
+4. V hello **publikování tooAzure** dialogové okno:
 
-   1. Pokud nejsou žádná předplatná a vybrat v **předplatné** seznam ještě použijte následující postup importovat informace o vašem předplatném:
+   1. Pokud nejsou žádné odběry tooselect v hello **předplatné** seznam ještě postupujte podle těchto kroků tooimport informace o vašem předplatném:
       1. Klikněte na tlačítko **Import ze souboru nastavení publikování**.
-      2. V **importovat informace o předplatném** dialogové okno, klikněte na tlačítko **stáhnout soubor nastavení publikování**. Pokud ještě nejste přihlášeni k účtu Azure, budete vyzváni k přihlášení. Potom budete vyzváni k uložení Azure soubor nastavení publikování. Uložte ho do místního počítače.
-      3. Pořád ještě v **importovat informace o předplatném** dialogové okno, klikněte na tlačítko **Procházet** tlačítko, vyberte soubor nastavení publikování, který jste uložili místně v předchozím kroku a pak klikněte na tlačítko **otevřete**. Na obrazovce by měl vypadat takto:![][ic644267]
+      2. V hello **importovat informace o předplatném** dialogové okno, klikněte na tlačítko **stáhnout soubor nastavení publikování**. Pokud ještě nejste přihlášeni k účtu Azure, bude výzvami toolog v. Potom budete vyzváni k souboru s nastavením publikování toosave Azure. Uložte tooyour místního počítače.
+      3. Stále v hello **importovat informace o předplatném** dialogové okno, klikněte na tlačítko hello **Procházet** tlačítko, vyberte hello uložený místně v předchozím kroku hello souboru s nastavením publikování a pak klikněte na tlačítko  **Otevřete**. Na obrazovce by měl vypadat podobně jako toohello následující:![][ic644267]
       4. Klikněte na **OK**.
-   2. Pro **předplatné**, vyberte předplatné, kterou chcete použít pro vaše nasazení.
-   3. Pro **účet úložiště**, vyberte účet úložiště, který chcete použít, nebo klikněte na tlačítko **nový** k vytvoření nového účtu úložiště.
-   4. Pro **název služby**, vyberte cloudovou službu, kterou chcete použít, nebo klikněte na tlačítko **nový** vytvořit novou cloudovou službu.
-   5. Pro **cíl OS**, vyberte verzi operačního systému, který chcete použít pro vaše nasazení.
-   6. Pro **cílové prostředí**pro účely tohoto kurzu vyberte **pracovní**. (Až budete připraveni k nasazení do produkční lokality, budete k změnit **produkční**.)
-   7. Volitelné: Ujistěte se, že **přepsat předchozí nasazení** je zaškrtnuté políčko, pokud chcete, aby vaše nové nasazení k automatickému přepsání předchozí nasazení. Když povolíte tuto možnost, bude se při publikování do stejného umístění, není prostředí "409 – konflikt" problémy.
-      Všimněte si, že **publikovat do Azure** dialogové okno obsahuje oddíl pro **vzdáleného přístupu**. Ve výchozím nastavení vzdálený přístup není povolen a nebude jsme ji povolit pro tento příklad. Postup povolení vzdáleného přístupu, by zadejte uživatelské jméno a heslo pro použití při vzdálené přihlášení. Další informace o roli vzdálený přístup, najdete v části [povolení vzdáleného přístupu pro Azure nasazení v prostředí Eclipse][Enabling Remote Access for Azure Deployments in Eclipse].
-      Vaše **publikovat do Azure** zobrazí se dialogové okno podobné následujícím:![][ic719488]
+   2. Pro **předplatné**, vyberte předplatné hello, kterou chcete použít pro vaše nasazení.
+   3. Pro **účet úložiště**, vyberte účet úložiště hello, mají toouse, nebo klikněte na tlačítko **nový** toocreate nový účet úložiště.
+   4. Pro **název služby**, vyberte hello cloudovou službu, mají toouse, nebo klikněte na tlačítko **nový** toocreate novou cloudovou službu.
+   5. Pro **cíl OS**vyberte hello verze hello operačního systému, kterou chcete toouse pro vaše nasazení.
+   6. Pro **cílové prostředí**pro účely tohoto kurzu vyberte **pracovní**. (Pokud jste připravené toodeploy tooyour pracoviště, změníte tím příliš**produkční**.)
+   7. Volitelné: Ujistěte se, že **přepsat předchozí nasazení** je zaškrtnuté políčko, pokud chcete, aby vaše nové nasazení tooautomatically přepsat hello předchozí nasazení. Když povolíte tuto možnost, není prostředí "409 – konflikt" problémy při publikování toohello stejné umístění.
+      Všimněte si, že hello **publikování tooAzure** dialogové okno obsahuje oddíl pro **vzdáleného přístupu**. Ve výchozím nastavení vzdálený přístup není povolen a nebude jsme ji povolit pro tento příklad. tooenable vzdáleného přístupu, zadejte uživatelské jméno a heslo toouse při vzdálené přihlášení. Další informace o roli vzdálený přístup, najdete v části [povolení vzdáleného přístupu pro Azure nasazení v prostředí Eclipse][Enabling Remote Access for Azure Deployments in Eclipse].
+      Vaše **publikování tooAzure** zobrazí se dialogové okno podobné toohello následující:![][ic719488]
 
-5. Klikněte na tlačítko **publikovat** publikovat do pracovního prostředí.
+5. Klikněte na tlačítko **publikovat** toopublish toohello pracovní prostředí.
 
-   Po zobrazení výzvy k provedení úplné sestavení, klikněte na tlačítko **Ano**. To může trvat několik minut, než první sestavení.
+   Po kliknutí na výzvami tooperform úplné sestavení, **Ano**. To může trvat několik minut, než první sestavení hello.
    **Protokol činnosti Azure** se zobrazí v části zobrazení vašeho prostředí Eclipse na kartách.
-   ![][ic719489]Tento protokol, můžete použít společně s **konzoly** zobrazení, abyste viděli průběh nasazení. Alternativou je do protokolu [portálu pro správu Azure][Azure Management Portal]a použít **cloudové služby** části k monitorování stavu.
+   ![][ic719489]Vám může použít tento protokol, stejně jako hello **konzoly** zobrazit, toosee hello průběh nasazení. Alternativou je toolog v toohello [portálu pro správu Azure][Azure Management Portal]a použijte hello **cloudové služby** části toomonitor hello stavu.
 
-6. Po úspěšném nasazení vaše nasazení, **protokol činnosti Azure** se zobrazí stav **publikováno**. Klikněte na tlačítko **publikováno**, jak je znázorněno na následujícím obrázku, a prohlížeči se otevře instance vašeho nasazení.
+6. Po úspěšném nasazení vaše nasazení, hello **protokol činnosti Azure** se zobrazí stav **publikováno**. Klikněte na tlačítko **publikováno**, jak je znázorněno v následujícím hello bitové kopie a prohlížeči se otevře instance vašeho nasazení.
 
    ![][ic719490]
 
-Protože to byla nasazení pro pracovní prostředí, bude mít název DNS ve tvaru http://&lt;*guid*&gt;. cloudapp.net a bude adresa URL obsahovat název DNS a přípony pro vaši aplikaci. Například http://447564652c20426f6220526f636b7321.cloudapp.net/MyHelloWorld. ( **MyHelloWorld** část je malá a velká písmena.) Taky uvidíte název DNS Pokud kliknete na název nasazení v portálu pro správu platformy Azure (v části cloudové služby na portálu pro správu).
+Protože šlo o nasazení tooa, pracovní prostředí, bude mít název DNS hello hello formuláře http://&lt;*guid*&gt;. cloudapp.net a adresa URL hello bude obsahovat název DNS hello plus přípona pro vaši aplikaci. Například http://447564652c20426f6220526f636b7321.cloudapp.net/MyHelloWorld. (hello **MyHelloWorld** část je malá a velká písmena.) Můžete také zjistit hello DNS název Pokud kliknete na název nasazení hello v hello portálu pro správu platformy Azure (v rámci cloudové služby část hello hello portálu pro správu).
 
-I když byl tohoto návodu pro nasazení, který je pracovní prostředí, nasazení do produkčního prostředí postupuje stejně, s výjimkou v rámci **publikovat do Azure** dialogovém okně, vyberte **produkční** místo **Pracovní** pro **cílové prostředí**. Nasazení do produkčního prostředí výsledkem adresu URL na základě názvu DNS podle vaší volby, namísto identifikátor GUID jako použité pro přípravu.
+I když byl tohoto návodu pro nasazení toohello, pracovní prostředí, nasazení tooproduction následuje hello stejný postup, s výjimkou v rámci hello **publikování tooAzure** dialogovém okně, vyberte **produkční** místo **pracovní** pro hello **cílové prostředí**. Nasazení tooproduction výsledkem adresu URL na základě názvu DNS hello podle vaší volby, namísto identifikátor GUID jako použité pro přípravu.
 
 > [!WARNING]
-> V tomto okamžiku jste nasadili aplikaci Azure do cloudu. Nicméně než budete pokračovat, uvědomte si, že nasazené aplikace, i když není spuštěna, budou dál nabíhat fakturovatelný čas pro vaše předplatné. Proto je velmi důležité, odstranit nežádoucí nasazení z vašeho předplatného Azure.
+> V tomto okamžiku jste nasadili cloudu toohello aplikaci Azure. Ale než budete pokračovat, uvědomte si, že nasazené aplikace, i když není spuštěný, bude pokračovat, tooaccrue fakturovatelný čas pro vaše předplatné. Proto je velmi důležité, odstranit nežádoucí nasazení z vašeho předplatného Azure.
 > 
 > 
 
 ## <a name="about-azure-deployment-projects"></a>O projektech nasazení Azure
-Abyste mohli nasadit jeden nebo více aplikací v jazyce Java do Azure, je potřeba projektu nasazení aplikace Azure. Ho hraje roli "balíček", který vaše aplikace musí být uzavřen do, aby bylo možné publikovat na platformě Azure.
+V pořadí toodeploy jeden nebo více tooAzure aplikace Java, je potřeba projektu nasazení aplikace Azure. Ho hraje roli hello hello "balíček", který vaše aplikace potřebují toobe zabalené do v pořadí toobe publikovat na platformě Azure.
 
-Kromě informace o aplikacích, projektu nasazení Azure také obsahuje informace o dalších klíčové komponenty vašeho nasazení co je nejdůležitější: kontejneru aplikace server ke spouštění vaší webové aplikace v a Java runtime spuštění na. Azure podporuje velké výběr Java moduly runtime a Java aplikační servery, které můžete vybrat z.
+Kromě hello informace o aplikacích, projektu nasazení Azure také obsahuje informace o dalších klíčové komponenty vašeho nasazení co je nejdůležitější: hello vaší webové aplikace v aplikaci server kontejneru toorun a hello Java runtime toorun ho na. Azure podporuje velké výběr Java moduly runtime a Java aplikační servery, které můžete vybrat z.
 
-Přestože použít zde je příklad je zjednodušený výrazně pro vzdělávací účely, projektu nasazení Azure může také obsahovat další důležité konfigurační informace, které vám umožní vytvořit téměř libovolně komplexní, škálovatelné a vysoce dostupný, vícevrstvé cloudové služby s vašimi aplikacemi. Můžete povolit **spřažení relace (dále jen "trvalé relace")**, **rychlé ukládání do mezipaměti**, **snižování zátěže protokolu SSL**, **port brány firewall nebo směrování**, **vzdáleného přístupu**a počet jiných výkonné možnosti.
+Přestože použít zde je příklad hello je výrazně jednodušší pro vzdělávací účely, projektu nasazení Azure může také obsahovat další důležité konfigurační informace, které vám umožní toocreate téměř libovolně komplexní, škálovatelné a vysoce dostupný, vícevrstvé cloudové služby s vašimi aplikacemi. Můžete povolit **spřažení relace (dále jen "trvalé relace")**, **rychlé ukládání do mezipaměti**, **snižování zátěže protokolu SSL**, **port brány firewall nebo směrování**, **vzdáleného přístupu**a počet jiných výkonné možnosti.
 
-Pokud po dokončení předchozí části tohoto kurzu ("pro nasazení aplikace do Azure, rychlý a jednoduchý způsob"), se nyní zobrazí nový projekt nasazení Azure v prohlížeči projektu vygenerovány pro vás automaticky a s názvem " **MyHelloWorld_onAzure**".
+Pokud jste dokončili hello předchozí části tohoto kurzu ("toodeploy tooAzure aplikace, hello rychlý a jednoduchý způsob"), se nyní zobrazí nový projekt nasazení Azure v hello Project Exploreru vygenerovány pro vás automaticky a s názvem " **MyHelloWorld_onAzure**".
 
-Může také začnete tento kurz nejprve vytvoříte projekt prázdné nasazení Azure sami a následným přidáním vaší aplikace do ní. Je delší proces, ale poskytuje další kontrolu nad počáteční konfigurace od začátku.
+Může také začnete tento kurz nejprve vytvoříte projekt prázdné nasazení Azure sami a následným přidáním tooit vaší aplikace. Je delší proces, ale poskytuje další kontrolu nad hello počáteční konfigurace ze začátku hello.
 
-Chcete-li vytvořit nový projekt nasazení Azure od začátku, klikněte na tlačítko **nový projekt nasazení Azure** tlačítko ![][ic710876].
+toocreate nový projekt nasazení Azure od začátku, klikněte na tlačítko hello **nový projekt nasazení Azure** tlačítko ![][ic710876].
 
-Bez ohledu na to, zda funguje s již existující projekt nasazení Azure, nebo vytvořit od začátku, budete moci změnit jeho nastavení konfigurace a součásti, například sadu JDK nebo aplikačního serveru, stejně snadno kdykoli.
+Bez ohledu na to, zda funguje s již existující projekt nasazení Azure, nebo vytvořit od začátku, jsou možné toochange jeho nastavení konfigurace a součásti, například hello JDK nebo hello aplikační server, stejně snadno kdykoli.
 
-Chcete-li změnit sadu JDK, nebo je aplikační server nebo seznamu aplikací v existujícího projektu nasazení Azure:
+toochange hello JDK, nebo hello aplikační server nebo seznam aplikací hello v existujícího projektu nasazení Azure:
 
-1. Rozbalte uzel projektu (například **MyHelloWorld_onAzure**) v prohlížeči projektu
+1. Rozbalte uzel projektu hello (například **MyHelloWorld_onAzure**) v prohlížeči projektu hello
 
 2. Klikněte pravým tlačítkem na **WorkerRole1**
 
-3. Rozbalte **Azure** podnabídky v místní nabídce
+3. Rozbalte hello **Azure** podnabídky v kontextové nabídce hello
 
 4. Klikněte na tlačítko **konfigurace serveru**
 
-Bez ohledu na tom, jestli jste spustili tyto kroky konfigurace serveru tak, že upravíte existující projekt nasazení Azure, jako v příkladu nahoře, nebo vytvořením nové od začátku, zobrazí se stejný typ lze konfigurovat JDK, serveru a aplikace dialogová okna komponenty. Další informace o tom, jak změnit nastavení v těchto dialogová okna, například když chcete změnit sadu JDK, aplikační server a přidat nebo odebrat aplikace v nasazení, najdete v článku [vlastnosti konfigurace serveru] [ Server configuration properties] článek.
+Bez ohledu na to zda jste spustili tyto kroky konfigurace serveru tak, že upravíte existující projekt nasazení Azure, jako v příkladu nahoře, nebo vytvořením nového od začátku, zobrazí se hello stejný typ dialogová okna, což vám tooconfigure JDK, serverů a aplikací komponenty. toolearn více jak toochange hello nastavení v těchto dialogová okna, například toochange hello JDK, hello aplikační server a přidat nebo odebrat aplikace v nasazení, najdete v části hello [vlastnosti konfigurace serveru] [ Server configuration properties] článku.
 
-## <a name="windows-only-to-deploy-your-application-to-the-compute-emulator"></a>Pouze v systému Windows: nasazení aplikace na emulátoru služby výpočty v
+## <a name="windows-only-toodeploy-your-application-toohello-compute-emulator"></a>Pouze v systému Windows: toodeploy emulátor služby výpočty toohello vaší aplikace
 
 > [!NOTE]
-> Azure emulátor je k dispozici pouze v systému Windows. Tuto část přeskočte, pokud používáte operační systém než Windows.
+> Hello Azure emulátor je k dispozici pouze v systému Windows. Tuto část přeskočte, pokud používáte operační systém než Windows.
 > 
 > 
 
-Pokud jste vytvořili nový projekt nasazení Azure kroků popsaných výše, tj. implicitně publikováním aplikace Azure, JDK a aplikace konfiguraci pro cloud, ale ne pro místní emulace. Příprava projektu pro testování v místní emulátoru, postupujte takto:
+Pokud jste vytvořili nový projekt nasazení Azure hello postupu popsaného dříve, tj. implicitně publikování tooAzure vaší aplikace hello JDK a aplikační servery jsou nakonfigurované pro hello cloud, ale ne pro místní emulace. tooprepare svůj projekt pro testování v emulátoru místního hello, postupujte takto:
 
 1. V prohlížeči projektu Eclipse společnosti, klikněte na tlačítko **MyHelloWorld_onAzure**.
 
 2. Klikněte pravým tlačítkem na **WorkerRole1**.
 
-3. Rozbalte **Azure** podnabídky v místní nabídce.
+3. Rozbalte hello **Azure** podnabídky v kontextové nabídce hello.
 
 4. Klikněte na tlačítko **konfigurace serveru**.
 
-5. Na **JDK** kartě, zkontrolujte, zda sada nástrojů předem nakonfigurován výchozí místní JDK za vás. Pokud ne, nebo pokud chcete změnit předpokládané výchozí hodnoty, zkontrolujte, zda **použít sadu JDK z tuto cestu k souboru pro místní testování** je zaškrtnuté políčko a je zadané umístění instalace JDK, kterou chcete použít. Pokud chcete změnit, klikněte **Procházet** tlačítko a pomocí ovládacího prvku procházet, vyberte umístění adresáře JDK používat.
+5. Na hello **JDK** kartě, zkontrolujte, zda text hello toolkit předem nakonfigurován výchozí místní JDK za vás. Pokud ne, nebo pokud chcete toochange hello předpokládá, že výchozí hodnoty, ujistěte se, že hello **použití hello JDK z tuto cestu k souboru pro místní testování** je zaškrtnuté políčko a hello JDK umístění instalace, které chcete toouse je zadán. Pokud chcete, aby toochange, klikněte na tlačítko hello **Procházet** tlačítko a pomocí řízení hello procházet, vyberte umístění adresáře hello hello JDK toouse.
 
-6. Klikněte **Server** kartě.
+6. Klikněte na tlačítko hello **Server** kartě.
 
-7. V **místní server cesta** textového pole v dolní části dialogové okno, zadejte cestu k serveru místně nainstalován, který odpovídá typu a hlavní číslo verze serveru vybrané v horní části dialogové okno, v části  **Nasazení serveru tohoto typu** zaškrtávací políčko. Pokud chcete použít jiný typ nebo hlavní verzi aplikačního serveru, nejprve změňte výběr pod toto zaškrtávací políčko.
+7. V hello **místní server cesta** textového pole v dolní části hello hello dialogového okna, zadejte cestu hello místně nainstalován server, který odpovídá typu hello a hlavní číslo verze serveru hello vybrané v horní části hello hello dialogového okna, v části Hello **nasadit server tohoto typu** zaškrtávací políčko. Pokud chcete toouse na jiný typ nebo hlavní verzi hello aplikační server, změňte výběr hello pod toto zaškrtávací políčko nejdřív.
 
 8. Klikněte na **OK**.
 
-9. Na panelu nástrojů Eclipse klikněte **spustit v emulátoru Azure** tlačítko ![][ic710879]. Pokud **spustit v emulátoru Azure** není dostupné tlačítko, ujistěte se, že **MyHelloWorld_onAzure** je vybrán v prohlížeči projektu Eclipse společnosti a zkontrolujte, zda je Eclipse Project Exploreru jako aktuální okno. Nejprve se spustit úplné sestavení projektu a spusťte svoji webovou aplikaci Java v emulátoru služby výpočty v. (Všimněte si, že v závislosti na vlastnosti výkonu počítače, první sestavení může trvat od několika sekund až několik minut, ale následné sestavení získají rychlejší.) Po dokončení první krok sestavení, vás vyzve ve Windows řízení uživatelských účtů (UAC) umožňuje tento příkaz k provedení změny v počítači. Klikněte na **Ano**.
+9. V panelu nástrojů Eclipse hello, klikněte na tlačítko hello **spustit v emulátoru Azure** tlačítko ![][ic710879]. Pokud hello **spustit v emulátoru Azure** není dostupné tlačítko, ujistěte se, že **MyHelloWorld_onAzure** je vybrán v prohlížeči projektu Eclipse společnosti a zkontrolujte, zda je Eclipse Project Exploreru jako hello aktuální okno. Tím prvním spuštění úplné sestavení projektu a spusťte svoji webovou aplikaci Java v emulátoru služby výpočty hello. (Všimněte si, že v závislosti na vlastnosti výkonu počítače, hello první sestavení může trvat mezi několik sekund tooa několik minut, ale následné sestavení získají rychlejší.) Po dokončení hello první krok sestavení, zobrazí se výzva nástrojem Řízení uživatelských účtů (UAC) tooallow toomake tento příkaz změní tooyour počítače. Klikněte na **Ano**.
 
 > [!IMPORTANT]
-> Pokud se nezobrazí výzva nástroje Řízení uživatelských účtů, zkontrolujte na hlavním panelu Windows ikony nástroje Řízení uživatelských účtů a klikněte na první. Někdy UAC řádku nezobrazuje jako nejhornější okna, ale je viditelná pouze jako na ikonu hlavního panelu.
+> Pokud se nezobrazí výzva, zkontrolujte, hello nástroje Řízení uživatelských účtů hello hlavního panelu Windows hello ikony nástroje Řízení uživatelských účtů a klikněte na první. Někdy hello výzva nástroje Řízení uživatelských účtů nezobrazuje jako nejhornější okna, ale je viditelná pouze jako na ikonu hlavního panelu.
 > 
 > 
 
-1. Prohlédněte si výstup emulátoru služby výpočty v Uživatelském určí, jestli jsou všechny problémy s projektem. V závislosti na jeho obsah vašeho nasazení může trvat několik minut pro vaši aplikaci v emulátoru služby výpočty v plně spustit.
+1. Zkontrolujte výstup hello hello výpočetní emulátor uživatelského rozhraní toodetermine, pokud jsou nějaké problémy s projektem. V závislosti na hello obsah vašeho nasazení může trvat několik minut, než se vaše aplikace toobe plně spustila v emulátoru služby výpočty hello.
 
-2. Spusťte prohlížeč a použijte adresu URL `http://localhost:8080/MyHelloWorld` jako adresa ( `MyHelloWorld` část adresy URL je malá a velká písmena). Měli byste vidět aplikaci MyHelloWorld (výstup index.jsp), podobně jako na následujícím obrázku:
+2. Spusťte prohlížeč a použijte adresu URL hello `http://localhost:8080/MyHelloWorld` jako adresa hello (hello `MyHelloWorld` část adresy URL hello je malá a velká písmena). Měli byste vidět MyHelloWorld aplikace (hello výstup index.jsp), podobně jako toohello následující bitové kopie:
 
    ![][ic589579]
 
-Až budete připraveni k zastavení aplikace spuštěná v emulátoru služby výpočty v, na panelu nástrojů Eclipse klikněte **resetovat emulátoru Azure** tlačítko ![][ic710880].
+Po připravené toostop aplikace spuštěné v emulátoru služby výpočty hello, v panelu nástrojů Eclipse hello, klikněte na hello **resetovat emulátoru Azure** tlačítko ![][ic710880].
 
-## <a name="to-delete-your-deployment"></a>Chcete-li odstranit nasazení
-Pokud chcete odstranit nasazení v rámci sady nástrojů Azure pro prostředí Eclipse, ujistěte se, že **MyHelloWorld_onAzure** je vybrali v prohlížeči projektu na Eclipse, ujistěte se, prohlížeči projektu Eclipse má aktuální okno zaměřit a potom klikněte  **Zrušit publikování** tlačítko ![][ic710883], na panelu nástrojů Eclipse. (Můžete to udělat kliknutím pravým tlačítkem na stejné operace **MyHelloWorld_onAzure** v prohlížeči projektu na Eclipse, kliknutím na **Azure** a potom kliknutím na **Undeploy z cloudu Azure**.) Bude se zobrazovat **zrušit publikování projektu Azure** dialogové okno.
+## <a name="toodelete-your-deployment"></a>toodelete nasazení
+toodelete nasazení v rámci hello nástrojů Azure pro prostředí Eclipse, zajistěte, aby **MyHelloWorld_onAzure** je vybrali v prohlížeči projektu na Eclipse, ujistěte se, hello prohlížeči projektu Eclipse má hello aktuální okno zaměřit a pak klikněte na Hello **zrušit publikování** tlačítko ![][ic710883], v panelu nástrojů Eclipse hello. (Můžete to udělat hello stejné operace kliknutím pravým tlačítkem na **MyHelloWorld_onAzure** v prohlížeči projektu na Eclipse, kliknutím na tlačítko **Azure** a pak levým na **Undeploy z cloudu Azure**.) Bude se zobrazovat hello **zrušit publikování projektu Azure** dialogové okno.
 
 ![][ic719491]
 
-Vyberte předplatné a cloudovou službu, která obsahuje vaše nasazení, vyberte nasazení, které chcete odstranit a potom klikněte na **zrušit publikování**.
+Vyberte hello předplatného a cloud službu, která obsahuje vaše nasazení, vyberte hello nasazení má toodelete a pak klikněte na **zrušit publikování**.
 
-(Alternativu k použití sady nástrojů odstranění nasazení se má používat **cloudové služby** části portálu pro správu Azure: přejděte na vaše nasazení, vyberte ho a klikněte **odstranit** tlačítko. To zastaví a pak odstraníte nasazení. Pokud chcete pouze zastavit nasazení a k jeho odstranění, klikněte na tlačítko **Zastavit** tlačítko místo **odstranit** tlačítko, ale jako uvedených výše, pokud neodstraníte nasazení, budou fakturovatelný poplatky dál nárůst pro vaše nasazení i v případě, že je zastaven).
+(K alternativní toousing hello toolkit toodelete hello nasazení je toouse hello **cloudové služby** části hello Azure Management Portal: přejděte tooyour nasazení, vyberte ho a pak klikněte na tlačítko hello **odstranit** tlačítko. To bude zastavte a odstraňte hello nasazení. Pokud chcete pouze toostop hello nasazení a k jeho odstranění, klikněte na tlačítko hello **Zastavit** tlačítko místo hello **odstranit** tlačítko jak ale zmiňujeme výše, pokud neodstraníte hello nasazení, fakturovatelný poplatky budou Pokračujte tooaccrue pro vaše nasazení i v případě, že je zastaven).
 
 ## <a name="see-also"></a>Viz také
 [Azure nástrojů pro Eclipse][Azure Toolkit for Eclipse]
 
-[Instalace Azure Toolkit pro Eclipse][Installing the Azure Toolkit for Eclipse] 
+[Instalace hello nástrojů Azure pro Eclipse][Installing hello Azure Toolkit for Eclipse] 
 
-[Co je nového v sadě Azure nástrojů pro Eclipse][What's New in the Azure Toolkit for Eclipse]
+[Co je nového v hello nástrojů Azure pro Eclipse][What's New in hello Azure Toolkit for Eclipse]
 
-Další informace o používání Azure s Java najdete v tématu [Azure střediska pro vývojáře Java][Azure Java Developer Center].
+Další informace o používání Azure v jazyce Java, najdete v tématu hello [Azure střediska pro vývojáře Java][Azure Java Developer Center].
 
 <!-- URL List -->
 
@@ -204,9 +204,9 @@ Další informace o používání Azure s Java najdete v tématu [Azure středis
 [Azure Role Properties]: http://go.microsoft.com/fwlink/?LinkID=699525
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
 [Enabling Remote Access for Azure Deployments in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699538
-[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Installing hello Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
 [Server configuration properties]: http://go.microsoft.com/fwlink/?LinkID=699525#server_configuration_properties
-[What's New in the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699552
+[What's New in hello Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699552
 
 <!-- IMG List -->
 

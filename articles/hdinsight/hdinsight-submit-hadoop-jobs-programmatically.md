@@ -1,6 +1,6 @@
 ---
-title: "Odesílání úloh Hadoop v HDInsight | Microsoft Docs"
-description: "Zjistěte, jak k odesílání úloh Hadoop do Azure HDInsight Hadoop."
+title: "úlohy aaaSubmit Hadoop v HDInsight | Microsoft Docs"
+description: "Zjistěte, jak toosubmit Hadoop úlohy tooAzure HDInsight Hadoop."
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: 6829ff82afc7fcea9e027ad14ec7ed0c8015a5fe
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6c3acde744e8e384088a6cd56e4273c001c0c9fb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="submit-hadoop-jobs-in-hdinsight"></a>Odesílání úloh Hadoopu do HDInsight
 
@@ -30,7 +30,7 @@ Můžete odeslat úloh Hadoop pomocí .NET SDK, Curl a prostředí Azure PowerSh
 
   - [Vytvoření neinteraktivního ověřování aplikace .NET](hdinsight-create-non-interactive-authentication-dotnet-applications.md)
   - [Spouštění dotazů Hive pomocí sady .NET SDK HDInsight](hdinsight-hadoop-use-hive-dotnet-sdk.md)
-  - [Spuštění úlohy Pig pomocí sady .NET SDK pro Hadoop v HDInsight](hdinsight-hadoop-use-pig-dotnet-sdk.md)
+  - [Spuštění úlohy Pig pomocí hello .NET SDK pro Hadoop v HDInsight](hdinsight-hadoop-use-pig-dotnet-sdk.md)
   - [Spuštění úloh Sqoop pro Hadoop v HDInsight pomocí sady .NET SDK](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
   - [Spuštění úloh MapReduce pomocí sady .NET SDK HDInsight](hdinsight-hadoop-use-mapreduce-dotnet-sdk.md)
 

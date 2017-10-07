@@ -1,6 +1,6 @@
 ---
-title: "Vyvolání Spark programy z Azure Data Factory | Microsoft Docs"
-description: "Zjistěte, jak má být vyvolán Spark programy ze služby Azure data factory pomocí činnost MapReduce."
+title: aaaInvoke Spark programy z Azure Data Factory | Microsoft Docs
+description: "Zjistěte, jak tooinvoke Spark programy z objektu pro vytváření dat Azure pomocí hello činnost MapReduce."
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
-ms.openlocfilehash: 57894bbdd9208f8c32eb65e29f04e2ae723780ca
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f88943ece7ee3d21dedbd857609f1b2713b62741
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Vyvolání Spark programy z kanálů služby Azure Data Factory
 
@@ -35,75 +35,75 @@ ms.lasthandoff: 08/29/2017
 > * [Vlastní aktivity rozhraní .NET](data-factory-use-custom-activities.md)
 
 ## <a name="introduction"></a>Úvod
-Aktivita Spark je jedním z [aktivit transformace dat](data-factory-data-transformation-activities.md) podporovaných službou Azure Data Factory. Tato aktivita běží zadaný program Spark na cluster Apache Spark v Azure HDInsight.    
+Aktivita Spark je jedním z hello [aktivit transformace dat](data-factory-data-transformation-activities.md) podporovaných službou Azure Data Factory. Tato aktivita se spustí hello zadaný program Spark na cluster Apache Spark v Azure HDInsight.    
 
 > [!IMPORTANT]
 > - Aktivita Spark nepodporuje clustery HDInsight Spark, které používají Azure Data Lake Store jako primární úložiště.
 > - Aktivita Spark podporuje pouze existující (vlastní) clustery HDInsight Spark. HDInsight propojené služby na vyžádání nepodporuje.
 
 ## <a name="walkthrough-create-a-pipeline-with-spark-activity"></a>Návod: vytvoření kanálu s aktivitou Spark
-Tady jsou obvyklá kroky k vytvoření objektu pro vytváření dat kanál s aktivitou Spark.  
+Tady jsou toocreate hello obvyklé kroky pro vytváření dat kanál s aktivitou Spark.  
 
-1. Objekt pro vytváření dat vytvořte.
-2. Vytvoření služby Azure Storage, propojené k propojení vaší úložiště Azure, který je přidružen k objektu pro vytváření dat cluster HDInsight Spark.     
-2. Vytvoření služby Azure HDInsight propojené propojení cluster Apache Spark v Azure HDInsight s data factory.
-3. Vytvořte datovou sadu, která odkazuje propojenou službu úložiště Azure. V současné době je třeba zadat datovou sadu výstupů pro aktivitu i v případě, že neexistuje žádný výstup se vytváří.  
-4. Vytvoření kanálu s aktivitou Spark, která odkazuje propojená služba HDInsight vytvořené v #. 2. Aktivita je nakonfigurován s datovou sadou, kterou jste vytvořili v předchozím kroku jako výstupní datové. Výstupní datové sady je určuje plán (hodinový, denní, atd.). Proto je nutné zadat výstupní datovou sadu, i v případě, že aktivita nevytváří skutečně výstup.
+1. Vytvoření datové továrny
+2. Vytvoření Azure Storage, propojené služby toolink vašeho úložiště Azure, která souvisí s datovou továrnu toohello clusteru HDInsight Spark.     
+2. Vytvořte Azure HDInsight propojené služby toolink váš cluster Apache Spark v Azure HDInsight toohello data factory.
+3. Vytvořte datovou sadu, která odkazuje toohello propojenou službu úložiště Azure. V současné době je třeba zadat datovou sadu výstupů pro aktivitu i v případě, že neexistuje žádný výstup se vytváří.  
+4. Vytvoření kanálu s aktivitou Spark, která odkazuje toohello propojené služby HDInsight vytvořené v #. 2. Aktivita Hello je nakonfigurovaný s hello datovou sadu, kterou jste vytvořili v předchozím kroku hello jako výstupní datové. Hello výstupní datová sada, jaké jednotky hello plán (hodinový, denní, atd.). Proto je nutné zadat hello výstupní datovou sadu, i když hello aktivita nevytváří skutečně výstup.
 
 ### <a name="prerequisites"></a>Požadavky
-1. Vytvořit **účet úložiště pro obecné účely Azure** podle pokynů v návodu: [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account).  
-2. Vytvořit **cluster Apache Spark v Azure HDInsight** podle pokynů v tomto kurzu: [cluster vytvořit Apache Spark v Azure HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md). Přidružení účtu úložiště Azure, kterou jste vytvořili v kroku #1 s tímto clusterem.  
-3. Stáhnout a revidovat souboru skriptu jazyka python **test.py** nacházející se v: [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py).  
-3.  Nahrát **test.py** k **pyFiles** složku **adfspark** kontejneru ve službě Azure Blob storage. Vytvořte kontejner, složku, pokud neexistují.
+1. Vytvořit **účet úložiště pro obecné účely Azure** podle pokynů v Průvodci hello: [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account).  
+2. Vytvořit **cluster Apache Spark v Azure HDInsight** podle pokynů v kurzu hello: [cluster vytvořit Apache Spark v Azure HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md). Přidružte hello účtu úložiště Azure, kterou jste vytvořili v kroku #1 se tento cluster.  
+3. Stáhnout a revidovat soubor skriptu jazyka python hello **test.py** nacházející se v: [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py).  
+3.  Nahrát **test.py** toohello **pyFiles** složky v hello **adfspark** kontejneru ve službě Azure Blob storage. Pokud neexistuje, vytvořte hello kontejneru a složce hello.
 
 ### <a name="create-data-factory"></a>Vytvoření objektu pro vytváření dat
-V tomto kroku začneme vytvořením objektu pro vytváření dat.
+Začneme vytvořením objektu pro vytváření dat hello v tomto kroku.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo klikněte na **NOVÝ**, klikněte na **Data + Analýza** a poté na **Objekt pro vytváření dat**.
-3. V **nový objekt pro vytváření dat** okno, zadejte **SparkDF** pro název.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
+2. Klikněte na tlačítko **nový** v levé nabídce hello, klikněte na tlačítko **Data + analýzy**a klikněte na tlačítko **Data Factory**.
+3. V hello **nový objekt pro vytváření dat** okno, zadejte **SparkDF** pro hello název.
 
    > [!IMPORTANT]
-   > Název objektu pro vytváření dat Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba: **název objektu pro vytváření dat "SparkDF" není k dispozici**. Změňte název objektu pro vytváření dat (například yournameSparkDFdate a zkuste to znovu. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.   
-4. Vyberte **předplatné Azure**, ve kterém chcete objekt pro vytváření dat vytvořit.
+   > musí být Hello název objektu pro vytváření dat Azure hello **globálně jedinečný**. Pokud se zobrazí chyba hello: **název objektu pro vytváření dat "SparkDF" není k dispozici**. Změňte hello název objektu pro vytváření dat hello (například yournameSparkDFdate a zkuste to znovu. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.   
+4. Vyberte hello **předplatného Azure** místo hello data factory toobe vytvořili.
 5. Vyberte existující **skupiny prostředků** nebo vytvořte skupinu prostředků Azure.
-6. Vyberte **připnout na řídicí panel** možnost.  
-6. V okně **Nový objekt pro vytváření dat** klikněte na **Vytvořit**.
+6. Vyberte **Pin toodashboard** možnost.  
+6. Klikněte na tlačítko **vytvořit** na hello **nový objekt pro vytváření dat** okno.
 
    > [!IMPORTANT]
-   > Chcete-li vytvářet instance služby Data Factory, musíte být členem role [Přispěvatel Data Factory](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) na úrovni předplatného a skupiny prostředků.
-7. Zobrazí objektu pro vytváření dat vytváří ve **řídicí panel** na portálu Azure, následujícím způsobem:   
-8. Po úspěšném vytvoření objektu pro vytváření dat se zobrazí stránka s obsahem objektu pro vytváření dat. Pokud se stránka objektu pro vytváření dat nezobrazí, klikněte na dlaždici objektu pro vytváření dat na řídicím panelu.
+   > instance služby Data Factory toocreate, musíte být členem skupiny hello [Přispěvatel objekt pro vytváření dat](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) role na úrovni předplatného nebo prostředků skupiny hello.
+7. Zobrazí hello objekt pro vytváření dat vytváří v hello **řídicí panel** z hello portál Azure následujícím způsobem:   
+8. Po úspěšném vytvoření objektu pro vytváření dat hello, se zobrazí stránka objektu pro vytváření dat hello, se zobrazí hello obsah objektu pro vytváření dat hello. Pokud se stránka objektu pro vytváření dat hello nezobrazí, klikněte na dlaždici hello objektu pro vytváření dat na řídicím panelu hello.
 
     ![Okno Objekt pro vytváření dat](./media/data-factory-spark/data-factory-blade.png)
 
 ### <a name="create-linked-services"></a>Vytvoření propojených služeb
-V tomto kroku vytvoříte dvě propojené služby, jednu pro váš cluster Spark propojit objekt pro vytváření dat a další propojení úložiště Azure pro vytváření dat..  
+V tomto kroku vytvoříte dvě propojené služby, toolink jednu datovou továrnu tooyour clusteru Spark a hello jiných toolink datovou továrnu tooyour úložiště Azure.  
 
 #### <a name="create-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
-V tomto kroku propojíte se svým objektem pro vytváření dat svůj účet služby Azure Storage. Datové sady, které vytvoříte v kroku později v tomto názorném postupu odkazuje na tato propojená služba. Propojená služba HDInsight, kterou definujete v dalším kroku odkazuje na tato propojená služba příliš.  
+V tomto kroku propojíte datovou továrnu tooyour účet úložiště Azure. Datové sady, které vytvoříte v kroku později v tomto názorném postupu odkazuje toothis propojené služby. Hello propojené služby HDInsight, kterou definujete v dalším kroku hello příliš odkazuje toothis propojené služby.  
 
-1. Klikněte na tlačítko **vytvořit a nasadit** na **Data Factory** okno objektu pro vytváření dat. Měli byste vidět editor služby Data Factory.
+1. Klikněte na tlačítko **vytvořit a nasadit** na hello **Data Factory** okno objektu pro vytváření dat. Měli byste vidět hello editoru služby Data Factory.
 2. Klikněte na **Nové datové úložiště** a zvolte **Účet Azure**.
 
    ![Nové úložiště dat – Azure Storage – nabídka](./media/data-factory-spark/new-data-store-azure-storage-menu.png)
-3. Měli byste vidět **skript JSON** pro vytvoření Azure Storage propojená služba v editoru.
+3. Měli byste vidět hello **skript JSON** pro vytvoření Azure Storage propojená služba v editoru hello.
 
    ![Propojená služba Azure Storage](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
-4. Nahraďte **název účtu** a **klíč účtu** názvem a přístupovým klíčem k účtu úložiště Azure. Chcete-li zjistit, jak získat přístupový klíč k úložišti, přečtěte si informace o zobrazení, kopírování a opětovném vygenerování přístupových klíčů k úložišti v tématu [Správa účtu úložiště](../storage/common/storage-create-storage-account.md#manage-your-storage-account).
-5. Chcete-li nasadit propojené služby, klikněte na tlačítko **nasadit** na panelu příkazů. Po úspěšném nasazení propojené služby by mělo okno **Koncept-1** zmizet a v zobrazení stromu nalevo se zobrazí služba **AzureStorageLinkedService**.
+4. Nahraďte **název účtu** a **klíč účtu** hello názvem a přístupovým klíčem k účtu úložiště Azure. toolearn jak přístup tooget úložiště klíčů najdete v tématu hello informace o tom, jak tooview, kopírování a opětovné vytváření úložiště přístupové klíče v [spravovat váš účet úložiště](../storage/common/storage-create-storage-account.md#manage-your-storage-account).
+5. toodeploy hello propojené služby, klikněte na tlačítko **nasadit** na panelu příkazů hello. Po hello propojené služby nasazení úspěšně hello **koncept-1** by měl zmizet okně a zobrazí **AzureStorageLinkedService** v hello stromovém zobrazení na levé straně hello.
 
 #### <a name="create-hdinsight-linked-service"></a>Vytvoření propojené služby HDInsight
-V tomto kroku vytvoříte propojené služby Azure HDInsight propojit k objektu pro vytváření dat cluster HDInsight Spark. HDInsight cluster se používá ke spuštění programu Spark určeného v aktivitě Spark kanálu v této ukázce.  
+V tomto kroku vytvoříte toolink Azure HDInsight propojené služby clusteru HDInsight Spark toohello datovou továrnu. Hello HDInsight cluster je použité toorun hello Spark program zadaný v aktivitě Spark hello hello kanálu v této ukázce.  
 
-1. Pokud tlačítko nevidíte, klikněte na panelu nástrojů na **... Další** na panelu nástrojů klikněte na tlačítko **nový výpočet**a potom klikněte na **clusteru HDInsight**.
+1. Pokud tlačítko nevidíte, klikněte na panelu nástrojů na **... Další** na hello nástrojů, klikněte na tlačítko **nový výpočet**a potom klikněte na **clusteru HDInsight**.
 
     ![Vytvoření propojené služby HDInsight](media/data-factory-spark/new-hdinsight-linked-service.png)
-2. Následující fragment kódu zkopírujte a vložte ho do okna **Koncept-1**. V editoru JSON proveďte následující kroky:
-    1. Zadejte **URI** pro cluster HDInsight Spark. Například: `https://<sparkclustername>.azurehdinsight.net/`.
-    2. Zadejte název **uživatele** kdo má přístup ke clusteru Spark.
-    3. Zadejte **heslo** pro uživatele.
-    4. Zadejte **propojená služba Azure Storage** který je přidružen ke clusteru HDInsight Spark. V tomto příkladu je: **AzureStorageLinkedService**.
+2. Zkopírujte a vložte následující fragment kódu toohello hello **koncept-1** okno. V editoru JSON hello hello následující kroky:
+    1. Zadejte hello **URI** hello HDInsight Spark clusteru. Například: `https://<sparkclustername>.azurehdinsight.net/`.
+    2. Zadejte název hello hello **uživatele** kdo má cluster Spark toohello přístup.
+    3. Zadejte hello **heslo** pro uživatele.
+    4. Zadejte hello **propojená služba Azure Storage** který je přidružen hello clusteru HDInsight Spark. V tomto příkladu je: **AzureStorageLinkedService**.
 
     ```json
     {
@@ -124,14 +124,14 @@ V tomto kroku vytvoříte propojené služby Azure HDInsight propojit k objektu 
     > - Aktivita Spark nepodporuje clustery HDInsight Spark, které používají Azure Data Lake Store jako primární úložiště.
     > - Aktivita Spark podporuje pouze existující (vlastní) clusteru HDInsight Spark. HDInsight propojené služby na vyžádání nepodporuje.
 
-    V tématu [propojená služba HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) podrobnosti o HDInsight propojené služby.
-3.  Chcete-li nasadit propojené služby, klikněte na tlačítko **nasadit** na panelu příkazů.  
+    V tématu [propojená služba HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) podrobnosti o hello HDInsight propojené služby.
+3.  toodeploy hello propojené služby, klikněte na tlačítko **nasadit** na panelu příkazů hello.  
 
 ### <a name="create-output-dataset"></a>Vytvoření výstupní datové sady
-Výstupní datové sady je určuje plán (hodinový, denní, atd.). Proto je nutné zadat výstupní datovou sadu aktivity spark v kanálu, i když aktivita skutečně nevytváří žádný výstup. Určení vstupní datové sady pro aktivitu je volitelné.
+Hello výstupní datová sada, jaké jednotky hello plán (hodinový, denní, atd.). Proto je nutné zadat výstupní datovou sadu aktivity hello spark v kanálu hello, i když aktivita hello skutečně nevytváří žádný výstup. Určení vstupní datové sady pro aktivitu hello je volitelné.
 
-1. V **Data Factory Editoru** klikněte na **... Další**, klikněte na **Nová datová sada** a vyberte **Azure Blob Storage**.  
-2. Následující fragment kódu zkopírujte a vložte ho do okna Koncept-1. Fragmentu kódu JSON Určuje datovou sadu s názvem **OutputDataset**. Kromě toho určíte, že se mají výsledky ukládat do kontejneru objektů blob s názvem **adfspark** a ve složce s názvem **pyFiles výstupní**. Jak už bylo zmíněno dříve, je tato datová sada fiktivní datová sada. Program Spark v tomto příkladu nevytváří žádný výstup. **Dostupnosti** části určuje, že se výstupní sada vytváří denně.  
+1. V hello **editoru služby Data Factory**, klikněte na tlačítko **... Další** na panelu příkazů hello, klikněte na tlačítko **nová datová sada**a vyberte **úložiště objektů Azure Blob**.  
+2. Zkopírujte a vložte následující fragment kódu toohello koncept-1 okno hello. Hello fragmentu kódu JSON Určuje datovou sadu s názvem **OutputDataset**. Kromě toho určíte, že hello výsledky ukládat do kontejneru objektů blob hello s názvem **adfspark** a hello složku s názvem **pyFiles výstupní**. Jak už bylo zmíněno dříve, je tato datová sada fiktivní datová sada. Hello Spark program v tomto příkladu nevytváří žádný výstup. Hello **dostupnosti** část určuje, že hello výstupní sada vytváří jednou denně.  
 
     ```json
     {
@@ -154,14 +154,14 @@ Výstupní datové sady je určuje plán (hodinový, denní, atd.). Proto je nut
         }
     }
     ```
-3. Chcete-li nasadit datovou sadu, klikněte na tlačítko **nasadit** na panelu příkazů.
+3. toodeploy hello datovou sadu, klikněte na tlačítko **nasadit** na panelu příkazů hello.
 
 
 ### <a name="create-pipeline"></a>Vytvoření kanálu
-V tomto kroku vytvoříte kanál s **HDInsightSpark** aktivity. V současnosti určuje plán výstupní datová sada, takže musíte výstupní datovou sadu vytvořit i v případě, že aktivita nevytváří žádný výstup. Pokud aktivita nemá žádný vstup, vstupní datovou sadu vytvářet nemusíte. Proto žádné vstupní datové sady je zadána v tomto příkladu.
+V tomto kroku vytvoříte kanál s **HDInsightSpark** aktivity. Výstupní datové sady v současné době je, jaké jednotky hello plánu, takže je nutné vytvořit datovou sadu výstupů i v případě, že hello aktivita nevytváří žádný výstup. Pokud aktivita hello neberou žádný vstup, můžete přeskočit vytvoření vstupní datové sady hello. Proto žádné vstupní datové sady je zadána v tomto příkladu.
 
-1. V **editoru služby Data Factory**, klikněte na tlačítko **... Další** na panelu příkazů a pak klikněte na tlačítko **nový kanál**.
-2. Skript v okna koncept-1 nahraďte následující skript:
+1. V hello **editoru služby Data Factory**, klikněte na tlačítko **... Další** na panelu příkazů text hello a potom klikněte na **nový kanál**.
+2. Nahraďte hello skript v okně hello koncept-1 hello následující skript:
 
     ```json
     {
@@ -189,68 +189,68 @@ V tomto kroku vytvoříte kanál s **HDInsightSpark** aktivity. V současnosti u
         }
     }
     ```
-    Je třeba počítat s následujícím:
-    - **Typ** je nastavena na **HDInsightSpark**.
-    - **RootPath** je nastaven na **adfspark\\pyFiles** kde adfspark je kontejner objektů Blob v Azure a pyFiles je dobře složku v daném kontejneru. V tomto příkladu úložiště objektů Blob Azure je ten, který je přidružen Spark cluster. Můžete nahrát soubor do jiného úložiště Azure. Pokud tak učiníte, vytvoření služby Azure Storage, propojené propojení objektu pro vytváření dat. Tento účet úložiště. Potom zadejte název propojené služby, jako hodnotu **sparkJobLinkedService** vlastnost. V tématu [vlastnosti aktivity Spark](#spark-activity-properties) podrobnosti o této vlastnosti a dalších vlastností podporované aktivitou Spark.  
-    - **EntryFilePath** je nastaven na **test.py**, což je soubor python.
-    - **Getdebuginfo –** je nastavena na **vždy**, tzn., soubory protokolů jsou vždy vygeneruje (úspěch nebo neúspěch).
+    Všimněte si hello následující body:
+    - Hello **typ** vlastnost je nastavena příliš**HDInsightSpark**.
+    - Hello **rootPath** je nastaven příliš**adfspark\\pyFiles** kde adfspark je kontejner objektů Blob Azure hello a pyFiles je dobře složka v tomto kontejneru. V tomto příkladu je hello Azure Blob Storage hello ten, který je přidružen hello Spark cluster. Můžete nahrát soubor tooa hello jiného úložiště Azure. Pokud tak učiníte, vytváření Azure Storage, propojené služby toolink tohoto úložiště účet toohello dat. Potom zadejte název hello hello propojené služby jako hodnotu pro hello **sparkJobLinkedService** vlastnost. V tématu [vlastnosti aktivity Spark](#spark-activity-properties) podrobnosti o této vlastnosti a dalších vlastností nepodporuje hello Spark aktivity.  
+    - Hello **entryFilePath** nastavena toohello **test.py**, což je soubor python hello.
+    - Hello **getdebuginfo –** vlastnost je nastavena příliš**vždy**, což znamená, že soubory protokolu hello jsou vždy vygeneruje (úspěch nebo neúspěch).
 
         > [!IMPORTANT]
-        > Doporučujeme, abyste tuto vlastnost nenastavujte na `Always` v produkčním prostředí Pokud řešíte problém.
-    - **Výstupy** obsahuje jednu výstupní datovou sadu. Je třeba zadat datovou sadu výstupů i v případě, že spark program nevytváří žádný výstup. Výstupní datovou sadu jednotky plán pro kanál (hodinový, denní, atd.).  
+        > Doporučujeme, abyste tuto vlastnost příliš nenastavujte`Always` v produkčním prostředí Pokud řešíte problém.
+    - Hello **výstupy** obsahuje jednu výstupní datovou sadu. Je třeba zadat datovou sadu výstupů i v případě, že hello spark program nevytváří žádný výstup. plán hello Hello výstupní datovou sadu jednotky pro kanál hello (hodinový, denní, atd.).  
 
-        Podrobnosti o vlastnostech podporovaných aktivitou Spark najdete v tématu [Spark vlastnosti aktivity](#spark-activity-properties) části.
-3. Chcete-li nasadit kanálu, klikněte na tlačítko **nasadit** na panelu příkazů.
+        Podrobnosti o vlastnostech hello podporovaných aktivitou Spark najdete v tématu [Spark vlastnosti aktivity](#spark-activity-properties) části.
+3. toodeploy hello kanálu, klikněte na tlačítko **nasadit** na panelu příkazů hello.
 
 ### <a name="monitor-pipeline"></a>Monitorování kanálu
-1. Klikněte na tlačítko **X** zavřete okna editoru služby Data Factory a přejděte zpět na domovskou stránku služby Data Factory. Klikněte na tlačítko **monitorování a správa** ke spuštění monitorování aplikací na jiné kartě.
+1. Klikněte na tlačítko **X** oken editoru služby Data Factory tooclose a toonavigate zpět toohello objekt pro vytváření dat domovské stránky. Klikněte na tlačítko **monitorování a správa** toolaunch hello monitorování aplikací na jiné kartě.
 
     ![Dlaždice monitorování a Správa](media/data-factory-spark/monitor-and-manage-tile.png)
-2. Změna **počáteční čas** filtru v horní části na **2/1/2017**a klikněte na tlačítko **použít**.
-3. Pouze jeden interval aktivity byste měli vidět, jako je pouze jeden den mezi počátečním (2017-02-01) a koncový čas (2017-02-02) kanálu. Potvrďte, že datový řez je v **připraven** stavu.
+2. Změna hello **počáteční čas** filtru v horní části hello příliš**2/1/2017**a klikněte na tlačítko **použít**.
+3. Jak je pouze jeden den mezi hello spuštění (2017-02-01) a ukončení (2017-02-02) hello kanálu, měli byste vidět jenom jeden interval aktivity. Potvrďte, že hello datový řez je v **připraven** stavu.
 
-    ![Monitorování kanálu](media/data-factory-spark/monitor-and-manage-app.png)    
-4. Vyberte **okně aktivita** zobrazíte podrobnosti o aktivity při spuštění. Pokud dojde k chybě, zobrazí podrobnosti o tom, v pravém podokně.
+    ![Monitorování kanálu hello](media/data-factory-spark/monitor-and-manage-app.png)    
+4. Vyberte hello **okně aktivita** toosee podrobnosti o hello aktivity při spuštění. Pokud dojde k chybě, zobrazí podrobnosti o něm v pravém podokně hello.
 
-### <a name="verify-the-results"></a>Ověření výsledků
+### <a name="verify-hello-results"></a>Zkontrolujte výsledky hello
 
 1. Spusťte **Poznámkový blok Jupyter** pro váš cluster HDInsight Spark přechodem na: https://CLUSTERNAME.azurehdinsight.net/jupyter. Můžete také spustit řídicí panel clusteru pro váš cluster HDInsight Spark a poté spusťte **Poznámkový blok Jupyter**.
-2. Klikněte na tlačítko **nový** -> **PySpark** spusťte nový poznámkový blok.
+2. Klikněte na tlačítko **nový** -> **PySpark** toostart nový poznámkový blok.
 
     ![Nový poznámkový blok Jupyter](media/data-factory-spark/jupyter-new-book.png)
-3. Spusťte následující příkaz kopírování/vkládání textu a stisknutím klávesy **SHIFT + ENTER** na konci druhý příkaz.  
+3. Spuštění hello následující příkaz kopírování/vkládání textu hello a stisknutím klávesy **SHIFT + ENTER** na konci hello druhý příkaz hello.  
 
     ```sql
     %%sql
 
     SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
     ```
-4. Zkontrolujte, jestli data z tabulky TVK:  
+4. Zkontrolujte, jestli hello data z tabulky TVK hello:  
 
     ![Výsledky dotazu Jupyter](media/data-factory-spark/jupyter-notebook-results.png)
 
 V tématu [spuštění dotazů Spark SQL](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md#run-a-hive-query-using-spark-sql) části Podrobné pokyny. 
 
 ### <a name="troubleshooting"></a>Řešení potíží
-Vzhledem k tomu, že nastavíte **getdebuginfo –** k **vždy**, uvidíte **protokolu** podsložky v **pyFiles** složky v kontejnerech objektů Blob Azure. Další podrobnosti najdete v souboru protokolu ve složce protokolů. Tento soubor protokolu je obzvláště užitečná, když dojde k chybě. V produkčním prostředí, můžete ji nastavit na **selhání**.
+Vzhledem k tomu, že nastavíte **getdebuginfo –** příliš**vždy**, uvidíte **protokolu** podsložky v hello **pyFiles** složky v kontejnerech objektů Blob Azure. Další podrobnosti najdete v souboru protokolu Hello hello do složky protokolů. Tento soubor protokolu je obzvláště užitečná, když dojde k chybě. V produkčním prostředí, může být vhodné tooset je příliš**selhání**.
 
-Další informace o řešení, postupujte takto:
+Pro další informace o řešení, hello následující kroky:
 
 
-1. Přejděte na `https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster`.
+1. Přejděte příliš`https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster`.
 
     ![Uživatelské rozhraní YARN aplikace](media/data-factory-spark/yarnui-application.png)  
-2. Klikněte na tlačítko **protokoly** pro jedno spuštění pokusí.
+2. Klikněte na tlačítko **protokoly** pro jednu hello spustit pokusy.
 
     ![Stránka aplikace](media/data-factory-spark/yarn-applications.png)
-3. Měli byste vidět další chybové informace na stránce protokolu.
+3. Měli byste vidět další informace o chybě v protokolu stránku hello.
 
     ![Chyba protokolu](media/data-factory-spark/yarnui-application-error.png)
 
-Následující části obsahují informace o entit služby Data Factory používat cluster Apache Spark a aktivity Spark v datové továrně.
+Hello následující části obsahují informace o cluster Apache Spark toouse entity služby Data Factory a aktivita Spark v datové továrně.
 
 ## <a name="spark-activity-properties"></a>Vlastnosti aktivity Spark
-Zde je ukázka definici JSON kanálu s aktivitou Spark:    
+Tady je hello ukázka definici JSON kanálu s aktivitou Spark:    
 
 ```json
 {
@@ -274,7 +274,7 @@ Zde je ukázka definici JSON kanálu s aktivitou Spark:
                     }
                 ],
                 "name": "MySparkActivity",
-                "description": "This activity invokes the Spark program",
+                "description": "This activity invokes hello Spark program",
                 "linkedServiceName": "HDInsightLinkedService"
             }
         ],
@@ -284,39 +284,39 @@ Zde je ukázka definici JSON kanálu s aktivitou Spark:
 }
 ```
 
-Následující tabulka popisuje vlastnostech JSON použitých v definici JSON:
+Hello následující tabulka popisuje hello vlastnostech JSON použitých ve hello definici JSON:
 
 | Vlastnost | Popis | Požaduje se |
 | -------- | ----------- | -------- |
-| jméno | Název aktivity v kanálu. | Ano |
-| Popis | Popisuje, jakým způsobem aktivita naloží text. | Ne |
-| type | Tato vlastnost musí být nastavená na HDInsightSpark. | Ano |
-| linkedServiceName | Název propojená služba HDInsight na kterém běží Spark program. | Ano |
-| rootPath | Kontejner objektů Blob v Azure a složky, která obsahuje soubor Spark. Název souboru je malá a velká písmena. | Ano |
-| entryFilePath | Relativní cesta ke kořenové složce Spark kódu nebo balíčku. | Ano |
+| jméno | Název hello aktivity v kanálu hello. | Ano |
+| description | Text popisující jaké aktivity hello nepodporuje. | Ne |
+| type | Tato vlastnost musí být nastavená tooHDInsightSpark. | Ano |
+| linkedServiceName | Název hello HDInsight propojené služby, na které hello Spark program se spustí. | Ano |
+| rootPath | kontejner objektů Blob Azure Hello a složky, která obsahuje soubor Spark hello. Název souboru Hello je malá a velká písmena. | Ano |
+| entryFilePath | Relativní cesta toohello kořenové složky hello Spark nebo balíček kódu. | Ano |
 | Název třídy | Hlavní třídy aplikace Java/Spark | Ne |
-| Argumenty | Seznam argumentů příkazového řádku pro Spark program. | Ne |
-| proxyUser | Uživatelský účet zosobnění spuštění programu Spark | Ne |
-| sparkConfig | Zadejte hodnoty pro vlastnosti konfigurace Spark vypsané v tomto tématu: [Spark konfigurace – vlastnosti aplikace](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Ne |
-| getdebuginfo – | Určuje, kdy soubory protokolu Spark se zkopírují do úložiště Azure používá HDInsight cluster (nebo) zadaný ve sparkJobLinkedService. Povolené hodnoty: None, vždy nebo selhání. Výchozí hodnota: žádné. | Ne |
-| sparkJobLinkedService | Azure Storage propojená služba, která obsahuje Spark soubor úlohy, závislosti a protokoly.  Pokud hodnotu pro tuto vlastnost nezadáte, použije se úložiště přidružený k clusteru HDInsight. | Ne |
+| Argumenty | Seznam argumentů příkazového řádku toohello Spark programu. | Ne |
+| proxyUser | Spark program hello tooimpersonate tooexecute Hello uživatelského účtu | Ne |
+| sparkConfig | Zadejte hodnoty pro vlastnosti konfigurace Spark uvedených v tématu hello: [Spark konfigurace – vlastnosti aplikace](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Ne |
+| getdebuginfo – | Určuje, když jsou soubory protokolu Spark hello zkopírovaný toohello úložiště Azure používá HDInsight cluster (nebo) zadaný ve sparkJobLinkedService. Povolené hodnoty: None, vždy nebo selhání. Výchozí hodnota: žádné. | Ne |
+| sparkJobLinkedService | Hello Azure Storage propojená služba, která obsahuje soubor úlohy Spark hello, závislosti a protokoly.  Pokud hodnotu pro tuto vlastnost nezadáte, použije se hello úložiště přidruženého k clusteru HDInsight. | Ne |
 
 ## <a name="folder-structure"></a>Struktura složek
-Aktivita Spark nepodporuje skriptu v řádku jako Pig a do aktivity Hive. Spark úlohy jsou také více extensible než úlohy Pig nebo Hive. Pro úlohy Spark, můžete zadat více závislostí, jako jar balíčky (umístěné v jazyce java cesty pro třídy), soubory python (umístit na PYTHONPATH) a všechny další soubory.
+Hello Spark aktivity nepodporuje skriptu v řádku jako Pig a do aktivity Hive. Spark úlohy jsou také více extensible než úlohy Pig nebo Hive. Pro úlohy Spark, můžete zadat více závislostí, jako jar balíčky (umístěné v jazyce java hello cesty pro třídy), soubory python (umístit na hello PYTHONPATH) a všechny další soubory.
 
-Vytvořte následující strukturu složek ve službě Azure Blob storage, na kterou odkazuje propojená služba HDInsight. Potom obsah nahrajete soubory závislé na příslušné podsložek v kořenové složce reprezentována **entryFilePath**. Například nahrajte python soubory do pyFiles podsložky a soubory jar do podsložky JAR kořenové složky. Služba Data Factory v době běhu očekává následující strukturu složek ve službě Azure Blob storage:     
+Vytvořte hello následující strukturu složek v hello úložiště objektů Azure Blob odkazuje hello propojené služby HDInsight. Potom obsah nahrajete závislé soubory toohello odpovídající podsložek hello kořenové složky, která je reprezentována **entryFilePath**. Můžete například nahrajte python soubory toohello pyFiles podsložky a soubory jar toohello JAR podsložky hello kořenové složky. Služba Data Factory v době běhu očekává hello následující strukturu složek v hello úložiště objektů Blob v Azure:     
 
 | Cesta | Popis | Požaduje se | Typ |
 | ---- | ----------- | -------- | ---- |
-| . | Kořenová cesta úlohy Spark v úložišti propojená služba  | Ano | Složka |
-| &lt;uživatelem definované&gt; | Cesta k souboru položka úlohy Spark | Ano | File |
-| . / jars | Všechny soubory v této složce se nahrála a umístit na cestě třídy java clusteru | Ne | Složka |
-| . / pyFiles | Všechny soubory v této složce se nahrála a umístit do PYTHONPATH clusteru | Ne | Složka |
+| . | Kořenová cesta Hello hello úlohy Spark v hello propojená služba úložiště    | Ano | Složka |
+| &lt;uživatelem definované&gt; | Cesta Hello odkazující toohello vstupní soubor úlohy Spark hello | Ano | File |
+| . / jars | Všechny soubory v této složce se nahrála a umístit na cestě třídy java hello hello clusteru | Ne | Složka |
+| . / pyFiles | Všechny soubory v této složce se nahrála a umístit na hello PYTHONPATH hello clusteru | Ne | Složka |
 | . / soubory | Všechny soubory v této složce se nahrála a umístit na vykonavatele pracovní adresář | Ne | Složka |
 | . / archivy | Všechny soubory v této složce nekomprimované | Ne | Složka |
-| . / protokoly | Složky, kde jsou uložené protokoly z clusteru Spark.| Ne | Složka |
+| . / protokoly | Hello složku, kde jsou uloženy protokoly z clusteru Spark hello.| Ne | Složka |
 
-Tady je příklad pro úložiště, který obsahuje dva soubory úlohy Spark v Azure Blob Storage odkazuje propojená služba HDInsight.
+Tady je příklad pro úložiště, který obsahuje dva soubory úlohy Spark v Azure Blob Storage odkazuje hello propojené služby HDInsight hello.
 
 ```
 SparkJob1

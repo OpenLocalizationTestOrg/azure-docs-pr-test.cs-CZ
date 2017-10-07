@@ -1,6 +1,6 @@
 ---
-title: "Služba Fabric a nasazení kontejnerů v systému Linux | Microsoft Docs"
-description: "Service Fabric a použití kontejnery Linux k nasazení aplikací mikroslužby. Tento článek popisuje možnosti, které poskytuje služby infrastruktury pro kontejnery a nasazení bitové kopie kontejneru Linux do clusteru"
+title: "aaaService prostředků infrastruktury a nasazení kontejnerů v systému Linux | Microsoft Docs"
+description: "Service Fabric a hello pomocí aplikace pro Linux kontejnery toodeploy mikroslužby. Tento článek popisuje hello možnosti, které Service Fabric nabízí pro kontejnery a jak toodeploy kontejner Linux bitové kopie do clusteru"
 services: service-fabric
 documentationcenter: .net
 author: msfussell
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/29/2017
 ms.author: msfussell
-ms.openlocfilehash: 9dcec753e5f999a1bac07276373c0c25f89ec58d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e28f99a145b0594d871b0ec0566233a7ad235ce8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-a-linux-container-to-service-fabric"></a>Nasadit kontejner Linux do Service Fabric
+# <a name="deploy-a-linux-container-tooservice-fabric"></a>Nasazení Linux kontejneru tooService prostředků infrastruktury
 > [!div class="op_single_selector"]
 > * [Nasazení kontejneru systému Windows](service-fabric-deploy-container.md)
 > * [Nasazení kontejneru Linux](service-fabric-deploy-container-linux.md)
@@ -31,57 +31,57 @@ Tento článek vás provede procesem vytváření kontejnerizované služeb v ko
 
 Service Fabric má několik kontejneru funkcí, které vám pomůžou s vytváření aplikací, které se skládají z mikroslužeb, která jsou kontejnerizované. Tyto služby se nazývají kontejnerové služby.
 
-Schopnosti zahrnují;
+Hello schopnosti zahrnují;
 
 * Nasazení bitové kopie kontejneru a aktivace
 * Zásady správného řízení prostředků
 * Úložiště ověřování
-* Port kontejneru na mapování portů hostitele
+* Mapování portů toohost port kontejneru
 * Zjišťování – kontejnery a komunikace
-* Možnost konfigurace a nastavení proměnných prostředí
+* Možnost tooconfigure a nastavení proměnných prostředí
 
 ## <a name="packaging-a-docker-container-with-yeoman"></a>Balení kontejner docker s yeoman
-Při balení kontejner v systému Linux, můžete buď používat šablony yeoman nebo [ručně vytvořit balíček aplikace](#manually).
+Při balení kontejner v systému Linux, můžete zvolit buď toouse šablonu yeoman nebo [ručně vytvořit balíček aplikace hello](#manually).
 
-Aplikace Service Fabric může obsahovat jeden nebo více kontejnerů, každý s určitou roli při poskytování funkcí aplikace. Sada Service Fabric SDK pro Linux zahrnuje generátor [Yeoman](http://yeoman.io/), který usnadňuje vytvoření aplikace a přidání image kontejneru. Použijme Yeomana k vytvoření aplikace *SimpleContainerApp* s jediným kontejnerem Dockeru. Můžete přidat že další služby později úpravou vygenerovaného manifest soubory.
+Aplikace Service Fabric může obsahovat jeden nebo více kontejnerů, každý s určitou roli při poskytování funkcí aplikace hello. zahrnuje Hello Service Fabric SDK pro Linux [Yeoman](http://yeoman.io/) generátor, který umožňuje snadno toocreate vaší aplikace a přidat bitovou kopii kontejneru. Umožňuje použít Yeoman toocreate názvem aplikace s jediný kontejner Docker *SimpleContainerApp*. Další služby můžete přidat později úpravou hello generované manifestu souborů.
 
 ## <a name="install-docker-on-your-development-box"></a>Nainstalujte na vaše pole vývoj Docker
 
-Spusťte následující příkazy instalace docker na vaše pole vývoj Linux (Pokud používáte vagrant bitové kopie na OSX, docker je již nainstalována):
+Hello spusťte následující příkazy tooinstall docker na vaše pole vývoj Linux (Pokud používáte hello vagrant image na OSX, docker je již nainstalována):
 
 ```bash
     sudo apt-get install wget
     wget -qO- https://get.docker.io/ | sh
 ```
 
-## <a name="create-the-application"></a>Vytvoření aplikace
+## <a name="create-hello-application"></a>Vytvoření aplikace hello
 1. V terminálu zadejte `yo azuresfcontainer`.
 2. Název aplikace - například mycontainerap
-3. Zadejte adresu URL pro kontejner bitovou kopii z DockerHub úložišti. Parametr image má podobu [úložišti] / [název image]
-4. Pokud bitovou kopii nemá zatížení vstupní bod definované, pak je třeba explicitně zadat vstupní příkazy s oddělovači sadu příkazů pro spuštění uvnitř kontejneru, který uchová kontejneru spuštění po spuštění.
+3. Zadejte adresu URL hello hello kontejneru bitové kopie z DockerHub úložišti. Hello image parametr trvá hello formuláře [úložišti] / [název image]
+4. Pokud hello obrázek nemá zatížení vstupní bod definované, pak musíte tooexplicitly zadat vstupní příkazy sadu příkazů toorun uvnitř hello kontejneru, který uchová hello kontejneru spuštění po spuštění oddělených čárkou.
 
 ![Generátor Service Fabric Yeoman pro kontejnery][sf-yeoman]
 
-## <a name="deploy-the-application"></a>Nasazení aplikace
+## <a name="deploy-hello-application"></a>Nasazení aplikace hello
 
 ### <a name="using-xplat-cli"></a>Použití XPlat CLI
-Jakmile je aplikace sestavená, můžete ji nasadit do místního clusteru pomocí rozhraní příkazového řádku Azure.
+Po hello aplikace, můžete ho nasadit toohello místní cluster pomocí hello rozhraní příkazového řádku Azure.
 
-1. Připojte se k místnímu clusteru služby Service Fabric.
+1. Připojte toohello místní cluster Service Fabric.
 
     ```bash
     azure servicefabric cluster connect
     ```
 
-2. Pomocí instalačního skriptu, který je součástí šablony, zkopírujte balíček aplikace do úložiště imagí clusteru, zaregistrujte typ aplikace a vytvořte její instanci.
+2. Použití hello nainstalujete skript zadaný v toocopy hello šablony aplikace hello balíček toohello clusteru úložiště bitových kopií, registrace typu aplikace hello a vytvoření instance aplikace hello.
 
     ```bash
     ./install.sh
     ```
 
-3. Otevřete prohlížeč a přejdete k Service Fabric Exploreru na adrese http://localhost:19080/Explorer (pokud používáte Vagrant v Mac OS X, místo localhost použijte privátní IP adresu virtuálního počítače).
-4. Rozbalte uzel Aplikace a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
-5. Odinstalační skript pro zadané v šabloně použijte k odstranění instance aplikace a zrušení registrace typu aplikace.
+3. Otevřete prohlížeč a přejděte tooService Fabric Explorer na http://localhost: 19080/Explorer (nahraďte localhost s privátní IP hello hello virtuálních počítačů, když Vagrant na Mac OS X).
+4. Rozbalte uzel aplikace hello a Všimněte si, že nyní položka pro váš typ aplikace a druhý pro hello první instance tohoto typu.
+5. Odinstalační skript pro použití hello k dispozici v instanci aplikace hello šablony toodelete hello a zrušení registrace typu aplikace hello.
 
     ```bash
     ./uninstall.sh
@@ -89,31 +89,31 @@ Jakmile je aplikace sestavená, můžete ji nasadit do místního clusteru pomoc
 
 ### <a name="using-azure-cli-20"></a>Použití Azure CLI 2.0
 
-Na správu v tématu referenční dokumentace [životního cyklu aplikace pomocí Azure CLI 2.0](service-fabric-application-lifecycle-azure-cli-2-0.md).
+Na správu najdete v části hello referenční dokumentace [životní cyklus aplikace pomocí Azure CLI 2.0 hello](service-fabric-application-lifecycle-azure-cli-2-0.md).
 
-Ukázkovou aplikaci [ukázky najdete v článku věnovaném kód kontejneru Service Fabric na Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
+Ukázkovou aplikaci [ukázky najdete v článku věnovaném hello kód kontejneru Service Fabric na Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
-## <a name="adding-more-services-to-an-existing-application"></a>Přidání více služeb do stávající aplikace
+## <a name="adding-more-services-tooan-existing-application"></a>Přidání další služby tooan existující aplikace
 
-Pro přidání do aplikace již vytvořené pomocí jiné služby kontejneru `yo`, proveďte následující kroky:
+tooadd jiný kontejner služby již vytvořené pomocí aplikace tooan `yo`, proveďte následující kroky hello:
 
-1. Změňte adresář na kořenovou složku stávající aplikace.  Například `cd ~/YeomanSamples/MyApplication`, pokud `MyApplication` je aplikace vytvořená pomocí Yeomanu.
+1. Změnit kořenový adresář toohello hello existující aplikace.  Například `cd ~/YeomanSamples/MyApplication`, pokud `MyApplication` je vytvořený Yeoman aplikace hello.
 2. Spusťte `yo azuresfcontainer:AddService`.
 
 <a id="manually"></a>
 
 ## <a name="manually-package-and-deploy-a-container-image"></a>Ručně zabalení a nasazení bitové kopie kontejneru
-Proces ručně balení kontejnerové služby podle následujících kroků:
+proces Hello ručně balení kontejnerové služby je založena na hello následující kroky:
 
-1. Kontejnery publikujte do úložiště.
-2. Vytvořte strukturu adresáře balíčku.
-3. Upravte soubor manifestu služby.
-4. Upravte soubor manifestu aplikace.
+1. Publikujte hello kontejnery tooyour úložiště.
+2. Vytvořte strukturu adresáře balíčku hello.
+3. Upravte soubor manifestu služby hello.
+4. Upravte soubor manifestu aplikace hello.
 
 ## <a name="deploy-and-activate-a-container-image"></a>Nasazení a aktivaci bitovou kopii kontejneru
-V Service Fabric [aplikačního modelu](service-fabric-application-model.md), kontejner představuje hostitele aplikace ve více služby, která jsou umístěna repliky. K nasazení a aktivaci kontejner, uveďte název kontejneru bitové kopie do `ContainerHost` element v service manifest.
+V hello Service Fabric [aplikačního modelu](service-fabric-application-model.md), kontejner představuje hostitele aplikace ve více služby, která jsou umístěna repliky. toodeploy a aktivujte kontejner a put hello název obrázku kontejneru hello do `ContainerHost` element v hello service manifest.
 
-V manifestu služby, přidat `ContainerHost` pro vstupní bod. Nastavte `ImageName` jako název kontejneru úložiště a bitové kopie. Následující částečné manifest ukazuje příklad nasazení kontejneru názvem `myimage:v1` z úložiště volána `myrepo`:
+V manifestu hello služby, přidat `ContainerHost` pro hello vstupní bod. Potom sadu hello `ImageName` toobe hello název hello kontejneru úložiště a bitové kopie. Hello následující částečné manifest ukazuje příklad jak toodeploy hello kontejner nazývá `myimage:v1` z úložiště volána `myrepo`:
 
 ```xml
     <CodePackage Name="Code" Version="1.0">
@@ -126,13 +126,13 @@ V manifestu služby, přidat `ContainerHost` pro vstupní bod. Nastavte `ImageNa
     </CodePackage>
 ```
 
-Můžete zadat vstupní příkazy zadáním volitelného `Commands` element s oddělovači sadu příkazů pro spuštění uvnitř kontejneru.
+Můžete zadat vstupní příkazy zadáním hello volitelné `Commands` element sadu příkazů toorun uvnitř kontejneru hello oddělených čárkou.
 
 > [!NOTE]
-> Pokud bitovou kopii nemá zatížení vstupní bod definované, pak je třeba explicitně zadat vstupní příkazy uvnitř `Commands` element s oddělovači sadu příkazů pro spuštění uvnitř kontejneru, který uchová kontejneru spuštění po spuštění.
+> Pokud hello obrázek nemá zatížení vstupní bod definované, pak musíte tooexplicitly zadat vstupní příkazy uvnitř `Commands` element sadu příkazů toorun uvnitř hello kontejneru, který uchová hello kontejneru spuštění po oddělený čárkami spuštění.
 
 ## <a name="understand-resource-governance"></a>Pochopení zásad správného řízení prostředků
-Zásady správného řízení prostředků je funkce kontejneru, který omezuje prostředky, které můžete použít kontejneru na hostiteli. `ResourceGovernancePolicy`, Které je určené v manifestu aplikace se používá k deklaraci limitů prostředků pro balíček kódu služby. Omezení prostředků můžete nastavit pro následující prostředky:
+Zásady správného řízení prostředků je na hostiteli hello můžete použít funkce hello kontejneru, který omezuje hello prostředky, které hello kontejneru. Hello `ResourceGovernancePolicy`, které je určené v manifestu aplikace hello je použité toodeclare prostředků limity pro balíček kódu služby. Omezení prostředků lze nastavit pro hello následující prostředky:
 
 * Memory (Paměť)
 * MemorySwap
@@ -156,7 +156,7 @@ Zásady správného řízení prostředků je funkce kontejneru, který omezuje 
 ```
 
 ## <a name="authenticate-a-repository"></a>Ověření úložiště
-Pokud chcete stáhnout kontejner, možná muset zadat přihlašovací údaje k úložišti kontejneru. Přihlašovací údaje, zadaný v manifestu aplikace, se používají a zadejte přihlašovací údaje, nebo klíč SSH pro stažení image kontejneru z úložiště imagí. Následující příklad ukazuje účtu nazvaného *TestUser* společně s heslo jako prostý text (*není* doporučená):
+toodownload kontejner, můžete mít tooprovide přihlašovací údaje toohello kontejner úložiště. Hello přihlašovací údaje, zadaný v manifestu aplikace hello, jsou použité toospecify hello přihlašovací údaje nebo klíč SSH pro stahování hello kontejneru image z úložiště imagí hello. Hello následující příklad ukazuje účtu nazvaného *TestUser* společně s hello heslo jako prostý text (*není* doporučená):
 
 ```xml
     <ServiceManifestImport>
@@ -169,11 +169,11 @@ Pokud chcete stáhnout kontejner, možná muset zadat přihlašovací údaje k �
     </ServiceManifestImport>
 ```
 
-Doporučujeme, abyste heslo šifrovat pomocí certifikátu, který je nasazen do počítače.
+Doporučujeme, abyste šifrování hesla hello pomocí certifikátu, která nasadila toohello počítače.
 
-Následující příklad ukazuje účtu nazvaného *TestUser*, kde byla zašifrována heslem pomocí certifikát nazvaný *MyCert*. Můžete použít `Invoke-ServiceFabricEncryptText` příkaz prostředí PowerShell k vytvoření tajný šifrovaného textu pro heslo. Další informace najdete v článku [Správa tajných klíčů v Service Fabric aplikace](service-fabric-application-secret-management.md).
+Hello následující příklad ukazuje účtu nazvaného *TestUser*, kde hello hesla byla zašifrována pomocí certifikát nazvaný *MyCert*. Můžete použít hello `Invoke-ServiceFabricEncryptText` prostředí PowerShell příkaz toocreate hello tajný šifrovaný text hello hesla. Další informace najdete v článku hello [Správa tajných klíčů v Service Fabric aplikace](service-fabric-application-secret-management.md).
 
-Privátní klíč certifikátu, který se používá k dešifrování hesla musí být nasazený v metodu out-of-band v místním počítači. (V Azure, tato metoda je Azure Resource Manager.) Pak když Service Fabric nasadí balíček služby k počítači, může dešifrovat tajný klíč. Pomocí tajný klíč s názvem účtu může pak ověřit s úložištěm kontejneru.
+privátní klíč Hello hello certifikátu, který byl použit toodecrypt hello heslo musí být nasazené toohello v metodu out-of-band místního počítače. (V Azure, tato metoda je Azure Resource Manager.) Pak když Service Fabric nasadí počítač toohello balíček služby hello, ho dešifrovat tajný klíč hello. Pomocí hello tajný klíč společně s názvem účtu hello můžete poté ověřit pomocí hello kontejner úložiště.
 
 ```xml
     <ServiceManifestImport>
@@ -187,7 +187,7 @@ Privátní klíč certifikátu, který se používá k dešifrování hesla mus�
 ```
 
 ## <a name="configure-container-port-to-host-port-mapping"></a>Konfigurace mapování port kontejneru hostitele a portu
-Můžete nakonfigurovat port hostitele používá ke komunikaci s kontejneru zadáním `PortBinding` v manifestu aplikace. Vazbou portu mapuje port, na kterém služba naslouchá uvnitř kontejneru na port na hostiteli.
+Můžete nakonfigurovat toocommunicate port používaný na hostiteli s hello kontejneru zadáním `PortBinding` v manifestu aplikace hello. Hello port vazby mapy hello port toowhich hello služba naslouchá uvnitř port tooa hello kontejneru na hostiteli hello.
 
 ```xml
     <ServiceManifestImport>
@@ -201,9 +201,9 @@ Můžete nakonfigurovat port hostitele používá ke komunikaci s kontejneru zad
 ```
 
 ## <a name="configure-container-to-container-discovery-and-communication"></a>Konfigurace zjišťování kontejnery a komunikace
-Pomocí `PortBinding` zásady, můžete namapovat port kontejneru na `Endpoint` v service manifest. Koncový bod `Endpoint1` můžete zadat pevné číslo portu (například port 80). Ho můžete také zadat žádné port vůbec, v takovém případě je pro vás zvolen náhodných portu z rozsahu portů aplikace clusteru.
+Pomocí hello `PortBinding` zásady, můžete namapovat port kontejneru tooan `Endpoint` v hello service manifest. Hello koncový bod `Endpoint1` můžete zadat pevné číslo portu (například port 80). Toho může také specifikovat žádné port vůbec, v takovém případě je zvolen náhodných portu z rozsahu portů aplikace hello clusteru pro vás.
 
-Pokud zadáte koncový bod, pomocí `Endpoint` značky v service manifest kontejner hosta, Service Fabric můžete automaticky publikovat tento koncový bod služby pojmenování. Dalším službám, které jsou spuštěny v clusteru může zjišťovat proto tento kontejner pomocí dotazů REST pro řešení.
+Pokud zadáte koncový bod, pomocí hello `Endpoint` značky v service manifest hello kontejneru hosta, Service Fabric můžete automaticky publikovat tento koncový bod toohello Naming service. Dalším službám, které jsou spuštěny v clusteru hello může zjišťovat proto tento kontejner pomocí hello REST dotazů pro řešení.
 
 ```xml
     <ServiceManifestImport>
@@ -216,12 +216,12 @@ Pokud zadáte koncový bod, pomocí `Endpoint` značky v service manifest kontej
     </ServiceManifestImport>
 ```
 
-Když si zaregistrujete ve službě pojmenování, snadno to komunikace kontejnery v kódu v rámci vašeho kontejneru pomocí [reverzní proxy](service-fabric-reverseproxy.md). Komunikace se provádí zadáním naslouchající port http reverzní proxy server a název služby, které chcete ke komunikaci s jako proměnné prostředí. Další informace najdete v další části.
+Po registraci hello Naming service, snadno to komunikace kontejnery v hello kódu v rámci vašeho kontejneru pomocí hello [reverse proxy](service-fabric-reverseproxy.md). Komunikace se provádí zadáním naslouchající port http hello reverzní proxy server a název hello hello služeb, které chcete toocommunicate s jako proměnné prostředí. Další informace najdete v tématu hello další části.
 
 ## <a name="configure-and-set-environment-variables"></a>Konfigurace a nastavení proměnných prostředí
-Proměnné prostředí lze zadat pro každý balíček kódu v service manifest, jak pro služby, které jsou nasazeny v kontejnerech nebo pro služby, které jsou nasazeny jako spustitelné soubory procesy nebo hosta. Tyto hodnoty proměnné prostředí můžete přepsat konkrétně v manifestu aplikace nebo zadávají během nasazení jako parametry aplikace.
+Proměnné prostředí lze zadat pro každý balíček kódu v manifestu hello služby, jak pro služby, které jsou nasazeny v kontejnerech nebo pro služby, které jsou nasazeny jako spustitelné soubory procesy nebo hosta. Tyto hodnoty proměnné prostředí můžete přepsat konkrétně v manifestu aplikace hello nebo zadat během nasazování jako parametry aplikace.
 
-Následující fragment kódu XML manifestu služby ukazuje příklad toho, jak zadat proměnné prostředí pro balíček kódu:
+Hello následující služby manifestu XML fragment kódu ukazuje příklad toospecify proměnných prostředí pro balíček kódu:
 
 ```xml
     <ServiceManifest Name="FrontendServicePackage" Version="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -244,7 +244,7 @@ Následující fragment kódu XML manifestu služby ukazuje příklad toho, jak 
     </ServiceManifest>
 ```
 
-Tyto proměnné prostředí je možné přepsat na úrovni manifestu aplikace:
+Tyto proměnné prostředí je možné přepsat na úrovni manifestu aplikace hello:
 
 ```xml
     <ServiceManifestImport>
@@ -256,7 +256,7 @@ Tyto proměnné prostředí je možné přepsat na úrovni manifestu aplikace:
     </ServiceManifestImport>
 ```
 
-V předchozím příkladu jsme zadali explicitní hodnotu pro `HttpGateway` proměnnou prostředí (19000), když jsme nastavit hodnotu pro `BackendServiceName` parametr prostřednictvím `[BackendSvc]` parametr aplikace. Tato nastavení umožňují zadat hodnotu pro `BackendServiceName`hodnota při nasazení aplikace a nemá pevnou hodnotu v manifestu.
+V předchozím příkladu hello jsme zadali explicitní hodnotu pro hello `HttpGateway` proměnnou prostředí (19000), když jsme nastavit hodnotu hello `BackendServiceName` parametr prostřednictvím hello `[BackendSvc]` parametr aplikace. Tato nastavení umožňují hodnotu hello toospecify `BackendServiceName`hodnota při nasazení aplikace hello a v manifestu hello nemá pevnou hodnotu.
 
 ## <a name="complete-examples-for-application-and-service-manifest"></a>Dokončit příklady pro aplikace a manifest služby
 
@@ -286,7 +286,7 @@ Manifest aplikace například takto:
     </ApplicationManifest>
 ```
 
-Následuje manifest službu příkladu (zadané v předchozím manifest aplikace):
+Manifest službu příkladu (zadané v předchozím manifest aplikace hello) zahrnuje:
 
 ```xml
     <ServiceManifest Name="FrontendServicePackage" Version="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -317,10 +317,10 @@ Následuje manifest službu příkladu (zadané v předchozím manifest aplikace
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste nasadili kontejnerové služby, zjistěte, jak Správa životního cyklu načtením [životního cyklu aplikace Service Fabric](service-fabric-application-lifecycle.md).
+Teď, když jste nasadili kontejnerové služby, zjistěte, jak toomanage životního cyklu načtením [životního cyklu aplikace Service Fabric](service-fabric-application-lifecycle.md).
 
 * [Přehled Service Fabric a kontejnery](service-fabric-containers-overview.md)
-* [Komunikace s clustery Service Fabric pomocí rozhraní příkazového řádku Azure](service-fabric-azure-cli.md)
+* [Interakci s clusterů Service Fabric pomocí hello rozhraní příkazového řádku Azure](service-fabric-azure-cli.md)
 
 <!-- Images -->
 [sf-yeoman]: ./media/service-fabric-deploy-container-linux/sf-container-yeoman1.png

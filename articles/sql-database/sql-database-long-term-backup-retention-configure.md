@@ -1,6 +1,6 @@
 ---
 title: "Konfigurace dlouhodobé uchovávání záloh – Azure SQL database | Microsoft Docs"
-description: "Zjistěte, jak uložit automatizované zálohování do trezoru služeb zotavení Azure a obnovit z trezoru služeb zotavení Azure"
+description: "Zjistěte, jak toostore automatizované zálohování v hello trezoru služeb zotavení Azure a toorestore z hello trezoru služeb zotavení Azure"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: carlrab
-ms.openlocfilehash: ed9f74a59f0ca512e2758c6db4c5c9075030f859
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 603f4dd21cee4407d46f749655aba8f9ef3322c0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention"></a>Konfigurace a obnovení z Azure SQL Database dlouhodobé uchovávání záloh
 
-Můžete nakonfigurovat na trezor služeb zotavení Azure uložte zálohy databáze Azure SQL a poté obnovte databázi pomocí zálohy uchovávány v úložišti pomocí portálu Azure nebo Powershellu.
+Můžete nakonfigurovat trezoru služeb zotavení Azure hello, toostore zálohy databáze Azure SQL a potom obnovit databázi pomocí zálohy uchovávány v hello trezoru pomocí hello portál Azure nebo PowerShell.
 
 ## <a name="azure-portal"></a>portál Azure
 
-Následující části ukazují, jak pomocí portálu Azure můžete nakonfigurovat trezor služeb zotavení Azure, Zobrazit zálohy v trezoru a obnovení z trezoru.
+Následující části zobrazit jak toouse hello Azure portálu tooconfigure hello služeb zotavení Azure trezoru, Zobrazit zálohy v trezoru hello a obnovení z trezoru hello Hello.
 
-### <a name="configure-the-vault-register-the-server-and-select-databases"></a>Konfigurace trezoru, registraci serveru a vyberte databáze
+### <a name="configure-hello-vault-register-hello-server-and-select-databases"></a>Konfigurace hello trezoru, zaregistrujte hello server a vybrat databáze
 
-Můžete [nakonfigurovat trezoru služeb zotavení Azure uchovávat automatizované zálohování](sql-database-long-term-retention.md) po dobu delší než doba uchování pro vaše vrstvu služeb. 
+Můžete [konfigurace zálohování tooretain automatizované trezoru služeb zotavení Azure](sql-database-long-term-retention.md) po dobu delší než doba uchování hello vaší vrstvy služeb. 
 
-1. Otevřete **systému SQL Server** stránka serveru.
+1. Otevřete hello **systému SQL Server** stránka serveru.
 
    ![stránka serveru SQL](./media/sql-database-get-started-portal/sql-server-blade.png)
 
@@ -41,118 +41,118 @@ Můžete [nakonfigurovat trezoru služeb zotavení Azure uchovávat automatizova
 
    ![odkaz na dlouhodobé uchovávání záloh](./media/sql-database-get-started-backup-recovery/long-term-backup-retention-link.png)
 
-3. Na **dlouhodobé uchovávání záloh** stránky pro váš server, přečtěte si a přijměte podmínky verze preview (Pokud budete mít neudělali - nebo tato funkce je už ve verzi preview).
+3. Na hello **dlouhodobé uchovávání záloh** stránky pro váš server, přečtěte si a přijměte podmínky verze preview hello (Pokud budete mít neudělali - nebo tato funkce je už ve verzi preview).
 
-   ![přijetí podmínek verze preview](./media/sql-database-get-started-backup-recovery/accept-the-preview-terms.png)
+   ![Přijměte podmínky verze preview hello](./media/sql-database-get-started-backup-recovery/accept-the-preview-terms.png)
 
-4. Konfigurace dlouhodobé uchovávání záloh, vyberte tuto databázi v mřížce a pak klikněte na tlačítko **konfigurace** na panelu nástrojů.
+4. Vyberte tuto databázi v mřížce hello tooconfigure dlouhodobé uchovávání záloh a potom klikněte na **konfigurace** na panelu nástrojů hello.
 
    ![výběr databáze pro dlouhodobé uchovávání záloh](./media/sql-database-get-started-backup-recovery/select-database-for-long-term-backup-retention.png)
 
-5. Na **konfigurace** klikněte na tlačítko **konfigurovat požadované nastavení** pod **trezoru služby zotavení**.
+5. Na hello **konfigurace** klikněte na tlačítko **konfigurovat požadované nastavení** pod **trezoru služby zotavení**.
 
    ![odkaz na konfiguraci trezoru](./media/sql-database-get-started-backup-recovery/configure-vault-link.png)
 
-6. Na **trezoru služeb zotavení** vyberte existující trezor, pokud existuje. Pokud se pro vaše předplatné nenašel žádný trezor služby Recovery Services, kliknutím proces ukončete a vytvořte trezor služby Recovery Services.
+6. Na hello **trezoru služeb zotavení** vyberte existující trezor, pokud existuje. Pokud žádné trezoru služeb zotavení pro vaše předplatné nalezen, jinak hodnota klikněte tooexit hello toku a vytvoření trezoru služeb zotavení.
 
    ![Vytvoření trezoru propojení](./media/sql-database-get-started-backup-recovery/create-new-vault-link.png)
 
-7. Na **trezory služeb zotavení** klikněte na tlačítko **přidat**.
+7. Na hello **trezory služeb zotavení** klikněte na tlačítko **přidat**.
 
    ![Přidat odkaz na trezoru](./media/sql-database-get-started-backup-recovery/add-new-vault-link.png)
    
-8. Na **trezor služeb zotavení** stránky, zadejte platný název pro trezor služeb zotavení.
+8. Na hello **trezor služeb zotavení** stránky, zadejte platný název pro trezor služeb zotavení hello.
 
    ![název nového trezoru](./media/sql-database-get-started-backup-recovery/new-vault-name.png)
 
-9. Vyberte svoje předplatné a skupinu prostředků a potom vyberte umístění trezoru. Až budete hotovi, klikněte na **Vytvořit**.
+9. Vyberte předplatné a skupina prostředků a potom vyberte hello umístění pro trezor hello. Až budete hotovi, klikněte na **Vytvořit**.
 
    ![Vytvoření trezoru](./media/sql-database-get-started-backup-recovery/create-new-vault.png)
 
    > [!IMPORTANT]
-   > Trezor musí být umístěn ve stejné oblasti Azure jako logický server SQL Azure a musí používat stejnou skupinu prostředků jako logický server.
+   > Hello trezoru se musí nacházet v hello stejné oblasti jako logického serveru Azure SQL hello a musí použít hello stejné skupině prostředků jako hello logického serveru.
    >
 
-10. Po vytvoření nového trezoru provést nezbytné kroky se vrátíte do **trezoru služeb zotavení** stránky.
+10. Po vytvoření nového trezoru hello provést hello potřebné kroky tooreturn toohello **trezoru služeb zotavení** stránky.
 
-11. Na **trezoru služeb zotavení** , kliknutím na trezor a pak klikněte na tlačítko **vyberte**.
+11. Na hello **trezoru služeb zotavení** klikněte hello trezoru a pak klikněte na tlačítko **vyberte**.
 
    ![výběr existujícího trezoru](./media/sql-database-get-started-backup-recovery/select-existing-vault.png)
 
-12. Na **konfigurace** stránky, zadejte platný název pro nové zásady uchovávání informací, úpravy výchozích zásad uchovávání informací podle potřeby a pak klikněte na tlačítko **OK**.
+12. Na hello **konfigurace** stránky, zadejte platný název pro nové zásady uchovávání informací hello, hello výchozí zásady uchovávání informací podle potřeby upravit a pak klikněte na tlačítko **OK**.
 
    ![definování zásady uchovávání informací](./media/sql-database-get-started-backup-recovery/define-retention-policy.png)
 
-13. Na **dlouhodobé uchovávání záloh** stránky pro vaši databázi, klikněte na tlačítko **Uložit** a pak klikněte na **OK** uplatňovat zásady dlouhodobé uchovávání záloh na všech vybraných databázích.
+13. Na hello **dlouhodobé uchovávání záloh** stránky pro vaši databázi, klikněte na tlačítko **Uložit** a pak klikněte na **OK** tooapply hello tooall zásady dlouhodobé uchovávání záloh, které jsou vybrané databáze.
 
    ![definování zásady uchovávání informací](./media/sql-database-get-started-backup-recovery/save-retention-policy.png)
 
-14. Kliknutím na **Uložit** povolte nakonfigurované dlouhodobé uchovávání záloh v trezoru služby Azure Recovery Services pomocí této nové zásady.
+14. Klikněte na tlačítko **Uložit** tooenable dlouhodobé zálohování uchovávání pomocí této nové zásady toohello služeb zotavení Azure trezoru, který jste nakonfigurovali.
 
    ![definování zásady uchovávání informací](./media/sql-database-get-started-backup-recovery/enable-long-term-retention.png)
 
 > [!IMPORTANT]
-> Po nakonfigurování se zálohy v trezoru objeví během příštích sedm dnů. Nepokračujte v tomto kurzu, dokud se zálohy neobjeví v trezoru.
+> Po nakonfigurování zálohování zobrazí v trezoru hello během příštích 7 dnů. V tomto kurzu nepokračujte, dokud zálohování zobrazí v trezoru hello.
 >
 
 ### <a name="view-backups-in-long-term-retention-using-azure-portal"></a>Zobrazení záloh v dlouhodobé uchovávání pomocí portálu Azure
 
 Zobrazit informace o zálohování databáze v [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md). 
 
-1. Na portálu Azure otevřete svůj trezor služeb zotavení Azure pro zálohování databáze (přejděte na **všechny prostředky** a vyberte ji ze seznamu prostředků pro vaše předplatné) zobrazíte velikost úložiště používané v zálohování databáze trezor.
+1. V hello portálu Azure, otevřete svůj trezor služeb zotavení Azure pro zálohování databáze (přejděte příliš**všechny prostředky** a vyberte ho ze seznamu hello prostředky pro vaše předplatné) tooview hello množství úložiště používá databázi Zálohování v trezoru hello.
 
    ![zobrazení trezoru služby recovery services se zálohami](./media/sql-database-get-started-backup-recovery/view-recovery-services-vault-with-data.png)
 
-2. Otevřete **databáze SQL** stránky pro vaši databázi.
+2. Otevřete hello **databáze SQL** stránky pro vaši databázi.
 
    ![Nová stránka ukázkové databáze](./media/sql-database-get-started-portal/new-sample-db-blade.png)
 
-3. Na panelu nástrojů klikněte na **Obnovit**.
+3. Na panelu nástrojů hello, klikněte na tlačítko **obnovení**.
 
    ![panel nástrojů – obnovit](./media/sql-database-get-started-backup-recovery/restore-toolbar.png)
 
-4. Na stránce obnovení klikněte na **dlouhodobé**.
+4. Na stránce hello obnovení, klikněte na **dlouhodobé**.
 
-5. V části Zálohy v trezoru Azure klikněte na **Zvolit zálohu** a zobrazte dostupné zálohy databáze v rámci dlouhodobého uchovávání záloh.
+5. V oblasti Azure trezoru záloh, klikněte na **vyberte zálohu** tooview hello k dispozici databáze záloh v dlouhodobé uchovávání záloh.
 
    ![zálohy v trezoru](./media/sql-database-get-started-backup-recovery/view-backups-in-vault.png)
 
-### <a name="restore-a-database-from-a-backup-in-long-term-backup-retention-using-the-azure-portal"></a>Obnovte databázi ze zálohy v dlouhodobé uchovávání záloh pomocí portálu Azure
+### <a name="restore-a-database-from-a-backup-in-long-term-backup-retention-using-hello-azure-portal"></a>Obnovte databázi ze zálohy v dlouhodobé uchovávání záloh pomocí hello portálu Azure
 
-Obnovení databáze pro novou databázi ze zálohy v trezoru služeb zotavení Azure.
+Hello databáze tooa novou databázi můžete obnovit ze zálohy v trezoru služeb zotavení Azure hello.
 
-1. Na **Azure trezoru záloh** stránky, klikněte na zálohu k obnovení a pak klikněte na tlačítko **vyberte**.
+1. Na hello **Azure trezoru záloh** klikněte hello zálohování toorestore a pak klikněte na tlačítko **vyberte**.
 
    ![výběr zálohy v trezoru](./media/sql-database-get-started-backup-recovery/select-backup-in-vault.png)
 
-2. Do textového pole **Název databáze** zadejte název obnovené databáze.
+2. V hello **název databáze** textové pole, zadejte název hello hello obnovit databáze.
 
    ![nový název databáze](./media/sql-database-get-started-backup-recovery/new-database-name.png)
 
-3. Kliknutím na **OK** obnovte databázi ze zálohy v trezoru do nové databáze.
+3. Klikněte na tlačítko **OK** toorestore databáze ze zálohy hello v hello trezoru toohello novou databázi.
 
-4. Pokud chcete zobrazit stav úlohy obnovení, na panelu nástrojů klikněte na ikonu oznámení.
+4. Na panelu nástrojů hello klikněte na ikonu oznámení hello tooview hello stav úlohy obnovení hello.
 
    ![průběh úlohy obnovení z trezoru](./media/sql-database-get-started-backup-recovery/restore-job-progress-long-term.png)
 
-5. Po dokončení úlohy obnovení, otevřete **databází SQL** zobrazit nově obnovenou databázi.
+5. Po dokončení úlohy obnovení hello otevřete hello **databází SQL** stránky tooview hello nově obnovit databázi.
 
    ![obnovená databáze z trezoru](./media/sql-database-get-started-backup-recovery/restored-database-from-vault.png)
 
 > [!NOTE]
-> Odtud se můžete pomocí aplikace SQL Server Management Studio připojit k obnovené databázi a provádět požadované úlohy, jako je například [extrakce části dat z obnovené databáze a zkopírování do existující databáze nebo odstranění existující databáze a přejmenování obnovené databáze na název existující databáze](sql-database-recovery-using-backups.md#point-in-time-restore).
+> Tady můžete připojit toohello obnovit databáze pomocí SQL Server Management Studio tooperform potřebné úkoly, jako třeba příliš[extrahovat bit dat z databáze toocopy hello obnovit do hello existující databázi nebo existující toodelete hello Název databáze a přejmenování hello obnovit databáze toohello existující databáze](sql-database-recovery-using-backups.md#point-in-time-restore).
 >
 
 ## <a name="powershell"></a>PowerShell
 
-Následující části ukazují, jak pomocí prostředí PowerShell nakonfigurovat trezor služeb zotavení Azure, zobrazení v trezoru a obnovení z trezoru záloh.
+Hello následující části ukazují, jak zobrazit zálohy v trezoru hello toouse prostředí PowerShell tooconfigure hello služeb zotavení Azure trezoru a obnovení z trezoru hello.
 
 ### <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru služby Recovery Services
 
-Použití [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault) k vytvoření trezoru služeb zotavení.
+Použití hello [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault) toocreate obnovení služeb trezoru.
 
 > [!IMPORTANT]
-> Trezor musí být umístěn ve stejné oblasti Azure jako logický server SQL Azure a musí používat stejnou skupinu prostředků jako logický server.
+> Hello trezoru se musí nacházet v hello stejné oblasti jako logického serveru Azure SQL hello a musí použít hello stejné skupině prostředků jako hello logického serveru.
 
 ```PowerShell
 # Create a recovery services vault
@@ -166,44 +166,44 @@ $vault = New-AzureRmRecoveryServicesVault -Name $recoveryServiceVaultName -Resou
 Set-AzureRmRecoveryServicesBackupProperties -BackupStorageRedundancy LocallyRedundant -Vault $vault
 ```
 
-### <a name="set-your-server-to-use-the-recovery-vault-for-its-long-term-retention-backups"></a>Nastavení serveru na použití obnovení trezoru pro jeho dlouhodobé uchovávání záloh
+### <a name="set-your-server-toouse-hello-recovery-vault-for-its-long-term-retention-backups"></a>Nastavení trezoru server hello toouse obnovení pro jeho dlouhodobé uchovávání záloh
 
-Použití [Set-AzureRmSqlServerBackupLongTermRetentionVault](/powershell/module/azurerm.sql/set-azurermsqlserverbackuplongtermretentionvault) rutiny přidružit trezoru služeb zotavení dříve vytvořenou pro konkrétní server Azure SQL.
+Použití hello [Set-AzureRmSqlServerBackupLongTermRetentionVault](/powershell/module/azurerm.sql/set-azurermsqlserverbackuplongtermretentionvault) rutiny tooassociate dříve vytvořený trezor služeb zotavení s konkrétní server Azure SQL.
 
 ```PowerShell
-# Set your server to use the vault to for long-term backup retention 
+# Set your server toouse hello vault toofor long-term backup retention 
 
 Set-AzureRmSqlServerBackupLongTermRetentionVault -ResourceGroupName $resourceGroupName -ServerName $serverName -ResourceId $vault.Id
 ```
 
 ### <a name="create-a-retention-policy"></a>Vytvoření zásady uchovávání informací
 
-Zásada uchovávání informací stanoví, kde můžete nastavit dobu uchování zálohy databáze. Použít [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupretentionpolicyobject) rutiny výchozí zásady uchovávání informací použít jako šablonu pro vytváření zásad. V této šabloně je nastavit dobu uchování na 2 roky. Potom spustíte [New-AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) nakonec vytvoření zásad. 
+Zásady uchovávání informací je, kde můžete nastavit dobu tookeep zálohu databáze. Použití hello [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupretentionpolicyobject) rutiny tooget hello výchozí uchování zásad toouse jako hello šablonu pro vytváření zásad. V této šabloně dobu uchování hello nastavena na 2 roky. Potom spustíte hello [New-AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) toofinally vytvořit zásadu hello. 
 
 > [!NOTE]
-> Některé rutiny vyžadují, abyste nastavili trezoru rámci dřív, než spustíte ([Set-AzureRmRecoveryServicesVaultContext](/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)) tak, aby zobrazila tato rutina v několika související fragmenty kódu. Můžete nastavit kontext, protože zásady je součástí trezoru. Můžete vytvořit více zásad uchovávání pro každý trezor a pak použít požadovanou zásadu u konkrétních databází. 
+> Některé rutiny vyžadují, abyste nastavili hello trezoru kontextu dřív, než spustíte ([Set-AzureRmRecoveryServicesVaultContext](/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)) tak, aby zobrazila tato rutina v několika související fragmenty kódu. Můžete nastavit hello kontextu, protože zásady hello je součástí hello trezoru. Můžete vytvořit více zásady uchovávání informací pro každý trezor a pak aplikovat hello požadovaných zásad toospecific databáze. 
 
 
 ```PowerShell
-# Retrieve the default retention policy for the AzureSQLDatabase workload type
+# Retrieve hello default retention policy for hello AzureSQLDatabase workload type
 $retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureSQLDatabase
 
-# Set the retention value to two years (you can set to any time between 1 week and 10 years)
+# Set hello retention value tootwo years (you can set tooany time between 1 week and 10 years)
 $retentionPolicy.RetentionDurationType = "Years"
 $retentionPolicy.RetentionCount = 2
 $retentionPolicyName = "my2YearRetentionPolicy"
 
-# Set the vault context to the vault you are creating the policy for
+# Set hello vault context toohello vault you are creating hello policy for
 Set-AzureRmRecoveryServicesVaultContext -Vault $vault
 
-# Create the new policy
+# Create hello new policy
 $policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -name $retentionPolicyName -WorkloadType AzureSQLDatabase -retentionPolicy $retentionPolicy
 $policy
 ```
 
-### <a name="configure-a-database-to-use-the-previously-defined-retention-policy"></a>Konfigurace databáze na používání dříve definované zásady uchovávání
+### <a name="configure-a-database-toouse-hello-previously-defined-retention-policy"></a>Nakonfigurujte zásady uchovávání informací hello předtím definovaný toouse databáze
 
-Použití [Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](/powershell/module/azurerm.sql/set-azurermsqldatabasebackuplongtermretentionpolicy) rutiny použijí nové zásady k určité databázi.
+Použití hello [Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](/powershell/module/azurerm.sql/set-azurermsqldatabasebackuplongtermretentionpolicy) rutiny tooapply hello nové zásady tooa konkrétní databáze.
 
 ```PowerShell
 # Enable long-term retention for a specific SQL database
@@ -215,7 +215,7 @@ Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resource
 
 Zobrazit informace o zálohování databáze v [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md). 
 
-Chcete-li zobrazit informace o zálohování pomocí následující rutiny:
+Použijte následující informace o zálohování tooview rutiny hello:
 
 - [Get-AzureRmRecoveryServicesBackupContainer](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)
 - [Get-AzureRmRecoveryServicesBackupItem](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)
@@ -226,28 +226,28 @@ Chcete-li zobrazit informace o zálohování pomocí následující rutiny:
 #$serverName = "{server-name}"
 $databaseNeedingRestore = $databaseName
 
-# Set the vault context to the vault we want to restore from
+# Set hello vault context toohello vault we want toorestore from
 #$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName
 Set-AzureRmRecoveryServicesVaultContext -Vault $vault
 
-# the following commands find the container associated with the server 'myserver' under resource group 'myresourcegroup'
+# hello following commands find hello container associated with hello server 'myserver' under resource group 'myresourcegroup'
 $container = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureSQL -FriendlyName $vault.Name
 
-# Get the long-term retention metadata associated with a specific database
+# Get hello long-term retention metadata associated with a specific database
 $item = Get-AzureRmRecoveryServicesBackupItem -Container $container -WorkloadType AzureSQLDatabase -Name $databaseNeedingRestore
 
-# Get all available backups for the previously indicated database
-# Optionally, set the -StartDate and -EndDate parameters to return backups within a specific time period
+# Get all available backups for hello previously indicated database
+# Optionally, set hello -StartDate and -EndDate parameters tooreturn backups within a specific time period
 $availableBackups = Get-AzureRmRecoveryServicesBackupRecoveryPoint -Item $item
 $availableBackups
 ```
 
 ### <a name="restore-a-database-from-a-backup-in-long-term-backup-retention"></a>Obnovení databáze ze zálohy v rámci dlouhodobého uchovávání záloh
 
-Obnovení ze zálohy dlouhodobé uchovávání používá [obnovení-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) rutiny.
+Obnovení ze zálohy dlouhodobé uchovávání používá hello [obnovení-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) rutiny.
 
 ```PowerShell
-# Restore the most recent backup: $availableBackups[0]
+# Restore hello most recent backup: $availableBackups[0]
 #$resourceGroupName = "{resource-group-name}"
 #$serverName = "{server-name}"
 $restoredDatabaseName = "{new-database-name}"
@@ -261,10 +261,10 @@ $restoredDb
 
 
 > [!NOTE]
-> Tady můžete připojit k obnovené databázi pomocí SQL Server Management Studio potřebné úkoly, například za účelem extrahování bit dat z obnovené databáze chcete zkopírovat do existující databáze nebo odstranit existující databázi a přejmenujte obnovenou databáze na název existující databáze. V tématu [bodu v době obnovení](sql-database-recovery-using-backups.md#point-in-time-restore).
+> Zde se můžete připojit toohello obnovit databázi pomocí aplikace SQL Server Management Studio tooperform potřebné úkoly, jako je například tooextract bit dat z hello obnovit databáze toocopy do hello existující databázi nebo existující databázi toodelete hello a přejmenování Hello obnovené databáze toohello název existující databáze. V tématu [bodu v době obnovení](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o automatických zálohách generovaných službou najdete u popisu [automatických záloh](sql-database-automated-backups.md).
-- Další informace o dlouhodobém uchovávání záloh najdete v části [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md)
-- Další informace o obnovování ze záloh najdete v části [obnovení ze zálohy](sql-database-recovery-using-backups.md)
+- toolearn o generované služby Automatické zálohování, najdete v části [automatické zálohování](sql-database-automated-backups.md)
+- toolearn o dlouhodobé uchovávání záloh, najdete v části [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md)
+- toolearn o obnovení ze zálohy, najdete v části [obnovit ze zálohy](sql-database-recovery-using-backups.md)

@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager funkce šablon - číselné | Microsoft Docs"
-description: "Popisuje funkce pro použití v šablonu Azure Resource Manageru pro práci s čísla."
+title: "aaaAzure Resource Manager šablony funkce – číselné | Microsoft Docs"
+description: "Popisuje funkce toouse hello v toowork šablony Azure Resource Manager se čísla."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: ae0261134b8d4a934048f58d6c679a48a904950b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 855d5b354d094b9815edc160e3d72efbfd36ba77
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Numerické funkce pro šablony Azure Resource Manager
 
-Resource Manager poskytuje následující funkce pro práci s celými čísly:
+Resource Manager poskytuje následující funkce pro práci s celými čísly hello:
 
 * [Přidat](#add)
 * [copyIndex](#copyindex)
@@ -40,22 +40,22 @@ Resource Manager poskytuje následující funkce pro práci s celými čísly:
 ## <a name="add"></a>Přidat
 `add(operand1, operand2)`
 
-Vrátí součet dvou zadaný celých čísel.
+Vrátí hello součet hello dvě zadané celá čísla.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- | 
-|operand1 |Ano |celá čísla |První číslo přidat. |
-|operand2 |Ano |celá čísla |Druhé číslo, které chcete přidat. |
+|operand1 |Ano |celá čísla |První číslo tooadd. |
+|operand2 |Ano |celá čísla |Druhé číslo tooadd. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Celé číslo, které obsahuje součet hodnot parametrů.
+Celé číslo, které obsahuje součet hello hello parametry.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad přidá dva parametry.
+Hello následující příklad přidá dva parametry.
 
 ```json
 {
@@ -66,14 +66,14 @@ Následující příklad přidá dva parametry.
             "type": "int",
             "defaultValue": 5,
             "metadata": {
-                "description": "First integer to add"
+                "description": "First integer tooadd"
             }
         },
         "second": {
             "type": "int",
             "defaultValue": 3,
             "metadata": {
-                "description": "Second integer to add"
+                "description": "Second integer tooadd"
             }
         }
     },
@@ -88,7 +88,7 @@ Následující příklad přidá dva parametry.
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -99,26 +99,26 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="copyindex"></a>copyIndex
 `copyIndex(loopName, offset)`
 
-Vrátí index smyčky iterací. 
+Vrátí hello index smyčky iterací. 
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| loopName | Ne | Řetězec | Název smyčky pro získávání iterace. |
-| Posun |Ne |celá čísla |Číslo, který se má přidat na nule iterace hodnotu. |
+| loopName | Ne | Řetězec | Hello název pro získávání hello iteraci smyčky hello. |
+| Posun |Ne |celá čísla |Hello číslo tooadd toohello nule iterace hodnota. |
 
 ### <a name="remarks"></a>Poznámky
 
-Tato funkce se vždy používá s **kopie** objektu. Pokud není zadána žádná hodnota pro **posun**, je vrácena hodnota aktuální iteraci. Hodnota iterace začíná od nuly.
+Tato funkce se vždy používá s **kopie** objektu. Pokud není zadána žádná hodnota pro **posun**, je vrácena hodnota aktuální iterace hello. Hodnota iterace Hello začíná od nuly.
 
-**LoopName** vlastnost umožňuje určit, zda copyIndex odkazuje na prostředek iterace nebo vlastnost iterace. Pokud není zadána žádná hodnota pro **loopName**, se používá na aktuální iteraci typ prostředku. Zadejte hodnotu pro **loopName** během iterace u vlastnosti. 
+Hello **loopName** vlastnost vám umožní toospecify zda copyIndex odkazuje tooa prostředků iterace nebo vlastnost iterací. Pokud není zadána žádná hodnota pro **loopName**, se používá hello aktuální iterace typ prostředku. Zadejte hodnotu pro **loopName** během iterace u vlastnosti. 
  
 Úplný popis jak používat **copyIndex**, najdete v části [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md).
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje kopírovací smyčkou a hodnotu indexu, který je součástí názvu. 
+Hello následující příklad ukazuje kopírování smyčky a hello index hodnotu součástí názvu hello. 
 
 ```json
 "resources": [ 
@@ -136,29 +136,29 @@ Následující příklad ukazuje kopírovací smyčkou a hodnotu indexu, který 
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Celé číslo představující aktuální index iterace.
+Celé číslo představující aktuální index hello iterace hello.
 
 <a id="div" />
 
 ## <a name="div"></a>div
 `div(operand1, operand2)`
 
-Vrátí celočíselné dělení dvou zadaný celých čísel.
+Vrátí hello celočíselného dělení čísla hello dvě zadané celá čísla.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ano |celá čísla |Číslo je rozdělen. |
-| operand2 |Ano |celá čísla |Číslo, které slouží k rozdělení. Nemůže být 0. |
+| operand1 |Ano |celá čísla |číslo Hello rozdělené. |
+| operand2 |Ano |celá čísla |Hello číslo, které je použité toodivide. Nemůže být 0. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Celé číslo představující rozdělení.
+Dělení celého čísla představující hello.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad vydělí jeden parametr jiné parametrem.
+Následující ukázka Hello vydělí jeden parametr jiné parametrem.
 
 ```json
 {
@@ -176,7 +176,7 @@ Následující příklad vydělí jeden parametr jiné parametrem.
             "type": "int",
             "defaultValue": 3,
             "metadata": {
-                "description": "Integer used to divide"
+                "description": "Integer used toodivide"
             }
         }
     },
@@ -191,7 +191,7 @@ Následující příklad vydělí jeden parametr jiné parametrem.
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -202,20 +202,20 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="float"></a>Plovoucí desetinná čárka
 `float(arg1)`
 
-Převede hodnotu na plovoucí bodu číslo. Pouze použijete tuto funkci při předávání vlastních parametrů aplikace, jako je například aplikace logiky.
+Převede tooa hello hodnotu bodu číslo s plovoucí čárkou. Při předávání vlastních parametrů tooan aplikaci, například aplikace logiky pouze použití této funkce.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |řetězec nebo celá čísla |Hodnota, která má převést na plovoucí bodu číslo. |
+| arg1 |Ano |řetězec nebo celá čísla |tooconvert tooa Hello hodnotu bodu číslo s plovoucí čárkou. |
 
 ### <a name="return-value"></a>Návratová hodnota
 Plovoucí bodu číslo.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje, jak použít float a předat parametry do aplikace logiky:
+Hello následující příklad ukazuje, jak toouse float toopass parametry tooa aplikace logiky:
 
 ```json
 {
@@ -236,21 +236,21 @@ Následující příklad ukazuje, jak použít float a předat parametry do apli
 ## <a name="int"></a>celá čísla
 `int(valueToConvert)`
 
-Převede zadanou hodnotu na celé číslo.
+Převede hello zadaná hodnota tooan celé číslo.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Ano |řetězec nebo celá čísla |Hodnota převést na celé číslo. |
+| valueToConvert |Ano |řetězec nebo celá čísla |Hello hodnotu tooconvert tooan celé číslo. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Celé číslo převedenou hodnotu.
+Celé číslo hodnoty hello převést.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad převede hodnotu parametru zadaný uživatelem na celé číslo.
+Hello následující příklad převede toointeger hodnota hello parametr zadaný uživatelem.
 
 ```json
 {
@@ -273,7 +273,7 @@ Následující příklad převede hodnotu parametru zadaný uživatelem na celé
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -285,21 +285,21 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="min"></a>min
 `min (arg1)`
 
-Vrátí minimální hodnotu z pole celá čísla nebo seznam celých čísel oddělených čárkami.
+Vrátí hello minimální hodnota z pole celá čísla nebo seznam celých čísel oddělených čárkami.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole celá čísla nebo seznam celých čísel oddělených čárkou |Kolekce získat minimální hodnotu. |
+| arg1 |Ano |pole celá čísla nebo seznam celých čísel oddělených čárkou |Hello kolekce tooget hello minimální hodnota. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Celé číslo představující minimální hodnota z kolekce.
+Celé číslo představující minimální hodnota z kolekce hello.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje, jak použít min s pole a seznam celých čísel:
+Následující příklad ukazuje, jak Hello toouse min s pole a seznam celých čísel:
 
 ```json
 {
@@ -325,7 +325,7 @@ Následující příklad ukazuje, jak použít min s pole a seznam celých čís
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -337,21 +337,21 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="max"></a>maximální počet
 `max (arg1)`
 
-Vrací maximální hodnotu z pole celá čísla nebo seznam celých čísel oddělených čárkami.
+Vrátí hello maximální hodnota z pole celá čísla nebo seznam celých čísel oddělených čárkami.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole celá čísla nebo seznam celých čísel oddělených čárkou |Kolekce získat maximální hodnotu. |
+| arg1 |Ano |pole celá čísla nebo seznam celých čísel oddělených čárkou |Hello kolekce tooget hello maximální hodnota. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Celé číslo představující maximální hodnotu z kolekce.
+Celé číslo představující hello maximální hodnotu z kolekce hello.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje, jak použít maximum s pole a seznam celých čísel:
+Následující příklad ukazuje, jak Hello toouse maximální s pole a seznam celých čísel:
 
 ```json
 {
@@ -377,7 +377,7 @@ Následující příklad ukazuje, jak použít maximum s pole a seznam celých �
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -389,21 +389,21 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="mod"></a>MOD
 `mod(operand1, operand2)`
 
-Vrátí zbytek celočíselného dělení pomocí dvě zadané celá čísla.
+Vrátí zbytek hello hello celočíselné dělení pomocí hello dvě zadané celá čísla.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ano |celá čísla |Číslo je rozdělen. |
-| operand2 |Ano |celá čísla |Číslo, které slouží k rozdělení, nemůže být 0. |
+| operand1 |Ano |celá čísla |číslo Hello rozdělené. |
+| operand2 |Ano |celá čísla |Hello číslo, které je použité toodivide, nemůže být 0. |
 
 ### <a name="return-value"></a>Návratová hodnota
-Celé číslo představující zbytek.
+Celé číslo představující hello zbytek.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad vrátí zbytek po dělení jeden parametr jiné parametrem.
+Hello následující příklad vrátí hello zbytek po dělení jeden parametr jiné parametrem.
 
 ```json
 {
@@ -421,7 +421,7 @@ Následující příklad vrátí zbytek po dělení jeden parametr jiné paramet
             "type": "int",
             "defaultValue": 3,
             "metadata": {
-                "description": "Integer used to divide"
+                "description": "Integer used toodivide"
             }
         }
     },
@@ -436,7 +436,7 @@ Následující příklad vrátí zbytek po dělení jeden parametr jiné paramet
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -447,22 +447,22 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="mul"></a>mul
 `mul(operand1, operand2)`
 
-Vrátí násobení dvě zadané celých čísel.
+Vrátí hello násobení hello dvě zadané celých čísel.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ano |celá čísla |První číslo mají vynásobit. |
-| operand2 |Ano |celá čísla |Druhé číslo, které mají vynásobit. |
+| operand1 |Ano |celá čísla |První číslo toomultiply. |
+| operand2 |Ano |celá čísla |Druhé číslo toomultiply. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Celé číslo představující násobení.
+Celé číslo představující hello násobení.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad vynásobí jeden parametr jiné parametrem.
+Následující ukázka Hello vynásobí jeden parametr jiné parametrem.
 
 ```json
 {
@@ -473,14 +473,14 @@ Následující příklad vynásobí jeden parametr jiné parametrem.
             "type": "int",
             "defaultValue": 5,
             "metadata": {
-                "description": "First integer to multiply"
+                "description": "First integer toomultiply"
             }
         },
         "second": {
             "type": "int",
             "defaultValue": 3,
             "metadata": {
-                "description": "Second integer to multiply"
+                "description": "Second integer toomultiply"
             }
         }
     },
@@ -495,7 +495,7 @@ Následující příklad vynásobí jeden parametr jiné parametrem.
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -506,21 +506,21 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="sub"></a>Sub –
 `sub(operand1, operand2)`
 
-Vrátí odčítání dvě zadané celých čísel.
+Vrátí hello odčítání hello dvě zadané celých čísel.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ano |celá čísla |Číslo, které je odečten od. |
-| operand2 |Ano |celá čísla |Číslo, které je odečten. |
+| operand1 |Ano |celá čísla |Hello číslo, které je odečten od. |
+| operand2 |Ano |celá čísla |Hello číslo, které je odečten. |
 
 ### <a name="return-value"></a>Návratová hodnota
-Celé číslo představující odčítání.
+Celé číslo představující hello odčítání.
 
 ### <a name="example"></a>Příklad
 
-Následující příklad odečítá od jiného parametru jeden parametr.
+Následující ukázka Hello odečítá jeden parametr z jiného parametru.
 
 ```json
 {
@@ -538,7 +538,7 @@ Následující příklad odečítá od jiného parametru jeden parametr.
             "type": "int",
             "defaultValue": 3,
             "metadata": {
-                "description": "Integer to subtract"
+                "description": "Integer toosubtract"
             }
         }
     },
@@ -553,15 +553,15 @@ Následující příklad odečítá od jiného parametru jeden parametr.
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
 | subResult | celá čísla | 4 |
 
 ## <a name="next-steps"></a>Další kroky
-* Popis v částech šablonu Azure Resource Manager naleznete v tématu [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md).
-* Sloučit několik šablon, najdete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
-* K iteraci v zadaného počtu opakování při vytváření typu prostředku, najdete v části [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md).
-* Postup nasazení šablony, které jste vytvořili, najdete v sekci [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
+* Popis části hello šablonu Azure Resource Manager naleznete v tématu [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md).
+* toomerge několik šablon, najdete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
+* tooiterate zadaného počtu opakování při vytváření typu prostředku, najdete v části [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md).
+* toosee způsobu toodeploy hello šablony vytvoříte, najdete v [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
 

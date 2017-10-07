@@ -1,5 +1,5 @@
 ---
-title: "Automatické škálování a služby App Service Environment v1"
+title: aaaAutoscaling a v1 App Service Environment
 description: "Automatické škálování a služby App Service Environment"
 services: app-service
 documentationcenter: 
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/11/2017
 ms.author: ccompy
-ms.openlocfilehash: f32affd285f3918feb0e893543f2a28f678b7b10
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1a03cf494309e80596b64471d1a067b2f64a9fee
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>Automatické škálování a služby App Service Environment v1
 
 > [!NOTE]
-> Tento článek je o v1 App Service Environment.  Existuje novější verze App Service Environment, který je jednodušší použít a běží na výkonnější infrastruktury. Další informace o nové verzi spuštění s [Úvod do služby App Service Environment](../app-service/app-service-environment/intro.md).
+> Tento článek je o hello App Service Environment v1.  Není k dispozici novější verze hello služby App Service Environment, je snazší toouse a běží na výkonnější infrastruktury. Další informace o nové verzi hello začínat hello toolearn [toohello Úvod App Service Environment](../app-service/app-service-environment/intro.md).
 > 
 
 Podpora prostředí Azure App Service *automatické škálování*. Můžete fondy škálování jednotlivých pracovních procesů na základě metriky nebo plán.
 
 ![Možnosti škálování fondu pracovních procesů.][intro]
 
-Automatické škálování optimalizuje vaše využití prostředků pomocí automatické zvětšování a zmenšování služby App Service environment přizpůsobit rozpočet nebo načíst profil.
+Automatické škálování optimalizuje vaše využití prostředků pomocí automatické zvětšování a zmenšování toofit prostředí App Service váš profil a rozpočet nebo zatížení.
 
 ## <a name="configure-worker-pool-autoscale"></a>Konfigurace pracovního procesu škálování fondu
-Může přistupovat k funkcím škálování z **nastavení** ve fondu pracovních procesů.
+Funkce škálování hello můžete přistupovat z hello **nastavení** kartě hello fondu pracovních procesů.
 
-![Karta nastavení fondu pracovních procesů.][settings-scale]
+![Karta nastavení fondu pracovních procesů hello.][settings-scale]
 
-Z tohoto místa rozhraní by měl být poměrně obeznámeni, protože je stejné prostředí, které vidíte, kdy škálovat plán služby App Service. 
+Z tohoto místa hello rozhraní by měl být poměrně obeznámeni, protože je hello plánování stejné prostředí, které vidíte při škálování App Service. 
 
 ![Nastavení ruční škálování.][scale-manual]
 
@@ -45,25 +45,25 @@ Můžete také nakonfigurovat profilem škálování.
 
 ![Nastavení automatického škálování.][scale-profile]
 
-Profilů automatického škálování jsou užitečné můžete nastavit omezení pro vaše škálování. Tímto způsobem může mít konzistentní výkon prostředí nastavením hodnotu dolní mez rozsahu (1) a předvídatelný výdaji cap nastavením horní mez (2).
+Profilů automatického škálování jsou užitečné tooset omezení pro vaše škálování. Tímto způsobem může mít konzistentní výkon prostředí nastavením hodnotu dolní mez rozsahu (1) a předvídatelný výdaji cap nastavením horní mez (2).
 
 ![Nastavení škálování v profilu.][scale-profile2]
 
-Po definování profilu, můžete přidat pravidla automatického škálování se škálovat nahoru nebo dolů počet instancí ve fondu pracovních procesů v rámci hranice definované profilem. Pravidla automatického škálování jsou založené na metriky.
+Po definování profilu, můžete přidat tooscale pravidel škálování nahoru nebo dolů hello počet instancí ve fondu pracovních procesů hello v rámci hranice hello definované hello profilem. Pravidla automatického škálování jsou založené na metriky.
 
 ![Pravidlo škálování.][scale-rule]
 
- Všechny fondu pracovních procesů nebo front-end metriky lze použít k definování pravidel škálování. Tyto metriky jsou stejné metriky můžete sledovat v okně grafy zdrojů nebo nastavit výstrahy pro.
+ Všechny fondu pracovních procesů nebo front-end metriky můžou být použité toodefine škálování pravidla. Tyto metriky jsou stejné metriky můžete sledovat v hello prostředků okno grafů nebo nastavit výstrahy pro hello.
 
 ## <a name="autoscale-example"></a>Příklad škálování
 Škálování služby App Service environment lze ukázat nejlépe ve scénáři s návodem.
 
-Tento článek vysvětluje všechny nezbytné informace při nastavení automatického škálování. Článek vás provede procesem interakce, které se vyskytnou se, když je zvážit automatické škálování služby App Service Environment, které jsou hostované v App Service Environment.
+Tento článek vysvětluje všechny požadavky nutné hello při nastavení automatického škálování. Hello článek vás provede procesem hello interakce, které začalo přehrát při zohlednit v automatické škálování služby App Service Environment, které jsou hostované v App Service Environment.
 
 ### <a name="scenario-introduction"></a>Scénář Úvod
-František se správce systému pro organizace, která byla migrována část zátěží, které spravuje do služby App Service environment.
+František se správce systému pro organizace, který migroval část hello úlohy, že spravuje tooan služby App Service environment.
 
-Prostředí služby App Service je ruční škálování nakonfigurovány takto:
+Hello App Service environment není nakonfigurováno toomanual škálování takto:
 
 * **Front-zakončení:** 3
 * **Fond pracovních procesů 1**: 10
@@ -72,9 +72,9 @@ Prostředí služby App Service je ruční škálování nakonfigurovány takto:
 
 Fond pracovních procesů 1 se používá pro úlohy v produkčním prostředí při fondu pracovních procesů 2 a fondu pracovních procesů 3 se používají pro zajištění kvality (QA) a vývoj úlohy.
 
-Plány služby App Service pro kontrolu kvality a vývojářů je nakonfigurován pro ruční škálování. Provozní plán služby App Service je nastavena na automatické škálování jak nakládat s rozdíly v zatížení a provozu.
+plánů pro kontrolu kvality a vývojářů jsou zprostředkovatele Hello služby App Service nakonfigurované toomanual škálování. produkční Hello plán služby App Service se nastavuje tooautoscale toodeal s rozdíly v zatížení a provozu.
 
-Jan je velmi dobře známé s aplikací. Ví, že špičky pro zatížení jsou mezi 9:00:00 a 18:00:00, protože to je – obchodní (LOB) aplikace, která zaměstnanci používají době, kdy jsou v kanceláři v. Využití zahodí po, když se uživatelé provádějí pro daný den. Mimo dobu ve špičce přetrvává některé zatížení vzhledem k tomu, že uživatelé mají přístup ke aplikaci vzdáleně pomocí jejich mobilní zařízení nebo domácích počítačů. Provozní plán služby App Service je již nakonfigurována na automatické škálování podle využití procesoru na základě následujících pravidel:
+Jan je velmi dobře známé s aplikací hello. Ví, že hello hodiny špičky pro zatížení jsou mezi 9:00:00 a 18:00:00, protože to je – obchodní (LOB) aplikace, která zaměstnanci používají, když jsou ve hello office. Využití zahodí po, když se uživatelé provádějí pro daný den. Mimo dobu ve špičce přetrvává některé zatížení vzhledem k tomu, že uživatelé mají přístup ke hello aplikaci vzdáleně pomocí jejich mobilní zařízení nebo domácích počítačů. produkční Hello, plán služby App Service je již nakonfigurován tooautoscale podle využití procesoru s hello následující pravidla:
 
 ![Konkrétní nastavení pro obchodní aplikace.][asp-scale]
 
@@ -84,7 +84,7 @@ Jan je velmi dobře známé s aplikací. Ví, že špičky pro zatížení jsou 
 | **Škálování podle:** pravidla plánu a výkonu |**Škálování podle:** pravidla plánu a výkonu |
 | **Profil:** dny v týdnu |**Profil:** víkendu |
 | **Typ:** opakování |**Typ:** opakování |
-| **Cílový rozsah:** 5 až 20 instancí |**Cílový rozsah:** 3 až 10 instancí |
+| **Cílový rozsah:** 5 too20 instancí |**Cílový rozsah:** 3 too10 instancí |
 | **Počet dnů:** pondělí, úterý, středu, čtvrtek a pátek |**Počet dnů:** sobota, neděle |
 | **Čas spuštění:** 9:00:00 |**Čas spuštění:** 9:00:00 |
 | **Časové pásmo:** UTC-08 |**Časové pásmo:** UTC-08 |
@@ -108,44 +108,44 @@ Jan je velmi dobře známé s aplikací. Ví, že špičky pro zatížení jsou 
 | **Nástrojů dolů (minuty):** 20 |**Nástrojů dolů (minuty):** 10 |
 
 ### <a name="app-service-plan-inflation-rate"></a>Míry inflace plán služby App Service
-Plány služby App Service, které jsou nakonfigurované na automatické škálování to provést s maximální rychlostí za hodinu. Tento kurz, lze vypočítat na základě hodnot zadaných pro pravidlo škálování.
+Plány služby App Service, které jsou nakonfigurované tooautoscale učinit s maximální rychlostí za hodinu. Tento kurz můžete vypočítáváno na hello hodnoty zadané v pravidle automatického škálování hello.
 
-Princip fungování a způsob výpočtu *míry inflace plán služby App Service* je důležité pro škálování prostředí služby App Service, protože nejsou okamžitou škálování změny fondu pracovních procesů.
+Princip fungování a způsob výpočtu hello *míry inflace plán služby App Service* je důležité pro škálování prostředí služby App Service, protože nejsou okamžitou fondu pracovních procesů tooa změny měřítka.
 
-Míry inflace plán služby App Service se vypočítává takto:
+Hello míry inflace plán služby App Service se vypočítává takto:
 
 ![Výpočet míry inflace plán služby App Service.][ASP-Inflation]
 
-Podle škálování – pravidlo vertikálně navýšit kapacitu pro profil den v týdnu provozních plán služby App Service:
+Podle hello škálování – pravidlo vertikálně navýšit kapacitu pro profil den v týdnu hello hello provozních plán služby App Service:
 
 ![Míra inflace plán služby App Service pro dny v týdnu podle škálování – pravidlo vertikálně navýšit kapacitu.][Equation1]
 
-V případě škálování – pravidlo vertikálně navýšit kapacitu pro profil víkendu provozních plán služby App Service, by vzorec odkazující na:
+V případě hello hello škálování – pravidlo vertikálně navýšit kapacitu pro profil víkendu hello hello provozních plán služby App Service, by hello vzorec odkazující na:
 
 ![Míry inflace plán služby App Service pro víkendů podle škálování – pravidlo vertikálně navýšit kapacitu.][Equation2]
 
 Tato hodnota může také vypočítá operacím vertikální snížení kapacity.
 
-Podle škálování – pravidlo škálování dolů profilu den v týdnu provozních plán služby App Service, to vypadat takto:
+Podle hello škálování – pravidlo škálování dolů profilu hello den v týdnu hello provozních plán služby App Service, to vypadat takto:
 
 ![Míra inflace plán služby App Service pro dny v týdnu podle škálování – pravidlo škálování dolů.][Equation3]
 
-V případě škálování – pravidlo škálování dolů profilu víkendu provozních plán služby App Service, by vzorec odkazující na:  
+V případě hello hello škálování – pravidlo škálování dolů profilu hello víkendu hello provozních plán služby App Service, by hello vzorec odkazující na:  
 
 ![Rychlost inflace plán služby App Service pro víkendů podle škálování – pravidlo škálování dolů.][Equation4]
 
-Provozní plán služby App Service můžou růst v maximálně osm instancí za hodinu v týdnu a čtyři instance za hodinu během víkendu. Můžete ho verzi instance s maximální rychlostí čtyři instancí za hodinu v týdnu a šesti instancí za hodinu během víkendu.
+produkční Hello plán služby App Service můžou růst v maximálně osm instancí za hodinu během hello týden a čtyři instance za hodinu během víkendu hello. Můžete ho verzi instance s maximální rychlostí čtyři instancí za hodinu během hello týden a šesti instancí za hodinu během víkendu.
 
-Pokud víc plány služby App Service se hostovaným ve fondu pracovních procesů, je nutné vypočítat *celkovou rychlost inflace* jako součet inflace rychlost pro všechny plány služby App Service, které se hostování v tomto fondu pracovních procesů.
+Pokud víc plány služby App Service se hostovaným ve fondu pracovních procesů, máte toocalculate hello *celkovou rychlost inflace* jako součet hello hello inflace rychlost pro všechny hello plánů služby App Service, která bude hostování v tomto fondu pracovních procesů.
 
 ![Celková rychlost inflace výpočet pro víc plány služby App Service hostované ve fondu pracovních procesů.][ASP-Total-Inflation]
 
-### <a name="use-the-app-service-plan-inflation-rate-to-define-worker-pool-autoscale-rules"></a>Použijte k definování pravidel škálování fondu pracovní míry inflace plán služby App Service
-Pracovní fondu tohoto hostitele plány služby App Service, které jsou nakonfigurované pro škálování nutné přidělit vyrovnávací paměť kapacity. Vyrovnávací paměť umožňuje operace škálování, které mají zvýšit nebo snížit plán služby App Service, podle potřeby. Minimální velikost vyrovnávací paměti by počítané celková aplikace služby plánování inflace rychlost.
+### <a name="use-hello-app-service-plan-inflation-rate-toodefine-worker-pool-autoscale-rules"></a>Použití hello služby App Service plánování míry inflace toodefine pracovní fond škálování pravidla
+Pracovní fondu, které hostují plány služby App Service, které jsou nakonfigurované tooautoscale nutné přidělit vyrovnávací paměť kapacity. vyrovnávací paměť Hello umožňuje toogrow operace škálování hello a podle potřeby zmenšit plán služby App Service. Minimální vyrovnávací paměti Hello můžou být hello vypočítat celkové aplikace služby plánování inflace Rate.
 
-Protože operací škálování služby App Service environment trvat delší dobu použít, všechny změny by měl účet pro vyžádání další změny, které může nastat, když probíhá operace škálování. Abychom vyhověli tato čekací doba, doporučujeme použít počítaný celková aplikace služby plánování inflace rychlost jako minimální počet instancí, které jsou přidány pro každou operaci škálování.
+Protože operací škálování služby App Service environment trvat některé tooapply čas, všechny změny by měl účet pro vyžádání další změny, které může nastat, když probíhá operace škálování. tooaccommodate tato čekací doba, doporučujeme vám použít hello počítá celkovou aplikace služby plánování inflace rychlost jako hello minimální počet instancí, které jsou přidány pro každou operaci škálování.
 
-Tyto informace můžete definovat František následující škálování profil a pravidla:
+Pomocí těchto informací můžete definovat František hello profil škálování a pravidla:
 
 ![Profil pravidel škálování například LOB.][Worker-Pool-Scale]
 
@@ -155,7 +155,7 @@ Tyto informace můžete definovat František následující škálování profil
 | **Škálování podle:** pravidla plánu a výkonu |**Škálování podle:** pravidla plánu a výkonu |
 | **Profil:** dny v týdnu |**Profil:** víkendu |
 | **Typ:** opakování |**Typ:** opakování |
-| **Cílový rozsah:** 13 až 25 instancí |**Cílový rozsah:** 6 až 15 instancí |
+| **Cílový rozsah:** 13 too25 instancí |**Cílový rozsah:** 6 too15 instancí |
 | **Počet dnů:** pondělí, úterý, středu, čtvrtek a pátek |**Počet dnů:** sobota, neděle |
 | **Čas spuštění:** 7:00:00 |**Čas spuštění:** 9:00:00 |
 | **Časové pásmo:** UTC-08 |**Časové pásmo:** UTC-08 |
@@ -178,19 +178,19 @@ Tyto informace můžete definovat František následující škálování profil
 | **Akce:** snižte počet 2 |**Akce:** snížit počet 3 |
 | **Nástrojů dolů (minuty):** 120. |**Nástrojů dolů (minuty):** 120. |
 
-Minimální instance definované v profilu pro plán služby App Service + vyrovnávací paměti je vypočítána cílový rozsah definovaný v profilu.
+minimální instancí hello definovaná v profilu pro hello plán služby App Service + vyrovnávací paměti je vypočítána Hello cílový rozsah definovaný v profilu hello.
 
-Maximální rozsah by součet všechny rozsahy maximální pro všechny plány služby App Service hostované ve fondu pracovních procesů.
+Maximální rozsah Hello by všechny rozsahy maximální hello pro všechny plány služby App Service hostované ve fondu pracovních procesů hello hello součet.
 
-Zvyšte počet pro rozšiřování škálování využívajících pravidla měli nastavit na alespoň 1 X míry inflace plán služby App škálování.
+Hello zvýšení počtu u hello rozšiřování škálování využívajících pravidla musí být sada tooat minimálně 1 X míry inflace plán služby App škálování nahoru.
 
-Snižte počet lze upravit na jinou hodnotu mezi 1/2 X nebo 1 X míry inflace plán služby App škálování směrem dolů.
+Snižte počet může být upravenou toosomething mezi 1/2 X nebo 1 X hello míry inflace plán služby App pro škálování směrem dolů.
 
 ### <a name="autoscale-for-front-end-pool"></a>Škálování front-endu fondu
 Pravidla pro automatické škálování front-endu jsou jednodušší než pro fondy pracovních procesů. Především se stává měli byste  
-Ujistěte se, že doba trvání měření a časovače cooldown zvažte, že nejsou okamžitou operací škálování na plán služby App Service.
+Ujistěte se, když trvání hello měření a hello cooldown časovače zvážit, že operace škálování na plán služby App Service nejsou okamžitou.
 
-V tomto scénáři František ví, že míra chyb zvyšuje po dosažení front-end 80 % využití CPU a nastaví pravidlo škálování zvýšit instance následujícím způsobem:
+Pro tento scénář František ví, že míra chyb hello zvyšuje po dosažení front-end 80 % využití CPU a nastaví hello škálování instance tooincrease pravidel následujícím způsobem:
 
 ![Nastavení automatického škálování front-endu fondu.][Front-End-Scale]
 
@@ -200,7 +200,7 @@ V tomto scénáři František ví, že míra chyb zvyšuje po dosažení front-e
 | **Škálování podle:** pravidla plánu a výkonu |
 | **Profil:** každý den |
 | **Typ:** opakování |
-| **Cílový rozsah:** 3 až 10 instancí |
+| **Cílový rozsah:** 3 too10 instancí |
 | **Počet dnů:** každý den |
 | **Čas spuštění:** 9:00:00 |
 | **Časové pásmo:** UTC-08 |

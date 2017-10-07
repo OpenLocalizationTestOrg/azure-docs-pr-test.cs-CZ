@@ -1,6 +1,6 @@
 ---
-title: "Shromažďovat a analyzovat čítače výkonu v Azure Log Analytics | Microsoft Docs"
-description: "Čítače výkonu jsou shromážděny prostřednictvím analýzy protokolů pro analýzu výkonu na agentů systému Windows a Linux.  Tento článek popisuje postup konfigurace shromažďování čítačů výkonu pro systému Windows a Linux agentů, podrobnosti o jejich jsou uloženy v úložišti OMS a jak analyzovat je na portálu OMS."
+title: "aaaCollect a analyzovat čítače výkonu v Azure Log Analytics | Microsoft Docs"
+description: "Čítače výkonu jsou shromážděny prostřednictvím analýzy protokolů tooanalyze výkonu v systému Windows a Linux agenty.  Tento článek popisuje, jak čítače tooconfigure shromažďování výkonu pro agenty systému Windows a Linux, podrobnosti o jejich jsou uloženy v úložišti OMS hello a jak tooanalyze je na portálu OMS hello."
 services: log-analytics
 documentationcenter: 
 author: mgoedtel
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 953bb453b0a9635627fbbb6c3913d0cd757101c7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 30146fecf8db1d8851b89fdb970f757bbb24abf1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Systém Windows a Linux zdroje dat výkonu v analýzy protokolů
-Čítače výkonu v systému Windows a Linux získat přehled o výkonu hardwarové součásti, operačních systémů a aplikací.  Analýzy protokolů můžete shromáždit čítače výkonu v pravidelných intervalech pro analýzu téměř reálném čase (NRT) kromě agregování dat výkonu pro delší období analýzu a vytváření sestav.
+Čítače výkonu v systému Windows a Linux získat přehled o výkonu hello hardwarové součásti, operačních systémů a aplikací.  Analýzy protokolů můžete shromáždit čítače výkonu v pravidelných intervalech pro analýzu téměř reálném čase (NRT) v přidání tooaggregating výkonu dat pro delší období analýzu a vytváření sestav.
 
 ![Čítače výkonu](media/log-analytics-data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Konfigurace čítačů výkonu
-Konfigurovat na portálu OMS z čítače výkonu [nabídce Data v nastavení analýzy protokolů](log-analytics-data-sources.md#configuring-data-sources).
+Konfigurovat čítačů výkonu na portálu OMS hello z hello [nabídce Data v nastavení analýzy protokolů](log-analytics-data-sources.md#configuring-data-sources).
 
-Při první konfiguraci systému Windows nebo Linux výkonu čítače pro nový pracovní prostor OMS, budete mít možnost rychle vytvořit několik běžných čítačů.  Jsou uvedeny s zaškrtávací políčko vedle každého.  Zajistěte, aby všechny čítače, které chcete vytvořit původně jsou zaškrtnutá políčka a pak klikněte na tlačítko **přidat vybrané čítače výkonu**.
+Když je nejprve nakonfigurovat Windows nebo čítače výkonu Linux pro nový pracovní prostor OMS, budete mít možnost tooquickly hello vytvořit několik běžných čítačů.  Jsou uvedeny s další tooeach zaškrtávací políčko.  Ujistěte se, že všechny čítače, které chcete tooinitially vytvořit jsou zaškrtnutá políčka a pak klikněte na **hello přidat vybrané čítače výkonu**.
 
-Pro čítače výkonu systému Windows můžete konkrétní instance jednotlivých čítačů výkonu. Pro čítače výkonu systému Linux instanci jednotlivé čítače, který zvolíte, se vztahuje na všechny podřízené čítače nadřazené čítače. V následující tabulce jsou uvedeny běžné instancí, které jsou k dispozici pro Linux a Windows čítače výkonu.
+Pro čítače výkonu systému Windows můžete konkrétní instance jednotlivých čítačů výkonu. Pro čítače výkonu systému Linux platí hello instanci jednotlivé čítače, který zvolíte, čítače podřízené tooall hello nadřazené čítače. Hello následující tabulka zobrazuje hello běžné instance čítače výkonu k dispozici tooboth Linux a Windows.
 
 | Název instance | Popis |
 | --- | --- |
-| \_Celkový počet |Celkový počet všech instancí |
+| \_Celkový počet |Celkový počet všech instancí hello |
 | \* |Všechny instance |
 | (/ &#124; / var) |Odpovídá instancí s názvem: / nebo /var |
 
@@ -42,32 +42,32 @@ Pro čítače výkonu systému Windows můžete konkrétní instance jednotlivý
 
 ![Konfigurovat čítačů výkonu systému Windows](media/log-analytics-data-sources-performance-counters/configure-windows.png)
 
-Pomocí následujícího postupu přidejte nový čítač výkonu systému Windows ke shromažďování.
+Použijte tento postup tooadd nové toocollect čítače výkonu systému Windows.
 
-1. Zadejte název čítače v textovém poli ve formátu *objektu (instance) \counter*.  Když začnete psát, se zobrazí seznam běžných čítačů odpovídající.  Čítače můžete buď vybrat ze seznamu nebo zadejte svůj vlastní.  Můžete se taky vrátit všechny instance konkrétní čítače zadáním *object\counter*.  
+1. Název typu hello hello čítače hello textového pole ve formátu hello *objektu (instance) \counter*.  Když začnete psát, se zobrazí seznam běžných čítačů odpovídající.  Čítače můžete buď vybrat ze seznamu hello nebo zadejte svůj vlastní.  Můžete se taky vrátit všechny instance konkrétní čítače zadáním *object\counter*.  
 
-    Při shromažďování čítače výkonu pro SQL Server z pojmenované instance, všechny s názvem instance čítače začněte s *MSSQL$* a následuje název instance.  Například shromažďovat čítač poměr přístupů do mezipaměti protokolu pro všechny databáze z objektu výkonu databáze s názvem SQL instance INST2, zadejte `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`.
+    Při shromažďování čítače výkonu pro SQL Server z pojmenované instance, všechny s názvem instance čítače začněte s *MSSQL$* a následuje název hello hello instance.  Například toocollect hello poměr přístupů do mezipaměti protokolu čítač pro všechny databáze z hello objekt výkonu databáze s názvem SQL instance INST2, zadejte `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`.
 
-2. Klikněte na tlačítko  **+**  nebo stiskněte klávesu **Enter** přidat čítač do seznamu.
-3. Když přidáte čítače, použije výchozí hodnotu 10 sekund, jeho **ukázkového intervalu**.  Můžete to na vyšší hodnotu až 1 800 sekund (30 minut) Pokud chcete snížit požadavky na úložiště dat shromážděných výkonu.
-4. Po dokončení přidávání čítače, klikněte **Uložit** tlačítka v horní části obrazovky, čímž konfiguraci uložíte.
+2. Klikněte na tlačítko  **+**  nebo stiskněte klávesu **Enter** tooadd hello čítač toohello seznamu.
+3. Když přidáte čítače, používá výchozí hello 10 sekund pro jeho **ukázkového intervalu**.  Pokud chcete, aby tooreduce hello požadavky na úložiště dat výkonu shromážděných hello můžete změnit tooa vyšší hodnota až too1800 sekund (30 minut).
+4. Po dokončení přidávání čítače, klikněte na tlačítko hello **Uložit** tlačítka v horní části hello hello obrazovky toosave hello konfigurace.
 
 ### <a name="linux-performance-counters"></a>Čítače výkonu systému Linux
 
 ![Konfigurovat čítačů výkonu systému Linux](media/log-analytics-data-sources-performance-counters/configure-linux.png)
 
-Pomocí následujícího postupu přidejte nový čítač výkonu Linux shromažďovat.
+Použijte tento postup tooadd nové toocollect čítače výkonu systému Linux.
 
-1. Ve výchozím nastavení všechny změny konfigurace automaticky odesílají na všechny agenty.  Pro agenty Linux konfigurační soubor posílá kolekcí dat Fluentd.  Pokud chcete upravit soubor ručně na každý agenta systému Linux, poté zrušte zaškrtnutí políčka *použít dole uvedenou konfiguraci u mých Linuxových počítačů* a postupujte podle pokynů níže.
-2. Zadejte název čítače v textovém poli ve formátu *objektu (instance) \counter*.  Když začnete psát, se zobrazí seznam běžných čítačů odpovídající.  Čítače můžete buď vybrat ze seznamu nebo zadejte svůj vlastní.  
-3. Klikněte na tlačítko  **+**  nebo stiskněte klávesu **Enter** přidat do seznamu jiných čítačů pro objekt, čítač.
-4. Všechny čítače pro objekt používají stejné **ukázkového intervalu**.  Výchozí hodnota je 10 sekund.  Můžete změnit na vyšší hodnotu až 1 800 sekund (30 minut) Pokud chcete snížit požadavky na úložiště dat shromážděných výkonu.
-5. Po dokončení přidávání čítače, klikněte **Uložit** tlačítka v horní části obrazovky, čímž konfiguraci uložíte.
+1. Standardně jsou všechny změny konfigurace automaticky instaluje tooall agenty.  Pro agenty Linux je odeslán soubor konfigurace toohello Fluentd data kolekce.  Pokud chcete tento soubor na každého agenta Linux ručně toomodify, poté zrušte zaškrtnutí políčka hello *použít následující konfigurace počítačů se systémem Linux toomy* a postupujte podle pokynů hello níže.
+2. Název typu hello hello čítače hello textového pole ve formátu hello *objektu (instance) \counter*.  Když začnete psát, se zobrazí seznam běžných čítačů odpovídající.  Čítače můžete buď vybrat ze seznamu hello nebo zadejte svůj vlastní.  
+3. Klikněte na tlačítko  **+**  nebo stiskněte klávesu **Enter** tooadd hello čítač toohello seznam jiných čítačů pro objekt hello.
+4. Všechny čítače pro použití objektu hello stejné **ukázkového intervalu**.  Hello výchozí hodnota je 10 sekund.  Pokud chcete, aby tooreduce hello požadavky na úložiště dat výkonu shromážděných hello změníte tooa vyšší hodnota až too1800 sekund (30 minut).
+5. Po dokončení přidávání čítače, klikněte na tlačítko hello **Uložit** tlačítka v horní části hello hello obrazovky toosave hello konfigurace.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Konfigurovat čítačů výkonu systému Linux v konfiguračním souboru
-Namísto konfigurace čítače výkonu systému Linux pomocí portálu OMS, máte možnost úprav konfiguračních souborů na agenta systému Linux.  Metriky výkonu ke shromažďování jsou řízeny konfigurace v **/etc/opt/microsoft/omsagent/\<id pracovního prostoru\>/conf/omsagent.conf**.
+Namísto konfigurace pomocí portálu OMS hello čítače výkonu systému Linux, máte možnost hello úpravou konfiguračních souborů na hello Linux agent.  Toocollect metriky výkonu jsou řízeny hello konfigurace v **/etc/opt/microsoft/omsagent/\<id pracovního prostoru\>/conf/omsagent.conf**.
 
-Každý objekt nebo kategorie metrik výkonu ke shromažďování by měl být definována v konfiguračním souboru jako jeden `<source>` elementu. Syntaxe následující níže.
+Každý objekt nebo kategorii toocollect metriky výkonu by měla být definována v konfiguračním souboru hello jako jeden `<source>` elementu. Syntaxe Hello následující hello níže.
 
     <source>
       type oms_omi  
@@ -78,17 +78,17 @@ Každý objekt nebo kategorie metrik výkonu ke shromažďování by měl být d
     </source>
 
 
-V následující tabulce jsou popsány parametry v tomto elementu.
+Hello parametry v tomto elementu jsou popsané v následující tabulce hello.
 
 | Parametry | Popis |
 |:--|:--|
-| objekt\_název | Název objektu pro kolekci. |
-| instance\_regex |  A *regulární výraz* definování instance, které ke shromažďování. Hodnota: `.*` Určuje všechny instance. Ke shromažďování metrik procesoru pro pouze \_celkový počet instancí, můžete zadat `_Total`. Ke shromažďování metrik proces pro pouze crond nebo sshd instancí, můžete zadat: ' (crond\|sshd)'. |
-| Čítač\_název\_regex | A *regulární výraz* definice, které ke shromažďování čítače (pro objekt). Chcete-li shromažďovat všechny čítače pro objekt, zadejte: `.*`. Pokud chcete shromažďovat pouze čítače místa odkládacího souboru paměti objektu, například můžete zadat:`.+Swap.+` |
-| Interval | Frekvence, při které se shromažďují objektu čítače. |
+| objekt\_název | Název objektu pro kolekci hello. |
+| instance\_regex |  A *regulární výraz* definování které toocollect instance. Hello hodnota: `.*` Určuje všechny instance. toocollect procesoru metriky pro pouze hello \_celkový počet instancí, můžete zadat `_Total`. toocollect proces metriky pro pouze hello crond nebo sshd instancí, můžete zadat: ' (crond\|sshd)'. |
+| Čítač\_název\_regex | A *regulární výraz* definování které toocollect čítače (pro objekt hello). Zadejte všechny čítače pro objekt hello toocollect: `.*`. toocollect pouze odkládacího prostoru čítače hello paměti objektu, například můžete zadat:`.+Swap.+` |
+| interval | Frekvence, na které hello se shromažďují objektu čítače. |
 
 
-Následující tabulka uvádí objekty a čítače, které můžete zadat v konfiguračním souboru.  Existují další čítače pro konkrétní aplikace k dispozici jak je popsáno v [shromáždit čítače výkonu pro Linux aplikace v analýzy protokolů](log-analytics-data-sources-linux-applications.md).
+Hello následující tabulka uvádí hello objektů a čítačů, které můžete zadat v konfiguračním souboru hello.  Existují další čítače pro konkrétní aplikace k dispozici jak je popsáno v [shromáždit čítače výkonu pro Linux aplikace v analýzy protokolů](log-analytics-data-sources-linux-applications.md).
 
 | Název objektu | Název čítače |
 |:--|:--|
@@ -147,7 +147,7 @@ Následující tabulka uvádí objekty a čítače, které můžete zadat v konf
 | Systémový | Uživatelé |
 
 
-Toto je výchozí konfigurace pro metriku výkonu.
+Toto je výchozí konfigurace hello metrik výkonu.
 
     <source>
       type oms_omi
@@ -182,29 +182,29 @@ Toto je výchozí konfigurace pro metriku výkonu.
     </source>
 
 ## <a name="data-collection"></a>Shromažďování dat
-Analýzy protokolů shromažďuje všechny čítače výkonu zadaný v jejich zadaný vzorek intervalu na všech agentů, kteří mají nainstalovaných čítač.  Data nejsou agregovány a dobu trvání určeného předplatného OMS je k dispozici ve všech zobrazeních vyhledávání protokolu nezpracovaná data.
+Analýzy protokolů shromažďuje všechny čítače výkonu zadaný v jejich zadaný vzorek intervalu na všech agentů, kteří mají nainstalovaných čítač.  nejsou agregovány Hello dat a nezpracovaná data hello je k dispozici ve všech zobrazeních vyhledávání protokolu pro dobu trvání hello určeného předplatné OMS.
 
 ## <a name="performance-record-properties"></a>Vlastnosti záznamu výkonu
-Zaznamenává výkonu mít typ **výkonu** a mít vlastnosti v následující tabulce.
+Zaznamenává výkonu mít typ **výkonu** a mít hello vlastnosti v hello následující tabulka.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Počítač |Počítač, který událost nebyla shromážděna z. |
-| Název_čítače |Název čítače výkonu |
-| Cesta_k_čítači |Úplná cesta čítače ve formě \\ \\ \<počítače >\\objekt(instance)\\čítače. |
-| Přepočtené |Číselná hodnota čítače. |
-| InstanceName |Název instance událostí.  Prázdný, pokud není žádná instance. |
-| Název objektu |Název objektu výkonu |
-| SourceSystem |Typ agenta data nebyla shromážděna z. <br><br>Připojit OpsManager – agent systému Windows, buď přímo nebo SCOM <br> Linux – všechny agenty Linux  <br> Azurestorage – Azure Diagnostics. |
-| TimeGenerated |Datum a čas, který byl Vzorkovat data. |
+| Počítač |Počítač, který hello událost nebyla shromážděna z. |
+| Název_čítače |Název čítače výkonu hello |
+| Cesta_k_čítači |Úplná cesta hello čítače v podobě hello \\ \\ \<počítače >\\objekt(instance)\\čítače. |
+| Přepočtené |Číselná hodnota čítače hello. |
+| InstanceName |Název instance hello událostí.  Prázdný, pokud není žádná instance. |
+| Název objektu |Název objektu výkonu hello |
+| SourceSystem |Typ agenta hello data nebyla shromážděna z. <br><br>Připojit OpsManager – agent systému Windows, buď přímo nebo SCOM <br> Linux – všechny agenty Linux  <br> Azurestorage – Azure Diagnostics. |
+| TimeGenerated |Datum a čas hello data byla vzorků. |
 
 ## <a name="sizing-estimates"></a>Odhad velikosti
- Odhad pro kolekci jednotlivých čítačů v intervalech po 10 sekundách je přibližně 1 MB za den za instance.  Chcete-li odhadnout požadavky na úložiště jednotlivých čítačů pomocí následujícího vzorce.
+ Odhad pro kolekci jednotlivých čítačů v intervalech po 10 sekundách je přibližně 1 MB za den za instance.  Chcete-li odhadnout požadavky na úložiště hello jednotlivých čítačů s hello následující vzorec.
 
     1 MB x (number of counters) x (number of agents) x (number of instances)
 
 ## <a name="log-searches-with-performance-records"></a>Protokol hledání se záznamy výkonu
-Následující tabulka obsahuje různé příklady vyhledávání protokolu, která načítají záznamy výkonu.
+Hello následující tabulka obsahuje různé příklady vyhledávání protokolu, která načítají záznamy výkonu.
 
 | Dotaz | Popis |
 |:--- |:--- |
@@ -213,15 +213,15 @@ Následující tabulka obsahuje různé příklady vyhledávání protokolu, kte
 | Typ = výkonu název_čítače = "Aktuální délka fronty disku" |Všechny údaje o výkonu pro konkrétní čítač |
 | Typ = výkonu (ObjectName = procesoru) název_čítače = "čas procesoru v %" InstanceName = _celkem &#124; míra Avg(Average) jako AVGCPU počítačem. |Průměrné využití procesoru pro všechny počítače |
 | Typ = výkonu (název_čítače = "čas procesoru v %") &#124;  míra max(Max) počítačem. |Maximální využití procesoru pro všechny počítače |
-| Typ = výkonu ObjectName = logický disk název_čítače = "Aktuální délka fronty na disku" počítač = "MyComputerName" &#124; míra Avg(Average) podle InstanceName |Průměrná délka fronty disku pro aktuální napříč všemi instancemi daný počítač |
+| Typ = výkonu ObjectName = logický disk název_čítače = "Aktuální délka fronty na disku" počítač = "MyComputerName" &#124; míra Avg(Average) podle InstanceName |Průměrná délka fronty disku pro aktuální napříč všemi instancemi hello daný počítač |
 | Typ = výkonu název_čítače = "DiskTransfers za sekundu" &#124; míra percentile95(Average) počítačem. |95. percentil z přenosy disku/s pro všechny počítače |
 | Typ = výkonu název_čítače = "čas procesoru v %" InstanceName = "_Total" &#124; měření avg(CounterValue) počítače interval 1 hodina |Hodinové průměr využití procesoru pro všechny počítače |
 | Typ = výkonu počítač = "Tento počítač" název_čítače = % * InstanceName = _celkem &#124; míra percentile70(CounterValue) interval název_čítače 1 hodina. |Hodinové 70 percentilu každých % procentuální hodnoty čítače pro konkrétní počítač. |
 | Typ = výkonu název_čítače = "čas procesoru v %" InstanceName = "_Total" (počítač = "Tento počítač") &#124; měření min(CounterValue), avg(CounterValue), percentile75(CounterValue), max(CounterValue) počítače interval 1 hodina |Hodinové průměr, minimální, maximální a 75 percentilu využití procesoru pro určitý počítač |
-| Typ = výkonu ObjectName = "MSSQL$ INST2: databáze" InstanceName = hlavní | Všechny údaje o výkonu z objektu výkonu databáze pro hlavní databázi z pojmenované instance systému SQL Server INST2.  
+| Typ = výkonu ObjectName = "MSSQL$ INST2: databáze" InstanceName = hlavní | Všechny údaje o výkonu z výkonu databáze hello objekt pro hello hlavní databázi z pojmenované instance systému SQL Server INST2 hello.  
 
 >[!NOTE]
-> Pokud byl váš pracovní prostor upgradován na [nový dotazovací jazyk Log Analytics](log-analytics-log-search-upgrade.md), výše uvedené dotazy se změní na následující.
+> Pokud pracovní prostor byl upgradovaný toohello [nové analýzy protokolů dotazu jazyka](log-analytics-log-search-upgrade.md), pak změní následující toohello hello výše dotazy.
 
 > | Dotaz | Popis |
 |:--- |:--- |
@@ -230,22 +230,22 @@ Následující tabulka obsahuje různé příklady vyhledávání protokolu, kte
 | Výkonu &#124; kde CounterName == "Aktuální délka fronty disku" |Všechny údaje o výkonu pro konkrétní čítač |
 | Výkonu &#124; kde ObjectName == "Procesor" a název_čítače == "% času procesoru" a InstanceName == "_Total" &#124; shrnout AVGCPU = avg(Average) počítačem. |Průměrné využití procesoru pro všechny počítače |
 | Výkonu &#124; kde CounterName == "% času procesoru" &#124; shrnout AggregatedValue = max(Max) počítačem. |Maximální využití procesoru pro všechny počítače |
-| Výkonu &#124; kde ObjectName == "Logický disk" a název_čítače == "Aktuální délka fronty disku" a počítač == "MyComputerName" &#124; shrnout AggregatedValue = avg(Average) podle InstanceName |Průměrná délka fronty disku pro aktuální napříč všemi instancemi daný počítač |
+| Výkonu &#124; kde ObjectName == "Logický disk" a název_čítače == "Aktuální délka fronty disku" a počítač == "MyComputerName" &#124; shrnout AggregatedValue = avg(Average) podle InstanceName |Průměrná délka fronty disku pro aktuální napříč všemi instancemi hello daný počítač |
 | Výkonu &#124; kde CounterName == "DiskTransfers za sekundu" &#124; shrnout AggregatedValue = percentilu (průměru, 95) podle počítače |95. percentil z přenosy disku/s pro všechny počítače |
 | Výkonu &#124; kde CounterName == "% času procesoru" a InstanceName == "_Total" &#124; shrnout AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hod), počítač |Hodinové průměr využití procesoru pro všechny počítače |
 | Výkonu &#124; kde počítač == "Tento počítač" a název_čítače startswith_cs "%" a InstanceName == "_Total" &#124; shrnout AggregatedValue = percentilu (přepočtené 70) podle bin (TimeGenerated, 1 hod), název_čítače | Hodinové 70 percentilu každých % procentuální hodnoty čítače pro konkrétní počítač. |
 | Výkonu &#124; kde CounterName == "% času procesoru" a InstanceName == "_Total" a počítač == "Tento počítač" &#124; shrnout ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] = percentilu (přepočtené, 75), ["max(CounterValue)"] = max(CounterValue) podle bin (TimeGenerated, 1 hod), počítač |Hodinové průměr, minimální, maximální a 75 percentilu využití procesoru pro určitý počítač |
-| Výkonu &#124; kde ObjectName == "MSSQL$ INST2: databáze" a InstanceName == "hlavní" | Všechny údaje o výkonu z objektu výkonu databáze pro hlavní databázi z pojmenované instance systému SQL Server INST2.  
+| Výkonu &#124; kde ObjectName == "MSSQL$ INST2: databáze" a InstanceName == "hlavní" | Všechny údaje o výkonu z výkonu databáze hello objekt pro hello hlavní databázi z pojmenované instance systému SQL Server INST2 hello.  
 
 ## <a name="viewing-performance-data"></a>Zobrazení dat výkonu
-Při spuštění vyhledávání protokolu pro data o výkonu, **seznamu** zobrazení se zobrazí ve výchozím nastavení.  Chcete-li zobrazit data v grafických formulářů, klikněte na tlačítko **metriky**.  Podrobné grafické zobrazení, klikněte na  **+**  vedle čítače.  
+Při spuštění vyhledávání protokolu pro data výkonu hello **seznamu** zobrazení se zobrazí ve výchozím nastavení.  tooview hello dat v grafických formulářů, klikněte na tlačítko **metriky**.  Pro podrobné grafické zobrazení, klikněte na tlačítko hello  **+**  další tooa čítače.  
 
 ![Zobrazení metriky sbalené](media/log-analytics-data-sources-performance-counters/metricscollapsed.png)
 
-Agregovat data o výkonu v hledání protokolů, najdete v článku [metriky agregace na vyžádání a vizualizace v OMS](http://blogs.technet.microsoft.com/msoms/2016/02/26/on-demand-metric-aggregation-and-visualization-in-oms/).
+data o výkonu tooaggregate v hledání protokolů, najdete v části [metriky agregace na vyžádání a vizualizace v OMS](http://blogs.technet.microsoft.com/msoms/2016/02/26/on-demand-metric-aggregation-and-visualization-in-oms/).
 
 
 ## <a name="next-steps"></a>Další kroky
 * [Shromáždit čítače výkonu z aplikace Linux](log-analytics-data-sources-linux-applications.md) včetně MySQL a serveru Apache HTTP Server.
-* Další informace o [protokolu hledání](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a řešení.  
-* Exportovat shromážděná data do [Power BI](log-analytics-powerbi.md) pro další vizualizaci a analýzu.
+* Další informace o [protokolu hledání](log-analytics-log-searches.md) tooanalyze hello data budou shromažďovat ze zdroje dat a řešení.  
+* Exportovat shromážděná data příliš[Power BI](log-analytics-powerbi.md) pro další vizualizaci a analýzu.

@@ -1,5 +1,5 @@
 ---
-title: "Konfigurovat spolehlivé Azure mikroslužeb | Microsoft Docs"
+title: "spolehlivé Azure mikroslužeb aaaConfigure | Microsoft Docs"
 description: "Další informace o konfiguraci stavové spolehlivé služby v Azure Service Fabric."
 services: Service-Fabric
 documentationcenter: .net
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/29/2017
 ms.author: sumukhs
-ms.openlocfilehash: fa77eaf44f4d90d1a78f5de69e36432a53d80ecd
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1e9c2890b62890a777561f25c04dc0fd11db9f1d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurovat stavová spolehlivé služby
-Existují dvě sady nastavení konfigurace pro spolehlivé služby. Jedna sada je globální pro všechny spolehlivé služby v clusteru, zatímco druhá sada je specifická pro konkrétní službu spolehlivé.
+Existují dvě sady nastavení konfigurace pro spolehlivé služby. Jedna sada je globální pro všechny spolehlivé služby v clusteru hello při hello druhá sada konkrétní tooa konkrétní spolehlivou službu.
 
 ## <a name="global-configuration"></a>Globální konfigurace
-Konfigurace globálních spolehlivé služby je zadáno v manifestu clusteru pro cluster části KtlLogger. Umožňuje konfiguraci protokolu sdílené umístění a velikost a limity globální paměti používané protokolovacího nástroje. V manifestu clusteru je jednoho souboru XML, který obsahuje nastavení a konfigurace, které platí pro všechny uzly a služby v clusteru. Soubor se obvykle nazývá ClusterManifest.xml. Můžete zobrazit clusteru manifestu clusteru pomocí příkazu Get-ServiceFabricClusterManifest prostředí powershell.
+Hello globální spolehlivá služba konfigurace je zadáno v manifestu clusteru hello hello clusteru pod hello KtlLogger části. Umožňuje konfiguraci hello sdílené protokolu umístění a velikost a hello globální paměť omezení používané hello protokolovacího nástroje. manifest clusteru Hello je jednoho souboru XML, který obsahuje nastavení a konfigurace, které se vztahují tooall uzly a služby v clusteru hello. soubor Hello se obvykle nazývá ClusterManifest.xml. Můžete zobrazit hello manifestu clusteru pro váš cluster pomocí příkazu prostředí powershell Get-ServiceFabricClusterManifest hello.
 
 ### <a name="configuration-names"></a>Názvy konfigurace
 | Name (Název) | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
-| WriteBufferMemoryPoolMinimumInKB |Kilobajtů |8388608 |Minimální počet KB přidělit v režimu jádra pro fond vyrovnávací paměti zápisu protokolovacího nástroje. Tento fond paměti se používá pro ukládání do mezipaměti informace o stavu před zápis na disk. |
-| WriteBufferMemoryPoolMaximumInKB |Kilobajtů |Bez omezení |Maximální velikost, do které protokolovacího nástroje zápis fondu vyrovnávací paměti můžou růst. |
-| SharedLogId |IDENTIFIKÁTOR GUID |"" |Určuje jedinečný identifikátor GUID pro identifikaci výchozí sdíleného souboru protokolu v případě všech spolehlivé služeb ve všech uzlech v clusteru, které neurčují SharedLogId v jejich konkrétní konfiguraci služby. Pokud je zadán SharedLogId, musíte zadat také tento SharedLogPath. |
-| SharedLogPath |Plně kvalifikovaný název cesty |"" |Určuje plně kvalifikovanou cestu, kde soubor sdílený protokolu používané všechny spolehlivé služby ve všech uzlech v clusteru, které neurčují SharedLogPath v jejich konkrétní konfiguraci služby. Ale pokud je zadán SharedLogPath, pak SharedLogId musí také uvést. |
-| SharedLogSizeInMB |V megabajtech |8192 |Určuje počet MB místa na disku staticky přidělení pro sdílené protokolu. Hodnota musí být 2 048 nebo větší. |
+| WriteBufferMemoryPoolMinimumInKB |Kilobajtů |8388608 |Minimální počet tooallocate KB v režimu jádra pro hello protokolovač zápis fondu vyrovnávací paměti. Tento fond paměti se používá pro ukládání do mezipaměti informace o stavu před zápisem toodisk. |
+| WriteBufferMemoryPoolMaximumInKB |Kilobajtů |Bez omezení |Maximální velikost toowhich hello protokolovacího nástroje zápis vyrovnávací paměti fondu paměti můžou růst. |
+| SharedLogId |IDENTIFIKÁTOR GUID |"" |Určuje jedinečný toouse identifikátor GUID pro identifikaci hello výchozí sdíleného souboru protokolu v všechny spolehlivé služeb ve všech uzlech v clusteru hello, které neurčují hello SharedLogId v jejich konkrétní konfiguraci služby. Pokud je zadán SharedLogId, musíte zadat také tento SharedLogPath. |
+| SharedLogPath |Plně kvalifikovaný název cesty |"" |Určuje plně kvalifikovanou cestu hello kde hello sdíleného souboru protokolu v případě všech spolehlivé služeb ve všech uzlech v clusteru hello, které neurčují hello SharedLogPath v jejich konkrétní konfiguraci služby. Ale pokud je zadán SharedLogPath, pak SharedLogId musí také uvést. |
+| SharedLogSizeInMB |V megabajtech |8192 |Určuje počet hello MB místa na disku přidělit toostatically pro sdílené protokolu hello. Hello hodnota musí být 2 048 nebo větší. |
 
-V Azure ARM nebo v šabloně JSON místní následující příklad ukazuje, jak změnit sdílené transakčního protokolu, která je vytvořena zálohovat všechny spolehlivé kolekce pro stavové služby.
+V Azure ARM nebo v šabloně JSON místní následující hello příklad ukazuje, jak toochange hello hello sdílené transakčního protokolu, který získá vytváří tooback všechny spolehlivé kolekce pro stavové služby.
 
     "fabricSettings": [{
         "name": "KtlLogger",
@@ -46,7 +46,7 @@ V Azure ARM nebo v šabloně JSON místní následující příklad ukazuje, jak
     }]
 
 ### <a name="sample-local-developer-cluster-manifest-section"></a>Ukázka místní vývojáře oddílu manifestu clusteru
-Pokud chcete změnit to na vašem místním vývojovém prostředí, musíte upravit soubor místní clustermanifest.xml.
+Pokud chcete toochange to na vašem místním vývojovém prostředí, budete potřebovat soubor místní clustermanifest.xml tooedit hello.
 
 ```xml
    <Section Name="KtlLogger">
@@ -59,72 +59,72 @@ Pokud chcete změnit to na vašem místním vývojovém prostředí, musíte upr
 ```
 
 ### <a name="remarks"></a>Poznámky
-Protokolovač má globálního fondu paměti přidělené z paměti nestránkovaného jádra, která je k dispozici pro všechny spolehlivé služby v uzlu pro ukládání do mezipaměti data o stavu, než se zapíšou do protokolu vyhrazené související s replikou spolehlivé služby. Velikost fondu je řízena nastavením WriteBufferMemoryPoolMinimumInKB a WriteBufferMemoryPoolMaximumInKB. WriteBufferMemoryPoolMinimumInKB Určuje počáteční velikost tohoto fondu paměti a velikost nejnižší, ke kterému může zmenšit se využívá fondem paměti. WriteBufferMemoryPoolMaximumInKB je nejvyšší velikost, která může dosáhnout se využívá fondem paměti. Každou repliku spolehlivá služba, který se otevírá může zvýšit velikost fondu paměti systému určit velikost až WriteBufferMemoryPoolMaximumInKB. Pokud existuje více požadavků na paměť z fondu paměti, než je k dispozici, požadavky na paměť se odloží až do paměti je k dispozici. Proto pokud fondu zápis vyrovnávací paměť je příliš malá pro konkrétní konfigurací pak výkonu může dojít ke snížení.
+protokolovač Hello se globální fond paměti přidělené z paměti nestránkovaného jádra, která je k dispozici tooall spolehlivé služby v uzlu pro ukládání do mezipaměti data o stavu před zápisem toohello vyhrazené protokolu přidružené hello spolehlivá služba repliky. velikost fondu Hello se řídí hello WriteBufferMemoryPoolMinimumInKB a WriteBufferMemoryPoolMaximumInKB nastavení. WriteBufferMemoryPoolMinimumInKB určuje obě hello počáteční velikost tohoto fondu paměti a může zmenšit hello nejnižší velikost toowhich hello fondem paměti. WriteBufferMemoryPoolMaximumInKB je, že může růst hello nejvyšší velikost toowhich hello fondem paměti. Každou repliku spolehlivá služba, který se otevírá může zvýšit hello velikost fondu paměti hello systému určit velikost až tooWriteBufferMemoryPoolMaximumInKB. Pokud existuje více požadavků na paměť z hello fondu paměti, než je k dispozici, požadavky na paměť se odloží až do paměti je k dispozici. Proto pokud fondu hello zápis vyrovnávací paměti je příliš malá pro konkrétní konfigurací pak výkonu může dojít ke snížení.
 
-Nastavení SharedLogId a SharedLogPath se vždy používají společně zadat identifikátor GUID a umístění sdílené protokolu výchozí pro všechny uzly v clusteru. Protokol sdílené výchozí se používá pro všechny spolehlivé služby, které neurčují nastavení v souborech settings.xml pro konkrétní službu. Pro nejlepší výkon musí být sdílené soubory protokolu umístěny na disky, které se používají výhradně pro soubor sdílený protokolu ke snížení kolizí.
+nastavení SharedLogId a SharedLogPath Hello jsou vždy použít společně toodefine hello GUID a protokolu pro všechny uzly v clusteru hello sdíleného umístění pro výchozí hello. sdílené protokol Hello výchozí se používá pro všechny spolehlivé služby, které neurčují hello nastavení v souborech settings.xml hello pro konkrétní službu hello. Pro nejlepší výkon musí být sdílené soubory protokolu umístěny na disky, které se používají výhradně pro kolizí tooreduce souboru protokolu hello sdílené.
 
-SharedLogSizeInMB určuje množství místa na disku pro předběžné přidělení pro protokol výchozí sdílené na všech uzlech.  SharedLogId a SharedLogPath není potřeba zadat v pořadí pro SharedLogSizeInMB zadat.
+SharedLogSizeInMB určuje hello množství toopreallocate místa na disku pro protokol sdílené výchozí hello na všech uzlech.  SharedLogId a SharedLogPath nemusí toobe zadaný v pořadí pro SharedLogSizeInMB toobe zadán.
 
 ## <a name="service-specific-configuration"></a>Konkrétní konfigurace služby
-Stavová spolehlivé služby výchozí konfigurace můžete upravit pomocí konfiguračního balíčku (Config) nebo implementace služby (kód).
+Můžete upravit výchozí konfigurace stavová spolehlivé služby s použitím balíčku hello konfiguraci (Config) nebo hello implementace služby (kód).
 
-* **Konfigurace** -konfigurace prostřednictvím konfigurační balíček se provádí tak, že změníte souborech Settings.xml souboru, který je vygenerován v kořenu balíčku Microsoft Visual Studio ve složce Konfigurace pro každou službu v aplikaci.
-* **Kód** -konfigurace prostřednictvím kódu se provádí tak, že vytvoříte ReliableStateManager objekt ReliableStateManagerConfiguration pomocí sady požadované možnosti.
+* **Konfigurace** -konfigurace prostřednictvím hello konfigurační balíček se provádí změnou hello souborech Settings.xml souboru, který je generován ve hello kořenového adresáře balíčku Microsoft Visual Studio ve složce Konfigurace hello u každé služby v aplikaci hello.
+* **Kód** -konfigurace prostřednictvím kódu se provádí tak, že vytvoříte ReliableStateManager pomocí objekt ReliableStateManagerConfiguration sadou hello požadované možnosti.
 
-Ve výchozím modulu runtime Azure Service Fabric předdefinované části z názvů v souboru souborech Settings.xml a odebírá hodnoty konfigurace při vytvoření základní komponenty modulu runtime.
+Ve výchozím modulu runtime Azure Service Fabric hello předdefinované části z názvů v souboru hello souborech Settings.xml a odebírá hello konfigurační hodnoty při vytváření hello základní komponenty modulu runtime.
 
 > [!NOTE]
-> Proveďte **není** odstranit části názvy následující konfigurace v souborech Settings.xml soubor, který se generuje ve řešení sady Visual Studio, pokud chcete konfigurovat služby prostřednictvím kódu.
-> Přejmenování názvy konfigurace balíčku nebo oddíl, bude vyžadovat změny kódu při konfiguraci ReliableStateManager.
+> Proveďte **není** odstranit hello části názvy hello následující konfigurace v souborech Settings.xml souboru hello, generovaný v řešení sady Visual Studio hello, pokud máte v plánu tooconfigure služby prostřednictvím kódu.
+> Přejmenování hello konfigurace balíčku nebo části názvů bude vyžadovat změny kódu při konfiguraci hello ReliableStateManager.
 > 
 > 
 
 ### <a name="replicator-security-configuration"></a>Konfigurace zabezpečení replikátoru
-Konfigurace zabezpečení Replikátor slouží k zabezpečení komunikačního kanálu, který se používá během replikace. To znamená, služby nebudou moci zobrazit vzájemně provoz replikace, zajišťující, že data, která vysokou dostupnost, je také zabezpečené. Ve výchozím nastavení zabraňuje konfigurační oddíl prázdný zabezpečení zabezpečení replikace.
+Konfigurace zabezpečení Replikátor jsou použité toosecure hello komunikační kanál, který se používá během replikace. To znamená, že služby nebude možné toosee vzájemně provoz replikace, zajišťující, že hello data, která je vysoké dostupnosti je také zabezpečení. Ve výchozím nastavení zabraňuje konfigurační oddíl prázdný zabezpečení zabezpečení replikace.
 
 ### <a name="default-section-name"></a>Výchozí název oddílu
 ReplicatorSecurityConfig
 
 > [!NOTE]
-> Chcete-li změnit tento název oddílu, přepište parametr replicatorSecuritySectionName konstruktoru ReliableStateManagerConfiguration při vytváření ReliableStateManager pro tuto službu.
+> toochange název oddílu přepsání hello replicatorSecuritySectionName parametr toohello ReliableStateManagerConfiguration konstruktor při vytváření hello ReliableStateManager pro tuto službu.
 > 
 > 
 
 ### <a name="replicator-configuration"></a>Replikátor konfigurace
-Konfigurace Replikátor nakonfigurovat Replikátor, která je odpovědná za vytváření vysoce spolehlivé stavové spolehlivé služby stavu replikace a zachování stavu místně.
-Výchozí konfigurace je generován šablony sady Visual Studio a měla by stačit. Tato část pojednává o další konfigurace, které jsou k dispozici pro optimalizaci replikátor.
+Konfigurace Replikátor nakonfigurovat hello Replikátor, která je odpovědná za vytváření vysoce spolehlivé hello stavová spolehlivé stav služby replikace a zachování stavu hello místně.
+Hello výchozí konfigurace je generován hello šablony sady Visual Studio a měla by stačit. Tato část pojednává o další konfigurace, které jsou k dispozici tootune Replikátor hello.
 
 ### <a name="default-section-name"></a>Výchozí název oddílu
 ReplicatorConfig
 
 > [!NOTE]
-> Chcete-li změnit tento název oddílu, přepište parametr replicatorSettingsSectionName konstruktoru ReliableStateManagerConfiguration při vytváření ReliableStateManager pro tuto službu.
+> toochange název oddílu přepsání hello replicatorSettingsSectionName parametr toohello ReliableStateManagerConfiguration konstruktor při vytváření hello ReliableStateManager pro tuto službu.
 > 
 > 
 
 ### <a name="configuration-names"></a>Názvy konfigurace
 | Name (Název) | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
-| BatchAcknowledgementInterval |Sekundy |0.015 |Časové období, pro které Replikátor na sekundární počká po přijetí operace před odesláním zpět na primární potvrzení. Další potvrzení k odeslání pro operace zpracování v rámci tohoto intervalu se odesílají jako jedna odpověď. |
-| ReplicatorEndpoint |Není k dispozici |Žádná výchozí hodnota – povinný parametr |IP adresa a port, který Replikátor primární a sekundární bude používat pro komunikaci s další replikátory na replice nastavit. To by měl odkazovat koncový bod TCP prostředků v service manifest. Odkazovat na [manifestu prostředky služby](service-fabric-service-manifest-resources.md) Další informace o definování koncový bod prostředků v service manifest. |
-| MaxPrimaryReplicationQueueSize |Počet operací |8192 |Maximální počet operací ve frontě primární. Operace uvolněno po primární Replikátor obdrží potvrzení ze sekundární replikátory. Tato hodnota musí být větší než 64 a druhou mocninou 2. |
-| MaxSecondaryReplicationQueueSize |Počet operací |16384 |Maximální počet operací v sekundární fronty. Operace uvolněno po provedení vysoce dostupný prostřednictvím trvalost stavu. Tato hodnota musí být větší než 64 a druhou mocninou 2. |
-| CheckpointThresholdInMB |MB |50 |Množství místa souboru protokolu, po jejímž uplynutí je kontrolován stav. |
-| MaxRecordSizeInKB |kB |1024 |Maximální velikost záznam, který Replikátor může zapisovat do protokolu. Tato hodnota musí být násobkem 4 a je větší než 16. |
-| MinLogSizeInMB |MB |0 (systém určit) |Minimální velikost transakčního protokolu. Protokol nebudou povolena, aby došlo ke zkrácení velikost pod toto nastavení. Hodnota 0 znamená, že Replikátor určí minimální velikost protokolu. Zvýšení hodnoty zvyšuje pravděpodobnost plnění od pravděpodobnost příslušných protokolových záznamy, které ke zkrácení je snížena částečné kopie a přírůstkové zálohování. |
-| TruncationThresholdFactor |Koeficient |2 |Určuje, jakou velikost protokolu zkrácení aktivuje. Prahová hodnota zkrácení je určen podle MinLogSizeInMB násobí hodnotou TruncationThresholdFactor. TruncationThresholdFactor musí být větší než 1. MinLogSizeInMB * TruncationThresholdFactor musí být menší než MaxStreamSizeInMB. |
-| ThrottlingThresholdFactor |Koeficient |4 |Určuje, jakou velikost protokolu replika začne omezené. Omezení prahovou hodnotu (v MB) je dáno maximální ((MinLogSizeInMB * ThrottlingThresholdFactor),(CheckpointThresholdInMB * ThrottlingThresholdFactor)). Omezení prahovou hodnotu (v MB) musí být větší než prahová hodnota zkrácení (v MB). Zkrácení prahovou hodnotu (v MB) musí být menší než MaxStreamSizeInMB. |
-| MaxAccumulatedBackupLogSizeInMB |MB |800 |Maximální počet shromážděných velikost (v MB) zálohování protokolů v řetězci dané zálohy protokolu. Požadavky přírůstkové zálohování se nezdaří, pokud Přírůstková záloha by vygeneroval zálohy protokolu, které by způsobily Akumulovaná protokoly zálohování od relevantní úplné zálohování musí být větší než tato velikost. V takových případech uživatele je potřeba provést úplnou zálohu. |
-| SharedLogId |IDENTIFIKÁTOR GUID |"" |Určuje jedinečný identifikátor GUID pro identifikaci soubor sdílený protokolu použít s této repliky. Služby obvykle neměli používat toto nastavení. Ale pokud je zadán SharedLogId, pak SharedLogPath musí také uvést. |
-| SharedLogPath |Plně kvalifikovaný název cesty |"" |Určuje plně kvalifikovanou cestu, kde bude vytvořen soubor sdílený protokolu pro tuto repliku. Služby obvykle neměli používat toto nastavení. Ale pokud je zadán SharedLogPath, pak SharedLogId musí také uvést. |
-| SlowApiMonitoringDuration |Sekundy |300 |Nastaví interval monitorování pro spravované volání rozhraní API. Příklad: zadaná uživatelem funkce zálohování zpětného volání. Po uplynutí intervalu, sestavy stavu upozornění, budou odeslány do Správce stavu. |
+| BatchAcknowledgementInterval |Sekundy |0.015 |Časové období, pro které Replikátor hello na sekundární počká hello po přijetí operace před odesláním zpět potvrzení toohello primární. Další potvrzení toobe odeslané pro operace zpracování v rámci tohoto intervalu se odesílají jako jedna odpověď. |
+| ReplicatorEndpoint |Není k dispozici |Žádná výchozí hodnota – povinný parametr |IP adresa a port, který hello primární a sekundární Replikátor použije toocommunicate jiných replikátory hello sady replik. To by měl odkazovat koncový bod TCP prostředků v hello service manifest. Odkazovat příliš[manifestu prostředky služby](service-fabric-service-manifest-resources.md) tooread informace o definování koncový bod prostředků v service manifest. |
+| MaxPrimaryReplicationQueueSize |Počet operací |8192 |Maximální počet operací ve frontě primární hello. Operace uvolněno po primární Replikátor hello přijímá potvrzení z všechny sekundární replikátory hello. Tato hodnota musí být větší než 64 a druhou mocninou 2. |
+| MaxSecondaryReplicationQueueSize |Počet operací |16384 |Maximální počet operací ve frontě sekundární hello. Operace uvolněno po provedení vysoce dostupný prostřednictvím trvalost stavu. Tato hodnota musí být větší než 64 a druhou mocninou 2. |
+| CheckpointThresholdInMB |MB |50 |Množství místa souboru protokolu, po jejímž uplynutí je kontrolován hello stavu. |
+| MaxRecordSizeInKB |kB |1024 |Maximální velikost záznamů, které Replikátor hello můžou zapisovat do protokolu hello. Tato hodnota musí být násobkem 4 a je větší než 16. |
+| MinLogSizeInMB |MB |0 (systém určit) |Minimální velikost hello transakčního protokolu. velikost tooa tootruncate nižší než toto nastavení nebude povoleno přihlášení Hello. Hodnota 0 znamená, že určí, že hello Replikátor hello minimální velikost protokolu. Zvýšení hodnoty tuto zvyšuje možnost hello plnění od pravděpodobnost příslušných protokolových záznamy, které ke zkrácení je snížena částečné kopie a přírůstkové zálohování. |
+| TruncationThresholdFactor |Koeficient |2 |Určuje, jakou velikost protokolu hello zkrácení aktivuje. Prahová hodnota zkrácení je určen podle MinLogSizeInMB násobí hodnotou TruncationThresholdFactor. TruncationThresholdFactor musí být větší než 1. MinLogSizeInMB * TruncationThresholdFactor musí být menší než MaxStreamSizeInMB. |
+| ThrottlingThresholdFactor |Koeficient |4 |Určuje, jakou velikost protokolu hello hello repliky spustí omezené. Omezení prahovou hodnotu (v MB) je dáno maximální ((MinLogSizeInMB * ThrottlingThresholdFactor),(CheckpointThresholdInMB * ThrottlingThresholdFactor)). Omezení prahovou hodnotu (v MB) musí být větší než prahová hodnota zkrácení (v MB). Zkrácení prahovou hodnotu (v MB) musí být menší než MaxStreamSizeInMB. |
+| MaxAccumulatedBackupLogSizeInMB |MB |800 |Maximální počet shromážděných velikost (v MB) zálohování protokolů v řetězci dané zálohy protokolu. Požadavky přírůstkové zálohování se nezdaří, pokud hello přírůstkové zálohování by vygeneroval zálohy protokolu, které by způsobily protokoly zálohování hello shromážděných od hello relevantní úplného zálohování toobe větší než tato velikost. V takových případech je uživatel požadované tootake úplné zálohování. |
+| SharedLogId |IDENTIFIKÁTOR GUID |"" |Určuje jedinečný toouse identifikátor GUID pro identifikaci sdílený soubor protokolu hello použít s této repliky. Služby obvykle neměli používat toto nastavení. Ale pokud je zadán SharedLogId, pak SharedLogPath musí také uvést. |
+| SharedLogPath |Plně kvalifikovaný název cesty |"" |Určuje hello plně kvalifikovanou cestu, kde bude vytvořen hello sdílený soubor protokolu pro tuto repliku. Služby obvykle neměli používat toto nastavení. Ale pokud je zadán SharedLogPath, pak SharedLogId musí také uvést. |
+| SlowApiMonitoringDuration |Sekundy |300 |Nastaví interval pro spravované volání rozhraní API sledování hello. Příklad: zadaná uživatelem funkce zálohování zpětného volání. Po uplynutí intervalu hello, sestavy stavu upozornění, bude odeslána toohello správce stavu. |
 
 ### <a name="sample-configuration-via-code"></a>Ukázková konfigurace prostřednictvím kódu
 ```csharp
 class Program
 {
     /// <summary>
-    /// This is the entry point of the service host process.
+    /// This is hello entry point of hello service host process.
     /// </summary>
     static void Main()
     {
@@ -174,14 +174,14 @@ class MyStatefulService : StatefulService
 
 
 ### <a name="remarks"></a>Poznámky
-BatchAcknowledgementInterval řídí latenci replikace. Hodnota '0' výsledkem nejnižší možnou latenci, za cenu propustnost (jako další potvrzení zprávy musí být odeslána a zpracování jednotlivých obsahující méně potvrzení).
-Čím větší hodnotu BatchAcknowledgementInterval, tím vyšší celkový replikace propustnost, za cenu vyšší latence operace. Výsledkem je přímo na latenci potvrzení transakcí.
+BatchAcknowledgementInterval řídí latenci replikace. Hodnota '0' výsledkem hello nejnižší možnou latenci, náklady na hello propustnosti (jako další potvrzení zprávy musí být odeslána a zpracování jednotlivých obsahující méně potvrzení).
+Hello větší hodnotu hello BatchAcknowledgementInterval, hello vyšší hello celková propustnost replikace hello náklady na vyšší latence operace. Výsledkem je přímo toohello latenci potvrzení transakcí.
 
-Hodnota CheckpointThresholdInMB určuje množství místa na disku, které Replikátor můžete použít k ukládání stavových informací v souboru protokolu vyhrazené repliky. To zvyšuje na vyšší hodnotu než výchozí může mít za následek Rekonfigurace rychlejší, když je přidat novou repliku do sady. Toto je z důvodu přenosu částečné stavu, která se provádí z důvodu dostupnost další historie operací v protokolu. Po chybě potenciálně může prodloužit dobu obnovení repliky.
+Hodnota Hello CheckpointThresholdInMB ovládací prvky hello množství místa na disku, který hello Replikátor můžete použít informace o stavu toostore v souboru protokolu vyhrazené hello repliky. Zvýšení tuto tooa vyšší hodnotu než výchozí hello může mít za následek Rekonfigurace rychlejší, když novou repliku je přidána toohello sady. Toto je z důvodu přenosu toohello částečné stavu, který probíhá kvůli toohello dostupnost další historie operací v protokolu hello. Potenciálně může prodloužit dobu obnovení hello repliky po chybě.
 
-Nastavení MaxRecordSizeInKB definuje maximální velikost záznam, který lze zapisovat, které Replikátor do souboru protokolu. Ve většině případů je optimální výchozí velikost 1024 KB záznamu. Ale pokud služba způsobuje větší datové položky se jednat o část informace o stavu, pak tato hodnota možná muset zvýšit. Výhoda je malá při vytvoření MaxRecordSizeInKB menší než 1024, jako menší záznamů použijte pouze prostor potřebný pro menší záznamu. Očekáváme, že tato hodnota by bylo potřeba změnit v pouze výjimečných případech.
+nastavení MaxRecordSizeInKB Hello definuje maximální velikost hello záznam, který je možné zapsat hello Replikátor do souboru protokolu hello. Ve většině případů hello výchozí záznam 1024 KB velikost je optimální. Pokud však hello služba způsobuje položky dat větší toobe část informace o stavu hello, pak tato hodnota může být nutné toobe vyšší. Výhoda je malá při vytvoření MaxRecordSizeInKB menší než 1024, jako menší záznamů použijte pouze hello prostor potřebný pro menší záznam hello. Očekáváme, že tato hodnota by nutné toobe změnit v pouze výjimečných případech.
 
-Nastavení SharedLogId a SharedLogPath jsou vždy společně použít k nastavení služby použití samostatných sdílených protokolu z protokolu sdílené výchozí pro uzel. Pro nejlepšího výkonu by měl tolik služby nejdříve zadejte stejné sdílené protokolu. Sdílené soubory protokolu musí být umístěny na disky, které se používají výhradně pro soubor sdílený protokolu ke snížení head přesun kolizí. Očekáváme, že tato hodnota by bylo potřeba změnit v pouze výjimečných případech.
+nastavení SharedLogId a SharedLogPath Hello jsou vždy použít společně toomake služby použití samostatných sdílených protokolu z hello výchozí sdílené protokolu pro uzel hello. Pro nejlepšího výkonu by měl určovat tolik služby jako možné hello stejné sdílené protokolu. Sdílené soubory protokolu musí být umístěny na disky, které se používají výhradně pro hello sdílené protokolu souboru tooreduce head přesun kolizí. Očekáváme, že tato hodnota by nutné toobe změnit v pouze výjimečných případech.
 
 ## <a name="next-steps"></a>Další kroky
 * [Ladění aplikace Service Fabric v sadě Visual Studio](service-fabric-debugging-your-application.md)

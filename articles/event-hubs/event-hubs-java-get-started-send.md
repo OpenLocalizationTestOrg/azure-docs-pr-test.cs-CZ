@@ -1,6 +1,6 @@
 ---
-title: "Odesílání událostí do centra událostí Azure pomocí Java | Microsoft Docs"
-description: "Začínáme odesílá do centra událostí se používá Java"
+title: "aaaSend události tooAzure Event Hubs pomocí Java | Microsoft Docs"
+description: "Začínáme odesílání tooEvent centra používá Java"
 services: event-hubs
 documentationcenter: 
 author: sethmanheim
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: b31771001989e20b88bc8d7bca1afceb58ec197c
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: ec537b8849a0cb49855e76c0c0ef4093108fe83c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="send-events-to-azure-event-hubs-using-java"></a>Odesílání událostí do centra událostí Azure používá Java
+# <a name="send-events-tooazure-event-hubs-using-java"></a>Odesílání událostí tooAzure Event Hubs pomocí Java
 
 ## <a name="introduction"></a>Úvod
-Event Hubs je vysoce škálovatelná služba, kterou lze přijímat miliony událostí za sekundu, povolení aplikaci zpracovávat a analyzovat masivní objemy dat vytvářených připojených zařízení a aplikací. Až se shromáždí do centra událostí, můžete transformovat a ukládat data pomocí úložného clusteru nebo všechny zprostředkovatele datové analýzy v reálném čase.
+Event Hubs je vysoce škálovatelná služba, která může přijímat miliony událostí za sekundu, povolení tooprocess aplikace a analyzovat masivní objemy dat vytvářených připojených zařízení a aplikace hello. Až se shromáždí do centra událostí, můžete transformovat a ukládat data pomocí úložného clusteru nebo všechny zprostředkovatele datové analýzy v reálném čase.
 
-Další informace najdete v tématu [Přehled služby Event Hubs][Event Hubs overview].
+Další informace najdete v tématu hello [Přehled služby Event Hubs][Event Hubs overview].
 
-Tento kurz ukazuje, jak odesílat události do centra událostí pomocí konzolové aplikace v jazyce Java. Chcete-li přijímat události pomocí knihovny Java Event Processor Host, přečtěte si téma [v tomto článku](event-hubs-java-get-started-receive-eph.md), nebo klikněte na příslušný jazyk přijímající v levé tabulce obsahu.
+Tento kurz ukazuje, jak toosend události tooan centra událostí pomocí konzolové aplikace v jazyce Java. tooreceive událostí pomocí hello knihovně Java Event Processor Host, najdete v části [v tomto článku](event-hubs-java-get-started-receive-eph.md), nebo klikněte na příslušný přijímající jazyk hello v levé tabulce hello obsahu.
 
-K dokončení tohoto kurzu budete potřebovat následující:
+V toocomplete pořadí v tomto kurzu budete potřebovat hello následující:
 
 * Vývojové prostředí Java. V tomto kurzu budeme předpokládat [Eclipse](https://www.eclipse.org/).
 * Aktivní účet Azure. <br/>Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný účet. Podrobnosti najdete v článku <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Bezplatná zkušební verze Azure</a>.
 
-## <a name="send-messages-to-event-hubs"></a>Zasílání zpráv do služby Event Hubs
-Klientská knihovna Java pro službu Event Hubs je k dispozici pro použití v projektech Maven z [Maven centrálním úložišti](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22). Tato knihovna pomocí následující prohlášení závislostí v souboru projektu Maven, můžete odkazovat:    
+## <a name="send-messages-tooevent-hubs"></a>Odesílání zpráv tooEvent rozbočovače
+Hello Java klientské knihovny pro službu Event Hubs je k dispozici pro použití v projektech Maven z hello [Maven centrálním úložišti](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22). Tato knihovna pomocí hello následující závislost deklarace v souboru projektu Maven, můžete odkazovat:    
 
 ```xml
 <dependency>
@@ -45,11 +45,11 @@ Klientská knihovna Java pro službu Event Hubs je k dispozici pro použití v p
 </dependency>
 ```
 
-Pro různé typy prostředí sestavení, můžete explicitně získat nejnovější vydaná JAR soubory z [Maven centrálním úložišti](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22).  
+Pro různé typy prostředí sestavení, můžete explicitně získat souborů JAR hello nejnovější vydání z hello [Maven centrálním úložišti](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22).  
 
-Jednoduchá událost vydavatel, importovat *com.microsoft.azure.eventhubs* balíček pro třídy klienta služby Event Hubs a *com.microsoft.azure.servicebus* balíček pro nástroj třídy, jako běžné výjimky, které jsou sdíleny s klientem zasílání zpráv Azure Service Bus. 
+Jednoduchá událost vydavatele, import hello *com.microsoft.azure.eventhubs* balíček pro třídy klienta hello Event Hubs a hello *com.microsoft.azure.servicebus* balíček pro nástroj třídy, například jako běžné výjimky, které jsou sdíleny s klientem zasílání zpráv Azure Service Bus hello. 
 
-Pro následující příklad nejprve vytvořte nový projekt Maven pro aplikaci konzoly nebo prostředí v oblíbeném vývojovém prostředí Java. Název třídy `Send`.     
+Následující ukázkový text hello nejprve vytvořte nový projekt Maven s pro aplikace konzoly nebo prostředí v oblíbených vývojové prostředí Java. Název třídy hello `Send`.     
 
 ```java
 import java.io.IOException;
@@ -67,7 +67,7 @@ public class Send
     {
 ```
 
-Obor názvů a událostí názvy rozbočovačů nahraďte hodnoty používané při vytváření centra událostí.
+Nahraďte názvy hello obor názvů a události rozbočovače hello hodnoty použité při vytváření centra událostí hello.
 
 ```java
     final String namespaceName = "----ServiceBusNamespaceName-----";
@@ -77,7 +77,7 @@ Obor názvů a událostí názvy rozbočovačů nahraďte hodnoty používané p
     ConnectionStringBuilder connStr = new ConnectionStringBuilder(namespaceName, eventHubName, sasKeyName, sasKey);
 ```
 
-Pak vytvořte singulární událostí pomocí transformace řetězec na jeho kódování bajtů ve formátu UTF-8. Poté vytvořte novou instanci služby Event Hubs klienta z připojovacího řetězce a odeslat zprávu.   
+Pak vytvořte singulární událostí pomocí transformace řetězec na jeho kódování bajtů ve formátu UTF-8. Pak vytvořte novou instanci služby Event Hubs klienta z hello připojovací řetězec a odeslat zprávu hello.   
 
 ```java 
 
@@ -92,9 +92,9 @@ Pak vytvořte singulární událostí pomocí transformace řetězec na jeho kó
 ``` 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o službě Event Hubs najdete na následujících odkazech:
+Další informace o službě Event Hubs návštěvou hello následující odkazy:
 
-* [Přijímat události pomocí knihovny EventProcessorHost](event-hubs-java-get-started-receive-eph.md)
+* [Přijímat události pomocí hello EventProcessorHost](event-hubs-java-get-started-receive-eph.md)
 * [Přehled služby Event Hubs][Event Hubs overview]
 * [Vytvoření centra událostí](event-hubs-create.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)

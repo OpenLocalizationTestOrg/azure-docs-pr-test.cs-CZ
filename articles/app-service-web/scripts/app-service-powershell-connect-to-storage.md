@@ -1,6 +1,6 @@
 ---
-title: "Azure skript prostředí PowerShell ukázkový – webovou aplikaci připojit k účtu úložiště | Microsoft Docs"
-description: "Azure skript prostředí PowerShell ukázkový – webovou aplikaci připojit k účtu úložiště"
+title: "aaaAzure ukázkový skript prostředí PowerShell - připojení účtu úložiště webové aplikace tooa | Microsoft Docs"
+description: "Azure skript prostředí PowerShell ukázkový – připojit účtu úložiště tooa webové aplikace"
 services: app-service\web
 documentationcenter: 
 author: syntaxc4
@@ -16,25 +16,25 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 481f3efdb1cbbeba328183da7e320c7e5b819b3a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 07693366d32fbaefe92c18df67ded81661e1a2df
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-a-web-app-to-a-storage-account"></a>Webovou aplikaci připojit k účtu úložiště
+# <a name="connect-a-web-app-tooa-storage-account"></a>Připojení účtu úložiště tooa webové aplikace
 
-V tomto scénáři se dozvíte, jak vytvořit účet úložiště Azure a webové aplikace Azure. Potom propojíte účet úložiště pro webovou aplikaci pomocí nastavení aplikace.
+V tomto scénáři se dozvíte, jak toocreate účet úložiště Azure a Azure webové aplikace. Potom propojíte hello úložiště účet toohello webovou aplikaci pomocí nastavení aplikace.
 
-V případě potřeby nainstalujte prostředí Azure PowerShell pomocí instrukce v nalezen [prostředí Azure PowerShell průvodce](/powershell/azure/overview)a poté spusťte `Login-AzureRmAccount` vytvořit připojení s Azure.
+V případě potřeby nainstalujte prostředí Azure PowerShell pomocí hello instrukce najít v hello hello [prostředí Azure PowerShell průvodce](/powershell/azure/overview)a poté spusťte `Login-AzureRmAccount` toocreate připojení s Azure.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-powershell[hlavní](../../../powershell_scripts/app-service/connect-to-storage/connect-to-storage.ps1 "webovou aplikaci připojit k účtu úložiště")]
+[!code-powershell[main](../../../powershell_scripts/app-service/connect-to-storage/connect-to-storage.ps1 "Connect a web app tooa storage account")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 
-Po spuštění ukázka skriptu, následující příkaz lze použít k odebrání skupiny prostředků, webové aplikace a všechny související prostředky.
+Po spuštění ukázka skriptu hello hello následující příkaz může být skupiny prostředků použít tooremove hello, webové aplikace a všechny související prostředky.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
@@ -42,7 +42,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá hello následující příkazy. Každý příkaz v hello tabulky odkazů toocommand konkrétní dokumentaci.
 
 | Příkaz | Poznámky |
 |---|---|
@@ -50,11 +50,11 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Nové AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | Vytvoří plán služby App Service. |
 | [Nové AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Vytvoří webovou aplikaci. |
 | [Nové AzureRMStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) | Vytvoří účet úložiště. |
-| [Get-AzureRMStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) | Získá přístupové klíče pro účet úložiště Azure. |
+| [Get-AzureRMStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) | Získá hello přístupové klíče pro účet úložiště Azure. |
 | [Set-AzureRmWebApp](/powershell/module/azurerm.websites/set-azurermwebapp) | Upraví konfiguraci webové aplikace. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
+Další informace o modulu Azure PowerShell hello najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
 
-Další ukázky prostředí Azure Powershell pro Azure App Service Web Apps naleznete v [prostředí Azure PowerShell ukázky](../app-service-powershell-samples.md).
+Další ukázky prostředí Azure Powershell pro Azure App Service Web Apps naleznete v hello [prostředí Azure PowerShell ukázky](../app-service-powershell-samples.md).

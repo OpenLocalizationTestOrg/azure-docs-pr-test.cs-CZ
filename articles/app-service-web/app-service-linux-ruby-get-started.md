@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření aplikace pro poznámky Ruby pomocí webové aplikace v systému Linux | Microsoft Docs"
-description: "Naučte se vytvářet aplikace pro poznámky Ruby s wpp službě Azure web v systému Linux."
+title: "aaaCreate Ruby aplikace s webovými aplikacemi v systému Linux | Microsoft Docs"
+description: "Další informace toocreate Ruby aplikace s wpp službě Azure web v systému Linux."
 keywords: "služby Azure app service, linux, operačních systémů, ruby"
 services: app-service
 documentationcenter: 
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: wesmc;rachelap
-ms.openlocfilehash: 17f3f1a2122c508501134a0c43ab6abce412fb44
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 99ce3b5ee16703a147787387bb02973defce8190
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-ruby-app-with-web-apps-on-linux"></a>Vytvoření aplikace pro poznámky Ruby pomocí webové aplikace v systému Linux 
 
 [!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
 
-[Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento rychlý start se dozvíte, jak vytvořit základní Ruby na které aplikace můžete poté ji nasadit do Azure jako webové aplikace v systému Linux.
+[Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento rychlý start se dozvíte, jak toocreate základní Ruby, na které aplikace je pak nasadit tooAzure jako webovou aplikaci v systému Linux.
 
 ![Hello world](./media/app-service-linux-ruby-get-started/hello-world-updated.png)
 
@@ -37,9 +37,9 @@ ms.lasthandoff: 08/29/2017
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="download-the-sample"></a>Stažení ukázky
+## <a name="download-hello-sample"></a>Stažení ukázky hello
 
-V okně terminálu spusťte následující příkaz, který klonovat úložiště ukázkové aplikace do místního počítače:
+Okno terminálu spusťte následující příkaz tooclone hello ukázkové aplikace úložiště tooyour místního počítače hello:
 
 ```bash
 git clone https://github.com/Azure-Samples/ruby-docs-hello-world
@@ -47,24 +47,24 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 [!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
 
-## <a name="run-the-application-locally"></a>Místní spuštění aplikace
+## <a name="run-hello-application-locally"></a>Místní spuštění aplikace hello
 
-Spusťte server které v pořadí pro aplikace pro práci. Změnit na *hello, world* adresář a `rails server` příkaz spustí serveru.
+Spusťte server hello které aby toowork aplikace hello. Změnit toohello *hello world* adresář a hello `rails server` příkaz spustí hello serveru.
 
 ```bash
 cd hello-world\bin
 rails server
 ```
     
-Pomocí webového prohlížeče, přejděte do `http://localhost:3000` k testování aplikace místně.    
+Pomocí webového prohlížeče, přejděte příliš`http://localhost:3000` tootest hello aplikace místně.  
 
 ![Hello world](./media/app-service-linux-ruby-get-started/hello-world.png)
 
-## <a name="modify-app-to-display-welcome-message"></a>Upravit aplikaci k zobrazení uvítací zprávy
+## <a name="modify-app-toodisplay-welcome-message"></a>Upravit aplikaci toodisplay uvítací zprávy
 
-Upravte aplikaci proto zobrazí uvítací zprávy. Změňte řadič aplikace tak, aby vracel zprávy ve formátu HTML v prohlížeči. 
+Úprava aplikace hello proto zobrazí uvítací zprávy. Změna řadiče hello aplikace tak, aby vracel uvítací zprávu jako prohlížeč toohello HTML. 
 
-Otevřete *~/workspace/hello-world/app/controllers/application_controller.rb* pro úpravy. Upravit `ApplicationController` třídy vypadat jako následující ukázka kódu:
+Otevřete *~/workspace/hello-world/app/controllers/application_controller.rb* pro úpravy. Upravit hello `ApplicationController` toolook třída jako hello následující ukázka kódu:
 
   ```ruby
   class ApplicationController > ActionController :: base
@@ -75,7 +75,7 @@ Otevřete *~/workspace/hello-world/app/controllers/application_controller.rb* pr
   end
   ```
 
-Aplikace je nyní nakonfigurována. Pomocí webového prohlížeče, přejděte do `http://localhost:3000` potvrďte kořenové cílová stránka.
+Aplikace je nyní nakonfigurována. Pomocí webového prohlížeče, přejděte příliš`http://localhost:3000` tooconfirm hello kořenové cílová stránka.
 
 ![Hello World nakonfigurované](./media/app-service-linux-ruby-get-started/hello-world-configured.png)
 
@@ -83,32 +83,32 @@ Aplikace je nyní nakonfigurována. Pomocí webového prohlížeče, přejděte 
 
 ## <a name="create-a-ruby-web-app-on-azure"></a>Vytvoření Ruby webové aplikace v Azure
 
-Použití [vytvořit plán aplikační služby az](https://docs.microsoft.com/cli/azure/appservice/plan#create) příkazu vytvoříte plán služby app service pro webové aplikace. 
+Použití hello [vytvořit plán aplikační služby az](https://docs.microsoft.com/cli/azure/appservice/plan#create) příkaz toocreate plán služby app service pro webové aplikace. 
  
 ```azurecli-interactive
   az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --is-linux
 ```
 
-V dalším kroku vydávat [az webapp vytvořit](https://docs.microsoft.com/cli/azure/webapp) příkazu vytvořte webovou aplikaci, která používá nově vytvořený tarifu. Všimněte si, že modul runtime je nastaven na `ruby|2.3`. Nezapomeňte nahradit `<app name>` s jedinečným názvem aplikace.
+V dalším kroku vydání hello [az webapp vytvořit](https://docs.microsoft.com/cli/azure/webapp) příkaz toocreate hello webovou aplikaci, která používá hello nově vytvořený plán služby. Všimněte si, že runtime hello je nastaven příliš`ruby|2.3`. Nezapomeňte tooreplace `<app name>` s jedinečným názvem aplikace.
 
 ```azurecli-interactive
   az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --runtime "ruby|2.3" --deployment-local-git
 ```
 
-Po vytvoření webové aplikace **přehled** stránka je k dispozici k zobrazení. Přejděte do ní. Zobrazí se následující úvodní stránka:
+Po vytvoření webové aplikace hello **přehled** stránka je k dispozici tooview. Přejděte tooit. Zobrazí se následující úvodní stránku Hello:
 
 ![Úvodní stránka](./media/app-service-linux-ruby-get-started/splash-page.png)
 
 
 ## <a name="deploy-your-application"></a>Nasazení aplikace
 
-Pomocí Git nasaďte Ruby aplikaci do Azure. Webové aplikace je již nakonfigurován nasazení Git. Adresa URL nasazení můžete načíst vydáním [az webapp nasazení](https://docs.microsoft.com/cli/azure/webapp/deployment) příkaz.  
+Použijte tooAzure Ruby aplikace hello toodeploy Git. Hello webové aplikace je již nakonfigurován nasazení Git. Můžete načíst URL nasazení hello vydáním [az webapp nasazení](https://docs.microsoft.com/cli/azure/webapp/deployment) příkaz.  
 
 ```bash
 az webapp deployment source show --name <app name> --resource-group myResourceGroup
 ```
 
-Všimněte si, že adresy URL pro Git má následující formulář založený na název vaší webové aplikace:
+Všimněte si, že hello adresy URL pro Git má hello následující formulář založený na název vaší webové aplikace:
 
 ```bash
 https://<your web app name>.scm.azurewebsites.net/<your web app name>.git
@@ -116,7 +116,7 @@ https://<your web app name>.scm.azurewebsites.net/<your web app name>.git
 
 [!INCLUDE [Clean-up section](../../includes/configure-deployment-user-no-h.md)]
 
-Spusťte následující příkazy k nasazení místní aplikace do webové stránky Azure:
+Spusťte následující příkazy toodeploy hello místních aplikací tooyour webu Azure hello:
 
 ```bash
 git remote add azure <Git deployment URL from above>
@@ -125,7 +125,7 @@ git commit -m "Initial deployment commit"
 git push azure master
 ```
 
-Potvrďte, že operace vzdálené nasazení sestav úspěch. Příkazy vytvořit výstup podobný následujícímu:
+Potvrďte, že operace vzdálené nasazení hello sestavy úspěch. Hello příkazy produktu výstup podobný toohello následující text:
 
 ```bash
 remote: Using sass-rails 5.0.6
@@ -136,18 +136,18 @@ remote: ~site/repository
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://<your web app name>.scm.azurewebsites.net/<your web app name>.git
+toohttps://<your web app name>.scm.azurewebsites.net/<your web app name>.git
   579ccb....2ca5f31  master -> master
 myuser@ubuntu1234:~workspace/<app name>$
 ```
 
-Po dokončení nasazení restartování webové aplikace pro nasazení se projeví pomocí [az webapp restartování](https://docs.microsoft.com/cli/azure/webapp#restart) příkaz, jak je vidět tady:
+Po dokončení nasazení hello restartování webové aplikace pro hello nasazení tootake vliv pomocí hello [az webapp restartování](https://docs.microsoft.com/cli/azure/webapp#restart) příkaz, jak je vidět tady:
 
 ```azurecli-interactive 
 az webapp restart --name <app name> --resource-group myResourceGroup
 ```
 
-Přejít na váš web a ověřte výsledky.
+Přejděte tooyour lokality a ověřte hello výsledky.
 
 ```bash
 http://<your web app name>.azurewebsites.net
@@ -155,7 +155,7 @@ http://<your web app name>.azurewebsites.net
 ![aktualizované webové aplikace](./media/app-service-linux-ruby-get-started/hello-world-updated.png)
 
 > [!NOTE]
-> Během restartování aplikace pokusu o vyhledání lokality výsledky v stavový kód HTTP `Error 503 Server unavailable`. Ho může trvat několik minut plně restartovat.
+> Během restartování aplikace hello pokus toobrowse hello lokality výsledky v stavový kód HTTP `Error 503 Server unavailable`. To může trvat několik minut toofully restartování.
 >
 
 [!INCLUDE [Clean-up section](../../includes/cli-script-clean-up.md)]

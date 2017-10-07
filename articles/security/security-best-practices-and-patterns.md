@@ -1,6 +1,6 @@
 ---
-title: "Osvědčené postupy zabezpečení Azure a vzory | Microsoft Docs"
-description: "Článek poskytuje základní informace o osvědčených postupech zabezpečení Azure a vzory a kurátorované seznam osvědčené postupy zabezpečení pro různé prostředky Azure."
+title: "zabezpečení aaaAzure osvědčených postupů a vzorů | Microsoft Docs"
+description: "Hello článek poskytuje základní informace o osvědčených postupech zabezpečení Azure a vzory a kurátorované seznam osvědčené postupy zabezpečení pro různé prostředky Azure."
 services: azure-security
 documentationcenter: na
 author: TomShinder
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2017
 ms.author: terrylan
-ms.openlocfilehash: 1cc0d2d1e9a62ff8531f963413ff573713d508ad
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: eaaa9457faa1d5906275eb1fd8988d4d4aad101a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Osvědčené postupy zabezpečení Azure a vzory
-Máme aktuálně následující osvědčené postupy zabezpečení Azure a vzory články. Nezapomeňte navštívit tento web pravidelně zobrazíte aktualizace našich rostoucí seznam zabezpečení Azure osvědčených postupů a vzorů:  
+V současné době máme hello následující osvědčené postupy a vzory články zabezpečení Azure. Ujistěte se, že toovisit tento web pravidelně aktualizuje toosee tooour rostoucí seznam zabezpečení Azure osvědčených postupů a vzorů:  
 
 * [Osvědčené postupy zabezpečení sítě Azure](azure-security-network-security-best-practices.md)
 * [Zabezpečení dat Azure a šifrování osvědčené postupy](azure-security-data-encryption-best-practices.md)
@@ -32,18 +32,18 @@ Máme aktuálně následující osvědčené postupy zabezpečení Azure a vzory
 * [Implementace zabezpečené hybridní síťové architektury v Azure](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
 * [Azure PaaS osvědčených postupů] (https://docs.microsoft.com/en-us/azure/security/security-paas-deployments)
 
-Azure poskytuje zabezpečené platformy, na které můžete sestavit vaše řešení. Poskytujeme také službách a technologiích zabezpečit vaše řešení v Azure. Z důvodu k dispozici mnoho možností řada z vás mají znělá zájem o co Microsoft doporučuje, jako nejlepší postupy a vzory pro zlepšení zabezpečení.
+Azure poskytuje zabezpečené platformy, na které můžete sestavit vaše řešení. Poskytujeme také službách a technologiích toomake řešení v Azure bezpečnější. Z důvodu hello mnoho možností k dispozici tooyou, řada z vás mají znělá zájem o co Microsoft doporučuje, jako nejlepší postupy a vzory pro zlepšení zabezpečení.
 
-Jsme váš zájem pochopit a jste vytvořili kolekci dokumentů, které popisují způsobů, jak, zadaný kontext správné pro zlepšení zabezpečení Azure nasazení.
+Pochopení váš zájem jsme vytvořili kolekci dokumentů, které popisují věcí, které můžete provést danou hello správné kontextu zabezpečení hello tooimprove Azure nasazení.
 
-V těchto osvědčené postupy a vzory články probereme kolekce osvědčených postupů a vzorů užitečné pro konkrétní témata. Tyto doporučené postupy a vzory jsou odvozené z našich zkušeností s těmito technologiemi a prostředí zákazníků, jako sami.
+V těchto osvědčené postupy a vzory články probereme kolekce osvědčených postupů a vzorů užitečné pro konkrétní témata. Tyto doporučené postupy a vzory jsou odvozené z našich zkušeností s těmito technologiemi a hello prostředí zákazníků, jako sami.
 
-Pro každý osvědčený postup se snažíme vysvětlují:
+Pro každý osvědčený postup se snažíme tooexplain:
 
-* Co je osvědčeným postupem
-* Proč chcete povolit tento osvědčený postup
-* Pokud se nepodaří povolit osvědčený postup, co může být výsledkem
-* Možné alternativy doporučené postupy
-* Jak můžete informace o povolení osvědčený postup
+* Jaké hello osvědčeným postupem je
+* Proč chcete tooenable, že osvědčeným postupem
+* Pokud selže tooenable hello osvědčený postup, co mohou být výsledek hello
+* Osvědčeným postupem toohello možné alternativy
+* Jak můžete získat informace tooenable hello osvědčený postup
 
-Těšíme se na včetně mnoha další články o zabezpečení Azure architektura a osvědčených postupech. Pokud jsou témata, která chcete zahrnout, dejte nám vědět diskusní oblasti v dolní části této stránky.
+Těšíme tooincluding mnoho další články o zabezpečení Azure architektura a osvědčených postupech. Pokud jsou témata, které chcete nám tooinclude, dejte nám vědět, v oblasti hello diskuzi na hello dolní části této stránky.

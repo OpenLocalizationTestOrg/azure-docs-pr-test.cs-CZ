@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření virtuálního počítače (klasické) s více síťovými kartami pomocí prostředí PowerShell | Microsoft Docs"
-description: "Zjistěte, jak vytvořit a nakonfigurovat virtuální počítače s více síťovými kartami pomocí prostředí PowerShell."
+title: "aaaCreate virtuální počítač (klasický) s více síťovými kartami pomocí prostředí PowerShell | Microsoft Docs"
+description: "Zjistěte, jak toocreate a konfigurace virtuálních počítačů s více síťovými kartami pomocí prostředí PowerShell."
 services: virtual-network, virtual-machines
 documentationcenter: na
 author: jimdial
@@ -15,40 +15,40 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
-ms.openlocfilehash: 68ccc1cac22e593b099729fe68c6bee63df44d9b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8ef35bd4cfd7e6a527080f1cfc541275ca86f5e7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-vm-classic-with-multiple-nics"></a>Vytvoření virtuálního počítače (klasické) s více síťovými kartami
-Můžete vytvořit virtuální počítače (VM) v Azure a připojit více síťových rozhraní (NIC) ke každému z virtuálních počítačů. Několik síťových adaptérů jsou nutné pro mnoho síťových virtuálních zařízení, například doručení aplikace a řešení optimalizace sítě WAN. Několik síťových adaptérů také poskytují izolaci provozu mezi síťové adaptéry.
+Můžete vytvořit virtuální počítače (VM) v Azure a připojit více síťových rozhraní (NIC) tooeach vaše virtuálních počítačů. Několik síťových adaptérů jsou nutné pro mnoho síťových virtuálních zařízení, například doručení aplikace a řešení optimalizace sítě WAN. Několik síťových adaptérů také poskytují izolaci provozu mezi síťové adaptéry.
 
 ![Síťový adaptér více virtuálních počítačů](./media/virtual-networks-multiple-nics/IC757773.png)
 
-Obrázek zobrazuje virtuálního počítače se síťovými adaptéry, tři, že každý z nich připojený k jiné podsíti.
+Zobrazí obrázek Hello virtuálního počítače se síťovými adaptéry, tři, každý z nich připojený tooa jiné podsíti.
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md). Tento článek se věnuje použití klasického modelu nasazení. Společnost Microsoft doporučuje, aby většina nových nasazení používala Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala Resource Manager.
 
-* Internetový VIP (nasazení classic) je podporován pouze na síťový adaptér "default". Existuje pouze jeden virtuální IP adresy IP na výchozí síťový adaptér.
+* Internetový VIP (nasazení classic) je podporován pouze na hello "Výchozí" síťový adaptér. Existuje jenom jedna IP adresa VIP toohello z hello výchozí síťový adaptér.
 * V tomto okamžiku nejsou podporovány adresy Instance úroveň veřejné IP (LPIP) (nasazení classic) pro více virtuálních počítačů síťovou kartu.
-* Pořadí síťových rozhraní ve virtuálním počítači je náhodné a může se také měnit následkem aktualizací infrastruktury Azure. Ale IP adresy a odpovídající ethernetová adresa MAC adres se zůstávají stejné. Předpokládejme například, **Eth1** 10.1.0.100 IP adresu a adresu MAC 00-0D-3A-B0-39-0D; po aktualizaci infrastruktury Azure a restartování, může změnit tak, aby **Eth2**, ale IP a MAC párování zůstane stejný. Pokud se restartování spouštěná zákazníka, zůstane stejný pořadí síťový adaptér.
-* Adresa pro každý síťový adaptér na každý virtuální počítač se musí nacházet v podsíti, několik síťových adaptérů na jeden virtuální počítač můžete ke každé možné přiřadit adresy, které jsou ve stejné podsíti.
-* Velikost virtuálního počítače určuje počet síťových ADAPTÉRŮ, který můžete vytvořit pro virtuální počítač. Odkaz [systému Windows Server](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) články k určení, kolik SÍŤOVÝCH každý velikost virtuálního počítače podporuje velikostí virtuálních počítačů. 
+* Hello pořadí síťových karet hello z uvnitř hello virtuálního počítače budou náhodné a také můžete změnit napříč aktualizace infrastruktury Azure. Ale hello IP adresy a hello odpovídající ethernetová adresa MAC adresy zůstane stejný hello. Předpokládejme například, **Eth1** 10.1.0.100 IP adresu a adresu MAC 00-0D-3A-B0-39-0D; po aktualizaci infrastruktury Azure a restartování, se může změnit příliš**Eth2**, ale hello IP a MAC párování bude zůstat stejné hello. Když je restartování spouštěná zákazníka, hello seskupování pořadí zůstane stejný hello.
+* Hello adresa pro každý síťový adaptér na každý virtuální počítač se musí nacházet v podsíti, několik síťových adaptérů v rámci jednoho virtuálního počítače lze každou přiřadit hello adresy, které jsou ve stejné podsíti.
+* Hello velikost virtuálního počítače určuje hello počet síťových ADAPTÉRŮ, který můžete vytvořit pro virtuální počítač. Referenční dokumentace hello [systému Windows Server](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) virtuálních počítačů velikostí články toodetermine kolik síťových karet podporuje každý velikost virtuálního počítače. 
 
 ## <a name="network-security-groups-nsgs"></a>Skupiny zabezpečení sítě (Nsg)
-V nasazení Resource Manager může být všechny síťové adaptéry na virtuálním počítači související s skupina zabezpečení sítě (NSG), včetně všech síťových adaptérů na virtuálním počítači, který má několik síťových adaptérů povoleno. Pokud síťový adaptér je přiřazena adresa v podsíti, kde je přidružen skupinu NSG podsítě, potom pravidla v NSG podsítě platí i pro tuto síťovou kartu. Kromě přidružení podsítí k skupin Nsg, lze přiřadit síťový adaptér s skupinu NSG.
+V nasazení Resource Manager může být všechny síťové adaptéry na virtuálním počítači související s skupina zabezpečení sítě (NSG), včetně všech síťových adaptérů na virtuálním počítači, který má několik síťových adaptérů povoleno. Pokud síťový adaptér je přiřazena adresa v podsíti, kde je skupina NSG přidružená hello podsíť, pak hello pravidla v podsíti hello NSG, budou platit toothat síťový adaptér. V přidání podsítě tooassociating pomocí skupin Nsg lze přiřadit síťový adaptér s skupinu NSG.
 
-Pokud podsíť je přidružen skupinu NSG a síťovou kartu v této podsíti jednotlivě souvisí s skupinu NSG, přidružená pravidla NSG se použijí v **toku pořadí** podle provoz předávány do nebo z síťový adaptér:
+Pokud podsíť je přidružen skupinu NSG a síťovou kartu v této podsíti jednotlivě souvisí s skupinu NSG, pravidla NSG hello spojené se použijí v **toku pořadí** podle toohello směr provozu hello předávány do nebo z Hello síťovou kartu:
 
-* **Příchozí provoz** jehož cílem je síťový adaptér v otázku nejprve prochází podsíť, která aktivuje pravidla NSG podsítě, před předáním do síťového adaptéru a potom aktivuje pravidla NSG na síťový adaptér.
-* **Odchozí přenosy** jejichž zdrojem je na síťový adaptér toků první ze ze síťového adaptéru, spouštění pravidla NSG na síťový adaptér, před prošla podsíť a potom aktivuje pravidla NSG podsítě.
+* **Příchozí provoz** jehož cílem je hello síťový adaptér v otázku nejprve prochází hello podsíť, aktivuje pravidla NSG hello podsíť, před předávání do hello síťový adaptér a potom aktivuje pravidla NSG hello seskupování.
+* **Odchozí přenosy** jejichž zdrojem je hello seskupování dotyčném toků první ze z hello síťového adaptéru, spouštění pravidla NSG hello seskupování, před prošla hello podsítě a potom aktivuje pravidla NSG hello podsítě.
 
-Další informace o [skupin zabezpečení sítě](virtual-networks-nsg.md) a jak se používají podle přidružení podsítě virtuálních počítačů a síťových karet...
+Další informace o [skupin zabezpečení sítě](virtual-networks-nsg.md) a jak se používají na základě přidružení toosubnets, virtuálních počítačů a síťových karet...
 
-## <a name="how-to-configure-a-multi-nic-vm-in-a-classic-deployment"></a>Jak nakonfigurovat více virtuálních počítačů síťovou kartu v nasazení classic
-Následující pokyny vám pomůže vytvořit více virtuálních počítačů síťovou kartu obsahující 3 síťové adaptéry: výchozí síťový adaptér a další dva síťové adaptéry. Postup konfigurace vytvoří virtuální počítač, který bude nakonfigurovaný podle fragment souboru konfigurace služby níže:
+## <a name="how-tooconfigure-a-multi-nic-vm-in-a-classic-deployment"></a>Jak tooConfigure více virtuálních počítačů síťovou kartu v nasazení classic
+níže uvedené pokyny Hello vám pomůže vytvořit více virtuálních počítačů síťovou kartu obsahující 3 síťové adaptéry: výchozí síťový adaptér a další dva síťové adaptéry. Postup konfigurace Hello vytvoří virtuální počítač, který bude nakonfigurován podle toohello služby konfigurační soubor fragment níže:
 
     <VirtualNetworkSite name="MultiNIC-VNet" Location="North Europe">
     <AddressSpace>
@@ -68,19 +68,19 @@ Následující pokyny vám pomůže vytvořit více virtuálních počítačů s
             <AddressPrefix>10.1.200.0/28</AddressPrefix>
           </Subnet>
         </Subnets>
-    … Skip over the remainder section …
+    … Skip over hello remainder section …
     </VirtualNetworkSite>
 
 
-Před pokusem o spuštění příkazů prostředí PowerShell v příkladu potřebujete následující požadavky.
+Budete potřebovat následující požadavky a teprve potom zkusili toorun hello příkazy prostředí PowerShell v příkladu hello hello.
 
 * Předplatné Azure.
 * Nakonfigurované virtuální sítě. V tématu [Přehled virtuálních sítí](virtual-networks-overview.md) Další informace o virtuálních sítí.
-* Nejnovější verzi prostředí Azure PowerShell stáhnout a nainstalovat. Viz téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+* nejnovější verzi prostředí Azure PowerShell Hello stáhnout a nainstalovat. V tématu [jak tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 
-Vytvoření virtuálního počítače s více síťovými kartami, proveďte následující kroky zadáním každý příkaz v rámci jedné relace prostředí PowerShell:
+toocreate virtuálního počítače s více síťovými kartami, dokončení hello zadáním každý příkaz v rámci jedné relace prostředí PowerShell následující kroky:
 
-1. Vyberte bitovou kopii virtuálního počítače z Galerie obrázků virtuálního počítače Azure. Všimněte si, že Image často mění a jsou dostupné podle oblasti. Image zadaná v následujícím příkladu nesmí změnit nebo může být ve vaší oblasti, takže je nutné zadat bitovou kopii, které potřebujete.
+1. Vyberte bitovou kopii virtuálního počítače z Galerie obrázků virtuálního počítače Azure. Všimněte si, že Image často mění a jsou dostupné podle oblasti. Hello image zadanou v následujícím příkladu hello nesmí změnit nebo může být ve vaší oblasti, takže je nutné toospecify hello bitové kopie je nutné.
 
     ```powershell
     $image = Get-AzureVMImage `
@@ -94,14 +94,14 @@ Vytvoření virtuálního počítače s více síťovými kartami, proveďte ná
     -Image $image.ImageName –AvailabilitySetName "MyAVSet"
     ```
 
-3. Vytvoří výchozí přihlášení správce.
+3. Vytvořte přihlašovací údaje správce výchozí hello.
 
     ```powershell
     Add-AzureProvisioningConfig –VM $vm -Windows -AdminUserName "<YourAdminUID>" `
     -Password "<YourAdminPassword>"
     ```
 
-4. Přidejte další síťové adaptéry ke konfiguraci virtuálních počítačů.
+4. Přidejte další konfigurace virtuálního počítače toohello síťových karet.
 
     ```powershell
     Add-AzureNetworkInterfaceConfig -Name "Ethernet1" `
@@ -110,35 +110,35 @@ Vytvoření virtuálního počítače s více síťovými kartami, proveďte ná
     -SubnetName "Backend" -StaticVNetIPAddress "10.1.2.222" -VM $vm
     ```
 
-5. Zadejte podsíť a IP adresu pro síťový adaptér výchozí.
+5. Zadejte hello podsíť a IP adresu pro hello výchozí síťový adaptér.
 
     ```powershell
     Set-AzureSubnet -SubnetNames "Frontend" -VM $vm
     Set-AzureStaticVNetIP -IPAddress "10.1.0.100" -VM $vm
     ```
 
-6. Vytvoření virtuálního počítače ve virtuální síti.
+6. Vytvořte hello virtuálního počítače ve virtuální síti.
 
     ```powershell
     New-AzureVM -ServiceName "MultiNIC-CS" –VNetName "MultiNIC-VNet" –VMs $vm
     ```
 
     > [!NOTE]
-    > Virtuální síť, který zde určíte již musí existovat (jak je uvedeno v požadavky). Následující příklad určuje virtuální síť s názvem **MultiNIC-VNet**.
+    > Hello virtuální sítě, který zde určíte již musí existovat (jak je uvedeno v hello požadavky). Následující příklad Hello Určuje virtuální síť s názvem **MultiNIC-VNet**.
     >
 
 ## <a name="limitations"></a>Omezení
-Při použití více síťových adaptérů platí následující omezení:
+Při použití více síťových adaptérů platí Hello následující omezení:
 
 * Virtuální počítače s více síťovými kartami, musí být vytvořený v Azure virtuální sítě (virtuální sítě). Virtuální počítače non-VNet se nedá nakonfigurovat se několik síťových adaptérů.
-* Všechny virtuální počítače v nastavení dostupnosti je potřeba použít několik síťových adaptérů nebo jeden síťový adaptér. Nemůže mít směs více virtuální síťový adaptér počítače a jeden síťový adaptér virtuálních počítačů v rámci skupiny dostupnosti. Stejná pravidla použít pro virtuální počítače v cloudové službě. Pro víc virtuálních počítačů síťovou kartu nemusí mít stejný počet síťových adaptérů, tak dlouho, dokud každá má alespoň dvě.
+* Všechny virtuální počítače ve skupině dostupnosti nastavena toouse nutné několik síťových adaptérů nebo jeden síťový adaptér. Nemůže mít směs více virtuální síťový adaptér počítače a jeden síťový adaptér virtuálních počítačů v rámci skupiny dostupnosti. Stejná pravidla použít pro virtuální počítače v cloudové službě. Pro víc virtuálních počítačů síťovou kartu, nejsou požadované toohave hello stejný počet síťových adaptérů, tak dlouho, dokud každá má alespoň dvě.
 * Virtuální počítač s jednu síťovou kartu nelze konfigurovat pomocí více síťových adaptérů (a naopak) po jejím nasazení, bez odstranit a znovu ji vytvořit.
 
-## <a name="secondary-nics-access-to-other-subnets"></a>Sekundární síťové adaptéry přístup do jiných podsítí
-Ve výchozím nastavení se nenakonfigurují sekundární síťové adaptéry s výchozí bránou, kvůli které bude tok přenosů na sekundární síťové adaptéry omezenou být ve stejné podsíti. Pokud uživatele chcete povolit sekundární síťové adaptéry, aby komunikoval mimo vlastní podsíti, se bude nutné přidat položku do směrovací tabulky, pokud chcete konfigurovat bránu, jak je popsáno níže.
+## <a name="secondary-nics-access-tooother-subnets"></a>Sekundární síťové adaptéry přístup tooother podsítě
+Ve výchozím nastavení sekundární síťové adaptéry se nenakonfigurují s výchozí bránou, z důvodu toowhich hello přenosový tok v hello sekundární síťové adaptéry bude omezený toobe v rámci hello stejné podsíti. Pokud uživatel hello tooenable sekundární síťové adaptéry tootalk mimo vlastní podsíti, potřebují tooadd položku v hello směrovací tabulky tooconfigure hello brány jako popsané dole.
 
 > [!NOTE]
-> Virtuální počítače vytvořené před července 2015 může mít výchozí brána konfigurována pro všechny síťové adaptéry. Výchozí brána pro sekundární síťové adaptéry budou odebrány až tyto virtuální počítače se restartují. V operačních systémech, které používají model směrování slabé hostitele, jako je například Linux můžete přerušení připojení k Internetu, pokud příchozí a odchozí provoz používat různé síťové adaptéry.
+> Virtuální počítače vytvořené před července 2015 může mít výchozí brána konfigurována pro všechny síťové adaptéry. Hello výchozí brána pro sekundární síťové adaptéry budou odebrány až tyto virtuální počítače se restartují. V operačních systémech, které používají model, směrování hello slabé hostitele například Linux můžete přerušení připojení k Internetu, pokud hello příchozí a odchozí provoz používat různé síťové adaptéry.
 > 
 
 ### <a name="configure-windows-vms"></a>Konfigurace virtuálních počítačů Windows
@@ -147,7 +147,7 @@ Předpokládejme, že máte virtuální počítač s Windows se dvěma síťový
 * Primární síťovou kartu IP adresa: 192.168.1.4
 * Sekundární síťový adaptér IP adresa: 192.168.2.5
 
-Tabulka směrování IPv4 pro tento virtuální počítač bude vypadat takto:
+Tabulka směrování IPv4 Hello pro tento virtuální počítač bude vypadat takto:
 
     IPv4 Route Table
     ===========================================================================
@@ -172,7 +172,7 @@ Tabulka směrování IPv4 pro tento virtuální počítač bude vypadat takto:
       255.255.255.255  255.255.255.255         On-link       192.168.2.5    261
     ===========================================================================
 
-Všimněte si, že výchozí trasa (0.0.0.0) je dostupná jenom na primární síťový adaptér. Nebudete mít přístup k prostředkům mimo podsíť sekundárního síťového adaptéru, jak vidíte níže:
+Všimněte si, že tento hello výchozí trasa (0.0.0.0) je pouze k dispozici toohello primární síťový adaptér. Nebudete moct tooaccess prostředky mimo hello podsíť pro hello sekundární síťový adaptér, jak vidíte níže:
 
     C:\Users\Administrator>ping 192.168.1.7 -S 192.165.2.5
 
@@ -182,9 +182,9 @@ Všimněte si, že výchozí trasa (0.0.0.0) je dostupná jenom na primární s�
     PING: transmit failed. General failure.
     PING: transmit failed. General failure.
 
-Přidat výchozí trasu na sekundární síťový adaptér, postupujte podle následujících kroků:
+výchozí směrování na tooadd hello sekundární síťový adaptér, postupujte podle následujících kroků hello:
 
-1. Z příkazového řádku spusťte následující příkaz k identifikaci číslo indexu pro sekundární síťový adaptér:
+1. Z příkazového řádku, spusťte příkaz hello níže číslo indexu hello tooidentify hello sekundární síťovou kartu:
    
         C:\Users\Administrator>route print
         ===========================================================================
@@ -195,11 +195,11 @@ Přidat výchozí trasu na sekundární síťový adaptér, postupujte podle ná
          14...00 00 00 00 00 00 00 e0 Teredo Tunneling Pseudo-Interface
          20...00 00 00 00 00 00 00 e0 Microsoft ISATAP Adapter #2
         ===========================================================================
-2. Všimněte si, druhý záznam v tabulce s indexem 27 (v tomto příkladu).
-3. Z příkazového řádku, spusťte **přidat trasy** příkaz, jak je uvedeno níže. V tomto příkladu jsou určení 192.168.2.1 jako výchozí brána pro sekundární síťový adaptér:
+2. Všimněte si hello druhý záznam v tabulce hello, s indexem 27 (v tomto příkladu).
+3. Z příkazového řádku hello, spusťte hello **přidat trasy** příkaz, jak je uvedeno níže. V tomto příkladu jsou určení 192.168.2.1 jako hello výchozí brána pro hello sekundární síťovou kartu:
    
         route ADD -p 0.0.0.0 MASK 0.0.0.0 192.168.2.1 METRIC 5000 IF 27
-4. K testování připojení, přejděte zpět na příkazovém řádku a zkuste příkazem ping otestovat jiné podsíti z sekundárního síťového adaptéru jako uvedené int eh následujícím příkladu:
+4. tootest připojení, přejděte zpět toohello příkazového řádku a zkuste to tooping z jiné podsítě hello sekundární síťový adaptér jako uvedené int eh příkladu níže:
    
         C:\Users\Administrator>ping 192.168.1.7 -S 192.165.2.5
    
@@ -207,7 +207,7 @@ Přidat výchozí trasu na sekundární síťový adaptér, postupujte podle ná
         Reply from 192.168.1.7: bytes=32 time<1ms TTL=128
         Reply from 192.168.1.7: bytes=32 time=2ms TTL=128
         Reply from 192.168.1.7: bytes=32 time<1ms TTL=128
-5. Můžete také zkontrolovat tabulky tras Zkontrolujte nově přidané postup, jak je uvedeno níže:
+5. Můžete také zkontrolovat, že vaše trasy tabulky toocheck hello nově přidaná postup, jak je uvedeno níže:
    
         C:\Users\Administrator>route print
    
@@ -222,7 +222,7 @@ Přidat výchozí trasu na sekundární síťový adaptér, postupujte podle ná
                 127.0.0.0        255.0.0.0         On-link         127.0.0.1    306
 
 ### <a name="configure-linux-vms"></a>Konfigurovat virtuální počítače s Linuxem
-Pro virtuální počítače s Linuxem protože používá výchozí chování slabé hostitele směrování, doporučujeme, aby sekundární síťové adaptéry jsou omezeny na přenosové toky pouze ve stejné podsíti. Pokud některé scénáře potřebují připojení mimo podsíť, ale měli uživatelé povolit na základě zásad směrování zajistit, že příchozí a odchozí provoz používá stejný síťový adaptér.
+Pro virtuální počítače s Linuxem, protože výchozí chování hello používá slabé hostitele směrování, doporučujeme, abyste tento hello sekundární síťové adaptéry jsou toky s omezeným přístupem tootraffic pouze v rámci hello stejné podsíti. Ale pokud určité scénáře potřebují připojení mimo hello podsíť, uživatelé měli povolit tooensure směrování na základě zásad, která hello příchozí a odchozí provoz používá hello stejné síťový adaptér.
 
 ## <a name="next-steps"></a>Další kroky
 * Nasazení [MultiNIC virtuálních počítačů v aplikaci na vrstvě 2 scénář v nasazení Resource Manager](virtual-network-deploy-multinic-arm-template.md).

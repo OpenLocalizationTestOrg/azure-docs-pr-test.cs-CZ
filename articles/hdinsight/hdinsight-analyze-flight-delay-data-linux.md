@@ -1,6 +1,6 @@
 ---
-title: "Analýza dat zpoždění letu pomocí Hive v HDInsight - Azure | Microsoft Docs"
-description: "Další informace o použití Hive k analýze dat letu na HDInsight se systémem Linux a potom exportovat data do databáze SQL pomocí Sqoop."
+title: "aaaAnalyze letu zpoždění dat pomocí Hive v HDInsight - Azure | Microsoft Docs"
+description: "Zjistěte, jak toouse Hive tooanalyze letu dat na HDInsight se systémem Linux a pak exportovat hello data tooSQL databáze pomocí Sqoop."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,32 +16,32 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 8cdc19ac8a517b6d8eefabb5476a686aa252a332
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 7830457a7100880dff1c647dde1b4d203bfea3c6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>Analýza dat zpoždění letu pomocí Hive v HDInsight se systémem Linux
 
-Zjistěte, jak analyzovat data zpoždění letu používání Hive v HDInsight se systémem Linux a export dat do Azure SQL Database pomocí Sqoop.
+Zjistěte, jak exportovat tooanalyze letu zpoždění data pak používání Hive v HDInsight se systémem Linux hello data tooAzure SQL Database pomocí Sqoop.
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu vyžadují clusteru služby HDInsight, který používá Linux. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Hello kroky v tomto dokumentu vyžadují clusteru služby HDInsight, který používá Linux. Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ### <a name="prerequisites"></a>Požadavky
 
 * **Cluster služby HDInsight**. V tématu [Začínáme pomocí Hadoop Hive v HDInsight v Linuxu](hdinsight-hadoop-linux-tutorial-get-started.md) kroky k vytvoření nového clusteru HDInsight se systémem Linux.
 
-* **Databáze Azure SQL**. Jako cílového úložiště dat používáte Azure SQL database. Pokud již nemáte databázi SQL, najdete v části [kurz k SQL Database: vytvoření databáze SQL v minutách](../sql-database/sql-database-get-started.md).
+* **Azure SQL Database**. Jako cílového úložiště dat používáte Azure SQL database. Pokud již nemáte databázi SQL, najdete v části [kurz k SQL Database: vytvoření databáze SQL v minutách](../sql-database/sql-database-get-started.md).
 
-* **Rozhraní příkazového řádku Azure**. Pokud jste nenainstalovali Azure CLI, najdete v části [instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md) pro další kroky.
+* **Azure CLI**. Pokud jste nenainstalovali hello příkazového řádku Azure CLI, najdete v části [instalace a konfigurace rozhraní příkazového řádku Azure hello](../cli-install-nodejs.md) pro další kroky.
 
-## <a name="download-the-flight-data"></a>Stáhněte si data pohybující se
+## <a name="download-hello-flight-data"></a>Stáhněte si data pohybující se hello
 
-1. Přejděte do [výzkum a inovativní technologie správy, statistický úřad Transport][rita-website].
+1. Procházet příliš[výzkum a inovativní technologie správy, úřad Transport statistických][rita-website].
 
-2. Na stránce vyberte následující hodnoty:
+2. Na stránce hello vyberte hello následující hodnoty:
 
    | Name (Název) | Hodnota |
    | --- | --- |
@@ -51,26 +51,26 @@ Zjistěte, jak analyzovat data zpoždění letu používání Hive v HDInsight s
 
 3. Klikněte na **Stáhnout**.
 
-## <a name="upload-the-data"></a>Odeslání dat
+## <a name="upload-hello-data"></a>Nahrání dat hello
 
-1. Použijte následující příkaz k nahrání souboru zip do hlavního uzlu clusteru HDInsight:
+1. Použijte následující příkaz tooupload hello zip souboru toohello hlavního uzlu clusteru HDInsight hello:
 
     ```
     scp FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:
     ```
 
-    Nahraďte **FILENAME** s názvem souboru zip. Nahraďte **uživatelské jméno** s přihlašování přes SSH pro HDInsight cluster. Nahraďte název clusteru s názvem clusteru HDInsight.
+    Nahraďte **FILENAME** hello název souboru zip hello. Nahraďte **uživatelské jméno** s hello přihlašování přes SSH pro hello HDInsight cluster. Nahraďte název clusteru s názvem hello hello clusteru HDInsight.
 
    > [!NOTE]
-   > Pokud použijete heslo ověření přihlášení SSH, zobrazí se výzva k zadání hesla. Pokud jste použili veřejný klíč, budete možná muset použít `-i` parametr a zadejte cestu k odpovídající soukromý klíč. Například, `scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`.
+   > Pokud použijete heslo tooauthenticate vaše přihlášení SSH, budete vyzváni k hello heslo. Pokud jste použili veřejný klíč, může být nutné toouse hello `-i` parametr a zadejte hello cesta toohello odpovídající privátní klíč. Například, `scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`.
 
-2. Po dokončení nahrávání se připojte ke clusteru pomocí protokolu SSH:
+2. Po dokončení nahrávání hello připojte toohello clusteru pomocí protokolu SSH:
 
     ```ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net```
 
     Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-3. Po připojení k rozbalte soubor .zip použijte následující:
+3. Po připojení, použijte následující soubor .zip hello toounzip hello:
 
     ```
     unzip FILENAME.zip
@@ -78,28 +78,28 @@ Zjistěte, jak analyzovat data zpoždění letu používání Hive v HDInsight s
 
     Tento příkaz extrahuje soubor CSV, který je přibližně 60 MB.
 
-4. Použijte následující příkaz k vytvoření adresáře v úložišti HDInsight a pak zkopírujte soubor do adresáře:
+4. Použijte následující příkaz toocreate adresář na úložiště HDInsight hello a zkopírujte adresář toohello souboru hello:
 
     ```
     hdfs dfs -mkdir -p /tutorials/flightdelays/data
     hdfs dfs -put FILENAME.csv /tutorials/flightdelays/data/
     ```
 
-## <a name="create-and-run-the-hiveql"></a>Vytvoření a spuštění HiveQL
+## <a name="create-and-run-hello-hiveql"></a>Vytvoření a spuštění hello HiveQL
 
-Použijte následující postup k importu dat ze souboru CSV do Hive tabulku s názvem **zpoždění**.
+Použití hello následující kroky tooimport data ze souboru CSV hello do tabulky Hive s názvem **zpoždění**.
 
-1. Pomocí následujícího příkazu můžete vytvářet a upravovat nový soubor s názvem **flightdelays.hql**:
+1. Použití hello následující příkaz toocreate a upravit nový soubor s názvem **flightdelays.hql**:
 
     ```
     nano flightdelays.hql
     ```
 
-    Jako obsah tohoto souboru použijte následující text:
+    Použijte hello následující text jako hello obsah tohoto souboru:
 
     ```hiveql
     DROP TABLE delays_raw;
-    -- Creates an external table over the csv file
+    -- Creates an external table over hello csv file
     CREATE EXTERNAL TABLE delays_raw (
         YEAR string,
         FL_DATE string,
@@ -123,16 +123,16 @@ Použijte následující postup k importu dat ze souboru CSV do Hive tabulku s n
         NAS_DELAY float,
         SECURITY_DELAY float,
         LATE_AIRCRAFT_DELAY float)
-    -- The following lines describe the format and location of the file
+    -- hello following lines describe hello format and location of hello file
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE
     LOCATION '/tutorials/flightdelays/data';
 
-    -- Drop the delays table if it exists
+    -- Drop hello delays table if it exists
     DROP TABLE delays;
-    -- Create the delays table and populate it with data
-    -- pulled in from the CSV file (via the external table defined previously)
+    -- Create hello delays table and populate it with data
+    -- pulled in from hello CSV file (via hello external table defined previously)
     CREATE TABLE delays AS
     SELECT YEAR AS year,
         FL_DATE AS flight_date,
@@ -157,24 +157,24 @@ Použijte následující postup k importu dat ze souboru CSV do Hive tabulku s n
     FROM delays_raw;
     ```
 
-2. Chcete-li uložit soubor, použijte **kombinaci kláves Ctrl + X**, pak **Y** .
+2. toosave hello soubor, použijte **kombinaci kláves Ctrl + X**, pak **Y** .
 
-3. Spuštění Hive a spuštění **flightdelays.hql** souboru, použijte následující příkaz:
+3. toostart Hive a spuštění hello **flightdelays.hql** soubor, použijte následující příkaz hello:
 
     ```
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
     ```
 
    > [!NOTE]
-   > V tomto příkladu `localhost` je použít, protože jsou připojené k hlavnímu uzlu clusteru HDInsight, což je, kde je spuštěna HiveServer2.
+   > V tomto příkladu `localhost` je použít, protože jsou připojené toohello hlavního uzlu v clusteru HDInsight hello, což je, kde je spuštěna HiveServer2.
 
-4. Jednou __flightdelays.hql__ dokončení spuštění skriptu, otevřete relaci interaktivní Beeline použijte následující příkaz:
+4. Jednou hello __flightdelays.hql__ dokončení systémem použijte hello následující příkaz tooopen na interaktivní relace Beeline skriptu:
 
     ```
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
     ```
 
-5. Když se zobrazí `jdbc:hive2://localhost:10001/>` řádku, použijte následující dotaz pro načtení dat z data pohybující se importované zpoždění.
+5. Po přijetí hello `jdbc:hive2://localhost:10001/>` řádku, použijte následující tooretrieve dotaz na data z hello importovat letu zpoždění dat hello.
 
     ```hiveql
     INSERT OVERWRITE DIRECTORY '/tutorials/flightdelays/output'
@@ -186,47 +186,47 @@ Použijte následující postup k importu dat ze souboru CSV do Hive tabulku s n
     GROUP BY origin_city_name;
     ```
 
-    Tento dotaz načte seznam města, ve kterých došlo počasí zpoždění, společně s zpoždění průměrný čas a uložte ho do `/tutorials/flightdelays/output`. Později Sqoop čte data z tohoto umístění a exportovat je do Azure SQL Database.
+    Tento dotaz načte seznam města, zpoždění Doba zpoždění zkušeného počasí, společně s hello průměr a uložte ho příliš`/tutorials/flightdelays/output`. Později Sqoop čte hello data z tohoto umístění a exportovat je tooAzure databáze SQL.
 
-6. Chcete-li ukončit Beeline, zadejte `!quit` příkazového řádku.
+6. Zadejte tooexit Beeline, `!quit` řádku hello.
 
 ## <a name="create-a-sql-database"></a>Vytvoření databáze SQL
 
-Pokud už máte databázi SQL, musíte získat název serveru. Můžete najít název serveru ve [portál Azure](https://portal.azure.com) výběrem **databází SQL**a pak filtrování na název databáze, které chcete použít. Název serveru, je uvedena ve **SERVER** sloupce.
+Pokud už máte databázi SQL, musíte získat název serveru hello. Název serveru hello můžete najít v hello [portál Azure](https://portal.azure.com) výběrem **databází SQL**, a potom na název hello hello filtrování databáze chcete toouse. název serveru Hello je uveden v hello **SERVER** sloupce.
 
-Pokud již nemáte databázi SQL, použijte informace v [kurz k SQL Database: vytvoření databáze SQL v minutách](../sql-database/sql-database-get-started.md) k jeho vytvoření. Uložte název serveru, která je použita pro databázi.
+Pokud již nemáte databázi SQL, použijte informace hello v [kurz k SQL Database: vytvoření databáze SQL v minutách](../sql-database/sql-database-get-started.md) toocreate jeden. Uložte hello název serveru použít pro databázi hello.
 
 ## <a name="create-a-sql-database-table"></a>Vytvořit tabulku databáze SQL
 
 > [!NOTE]
-> Pro připojení k databázi SQL a vytvořte tabulku mnoha způsoby. Následující postup použijte [FreeTDS](http://www.freetds.org/) z clusteru HDInsight.
+> Existuje mnoho způsobů tooconnect tooSQL databázi a vytvořte tabulku. Následující postup použijte Hello [FreeTDS](http://www.freetds.org/) z clusteru HDInsight hello.
 
 
-1. Použití SSH se připojit ke clusteru HDInsight se systémem Linux a spustit následovně z relace SSH.
+1. Použití clusteru HDInsight se systémem Linux toohello tooconnect SSH a spuštění hello postupem z relace SSH hello.
 
-2. Použijte následující příkaz k instalaci FreeTDS:
+2. Použijte následující příkaz tooinstall FreeTDS hello:
 
     ```
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-3. Po dokončení instalace použijte následující příkaz pro připojení k databázi SQL serveru. Nahraďte **serverName** s názvem serveru SQL Database. Nahraďte **adminLogin** a **adminPassword** s přihlášení pro databázi SQL. Nahraďte **databaseName** s názvem databáze.
+3. Po dokončení instalace hello použijte hello následující příkaz tooconnect toohello databáze SQL serveru. Nahraďte **serverName** s názvem serveru SQL Database hello. Nahraďte **adminLogin** a **adminPassword** s hello přihlášení pro databázi SQL. Nahraďte **databaseName** s názvem databáze hello.
 
     ```
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D <databaseName>
     ```
 
-    Zobrazí se výstup podobný následujícímu:
+    Zobrazí se výstup podobný toohello následující text:
 
     ```
     locale is "en_US.UTF-8"
     locale charset is "UTF-8"
     using default charset "UTF-8"
-    Default database being set to sqooptest
+    Default database being set toosqooptest
     1>
     ```
 
-4. Na `1>` výzva, zadejte následující řádky:
+4. V hello `1>` výzva, zadejte hello následující řádky:
 
     ```
     CREATE TABLE [dbo].[delays](
@@ -237,60 +237,60 @@ Pokud již nemáte databázi SQL, použijte informace v [kurz k SQL Database: vy
     GO
     ```
 
-    Když `GO` příkaz je zadán, jsou vyhodnocovány předchozí příkazy. Tento dotaz vytvoří tabulku s názvem **zpoždění**, clusterovaný index.
+    Když hello `GO` příkaz je zadán, jsou vyhodnocovány hello předchozí příkazy. Tento dotaz vytvoří tabulku s názvem **zpoždění**, clusterovaný index.
 
-    Chcete-li ověřit, zda byl vytvořen v tabulce použijte následující dotaz:
+    Použití hello následující tooverify dotazu, který hello tabulka byla vytvořena:
 
     ```
     SELECT * FROM information_schema.tables
     GO
     ```
 
-    Výstup se bude podobat následujícímu:
+    Hello výstup je podobné toohello následující text:
 
     ```
     TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
     databaseName       dbo     delays      BASE TABLE
     ```
 
-5. Zadejte `exit` na `1>` výzvy ukončete nástroj tsql.
+5. Zadejte `exit` v hello `1>` výzvu tooexit hello tsql nástroj.
 
 ## <a name="export-data-with-sqoop"></a>Export dat s Sqoop
 
-1. Pomocí následujícího příkazu ověřte, že Sqoop vidí vaší databázi SQL:
+1. Použijte následující příkaz tooverify Sqoop můžete najdete v části SQL Database hello:
 
     ```
     sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> --password <adminPassword>
     ```
 
-    Tento příkaz vrátí seznam databází, včetně databáze, kterou jste vytvořili v tabulce zpoždění v dříve.
+    Tento příkaz vrátí seznam databází, včetně hello databáze, kterou jste vytvořili dříve hello zpoždění tabulky v.
 
-2. Exportovat data z hivesampletable do tabulky mobiledata použijte následující příkaz:
+2. Použijte následující příkaz tooexport dat z tabulky mobiledata toohello hivesampletable hello:
 
     ```
     sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=<databaseName>' --username <adminLogin> --password <adminPassword> --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
     ```
 
-    Sqoop připojuje k databázi obsahující tabulce zpoždění a exportuje data z `/tutorials/flightdelays/output` adresář do tabulky zpoždění.
+    Sqoop připojí toohello databáze obsahující hello zpoždění tabulky a exportuje data z hello `/tutorials/flightdelays/output` tabulce zpoždění toohello adresáře.
 
-3. Po dokončení příkazu, použijte následující postupy pro připojení k databázi pomocí TSQL:
+3. Po dokončení příkazu hello použijte následující tooconnect toohello databázi pomocí TSQL hello:
 
     ```
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D <databaseName>
     ```
 
-    Po připojení, ověřte, že se data vyexportovala do tabulky mobiledata pomocí následující příkazy:
+    Po připojení, použijte následující příkazy tooverify že hello data byla exportovaný toohello mobiledata tabulky hello:
 
     ```
     SELECT * FROM delays
     GO
     ```
 
-    Měli byste vidět seznam dat v tabulce. Typ `exit` ukončete nástroj tsql.
+    Měli byste vidět seznam data v tabulce hello. Typ `exit` tooexit hello tsql nástroj.
 
 ## <a id="nextsteps"></a> Další kroky
 
-Informace o další způsoby, jak pracovat s daty v HDInsight, najdete v následujících dokumentech:
+najdete další způsoby toowork s daty v HDInsight, toolearn hello následující dokumenty:
 
 * [Použití Hivu se službou HDInsight][hdinsight-use-hive]
 * [Použijte Oozie s HDInsight][hdinsight-use-oozie]

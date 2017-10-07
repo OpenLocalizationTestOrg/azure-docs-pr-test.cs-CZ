@@ -1,6 +1,6 @@
 ---
-title: "Postup vytvoření cloudové kolekce Azure remoteappu | Microsoft Docs"
-description: "Naučte se vytvořit nasazení služby Azure RemoteApp, která ukládá data v cloudu Azure."
+title: "aaaHow toocreate cloudové kolekce Azure Remoteappu | Microsoft Docs"
+description: "Zjistěte, jak hello toocreate nasazení služby Azure RemoteApp, která ukládá data v cloudu Azure."
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -14,94 +14,94 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 52d5a073c0de42a77cd7163bf402ed2cdf598d95
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a072ad19d8293016382831d48d0af8e0f5e0d458
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-create-a-cloud-collection-of-azure-remoteapp"></a>Vytvoření cloudové kolekce Azure RemoteAppu
+# <a name="how-toocreate-a-cloud-collection-of-azure-remoteapp"></a>Jak toocreate cloudové kolekce Azure Remoteappu
 > [!IMPORTANT]
-> Azure RemoteApp se přestává používat dne 31. srpna 2017. Podrobnosti najdete v tomto [oznámení](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp se přestává používat dne 31. srpna 2017. Čtení hello [oznámení](https://go.microsoft.com/fwlink/?linkid=821148) podrobnosti.
 > 
 > 
 
 Existují dva typy [kolekcí Azure RemoteAppu](remoteapp-collections.md): 
 
-* Cloud: nachází zcela v Azure. Je možné uložit všechna data v cloudu (tak čistě cloudové kolekce) nebo do kolekce se připojit k virtuální síti a uložení dat existuje.   
-* Hybridní: obsahuje virtuální síť pro přístup k místní – to vyžaduje použití služby Azure AD a místní prostředí služby Active Directory.
+* Cloud: nachází zcela v Azure. Můžete zvolit toosave všechna data v cloudu hello (tak čistě cloudové kolekce) nebo tooconnect tooa vaší kolekce virtuální sítě a uložení dat existuje.   
+* Hybridní: obsahuje virtuální síť pro přístup k místní – to vyžaduje hello pomocí služby Azure AD a místní prostředí služby Active Directory.
 
-Tento kurz vás provede procesem vytvoření cloudové kolekce. Existují čtyři kroky: 
+Tento kurz vás provede procesem vytvoření cloudové kolekce hello. Existují čtyři kroky: 
 
 1. Vytvořte kolekci Azure RemoteApp.
-2. Volitelně můžete nakonfigurujte synchronizaci adresářů. Pokud používáte Azure AD + služby Active Directory, budete muset synchronizovat uživatele, kontakty a hesla ze služby Active Directory v místě ke klientovi Azure AD.
+2. Volitelně můžete nakonfigurujte synchronizaci adresářů. Pokud používáte Azure AD + služby Active Directory, máte toosynchronize uživatele, kontakty a hesla z klientovi místní služby Active Directory tooyour Azure AD.
 3. Publikování aplikací.
 4. Konfigurace přístupu uživatelů.
 
 **Než začnete**
 
-Je třeba provést před vytvořením kolekce následující:
+Budete potřebovat následující hello toodo před vytvořením kolekce hello:
 
 * [Zaregistrujte si](https://azure.microsoft.com/services/remoteapp/) pro Azure RemoteApp. 
-* Shromážděte informace o uživatelích, které chcete udělit přístup. To může být buď informace o účtu Microsoft, nebo informace o účtu služby Active Directory práce pro uživatele.
-* Tento postup předpokládá, že jste buď chystáte používat jednu z Image šablony zadané v rámci vašeho předplatného nebo že máte již načtený image šablony, kterou chcete použít. Pokud potřebujete nahrajte image různé šablony, můžete to udělat na stránce Image šablony. Stačí kliknout na **nahrajte image šablony** a postupujte podle kroků v průvodci. 
-* Chcete použít image Office 365 ProPlus? Přečtěte si informace o [zde](remoteapp-officesubscription.md).
-* Chcete zadat vlastní aplikace nebo obchodní programy? Vytvořte novou [image](remoteapp-imageoptions.md) a použít ho v kolekci cloudu.
-* Zjistěte, jestli chcete připojit k virtuální síti. Pokud zvolíte možnost připojit k virtuální síti, ujistěte se, splňuje [pokyny pro definování velikosti](remoteapp-vnetsizing.md) a aby [se může připojit k vzdálené aplikace RemoteApp](remoteapp-vnet.md). Podívejte se [článku plánování virtuální sítě ](remoteapp-planvnet.md)Další informace.
-* Pokud používáte virtuální síť, rozhodněte, jestli se chcete připojit k místní doméně služby Active Directory.
+* Shromážděte informace o uživatelích hello, které chcete toogrant přístup k. To může být buď informace o účtu Microsoft, nebo informace o účtu služby Active Directory práce pro uživatele.
+* Tento postup předpokládá, že jste buď probíhající toouse jeden z Image šablony hello zadané v rámci vašeho předplatného nebo že máte již načtený chcete toouse image šablony hello. Pokud potřebujete tooupload bitovou kopii jinou šablonu, můžete to udělat z hello Image šablony stránky. Stačí kliknout na **nahrajte image šablony** a postupujte podle kroků hello v Průvodci hello. 
+* Chcete image Office 365 ProPlus hello toouse? Přečtěte si informace o [zde](remoteapp-officesubscription.md).
+* Chcete tooprovide vlastních aplikací nebo LOB programy? Vytvořte novou [image](remoteapp-imageoptions.md) a použít ho v kolekci cloudu.
+* Zjistěte, jestli je potřeba tooconnect tooa virtuální sítě. Pokud si zvolíte tooconnect tooa virtuální síť, ujistěte se, splňuje hello [pokyny pro definování velikosti](remoteapp-vnetsizing.md) a aby [můžete připojit tooRemoteApp](remoteapp-vnet.md). Podívejte se na hello [článku plánování virtuální sítě ](remoteapp-planvnet.md)Další informace.
+* Pokud používáte virtuální síť, rozhodnout, zda má toojoin ho tooyour místní domény služby Active Directory.
 
 ## <a name="step-1-create-a-cloud-collection---with-or-without-a-vnet"></a>Krok 1: Vytvoření cloudové kolekce - s nebo bez virtuální sítě
-Použijte následující kroky, aby **vytvoření cloudové kolekce**:
+Použití hello následující kroky příliš**vytvoření cloudové kolekce**:
 
-1. Na portálu management portal přejděte na stránku vzdálené aplikace RemoteApp.
+1. Na portálu pro správu hello přejděte stránku toohello vzdálené aplikace RemoteApp.
 2. Klikněte na tlačítko **nový > rychlé vytvoření**.
 3. Zadejte název kolekce a vyberte oblast.
-4. Vyberte plán, který chcete použít – standard a basic.
-5. Vyberte šablonu, kterou chcete použít pro tuto kolekci. 
+4. Zvolte plán hello, které chcete toouse – standard a basic.
+5. Zvolte hello toouse šablonu pro tuto kolekci. 
    
-    **Tip:** vaše předplatné pro vzdálenou aplikaci RemoteApp se dodává s [Image šablony](remoteapp-images.md) obsahující Office 365 nebo Office 2013 (pro zkušební verzi) programy, některé publikované (například Word) a ostatní je připravena k publikování. Můžete také vytvořit novou [image](remoteapp-imageoptions.md) a použít ho v kolekci cloudu.
+    **Tip:** vaše předplatné pro vzdálenou aplikaci RemoteApp se dodává s [Image šablony](remoteapp-images.md) obsahující Office 365 nebo Office 2013 (pro zkušební verzi) programy, některé publikována (například Word) a dalších připraveni toopublish. Můžete také vytvořit novou [image](remoteapp-imageoptions.md) a použít ho v kolekci cloudu.
 6. Klikněte na tlačítko **vytvořit kolekci RemoteApp**.
    
-    **Důležité:** může trvat až 30 minut se zřídit kolekci.
+    **Důležité:** může trvat až minut tooprovision too30 vaší kolekce.
 
-Po vytvoření kolekce vzdálené aplikace Azure RemoteApp, klikněte dvakrát na název kolekce. Která se zobrazí **rychlý Start** stránka - Toto je, kde dokončíte konfiguraci kolekce.
+Po vytvoření kolekce vzdálené aplikace Azure RemoteApp, klikněte dvakrát na název hello hello kolekce. Bude zprovoznit hello **rychlý Start** stránka - Toto je, kde dokončení konfigurace hello kolekce.
 
-Pomocí následujících kroků můžete vytvořit **cloudu + kolekce virtuální sítě**:
+Použití hello následující kroky toocreate **cloudu + kolekce virtuální sítě**:
 
-1. Na portálu management portal přejděte na stránku Azure RemoteApp.
+1. Na portálu pro správu hello přejděte stránku toohello Azure RemoteApp.
 2. Klikněte na tlačítko **nové** > **vytvořit s VNET**.
 3. Zadejte název kolekce.
-4. Vyberte plán, který chcete použít – standard a basic.
-5. Vyberte virtuální síť, jste již vytvořili. Nemusíte vědět, jak to udělat? Prozatím se kroky jsou v [hybridní](remoteapp-create-hybrid-deployment.md) tématu.
-6. Rozhodněte, jestli chcete připojit k vaší kolekce k vaší doméně. Pokud ano, budete muset používat AD Connect k integraci služby Azure AD a prostředí služby Active Directory. Který je zahrnutý v níže v **kroku 2**.
+4. Zvolte plán hello, které chcete toouse – standard a basic.
+5. Zvolte hello jste již vytvořili virtuální sítě. Nevíte, jak toodo který? Prozatím se hello kroky jsou v hello [hybridní](remoteapp-create-hybrid-deployment.md) tématu.
+6. Rozhodněte, jestli chcete toojoin doménu tooyour kolekce. Pokud ano, budete potřebovat toouse AD Connect toointegrate Azure AD a prostředí služby Active Directory. Který je zahrnutý v níže v **kroku 2**.
 7. Klikněte na tlačítko **vytvořit kolekci RemoteApp**.
 
 ## <a name="step-2-configure-active-directory-directory-synchronization-optional"></a>Krok 2: Konfigurace synchronizace adresáře služby Active Directory (volitelné)
-Pokud chcete používat službu Active Directory, vyžaduje Azure RemoteApp synchronizace adresářů mezi službami Azure Active Directory a služby Active Directory v místě synchronizace uživatele, kontakty a hesla pro vašeho klienta Azure Active Directory. V tématu [konfigurace služby Active Directory pro Azure RemoteApp](remoteapp-ad.md) informace týkající se plánování. Můžete také přejít přímo na [AD Connect](https://blogs.technet.microsoft.com/enterprisemobility/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect/) informace.
+Pokud chcete toouse služby Active Directory, vyžaduje Azure RemoteApp synchronizace adresářů mezi službami Azure Active Directory a vaší místní služby Active Directory toosynchronize uživatele, kontakty a klienta Azure Active Directory tooyour hesla. V tématu [konfigurace služby Active Directory pro Azure RemoteApp](remoteapp-ad.md) informace týkající se plánování. Můžete také přejít přímo příliš[AD Connect](https://blogs.technet.microsoft.com/enterprisemobility/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect/) informace.
 
 ## <a name="step-3-publish-apps"></a>Krok 3: Publikování aplikace
-Aplikace Azure RemoteApp je aplikace nebo program, který zadáte pro vaše uživatele. Nachází se ve image šablony, který jste nahráli pro kolekci. Když uživatel získá přístup k aplikaci, aplikace se zobrazí ke spuštění ve svém místním prostředí, ale skutečně běží ve virtuálním počítači v Azure. 
+Aplikace Azure RemoteApp je aplikace hello nebo zadat tooyour uživatelé programu. Nachází se ve hello image šablony, který jste nahráli pro kolekci hello. Když uživatel přistoupí aplikaci, aplikace hello zobrazí toorun ve svém místním prostředí, ale ve skutečnosti běží ve virtuálním počítači v Azure. 
 
-Než uživatelé mohou získat přístup k aplikacím, je třeba publikovat je – publikování aplikace umožňuje uživatelům přístup k aplikacím prostřednictvím klienta vzdálené plochy.
+Než uživatelé mohou získat přístup k aplikacím, je třeba toopublish je – publikování aplikace umožňuje uživatelům přístup k aplikacím hello prostřednictvím hello klienta vzdálené plochy.
 
-Vaše kolekce vzdálené aplikace Azure RemoteApp můžete publikovat víc aplikací. Na stránce publikování, klikněte na tlačítko **publikovat** přidání programu. Můžete buď publikovat z **spustit** nabídky Image šablony, nebo zadáním cesty na image šablony pro aplikaci. Pokud zvolíte možnost přidat z **spustit** nabídce vyberte aplikaci, chcete-li publikovat. Pokud zvolíte možnost zadat cestu k aplikaci, zadejte název a cesta k kde je nainstalovaný na image šablony aplikace.
+Můžete publikovat víc aplikací tooyour kolekci Azure Remoteappu. Na stránce hello publikování, klikněte na tlačítko **publikovat** tooadd program. Můžete buď publikovat z hello **spustit** nabídky image šablony hello nebo zadat cestu hello na image šablony hello aplikace hello. Pokud zvolíte tooadd z hello **spustit** nabídce zvolte toopublish aplikace hello. Pokud si zvolíte tooprovide hello cesta toohello aplikace, zadejte název aplikace hello a toowhere hello cestu, je nainstalován na image šablony hello.
 
 ## <a name="step-4-configure-user-access"></a>Krok 4: Konfigurace přístupu uživatelů
-Teď, když jste vytvořili kolekci, je nutné přidat uživatele, kteří mají být možné používat vzdálené prostředky. Pokud používáte služby Active Directory, uživatelé, můžete poskytnout přístup k musí existovat v přidružené k předplatnému klienta služby Active Directory, které jste použili k vytvoření této kolekce.
+Teď, když jste vytvořili kolekci, je nutné tooadd hello uživatelé mají možnost toouse toobe vzdálené prostředky. Pokud používáte služby Active Directory, hello uživatelům poskytnout přístup tooneed tooexist v klientovi služby Active Directory hello spojené s předplatným hello používá toocreate této kolekce.
 
-1. Na stránce Rychlý Start klikněte na tlačítko **konfigurace přístupu uživatelů**. 
-2. Zadejte pracovní účet (ze služby Active Directory) nebo účtu Microsoft, které chcete udělit přístup.
+1. Na stránce hello rychlý Start, klikněte na tlačítko **konfigurace přístupu uživatelů**. 
+2. Zadejte hello pracovní účet (ze služby Active Directory) nebo účtu Microsoft, které chcete toogrant přístup.
    
    **Poznámky:** 
    
-   Ujistěte se, že používáte  *user@domain.com*  formátu.
+   Ujistěte se, že používáte hello  *user@domain.com*  formátu.
    
-   Pokud používáte Office 365 ProPlus v kolekci, musíte použít identit služby Active Directory pro vaše uživatele. To pomáhá ověřit licencování. 
-3. Po ověření uživatele, klikněte na tlačítko **Uložit**.
+   Pokud používáte Office 365 ProPlus v kolekci, musíte použít hello identit služby Active Directory pro vaše uživatele. To pomáhá ověřit licencování. 
+3. Po ověření jsou uživatelé hello, klikněte na tlačítko **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
-Je to – jste úspěšně vytvořili a nasadili vaší cloudové kolekce Azure Remoteappu. Dalším krokem je vaši uživatelé stáhnout a nainstalovat klienta vzdálené plochy. Můžete získat adresu URL pro klienta na stránce Rychlý Start Azure RemoteApp. Potom mít uživatelé přihlášení do klienta a přístup k aplikacím, které jste publikovali.
+Je to – jste úspěšně vytvořili a nasadili vaší cloudové kolekce Azure Remoteappu. dalším krokem Hello je toohave uživatelům stáhnout a nainstalovat klienta vzdálené plochy hello. Hello adresu URL pro klienta hello najdete na stránce Rychlý Start Azure RemoteApp hello. Potom mít uživatelé přihlášení do hello klienta a získat přístup k aplikacím hello, kterou jste publikovali.
 
 ### <a name="help-us-help-you"></a>Umožněte nám, abychom vám mohli pomoct
-Věděli jste, že kromě hodnocení tohoto článku a přidání komentářů pod článkem také můžete měnit samotný článek? Něco chybí? Něco není v pořádku? Něco je matoucí? Vraťte se na začátek článku, klikněte na **Upravit na GitHubu** a proveďte změny – změny se nám odešlou ke kontrole a po jejich schválení je doplníme do článku.
+Věděli jste, že v přidání toorating v tomto článku a přidání komentářů pod, článkem můžete provést samotný článek toohello změny? Něco chybí? Něco není v pořádku? Něco je matoucí? Vraťte se na začátek a klikněte na tlačítko **upravit na Githubu** toomake změny – ty, převzato toous ke kontrole, a potom po na nich, uvidíte změny a vylepšení přímo tady.
 

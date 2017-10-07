@@ -1,6 +1,6 @@
 ---
-title: "Rozšíření Azure Diagnostics 1.3 a novější schéma konfigurace | Microsoft Docs"
-description: "Verze schématu 1.3 a novější Azure diagnostics dodávána jako součást Microsoft Azure SDK 2.4 a později."
+title: "schéma 1.3 a novější konfigurace rozšíření diagnostiky aaaAzure | Microsoft Docs"
+description: "Verze schématu 1.3 a novější Azure diagnostics dodávána jako součást hello Microsoft Azure SDK 2.4 nebo novější."
 services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
@@ -14,15 +14,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
-ms.openlocfilehash: 0d814825fb08452238a254ccd30bde230380c74c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bd15d3a79ea818fcb3235854717e58d5da36518e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostics 1.3 a novější schéma konfigurace
 > [!NOTE]
-> Rozšíření diagnostiky Azure je komponenta, kterou používá ke shromažďování čítačů výkonu a další statistiky z:
+> Hello rozšíření diagnostiky Azure je, že součást hello používá toocollect čítače výkonu a další statistiky z:
 > - Azure Virtual Machines 
 > - Škálovací sady virtuálních počítačů
 > - Service Fabric 
@@ -31,15 +31,15 @@ ms.lasthandoff: 07/11/2017
 > 
 > Tato stránka je pouze relevantní, pokud používáte některou z těchto služeb.
 
-Tato stránka je platná pro verze 1.3 a novější (Azure SDK 2.4 nebo novější). Novější konfigurační oddíly jsou vloženy do komentáře k zobrazení, v jaké verze byly přidány.  
+Tato stránka je platná pro verze 1.3 a novější (Azure SDK 2.4 nebo novější). Novější konfigurační oddíly jsou komentáři tooshow ve verzi, které byly přidány.  
 
-V souboru konfigurace zde popsané slouží k nastavení konfigurace diagnostiky při spuštění diagnostiky monitorování.  
+soubor konfigurace Hello zde popsané je použité tooset konfigurace diagnostiky nastavení při monitorování diagnostiky hello spustí.  
 
-Rozšíření se používá ve spojení s dalšími produkty Microsoftu diagnostiky jako monitorování Azure, Application Insights a analýzy protokolů.
+rozšíření Hello se používá ve spojení s dalšími produkty Microsoftu diagnostiky jako monitorování Azure, Application Insights a analýzy protokolů.
 
 
 
-Stáhněte si definici veřejné konfigurace souboru schématu spuštěním následujícího příkazu Powershellu:  
+Stáhněte si definice schématu souboru hello veřejné konfigurace tak, že spustíte následující příkaz prostředí PowerShell hello:  
 
 ```powershell  
 (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File –Encoding utf8 -FilePath 'C:\temp\WadConfig.xsd'  
@@ -47,8 +47,8 @@ Stáhněte si definici veřejné konfigurace souboru schématu spuštěním nás
 
 Další informace o používání Azure Diagnostics najdete v tématu [rozšíření diagnostiky Azure](azure-diagnostics.md).  
 
-## <a name="example-of-the-diagnostics-configuration-file"></a>Příklad konfiguračního souboru diagnostiky  
- Následující příklad ukazuje konfigurační soubor typické diagnostics:  
+## <a name="example-of-hello-diagnostics-configuration-file"></a>Příklad souboru konfigurace diagnostiky hello  
+ Hello následující příklad ukazuje konfigurační soubor typické diagnostics:  
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>  
@@ -158,9 +158,9 @@ Další informace o používání Azure Diagnostics najdete v tématu [rozšíř
 
 ```  
 
-JSON ekvivalent předchozí konfiguračního souboru XML. 
+JSON ekvivalent hello předchozí konfiguračního souboru XML. 
 
-PublicConfig a PrivateConfig jsou oddělené, protože ve většině případů použití json jsou předávány jako jiné proměnné. Tyto případy patří šablony Resource Manageru, sady škálování virtuálního počítače prostředí PowerShell a Visual Studio. 
+Hello PublicConfig a PrivateConfig jsou oddělené, protože ve většině případů použití json jsou předávány jako jiné proměnné. Tyto případy patří šablony Resource Manageru, sady škálování virtuálního počítače prostředí PowerShell a Visual Studio. 
 
 ```json
 "PublicConfig" {
@@ -363,10 +363,10 @@ PublicConfig a PrivateConfig jsou oddělené, protože ve většině případů 
 ```
 
 ## <a name="reading-this-page"></a>Čtení této stránce  
- Značky následující jsou přibližně v pořadí uvedeném v předchozím příkladu.  Pokud nevidíte úplný popis kde očekáváte, vyhledejte stránce elementu nebo atributu.  
+ Hello značky následující jsou přibližně v pořadí uvedeném v předchozím příkladu hello.  Pokud nevidíte úplný popis kde očekáváte, vyhledejte stránku hello hello elementu nebo atributu.  
 
 ## <a name="common-attribute-types"></a>Běžné typy atributů  
- **scheduledTransferPeriod** atributu se zobrazí v několika elementy. Je interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/schema/schema_dtypes_date.asp)
+ **scheduledTransferPeriod** atributu se zobrazí v několika elementy. Je hello interval mezi naplánované přenosy toostorage zaokrouhlit toohello nejbližší minutu. Hodnota Hello [XML "Doba trvání datového typu."](http://www.w3schools.com/schema/schema_dtypes_date.asp)
 
 
 ## <a name="diagnosticsconfiguration-element"></a>DiagnosticsConfiguration Element  
@@ -374,34 +374,34 @@ PublicConfig a PrivateConfig jsou oddělené, protože ve většině případů 
 
 Přidána do verze 1.3.  
 
-Element nejvyšší úrovně v souboru konfigurace diagnostiky.  
+element nejvyšší úrovně Hello hello diagnostiky konfiguračního souboru.  
 
-**Atribut** xmlns – obor názvů XML pro konfigurační soubor diagnostiky je:  
+**Atribut** xmlns - hello obor názvů XML pro konfigurační soubor diagnostiky hello:  
 http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration  
 
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**PublicConfig**|Vyžaduje se. Na této stránce najdete v popisu jinde.|  
+|**PublicConfig**|Povinná hodnota. Na této stránce najdete v popisu jinde.|  
 |**PrivateConfig**|Volitelné. Na této stránce najdete v popisu jinde.|  
 |**Hodnotu IsEnabled**|Logická hodnota. Na této stránce najdete v popisu jinde.|  
 
 ## <a name="publicconfig-element"></a>PublicConfig Element  
  *Stromové struktury: PublicConfig kořenové - DiagnosticsConfiguration-*
 
- Popisuje konfiguraci veřejné diagnostiky.  
+ Popisuje konfiguraci veřejné diagnostiky hello.  
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**WadCfg**|Vyžaduje se. Na této stránce najdete v popisu jinde.|  
-|**StorageAccount**|Název účtu úložiště Azure pro ukládání dat v. Můžete také zadat jako parametr při spuštění rutiny Set-AzureServiceDiagnosticsExtension.|  
-|**StorageType**|Může být *tabulky*, *Blob*, nebo *TableAndBlob*. Tabulka je výchozí. Při výběru TableAndBlob diagnostická data se zapisují dvakrát – jednou pro každý typ.|  
-|**LocalResourceDirectory**|Adresář na virtuálním počítači, kde Monitoring Agent ukládá data události. Pokud ne, nastavit, používá výchozí adresář:<br /><br /> Pro roli pracovního procesu nebo webové:`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Pro virtuální počítač:`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Povinné atributy jsou:<br /><br /> - **cesta** -adresáři na serveru, který má být používána Azure Diagnostics.<br /><br /> - **expandEnvironment** -Určuje, zda jsou v názvu cesty rozbalit proměnné prostředí.|  
+|**WadCfg**|Povinná hodnota. Na této stránce najdete v popisu jinde.|  
+|**StorageAccount**|Název Hello hello hello data toostore účtu Azure Storage v. Můžete také zadat jako parametr při spuštění rutiny Set-AzureServiceDiagnosticsExtension hello.|  
+|**StorageType**|Může být *tabulky*, *Blob*, nebo *TableAndBlob*. Tabulka je výchozí. Při výběru TableAndBlob diagnostických dat se zapíše dvakrát – jednou tooeach typu.|  
+|**LocalResourceDirectory**|adresář Hello hello virtuálního počítače, kde hello Monitoring Agent ukládá data události. Pokud ne, nastavit, používá výchozí adresář hello:<br /><br /> Pro roli pracovního procesu nebo webové:`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Pro virtuální počítač:`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Povinné atributy jsou:<br /><br /> - **cesta** – hello v toobe systému hello používá Azure Diagnostics.<br /><br /> - **expandEnvironment** -Určuje, zda jsou v názvu cesty hello rozbalit proměnné prostředí.|  
 
 ## <a name="wadcfg-element"></a>WadCFG Element  
  *Strom: Root - DiagnosticsConfiguration - PublicConfig - WadCFG*
  
- Identifikuje a nakonfiguruje telemetrická data, které se mají shromažďovat.  
+ Identifikuje a nakonfiguruje hello telemetrická data toobe shromažďují.  
 
 
 ## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration Element 
@@ -411,15 +411,15 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Atributy|Popis|  
 |----------------|-----------------|  
-| **overallQuotaInMB** | Maximální množství místa na místní disk, který může být využívány službou různé typy diagnostická data shromažďovaná společností Azure Diagnostics. Výchozí nastavení je 5 120 MB.<br />
-|**useProxyServer** | Konfigurace Azure Diagnostics chcete použít nastavení proxy serveru jako sada v nastavení aplikace Internet Explorer.|  
+| **overallQuotaInMB** | maximální množství místa místního disku, které mohou být spotřebovávána hello Hello různých typů dat diagnostiky shromažďuje Azure Diagnostics. Hello výchozí nastavení je 5 120 MB.<br />
+|**useProxyServer** | Nakonfigurujte nastavení serveru proxy hello toouse Azure Diagnostics jako sada v nastavení aplikace Internet Explorer.|  
 
 <br /> <br />
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
 |**CrashDumps**|Na této stránce najdete v popisu jinde.|  
-|**DiagnosticInfrastructureLogs**|Povolte shromažďování protokolů generovaných Azure Diagnostics. Infrastruktura diagnostické protokoly jsou užitečné pro řešení potíží s samotného systému diagnostiky. Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** -nakonfiguruje závažnost minimální úroveň shromážděné protokoly.<br /><br /> - **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
+|**DiagnosticInfrastructureLogs**|Povolte shromažďování protokolů generovaných Azure Diagnostics. Hello infrastruktury diagnostické protokoly jsou užitečné při řešení potíží samotného systému hello diagnostiky. Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** -nakonfiguruje úroveň závažnosti minimální hello shromážděné protokoly hello.<br /><br /> - **scheduledTransferPeriod** -hello interval mezi naplánované přenosy toostorage zaokrouhlit toohello nejbližší minutu. Hodnota Hello [XML "Doba trvání datového typu."](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
 |**Adresáře**|Na této stránce najdete v popisu jinde.|  
 |**EtwProviders**|Na této stránce najdete v popisu jinde.|  
 |**Metriky**|Na této stránce najdete v popisu jinde.|  
@@ -432,30 +432,30 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="crashdumps-element"></a>CrashDumps Element  
  *Stromu: - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - CrashDumps kořen*
  
- Povolení shromažďování těchto výpisy stavu systému.  
+ Povolte shromažďování hello výpisy stavu systému.  
 
 |Atributy|Popis|  
 |----------------|-----------------|  
-|**containerName**|Volitelné. Název kontejneru objektů blob v účtu úložiště Azure, který se má použít k uložení výpisy stavu systému.|  
-|**crashDumpType**|Volitelné.  Nakonfiguruje Azure Diagnostics ke shromažďování výpisů paměti mini nebo úplné selhat.|  
-|**directoryQuotaPercentage**|Volitelné.  Nakonfiguruje procento **overallQuotaInMB** jako vyhrazené pro výpisů stavu systému ve virtuálním počítači.|  
+|**containerName**|Volitelné. Název Hello hello kontejneru objektů blob ve vašem toobe účtu Azure Storage používá toostore výpisy stavu systému.|  
+|**crashDumpType**|Volitelné.  Nakonfiguruje výpisy stavu Azure Diagnostics toocollect mini nebo celého systému.|  
+|**directoryQuotaPercentage**|Volitelné.  Nakonfiguruje hello procento **overallQuotaInMB** toobe vyhrazena pro výpisů stavu systému na hello virtuálních počítačů.|  
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**CrashDumpConfiguration**|Vyžaduje se. Definuje hodnoty konfigurace pro jednotlivé procesy.<br /><br /> Je také nutný následující atribut:<br /><br /> **název_procesu** -název procesu chcete shromažďovat výpis stavu pro Azure Diagnostics.|  
+|**CrashDumpConfiguration**|Povinná hodnota. Definuje hodnoty konfigurace pro jednotlivé procesy.<br /><br /> také je vyžadována Hello následující atribut:<br /><br /> **název_procesu** – hello název procesu hello chcete Azure Diagnostics toocollect stav systému pro.|  
 
 ## <a name="directories-element"></a>Element adresáře 
  *Strom: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - adresáře*
 
- Povoluje shromažďování obsah adresáře, protokoly žádost o přístup služby IIS se nezdařilo nebo protokoly služby IIS.  
+ Umožňuje hello kolekce hello obsah adresáře, služba IIS se nezdařilo, přístup k protokolům požadavku nebo protokoly služby IIS.  
 
  Volitelné **scheduledTransferPeriod** atribut. Viz vysvětlení dříve.  
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**IISLogs**|Tento element včetně v konfiguraci povoluje shromažďování protokoly služby IIS:<br /><br /> **containerName** -název kontejneru objektů blob v účtu úložiště Azure, který se má použít k ukládání protokolů služby IIS.|   
-|**FailedRequestLogs**|Umožňuje shromažďování protokolů o neúspěšných požadavků na web služby IIS nebo aplikaci, včetně tento prvek v konfiguraci. Je také nutné povolit trasování možnosti v části **systému. Webový server** v **Web.config**.|  
-|**Zdroje dat**|Seznam adresáře, které chcete monitorovat.| 
+|**IISLogs**|Tento element včetně v konfiguraci hello umožňuje hello shromažďování protokolů služby IIS:<br /><br /> **containerName** -protokoly služby IIS hello toostore použit název hello hello kontejneru objektů blob ve vašem toobe účet úložiště Azure.|   
+|**FailedRequestLogs**|Tento element včetně v konfiguraci hello umožňuje shromažďování protokolů o neúspěšných požadavků tooan služby IIS webu nebo aplikaci. Je také nutné povolit trasování možnosti v části **systému. Webový server** v **Web.config**.|  
+|**Zdroje dat**|Seznam toomonitor adresáře.| 
 
 
 
@@ -463,11 +463,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="datasources-element"></a>Element zdrojů dat  
  *Stromové struktury: Zdroje dat PublicConfig - WadCFG - DiagnosticMonitorConfiguration - adresáře - kořenové - DiagnosticsConfiguration-*
 
- Seznam adresáře, které chcete monitorovat.  
+ Seznam toomonitor adresáře.  
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**DirectoryConfiguration**|Vyžaduje se. Požadovaný atribut:<br /><br /> **containerName** -název kontejneru objektů blob v Azure Storage účtu, který se má použít k ukládání souborů protokolu.|  
+|**DirectoryConfiguration**|Povinná hodnota. Požadovaný atribut:<br /><br /> **containerName** – hello název hello kontejneru objektů blob v účtu úložiště Azure, že toobe použité soubory protokolu toostore hello.|  
 
 
 
@@ -476,12 +476,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration Element  
  *Stromu: Zdroje dat PublicConfig - WadCFG - DiagnosticMonitorConfiguration - adresáře - kořenové - DiagnosticsConfiguration - - DirectoryConfiguration*
 
- Může obsahovat buď **absolutní** nebo **LocalResource** elementu, ale ne obojí.  
+ Může obsahovat buď hello **absolutní** nebo **LocalResource** elementu, ale ne obojí.  
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**Absolutní**|Absolutní cesta k adresáři pro monitorování. Vyžadují se následující atributy:<br /><br /> - **Cesta** -absolutní cestu k adresáři pro monitorování.<br /><br /> - **expandEnvironment** – konfiguruje, zda jsou rozbalit proměnné prostředí v cestě.|  
-|**LocalResource**|Cesta relativní k místní prostředek pro monitorování. Povinné atributy jsou:<br /><br /> - **Název** -místní prostředek, který obsahuje adresář, který chcete monitorovat<br /><br /> - **relativePath** – relativní název, který obsahuje adresář, který chcete monitorovat cestu|  
+|**Absolutní**|Hello toomonitor directory toohello absolutní cesta. vyžadují se Hello následující atributy:<br /><br /> - **Cesta** -hello toomonitor directory toohello absolutní cesta.<br /><br /> - **expandEnvironment** – konfiguruje, zda jsou rozbalit proměnné prostředí v cestě.|  
+|**LocalResource**|Hello cesta relativní tooa místní prostředek toomonitor. Povinné atributy jsou:<br /><br /> - **Název** -hello místní prostředek, který obsahuje hello directory toomonitor<br /><br /> - **relativePath** -hello relativní tooName cestu, která obsahuje adresář toomonitor hello|  
 
 
 
@@ -492,8 +492,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|Nakonfiguruje kolekce událostí generovaných [EventSource – třída](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Požadovaný atribut:<br /><br /> **Zprostředkovatel** -název třídy událostí EventSource.<br /><br /> Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** -úroveň závažnosti minimální přenést do účtu úložiště.<br /><br /> - **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
-|**EtwManifestProviderConfiguration**|Požadovaný atribut:<br /><br /> **Zprostředkovatel** -GUID zprostředkovatele událostí<br /><br /> Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** -úroveň závažnosti minimální přenést do účtu úložiště.<br /><br /> - **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
+|**EtwEventSourceProviderConfiguration**|Nakonfiguruje kolekce událostí generovaných [EventSource – třída](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Požadovaný atribut:<br /><br /> **Zprostředkovatel** -hello název třídy událostí EventSource hello.<br /><br /> Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** -hello účet úložiště tooyour úrovně tootransfer minimální závažnosti.<br /><br /> - **scheduledTransferPeriod** -hello interval mezi naplánované přenosy toostorage zaokrouhlit toohello nejbližší minutu. Hodnota Hello [XML "Doba trvání datového typu."](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
+|**EtwManifestProviderConfiguration**|Požadovaný atribut:<br /><br /> **Zprostředkovatel** -hello GUID hello událostí zprostředkovatele<br /><br /> Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** -hello účet úložiště tooyour úrovně tootransfer minimální závažnosti.<br /><br /> - **scheduledTransferPeriod** -hello interval mezi naplánované přenosy toostorage zaokrouhlit toohello nejbližší minutu. Hodnota Hello [XML "Doba trvání datového typu."](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
 
 
 
@@ -504,8 +504,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**DefaultEvents**|Volitelný atribut:<br/><br/> **eventDestination** -název tabulku pro ukládání událostí v|  
-|**Události**|Požadovaný atribut:<br /><br /> **ID** -id události.<br /><br /> Volitelný atribut:<br /><br /> **eventDestination** -název tabulku pro ukládání událostí v|  
+|**DefaultEvents**|Volitelný atribut:<br/><br/> **eventDestination** – hello název hello tabulky toostore hello události v|  
+|**Události**|Požadovaný atribut:<br /><br /> **ID** -hello id události hello.<br /><br /> Volitelný atribut:<br /><br /> **eventDestination** – hello název hello tabulky toostore hello události v|  
 
 
 
@@ -514,28 +514,28 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**DefaultEvents**|Volitelný atribut:<br /><br /> **eventDestination** -název tabulku pro ukládání událostí v|  
-|**Události**|Požadovaný atribut:<br /><br /> **ID** -id události.<br /><br /> Volitelný atribut:<br /><br /> **eventDestination** -název tabulku pro ukládání událostí v|  
+|**DefaultEvents**|Volitelný atribut:<br /><br /> **eventDestination** – hello název hello tabulky toostore hello události v|  
+|**Události**|Požadovaný atribut:<br /><br /> **ID** -hello id události hello.<br /><br /> Volitelný atribut:<br /><br /> **eventDestination** – hello název hello tabulky toostore hello události v|  
 
 
 
 ## <a name="metrics-element"></a>Element metriky  
  *Strom: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - metriky*
 
- Umožňuje generovat tabulku čítače výkonu, která je optimalizovaná pro rychlé dotazy. Jednotlivých čítačů výkonu, která je definována v **čítače výkonu** element je uložené v tabulce metriky kromě tabulky čítače výkonu.  
+ Umožní vám toogenerate tabulku čítače výkonu, která je optimalizovaná pro rychlé dotazy. Jednotlivých čítačů výkonu, která je definována v hello **čítače výkonu** element je uložena v tabulce hello metriky v tabulce čítače výkonu toohello přidání.  
 
- **ResourceId** atribut je požadován.  ID prostředku nasazujete Azure Diagnostics do virtuálního počítače. Získat **resourceID** z [portál Azure](https://portal.azure.com). Vyberte **Procházet** -> **skupiny prostředků** -> **< název\>**. Klikněte **vlastnosti** dlaždici a zkopírujte hodnotu z **ID** pole.  
+ Hello **resourceId** atribut je požadován.  ID prostředku Hello hello nasazujete Azure Diagnostics do virtuálního počítače. Získat hello **resourceID** z hello [portál Azure](https://portal.azure.com). Vyberte **Procházet** -> **skupiny prostředků** -> **< název\>**. Klikněte na tlačítko hello **vlastnosti** dlaždici a zkopírujte hodnotu hello z hello **ID** pole.  
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**MetricAggregation**|Požadovaný atribut:<br /><br /> **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
+|**MetricAggregation**|Požadovaný atribut:<br /><br /> **scheduledTransferPeriod** -hello interval mezi naplánované přenosy toostorage zaokrouhlit toohello nejbližší minutu. Hodnota Hello [XML "Doba trvání datového typu."](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
 
 
 
 ## <a name="performancecounters-element"></a>PerformanceCounters – Element  
  *Strom: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - čítače výkonu*
 
- Povoluje shromažďování čítačů výkonu.  
+ Umožňuje hello kolekci čítačů výkonu.  
 
  Volitelný atribut:  
 
@@ -543,7 +543,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Podřízený Element|Popis|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|Vyžadují se následující atributy:<br /><br /> - **counterSpecifier** – název čítače výkonu. Například, `\Processor(_Total)\% Processor Time`. Pokud chcete získat seznam čítačů výkonu na hostiteli, spusťte příkaz `typeperf`.<br /><br /> - **sampleRate** – jak často se čítač odeberou.<br /><br /> Volitelný atribut:<br /><br /> **jednotka** -měrnou čítače.|  
+|**PerformanceCounterConfiguration**|vyžadují se Hello následující atributy:<br /><br /> - **counterSpecifier** hello – název čítače výkonu hello. Například, `\Processor(_Total)\% Processor Time`. tooget seznam výkonu čítače na hostiteli, spusťte příkaz hello `typeperf`.<br /><br /> - **sampleRate** – jak často hello čítač se odeberou.<br /><br /> Volitelný atribut:<br /><br /> **jednotka** -hello Měrná jednotka služby hello čítače.|  
 
 
 
@@ -551,13 +551,13 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="windowseventlog-element"></a>WindowsEventLog Element
  *Stromu: - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - WindowsEventLog kořen*
  
- Umožňuje kolekce protokoly událostí systému Windows.  
+ Umožňuje hello kolekce protokoly událostí systému Windows.  
 
  Volitelné **scheduledTransferPeriod** atribut. Viz vysvětlení dříve.  
 
 |Podřízený Element|Popis|  
 |-------------------|-----------------|  
-|**Zdroj dat**|Protokol událostí systému Windows ke shromažďování. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému windows, které se mají shromažďovat. Například:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Ke shromažďování všech událostí, zadejte "*"|  
+|**Zdroj dat**|toocollect protokoly událostí systému Windows Hello. Požadovaný atribut:<br /><br /> **název** -shromážděných dotaz XPath hello popisující toobe události windows hello. Například:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Zadejte všechny události, toocollect "*"|  
 
 
 
@@ -567,14 +567,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Prezentovat v verze 1.0 a 1.1. Chybí v 1.2. Přidat zpět v 1.3.  
 
- Definuje konfiguraci vyrovnávací paměti pro základní Azure protokoly.  
+ Definuje konfiguraci hello vyrovnávací paměti pro základní Azure protokoly.  
 
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|**celé číslo bez znaménka**|Volitelné. Určuje maximální množství úložiště systému souboru, který je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
-|**scheduledTransferLogLevelFilterr**|**řetězec**|Volitelné. Určuje úroveň závažnosti minimální pro položky protokolu, které se přenáší. Výchozí hodnota je **Undefined**, která přenáší všechny protokoly. Další možné hodnoty (v pořadí podle nejvíc minimálně informace) jsou **podrobné**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
-|**scheduledTransferPeriod**|**Doba trvání**|Volitelné. Určuje interval mezi naplánované přenosů dat, zaokrouhlený nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
-|**jímky** přidali v 1.5|**řetězec**|Volitelné. Bodů na jímka umístění a také posílat diagnostická data. Například Application Insights.|  
+|**bufferQuotaInMB**|**celé číslo bez znaménka**|Volitelné. Určuje maximální množství hello úložiště systému souboru, který je k dispozici pro hello zadaná data.<br /><br /> Hello výchozí hodnota je 0.|  
+|**scheduledTransferLogLevelFilterr**|**řetězec**|Volitelné. Určuje hello minimální úroveň závažnosti pro položky protokolu, které se přenáší. Hello výchozí hodnota je **Undefined**, která přenáší všechny protokoly. Další možné hodnoty (v pořadí, ve většině tooleast informací) jsou **podrobné**, **informace**, **upozornění**, **chyba**a **Kritické**.|  
+|**scheduledTransferPeriod**|**Doba trvání**|Volitelné. Určuje interval hello od naplánovanou přenosů dat, zaokrouhlit toohello nejbližší minutu.<br /><br /> Výchozí hodnota Hello je PT0S.|  
+|**jímky** přidali v 1.5|**řetězec**|Volitelné. Body tooa podřízený umístění tooalso posílat diagnostická data. Například Application Insights.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Stromu: - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources kořen*
@@ -583,12 +583,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Název elementu|Popis|  
 |------------------|-----------------|  
-|**Statistiky**|Říká systému ke shromažďování statistik pro Docker kontejnery|  
+|**Statistiky**|Říká hello systému toocollect statistiky pro Docker kontejnery|  
 
 ## <a name="sinksconfig-element"></a>SinksConfig Element  
  *Stromové struktury: SinksConfig PublicConfig - WadCFG - kořenové - DiagnosticsConfiguration-*
 
- Seznam umístění odesílat data diagnostiky a konfigurace přidružené těchto umístěních.  
+ Seznam umístění toosend diagnostiky dat tooand hello konfigurace přidružené těchto umístěních.  
 
 |Název elementu|Popis|  
 |------------------|-----------------|  
@@ -599,15 +599,15 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Přidána do verze 1.5.  
 
- Definuje umístění poslat diagnostická data. Například službu Application Insights.  
+ Definuje diagnostická data toosend umístění. Například hello služby Application Insights.  
 
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
-|**Jméno**|Řetězec|Řetězec identifikující sinkname.|  
+|**Jméno**|Řetězec|Řetězec identifikující hello sinkname.|  
 
 |Element|Typ|Popis|  
 |-------------|----------|-----------------|  
-|**Application Insights**|Řetězec|Použít pouze při odesílání dat do služby Application Insights. Obsahovat klíč instrumentace pro aktivní účet Application Insights, máte přístup.|  
+|**Application Insights**|Řetězec|Použít pouze při odesílání dat tooApplication statistiky. Obsahovat hello klíč instrumentace pro aktivní účet Application Insights, máte přístup.|  
 |**Kanály**|Řetězec|Jeden pro každou další filtrování, který datového proudu, který jste|  
 
 ## <a name="channels-element"></a>Element kanály  
@@ -626,12 +626,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Přidána do verze 1.5.  
 
- Definuje umístění poslat diagnostická data. Například službu Application Insights.  
+ Definuje diagnostická data toosend umístění. Například hello služby Application Insights.  
 
 |Atributy|Typ|Popis|  
 |----------------|----------|-----------------|  
-|**logLevel**|**řetězec**|Určuje úroveň závažnosti minimální pro položky protokolu, které se přenáší. Výchozí hodnota je **Undefined**, která přenáší všechny protokoly. Další možné hodnoty (v pořadí podle nejvíc minimálně informace) jsou **podrobné**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
-|**Jméno**|**řetězec**|Jedinečný název kanálu k odkazování na|  
+|**logLevel**|**řetězec**|Určuje hello minimální úroveň závažnosti pro položky protokolu, které se přenáší. Hello výchozí hodnota je **Undefined**, která přenáší všechny protokoly. Další možné hodnoty (v pořadí, ve většině tooleast informací) jsou **podrobné**, **informace**, **upozornění**, **chyba**a **Kritické**.|  
+|**Jméno**|**řetězec**|Jedinečný název kanálu toorefer hello k|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig Element 
@@ -641,14 +641,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Nepovinné  
 
- Ukládá soukromé podrobnosti o účtu úložiště (název, klíč a koncového bodu). Tyto informace je odeslána do virtuálního počítače, ale nelze načíst z něj.  
+ Ukládá podrobností soukromého hello účtu úložiště hello (název, klíč a koncového bodu). Tyto informace se odesílají toohello virtuálního počítače, ale nelze načíst z něj.  
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**StorageAccount**|Účet úložiště používat. Následující atributy jsou požadovány<br /><br /> - **název** – název účtu úložiště.<br /><br /> - **klíč** -klíč k účtu úložiště.<br /><br /> - **koncový bod** -koncový bod pro přístup k účtu úložiště. <br /><br /> -**sasToken** (přidají 1.8.1)-tokenu SAS místo klíč účtu úložiště můžete zadat v privátní konfigurace. Pokud je zadán, klíče účtu úložiště se ignoruje. <br />Požadavky pro SAS Token: <br />– Podporuje pouze tokenu SAS účtu <br />- *b*, *t* jsou požadovány typy služby. <br /> - **, *c*, *u*, *w* jsou požadována oprávnění. <br /> - *c*, *o* jsou požadovány typy prostředků. <br /> – Podporuje protokol HTTPS <br /> -Spuštění a čas vypršení platnosti musí být platné.|  
+|**StorageAccount**|Hello toouse účet úložiště. Hello následující atributy jsou požadovány<br /><br /> - **název** hello – název účtu úložiště hello.<br /><br /> - **klíč** – hello klíče účtu úložiště toohello.<br /><br /> - **koncový bod** -tooaccess koncový bod hello hello účet úložiště. <br /><br /> -**sasToken** (přidají 1.8.1)-tokenu SAS místo klíč účtu úložiště můžete zadat v privátní konfigurace hello. Pokud je zadán, klíč účtu úložiště hello se ignoruje. <br />Požadavky pro hello SAS Token: <br />– Podporuje pouze tokenu SAS účtu <br />- *b*, *t* jsou požadovány typy služby. <br /> - **, *c*, *u*, *w* jsou požadována oprávnění. <br /> - *c*, *o* jsou požadovány typy prostředků. <br /> – Podporuje pouze protokol HTTPS hello <br /> -Spuštění a čas vypršení platnosti musí být platné.|  
 
 
 ## <a name="isenabled-element"></a>Element hodnotu IsEnabled  
  *Stromové struktury: Hodnotu IsEnabled kořenové - DiagnosticsConfiguration-*
 
- Logická hodnota. Použití `true` povolit diagnostiku nebo `false` zakázat diagnostiku.
+ Logická hodnota. Použití `true` tooenable hello diagnostiky nebo `false` toodisable hello diagnostiky.

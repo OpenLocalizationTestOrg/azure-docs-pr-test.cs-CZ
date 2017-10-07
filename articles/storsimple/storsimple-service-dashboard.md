@@ -1,6 +1,6 @@
 ---
-title: "Řídicí panel služby StorSimple Manager | Microsoft Docs"
-description: "Popisuje řídicí panel služby StorSimple Manager a vysvětluje, jak použít jej k monitorování stavu vašeho řešení StorSimple."
+title: "řídicí panel služby Správce aaaStorSimple | Microsoft Docs"
+description: "Popisuje řídicí panel služby StorSimple Manager hello a vysvětluje, jak toouse ho toomonitor hello stavu vašeho řešení StorSimple."
 services: storsimple
 documentationcenter: 
 author: SharS
@@ -14,58 +14,58 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2016
 ms.author: v-sharos
-ms.openlocfilehash: 596431b7279b753ca4da838eb028cdde2022ce02
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dc1197eb5deac337215b260845631a4f04be1011
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-storsimple-manager-service-dashboard"></a>Pomocí řídicího panelu služby StorSimple Manager
+# <a name="use-hello-storsimple-manager-service-dashboard"></a>Pomocí řídicího panelu služby StorSimple Manager hello
 ## <a name="overview"></a>Přehled
-Stránka řídicího panelu služby StorSimple Manager poskytuje přehled o všech zařízení, které jsou připojené ke službě StorSimple Manager zvýraznění ty, které vyžadují pozornost. správce systému. Tento kurz představuje stránka řídicího panelu, popisuje obsah řídicího panelu a funkce a popisuje úlohy, které můžete provést z této stránky.
+stránka řídicího panelu služby StorSimple Manager Hello obsahuje souhrnné zobrazení všech hello zařízení, které jsou připojené toohello služby StorSimple Manager, zvýraznění ty, které vyžadují pozornost. správce systému. Tento kurz představuje stránku hello řídicího panelu, popisuje hello řídicí panel obsah a funkce a popisuje hello úlohy, které můžete provádět z této stránky.
 
 ![Řídicí panel služby](./media/storsimple-service-dashboard/HCS_ServiceDashboard.png)
 
-Řídicí panel služby StorSimple Manager zobrazí následující informace:
+řídicí panel služby StorSimple Manager Hello zobrazí hello následující informace:
 
-* V **grafu** oblasti, uvidíte graf relevantní metriky pro vaše zařízení. Můžete zobrazit primárního úložiště (místně ukotvena a víceúrovňová) používané v rámci celé všechna zařízení, jakož i cloudového úložiště využívat zařízení v časovém intervalu. Zadejte 1 týden, měsíc 1, 3 měsíců nebo 1 rok časové rozmezí pomocí ovládacích prvků v pravém horním rohu grafu.
-* **Přehled využití** zobrazuje primární úložiště, které je zřízený a využívat všech zařízení relativně k celkové úložiště k dispozici ve všech zařízeních. **Zřízení** odkazuje na velikost úložiště, která je připravená a přidělení k použití, při **používá** odkazuje na využití svazků, jak je vidět iniciátory, které jsou připojené k zařízení.
-* **Výstrahy** oblasti obsahuje snímek všech aktivních výstrah ve všech zařízeních, seskupené podle závažnosti výstrah. Kliknutím na úroveň závažnosti otevře **výstrahy** stránky, rozsah zobrazit tyto výstrahy. Na **výstrahy** stránky, můžete kliknout na jednotlivé výstrahy zobrazíte další podrobnosti o této výstraze, včetně všechny doporučené akce. Pokud byl problém vyřešen, zrušte výstrahy.
-* **Úlohy** oblasti poskytuje snímek posledních úloh na všech zařízeních, které jsou připojené k vaší službě. Existují odkazy, které můžete se podívat na úlohy, které jsou aktuálně probíhá, zařízení, která se nezdařila v posledních 24 hodin nebo ty, které jsou naplánované spuštění v dalších 24 hodin.
-* **Rychlého přehledu** oblasti poskytuje užitečné informace jako je například stav služby, počet zařízení připojených k service, umístění služby a podrobnosti předplatného, která souvisí se službou. Je také odkaz na protokol operací. Kliknutím na odkaz zobrazíte seznam všech dokončených operací služby StorSimple Manager.
+* V hello **grafu** oblasti, uvidíte relevantní metriky hello grafu pro vaše zařízení. Můžete zobrazit hello primárního úložiště (místně ukotvena a víceúrovňová) používané v rámci celé všechny hello zařízení, a také hello cloudového úložiště využívat zařízení v časovém intervalu. Pomocí ovládacích prvků hello v pravém horním rohu hello hello grafu toospecify 1 týden, měsíc 1, 3 měsíců nebo 1 rok časové rozmezí.
+* Hello **přehled využití** ukazuje hello primárního úložiště, který je zřízený a spotřebovávají všech zařízení relativní toohello celkové úložiště k dispozici ve všech zařízeních. **Zřízení** odkazuje toohello velikost úložiště, která je připravená a přidělení k použití, při **používá** odkazuje toousage svazků, jak je vidět hello iniciátory, které jsou připojené toohello zařízení.
+* Hello **výstrahy** oblasti poskytuje snímek všechny aktivní výstrahy hello ve všech zařízeních hello seskupené podle závažnosti výstrah. Kliknutím na úroveň závažnosti hello otevře hello **výstrahy** stránky, vymezená tooshow tyto výstrahy. Na hello **výstrahy** stránky, můžete kliknout na další podrobnosti o této výstraze, včetně všechny doporučené akce tooview jednotlivé výstrahy. Pokud byl vyřešen problém hello, zrušte hello výstrahy.
+* Hello **úlohy** oblasti poskytuje snímek posledních úloh na všech zařízeních, které jsou připojené tooyour služby. Existují odkazy, které můžete použít toolook na úlohy, které jsou aktuálně probíhá, ty, které se nezdařilo hello posledních 24 hodin, nebo ty, které jsou naplánované toorun v hello dalších 24 hodin.
+* Hello **rychlého přehledu** oblasti poskytuje užitečné informace, jako je stav služby, počet zařízení připojených toohello service, umístění služby hello a podrobnosti o hello předplatné, které souvisí se službou hello. Je také odkaz toohello operací protokolu. Klikněte na odkaz toosee hello seznam všech dokončených operací služby StorSimple Manager.
 
-Stránka řídicího panelu služby StorSimple Manager můžete spustit následující úlohy:
+Můžete použít hello StorSimple Manager service řídicí panel stránky tooinitiate hello následující úlohy:
 
-* Zobrazení nebo znovu vygenerovat registrační klíč služby.
-* Změna šifrovacího klíče dat služby.
-* Zobrazte protokoly operací.
+* Zobrazení nebo znovu vygenerovat registrační klíč služby hello.
+* Změna šifrovacího klíče dat služby hello.
+* Zobrazit protokoly operací hello.
 
-## <a name="view-or-regenerate-the-service-registration-key"></a>Zobrazení nebo znovu vygenerovat registrační klíč služby
-Registrační klíč služby slouží k registraci zařízení s Microsoft Azure StorSimple u služby StorSimple Manager tak, aby zařízení se zobrazí na portálu Azure classic další akce správy. Klíč je vytvořen na první zařízení a sdílet s ostatními zařízení.
+## <a name="view-or-regenerate-hello-service-registration-key"></a>Zobrazení nebo znovu vygenerovat registrační klíč služby hello
+registrační klíč služby Hello je použité tooregister Microsoft Azure StorSimple zařízení pomocí služby StorSimple Manager hello, takže hello zařízení se zobrazí v hello klasický portál Azure pro další akce správy. Hello klíč je vytvořen na první zařízení hello a sdílet s hello zbytek zařízení.
 
-Kliknutím na tlačítko **registrační klíč** (v dolní části stránky) otevře **registrační klíč služby** dialogové okno, kde můžete kopírovat aktuální registrační klíč služby do schránky nebo znovu vygenerovat registrační klíč služby.
+Kliknutím na tlačítko **registrační klíč** (na hello dolní části stránky hello) otevře hello **registrační klíč služby** dialogové okno, kde můžete provádět buď kopírování hello aktuální služby registrace klíče toohello schránky nebo Znovu vygenerujte registrační klíč služby hello.
 
-Obnovuje se klíč neovlivní dříve zaregistrovaný zařízení: ovlivňuje pouze zařízení, která jsou zaregistrovaná ve službě service po znovu vygeneruje klíč.
+Opakované generování klíče hello neovlivní dříve zaregistrovaný zařízení: ovlivňuje pouze hello zařízení, které jsou registrovány hello služby po znovu vygeneruje klíč hello.
 
-Další informace o prohlížení a generování registrační klíč služby, přejděte na [získat registrační klíč služby](storsimple-manage-service.md#get-the-service-registration-key).
+Další informace o prohlížení a generování klíčů, přejděte registrace hello služby příliš[registrační klíč služby hello Get](storsimple-manage-service.md#get-the-service-registration-key).
 
-## <a name="change-the-service-data-encryption-key"></a>Změna šifrovacího klíče dat služby
-Šifrovací klíče dat služby slouží k šifrování dat důvěrné zákazníka, jako je například přihlašovací údaje účtu úložiště, které se odesílají ze služby StorSimple Manager zařízení StorSimple. Je potřeba pravidelně měnit tyto klíče, pokud má vaše organizace IT zásad střídání klíče na zařízení úložiště. Proces změny klíče může být mírně lišit podle toho, jestli je jednoho zařízení nebo více zařízení spravovaná pomocí služby StorSimple Manager.
+## <a name="change-hello-service-data-encryption-key"></a>Změna šifrovacího klíče dat služby hello
+Šifrovací klíče dat služby jsou použité tooencrypt důvěrné zákaznická data, jako je například pověření účtu, úložiště, které jsou odesílány z zařízení StorSimple toohello služby StorSimple Manager. Budete potřebovat toochange tyto klíče pravidelně Pokud má vaše organizace IT zásad střídání klíče na zařízení úložiště hello. Hello změny klíče proces může být mírně lišit podle toho, jestli je jeden nebo více zařízení spravuje hello služby StorSimple Manager.
 
-Změna šifrovacího klíče dat služby je proces, krok 3:
+Změna šifrovacího klíče dat hello služby je proces, krok 3:
 
-1. Zařízení, které chcete změnit šifrovacího klíče dat služby pomocí portálu Azure classic, autorizovat.
-2. Pomocí Windows Powershellu pro StorSimple, zahajte změnu klíče šifrování dat služby.
-3. Pokud máte více než jedno zařízení StorSimple, aktualizujte šifrovacího klíče dat služby na jiných zařízení.
+1. Pomocí hello portál Azure classic, autorizaci zařízení toochange hello šifrovacího klíče dat služby.
+2. Pomocí Windows Powershellu pro StorSimple, zahajte hello služby dat šifrování klíče změnu.
+3. Pokud máte více než jedno zařízení StorSimple, aktualizujte hello služby datového šifrovacího klíče na hello jiná zařízení.
 
-Následující kroky popisují proces výměna šifrovacího klíče dat služby.
+Hello následující kroky popisují proces hello výměna šifrovacího klíče dat služby hello.
 
 [!INCLUDE [storsimple-change-data-encryption-key](../../includes/storsimple-change-data-encryption-key.md)]
 
-## <a name="view-the-operations-logs"></a>Zobrazit protokoly operací
-Protokoly operací můžete zobrazit kliknutím na odkaz protokoly operaci, která je k dispozici v **rychlého přehledu** na řídicím panelu. Tím přejdete na stránku služby správy, kde můžete filtrovat a najdete v protokolech určité k vaší službě StorSimple Manager.
+## <a name="view-hello-operations-logs"></a>Zobrazit protokoly operací hello
+Hello protokoly operací můžete zobrazit kliknutím na odkaz protokoly operaci hello k dispozici v hello **rychlého přehledu** podokně hello řídicího panelu. Tím přejdete toohello správu stránka služby, kde můžete filtrovat a zobrazit hello protokoly konkrétní tooyour služby StorSimple Manager.
 
 ## <a name="next-steps"></a>Další kroky
-* Zjistěte, jak [řešení zařízení StorSimple](storsimple-troubleshoot-operational-device.md).
-* Další informace o tom, jak [použít službu StorSimple Manager ke správě zařízení StorSimple](storsimple-manager-service-administration.md).
+* Zjistěte, jak příliš[řešení zařízení StorSimple](storsimple-troubleshoot-operational-device.md).
+* Další informace o příliš[použití hello tooadminister služby StorSimple Manager zařízení StorSimple](storsimple-manager-service-administration.md).
 

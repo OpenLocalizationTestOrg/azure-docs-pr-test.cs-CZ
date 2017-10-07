@@ -1,6 +1,6 @@
 ---
-title: "Nasazení aplikace do služby Azure App Service | Microsoft Docs"
-description: "Informace o nasazení aplikace do služby Azure App Service."
+title: "aaaDeploy tooAzure vaše aplikace služby App Service | Microsoft Docs"
+description: "Zjistěte, jak toodeploy tooAzure vaše aplikace služby App Service."
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -14,152 +14,152 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: cephalin
-ms.openlocfilehash: f41be4e00a9250b07ca260c2858e5fc45143f746
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5c84e4ca502874209d750c94efeb86a59aa71a48
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-your-app-to-azure-app-service"></a>Nasazení aplikace do služby Azure App Service
-Tento článek vám pomůže určit nejlepší možnost nasadit soubory pro vaši webovou aplikaci, back-end mobilní aplikace nebo aplikaci API [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)a provede vás odpovídající prostředky s pokyny, které jsou specifické pro upřednostňovanou možnost ověřování .
+# <a name="deploy-your-app-tooazure-app-service"></a>Nasazení vaší aplikace tooAzure služby App Service
+Tento článek vám pomůže určit hello nejlepší možnost toodeploy hello soubory pro vaši webovou aplikaci, back-end mobilní aplikace nebo aplikace API příliš[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)a provede vás tooappropriate prostředky s konkrétní tooyour pokyny upřednostňovanou možnost ověřování.
 
 ## <a name="overview"></a>Přehled nasazení služby Azure App Service
-Aplikační služba Azure udržuje rozhraní pro vás (ASP.NET, PHP, Node.js atd.). Některé architektury jsou povolené ve výchozím nastavení při jiné, jako je Java a Python, může být nutné jednoduché zaškrtnutí konfiguraci, kterou chcete povolit. Kromě toho můžete přizpůsobit aplikační rozhraní, jako je například verze PHP nebo počtu bitů vaší runtime. Další informace najdete v tématu [konfigurace aplikace v Azure App Service](web-sites-configure.md).
+Aplikační služba Azure udržuje hello aplikační architektury pro vás (ASP.NET, PHP, Node.js atd.). Některé architektury jsou povolené ve výchozím nastavení při jiné, jako je Java a Python, může být nutné tooenable konfigurace jednoduché zaškrtnutí ho. Kromě toho můžete přizpůsobit aplikační rozhraní, například verze PHP hello nebo počtu bitů hello vaší runtime. Další informace najdete v tématu [konfigurace aplikace v Azure App Service](web-sites-configure.md).
 
-Vzhledem k tomu, že nemáte si dělat starosti rozhraní webového serveru nebo aplikace, nasazení aplikace do služby App Service je řádu nasazení kódu, binární soubory, soubory obsahu a jejich odpovídajících adresářovou strukturu, do [ **/site/ Wwwroot** directory](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) v Azure (nebo **/lokality/wwwroot/App_Data/úlohy/** adresář pro webové úlohy). App Service podporuje tři procesy jiné nasazení. Všechny metody nasazení v tomto článku použijte jednu z následujících postupů: 
+Vzhledem k tomu, že nemáte tooworry o hello webového serveru nebo aplikaci framework, nasazení vaší aplikace tooApp služby je řádu nasazení kódu, binární soubory, soubory obsahu a jejich odpovídajících adresářovou strukturu, toohello [   **/Web /Wwwroot** directory](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) v Azure (nebo hello **/lokality/wwwroot/App_Data/úlohy/** adresář pro webové úlohy). App Service podporuje tři procesy jiné nasazení. Všechny metody nasazení hello v tomto článku použijte jednu z hello následující procesy: 
 
-* [Protokol FTP nebo FTPS](https://en.wikipedia.org/wiki/File_Transfer_Protocol): použití vaše oblíbené protokol FTP nebo FTPS povolen nástroj pro přesun souborů do Azure, z [FileZilla](https://filezilla-project.org) k plné integrovaného vývojového prostředí jako [NetBeans](https://netbeans.org). Toto je výhradně procesu nahrávání souboru. Žádné další služby poskytované službou App Service, jako je například Správa verzí, Správa struktura souborů atd. 
-* [Kudu (Git/Mercurial nebo OneDrive nebo Dropbox)](https://github.com/projectkudu/kudu/wiki/Deployment): Kudu je [modul nasazení](https://github.com/projectkudu/kudu/wiki) ve službě App Service. Nabízená kódu Kudu přímo z jakékoli úložiště. Kudu poskytuje přidané služeb vždy, když kód vložena do, včetně správy verzí, obnovení balíčků nástroje MSBuild, a [webové háky](https://github.com/projectkudu/kudu/wiki/Web-hooks) průběžné nasazování a Další automatizované úlohy. Modul nasazení Kudu podporuje 3 různé typy zdrojů nasazení:   
+* [Protokol FTP nebo FTPS](https://en.wikipedia.org/wiki/File_Transfer_Protocol): vaše oblíbené protokol FTP nebo FTPS povolen nástroj toomove tooAzure vaše soubory díky [FileZilla](https://filezilla-project.org) vybavená toofull integrovaného vývojového prostředí, například [NetBeans](https://netbeans.org). Toto je výhradně procesu nahrávání souboru. Žádné další služby poskytované službou App Service, jako je například Správa verzí, Správa struktura souborů atd. 
+* [Kudu (Git/Mercurial nebo OneDrive nebo Dropbox)](https://github.com/projectkudu/kudu/wiki/Deployment): Kudu je hello [modul nasazení](https://github.com/projectkudu/kudu/wiki) ve službě App Service. Push vaší tooKudu kód přímo z jakékoli úložiště. Kudu poskytuje přidané služeb vždy, když je kód poslat tooit, včetně správy verzí, obnovení balíčků nástroje MSBuild, a [webové háky](https://github.com/projectkudu/kudu/wiki/Web-hooks) průběžné nasazování a Další automatizované úlohy. modul nasazení Kudu Hello podporuje 3 různé typy zdrojů nasazení:   
   
   * Synchronizace obsahu ze OneDrive nebo Dropbox   
   * Na základě úložiště průběžné nasazování s automatickou synchronizaci z Githubu, Bitbucket a Visual Studio Team Services  
   * Nasazení na základě úložiště s ruční synchronizaci z místní Git  
-* [Nasazení webové](http://www.iis.net/learn/publish/using-web-deploy/introduction-to-web-deploy): nasazení kódu do služby App Service přímo od Microsoftu. vaše oblíbené nástroje, jako je sadě Visual Studio pomocí stejné nástrojů, který automatizuje nasazení na servery služby IIS. Tento nástroj podporuje nasazení jenom rozdílové, vytvoření databáze, transformací připojovací řetězce, atd. Nasazení webu se liší od Kudu v tom, že binární soubory aplikace jsou postaveny před jejich nasazením do Azure. Podobně jako u FTP, žádné další služby poskytované službou App Service.
+* [Nasazení webové](http://www.iis.net/learn/publish/using-web-deploy/introduction-to-web-deploy): tooApp kód nasazení služby přímo od Microsoftu. vaše oblíbené nástroje, jako je pomocí sady Visual Studio hello stejné nástrojů, který automatizuje nasazení tooIIS servery. Tento nástroj podporuje nasazení jenom rozdílové, vytvoření databáze, transformací připojovací řetězce, atd. V tomto nasazení aplikace, kterou binární soubory jsou vytvořeny předtím, než budou tooAzure, se liší od Kudu nasazení webu. Podobné tooFTP žádné další služby poskytované službou App Service.
 
-Nástroje pro vývoj oblíbených webových podporují jeden nebo více z těchto procesů nasazení. Zatímco nástroj, který zvolíte zjišťuje procesů nasazení, které můžete využít, funkce skutečného DevOps k dispozici závisí na kombinaci proces nasazení a konkrétní nástroje, které zvolíte. Například, pokud provádíte nasazení webu z [Visual Studio s Azure SDK](#vspros), i když automatizace Nezískávat z modulu Kudu, získat obnovení balíčků a MSBuild automatizace v sadě Visual Studio. 
+Nástroje pro vývoj oblíbených webových podporují jeden nebo více z těchto procesů nasazení. Během hello nástroj, který zvolíte určuje hello procesů nasazení můžete využít, hello funkce skutečného DevOps k dispozici, závisí na kombinaci hello procesu nasazení hello a hello konkrétních nástrojů zvolíte. Například, pokud provádíte nasazení webu z [Visual Studio s Azure SDK](#vspros), i když automatizace Nezískávat z modulu Kudu, získat obnovení balíčků a MSBuild automatizace v sadě Visual Studio. 
 
 > [!NOTE]
-> Tyto procesy nasazení není ve skutečnosti [zřízení prostředků Azure](../azure-resource-manager/resource-group-template-deploy-portal.md) vyžadující vaší aplikace. Ale většinu propojené články s návody ukazují, jak zřídit aplikace a nasazení kódu do ní začátku do konce. Můžete také získat další možnosti pro zřizování prostředků v Azure [automatizovat nasazení pomocí nástroje příkazového řádku](#automate) části.
+> Tyto procesy nasazení není ve skutečnosti [zřídit hello prostředků Azure](../azure-resource-manager/resource-group-template-deploy-portal.md) vyžadující vaší aplikace. Ale většinu hello propojené postupy tooarticles ukazují, jak tooprovision hello aplikace a nasazení váš kód tooit klient server. Můžete také získat další možnosti pro zřizování prostředků Azure v hello [automatizovat nasazení pomocí nástroje příkazového řádku](#automate) části.
 > 
 > 
 
 ## <a name="ftp"></a>Nasadit ručně nahrávání souborů s FTP
-Pokud se používají k ruční kopírování webovému obsahu na webový server, můžete použít [FTP](http://en.wikipedia.org/wiki/File_Transfer_Protocol) nástroj pro kopírování souborů, jako je například Průzkumník Windows nebo [FileZilla](https://filezilla-project.org/).
+Pokud jste použité toomanually kopírování váš webový server webového obsahu tooa, můžete použít [FTP](http://en.wikipedia.org/wiki/File_Transfer_Protocol) nástroj toocopy soubory, jako je například Průzkumník Windows nebo [FileZilla](https://filezilla-project.org/).
 
-Specialisté ručně kopírování soubory jsou:
+Specialisté Hello ručně kopírování souborů jsou:
 
 * Znalosti a minimální složitější nástrojů FTP. 
 * Znalost, přesně kde se bude vaše soubory.
 * Zvýšení zabezpečení s FTPS.
 
-Nevýhody soubory kopírujete ručně, jsou:
+Nevýhody Hello soubory kopírujete ručně, jsou:
 
-* Museli vědět, jak nasadit soubory do správného adresáře ve službě App Service. 
+* S tooknow jak toodeploy soubory toohello správné adresářů ve službě App Service. 
 * Správa verzí pro vrácení zpět, když dojde k selhání.
 * Žádná historie předdefinované nasazení pro řešení potíží s nasazení.
-* Potenciální dlouho nasazení případech, protože nemáte celou řadu nástrojů FTP poskytují pouze rozdílový kopírování a jednoduše zkopírujte všechny soubory.  
+* Potenciální dlouho nasazení případech, protože nemáte poskytují pouze rozdílový kopírování a jednoduše zkopírujte všechny soubory hello celou řadu nástrojů FTP.  
 
-### <a name="howtoftp"></a>Postup nahrání souborů s FTP
-[Portálu Azure](https://portal.azure.com) obsahuje všechny informace, které potřebujete připojení k adresářům vaší aplikace pomocí FTP a FTPS.
+### <a name="howtoftp"></a>Jak tooupload soubory s FTP
+Hello [portálu Azure](https://portal.azure.com) získáte všechny informace hello je nutné aplikaci tooyour tooconnect adresářů pomocí FTP a FTPS.
 
-* [Nasazení aplikace do Azure App Service pomocí protokolu FTP](app-service-deploy-ftp.md)
+* [Nasazení vaší aplikace tooAzure služby App Service pomocí protokolu FTP](app-service-deploy-ftp.md)
 
 ## <a name="dropbox"></a>Nasadit synchronizovat se složkou cloudu
-Dobrou alternativou k [soubory kopírujete ručně](#ftp) je synchronizovat soubory a složky do služby App Service z cloudové služby úložiště jako je OneDrive nebo Dropbox. Synchronizuje se složkou cloudu využívá proces Kudu pro nasazení (viz [přehled procesů nasazení](#overview)).
+Dobrou alternativou příliš[soubory kopírujete ručně](#ftp) synchronizuje soubory a složky tooApp služby z cloudové služby úložiště jako je OneDrive nebo Dropbox. Synchronizuje se složkou cloudu využívá hello Kudu proces pro nasazení (viz [přehled procesů nasazení](#overview)).
 
-Specialisté synchronizace se složkou cloud jsou:
+Specialisté Hello synchronizace se složkou cloud jsou:
 
 * Jednoduchost nasazení. Služby, jako je OneDrive nebo Dropbox mají klienti plochy synchronizace, tak místní pracovní adresář je také adresáře nasazení.
 * Nasazení jedním kliknutím.
-* Jsou k dispozici všechny funkce v modul nasazení Kudu (např. obnovení balíčků, automatizace).
+* Všechny funkce v modul nasazení Kudu hello je k dispozici (např. obnovení balíčků, automatizace).
 
-Cons synchronizace se složkou cloud jsou:
+cons Hello synchronizace se složkou cloudové jsou:
 
 * Správa verzí pro vrácení zpět, když dojde k selhání.
 * Bez automatického nasazení je ruční synchronizaci.
 
-### <a name="howtodropbox"></a>Nasazení na základě synchronizovat se složkou cloudu
-V [portálu Azure](https://portal.azure.com), můžete určit složku pro synchronizaci obsahu v cloudovém úložišti OneDrive nebo Dropbox, pracovat kódu aplikace a obsah v této složce a kliknutím tlačítko Synchronizovat do služby App Service.
+### <a name="howtodropbox"></a>Jak toodeploy podle synchronizovat se složkou cloudu
+V hello [portálu Azure](https://portal.azure.com), lze určit složku pro synchronizaci obsahu v cloudovém úložišti OneDrive nebo Dropbox, pracovat s kódu aplikace a obsah v této složce a tooApp synchronizační službu s hello klikněte tlačítko.
 
-* [Synchronizace obsahu ze složky cloudu do služby Azure App Service](app-service-deploy-content-sync.md). 
+* [Synchronizace obsahu ze složky tooAzure cloudové služby App Service](app-service-deploy-content-sync.md). 
 
 ## <a name="continuousdeployment"></a>Nasazení nepřetržitě ze služby založené na cloudu zdroj ovládacího prvku
-Pokud váš vývojový tým používá služby pro správu (SCM) cloudové zdrojového kódu jako [Visual Studio Team Services](http://www.visualstudio.com/), [Githubu](https://www.github.com), nebo [BitBucket](https://bitbucket.org/), můžete nakonfigurovat aplikace Služba integrovat úložiště a průběžně nasazení. 
+Pokud váš vývojový tým používá služby pro správu (SCM) cloudové zdrojového kódu jako [Visual Studio Team Services](http://www.visualstudio.com/), [Githubu](https://www.github.com), nebo [BitBucket](https://bitbucket.org/), můžete nakonfigurovat aplikace Služba toointegrate s úložiště a nasaďte nepřetržitě. 
 
-Specialisté nasazení ze služby Řízení cloudové zdroje jsou:
+Specialisté Hello nasazení ze služby Řízení cloudové zdroje jsou:
 
-* Správa verzí povolit vrácení zpět.
-* Umožňuje konfiguraci průběžné nasazování pro Git (a Mercurial, kde je to možné) úložiště. 
-* Nasazení specifické pro firemní pobočky, můžete nasadit různé větví jiný [sloty](web-sites-staged-publishing.md).
-* Jsou k dispozici všechny funkce v modul nasazení Kudu (např. nasazení správy verzí, vrácení zpět, obnovení balíčků, automatizace).
+* Verze řízení tooenable vrácení zpět.
+* Možnost tooconfigure průběžné nasazování pro Git (a Mercurial, kde je to možné) úložiště. 
+* Nasazení specifické pro firemní pobočky, můžete nasadit různé větví toodifferent [sloty](web-sites-staged-publishing.md).
+* Všechny funkce v modul nasazení Kudu hello je k dispozici (např. nasazení správy verzí, vrácení zpět, obnovení balíčků, automatizace).
 
-Con nasazení ze služby Řízení cloudové zdroje je:
+Hello con nasazení ze služby Řízení cloudové zdroje je:
 
-* Některé znalosti o příslušných SCM služba vyžaduje.
+* Některé znalost hello příslušných SCM služba vyžaduje.
 
-### <a name="vsts"></a>Postup nasazení nepřetržitě ze služby založené na cloudu zdroj ovládacího prvku
-V [portálu Azure](https://portal.azure.com), můžete nakonfigurovat průběžné nasazování z Githubu, Bitbucket a Visual Studio Team Services.
+### <a name="vsts"></a>Jak řídit toodeploy nepřetržitě ze zdroje cloudové služby
+V hello [portálu Azure](https://portal.azure.com), můžete nakonfigurovat průběžné nasazování z Githubu, Bitbucket a Visual Studio Team Services.
 
-* [Nepřetržité nasazení do Azure App Service](app-service-continuous-deployment.md). 
+* [Nepřetržité nasazení tooAzure služby App Service](app-service-continuous-deployment.md). 
 
-Chcete zjistit, jak nakonfigurovat průběžné nasazování ručně z úložiště v cloudu nejsou uvedené pomocí portálu Azure (například [GitLab](https://gitlab.com/)), najdete v části [nastavení průběžné nasazování pomocí ruční kroky](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
+toofind out jak hello tooconfigure průběžné nasazování ručně z úložiště v cloudu nejsou uvedené pomocí portálu Azure (například [GitLab](https://gitlab.com/)), najdete v části [nastavení průběžné nasazování pomocí ruční kroky](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
 
 ## <a name="localgitdeployment"></a>Nasazení z místní Git
-Pokud váš vývojový tým používá místní místního zdroje kódu (SCM) služba management podle Git, to můžete nakonfigurovat jako zdroj nasazení do služby App Service. 
+Pokud váš vývojový tým používá místní místního zdroje kódu (SCM) služba management podle Git, to můžete nakonfigurovat jako zdroj tooApp nasazení služby. 
 
 Odborníci na nasazení z místní Git jsou:
 
-* Správa verzí povolit vrácení zpět.
-* Nasazení specifické pro firemní pobočky, můžete nasadit různé větví jiný [sloty](web-sites-staged-publishing.md).
-* Jsou k dispozici všechny funkce v modul nasazení Kudu (např. nasazení správy verzí, vrácení zpět, obnovení balíčků, automatizace).
+* Verze řízení tooenable vrácení zpět.
+* Nasazení specifické pro firemní pobočky, můžete nasadit různé větví toodifferent [sloty](web-sites-staged-publishing.md).
+* Všechny funkce v modul nasazení Kudu hello je k dispozici (např. nasazení správy verzí, vrácení zpět, obnovení balíčků, automatizace).
 
 Cons nasazení z místní Git je:
 
-* Některé znalostní báze odpovídající SCM systému vyžaduje.
+* Některé znalost hello příslušných SCM systém požadovaný.
 * Žádná řešení klíč pro průběžné nasazování. 
 
-### <a name="vsts"></a>Postup nasazení z místní Git
-V [portálu Azure](https://portal.azure.com), můžete nakonfigurovat místní nasazení Git.
+### <a name="vsts"></a>Jak toodeploy z místní Git
+V hello [portálu Azure](https://portal.azure.com), můžete nakonfigurovat místní nasazení Git.
 
-* [Místní Git nasazení do Azure App Service](app-service-deploy-local-git.md). 
-* [Publikování webových aplikací z jakékoli úložiště git/hg](http://blog.davidebbo.com/2013/04/publishing-to-azure-web-sites-from-any.html).  
+* [Místní nasazení Git tooAzure služby App Service](app-service-deploy-local-git.md). 
+* [Publikování aplikací tooWeb z jakékoli úložiště git/hg](http://blog.davidebbo.com/2013/04/publishing-to-azure-web-sites-from-any.html).  
 
 ## <a name="deploy-using-an-ide"></a>Nasazení pomocí rozhraní IDE
-Pokud už používáte [Visual Studio](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) s [Azure SDK](https://azure.microsoft.com/downloads/), nebo jako ostatní sady IDE [Xcode](https://developer.apple.com/xcode/), [Eclipse](https://www.eclipse.org), a [ IntelliJ IDEA](https://www.jetbrains.com/idea/), můžete nasadit do Azure přímo z v rámci vašeho rozhraní IDE. Tato možnost je ideální pro jednotlivé developer.
+Pokud už používáte [Visual Studio](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) s [Azure SDK](https://azure.microsoft.com/downloads/), nebo jako ostatní sady IDE [Xcode](https://developer.apple.com/xcode/), [Eclipse](https://www.eclipse.org), a [ IntelliJ IDEA](https://www.jetbrains.com/idea/), tooAzure přímo z můžete nasadit v rámci vašeho rozhraní IDE. Tato možnost je ideální pro jednotlivé developer.
 
-Visual Studio podporuje všechny procesy tři nasazení (FTP, Git a nasazení webu), v závislosti na vaši volbu, zatímco jiné integrovaného vývojového prostředí můžete nasadit do služby App Service, pokud mají integrace FTP nebo Git (viz [přehled procesů nasazení](#overview)).
+Visual Studio podporuje všechny procesy tři nasazení (FTP, Git a nasazení webu), v závislosti na vaši volbu, zatímco jiné integrovaného vývojového prostředí můžete nasadit tooApp služby, pokud mají integrace FTP nebo Git (viz [přehled procesů nasazení](#overview)).
 
-Specialisté nasazení pomocí rozhraní IDE jsou:
+Specialisté Hello nasazení pomocí rozhraní IDE jsou:
 
-* Potenciálně minimalizujte nástrojů pro vaše životního cyklu aplikace začátku do konce. Vyvíjet, ladit, sledovat a nasazení aplikace do Azure všechna bez přesouvání mimo vaší IDE. 
+* Potenciálně minimalizujte hello nástrojů pro vaše životního cyklu aplikace začátku do konce. Vyvíjet, ladit, sledovat a nasazení vaší aplikace tooAzure všechny bez přesouvání mimo vaší IDE. 
 
-Cons nasazení pomocí rozhraní IDE jsou:
+cons Hello nasazení pomocí rozhraní IDE jsou:
 
 * Přidání složitosti v nástrojů.
 * Stále vyžaduje systému správy zdrojů pro týmový projekt.
 
 <a name="vspros"></a>Další specialisté nasazení pomocí sady Visual Studio se sadou Azure SDK jsou:
 
-* Azure SDK díky prvotřídní občanů prostředků Azure v sadě Visual Studio. Vytvořit, odstranit, upravit, spustit a zastavit aplikace, dotazu SQL databázi back-end, live ladění aplikace Azure a mnoho dalšího. 
+* Azure SDK díky prvotřídní občanů prostředků Azure v sadě Visual Studio. Vytvořit, odstranit, upravit, spusťte a ukončete aplikace, back-end hello dotaz do databáze SQL, hello live ladění aplikace Azure a mnoho dalšího. 
 * Živé úpravy souborů kódu v Azure.
 * Živé ladění aplikací v Azure.
 * Integrované Průzkumník Azure.
 * Nasazení jenom rozdílové. 
 
-### <a name="vs"></a>Jak nasadit přímo ze sady Visual Studio
-* [Začínáme s Azure a ASP.NET](app-service-web-get-started-dotnet.md). Postup vytvoření a nasazení jednoduchého webového projektu ASP.NET MVC pomocí sady Visual Studio a nasazení webu.
-* [Jak nasadit Azure WebJobs pomocí sady Visual Studio](websites-dotnet-deploy-webjobs.md). Postup konfigurace projektů konzolové aplikace, takže jejich nasazení jako webové úlohy.  
-* [Nasazení webu ASP.NET pomocí sady Visual Studio](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/introduction). Série kurz 12 část, která obsahuje podrobnější řadu úloh nasazení než ostatní uživatelé v tomto seznamu. Některé funkce Azure nasazení byly přidány od byla zapsána kurz, ale poznámky přidat později vysvětlit, co chybí.
-* [Nasazení webu ASP.NET do Azure v sadě Visual Studio 2012 z úložiště Git přímo](http://www.dotnetcurry.com/ShowArticle.aspx?ID=881). Vysvětluje, jak nasadit webový projekt ASP.NET v sadě Visual Studio, pomocí modulu plug-in Git potvrzení kód Git a připojování Azure do úložiště Git. Spouštění v sadě Visual Studio 2013, podporu Git je integrovaná a nevyžaduje instalaci modulu plug-in.
+### <a name="vs"></a>Jak toodeploy přímo ze sady Visual Studio
+* [Začínáme s Azure a ASP.NET](app-service-web-get-started-dotnet.md). Jak toocreate a nasadit jednoduchý webový projekt ASP.NET MVC pomocí sady Visual Studio a nasazení webu.
+* [Jak tooDeploy webové úlohy Azure pomocí sady Visual Studio](websites-dotnet-deploy-webjobs.md). Jak tooconfigure konzolové aplikace projekty tak, aby jejich nasazení jako webové úlohy.  
+* [Nasazení webu ASP.NET pomocí sady Visual Studio](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/introduction). Série kurz 12 část, která obsahuje podrobnější řadu úloh nasazení než ostatní hello v tomto seznamu. Některé funkce Azure nasazení byly přidány od byla zapsána hello kurzu, ale poznámky přidat později vysvětlit, co chybí.
+* [Nasazení tooAzure webu ASP.NET v sadě Visual Studio 2012 z úložiště Git přímo](http://www.dotnetcurry.com/ShowArticle.aspx?ID=881). Vysvětluje, jak toodeploy rozhraní ASP.NET web projektu v sadě Visual Studio, pomocí hello Git modulu plug-in toocommit hello kód tooGit a propojením úložiště Git Azure toohello. Spouštění v sadě Visual Studio 2013, podporu Git je integrovaná a nevyžaduje instalaci modulu plug-in.
 
-### <a name="aztk"></a>Postup nasazení pomocí sad nástrojů Azure pro Eclipse a IntelliJ IDEA
-Microsoft umožňuje nasadit webové aplikace do Azure přímo z prostředí Eclipse a IntelliJ prostřednictvím [nástrojů Azure pro Eclipse](../azure-toolkit-for-eclipse.md) a [nástrojů Azure pro IntelliJ](../azure-toolkit-for-intellij.md). Následující kurzy popisují kroky, které jsou součástí nasazení jednoduché text "Hello" world webové aplikace do Azure pomocí buď IDE:
+### <a name="aztk"></a>Jak toodeploy pomocí hello Azure sadách pro Eclipse a IntelliJ IDEA
+Společnost Microsoft neposkytuje možné toodeploy tooAzure webové aplikace přímo z prostředí Eclipse a IntelliJ prostřednictvím hello [nástrojů Azure pro Eclipse](../azure-toolkit-for-eclipse.md) a [nástrojů Azure pro IntelliJ](../azure-toolkit-for-intellij.md). Hello následující kurzy ilustruje hello kroky, které jsou součástí nasazení jednoduché text "Hello" world webové aplikace tooAzure pomocí buď IDE:
 
-* [Vytvoření webové aplikace Hello World pro Azure v prostředí Eclipse](app-service-web-eclipse-create-hello-world-web-app.md). V tomto kurzu se dozvíte, jak používat sady nástrojů Azure pro Eclipse k vytvoření a nasazení Hello World webovou aplikaci pro Azure.
-* [Vytvoření webové aplikace Hello World pro systém Azure v rámci IntelliJ](app-service-web-intellij-create-hello-world-web-app.md). V tomto kurzu se dozvíte, jak používat Azure nástrojů pro IntelliJ k vytvoření a nasazení Hello World webovou aplikaci pro Azure.
+* [Vytvoření webové aplikace Hello World pro Azure v prostředí Eclipse](app-service-web-eclipse-create-hello-world-web-app.md). Tento kurz ukazuje, jak toouse hello Azure Toolkit pro Eclipse toocreate a nasazení webové aplikace Hello World služby Azure.
+* [Vytvoření webové aplikace Hello World pro systém Azure v rámci IntelliJ](app-service-web-intellij-create-hello-world-web-app.md). Tento kurz ukazuje, jak toouse hello Azure Toolkit pro IntelliJ toocreate a nasazení webové aplikace Hello World služby Azure.
 
 ## <a name="automate"></a>Automatizovat nasazení pomocí nástroje příkazového řádku
-Pokud dáváte přednost terminál příkazového řádku jako vývojové prostředí výběru, je pro vaši aplikaci služby App Service pomocí nástroje příkazového řádku skriptu úlohy nasazení. 
+Pokud dáváte přednost hello terminál příkazového řádku jako vývojové prostředí hello výběru, je pro vaši aplikaci služby App Service pomocí nástroje příkazového řádku skriptu úlohy nasazení. 
 
 Odborníci na nasazení pomocí nástroje příkazového řádku jsou:
 
@@ -171,14 +171,14 @@ Cons nasazení pomocí nástroje příkazového řádku jsou:
 
 * Není pro vývojáře, upřednostňují grafickým uživatelským rozhraním.
 
-### <a name="automatehow"></a>Jak automatizovat nasazení pomocí nástroje příkazového řádku
+### <a name="automatehow"></a>Jak tooautomate nasazení pomocí nástroje příkazového řádku
 
-V tématu [automatizovat nasazení vaší aplikace Azure pomocí nástroje příkazového řádku](app-service-deploy-command-line.md) seznam nástroje příkazového řádku a odkazy na výukové programy. 
+V tématu [automatizovat nasazení vaší aplikace Azure pomocí nástroje příkazového řádku](app-service-deploy-command-line.md) seznam příkazového řádku tootutorials nástrojů a odkazy. 
 
 ## <a name="nextsteps"></a>Další kroky
-V některých případech můžete chtít moci snadno přepínat mezi testovací a produkční verzi aplikace. Další informace najdete v tématu [připravený nasazení ve webových aplikacích](web-sites-staged-publishing.md).
+V některých případech můžete chtít toobe možné tooeasily přepínat přepínat mezi testovací a produkční verzi aplikace. Další informace najdete v tématu [připravený nasazení ve webových aplikacích](web-sites-staged-publishing.md).
 
-S plánem zálohování a obnovení na místě, je důležitou součástí každého pracovního postupu nasazení. Informace o App Service zálohování a obnovení funkce, najdete v části [webových aplikací Zálohování](web-sites-backup.md).  
+S plánem zálohování a obnovení na místě, je důležitou součástí každého pracovního postupu nasazení. Informace o hello služby App Service zálohování a obnovení funkce najdete v tématu [webových aplikací Zálohování](web-sites-backup.md).  
 
-Informace o tom, jak používat řízení přístupu na základě Role Azure můžete spravovat přístup k nasazení služby App Service najdete v tématu [RBAC a webové aplikace publikování](https://azure.microsoft.com/blog/2015/01/05/rbac-and-azure-websites-publishing/).
+Informace o přístupu toomanage řízení přístupu na základě Role toouse Azure tooApp nasazení služby najdete v tématu [RBAC a webové aplikace publikování](https://azure.microsoft.com/blog/2015/01/05/rbac-and-azure-websites-publishing/).
 

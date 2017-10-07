@@ -32,14 +32,14 @@
 ### [Automatické škálování škálovacích sad virtuálních počítačů pomocí šablon Resource Manageru](insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [Automatické škálování počítačů ve škálovací sadě virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [Konfigurace webhooků a e-mailových oznámení pro automatické škálování](insights-autoscale-to-webhook-email.md)
-## Použití protokolu aktivit
+## Použít protokol aktivit hello
 ### [Zobrazení událostí v protokolu aktivit](../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [Konfigurace výstrah pro událost protokolu aktivit](monitoring-activity-log-alerts.md)
 ### [Archivace protokolu aktivit](monitoring-archive-activity-log.md)
-### [Streamování protokolů aktivit do služby Event Hubs](monitoring-stream-activity-logs-event-hubs.md)
+### [Datový proud aktivity protokolu tooEvent rozbočovače](monitoring-stream-activity-logs-event-hubs.md)
 ### [Audit operací pomocí Resource Manageru](../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [Vytvoření výstrah protokolu aktivit s využitím Resource Manageru](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
-### [Migrace na výstrahy protokolu aktivit](monitoring-migrate-management-alerts.md)
+### [Migrace tooActivity protokolu výstrahy](monitoring-migrate-management-alerts.md)
 ## Použití oznámení služby
 ### [Zobrazení oznámení služby](monitoring-service-notifications.md)
 ### [Konfigurace výstrah pro oznámení služby](monitoring-activity-log-alerts-on-service-notifications.md)
@@ -50,13 +50,13 @@
 ### [Vytvoření skupiny akcí s využitím Resource Manageru](monitoring-create-action-group-with-resource-manager-template.md)
 ## Správa diagnostických protokolů
 ### [Archiv](monitoring-archive-diagnostic-logs.md)
-### [Streamování do Event Hubs](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+### [Datový proud tooEvent rozbočovače](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 ### [Povolení diagnostických nastavení pomocí šablon Resource Manageru](monitoring-enable-diagnostic-logs-using-template.md)
-## Použití rozhraní REST API
+## Použití hello REST API
 ### [Návod s využitím rozhraní REST API](monitoring-rest-api-walkthrough.md)
 ## Použití rozšíření diagnostiky Azure
-### [Odeslání do Application Insights](azure-diagnostics-configure-application-insights.md)
-### [Odeslání do Event Hubs](azure-diagnostics-streaming-event-hubs.md)
+### [Odeslat tooApplication statistiky](azure-diagnostics-configure-application-insights.md)
+### [Odeslat tooEvent rozbočovače](azure-diagnostics-streaming-event-hubs.md)
 ### [Řešení potíží](azure-diagnostics-troubleshooting.md)
 
 # Referenční informace

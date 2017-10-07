@@ -1,6 +1,6 @@
 ---
-title: "Apache Storm při zápisu do úložiště nebo Data Lake Store - Azure HDInsight | Microsoft Docs"
-description: "Další informace o použití Apache Storm k zápisu do HDFS kompatibilní úložiště pro HDInsight. Azure Storage nebo Azure Data Lake Store zadejte HDFS comptabile úložiště pro HDInsight. Tento dokument a související příklad ukazují, jak součást HdfsBolt slouží k zápisu do výchozího úložiště Storm v clusteru HDInsight."
+title: aaaApache Storm zapsat tooStorage nebo Data Lake Store - Azure HDInsight | Microsoft Docs
+description: "Zjistěte, jak toouse hello Apache Storm toowrite toohello HDFS kompatibilní úložiště pro HDInsight. Azure Storage nebo Azure Data Lake Store zadejte hello HDFS comptabile úložiště pro HDInsight. Tento dokument a přidružené příkladu hello ukazují, jak součást HdfsBolt hello lze použít toowrite toohello výchozí úložiště cluster Storm v HDInsight."
 services: hdinsight
 documentationcenter: na
 author: Blackmist
@@ -15,62 +15,62 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/19/2017
 ms.author: larryfr
-ms.openlocfilehash: 10dc8789e8f4a2b27fd3a4c6fec2ab28c674170a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d76159a9ecd1be18e519511cfdb3bcfd18ae4d33
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Zápis do HDFS z Apache Storm v HDInsight
+# <a name="write-toohdfs-from-apache-storm-on-hdinsight"></a>Zápis tooHDFS z Apache Storm v HDInsight
 
-Naučte se používat Storm k zápisu dat do HDFS kompatibilní úložiště používané Apache Storm v HDInsight. HDInsight můžete je používat jako úložiště HDFS comptabile úložiště Azure Storage a Azure Data Lake. Storm poskytuje [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) komponenty, která zapisuje data do HDFS. Tento dokument obsahuje informace o zápis z HdfsBolt na některý typ úložiště. 
+Zjistěte, jak toouse Storm toowrite data toohello HDFS kompatibilní úložiště používané Apache Storm v HDInsight. HDInsight můžete je používat jako úložiště HDFS comptabile úložiště Azure Storage a Azure Data Lake. Storm poskytuje [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) komponenta, která zapisuje data tooHDFS. Tento dokument obsahuje informace o zápis z hello HdfsBolt tooeither typu úložiště. 
 
 > [!IMPORTANT]
-> Příklad topologii použitou v tomto dokumentu využívá součásti, které jsou součástí Storm v HDInsight. Změny pro práci s Azure Data Lake Store při použití s další clustery Apache Storm může požadovat.
+> Příklad Hello topologie použitý v tomto dokumentu využívá součásti, které jsou součástí Storm v HDInsight. Změna toowork s Azure Data Lake Store při použití s další clustery Apache Storm může požadovat.
 
-## <a name="get-the-code"></a>Získání kódu
+## <a name="get-hello-code"></a>Získat kód hello
 
-Projekt obsahující tato topologie je k dispozici ke stažení z [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store).
+je k dispozici ke stažení z projektu Hello obsahující tato topologie [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store).
 
-Kompilace projektu, potřebujete následující konfigurace pro vývojové prostředí:
+toocompile tento projekt, musíte hello následující konfigurace pro vývojové prostředí:
 
 * [Java JDK 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) nebo vyšší. HDInsight 3.5 nebo vyšší vyžadují Java 8.
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
-Následující proměnné prostředí může být nastaven při instalaci Java a sadu JDK na pracovní stanici. Nicméně byste měli zkontrolovat, že existují a že obsahují správné hodnoty pro váš systém.
+Hello následující proměnné prostředí může být nastaven při instalaci Java a hello JDK na pracovní stanici. Ale byste měli zkontrolovat, že existují a že obsahují hello správné hodnoty pro váš systém.
 
-* `JAVA_HOME`-by měla odkazovat na adresář, kam nainstalovat sadu JDK.
-* `PATH`-musí obsahovat následující cesty:
+* `JAVA_HOME`-by měla odkazovat toohello adresář, kam hello JDK je nainstalovat.
+* `PATH`-musí obsahovat hello následující cesty:
   
-    * `JAVA_HOME`(nebo ekvivalentní cesta).
-    * `JAVA_HOME\bin`(nebo ekvivalentní cesta).
-    * Adresář, kde je nainstalován Maven.
+    * `JAVA_HOME`(nebo ekvivalentní cesta hello).
+    * `JAVA_HOME\bin`(nebo ekvivalentní cesta hello).
+    * Hello adresář, kde je nainstalován Maven.
 
-## <a name="how-to-use-the-hdfsbolt-with-hdinsight"></a>Postup použití HdfsBolt s HDInsight
+## <a name="how-toouse-hello-hdfsbolt-with-hdinsight"></a>Jak toouse hello HdfsBolt s HDInsight
 
 > [!IMPORTANT]
-> Před použitím HdfsBolt se Storm v HDInsight, musíte nejprve použít akci skriptu pro kopírování souborů vyžaduje jar do `extpath` pro Storm. Další informace najdete v tématu [konfigurovat cluster](#configure) části.
+> Před použitím hello HdfsBolt se Storm v HDInsight, musíte nejprve použít souborů jar toocopy požadované akce skriptu do hello `extpath` pro Storm. Další informace najdete v tématu hello [konfigurovat hello clusteru](#configure) části.
 
-HdfsBolt používá schéma souboru, které poskytujete pochopit, jak k zápisu do HDFS. S HDInsight použijte jednu z následujících schémat:
+Hello HdfsBolt používá schéma souboru hello jak poskytnout toounderstand toowrite tooHDFS. S HDInsight použijte jednu z následujících schémat hello:
 
 * `wasb://`: Používá se účtu úložiště Azure.
 * `adl://`: Použít s Azure Data Lake Store.
 
-Následující tabulka obsahuje příklady použití souboru schématu pro různé scénáře:
+Hello následující tabulka obsahuje příklady použití hello souboru schématu pro různé scénáře:
 
 | Schéma | Poznámky |
 | ----- | ----- |
-| `wasb:///` | Výchozí účet úložiště je kontejner objektů blob v účtu Azure Storage |
-| `adl:///` | Výchozí účet úložiště je adresář v Azure Data Lake Store. Při vytváření clusteru zadejte adresář v Data Lake Store, který je kořenem HDFS clusteru. Například `/clusters/myclustername/` adresáře. |
-| `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | Účet úložiště Azure (Další) jiné než výchozí přidružen ke clusteru. |
-| `adl://STORENAME/` | Kořenovém adresáři Data Lake Store používaný v clusteru. Toto schéma umožňuje přístup k datům, která se nachází mimo adresář, který obsahuje clusteru systému souborů. |
+| `wasb:///` | Hello výchozí účet úložiště je kontejner objektů blob v účtu Azure Storage |
+| `adl:///` | Hello výchozí účet úložiště je adresář v Azure Data Lake Store. Při vytváření clusteru zadejte hello adresář v Data Lake Store, který je hello kořenovém clusteru hello HDFS. Například hello `/clusters/myclustername/` adresáře. |
+| `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | Účet úložiště Azure (Další) jiné než výchozí přidruženého k hello clusteru. |
+| `adl://STORENAME/` | kořenový adresář Hello hello používá hello cluster Data Lake Store. Toto schéma umožňuje tooaccess data, která se nachází mimo hello adresář, který obsahuje systém souborů clusteru hello. |
 
-Další informace najdete v tématu [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) odkaz na Apache.org.
+Další informace najdete v tématu hello [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) odkaz na Apache.org.
 
 ### <a name="example-configuration"></a>Příklad konfigurace
 
-Následující YAML je výňatek ze `resources/writetohdfs.yaml` zahrnutý v příkladu. Tento soubor definuje pomocí topologie Storm [tok](https://storm.apache.org/releases/1.1.0/flux.html) framework pro Apache Storm.
+Hello následující YAML je výňatek ze hello `resources/writetohdfs.yaml` zahrnutý v příkladu hello. Tento soubor definuje topologie Storm hello pomocí hello [tok](https://storm.apache.org/releases/1.1.0/flux.html) framework pro Apache Storm.
 
 ```yaml
 components:
@@ -122,82 +122,82 @@ bolts:
         args: [ref: "syncPolicy"]
 ```
 
-Tato YAML definuje následující položky:
+Tato YAML definuje hello následující položky:
 
-* `syncPolicy`: Definuje, když jsou soubory synchronizována/vyprazdňuje na systém souborů. V tomto příkladu každých 1000 řazené kolekce členů.
-* `fileNameFormat`: Definuje použijte při zápisu souborů vzoru pro název a cesta k souboru. V tomto příkladu jsou poskytovány cesta za běhu pomocí filtru, a přípona souboru `.txt`.
-* `recordFormat`: Definuje interní formát zapisovat soubory. V tomto příkladu jsou odděleny pole `|` znak.
-* `rotationPolicy`: Určuje, kdy otočení soubory. V tomto příkladu se provádí bez otočení.
-* `hdfs-bolt`: Používá předchozí komponenty jako parametry konfigurace pro `HdfsBolt` třídy.
+* `syncPolicy`: Definuje, když jsou soubory synchronizována Vyprázdněné toohello systému souborů. V tomto příkladu každých 1000 řazené kolekce členů.
+* `fileNameFormat`: Definuje hello cestu a název vzor toouse při zápisu souborů. V tomto příkladu je poskytnuta cesta hello za běhu pomocí filtru, a přípona souboru hello je `.txt`.
+* `recordFormat`: Definuje hello interní formát souborů hello zapsána. V tomto příkladu pole jsou oddělená hello `|` znak.
+* `rotationPolicy`: Určuje, kdy toorotate soubory. V tomto příkladu se provádí bez otočení.
+* `hdfs-bolt`: Používá hello předchozí komponenty jako parametry konfigurace pro hello `HdfsBolt` třídy.
 
-Další informace o rozhraní tok najdete v tématu [https://storm.apache.org/releases/1.1.0/flux.html](https://storm.apache.org/releases/1.1.0/flux.html).
+Další informace o hello tok framework najdete v tématu [https://storm.apache.org/releases/1.1.0/flux.html](https://storm.apache.org/releases/1.1.0/flux.html).
 
-## <a name="configure-the-cluster"></a>Konfigurace clusteru
+## <a name="configure-hello-cluster"></a>Konfigurace clusteru hello
 
-Ve výchozím nastavení Storm v HDInsight neobsahuje součásti, které HdfsBolt používá ke komunikaci s Azure Storage nebo Data Lake Store v Storm je cesta pro třídy. Pomocí následující akce skriptu přidejte tyto součásti `extlib` adresář pro Storm v clusteru:
+Ve výchozím nastavení Storm v HDInsight nezahrnuje hello komponenty, který HdfsBolt používá toocommunicate s Azure Storage nebo Data Lake Store v Storm je cesta pro třídy. Použití hello následující skript akce tooadd tyto součásti toohello `extlib` adresář pro Storm v clusteru:
 
-| Identifikátor URI skriptu | Uzly a použijte ji k | Parametry || `https://000aarperiscus.blob.core.windows.net/certs/stormextlib.sh` | Nimbus, nadřízeného | None |
+| Identifikátor URI skriptu | Uzly tooapply jeho | Parametry || `https://000aarperiscus.blob.core.windows.net/certs/stormextlib.sh` | Nimbus, nadřízeného | None |
 
-Informace o použití tohoto skriptu k vašemu clusteru najdete v tématu [HDInsight přizpůsobit clustery pomocí akcí skriptů](./hdinsight-hadoop-customize-cluster-linux.md) dokumentu.
+Informace o použití tohoto skriptu k vašemu clusteru najdete v tématu hello [HDInsight přizpůsobit clustery pomocí akcí skriptů](./hdinsight-hadoop-customize-cluster-linux.md) dokumentu.
 
-## <a name="build-and-package-the-topology"></a>Sestavení a balíček topologie
+## <a name="build-and-package-hello-topology"></a>Sestavení a balíček hello topologie
 
-1. Stáhněte si příklad projektu ze [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) na svoje vývojové prostředí.
+1. Stáhnout hello příklad projektu ze [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) tooyour vývojové prostředí.
 
-2. Z příkazového řádku, terminálu nebo skořápce relace, změnit adresáře do kořenového adresáře staženého projektu. Pro sestavení a balíček topologii, použijte následující příkaz:
+2. Z příkazového řádku stáhnou Terminálové nebo relace prostředí, změna adresáře toohello kořenovém hello projektu. toobuild a balíček hello topologie, použijte následující příkaz hello:
    
         mvn compile package
    
-    Po dokončení sestavení a balení, je nový adresář s názvem `target`, který obsahuje soubor s názvem `StormToHdfs-1.0-SNAPSHOT.jar`. Tento soubor obsahuje kompilované topologie.
+    Po dokončení sestavení hello a balení, je nový adresář s názvem `target`, který obsahuje soubor s názvem `StormToHdfs-1.0-SNAPSHOT.jar`. Tento soubor obsahuje topologie hello zkompilovat.
 
-## <a name="deploy-and-run-the-topology"></a>Nasazení a spuštění topologie
+## <a name="deploy-and-run-hello-topology"></a>Nasazení a spuštění hello topologie
 
-1. Použijte následující příkaz pro kopírování topologie do clusteru HDInsight. Nahraďte **uživatele** uživatelským jménem SSH, které jste použili při vytvoření clusteru. Místo **CLUSTERNAME** zadejte název vašeho clusteru.
+1. Použijte následující příkaz toocopy hello topologie toohello clusteru HDInsight hello. Nahraďte **uživatele** s uživatelským jménem SSH hello jste použili při vytváření clusteru hello. Nahraďte **CLUSTERNAME** s názvem hello hello clusteru.
    
         scp target\StormToHdfs-1.0-SNAPSHOT.jar USER@CLUSTERNAME-ssh.azurehdinsight.net:StormToHdfs1.0-SNAPSHOT.jar
    
-    Po zobrazení výzvy zadejte heslo použité při vytváření uživatele SSH pro cluster. Pokud jste použili veřejný klíč místo hesla, budete možná muset použít `-i` parametru určete cestu k odpovídající soukromý klíč.
+    Po zobrazení výzvy zadejte heslo hello použité při vytváření uživatele SSH hello hello clusteru. Pokud jste použili veřejný klíč místo hesla, může být nutné toouse hello `-i` parametr toospecify hello cesta toohello odpovídající privátní klíč.
    
    > [!NOTE]
    > Další informace o používání `scp` s HDInsight, najdete v části [použití SSH s HDInsight](./hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Po dokončení nahrávání, použijte následující se připojit ke clusteru HDInsight pomocí protokolu SSH. Nahraďte **uživatele** uživatelským jménem SSH, které jste použili při vytvoření clusteru. Místo **CLUSTERNAME** zadejte název vašeho clusteru.
+2. Po dokončení nahrávání hello použijte hello následující tooconnect toohello HDInsight clusteru pomocí protokolu SSH. Nahraďte **uživatele** s uživatelským jménem SSH hello jste použili při vytváření clusteru hello. Nahraďte **CLUSTERNAME** s názvem hello hello clusteru.
    
         ssh USER@CLUSTERNAME-ssh.azurehdinsight.net
    
-    Po zobrazení výzvy zadejte heslo použité při vytváření uživatele SSH pro cluster. Pokud jste použili veřejný klíč místo hesla, budete možná muset použít `-i` parametru určete cestu k odpovídající soukromý klíč.
+    Po zobrazení výzvy zadejte heslo hello použité při vytváření uživatele SSH hello hello clusteru. Pokud jste použili veřejný klíč místo hesla, může být nutné toouse hello `-i` parametr toospecify hello cesta toohello odpovídající privátní klíč.
    
    Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-3. Po připojení, použijte následující příkaz k vytvoření souboru s názvem `dev.properties`:
+3. Po připojení, použijte hello následující příkaz toocreate soubor s názvem `dev.properties`:
 
         nano dev.properties
 
-4. Použít následující text jako obsah `dev.properties` souboru:
+4. Použití hello následující text jako hello obsah hello `dev.properties` souboru:
 
         hdfs.write.dir: /stormdata/
         hdfs.url: wasb:///
 
     > [!IMPORTANT]
-    > Tento příklad předpokládá, že váš cluster používá jako úložiště pro výchozí účet úložiště Azure. Pokud váš cluster používá Azure Data Lake Store, použijte `hdfs.url: adl:///` místo.
+    > Tento příklad předpokládá, že váš cluster používá účet úložiště Azure jako hello výchozí úložiště. Pokud váš cluster používá Azure Data Lake Store, použijte `hdfs.url: adl:///` místo.
     
-    Chcete-li uložit soubor, použijte __kombinaci kláves Ctrl + X__, pak __Y__a v neposlední řadě __Enter__. Hodnoty v tomto souboru nastavit adresu URL obchodu s Data Lake a název adresáře, který data se zapisují do.
+    toosave hello soubor, použijte __kombinaci kláves Ctrl + X__, pak __Y__a v neposlední řadě __Enter__. Hello hodnoty v tomto souboru nastavit adresu URL úložiště Data Lake hello a hello název adresáře, která data se zapisují do.
 
-3. Použijte následující příkaz spusťte topologie:
+3. Použijte následující příkaz toostart hello topologie hello:
    
         storm jar StormToHdfs-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /writetohdfs.yaml --filter dev.properties
 
-    Tento příkaz spustí topologie pomocí rozhraní tok odesláním uzel Nimbus clusteru. Topologie je definována `writetohdfs.yaml` souborů, které jsou součástí jar. `dev.properties` Souboru se předá jako filtr a hodnoty obsažené v souboru jsou číst topologii.
+    Tento příkaz spustí hello topologie pomocí hello tok framework odesláním uzel Nimbus toohello hello clusteru. topologie Hello je definována hello `writetohdfs.yaml` zahrnutý v hello jar. Hello `dev.properties` soubor je předán jako filtr a hodnoty hello obsažené v souboru hello se čtou podle topologie hello.
 
 ## <a name="view-output-data"></a>Zobrazení výstupní data
 
-Chcete-li zobrazit data, použijte následující příkaz:
+tooview hello data, hello použijte následující příkaz:
 
     hdfs dfs -ls /stormdata/
 
-Zobrazí se seznam souborů vytvořených pomocí této topologii.
+Zobrazí se seznam hello soubory vytvořené v této topologii.
 
-V následujícím seznamu je příklad dat retuned podle předchozích příkazů:
+Hello následujícím seznamu je příklad dat hello retuned podle předchozích příkazů hello:
 
     Found 30 items
     -rw-r-----+  1 sshuser sshuser       5120 2017-03-03 19:13 /stormdata/hdfs-bolt-3-0-1488568403092.txt
@@ -208,9 +208,9 @@ V následujícím seznamu je příklad dat retuned podle předchozích příkaz�
     -rw-r-----+  1 sshuser sshuser       5120 2017-03-03 19:13 /stormdata/hdfs-bolt-3-13-1488568412603.txt
     -rw-r-----+  1 sshuser sshuser       5120 2017-03-03 19:13 /stormdata/hdfs-bolt-3-14-1488568415055.txt
 
-## <a name="stop-the-topology"></a>Zastavení topologie
+## <a name="stop-hello-topology"></a>Zastavení topologie hello
 
-Topologie Storm spustit, dokud nebude zastaven nebo odstranění clusteru. K zastavení topologie, použijte následující příkaz:
+Topologie Storm spustit, dokud nebude zastaven nebo odstranění clusteru hello. toostop hello topologie, hello použijte následující příkaz:
 
     storm kill hdfswriter
 
@@ -220,5 +220,5 @@ Topologie Storm spustit, dokud nebude zastaven nebo odstranění clusteru. K zas
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili jak používat Storm k zápisu do úložiště Azure a Azure Data Lake Store, zjišťování dalších [Storm příklady pro HDInsight](hdinsight-storm-example-topology.md).
+Teď, když jste se naučili, jak toouse Storm toowrite tooAzure úložiště a Azure Data Lake Store, zjišťovat, jiné [Storm příklady pro HDInsight](hdinsight-storm-example-topology.md).
 

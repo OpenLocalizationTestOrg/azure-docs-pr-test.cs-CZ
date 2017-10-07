@@ -1,6 +1,6 @@
 ---
-title: "Funkce šablon Azure Resource Manager - nasazení | Microsoft Docs"
-description: "Popisuje funkce pro použití v šablonu Azure Resource Manager načíst informace o nasazení."
+title: "funkce pro šablony Resource Manageru ze aaaAzure - nasazení | Microsoft Docs"
+description: "Popisuje funkce toouse hello v informace tooretrieve nasazení šablony Azure Resource Manager."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,32 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: d7e6bcd669d40cb19de44b646505856ecd8f51a0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 458c3f740504fdd6799ed24cc386219726737636
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Nasazení funkce pro šablony Azure Resource Manager 
 
-Resource Manager poskytuje následující funkce pro získání hodnoty z části šablony a hodnoty týkající se nasazení:
+Resource Manager poskytuje hello následující funkce pro získání hodnoty z části hello šablony a hodnoty související toohello nasazení:
 
 * [nasazení](#deployment)
 * [Parametry](#parameters)
 * [proměnné](#variables)
 
-Získá hodnoty z prostředků, skupiny prostředků nebo odběrů, najdete v tématu [prostředků funkce](resource-group-template-functions-resource.md).
+tooget hodnoty z prostředků, skupiny prostředků nebo předplatného, najdete v části [prostředků funkce](resource-group-template-functions-resource.md).
 
 <a id="deployment" />
 
 ## <a name="deployment"></a>nasazení
 `deployment()`
 
-Vrací informace o aktuální operace nasazení.
+Vrací informace o aktuální operace nasazení hello.
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Tato funkce vrátí objekt, který je předán během nasazení. Vlastnosti v vráceného objektu se liší v závislosti na tom, jestli je objekt nasazení předán jako odkaz nebo jako objekt v řádku. Pokud objekt nasazení je předán v řádku, jako třeba při použití **- TemplateFile** parametr v prostředí Azure PowerShell přejděte do místního souboru vráceného objektu má následující formát:
+Tato funkce vrátí hello objekt, který je předán během nasazení. Vlastnosti Hello v hello vrátil objekt se liší v závislosti na tom, jestli hello nasazení je předán objekt jako odkaz nebo jako objekt v řádku. Pokud objekt nasazení hello je předán v řádku, jako třeba při použití hello **- TemplateFile** parametr v prostředí Azure PowerShell toopoint tooa místního souboru, hello vrátí objekt má hello následující formát:
 
 ```json
 {
@@ -61,7 +61,7 @@ Tato funkce vrátí objekt, který je předán během nasazení. Vlastnosti v vr
 }
 ```
 
-Pokud objekt předaný jako odkaz, například při použití **- TemplateUri** parametr tak, aby odkazoval na vzdálený objekt objektu se vrátí v následujícím formátu: 
+Pokud objekt hello je předán jako odkaz, například při použití hello **- TemplateUri** parametr toopoint tooa vzdáleného objektu, je vrácen objekt hello v hello následující formát: 
 
 ```json
 {
@@ -87,7 +87,7 @@ Pokud objekt předaný jako odkaz, například při použití **- TemplateUri** 
 
 ### <a name="remarks"></a>Poznámky
 
-Deployment() můžete propojit s jinou šablony založené na šabloně nadřazený identifikátor URI.
+Můžete použít deployment() toolink tooanother šablony založené na hello URI hello nadřazené šablony.
 
 ```json
 "variables": {  
@@ -97,7 +97,7 @@ Deployment() můžete propojit s jinou šablony založené na šabloně nadřaze
 
 ### <a name="example"></a>Příklad
 
-Následující příklad vrací objekt nasazení:
+Hello následující příklad vrací objekt nasazení hello:
 
 ```json
 {
@@ -113,7 +113,7 @@ Následující příklad vrací objekt nasazení:
 }
 ```
 
-V předchozím příkladu vrací objekt následující:
+Hello předchozí příklad vrací hello následujících objektů:
 
 ```json
 {
@@ -139,24 +139,24 @@ V předchozím příkladu vrací objekt následující:
 
 <a id="parameters" />
 
-## <a name="parameters"></a>Parametry
+## <a name="parameters"></a>parameters
 `parameters(parameterName)`
 
-Vrátí hodnotu parametru. Zadaný název parametru musí být definován v sekci parametrů šablony.
+Vrátí hodnotu parametru. Hello zadaný název parametru musí být definovány v části Parametry hello hello šablony.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| Název parametru |Ano |Řetězec |Název parametru vrátit. |
+| Název parametru |Ano |Řetězec |Název Hello tooreturn parametr hello. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Hodnota zadaného parametru.
+parametr zadána hodnota Hello hello.
 
 ### <a name="remarks"></a>Poznámky
 
-Parametry se obvykle používají pro nastavení hodnot prostředků. Následující příklad nastaví název webové stránky na hodnotu parametru předána během nasazení.
+Parametry tooset prostředků hodnoty se obvykle používá. Hello následující příklad ilustruje hello název webu toohello předaná hodnota parametru v během nasazování.
 
 ```json
 "parameters": { 
@@ -176,7 +176,7 @@ Parametry se obvykle používají pro nastavení hodnot prostředků. Následuj�
 
 ### <a name="example"></a>Příklad
 
-Následující příklad ukazuje zjednodušený použijte parametry funkce.
+Hello následující příklad ukazuje zjednodušený použití hello parametry funkce.
 
 ```json
 {
@@ -231,7 +231,7 @@ Následující příklad ukazuje zjednodušený použijte parametry funkce.
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -246,21 +246,21 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 ## <a name="variables"></a>proměnné
 `variables(variableName)`
 
-Vrátí hodnotu proměnné. Zadaný název proměnné musí být definován v sekci proměnných šablony.
+Vrátí hello hodnotu proměnné. Zadaný název proměnné Hello musí být definovány v části proměnných hello hello šablony.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| NázevProměnné |Ano |Řetězec |Název proměnné vrátit. |
+| NázevProměnné |Ano |Řetězec |Název proměnné tooreturn hello Hello. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Hodnotu zadanou proměnnou.
+Proměnná zadána hodnota Hello hello.
 
 ### <a name="remarks"></a>Poznámky
 
-Proměnné se obvykle používají pro zjednodušení šablony vytvořením komplexní hodnoty jenom jednou. Následující příklad vytvoří jedinečný název pro účet úložiště.
+Obvykle použijete toosimplify proměnných šablony vytvořením komplexní hodnoty jenom jednou. Hello následující příklad vytvoří jedinečný název pro účet úložiště.
 
 ```json
 "variables": {
@@ -284,7 +284,7 @@ Proměnné se obvykle používají pro zjednodušení šablony vytvořením komp
 
 ### <a name="example"></a>Příklad
 
-Příklad šablony vrátí různé hodnoty proměnné.
+Příklad šablony Hello vrátí různé hodnoty proměnné.
 
 ```json
 {
@@ -322,7 +322,7 @@ Příklad šablony vrátí různé hodnoty proměnné.
 }
 ```
 
-Výstup z předchozího příkladu s výchozími hodnotami je:
+Hello výstup z hello předchozí příklad s hello výchozí hodnoty je:
 
 | Name (Název) | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -332,8 +332,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | exampleOutput4 |  Objekt | {"vlastnost1": "value1", "vlastnost2": "hodnota2"} |
 
 ## <a name="next-steps"></a>Další kroky
-* Popis v částech šablonu Azure Resource Manager naleznete v tématu [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md).
-* Sloučit několik šablon, najdete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
-* K iteraci v zadaného počtu opakování při vytváření typu prostředku, najdete v části [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md).
-* Postup nasazení šablony, které jste vytvořili, najdete v sekci [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
+* Popis části hello šablonu Azure Resource Manager naleznete v tématu [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md).
+* toomerge několik šablon, najdete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
+* tooiterate zadaného počtu opakování při vytváření typu prostředku, najdete v části [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md).
+* toosee způsobu toodeploy hello šablony vytvoříte, najdete v [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
 

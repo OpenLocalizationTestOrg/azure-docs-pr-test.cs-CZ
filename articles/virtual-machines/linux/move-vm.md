@@ -1,6 +1,6 @@
 ---
-title: "Přesunout virtuální počítač s Linuxem v Azure | Microsoft Docs"
-description: "Přesuňte virtuální počítač s Linuxem do jiné předplatné nebo prostředek skupiny Azure v modelu nasazení Resource Manager."
+title: "aaaMove virtuálního počítače s Linuxem v Azure | Microsoft Docs"
+description: "Přesunete virtuální počítač s Linuxem tooanother předplatné nebo skupinu prostředků v modelu nasazení Resource Manager hello."
 services: virtual-machines-linux
 documentationcenter: 
 author: cynthn
@@ -15,28 +15,28 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 4695a9c934f97f2b2d448c4990e7ad5533e38e9f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 938d04234059111912f03e72d14dabd338bc0678
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Přesunout virtuální počítač s Linuxem do jiné skupiny pro předplatné nebo prostředek
-Tento článek vás provede postup přesunutí virtuálního počítače s Linuxem mezi skupinami prostředků nebo předplatných. Přesunutí virtuálního počítače mezi předplatnými může být užitečné, když vytvoříte virtuální počítač v odběru osobní a chcete ho přesunout do předplatného ve vaší společnosti.
+# <a name="move-a-linux-vm-tooanother-subscription-or-resource-group"></a>Přesunutí virtuálního počítače s Linuxem tooanother předplatné nebo prostředek skupiny
+Tento článek vás provede toomove virtuálního počítače s Linuxem mezi skupinami prostředků nebo předplatných. Přesunutí virtuálního počítače mezi předplatnými může být užitečné, když vytvoříte virtuální počítač v odběru osobní a teď chcete toomove ho předplatného tooyour společnosti.
 
 > [!IMPORTANT]
 >V tuto chvíli nelze přesunout spravované disky. 
 >
->Nové ID prostředků jsou vytvořené jako součást přesunutí. Po přesunutí virtuálního počítače je potřeba aktualizovat nástroje a skripty, které pomocí nového ID prostředku. 
+>Nové ID prostředků jsou vytvořené jako součást přesunutí hello. Jakmile hello virtuálního počítače byl přesunut, musíte tooupdate vaše nástroje a skripty toouse hello nové ID prostředku. 
 > 
 > 
 
-## <a name="use-the-azure-cli-to-move-a-vm"></a>Použijte rozhraní příkazového řádku Azure k přesunutí virtuálního počítače
-Chcete-li úspěšně přesunout virtuální počítač, musíte přesunout virtuální počítač a všechny její Podpůrné prostředky. Použití **zobrazit skupiny azure** seznam všechny prostředky v skupinu prostředků a jejich ID příkazu. Pomáhá výstup tohoto příkazu do souboru, můžete zkopírovat a vložit ID do novější příkazy.
+## <a name="use-hello-azure-cli-toomove-a-vm"></a>Použití Azure CLI toomove hello virtuálního počítače
+toosuccessfully přesunout virtuální počítač, budete potřebovat toomove hello virtuálních počítačů a všechny její Podpůrné prostředky. Použití hello **zobrazit skupiny azure** příkaz toolist všechny prostředky hello v skupinu prostředků a jejich ID. Pomáhá toopipe hello výstup tohoto příkazu tooa souboru, můžete zkopírovat a vložit hello ID do novější příkazy.
 
     azure group show <resourceGroupName>
 
-Chcete-li přesunout virtuální počítač a jeho prostředků do jiné skupině prostředků, použijte **přesunutí prostředku azure** rozhraní příkazového řádku příkaz. Následující příklad ukazuje, jak přesunout virtuální počítač a nejběžnější prostředky, které vyžaduje. Používáme **-i** parametr a předejte jí seznam oddělený čárkami (bez mezer) ID pro prostředky. Chcete-li přesunout.
+toomove virtuálního počítače a jeho skupin prostředků tooanother prostředky používají hello **přesunutí prostředku azure** rozhraní příkazového řádku příkaz. Hello následující příklad ukazuje, jak toomove virtuální počítač a prostředky nejběžnější hello vyžaduje. Používáme hello **-i** parametr a předejte jí seznam oddělený čárkami (bez mezer) ID pro toomove prostředky hello.
 
     vm=/subscriptions/<sourceSubscriptionID>/resourceGroups/<sourceResourceGroup>/providers/Microsoft.Compute/virtualMachines/<vmName>
     nic=/subscriptions/<sourceSubscriptionID>/resourceGroups/<sourceResourceGroup>/providers/Microsoft.Network/networkInterfaces/<nicName>
@@ -48,14 +48,14 @@ Chcete-li přesunout virtuální počítač a jeho prostředků do jiné skupin�
 
     azure resource move --ids $vm,$nic,$nsg,$pip,$vnet,$storage,$diag -d "<destinationResourceGroup>"
 
-Pokud chcete přesunout virtuální počítač a jeho prostředků do jiného předplatného, přidejte **– ID cílového předplatného & č. 60; destinationSubscriptionID & č. 62;** parametr k určení cílového odběru.
+Pokud chcete, aby toomove hello virtuální počítač a jeho prostředky tooa jiného předplatného, přidejte hello **– ID cílového předplatného & č. 60; destinationSubscriptionID & č. 62;** parametr toospecify hello cílového předplatného.
 
-Pokud pracujete z příkazového řádku na počítači se systémem Windows, je nutné přidat  **$**  před názvy proměnných, když je deklarovat. Toto není nutné v systému Linux.
+Pokud pracujete se z hello příkazového řádku na počítači se systémem Windows, musíte tooadd  **$**  před názvy proměnných hello při je deklarovat. Toto není nutné v systému Linux.
 
-Zobrazí se výzva k potvrzení, že chcete přesunout zadaný prostředek. Typ **Y** potvrďte, že chcete přesunout prostředky.
+Jste vyzváni, které chcete toomove hello tooconfirm zadaný prostředek. Typ **Y** tooconfirm, že chcete toomove hello prostředky.
 
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Mnoho různých typů prostředků můžete přesouvat mezi skupinami prostředků a předplatná. Další informace najdete v tématu, které se zabývá [přesunutím prostředků do nové skupiny prostředků nebo předplatného](../../resource-group-move-resources.md).    
+Mnoho různých typů prostředků můžete přesouvat mezi skupinami prostředků a předplatná. Další informace najdete v tématu [přesunout skupiny prostředků toonew prostředků nebo předplatného](../../resource-group-move-resources.md).    
 

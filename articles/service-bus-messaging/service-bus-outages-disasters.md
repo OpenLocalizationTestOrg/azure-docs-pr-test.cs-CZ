@@ -1,6 +1,6 @@
 ---
-title: "Izolační aplikace Azure Service Bus proti výpadkům a havárií | Microsoft Docs"
-description: "Popisuje postupy, pomocí nichž můžete použít k ochraně aplikací proti potenciální výpadek služby Service Bus."
+title: "aplikace Azure Service Bus aaaInsulating proti výpadkům a havárií | Microsoft Docs"
+description: "Popisuje postupy můžete použít tooprotect aplikace pro potenciální výpadek služby Service Bus."
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
@@ -14,77 +14,77 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/12/2017
 ms.author: sethm
-ms.openlocfilehash: bc84dbe5c26a834b2cff5f71ba5f541e94ba0b38
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 349b4968456c9f15375753d83495246f5a3ddfdb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Osvědčené postupy pro izolační aplikace proti výpadkům Service Bus a havárií
-Kritické aplikace musí fungovat nepřetržitě, ani za přítomnosti neplánované výpadky nebo havárie. Toto téma popisuje postupy, pomocí nichž můžete použít k ochraně aplikací Service Bus proti potenciální výpadek služby nebo po havárii.
+Kritické aplikace musí nepřetržitě, fungovat i v hello přítomnost neplánované výpadky nebo havárie. Toto téma popisuje postupy můžete použít aplikace Service Bus tooprotect pro potenciální výpadek služby nebo po havárii.
 
-Výpadek je definován jako dočasné nedostupnosti Azure Service Bus. Se výpadek může ovlivnit některé součásti Service Bus, jako je zasílání zpráv úložiště nebo i celého datového centra. Po napravení problému, Service Bus opět k dispozici. Výpadek obvykle nezpůsobí ztrátě zpráv nebo jiná data. Je například selhání součásti nedostupnost konkrétní úložišti pro přenos zpráv. Příkladem výpadku celou datacenter je výpadku napájení datovém centru nebo vadný datacenter síťový přepínač. Výpadek může trvat několik minut na několik dní.
+Výpadek je definován jako dočasné nedostupnosti hello Azure Service Bus. výpadek Hello může ovlivnit některé součásti Service Bus, jako je zasílání zpráv úložiště nebo celého datového centra i hello. Po napravení problému hello Service Bus opět k dispozici. Výpadek obvykle nezpůsobí ztrátě zpráv nebo jiná data. Je například selhání součásti hello nedostupnosti konkrétní úložišti pro přenos zpráv. Příkladem výpadku celou datacenter je výpadku napájení hello datacenter nebo vadný datacenter síťový přepínač. Výpadek můžete poslední z pár minut tooa několik dní.
 
-Havárie je definován jako trvalé ztrátě jednotky škálování služby Service Bus nebo datacenter. Datacentru může nebo nemusí opět k dispozici. Havárie obvykle způsobí ztrátu některé nebo všechny zprávy nebo jiná data. Příklady havárie se ještě efektivněji, zahlcení nebo zemětřesení.
+Havárie je definován jako trvalé ztrátě hello jednotky škálování služby Service Bus nebo datacenter. Hello datacenter může nebo nemusí opět k dispozici. Havárie obvykle způsobí ztrátu některé nebo všechny zprávy nebo jiná data. Příklady havárie se ještě efektivněji, zahlcení nebo zemětřesení.
 
 ## <a name="current-architecture"></a>Aktuální architektura
-Service Bus používá několik úložišť pro přenos zpráv k uložení zpráv, které jsou odesílány do fronty nebo témata. Bez oddílů fronta nebo téma je přiřazený k jedné úložišti pro přenos zpráv. Pokud toto úložiště zasílání zpráv není k dispozici, všechny operace v tomto fronta nebo téma se nezdaří.
+Service Bus používá více zasílání zpráv ukládá toostore zpráv, které jsou odeslány tooqueues nebo témata. Bez oddílů fronta nebo téma je přiřazen tooone úložiště pro zasílání zpráv. Pokud toto úložiště zasílání zpráv není k dispozici, všechny operace v tomto fronta nebo téma se nezdaří.
 
-Všechny služby Service Bus entit pro zasílání zpráv (fronty, témata, předávání) se nacházejí v oboru názvů služby, který je přidružen k datacentru. Service Bus neumožňuje automatické geografická replikace dat, k tomu ani obor názvů rozložit několik datových center.
+Všechny služby Service Bus entit pro zasílání zpráv (fronty, témata, předávání) se nacházejí v oboru názvů služby, který je přidružen k datacentru. Service Bus neumožňuje automatické geografická replikace dat, k tomu ani obor názvů toospan několik datových center.
 
 ## <a name="protecting-against-acs-outages"></a>Ochrana proti výpadkům služby ACS
-Pokud používáte přihlašovací údaje služby ACS a služby ACS není k dispozici, klienti už můžou získat tokeny. Klienti, kteří mají token v době, kdy ACS ocitne mimo provoz můžete nadále používat Service Bus, dokud nevyprší platnost tokenů. Výchozí doba života tokenu je 3 hodiny.
+Pokud používáte přihlašovací údaje služby ACS a služby ACS není k dispozici, klienti už můžou získat tokeny. Klienti, kteří mají token v době hello ACS ocitne mimo provoz můžete pokračovat toouse Service Bus, dokud nevyprší platnost tokenů hello. životnost tokenu výchozí Hello je 3 hodiny.
 
-Chcete-li chránit proti výpadkům služby ACS, použijte tokeny sdíleného přístupového podpisu (SAS). V tomto případě klient se ověří přímo službou Service Bus podepsáním samoobslužné minted token s tajným klíčem. Volání služby ACS se už nevyžadují. Další informace o tokeny SAS najdete v tématu [ověření sběrnice][Service Bus authentication].
+tooprotect proti výpadkům služby ACS používala tokeny sdíleného přístupového podpisu (SAS). V takovém případě hello klient se ověří přímo službou Service Bus podepsáním samoobslužné minted token s tajným klíčem. Volání tooACS se už nevyžadují. Další informace o tokeny SAS najdete v tématu [ověření sběrnice][Service Bus authentication].
 
 ## <a name="protecting-queues-and-topics-against-messaging-store-failures"></a>Ochrana fronty a témata proti selhání úložiště pro zasílání zpráv
-Bez oddílů fronta nebo téma je přiřazený k jedné úložišti pro přenos zpráv. Pokud toto úložiště zasílání zpráv není k dispozici, všechny operace v tomto fronta nebo téma se nezdaří. Oddílů fronty, na druhé straně, se skládá z více fragmentů. Každý fragment je uložen v jiném úložišti zasílání zpráv. Pro odeslání zprávy do oddílů fronta nebo téma sběrnice přiřadí zpráva jedním z fragmentů. Pokud odpovídající úložišti pro přenos zpráv není k dispozici, Service Bus zapíše zprávu do různých fragment, pokud je to možné. Další informace o dělené entity najdete v tématu [segmentované entity zasílání zpráv][Partitioned messaging entities].
+Bez oddílů fronta nebo téma je přiřazen tooone úložiště pro zasílání zpráv. Pokud toto úložiště zasílání zpráv není k dispozici, všechny operace v tomto fronta nebo téma se nezdaří. A rozdělena na oddíly na hello fronta druhé straně, se skládá z více fragmentů. Každý fragment je uložen v jiném úložišti zasílání zpráv. Odeslání zprávy tooa oddílů fronta nebo téma sběrnice přiřadí hello tooone zprávy z fragmentů hello. Pokud hello odpovídající úložišti pro přenos zpráv není k dispozici, zapíše Service Bus hello tooa různých fragmentu zprávy, pokud je to možné. Další informace o dělené entity najdete v tématu [segmentované entity zasílání zpráv][Partitioned messaging entities].
 
 ## <a name="protecting-against-datacenter-outages-or-disasters"></a>Ochrana proti výpadkům datacenter nebo havárie
-Povolit pro převzetí služeb při selhání dvou Datacenter, můžete vytvořit obor názvů služby Service Bus v každé datové centrum. Například oboru názvů služby Service Bus **contosoPrimary.servicebus.windows.net** může nacházet v oblasti USA, Severní a střední a **contosoSecondary.servicebus.windows.net**může nacházet v oblasti USA – jih a střední. Pokud Service Bus entity pro zasílání zpráv musí zůstat přístupný v případě výpadku datového centra, můžete vytvořit dané entity v oba obory názvů.
+tooallow převzetí služeb při selhání dvou Datacenter, můžete vytvořit obor názvů služby Service Bus v každé datové centrum. Například hello oboru názvů služby Service Bus **contosoPrimary.servicebus.windows.net** může nacházet v oblasti USA, Severní a střední hello a **contosoSecondary.servicebus.windows.net**může nacházet v oblasti USA – jih a střední hello. Pokud Service Bus entity pro zasílání zpráv musí zůstat přístupný v hello přítomnost výpadku datového centra, můžete vytvořit dané entity v oba obory názvů.
 
-Další informace najdete v části "Service Bus v rámci datového centra Azure selhání" v [asynchronní vzory a vysoká dostupnost pro zasílání zpráv][Asynchronous messaging patterns and high availability].
+Další informace najdete v tématu hello "Selhání v rámci datového centra Azure Service Bus" kapitoly [asynchronní vzory a vysoká dostupnost pro zasílání zpráv][Asynchronous messaging patterns and high availability].
 
 ## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>Ochranu koncových bodů předávání proti výpadkům datacenter nebo havárie
-Geografická replikace koncových bodů předávání umožňuje služba, která zveřejňuje koncový bod předávání být dostupná v případě výpadku služby Service Bus. K dosažení geografická replikace, musíte službu vytvořit dva koncové body předávání v různých oborech názvů. Obory názvů se musí nacházet v různých datových centrech a dva koncové body musí mít odlišné názvy. Například můžete v části dostupný primární koncový bod **contosoPrimary.servicebus.windows.net/myPrimaryService**při jeho protějšku sekundární dostupný v části **contosoSecondary.servicebus.windows.net /mySecondaryService**.
+Geografická replikace koncových bodů předávání umožňuje služba, která zveřejňuje toobe koncový bod předávání, která je dostupná v hello přítomnost výpadků služby Service Bus. tooachieve geografická replikace, hello služby musíte vytvořit dva koncové body předávání v různých oborech názvů. obory názvů Hello se musí nacházet v různých datových centrech a dva koncové body hello musí mít odlišné názvy. Například můžete v části dostupný primární koncový bod **contosoPrimary.servicebus.windows.net/myPrimaryService**při jeho protějšku sekundární dostupný v části **contosoSecondary.servicebus.windows.net /mySecondaryService**.
 
-Služba pak naslouchá na obou koncových bodů a klient vyvolat službu přes koncový bod. Klientská aplikace náhodně vybere jeden z předávání jako primární koncový bod a odešle požadavku aktivní koncový bod. Pokud operace selže s kódem chyby, toto selhání naznačuje, že předávání přes koncový bod není k dispozici. Aplikace se otevře kanál ke koncovému bodu zálohy a znovu vydá požadavek. V tomto bodě zálohování koncové body a aktivní přepínač role: klientská aplikace považovat staré aktivní koncový bod nový koncový bod zálohování a původní zálohování koncový bod jako nové aktivní koncový bod. Pokud obě odeslat operace selže, zůstanou nezměněny role dvě entity a vrátí se chyba.
+Služba Hello pak naslouchá na obou koncových bodů a klient vyvolat hello služby přes koncový bod. Klientská aplikace náhodně vybere jeden z hello předávací jako hello primární koncový bod a odešle jeho žádost toohello aktivní koncový bod. Pokud hello operace selže s kódem chyby, tato chyba znamená, že tohoto koncového bodu předávání hello není k dispozici. aplikace Hello otevře zálohování koncový bod kanálu toohello a znovu vydá požadavek hello. V tomto bodě hello zálohování koncové body a hello active přepínač role: hello klientská aplikace považovat hello staré aktivní koncový bod toobe hello nový koncový bod zálohování a hello staré zálohování koncový bod toobe hello nové aktivní koncový bod. Pokud obě odeslat operace selže, zůstanou nezměněny hello role hello dvě entity a vrátí se chyba.
 
-[Geografická replikace s sběrnice zpráv přes předávací službu] [ Geo-replication with Service Bus relayed Messages] ukázka ukazuje, jak replikovat předávací službu.
+Hello [geografická replikace s sběrnice zpráv přes předávací službu] [ Geo-replication with Service Bus relayed Messages] příklad ukazuje, jak předává tooreplicate.
 
 ## <a name="protecting-queues-and-topics-against-datacenter-outages-or-disasters"></a>Ochrana fronty a témata proti výpadkům datacenter nebo havárie
-Zajistit odolnost proti výpadkům datového centra při pomocí zprostředkovaného zasílání zpráv Service Bus podporuje dva přístupy: *active* a *pasivní* replikace. Pro každý přístup Pokud se daný fronta nebo téma musí zůstat přístupný v případě výpadku datového centra můžete vytvořit ji v oba obory názvů. Obě entit může mít stejný název. Například dostupný primární fronty pod **contosoPrimary.servicebus.windows.net/myQueue**při jeho protějšku sekundární dostupný v části **contosoSecondary.servicebus.windows.net/myQueue**.
+tooachieve odolnost proti výpadkům datového centra při pomocí zprostředkovaného zasílání zpráv, Service Bus podporuje dva přístupy: *active* a *pasivní* replikace. Pro každý přístup Pokud se daný fronta nebo téma musí zůstat přístupný v hello přítomnost výpadku datového centra můžete vytvořit ji v oba obory názvů. Obě entit může mít hello stejný název. Například dostupný primární fronty pod **contosoPrimary.servicebus.windows.net/myQueue**při jeho protějšku sekundární dostupný v části **contosoSecondary.servicebus.windows.net/myQueue**.
 
-Pokud aplikace nevyžaduje komunikaci trvalé odesílatele k příjemce, můžete aplikaci implementovat trvalé fronty klienta předchází se tak ztrátě zpráv a pro stínění odesílatel z jakékoli přechodné chyby Service Bus.
+Pokud hello aplikace nevyžaduje komunikaci trvalé odesílatele k příjemce, můžete implementovat aplikace hello trvanlivý klienta fronty tooprevent ztrátě a tooshield hello odesílatele zprávy z jakékoli přechodné chyby Service Bus.
 
 ## <a name="active-replication"></a>Replikace služby Active
-Replikace služby Active používá entity v oba obory názvů pro všechny operace. Libovolného klienta, který odešle zprávu odešle dvě kopie stejné zprávy. První kopie se odesílá do primární entity (například **contosoPrimary.servicebus.windows.net/sales**), a druhé kopie zprávy jsou odeslána do sekundární entitou (například  **contosoSecondary.servicebus.windows.net/sales**).
+Replikace služby Active používá entity v oba obory názvů pro všechny operace. Libovolného klienta, který odešle zprávu odešle dvě kopie hello stejnou zprávu. Hello první kopie se odesílá toohello primární entity (například **contosoPrimary.servicebus.windows.net/sales**), a druhé kopie uvítací zprávu hello je odeslána toohello sekundární entity (například  **contosoSecondary.servicebus.windows.net/sales**).
 
-Klient obdrží z obou front zpráv. Příjemce procesy první kopie zprávy, a druhé kopie potlačeno. K potlačení duplicitních zpráv, musíte označit odesílatel každou zprávu s jedinečným identifikátorem. Obě kopie zprávy musí být označené se stejným identifikátorem. Můžete použít [BrokeredMessage.MessageId] [ BrokeredMessage.MessageId] nebo [BrokeredMessage.Label] [ BrokeredMessage.Label] vlastnosti nebo vlastní vlastnost k označení zprávy. Příjemce musí zachovat seznam zpráv, které již přijal.
+Klient obdrží z obou front zpráv. procesy příjemce Hello hello prvního kopírování zpráv a je potlačeno hello druhé kopie. duplicitní zprávy toosuppress, odesílatel hello musí označit každou zprávu s jedinečným identifikátorem. Obě kopie hello zprávy musí být označené hello stejný identifikátor. Můžete použít hello [BrokeredMessage.MessageId] [ BrokeredMessage.MessageId] nebo [BrokeredMessage.Label] [ BrokeredMessage.Label] vlastnosti, nebo vlastní vlastnost tootag hello zpráva. seznam zpráv, které již přijal musí zachovat Hello příjemce.
 
-[Geografická replikace se Service Bus zprostředkované zprávy] [ Geo-replication with Service Bus Brokered Messages] příklad znázorňuje active replikaci entity pro zasílání zpráv.
+Hello [geografická replikace se Service Bus zprostředkované zprávy] [ Geo-replication with Service Bus Brokered Messages] příklad znázorňuje active replikaci entity pro zasílání zpráv.
 
 > [!NOTE]
-> Replikace služby active přístup zdvojnásobí počet operací, proto tento přístup může vést k vyšší náklady.
+> replikace služby active přístup Hello zdvojnásobí hello počet operací, proto tento přístup může vést toohigher náklady.
 > 
 > 
 
 ## <a name="passive-replication"></a>Pasivní replikace
-V případě selhání bez pasivní replikace používá jenom jeden dva entit pro zasílání zpráv. Klient odešle zprávu do active entity. Pokud operace u active entity selže s kódem chyby, která určuje, že datové centrum, který je hostitelem aktivní entita může být k dispozici, klient odešle kopii zprávy do zálohování entity. V tomto bodě aktivní a entity zálohování přepínač role: odesílání klienta považuje staré active entity, která má být nové entity zálohování a původní zálohování entita je nové aktivní entity. Pokud obě odeslat operace selže, zůstanou nezměněny role dvě entity a vrátí se chyba.
+V případě selhání bez hello pasivní replikace používá jenom jeden hello dvě entit pro zasílání zpráv. Klient odešle hello zpráva toohello active entity. Pokud operace hello u hello active entity selže s kódem chyby, která určuje, že active entity hello hostitele může být k dispozici datacenter hello, hello klient odešle kopii hello zpráva toohello zálohování entity. V tomto bodě hello aktivní a entity zálohování hello přepínač role: hello odesílání klienta považuje hello staré active entity toobe hello nové zálohování entity a hello staré zálohování entita je hello nové aktivní entity. Pokud obě odeslat operace selže, zůstanou nezměněny hello role hello dvě entity a vrátí se chyba.
 
-Klient obdrží z obou front zpráv. Protože je pravděpodobné, že příjemce obdrží dvě kopie stejné zprávy, musí příjemce potlačení duplicitních zpráv. Duplicitní položky můžete potlačit stejným způsobem, jak je popsáno pro replikace služby active.
+Klient obdrží z obou front zpráv. Protože je pravděpodobné, že hello příjemce obdrží dvě kopie hello stejné zprávy, hello příjemce musí potlačení duplicitních zpráv. Můžete potlačit duplicit v hello stejným způsobem, jak popisuje pro replikaci active.
 
-Obecně platí je levnější než replikace služby active pasivní replikace, protože ve většině případů je prováděna pouze jednu operaci. Latence, propustnosti a náklady na peněžní totožné s nereplikované scénář.
+Obecně platí je levnější než replikace služby active pasivní replikace, protože ve většině případů je prováděna pouze jednu operaci. Latence, propustnosti a peněžní náklady jsou identické toohello nereplikované scénář.
 
-Při použití pasivní replikace, v následujících scénářích zprávy můžou ke ztrátě nebo přijímat dvakrát:
+Při použití pasivní replikace, v hello následující scénáře zprávy můžou ke ztrátě nebo přijímat dvakrát:
 
-* **Zpráva zpoždění nebo ztrátě**: předpokládají, že odesílatel zprávu m1 úspěšně odeslán do primární fronty, a pak nedostupný fronty než příjemce obdrží m1. Odesílatel odešle následnou zprávu m2 sekundární fronty. Pokud primární fronta je dočasně nedostupný, obdrží příjemce m1 po fronty opět k dispozici. V případě havárie příjemce obdržet nikdy m1.
-* **Duplicitní příjem**: předpokládá, že odesílatel odešle zprávu m do primární fronty. Service Bus úspěšně zpracuje m, ale selže k odeslání odpovědi. Po operaci odeslání vypršení časového limitu, odesílatel odešle identické kopii m sekundární fronty. Pokud je příjemce schopný přijímat první kopii m, než bude k dispozici primární fronty, příjemce obdrží obě kopie m přibližně ve stejnou dobu. Pokud příjemce není schopný přijímat první kopii m, než bude k dispozici primární fronty, nejprve obdrží druhé kopie m příjemce, ale pak obdrží druhé kopie m, když primární fronty je dostupná.
+* **Zpráva zpoždění nebo ztrátě**: předpokládají, že hello sender úspěšně odeslal primární fronta zpráv m1 toohello a pak nedostupný hello fronty než hello příjemce obdrží m1. Hello odesílatel odešle sekundární fronty následnou zprávu m2 toohello. Pokud hello primární fronta je dočasně nedostupný, hello příjemce obdrží m1 po hello fronty opět k dispozici. V případě havárie hello příjemce obdržet nikdy m1.
+* **Duplicitní příjem**: předpokládá, že hello odesílatel odešle zpráva m toohello primární fronty. Service Bus úspěšně zpracuje m, ale selže toosend odpověď. Po hello odeslat operaci časový limit, hello odesílatel odešle identické kopii m toohello sekundární fronty. Pokud příjemce hello je možné tooreceive hello první kopie m před primární fronty hello nedostupný, hello příjemce obdrží obě kopie na přibližně hello m stejnou dobu. Pokud příjemce hello není možné tooreceive hello první kopii m před primární fronty hello nedostupný, hello příjemce původně přijímá pouze hello druhé kopie m, ale pak obdrží druhé kopie m, když primární fronty hello je dostupná.
 
-[Geografická replikace se Service Bus zprostředkované zprávy] [ Geo-replication with Service Bus Brokered Messages] příklad znázorňuje pasivní replikaci entity pro zasílání zpráv.
+Hello [geografická replikace se Service Bus zprostředkované zprávy] [ Geo-replication with Service Bus Brokered Messages] příklad znázorňuje pasivní replikaci entity pro zasílání zpráv.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o zotavení po havárii, najdete v těchto článcích:
+toolearn Další informace o zotavení po havárii, najdete v těchto článcích:
 
 * [Kontinuita podnikových procesů Azure SQL Database][Azure SQL Database Business Continuity]
 * [Návrh odolný aplikací pro Azure.][Azure resiliency technical guidance]

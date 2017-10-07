@@ -1,6 +1,6 @@
 ---
-title: "Ukázkové aplikace Azure Mobile Engagement | Microsoft Docs"
-description: "Popisuje, kde lze stáhnout, jak používat a výhody použití ukázkovou aplikaci Azure Mobile Engagement"
+title: "ukázkovou aplikaci Mobile Engagement aaaAzure | Microsoft Docs"
+description: "Popisuje, kde toodownload, jak toouse a hello výhody používání Azure Mobile Engagement ukázku aplikace"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2016
 ms.author: piyushjo
-ms.openlocfilehash: 8381edb569e19a85c1259f7791b477cfa6e51ea3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9ff0df0d21e1bad6aff573db49304a55593df1c0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-mobile-engagement-demo-app"></a>Azure Mobile Engagement ukázkovou aplikaci
-Publikování ukázkové aplikace Azure Mobile Engagement pro **iOS**, **Android**, a **Windows** platformy můžete najít užitečné zdroje a další informace o Mobile Engagement.
+Publikování ukázkové aplikace Azure Mobile Engagement pro **iOS**, **Android**, a **Windows** toohelp platformy je užitečné zdroje toofind a další informace o mobilních Zapojení.
 
-Aplikace vám pomůže:
+aplikace Hello vám pomůže:
 
-* Snadno najít užitečné odkazy na zdroje Mobile Engagement, jako jsou videa, dokumentace, fórum podpory a kde lze zvýšit žádosti o funkce.
-* Zaznamenat ukázka oznámení, které podporuje Mobile Engagement, jak získat návrhy pro vaše vlastní mobilní aplikace.
-* Použijte odkaz na implementaci pro zkoumání implementaci Mobile Engagementu do vlastní aplikace. Informace najdete na:
+* Snadno najít užitečné odkazy tooMobile Engagement prostředkům, jako jsou videa, dokumentace, hello fórum podpory, a kde toogo tooraise funkce požadavky.
+* Zaznamenat ukázka oznámení, které podporuje nápady tooget Mobile Engagementu pro mobilní aplikace.
+* Jak používat odkaz na implementaci toostudy tooimplement Mobile Engagementu do vlastní aplikace. Informace najdete na:
   
   * Shromažďování dat analytics.
   * Implementace pokročilé scénáře oznámení typů jako *přes celou obrazovku vkládaná* nebo *automaticky otevírané okno*.
@@ -35,20 +35,20 @@ Aplikace vám pomůže:
   * Implementujte scénáře tichou nabízené dat a posílejte nabízená oznámení.   
 
 ## <a name="app-installation"></a>Instalace aplikace
-Tato aplikace je k dispozici v následujících obchody s aplikacemi:
+Tato aplikace je k dispozici v hello následující obchody s aplikacemi:
 
 * **Univerzální pro Windows ukázkovou aplikaci**:
   
-  * Stáhnout aplikaci v [aplikace pro Windows store](https://www.microsoft.com/en-us/store/apps/azure-mobile-engagement/9nblggh4qmh2).
-  * Aplikace byla vyvinutá jako Windows 10 univerzální aplikace. Zdrojový kód je k dispozici na [Githubu](https://github.com/Azure/azure-mobile-engagement-app-windows).
+  * Stáhněte si aplikaci hello v hello [aplikace pro Windows store](https://www.microsoft.com/en-us/store/apps/azure-mobile-engagement/9nblggh4qmh2).
+  * aplikace Hello byl vyvinut jako Windows 10 univerzální aplikace. Hello zdrojový kód je k dispozici na [Githubu](https://github.com/Azure/azure-mobile-engagement-app-windows).
 * **iOS ukázku aplikace**:
   
-  * Stáhnout aplikaci v [Apple storu](https://itunes.apple.com/us/app/azure%20mobile%20engagement/id1105090090).
-  * Aplikace byla vyvinutá v iOS Swift. Zdrojový kód je k dispozici na [Githubu](https://github.com/Azure/azure-mobile-engagement-app-ios).
+  * Stáhněte si aplikaci hello v hello [Apple storu](https://itunes.apple.com/us/app/azure%20mobile%20engagement/id1105090090).
+  * Hello aplikace byla vyvinutá v iOS Swift. Hello zdrojový kód je k dispozici na [Githubu](https://github.com/Azure/azure-mobile-engagement-app-ios).
 * **Android ukázkovou aplikaci**:
   
-  * Stáhnout aplikaci v [obchodu Google Play](https://play.google.com/store/apps/details?id=com.microsoft.azure.engagement).
-  * Zdrojový kód je k dispozici na [Githubu](https://github.com/Azure/azure-mobile-engagement-app-android).
+  * Stáhněte si aplikaci hello v hello [obchodu Google Play](https://play.google.com/store/apps/details?id=com.microsoft.azure.engagement).
+  * Hello zdrojový kód je k dispozici na [Githubu](https://github.com/Azure/azure-mobile-engagement-app-android).
 
 ![Univerzální pro Windows ukázkovou aplikaci][1]
 
@@ -56,62 +56,62 @@ Tato aplikace je k dispozici v následujících obchody s aplikacemi:
 ![Android ukázkovou aplikaci][3]
 
 ## <a name="usage"></a>Využití
-Tuto aplikaci můžete použít následujícími způsoby:
+Tuto aplikaci můžete použít v hello následující způsoby:
 
-**Stažení aplikace na zařízení z aplikace ukládání odkazů (dříve uvedených):**
+**Stáhněte hello aplikace na zařízení z odkazů úložiště aplikace hello (uvedených výše):**
 
 > [!IMPORTANT]
-> Nepotřebujete účtu Azure nebo nutnosti připojení aplikace k back-end. Aplikace funguje nezávisle.
+> Nepotřebujete účet Azure nebo potřebovat tooconnect hello aplikace tooa back-end. aplikace Hello funguje nezávisle.
 > 
 > 
 
-* Když máte aplikaci na vašem zařízení, potom můžete přejít prostřednictvím odkazů v levé nabídce najít užitečné zdroje informací o Mobile Engagement.
-* Přidali jsme [informačního kanálu RSS služby](https://aka.ms/azmerssfeed) do této aplikace tak, aby se vždy aktualizované o nejnovější aktualizace produktu.
-* Můžete také přejít pomocí ukázkových scénářů oznámení do prostředí typ oznámení, které jsou podporovány Mobile Engagementu pro každou platformu. Tato oznámení mohou být došlo místně – tzn., můžete kliknout na tlačítka na obrazovkách tak, aby zobrazovalo prostředí oznámení, který je stejný jako při odesílání oznámení z platformy Mobile Engagement.
+* Když máte hello aplikaci na vašem zařízení, potom můžete přejít prostřednictvím hello odkazů v hello nabídky na levé straně toofind hello užitečné zdroje informací o Mobile Engagement.
+* Přidali jsme hello [informačního kanálu RSS služby](https://aka.ms/azmerssfeed) do této aplikace, aby se vždy aktualizovat o hello nejnovější aktualizace produktu.
+* Můžete také projít hello ukázkové scénáře tooexperience hello typ oznámení oznámení, které jsou podporovány Mobile Engagementu pro každou platformu. Tato oznámení mohou být zkušeného místně – to znamená, můžete kliknout na tlačítka hello na hello obrazovky tooshow hello prostředí oznámení, která je stejná toosending hello oznámení z platformy Mobile Engagement hello.
 
 ![Nabídky aplikace pro Windows][4]
 
 ![Nabídky aplikace pro iOS][5]
 ![nabídky aplikace pro Android][6]
 
-**Zdrojový kód stáhněte z Githubu odkazů (dříve uvedených):**
+**Stáhněte hello zdrojového kódu z hello Githubu odkazů (uvedených výše):**
 
-* Po stažení zdrojový kód, otevřete ho v příslušných vývojového prostředí – XCode pro iOS, Android Studio pro Android a Visual Studio pro Windows.
-* Potom postupujte podle našich [základní kroky pro integraci sady SDK](mobile-engagement-windows-store-dotnet-get-started.md) tak, že jste tuto aplikaci připojit k vlastní instanci back-end Mobile Engagement.
-  * Budete muset nakonfigurovat připojovací řetězec v aplikaci.
-  * Musíte také nakonfigurovat nabízená oznámení pro vaši aplikaci.
-* Můžete si všimnout, že aplikace je instrumentovány s Mobile Engagement. Proto jako otevřete aplikaci po připojení k back-end, budete moci zobrazit uživatelské relace, aktivity, události a tak dále, na **monitorování** kartě.
-* Také budete moci odesílat oznámení do této aplikace z vlastního instance Mobile Engagement, místo použití místního oznámení.
+* Po stažení hello zdrojový kód, otevře se v prostředí pro příslušné vývoj hello – XCode pro iOS, Android Studio pro Android a Visual Studio pro Windows.
+* Potom postupujte podle našich [základní kroky pro integraci sady SDK](mobile-engagement-windows-store-dotnet-get-started.md) tak, že budete mít tooconnect tooits tuto aplikaci vlastní instance back-end Mobile Engagement.
+  * Je nutné tooconfigure připojovací řetězec v aplikaci hello.
+  * Budete také potřebovat tooconfigure hello nabízená oznámení platformy pro vaši aplikaci.
+* Můžete si všimnout, že je s Mobile Engagementem instrumentovány v samotné aplikaci hello. Proto při otevření aplikace hello po jejím propojením toohello back-end, budete moct toosee hello uživatelské relace, aktivity, události a tak dále, na hello **monitorování** kartě.
+* Také budete moct toosend oznámení toothis aplikace z vlastního instance Mobile Engagement, místo použití místního oznámení.
   
-  * Sem můžete přidat zařízení jako testovací zařízení pomocí **získat ID zařízení** položky nabídky v aplikaci. To vám dává ID zařízení, která pak zaregistrovat jako testovací zařízení s vaší instancí back-end platformy.
+  * Sem můžete přidat zařízení jako testovací zařízení pomocí hello **Get hello ID zařízení** položky nabídky v aplikaci hello. To vám dává ID zařízení, která pak zaregistrovat jako testovací zařízení s vaší instancí back-end platformy.
     
     ![ID zařízení v systému Windows][7]
     
     ![ID zařízení v systému iOS][8]
     ![ID zařízení v systému Android][9]
 
-## <a name="key-features-of-the-demo-app"></a>Klíčové funkce ukázkovou aplikaci
-* Jak už bylo zmíněno dříve, s touto aplikací mít ve vaší ruky všechny klíče prostředky pro Mobile Engagement. Můžete přejít prostřednictvím odkazů v levé nabídce.
-* Oznámení se na aplikace pro každou platformu můžete zaznamenat. Tato oznámení mohou být zajišťovány jako **pouze oznámení**, kde kliknutím na oznámení jednoduše otevře nativní obrazovky aplikace (pomocí **přímé propojení**)--nebo jako **sdělení webovém**, kde může poskytovat další obsah HTML z části Mobile Engagement back end, který se má zobrazit při kliknutí na oznámení.
+## <a name="key-features-of-hello-demo-app"></a>Klíčové funkce hello ukázkovou aplikaci
+* Jak už bylo zmíněno dříve, s touto aplikací mít ve vaší ruky všechny hello klíče prostředky pro Mobile Engagement. Hello odkazy můžete projít v levé nabídce hello.
+* Oznámení se na aplikace pro každou platformu můžete zaznamenat. Tato oznámení mohou být zajišťovány jako **pouze oznámení**, kde kliknutím na oznámení hello jednoduše otevře nativní obrazovky aplikace hello (pomocí **přímé propojení**)--nebo jako **Web oznámení**, kde můžete dodat další obsah HTML z hello end Mobile Engagementu zpět toobe zobrazí po kliknutí na hello oznámení.
   
     ![Oznámení se na aplikace][29]
-* V systému iOS budete muset zavřete aplikaci najdete v části nabízená oznámení se na aplikace nebo systému. Můžete se podívat na implementaci zde pro přidání **tlačítka akce**, jako jsou ty, které jsou přidány do tohoto oznámení se na aplikace pro *zpětné vazby* a *sdílenou složku* (tak, aby uživatel může trvat akce přímo z vlastního oznámení).
+* V systému iOS máte tooclose hello toosee hello se na aplikace nebo systému nabízená oznámení v aplikaci. Můžete se podívat na implementaci hello zde pro přidání **tlačítka akce**, jako je ta, která jsou přidané toothis oznámení se na aplikace pro hello *zpětné vazby* a *sdílenou složku* (tak, aby Hello uživatel může provádět akce přímo z vlastního hello oznámení).
   
     ![Oznámení se na aplikace v systému iOS][11] ![Zobrazení oznámení se na aplikace v systému iOS][14]
-* Možnosti, které jsou podporovány v systému Android, přidáváte víceřádkový text (**dlouhý Text**) nebo bitovou kopii oznámení (**velký obrázek**) na oznámení, spolu s **tlačítka akce** (jak podporuje iOS).
+* V systému Android se hello možnosti, které jsou podporovány přidáváte víceřádkový text (**dlouhý Text**) nebo bitovou kopii oznámení (**velký obrázek**) toohello oznámení, společně s hello **akce tlačítka** (jak podporuje iOS).
   
     ![Oznámení se na aplikace v systému Android][12] ![Zobrazení oznámení se na aplikace v systému Android][15]
-* Ve Windows 10 uvidíte, jak oznámení vypadá na počítač. Toto oznámení se také objeví ve Windows 10 **centru oznámení**. Neexistuje žádná podpora pro přidání **tlačítka akce** v tuto chvíli v sadě Windows SDK.
+* Ve Windows 10 uvidíte, jak hello oznámení vypadá na hello PC. Toto oznámení taky se zobrazí v hello Windows 10 **centru oznámení**. Neexistuje žádná podpora pro přidání **tlačítka akce** v hello Windows SDK okamžiku hello.
   
     ![Oznámení se na aplikace v systému Windows][10] ![Zobrazení se na aplikace v systému Windows][13]
-* Oznámení "v aplikaci" výchozí pro každou platformu můžete zaznamenat. Toto je prostředí dvoustupňové kde **oznámení** okna je zobrazen jako první. Když kliknete na tlačítko ji, otevře se nahoru na celé obrazovce **oznámení**, jak je uvedeno v následujícím snímku obrazovky. Obsah tohoto oznámení pochází z vaší instance back-end Mobile Engagement. Sada SDK obsahuje šablony pro oznámení a oznámení. Můžete snadno přizpůsobit, jak je znázorněno v této ukázkové aplikaci a uveďte naše logo a barevné zvýrazňování.  
+* Oznámení "v aplikaci" výchozí pro každou platformu můžete zaznamenat. Toto je prostředí dvoustupňové kde **oznámení** okna je zobrazen jako první. Když kliknete na tlačítko ji, otevře se nahoru na celé obrazovce **oznámení**, jak je uvedeno v následující snímek obrazovky hello. Hello obsah tohoto oznámení pochází z vaší instance back-end Mobile Engagement. Hello SDK má hello šablony pro oznámení a oznámení. Můžete snadno přizpůsobit, jak je znázorněno v této ukázkové aplikaci uveďte hello naše logo a barevné zvýrazňování.  
   
     ![Oznámení v aplikaci v systému Windows][16]
   
     ![Oznámení v aplikaci v iOS][17]  ![Oznámení v aplikaci pro Android][18]
   
     **iOS**, **Android**
-* Můžete také **kategorie** funkce Mobile Engagement k přizpůsobení toto výchozí chování. V ukázkovou aplikaci jsme jste ukázán dvě běžné způsoby, jak změnit možnosti oznámení. Všimněte si, že funkce kategorie není dosud podporována ve Windows SDK.
+* Můžete taky hello **kategorie** funkce Mobile Engagement toocustomize toto výchozí chování. V hello ukázkovou aplikaci jsme jste ukázán dvě běžné způsoby toochange hello činnost hello oznámení. Všimněte si, že v hello Windows SDK ještě není podporovaný této funkce kategorie hello.
   
     **Přes celou obrazovku vkládaná:**
   
@@ -127,7 +127,7 @@ Tuto aplikaci můžete použít následujícími způsoby:
 
 **iOS**, **Android**
 
-* Mobile Engagement také podporuje speciálním typem oznámení v aplikaci s názvem **hlasování**. Můžete k odeslání rychlé průzkumy uživatelům segmentovaným aplikace. Můžete přidat otázky a možnosti pro každou otázku stejně jako na následujícím snímku obrazovky. To pak nezobrazí jako oznámení v aplikaci pro uživatele aplikace.   
+* Mobile Engagement také podporuje speciálním typem oznámení v aplikaci s názvem **hlasování**. To vám umožní toosend rychlé průzkumy tooyour segmentované aplikace uživatelů. Můžete přidat otázky a možnosti pro každou otázku jako hello následující snímek obrazovky. To pak nezobrazí jako uživatel aplikace toohello oznámení v aplikaci.   
   
     ![Dotazování oznámení][32]
   
@@ -137,7 +137,7 @@ Tuto aplikaci můžete použít následujícími způsoby:
 
 **iOS**, **Android**
 
-* Mobile Engagement také podporuje odesílání tichou **Data Push** oznámení. Pomocí těchto oznámení může odesílat data ze služby (např. data JSON v následujícím příkladu), které lze zpracovat ve vaší aplikaci a určitou akci. Příkladem je, jak jsme se mění ceny položky selektivně pomocí dat nabízená oznámení.
+* Mobile Engagement také podporuje odesílání tichou **Data Push** oznámení. Pomocí těchto oznámení může odesílat data ze služby (např. hello data JSON v hello následující příklad), které lze zpracovat ve vaší aplikaci a určitou akci. Příkladem je, jak jsme se mění hello ceny položky selektivně pomocí dat nabízená oznámení.
   
     ![Data nabízená oznámení][33]
   
@@ -148,7 +148,7 @@ Tuto aplikaci můžete použít následujícími způsoby:
 **iOS**, **Android**
 
 > [!NOTE]
-> Podrobné pokyny pro některý z těchto oznámení můžete zobrazit kliknutím **klepněte sem a pokyny, jak chcete tahle oznámení odeslat z platformy Mobile Engagement** na jakékoli obrazovce ukázka oznámení.
+> Podrobné pokyny pro některý z těchto oznámení můžete zobrazit kliknutím **klepněte sem a pokyny, jak toosend tato oznámení z platformy Mobile Engagement** na jakékoli obrazovce ukázka oznámení.
 > 
 > 
 

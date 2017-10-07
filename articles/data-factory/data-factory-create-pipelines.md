@@ -1,6 +1,6 @@
 ---
-title: "Vytvořit nebo plán kanály, řetězu aktivit ve službě Data Factory | Microsoft Docs"
-description: "Naučte se vytvořit kanál dat v Azure Data Factory přesunout a transformovat data. Vytvoření pracovního postupu řízených daty k vytvoření připravené k použití informací."
+title: "Kanály aaaCreate nebo plánu, řetěz aktivity v datové továrně | Microsoft Docs"
+description: "Další informace toocreate datový kanál v Azure Data Factory toomove a transformovat data. Vytvoření dat řízené informace připravené toouse tooproduce pracovního postupu."
 keywords: "datový kanál, pracovní postup řízených daty"
 services: data-factory
 documentationcenter: 
@@ -15,38 +15,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2017
 ms.author: shlo
-ms.openlocfilehash: 97cdd38488bd52b04d24ab2b413cae99355b77c0
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4a0fc20f98ce6453c16955e97fddb891926c173a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
-Tento článek vám pomůže pochopit kanály a aktivity v Azure Data Factory a použít je k vytvoření pracovních řízené daty začátku do konce pro přesun dat a zpracování dat scénáře.  
+Tento článek vám pomůže pochopit kanály a aktivity v Azure Data Factory a použít tooconstruct začátku do konce řízené daty pracovních pro přesun dat a zpracování dat scénáře.  
 
 > [!NOTE]
-> Tento článek předpokládá, že jste prošli [Úvod do Azure Data Factory](data-factory-introduction.md). Pokud nemáte hands-na-zkušenosti s vytvářením objektů pro vytváření dat, projít [kurzu transformaci dat](data-factory-build-your-first-pipeline.md) nebo [kurzu přesun dat](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) by vám pomohou pochopit, v tomto článku lépe.  
+> Tento článek předpokládá, že jste prošli [Úvod tooAzure Data Factory](data-factory-introduction.md). Pokud nemáte hands-na-zkušenosti s vytvářením objektů pro vytváření dat, projít [kurzu transformaci dat](data-factory-build-your-first-pipeline.md) nebo [kurzu přesun dat](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) by vám pomohou pochopit, v tomto článku lépe.  
 
 ## <a name="overview"></a>Přehled
-Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které společně provádějí úlohy. Aktivity v kanálu definovat akce lze provádět na vaše data. Například můžete použít aktivitu kopírování ke zkopírování dat z místního SQL Serveru do služby Azure Blob Storage. Pak použijete aktivitu Hive, která spouští skript Hivu v clusteru Azure HDInsight, pro zpracování/transformaci dat ze služby Blob Storage za účelem vytvoření výstupních dat. Nakonec použijte aktivitu kopírování druhé kopie výstupní data do Azure SQL Data Warehouse nad které business intelligence (BI), vytváření sestav řešení jsou vytvořeny pro. 
+Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které dohromady provádějí určitou úlohu. Hello aktivity v kanálu definují akce tooperform na vaše data. Můžete například použít kopie aktivity toocopy data z tooan systému SQL Server místní úložiště objektů Blob Azure. Poté použijte aktivitu Hive, která se spouští skript Hive na Azure HDInsight clusteru tooprocess nebo transformace dat z hello objektu blob úložiště tooproduce výstupní data. Nakonec použijte druhé kopie aktivity toocopy hello výstupní data tooan Azure SQL Data Warehouse nad kterou business intelligence (BI) jsou integrované řešení pro sestavy. 
 
-Aktivita může trvat vstup nula nebo více [datové sady](data-factory-create-datasets.md) a vytvořit jeden nebo více výstup [datové sady](data-factory-create-datasets.md). Následující diagram znázorňuje vztah mezi kanálu, aktivity a datové sady v objektu pro vytváření dat: 
+Každá aktivita může mít nula nebo více vstupních [datových sad](data-factory-create-datasets.md) a může generovat jednu nebo více výstupních [datových sad](data-factory-create-datasets.md). Hello následující diagram znázorňuje hello vztah mezi kanálu, aktivity a datové sady v objektu pro vytváření dat: 
 
 ![Vztah mezi kanálu, aktivity a datové sady](media/data-factory-create-pipelines/relationship-pipeline-activity-dataset.png)
 
-Kanál umožňuje spravovat aktivity jednotlivě jako sada místo každé z nich. Můžete nasadit, plánovat, pozastavit a obnovit kanál, místo nezávisle zabývají aktivity v kanálu.
+Kanál vám umožní aktivity toomanage jako sada místo každé z nich jednotlivě. Můžete například nasadit, naplánovat, pozastavit a obnovit kanál, místo plánování práce s aktivitami v kanálu hello nezávisle.
 
 Data Factory podporuje dva typy aktivit: aktivity přesunu dat a transformace dat. Každá aktivita může mít vstup nula nebo více [datové sady](data-factory-create-datasets.md) a vytvoří výstupní datové sady.
 
-Vstupní datová sada představuje vstup pro aktivitu v kanálu a výstupní datová sada představuje výstup pro aktivitu. Datové sady identifikují dat v rámci různých úložišť dat, jako je například tabulek, souborů, složek a dokumentů. Po vytvoření datové sady, můžete s aktivitami v kanálu. Datové sady může být například vstupně výstupní datovou sadu aktivity kopírování nebo aktivita HDInsightHive. Další informace o datových sadách najdete v tématu [datové sady v Azure Data Factory](data-factory-create-datasets.md) článku.
+Vstupní datové sady reprezentuje hello vstup pro aktivitu v kanálu hello a výstupní datové reprezentuje hello výstup aktivity hello. Datové sady identifikují data v rámci různých úložišť dat, jako jsou tabulky, soubory, složky a dokumenty. Po vytvoření datové sady můžete tuto datovou sadu používat v aktivitách v rámci kanálu. Datová sada například může být vstupní/výstupní datovou sadou aktivity kopírování nebo aktivity HDInsightHive. Další informace o datových sadách najdete v článku [Datové sady v Azure Data Factory](data-factory-create-datasets.md).
 
 ### <a name="data-movement-activities"></a>Aktivity přesunu dat
-Aktivita kopírování ve službě Data Factory kopíruje data ze zdrojového úložiště dat do úložiště dat jímky. Data Factory podporuje následující typy úložišť dat. Data z libovolného zdroje lze zapsat do libovolné jímky. Kliknutím na úložiště dat se dozvíte, jak kopírovat data z a do daného úložiště.
+Aktivita kopírování v datové továrně zkopíruje data z úložiště zdroje dat úložiště tooa podřízený data. Objekt pro vytváření dat podporuje hello následující datová úložiště. Data z jakéhokoli zdroje může být napsán tooany jímky. Klikněte na tlačítko data store toolearn jak toocopy tooand data z tohoto úložiště.
 
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
-> Úložiště dat s * mohou být místní nebo v Azure IaaS a vyžadují nainstalování [Brány správy dat](data-factory-data-management-gateway.md) na místním počítači nebo na počítači Azure IaaS.
+> Úložiště dat, s * může být místní nebo v Azure IaaS a vyžadují tooinstall [Brána pro správu dat](data-factory-data-management-gateway.md) na počítači v místní nebo Azure IaaS.
 
 Podrobnosti najdete v článku [Aktivity přesunu dat](data-factory-data-movement-activities.md).
 
@@ -56,13 +56,13 @@ Podrobnosti najdete v článku [Aktivity přesunu dat](data-factory-data-movemen
 Podrobnosti najdete v článku [Aktivity transformace dat](data-factory-data-transformation-activities.md).
 
 ### <a name="custom-net-activities"></a>Vlastní aktivity .NET 
-Pokud potřebujete přesunout úložiště dat do nebo z dat, aktivitě kopírování nebude podporovat, nebo transformace dat pomocí vlastní logiky, vytvořte **vlastní aktivity .NET**. Podrobnosti o vytvoření a používání vlastní aktivity najdete v tématu [Použití vlastních aktivit v kanálu služby Azure Data Factory](data-factory-use-custom-activities.md).
+Pokud potřebujete toomove dat do/z dat nebude podporovat, nebo transformace dat pomocí vlastní logiky, vytvořte úložiště, které hello aktivity kopírování **vlastní aktivity .NET**. Podrobnosti o vytvoření a používání vlastní aktivity najdete v tématu [Použití vlastních aktivit v kanálu služby Azure Data Factory](data-factory-use-custom-activities.md).
 
 ## <a name="schedule-pipelines"></a>Plán kanálů
-Kanál je aktivní jenom mezi jeho **spustit** čas a **end** čas. Nebude provedena před časem zahájení nebo po koncovém čase. Když je pozastavená kanálu, se nebudou provedeny bez ohledu na jeho počáteční a koncový čas. Pro kanál ke spuštění by neměl být pozastavena. V tématu [plánování a provádění](data-factory-scheduling-and-execution.md) pochopit, jak funguje plánování a provádění v Azure Data Factory.
+Kanál je aktivní jenom mezi jeho **spustit** čas a **end** čas. Nebude provedena před časem zahájení hello nebo po hello koncový čas. Když je pozastavená hello kanálu, se nebudou provedeny bez ohledu na jeho počáteční a koncový čas. Pro toorun kanálu by nemělo být pozastavena. V tématu [plánování a provádění](data-factory-scheduling-and-execution.md) toounderstand plánování a provádění fungování v Azure Data Factory.
 
-## <a name="pipeline-json"></a>JSON kanálu
-Dejte nám trvat bližší pohled na tom, jak je definován kanál ve formátu JSON. Obecná struktura pro kanál vypadá takto:
+## <a name="pipeline-json"></a>Zápis JSON kanálu
+Teď se blíže podíváme na to, jak se kanál definuje ve formátu JSON. Obecná struktura Hello pro kanál vypadá takto:
 
 ```json
 {
@@ -88,18 +88,18 @@ Dejte nám trvat bližší pohled na tom, jak je definován kanál ve formátu J
 
 | Značka | Popis | Požaduje se |
 | --- | --- | --- |
-| jméno |Název kanálu. Zadejte název, který představuje akci, která provádí kanálu. <br/><ul><li>Maximální počet znaků: 260</li><li>Musí začínat číslem písmenem nebo podtržítkem (_)</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
-| Popis | Zadejte text popisující, co se používá kanál pro. |Ano |
-| aktivity | **Aktivity** části může mít jeden nebo více aktivity definované v něm. Najdete v části Další informace o elementu, JSON aktivity. | Ano |  
-| start | Počáteční datum a čas pro kanál. Musí být v [formátu ISO](http://en.wikipedia.org/wiki/ISO_8601). Například: `2016-10-14T16:32:41Z`. <br/><br/>Je možné zadat místní čas, například Odhadovaný čas. Tady je příklad: `2016-02-27T06:00:00-05:00`", což je odhadované AM 6<br/><br/>Počáteční a koncové vlastnosti společně zadejte aktivní období kanálu. Výstup řezy jenom vytváří se v tomto aktivní období. |Ne<br/><br/>Pokud zadáte hodnotu pro vlastnost end, zadejte hodnotu pro vlastnost start.<br/><br/>Počáteční a koncový čas i lze vytvořit kanál prázdný. Musíte zadat obě hodnoty se nastavit aktivní období pro kanál ke spuštění. Pokud nezadáte počáteční a koncový čas při vytváření kanálu, můžete nastavit pomocí rutiny Set-AzureRmDataFactoryPipelineActivePeriod později. |
-| End | Koncové datum a čas pro kanál. Pokud zadaný, musí být ve formátu ISO. Příklad: `2016-10-14T17:32:41Z` <br/><br/>Je možné zadat místní čas, například Odhadovaný čas. Tady je příklad: `2016-02-27T06:00:00-05:00`, což je odhadované AM 6<br/><br/>Chcete-li kanál spouštět bez omezení, zadejte jako hodnotu pro vlastnost end 9999-09-09. <br/><br/> Kanál je aktivní jenom mezi její počáteční čas a koncový čas. Nebude provedena před časem zahájení nebo po koncovém čase. Když je pozastavená kanálu, se nebudou provedeny bez ohledu na jeho počáteční a koncový čas. Pro kanál ke spuštění by neměl být pozastavena. V tématu [plánování a provádění](data-factory-scheduling-and-execution.md) pochopit, jak funguje plánování a provádění v Azure Data Factory. |Ne <br/><br/>Pokud zadáte hodnotu pro vlastnost spustit, musíte zadat hodnotu pro vlastnost end.<br/><br/>Naleznete v poznámkách k **spustit** vlastnost. |
-| isPaused | Pokud je nastaven na hodnotu true, kanál nejde spustit. Je v pozastaveném stavu. Výchozí hodnota = false. Tato vlastnost slouží k povolení nebo zakázání kanálu. |Ne |
-| pipelineMode | Metoda pro naplánování spuštění pro kanál. Povolené hodnoty jsou: naplánované (výchozí), jednorázově.<br/><br/>"Pravidelnou" udává, že kanál spouští v zadaném časovém intervalu podle jeho aktivní období (počáteční a koncový čas). 'Jednorázově' udává, že kanál spouští jenom jednou. Po vytvoření jednorázově kanály nelze aktuálně upravit nebo aktualizovat. V tématu [Onetime kanálu](#onetime-pipeline) podrobnosti o jednorázově nastavení. |Ne |
-| ExpirationTime | Doba, po vytvoření, pro kterou [jednorázového kanálu](#onetime-pipeline) je platná a by měla zůstat zřízené. Pokud nemá žádné aktivní, se nezdařilo, nebo až spuštění kanálu je automaticky odstraněna po dorazí čas vypršení platnosti. Výchozí hodnota:`"expirationTime": "3.00:00:00"`|Ne |
-| Datové sady |Seznam datových sad má být používána aktivity definované v kanálu. Tuto vlastnost lze použít k definování datových sad, které jsou specifické pro tento kanál a není definován v rámci služby data factory. Datové sady definované v rámci tohoto kanálu lze použít pouze tento kanál a nesmí se sdílet. V tématu [obor datové sady](data-factory-create-datasets.md#scoped-datasets) podrobnosti. |Ne |
+| jméno |Název kanálu hello. Zadejte název, který představuje hello akci, která hello kanálu provede. <br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (_).</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
+| description | Zadejte text hello popisující, co hello kanálu se používá pro. |Ano |
+| activities | Hello **aktivity** části může mít jeden nebo více aktivity definované v něm. V části hello další podrobnosti o hello aktivity JSON elementu. | Ano |  
+| start | Počáteční datum a čas pro kanál hello. Musí být v [formátu ISO](http://en.wikipedia.org/wiki/ISO_8601). Například: `2016-10-14T16:32:41Z`. <br/><br/>Je možné toospecify místního času, například Odhadovaný čas. Tady je příklad: `2016-02-27T06:00:00-05:00`", což je odhadované AM 6<br/><br/>Hello počáteční a koncové vlastnosti společně zadejte aktivní období pro kanál hello. Výstup řezy jenom vytváří se v tomto aktivní období. |Ne<br/><br/>Pokud zadáte hodnotu pro vlastnost end hello, musíte zadat hodnotu pro vlastnost začátku hello.<br/><br/>Hello počáteční a koncový čas může být prázdný toocreate kanálu. Je potřeba zadat obě hodnoty tooset na aktivní období kanálu toorun hello. Pokud nezadáte počáteční a koncový čas při vytváření kanálu, můžete je nastavit pomocí rutiny Set-AzureRmDataFactoryPipelineActivePeriod hello později. |
+| End | Koncové datum a čas pro kanál hello. Pokud zadaný, musí být ve formátu ISO. Příklad: `2016-10-14T17:32:41Z` <br/><br/>Je možné toospecify místního času, například Odhadovaný čas. Tady je příklad: `2016-02-27T06:00:00-05:00`, což je odhadované AM 6<br/><br/>9999-09-09 toorun hello kanálu bez omezení, zadejte jako hello hodnotu pro vlastnost end hello. <br/><br/> Kanál je aktivní jenom mezi její počáteční čas a koncový čas. Nebude provedena před časem zahájení hello nebo po hello koncový čas. Když je pozastavená hello kanálu, se nebudou provedeny bez ohledu na jeho počáteční a koncový čas. Pro toorun kanálu by nemělo být pozastavena. V tématu [plánování a provádění](data-factory-scheduling-and-execution.md) toounderstand plánování a provádění fungování v Azure Data Factory. |Ne <br/><br/>Pokud zadáte hodnotu pro vlastnost začátku hello, musíte zadat hodnotu pro vlastnost end hello.<br/><br/>Naleznete v poznámkách k hello **spustit** vlastnost. |
+| isPaused | Pokud sada tootrue, hello kanálu nelze spustit. Je v hello pozastaví stavu. Výchozí hodnota = false. Můžete použít tento tooenable vlastnosti nebo zakázat kanál. |Ne |
+| pipelineMode | Metoda Hello plánování spuštění pro hello kanálu. Povolené hodnoty jsou: naplánované (výchozí), jednorázově.<br/><br/>"Pravidelnou" označuje, že kanál hello se spustí v zadaném časovém intervalu podle tooits aktivní období (počáteční a koncový čas). "Jednorázově" označuje, že kanál hello spustí jenom jednou. Po vytvoření jednorázově kanály nelze aktuálně upravit nebo aktualizovat. V tématu [Onetime kanálu](#onetime-pipeline) podrobnosti o jednorázově nastavení. |Ne |
+| ExpirationTime | Doba, po vytvoření pro které hello [jednorázového kanálu](#onetime-pipeline) je platná a by měla zůstat zřízené. Pokud nemá žádné aktivní, se nezdařilo, nebo až spuštění kanálu hello je automaticky odstraněna po dorazí hello čas vypršení platnosti. Výchozí hodnota Hello:`"expirationTime": "3.00:00:00"`|Ne |
+| Datové sady |Seznam toobe datové sady používané aktivity definované v kanálu hello. Tuto vlastnost lze použít toodefine datové sady, které jsou specifické toothis kanálu a není definován v rámci objektu pro vytváření dat hello. Datové sady definované v rámci tohoto kanálu lze použít pouze tento kanál a nesmí se sdílet. V tématu [obor datové sady](data-factory-create-datasets.md#scoped-datasets) podrobnosti. |Ne |
 
-## <a name="activity-json"></a>JSON aktivity
-**Aktivity** části může mít jeden nebo více aktivity definované v něm. Každá aktivita má následující strukturu nejvyšší úrovně:
+## <a name="activity-json"></a>Zápis JSON aktivity
+Hello **aktivity** části může mít jeden nebo více aktivity definované v něm. Každá aktivita má hello nejvyšší úrovně strukturu:
 
 ```json
 {
@@ -122,42 +122,42 @@ Dejte nám trvat bližší pohled na tom, jak je definován kanál ve formátu J
 }
 ```
 
-Následující tabulka popisuje vlastnosti v aktivitě definici JSON:
+Následující tabulka popisuje vlastnosti v aktivitě hello definici JSON:
 
 | Značka | Popis | Požaduje se |
 | --- | --- | --- |
-| jméno | Název aktivity. Zadejte název, který představuje akci, která provádí aktivity. <br/><ul><li>Maximální počet znaků: 260</li><li>Musí začínat číslem písmenem nebo podtržítkem (_)</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
-| Popis | Text popisující jaké aktivity nebo se používá pro |Ano |
-| type | Typ aktivity. Najdete v článku [aktivity přesunu dat](#data-movement-activities) a [aktivit transformace dat](#data-transformation-activities) oddíly pro různé typy aktivit. |Ano |
-| Vstupy |Vstupní tabulky použité aktivitou<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Ano |
-| Výstupy |Výstupní tabulky použité aktivitou.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Ano |
-| linkedServiceName |Název propojené služby použité aktivitou. <br/><br/>Aktivita může vyžadovat, že zadáváte propojené služby, která odkazuje na požadované výpočetním prostředí. |Ano pro aktivita HDInsight a Azure Machine Learning aktivita dávkového vyhodnocování <br/><br/>Ne všechny ostatní uživatelé |
-| rámci typeProperties |Vlastnosti v **rámci typeProperties** části závisí na typu aktivity. Pokud chcete zobrazit vlastnosti typu pro aktivitu, klikněte na tlačítko odkazy na aktivity v předchozí části. | Ne |
-| Zásady |Zásady, které ovlivňují chování běhu aktivity. Pokud není zadaný, použijí se výchozí zásady. |Ne |
-| Scheduler | Vlastnost "scheduler" se používá k definování požadované plánování pro aktivitu. Jeho podvlastnosti jsou stejné jako ty, které jsou v [vlastnost availability v datové sadě](data-factory-create-datasets.md#dataset-availability). |Ne |
+| jméno | Název aktivity hello. Zadejte název, který představuje hello akce, který provádí aktivity hello. <br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (_).</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
+| description | Text popisující, co hello aktivity nebo se používá pro |Ano |
+| type | Typ aktivity hello. V tématu hello [aktivity přesunu dat](#data-movement-activities) a [aktivit transformace dat](#data-transformation-activities) oddíly pro různé typy aktivit. |Ano |
+| Vstupy |Vstupní tabulky použité aktivitou hello<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Ano |
+| Výstupy |Výstupní tabulky použité aktivitou hello.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Ano |
+| linkedServiceName |Název hello propojené služby používané hello aktivity. <br/><br/>Aktivita může vyžadovat, že zadáváte hello propojené služby, která propojí toohello požadované výpočetním prostředí. |Ano pro aktivita HDInsight a Azure Machine Learning aktivita dávkového vyhodnocování <br/><br/>Ne ve všech ostatních případech |
+| typeProperties |Vlastnosti v hello **rámci typeProperties** části závisí na typu aktivity hello. vlastnosti typu toosee pro aktivity, klikněte na aktivitu toohello odkazů v předchozí části hello. | Ne |
+| policy |Zásady, které ovlivňují chování běhové hello hello aktivity. Pokud není zadaný, použijí se výchozí zásady. |Ne |
+| Scheduler | Vlastnost "scheduler" je použité toodefine potřeby plánování aktivity hello. Jeho podvlastnosti jsou hello stejné jako ty, které v hello hello [vlastnost availability v datové sadě](data-factory-create-datasets.md#dataset-availability). |Ne |
 
 
 ### <a name="policies"></a>Zásady
-Zásady ovlivňují chování běhu aktivity, konkrétně při zpracování řezu tabulky. Následující tabulka obsahuje podrobnosti.
+Zásady ovlivňují chování hello běhu aktivity, konkrétně v případě, že je zpracování řezu hello tabulky. Hello následující tabulka poskytuje podrobnosti hello.
 
 | Vlastnost | Povolené hodnoty | Výchozí hodnota | Popis |
 | --- | --- | --- | --- |
-| Souběžnosti |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity.<br/><br/>Určuje počet spuštění paralelní aktivity, které se může stát při jiné řezy. Například pokud aktivitu musí projít, velké sady dostupných dat, mají větší hodnotu souběžnosti urychluje zpracování dat. |
-| executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Určuje pořadí datové řezy, které jsou zpracovávány.<br/><br/>Pokud máte 2 řezy (jeden situaci ve 4 a další v 17: 00) a jsou obě čekající na zpracování. Pokud jste nastavili executionPriorityOrder být NewestFirst, je nejprve zpracování řezu v 17: 00. Podobně pokud nastavíte executionPriorityORder být OldestFIrst, pak ve 4 zpracování řezu se. |
-| Opakování |Integer<br/><br/>Maximální hodnota může být 10 |0 |Počet opakování, než se zpracování dat pro řez je označen jako selhání. Provedení aktivity pro datový řez je opakovat až zadaný počet. Opakovaném provádí co nejdříve po selhání. |
-| Časový limit |Časový interval |00:00:00 |Časový limit aktivity. Příklad: 00:10:00 (znamená časový limit 10 minut)<br/><br/>Pokud hodnota není zadána nebo je 0, časový limit je nekonečno.<br/><br/>Pokud bude čas zpracování dat na řez překročí hodnota časového limitu, se zruší a systém se pokusí opakujte zpracování. Počet pokusů, závisí na vlastnost opakování. Když dojde k vypršení časového limitu, je stav nastaven na TimedOut. |
-| Zpoždění |Časový interval |00:00:00 |Zadejte zpoždění před zpracování dat řezu spustí.<br/><br/>Provádění aktivity pro datový řez se spustí po zpoždění očekávaný čas spuštění.<br/><br/>Příklad: 00:10:00 (znamená zpoždění 10 minut) |
-| opakování po delší době |Integer<br/><br/>Maximální hodnota: 10 |1 |Počet dlouho opakování pokusů, než řez spuštění se nezdařilo.<br/><br/>pokusy o opakování po delší době jsou rozmístěny ve longRetryInterval. Takže pokud je třeba zadat čas mezi pokusy o opakování, použijte opakování po delší době. Pokud jsou zadané opakování a opakování po delší době, jednotlivé pokusy o opakování po delší době zahrnuje opakovaných pokusů a je maximální počet pokusů o opakování * opakování po delší době.<br/><br/>Například, pokud bychom měli následující nastavení v zásadách aktivit:<br/>Opakujte: 3<br/>opakování po delší době: 2<br/>longRetryInterval: 01:00:00<br/><br/>Předpokládá se jenom jeden řez provést (stav Čeká) a provedení aktivity pokaždé, když dojde k chybě. Nejdřív by 3 provádění po sobě jdoucích pokusů. Po každém pokusu o stav řezu bude opakovat. Po první 3 pokusy jsou přes, bude stav řezu opakování po delší době.<br/><br/>Po hodině (který je na longRetryInteval hodnota) bude další sadu 3 provádění po sobě jdoucích pokusů. Poté stav řezu by se nezdařilo a by se pokus o žádné další opakování. Proto celkové 6 pokusy byly provedeny.<br/><br/>Pokud žádné spuštění úspěšné, stav řezu by mít připravené a jsou pokus o žádné další opakování.<br/><br/>opakování po delší době je možné použít situace, kdy závislé data dorazí na Nedeterministický časy nebo je v nestabilním stavu v rámci které zpracování dat dojde celém prostředí. V takových případech to, které opakování, jedna po druhé nemusí být úspěšná a díky tomu v intervalech čas má za následek požadované výstup.<br/><br/>Word varování: nenastavujte vysoké hodnoty pro opakování po delší době nebo longRetryInterval. Vyšší hodnoty obvykle implikují dalších systémových otázek. |
-| longRetryInterval |Časový interval |00:00:00 |Prodleva mezi pokusy o opakování dlouho |
+| Souběžnosti |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity hello.<br/><br/>Určuje hello počet spuštěních paralelní aktivity, které se může stát při jiné řezy. Například pokud aktivita vyžaduje toogo prostřednictvím velké sady dostupných dat, mají větší hodnotu souběžnosti urychluje zpracování dat hello. |
+| executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Určuje pořadí hello datové řezy, které jsou zpracovávány.<br/><br/>Pokud máte 2 řezy (jeden situaci ve 4 a další v 17: 00) a jsou obě čekající na zpracování. Pokud jste nastavili hello executionPriorityOrder toobe NewestFirst, hello řez v 17: 00, je zpracován jako první. Podobně pokud nastavíte hello executionPriorityORder toobe OldestFIrst, pak hello ve 4 zpracování řezu se. |
+| retry |Integer<br/><br/>Maximální hodnota může být 10 |0 |Počet opakovaných pokusů před hello zpracování dat pro hello řez je označena jako selhání. Provedení aktivity pro datový řez je opakovat až toohello zadaný počet opakování. co nejdříve po selhání hello se provádí Hello opakování. |
+| timeout |Časový interval |00:00:00 |Časový limit aktivity hello. Příklad: 00:10:00 (znamená časový limit 10 minut)<br/><br/>Pokud hodnota není zadána nebo je 0, vypršení časového limitu hello je nekonečno.<br/><br/>Pokud doba zpracování dat hello na řez překročí hodnota časového limitu hello, se zruší a hello systém pokusí tooretry hello zpracování. Hello počet opakovaných pokusů závisí na vlastnosti opakování hello. Když dojde k vypršení časového limitu, je nastaven stav hello tooTimedOut. |
+| Zpoždění |Časový interval |00:00:00 |Zadejte zpoždění hello před spuštěním zpracování dat hello řez.<br/><br/>Hello provádění aktivity pro datový řez je spuštěn v minulosti hello očekávaný čas provádění po hello zpoždění.<br/><br/>Příklad: 00:10:00 (znamená zpoždění 10 minut) |
+| opakování po delší době |Integer<br/><br/>Maximální hodnota: 10 |1 |Hello počet dlouho opakování pokusů, než hello řez spuštění se nezdařilo.<br/><br/>pokusy o opakování po delší době jsou rozmístěny ve longRetryInterval. Takže pokud budete potřebovat toospecify doba mezi pokusy o opakování, použijte opakování po delší době. Pokud jsou zadané opakování a opakování po delší době, jednotlivé pokusy o opakování po delší době zahrnuje opakovaných pokusů a je hello maximální počet pokusů o opakování * opakování po delší době.<br/><br/>Například, pokud bychom měli hello následující nastavení v zásadě hello aktivity:<br/>Opakujte: 3<br/>opakování po delší době: 2<br/>longRetryInterval: 01:00:00<br/><br/>Předpokládá se jenom jeden řez tooexecute (stav Čeká) a provedení aktivity hello pokaždé, když dojde k chybě. Nejdřív by 3 provádění po sobě jdoucích pokusů. Po každém pokusu o stav řezu hello bude opakovat. Po první 3 pokusy jsou přes, bude stav řezu hello opakování po delší době.<br/><br/>Po hodině (který je na longRetryInteval hodnota) bude další sadu 3 provádění po sobě jdoucích pokusů. Od tohoto stavu řezu hello by se nezdařilo a by se pokus o žádné další opakování. Proto celkové 6 pokusy byly provedeny.<br/><br/>Pokud žádné spuštění úspěšné, stav řezu hello by připravené a jsou pokus o žádné další opakování.<br/><br/>opakování po delší době je možné použít situace, kdy závislé data dorazí v časech Nedeterministický nebo hello celém prostředí je v nestabilním stavu v rámci které zpracování dat dojde. V takových případech nemusí být úspěšná při provádění opakování, jedna po druhé a tak v intervalech čas má za následek hello potřeby výstup.<br/><br/>Word varování: nenastavujte vysoké hodnoty pro opakování po delší době nebo longRetryInterval. Vyšší hodnoty obvykle implikují dalších systémových otázek. |
+| longRetryInterval |Časový interval |00:00:00 |Hello prodleva mezi pokusy o opakování dlouho |
 
 ## <a name="sample-copy-pipeline"></a>Ukázkový kanál kopírování
-V následující ukázkový kanál, je jedna aktivita typu **kopie** v **aktivity** části. V této ukázce [aktivity kopírování](data-factory-data-movement-activities.md) kopíruje data z Azure Blob storage do Azure SQL database. 
+V hello následující ukázkový kanál služby, je jedna aktivita typu **kopie** v hello **aktivity** části. V této ukázce hello [aktivity kopírování](data-factory-data-movement-activities.md) zkopíruje data z Azure Blob storage tooan Azure SQL database. 
 
 ```json
 {
   "name": "CopyPipeline",
   "properties": {
-    "description": "Copy data from a blob to Azure SQL table",
+    "description": "Copy data from a blob tooAzure SQL table",
     "activities": [
       {
         "name": "CopyFromBlobToSQL",
@@ -196,16 +196,16 @@ V následující ukázkový kanál, je jedna aktivita typu **kopie** v **aktivit
 } 
 ```
 
-Je třeba počítat s následujícím:
+Všimněte si hello následující body:
 
-* V části aktivit je jenom jedna aktivita, jejíž vlastnost **type** je nastavená na **Copy**.
-* Vstup aktivity je nastavený na **InputDataset** a výstup aktivity je nastavený na **OutputDataset**. V tématu [datové sady](data-factory-create-datasets.md) článku pro definování datové sady ve formátu JSON. 
-* V části **typeProperties** je jako typ zdroje určen **BlobSource** a jako typ jímky **SqlSink**. V [aktivity přesunu dat](#data-movement-activities) oddíl, klikněte na ukládání dat, kterou chcete použít jako zdroj nebo jímka Další informace o přesun dat do nebo z tohoto úložiště dat. 
+* V části hello aktivit je jenom jedna aktivita jejichž **typ** je nastaven příliš**kopie**.
+* Vstup aktivity hello nastaven příliš**InputDataset** a výstup hello aktivity je nastavený příliš**OutputDataset**. Informace o definicích datových sad ve formátu JSON najdete v článku [Datové sady](data-factory-create-datasets.md). 
+* V hello **rámci typeProperties** části **BlobSource** je zadán jako typ zdroje hello a **SqlSink** je zadán jako typ jímky hello. V hello [aktivity přesunu dat](#data-movement-activities) klikněte na úložiště dat, že chcete jako zdroj nebo podřízený toolearn více informací o přesun dat z tohoto úložiště dat toouse hello. 
 
-Kompletní a podrobný postup vytváření tohoto kanálu, najdete v části [kurz: kopírování dat z úložiště objektů Blob do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+Kompletní a podrobný postup vytváření tohoto kanálu, najdete v části [kurz: kopírování dat z úložiště objektů Blob tooSQL databáze](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
 ## <a name="sample-transformation-pipeline"></a>Ukázkový kanál transformace
-V následující ukázkový kanál, je jedna aktivita typu **HDInsightHive** v **aktivity** části. V této ukázce [aktivitu HDInsight Hive](data-factory-hive-activity.md) transformuje data z úložiště objektů Blob v Azure tak, že spustíte soubor skriptu Hive v clusteru Azure HDInsight Hadoop. 
+V hello následující ukázkový kanál služby, je jedna aktivita typu **HDInsightHive** v hello **aktivity** části. V této ukázce hello [aktivitu HDInsight Hive](data-factory-hive-activity.md) transformuje data z úložiště objektů Blob v Azure tak, že spustíte soubor skriptu Hive v clusteru Azure HDInsight Hadoop. 
 
 ```json
 {
@@ -252,32 +252,32 @@ V následující ukázkový kanál, je jedna aktivita typu **HDInsightHive** v *
 }
 ```
 
-Je třeba počítat s následujícím: 
+Všimněte si hello následující body: 
 
-* V části aktivit je jenom jedna aktivita jejichž **typ** je nastaven na **HDInsightHive**.
-* Soubor skriptu Hive **partitionweblogs.hql** je uložený v účtu služby Azure Storage (který určuje služba scriptLinkedService s názvem **AzureStorageLinkedService**) a ve složce **script** v kontejneru **adfgetstarted**.
-* `defines` Části slouží k určení nastavení běhového prostředí, které se předávají skriptu hive jako konfigurační hodnoty Hive (např `${hiveconf:inputtable}`, `${hiveconf:partitionedtable}`).
+* V části hello aktivit je jenom jedna aktivita jejichž **typ** je nastaven příliš**HDInsightHive**.
+* soubor skriptu Hive Hello **partitionweblogs.hql**, je uložený v účtu úložiště Azure hello (určeného hello scriptLinkedService, nazývá **AzureStorageLinkedService**) a v  **skript** složky v kontejneru hello **adfgetstarted**.
+* Hello `defines` část se nastavení používané toospecify hello běhového prostředí, které se předávají toohello skriptu hive jako konfigurační hodnoty Hive (např `${hiveconf:inputtable}`, `${hiveconf:partitionedtable}`).
 
-**Rámci typeProperties** části se liší pro každou aktivitu transformace. Další informace o vlastnostech typu podporovaných aktivity transformace, klikněte na aktivitu transformaci v [aktivit transformace dat](#data-transformation-activities) tabulky. 
+Hello **rámci typeProperties** části se liší pro každou aktivitu transformace. toolearn o vlastnosti typu podporované pro transformaci aktivitu, klikněte na tlačítko hello transformace aktivity v hello [aktivit transformace dat](#data-transformation-activities) tabulky. 
 
-Kompletní a podrobný postup vytváření tohoto kanálu, najdete v části [kurz: sestavit svůj první kanál pro zpracování dat pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md). 
+Kompletní a podrobný postup vytváření tohoto kanálu, najdete v části [kurz: vytvoření vaší první dat tooprocess kanálu pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md). 
 
 ## <a name="multiple-activities-in-a-pipeline"></a>Více aktivit v kanálu
-Předchozí dva ukázková kanály obsahují pouze jednu aktivitu. Můžete mít více než jednu aktivitu v kanálu.  
+Hello předchozí dva ukázková kanály obsahují pouze jednu aktivitu. Kanál může obsahovat víc než jednu aktivitu.  
 
-Pokud máte více aktivit v kanálu a výstup aktivity není vstup jinou aktivitu, může paralelně spustit aktivity, pokud připravení řezy vstupní data pro aktivity. 
+Pokud máte více aktivit v kanálu a výstup aktivity není vstup jinou aktivitu, může paralelně spustit hello aktivity, pokud připravení řezy vstupní data aktivity hello. 
 
-Dvě aktivity můžete zřetězené tak, že výstupní datovou sadu jednu aktivitu jako vstupní datové sady z jiné aktivity. Druhá aktivita se spustí, pouze pokud první z nich úspěšně dokončena.
+Dvě aktivity můžete zřetězené tak, že hello výstupní datovou sadu jednu aktivitu jako hello vstupní datové sady hello dalších aktivit. Druhá aktivita Hello spustí jenom v případě, že hello nejdřív jednu úspěšně dokončena.
 
-![Řetězení aktivity v kanálu stejné](./media/data-factory-create-pipelines/chaining-one-pipeline.png)
+![Řetězení aktivity v hello stejné kanálu](./media/data-factory-create-pipelines/chaining-one-pipeline.png)
 
-V této ukázce kanálu má dvě aktivity: aktivity "activity1" a "activity2". Aktivity "activity1" trvá Dataset1 jako vstup a výstup vytváří Dataset2. Aktivity trvá Dataset2 jako vstup a výstup vytváří Dataset3. Od výstup aktivity "activity1" vstup "activity2", "activity2" spustí až po úspěšném dokončení aktivity a produkuje řez Dataset2 je (Dataset2). Pokud aktivity "activity1" z nějakého důvodu selže a nevytváří Dataset2 řez, Activity 2 se nespustí pro tento řez (například: 9: 00 do 10 AM). 
+V této ukázce hello kanálu má dvě aktivity: aktivity "activity1" a "activity2". Hello aktivity "activity1" trvá Dataset1 jako vstup a výstup vytváří Dataset2. Hello aktivity trvá Dataset2 jako vstup a výstup vytváří Dataset3. Od hello výstup aktivity "activity1" (Dataset2) je vstupem hello "activity2" hello "activity2" spustí až po úspěšném dokončení aktivity hello a vytváří hello Dataset2 řez. Pokud z nějakého důvodu selže hello aktivity "activity1" a nevytváří hello Dataset2 řez, hello Activity 2 pro tento řez nejde spustit (například: 9 AM too10 m). 
 
 Můžete také zřetězené aktivity, které jsou v jiné kanály.
 
 ![Řetězení aktivity ve dvou kanálů](./media/data-factory-create-pipelines/chaining-two-pipelines.png)
 
-V této ukázce má Pipeline1 jenom jedna aktivita, která přebírá Dataset1 jako vstup a vytváří Dataset2 jako výstup. Pipeline2 má také jenom jedna aktivita, která přebírá Dataset2 jako vstup a Dataset3 jako výstup. 
+V této ukázce má Pipeline1 jenom jedna aktivita, která přebírá Dataset1 jako vstup a vytváří Dataset2 jako výstup. Hello Pipeline2 má také jenom jedna aktivita, která přebírá Dataset2 jako vstup a Dataset3 jako výstup. 
 
 Další informace najdete v tématu [plánování a provádění](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
 
@@ -292,19 +292,19 @@ Kanály můžete vytvořit pomocí jedné z těchto nástrojů nebo sady SDK.
 - REST API
 - .NET API
 
-Najdete v následujících kurzech podrobné pokyny pro vytváření kanálů pomocí jedné z těchto nástrojů nebo sady SDK.
+V tématu hello následující kurzy pro podrobné pokyny pro vytváření kanálů pomocí jedné z těchto nástrojů nebo sady SDK.
  
 - [Vytvoření kanálu s aktivitou transformace dat](data-factory-build-your-first-pipeline.md)
 - [Vytvoření kanálu s aktivitou přesun dat](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 
-Jakmile kanál vytvořit nasazení, můžete spravovat a monitorovat kanály pomocí oken webu Azure portal nebo monitorování a správě aplikací. Najdete v následujících tématech podrobné pokyny. 
+Jakmile kanál vytvořit nasazení, můžete spravovat a monitorovat hello kanály pomocí oken webu Azure portal nebo monitorování a správě aplikací. V tématu hello následující témata podrobné pokyny. 
 
 - [Monitorování a Správa kanálů pomocí oken webu Azure portal](data-factory-monitor-manage-pipelines.md).
 - [Monitorování a Správa kanálů pomocí monitorování a Správa aplikací](data-factory-monitor-manage-app.md)
 
 
 ## <a name="onetime-pipeline"></a>Jednorázově kanálu
-Můžete vytvořit a naplánovat kanál spouštět pravidelně (například: hodinové nebo denní) v rámci počáteční a koncový čas zadáte v definici kanálu. V tématu [plánování aktivit](#scheduling-and-execution) podrobnosti. Můžete také vytvořit kanál, který se spustí jenom jednou. Uděláte to tak, nastavíte **pipelineMode** vlastnost v definici kanálu pro **jednorázově** jak znázorňuje následující ukázka JSON. Výchozí hodnota pro tuto vlastnost je **naplánované**.
+Můžete vytvořit a naplánovat kanálu toorun pravidelně (například: hodinové nebo denní) v rámci hello spuštění a ukončení zadáte v definici hello kanálu. V tématu [plánování aktivit](#scheduling-and-execution) podrobnosti. Můžete také vytvořit kanál, který se spustí jenom jednou. toodo tedy nastavíte hello **pipelineMode** vlastnost hello kanálu definice příliš**jednorázově** jak je znázorněno v následující ukázka JSON hello. Hello výchozí hodnota pro tuto vlastnost je **naplánované**.
 
 ```json
 {
@@ -342,12 +342,12 @@ Můžete vytvořit a naplánovat kanál spouštět pravidelně (například: hod
 }
 ```
 
-Je třeba počítat s následujícím:
+Vezměte na vědomí následující hello:
 
-* **Spustit** a **end** nejsou zadány časy pro kanál.
-* **Dostupnost** vstup a výstup je zadán datové sady (**frekvence** a **interval**), i když Data Factory nepoužívá hodnoty.  
+* **Spustit** a **end** nejsou zadány časy pro kanál hello.
+* **Dostupnost** vstup a výstup je zadán datové sady (**frekvence** a **interval**), i když Data Factory hello hodnoty nepoužívá.  
 * Zobrazení diagramu nezobrazuje jednorázové kanály. Toto chování je záměrné.
-* Nelze aktualizovat, jednorázové kanály. Můžete klonovat jednorázového kanálu, přejmenujte ji, aktualizovat vlastnosti a nasadit ji vytvořte jiný.
+* Nelze aktualizovat, jednorázové kanály. Můžete klonovat jednorázového kanálu, přejmenujte ji, aktualizovat vlastnosti a nasadit toocreate jiný.
 
 
 ## <a name="next-steps"></a>Další kroky

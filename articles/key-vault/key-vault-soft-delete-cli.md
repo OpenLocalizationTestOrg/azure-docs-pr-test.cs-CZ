@@ -1,6 +1,6 @@
 ---
 ms.assetid: 
-title: "Azure Key Vault - Použití obnovitelného odstranění pomocí rozhraní příkazového řádku"
+title: "aaaAzure klíč trezoru – jak toouse logicky odstranit pomocí rozhraní příkazového řádku"
 description: "Pomocí rozhraní příkazového řádku výstřižků kódu případu příklady konfigurace soft odstranění"
 author: BrucePerlerMS
 manager: mbaldwin
@@ -9,15 +9,15 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: bruceper
-ms.openlocfilehash: 3ee2c5dfb99d734cde25894174466b8e49823c67
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 672f5210ab119c244ca712f0bb80b653b50ea79b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Jak používat Key Vault konfigurace soft odstranění pomocí rozhraní příkazového řádku
+# <a name="how-toouse-key-vault-soft-delete-with-cli"></a>Jak toouse Key Vault obnovitelného odstranění pomocí rozhraní příkazového řádku
 
-Azure Key Vault obnovitelného odstranění funkce umožňuje obnovení odstraněné trezory a objekty trezoru. Konkrétně obnovitelného odstranění adresy následující scénáře:
+Azure Key Vault obnovitelného odstranění funkce umožňuje obnovení odstraněné trezory a objekty trezoru. Konkrétně konfigurace soft odstranění adresy hello následující scénáře:
 
 - Podpora pro obnovitelné odstranění trezoru klíčů
 - Podpora pro obnovitelné odstranění trezoru klíčů objektů; klíče, tajné údaje a certifikáty
@@ -42,14 +42,14 @@ Další informace o oprávněních a řízení přístupu najdete v tématu [zab
 
 ## <a name="enabling-soft-delete"></a>Povolení konfigurace soft odstranění
 
-Abyste mohli obnovit odstraněné trezoru klíčů nebo objekty uložené v trezoru klíčů, musíte nejdřív povolit konfigurace soft odstranění tohoto klíče trezoru.
+možnost toorecover toobe odstraněné trezoru klíčů nebo objekty uložené v klíč trezoru, musíte nejdřív povolit konfigurace soft odstranění tohoto klíče trezoru.
 
 ### <a name="existing-key-vault"></a>Existující trezor klíčů
 
 Pro existující trezor klíčů s názvem ContosoVault následujícím způsobem povolte obnovitelného odstranění. 
 
 >[!NOTE]
->Aktuálně je nutné použít zpracování prostředků Azure Resource Manager zápis přímo *enableSoftDelete* vlastnost prostředku Key Vault.
+>Aktuálně je třeba toouse Azure Resource Manager prostředků manipulaci s toodirectly zápisu hello *enableSoftDelete* toohello vlastnost prostředku Key Vault.
 
 ```azurecli
 az resource update --id $(az keyvault show --name ContosoVault -o tsv | awk '{print $1}') --set properties.enableSoftDelete=true
@@ -57,7 +57,7 @@ az resource update --id $(az keyvault show --name ContosoVault -o tsv | awk '{pr
 
 ### <a name="new-key-vault"></a>Nový trezor klíčů
 
-Povolení konfigurace soft odstranění pro nového trezoru klíčů se provádí v okamžiku vytvoření přidáním příznak konfigurace soft odstranění povolit, aby vaše vytvoření příkazu.
+Povolení konfigurace soft odstranění pro nového trezoru klíčů se provádí v okamžiku vytvoření přidáním hello konfigurace soft odstranění povolit příznak tooyour vytvoření příkazu.
 
 ```azurecli
 az keyvault create --name ContosoVault --resource-group ContosoRG --enable-soft-delete true --location westus
@@ -65,7 +65,7 @@ az keyvault create --name ContosoVault --resource-group ContosoRG --enable-soft-
 
 ### <a name="verify-soft-delete-enablement"></a>Ověřte povolování konfigurace soft odstranění
 
-Ověřte, že trezoru klíčů má konfigurace soft odstranění povolena, spusťte *zobrazit* příkazů a podívejte se 'logicky odstranit povolen?" atribut a jeho nastavení true nebo false.
+tooverify, který trezoru klíčů má konfigurace soft odstranit povolený, spusťte hello *zobrazit* příkazů a vyhledejte hello "Soft odstranit povolen?" atribut a jeho nastavení true nebo false.
 
 ```azurecli
 az keyvault show --name ContosoVault
@@ -73,40 +73,40 @@ az keyvault show --name ContosoVault
 
 ## <a name="deleting-a-key-vault-protected-by-soft-delete"></a>Odstranění trezoru klíčů chráněn konfigurace soft odstranění
 
-Příkaz k odstranění (nebo odebrání) trezoru klíčů zůstane stejný, ale její chování mění v závislosti na tom, jestli jste povolili obnovitelného odstranění nebo ne.
+Hello příkaz toodelete (nebo odebrat) zůstane trezoru klíčů hello stejné, ale její změny chování v závislosti na tom, jestli jste povolili obnovitelného odstranění nebo ne.
 
 ```azurecli
 az keyvault delete --name ContosoVault
 ```
 
 > [!IMPORTANT]
->Pokud spustíte předchozí příkaz pro trezor klíčů, který nemá konfigurace soft odstranění povoleno, bude trvale odstranit tento trezor klíčů a veškerý jeho obsah bez jakékoli možnosti pro obnovení.
+>Pokud spustíte předchozí příkaz hello pro trezor klíčů, který nemá konfigurace soft odstranění povoleno, bude trvale odstranit tento trezor klíčů a veškerý jeho obsah bez jakékoli možnosti pro obnovení.
 
 ### <a name="how-soft-delete-protects-your-key-vaults"></a>Jak odstranit soft chrání vaše trezorů klíčů
 
 S konfigurace soft odstranění povoleno:
 
-- Při odstranění trezoru klíčů není odebrán z jeho skupin prostředků a je umístěn v vyhrazené oboru názvů, který je pouze přidružená k umístění, kde se vytvořila. 
-- Objekty odstraněné klíč trezoru, jako jsou nedostupné klíče, tajných klíčů a certifikátů a tak zůstanou při jejich obsahující trezoru klíčů je ve stavu deleted. 
-- Název DNS pro trezoru klíčů v odstraněném stavu je stále vyhrazené proto nelze vytvořit nový trezor klíčů se stejným názvem.  
+- Při odstranění trezoru klíčů není odebrán z jeho skupin prostředků a je umístěn v vyhrazené oboru názvů, který je pouze přidružené hello umístění, kde se vytvořila. 
+- Objekty odstraněné klíč trezoru, jako jsou nedostupné klíče, tajných klíčů a certifikátů a tak zůstanou při jejich obsahující trezoru klíčů je ve stavu hello odstranit. 
+- název DNS Hello trezoru klíčů v odstraněném stavu je stále vyhrazené, proto nelze vytvořit nový trezor klíčů se stejným názvem.  
 
-Můžete si zobrazit trezorů klíčů stavu deleted, spojené s vaším předplatným, pomocí následujícího příkazu:
+Může zobrazit trezorů klíčů stavu deleted, spojené s vaším předplatným pomocí hello následující příkaz:
 
 ```azurecli
 az keyvault list-deleted
 ```
 
-*ID prostředku* ve výstupu odkazuje na původní ID prostředku trezoru. Vzhledem k tomu, že tento trezor klíčů je teď ve stavu deleted, neexistuje žádný prostředek s ID tohoto zdroje. *Id* pole lze použít k identifikaci prostředků při obnovení nebo vyprazdňování. *Naplánované datum vyprázdnění* pole určuje, kdy se trvale odstraní trezoru (Vymazat) Pokud nebyla provedena žádná akce pro tento trezor odstraněné. Výchozí dobu uchování, používá k výpočtu *naplánované Vyprázdnit data*, je 90 dnů.
+Hello *ID prostředku* v hello výstup odkazuje toohello původní ID prostředku trezoru. Vzhledem k tomu, že tento trezor klíčů je teď ve stavu deleted, neexistuje žádný prostředek s ID tohoto zdroje. Hello *Id* pole lze použít tooidentify hello prostředků při obnovení nebo vyprazdňování. Hello *naplánované datum vyprázdnění* pole označuje, když se trvale odstraní trezoru hello (Vymazat) Pokud nebyla provedena žádná akce pro tento trezor odstraněné. Hello výchozí uchování období, využité toocalculate hello *naplánované Vyprázdnit data*, je 90 dnů.
 
 ## <a name="recovering-a-key-vault"></a>Obnovení trezoru klíčů
 
-Pokud chcete obnovit trezoru klíčů, je třeba zadat název trezoru klíčů, skupinu prostředků a umístění. Všimněte si umístění a skupiny prostředků odstraněné trezoru klíčů, jako je třeba tyto klíče trezoru procesu obnovení.
+toorecover trezoru klíčů, musíte název trezoru klíčů hello toospecify, skupinu prostředků a umístění. Poznámka: hello umístění a skupiny prostředků hello hello odstranit trezor klíčů, jako je třeba tyto klíče trezoru procesu obnovení.
 
 ```azurecli
 az keyvault recover --location westus --name ContosoVault
 ```
 
-Když je obnovena trezoru klíčů, výsledkem je nový prostředek s ID trezoru klíčů původního zdroje. Pokud byl odebrán skupině prostředků, které existovalo trezoru klíčů, musí před trezoru klíčů lze obnovit vytvořit novou skupinu prostředků se stejným názvem.
+Když je obnovena trezoru klíčů, výsledkem hello je nový prostředek s ID hello trezoru klíčů původního zdroje. Pokud byla odebrána skupina prostředků hello kde existovaly hello trezoru klíčů, musí před trezoru klíčů hello lze obnovit vytvořit novou skupinu prostředků se stejným názvem.
 
 ## <a name="key-vault-objects-and-soft-delete"></a>Key Vault objekty a konfigurace soft odstranění
 
@@ -116,9 +116,9 @@ Pro klíč 'ContosoFirstKey' v trezoru klíčů s názvem 'ContosoVault' s konfi
 az keyvault key delete --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-S vaší povolené pro obnovitelného odstranění trezoru klíčů zobrazí odstraněný klíč i stejně, jako je odstraněn s výjimkou, že při explicitně seznamu nebo načtení odstraněné klíčů. Většinu operací pro klíč ve stavu deleted se nezdaří s výjimkou výpis odstraněný klíč, obnovení nebo vyprazdňování ho. 
+S vaší povolené pro obnovitelného odstranění trezoru klíčů zobrazí odstraněný klíč i stejně, jako je odstraněn s výjimkou, že při explicitně seznamu nebo načtení odstraněné klíčů. Většinu operací na klíč v hello odstranit stavu se nezdaří s výjimkou výpis odstraněný klíč, obnovení nebo vyprazdňování ho. 
 
-Například požadavek na seznamu odstranit klíčů v trezoru klíčů, použijte následující příkaz:
+Například toorequest toolist odstranit klíčů v trezoru klíčů, použijte následující příkaz hello:
 
 ```azurecli
 az keyvault key list-deleted --vault-name ContosoVault
@@ -126,7 +126,7 @@ az keyvault key list-deleted --vault-name ContosoVault
 
 ### <a name="transition-state"></a>Přechodový stav. 
 
-Pokud odstraníte klíč v trezoru klíčů s konfigurace soft odstranění povolené, může trvat několik sekund pro přechod k dokončení. Při tomto přechod stavu může zdát, že klíč není v aktivním stavu nebo odstraněném stavu. Tento příkaz zobrazí seznam všech odstraněných klíčů v trezoru klíčů s názvem 'ContosoVault'.
+Pokud odstraníte klíč v trezoru klíčů s konfigurace soft odstranění povolené, může trvat několik sekund, než toocomplete přechod hello. Při tomto přechod stavu může zdát, klíči hello není v aktivním stavu hello nebo hello odstranit stavu. Tento příkaz zobrazí seznam všech odstraněných klíčů v trezoru klíčů s názvem 'ContosoVault'.
 
 ```azurecli
 az keyvault key list-deleted --vault-name ContosoVault
@@ -134,17 +134,17 @@ az keyvault key list-deleted --vault-name ContosoVault
 
 ### <a name="using-soft-delete-with-key-vault-objects"></a>Pomocí konfigurace soft odstranění trezoru klíčů objekty
 
-Jenom jako trezorů klíčů, odstraněný klíč tajný klíč nebo certifikát zůstane ve stavu deleted po dobu 90 dnů Pokud jej obnovit, nebo ji vymazat. 
+Jenom jako trezorů klíčů, odstraněný klíč tajný klíč nebo certifikát zůstane v odstraněném stavu pro až dny too90 Pokud jej obnovit, nebo ji vymazat. 
 
 #### <a name="keys"></a>Klíče
 
-K obnovení odstraněné klíče:
+toorecover odstraněný klíč:
 
 ```azurecli
 az keyvault key recover --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-Trvale odstranit klíč:
+toopermanently odstranit klíč:
 
 ```azurecli
 az keyvault key purge --name ContosoFirstKey --vault-name ContosoVault
@@ -153,7 +153,7 @@ az keyvault key purge --name ContosoFirstKey --vault-name ContosoVault
 >[!NOTE]
 >Vymazání klíč se trvale odstraní, což znamená, že nebude použitelná pro obnovení.
 
-**Obnovit** a **mazání** akce mají své vlastní oprávnění v zásadách přístupu k trezoru klíčů. Pro uživatele nebo instanční objekt by mohl spustit **obnovit** nebo **mazání** akce musí mít odpovídající oprávnění pro tento objekt (klíč nebo tajný klíč) v zásadách přístupu trezoru klíčů. Ve výchozím nastavení **mazání** oprávnění nebyla přidána do zásad přístupu k trezoru klíčů, když "vše" zástupce se používá k udělení oprávnění pro všechny uživatele. Je třeba explicitně udělit **mazání** oprávnění. Například následující příkaz uděluje user@contoso.com oprávnění k provádění různých operací na klíče ve *ContosoVault* včetně **mazání**.
+Hello **obnovit** a **mazání** akce mají své vlastní oprávnění v zásadách přístupu k trezoru klíčů. Pro uživatele nebo službu hlavní toobe možné tooexecute **obnovit** nebo **mazání** akce hello příslušných oprávnění pro tento objekt (klíč nebo tajný klíč) musí mít v zásadách přístupu hello trezoru klíčů. Ve výchozím nastavení, hello **mazání** oprávnění nebyla přidána zásady přístupu tooa trezoru klíčů, po hello "vše" zástupce použité toogrant všechny uživatelské tooa oprávnění. Je třeba explicitně udělit **mazání** oprávnění. Například hello následující příkaz uděluje user@contoso.com oprávnění tooperform několik operací na klíče ve *ContosoVault* včetně **mazání**.
 
 #### <a name="set-a-key-vault-access-policy"></a>Nastavit zásady přístupu k trezoru klíčů
 
@@ -166,7 +166,7 @@ az keyvault set-policy --name ContosoVault --key-permissions get create delete l
 
 #### <a name="secrets"></a>Tajné kódy
 
-Podobně jako klíče jsou tajných klíčů v trezoru klíčů provozovat na s vlastní příkazy. Následující, jsou příkazy pro odstranění, výpis, obnovení a mazání tajných klíčů.
+Podobně jako klíče jsou tajných klíčů v trezoru klíčů provozovat na s vlastní příkazy. Následující, jsou hello příkazy pro odstranění, výpis, obnovení a mazání tajných klíčů.
 
 - Odstranění tajného klíče s názvem SQLPassword: 
 ```azurecli
@@ -178,7 +178,7 @@ az keyvault secret delete --vault-name ContosoVault -name SQLPassword
 az keyvault secret list-deleted --vault-name ContosoVault
 ```
 
-- Tajný klíč v odstraněném stavu obnovení: 
+- Tajný klíč v hello odstranit stavu obnovení: 
 ```azurecli
 az keyvault secret recover --name SQLPassword --vault-name ContosoVault
 ```
@@ -195,10 +195,10 @@ az keyvault secret purge --name SQLPAssword --vault-name ContosoVault
 
 ### <a name="key-vault-objects"></a>Objekty trezoru klíčů
 
-Vymazání klíč, tajný klíč nebo certifikát se trvale odstraní, což znamená, že nebude použitelná pro obnovení. Trezor klíčů, který obsahuje odstraněný objekt se ale zachovají stejně jako všechny ostatní objekty v trezoru klíčů. 
+Vymazání klíč, tajný klíč nebo certifikát se trvale odstraní, což znamená, že nebude použitelná pro obnovení. Hello trezoru klíčů, který obsahuje hello odstranit objekt se ale zachovají stejně jako všechny ostatní objekty v trezoru klíčů hello. 
 
 ### <a name="key-vaults-as-containers"></a>Klíč trezory jako kontejnery
-Když se vyprazdňují trezoru klíčů, veškerý její obsah, včetně klíče a tajné klíče, certifikáty, se trvale odstraní. K vyprázdnění trezoru klíčů, použijte `az keyvault purge` příkaz. Můžete vyhledat umístění trezorů vaše předplatné odstraněné klíčů pomocí příkazu `az keyvault list-deleted`.
+Když se vyprazdňují trezoru klíčů, veškerý její obsah, včetně klíče a tajné klíče, certifikáty, se trvale odstraní. toopurge trezoru klíčů, použijte hello `az keyvault purge` příkaz. Můžete najít umístění hello trezorů vaše předplatné odstraněné klíčů pomocí příkazu hello `az keyvault list-deleted`.
 
 ```azurecli
 az keyvault purge --location westus --name ContosoVault
@@ -208,13 +208,13 @@ az keyvault purge --location westus --name ContosoVault
 >Vymazání trezoru klíčů se trvale odstraní, což znamená, že nebude použitelná pro obnovení.
 
 ### <a name="purge-permissions-required"></a>Vyprázdnění oprávněních
-- K vyprázdnění odstraněné trezoru klíčů, tak, aby trezoru a veškerý jeho obsah jsou trvale odstraněny, musí uživatel oprávnění k provedení *Microsoft.KeyVault/locations/deletedVaults/purge/action* operaci. 
-- Pro zobrazení seznamu odstraněný klíč, trezor uživatel potřebuje oprávnění k provedení *Microsoft.KeyVault/deletedVaults/read* oprávnění. 
+- toopurge odstraněné trezoru klíčů, tak, aby hello trezoru a veškerý jeho obsah jsou trvale odstraněny, hello uživatel potřebuje tooperform oprávnění RBAC *Microsoft.KeyVault/locations/deletedVaults/purge/action* operaci. 
+- toolist hello odstranit klíč trezoru hello uživatel potřebuje tooperform oprávnění RBAC *Microsoft.KeyVault/deletedVaults/read* oprávnění. 
 - Pouze správce předplatného ve výchozím nastavení má tato oprávnění. 
 
 ### <a name="scheduled-purge"></a>Naplánované vyprázdnění
 
-Výpis vaše objekty odstraněné trezoru klíčů zobrazí, kdy mají schedled vyprázdní pomocí Key Vault. *Naplánované datum vyprázdnění* pole označuje, když objekt trezoru klíčů se trvale odstraní, pokud nebyla provedena žádná akce. Ve výchozím nastavení Doba uchování pro objekt odstraněného trezoru klíčů je 90 dnů.
+Výpis vaše objekty odstraněné trezoru klíčů zobrazuje, když jsou odstraněna podle Key Vault toobe schedled. Hello *naplánované datum vyprázdnění* pole označuje, když objekt trezoru klíčů se trvale odstraní, pokud nebyla provedena žádná akce. Ve výchozím nastavení hello doba uchování pro objekt odstraněného trezoru klíčů je 90 dnů.
 
 >[!NOTE]
 >Objekt vymazány trezoru, aktivuje její *naplánované datum vyprázdnění* pole, je trvale odstraněn. Není použitelná pro obnovení.

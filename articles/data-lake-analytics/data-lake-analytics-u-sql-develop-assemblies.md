@@ -1,6 +1,6 @@
 ---
-title: "Vývoj sestavení U-SQL pro úlohy Azure Data Lake Analytics | Microsoft Docs"
-description: "Další informace jak vyvíjet sestavení, které chcete použít a znovu použít v úloh Data Lake Analytics. "
+title: "sestavení aaaDevelop U-SQL pro úlohy Azure Data Lake Analytics | Microsoft Docs"
+description: "Zjistěte, jak toodevelop sestavení toobe používá a znovu použít v Data Lake Analytics úlohy. "
 services: data-lake-analytics
 documentationcenter: 
 author: jejiang
@@ -13,39 +13,39 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/30/2016
 ms.author: jejiang
-ms.openlocfilehash: c49f80f8dcd330d7f46726241e7178351b9cc28f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 86dd17b25e0967306ed36bb5b7f3178d9409d53d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="develop-u-sql-assemblies-for-azure-data-lake-analytics-jobs"></a>Vývoj sestavení U-SQL pro úlohy Azure Data Lake Analytics
-Zjistěte, jak chcete-li kódu do sestavení, které chcete použít a znovu použít v úloh Data Lake Analytics. 
+Zjistěte, jak tooturn kódu do sestavení toobe používá a znovu použít v úloh Data Lake Analytics. 
 
-U-SQL umožňuje snadno přidat vlastní kód v jazyce .net, například C#, VB.Net nebo F #. Dokonce můžete nasadit vlastní modul runtime pro podporu dalších jazyků.
+U-SQL umožňuje snadno tooadd vlastní vlastní kód v jazyce .net, například C#, VB.Net nebo F #. Vlastní modul runtime toosupport můžete nasadit i další jazyky.
 
-Nejjednodušší způsob, jak použít vlastní kód je použití nástroje Data Lake pro Visual Studio kódu možnosti. Další informace najdete v tématu [kurz: vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md). Existuje několik nevýhody použití kódu:
+Hello nejjednodušší způsob, jak toouse vlastní kód je toouse hello nástrojů Data Lake pro Visual Studio kódu možnosti. Další informace najdete v tématu [kurz: vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md). Existuje několik nevýhody použití kódu:
 
-- Zdrojový kód získá nahrát pro každý skript odeslání.
+- pro každý skript odeslání získá nahrát Hello zdrojového kódu.
 - kódu nemohou být sdíleny s ostatními úlohami.
 
-Chcete-li vyřešit tyto nevýhody, můžete zapnout kódu do sestavení a registraci sestavení do katalogu Data Lake Analytics.
+tooaddress tyto nevýhody můžete zapnout kódu do sestavení a zaregistrovat hello sestavení toohello Data Lake Analytics katalogu.
 
 ## <a name="prerequisites"></a>Požadavky
 * Visual Studio 2017, Visual Studio 2015, Visual Studio 2013 update 4 nebo Visual Studio 2012 s nainstalovaným Visual C++
-* Microsoft Azure SDK pro .NET verze 2.5 nebo vyšší.  Nainstalujte ji pomocí instalačního programu webové platformy nebo instalační program Visual Studio
+* Microsoft Azure SDK pro .NET verze 2.5 nebo vyšší.  Nainstalujte ji pomocí instalačního programu webové platformy hello nebo instalační program Visual Studio
 * Účet Data Lake Analytics.  Viz [Začínáme s Azure Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-get-started-portal.md).
-* Projděte [Začínáme s Azure Data Lake Analytics U-SQL Studio](data-lake-analytics-u-sql-get-started.md) kurzu.
-* Připojte k Azure.
-* Nahrát zdrojová data, najdete v části [Začínáme s Azure Data Lake Analytics U-SQL Studio](data-lake-analytics-u-sql-get-started.md). 
+* Projděte hello [Začínáme s Azure Data Lake Analytics U-SQL Studio](data-lake-analytics-u-sql-get-started.md) kurzu.
+* Připojte tooAzure.
+* Nahrání hello zdroje dat naleznete v tématu [Začínáme s Azure Data Lake Analytics U-SQL Studio](data-lake-analytics-u-sql-get-started.md). 
 
 ## <a name="develop-assemblies-for-u-sql"></a>Vývoj sestavení pro U-SQL
 
-**K vytvoření a odeslání úlohy U-SQL**
+**toocreate a odeslání úlohy U-SQL**
 
-1. V nabídce **Soubor** klikněte na položku **Nový** a potom klikněte na položku **Projekt**.
-2. Rozbalte položku **nainstalovaná**, **šablony**, **Azure Data Lake**, **U-SQL(ADLA)**, vyberte **knihovny tříd (pro aplikace U-SQL)** šablony a pak klikněte na tlačítko **OK**.
-3. Zápis kódu v Class1.cs.  Zde je ukázka kódu.
+1. Z hello **soubor** nabídky, klikněte na tlačítko **nový**a potom klikněte na **projektu**.
+2. Rozbalte položku **nainstalovaná**, **šablony**, **Azure Data Lake**, **U-SQL(ADLA)**, vyberte hello **knihovny tříd (pro U-SQL Aplikace)** šablony a pak klikněte na tlačítko **OK**.
+3. Zápis kódu v Class1.cs.  Hello Následuje ukázka kódu.
 
         using Microsoft.Analytics.Interfaces;
 
@@ -62,20 +62,20 @@ Chcete-li vyřešit tyto nevýhody, můžete zapnout kódu do sestavení a regis
                 }
             }
         }
-4. Klikněte na tlačítko **sestavení** nabídce a pak klikněte na tlačítko **sestavit řešení** vytvořit knihovnu dll.
+4. Klikněte na tlačítko hello **sestavení** nabídce a pak klikněte na tlačítko **sestavit řešení** toocreate hello dll.
 
 ## <a name="register-assemblies"></a>Registrace sestavení
 
 V tématu [použití Data Lake Analytics(U-SQL) katalogu](data-lake-analytics-use-u-sql-catalog.md).
 
 
-## <a name="use-the-assemblies"></a>Použití sestavení
+## <a name="use-hello-assemblies"></a>Použití sestavení hello
 
-V tématu [použití nástroje Azure Data Lake pro Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
+V tématu [pomocí nástrojů hello Azure Data Lake pro Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
 
 ## <a name="see-also"></a>Viz také
 * [Začínáme s Data Lake Analytics pomocí prostředí PowerShell](data-lake-analytics-get-started-powershell.md)
-* [Začínáme s Data Lake Analytics pomocí portálu Azure](data-lake-analytics-get-started-portal.md)
+* [Začínáme s Data Lake Analytics pomocí portálu Azure hello](data-lake-analytics-get-started-portal.md)
 * [Pomocí nástrojů Data Lake pro Visual Studio pro vývoj aplikací U-SQL](data-lake-analytics-data-lake-tools-get-started.md)
 * [Použití Data Lake Analytics(U-SQL) katalogu](data-lake-analytics-use-u-sql-catalog.md)
-* [Použití nástrojů Azure Data Lake pro Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
+* [Pomocí nástrojů hello Azure Data Lake pro Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)

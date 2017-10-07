@@ -1,6 +1,6 @@
 ---
-title: "Obnovte přístup na virtuální počítač Azure Linux | Microsoft Docs"
-description: "Jak spravovat uživatele a obnovte přístup na virtuální počítače s Linuxem pomocí rozšíření VMAccess a 2.0 rozhraní příkazového řádku Azure"
+title: "aaaReset přístup tooan virtuální počítač Azure s Linuxem | Microsoft Docs"
+description: "Jak uživatelé toomanage a resetování přístup na virtuální počítače s Linuxem pomocí rozšíření VMAccess hello a hello 2.0 rozhraní příkazového řádku Azure"
 services: virtual-machines-linux
 documentationcenter: 
 author: dlepow
@@ -15,28 +15,28 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: danlep
-ms.openlocfilehash: 587c73278a9a92776276a811c5c4c8d3db773de3
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2f8db01b9fac20bf547d8b1926e5c0b3c5d18280
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>Spravovat uživatele, SSH a zkontrolujte nebo opravte disky na virtuální počítače s Linuxem pomocí rozšíření VMAccess 2.0 rozhraní příkazového řádku Azure
-Disk ve virtuálním počítačům s Linuxem se zobrazuje chyby. Nějakým způsobem resetování hesla kořenového virtuálním počítačům s Linuxem nebo omylem odstraněné svůj privátní klíč SSH. V takovém případě zpět v dny v datovém centru potřebovali byste existuje jednotky a pak otevřete KVM získat z konzoly serveru. Rozšíření Azure VMAccess si můžete představit jako že KVM přepínačů, která umožňuje přístup ke konzole resetovat přístup do systému Linux nebo provést údržbu na úrovni disku.
+# <a name="manage-users-ssh-and-check-or-repair-disks-on-linux-vms-using-hello-vmaccess-extension-with-hello-azure-cli-20"></a>Spravovat uživatele, SSH a zkontrolujte nebo opravit disky na virtuální počítače s Linuxem pomocí rozšíření VMAccess hello s hello 2.0 rozhraní příkazového řádku Azure
+Hello disk ve virtuálním počítačům s Linuxem se zobrazuje chyby. Nějakým způsobem resetovat hello kořenové heslo pro virtuální počítač Linux nebo omylem odstraněné svůj privátní klíč SSH. V takovém případě zpět ve dnech hello hello datacenter by třeba toodrive existuje a pak otevřete hello KVM tooget v konzole serveru hello. Hello rozšíření Azure VMAccess si můžete představit jako tento KVM přepínač, který umožňuje definovat můžete tooaccess hello konzoly tooreset přístup tooLinux nebo provést údržbu na úrovni disku.
 
-Tento článek ukazuje, jak používat Azure rozšíření VMAccess k kontrola opravit disk, obnovte přístup uživatele, Správa uživatelských účtů nebo obnovte konfiguraci SSH na Linux. K provedení těchto kroků můžete také využít [Azure CLI 1.0](using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Tento článek ukazuje, jak toouse hello toocheck rozšíření VMAccess Azure nebo opravit disk, resetovat přístup uživatelů, Správa uživatelských účtů nebo obnovte konfiguraci SSH hello v systému Linux. Můžete také provést tyto kroky hello [Azure CLI 1.0](using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 
-## <a name="ways-to-use-the-vmaccess-extension"></a>Způsoby použití rozšíření VMAccess
-Existují dva způsoby, které můžete rozšíření VMAccess na virtuální počítače Linux:
+## <a name="ways-toouse-hello-vmaccess-extension"></a>Způsoby toouse hello rozšíření VMAccess
+Existují dva způsoby, abyste používali hello rozšíření VMAccess na virtuální počítače Linux:
 
-* Použití Azure CLI 2.0 a požadované parametry.
-* [Použít nezpracované soubory JSON, které zpracovávají rozšíření VMAccess](#use-json-files-and-the-vmaccess-extension) a potom na.
+* Použijte hello Azure CLI 2.0 a hello požadované parametry.
+* [Nezpracovaném formátu JSON pomocí souborů této hello proces rozšíření VMAccess](#use-json-files-and-the-vmaccess-extension) a potom na.
 
-Následující příklady použití [uživatele virtuálního počítače az](/cli/azure/vm/user) příkazy. K provedení těchto kroků, budete potřebovat nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení k účtu Azure pomocí [az přihlášení](/cli/azure/#login).
+Následující příklady použití Hello [uživatele virtuálního počítače az](/cli/azure/vm/user) příkazy. Tyto kroky tooperform, budete potřebovat hello nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení pomocí účtu Azure tooan [az přihlášení](/cli/azure/#login).
 
 ## <a name="reset-ssh-key"></a>Resetovat klíč SSH
-Následující příklad resetuje klíč SSH pro uživatele `azureuser` ve virtuálním počítači s názvem `myVM`:
+Hello následující příklad resetuje hello klíč SSH pro uživatele hello `azureuser` na hello virtuálního počítače s názvem `myVM`:
 
 ```azurecli
 az vm user update \
@@ -47,7 +47,7 @@ az vm user update \
 ```
 
 ## <a name="reset-password"></a>Resetování hesla
-Následující příklad resetuje heslo pro uživatele `azureuser` ve virtuálním počítači s názvem `myVM`:
+Hello následující příklad resetuje hello heslo pro uživatele hello `azureuser` na hello virtuálního počítače s názvem `myVM`:
 
 ```azurecli
 az vm user update \
@@ -58,7 +58,7 @@ az vm user update \
 ```
 
 ## <a name="restart-ssh"></a>Restartujte SSH
-V následujícím příkladu restartuje démon procesu SSH a konfiguraci SSH obnovíte výchozí hodnoty na virtuálním počítači s názvem `myVM`:
+Hello následující příklad restartuje démon procesu SSH hello a resetování hello hodnoty toodefault konfigurace SSH na virtuálním počítači s názvem `myVM`:
 
 ```azurecli
 az vm user reset-ssh \
@@ -67,7 +67,7 @@ az vm user reset-ssh \
 ```
 
 ## <a name="create-a-user"></a>Vytvoření uživatele
-Následující příklad vytvoří uživatele s názvem `myNewUser` pomocí klíče SSH pro ověřování na virtuální počítač s názvem `myVM`:
+Hello následující příklad vytvoří uživatele s názvem `myNewUser` pomocí klíče SSH pro ověřování na hello virtuálního počítače s názvem `myVM`:
 
 ```azurecli
 az vm user update \
@@ -78,7 +78,7 @@ az vm user update \
 ```
 
 ## <a name="delete-a-user"></a>Odstranit uživatele
-Následující příklad odstraní uživatele s názvem `myNewUser` ve virtuálním počítači s názvem `myVM`:
+Hello následující příklad odstraní uživatele s názvem `myNewUser` na hello virtuálního počítače s názvem `myVM`:
 
 ```azurecli
 az vm user delete \
@@ -88,13 +88,13 @@ az vm user delete \
 ```
 
 
-## <a name="use-json-files-and-the-vmaccess-extension"></a>Použít soubory JSON a rozšíření VMAccess
-Následující příklady použití nezpracované soubory JSON. Použití [nastavení rozšíření virtuálního az](/cli/azure/vm/extension#set) pak volat souborů JSON. Tyto soubory JSON je možné také volat z šablony Azure. 
+## <a name="use-json-files-and-hello-vmaccess-extension"></a>Použijte soubory JSON a hello rozšíření VMAccess
+Následující příklady Hello použijte nezpracované soubory JSON. Použití [nastavení rozšíření virtuálního az](/cli/azure/vm/extension#set) toothen volání souborů JSON. Tyto soubory JSON je možné také volat z šablony Azure. 
 
 ### <a name="reset-user-access"></a>Obnovte uživatele přístup
-Pokud jste ztratili přístup ke kořenové na virtuálním počítačům s Linuxem, můžete spustit skript VMAccess k resetování klíč SSH uživatele nebo heslo.
+Pokud jste ztratili přístup tooroot na virtuálním počítačům s Linuxem, můžete spustit skript tooreset VMAccess klíč SSH uživatele nebo heslo.
 
-Resetovat veřejný klíč SSH uživatele, vytvořte soubor s názvem `reset_ssh_key.json` a přidat nastavení v následujícím formátu. Dosaďte svoje vlastní hodnoty `username` a `ssh_key` parametry:
+veřejný klíč SSH tooreset hello uživatele, vytvořte soubor s názvem `reset_ssh_key.json` a přidat nastavení v hello formátu. Nahraďte vlastními hodnotami pro hello `username` a `ssh_key` parametry:
 
 ```json
 {
@@ -103,7 +103,7 @@ Resetovat veřejný klíč SSH uživatele, vytvořte soubor s názvem `reset_ssh
 }
 ```
 
-Spuštění skriptu VMAccess pomocí:
+Spusťte skript VMAccess hello se:
 
 ```azurecli
 az vm extension set \
@@ -115,7 +115,7 @@ az vm extension set \
   --protected-settings reset_ssh_key.json
 ```
 
-Pokud chcete resetovat heslo uživatele, vytvořte soubor s názvem `reset_user_password.json` a přidat nastavení v následujícím formátu. Dosaďte svoje vlastní hodnoty `username` a `password` parametry:
+tooreset heslo uživatele, vytvořte soubor s názvem `reset_user_password.json` a přidat nastavení v hello formátu. Nahraďte vlastními hodnotami pro hello `username` a `password` parametry:
 
 ```json
 {
@@ -124,7 +124,7 @@ Pokud chcete resetovat heslo uživatele, vytvořte soubor s názvem `reset_user_
 }
 ```
 
-Spuštění skriptu VMAccess pomocí:
+Spusťte skript VMAccess hello se:
 
 ```azurecli
 az vm extension set \
@@ -137,7 +137,7 @@ az vm extension set \
 ```
 
 ### <a name="restart-ssh"></a>Restartujte SSH
-Pokud chcete restartovat démon procesu SSH a obnovit výchozí hodnoty v konfiguraci SSH, vytvořte soubor s názvem `reset_sshd.json`. Přidejte do něj následující obsah:
+toorestart hello proces démon programu SSH a resetovat hodnoty toodefault konfigurace SSH hello, vytvořte soubor s názvem `reset_sshd.json`. Přidejte hello následující obsah:
 
 ```json
 {
@@ -145,7 +145,7 @@ Pokud chcete restartovat démon procesu SSH a obnovit výchozí hodnoty v konfig
 }
 ```
 
-Spuštění skriptu VMAccess pomocí:
+Spusťte skript VMAccess hello se:
 
 ```azurecli
 az vm extension set \
@@ -159,7 +159,7 @@ az vm extension set \
 
 ### <a name="manage-users"></a>Správa uživatelů
 
-Chcete-li vytvořit uživatele, který používá klíč SSH pro ověřování, vytvořte soubor s názvem `create_new_user.json` a přidat nastavení v následujícím formátu. Dosaďte svoje vlastní hodnoty `username` a `ssh_key` parametry:
+toocreate uživatel, který používá klíč SSH pro ověřování, vytvořte soubor s názvem `create_new_user.json` a přidat nastavení v hello formátu. Nahraďte vlastními hodnotami pro hello `username` a `ssh_key` parametry:
 
 ```json
 {
@@ -169,7 +169,7 @@ Chcete-li vytvořit uživatele, který používá klíč SSH pro ověřování, 
 }
 ```
 
-Spuštění skriptu VMAccess pomocí:
+Spusťte skript VMAccess hello se:
 
 ```azurecli
 az vm extension set \
@@ -181,7 +181,7 @@ az vm extension set \
   --protected-settings create_new_user.json
 ```
 
-Pokud chcete odstranit uživatele, vytvořte soubor s názvem `delete_user.json` a přidejte následující obsah. Nahraďte vlastní hodnoty `remove_user` parametr:
+toodelete uživatele, vytvořte soubor s názvem `delete_user.json` a přidejte hello následující obsah. Nahraďte vlastní hodnoty hello `remove_user` parametr:
 
 ```json
 {
@@ -189,7 +189,7 @@ Pokud chcete odstranit uživatele, vytvořte soubor s názvem `delete_user.json`
 }
 ```
 
-Spuštění skriptu VMAccess pomocí:
+Spusťte skript VMAccess hello se:
 
 ```azurecli
 az vm extension set \
@@ -201,10 +201,10 @@ az vm extension set \
   --protected-settings delete_user.json
 ```
 
-### <a name="check-or-repair-the-disk"></a>Zkontrolujte nebo opravte disku
-Použitím VMAccess můžete také zkontrolujte a opravte disk, který jste přidali do virtuálního počítače s Linuxem.
+### <a name="check-or-repair-hello-disk"></a>Zkontrolujte nebo opravte hello disku
+Použitím VMAccess můžete také zkontrolujte a opravte disk, zda jste přidali toohello virtuálního počítače s Linuxem.
 
-Zkontrolujte a pak Opravte disk, vytvořte soubor s názvem `disk_check_repair.json` a přidat nastavení v následujícím formátu. Nahraďte vlastní hodnotu pro název `repair_disk`:
+toocheck a potom opravit hello disk, vytvořte soubor s názvem `disk_check_repair.json` a přidat nastavení v hello formátu. Nahraďte vlastní hodnotu pro název hello `repair_disk`:
 
 ```json
 {
@@ -213,7 +213,7 @@ Zkontrolujte a pak Opravte disk, vytvořte soubor s názvem `disk_check_repair.j
 }
 ```
 
-Spuštění skriptu VMAccess pomocí:
+Spusťte skript VMAccess hello se:
 
 ```azurecli
 az vm extension set \
@@ -226,11 +226,11 @@ az vm extension set \
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Aktualizace Linux pomocí rozšíření VMAccess Azure je jedna z metod k provádění změn v spuštěného virtuálního počítače s Linuxem. Nástroje, například cloudové init a šablony Azure Resource Manager můžete také upravit virtuálním počítačům s Linuxem na spuštění.
+Aktualizace Linux pomocí hello rozšíření VMAccess Azure je jedna metoda toomake změny na spuštěného virtuálního počítače s Linuxem. Můžete také použít nástroje, například cloudové init a toomodify šablony Azure Resource Manager virtuálním počítačům s Linuxem na spouštěcí.
 
 [Rozšíření virtuálního počítače a funkce pro Linux](extensions-features.md)
 
 [Vytváření šablon Azure Resource Manager pomocí rozšíření virtuálního počítače s Linuxem](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[Přizpůsobení virtuálního počítače s Linuxem během vytváření pomocí init cloudu](using-cloud-init.md)
+[Během vytváření pomocí toocustomize init cloudu virtuálního počítače s Linuxem](using-cloud-init.md)
 

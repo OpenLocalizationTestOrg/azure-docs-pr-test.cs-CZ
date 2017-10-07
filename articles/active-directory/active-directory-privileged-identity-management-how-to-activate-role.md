@@ -1,6 +1,6 @@
 ---
-title: Jak aktivovat nebo deaktivovat roli | Microsoft Docs
-description: "Informace o aktivaci role pro privilegované identity s aplikací Azure Privileged Identity Management."
+title: aaaHow tooactivate nebo deaktivovat roli | Microsoft Docs
+description: "Zjistěte, jak tooactivate role pro privilegované identity s aplikací Azure Privileged Identity Management hello."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,60 +15,60 @@ ms.workload: identity
 ms.date: 02/14/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: a143fd78eae52fda0cbadb7e74fd8209f24629a1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8c68ad69e4b006263bbb8a1cfc7ed3dba974e1db
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-activate-or-deactivate-roles-in-azure-ad-privileged-identity-management"></a>Postup aktivace nebo deaktivace role v Azure AD Privileged Identity Management
-Azure Active Directory (AD) Privileged Identity Management zjednodušuje, jak spravovat podniky privilegovaný přístup k prostředkům v Azure AD a dalším službám Microsoft online jako je Office 365 nebo Microsoft Intune.  
+# <a name="how-tooactivate-or-deactivate-roles-in-azure-ad-privileged-identity-management"></a>Jak tooactivate nebo deaktivace role v Azure AD Privileged Identity Management
+Azure Active Directory (AD) Privileged Identity Management zjednodušuje, jak spravovat podniky tooresources privilegovaného přístupu ve službě Azure AD a dalším službám Microsoft online jako je Office 365 nebo Microsoft Intune.  
 
-Pokud jste zadali byl způsobilý pro roli správce, která znamená, že tato role může aktivovat, pokud budete potřebovat k provedení privilegovaných akcí. Například pokud někdy spravujete funkcí Office 365, vaší organizace privilegované role správců nemusí mít je trvalé globální správce, vzhledem k tomu, že tato role má to dopad na jiné služby příliš. Místo toho budou požadovat, abyste vhodné pro Azure AD rolí, například správce serveru Exchange Online. Může požádat o k aktivaci této role, když potřebujete svá oprávnění a potom budete mít kontroly správce po předem určenou dobu.
+Pokud jste zadali byl způsobilý pro roli správce, která znamená, že tato role může aktivovat, pokud budete potřebovat tooperform privilegované akce. Například pokud někdy spravujete funkcí Office 365, vaší organizace privilegované role správců nemusí mít je trvalé globální správce, vzhledem k tomu, že tato role má to dopad na jiné služby příliš. Místo toho budou požadovat, abyste vhodné pro Azure AD rolí, například správce serveru Exchange Online. Tooactivate můžete žádost této role, když potřebujete svá oprávnění a potom budete mít kontroly správce po předem určenou dobu.
 
-Tento článek je pro správce, který je nutné aktivovat jejich role v Azure AD Privileged Identity Management (PIM). Provede vás provede kroky pro aktivaci role, když potřebujete oprávnění a deaktivovat roli, když jste hotovi. Kromě toho privilegované role správců může vyžadovat schválení pro aktivaci role (Preview). Další informace o [PIM schválení pracovních](./privileged-identity-management/azure-ad-pim-approval-workflow.md) sem.
+Tento článek je pro správci, kteří potřebují tooactivate jejich role v Azure AD Privileged Identity Management (PIM). Ho vás provede kroky tooactivate hello roli potřebujete hello oprávnění, a deaktivovat hello role, když jste hotovi. Kromě toho privilegované role správců může vyžadovat schválení tooactivate roli (Preview). Další informace o [PIM schválení pracovních](./privileged-identity-management/azure-ad-pim-approval-workflow.md) sem.
 
-## <a name="add-the-privileged-identity-management-application"></a>Přidání aplikace Privileged Identity Management
-Pomocí aplikace Azure AD Privileged Identity Management [portál Azure](https://portal.azure.com/) požádat o aktivaci role, i v případě, že se chystáte provozovat v jiném portálu nebo prostředí PowerShell. Pokud nemáte aplikaci Azure AD Privileged Identity Management na portálu Azure, postupujte podle těchto kroků, abyste mohli začít.
+## <a name="add-hello-privileged-identity-management-application"></a>Přidání aplikace Privileged Identity Management hello
+Pomocí aplikace hello Azure AD Privileged Identity Management v hello [portál Azure](https://portal.azure.com/) toorequest aktivaci role, i když budete toooperate v jiném portálu nebo prostředí PowerShell. Pokud nemáte hello aplikace Azure AD Privileged Identity Management na portálu Azure, postupujte podle těchto kroků tooget spuštěna.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Vyberte své uživatelské jméno v pravém horním rohu portálu Azure a vyberte adresář, kde vám budou pracovat.
-3. Vyberte **Další služby** a pomocí pole Filtr najděte **Azure AD Privileged Identity Management**.
-4. Zaškrtněte **Připnout na řídicí panel** a potom klikněte na **Vytvořit**. Aplikace Privileged Identity Management se otevře.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
+2. Vyberte své uživatelské jméno v hello pravém horním rohu hello portál Azure a vyberte hello adresáře, kde vám budou pracovat.
+3. Vyberte **další služby** a používat hello filtru textbox toosearch pro **Azure AD Privileged Identity Management**.
+4. Zkontrolujte **Pin toodashboard** a pak klikněte na **vytvořit**. Otevře se Hello aplikace Privileged Identity Management.
 
 ## <a name="activate-a-role"></a>Aktivovat roli
-Pokud je nutné vzít v roli, můžete požádat o aktivaci výběrem **Moje role** levé sloupec navigační prvku možnost navigace v aplikaci Azure AD Privileged Identity Management.
+Pokud budete potřebovat tootake na roli, můžete požádat o aktivaci výběrem hello **Moje role** levé sloupec navigační prvku možnost navigace v aplikaci hello Azure AD Privileged Identity Management.
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com/) a vyberte dlaždici Azure AD Privileged Identity Management.
-2. Vyberte **Moje role**. V seskupení v horní části stránky se zobrazí seznam přiřazené vhodné role.
-3. Vyberte roli, kterou chcete aktivovat.
-4. Vyberte **aktivovat**. **Žádosti o aktivaci role** otevře se okno.
-5. Některé role vyžadují služby Multi-Factor Authentication (MFA) před aktivací roli. Můžete mít pouze k ověření na začátku každé relace.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com/) a vyberte hello Azure AD Privileged Identity Management dlaždice.
+2. Vyberte **Moje role**. Zobrazí seznam přiřazené role vhodné v hello seskupování hello horní části stránky hello.
+3. Vyberte roli tooactivate.
+4. Vyberte **aktivovat**. Hello **žádosti o aktivaci role** otevře se okno.
+5. Některé role vyžadují služby Multi-Factor Authentication (MFA) před aktivací hello role. Stačí tooauthenticate jednou za relace.
    
     ![Ověřit pomocí vícefaktorového ověřování předtím, než aktivace role – snímek obrazovky][2]
-6. V textovém poli zadejte důvod pro žádost o aktivaci.  Některé role vyžadují, abyste zadat číslo lístku řešení problémů.
-7. Vyberte **OK**.  Pokud roli nevyžaduje schválení, bude aktivován a role se zobrazí v seznamu aktivní role (přímo pod seznamem přiřazení role vhodné). Pokud [role vyžaduje schválení](./privileged-identity-management/azure-ad-pim-approval-workflow.md) Pokud chcete aktivovat, se krátce zobrazí oznámení s informační zprávou v pravém horním rohu prohlížeče vás informuje o požadavek čeká na schválení.
+6. Hello textového pole zadejte hello důvod pro žádost o aktivaci hello.  Některé role vyžadují toosupply číslo lístku řešení problémů.
+7. Vyberte **OK**.  Pokud hello role nevyžaduje schválení, bude aktivován a hello role se zobrazí v seznamu hello aktivní role (přímo pod hello seznamu přiřazení rolí oprávněné). Pokud hello [role vyžaduje schválení](./privileged-identity-management/azure-ad-pim-approval-workflow.md) tooactivate, informační se krátce zobrazí v hello horním pravém rohu prohlížeče vás informuje o požadavek hello čeká na schválení.
 
     ![Žádost čeká na oznámení – snímek obrazovky][3]
 
 ## <a name="deactivate-a-role"></a>Deaktivovat roli
 Po aktivaci role automaticky deaktivuje po dosažení jeho časový limit (vhodné doba trvání).
 
-Pokud již v rané fázi dokončení úlohy správy, můžete také deaktivovat roli ručně v aplikaci Azure AD Privileged Identity Management.  Vyberte **Moje role**, zvolte roli s tím budete hotovi pomocí z **přiřazení Active role** seskupování a vyberte možnost **deaktivovat**.  
+Pokud již v rané fázi dokončení úlohy správy, můžete také deaktivovat roli ručně v hello aplikace Azure AD Privileged Identity Management.  Vyberte **Moje role**, zvolte roli hello dokončení pomocí hello **přiřazení role služby Active** seskupování a vyberte možnost **deaktivovat**.  
 
 ## <a name="cancel-a-pending-request"></a>Zrušení čekající žádosti o
-V případě, že nechcete, aby aktivace role, který vyžaduje schválení, můžete kdykoli zrušit čekající žádosti. Jednoduše vyberte **Moje role** levé sloupec navigační prvku možnost navigace v aplikaci Azure AD Privileged Identity Management.
+V případě hello nevyžadují aktivaci role, který vyžaduje schválení, můžete kdykoli zrušit čekající žádosti. Jednoduše vyberte hello **Moje role** levé sloupec navigační prvku možnost navigace v aplikaci hello Azure AD Privileged Identity Management.
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com/) a vyberte dlaždici Azure AD Privileged Identity Management.
-2. Vyberte **Moje role**. V seskupení v horní části stránky se zobrazí seznam přiřazené vhodné role.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com/) a vyberte hello Azure AD Privileged Identity Management dlaždice.
+2. Vyberte **Moje role**. Zobrazí seznam přiřazené role vhodné v hello seskupování hello horní části stránky hello.
 3. Vyberte roli.
-4. Vyberte **Aktivace čeká na schválení** hlavičku v okně Podrobnosti o aktivaci role.
-5. Vyberte **zrušit** v horní části **čekající na schválení** okno.
+4. Vyberte hello **Aktivace čeká na schválení** hlavičku v okně Podrobnosti o aktivaci role hello.
+5. Vyberte **zrušit** hello horní části hello **čekající na schválení** okno.
 
    ![Zrušit čekající na vyřízení žádosti – snímek obrazovky][4]
 
 ## <a name="next-steps"></a>Další kroky
-Pokud byste chtěli dozvědět více o Azure AD Privileged Identity Management, tyto odkazy obsahovat další informace.
+Pokud byste chtěli dozvědět více o Azure AD Privileged Identity Management, hello následující odkazy obsahovat další informace.
 
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

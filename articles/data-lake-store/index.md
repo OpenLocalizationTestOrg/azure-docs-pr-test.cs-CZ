@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace ke službě Azure Data Lake Store – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se nastavovat a spravovat úložiště Data Lake ve velkém měřítku, které je kompatibilní s Hadoopem, a přistupovat k němu pro účely analýzy dat libovolné velikosti, typu a rychlosti příjmu."
+title: "aaaAzure Data Lake Store dokumentace - kurzy, referenční dokumentace rozhraní API | Microsoft Docs"
+description: "Zjistěte, jak tooset, spravovat a přístup úložiště kompatibilní s Hadoop, flexibilně škálovatelné data lake pro analýzy datových jakékoli velikosti, typu a rychlosti příjmu."
 services: data-lake-store
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 473cb9709421f853cb78853b54682adb3e48d372
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 8a4730472b7811f022991bffc6dde7bb1be6458e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="data-lake-store-documentation"></a>Dokumentace ke službě Data Lake Store
 
-Naučte se použít Data Lake Store k vytvoření úložiště ve velkém měřítku, které je kompatibilní s Hadoopem, pro účely analýzy dat libovolné velikosti, typu a rychlosti příjmu. Kurzy, odkazy na rozhraní API a další dokumentace obsahují informace o tom, jak nastavit a úložiště Data Lake a přistupovat k němu pro účely provozní a zjišťovací analýzy.
+Zjistěte, jak toouse Data Lake Store toocreate velkého rozsahu, kompatibilní s Hadoop úložiště pro analýzy datových všech velikost, typ a přijímání rychlost. Kurzy, odkazy na rozhraní API a další dokumentaci ukazují, jak tooset, správu a přístup úložiště data lake pro provozní a zjišťovací analýzy.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ Naučte se použít Data Lake Store k vytvoření úložiště ve velkém měř�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s Azure Data Lake Store s využitím webu Azure Portal</h3>
+                        <h3>Začínáme s Azure Data Lake Store pomocí portálu Azure hello</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ Naučte se použít Data Lake Store k vytvoření úložiště ve velkém měř�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s Azure Data Lake Store s využitím rozhraní Azure CLI</h3>
+                        <h3>Začínáme s Azure Data Lake Store pomocí rozhraní příkazového řádku Azure hello</h3>
                     </div>
                 </div>
             </div>

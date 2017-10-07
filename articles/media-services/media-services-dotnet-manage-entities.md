@@ -1,6 +1,6 @@
 ---
-title: "Správa prostředků a související entity pomocí služby Media Services .NET SDK"
-description: "Naučte se spravovat prostředky a entit v relaci pomocí sady Media Services SDK pro .NET."
+title: "aaaManaging prostředky a entit v relaci pomocí sady Media Services .NET SDK"
+description: "Zjistěte, jak toomanage prostředky a entit v relaci s hello sady Media Services SDK pro .NET."
 author: juliako
 manager: cfowler
 editor: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.openlocfilehash: 5efe16a09808267d0797521f9e1df2b60aec9cbb
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 59a8543ffc6f7f30da2c67a6fcae09bc46da7a52
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Správa prostředků a související entity pomocí služby Media Services .NET SDK
 > [!div class="op_single_selector"]
@@ -27,50 +27,50 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-Toto téma ukazuje, jak spravovat entit služby Azure Media Services pomocí rozhraní .NET. 
+Toto téma ukazuje, jak toomanage Azure Media Services entity s .NET. 
 
 >[!NOTE]
-> Od 1. dubna 2017 se automaticky odstraní libovolný záznam úlohy ve vašem účtu, který je starší než 90 dní. Spolu s ním se odstraní přidružené záznamy úkolů, a to i v případě, že celkový počet záznamů je nižší než maximální kvóta. Například na 1. dubna 2017 záznam všechny úlohy ve vašem účtu, který je starší než 31. prosinci 2016, se automaticky odstraní. Pokud potřebujete úloh informace archivovat, můžete použít kód popsaných v tomto tématu.
+> Od 1. dubna 2017 záznam všechny úlohy ve vašem účtu, který je starší než 90 dní se automaticky odstraní, společně s jeho přidružené záznamy úloh i v případě, že hello celkový počet záznamů je nižší než maximální kvóty hello. Například na 1. dubna 2017 záznam všechny úlohy ve vašem účtu, který je starší než 31. prosinci 2016, se automaticky odstraní. Pokud potřebujete tooarchive hello úloh informací, můžete použít kód hello popsaných v tomto tématu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
+Nastavení vývojového prostředí a naplnění souboru app.config hello s informace o připojení, jak je popsáno v [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="get-an-asset-reference"></a>Získat odkaz na prostředek
-Časté úlohy je získat odkaz na prostředek existující ve službě Media Services. Následující příklad kódu ukazuje, jak můžete získat odkaz na prostředek z kolekce prostředků na serveru objekt kontextu, v závislosti na prostředek ID. Následující příklad kódu používá k získání odkazu na existující objekt IAsset dotaz Linq.
+Časté úlohy je tooget stávající prostředek odkaz tooan ve službě Media Services. Hello následující příklad kódu ukazuje, jak můžete získat odkaz na prostředek z kolekce hello prostředků na serveru hello objektu context, podle hello ID asset následující kód používá příklad Linq dotazu tooget existující IAsset objekt tooan odkazu.
 
     static IAsset GetAsset(string assetId)
     {
-        // Use a LINQ Select query to get an asset.
+        // Use a LINQ Select query tooget an asset.
         var assetInstance =
             from a in _context.Assets
             where a.Id == assetId
             select a;
-        // Reference the asset as an IAsset.
+        // Reference hello asset as an IAsset.
         IAsset asset = assetInstance.FirstOrDefault();
 
         return asset;
     }
 
 ## <a name="list-all-assets"></a>Zobrazí seznam všech prostředků
-S růstem počtu prostředků, které máte v úložišti je užitečné k zobrazení seznamu vaše prostředky. Následující příklad kódu ukazuje, jak k iteraci v rámci kolekce prostředky na objekt kontextu serveru. S každou asset příklad kódu se zapisují taky do některé z jeho hodnot vlastností ke konzole. Každý prostředek může například obsahovat mnoho mediálních souborů. Příklad kódu vypisuje všechny soubory, které jsou spojené s každou asset.
+S růstem hello počtu prostředků, které máte v úložišti je užitečné toolist vaše prostředky. Hello následující příklad kódu ukazuje, jak tooiterate prostřednictvím hello prostředky kolekce hello serveru kontextu objektu. S každou asset hello příklad kódu se zapisují taky některé jeho vlastnosti hodnoty toohello konzoly. Každý prostředek může například obsahovat mnoho mediálních souborů. Příklad kódu Hello vypisuje všechny soubory, které jsou spojené s každou asset.
 
     static void ListAssets()
     {
-        string waitMessage = "Building the list. This may take a few "
-            + "seconds to a few minutes depending on how many assets "
+        string waitMessage = "Building hello list. This may take a few "
+            + "seconds tooa few minutes depending on how many assets "
             + "you have."
             + Environment.NewLine + Environment.NewLine
             + "Please wait..."
             + Environment.NewLine;
         Console.Write(waitMessage);
 
-        // Create a Stringbuilder to store the list that we build. 
+        // Create a Stringbuilder toostore hello list that we build. 
         StringBuilder builder = new StringBuilder();
 
         foreach (IAsset asset in _context.Assets)
         {
-            // Display the collection of assets.
+            // Display hello collection of assets.
             builder.AppendLine("");
             builder.AppendLine("******ASSET******");
             builder.AppendLine("Asset ID: " + asset.Id);
@@ -78,7 +78,7 @@ S růstem počtu prostředků, které máte v úložišti je užitečné k zobra
             builder.AppendLine("==============");
             builder.AppendLine("******ASSET FILES******");
 
-            // Display the files associated with each asset. 
+            // Display hello files associated with each asset. 
             foreach (IAssetFile fileItem in asset.AssetFiles)
             {
                 builder.AppendLine("Name: " + fileItem.Name);
@@ -93,48 +93,48 @@ S růstem počtu prostředků, které máte v úložišti je užitečné k zobra
 
 ## <a name="get-a-job-reference"></a>Získejte odkaz na úlohu
 
-Při práci s zpracování úlohy v kódu Media Services, můžete často potřebují k získání odkazu ke stávající úloze podle Id. Následující příklad kódu ukazuje, jak odkazovat na objekt IJob z kolekce úloh.
+Při práci s zpracování úlohy v kódu Media Services, často potřebují tooget, které úlohu existující tooan odkaz založenou na hello ID následující příklad kódu ukazuje, jak tooget odkaz tooan IJob objektu z kolekce úloh hello.
 
-Musíte získat odkaz na úlohu při spouštění úlohy kódování dlouho běžící a potřebují kontrolovat stav úlohy na vlákno. V takových případech když se metoda vrátí z vlákna, budete muset načíst aktualizovat odkaz na úlohu.
+Může potřebovat tooget odkaz na úlohu při spouštění úlohy kódování dlouho běžící a nemusí toocheck hello stav úlohy na vlákno. V takových případech když hello metoda vrací výsledek z vlákna, musíte tooretrieve úlohu tooa aktualizovat odkaz.
 
     static IJob GetJob(string jobId)
     {
-        // Use a Linq select query to get an updated 
+        // Use a Linq select query tooget an updated 
         // reference by Id. 
         var jobInstance =
             from j in _context.Jobs
             where j.Id == jobId
             select j;
-        // Return the job reference as an Ijob. 
+        // Return hello job reference as an Ijob. 
         IJob job = jobInstance.FirstOrDefault();
 
         return job;
     }
 
 ## <a name="list-jobs-and-assets"></a>Seznam úloh a prostředky
-Seznam prostředků s jejich přidruženou úlohu ve službě Media Services je důležitá související úloha. Následující příklad kódu ukazuje, jak zobrazit každý objekt IJob a potom pro každou úlohu, se zobrazí vlastnosti úlohy, všechny související úkoly, všechny vstupní prostředky a všechny prostředky výstup. Kód v tomto příkladu může být užitečné pro mnoho dalších úkolů. Například pokud chcete do seznamu prostředků výstup z jednoho nebo více úloh kódování, které jste spustili dříve, tento kód ukazuje, jak pro přístup k výstupu prostředky. Až budete mít odkaz na výstupní asset, abyste pak zajistit obsah na jiné uživatele nebo aplikace stáhnout nebo poskytnutím adresy URL. 
+Důležité související úkol je toolist prostředky s jejich přidruženou úlohu ve službě Media Services. Hello následující příklad kódu ukazuje, jak toolist každý objekt IJob a potom pro každou úlohu, se zobrazí vlastnosti hello úlohy, všechny související úkoly, všechny vstupní prostředky, a všechny výstupní prostředky. Hello kód v tomto příkladu může být užitečná pro mnoho dalších úkolů. Například pokud chcete toolist hello výstupní prostředky z jedné nebo více úloh kódování, které jste spustili dříve, tento kód ukazuje, jak tooaccess hello výstupní prostředky. Až budete mít výstupní asset tooan odkaz, abyste hello obsahu tooother uživatelům a aplikacím zajistit pak stáhnout, nebo zadáním adresy URL. 
 
-Další informace o možnostech pro různé prostředky naleznete v části [poskytovat prostředky pomocí sady Media Services SDK pro .NET](media-services-deliver-streaming-content.md).
+Další informace o možnostech pro různé prostředky naleznete v části [poskytovat prostředky pomocí sady Media Services SDK pro .NET hello](media-services-deliver-streaming-content.md).
 
-    // List all jobs on the server, and for each job, also list 
+    // List all jobs on hello server, and for each job, also list 
     // all tasks, all input assets, all output assets.
 
     static void ListJobsAndAssets()
     {
-        string waitMessage = "Building the list. This may take a few "
-            + "seconds to a few minutes depending on how many assets "
+        string waitMessage = "Building hello list. This may take a few "
+            + "seconds tooa few minutes depending on how many assets "
             + "you have."
             + Environment.NewLine + Environment.NewLine
             + "Please wait..."
             + Environment.NewLine;
         Console.Write(waitMessage);
 
-        // Create a Stringbuilder to store the list that we build. 
+        // Create a Stringbuilder toostore hello list that we build. 
         StringBuilder builder = new StringBuilder();
 
         foreach (IJob job in _context.Jobs)
         {
-            // Display the collection of jobs on the server.
+            // Display hello collection of jobs on hello server.
             builder.AppendLine("");
             builder.AppendLine("******JOB*******");
             builder.AppendLine("Job ID: " + job.Id);
@@ -144,7 +144,7 @@ Další informace o možnostech pro různé prostředky naleznete v části [pos
             builder.AppendLine("==============");
 
 
-            // For each job, display the associated tasks (a job  
+            // For each job, display hello associated tasks (a job  
             // has one or more tasks). 
             builder.AppendLine("******TASKS*******");
             foreach (ITask task in job.Tasks)
@@ -160,7 +160,7 @@ Další informace o možnostech pro různé prostředky naleznete v části [pos
                 builder.AppendLine("==============");
             }
 
-            // For each job, display the list of input media assets.
+            // For each job, display hello list of input media assets.
             builder.AppendLine("******JOB INPUT MEDIA ASSETS*******");
             foreach (IAsset inputAsset in job.InputMediaAssets)
             {
@@ -173,7 +173,7 @@ Další informace o možnostech pro různé prostředky naleznete v části [pos
                 }
             }
 
-            // For each job, display the list of output media assets.
+            // For each job, display hello list of output media assets.
             builder.AppendLine("******JOB OUTPUT MEDIA ASSETS*******");
             foreach (IAsset theAsset in job.OutputMediaAssets)
             {
@@ -192,9 +192,9 @@ Další informace o možnostech pro různé prostředky naleznete v části [pos
     }
 
 ## <a name="list-all-access-policies"></a>Zobrazí seznam všech zásad přístupu
-Ve službě Media Services můžete definovat zásady přístupu na prostředek nebo jeho soubory. Zásady přístupu definuje oprávnění pro soubor nebo prostředek (jaký typ přístupu, a jeho trvání). V kódu Media Services obvykle definovat zásady přístupu vytvořením objektu IAccessPolicy a přiřadí se mu existující prostředek. Poté vytvoříte objekt ILocator, který vám umožňuje poskytuje přímý přístup k prostředkům ve službě Media Services. Projekt Visual Studio, který doprovází tato řada dokumentace obsahuje několik příkladů kódu, které ukazují, jak vytvořit a přiřadit zásady přístupu a lokátory k prostředkům.
+Ve službě Media Services můžete definovat zásady přístupu na prostředek nebo jeho soubory. Zásady přístupu definuje hello oprávnění pro soubor nebo prostředek (jaký typ přístupu a dobu trvání hello). V kódu Media Services obvykle definovat zásady přístupu vytvořením objektu IAccessPolicy a přiřadí se mu existující prostředek. Poté vytvoříte objekt ILocator, který vám umožňuje poskytovat přímý přístup tooassets ve službě Media Services. Hello projektu sady Visual Studio, který doprovází tato řada dokumentace obsahuje několik příkladů kódu, které ukazují, jak toocreate a přiřadit zásady a lokátory tooassets přístup.
 
-Následující příklad kódu ukazuje, jak zobrazit seznam všech zásad přístupu na serveru a zobrazuje typ oprávnění spojená s každým. Další užitečné možností zobrazení zásady přístupu je seznam všech objektů ILocator na serveru, a pak pro každý Lokátor můžete vytvořit seznam svých zásad přidružené přístup pomocí jeho AccessPolicy vlastnost.
+Následující příklad ukazuje kód jak Hello toolist všechny zásady přístupu na hello server a ukazuje hello typ oprávnění spojená s každým. Jiné zásady přístupu tooview užitečný způsob, jak je toolist všechny objekty ILocator na hello serveru a pak pro každý Lokátor můžete vytvořit seznam svých zásad přidružené přístup pomocí jeho AccessPolicy vlastnosti.
 
     static void ListAllPolicies()
     {
@@ -212,9 +212,9 @@ Následující příklad kódu ukazuje, jak zobrazit seznam všech zásad přís
 ## <a name="limit-access-policies"></a>Zásady omezení přístupu 
 
 >[!NOTE]
-> Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. 
+> Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Měli byste použít hello stejné ID zásad, pokud vždy používáte hello stejné dny / přístupová oprávnění, například zásady pro lokátory, které jsou určený tooremain zavedené po dlouhou dobu (bez odeslání zásady). 
 
-Můžete například vytvořit obecné sady zásad s následující kód, který by spustit pouze jednou v aplikaci. ID může přihlásit do souboru protokolu pro pozdější použití:
+Můžete například vytvořit obecné sady zásad s hello následující kód, který by spustit pouze jednou v aplikaci. Přihlaste se na ID tooa soubor protokolu pro pozdější použití:
 
     double year = 365.25;
     double week = 7;
@@ -226,18 +226,18 @@ Můžete například vytvořit obecné sady zásad s následující kód, který
     Console.WriteLine("100 year policy ID is: " + policy100Year.Id);
     Console.WriteLine("One week policy ID is: " + policyWeek.Id);
 
-Pak můžete použít existující ID ve vašem kódu takto:
+Potom můžete hello stávající ID ve vašem kódu takto:
 
     const string policy1YearId = "nb:pid:UUID:2a4f0104-51a9-4078-ae26-c730f88d35cf";
 
 
-    // Get the standard policy for 1 year read only
+    // Get hello standard policy for 1 year read only
     var tempPolicyId = from b in _context.AccessPolicies
                        where b.Id == policy1YearId
                        select b;
     IAccessPolicy policy1Year = tempPolicyId.FirstOrDefault();
 
-    // Get the existing asset
+    // Get hello existing asset
     var tempAsset = from a in _context.Assets
                 where a.Id == assetID
                 select a;
@@ -246,14 +246,14 @@ Pak můžete použít existující ID ve vašem kódu takto:
     ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
         policy1Year,
         DateTime.UtcNow.AddMinutes(-5));
-    Console.WriteLine("The locator base path is " + originLocator.BaseUri.ToString());
+    Console.WriteLine("hello locator base path is " + originLocator.BaseUri.ToString());
 
 ## <a name="list-all-locators"></a>Zobrazí seznam všech lokátory
-Lokátor je adresu URL, která poskytuje přímý cestu pro přístup k assetu, společně s oprávnění pro daný prostředek podle definice zásady přidružené přístup lokátoru. Každý prostředek může mít na kolekci objektů ILocator u jeho vlastnost lokátory přidruženo. Kontext server má také lokátory kolekce, která obsahuje všechny lokátory.
+Lokátor je adresu URL, která poskytuje přímý cesta tooaccess prostředek, společně s asset toohello oprávnění podle definice zásady přístupu přidružený k lokátoru hello. Každý prostředek může mít na kolekci objektů ILocator u jeho vlastnost lokátory přidruženo. kontext server Hello má také lokátory kolekce, která obsahuje všechny lokátory.
 
-Následující příklad kódu zobrazuje seznam všech lokátory na serveru. Pro každý Lokátor zobrazuje Id související zásady asset a přístup. Také zobrazuje typ oprávnění, datum vypršení platnosti a úplnou cestu pro daný prostředek.
+Hello následující příklad kódu zobrazuje seznam všech lokátory na serveru hello. Pro každý Lokátor zobrazuje hello Id pro související asset hello a zásady přístupu. Zobrazí také hello typ oprávnění, datum vypršení platnosti hello a hello úplná cesta toohello asset.
 
-Všimněte si, že Lokátor cesty pro prostředek jenom základní adresu URL pro daný prostředek. Vytvořit přímé cestu pro jednotlivé soubory, které by mohly vyhledejte uživatele nebo aplikace, musí váš kód přidejte cestu konkrétní soubor lokátoru cesty. Další informace o tom, jak to udělat, najdete v tématu [poskytovat prostředky pomocí sady Media Services SDK pro .NET](media-services-deliver-streaming-content.md).
+Všimněte si, Lokátor cesty tooan asset je pouze základní adresa URL toohello asset. toocreate, které tooindividual přímé cesty souborů, ve kterém může vyhledat uživatele nebo aplikace, kód musíte přidat hello konkrétní soubor cesta toohello lokátoru cesty. Další informace o tom, toodo tento, najdete v tématu hello [poskytovat prostředky pomocí sady Media Services SDK pro .NET hello](media-services-deliver-streaming-content.md).
 
     static void ListAllLocators()
     {
@@ -265,18 +265,18 @@ Všimněte si, že Lokátor cesty pro prostředek jenom základní adresu URL pr
             Console.WriteLine("Locator access policy Id: " + locator.AccessPolicyId);
             Console.WriteLine("Access policy permissions: " + locator.AccessPolicy.Permissions);
             Console.WriteLine("Locator expiration: " + locator.ExpirationDateTime);
-            // The locator path is the base or parent path (with included permissions) to access  
-            // the media content of an asset. To create a full URL to a specific media file, take 
-            // the locator path and then append a file name and info as needed.  
+            // hello locator path is hello base or parent path (with included permissions) tooaccess  
+            // hello media content of an asset. toocreate a full URL tooa specific media file, take 
+            // hello locator path and then append a file name and info as needed.  
             Console.WriteLine("Locator base path: " + locator.Path);
             Console.WriteLine("");
         }
     }
 
 ## <a name="enumerating-through-large-collections-of-entities"></a>Výčet prostřednictvím rozsáhlých kolekcí entit
-Při dotazování entity, existuje omezení 1000 entit vrátí najednou, protože veřejné v2 REST omezí výsledky dotazu a 1000 výsledky. Budete muset použít přeskočit a proveďte při vytváření výčtu prostřednictvím rozsáhlých kolekcí entit. 
+Při dotazování entity, existuje omezení 1000 entit vrátí najednou, protože veřejné v2 REST omezí výsledky too1000 výsledky dotazu. Při vytváření výčtu prostřednictvím rozsáhlých kolekcí entit musíte toouse přeskočit a proveďte. 
 
-Následující funkce projde všechny úlohy v zadané účtu Media Services. Služba Media Services vrátí 1000 úloh v kolekci úloh. Funkce využívá přeskočit a provést, abyste měli jistotu, že všechny úlohy budou vyčísleny (v případě, že máte více než 1 000 úloh ve vašem účtu).
+Hello následující funkce smyčky prostřednictvím všechny úlohy hello ve hello zadat účtu Media Services. Služba Media Services vrátí 1000 úloh v kolekci úloh. Funkce Hello díky použití přeskočit a trvat toomake opravdu, všechny úlohy budou vyčísleny (v případě, že máte více než 1 000 úloh ve vašem účtu).
 
     static void ProcessJobs()
     {
@@ -289,7 +289,7 @@ Následující funkce projde všechny úlohy v zadané účtu Media Services. Sl
 
             while (true)
             {
-                // Loop through all Jobs (1000 at a time) in the Media Services account
+                // Loop through all Jobs (1000 at a time) in hello Media Services account
                 IQueryable _jobsCollectionQuery = _context.Jobs.Skip(skipSize).Take(batchSize);
                 foreach (IJob job in _jobsCollectionQuery)
                 {
@@ -315,23 +315,23 @@ Následující funkce projde všechny úlohy v zadané účtu Media Services. Sl
     }
 
 ## <a name="delete-an-asset"></a>Odstranit prostředek
-Následující příklad odstraní prostředek.
+Následující ukázka Hello Odstraní prostředek.
 
     static void DeleteAsset( IAsset asset)
     {
-        // delete the asset
+        // delete hello asset
         asset.Delete();
 
         // Verify asset deletion
         if (GetAsset(asset.Id) == null)
-            Console.WriteLine("Deleted the Asset");
+            Console.WriteLine("Deleted hello Asset");
 
     }
 
 ## <a name="delete-a-job"></a>Odstranit úlohu
-Pokud chcete odstranit úlohu, je nutné zkontrolovat stav úlohy, které je uvedené ve vlastnosti stavu. Úlohy, které jsou po dokončení nebo zrušení můžete odstranit, zatímco úlohy, které jsou v některých stavech, jako jsou ve frontě, plánované nebo zpracování, je nutné nejprve zrušit, a pak můžete je odstranit.
+toodelete úlohy, je nutné zkontrolovat stav hello hello úlohy, které je uvedené ve vlastnosti stavu hello. Úlohy, které jsou po dokončení nebo zrušení můžete odstranit, zatímco úlohy, které jsou v některých stavech, jako jsou ve frontě, plánované nebo zpracování, je nutné nejprve zrušit, a pak můžete je odstranit.
 
-Následující příklad kódu ukazuje metodu pro odstranění úlohy stavy úlohy a pak odstranění, když se stav Dokončeno nebo došlo ke zrušení. Tento kód závisí na předchozí části v tomto tématu pro získání odkaz na úlohu: Získejte odkaz na úlohu.
+Hello následující příklad kódu ukazuje metodu pro odstranění úlohy kontroly stavu úlohy a odstraněním když hello stavu dokončení nebo došlo ke zrušení. Tento kód závisí na hello předchozí části v tomto tématu pro získání úlohu tooa odkaz: Získejte odkaz na úlohu.
 
     static void DeleteJob(string jobId)
     {
@@ -353,7 +353,7 @@ Následující příklad kódu ukazuje metodu pro odstranění úlohy stavy úlo
                 case JobState.Error:
                     // Job errors should already be logged by polling or event 
                     // handling methods such as CheckJobProgress or StateChanged.
-                    // You can also call job.DeleteAsync to do async deletes.
+                    // You can also call job.DeleteAsync toodo async deletes.
                     job.Delete();
                     Console.WriteLine("Job has been deleted.");
                     jobDeleted = true;
@@ -380,12 +380,12 @@ Následující příklad kódu ukazuje metodu pro odstranění úlohy stavy úlo
 
 
 ## <a name="delete-an-access-policy"></a>Odstranit zásady přístupu
-Následující příklad kódu ukazuje, jak získat odkaz na zásady přístupu na základě zásad Id a pak ji odstraňte.
+Hello následující příklad kódu ukazuje, jak tooget zásadu odkaz tooan přístupu na základě zásad Id a potom toodelete hello zásad.
 
     static void DeleteAccessPolicy(string existingPolicyId)
     {
-        // To delete a specific access policy, get a reference to the policy.  
-        // based on the policy Id passed to the method.
+        // toodelete a specific access policy, get a reference toohello policy.  
+        // based on hello policy Id passed toohello method.
         var policyInstance =
                 from p in _context.AccessPolicies
                 where p.Id == existingPolicyId

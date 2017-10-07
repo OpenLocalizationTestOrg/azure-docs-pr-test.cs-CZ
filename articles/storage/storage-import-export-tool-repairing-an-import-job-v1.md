@@ -1,6 +1,6 @@
 ---
-title: "Oprava úlohy importu Azure Import/Export - v1 | Microsoft Docs"
-description: "Zjistěte, jak opravit úlohu importu, který byl vytvořen a spuštění pomocí služby Azure Import/Export."
+title: "aaaRepairing úlohy importu Azure Import/Export - v1 | Microsoft Docs"
+description: "Zjistěte, jak toorepair úlohu importu, který byl vytvořen a spustí pomocí hello Azure Import/Export služby."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,47 +14,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: b374eabcbafa6ffe64c639fb6c89be857ecfc221
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a9ed81f50cffd8ae6e0cb21b25a04815c2b51ee5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="repairing-an-import-job"></a>Oprava úlohy importu
-Službu Microsoft Azure Import/Export se pravděpodobně nepodaří zkopírujte některé soubory nebo části souborů do služby Windows Azure Blob. Chyby z těchto důvodů:  
+Hello služby Microsoft Azure Import/Export může selhat toocopy některé soubory nebo části souboru toohello služby Windows Azure Blob. Chyby z těchto důvodů:  
   
 -   Poškozené soubory  
   
 -   Poškozené jednotky  
   
--   Klíč účtu úložiště změnila. Přestože během přenosu souboru.  
+-   klíč účtu úložiště Hello změnila. Přestože hello souboru během přenosu.  
   
-Můžete spustit nástroj Microsoft Azure Import/Export v importu souborů protokolu kopie úlohy a nástroj odešlete chybějící soubory (nebo části souborů) na váš účet úložiště služby Windows Azure k dokončení úlohy importu.  
+Můžete spustit hello nástroj Microsoft Azure Import/Export hello importu souborů protokolu kopie úlohy a nástroj hello odešlete hello chybějící soubory (nebo její části souboru) tooyour systému Windows Azure storage účet toocomplete úlohy importu.  
   
 ## <a name="repairimport-parameters"></a>Parametry RepairImport
 
-Mohou být zadány následující parametry s **RepairImport**: 
+Hello mohou být zadány následující parametry s **RepairImport**: 
   
 |||  
 |-|-|  
-|**/ r:**< RepairFile\>|**Vyžaduje se.** Cesta k souboru oprava, která sleduje průběh opravu a umožňuje obnovit přerušené opravit. Každé jednotky, musí mít pouze jeden soubor opravit. Při spuštění opravy pro danou jednotku, bude předáte v cestě k oprava souboru, který ještě neexistuje. Pokud chcete obnovit přerušené opravy, by měla předávat název existující soubor opravit. Soubor opravy odpovídající cílová jednotka je vždy třeba zadat.|  
-|**/logdir:**< LogDirectory\>|**Volitelný parametr.** K adresáři protokolů. Souborů podrobného protokolování se zapíšou do tohoto adresáře. Pokud není zadán žádný adresář protokolu, aktuální adresář se použije jako adresář protokolu.|  
-|**/ d:**< TargetDirectories\>|**Vyžaduje se.** Jeden nebo více oddělených středníkem adresáře, které obsahují původní soubory, které byly naimportovány. Import disku mohou být využity také, ale není vyžadováno, pokud jsou k dispozici alternativní umístění původní soubory.|  
-|**/BK:**< BitLockerKey\>|**Volitelný parametr.** Pokud chcete nástroj k odemknutí zašifrované jednotky kde původní soubory jsou k dispozici, je třeba zadat klíč nástroje BitLocker.|  
-|**/sn:**< StorageAccountName\>|**Vyžaduje se.** Název účtu úložiště pro úlohy importu.|  
-|**/Sk:**< StorageAccountKey\>|**Požadované** Pokud není zadán sdíleného přístupového podpisu kontejneru. Klíč účtu pro účet úložiště pro úlohy importu.|  
-|**/csas:**< ContainerSas\>|**Požadované** Pokud není zadaný klíč účtu úložiště. Kontejner SAS pro přístup k objektům BLOB přidružený k úloze importu.|  
-|**/ CopyLogFile:**< DriveCopyLogFile\>|**Vyžaduje se.** Cesta k souboru protokolu kopie disku (buď podrobné protokolu nebo Chyba protokolu). Soubor je generována pomocí služby Windows Azure Import/Export a si můžete stáhnout z úložiště objektů blob, které jsou přidružené k úloze. Kopírovat soubor protokolu obsahuje informace o selhání objektů BLOB nebo soubory, které mají být opravit.|  
-|**/ PathMapFile:**< DrivePathMapFile\>|**Volitelný parametr.** Cesta k textový soubor, který lze vyřešit nejednoznačnosti, pokud máte více souborů se stejným názvem, který měla importu ve stejné úloze. Při prvním spuštění nástroje jej můžete naplnit tento soubor se všemi nejednoznačné názvy. Při dalším spuštění nástroje použije tento soubor přeložit nejednoznačnosti.|  
+|**/ r:**< RepairFile\>|**Vyžaduje se.** Cesta toohello oprava souboru, který sleduje hello průběh hello opravy a můžete tooresume opravu dojde k přerušení. Každé jednotky, musí mít pouze jeden soubor opravit. Když spustíte opravy pro danou jednotku, předáte bude v hello cesta tooa oprava souboru, který ještě neexistuje. tooresume opravu dojde k přerušení, by měla předávat název hello k existujícímu souboru opravit. Hello opravit soubor odpovídající toohello cílová jednotka je vždy třeba zadat.|  
+|**/logdir:**< LogDirectory\>|**Volitelný parametr.** Adresář protokolu Hello. Podrobné soubory protokolu se zapíše toothis adresáře. Pokud není zadán žádný adresář protokolu, aktuální adresář hello se použije jako adresář protokolu hello.|  
+|**/ d:**< TargetDirectories\>|**Vyžaduje se.** Jeden nebo více oddělených středníkem adresáře, které obsahují hello původní soubory, které byly naimportovány. Hello import disku mohou být využity také, ale pokud jsou k dispozici alternativní umístění původního souborů není potřeba.|  
+|**/BK:**< BitLockerKey\>|**Volitelný parametr.** Pokud chcete, aby toounlock hello nástroj pro zašifrované jednotky, které jsou k dispozici původní soubory hello musíte zadat klíč nástroje BitLocker hello.|  
+|**/sn:**< StorageAccountName\>|**Vyžaduje se.** Úloha importu Hello název účtu úložiště hello hello.|  
+|**/Sk:**< StorageAccountKey\>|**Požadované** Pokud není zadán sdíleného přístupového podpisu kontejneru. Úloha importu Hello klíč účtu pro účet úložiště hello hello.|  
+|**/csas:**< ContainerSas\>|**Požadované** jenom v případě hello klíč účtu úložiště není zadán. kontejner Hello SAS pro přístup k BLOB hello spojené s úlohou import hello.|  
+|**/ CopyLogFile:**< DriveCopyLogFile\>|**Vyžaduje se.** Cesta toohello jednotky kopie protokolový soubor (podrobného protokolování nebo v protokolu chyb). soubor Hello je generován hello služby Windows Azure Import/Export a si můžete stáhnout z úložiště objektů blob hello spojené s úlohou hello. Hello kopie protokolový soubor obsahuje informace o selhání objektů BLOB nebo soubory, které jsou toobe opravit.|  
+|**/ PathMapFile:**< DrivePathMapFile\>|**Volitelný parametr.** Cesta tooa textový soubor, který lze použít tooresolve mnohoznačnosti, pokud máte víc souborů s hello stejný název, aby byly importu v hello stejnou úlohu. Hello první čas hello nástroj spouští, se může vyplnit tento soubor se všemi nejednoznačné názvy hello. Při dalším spuštění nástroje hello použije tento soubor tooresolve hello nejednoznačnosti.|  
   
-## <a name="using-the-repairimport-command"></a>Pomocí příkazu RepairImport  
-Chcete-li opravit importovat data pomocí vysílání datového proudu data přes síť, musíte zadat adresáře, které obsahují původní soubory byly import pomocí `/d` parametr. Musíte zadat také kopírovat soubor protokolu, který jste stáhli z vašeho účtu úložiště. Typické příkazového řádku k opravě úlohy importu s chybami částečné vypadá takto:  
+## <a name="using-hello-repairimport-command"></a>Pomocí příkazu RepairImport hello  
+toorepair importovat data pomocí vysílání datového proudu hello data hello sítě, je nutné zadat hello hello adresáře, které obsahují hello původní soubory byly import pomocí `/d` parametr. Musíte také zadat hello kopie protokol, který jste stáhli z vašeho účtu úložiště. Typické příkazového řádku toorepair úlohy importu s chybami částečné vypadá takto:  
   
 ```  
 WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bob\Pictures;X:\BobBackup\photos /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C2V.log  
 ```  
   
-Následuje příklad kopírování souboru protokolu. V tomto případě jednoho 64 tisíc část soubor byl poškozen na jednotce, která byla odeslaná úlohy importu. Protože se jedná pouze selhání uvedené, zbytek objektů BLOB v úlohy byly úspěšně importovány.  
+Hello tady je příklad kopírování souboru protokolu. V tomto případě jednoho 64 tisíc část soubor byl poškozen na jednotce hello, která byla odeslaná úlohy importu hello. Protože se jedná pouze selhání hello uvedené, hello zbytek hello objektů BLOB v hello úlohy byly úspěšně importovány.  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -73,39 +73,39 @@ Následuje příklad kopírování souboru protokolu. V tomto případě jednoho
 </DriveLog>  
 ```
   
-Když tento protokol kopie předána nástroj Azure Import/Export, tento nástroj se pokusí dokončit import tohoto souboru kopírování chybějící obsahu přes síť. Po výše uvedeném příkladu bude nástroj Hledat původní soubor `\animals\koala.jpg` v rámci dva adresáře `C:\Users\bob\Pictures` a `X:\BobBackup\photos`. Pokud soubor `C:\Users\bob\Pictures\animals\koala.jpg` existuje, nástroj Azure Import/Export zkopíruje chybějící oblasti dat na odpovídající objekt blob `http://bobmediaaccount.blob.core.windows.net/pictures/animals/koala.jpg`.  
+Když tento protokol kopie předána toohello nástroj Azure Import/Export, hello nástroj pokusí zkopírováním hello chybějící obsah v síti hello toofinish hello import tohoto souboru. Následující příklad hello výše, bude nástroj hello hledat hello původní soubor `\animals\koala.jpg` v rámci hello dva adresáře `C:\Users\bob\Pictures` a `X:\BobBackup\photos`. Pokud hello souboru `C:\Users\bob\Pictures\animals\koala.jpg` existuje, hello nástroj Azure Import/Export zkopíruje hello chybějící rozsah datový objekt blob odpovídající toohello `http://bobmediaaccount.blob.core.windows.net/pictures/animals/koala.jpg`.  
   
 ## <a name="resolving-conflicts-when-using-repairimport"></a>Řešení konfliktů při použití RepairImport  
-V některých situacích nástroj pravděpodobně nebude moci najít nebo otevřít soubor potřebné pro jednu z následujících důvodů: soubor nebyl nalezen, soubor není dostupný, je nejednoznačný název souboru nebo obsah souboru již není správný.  
+V některých situacích hello nástroj nemusí být možné toofind nebo otevřete hello nezbytné soubor pro jednu z následujících důvodů hello: hello soubor nebyl nalezen, hello soubor není dostupný, název souboru hello je nejednoznačný nebo hello obsah souboru hello již není správný.  
   
-Nejednoznačné chybě může dojít, pokud tento nástroj se pokouší vyhledat `\animals\koala.jpg` a existuje soubor s tímto názvem v obou `C:\Users\bob\pictures` a `X:\BobBackup\photos`. To znamená i `C:\Users\bob\pictures\animals\koala.jpg` a `X:\BobBackup\photos\animals\koala.jpg` existovat na jednotkách úlohy importu.  
+Nejednoznačné chybě může dojít, pokud nástroj hello se pokouší toolocate `\animals\koala.jpg` a existuje soubor s tímto názvem v obou `C:\Users\bob\pictures` a `X:\BobBackup\photos`. To znamená i `C:\Users\bob\pictures\animals\koala.jpg` a `X:\BobBackup\photos\animals\koala.jpg` existovat na jednotkách úlohy importu hello.  
   
-`/PathMapFile` Možnost vám umožňuje vyřešte tyto chyby. Můžete zadat název souboru, který bude obsahuje seznam souborů, které tento nástroj se nepodařilo správně identifikovat. Tady je příklad příkazového řádku, na které by naplňuje `9WM35C2V_pathmap.txt`:  
+Hello `/PathMapFile` možnost povolit, tooresolve tyto chyby. Můžete zadat název hello souboru hello, obsahující hello seznam souborů, které hello nástroj nebylo možné určit toocorrectly. Hello následuje příklad příkazového řádku, na které by naplňuje `9WM35C2V_pathmap.txt`:  
   
 ```
 WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bob\Pictures;X:\BobBackup\photos /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C2V.log /PathMapFile:C:\WAImportExport\9WM35C2V_pathmap.txt  
 ```
   
-Tento nástroj pak zapíše problematické cesty k `9WM35C2V_pathmap.txt`, každou na jeden řádek. Například soubor může obsahovat následující položky po spuštění příkazu:  
+Nástroj Hello pak zapíše hello problematické cesty příliš`9WM35C2V_pathmap.txt`, každou na jeden řádek. Například může obsahovat soubor hello hello po spuštění příkazu hello následující položky:  
  
 ```
 \animals\koala.jpg  
 \animals\kangaroo.jpg  
 ```
   
- Pro každý soubor v seznamu by měl pokusí najít a otevřít soubor zkontrolujte, zda že je k dispozici pro nástroj. Pokud chcete zjistit nástroj explicitně, kde najít soubor, můžete upravit cestě k souboru mapy a přidejte cestu ke každému souboru na stejném řádku, oddělených tabulátorem:  
+ Pro každý soubor v seznamu hello by měl pokusit toolocate a otevřete tooensure souboru hello je k dispozici toohello nástroj. Pokud chcete nástroj hello tootell explicitně tam, kde můžete upravit toofind souboru, cesta hello mapování souboru a přidejte hello cesta tooeach soubor na hello stejném řádku, oddělených tabulátorem:  
   
 ```
 \animals\koala.jpg           C:\Users\bob\Pictures\animals\koala.jpg  
 \animals\kangaroo.jpg        X:\BobBackup\photos\animals\kangaroo.jpg  
 ```
   
-Po zpřístupnění nástroje potřebné soubory nebo aktualizaci souboru s mapováním cestu, můžete znovu spustit nástroj pro dokončení procesu importu.  
+Po provedení hello potřebné soubory k dispozici toohello nástroje nebo aktualizace souboru s mapováním cesta hello můžete znovu spustit proces importu hello nástroj toocomplete hello.  
   
 ## <a name="next-steps"></a>Další kroky
  
-* [Nastavení nástroje Azure Import/Export](storage-import-export-tool-setup-v1.md)   
+* [Hello nastavení se nástroj Azure Import/Export](storage-import-export-tool-setup-v1.md)   
 * [Příprava pevných disků pro úlohu importu](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [Kontrola stavu úlohy s použitím kopií souborů protokolu](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Oprava úlohy exportu](storage-import-export-tool-repairing-an-export-job-v1.md)   
-* [Řešení potíží s nástrojem Azure pro import/export](storage-import-export-tool-troubleshooting-v1.md)
+* [Řešení potíží s hello nástroj Azure Import/Export](storage-import-export-tool-troubleshooting-v1.md)

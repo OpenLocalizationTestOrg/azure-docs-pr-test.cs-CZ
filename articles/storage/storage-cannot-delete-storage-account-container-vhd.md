@@ -1,5 +1,5 @@
 ---
-title: "Řešení potíží s odstraňování účtů úložiště Azure, kontejnery nebo virtuální pevné disky v nasazení classic | Microsoft Docs"
+title: "aaaTroubleshoot odstraňování účtů úložiště Azure, kontejnery nebo virtuální pevné disky v nasazení classic | Microsoft Docs"
 description: "Řešení potíží s odstraňování účtů úložiště Azure, kontejnery nebo virtuální pevné disky v nasazení classic"
 services: storage
 documentationcenter: 
@@ -15,114 +15,114 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: genli
-ms.openlocfilehash: 9f3e824414ad6c1a0aba98a3d549ee63ddc7272f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6bbfa032e1968718c623227bb426d553e2951075
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-deleting-azure-storage-accounts-containers-or-vhds-in-a-classic-deployment"></a>Řešení potíží s odstraňování účtů úložiště Azure, kontejnery nebo virtuální pevné disky v nasazení classic
 [!INCLUDE [storage-selector-cannot-delete-storage-account-container-vhd](../../includes/storage-selector-cannot-delete-storage-account-container-vhd.md)]
 
-Taky může docházet k chybám při pokusu o odstranění účtu úložiště Azure, kontejneru nebo virtuální pevný disk v [portál Azure](https://portal.azure.com/) nebo [portál Azure classic](https://manage.windowsazure.com/). Tyto problémy můžou být způsobené těmito okolnostmi:
+Taky může docházet k chybám při pokusu o účtu úložiště Azure hello toodelete, kontejneru nebo virtuální pevný disk v hello [portál Azure](https://portal.azure.com/) nebo hello [portál Azure classic](https://manage.windowsazure.com/). Hello problémů může být způsobeno hello následující okolnosti:
 
-* Když odstraníte virtuální počítač, disk a virtuální pevný disk se neodstraní automaticky. To může být důvod chyby při odstraňování účtu úložiště. Neodstraňujte jsme disku tak, aby disk můžete připojit jiným virtuálním Počítačem.
-* Disk nebo objekt blob, který je k tomuto disku přidružený, je stále ještě zapůjčený.
+* Při odstranění virtuálního počítače hello disku a virtuálního pevného disku nejsou automaticky odstraněny. Který může být hello důvod selhání v odstranění účtu úložiště. Neodstraňujte jsme hello disku tak, aby můžete hello disku toomount jiným virtuálním Počítačem.
+* Na disku nebo hello objektů blob, který je spojen s hello disk stále není zapůjčení.
 * Je stále image virtuálního počítače, který používá účet úložiště, kontejner nebo objekt blob.
 
-Pokud není Azure problém řešený v tomto článku, navštivte fórech Azure na [MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/). Problém můžete účtovat na tyto fóra nebo na @AzureSupport na Twitteru. Navíc můžete soubor žádost o podporu Azure tak, že vyberete **získat podporu** na [podporu Azure](https://azure.microsoft.com/support/options/) lokality.
+Pokud není Azure problém řešený v tomto článku, navštivte hello fóra Azure na [MSDN a hello Stack Overflow](https://azure.microsoft.com/support/forums/). Problém můžete zveřejnit na tyto fóra nebo too@AzureSupport na Twitteru. Navíc můžete soubor žádost o podporu Azure tak, že vyberete **získat podporu** na hello [podporu Azure](https://azure.microsoft.com/support/options/) lokality.
 
 ## <a name="symptoms"></a>Příznaky
-V následující části jsou uvedeny běžné chyby, které může dojít při pokusu o odstranění účtů úložiště Azure, kontejnery nebo virtuální pevné disky.
+Hello následující části jsou uvedeny běžné chyby, které se může zobrazit při pokusu o účtech Azure storage hello toodelete, kontejnery nebo virtuální pevné disky.
 
-### <a name="scenario-1-unable-to-delete-a-storage-account"></a>Scénář 1: Nelze odstranit účet úložiště
-Když přejdete k účtu úložiště classic v [portál Azure](https://portal.azure.com/) a vyberte **odstranit**, může být zobrazí se seznam objektů, které brání odstranění účtu úložiště:
+### <a name="scenario-1-unable-toodelete-a-storage-account"></a>Scénář 1: Nelze toodelete účet úložiště
+Když přejdete účet úložiště classic toohello hello [portál Azure](https://portal.azure.com/) a vyberte **odstranit**, může být zobrazí se seznam objektů, které brání odstranění účtu úložiště hello:
 
-  ![Obrázek chyby při odstranění účtu úložiště](./media/storage-cannot-delete-storage-account-container-vhd/newerror.png)
+  ![Obrázek chyby při odstranění účtu úložiště hello](./media/storage-cannot-delete-storage-account-container-vhd/newerror.png)
 
-Když přejdete k účtu úložiště v [portál Azure classic](https://manage.windowsazure.com/) a vyberte **odstranit**, můžete sledovat některé z těchto chyb:
+Když přejdete toohello účet úložiště v hello [portál Azure classic](https://manage.windowsazure.com/) a vyberte **odstranit**, můžete sledovat některé hello následujícím chybám:
 
 - *Účet úložiště StorageAccountName obsahuje Image virtuálních počítačů. Zkontrolujte, zda že jsou tyto Image virtuálních počítačů odebrány před odstraněním tohoto účtu úložiště.*
 
-- *Nepodařilo se odstranit účet úložiště < vm-storage účet name >. Nelze odstranit účet úložiště < vm-storage účet name >: "účet úložiště < vm-storage účet name > má některé aktivní Image a/nebo disky. Tyto bitové kopie a/nebo disky odebrání před odstraněním tohoto účtu úložiště.'.*
+- *Nepodařilo účet úložiště toodelete < vm-storage účet name >. Účet úložiště nejde toodelete < vm-storage účet name >: "účet úložiště < vm-storage účet name > má některé aktivní Image a/nebo disky. Tyto bitové kopie a/nebo disky odebrání před odstraněním tohoto účtu úložiště.'.*
 
 - *Účet úložiště < vm-storage účet name > obsahuje některé aktivní Image a/nebo disky, například xxxxxxxxx-xxxxxxxxx-O-209490240936090599. Ujistěte se, tyto Image a/nebo disky jsou odebrány před odstraněním tohoto účtu úložiště.*
 
-- *Účet úložiště < vm-storage účet name > má 1 kontejnery, které mít aktivní image a/nebo disk artefakty. Ujistěte se, odeberte tyto artefakty z úložiště imagí před odstraněním tohoto účtu úložiště*.
+- *Účet úložiště < vm-storage účet name > má 1 kontejnery, které mít aktivní image a/nebo disk artefakty. Ujistěte se, odeberte tyto artefakty z úložiště imagí hello před odstraněním tohoto účtu úložiště*.
 
-- *Odešlete, že má účet úložiště se nezdařilo < vm-storage účet name > 1 kontejnery, které mít aktivní image a/nebo disk artefakty. Zajistěte, aby že tyto artefakty z úložiště imagí před odstraněním tohoto účtu úložiště. Při pokusu o odstranění účtu úložiště a je stále aktivní disky s ním spojená, zobrazí se zpráva s upozorněním, nejsou aktivní disky, které je potřeba odstranit*.
+- *Odešlete, že má účet úložiště se nezdařilo < vm-storage účet name > 1 kontejnery, které mít aktivní image a/nebo disk artefakty. Zajistěte, aby že tyto artefakty z úložiště imagí hello před odstraněním tohoto účtu úložiště. Když se pokusíte toodelete účet úložiště a stále aktivní disky s ním spojená, zobrazí se zpráva s upozorněním, nejsou aktivní disky, které je třeba odstranit toobe*.
 
-### <a name="scenario-2-unable-to-delete-a-container"></a>Scénář 2: Nelze odstranit kontejner
-Když se pokusíte odstranit kontejner úložiště, může se zobrazit chybová zpráva:
+### <a name="scenario-2-unable-toodelete-a-container"></a>Scénář 2: Nelze toodelete kontejner
+Když zkusíte kontejner úložiště hello toodelete, může se zobrazit hello následující chybě:
 
-*Nepodařilo se odstranit kontejner úložiště <container name>. Chyba: ' není aktuálně k zapůjčení adresy v kontejneru a žádné ID zapůjčení zadaná v žádosti o*.
-
-Nebo
-
-*Následující disky virtuálního počítače používat objekty BLOB v tomto kontejneru, nelze ho odstranit kontejner: VirtualMachineDiskName1, VirtualMachineDiskName2,...*
-
-### <a name="scenario-3-unable-to-delete-a-vhd"></a>Scénář 3: Nelze odstranit virtuální pevný disk
-Po odstranění virtuálního počítače a potom se pokuste odstranit objekty BLOB pro přidružené virtuální pevné disky, zobrazí se následující zpráva:
-
-*Nepodařilo se odstranit objekt blob "cesta/XXXXXX-XXXXXX-os-1447379084699.vhd'. Chyba: ' u objektu blob je momentálně zapůjčení a žádné ID zapůjčení zadaná v žádosti.*
+*Kontejner úložiště se nezdařilo toodelete <container name>. Chyba: ' hello kontejneru je aktuálně zapůjčení a žádné ID zapůjčení byl zadaný v požadavku hello*.
 
 Nebo
 
-*Objekt BLOB BlobName.vhd je používán jako disk virtuálního počítače "VirtualMachineDiskName", nelze ho odstranit objekt blob.*
+*Hello následující disky virtuálního počítače použít objekty BLOB v tomto kontejneru, nelze ho odstranit kontejner hello: VirtualMachineDiskName1, VirtualMachineDiskName2,...*
+
+### <a name="scenario-3-unable-toodelete-a-vhd"></a>Scénář 3: Nelze toodelete virtuální pevný disk
+Po odstranění virtuálního počítače a potom zkuste toodelete hello objektů blob pro hello přidružené virtuální pevné disky, se může zobrazit hello následující zprávou:
+
+*Objekt blob se nezdařilo toodelete "cesta/XXXXXX-XXXXXX-os-1447379084699.vhd'. Chyba: ' u objektu blob hello je aktuálně zapůjčení a žádné ID zapůjčení byl zadaný v požadavku hello.*
+
+Nebo
+
+*Objekt BLOB BlobName.vhd je používán jako disk virtuálního počítače, VirtualMachineDiskName', nelze ho odstranit objekt blob hello.*
 
 ## <a name="solution"></a>Řešení
-Chcete-li vyřešit nejběžnější problémy, zkuste následující metodu:
+tooresolve hello nejběžnějších problémů, zkuste hello následující metodu:
 
-### <a name="step-1-delete-any-disks-that-are-preventing-deletion-of-the-storage-account-container-or-vhd"></a>Krok 1: Odstranění disky, které brání odstranění účtu úložiště, kontejneru nebo virtuální pevný disk
-1. Přepnout [portál Azure classic](https://manage.windowsazure.com/).
+### <a name="step-1-delete-any-disks-that-are-preventing-deletion-of-hello-storage-account-container-or-vhd"></a>Krok 1: Odstranění disky, které brání odstranění účtu úložiště hello, kontejneru nebo virtuální pevný disk
+1. Přepínač toohello [portál Azure classic](https://manage.windowsazure.com/).
 2. Vyberte **VIRTUÁLNÍHO počítače** > **disky**.
 
     ![Obrázek disky na virtuální počítače na portálu Azure classic.](./media/storage-cannot-delete-storage-account-container-vhd/VMUI.png)
-3. Vyhledejte disky přidružené k virtuálnímu pevnému disku, kontejneru nebo účtu úložiště, který chcete odstranit. Přidružený virtuální pevný disk, kontejner nebo účet úložiště najdete, když zkontrolujete umístění tohoto disku.
+3. Vyhledejte hello disky, které jsou přidruženy k účtu úložiště hello, kontejneru nebo virtuálního pevného disku, které chcete toodelete. Pokud zaškrtnete hello umístění disku hello, zjistíte, že hello přidruženého účtu úložiště, kontejneru nebo virtuální pevný disk.
 
     ![Obrázek, který obsahuje informace o umístění pro disky na portálu Azure classic](./media/storage-cannot-delete-storage-account-container-vhd/DiskLocation.png)
-4. Odstraňte disky pomocí jedné z následujících metod:
+4. Odstraňte hello disky pomocí jedné z následujících metod hello:
 
-  - Pokud neexistuje žádné virtuální uvedený na **připojené k** pole disku, můžete odstranit disk přímo.
+  - Pokud je uvedený žádný virtuální počítač na hello **připojené k** pole hello disk, můžete odstranit hello disk přímo.
 
-  - Pokud je disk datový disk, postupujte takto:
+  - Pokud hello disk datový disk, postupujte takto:
 
-    1. Zkontrolujte název virtuálního počítače, který je disk připojen k.
-    2. Přejděte na **virtuální počítače** > **instance**a vyhledejte virtuálního počítače.
-    3. Ujistěte se, že nic aktivně používá disk.
-    4. Vyberte **odpojit Disk** v dolní části portálu se odpojit disk.
-    5. Přejděte na **virtuální počítače** > **disky**a počkejte **připojené k** pole, které chcete zapnout prázdné. To znamená, že je disk se úspěšně odpojil od virtuálního počítače.
-    6. Vyberte **odstranit** v dolní části **virtuální počítače** > **disky** odstranit disk.
+    1. Zkontrolujte, zda text hello název Dobrý den, který je připojený virtuální počítač, který hello disku.
+    2. Přejděte příliš**virtuální počítače** > **instance**a vyhledejte hello virtuálních počítačů.
+    3. Ujistěte se, že nic aktivně používá hello disku.
+    4. Vyberte **odpojit Disk** dolnímu hello hello portálu toodetach hello disku.
+    5. Přejděte příliš**virtuální počítače** > **disky**a počkat na hello **připojené k** tooturn pole prázdné. To znamená, že hello disku se úspěšně odpojil od hello virtuálních počítačů.
+    6. Vyberte **odstranit** hello dolnímu okraji **virtuální počítače** > **disky** toodelete hello disku.
 
-  - Pokud je disk disk s operačním systémem ( **obsahuje OS** pole má hodnotu, jako je Windows) a připojené k virtuálnímu počítači, postupujte podle těchto kroků se odstranit virtuální počítač. Disk operačního systému nelze odpojit, takže jsme muset odstranit virtuální počítač k uvolnění zapůjčení.
+  - Pokud je disk operačního systému disku hello (hello **obsahuje operační systém** pole má hodnotu, jako je Windows) a připojené tooa virtuálních počítačů, postupujte podle těchto kroků toodelete hello virtuálních počítačů. disk s operačním systémem Hello nejde odpojit, abychom měli toodelete hello virtuálních počítačů toorelease hello zapůjčení.
 
-    1. Zkontrolujte název virtuálního počítače je datový Disk připojen k.  
-    2. Přejděte na **virtuální počítače** > **instance**a potom vyberte virtuální počítač, který je disk připojen k.
-    3. Ujistěte se, že nic aktivně používá virtuální počítač a virtuální počítač už nepotřebujete.
-    4. Vyberte virtuální disk je připojen k, pak vyberte **odstranit** > **odstranění připojených disků**.
-    5. Přejděte na **virtuální počítače** > **disky**a počkejte, než se disk zmizí.  Může trvat několik minut, než tuto funkci používat, a budete muset aktualizujte stránku.
-    6. Pokud disk nezmizí, počkejte **připojené k** pole, které chcete zapnout prázdné. To znamená, že na disku má plně odpojený od virtuálního počítače.  Pak vyberte disk a vyberte **odstranit** v dolní části stránky se odstranit disk.
+    1. Zkontrolujte název virtuálního počítače hello hello datový Disk je připojen k hello.  
+    2. Přejděte příliš**virtuální počítače** > **instance**, a pak vyberte hello virtuální počítač, který hello disku je připojen k.
+    3. Ujistěte se, že nic aktivně používá hello virtuálního počítače a že jste už potřebovat hello virtuálního počítače.
+    4. Vyberte hello virtuálních počítačů hello disk připojen k, pak vyberte **odstranit** > **hello odstranění připojených disků**.
+    5. Přejděte příliš**virtuální počítače** > **disky**a počkat na disku toodisappear hello.  Může trvat několik minut, než tato toooccur a může být nutné stránku hello toorefresh.
+    6. Pokud hello disk nezmizí, počkejte hello **připojené k** tooturn pole prázdné. To znamená, že hello disku má plně odpojený od hello virtuálních počítačů.  Potom vyberte hello disk a vyberte **odstranit** dole hello hello stránky toodelete hello disk.
 
 
    > [!NOTE]
-   > Pokud je disk připojen k virtuálnímu počítači, nebude možné jej odstranit. Disky jsou asynchronně odpojit z odstraněné virtuálního počítače. Může trvat několik minut, po odstranění virtuálního počítače pro toto pole, aby vymazány.
+   > Pokud disk připojené tooa virtuálního počítače, nebudete moct toodelete ho. Disky jsou asynchronně odpojit z odstraněné virtuálního počítače. Může trvat několik minut, po odstranění hello virtuálního počítače pro toto pole tooclear nahoru.
    >
    >
 
 
-### <a name="step-2-delete-any-vm-images-that-are-preventing-deletion-of-the-storage-account-or-container"></a>Krok 2: Odstraňte všechny Image virtuálních počítačů, které brání odstranění účtu úložiště nebo kontejneru
-1. Přepnout [portál Azure classic](https://manage.windowsazure.com/).
-2. Vyberte **VIRTUÁLNÍHO počítače** > **bitové kopie**a potom odstraňte obrázky, které jsou přidruženy k účtu úložiště, kontejneru nebo virtuální pevný disk.
+### <a name="step-2-delete-any-vm-images-that-are-preventing-deletion-of-hello-storage-account-or-container"></a>Krok 2: Odstraňte všechny Image virtuálních počítačů, které brání odstranění účtu úložiště hello nebo kontejneru
+1. Přepínač toohello [portál Azure classic](https://manage.windowsazure.com/).
+2. Vyberte **VIRTUÁLNÍHO počítače** > **bitové kopie**a potom odstraňte hello bitové kopie, které jsou přidruženy k účtu úložiště hello, kontejneru nebo virtuální pevný disk.
 
-    Potom se pokuste odstranit účet úložiště, kontejneru nebo virtuální pevný disk znovu.
+    Potom zkuste znovu účet úložiště hello toodelete, kontejneru nebo virtuální pevný disk.
 
 > [!WARNING]
-> Nezapomeňte si před odstraněním účtu zazálohovat všechno, co chcete uložit. Jakmile odstraníte virtuální pevný disk, objektů blob, tabulka, fronta nebo soubor, je trvale odstraněn. Ujistěte se, že prostředek není používán.
+> Být jisti tooback až nic chcete toosave před odstraněním účtu hello. Jakmile odstraníte virtuální pevný disk, objektů blob, tabulka, fronta nebo soubor, je trvale odstraněn. Ujistěte se, že hello prostředek není používán.
 >
 >
 
-## <a name="about-the-stopped-deallocated-status"></a>O zastaveném (nepřiřazeném) stavu
-Bude mít virtuální počítače, které byly vytvořené v modelu nasazení classic a které byly ponechány **zastaveném (nepřiřazeném)** stavu na buď [portál Azure](https://portal.azure.com/) nebo [portál Azure classic](https://manage.windowsazure.com/).
+## <a name="about-hello-stopped-deallocated-status"></a>O hello zastaveném (nepřiřazeném) stavu
+Virtuální počítače, které byly vytvořené v modelu nasazení classic hello a které byly ponechány bude mít hello **zastaveném (nepřiřazeném)** stav buď hello [portál Azure](https://portal.azure.com/) nebo [portál Azure classic ](https://manage.windowsazure.com/).
 
 **Portál Azure classic**:
 
@@ -132,7 +132,7 @@ Bude mít virtuální počítače, které byly vytvořené v modelu nasazení cl
 
 ![Zastavit (deallocated) stav pro virtuální počítače na portálu Azure classic.](./media/storage-cannot-delete-storage-account-container-vhd/moreinfo1.png)
 
-Stav "Zastaveném (nepřiřazeném)" uvolní prostředky počítače, jako je například procesoru, paměti a sítě. Disky, ale stále zachovány, takže můžete rychle znovu vytvořit virtuální počítač v případě potřeby. Tyto disky se vytvářejí na virtuálních pevných disků, které by podporovala úložiště Azure. Účet úložiště obsahuje tyto virtuální pevné disky a disky jsou zapůjčení na těchto virtuálních pevných discích.
+Stav "Zastaveném (nepřiřazeném)" uvolní prostředky počítače hello, jako je například hello procesoru, paměti a sítě. Hello disky, ale stále zachovány, takže můžete rychle znovu vytvořit hello virtuálních počítačů v případě potřeby. Tyto disky se vytvářejí na virtuálních pevných disků, které by podporovala úložiště Azure. účet úložiště Hello má tyto virtuální pevné disky a hello disky mají zapůjčení na těchto virtuálních pevných discích.
 
 ## <a name="next-steps"></a>Další kroky
 * [Odstranit účet úložiště](storage-create-storage-account.md#delete-a-storage-account)

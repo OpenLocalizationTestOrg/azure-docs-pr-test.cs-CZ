@@ -1,5 +1,5 @@
 ---
-title: "Kurz: Vytvoření kanálu pro přesouvání dat pomocí Azure PowerShellu | Dokumentace Microsoftu"
+title: "Kurz: Vytvoření kanálu toomove dat pomocí Azure PowerShell | Microsoft Docs"
 description: "V tomto kurzu vytvoříte kanál služby Azure Data Factory s aktivitou kopírování pomocí Azure PowerShellu."
 services: data-factory
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: spelluru
-ms.openlocfilehash: 81efe7c6af29af778686e1f6bcf62fedc9711052
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 21406d7dfaa0c555b2538fbb52839d761c140fc5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Kurz: Vytvoření kanálu Data Factory pro přesouvání dat pomocí Azure PowerShellu
 > [!div class="op_single_selector"]
@@ -33,119 +33,119 @@ ms.lasthandoff: 08/03/2017
 >
 >
 
-V tomto článku se naučíte, jak používat PowerShell, abyste vytvořili datovou továrnu s kanálem, který kopíruje data z úložiště objektů blob v Azure do databáze SQL v Azure. Pokud s Azure Data Factory začínáte, přečtěte si článek [Seznámení se službou Azure Data Factory](data-factory-introduction.md), než s tímto kurzem začnete.   
+V tomto článku se dozvíte, jak toocreate toouse prostředí PowerShell objekt pro vytváření dat s kanál, který kopíruje data z databáze Azure SQL tooan úložiště objektů blob v Azure. Pokud jste tooAzure nový objekt pro vytváření dat, pročtěte hello [Úvod tooAzure Data Factory](data-factory-introduction.md) článek před provedením tohoto kurzu.   
 
-V tomto kurzu vytvoříte kanál s jednou aktivitou: aktivita kopírování. Aktivita kopírování kopíruje data z podporovaného úložiště dat do podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako zdroje a jímky najdete v tématu [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Aktivita používá globálně dostupnou službu, která může kopírovat data mezi různými úložišti dat zabezpečeným, spolehlivým a škálovatelným způsobem. Další informace o aktivitě kopírování najdete v tématu [Aktivity pohybu dat](data-factory-data-movement-activities.md).
+V tomto kurzu vytvoříte kanál s jednou aktivitou: aktivita kopírování. Aktivita kopírování Hello zkopíruje data z úložiště dat podporovaných podřízený tooa podporované datové úložiště. Seznam úložišť dat podporovaných jako zdroje a jímky najdete v tématu [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Hello aktivita používá globálně dostupnou službu, která může kopírovat data mezi různými úložišti dat zabezpečeným, spolehlivým a škálovatelné způsobem. Další informace o hello aktivitě kopírování najdete v tématu [aktivity přesunu dat](data-factory-data-movement-activities.md).
 
-Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením výstupní datové sady jedné aktivity jako vstupní datové sady druhé aktivity. Další informace naleznete, když přejdete na [více aktivit v kanálu](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
+Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity (spustit aktivitu po jiné) můžete řetězu nastavením hello výstupní datovou sadu jednu aktivitu jako hello vstupní datové sady hello dalších aktivit. Další informace naleznete, když přejdete na [více aktivit v kanálu](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
 > [!NOTE]
-> Tento článek nepopisuje všechny rutiny služby Data Factory. Úplnou dokumentaci k těmto rutinám najdete v článku [Referenční informace o rutinách služby Data Factory](/powershell/module/azurerm.datafactories).
+> Tento článek nepopisuje všechny rutiny služby Data Factory hello. Úplnou dokumentaci k těmto rutinám najdete v článku [Referenční informace o rutinách služby Data Factory](/powershell/module/azurerm.datafactories).
 > 
-> Datový kanál v tomto kurzu kopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Kurz předvádějící způsoby transformace dat pomocí Azure Data Factory najdete v tématu popisujícím [kurz vytvoření kanálu, který umožňuje transformovat data pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md).
+> Hello datovém kanálu v tomto kurzu kopíruje data ze zdroje dat úložiště tooa cílového úložiště dat. Kurz týkající se jak tootransform dat pomocí Azure Data Factory najdete v části [kurz: sestavení dat tootransform kanálu pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md).
 
 ## <a name="prerequisites"></a>Požadavky
-- Dokončete požadované kroky uvedené v [požadavcích kurzu](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-- Nainstalujte **Azure PowerShell**. Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](../powershell-install-configure.md).
+- Dokončení požadavky uvedené v hello [požadavky kurzu](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) článku.
+- Nainstalujte **Azure PowerShell**. Postupujte podle pokynů hello v [jak tooinstall a konfigurace prostředí Azure PowerShell](../powershell-install-configure.md).
 
 ## <a name="steps"></a>Kroky
-Zde jsou kroky, které provedete v rámci tohoto kurzu:
+Zde jsou hello kroky, které můžete provádět v rámci tohoto kurzu:
 
 1. Vytvořte **datovou továrnu** Azure. V tomto kroku vytvoříte datovou továrnu s názvem ADFTutorialDataFactoryPSH. 
-2. V této datové továrně vytvořte **propojené služby**. V tomto kroku vytvoříte dvě propojené služby typu: Azure Storage a Azure SQL Database. 
+2. Vytvoření **propojené služby** v datové továrně hello. V tomto kroku vytvoříte dvě propojené služby typu: Azure Storage a Azure SQL Database. 
     
-    Služba AzureStorageLinkedService propojí váš účet služby Azure Storage s datovou továrnou. V rámci [požadavků](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) jste vytvořili kontejner a nahráli data do tohoto účtu úložiště.   
+    Hello AzureStorageLinkedService propojuje účet úložiště Azure toohello datovou továrnu. Vytvořit kontejner a účet úložiště dat toothis odesílané jako součást [požadavky](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
 
-    Služba AzureSqlLinkedService propojí službu Azure SQL Database s datovou továrnou. Data kopírovaná z úložiště objektů blob se ukládají do této databáze. V této databázi jste v rámci [požadavků](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) vytvořili tabulku SQL.   
-3. Vytvořte v datové továrně vstupní a výstupní **datové sady**.  
+    AzureSqlLinkedService propojuje službu Azure SQL database toohello datovou továrnu. Hello data, která se zkopírují z úložiště objektů blob hello jsou uložena v této databázi. V této databázi jste v rámci [požadavků](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) vytvořili tabulku SQL.   
+3. Vytvoření vstupní a výstupní **datové sady** v datové továrně hello.  
     
-    Propojená služba úložiště Azure určuje připojovací řetězec, který služba Data Factory používá za běhu, aby se připojila k vašemu účtu úložiště Azure. A vstupní datová sada objektu blob určuje kontejner a složku obsahující vstupní data.  
+    Hello propojená služba úložiště Azure určuje hello připojovací řetězec, který používá služba Data Factory v době běhu tooconnect tooyour účtu úložiště Azure. A určuje datovou sadu vstupního objektu blob hello hello kontejneru a složce hello, který obsahuje vstupní data hello.  
 
-    Podobně také propojená služba Azure SQL Database určuje připojovací řetězec, který služba Data Factory používá za běhu, aby se připojila k vašemu účtu Azure SQL database. A výstupní datová sada tabulky SQL určuje tabulku v databázi, do které se kopírují data z úložiště objektů blob.
-4. Vytvořte v datové továrně **kanál**. V tomto kroku pomocí aktivity kopírování vytvoříte kanál.   
+    Podobně hello služby Azure SQL Database propojené určuje hello připojovací řetězec, který používá služba Data Factory v době běhu tooconnect tooyour Azure SQL database. A hello výstupní SQL tabulky datovou sadu Určuje, že se zkopíruje hello tabulky v hello databáze toowhich hello dat z úložiště objektů blob hello.
+4. Vytvoření **kanálu** v datové továrně hello. V tomto kroku pomocí aktivity kopírování vytvoříte kanál.   
     
-    Aktivita kopírování kopíruje data z objektu blob v úložišti objektů blob v Azure do tabulky v databázi Azure SQL. Aktivitu kopírování můžete v kanálu použít ke kopírování dat z jakéhokoli podporovaného zdroje do jakéhokoli podporovaného cíle. Seznam podporovaných úložišť dat najdete v článku [Aktivity přesunu dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). 
-5. Monitorujte kanál. V tomto kroku budete **monitorovat** řezy vstupních a výstupních datových sad pomocí PowerShellu.
+    Aktivita kopírování Hello zkopíruje data z objektu blob ve tabulku tooa úložiště objektů blob v Azure hello ve hello Azure SQL database. Můžete vytvořit aktivity kopírování v kanálu toocopy data z cílového všechny podporované zdrojové tooany podporována. Seznam podporovaných úložišť dat najdete v článku [Aktivity přesunu dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). 
+5. Monitorování kanálu hello. V tomto kroku budete **monitorování** hello řezy vstupní a výstupní datové sady pomocí prostředí PowerShell.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 > [!IMPORTANT]
-> Pokud jste tak ještě neučinili, dokončete [požadavky kurzu](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
+> Dokončení [předpoklady pro kurz hello](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) Pokud jste tak již neučinili.   
 
-Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál může obsahovat jednu nebo víc aktivit. Může obsahovat například aktivitu kopírování, která slouží ke kopírování dat ze zdrojového do cílového úložiště dat, a aktivitu HDInsight Hive pro spuštění skriptu Hive, který umožňuje transformovat vstupní data na výstupní data produktu. V tomto kroku začneme vytvořením objektu pro vytváření dat.
+Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál může obsahovat jednu nebo víc aktivit. Například aktivitu kopírování dat toocopy z tooa zdroje cílového úložiště dat a toorun aktivitu HDInsight Hive tootransform skriptu Hive vstupní data tooproduct výstupní data. Začneme vytvořením objektu pro vytváření dat hello v tomto kroku.
 
-1. Spusťte **PowerShell**. Nechte prostředí Azure PowerShell otevřené až do konce tohoto kurzu. Pokud ho zavřete a znovu otevřete, bude potřeba tyto příkazy spustit znovu.
+1. Spusťte **PowerShell**. Nechte prostředí Azure PowerShell otevřené až hello konce tohoto kurzu. Pokud zavřete a znovu otevřete, toorun hello příkazů je třeba znovu.
 
-    Spusťte následující příkaz a zadejte uživatelské jméno a heslo, které používáte k přihlášení na web Azure Portal:
+    Spusťte následující příkaz hello a zadejte hello uživatelské jméno a heslo použít toosign v toohello portálu Azure:
 
     ```PowerShell
     Login-AzureRmAccount
     ```   
    
-    Spuštěním následujícího příkazu zobrazíte všechna předplatná pro tento účet:
+    Spusťte následující příkaz tooview hello všechny hello předplatná pro tento účet:
 
     ```PowerShell
     Get-AzureRmSubscription
     ```
 
-    Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Místo **&lt;NameOfAzureSubscription**&gt; uveďte název svého předplatného Azure:
+    Spusťte následující příkaz tooselect hello předplatné, které chcete toowork s hello. Nahraďte  **&lt;NameOfAzureSubscription** &gt; s názvem hello předplatného Azure:
 
     ```PowerShell
     Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
     ```
-2. Spuštěním následujícího příkazu vytvořte skupinu prostředků Azure s názvem **ADFTutorialResourceGroup**:
+2. Vytvořte skupinu prostředků Azure s názvem **ADFTutorialResourceGroup** spuštěním hello následující příkaz:
 
     ```PowerShell
     New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
     
-    Některé kroky v tomto kurzu vychází z předpokladu, že používáte skupinu prostředků s názvem **ADFTutorialResourceGroup**. Pokud máte jinou skupinu prostředků, použijte ji v postupech v tomto kurzu místo skupiny ADFTutorialResourceGroup.
-3. Spuštěním rutiny **New-AzureRmDataFactory** vytvořte datovou továrnu s názvem **ADFTutorialDataFactoryPSH**:  
+    Některé hello kroky v tomto kurzu vychází z předpokladu, že používáte hello skupinu prostředků s názvem **ADFTutorialResourceGroup**. Pokud používáte jiné skupině prostředků, je nutné toouse ho místo skupiny ADFTutorialResourceGroup v tomto kurzu.
+3. Spustit hello **New-AzureRmDataFactory** rutiny toocreate objekt pro vytváření dat s názvem **ADFTutorialDataFactoryPSH**:  
 
     ```PowerShell
     $df=New-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH –Location "West US"
     ```
-    Tento název už nejspíš není volný. Vytvořte proto jedinečný název datové továrny přidáním předpony nebo přípony (například: ADFTutorialDataFactoryPSH05152017) a spusťte příkaz znovu.  
+    Tento název už nejspíš není volný. Proto zkontrolujte hello název objektu pro vytváření dat hello jedinečný přidáním předpony nebo přípony (například: ADFTutorialDataFactoryPSH05152017) a znovu spusťte příkaz hello.  
 
-Je třeba počítat s následujícím:
+Všimněte si hello následující body:
 
-* Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí následující chyba, změňte název (třeba na váš_název_ADFTutorialDataFactoryPSH). Při provádění postupů v tomto kurzu potom tento název používejte místo názvu ADFTutorialFactoryPSH. Informace o artefaktech služby Data Factory najdete v tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md).
+* Hello název objektu pro vytváření dat Azure hello musí být globálně jedinečný. Pokud se zobrazí následující chyba hello, změňte název hello (například na název Váš_název_adftutorialdatafactorypsh). Při provádění postupů v tomto kurzu potom tento název používejte místo názvu ADFTutorialFactoryPSH. Informace o artefaktech služby Data Factory najdete v tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md).
 
     ```
     Data factory name “ADFTutorialDataFactoryPSH” is not available
     ```
-* Instance služby Data Factory můžete vytvářet jenom tehdy, když jste přispěvatelem nebo správcem předplatného Azure.
-* Název datové továrny se může v budoucnu zaregistrovat jako název DNS, takže pak bude veřejně viditelný.
-* Mohla se zobrazit tato chyba: **Pro předplatné není zaregistrované používání oboru názvů Microsoft.DataFactory.** Proveďte jednu z následujících a zkuste publikování znovu:
+* instance služby Data Factory toocreate, musí být Přispěvatel nebo správce hello předplatného Azure.
+* Hello název objektu pro vytváření dat hello může zaregistrovat jako název DNS v hello budoucí a proto pak bude veřejně viditelný.
+* Můžete obdržet hello následující chybě: "**toto předplatné není registrované toouse oboru názvů Microsoft.DataFactory.**" Udělejte jednu z následujících hello a zkuste znovu publikovat:
 
-  * Spuštěním následujícího příkazu v prostředí Azure PowerShell zaregistrujte zprostředkovatele služby Data Factory:
+  * V prostředí Azure PowerShell spusťte následující příkaz tooregister hello Data Factory zprostředkovatele hello:
 
     ```PowerShell
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
-    Spuštěním následujícího příkazu ověřte, zda je zprostředkovatel služby Data Factory zaregistrovaný:
+    Spusťte následující příkaz tooconfirm hello této hello zaregistrovat poskytovatele služby Data Factory:
 
     ```PowerShell
     Get-AzureRmResourceProvider
     ```
-  * Přihlaste se pomocí předplatného Azure k webu [Azure Portal](https://portal.azure.com). Přejděte do okna Data Factory, nebo vytvořte datovou továrnu na webu Azure Portal. Zprostředkovatel se při takovém postupu zaregistruje automaticky.
+  * Přihlášení pomocí hello předplatného Azure toohello [portál Azure](https://portal.azure.com). Okno objekt pro vytváření dat tooa přejít, nebo vytvořte objekt pro vytváření dat v hello portál Azure. Tato akce automaticky registruje zprostředkovatele hello za vás.
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
-V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V tomto kurzu nebudete používat žádnou výpočetní službu jako je Azure HDInsight nebo Azure Data Lake Analytics. Budete používat dvě úložiště dat typu Azure Storage (zdroj) a Azure SQL Database (cíl). 
+Vytvoření propojených služeb v objektu pro vytváření toolink dat, data se ukládá a výpočetní služby toohello data factory. V tomto kurzu nebudete používat žádnou výpočetní službu jako je Azure HDInsight nebo Azure Data Lake Analytics. Budete používat dvě úložiště dat typu Azure Storage (zdroj) a Azure SQL Database (cíl). 
 
 Vytvoříte tedy dvě propojené služby s názvem AzureStorageLinkedService a AzureSqlLinkedService typu: AzureStorage a AzureSqlDatabase.  
 
-Služba AzureStorageLinkedService propojí váš účet služby Azure Storage s datovou továrnou. Tento účet úložiště je ten, ve kterém jste v rámci [požadavků](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) vytvořili kontejner a nahráli do něj data.   
+Hello AzureStorageLinkedService propojuje účet úložiště Azure toohello datovou továrnu. Tento účet úložiště se hello, jeden ve které jste vytvořili kontejner a objemu odeslaných dat hello jako součást [požadavky](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
 
-Služba AzureSqlLinkedService propojí službu Azure SQL Database s datovou továrnou. Data kopírovaná z úložiště objektů blob se ukládají do této databáze. V této databázi jste v rámci [požadavků](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) vytvořili tabulku emp. 
+AzureSqlLinkedService propojuje službu Azure SQL database toohello datovou továrnu. Hello data, která se zkopírují z úložiště objektů blob hello jsou uložena v této databázi. Vytvořit hello tabulce emp v této databázi jako součást [požadavky](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
 ### <a name="create-a-linked-service-for-an-azure-storage-account"></a>Vytvoření propojené služby pro účet úložiště Azure
-V tomto kroku propojíte se svou datovou továrnou účet úložiště Azure.
+V tomto kroku propojíte datovou továrnu tooyour účet úložiště Azure.
 
-1. Vytvořte soubor JSON s názvem **AzureStorageLinkedService.json** ve složce **C:\ADFGetStartedPSH** s následujícím obsahem: (pokud ještě neexistuje, složku ADFGetStartedPSH vytvořte).
+1. Vytvořte soubor JSON s názvem **AzureStorageLinkedService.json** v **C:\ADFGetStartedPSH** složku s hello následující obsah: (vytvořit hello složka ADFGetStartedPSH, pokud ještě neexistuje.)
 
     > [!IMPORTANT]
-    > Než soubor uložíte, položky &lt;accountname&gt; a &lt;accountkey&gt; nahraďte názvem svého účtu Azure Storage a jeho klíčem. 
+    > Nahraďte &lt;accountname&gt; a &lt;accountkey&gt; zadejte název a klíč účtu úložiště Azure před uložením souboru hello. 
 
     ```json
     {
@@ -158,13 +158,13 @@ V tomto kroku propojíte se svou datovou továrnou účet úložiště Azure.
         }
      }
     ``` 
-2. V prostředí **Azure PowerShell** přejděte do složky **ADFGetStartedPSH**.
-4. Spuštěním rutiny **New-AzureRmDataFactoryLinkedService** vytvořte propojenou službu **AzureStorageLinkedService**. Tato rutina a další rutiny služby Data Factory používané v tomto kurzu vyžadují, abyste zadali hodnoty parametrů **ResourceGroupName** a **DataFactoryName**. Alternativně můžete objekt DataFactory vrácený rutinou New-AzureRmDataFactory předat, abyste nemuseli při každém spouštění rutiny zadávat hodnoty parametrů ResourceGroupName a DataFactoryName. 
+2. V **prostředí Azure PowerShell**, přepínač toohello **ADFGetStartedPSH** složky.
+4. Spustit hello **New-AzureRmDataFactoryLinkedService** rutiny toocreate hello propojené službě: **AzureStorageLinkedService**. Tato rutina a jiné rutiny služby Data Factory používané v tomto kurzu vyžaduje, aby vám toopass hodnoty pro hello **ResourceGroupName** a **DataFactoryName** parametry. Alternativně můžete předat objekt DataFactory hello vrácený hello rutiny New-AzureRmDataFactory, aniž by museli zadávat ResourceGroupName a DataFactoryName pokaždé, když spustíte rutinu. 
 
     ```PowerShell
     New-AzureRmDataFactoryLinkedService $df -File .\AzureStorageLinkedService.json
     ```
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup hello:
 
     ```
     LinkedServiceName : AzureStorageLinkedService
@@ -174,16 +174,16 @@ V tomto kroku propojíte se svou datovou továrnou účet úložiště Azure.
     ProvisioningState : Succeeded
     ``` 
 
-    Druhým způsobem vytvoření této propojené služby je zadání názvu skupiny prostředků a názvu datové továrny místo zadání objektu DataFactory.  
+    Druhý způsob vytváření Tato propojená služba je název skupiny prostředků toospecify a název objektu pro vytváření dat místo zadání objekt DataFactory hello.  
 
     ```PowerShell
     New-AzureRmDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName <Name of your data factory> -File .\AzureStorageLinkedService.json
     ```
 
 ### <a name="create-a-linked-service-for-an-azure-sql-database"></a>Vytvoření propojené služby pro Azure SQL Database
-V tomto kroku se svým objektem pro vytváření dat propojíte svou databázi SQL Azure.
+V tomto kroku propojíte datovou továrnu tooyour databáze Azure SQL.
 
-1. Ve složce C:\ADFGetStartedPSH vytvořte soubor JSON s názvem AzureSqlLinkedService.json s následujícím obsahem:
+1. Vytvořte soubor JSON s názvem AzureSqlLinkedService.json ve složce C:\ADFGetStartedPSH s hello následující obsah:
 
     > [!IMPORTANT]
     > Položky &lt;název_serveru&gt;, &lt;název_databáze&gt;, &lt;username@servername&gt; a &lt;heslo&gt; nahraďte názvem serveru SQL Azure, názvem databáze, uživatelským účtem a heslem.
@@ -199,13 +199,13 @@ V tomto kroku se svým objektem pro vytváření dat propojíte svou databázi S
         }
      }
     ```
-2. Spuštěním následujícího příkazu vytvořte propojenou službu:
+2. Spusťte následující příkaz toocreate hello propojené služby:
 
     ```PowerShell
     New-AzureRmDataFactoryLinkedService $df -File .\AzureSqlLinkedService.json
     ```
     
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup hello:
 
     ```
     LinkedServiceName : AzureSqlLinkedService
@@ -215,26 +215,26 @@ V tomto kroku se svým objektem pro vytváření dat propojíte svou databázi S
     ProvisioningState : Succeeded
     ```
 
-   Ujistěte se, že nastavení **Povolit přístup ke službám Azure** je pro server SQL Database zapnuté. Chcete-li to ověřit a zapnout ho, proveďte následující kroky:
+   Potvrďte, že **povolit přístup k službám tooAzure** je zapnuté nastavení pro server databáze SQL. tooverify a zapnout ho, hello následující kroky:
 
-    1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-    2. Vlevo klikněte na možnost **Další služby** a potom na **Servery SQL** v kategorii **DATABÁZE**.
-    3. Ze seznamu serverů SQL vyberte svůj server.
-    4. V okně Server SQL klikněte na odkaz **Zobrazit nastavení brány firewall**.
-    5. V okně **Nastavení brány firewall** klikněte na **ZAPNUTO** u možnosti **Povolit přístup ke službám Azure**.
-    6. Na panelu nástrojů klikněte na tlačítko **Uložit**. 
+    1. Přihlaste se toohello [portálu Azure](https://portal.azure.com)
+    2. Klikněte na tlačítko **další služby >** na levé straně hello a klikněte na **servery SQL** v hello **databáze** kategorie.
+    3. V seznamu hello systému SQL Server, vyberte svůj server.
+    4. V okně SQL serveru text hello, klikněte na tlačítko **zobrazit nastavení brány firewall** odkaz.
+    5. V hello **nastavení brány Firewall** okně klikněte na tlačítko **ON** pro **povolit přístup k službám tooAzure**.
+    6. Klikněte na tlačítko **Uložit** na panelu nástrojů hello. 
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
-V předchozím kroku jste vytvořili propojené služby, abyste propojili účet úložiště Azure a Azure SQL Database s datovou továrnou. V tomto kroku nadefinujete dvě datové sady s názvem InputDataset a OutputDataset, které představují vstupní a výstupní data uložená v úložištích dat, na která odkazují služby AzureStorageLinkedService a AzureSqlLinkedService.
+V předchozím kroku hello jste vytvořili propojené služby toolink, účet úložiště Azure a Azure SQL database tooyour objekt pro vytváření dat. V tomto kroku definujete dvě datové sady s názvem InputDataset a OutputDataset, které představují vstupní a výstupní data, která jsou uložená v úložištích dat hello odkazuje AzureStorageLinkedService a AzureSqlLinkedService.
 
-Propojená služba úložiště Azure určuje připojovací řetězec, který služba Data Factory používá za běhu, aby se připojila k vašemu účtu úložiště Azure. A vstupní datová sada objektu blob (InputDataset) určuje kontejner a složku obsahující vstupní data.  
+Hello propojená služba úložiště Azure určuje hello připojovací řetězec, který používá služba Data Factory v době běhu tooconnect tooyour účtu úložiště Azure. A datovou sadu hello vstupního objektu blob (InputDataset) určuje hello kontejneru a složce hello, který obsahuje vstupní data hello.  
 
-Podobně také propojená služba Azure SQL Database určuje připojovací řetězec, který služba Data Factory používá za běhu, aby se připojila k vašemu účtu Azure SQL database. A výstupní datová sada tabulky SQL (OutputDataset) určuje tabulku v databázi, do které se kopírují data z úložiště objektů blob. 
+Podobně hello služby Azure SQL Database propojené určuje hello připojovací řetězec, který používá služba Data Factory v době běhu tooconnect tooyour Azure SQL database. A hello výstupní datovou sadu tabulky SQL (OututDataset) určuje hello tabulky v hello databáze hello toowhich zkopírování dat z úložiště objektů blob hello. 
 
 ### <a name="create-an-input-dataset"></a>Vytvoření vstupní datové sady
-V tomto kroku vytvoříte datovou sadu s názvem InputDataset, která odkazuje na soubor blob (emp.txt) v kořenové složce kontejneru objektů blob (adftutorial), který se nachází ve službě Azure Storage reprezentované propojenou službou AzureStorageLinkedService. Pokud neurčíte hodnotu fileName (nebo ji přeskočíte), data ze všech objektů blob ve vstupní složce se zkopírují do cíle. V tomto kurzu určíte hodnotu fileName.  
+V tomto kroku vytvoříte datové sady s názvem InputDataset, který ukazuje soubor blob tooa (emp.txt) v kořenové složce hello kontejner objektů blob (adftutorial) v hello Azure Storage reprezentované hello AzureStorageLinkedService propojené služby. Pokud nechcete zadat hodnotu pro název souboru hello (nebo ji přeskočit), jsou data ze všech objektů BLOB ve složce vstupní hello zkopírovaný toohello cílový. V tomto kurzu zadejte hodnotu pro název souboru hello.  
 
-1. Ve složce **C:\ADFGetStartedPSH** vytvořte soubor JSON s názvem **InputDataset.json** s následujícím obsahem:
+1. Vytvořte soubor JSON s názvem **InputDataset.json** v hello **C:\ADFGetStartedPSH** složku s hello následující obsah:
 
     ```json
     {
@@ -269,26 +269,26 @@ V tomto kroku vytvoříte datovou sadu s názvem InputDataset, která odkazuje
      }
     ```
 
-    Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu kódu JSON:
+    Hello následující tabulka obsahuje popis vlastností hello JSON použitých ve fragmentu hello:
 
     | Vlastnost | Popis |
     |:--- |:--- |
-    | type | Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nachází ve službě Azure Blob Storage. |
-    | linkedServiceName | Odkazuje na službu **AzureStorageLinkedService**, kterou jste vytvořili předtím. |
-    | folderPath | Určuje **kontejner** objektů blob a **složku** obsahující vstupní objekty blob. V tomto kurzu je adftutorial kontejnerem objektů blob a složka je kořenová složka. | 
-    | fileName | Tato vlastnost je nepovinná. Pokud ji vynecháte, vyberou se všechny soubory v cestě folderPath. V tomto kurzu má fileName hodnotu **emp.txt**, takže se zpracuje pouze tento soubor. |
-    | format -> type |Vstupní soubor je v textovém formátu, takže použijeme **TextFormat**. |
-    | columnDelimiter | Sloupce ve vstupním souboru jsou oddělené **znakem čárky (`,`)**. |
-    | frequency/interval | Frekvence je nastavená na hodnotu **Hour** (hodina) a interval je **1**, takže vstupní řezy jsou dostupné **každou hodinu**. Jinými slovy služba Data Factory každou hodinu vyhledá vstupní data v kořenové složce kontejneru objektů blob (**adftutorial**), který jste zadali. Vyhledává data v rámci kanálu mezi časy spuštění a ukončení, ne před nebo po této době.  |
-    | external | Pokud data nevygeneroval tento kanál, je tato vlastnost nastavená na hodnotu **true**. Vstupní data v tomto kurzu jsou v souboru emp.txt, který není generován tímto kanálem, proto jsme tuto vlastnost nastavili na hodnotu true. |
+    | type | Hello vlastnost Typ nastavena příliš**AzureBlob** protože data se nachází v Azure blob storage. |
+    | linkedServiceName | Odkazuje toohello **AzureStorageLinkedService** kterou jste vytvořili dříve. |
+    | folderPath | Určuje objekt blob hello **kontejneru** a hello **složky** , který obsahuje vstupní objekty BLOB. V tomto kurzu adftutorial hello kontejner objektů blob, složka hello kořenové složky. | 
+    | fileName | Tato vlastnost je nepovinná. Pokud ji vynecháte, jsou vybrány všechny soubory z hello folderPath. V tomto kurzu **emp.txt** zadaný pro hello název souboru, takže pouze tento soubor je převzata pro zpracování. |
+    | format -> type |vstupní soubor Hello je ve formátu textu hello, takže použijeme **TextFormat**. |
+    | columnDelimiter | Hello sloupců ve vstupním souboru hello oddělené **čárku (`,`)**. |
+    | frequency/interval | je příliš nastavena frekvence Hello**hodinu** a interval je nastaven příliš**1**, což znamená, že hello vstupní řezy jsou dostupné **každou hodinu**. Jinými slovy, hello služba Data Factory hledá vstupní data každou hodinu v kořenové složce hello kontejner objektů blob (**adftutorial**) jste zadali. Hledá hello dat v rámci hello kanálu počáteční a koncové dobu, není před nebo po této doby.  |
+    | external | Tato vlastnost nastavena příliš**true** Pokud hello data nevygenerovala pomocí tohoto kanálu. Hello vstupní data v tomto kurzu je v souboru emp.txt hello, který není generované tímto kanálem, abyste nám nastavit tuto vlastnost tootrue. |
 
-    Další informace o těchto vlastnostech JSON najdete v článku [Konektor Azure Blob](data-factory-azure-blob-connector.md#dataset-properties).
-2. Spuštěním následujícího příkazu vytvořte datovou sadu služby Data Factory.
+    Další informace o těchto vlastnostech JSON najdete v článku [konektor Azure Blob](data-factory-azure-blob-connector.md#dataset-properties).
+2. Spusťte následující příkaz datovou sadu služby Data Factory hello toocreate hello.
 
     ```PowerShell  
     New-AzureRmDataFactoryDataset $df -File .\InputDataset.json
     ```
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup hello:
 
     ```
     DatasetName       : InputDataset
@@ -303,9 +303,9 @@ V tomto kroku vytvoříte datovou sadu s názvem InputDataset, která odkazuje
     ```
 
 ### <a name="create-an-output-dataset"></a>Vytvoření výstupní datové sady
-V této části kroku vytvoříte výstupní datovou sadu s názvem **OutputDataset**. Tato datová sada odkazuje na tabulku SQL ve službě Azure SQL Database, kterou reprezentuje **AzureSqlLinkedService**. 
+V této části hello kroku vytvoříte výstupní datovou sadu s názvem **OutputDataset**. Tato datová sada body tooa tabulky SQL ve hello Azure SQL database reprezentované **AzureSqlLinkedService**. 
 
-1. Ve složce **C:\ADFGetStartedPSH** vytvořte soubor JSON s názvem **OutputDataset.json** s následujícím obsahem:
+1. Vytvořte soubor JSON s názvem **OutputDataset.json** v hello **C:\ADFGetStartedPSH** složku s hello následující obsah:
 
     ```json
     {
@@ -334,25 +334,25 @@ V této části kroku vytvoříte výstupní datovou sadu s názvem **OutputData
     }
     ```
 
-    Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu kódu JSON:
+    Hello následující tabulka obsahuje popis vlastností hello JSON použitých ve fragmentu hello:
 
     | Vlastnost | Popis |
     |:--- |:--- |
-    | type | Vlastnost type je nastavena na hodnotu **AzureSqlTable**, protože data se kopírují do tabulky v databázi Azure SQL. |
-    | linkedServiceName | Odkazuje na službu **AzureSqlLinkedService**, kterou jste vytvořili předtím. |
-    | tableName | Určuje **tabulku**, do které se kopírují data. | 
-    | frequency/interval | Frekvence je nastavená na hodnotu **Hour** (hodina) a interval je **1**, což znamená, že výstupní řezy se tvoří **každou hodinu** mezi časy spuštění a ukončení, ne před nebo po této době.  |
+    | type | Hello vlastnost Typ nastavena příliš**AzureSqlTable** protože data jsou zkopírované tooa tabulky v databázi Azure SQL. |
+    | linkedServiceName | Odkazuje toohello **AzureSqlLinkedService** kterou jste vytvořili dříve. |
+    | tableName | Zadaný hello **tabulky** toowhich hello data budou zkopírována. | 
+    | frequency/interval | Hello je nastavena frekvence příliš**hodinu** a interval je **1**, což znamená, že vytváří řezy výstup hello **každou hodinu** mezi hello kanálu počáteční a koncové krát, ne dřív nebo Po této doby.  |
 
-    V tabulce emp v databázi jsou k dispozici tři sloupce – **ID**, **FirstName** a **LastName**. ID je sloupec identity, takže je zde třeba zadat pouze položky **FirstName** (Jméno) a **LastName** (Příjmení).
+    Existují tři sloupce – **ID**, **FirstName**, a **LastName** – v tabulce emp hello v databázi hello. ID je sloupec identity, takže je nutné pouze toospecify **FirstName** a **LastName** sem.
 
     Další informace o těchto vlastnostech JSON najdete v článku [konektor Azure SQL](data-factory-azure-sql-connector.md#dataset-properties).
-2. Spuštěním následujícího příkazu vytvořte datovou sadu datové továrny.
+2. Spusťte následující příkaz toocreate hello data factory dataset hello.
 
     ```PowerShell   
     New-AzureRmDataFactoryDataset $df -File .\OutputDataset.json
     ```
 
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup hello:
 
     ```
     DatasetName       : OutputDataset
@@ -369,16 +369,16 @@ V této části kroku vytvoříte výstupní datovou sadu s názvem **OutputData
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 V tomto kroku vytvoříte kanál s **aktivitou kopírování**, která používá **InputDataset** jako vstup a **OutputDataset** jako výstup.
 
-Výstupní datové sady v současné době řídí plán. V tomto kurzu je výstupní datová sada nakonfigurovaná tak, aby vytvářela řez jednou za hodinu. Kanál má čas spuštění a čas ukončení nastavený jeden den od sebe, což je 24 hodin. Proto kanál vytvoří 24 řezů výstupní datové sady. 
+Výstupní datové sady v současné době je, jaké jednotky hello plán. V tomto kurzu výstupní datové sady je nakonfigurované tooproduce řez jednou za hodinu. Hello kanálu má čas spuštění a čas ukončení, které jsou od sebe, jeden den, což je 24 hodin. Proto 24 řezů výstupní datové sady vyprodukované hello kanálu. 
 
 
-1. Ve složce **C:\ADFGetStartedPSH** vytvořte soubor JSON s názvem **ADFTutorialPipeline.json** s následujícím obsahem:
+1. Vytvořte soubor JSON s názvem **C:\adfgetstartedpsh** v hello **C:\ADFGetStartedPSH** složku s hello následující obsah:
 
     ```json   
     {
       "name": "ADFTutorialPipeline",
       "properties": {
-        "description": "Copy data from a blob to Azure SQL table",
+        "description": "Copy data from a blob tooAzure SQL table",
         "activities": [
           {
             "name": "CopyFromBlobToSQL",
@@ -416,28 +416,28 @@ Výstupní datové sady v současné době řídí plán. V tomto kurzu je vý
       }
     } 
     ```
-    Je třeba počítat s následujícím:
+    Všimněte si hello následující body:
    
-    - V části aktivit je jenom jedna aktivita, jejíž vlastnost **type** je nastavená na **Copy**. Další informace o aktivitě kopírování najdete v tématu [Aktivity pohybu dat](data-factory-data-movement-activities.md). V řešeních služby Data Factory můžete také použít [aktivity transformace dat](data-factory-data-transformation-activities.md).
-    - Vstup aktivity je nastavený na **InputDataset** a výstup aktivity je nastavený na **OutputDataset**. 
-    - V části **typeProperties** je jako typ zdroje určen **BlobSource** a jako typ jímky **SqlSink**. Úplný seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky najdete v tématu [podporovaných úložištích dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Kliknutím na odkaz v tabulce se dozvíte, jak použít konkrétní podporovaná úložiště dat jako zdroj/jímku.  
+    - V části hello aktivit je jenom jedna aktivita jejichž **typ** je nastaven příliš**kopie**. Další informace o aktivitě kopírování hello najdete v tématu [aktivity přesunu dat](data-factory-data-movement-activities.md). V řešeních služby Data Factory můžete také použít [aktivity transformace dat](data-factory-data-transformation-activities.md).
+    - Vstup aktivity hello nastaven příliš**InputDataset** a výstup hello aktivity je nastavený příliš**OutputDataset**. 
+    - V hello **rámci typeProperties** části **BlobSource** je zadán jako typ zdroje hello a **SqlSink** je zadán jako typ jímky hello. Úplný seznam úložišť dat nepodporuje aktivity kopírování hello jako zdroje a jímky, najdete v části [podporovanými úložišti dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). toolearn jak toouse konkrétní podporované datové úložiště jako zdroj/jímka, klikněte na odkaz hello v tabulce hello.  
      
-    Nahraďte hodnotu vlastnosti **start** aktuálním dnem a **end** následujícím dnem. Můžete zadat jenom část data a přeskočit část času. Například „2016-02-03“ je ekvivalentní hodnotě „2016-02-03T00:00:00Z“.
+    Nahraďte hodnotu hello hello **spustit** vlastnost s hello aktuální den a **end** hodnotu s hello další den. Můžete zadat jenom část data hello a přeskočit část času hello hello datum a čas. Například "2016-02-03", který je ekvivalentní příliš "2016-02-03T00:00:00Z"
      
-    Počáteční a koncové hodnoty data a času musí být ve [formátu ISO](http://en.wikipedia.org/wiki/ISO_8601). Například: 2016-10-14T16:32:41Z. Čas hodnoty **end** je nepovinný, ale my ho v tomto kurzu použijeme. 
+    Počáteční a koncové hodnoty data a času musí být ve [formátu ISO](http://en.wikipedia.org/wiki/ISO_8601). Například: 2016-10-14T16:32:41Z. Hello **end** čas je nepovinný, ale používáme v tomto kurzu. 
      
-    Pokud nezadáte hodnotu vlastnosti **end**, vypočítá se jako „**start + 48 hodin**“. Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09**.
+    Pokud nezadáte hodnotu hello **end** vlastnost, vypočítá se jako "**start + 48 hodin**". bez omezení, zadejte toorun hello kanálu **9999-09-09** hello hodnotu hello **end** vlastnost.
      
-    V předchozím příkladu je 24 datových řezů, protože se vytvářejí každou hodinu.
+    V předchozím příkladu hello jsou 24 datových řezů jako se vytvářejí každou hodinu.
 
     Popisy vlastností JSON použitých v definici kanálu najdete v článku [Vytvoření kanálů](data-factory-create-pipelines.md). Popisy vlastností JSON použitých v definici aktivity kopírování najdete v článku [Aktivity přesunu dat](data-factory-data-movement-activities.md). Popisy vlastností JSON podporovaných zdrojem BlobSource najdete v článku [Konektor Azure Blob](data-factory-azure-blob-connector.md). Popisy vlastností JSON podporovaných jímkou SqlSink najdete v článku [Konektor Azure SQL Database](data-factory-azure-sql-connector.md).
-2. Spuštěním následujícího příkazu vytvořte tabulku datové továrny.
+2. Spusťte následující příkaz toocreate hello data factory tabulka hello.
 
     ```PowerShell   
     New-AzureRmDataFactoryPipeline $df -File .\ADFTutorialPipeline.json
     ```
 
-    Zde je ukázkový výstup: 
+    Tady je ukázkový výstup hello: 
 
     ```
     PipelineName      : ADFTutorialPipeline
@@ -447,12 +447,12 @@ Výstupní datové sady v současné době řídí plán. V tomto kurzu je vý
     ProvisioningState : Succeeded
     ```
 
-**Blahopřejeme!** Úspěšně jste vytvořili datovou továrnu Azure s kanálem, který kopíruje data z úložiště objektů blob v Azure do databáze Azure SQL. 
+**Blahopřejeme!** Úspěšně jste vytvořili objekt pro vytváření dat Azure s kanálu toocopy dat z Azure SQL database tooan úložiště objektů blob v Azure. 
 
-## <a name="monitor-the-pipeline"></a>Monitorování kanálu
-V tomto kroku budete pomocí prostředí Azure PowerShell monitorovat, co se děje v objektu pro vytváření dat Azure.
+## <a name="monitor-hello-pipeline"></a>Monitorování kanálu hello
+V tomto kroku budete pomocí prostředí Azure PowerShell toomonitor co se děje v objektu pro vytváření dat Azure.
 
-1. Nahraďte &lt;DataFactoryName&gt; názvem své datové továrny, spusťte příkaz **Get-AzureRmDataFactory** a přiřaďte výstup k proměnné $df.
+1. Nahraďte &lt;DataFactoryName&gt; hello název objektu pro vytváření dat a spusťte **Get-AzureRmDataFactory**a přiřaďte výstup tooa hello proměnné $df.
 
     ```PowerShell  
     $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name <DataFactoryName>
@@ -463,7 +463,7 @@ V tomto kroku budete pomocí prostředí Azure PowerShell monitorovat, co se dě
     $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH0516
     ```
     
-    Potom vytisknutím obsahu $df zobrazte následující výstup: 
+    Potom spusťte tiskové hello obsah hello toosee $df následující výstup: 
     
     ```
     PS C:\ADFGetStartedPSH> $df
@@ -476,15 +476,15 @@ V tomto kroku budete pomocí prostředí Azure PowerShell monitorovat, co se dě
     Properties        : Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties
     ProvisioningState : Succeeded
     ```
-2. Spusťte rutinu **Get-AzureRmDataFactorySlice**, abyste získali podrobnosti o všech řezech datové sady **OutputDataset**, která je výstupní datovou sadou tohoto kanálu.  
+2. Spustit **Get-AzureRmDataFactorySlice** tooget podrobnosti o všech řezech tabulky hello **OutputDataset**, což je hello výstupní datovou sadu hello kanálu.  
 
     ```PowerShell   
     Get-AzureRmDataFactorySlice $df -DatasetName OutputDataset -StartDateTime 2017-05-11T00:00:00Z
     ```
 
-   Toto nastavení by mělo odpovídat hodnotě **Start** v kódu JSON kanálu. Měli byste vidět 24 řezů, pro každou hodinu od 12:00 aktuálního dne do 12:00 následujícího dne jeden.
+   Toto nastavení by měl odpovídat hello **spustit** hodnota v kódu JSON kanálu hello. Měli byste vidět 24 řezů, pro každou hodinu od 12: 00 aktuálního dne too12 hello mě hello další den.
 
-   Tady jsou tři ukázkové řezy z výstupu: 
+   Tady jsou tři ukázkové řezy z výstupu hello: 
 
     ``` 
     ResourceGroupName : ADFTutorialResourceGroup
@@ -520,13 +520,13 @@ V tomto kroku budete pomocí prostředí Azure PowerShell monitorovat, co se dě
     LatencyStatus     :
     LongRetryCount    : 0
     ```
-3. Spuštěním rutiny **Get-AzureRmDataFactoryRun** získáte podrobnosti o spouštění aktivity pro **konkrétní** řez. Zkopírujte hodnoty data a času z výstupu předchozího příkazu, abyste určili hodnotu parametru StartDateTime. 
+3. Spustit **Get-AzureRmDataFactoryRun** tooget hello podrobnosti aktivity běží **konkrétní** řez. Zkopírujte hodnotu data a času hello z hello výstup hello předchozí příkaz toospecify hello hodnotu pro parametr StartDateTime hello. 
 
     ```PowerShell  
     Get-AzureRmDataFactoryRun $df -DatasetName OutputDataset -StartDateTime "5/11/2017 09:00:00 PM"
     ```
 
-   Zde je ukázkový výstup: 
+   Tady je ukázkový výstup hello: 
 
     ```
     Id                  : c0ddbd75-d0c7-4816-a775-704bbd7c7eab_636301332000000000_636301368000000000_OutputDataset
@@ -551,20 +551,20 @@ V tomto kroku budete pomocí prostředí Azure PowerShell monitorovat, co se dě
 Úplnou dokumentaci o rutinách služby Data Factory najdete v článku [Referenční informace o rutinách služby Data Factory](/powershell/module/azurerm.datafactories).
 
 ## <a name="summary"></a>Souhrn
-V tomto kurzu jste vytvořili objekt pro vytváření dat Azure pro zkopírování dat z objektu blob Azure do Azure SQL Database. PowerShell jste použili k vytvoření objektu pro vytváření dat, propojených služeb, datových sad a kanálu. Zde jsou základní kroky, které jste v tomto kurzu provedli:  
+V tomto kurzu jste vytvořili Azure data factory toocopy dat z Azure SQL database tooan objektů blob v Azure. Můžete použít PowerShell toocreate hello objekt pro vytváření dat, propojených služeb, datových sad a kanálu. Zde jsou hello kroků, které jste provedli v tomto kurzu:  
 
 1. Vytvořili jste **objekt pro vytváření dat** Azure.
 2. Vytvořili jste **propojené služby**:
 
-   a. Propojená služba **Azure Storage** připojující účet úložiště Azure, který obsahuje vstupní data.     
-   b. Propojená služba **Azure SQL** připojující službu SQL Database, která obsahuje výstupní data.
+   a. **Azure Storage** propojené služby toolink účtu úložiště Azure, který obsahuje vstupní data.     
+   b. **Azure SQL** propojené služby toolink vaší databázi SQL, který obsahuje hello výstupní data.
 3. Vytvořili jste **datové sady**, které popisují vstupní data a výstupní data pro kanály.
-4. Vytvořili jste **kanál** s **aktivitou kopírování**, která má jako zdroj **BlobSource** a jako jímku **SqlSink**.
+4. Vytvoření **kanálu** s **aktivity kopírování**, s **BlobSource** jako zdroj hello a **SqlSink** jako jímku hello.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste v operaci kopírování použili úložiště objektů blob jako zdrojové úložiště dat a databázi Azure SQL jako cílové úložiště dat. Následující tabulka obsahuje seznam úložišť dat podporovaných jako zdroje a cíle aktivitou kopírování: 
+V tomto kurzu jste v operaci kopírování použili úložiště objektů blob jako zdrojové úložiště dat a databázi Azure SQL jako cílové úložiště dat. Hello následující tabulka obsahuje seznam úložiště dat, které jsou podporované jako zdroje a cíle pomocí aktivity kopírování hello: 
 
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
-Kliknutím na odkaz úložiště dat v tabulce získáte další informace o kopírování dat do nebo z úložiště dat. 
+toolearn o tom, jak toocopy data z datové úložiště, klikněte na odkaz hello hello úložiště dat v tabulce hello. 
 

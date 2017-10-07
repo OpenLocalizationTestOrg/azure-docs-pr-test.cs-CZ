@@ -1,6 +1,6 @@
 ---
-title: "Vývoj pro Azure File Storage pomocí .NET | Dokumentace Microsoftu"
-description: "Zjistěte, jak vyvíjet aplikace a služby .NET, které používají službu Azure File Storage k ukládání dat souborů."
+title: aaaDevelop pro Azure File storage s .NET | Microsoft Docs
+description: "Zjistěte, jak toodevelop .NET aplikací a služeb, které používají Azure File storage toostore souborová data."
 services: storage
 documentationcenter: .net
 author: RenaShahMSFT
@@ -14,15 +14,15 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/27/2017
 ms.author: renash
-ms.openlocfilehash: 7b94e70619324bb8dc8e7f8306f00f06e7476c1f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 79855f178111483edea13014b8eeecc3376dd4e7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="develop-for-azure-file-storage-with-net"></a>Vývoj pro službu Azure File Storage pomocí .NET 
 > [!NOTE]
-> Tento článek ukazuje, jak spravovat službu Azure File Storage pomocí kódu .NET. Další informace o službě Azure File Storage najdete v tématu [Úvod do služby Azure File Storage](storage-files-introduction.md).
+> Tento článek ukazuje, jak toomanage Azure File storage s kód .NET. toolearn Další informace o Azure File storage najdete v tématu hello [Úvod tooAzure úložiště File](storage-files-introduction.md).
 >
 
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -30,46 +30,46 @@ ms.lasthandoff: 08/29/2017
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
 ## <a name="about-this-tutorial"></a>O tomto kurzu
-Tento kurz vám ukáže základy používání technologie .NET k vývoji aplikací a služeb, které používají službu Azure File Storage k ukládání dat souborů. V tomto kurzu vytvoříme jednoduchou konzolovou aplikaci a ukážeme si, jak provádět základní akce s technologií .NET a službou Azure File Storage:
+V tomto kurzu se ukazují hello základy používání služby, které používají Azure File storage toostore souborová data nebo toodevelop aplikace .NET. V tomto kurzu bude vytvoření jednoduché konzolové aplikace a zobrazit jak tooperform základní operace s .NET a Azure File storage:
 
-* Získání obsahu souboru
-* Nastavte kvótu (maximální velikost) pro sdílenou složku.
-* Vytvořte sdílený přístupový podpis (klíč SAS) pro soubor, který používá zásady sdíleného přístupu definované ve sdílené složce.
-* Zkopírujte soubor do jiného souboru ve stejném účtu úložiště.
-* Zkopírujte soubor do objektu blob ve stejném účtu úložiště.
+* Získat hello obsah souboru
+* Nastavit hello kvótu (maximální velikost) pro sdílenou složku hello.
+* Vytvořte sdílený přístupový podpis (SAS klíč) pro soubor, který používá definovaný ve sdílené složce hello zásady sdíleného přístupu.
+* Zkopírujte soubor tooanother souboru hello stejný účet úložiště.
+* Zkopírujte soubor tooa objekt blob v hello stejný účet úložiště.
 * Použijte Azure Storage Metrics pro řešení potíží.
 
 > [!Note]  
-> Protože je služba Azure File Storage přístupná přes protokol SMB, je možné psát jednoduché aplikace, které přistupují ke sdílené složce Azure pomocí standardních tříd System.IO pro vstupně-výstupní operace se soubory. Tento článek popisuje, jak psát aplikace, které používají sadu .NET SDK pro Azure Storage, která se službou Azure File Storage komunikuje pomocí rozhraní [REST API pro Azure File Storage](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api). 
+> Protože Azure File storage můžete získat přístup přes protokol SMB, je možné toowrite jednoduché aplikace, které přístup hello Azure sdílenou složku pomocí hello standardní System.IO třídy pro vstupně-výstupní soubor. Tento článek popisuje, jak toowrite aplikace, které používají hello .NET SDK úložiště Azure, který používá hello [REST API služby Azure File storage](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) tootalk tooAzure úložiště File. 
 
 
-## <a name="create-the-console-application-and-obtain-the-assembly"></a>Vytvoření konzolové aplikace a získání sestavení
-V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows. Následující kroky ukazují, jak vytvořit konzolovou aplikaci v sadě Visual Studio 2017, ale kroky v jiných verzích sady Visual Studio se podobají.
+## <a name="create-hello-console-application-and-obtain-hello-assembly"></a>Vytvoření konzolové aplikace hello a získání sestavení hello
+V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows. Hello následující kroky vám ukážou, jak toocreate konzolovou aplikaci v sadě Visual Studio 2017, ale hello kroky jsou podobné v jiných verzích sady Visual Studio.
 
 1. Vyberte **Soubor**  >  **Nový**  >  **Projekt**.
 2. Vyberte **Instalováno** > **Šablony** > **Visual C#** > **Klasická plocha Windows**.
 3. Vyberte **Aplikace konzoly (.NET Framework)**.
-4. Do pole **Název** zadejte název vaší aplikace.
+4. Zadejte název pro vaši aplikaci ve hello **název:** pole
 5. Vyberte **OK**.
 
-Všechny příklady kódu v tomto kurzu můžete přidat do metody `Main()` v souboru `Program.cs` vaší konzolové aplikace.
+Všechny příklady kódu v tomto kurzu lze přidat toohello `Main()` metoda konzolové aplikace `Program.cs` souboru.
 
-Můžete použít knihovnu klienta služby Azure Storage z libovolného typu aplikace .NET, včetně webové aplikace nebo cloudové služby Azure, desktopové nebo mobilní aplikace. V této příručce použijeme konzolovou aplikaci kvůli zjednodušení.
+Hello Klientská knihovna pro úložiště Azure můžete použít v libovolného typu aplikace .NET, včetně Azure cloud service nebo webovou aplikaci a stolní počítače a mobilní aplikace. V této příručce použijeme konzolovou aplikaci kvůli zjednodušení.
 
-## <a name="use-nuget-to-install-the-required-packages"></a>Použití balíčku NuGet k instalaci požadovaných balíčků
-Abyste mohli tento kurz dokončit, potřebujete ze svého projektu odkazovat na dva balíčky:
+## <a name="use-nuget-tooinstall-hello-required-packages"></a>Použití NuGet tooinstall hello požadované balíčky
+Existují dva balíčky, které potřebujete tooreference ve vašem projektu toocomplete v tomto kurzu:
 
-* [Microsoft Azure Storage Client Library for .NET](https://www.nuget.org/packages/WindowsAzure.Storage/): Tento balíček zajišťuje programový přístup k datovým prostředkům na účtu úložiště.
+* [Microsoft Azure Storage Client Library pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage/): Tento balíček zajišťuje programový přístup toodata prostředky ve vašem účtu úložiště.
 * [Microsoft Azure Configuration Manager library for .NET:](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/) Tento balíček poskytuje třídu pro potřeby analýzy připojovacího řetězce v konfiguračním souboru bez ohledu na to, kde je aplikace spuštěná.
 
-K získání obou balíčků můžete použít balíček NuGet. Postupujte následovně:
+Můžete vytvořit NuGet tooobtain oba balíčky. Postupujte následovně:
 
 1. Klikněte v **Průzkumníku řešení** pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**.
-2. Proveďte online hledání textu „WindowsAzure.Storage“ a kliknutím na **Instalovat** nainstalujte balíček knihovny klienta úložiště a jeho závislosti.
-3. Proveďte online hledání textu „WindowsAzure.ConfigurationManager“ a kliknutím na **Instalovat** nainstalujete správce konfigurace Azure.
+2. Vyhledejte online text "WindowsAzure.Storage" a klikněte na tlačítko **nainstalovat** tooinstall hello Klientská knihovna pro úložiště a jeho závislosti.
+3. Online hledání "WindowsAzure.ConfigurationManager" a klikněte na tlačítko **nainstalovat** tooinstall hello Azure Configuration Manager.
 
-## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>Uložení přihlašovacích údajů pro účet úložiště do souboru app.config
-Dál uložte svoje přihlašovací údaje do souboru app.config vašeho projektu. Upravte soubor app.config tak, aby vypadal podobně jako v následujícím příkladu, `myaccount` nahraďte názvem svého účtu úložiště a `mykey` nahraďte svým klíčem účtu úložiště.
+## <a name="save-your-storage-account-credentials-toohello-appconfig-file"></a>Uložte soubor app.config toohello přihlašovací údaje účtu úložiště
+Dál uložte svoje přihlašovací údaje do souboru app.config vašeho projektu. Upravte soubor app.config hello tak, aby se podobné toohello následující ukázka, nahraďte `myaccount` s názvem svého účtu úložiště a `mykey` nahraďte svým klíčem účtu úložiště.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -84,10 +84,10 @@ Dál uložte svoje přihlašovací údaje do souboru app.config vašeho projektu
 ```
 
 > [!NOTE]
-> Nejnovější verze emulátoru úložiště Azure nepodporuje službu Azure File Storage. Aby váš připojovací řetězec mohl pracovat se službou Azure File Storage, musí jako cíl mít účet služby Azure Storage v cloudu.
+> nejnovější verze emulátoru úložiště Azure hello Hello nepodporuje Azure File storage. Připojovací řetězec musí být účet úložiště Azure v cloudu toowork hello s Azure File storage.
 
 ## <a name="add-using-directives"></a>Přidání direktiv using
-V Průzkumníku řešení otevřete soubor `Program.cs` a na začátek souboru přidejte následující direktivy using.
+Otevřete hello `Program.cs` soubor v Průzkumníku řešení a přidejte následující hello pomocí direktivy toohello horní části souboru hello.
 
 ```csharp
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
@@ -98,97 +98,97 @@ using Microsoft.WindowsAzure.Storage.File; // Namespace for Azure File storage
 
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
-## <a name="access-the-file-share-programmatically"></a>Programový přístup ke sdílené složce
-Dál přidejte následující kód k metodě `Main()` (po výše uvedeném kódu) pro získání připojovacího řetězce. Tento kód získá odkaz na soubor, který jsme vytvořili předtím, a vypíše obsah do okna konzoly.
+## <a name="access-hello-file-share-programmatically"></a>Sdílení souborů hello přístup prostřednictvím kódu programu
+Dál přidejte následující kód toohello hello `Main()` – metoda (po výše uvedeném kódu hello) tooretrieve hello připojovací řetězec. Tento kód získá odkaz na soubor toohello, které jsme vytvořili předtím a výstupy okna konzoly toohello jeho obsah.
 
 ```csharp
-// Create a CloudFileClient object for credentialed access to Azure File storage.
+// Create a CloudFileClient object for credentialed access tooAzure File storage.
 CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
-// Get a reference to the file share we created previously.
+// Get a reference toohello file share we created previously.
 CloudFileShare share = fileClient.GetShareReference("logs");
 
-// Ensure that the share exists.
+// Ensure that hello share exists.
 if (share.Exists())
 {
-    // Get a reference to the root directory for the share.
+    // Get a reference toohello root directory for hello share.
     CloudFileDirectory rootDir = share.GetRootDirectoryReference();
 
-    // Get a reference to the directory we created previously.
+    // Get a reference toohello directory we created previously.
     CloudFileDirectory sampleDir = rootDir.GetDirectoryReference("CustomLogs");
 
-    // Ensure that the directory exists.
+    // Ensure that hello directory exists.
     if (sampleDir.Exists())
     {
-        // Get a reference to the file we created previously.
+        // Get a reference toohello file we created previously.
         CloudFile file = sampleDir.GetFileReference("Log1.txt");
 
-        // Ensure that the file exists.
+        // Ensure that hello file exists.
         if (file.Exists())
         {
-            // Write the contents of the file to the console window.
+            // Write hello contents of hello file toohello console window.
             Console.WriteLine(file.DownloadTextAsync().Result);
         }
     }
 }
 ```
 
-Výstup zobrazíte spuštěním konzolové aplikace.
+Spusťte výstup hello hello konzoly aplikace toosee.
 
-## <a name="set-the-maximum-size-for-a-file-share"></a>Nastavení maximální velikosti sdílené složky
-Klientská knihovna pro úložiště Azure od verze 5.x umožňuje nastavit kvótu (maximální velikost) sdílené složky v gigabajtech. Můžete se taky podívat, kolik data je aktuálně uloženo ve sdílené složce.
+## <a name="set-hello-maximum-size-for-a-file-share"></a>Nastavit maximální velikost hello sdílené složky
+Od verze 5.x hello Klientská knihovna pro úložiště Azure, můžete nastavit sady hello kvóty (nebo maximální velikost) pro sdílenou složku, v gigabajtech. Můžete také zkontrolovat toosee množství dat, které jsou aktuálně uložené ve složce hello.
 
-Pokud nastavíte kvótu sdílené složky, můžete omezit celkovou velikost souborů uložených ve sdílené složce. Pokud celková velikost souborů ve sdílené složce překročí kvótu nastavenou pro sdílenou složku, klienti nebudou moct zvyšovat velikost existujících souborů, s výjimkou situace, když je velikost souborů nulová.
+Pomocí nastavení hello kvótu sdílené složky můžete omezit hello celková velikost souborů hello uložené ve sdílené složce hello. Pokud celková velikost souborů ve sdílené složce hello hello překročí kvótu hello nastavte ve sdílené složce hello a pak klienti budou nelze tooincrease hello velikost existující soubory nebo vytvořit nové soubory, pokud tyto soubory jsou prázdné.
 
-Dole uvedený příklad ukazuje, jak můžete zkontrolovat aktuální využití sdílené složky a jak nastavit kvótu pro sdílenou složku.
+Následující příklad Hello ukazuje, jak toocheck hello aktuální využití sdílené složky a jak tooset hello kvótu pro sdílenou složku hello.
 
 ```csharp
-// Parse the connection string for the storage account.
+// Parse hello connection string for hello storage account.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create a CloudFileClient object for credentialed access to Azure File storage.
+// Create a CloudFileClient object for credentialed access tooAzure File storage.
 CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
-// Get a reference to the file share we created previously.
+// Get a reference toohello file share we created previously.
 CloudFileShare share = fileClient.GetShareReference("logs");
 
-// Ensure that the share exists.
+// Ensure that hello share exists.
 if (share.Exists())
 {
-    // Check current usage stats for the share.
-    // Note that the ShareStats object is part of the protocol layer for the File service.
+    // Check current usage stats for hello share.
+    // Note that hello ShareStats object is part of hello protocol layer for hello File service.
     Microsoft.WindowsAzure.Storage.File.Protocol.ShareStats stats = share.GetStats();
     Console.WriteLine("Current share usage: {0} GB", stats.Usage.ToString());
 
-    // Specify the maximum size of the share, in GB.
-    // This line sets the quota to be 10 GB greater than the current usage of the share.
+    // Specify hello maximum size of hello share, in GB.
+    // This line sets hello quota toobe 10 GB greater than hello current usage of hello share.
     share.Properties.Quota = 10 + stats.Usage;
     share.SetProperties();
 
-    // Now check the quota for the share. Call FetchAttributes() to populate the share's properties.
+    // Now check hello quota for hello share. Call FetchAttributes() toopopulate hello share's properties.
     share.FetchAttributes();
     Console.WriteLine("Current share quota: {0} GB", share.Properties.Quota);
 }
 ```
 
 ### <a name="generate-a-shared-access-signature-for-a-file-or-file-share"></a>Vygenerování sdíleného přístupového podpisu pro soubor nebo sdílenou složku
-Klientská knihovna pro úložiště Azure od verze 5.x umožňuje vygenerovat sdílený přístupový podpis (SAS) pro sdílenou složku nebo konkrétní soubor. Můžete taky vytvořit sdílené zásady přístupu pro sdílenou složku ke správě sdílených přístupových podpisů. Vytvoření sdílených zásad přístupu se doporučuje, protože se tím nabízí způsob odvolání SAS v případě narušení jeho integrity nebo důvěryhodnosti.
+Od verze 5.x hello Klientská knihovna pro úložiště Azure, můžete vygenerovat sdílený přístupový podpis (SAS) pro sdílenou složku nebo pro konkrétní soubor. Můžete také vytvořit zásady sdíleného přístupu na toomanage sdílený přístup ke sdílení souborů signatur. Vytvoření zásady sdíleného přístupu se doporučuje, protože nabízí způsob odvolání hello SAS, pokud by měl být dojde k ohrožení.
 
-V následujícím příkladu se vytvoří sdílená zásada přístupu pro sdílenou složku a ta se pak použije k omezení pro SAS na souboru ve sdílené složce.
+Hello následující ukázka vytvoří zásada sdíleného přístupu ve sdílené složce a pak použije, že zásady omezení tooprovide hello pro SAS na souboru ve hello sdílet.
 
 ```csharp
-// Parse the connection string for the storage account.
+// Parse hello connection string for hello storage account.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create a CloudFileClient object for credentialed access to Azure File storage.
+// Create a CloudFileClient object for credentialed access tooAzure File storage.
 CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
-// Get a reference to the file share we created previously.
+// Get a reference toohello file share we created previously.
 CloudFileShare share = fileClient.GetShareReference("logs");
 
-// Ensure that the share exists.
+// Ensure that hello share exists.
 if (share.Exists())
 {
     string policyName = "sampleSharePolicy" + DateTime.UtcNow.Ticks;
@@ -200,21 +200,21 @@ if (share.Exists())
             Permissions = SharedAccessFilePermissions.Read | SharedAccessFilePermissions.Write
         };
 
-    // Get existing permissions for the share.
+    // Get existing permissions for hello share.
     FileSharePermissions permissions = share.GetPermissions();
 
-    // Add the shared access policy to the share's policies. Note that each policy must have a unique name.
+    // Add hello shared access policy toohello share's policies. Note that each policy must have a unique name.
     permissions.SharedAccessPolicies.Add(policyName, sharedPolicy);
     share.SetPermissions(permissions);
 
-    // Generate a SAS for a file in the share and associate this access policy with it.
+    // Generate a SAS for a file in hello share and associate this access policy with it.
     CloudFileDirectory rootDir = share.GetRootDirectoryReference();
     CloudFileDirectory sampleDir = rootDir.GetDirectoryReference("CustomLogs");
     CloudFile file = sampleDir.GetFileReference("Log1.txt");
     string sasToken = file.GetSharedAccessSignature(null, policyName);
     Uri fileSasUri = new Uri(file.StorageUri.PrimaryUri.ToString() + sasToken);
 
-    // Create a new CloudFile object from the SAS, and write some text to the file.
+    // Create a new CloudFile object from hello SAS, and write some text toohello file.
     CloudFile fileSas = new CloudFile(fileSasUri);
     fileSas.UploadText("This write operation is authenticated via SAS.");
     Console.WriteLine(fileSas.DownloadText());
@@ -224,135 +224,135 @@ if (share.Exists())
 Další informace o vytváření a používání sdílených přístupových podpisů najdete v tématech [Použití sdílených přístupových podpisů (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) a [Vytvoření a použití SAS s objekty blob Azure](../blobs/storage-dotnet-shared-access-signature-part-2.md).
 
 ## <a name="copy-files"></a>Kopírování souborů
-Klientská knihovna pro úložiště Azure od verze 5.x umožňuje kopírovat soubor do jiného souboru, soubor do objektu nebo objekt blob do souboru. V dalších kapitolách ukážeme, jak se operace kopírovaní dají provést programově.
+Od verze 5.x hello Klientská knihovna pro úložiště Azure, můžete zkopírovat soubor tooanother souboru, soubor tooa objekt blob nebo soubor tooa objektů blob. V dalších částech hello, ukážeme, jak se tooperform tyto zkopírovat operations prostřednictvím kódu programu.
 
-Pomocí nástroje AzCopy taky můžete zkopírovat jeden soubor do jiného nebo zkopírovat objekt blob do souboru a obráceně. Viz téma [Přenos dat pomocí nástroje příkazového řádku AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+Můžete také použít AzCopy toocopy jeden soubor tooanother nebo toocopy naopak objektů blob tooa soubor nebo naopak. V tématu [přenos dat pomocí příkazového řádku Azcopy hello](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 > [!NOTE]
-> Pokud kopírujete objekt blob do souboru nebo soubor do objektu blob, musíte použít sdílený přístupový klíč (SAS) k ověření zdroje objektu, a to i když kopírujete v rámci jednoho účtu úložiště.
+> Pokud kopírujete objekt blob tooa soubor nebo soubor tooa objekt blob, musíte použít sdílený přístupový podpis (SAS) tooauthenticate hello zdrojový objekt, i když kopírujete v rámci hello stejný účet úložiště.
 > 
 > 
 
-**Kopírování souboru do jiného souboru** V následujícím příkladu se zkopíruje soubor do jiného souboru ve stejné sdílené složce. Protože tato operace kopírování kopíruje soubory ve stejném účtu úložiště, můžete pro kopírování použít ověření Sdíleným klíčem.
+**Zkopírujte soubor tooanother souboru** hello následujícím příkladu se zkopíruje soubor tooanother souboru v hello téže sdílené složky. Protože tato operace kopírování kopíruje soubory v hello stejný účet úložiště, můžete použít sdílený klíč ověřování tooperform hello kopírování.
 
 ```csharp
-// Parse the connection string for the storage account.
+// Parse hello connection string for hello storage account.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create a CloudFileClient object for credentialed access to Azure File storage.
+// Create a CloudFileClient object for credentialed access tooAzure File storage.
 CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
-// Get a reference to the file share we created previously.
+// Get a reference toohello file share we created previously.
 CloudFileShare share = fileClient.GetShareReference("logs");
 
-// Ensure that the share exists.
+// Ensure that hello share exists.
 if (share.Exists())
 {
-    // Get a reference to the root directory for the share.
+    // Get a reference toohello root directory for hello share.
     CloudFileDirectory rootDir = share.GetRootDirectoryReference();
 
-    // Get a reference to the directory we created previously.
+    // Get a reference toohello directory we created previously.
     CloudFileDirectory sampleDir = rootDir.GetDirectoryReference("CustomLogs");
 
-    // Ensure that the directory exists.
+    // Ensure that hello directory exists.
     if (sampleDir.Exists())
     {
-        // Get a reference to the file we created previously.
+        // Get a reference toohello file we created previously.
         CloudFile sourceFile = sampleDir.GetFileReference("Log1.txt");
 
-        // Ensure that the source file exists.
+        // Ensure that hello source file exists.
         if (sourceFile.Exists())
         {
-            // Get a reference to the destination file.
+            // Get a reference toohello destination file.
             CloudFile destFile = sampleDir.GetFileReference("Log1Copy.txt");
 
-            // Start the copy operation.
+            // Start hello copy operation.
             destFile.StartCopy(sourceFile);
 
-            // Write the contents of the destination file to the console window.
+            // Write hello contents of hello destination file toohello console window.
             Console.WriteLine(destFile.DownloadText());
         }
     }
 }
 ```
 
-**Kopírování souboru do objektu blob** V následujícím příkladu se vytvoří soubor a zkopíruje se do objektu blob ve stejném účtu úložiště. V příkladu se vytvoří SAS pro zdrojový soubor a služba ho při kopírování použije k ověření přístupu ke zdrojovému souboru.
+**Zkopírujte soubor tooa objekt blob** hello následující příklad vytvoří soubor a zkopíruje ho tooa objektů blob v rámci hello stejný účet úložiště. Hello příklad vytvoří SAS pro hello zdrojový soubor, který služba hello používá tooauthenticate přístup toohello zdrojového souboru během operace kopírování hello.
 
 ```csharp
-// Parse the connection string for the storage account.
+// Parse hello connection string for hello storage account.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create a CloudFileClient object for credentialed access to Azure File storage.
+// Create a CloudFileClient object for credentialed access tooAzure File storage.
 CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
 // Create a new file share, if it does not already exist.
 CloudFileShare share = fileClient.GetShareReference("sample-share");
 share.CreateIfNotExists();
 
-// Create a new file in the root directory.
+// Create a new file in hello root directory.
 CloudFile sourceFile = share.GetRootDirectoryReference().GetFileReference("sample-file.txt");
-sourceFile.UploadText("A sample file in the root directory.");
+sourceFile.UploadText("A sample file in hello root directory.");
 
-// Get a reference to the blob to which the file will be copied.
+// Get a reference toohello blob toowhich hello file will be copied.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 CloudBlobContainer container = blobClient.GetContainerReference("sample-container");
 container.CreateIfNotExists();
 CloudBlockBlob destBlob = container.GetBlockBlobReference("sample-blob.txt");
 
-// Create a SAS for the file that's valid for 24 hours.
-// Note that when you are copying a file to a blob, or a blob to a file, you must use a SAS
-// to authenticate access to the source object, even if you are copying within the same
+// Create a SAS for hello file that's valid for 24 hours.
+// Note that when you are copying a file tooa blob, or a blob tooa file, you must use a SAS
+// tooauthenticate access toohello source object, even if you are copying within hello same
 // storage account.
 string fileSas = sourceFile.GetSharedAccessSignature(new SharedAccessFilePolicy()
 {
-    // Only read permissions are required for the source file.
+    // Only read permissions are required for hello source file.
     Permissions = SharedAccessFilePermissions.Read,
     SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24)
 });
 
-// Construct the URI to the source file, including the SAS token.
+// Construct hello URI toohello source file, including hello SAS token.
 Uri fileSasUri = new Uri(sourceFile.StorageUri.PrimaryUri.ToString() + fileSas);
 
-// Copy the file to the blob.
+// Copy hello file toohello blob.
 destBlob.StartCopy(fileSasUri);
 
-// Write the contents of the file to the console window.
+// Write hello contents of hello file toohello console window.
 Console.WriteLine("Source file contents: {0}", sourceFile.DownloadText());
 Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 ```
 
-Stejným způsobem můžete kopírovat objekt blob do souboru. Pokud je zdrojovým objektem objekt blob, vytvořte SAS k ověření přístupu k tomuto objektu blob při kopírování.
+Můžete kopírovat soubor tooa objektů blob v hello stejným způsobem. Pokud hello zdrojový objekt, který je objekt blob, vytvořte objekt blob SAS tooauthenticate přístup toothat během operace kopírování hello.
 
 ## <a name="troubleshooting-azure-file-storage-using-metrics"></a>Řešení potíží se službou Azure File Storage pomocí metrik
 Azure Storage Analytics teď podporuje metriky pro službu Azure File Storage. S údaji z metriky můžete sledovat žádosti a diagnostikovat potíže.
 
 
-Metriky pro službu Azure File Storage můžete povolit na webu [Azure Portal](https://portal.azure.com). Metriky taky můžete zapnout programově zavoláním operace Set File Service Properties přes REST API nebo některou z podobných operací v Klientské knihovně pro úložiště.
+Můžete povolit metriky pro úložiště Azure File hello [portálu Azure](https://portal.azure.com). Můžete také povolit metriky programově pomocí volání hello operace Set File Service Properties přes hello REST API nebo některou z podobných operací v hello Klientská knihovna pro úložiště.
 
 
-Následující příklad kódu ukazuje, jak můžete použít Klientskou knihovnu pro úložiště pro .NET k zapnutí metrik pro službu Azure File Storage.
+Hello následující příklad kódu ukazuje, jak toouse hello Klientská knihovna pro úložiště pro .NET tooenable metriky pro úložiště Azure File.
 
-Nejdříve do souboru `Program.cs` mimo těch, které jste přidali výše, přidejte následující direktivy `using`:
+Nejprve přidejte následující hello `using` tooyour direktivy `Program.cs` souboru, kromě toothose jste přidali výše:
 
 ```csharp
 using Microsoft.WindowsAzure.Storage.File.Protocol;
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
 ```
 
-Pamatujte, že zatímco objekty blob Azure, Tabulky Azure a Fronty Azure používají sdílený typ `ServiceProperties` v oboru názvů `Microsoft.WindowsAzure.Storage.Shared.Protocol`, Azure File Storage používá vlastní typ `FileServiceProperties` v oboru názvů `Microsoft.WindowsAzure.Storage.File.Protocol`. Aby se ale následující kód mohl zkompilovat, musí se z vašeho kódu odkazovat oba obory názvů.
+Pamatujte, že při Azure BLOB, tabulka Azure a Azure používají hello sdílené `ServiceProperties` typu v hello `Microsoft.WindowsAzure.Storage.Shared.Protocol` obor názvů, úložiště Azure File používá vlastní typ hello `FileServiceProperties` typu v hello `Microsoft.WindowsAzure.Storage.File.Protocol` oboru názvů. Oba obory názvů musí odkazovat z vašeho kódu, ale pro následující kód toocompile hello.
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
-// Create the File service client.
+// Create hello File service client.
 CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
 // Set metrics properties for File service.
-// Note that the File service currently uses its own service properties type,
-// available in the Microsoft.WindowsAzure.Storage.File.Protocol namespace.
+// Note that hello File service currently uses its own service properties type,
+// available in hello Microsoft.WindowsAzure.Storage.File.Protocol namespace.
 fileClient.SetServiceProperties(new FileServiceProperties()
 {
     // Set hour metrics
@@ -371,7 +371,7 @@ fileClient.SetServiceProperties(new FileServiceProperties()
     }
 });
 
-// Read the metrics properties we just set.
+// Read hello metrics properties we just set.
 FileServiceProperties serviceProperties = fileClient.GetServiceProperties();
 Console.WriteLine("Hour metrics:");
 Console.WriteLine(serviceProperties.HourMetrics.MetricsLevel);
@@ -384,18 +384,18 @@ Console.WriteLine(serviceProperties.MinuteMetrics.RetentionDays);
 Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 ```
 
-Podrobné pokyny, jak postupovat při řešení potíží, najdete v článku [Azure File storage Troubleshooting Article](storage-troubleshoot-windows-file-connection-problems.md) (Azure File Storage – řešení problémů).
+Navíc můžete odkazovat příliš[Azure File storage článku Poradce při potížích s](storage-troubleshoot-windows-file-connection-problems.md) pro pokyny k odstraňování problémů začátku do konce.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o úložišti Azure File jsou dostupné na těchto odkazech.
 
 ### <a name="conceptual-articles-and-videos"></a>Koncepční články a videa
 * [Azure File Storage: hladký cloudový souborový systém SMB pro Windows a Linux](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [Jak používat Azure File Storage s Linuxem](storage-how-to-use-files-linux.md)
+* [Jak toouse Azure File storage s Linuxem](storage-how-to-use-files-linux.md)
 
 ### <a name="tooling-support-for-file-storage"></a>Podpora nástrojů pro úložiště File
-* [Použití nástroje AzCopy s Microsoft Azure Storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
-* [Použití Azure CLI s Azure Storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
+* [Jak toouse AzCopy s Microsoft Azure Storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+* [Použití hello rozhraní příkazového řádku Azure s Azure Storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [Řešení potíží se službou Azure File Storage](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>Referenční informace
@@ -406,4 +406,4 @@ Další informace o úložišti Azure File jsou dostupné na těchto odkazech.
 * [Úložiště Azure File je nyní dostupné pro veřejnost](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
 * [Uvnitř Azure File Storage](https://azure.microsoft.com/blog/inside-azure-file-storage/)
 * [Představujeme službu Microsoft Azure File](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
-* [Nastavení trvalých připojení ke službě Microsoft Azure File Storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+* [Zachování připojení tooMicrosoft Azure File storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)

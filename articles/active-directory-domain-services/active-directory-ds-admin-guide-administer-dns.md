@@ -14,90 +14,90 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: 812641a3e4d5bf496d81b036d326595c5722b7fe
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f2085283649eadd3c9e89f708b0eecf10b2d7d70
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="administer-dns-on-an-azure-ad-domain-services-managed-domain"></a>Spravovat DNS na spravované doméně služby Azure AD Domain Services
-Azure Active Directory Domain Services zahrnuje server DNS (překlad názvu domény), který poskytuje překlad názvů DNS pro spravovanou doménu. V některých případech může musíte nakonfigurovat DNS na spravované domény. Musíte vytvořit záznamy DNS pro počítače, které nejsou připojené k doméně, nakonfigurujte virtuální IP adresy pro vyrovnávání zatížení nebo nastavit externí servery DNS pro předávání. Z toho důvodu jsou uživatelé, kteří patří do skupiny "Administrators AAD řadič domény, udělena oprávnění správy DNS na spravované domény.
+Azure Active Directory Domain Services zahrnuje server DNS (překlad názvu domény), který poskytuje překlad názvů DNS pro hello spravované domény. V některých případech může být nutné tooconfigure DNS na hello spravované domény. Může být nutné toocreate záznamy DNS pro počítače, které nejsou připojené k toohello domény nakonfigurovat virtuální IP adresy pro vyrovnávání zatížení nebo nastavit externí servery DNS pro předávání. Z tohoto důvodu jsou uživatelé, kteří patří skupiny 'AAD řadič domény Administrators' toohello udělena oprávnění správy DNS na hello spravované domény.
 
 ## <a name="before-you-begin"></a>Než začnete
-Chcete-li provést úkoly vypsané v tomto článku, je třeba:
+úlohy hello tooperform uvedené v tomto článku, budete potřebovat:
 
 1. Platná **předplatné**.
 2. **Adresář Azure AD** – buď synchronizovány s místní adresář nebo výhradně cloudový adresář.
-3. **Azure AD Domain Services** musí být povolen pro adresář Azure AD. Pokud jste tak dosud neučinili, postupujte podle všechny úkoly popsané v [příručce Začínáme](active-directory-ds-getting-started.md).
-4. A **virtuální počítač připojený k doméně** ze kterého můžete spravovat spravované doméně služby Azure AD Domain Services. Pokud nemáte virtuálního počítače, postupujte podle všechny úkoly popsané v článku s názvem [připojení virtuálního počítače s Windows k spravované doméně](active-directory-ds-admin-guide-join-windows-vm.md).
-5. Potřebujete přihlašovací údaje **uživatelský účet patří do skupiny "Správci AAD řadič domény,** ve vašem adresáři, ke správě vaší spravované domény DNS.
+3. **Azure AD Domain Services** musí být povolen pro adresář hello Azure AD. Pokud jste tak dosud neučinili, postupujte podle kroků uvedených v hello všechny hello úlohy [příručce Začínáme](active-directory-ds-getting-started.md).
+4. A **virtuální počítač připojený k doméně** z které můžete spravovat hello spravované doméně služby Azure AD Domain Services. Pokud nemáte virtuálního počítače, postupujte podle všechny hello úkoly popsané v článku hello s názvem [připojit k spravované doméně systému Windows virtuálního počítače tooa](active-directory-ds-admin-guide-join-windows-vm.md).
+5. Potřebujete přihlašovací údaje hello **uživatele účtu patřící toohello 'správci AAD řadič domény, skupiny** ve vašem adresáři tooadminister DNS vaší spravované domény.
 
 <br>
 
-## <a name="task-1---provision-a-domain-joined-virtual-machine-to-remotely-administer-dns-for-the-managed-domain"></a>Úloha 1 – zřídit virtuální počítač připojený k doméně ke vzdálené správě DNS pro spravovanou doménu
-Spravované domény služby Azure AD Domain Services můžete spravovat vzdáleně pomocí známých nástrojů pro správu služby Active Directory jako správy Center Active Directory (ADAC) nebo AD PowerShell. Podobně DNS pro spravovanou doménu lze spravovat vzdáleně pomocí nástrojů pro správu serveru DNS.
+## <a name="task-1---provision-a-domain-joined-virtual-machine-tooremotely-administer-dns-for-hello-managed-domain"></a>Úloha 1 - zřídit virtuální počítač připojený k doméně tooremotely spravovat DNS pro spravované doméně hello
+Spravované domény služby Azure AD Domain Services můžete spravovat vzdáleně pomocí známých nástrojů pro správu služby Active Directory například hello správy Center Active Directory (ADAC) nebo AD PowerShell. Podobně DNS pro spravované doméně hello lze spravovat vzdáleně pomocí nástrojů pro správu serveru DNS hello.
 
-Správci v adresáři služby Azure AD nemají oprávnění pro připojení k řadiče domény na spravované domény přes vzdálenou plochu. Členové skupiny 'Administrators AAD řadič domény, mohou spravovat DNS pro spravované domény vzdáleně pomocí nástrojů DNS serveru z počítače systému Windows Server nebo klienta, který je připojen k spravované doméně. Jako součást volitelná funkce vzdálenou správu serveru (RSAT) na Windows serveru a klientské počítače připojené k spravované doméně může být nainstalované nástroje serveru DNS.
+Správci v adresáři služby Azure AD nemají oprávnění tooconnect toodomain řadiče na spravované doméně hello přes vzdálenou plochu. Členové skupiny hello 'Administrators AAD řadič domény, mohou spravovat DNS pro spravované domény vzdáleně pomocí nástrojů DNS serveru z počítače systému Windows Server nebo klienta, který je připojený k toohello spravované domény. Nástroje pro DNS Server můžete nainstalovat jako součást hello vzdálenou správu serveru (RSAT) volitelná funkce v systému Windows Server a klientských počítačů připojených k toohello spravované domény.
 
-Prvním krokem je zřízení virtuálního počítače s Windows Server, který je připojen k spravované doméně. Pokyny naleznete v článku s názvem [připojení virtuálního počítače s Windows serverem k spravované doméně služby Azure AD Domain Services](active-directory-ds-admin-guide-join-windows-vm.md).
+první úlohou Hello je tooprovision virtuálního počítače Windows serveru, který je připojený k toohello spravované domény. Pokyny naleznete v článku toohello s názvem [k doméně systému Windows Server virtuálního počítače tooan Azure AD Domain Services spravované](active-directory-ds-admin-guide-join-windows-vm.md).
 
-## <a name="task-2---install-dns-server-tools-on-the-virtual-machine"></a>Úloha 2 – nástroje pro instalaci serveru DNS na virtuálním počítači
-Proveďte následující kroky k instalaci nástroje pro správu DNS na virtuální počítač připojený k doméně. Další informace o [instalaci a použití nástrojů pro vzdálenou správu serveru](https://technet.microsoft.com/library/hh831501.aspx), najdete v článku webu Technet.
+## <a name="task-2---install-dns-server-tools-on-hello-virtual-machine"></a>Úloha 2 – nástroje pro instalaci serveru DNS na virtuálním počítači hello
+Proveďte následující kroky nástroje pro správu DNS hello tooinstall na virtuální počítač připojený k doméně hello hello. Další informace o [instalaci a použití nástrojů pro vzdálenou správu serveru](https://technet.microsoft.com/library/hh831501.aspx), najdete v článku webu Technet.
 
-1. Přejděte na **virtuální počítače** uzlu na portálu Azure classic. Vyberte virtuální počítač, který jste vytvořili v úloze 1 a klikněte na tlačítko **Connect** na panelu příkazů v dolní části okna.
+1. Přejděte příliš**virtuální počítače** uzlu v hello portál Azure classic. Vyberte virtuální počítač hello jste vytvořili v úloze 1 a klikněte na tlačítko **Connect** na panelu příkazů hello v hello dolní části okna hello.
 
-    ![Připojení k systému Windows virtuálního počítače](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-2. Portálu classic zobrazí výzvu k otevření nebo uložení souboru s příponou '.rdp', který se používá k připojení k virtuálnímu počítači. Po dokončení stahování, klikněte na soubor.
-3. Do příkazového řádku přihlášení pomocí přihlašovacích údajů uživatele, které patří do skupiny "Správci AAD řadič domény.. Například používáme 'bob@domainservicespreview.onmicrosoft.com' v našem případě.
-4. Na úvodní obrazovce otevřete **správce serveru**. Klikněte na tlačítko **přidat role a funkce** ve středovém podokně okna Správce serveru.
+    ![Připojit tooWindows virtuálního počítače](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
+2. portál classic Hello vás vyzve k tooopen nebo uložit soubor s příponou '.rdp', což je použité tooconnect toohello virtuálního počítače. Po dokončení stahování, klikněte na soubor hello.
+3. Hello řádku přihlášení použijte hello přihlašovací údaje uživatele, skupiny toohello 'AAD řadič domény Administrators, které patří. Například používáme 'bob@domainservicespreview.onmicrosoft.com' v našem případě.
+4. Hello úvodní obrazovce otevřete **správce serveru**. Klikněte na tlačítko **přidat role a funkce** v hello centrální podokně okna Správce serveru hello.
 
     ![Spusťte správce serveru na virtuálním počítači](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
-5. Na **než začnete** stránky **Průvodce přidáním rolí a funkcí**, klikněte na tlačítko **Další**.
+5. Na hello **než začnete** stránku hello **Průvodce přidáním rolí a funkcí**, klikněte na tlačítko **Další**.
 
     ![Před zahájením stránku](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-begin.png)
-6. Na **typ instalace** ponechte **instalace na základě rolí nebo na základě funkcí** zaškrtnuto políčko a klikněte na tlačítko **Další**.
+6. Na hello **typ instalace** ponechte hello **instalace na základě rolí nebo na základě funkcí** zaškrtnuto políčko a klikněte na tlačítko **Další**.
 
     ![Stránka Typ instalace](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
-7. Na **výběr serveru** vyberte aktuální virtuální počítač z fondu serverů a klikněte na tlačítko **Další**.
+7. Na hello **výběr serveru** vyberte hello aktuální virtuální počítač z fondu serverů hello a klikněte na tlačítko **Další**.
 
     ![Stránka Výběr serveru](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
-8. Na **role serveru** klikněte na tlačítko **Další**. Tuto stránku jsme vynechat, protože jsme se neinstalují žádné role na serveru.
-9. Na **funkce** stránky, klikněte na tlačítko rozšířit **nástrojů pro vzdálenou správu serveru** uzel a potom kliknutím rozbalte položku **nástroje pro správu rolí** uzlu. Vyberte **nástroje serveru DNS** funkci ze seznamu nástroje pro správu rolí.
+8. Na hello **role serveru** klikněte na tlačítko **Další**. Tuto stránku jsme vynechat, protože jsme nejsou instalaci rolí na hello server.
+9. Na hello **funkce** klikněte na tlačítko tooexpand hello **nástrojů pro vzdálenou správu serveru** uzel a potom klikněte na tlačítko tooexpand hello **nástroje pro správu rolí** uzlu. Vyberte **nástroje serveru DNS** funkci ze seznamu hello nástroje pro správu rolí.
 
     ![Stránka funkce](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-tools.png)
-10. Na **potvrzení** klikněte na tlačítko **nainstalovat** k instalaci funkce nástroje pro DNS Server na virtuálním počítači. Po úspěšném dokončení instalace funkce klikněte na tlačítko **Zavřít** ukončíte **přidat role a funkce** průvodce.
+10. Na hello **potvrzení** klikněte na tlačítko **nainstalovat** nástroje tooinstall hello DNS Server pro funkce na hello virtuálního počítače. Po úspěšném dokončení instalace funkce klikněte na tlačítko **Zavřít** tooexit hello **přidat role a funkce** průvodce.
 
     ![Stránka potvrzení](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-confirmation.png)
 
-## <a name="task-3---launch-the-dns-management-console-to-administer-dns"></a>Úloha 3: Spusťte konzolu pro správu služby pro správu DNS
-Teď, když funkce nástroje serveru DNS nainstalovaná v doméně virtuálního počítače, nástroje DNS jsme můžete použít ke správě DNS na spravované domény.
+## <a name="task-3---launch-hello-dns-management-console-tooadminister-dns"></a>Úloha 3 – spuštění hello DNS správy konzoly tooadminister DNS
+Nyní, že nástroje serveru DNS hello funkce se instaluje na hello virtuální počítač připojený k doméně, budeme moci použít hello DNS nástroje tooadminister DNS na hello spravované domény.
 
 > [!NOTE]
-> Musíte být členem skupiny 'správci AAD řadič domény, ke správě DNS na spravované domény.
+> Je nutné toobe člen skupiny hello 'AAD řadič domény Administrators', tooadminister DNS na hello spravované domény.
 >
 >
 
-1. Na obrazovce Start klikněte na tlačítko **nástroje pro správu**. Měli byste vidět **DNS** konzola nainstalovaná na virtuálním počítači.
+1. Hello úvodní obrazovce klikněte na tlačítko **nástroje pro správu**. Měli byste vidět hello **DNS** konzola nainstalovaná na hello virtuálního počítače.
 
     ![Nástroje pro správu - konzolu DNS](./media/active-directory-domain-services-admin-guide/install-rsat-dns-tools-installed.png)
-2. Klikněte na tlačítko **DNS** spusťte konzolu pro správu DNS.
-3. V **připojit k serveru DNS** dialogové okno, klikněte na možnost s názvem **následující počítače**a zadejte název domény DNS spravované domény (například "contoso100.com").
+2. Klikněte na tlačítko **DNS** konzoly pro správu DNS toolaunch hello.
+3. V hello **připojit tooDNS Server** dialogové okno, klikněte na možnost hello s názvem **hello následující počítače**a zadejte název domény DNS hello hello spravované domény (například "contoso100.com").
 
-    ![Konzolu DNS - připojit k doméně](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
-4. Připojí se k spravované doméně konzolu DNS.
+    ![Konzolu DNS - připojení toodomain](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
+4. Hello konzolu DNS připojí toohello spravované domény.
 
     ![Konzolu DNS - spravovat domény](./media/active-directory-domain-services-admin-guide/dns-console-managed-domain.png)
-5. Teď můžete konzolu DNS přidat záznamy DNS pro počítače v rámci virtuální sítě, ve kterém jste povolili služby AAD Domain Services.
+5. Nyní můžete vytvořit záznamy DNS hello DNS konzoly tooadd pro počítače v rámci hello virtuální sítě, ve kterém jste povolili služby AAD Domain Services.
 
 > [!WARNING]
-> Buďte opatrní při správě DNS pro spravované doméně pomocí nástroje pro správu DNS. Ujistěte se, že jste **odstranit nebo upravit integrované záznamy DNS, které jsou používané službami domény v doméně**. Předdefinované záznamy DNS zahrnují záznamy DNS domény, záznamy názvového serveru a další záznamy použít pro umístění řadiče domény. Pokud upravíte tyto záznamy, dojde k narušení služby domain services ve virtuální síti.
+> Buďte opatrní při správě DNS pro hello spravované doméně pomocí nástroje pro správu DNS. Ujistěte se, že jste **odstranit nebo upravit hello předdefinované záznamy DNS, které jsou používané službami domény v doméně hello**. Předdefinované záznamy DNS zahrnují záznamy DNS domény, záznamy názvového serveru a další záznamy použít pro umístění řadiče domény. Pokud upravíte tyto záznamy, dojde k narušení služby domain services ve virtuální síti hello.
 >
 >
 
-Najdete v článku [nástrojů DNS článku na webu Technet](https://technet.microsoft.com/library/cc753579.aspx) pro další informace o správě DNS.
+V tématu hello [nástrojů DNS článku na webu Technet](https://technet.microsoft.com/library/cc753579.aspx) pro další informace o správě DNS.
 
 ## <a name="related-content"></a>Související obsah
 * [Azure AD Domain Services – Příručka Začínáme](active-directory-ds-getting-started.md)
-* [Připojení virtuálního počítače s Windows serverem k spravované doméně služby Azure AD Domain Services](active-directory-ds-admin-guide-join-windows-vm.md)
+* [Připojení k systému Windows Server virtuálního počítače tooan Azure AD Domain Services spravované doméně](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Správa spravované domény služby Azure AD Domain Services](active-directory-ds-admin-guide-administer-domain.md)
 * [Nástroje pro správu DNS](https://technet.microsoft.com/library/cc753579.aspx)

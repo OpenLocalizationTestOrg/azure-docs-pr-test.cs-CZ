@@ -1,6 +1,6 @@
 ---
-title: "Nasazení webové aplikace pomocí MSDeploy certifikátem název hostitele a ssl"
-description: "Nasazení webové aplikace pomocí MSDeploy a nastavení vlastního názvu hostitele a certifikátu SSL pomocí šablony Azure Resource Manager"
+title: "aaaDeploy webovou aplikaci pomocí MSDeploy certifikátem název hostitele a ssl"
+description: "Použijte toodeploy šablony Azure Resource Manager webovou aplikaci pomocí MSDeploy a nastavení vlastního názvu hostitele a certifikátu SSL"
 services: app-service\web
 manager: erikre
 documentationcenter: 
@@ -13,30 +13,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2016
 ms.author: jodehavi
-ms.openlocfilehash: a0e944d0d74ecb72a919538d54db330cbbdeef64
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ac13f4a7d14ae182e8e7ced5adff30491422d1e4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-a-web-app-with-msdeploy-custom-hostname-and-ssl-certificate"></a>Nasazení webové aplikace s MSDeploy, vlastní název hostitele a certifikátu SSL
-Tento průvodce vás provede vytváření nasazení začátku do konce pro webové aplikace Azure, využití MSDeploy a také přidání vlastního názvu hostitele a certifikát SSL pro šablony ARM.
+Tento průvodce vás provede vytváření nasazení začátku do konce pro webové aplikace Azure, využití MSDeploy a také přidání vlastního názvu hostitele a šablony ARM toohello certifikát SSL.
 
 Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 
 ### <a name="create-sample-application"></a>Vytvoření ukázkové aplikace
-Budete nasazovat webové aplikace ASP.NET. Prvním krokem je vytvoření jednoduché webové aplikace (nebo můžete rozhodnout použít existující – v takovém případě můžete tento krok přeskočit).
+Budete nasazovat webové aplikace ASP.NET. prvním krokem Hello je toocreate jednoduché webové aplikace (nebo toouse může zvolit existující – v takovém případě můžete tento krok přeskočit).
 
-Otevřete Visual Studio 2015 a zvolte Soubor > Nový projekt. V zobrazeném dialogovém okně vyberte Web > ASP.NET Web Application. V části šablony vyberte Web a vyberte šablonu MVC. Vyberte *změnit typ ověřování* k *bez ověřování*. Toto je k tomu, aby ukázkovou aplikaci co nejjednodušší.
+Otevřete Visual Studio 2015 a zvolte Soubor > Nový projekt. V dialogovém okně hello, který se zobrazí vyberte Web > ASP.NET Web Application. V části šablony vyberte Web a vyberte šablonu MVC hello. Vyberte *změnit typ ověřování* příliš*bez ověřování*. Toto je právě toomake hello ukázkovou aplikaci co nejjednodušší.
 
-V tomto okamžiku budete mít základní ASP.Net webové aplikace připravené k použití jako součást procesu nasazení.
+V tomto okamžiku budete mít základní ASP.Net webové aplikace připravené toouse jako součást procesu nasazení.
 
 ### <a name="create-msdeploy-package"></a>Vytvoření balíčku MSDeploy
-Dalším krokem je vytvoření balíčku pro nasazení webové aplikace do Azure. Chcete-li to provést, uložte projekt a pak spusťte následující příkaz z příkazového řádku:
+Dalším krokem je toocreate hello balíček toodeploy hello webové aplikace tooAzure. toodo toho uložte projekt a pak spusťte z příkazového řádku hello hello následující:
 
     msbuild yourwebapp.csproj /t:Package /p:PackageLocation="path\to\package.zip"
 
-Tím se vytvoří ve složce PackageLocation komprimované balíček. Aplikace je nyní připravena k nasazení, které teď můžete sestavit si šablonu Azure Resource Manageru k tomu.
+Tím se vytvoří balíček komprimované složce PackageLocation hello. Hello aplikace je nyní připraveni toobe nasazení, které teď můžete sestavit se toodo šablony Azure Resource Manager.
 
 ### <a name="create-arm-template"></a>Vytvoření šablony ARM
 Nejdříve začneme základní šablony ARM, který vytvoří webovou aplikaci a plán hostování (Všimněte si, že parametry a proměnné nejsou zobrazeny jako stručný výtah).
@@ -75,7 +75,7 @@ Nejdříve začneme základní šablony ARM, který vytvoří webovou aplikaci a
         }
     }
 
-Dále bude nutné upravit prostředek webové aplikace provést vnořeného prostředku MSDeploy. To vám umožní k odkazu na balíček vytvořený a sdělte Azure Resource Manager pomocí MSDeploy balíček nasadit do webové aplikace Azure. Na obrázku Microsoft.Web/sites prostředek s vnořeného prostředku MSDeploy:
+V dalším kroku budete potřebovat toomodify hello webové aplikace prostředků tootake vnořeného prostředku MSDeploy. To bude povolit jste tooreference hello balíčku dříve vytvořili a sdělte Azure Resource Manager toouse MSDeploy toodeploy hello balíček toohello Azure WebApp. Následující Hello ukazuje hello Microsoft.Web/sites prostředek s hello vnořené MSDeploy prostředků:
 
     {
         "name": "[variables('webAppName')]",
@@ -117,13 +117,13 @@ Dále bude nutné upravit prostředek webové aplikace provést vnořeného pros
         ]
     }
 
-Teď si všimnete, že trvá MSDeploy prostředků **packageUri** vlastnost, která je definován následujícím způsobem:
+Teď si všimnete, že hello MSDeploy prostředků trvá **packageUri** vlastnost, která je definován následujícím způsobem:
 
     "packageUri": "[concat(parameters('_artifactsLocation'), '/', parameters('webDeployPackageFolder'), '/', parameters('webDeployPackageFileName'), parameters('_artifactsLocationSasToken'))]"
 
-To **packageUri** trvá identifikátor uri účtu úložiště, který odkazuje na účet úložiště, kde bude nahrávat váš balíček zip do. Azure Resource Manager využije [sdílené přístupové podpisy](../storage/common/storage-dotnet-shared-access-signature-part-1.md) k stahují balíček místně z účtu úložiště při nasazování šablony. Tento proces bude možné automatizovat pomocí Powershellový skript, který bude nahrání balíčku a volání rozhraní API pro správu Azure k vytvoření klíčů vyžaduje a v šabloně předat jako parametry (*_artifactsLocation* a *_ artifactsLocationSasToken*). Je nutné zadat parametry pro složku a název souboru balíčku se nahraje v kontejneru úložiště.
+To **packageUri** trvá hello identifikátor uri účtu, který účet úložiště toohello, kde bude nahrávat váš balíček zip do bodů. Hello Azure Resource Manager bude využívat [sdílené přístupové podpisy](../storage/common/storage-dotnet-shared-access-signature-part-1.md) toopull hello balíček dolů místně z účtu úložiště hello při nasazování šablony hello. Tento proces bude možné automatizovat pomocí skriptu PowerShell, který nahrání balíčku hello a zavolá hello rozhraní API pro správu Azure toocreate hello klíče vyžadované a ty do šablony hello předat jako parametry (*_artifactsLocation* a *_artifactsLocationSasToken*). Budete potřebovat toodefine parametry pro složku hello a filename hello balíček je kontejner úložiště nahrané toounder hello.
 
-Dále je nutné přidat v jiné vnořeného prostředku nastavení vazby názvů hostitelů využívat vlastní doménu. Nejdřív musíte zajistit, že vlastníte do názvu hostitele a nastavte ho nahoru ověřit pomocí Azure jeho - vlastníkem najdete v tématu [konfigurace vlastního názvu domény v Azure App Service](app-service-web-tutorial-custom-domain.md). Po dokončení můžete do šablony prostředků části Microsoft.Web/sites přidejte následující:
+Dále je třeba tooadd v jiné vnořeného prostředku toosetup hello hostname vazby tooleverage vlastní doménu. Bude první nutné tooensure vlastní název hostitele hello a nastavit toobe ověřit pomocí Azure, že jste jejím vlastníkem – viz [konfigurace vlastního názvu domény v Azure App Service](app-service-web-tutorial-custom-domain.md). Po dokončení můžete přidat hello následující šablony tooyour části hello Microsoft.Web/sites prostředků:
 
     {
         "apiVersion": "2015-08-01",
@@ -139,7 +139,7 @@ Dále je nutné přidat v jiné vnořeného prostředku nastavení vazby názvů
         }
     }
 
-Nakonec budete muset přidat další nejvyšší úrovně prostředek, Microsoft.Web/certificates. Tento prostředek bude obsahovat svůj certifikát SSL a bude existovat na stejné úrovni jako webová aplikace a hostingový plán.
+Nakonec musíte tooadd jiný prostředek Microsoft.Web/certificates na nejvyšší úrovni. Tento prostředek bude obsahovat svůj certifikát SSL a bude existovat na stejné úrovni jako webové aplikace a hostování plánování hello.
 
     {
         "name": "[parameters('certificateName')]",
@@ -152,25 +152,25 @@ Nakonec budete muset přidat další nejvyšší úrovně prostředek, Microsoft
         }
     }
 
-Musíte mít platný certifikát SSL, pokud chcete nastavit tento prostředek. Jakmile je tento certifikát budete potřebovat k extrakci bajtů pfx jako řetězec base64. Jednou z možností k extrakci to je použijte následující příkaz prostředí PowerShell:
+Budete potřebovat toohave platný certifikát SSL v pořadí tooset až tento prostředek. Jakmile je tento certifikát budete potřebovat tooextract hello pfx bajtů jako řetězec base64. Jednou z možností tooextract jde toouse hello následující příkaz prostředí PowerShell:
 
     $fileContentBytes = get-content 'C:\path\to\cert.pfx' -Encoding Byte
 
     [System.Convert]::ToBase64String($fileContentBytes) | Out-File 'pfx-bytes.txt'
 
-Potom toto může předávat do nasazení šablony ARM jako parametr.
+To může pak předejte jako parametr tooyour ARM nasazení šablony.
 
-Šablona ARM je nyní připraven.
+V tomto okamžiku je připraven šablony ARM hello.
 
 ### <a name="deploy-template"></a>Nasazení šablony
-Závěrečné kroky se část všechny společně do nasazení úplného začátku do konce. Aby nasazení jednodušší můžete využít **nasadit AzureResourceGroup.ps1** Powershellový skript, který se přidá, když vytvoříte projekt skupiny prostředků Azure v sadě Visual Studio, které pomáhají při odesílání artefakty potřebné v Šablona. Se vyžaduje, abyste vytvořili účet úložiště, který chcete použít předem. V tomto příkladu vytvoříme účet sdílené úložiště pro package.zip k odeslání. Skript bude využívat AzCopy pro nahrání balíčku k účtu úložiště. Předat do umístění složky vašeho artefaktů a skript bude automaticky odeslat všechny soubory v tomto adresáři kontejner s názvem úložiště. Po volání metody nasazení AzureResourceGroup.ps1 budete muset aktualizovat vazby SSL k mapování vlastní název hostitele certifikátem SSL.
+Hello závěrečné kroky jsou toopiece to všechny společně do nasazení úplného začátku do konce. nasazení toomake jednodušší, můžete využít hello **nasadit AzureResourceGroup.ps1** Powershellový skript, který se přidá, když vytvoříte projekt skupiny prostředků Azure v sadě Visual Studio toohelp s artefakty potřebné v odesílání Šablona Hello. To vyžaduje toohave vytvořili účet úložiště, že který má toouse dopředu. V tomto příkladu vytvoříme účet sdílené úložiště pro toobe package.zip hello nahrát. skript Hello využije AzCopy tooupload hello balíček toohello účet úložiště. Předat do umístění složky vašeho artefaktů a hello skript bude automaticky odeslat všechny soubory v rámci této toohello adresář s názvem kontejner úložiště. Po volání metody nasazení AzureResourceGroup.ps1 máte toothen aktualizace hello protokolu SSL vazby toomap hello vlastní název hostitele certifikátem SSL.
 
-Následující PowerShell ukazuje dokončení nasazení volání nasadit-AzureResourceGroup.ps1:
+Hello následující prostředí PowerShell ukazuje hello dokončení nasazení volání hello nasadit-AzureResourceGroup.ps1:
 
     #Set resource group name
     $rgName = "Name-of-resource-group"
 
-    #call deploy-azureresourcegroup script to deploy web app
+    #call deploy-azureresourcegroup script toodeploy web app
 
     .\Deploy-AzureResourceGroup.ps1 -ResourceGroupLocation "East US" `
                                     -ResourceGroupName $rgName `
@@ -181,7 +181,7 @@ Následující PowerShell ukazuje dokončení nasazení volání nasadit-AzureRe
                                     -TemplateParametersFile "web-app-deploy-parameters.json" `
                                     -ArtifactStagingDirectory "C:\path\to\packagefolder\"
 
-    #update web app to bind ssl certificate to hostname. This has to be done after creation above.
+    #update web app toobind ssl certificate toohostname. This has toobe done after creation above.
 
     $cert = Get-PfxCertificate -FilePath C:\path\to\certificate.pfx
 
@@ -195,5 +195,5 @@ Následující PowerShell ukazuje dokončení nasazení volání nasadit-AzureRe
 
     Set-AzureRmResource -ApiVersion 2014-11-01 -Name nameofwebsite -ResourceGroupName $rgName -ResourceType Microsoft.Web/sites -PropertyObject $props
 
-V tomto okamžiku aplikace by měla mít nasazený a nyní byste měli mít vyhledejte prostřednictvím https://www.yourcustomdomain.com
+V tomto okamžiku aplikace by měla mít nasazený a mělo by být možné toobrowse tooit prostřednictvím https://www.yourcustomdomain.com
 

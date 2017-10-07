@@ -1,5 +1,5 @@
 ---
-title: "Kurz pro Azure Container Service – nasazení aplikace | Microsoft Docs"
+title: "kurz pro službu kontejneru aaaAzure – nasazení aplikace | Microsoft Docs"
 description: "Kurz pro Azure Container Service – nasazení aplikace"
 services: container-service
 documentationcenter: 
@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 07/25/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: ea67f0beb6a5926393b26e7590302ad0f46a63f9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7e2fa06d359caf83e684df3966624a6e9a8e7efa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-applications-in-kubernetes"></a>Spuštění aplikace v Kubernetes
 
@@ -30,15 +30,15 @@ V tomto kurzu součástí čtyři 7, vzorová aplikace je nasazený do clusteru 
 > [!div class="checklist"]
 > * Stáhnout soubory manifestu Kubernetes
 > * Spuštění aplikace v Kubernetes
-> * Testování aplikace
+> * Testování aplikace hello
 
-V následujících kurzech této aplikace je škálovat na více systémů, aktualizovat, a Operations Management Suite konfigurované pro monitorování Kubernetes clusteru.
+V následujících kurzech této aplikace je škálovat na více systémů, aktualizovat, a nakonfigurovat Operations Management Suite toomonitor hello Kubernetes clusteru.
 
-Tento kurz předpokládá základní znalosti o Kubernetes koncepty, podrobné informace o Kubernetes najdete [Kubernetes dokumentaci](https://kubernetes.io/docs/home/).
+Tento kurz předpokládá základní znalosti koncepce Kubernetes najdete podrobné informace o Kubernetes hello [Kubernetes dokumentaci](https://kubernetes.io/docs/home/).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V předchozí kurzy aplikace byla zabalené do kontejneru image, tuto bitovou kopii byl odeslán do registru kontejner Azure a Kubernetes cluster byla vytvořena. Pokud se ještě provést tyto kroky a chcete sledovat, vrátit [kurzu 1 – Vytvoření kontejneru image](./container-service-tutorial-kubernetes-prepare-app.md). 
+V předchozí kurzy aplikace se zabalí do kontejneru image, tuto bitovou kopii, byla nahrané tooAzure registru kontejneru a byl vytvořen Kubernetes cluster. Pokud jste ještě provést tyto kroky a chcete toofollow společně, vrátí příliš[kurzu 1 – Vytvoření kontejneru image](./container-service-tutorial-kubernetes-prepare-app.md). 
 
 Minimálně tento kurz vyžaduje Kubernetes clusteru.
 
@@ -46,13 +46,13 @@ Minimálně tento kurz vyžaduje Kubernetes clusteru.
 
 V tomto kurzu [Kubernetes objekty](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) jsou nasazeny pomocí Kubernetes manifestu. Kubernetes manifest je soubor YAML nebo JSON formátovaný obsahující pokyny k nasazení a konfigurace objektu Kubernetes.
 
-Soubor manifestu aplikace pro účely tohoto kurzu je k dispozici v úložišti aplikací Azure hlas, který byl v předchozím kurzu klonovat. Pokud jste tak již neučinili, naklonujte úložiště pomocí následujícího příkazu: 
+Hello souboru manifestu aplikace pro účely tohoto kurzu je k dispozici v úložišti aplikací Azure hlas hello, který byl v předchozím kurzu klonovat. Pokud jste tak již neučinili, klonovat úložiště hello s hello následující příkaz: 
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-Soubor manifestu se nachází v následujícím adresáři klonovaný úložišti.
+Soubor manifestu Hello nachází v následujícím adresáři hello klonovat úložiště hello.
 
 ```bash
 /azure-voting-app-redis/kubernetes-manifests/azure-vote-all-in-one-redis.yml
@@ -60,15 +60,15 @@ Soubor manifestu se nachází v následujícím adresáři klonovaný úložišt
 
 ## <a name="update-manifest-file"></a>Aktualizace souboru manifestu
 
-Pokud používáte Azure kontejneru registru pro ukládání bitových kopií kontejneru, je třeba aktualizovat s názvem loginServer ACR manifest.
+Pokud používáte Azure kontejneru registru toostore hello kontejneru obrázky, hello manifestu potřebám toobe aktualizované hello loginServer název ACR.
 
-Získat název ACR přihlášení serveru s [az acr seznamu](/cli/azure/acr#list) příkaz.
+Získat název serveru aplikace hello ACR přihlášení s hello [az acr seznamu](/cli/azure/acr#list) příkaz.
 
 ```azurecli-interactive
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Ukázka manifest byl předem vytvořené s názvem úložiště *microsoft*. V každém textovém editoru otevřete soubor a nahraďte *microsoft* hodnotu s názvem serveru přihlášení vaší instance ACR.
+Hello manifest ukázka byla předem vytvořené s názvem úložiště *microsoft*. Otevřete soubor hello v každém textovém editoru a nahraďte hello *microsoft* hodnotu s názvem serveru hello přihlášení vaší instance ACR.
 
 ```yaml
 containers:
@@ -78,7 +78,7 @@ containers:
 
 ## <a name="deploy-application"></a>Nasazení aplikace
 
-Pomocí příkazu [kubectl create](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#create) spusťte aplikaci. Tento příkaz analyzuje souboru manifestu a vytvořit objekty definované Kubernetes.
+Použití hello [kubectl vytvořit](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#create) příkaz toorun hello aplikace. Tento příkaz analyzuje hello soubor manifestu a vytvořit objekty Kubernetes hello definované.
 
 ```azurecli-interactive
 kubectl create -f ./azure-voting-app-redis/kubernetes-manifests/azure-vote-all-in-one-redis.yml
@@ -95,15 +95,15 @@ service "azure-vote-front" created
 
 ## <a name="test-application"></a>Testování aplikace
 
-A [Kubernetes služby](https://kubernetes.io/docs/concepts/services-networking/service/) se vytvoří, který zpřístupňuje aplikace k Internetu. Tento proces může trvat několik minut. 
+A [Kubernetes služby](https://kubernetes.io/docs/concepts/services-networking/service/) se vytvoří, který zpřístupňuje toohello aplikace hello Internetu. Tento proces může trvat několik minut. 
 
-Pomocí příkazu [kubectl get service](https://review.docs.microsoft.com/en-us/azure/container-service/container-service-kubernetes-walkthrough?branch=pr-en-us-17681) s argumentem `--watch` můžete sledovat průběh.
+toomonitor průběh, použijte hello [kubectl získat služby](https://review.docs.microsoft.com/en-us/azure/container-service/container-service-kubernetes-walkthrough?branch=pr-en-us-17681) s hello `--watch` argument.
 
 ```azurecli-interactive
 kubectl get service azure-vote-front --watch
 ```
 
-Zpočátku **externí IP** pro *azure hlas front* služby se zobrazí jako *čekající*. Jakmile se adresa EXTERNAL-IP změní ze stavu *probíhá* na *IP adresu*, pomocí klávesové zkratky `CTRL-C` zastavte sledovací proces kubectl.
+Na začátku hello **externí IP** pro hello *azure hlas front* služby se zobrazí jako *čekající*. Jakmile hello externí IP adresu se změnil z *čekající* tooan *IP adresu*, použijte `CTRL-C` toostop hello kubectl sledovat proces.
 
 ```bash
 NAME               CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
@@ -111,20 +111,20 @@ azure-vote-front   10.0.42.158   <pending>     80:31873/TCP   1m
 azure-vote-front   10.0.42.158   52.179.23.131 80:31873/TCP   2m
 ```
 
-Informace o aplikaci, přejděte na externí IP adresu.
+toosee hello aplikaci, procházejte toohello externí IP adresu.
 
 ![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/azure-vote.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu aplikace Azure hlas nasazená do clusteru Azure Container Service Kubernetes. Dokončené úkoly patří:  
+V tomto kurzu se hello Azure hlas aplikace nasazené tooan clusteru Azure Container Service Kubernetes. Dokončené úkoly patří:  
 
 > [!div class="checklist"]
 > * Stáhnout soubory manifestu Kubernetes
-> * Spusťte aplikaci v Kubernetes
-> * Testování aplikace
+> * Spuštění aplikace hello v Kubernetes
+> * Aplikace otestované hello
 
-Přechodu na v dalším kurzu se dozvíte o škálování Kubernetes aplikace a podpůrné infrastruktuře Kubernetes. 
+Posunutí další kurz toolearn toohello o škálování aplikace Kubernetes i hello základní Kubernetes infrastruktury. 
 
 > [!div class="nextstepaction"]
 > [Škálování Kubernetes aplikace a infrastrukturu](./container-service-tutorial-kubernetes-scale.md)

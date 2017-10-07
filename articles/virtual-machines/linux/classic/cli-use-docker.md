@@ -1,6 +1,6 @@
 ---
-title: "Pomocí Docker rozšíření virtuálního počítače pro systém Linux na Azure"
-description: "Popisuje Docker a rozšíření Azure Virtual Machines a ukazuje, jak programově vytvářet virtuální počítače na platformě Azure, které jsou hostitelů docker z příkazového řádku pomocí rozhraní příkazového řádku Azure."
+title: "hello aaaUsing Docker rozšíření virtuálního počítače pro systém Linux na Azure"
+description: "Popisuje Docker a rozšíření Azure Virtual Machines hello a ukazuje, jak tooprogrammatically vytvořit virtuální počítače na platformě Azure, které jsou hostitelů docker z příkazového řádku hello pomocí hello rozhraní příkazového řádku Azure."
 services: virtual-machines-linux
 documentationcenter: 
 author: squillace
@@ -15,57 +15,57 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: rasquill
-ms.openlocfilehash: a542332c921862241f1f000e6a8f0a0ae0e8a934
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1e192ad7c273aa9c997ea7bfa53b7de0b41a43c6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-the-docker-vm-extension-from-the-azure-command-line-interface-azure-cli"></a>Použití rozšíření Docker VM z rozhraní příkazového řádku Azure (Azure CLI)
+# <a name="using-hello-docker-vm-extension-from-hello-azure-command-line-interface-azure-cli"></a>Pomocí hello Docker rozšíření virtuálního počítače z hello rozhraní příkazového řádku Azure (Azure CLI)
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Informace o rozšíření virtuálního počítače Docker pomocí modelu Resource Manager najdete v tématu [zde](../dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello. Informace o rozšíření virtuálního počítače Docker hello pomocí modelu Resource Manager hello najdete v tématu [zde](../dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Toto téma popisuje postup vytvoření virtuálního počítače s Docker rozšíření virtuálního počítače z režimu service management (asm) v rozhraní příkazového řádku Azure na jakékoli platformě. [Docker](https://www.docker.com/) je jednou z nejčastěji používané virtualizace přístupy, které používá [Linux kontejnery](http://en.wikipedia.org/wiki/LXC) místo virtuální počítače jako způsob oddělením dat a výpočty na sdílených prostředků. Můžete použít rozšíření virtuálního počítače Docker a [Azure Linux Agent](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vytvoření Docker virtuálního počítače, který je hostitelem libovolný počet kontejnerů pro vaše aplikace v Azure. Podrobný popis kontejnery a jejich výhody, najdete v sekci [Docker vysokou úroveň tabulí](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard).
+Toto téma popisuje, jak toocreate virtuální počítač s hello Docker rozšíření virtuálního počítače z hello služby režim správy (asm) v rozhraní příkazového řádku Azure na jakékoli platformě. [Docker](https://www.docker.com/) je jedním z hello nejoblíbenější virtualizace přístupy, které používá [Linux kontejnery](http://en.wikipedia.org/wiki/LXC) místo virtuální počítače jako způsob oddělením dat a výpočty na sdílených prostředků. Můžete použít rozšíření virtuálního počítače Docker hello a hello [Azure Linux Agent](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) toocreate Docker virtuální počítač, který je hostitelem libovolný počet kontejnerů pro vaše aplikace v Azure. toosee podrobný popis kontejnery a jejich výhody, najdete v části hello [Docker vysokou úroveň tabulí](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard).
 
-## <a name="how-to-use-the-docker-vm-extension-with-azure"></a>Jak používat rozšíření virtuálního počítače Docker s Azure
-Pokud chcete používat rozšíření virtuálního počítače Docker s Azure, musíte nainstalovat verzi [rozhraní příkazového řádku Azure](https://github.com/Azure/azure-sdk-tools-xplat) (Azure CLI) vyšší než 0.8.6 (jak psaní tohoto textu aktuální verze je 0.10.0). Rozhraní příkazového řádku Azure můžete nainstalovat na Mac, Linux a Windows.
+## <a name="how-toouse-hello-docker-vm-extension-with-azure"></a>Jak toouse hello Docker rozšíření virtuálního počítače Azure
+toouse hello Docker rozšíření virtuálního počítače Azure, musíte nainstalovat verzi hello [rozhraní příkazového řádku Azure](https://github.com/Azure/azure-sdk-tools-xplat) (Azure CLI) vyšší než 0.8.6 (jako je tento zápis hello aktuální verze je 0.10.0). Hello rozhraní příkazového řádku Azure můžete nainstalovat na Mac, Linux a Windows.
 
-Proces dokončení použít Docker v Azure je jednoduchý:
+dokončení procesu toouse Hello Docker v Azure je jednoduchý:
 
-* Instalace rozhraní příkazového řádku Azure a jeho závislé součásti na počítači, ze kterého chcete řízení Azure (v systému Windows, bude jím Linux distribuční spuštěná jako virtuální počítač)
-* Vytvořit virtuální počítač Docker hostitele v Azure pomocí příkazů Docker rozhraní příkazového řádku Azure
-* Použijte místní Docker příkazy ke správě Docker kontejnerů v Docker virtuálního počítače v Azure.
+* Nainstalujte hello rozhraní příkazového řádku Azure a jeho závislosti hello počítače, ze kterého mají být toocontrol Azure (v systému Windows, bude jím Linux distribuční spuštěná jako virtuální počítač)
+* Použít hello Azure CLI Docker příkazy toocreate hostitelů Docker virtuálních počítačů v Azure
+* Použijte hello místní Docker příkazy toomanage Docker kontejnerů v Docker virtuálního počítače v Azure.
 
-### <a name="install-the-azure-command-line-interface-azure-cli"></a>Nainstalovat Azure rozhraní příkazového řádku (Azure CLI)
-Instalace a konfigurace rozhraní příkazového řádku Azure CLI, najdete v části [postup instalace rozhraní příkazového řádku Azure](../../../cli-install-nodejs.md). Pokud chcete ověřit instalaci, zadejte `azure` na příkazovém řádku a po krátké chvíli byste měli vidět obrázky ASCII rozhraní příkazového řádku Azure, který obsahuje seznam základních příkazů, které jsou k dispozici. Pokud instalace fungovala správně, byste měli mít na typ `azure help vm` a zjistíte, že jeden z uvedených příkazů "docker".
-
-> [!NOTE]
-> Docker má nástroje pro systém Windows, [počítač Docker](https://docs.docker.com/installation/windows/), který můžete také použít k automatizaci tvorby docker klienta, který můžete použít pro práci s virtuálními počítači Azure jako hostitelů docker.
-> 
-> 
-
-### <a name="connect-the-azure-cli-to-to-your-azure-account"></a>Azure CLI pro připojení k účtu Azure
-Abyste mohli používat rozhraní příkazového řádku Azure je nutné přidružit přihlašovací údaje účtu Azure pomocí Azure CLI na vaši platformu. V části [jak se připojit k předplatnému Azure](../../../xplat-cli-connect.md) vysvětluje, jak stáhnout a naimportovat vaše **.publishsettings** souboru nebo Azure CLI přidružit id organizace.
+### <a name="install-hello-azure-command-line-interface-azure-cli"></a>Nainstalujte hello rozhraní příkazového řádku Azure (Azure CLI)
+tooinstall a nakonfigurovat hello příkazového řádku Azure CLI, najdete v části [jak tooinstall hello rozhraní příkazového řádku Azure](../../../cli-install-nodejs.md). tooconfirm hello instalace typu `azure` hello příkazového řádku a po krátké chvíli byste měli vidět, hello obrázky ASCII rozhraní příkazového řádku Azure, kde jsou uvedeny hello basic příkazy tooyou k dispozici. Pokud instalace hello fungovala správně, musí být schopný tootype `azure help vm` a zjistíte, že jeden z uvedených hello příkazů "docker".
 
 > [!NOTE]
-> Existují určité rozdíly v chování při použití jednoho nebo jiné metody ověřování, takže nezapomeňte si přečíst dokument výše a pochopit různé funkce.
+> Docker má nástroje pro systém Windows, [počítač Docker](https://docs.docker.com/installation/windows/), které můžete použít také vytvoření hello tooautomate docker klienta, které jako hostitelů docker můžete toowork s virtuálními počítači Azure.
 > 
 > 
 
-### <a name="install-docker-and-use-the-docker-vm-extension-for-azure"></a>Nainstalujete Docker a Docker rozšíření virtuálního počítače pro Azure.
-Postupujte podle [pokyny k instalaci Docker](https://docs.docker.com/installation/#installation) nainstalujte Docker místně v počítači.
+### <a name="connect-hello-azure-cli-tootooyour-azure-account"></a>Připojení rozhraní příkazového řádku Azure tootooyour hello účet Azure
+Než budete moci použít hello rozhraní příkazového řádku Azure je nutné přidružit přihlašovací údaje účtu Azure s hello rozhraní příkazového řádku Azure na vaši platformu. Hello části [jak tooconnect tooyour předplatného Azure](../../../xplat-cli-connect.md) vysvětluje, jak tooeither stahování a import vaše **.publishsettings** souboru nebo Azure CLI přidružit id organizace.
 
-Použití Docker s virtuální počítače Azure, musí mít bitovou kopii systému Linux používat pro virtuální počítač [agenta virtuálního počítače Azure Linux](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nainstalována. V současné době existují jenom dva typy bitových kopií, které poskytují toto:
+> [!NOTE]
+> Existují určité rozdíly v chování při použití jednoho nebo hello jiných metod ověřování, takže se zda dokument hello tooread výše toounderstand hello různé funkce.
+> 
+> 
 
-* Ubuntu obrázek z Galerie obrázků Azure nebo
-* Vlastní image Linux, kterou jste vytvořili pomocí Azure Linux virtuálního počítače Agent nainstalován a nakonfigurován. V tématu [agenta virtuálního počítače Azure Linux](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Další informace o tom, jak vytvářet vlastní virtuální počítač s Linuxem pomocí agenta virtuálního počítače Azure.
+### <a name="install-docker-and-use-hello-docker-vm-extension-for-azure"></a>Docker nainstalovat a používat hello Docker rozšíření virtuálního počítače pro Azure.
+Postupujte podle hello [pokyny k instalaci Docker](https://docs.docker.com/installation/#installation) tooinstall Docker místně na vašem počítači.
 
-### <a name="using-the-azure-image-gallery"></a>Pomocí Galerie obrázků Azure
-Z Bash nebo relaci Terminálové služby použijte následující příkaz rozhraní příkazového řádku Azure nalézt nejnovější Ubuntu obrázek v galerii virtuálních počítačů použít zadáním
+toouse Docker s virtuální počítač Azure, hello Linux obrázek použitý pro hello virtuálního počítače musí mít hello [agenta virtuálního počítače Azure Linux](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nainstalována. V současné době existují jenom dva typy bitových kopií, které poskytují toto:
+
+* Ubuntu obrázek z Galerie obrázků Azure hello nebo
+* Vlastní image Linux, kterou jste vytvořili pomocí hello Azure Linux Agent virtuálního počítače nainstalovaný a nakonfigurovaný. V tématu [agenta virtuálního počítače Azure Linux](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) pro další informace o toobuild vlastní virtuální počítač s Linuxem pomocí hello agenta virtuálního počítače Azure.
+
+### <a name="using-hello-azure-image-gallery"></a>Pomocí Galerie obrázků Azure hello
+Z Bash nebo relaci Terminálové služby použijte následující příkaz rozhraní příkazového řádku Azure toolocate hello nejnovější bitovou kopii Ubuntu v toouse Galerie virtuálních počítačů hello zadáním hello
 
 `azure vm image list | grep Ubuntu-14_04`
 
-a vyberte jednu z bitové kopie názvy, například `b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-en-us-30GB`a použijte následující příkaz k vytvoření nového virtuálního počítače pomocí této bitové kopie.
+a vyberte jednu z hello image názvy, například `b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-en-us-30GB`, a použijte hello následující příkaz toocreate nového virtuálního počítače pomocí této bitové kopie.
 
 ```
 azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-en-us-30GB" <username> <password>
@@ -73,31 +73,31 @@ azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d
 
 Kde:
 
-* *&lt;název virtuálního počítače cloudservice&gt;*  je název virtuálního počítače, který se stane kontejner Docker hostitelský počítač v Azure
-* *&lt;uživatelské jméno&gt;*  je uživatelské jméno uživatele root výchozí virtuálního počítače
-* *&lt;heslo&gt;*  je heslo *uživatelské jméno* účet, který splňuje požadavky na složitost pro Azure.
+* *&lt;název virtuálního počítače cloudservice&gt;*  je název hello hello virtuální počítač, který se stane hello Docker kontejneru hostitelský počítač v Azure
+* *&lt;uživatelské jméno&gt;*  je uživatelské jméno hello hello výchozí kořenový uživatel hello virtuálních počítačů
+* *&lt;heslo&gt;*  je hello heslo hello *uživatelské jméno* účet, který splňuje standardy hello složitější pro Azure.
 
 > [!NOTE]
-> V současné době heslo musí být dlouhé alespoň 8 znaků, musí obsahovat jeden malá písmena a jedno velké písmeno, číslo a zvláštní znak například jeden z následujících znaků: `!@#$%^&+=`. Ne, tečka na konci předcházející věty není speciální znak.
+> V současné době heslo musí být dlouhé alespoň 8 znaků, musí obsahovat jeden malá písmena a jedno velké písmeno, číslo a zvláštní znak například jeden z hello následující znaky: `!@#$%^&+=`. Ne, hello tečka na konci hello hello předcházející větu není speciální znak.
 > 
 > 
 
-Pokud se příkaz úspěšně dokončil, byste měli vidět něco podobného jako následující příkaz, v závislosti na přesné argumentů a možnosti, které jste použili:
+Pokud příkaz hello byl úspěšný, byste měli vidět něco podobného jako hello následující, v závislosti na přesné argumenty hello a možnosti, které používáte:
 
 ![](media/cli-use-docker/dockercreateresults.png)
 
 > [!NOTE]
-> Vytvoření virtuálního počítače může trvat několik minut, ale poté, co se zřizují (je hodnota stavu `ReadyRole`) spustí démon Docker (služba Docker) a může připojit k hostiteli kontejner Docker.
+> Vytvoření virtuálního počítače může trvat několik minut, ale poté, co se zřizují (hodnota stavu hello je `ReadyRole`) hello spustí Docker démon (hello Docker service) a hostitele kontejner Docker toohello se můžete připojit.
 > 
 > 
 
-Chcete-li otestovat Docker virtuálních počítačů, které jste vytvořili v Azure, zadejte
+hello tootest Docker virtuálních počítačů, které jste vytvořili v Azure, typu
 
 `docker --tls -H tcp://<vm-name-you-used>.cloudapp.net:2376 info`
 
-kde  *&lt;vm název--použili&gt;*  je název virtuálního počítače, který jste použili v volání `azure vm docker create`. Měli byste vidět něco podobného jako následující příkaz, který označuje, zda je virtuální počítač Docker hostitele a běží v Azure a čekání příkazech. 
+kde  *&lt;vm název--použili&gt;*  je název hello hello virtuálního počítače, který jste použili v volání příliš`azure vm docker create`. Měli byste vidět něco podobné toohello následující text, který označuje, že je váš virtuální počítač Docker hostitele se spuštěným v Azure a čekání příkazech. 
 
-Nyní můžete zkusit připojení pomocí vašeho klienta docker se získat informace o (v některých nastavení klienta Docker, například v systému Mac, které možná budete muset použít `sudo`):
+Nyní můžete zkusit tooconnect pomocí vaše informace o docker klienta tooobtain (v některých nastavení klienta Docker, jako je například v systému Mac, který může mít toouse `sudo`):
 
     sudo docker --tls -H tcp://testsshasm.cloudapp.net:2376 info
     Password:
@@ -129,7 +129,7 @@ Nyní můžete zkusit připojení pomocí vašeho klienta docker se získat info
     Name: testsshasm
     WARNING: No swap limit support
 
-Stačí si být jisti, že je všechny pracovní, můžete zkontrolovat ve virtuálním počítači Docker rozšíření:
+Jenom toobe jisti, že je všechny funkční, můžete zkontrolovat hello virtuálních počítačů pro hello Docker rozšíření:
 
     azure vm extension get testsshasm
     info: Executing command vm extension get
@@ -140,25 +140,25 @@ Stačí si být jisti, že je všechny pracovní, můžete zkontrolovat ve virtu
     info: vm extension get command OK
 
 ### <a name="docker-host-vm-authentication"></a>Ověřování docker hostitele virtuálního počítače
-Kromě vytvoření virtuální počítač Docker `azure vm docker create` příkaz také automaticky vytvoří potřebné certifikáty umožňující klientský počítač Docker pro připojení k hostiteli kontejner Azure pomocí protokolu HTTPS a certifikáty jsou uložené na jak klientských a hostitelských počítačích, podle potřeby. Na následné pokusy existující certifikáty jsou opakovaně a sdílet s novým hostitelem.
+Kromě toho toocreating hello virtuální počítač Docker, hello `azure vm docker create` příkaz také automaticky vytvoří hello potřebné certifikáty tooallow Docker klientský počítač tooconnect toohello kontejner Azure hostiteli pomocí protokolu HTTPS a hello certifikáty jsou uložené na obou Hello klientských a hostitelských počítačů, podle potřeby. Při dalších pokusech hello existující certifikáty jsou opakovaně a sdílet s hello nového hostitele.
 
-Ve výchozím nastavení, certifikáty jsou umístěny v `~/.docker`, a Docker bude nakonfigurován ke spuštění na portu **. 2376**. Pokud chcete použít jiný port nebo adresář, pak můžete použít jednu z následujících `azure vm docker create` možnosti příkazového řádku ke konfiguraci vaší kontejner Docker hostitele virtuálního počítače použít jiný port nebo různé certifikáty pro připojení klientů:
+Ve výchozím nastavení, certifikáty jsou umístěny v `~/.docker`, a Docker budou nakonfigurované toorun na portu **. 2376**. Pokud byste chtěli toouse jiný port nebo adresář, pak můžete použít jednu z následujících akcí hello `azure vm docker create` příkazového řádku možnosti tooconfigure Docker kontejneru hostitele virtuálních počítačů toouse jiný port nebo různé certifikáty pro připojení klientů:
 
 ```
--dp, --docker-port [port]              Port to use for docker [2376]
+-dp, --docker-port [port]              Port toouse for docker [2376]
 -dc, --docker-cert-dir [dir]           Directory containing docker certs [.docker/]
 ```
 
-Démon Docker v hostiteli je nakonfigurován k naslouchání a ověření připojení klienta na zadaný port pomocí certifikáty generované infrastrukturou `azure vm docker create` příkaz. Tyto certifikáty k získání přístupu k hostiteli Docker musí mít klientský počítač.
+Hello Docker démon na hostiteli hello je nakonfigurované toolisten pro a ověření klienta připojení na hello zadaný port přes hello certifikáty generované hello `azure vm docker create` příkaz. Hello klientský počítač musí mít tyto certifikáty toogain přístup toohello Docker hostitele.
 
 > [!NOTE]
-> Síťová hostitele se systémem bez těchto certifikátů bude citlivé na každý uživatel, který můžete připojit k počítači. Než změníte výchozí konfiguraci, ujistěte se, že rozumíte rizika pro vaše počítače a aplikace.
+> Síťová hostitele se systémem bez tyto certifikáty budou snadno napadnutelný tooanyone, který může tooconnect toohello počítače. Než změníte hello výchozí konfiguraci, ujistěte se, že rozumíte hello rizika tooyour počítače a aplikace.
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-* Jste připravení přejít ke [Docker uživatelská příručka] a používat virtuální počítač Docker. Vytvoření virtuálního počítače s povoleným Docker v nového portálu, najdete v tématu [jak používat rozšíření virtuálního počítače Docker s portálem].
-* Rozšíření virtuálního počítače Azure Docker podporuje také Docker Compose, která používá soubor deklarativní YAML trvat aplikaci na vývojáře modelován v každém prostředí a generování konzistentní nasazení. V tématu [začít pracovat s Docker a vytvářené definovat a spusťte aplikaci služby kontejneru na virtuální počítač Azure].  
+* Jsou připraveny toogo toohello [Docker uživatelská příručka] a používat virtuální počítač Docker. toocreate virtuální počítač Docker povoleno hello nového portálu, najdete v části [jak toouse hello Docker rozšíření virtuálního počítače s hello portál].
+* Hello rozšíření virtuálního počítače Azure Docker také podporuje Docker Compose, který používá deklarativní tootake souboru YAML aplikaci na vývojáře modelován v každém prostředí a generování konzistentní nasazení. V tématu [začít pracovat s Docker a napište toodefine a spusťte aplikaci služby kontejneru na virtuální počítač Azure].  
 
 <!--Anchors-->
 [Subheading 1]:#subheading-1
@@ -166,18 +166,18 @@ Démon Docker v hostiteli je nakonfigurován k naslouchání a ověření připo
 [Subheading 3]:#subheading-3
 [Next steps]:#next-steps
 
-[How to use the Docker VM Extension with Azure]:#How-to-use-the-Docker-VM-Extension-with-Azure
+[How toouse hello Docker VM Extension with Azure]:#How-to-use-the-Docker-VM-Extension-with-Azure
 [Virtual Machine Extensions for Linux and Windows]:#Virtual-Machine-Extensions-For-Linux-and-Windows
 [Container and Container Management Resources for Azure]:#Container-and-Container-Management-Resources-for-Azure
 
 
 
 <!--Link references-->
-[Link 1 to another azure.microsoft.com documentation topic]:../../virtual-machines-windows-hero-tutorial.md
-[Link 2 to another azure.microsoft.com documentation topic]:../../../app-service-web/web-sites-custom-domain-name.md
-[Link 3 to another azure.microsoft.com documentation topic]:../storage-whatis-account.md
-[jak používat rozšíření virtuálního počítače Docker s portálem]:http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-portal/
+[Link 1 tooanother azure.microsoft.com documentation topic]:../../virtual-machines-windows-hero-tutorial.md
+[Link 2 tooanother azure.microsoft.com documentation topic]:../../../app-service-web/web-sites-custom-domain-name.md
+[Link 3 tooanother azure.microsoft.com documentation topic]:../storage-whatis-account.md
+[jak toouse hello Docker rozšíření virtuálního počítače s hello portál]:http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-portal/
 
 [Docker uživatelská příručka]:https://docs.docker.com/userguide/
 
-[začít pracovat s Docker a vytvářené definovat a spusťte aplikaci služby kontejneru na virtuální počítač Azure]:../docker-compose-quickstart.md
+[začít pracovat s Docker a napište toodefine a spusťte aplikaci služby kontejneru na virtuální počítač Azure]:../docker-compose-quickstart.md

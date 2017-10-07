@@ -1,5 +1,5 @@
 ---
-title: "Nastavení portu Azure předávání | Microsoft Docs"
+title: "nastavení portu předávání aaaAzure | Microsoft Docs"
 description: "Údaje o předávání přes Azure hodnoty portů."
 services: service-bus-relay
 documentationcenter: na
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: sethm
-ms.openlocfilehash: 5906495c565dad583e74a43b2e5eed57e0c68df1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e66785f786ee241c974d250f9ec29dfcc1fdc3fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-relay-port-settings"></a>Nastavení portu Azure předávání
 
-Následující tabulka popisuje požadované konfigurace pro hodnoty portů pro předávání přes Azure.
+Hello následující tabulka popisuje hello požadovanou konfiguraci pro hodnoty portů pro předávání přes Azure.
 
 ## <a name="hybrid-connections"></a>Hybridní připojení
-Hybridní připojení používá jako podkladový přenosový mechanismus, který používá **HTTPS** pouze. 
+Hybridní připojení používá jako podkladový přenosový mechanismus, který používá hello **HTTPS** pouze. 
 
 ## <a name="wcf-relays"></a>Přenosy WCF
   
@@ -49,6 +49,6 @@ Hybridní připojení používá jako podkladový přenosový mechanismus, kter�
 |[Třída WS2007HttpRelayBinding](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (služba)|Buď|9351/HTTP|
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o předávání přes Azure, najdete pomocí těchto odkazů:
+Další informace o předávání přes Azure, toolearn naleznete pod těmito odkazy:
 * [Co je Azure Relay?](relay-what-is-it.md)
 * [Přenos – nejčastější dotazy](relay-faq.md)

@@ -1,6 +1,6 @@
 ---
-title: "Přehled funkcí databází SQL Azure | Dokumentace Microsoftu"
-description: "Na této stránce je k dispozici přehled logických serverů a databází služby Azure SQL Database a matice na podporu funkcí s odkazy na všechny uvedené funkce."
+title: "aaaAzure Přehled funkce databáze SQL | Microsoft Docs"
+description: "Tato stránka obsahuje přehled hello Azure SQL Database logické servery a databáze a obsahuje matici podpory funkce s odkazy jednotlivých uvedených funkcí."
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 08/25/2017
 ms.author: carlrab
-ms.openlocfilehash: 4ef119d5218c844f3949bf4fc17fb320a7cbf7b4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 463c88edcd38eabbc768cfb701bc74461836aa36
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-sql-database-features"></a>Funkce služby Azure SQL Database
 
-Azure SQL Database sdílí společný kód základní s SQL serverem a na úrovni databáze podporuje většinu stejné funkce. Hlavní funkce rozdíly mezi Azure SQL Database a SQL Server jsou na úrovni instance. 
+Azure SQL Database sdílí společný kód základní s SQL serverem a na úrovni databáze hello, podporuje většinu hello stejné funkce. Hello hlavní funkce rozdíly mezi Azure SQL Database a SQL Server jsou na úrovni instance hello. 
 
-Pokračujeme v přidávání funkcí do Azure SQL Database. Doporučujeme vám proto navštívit webovou stránku aktualizace služeb pro Azure a použít filtry, které obsahuje:
+Abychom mohli pokračovat tooadd funkce tooAzure databáze SQL. Proto doporučujeme vám toovisit naše služba aktualizací webové stránky Azure a toouse jeho filtry:
 
-* Filtrování na [službu SQL Database](https://azure.microsoft.com/updates/?service=sql-database)
-* Filtrování na [oznámení všeobecné dostupnosti ](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) pro funkce služby SQL Database
+* Filtrované toohello [služba SQL Database](https://azure.microsoft.com/updates/?service=sql-database).
+* Filtrované tooGeneral dostupnosti [(GA) oznámení](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) funkcí SQL Database.
 
 ## <a name="sql-server-and-sql-database-feature-support"></a>Funkce Podpora systému SQL Server a databáze SQL
 
-V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a poskytuje informace o tom, zda každý konkrétní funkce je podporovaná a obsahuje odkazy na další informace o funkci. Pokud chcete při migraci z existujícího databázového řešení vzít v úvahu odlišnosti jazyka Transact-SQL, přečtěte si [řešení rozdílů jazyka Transact-SQL během migrace na službu SQL Database](sql-database-transact-sql-information.md).
+Hello následující tabulka uvádí hello hlavní funkce systému SQL Server a poskytuje informace o tom, zda každý konkrétní funkce je podporovaná a informace o propojení toomore o funkci hello. Tooconsider rozdíly Transact-SQL při migraci do stávajícího řešení pro databáze, najdete v části [rozdíly řešení Transact-SQL během migrace tooSQL databáze](sql-database-transact-sql-information.md).
 
 
 | **Funkce serveru SQL** | **Podporované služby Azure SQL Database** | 
@@ -127,5 +127,5 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o službě Azure SQL Database najdete v tématu [Co je SQL Database?](sql-database-technical-overview.md)
-- Informace o podpoře a odlišnostech jazyka Transact-SQL najdete v tématu [řešícím odlišnosti jazyka Transact-SQL během migrace na službu SQL Database](sql-database-transact-sql-information.md).
+- Informace o hello služby Azure SQL Database, najdete v článku [co je SQL Database?](sql-database-technical-overview.md)
+- Informace o podpoře Transact-SQL a rozdíly najdete v tématu [rozdíly řešení Transact-SQL během migrace tooSQL databáze](sql-database-transact-sql-information.md).

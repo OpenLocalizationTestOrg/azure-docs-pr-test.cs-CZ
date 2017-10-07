@@ -1,6 +1,6 @@
 ---
-title: "Přesun dat z DB2 pomocí Azure Data Factory | Microsoft Docs"
-description: "Další informace o přesunutí dat z databáze DB2 místně pomocí Azure Data Factory kopie aktivity"
+title: "aaaMove data z DB2 pomocí Azure Data Factory | Microsoft Docs"
+description: "Zjistěte, jak toomove data z DB2 místní databázi pomocí aktivity kopírování objektu pro vytváření dat Azure"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jingwang
-ms.openlocfilehash: 6a89cc44724dbb5b46a9e89d6da24d9b35ddbbef
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 696ac059be644cb3901c37d2fc746e0682c65a1f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Přesun dat z DB2 pomocí Azure Data Factory kopie aktivity
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z databáze DB2 místně do úložiště dat. Můžete zkopírovat data do jakékoli úložiště, která je uvedena jako podporovaných jímku v [aktivity přesunu dat pro vytváření dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) článku. Toto téma je založený na článku objekt pro vytváření dat, která zobrazí přehled o přesun dat pomocí aktivity kopírování a jsou uvedeny kombinace podporované datové úložiště. 
+Tento článek popisuje, jak můžete použít aktivitu kopírování v Azure Data Factory toocopy dat z úložiště dat tooa databáze DB2 místně. Můžete zkopírovat tooany úložiště dat, která je uvedena jako podporovaných jímku v hello [aktivity přesunu dat pro vytváření dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) článku. Toto téma je založený na článek hello Data Factory, který zobrazí přehled o přesun dat pomocí aktivity kopírování a jsou uvedeny kombinace úložiště dat hello podporována. 
 
-Aktuálně podporuje pouze přesunutí dat z databáze DB2 k objektu pro vytváření dat [úložiště dat podporovaných podřízený](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Přesun dat z jiných dat ukládá do DB2 databáze není podporována.
+Objekt pro vytváření dat aktuálně podporuje pouze přesunutí dat z databáze tooa DB2 [úložiště dat podporovaných podřízený](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Přesun dat z jiných dat ukládá tooa DB2 databáze není podporována.
 
 ## <a name="prerequisites"></a>Požadavky
-Objekt pro vytváření dat podporuje připojení k místní databázi DB2 pomocí [Brána pro správu dat](data-factory-data-management-gateway.md). Podrobné pokyny k nastavení brány datovém kanálu pro přesun dat najdete v tématu [přesun dat z lokálního prostředí do cloudu](data-factory-move-data-between-onprem-and-cloud.md) článku.
+Objekt pro vytváření dat podporuje připojování tooan místní databázi DB2 pomocí hello [Brána pro správu dat](data-factory-data-management-gateway.md). Podrobné pokyny tooset hello brány dat kanálu toomove dat naleznete v tématu hello [přesun dat z místní toocloud](data-factory-move-data-between-onprem-and-cloud.md) článku.
 
-Vyžaduje se brána, i když DB2 je hostitelem virtuálního počítače Azure IaaS. Bránu můžete nainstalovat na stejný virtuální počítač IaaS jako úložiště dat. Pokud brána se může připojit k databázi, můžete bránu nainstalovat na jiný virtuální počítač.
+Vyžaduje se brána, i pokud hello DB2 je hostitelem virtuálního počítače Azure IaaS. Hello brány můžete nainstalovat na hello stejný virtuální počítač IaaS jako úložiště dat hello. Pokud brána hello se můžete připojit toohello databáze, můžete hello bránu nainstalovat na jiný virtuální počítač.
 
-Brána pro správu dat poskytuje integrované DB2 ovladač, takže není nutné ručně nainstalovat ovladač ke zkopírování dat z databáze DB2.
+Brána pro správu dat Hello poskytuje integrované ovladače DB2, není nutné toomanually nainstalujte dat toocopy ovladače z DB2.
 
 > [!NOTE]
-> Tipy pro řešení problémů připojení a problémy brány najdete v tématu [potíží brány](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) článku.
+> Tipy pro řešení problémů připojení a problémy brány najdete v tématu hello [potíží brány](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) článku.
 
 
 ## <a name="supported-versions"></a>Podporované verze
-Konektor služby Data Factory DB2 podporuje tyto platformy IBM DB2 a verze správce přístupu k SQL distribuované relační databáze architektura (DRDA) verze 9, 10 a 11:
+konektor Hello DB2 objekt pro vytváření dat podporuje hello IBM DB2 platformy a verze správce přístupu k SQL distribuované relační databáze architektura (DRDA) verze 9, 10 a 11:
 
 * IBM DB2 pro z verze 11.1 operačního systému
 * IBM DB2 pro z verze 10.1 operačního systému
@@ -48,79 +48,79 @@ Konektor služby Data Factory DB2 podporuje tyto platformy IBM DB2 a verze sprá
 * IBM DB2 pro LUW verze 10.1
 
 > [!TIP]
-> Pokud se zobrazí chybová zpráva "nebyl nalezen balíček odpovídající žádost o provedení příkazu SQL. SQLSTATE = 51002 = SQLCODE-805, "z důvodu je nutné balíček není vytvořen normální uživatele na operačního systému. Chcete-li vyřešit tento problém, postupujte podle těchto pokynů pro váš typ serveru DB2:
-> - DB2 pro i (AS400): může uživatel power vytvoření kolekce pro běžné uživatele před spuštěním aktivity kopírování. Chcete-li vytvořit kolekci, použijte příkaz:`create collection <username>`
-> - DB2 pro z/OS nebo LUW: použití účtu s vysokou úrovní oprávnění – power users nebo správce, který má balíček autority a vazby, BINDADD, UDĚLTE EXECUTE veřejná oprávnění – pro kopírování jednou. Potřebný balíček je vytvořeno automaticky při vytvoření kopie. Potom můžete přepnout zpět na normální uživatelské pro vaše další kopie spustí.
+> Pokud se zobrazí chybová zpráva hello "hello balíčku odpovídající tooan SQL příkaz žádost o spuštění nebyla nalezena. SQLSTATE = 51002 = SQLCODE-805, "hello důvod je potřebný balíček není vytvořena pro hello normální uživatele na hello operačního systému. tooresolve-li tento problém, postupujte podle těchto pokynů pro váš typ serveru DB2:
+> - DB2 pro i (AS400): může uživatel power vytvoření kolekce hello hello normální uživatele před spuštěním aktivity kopírování. toocreate hello shromažďování, použití hello příkaz:`create collection <username>`
+> - DB2 pro z/OS nebo LUW: použití účtu s vysokou úrovní oprávnění – power users nebo správce, který má balíček autority a vazby, BINDADD, UDĚLTE oprávnění spouštět tooPUBLIC – toorun hello jednou kopírování. Hello potřebný balíček je automaticky vytvoří během kopírování hello. Potom můžete přepnout zpět toohello normální pro vaše další kopie spustí.
 
 ## <a name="getting-started"></a>Začínáme
-Vytvoření kanálu s aktivitou kopírování pro přesun dat z úložiště dat DB2 místně pomocí různých nástrojů a rozhraní API: 
+Můžete vytvoření kanálu s kopie aktivity toomove dat z úložiště dat DB2 místně pomocí různých nástrojů a rozhraní API: 
 
-- Nejjednodušší způsob, jak vytvořit kanál je pomocí Průvodce kopírováním Azure Data Factory. Rychlé návod k vytvoření kanálu pomocí Průvodce kopírováním najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md). 
-- Nástroje můžete taky vytvořit kanál, včetně portálu Azure, Visual Studio, prostředí Azure PowerShell, šablonu Azure Resource Manager, .NET API a rozhraní REST API. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v tématu [aktivity kopírování kurzu](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+- Nejjednodušší způsob, jak toocreate Hello kanálu je toouse hello Průvodce kopírováním objekt pro vytváření dat Azure. Rychlé návod k vytvoření kanálu pomocí Průvodce kopírováním hello najdete v tématu hello [kurz: vytvoření kanálu pomocí Průvodce kopírováním hello](data-factory-copy-data-wizard-tutorial.md). 
+- Můžete použít také nástroje toocreate kanál, včetně hello portálu Azure, Visual Studio, prostředí Azure PowerShell, Azure Resource Manager šablony, hello .NET API a hello REST API. Podrobné pokyny toocreate kanál s aktivitou kopírování, najdete v části hello [aktivity kopírování kurzu](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
-Jestli používáte nástroje nebo rozhraní API, je třeba provést následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat podřízený:
+Jestli používáte nástroje hello nebo rozhraní API, je třeba provést následující kroky toocreate kanál, který přesouvá data ze zdrojových dat úložiště tooa jímku dat hello:
 
-1. Vytvoření propojených služeb propojíte vstup a výstup úložiště dat do data factory.
-2. Vytvořte datové sady, které představují vstupní a výstupní data pro kopírování. 
+1. Vytvoření propojené služby toolink vstupní a výstupní data úložiště tooyour data factory.
+2. Vytvoření datových sad toorepresent vstupní a výstupní data pro operace kopírování hello. 
 3. Vytvoření kanálu s aktivitou kopírování, která přebírá datovou sadu jako vstup a datovou sadu jako výstup. 
 
-Pokud použijete Průvodce kopírováním, JSON definice služby Data Factory propojené služeb, datových sad a kanálu entity jsou automaticky vytvoří za vás. Pokud používáte rozhraní API (s výjimkou .NET API) nebo nástroje, definujete ve formátu JSON entit služby Data Factory. [JSON příklad: kopírování dat z DB2 do úložiště objektů Azure Blob](#json-example-copy-data-from-db2-to-azure-blob) ukazuje definice JSON entit služby Data Factory, které se používají ke zkopírování dat z místního úložiště dat DB2.
+Při použití hello Průvodce kopírováním, definice JSON pro hello Data Factory propojené služby, můžete vytvořit automaticky datových sad a kanálu entity. Při použití nástroje nebo rozhraní API (s výjimkou hello .NET API), můžete definovat hello entit služby Data Factory pomocí formátu JSON hello. Hello [JSON příklad: kopírování dat z DB2 tooAzure úložiště objektů Blob](#json-example-copy-data-from-db2-to-azure-blob) ukazuje hello JSON definice pro hello entit služby Data Factory, které jsou používané toocopy data z místního úložiště dat DB2.
 
-Následující části obsahují podrobnosti o vlastnostech JSON, které slouží k určení entit služby Data Factory, které jsou specifické pro úložiště dat DB2.
+Hello následující části obsahují podrobné informace o hello JSON vlastnosti, které jsou používané toodefine hello objekt pro vytváření dat entity, které jsou úložiště dat konkrétní tooa DB2.
 
 ## <a name="db2-linked-service-properties"></a>Vlastnosti DB2 propojené služby
-Následující tabulka uvádí vlastnosti JSON, které jsou specifické pro DB2 propojené služby.
+Hello následující tabulka uvádí vlastnosti hello JSON, které jsou specifické tooa DB2 propojené služby.
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| **Typ** |Tato vlastnost musí být nastavená na **OnPremisesDB2**. |Ano |
-| **Server** |Název serveru DB2. |Ano |
-| **databáze** |Název databáze DB2. |Ano |
-| **schéma** |Název schématu v databázi DB2. Tato vlastnost je malá a velká písmena. |Ne |
-| **authenticationType.** |Typ ověřování, který se používá k připojení k databázi DB2. Možné hodnoty jsou: anonymní, základní a systému Windows. |Ano |
-| **uživatelské jméno** |Název pro uživatelský účet, pokud používáte ověřování Basic nebo Windows. |Ne |
-| **heslo** |Heslo pro uživatelský účet. |Ne |
-| **gatewayName** |Název brány, kterou služba Data Factory měla použít pro připojení k místní databázi DB2. |Ano |
+| **Typ** |Tato vlastnost musí být nastavená příliš**OnPremisesDB2**. |Ano |
+| **Server** |Hello název serveru hello DB2. |Ano |
+| **databáze** |Hello název databáze hello DB2. |Ano |
+| **schéma** |Název Hello hello schématu v databázi hello DB2. Tato vlastnost je malá a velká písmena. |Ne |
+| **authenticationType.** |Hello typ ověřování, které je použité tooconnect toohello DB2 databáze. Hello možné hodnoty jsou: anonymní, základní a systému Windows. |Ano |
+| **uživatelské jméno** |Název Hello hello uživatelskému účtu, pokud používáte ověřování Basic nebo Windows. |Ne |
+| **heslo** |Hello heslo pro uživatelský účet hello. |Ne |
+| **gatewayName** |Název Hello hello brány, kterou služba Data Factory hello měli používat toohello tooconnect, místní databázi DB2. |Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-Seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Částech, jako například **struktura**, **dostupnosti**a **zásad** pro datovou sadu JSON, jsou podobné pro všechny typy datovou sadu (Azure SQL, úložiště objektů Blob v Azure, Azure Table storage a tak dále).
+Seznam hello části a vlastnosti, které jsou k dispozici pro definování datové sady, naleznete v části hello [vytváření datových sad](data-factory-create-datasets.md) článku. Částech, jako například **struktura**, **dostupnosti**a hello **zásad** pro datovou sadu JSON, jsou podobné pro všechny typy datovou sadu (SQL Azure, Azure Blob storage, Azure Table úložiště a tak dále).
 
-**Rámci typeProperties** oddílu se liší pro jednotlivé typy datovou sadu a informace o umístění dat v úložišti dat. **Rámci typeProperties** části datové sady typu **RelationalTable**, což zahrnuje datová sada DB2, má následující vlastnost:
+Hello **rámci typeProperties** části se liší pro jednotlivé typy datovou sadu a poskytuje informace o umístění hello hello dat v úložišti dat hello. Hello **rámci typeProperties** části datové sady typu **RelationalTable**, která obsahuje datovou sadu hello DB2, má hello následující vlastnost:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| **Název tabulky** |Název tabulky instance databáze DB2, na kterou odkazuje propojená služba. Tato vlastnost je malá a velká písmena. |Ne (Pokud **dotazu** vlastnost aktivity kopírování typu **RelationalSource** je zadána) |
+| **Název tabulky** |Hello název tabulky hello hello DB2 instance databáze, kterou hello propojená služba odkazuje. Tato vlastnost je malá a velká písmena. |Ne (Pokud hello **dotazu** vlastnost aktivity kopírování typu **RelationalSource** je zadána) |
 
 ## <a name="copy-activity-properties"></a>Zkopírovat vlastnosti aktivit
-Seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivity kopírování najdete v tématu [vytváření kanálů](data-factory-create-pipelines.md) článku. Kopírovat vlastnosti aktivity, jako například **název**, **popis**, **vstupy** tabulky, **výstupy** tabulky, a **zásad**, jsou k dispozici pro všechny typy aktivit. Vlastnosti, které jsou k dispozici v **rámci typeProperties** části aktivity pro každý typ aktivity. Pro aktivitu kopírování vlastnosti lišit v závislosti na typech zdrojů dat a jímky.
+Seznam oddílů hello a vlastnosti, které jsou k dispozici pro definování aktivity kopírování najdete v tématu hello [vytváření kanálů](data-factory-create-pipelines.md) článku. Kopírovat vlastnosti aktivity, jako například **název**, **popis**, **vstupy** tabulky, **výstupy** tabulky, a **zásad**, jsou k dispozici pro všechny typy aktivit. Hello vlastnosti, které jsou k dispozici v hello **rámci typeProperties** části hello aktivity pro každý typ aktivity. Pro aktivitu kopírování vlastnosti hello lišit v závislosti na typech hello zdroje dat a jímky.
 
-Pro aktivitu kopírování, pokud je zdroj typu **RelationalSource** (která zahrnuje DB2), jsou k dispozici v následujících vlastností **rámci typeProperties** části:
+Pro aktivitu kopírování, pokud je zdroj hello typu **RelationalSource** (která zahrnuje DB2), hello následující vlastnosti jsou k dispozici v hello **rámci typeProperties** části:
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| **dotaz** |Pomocí vlastního dotazu přečíst data. |Řetězec dotazu SQL. Příklad: `"query": "select * from "MySchema"."MyTable""` |Ne (Pokud **tableName** je zadána vlastnost datové sady) |
+| **dotaz** |Hello vlastního dotazu tooread hello data použijte. |Řetězec dotazu SQL. Příklad: `"query": "select * from "MySchema"."MyTable""` |Ne (Pokud hello **tableName** je zadána vlastnost datové sady) |
 
 > [!NOTE]
-> Schéma a tabulku názvy rozlišují malá a velká písmena. V příkazu dotazu, uzavřete názvy vlastností pomocí "" (dvojité uvozovky). Například:
+> Schéma a tabulku názvy rozlišují malá a velká písmena. V příkazu dotazu hello, uzavřete názvy vlastností pomocí "" (dvojité uvozovky). Například:
 >
 > ```sql
 > "query": "select * from "DB2ADMIN"."Customers""
 > ```
 
-## <a name="json-example-copy-data-from-db2-to-azure-blob-storage"></a>Příklad JSON: kopírování dat z DB2 do úložiště objektů Blob v Azure
-Tento příklad obsahuje ukázkové JSON definice, které můžete použít k vytvoření kanálu pomocí [portál Azure](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Tento příklad ukazuje, jak zkopírovat data z databáze DB2 do úložiště objektů Blob. Data však můžete zkopírovat do [všechna podporovaná data ukládat typ jímky](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování objektu pro vytváření dat Azure.
+## <a name="json-example-copy-data-from-db2-tooazure-blob-storage"></a>Příklad JSON: kopírování dat z DB2 tooAzure úložiště objektů Blob
+Tento příklad obsahuje ukázkové JSON definice používané toocreate kanálu pomocí hello [portál Azure](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Hello příklad ukazuje, jak toocopy data z DB2 databáze tooBlob úložiště. Ale data se dají zkopírovat příliš[všechna podporovaná data ukládat typ jímky](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování objektu pro vytváření dat Azure.
 
-Ukázka má následující entity služby Data Factory:
+Ukázka Hello má hello následující entity služby Data Factory:
 
 - DB2 propojené služby typu [OnPremisesDb2](data-factory-onprem-db2-connector.md#linked-service-properties)
 - Azure Blob storage, propojené služby typu [azurestorage.](data-factory-azure-blob-connector.md#linked-service-properties)
 - Vstup [datovou sadu](data-factory-create-datasets.md) typu [RelationalTable](data-factory-onprem-db2-connector.md#dataset-properties)
 - Výstup [datovou sadu](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
-- A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [RelationalSource](data-factory-onprem-db2-connector.md#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) vlastnosti
+- A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá hello [RelationalSource](data-factory-onprem-db2-connector.md#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) vlastnosti
 
-Ukázka zkopíruje data z výsledku dotazu v databázi DB2 do objektu blob Azure každou hodinu. Vlastnosti JSON, které se používají v ukázce jsou popsané v následujících definice entity.
+Ukázka Hello zkopíruje data z výsledku dotazu v tooan databáze DB2 objektů blob v Azure každou hodinu. Vlastnosti Hello JSON, které se používají v ukázce hello jsou popsané v hello oddíly, které následují definice entity hello.
 
-Jako první krok nainstalujte a nakonfigurujte bránu data gateway. Pokyny naleznete v [přesouvání dat mezi místní umístění a cloudem](data-factory-move-data-between-onprem-and-cloud.md) článku.
+Jako první krok nainstalujte a nakonfigurujte bránu data gateway. Pokyny naleznete v hello [přesouvání dat mezi místní umístění a cloudem](data-factory-move-data-between-onprem-and-cloud.md) článku.
 
 **DB2 propojené služby**
 
@@ -158,9 +158,9 @@ Jako první krok nainstalujte a nakonfigurujte bránu data gateway. Pokyny nalez
 
 **Vstupní datové sady DB2**
 
-Příkladu se předpokládá, že jste vytvořili tabulku v databázích DB2 s názvem "MyTable", která má sloupec s názvem "časové razítko" data časové řady.
+Hello příkladu se předpokládá, že jste vytvořili tabulku v s názvem "MyTable", která má sloupec s názvem "časové razítko" hello časových řad dat DB2.
 
-**Externí** je nastavena na hodnotu "true". Toto nastavení služba Data Factory informuje, že tato datová sada je externí k objektu pro vytváření dat a není vyprodukované aktivitu v datové továrně. Všimněte si, že **typ** je nastavena na **RelationalTable**.
+Hello **externí** vlastnost je nastavena příliš "PRAVDA." Toto nastavení informuje služba Data Factory hello, že tato datová sada je externí toohello pro vytváření dat a není vyprodukované aktivitu v objektu pro vytváření dat hello. Všimněte si, že hello **typ** vlastnost je nastavena příliš**RelationalTable**.
 
 
 ```json
@@ -188,7 +188,7 @@ Příkladu se předpokládá, že jste vytvořili tabulku v databázích DB2 s n
 
 **Výstupní datovou sadu objektů Blob v Azure**
 
-Data se zapisují do nového objektu blob každou hodinu nastavením **frekvence** vlastnost "Hodinu" a **interval** vlastnost na hodnotu 1. **FolderPath** vlastností pro objekt blob je vyhodnocován dynamicky podle času zahájení řezu, které jsou zpracovávány. Cesta ke složce používá rok, měsíc, den a hodina části čas spuštění.
+Data jsou zapsána nový objekt blob tooa každou hodinu nastavení hello **frekvence** vlastnost příliš "Hodina" a hello **interval** too1 vlastnost. Hello **folderPath** vlastností pro objekt blob hello dynamicky vyhodnotí podle času zahájení hello hello řezu, které jsou zpracovávány. Cesta ke složce Hello používá hello rok, měsíc, den a hodina části hello počáteční čas.
 
 ```json
 {
@@ -246,15 +246,15 @@ Data se zapisují do nového objektu blob každou hodinu nastavením **frekvence
 }
 ```
 
-**Kanál pro aktivitu kopírování**
+**Kanál pro aktivitu kopírování hello**
 
-Kanál obsahuje aktivitu kopírování, která je nakonfigurována pro používání zadaný vstup a výstupní datové sady a který je naplánováno spuštění každou hodinu. V definici JSON pro kanál **zdroj** je typ nastaven na **RelationalSource** a **podřízený** je typ nastaven na **BlobSink**. Zadané pro dotaz SQL **dotazu** vlastnost vybere data z tabulky "Objednávky".
+Hello kanál obsahuje aktivitu kopírování, který je nakonfigurovaný toouse zadaný vstupní a výstupní datové sady a který je naplánované toorun každou hodinu. V definici JSON pro kanál hello hello, hello **zdroj** je typ nastaven příliš**RelationalSource** a hello **podřízený** je typ nastaven příliš**BlobSink**. Dotaz SQL Hello zadaný pro hello **dotazu** vlastnost vybere hello data z tabulky "Objednávky" hello.
 
 ```json
 {
     "name": "CopyDb2ToBlob",
     "properties": {
-        "description": "pipeline for the copy activity",
+        "description": "pipeline for hello copy activity",
         "activities": [
             {
                 "type": "Copy",
@@ -295,12 +295,12 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurována pro použív�
 ```
 
 ## <a name="type-mapping-for-db2"></a>Mapování typu pro DB2
-Jak je uvedeno v [aktivity přesunu dat](data-factory-data-movement-activities.md) článku aktivita kopírování provádí převody typů automatické z typ zdroje pro typ jímky pomocí následující postup ve dvou krocích:
+Jak je uvedeno v hello [aktivity přesunu dat](data-factory-data-movement-activities.md) článku aktivita kopírování provádí převody automatické typ z typu toosink typ zdroje pomocí hello následující dvoustupňový přístup:
 
-1. Převést z typu nativní zdroj na typ formátu .NET
-2. Převést na typ nativní jímky typ formátu .NET
+1. Převést z typu nativní zdroj tooa typ rozhraní .NET
+2. Převést z typu nativní podřízený tooa typ rozhraní .NET
 
-Aktivita kopírování převádí data z typu DB2 na typ .NET jsou použity následující mapování:
+Hello následující mapování se používají při aktivitě kopírování převádí hello data z typu DB2 tooa typ rozhraní .NET:
 
 | Typ databáze DB2 | Typ rozhraní .NET framework |
 | --- | --- |
@@ -345,11 +345,11 @@ Aktivita kopírování převádí data z typu DB2 na typ .NET jsou použity nás
 | XML |Byte] |
 | Char |Řetězec |
 
-## <a name="map-source-to-sink-columns"></a>Mapování zdroje jímky sloupců
-Další postupy k mapování sloupců v datové sadě zdroje na sloupců v datové sadě podřízený najdete v tématu [mapování sloupců datovou sadu v Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-toosink-columns"></a>Mapování zdrojových toosink sloupců
+toolearn jak zjistit, toomap sloupců v toocolumns datové sady zdroje hello v datové sadě podřízený hello, [mapování sloupců datovou sadu v Azure Data Factory](data-factory-map-columns.md).
 
 ## <a name="repeatable-reads-from-relational-sources"></a>Opakovatelných čtení z relační zdrojů
-Při kopírování dat z relační datové úložiště, uvědomte si, aby se zabránilo neúmyslnému výstupy opakovatelnosti. V Azure Data Factory může řez znovu ručně. Můžete také nakonfigurovat opakovaném **zásad** vlastnost pro datovou sadu řez znovu spustit, když dojde k chybě. Ujistěte se, že stejná data je pro čtení bez ohledu na to, kolikrát se znovu spustí řez, a to bez ohledu na to, jak spustit řez znovu. Další informace najdete v tématu [Repeatable čte z relačními zdroji](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+Při kopírování dat z relační datové úložiště, mějte opakovatelnosti pamatovat tooavoid nezamýšleným výstupy. V Azure Data Factory může řez znovu ručně. Můžete také nakonfigurovat opakování hello **zásad** vlastnost pro datovou sadu toorerun řez, když dojde k chybě. Ujistěte se, který hello stejných dat je pro čtení bez ohledu na to jak řez hello tolikrát, kolikrát je spustit znovu a bez ohledu na to, jak znovu hello řez. Další informace najdete v tématu [Repeatable čte z relačními zdroji](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Výkon a ladění
-Další informace o klíčových faktorů, které ovlivňují výkon aktivity kopírování a způsoby, jak optimalizovat výkon v [výkonu kopie aktivity a ladění průvodce](data-factory-copy-activity-performance.md).
+Další informace o klíčových faktorů, které ovlivňují výkon hello aktivity kopírování a způsoby toooptimize výkonu v hello [výkonu kopie aktivity a ladění průvodce](data-factory-copy-activity-performance.md).

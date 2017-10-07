@@ -1,6 +1,6 @@
 ---
-title: "Ochrana osobních údajů v Microsoft Azure | Microsoft Docs"
-description: "První článek v řadě článků vám pomohou používat Azure k ochraně osobních údajů"
+title: "aaaProtect osobních údajů v Microsoft Azure | Microsoft Docs"
+description: "Nejprve článek v řadě články toohelp používáte Azure tooprotect osobní data"
 services: security
 documentationcenter: na
 author: Barclayn
@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: dfb046374397c8a19672ce6b67741903fff6e178
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: cbffd3872552cbd0f12539535898c41ecf7789e8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="protect-personal-data-in-microsoft-azure"></a>Ochrana osobních údajů v Microsoft Azure
 
-Tento článek představuje řadu články, které vám pomohou používat Azure bezpečnostních technologií a služeb na ochranu osobních údajů. Toto je klíčovým požadavkem pro mnoho společností a dodržování předpisů a zásad správného řízení iniciativy odvětví. Scénář, problém prohlášení a společnosti cíle jsou zahrnuté v tomto poli.
+Tento článek představuje řadu články, které vám pomohou používat zabezpečení Azure technologie a služby tooprotect osobní data. Toto je klíčovým požadavkem pro mnoho společností a dodržování předpisů a zásad správného řízení iniciativy odvětví. Hello scénář, problém prohlášení a společnosti cíle jsou zahrnuty sem.
 
 ## <a name="scenario-and-problem-statement"></a>Scénáře a problému
 
-Velké výletních společnosti, centrálou ve Spojených státech amerických, je rozšířit jeho operací a nabídnout itineráře v Středomoří, Jaderského a baltský moři, jakož i Britské ostrovy. Pro podporu těchto úsilí, získala menší výletních Víceřádkový na základě v Itálii, Německo, Dánsko a Spojeném království
+Velké výletních společnosti, centrálou ve Spojených státech amerických hello je rozšířit jeho itineráře toooffer operace v hello Středozemního, Jaderského a baltský moři, jakož i hello Britské ostrovy. toosupport těchto úsilí získala menší výletních Víceřádkový na základě v Itálii Německo, Dánsko a hello Spojené království
 
-Společnost používá Microsoft Azure k ukládání firemních dat v cloudu. To může zahrnovat zaměstnanců nebo zákazníků informace, jako:
+Hello společnost používá Microsoft Azure toostore firemní data v cloudu hello. To může zahrnovat zaměstnanců nebo zákazníků informace, jako:
 
 - adresy
 - telefonní čísla
@@ -37,23 +37,23 @@ Společnost používá Microsoft Azure k ukládání firemních dat v cloudu. To
 - lékařské informace
 - informace o kreditní kartě
 
-Společnosti musí při zpřístupnění dat pro tyto oddělení, které je třeba jej chránit ochrana osobních údajů zaměstnanců a zákazníků. (například oddělení mzdy a rezervace)
+Hello společnosti musí ochrany osobních údajů hello dat zaměstnanců a zákazníků při vytváření přístupné toothose oddělení dat, které je třeba ji. (například oddělení mzdy a rezervace)
 
 ## <a name="company-goals"></a>Cíle společnosti 
 
 - Zdroje dat, které obsahují osobní data se šifrují, pokud umístěný do cloudového úložiště.
 
-- Během přenosu šifrovány osobní data, která se přenáší z jednoho umístění do druhého. Toto je hodnota true, pokud se data mezi podnikovém datovém centru a cloudu Azure cestě přes virtuální síť nebo přes Internet.
+- Osobní údaje, které je přenést z jednoho umístění tooanother během přenosu šifrovány. Toto je hodnota true, pokud je hello data přechodu přes hello virtuální sítě nebo přes hello Internet mezi hello podnikovém datovém centru a hello cloudu Azure.
 
 - Důvěrnost a integrita osobních údajů je chráněný před neoprávněným přístupem správu silné identit a technologie pro řízení přístupu.
 
 - Osobní data je chráněný před přes porušení zabezpečení dat prostřednictvím monitorování ohrožení zabezpečení a hrozeb.
 
-- Stav zabezpečení služby Azure, které uložení nebo na přenos osobních dat bude posouzeno identifikovat příležitosti k lepší ochraně osobních údajů.
+- Hello stav zabezpečení služby Azure, které uložení nebo na přenos osobních dat bude posouzeno tooidentify příležitosti toobetter chránit osobní údaje.
 
 ## <a name="data-protection-guidance"></a>Pokyny pro ochranu dat
 
-V následujících článcích obsahovat technické postupy pokyny, které vám pomohou dosáhnout cíle ochrany osobních údajů uvedených výše:
+Následující články Hello obsahovat technické tooguidance postupy, které vám pomohou dosáhnout cíle ochrany osobních údajů hello uvedené výše:
 
 - [Azure šifrovací technologie](protect-personal-data-at-rest.md)
 

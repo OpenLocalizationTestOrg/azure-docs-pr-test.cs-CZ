@@ -1,6 +1,6 @@
 ---
-title: "Použití Azure Security Center doporučení k vylepšení zabezpečení | Microsoft Docs"
-description: " Další informace o použití zásady a doporučení zabezpečení v Azure Security Center můžete zmírnit útok na zabezpečení. "
+title: "aaaUse zabezpečení tooenhance doporučení Azure Security Center | Microsoft Docs"
+description: " Zjistěte, jak toouse zásady a doporučení zabezpečení v Azure Security Center toohelp zmírnit útok na zabezpečení. "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,93 +14,93 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2017
 ms.author: terrylan
-ms.openlocfilehash: cb4a7db5666242576bf83abbf10682cc6f53ba69
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: bd314350a5abfceea3e171f2e1b55afe4549c1b1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Použití Azure Security Center doporučení k vylepšení zabezpečení
-Konfigurace zásad zabezpečení a pak implementace doporučení pomocí služby Azure Security Center můžete snížit pravděpodobnost událostí významné zabezpečení. Tento článek ukazuje, jak používat zásady a doporučení zabezpečení v Centru zabezpečení můžete zmírnit útok na zabezpečení.
+# <a name="use-azure-security-center-recommendations-tooenhance-security"></a>Použití Azure Security Center doporučení tooenhance zabezpečení
+Můžete snížit pravděpodobnost hello událostí významné zabezpečení tak, že konfigurace zásad zabezpečení a pak implementace hello doporučení pomocí služby Azure Security Center. Tento článek ukazuje, jak toouse zásady a doporučení zabezpečení v Security Center toohelp zmírnit útok na zabezpečení.
 
 > [!NOTE]
-> Tento článek vychází role a koncepty představené v Centru zabezpečení [Průvodce plánováním a operace](security-center-planning-and-operations-guide.md). Je vhodné před pokračováním si prohlédněte v příručce plánování.
+> Tento článek vychází hello role a koncepty představené v hello Security Center [Průvodce plánováním a operace](security-center-planning-and-operations-guide.md). Před pokračováním je Průvodce plánování vhodné tooreview hello.
 >
 >
 
 ## <a name="managing-security-recommendations"></a>Správa doporučení zabezpečení
-Zásady zabezpečení definuje sadu ovládacích prvků, které se doporučují pro prostředky v rámci zadané předplatné nebo skupinu prostředků. V Security Center určíte zásady podle požadavků zabezpečení vaší společnosti. Další informace najdete v tématu [nastavovat zásady zabezpečení ve službě Security Center](security-center-policies.md).
+Zásady zabezpečení definuje hello sadu ovládacích prvků, které se doporučují pro prostředky v rámci zadané předplatné nebo prostředek skupiny hello. V Security Center určíte zásady podle tooyour požadavky na zabezpečení společnosti. Další, najdete v části toolearn [nastavovat zásady zabezpečení ve službě Security Center](security-center-policies.md).
 
-Zásady zabezpečení pro skupiny prostředků se dědí z úrovně předplatného.
+Zásady zabezpečení pro skupiny prostředků dědí z úrovně předplatného hello.
 
 ![Dědičnost zásad zabezpečení][1]
 
-Pokud potřebujete vlastní zásady v určitých skupinách prostředků, můžete zakázat dědičnost ve skupině prostředků. Zakázat, nastavte dědičnost na jedinečný okno Zásady zabezpečení a ovládacích prvků, které Security Center zobrazuje doporučení pro přizpůsobení.
+Pokud potřebujete vlastní zásady v určitých skupinách prostředků, můžete zakázat dědičnost ve skupině prostředků hello. toodisable, nastavte dědičnost tooUnique hello okna zásady zabezpečení a přizpůsobit hello ovládací prvky, které Security Center zobrazuje doporučení pro.
 
-Například pokud máte úlohy, které nevyžadují zásadu SQL databáze transparentní dat šifrování (TDE), vypněte tuto zásadu na úrovni předplatného a povolte ji jenom ve skupinách prostředků, ve kterých je požadovaná.
+Například pokud máte úlohy, které nevyžadují zásadu hello SQL databáze transparentní dat šifrování (TDE), vypněte hello zásad na úrovni předplatného hello a povolte ji jenom ve skupinách prostředků hello, ve kterých je požadovaná.
 
 > [!NOTE]
-> V případě konfliktu mezi zásadou na úrovni předplatného a zásadou na úrovni skupiny prostředků má přednost zásada na úrovni skupiny prostředků.
+> Pokud dojde ke konfliktu mezi zásadou na úrovni předplatného a zásadou na úrovni skupiny prostředků, úrovni zásady skupiny prostředků hello přednost.
 >
 >
 
-Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se v ovládacích prvcích nastavení v zásadě zabezpečení na základě doporučení. Doporučení vás provede procesem konfigurace potřebných zabezpečení ovládací prvky.
+Security Center analyzuje stav zabezpečení hello vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení podle nastavení v zásadách zabezpečení hello hello – ovládací prvky. Hello doporučení vás provede procesem hello konfigurace ovládacích prvků zabezpečení hello potřeby.
 
-Aktuální zásady doporučení v Security Center se zaměřují na aktualizací systému, konfigurace operačního systému, skupin zabezpečení podsítí a virtuálních počítačů (VM), auditování databáze SQL TDE databáze SQL, sítě a brány firewall webových aplikací. Nejaktuálnější pokrytí doporučení služby Security Center, najdete v části [Správa doporučení zabezpečení v Centru zabezpečení](security-center-recommendations.md).
+Aktuální zásady doporučení v Security Center se zaměřují na aktualizací systému, konfigurace operačního systému, skupin zabezpečení podsítí a virtuálních počítačů (VM), auditování databáze SQL TDE databáze SQL, sítě a brány firewall webových aplikací. Hello nejaktuálnější pokrytí doporučení služby Security Center, najdete v části [Správa doporučení zabezpečení v Centru zabezpečení](security-center-recommendations.md).
 
 ## <a name="scenario"></a>Scénář
-Tento scénář popisuje, jak používat Security Center Pokud chcete snížit pravděpodobnost významné bezpečnostního incidentu monitorování doporučení služby Security Center a akce. Tento scénář používá fiktivní společnosti, Contoso a rolí, které jsou uvedené v Centru zabezpečení [Průvodce plánováním a operace](security-center-planning-and-operations-guide.md#security-roles-and-access-controls). Role představují jednotlivce a týmy, které mohou používat Security Center při provádění různých úloh souvisejících se zabezpečením. Role jsou:
+Tento scénář popisuje, jak toouse Security Center toohelp omezit hello pravděpodobnost incidentu významné zabezpečení tím, že monitorování doporučení služby Security Center a akce. Hello scénář používá hello fiktivní společnost Contoso, a rolí, které jsou uvedené v hello Security Center [Průvodce plánováním a operace](security-center-planning-and-operations-guide.md#security-roles-and-access-controls). Hello role představují jednotlivce a týmy, které mohou používat Security Center tooperform různé související se zabezpečením úlohy. Hello role jsou:
 
 ![Scénář role][2]
 
-Contoso nedávno migrace některé z jejich místních prostředků do Azure. Contoso chce implementovat a udržovat ochranu, která snižují jejich zranitelnost vůči útoku zabezpečení svých prostředků v cloudu.
+Contoso nedávno migrace některé z jejich tooAzure místní prostředky. Contoso chce tooimplement a zachovat ochranu, která snižují útoku zabezpečení tooa ohrožení zabezpečení svých prostředků v cloudu hello.
 
 ## <a name="recommended-solution"></a>Doporučené řešení
-Řešením je použití Security Center pro zabránění a zjištění chyb zabezpečení. Contoso má přístup k Security Center prostřednictvím svého předplatného Azure. [Úroveň Free](security-center-pricing.md) služby Security Center je automaticky povolené na všechny odběry služby Azure a shromažďování dat je povolené na všech virtuálních počítačích v rámci svého předplatného.
+Řešení je tooprevent toouse Security Center a zjištění chyb zabezpečení. Contoso má Centrum tooSecurity přístupu prostřednictvím svého předplatného Azure. Hello [úroveň Free](security-center-pricing.md) služby Security Center je automaticky povolené na všechny odběry služby Azure a shromažďování dat je povolené na všech virtuálních počítačích v rámci svého předplatného.
 
-Nakonfiguruje David v rámci zabezpečení IT společnosti Contoso **zásady zabezpečení** pomocí Security Center. Security Center analyzuje stav zabezpečení prostředků Azure společnosti Contoso. Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří **doporučení** podle nastavení v zásadě zabezpečení ovládacích prvků.
+Nakonfiguruje David v rámci zabezpečení IT společnosti Contoso **zásady zabezpečení** pomocí Security Center. Security Center analyzuje stav zabezpečení prostředků Azure společnosti Contoso hello. Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří **doporučení** podle nastavení v zásadách zabezpečení hello hello – ovládací prvky.
 
-Jeff, vlastník úloh v cloudu, je zodpovědný za implementaci a udržování ochrany v souladu se zásadami zabezpečení společnosti Contoso. Jeff můžete monitorovat doporučení vytvořené Centrum zabezpečení pro použití ochrany. Doporučení Jeff provede procesem konfigurace potřebných zabezpečení ovládací prvky.
+Jeff, vlastník úloh v cloudu, je zodpovědný za implementaci a udržování ochrany v souladu se zásadami zabezpečení společnosti Contoso. Jeff můžete monitorovat vytvořené Security Center tooapply ochrana doporučení hello. doporučení Hello provede Jeff hello proces konfigurace ovládacích prvků zabezpečení hello potřeby.
 
-Aby Jan k implementaci a udržování ochrany a odstranění ohrožení zabezpečení potřebné informace pro:
+V pořadí pro Jeff tooimplement a udržovat ochrany a odstranění chyby zabezpečení, he musí:
 
 - Monitorování doporučení zabezpečení pomocí služby Security Center
 - Vyhodnocení doporučení zabezpečení a rozhodnout, pokud mu použít nebo vymazat
 - Použít doporučení zabezpečení
 
-Pojďme postupujte podle kroků Jeff zobrazíte, jak pomocí doporučení služby Security Center mu provede procesem konfigurace ovládacích prvků k vyloučení chyb zabezpečení.
+Pojďme postupujte podle kroků toosee Jeff jak pomocí Security Center doporučení tooguide mu procesem hello konfigurace ohrožení zabezpečení tooeliminate ovládací prvky.
 
-## <a name="how-to-implement-this-solution"></a>Postup implementace tohoto řešení
-Jeff přihlásí [portál Azure](https://azure.microsoft.com/features/azure-portal/) a otevře se konzole Security Center. V rámci své každodenní aktivity sledování se mu zkontroluje, pokud jsou doporučení zabezpečení tak, že provedete následující kroky:
+## <a name="how-tooimplement-this-solution"></a>Jak tooimplement toto řešení
+Jeff přihlásí příliš[portál Azure](https://azure.microsoft.com/features/azure-portal/) a otevře se okno hello konzole Security Center. V rámci jeho denní monitorování aktivit mohl zkontroluje toosee, pokud jsou doporučení zabezpečení provedením následujících kroků hello:
 
-1. Jan vybere **doporučení** dlaždici otevřete **doporučení** okno.
-   ![Vyberte dlaždici doporučení][3]
-2. Jan zkontroluje seznam doporučení. Zjistí, že Security Center poskytl seznam doporučení v pořadí podle priority z nejvyšší prioritu s nejnižší prioritou. Rozhodne se adresa s vysokou prioritou doporučení v seznamu. Vybere **nainstalovat službu Endpoint Protection** na **doporučení** okno.
-3. **Nainstalovat službu Endpoint Protection** otevře se okno zobrazení seznamu virtuálních počítačů bez antimalwarových povolena. Jan zkontroluje seznam virtuálních počítačů, vybere všechny virtuální počítače a potom vybere **nainstalovat na virtuálních počítačích 3**.
+1. Jan vybere hello **doporučení** dlaždice tooopen hello **doporučení** okno.
+   ![Vyberte hello doporučení dlaždice][3]
+2. Jan zkontroluje hello seznam doporučení. Zjistí, že Security Center poskytl hello seznam doporučení v pořadí podle priority z nejvyšší prioritou toolowest s prioritou. Rozhodne tooaddress doporučení vysokou prioritu na seznamu hello. Vybere **nainstalovat službu Endpoint Protection** na hello **doporučení** okno.
+3. Hello **nainstalovat službu Endpoint Protection** otevře se okno zobrazení seznamu virtuálních počítačů bez antimalwarových povolena. Jan zkontroluje hello seznam virtuálních počítačů, vybere všechny virtuální počítače a potom vybere **nainstalovat na virtuálních počítačích 3**.
    ![Instalace Endpoint Protection][4]
-4. **Vyberte Endpoint Protection** poskytnete Jeff otevře se okno s dvěma antimalwarových řešení. Jan vybere **Antimalware od Microsoftu** řešení.
-5. Zobrazí se další informace o antimalwarové řešení. Jan vybere **vytvořit**.
+4. Hello **vyberte Endpoint Protection** poskytnete Jeff otevře se okno s dvěma antimalwarových řešení. Jan vybere hello **Antimalware od Microsoftu** řešení.
+5. Další informace o řešení proti malwaru hello se zobrazí. Jan vybere **vytvořit**.
    ![Antimalware od Microsoftu][5]
-6. Jeff zadá požadovaná nastavení na **nainstalovat** okno a vybere **OK**.
+6. Jan zadá hello požadované nastavení konfigurace na hello **nainstalovat** okno a vybere **OK**.
 
-[Microsoft Antimalware](../security/azure-security-antimalware.md) je teď aktivní na vybrané virtuální počítače.
+[Microsoft Antimalware](../security/azure-security-antimalware.md) je teď aktivní na hello vybrané virtuální počítače.
 
-Jeff nadále pohyb s vysokou prioritou a doporučení se střední prioritou, při rozhodování o provádění. Jeff odkazuje [Správa doporučení zabezpečení](security-center-recommendations.md) článek vám pomůže porozumět doporučení a co každé z nich dělá pokud mu použije ji.
+Jeff pokračuje toomove prostřednictvím hello s vysokou prioritou a doporučení se střední prioritou, při rozhodování o provádění. Jeff odkazuje hello [Správa doporučení zabezpečení](security-center-recommendations.md) článek toounderstand hello doporučení a co každé z nich dělá pokud mu použije ji.
 
-Jeff zjišťuje, které [Microsoft Security Response Center (MSRC)](../security/azure-security-response-center.md) provádí sledování zabezpečení vyberte síť Azure a infrastruktury a přijímá stížností intelligence a zneužití ohrožení od jiných výrobců. Pokud Jeff poskytuje zabezpečení kontaktní údaje pro předplatné Azure společnosti Contoso, kontakty Microsoft Contoso, pokud střediska MSRC zjišťuje data zákazníků společnosti Contoso přístupem k nezákonné nebo neoprávněným strana. Pojďme postupujte Jeff podle mu se vztahuje **zadejte kontaktní údaje zabezpečení** doporučení (má tyto požadavky se závažností Střední seznam doporučení výše).
+Jeff zjišťuje, které [Microsoft Security Response Center (MSRC)](../security/azure-security-response-center.md) provede vyberte zabezpečení monitorování hello síť Azure a infrastruktury a přijímá stížností intelligence a zneužití ohrožení od jiných výrobců. Pokud Jeff poskytuje zabezpečení kontaktní údaje pro předplatné Azure společnosti Contoso, kontakty Microsoft Contoso Pokud hello střediska MSRC zjišťuje data zákazníků společnosti Contoso přístupem k nezákonné nebo neoprávněným strana. Pojďme postupujte Jeff podle mu platí hello **zadejte kontaktní údaje zabezpečení** doporučení (má tyto požadavky se závažností střední v hello seznam doporučení výše).
 
-1. Jan vybere **zadejte kontaktní údaje zabezpečení** na **doporučení** okno otevře **zadejte kontaktní údaje zabezpečení** okno.
-2. Jan vybere předplatné Azure poskytuje kontaktní informace. Druhý **zadejte kontaktní údaje zabezpečení** otevře se okno.
+1. Jan vybere **zadejte kontaktní údaje zabezpečení** na hello **doporučení** okno otevře hello **zadejte kontaktní údaje zabezpečení** okno.
+2. Jan vybere hello předplatného Azure tooprovide kontaktní informace na. Druhý **zadejte kontaktní údaje zabezpečení** otevře se okno.
    ![Kontaktní údaje zabezpečení][6]
-3. Na druhé stránce **zadejte kontaktní údaje zabezpečení** zadá Jeff okně:
+3. Na hello druhý **zadejte kontaktní údaje zabezpečení** zadá Jeff okně:
 
-  - zabezpečení kontaktní e-mailové adresy oddělené čárkami (není limit počtu e-mailové adresy, které může zadat)
+  - Hello zabezpečení kontaktní e-mailových adres oddělených čárkami (není číslo toohello limit e-mailových adres, které může zadat)
   - telefonní číslo kontaktu jeden zabezpečení
 
-4. Jan také zapne možnost **zaslat mi e-maily o výstrahách** příjmu e-mailů o výstrahy s vysokou závažností.
-5. Jan vybere **OK** použít kontaktní informace zabezpečení do předplatného společnosti Contoso.
+4. Jan také zapne hello možnost **zaslat mi e-maily o výstrahách** tooreceive e-mailů o výstrahy s vysokou závažností.
+5. Jan vybere **OK** tooapply hello zabezpečení obraťte se na informace tooContoso předplatné.
 
-Nakonec Jeff zkontroluje doporučení s nízkou prioritou **ohrožení zabezpečení operačního systému opravit** a určuje, že toto doporučení se nedá použít. Chce zavřít doporučení. Jan vybere se třemi tečkami, které se zobrazí vpravo a pak vybere **přeskočení**.
+Nakonec Jeff zkontroluje doporučení s nízkou prioritou hello **ohrožení zabezpečení operačního systému opravit** a určuje, že toto doporučení se nedá použít. Chce toodismiss hello doporučení. Jan vybere hello tři tečky, které se zobrazují toohello práva a potom vybere **přeskočení**.
    ![Zavření doporučení][7]
 
 ## <a name="conclusion"></a>Závěr

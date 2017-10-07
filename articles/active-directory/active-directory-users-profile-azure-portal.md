@@ -1,6 +1,6 @@
 ---
-title: "Přidat nebo změnit informace o profilu pro uživatele v Azure Active Directory | Microsoft Docs"
-description: "Vysvětluje, jak přidat profil uživatele, včetně profilový obrázek v Azure Active Directory"
+title: "aaaAdd nebo změnit informace o profilu pro uživatele v Azure Active Directory | Microsoft Docs"
+description: "Vysvětluje, jak tooadd hello profil uživatele, včetně profilový obrázek v Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: curtand
 ms.reviewer: jeffsta
-ms.openlocfilehash: 81d93563a3cbe47ebe12c7ac5de26c5bbc2bb8ff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 58361cf4e3ffb01126938cc1e3e1d4c521f2f01c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="add-or-change-profile-information-for-a-user-in-azure-active-directory"></a>Přidat nebo změnit informace o profilu pro uživatele v Azure Active Directory
-Tento článek vysvětluje, jak přidat informace o profilu uživatele, například obrázek profilu nebo telefon a informace o ověřování e-mailu, v Azure Active Directory (Azure AD). Informace o přidávání nových uživatelů v organizaci najdete v tématu [přidání nových uživatelů do služby Azure Active Directory](active-directory-users-create-azure-portal.md).
+Tento článek vysvětluje, jak tooadd uživatelský profil informace, například obrázku nebo telefon a e-mailu ověřování informací o profilu, Azure Active Directory (Azure AD). Informace o přidávání nových uživatelů v organizaci najdete v tématu [přidat nové uživatele tooAzure služby Active Directory](active-directory-users-create-azure-portal.md).
 
-## <a name="to-change-profile-information"></a>Chcete-li změnit informace o profilu
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je globální správce adresáře.
-2. Vyberte **další služby**, zadejte **uživatelů a skupin** v textovém poli a potom vyberte **Enter**.
+## <a name="toochange-profile-information"></a>informace o profilu toochange
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com) pomocí účtu, který je globálním správcem adresáře hello.
+2. Vyberte **další služby**, zadejte **uživatelů a skupin** v hello textového pole a pak vyberte **Enter**.
 
    ![Otevírání uživatelů a skupin](./media/active-directory-users-profile-azure-portal/create-users-user-management.png)
-3. Na **uživatelů a skupin** vyberte **uživatelé**.
+3. Na hello **uživatelů a skupin** vyberte **uživatelé**.
 
-   ![Otevřete okno Uživatelé](./media/active-directory-users-profile-azure-portal/create-users-open-users-blade.png)
-4. V okně **Uživatelé a skupiny – Uživatelé** vyberte uživatele ze seznamu.
-5. V okně pro vybraného uživatele, vyberte **profil**.
+   ![Okno Uživatelé otevírání hello](./media/active-directory-users-profile-azure-portal/create-users-open-users-blade.png)
+4. Na hello **uživatelé a skupiny - Uživatelé** okně vyberte uživatele ze seznamu hello.
+5. V okně hello hello vybraného uživatele, vyberte **profil**.
 
     ![Informace o práci otevírání](./media/active-directory-users-profile-azure-portal/active-directory-create-users-profile.png)
-6. Přidat nebo změnit informace o profilu. Na panelu příkazů vyberte **Uložit**.
+6. Přidat nebo změnit informace o profilu hello. V řádku nabídek hello vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
-* [Přidání nových uživatelů do služby Azure Active Directory](active-directory-users-create-azure-portal.md)
-* [Resetování hesla pro uživatele v Azure Active Directory](active-directory-users-reset-password-azure-portal.md)
-* [Přiřazení uživatele k rolí správce ve službě Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
+* [Přidat nové uživatele tooAzure služby Active Directory](active-directory-users-create-azure-portal.md)
+* [Resetovat hello heslo pro uživatele v Azure Active Directory](active-directory-users-reset-password-azure-portal.md)
+* [Přiřadit uživatele tooadministrator role v Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
 * [Přidat nebo změnit informace o profilu pro uživatele v Azure Active Directory](active-directory-users-work-info-azure-portal.md)
 * [Odstranit uživatele z jiného adresáře v Azure Active Directory](active-directory-users-delete-user-azure-portal.md)

@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory B2C: Předdefinované zásady | Microsoft Docs"
-description: "Téma na rozhraní rozšiřitelných zásad služby Azure Active Directory B2C a o tom, jak vytvořit různé typy zásad"
+description: "Téma na hello rozšiřitelném rozhraní zásad služby Azure Active Directory B2C a jak toocreate různé typy zásad"
 services: active-directory-b2c
 documentationcenter: 
 author: sama
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: sama
-ms.openlocfilehash: daad3af089afdf76b930053728bb11a5cf4c2a92
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 24bb85eba30f888c6ea7d0401e05235e8eb6ea79
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Azure Active Directory B2C: Předdefinované zásady
 
 
-Rozhraní rozšiřitelných zásad služby Azure Active Directory (Azure AD) B2C je základní sílu služby. Zásady, jako plně popisují činnosti identity příjemce registrace, přihlášení nebo úpravy profilu. Například registrační zásadě můžete řídit chování konfigurací následujícího nastavení:
+Hello rozšiřitelném rozhraní zásad služby Azure Active Directory (Azure AD) B2C je hello základní sílu hello služby. Zásady, jako plně popisují činnosti identity příjemce registrace, přihlášení nebo úpravy profilu. Například registrační zásadě vám umožní toocontrol chování nakonfigurováním hello následující nastavení:
 
-* Typy účtů (jako je Facebook sociálních účty) nebo místní účty například e-mailové adresy, které mohou příjemci použít se přihlásit k aplikaci
-* Atributy (například křestní jméno, poštovní směrovací číslo a velikosti), které se mají shromažďovat od příjemce během registrace
+* Účet typů (jako je Facebook sociálních účty) nebo místní účty například e-mailové adresy, příjemce, můžete použít toosign pro aplikace hello
+* Atributy (například křestní jméno, poštovní směrovací číslo a velikosti) toobe shromážděných z hello příjemce během registrace
 * Použití Azure Multi-Factor Authentication
-* Vzhledu a chování registrace všechny stránky
-* Informace o (manifesty jako deklarace do tokenu), aplikace obdrží, kdy zásady spustit dokončení
+* Hello vzhledu a chování registrace všechny stránky
+* Informace (které manifesty jako deklarace do tokenu), který hello aplikace obdrží po dokončení hello zásady spouštění
 
-Můžete vytvořit několik zásad různých typů ve vašem klientovi a podle potřeby používat ve svých aplikacích. Zásady můžete opětovně použít napříč aplikací. Tato možnost umožňuje vývojářům definování a úprava činnosti identity uživatelů s minimální nebo žádný změny svůj kód.
+Můžete vytvořit několik zásad různých typů ve vašem klientovi a podle potřeby používat ve svých aplikacích. Zásady můžete opětovně použít napříč aplikací. Tato možnost umožňuje vývojářům toodefine a upravte činnosti identity uživatelů s minimální nebo žádný kód tootheir změny.
 
-Zásady jsou k dispozici pro použití prostřednictvím rozhraní jednoduché developer. Vaše aplikace aktivuje zásadu pomocí standardní požadavek ověřování HTTP (předání parametru zásad v žádosti o) a obdrží token přizpůsobené jako odpověď. Jediným rozdílem mezi požadavky, které vyvolají registrační zásadě a požadavky, které vyvolají zásad přihlašování je například název zásady, který se používá v parametru řetězce dotazu "p":
+Zásady jsou k dispozici pro použití prostřednictvím rozhraní jednoduché developer. Vaše aplikace aktivuje zásadu pomocí standardní požadavek ověřování HTTP (předání parametru zásad v žádosti o hello) a obdrží token přizpůsobené jako odpověď. Například hello jediným rozdílem mezi požadavky, které vyvolají registrační zásadě a požadavky, které vyvolají zásad přihlašování je hello název zásady, který se používá v parametru řetězce dotazu hello "p":
 
 ```
 
@@ -63,11 +63,11 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ```
 
-Další informace o rozhraní zásad najdete v tématu [tomto příspěvku na blogu o Azure AD B2C na blogu Enterprise Mobility and Security Blog](http://blogs.technet.com/b/ad/archive/2015/11/02/a-look-inside-azuread-b2c-with-kim-cameron.aspx).
+Další informace o rozhraní hello zásad najdete v tématu [tomto příspěvku na blogu o Azure AD B2C na hello Enterprise Mobility and Security Blog](http://blogs.technet.com/b/ad/archive/2015/11/02/a-look-inside-azuread-b2c-with-kim-cameron.aspx).
 
 ## <a name="create-a-sign-up-or-sign-in-policy"></a>Vytvoření zásady registrace nebo přihlášení
 
-Tato zásada zpracuje obě příjemce s konfigurací jedné možnosti registrace a přihlášení. Příjemci knihovny jsou vedla dolů správné cesty (registrace nebo přihlášení) v závislosti na kontextu. Také popisuje obsah tokeny, které aplikace se zobrazí po úspěšné zápisy nebo přihlášení.  Ukázka kódu pro zásady registrace nebo přihlášení je [k dispozici zde](active-directory-b2c-devquickstarts-web-dotnet-susi.md).  Je doporučeno použití této zásady prostřednictvím zásad přihlašování a registrační zásadě.  
+Tato zásada zpracuje obě příjemce s konfigurací jedné možnosti registrace a přihlášení. Příjemci knihovny jsou vedla dolů hello správné cesty (registrace nebo přihlášení) v závislosti na kontextu hello. Také popisuje obsah hello tokenů, které aplikace hello obdrží po úspěšné zápisy nebo přihlášení.  Ukázka kódu pro zásady registrace nebo přihlášení hello je [k dispozici zde](active-directory-b2c-devquickstarts-web-dotnet-susi.md).  Je doporučeno použití této zásady prostřednictvím zásad přihlašování a registrační zásadě.  
 
 [!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
 
@@ -90,16 +90,16 @@ Tato zásada zpracuje obě příjemce s konfigurací jedné možnosti registrace
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 ### <a name="how-do-i-link-a-sign-up-or-sign-in-policy-with-a-password-reset-policy"></a>Jak lze propojit zásady registrace nebo přihlášení se zásady resetování hesel?
-Při vytváření zásad registrace nebo přihlášení (s místní účty), uvidíte **zapomněli jste heslo?** odkaz na první stránce prostředí. Kliknutím na tento odkaz není automaticky aktivační událost heslo resetovat zásady. 
+Při vytváření zásad registrace nebo přihlášení (s místní účty), uvidíte **zapomněli jste heslo?** odkaz na první stránku hello hello prostředí. Kliknutím na tento odkaz není automaticky aktivační událost heslo resetovat zásady. 
 
-Místo toho kód chyby  **`AADB2C90118`**  se vrátí do vaší aplikace. Aplikace je potřeba zpracovat tomto kódu chyby vyvoláním zásad resetování hesel konkrétní. Další informace najdete v tématu [vzorku, který ukazuje přístup propojení zásad](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI).
+Místo toho hello kód chyby  **`AADB2C90118`**  je vrácen tooyour aplikace. Vaše aplikace musí tento kód chyby toohandle vyvoláním zásad resetování hesel konkrétní. Další informace najdete v tématu [vzorku, který ukazuje hello přístup propojení zásad](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI).
 
 ### <a name="should-i-use-a-sign-up-or-sign-in-policy-or-a-sign-up-policy-and-a-sign-in-policy"></a>Použít zásadu registrace nebo přihlášení nebo registraci zásady a zásady přihlášení?
 Doporučujeme použití registrace nebo přihlášení zásady prostřednictvím registrace zásad a přihlášení.  
 
-Zásady registrace nebo přihlášení k dispozici další možnosti než zásady přihlášení. Také umožňuje používat přizpůsobení uživatelského rozhraní stránky a má lepší podporu pro lokalizaci. 
+zásady registrace nebo přihlášení Hello k dispozici další možnosti než zásad přihlašování hello. Také vám umožní toouse přizpůsobení uživatelského rozhraní stránky a má lepší podporu pro lokalizaci. 
 
-Zásady přihlášení se doporučuje, pokud nepotřebujete k lokalizaci zásad, pouze nutnost branding schopnosti menší přizpůsobení a mají heslo resetovat integrovaný do ní.
+zásad přihlašování Hello se doporučuje, pokud nepotřebujete toolocalize zásad pouze nutnost branding schopnosti menší přizpůsobení a mají heslo resetovat integrovaný do ní.
 
 ## <a name="next-steps"></a>Další kroky
 * [Token, relace a jednotné přihlašování](active-directory-b2c-token-session-sso.md)

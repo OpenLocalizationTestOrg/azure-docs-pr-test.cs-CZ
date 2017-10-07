@@ -1,6 +1,6 @@
 ---
-title: "Použijte Hadoop Pig s REST v HDInsight - Azure | Microsoft Docs"
-description: "Zjistěte, jak se použije ke spuštění úlohy Pig Latin na cluster Hadoop v prostředí Azure HDInsight REST."
+title: aaaUse Hadoop Pig s REST v HDInsight - Azure | Microsoft Docs
+description: "Zjistěte, jak toouse REST toorun Pig Latin úloh na Hadoop cluster v Azure HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,27 +16,27 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/31/2017
 ms.author: larryfr
-ms.openlocfilehash: a86864a779b0de1c6d5669cfbba0f3e1a27f1ff1
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 760139e3caad9103d8c9d34e7f548d476014b5ae
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-pig-jobs-with-hadoop-on-hdinsight-by-using-rest"></a>Spuštění úlohy Pig s Hadoop v HDInsight pomocí REST
 
 [!INCLUDE [pig-selector](../../includes/hdinsight-selector-use-pig.md)]
 
-Zjistěte, jak spouštět úlohy Pig Latin tím, že požadavky REST do clusteru Azure HDInsight. Curl se používá k ukazují, jak mohou komunikovat s HDInsight pomocí rozhraní REST API WebHCat.
+Zjistěte, jak toorun Pig Latin úlohy tak, že cluster Azure HDInsight tooan požadavky REST. Curl je použité toodemonstrate, jak mohou komunikovat s HDInsight pomocí hello WebHCat REST API.
 
 > [!NOTE]
-> Pokud jste obeznámeni s pomocí serverů se systémem Linux Hadoop, ale jsou nové do HDInsight, projděte si téma [systémem Linux HDInsight tipy](hdinsight-hadoop-linux-information.md).
+> Pokud jste obeznámeni s pomocí serverů se systémem Linux Hadoop, ale jsou nové tooHDInsight, přečtěte si téma [systémem Linux HDInsight tipy](hdinsight-hadoop-linux-information.md).
 
 ## <a id="prereq"></a>Požadavky
 
 * Clusteru Azure HDInsight (Hadoop v HDInsight) (systémem Linux nebo systému Windows)
 
   > [!IMPORTANT]
-  > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > Linux je hello pouze operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * [Curl](http://curl.haxx.se/)
 
@@ -45,74 +45,74 @@ Zjistěte, jak spouštět úlohy Pig Latin tím, že požadavky REST do clusteru
 ## <a id="curl"></a>Spuštění úlohy Pig pomocí Curl
 
 > [!NOTE]
-> Rozhraní API REST je zabezpečeno pomocí [ověřování přístupu k základní](http://en.wikipedia.org/wiki/Basic_access_authentication). Vždy proveďte požadavky pomocí Secure HTTP (HTTPS) k zajištění, že vaše přihlašovací údaje jsou bezpečně odeslat na server.
+> Hello rozhraní API REST je zabezpečeno pomocí [ověřování přístupu k základní](http://en.wikipedia.org/wiki/Basic_access_authentication). Vždy proveďte požadavky pomocí přihlašovacích údajů jsou odeslány bezpečně toohello server tooensure Secure HTTP (HTTPS).
 >
-> Když pomocí příkazů v této části, vyměňte `USERNAME` uživatelem pro ověření clusteru a nahraďte `PASSWORD` s heslem pro uživatelský účet. Nahraďte `CLUSTERNAME` názvem svého clusteru.
+> Když používáte hello příkazy v této části, vyměňte `USERNAME` s hello uživatele tooauthenticate toohello clusteru a nahraďte `PASSWORD` s hello heslo pro uživatelský účet hello. Nahraďte `CLUSTERNAME` s hello názvem vašeho clusteru.
 >
 
 
-1. Z příkazového řádku použijte následující příkaz k ověření, zda se můžete připojit ke clusteru HDInsight:
+1. Z příkazového řádku použijte následující příkaz tooverify, že se můžete připojit tooyour HDInsight cluster hello:
 
     ```bash
     curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/status
     ```
 
-    Mělo by se zobrazit následující odpověď JSON:
+    Měli byste obdržet hello následující odpověď JSON:
 
         {"status":"ok","version":"v1"}
 
-    Parametry použité v tomto příkazu jsou následující:
+    Hello parametry použité v tomto příkazu jsou následující:
 
-    * **-u**: uživatelské jméno a heslo použité k ověření žádosti
+    * **-u**: hello uživatelské jméno a heslo použít tooauthenticate hello požadavku
     * **-G**: označuje, že tento požadavek je požadavek GET.
 
-     Na začátek adresu URL, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, je stejný pro všechny požadavky. Cesta **/status**, označuje, že požadavek je vrátit stav WebHCat (také známé jako Templeton) pro server.
+     Dobrý den, od adresy URL hello, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, hello stejné pro všechny požadavky. Cesta Hello **/status**, signalizuje tento požadavek hello tooreturn hello stav WebHCat (také známé jako Templeton) pro hello server.
 
-2. Použijte následující kód se odeslat úlohu Pig Latin do clusteru:
+2. Použijte následující kód toosubmit clusteru toohello úlohy Pig Latin hello:
 
     ```bash
     curl -u USERNAME:PASSWORD -d user.name=USERNAME -d execute="LOGS=LOAD+'/example/data/sample.log';LEVELS=foreach+LOGS+generate+REGEX_EXTRACT($0,'(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)',1)+as+LOGLEVEL;FILTEREDLEVELS=FILTER+LEVELS+by+LOGLEVEL+is+not+null;GROUPEDLEVELS=GROUP+FILTEREDLEVELS+by+LOGLEVEL;FREQUENCIES=foreach+GROUPEDLEVELS+generate+group+as+LOGLEVEL,COUNT(FILTEREDLEVELS.LOGLEVEL)+as+count;RESULT=order+FREQUENCIES+by+COUNT+desc;DUMP+RESULT;" -d statusdir="/example/pigcurl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/pig
     ```
 
-    Parametry použité v tomto příkazu jsou následující:
+    Hello parametry použité v tomto příkazu jsou následující:
 
-    * **-d**: protože `-G` se nepoužívá, použije se výchozí hodnota žádost na metodu POST. `-d`Určuje datových hodnot, které se odesílají s požadavkem.
+    * **-d**: protože `-G` se nepoužívá, žádost hello výchozí toohello metodu POST. `-d`Určuje hello hodnot dat, které jsou odesílány hello požadavku.
 
-    * **User.Name**: uživatel, který spouští příkaz
-    * **spuštění**: příkazy Pig Latin provést
-    * **statusdir**: adresář, který stav pro tuto úlohu je zapsán do
+    * **User.Name**: hello uživateli, který spouští příkaz hello
+    * **spuštění**: hello Pig Latin příkazy tooexecute
+    * **statusdir**: hello adresář, který hello stavu pro tuto úlohu je zapsán do
 
     > [!NOTE]
-    > Všimněte si, že jsou nahrazovány prostory v příkazech Pig Latin `+` znak při použití s Curl.
+    > Všimněte si, že hello prostory v příkazech Pig Latin jsou nahrazovány hello `+` znak při použití s Curl.
 
-    Tento příkaz by měla vrátit ID úlohy, které je možné zkontrolovat stav úlohy, například:
+    Tento příkaz by měla vrátit ID úlohy, které můžou být použité toocheck hello stav hello úlohy, například:
 
         {"id":"job_1415651640909_0026"}
 
-3. Pokud chcete zkontrolovat stav úlohy, použijte následující příkaz
+3. Stav hello toocheck hello úlohy, hello použijte následující příkaz
 
      ```bash
     curl -G -u USERNAME:PASSWORD -d user.name=USERNAME https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
     ```
 
-     Nahraďte `JOBID` se hodnota vrácená v předchozím kroku. Například, pokud byl návratovou hodnotu `{"id":"job_1415651640909_0026"}`, pak `JOBID` je `job_1415651640909_0026`.
+     Nahraďte `JOBID` s hodnotou hello vráceném v předchozím kroku hello. Například pokud hello se vrátit hodnota byla `{"id":"job_1415651640909_0026"}`, pak `JOBID` je `job_1415651640909_0026`.
 
-    Pokud se úloha dokončí, je stav **úspěšné**.
+    Pokud hello úloha dokončí, je stav hello **úspěšné**.
 
     > [!NOTE]
-    > Tento požadavek Curl vrátí dokument JavaScript Object Notation (JSON) s informace o úloze a jq se používá k načtení jenom hodnotu stavu.
+    > Tento požadavek Curl vrací JavaScript Object Notation (JSON) dokumentu s informacemi o hello úlohy a jq je použité tooretrieve hello pouze hodnotu stavu.
 
 ## <a id="results"></a>Zobrazení výsledků
 
-Pokud se změnila stav úlohy na **úspěšné**, můžete načíst výsledky úlohy. `statusdir` Parametr předaný s dotaz obsahuje umístění výstupního souboru; v tomto případě `/example/pigcurl`.
+Pokud stav hello hello úlohy se změnil příliš**úspěšné**, můžete načíst výsledky hello hello úlohy. Hello `statusdir` parametr předaný s hello dotazu obsahuje hello umístění výstupního souboru hello; v tomto případě `/example/pigcurl`.
 
-HDInsight, můžete použít jako výchozího datového úložiště Azure Storage nebo Azure Data Lake Store. Existují různé způsoby, jak získat na data, podle toho, který používáte. Další informace najdete v části úložiště [HDInsight se systémem Linux informace](hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store) dokumentu.
+HDInsight, můžete použít jako úložiště dat výchozí hello Azure Storage nebo Azure Data Lake Store. Existují různé způsoby tooget v hello dat podle toho, který používáte. Další informace najdete v tématu hello úložiště v tématu hello [HDInsight se systémem Linux informace](hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store) dokumentu.
 
 ## <a id="summary"></a>Shrnutí
 
-Jak je ukázáno v tomto dokumentu, můžete spouštět, monitorovat a zobrazit výsledky úlohy Pig v clusteru HDInsight nezpracovaná požadavek HTTP.
+Jak je ukázáno v tomto dokumentu, můžete použít nezpracovaná toorun požadavku HTTP, monitorování a zobrazení výsledků hello Pig úloh na clusteru HDInsight.
 
-Další informace o rozhraní REST používané v tomto článku najdete v tématu [WebHCat odkaz](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).
+Další informace o rozhraní REST hello používané v tomto článku najdete v tématu hello [WebHCat odkaz](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).
 
 ## <a id="nextsteps"></a>Další kroky
 

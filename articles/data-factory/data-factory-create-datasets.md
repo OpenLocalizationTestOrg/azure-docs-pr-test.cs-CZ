@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření datových sad v Azure Data Factory | Microsoft Docs"
-description: "Postup vytvoření datových sad v Azure Data Factory s příklady, které používají vlastnosti, například posun a anchorDateTime."
+title: "datové sady aaaCreate v Azure Data Factory | Microsoft Docs"
+description: "Zjistěte, jak toocreate datové sady v Azure Data Factory s příklady, které používají vlastnosti, jako posun a anchorDateTime."
 keywords: "Vytvoření datové sady, například datové sady, posun příklad"
 services: data-factory
 documentationcenter: 
@@ -15,28 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: shlo
-ms.openlocfilehash: 6fd58edd830df8ea3f77a68e8dfcaf6de055b17c
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 181859ed250595d756df73e9ebcac08d9e7184c6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datové sady ve službě Azure Data Factory
-Tento článek popisuje, jaké datové sady se, jak jsou definovány ve formátu JSON, a způsobu jejich použití v Azure Data Factory kanálů. Poskytuje podrobnosti o jednotlivých částech (například struktura, dostupnost a zásad) v definici JSON datové sady. Tento článek také poskytuje příklady pro použití **posun**, **anchorDateTime**, a **styl** vlastnosti v definici JSON datové sady.
+Tento článek popisuje, jaké datové sady se, jak jsou definovány ve formátu JSON, a způsobu jejich použití v Azure Data Factory kanálů. Poskytuje podrobnosti o jednotlivých částech (například struktura, dostupnost a zásad) v definici JSON hello datové sady. Hello článku také obsahuje příklady použití hello **posun**, **anchorDateTime**, a **styl** vlastnosti v definici JSON datové sady.
 
 > [!NOTE]
-> Pokud jste nový objekt pro vytváření dat, najdete v části [Úvod do Azure Data Factory](data-factory-introduction.md) Přehled. Pokud nemáte praktických zkušeností s vytvářením objektů pro vytváření dat, vám může pomoci lépe porozumět načtením [kurzu transformaci dat](data-factory-build-your-first-pipeline.md) a [kurzu přesun dat](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+> Pokud jste tooData nový objekt pro vytváření, najdete v části [Úvod tooAzure Data Factory](data-factory-introduction.md) Přehled. Pokud nemáte praktických zkušeností s vytvářením objektů pro vytváření dat, vám může pomoci lépe porozumět ve čtení hello [kurzu transformaci dat](data-factory-build-your-first-pipeline.md) a hello [kurzu přesun dat](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
 ## <a name="overview"></a>Přehled
-Objekt pro vytváření dat může mít jeden nebo víc kanálů. A **kanálu** je logické seskupení **aktivity** společně provádějí úlohy. Aktivity v kanálu definovat akce lze provádět na vaše data. Může například pomocí aktivity kopírování zkopírovat data z místního serveru SQL do úložiště objektů Blob v Azure. Pak můžete použít aktivitu Hive, která se spouští skript Hive v clusteru Azure HDInsight pro zpracování dat z úložiště objektů Blob nevytvořila výstupní data. Nakonec můžete použít druhý aktivity kopírování zkopírovat výstupní data do Azure SQL Data Warehouse, na které business intelligence (BI), vytváření sestav jsou integrované řešení. Další informace o kanály a aktivity, najdete v části [kanály a aktivity v Azure Data Factory](data-factory-create-pipelines.md).
+Objekt pro vytváření dat může mít jeden nebo víc kanálů. A **kanálu** je logické seskupení **aktivity** společně provádějí úlohy. Hello aktivity v kanálu definují akce tooperform na vaše data. Můžete například použít kopie aktivity toocopy data z tooAzure systému SQL Server místní úložiště objektů Blob. Pak můžete použít aktivitu Hive, která se spouští skript Hive na model data tooprocess clusteru Azure HDInsight z objektu Blob úložiště tooproduce výstupní data. Nakonec můžete použít druhé kopie aktivity toocopy hello výstupní data tooAzure SQL Data Warehouse, nad kterou business intelligence (BI), vytváření sestav jsou integrované řešení. Další informace o kanály a aktivity, najdete v části [kanály a aktivity v Azure Data Factory](data-factory-create-pipelines.md).
 
-Aktivita může trvat vstup nula nebo více **datové sady**a vytvoří výstupní datové sady. Představuje vstupní datová sada vstupem pro aktivitu v kanálu a výstupní datové reprezentuje výstup aktivity. Datové sady identifikují dat v rámci různých úložišť dat, jako je například tabulek, souborů, složek a dokumentů. Například datové sadě služby Azure Blob Určuje kontejner objektů blob a složky v úložišti objektů Blob, ze kterého by měl kanálu číst data. 
+Aktivita může trvat vstup nula nebo více **datové sady**a vytvoří výstupní datové sady. Vstupní datové sady reprezentuje hello vstup pro aktivitu v kanálu hello a výstupní datové reprezentuje hello výstup aktivity hello. Datové sady identifikují data v rámci různých úložišť dat, jako jsou tabulky, soubory, složky a dokumenty. Například datové sadě služby Azure Blob určuje hello kontejner objektů blob a složky v úložišti objektů Blob, ze které hello kanálu by měl číst hello data. 
 
-Než vytvoříte datové sady, vytvořit **propojená služba** propojit data store k objektu pro vytváření dat. Propojené služby jsou velmi podobné připojovacím řetězcům, které definují informace o připojení, které služba Data Factory potřebuje pro připojení k externím prostředkům. Datové sady identifikují dat v rámci propojených úložištích dat, jako jsou tabulky SQL, souborů, složek a dokumentů. Například Azure Storage propojená služba propojuje účet úložiště do služby data factory. Datové sadě služby Azure Blob představuje kontejner objektů blob a složky, která obsahuje vstupní objekty BLOB ke zpracování. 
+Než vytvoříte datové sady, vytvořit **propojená služba** toolink data ukládat toohello data factory. Propojené služby jsou mnohem jako připojovací řetězce, které definují hello připojení informace potřebné pro vytváření dat tooconnect tooexternal prostředky. Datové sady identifikují dat v rámci hello propojená datová úložiště, jako jsou tabulky SQL, souborů, složek a dokumentů. Například Azure Storage propojená služba propojuje vytváření dat toohello účet úložiště. Datové sadě služby Azure Blob představuje kontejner objektů blob hello a hello složku, která obsahuje toobe vstupní objekty BLOB hello zpracovat. 
 
-Tady je ukázkový scénář. Ke zkopírování dat z úložiště objektů Blob k databázi SQL, vytvoříte dvě propojené služby: úložiště Azure a Azure SQL Database. Pak vytvořte dvě datové sady: datovou sadu objektu Blob Azure, (který odkazuje na službu Azure Storage, propojené) a tabulky SQL Azure datovou sadu (odkazuje na službu Azure SQL Database propojené). Azure Storage a Azure SQL Database propojené služby obsahovat připojovací řetězce, které objekt pro vytváření dat používá za běhu k připojení k Azure Storage a Azure SQL Database, v uvedeném pořadí. Datovou sadu objektu Blob Azure Určuje kontejner objektů blob a objektů blob složku, která obsahuje vstupní objekty BLOB ve službě Blob storage. Datová sada tabulky SQL Azure Určuje tabulku SQL ve vaší databázi SQL, na které má zkopírovat data.
+Tady je ukázkový scénář. toocopy data z databáze SQL tooa úložiště objektů Blob, vytvoříte dvě propojené služby: úložiště Azure a Azure SQL Database. Pak vytvořte dvě datové sady: datovou sadu objektu Blob Azure, (který se týká toohello propojené služby Azure Storage) a tabulky SQL Azure datovou sadu (odkazuje toohello Azure SQL Database propojené služby). Hello Azure Storage a Azure SQL Database propojené služby obsahovat připojovací řetězce, které objekt pro vytváření dat používá v modulu runtime tooconnect tooyour Azure Storage a Azure SQL Database, v uvedeném pořadí. datovou sadu objektu Blob Azure Hello určuje hello kontejner objektů blob a objektů blob složku, která obsahuje hello vstupní objekty BLOB ve službě Blob storage. Datová sada tabulky SQL Azure Hello Určuje, že hello tabulky SQL ve vašich datech hello toowhich databáze SQL je toobe zkopírovali.
 
-Následující obrázek znázorňuje vztahy mezi kanálu, aktivity, datové sady a propojené služby objektu pro vytváření dat: 
+Hello následující obrázek znázorňuje vztahy hello mezi kanálu, aktivity, datové sady a propojené služby objektu pro vytváření dat: 
 
 ![Vztah mezi kanálu, aktivity, datové sady, propojených služeb](media/data-factory-create-datasets/relationship-between-data-factory-entities.png)
 
@@ -48,12 +48,12 @@ Datové sady ve službě Data Factory je definováno ve formátu JSON následuj�
     "name": "<name of dataset>",
     "properties": {
         "type": "<type of dataset: AzureBlob, AzureSql etc...>",
-        "external": <boolean flag to indicate external data. only for input datasets>,
-        "linkedServiceName": "<Name of the linked service that refers to a data store.>",
+        "external": <boolean flag tooindicate external data. only for input datasets>,
+        "linkedServiceName": "<Name of hello linked service that refers tooa data store.>",
         "structure": [
             {
-                "name": "<Name of the column>",
-                "type": "<Name of the type>"
+                "name": "<Name of hello column>",
+                "type": "<Name of hello type>"
             }
         ],
         "typeProperties": {
@@ -61,8 +61,8 @@ Datové sady ve službě Data Factory je definováno ve formátu JSON následuj�
             "<type specific property 2>": "<value 2>",
         },
         "availability": {
-            "frequency": "<Specifies the time unit for data slice production. Supported frequency: Minute, Hour, Day, Week, Month>",
-            "interval": "<Specifies the interval within the defined frequency. For example, frequency set to 'Hour' and interval set to 1 indicates that new data slices should be produced hourly>"
+            "frequency": "<Specifies hello time unit for data slice production. Supported frequency: Minute, Hour, Day, Week, Month>",
+            "interval": "<Specifies hello interval within hello defined frequency. For example, frequency set too'Hour' and interval set too1 indicates that new data slices should be produced hourly>"
         },
        "policy":
         {      
@@ -71,20 +71,20 @@ Datové sady ve službě Data Factory je definováno ve formátu JSON následuj�
 }
 ```
 
-Následující tabulka popisuje vlastnosti v výše uvedený kód JSON:   
+Hello následující tabulka popisuje vlastnosti v hello výše JSON:   
 
 | Vlastnost | Popis | Požaduje se | Výchozí |
 | --- | --- | --- | --- |
-| jméno |Název datové sady. V tématu [Azure Data Factory - pravidla po pojmenování](data-factory-naming-rules.md) pravidla pojmenování. |Ano |Není k dispozici |
-| type |Typ datové sady. Zadejte jeden z typů podporovaných službou Data Factory (například: AzureBlob, AzureSqlTable). <br/><br/>Podrobnosti najdete v tématu [typ sady](#Type). |Ano |Není k dispozici |
-| Struktura |Schéma datové sady.<br/><br/>Podrobnosti najdete v tématu [strukturu datové sady](#Structure). |Ne |Není k dispozici |
-| rámci typeProperties | Vlastnosti typu se liší pro jednotlivé typy (například: Azure Blob, tabulka Azure SQL). Podrobnosti o svých vlastnostech a podporované typy najdete v tématu [typ sady](#Type). |Ano |Není k dispozici |
-| external | Logický příznak k určení, zda datové sady je explicitně produkovaný kanálu objekt pro vytváření dat nebo ne. Není-li vstupní datové sady pro aktivitu v kanálu aktuální, tento příznak nastavte na hodnotu true. Tento příznak nastavte na hodnotu true pro vstupní datové sady první aktivitu v kanálu.  |Ne |False |
-| dostupnosti | Definuje okna pro zpracování (například hodinové nebo denní) nebo řezů model pro produkční datovou sadu. Jednotlivé jednotky data využívat a vyprodukované spuštění aktivity se nazývá datový řez. Pokud dostupnosti výstupní datové je nastavena na hodnotu denně (frekvenci - den, interval - 1), řez se vytvoří každý den. <br/><br/>Podrobnosti najdete v tématu [datovou sadu dostupnosti](#Availability). <br/><br/>Podrobnosti na datovou sadu řezů modelu najdete v tématu [plánování a provádění](data-factory-scheduling-and-execution.md) článku. |Ano |Není k dispozici |
-| Zásady |Definuje kritéria nebo podmínku, musíte splnit řezy datovou sadu. <br/><br/>Podrobnosti najdete v tématu [datovou sadu zásad](#Policy) části. |Ne |Není k dispozici |
+| jméno |Název datové sady hello. V tématu [Azure Data Factory - pravidla po pojmenování](data-factory-naming-rules.md) pravidla pojmenování. |Ano |Není k dispozici |
+| type |Typ hello datovou sadu. Zadejte jeden z typů hello podporovaných službou Data Factory (například: AzureBlob, AzureSqlTable). <br/><br/>Podrobnosti najdete v tématu [typ sady](#Type). |Ano |Není k dispozici |
+| Struktura |Schéma hello datovou sadu.<br/><br/>Podrobnosti najdete v tématu [strukturu datové sady](#Structure). |Ne |Není k dispozici |
+| typeProperties | vlastnosti typu Hello se liší pro jednotlivé typy (například: Azure Blob, tabulka Azure SQL). Podrobnosti o svých vlastnostech a hello podporované typy najdete v tématu [typ sady](#Type). |Ano |Není k dispozici |
+| external | Logická hodnota příznak toospecify, zda datové sady je explicitně produkovaný kanálu objekt pro vytváření dat nebo ne. Pokud není hello vstupní datové sady pro aktivitu vytvořil hello aktuální kanálu, nastavte tento příznak tootrue. Nastavte tento příznak tootrue pro hello vstupní datové sady hello první aktivitu v kanálu hello.  |Ne |False |
+| dostupnosti | Definuje hello okno zpracování (například hodinové nebo denní) nebo hello řezů model pro produkční hello datovou sadu. Jednotlivé jednotky data využívat a vyprodukované spuštění aktivity se nazývá datový řez. Pokud se hello dostupnost výstupní datové sady toodaily (frekvenci - den, interval - 1), řez vytváří denně. <br/><br/>Podrobnosti najdete v tématu [datovou sadu dostupnosti](#Availability). <br/><br/>Podrobnosti o datovou sadu hello řezů modelu, najdete v části hello [plánování a provádění](data-factory-scheduling-and-execution.md) článku. |Ano |Není k dispozici |
+| policy |Definuje kritéria hello nebo hello podmínku, která musíte splnit řezy hello datovou sadu. <br/><br/>Podrobnosti najdete v tématu hello [datovou sadu zásad](#Policy) části. |Ne |Není k dispozici |
 
 ## <a name="dataset-example"></a>Příklad datové sady
-V následujícím příkladu představuje datovou sadu tabulku s názvem **MyTable** v databázi SQL.
+V následující ukázka hello, datová sada hello představuje tabulku s názvem **MyTable** v databázi SQL.
 
 ```json
 {
@@ -105,12 +105,12 @@ V následujícím příkladu představuje datovou sadu tabulku s názvem **MyTab
 }
 ```
 
-Je třeba počítat s následujícím:
+Všimněte si hello následující body:
 
-* **typ** je nastaven na AzureSqlTable.
-* **Název tabulky** typu (specifické pro typ AzureSqlTable) je nastavena na MyTable.
-* **linkedServiceName** odkazuje na propojené služby typu azuresqldatabase., která je definována v další fragmentu kódu JSON. 
-* **frekvence dostupnosti** je nastaven na den a **interval** je nastaven na hodnotu 1. To znamená, že je řez datovou sadu vytváří denně.  
+* **typ** nastavena tooAzureSqlTable.
+* **Název tabulky** vlastnost type (typ konkrétní tooAzureSqlTable) je nastavená tooMyTable.
+* **linkedServiceName** odkazuje tooa propojené služby typu azuresqldatabase., která je definována v hello další fragmentu kódu JSON. 
+* **frekvence dostupnosti** nastavena tooDay, a **interval** nastavena too1. To znamená, že hello datovou sadu se vytvářejí denně.  
 
 **AzureSqlLinkedService** je definován následujícím způsobem:
 
@@ -127,26 +127,26 @@ Je třeba počítat s následujícím:
 }
 ```
 
-V předchozím fragmentu kódu JSON:
+V předchozím fragmentu kódu JSON hello:
 
-* **typ** je nastaven na azuresqldatabase..
-* **connectionString** vlastnost typu Určuje informace pro připojení k databázi SQL.  
+* **typ** nastavena tooAzureSqlDatabase.
+* **connectionString** vlastnost typu Určuje informace tooconnect tooa SQL database.  
 
-Jak vidíte, propojené služby definuje, jak se připojit k databázi SQL. Datová sada definuje, jaký tabulka je použít jako vstup a výstup aktivity v kanálu.   
+Jak vidíte, hello propojené služby definuje jak tooconnect tooa SQL database. Datová sada Hello definuje, jaký tabulka je použít jako vstup a výstup hello aktivity v kanálu.   
 
 > [!IMPORTANT]
-> Pokud se vytváří datové sady v kanálu, by měl být označen jako **externí**. Toto nastavení obecně platí pro vstupy první aktivitu v kanálu.   
+> Pokud datové sady je vytvářen hello kanálu, by měl být označen jako **externí**. Toto nastavení obecně platí tooinputs první aktivitu v kanálu.   
 
 
 ## <a name="Type"></a>Typ sady
-Typ datové sady závisí na úložiště dat, které používáte. Najdete v následující tabulce najdete seznam úložišť dat podporovaných službou Data Factory. Klikněte na úložiště dat pro informace o vytvoření propojené služby a sadu dat pro toto datové úložiště.
+Typ Hello hello sady dat závisí na hello úložiště dat, které používáte. Viz následující tabulka obsahuje seznam podporovaných službou Data Factory úložiště dat hello. Klikněte na tlačítko data store toolearn jak toocreate propojené služby a datové sady pro tato data uložit.
 
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
-> Úložiště dat, s * může být místní nebo v Azure infrastruktura jako služba (IaaS). Tyto úložiště dat vyžaduje instalaci [Brána pro správu dat](data-factory-data-management-gateway.md).
+> Úložiště dat, s * může být místní nebo v Azure infrastruktura jako služba (IaaS). Tyto úložiště dat vyžadují tooinstall [Brána pro správu dat](data-factory-data-management-gateway.md).
 
-V příkladu v předchozí části, typ datové sady je nastavený na **AzureSqlTable**. Pro datové sadě služby Azure Blob podobně typ datové sady je nastaven na **AzureBlob**, jak je znázorněno v následujícím kódu JSON:
+V příkladu hello v předchozí části hello hello typ DataSet hello je nastaven příliš**AzureSqlTable**. Podobně pro datové sadě služby Azure Blob hello hello sady dat je typ nastaven příliš**AzureBlob**, jak je znázorněno v následujícím JSON hello:
 
 ```json
 {
@@ -173,7 +173,7 @@ V příkladu v předchozí části, typ datové sady je nastavený na **AzureSql
 ```
 
 ## <a name="Structure"></a>Struktura datové sady
-**Struktura** část je nepovinná. Definuje schéma datové sady ve obsahující kolekci názvů a typy dat sloupců. V části struktura použijete k poskytování informací o typu, který se používá k převést typy a mapování sloupců ze zdroje do cíle. V následujícím příkladu, datová sada má tři sloupce: `slicetimestamp`, `projectname`, a `pageviews`. Jsou typu řetězec, řetězec a Decimal, v uvedeném pořadí.
+Hello **struktura** část je nepovinná. Definuje schéma hello datovou sadu hello podle obsahující kolekci názvů a typy dat sloupců. Použijete hello struktura části tooprovide typ informace, které jsou používané tooconvert typy a mapování sloupců z hello zdroj toohello cíl. V následující ukázka hello, hello datová sada má tři sloupce: `slicetimestamp`, `projectname`, a `pageviews`. Jsou typu řetězec, řetězec a Decimal, v uvedeném pořadí.
 
 ```json
 structure:  
@@ -184,31 +184,31 @@ structure:
 ]
 ```
 
-Každý sloupec ve struktuře obsahuje následující vlastnosti:
+Každý sloupec struktury hello obsahuje hello následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| jméno |Název sloupce. |Ano |
-| type |Datový typ sloupce.  |Ne |
-| Jazyková verze |. Na základě NET jazykovou verzi, která se použije, když je typ typ formátu .NET: `Datetime` nebo `Datetimeoffset`. Výchozí hodnota je `en-us`. |Ne |
-| Formát |Řetězec, který se má použít, když je typ typ formátu .NET formátu: `Datetime` nebo `Datetimeoffset`. |Ne |
+| jméno |Název sloupce hello. |Ano |
+| type |Datový typ sloupce hello.  |Ne |
+| Jazyková verze |. Jazykovou verzi na základě NET toobe používá při hello typ je typ formátu .NET: `Datetime` nebo `Datetimeoffset`. Výchozí hodnota Hello je `en-us`. |Ne |
+| Formát |Formátování toobe řetězec se používá při hello typ je typ formátu .NET: `Datetime` nebo `Datetimeoffset`. |Ne |
 
-Následující pokyny vám pomohou určit, kdy se mají zahrnout informace o struktuře a co mají být zahrnuty **struktura** části.
+Hello následující pokyny vám pomohou určit, kdy tooinclude struktury informace a jaké tooinclude v hello **struktura** části.
 
-* **Pro strukturovaná data zdroje**, zadejte v části struktura pouze v případě, že chcete namapovat zdrojové sloupce na jímky sloupců a jejich názvy nejsou stejné. Tento druh zdroj strukturovaných dat ukládá informace schématu a typu dat společně s samotná data. Příklady strukturovaných dat zdroje: SQL Server, Oracle a tabulky Azure. 
+* **Pro strukturovaná data zdroje**, zadejte část struktura hello pouze v případě, že chcete, aby mapování zdrojových sloupců toosink sloupců a jejich názvy nejsou hello stejné. Tento druh zdroj strukturovaných dat ukládá informace schématu a typu dat společně s vlastními daty hello. Příklady strukturovaných dat zdroje: SQL Server, Oracle a tabulky Azure. 
   
-    Protože je již k dispozici pro strukturovaná data zdroje informací o typu, by neměla zahrnovat informace o typu, pokud obsahovat části struktura.
-* **Pro schéma pro zdroje dat pro čtení (konkrétně úložiště objektů Blob)**, můžete k ukládání dat bez ukládání žádné schéma nebo typ informace s daty. Pro tyto typy zdrojů dat zahrnovat chcete namapovat zdrojové sloupce na jímky sloupce struktury. Také zahrnovat struktura, když je datová sada vstupem pro aktivitu kopírování a datové typy sady zdroje dat mají být převedeny na nativní typy pro jímky. 
+    Protože je již k dispozici pro strukturovaná data zdroje informací o typu, by neměla zahrnovat informace o typu, obsahují části struktura hello.
+* **Pro schéma pro zdroje dat pro čtení (konkrétně úložiště objektů Blob)**, můžete toostore data bez ukládání žádné schéma nebo typ informace s daty hello. Pro tyto typy zdrojů dat zahrnují struktura, když chcete, aby toomap zdrojové sloupce toosink sloupce. Také zahrnovat struktura hello datová sada vstupem pro aktivitu kopírování a datové typy datovou sadu zdroj by měl být převedená toonative typy pro hello sink. 
     
-    Objekt pro vytváření dat podporuje následující hodnoty pro poskytnutí informací o typu ve struktuře: **Int16, Int32, Int64, jedním, Double, Decimal, Byte [], logická hodnota, řetězec, Guid, Datetime, Datetimeoffset a časový interval**. Tyto hodnoty jsou specifikace CLS (Common Language)-vyhovující,. Na základě NET typ hodnoty.
+    Objekt pro vytváření dat podporuje následující hodnoty pro poskytnutí informací o typu ve struktuře hello: **Int16, Int32, Int64, jedním, Double, Decimal, Byte [], logická hodnota, řetězec, Guid, Datetime, Datetimeoffset a časový interval**. Tyto hodnoty jsou specifikace CLS (Common Language)-vyhovující,. Na základě NET typ hodnoty.
 
-Objekt pro vytváření dat automaticky provede převody typů, při přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky. 
+Objekt pro vytváření dat převody typů automaticky provede při přesunu, že data ze zdrojových dat úložiště tooa podřízený data. 
   
 
 ## <a name="dataset-availability"></a>Datovou sadu dostupnosti
-**Dostupnosti** oddíl v datové sadě definuje okna zpracování (například hodinový, denní, nebo každý týden) pro datovou sadu. Další informace o aktivity windows najdete v tématu [plánování a provádění](data-factory-scheduling-and-execution.md).
+Hello **dostupnosti** oddíl v datové sadě definuje hello okna pro zpracování (například hodinový, denní, nebo každý týden) pro datovou sadu hello. Další informace o aktivity windows najdete v tématu [plánování a provádění](data-factory-scheduling-and-execution.md).
 
-V následující části dostupnosti Určuje, že výstupní datovou sadu se vytvářejí buď hodinu nebo vstupní datové sady každou hodinu je k dispozici:
+Následující části dostupnosti Hello Určuje, že hello výstupní datovou sadu se buď vytvářejí hodinu nebo vstupní datové sady hello každou hodinu je k dispozici:
 
 ```json
 "availability":    
@@ -218,27 +218,27 @@ V následující části dostupnosti Určuje, že výstupní datovou sadu se vyt
 }
 ```
 
-Pokud kanálu má následující počáteční a koncový čas:  
+Když hello kanálu hello následující počáteční a koncový čas:  
 
 ```json
     "start": "2016-08-25T00:00:00Z",
     "end": "2016-08-25T05:00:00Z",
 ```
 
-Výstupní sada vytváří každou hodinu v rámci kanálu spuštění a ukončení. Proto jsou pět řezy datové sady vyprodukované tímto kanálem, jeden pro každou aktivitu okno (12: 00 - 1 AM, 1: 00 - 2 AM, 2: 00 - 3 AM, 3: 00 - 4 AM, 4: 00 - 5: 00). 
+Hello výstupní datovou sadu se vytvářejí každou hodinu v rámci kanálu hello spuštění a ukončení. Proto jsou pět řezy datové sady vyprodukované tímto kanálem, jeden pro každou aktivitu okno (12: 00 - 1 AM, 1: 00 - 2 AM, 2: 00 - 3 AM, 3: 00 - 4 AM, 4: 00 - 5: 00). 
 
-Následující tabulka popisuje vlastnosti, které můžete použít v části dostupnosti:
+Hello následující tabulka popisuje vlastnosti, které můžete použít v části hello dostupnosti:
 
 | Vlastnost | Popis | Požaduje se | Výchozí |
 | --- | --- | --- | --- |
-| frekvence |Určuje časovou jednotku pro produkční řez datovou sadu.<br/><br/><b>Podporované frekvence</b>: minutu, hodinu, den, týden, měsíc |Ano |Není k dispozici |
-| Interval |Určuje multiplikátor pro četnost.<br/><br/>"Frekvence x interval" Určuje, jak často se vytvářejí řez. Například pokud budete potřebovat datovou sadu, která se rozříznut hodinu, nastavíte <b>frekvence</b> k <b>hodinu</b>, a <b>interval</b> k <b>1</b>.<br/><br/>Všimněte si, že pokud zadáte **frekvence** jako **minutu**, měli byste nastavit interval hodnotu menší než 15. |Ano |Není k dispozici |
-| Styl |Určuje, zda by měl být řez vytváří na začátku nebo na konci interval.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Pokud **frekvence** je nastaven na **měsíc**, a **styl** je nastaven na **EndOfInterval**, řez se vytváří poslední den v měsíci. Pokud **styl** je nastaven na **StartOfInterval**, řez se vytváří první den v měsíci.<br/><br/>Pokud **frekvence** je nastaven na **den**, a **styl** je nastaven na **EndOfInterval**, řez se vytváří za poslední hodinu dne.<br/><br/>Pokud **frekvence** je nastaven na **hodinu**, a **styl** je nastaven na **EndOfInterval**, řez se vytvářejí na konci za hodinu. Například pro řez dobu 13: 00 – 14: 00, je řez vytvořeného ve 2. |Ne |EndOfInterval |
-| anchorDateTime |Definuje absolutní pozici v čase plánovačem slouží k výpočtu hranice řez datovou sadu. <br/><br/>Všimněte si, že pokud tento propoerty částí data, která jsou podrobnější než je zadaná četnost, se ignorují podrobnější částí. Například pokud **interval** je **každou hodinu** (frekvence: hodin a interval: 1) a **anchorDateTime** obsahuje **minuty a sekundy**, pak části minuty a sekundy **anchorDateTime** jsou ignorovány. |Ne |01/01/0001 |
-| Posun |Časový interval, ve kterém jsou zapuštěno počáteční a koncová všech řezech datovou sadu. <br/><br/>Všimněte si, že pokud obě **anchorDateTime** a **posun** jsou nastaveny, výsledkem je kombinovaná shift. |Ne |Není k dispozici |
+| frequency |Určuje časovou jednotku hello k produkci řez datovou sadu.<br/><br/><b>Podporované frekvence</b>: minutu, hodinu, den, týden, měsíc |Ano |Není k dispozici |
+| interval |Určuje multiplikátor pro četnost.<br/><br/>"Frekvence x interval" Určuje, jak často hello se vytvářejí. Například pokud potřebují hello datovou sadu toobe rozříznut hodinu, nastavíte <b>frekvence</b> příliš<b>hodinu</b>, a <b>interval</b> příliš<b>1</b>.<br/><br/>Všimněte si, že pokud zadáte **frekvence** jako **minutu**, byste měli nastavit hello interval toono méně než 15. |Ano |Není k dispozici |
+| Styl |Určuje, zda by měl být na hello počáteční nebo koncový intervalu hello předložen hello řez.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Pokud **frekvence** je nastaven příliš**měsíc**, a **styl** je nastaven příliš**EndOfInterval**, hello se vytvářejí na hello poslední den v měsíci. Pokud **styl** je nastaven příliš**StartOfInterval**, hello se vytvářejí na hello první den v měsíci.<br/><br/>Pokud **frekvence** je nastaven příliš**den**, a **styl** je nastaven příliš**EndOfInterval**, hello se vytvářejí v hello poslední hodiny dne hello.<br/><br/>Pokud **frekvence** je nastaven příliš**hodinu**, a **styl** je nastaven příliš**EndOfInterval**, hello se vytvářejí na konci hello hello hodina. Například pro řez pro hello období 13: 00 – 14: 00, hello se vytvářejí na 14: 00. |Ne |EndOfInterval |
+| anchorDateTime |Definuje hello absolutní pozici v čase, které používá hello Plánovač toocompute datovou sadu řez hranice. <br/><br/>Všimněte si, že pokud má tento propoerty částí data, která jsou podrobnější než hello zadané frekvence hello podrobnější částí se ignorují. Například, pokud hello **interval** je **každou hodinu** (frekvence: hodin a interval: 1) a hello **anchorDateTime** obsahuje **minuty a sekundy**, pak hello minut a sekund **anchorDateTime** jsou ignorovány. |Ne |01/01/0001 |
+| Posun |Časový interval, ve které hello začátku a konci všech řezech datovou sadu posunuty. <br/><br/>Všimněte si, že pokud obě **anchorDateTime** a **posun** jsou nastaveny, výsledkem hello je hello kombinaci shift. |Ne |Není k dispozici |
 
 ### <a name="offset-example"></a>Příklad posunutí
-Ve výchozím nastavení, každý den (`"frequency": "Day", "interval": 1`) řezy začnou ve 12: 00 (půlnoc) koordinovaný světový čas (UTC). Pokud chcete, aby čas spuštění jako čas UTC 6: 00, nastavte posun, jak je znázorněno v následujícím fragmentu kódu: 
+Ve výchozím nastavení, každý den (`"frequency": "Day", "interval": 1`) řezy začnou ve 12: 00 (půlnoc) koordinovaný světový čas (UTC). Pokud chcete místo toho hello počáteční čas čas UTC toobe 6: 00, nastavte hello posun, jak je znázorněno v následujícím fragmentu kódu hello: 
 
 ```json
 "availability":
@@ -249,7 +249,7 @@ Ve výchozím nastavení, každý den (`"frequency": "Day", "interval": 1`) řez
 }
 ```
 ### <a name="anchordatetime-example"></a>Příklad anchorDateTime
-V následujícím příkladu se sada vytváří jednou za 23 hodin. První řez spustí v době určeného **anchorDateTime**, který je nastaven na `2017-04-19T08:00:00` (UTC).
+V následujícím příkladu hello hello sada vytváří jednou za 23 hodin. Hello první řez spustí v době hello určeného **anchorDateTime**, který je nastaven příliš`2017-04-19T08:00:00` (UTC).
 
 ```json
 "availability":    
@@ -261,7 +261,7 @@ V následujícím příkladu se sada vytváří jednou za 23 hodin. První řez 
 ```
 
 ### <a name="offsetstyle-example"></a>Posun nebo styl příklad
-Tyto datové sady je každý měsíc a vytváří 3. v každém měsíci v 8:00 AM (`3.08:00:00`):
+Hello následující datová sada každý měsíc a vytváří hello 3rd v každém měsíci v 8:00 AM (`3.08:00:00`):
 
 ```json
 "availability": {
@@ -273,13 +273,13 @@ Tyto datové sady je každý měsíc a vytváří 3. v každém měsíci v 8:00 
 ```
 
 ## <a name="Policy"></a>Datovou sadu zásad
-**Zásad** oddíl v definici datové sady definuje kritéria nebo podmínku, musíte splnit řezy datovou sadu.
+Hello **zásad** oddíl v definici datové sady hello definuje kritéria hello nebo hello podmínku, která hello řezy datovou sadu musí splnit.
 
 ### <a name="validation-policies"></a>Zásady ověřování
-| Název zásady | Popis | Použít | Požaduje se | Výchozí |
+| Název zásady | Popis | Použít příliš| Požaduje se | Výchozí |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB |Ověří, jestli data v **úložiště objektů Azure Blob** splňuje požadavky na minimální velikost (v megabajtech). |Azure Blob Storage |Ne |Není k dispozici |
-| minimumRows |Ověří, jestli data v **Azure SQL database** nebo **tabulky Azure** obsahuje minimální počet řádků. |<ul><li>Databáze SQL Azure</li><li>Tabulky Azure</li></ul> |Ne |Není k dispozici |
+| minimumSizeMB |Ověří, že hello data v **úložiště objektů Azure Blob** hello splňuje požadavky na minimální velikost (v megabajtech). |Azure Blob Storage |Ne |Není k dispozici |
+| minimumRows |Ověří, zda hello data ve **Azure SQL database** nebo **tabulky Azure** obsahuje hello minimální počet řádků. |<ul><li>Databáze SQL Azure</li><li>Tabulky Azure</li></ul> |Ne |Není k dispozici |
 
 #### <a name="examples"></a>Příklady
 **minimumSizeMB:**
@@ -308,16 +308,16 @@ Tyto datové sady je každý měsíc a vytváří 3. v každém měsíci v 8:00 
 ```
 
 ### <a name="external-datasets"></a>Externích datových sad
-Externích datových sad, jsou ty, které nejsou spuštěné kanálu v datové továrně. Pokud se datová sada je označena jako **externí**, **ExternalData** zásad může být definována, jež ovlivňují chování řez dostupnost datové sady.
+Externích datových sad jsou ty, které nejsou od spuštěné kanál v objektu pro vytváření dat hello hello. Pokud hello datové sady je označena jako **externí**, hello **ExternalData** zásad může být definovaná tooinfluence hello chování hello datovou sadu řez dostupnosti.
 
-Pokud datové sady je vytvářen službou Data Factory, by měl být označen jako **externí**. Toto nastavení se obvykle platí pro vstupy první aktivitu v kanálu, pokud se používá aktivitu nebo řetězení kanálu.
+Pokud datové sady je vytvářen službou Data Factory, by měl být označen jako **externí**. Toto nastavení obecně platí toohello vstupy první aktivitu v kanálu, pokud se používá aktivitu nebo řetězení kanálu.
 
 | Name (Název) | Popis | Požaduje se | Výchozí hodnota |
 | --- | --- | --- | --- |
-| dataDelay |Doba zpoždění kontroly na dostupnost externích dat pro danou řez. Můžete například zpoždění hodinové kontroly pomocí tohoto nastavení.<br/><br/>Toto nastavení platí jenom pro aktuální čas.  Například pokud je 1:00 PM hned teď a tato hodnota je 10 minut, ověření se spustí: 10: 00.<br/><br/>Všimněte si, že toto nastavení neovlivňuje řezy v minulosti. Řezy s **řez koncový čas** + **dataDelay** < **nyní** jsou zpracovávány bez jakéhokoli zpoždění.<br/><br/>Časy větší než 23:59 hodin by měl být určena pomocí `day.hours:minutes:seconds` formátu. Například pokud chcete zadat 24 hodin, nepoužívejte 24:00:00. Místo toho použijte 1.00:00:00. Pokud používáte 24:00:00, bude považován za 24 dní (24.00:00:00). 1 den a 4 hodiny zadejte 1:04:00:00. |Ne |0 |
-| RetryInterval |Doba čekání mezi selhání a další pokus. Toto nastavení platí pro aktuální čas. Pokud předchozí zkuste se nezdařila, je dalším pokusu o po **retryInterval** období. <br/><br/>Pokud je 1:00 PM nyní, můžeme začít prvního pokusu. Pokud doba trvání dokončení první kontrola ověření je 1 minuta a operace se nezdařila, další pokus proběhne v 1:00 + 1 min (doba trvání) + 1min (interval opakování) = 1:02 PM. <br/><br/>Řezy v minulosti není k dispozici žádné zpoždění není. Opakovaném dojde okamžitě. |Ne |00:01:00 (1 min) |
-| retryTimeout |Časový limit pro jednotlivé pokusy o opakování.<br/><br/>Pokud je tato vlastnost nastavená na 10 minut, by se během deseti minut dokončit ověření. Pokud trvá déle než 10 minut, aby k ověření, opakovaném časového limitu.<br/><br/>Pokud všechny pokusy o ověření časový limit řez je označen jako **TimedOut**. |Ne |00:10:00 (10 minut) |
-| maximumRetry |Stanovený počet zkontrolujte dostupnost externí data. Maximální povolená hodnota je 10. |Ne |3 |
+| dataDelay |čas Hello toodelay hello zkontrolovat dostupnost hello hello externích dat pro hello daného řez. Můžete například zpoždění hodinové kontroly pomocí tohoto nastavení.<br/><br/>Hello nastavení pouze platí toohello aktuální čas.  Například pokud je 1:00 PM hned teď a tato hodnota je 10 minut, ověření hello se spustí: 10: 00.<br/><br/>Všimněte si, že toto nastavení neovlivňuje řezy v posledních hello. Řezy s **řez koncový čas** + **dataDelay** < **nyní** jsou zpracovávány bez jakéhokoli zpoždění.<br/><br/>Časy větší než 23:59 hodin zadat pomocí hello `day.hours:minutes:seconds` formátu. Například toospecify 24 hodin, nepoužívejte 24:00:00. Místo toho použijte 1.00:00:00. Pokud používáte 24:00:00, bude považován za 24 dní (24.00:00:00). 1 den a 4 hodiny zadejte 1:04:00:00. |Ne |0 |
+| RetryInterval |Doba čekání Hello mezi selhání i hello další pokusy. Toto nastavení platí toopresent čas. Pokud se nezdařila předchozí zkuste hello, zkuste další hello po hello **retryInterval** období. <br/><br/>Pokud je 1:00 PM nyní, můžeme začít hello prvního pokusu. Pokud hello trvání toocomplete hello první ověření kontrola je 1 minuta a hello operace se nezdařila, hello další pokus proběhne v 1:00 + 1 min (doba trvání) + 1min (interval opakování) = 1:02 PM. <br/><br/>Řezy v posledních hello neexistuje žádné zpoždění není. Hello opakování dojde okamžitě. |Ne |00:01:00 (1 min) |
+| retryTimeout |Hello časový limit pro jednotlivé pokusy o opakování.<br/><br/>Pokud je tato vlastnost nastavená too10 minut hello ověření musí být dokončeny v rámci 10 minut. Pokud trvá déle než 10 minut tooperform hello ověření, opakujte hello časový limit.<br/><br/>Pokud všechny pokusy o hello ověření časového limitu hello řez je označen jako **TimedOut**. |Ne |00:10:00 (10 minut) |
+| maximumRetry |Hello kolikrát toocheck hello dostupnost externích dat hello. Hello maximální povolená hodnota je 10. |Ne |3 |
 
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
@@ -331,22 +331,22 @@ Datové sady můžete vytvořit pomocí jedné z těchto nástrojů nebo sady SD
 - REST API
 - .NET API
 
-Najdete v následujících kurzech podrobné pokyny pro vytváření kanálů a datové sady pomocí jedné z těchto nástrojů nebo sady SDK:
+V tématu hello následující kurzy pro podrobné pokyny pro vytváření kanálů a datové sady pomocí jedné z těchto nástrojů nebo sady SDK:
  
 - [Vytvoření kanálu s aktivitou transformace dat](data-factory-build-your-first-pipeline.md)
 - [Vytvoření kanálu s aktivitou přesun dat](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 
-Po kanálu se vytvoří a nasadí, můžete spravovat a monitorovat kanály pomocí oken Azure portal nebo aplikace, monitorování a správu. Najdete v následujících tématech podrobné pokyny: 
+Po kanálu se vytvoří a nasadí, můžete spravovat a monitorovat hello kanály pomocí oken webu Azure portal nebo hello monitorování a správu aplikace. V tématu hello následující témata podrobné pokyny: 
 
 - [Monitorování a Správa kanálů pomocí oken webu Azure portal](data-factory-monitor-manage-pipelines.md)
-- [Monitorování a Správa kanálů pomocí monitorování a správy aplikace](data-factory-monitor-manage-app.md)
+- [Monitorování a Správa kanálů pomocí monitorování a správu aplikace hello](data-factory-monitor-manage-app.md)
 
 
 ## <a name="scoped-datasets"></a>Oboru datové sady
-Můžete vytvořit datové sady, které jsou omezená na kanálu pomocí **datové sady** vlastnost. Tyto datové sady lze použít pouze aktivity v rámci tohoto kanálu, nikoli aktivity v jiné kanály. V následujícím příkladu definuje kanál pomocí dvě datové sady (InputDataset rdc a OutputDataset rdc) má být použit v rámci kanálu.  
+Můžete vytvořit datové sady, které jsou vymezená tooa kanálu pomocí hello **datové sady** vlastnost. Tyto datové sady lze použít pouze aktivity v rámci tohoto kanálu, nikoli aktivity v jiné kanály. Následující ukázka Hello definuje kanál s dvě datové sady (InputDataset rdc a OutputDataset rdc) toobe používaných v rámci kanálu hello.  
 
 > [!IMPORTANT]
-> Oboru datové sady jsou podporovány pouze s jednorázové kanály (kde **pipelineMode** je nastaven na **OneTime**). V tématu [Onetime kanálu](data-factory-create-pipelines.md#onetime-pipeline) podrobnosti.
+> Oboru datové sady jsou podporovány pouze s jednorázové kanály (kde **pipelineMode** je nastaven příliš**OneTime**). V tématu [Onetime kanálu](data-factory-create-pipelines.md#onetime-pipeline) podrobnosti.
 >
 >
 

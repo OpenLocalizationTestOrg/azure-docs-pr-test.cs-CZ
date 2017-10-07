@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření virtuálního počítače s více síťovými kartami - 1.0 rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Postup vytvoření virtuálního počítače s více síťovými kartami pomocí Azure CLI 1.0."
+title: "aaaCreate virtuálního počítače s více síťovými kartami - 1.0 rozhraní příkazového řádku Azure | Microsoft Docs"
+description: "Zjistěte, jak hello toocreate virtuálního počítače s více síťovými kartami pomocí Azure CLI 1.0."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,32 +16,32 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b95bcb38664718bf25ec6981c803415790c6da3d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 07c660b632bcdc004365a6f910ecf8a5c13cbc6d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-vm-with-multiple-nics-using-the-azure-cli-10"></a>Vytvoření virtuálního počítače s více síťovými kartami pomocí Azure CLI 1.0
+# <a name="create-a-vm-with-multiple-nics-using-hello-azure-cli-10"></a>Vytvoření virtuálního počítače s více síťovými kartami pomocí hello Azure CLI 1.0
 
 [!INCLUDE [virtual-network-deploy-multinic-arm-selectors-include.md](../../includes/virtual-network-deploy-multinic-arm-selectors-include.md)]
 
 [!INCLUDE [virtual-network-deploy-multinic-intro-include.md](../../includes/virtual-network-deploy-multinic-intro-include.md)]
 
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md).  Tento článek se věnuje modelu nasazení Resource Manager, který Microsoft doporučuje pro většinu nových nasazení namísto [klasického modelu nasazení](virtual-network-deploy-multinic-classic-cli.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md).  Tento článek popisuje použití modelu nasazení Resource Manager hello, které společnost Microsoft doporučuje pro většinu nasazení nové místo hello [modelu nasazení classic](virtual-network-deploy-multinic-classic-cli.md).
 >
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-Následující postup použijte skupinu prostředků s názvem *IaaSStory* pro webové servery a skupinu prostředků s názvem *IaaSStory back-end* pro servery DB. Vám může tuto úlohu dokončit pomocí Azure CLI 1.0 (v tomto článku) nebo [Azure CLI 2.0](virtual-network-deploy-static-pip-arm-cli.md). Hodnoty v "" pro proměnné v krocích, které následují vytvořit prostředky s nastaveními z scénáře. Změňte hodnoty, jako je vhodné pro vaše prostředí.
+Hello následující postup použijte skupinu prostředků s názvem *IaaSStory* pro hello webové servery a skupinu prostředků s názvem *IaaSStory back-end* pro servery hello DB. Můžete dokončit tuto úlohu pomocí hello 1.0 rozhraní příkazového řádku Azure (v tomto článku) nebo hello [Azure CLI 2.0](virtual-network-deploy-static-pip-arm-cli.md). Hello hodnoty v "" pro proměnné hello hello kroky, které následují vytvořit prostředky s nastavením hello scénáře. Změnit hello hodnoty, jako je vhodné pro vaše prostředí.
 
 ## <a name="prerequisites"></a>Požadavky
-Před vytvořením servery DB, je potřeba vytvořit *IaaSStory* skupina prostředků se všechny potřebné prostředky pro tento scénář. Pokud chcete vytvořit tyto prostředky, proveďte následující kroky:
+Před vytvořením hello servery DB, musíte toocreate hello *IaaSStory* skupina prostředků se všechny hello potřebné prostředky pro tento scénář. dokončení těchto prostředků, toocreate hello následující kroky:
 
-1. Přejděte na [na stránku šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC).
-2. Na stránce šablony napravo od **nadřazené skupiny prostředků**, klikněte na tlačítko **nasadit do Azure**.
-3. V případě potřeby změňte hodnoty parametrů a potom postupujte podle kroků v portálu Azure preview nasazení skupiny prostředků.
+1. Přejděte příliš[stránku hello šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC).
+2. V stránku hello šablony, toohello napravo od **nadřazené skupiny prostředků**, klikněte na tlačítko **nasazení tooAzure**.
+3. V případě potřeby změňte hodnoty parametrů hello a potom postupujte podle kroků hello ve skupině prostředků hello toodeploy portálu Azure preview hello.
 
 > [!IMPORTANT]
 > Ujistěte se, že vaše názvy účtů úložiště jsou jedinečné. Názvy účtů úložiště duplicitní nemůže mít v Azure.
@@ -49,17 +49,17 @@ Před vytvořením servery DB, je potřeba vytvořit *IaaSStory* skupina prostř
 
 [!INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
 
-## <a name="create-the-back-end-vms"></a>Vytvořit virtuální počítače back-end
-Virtuální počítače back-end závisí na vytvoření v následujících zdrojích informací:
+## <a name="create-hello-back-end-vms"></a>Vytvořit hello back-end virtuální počítače
+Hello virtuálních počítačů v back-end závisí na vytvoření hello hello následující prostředky:
 
-* **Účet úložiště pro datové disky**. Pro lepší výkon datové disky v databázových serverech použije technologii SSD jednotky (SSD Solid-State Drive), která vyžaduje účet úložiště premium. Zajistěte, aby umístění Azure, můžete nasadit pro podporu služby storage úrovně premium.
+* **Účet úložiště pro datové disky**. Pro lepší výkon použije hello datových disků na serverech databáze hello technologii SSD jednotky (SSD Solid-State Drive), která vyžaduje účet úložiště premium. Ujistěte se, zda text hello umístění Azure nasazujete toosupport storage úrovně premium.
 * **Síťové adaptéry**. Každý virtuální počítač bude mít dva síťové adaptéry, jeden pro přístup k databázi a jeden pro správu.
-* **Skupina dostupnosti**. Všechny databázové servery se zařadí do jedné dostupnosti nastavte, ujistěte se, že nejméně jedna z virtuálních počítačů je nahoru a během údržby.
+* **Skupina dostupnosti**. Všechny databázové servery budou přidány sady dostupnosti. jeden tooa, tooensure alespoň jeden z virtuálních počítačů hello je v provozu během údržby.
 
 ### <a name="step-1---start-your-script"></a>Krok 1 – spustit skript
-Si můžete stáhnout skript úplné bash používá [zde](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-cli.sh). Postupujte podle pokynů níže změňte skript pro práci ve vašem prostředí.
+Si můžete stáhnout skript úplné bash hello používá [zde](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-cli.sh). Postupujte podle kroků hello toochange hello skriptu toowork ve vašem prostředí.
 
-1. Změňte hodnoty proměnných níže podle vaší existující skupinu prostředků, které jsou nasazené výše v [požadavky](#Prerequisites).
+1. Změnit hello hodnoty proměnných hello níže podle vaší existující skupinu prostředků, které jsou nasazené výše v [požadavky](#Prerequisites).
 
     ```azurecli
     existingRGName="IaaSStory"
@@ -68,7 +68,7 @@ Si můžete stáhnout skript úplné bash používá [zde](https://raw.githubuse
     backendSubnetName="BackEnd"
     remoteAccessNSGName="NSG-RemoteAccess"
     ```
-2. Změňte hodnoty proměnných níže na základě hodnot, které chcete použít pro vaše nasazení back-end.
+2. Změna hodnoty hello hello proměnných níže na základě hodnot hello chcete toouse pro vaše nasazení back-end.
 
     ```azurecli
     backendRGName="IaaSStory-Backend"
@@ -90,7 +90,7 @@ Si můžete stáhnout skript úplné bash používá [zde](https://raw.githubuse
     numberOfVMs=2
     ```
 
-3. Načtení ID `BackEnd` podsíť, kde bude vytvořen virtuální počítače. Musíte to provést, protože síťové karty, které chcete přidružit k této podsíti jsou v jiné skupině prostředků.
+3. Načíst hello ID pro hello `BackEnd` podsíť, kde bude vytvořen hello virtuálních počítačů. Tuto funkci potřebujete toodo vzhledem k tomu, že hello síťové adaptéry toobe přidružené toothis podsítě jsou v jiné skupině prostředků.
 
     ```azurecli
     subnetId="$(azure network vnet subnet show --resource-group $existingRGName \
@@ -100,10 +100,10 @@ Si můžete stáhnout skript úplné bash používá [zde](https://raw.githubuse
     ```
 
    > [!TIP]
-   > První příkaz výše používá [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) a [manipulace s řetězci](http://tldp.org/LDP/abs/html/string-manipulation.html) (přesněji řečeno, odebrání dílčí řetězec).
+   > První příkaz výše používá Hello [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) a [manipulace s řetězci](http://tldp.org/LDP/abs/html/string-manipulation.html) (přesněji řečeno, odebrání dílčí řetězec).
    >
 
-4. Načtení ID `NSG-RemoteAccess` NSG. Musíte to provést, protože síťové karty, které chcete přidružit k této skupině jsou v jiné skupině prostředků.
+4. Načíst hello ID pro hello `NSG-RemoteAccess` NSG. Tuto funkci potřebujete toodo vzhledem k tomu, že hello síťové adaptéry toobe přidružené toothis NSG jsou v jiné skupině prostředků.
 
     ```azurecli
     nsgId="$(azure network nsg show --resource-group $existingRGName \
@@ -113,13 +113,13 @@ Si můžete stáhnout skript úplné bash používá [zde](https://raw.githubuse
 
 ### <a name="step-2---create-necessary-resources-for-your-vms"></a>Krok 2 – Vytvoření potřebné prostředky pro virtuální počítače
 
-1. Vytvořte novou skupinu prostředků pro všechny prostředky back-end. Všimněte si použití `$backendRGName` proměnná pro název skupiny prostředků a `$location` pro oblast Azure.
+1. Vytvořte novou skupinu prostředků pro všechny prostředky back-end. Všimněte si použití hello hello `$backendRGName` proměnná pro název skupiny prostředků hello, a `$location` pro hello oblast Azure.
 
     ```azurecli
     azure group create $backendRGName $location
     ```
 
-2. Vytvořte účet úložiště premium pro disky operačního systému a dat má být používána vaše virtuální počítače.
+2. Vytvořte účet úložiště premium pro hello operačního systému a datové disky toobe používá vaše virtuální počítače.
 
     ```azurecli
     azure storage account create $prmStorageAccountName \
@@ -128,7 +128,7 @@ Si můžete stáhnout skript úplné bash používá [zde](https://raw.githubuse
         --type PLRS
     ```
 
-3. Vytvořte sadu dostupnosti pro virtuální počítače.
+3. Vytvořte sadu dostupnosti pro hello virtuálních počítačů.
 
     ```azurecli
     azure availset create --resource-group $backendRGName \
@@ -136,9 +136,9 @@ Si můžete stáhnout skript úplné bash používá [zde](https://raw.githubuse
         --name $avSetName
     ```
 
-### <a name="step-3---create-the-nics-and-back-end-vms"></a>Krok 3 – Vytvoření síťové karty a virtuální počítače back-end
+### <a name="step-3---create-hello-nics-and-back-end-vms"></a>Krok 3 – vytvoření hello síťové karty a virtuální počítače back-end
 
-1. Spustit smyčku vytvořit víc virtuálních počítačů, na základě `numberOfVMs` proměnné.
+1. Spuštění několika virtuálních počítačů, podle hello smyčky toocreate `numberOfVMs` proměnné.
 
     ```azurecli
     for ((suffixNumber=1;suffixNumber<=numberOfVMs;suffixNumber++));
@@ -158,7 +158,7 @@ Si můžete stáhnout skript úplné bash používá [zde](https://raw.githubuse
         --subnet-id $subnetId
     ```
 
-3. Pro každý virtuální počítač vytvořte síťovou kartu pro vzdálený přístup. Upozornění `--network-security-group` parametr, použité pro přidružení síťového adaptéru do skupiny NSG.
+3. Pro každý virtuální počítač vytvořte síťovou kartu pro vzdálený přístup. Všimněte si hello `--network-security-group` parametr použité tooassociate hello seskupování tooan NSG.
 
     ```azurecli
     nic2Name=$nicNamePrefix$suffixNumber-RA
@@ -172,7 +172,7 @@ Si můžete stáhnout skript úplné bash používá [zde](https://raw.githubuse
         --network-security-group-id $nsgId
     ```
 
-4. Vytvoření virtuálního počítače.
+4. Vytvořte hello virtuálních počítačů.
 
     ```azurecli
     azure vm create --resource-group $backendRGName \
@@ -191,7 +191,7 @@ Si můžete stáhnout skript úplné bash používá [zde](https://raw.githubuse
         --admin-password $password
     ```
 
-5. Pro každý virtuální počítač, vytvořte dvě datové disky a ukončení smyčky pomocí `done` příkaz.
+5. Pro každý virtuální počítač, vytvořte dvě datové disky a end hello smyčky s hello `done` příkaz.
 
     ```azurecli
     azure vm disk attach-new --resource-group $backendRGName \
@@ -212,10 +212,10 @@ Si můžete stáhnout skript úplné bash používá [zde](https://raw.githubuse
         done
     ```
 
-### <a name="step-4---run-the-script"></a>Krok 4 – spuštění skriptu
-Teď, když jste stáhli a změnit na základě potřeb skriptu, spusťte skript pro vytvoření back-end databáze virtuálních počítačů s více síťovými kartami.
+### <a name="step-4---run-hello-script"></a>Krok 4 – spustit skript hello
+Teď, když jste stáhli a změnit podle svých potřeb, spusťte hello skriptu toocreate hello zpět skriptu hello ukončení databáze virtuálních počítačů s více síťovými kartami.
 
-1. Uložte skript a spusťte jej z vaší **Bash** terminálu. Počáteční výstupu uvidíte, jak je uvedeno níže.
+1. Uložte skript a spusťte jej z vaší **Bash** terminálu. Zobrazí se výstup hello počáteční, a jak je uvedeno níže.
    
         info:    Executing command group create
         info:    Getting resource group IaaSStory-Backend
@@ -232,13 +232,13 @@ Teď, když jste stáhli a změnit na základě potřeb skriptu, spusťte skript
         info:    Creating storage account
         info:    storage account create command OK
         info:    Executing command availset create
-        info:    Looking up the availability set "ASDB"
+        info:    Looking up hello availability set "ASDB"
         info:    Creating availability set "ASDB"
         info:    availset create command OK
         info:    Executing command network nic create
-        info:    Looking up the network interface "NICDB1-DA"
+        info:    Looking up hello network interface "NICDB1-DA"
         info:    Creating network interface "NICDB1-DA"
-        info:    Looking up the network interface "NICDB1-DA"
+        info:    Looking up hello network interface "NICDB1-DA"
         data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory-Backend/providers/Microsoft.Network/networkInterfaces/NICDB1-DA
         data:    Name                            : NICDB1-DA
         data:    Type                            : Microsoft.Network/networkInterfaces
@@ -254,9 +254,9 @@ Teď, když jste stáhli a změnit na základě potřeb skriptu, spusťte skript
         data:
         info:    network nic create command OK
         info:    Executing command network nic create
-        info:    Looking up the network interface "NICDB1-RA"
+        info:    Looking up hello network interface "NICDB1-RA"
         info:    Creating network interface "NICDB1-RA"
-        info:    Looking up the network interface "NICDB1-RA"
+        info:    Looking up hello network interface "NICDB1-RA"
         data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory-Backend/providers/Microsoft.Network/networkInterfaces/NICDB1-RA
         data:    Name                            : NICDB1-RA
         data:    Type                            : Microsoft.Network/networkInterfaces
@@ -273,34 +273,34 @@ Teď, když jste stáhli a změnit na základě potřeb skriptu, spusťte skript
         data:
         info:    network nic create command OK
         info:    Executing command vm create
-        info:    Looking up the VM "DB1"
-        info:    Using the VM Size "Standard_DS3"
-        info:    The [OS, Data] Disk or image configuration requires storage account
-        info:    Looking up the storage account wtestvnetstorageprm
-        info:    Looking up the availability set "ASDB"
+        info:    Looking up hello VM "DB1"
+        info:    Using hello VM Size "Standard_DS3"
+        info:    hello [OS, Data] Disk or image configuration requires storage account
+        info:    Looking up hello storage account wtestvnetstorageprm
+        info:    Looking up hello availability set "ASDB"
         info:    Found an Availability set "ASDB"
-        info:    Looking up the NIC "NICDB1-DA"
-        info:    Looking up the NIC "NICDB1-RA"
+        info:    Looking up hello NIC "NICDB1-DA"
+        info:    Looking up hello NIC "NICDB1-RA"
         info:    Creating VM "DB1"
-2. Po několika minutách se ukončí provádění a zbytek výstupu se zobrazí, jak je uvedeno níže.
+2. Po několika minutách se ukončí provádění hello a zobrazí se hello zbytek hello výstup, jak je uvedeno níže.
    
         info:    vm create command OK
         info:    Executing command vm disk attach-new
-        info:    Looking up the VM "DB1"
-        info:    Looking up the storage account wtestvnetstorageprm
+        info:    Looking up hello VM "DB1"
+        info:    Looking up hello storage account wtestvnetstorageprm
         info:    New data disk location: https://wtestvnetstorageprm.blob.core.windows.net/vhds/datadisk1-1.vhd
         info:    Updating VM "DB1"
         info:    vm disk attach-new command OK
         info:    Executing command vm disk attach-new
-        info:    Looking up the VM "DB1"
-        info:    Looking up the storage account wtestvnetstorageprm
+        info:    Looking up hello VM "DB1"
+        info:    Looking up hello storage account wtestvnetstorageprm
         info:    New data disk location: https://wtestvnetstorageprm.blob.core.windows.net/vhds/datadisk1-2.vhd
         info:    Updating VM "DB1"
         info:    vm disk attach-new command OK
         info:    Executing command network nic create
-        info:    Looking up the network interface "NICDB2-DA"
+        info:    Looking up hello network interface "NICDB2-DA"
         info:    Creating network interface "NICDB2-DA"
-        info:    Looking up the network interface "NICDB2-DA"
+        info:    Looking up hello network interface "NICDB2-DA"
         data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory-Backend/providers/Microsoft.Network/networkInterfaces/NICDB2-DA
         data:    Name                            : NICDB2-DA
         data:    Type                            : Microsoft.Network/networkInterfaces
@@ -316,9 +316,9 @@ Teď, když jste stáhli a změnit na základě potřeb skriptu, spusťte skript
         data:
         info:    network nic create command OK
         info:    Executing command network nic create
-        info:    Looking up the network interface "NICDB2-RA"
+        info:    Looking up hello network interface "NICDB2-RA"
         info:    Creating network interface "NICDB2-RA"
-        info:    Looking up the network interface "NICDB2-RA"
+        info:    Looking up hello network interface "NICDB2-RA"
         data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory-Backend/providers/Microsoft.Network/networkInterfaces/NICDB2-RA
         data:    Name                            : NICDB2-RA
         data:    Type                            : Microsoft.Network/networkInterfaces
@@ -335,25 +335,25 @@ Teď, když jste stáhli a změnit na základě potřeb skriptu, spusťte skript
         data:
         info:    network nic create command OK
         info:    Executing command vm create
-        info:    Looking up the VM "DB2"
-        info:    Using the VM Size "Standard_DS3"
-        info:    The [OS, Data] Disk or image configuration requires storage account
-        info:    Looking up the storage account wtestvnetstorageprm
-        info:    Looking up the availability set "ASDB"
+        info:    Looking up hello VM "DB2"
+        info:    Using hello VM Size "Standard_DS3"
+        info:    hello [OS, Data] Disk or image configuration requires storage account
+        info:    Looking up hello storage account wtestvnetstorageprm
+        info:    Looking up hello availability set "ASDB"
         info:    Found an Availability set "ASDB"
-        info:    Looking up the NIC "NICDB2-DA"
-        info:    Looking up the NIC "NICDB2-RA"
+        info:    Looking up hello NIC "NICDB2-DA"
+        info:    Looking up hello NIC "NICDB2-RA"
         info:    Creating VM "DB2"
         info:    vm create command OK
         info:    Executing command vm disk attach-new
-        info:    Looking up the VM "DB2"
-        info:    Looking up the storage account wtestvnetstorageprm
+        info:    Looking up hello VM "DB2"
+        info:    Looking up hello storage account wtestvnetstorageprm
         info:    New data disk location: https://wtestvnetstorageprm.blob.core.windows.net/vhds/datadisk2-1.vhd
         info:    Updating VM "DB2"
         info:    vm disk attach-new command OK
         info:    Executing command vm disk attach-new
-        info:    Looking up the VM "DB2"
-        info:    Looking up the storage account wtestvnetstorageprm
+        info:    Looking up hello VM "DB2"
+        info:    Looking up hello storage account wtestvnetstorageprm
         info:    New data disk location: https://wtestvnetstorageprm.blob.core.windows.net/vhds/datadisk2-2.vhd
         info:    Updating VM "DB2"
         info:    vm disk attach-new command OK

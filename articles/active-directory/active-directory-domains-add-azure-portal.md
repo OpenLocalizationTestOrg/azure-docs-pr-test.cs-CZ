@@ -1,6 +1,6 @@
 ---
-title: "Přidání vlastního názvu domény do Azure Active Directory | Dokumentace Microsoftu"
-description: "Postup přidání firemních názvů domén do Azure Active Directory a způsob ověření názvu domény."
+title: "aaaAdd vaši vlastní doménu, název tooAzure služby Active Directory | Microsoft Docs"
+description: "Jak tooadd doménu vaší společnosti názvy tooAzure služby Active Directory a jak tooverify hello název domény."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -14,71 +14,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: curtand
-ms.openlocfilehash: ad72f768add7edc1d34a85c27dc2aa1b4e4b3a50
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 88d5f443cd10b098a9a9ffb3137f5e1ca33b6aad
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-a-custom-domain-name-to-azure-active-directory"></a>Přidání vlastního názvu domény do Azure Active Directory
+# <a name="add-a-custom-domain-name-tooazure-active-directory"></a>Přidat tooAzure název vlastní domény služby Active Directory
 > [!div class="op_single_selector"]
 > * [Azure Portal](active-directory-domains-add-azure-portal.md)
 > * [Portál Azure Classic](active-directory-add-domain.md)
 > 
 
-Pomocí služby Azure Active Directory (Azure AD), můžete přidat název vaší firemní domény do Azure AD i. Můžete mít názvy domén, které vám organizace používá pro firmy a uživatele, kteří se přihlašují pomocí firemního názvu domény. Přidání názvu domény do Azure AD umožňuje přiřazovat uživatelská jména v adresáři, které jsou pro uživatele, jako například 'alice@contoso.com. " Proces je jednoduchý:
+Pomocí služby Azure Active Directory (Azure AD), můžete přidat vaše podnikové doméně název tooAzure AD také. Názvy domén můžete mít, že vám organizace používá toodo firmy a uživatele, kteří se přihlašují pomocí firemního názvu domény. Přidání tooAzure název domény hello AD umožňuje tooassign uživatelská jména v adresáři hello, které jsou známé tooyour uživatelů, jako například 'alice@contoso.com. " Hello proces je jednoduchý:
 
-1. Přidání vlastního názvu domény do adresáře
-2. Přidání položky DNS pro název domény u registrátora názvu domény
-3. Ověření vlastního názvu domény v Azure AD
+1. Přidejte adresář tooyour název vlastní domény hello
+2. Přidání položky DNS pro název domény hello u registrátora názvu domény hello
+3. Ověřte hello vlastní název domény ve službě Azure AD
 
 ## <a name="how-do-i-add-a-domain-name"></a>Jak přidat název domény?
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je globální správce adresáře.
-2. Vyberte **další služby**, zadejte **Azure Active Directory** v textovém poli a potom vyberte **Enter**.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com) pomocí účtu, který je globálním správcem adresáře hello.
+2. Vyberte **další služby**, zadejte **Azure Active Directory** v hello textového pole a pak vyberte **Enter**.
    
    ![Správa uživatelů otevírání](./media/active-directory-domains-add-azure-portal/user-management.png)
-3. Na ***název adresáře*** vyberte **názvy domén**.
-4. Na  ***název adresáře* -názvy domén** okně, vyberte **přidat** příkaz.
+3. Na hello ***název adresáře*** vyberte **názvy domén**.
+4. Na hello  ***název adresáře* -názvy domén** okně, vyberte hello **přidat** příkaz.
    
-   ![Použití příkazu Přidat](./media/active-directory-domains-add-azure-portal/add-command.png)
-5. Na **název domény** okno, zadejte název vlastní domény do pole, jako je například "contoso.com" a potom vyberte **přidat doménu**. Nezapomeňte napsat i příponu .com, .net nebo jinou příponu nejvyšší úrovně.
-6. Na ***domainname*** okno (to znamená, v okně otevřeném obsahující v názvu nový název domény), získat informace o záznam DNS, využívající Azure AD ověřit, že vaše organizace vlastní vlastní název domény.
+   ![Výběrem příkazu přidat hello](./media/active-directory-domains-add-azure-portal/add-command.png)
+5. Na hello **název domény** okno, zadejte název vlastní domény hello hello pole, jako je například "contoso.com" a potom vyberte **přidat doménu**. Být, že tooinclude hello .com, .net nebo jinou příponu nejvyšší úrovně.
+6. Na hello ***domainname*** okno (to znamená, hello okno, které se otevře s nový název domény v hlavě hello), získat informace záznam DNS hello, Azure AD použijete tooverify, že vaše organizace vlastní hello vlastní název domény.
    
    ![získat informace o záznam DNS.](./media/active-directory-domains-add-azure-portal/get-dns-info.png)
 
-Teď, když jste název domény přidali, musí Azure AD ověřit, jestli ho vaše organizace vlastní. Aby Azure AD mohl toto ověření provést, musíte přidat položku DNS do souboru zóny DNS pro název domény. To se provádí na webu registrátora názvu domény.
+Nyní, když jste přidali hello název domény, musí Azure AD ověřit, že vaše organizace vlastní název domény hello. Před Azure AD mohl toto ověření provést, musíte přidat položku DNS hello souboru zóny DNS pro název domény hello. Tato úloha se provádí na webu hello registrátorem názvu domény pro název domény hello.
 
-## <a name="add-the-dns-entry-at-the-domain-name-registrar-for-the-domain"></a>Přidání položky DNS pro doménu u registrátora názvu domény
-Pokud chcete používat vlastní název domény ve službě Azure AD, dalším krokem je aktualizace souboru zóny DNS pro takovou doménu. Tím povolíte, aby služba Azure AD ověřila, že vaše organizace je vlastníkem vlastního názvu domény.
+## <a name="add-hello-dns-entry-at-hello-domain-name-registrar-for-hello-domain"></a>Přidejte položku DNS hello v hello registrátorem názvu domény pro doménu hello
+Hello další krok toouse název vlastní domény s Azure AD je souboru zóny DNS hello tooupdate pro doménu hello. To umožňuje tooverify Azure AD, že vaše organizace vlastní hello vlastní název domény.
 
-1. Přihlaste se k registrátorovi názvu domény. Pokud k aktualizaci položky DNS nemáte přístup, požádejte osobu nebo tým, kteří přístup mají, aby dokončili krok 2 a dali vám vědět, až bude hotový.
-2. Aktualizujte soubor zóny DNS pro doménu tím, že přidáte položku DNS, kterou jste získali od Azure AD. Tato položka DNS umožňuje službě Azure AD ověřit vlastnictví domény. Položka DNS neovlivní žádné chování, například směrování pošty nebo webhosting.
+1. Přihlaste se toohello registrátorem názvu domény pro doménu hello. Pokud nemáte přístup tooupdate hello záznam DNS, požádejte hello osobě nebo týmu, který má tento přístup toocomplete krok 2 a toolet, které znáte, až se dokončí.
+2. Soubor zóny DNS hello aktualizace pro hello domény tak, že přidáte položku DNS hello tooyou poskytovaný Azure AD. Tato položka DNS umožňuje službě Azure AD tooverify vlastnictví domény hello. Hello položka DNS neovlivní žádné chování, například směrování pošty nebo webhosting.
 
-Nápovědu k přidání položky DNS najdete v článku [Pokyny k přidání položky DNS u oblíbených registrátorů DNS](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/)
+Nápovědu k této přidání položky DNS hello číst [pokyny pro přidání položky DNS u oblíbených registrátorů DNS](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/)
 
-## <a name="verify-the-domain-name-with-azure-ad"></a>Ověření názvu domény pomocí služby Azure AD
-Po přidání položky DNS jste připraveni na ověření názvu domény pomocí Azure AD.
+## <a name="verify-hello-domain-name-with-azure-ad"></a>Ověřte název domény hello s Azure AD
+Po přidání položky DNS hello jste název domény hello připravené tooverify s Azure AD.
 
-Název domény můžete ověřit, až poté, co jste rozšíří záznamy DNS. Šíření často trvá jen několik sekund, ale občas může zabrat i hodinu nebo déle. Pokud ověření na první pokus nefunguje, zkuste to později.
+Název domény můžete ověřit, až poté, co mají rozšíří hello záznamy DNS. Šíření často trvá jen několik sekund, ale občas může zabrat i hodinu nebo déle. Pokud ověření není možné hello poprvé, zkuste to znovu později.
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je globální správce adresáře.
-2. Vyberte **Procházet**, zadejte do textového pole správy uživatelů a potom vyberte **Enter**.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com) pomocí účtu, který je globálním správcem adresáře hello.
+2. Vyberte **Procházet**, zadejte do textového pole hello správu uživatelů a potom vyberte **Enter**.
    
    ![Správa uživatelů otevírání](./media/active-directory-domains-add-azure-portal/user-management.png)
-3. Na **Správa uživatelů - názvy domén** okně, vyberte název neověřené domény, který chcete ověřit.
-4. Na ***domainname*** okno (to znamená, v okně otevřeném obsahující v názvu nový název domény), vyberte **ověřte, zda** a dokončete ověření.
+3. Na hello **Správa uživatelů - názvy domén** okně, vyberte hello název neověřené domény, které chcete tooverify.
+4. Na hello ***domainname*** okno (to znamená, hello okno, které se otevře s nový název domény v hlavě hello), vyberte **ověřte** toocomplete hello ověření.
 
 Teď můžete [přiřazovat uživatelská jména, která obsahují vlastní název domény](active-directory-users-create-azure-portal.md).
 
 ## <a name="troubleshooting"></a>Řešení potíží
-Pokud nemůžete vlastní název domény ověřit, zkuste následující postup. Začneme těmi nejběžnějšími a budeme postupovat až k těm nejméně častým.
+Pokud nemůžete ověřit vlastní název domény, zkuste následující hello. Začneme s hello nejčastějších a pracovní dolů toohello nejméně častým.
 
-1. **Počkejte hodinu**. Záznamy DNS se musí nejprve rozšířit a teprve potom může služba Azure AD doménu ověřit. Může to trvat hodinu i déle.
-2. **Zkontrolujte, jestli je zadán záznam DNS a jestli je správně**. Tento krok proveďte na webu registrátora názvu domény. Azure AD nemůže ověřit název domény, pokud není záznam DNS k dispozici v souboru zóny DNS, nebo pokud se položka DNS přesně neshoduje s položkou, kterou vám poskytla služba Azure AD. Pokud nemáte přístup k aktualizaci záznamů DNS domény u registrátora názvu domény, poskytněte položku DNS osobě nebo týmu z vaší organizace, kteří tento přístup mají, a požádejte je, aby položku DNS přidali.
-3. **Odstraňte název domény z jiného adresáře ve službě Azure AD**. Název domény můžete ověřit jenom v jediném adresáři. Pokud jste název domény dříve ověřili v jiném adresáři, musíte ho odstranit a teprve potom ho můžete ověřit v novém adresáři. Další informace o odstraňování názvů domén najdete v článku [Správa vlastních názvů domén](active-directory-domains-manage-azure-portal.md).    
+1. **Počkejte hodinu**. Záznamy DNS potřebovat toopropagate před Azure AD můžete ověřit hello domény. Může to trvat hodinu i déle.
+2. **Ujistěte se, hello nebyl zadán záznam DNS a zda je správný**. Dokončení tohoto kroku na hello webu pro hello registrátorem názvu domény pro doménu hello. Azure AD nelze ověřit název domény hello, pokud hello položky DNS není k dispozici v hello souboru zóny DNS, nebo pokud není přesnou shodu s položky DNS hello této Azure AD k dispozici můžete. Pokud nemáte přístup tooupdate záznamy DNS pro doménu hello u registrátora názvu domény hello, sdílet hello položku DNS s hello osobě nebo týmu ve vaší organizaci, kteří tento přístup a požádejte je záznam DNS tooadd hello.
+3. **Odstranit název domény hello z jiného adresáře v Azure AD**. Název domény můžete ověřit jenom v jediném adresáři. Pokud jste název domény dříve ověřili v jiném adresáři, musíte ho odstranit a teprve potom ho můžete ověřit v novém adresáři. čtení toolearn o odstranění názvy domén, [Správa vlastních názvů domén](active-directory-domains-manage-azure-portal.md).    
 
 ## <a name="add-more-custom-domain-names"></a>Přidání dalších vlastních názvů domén
-Pokud vaše organizace používá několik vlastních názvů domén, například contoso.com a contosobank.com, můžete je přidat všechny (až do maximálního počtu 900 názvů domén). Všechny názvy domén můžete přidat opakováním postupu popsaného v tomto článku.
+Pokud vaše organizace používá více vlastních názvů domén, například "contoso.com" a "contosobank.com", můžete je přidat až tooa maximálně 900 názvů domén. Použijte stejné kroky tohoto článku tooadd jednotlivých názvů domén hello.
 
 ## <a name="next-steps"></a>Další kroky
 [Správa vlastních názvů domén](active-directory-domains-manage-azure-portal.md)

@@ -1,6 +1,6 @@
 ---
-title: "Nasazení webové aplikace, která je propojený s úložišti GitHub | Microsoft Docs"
-description: "Pomocí šablony Azure Resource Manager nasadit webovou aplikaci, která obsahuje projekt z úložiště Githubu."
+title: "aaaDeploy webovou aplikaci, která je propojená úložiště GitHub tooa | Microsoft Docs"
+description: "Použijte toodeploy šablony Azure Resource Manager webovou aplikaci, která obsahuje projekt z úložiště Githubu."
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2016
 ms.author: cephalin
-ms.openlocfilehash: 77064802814296d0c21f004534e4264d2f97252e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8b23416c4c06a60991517e6ee4cd82bebc5a9d73
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-a-web-app-linked-to-a-github-repository"></a>Nasazení webové aplikace propojené s úložišti GitHub
-V tomto tématu se dozvíte, jak vytvořit šablonu Azure Resource Manager, nasadí webové aplikace, který je propojený na projekt v úložišti GitHub. Se dozvíte, jak definovat prostředky, ke kterým nasazených a jak definovat parametry, které jsou zadané, když se spustí nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
+# <a name="deploy-a-web-app-linked-tooa-github-repository"></a>Nasazení webové aplikace propojené tooa Githubu úložiště
+V tomto tématu se dozvíte, jak toocreate šablonu Azure Resource Manager, která nasazuje webovou aplikaci, která je propojená tooa projekt v úložišti GitHub. Se dozvíte, jak toodefine prostředky, ke kterým jsou nasazené a jak toodefine parametry, které jsou zadané, když se spustí nasazení hello. Můžete tuto šablonu použít pro vlastní nasazení, nebo si ji přizpůsobit toomeet vašim požadavkům.
 
 Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 
-Pro úplnou šablonu, najdete v části [webové aplikace propojené do šablony Githubu](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.json).
+Hello úplnou šablonu, najdete v části [šablony webové aplikace propojené tooGitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.json).
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="what-you-will-deploy"></a>Co budete nasazovat
-Pomocí této šablony nasadíte webovou aplikaci, která obsahuje kód z projektu na Githubu.
+Pomocí této šablony nasadíte webovou aplikaci, která obsahuje kód hello z projektu na Githubu.
 
-Pokud chcete nasazení spustit automaticky, klikněte na následující tlačítko:
+toorun hello nasazení automaticky, klikněte na následující tlačítko hello:
 
-[![Nasazení do Azure](./media/app-service-web-arm-from-github-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-github-deploy%2Fazuredeploy.json)
+[![Nasazení tooAzure](./media/app-service-web-arm-from-github-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-github-deploy%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Parametry
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
 ### <a name="repourl"></a>repoURL
-Adresa URL pro úložiště GitHub obsahující projekt nasadit. Tento parametr obsahuje výchozí hodnotu, ale tato hodnota je určena pouze k ukazují, jak můžete zadat adresu URL pro úložiště. Tuto hodnotu lze použít při testování šablony, ale můžete zadat adresu URL vlastního úložiště při práci se šablonou.
+Adresa URL Hello pro úložiště GitHub obsahující toodeploy projektu hello. Tento parametr obsahuje výchozí hodnotu, ale tato hodnota je jenom zamýšlený tooshow můžete jak tooprovide hello adresu URL pro úložiště. Tuto hodnotu můžete použít při testování hello šablony, ale bude vhodné tooprovide hello URL vlastního úložiště při práci s hello šablony.
 
     "repoURL": {
         "type": "string",
@@ -48,23 +48,23 @@ Adresa URL pro úložiště GitHub obsahující projekt nasadit. Tento parametr 
     }
 
 ### <a name="branch"></a>Firemní pobočky
-Větev úložiště k použití při nasazení aplikace. Výchozí hodnota je hlavní, ale můžete zadat název žádné větve v úložišti, který chcete nasadit.
+větev Hello hello úložiště toouse při nasazování aplikace hello. Hello výchozí hodnota je hlavní, ale můžete zadat název hello žádné větve v úložišti hello chcete toodeploy.
 
     "branch": {
         "type": "string",
         "defaultValue": "master"
     }
 
-## <a name="resources-to-deploy"></a>Prostředky k nasazení
+## <a name="resources-toodeploy"></a>Toodeploy prostředky
 [!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
 ### <a name="web-app"></a>Webová aplikace
-Vytvoří webovou aplikaci, která je propojená do projektu na Githubu. 
+Vytvoří hello webovou aplikaci, která je propojená toohello projektu na Githubu. 
 
-Zadejte název webové aplikace prostřednictvím **siteName** parametr a umístění webové aplikace prostřednictvím **siteLocation** parametr. V **dependsOn** elementu, že šablona definuje webové aplikace jako závislé na službě hostování plánu. Protože je závislá na hostování plán, webové aplikace se nevytvoří, dokud nedokončí hostingový plán vytváří. **DependsOn** element slouží pouze k určení pořadí nasazení. Pokud webová aplikace jako závislé na hostování plán nezaškrtnete, Azure Resource Manager se pokusí vytvořit i prostředky ve stejnou dobu a může se zobrazit chyba, pokud webová aplikace je vytvořen před hostingový plán.
+Zadejte název hello hello webové aplikace prostřednictvím hello **siteName** parametr a umístění hello hello webové aplikace prostřednictvím hello **siteLocation** parametr. V hello **dependsOn** elementu hello Šablona definuje hello webové aplikace jako závisí na službě hello hostování plánu. Vzhledem k tomu, že je závislá na hello hostování plán, hello webové aplikace se nevytvoří, dokud nedokončí hello hostování plán vytváří. Hello **dependsOn** element je pouze použité toospecify pořadí nasazení. Pokud webová aplikace hello jako závislé na hostování plán hello nezaškrtnete, Azure Resource Manager pokusí toocreate i prostředky v hello stejnou dobu a může se zobrazit chyba Pokud hello webové aplikace se vytvoří před hello hostování plánu.
 
-Webové aplikace má také podřízený prostředek, který je definován v **prostředky** části níže. Tento podřízený prostředek definuje zdrojového kódu pro projekt nasazen s webovou aplikací. V této šabloně se správa zdrojového kódu propojí konkrétní úložiště GitHub. Úložiště GitHub je definován s kódem **"RepoUrl": "https://github.com/davidebbo-test/Mvc52Application.git"** pravděpodobně pevně adresu URL úložiště Pokud chcete vytvořit šablonu, která opakovaně nasadí jedné Projekt současně vyžaduje minimální počet parametrů.
-Místo pevně kódováno adresu URL úložiště, můžete přidat parametr pro adresu URL úložiště a používat pro tuto hodnotu **RepoUrl** vlastnost.
+Hello webové aplikace se také podřízený prostředek, který je definován v **prostředky** části níže. Tento podřízený prostředek definuje zdrojového kódu pro nasazení s hello webové aplikace projektu hello. V této šabloně je hello zdrojového kódu propojené tooa konkrétní úložiště GitHub. úložiště GitHub Hello je definován s kódem hello **"RepoUrl": "https://github.com/davidebbo-test/Mvc52Application.git"** může adresu URL úložiště pevně hello, pokud chcete toocreate šablonu, která opakovaně nasadí jeden projektu při vyžadování hello minimální počet parametrů.
+Místo pevně kódováno hello adresu URL úložiště, můžete přidat parametr pro adresu URL úložiště hello a používat tuto hodnotu pro hello **RepoUrl** vlastnost.
 
     {
       "apiVersion": "2015-08-01",
@@ -94,7 +94,7 @@ Místo pevně kódováno adresu URL úložiště, můžete přidat parametr pro 
       ]
     }
 
-## <a name="commands-to-run-deployment"></a>Příkazy pro spuštění nasazení
+## <a name="commands-toorun-deployment"></a>Příkazy toorun nasazení
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
@@ -109,7 +109,7 @@ Místo pevně kódováno adresu URL úložiště, můžete přidat parametr pro 
     az group deployment create -g {resource-group-name} --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json --parameters '@azuredeploy.parameters.json'
 
 > [!NOTE] 
-> Obsah souboru JSON parametry, najdete v části [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.parameters.json).
+> Obsah souboru JSON hello parametry, najdete v části [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.parameters.json).
 >
 >
 

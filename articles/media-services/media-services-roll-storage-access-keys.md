@@ -1,6 +1,6 @@
 ---
-title: "Po vrácení přístupových klíčů k úložišti aktualizuje Media Services | Microsoft Docs"
-description: "Tento článek poskytují pokyny o tom, jak aktualizovat Media Services po vrácení přístupových klíčů k úložišti."
+title: "aaaUpdate Media Services po vrácení úložiště přístupové klíče | Microsoft Docs"
+description: "Tento článek získáte informace o tom, jak tooupdate Media Services po vrácení úložiště přístupové klíče."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,47 +14,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: 304e72e0d2d4a7e95df513e6d5481def9eae3f68
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 26fa7a75a73397842aaebda59516a00f68ab97f4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>Po vrácení přístupových klíčů k úložišti aktualizuje Media Services
 
-Když vytvoříte nový účet Azure Media Services (AMS), zobrazí se výzva, vyberte účet úložiště Azure, který se používá k ukládání mediální obsah. Můžete přidat více než jeden účty úložiště pro váš účet Media Services. Toto téma ukazuje, jak otočit klíče úložiště. Také ukazuje, jak přidat účty úložiště k účtu media. 
+Když vytvoříte nový účet Azure Media Services (AMS), zobrazí se výzva také, že tooselect Azure Storage účet, který je použit toostore mediální obsah. Můžete přidat více než jeden tooyour účty úložiště účtu Media Services. Toto téma ukazuje, jak toorotate úložiště klíčů. Také ukazuje, jak účtů úložiště tooadd účtu media tooa. 
 
-K provedení akce popsané v tomto tématu, měli byste použít [rozhraní API ARM](https://docs.microsoft.com/rest/api/media/mediaservice) a [prostředí Powershell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.media/v0.3.2/azurerm.media).  Další informace najdete v tématu [jak ke správě prostředků Azure pomocí prostředí PowerShell a správce prostředků](../azure-resource-manager/powershell-azure-resource-manager.md).
+tooperform hello akce popsané v tomto tématu, měli byste použít [rozhraní API ARM](https://docs.microsoft.com/rest/api/media/mediaservice) a [prostředí Powershell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.media/v0.3.2/azurerm.media).  Další informace najdete v tématu [jak toomanage Azure prostředků pomocí prostředí PowerShell a správce prostředků](../azure-resource-manager/powershell-azure-resource-manager.md).
 
 ## <a name="overview"></a>Přehled
 
-Při vytvoření nového účtu úložiště vygeneruje Azure dva 512bitové přístupové klíče k úložišti, které se používají k ověření přístupu k účtu úložiště. K lepšímu zabezpečení připojení k úložišti, doporučujeme pravidelně znovu vygenerovat a otočit přístupový klíč k úložišti. Chcete-li povolit, abyste mohli udržovat připojení k účtu úložiště používat jeden přístupový klíč, zatímco si znovu vygenerujete druhý přístupový klíč jsou k dispozici dva přístupové klíče (primární i sekundární). Tento postup je také označován "postupného přístupových klíčů".
+Při vytvoření nového účtu úložiště vygeneruje Azure dva 512bitové přístupových klíčů k úložišti, které jsou používané tooauthenticate přístup k účtu úložiště tooyour. tookeep připojení k úložišti bezpečnější, že se doporučuje tooperiodically znovu vygenerovat a otočit přístupový klíč k úložišti. Dva přístupové klíče (primární i sekundární) jsou k dispozici v pořadí tooenable jste toomaintain připojení toohello účet úložiště pomocí jednoho přístup klíč zatímco si znovu vygenerujete hello druhý přístupový klíč. Tento postup je také označován "postupného přístupových klíčů".
 
-Služba Media Services, závisí na klíč úložiště, který mu je poskytnut. Konkrétně lokátory, které se používají ke streamování nebo stažení vaše prostředky závisí na přístupový klíč zadaný úložiště. Při vytváření účtu AMS trvá závislost na přístupový klíč primárního úložiště ve výchozím nastavení ale jako uživatel, můžete aktualizovat klíč úložiště, který má AMS. Musí se ujistěte, že se chcete, aby služba Media Services vědět, které klíč pro použití podle následujících kroků popsaných v tomto tématu.  
+Služba Media Services, závisí na zadaný tooit klíč k úložišti. Konkrétně hello lokátory, které jsou používané toostream nebo stáhnout vaše prostředky závisí na hello zadané úložiště přístupový klíč. Při vytváření účtu AMS trvá závislost na hello primárního úložiště přístupový klíč ve výchozím nastavení ale jako uživatel, můžete aktualizovat klíč úložiště hello, který má AMS. Je nutné zkontrolujte, zda že toolet Media Services vědět, které klíče toouse podle následujících kroků popsaných v tomto tématu.  
 
 >[!NOTE]
-> Pokud máte více účtů úložiště, můžete provést tento postup se každý účet úložiště. Pořadí, ve kterém otočit klíčů k úložišti není pevný. Otočit sekundární klíče první a pak primární klíč nebo naopak naopak.
+> Pokud máte více účtů úložiště, můžete provést tento postup se každý účet úložiště. Hello pořadí, ve kterém otočit klíčů k úložišti není pevný. Můžete nejprve otočit hello sekundární klíč a pak hello primární klíč nebo naopak naopak.
 >
-> Před provedením kroků popsaných v tomto tématu na produkční účet, nezapomeňte otestovat v předprodukční účtu.
+> Před provedením kroků popsaných v tomto tématu na produkční účtu, ujistěte se, že tootest je na předprodukční režim účtu.
 >
 
-## <a name="steps-to-rotate-storage-keys"></a>Postup střídání úložiště klíčů 
+## <a name="steps-toorotate-storage-keys"></a>Kroky toorotate úložiště klíčů 
  
- 1. Změnit primární klíč účtu úložiště prostřednictvím rutiny prostředí powershell nebo [Azure](https://portal.azure.com/) portálu.
- 2. Volání rutiny AzureRmMediaServiceStorageKeys synchronizace s odpovídající parametry vynutit účtu media a pokračovat tam, klíče účtu úložiště
+ 1. Změna hello klíč účtu úložiště primární prostřednictvím rutiny prostředí powershell hello nebo [Azure](https://portal.azure.com/) portálu.
+ 2. Volání rutiny AzureRmMediaServiceStorageKeys synchronizace s odpovídající parametry tooforce média účet toopick až klíče účtu úložiště
  
-    Následující příklad ukazuje, jak synchronizovat klíčů na účty úložiště.
+    Hello následující příklad ukazuje, jak toosync klíče toostorage účty.
   
          Sync-AzureRmMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
   
- 3. Počkejte, než hodinu. Ověřte, že streamování scénářů pracují.
- 4. Změnit sekundární klíč účtu úložiště prostřednictvím rutiny prostředí powershell nebo portálu Azure.
- 5. Volání synchronizace AzureRmMediaServiceStorageKeys prostředí powershell s odpovídající parametry vynutit účtu media zachycení nových klíčů účtu úložiště. 
- 6. Počkejte, než hodinu. Ověřte, že streamování scénářů pracují.
+ 3. Počkejte, než hodinu. Ověřte, že hello streamování scénářů pracují.
+ 4. Změnit sekundární klíč účtu úložiště prostřednictvím rutiny prostředí powershell hello nebo portálu Azure.
+ 5. Volání synchronizace AzureRmMediaServiceStorageKeys prostředí powershell s odpovídající parametry tooforce média účet toopick si nových klíčů účtu úložiště. 
+ 6. Počkejte, než hodinu. Ověřte, že hello streamování scénářů pracují.
  
 ### <a name="a-powershell-cmdlet-example"></a>V příkladu rutiny prostředí powershell 
 
-Následující příklad ukazuje, jak získat účet úložiště a synchronizovat s účtu AMS.
+Hello následující příklad ukazuje, jak tooget hello účtu úložiště a synchronizovat s účtem hello AMS.
 
     $regionName = "West US"
     $resourceGroupName = "SkyMedia-USWest-App"
@@ -65,9 +65,9 @@ Následující příklad ukazuje, jak získat účet úložiště a synchronizov
     Sync-AzureRmMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
 
  
-## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>Postup pro přidání do vašeho účtu AMS účty úložiště
+## <a name="steps-tooadd-storage-accounts-tooyour-ams-account"></a>Účet tooyour AMS účtů úložiště tooadd kroky
 
-Následující téma ukazuje, jak přidat účty úložiště do vašeho účtu AMS: [k účtu Media Services připojit více účtů úložiště](meda-services-managing-multiple-storage-accounts.md).
+Hello následující téma ukazuje, jak účtů úložiště tooadd tooyour AMS účet: [připojit více tooa účty úložiště účtu Media Services](meda-services-managing-multiple-storage-accounts.md).
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -76,4 +76,4 @@ Následující téma ukazuje, jak přidat účty úložiště do vašeho účtu 
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ### <a name="acknowledgments"></a>Potvrzování
-Rádi bychom se na vědomí následující osob, které podílí k vytvoření tohoto dokumentu: Cenk Dingiloglu, Gada Milán Seva Titov.
+Rádi bychom znali tooacknowledge hello následující osoby podílí k vytvoření tohoto dokumentu: Cenk Dingiloglu, Gada Milán Seva Titov.

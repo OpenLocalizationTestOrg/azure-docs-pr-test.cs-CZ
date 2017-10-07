@@ -1,6 +1,6 @@
 ---
-title: "Připojení zařízení pomocí jazyka C na mbed | Microsoft Docs"
-description: "Popisuje, jak se připojit k Azure IoT Suite předkonfigurované řešení vzdáleného monitorování pomocí aplikace napsané v jazyce C spuštění v zařízení s mbed zařízení."
+title: "aaaConnect zařízení pomocí jazyka C na mbed | Microsoft Docs"
+description: "Popisuje, jak tooconnect toohello zařízení Azure IoT Suite předkonfigurované řešení vzdáleného monitorování pomocí aplikace napsané v jazyce C spuštění v zařízení s mbed."
 services: 
 suite: iot-suite
 documentationcenter: na
@@ -16,70 +16,70 @@ ms.workload: na
 ms.date: 05/22/2017
 ms.author: dobett
 ROBOTS: NOINDEX
-ms.openlocfilehash: ef7b78f85a787f8fbe22c0e26aa34f0cd1685d58
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dcd1e74635e8dec678a59bff060a73f7cfabd124
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-mbed"></a>Připojte zařízení k monitorování předkonfigurované řešení vzdáleného (mbed)
+# <a name="connect-your-device-toohello-remote-monitoring-preconfigured-solution-mbed"></a>Připojit vaše zařízení toohello (mbed) předkonfigurovanému řešení vzdáleného monitorování
 
 ## <a name="scenario-overview"></a>Přehled scénáře
-V tomto scénáři vytvoříte zařízení, které odesílá následující telemetrii do [předkonfigurovaného řešení][lnk-what-are-preconfig-solutions] vzdáleného monitorování:
+V tomto scénáři vytvoříte zařízení, které odesílá hello následující telemetrie toohello vzdálené monitorování [předkonfigurované řešení][lnk-what-are-preconfig-solutions]:
 
 * Venkovní teplota
 * Vnitřní teplota
 * Vlhkost
 
-Kód v zařízení pro zjednodušení generuje ukázkové hodnoty, ale doporučujeme vám ukázku rozšířit připojením skutečných senzorů k zařízení a odesíláním skutečné telemetrie.
+Pro jednoduchost hello kódu na zařízení hello generuje ukázkové hodnoty, ale doporučujeme vám tooextend hello ukázka připojením zařízení tooyour skutečné senzory a odesláním skutečné telemetrie.
 
-Zařízení je také schopné odpovídat na metody vyvolané z řídicího panelu řešení a na požadované hodnoty vlastností nastavené na řídicím panelu řešení.
+Hello zařízení je také možné toorespond toomethods volat z řídicí panel řešení hello a potřeby vlastnost hodnotami nastavenými v řídicí panel řešení hello.
 
-K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure][lnk-free-trial].
+toocomplete tohoto kurzu potřebujete aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure][lnk-free-trial].
 
 ## <a name="before-you-start"></a>Než začnete
 Než začnete psát kód pro zařízení, je nutné zřídit předkonfigurované řešení vzdáleného monitorování a v něm zřídit nové vlastní zařízení.
 
 ### <a name="provision-your-remote-monitoring-preconfigured-solution"></a>Zřízení předkonfigurovaného řešení vzdáleného monitorování
-Zařízení, které v tomto kurzu vytvoříte, odesílá data do instance předkonfigurovaného řešení [vzdáleného monitorování][lnk-remote-monitoring]. Pokud jste ve svém účtu Azure ještě nezřídili předkonfigurované řešení vzdáleného monitorování, použijte následující postup:
+Hello zařízení v tomto kurzu vytvoříte odesílá data tooan instanci hello [vzdálené monitorování] [ lnk-remote-monitoring] předkonfigurované řešení. Pokud jste ještě nezřídili hello vzdálené monitorování předkonfigurované řešení v účtu Azure, použijte hello následující kroky:
 
-1. Na stránce <https://www.azureiotsuite.com/> můžete vytvořit řešení kliknutím na **+**.
-2. Kliknutím na **Vybrat** na panelu **Vzdálené monitorování** vytvořte řešení.
-3. Na stránce **Vytvořit řešení vzdáleného monitorování** zadejte **Název řešení** podle vašeho výběru, vyberte **Oblast**, do které chcete řešení nasadit, a vyberte předplatné Azure, které chcete použít. Potom klikněte na **Vytvořit řešení**.
-4. Počkejte, dokud proces zřizování neskončí.
+1. Na hello <https://www.azureiotsuite.com/> klikněte na tlačítko  **+**  toocreate řešení.
+2. Klikněte na tlačítko **vyberte** na hello **vzdálené monitorování** panelu toocreate řešení.
+3. Na hello **vytvořit řešení vzdáleného sledování** stránky, zadejte **název řešení** podle vaší volby, vyberte hello **oblast** toodeploy do mají a vyberte hello Azure toouse toowant předplatné. Potom klikněte na **Vytvořit řešení**.
+4. Počkejte na dokončení procesu zřizování hello.
 
 > [!WARNING]
-> Předkonfigurovaná řešení využívají fakturovatelné služby Azure. Abyste se vyhnuli zbytečným poplatkům, nezapomeňte předkonfigurované řešení odebrat ze svého předplatného, jakmile s ním budete hotovi. Předkonfigurované řešení můžete ze svého předplatného úplně odebrat na stránce <https://www.azureiotsuite.com/>.
+> Hello předkonfigurované řešení využívají fakturovatelný služby Azure. Ujistěte se, tooremove hello předkonfigurované řešení ze svého předplatného, když jste hotovi s ním tooavoid všechny nepotřebné poplatky. Předkonfigurované řešení můžete úplně odebrat ze svého předplatného návštěvou hello <https://www.azureiotsuite.com/> stránky.
 > 
 > 
 
-Po skončení procesu zřizování řešení vzdáleného monitorování klikněte na **Spustit**. Ve vašem prohlížeči se otevře řídicí panel řešení.
+Po dokončení hello zřizování pro hello řešení vzdáleného sledování, klikněte na tlačítko **spusťte** řídicí panel řešení hello tooopen v prohlížeči.
 
 ![Řídicí panel řešení][img-dashboard]
 
-### <a name="provision-your-device-in-the-remote-monitoring-solution"></a>Zřízení zařízení v řešení vzdáleného monitorování
+### <a name="provision-your-device-in-hello-remote-monitoring-solution"></a>Zřízení zařízení v řešení vzdáleného sledování hello
 > [!NOTE]
-> Pokud jste už ve svém řešení zařízení zřídili, můžete tento krok přeskočit. Při vytváření klientské aplikace potřebujete znát přihlašovací údaje zařízení.
+> Pokud jste už ve svém řešení zařízení zřídili, můžete tento krok přeskočit. Přihlašovací údaje tooknow hello zařízení musíte při vytváření hello klientské aplikace.
 > 
 > 
 
-Aby se zařízení mohlo připojit k předkonfigurovanému řešení, musí se identifikovat ve službě IoT Hub pomocí platných přihlašovacích údajů. Přihlašovací údaje zařízení můžete zjistit z řídicího panelu řešení. Přihlašovací údaje zařízení vložíte do klientské aplikace později v tomto kurzu.
+Pro zařízení tooconnect toohello předkonfigurované řešení, se musí identifikovat tooIoT centra pomocí platných přihlašovacích údajů. Přihlašovací údaje hello zařízení můžete načíst z řídicí panel řešení hello. Přihlašovací údaje zařízení hello zahrnete do klientské aplikace později v tomto kurzu.
 
-Pokud chcete přidat zařízení do řešení vzdáleného monitorování, proveďte na řídicím panelu řešení následující kroky:
+tooadd zařízení tooyour řešení vzdáleného monitorování, dokončení hello následující kroky v řídicí panel řešení hello:
 
-1. V levém dolním rohu řídicího panelu klikněte na **Přidat zařízení**.
+1. V hello levém dolním rohu hello řídicí panel, klikněte na **přidání zařízení**.
    
    ![Přidání zařízení][1]
-2. Na panelu **Vlastní zařízení** klikněte na **Přidat nové**.
+2. V hello **vlastní zařízení** panelu, klikněte na tlačítko **přidat nový**.
    
    ![Přidání vlastního zařízení][2]
-3. Vyberte možnost **Definovat vlastní ID zařízení**. Zadejte ID zařízení, třeba **mydevice**, klikněte na **Zkontrolovat ID** pro ověření, že se tento název ještě nepoužívá, a potom zřiďte zařízení kliknutím na **Vytvořit**.
+3. Vyberte možnost **Definovat vlastní ID zařízení**. Zadejte ID zařízení, jako **mydevice**, klikněte na tlačítko **Zkontrolujte ID** tooverify tento název již není používána a pak klikněte na tlačítko **vytvořit** tooprovision hello zařízení.
    
    ![Přidání ID zařízení][3]
-4. Poznamenejte si přihlašovací údaje zařízení (ID zařízení, název hostitele služby IoT Hub a Klíč zařízení). Klientská aplikace potřebuje tyto hodnoty pro připojení k řešení vzdáleného monitorování. Potom klikněte na **Done** (Hotovo).
+4. Nastavit hello zařízení Poznámka: přihlašovací údaje (ID zařízení, název hostitele centra IoT a klíč zařízení). Klientské aplikace, musí tyto hodnoty tooconnect toohello řešení vzdáleného sledování. Potom klikněte na **Done** (Hotovo).
    
     ![Zobrazení přihlašovacích údajů zařízení][4]
-5. V seznamu zařízení na řídicím panelu řešení vyberte své zařízení. Pak na panelu **Podrobnosti o zařízení** klikněte na **Povolit zařízení**. Stav vašeho zařízení je teď **Spuštěno**. Řešení vzdáleného monitorování teď může z vašeho zařízení přijímat telemetrii a vyvolávat v něm metody.
+5. Vyberte zařízení v seznamu zařízení hello v řídicí panel řešení hello. Potom v hello **podrobnosti o zařízení** panelu, klikněte na tlačítko **povolit zařízení**. Hello stav zařízení je nyní **systémem**. řešení vzdáleného monitorování Hello teď můžete přijímat telemetrická data ze zařízení a volat metody na hello zařízení.
 
 [img-dashboard]: ./media/iot-suite-connecting-devices-mbed/dashboard.png
 [1]: ./media/iot-suite-connecting-devices-mbed/suite0.png
@@ -91,57 +91,57 @@ Pokud chcete přidat zařízení do řešení vzdáleného monitorování, prove
 [lnk-remote-monitoring]: iot-suite-remote-monitoring-sample-walkthrough.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
-## <a name="build-and-run-the-c-sample-solution"></a>Sestavte a spusťte ukázkové řešení C
+## <a name="build-and-run-hello-c-sample-solution"></a>Sestavte a spusťte ukázkové řešení hello C
 
-Následující pokyny popisují kroky pro připojení [povoleno mbed FRDM K64F Freescale] [ lnk-mbed-home] zařízení do řešení vzdáleného monitorování.
+Hello následující pokyny popisují postup hello připojení [povoleno mbed FRDM K64F Freescale] [ lnk-mbed-home] zařízení toohello řešení vzdáleného sledování.
 
-### <a name="connect-the-mbed-device-to-your-network-and-desktop-machine"></a>Zařízení s mbed připojte k počítači sítě a vzdálené ploše
+### <a name="connect-hello-mbed-device-tooyour-network-and-desktop-machine"></a>Připojit hello mbed zařízení tooyour sítě a stolní počítače
 
-1. Připojte zařízení mbed k síti pomocí kabelu Ethernet. Tento krok je nezbytný, protože ukázkové aplikace vyžaduje přístup k Internetu.
+1. Připojte hello mbed zařízení tooyour síti pomocí kabelu Ethernet. Tento krok je nezbytný, protože hello ukázkové aplikace vyžaduje přístup k Internetu.
 
-1. V tématu [Začínáme s mbed] [ lnk-mbed-getstarted] k připojení zařízení mbed pro stolní počítač.
+1. V tématu [Začínáme s mbed] [ lnk-mbed-getstarted] tooconnect mbed zařízení tooyour ploše počítače.
 
-1. Pokud počítače se systémem Windows, přečtěte si téma [konfigurace počítače] [ lnk-mbed-pcconnect] nakonfigurujte sériového portu zařízení mbed.
+1. Pokud počítače se systémem Windows, přečtěte si téma [konfigurace počítače] [ lnk-mbed-pcconnect] tooconfigure sériového portu přístup tooyour mbed zařízení.
 
-### <a name="create-an-mbed-project-and-import-the-sample-code"></a>Vytvoření projektu mbed a importovat ukázkový kód
+### <a name="create-an-mbed-project-and-import-hello-sample-code"></a>Vytvoření projektu mbed a importovat hello ukázkový kód
 
-Postupujte podle těchto kroků pro přidání do projektu mbed některé ukázkový kód. Import vzdálené monitorování starter projekt a poté změňte projekt, který používá protokol MQTT místo protokolu AMQP. Nyní budete muset použít protokol MQTT používat funkce správy zařízení služby IoT Hub.
+Postupujte podle těchto kroků tooadd některé ukázkový kód tooan mbed projekt. Import projektu starter vzdálené monitorování hello a poté změňte hello projektu toouse hello MQTT protokol místo hello protokolu AMQP. V současné době je nutné toouse hello MQTT protokol toouse hello funkce správy zařízení služby IoT Hub.
 
-1. Ve webovém prohlížeči, přejděte mbed.org [vývojáře lokality](https://developer.mbed.org/). Pokud nemáte registraci, zobrazí se možnost vytvoření účtu (je to zdarma). Jinak Přihlaste se pomocí přihlašovacích údajů účtu. Pak klikněte na tlačítko **kompilátoru** v pravém horním rohu stránky. Tato akce integruje do *prostoru* rozhraní.
+1. Ve webovém prohlížeči, přejděte toohello mbed.org [vývojáře lokality](https://developer.mbed.org/). Pokud nemáte registraci, zobrazí toocreate možnost účet (je to zdarma). Jinak Přihlaste se pomocí přihlašovacích údajů účtu. Pak klikněte na tlačítko **kompilátoru** v horním pravém horním rohu stránky hello hello. Tato akce přináší, toohello *prostoru* rozhraní.
 
-1. Ujistěte se, že se zobrazí v pravém horním rohu okna hardwaru platformu, kterou používáte, nebo klikněte na ikonu v pravém rohu vyberte platformu hardwaru.
+1. Zajistěte, aby se zobrazí v horním pravém horním rohu okna hello hello hello hardwarová platforma, kterou používáte, nebo klikněte na tlačítko hello ikonu v pravém rohu tooselect hello hardwarová platforma.
 
-1. Klikněte na tlačítko **Import** v hlavní nabídce. Pak klikněte na tlačítko **kliknutím sem importovat z adresy URL**.
+1. Klikněte na tlačítko **Import** v hlavní nabídce hello. Pak klikněte na tlačítko **tooimport z adresy URL, klikněte sem**.
    
-    ![Spusťte import do pracovního prostoru mbed][6]
+    ![Spusťte import toombed prostoru][6]
 
-1. Zadejte odkaz pro https://developer.mbed.org/users/AzureIoTClient/code/remote_monitoring/ kód ukázka v místním okně, pak klikněte na **Import**.
+1. V místním okně hello, zadejte hello odkaz pro hello ukázkový kód https://developer.mbed.org/users/AzureIoTClient/code/remote_monitoring/ a klikněte na **Import**.
    
-    ![Import ukázkový kód do pracovního prostoru mbed][7]
+    ![Import ukázkový kód toombed prostoru][7]
 
-1. Zobrazí se v okně kompilátoru mbed, import tento projekt taky importuje různých knihoven. Některé zadané a udržovat tým Azure IoT ([azureiot_common](https://developer.mbed.org/users/AzureIoTClient/code/azureiot_common/), [iothub_client](https://developer.mbed.org/users/AzureIoTClient/code/iothub_client/), [iothub_amqp_transport](https://developer.mbed.org/users/AzureIoTClient/code/iothub_amqp_transport/), [azure_uamqp](https://developer.mbed.org/users/AzureIoTClient/code/azure_uamqp/)), zatímco jiné jsou dostupné v katalogu knihoven mbed knihovny třetích stran.
+1. Zobrazí se v okně kompilátoru mbed hello, import tento projekt taky importuje různých knihoven. Některé zadané a udržovat tým Azure IoT hello ([azureiot_common](https://developer.mbed.org/users/AzureIoTClient/code/azureiot_common/), [iothub_client](https://developer.mbed.org/users/AzureIoTClient/code/iothub_client/), [iothub_amqp_transport](https://developer.mbed.org/users/AzureIoTClient/code/iothub_amqp_transport/), [azure_uamqp](https://developer.mbed.org/users/AzureIoTClient/code/azure_uamqp/)), zatímco jiné jsou dostupné v katalogu knihoven mbed hello knihovny třetích stran.
    
     ![Zobrazení mbed projektu][8]
 
-1. V **prostoru programu**, klikněte pravým tlačítkem myši **iothub\_amqp\_přenosu** knihovny, klikněte na tlačítko **odstranit**a potom klikněte na  **OK** k potvrzení.
+1. V hello **prostoru programu**, hello klikněte pravým tlačítkem na **iothub\_amqp\_přenosu** knihovny, klikněte na tlačítko **odstranit**a potom klikněte na **OK** tooconfirm.
 
-1. V **prostoru programu**, klikněte pravým tlačítkem myši **azure\_amqp\_c** knihovny, klikněte na tlačítko **odstranit**a potom klikněte na **OK** k potvrzení.
+1. V hello **prostoru programu**, klikněte pravým tlačítkem na hello **azure\_amqp\_c** knihovny, klikněte na tlačítko **odstranit**a potom klikněte na **OK**  tooconfirm.
 
-1. Klikněte pravým tlačítkem myši **remote_monitoring** projektu v **prostoru programu**, vyberte **knihovny importu**, pak vyberte **z adresy URL**.
+1. Klikněte pravým tlačítkem na hello **remote_monitoring** projekt v hello **prostoru programu**, vyberte **knihovny importu**, pak vyberte **z adresy URL**.
    
-    ![Spuštění knihovny importu do pracovního prostoru mbed][6]
+    ![Spuštění knihovny importu toombed prostoru][6]
 
-1. V místním okně, zadejte odkaz pro https://developer.mbed.org/users/AzureIoTClient/code/iothub knihovny přenosu MQTT\_mqtt\_přenosu / klikněte **Import**.
+1. V místním okně hello, zadejte hello odkaz pro hello MQTT přenosu knihovny https://developer.mbed.org/users/AzureIoTClient/code/iothub\_mqtt\_přenosu / klikněte **Import**.
    
-    ![Import knihovny do pracovního prostoru mbed][12]
+    ![Importovat knihovny toombed prostoru][12]
 
-1. Opakujte předchozí krok pro přidání knihovně MQTT z https://developer.mbed.org/users/AzureIoTClient/code/azure\_umqtt\_c /.
+1. Hello zopakujte předchozí krok tooadd hello MQTT knihovny z https://developer.mbed.org/users/AzureIoTClient/code/azure\_umqtt\_c /.
 
-1. Pracovní prostor teď vypadá takto:
+1. Pracovní prostor se teď vypadá jako hello následující:
 
     ![Zobrazení mbed prostoru][13]
 
-1. Otevřete vzdálených\_monitoring\remote_monitoring.c souboru a nahradit stávající `#include` příkazy následujícím kódem:
+1. Otevřete hello vzdálené\_monitoring\remote_monitoring.c souboru a nahradit stávající hello `#include` příkazy s hello následující kód:
 
     ```c
     #include "iothubtransportmqtt.h"
@@ -157,15 +157,15 @@ Postupujte podle těchto kroků pro přidání do projektu mbed některé ukázk
     #include "certs.h"
     #endif // MBED_BUILD_TIMESTAMP
     ```
-1. Odstranit všechny zbývající kód ve vzdáleném\_monitoring\remote\_monitoring.c souboru.
+1. Odstranit všechny hello zbývající kód v hello vzdálené\_monitoring\remote\_monitoring.c souboru.
 
 [!INCLUDE [iot-suite-connecting-code](../../includes/iot-suite-connecting-code.md)]
 
-## <a name="build-and-run-the-sample"></a>Sestavit a spustit ukázku
+## <a name="build-and-run-hello-sample"></a>Sestavení a spuštění ukázkových hello
 
-Přidejte kód, který má být vyvolán **vzdáleného\_monitorování\_spustit** funkce a potom sestavit a spustit aplikaci zařízení.
+Přidat kód tooinvoke hello **vzdáleného\_monitorování\_spustit** funkce a potom sestavení a spuštění aplikace hello zařízení.
 
-1. Přidat **hlavní** funkce s následujícím kódem na konci vzdálených\_monitoring.c soubor má být vyvolán **vzdáleného\_monitorování\_spustit** funkce:
+1. Přidat **hlavní** funkce s následujícím kódem na konci hello hello vzdálené\_monitoring.c souboru tooinvoke hello **vzdáleného\_monitorování\_spustit** funkce:
    
     ```c
     int main()
@@ -175,17 +175,17 @@ Přidejte kód, který má být vyvolán **vzdáleného\_monitorování\_spustit
     }
     ```
 
-1. Klikněte na tlačítko **zkompilovat** k vytvoření programu. Můžete bezpečně ignorovat všechna upozornění, ale pokud sestavení generuje chyby, opravte je než budete pokračovat.
+1. Klikněte na tlačítko **zkompilovat** toobuild programu hello. Můžete bezpečně ignorovat všechna upozornění, ale pokud hello sestavení generuje chyby, opravte je než budete pokračovat.
 
-1. Pokud sestavení úspěšné, web kompilátoru mbed generuje soubor .bin s názvem vašeho projektu a soubory ke stažení do místního počítače. Zkopírujte soubor .bin do zařízení. Ukládání souboru .bin do zařízení způsobí, že zařízení restartovat a poté spusťte program obsažené v souboru .bin. Stisknutím tlačítka Obnovit v zařízení mbed můžete ručně restartovat program kdykoli.
+1. Pokud sestavení hello úspěšné, hello mbed kompilátoru web generuje soubor .bin s hello název projektu a ji stáhne tooyour místního počítače. Zkopírujte hello .bin souboru toohello zařízení. Ukládání zařízení toohello soubor .bin hello způsobí, že zařízení toorestart hello a spusťte program hello obsažené v souboru .bin hello. Kdykoli můžete ručně restartovat programu hello stisknutím tlačítka resetování hello v hello mbed zařízení.
 
-1. Připojte k zařízení pomocí protokolu SSH klienta aplikace, jako je například PuTTY. Můžete určit sériového portu, který zařízení používá kontrolou Správci zařízení.
+1. Připojte zařízení toohello pomocí SSH klienta aplikace, jako je například PuTTY. Můžete určit hello sériového portu, který zařízení používá kontrolou Správci zařízení.
    
     ![][11]
 
-1. V PuTTY, klikněte na **sériové** typ připojení. V 9600 přenosová obvykle připojení zařízení, takže zadejte 9600 v **rychlost** pole. Pak klikněte na tlačítko **otevřete**.
+1. V PuTTY, klikněte na tlačítko hello **sériové** typ připojení. Hello zařízení obvykle připojí na 9600 přenosová, takže zadejte 9600 hello **rychlost** pole. Pak klikněte na tlačítko **otevřete**.
 
-1. Program spustí provádění. Možná budete muset resetovat panel (stiskněte kombinaci kláves CTRL + Break nebo stiskněte tlačítko Obnovit panelu) Pokud program nespustí automaticky při připojení.
+1. spuštění programu Hello provádění. Pokud hello program nespustí automaticky při připojení, mohou mít tooreset hello Tabule (stiskněte kombinaci kláves CTRL + Break nebo Tabule hello stiskněte tlačítko pro obnovení).
    
     ![][10]
 

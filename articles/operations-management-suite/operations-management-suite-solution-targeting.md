@@ -1,6 +1,6 @@
 ---
-title: "Cílení na řešení v OMS | Microsoft Docs"
-description: "Cílení na řešení je funkce v Operations Management Suite (OMS), který vám umožní omezit na konkrétní sadu agentů řešení pro správu.  Tento článek popisuje, jak vytvořit konfiguraci oboru a použít ji k řešení."
+title: "cílení na aaaSolution v OMS | Microsoft Docs"
+description: "Cílení na řešení je funkce v Operations Management Suite (OMS), který vám umožní toolimit správu řešení tooa konkrétní sadu agentů.  Tento článek popisuje, jak toocreate konfigurace oboru a použijte ho tooa řešení."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -14,64 +14,64 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: cb73a2d7ae57a5a11869259dbe913ae83ffb2b01
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6f8c8109e0d9e282e18724bf8b673b10de8e498a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-solution-targeting-in-operations-management-suite-oms-to-scope-management-solutions-to-specific-agents-preview"></a>Pomocí řešení cílení v Operations Management Suite (OMS) do řešení pro správu oboru na konkrétní agenty (Preview)
-Když přidáte k OMS řešení, se automaticky nasadí ve výchozím nastavení všechny agenty systému Windows a Linux připojené k pracovní prostor analýzy protokolů.  Můžete spravovat vaše náklady a omezit množství dat vybraných pro řešení omezením na konkrétní sadu agenty.  Tento článek popisuje způsob použití **cílení na řešení** což je funkce OMS, která umožňuje použít obor pro vaše řešení.
+# <a name="use-solution-targeting-in-operations-management-suite-oms-tooscope-management-solutions-toospecific-agents-preview"></a>Použít řešení cílení v Operations Management Suite (OMS) tooscope agenti pro toospecific řešení pro správu (Preview)
+Když přidáte tooOMS řešení, je automaticky nasadit ve výchozí tooall Windows a Linux agenty připojené tooyour pracovní prostor analýzy protokolů.  Řešení můžete chtít toomanage vaše náklady a limit hello množství dat shromažďovaných omezením tooa konkrétní sadu agenty.  Tento článek popisuje, jak toouse **cílení na řešení** což je funkce OMS, která vám umožní tooapply obor tooyour řešení.
 
-## <a name="how-to-target-a-solution"></a>Postupy pro řešení
-Existují tři kroky na cílení na řešení, jak je popsáno v následujících částech.  Všimněte si, že budete potřebovat na portálu OMS a webu Azure portal pro různé kroky.
+## <a name="how-tootarget-a-solution"></a>Jak tootarget řešení
+Existují tři kroky tootargeting řešení jak je popsáno v následující části hello.  Všimněte si, že budete potřebovat portálu OMS hello i hello portál Azure pro jiný postup.
 
 
 ### <a name="1-create-a-computer-group"></a>1. Vytvořit skupinu počítačů
-Zadejte počítače, pro které chcete zahrnout do oboru tak, že vytvoříte [skupinu počítačů](../log-analytics/log-analytics-computer-groups.md) v analýzy protokolů.  Skupina počítačů můžete podle protokolu hledání nebo importovat z jiných zdrojů, například skupin služby Active Directory nebo služby WSUS. Jako [popsané níže](#solutions-and-agents-that-cant-be-targeted), budou zahrnuty pouze počítače, které jsou přímo připojené k analýze protokolů v oboru.
+Zadejte hello počítače chcete tooinclude v oboru tak, že vytvoříte [skupinu počítačů](../log-analytics/log-analytics-computer-groups.md) v analýzy protokolů.  Skupina počítačů Hello lze podle protokolu hledání nebo importovat z jiných zdrojů, například služby Active Directory nebo skupiny služby WSUS. Jako [popsané níže](#solutions-and-agents-that-cant-be-targeted), pouze počítače, které jsou přímo připojené tooLog analýzy budou zahrnuty v oboru hello.
 
-Jakmile budete mít skupina počítačů v pracovním prostoru, pak budete její zahrnutí do konfigurace oboru, který lze použít na jeden nebo více řešení.
+Jakmile máte hello skupiny počítačů v pracovním prostoru, budete jej zahrnout do konfigurace oboru, který může být použité tooone nebo další řešení.
  
  
  ### <a name="2-create-a-scope-configuration"></a>2. Vytvoření konfigurace oboru
- A **konfigurace oboru** obsahuje jeden nebo více skupin počítačů a dají se použít na jeden nebo více řešení. 
+ A **konfigurace oboru** obsahuje jeden nebo více skupin počítačů a může být použité tooone nebo další řešení. 
  
- Vytvořte obor konfiguraci podle následujícího postupu.  
+ Vytvořte obor konfiguraci pomocí následující proces hello.  
 
- 1. Na portálu Azure přejděte do **analýzy protokolů** a vyberte pracovní prostor.
- 2. Ve vlastnostech prostoru v **zdroje dat pracovního prostoru** vyberte **konfigurace oboru**.
- 3. Klikněte na tlačítko **přidat** vytvořit novou konfiguraci oboru.
- 4. Zadejte **název** pro konfiguraci rozsahu.
+ 1. V hello portálu Azure, přejděte příliš**analýzy protokolů** a vyberte pracovní prostor.
+ 2. Ve vlastnostech hello pro hello prostoru v **zdroje dat pracovního prostoru** vyberte **konfigurace oboru**.
+ 3. Klikněte na tlačítko **přidat** toocreate novou konfiguraci oboru.
+ 4. Zadejte **název** pro konfiguraci rozsahu hello.
  5. Klikněte na tlačítko **vyberte skupiny počítačů**.
- 6. Vyberte skupiny počítačů, který jste vytvořili a volitelně případné další skupiny pro přidání do konfigurace.  Klikněte na **Vybrat**.  
- 6. Klikněte na tlačítko **OK** pro vytvoření konfigurace oboru. 
+ 6. Vyberte skupiny počítačů hello, kterou jste vytvořili a volitelně ostatní skupiny tooadd toohello konfigurace.  Klikněte na **Vybrat**.  
+ 6. Klikněte na tlačítko **OK** konfigurace oboru toocreate hello. 
 
 
- ### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3. Použijete konfiguraci oboru na řešení.
-Jakmile je konfigurace oboru, můžete ji použít na jeden nebo více řešení.  Všimněte si, že při konfiguraci jeden obor lze použít s více řešení, každé řešení můžete použít pouze jednu konfiguraci oboru.
+ ### <a name="3-apply-hello-scope-configuration-tooa-solution"></a>3. Použijte hello oboru konfigurace tooa řešení.
+Jakmile je konfigurace oboru, pak můžete použít ho tooone nebo další řešení.  Všimněte si, že při konfiguraci jeden obor lze použít s více řešení, každé řešení můžete použít pouze jednu konfiguraci oboru.
 
-Použití konfigurace oboru podle následujícího postupu.  
+Použití konfigurace oboru pomocí postupu hello.  
 
- 1. Na portálu Azure přejděte do **analýzy protokolů** a vyberte pracovní prostor.
- 2. Ve vlastnostech pracovním prostoru vyberte **řešení**.
- 3. Klikněte na řešení, které chcete obor.
- 4. Ve vlastnostech pro řešení v části **zdroje dat pracovního prostoru** vyberte **cílení na řešení**.  Pokud není k dispozici možnost pak [toto řešení nemůžou být cílem](#solutions-and-agents-that-cant-be-targeted).
- 5. Klikněte na tlačítko **konfigurace oboru přidat**.  Pokud již máte konfigurace použít k tomuto řešení Tato možnost nebude k dispozici.  Je nutné odebrat existující konfigurace před přidáním jiný.
- 6. Klikněte na konfigurace oboru, který jste vytvořili.
- 7. Sledování **stav** konfigurace zajistit, že se zobrazí **úspěšné**.  Pokud stav označuje chybu, pak klikněte na tlačítko se třemi tečkami napravo od konfigurace a vyberte **konfiguraci úpravy rozsahu** provádět změny.
+ 1. V hello portálu Azure, přejděte příliš**analýzy protokolů** a vyberte pracovní prostor.
+ 2. Ve vlastnostech hello pro hello prostoru vyberte **řešení**.
+ 3. Klikněte na řešení hello chcete tooscope.
+ 4. Ve vlastnostech hello hello řešení v části **zdroje dat pracovního prostoru** vyberte **cílení na řešení**.  Pokud není k dispozici možnost hello pak [toto řešení nemůžou být cílem](#solutions-and-agents-that-cant-be-targeted).
+ 5. Klikněte na tlačítko **konfigurace oboru přidat**.  Pokud již máte řešení toothis použitá konfigurace tato možnost nebude k dispozici.  Je nutné odebrat existující konfiguraci hello před přidáním jiný.
+ 6. Klikněte na konfigurace hello oboru, který jste vytvořili.
+ 7. Kukátko hello **stav** z tooensure konfigurace hello, že se zobrazí **úspěšné**.  Pokud stav hello označuje chybu, pak klikněte na hello elipsy toohello vpravo od hello konfigurace a vyberte **konfiguraci úpravy rozsahu** toomake změny.
 
 ## <a name="solutions-and-agents-that-cant-be-targeted"></a>Řešení a agenty, kteří nemůžou být cílem
-Toto jsou kritéria pro agenty a řešení, které nelze použít s cílem řešení.
+Následují hello kritéria pro agenty a řešení, které nelze použít s cílem řešení.
 
-- Cílení na řešení se vztahuje pouze na řešení, které nasazujete agenty.
-- Cílení na řešení platí jenom pro řešení od společnosti Microsoft.  Nevztahuje se na řešení [vytvořené sami nebo partnery](operations-management-suite-solutions-creating.md).
-- Můžete filtrovat pouze na agenty, které se připojují přímo k Log Analytics.  Řešení automaticky nasadí na všechny agenty, které jsou součástí připojené skupiny pro správu nástroje Operations Manager, zda jsou zahrnuté v konfiguraci oboru.
+- Cílení na řešení, vztahuje se pouze toosolutions, který nasadit tooagents.
+- Cílení na řešení, vztahuje se pouze toosolutions od společnosti Microsoft.  Nevztahuje se toosolutions [vytvořené sami nebo partnery](operations-management-suite-solutions-creating.md).
+- Můžete filtrovat pouze na agenty, které se připojují přímo tooLog Analytics.  Řešení automaticky nasadí tooany agentů, které jsou součástí připojené skupiny pro správu nástroje Operations Manager, jestli jsou zahrnuté v konfiguraci oboru.
 
 ### <a name="exceptions"></a>Výjimky
-Cílení na řešení nelze použít s následující řešení i když se vešly uvedená kritéria.
+Cílení na řešení nelze použít s hello následující řešení, i když se vešly hello uvedená kritéria.
 
 - Vyhodnocení stavu agenta
 
 ## <a name="next-steps"></a>Další kroky
-- Další informace o řešení pro správu včetně řešení, které jsou k dispozici pro instalaci ve vašem prostředí v [přidat Azure Log Analytics řešení pro správu do pracovního prostoru](../log-analytics/log-analytics-add-solutions.md).
+- Další informace o řešení pro správu včetně hello řešení, které jsou k dispozici tooinstall ve vašem prostředí v [pracovní prostor analýzy protokolů Azure přidat management řešení tooyour](../log-analytics/log-analytics-add-solutions.md).
 - Další informace o vytváření skupin počítačů v [skupiny počítačů v analýzy protokolů protokolu hledání](../log-analytics/log-analytics-computer-groups.md).

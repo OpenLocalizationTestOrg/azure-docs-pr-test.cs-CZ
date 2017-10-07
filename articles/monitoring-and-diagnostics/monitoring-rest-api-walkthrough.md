@@ -1,6 +1,6 @@
 ---
-title: "Monitorování návod rozhraní API REST Azure | Microsoft Docs"
-description: "Postup žádosti o ověření a pomocí monitorování REST API služby Azure."
+title: "aaaAzure návod monitorování REST API | Microsoft Docs"
+description: "Jak tooauthenticate požadavků tooand použití hello monitorování REST API služby Azure."
 author: mcollier
 manager: 
 editor: 
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: mcollier
-ms.openlocfilehash: 454a85c4752ec9c7522ef147d5ce594ef5992c32
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b8ae3a03fd21af872f1dc5fed40a101a24ca1652
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Monitorování návod rozhraní API REST Azure
-V tomto článku se dozvíte, jak provést ověření, abyste mohli používat kódu [Microsoft referenční dokumentace rozhraní API REST Azure monitorování](https://msdn.microsoft.com/library/azure/dn931943.aspx).         
+Tento článek ukazuje, jak tooperform ověřování, aby váš kód můžete použít hello [Microsoft referenční dokumentace rozhraní API REST Azure monitorování](https://msdn.microsoft.com/library/azure/dn931943.aspx).         
 
-Rozhraní API služby Azure monitorování umožňuje načítání prostřednictvím kódu programu dostupná výchozí definice metrik (Typ Metrika například čas procesoru, požadavků, atd.), členitosti a metriky hodnoty. Po načíst, můžete data uložit v samostatných data store například Azure SQL Database, Azure Cosmos DB nebo Azure Data Lake. Odtud můžete provést další analýzu podle potřeby.
+Hello rozhraní API služby Azure monitorování je možné tooprogrammatically načtení hello dostupná výchozí definice metrik (hello Typ Metrika například čas procesoru, požadavků, atd.), členitosti a metriky hodnoty. Jakmile načíst, mohou být hello data uložena v úložišti dat samostatné například Azure SQL Database, Azure Cosmos DB nebo Azure Data Lake. Odtud můžete provést další analýzu podle potřeby.
 
-Kromě práce s různými metriky datové body, jako tento článek ukazuje, rozhraní API monitorování umožňuje k zobrazení seznamu pravidla výstrah, zobrazení protokoly aktivity a mnoho dalšího. Úplný seznam dostupné operace, najdete v článku [Microsoft referenční dokumentace rozhraní API REST Azure monitorování](https://msdn.microsoft.com/library/azure/dn931943.aspx).
+Kromě práce s různými metriky datové body, jako tento článek ukazuje, hello monitorování API je možné toolist pravidla výstrah, zobrazení protokoly aktivity a mnoho dalšího. Úplný seznam dostupné operace, najdete v části hello [Microsoft referenční dokumentace rozhraní API REST Azure monitorování](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 
 ## <a name="authenticating-azure-monitor-requests"></a>Ověřování Azure sledování požadavků
-Prvním krokem je ověřit žádost.
+prvním krokem Hello je tooauthenticate hello požadavku.
 
-Všechny úlohy prováděné vůči monitorování rozhraní API služby Azure pomocí Azure Resource Manager ověření modelu. Proto musí být ověřeny všechny požadavky s Azure Active Directory (Azure AD). Jeden ze způsobů ověření klientská aplikace je vytvořit objekt služby Azure AD a načtení tokenu ověřování (JWT). Následující ukázkový skript ukazuje vytvoření objektu zabezpečení pomocí prostředí PowerShell služby Azure AD. Pro podrobnější návod, naleznete v dokumentaci na [pomocí Azure PowerShell k vytvoření objektu služby pro přístup k prostředkům](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-password). Je také možné [vytvořit objekt služby prostřednictvím portálu Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+Všechny úlohy hello prováděné vůči hello rozhraní API služby Azure monitorování použití hello Azure Resource Manager ověření modelu. Proto musí být ověřeny všechny požadavky s Azure Active Directory (Azure AD). Jeden způsob tooauthenticate hello klientská aplikace je toocreate objektu služby Azure AD a získat token hello ověřování (JWT). Hello následující ukázkový skript ukazuje vytvoření objektu služby pomocí prostředí PowerShell Azure AD. Pro podrobnější návod, naleznete v dokumentaci toohello na [pomocí prostředí Azure PowerShell toocreate prostředky služby hlavní tooaccess](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-password). Je také možné příliš[vytvořit objekt služby prostřednictvím portálu Azure hello](../azure-resource-manager/resource-group-create-service-principal-portal.md).
 
 ```PowerShell
 $subscriptionId = "{azure-subscription-id}"
 $resourceGroupName = "{resource-group-name}"
 $location = "centralus"
 
-# Authenticate to a specific Azure subscription.
+# Authenticate tooa specific Azure subscription.
 Login-AzureRmAccount -SubscriptionId $subscriptionId
 
-# Password for the service principal
+# Password for hello service principal
 $pwd = "{service-principal-password}"
 
 # Create a new Azure AD application
@@ -50,16 +50,16 @@ $azureAdApplication = New-AzureRmADApplication `
                         -IdentifierUris "https://localhost/azure-monitor" `
                         -Password $pwd
 
-# Create a new service principal associated with the designated application
+# Create a new service principal associated with hello designated application
 New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
 
-# Assign Reader role to the newly created service principal
+# Assign Reader role toohello newly created service principal
 New-AzureRmRoleAssignment -RoleDefinitionName Reader `
                           -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
 
 ```
 
-Zpracovat dotaz rozhraní API Azure monitorování, měli klientské aplikace k ověření použít dříve vytvořenou instanční objekt. Skript prostředí PowerShell následující příklad ukazuje jeden přístupu, pomocí [Active Directory Authentication Library](../active-directory/active-directory-authentication-libraries.md) (ADAL) ke získání tokenu ověřování tokenů JWT. JWT token je předán jako součást parametru HTTP autorizace v žádostech o monitorování REST API služby Azure.
+hello tooquery rozhraní API Azure monitorování, klientská aplikace hello měli používat hello vytvořili tooauthenticate hlavní služby. Hello následující skript prostředí PowerShell příklad ukazuje jeden ze způsobů, pomocí hello [Active Directory Authentication Library](../active-directory/active-directory-authentication-libraries.md) (ADAL) toohelp získání tokenu ověřování tokenů JWT hello. Hello JWT token se předal v rámci parametru HTTP autorizace v toohello požadavky REST API služby Azure monitorování.
 
 ```PowerShell
 $azureAdApplication = Get-AzureRmADApplication -IdentifierUri "https://localhost/azure-monitor"
@@ -83,14 +83,14 @@ $authHeader = @{
 }
 ```
 
-Po dokončení instalace krok ověřování dotazy mohou být pak provedeny na REST API Azure monitorování. Existují dva užitečné dotazy:
+Po dokončení kroku hello ověřování dotazy mohou být pak provedeny proti hello REST API služby Azure monitorování. Existují dva užitečné dotazy:
 
-1. Seznam definice metrik pro prostředek
-2. Načíst metriky hodnoty
+1. Seznam hello Definice metrik pro prostředek
+2. Načíst hodnoty metriky hello
 
 ## <a name="retrieve-metric-definitions"></a>Načtení definice metrik
 > [!NOTE]
-> Pokud chcete načíst pomocí rozhraní REST API Azure monitorování definice metrik, použijte jako verze rozhraní API "2016-03-01".
+> definice metrik tooretrieve pomocí hello REST API služby Azure monitorování, použijte "2016-03-01" hello verze rozhraní API.
 >
 >
 
@@ -103,17 +103,17 @@ Invoke-RestMethod -Uri $request `
                   -Method Get `
                   -Verbose
 ```
-Pro aplikace logiky Azure objeví definice metrik podobně jako na následujícím snímku obrazovky:
+Pro aplikace logiky Azure objeví definice metrik hello podobné toohello následující snímek obrazovky:
 
 ![ALT "JSON zobrazení metriky definice odpovědi."](./media/monitoring-rest-api-walkthrough/available_metric_definitions_logic_app_json_response_clean.png)
 
-Další informace najdete v tématu [seznamu definice metrik pro prostředek v rozhraní REST API Azure monitorování](https://msdn.microsoft.com/library/azure/mt743621.aspx) dokumentaci.
+Další informace najdete v tématu hello [seznamu hello Definice metrik pro prostředek v rozhraní REST API Azure monitorování](https://msdn.microsoft.com/library/azure/mt743621.aspx) dokumentaci.
 
 ## <a name="retrieve-metric-values"></a>Načtení metriky hodnot
-Jakmile se ví, že k dispozici definice metrik, je pak možné načíst související hodnoty metriky. Použít název v metrice 'Hodnota' (ne ' localizedValue') pro všechny požadavky na filtrování (například získat metriky datových bodů 'CpuTime' a 'Požadavky'). Pokud nejsou zadány žádné filtry, vrátí se výchozí metriku.
+K dispozici definice metrik hello známé, je možné tooretrieve hello souvisejících hodnot metriky. Použijte název hello metrika 'Hodnota' (ne hello 'localizedValue') pro všechny filtrování požadavků (například načtení hello 'CpuTime' a 'Požadavky' metriky datové body). Pokud nejsou zadány žádné filtry, vrátí se hello výchozí metriku.
 
 > [!NOTE]
-> Pro načtení metriky hodnoty pomocí rozhraní REST API Azure monitorování, použijte "2016-06-01" jako verze rozhraní API.
+> hodnoty metriky tooretrieve pomocí hello REST API služby Azure monitorování, použijte "2016-06-01" hello verze rozhraní API.
 >
 >
 
@@ -121,7 +121,7 @@ Jakmile se ví, že k dispozici definice metrik, je pak možné načíst souvise
 
 **Identifikátor URI požadavku je**: https://management.azure.com/subscriptions/*{id předplatného}*/resourceGroups/*{resource-group name}*/providers/*{-– obor názvů zprostředkovatele prostředků}*/*{typ prostředku}*/*{název prostředku}*/providers/microsoft.insights/metrics?$filter=*{filtru}*& verze api-version =*{apiVersion}*
 
-Například pokud chcete načíst RunsSucceeded metriky datových bodů pro dané časové rozmezí a časovým intervalem 1 hodina, žádost vypadat takto:
+Například tooretrieve hello RunsSucceeded metriky datových bodů pro hello zadaný časový rozsah a časovým intervalem 1 hodina, žádost hello vypadat takto:
 
 ```PowerShell
 $apiVersion = "2016-06-01"
@@ -133,11 +133,11 @@ $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourc
                    -Verbose).Value | ConvertTo-Json
 ```
 
-Výsledek vypadat podobně jako v příkladu následující snímek obrazovky:
+výsledek Hello vypadat podobně jako příklad toohello následující snímek obrazovky:
 
 ![ALT "Odpověď JSON zobrazuje průměrný čas odezvy metriky hodnota"](./media/monitoring-rest-api-walkthrough/available_metrics_logic_app_json_response.png)
 
-Načtení více bodů data nebo agregace, přidejte metriky definice názvy a typy agregace filtru, jak je vidět v následujícím příkladu:
+tooretrieve více dat nebo agregace body, přidejte hello metriky definice názvy a agregace typy toohello filtr, jak je vidět v hello následující ukázka:
 
 ```PowerShell
 $apiVersion = "2016-06-01"
@@ -150,23 +150,23 @@ $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourc
 ```
 
 ### <a name="use-armclient"></a>Použití ARMClient
-Alternativu k použití prostředí PowerShell (jak je uvedeno výše), je použití [ARMClient](https://github.com/projectkudu/ARMClient) na počítač se systémem Windows. Automaticky ARMClient zpracovává ověřování Azure AD (a výsledný token JWT). Následující kroky popisují použití ARMClient pro načítání metriky dat:
+Alternativní toousing prostředí PowerShell (jak je uvedeno výše), je toouse [ARMClient](https://github.com/projectkudu/ARMClient) na počítač se systémem Windows. Automaticky ARMClient zpracovává ověřování hello Azure AD (a výsledný token JWT). Hello následující kroky popisují použití ARMClient pro načítání metriky dat:
 
 1. Nainstalujte [Chocolatey](https://chocolatey.org/) a [ARMClient](https://github.com/projectkudu/ARMClient).
-2. Okno terminálu, zadejte *armclient.exe přihlášení*. Výzva k přihlášení k Azure.
+2. Okno terminálu, zadejte *armclient.exe přihlášení*. To vás vyzve k toolog v tooAzure.
 3. Typ *armclient GET [your_resource_id]/providers/microsoft.insights/metricdefinitions?api-version=2016-03-01*
 4. Typ *armclient GET [your_resource_id]/providers/microsoft.insights/metrics?api-version=2016-06-01*
 
-![ALT "Pomocí ARMClient pro práci s Azure monitorování REST API"](./media/monitoring-rest-api-walkthrough/armclient_metricdefinitions.png)
+![ALT "Pomocí ARMClient toowork s hello rozhraní API REST Azure monitorování"](./media/monitoring-rest-api-walkthrough/armclient_metricdefinitions.png)
 
-## <a name="retrieve-the-resource-id"></a>Načtení ID prostředku
-Pomocí rozhraní REST API skutečně pomáhá pochopit dostupné definice metrik, členitosti a souvisejících hodnot. Informace jsou užitečné při použití [Knihovna správy Azure](https://msdn.microsoft.com/library/azure/mt417623.aspx).
+## <a name="retrieve-hello-resource-id"></a>Načtení hello ID prostředku
+Použití hello REST API může pomoci skutečně toounderstand hello k dispozici definice metrik, členitosti a souvisejících hodnot. Tyto informace jsou užitečné při použití hello [Knihovna správy Azure](https://msdn.microsoft.com/library/azure/mt417623.aspx).
 
-ID prostředku, který má používat pro předchozí kód je úplná cesta k požadované prostředků Azure. Například k dotazování proti webové aplikace Azure, bude ID prostředku:
+Pro hello předcházející kódu toouse ID prostředku hello je úplná cesta toohello hello požadovaných prostředků Azure. Například tooquery proti webové aplikace Azure, ID prostředku hello by být:
 
 */subscriptions/{Subscription-ID}/resourceGroups/{Resource-Group-Name}/providers/Microsoft.Web/Sites/{Site-Name}/*
 
-Následující seznam obsahuje několik příkladů formáty ID prostředku pro různé prostředky Azure:
+Hello následující seznam obsahuje několik příkladů formáty ID prostředku pro různé prostředky Azure:
 
 * **IoT Hub** -/subscriptions/*{id předplatného}*/resourceGroups/*{resource-group name}*/providers/Microsoft.Devices/IotHubs/*{iot-hub-name}*
 * **Elastický fond SQL** -/subscriptions/*{id předplatného}*/resourceGroups/*{resource-group name}*/providers/Microsoft.Sql/servers/*{fondu db}*/elasticpools/*{sql název fondu}*
@@ -176,30 +176,30 @@ Následující seznam obsahuje několik příkladů formáty ID prostředku pro 
 * **Virtuální počítače** -/subscriptions/*{id předplatného}*/resourceGroups/*{resource-group name}*/providers/Microsoft.Compute/virtualMachines/*{název virtuálního počítače}*
 * **Služba Event Hubs** -/subscriptions/*{id předplatného}*/resourceGroups/*{resource-group name}*/providers/Microsoft.EventHub/namespaces/*{eventhub-namespace}*
 
-Načítání ID prostředku, včetně použití Průzkumníka prostředků Azure, zobrazení požadovaný prostředek na portálu Azure a pomocí prostředí PowerShell nebo rozhraní příkazového řádku Azure alternativní způsoby.
+Nejsou k dispozici alternativní přístupy tooretrieving hello ID prostředku, včetně použití Průzkumníka prostředků Azure, zobrazení hello požadovaného prostředku v hello portál Azure a pomocí prostředí PowerShell nebo hello rozhraní příkazového řádku Azure.
 
 ### <a name="azure-resource-explorer"></a>Průzkumník prostředků Azure
-K vyhledání ID prostředku pro požadovaný prostředek, je užitečné jeden ze způsobů použití [Průzkumníka prostředků Azure](https://resources.azure.com) nástroj. Přejděte na požadovaný prostředek a podívejte se na zobrazené ID, stejně jako na následujícím snímku obrazovky:
+ID prostředku hello toofind pro požadovaný prostředek, jeden ze způsobů užitečné je toouse hello [Průzkumníka prostředků Azure](https://resources.azure.com) nástroj. Přejděte toohello požadovaných prostředků a podívejte se na ID hello zobrazí jako hello následující snímek obrazovky:
 
 ![ALT "Průzkumníka prostředků Azure"](./media/monitoring-rest-api-walkthrough/azure_resource_explorer.png)
 
 ### <a name="azure-portal"></a>portál Azure
-ID prostředku můžete získat taky z portálu Azure. Uděláte to tak, přejděte na požadovaný prostředek a potom vyberte možnost Vlastnosti. ID prostředku se zobrazí v okně vlastností, jak je vidět na následujícím snímku obrazovky:
+ID prostředku Hello můžete získat také hello portálu Azure. toodo tedy přejděte toohello požadovaných prostředků a vyberte možnost Vlastnosti. Hello ID prostředku se zobrazí v okně Vlastnosti hello, jak je vidět v hello následující snímek obrazovky:
 
-![ALT "ID prostředku zobrazí v okně vlastností na portálu Azure"](./media/monitoring-rest-api-walkthrough/resourceid_azure_portal.png)
+![ALT "ID prostředku zobrazí v okně Vlastnosti hello v hello portál Azure"](./media/monitoring-rest-api-walkthrough/resourceid_azure_portal.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-ID prostředku můžete načíst pomocí rutin prostředí Azure PowerShell také. Například pokud chcete získat ID prostředku pro webové aplikace Azure, spusťte rutinu Get-AzureRmWebApp, stejně jako na následujícím snímku obrazovky:
+ID prostředku Hello můžete načíst pomocí rutin prostředí Azure PowerShell také. Například ID prostředku hello tooobtain pro webové aplikace Azure, spusťte rutinu Get-AzureRmWebApp hello jako hello následující snímek obrazovky:
 
 ![ALT "ID prostředku získat pomocí prostředí PowerShell"](./media/monitoring-rest-api-walkthrough/resourceid_powershell.png)
 
 ### <a name="azure-cli"></a>Azure CLI
-Načíst ID prostředků pomocí Azure CLI, spusťte příkaz 'azure webapp zobrazit', určení ' – json, možnost, jak je znázorněno na následujícím snímku obrazovky:
+tooretrieve hello ID prostředku pomocí hello příkazového řádku Azure CLI, spusťte příkaz "azure webapp zobrazit" hello, zadání hello ' – json, možnost, jak ukazuje následující snímek obrazovky hello:
 
 ![ALT "ID prostředku získat pomocí prostředí PowerShell"](./media/monitoring-rest-api-walkthrough/resourceid_azurecli.png)
 
 ## <a name="retrieve-activity-log-data"></a>Načíst Data protokolu aktivit
-Kromě práci s definice metrik a souvisejících hodnot, je také možné načíst další zajímavé přehledy související s prostředky Azure. Jako příklad, je možné dotazu [protokol aktivit](https://msdn.microsoft.com/library/azure/dn931934.aspx) data. Následující příklad ukazuje, pomocí REST API pro monitorování Azure pro data protokolu aktivit dotazu v určité datum rozsahu pro předplatné Azure:
+V přidání tooworking s definice metrik a souvisejících hodnot je také možné tooretrieve další zajímavé přehledy související tooAzure prostředky. Jako příklad, je možné tooquery [protokol aktivit](https://msdn.microsoft.com/library/azure/dn931934.aspx) data. Hello následující příklad ukazuje použití data protokolu hello REST API služby Azure monitorování tooquery aktivit v určité datum rozsahu pro předplatné Azure:
 
 ```PowerShell
 $apiVersion = "2014-04-01"
@@ -212,7 +212,7 @@ $request = "https://management.azure.com/subscriptions/${subscriptionId}/provide
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* Zkontrolujte [Přehled monitorování](monitoring-overview.md).
-* Zobrazení [podporované metriky s Azure monitorování](monitoring-supported-metrics.md).
-* Zkontrolujte [Microsoft Azure monitorovat referenční dokumentace rozhraní API REST](https://msdn.microsoft.com/library/azure/dn931943.aspx).
-* Zkontrolujte [knihovna Azure správy](https://msdn.microsoft.com/library/azure/mt417623.aspx).
+* Zkontrolujte hello [Přehled monitorování](monitoring-overview.md).
+* Zobrazení hello [podporované metriky s Azure monitorování](monitoring-supported-metrics.md).
+* Zkontrolujte hello [Microsoft referenční dokumentace rozhraní API REST Azure monitorování](https://msdn.microsoft.com/library/azure/dn931943.aspx).
+* Zkontrolujte hello [Knihovna správy Azure](https://msdn.microsoft.com/library/azure/mt417623.aspx).

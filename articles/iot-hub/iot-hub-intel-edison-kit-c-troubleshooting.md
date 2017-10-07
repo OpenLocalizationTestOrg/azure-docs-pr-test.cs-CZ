@@ -1,5 +1,5 @@
 ---
-title: "Připojení k Azure IoT - Intel Edison (C) řešení potíží s | Microsoft Docs"
+title: "Connect Intel Edison (C) tooAzure IoT – řešení potíží s | Microsoft Docs"
 description: "Řešení potíží s stránky pro prostředí Intel Edison C"
 services: iot-hub
 documentationcenter: 
@@ -17,41 +17,41 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: dd6338ad29e0bb858c33e5bb24b8f41d3c22575a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c4a71983e3906cfc5ce7c832cf858852b9bd744a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting"></a>Řešení potíží
 ## <a name="hardware-issues"></a>Problémy s hardwarem
-Informace o řešení běžných problémů na Intel Edison najdete v tématu [oficiální stránka řešení potíží](https://software.intel.com/en-us/node/637974).
+Informace o řešení běžných problémů na Intel Edison najdete v tématu hello [oficiální stránka řešení potíží](https://software.intel.com/en-us/node/637974).
 
 ## <a name="nodejs-package-issues"></a>Problémy balíčku Node.js
 ### <a name="no-response-during-gulp-tasks"></a>Žádná odpověď během gulp úlohy
-Pokud narazíte na potíže se spouštěním gulp úlohy, můžete přidat `--verbose` možnost pro ladění. Zkuste ukončit aktuální úlohy gulp pomocí `Ctrl + C`a potom spusťte následující příkaz v okně konzoly zobrazíte zprávy ladění. Může se zobrazit podrobné chybové zprávy ve výstupu konzoly. 
+Pokud narazíte na potíže se spouštěním gulp úlohy, můžete přidat hello `--verbose` možnost pro ladění. Zkuste tooterminate aktuální gulp úlohy pomocí `Ctrl + C`, a pak spusťte hello následující příkaz v vaše zprávy ladění toosee okna konzoly. Může se zobrazit podrobné chybové zprávy ve výstupu konzoly. 
 
 ```bash
 gulp --verbose
 ```
 
 ### <a name="npm-issues"></a>NPM problémy
-Došlo k pokusu o aktualizaci vašeho balíčku NPM pomocí následujícího příkazu:
+Zkuste tooupdate vašeho balíčku NPM s hello následující příkaz:
 
 ```bash
 npm install -g npm
 ```
 
-Pokud problém přetrvává, nechte komentáře na konci tohoto článku nebo vytvořte potíže Githubu v našem [úložiště ukázkové][sample-repository].
+Pokud problém hello stále existuje, ponechte komentáře na konci hello tohoto článku nebo vytvořit problém Githubu v našem [úložiště ukázkové][sample-repository].
 
 ## <a name="azure-cli-issues"></a>Problémy rozhraní příkazového řádku Azure
-Rozhraní příkazového řádku Azure (Azure CLI) je buildu preview. Vyhledejte řešení v [průvodci instalaci Preview](https://github.com/Azure/azure-cli/blob/master/doc/preview_install_guide.md) k vyhledání řešení. Se pokuste o upgrade na nejnovější verzi rozhraní příkazového řádku Azure, když příkazy nefungují podle očekávání.
+Hello rozhraní příkazového řádku Azure (Azure CLI) je buildu preview. Vyhledejte řešení v hello [průvodci instalaci Preview](https://github.com/Azure/azure-cli/blob/master/doc/preview_install_guide.md) tooseek řešení. Zkuste tooupgrade rozhraní příkazového řádku Azure toolatest verze při příkazy nefungují podle očekávání.
 
-Pokud narazíte na všechny chyby pomocí nástroje souboru [problém](https://github.com/Azure/azure-cli/issues) v **problémy** část úložiště GitHub.
+Pokud narazíte na všechny chyby nástrojem hello, soubor [problém](https://github.com/Azure/azure-cli/issues) v hello **problémy** část úložiště GitHub hello.
 
-Nápovědu k řešení běžných potíží s, zkontrolujte [readme](https://github.com/Azure/azure-cli/blob/master/README.rst).
+Nápovědu k řešení běžných potíží s zkontrolujte hello [readme](https://github.com/Azure/azure-cli/blob/master/README.rst).
 
-Pokud jsou splněny "Nelze najít na verzi, která splňuje požadavek", spusťte následující příkaz pro upgrade na nejnovější verzi pip.
+Pokud jsou splněny "Nelze najít na verzi, která by splnila požadavek hello", prosím hello spusťte následující příkaz tooupgrade pip toolastest verze.
 
 ```bash
 python -m pip install --upgrade pip
@@ -59,7 +59,7 @@ python -m pip install --upgrade pip
 
 ## <a name="python-installation-issues"></a>Problémy instalace Python
 ### <a name="legacy-installation-issues-macos"></a>Problémy instalace starší verze (macOS)
-Když instalujete **pip**, oprávnění chyba se vyvolá, když starší balíčky, které jsou nainstalovány s **su** oprávnění. K této situaci dochází, protože předchozí instalaci jazyka Python pomocí brew (macOS) není zcela odinstalována. Některé **pip** balíčky z předchozí instalace, které byly vytvořeny pomocí kořenového, což způsobí, že chyba oprávnění. Řešení je odebrat tyto balíčky nainstalované pomocí kořenového. Tuto úlohu dokončit pomocí následujících kroků:
+Když instalujete **pip**, oprávnění chyba se vyvolá, když starší balíčky, které jsou nainstalovány s **su** oprávnění. K této situaci dochází, protože předchozí instalaci jazyka Python pomocí brew (macOS) není zcela odinstalována. Některé **pip** balíčky z předchozí instalace, které byly vytvořeny pomocí kořenového, což způsobí, že chyba oprávnění hello. Hello řešení je tooremove tyto balíčky nainstalované pomocí kořenového. Tento úkol použijte následující postup toocomplete hello:
 
 1. Přejděte na: /usr/local/lib/python2.7/site-packages
 2. Seznam balíčků vytvořit pomocí kořenového:`ls -l | grep root`
@@ -67,42 +67,42 @@ Když instalujete **pip**, oprávnění chyba se vyvolá, když starší balíč
 4. Přeinstalujte Python.
 
 ## <a name="azure-iot-hub-issues"></a>Azure IoT Hub problémy
-Pokud jste úspěšně zřídit služby Azure IoT hub s `azure-cli`, a je potřeba nástroj pro správu zařízení, které se připojují ke službě IoT hub, zkuste následující nástroje:
+Pokud jste úspěšně zřídit služby Azure IoT hub s `azure-cli`, a je třeba zařízení hello toomanage nástroj, kteří se připojují tooyour IoT hub, zkuste hello následující nástroje:
 
 ### <a name="device-explorer"></a>Průzkumník zařízení
-[Průzkumník zařízení](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) spouští na místní počítač se systémem Windows a připojí se ke službě IoT hub v Azure. Komunikuje s následující [koncové body centra IoT](iot-hub-devguide.md):
+[Průzkumník zařízení](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) spouští na místní počítač se systémem Windows a připojí tooyour IoT hub v Azure. Komunikuje s následující hello [koncové body centra IoT](iot-hub-devguide.md):
 
-- _Správa identit zařízení_ zřizovat a spravovat zařízení zaregistrovaná službou IoT hub.
-- _Zobrazí zařízení cloud_ , můžete monitorovat zprávy odeslané ze zařízení do služby IoT hub.
-- _Odeslat cloud zařízení_ tak mohou zasílat zprávy do zařízení ze služby IoT hub.
+- _Správa identit zařízení_ tooprovision a spravovat zařízení zaregistrovaná službou IoT hub.
+- _Zobrazí zařízení cloud_ , můžete monitorovat zprávy odeslané ze zařízení služby IoT hub tooyour.
+- _Odeslat cloud zařízení_ tak zprávy lze odesílat tooyour zařízení ze služby IoT hub.
 
-Konfigurace vaší `IoT hub connection string` v rámci tohoto nástroje můžete použít všechny jeho možnosti.
+Konfigurace vaší `IoT hub connection string` v rámci této nástroj toouse všechny jeho možnosti.
 
 ### <a name="iot-hub-explorer"></a>Centrum IoT Explorer
-[Centrum IoT Explorer](https://github.com/Azure/iothub-explorer) je ukázkový nástroj víceplatformového rozhraní příkazového řádku ke správě klientů zařízení. Nástroj můžete použít ke správě zařízení v registru identit, sledování zpráv typu zařízení cloud a odesílat příkazy typu cloud zařízení.
+[Centrum IoT Explorer](https://github.com/Azure/iothub-explorer) je ukázkový nástroj víceplatformového rozhraní příkazového řádku toomanage klientů zařízení. Můžete používat hello nástroj toomanage hello zařízení v registru identit hello, sledování zpráv typu zařízení cloud a odesílat příkazy typu cloud zařízení.
 
-Chcete-li nainstalovat nejnovější verzi (předprodejní) nástroj iothub Průzkumník, spusťte následující příkaz v prostředí příkazového řádku:
+tooinstall hello poslední (předprodejní) verzi nástroje iothub-explorer hello, spusťte následující příkaz v prostředí příkazového řádku hello:
 
 ```bash
 npm install -g iothub-explorer@latest
 ```
 
-Chcete-li získat další informace o tom všechny příkazy iothub-explorer a jejich parametrů můžete následující příkaz:
+Můžete použít následující příkaz, že tooget další nápovědu o všech hello iothub-explorer spolu s jejich parametry hello:
 
 ```bash
 iothub-explorer help
 ```
 
 ### <a name="azure-portal"></a>portál Azure
-Úplné rozhraní příkazového řádku prostředí umožňuje vytvářet a spravovat všechny prostředky Azure. Můžete také použít [portál Azure](../azure-portal-overview.md) pomoci zřizování, spravovat a ladit vašich prostředků Azure.
+Úplné rozhraní příkazového řádku prostředí umožňuje vytvářet a spravovat všechny prostředky Azure. Můžete také toouse hello [portál Azure](../azure-portal-overview.md) toohelp zřizovat, spravovat a ladit vašich prostředků Azure.
 
 ## <a name="azure-storage-issues"></a>Problémů s úložištěm Azure
-[Microsoft Azure Storage Explorer (preview)](http://storageexplorer.com) je samostatná aplikace od společnosti Microsoft, který můžete použít pro práci s [Azure Storage](https://azure.microsoft.com/en-us/services/storage/) dat v systému Windows, systému macOS a Linux. Pomocí tohoto nástroje můžete připojit k tabulku a zobrazit data v ní. Tento nástroj slouží k řešení potíží vašeho úložiště Azure.
+[Microsoft Azure Storage Explorer (preview)](http://storageexplorer.com) je samostatná aplikace od společnosti Microsoft, který můžete použít toowork s [Azure Storage](https://azure.microsoft.com/en-us/services/storage/) dat v systému Windows, systému macOS a Linux. Pomocí tohoto nástroje můžete připojit tooyour tabulky a zobrazit data hello v ní. Můžete použít tento nástroj tootroubleshoot vaše problémů s úložištěm Azure.
 
 ## <a name="next-steps"></a>Další kroky
-Tato stránka obsahuje pouze nejběžnějších problémů Intel Edison kit. Můžete také ponechat dolní komentáře účelem ohlášení problémů pro odstraňování potíží.
+Tato stránka obsahuje pouze hello nejběžnější problémy Intel Edison Kit. Můžete také ponechat dolní komentáře tooreport problémy pro odstraňování potíží.
 
-Přejděte zpět na [začít pracovat s Intel Edison (C)](iot-hub-intel-edison-kit-c-get-started.md)
+Přejděte zpět příliš[začít pracovat s Intel Edison (C)](iot-hub-intel-edison-kit-c-get-started.md)
 
 <!-- Images and links -->
 

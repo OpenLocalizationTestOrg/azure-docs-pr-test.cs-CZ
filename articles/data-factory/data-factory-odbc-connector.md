@@ -1,6 +1,6 @@
 ---
-title: "Přesun dat z úložiště dat rozhraní ODBC | Microsoft Docs"
-description: "Další informace o tom, jak přesun dat z úložiště dat rozhraní ODBC pomocí Azure Data Factory."
+title: "aaaMove data z úložiště dat rozhraní ODBC | Microsoft Docs"
+description: "Informace o tom, jak toomove dat od ODBC ukládá pomocí Azure Data Factory."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: jingwang
-ms.openlocfilehash: 269d9802ca4a6a16dbf9021929fe21104cb431f7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bf96e71da449313b6144bb194205c572d2ca2030
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Přesun dat z rozhraní ODBC datová úložiště pomocí Azure Data Factory
-Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory pro přesun dat z úložiště dat rozhraní ODBC místně. Vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který představuje obecný přehled přesun dat s aktivitou kopírování.
+Tento článek vysvětluje, jak uložit toouse hello aktivitu kopírování v Azure Data Factory toomove data z místními dat ODBC. Vychází hello [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který představuje obecný přehled přesun dat s aktivitou kopírování hello.
 
-Můžete zkopírovat data z úložiště dat rozhraní ODBC do úložiště dat žádné podporované jímky. Seznam úložišť dat jako jímky nepodporuje aktivitě kopírování najdete v tématu [podporovanými úložišti dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabulky. Objekt pro vytváření dat aktuálně podporuje pouze přesunutí dat z úložiště dat rozhraní ODBC do jiným úložištím dat, ale ne pro přesun dat z jiných úložišť dat k úložišti dat ODBC. 
+Může kopírovat data z ODBC dat úložiště tooany podporované jímku dat úložiště. Seznam dat úložiště, které jsou podporované jako jímky pomocí aktivity kopírování hello, najdete v části hello [podporovanými úložišti dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabulky. Objekt pro vytváření dat se aktuálně podporuje pouze přesun Klientova úložiště dat tooother uložit data z dat ODBC, ale ne pro přesun dat z jiného úložiště dat úložiště tooan ODBC data. 
 
 ## <a name="enabling-connectivity"></a>Povolení připojení
-Služba data Factory podporuje připojení k místní zdroje ODBC pomocí Brána pro správu dat. V tématu [přesouvání dat mezi místní umístění a cloudem](data-factory-move-data-between-onprem-and-cloud.md) článku se dozvíte o Brána pro správu dat a podrobné pokyny o nastavení brány. Použijte bránu pro připojení k úložišti dat rozhraní ODBC i v případě, že je hostovaná ve virtuálním počítači Azure IaaS.
+Služba data Factory podporuje připojování zdroje ODBC tooon místní pomocí hello Brána pro správu dat. V tématu [přesouvání dat mezi místní umístění a cloudem](data-factory-move-data-between-onprem-and-cloud.md) toolearn článek o Brána pro správu dat a podrobné pokyny k nastavení hello brány. Použijte úložiště dat rozhraní ODBC tooconnect tooan aplikace hello brány i v případě, že je hostovaná ve virtuálním počítači Azure IaaS.
 
-Bránu můžete nainstalovat na stejný místní počítač nebo virtuální počítač Azure jako úložiště dat ODBC. Nicméně doporučujeme nainstalovat bránu na samostatný počítač nebo Azure IaaS virtuální počítač, abyste předešli sporu prostředků a pro dosažení vyššího výkonu. Při instalaci brány na samostatný počítač, na počítač byste měli mít přístup k počítači s úložištěm dat ODBC.
+Hello brány můžete nainstalovat na stejný místní počítač nebo virtuální počítač Azure jako úložiště dat rozhraní ODBC hello hello hello. Doporučujeme však nainstalovat hello brány na samostatný počítač nebo Azure IaaS virtuálních počítačů tooavoid sporu prostředků a pro dosažení vyššího výkonu. Když instalujete na samostatný počítač hello brány, hello počítač měl být schopný tooaccess hello počítače s úložištěm dat rozhraní ODBC hello.
 
-Kromě Brána pro správu dat budete také muset nainstalovat ovladač ODBC pro úložiště dat na počítači s bránou.
+Vedle hello Brána pro správu dat musíte také ovladače ODBC hello tooinstall pro úložiště dat hello na počítači brány hello.
 
 > [!NOTE]
 > V tématu [potíží brány](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) tipy k řešení potíží s připojení nebo brány související s problémy.
@@ -38,32 +38,32 @@ Kromě Brána pro správu dat budete také muset nainstalovat ovladač ODBC pro 
 ## <a name="getting-started"></a>Začínáme
 Vytvoření kanálu s aktivitou kopírování, který přesouvá data z úložiště dat rozhraní ODBC pomocí různých nástrojů nebo rozhraní API.
 
-Nejjednodušší způsob, jak vytvořit kanál je použití **Průvodce kopírováním**. V tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) podrobný rychlé vytvoření kanálu pomocí Průvodce kopírováním data.
+Nejjednodušší způsob, jak toocreate Hello kanálu je toouse hello **Průvodce kopírováním**. V tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) podrobný rychlé vytvoření kanálu pomocí Průvodce kopírování dat hello.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **.NET API**, a **REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
+Můžete také použít následující nástroje toocreate kanálu hello: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru** , **.NET API**, a **rozhraní REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) pro podrobné pokyny toocreate kanál s aktivitou kopírování. 
 
-Jestli používáte nástroje nebo rozhraní API, je třeba provést následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat podřízený: 
+Jestli používáte nástroje hello nebo rozhraní API, je třeba provést následující kroky toocreate kanál, který přesouvá data ze zdrojových dat úložiště tooa jímku dat hello: 
 
-1. Vytvoření **propojené služby** propojení vstupní a výstupní data ukládá do data factory.
-2. Vytvoření **datové sady** představují vstupní a výstupní data pro kopírování. 
+1. Vytvoření **propojené služby** toolink vstupní a výstupní data úložiště tooyour data factory.
+2. Vytvoření **datové sady** toorepresent vstupní a výstupní data pro hello operace kopírování. 
 3. Vytvoření **kanálu** s aktivitou kopírování, která přebírá datovou sadu jako vstup a datovou sadu jako výstup. 
 
-Když použijete průvodce, jsou automaticky vytvoří definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál). Při použití nástroje nebo rozhraní API (s výjimkou .NET API), definujete tyto entity služby Data Factory pomocí formátu JSON.  Příklad s definicemi JSON entit služby Data Factory, které se používají ke zkopírování dat z úložiště dat rozhraní ODBC, naleznete v tématu [JSON příklad: kopírování dat z dat ODBC uložit do objektu Blob Azure](#json-example-copy-data-from-odbc-data-store-to-azure-blob) tohoto článku. 
+Když použijete Průvodce hello, jsou automaticky vytvoří definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál hello). Při použití nástroje nebo rozhraní API (s výjimkou .NET API), můžete definovat tyto entity služby Data Factory pomocí formátu JSON hello.  Příklad s definicemi JSON entit služby Data Factory, které jsou používané toocopy dat z úložiště dat rozhraní ODBC, naleznete v tématu [JSON příklad: kopírování dat z dat ODBC ukládání objektů Blob tooAzure](#json-example-copy-data-from-odbc-data-store-to-azure-blob) tohoto článku. 
 
-Následující části obsahují podrobnosti o vlastnostech formátu JSON, které slouží k určení konkrétní entity služby Data Factory k úložišti dat rozhraní ODBC:
+Hello následující části obsahují podrobnosti o vlastnostech formátu JSON, které jsou úložiště dat konkrétní tooODBC entity služby Data Factory používané toodefine:
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
-Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro ODBC propojené služby.
+Hello následující tabulka obsahuje popis JSON elementy konkrétní tooODBC propojené služby.
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| type |Vlastnost typu musí být nastavena na: **OnPremisesOdbc** |Ano |
-| připojovací řetězec |Přístup k pověření část připojovací řetězec a volitelné šifrovat přihlašovací údaje. Příklady v následujících částech. |Ano |
-| přihlašovací údaje |Část přístup přihlašovacích údajů z připojovacího řetězce zadaného ve formátu ovladačem vlastnost hodnota. Příklad: "Uid =<user ID>; PWD =<password>; RefreshToken =<secret refresh token>; ". |Ne |
-| authenticationType. |Typ ověřování používaný pro připojení k úložišti dat ODBC. Možné hodnoty jsou: anonymní a Basic. |Ano |
+| type |vlastnost typu Hello musí být nastavena na: **OnPremisesOdbc** |Ano |
+| připojovací řetězec |šifrovat přihlašovací údaje bez přístupu část Hello hello připojovací řetězec a volitelné přihlašovacích údajů. Příklady v následující části hello. |Ano |
+| přihlašovací údaje |Hello přístup pověření část hello připojovacího řetězce zadaného ve formátu ovladačem vlastnost hodnota. Příklad: "Uid =<user ID>; PWD =<password>; RefreshToken =<secret refresh token>; ". |Ne |
+| authenticationType. |Typ ověřování používá úložiště dat rozhraní ODBC toohello tooconnect. Možné hodnoty jsou: anonymní a Basic. |Ano |
 | uživatelské jméno |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ne |
-| heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
-| gatewayName |Název brány, kterou služba Data Factory měla použít pro připojení k úložišti dat ODBC. |Ano |
+| heslo |Zadejte heslo pro hello uživatelského účtu, který jste zadali pro uživatelské jméno hello. |Ne |
+| gatewayName |Úložiště dat rozhraní ODBC toohello tooconnect měli použít název hello brány, kterou hello služba Data Factory. |Ano |
 
 ### <a name="using-basic-authentication"></a>Použití základního ověřování
 
@@ -85,7 +85,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 }
 ```
 ### <a name="using-basic-authentication-with-encrypted-credentials"></a>Základní ověřování pomocí zašifrované přihlašovací údaje
-Můžete šifrovat přihlašovací údaje pomocí [New-AzureRMDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) rutiny (1.0 verzi prostředí Azure PowerShell) nebo [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (0.9 nebo starší verzi prostředí Azure PowerShell).  
+Můžete šifrovat přihlašovací údaje hello pomocí hello [New-AzureRMDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) rutiny (1.0 verzi prostředí Azure PowerShell) nebo [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (0.9 nebo starší verzi hello Azure PowerShell).  
 
 ```json
 {
@@ -124,30 +124,30 @@ Můžete šifrovat přihlašovací údaje pomocí [New-AzureRMDataFactoryEncrypt
 
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny typy datovou sadu (Azure SQL Azure blob, tabulky Azure, atd.).
+Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v části hello [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny typy datovou sadu (Azure SQL Azure blob, tabulky Azure, atd.).
 
-**Rámci typeProperties** oddílu se liší pro jednotlivé typy datovou sadu a informace o umístění dat v úložišti dat. Rámci typeProperties část datové sady typ **RelationalTable** (která zahrnuje datovou sadu ODBC) má následující vlastnosti
+Hello **rámci typeProperties** části se liší pro jednotlivé typy datovou sadu a poskytuje informace o umístění hello hello dat v úložišti dat hello. rámci typeProperties Hello část datové sady typ **RelationalTable** (která zahrnuje datovou sadu ODBC) má následující vlastnosti hello
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| tableName |Název tabulky v úložišti dat ODBC. |Ano |
+| tableName |Název tabulky hello v úložišti dat rozhraní ODBC hello. |Ano |
 
 ## <a name="copy-activity-properties"></a>Zkopírovat vlastnosti aktivit
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [vytváření kanálů](data-factory-create-pipelines.md) článku. Vlastnosti, například název, popis, vstupní a výstupní tabulky a zásad jsou dostupné pro všechny typy aktivit.
+Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování aktivit najdete v tématu hello [vytváření kanálů](data-factory-create-pipelines.md) článku. Vlastnosti, například název, popis, vstupní a výstupní tabulky a zásad jsou dostupné pro všechny typy aktivit.
 
-Vlastnosti, které jsou k dispozici v **rámci typeProperties** části aktivity na druhé straně lišit každý typ aktivity. Pro aktivitu kopírování budou lišit v závislosti na typech zdrojů a jímky.
+Vlastnosti, které jsou k dispozici v hello **rámci typeProperties** části hello aktivit na hello se každý typ aktivity lišit podle druhé straně. Pro aktivitu kopírování budou lišit v závislosti na typech hello zdrojů a jímky.
 
-Při aktivitě kopírování, pokud je zdroj typu **RelationalSource** (která zahrnuje rozhraní ODBC), v rámci typeProperties části jsou k dispozici následující vlastnosti:
+Při aktivitě kopírování, pokud je zdroj typu **RelationalSource** (která zahrnuje rozhraní ODBC), hello následující vlastnosti jsou k dispozici v rámci typeProperties části:
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| query |Čtení dat pomocí vlastního dotazu. |Řetězec dotazu SQL. Příklad: vybrat * z MyTable. |Ano |
+| query |Použijte data tooread hello vlastního dotazu. |Řetězec dotazu SQL. Příklad: vybrat * z MyTable. |Ano |
 
 
-## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>Příklad JSON: kopírování dat z dat ODBC uložit do objektu Blob Azure
-Tento příklad obsahuje definice JSON, které můžete použít k vytvoření kanálu pomocí [portál Azure](data-factory-copy-activity-tutorial-using-azure-portal.md) nebo [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazuje, jak zkopírovat data ze zdroje ODBC do Azure Blob Storage. Však lze zkopírovat data do jakéhokoli z jímky uvádí [sem](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování v Azure Data Factory.
+## <a name="json-example-copy-data-from-odbc-data-store-tooazure-blob"></a>Příklad JSON: kopírování dat z dat ODBC ukládání tooAzure objektů Blob
+Tento příklad obsahuje definice JSON, můžete použít toocreate kanálu pomocí [portál Azure](data-factory-copy-activity-tutorial-using-azure-portal.md) nebo [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazuje, jak toocopy data z ODBC zdroje tooan Azure Blob Storage. Data však mohou být zkopírovaný tooany hello jímky uvádí [sem](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí hello aktivitu kopírování v Azure Data Factory.
 
-Ukázka má následující entity objektu pro vytváření dat:
+Ukázka Hello má hello následující entity objektu pro vytváření dat:
 
 1. Propojené služby typu [OnPremisesOdbc](#linked-service-properties).
 2. Propojené služby typu [azurestorage](data-factory-azure-blob-connector.md#linked-service-properties).
@@ -155,11 +155,11 @@ Ukázka má následující entity objektu pro vytváření dat:
 4. Výstup [datovou sadu](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 5. A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [RelationalSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Ukázka zkopíruje data z výsledku dotazu v úložišti dat rozhraní ODBC do objektu blob každou hodinu. Vlastnostech JSON použitých ve tyto ukázky jsou popsané v části následující ukázky.
+Ukázka Hello zkopíruje data z výsledku dotazu v objektu blob úložiště tooa ODBC dat každou hodinu. Hello vlastnostech JSON použitých ve tyto ukázky jsou popsané v části následující ukázky hello.
 
-Jako první krok nastavte Brána pro správu dat. Tyto pokyny jsou v [přesouvání dat mezi místní umístění a cloudem](data-factory-move-data-between-onprem-and-cloud.md) článku.
+Jako první krok nastavte Brána pro správu dat hello. Hello pokyny jsou v hello [přesouvání dat mezi místní umístění a cloudem](data-factory-move-data-between-onprem-and-cloud.md) článku.
 
-**ODBC propojená služba** tento příklad používá základní ověřování. V tématu [ODBC propojená služba](#linked-service-properties) části pro různé typy ověřování můžete použít.
+**ODBC propojená služba** tento příklad používá hello základní ověřování. V tématu [ODBC propojená služba](#linked-service-properties) části pro různé typy ověřování můžete použít.
 
 ```json
 {
@@ -195,9 +195,9 @@ Jako první krok nastavte Brána pro správu dat. Tyto pokyny jsou v [přesouvá
 
 **Vstupní datové sady rozhraní ODBC**
 
-Příkladu se předpokládá, jste vytvořili tabulku "MyTable" v databázi ODBC a obsahuje sloupec s názvem "timestampcolumn" pro data časové řady.
+Ukázka Hello předpokládá jste vytvořili tabulku "MyTable" v databázi ODBC a obsahuje sloupec s názvem "timestampcolumn" pro data časové řady.
 
-Nastavení "externí": "PRAVDA" informuje služba Data Factory, datová sada je externí k objektu pro vytváření dat a není vyprodukované aktivitu v datové továrně.
+Nastavení "externí": "PRAVDA" informuje služba Data Factory hello tuto datovou sadu hello je externí toohello pro vytváření dat a není vyprodukované aktivitu v objektu pro vytváření dat hello.
 
 ```json
 {
@@ -225,7 +225,7 @@ Nastavení "externí": "PRAVDA" informuje služba Data Factory, datová sada je 
 
 **Výstupní datovou sadu objektů Blob v Azure**
 
-Data se zapisují do nového objektu blob každou hodinu (frekvence: hodiny, interval: 1). Cesta ke složce pro tento objekt blob je vyhodnocován dynamicky podle času zahájení řezu, které jsou zpracovávány. Cesta ke složce používá rok, měsíc, den a čas částí čas spuštění.
+Data se zapisují nový objekt blob tooa každou hodinu (frekvence: hodiny, interval: 1). Cesta ke složce Hello pro objekt blob hello je vyhodnocován dynamicky podle času zahájení hello hello řezu, které jsou zpracovávány. Cesta ke složce Hello používá rok, měsíc, den a čas části hello počáteční čas.
 
 ```json
 {
@@ -286,7 +286,7 @@ Data se zapisují do nového objektu blob každou hodinu (frekvence: hodiny, int
 
 **Aktivita kopírování v kanálu s zdroje ODBC (RelationalSource) a podřízený objekt Blob (BlobSink)**
 
-Kanál obsahuje aktivitu kopírování, která je konfigurovaná pro používání těchto vstupní a výstupní datové sady a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **RelationalSource** a **podřízený** je typ nastaven na **BlobSink**. Zadané pro dotaz SQL **dotazu** vlastnost vybere data za poslední hodinu pro kopírování.
+Hello kanál obsahuje aktivitu kopírování, je nakonfigurovaná toouse tyto vstupní a výstupní datové sady a je naplánované toorun každou hodinu. V kanálu hello definici JSON, hello **zdroj** je typ nastaven příliš**RelationalSource** a **podřízený** je typ nastaven příliš**BlobSink**. Dotaz SQL Hello zadaný pro hello **dotazu** vlastnost vybere hello data v hello za hodinu toocopy.
 
 ```json
 {
@@ -334,21 +334,21 @@ Kanál obsahuje aktivitu kopírování, která je konfigurovaná pro používán
 }
 ```
 ### <a name="type-mapping-for-odbc"></a>Mapování typu pro rozhraní ODBC
-Jak je uvedeno v [aktivity přesunu dat](data-factory-data-movement-activities.md) článku aktivita kopírování provádí automatické typ převody z typů zdroje do jímky typů s následující postup ve dvou krocích:
+Jak je uvedeno v hello [aktivity přesunu dat](data-factory-data-movement-activities.md) článku aktivita kopírování provádí automatické typ převody z typů toosink typy zdroje s hello dvoustupňový přístup následující:
 
-1. Převést na typ .NET typy nativní zdrojů
-2. Převést na typ jímky nativní typ formátu .NET
+1. Převod z typu too.NET typy nativní zdroje
+2. Převést typ jímky toonative typ rozhraní .NET
 
-Při přesouvání dat z úložiště dat rozhraní ODBC, typy dat rozhraní ODBC jsou namapované na typy .NET, jak je uvedeno v [mapování datového typu ODBC](https://msdn.microsoft.com/library/cc668763.aspx) tématu.
+Při přesouvání dat z úložiště dat rozhraní ODBC, ODBC datové typy jsou typy namapované too.NET, jak je uvedeno v hello [mapování datového typu ODBC](https://msdn.microsoft.com/library/cc668763.aspx) tématu.
 
-## <a name="map-source-to-sink-columns"></a>Mapování zdroje jímky sloupců
-Další informace o mapování sloupců v datové sadě zdrojového sloupce v datové sadě podřízený najdete v tématu [mapování sloupců datovou sadu v Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-toosink-columns"></a>Mapování zdrojových toosink sloupců
+toolearn o mapování sloupců v toocolumns datové sady zdroje v datové sadě jímka, najdete v části [mapování sloupců datovou sadu v Azure Data Factory](data-factory-map-columns.md).
 
 ## <a name="repeatable-read-from-relational-sources"></a>Opakovatelných číst z relační zdrojů
-Při kopírování dat z relačních dat ukládá, uvědomte si, aby se zabránilo neúmyslnému výstupy opakovatelnosti. V Azure Data Factory může řez znovu ručně. Zásady opakovaných pokusů pro datovou sadu můžete také nakonfigurovat tak, aby řez se znovu spustí, když dojde k chybě. Řez se znovu spustí, buď způsobem, musíte zajistit, že stejná data je pro čtení bez ohledu na to kolikrát řez je spustit. V tématu [Repeatable číst z relačními zdroji](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+Při kopírování dat z relační datové úložiště, mějte opakovatelnosti pamatovat tooavoid nezamýšleným výstupy. V Azure Data Factory může řez znovu ručně. Zásady opakovaných pokusů pro datovou sadu můžete také nakonfigurovat tak, aby řez se znovu spustí, když dojde k chybě. Pokud v obou případech se znovu spustí řez, je potřeba toomake jisti, který hello stejných dat je pro čtení bez ohledu na to jak mnohokrát řez je spustit. V tématu [Repeatable číst z relačními zdroji](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="ge-historian-store"></a>GE Historian úložiště
-Vytvoření služby ODBC propojené propojení [GE Proficy Historian (teď GE Historian)](http://www.geautomation.com/products/proficy-historian) úložiště dat do služby Azure data factory, jak je znázorněno v následujícím příkladu:
+Vytvoření toolink ODBC propojené služby [GE Proficy Historian (teď GE Historian)](http://www.geautomation.com/products/proficy-historian) úložiště dat tooan pro vytváření dat Azure, jak ukazuje následující příklad hello:
 
 ```json
 {
@@ -358,7 +358,7 @@ Vytvoření služby ODBC propojené propojení [GE Proficy Historian (teď GE Hi
         "type": "OnPremisesOdbc",
         "typeProperties":
         {
-            "connectionString": "DSN=<name of the GE Historian store>",
+            "connectionString": "DSN=<name of hello GE Historian store>",
             "gatewayName": "<gateway name>",
             "authenticationType": "Basic",
             "userName": "<user name>",
@@ -368,24 +368,24 @@ Vytvoření služby ODBC propojené propojení [GE Proficy Historian (teď GE Hi
 }
 ```
 
-Nainstalujte Brána pro správu dat na místním počítači a zaregistrujte bránu pomocí portálu. Brány nainstalované na místním počítači používá k připojení k úložišti dat GE Historian ovladač ODBC pro GE Historian. Nainstalujte ovladač, proto, pokud ještě není nainstalovaná na počítači s bránou. V tématu [povolení připojení](#enabling-connectivity) podrobnosti.
+Nainstalovat brána pro správu dat na místním počítači a zaregistrujte bránu hello hello portálu. Hello brány je nainstalovaná v místním počítači používá hello ovladač ODBC pro GE Historian tooconnect toohello GE Historian úložišti. Proto nainstalujte ovladač hello, pokud ještě není nainstalovaná na počítači brány hello. V tématu [povolení připojení](#enabling-connectivity) podrobnosti.
 
-Než použijete úložišti GE Historian v řešení pro vytváření dat, ověřte, zda brána se může připojit k úložišti dat pomocí pokynů v další části.
+Než použijete hello GE Historian ukládat v řešení pro vytváření dat, ověřte, zda hello brány může připojit toohello data store pomocí pokynů v další části hello.
 
-Čtení článku od začátku podrobnější přehled použití dat ODBC ukládá jako zdrojové úložiště dat v operaci kopírování.  
+Přečíst článek hello od začátku hello podrobnější přehled použití dat ODBC se ukládá jako zdrojové úložiště dat v operaci kopírování.  
 
 ## <a name="troubleshoot-connectivity-issues"></a>Řešení potíží s problémy s připojením
-K odstraňování problémů s připojením, použijte **diagnostiky** kartě **Správce konfigurace brány pro správu dat**.
+potíže s připojením tootroubleshoot, použijte hello **diagnostiky** kartě **Správce konfigurace brány pro správu dat**.
 
-1. Spusťte **Správce konfigurace brány pro správu dat**. Buď můžete spustit "C:\Program Files\Microsoft Data správy Gateway\1.0\Shared\ConfigManager.exe" přímo (nebo) vyhledávání pro **brány** najít odkaz na **Brána pro správu dat** aplikace, jak je znázorněno na následujícím obrázku.
+1. Spusťte **Správce konfigurace brány pro správu dat**. Buď můžete spustit "C:\Program Files\Microsoft Data správy Gateway\1.0\Shared\ConfigManager.exe" přímo (nebo) vyhledávání pro **brány** toofind odkaz příliš**Brána pro správu dat** aplikace, jak ukazuje následující obrázek hello.
 
     ![Hledání brány](./media/data-factory-odbc-connector/search-gateway.png)
-2. Přepnout **diagnostiky** kartě.
+2. Přepínač toohello **diagnostiky** kartě.
 
     ![Diagnostiku brány](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
-3. Vyberte **typ** dat uložit (propojené služby).
-4. Zadejte **ověřování** a zadejte **pověření** (nebo) zadejte **připojovací řetězec** používané pro připojení k úložišti.
-5. Klikněte na tlačítko **testovací připojení** k testování připojení k úložišti.
+3. Vyberte hello **typ** dat uložit (propojené služby).
+4. Zadejte **ověřování** a zadejte **pověření** (nebo) zadejte **připojovací řetězec** , je použít tooconnect toohello datové úložiště.
+5. Klikněte na tlačítko **testovací připojení** tootest hello připojení toohello úložišti.
 
 ## <a name="performance-and-tuning"></a>Výkon a ladění
-V tématu [výkonu kopie aktivity & ladění průvodce](data-factory-copy-activity-performance.md) Další informace o klíčových faktorů, že dopad výkon přesun dat (aktivita kopírování) v Azure Data Factory a různé způsoby, jak optimalizovat ho.
+V tématu [výkonu kopie aktivity & ladění průvodce](data-factory-copy-activity-performance.md) toolearn o klíči faktory, že dopad výkon přesun dat (aktivita kopírování) v Azure Data Factory a různé způsoby toooptimize ho.

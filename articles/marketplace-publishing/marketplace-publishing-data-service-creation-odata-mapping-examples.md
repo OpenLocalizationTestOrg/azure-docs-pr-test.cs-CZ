@@ -1,6 +1,6 @@
 ---
-title: "Příručka o vytváření datové služby pro Marketplace | Microsoft Docs"
-description: "Podrobné pokyny o tom, jak vytvořit, certifikovat a datové služby pro nasazení zakoupit na webu Azure Marketplace."
+title: "aaaGuide toocreating datové služby pro hello Marketplace | Microsoft Docs"
+description: "Podrobné pokyny, jak toocreate, certifikovat a nasadit službu Data pro zakoupit na hello Azure Marketplace."
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-ms.openlocfilehash: 2ab624941fc385f14b62bb5d743927f157955845
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8917a43959834d15f70866297f98d24bb83e217f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="examples-of-mapping-an-existing-web-service-to-odata-through-csdls"></a>Příklady mapování existující webovou službu na OData prostřednictvím CSDLs
+# <a name="examples-of-mapping-an-existing-web-service-tooodata-through-csdls"></a>Příklady mapování existující webové služby tooOData prostřednictvím CSDLs
 > [!IMPORTANT]
-> **V tuto chvíli jsme již nejsou registrace všechny nové služby Data vydavatele. Nové dataservices nebude získat schválení pro výpis.** Pokud máte SaaS obchodní aplikace, který chcete publikovat na AppSource můžete najít další informace [zde](https://appsource.microsoft.com/partners). Pokud máte IaaS aplikace nebo služby vývojáře, které chcete publikovat na webu Azure Marketplace můžete najít další informace [zde](https://azure.microsoft.com/marketplace/programs/certified/).
+> **V tuto chvíli jsme již nejsou registrace všechny nové služby Data vydavatele. Nové dataservices nebude získat schválení pro výpis.** Pokud máte obchodní aplikace SaaS chcete toopublish na AppSource najdete další informace [zde](https://appsource.microsoft.com/partners). Pokud máte IaaS aplikace nebo služba vývojáře by jako toopublish na webu Azure Marketplace můžete najít další informace [zde](https://azure.microsoft.com/marketplace/programs/certified/).
 > 
 > 
 
 ## <a name="example-functionimport-for-raw-data-returned-using-post"></a>Příklad: FunctionImport pro vrátila pomocí "POST" data "Raw"
-Vytvořit novou podřízenou položkou a vrátí jeho server definován URL(location) nebo pro část podřízená na serveru aktualizovat definovali adresu URL pomocí POST nezpracovaná data.  Kde podřízená je datový proud, tj. nestrukturovaných, např. textový soubor.  Pozor POST v není idempotent bez umístění.
+Použít novou podřízenou položkou toocreate POST nezpracovaná data a vrátí svůj server definované URL(location) nebo tooupdate část hello podřízené na hello server definována adresy URL.  Kde podřízená hello je datový proud, tj. nestrukturovaných, např. textový soubor.  Pozor POST v není idempotent bez umístění.
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="AddUsageEvent" ReturnType="Raw(text/plain)" d:EncodeParameterValues="true" d:AllowedHttpMethods="POST" d:BaseUri="http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -45,7 +45,7 @@ Vytvořit novou podřízenou položkou a vrátí jeho server definován URL(loca
         </FunctionImport>
 
 ## <a name="example-functionimport-using-delete"></a>Příklad: FunctionImport pomocí "Odstranit"
-ODSTRANĚNÍ použijte k odebrání zadaného identifikátoru URI.
+Použijte tooremove odstranění zadaného identifikátoru URI.
 
         <EntitySet Name="DeleteUsageFileEntitySet" EntityType="MyOffer.DeleteUsageFileEntity" />
         <FunctionImport Name="DeleteUsageFile" EntitySet="DeleteUsageFileEntitySet" ReturnType="Collection(MyOffer.DeleteUsageFileEntity)"  d:AllowedHttpMethods="DELETE" d:EncodeParameterValues="true” d:BaseUri=”http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643" >
@@ -66,7 +66,7 @@ ODSTRANĚNÍ použijte k odebrání zadaného identifikátoru URI.
         </EntityType>
 
 ## <a name="example-functionimport-using-post"></a>Příklad: FunctionImport pomocí "POST"
-Vytvořit novou podřízenou položkou a vrátí jeho server definován URL(location) nebo pro část podřízená na serveru aktualizovat definovali adresu URL pomocí POST nezpracovaná data.  Kde podřízená je struktura. Mějte na paměti, POST není idempotent bez umístění.
+Použít novou podřízenou položkou toocreate POST nezpracovaná data a vrátí svůj server definované URL(location) nebo tooupdate část hello podřízené na hello server definována adresy URL.  Kde podřízená hello je struktura. Mějte na paměti, POST není idempotent bez umístění.
 
         <EntitySet Name="CreateANewModelEntitySet2" EntityType=" MyOffer.CreateANewModelEntity2" />
         <FunctionImport Name="CreateModel" EntitySet="CreateANewModelEntitySet2" ReturnType="Collection(MyOffer.CreateANewModelEntity2)" d:EncodeParameterValues="true" d:AllowedHttpMethods="POST" d:BaseUri=”http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -84,7 +84,7 @@ Vytvořit novou podřízenou položkou a vrátí jeho server definován URL(loca
         </FunctionImport>
 
 ## <a name="example-functionimport-using-put"></a>Příklad: FunctionImport pomocí "PUT"
-Pomocí PUT, chcete-li vytvořit novou podřízenou položkou nebo aktualizovat celý podřízená na adrese URL definován server.  Tam, kde podřízená je struktura, PUT je idempotent, takže více výskytů bude mít za následek stejného stavu, jednofaktorovému x = 5.  PUT, musí být použit s celý obsah zadaný prostředek.
+Pomocí PUT toocreate novou podřízenou položkou nebo tooupdate hello celý podřízená na server definované adresy URL.  Kde podřízená hello je struktura, PUT je idempotent, takže více výskytů bude mít za následek hello stejné stav, jednofaktorovému x = 5.  PUT, musí být použit s hello celého obsahu z hello zadaný prostředek.
 
         <EntitySet Name="UpdateAnExistingModelEntitySet" EntityType="MyOffer.UpdateAnExistingModelEntity" />
         <FunctionImport Name="UpdateModel" EntitySet="UpdateAnExistingModelEntitySet" ReturnType="Collection(MyOffer.UpdateAnExistingModelEntity)" d:EncodeParameterValues="true" d:AllowedHttpMethods="PUT" d:BaseUri=”http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -106,7 +106,7 @@ Pomocí PUT, chcete-li vytvořit novou podřízenou položkou nebo aktualizovat 
 
 
 ## <a name="example-functionimport-for-raw-data-returned-using-put"></a>Příklad: FunctionImport pro vrátila pomocí "PUT" data "Raw"
-Pomocí PUT nezpracovaná data, chcete-li vytvořit novou podřízenou položkou nebo aktualizovat celý podřízená na adrese URL definován server.  Kde podřízená je datový proud, tj. nestrukturovaných, např. textový soubor.  PUT je idempotent tak více výskytů bude mít za následek stejného stavu, jednofaktorovému x = 5.  PUT, musí být použit s celý obsah zadaný prostředek.
+Pomocí PUT nezpracovaná data toocreate novou podřízenou položkou nebo celý podřízený hello tooupdate na adrese URL definován server.  Kde podřízená hello je datový proud, tj. nestrukturovaných, např. textový soubor.  PUT je idempotent tak více výskytů bude mít za následek hello stejné stav, jednofaktorovému x = 5.  PUT, musí být použit s hello celého obsahu z hello zadaný prostředek.
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="CancelBuild” ReturnType="Raw(text/plain)" d:AllowedHttpMethods="PUT" d:EncodeParameterValues="true" d:BaseUri=” http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -125,7 +125,7 @@ Pomocí PUT nezpracovaná data, chcete-li vytvořit novou podřízenou položkou
 
 
 ## <a name="example-functionimport-for-raw-data-returned-using-get"></a>Příklad: FunctionImport pro vrátila pomocí "GET" data "Raw"
-Použijte získat nezpracovaná data vrátit podřízená, který nestrukturovaných, tj. text.
+Použijte získat nezpracovaná data tooreturn podřízená, který nestrukturovaných, tj. text.
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="GetModelUsageFile" ReturnType="Raw(text/plain)" d:EncodeParameterValues="true" d:AllowedHttpMethods="GET" d:BaseUri="https://cmla.cloudapp.net/api2/model/builder/build?buildId={buildId}&amp;apiVersion={apiVersion}">
@@ -144,7 +144,7 @@ Použijte získat nezpracovaná data vrátit podřízená, který nestrukturovan
         </FunctionImport>
 
 ## <a name="example-functionimport-for-paging-through-returned-data"></a>Příklad: FunctionImport pro "Stránkování" prostřednictvím vrácená data
-Implementace RESTful stránkování prostřednictvím svá data pomocí GET.  Výchozí stránkování nastavena na 100 řádek na stránce data.
+Implementace RESTful stránkování prostřednictvím svá data pomocí GET.  Výchozí stránkování nastavena too100 řádek na stránce data.
 
         <EntitySet Name=”CropEntitySet" EntityType="MyOffer.CropEntity" />
         <FunctionImport    Name="GetCropReport" EntitySet="CropEntitySet” ReturnType="Collection(MyOffer.CropEntity)" d:EmitSelfLink="false" d:EncodeParameterValues="true" d:Paging="SkipTake" d:MaxPageSize="100" d:BaseUri="http://api.mydata.org/Crop? report={report}&amp;series={series}&amp;start={$skip}&amp;size=100">
@@ -159,7 +159,7 @@ Implementace RESTful stránkování prostřednictvím svá data pomocí GET.  V�
         </FunctionImport>
 
 ## <a name="see-also"></a>Viz také
-* Pokud vás zajímá porozumět celkový proces mapování OData a účel, přečtěte si tento článek [mapování dat služby OData](marketplace-publishing-data-service-creation-odata-mapping.md) ke kontrole definice struktury a pokynů.
-* Pokud vás zajímá učení a seznámit se s konkrétním uzlům a jejich parametrů, přečtěte si tento článek [datové služby OData mapování uzly](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) pro definice a vysvětlení, příklady a kontext případů použití.
-* Pokud chcete vrátit do předepsaných cestu pro publikování datové služby v Azure Marketplace, přečtěte si tento článek [Průvodce publikování dat služby](marketplace-publishing-data-service-creation.md).
+* Pokud vás zajímá Principy hello celý proces mapování OData a účel, přečtěte si tento článek [mapování dat služby OData](marketplace-publishing-data-service-creation-odata-mapping.md) tooreview definice struktury a pokynů.
+* Pokud vás zajímá učení a pochopení hello konkrétní uzlů a jejich parametrů, přečtěte si tento článek [datové služby OData mapování uzly](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) pro definice a vysvětlení, příklady a kontext případů použití.
+* tooreturn toohello předepsané cestu pro publikování dat služby toohello Azure Marketplace, přečtěte si tento článek [Průvodce publikování dat služby](marketplace-publishing-data-service-creation.md).
 

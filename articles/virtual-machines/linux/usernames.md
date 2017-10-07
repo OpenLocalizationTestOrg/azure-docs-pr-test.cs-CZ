@@ -1,6 +1,6 @@
 ---
-title: "Výběr uživatelská jména pro Linux | Microsoft Docs"
-description: "Zjistěte, jak vybrat uživatelská jména pro virtuální počítač s Linuxem v Azure."
+title: "aaaSelecting uživatelská jména pro Linux | Microsoft Docs"
+description: "Zjistěte, jak se uživatel tooselect názvů pro virtuální počítač s Linuxem v Azure."
 services: virtual-machines-linux
 documentationcenter: 
 author: szarkos
@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-ms.openlocfilehash: 1874d72e5f88816036667932371ff28704d186c8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c65e2ac46f40bb8c9d74cccbaf248a070c0fa6cc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="selecting-user-names-for-linux-on-azure"></a>Výběr uživatelských jmen pro Linux v Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-Při zřizování virtuální počítač s Linuxem v Azure musíte zadat název jiné kořenové uživatele, který můžete později použít k přihlášení do virtuálního počítače. Můžete se rozhodnout název nového uživatele, nebo pokud zřizování prostřednictvím portálu Azure classic můžete přijmout výchozí název "azureuser".
+Při zřizování virtuální počítač s Linuxem v Azure musíte zadat název hello nekořenovými uživatele, které můžete později použít toolog do hello virtuálních počítačů. Můžete se rozhodnout hello název hello nového uživatele, nebo pokud zřizování prostřednictvím hello portál Azure classic můžete přijmout výchozí hello název "azureuser".
 
-Ve většině případů tohoto uživatele, nebude existovat bitová kopie a vytvoří se během procesu zřizování. Pokud uživatel na základní image virtuálního počítače existuje, pak Azure Linux agent jednoduše nakonfiguruje heslo nebo klíč SSH pro tohoto uživatele na základě informací, které jste zadali při vytváření virtuálního počítače.
+Ve většině případů tento uživatel nebude existovat na základní image hello a vytvoří se během procesu zřizování hello. Pokud uživatel hello existuje na hello základní image virtuálního počítače, pak hello Azure Linux agent jednoduše nakonfiguruje hello heslo nebo klíč SSH pro tohoto uživatele na základě informací o hello, které jste zadali při vytváření hello virtuálních počítačů.
 
-**Ale**, Linux definuje sadu uživatelská jména, která by se neměla používat. Proces zřizování bude **nezdaří** Pokud se pokusíte zřízení virtuálního počítače s Linuxem pomocí stávajícího uživatele systému, která je definována jako uživatel s UID 0-99. Typickým příkladem je `root` uživatele, který má UID 0.
+**Ale**, Linux definuje sadu uživatelská jména, která by se neměla používat. Zřizování se proces Hello **nezdaří** Pokud se pokusíte tooprovision virtuálního počítače s Linuxem pomocí stávajícího uživatele systému, která je definována jako uživatel s UID 0-99. Typickým příkladem je hello `root` uživatele, který má UID 0.
 
 * Viz také: [základní Linux Standard - rozsahy ID uživatele](http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/uidrange.html)
 
-Následuje seznam běžných uživatelů předdefinované systému CentOS a Ubuntu, že byste neměli používat při zřizování virtuální počítač s Linuxem v Azure. Tento seznam je jenom jako příklad naleznete v dokumentaci k distribuční zajistit, že zadané uživatelské jméno, které zvolíte nejsou v konfliktu s existujícím uživatelem systému.
+Hello následuje seznam běžných uživatelů předdefinované systému CentOS a Ubuntu, že byste neměli používat při zřizování virtuální počítač s Linuxem v Azure. Tento seznam je jenom jako příklad naleznete v dokumentaci toohello pro vaše tooensure distribuční tímto uživatelským jménem, které zvolíte není v konfliktu s existujícím uživatelem systému hello.
 
 ## <a name="centos"></a>CentOS
 * abrt

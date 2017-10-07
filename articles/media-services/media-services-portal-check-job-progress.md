@@ -1,6 +1,6 @@
 ---
-title: "Monitorování průběhu úlohy kódování pomocí portálu Azure"
-description: "Tento kurz vás provede kroky monitorování průběh úlohy pomocí portálu Azure."
+title: "aaaMonitor kódování průběh úlohy s hello portálu Azure"
+description: "Tento kurz vás provede kroky hello monitorování průběh úlohy pomocí hello portálu Azure."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 571d222068e92a45b0e37bec298bab7a6825f731
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4282553d5dbed65ea6427bcd6de778795f1ff9ed
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Monitorování průběhu úlohy kódování pomocí portálu Azure
+# <a name="monitor-encoding-job-progress-with-hello-azure-portal"></a>Monitorování průběhu úlohy kódování s hello portálu Azure
 > [!div class="op_single_selector"]
 > * [Azure Portal](media-services-portal-check-job-progress.md)
 > * [.NET](media-services-check-job-progress.md)
@@ -30,17 +30,17 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="overview"></a>Přehled
 > [!NOTE]
-> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
+> toocomplete tohoto kurzu potřebujete účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
 > 
 > 
 
-Při spuštění úlohy, často vyžadují způsob, jak sledovat průběh úlohy. 
+Při spuštění úlohy, často vyžadují průběh úlohy tootrack způsobem. 
 
-Pokud chcete monitorovat průběh úlohy kódování, klikněte na **Nastavení** (v horní části stránky) a pak vyberte **Úlohy**.
+Klikněte na tlačítko toomonitor hello průběh úlohy kódování hello **nastavení** (v hello horní části stránky hello) a potom vyberte **úlohy**.
 
 ![Úlohy](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
-Můžete kliknout na úlohu zobrazíte další podrobnosti.
+Můžete kliknout na úlohu toosee hello další podrobnosti.
 
 ![Úlohy](./media/media-services-portal-vod-get-started/media-services-job-progress2.png)
 

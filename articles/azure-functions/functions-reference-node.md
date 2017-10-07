@@ -1,6 +1,6 @@
 ---
-title: "Referenční informace pro vývojáře JavaScript pro Azure Functions | Microsoft Docs"
-description: "Pochopit, jak vyvíjet funkce pomocí jazyka JavaScript."
+title: "referenční informace pro vývojáře aaaJavaScript pro Azure Functions | Microsoft Docs"
+description: "Pochopte, jak funguje toodevelop pomocí jazyka JavaScript."
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: 7ea81ed47f391fbce1432c2b11ac176ab6c04ae0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 6220b42f965b6ee2463341aaf270836623fdf7fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka vývojáře Azure funkce JavaScript
 > [!div class="op_single_selector"]
@@ -30,17 +30,17 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-Možnosti JavaScript Azure Functions umožňuje snadno exportovat funkci, která se předá jako `context` objekt pro komunikaci s modulem runtime a pro příjem a odesílání dat přes vazby.
+Hello prostředí JavaScript pro Azure Functions umožňuje snadno tooexport funkci, která se předá jako `context` objekt pro komunikaci s hello runtime a pro příjem a odesílání dat přes vazby.
 
-Tento článek předpokládá, že jste si již přečetli [referenční informace pro vývojáře Azure Functions](functions-reference.md).
+Tento článek předpokládá, že jste si přečetli již hello [referenční informace pro vývojáře Azure Functions](functions-reference.md).
 
 ## <a name="exporting-a-function"></a>Export funkce
-Všechny funkce jazyka JavaScript, musíte exportovat jedné `function` prostřednictvím `module.exports` pro modul runtime vyhledat funkci a spustit ho. Tato funkce musí vždy zahrnovat `context` objektu.
+Všechny funkce jazyka JavaScript, musíte exportovat jedné `function` prostřednictvím `module.exports` pro modul runtime hello toofind hello funkce a potom ho spusťte. Tato funkce musí vždy zahrnovat `context` objektu.
 
 ```javascript
 // You must include a context, but other arguments are optional
 module.exports = function(context) {
-    // Additional inputs can be accessed by the arguments property
+    // Additional inputs can be accessed by hello arguments property
     if(arguments.length === 4) {
         context.log('This function has 4 inputs');
     }
@@ -51,16 +51,16 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 };
 ```
 
-Vazeb `direction === "in"` se předají jako argumenty funkce, což znamená, že můžete používat [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) dynamicky zpracovat nové vstupy (například pomocí `arguments.length` Iterujte přes všechny vstupy). Tato funkce je vhodné, pokud máte pouze aktivační událost a žádné další vstupy, protože vaše data aktivační události můžete předvídatelné přístup bez odkazující na váš `context` objektu.
+Vazeb `direction === "in"` se předají jako argumenty funkce, což znamená, že můžete používat [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) toodynamically zpracovat nové vstupy (například pomocí `arguments.length` tooiterate přes všechny vstupy). Tato funkce je vhodné, pokud máte pouze aktivační událost a žádné další vstupy, protože vaše data aktivační události můžete předvídatelné přístup bez odkazující na váš `context` objektu.
 
-Argumenty, které jsou vždy funkci byl předán společně v pořadí, ve které se vyskytují v *function.json*i v případě, že je v příkazu exportuje nezadáte. Pokud máte například `function(context, a, b)` a změňte ji na `function(context, a)`, stále můžete získat hodnotu `b` v kódu funkce tím, že odkazuje na `arguments[3]`.
+argumenty Hello jsou vždy předají toohello funkce v hello pořadí, ve které se vyskytují v *function.json*i v případě, že je v příkazu exportuje nezadáte. Pokud máte například `function(context, a, b)` a změňte ji příliš`function(context, a)`, stále můžete získat hodnotu hello `b` v kódu funkce tím, že odkazuje příliš`arguments[3]`.
 
-Všechny vazby, bez ohledu na směru, jsou také předají `context` objektu (viz následující skript). 
+Všechny vazby, bez ohledu na směru, jsou také předají na hello `context` objektu (viz následující skript hello). 
 
 ## <a name="context-object"></a>objekt kontextu
-Modul runtime používá `context` objekt k předávání dat do a z funkce a umožnit vám komunikovat s modulem runtime.
+modul runtime Hello používá `context` objekt toopass data tooand z funkce a toolet komunikovat s hello runtime.
 
-Objekt kontextu je vždy první parametr funkce a musí být zahrnut, protože obsahuje metody, jako `context.done` a `context.log`, které jsou nutné k využití modulu runtime správně. Můžete pojmenovat objekt ať chcete (například `ctx` nebo `c`).
+Hello objekt kontextu je vždy hello první parametr tooa funkce a musí být zahrnut, protože obsahuje metody, jako `context.done` a `context.log`, které jsou požadované toouse hello runtime správně. Můžete pojmenovat hello objekt ať chcete (například `ctx` nebo `c`).
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -74,7 +74,7 @@ module.exports = function(context) {
 ```
 context.bindings
 ```
-Vrátí objekt s názvem, který obsahuje všechny vaše vstupní a výstupní data. Například následující definice vazby v vaše *function.json* umožňuje přístup k obsahu z fronty `context.bindings.myInput` objektu. 
+Vrátí objekt s názvem, který obsahuje všechny vaše vstupní a výstupní data. Například hello následující definice vazby v vaše *function.json* hello umožní přístup k obsahu fronty hello z hello `context.bindings.myInput` objektu. 
 
 ```json
 {
@@ -86,7 +86,7 @@ Vrátí objekt s názvem, který obsahuje všechny vaše vstupní a výstupní d
 ```
 
 ```javascript
-// myInput contains the input data, which may have properties such as "name"
+// myInput contains hello input data, which may have properties such as "name"
 var author = context.bindings.myInput.name;
 // Similarly, you can set your output data
 context.bindings.myOutput = { 
@@ -99,17 +99,17 @@ context.bindings.myOutput = {
 context.done([err],[propertyBag])
 ```
 
-Informuje o modul runtime, který váš kód byl dokončen. Je třeba volat `context.done`, nebo jinak se modul runtime nikdy ví, že funkce je dokončena a provádění bude časový limit. 
+Informuje o hello modul runtime, který váš kód byl dokončen. Je třeba volat `context.done`, nebo jiný modul runtime hello nikdy ví, že funkce je dokončena a provádění hello bude časový limit. 
 
-`context.done` Metoda umožňuje předat zpět i uživatelem definované chybové modul runtime a kontejner objektů a vlastností, který přepíše vlastnosti na `context.bindings` objektu.
+Hello `context.done` metoda umožňuje vám toopass zpět uživatelem definované chybové toohello runtime a kontejner objektů a vlastností, které přepsat hello vlastnosti hello `context.bindings` objektu.
 
 ```javascript
-// Even though we set myOutput to have:
+// Even though we set myOutput toohave:
 //  -> text: hello world, number: 123
 context.bindings.myOutput = { text: 'hello world', number: 123 };
-// If we pass an object to the done function...
+// If we pass an object toohello done function...
 context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
-// the done method will overwrite the myOutput binding to be: 
+// hello done method will overwrite hello myOutput binding toobe: 
 //  -> text: hello there, world, noNumber: true
 ```
 
@@ -118,26 +118,26 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 ```
 context.log(message)
 ```
-Umožňuje zapisovat do protokolů streamování konzoly na výchozí úrovni trasování. Na `context.log`, další metody protokolování jsou k dispozici, který umožňuje zapisovat do protokolu konzoly na jiných úrovních trasování:
+Umožňuje vám toowrite toohello streamování konzoly protokoly na úrovni trasování výchozí hello. Na `context.log`, další metody protokolování jsou k dispozici, která umožňují zápis toohello konzoly protokolu na jiných úrovních trasování:
 
 
 | Metoda                 | Popis                                |
 | ---------------------- | ------------------------------------------ |
-| **Chyba (_zpráva_)**   | Zapíše chyba úroveň protokolování nebo nižší.   |
-| **warn (_zpráva_)**    | Zapíše do varovná úroveň protokolování nebo nižší. |
-| **informace o (_zpráva_)**    | Zapíše informace o úroveň protokolování nebo nižší.    |
-| **verbose (_zpráva_)** | Zapíše na podrobné úrovni protokolování.           |
+| **Chyba (_zpráva_)**   | Zapíše tooerror úroveň protokolování nebo nižší.   |
+| **warn (_zpráva_)**    | Zapíše toowarning úroveň protokolování nebo nižší. |
+| **informace o (_zpráva_)**    | Zapíše tooinfo úroveň protokolování nebo nižší.    |
+| **verbose (_zpráva_)** | Zapíše tooverbose úrovně protokolování.           |
 
-V následujícím příkladu se zapíše do konzoly na úrovni trasování upozornění:
+Hello následující příklad zapíše toohello konzoly na úrovni trasování upozornění hello:
 
 ```javascript
 context.log.warn("Something has happened."); 
 ```
-Můžete nastavit prahovou hodnotu úroveň trasování pro protokolování v souboru host.json nebo ho vypnout.  Další informace o tom, jak zapsat do protokolů, najdete v další části.
+Můžete nastavit prahové hodnoty hello úroveň trasování pro protokolování v souboru host.json hello nebo vypnout.  Další informace o způsobu, jakým toowrite toohello zadává viz další část hello.
 
 ## <a name="binding-data-type"></a>Datový typ vazby
 
-Datový typ pro vstupní vazbu, použijte `dataType` vlastnost v definici vazby. Například pokud chcete číst obsah požadavku HTTP v binárním formátu, použijte typ `binary`:
+toodefine hello datový typ pro vstupní vazbu, použijte hello `dataType` vlastnost v definici vazby hello. Například tooread hello obsahu požadavku HTTP v binárním formátu, použijte typ hello `binary`:
 
 ```json
 {
@@ -150,48 +150,48 @@ Datový typ pro vstupní vazbu, použijte `dataType` vlastnost v definici vazby.
 
 Další možnosti pro `dataType` jsou `stream` a `string`.
 
-## <a name="writing-trace-output-to-the-console"></a>Zápis trasování výstup do konzoly 
+## <a name="writing-trace-output-toohello-console"></a>Zápis trasování výstup toohello konzoly 
 
-Ve funkcích, můžete použít `context.log` metody k zápisu výstupu trasování do konzoly. V tomto okamžiku nelze použít `console.log` k zápisu do konzoly.
+Ve funkcích, použijete hello `context.log` metody toowrite trasování výstup toohello konzoly. V tomto okamžiku nelze použít `console.log` toowrite toohello konzoly.
 
-Při volání `context.log()`, zprávy se zapíše do konzoly na výchozí úrovni trasování, která je _informace_ úroveň trasování. Následující kód zapíše do konzoly na úrovni trasování informace:
+Při volání `context.log()`, zprávy se zapíše toohello konzoly na úrovni trasování výchozí hello, což je hello _informace_ úroveň trasování. Hello následující kód zapíše toohello konzoly na úrovni trasování hello informace:
 
 ```javascript
 context.log({hello: 'world'});  
 ```
 
-Předchozí kód je ekvivalentní následující kód:
+Hello předchozí kód je ekvivalentní toohello následující kód:
 
 ```javascript
 context.log.info({hello: 'world'});  
 ```
 
-Následující kód zapíše do konzoly na úrovni Chyba:
+Hello následující kód zapíše toohello konzoly na úroveň hello chyb:
 
 ```javascript
 context.log.error("An error has occurred.");  
 ```
 
-Protože _chyba_ je trasování nejvyšší úrovně, toto trasování bude zapsáno do výstupu na všech úrovních trasování, dokud je povoleno protokolování.  
+Protože _chyba_ je trasování hello nejvyšší úrovně, trasování je zapsán výstup toohello na všech úrovních trasování, dokud je povoleno protokolování.  
 
 
-Všechny `context.log` metody podporují stejný formát parametr, který je podporován Node.js [util.format metoda](https://nodejs.org/api/util.html#util_util_format_format). Vezměte v úvahu následující kód, který zapisuje do konzoly pomocí výchozí úroveň trasování:
+Všechny `context.log` metody podporují hello stejný formát parametru, která podporuje hello Node.js [util.format metoda](https://nodejs.org/api/util.html#util_util_format_format). Vezměte v úvahu následující kód, který zapíše toohello konzoly pomocí úroveň trasování výchozí hello hello:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=' + req.originalUrl);
 context.log('Request Headers = ' + JSON.stringify(req.headers));
 ```
 
-Můžete taky napsat stejný kód v následujícím formátu:
+Můžete také zápisu hello stejný kód na hello následující formát:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
 context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
-### <a name="configure-the-trace-level-for-console-logging"></a>Nakonfiguruje úroveň trasování pro protokolování konzoly
+### <a name="configure-hello-trace-level-for-console-logging"></a>Konfigurace hello úroveň trasování pro protokolování konzoly
 
-Funkce umožňuje definovat úroveň trasování prahová hodnota pro zápis do konzoly, která usnadňuje řízení, které trasování způsob, jak se zapisují do konzoly z funkcí. Pokud chcete nastavit prahovou hodnotu pro všechny trasování zapsána do konzoly, použijte `tracing.consoleLevel` vlastnost v souboru host.json. Toto nastavení platí pro všechny funkce v aplikaci funkce. Následující příklad nastavuje mezní hodnotu trasování Zapnutí podrobného protokolování:
+Funkce umožňuje definovat úroveň trasování hello prahová hodnota pro zápis toohello konzoly, která umožňuje snadno toocontrol hello způsob trasování jsou zapsány toohello konzoly z funkcí. Prahová hodnota hello tooset pro všechny trasování zapsat toohello konzoly, použijte hello `tracing.consoleLevel` vlastnost v souboru host.json hello. Toto nastavení platí tooall funkce v aplikaci funkce. Hello následující příklad ilustruje hello trasování prahová hodnota tooenable podrobné protokolování:
 
 ```json
 { 
@@ -201,58 +201,58 @@ Funkce umožňuje definovat úroveň trasování prahová hodnota pro zápis do 
 }  
 ```
 
-Hodnoty z **consoleLevel** odpovídají názvy `context.log` metody. Chcete-li zakázat veškeré protokolování trasování do konzoly, nastavte **consoleLevel** k _vypnout_. Další informace o souboru host.json najdete v tématu [host.json referenční téma](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json).
+Hodnoty z **consoleLevel** odpovídají toohello názvy hello `context.log` metody. nastavení protokolování toohello konzole, všechny trasování toodisable **consoleLevel** too_off_. Další informace o souboru host.json hello najdete v tématu hello [host.json referenční téma](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json).
 
 ## <a name="http-triggers-and-bindings"></a>HTTP triggerů a vazeb
 
-HTTP a aktivační události webhooku a HTTP výstupu vazby používají žádosti a odpovědi objekty k reprezentaci zasílání zpráv protokolu HTTP.  
+HTTP a aktivační události webhooku a HTTP výstupu vazby používat požadavku a odpovědi objekty toorepresent hello HTTP zasílání zpráv.  
 
 ### <a name="request-object"></a>Objekt žádosti
 
-`request` Objekt má následující vlastnosti:
+Hello `request` objekt má hello následující vlastnosti:
 
 | Vlastnost      | Popis                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _text_        | Objekt, který obsahuje text žádosti.               |
-| _záhlaví_     | Objekt, který obsahuje hlavičky žádosti.                   |
-| _– Metoda_      | Metoda HTTP požadavku.                                |
-| _PůvodníAdresaURL_ | Adresa URL požadavku.                                        |
-| _Parametry_      | Objekt, který obsahuje parametry směrování žádosti. |
-| _dotaz_       | Objekt, který obsahuje parametry dotazu.                  |
-| _rawBody_     | Tělo zprávy jako řetězec.                           |
+| _text_        | Objekt, který obsahuje hello textu hello požadavku.               |
+| _záhlaví_     | Objekt, který obsahuje hello hlavičky žádosti.                   |
+| _– Metoda_      | Metoda HTTP požadavku hello Hello.                                |
+| _PůvodníAdresaURL_ | Adresa URL Hello hello požadavku.                                        |
+| _Parametry_      | Objekt, který obsahuje hello směrování parametrů hello žádosti. |
+| _dotaz_       | Objekt, který obsahuje parametry dotazu hello.                  |
+| _rawBody_     | Hello těla zprávy hello jako řetězec.                           |
 
 
 ### <a name="response-object"></a>Objekt odpovědi
 
-`response` Objekt má následující vlastnosti:
+Hello `response` objekt má hello následující vlastnosti:
 
 | Vlastnost  | Popis                                               |
 | --------- | --------------------------------------------------------- |
-| _text_    | Objekt, který obsahuje text odpovědi.         |
-| _záhlaví_ | Objekt, který obsahuje hlavičky odpovědi.             |
-| _isRaw_   | Označuje, že formátování bylo přeskočeno pro odpověď.    |
-| _Stav_  | Stavový kód HTTP odpovědi.                     |
+| _text_    | Objekt, který obsahuje hello text odpovědi hello.         |
+| _záhlaví_ | Objekt, který obsahuje hello hlavičky odpovědi.             |
+| _isRaw_   | Označuje, že formátování bylo přeskočeno pro odpověď hello.    |
+| _Stav_  | Hello stavový kód HTTP odpovědi hello.                     |
 
-### <a name="accessing-the-request-and-response"></a>Přístup k požadavku a odpovědi 
+### <a name="accessing-hello-request-and-response"></a>Přístup k hello žádosti a odpovědi 
 
-Při práci s aktivace protokolu HTTP, se můžete dostat objekty žádosti a odpovědi protokolu HTTP v jednom ze tří způsobů:
+Při práci s aktivace protokolu HTTP, můžete přístup k objektům požadavku a odpovědi HTTP hello v jednom ze tří způsobů:
 
-+ Z pojmenované vstup a výstup vazby. Tímto způsobem triggeru protokolu HTTP a vazeb fungovat stejně jako ostatní vazby. Následující příklad nastaví objekt odpovědi pomocí pojmenovaná `response` vazby: 
++ Z hello s názvem vstup a výstup vazby. Tímto způsobem hello triggeru protokolu HTTP a pracovní vazby hello stejné jako druhé vazby. Hello následující příklad nastaví objektu odpovědi hello pomocí pojmenovaná `response` vazby: 
 
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
 
-+ Z `req` a `res` vlastnosti `context` objektu. Tímto způsobem můžete použít konvenční vzor pro přístup protokolu HTTP k datům z objektu context, místo nutnosti použít celý `context.bindings.name` vzor. Následující příklad ukazuje, jak získat přístup `req` a `res` objekty na `context`:
++ Z `req` a `res` vlastnosti hello `context` objektu. Tímto způsobem můžete hello konvenční vzor tooaccess HTTP data z objektu context hello, místo nutnosti toouse hello úplné `context.bindings.name` vzor. Následující příklad ukazuje, jak Hello tooaccess hello `req` a `res` objekty v hello `context`:
 
     ```javascript
-    // You can access your http request off the context ...
+    // You can access your http request off hello context ...
     if(context.req.body.emoji === ':pizza:') context.log('Yay!');
     // and also set your http response
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
-+ Při volání `context.done()`. Zvláštní druh vazby HTTP vrátí odpověď, který je předán `context.done()` metoda. Následující HTTP výstup vazba definuje `$return` výstupní parametr:
++ Při volání `context.done()`. Zvláštní druh vazby HTTP vrátí hello odpověď, který je předán toohello `context.done()` metoda. výstup Hello následující HTTP definuje vazbu `$return` výstupní parametr:
 
     ```json
     {
@@ -261,7 +261,7 @@ Při práci s aktivace protokolu HTTP, se můžete dostat objekty žádosti a od
       "name": "$return"
     }
     ``` 
-    Tato vazba výstup očekává, kde zadáte odpovědi při volání `done()`, a to takto:
+    Tato vazba výstup očekává, že budete toosupply hello odpovědi při volání `done()`, a to takto:
 
     ```javascript
      // Define a valid response object.
@@ -270,24 +270,24 @@ Při práci s aktivace protokolu HTTP, se můžete dostat objekty žádosti a od
     ```  
 
 ## <a name="node-version-and-package-management"></a>Uzel verze a správy balíčků
-Verze uzlu je aktuálně uzamčena v `6.5.0`. Jsme se na odstranění příčin přidání podpory pro další verze a jejich zpřístupnění konfigurovat.
+verze uzlu Hello je aktuálně uzamčena v `6.5.0`. Jsme se na odstranění příčin přidání podpory pro další verze a jejich zpřístupnění konfigurovat.
 
-Následující kroky umožňují mezi ně patřit balíčky v aplikaci funkce: 
+Hello následující kroky umožňují mezi ně patřit balíčky v aplikaci funkce: 
 
-1. Přejděte do části `https://<function_app_name>.scm.azurewebsites.net` (Soubor > Nový > Jiné).
+1. Přejděte příliš`https://<function_app_name>.scm.azurewebsites.net`.
 
 2. Klikněte na tlačítko **ladění konzoly** > **CMD**.
 
-3. Přejděte na `D:\home\site\wwwroot`a poté přetáhněte souboru package.json k **wwwroot** složku v horní polovině stránky.  
-    Soubory můžete nahrát také do vaší aplikace funkce jinými způsoby. Další informace najdete v tématu [jak aktualizovat soubory aplikace funkce](functions-reference.md#fileupdate). 
+3. Přejděte příliš`D:\home\site\wwwroot`a poté přetáhněte vaší toohello soubor package.json **wwwroot** složku v horní polovině hello hello stránky.  
+    Také můžete nahrát aplikaci funkce tooyour soubory jinými způsoby. Další informace najdete v tématu [jak tooupdate funkce soubory aplikace](functions-reference.md#fileupdate). 
 
-4. Po nahrání souboru package.json, spusťte `npm install` v příkazu **Kudu vzdálené spuštění konzoly**.  
-    Tato akce stáhne balíčky uvedené v souboru package.json a restartuje aplikaci funkce.
+4. Po odeslání soubor package.json hello spustit hello `npm install` v hello **Kudu vzdálené spuštění konzoly**.  
+    Tato akce stáhne hello balíčky uvedené v souboru package.json hello a restartuje aplikaci funkce hello.
 
-Po instalaci balíčků, které potřebujete, můžete je importovat do funkce voláním `require('packagename')`, jako v následujícím příkladu:
+Po hello potřebujete jsou nainstalované balíčky, importu funkce tooyour voláním `require('packagename')`, jako v hello následující ukázka:
 
 ```javascript
-// Import the underscore.js library
+// Import hello underscore.js library
 var _ = require('underscore');
 var version = process.version; // version === 'v6.5.0'
 
@@ -297,10 +297,10 @@ module.exports = function(context) {
         .where(context.bindings.myInput.names, {first: 'Carla'});
 ```
 
-Měli byste `package.json` souboru v kořenu aplikace funkce. Definování souboru umožňuje všechny funkce v aplikaci sdílet stejné balíčky v mezipaměti, který poskytuje nejlepší výkon. Pokud dojde ke konfliktu verze, abyste ho mohli vyřešit přidáním `package.json` soubor ve složce konkrétní funkce.  
+Měli byste `package.json` souboru v kořenovém hello funkce aplikace. Definiční soubor hello umožňuje všechny funkce ve sdílené složce aplikace hello hello stejné balíčky v mezipaměti, což dává hello nejlepší výkon. Pokud dojde ke konfliktu verze, abyste ho mohli vyřešit přidáním `package.json` souboru ve složce hello konkrétní funkce.  
 
 ## <a name="environment-variables"></a>Proměnné prostředí
-Proměnné prostředí nebo nastavení hodnoty aplikace, použijte `process.env`, jak ukazuje následující příklad kódu:
+tooget proměnné prostředí nebo hodnotu nastavení aplikace, použijte `process.env`, jak ukazuje následující příklad kódu hello:
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -320,17 +320,17 @@ function GetEnvironmentVariable(name)
 ```
 ## <a name="considerations-for-javascript-functions"></a>Důležité informace týkající se funkce jazyka JavaScript
 
-Pokud pracujete s funkce jazyka JavaScript, nezapomeňte aspekty uvedené v následujících dvou částech.
+Při práci s funkce jazyka JavaScript, mějte na paměti aspektů hello v hello následující dvě části.
 
 ### <a name="choose-single-core-app-service-plans"></a>Zvolte jednojádrový plány služby App Service
 
-Když vytvoříte aplikaci funkce, která používá plán služby App Service, doporučujeme vybrat plán jednojádrový spíše než plán s více jádry. V současné době funkce jazyka JavaScript funkce efektivněji běží na virtuálních počítačích jedním jádrem a větší virtuální počítače pomocí nevytváří vylepšení očekávaný výkon. Pokud je to nezbytné, můžete ručně škálovat tak, že přidáte více instancí virtuálního počítače jedním jádrem nebo můžete povolit automatické škálování. Další informace najdete v tématu [ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json).    
+Když vytvoříte aplikaci funkce, která používá hello plán služby App Service, doporučujeme vybrat plán jednojádrový spíše než plán s více jádry. V současné době funkce jazyka JavaScript funkce efektivněji běží na virtuálních počítačích jedním jádrem a větší virtuální počítače pomocí nevytváří vylepšení výkonu hello očekává. Pokud je to nezbytné, můžete ručně škálovat tak, že přidáte více instancí virtuálního počítače jedním jádrem nebo můžete povolit automatické škálování. Další informace najdete v tématu [ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json).    
 
 ### <a name="typescript-and-coffeescript-support"></a>Podpora typeScript a CoffeeScript
-Protože přímé podpory ještě neexistuje pro automatické kompilaci TypeScript nebo CoffeeScript prostřednictvím modulu runtime, tato podpora se musí zpracovávat mimo modulu runtime v době nasazení. 
+Protože přímé podpory ještě neexistuje pro automatické kompilaci TypeScript nebo CoffeeScript prostřednictvím hello runtime, musí tato podpora toobe zpracovává mimo hello runtime v době nasazení. 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v následujících materiálech:
+Další informace najdete v tématu hello následující prostředky:
 
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md)

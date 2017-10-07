@@ -1,5 +1,5 @@
 ---
-title: "Analýza Azure Batch | Microsoft Docs"
+title: aaaAzure Batch Analytics | Microsoft Docs
 description: "Referenční informace pro analýzu Azure Batch."
 services: batch
 author: tamram
@@ -12,20 +12,20 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: tamram
-ms.openlocfilehash: 7d634e1bb595a84b8af339e5bc5a483a7849e7f7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 462fbad1ac522b485ae18c1e8891b9d2cabd45e0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="batch-analytics"></a>Analýza batch
-Témata v Batch Analytics obsahovat informace o událostech a výstrahách, které jsou k dispozici pro prostředky služby Batch.
+témata Hello v Batch Analytics obsahují referenční informace pro hello událostech a výstrahách, které jsou k dispozici pro prostředky služby Batch.
 
 V tématu [protokolování diagnostiky Azure Batch](https://azure.microsoft.com/documentation/articles/batch-diagnostics/) Další informace o povolení a použití Batch diagnostické protokoly.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 
-Službu Azure Batch vysílá následující události protokolů diagnostiky po dobu životnosti určitých prostředků Batch.
+Hello služby Azure Batch vysílá hello následující události protokolů diagnostiky během doby života hello prostředků určité dávky.
 
 **Služba Protokol událostí**
 * [Vytvoření fondu](batch-pool-create-event.md)

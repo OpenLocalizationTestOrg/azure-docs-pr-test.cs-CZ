@@ -1,5 +1,5 @@
 ---
-title: "Kurz pro Azure Container Service – Příprava ACR | Microsoft Docs"
+title: "kurz pro službu kontejneru aaaAzure – Příprava ACR | Microsoft Docs"
 description: "Kurz pro Azure Container Service – Příprava ACR"
 services: container-service
 documentationcenter: 
@@ -17,62 +17,62 @@ ms.workload: na
 ms.date: 08/21/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 3e1f7617bf2fc52ee4c15598f51a46276f4dc57d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3980e5ce4eb9836f83c761a2f76c944bb3f13060
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Nasazení a používání Azure kontejneru registru
 
-Azure kontejneru registru (ACR) je založené na Azure, privátní registru, pro kontejner Docker bitové kopie. Tento kurz, část 7, obě provede nasazení instanci Azure Container registru a když zavedete bitovou kopii kontejneru. Dokončit krokům patří:
+Azure kontejneru registru (ACR) je založené na Azure, privátní registru, pro kontejner Docker bitové kopie. Tento kurz, část 7, obě provede nasazení instanci Azure Container registru a předání tooit bitové kopie kontejneru. Dokončit krokům patří:
 
 > [!div class="checklist"]
 > * Nasazení instanci Azure Container registru (ACR)
 > * Označování bitovou kopii kontejner pro ACR
-> * Nahrávání bitovou kopii do ACR
+> * Odesílání bitové kopie tooACR hello
 
 V následujících kurzech této instance ACR je integrovaná do clusteru služby Azure Container Service Kubernetes pro zabezpečené spouštění kontejneru bitové kopie. 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V [předchozí kurzu](./container-service-tutorial-kubernetes-prepare-app.md), bitovou kopii kontejner byl vytvořen pro jednoduchou aplikaci Azure hlasování. V tomto kurzu se posune tuto bitovou kopii registru kontejner Azure. Pokud jste ještě nevytvořili obrázek aplikace Azure hlasování, vrátit [kurzu 1 – Vytvoření kontejneru image](./container-service-tutorial-kubernetes-prepare-app.md). Alternativně kroky podrobné zde pracují se žádný obrázek kontejneru.
+V hello [předchozí kurzu](./container-service-tutorial-kubernetes-prepare-app.md), bitovou kopii kontejner byl vytvořen pro jednoduchou aplikaci Azure hlasování. V tomto kurzu se posune tuto bitovou kopii tooan registru kontejner Azure. Pokud jste dosud nevytvořili hello obrázek aplikace Azure hlasování, vrátí příliš[kurzu 1 – Vytvoření kontejneru image](./container-service-tutorial-kubernetes-prepare-app.md). Alternativně hello kroky podrobné zde pracují se žádný obrázek kontejneru.
 
-Tento kurz vyžaduje, že používáte Azure CLI verze verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Tento kurz vyžaduje, že používáte verzi rozhraní příkazového řádku Azure hello verze 2.0.4 nebo novější. Spustit `az --version` toofind hello verze. Pokud potřebujete tooinstall nebo aktualizace, přečtěte si [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="deploy-azure-container-registry"></a>Nasadit kontejner Azure registru
 
 Pokud nasazujete registru kontejneru služby Azure, musíte nejprve skupinu prostředků. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create). V tomto příkladu skupinu prostředků s názvem *myResourceGroup* je vytvořen v *westeurope* oblast.
+Vytvořte skupinu prostředků s hello [vytvořit skupinu az](/cli/azure/group#create) příkaz. V tomto příkladu skupinu prostředků s názvem *myResourceGroup* je vytvořen v hello *westeurope* oblast.
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
 ```
 
-Vytvoření kontejneru Azure registr s využitím [az acr vytvořit](/cli/azure/acr#create) příkaz. Název kontejneru registru **musí být jedinečné**.
+Vytvoření registru kontejneru Azure s hello [vytvořit az acr](/cli/azure/acr#create) příkaz. název kontejneru registru Hello **musí být jedinečné**.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic --admin-enabled true
 ```
 
-Po celý zbytek v tomto kurzu používáme "acrname" jako zástupný symbol pro název kontejneru registru, který jste si zvolili.
+V rámci hello zbytek tohoto kurzu používáme "acrname" jako zástupný symbol pro název registru hello kontejneru, který jste si zvolili.
 
 ## <a name="container-registry-login"></a>Kontejner registru přihlášení
 
-Musíte se přihlásit k vaší instanci ACR před odesláním bitové kopie do ní. Použití [az acr přihlášení](https://docs.microsoft.com/en-us/cli/azure/acr#login) příkaz k dokončení operace. Je třeba zadat jedinečný název zadané registru kontejneru v okamžiku vytvoření.
+Musíte se přihlásit v instanci ACR tooyour před odesláním tooit bitové kopie. Použití hello [az acr přihlášení](https://docs.microsoft.com/en-us/cli/azure/acr#login) příkaz toocomplete hello operaci. Je nutné tooprovide hello jedinečný název zadané toohello kontejneru registru, v okamžiku vytvoření.
 
 ```azurecli
 az acr login --name <acrName>
 ```
 
-Příkaz vrátí zprávu, byla úspěšná přihlášení po dokončení.
+příkaz Hello vrátí zprávu byla úspěšná přihlášení po dokončení.
 
 ## <a name="tag-container-images"></a>Značka kontejneru obrázků
 
-Každé bitové kopie kontejneru musí být označené loginServer název registru. Tato značka se používá pro směrování při nabízení kontejneru bitové kopie do registru bitovou kopii.
+Každý kontejner image musí toobe označené hello loginServer název registru hello. Tato značka se používá pro směrování při nabízení kontejneru bitové kopie tooan image registru.
 
-Chcete-li zobrazit seznam aktuální bitové kopie, použijte [imagí dockeru](https://docs.docker.com/engine/reference/commandline/images/) příkaz.
+toosee seznam aktuální Image, použijte hello [imagí dockeru](https://docs.docker.com/engine/reference/commandline/images/) příkaz.
 
 ```bash
 docker images
@@ -87,19 +87,19 @@ redis                        latest              a1b99da73d05        7 days ago 
 tiangolo/uwsgi-nginx-flask   flask               788ca94b2313        9 months ago        694MB
 ```
 
-Získat název loginServer, spusťte následující příkaz.
+tooget hello loginServer název, spusťte následující příkaz hello.
 
 ```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
-Nyní, značky *azure hlas front* bitovou kopii s loginServer registru kontejneru. Navíc přidat `:redis-v1` na konec název bitové kopie. Tato značka označuje verzi bitové kopie.
+Nyní, značka hello *azure hlas front* bitovou kopii s loginServer hello hello kontejneru registru. Navíc přidat `:redis-v1` toohello konec hello název bitové kopie. Tato značka označuje verzi obrázku hello.
 
 ```bash
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:redis-v1
 ```
 
-Jakmile příznakem, spustit [imagí dockeru] (https://docs.docker.com/engine/reference/commandline/images/) k ověření operaci.
+Označí, spusťte po [imagí dockeru] (https://docs.docker.com/engine/reference/commandline/images/) tooverify hello operaci.
 
 ```bash
 docker images
@@ -115,21 +115,21 @@ redis                                                latest              a1b99da
 tiangolo/uwsgi-nginx-flask                           flask               788ca94b2313        8 months ago        694 MB
 ```
 
-## <a name="push-images-to-registry"></a>Push bitové kopie do registru.
+## <a name="push-images-tooregistry"></a>Push tooregistry bitové kopie
 
-Push *azure hlas front* bitovou kopii do registru. 
+Push hello *azure hlas front* registru toohello bitové kopie. 
 
-Pomocí následujícího příkladu, nahraďte název ACR loginServer loginServer ze svého prostředí.
+Pomocí následující ukázka hello, nahraďte název loginServer ACR hello hello loginServer ze svého prostředí.
 
 ```bash
 docker push <acrLoginServer>/azure-vote-front:redis-v1
 ```
 
-Tato akce trvá několik minut na dokončení.
+To bude trvat několik minut toocomplete.
 
 ## <a name="list-images-in-registry"></a>Seznam obrázků v registru
 
-K zobrazení seznamu bitové kopie, které se nabídne do vašeho kontejneru Azure registru uživatele [az acr úložiště seznamu](/cli/azure/acr/repository#list) příkaz. Aktualizujte příkaz s názvem instance ACR.
+tooreturn seznam bitové kopie, které se nabídne tooyour kontejneru Azure registru, uživatel hello [az acr úložiště seznamu](/cli/azure/acr/repository#list) příkaz. Aktualizujte hello příkaz s názvem instance ACR hello.
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -143,7 +143,7 @@ Result
 azure-vote-front
 ```
 
-A pak najdete v části značky pro konkrétní image, pomocí [az acr úložiště zobrazit značky](/cli/azure/acr/repository#show-tags) příkaz.
+A pak toosee hello značky pro konkrétní image, pomocí hello [az acr úložiště zobrazit značky](/cli/azure/acr/repository#show-tags) příkaz.
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository azure-vote-front --output table
@@ -157,18 +157,18 @@ Result
 redis-v1
 ```
 
-V kurzu dokončení bitovou kopii kontejneru byla uložena v privátní instanci Azure Container registru. V následujících kurzech je nasadit tuto bitovou kopii z ACR do clusteru s podporou Kubernetes.
+V kurzu dokončení hello kontejneru image byla uložena v privátní instanci Azure Container registru. Tato bitová kopie nasazována z ACR tooa Kubernetes clusteru v následujících kurzech.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu registru kontejner Azure připravené pro použití v clusteru služby ACS Kubernetes. Dokončili jste následující kroky:
+V tomto kurzu registru kontejner Azure připravené pro použití v clusteru služby ACS Kubernetes. byly dokončeny Hello následující kroky:
 
 > [!div class="checklist"]
 > * Nasazení instanci Azure Container registru
 > * Označí image kontejner pro ACR
-> * Odeslat bitovou kopii do ACR
+> * TooACR image nahrané hello
 
-Přechodu na v dalším kurzu se dozvíte o nasazení clusteru s podporou Kubernetes v Azure.
+Posunutí další kurz toolearn toohello o nasazení clusteru s podporou Kubernetes v Azure.
 
 > [!div class="nextstepaction"]
 > [Nasazení clusteru Kubernetes](./container-service-tutorial-kubernetes-deploy-cluster.md)

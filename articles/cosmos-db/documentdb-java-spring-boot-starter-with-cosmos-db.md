@@ -1,6 +1,6 @@
 ---
-title: "Jak používat Starter spouštěcí pružiny rozhraním Azure Cosmos DB DocumentDB API"
-description: "Informace o konfiguraci aplikace vytvořené pomocí inicializátoru spouštěcí pružiny s rozhraním API pro Azure Cosmos databáze DocumentDB."
+title: "aaaHow toouse hello pružiny spouštěcí Starter rozhraním Azure Cosmos DB DocumentDB API"
+description: "Zjistěte, jak tooconfigure aplikace vytvořena s hello pružiny spouštěcí inicializátoru s hello rozhraní API služby Azure Cosmos databáze DocumentDB."
 services: cosmos-db
 documentationcenter: java
 author: rmcmurray
@@ -15,25 +15,25 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: robmcm;yungez;kevinzha
-ms.openlocfilehash: 273cc750857c5e466882060a38ac0f3475811e98
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: a2c6de678f850676cb2887e224e5c12950db0e53
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-the-spring-boot-starter-with-azure-cosmos-db-documentdb-api"></a>Jak používat Starter spouštěcí pružiny s rozhraním API pro Azure Cosmos databáze DocumentDB
+# <a name="how-toouse-hello-spring-boot-starter-with-azure-cosmos-db-documentdb-api"></a>Jak toouse hello pružiny spouštěcí Starter s rozhraním API pro Azure Cosmos databáze DocumentDB
 
 ## <a name="overview"></a>Přehled
 
- **[Pružiny Framework]**  open-source řešení, které pomáhá vytvářet aplikace na podnikové úrovni vývojáře v jazyce Java. Jedním z dalších oblíbených projektů, které je vytvořené v horní části daného platformy je [pružiny spouštěcí], který poskytuje zjednodušenou metodu pro vytvoření samostatné aplikace Java. Chcete-li začít pracovat s pružiny spouštěcí vývojáři, jsou k dispozici na několik balíčků spouštěcí pružiny ukázkové <https://github.com/spring-guides/>. Kromě výběr ze seznamu základní pružiny spouštěcí projekty,  **[pružiny Initializr]**  pomáhá vývojářům, jak začít s vytvářením vlastních pružiny spouštění aplikací.
+Hello  **[pružiny Framework]**  open-source řešení, které pomáhá vytvářet aplikace na podnikové úrovni vývojáře v jazyce Java. Jeden z hello oblíbených další projekty, které je vytvořené v horní části daného platformy je [pružiny spouštěcí], který poskytuje zjednodušenou metodu pro vytvoření samostatné aplikace Java. Vývojáři toohelp začít pracovat s pružiny spouštěcí, několik ukázkových pružiny spouštěcí balíčky jsou k dispozici na <https://github.com/spring-guides/>. Kromě toho toochoosing ze seznamu hello základní spouštěcí pružiny projekty, hello  **[pružiny Initializr]**  pomáhá vývojářům, jak začít s vytvářením vlastních pružiny spouštění aplikací.
 
-Azure Cosmos DB je globálně distribuované databáze služba, která umožňuje vývojářům pracovat s daty pomocí různých standardní rozhraní API, například DocumentDB, MongoDB, graf a tabulka rozhraní API. Společnosti Microsoft pružiny spouštěcí Starter umožňuje vývojářům používat spouštěcí pružiny aplikace, které se snadnou integraci s Azure Cosmos DB pomocí rozhraní API DocumentDB.
+Azure Cosmos DB je globálně distribuované databáze služba, která umožňuje vývojářům toowork s daty pomocí různých standardní rozhraní API, například DocumentDB, MongoDB, graf a tabulka rozhraní API. Společnosti Microsoft pružiny spouštěcí Starter umožňuje vývojáři toouse pružiny spouštěcí aplikace, které se snadnou integraci s Azure Cosmos DB pomocí rozhraní API DocumentDB.
 
-Tento článek ukazuje, vytváření Azure DB Cosmos pomocí portálu Azure a pak pomocí **Initializr pružiny** vytvořit aplikaci java vlastní, a pak přidat funkci pružiny spouštěcí Starter do vlastní aplikace ukládání dat v a načtení dat z vaší databáze Cosmos Azure pomocí rozhraní API DocumentDB.
+Tento článek ukazuje, vytváření Azure DB Cosmos pomocí hello portál Azure a pak pomocí hello **pružiny Initializr** toocreate aplikace vlastní java a poté přidejte vlastní tooyour funkce pružiny spouštěcí Starter hello data aplikací toostore v a načtení dat z vaší databáze Cosmos Azure pomocí hello DocumentDB rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li postupujte podle kroků v tomto článku jsou požadovány následující součásti:
+v pořadí toofollow hello kroky v tomto článku jsou potřeba Hello následující požadavky:
 
 * Předplatné Azure; Pokud nemáte předplatné Azure, můžete si aktivovat vaší [výhody pro předplatitele MSDN] nebo si zaregistrovat [bezplatný účet Azure].
 
@@ -41,9 +41,9 @@ Chcete-li postupujte podle kroků v tomto článku jsou požadovány následují
 
 * [Apache Maven](http://maven.apache.org/), verze 3.0 nebo novější.
 
-## <a name="create-an-azure-cosmos-db-by-using-the-azure-portal"></a>Vytvořit databázi Cosmos Azure pomocí portálu Azure
+## <a name="create-an-azure-cosmos-db-by-using-hello-azure-portal"></a>Vytvoření Azure DB Cosmos pomocí hello portálu Azure
 
-1. Přejděte na portál Azure na adrese <https://portal.azure.com/> a klikněte na tlačítko **+ nový**.
+1. Procházet toohello Azure portálu na <https://portal.azure.com/> a klikněte na tlačítko **+ nový**.
 
    ![portál Azure][AZ01]
 
@@ -51,50 +51,50 @@ Chcete-li postupujte podle kroků v tomto článku jsou požadovány následují
 
    ![portál Azure][AZ02]
 
-1. Na **Azure Cosmos DB** stránky, zadejte následující informace:
+1. Na hello **Azure Cosmos DB** zadejte hello následující informace:
 
-   * Zadejte jedinečný **ID**, které budete používat jako identifikátor URI pro vaši databázi. Příklad: *wingtiptoysdata.documents.azure.com*.
-   * Zvolte **SQL (dokument databáze)** pro rozhraní API.
-   * Vyberte **předplatné** chcete použít pro vaši databázi.
-   * Určete, zda chcete vytvořit nový **skupiny prostředků** pro vaši databázi nebo vyberte existující skupinu prostředků.
-   * Zadejte **umístění** pro vaši databázi.
+   * Zadejte jedinečný **ID**, které budete používat jako hello identifikátor URI pro vaši databázi. Příklad: *wingtiptoysdata.documents.azure.com*.
+   * Zvolte **SQL (DB dokumentu)** pro hello rozhraní API.
+   * Zvolte hello **předplatné** chcete toouse pro vaši databázi.
+   * Určit, zda toocreate a nové **skupiny prostředků** pro vaši databázi nebo vyberte existující skupinu prostředků.
+   * Zadejte hello **umístění** pro vaši databázi.
    
-   Pokud jste zadali tyto možnosti, klikněte na tlačítko **vytvořit** k vytvoření databáze.
+   Pokud jste zadali tyto možnosti, klikněte na tlačítko **vytvořit** toocreate vaší databáze.
 
    ![portál Azure][AZ03]
 
-1. Po vytvoření databáze, je uvedena ve vaší službě Azure **řídicí panel**, stejně jako v části **všechny prostředky** a **Azure Cosmos DB** stránky. Kliknutím na vaši databázi na žádném z těchto umístění, které chcete otevřít stránku vlastnosti ke svojí mezipaměti.
+1. Po vytvoření databáze, je uvedena ve vaší službě Azure **řídicí panel**, i jako v části hello **všechny prostředky** a **Azure Cosmos DB** stránky. Kliknutím na vaši databázi na žádném z těchto umístění tooopen hello vlastnosti stránky ke svojí mezipaměti.
 
    ![portál Azure][AZ04]
 
-1. Když stránku vlastností pro vaši databázi se zobrazí, klikněte na tlačítko **přístupové klíče** a kopírování klíče URI a přístup pro vaši databázi, budete používat tyto hodnoty v aplikaci pružiny spouštěcí.
+1. Až se zobrazí stránku hello vlastností pro vaši databázi, klikněte na tlačítko **přístupové klíče** a kopírování klíče URI a přístup pro vaši databázi, budete používat tyto hodnoty v aplikaci pružiny spouštěcí.
 
    ![portál Azure][AZ05]
 
-## <a name="create-a-simple-spring-boot-application-with-the-spring-initializr"></a>Vytvořit jednoduchou aplikaci pružiny spouštěcí s Initializr pružiny
+## <a name="create-a-simple-spring-boot-application-with-hello-spring-initializr"></a>Vytvořit jednoduchou aplikaci pružiny spouštěcí s hello pružiny Initializr
 
-1. Přejděte do <https://start.spring.io/>.
+1. Procházet příliš<https://start.spring.io/>.
 
-1. Zadejte, že chcete vygenerovat **Maven** projektu s **Java**, zadejte **skupiny** a **artefaktů** názvy pro vaši aplikaci a Klikněte na tlačítko **generovat projektu**.
+1. Určete, zda má toogenerate **Maven** projektu s **Java**, zadejte hello **skupiny** a **artefaktů** názvy pro vaši aplikaci a Klepněte na tlačítko hello příliš**generovat projektu**.
 
    ![Možnosti Initializr pružiny Basic][SI01]
 
    > [!NOTE]
    >
-   > Používá Initializr pružiny **skupiny** a **artefaktů** názvy vytvořit název balíčku; například: *com.example.wintiptoys*.
+   > Hello pružiny Initializr používá hello **skupiny** a **artefaktů** název balíčku hello toocreate názvy; například: *com.example.wintiptoys*.
    >
 
-1. Po zobrazení výzvy, stáhněte si projekt na cestu v místním počítači.
+1. Po zobrazení výzvy, stáhněte si hello projektu tooa cestu v místním počítači.
 
    ![Stáhněte si vlastní spouštěcí pružiny projekt][SI02]
 
-1. Po extrahování souborů v místním systému bude jednoduché pružiny spouštěcí aplikace připravené pro úpravy.
+1. Po extrahování souborů hello v místním systému bude jednoduché pružiny spouštěcí aplikace připravené pro úpravy.
 
    ![Soubory projektu pružiny vlastní spouštěcí][SI03]
 
-## <a name="configure-your-spring-boot-app-to-use-the-azure-spring-boot-starter"></a>Konfigurace aplikace pružiny spouštěcí používat Starter spouštěcí pružiny Azure
+## <a name="configure-your-spring-boot-app-toouse-hello-azure-spring-boot-starter"></a>Konfigurace vaší pružiny spouštěcí aplikace toouse hello Azure Spring spouštěcí Starter
 
-1. Vyhledejte *pom.xml* soubor v adresáři vaší aplikace; například:
+1. Vyhledejte hello *pom.xml* soubor v adresáři hello aplikace; například:
 
    `C:\SpringBoot\wingtiptoys\pom.xml`
 
@@ -102,9 +102,9 @@ Chcete-li postupujte podle kroků v tomto článku jsou požadovány následují
 
    `/users/example/home/wingtiptoys/pom.xml`
 
-   ![Vyhledejte soubor pom.xml][PM01]
+   ![Vyhledejte soubor pom.xml hello][PM01]
 
-1. Otevřete *pom.xml* soubor v textovém editoru a přidejte následující řádky do seznamu `<dependencies>`:
+1. Otevřete hello *pom.xml* soubor v textovém editoru a přidejte následující řádky toolist z hello `<dependencies>`:
 
    ```xml
    <dependency>
@@ -114,13 +114,13 @@ Chcete-li postupujte podle kroků v tomto článku jsou požadovány následují
    </dependency>
    ```
 
-   ![Úpravy soubor pom.xml][PM02]
+   ![Úpravy soubor pom.xml hello][PM02]
 
-1. Uložte a zavřete *pom.xml* souboru.
+1. Uložte a zavřete hello *pom.xml* souboru.
 
-## <a name="configure-your-spring-boot-app-to-use-your-azure-cosmos-db"></a>Konfigurace aplikace pružiny spouštěcí používat vaše Azure DB Cosmos
+## <a name="configure-your-spring-boot-app-toouse-your-azure-cosmos-db"></a>Konfigurace vaší aplikace toouse pružiny spouštěcí vaší Azure DB Cosmos
 
-1. Vyhledejte *application.properties* v soubor *prostředky* adresář vaší aplikace; například:
+1. Vyhledejte hello *application.properties* souboru v hello *prostředky* adresáře aplikace; například:
 
    `C:\SpringBoot\wingtiptoys\src\main\resources\application.properties`
 
@@ -128,34 +128,34 @@ Chcete-li postupujte podle kroků v tomto článku jsou požadovány následují
 
    `/users/example/home/wingtiptoys/src/main/resources/application.properties`
 
-   ![Vyhledejte soubor application.properties][RE01]
+   ![Vyhledejte soubor application.properties hello][RE01]
 
-1. Otevřete *application.properties* soubor v textovém editoru a přidejte následující řádky do souboru a nahraďte příslušné vlastnosti pro vaši databázi ukázkové hodnoty:
+1. Otevřete hello *application.properties* v textovém editoru soubor, přidejte následující řádky toohello soubor hello a nahraďte ukázkové hodnoty hello hello příslušné vlastnosti pro vaši databázi:
 
    ```yaml
-   # Specify the DNS URI of your Azure Cosmos DB.
+   # Specify hello DNS URI of your Azure Cosmos DB.
    azure.documentdb.uri=https://wingtiptoys.documents.azure.com:443/
 
-   # Specify the access key for your database.
+   # Specify hello access key for your database.
    azure.documentdb.key=57686f6120447564652c20426f6220526f636b73==
 
-   # Specify the name of your database.
+   # Specify hello name of your database.
    azure.documentdb.database=wingtiptoysdata
    ```
 
-   ![Úpravy souboru application.properties][RE02]
+   ![Úpravy souboru application.properties hello][RE02]
 
-1. Uložte a zavřete *application.properties* souboru.
+1. Uložte a zavřete hello *application.properties* souboru.
 
-## <a name="add-sample-code-to-implement-basic-database-functionality"></a>Přidejte ukázkový kód pro implementaci funkce základní databáze
+## <a name="add-sample-code-tooimplement-basic-database-functionality"></a>Přidání funkce základní databáze tooimplement ukázka kódu
 
-V této části vytvoříte dvě třídy Java pro ukládání uživatelských dat a potom upravte třídě hlavní aplikace k vytvoření instance třídy uživatelů a uložte je do vaší databáze.
+V této části vytvoříte dvě třídy Java pro ukládání uživatelských dat a pak upravit vaší hlavní aplikace třída toocreate instance třídy hello uživatele a uložte ho tooyour databáze.
 
 ### <a name="define-a-basic-class-for-storing-user-data"></a>Zadejte základní třídu pro uložení uživatelských dat.
 
-1. Vytvořte nový soubor s názvem *User.java* ve stejném adresáři jako souboru hlavní aplikace Java.
+1. Vytvořte nový soubor s názvem *User.java* v hello stejného adresáře jako souboru hlavní aplikace Java.
 
-1. Otevřete *User.java* soubor v textovém editoru a přidejte následující řádky do souboru definujte obecné uživatelské třídu, která ukládá a k získávání hodnot v databázi:
+1. Otevřete hello *User.java* soubor v textovém editoru a přidejte následující hello řádků toohello souboru toodefine generického uživatelského třídu, která ukládá a k získávání hodnot v databázi:
 
    ```java
    package com.example.wingtiptoys;
@@ -202,13 +202,13 @@ V této části vytvoříte dvě třídy Java pro ukládání uživatelských da
    }
    ```
 
-1. Uložte a zavřete *User.java* souboru.
+1. Uložte a zavřete hello *User.java* souboru.
 
 ### <a name="define-a-data-repository-interface"></a>Definujte rozhraní úložiště dat
 
-1. Vytvořte nový soubor s názvem *UserRepository.java* ve stejném adresáři jako souboru hlavní aplikace Java.
+1. Vytvořte nový soubor s názvem *UserRepository.java* v hello stejného adresáře jako souboru hlavní aplikace Java.
 
-1. Otevřete *UserRepository.java* soubor v textovém editoru a přidejte následující řádky do souboru Definujte uživatelské rozhraní úložiště, který rozšiřuje výchozí rozhraní úložiště DocumentDB:
+1. Otevřete hello *UserRepository.java* soubor v textovém editoru a přidejte následující hello řádků toohello souboru toodefine uživatelské rozhraní úložiště, které rozšiřuje rozhraní úložiště DocumentDB výchozí hello:
 
    ```java
    package com.example.wingtiptoys;
@@ -220,11 +220,11 @@ V této části vytvoříte dvě třídy Java pro ukládání uživatelských da
    public interface UserRepository extends DocumentDbRepository<User, String> {}   
    ```
 
-1. Uložte a zavřete *UserRepository.java* souboru.
+1. Uložte a zavřete hello *UserRepository.java* souboru.
 
-### <a name="modify-the-main-application-class"></a>Upravit třída hlavní aplikace
+### <a name="modify-hello-main-application-class"></a>Upravit třídy hlavní aplikace hello
 
-1. Vyhledejte soubor Java hlavní aplikace v adresáři balíčku aplikace; například:
+1. Vyhledejte soubor Java hello hlavní aplikace v adresáři balíčku hello aplikace; například:
 
    `C:\SpringBoot\wingtiptoys\src\main\java\com\example\wingtiptoys\WingtiptoysApplication.java`
 
@@ -232,9 +232,9 @@ V této části vytvoříte dvě třídy Java pro ukládání uživatelských da
 
    `/users/example/home/wingtiptoys/src/main/java/com/example/wingtiptoys/WingtiptoysApplication.java`
 
-   ![Vyhledejte soubor aplikace Java][JV01]
+   ![Vyhledejte soubor hello aplikace Java][JV01]
 
-1. V textovém editoru otevřete soubor hlavní aplikace Java a přidejte následující řádky do souboru:
+1. Otevřete soubor Java hello hlavní aplikace v textovém editoru a přidejte následující řádky toohello soubor hello:
 
    ```java
    package com.example.wingtiptoys;
@@ -267,11 +267,11 @@ V této části vytvoříte dvě třídy Java pro ukládání uživatelských da
    }
    ```
 
-1. Uložte a zavřete soubor hlavní aplikace Java.
+1. Uložte a zavřete soubor hello hlavní aplikace Java.
 
 ## <a name="build-and-test-your-app"></a>Vytvoření a testování vaší aplikace
 
-1. Otevřete příkazový řádek a změnit adresář, do složky, kde vaše *pom.xml* se nachází soubor; například:
+1. Otevřete příkazový řádek a změňte složku toohello kde vaše *pom.xml* se nachází soubor; například:
 
    `cd C:\SpringBoot\wingtiptoys`
 
@@ -286,43 +286,43 @@ V této části vytvoříte dvě třídy Java pro ukládání uživatelských da
    java -jar target/wingtiptoys-0.0.1-SNAPSHOT.jar
    ```
 
-1. Aplikace se zobrazí několik zpráv runtime a měli byste vidět zprávu `User: testFirstName testLastName` které oznamuje, že hodnoty byly úspěšně uložené a načíst z databáze.
+1. Aplikace se zobrazí několik zpráv runtime a měli byste vidět zprávu hello `User: testFirstName testLastName` zobrazí tooindicate, hodnoty byly úspěšně uloženy a načíst z databáze.
 
-   ![Úspěšný výstup z aplikace][JV02]
+   ![Úspěšný výstup z aplikace hello][JV02]
 
-1. Volitelné: Můžete portál Azure pro vaši databázi kliknutím zobrazit obsah vaší Azure DB Cosmos na stránce vlastnosti **Průzkumníka dokumentů**a potom vyberete a položku ze seznamu zobrazených zobrazit obsah.
+1. Volitelné: Můžete použít hello Azure portálu tooview hello obsah vaší databázi Cosmos Azure ze stránky hello vlastnosti pro vaši databázi kliknutím **Průzkumníka dokumentů**a pak vyberete a položku z hello zobrazí seznam tooview hello obsah.
 
-   ![Chcete-li zobrazit data pomocí Průzkumníka dokumentů][JV03]
+   ![Pomocí Průzkumníka dokumentů tooview hello vaše data][JV03]
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o používání Azure Cosmos DB a Java najdete v následujících článcích:
+Další informace o používání Azure Cosmos DB a Java najdete v tématu hello následující články:
 
 * [Dokumentace Azure Cosmos DB].
 
-* [Azure Cosmos DB: Vytvoření aplikace DocumentDB API Java a portálu Azure][Build a DocumentDB API app with Java]
+* [Azure Cosmos DB: Sestavení aplikace DocumentDB API v jazyce Java a hello portálu Azure][Build a DocumentDB API app with Java]
 
-Další informace o používání pružiny spuštění aplikace v Azure najdete v následujících článcích:
+Další informace o používání pružiny spuštění aplikace v Azure najdete v části hello následující články:
 
 * [Spring spouštěcí DocumenDB Starter pro Azure.](https://github.com/Microsoft/azure-spring-boot-starters/tree/master/azure-documentdb-spring-boot-starter-sample)
 
-* [Nasazení aplikace spouštěcí pružiny do Azure App Service](../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
+* [Nasazení aplikace spouštěcí pružiny toohello Azure App Service](../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
 
-* [Spuštění aplikace spouštěcí Spring v clusteru s podporou Kubernetes v Azure Container Service](../container-service/container-service-deploy-spring-boot-app-on-kubernetes.md)
+* [Spuštění aplikace spouštěcí Spring v clusteru s podporou Kubernetes v hello Azure Container Service](../container-service/container-service-deploy-spring-boot-app-on-kubernetes.md)
 
-Další informace o používání Javy v Azure najdete na webu [Středisko pro vývojáře Java] a [Java Tools for Visual Studio Team Services] (Nástroje Java pro Visual Studio Team Services).
+Další informace o používání Azure v jazyce Java, najdete v tématu hello [Azure střediska pro vývojáře Java] a hello [Java nástrojů pro Visual Studio Team Services].
 
 <!-- URL List -->
 
 [Dokumentace Azure Cosmos DB]: /azure/cosmos-db/
-[Středisko pro vývojáře Java]: https://azure.microsoft.com/develop/java/
+[Azure střediska pro vývojáře Java]: https://azure.microsoft.com/develop/java/
 [Build a DocumentDB API app with Java]: https://docs.microsoft.com/azure/cosmos-db/create-documentdb-java
 [bezplatný účet Azure]: https://azure.microsoft.com/pricing/free-trial/
-[Java Tools for Visual Studio Team Services]: https://java.visualstudio.com/
+[Java nástrojů pro Visual Studio Team Services]: https://java.visualstudio.com/
 [výhody pro předplatitele MSDN]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [pružiny spouštěcí]: http://projects.spring.io/spring-boot/
 [pružiny Initializr]: https://start.spring.io/
-[Pružiny Framework]: https://spring.io/
+[pružiny Framework]: https://spring.io/
 
 <!-- IMG List -->
 

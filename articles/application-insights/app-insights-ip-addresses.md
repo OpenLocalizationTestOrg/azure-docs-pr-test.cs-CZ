@@ -1,5 +1,5 @@
 ---
-title: "IP adresy používané při Application Insights | Microsoft Docs"
+title: "aaaIP adresy používané při Application Insights | Microsoft Docs"
 description: "Výjimky brány firewall serveru vyžadují Application Insights"
 services: application-insights
 documentationcenter: .net
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/11/2017
 ms.author: bwren
-ms.openlocfilehash: 3bb076c63223fc1567c6b7b25c1a513bbc81ed58
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2c101b8da2ba9594fbff607f4f7551cda80c3c25
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="ip-addresses-used-by-application-insights"></a>IP adresy používané službou Application Insights
-[Azure Application Insights](app-insights-overview.md) služba používá počet IP adres. Možná budete muset vědět tyto adresy, pokud je aplikace, kterou monitorujete hostované za bránou firewall.
+Hello [Azure Application Insights](app-insights-overview.md) služba používá počet IP adres. Tooknow bude pravděpodobně nutné tyto adresy, pokud hello aplikaci, která se nachází za bránou firewall.
 
 > [!NOTE]
-> I když tyto adresy jsou statické, je možné, že budeme muset změnit čas od času.
+> I když tyto adresy jsou statické, je možné, že je nutné zadat toochange jim tootime čas.
 > 
 > 
 
 ## <a name="outgoing-ports"></a>Odchozí porty
-Je třeba otevřít některé Odchozí porty v bráně firewall umožňující Application Insights SDK nebo monitorování stavu, které k odesílání dat do portálu:
+Je třeba tooopen některé Odchozí porty v váš server brány firewall tooallow hello Application Insights SDK nebo monitorování stavu toosend data toohello portálu:
 
 | Účel | ADRESA URL | IP adresa | Porty |
 | --- | --- | --- | --- |
@@ -56,7 +56,7 @@ Stav monitorování konfigurace – je potřeba pouze při provádění změn.
 | Data o chybách |Gate.hockeyapp.NET |104.45.136.42 |80, 443 |
 
 ## <a name="availability-tests"></a>Testy dostupnosti
-Toto je seznam adres, ze kterého [testy dostupnosti webu](app-insights-monitor-web-app-availability.md) spouštějí. Pokud chcete spustit testy webu ve vaší aplikaci, ale váš webový server je omezen na obsluhující konkrétní klientů, budete muset povolit příchozí provoz z našich dostupnosti testovací servery.
+Toto je seznam hello adres, ze kterého [testy dostupnosti webu](app-insights-monitor-web-app-availability.md) spouštějí. Pokud chcete, aby toorun webové testy v aplikaci, ale váš webový server je omezená tooserving konkrétní klientů, pak bude mít toopermit příchozí provoz z našich serverech test dostupnosti.
 
 Otevřete porty 80 (http) a 443 (https) pro příchozí provoz z těchto adres (IP adresy jsou seskupené podle umístění):
 

@@ -1,5 +1,5 @@
 ---
-title: Integraci sady Azure Mobile Engagement Android SDK
+title: aaaAzure integraci sady Android SDK Mobile Engagement
 description: "Nejnovější aktualizace a postupy pro Android SDK pro Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,69 +14,69 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 43987962ea2b7b825b88643d18b4db65f1f1670e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c57132ff49cf8c335627a72b37f9b78529e84f48
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-integrate-adm-with-engagement"></a>Postup pro integraci ADM zapojení
+# <a name="how-toointegrate-adm-with-engagement"></a>Jak tooIntegrate ADM s zapojení
 > [!IMPORTANT]
-> Postupujte podle integrace postup popsaný v tom, jak integrovat Engagement Android dokumentu před těchto pokynů.
+> Postupujte podle hello integrace postup popsaný v hello jak tooIntegrate Engagement v systému Android dokumentu před těchto pokynů.
 > 
-> Tento dokument je užitečný jenom v případě, že jste již integrované modul kampaně Reach a plán tak, aby nabízel Amazon zařízení. Chcete-li integrovat kampaně Reach ve vaší aplikaci, přečtěte si nejprve postupy integrovat Engagement Reach v systému Android.
+> Tento dokument je užitečný jenom v případě, že již integrovanou hello Reach modulu a plán toopush Amazon zařízení. kampaně Reach toointegrate ve vaší aplikaci, přečtěte si nejprve jak tooIntegrate Engagement Reach v systému Android.
 > 
 > 
 
 ## <a name="introduction"></a>Úvod
-Integrace ADM umožňuje poslat při cílení na zařízení se systémem Android Amazon vaší aplikace.
+Integrace ADM umožňuje vaší aplikace toobe nabídnutých při cílení na zařízení se systémem Android Amazon.
 
-Datové části ADM nabídnutých do sady SDK vždy obsahovat `azme` klíče v datový objekt. Proto pokud používáte ADM pro jiný účel ve vaší aplikaci, můžete filtrovat podle klíči nabízených oznámení.
+Datové části ADM nabídnutých toohello SDK vždy obsahovat hello `azme` klíče v hello datový objekt. Proto pokud používáte ADM pro jiný účel ve vaší aplikaci, můžete filtrovat podle klíči nabízených oznámení.
 
 > [!IMPORTANT]
 > Pouze Amazon Kindle zařízení se systémem Android 4.0.3 nebo vyšší jsou podporovány Amazon Device Messaging; Můžete však integrovat tento kód bezpečně na jiné zařízení.
 > 
 > 
 
-## <a name="sign-up-to-adm"></a>Zaregistrujte si ADM
+## <a name="sign-up-tooadm"></a>Zaregistrujte si tooADM
 Pokud dosud neučinili, musíte povolit ADM na vašem účtu Amazon.
 
-Postup je podrobně popsán v: [ <https://developer.amazon.com/sdk/adm/credentials.html>].
+Postup Hello je podrobně popsán v: [ <https://developer.amazon.com/sdk/adm/credentials.html>].
 
-Po dokončení procesu, můžete získat:
+Po dokončení postupu hello se zobrazí:
 
-* Přihlašovací údaje OAuth (ID klienta a tajný klíč klienta) pro zapojení moct push zařízení.
+* OAuth přihlašovací údaje (ID klienta a tajný klíč klienta) pro zapojení toobe možné toopush zařízení.
 * Klíč rozhraní API, která musí být integrovaná do aplikace.
 
 ## <a name="sdk-integration"></a>Integrace sady SDK
 ### <a name="managing-device-registrations"></a>Správa registrace zařízení
-Každé zařízení musí odeslat příkaz registrace k serverům ADM, jinak nelze získat přístup.
+Každé zařízení musí odeslat příkaz toohello registrace ADM servery, v opačném případě nelze získat přístup.
 
-Pokud už používáte [klientské knihovny ADM]a už máte [integrované ADM] můžete přímo přejít na android-sdk-adm přijímat.
+Pokud už používáte hello [klientské knihovny ADM]a už máte [integrované ADM] můžete přímo přejít tooandroid-sdk-adm přijímat.
 
-Pokud ještě nebyly spojili ADM, má Engagement jednodušší způsob, jak povolit ve vaší aplikaci:
+Pokud nebyly integrované ADM ještě Engagement má jednodušší způsob tooenable ho v aplikaci:
 
 Upravit vaše `AndroidManifest.xml` souboru:
 
-* Přidat obor názvů Amazon soubor by měl začínat takto:
+* Přidejte hello názvů Amazon, hello soubor by měl začínat takto:
   
       <?xml version="1.0" encoding="utf-8"?>
       <manifest xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:amazon="http://schemas.amazon.com/apk/res/android"
-* Uvnitř `<application/>` značky, přidejte v této části:
+* Uvnitř hello `<application/>` značky, přidejte v této části:
   
       <amazon:enable-feature
          android:name="com.amazon.device.messaging"
          android:required="false"/>
   
       <meta-data android:name="engagement:adm:register" android:value="true" />
-* Po přidání značka amazon, může mít chyby sestavení, pokud je váš cíl sestavení projektu menší než Android 2.1. Budete muset použít **Android 2.1 +** sestavení cíl (nemusíte si dělat starosti, můžete mít dál `minSdkVersion` nastavena na 4).
-* Integrovat klíč rozhraní API ADM jako prostředek podle [tento postup].
+* Po přidání značka hello amazon, může mít chyby sestavení, pokud je váš cíl sestavení projektu menší než Android 2.1. Máte toouse **Android 2.1 +** sestavení cíl (nemusíte si dělat starosti, můžete mít dál `minSdkVersion` nastavit too4).
+* Integrovat hello klíč rozhraní API ADM jako prostředek podle [tento postup].
 
-Potom postupujte podle pokynů v dalších oddílech.
+Potom postupujte podle pokynů hello hello další části.
 
-### <a name="communicate-registration-id-to-the-engagement-push-service-and-receive-notifications"></a>Id registrace ke službě Engagement Push komunikovat a přijímat oznámení
-Abyste mohli komunikovat id registrace zařízení ke službě Engagement Push a jeho oznámení dostávat, přidejte následující příkaz pro vaše `AndroidManifest.xml` souboru uvnitř `<application/>` značky (i když používáte ADM bez zapojení):
+### <a name="communicate-registration-id-toohello-engagement-push-service-and-receive-notifications"></a>Komunikaci registrace id toohello Engagement nabízené služby a přijímat oznámení
+V pořadí toocommunicate hello id registrace toohello zařízení hello Engagement nabízené služby a jeho oznámení dostávat, přidat následující tooyour hello `AndroidManifest.xml` souboru uvnitř hello `<application/>` značky (i když používáte ADM bez zapojení):
 
         <receiver android:name="com.microsoft.azure.engagement.adm.EngagementADMEnabler"
           android:exported="false">
@@ -94,7 +94,7 @@ Abyste mohli komunikovat id registrace zařízení ke službě Engagement Push a
           </intent-filter>
         </receiver>   
 
-Ujistěte se, máte následující oprávnění ve vaší `AndroidManifest.xml` (před `</application>` značka).
+Ujistěte se, máte následující oprávnění v hello vaše `AndroidManifest.xml` (před hello `</application>` značka).
 
         <uses-permission android:name="android.permission.WAKE_LOCK"/>
         <uses-permission android:name="com.amazon.device.messaging.permission.RECEIVE"/>

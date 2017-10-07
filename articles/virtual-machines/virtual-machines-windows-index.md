@@ -1,6 +1,6 @@
 ---
-title: "Technické články pro klasické virtuální počítače s Windows | Microsoft Azure"
-description: "Úplný seznam články dokumentace k Microsoft Azure pro virtuální počítače s Windows v modelu nasazení classic"
+title: "aaaTechnical články pro klasické virtuální počítače s Windows | Microsoft Azure"
+description: "Úplný seznam články dokumentace k Microsoft Azure pro virtuální počítače s Windows v modelu nasazení classic hello"
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/13/2017
 ms.author: danlep
-ms.openlocfilehash: 2df7ea6a143ad0d64e4fd75223c7e5a9a2a5e87e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 262e0d9397e4a20bf25dd4516629a0539a059829
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="technical-articles-for-windows-vms-in-the-classic-deployment-model"></a>Technické články pro virtuální počítače Windows v modelu nasazení classic
-Najít v dokumentaci, které potřebujete k vytvoření a správa systému Windows Azure virtuálních počítačů v modelu nasazení classic.
+# <a name="technical-articles-for-windows-vms-in-hello-classic-deployment-model"></a>Technické články pro virtuální počítače Windows v modelu nasazení classic hello
+Vyhledejte všechny hello dokumentaci potřebujete toocreate a správa systému Windows Azure virtuálních počítačů v modelu nasazení classic hello.
 
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello.
 
 ## <a name="overview"></a>Přehled
 [O virtuálních počítačích](windows/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[Časté otázky o Azure virtuální počítače vytvořené pomocí modelu nasazení classic](windows/classic/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+[Časté otázky o Azure virtuální počítače vytvořené pomocí modelu nasazení classic hello](windows/classic/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 [Porovnání virtuálních počítačů, webů a cloudových služeb](../app-service-web/choose-web-site-cloud-service-vm.md)
 
@@ -46,9 +46,9 @@ Najít v dokumentaci, které potřebujete k vytvoření a správa systému Windo
 ## <a name="get-started"></a>Začínáme
 [Studijní postup pro virtuální počítače Windows](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
 
-[Vytvoření virtuálního počítače s Windows v portálu Azure classic](windows/classic/tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+[Vytvoření virtuálního počítače s Windows v hello portál Azure classic](windows/classic/tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-[Jak se přihlásit k classic virtuálního počítače se systémem Windows Server](windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+[Jak toolog na tooa klasické virtuální počítač se systémem Windows Server](windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ## <a name="plan"></a>Plánování
 [O bitových kopií pro klasické virtuální počítače](windows/classic/about-images.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
@@ -66,7 +66,7 @@ Najít v dokumentaci, které potřebujete k vytvoření a správa systému Windo
 ## <a name="deploy"></a>Nasazení
 [Vytvoření vlastní virtuální počítače se systémem Windows](windows/classic/createportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-[Zachycení virtuálního počítače s Windows vytvořené v modelu nasazení classic](windows/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+[Zachycení virtuálního počítače s Windows vytvořené v modelu nasazení classic hello](windows/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 [Vytvoření a odeslání classic VHD Windows serveru pomocí prostředí PowerShell](windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
@@ -79,42 +79,42 @@ Najít v dokumentaci, které potřebujete k vytvoření a správa systému Windo
 ## <a name="manage"></a>Spravovat
 [Správa virtuálních počítačů pomocí Azure PowerShell](windows/classic/manage-psh.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-[Připojit virtuální sítě classic k nové virtuální sítě](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
+[Připojení klasické virtuální sítě toonew virtuální sítě](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 
-[O agenta virtuálního počítače a rozšíření](windows/classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+[O hello agenta virtuálního počítače a rozšíření](windows/classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 [Správa rozšíření virtuálního počítače](windows/classic/manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 [Rozšíření vlastních skriptů pro klasické virtuální počítače s Windows](windows/classic/extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-[Platforma podporovaná migrace z klasického do Azure Resource Manageru](windows/migration-classic-resource-manager-deep-dive.md)
+[Platforma podporovaná migrace z klasického tooAzure Resource Manager](windows/migration-classic-resource-manager-deep-dive.md)
 
 ## <a name="configure"></a>Konfigurace
-[Postup resetování hesla nebo služby Vzdálená plocha pro virtuální počítač s Windows](windows/reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Jak služba tooreset heslo nebo hello vzdálené plochy pro virtuální počítač s Windows](windows/reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 [O rozšíření virtuálního počítače a funkce](windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[Postup instalace a konfigurace Symantec Endpoint Protection na virtuální počítač s Windows](windows/classic/install-symantec.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+[Jak tooinstall a konfigurace Symantec Endpoint Protection na virtuální počítač s Windows](windows/classic/install-symantec.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-[Postup instalace a konfigurace Trend Micro hluboké Security jako služba na virtuální počítač s Windows](windows/classic/install-trend.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+[Jak tooinstall a nakonfigurujte Trend Micro hluboké Security jako služba na virtuální počítač s Windows](windows/classic/install-trend.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-[Jak nakonfigurovat sadu dostupnosti pro virtuální počítače v modelu nasazení classic](windows/classic/configure-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+[Jak tooconfigure sadu dostupnosti pro virtuální počítače v modelu nasazení classic hello](windows/classic/configure-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-[Jak nastavit koncové body na klasické virtuální počítač Azure](windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+[Jak tooset až koncových bodů na klasické virtuální počítač Azure](windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ## <a name="storage"></a>Úložiště
 [O disky a virtuální pevné disky pro virtuální počítače Azure](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[Tom, jak připojit datový disk k virtuálnímu počítači classic Windows](windows/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+[Jak tooattach datový disk tooa classic Windows virtuálního počítače](windows/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-[Jak se odpojit datový disk od virtuálního počítače s Windows ke classic](windows/classic/detach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+[Jak toodetach datový disk z virtuálního počítače s Windows ke classic](windows/classic/detach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-[Použití diskovou jednotku d jako datový disk na virtuální počítač s Windows](windows/change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+[Jako datový disk pro virtuální počítač Windows jednotku hello D](windows/change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ## <a name="networking"></a>Sítě
 [Přehled virtuálních sítí](../virtual-network/virtual-networks-overview.md)
 
-[Připojit virtuální počítače vytvořené pomocí modelu nasazení classic pomocí virtuální sítě nebo cloudové služby](windows/classic/connect-vms.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+[Připojit virtuální počítače vytvořené pomocí modelu nasazení classic hello pomocí virtuální sítě nebo cloudové služby](windows/classic/connect-vms.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 [Správa skupin zabezpečení sítě přes Azure PowerShell](../virtual-network/virtual-networks-create-nsg-classic-ps.md)
 
@@ -125,7 +125,7 @@ Najít v dokumentaci, které potřebujete k vytvoření a správa systému Windo
 
 [Vytvoření virtuálního počítače pro webovou aplikaci pomocí sady Visual Studio](windows/classic/web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-[Postup spuštění úlohy náročné na výkon v jazyce Java ve virtuálním počítači](windows/classic/java-run-compute-intensive-task.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+[Jak toorun výpočetně náročných úloh v jazyce Java ve virtuálním počítači](windows/classic/java-run-compute-intensive-task.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 [Django Hello World webové aplikace na virtuálním počítači Windows serveru](windows/classic/python-django-web-app.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
@@ -154,9 +154,9 @@ Najít v dokumentaci, které potřebujete k vytvoření a správa systému Windo
 [Referenční dokumentace k rutinám prostředí PowerShell pro správu služeb](/powershell/azure/overview?view=azuresmps-3.7.0)
 
 ## <a name="troubleshooting"></a>Řešení potíží
-[Řešení problémů s připojením ke vzdálené ploše na virtuálním počítači Azure s Windows](windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Řešení potíží s tooan připojení vzdálené plochy Azure virtuální počítač se systémem Windows](windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[Řešení potíží s přístupem k aplikaci spuštěné na virtuálním počítači Azure](windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Řešení potíží s tooan přístupu aplikace spuštěna na virtuální počítač Azure](windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 [Řešení potíží s přidělením při vytváření, restartování nebo změně velikosti virtuálních počítačů v Azure](windows/allocation-failure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

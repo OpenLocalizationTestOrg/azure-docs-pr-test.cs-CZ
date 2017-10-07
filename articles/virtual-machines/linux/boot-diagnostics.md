@@ -1,6 +1,6 @@
 ---
-title: "Spuštění diagnostiky pro virtuální počítače s Linuxem v Azure | Microsoft dokumentů"
-description: "Přehled ladění dvou funkcí pro virtuální počítače s Linuxem v Azure"
+title: "aaaBoot diagnostiky pro virtuální počítače s Linuxem v Azure | Microsoft dokumentů"
+description: "Přehled hello dvě funkce ladění pro virtuální počítače s Linuxem v Azure"
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: Deland-Han
@@ -15,27 +15,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: delhan
-ms.openlocfilehash: 70254d39b5c6326166f7e29fdfc99533835502f9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d355d512de09d2f1d7a2718e3db3fb99c9dd9e24
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-boot-diagnostics-to-troubleshoot-linux-virtual-machines-in-azure"></a>Jak používat Diagnostika spouštění k řešení potíží s virtuální počítače s Linuxem v Azure
+# <a name="how-toouse-boot-diagnostics-tootroubleshoot-linux-virtual-machines-in-azure"></a>Jak toouse spouštění diagnostiky tootroubleshoot Linuxové virtuální počítače v Azure
 
 V Azure je teď dostupná podpora dvou funkcí ladění: Podpora výstupu konzoly a snímku obrazovky pro model nasazení virtuálních počítačů Azure Resource Manager. 
 
-Při přenosu vlastní image do Azure nebo spouštění některé z imagí platformy může virtuální počítač přejít do nespustitelného stavu z mnoha důvodů. Tyto funkce umožňují snadnou diagnostiku a obnovení virtuálních počítačů v případě chyb při spuštění.
+Při zpětném přepnutí vlastní image tooAzure nebo i spouštění jeden z Image platformy hello, může být mnoha důvodů, proč se virtuální počítač získá do jiných spouštěcího stavu. Tyto funkce povolit tooeasily jste diagnostiku a obnovení virtuálních počítačů v případě selhání spuštění.
 
-U virtuálních počítačů s Linuxem můžete snadno zobrazit výstup protokolu konzoly z portálu:
+Pro virtuální počítače s Linuxem, můžete snadno zobrazit výstup hello protokolu konzoly z hello portálu:
 
 ![portál Azure](./media/boot-diagnostics/screenshot1.png)
  
-U virtuálních počítačů s Windows i Linuxem však Azure umožňuje zobrazit také snímek obrazovky virtuálního počítače z hypervisoru:
+Pro systém Windows a virtuální počítače s Linuxem, je však Azure také umožňuje toosee snímek hello virtuálních počítačů ze hypervisoru hello:
 
 ![Chyba](./media/boot-diagnostics/screenshot2.png)
 
-Obě tyto funkce jsou podporované pro virtuální počítače Azure ve všech oblastech. Mějte na paměti, že může trvat až 10 minut, než se snímky obrazovky a výstup zobrazí v účtu úložiště.
+Obě tyto funkce jsou podporované pro virtuální počítače Azure ve všech oblastech. Všimněte si, snímky a výstup může trvat až minut tooappear too10 ve vašem účtu úložiště.
 
 ## <a name="common-boot-errors"></a>Běžné chyby spuštění
 
@@ -44,15 +44,15 @@ Obě tyto funkce jsou podporované pro virtuální počítače Azure ve všech o
 - [FSTAB chyby](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/ )
 
 ## <a name="enable-diagnostics-on-a-new-virtual-machine"></a>Povolení diagnostiky na novém virtuálním počítači
-1. Při vytváření nového virtuálního počítače na portálu Preview vyberte z rozevíracího seznamu modelu nasazení **Azure Resource Manager**:
+1. Při vytváření nového virtuálního počítače z hello portál Preview, vyberte hello **Azure Resource Manager** z rozevíracího seznamu model nasazení hello:
  
     ![Resource Manager](./media/boot-diagnostics/screenshot3.jpg)
 
-2. Nakonfigurujte možnost Monitorování pro výběr účtu úložiště, do kterého chcete tyto diagnostické soubory ukládat.
+2. Nakonfigurujte hello monitorování možnost tooselect hello účet úložiště kam chcete tooplace tyto diagnostické soubory.
  
     ![Vytvoření virtuálního počítače](./media/boot-diagnostics/screenshot4.jpg)
 
-3. Pokud provádíte nasazení z šablony Azure Resource Manageru, přejděte do prostředku vašeho virtuálního počítače a připojte část s diagnostickým profilem. Nezapomeňte použít hlavičku verze rozhraní API s hodnotou 2015-06-15.
+3. Pokud nasazujete z šablony Azure Resource Manager, přejděte tooyour prostředek virtuálního počítače a připojte oddíl profilu hello diagnostiky. Mějte na paměti, hlavičkou verze rozhraní API "2015-06-15" hello toouse.
 
     ```json
     {
@@ -61,7 +61,7 @@ Obě tyto funkce jsou podporované pro virtuální počítače Azure ve všech o
           … 
     ```
 
-4. Diagnostický profil umožňuje vybrat účet úložiště pro ukládání protokolů.
+4. Hello diagnostického profilu můžete účet úložiště hello tooselect místo tooput tyto protokoly.
 
     ```json
             "diagnosticsProfile": {
@@ -76,6 +76,6 @@ Obě tyto funkce jsou podporované pro virtuální počítače Azure ve všech o
 
 ## <a name="update-an-existing-virtual-machine"></a>Aktualizace stávajícího virtuálního počítače
 
-Pokud chcete povolit Diagnostika spouštění prostřednictvím portálu, můžete také aktualizovat existujícího virtuálního počítače přes portál. Vyberte možnost Diagnostika spuštění a klikněte na Uložit. Restartujte virtuální počítač, aby se projevily změny.
+Diagnostika spouštění tooenable prostřednictvím hello portálu, můžete také aktualizovat existující virtuální počítač prostřednictvím portálu hello. Diagnostika spouštění vyberte hello možnost a uložte. Restartujte vliv tootake hello virtuálních počítačů.
 
 ![Aktualizace stávajícího virtuálního počítače](./media/boot-diagnostics/screenshot5.png)

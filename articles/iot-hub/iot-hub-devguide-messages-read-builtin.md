@@ -1,6 +1,6 @@
 ---
-title: "Pochopení předdefinovaný koncový bod Azure IoT Hub | Microsoft Docs"
-description: "Příručka vývojáře – popisuje, jak používat integrované, prečíst zařízení cloud zprávy koncový bod kompatibilní s centrem událostí."
+title: "vestavěným koncovým bodem aaaUnderstand hello Azure IoT Hub | Microsoft Docs"
+description: "Příručka vývojáře – popisuje, jak toouse hello integrovaných zpráv typu zařízení cloud prečíst koncový bod kompatibilní s centrem událostí."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -13,63 +13,63 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: dobett
-ms.openlocfilehash: fcc3743028e369fdc42b71887d49fb41fba2c0dc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 15484c1b1828151ffcae5f4a1407264374223da1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Číst zprávy typu zařízení cloud z předdefinovaných koncového bodu
+# <a name="read-device-to-cloud-messages-from-hello-built-in-endpoint"></a>Číst zprávy typu zařízení cloud ze vestavěným koncovým bodem hello
 
-Ve výchozím nastavení, zprávy jsou směrovány na předdefinovaný koncový bod služby směřujících (**zprávy nebo události**), který je kompatibilní s [Event Hubs][lnk-event-hubs]. Tento koncový bod je aktuálně jenom zveřejněné pomocí [AMQP] [ lnk-amqp] protokolu na portu 5671. IoT hub zpřístupní následující vlastnosti pro vám umožňují řídit předdefinované zasílání zpráv koncový bod kompatibilní s centrem událostí **zprávy nebo události**.
+Ve výchozím nastavení, zprávy jsou směrované toohello vestavěným koncovým bodem service přístupem (**zprávy nebo události**), který je kompatibilní s [Event Hubs][lnk-event-hubs]. Tento koncový bod je momentálně dostupná jenom v případě použití hello [AMQP] [ lnk-amqp] protokolu na portu 5671. IoT hub zpřístupní hello následující vlastnosti tooenable jste toocontrol hello předdefinované zasílání zpráv koncového bodu kompatibilního s centrem událostí **zprávy nebo události**.
 
 | Vlastnost            | Popis |
 | ------------------- | ----------- |
-| **Počet oddílů** | Tuto vlastnost nastavit při vytváření zadat počet [oddíly] [ lnk-event-hub-partitions] pro přijímání událostí zařízení cloud. |
-| **Doba uchování**  | Tato vlastnost určuje, jak dlouho ve dnech, po které zprávy jsou uchována službou IoT Hub. Výchozí hodnota je jeden den, ale je možné zvýšit na sedm dní. |
+| **Počet oddílů** | Nastavte tuto vlastnost Po vytvoření toodefine hello počtu [oddíly] [ lnk-event-hub-partitions] pro přijímání událostí zařízení cloud. |
+| **Doba uchování**  | Tato vlastnost určuje, jak dlouho ve dnech, po které zprávy jsou uchována službou IoT Hub. Výchozí hodnota Hello je jeden den, ale může být vyšší tooseven dnů. |
 
-IoT Hub můžete také spravovat skupiny příjemců na integrované zařízení cloud přijímat koncový bod.
+IoT Hub můžete také skupiny příjemců toomanage na hello integrované zařízení cloud přijímat koncový bod.
 
-Ve výchozím nastavení jsou všechny zprávy, které neodpovídají explicitně pravidel směrování zpráv zapisují na předdefinovaný koncový bod. Pokud zakážete toto záložní směrování, jsou zprávy, které neodpovídají explicitně všechna pravidla pro směrování zpráv vyřadit.
+Ve výchozím nastavení jsou všechny zprávy, které neodpovídají explicitně pravidel směrování zpráv zapisují toohello vestavěným koncovým bodem. Pokud zakážete toto záložní směrování, jsou zprávy, které neodpovídají explicitně všechna pravidla pro směrování zpráv vyřadit.
 
-Můžete upravit dobu uchování buď programově pomocí [zprostředkovatele prostředků služby IoT Hub rozhraní REST API][lnk-resource-provider-apis], nebo pomocí [portál Azure][lnk-management-portal].
+Můžete upravit dobu uchování hello, buď prostřednictvím kódu programu prostřednictvím hello [zprostředkovatele prostředků služby IoT Hub rozhraní REST API][lnk-resource-provider-apis], nebo pomocí hello [portál Azure] [ lnk-management-portal].
 
-IoT Hub zpřístupní **zprávy nebo události** předdefinovaný koncový bod pro váš back endové služby ke čtení zpráv typu zařízení cloud přijatých rozbočovače. Tento koncový bod je událost kompatibilní s centrem, což vám umožní použít některý z mechanismů služby Event Hubs podporuje pro čtení zpráv.
+IoT Hub zpřístupní hello **zprávy nebo události** vestavěným koncovým bodem pro back-end služby přijatých vašeho centra zpráv typu zařízení cloud tooread hello. Tento koncový bod je událost kompatibilní s centrem, což vám umožní toouse žádné služby Event Hubs hello mechanismy hello podporuje pro čtení zpráv.
 
-## <a name="read-from-the-built-in-endpoint"></a>Čtení z předdefinovaných koncového bodu
+## <a name="read-from-hello-built-in-endpoint"></a>Čtení z koncového bodu předdefinované hello
 
-Při použití [Azure Service Bus SDK pro .NET] [ lnk-servicebus-sdk] nebo [Event Hubs - Event Processor Host][lnk-eventprocessorhost], můžete použít libovolné púřipojovací řetězce IoT Hub se správnými oprávněními. Potom pomocí **zprávy nebo události** jako název centra událostí.
+Při použití hello [Azure Service Bus SDK pro .NET] [ lnk-servicebus-sdk] nebo hello [Event Hubs - Event Processor Host][lnk-eventprocessorhost], můžete použít jakékoli připojení, IoT Hub řetězce s hello správná oprávnění. Potom pomocí **zprávy nebo události** jako název centra událostí hello.
 
-Při použití sady SDK (nebo Integrace produktu), nebudou o IoT Hub, musíte koncový bod kompatibilní s centrem událostí a název kompatibilní s centrem událostí z nastavení na IoT Hub [portál Azure][lnk-management-portal]:
+Při použití sady SDK (nebo Integrace produktu), nebudou o IoT Hub, musíte koncový bod kompatibilní s centrem událostí a název kompatibilní s centrem událostí z nastavení hello IoT Hub v hello [portál Azure] [ lnk-management-portal]:
 
-1. V okně centra IoT klikněte na tlačítko **koncové body**.
-1. V **předdefinované koncové body** klikněte na tlačítko **události**. V okně obsahuje následující hodnoty: **koncový bod kompatibilní s centrem událostí**, **název kompatibilní s centrem událostí**, **oddíly**, **dobu uchování**, a **skupiny příjemců**.
+1. V okně centra IoT hello, klikněte na tlačítko **koncové body**.
+1. V hello **předdefinované koncové body** klikněte na tlačítko **události**. Hello okno obsahuje hello následující hodnoty: **koncový bod kompatibilní s centrem událostí**, **název kompatibilní s centrem událostí**, **oddíly**, **dobu uchování**, a **skupiny příjemců**.
 
     ![Nastavení zařízení cloud][img-eventhubcompatible]
 
-SDK centra IoT vyžaduje název koncového bodu služby IoT Hub, která je **zprávy nebo události** jak je znázorněno **koncové body** okno.
+Hello sady SDK centra IoT vyžaduje hello název koncového bodu služby IoT Hub, což je **zprávy nebo události** jak je znázorněno v hello **koncové body** okno.
 
-Pokud používáte sady SDK vyžaduje **Hostname** nebo **Namespace** hodnotu, odeberte schéma z **koncový bod kompatibilní s centrem událostí**. Například, pokud je váš koncový bod kompatibilní s centrem událostí **sb://iothub-ns-myiothub-1234.servicebus.windows.net/**, **Hostname** by **iothub-ns-myiothub-1234.servicebus.windows.net**a **Namespace** by **iothub-ns-myiothub-1234**.
+Pokud vyžaduje hello používáte sady SDK **Hostname** nebo **Namespace** hodnotu, odeberte hello schéma z hello **koncový bod kompatibilní s centrem událostí**. Například, pokud je váš koncový bod kompatibilní s centrem událostí **sb://iothub-ns-myiothub-1234.servicebus.windows.net/**, hello **Hostname** by  **iothub-ns-myiothub-1234.servicebus.windows.net**a hello **Namespace** by **iothub-ns-myiothub-1234**.
 
-Pak můžete použít všechny zásady sdíleného přístupu, který má **ServiceConnect** oprávnění pro připojení k zadané centra událostí.
+Pak můžete použít všechny zásady sdíleného přístupu, který má hello **ServiceConnect** toohello tooconnect oprávnění zadaný centra událostí.
 
-Pokud potřebujete vytvořit připojovací řetězec Centru událostí pomocí předchozí informace, použijte následující vzoru:
+Pokud potřebujete toobuild připojovací řetězec Centru událostí pomocí hello předchozí informace, použijte následující vzor hello:
 
 `Endpoint={Event Hub-compatible endpoint};SharedAccessKeyName={iot hub policy name};SharedAccessKey={iot hub policy key}`
 
-Sady SDK a integrace, které můžete použít s koncovými body kompatibilní s centrem událostí, které IoT Hub zpřístupní zahrnuje položky v následujícím seznamu:
+Hello sady SDK a integrace, které můžete použít s koncovými body kompatibilní s centrem událostí, které IoT Hub zpřístupní zahrnuje hello položky v hello následující seznamu:
 
 * [Java Event Hubs klienta](https://github.com/hdinsight/eventhubs-client).
-* [Apache Storm spout](../hdinsight/hdinsight-storm-develop-csharp-event-hub-topology.md). Můžete zobrazit [spout zdroje](https://github.com/apache/storm/tree/master/external/storm-eventhubs) na Githubu.
+* [Apache Storm spout](../hdinsight/hdinsight-storm-develop-csharp-event-hub-topology.md). Můžete zobrazit hello [spout zdroje](https://github.com/apache/storm/tree/master/external/storm-eventhubs) na Githubu.
 * [Apache Spark integrace](../hdinsight/hdinsight-apache-spark-eventhub-streaming.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o koncové body centra IoT najdete v tématu [koncové body centra IoT][lnk-endpoints].
 
-[Začínáme] [ lnk-get-started] kurzy vám ukážou, jak odesílat zprávy typu zařízení cloud ze simulovaného zařízení a čtení zpráv z předdefinovaných koncového bodu. Další podrobnosti najdete [zpráv typu zařízení cloud proces IoT Hub pomocí trasy] [ lnk-d2c-tutorial] kurzu.
+Hello [Začínáme] [ lnk-get-started] kurzy vám ukážou, jak zpráv typu zařízení cloud toosend z simulované zařízení a čtení zpráv hello z vestavěným koncovým bodem hello. Další podrobnosti naleznete v hello [zpráv typu zařízení cloud proces IoT Hub pomocí trasy] [ lnk-d2c-tutorial] kurzu.
 
-Pokud chcete směrovat vaše zprávy typu zařízení cloud do vlastní koncové body, přečtěte si téma [použít vlastní koncové body a směrování zpráv pro zprávy typu zařízení cloud][lnk-custom].
+Pokud chcete, aby tooroute vaše zařízení cloud zprávy toocustom koncové body, najdete v části [použít vlastní koncové body a směrování zpráv pro zprávy typu zařízení cloud][lnk-custom].
 
 [img-eventhubcompatible]: ./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png
 

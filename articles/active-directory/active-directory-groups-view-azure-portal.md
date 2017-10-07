@@ -1,6 +1,6 @@
 ---
-title: "Zobrazit všechny existující skupiny v Azure Active Directory | Microsoft Docs"
-description: "Postup zobrazení nebo hledání skupin v Azure Active Directory"
+title: "aaaView všechny existující skupiny v Azure Active Directory | Microsoft Docs"
+description: "Jak tooview nebo hledání skupin v Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1cc8b9194433840df9ce16baf1a0ec2c3dd08ad9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ae668d1cdb8032a332053dc40164d4dc829bdd19
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="view-or-search-for-your-user-groups-in-azure-active-directory"></a>Zobrazení nebo hledání skupin uživatelů ve službě Azure Active Directory
-Tento článek vysvětluje, jak k zobrazení všech skupin v Azure Active Directory (Azure AD). Jedna z funkcí správy uživatelů Azure AD je, že skupiny slouží k provádění úloh správy, jako je například přiřazení licence nebo oprávnění k počet uživatelů najednou.
+Tento článek vysvětluje, jak tooview všech skupin v Azure Active Directory (Azure AD). Jedna z funkcí hello správy uživatele Azure AD je, že můžete používat úlohy správy tooperform skupin jako je například přiřazení licence nebo oprávnění tooa počet uživatelů najednou.
 
-## <a name="how-do-i-see-all-the-groups"></a>Jak zobrazit všechny skupiny?
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je globální správce adresáře.
-2. Vyberte **další služby**, zadejte **uživatelů a skupin** v textovém poli a potom vyberte **Enter**.
+## <a name="how-do-i-see-all-hello-groups"></a>Jak zobrazit všechny skupiny hello?
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com) pomocí účtu, který je globálním správcem adresáře hello.
+2. Vyberte **další služby**, zadejte **uživatelů a skupin** v hello textového pole a pak vyberte **Enter**.
 
    ![Otevírání uživatelů a skupin](./media/active-directory-groups-view-azure-portal/search-user-management.png)
-3. Na **uživatelů a skupin** vyberte **všechny skupiny**.
+3. Na hello **uživatelů a skupin** vyberte **všechny skupiny**.
 
-   ![Otevření okna skupiny](./media/active-directory-groups-view-azure-portal/view-groups-blade.png)
-4. Na **uživatelé a skupiny - všechny skupiny** okno, můžete přidat nebo odebrat sloupce zobrazení, filtrovat seznam k vyhledávání pro skupinu, nebo dělat změny skupiny, které mají dostatečná oprávnění ke změně.
+   ![Okno skupiny otevírání hello](./media/active-directory-groups-view-azure-portal/view-groups-blade.png)
+4. Na hello **uživatelé a skupiny - všechny skupiny** okno, můžete přidat nebo odebrat sloupce zobrazení, toosearch seznamu hello filtru pro skupinu, nebo dělat změny toogroups, zda máte dostatečná oprávnění toochange.
 
 ## <a name="next-steps"></a>Další kroky
 Následující články poskytují další informace o službě Azure Active Directory.

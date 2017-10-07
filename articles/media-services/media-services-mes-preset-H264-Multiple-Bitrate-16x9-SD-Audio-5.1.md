@@ -1,6 +1,6 @@
 ---
-title: "H264 Více přenosovou rychlostí 16 x 9 SD zvuk 5.1 | Microsoft Docs"
-description: "Téma nabízí přehled ** H264 Multiple Bitrate 16 x 9 SD zvuk 5.1* * úloh přednastavení."
+title: "aaaH264 více přenosovou rychlostí 16 x 9 SD zvuk 5.1 | Microsoft Docs"
+description: "Hello téma nabízí přehled hello ** H264 Multiple Bitrate 16 x 9 SD zvuk 5.1* * úloh přednastavení."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 52b8c9073f89279cb4509bcdf872ef0d6d1d709b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d3bdd02caacda3fec38484e108f94da70431f120
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="h264-multiple-bitrate-16x9-sd-audio-51"></a>H264 Více přenosovou rychlostí 16 x 9 SD zvuk 5.1
-`Media Encoder Standard`definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16. By pak předejte vlastní přednastavení kodéru. Seznam všech názvů přednastavené podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování. Můžete použít `preset name` toospecify do formátu, který chcete tooencode mediálního souboru. Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16. By pak předejte kodér vlastní přednastavené toohello hello. Hello seznam všech hello přednastavení názvy podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- Toto téma ukazuje `H264 Multiple Bitrate 16x9 SD Audio 5.1` přednastavení ve formátu XML a JSON.  
+ Toto téma ukazuje hello `H264 Multiple Bitrate 16x9 SD Audio 5.1` přednastavení ve formátu XML a JSON.  
   
- Tato předvolba vytvoří sadu 5 soubory MP4 zarovnaný GOP od 1900 kb/s až 400 kb/s a zvuku AAC 5.1. Podrobné informace o profilu přenosovou rychlostí, vzorkování rychlost atd tohoto přednastavení, zkontrolovat, XML nebo JSON definovaná níže. Vysvětlení znamená, co každý prvek a platné hodnoty pro každý element, najdete v článku [Media Encoder Standard schématu](media-services-mes-schema.md).  
+ Tato předvolba vytvoří sadu 5 soubory MP4 zarovnaný GOP od 1900 kb/s too400 kb/s a zvuku AAC 5.1. Podrobné informace o profilu přenosovou rychlostí, vzorkování rychlost atd tohoto přednastavení, zkontrolujte hello XML nebo JSON definovaná níže. Vysvětlení znamená, co každý prvek a hello platné hodnoty pro každý element, najdete v tématu hello [Media Encoder Standard schématu](media-services-mes-schema.md).  
   
 > [!NOTE]
->  Při úpravě `Width` a `Height` hodnot v rámci vrstvy, ujistěte se, aby zůstala konzistentní poměr stran. Příklad: 1920 × 1080, 1280 × 720, 1080 x 576 640 x 360. Neměli byste používat směs poměrům stran, jako například: 1280 × 720, 720 x 480, 640 x 360.  
+>  Při úpravě hello `Width` a `Height` hodnot v rámci vrstvy, ujistěte se, že poměr stran hello konzistentní. Příklad: 1920 × 1080, 1280 × 720, 1080 x 576 640 x 360. Neměli byste používat směs poměrům stran, jako například: 1280 × 720, 720 x 480, 640 x 360.  
   
  XML  
   

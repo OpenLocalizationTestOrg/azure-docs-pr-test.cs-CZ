@@ -1,6 +1,6 @@
 ---
-title: "Import dat k analýze ve službě Azure Application Insights | Microsoft Docs"
-description: "Importovat statických dat pro připojení s telemetrií aplikace, nebo importovat samostatné datový proud do dotazu s Analytics."
+title: "aaaImport tooAnalytics vaše data ve službě Azure Application Insights | Microsoft Docs"
+description: "Importovat toojoin statických dat s telemetrií aplikace, nebo importovat datového proudu tooquery samostatné dat s Analytics."
 services: application-insights
 keywords: "Otevřete schéma, import dat"
 documentationcenter: 
@@ -13,35 +13,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: bwren
-ms.openlocfilehash: aa855a9050ec4e5e7c5db88b7209b8bb48bdba51
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7a3a3c9155adc1885dd366ddb13dda80bb894adb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="import-data-into-analytics"></a>Importovat data do Analytics
 
-Importovat žádná tabulková data do [Analytics](app-insights-analytics.md), buď propojit je s [Application Insights](app-insights-overview.md) telemetrie z vaší aplikace, nebo tak, aby je bylo možné analyzovat jako samostatné datový proud. Analytics je účinný dotazovací jazyk, který je vhodné řešení pro analýzu proudů označen časovým razítkem vysoký počet telemetrie.
+Importovat žádná tabulková data do [Analytics](app-insights-analytics.md), buď toojoin její [Application Insights](app-insights-overview.md) telemetrie z vaší aplikace, nebo tak, aby je bylo možné analyzovat jako samostatné datový proud. Analytics je účinný dotazovací jazyk vhodným tooanalyzing označen časovým razítkem vysoký počet datových proudů telemetrie.
 
-Data můžete importovat do analýzy pomocí vlastního schématu. Nemá používat standardní schémata Application Insights, jako je například požadavek nebo trasování.
+Data můžete importovat do analýzy pomocí vlastního schématu. Nemá toouse hello standardní Application Insights schémata například požadavek nebo trasování.
 
 Můžete importovat JSON nebo DSV (oddělovač oddělovači - čárku, středník nebo kartě) soubory.
 
-Existují tři situacích výhodné import do Analytics:
+Existují tři situacích výhodné import tooAnalytics:
 
-* **Připojte se telemetrie aplikace.** Mohli byste například importovat tabulku, která mapuje adresy URL vašeho webu na titulů srozumitelnější. V analýzy můžete vytvořit sestavu grafu řídicího panelu, která obsahuje deset nejoblíbenější stránky ve vašem webu. Nyní ji můžete zobrazují názvy stránky místo adresy URL.
+* **Připojte se telemetrie aplikace.** Mohli byste například importovat tabulku, která mapuje adresy URL z vašeho webu toomore čitelný titulů. V analýzy můžete vytvořit sestavu grafu řídicího panelu, která obsahuje hello deset nejoblíbenější stránky ve vašem webu. Nyní ji můžete zobrazit hello místo adresy URL hello.
 * **Korelovat telemetrii aplikace** s jinými zdroji například síťových přenosů dat serveru nebo CDN soubory protokolu.
-* **Analýza platí pro samostatné datového proudu.** Application Insights Analytics je výkonný nástroj, který pracuje s zhuštěné, označen časovým razítkem datové proudy - lépe než SQL v mnoha případech. Pokud máte datový proud z z jiného zdroje, můžete ho s Analytics analyzovat.
+* **Použijte Analytics tooa samostatné datového proudu.** Application Insights Analytics je výkonný nástroj, který pracuje s zhuštěné, označen časovým razítkem datové proudy - lépe než SQL v mnoha případech. Pokud máte datový proud z z jiného zdroje, můžete ho s Analytics analyzovat.
 
-Odesílání dat do zdroje dat je snadné. 
+Odesílání zdroj dat datového tooyour je snadné. 
 
-1. (Jednou) Definování schématu dat v datovém zdroji.
-2. (Pravidelně) Nahrání dat do úložiště Azure a volání rozhraní REST API nám, které nová data se čeká na přijímání oznámení. Během několika minut je k dispozici pro dotaz v Analytics data.
+1. (Jednou) Definujte hello schématu dat v datovém zdroji.
+2. (Pravidelně) Nahrání dat tooAzure úložiště a volání rozhraní REST API toonotify hello nám, které nová data se čeká na přijímání. Během několika minut je k dispozici pro dotaz v analýzy dat hello.
 
-Frekvence odesílání je definována vy a jak rychlý chcete, aby vaše data k dispozici pro dotazy. Je efektivnější odesílat data v větší bloky dat, ale není větší než 1GB.
+Hello frekvence odesílání hello je definované uživatelem a jak rychle chcete toobe vaše data, k dispozici pro dotazy. Je efektivnější tooupload data v větší bloky dat, ale není větší než 1GB.
 
 > [!NOTE]
-> *Máte velký počet zdrojů dat k analýze?* [*Zvažte použití* logstash *pro odeslání dat do služby Application Insights.*](https://github.com/Microsoft/logstash-output-application-insights)
+> *Máte spoustu tooanalyze zdroje dat?* [*Zvažte použití* logstash *tooship dat do služby Application Insights.*](https://github.com/Microsoft/logstash-output-application-insights)
 > 
 
 ## <a name="before-you-start"></a>Než začnete
@@ -50,52 +50,52 @@ Budete potřebovat:
 
 1. Prostředek Application Insights v Microsoft Azure.
 
- * Pokud chcete analyzovat data odděleně od jiných telemetrie [vytvořte nový prostředek Application Insights](app-insights-create-new-resource.md).
- * Pokud chcete propojení nebo porovnávání svá data pomocí telemetrie z aplikace, která je již nastavena pomocí služby Application Insights, můžete použít na prostředek pro tuto aplikaci.
- * Přispěvatel nebo vlastníka přístup k prostředku.
+ * Pokud chcete tooanalyze data odděleně od jiných telemetrie [vytvořte nový prostředek Application Insights](app-insights-create-new-resource.md).
+ * Pokud chcete propojení nebo porovnávání svá data pomocí telemetrie z aplikace, která je již nastavena pomocí služby Application Insights, můžete použít hello prostředků pro tuto aplikaci.
+ * Přispěvatel nebo vlastníka přístup toothat prostředek.
  
-2. Úložiště Azure. Nahrát do úložiště Azure a analýzy získá vaše data z ní. 
+2. Úložiště Azure. Nahrát tooAzure úložiště a analýzy získá vaše data z ní. 
 
- * Doporučujeme že vytvořit účet vyhrazeného úložiště pro objektů BLOB. Pokud objektů BLOB jsou sdíleny s jinými procesy, trvá déle pro naše procesy ke čtení objektů BLOB.
+ * Doporučujeme že vytvořit účet vyhrazeného úložiště pro objektů BLOB. Pokud objektů BLOB jsou sdíleny s jinými procesy, trvá déle pro naše tooread procesy objektů BLOB.
 
 
 ## <a name="define-your-schema"></a>Definování schématu
 
-Před importem dat, je nutné definovat *zdroje dat,* který určuje schéma vaše data.
-Může mít až 50 zdroje dat v jediném prostředku Application Insights
+Aby bylo možné naimportovat data, je nutné definovat *zdroje dat,* který určuje hello schématu dat.
+Může mít až too50 zdroje dat v jediném prostředku Application Insights
 
-1. Spuštění Průvodce zdrojem dat. Použijte tlačítko "Přidat nový zdroj dat". Případně – klikněte na tlačítko nastavení v pravém horním rohu a v rozevírací nabídce vyberte "Zdroje dat".
+1. Spuštění Průvodce zdrojem dat hello. Použijte tlačítko "Přidat nový zdroj dat". Případně – klikněte na tlačítko nastavení v pravém horním rohu a v rozevírací nabídce vyberte "Zdroje dat".
 
     ![Přidat nový zdroj dat](./media/app-insights-analytics-import/add-new-data-source.png)
 
     Zadejte název nového zdroje dat.
 
-2. Definování formátu souborů, které odešlete.
+2. Definování formátu hello souborů, které odešlete.
 
-    Můžete definovat formát ručně, nebo odeslání ukázkového souboru.
+    Můžete definovat hello formátu ručně, nebo odeslání ukázkového souboru.
 
-    Pokud jsou data ve formátu CSV, může být první řádek v ukázkovém záhlaví sloupců. Můžete změnit názvy polí v dalším kroku.
+    Pokud hello data jsou ve formátu CSV, může být první řádek hello hello ukázky záhlaví sloupců. Můžete změnit názvy polí hello v dalším kroku hello.
 
-    Ukázka by měla obsahovat alespoň 10 řádků nebo záznamů dat s.
+    Ukázka Hello by měla obsahovat alespoň 10 řádků nebo záznamů dat s.
 
     Sloupec nebo pole názvy by měly mít alfanumerické názvy (bez mezer a interpunkce).
 
     ![Odeslání ukázkového souboru](./media/app-insights-analytics-import/sample-data-file.png)
 
 
-3. Zkontrolujte schéma, které má potom průvodce. Pokud ho odvodit typů z ukázku, můžete upravit odvozené typy sloupců.
+3. Je tu zkontrolujte hello schématu, které hello průvodce. Pokud ho odvodit hello typů z ukázku, bude pravděpodobně nutné tooadjust hello odvozené typy sloupců hello.
 
-    ![Zkontrolujte odvozené schématu](./media/app-insights-analytics-import/data-source-review-schema.png)
+    ![Zkontrolujte hello odvodit schématu](./media/app-insights-analytics-import/data-source-review-schema.png)
 
- * (Volitelné.) Nahrajte definici schématu. Viz níže uvedeným formátem.
+ * (Volitelné.) Nahrajte definici schématu. Viz níže uvedeným formátem hello.
 
- * Vyberte časové razítko. Všechna data v Analytics musí mít pole časového razítka. Musí mít typ `datetime`, ale nemá s názvem 'časové razítko'. Pokud data obsahují sloupec obsahující datum a čas ve formátu ISO, zvolte to jako sloupec časového razítka. Jinak, vyberte "jako data doručen" a proces importu přidá pole časového razítka.
+ * Vyberte časové razítko. Všechna data v Analytics musí mít pole časového razítka. Musí mít typ `datetime`, ale nemá toobe s názvem 'časové razítko'. Pokud data obsahují sloupec obsahující datum a čas ve formátu ISO, zvolte to jako sloupec časového razítka hello. Jinak, vyberte "jako data doručen" a proces importu hello přidá pole časového razítka.
 
-5. Vytvoření zdroje dat.
+5. Vytvoření zdroje dat hello.
 
 ### <a name="schema-definition-file-format"></a>Formát souboru definice schématu
 
-Neupravujte schématu v uživatelském rozhraní, můžete načíst definici schématu ze souboru. Formát definice schématu je následující: 
+Neupravujte hello schématu v uživatelském rozhraní, můžete načíst definice schématu hello ze souboru. Formát definice schématu Hello vypadá takto: 
 
 Formát s oddělovačem 
 ```
@@ -115,34 +115,34 @@ Formát JSON
 ]
 ```
  
-Každý sloupec je určený podle umístění, název a typ. 
+Každý sloupec je identifikována hello umístění, název a typ. 
 
-* Umístění – souboru s oddělovači naformátujte ho je umístění namapované hodnoty. Pro formát JSON je jpath namapované klíče.
-* Název – zobrazovaný název sloupce.
-* Typ – datový typ sloupce.
+* Umístění – souboru s oddělovači naformátujte ho je pozice hello hello namapované hodnoty. Pro formát JSON je hello jpath hello namapované klíče.
+* Název – hello zobrazí název sloupce hello.
+* Typ – hello datový typ sloupce.
  
-V případě, že byl použit ukázková data a jsou odděleny formát souboru, musí definice schématu mapovat všechny sloupce a přidejte nové sloupce na konci. 
+V případě, že byl použit ukázková data a jsou odděleny formát souboru, musí definice schématu hello mapovat všechny sloupce a přidejte nové sloupce na konci hello. 
 
-JSON umožňuje částečné mapování dat, proto definice schématu formátu JSON nemá pro každý klíč, který se nachází v ukázková data mapování. Také ho můžete namapovat sloupce, které nejsou součástí ukázková data. 
+JSON umožňuje částečné mapování hello dat, proto hello definice schématu formátu JSON nemá toomap každým klíčem, který se nachází v ukázková data. Také ho můžete namapovat sloupce, které nejsou součástí hello ukázková data. 
 
 ## <a name="import-data"></a>Import dat
 
-K importu dat, nahrajte ho do úložiště Azure, vytvořte přístupový klíč pro tuto a pak proveďte volání rozhraní REST API.
+tooimport data, nahrajte ho tooAzure úložiště, vytvořte přístupový klíč pro něj a potom proveďte volání rozhraní REST API.
 
 ![Přidat nový zdroj dat](./media/app-insights-analytics-import/analytics-upload-process.png)
 
-Můžete provést následující proces ručně, nebo nastavit automatizovaný systém to udělat v pravidelných intervalech. Musíte provést následující kroky pro každý blok dat, které chcete importovat.
+Můžete provádět následující proces ručně hello nebo nastavení automatizované systémové toodo ho v pravidelných intervalech. Je nutné toofollow tyto kroky pro každý datový blok chcete tooimport.
 
-1. Nahrání dat do [úložiště objektů blob Azure](../storage/blobs/storage-dotnet-how-to-use-blobs.md). 
+1. Nahrání dat hello příliš[úložiště objektů blob Azure](../storage/blobs/storage-dotnet-how-to-use-blobs.md). 
 
- * Objekty BLOB může být libovolné velikosti až 1GB nekomprimovaným. Velké objekty BLOB stovek MB jsou ideální z hlediska výkonu.
- * Můžete je komprimovat s Gzip ke zlepšení doba nahrávání a latence pro data, která mají být k dispozici pro dotaz. Použití `.gz` příponu názvu souboru.
- * Je nejvhodnější použít účet samostatného úložiště pro tento účel, aby se zabránilo volání z jiné služby zpomalení výkonu.
- * Při odesílání dat v vysoká frekvence, každých několik sekund, se doporučuje použít více než jeden účet úložiště, z důvodů výkonu.
+ * Objekty BLOB může mít libovolnou velikost až too1GB nekomprimovaným. Velké objekty BLOB stovek MB jsou ideální z hlediska výkonu.
+ * Můžete je komprimovat doba nahrávání tooimprove Gzip a latenci pro toobe data hello k dispozici pro dotaz. Použití hello `.gz` příponu názvu souboru.
+ * Nejlepší toouse účet samostatného úložiště je pro tento účel tooavoid volání z jiné služby zpomalení výkonu.
+ * Při odesílání dat v vysoká frekvence, každých několik sekund, se doporučuje toouse více než jeden účet úložiště, z důvodů výkonu.
 
  
-2. [Vytvoření klíče sdíleného přístupového podpisu pro tento objekt blob](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md). Klíč by měl mít jeden den po dobu vypršení platnosti a poskytovat přístup pro čtení.
-3. Volání REST oznámit Application Insights, čekající data.
+2. [Vytvoření klíče sdíleného přístupového podpisu pro objekt blob hello](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md). Hello klíč by měl mít jeden den po dobu vypršení platnosti a poskytovat přístup pro čtení.
+3. Zkontrolujte toonotify volání REST Application Insights, čekající data.
 
  * Koncový bod:`https://dc.services.visualstudio.com/v2/track`
  * Metoda HTTP: POST
@@ -167,32 +167,32 @@ Můžete provést následující proces ručně, nebo nastavit automatizovaný s
     }
 ```
 
-Zástupné symboly jsou:
+Hello zástupné znaky jsou:
 
-* `Blob URI with Shared Access Key`: Zobrazí to v postupu pro vytváření klíčů. Je specifická pro objekt blob.
-* `Schema ID`: ID schématu vygenerované definované schéma. Data v tohoto objektu blob musí být v souladu schématu.
-* `DateTime`: Čas, kdy je odeslána žádost, UTC. Můžeme přijmout tyto formáty: ISO8601 (jako je "2016-01-01 13:45:01"); Rfc822 ("ST, 14 16 DEC – 14:57:01 + 0000"); RFC850 ("středa, 14. prosince 16 UTC 14:57:00"); RFC1123 ("st 14 Dec 2016 14:57:00 + 0000").
+* `Blob URI with Shared Access Key`: Zobrazí to hello postupu pro vytváření klíčů. Je konkrétní toohello objektů blob.
+* `Schema ID`: ID schéma definované schéma vygenerované hello. Hello dat v této objektu blob musí být v souladu toohello schématu.
+* `DateTime`: hello čas na které hello je odeslána žádost, UTC. Můžeme přijmout tyto formáty: ISO8601 (jako je "2016-01-01 13:45:01"); Rfc822 ("ST, 14 16 DEC – 14:57:01 + 0000"); RFC850 ("středa, 14. prosince 16 UTC 14:57:00"); RFC1123 ("st 14 Dec 2016 14:57:00 + 0000").
 * `Instrumentation key`z prostředku Application Insights.
 
-Data jsou k dispozici v Analytics po několika minutách.
+Hello dat je k dispozici v Analytics po několika minutách.
 
 ## <a name="error-responses"></a>Chybové odpovědi
 
-* **požadavek je 400 nesprávný**: označuje, že datová část požadavku je neplatné. Kontrola:
+* **požadavek je 400 nesprávný**: Určuje, že datová část požadavku hello je neplatný. Kontrola:
  * Klíč instrumentace správné.
- * Hodnota doby platnosti. Mělo by být čas nyní ve standardu UTC.
- * JSON události odpovídá schématu.
-* **403 Zakázáno**: Objekt blob, které jste odeslali není dostupný. Ujistěte se, že je sdílený přístupový klíč platný a zda nevypršela platnost.
+ * Hodnota doby platnosti. Mělo by být hello čas nyní ve standardu UTC.
+ * JSON hello události vyhovuje toohello schématu.
+* **403 Zakázáno**: hello blob, které jste odeslali není dostupný. Ujistěte se, že hello sdílený přístupový klíč je platný a jestli nevypršela platnost.
 * **404 nebyl nalezen**:
- * Objekt blob neexistuje.
- * ID zdroje je nesprávné.
+ * Hello blob neexistuje.
+ * Hello sourceId je nesprávná.
 
-Podrobnější informace najdete v chybové zprávě odpovědi.
+Podrobnější informace jsou k dispozici v hello odpovědi chybová zpráva.
 
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-Tento kód používá [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/9.0.1) balíček NuGet.
+Tento kód používá hello [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/9.0.1) balíček NuGet.
 
 ### <a name="classes"></a>Třídy
 
@@ -365,5 +365,5 @@ Pomocí tohoto kódu pro každý objekt blob.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Prohlídka dotazovací jazyk analýzy protokolů](app-insights-analytics-tour.md)
-* [Použití *Logstash* k odesílání dat do služby Application Insights](https://github.com/Microsoft/logstash-output-application-insights)
+* [Prohlídka hello dotazovacího jazyka pro analýzy protokolů](app-insights-analytics-tour.md)
+* [Použití *Logstash* toosend data tooApplication statistiky](https://github.com/Microsoft/logstash-output-application-insights)

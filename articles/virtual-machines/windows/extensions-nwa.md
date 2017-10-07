@@ -1,6 +1,6 @@
 ---
-title: "Rozšíření virtuálního počítače Azure sítě sledovacích procesů agenta pro Windows | Microsoft Docs"
-description: "Nasaďte agenta sledovací proces sítě v systému Windows virtuálního počítače pomocí rozšíření virtuálního počítače."
+title: "aaaAzure rozšíření virtuálního počítače sítě sledovacích procesů agenta pro Windows | Microsoft Docs"
+description: "Nasaďte hello sítě sledovacích procesů agenta v systému Windows virtuálního počítače pomocí rozšíření virtuálního počítače."
 services: virtual-machines-windows
 documentationcenter: 
 author: dennisg
@@ -15,33 +15,33 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: b8d6a998bc86337b286a3434f44f762cca9b7e68
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 21298706e462ff32c4d314f9a1ad127074ddf481
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Sítě rozšíření virtuálního počítače sledovacích procesů agenta pro Windows
 
 ## <a name="overview"></a>Přehled
 
-[Azure sledovací proces sítě](https://review.docs.microsoft.com/en-us/azure/network-watcher/) je sítě výkonu monitorování, diagnostiku a analýzy služba, která umožňuje monitorování pro sítě Azure. Rozšíření sítě sledovacích procesů agenta virtuálního počítače není pro některé funkce sledovací proces sítě na virtuálních počítačích Azure. To zahrnuje Zachytávání síťových přenosů na vyžádání a další pokročilé funkce.
+[Azure sledovací proces sítě](https://review.docs.microsoft.com/en-us/azure/network-watcher/) je sítě výkonu monitorování, diagnostiku a analýzy služba, která umožňuje monitorování pro sítě Azure. Hello rozšíření sítě sledovacích procesů agenta virtuálního počítače není pro některé funkce hello sledovací proces sítě na virtuálních počítačích Azure. To zahrnuje Zachytávání síťových přenosů na vyžádání a další pokročilé funkce.
 
-Tento dokument podrobně popisuje podporované platformy a možnosti nasazení pro rozšíření sítě sledovacích procesů agenta virtuálního počítače pro systém Windows.
+Tento dokument podrobnosti hello podporované platformy a možnosti nasazení pro hello rozšíření virtuálního počítače sítě sledovacích procesů agenta pro Windows.
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření sítě sledovacích procesů agenta pro Windows můžete spustit na Windows Server 2008 R2, 2012, 2012 R2 a 2016 uvolní. Všimněte si, že není v současné době podporovaný Nano Server.
+Hello rozšíření sítě sledovacích procesů agenta pro Windows můžete spustit na Windows Server 2008 R2, 2012, 2012 R2 a 2016 uvolní. Všimněte si, že hello Nano Server není v současné době podporovaný.
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
-Některé funkce sítě sledovacích procesů agenta vyžaduje, aby cílový virtuální počítač připojen k Internetu. Bez možnosti navázat odchozí připojení některé funkce sítě sledovacích procesů agenta nebude fungovat správně nebo nedostupná. Další podrobnosti najdete v tématu [sledovací proces sítě dokumentaci](../../network-watcher/network-watcher-monitoring-overview.md).
+Některé hello funkce sítě sledovacích procesů agenta vyžaduje, aby hello cílový virtuální počítač připojené toohello Internetu. Bez hello možnost tooestablish odchozí připojení některé funkce sítě sledovacích procesů agenta hello nebude fungovat správně nebo nedostupná. Další podrobnosti najdete v tématu hello [sledovací proces sítě dokumentaci](../../network-watcher/network-watcher-monitoring-overview.md).
 
 ## <a name="extension-schema"></a>Rozšíření schématu
 
-Následujícím kódu JSON znázorňuje schéma pro rozšíření sítě sledovacích procesů agenta. Rozšíření ani jeden z nich vyžaduje ani podporuje nastavení uživatelem zadané v tuto chvíli a spoléhá na jeho výchozí konfigurace.
+Hello následujícím kódu JSON ukazuje hello schéma pro hello rozšíření sítě sledovacích procesů agenta. rozšíření Hello ani jeden z nich vyžaduje ani podporuje nastavení uživatelem zadané v tuto chvíli a spoléhá na jeho výchozí konfigurace.
 
 ```json
 {
@@ -73,11 +73,11 @@ Následujícím kódu JSON znázorňuje schéma pro rozšíření sítě sledova
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Rozšíření virtuálního počítače Azure se dá nasadit pomocí šablon Azure Resource Manager. Schéma JSON, které jsou popsané v předchozí části lze použít v šablonu Azure Resource Manager ke spuštění rozšíření sítě sledovacích procesů agenta při nasazení šablony Azure Resource Manager.
+Rozšíření virtuálního počítače Azure se dá nasadit pomocí šablon Azure Resource Manager. popsané v předchozí části hello schématu JSON Hello lze použít v toorun hello šablony Azure Resource Manager sítě sledovacích procesů agenta rozšíření během nasazení šablony Azure Resource Manager.
 
 ## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
 
-`Set-AzureRmVMExtension` Příkaz lze použít k nasazení rozšíření sítě sledovacích procesů agenta virtuálního počítače do existujícího virtuálního počítače.
+Hello `Set-AzureRmVMExtension` příkaz lze použít toodeploy hello sítě sledovacích procesů agenta virtuálního počítače rozšíření tooan existující virtuální počítač.
 
 ```powershell
 Set-AzureRmVMExtension -ResourceGroupName "myResourceGroup1" `
@@ -93,13 +93,13 @@ Set-AzureRmVMExtension -ResourceGroupName "myResourceGroup1" `
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Data o stavu nasazení rozšíření mohou být načteny z portálu Azure a pomocí modulu Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz modulu Azure PowerShell.
+Data o stavu hello nasazení rozšíření mohou být načteny z hello portál Azure a pomocí modulu Azure PowerShell hello. Stav nasazení hello toosee rozšíření pro daný virtuální počítač, spusťte hello následující pomocí příkazu hello modul Azure PowerShell.
 
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup1 -VMName myVM1 -Name networkWatcherAgent
 ```
 
-Výstupu spuštění rozšíření se zaznamenává soubory, které jsou v následujícím adresáři:
+Rozšíření spuštění výstup je zaznamenané toofiles najít v hello následující adresář:
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\
@@ -107,4 +107,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentW
 
 ### <a name="support"></a>Podpora
 
-Pokud potřebujete další pomoc v libovolném bodě v tomto článku, můžete v uživatelské příručce sledovací proces sítě dokumentaci nebo se obraťte na Azure odborníky [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/en-us/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte na [podporu Azure lokality](https://azure.microsoft.com/en-us/support/options/) a vyberte Get podpory. Informace o používání Azure podporovat, najdete v tématu [podporu Microsoft Azure – nejčastější dotazy](https://azure.microsoft.com/en-us/support/faq/).
+Pokud potřebujete další pomoc v libovolném bodě v tomto článku, můžete naleznete v dokumentaci toohello Příručka uživatele sledovací proces sítě nebo se obraťte hello Azure odborníky na hello [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/en-us/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte toohello [podporu Azure lokality](https://azure.microsoft.com/en-us/support/options/) a vyberte Get podpory. Informace o používání Azure podporovat, najdete v tématu hello [podporu Microsoft Azure – nejčastější dotazy](https://azure.microsoft.com/en-us/support/faq/).

@@ -1,5 +1,5 @@
 ---
-title: "Sadách škálování virtuálních počítačů Linux škálování | Microsoft Docs"
+title: "aaaAutoscale Škálovací sady virtuálních počítačů Linux | Microsoft Docs"
 description: "Nastavení automatického škálování pro Linux sadu škálování virtuálního počítače pomocí rozhraní příkazového řádku Azure"
 services: virtual-machine-scale-sets
 documentationcenter: 
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
-ms.openlocfilehash: eff4add1cb16fe25022787668dc1d2277845dd95
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4352b94ec2973c37bc5616e3be25bd0c9442632b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="automatically-scale-linux-machines-in-a-virtual-machine-scale-set"></a>Automatické škálování počítače se systémem Linux v škálovací sadu virtuálních počítačů
-Sady škálování virtuálního počítače můžete snadno můžete nasadit a spravovat jako sada identickými virtuálními počítači. Sady škálování pro aplikace hyperškálovatelný systém zajistit vysoce škálovatelného a přizpůsobitelné výpočetní vrstvy a podporují Image pro platformu Windows, Image platformy Linux, vlastních bitových kopií a rozšíření. Další informace najdete v tématu [Přehled sady škálování virtuálních počítačů](virtual-machine-scale-sets-overview.md).
+Sady škálování virtuálního počítače můžete snadno můžete toodeploy a spravovat identickými virtuálními počítači jako sada. Sady škálování pro aplikace hyperškálovatelný systém zajistit vysoce škálovatelného a přizpůsobitelné výpočetní vrstvy a podporují Image pro platformu Windows, Image platformy Linux, vlastních bitových kopií a rozšíření. Další, najdete v části toolearn [Přehled sady škálování virtuálních počítačů](virtual-machine-scale-sets-overview.md).
 
-V tomto kurzu se dozvíte, jak vytvořit škálovací sadu virtuálních počítačů Linux pomocí nejnovější verze Ubuntu Linux. Tento kurz také ukazuje, jak automaticky škálovat na počítače v sadě. Můžete vytvořit měřítko nastavení a nastavení škálování vytvořením šablonu Azure Resource Manager a nasazení pomocí rozhraní příkazového řádku Azure. Další informace o šablonách najdete v tématu o [vytváření šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md). Další informace o automatické škálování sad škálování najdete v tématu [automatické škálování a sadách škálování virtuálního počítače](virtual-machine-scale-sets-autoscale-overview.md).
+Tento kurz ukazuje, jak nastavit toocreate škálování virtuálních počítačů Linux pomocí nejnovější verze Ubuntu Linux hello. Hello kurz také ukazuje, jak nastavit tooautomatically škálování hello počítačů v hello. Můžete vytvořit hello škálování a vytvořit škálování vytvořením šablonu Azure Resource Manager a nasazení pomocí rozhraní příkazového řádku Azure. Další informace o šablonách najdete v tématu o [vytváření šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md). toolearn Další informace o automatické škálování sad škálování, najdete v části [automatické škálování a sadách škálování virtuálního počítače](virtual-machine-scale-sets-autoscale-overview.md).
 
-V tomto kurzu nasadíte následující prostředků a rozšíření:
+V tomto kurzu nasadíte následující hello prostředků a rozšíření:
 
 * Microsoft.Storage/storageAccounts.
 * Microsoft.Network/virtualNetworks
@@ -40,12 +40,12 @@ V tomto kurzu nasadíte následující prostředků a rozšíření:
 
 Další informace o prostředky Resource Manageru najdete v tématu [Azure Resource Manager oproti nasazení classic](../azure-resource-manager/resource-manager-deployment-model.md).
 
-Než začnete s kroky v tomto kurzu [nainstalovat Azure CLI](../cli-install-nodejs.md).
+Před zahájením práce s hello kroky v tomto kurzu [nainstalovat hello rozhraní příkazového řádku Azure](../cli-install-nodejs.md).
 
 ## <a name="step-1-create-a-resource-group-and-a-storage-account"></a>Krok 1: Vytvoření skupiny prostředků a účet úložiště
 
-1. **Přihlaste se k Microsoft Azure**  
-Ve svém rozhraní příkazového řádku (Bash, terminálu, příkazového řádku), přepněte do režimu Resource Manager a potom [přihlásit pomocí id váš pracovní nebo školní](../xplat-cli-connect.md#scenario-1-azure-login-with-interactive-login). Postupujte podle pokynů pro prostředí interaktivní přihlášení k účtu Azure.
+1. **Přihlaste se tooMicrosoft Azure**  
+Ve svém rozhraní příkazového řádku (Bash, terminálu, příkazového řádku), přepínače režimu tooResource Manager a potom [přihlásit pomocí id váš pracovní nebo školní](../xplat-cli-connect.md#scenario-1-azure-login-with-interactive-login). Postupujte podle výzvy hello k tooyour prostředí interaktivní přihlašovací účet Azure.
 
     ```cli   
     azure config mode arm
@@ -54,26 +54,26 @@ Ve svém rozhraní příkazového řádku (Bash, terminálu, příkazového řá
     ```
    
     > [!NOTE]
-    > Pokud máte pracovní nebo školní ID a není povoleno dvoufaktorové ověřování, použijte `azure login -u` s ID přihlásit bez interaktivní relace. Pokud nemáte pracovní nebo školní ID, můžete [vytvořit pracovní nebo školní id z vašeho osobního účtu Microsoft](../active-directory/active-directory-users-create-azure-portal.md).
+    > Pokud máte pracovní nebo školní ID a není povoleno dvoufaktorové ověřování, použijte `azure login -u` s ID toolog hello v bez interaktivní relace. Pokud nemáte pracovní nebo školní ID, můžete [vytvořit pracovní nebo školní id z vašeho osobního účtu Microsoft](../active-directory/active-directory-users-create-azure-portal.md).
     
 2. **Vytvořte skupinu prostředků**  
-Všechny prostředky musí být nasazeny do skupiny prostředků. V tomto kurzu, název skupiny prostředků **vmsstest1**.
+Všechny prostředky musí být nasazené tooa skupinu prostředků. V tomto kurzu, název skupiny prostředků hello **vmsstest1**.
    
     ```cli
     azure group create vmsstestrg1 centralus
     ```
 
-3. **Nasazení účtu úložiště do nové skupiny prostředků**  
-Tento účet úložiště je, kde je šablona uložena. Vytvořit účet úložiště s názvem **vmsstestsa**.
+3. **Nasazení účtu úložiště do nové skupiny prostředků hello**  
+Tento účet úložiště se uloží hello šablony. Vytvořit účet úložiště s názvem **vmsstestsa**.
    
     ```cli
     azure storage account create -g vmsstestrg1 -l centralus --kind Storage --sku-name LRS vmsstestsa
     ```
 
-## <a name="step-2-create-the-template"></a>Krok 2: Vytvoření šablony
-Šablonu Azure Resource Manager umožňuje nasadit a spravovat prostředky Azure společně s použitím popis JSON prostředků a parametry přidružené nasazení.
+## <a name="step-2-create-hello-template"></a>Krok 2: Vytvoření šablony hello
+Šablonu Azure Resource Manager umožňuje vám toodeploy a spravovat prostředky Azure společně s použitím popis JSON hello prostředků a parametry přidružené nasazení.
 
-1. Ve svém oblíbeném editoru vytvořte soubor VMSSTemplate.json a přidejte počáteční struktuře JSON pro podporu šablony.
+1. Ve svém oblíbeném editoru vytvořte soubor hello VMSSTemplate.json a přidejte hello počáteční JSON struktura toosupport hello šablony.
 
     ```json
     {
@@ -88,7 +88,7 @@ Tento účet úložiště je, kde je šablona uložena. Vytvořit účet úloži
     }
     ```
 
-2. Parametry nejsou vždy vyžaduje, ale poskytují způsob, jak zadat hodnoty při nasazení šablony. Přidejte tyto parametry v rámci nadřazeného elementu parametry, které jste přidali do šablony.
+2. Parametry nejsou vždy vyžaduje, ale poskytují způsob, jak tooinput hodnoty při nasazení šablony hello. Přidejte tyto parametry v části hello parametry nadřazený element, zda jste přidali toohello šablony.
 
     ```json
     "vmName": { "type": "string" },
@@ -99,13 +99,13 @@ Tento účet úložiště je, kde je šablona uložena. Vytvořit účet úloži
     "resourcePrefix": { "type": "string" }
     ```
    
-   * Nastavte název pro samostatné virtuální počítač, který se používá k přístupu k počítačům v měřítka.
-   * Název pro účet úložiště, které šablona uložena.
-   * Nastavit počet instancí virtuálních počítačů v měřítka nejprve vytvořit.
-   * Název a heslo účtu správce na virtuálních počítačích.
-   * Předpona názvu pro prostředky, které jsou vytvořené pro podporu nastavit.
+   * Název hello samostatný virtuální počítač, který je použité tooaccess hello počítače ve škálovací sadě hello.
+   * Název účtu úložiště hello se uloží hello šablony.
+   * Hello počet instancí virtuálních počítačů tooinitially vytvořit v sadě škálování hello.
+   * Název a heslo účtu správce hello hello virtuálními počítači.
+   * Předpona názvu pro hello prostředky, které jsou vytvořené toosupport hello škálování nastavit.
 
-3. Proměnné můžete použít v šabloně a zadejte hodnoty, které může často mění nebo hodnoty, které je potřeba vytvořit z kombinace hodnot parametrů. Přidejte tyto proměnné v rámci nadřazeného elementu proměnné, které jste přidali do šablony.
+3. Proměnné lze použít v hodnotách toospecify šablony, které se může často mění, nebo hodnoty, které je třeba toobe vytvořena z kombinace hodnot parametrů. Přidejte tyto proměnné v části hello proměnné nadřazený element, zda jste přidali toohello šablony.
 
     ```json
     "dnsName1": "[concat(parameters('resourcePrefix'),'dn1')]",
@@ -127,13 +127,13 @@ Tento účet úložiště je, kde je šablona uložena. Vytvořit účet úloži
     "wadcfgxend": "[concat('\"><MetricAggregation scheduledTransferPeriod=\"PT1H\"/><MetricAggregation scheduledTransferPeriod=\"PT1M\"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]"
     ```
 
-   * Názvy DNS, které používají rozhraní sítě.
-   * Názvy adres IP a předpony pro virtuální sítě a podsítě.
-   * Názvy a identifikátory ve virtuální síti, zatížení vyrovnávání a síťových rozhraní.
-   * Nastavit názvy účtů úložiště pro účty spojené s počítači v měřítka.
-   * Nastavení pro rozšíření diagnostiky, který je nainstalován na virtuálních počítačích. Další informace o rozšíření diagnostiky najdete v tématu [vytvořit Windows virtuální počítač s monitorování a Diagnostika pomocí šablony Azure Resource Manageru](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+   * Názvy DNS, které jsou používány hello síťových rozhraní.
+   * Hello IP adresy názvů a předpony pro hello virtuální sítě a podsítě.
+   * Hello názvy a identifikátory hello virtuální sítě, zatížení vyrovnávání a síťových rozhraní.
+   * Názvy účtů úložiště pro hello účty přidružené k hello počítače ve škálovací sadě hello.
+   * Nastavení pro hello rozšíření diagnostiky, který je nainstalován na hello virtuálních počítačů. Další informace o hello rozšíření diagnostiky najdete v tématu [vytvořit Windows virtuální počítač s monitorování a Diagnostika pomocí šablony Azure Resource Manageru](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-4. Přidáte prostředek účet úložiště v rámci nadřazeného elementu prostředky, které jste přidali do šablony. Tato šablona používá smyčku vytvoření doporučené pět účtů úložiště uložení disků operačního systému a diagnostická data. Tuto sadu účtů může podporovat až 100 virtuální počítače ve škálovací sadě, což je aktuální maximální. Každý účet úložiště je s názvem se písmeno označení, která byla definována v proměnné v kombinaci s příponou, které poskytujete parametry šablony.
+4. Přidáte prostředek účet úložiště hello pod hello prostředky nadřazeného elementu, zda jste přidali toohello šablony. Tato šablona používá hello toocreate smyčky doporučená pět účty úložiště, kde jsou uloženy hello disky operačního systému a diagnostických dat. Tuto sadu účtů může podporovat až too100 virtuální počítače ve škálovací sadě, což je maximální aktuální hello. Každý účet úložiště je s názvem se písmeno označení, která byla definována v kombinaci s příponou hello, který zadáte v hello parametry šablony hello proměnné hello.
    
         {
           "type": "Microsoft.Storage/storageAccounts",
@@ -147,7 +147,7 @@ Tento účet úložiště je, kde je šablona uložena. Vytvořit účet úloži
           "properties": { "accountType": "Standard_LRS" }
         },
 
-5. Přidáte prostředek virtuální sítě. Další informace najdete v tématu [poskytovatele síťových prostředků](../virtual-network/resource-groups-networking.md).
+5. Přidáte prostředek hello virtuální sítě. Další informace najdete v tématu [poskytovatele síťových prostředků](../virtual-network/resource-groups-networking.md).
 
     ```json
     {
@@ -167,7 +167,7 @@ Tento účet úložiště je, kde je šablona uložena. Vytvořit účet úloži
     },
     ```
 
-6. Přidáte prostředky adresy veřejné IP adresy, které se používají k vyrovnávání zatížení a síťové rozhraní.
+6. Přidáte hello veřejnou IP adresu prostředky, které jsou používány hello zatížení vyrovnávání a síťové rozhraní.
 
     ```json
     {
@@ -196,7 +196,7 @@ Tento účet úložiště je, kde je šablona uložena. Vytvořit účet úloži
     },
     ```
 
-7. Přidáte prostředek pro vyrovnávání zatížení, který se používá škálovací sada. Další informace najdete v tématu [podporu správce prostředků Azure pro nástroj pro vyrovnávání zatížení](../load-balancer/load-balancer-arm.md).
+7. Přidejte hello prostředek pro vyrovnávání zatížení, který se používá škálovací sada hello. Další informace najdete v tématu [podporu správce prostředků Azure pro nástroj pro vyrovnávání zatížení](../load-balancer/load-balancer-arm.md).
 
     ```json   
     {
@@ -237,7 +237,7 @@ Tento účet úložiště je, kde je šablona uložena. Vytvořit účet úloži
     },
     ```
 
-8. Přidáte prostředek rozhraní sítě, který používá samostatný virtuální počítač. Protože počítače ve škálovací sadě nejsou přístupné přes veřejnou IP adresu, samostatný virtuální počítač se vytvoří ve stejné virtuální síti vzdáleně přístupu na počítače.
+8. Přidejte hello síťového rozhraní prostředku, který je používán hello samostatný virtuální počítač. Protože počítače ve škálovací sadě nejsou přístupné přes veřejnou IP adresu, samostatný virtuální počítač se vytvoří v hello stejné virtuální sítě počítače hello tooremotely přístup.
 
     ```json
     {
@@ -268,7 +268,7 @@ Tento účet úložiště je, kde je šablona uložena. Vytvořit účet úloži
     },
     ```
 
-9. Přidáte samostatné virtuální počítače ve stejné síti jako sada škálování.
+9. Přidejte hello samostatný virtuální počítač do stejné sítě jako hello škálovací sadu hello.
 
     ```json
     {
@@ -314,7 +314,7 @@ Tento účet úložiště je, kde je šablona uložena. Vytvořit účet úloži
     },
     ```
 
-10. Přidejte prostředků sady škálování virtuálních počítačů a nastavte rozšíření diagnostiky, který je nainstalován na všechny virtuální počítače v sadě škálování. Řadu nastavení pro tento prostředek je podobný jako prostředek virtuálního počítače. Hlavní rozdíly jsou kapacity elementu, který určuje počet virtuálních počítačů v sadě škálování a upgradePolicy, která určuje, jak jsou aktualizace provedené na virtuální počítače. Sada škálování vytvořen až všechny účty úložiště jsou vytvořeny jako zadaný dependsOn element.
+10. Přidat sady škálování virtuálního počítače hello prostředků a zadejte hello rozšíření diagnostiky, který je nainstalován na všechny virtuální počítače ve škálovací sadě hello. Mnoho hello nastavení pro tento prostředek je podobný s hello prostředek virtuálního počítače. Hlavní rozdíly Hello jsou hello kapacity element, který určuje hello počet virtuálních počítačů v sadě škálování hello a upgradePolicy, která určuje, jak jsou provedeny aktualizace toovirtual počítače. Hello škálovací sadu vytvořen až všechny účty úložiště hello jsou vytvořeny jako zadaný hello dependsOn element.
 
     ```json
     {
@@ -419,7 +419,7 @@ Tento účet úložiště je, kde je šablona uložena. Vytvořit účet úloži
     },
     ```
 
-11. Přidejte autoscaleSettings prostředek, který definuje, jak byly sadou škálování upraví podle využití procesoru na počítačích v sadě.
+11. Přidejte hello autoscaleSettings prostředek, který definuje, jak upraví podle využití procesoru na počítačích hello sady hello hello škálovací sadu.
 
     ```json
     {
@@ -472,75 +472,75 @@ Tento účet úložiště je, kde je šablona uložena. Vytvořit účet úloži
     V tomto kurzu jsou důležité tyto hodnoty:
     
     * **metricName**  
-    Tato hodnota je stejná jako čítače výkonu, který jsme definovali v wadperfcounter proměnné. Pomocí této proměnné, rozšíření diagnostiky shromažďuje **Processor\PercentProcessorTime** čítače.
+    Tato hodnota je hello stejné jako hello čítačů výkonu, které jsme definovali hello wadperfcounter proměnné. Pomocí této proměnné, hello rozšíření diagnostiky shromažďuje hello **Processor\PercentProcessorTime** čítače.
     
     * **metricResourceUri**  
-    Tato hodnota je identifikátor prostředku sady škálování virtuálního počítače.
+    Tato hodnota je identifikátor prostředku hello škálovací sadu virtuálních počítačů hello.
     
     * **časovými úseky**  
-    Tato hodnota je členitost metriky, které se shromažďují. V této šabloně je nastavena na jednu minutu.
+    Tato hodnota je hello členitost hello metriky, které jsou shromážděny. V této šabloně je nastavit tooone minutu.
     
     * **statistiky**  
-    Tato hodnota určuje, jak se zkombinují metriky pro přizpůsobení automatické škálování akci. Možné hodnoty jsou: průměr, minimum, maximum. V této šabloně se shromažďují průměrné využití procesoru celkový počet virtuálních počítačů.
+    Tato hodnota určuje, jak hello metriky jsou kombinované tooaccommodate hello automatického škálování akce. Hello možné hodnoty jsou: průměr, minimum, maximum. V této šabloně se shromažďují hello průměrné celkové využití procesoru hello virtuálních počítačů.
 
     * **Hodnota timeWindow**  
-    Tato hodnota je doba, ve kterém se shromažďují instance data. Musí být mezi 5 minutami a 12 hodin.
+    Tato hodnota je rozsah hello času, ve kterém se shromažďují instance data. Musí být mezi 5 minutami a 12 hodin.
     
     * **Agregace času**  
-    jeho hodnota určuje, jak by měla být kombinovány data, která se shromažďují v čase. Výchozí hodnota je průměr. Možné hodnoty jsou: průměr, minimální, maximální, poslední, celkový počet, počet.
+    jeho hodnota určuje, jak by měla být kombinovány hello data, která se shromažďují v čase. Hello výchozí hodnota je průměr. Hello možné hodnoty jsou: průměr, minimální, maximální, poslední, celkový počet, počet.
     
     * **operátor**  
-    Tato hodnota je operátor, který se používá k porovnání data metriky a prahovou hodnotu. Možné hodnoty jsou: rovná NotEquals, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual.
+    Tato hodnota je hello operátor, který je použité toocompare hello metriky dat a hello prahovou hodnotu. Hello možné hodnoty jsou: rovná NotEquals, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual.
     
     * **Prahová hodnota**  
-    Tato hodnota se aktivuje akci škálování. V této šabloně počítače se přidají do sad po více než 50 % průměrné využití procesoru mezi počítači v sadě škálování.
+    Tato hodnota se aktivuje hello akce škálování. V této šabloně se přidávají počítače sad po více než 50 % hello průměrné využití procesoru mezi počítači v sadě hello toohello škálování.
     
     * **směr**  
-    Tato hodnota určuje akce, která se provede, když je dosaženo prahové hodnoty. Možné hodnoty jsou zvýšení nebo snížení. V této šabloně se zvyšuje počet virtuálních počítačů v sadě škálování, když je prahová hodnota je více než 50 % v okně definovaného časového.
+    Tato hodnota určuje hello akce, která se provede, když je dosaženo hello prahovou hodnotu. Hello možné hodnoty jsou zvýšení nebo snížení. V této šabloně hello počet virtuálních počítačů v sadě škálování hello se zvyšuje, když prahové hodnoty hello je více než 50 % hello definované časové okno.
 
     * **Typ**  
-    Tato hodnota je typ akce, který má vzniknout a musí být nastavena na ChangeCount.
+    Tato hodnota je hello typ akce, který má vzniknout a musí být nastaven tooChangeCount.
     
     * **Hodnota**  
-    Tato hodnota je počet virtuálních počítačů, které jsou přidány nebo odebrány ze sady škálování. Tato hodnota musí být 1 nebo vyšší. Výchozí hodnota je 1. V této šabloně počet počítačů v měřítka nastavit zvýší o 1 při splnění prahovou hodnotu.
+    Tato hodnota je hello počet virtuálních počítačů, které jsou přidány nebo odebrány z hello škálovací sadu. Tato hodnota musí být 1 nebo vyšší. Hello výchozí hodnota je 1. V této šabloně hello počet počítačů v hello škálování nastavit zvýší o 1 při splnění hello prahovou hodnotu.
 
     * **cooldown**  
-    Tato hodnota je množství času má počkat od poslední akce škálování, než dojde k další akce. Tato hodnota musí být mezi minutu a jeden týden.
+    Tato hodnota je hello množství toowait času od poslední akce škálování hello předtím, než dojde k hello další akce. Tato hodnota musí být mezi minutu a jeden týden.
 
-12. Uložte soubor šablony.    
+12. Uložte soubor šablony hello.    
 
-## <a name="step-3-upload-the-template-to-storage"></a>Krok 3: Nahrát šablonu do úložiště
-Šablonu je možné uložit tak dlouho, dokud znáte název a primární klíč účtu úložiště, který jste vytvořili v kroku 1.
+## <a name="step-3-upload-hello-template-toostorage"></a>Krok 3: Nahrát na server hello šablony toostorage
+lze uložit šablonu Hello tak dlouho, dokud znáte název hello a primární klíč účtu úložiště hello, kterou jste vytvořili v kroku 1.
 
-1. Ve svém rozhraní příkazového řádku (Bash, terminálu, příkazového řádku) spusťte tyto příkazy a nastavení proměnných prostředí, které jsou potřebné pro přístup k účtu úložiště:
+1. Ve svém rozhraní příkazového řádku (Bash, terminálu, příkazového řádku) spuštěním těchto příkazů proměnné prostředí hello tooset potřeby tooaccess hello účet úložiště:
 
     ```cli   
     export AZURE_STORAGE_ACCOUNT={account_name}
     export AZURE_STORAGE_ACCESS_KEY={key}
     ```
     
-    Klíč můžete získat kliknutím na ikonu klíče při zobrazení prostředků účtu úložiště na portálu Azure. Při použití příkazového řádku Windows, zadejte **nastavit** místo exportu.
+    Hello klíč můžete získat kliknutím na ikonu klíče hello při zobrazení prostředků účtu úložiště hello hello portálu Azure. Při použití příkazového řádku Windows, zadejte **nastavit** místo exportu.
 
-2. Vytvořte kontejner pro uložení šablony.
+2. Vytvoření kontejneru hello uložení šablony hello.
    
     ```cli
     azure storage container create -p Blob templates
     ```
 
-3. Nahrajte soubor šablony do nového kontejneru.
+3. Nahrajte hello šablony souboru toohello nový kontejner.
    
     ```cli
     azure storage blob upload VMSSTemplate.json templates VMSSTemplate.json
     ```
 
-## <a name="step-4-deploy-the-template"></a>Krok 4: Nasazení šablony
-Teď, když jste vytvořili šablonu, můžete začít nasazovat prostředky. Použijte tento příkaz ke spuštění procesu:
+## <a name="step-4-deploy-hello-template"></a>Krok 4: Nasazení šablony hello
+Teď, když jste vytvořili hello šablony, můžete začít nasazovat hello prostředky. Použijte tento příkaz toostart hello proces:
 
 ```cli
 azure group deployment create --template-uri https://vmsstestsa.blob.core.windows.net/templates/VMSSTemplate.json vmsstestrg1 vmsstestdp1
 ```
 
-Po stisknutí klávesy zadejte, zobrazí se výzva k zadání hodnot pro proměnné, které jste přiřadili. Zadejte tyto hodnoty:
+Po stisknutí klávesy zadejte, jsou výzvami tooprovide hodnoty pro proměnné hello, které jste přiřadili. Zadejte tyto hodnoty:
 
 ```cli
 vmName: vmsstestvm1
@@ -551,36 +551,36 @@ adminPassword: VMpass1
 resourcePrefix: vmsstest
 ```
 
-Má trvat přibližně 15 minut pro všechny prostředky. Chcete-li úspěšně nasadit.
+Pro všechny prostředky toosuccessfully hello nasadit má trvat přibližně 15 minut.
 
 > [!NOTE]
-> Možnost na portálu můžete taky nasadit tyto prostředky. Použít tento odkaz: https://portal.azure.com/#create/Microsoft.Template/uri/<link to VM Scale Set JSON template>
+> Můžete také použít portál hello možnost toodeploy hello prostředky. Použít tento odkaz: https://portal.azure.com/#create/Microsoft.Template/uri/<link tooVM Scale Set JSON template>
 
 
 ## <a name="step-5-monitor-resources"></a>Krok 5: Sledování prostředků
 Můžete získat některé informace o sady škálování virtuálního počítače pomocí těchto metod:
 
-* Portál Azure – můžete aktuálně získat omezené množství informací pomocí portálu.
+* Hello portál Azure – nyní můžete získat omezené množství informací pomocí portálu hello.
 
-* [Průzkumníka prostředků Azure](https://resources.azure.com/) – tento nástroj je nejvhodnější pro zkoumání aktuálního stavu škálovací sadu. Postupujte podle této cestě a měli byste vidět zobrazení instance škálovací sady, který jste vytvořili:
+* Hello [Průzkumníka prostředků Azure](https://resources.azure.com/) – tento nástroj je nejlepší pro zkoumání hello aktuální stav škálovací sady hello. Postupujte podle této cestě a měli byste vidět sadu zobrazení instance hello hello měřítka, kterou jste vytvořili:
   
     ```cli
     subscriptions > {your subscription} > resourceGroups > vmsstestrg1 > providers > Microsoft.Compute > virtualMachineScaleSets > vmsstest1 > virtualMachines
     ```
 
-* Azure CLI - použijte tento příkaz určité informace:
+* Rozhraní příkazového řádku Azure - použít tento příkaz tooget některé informace:
 
     ```cli  
     azure resource show -n vmsstest1 -r Microsoft.Compute/virtualMachineScaleSets -o 2015-06-15 -g vmsstestrg1
     ```
 
-* Připojte k virtuálnímu počítači jumpbox stejně, jako by všechny ostatní počítače a potom můžete virtuální počítače v sad pro monitorování jednotlivých procesů škálování vzdálený přístup.
+* Připojte toohello jumpbox virtuálního počítače stejně, jako by všechny ostatní počítače a pak můžete vzdáleně přistupovat hello virtuálních počítačů v hello škálování sadu toomonitor jednotlivých procesů.
 
 > [!NOTE]
 > Dokončení rozhraní REST API k získání informací o sady škálování najdete v [sadách škálování virtuálního počítače](https://msdn.microsoft.com/library/mt589023.aspx).
 
-## <a name="step-6-remove-the-resources"></a>Krok 6: Odebrat prostředky
-Vzhledem k tomu, že se vám účtovat prostředky využívané v Azure, vždycky je dobrým zvykem odstranit prostředky, které už nejsou potřeba. Nemusíte samostatně odstranit jednotlivé prostředky ze skupiny prostředků. Můžete odstranit skupinu prostředků a všechny její prostředky se automaticky odstraní.
+## <a name="step-6-remove-hello-resources"></a>Krok 6: Odebrat prostředky hello
+Vzhledem k tomu, že se vám účtovat prostředky využívané v Azure, je vždy prostředky toodelete osvědčených postupů, které už nejsou potřeba. Nepotřebujete toodelete každého prostředku nezávisle na skupinu prostředků. Odstraněním skupiny prostředků hello a všechny její prostředky se automaticky odstraní.
 
 ```cli
 azure group delete vmsstestrg1
@@ -588,7 +588,7 @@ azure group delete vmsstestrg1
 
 ## <a name="next-steps"></a>Další kroky
 * Najít příklady Azure monitorování monitorování funkcí v [Azure monitorování napříč platformami CLI rychlý start ukázky](../monitoring-and-diagnostics/insights-cli-samples.md)
-* Další informace o funkcích oznámení v [používat akce škálování k odesílání e-mailu a webhooku oznámení výstrah v monitorování Azure](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)
-* Zjistěte, jak [protokoly auditu použijte k odesílání e-mailu a webhooku oznámení výstrah v monitorování Azure](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
-* Podívejte se [škálování ukázkovou aplikaci na Ubuntu 16.04](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) šablony, která nastaví aplikaci Python nebo bottle vykonávat automatické škálování funkce sadách škálování virtuálního počítače.
+* Další informace o funkcích oznámení v [použití automatického škálování akce toosend e-mailu a webhooku oznámení výstrah v monitorování Azure](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)
+* Zjistěte, jak příliš[protokoly auditu použití toosend e-mailu a webhooku oznámení výstrah v monitorování Azure](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
+* Podívejte se na hello [škálování ukázkovou aplikaci na Ubuntu 16.04](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) šablonu, která nastavuje Python nebo bottle aplikace tooexercise hello automatického škálování funkce sadách škálování virtuálního počítače.
 

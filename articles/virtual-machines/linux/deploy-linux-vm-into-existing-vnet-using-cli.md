@@ -1,6 +1,6 @@
 ---
-title: "Nasadit virtuální počítače s Linuxem do stávající sítě s 2.0 rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Zjistěte, jak nasadit virtuální počítač s Linuxem do existující virtuální síť pomocí Azure CLI 2.0"
+title: "aaaDeploy virtuální počítače s Linuxem do stávající sítě s 2.0 rozhraní příkazového řádku Azure | Microsoft Docs"
+description: "Zjistěte, jak hello toodeploy virtuální počítač s Linuxem do existující virtuální sítě pomocí Azure CLI 2.0"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -15,32 +15,32 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 932fd74ec83f43b604382346ee2c273f5453fcd0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0df44b3437002df050db56f3b3899083fb49d803
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-deploy-a-linux-virtual-machine-into-an-existing-azure-virtual-network-with-the-azure-cli"></a>Jak nasadit virtuální počítač s Linuxem do existující virtuální síť Azure pomocí Azure CLI
+# <a name="how-toodeploy-a-linux-virtual-machine-into-an-existing-azure-virtual-network-with-hello-azure-cli"></a>Jak toodeploy virtuální počítač s Linuxem do existující virtuální síť Azure s hello rozhraní příkazového řádku Azure
 
-Tento článek ukazuje, jak používat 2.0 rozhraní příkazového řádku Azure k nasazení virtuálního počítače (VM) do existující virtuální síť. Požadavky:
+Tento článek ukazuje, jak toouse hello Azure CLI 2.0 toodeploy virtuální počítač (VM) do existující virtuální síť. Hello požadavky jsou:
 
 - [Účet Azure](https://azure.microsoft.com/pricing/free-trial/)
 - [Soubory veřejného a privátního klíče SSH](mac-create-ssh-keys.md)
 
-K provedení těchto kroků můžete také využít [Azure CLI 1.0](deploy-linux-vm-into-existing-vnet-using-cli-nodejs.md).
+Můžete také provést tyto kroky hello [Azure CLI 1.0](deploy-linux-vm-into-existing-vnet-using-cli-nodejs.md).
 
 
 ## <a name="quick-commands"></a>Rychlé příkazy
-Pokud budete potřebovat rychle dosáhnout, v následující části jsou příkazy potřebné. Podrobnější informace a kontext pro každý krok naleznete zbývající části dokumentu, [od zde](#detailed-walkthrough).
+Pokud je třeba tooquickly dosáhnout hello, hello následující část podrobně hello příkazy potřebné. Podrobnější informace a kontext pro každý krok naleznete hello zbytek dokumentu hello [od zde](#detailed-walkthrough).
 
-K vytvoření tohoto vlastního prostředí, je třeba nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení k účtu Azure pomocí [az přihlášení](/cli/azure/#login).
+toocreate tento vlastní prostředí budete potřebovat hello nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení pomocí účtu Azure tooan [az přihlášení](/cli/azure/#login).
 
-V následujících příkladech nahraďte názvy parametrů příklad vlastní hodnoty. Zahrnout názvy parametrů příklad *myResourceGroup*, *myVnet*, a *Můjvp*.
+Následující příklady, v hello nahraďte názvy parametrů příklad vlastními hodnotami. Zahrnout názvy parametrů příklad *myResourceGroup*, *myVnet*, a *Můjvp*.
 
 **Předběžných požadavků:** skupina prostředků Azure, virtuální síť a podsíť, příchozí skupinu zabezpečení sítě pomocí protokolu SSH a virtuální síťový adaptér.
 
-### <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>Virtuální počítač nasaďte do infrastruktury virtuální sítě
+### <a name="deploy-hello-vm-into-hello-virtual-network-infrastructure"></a>Nasazení hello virtuálních počítačů do infrastruktury virtuální sítě hello
 
 ```azurecli
 az vm create \
@@ -54,15 +54,15 @@ az vm create \
 
 ## <a name="detailed-walkthrough"></a>Podrobný postup
 
-Prostředky Azure jako virtuální sítě a skupiny zabezpečení sítě by měl být statické a dlouhodobě prostředky, které jsou nasazeny zřídka. Po nasazený virtuální síť, můžete použít znovu nová nasazení bez žádné negativní ovlivňuje infrastruktury. Vezměte v úvahu virtuální sítě, že síťový přepínač tradiční hardwaru – nebude potřeba ke konfiguraci nové hardwarové přepínače s každého nasazení. Pomocí správně nakonfigurovaných virtuální síť můžete nasadit nové virtuální počítače do této virtuální sítě dokola s několika, pokud existuje, změny požadované za dobu životnosti virtuální sítě.
+Prostředky Azure jako virtuální sítě a skupiny zabezpečení sítě by měl být statické a dlouhodobě prostředky, které jsou nasazeny zřídka. Po nasazený virtuální síť, můžete použít znovu nová nasazení bez jakékoli infrastruktury toohello má negativní vliv. Vezměte v úvahu virtuální sítě, že síťový přepínač tradiční hardwaru – nebude potřeba tooconfigure zcela nový hardware přepínač s každého nasazení. Správně nakonfigurována virtuální síť, můžete pokračovat toodeploy nové virtuální počítače do této virtuální sítě s několika opakovaně, pokud existuje, nevyžadují změny během hello doby trvání hello virtuální sítě.
 
-K vytvoření tohoto vlastního prostředí, je třeba nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení k účtu Azure pomocí [az přihlášení](/cli/azure/#login).
+toocreate tento vlastní prostředí budete potřebovat hello nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení pomocí účtu Azure tooan [az přihlášení](/cli/azure/#login).
 
-V následujících příkladech nahraďte názvy parametrů příklad vlastní hodnoty. Zahrnout názvy parametrů příklad *myResourceGroup*, *myVnet*, a *Můjvp*.
+Následující příklady, v hello nahraďte názvy parametrů příklad vlastními hodnotami. Zahrnout názvy parametrů příklad *myResourceGroup*, *myVnet*, a *Můjvp*.
 
-## <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
+## <a name="create-hello-resource-group"></a>Vytvořte skupinu prostředků hello
 
-Nejprve vytvořte skupinu prostředků Azure pro všechny objekty, které vytvoříte v tomto návodu uspořádání. Další informace o skupinách prostředků najdete v článku [Přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md). Vytvořte skupinu prostředků s [vytvořit skupinu az](/cli/azure/group#create). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v *eastus* umístění:
+Nejprve vytvořte tooorganize skupiny prostředků Azure. všechny objekty, které vytvoříte v tomto návodu. Další informace o skupinách prostředků najdete v článku [Přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md). Vytvořte skupinu prostředků hello s [vytvořit skupinu az](/cli/azure/group#create). Hello následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v hello *eastus* umístění:
 
 ```azurecli
 az group create \
@@ -70,9 +70,9 @@ az group create \
     --location eastus
 ```
 
-## <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
+## <a name="create-hello-virtual-network"></a>Vytvoření virtuální sítě hello
 
-Umožňuje vytvářet virtuální sítě Azure ke spuštění virtuálních počítačů do. Další informace o virtuálních sítích najdete v tématu [vytvoření virtuální sítě pomocí rozhraní příkazového řádku Azure](../../virtual-network/virtual-networks-create-vnet-arm-cli.md). Vytvoření virtuální sítě s [vytvoření sítě vnet az](/cli/azure/network/vnet#create). Následující příklad vytvoří virtuální síť s názvem *myVnet* a podsíť s názvem *mySubnet*:
+Umožňuje vytvářet virtuální počítače do toolaunch hello virtuální síti Azure. Další informace o virtuálních sítích najdete v tématu [vytvoření virtuální sítě pomocí rozhraní příkazového řádku Azure hello](../../virtual-network/virtual-networks-create-vnet-arm-cli.md). Vytvoření virtuální sítě hello s [vytvoření sítě vnet az](/cli/azure/network/vnet#create). Hello následující příklad vytvoří virtuální síť s názvem *myVnet* a podsíť s názvem *mySubnet*:
 
 ```azurecli
 az network vnet create \
@@ -84,9 +84,9 @@ az network vnet create \
     --subnet-prefix 10.10.1.0/24
 ```
 
-## <a name="create-the-network-security-group"></a>Vytvořit skupinu zabezpečení sítě
+## <a name="create-hello-network-security-group"></a>Vytvořit skupinu zabezpečení sítě hello
 
-Skupiny zabezpečení Azure sítě jsou ekvivalentní brány firewall síťové vrstvy. Další informace o skupinách zabezpečení sítě najdete v tématu [postup vytvoření skupiny zabezpečení sítě v Azure CLI](../../virtual-network/virtual-networks-create-nsg-arm-cli.md). Vytvořit skupinu zabezpečení sítě s [vytvořit az sítě nsg](/cli/azure/network/nsg#create). Následující příklad vytvoří skupinu zabezpečení sítě s názvem *myNetworkSecurityGroup*:
+Skupiny zabezpečení Azure sítě jsou ekvivalentní tooa brány firewall hello síťové vrstvy. Další informace o skupinách zabezpečení sítě najdete v tématu [jak skupiny zabezpečení sítě toocreate ve hello rozhraní příkazového řádku Azure](../../virtual-network/virtual-networks-create-nsg-arm-cli.md). Vytvořit skupinu zabezpečení sítě hello s [vytvořit az sítě nsg](/cli/azure/network/nsg#create). Hello následující příklad vytvoří skupinu zabezpečení sítě s názvem *myNetworkSecurityGroup*:
 
 ```azurecli
 az network nsg create \
@@ -97,7 +97,7 @@ az network nsg create \
 
 ## <a name="add-an-inbound-ssh-allow-rule"></a>Přidat pravidlo povolit příchozí SSH
 
-Virtuální počítač potřebuje přístup z Internetu, aby bylo pravidlo povolující příchozí port 22 provoz předávané port 22 přes síť, ve virtuálním počítači. Přidat příchozí pravidlo pro skupinu zabezpečení sítě s [vytvořit pravidla nsg sítě az](/cli/azure/network/nsg/rule#create). Následující příklad vytvoří pravidlo s názvem *myNetworkSecurityGroupRuleSSH*:
+Hello virtuálního počítače potřebuje přístup z hello je nutná Internetu, aby pravidlo povolující příchozí port 22 provoz toobe předána hello sítě tooport 22 na hello virtuálních počítačů. Přidat příchozí pravidlo pro skupinu zabezpečení sítě hello s [vytvořit pravidla nsg sítě az](/cli/azure/network/nsg/rule#create). Hello následující příklad vytvoří pravidlo s názvem *myNetworkSecurityGroupRuleSSH*:
 
 ```azurecli
 az network nsg rule create \
@@ -109,9 +109,9 @@ az network nsg rule create \
     --destination-port-range 22 \
 ```
 
-## <a name="attach-the-subnet-to-the-network-security-group"></a>Podsíť přiřadit skupinu zabezpečení sítě
+## <a name="attach-hello-subnet-toohello-network-security-group"></a>Připojit skupinu zabezpečení sítě toohello podsítí hello
 
-Pravidla skupiny zabezpečení sítě je použít pro podsíť nebo konkrétní virtuální síťové rozhraní. Umožňuje připojit skupinu zabezpečení sítě k naší podsítě. Podsíť přiřadit skupinu zabezpečení sítě s [aktualizace az sítě vnet podsíť](/cli/azure/network/vnet/subnet#update):
+Hello pravidel skupiny zabezpečení sítě můžou být použité tooa podsíť nebo konkrétní virtuální síťové rozhraní. Umožňuje připojit hello sítě zabezpečení skupiny tooour podsítě. Připojit vaše podsíť toohello skupina zabezpečení sítě se [aktualizace az sítě vnet podsíť](/cli/azure/network/vnet/subnet#update):
 
 ```azurecli
 az network vnet subnet update \
@@ -121,9 +121,9 @@ az network vnet subnet update \
     --network-security-group myNetworkSecurityGroup
 ```
 
-## <a name="add-a-virtual-network-interface-card-to-the-subnet"></a>Přidat virtuální síťový adaptér k podsíti
+## <a name="add-a-virtual-network-interface-card-toohello-subnet"></a>Přidat podsíť virtuální sítě rozhraní karty toohello
 
-Virtuální síťové karty (VNics) jsou důležité, protože můžete znovu použít, je jejich připojením do různých virtuálních počítačů. Tato opakované použití umožňuje zachovat adaptéru VNic jako statické prostředků virtuálních počítačů mohou být dočasné. Vytvoření adaptéru VNic a přidružte ji k podsíti s [vytvořit síťových adaptérů sítě az](/cli/azure/network/nic#create). Následující příklad vytvoří adaptéru VNic s názvem *myNic*:
+Virtuální síťové karty (VNics) jsou důležité, protože můžete znovu použít, je jejich připojením toodifferent virtuálních počítačů. Tato opakované použití vám umožní tookeep hello VNic jako statické prostředek hello virtuální počítače mohou být dočasné. Vytvoření adaptéru VNic a přidružte ji k podsíti hello s [vytvořit síťových adaptérů sítě az](/cli/azure/network/nic#create). Hello následující příklad vytvoří adaptéru VNic s názvem *myNic*:
 
 ```azurecli
 az network nic create \
@@ -134,13 +134,13 @@ az network nic create \
     --subnet mySubnet
 ```
 
-## <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>Virtuální počítač nasaďte do infrastruktury virtuální sítě
+## <a name="deploy-hello-vm-into-hello-virtual-network-infrastructure"></a>Nasazení hello virtuálních počítačů do infrastruktury virtuální sítě hello
 
-Nyní máte virtuální síť a podsíť a skupinu zabezpečení sítě chránit podsíť, blokovat veškerý příchozí provoz, s výjimkou port 22 pro SSH. Virtuální počítač teď můžou být nasazené uvnitř této stávající síťové infrastruktuře.
+Nyní máte virtuální síť a podsíť a podsíť hello tooprotect skupiny zabezpečení sítě pomocí blokovat veškerý příchozí provoz, s výjimkou port 22 pro SSH. Teď můžou být nasazené Hello virtuálních počítačů uvnitř této stávající síťové infrastruktuře.
 
-Vytvoření virtuálního počítače s [vytvořit virtuální počítač az](/cli/azure/vm#create). Další informace o příznaky pomocí Azure CLI 2.0 používat a kompletní virtuální počítač nasadit, naleznete v části [vytvořit dokončení prostředí Linux pomocí příkazového řádku Azure CLI](create-cli-complete.md).
+Vytvoření virtuálního počítače s [vytvořit virtuální počítač az](/cli/azure/vm#create). Další informace o hello flags toouse s hello Azure CLI 2.0 toodeploy dokončení virtuálních počítačů, najdete v části [vytvořit úplný prostředí Linux pomocí příkazového řádku Azure CLI hello](create-cli-complete.md).
 
-Následující příklad vytvoří virtuální počítač pomocí Azure spravované disků. Tyto disky jsou zpracovávány platformy Azure a nevyžadují, aby všechny přípravné nebo umístění pro uložení. Další informace o spravovaných discích najdete v tématu [Přehled služby Azure Managed Disks](../../storage/storage-managed-disks-overview.md). Pokud chcete používat nespravované disky, najdete v části Další poznámku níže.
+Hello následující ukázka vytvoří virtuální počítač pomocí Azure spravované disků. Tyto disky jsou zpracovávány hello platformy Azure a nevyžadují, aby všechny přípravné nebo umístění toostore je. Další informace o spravovaných discích najdete v tématu [Přehled služby Azure Managed Disks](../../storage/storage-managed-disks-overview.md). Pokud chcete toouse nespravované disky, najdete v části hello Další poznámka níže.
 
 ```azurecli
 az vm create \
@@ -152,18 +152,18 @@ az vm create \
     --nics myNic
 ```
 
-Pokud používáte spravovaných disků, tento krok přeskočte. Pokud chcete používat nespravované disky, budete muset přidat další parametry do příkazu budete pokračovat, vytvořit nespravované disky v účtu úložiště s názvem `mystorageaccount`: 
+Pokud používáte spravovaných disků, tento krok přeskočte. Pokud chcete disky toouse nespravované, potřebujete následující další parametry toohello pokračováním příkaz toocreate nespravované disky v hello účet úložiště s názvem hello tooadd `mystorageaccount`: 
 
 ```azurecli
     --use-unmanaged-disk \
     --storage-account mystorageaccount
 ```
 
-Pomocí rozhraní příkazového řádku příznaky vyvolávající existujících prostředků dáte pokyn Azure k nasazení virtuálních počítačů uvnitř existující síť. Jakmile jsou nasazené virtuální síť a podsíť, může být ponecháno jako statické nebo trvalé prostředky uvnitř vaší oblasti Azure. V tomto příkladu není vytvořte a přiřaďte veřejnou IP adresu vnic, takže tento virtuální počítač není veřejně přístupné přes Internet. Další informace najdete v tématu [vytvoření virtuálního počítače se statickou veřejnou IP adresu pomocí rozhraní příkazového řádku Azure](../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md).
+Rozhraní příkazového řádku příznaky pomocí hello toocall se stávajícími prostředky, dáte pokyn Azure toodeploy hello virtuálních počítačů uvnitř hello stávající sítě. Jakmile jsou nasazené virtuální síť a podsíť, může být ponecháno jako statické nebo trvalé prostředky uvnitř vaší oblasti Azure. V tomto příkladu není vytvořte a přiřaďte toohello veřejnou adresu IP VNic, takže tento virtuální počítač není veřejně přístupné přes hello Internet. Další informace najdete v tématu [vytvoření virtuálního počítače se statickou veřejnou IP adresu pomocí rozhraní příkazového řádku Azure hello](../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md).
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o způsoby, jak vytvořit virtuální počítače v Azure najdete v následujících zdrojích informací:
+Další informace o způsobech toocreate virtuálních počítačů v Azure najdete v tématu hello následující prostředky:
 
-* [Vytvoření konkrétního nasazení pomocí šablony Azure Resource Manageru](../windows/cli-deploy-templates.md)
+* [Použijte toocreate šablony Azure Resource Manager konkrétní nasazení](../windows/cli-deploy-templates.md)
 * [Přímé vytvoření vlastního prostředí pro virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure CLI](create-cli-complete.md).
 * [Vytvoření virtuálního počítače s Linuxem v Azure pomocí šablony](create-ssh-secured-vm-from-template.md)

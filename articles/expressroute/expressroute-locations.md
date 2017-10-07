@@ -1,6 +1,6 @@
 ---
 title: "Poskytovatelé připojení a umístění: Azure ExpressRoute | Dokumentace Microsoftu"
-description: "Tento článek obsahuje podrobný přehled o umístěních, kde jsou nabízené služby, a jak se připojit k oblastem Azure. Řazení je podle poskytovatele připojení."
+description: "Tento článek obsahuje podrobný přehled o umístěních, kde jsou nabízené služby a jak tooconnect tooAzure oblasti. Řazení je podle poskytovatele připojení."
 services: expressroute
 documentationcenter: na
 author: cherylmc
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/17/2017
 ms.author: kaanan
-ms.openlocfilehash: c9f44dbc943e854915c4e34b4dffa2c294f7866d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: df906ae6ff4e149c9cab4aa46ab78c8dd6aa4366
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -27,17 +27,17 @@ ms.lasthandoff: 08/29/2017
 > * [Poskytovatelé podle umístění](expressroute-locations-providers.md)
 
 
-Tabulky v tomto článku poskytují informace o poskytovatelích připojení ExpressRoute, zeměpisném pokrytí ExpressRoute, cloudových službách Microsoftu podporovaných přes ExpressRoute a systémových integrátorech (SI) ExpressRoute.
+Hello tabulky v tomto článku poskytují informace o poskytovatelích připojení ExpressRoute, zeměpisném pokrytí ExpressRoute, cloudových službách Microsoftu podporovaných přes ExpressRoute a ExpressRoute systémových Integrátorech (si).
 
 ## <a name="partners"></a>Poskytovatelé připojení ExpressRoute
-Služba ExpressRoute je podporovaná ve všech umístěních a oblastech Azure. Následující mapa obsahuje seznam oblastí Azure a umístění ExpressRoute. Umístění ExpressRoute odkazují na ty, kde má Microsoft partnerský vztah s několika poskytovateli služeb.
+Služba ExpressRoute je podporovaná ve všech umístěních a oblastech Azure. Hello následující mapa obsahuje seznam oblastí Azure a umístění ExpressRoute. Umístění ExpressRoute odkazují toothose, kde má Microsoft partnerský vztah s několika poskytovateli služeb.
 
 ![Mapa umístění][0]
 
-Pokud jste připojení k aspoň jednomu umístění ExpressRoute v rámci geopolitické oblasti, budete mít přístup ke službám Azure napříč všemi oblastmi v rámci geopolitické oblasti.
+Pokud je připojen minimálně jeden tooat umístění ExpressRoute v rámci geopolitické oblasti hello, bude mít přístup ke službě tooAzure přes všechny oblasti v geopolitické oblasti.
 
-### <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a>Mapování oblastí Azure na umístění ExpressRoute v rámci geopolitické oblasti.
-Následující tabulka obsahuje mapování oblastí Azure na umístění ExpressRoute v rámci geopolitické oblasti.
+### <a name="azure-regions-tooexpressroute-locations-within-a-geopolitical-region"></a>Umístění tooExpressRoute oblastí Azure v rámci geopolitické oblasti.
+Hello následující tabulka obsahuje mapování oblastí Azure tooExpressRoute umístění v rámci geopolitické oblasti.
 
 | **Geopolitická oblast** | **Oblasti Azure** | **Umístění ExpressRoute** |
 | --- | --- | --- |
@@ -51,7 +51,7 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | **Jižní Korea** |Korea – střed, Korea – jih |Busan, Soul |
 
 ### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>Oblasti a geopolitické hranice pro národní cloudy
-Následující tabulka obsahuje informace o oblastech a geopolitických hranicích pro národní cloudy.
+Hello následující tabulka obsahuje informace o oblastech a geopolitických hranicích pro národní cloudy.
 
 | **Geopolitická oblast** | **Oblasti Azure** | **Umístění ExpressRoute** |
 | --- | --- | --- |
@@ -59,11 +59,11 @@ Následující tabulka obsahuje informace o oblastech a geopolitických hranicí
 | **Čína** |Severní Čína, Východní Čína |Peking, Šanghaj |
 | **Německo** |Střední Německo, Východní Německo |Berlín, Frankfurt |
 
-Připojení přes geopolitické oblasti není pomocí standardní SKU pro ExpressRoute podporované. Aby bylo podporované globální připojení, budete muset povolit doplněk ExpressRoute Premium. Připojení k prostředím národních cloudů není podporované. Podle potřeby můžete spolupracovat se svým poskytovatelem připojení.
+Připojení přes geopolitické oblasti nepodporuje hello standardní SKU pro ExpressRoute. Budete potřebovat tooenable hello ExpressRoute premium rozšíření toosupport globální připojení. Připojení toonational Cloudová prostředí není podporován. Podle potřeby můžete spolupracovat se svým poskytovatelem připojení.
 
 ## <a name="locations"></a>Umístění poskytovatele připojení
 
-Následující tabulka uvádí umístění podle poskytovatele služby. Pokud chcete zobrazit dostupné poskytovatele podle umístění, přečtěte si téma [Poskytovatelé služeb podle umístění](expressroute-locations-providers.md#locations).
+Hello následující tabulka ukazuje umístění poskytovatelem služby. Pokud chcete tooview dostupných zprostředkovatelů podle umístění, najdete v části [poskytovatelů podle umístění služeb](expressroute-locations-providers.md#locations).
 
 
 ### <a name="production-azure"></a>Produkční prostředí Azure
@@ -73,7 +73,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Airtel](http://www.airtel.in/business/connexion)** | Podporuje se | Podporuje se | Čennaj, Bombaj |
 | **[Aryaka Networks](http://www.aryaka.com/)** |Podporuje se |Podporuje se |Amsterdam, Dallas, Hongkong, Silicon Valley, Singapur, Tokio, Washington DC |
 | **[Datová centra Ascenty](https://ascenty.com/solucoes/conectividade-e-interconexoes/Microsoft-express-route/)** |Připravuje se |Připravuje se |Sao Paulo |
-| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Podporuje se |Podporuje se |Amsterdam, Chicago, Dallas, Londýn, Silicon Valley, Singapur, Sydney, Tokio, Toronoto, Washington DC |
+| **[AT&amp;T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Podporuje se |Podporuje se |Amsterdam, Chicago, Dallas, Londýn, Silicon Valley, Singapur, Sydney, Tokio, Toronoto, Washington DC |
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Podporuje se |Podporuje se |Montreal, Toronto |
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** |Podporuje se |Podporuje se |Amsterdam, Hongkong, Londýn, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
 | **[CenturyLink](http://www.centurylink.com/business/enterprise/services/data-network/mpls-vpn.html)** |Připravuje se |Připravuje se |Silicon Valley |
@@ -128,7 +128,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 ### <a name="us-government-cloud"></a>Cloud vlády USA
 | **Poskytovatel služeb** | **Microsoft Azure** | **Office 365** | **Umístění** |
 | --- | --- | --- | --- |
-| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Podporuje se |Podporuje se |Chicago, Washington DC |
+| **[AT&amp;T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Podporuje se |Podporuje se |Chicago, Washington DC |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |Podporuje se |Podporuje se |Chicago, Dallas, New York, Seattle, Silicon Valley, Washington DC |
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Podporuje se |Podporuje se |Chicago, New York+, Silicon Valley, Washington DC |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Podporuje se | Podporuje se | Chicago, Dallas |
@@ -139,7 +139,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | --- | --- | --- | --- |
 | **China Telecom** |Podporuje se |Nepodporuje se |Peking, Šanghaj |
 
-Další informace najdete v tématu [ExpressRoute v Číně](http://www.windowsazure.cn/home/features/expressroute/).
+Další, najdete v části toolearn [ExpressRoute v Číně](http://www.windowsazure.cn/home/features/expressroute/).
 
 ### <a name="germany"></a>Německo
 | **Poskytovatel služeb** | **Microsoft Azure** | **Office 365** | **Umístění** |
@@ -155,7 +155,7 @@ Další informace najdete v tématu [ExpressRoute v Číně](http://www.windowsa
 
 Pokud poskytovatel připojení není v předchozích částech uvedený, můžete přesto vytvořit připojení.
 
-* Zkontrolujte u svého poskytovatele připojení, jestli je připojený k některé z výměn v předchozí tabulce. Můžete zkontrolovat následující odkazy, abyste získali další informace o službách nabízených poskytovateli výměny. Několik poskytovatelů připojení je už připojeno k ethernetovým výměnám.
+* Pokud jsou připojené tooany hello výměn v předchozí tabulce hello, obraťte se na vaše toosee poskytovatele připojení. Můžete zkontrolovat, zda text hello následující odkazy toogather Další informace o službách nabízených poskytovateli výměny. Několik poskytovatelů připojení jsou již připojené tooEthernet výměnu.
   * [Cologix](http://www.cologix.com/)
   * [Console](https://www.consoleconnect.com/partners/cloudsaas/)
   * [CoreSite](http://www.coresite.com/)
@@ -164,10 +164,10 @@ Pokud poskytovatel připojení není v předchozích částech uvedený, můžet
   * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
   * [NextDC](http://www.nextdc.com/)
   * [TeleCity CloudIX](http://www.telecitygroup.com/colocation-services/cloud-ix.htm)
-* Rozšířil váš poskytovatel připojení vaši síť ke zvolenému umístění partnerského vztahu?
+* Máte vaší sítě toohello zvolenému umístění rozšířil váš poskytovatel připojení.
   * Ujistěte se, že poskytovatel připojení rozšiřuje vaše připojení vysoce dostupným způsobem tak, aby neexistovaly žádné jediné body selhání.
-* Abyste se připojili k Microsoftu, objednejte si okruh ExpressRoute s výměnou jako poskytovatel připojení.
-  * Při nastavení připojení postupujte podle kroků v tématu [Vytvoření okruhu ExpressRoute](expressroute-howto-circuit-classic.md).
+* Objednejte okruh ExpressRoute s výměnou hello jako poskytovatel připojení tooconnect tooMicrosoft.
+  * Postupujte podle kroků v [vytvoření okruhu ExpressRoute](expressroute-howto-circuit-classic.md) tooset připojením.
 
 ## <a name="connectivity-through-additional-service-providers"></a>Možnosti připojení prostřednictvím dalších poskytovatelů služeb
 
@@ -232,10 +232,10 @@ Pokud poskytovatel připojení není v předchozích částech uvedený, můžet
 | **SINET**|
 | **Surfnet, prostřednictvím GÉANT**|
 
-* Pokud zde není uveden váš poskytovatel připojení, zkontrolujte, jestli není připojen k některému z partnerů ExpressRoute uvedených výše.
+* Pokud zde není uveden svého poskytovatele připojení, zkontrolujte toosee, pokud jsou připojené tooany hello partneři ExpressRoute Exchange uvedené výše.
 
 ## <a name="expressroute-system-integrators"></a>Systémoví integrátoři ExpressRoute
-Povolení soukromého připojení podle vlastních potřeb může být náročné, v závislosti na rozsahu vaší sítě. Můžete spolupracovat s kterýmkoli systémovým integrátorem uvedeným v následující tabulce, aby vám pomohl s připojením k ExpressRoute.
+Povolení soukromého připojení toofit, které může být náročné vašim potřebám, založené na hello rozsahu vaší sítě. Můžete pracovat s žádným z hello systémovým integrátorem uvedeným v následující tabulce tooassist hello je tooExpressRoute registrace.
 
 | **Systémový integrátor** | **Kontinent** |
 | --- | --- |
@@ -246,7 +246,7 @@ Povolení soukromého připojení podle vlastních potřeb může být náročn�
 | **[Equinix Professional Services](http://www.equinix.com/services/consulting/)** | Severní Amerika |
 | **[FlexManage](http://www.flexmanage.com/cloud)** | Severní Amerika |
 | **[Inframon](http://www.inframon.com/partner/microsoft/)** | Evropa |
-| **[The IT Consultancy Group](http://itconsult.com.au/microsoft-expressroute)** | Austrálie |
+| **[Hello IT poradenství skupiny](http://itconsult.com.au/microsoft-expressroute)** | Austrálie |
 | **[MOQdigital](http://www.moqdigital.com.au/insights/technical/network-connectivity-options-for-azure)** | Austrálie |
 | **[MSG Services](https://www.msg-services.de/it-services/managed-services/cloud-outsourcing/)** | Evropa (Německo) |
 | **[Nelite](http://nelite.com/)** | Evropa |
@@ -260,7 +260,7 @@ Povolení soukromého připojení podle vlastních potřeb může být náročn�
 
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
+* Další informace o ExpressRoute najdete v tématu hello [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 * Zkontrolujte, že jsou splněné všechny požadavky. Viz [Požadavky služby ExpressRoute](expressroute-prerequisites.md).
 
 <!--Image References-->

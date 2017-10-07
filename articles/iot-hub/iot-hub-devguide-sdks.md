@@ -1,6 +1,6 @@
 ---
-title: "Pochopení SDK služby Azure IoT | Microsoft Docs"
-description: "Příručka vývojáře – informace a odkazy na různých Azure IoT zařízení a služby sadách SDK, které můžete použít k vytváření aplikací pro zařízení a aplikací back-end."
+title: "hello aaaUnderstand SDK služby Azure IoT | Microsoft Docs"
+description: "Příručka vývojáře – informace a odkazy toohello různé Azure IoT zařízení a služby sady SDK můžete použít aplikace zařízení toobuild a back-end aplikace."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -15,50 +15,50 @@ ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bcbf4b9633f58293edb19aeb33dec6602ac4ec8f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e319451ca97876666e1c011ee0e1a73d0a0f1ed1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="understand-and-use-azure-iot-sdks"></a>Rady pro pochopení a použití sady SDK služby Azure IoT
 
 Existují tři kategorie sady SDK pro práci se službou IoT Hub:
 
-* **Sady SDK zařízení** umožňují vytvářet aplikace, které běží na zařízení IoT. Tyto aplikace odesílat telemetrická data do služby IoT hub a volitelně přijímat zprávy pomocí služby IoT hub.
+* **Sady SDK zařízení** umožňují toobuild aplikace, které běží na zařízení IoT. Tyto aplikace odesílat telemetrii tooyour IoT hub a volitelně přijímat zprávy pomocí služby IoT hub.
 
-* **Služba SDK** umožňují spravovat služby IoT hub a volitelně odesílání zpráv do vašeho zařízení IoT.
+* **Služba SDK** povolit jste toomanage služby IoT hub a volitelně odesílat zprávy tooyour zařízení IoT.
 
-* **Azure IoT Edge** umožňuje vytvářet brány a povolit zařízení, nepoužívejte jedním z podporovaných protokolů, nebo když potřebujete ke zpracování zpráv na okraj.
+* **Azure IoT Edge** vám umožní toobuild brány tooenable zařízení, nepoužívejte jednoho z protokolů hello podporováno, nebo když potřebujete tooprocess zprávy v hraniční hello.
 
-Sady SDK jsou k dispozici pro podporu více programovacích jazyků.
+Sady SDK jsou zadané toosupport více programovacích jazyků.
 
 ## <a name="azure-iot-device-sdks"></a>Azure SDK zařízení IoT
 
-Microsoft Azure IoT zařízení sady SDK obsahovat kód, který usnadňuje vytváření zařízení a aplikací, které se připojují k a spravuje služby Azure IoT Hub.
+Hello sady SDK služby Microsoft Azure IoT zařízení obsahovat kód, který usnadňuje vytváření zařízení a aplikací, které se připojují tooand spravuje služby Azure IoT Hub.
 
-Toto zařízení Azure IoT sady SDK jsou k dispozici ke stažení z webu GitHub:
+Hello následující SDK pro zařízení Azure IoT jsou k dispozici toodownload z Githubu:
 
-* [Pro zařízení Azure IoT SDK pro jazyk C] [ lnk-c-device-sdk] napsané v jazyce ANSI C (C99) přenositelnost široký kompatibilitu a platformy. Existují dva klientské knihovny zařízení pro jazyk C nízké úrovně **iothub_client** a **serializátor**.
+* [Pro zařízení Azure IoT SDK pro jazyk C] [ lnk-c-device-sdk] napsané v jazyce ANSI C (C99) přenositelnost široký kompatibilitu a platformy. Existují dva klientské knihovny zařízení pro jazyk C hello nízké úrovně **iothub_client** a hello **serializátor**.
 * [Pro zařízení Azure IoT SDK pro .NET][lnk-dotnet-device-sdk]
 * [Pro zařízení Azure IoT SDK pro jazyk Java][lnk-java-device-sdk]
 * [Pro zařízení Azure IoT SDK pro Node.js][lnk-node-device-sdk]
 * [Pro zařízení Azure IoT SDK pro jazyk Python][lnk-python-device-sdk]
 
 > [!NOTE]
-> Prohlédněte si soubory readme v úložišť GitHub pro informace o použití jazyka a specifické pro platformu balíček správci nainstalovat binární soubory a závislosti na vývojovém počítači.
+> Najdete v souborech readme hello v úložišť GitHub hello informace o použití jazyka a binární soubory tooinstall správci specifické pro platformu balíček a závislosti na vývojovém počítači.
 > 
 > 
 
 ### <a name="os-platform-and-hardware-compatibility"></a>Kompatibilita operačního systému platformy a hardwaru
 
-Další informace o kompatibilitě sady SDK s konkrétním hardwarovým zařízení najdete v tématu [Azure certifikované pro katalog zařízení IoT][lnk-certified].
+Další informace o kompatibilitě sady SDK s konkrétním hardwarovým zařízením najdete v tématu hello [Azure certifikované pro katalog zařízení IoT][lnk-certified].
 
 ## <a name="azure-iot-service-sdks"></a>Služby sady SDK služby Azure IoT
 
-Sady SDK služby Azure IoT obsahovat kód, který usnadňuje vytváření aplikace, které spolupracují přímo službou IoT Hub pro správu zařízení a zabezpečení.
+Služba Azure IoT Hello sady SDK obsahovat kód toofacilitate vytváření aplikací, které komunikovat přímo s toomanage zařízení IoT Hub a zabezpečení.
 
-Následující služby Azure IoT sady SDK jsou k dispozici ke stažení z webu GitHub:
+Hello následující sady SDK služby Azure IoT jsou k dispozici toodownload z Githubu:
 
 * [IoT služba Azure SDK pro .NET][lnk-dotnet-service-sdk]
 * [IoT služba Azure SDK pro Node.js][lnk-node-service-sdk]
@@ -67,17 +67,17 @@ Následující služby Azure IoT sady SDK jsou k dispozici ke stažení z webu G
 * [IoT služba Azure SDK pro jazyk C][lnk-c-service-sdk]
 
 > [!NOTE]
-> Prohlédněte si soubory readme v úložišť GitHub pro informace o použití jazyka a specifické pro platformu balíček správci nainstalovat binární soubory a závislosti na vývojovém počítači.
+> Najdete v souborech readme hello v úložišť GitHub hello informace o použití jazyka a binární soubory tooinstall správci specifické pro platformu balíček a závislosti na vývojovém počítači.
 
 ## <a name="azure-iot-edge"></a>Azure IoT Edge
 
-Azure IoT Edge obsahuje infrastruktury a moduly vytvářet řešení IoT brány. Můžete rozšířit IoT Edge k vytvoření brány přizpůsobit každý scénář začátku do konce.
+Azure IoT Edge obsahuje hello infrastruktury a moduly toocreate brány řešení IoT. Můžete rozšířit IoT Edge toocreate brány šité na míru tooany začátku do konce scénář.
 
 Můžete si stáhnout [Azure IoT Edge] [ lnk-iot-edge] z Githubu.
 
 ## <a name="online-api-reference-documentation"></a>Online referenční dokumentace rozhraní API
 
-Následující seznam obsahuje odkazy na online referenční dokumentace rozhraní API pro zařízení Azure IoT, služby a knihovny brány:
+Hello následující seznam obsahuje referenční dokumentace rozhraní API odkazů tooonline pro zařízení Azure IoT, služby a knihovny brány:
 
 * [Internet věcí (IoT) rozhraní .NET][lnk-dotnet-ref]
 * [Centrum IoT REST][lnk-rest-ref]

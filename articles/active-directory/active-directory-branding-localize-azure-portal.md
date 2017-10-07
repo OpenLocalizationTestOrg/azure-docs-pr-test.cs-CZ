@@ -1,6 +1,6 @@
 ---
-title: "Přidání konkrétní jazyk firemního brandingu na přihlašovací stránku ve službě Azure Active Directory | Microsoft Docs"
-description: "Informace o přidání určité společnosti jazyk branding obrázky a text na stránku Azure přihlášení"
+title: "aaaAdd konkrétní jazyk firemního brandingu tooyour přihlašovací stránky v hello Azure Active Directory | Microsoft Docs"
+description: "Zjistěte, jak tooadd konkrétní jazyk společnosti brandingu obrázky a text tooan Azure přihlášení stránky"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
-ms.openlocfilehash: e1fe8d855386ceec39edbc985538cdf32d78a13b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1e33c31abc242e8455290beb1f03760be7b9ac42
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-language-specific-company-branding-to-your-sign-in-page-in-the-azure-active-directory"></a>Přidání konkrétní jazyk firemního brandingu na přihlašovací stránku ve službě Azure Active Directory
-Mnoho společností chce předcházet zmatení uživatele a upřednostňuje jednotný vzhled všech webů a služeb, které spravují. Tato funkce poskytuje Azure Active Directory tím, že se můžete přizpůsobit vzhled stránky přihlášení s svoje firemní logo a vlastní barevná schémata. Přihlašovací stránka je stránka, která se zobrazí při přihlášení k Office 365 nebo jiné webové aplikace, které používají Azure AD jako zprostředkovatele identity. Budete používat tuto stránku k zadání pověření.
+# <a name="add-language-specific-company-branding-tooyour-sign-in-page-in-hello-azure-active-directory"></a>Přidání konkrétní jazyk firemního brandingu tooyour přihlašovací stránky v hello Azure Active Directory
+tooavoid nedorozuměním mnoho společností má tooapply konzistentní vzhled a chování ve všech hello webů a služeb, které spravují. Tato funkce poskytuje Azure Active Directory tak, že umožní toocustomize hello vzhled hello přihlašovací stránka s svoje firemní logo a vlastní barevná schémata. přihlašovací stránku Hello je hello stránka, která se zobrazí při přihlášení tooOffice 365 nebo jiné webové aplikace, které používají Azure AD jako zprostředkovatele identity. Budete používat tuto stránku tooenter přihlašovacích údajů.
 
-## <a name="customizing-the-sign-in-page-for-another-language"></a>Přizpůsobení přihlašovací stránky pro jiný jazyk
-Elementy jazyka můžete přidat vlastní přihlašovací stránku pouze v případě, že jste již vytvořili vlastní stránku přihlášení, jak je popsáno v [přidání firemního brandingu na přihlašovací stránce](active-directory-branding-custom-signon-azure-portal.md). Jednu stránku přihlášení na adresář můžete nakonfigurovat výchozí sadu přizpůsobitelných prvků. Po dokončení konfigurace výchozí sadu elementů stránky, můžete nakonfigurovat další verze pro různá národní prostředí. Různé prvky mezi sebou můžete kombinovat. Například je může:
+## <a name="customizing-hello-sign-in-page-for-another-language"></a>Přizpůsobení hello přihlašovací stránky pro jiný jazyk
+Elementy jazyka tooyour vlastní přihlašovací stránky můžete přidat pouze v případě, že jste již vytvořili vlastní stránku přihlášení, jak je popsáno v [přidání firemního brandingu na přihlašovací stránce tooyour](active-directory-branding-custom-signon-azure-portal.md). Jednu stránku přihlášení na adresář můžete nakonfigurovat výchozí sadu přizpůsobitelných prvků. Po dokončení konfigurace hello výchozí sadu elementů stránky, můžete nakonfigurovat další verze pro různá národní prostředí. Různé prvky mezi sebou můžete kombinovat. Například je může:
 
-* Vytvoří výchozí **přihlašovací stránky image** , platí pro všechny kultury, potom vytvořte specifické verze pro angličtinu a francouzštinu. Když svoje prohlížeče nastavíte na jednu z těchto dvou jazyků, bitovou kopii pro specifický jazyk se zobrazí, když u všech ostatních jazyků se zobrazí výchozí obrázek.
+* Vytvoří výchozí **přihlašovací stránky image** , platí pro všechny kultury, potom vytvořte specifické verze pro angličtinu a francouzštinu. Při nastavení vašeho prohlížeče tooone z těchto dvou jazyků, hello konkrétní jazyk image se zobrazí, když u všech ostatních jazyků se zobrazí výchozí obrázek hello.
 * Nakonfigurujte různá loga vaší organizace (třeba verze pro japonštinu nebo hebrejštinu).
 
-Doporučujeme, aby byl počet variant jazyk nízké, údržby a lepšího výkonu.
+Doporučujeme, abyste hello počet variant jazyk nízké, údržby a lepšího výkonu.
 
-**Postup přidání firemního brandingu na adresáře:**
+**tooadd firemního brandingu tooyour adresář:**
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je globální správce adresáře.
-2. Vyberte **další služby**, zadejte **uživatelů a skupin** v textovém poli a potom vyberte **Enter**.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com) pomocí účtu, který je globálním správcem adresáře hello.
+2. Vyberte **další služby**, zadejte **uživatelů a skupin** v hello textového pole a pak vyberte **Enter**.
 
    ![Správa uživatelů otevírání](./media/active-directory-branding-localize-azure-portal/user-management.png)
-3. Na **uživatelů a skupin** vyberte **firemní branding**.
-4. Na **uživatelé a skupiny - firemní branding** okně, vyberte **přidat jazyk** příkaz.
+3. Na hello **uživatelů a skupin** vyberte **firemní branding**.
+4. Na hello **uživatelé a skupiny - firemní branding** okně, vyberte hello **přidat jazyk** příkaz.
 
     ![Přidání brandingu elementy jazyka](./media/active-directory-branding-localize-azure-portal/add-language.png)
-5. Upravte prvky, které chcete přizpůsobit. Všechny prvky jsou volitelné.
+5. Upravte prvky hello chcete toocustomize. Všechny prvky jsou volitelné.
 6. Klikněte na **Uložit**.
 
-Může trvat až jednu hodinu pro všechny změny, které jste udělali na přihlašovací stránku branding zobrazí.
+Může to trvat až hodinu tooan pro všechny změny provedené toohello přihlašovací stránka brandingu tooappear.
 
 ## <a name="next-steps"></a>Další kroky
-[Přidání firemního brandingu na přihlašovací stránce](active-directory-branding-custom-signon-azure-portal.md)
+[Přidání firemního brandingu na přihlašovací stránce tooyour](active-directory-branding-custom-signon-azure-portal.md)

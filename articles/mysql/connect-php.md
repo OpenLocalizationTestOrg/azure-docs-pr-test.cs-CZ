@@ -1,6 +1,6 @@
 ---
-title: "Připojení k Azure Database for MySQL z PHP | Dokumentace Microsoftu"
-description: "V tomto rychlém startu najdete vzorový kód PHP, který můžete použít k připojení a dotazování dat z databáze Azure Database for MySQL."
+title: "Připojit tooAzure databáze pro databázi MySQL z PHP | Microsoft Docs"
+description: "Tento rychlý start poskytuje několik ukázky kódu PHP můžete použít tooconnect a zadávat dotazy na data z databáze Azure pro databázi MySQL."
 services: mysql
 author: mswutao
 ms.author: wuta
@@ -10,17 +10,17 @@ ms.service: mysql-database
 ms.custom: mvc
 ms.topic: hero-article
 ms.date: 07/12/2017
-ms.openlocfilehash: 59da1ab9e76685d7ed0c4415ef99578c982e956c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b928748c473c1aef320ae2183f237b5b845e83f2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí PHP
-Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí aplikace v [PHP](http://php.net/manual/intro-whatis.php). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. V tomto článku se předpokládá, že máte zkušenosti s vývojem pomocí PHP, ale teprve začínáte pracovat se službou Azure Database for MySQL.
+# <a name="azure-database-for-mysql-use-php-tooconnect-and-query-data"></a>Azure databáze pro databázi MySQL: použití PHP data tooconnect a dotazů
+Tento rychlý start předvádí jak tooconnect tooan Azure databáze pro používání MySQL [PHP](http://php.net/manual/intro-whatis.php) aplikace. Zobrazuje jak toouse tooquery příkazy SQL, vložit, aktualizovat a odstranit data v databázi hello. Tento článek předpokládá, že jste obeznámeni s vývojem pomocí PHP, ale, že se nový tooworking s Azure Database pro databázi MySQL.
 
 ## <a name="prerequisites"></a>Požadavky
-Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
+Tento rychlý start využívá prostředky hello vytvořené v některém z těchto průvodcích se dozvíte jako výchozí bod:
 - [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
@@ -29,32 +29,32 @@ Nainstalujte PHP na vlastní server nebo vytvořte [webovou aplikaci](https://do
 
 ### <a name="macos"></a>MacOS
 - Stáhněte [verzi PHP 7.1.4](http://php.net/downloads.php).
-- Nainstalujte PHP a další konfiguraci vyhledejte v [příručce k PHP](http://php.net/manual/install.macosx.php).
+- Instalace PHP a odkazovat toohello [PHP ručně](http://php.net/manual/install.macosx.php) pro další konfiguraci.
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 - Stáhněte [verzi PHP 7.1.4 Non-Thread Safe (x64)](http://php.net/downloads.php).
-- Nainstalujte PHP a další konfiguraci vyhledejte v [příručce k PHP](http://php.net/manual/install.unix.php).
+- Instalace PHP a odkazovat toohello [PHP ručně](http://php.net/manual/install.unix.php) pro další konfiguraci.
 
 ### <a name="windows"></a>Windows
 - Stáhněte [verzi PHP 7.1.4 Non-Thread Safe (x64)](http://windows.php.net/download#php-7.1).
-- Nainstalujte PHP a další konfiguraci vyhledejte v [příručce k PHP](http://php.net/manual/install.windows.php).
+- Instalace PHP a odkazovat toohello [PHP ručně](http://php.net/manual/install.windows.php) pro další konfiguraci.
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
-Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
+Získáte hello připojení informace potřebné tooconnect toohello Azure Database pro databázi MySQL. Musíte hello serveru plně kvalifikovaný název a přihlašovací údaje.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
-2. V levém podokně klikněte na **Všechny prostředky** a potom vyhledejte server, který jste vytvořili (například **myserver4demo**).
-3. Klikněte na název serveru.
-4. Vyberte stránku **Vlastnosti** serveru. Poznamenejte si **Název serveru** a **Přihlašovací jméno správce serveru**.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
+2. V levém podokně hello, klikněte na **všechny prostředky**a poté vyhledejte hello serveru, které jste vytvořili (například **myserver4demo**).
+3. Klikněte na název serveru hello.
+4. Vyberte hello serveru **vlastnosti** stránky. Poznamenejte si hello **název serveru** a **přihlašovací jméno pro Server správce**.
  ![Název serveru Azure Database for MySQL](./media/connect-php/1_server-properties-name-login.png)
-5. Pokud zapomenete přihlašovací údaje pro váš server, přejděte na stránku **Přehled**, kde můžete zobrazit přihlašovací jméno správce serveru a v případě potřeby obnovit heslo.
+5. Pokud zapomenete vaše přihlašovací údaje serveru, přejděte toohello **přehled** stránka tooview hello serveru správce přihlašovací jméno a v případě potřeby obnovit heslo hello.
 
 ## <a name="connect-and-create-a-table"></a>Připojení a vytvoření tabulky
-Pomocí následujícího kódu se připojte a vytvořte tabulku s využitím příkazu **CREATE TABLE** jazyka SQL. 
+Použití hello následující kód tooconnect a vytvořte tabulku pomocí **CREATE TABLE** příkaz jazyka SQL. 
 
-Tento kód využívá třídu **rozšíření MySQL Improved** (mysqli), která je zahrnutá v PHP. Kód volá metody [mysqli_init](http://php.net/manual/mysqli.init.php) a [mysqli_real_connect](http://php.net/manual/mysqli.real-connect.php) pro připojení k MySQL. Potom volá metodu [mysqli_query](http://php.net/manual/mysqli.query.php) pro spuštění dotazu. Potom volá metodu [mysqli_close](http://php.net/manual/mysqli.close.php) pro ukončení připojení.
+Kód Hello používá hello **MySQL Vylepšené rozšíření** (mysqli) třídy zahrnuty v jazyce PHP. Hello kód volání metody [mysqli_init](http://php.net/manual/mysqli.init.php) a [mysqli_real_connect](http://php.net/manual/mysqli.real-connect.php) tooconnect tooMySQL. Potom zavolá metodu [mysqli_query](http://php.net/manual/mysqli.query.php) toorun hello dotazu. Potom zavolá metodu [mysqli_close](http://php.net/manual/mysqli.close.php) tooclose hello připojení.
 
-Parametry host (hostitel), username (uživatelské jméno), password (heslo) a db_name (název databáze) nahraďte vlastními hodnotami. 
+Parametry hostitele, uživatelské jméno, heslo a %{db_name/ hello nahraďte vlastními hodnotami. 
 
 ```php
 <?php
@@ -63,14 +63,14 @@ $username = 'myadmin@myserver4demo';
 $password = 'your_password';
 $db_name = 'your_database';
 
-//Establishes the connection
+//Establishes hello connection
 $conn = mysqli_init();
 mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
 if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
+die('Failed tooconnect tooMySQL: '.mysqli_connect_error());
 }
 
-// Run the create table query
+// Run hello create table query
 if (mysqli_query($conn, '
 CREATE TABLE Products (
 `Id` INT NOT NULL AUTO_INCREMENT ,
@@ -83,17 +83,17 @@ PRIMARY KEY (`Id`)
 printf("Table created\n");
 }
 
-//Close the connection
+//Close hello connection
 mysqli_close($conn);
 ?>
 ```
 
 ## <a name="insert-data"></a>Vložení dat
-Pomocí následujícího kódu se připojte a vložte data s využitím příkazu **SELECT** jazyka SQL.
+Použití hello následující kód tooconnect a vkládání dat pomocí **vložit** příkaz jazyka SQL.
 
-Tento kód využívá třídu **rozšíření MySQL Improved** (mysqli), která je zahrnutá v PHP. Kód využívá metodu [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) k vytvoření připraveného příkazu Insert a potom vytvoří vazbu parametrů pro každou vloženou hodnotu sloupce pomocí metody [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php). Kód spustí tento příkaz pomocí metody [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) a potom tento příkaz zavře pomocí metody [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php).
+Kód Hello používá hello **MySQL Vylepšené rozšíření** (mysqli) třídy zahrnuty v jazyce PHP. Hello kód používá metodu [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) toocreate připravené vložte příkaz a potom hello vazby parametrů pro každou hodnotu vloženého sloupce pomocí metody [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php). Spustí kód Hello hello příkaz pomocí metody [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) a později zavře hello příkaz pomocí metody [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php).
 
-Parametry host (hostitel), username (uživatelské jméno), password (heslo) a db_name (název databáze) nahraďte vlastními hodnotami. 
+Parametry hostitele, uživatelské jméno, heslo a %{db_name/ hello nahraďte vlastními hodnotami. 
 
 ```php
 <?php
@@ -102,11 +102,11 @@ $username = 'myadmin@myserver4demo';
 $password = 'your_password';
 $db_name = 'your_database';
 
-//Establishes the connection
+//Establishes hello connection
 $conn = mysqli_init();
 mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
 if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
+die('Failed tooconnect tooMySQL: '.mysqli_connect_error());
 }
 
 //Create an Insert prepared statement and run it
@@ -120,15 +120,15 @@ printf("Insert: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
 mysqli_stmt_close($stmt);
 }
 
-// Close the connection
+// Close hello connection
 mysqli_close($conn);
 ?>
 ```
 
 ## <a name="read-data"></a>Čtení dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **SELECT** jazyka SQL.  Tento kód využívá třídu **rozšíření MySQL Improved** (mysqli), která je zahrnutá v PHP. Kód používá metodu [mysqli_query](http://php.net/manual/mysqli.query.php) k provedení dotazu sql query a metodu [mysqli_fetch_assoc](http://php.net/manual/mysqli-result.fetch-assoc.php) k načtení výsledných řádků.
+Použití hello následující kód tooconnect a čtení dat pomocí hello **vyberte** příkaz jazyka SQL.  Kód Hello používá hello **MySQL Vylepšené rozšíření** (mysqli) třídy zahrnuty v jazyce PHP. Hello kód používá metodu [mysqli_query](http://php.net/manual/mysqli.query.php) provádění dotazu sql hello a používá [mysqli_fetch_assoc](http://php.net/manual/mysqli-result.fetch-assoc.php) toofetch metoda hello výsledné řádky.
 
-Parametry host (hostitel), username (uživatelské jméno), password (heslo) a db_name (název databáze) nahraďte vlastními hodnotami. 
+Parametry hostitele, uživatelské jméno, heslo a %{db_name/ hello nahraďte vlastními hodnotami. 
 
 ```php
 <?php
@@ -137,31 +137,31 @@ $username = 'myadmin@myserver4demo';
 $password = 'your_password';
 $db_name = 'your_database';
 
-//Establishes the connection
+//Establishes hello connection
 $conn = mysqli_init();
 mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
 if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
+die('Failed tooconnect tooMySQL: '.mysqli_connect_error());
 }
 
-//Run the Select query
+//Run hello Select query
 printf("Reading data from table: \n");
 $res = mysqli_query($conn, 'SELECT * FROM Products');
 while ($row = mysqli_fetch_assoc($res)) {
 var_dump($row);
 }
 
-//Close the connection
+//Close hello connection
 mysqli_close($conn);
 ?>
 ```
 
 ## <a name="update-data"></a>Aktualizace dat
-Pomocí následujícího kódu se připojte a aktualizujte data s využitím příkazu **UPDATE** jazyka SQL.
+Použití hello následující kód tooconnect a aktualizovat data pomocí hello **aktualizace** příkaz jazyka SQL.
 
-Tento kód využívá třídu **rozšíření MySQL Improved** (mysqli), která je zahrnutá v PHP. Kód využívá metodu [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) k vytvoření připraveného příkazu Update a potom vytvoří vazbu parametrů pro každou aktualizovanou hodnotu sloupce pomocí metody [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php). Kód spustí tento příkaz pomocí metody [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) a potom tento příkaz zavře pomocí metody [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php).
+Kód Hello používá hello **MySQL Vylepšené rozšíření** (mysqli) třídy zahrnuty v jazyce PHP. Hello kód používá metodu [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) toocreate výpis připravené aktualizace, pak váže hello parametry pro každou hodnotu aktualizované sloupce pomocí metody [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php). Spustí kód Hello hello příkaz pomocí metody [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) a později zavře hello příkaz pomocí metody [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php).
 
-Parametry host (hostitel), username (uživatelské jméno), password (heslo) a db_name (název databáze) nahraďte vlastními hodnotami. 
+Parametry hostitele, uživatelské jméno, heslo a %{db_name/ hello nahraďte vlastními hodnotami. 
 
 ```php
 <?php
@@ -170,14 +170,14 @@ $username = 'myadmin@myserver4demo';
 $password = 'your_password';
 $db_name = 'your_database';
 
-//Establishes the connection
+//Establishes hello connection
 $conn = mysqli_init();
 mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
 if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
+die('Failed tooconnect tooMySQL: '.mysqli_connect_error());
 }
 
-//Run the Update statement
+//Run hello Update statement
 $product_name = 'BrandNewProduct';
 $new_product_price = 15.1;
 if ($stmt = mysqli_prepare($conn, "UPDATE Products SET Price = ? WHERE ProductName = ?")) {
@@ -185,7 +185,7 @@ mysqli_stmt_bind_param($stmt, 'ds', $new_product_price, $product_name);
 mysqli_stmt_execute($stmt);
 printf("Update: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
 
-//Close the connection
+//Close hello connection
 mysqli_stmt_close($stmt);
 }
 
@@ -195,11 +195,11 @@ mysqli_close($conn);
 
 
 ## <a name="delete-data"></a>Odstranění dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **DELETE** jazyka SQL. 
+Použití hello následující kód tooconnect a čtení dat pomocí hello **odstranit** příkaz jazyka SQL. 
 
-Tento kód využívá třídu **rozšíření MySQL Improved** (mysqli), která je zahrnutá v PHP. Kód využívá metodu [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) k vytvoření připraveného příkazu Delete a potom vytvoří vazbu parametrů pro klauzuli Where v tomto příkazu pomocí metody [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php). Kód spustí tento příkaz pomocí metody [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) a potom tento příkaz zavře pomocí metody [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php).
+Kód Hello používá hello **MySQL Vylepšené rozšíření** (mysqli) třídy zahrnuty v jazyce PHP. Hello kód používá metodu [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) toocreate připravený příkaz delete a potom hello vazby parametrů pro hello kde klauzule v příkazu hello pomocí metody [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php). Spustí kód Hello hello příkaz pomocí metody [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) a později zavře hello příkaz pomocí metody [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php).
 
-Parametry host (hostitel), username (uživatelské jméno), password (heslo) a db_name (název databáze) nahraďte vlastními hodnotami. 
+Parametry hostitele, uživatelské jméno, heslo a %{db_name/ hello nahraďte vlastními hodnotami. 
 
 ```php
 <?php
@@ -208,14 +208,14 @@ $username = 'myadmin@myserver4demo';
 $password = 'your_password';
 $db_name = 'your_database';
 
-//Establishes the connection
+//Establishes hello connection
 $conn = mysqli_init();
 mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
 if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
+die('Failed tooconnect tooMySQL: '.mysqli_connect_error());
 }
 
-//Run the Delete statement
+//Run hello Delete statement
 $product_name = 'BrandNewProduct';
 if ($stmt = mysqli_prepare($conn, "DELETE FROM Products WHERE ProductName = ?")) {
 mysqli_stmt_bind_param($stmt, 's', $product_name);
@@ -224,7 +224,7 @@ printf("Delete: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
 mysqli_stmt_close($stmt);
 }
 
-//Close the connection
+//Close hello connection
 mysqli_close($conn);
 ?>
 ```

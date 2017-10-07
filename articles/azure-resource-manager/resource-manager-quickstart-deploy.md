@@ -1,6 +1,6 @@
 ---
-title: "Nasazení prostředků do Azure | Dokumentace Microsoftu"
-description: "Nasazení prostředků do Azure pomocí Azure PowerShellu nebo Azure CLI. Prostředky jsou definovány v šabloně Resource Manageru."
+title: "aaaDeploy prostředky tooAzure | Microsoft Docs"
+description: "Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure tooAzure toodeploy prostředky. Hello prostředky jsou definovány v šabloně Resource Manager."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/16/2017
 ms.author: tomfitz
-ms.openlocfilehash: 19d5ec337a18b1a159de05ed611b2ccd0c15c592
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0cd3f8ad45af1fb85c78899b56f6807d00b859f5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-resources-to-azure"></a>Nasazení prostředků do Azure
+# <a name="deploy-resources-tooazure"></a>Nasazení tooAzure prostředky
 
-Toto téma ukazuje, jak nasadit prostředky do předplatného Azure. K nasazení šablony Resource Manageru, která definuje infrastrukturu řešení, můžete použít Azure PowerShell nebo Azure CLI.
+Toto téma ukazuje, jak tooyour toodeploy prostředky předplatného Azure. Můžete vytvořit prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure toodeploy šablony Resource Manageru, která definuje hello infrastrukturu pro vaše řešení.
 
-Úvod ke konceptům Resource Manageru najdete v tématu [Přehled Azure Resource Manageru](resource-group-overview.md).
+Tooconcepts Úvod Resource Manager, najdete v části [přehled Azure Resource Manageru](resource-group-overview.md).
 
 ## <a name="steps-for-deployment"></a>Postup nasazení
 
-Toto téma předpokládá, že nasazujete [ukázkovou šablonu úložiště](#example-storage-template) z tohoto tématu. Můžete použít jinou šablonu, ale předávané parametry budou jiné než v tomto tématu.
+Toto téma předpokládá, že nasazujete hello [příklad úložiště šablony](#example-storage-template) v tomto tématu. Můžete použít jinou šablonu, ale hello parametry, které předat jsou jiné než je uvedeno v tomto tématu.
 
-Po vytvoření šablony je obecný postup nasazení šablony následující:
+Po vytvoření šablony, hello obecné kroky pro nasazení šablony jsou:
 
-1. Přihlášení k účtu
-2. Výběr předplatného, které chcete použít (nutné pouze v případě, že máte více předplatných a chcete použít jiné než výchozí)
+1. Přihlaste se tooyour účtu
+2. Vyberte toouse předplatné hello (jenom nezbytné Pokud máte více předplatných a chcete toouse, ten, který není hello výchozí předplatné)
 3. Vytvoření skupiny prostředků
-4. Nasazení šablony
+4. Nasazení šablony hello
 5. Kontrola stavu nasazení
 
-Následující části ukazují provedení těchto kroků pomocí [PowerShellu](#powershell) nebo [Azure CLI](#azure-cli).
+Hello následující části vysvětlují, jak tooperform ty kroky s [prostředí PowerShell](#powershell) nebo [rozhraní příkazového řádku Azure](#azure-cli).
 
 ## <a name="powershell"></a>PowerShell
 
-1. Informace o instalaci Azure PowerShellu najdete v tématu [Začínáme s rutinami Azure PowerShellu](/powershell/azure/overview).
+1. tooinstall prostředí Azure PowerShell najdete v části [Začínáme pomocí rutin prostředí Azure PowerShell](/powershell/azure/overview).
 
-2. Pokud chcete rychle začít s nasazením, použijte následující rutiny:
+2. tooquickly Začínáme s nasazováním, použijte hello následující rutiny:
 
   ```powershell
   Login-AzureRmAccount
@@ -54,13 +54,13 @@ Následující části ukazují provedení těchto kroků pomocí [PowerShellu](
   New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleGroup -TemplateFile c:\MyTemplates\azuredeploy.json 
   ```
 
-  Rutina `Set-AzureRmContext` je potřeba pouze v případě, že chcete použít jiné předplatné, než je vaše výchozí. Pokud chcete zobrazit všechna předplatná a jejich ID, použijte:
+  Hello `Set-AzureRmContext` rutiny je potřeba jenom, pokud chcete toouse předplatné než výchozí předplatné. toosee všechny odběry a jejich ID, použijte:
 
   ```powershell
   Get-AzureRmSubscription
   ```
 
-3. Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zpráva podobná této:
+3. Hello nasazení může trvat několik minut toocomplete. Po dokončení se zobrazí zpráva podobná této:
 
   ```powershell
   DeploymentName          : ExampleDeployment
@@ -70,14 +70,14 @@ Následující části ukazují provedení těchto kroků pomocí [PowerShellu](
   ...
   ```
 
-4. Pokud chcete ověřit nasazení skupiny prostředků a účtu úložiště do předplatného, použijte:
+4. toosee, které byly účtu skupiny a úložiště prostředků nasadit tooyour předplatného, použijte:
 
   ```powershell
   Get-AzureRmResourceGroup -Name ExampleGroup
   Find-AzureRmResource -ResourceGroupNameEquals ExampleGroup
   ```
 
-5. Při nasazování šablony můžete zadat parametry šablony jako parametry PowerShellu. Předchozí příklad nezahrnoval žádné parametry šablony, takže se použily výchozí hodnoty z šablony. Pokud chcete nasadit další účet úložiště a zadat hodnoty parametrů pro předponu názvu úložiště a skladovou položku úložiště, použijte:
+5. Při nasazování šablony můžete zadat parametry šablony jako parametry PowerShellu. Hello předchozího příkladu neobsahuje žádné parametry šablony, aby byly použity výchozí hodnoty hello v šabloně hello. toodeploy úložiště jiný účet a zadejte hodnoty parametrů pro předponu názvu hello úložiště a účet úložiště hello SKU, použijte:
 
   ```powershell
   New-AzureRmResourceGroupDeployment -Name ExampleDeployment2 -ResourceGroupName ExampleGroup -TemplateFile c:\MyTemplates\azuredeploy.json -storageNamePrefix "contoso" -storageSKU "Standard_GRS"
@@ -87,9 +87,9 @@ Následující části ukazují provedení těchto kroků pomocí [PowerShellu](
 
 ## <a name="azure-cli"></a>Azure CLI
 
-1. Informace o instalaci Azure CLI najdete v tématu [Instalace Azure CLI 2.0](/cli/azure/install-az-cli2).
+1. tooinstall příkazového řádku Azure CLI, najdete v části [nainstalovat Azure CLI 2.0](/cli/azure/install-az-cli2).
 
-2. Pokud chcete rychle začít s nasazením, použijte následující příkazy:
+2. tooquickly Začínáme s nasazováním, použijte hello následující příkazy:
 
   ```azurecli
   az login
@@ -99,26 +99,26 @@ Následující části ukazují provedení těchto kroků pomocí [PowerShellu](
   az group deployment create --name ExampleDeployment --resource-group ExampleGroup --template-file c:\MyTemplates\azuredeploy.json
   ```
 
-  Příkaz `az account set` je potřeba pouze v případě, že chcete použít jiné předplatné, než je vaše výchozí. Pokud chcete zobrazit všechna předplatná a jejich ID, použijte:
+  Hello `az account set` příkaz je nutný pouze v případě, že chcete toouse předplatné než výchozí předplatné. toosee všechny odběry a jejich ID, použijte:
 
   ```azurecli
   az account list
   ```
 
-3. Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zpráva podobná této:
+3. Hello nasazení může trvat několik minut toocomplete. Po dokončení se zobrazí zpráva podobná této:
 
   ```azurecli
   "provisioningState": "Succeeded",
   ```
 
-4. Pokud chcete ověřit nasazení skupiny prostředků a účtu úložiště do předplatného, použijte:
+4. toosee, které byly účtu skupiny a úložiště prostředků nasadit tooyour předplatného, použijte:
 
   ```azurecli
   az group show --name ExampleGroup
   az resource list --resource-group ExampleGroup
   ```
 
-5. Při nasazování šablony můžete zadat parametry šablony jako parametry PowerShellu. Předchozí příklad nezahrnoval žádné parametry šablony, takže se použily výchozí hodnoty z šablony. Pokud chcete nasadit další účet úložiště a zadat hodnoty parametrů pro předponu názvu úložiště a skladovou položku úložiště, použijte:
+5. Při nasazování šablony můžete zadat parametry šablony jako parametry PowerShellu. Hello předchozího příkladu neobsahuje žádné parametry šablony, aby byly použity výchozí hodnoty hello v šabloně hello. toodeploy úložiště jiný účet a zadejte hodnoty parametrů pro předponu názvu hello úložiště a účet úložiště hello SKU, použijte:
 
   ```azurecli
   az group deployment create --name ExampleDeployment2 --resource-group ExampleGroup --template-file c:\MyTemplates\azuredeploy.json --parameters '{"storageNamePrefix":{"value":"contoso"},"storageSKU":{"value":"Standard_GRS"}}'
@@ -128,7 +128,7 @@ Následující části ukazují provedení těchto kroků pomocí [PowerShellu](
 
 ## <a name="example-storage-template"></a>Příklad šablony úložiště
 
-Následující příklad šablony můžete použít k nasazení účtu úložiště do předplatného:
+Použijte následující příklad šablony toodeploy tooyour předplatné účtu úložiště hello:
 
 ```json
 {
@@ -140,7 +140,7 @@ Následující příklad šablony můžete použít k nasazení účtu úložiš
       "maxLength": 11,
       "defaultValue": "storage",
       "metadata": {
-        "description": "The value to use for starting the storage account name."
+        "description": "hello value toouse for starting hello storage account name."
       }
     },
     "storageSKU": {
@@ -154,7 +154,7 @@ Následující příklad šablony můžete použít k nasazení účtu úložiš
       ],
       "defaultValue": "Standard_LRS",
       "metadata": {
-        "description": "The type of replication to use for the storage account."
+        "description": "hello type of replication toouse for hello storage account."
       }
     }
   },
@@ -182,8 +182,8 @@ Následující příklad šablony můžete použít k nasazení účtu úložiš
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podrobné informace o použití PowerShellu k nasazení šablon najdete v tématu [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](/azure/azure-resource-manager/resource-group-template-deploy).
-* Podrobné informace o použití Azure CLI k nasazení šablon najdete v tématu [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](/azure/azure-resource-manager/resource-group-template-deploy-cli).
+* Podrobné informace o používání prostředí PowerShell toodeploy šablony najdete v tématu [nasazení prostředků pomocí šablony Resource Manageru a prostředí Azure PowerShell](/azure/azure-resource-manager/resource-group-template-deploy).
+* Podrobné informace o používání rozhraní příkazového řádku Azure toodeploy šablony najdete v tématu [nasazení prostředků pomocí šablony Resource Manageru a rozhraní příkazového řádku Azure](/azure/azure-resource-manager/resource-group-template-deploy-cli).
 
 
 

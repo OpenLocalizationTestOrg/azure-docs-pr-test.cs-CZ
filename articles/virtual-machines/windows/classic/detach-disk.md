@@ -1,6 +1,6 @@
 ---
-title: "Odpojit disk z virtuálního počítače Windows | Microsoft Docs"
-description: "Naučte se odpojit disk z virtuálního počítače v Azure pomocí modelu nasazení classic."
+title: "aaaDetach disk z virtuálního počítače Windows | Microsoft Docs"
+description: "Přečtěte si toodetach disk z virtuálního počítače v Azure pomocí modelu nasazení classic hello."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: cynthn
-ms.openlocfilehash: 650c7e10150b95a6ad7cd455746f7c1d77b9b34c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 6f4fda46b13ec83aed6051dd3c6459a9979de131
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-detach-a-disk-from-a-windows-virtual-machine"></a>Jak odpojit disk od virtuálního počítače s Windows
+# <a name="how-toodetach-a-disk-from-a-windows-virtual-machine"></a>Jak toodetach disk z virtuálního počítače s Windows
 > [!IMPORTANT]
-> Azure má dva modely odlišné nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Informace o tom, jak odpojit disk pomocí modelu Resource Manager najdete v tématu [zde](../../virtual-machines-windows-detach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Azure má dva modely odlišné nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic hello. Společnost Microsoft doporučuje, aby většina nových nasazení používala model Resource Manager hello. Informace o tom, jak hello toodetach disku pomocí Správce prostředků modelu najdete v tématu [zde](../../virtual-machines-windows-detach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [howto-detach-disk-windows-linux](../../../../includes/howto-detach-disk-windows-linux.md)]
 
 ## <a name="additional-resources"></a>Další zdroje
 [O disky a virtuální pevné disky pro virtuální počítače](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[Tom, jak připojit datový disk do virtuálního počítače s Windows](attach-disk.md)
+[Jak tooattach datový disk virtuálního počítače Windows tooa](attach-disk.md)

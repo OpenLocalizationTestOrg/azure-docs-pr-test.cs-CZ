@@ -1,5 +1,5 @@
 ---
-title: "Obory názvů spárovat Azure Service Bus | Microsoft Docs"
+title: "obory názvů spárovat aaaAzure Service Bus | Microsoft Docs"
 description: "Podrobnosti implementace spárované obor názvů a náklady"
 services: service-bus-messaging
 documentationcenter: na
@@ -14,44 +14,44 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: sethm
-ms.openlocfilehash: a200ea7937b9f5296c743928a9408897adfba428
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4c44b2b95d2228e1ad8075b52634d88a1593d3b1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="paired-namespace-implementation-details-and-cost-implications"></a>Spárovat podrobnosti implementace obor názvů a náklady dopad
-[PairNamespaceAsync] [ PairNamespaceAsync] metoda, použití [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] instance, provádí viditelné úlohy vaším jménem. Vzhledem k tomu, že jsou náklady aspekty při použití funkce, je vhodné pochopit tyto úlohy tak, aby očekávané chování při Odehrává se. Rozhraní API zapojí následující automatické chování vaším jménem:
+Hello [PairNamespaceAsync] [ PairNamespaceAsync] metoda, použití [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] instance, provádí viditelné úlohy vaším jménem. Vzhledem k tomu, že jsou náklady aspekty při použití funkce hello, je užitečné toounderstand ty úlohy, aby očekáváte hello chování při Odehrává se. Hello API zapojí hello následující automatické chování vaším jménem:
 
 * Vytvoření nevyřízených položek fronty.
-* Vytvoření [MessageSender] [ MessageSender] objekt, který komunikuje se fronty nebo témata.
-* Při zasílání zpráv entity stane nedostupným, odešle příkaz ping zprávy do entity ve snaze rozpoznat, kdy se dané entity opět k dispozici.
-* Volitelně vytváří sadu "čerpadel zpráva", přesunovat zprávy z fronty nevyřízených položek do primární front.
-* Koordinuje ukončovací nebo chybující primárních a sekundárních [MessagingFactory] [ MessagingFactory] instance.
+* Vytvoření [MessageSender] [ MessageSender] objekt, který komunikuje tooqueues nebo témata.
+* Když entity přenosu zpráv stane nedostupným, odešle zprávy ping toohello entity v pokusu o toodetect při dané entity opět k dispozici.
+* Volitelně vytvoří sadu "čerpadel zpráva", přesuňte zprávy z hello nevyřízené položky fronty toohello primární fronty.
+* Koordinuje ukončovací nebo chybující Dobrý den, primární a sekundární [MessagingFactory] [ MessagingFactory] instance.
 
-Na vysoké úrovni, tato funkce funguje takto: když primární entita je v pořádku, dojít k žádným změnám chování. Když [FailoverInterval] [ FailoverInterval] po uplynutí předem doba trvání a ne úspěšné primární entity vidí pošle za jiný přechodná [MessagingException] [ MessagingException] nebo [TimeoutException][TimeoutException], očekávejte toto chování:
+Na vysoké úrovni, hello funkce funguje takto: primární entita hello je v pořádku, dojde k žádné změny chování. Když hello [FailoverInterval] [ FailoverInterval] po uplynutí předem doba trvání, a žádné úspěšné zasílá hello primární entity se zobrazí po bez pouze dočasné [MessagingException] [ MessagingException] nebo [TimeoutException][TimeoutException], dojde k hello následující chování:
 
-1. Odešlete na primární entity operací jsou zakázány a systém pomocí příkazu ping primární entity dokud příkazy ping mohou být zajišťovány úspěšně.
+1. Odešlete operations toohello primární entity jsou zakázány a příkazy ping systému hello hello primární entity, dokud příkazy ping mohou být zajišťovány úspěšně.
 2. Je vybrán náhodných nevyřízené položky fronty.
-3. [BrokeredMessage] [ BrokeredMessage] objekty jsou směrovány do fronty zvolené nevyřízených položek.
-4. Pokud se nezdaří operaci odeslání do zvolené nevyřízené položky fronty, této fronty pocházejí z otáčení a je vybraná novou frontu. Na všech uživatelů [MessagingFactory] [ MessagingFactory] instance Další informace o selhání.
+3. [BrokeredMessage] [ BrokeredMessage] objekty jsou směrované toohello vybrali nevyřízené položky fronty.
+4. Pokud se nezdaří toohello operaci odeslání vybrali nevyřízené položky fronty, této fronty pocházejí z hello otočení a je vybraná novou frontu. Všech uživatelů na hello [MessagingFactory] [ MessagingFactory] další instance hello selhání.
 
-Následující obrázky zobrazit v ní sekvenci. Nejprve odesílatel odešle zprávy.
+Následující obrázky Hello zobrazit v ní hello pořadí. Nejprve hello odesílatel odešle zprávy.
 
 ![Spárované obory názvů][0]
 
-Při selhání k odeslání do primární fronty začne odesílatel odesílání zpráv do fronty náhodně vybrané nevyřízených položek. Současně spustí úlohu příkazu ping.
+Při selhání toosend toohello primární fronty začne odesílatel hello odesílání zpráv tooa náhodně vybrali nevyřízené položky fronty. Současně spustí úlohu příkazu ping.
 
 ![Spárované obory názvů][1]
 
-V tomto okamžiku zprávy jsou stále v sekundární fronty a nebyly dodány do primární fronty. Jakmile primární fronta je v pořádku znovu, by měl běžet Trativod alespoň jeden proces. Trativod přináší zprávy ze všech různých front nevyřízených položek správné cílové entity (fronty a témata).
+V tomto okamžiku hello zprávy jsou stále v hello sekundární fronty a nebyly dodány toohello primární fronty. Jakmile hello primární fronta je v pořádku znovu, by měl běžet hello Trativod alespoň jeden proces. Hello Trativod přináší hello zprávy ze všech hello různé nevyřízených položek fronty toohello správné cílové entity (fronty a témata).
 
 ![Spárované obory názvů][2]
 
-Zbývající část tohoto tématu popisuje konkrétní podrobnosti o fungování tyto údaje.
+Hello zbývající část tohoto tématu popisuje hello konkrétní podrobnosti o fungování tyto údaje.
 
 ## <a name="creation-of-backlog-queues"></a>Vytvoření nevyřízených položek fronty
-[SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] byl předán objekt [PairNamespaceAsync] [ PairNamespaceAsync] metoda označuje počet nevyřízených položek fronty, kterou chcete použít. Každou frontu nevyřízených položek je pak vytvořen s následujícími vlastnostmi explicitně nastavit (všechny ostatní hodnoty jsou nastaveny na [QueueDescription] [ QueueDescription] výchozí nastavení):
+Hello [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] objekt předaný toohello [PairNamespaceAsync] [ PairNamespaceAsync] metoda označuje hello počet nevyřízených položek fronty, které chcete toouse. Každou frontu nevyřízených položek se potom vytvoří s hello následující vlastnosti explicitně nastavit (všechny ostatní hodnoty jsou nastaveny toohello [QueueDescription] [ QueueDescription] výchozí nastavení):
 
 | Cesta | [primární obor názvů] / x-servicebus přenos / [index] kde [index] je hodnota [0, BacklogQueueCount) |
 | --- | --- |
@@ -63,15 +63,15 @@ Zbývající část tohoto tématu popisuje konkrétní podrobnosti o fungován�
 | EnableDeadLetteringOnMessageExpiration |Hodnota TRUE |
 | EnableBatchedOperations |Hodnota TRUE |
 
-Například vytvořit první nevyřízených položek fronty pro obor názvů **contoso** jmenuje `contoso/x-servicebus-transfer/0`.
+Například vytvořen hello první nevyřízených položek fronty pro obor názvů **contoso** jmenuje `contoso/x-servicebus-transfer/0`.
 
-Při vytváření front, kód nejprve zkontroluje, zda existuje takový fronty. Pokud fronta neexistuje, je vytvářena fronta. Kód nemá vyčištění "výběr" nevyřízené položky fronty. Konkrétně Pokud aplikace s primární obor názvů **contoso** požadavky pět nevyřízené položky fronty, ale nevyřízené položky fronty s cestou `contoso/x-servicebus-transfer/7` existuje, této navíc nevyřízené položky fronty stále existuje, ale nepoužívá. Systém umožňuje explicitně navíc nevyřízené položky fronty existovat, které nebyla použita. Jako vlastník obor názvů je zodpovědná za vyčištění žádné nepoužité nebo nežádoucí nevyřízené položky fronty. Z důvodu pro toto rozhodnutí je, že Service Bus nemůže vědět, jaké účely existovat pro všechny fronty, které jsou v oboru názvů. Kromě toho pokud existuje s daným názvem fronty, ale nesplňuje předpokládané [QueueDescription][QueueDescription], pak jsou vaše důvodů vlastní pro změnu výchozího chování. Žádné záruky probíhají změny nevyřízené položky fronty podle vašeho kódu. Ujistěte se, že jste důkladně otestovat změny.
+Při vytváření front hello, hello kód nejprve toosee ověří, zda existuje takový fronty. Pokud hello fronta neexistuje, je vytvářena fronta hello. Kód Hello nemá vyčištění "výběr" nevyřízené položky fronty. Konkrétně, pokud hello aplikace s hello primární obor názvů **contoso** požadavky pět nevyřízené položky fronty, ale nevyřízené položky fronty s cestou hello `contoso/x-servicebus-transfer/7` existuje, že navíc nevyřízené položky fronty stále přítomen, ale nepoužívá. systém Hello explicitně povolí tooexist navíc nevyřízené položky fronty, která nebyla použita. Jako vlastník hello obor názvů je zodpovědná za vyčištění žádné nepoužité nebo nežádoucí nevyřízené položky fronty. Hello důvod pro toto rozhodnutí je, že Service Bus nemůže vědět, jaké účely existovat pro všechny fronty hello v oboru názvů. Kromě toho pokud existuje se zadaným názvem hello fronty, ale nesplňuje hello předpokládá, že [QueueDescription][QueueDescription], pak jsou vaše důvody pro vlastní Změna výchozího chování hello. Žádné záruky jsou vytvářeny pro úpravy toohello nevyřízené položky fronty podle vašeho kódu. Ujistěte se, že tootest změny důkladně.
 
 ## <a name="custom-messagesender"></a>Vlastní MessageSender
-Při odesílání, všechny zprávy projít interní [MessageSender] [ MessageSender] objekt, který se chovat normálně když všechno funguje a přesměruje na nevyřízené položky fronty při věcí "break." Po přijetí selhání bez přechodná, spustí časovač. Po [časový interval] [ TimeSpan] období skládající se z [FailoverInterval] [ FailoverInterval] provozuje během které se odesílají žádné úspěšné zprávy, hodnota vlastnosti převzetí služeb při selhání. V tomto okamžiku následujících akcí dojít u každé entity:
+Při odesílání, všechny zprávy projít interní [MessageSender] [ MessageSender] objekt, který se chovat normálně když všechno funguje a přesměruje toohello nevyřízené položky fronty při věcí "break." Po přijetí selhání bez přechodná, spustí časovač. Po [časový interval] [ TimeSpan] období skládající se z hello [FailoverInterval] [ FailoverInterval] hodnotu vlastnosti, během které se odesílají žádné úspěšné zprávy , provozuje hello převzetí služeb při selhání. V tomto okamžiku hello následující umět poradit pro každou entitu:
 
-* Spustí úlohu ping každých [PingPrimaryInterval] [ PingPrimaryInterval] ke kontrole, pokud tato entita je k dispozici. Jakmile tato úloha úspěšná, všechny kód klienta, který používá entity okamžitě spustí, odesílání nových zpráv do primární oboru názvů.
-* Bude mít za následek budoucí požadavky na odeslání této stejné entity z jiní odesílatelé [BrokeredMessage] [ BrokeredMessage] odesílána upravit tak, aby nacházejí ve frontě nevyřízených položek. Úpravy odebere některé vlastnosti z [BrokeredMessage] [ BrokeredMessage] objektu a ukládá je jinde. Následující vlastnosti jsou vymazána a přidají pod nový alias, povolení služby Service Bus a sady SDK ke zpracování zpráv jednotně:
+* Spustí úlohu ping každých [PingPrimaryInterval] [ PingPrimaryInterval] toocheck Pokud hello entita je k dispozici. Jakmile tato úloha úspěšná, všechny klientský kód, který používá hello entitu okamžitě spustí, odeslání nové zprávy toohello primární oboru názvů.
+* Budoucí požadavky toosend toothat stejné entity z jiní odesílatelé bude mít za následek hello [BrokeredMessage] [ BrokeredMessage] odesílány toobe upravit toosit ve frontě hello nevyřízených položek. Změna Hello odebere hello některé vlastnosti [BrokeredMessage] [ BrokeredMessage] objektu a ukládá je jinde. Hello následující vlastnosti jsou vymazána a přidají pod nový alias, povolení služby Service Bus a hello SDK tooprocess zprávy jednotně:
 
 | Původní název vlastnosti | Nový název vlastnosti |
 | --- | --- |
@@ -79,23 +79,23 @@ Při odesílání, všechny zprávy projít interní [MessageSender] [ MessageSe
 | TimeToLive |x-ms-timetolive |
 | ScheduledEnqueueTimeUtc |x-ms-path |
 
-Původní cílovou cestu jsou také uložená v zprávu jako vlastnost s názvem x-ms-path. Tento návrh umožňuje zprávy pro mnoho entity k společně existovat v jednom nevyřízené položky fronty. Vlastnosti jsou přeložen zpět Trativod.
+původní cílovou cestu Hello je také uloženo ve zprávě hello jako vlastnost s názvem x-ms-path. Tento návrh umožňuje zprávy pro mnoho toocoexist entity v jedné nevyřízené položky fronty. Vlastnosti Hello přeložen zpět Trativod hello.
 
-Vlastní [MessageSender] [ MessageSender] objekt může dojít k potížím při zprávy přístupu limit 256 KB a využívána převzetí služeb při selhání. Vlastní [MessageSender] [ MessageSender] objekt ukládá zprávy pro všechny fronty a témata společně v nevyřízené položky fronty. Tento objekt zkombinuje zprávy z mnoha základní barvy společně v rámci nevyřízené položky fronty. Zpracovat Vyrovnávání zatížení mezi mnoho klientů, které mezi sebou neznáte, sadu SDK náhodně vybere jeden nevyřízených položek fronty pro každou [QueueClient] [ QueueClient] nebo [TopicClient] [ TopicClient] vytvoříte v kódu.
+Hello vlastní [MessageSender] [ MessageSender] objekt může dojít k potížím při zprávy přístupu limit 256 KB hello a využívána převzetí služeb při selhání. Hello vlastní [MessageSender] [ MessageSender] objekt ukládá zprávy pro všechny fronty a témata společně v hello nevyřízené položky fronty. Tento objekt zkombinuje zprávy z mnoha základní barvy společně v rámci hello nevyřízené položky fronty. toohandle Vyrovnávání zatížení mezi mnoho klientů, které neznáte každý jiných, hello SDK náhodně vybere jeden nevyřízených položek fronty pro každou [QueueClient] [ QueueClient] nebo [TopicClient] [ TopicClient] vytvoříte v kódu.
 
 ## <a name="pings"></a>Příkazy ping
-Zprávu ping je prázdná [BrokeredMessage] [ BrokeredMessage] s jeho [ContentType] [ ContentType] vlastnost nastavena na hodnotu aplikace/vnd.ms-servicebus-ping a [TimeToLive] [ TimeToLive] hodnota 1 sekunda. Tento příkaz ping má jeden speciální vlastnosti v Service Bus: serveru nikdy přináší příkazu ping, když si vyžádá všechny volající [BrokeredMessage][BrokeredMessage]. Proto není nutné zjistěte, jak přijmout a tyto zprávy ignorovat. Každá entita (jedinečný fronta nebo téma) za [MessagingFactory] [ MessagingFactory] instance pro každý klient bude příkazu ping zkontrolujte dosažitelnost při jsou považovány za nedostupný. Ve výchozím nastavení k tomu dojde jednou za minutu. Zprávy ping se považují za regulární zpráv Service Bus a může mít za následek poplatky za zprávy a šířky pásma. Jakmile klienti zjišťovat, zda je k dispozici v systému, zastavte zprávy.
+Zprávu ping je prázdná [BrokeredMessage] [ BrokeredMessage] s jeho [ContentType] [ ContentType] nastavena tooapplication/vnd.ms-servicebus-ping a [TimeToLive] [ TimeToLive] hodnota 1 sekunda. Tento příkaz ping má jeden speciální vlastnosti v Service Bus: hello server nikdy poskytuje příkazu ping, když si vyžádá všechny volající [BrokeredMessage][BrokeredMessage]. Proto není nutné toolearn jak tooreceive a tyto zprávy ignorovat. Každá entita (jedinečný fronta nebo téma) za [MessagingFactory] [ MessagingFactory] instance pro každý klient bude příkazu ping zkontrolujte dosažitelnost při jsou považovány za toobe není k dispozici. Ve výchozím nastavení k tomu dojde jednou za minutu. Zprávy ping jsou považovány za toobe regulární zpráv Service Bus a může mít za následek poplatky za zprávy a šířky pásma. Jakmile hello klientům zjišťovat, že systém hello je k dispozici, zastavte hello zprávy.
 
-## <a name="the-syphon"></a>Trativod
-Alespoň jeden spustitelný program v aplikaci by měl být aktivně běžícími Trativod. Trativod provádí s dlouhým přijímat dotazování, které trvá po 15 minut. Když jsou k dispozici všechny entity a máte 10 nevyřízené položky fronty, aplikace, který je hostitelem Trativod volání operace příjmu 40 časy za hodinu, 960 časy denně a časy 28 800 bitů za 30 dní. Při Trativod je aktivně přesunu zprávy z nevyřízené položky do primární fronty, každá zpráva vyskytne následující poplatky (standardní poplatky za velikost zprávy a šířky pásma použít ve všech fázích):
+## <a name="hello-syphon"></a>Trativod Hello
+Alespoň jeden spustitelný program v aplikaci hello by měl aktivně běžet Trativod hello. Hello Trativod provádí s dlouhým přijímat dotazování, které trvá po 15 minut. Když jsou k dispozici všechny entity a máte 10 nevyřízené položky fronty, hello aplikace, který je hostitelem volání Trativod hello hello přijímat operaci 40 časy za hodinu, 960 časy denně a časy 28 800 bitů za 30 dní. Při Trativod hello je aktivně přesunu zprávy z primární fronty toohello hello nevyřízených položek, každá zpráva vyskytne hello následující poplatky (standardní poplatky za velikost zprávy a šířky pásma použít ve všech fázích):
 
-1. Nevyřízené položky poslat.
-2. Nevyřízené položky dostávat.
-3. Odeslat na primární.
-4. Přijímat z primární.
+1. Odešlete toohello nevyřízených položek.
+2. Přijímat z hello nevyřízených položek.
+3. Odešlete toohello primární.
+4. Přijímat z primární hello.
 
 ## <a name="closefault-behavior"></a>Zavřít nebo selhání chování
-V rámci aplikace, který je hostitelem Trativod, jednou primární nebo sekundární [MessagingFactory] [ MessagingFactory] chyb nebo je ukončeno, aniž se svým partnerem zároveň s chybou nebo zavře a Trativod zjistí tento stav Trativod jednání. Pokud dalších [MessagingFactory] [ MessagingFactory] není uzavřený během 5 sekund, bude Trativod poruch stále otevřete [MessagingFactory][MessagingFactory].
+V rámci aplikace, který je hostitelem hello Trativod, jednou hello primární nebo sekundární [MessagingFactory] [ MessagingFactory] chyb nebo je uzavřena bez jeho partnera také dochází k chybě nebo k uzavření a hello Trativod zjistí tento stav , hello Trativod funguje. Pokud hello dalších [MessagingFactory] [ MessagingFactory] není uzavřený během 5 sekund, bude hello Trativod poruch stále otevřete hello [MessagingFactory] [ MessagingFactory] .
 
 ## <a name="next-steps"></a>Další kroky
 V tématu [asynchronní vzory a vysoká dostupnost pro zasílání zpráv] [ Asynchronous messaging patterns and high availability] pro podrobnou diskuzi o asynchronní zasílání zpráv Service Bus. 

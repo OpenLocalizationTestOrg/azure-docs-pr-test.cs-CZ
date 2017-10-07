@@ -1,5 +1,5 @@
 ---
-title: "Monitorování s řešení potíží s sledovací proces sítě Azure VPN Gateway | Microsoft Docs"
+title: "brány sítě VPN aaaMonitor při řešení problémů sledovací proces sítě Azure | Microsoft Docs"
 description: "Tento článek popisuje, jak diagnostikovat místní připojení Azure Automation a sledovací proces sítě"
 services: network-watcher
 documentationcenter: na
@@ -13,81 +13,81 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 55ec52dd0d94a0347cc67a8785b89611da955111
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: a607d0c862ea1be63c687717f0c5dc137db58a43
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Sledování brány sítě VPN s řešení potíží s sledovací proces sítě
 
-Získání hlubšímu porozumění na výkonu sítě je důležité poskytují spolehlivé služby zákazníkům. Proto je důležité ke zjišťování síťové podmínky výpadku rychle a podniknout kroky ke zmírnění stav výpadku. Automatizace Azure umožňuje implementovat a spusťte úlohu programový způsobem prostřednictvím sady runbook. Pomocí Azure Automation vytvoří ideální recepturách pro provádění sítě nepřetržitý a Proaktivní monitorování a výstrahy.
+Získání hlubšímu porozumění na výkonu sítě je důležité tooprovide toocustomers spolehlivé služby. Je proto důležité toodetect síťové podmínky výpadku rychle a trvat stav výpadku hello toomitigate opravné akce. Automatizace Azure umožňuje tooimplement a spusťte úlohu programový způsobem prostřednictvím sady runbook. Pomocí Azure Automation vytvoří ideální recepturách pro provádění sítě nepřetržitý a Proaktivní monitorování a výstrahy.
 
 ## <a name="scenario"></a>Scénář
 
-Scénář na následujícím obrázku je víceúrovňových aplikace, se na místní připojení navázat pomocí brány sítě VPN a tunelové propojení. Zajištění, že služby VPN Gateway je zapnutý a spuštění je důležité pro výkon aplikace.
+scénář Hello v hello následující obrázek je víceúrovňových aplikace, s na připojení místní navázat pomocí brány sítě VPN a tunelové propojení. Zajištění hello VPN Gateway je zapnutý a spuštění je důležité toohello výkonu aplikace.
 
-Runbook se vytvoří pomocí skriptu zkontrolujte stav připojení tunelového propojení sítě VPN, pomocí rozhraní API řešení potíží s prostředků zkontrolujte stav tunelového připojení. Pokud stav není v pořádku, se správcům odešle aktivační procedury e-mailu.
+Runbook se vytvoří s toocheck skript pro stav připojení hello tunelového připojení sítě VPN, pomocí toocheck hello prostředků řešení potíží s rozhraní API pro stav připojení tunelové propojení. Pokud hello stav není v pořádku, odešle aktivační procedury e-mailu tooadministrators.
 
 ![Příklad scénáře][scenario]
 
 Tento scénář se:
 
-- Vytvoření volání sady runbook `Start-AzureRmNetworkWatcherResourceTroubleshooting` rutiny, chcete-li vyřešit stav připojení
-- Propojit plán s sady runbook
+- Vytváření volání hello runbook `Start-AzureRmNetworkWatcherResourceTroubleshooting` stav připojení tootroubleshoot rutiny
+- Propojit plán toohello runbooku
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Než začnete tento scénář, musíte mít následující požadavky:
+Než začnete tento scénář, musíte mít hello následující požadavky:
 
-- Účet Azure automation v Azure. Zajistěte, aby účet automation nejnovější modulů a také obsahuje modul AzureRM.Network. Modul AzureRM.Network je k dispozici v galerii modulů, pokud je potřeba ho přidat do vašeho účtu automation.
+- Účet Azure automation v Azure. Zajistěte, aby účet automation hello hello nejnovější modulů a také obsahuje modul AzureRM.Network hello. Hello AzureRM.Network modulu je k dispozici v galerii modulů hello tooadd potřebujete-li ji tooyour účet automation.
 - Musíte mít sadu přihlašovacích údajů nakonfigurovat ve službě Azure Automation. Další informace na [zabezpečení Azure Automation.](../automation/automation-security-overview.md)
 - Platný server SMTP (Office 365, místní e-mailu nebo jiné) a přihlašovací údaje definované ve službě Azure Automation
 - Nakonfigurované virtuální bránu sítě v Azure.
-- Stávající účet úložiště s existující kontejner k ukládání protokolů v.
+- Přihlásí se existující toostore hello kontejneru stávající účet úložiště.
 
 > [!NOTE]
-> Infrastruktury, které popsané v předchozí obrázek je pro účely obrázku a nejsou vytvořeny s kroky obsažené v tomto článku.
+> Hello infrastruktury znázorněný v hello předcházející bitové kopie je pro účely obrázku a nejsou vytvořeny s hello kroky obsažené v tomto článku.
 
-### <a name="create-the-runbook"></a>Vytvoření sady runbook
+### <a name="create-hello-runbook"></a>Vytvoření sady runbook hello
 
-Prvním krokem k konfigurace v příkladu se k vytvoření sady runbook. Tento příklad používá účet Spustit jako. Další informace o účtech spustit jako najdete [ověření Runbooků pomocí účtu spustit v Azure jako](../automation/automation-sec-configure-azure-runas-account.md)
+Příklad hello tooconfiguring první krok Hello je toocreate hello runbook. Tento příklad používá účet Spustit jako. toolearn informace o účtech spustit jako, navštivte [ověření Runbooků pomocí účtu spustit v Azure jako](../automation/automation-sec-configure-azure-runas-account.md)
 
 ### <a name="step-1"></a>Krok 1
 
-Přejděte do Azure Automation v [portál Azure](https://portal.azure.com) a klikněte na tlačítko **sady Runbook**
+Přejděte tooAzure automatizace v hello [portál Azure](https://portal.azure.com) a klikněte na tlačítko **sady Runbook**
 
 ![Přehled účtu Automation][1]
 
 ### <a name="step-2"></a>Krok 2
 
-Klikněte na tlačítko **přidat runbook** ke spuštění procesu vytvoření sady runbook.
+Klikněte na tlačítko **přidat runbook** toostart hello proces vytvoření sady runbook hello.
 
 ![okno sady runbook][2]
 
 ### <a name="step-3"></a>Krok 3
 
-V části **rychle vytvořit**, klikněte na tlačítko **vytvořit nový runbook** k vytvoření sady runbook.
+V části **rychle vytvořit**, klikněte na tlačítko **vytvořit nový runbook** toocreate hello runbook.
 
 ![runbook okně Přidat][3]
 
 ### <a name="step-4"></a>Krok 4
 
-V tomto kroku jsme dejte runbooku název, v příkladu se označuje jako **Get-VPNGatewayStatus**. Je důležité si dejte runbooku popisný název a doporučené pod názvem, který následuje standardní standardy pro vytváření názvů prostředí PowerShell. Typ sady runbook v tomto příkladu je **prostředí PowerShell**, ostatní možnosti patří grafický pracovního postupu Powershellu a pracovní postup grafické prostředí PowerShell.
+V tomto kroku jsme pojmenujte hello runbook, v příkladu hello se označuje jako **Get-VPNGatewayStatus**. Je důležité toogive hello runbook popisný název a doporučuje pod názvem, který následuje standardní standardy pro vytváření názvů prostředí PowerShell. Typ runbooku Hello v tomto příkladu je **prostředí PowerShell**, hello ostatní možnosti patří grafický pracovního postupu Powershellu a pracovní postup grafické prostředí PowerShell.
 
 ![okno sady runbook][4]
 
 ### <a name="step-5"></a>Krok 5
 
-Následující příklad kódu v tomto kroku, který je sada runbook vytvořena poskytuje všechny potřebné pro tento příklad kódu. Položky v kódu, které obsahují \<hodnota\> je nutné nahradit s hodnotami ze svého předplatného.
+V tomto kroku hello sady runbook se vytvoří, hello následující ukázka kódu obsahuje že všechny hello kód potřebný například hello. Hello položky v hello kódu, které obsahují \<hodnotu\> potřebovat toobe nahradit hello hodnotami ze svého předplatného.
 
-Použít následující kód jako klikněte na tlačítko **uložit**
+Použití hello následující kód jako klikněte na tlačítko **uložit**
 
 ```PowerShell
-# Set these variables to the proper values for your environment
+# Set these variables toohello proper values for your environment
 $o365AutomationCredential = "<Office 365 account>"
 $fromEmail = "<from email address>"
-$toEmail = "<to email address>"
+$toEmail = "<tooemail address>"
 $smtpServer = "<smtp.office365.com>"
 $smtpPort = 587
 $runAsConnectionName = "<AzureRunAsConnection>"
@@ -102,16 +102,16 @@ $storageAccountContainer = "<container name>"
 # Get credentials for Office 365 account
 $cred = Get-AutomationPSCredential -Name $o365AutomationCredential
 
-# Get the connection "AzureRunAsConnection "
+# Get hello connection "AzureRunAsConnection "
 $servicePrincipalConnection=Get-AutomationConnection -Name $runAsConnectionName
 
-"Logging in to Azure..."
+"Logging in tooAzure..."
 Add-AzureRmAccount `
     -ServicePrincipal `
     -TenantId $servicePrincipalConnection.TenantId `
     -ApplicationId $servicePrincipalConnection.ApplicationId `
     -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint
-"Setting context to a specific subscription"
+"Setting context tooa specific subscription"
 Set-AzureRmContext -SubscriptionId $subscriptionId
 
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $region }
@@ -123,11 +123,11 @@ $result = Start-AzureRmNetworkWatcherResourceTroubleshooting -NetworkWatcher $ne
 
 if($result.code -ne "Healthy")
     {
-        $body = "Connection for $($connection.name) is: $($result.code) `n$($result.results[0].summary) `nView the logs at $($storagePath) to learn more."
+        $body = "Connection for $($connection.name) is: $($result.code) `n$($result.results[0].summary) `nView hello logs at $($storagePath) toolearn more."
         Write-Output $body
         $subject = "$($connection.name) Status"
         Send-MailMessage `
-        -To $toEmail `
+        -too$toEmail `
         -Subject $subject `
         -Body $body `
         -UseSsl `
@@ -145,47 +145,47 @@ else
 
 ### <a name="step-6"></a>Krok 6
 
-Po uložení runbooku plánu musí být propojena k němu automatizovat spuštění sady runbook. Chcete-li spustit proces, klikněte na tlačítko **plán**.
+Po uložení hello runbook plánu musí být propojená tooit tooautomate hello spuštění sady runbook hello. proces hello toostart, klikněte na tlačítko **plán**.
 
 ![Krok 6][6]
 
-## <a name="link-a-schedule-to-the-runbook"></a>Propojit plán s sady runbook
+## <a name="link-a-schedule-toohello-runbook"></a>Propojit plán toohello runbooku
 
-Je nutné vytvořit nový plán. Klikněte na tlačítko **propojit plán s runbookem**.
+Je nutné vytvořit nový plán. Klikněte na tlačítko **propojit plán tooyour runbook**.
 
 ![Krok 7][7]
 
 ### <a name="step-1"></a>Krok 1
 
-Na **plán** okně klikněte na tlačítko **vytvoření nového plánu**
+Na hello **plán** okně klikněte na tlačítko **vytvoření nového plánu**
 
 ![Krok 8][8]
 
 ### <a name="step-2"></a>Krok 2
 
-Na **nový plán** výplně okno se informace o plánu. V následujícím seznamu jsou hodnoty, které lze nastavit:
+Na hello **nový plán** výplně okno se informace o plánu hello. v následujícím seznamu hello jsou Hello hodnoty, které lze nastavit:
 
-- **Název** -popisný název plánu.
-- **Popis** – popis plánu.
-- **Spustí** – tato hodnota je kombinací datum, čas a časové pásmo, které tvoří časový plán aktivačních událostí.
-- **Opakování** – tato hodnota určuje opakování plány.  Platné hodnoty jsou **jednou** nebo **opakovaná**.
-- **Opakovat každý** – interval opakování plánu v hodiny, dny, týdny nebo měsíce.
-- **Nastavit dobu platnosti** -hodnota určuje, pokud by měla vypršet podle plánu, nebo ne. Může být nastaven na **Ano** nebo **ne**. Pokud ano jste vybrali, musíte zadat jsou platné datum a čas.
+- **Název** -hello popisný název plánu hello.
+- **Popis** – popis hello plánu.
+- **Spustí** – tato hodnota je kombinací datum, čas a časové pásmo, které tvoří hello čas hello plán aktivační události.
+- **Opakování** – tato hodnota určuje hello plány opakování.  Platné hodnoty jsou **jednou** nebo **opakovaná**.
+- **Opakovat každý** – interval opakování hello hello plánu v hodiny, dny, týdny nebo měsíce.
+- **Nastavit dobu platnosti** -hello hodnota určuje, pokud by měla vypršet hello plánu, nebo ne. Můžete nastavit příliš**Ano** nebo **ne**. Platné datum a čas se toobe zadán, pokud ano je vybrán.
 
 > [!NOTE]
-> Pokud je potřeba mít sady runbook spustit častěji než každou hodinu, je nutné vytvořit více plánů v různých intervalech (to znamená, 15, 30, 45 minut po hodině)
+> Pokud potřebujete toohave sady runbook spustit častěji než každou hodinu, je nutné vytvořit více plánů v různých intervalech (to znamená, 15, 30, 45 minut po hodině hello)
 
 ![Krok 9][9]
 
 ### <a name="step-3"></a>Krok 3
 
-Kliknutím na Uložit o uložení plánu k sadě runbook.
+Klikněte na Uložit toosave hello plán toohello runbook.
 
 ![Krok 10][10]
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní když máte představu o tom, jak integrovat řešení potíží s sledovací proces sítě s Azure Automation, zjistěte, jak aktivovat zachycení paketů na výstrahy virtuálních počítačů tím, navštivte stránky [vytvořit zaznamenání výstrahy spouštěná paketů s sledovací proces sítě Azure](network-watcher-alert-triggered-packet-capture.md).
+Teď, když máte představu o tom, toointegrate sledovací proces sítě řešení potíží s Azure Automation, zjistěte, jak zaznamená tootrigger paketů na virtuální počítač výstrahy navštivte stránky [vytvořit zaznamenání výstrahy spouštěná paketů s sledovací proces sítě Azure](network-watcher-alert-triggered-packet-capture.md).
 
 <!-- images -->
 [scenario]: ./media/network-watcher-monitor-with-azure-automation/scenario.png

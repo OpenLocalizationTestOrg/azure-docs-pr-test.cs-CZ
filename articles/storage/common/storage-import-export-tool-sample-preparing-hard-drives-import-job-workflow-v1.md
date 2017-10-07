@@ -1,6 +1,6 @@
 ---
-title: "Ukázkový pracovní postup připravená data pevné disky pro úlohy importu Azure Import/Export - v1 | Microsoft Docs"
-description: "Návod pro dokončení procesu přípravy jednotky pro úlohy importu v rámci služby Azure Import/Export najdete."
+title: "aaaSample pracovního postupu tooprep pevné disky pro Azure importu a exportu importovat úlohy - v1 | Microsoft Docs"
+description: "Návod pro dokončení procesu hello přípravy jednotky pro úlohy importu v hello služba Azure Import/Export najdete."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 179c6bac9a2d9509baa0007a7008d75d0874a25e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: eb77831a88c16c14838179a6432ddb06503067dd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Ukázkový pracovní postup pro přípravu pevných disků pro úlohu importu
-Toto téma vás provede kompletní proces přípravy jednotky pro úlohy importu.  
+# <a name="sample-workflow-tooprepare-hard-drives-for-an-import-job"></a>Ukázkový pracovní postup tooprepare pevné disky pro úlohy importu
+Toto téma vás provede procesem hello dokončení procesu přípravy jednotky pro úlohy importu.  
   
-Tento příklad importuje následující data do účtu úložiště Azure okno s názvem `mystorageaccount`:  
+Tento příklad importuje následující data do účtu úložiště Azure okno s názvem hello `mystorageaccount`:  
   
 |Umístění|Popis|  
 |--------------|-----------------|  
@@ -32,7 +32,7 @@ Tento příklad importuje následující data do účtu úložiště Azure okno 
 |K:\Temp\FavoriteMovie.ISO|Image disku A Blu-ray™, 25 GB.|  
 |\\\bigshare\john\music|Kolekce hudebních souborů ve sdílené síťové složce, celkem 10 GB.|  
   
-Úloha importu importuje tato data do následující cíle v účtu úložiště:  
+Úloha importu Hello importuje tato data do hello následující cíle v účtu úložiště hello:  
   
 |Zdroj|Cílový virtuální adresář nebo objekt blob|  
 |------------|-------------------------------------------|  
@@ -41,13 +41,13 @@ Tento příklad importuje následující data do účtu úložiště Azure okno 
 |K:\Temp\FavoriteMovie.ISO|https://mystorageaccount.BLOB.Core.Windows.NET/Favorite/FavoriteMovies.ISO|  
 |\\\bigshare\john\music|https://mystorageaccount.BLOB.Core.Windows.NET/Music|  
   
-Pomocí této mapování, souboru `H:\Video\Drama\GreatMovie.mov` je importovat do objektu blob `https://mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov`.  
+Pomocí této mapování hello souboru `H:\Video\Drama\GreatMovie.mov` je objekt blob importované toohello `https://mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov`.  
   
-Dále určit, kolik pevné disky jsou potřeba, Vypočítat velikost dat:  
+Dále toodetermine kolik pevné disky jsou potřeba, výpočetní hello velikost dat hello:  
   
 `5TB + 30GB + 25GB + 10GB = 5TB + 65GB`  
   
-V tomto příkladu by mělo být dostatečné dva 3 TB pevné disky. Nicméně, protože zdrojový adresář `H:\Video` má 5 TB dat a jeden pevný disk je kapacita je jenom 3 TB, je nutné rozdělit `H:\Video` do dvou menší adresářů: `H:\Video1` a `H:\Video2`, před spuštěním Microsoft Azure Nástroj pro import nebo Export. Tento krok vypočítá následující zdrojového adresáře:  
+V tomto příkladu by mělo být dostatečné dva 3 TB pevné disky. Ale protože hello zdrojový adresář `H:\Video` má 5 TB dat a jeden pevný disk je kapacita je jenom 3 TB, je nutné toobreak `H:\Video` do dvou menší adresářů: `H:\Video1` a `H:\Video2`, než spuštěna hello Microsoft Nástroj Azure importu a exportu. Tento krok vypočítá hello následující zdrojového adresáře:  
   
 |Umístění|Velikost|Cílový virtuální adresář nebo objekt blob|  
 |--------------|----------|-------------------------------------------|  
@@ -57,9 +57,9 @@ V tomto příkladu by mělo být dostatečné dva 3 TB pevné disky. Nicméně, 
 |K:\Temp\FavoriteMovies.ISO|25 GB|https://mystorageaccount.BLOB.Core.Windows.NET/Favorite/FavoriteMovies.ISO|  
 |\\\bigshare\john\music|10 GB|https://mystorageaccount.BLOB.Core.Windows.NET/Music|  
   
- I když `H:\Video`directory rozdělení na dva adresáře ukazovaly na stejný cílový virtuální adresář v účtu úložiště. Tímto způsobem, všechny soubory videa se udržují v rámci jedné `video` kontejneru v účtu úložiště.  
+ I když hello `H:\Video`directory rozdělení tootwo adresáře, budou bodu toohello stejný cílový virtuální adresář v účtu úložiště hello. Tímto způsobem, všechny soubory videa se udržují v rámci jedné `video` kontejneru v účtu úložiště hello.  
   
- V dalším kroku předchozí zdrojového adresáře jsou rovnoměrně rozloženy dva pevné disky:  
+ V dalším kroku hello předchozí zdrojového adresáře jsou rovnoměrně distribuované toohello dva pevné disky:  
   
 ||||  
 |-|-|-|  
@@ -70,7 +70,7 @@ V tomto příkladu by mělo být dostatečné dva 3 TB pevné disky. Nicméně, 
 ||K:\Temp\BlueRay.ISO||  
 ||\\\bigshare\john\music||  
   
-Kromě toho můžete nastavit následující metadata pro všechny soubory:  
+Kromě toho můžete nastavit hello následující metadata pro všechny soubory:  
   
 -   **UploadMethod:** služby Windows Azure Import/Export  
   
@@ -78,7 +78,7 @@ Kromě toho můžete nastavit následující metadata pro všechny soubory:
   
 -   **Datum vytvoření:** 10/1/2013  
   
-Pokud chcete nastavit metadata pro importované soubory, vytvořte textový soubor, `c:\WAImportExport\SampleMetadata.txt`, s následujícím obsahem:  
+metadata tooset hello importu souborů, vytvořte textový soubor, `c:\WAImportExport\SampleMetadata.txt`, s hello následující obsah:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -89,7 +89,7 @@ Pokud chcete nastavit metadata pro importované soubory, vytvořte textový soub
 </Metadata>  
 ```
   
-Můžete vytvořit také některé vlastnosti `FavoriteMovie.ISO` objektů blob:  
+Můžete vytvořit také některé vlastnosti pro hello `FavoriteMovie.ISO` objektů blob:  
   
 -   **Content-Type:** application/octet-stream  
   
@@ -97,7 +97,7 @@ Můžete vytvořit také některé vlastnosti `FavoriteMovie.ISO` objektů blob:
   
 -   **Cache-Control:** no cache  
   
-Chcete-li nastavit tyto vlastnosti, vytvořte textový soubor, `c:\WAImportExport\SampleProperties.txt`:  
+tooset tyto vlastnosti, vytvořte textový soubor, `c:\WAImportExport\SampleProperties.txt`:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -108,30 +108,30 @@ Chcete-li nastavit tyto vlastnosti, vytvořte textový soubor, `c:\WAImportExpor
 </Properties>  
 ```
   
-Nyní jste připraveni ke spuštění nástroje Azure Import/Export Příprava dva pevné disky. Poznámky:  
+Teď je připraven toorun hello nástroj Azure Import/Export tooprepare hello dva pevné disky. Poznámky:  
   
--   První disk je připojit jako jednotka X.  
+-   první disk Hello je připojit jako jednotka X.  
   
--   Druhý disk je připojit jako disk Y.  
+-   druhý disk Hello je připojit jako disk Y.  
   
--   Klíč pro účet úložiště `mystorageaccount` je `8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg==`.  
+-   Hello klíč pro účet úložiště hello `mystorageaccount` je `8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg==`.  
 
 ## <a name="preparing-disk-for-import-when-data-is-pre-loaded"></a>Příprava disku pro import, když je předem načtená data
  
- Pokud data, která mají být importována již existuje na disku, použijte příznak /skipwrite. Hodnota /t a /srcdir má obě, přejděte na disku připraveném pro import. Pokud všechna data, která bude importována není má stejné cílový virtuální adresář nebo kořenového účtu úložiště, spusťte stejný příkaz pro každý cílový adresář samostatně, udržování hodnota /id stejné napříč všechny spustí.
+ Pokud toobe hello data importovat je již na disku hello, použijte příznak /skipwrite hello. Hodnota Hello /t a /srcdir má oba bodu toohello disku připraveném pro import. Pokud všechny toobe hello data importovat nepůjde toohello stejné cílový virtuální adresář nebo kořenové hello účtu úložiště, spusťte hello stejný příkaz pro každý cílový adresář samostatně, udržování hello hodnota /id hello stejné napříč všechny spustí.
 
 >[!NOTE] 
->Nezadávejte/Format, jak se bude vymazání dat na disku. Můžete zadat / šifrování nebo /bk v závislosti na tom, jestli je disk už je šifrovaný nebo ne. 
+>Nezadávejte/Format, jak se bude vymazání hello dat na disku hello. Můžete zadat / šifrování nebo /bk v závislosti na tom, jestli hello disk už je šifrovaný nebo ne. 
 >
 
 ```
-    When data is already present on the disk for each drive run the following command.
+    When data is already present on hello disk for each drive run hello following command.
     WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Video1 /logdir:c:\logs /sk:8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg== /t:x /format /encrypt /srcdir:x:\Video1 /dstdir:video/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt /skipwrite
 ```
 
 ## <a name="copy-sessions---first-drive"></a>Zkopírujte relací - nejprve jednotky
 
-Pro první disk spusťte nástroj Azure Import/Export dvakrát pro kopírování adresářů dva zdroje:  
+Hello první disk spusťte hello nástroj Azure Import/Export zdroje dvakrát hello toocopy dva adresáře:  
 
 **Nejdříve zkopírovat relace**
   
@@ -147,7 +147,7 @@ WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Photo /srcdir:H:\Photo /dstd
 
 ## <a name="copy-sessions---second-drive"></a>Zkopírujte relací - druhé jednotky
  
-Pro druhý disk, spusťte nástroj Azure Import/Export trojnásobek, jednou každý pro zdrojového adresáře a jednou pro soubor bitové kopie samostatné Blu-Ray™):  
+Pro hello druhý disku, spusťte hello nástroj Azure Import/Export třikrát po jednotlivých hello zdrojového adresáře a jednou pro samostatnou hello Blu-Ray™ soubor obrázku):  
   
 **Nejdříve zkopírovat relace** 
 
@@ -169,7 +169,7 @@ WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp
 
 ## <a name="copy-session-completion"></a>Zkopírujte dokončení relace
 
-Po dokončení kopírování relací mají můžete odpojit dvě jednotky z počítače, kopírování a dodávat je k příslušné datovému centru systému Windows Azure. Odesílat soubory dvě deníku `FirstDrive.jrn` a `SecondDrive.jrn`, při vytváření úlohy importu v [portálu Windows Azure](https://manage.windowsazure.com/).  
+Jakmile jste dokončili hello kopírování relací, můžete odpojit hello dvě jednotky z počítače kopie hello a dodávat je toohello příslušné služby Windows Azure datového centra. Nahrát hello dva soubory deníku, `FirstDrive.jrn` a `SecondDrive.jrn`, když vytvoříte hello úlohy importu v hello [portálu Windows Azure](https://manage.windowsazure.com/).  
   
 ## <a name="next-steps"></a>Další kroky
 

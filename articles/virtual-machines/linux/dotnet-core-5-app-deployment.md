@@ -1,5 +1,5 @@
 ---
-title: "Automatizace nasazení aplikací pomocí rozšíření virtuálního počítače | Microsoft Docs"
+title: "Nasazení aplikací pomocí rozšíření virtuálního počítače aaaAutomating | Microsoft Docs"
 description: "Virtuální počítač Azure DotNet základní kurz"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,24 +16,24 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2f972fef75aa8e13af7dab908c2b0e2ec28f1324
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 38a02a4271d6b9ba02a473a51794a7bd90ca3a35
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-deployment-with-azure-resource-manager-templates-for-linux-vms"></a>Nasazení aplikací pomocí šablon Azure Resource Manageru pro virtuální počítače s Linuxem
 
-Po zjištění a přeložit na šablonu nasazení máte všechny požadavky pro Azure infrastruktury, nasazení skutečné aplikace, které musí vzít v úvahu. Nasazení aplikace v tomto poli odkazuje na instalaci binárních souborů skutečné aplikace do prostředků Azure. Pro ukázku Hudba úložiště, rozhraní .net jádro, NGINX a Supervisor musí být nainstalovaná a nakonfigurovaná na každém virtuálním počítači. Binární soubory Hudba úložiště je potřeba nainstalovat na virtuální počítač a předem vytvořené databáze hudba úložiště.
+Po zjištění a přeložit na šablonu nasazení máte všechny požadavky pro Azure infrastruktury, musí nasazení skutečné aplikace hello toobe řešit. Nasazení aplikace zde odkazuje tooinstalling hello skutečné aplikačních binárních souborů do prostředků Azure. Pro ukázku hello Hudba úložiště, rozhraní .net Core, NGINX a Supervisor potřebovat toobe nainstalovaná a nakonfigurovaná na každém virtuálním počítači. Hello Hudba úložiště binární soubory nutné toobe nainstaluje do hello virtuálního počítače a hello Hudba úložiště databáze předem vytvořené.
 
-Tento dokument podrobně popisuje, jak rozšíření virtuálního počítače můžete automatizovat nasazení aplikace a konfigurace virtuálních počítačů Azure. Jsou vyznačené všechny závislosti a unikátní konfiguraci. Pro dosažení co nejlepších výsledků, předem nasaďte instanci řešení, aby vaše předplatné Azure a pracovní společně s šablony Azure Resource Manageru. Úplnou šablonu naleznete zde – [Hudba úložiště nasazení na Ubuntu](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
+Tento dokument podrobně popisuje, jak rozšíření virtuálního počítače můžete automatizovat aplikace nasazení a konfigurace tooAzure virtuálních počítačů. Jsou vyznačené všechny závislosti a unikátní konfiguraci. Nejvhodnější hello předem nasaďte instanci hello řešení tooyour předplatného Azure a pracovní společně s hello šablony Azure Resource Manageru. úplnou šablonu Hello naleznete zde – [Hudba úložiště nasazení na Ubuntu](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
 ## <a name="configuration-script"></a>Konfigurační skript
-Rozšíření virtuálního počítače jsou specializované programy, které provést před virtuálními počítači poskytnout automatizace konfigurace. Rozšíření jsou k dispozici pro mnoho specifické účely, například Ochrana proti virům, konfigurace protokolování a Docker konfigurace. Rozšíření vlastních skriptů slouží ke spouštění všech skriptů na virtuálním počítači. Pomocí ukázky hudby úložiště je rozšíření vlastních skriptů pro konfiguraci Ubuntu virtuální počítače a instalaci aplikace Hudba úložiště. 
+Rozšíření virtuálního počítače jsou specializované programy, které spuštění u virtuálních počítačů tooprovide konfigurace automatizace. Rozšíření jsou k dispozici pro mnoho specifické účely, například Ochrana proti virům, konfigurace protokolování a Docker konfigurace. Rozšíření vlastních skriptů lze použít toorun žádný skript u virtuálního počítače. Pomocí hello Ukázky hudby úložiště je toohello rozšíření vlastních skriptů tooconfigure hello Ubuntu virtuální počítače a nainstalovat aplikaci Store Hudba hello. 
 
-Před s podrobnostmi o tom, jak rozšíření virtuálního počítače jsou deklarované v šablonu Azure Resource Manager, zkontrolujte skript, který je spuštěn. Tento skript nakonfiguruje Ubuntu virtuální počítač pro hostování aplikace Hudba úložiště. Při spuštění skriptu nainstaluje všechny, potřebný software, nainstalujte aplikaci store hudba od správy zdrojového kódu a Příprava databáze. 
+Před s podrobnostmi o tom, jak rozšíření virtuálního počítače jsou deklarované v šablonu Azure Resource Manager, zkontrolujte hello skript, který je spuštěn. Tento skript nakonfiguruje hello Ubuntu virtuální počítač toohost hello aplikace Hudba úložiště. Při spuštění skriptu hello nainstaluje všechny potřebné software, nainstalujte aplikaci store Hudba hello od správy zdrojového kódu a příprava hello databáze. 
 
-Další informace o hostování .net základní aplikace v systému Linux najdete v tématu [publikovat do provozního prostředí Linux](https://docs.asp.net/en/latest/publishing/linuxproduction.html).
+toolearn Další informace o hostování .net základní aplikace pro systémy Linux, najdete v části [publikovat tooa Linux provozním prostředí](https://docs.asp.net/en/latest/publishing/linuxproduction.html).
 
 > Tato ukázka je pro demonstrační účely.
 > 
@@ -80,11 +80,11 @@ sudo service supervisor start
 ```
 
 ## <a name="vm-script-extension"></a>Skript rozšíření virtuálního počítače
-Rozšíření virtuálního počítače lze spustit na virtuálním počítači v čase vytvoření buildu, přiložením rozšíření prostředků do šablony Azure Resource Manageru. Rozšíření můžete přidat pomocí Průvodce přidáním prostředku Visual Studio, nebo vložením platný kód JSON do šablony. Skript rozšíření prostředků je vnořit prostředek virtuálního počítače; To můžete vidět v následujícím příkladu.
+Rozšíření virtuálního počítače lze spustit na virtuálním počítači v čase vytvoření buildu včetně hello rozšíření prostředků v hello šablony Azure Resource Manageru. rozšíření Hello lze přidat pomocí Průvodce přidáním prostředku Visual Studio hello nebo vložením platný kód JSON do šablony hello. Hello skriptu rozšíření prostředků je vnořit hello prostředek virtuálního počítače; To si můžete prohlédnout ve hello následující ukázka.
 
-Tento odkaz zobrazíte vzorku JSON šablony Resource Manageru – [rozšíření virtuálního počítače skriptu](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L359). 
+Použijte tento odkaz toosee hello JSON ukázka v rámci šablony Resource Manageru hello – [rozšíření virtuálního počítače skriptu](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L359). 
 
-Všimněte si v níže JSON, aby tento skript je uložený na webu GitHub. Tento skript by také může být uložený v úložišti objektů Blob Azure. Šablony Azure Resource Manager umožnit řetězec provádění skriptu, který má vytvořený tak, aby hodnoty parametrů šablony lze použít jako parametry pro spuštění skriptu. V takovém případě se data zadaná při nasazování šablony a tyto hodnoty lze při provádění skriptu.
+Všimněte si v hello níže formátu JSON, který hello skript je uložený na webu GitHub. Tento skript by také může být uložený v úložišti objektů Blob Azure. Šablony Azure Resource Manager povolit dále tooconstructed řetězec provádění skriptu hello tak, že hodnoty parametrů šablony lze použít jako parametry pro spuštění skriptu. V takovém případě se data poskytuje při nasazování šablony hello a tyto hodnoty lze při provádění skriptu hello.
 
 ```json
 {
@@ -115,7 +115,7 @@ Všimněte si v níže JSON, aby tento skript je uložený na webu GitHub. Tento
 }
 ```
 
-Další informace o použití rozšíření vlastních skriptů, najdete v části [vlastní skript rozšíření pomocí šablony Resource Manageru](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Další informace o použití rozšíření vlastních skriptů hello najdete v tématu [vlastní skript rozšíření pomocí šablony Resource Manageru](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="next-step"></a>Další krok
 <hr>

@@ -1,6 +1,6 @@
 ---
-title: "Uložené hledání a upozornění v OMS řešení | Microsoft Docs"
-description: "Řešení v OMS by měl obvykle zahrnovat uložená hledání v Log Analytics k analýze dat shromážděných řešením.  Mohou také definovat výstrahy, které uživatele nebo v reakci na kritický problém automaticky provést akci.  Tento článek popisuje, jak definovat analýzy protokolů, které jsou uložené hledání a upozornění v šablony ARM, můžou být součástí řešení pro správu."
+title: "aaaSaved hledání a upozornění v OMS řešení | Microsoft Docs"
+description: "Řešení v OMS by měl obvykle zahrnovat uložená hledání v analýzy protokolů tooanalyze data shromažďovaná společností hello řešení.  Mohou také definovat výstrahy toonotify hello uživatele i automaticky akce v odpovědi tooa kritický problém.  Tento článek popisuje, jak toodefine analýzy protokolů uložené hledání a upozornění v šablony ARM, můžou být součástí řešení pro správu."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -14,39 +14,39 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 21c42a747a08c5386c65d10190baf0054a7adef8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 93d7c5bbf061473833ca6c0a8e4d8e10d923f3ed
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>Přidání analýzy protokolů uložené hledání a výstrahy OMS řešení pro správu (Preview)
+# <a name="adding-log-analytics-saved-searches-and-alerts-toooms-management-solution-preview"></a>Přidání analýzy protokolů uložené hledání a výstrahy tooOMS řešení pro správu (Preview)
 
 > [!NOTE]
-> Toto je předběžná dokumentace pro vytváření řešení pro správu v OMS, které jsou aktuálně ve verzi preview. Žádné schéma popsané níže se mohou změnit.   
+> Toto je předběžná dokumentace pro vytváření řešení pro správu v OMS, které jsou aktuálně ve verzi preview. Žádné schéma níže popsané je toochange subjektu.   
 
 
-[Řešení pro správu v OMS](operations-management-suite-solutions.md) by měl obvykle zahrnovat [uložená hledání](../log-analytics/log-analytics-log-searches.md) v Log Analytics k analýze dat shromážděných řešením.  Může také definovat [výstrahy](../log-analytics/log-analytics-alerts.md) upozornit uživatele, nebo v reakci na kritický problém automaticky provést akci.  Tento článek popisuje, jak definovat uložená hledání analýzy protokolů a výstrahy [Správa prostředků šablony](../resource-manager-template-walkthrough.md) tak můžou být je součástí [řešení pro správu](operations-management-suite-solutions-creating.md).
+[Řešení pro správu v OMS](operations-management-suite-solutions.md) by měl obvykle zahrnovat [uložená hledání](../log-analytics/log-analytics-log-searches.md) v analýzy protokolů tooanalyze data shromažďovaná společností hello řešení.  Může také definovat [výstrahy](../log-analytics/log-analytics-alerts.md) toonotify hello uživatele nebo automaticky provést akce v odpovědi tooa kritický problém.  Tento článek popisuje, jak uložit toodefine analýzy protokolů hledání a upozornění v [Správa prostředků šablony](../resource-manager-template-walkthrough.md) tak můžou být je součástí [řešení pro správu](operations-management-suite-solutions-creating.md).
 
 > [!NOTE]
-> Ukázky v tomto článku použít parametry a proměnné, které jsou nutné nebo společné pro řešení pro správu a jsou popsány v [vytváření řešení pro správu v Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md)  
+> Použijte parametry a proměnné, které jsou buď požadované, nebo běžné toomanagement řešení a popsané v zprostředkovatele Hello ukázky v tomto článku [vytváření řešení pro správu v Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md)  
 
 ## <a name="prerequisites"></a>Požadavky
-Tento článek předpokládá, že jste již obeznámeni s postupy [vytvoření řešení správy](operations-management-suite-solutions-creating.md) a struktura [šablony ARM](../resource-group-authoring-templates.md) a soubor řešení.
+Tento článek předpokládá, že jste již obeznámeni s postupy příliš[vytvoření řešení správy](operations-management-suite-solutions-creating.md) a struktuře hello [šablony ARM](../resource-group-authoring-templates.md) a soubor řešení.
 
 
 ## <a name="log-analytics-workspace"></a>Pracovní prostor analýzy protokolů
-Všechny prostředky v analýzy protokolů jsou součástí [prostoru](../log-analytics/log-analytics-manage-access.md).  Jak je popsáno v [OMS pracovní prostor a účet Automation](operations-management-suite-solutions.md#oms-workspace-and-automation-account) pracovním prostoru není zahrnutý v řešení pro správu, ale musí existovat před instalací řešení.  Pokud není k dispozici, se nezdaří instalace řešení.
+Všechny prostředky v analýzy protokolů jsou součástí [prostoru](../log-analytics/log-analytics-manage-access.md).  Jak je popsáno v [OMS pracovní prostor a účet Automation](operations-management-suite-solutions.md#oms-workspace-and-automation-account) hello prostoru není zahrnutý v řešení pro správu hello ale musí existovat před instalací hello řešení.  Pokud není k dispozici, se nezdaří instalace řešení hello.
 
-Název pracovního prostoru je názvu každého prostředku analýzy protokolů.  To se provádí v řešení s **prostoru** parametr jako v následujícím příkladu savedsearch prostředku.
+Název Hello hello pracovního prostoru se hello název každého prostředku analýzy protokolů.  To se provádí v hello řešení s hello **prostoru** parametr jako hello následující ukázka savedsearch prostředku.
 
     "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearchId'))]"
 
 
 ## <a name="saved-searches"></a>Uložená hledání
-Zahrnout [uložená hledání](../log-analytics/log-analytics-log-searches.md) v řešení, aby uživatelé mohli dotaz na data shromažďovaná společností řešení.  Uložené hledání se zobrazí v části **Oblíbené** na portálu OMS a **uložená hledání** na portálu Azure.  Uložené hledání je také nutný pro každou výstrahu.   
+Zahrnout [uložená hledání](../log-analytics/log-analytics-log-searches.md) v řešení tooallow uživatelé tooquery dat shromážděných vaše řešení.  Uložené hledání se zobrazí v části **Oblíbené** na portálu OMS hello a **uložená hledání** v hello portálu Azure.  Uložené hledání je také nutný pro každou výstrahu.   
 
-[Analýzy protokolů uložené hledání](../log-analytics/log-analytics-log-searches.md) prostředky mít typ `Microsoft.OperationalInsights/workspaces/savedSearches` a mít následující strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů. 
+[Analýzy protokolů uložené hledání](../log-analytics/log-analytics-log-searches.md) prostředky mít typ `Microsoft.OperationalInsights/workspaces/savedSearches` a mít hello strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů hello. 
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name)]",
@@ -65,33 +65,33 @@ Zahrnout [uložená hledání](../log-analytics/log-analytics-log-searches.md) v
 
 
 
-Ke každé z vlastností uloženého hledání jsou popsané v následující tabulce. 
+Ke každé z vlastností hello uloženého hledání jsou popsané v následující tabulce hello. 
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| category | Kategorie pro uložené hledání.  Všechny uložená hledání ve stejném řešení, bude často sdílet jednu kategorii, jsou seskupeny dohromady v konzole. |
-| DisplayName | Název zobrazení pro uložené hledání na portálu. |
-| query | Dotaz spustit. |
+| category | Hello kategorii pro uložené hledání hello.  Žádné uložená hledání v hello často budou sdílet stejnou řešení jedné kategorii, jsou seskupeny dohromady v konzole hello. |
+| DisplayName | Název toodisplay pro hello uložené hledání hello portálu. |
+| query | Toorun dotazu. |
 
 > [!NOTE]
-> Musíte použít řídicí znaky v dotazu, pokud obsahuje znaky, které je možné interpretovat jako JSON.  Například, pokud se dotaz **typu: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, by měly být zapsány v souboru řešení jako **typu: AzureActivity OperationName:\"Microsoft.Compute/virtualMachines/write\"**.
+> Toouse řídicí znaky v hello dotazu může být nutné, pokud obsahuje znaky, které je možné interpretovat jako JSON.  Například, pokud se dotaz **typu: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, by měly být zapsány v souboru hello řešení jako **typu: AzureActivity OperationName:\" Microsoft.Compute/virtualMachines/write\"**.
 
 ## <a name="alerts"></a>Výstrahy
-[Protokolu analýzy výstrahy](../log-analytics/log-analytics-alerts.md) jsou vytvořené pomocí pravidla výstrah, které běží uloženého hledání v pravidelných intervalech.  Pokud výsledky dotazu odpovídal zadaná kritéria, se vytvoří záznam výstrah a spouštějí jednu nebo více akcí.  
+[Protokolu analýzy výstrahy](../log-analytics/log-analytics-alerts.md) jsou vytvořené pomocí pravidla výstrah, které běží uloženého hledání v pravidelných intervalech.  Pokud hello výsledky dotazu hello odpovídají zadaným kritériím, se vytvoří záznam výstrah a spouštějí jednu nebo více akcí.  
 
-Pravidla výstrah v rámci řešení pro správu se skládá z těchto tří různých prostředků.
+Pravidla výstrah v rámci řešení pro správu jsou tvořeny hello následující tři různé prostředky.
 
-- **Uložené hledání.**  Definuje vyhledávání protokolu, který se má spustit.  Více pravidla výstrah můžete sdílet jeden uloženého hledání.
-- **Plán.**  Definuje, jak často se spustí vyhledávání protokolu.  Každé pravidlo výstrahy budou mít pouze jeden plán.
-- **Výstrahy akce.**  Každé pravidlo výstrahy bude mít jeden prostředek akce s typem **výstraha** , který definuje podrobnosti výstrahy například kritéria pro vytvoření záznamu výstrah a závažnosti výstrah.  Akce prostředku bude volitelně definovat odpověď e-mailu a sady runbook.
-- **Akce Webhooku (volitelné).**  Pokud pravidlo výstrahy bude volat webhook, jehož, pak vyžaduje prostředek další akce s typem **Webhooku**.    
+- **Uložené hledání.**  Definuje hello protokolu vyhledávání, který se má spustit.  Více pravidla výstrah můžete sdílet jeden uloženého hledání.
+- **Plán.**  Definuje, jak často hello protokol hledání se spustí.  Každé pravidlo výstrahy budou mít pouze jeden plán.
+- **Výstrahy akce.**  Každé pravidlo výstrahy bude mít jeden prostředek akce s typem **výstraha** hello podrobnosti výstrahy hello například hello kritéria pro při záznamu výstrah se vytvoří a hello závažnost výstrahy, který definuje.  Hello akce prostředků bude volitelně definovat odpověď e-mailu a sady runbook.
+- **Akce Webhooku (volitelné).**  Pokud pravidlo výstrahy hello bude volat webhook, jehož, pak vyžaduje prostředek další akce s typem **Webhooku**.    
 
-Uložené hledání, které prostředky jsou popsané výše.  Dále jsou uvedená na další prostředky.
+Uložené hledání, které prostředky jsou popsané výše.  Hello další prostředky jsou popsané níže.
 
 
 ### <a name="schedule-resource"></a>Plán prostředku
 
-Uložené hledání může mít jeden nebo více plánů s každý plán reprezentující samostatné pravidlo výstrahy. Plán definuje, jak často hledání je spustit a časový interval, za které se načítají data.  Plán prostředky mít typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/` a mít následující strukturu. Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů. 
+Uložené hledání může mít jeden nebo více plánů s každý plán reprezentující samostatné pravidlo výstrahy. Hello plán definuje, jak často hello vyhledávání běží a hello časový interval, přes které hello jsou načtena data.  Plán prostředky mít typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/` a mít hello strukturu. Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů hello. 
 
 
     {
@@ -111,27 +111,27 @@ Uložené hledání může mít jeden nebo více plánů s každý plán repreze
 
 
 
-Vlastnosti pro plán prostředky jsou popsány v následující tabulce.
+Hello vlastnosti pro plán prostředky jsou popsané v následující tabulka hello.
 
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
-| povoleno       | Ano | Určuje, zda je povoleno výstrahu, když je vytvořeno. |
-| Interval      | Ano | Jak často spuštění dotazu v minutách. |
-| QueryTimeSpan | Ano | Časový interval v minutách, přes který vyhodnotit výsledky. |
+| povoleno       | Ano | Určuje, zda text hello upozornění je povolené, když je vytvořeno. |
+| interval      | Ano | Jak často hello spuštění dotazu v minutách. |
+| QueryTimeSpan | Ano | Časový interval v minutách, přes které tooevaluate výsledky. |
 
-Plán prostředku by měl závisí na uloženého hledání tak, aby se vytvoří před plán.
+prostředek Hello plán by měl záviset na hello uložené hledání tak, aby se vytvoří před hello plán.
 
 
 ### <a name="actions"></a>Akce
-Existují dva typy prostředků akce určeného **typ** vlastnost.  Plán vyžaduje jednu **výstraha** akce, který definuje podrobnosti pravidlo výstrahy a jaké akce jsou provedeny, když se vytvoří výstraha.  Může také zahrnovat **Webhooku** akce, pokud by se měla volat webhook, jehož ve výstraze.  
+Existují dva typy akce prostředku zadaného parametrem hello **typ** vlastnost.  Plán vyžaduje jednu **výstraha** akce, který definuje hello podrobnosti hello pravidlo výstrahy a jaké akce jsou provedeny, když se vytvoří výstraha.  Může také zahrnovat **Webhooku** akce, pokud by se měla volat webhook, jehož hello výstraze.  
 
 Akce prostředky mít typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.  
 
 #### <a name="alert-actions"></a>Akce upozornění
 
-Každý plán bude mít jeden **výstrahy** akce.  Definuje podrobnosti výstrahy a volitelně oznámení a nápravné akce.  Oznámení se odešle e-mail na jeden nebo více adres.  Nápravy spuštění sady runbook ve službě Azure Automation se pokusit o napravit zjištěné potíže.
+Každý plán bude mít jeden **výstrahy** akce.  Definuje hello podrobnosti výstrahy hello a volitelně oznámení a nápravné akce.  Odešle oznámení tooone e-mailu nebo víc adres.  Nápravy spustí sadu runbook v Azure Automation tooattempt tooremediate hello zjistil problém.
 
-Akce výstrah mají následující strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů. 
+Akce výstrah mít hello strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů hello. 
 
 
 
@@ -170,23 +170,23 @@ Akce výstrah mají následující strukturu.  Jedná se o běžné parametry a 
         }
     }
 
-Vlastnosti výstrah akce prostředky jsou popsané v následujících tabulkách.
+Hello vlastnosti výstrahy akce prostředků jsou popsané v následující tabulky hello.
 
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
-| Typ | Ano | Typ akce.  Bude jím **výstraha** pro akce výstrah. |
-| Name (Název) | Ano | Zobrazovaný název výstrahy.  Toto je název, který se zobrazí v konzole pro pravidlo výstrahy. |
-| Popis | Ne | Volitelný popis výstrahy. |
-| Závažnost | Ano | Závažnost výstrahy záznam z následujících hodnot:<br><br> **Kritické**<br>**Upozornění**<br>**Informační** |
+| Typ | Ano | Typ akce hello.  Bude jím **výstraha** pro akce výstrah. |
+| Name (Název) | Ano | Zobrazovaný název pro hello výstrahu.  Toto je hello název, který se zobrazí v konzole hello pro pravidlo výstrahy hello. |
+| Popis | Ne | Volitelný popis výstrahy hello. |
+| Závažnost | Ano | Závažnost výstrahy záznam hello z hello následující hodnoty:<br><br> **Kritické**<br>**Upozornění**<br>**Informační** |
 
 
 ##### <a name="threshold"></a>Prahová hodnota
-Tento oddíl je povinný.  Definuje vlastnosti prahové hodnoty pro výstrahu.
+Tento oddíl je povinný.  Definuje vlastnosti hello hello prahové hodnoty pro výstrahu.
 
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
-| Operátor | Ano | Operátor pro porovnání z následujících hodnot:<br><br>**gt = větší než<br>lt = menší než** |
-| Hodnota | Ano | Hodnoty k porovnání výsledků. |
+| Operátor | Ano | Operátor pro porovnání hello z hello následující hodnoty:<br><br>**gt = větší než<br>lt = menší než** |
+| Hodnota | Ano | Hello hodnota toocompare hello výsledky. |
 
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
@@ -197,41 +197,41 @@ Tato část je volitelné.  Zahrňte pro upozornění na metriky měření.
 
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
-| TriggerCondition | Ano | Určuje, zda prahová hodnota pro celkový počet narušení nebo po sobě jdoucích narušení z následujících hodnot:<br><br>**Celkový počet<br>po sobě jdoucích** |
-| Operátor | Ano | Operátor pro porovnání z následujících hodnot:<br><br>**gt = větší než<br>lt = menší než** |
-| Hodnota | Ano | Počet přístupů, které musí být splněna kritéria pro aktivování upozornění. |
+| TriggerCondition | Ano | Určuje, zda text hello prahová hodnota pro celkový počet narušení nebo po sobě jdoucích narušení z hello následující hodnoty:<br><br>**Celkový počet<br>po sobě jdoucích** |
+| Operátor | Ano | Operátor pro porovnání hello z hello následující hodnoty:<br><br>**gt = větší než<br>lt = menší než** |
+| Hodnota | Ano | Počet hello časy hello kritéria musí být výstraha nesplnění tootrigger hello. |
 
 ##### <a name="throttling"></a>Omezování
-Tato část je volitelné.  Pokud chcete pro potlačení výstrahy ze stejného pravidla pro určitou dobu, po vytvoření výstrahy, zahrnují v této části.
+Tato část je volitelné.  Pokud chcete, aby toosuppress výstrahy z hello stejná pravidla pro určitou dobu, po vytvoření výstrahy, zahrnují v této části.
 
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
-| Doba trvání v minutách | Ano, pokud omezení zahrnuté – element | Počet minut pro potlačení výstrahy po vytvoření jedné ze stejné pravidlo výstrahy. |
+| Doba trvání v minutách | Ano, pokud omezení zahrnuté – element | Počet minut toosuppress výstrahy po jedné z hello, že se vytvoří stejné pravidlo výstrahy. |
 
 ##### <a name="emailnotification"></a>EmailNotification
- Tato část je volitelný ho zahrňte, pokud chcete výstrahu odesílat poštu jeden nebo více příjemcům.
+ Tato část je volitelné zahrnout jej chcete-li hello tooone výstrahy toosend e-mailu nebo další příjemce.
 
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
-| Příjemce | Ano | Čárkami oddělený seznam e-mailové adresy k odesílání oznámení, pokud je výstrahy vytvořeny jako v následujícím příkladu.<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
-| Předmět | Ano | Řádek předmětu e-mailu. |
+| Příjemce | Ano | Čárkami oddělený seznam e-mailové adresy toosend oznámení při výstrahu jako ve hello následující ukázka.<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
+| Předmět | Ano | Řádek předmětu e-mailu hello. |
 | Přílohy | Ne | Přílohy nejsou aktuálně podporovány.  Pokud tento element je zahrnuto, by měla být **žádné**. |
 
 
 ##### <a name="remediation"></a>Nápravy
-Tato část je volitelný ho zahrňte, pokud chcete sadu runbook spustit v reakci na výstrahy. |
+Tato část je volitelný ho zahrňte, pokud chcete runbook toostart v odpovědi toohello výstrahy. |
 
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
-| RunbookName | Ano | Název sady runbook spustit. |
-| WebhookUri | Ano | Identifikátor URI služby webhooku pro sadu runbook. |
-| Vypršení platnosti | Ne | Datum a čas, kdy vyprší platnost náprava. |
+| RunbookName | Ano | Název sady runbook toostart hello. |
+| WebhookUri | Ano | Identifikátor URI hello webhooku pro sadu runbook hello. |
+| Vypršení platnosti | Ne | Datum a čas, který hello nápravy vyprší. |
 
 #### <a name="webhook-actions"></a>Akce Webhooku
 
-Akce Webhooku spuštění procesu voláním adresu URL a volitelně poskytuje datové části k odeslání. Jsou podobná nápravné akce s výjimkou jsou určené pro webhooků, který může vyvolat procesy než Azure Automation runbook. Obsahují taky další možnost poskytnout datové části který bude doručen do vzdálený proces.
+Akce Webhooku spuštění procesu voláním adresu URL a volitelně poskytuje datové části toobe, odeslána. Jsou podobné tooRemediation akce s výjimkou jsou určené pro webhooků, který může vyvolat procesy než Azure Automation runbook. Obsahují taky hello další možnost poskytnout vzdáleného procesu toohello toobe doručovat datové části.
 
-Pokud upozornění bude volat webhook, jehož, pak bude je nutné prostředek akce s typem **Webhooku** kromě **výstraha** akce prostředků.  
+Pokud upozornění bude volat webhook, jehož, pak bude je nutné prostředek akce s typem **Webhooku** v přidání toohello **výstraha** akce prostředků.  
 
     {
       "name": "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name, '/', variables('Webhook').Name)]",
@@ -249,28 +249,28 @@ Pokud upozornění bude volat webhook, jehož, pak bude je nutné prostředek ak
       }
     }
 
-Vlastnosti Webhooku akce prostředky jsou popsané v následujících tabulkách.
+Hello vlastnosti Webhooku akce prostředků jsou popsané v následujících tabulkách hello.
 
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
-| type | Ano | Typ akce.  Bude jím **Webhooku** pro akce webhooku. |
-| jméno | Ano | Zobrazovaný název akce.  To se nezobrazí v konzole. |
-| wehookUri | Ano | Identifikátor URI pro webhook. |
-| CustomPayload | Ne | Vlastní datovou část k odeslání do webhooku. Formát bude záviset na co webhooku očekává. |
+| type | Ano | Typ akce hello.  Bude jím **Webhooku** pro akce webhooku. |
+| jméno | Ano | Zobrazovaný název pro akci hello.  To se nezobrazí v konzole hello. |
+| wehookUri | Ano | Identifikátor URI pro hello webhook. |
+| CustomPayload | Ne | Webhooku toohello toobe odeslat vlastní datovou část. Formát Hello bude záviset na jaké hello webhooku očekává. |
 
 
 
 
 ## <a name="sample"></a>Ukázka
 
-Tady je ukázka řešení, které zahrnují, který obsahuje následující zdroje:
+Tady je ukázka řešení, které zahrnují zahrnující hello následující prostředky:
 
 - Uložené hledání
 - Plán
 - Akce oznámení
 - Akce Webhooku
 
-Příklad používá [standardní řešení parametry](operations-management-suite-solutions-solution-file.md#parameters) proměnné, které by běžně používané v řešení oproti hardcoding hodnoty v definicích prostředků.
+Hello používá ukázka [standardní řešení parametry](operations-management-suite-solutions-solution-file.md#parameters) proměnné, které by běžně používané v řešení, jako byl proti toohardcoding hodnoty v definicích prostředků hello.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -309,7 +309,7 @@ Příklad používá [standardní řešení parametry](operations-management-sui
           "recipients": {
             "type": "string",
             "metadata": {
-              "Description": "List of recipients for the email alert separated by semicolon"
+              "Description": "List of recipients for hello email alert separated by semicolon"
             }
           }
         },
@@ -477,7 +477,7 @@ Příklad používá [standardní řešení parametry](operations-management-sui
     }
 
 
-Následující soubor parametrů obsahuje hodnoty ukázky pro toto řešení.
+Hello následující soubor parametrů obsahuje hodnoty ukázky pro toto řešení.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -506,6 +506,6 @@ Následující soubor parametrů obsahuje hodnoty ukázky pro toto řešení.
 
 
 ## <a name="next-steps"></a>Další kroky
-* [Přidání zobrazení](operations-management-suite-solutions-resources-views.md) do řešení pro správu.
-* [Přidat runbooků služeb automatizace a dalším prostředkům](operations-management-suite-solutions-resources-automation.md) do řešení pro správu.
+* [Přidání zobrazení](operations-management-suite-solutions-resources-views.md) tooyour řešení pro správu.
+* [Přidat runbooků služeb automatizace a dalším prostředkům](operations-management-suite-solutions-resources-automation.md) tooyour řešení pro správu.
 

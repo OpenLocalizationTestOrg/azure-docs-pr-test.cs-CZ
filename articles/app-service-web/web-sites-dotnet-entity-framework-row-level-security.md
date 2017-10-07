@@ -1,6 +1,6 @@
 ---
 title: "Kurz: Webové aplikace s více klienty databázi pomocí Entity Framework a zabezpečení na úrovni řádků"
-description: "Další informace jak vyvíjet webové aplikace ASP.NET MVC 5 s více klienty backent, SQL Database pomocí rozhraní Entity Framework a zabezpečení na úrovni řádků."
+description: "Zjistěte, jak toodevelop ASP.NET MVC 5 webová aplikace s více klienty backent, SQL Database pomocí rozhraní Entity Framework a zabezpečení na úrovni řádků."
 metakeywords: azure asp.net mvc entity framework multi tenant row level security rls sql database
 services: app-service\web
 documentationcenter: .net
@@ -14,30 +14,30 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/25/2016
 ms.author: thmullan
-ms.openlocfilehash: ba1bb3d84b462dfebbb2564569517d7336bf54fd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1b715e01807032c3f6497c374ce427dd762af141
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-web-app-with-a-multi-tenant-database-using-entity-framework-and-row-level-security"></a>Kurz: Webové aplikace s více klienty databázi pomocí Entity Framework a zabezpečení na úrovni řádků
-Tento kurz ukazuje, jak sestavit víceklientské webové aplikace s "[sdílenou databázi, sdílené schématu](https://msdn.microsoft.com/library/aa479086.aspx)" klientů modelu s použitím rozhraní Entity Framework a [zabezpečení na úrovni řádků](https://msdn.microsoft.com/library/dn765131.aspx). V tomto modelu jedné databáze obsahuje data pro velký počet klientů každý řádek v každé tabulce souvisí s "Klienta ID" Zabránit klientům v přístupu k výměně dat se používá nízkoúrovňového zabezpečení (RLS), novou funkci pro databázi SQL Azure. To vyžaduje pouze jediné, malé změny do aplikace. Centralizací logiky přístupu klienta v rámci samotná databáze RLS zjednodušuje kódu aplikace a snižuje riziko úniku dat náhodných mezi klienty.
+Tento kurz ukazuje, jak toobuild více klientů webové aplikace pomocí "[sdílenou databázi, sdílené schématu](https://msdn.microsoft.com/library/aa479086.aspx)" klientů modelu s použitím rozhraní Entity Framework a [zabezpečení na úrovni řádků](https://msdn.microsoft.com/library/dn765131.aspx). V tomto modelu jedné databáze obsahuje data pro velký počet klientů každý řádek v každé tabulce souvisí s "Klienta ID" Nízkoúrovňového zabezpečení (RLS), novou funkci pro databázi SQL Azure, je použít tooprevent klientům v přístupu k výměně dat. To vyžaduje pouze jedinou, aplikaci toohello malých změn. Logikou centralizace hello klienta přístup v rámci samotná databáze hello RLS zjednodušuje hello kódu aplikace a snižuje riziko úniku dat náhodných mezi klienty hello.
 
-Začněme s jednoduchou aplikaci obraťte se na správce z [vytvoření aplikace ASP.NET MVP pomocí ověřování a databázi SQL a nasazení do Azure App Service](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md). Právo nyní aplikace umožňuje všem uživatelům (klienty) Chcete-li zobrazit všechny kontakty:
+Začněme s jednoduchou aplikaci obraťte se na správce hello z [vytvoření aplikace ASP.NET MVP pomocí ověřování a databázi SQL a nasazení tooAzure služby App Service](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md). Právo teď hello aplikace umožňuje všichni uživatelé (klienty) toosee všechny kontakty:
 
 ![Obraťte se na správce aplikace před povolením RLS](./media/web-sites-dotnet-entity-framework-row-level-security/ContactManagerApp-Before.png)
 
-S několika menší změny přidáme podporu pro víceklientskou architekturu, tak, aby se uživatelé moct prohlížet pouze kontakty, které patří k nim.
+S několika menší změny přidáme podporu pro víceklientskou architekturu, tak, aby se uživatelé moct toosee pouze hello kontakty, které patří toothem.
 
-## <a name="step-1-add-an-interceptor-class-in-the-application-to-set-the-sessioncontext"></a>Krok 1: Přidání třídu interceptoru v aplikaci nastavení SESSION_CONTEXT
-Neexistuje jeden změny aplikace, které je třeba mít. Vzhledem k tomu, že všichni uživatelé aplikací připojit k databázi pomocí stejný připojovací řetězec (tj. stejné přihlašovací údaje SQL), se aktuálně nijak pro zásadu RLS vědět, kteří uživatelé měli filtrovat. Tento přístup je velmi běžné u webových aplikací, protože umožňuje efektivní sdružování připojení, ale znamená, že potřebujeme jiný způsob, jak identifikovat aktuální uživatel aplikace v rámci databáze. Řešení je nastavit pár klíč hodnota pro aktuální ID uživatele v aplikaci [SESSION_CONTEXT](https://msdn.microsoft.com/library/mt590806) okamžitě po otevření připojení, než se provede žádné dotazy. Úložiště dvojic klíč hodnota s rozsahem relace je SESSION_CONTEXT a naše zásady RLS bude používat ID uživatele v ní uloženy k identifikaci aktuálního uživatele.
+## <a name="step-1-add-an-interceptor-class-in-hello-application-tooset-hello-sessioncontext"></a>Krok 1: Přidání třídu interceptoru v hello aplikace tooset hello SESSION_CONTEXT
+Neexistuje jeden změna aplikace potřebujeme toomake. Vzhledem k tomu, že všichni uživatelé aplikací připojit databázi pomocí toohello hello stejný připojovací řetězec (tj. stejné přihlašovací údaje SQL), aktuálně neexistuje žádný způsob pro RLS tooknow zásady uživatele, který by měl filtru pro. Tento přístup je velmi běžné u webových aplikací, protože umožňuje efektivní sdružování připojení, ale znamená, že potřebujeme jiný způsob tooidentify hello aktuální uživatel aplikace v rámci hello databáze. Hello řešení je sada aplikace hello toohave pár klíč hodnota pro hello aktuální ID uživatele v hello [SESSION_CONTEXT](https://msdn.microsoft.com/library/mt590806) okamžitě po otevření připojení, než se provede žádné dotazy. Úložiště dvojic klíč hodnota s rozsahem relace je SESSION_CONTEXT a naše zásady RLS bude používat hello ID uživatele v ní uloženy tooidentify hello aktuálního uživatele.
 
-Přidáme [interceptoru](https://msdn.microsoft.com/data/dn469464.aspx) (konkrétně [DbConnectionInterceptor](https://msdn.microsoft.com/library/system.data.entity.infrastructure.interception.idbconnectioninterceptor)), nová funkce v Framework Entity (EF) 6, umožňuje automaticky nastavit aktuální ID uživatele v SESSION_CONTEXT spuštěním příkazu T-SQL vždy, když EF otevře připojení.
+Přidáme [interceptoru](https://msdn.microsoft.com/data/dn469464.aspx) (konkrétně [DbConnectionInterceptor](https://msdn.microsoft.com/library/system.data.entity.infrastructure.interception.idbconnectioninterceptor)), nová funkce v Entity Framework (EF) 6, tooautomatically sadu hello aktuální ID uživatele v hello SESSION_CONTEXT spuštěním Příkaz T-SQL vždy, když EF otevře připojení.
 
-1. Otevřete projekt ContactManager v sadě Visual Studio.
-2. Klikněte pravým tlačítkem na složku modely v Průzkumníku řešení a zvolte možnost Přidat > třída.
-3. Pojmenujte novou třídu "SessionContextInterceptor.cs" a klikněte na tlačítko Přidat.
-4. Obsah SessionContextInterceptor.cs nahraďte následujícím kódem.
+1. Otevřete hello ContactManager projektu v sadě Visual Studio.
+2. Klikněte pravým tlačítkem na složku modely hello v hello Průzkumníku řešení a zvolte možnost Přidat > třída.
+3. Pojmenujte novou třídu hello "SessionContextInterceptor.cs" a klikněte na tlačítko Přidat.
+4. Nahraďte obsah hello SessionContextInterceptor.cs hello následující kód.
 
 ```
 using System;
@@ -55,7 +55,7 @@ namespace ContactManager.Models
     {
         public void Opened(DbConnection connection, DbConnectionInterceptionContext interceptionContext)
         {
-            // Set SESSION_CONTEXT to current UserId whenever EF opens a connection
+            // Set SESSION_CONTEXT toocurrent UserId whenever EF opens a connection
             try
             {
                 var userId = System.Web.HttpContext.Current.User.Identity.GetUserId();
@@ -179,41 +179,41 @@ namespace ContactManager.Models
 }
 ```
 
-To je vyžadována změna jenom aplikace. Pokračujte a sestavení a publikování aplikace.
+Je vyžadována změna jenom aplikace hello. Pokračujte a sestavení a publikování aplikace hello.
 
-## <a name="step-2-add-a-userid-column-to-the-database-schema"></a>Krok 2: Přidáte sloupec UserId schématu databáze
-Dále je potřeba přidat sloupec ID uživatele do tabulky kontaktů pro každý řádek přidružení uživatele (klientů). Jsme změní schéma přímo v databázi, aby nemáme mají být zahrnuty v tomto poli našeho EF datového modelu.
+## <a name="step-2-add-a-userid-column-toohello-database-schema"></a>Krok 2: Přidání schéma databáze toohello sloupec ID uživatele
+V dalším kroku potřebujeme tooadd tooassociate tabulky kontaktů UserId sloupec toohello každý řádek s uživatelem (klientů). Jsme změní schéma hello přímo v hello databáze, tak, aby nemáme tooinclude toto pole v našem EF datového modelu.
 
-Připojení k databázi přímo, pomocí SQL Server Management Studio nebo Visual Studio a potom spusťte následující T-SQL:
+Připojit databáze toohello přímo, pomocí SQL Server Management Studio nebo Visual Studio a potom spusťte hello následující T-SQL:
 
 ```
 ALTER TABLE Contacts ADD UserId nvarchar(128)
     DEFAULT CAST(SESSION_CONTEXT(N'UserId') AS nvarchar(128))
 ```
 
-Tento postup přidá sloupec ID uživatele do tabulky kontaktů. Můžeme použít datový typ nvarchar(128) tak, aby odpovídaly ID uživatelů uložené v tabulce AspNetUsers a vytvoříme výchozí omezení, která bude automaticky nastavena jako ID uživatele, který je uložen v SESSION_CONTEXT ID uživatele pro nově vložené řádky.
+Tento postup přidá tabulku kontaktů toohello sloupec ID uživatele. Používáme hello nvarchar(128) datový typ toomatch hello ID uživatelů uložené v tabulce AspNetUsers hello a vytvoříme výchozí omezení, která bude automaticky nastavena hello ID uživatele pro nově vložené řádky toobe hello ID uživatele, které jsou aktuálně uloženy ve SESSION_CONTEXT.
 
-V tabulce teď vypadá takto:
+Tabulka hello teď vypadá takto:
 
 ![Tabulky kontaktů aplikace SSMS](./media/web-sites-dotnet-entity-framework-row-level-security/SSMS-Contacts.png)
 
-Při vytvoření nových kontaktů, že budete automaticky přiřazen správné ID uživatele. Pro účely ukázky však umožňuje přiřadit několik těchto existující kontakty stávajícího uživatele.
+Při vytvoření nových kontaktů, že budete automaticky přiřazen hello Opravte ID uživatele. Pro účely ukázky ale umožňuje přiřadit několik těchto existující kontakty tooan stávající uživatele.
 
-Pokud jste vytvořili na několik uživatelů v aplikaci už (například pomocí místní, Google nebo Facebooku účty), zobrazí se v tabulce AspNetUsers. Na tomto snímku obrazovky je pouze jeden uživatel dosavadní práce.
+Pokud jste vytvořili na několik uživatelů v aplikaci hello již (například pomocí místní, Google nebo Facebooku účty), zobrazí se v tabulce AspNetUsers hello. Na snímku obrazovky hello níže není dosavadní jenom s jedním uživatelem.
 
 ![Tabulka SSMS AspNetUsers](./media/web-sites-dotnet-entity-framework-row-level-security/SSMS-AspNetUsers.png)
 
-Zkopírujte Id pro user1@contoso.coma vložte jej do příkaz T-SQL níže. Spusťte tento příkaz tři kontakty přidružit ID uživatele.
+Kopírování hello Id pro user1@contoso.coma vložte jej do hello T-SQL příkaz níže. Spusťte tento příkaz tooassociate tři hello kontaktů s ID uživatele.
 
 ```
 UPDATE Contacts SET UserId = '19bc9b0d-28dd-4510-bd5e-d6b6d445f511'
 WHERE ContactId IN (1, 2, 5)
 ```
 
-## <a name="step-3-create-a-row-level-security-policy-in-the-database"></a>Krok 3: Vytvoření zásad zabezpečení na úrovni řádků v databázi
-Posledním krokem je vytvoření zásady zabezpečení, která používá ID uživatele v SESSION_CONTEXT automaticky filtrovat výsledky vrácené dotazy.
+## <a name="step-3-create-a-row-level-security-policy-in-hello-database"></a>Krok 3: Vytvoření zásad zabezpečení na úrovni řádků v databázi hello
+posledním krokem Hello je toocreate zásadu zabezpečení, která používá hello ID uživatele v SESSION_CONTEXT tooautomatically filtru hello výsledků vrácených dotazy.
 
-Pokud stále připojené k databázi, spusťte následující T-SQL:
+Při toohello stále připojená databáze spusťte hello následující T-SQL:
 
 ```
 CREATE SCHEMA Security
@@ -234,18 +234,18 @@ go
 
 ```
 
-Tento kód provede tři věci. Nejprve vytvoří nové schéma jako osvědčený postup pro centralizuje a omezení přístupu k objektům RLS. V dalším kroku vytvoří predikátem funkci, která bude vracet '1' UserId řádku odpovídá ID uživatele v SESSION_CONTEXT. Nakonec se vytvoří zásadu zabezpečení, který přidává funkce jako filtr i bloku predikát pro tabulku kontaktů. Predikát filtru způsobí, že dotazy vrátit pouze sloupce, které patří do aktuálního uživatele a predikát block funguje jako pojistku zabránit aplikaci z někdy omylem vložíte řádek pro chybné uživatelské.
+Tento kód provede tři věci. Nejprve vytvoří nové schéma jako osvědčený postup pro centralizuje a omezení přístupu toohello RLS objekty. V dalším kroku vytvoří predikátem funkci, která bude vracet '1' hello UserId řádek odpovídá hello ID uživatele v SESSION_CONTEXT. Nakonec se vytvoří zásadu zabezpečení, který přidává funkce jako filtr i bloku predikát pro tabulku kontaktů hello. Predikát filtru Hello způsobí, že dotazy tooreturn pouze řádky, které patří toohello aktuální uživatel a predikát block hello funguje jako aplikace hello tooprevent chránit z někdy omylem vložíte řádek pro chybné uživatelské hello.
 
-Nyní spusťte aplikaci a přihlaste se jako user1@contoso.com. Tento uživatel nyní uvidí pouze kontakty jsme přiřazené k ID uživatele dříve:
+Spuštění aplikace hello a přihlaste se jako teď user1@contoso.com. Tento uživatel nyní uvidí pouze hello kontakty jsme přiřazené toothis UserId dříve:
 
 ![Obraťte se na správce aplikace před povolením RLS](./media/web-sites-dotnet-entity-framework-row-level-security/ContactManagerApp-After.png)
 
-Chcete-li to další ověřit, zkuste registraci nového uživatele. Uvidí žádné kontakty, protože žádný byla přiřazena k nim. Pokud uživatel vytvořit nový kontakt, bude jí přiřazeno k nim a pouze bude moct zobrazovat.
+toovalidate to další, pokuste se registraci nového uživatele. Uvidí žádné kontakty, protože žádný byla přiřazena toothem. Pokud uživatel vytvořit nový kontakt, bude jí přiřazeno toothem a pouze budou mít toosee ho.
 
 ## <a name="next-steps"></a>Další kroky
-A to je vše! Jednoduché webové aplikace obraťte se na správce byl převeden do více klientů, jeden kde každý uživatel má svou vlastní seznamu kontaktů. Pomocí zabezpečení na úrovni řádků jsme jste předejde složitosti vynucování logiku přístupu klienta v našem kódu aplikace. Tato průhlednost umožňuje zaměřit se na aktuální skutečné obchodní problém aplikaci, a také snižuje riziko omylem úniky dat jako základu kódu aplikace zvětšování.
+A to je vše! Hello jednoduché obraťte se na správce webové aplikace byla převedena do více klientů, jeden kde každý uživatel má svou vlastní seznamu kontaktů. Pomocí zabezpečení na úrovni řádků jsme jste předejde hello složitosti vynucování logiku přístupu klienta v našem kódu aplikace. Tato průhlednost umožňuje toofocus aplikace hello na hello skutečné obchodní problém, a také snižuje riziko hello omylem úniky dat jako základu kódu aplikace hello zvětšování.
 
-V tomto kurzu má pouze poškrábání prostor co je možné s RLS. Například je možné mít víc pokročilé nebo logiku granulární přístup ale je možné uložit více než jen aktuální ID uživatele SESSION_CONTEXT. Je také možné [RLS integrovat knihovny klienta nástroje elastické databáze](../sql-database/sql-database-elastic-tools-multi-tenant-row-level-security.md) pro podporu víceklientské horizontálních oddílů v Škálováním na více systémů datové vrstvy.
+V tomto kurzu má pouze poškrábaný hello prostor co je možné s RLS. Například je možné toohave sofistikovanější nebo logiku granulární přístup a jeho možných toostore více než jen hello aktuální ID uživatele v hello SESSION_CONTEXT. Je také možné příliš[RLS integrovat knihovny klienta nástroje elastické databáze hello](../sql-database/sql-database-elastic-tools-multi-tenant-row-level-security.md) toosupport víceklientské horizontálních oddílů v Škálováním na více systémů datové vrstvy.
 
-Kromě těchto možnosti také pracujeme na RLS i vylepšit. Pokud máte nějaké otázky, nápady nebo věcí, které chcete zobrazit, dejte nám vědět, v komentářích. Děkujeme za váš názor!
+Kromě těchto možnosti také pracujeme toomake RLS ještě lepší. Pokud máte nějaké otázky, nápady nebo co byste chtěli toosee, dejte nám vědět, v komentářích hello. Děkujeme za váš názor!
 

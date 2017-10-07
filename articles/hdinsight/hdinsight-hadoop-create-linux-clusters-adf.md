@@ -1,6 +1,6 @@
 ---
-title: "Vytváření clusterů systému Hadoop na vyžádání pomocí služby Data Factory - Azure HDInsight | Microsoft Docs"
-description: "Naučte se vytvářet na vyžádání clusterů systému Hadoop v HDInsight pomocí Azure Data Factory."
+title: "aaaCreate clusterů systému Hadoop na vyžádání pomocí služby Data Factory - Azure HDInsight | Microsoft Docs"
+description: "Zjistěte, jak toocreate na vyžádání clusterů systému Hadoop v HDInsight pomocí Azure Data Factory."
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -16,36 +16,36 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/20/2017
 ms.author: spelluru
-ms.openlocfilehash: e68f1d72965d9516e0552c84d03d234c21739390
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: c869776ac270e37dec710b5fc8d2a792d9263129
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Vytvářet na vyžádání clusterů systému Hadoop v HDInsight pomocí Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-[Azure Data Factory](../data-factory/data-factory-introduction.md) je služba integrace cloudových dat, která orchestruje a automatizuje přesouvání a transformaci dat. Může vytvořit HDInsight Hadoop clusteru v běhu ke zpracování řez vstupních dat a po dokončení zpracování odstranění clusteru. Některé z výhod používání cluster systému HDInsight Hadoop na vyžádání jsou:
+[Azure Data Factory](../data-factory/data-factory-introduction.md) je služba integrace cloudových dat, která orchestruje a automatizuje hello přesouvání a transformaci dat. Může vytvořit tooprocess za běhu clusteru HDInsight Hadoop řez vstupní data a odstranění clusteru hello po dokončení zpracování hello. Některé z výhod hello pomocí cluster systému HDInsight Hadoop na vyžádání jsou:
 
-- Můžete pouze platím čas úlohy běží na clusteru HDInsight Hadoop (plus krátké doby nečinnosti konfigurovat). Fakturace pro clustery služby HDInsight se fakturují za minutu, zda jsou jejich používání, nebo ne. Při použití na vyžádání propojené služby HDInsight v objektu pro vytváření dat, jsou vytvářet clustery na vyžádání. A clustery jsou automaticky odstraněny při dokončení úlohy. Proto platíte jenom pro úlohu s krátké době nečinnosti (nastavení time to live).
-- Můžete vytvořit pracovní postup pomocí objektu pro vytváření dat kanál. Například můžete mít kanál kopírování dat z místního serveru SQL do Azure blob storage, zpracování dat při spuštění skriptu Hive a Pig skript na cluster systému HDInsight Hadoop na vyžádání. Zkopírujte výsledná data do Azure SQL Data Warehouse pro BI aplikace využívat.
-- Můžete naplánovat pracovní postup spustit pravidelně (HODINOVĚ, denně, týdně, měsíčně, atd.).
+- Můžete pouze platím pro hello čase úloha běží na clusteru HDInsight Hadoop (plus stručný konfigurovat doby nečinnosti) hello. Hello fakturace pro clustery služby HDInsight se fakturují za minutu, zda jsou jejich používání, nebo ne. Pokud používáte na vyžádání propojené služby HDInsight v objektu pro vytváření dat, hello clustery jsou vytvořeny na vyžádání. A po dokončení úlohy hello jsou automaticky odstraněny hello clustery. Proto platíte jenom pro úlohu hello systémem čas a hello krátké doby nečinnosti (nastavení time to live).
+- Můžete vytvořit pracovní postup pomocí objektu pro vytváření dat kanál. Například můžete mít hello kanálu toocopy data z tooan systému SQL Server místní úložiště objektů blob v Azure, zpracování dat hello spuštěním skriptu Hive a Pig skript na cluster systému HDInsight Hadoop na vyžádání. Zkopírujte hello výsledek data tooan Azure SQL Data Warehouse pro tooconsume BI aplikace.
+- Můžete naplánovat hello pracovního postupu toorun pravidelně (HODINOVĚ, denně, týdně, měsíčně, atd.).
 
-V Azure Data Factory objekt pro vytváření dat může mít jeden nebo více datových kanálů. Datový kanál obsahuje jeden nebo více aktivit. Existují dva typy aktivit: [aktivity přesunu dat](../data-factory/data-factory-data-movement-activities.md) a [aktivit transformace dat](../data-factory/data-factory-data-transformation-activities.md). Pro přesun dat z jiného úložiště dat zdrojového do cílového úložiště dat použijete aktivity přesunu dat (v současné době pouze aktivita kopírování). Aktivity transformace dat použijete transformace nebo zpracovat data. Aktivita HDInsight Hive je jedním z aktivit transformace podporovaných službou Data Factory. V tomto kurzu použijete aktivitu transformace Hive.
+V Azure Data Factory objekt pro vytváření dat může mít jeden nebo více datových kanálů. Datový kanál obsahuje jeden nebo více aktivit. Existují dva typy aktivit: [aktivity přesunu dat](../data-factory/data-factory-data-movement-activities.md) a [aktivit transformace dat](../data-factory/data-factory-data-transformation-activities.md). Používáte data přesun aktivity (v současné době pouze aktivita kopírování) toomove data ze zdroje dat úložiště tooa cílového úložiště dat. Data transformace aktivity tootransform nebo zpracování dat použijete. Aktivita HDInsight Hive je jedním z podporovaných službou Data Factory aktivit transformace hello. V tomto kurzu použijete aktivitu transformace Hive hello.
 
-Můžete nakonfigurovat aktivitu hive používat vlastní cluster HDInsight Hadoop nebo cluster systému HDInsight Hadoop na vyžádání. V tomto kurzu aktivity Hive v kanálu objekt pro vytváření dat je nakonfigurován na používání clusteru HDInsight na vyžádání. Proto při spuštění aktivity ke zpracování dat řezu, stane se toto:
+Aktivita toouse hive můžete nakonfigurovat vlastní cluster HDInsight Hadoop nebo cluster systému HDInsight Hadoop na vyžádání. V tomto kurzu hello Hive aktivitu v kanálu objekt pro vytváření dat hello je nakonfigurované toouse clusteru HDInsight na vyžádání. Proto při hello aktivita spuštěna tooprocess datový řez, stane se toto:
 
-1. Pro můžete v běhu při zpracování řezu se automaticky vytvoří cluster HDInsight Hadoop.  
-2. Spuštění skriptu HiveQL v clusteru zpracovává vstupní data.
-3. Po dokončení zpracování a cluster nakonfigurovaného množství času (nastavení timeToLive) nečinný odstranění clusteru HDInsight Hadoop. Pokud další datový řez je dostupný pro zpracování s timeToLive dobu nečinnosti, stejného clusteru se používá ke zpracování řezu.  
+1. Pro můžete za běhu tooprocess hello řez se automaticky vytvoří cluster HDInsight Hadoop.  
+2. spuštění skriptu HiveQL v clusteru hello zpracovává vstupní data Hello.
+3. Po dokončení zpracování hello a hello clusteru hello nakonfigurované množství času (nastavení timeToLive) nečinný, se odstraní Hello clusteru HDInsight Hadoop. Pokud hello další datový řez je k dispozici pro zpracování s timeToLive dobu nečinnosti, hello stejného clusteru je použité tooprocess hello řez.  
 
-V tomto kurzu skript HiveQL přidružený k aktivitě hive provede následující akce:
+V tomto kurzu provádí hello skript HiveQL přidružené k aktivitě hive hello hello následující akce:
 
-1. Vytvoří externí tabulku, která odkazuje na data protokolu nezpracovaná webové uložené v Azure Blob storage.
-2. Oddíly nezpracovaná data podle roku a měsíce.
-3. Ukládá oddílů data do Azure blob storage.
+1. Vytvoří externí tabulku, která odkazuje na hello nezpracovaná webového protokolu data uložená v Azure Blob storage.
+2. Hello nezpracovaná data oddíly podle roku a měsíce.
+3. Úložiště hello oddílů dat v hello úložiště objektů blob Azure.
 
-V tomto kurzu skript HiveQL přidružený k aktivitě hive vytvoří externí tabulku, která odkazuje na nezpracovaná webové protokolu data uložená ve službě Azure Blob Storage. Zde jsou řádky vzorku pro každý měsíc ve vstupním souboru.
+V tomto kurzu hello skript HiveQL přidružené k aktivitě hive hello vytvoří externí tabulku, která odkazuje na hello nezpracovaná webového protokolu data uložená v hello Azure Blob Storage. Tady jsou hello ukázka řádků pro každý měsíc ve vstupním souboru hello.
 
 ```
 2014-01-01,02:01:09,SAMPLEWEBSITE,GET,/blogposts/mvc4/step2.png,X-ARR-LOG-ID=2ec4b8ad-3cf0-4442-93ab-837317ece6a1,80,-,1.54.23.196,Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36,-,http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx,\N,200,0,0,53175,871
@@ -53,7 +53,7 @@ V tomto kurzu skript HiveQL přidružený k aktivitě hive vytvoří externí ta
 2014-03-01,02:01:10,SAMPLEWEBSITE,GET,/blogposts/mvc4/step7.png,X-ARR-LOG-ID=d7472a26-431a-4a4d-99eb-c7b4fda2cf4c,80,-,1.54.23.196,Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36,-,http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx,\N,200,0,0,30184,871
 ```
 
-Skript HiveQL oddíly nezpracovaná data podle roku a měsíce. Vytvoří tři výstupní složky podle předchozích vstup. Daná složka obsahuje soubor s položky z každý měsíc.
+oddíly skript HiveQL Hello hello nezpracovaná data podle roku a měsíce. Vytvoří tři výstupní složky podle předchozích vstup hello. Daná složka obsahuje soubor s položky z každý měsíc.
 
 ```
 adfgetstarted/partitioneddata/year=2014/month=1/000000_0
@@ -61,13 +61,13 @@ adfgetstarted/partitioneddata/year=2014/month=2/000000_0
 adfgetstarted/partitioneddata/year=2014/month=3/000000_0
 ```
 
-Seznam aktivit transformace dat služby Data Factory kromě Hive aktivity, naleznete v části [transformovat a analyzovat pomocí Azure Data Factory](../data-factory/data-factory-data-transformation-activities.md).
+Seznam aktivit transformace dat služby Data Factory v aktivitě tooHive přidání najdete v tématu [transformovat a analyzovat pomocí Azure Data Factory](../data-factory/data-factory-data-transformation-activities.md).
 
 > [!NOTE]
 > V současné době můžete vytvořit pouze verze clusteru HDInsight 3.2 z Azure Data Factory.
 
 ## <a name="prerequisites"></a>Požadavky
-Než začnete plnit pokyny v tomto článku, musíte mít následující položky:
+Než začnete hello pokyny v tomto článku, musíte mít hello následující položky:
 
 * [Předplatné Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Azure Powershell
@@ -75,19 +75,19 @@ Než začnete plnit pokyny v tomto článku, musíte mít následující položk
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell.md)]
 
 ### <a name="prepare-storage-account"></a>Příprava účtu úložiště
-V tomto scénáři můžete použít až tři účty úložiště:
+Můžete použít toothree účtů úložiště v tomto scénáři:
 
-- Výchozí účet úložiště pro HDInsight cluster
-- účet úložiště pro vstupních dat
-- účet úložiště pro výstupní data
+- Výchozí účet úložiště pro hello HDInsight cluster
+- účet úložiště pro vstupní data hello
+- účet úložiště hello výstupních dat
 
-Pro zjednodušení tento kurz, použijete jeden účet úložiště k obsluze tři účely. Najít v této části prostředí Azure PowerShell ukázkový skript provede následující úlohy:
+toosimplify hello kurzu použijete jeden úložiště účet tooserve hello tři účely. najít v této části Hello prostředí Azure PowerShell ukázkový skript provede hello následující úlohy:
 
-1. Přihlaste se k Azure.
+1. Přihlaste se tooAzure.
 2. Vytvořte skupinu prostředků Azure.
 3. Vytvoření účtu úložiště Azure.
-4. Vytvořte kontejner objektů Blob v účtu úložiště
-5. Zkopírujte následující dva soubory do kontejneru objektů Blob:
+4. Vytvořte kontejner objektů Blob v účtu úložiště hello
+5. Zkopírujte následující dva kontejner objektů Blob toohello soubory hello:
 
    * Vstupní datový soubor: [https://hditutorialdata.blob.core.windows.net/adfhiveactivity/inputdata/input.log](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/inputdata/input.log)
    * Skript HiveQL: [https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql)
@@ -95,10 +95,10 @@ Pro zjednodušení tento kurz, použijete jeden účet úložiště k obsluze t�
      Oba soubory jsou uloženy ve veřejném kontejneru Blob.
 
 
-**Příprava úložiště a kopírovat soubory pomocí Azure PowerShell:**
+**tooprepare hello úložiště a kopírovat hello soubory pomocí Azure PowerShell:**
 > [!IMPORTANT]
-> Zadejte názvy pro skupinu prostředků Azure a účet úložiště Azure, který bude vytvořen skriptem.
-> Zapište **název skupiny prostředků**, **název účtu úložiště**, a **klíč účtu úložiště** výstupem skriptem. Je nutné v další části.
+> Zadejte názvy pro skupinu prostředků Azure hello a hello účtu úložiště Azure, který bude vytvořen skriptem hello.
+> Zapište **název skupiny prostředků**, **název účtu úložiště**, a **klíč účtu úložiště** výstupem hello skriptu. Je nutné v další části hello.
 
 ```powershell
 $resourceGroupName = "<Azure Resource Group Name>"
@@ -112,10 +112,10 @@ $destStorageAccountName = $storageAccountName
 $destContainerName = "adfgetstarted" # don't change this value.
 
 ####################################
-# Connect to Azure
+# Connect tooAzure
 ####################################
-#region - Connect to Azure subscription
-Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
+#region - Connect tooAzure subscription
+Write-Host "`nConnecting tooyour Azure subscription ..." -ForegroundColor Green
 try{Get-AzureRmContext}
 catch{Login-AzureRmAccount}
 #endregion
@@ -166,7 +166,7 @@ Write-Host "`nCopied files ..." -ForegroundColor Green
 Get-AzureStorageBlob -Context $destContext -Container $destContainerName
 #endregion
 
-Write-host "`nYou will use the following values:" -ForegroundColor Green
+Write-host "`nYou will use hello following values:" -ForegroundColor Green
 write-host "`nResource group name: $resourceGroupName"
 Write-host "Storage Account Name: $destStorageAccountName"
 write-host "Storage Account Key: $destStorageAccountKey"
@@ -174,59 +174,59 @@ write-host "Storage Account Key: $destStorageAccountKey"
 Write-host "`nScript completed" -ForegroundColor Green
 ```
 
-Pokud potřebujete pomoc s skript prostředí PowerShell, přečtěte si [pomocí Azure PowerShell s Azure Storage](../storage/common/storage-powershell-guide-full.md). Pokud chcete místo toho použijte rozhraní příkazového řádku Azure, najdete v článku [příloha](#appendix) části pro skript příkazového řádku Azure CLI.
+Pokud potřebujete pomoc s skript prostředí PowerShell text hello, přečtěte si téma [hello pomocí prostředí Azure PowerShell s Azure Storage](../storage/common/storage-powershell-guide-full.md). Pokud je jako toouse rozhraní příkazového řádku Azure místo toho zobrazí hello [příloha](#appendix) části hello skript příkazového řádku Azure CLI.
 
-**K prozkoumání účet úložiště a obsah**
+**obsah tooexamine hello úložiště účet a hello**
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-2. Klikněte na tlačítko **skupiny prostředků** v levém podokně.
-3. Dvakrát klikněte na název skupiny prostředků, kterou jste vytvořili ve vašem skriptu prostředí PowerShell. Pokud máte příliš mnoho skupin prostředků, které jsou uvedeny, použijte filtr.
-4. Na **prostředky** dlaždice, musí mít jeden prostředek uvedené Pokud sdílíte s jinými projekty skupiny prostředků. Tento prostředek je účet úložiště s názvem, který jste zadali dříve. Klikněte na název účtu úložiště.
-5. Klikněte **objekty BLOB** dlaždice.
-6. Klikněte **adfgetstarted** kontejneru. Zobrazí dvě složky: **inputdata** a **skriptu**.
-7. Otevřete složku a zkontrolujte soubory ve složkách. Inputdata soubor input.log s vstupní data a složky skript obsahuje soubor skriptu HiveQL.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
+2. Klikněte na tlačítko **skupiny prostředků** v levém podokně hello.
+3. Dvakrát klikněte na název skupiny prostředků hello, kterou jste vytvořili ve vašem skriptu prostředí PowerShell. Pomocí filtru hello, pokud máte příliš mnoho skupin prostředků, které jsou uvedené.
+4. Na hello **prostředky** dlaždice, musí mít jeden prostředek uvedené Pokud sdílíte s další projekty skupiny prostředků hello. Tento prostředek je hello účet úložiště s hello název, který jste zadali dříve. Klikněte na název účtu úložiště hello.
+5. Klikněte na tlačítko hello **objekty BLOB** dlaždice.
+6. Klikněte na tlačítko hello **adfgetstarted** kontejneru. Zobrazí dvě složky: **inputdata** a **skriptu**.
+7. Otevřete složku hello a zkontrolujte hello soubory ve složkách hello. Hello inputdata soubor input.log hello se vstupní data a složky hello skript obsahuje soubor skriptu HiveQL hello.
 
 ## <a name="create-a-data-factory-using-resource-manager-template"></a>Vytvořte objekt pro vytváření dat pomocí šablony Resource Manageru
-Účet úložiště, vstupní data a skript HiveQL připravený jste připraveni k vytvoření služby Azure data factory. Existuje několik metod pro vytvoření služby data factory. V tomto kurzu vytvoříte objekt pro vytváření dat nasazením šablonu Azure Resource Manager pomocí portálu Azure. Můžete také nasadit šablony Resource Manageru pomocí [rozhraní příkazového řádku Azure](../azure-resource-manager/resource-group-template-deploy-cli.md) a [prostředí Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy-local-template). Ostatními metodami vytvoření objektu pro vytváření dat najdete v části [kurz: sestavení prvního objektu pro vytváření dat](../data-factory/data-factory-build-your-first-pipeline.md).
+Účet úložiště hello, hello vstupní data a hello skript HiveQL připravený jsou připravené toocreate služby Azure data factory. Existuje několik metod pro vytvoření služby data factory. V tomto kurzu vytvoříte objekt pro vytváření dat nasazením šablonu Azure Resource Manager pomocí hello portálu Azure. Můžete také nasadit šablony Resource Manageru pomocí [rozhraní příkazového řádku Azure](../azure-resource-manager/resource-group-template-deploy-cli.md) a [prostředí Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy-local-template). Ostatními metodami vytvoření objektu pro vytváření dat najdete v části [kurz: sestavení prvního objektu pro vytváření dat](../data-factory/data-factory-build-your-first-pipeline.md).
 
-1. Klikněte na následující obrázek pro přihlášení do Azure a otevřete šablonu Resource Manageru na webu Azure Portal. Šablona se nachází v https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json. Najdete v článku [entit služby Data Factory v šabloně](#data-factory-entities-in-the-template) části Podrobné informace o entit definované v šabloně. 
+1. Klikněte na tlačítko hello toosign bitové kopie v tooAzure a otevřete hello šablony Resource Manageru v hello portálu Azure. Šablona Hello je umístěna ve https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json. V tématu hello [entit služby Data Factory v šabloně hello](#data-factory-entities-in-the-template) části Podrobné informace o entitách definovaná v šabloně hello. 
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fadfhiveactivity%2Fdata-factory-hdinsight-on-demand.json" target="_blank"><img src="./media/hdinsight-hadoop-create-linux-clusters-adf/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. Vyberte **použít existující** možnost **skupiny prostředků** nastavení a vyberte název skupiny prostředků, kterou jste vytvořili v předchozím kroku (pomocí skriptu prostředí PowerShell).
-3. Zadejte název objektu pro vytváření dat (**název objektu pro vytváření dat**). Tento název musí být globálně jedinečný.
-4. Zadejte **název účtu úložiště** a **klíč účtu úložiště** jste si poznamenali v předchozím kroku.
-5. Vyberte **souhlasím s podmínkami a ujednáními** stanovené výše po přečtení **podmínky a ujednání**.
-6. Vyberte **připnout na řídicí panel** možnost.
-6. Klikněte na tlačítko **nákupu nebo vytvořit**. Zobrazí na dlaždici na řídicím panelu názvem **nasazení šablony**. Počkejte **skupiny prostředků** otevře se okno skupiny prostředků. Můžete také kliknutím na dlaždici s názvem jako název skupiny prostředků a otevřete okno skupiny prostředků.
-6. Kliknutím na dlaždici otevřít skupinu prostředků, je-li okně skupiny prostředků není otevřený. Nyní se zobrazí jeden další prostředek objektu pro vytváření dat uvedené kromě prostředků účtu úložiště.
-7. Klikněte na název objektu pro vytváření dat (hodnota, kterou jste zadali pro **název objektu pro vytváření dat** parametr).
-8. V okně Data Factory klikněte **Diagram** dlaždici. Diagram znázorňuje jednu aktivitu s vstupní datové sady a výstupní datové:
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fadfhiveactivity%2Fdata-factory-hdinsight-on-demand.json" target="_blank"><img src="./media/hdinsight-hadoop-create-linux-clusters-adf/deploy-to-azure.png" alt="Deploy tooAzure"></a>
+2. Vyberte **použít existující** možnost pro hello **skupiny prostředků** nastavení a vyberte hello název skupiny prostředků hello jste vytvořili v předchozím kroku hello (pomocí skriptu prostředí PowerShell).
+3. Zadejte název objektu pro vytváření dat hello (**název objektu pro vytváření dat**). Tento název musí být globálně jedinečný.
+4. Zadejte hello **název účtu úložiště** a **klíč účtu úložiště** jste si poznamenali v předchozím kroku hello.
+5. Vyberte **souhlasím toohello podmínky a ujednání** stanovené výše po přečtení **podmínky a ujednání**.
+6. Vyberte **Pin toodashboard** možnost.
+6. Klikněte na tlačítko **nákupu nebo vytvořit**. Zobrazí dlaždice na řídicí panel názvem hello **nasazení šablony**. Počkejte, dokud hello **skupiny prostředků** otevře se okno skupiny prostředků. Můžete také kliknout na hello dlaždice s názvem jako vaše skupina název tooopen hello prostředků okně skupiny prostředků.
+6. Pokud okno skupiny prostředků hello není otevřený, klikněte na skupinu prostředků hello dlaždice tooopen hello. Nyní se zobrazí jeden prostředek další objekt pro vytváření dat uvedené dále toohello úložiště účet prostředků.
+7. Klikněte na tlačítko hello název objektu pro vytváření dat (hodnota zadaná pro hello **název objektu pro vytváření dat** parametr).
+8. V okně hello objekt pro vytváření dat, klikněte na tlačítko hello **Diagram** dlaždici. Hello diagram znázorňuje jednu aktivitu s vstupní datové sady a výstupní datové:
 
     ![Azure Data Factory HDInsight na vyžádání Hive aktivity kanálu diagram](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-pipeline-diagram.png)
 
-    Názvy jsou definovány v šabloně Resource Manager.
+    názvy Hello jsou definovány v šabloně Resource Manager hello.
 9. Klikněte dvakrát na **AzureBlobOutput**.
-10. Na **poslední aktualizovat řezy**, se zobrazí jeden řez. Pokud je stav **v průběhu**, počkejte, dokud se změní na **připraven**. Obvykle trvá přibližně **20 minut** k vytvoření clusteru HDInsight.
+10. Na hello **poslední aktualizovat řezy**, zobrazí se jeden řez. Pokud je stav hello **v průběhu**, počkejte, dokud se mění příliš**připraven**. Obvykle trvá přibližně **20 minut** toocreate clusteru služby HDInsight.
 
-### <a name="check-the-data-factory-output"></a>Zkontrolujte výstup objektu pro vytváření dat
+### <a name="check-hello-data-factory-output"></a>Zkontrolujte výstup objektu pro vytváření dat hello
 
-1. Stejný postup můžete použijte v poslední relaci ke kontrole kontejnery v kontejneru adfgetstarted. Existují dva nové kontejnery kromě **adfgetsarted**:
+1. Použití hello stejný postup v hello poslední relace toocheck hello kontejnery hello kontejneru adfgetstarted. Existují dva nové kontejnery kromě příliš**adfgetsarted**:
 
-   * Kontejner s názvem, který odpovídá vzorci: `adf<yourdatafactoryname>-linkedservicename-datetimestamp`. Tento kontejner je výchozím kontejnerem pro HDInsight cluster.
-   * adfjobs: Tento kontejner je kontejner pro protokoly úlohy ADF.
+   * Kontejner s názvem, který se následující hello: `adf<yourdatafactoryname>-linkedservicename-datetimestamp`. Tento kontejner je hello výchozí kontejner pro hello HDInsight cluster.
+   * adfjobs: Tento kontejner je hello kontejner pro ADF hello v protokolech úloh.
 
-     Výstup objektu pro vytváření dat je uložen v **afgetstarted** nakonfigurované v šabloně Resource Manager.
+     Výstup objektu pro vytváření dat Hello je uložen v **afgetstarted** jak jste nakonfigurovali v hello šablony Resource Manageru.
 2. Klikněte na tlačítko **adfgetstarted**.
-3. Klikněte dvakrát na **partitioneddata**. Zobrazí **rok = 2014** složky protože ze všech webových protokolů v roce 2014.
+3. Klikněte dvakrát na **partitioneddata**. Zobrazí **rok = 2014** složky protože ze všech webových protokolů hello v roce 2014.
 
     ![Azure Data Factory HDInsight na vyžádání Hive aktivity kanálu výstup](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-output-year.png)
 
-    Pokud přejdete k podrobnostem v seznamu, zobrazí se tří složek pro leden, února a března. A je do protokolu pro každý měsíc.
+    Pokud přejdete k podrobnostem hello seznamu, zobrazí se tří složek pro leden, února a března. A je do protokolu pro každý měsíc.
 
     ![Azure Data Factory HDInsight na vyžádání Hive aktivity kanálu výstup](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-output-month.png)
 
-## <a name="data-factory-entities-in-the-template"></a>Entity služby Data Factory v šabloně
-Zde je, jak vypadá nejvyšší úrovně šablony Resource Manageru pro vytváření dat:
+## <a name="data-factory-entities-in-hello-template"></a>Entity objektu pro vytváření dat v šabloně hello
+Zde je, jak vypadá hello nejvyšší úrovně šablony Resource Manageru pro vytváření dat:
 
 ```json
 {
@@ -254,7 +254,7 @@ Zde je, jak vypadá nejvyšší úrovně šablony Resource Manageru pro vytvář
 ```
 
 ### <a name="define-data-factory"></a>Definování datové továrny
-Datovou továrnu definujete v šabloně Resource Manageru, jak je znázorněno v následující ukázce:  
+Objekt pro vytváření dat v šabloně Resource Manager hello definovat, jak je uvedeno v hello následující ukázka:  
 
 ```json
 "resources": [
@@ -265,10 +265,10 @@ Datovou továrnu definujete v šabloně Resource Manageru, jak je znázorněno v
     "location": "westus",
 }
 ```
-DataFactoryName je název objektu pro vytváření dat, které určíte při nasazování šablony. Objekt pro vytváření dat se aktuálně podporuje jenom v oblasti Východ USA, Severní Evropa a západní USA.
+Hello dataFactoryName je hello název objektu pro vytváření dat hello, které určíte při nasazování šablony hello. Objekt pro vytváření dat se aktuálně podporuje jenom v oblasti Východ USA, Severní Evropa a západní USA hello.
 
-### <a name="defining-entities-within-the-data-factory"></a>Definování entity v rámci objektu pro vytváření dat
-V šabloně JSON jsou definovány následující entity služby Data Factory:
+### <a name="defining-entities-within-hello-data-factory"></a>Definování entity v rámci objektu pro vytváření dat hello
+Hello následující entity služby Data Factory jsou definovány v šabloně hello JSON:
 
 * [Propojená služba Azure Storage](#azure-storage-linked-service)
 * [Propojená služba HDInsightu na vyžádání](#hdinsight-on-demand-linked-service)
@@ -277,7 +277,7 @@ V šabloně JSON jsou definovány následující entity služby Data Factory:
 * [Data Pipeline s aktivitou kopírování](#data-pipeline)
 
 #### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
-Propojená služba AzureStorage propojí váš účet služby Azure Storage s datovou továrnou. V tomto kurzu se používá stejný účet úložiště jako výchozí účet úložiště HDInsight, úložiště vstupní data a výstupní datové úložiště. Proto můžete definovat jen jeden Azure Storage, propojené služby. V definici propojené služby je třeba zadat název a klíč účtu úložiště Azure. Podrobnosti o vlastnostech JSON sloužících k definování propojené služby Azure Storage najdete v oddílu [Propojená služba Azure Storage](../data-factory/data-factory-azure-blob-connector.md#azure-storage-linked-service).
+Hello Azure Storage propojená služba propojuje účet úložiště Azure toohello datovou továrnu. V tomto kurzu hello stejný účet úložiště se používá jako hello výchozí účet úložiště HDInsight, úložiště vstupní data a výstupní datové úložiště. Proto můžete definovat jen jeden Azure Storage, propojené služby. V definici hello propojené služby je třeba zadat název hello a klíč účtu úložiště Azure. V tématu [propojená služba Azure Storage](../data-factory/data-factory-azure-blob-connector.md#azure-storage-linked-service) podrobnosti o toodefine vlastnosti používané JSON Azure Storage, propojené služby.
 
 ```json
 {
@@ -293,10 +293,10 @@ Propojená služba AzureStorage propojí váš účet služby Azure Storage s d
     }
 }
 ```
-Vlastnost **connectionString** používá parametry storageAccountName a storageAccountKey. Zadejte hodnoty pro tyto parametry při nasazení šablony.  
+Hello **connectionString** používá hello storageAccountName a storageAccountKey parametry. Zadejte hodnoty pro tyto parametry při nasazování šablony hello.  
 
 #### <a name="hdinsight-on-demand-linked-service"></a>Propojená služba HDInsightu na vyžádání
-V definici služby propojené HDInsight na vyžádání zadejte hodnoty pro parametry konfigurace, které jsou používány služba Data Factory k vytvoření clusteru HDInsight Hadoop za běhu. Podrobnosti o vlastnostech JSON používaných k definici propojené služby HDInsightu najdete v článku [Propojené služby Compute](../data-factory/data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).  
+V hello HDInsight na vyžádání propojené definice služby, zadejte hodnoty pro parametry konfigurace, které jsou používány toocreate služby Data Factory hello clusteru HDInsight Hadoop za běhu. V tématu [výpočetní propojené služby](../data-factory/data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) článek podrobnosti o toodefine vlastnosti používané JSON propojené služby HDInsight na vyžádání.  
 
 ```json
 
@@ -322,20 +322,20 @@ V definici služby propojené HDInsight na vyžádání zadejte hodnoty pro para
     }
 }
 ```
-Je třeba počítat s následujícím:
+Všimněte si hello následující body:
 
-* Vytvoří objekt pro vytváření dat **systémem Linux** HDInsight cluster.
-* Vytvoření clusteru HDInsight Hadoop ve stejné oblasti jako účet úložiště.
-* Upozornění *timeToLive* nastavení. Objekt pro vytváření dat cluster odstraní automaticky po clusteru se v nečinnosti, po dobu 30 minut.
-* Cluster HDInsight vytvoří **výchozí kontejner** ve službě Blob Storage, kterou jste určili v kódu JSON (**linkedServiceName**). Při odstranění clusteru HDInsight neprovede odstranění tohoto kontejneru. Toto chování je záměrné. Díky propojené službě HDInsight na vyžádání se cluster HDInsight vytvoří pokaždé, když je potřeba zpracovat určitý řez, pokud neexistuje aktivní cluster (**timeToLive**), a po dokončení zpracování se zase odstraní.
+* Hello Data Factory vytvoří **systémem Linux** HDInsight cluster.
+* Hello clusteru HDInsight Hadoop je vytvořen v hello stejné oblasti jako účet úložiště hello.
+* Všimněte si hello *timeToLive* nastavení. objekt pro vytváření dat Hello automaticky odstraní hello clusteru po hello clusteru se nečinnosti, po dobu 30 minut.
+* Vytvoří Hello HDInsight cluster **výchozí kontejner** v úložišti objektů blob hello jste zadali v hello JSON (**linkedServiceName**). HDInsight neprovede odstranění tohoto kontejneru při odstranění clusteru hello. Toto chování je záměrné. S na vyžádání propojené služby HDInsight, HDInsight cluster vytvoří pokaždé, když řez musí toobe zpracování, pokud neexistuje aktivní cluster (**timeToLive**) a po dokončení zpracování hello, se odstraní.
 
 Podrobnosti najdete v tématu [Propojená služba HDInsight na vyžádání](../data-factory/data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 
 > [!IMPORTANT]
-> Po zpracování dalších řezů se vám ve službě Azure Blob Storage objeví spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů používají následující formát: „adf**název_vašeho_objektu_pro_vytváření_dat**-**název_propojené_služby**-razítko_data_a_času“. K odstranění kontejnerů ze služby Azure Blob Storage můžete použít nástroje, jako je třeba [Průzkumník úložišť od Microsoftu](http://storageexplorer.com/).
+> Po zpracování dalších řezů se vám ve službě Azure Blob Storage objeví spousta kontejnerů. Pokud pro řešení potíží s hello úloh je nepotřebujete, můžete toodelete je úložiště hello tooreduce náklady. vzor podle Hello názvy těchto kontejnerů: "adf**název_vašeho_objektu_pro_vytváření_dat**-**linkedservicename**- razítko_data_a_času". Pomocí nástrojů, jako [Microsoft Storage Explorer](http://storageexplorer.com/) toodelete kontejnery ve vaší službě Azure blob storage.
 
 #### <a name="azure-blob-input-dataset"></a>Vstupní datová sada Azure Blob
-V definici vstupní datové sady zadejte názvy kontejneru objektů blob, složku a soubor, který obsahuje vstupní data. Podrobnosti o vlastnostech JSON sloužících k definování datové sady Azure Blob najdete v oddílu [Vlastnosti datové sady Azure Blob](../data-factory/data-factory-azure-blob-connector.md#dataset-properties).
+V definici hello vstupní datové sady zadejte názvy hello kontejner objektů blob, složku a soubor, který obsahuje vstupní data hello. V tématu [vlastnosti datové sady objektu Blob Azure](../data-factory/data-factory-azure-blob-connector.md#dataset-properties) podrobnosti o JSON vlastnosti používané toodefine datové sadě služby Azure Blob.
 
 ```json
 
@@ -369,7 +369,7 @@ V definici vstupní datové sady zadejte názvy kontejneru objektů blob, složk
 
 ```
 
-Všimněte si následujících konkrétní nastavení v definici JSON:
+Všimněte si následujících konkrétní nastavení v definici JSON hello hello:
 
 ```json
 "fileName": "input.log",
@@ -377,7 +377,7 @@ Všimněte si následujících konkrétní nastavení v definici JSON:
 ```
 
 #### <a name="azure-blob-output-dataset"></a>Výstupní datová sada Azure Blob
-V definici výstupní datovou sadu zadejte názvy kontejneru objektů blob a složky, která obsahuje výstupní data. Podrobnosti o vlastnostech JSON sloužících k definování datové sady Azure Blob najdete v oddílu [Vlastnosti datové sady Azure Blob](../data-factory/data-factory-azure-blob-connector.md#dataset-properties).  
+V definici datové sady výstup hello zadejte názvy hello kontejner objektů blob a složky, která obsahuje hello výstupní data. V tématu [vlastnosti datové sady objektu Blob Azure](../data-factory/data-factory-azure-blob-connector.md#dataset-properties) podrobnosti o JSON vlastnosti používané toodefine datové sadě služby Azure Blob.  
 
 ```json
 
@@ -408,13 +408,13 @@ V definici výstupní datovou sadu zadejte názvy kontejneru objektů blob a slo
 }
 ```
 
-FolderPath Určuje cestu ke složce, která obsahuje výstupní data:
+Hello folderPath určuje hello cesta toohello složky, která obsahuje výstupní data hello:
 
 ```json
 "folderPath": "adfgetstarted/partitioneddata",
 ```
 
-[Datovou sadu dostupnosti](../data-factory/data-factory-create-datasets.md#dataset-availability) nastavení vypadá takto:
+Hello [datovou sadu dostupnosti](../data-factory/data-factory-create-datasets.md#dataset-availability) nastavení vypadá takto:
 
 ```json
 "availability": {
@@ -424,10 +424,10 @@ FolderPath Určuje cestu ke složce, která obsahuje výstupní data:
 },
 ```
 
-V Azure Data Factory výstupní datovou sadu dostupnosti jednotky kanálu. V tomto příkladu je řez vytváří jednou měsíčně poslední den v měsíci (EndOfInterval). Další informace najdete v tématu [Data Factory plánování a provádění](../data-factory/data-factory-scheduling-and-execution.md).
+V Azure Data Factory, výstupní datovou sadu dostupnosti jednotky hello kanálu. V tomto příkladu hello řez vytváří jednou měsíčně hello poslední den v měsíci (EndOfInterval). Další informace najdete v tématu [Data Factory plánování a provádění](../data-factory/data-factory-scheduling-and-execution.md).
 
 #### <a name="data-pipeline"></a>Data Pipeline
-Můžete definovat kanál, který transformuje data pomocí skriptu Hive v clusteru Azure HDInsight na vyžádání. Popisy elementů JSON sloužících k definování kanálu v tomto příkladu najdete v oddílu [Kód JSON kanálu](../data-factory/data-factory-create-pipelines.md#pipeline-json).
+Můžete definovat kanál, který transformuje data pomocí skriptu Hive v clusteru Azure HDInsight na vyžádání. V tématu [JSON kanálu](../data-factory/data-factory-create-pipelines.md#pipeline-json) popisy toodefine prvky používané JSON kanálu v tomto příkladu.
 
 ```json
 {
@@ -479,28 +479,28 @@ Můžete definovat kanál, který transformuje data pomocí skriptu Hive v clust
 }
 ```
 
-Kanál obsahuje jednu aktivitu, aktivita HDInsightHive. Jako počáteční a koncová data jsou v leden 2016, data pro pouze jeden měsíc () zpracování řezu se. Obě *spustit* a *end* aktivity mají na datum v minulosti, takže objektu pro vytváření dat zpracovává data pro daný měsíc okamžitě. Pokud element end budoucí datum, data factory vytvoří jiné řez, když nastane čas. Další informace najdete v tématu [Data Factory plánování a provádění](../data-factory/data-factory-scheduling-and-execution.md).
+Hello kanál obsahuje jednu aktivitu, aktivita HDInsightHive. Jako počáteční a koncová data jsou v leden 2016, data pro pouze jeden měsíc () zpracování řezu se. Obě *spustit* a *end* hello aktivity mají na datum v minulosti, takže hello objekt pro vytváření dat zpracovává data pro měsíc hello okamžitě. Pokud koncový hello je budoucí datum, hello data factory vytvoří jiné řez, pokud nastane čas hello. Další informace najdete v tématu [Data Factory plánování a provádění](../data-factory/data-factory-scheduling-and-execution.md).
 
-## <a name="clean-up-the-tutorial"></a>Vyčistěte kurz
+## <a name="clean-up-hello-tutorial"></a>Vyčistěte kurz hello
 
-### <a name="delete-the-blob-containers-created-by-on-demand-hdinsight-cluster"></a>Odstranění kontejnerů objektů blob, vytvořit cluster HDInsight na vyžádání
-S na vyžádání propojené služby HDInsight HDInsight cluster vytvoří pokaždé, když řez je potřeba zpracovat, pokud neexistuje aktivní cluster (timeToLive); a cluster bude odstraněn, pokud se provádí zpracování. Pro každý cluster Azure Data Factory vytvoří kontejner objektů blob v Azure blob storage používá jako výchozí účet stroage pro cluster. I když dojde k odstranění clusteru HDInsight, nebudou odstraněny výchozího kontejneru blob storage a přidruženého účtu úložiště. Toto chování je záměrné. Po zpracování dalších řezů se vám ve službě Azure Blob Storage objeví spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: `adfyourdatafactoryname-linkedservicename-datetimestamp`.
+### <a name="delete-hello-blob-containers-created-by-on-demand-hdinsight-cluster"></a>Odstranění kontejnerů objektů blob hello vytvořené clusteru HDInsight na vyžádání
+S na vyžádání propojené služby HDInsight HDInsight cluster vytvoří pokaždé, když řez musí toobe zpracování, pokud neexistuje aktivní cluster (timeToLive); a hello clusteru se odstraní po dokončení zpracování hello. Pro každý cluster Azure Data Factory vytvoří kontejner objektů blob v hello úložiště objektů blob v Azure jako hello výchozí stroage účet pro hello clusteru. To i v případě odstranění clusteru HDInsight, nebudou odstraněny hello výchozího kontejneru blob storage a hello přidruženého účtu úložiště. Toto chování je záměrné. Po zpracování dalších řezů se vám ve službě Azure Blob Storage objeví spousta kontejnerů. Pokud pro řešení potíží s hello úloh je nepotřebujete, můžete toodelete je úložiště hello tooreduce náklady. vzor podle Hello názvy těchto kontejnerů: `adfyourdatafactoryname-linkedservicename-datetimestamp`.
 
-Odstranit **adfjobs** a **adfyourdatafactoryname-linkedservicename razítko_data_a_času** složky. Kontejner adfjobs obsahuje protokoly úlohy Azure Data Factory.
+Odstranit hello **adfjobs** a **adfyourdatafactoryname-linkedservicename razítko_data_a_času** složky. Hello adfjobs kontejner obsahuje protokoly úlohy Azure Data Factory.
 
-### <a name="delete-the-resource-group"></a>Odstraňte skupinu prostředků
-[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) se používá k nasazení, správě a monitorování vašeho řešení jako se skupinou.  Odstranění skupiny prostředků se odstraní všechny součásti ve skupině.  
+### <a name="delete-hello-resource-group"></a>Odstraňte skupinu prostředků hello
+[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) je použité toodeploy, správu a sledování řešení jako se skupinou.  Odstranění skupiny prostředků se odstraní všechny součásti hello uvnitř skupiny hello.  
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-2. Klikněte na tlačítko **skupiny prostředků** v levém podokně.
-3. Klikněte na název skupiny prostředků, kterou jste vytvořili ve vašem skriptu prostředí PowerShell. Pokud máte příliš mnoho skupin prostředků, které jsou uvedeny, použijte filtr. Skupina prostředků se otevře v novém okně.
-4. Na **prostředky** dlaždice, musí mít výchozí účet úložiště a objektu pro vytváření dat uvedené Pokud sdílíte s jinými projekty skupiny prostředků.
-5. Klikněte na tlačítko **odstranit** nahoře v okně. Díky tomu odstraní účet úložiště a data uložená v účtu úložiště.
-6. Zadejte název skupiny prostředků Potvrdit odstranění, a pak klikněte na **odstranit**.
+1. Přihlaste se toohello [portál Azure](https://portal.azure.com).
+2. Klikněte na tlačítko **skupiny prostředků** v levém podokně hello.
+3. Klikněte na název skupiny prostředků hello, kterou jste vytvořili ve vašem skriptu prostředí PowerShell. Pomocí filtru hello, pokud máte příliš mnoho skupin prostředků, které jsou uvedené. Hello skupiny prostředků se otevře v novém okně.
+4. Na hello **prostředky** dlaždice, musí mít hello výchozí účet úložiště a hello data factory uvedené Pokud sdílíte s další projekty skupiny prostředků hello.
+5. Klikněte na tlačítko **odstranit** na hello horní části okna hello. Díky tomu odstraní účet úložiště hello a hello data uložená v účtu úložiště hello.
+6. Zadejte odstranění tooconfirm hello prostředků skupiny název a pak klikněte na tlačítko **odstranit**.
 
-V případě, že nechcete odstranit účet úložiště, když odstraníte skupinu prostředků, zvažte následující architektura oddělením firemních dat z výchozí účet úložiště. V takovém případě je třeba jedna skupina prostředků pro účet úložiště s daty obchodních a jiné skupině prostředků pro výchozí účet úložiště pro HDInsight propojené služby a služby data factory. Pokud odstraníte druhé skupině prostředků, neovlivní účet úložiště obchodní data. Postupujte následovně:
+V případě, že při odstranění skupiny prostředků hello nechcete, aby účet úložiště hello toodelete, vezměte v úvahu hello následující architektura oddělením hello podniková data z hello výchozí účet úložiště. V takovém případě máte jednu skupinu prostředků pro účet úložiště hello s hello obchodních dat a hello jiné skupině prostředků pro hello výchozí účet úložiště pro HDInsight propojené služby a hello služby data factory. Při odstranění skupiny prostředků druhý hello neovlivní účet úložiště dat hello firmy. toodo tak:
 
-* Přidejte následující ke skupině prostředků nejvyšší úrovně společně s Microsoft.DataFactory/datafactories prostředků ve vaší šabloně Resource Manager. Vytvoří účet úložiště:
+* Přidejte hello následující skupiny nejvyšší úrovně prostředků toohello společně s hello Microsoft.DataFactory/datafactories prostředků ve vaší šabloně Resource Manager. Vytvoří účet úložiště:
 
     ```json
     {
@@ -517,7 +517,7 @@ V případě, že nechcete odstranit účet úložiště, když odstraníte skup
         }
     },
     ```
-* Přidejte nový bod propojené služby do nového účtu úložiště:
+* Přidejte nové propojené služby bodu toohello nový účet úložiště:
 
     ```json
     {
@@ -533,7 +533,7 @@ V případě, že nechcete odstranit účet úložiště, když odstraníte skup
         }
     },
     ```
-* Nakonfigurujte další dependsOn a additionalLinkedServiceNames ondemand propojená služba HDInsight:
+* Nakonfigurujte další dependsOn a additionalLinkedServiceNames hello HDInsight ondemand propojené služby:
 
     ```json
     {
@@ -562,7 +562,7 @@ V případě, že nechcete odstranit účet úložiště, když odstraníte skup
     },            
     ```
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste se naučili, jak používat Azure Data Factory k vytvoření clusteru HDInsight na vyžádání ke zpracování úloh Hive. Další informace:
+V tomto článku jste se naučili jak toouse Azure Data Factory toocreate na vyžádání HDInsight clusteru tooprocess úloh Hive. Další tooread:
 
 * [Kurz Hadoopu: začněte používat systémem Linux Hadoop v HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md)
 * [Vytvořit clustery se systémem Linux Hadoop v HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
@@ -572,11 +572,11 @@ V tomto článku jste se naučili, jak používat Azure Data Factory k vytvořen
 ## <a name="appendix"></a>Příloha
 
 ### <a name="azure-cli-script"></a>Azure CLI skriptu
-Místo použití prostředí Azure PowerShell udělat tento kurz můžete použít rozhraní příkazového řádku Azure. Chcete-li používat rozhraní příkazového řádku Azure, nejprve nainstalujte rozhraní příkazového řádku Azure podle následujících pokynů:
+Místo použití prostředí Azure PowerShell toodo hello kurzu můžete použít rozhraní příkazového řádku Azure. toouse rozhraní příkazového řádku Azure, nejprve nainstalujte rozhraní příkazového řádku Azure podle pokynů hello:
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
-#### <a name="use-azure-cli-to-prepare-the-storage-and-copy-the-files"></a>Příprava úložiště a zkopírujte soubory pomocí rozhraní příkazového řádku Azure
+#### <a name="use-azure-cli-tooprepare-hello-storage-and-copy-hello-files"></a>Používat rozhraní příkazového řádku Azure tooprepare hello úložiště a kopírovat soubory hello
 
 ```
 azure login
@@ -594,4 +594,4 @@ azure storage blob copy start "https://hditutorialdata.blob.core.windows.net/adf
 azure storage blob copy start "https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql" --dest-account-name "<Azure Storage Account Name>" --dest-account-key "<Azure Storage Account Key>" --dest-container "adfgetstarted"
 ```
 
-Název kontejneru je *adfgetstarted*. Protože se jedná, uchovávejte ho. V opačném případě je potřeba aktualizovat šablony Resource Manageru. Pokud potřebujete pomoc s Tento skript rozhraní příkazového řádku, přečtěte si [použití Azure CLI s Azure Storage](../storage/common/storage-azure-cli.md).
+název kontejneru Hello je *adfgetstarted*. Protože se jedná, uchovávejte ho. V opačném případě je nutné šablony Resource Manageru tooupdate hello. Pokud potřebujete pomoc s Tento skript rozhraní příkazového řádku, přečtěte si [hello pomocí rozhraní příkazového řádku Azure s Azure Storage](../storage/common/storage-azure-cli.md).

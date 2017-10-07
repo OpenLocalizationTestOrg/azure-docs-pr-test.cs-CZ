@@ -1,6 +1,6 @@
 ---
-title: "Podrobné informace do předpovědi vehicle stavu a řídí zvyklosti - Azure | Microsoft Docs"
-description: "Pomocí možnosti Cortana Intelligence získat přehledy v reálném čase a prediktivní na vehicle stavu a řídí zvyklosti."
+title: "podrobně aaaDeep předpovědi vehicle stavu a řídí zvyklosti - Azure | Microsoft Docs"
+description: "Pomocí možnosti hello Cortana Intelligence toogain v reálném čase a prediktivní Statistika na vehicle stavu a řídí zvyklosti."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.openlocfilehash: 0a4dba58445cf0fd9fd8f51d443576bacd92251b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ba1448a5081762292561f904d9ec54617c9a5330
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Scénář řešení analýzy telemetrie vozidla: podrobné informace o řešení
-To **nabídky** odkazy na části této playbook: 
+# <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-hello-solution"></a>Vehicle telemetrie analytics řešení playbook: podrobné informace do řešení hello
+To **nabídky** odkazy toohello části této playbook: 
 
 [!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
-Tato část podrobněji zanalyzuje data do každé z fází znázorněný v architektuře řešení s pokyny a ukazatele pro přizpůsobení. 
+Tato část podrobněji zanalyzuje data do v jednotlivých fázích hello znázorněný v hello architektury řešení s pokyny a ukazatele pro přizpůsobení. 
 
 ## <a name="data-sources"></a>Zdroje dat
-Toto řešení využívá dva různé datové zdroje:
+řešení Hello používá dvou různých zdrojů dat.:
 
 * **simulated vehicle signály a diagnostiky datovou sadu** a 
 * **vehicle katalogu**
 
-Vehicle telematika jsme je součástí tohoto řešení. Vysílá diagnostické informace a signály odpovídající stavu nástroj a podporovat jeho vzor k danému bodu v čase. Klikněte na tlačítko [Vehicle telematika simulátoru](http://go.microsoft.com/fwlink/?LinkId=717075) ke stažení **Vehicle telematika simulátoru Visual Studio řešení** přizpůsobení podle svých požadavků. Katalogu vehicle obsahuje odkaz na datovou sadu s VIN pro mapování modelu.
+Vehicle telematika jsme je součástí tohoto řešení. Vysílá diagnostické informace a signály odpovídající toohello stav hello vehicle a toohello řídí vzor k danému bodu v čase. Klikněte na tlačítko [Vehicle telematika simulátoru](http://go.microsoft.com/fwlink/?LinkId=717075) toodownload hello **Vehicle telematika simulátoru Visual Studio řešení** přizpůsobení podle svých požadavků. Hello vehicle katalogu obsahuje odkaz na datovou sadu s VIN toomodel mapování.
 
 ![Vehicle telematika simulátoru](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig1-vehicle-telematics-simulator.png)
 
 *Obrázek 1 – Vehicle telematika simulátoru*
 
-Toto je datová sada formátu JSON, který obsahuje následující schéma.
+Toto je datovou sadu formátu JSON, který obsahuje následující schéma hello.
 
 | Sloupec | Popis | Hodnoty |
 | --- | --- | --- |
 | VIN |Náhodně generované identifikační číslo |To se získávají z hlavní seznam 10 000 náhodně generované vehicle identifikačními čísly. |
-| Mimo teploty |Mimo teploty, kde je nástroj Řízení |Náhodně generované číslo od 0 – 100 |
-| Modul teploty |Modul teplota nástroj |Náhodně generované číslo od 0-500 |
-| Rychlost |Modul rychlost, jakou se řídí nástroj |Náhodně generované číslo od 0 – 100 |
-| Paliva |Úroveň paliva nástroj |Náhodně generované číslo od 0 až 100 (určuje procento úrovně paliva) |
-| EngineOil |Úroveň modulu těžba ropy nástroj |Náhodně generované číslo od 0 až 100 (určuje procento úrovně těžba ropy modul) |
-| Můžete zadat přetížení |Můžete zadat tlak nástroj |Náhodně generované číslo od 0 – 50 (určuje procento úrovně zatížení můžete zadat) |
-| Počítadlo kilometrů |Čtení počítadlo kilometrů nástroj |Náhodně generované číslo od 0 200000 |
-| Accelerator_pedal_position |Nástroj Pedálové pozici akcelerátoru |Náhodně generované číslo od 0 až 100 (určuje procento úrovně akcelerátoru) |
-| Parking_brake_status |Určuje, zda nástroj zaparkováno nebo ne |True nebo False |
-| Headlamp_status |Určuje, kde je světlometu na nebo ne |True nebo False |
-| Brake_pedal_status |Určuje, zda je nebo není stisknuta brzdového pedálu |True nebo False |
-| Transmission_gear_position |Pozice ozubené kolečko přenosu nástroj |Stavy: první, druhá, třetí a čtvrté, páté, šestého, sedmá, osmého |
-| Ignition_status |Určuje, zda je spuštěná nebo zastavená nástroj |True nebo False |
-| Windshield_wiper_status |Určuje, zda stírání čelního skla zapnutý, nebo ne |True nebo False |
+| Mimo teploty |Hello mimo teploty, které řídí hello vehicle |Náhodně generované číslo od 0 – 100 |
+| Modul teploty |modul teplota Hello hello vehicle |Náhodně generované číslo od 0-500 |
+| Rychlost |rychlost Hello modul, na které hello vehicle řídí |Náhodně generované číslo od 0 – 100 |
+| Paliva |úroveň paliva Hello hello vehicle |Náhodně generované číslo od 0 až 100 (určuje procento úrovně paliva) |
+| EngineOil |Hello modul těžba ropy úroveň hello vehicle |Náhodně generované číslo od 0 až 100 (určuje procento úrovně těžba ropy modul) |
+| Můžete zadat přetížení |můžete zadat tlak Hello hello vehicle |Náhodně generované číslo od 0 – 50 (určuje procento úrovně zatížení můžete zadat) |
+| Počítadlo kilometrů |čtení počítadlo kilometrů Hello vozidel hello |Náhodně generované číslo od 0 200000 |
+| Accelerator_pedal_position |Hello akcelerátoru Pedálové pozici hello vehicle |Náhodně generované číslo od 0 až 100 (určuje procento úrovně akcelerátoru) |
+| Parking_brake_status |Určuje, zda text hello vehicle zaparkováno nebo ne |True nebo False |
+| Headlamp_status |Určuje, kde je hello světlometu na nebo ne |True nebo False |
+| Brake_pedal_status |Určuje, zda text hello brzdového pedálu stisknutí nebo ne |True nebo False |
+| Transmission_gear_position |Hello přenosu ozubené kolečko pozici hello vehicle |Stavy: první, druhá, třetí a čtvrté, páté, šestého, sedmá, osmého |
+| Ignition_status |Určuje, zda je spuštěná nebo zastavená hello vehicle |True nebo False |
+| Windshield_wiper_status |Určuje, zda stírání čelního skla hello zapnutý, nebo ne |True nebo False |
 | ABS |Určuje, zda je nebo není zařazen ABS |True nebo False |
-| časové razítko |Časové razítko vytvoření datového bodu |Datum |
-| Město |Umístění nástroj |4 města v tomto řešení: Bellevue, Redmond, Sammamish, Praha |
+| časové razítko |časové razítko Hello při vytvoření hello datového bodu |Datum |
+| Město |umístění Hello hello vehicle |4 města v tomto řešení: Bellevue, Redmond, Sammamish, Praha |
 
-Vehicle modelu referenční datová sada obsahuje VIN mapování modelu. 
+Hello vehicle modelu referenční datová sada obsahuje VIN toohello modelu mapování. 
 
 | VIN | Model |
 | --- | --- |
@@ -105,10 +105,10 @@ Vehicle modelu referenční datová sada obsahuje VIN mapování modelu.
 [Azure Data Factory](https://azure.microsoft.com/documentation/learning-paths/data-factory/)
 
 ## <a name="ingestion"></a>Přijímání
-Kombinace Azure Event Hubs, Stream Analytics a objektu pro vytváření dat jsou využity k ingestování signály vehicle, diagnostických událostí a v reálném čase a analýza služby batch. Všechny tyto součásti vytvoříte a nakonfigurujete jako součást nasazení řešení. 
+Kombinace Azure Event Hubs, Stream Analytics a objektu pro vytváření dat jsou využity tooingest hello vehicle signály, hello diagnostických událostí a v reálném čase a analýza služby batch. Všechny tyto součásti vytvoříte a nakonfigurujete jako součást nasazení řešení hello. 
 
 ### <a name="real-time-analysis"></a>Analýzy v reálném čase
-Události vygenerované pomocí simulátoru telematika Vehicle jsou publikovány do centra událostí pomocí sady SDK centra událostí. Úloha Stream Analytics ingestuje tyto události z centra událostí a zpracovává data v reálném čase analyzovat vehicle stavu. 
+Hello událostí generovaných hello Vehicle telematika simulátoru jsou publikované pomocí centra událostí toohello hello SDK centra událostí. Úloha Stream Analytics Hello ingestuje tyto události z hello centra událostí a procesy hello data v reálném čase tooanalyze hello vehicle stavu. 
 
 ![Řídicí panel centra událostí](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig4-vehicle-telematics-event-hub-dashboard.png) 
 
@@ -118,32 +118,32 @@ Události vygenerované pomocí simulátoru telematika Vehicle jsou publikovány
 
 *Obrázek 5 – úloha Stream Analytics zpracování dat*
 
-Úloha Stream Analytics;
+Úloha Stream Analytics Hello;
 
-* ingestuje dat z centra událostí 
-* provede připojení k u referenčních dat pro mapování vehicle VIN odpovídající modelu 
+* ingestuje data z hello centra událostí 
+* provede připojení k s hello referenční data toomap hello vehicle VIN toohello odpovídající model 
 * dál je do Azure blob storage analytics bohaté batch. 
 
-Následující dotaz služby Stream Analytics se používá k uchování dat do úložiště objektů blob Azure. 
+Následující dotaz služby Stream Analytics Hello je použité toopersist hello data do úložiště objektů blob Azure. 
 
 ![Dotaz úlohy Stream Analytics přijímání dat](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig6-vehicle-telematics-stream-analytics-job-query-for-data-ingestion.png) 
 
 *Obrázek 6 - Stream Analytics úlohy dotazu pro přijímání dat*
 
 ### <a name="batch-analysis"></a>Dávková analýza
-Také jsme generují další svazek simulované vehicle signály a diagnostiky datové sady pro širší batch analýzu. To je potřeba zajistit dobrý reprezentativní datový svazek pro dávkové zpracování. Pro tento účel používáme kanál s názvem "PrepareSampleDataPipeline" v pracovním postupu Azure Data Factory ke generování za jeden rok simulované vehicle signály a diagnostiky datové sady. Klikněte na tlačítko [vlastní aktivity služby Data Factory](http://go.microsoft.com/fwlink/?LinkId=717077) ke stažení pro vytváření dat vlastní DotNet aktivita řešení sady Visual Studio pro přizpůsobení podle požadavků. 
+Také jsme generují další svazek simulované vehicle signály a diagnostiky datové sady pro širší batch analýzu. Toto je požadovaná tooensure dobrý reprezentativní datový svazek pro dávkové zpracování. Pro tento účel používáme kanál s názvem "PrepareSampleDataPipeline" v toogenerate pracovní postup Azure Data Factory hello za jeden rok simulované vehicle signály a diagnostiky datové sady. Klikněte na tlačítko [vlastní aktivity služby Data Factory](http://go.microsoft.com/fwlink/?LinkId=717077) toodownload hello aktivity DotNet vlastní objekt pro vytváření dat řešení sady Visual Studio pro přizpůsobení podle svých požadavků. 
 
 ![Příprava ukázková data pro dávkové zpracování pracovního postupu](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig7-vehicle-telematics-prepare-sample-data-for-batch-processing.png) 
 
 *Obrázek 7: Příprava ukázková data pro zpracování pracovní postup služby batch*
 
-Kanál se skládá z vlastní .net ADF aktivity, zobrazit tady:
+Hello kanálu se skládá z vlastní .net ADF aktivity, zobrazit tady:
 
 ![PrepareSampleDataPipeline aktivity](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig8-vehicle-telematics-prepare-sample-data-pipeline.png) 
 
 *Obrázek 8 - PrepareSampleDataPipeline*
 
-Jakmile kanálu provede úspěšně a datovou sadu "RawCarEventsTable" je označen jako "Připravený", jeden rok vhodné simulované vehicle signálů a diagnostických dat vytváří. Zobrazí následující složku a soubor vytvořený v účtu úložiště v kontejneru "connectedcar":
+Jakmile hello kanálu provede úspěšně a datovou sadu "RawCarEventsTable" je označen jako "Připravený", jeden rok vhodné simulované vehicle signálů a diagnostických dat vytváří. Zobrazí hello následující složku a soubor vytvořený v účtu úložiště v kontejneru "connectedcar" hello:
 
 ![Výstup PrepareSampleDataPipeline](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig9-vehicle-telematics-prepare-sample-data-pipeline-output.png) 
 
@@ -157,22 +157,22 @@ Jakmile kanálu provede úspěšně a datovou sadu "RawCarEventsTable" je označ
 
 [Řešení sady visual studio Azure Data Factory DotNet aktivity pro přípravu ukázková data](http://go.microsoft.com/fwlink/?LinkId=717077) 
 
-## <a name="partition-the-dataset"></a>Oddíl datové sady
-Nezpracovaná částečně strukturovaných vehicle signály a diagnostiky datové sady jsou rozděleny do oddílů v rámci přípravy dat do formátu měsíc roku. Toto rozdělení do oddílů podporuje efektivnější dotazování a škálovatelné dlouhodobé úložiště povolíte odolnost převzetí z účtu jeden objekt blob na další jako první účet zaplní. 
+## <a name="partition-hello-dataset"></a>Oddíl hello datové sady
+signály nezpracovaná částečně strukturovaných vehicle Hello a diagnostiky datové sady jsou rozděleny do oddílů v kroku přípravy hello dat do formátu měsíc roku. Toto rozdělení do oddílů zvýší úroveň efektivnější dotazování a škálovatelné dlouhodobé úložiště povolením odolnost převzetí z jednoho objektu blob účet toohello vedle jako první účet hello zaplní. 
 
 >[!NOTE] 
->Tento krok v řešení se vztahuje pouze na dávkové zpracování.
+>Tento krok v řešení hello je použít jenom toobatch zpracování.
 
 Vstupní a výstupní data správy dat:
 
-* **Výstupní data** (s názvem bez přípony *PartitionedCarEventsTable*) se musí na dlouhou dobu jako základní / "rawest" formu data v zákazníka "Data Lake". 
-* **Vstupní data** do tohoto kanálu by obvykle ignorována, protože výstupních dat má úplné věrnosti do vstupní – stačí uložené (oddíly) lépe pro pozdější použití.
+* Hello **výstupní data** (s názvem bez přípony *PartitionedCarEventsTable*) se ukládají jako toobe na dlouhou dobu jako formulář základní / "rawest" hello dat v hello zákazníka "Data Lake". 
+* Hello **vstupní data** toothis kanálu by obvykle odstraněn jako hello výstupních dat má úplné věrnosti toohello vstup – stačí uložené (oddíly) lépe pro pozdější použití.
 
 ![Pracovní postup události car oddílu](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig10-vehicle-telematics-partition-car-events-workflow.png)
 
 *Obrázek 10: pracovní postup události Car oddílu*
 
-Nezpracovaná data je rozdělen na oddíly pomocí aktivitu Hive HDInsight v "PartitionCarEventsPipeline". Ukázková data vygenerované v roce v kroku 1 je rozdělena na oddíly pomocí měsíc roku. Oddíly, které se používají ke generování vehicle signály a diagnostických dat pro každý měsíc (celkový počet 12 oddíly) v roce. 
+nezpracovaná data Hello je rozdělen na oddíly pomocí aktivitu Hive HDInsight v "PartitionCarEventsPipeline". Ukázková data Hello vygenerované v roce v kroku 1 je rozdělena na oddíly pomocí měsíc roku. Hello oddíly jsou signály použité toogenerate vehicle a diagnostických dat pro každý měsíc (celkový počet 12 oddíly) v roce. 
 
 ![PartitionCarEventsPipeline aktivity](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig11-vehicle-telematics-partition-car-events-pipeline.png)
 
@@ -180,7 +180,7 @@ Nezpracovaná data je rozdělen na oddíly pomocí aktivitu Hive HDInsight v "Pa
 
 ***Skript PartitionConnectedCarEvents Hive***
 
-Následující skript Hive, s názvem "partitioncarevents.hql", se používá pro vytváření oddílů a je umístěn ve složce "\demo\src\connectedcar\scripts" stažený zip. 
+Hello následující skript Hive, s názvem "partitioncarevents.hql", slouží k vytváření oddílů a je umístěn ve složce "\demo\src\connectedcar\scripts" hello hello stáhnout zip. 
     
     SET hive.exec.dynamic.partition=true;
     SET hive.exec.dynamic.partition.mode = nonstrict;
@@ -317,105 +317,105 @@ Následující skript Hive, s názvem "partitioncarevents.hql", se používá pr
         MonthNo
     FROM Stage_RawCarEvents WHERE YearNo = ${hiveconf:Year} AND MonthNo = ${hiveconf:Month};
 
-Jakmile kanálu proveden úspěšně, zobrazí se následující oddíly generované ve vašem účtu úložiště v kontejneru "connectedcar".
+Jakmile hello kanálu proveden úspěšně, zobrazí následující oddíly generované ve vašem účtu úložiště v kontejneru "connectedcar" hello hello.
 
 ![Oddílů výstup](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig12-vehicle-telematics-partitioned-output.png)
 
 *Obrázek 12 - oddílů výstup*
 
-Data je nyní optimalizovaná, správu a připraveno pro další zpracování a získáte přehled o bohaté batch. 
+Hello dat je nyní optimalizovaná, správu a připraveno pro další zpracování toogain bohaté batch statistiky. 
 
 ## <a name="data-analysis"></a>Analýza dat
-V této části najdete postup kombinace Azure Stream Analytics, Azure Machine Learning, Azure Data Factory a Azure HDInsight pro bohaté pokročilé analýzy na vehicle stavu a řídí zvyklosti. Existují tři pododdíly tady:
+V této části, uvidíte, jak toocombine Azure Stream Analytics, Azure Machine Learning, Azure Data Factory a Azure HDInsight pro bohaté pokročilé analýzy vehicle stavu a řídí zvyklosti. Existují tři pododdíly tady:
 
-1. **Strojového učení**: Tato část obsahuje informace o experimentu detekce anomálií, který jsme použili v tomto řešení k předvídání vozidel nutnosti obsluhy údržby a nutnosti navrácení kvůli problémům s zabezpečení.
-2. **Analýzy v reálném čase**: Tato část obsahuje informace týkající se analýzy v reálném čase pomocí Stream Analytics Query Language a zprovozňování experimentu strojové učení v reálném čase pomocí vlastní aplikaci.
-3. **Batch analysis**: Tato část obsahuje informace týkající se transformace a zpracování dávky dat pomocí Azure HDInsight nebo Azure Machine Learning operationalized službou Azure Data Factory.
+1. **Strojového učení**: Tato část obsahuje informace o hello experimentu detekce anomálií, který jsme použili v vozidel toopredict toto řešení nutnosti údržby údržby a nutnosti navrácení z důvodu problémů toosafety vozidel.
+2. **Analýzy v reálném čase**: Tato část obsahuje informace týkající se analýzy hello v reálném čase pomocí hello Stream Analytics Query Language a zprovozňování hello strojové učení experiment v reálném čase pomocí vlastní aplikaci.
+3. **Batch analysis**: Tato část obsahuje informace týkající se hello transformaci a zpracování dat hello batch pomocí Azure HDInsight nebo Azure Machine Learning operationalized službou Azure Data Factory.
 
 ### <a name="machine-learning"></a>Machine Learning
-Zde Naším cílem je k předvídání vozidel, které vyžadují údržby nebo odvolání na základě statistik určité stavu. Provedeme následující předpoklady
+Zde Naším cílem je toopredict hello vozidel, které vyžadují údržby nebo odvolání na základě statistik určité stavu. Provedeme následující předpoklady hello
 
-* Pokud platí jedna z následujících tří podmínek, vyžadují vozidel **obsluhy údržby**:
+* Pokud platí jedna z následujících tří podmínek hello, vyžadují hello vozidel **obsluhy údržby**:
   
   * Můžete zadat naléhavost je nízká
   * Modul těžba ropy úroveň je nízká
   * Modul teploty je vysoká.
-* Pokud jeden z následujících podmínek jsou splněny, může mít vozidel **problém zabezpečení** a vyžadovat **odvolání**:
+* Pokud platí jedna z následujících podmínek hello, může mít hello vozidel **problém zabezpečení** a vyžadovat **odvolání**:
   
   * Modul teploty je vysoká, ale mimo teploty je nízká
   * Modul teploty je nízký, ale mimo teploty je vysoká.
 
-V závislosti na požadavcích předchozí, jsme vytvořili dva samostatné modely k detekci anomálií, jeden pro zjišťování vehicle údržby a jeden pro zjišťování pro vyvolání vehicle. V obou těchto modelů integrované algoritmus hlavní součásti Analysis (PCA) slouží pro zjišťování anomálií. 
+Na základě hello předchozí požadavků, jsme vytvořili dva samostatné modely toodetect anomálií, jeden pro zjišťování vehicle údržby a jeden pro zjišťování pro vyvolání vehicle. V obou těchto modelech hello předdefinované hlavní součásti Analysis (PCA) algoritmus se používá pro detekce anomálií. 
 
 **Model pro odhalování údržby**
 
-Pokud jeden z tři indikátory - zatížení můžete zadat, těžba ropy modul nebo modul teploty - splňuje jeho odpovídající stav, model pro odhalování údržby sestavy anomálií. Výsledkem je musíme pouze vzít v úvahu tyto tři proměnné při vytváření modelu. V našem experimentu v Azure Machine Learning, nejprve používáme **výběr sloupců v datové sadě** modulu k extrakci těchto tří proměnných. Modul pro zjišťování anomálií založený na PCA vedle používáme k sestavení modelu detekce anomálií. 
+Pokud jeden z tři indikátory - zatížení můžete zadat, těžba ropy modul nebo modul teploty - splňuje jeho odpovídající stav, hello údržby detekce modelu sestavy anomálií. V důsledku toho pouze potřebujeme tooconsider těchto tří proměnných v sestavení hello modelu. V našem experimentu v Azure Machine Learning, nejprve používáme **výběr sloupců v datové sadě** modulu tooextract těchto tří proměnných. Další používáme hello anomálií založený na PCA detekce modulu toobuild hello anomálií detekce modelu. 
 
-Vytvořeným technika v machine learning, který lze použít k výběru funkcí, klasifikace a detekce anomálií je hlavní součásti analýza (PCA). PCA převede sadu případ obsahující pravděpodobně korelační proměnné, do sady hodnot nazývané jako hlavní komponenty. Klíče představu o na základě PCA modelování je projektu dat na nižší dimenzí místa, aby funkce a anomálií, lze snadno identifikovat.
+Hlavní součásti Analysis (PCA) je zavedených technika v machine learning, které můžou být použité toofeature výběr, klasifikace a anomálií detekce. PCA převede sadu případ obsahující pravděpodobně korelační proměnné, do sady hodnot nazývané jako hlavní komponenty. Hello klíče představu o tom, na základě PCA modelování je tooproject dat na nižší dimenzí místa, aby funkce a anomálií, lze snadno identifikovat.
 
-Pro každý nový vstup model pro odhalování detekce anomálií nejprve vypočítá jeho projekce na eigenvectors a pak vypočítá chyba normalizovaný obnovu. Tato chyba normalizovaný je skóre anomálií. Čím chyby, více neobvyklé instance je. 
+Pro každý nový vstup příliš hello model pro odhalování, detekce anomálií hello nejprve vypočítá jeho projekce na hello eigenvectors a pak výpočtů hello normalized obnovu chyby. Tato chyba normalizovaný je hello anomálií skóre. Hello vyšší hello chyba hello více neobvyklé hello instance je. 
 
-V údržby zjišťování problému každý záznam lze považovat za bod v prostorovém 3 prostoru definovaný zatížení můžete zadat, modul těžba ropy a teploty modul souřadnice. Pokud chcete zaznamenat tyto anomálií, jsme můžete promítnout do 2 dimenzí prostoru pomocí PCA původní data v prostorovém 3 prostoru. Proto jsme nastavit parametr počet komponenty pro použití v PCA být 2. Tento parametr hraje důležitou roli při uplatňování detekce anomálií založený na PCA. Po plánování dat pomocí PCA abychom mohli snadno identifikovat tyto anomálií.
+V hello údržby zjišťování problému každý záznam lze považovat za bod v prostorovém 3 prostoru definovaný zatížení můžete zadat, modul těžba ropy a teploty modul souřadnice. toocapture tyto anomálií jsme projektu hello původní data v prostoru 3 dimenzí hello na 2 dimenzí prostor pomocí PCA. Proto jsme nastavte parametr hello počet toouse součásti v PCA toobe 2. Tento parametr hraje důležitou roli při uplatňování detekce anomálií založený na PCA. Po plánování dat pomocí PCA abychom mohli snadno identifikovat tyto anomálií.
 
-**Model detekce anomálií odvolání** v modelu s detekce anomálií odvolání používáme výběr sloupců v datové sadě a anomálií založený na PCA moduly rozpoznávání podobným způsobem. Konkrétně jsme nejprve extrahovat pomocí tří proměnných - mimo teploty a rychlost teploty modul - **výběr sloupců v datové sadě** modulu. Můžeme také zahrnovat proměnnou rychlost vzhledem k tomu, že teplota modul obvykle je vztažen k rychlosti. Další používáme modulu detekce anomálií založený na PCA do projektu data z dimenzí 3 prostoru na 2 dimenzí místa. Jsou splněna kritéria pro vyvolání a proto nástroj při vysoce negativně korelační modul teploty a mimo teploty vyžaduje odvolání. Pomocí algoritmu detekce anomálií založený na PCA, jsme po provedení PCA zachytit anomálií. 
+**Model detekce anomálií odvolání** v modelu detekce anomálií hello odvolání používáme hello výběr sloupců v datové sadě a anomálií založený na PCA moduly rozpoznávání podobným způsobem. Konkrétně jsme nejprve extrahovat tří proměnných - teplota motoru, mimo teploty a rychlosti – pomocí hello **výběr sloupců v datové sadě** modulu. Můžeme také zahrnovat hello rychlost proměnná vzhledem k tomu, že teplota motoru hello je obvykle korelační toohello rychlost. Další používáme anomálií založený na PCA detekce modulu tooproject hello data z hello 3 dimenzí prostoru na 2 dimenzí. jsou splněna kritéria pro vyvolání Hello a proto hello vehicle při vysoce negativně korelační modul teploty a mimo teploty vyžaduje odvolání. Pomocí algoritmu detekce anomálií založený na PCA, jsme po provedení PCA zachytit hello anomálií. 
 
-Při tréninku buď modelu, musíme normální data, která nevyžaduje údržby nebo odvolání jako vstupní data pro trénování modelu detekce anomálií založený na PCA použít. V rámci vyhodnocování experimentu používáme modelu detekce anomálií vyškolení ke zjištění, zda nástroj vyžaduje údržby nebo odvolání. 
+Cvičení buď modelu, potřebujeme toouse normální data, která nevyžaduje údržby nebo odvolání jako model detekce anomálií založený na PCA tootrain hello aplikace hello vstupní data. V hello vyhodnocování experiment použijeme toodetect modelu detekce anomálií hello Trénink zda hello vehicle vyžaduje údržby nebo odvolání. 
 
 ### <a name="real-time-analysis"></a>Analýzy v reálném čase
-Následující dotaz SQL Stream Analytics se používá k získání průměr všech parametrů důležité vehicle jako rychlosti, úroveň paliva, modul teploty, počítadlo kilometrů čtení, můžete zadat naléhavost, modul těžba ropy úroveň a dalších. Průměry se používají k zjišťovat anomálie, vydání výstrahy a určení celkového stavu podmínky vozidel provozovat v určité oblasti a chybě korelace demografické údaje. 
+Následující dotaz SQL Stream Analytics Hello slouží tooget hello průměr všech hello parametry důležité vehicle jako rychlosti, úroveň paliva, modul teploty, počítadlo kilometrů čtení, můžete zadat naléhavost, modul těžba ropy úroveň a dalších. Hello průměry jsou použité toodetect anomálií, vydávání výstrah a určit hello celkového stavu podmínky vozidel provozovat v určité oblasti a pak ho korelovat toodemographics. 
 
 ![Stream Analytics query pro zpracování v reálném čase](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig13-vehicle-telematics-stream-analytics-query-for-real-time-processing.png)
 
 *Obrázek 13: dotaz služby Stream Analytics ke zpracování v reálném čase*
 
-Všechny průměry jsou vypočítávány přes TumblingWindow 3 sekundu. TubmlingWindow se používá v tomto případě vzhledem k tomu, že je nutné, aby se a souvislý časové intervaly. 
+Všechny průměry hello jsou vypočítávány přes TumblingWindow 3 sekundu. TubmlingWindow se používá v tomto případě vzhledem k tomu, že je nutné, aby se a souvislý časové intervaly. 
 
-Další informace o všech možnostech "Oddílová" v Azure Stream Analytics, klikněte na tlačítko [Oddílová (Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835019.aspx).
+Klikněte na tlačítko Další informace o všechny možnosti "Oddílová" hello v Azure Stream Analytics toolearn [Oddílová (Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835019.aspx).
 
 **V reálném čase předpovědi**
 
-Aplikace je součástí řešení, aby zprovoznit model machine learning v reálném čase. Tuto aplikaci s názvem "RealTimeDashboardApp" je vytvořen a nakonfigurován jako součást nasazení řešení. Aplikace provede následující akce:
+Aplikace je součástí model hello řešení toooperationalize hello machine learning v reálném čase. Tuto aplikaci s názvem "RealTimeDashboardApp" je vytvořen a nakonfigurován jako součást nasazení řešení hello. aplikace Hello provádí hello následující:
 
-1. Naslouchá na instanci Centra událostí, kde Stream Analytics je publikování události ve tvaru nepřetržitě. ![Stream Analytics dotazu pro publikování dat](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig14-vehicle-telematics-stream-analytics-query-for-publishing.png) *obrázek 14: Stream Analytics dotazu pro publikování dat do výstupu instance centra událostí* 
+1. Naslouchá instance tooan centra událostí, kde Stream Analytics je publikování hello událostí ve tvaru nepřetržitě. ![Stream Analytics dotazu pro publikování dat hello](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig14-vehicle-telematics-stream-analytics-query-for-publishing.png) *obrázek 14: Stream Analytics dotazu pro publikování dat tooan hello výstup instance centra událostí* 
 2. Pro každou událost, která obdrží tuto aplikaci: 
    
-   * Zpracuje data pomocí koncového bodu Machine Learning požadavků a odpovědí vyhodnocování (záznamy RR). Záznamy o prostředku koncového bodu je automaticky publikován jako součást nasazení.
-   * Výstup RRS je publikovaný na datovou sadu Power BI pomocí nabízených rozhraní API.
+   * Data hello procesů používá koncový bod Machine Learning požadavků a odpovědí vyhodnocování (záznamy RR). Hello záznamy o prostředku koncového bodu je automaticky publikován jako součást nasazení hello.
+   * výstup RRS Hello je datová sada publikované tooa Power BI pomocí nabízených hello rozhraní API.
 
-Tento vzor platí i pro scénáře, ve kterých chcete integrovat obchodní (LoB) aplikace s tokem analýzu v reálném čase, pro scénáře, jako je výstrahy, oznámení a zasílání zpráv.
+Tento vzor je také použít tooscenarios, ve kterém chcete toointegrate obchodní (LoB) aplikace s tokem hello analýzu v reálném čase, pro scénáře, jako je výstrahy, oznámení a zasílání zpráv.
 
-Klikněte na tlačítko [RealtimeDashboardApp stažení](http://go.microsoft.com/fwlink/?LinkId=717078) ke stažení sady Visual Studio RealtimeDashboardApp řešení pro úpravy. 
+Klikněte na tlačítko [RealtimeDashboardApp stažení](http://go.microsoft.com/fwlink/?LinkId=717078) toodownload hello řešení sady Visual Studio RealtimeDashboardApp pro úpravy. 
 
-**Spuštění aplikace řídicího panelu v reálném čase**
+**tooexecute hello aplikace řídicího panelu v reálném čase**
 1. Extrahování a uložit místně ![RealtimeDashboardApp složky](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig16-vehicle-telematics-realtimedashboardapp-folder.png) *obrázek 16 – RealtimeDashboardApp složky*  
-2. Spuštění aplikace RealtimeDashboardApp.exe
-3. Zadejte platné přihlašovací údaje Power BI, přihlášení a klikněte na tlačítko Přijmout ![Přihlášení řídicího panelu v reálném čase aplikace k Power BI.](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17a-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) ![Aplikace v reálném čase řídicího panelu dokončit přihlášení k Power BI.](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17b-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) 
+2. Spuštění aplikace hello RealtimeDashboardApp.exe
+3. Zadejte platné přihlašovací údaje Power BI, přihlášení a klikněte na tlačítko Přijmout ![Řídicí panel v reálném čase aplikace přihlášení tooPower BI](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17a-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) ![Aplikace v reálném čase řídicího panelu dokončit přihlášení tooPower BI](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17b-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) 
 
-*Obrázek 17 – RealtimeDashboardApp: Přihlaste se do Power BI*
+*Obrázek 17 – RealtimeDashboardApp: Přihlášení tooPower BI*
 
 >[!NOTE] 
->Pokud chcete vyprázdnit datové sady Power BI, spouštění RealtimeDashboardApp s parametrem "flushdata": 
+>Pokud chcete datovou sadu Power BI hello tooflush, spusťte hello RealtimeDashboardApp s parametrem "flushdata" hello: 
 
     RealtimeDashboardApp.exe -flushdata
 
 
 ### <a name="batch-analysis"></a>Dávková analýza
-Cílem je zobrazit, jak motory Contoso využívá funkce výpočtů Azure a budou využívat velké objemy dat a získáte přehled o bohaté na řízení vzorek, chování využití a stavu vehicle. Díky tomu je možné:
+Hello cílem je, že tooshow jak motory Contoso využívá hello výpočtů Azure možnosti tooharness velkých objemů dat toogain detailní přehled na řízení vzorek, chování využití a stavu vehicle. Díky tomu je možné:
 
-* Zlepšovat prostředí zákazníků a nastavit jej jako levnější tím, že poskytuje přehled na řídí zvyklosti a efektivní řízení chování paliva
-* Seznamte se aktivně zákazníků a jejich řízení patters řídit obchodní rozhodnutí a poskytovat nejlepší v třída produkty a služby
+* Zlepšovat prostředí zákazníků hello a nastavit jej jako levnější tím, že poskytuje přehled na řídí zvyklosti a efektivní řízení chování paliva
+* Další informace proaktivně o zákazníků a jejich řízení patters toogovern obchodních rozhodnutí a poskytují hello nejlépe v třída produkty a služby
 
-V tomto řešení jsme cílení následující metriky:
+V tomto řešení jsme cílení hello následující metriky:
 
-1. **Agresivní řídí chování**: identifikuje trend modely, umístění, podporovat jeho podmínky, a času v roce a získáte přehled o agresivní řízení vzory. Contoso motory pro můžete použít tyto přehledy marketingových kampaní, řídí přizpůsobené nové funkce a pojišťovnictví na základě využití.
-2. **Paliva efektivní řízení chování**: identifikuje trend modely, umístění, podporovat jeho podmínky, a času v roce a získáte přehled o paliva efektivní řízení vzory. Contoso motory pro můžete použít tyto přehledy marketingových kampaní, řídí nové funkce a proaktivní zprávy ovladače pro náklady platné a prostředí zvyklosti popisný řízení. 
-3. **Odvolat modely**: identifikuje modely nutnosti navrácení podle zprovozňování detekce anomálií strojového učení experimentu
+1. **Agresivní řídí chování**: identifikuje hello trend hello modely, umístění, podporovat jeho podmínky a čas hello roku toogain Statistika agresivní řízení vzory. Contoso motory pro můžete použít tyto přehledy marketingových kampaní, řídí přizpůsobené nové funkce a pojišťovnictví na základě využití.
+2. **Paliva efektivní řízení chování**: identifikuje hello trend hello modely, umístění, podporovat jeho podmínky a čas hello roku toogain Statistika paliva efektivní řízení vzory. Contoso motory pro můžete použít tyto přehledy marketingových kampaní, řídí nové funkce a proaktivní reporting toohello ovladače pro náklady platné a prostředí zvyklosti popisný řízení. 
+3. **Odvolat modely**: identifikuje modely nutnosti navrácení podle zprovozňování hello strojové učení detekce anomálií experimentu
 
-Podívejme se na podrobné informace o jednotlivých tyto metriky
+Podívejme se na podrobnosti hello jednotlivých tyto metriky
 
 **Agresivní řízení vzor**
 
-Signály oddílů vehicle a diagnostických dat jsou zpracovány v kanál s názvem "AggresiveDrivingPatternPipeline" použití Hive k určení modely, umístění, vehicle, jízdních podmínek a další parametry, pro jehož agresivní řízení vzor.
+Hello vehicle signály rozdělena na oddíly a diagnostických dat jsou zpracovávány v hello kanál s názvem "AggresiveDrivingPatternPipeline" pomocí Hive toodetermine hello modely, umístění, vehicle, řídí podmínky a dalších parametrů, které jádro vykazuje agresivní řídí vzor.
 
 ![Agresivní řízení pracovního postupu vzor](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig18-vehicle-telematics-aggressive-driving-pattern.png) 
 *obrázek 18 – agresivní řízení pracovního postupu vzor*
@@ -423,7 +423,7 @@ Signály oddílů vehicle a diagnostických dat jsou zpracovány v kanál s náz
 
 ***Agresivní řízení dotaz Hive vzor***
 
-S názvem "aggresivedriving.hql" použít pro analýzu agresivní řízení vzor podmínku skriptu Hive je umístěný ve složce "\demo\src\connectedcar\scripts" souboru zip staženého. 
+Hello skriptu Hive s názvem "aggresivedriving.hql" použít pro analýzu agresivní řízení vzor podmínka je umístěný ve složce "\demo\src\connectedcar\scripts" hello stáhnout zip. 
 
     DROP TABLE IF EXISTS PartitionedCarEvents; 
     CREATE EXTERNAL TABLE PartitionedCarEvents
@@ -483,9 +483,9 @@ S názvem "aggresivedriving.hql" použít pro analýzu agresivní řízení vzor
     where transmission_gear_position IN ('fourth', 'fifth', 'sixth', 'seventh', 'eight') AND brake_pedal_status = '1' AND speed >= '50'
 
 
-Kombinace ozubené kolečko pozici přenosu na vehicle, brzdy Pedálové stavu a rychlost používá ke zjišťování reckless/agresivní řízení chování v závislosti na brzdění vzor vysokou rychlostí. 
+Používá kombinaci hello vehicle na pozici přenosu ozubené kolečko, brzdy Pedálové stav a rychlost toodetect reckless/agresivní řídí chování v závislosti na brzdění vzor vysokou rychlostí. 
 
-Jakmile kanálu proveden úspěšně, zobrazí se následující oddíly generované ve vašem účtu úložiště v kontejneru "connectedcar".
+Jakmile hello kanálu proveden úspěšně, zobrazí následující oddíly generované ve vašem účtu úložiště v kontejneru "connectedcar" hello hello.
 
 ![Výstup AggressiveDrivingPatternPipeline](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19-vehicle-telematics-aggressive-driving-pattern-output.png) 
 
@@ -493,7 +493,7 @@ Jakmile kanálu proveden úspěšně, zobrazí se následující oddíly generov
 
 **Efektivní řízení vzor paliva**
 
-Signály oddílů vehicle a diagnostických dat jsou zpracovány v kanál s názvem "FuelEfficientDrivingPatternPipeline". Hive slouží k určení modely, umístění, vehicle, jízdních podmínek a další vlastnosti, které vykazují paliva efektivní řízení vzorem.
+Hello vehicle signály rozdělena na oddíly a diagnostických dat jsou zpracovány v hello kanál s názvem "FuelEfficientDrivingPatternPipeline". Hive je použité toodetermine hello modely, umístění, vehicle, jízdních podmínek a další vlastnosti, které vykazují paliva efektivní řízení vzorem.
 
 ![Zvýšení řízení vzor](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19-vehicle-telematics-fuel-efficient-driving-pattern.png) 
 
@@ -501,7 +501,7 @@ Signály oddílů vehicle a diagnostických dat jsou zpracovány v kanál s náz
 
 ***Paliva efektivní řízení vzor dotaz Hive***
 
-S názvem "fuelefficientdriving.hql" použít pro analýzu agresivní řízení vzor podmínku skriptu Hive je umístěný ve složce "\demo\src\connectedcar\scripts" souboru zip staženého. 
+Hello skriptu Hive s názvem "fuelefficientdriving.hql" použít pro analýzu agresivní řízení vzor podmínka je umístěný ve složce "\demo\src\connectedcar\scripts" hello stáhnout zip. 
 
     DROP TABLE IF EXISTS PartitionedCarEvents; 
     CREATE EXTERNAL TABLE PartitionedCarEvents
@@ -561,9 +561,9 @@ S názvem "fuelefficientdriving.hql" použít pro analýzu agresivní řízení 
     where transmission_gear_position IN ('fourth', 'fifth', 'sixth', 'seventh', 'eight') AND parking_brake_status = '0' AND brake_pedal_status = '0' AND speed <= '60' AND accelerator_pedal_position >= '50'
 
 
-Používá kombinaci vehicle na přenos ozubené kolečko pozice, brzdy Pedálové stav, rychlost a akcelerátoru Pedálové pozice ke zjištění paliva efektivní řízení chování v závislosti na akcelerace, brzdění a rychlost vzory. 
+Používá kombinaci hello přenosu ozubené kolečko pozice vehicle na, brzdy Pedálové stav, rychlost a akcelerátoru Pedálové pozice toodetect paliva efektivní řízení chování podle akcelerace, brzdění, a rychlost vzory. 
 
-Jakmile kanálu proveden úspěšně, zobrazí se následující oddíly generované ve vašem účtu úložiště v kontejneru "connectedcar".
+Jakmile hello kanálu proveden úspěšně, zobrazí následující oddíly generované ve vašem účtu úložiště v kontejneru "connectedcar" hello hello.
 
 ![Výstup FuelEfficientDrivingPatternPipeline](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig20-vehicle-telematics-fuel-efficient-driving-pattern-output.png) 
 
@@ -571,19 +571,19 @@ Jakmile kanálu proveden úspěšně, zobrazí se následující oddíly generov
 
 **Odvolat předpovědi**
 
-Strojového učení experimentu je zřízený a publikovat jako webovou službu, jako součást nasazení řešení. V tomto pracovním postupu, zaregistrován jako služba data factory propojené a operationalized pomocí data factory aktivita dávkového vyhodnocování se využívají záznamy dávkového vyhodnocování koncového bodu.
+Hello experimentu strojového učení je zřízený a publikovat jako webovou službu, jako součást nasazení řešení hello. v tomto pracovním postupu, zaregistrován jako služba data factory propojené a operationalized pomocí data factory aktivita dávkového vyhodnocování se využívají záznamy Hello dávkového vyhodnocování koncového bodu.
 
 ![Koncový bod Machine Learning](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig21-vehicle-telematics-machine-learning-endpoint.png) 
 
 *Obrázek 22 – strojového učení koncový bod registrován jako propojené služby v datové továrně*
 
-Registrovanou propojenou službu se používá v DetectAnomalyPipeline skóre pro data s využitím modelu detekce anomálií. 
+Hello registrovanou propojenou službu se používá v hello DetectAnomalyPipeline tooscore hello data pomocí modelu detekce anomálií hello. 
 
 ![Počítač Learning aktivita dávkového vyhodnocování v datové továrně](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig22-vehicle-telematics-aml-batch-scoring.png) 
 
 *Obrázek 23 – Azure Machine Learning dávkového vyhodnocování aktivity v objektu pro vytváření dat* 
 
-Je několik kroků provést u tohoto kanálu pro přípravu dat tak, aby může být operationalized s dávkového vyhodnocování webové služby. 
+Je několik kroků provést u tohoto kanálu pro přípravu dat tak, aby může být operationalized s hello dávkového vyhodnocování webové služby. 
 
 ![DetectAnomalyPipeline pro predikci vozidel nutnosti navrácení](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig23-vehicle-telematics-pipeline-predicting-recalls.png) 
 
@@ -591,7 +591,7 @@ Je několik kroků provést u tohoto kanálu pro přípravu dat tak, aby může 
 
 ***Dotaz Hive detekce anomálií***
 
-Po dokončení vyhodnocování aktivitu HDInsight se používá ke zpracování a agregovat data, která jsou zařazené do kategorií jako anomálií modelem se skóre pravděpodobnosti 0,60 nebo vyšší.
+Po dokončení hello vyhodnocování aktivita HDInsight je použité tooprocess a hello agregovaná data, která jsou klasifikovány jako anomálií modelem hello se skóre pravděpodobnosti 0,60 nebo vyšší.
 
     DROP TABLE IF EXISTS CarEventsAnomaly; 
     CREATE EXTERNAL TABLE CarEventsAnomaly 
@@ -651,7 +651,7 @@ Po dokončení vyhodnocování aktivitu HDInsight se používá ke zpracování 
     where RecallLabel = '1' AND RecallProbability >= '0.60'
 
 
-Jakmile kanálu proveden úspěšně, zobrazí se následující oddíly generované ve vašem účtu úložiště v kontejneru "connectedcar".
+Jakmile hello kanálu proveden úspěšně, zobrazí následující oddíly generované ve vašem účtu úložiště v kontejneru "connectedcar" hello hello.
 
 ![Výstup DetectAnomalyPipeline](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig24-vehicle-telematics-detect-anamoly-pipeline-output.png) 
 
@@ -660,28 +660,28 @@ Jakmile kanálu proveden úspěšně, zobrazí se následující oddíly generov
 ## <a name="publish"></a>Publikování
 
 ### <a name="real-time-analysis"></a>Analýzy v reálném čase
-Některý z těchto dotazů v úloze Stream Analytics publikuje události do výstupu instance centra událostí. 
+Jeden z hello dotazy v úloze Stream Analytics hello publikuje hello události tooan výstup instance centra událostí. 
 
-![Úlohy Stream Analytics publikuje do výstupu instance centra událostí](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig25-vehicle-telematics-stream-analytics-job-publishes-output-event-hub.png)
+![Úlohy Stream Analytics publikuje tooan výstup instance centra událostí](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig25-vehicle-telematics-stream-analytics-job-publishes-output-event-hub.png)
 
-*Obrázek 26 – Stream Analytics úlohy publikuje do výstupu instance centra událostí*
+*Obrázek 26 – úloha Stream Analytics publikuje tooan výstup instance centra událostí*
 
-![Dotaz analýzy datového proudu k publikování výstupu v instanci Centra událostí](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig26-vehicle-telematics-stream-analytics-query-publish-output-event-hub.png)
+![Stream Analytics query toopublish toohello výstup instance centra událostí](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig26-vehicle-telematics-stream-analytics-query-publish-output-event-hub.png)
 
-*Obrázek 27 – Stream Analytics dotaz pro publikování ve výstupu centra událostí instance*
+*Obrázek 27 – Stream Analytics query toopublish toohello výstup instance centra událostí*
 
-Tento datový proud událostí, které se spotřebovávají RealTimeDashboardApp součástí řešení. Tato aplikace využívá webové služby Machine Learning požadavků a odpovědí pro vyhodnocování v reálném čase a publikuje Výsledná data do Power BI datové sady pro používání. 
+Tento datový proud událostí, které se spotřebovávají hello RealTimeDashboardApp součástí hello řešení. Tato aplikace využívá hello Machine Learning požadavků a odpovědí webové služby pro vyhodnocování v reálném čase a publikuje hello datovou sadu Power BI tooa Výsledná data pro používání. 
 
 ### <a name="batch-analysis"></a>Dávková analýza
-Výsledky batch a v reálném čase zpracování se publikují do tabulky Azure SQL Database pro používání. Azure SQL Server, databáze a tabulky se vytvoří automaticky v rámci instalační skript. 
+výsledky Hello hello batch a v reálném čase zpracování jsou publikované toohello tabulky Azure SQL Database pro používání. Hello Azure SQL Server, databáze a tabulky hello se vytvoří automaticky v rámci hello instalační skript. 
 
-![Dávkové zpracování kopírovat výsledky do pracovního postupu datového tržiště](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig27-vehicle-telematics-batch-processing-results-copy-to-data-mart.png)
+![Výsledky zpracování dávky zkopírujte toodata Tržiště pracovního postupu](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig27-vehicle-telematics-batch-processing-results-copy-to-data-mart.png)
 
-*Obrázek 28 – dávkového zpracování kopírovat výsledky do pracovního postupu datového tržiště*
+*Obrázek 28 – dávkového zpracování výsledků zkopírování toodata Tržiště pracovního postupu*
 
-![Úlohy Stream Analytics publikuje do datového tržiště](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig28-vehicle-telematics-stream-analytics-job-publishes-to-data-mart.png)
+![Úlohy Stream Analytics publikuje toodata Tržiště](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig28-vehicle-telematics-stream-analytics-job-publishes-to-data-mart.png)
 
-*Obrázek 29 – Stream Analytics úlohy publikuje do datového tržiště*
+*Obrázek 29 – úloha Stream Analytics publikuje toodata Tržiště*
 
 ![Datové Tržiště nastavení v úloze Stream Analytics](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig29-vehicle-telematics-data-mart-setting-in-stream-analytics-job.png)
 
@@ -690,12 +690,12 @@ Výsledky batch a v reálném čase zpracování se publikují do tabulky Azure 
 ## <a name="consume"></a>Konzumace
 Power BI poskytuje toto řešení bohaté řídicí panel pro data v reálném čase a vizualizací prediktivní analýzy. 
 
-Kliknutím sem získáte podrobné pokyny k nastavení služby Power BI sestavy a řídicí panel. Poslední řídicí panel vypadá takto:
+Kliknutím sem získáte podrobné pokyny k nastavení hello Power BI sestavy a řídicí panel hello. řídicí panel konečné Hello vypadá takto:
 
 ![Řídicí panel Power BI](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig30-vehicle-telematics-powerbi-dashboard.png)
 
 *Obrázek 31 - řídicí panel Power BI*
 
 ## <a name="summary"></a>Souhrn
-Tento dokument obsahuje podrobné procházení řešení Analytics Vehicle Telemetrie. To umožňující prezentovat vzor architektura lambda v reálném čase a dávky analytics s předpovědi a akce. Tento vzor platí pro širokou škálu případy použití, které vyžadují aktivní cesta (v reálném čase) a analýzy neaktivní trase (batch). 
+Tento dokument obsahuje podrobné procházení Dobrý den řešení analýzy Vehicle Telemetrie. To umožňující prezentovat vzor architektura lambda v reálném čase a dávky analytics s předpovědi a akce. Tento vzor platí tooa širokou škálu případy použití, které vyžadují aktivní cesta (v reálném čase) a analýzy neaktivní trase (batch). 
 

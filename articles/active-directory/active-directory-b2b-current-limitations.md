@@ -1,5 +1,5 @@
 ---
-title: "Omezení spolupráce Azure Active Directory s B2B | Microsoft Docs"
+title: "aaaLimitations spolupráce Azure Active Directory s B2B | Microsoft Docs"
 description: "Aktuální omezení pro spolupráci Azure Active Directory s B2B"
 services: active-directory
 documentationcenter: 
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: 581e5d1fb5fb08d0dc89ed2c85edcb5f0005650b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 322081f32fbacfe67ee1300993c7df1870e498bd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Omezení spolupráce Azure AD B2B
-Spolupráce Azure Active Directory (Azure AD) s B2B aktuálně podléhá omezení popsaná v tomto článku.
+Spolupráce Azure Active Directory (Azure AD) s B2B právě subjektu toohello omezení popsaná v tomto článku.
 
 ## <a name="possible-double-multi-factor-authentication"></a>Možné double aplikace Multi-Factor authentication
-S B2B Azure AD můžete vynutit ověřování Multi-Factor authentication v organizaci prostředků (pozváním organizace). Důvody tohoto přístupu jsou podrobně popsané na [podmíněného přístupu pro uživatele spolupráce B2B](active-directory-b2b-mfa-instructions.md). Pokud partnera již obsahuje službu Multi-Factor authentication nastavit a vynutit, uživatelé pravděpodobně k provedení ověření jednou v jejich domovskou organizaci a potom znovu za vaše.
+S B2B Azure AD můžete vynutit ověřování Multi-Factor authentication v organizaci poskytující prostředky hello (hello pozvání organizace). Hello důvody tohoto přístupu jsou podrobně popsané na [podmíněného přístupu pro uživatele spolupráce B2B](active-directory-b2b-mfa-instructions.md). Pokud partnera již obsahuje službu Multi-Factor authentication nastavit a vynutit, uživatelé pravděpodobně tooperform hello ověřování jednou v jejich domovskou organizaci a potom znovu za vaše.
 
 ## <a name="instant-on"></a>Okamžitého
-Toky spolupráce B2B nemůžeme přidat uživatele do adresáře a dynamicky aktualizovat během uplatnění pozvánku, aplikace přiřazení a tak dále. Aktualizace a zápisy normálně dojít v jednom adresáři instance a musí být replikována napříč všemi instancemi. Jakmile jsou aktualizovány všechny instance po dokončení replikace. V některých případech, pokud objekt se zapisují nebo aktualizuje v jedné instance a volání k načtení tohoto objektu je k jiné instanci, může dojít latenci replikace. Pokud k tomu dojde, aktualizovat nebo opakujte pomohou. Pokud píšete mobilní aplikace pomocí našem rozhraní API, opakování s některé back vypnout je dobré, Obranným postupem se tím tento problém.
+V hello B2B spolupráce toky jsme přidat uživatele toohello adresář a dynamicky aktualizovat během uplatnění pozvánku, aplikace přiřazení a tak dále. aktualizace Hello a zápisy normálně dojít v jednom adresáři instance a musí být replikována napříč všemi instancemi. Jakmile jsou aktualizovány všechny instance po dokončení replikace. Někdy při hello objektu je zapsána nebo aktualizovány v jedné instance a hello volání tooretrieve tento objekt je tooanother instance latence replikace může dojít. Pokud k tomu dojde, aktualizovat nebo opakujte toohelp. Pokud píšete mobilní aplikace pomocí našich API pak opakování s některými back vypnout je dobré, Obranným postupem tooalleviate tento problém.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -36,7 +36,7 @@ Projděte si naše další články ohledně spolupráce B2B ve službě Azure A
 
 * [Co je spolupráce B2B ve službě Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Vlastnosti uživatele spolupráce B2B](active-directory-b2b-user-properties.md)
-* [Přidání uživatele spolupráce B2B k roli](active-directory-b2b-add-guest-to-role.md)
+* [Přidání role uživatele tooa spolupráce B2B](active-directory-b2b-add-guest-to-role.md)
 * [Delegovat pozvánek B2bB spolupráce](active-directory-b2b-delegate-invitations.md)
 * [Dynamické skupiny a spolupráci B2B](active-directory-b2b-dynamic-groups.md)
 * [Kód spolupráce B2B a ukázky prostředí PowerShell](active-directory-b2b-code-samples.md)

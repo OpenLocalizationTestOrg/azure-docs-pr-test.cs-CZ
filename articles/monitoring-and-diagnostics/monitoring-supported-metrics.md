@@ -1,5 +1,5 @@
 ---
-title: "Azure metriky monitorování - podporované metriky na typ prostředku | Microsoft Docs"
+title: "aaaAzure monitorování metriky – podporované metriky na typ prostředku | Microsoft Docs"
 description: "Seznam metriky, které jsou dostupné pro jednotlivé typy prostředků s Azure monitorování."
 author: johnkemnetz
 manager: orenr
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/05/2017
 ms.author: johnkem
-ms.openlocfilehash: 4cd72c8193d66f164d9afa53af4b5203369b32dc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 66834238a1a4fcd7db1464cc023c18ee2563517a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky s monitorováním Azure
-Monitorování Azure poskytuje několik způsobů, jak pracovat s metriky, včetně grafů, je na portálu, k nim přistupovat pomocí rozhraní REST API nebo je dotazování pomocí prostředí PowerShell nebo rozhraní příkazového řádku. Níže je úplný seznam všech metriky aktuálně k dispozici s Azure monitorování metriky kanálu.
+Monitorování Azure poskytuje několik způsobů toointeract metriky, včetně grafů je hello portálu, k nim přistupovat pomocí hello REST API nebo je dotazování pomocí prostředí PowerShell nebo rozhraní příkazového řádku. Níže je úplný seznam všech metriky aktuálně k dispozici s Azure monitorování metriky kanálu.
 
 > [!NOTE]
-> Další metriky může být k dispozici v portálu nebo pomocí starší verze rozhraní API. Tento seznam obsahuje pouze ve verzi public preview metriky, které jsou dostupné pomocí verzi public preview konsolidované monitorování Azure metriky kanálu.
+> Další metriky může být k dispozici v hello portálu nebo pomocí starší verze rozhraní API. Tento seznam obsahuje pouze ve verzi public preview metriky, které jsou dostupné pomocí hello verzi public preview hello konsolidované monitorování Azure metriky kanálu.
 >
 >
 
@@ -38,40 +38,40 @@ Monitorování Azure poskytuje několik způsobů, jak pracovat s metriky, včet
 |SuccessfullConnectionsPerSec|Úspěšné připojení za sekundu|CountPerSecond|Průměr|Počet dokončených úspěšné připojení.|
 |TotalConnectionFailures|Chyby připojení (celkem)|Počet|Průměr|Celkový počet neúspěšných pokusů o připojení.|
 |CurrentUserSessions|Aktuální relace uživatele|Počet|Průměr|Aktuální počet uživatelských relací navázat.|
-|QueryPoolBusyThreads|Dotaz z fondu podprocesů zaneprázdněn|Počet|Průměr|Počet vytížených vláken ve fondu vláken dotazu.|
-|CommandPoolJobQueueLength|Příkaz délku fronty úloh|Počet|Průměr|Počet úloh ve frontě příkaz fondu vláken.|
-|ProcessingPoolJobQueueLength|Délka fronty úloh zpracování fondu|Počet|Průměr|Počet úloh jiný I/O ve frontě fondu zpracování vláken.|
+|QueryPoolBusyThreads|Dotaz z fondu podprocesů zaneprázdněn|Počet|Průměr|Počet vytížených vláken ve fondu vláken hello dotazu.|
+|CommandPoolJobQueueLength|Příkaz délku fronty úloh|Počet|Průměr|Počet úloh v hello frontu fondu vláken příkaz hello.|
+|ProcessingPoolJobQueueLength|Délka fronty úloh zpracování fondu|Počet|Průměr|Počet úloh jiný I/O v hello frontu hello zpracování fondu vláken.|
 |CurrentConnections|Připojení: Aktuální připojení|Počet|Průměr|Aktuální počet připojení klienta.|
-|CleanerCurrentPrice|Paměť: Čisticí aktuální cena|Počet|Průměr|Aktuální cena paměti, $a bajtů/čas, normalizovány na 1000.|
-|CleanerMemoryShrinkable|Paměť: Čisticí paměti vypočítat|Bajty|Průměr|Množství paměti v bajtech, podstoupí čisticí vyprazdňování pozadím.|
-|CleanerMemoryNonshrinkable|Paměť: Čisticí nonshrinkable paměti|Bajty|Průměr|Množství paměti v bajtech, není v souladu čisticí vyprazdňování pozadím.|
-|Parametru MemoryUsage|Paměti: Využití paměti|Bajty|Průměr|Využití paměti procesem serveru v rámci výpočet ceny čisticí paměti. Rovná se čítač Process\PrivateBytes plus velikost dat mapované paměti, ignoruje všechny paměti, které bylo namapované nebo přidělené modul xVelocity analýzy v paměti (VertiPaq) překračující modul xVelocity Limit paměti.|
+|CleanerCurrentPrice|Paměť: Čisticí aktuální cena|Počet|Průměr|Aktuální cena paměti, $a bajtů/čas, normalizovaný too1000.|
+|CleanerMemoryShrinkable|Paměť: Čisticí paměti vypočítat|Bajty|Průměr|Množství paměti, v bajtech subjektu toopurging čisticí hello pozadím.|
+|CleanerMemoryNonshrinkable|Paměť: Čisticí nonshrinkable paměti|Bajty|Průměr|Množství paměti, v bajtech, není subjektu toopurging čisticí hello pozadím.|
+|Parametru MemoryUsage|Paměti: Využití paměti|Bajty|Průměr|Využití paměti procesem server hello jako použít při výpočtu čisticí ceny paměti. Rovnat toocounter Process\PrivateBytes plus hello velikost dat mapované paměti, ignoruje všechny paměti, které bylo namapované nebo přidělené modulem hello xVelocity analýzy v paměti (VertiPaq) překračující hello xVelocity modul Limit paměti.|
 |MemoryLimitHard|Paměti: Pevný Limit paměti|Bajty|Průměr|Omezení pevné paměti z konfiguračního souboru.|
 |MemoryLimitHigh|Paměť: Omezení paměti vysoká|Bajty|Průměr|Limit velkého množství paměti, z konfiguračního souboru.|
 |MemoryLimitLow|Paměti: Nízká Limit paměti|Bajty|Průměr|Limit nedostatek paměti z konfiguračního souboru.|
 |MemoryLimitVertiPaq|Paměti: VertiPaq Limit paměti|Bajty|Průměr|Omezení v paměti z konfiguračního souboru.|
 |Kvóta|Paměť: kvóty|Bajty|Průměr|Aktuální kvótu paměti, v bajtech. Kvótu paměti se také označuje jako rezervace paměti grant nebo paměti.|
 |QuotaBlocked|Paměti: Blokované kvótu|Počet|Průměr|Aktuální počet požadavků kvóty, které jsou blokovaný, dokud jsou uvolněny kvóty další paměť.|
-|VertiPaqNonpaged|Paměť: VertiPaq nestránkovaného fondu|Bajty|Průměr|Bajtů paměti uzamčena v pracovní sadě pro použití stroj v paměti.|
+|VertiPaqNonpaged|Paměť: VertiPaq nestránkovaného fondu|Bajty|Průměr|Bajtů paměti uzamčen v hello pracovní sada pro použití hello stroj v paměti.|
 |VertiPaqPaged|Paměť: VertiPaq stránkovaného fondu|Bajty|Průměr|Bajty stránkovaného paměti používané pro data v paměti.|
 |RowsReadPerSec|Zpracování: Řádky čtení za sekundu|CountPerSecond|Průměr|Počet řádků přečíst ze všech relačních databází.|
 |RowsConvertedPerSec|Zpracování: Řádky převést za sekundu|CountPerSecond|Průměr|Počet řádků převést během zpracování.|
 |RowsWrittenPerSec|Zpracování: Řádků zapsaných za sekundu|CountPerSecond|Průměr|Počet řádků zapsaných během zpracování.|
-|CommandPoolBusyThreads|Vláken: Příkaz zaneprázdněn z fondu podprocesů|Počet|Průměr|Počet vytížených vláken ve fondu vláken příkaz.|
-|CommandPoolIdleThreads|Vláken: Příkaz nečinných vláken fondu|Počet|Průměr|Počet nečinných vláken ve fondu vláken příkaz.|
-|LongParsingBusyThreads|Vláken: Analýza zaneprázdněn vláken dlouho|Počet|Průměr|Počet vytížených vláken ve fondu vláken dlouho analýzy.|
-|LongParsingIdleThreads|Vláken: Analýza nečinných vláken dlouho|Počet|Průměr|Počet nečinných vláken ve fondu vláken dlouho analýzy.|
-|LongParsingJobQueueLength|Vláken: Analýza dlouho délka fronty úloh|Počet|Průměr|Počet úloh ve frontě dlouho analýzy fondu vláken.|
-|ProcessingPoolBusyIOJobThreads|Vláken: Fond zaneprázdněn vstupně-výstupní úlohy vláken zpracování|Počet|Průměr|Počet vláken, které jsou spuštěné úlohy vstupně-výstupních operací ve fondu zpracování vláken.|
-|ProcessingPoolBusyNonIOThreads|Vláken: Zaneprázdněný jiný I/O vláken fondu zpracování|Počet|Průměr|Počet vláken, které jsou spuštěné úlohy bez I/O ve fondu zpracování vláken.|
-|ProcessingPoolIOJobQueueLength|Vláken: Fond délka fronty vstupně-výstupní úlohy zpracování|Počet|Průměr|Počet vstupně-výstupních úloh ve frontě fondu zpracování vláken.|
-|ProcessingPoolIdleIOJobThreads|Vláken: Fond nečinnosti vstupně-výstupní úlohy vláken zpracování|Počet|Průměr|Počet vstupně-výstupních úloh ve fondu zpracování vláken nečinných vláken.|
-|ProcessingPoolIdleNonIOThreads|Vláken: Nečinnosti vláken jiný I/O fondu zpracování|Počet|Průměr|Počet nečinných vláken ve fondu zpracování vláken, který je vyhrazený pro jiný I/O úlohy.|
-|QueryPoolIdleThreads|Vláken: Dotaz nečinných vláken fondu|Počet|Průměr|Počet vstupně-výstupních úloh ve fondu zpracování vláken nečinných vláken.|
-|QueryPoolJobQueueLength|Vláken: Dotaz lengt fronty úloh fondu|Počet|Průměr|Počet úloh ve frontě fondu vláken dotazu.|
-|ShortParsingBusyThreads|Vláken: Analýza zaneprázdněn vláken krátké|Počet|Průměr|Počet vytížených vláken v krátké analýzy fondu vláken.|
-|ShortParsingIdleThreads|Vláken: Analýza nečinných vláken krátké|Počet|Průměr|Počet nečinných vláken v krátké analýzy fondu vláken.|
-|ShortParsingJobQueueLength|Vláken: Analýza délka fronty úloh krátké|Počet|Průměr|Počet úloh ve frontě krátké analýzy fondu vláken.|
+|CommandPoolBusyThreads|Vláken: Příkaz zaneprázdněn z fondu podprocesů|Počet|Průměr|Počet vytížených vláken ve fondu vláken příkaz hello.|
+|CommandPoolIdleThreads|Vláken: Příkaz nečinných vláken fondu|Počet|Průměr|Počet nečinných vláken ve fondu vláken příkaz hello.|
+|LongParsingBusyThreads|Vláken: Analýza zaneprázdněn vláken dlouho|Počet|Průměr|Počet vytížených vláken v hello dlouho analýza fondu vláken.|
+|LongParsingIdleThreads|Vláken: Analýza nečinných vláken dlouho|Počet|Průměr|Počet nečinných vláken v hello dlouho analýza fondu vláken.|
+|LongParsingJobQueueLength|Vláken: Analýza dlouho délka fronty úloh|Počet|Průměr|Počet úloh v hello frontu hello dlouho analýza fondu vláken.|
+|ProcessingPoolBusyIOJobThreads|Vláken: Fond zaneprázdněn vstupně-výstupní úlohy vláken zpracování|Počet|Průměr|Počet vláken, které jsou spuštěné úlohy vstupně-výstupních operací v hello zpracování fondu vláken.|
+|ProcessingPoolBusyNonIOThreads|Vláken: Zaneprázdněný jiný I/O vláken fondu zpracování|Počet|Průměr|Počet vláken, které jsou spuštěné jiné I/O úlohy v hello zpracování fondu vláken.|
+|ProcessingPoolIOJobQueueLength|Vláken: Fond délka fronty vstupně-výstupní úlohy zpracování|Počet|Průměr|Počet vstupně-výstupních úloh v hello frontu hello zpracování fondu vláken.|
+|ProcessingPoolIdleIOJobThreads|Vláken: Fond nečinnosti vstupně-výstupní úlohy vláken zpracování|Počet|Průměr|Počet nečinných vláken pro vstupně-výstupních úloh v hello zpracování fondu vláken.|
+|ProcessingPoolIdleNonIOThreads|Vláken: Nečinnosti vláken jiný I/O fondu zpracování|Počet|Průměr|Počet nečinných vláken ve fondu vláken zpracování hello vyhrazené toonon-I/O úlohy.|
+|QueryPoolIdleThreads|Vláken: Dotaz nečinných vláken fondu|Počet|Průměr|Počet nečinných vláken pro vstupně-výstupních úloh v hello zpracování fondu vláken.|
+|QueryPoolJobQueueLength|Vláken: Dotaz lengt fronty úloh fondu|Počet|Průměr|Počet úloh v hello frontu fondu vláken hello dotazu.|
+|ShortParsingBusyThreads|Vláken: Analýza zaneprázdněn vláken krátké|Počet|Průměr|Počet vytížených vláken v hello krátké analýza fondu vláken.|
+|ShortParsingIdleThreads|Vláken: Analýza nečinných vláken krátké|Počet|Průměr|Počet nečinných vláken v hello krátké analýza fondu vláken.|
+|ShortParsingJobQueueLength|Vláken: Analýza délka fronty úloh krátké|Počet|Průměr|Počet úloh v hello frontu hello krátké analýza fondu vláken.|
 |memory_thrashing_metric|Zahlcení paměti|Procento|Průměr|Průměrná paměti zahlcení.|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
@@ -88,20 +88,20 @@ Monitorování Azure poskytuje několik způsobů, jak pracovat s metriky, včet
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|
 |---|---|---|---|---|
-|CoreCount|Vyhrazené počet jader|Počet|Celkem|Celkový počet vyhrazených jader na účtu batch|
-|TotalNodeCount|Počet vyhrazených uzlů|Počet|Celkem|Celkový počet vyhrazených uzlů na účtu batch|
-|LowPriorityCoreCount|Počet jader LowPriority|Počet|Celkem|Celkový počet nízkou prioritu jader na účtu batch|
-|TotalLowPriorityNodeCount|Počet uzlů s nízkou prioritou|Počet|Celkem|Celkový počet uzlů nízkou prioritu na účtu batch|
+|CoreCount|Vyhrazené počet jader|Počet|Celkem|Celkový počet vyhrazených jader na účtu batch hello|
+|TotalNodeCount|Počet vyhrazených uzlů|Počet|Celkem|Celkový počet vyhrazených uzlů v účtu batch hello|
+|LowPriorityCoreCount|Počet jader LowPriority|Počet|Celkem|Celkový počet jader nízkou prioritu v účtu batch hello|
+|TotalLowPriorityNodeCount|Počet uzlů s nízkou prioritou|Počet|Celkem|Celkový počet uzlů nízkou prioritu v účtu batch hello|
 |CreatingNodeCount|Vytváření počet uzlů|Počet|Celkem|Počet uzlů, které vytváří|
 |StartingNodeCount|Počáteční počet uzlů|Počet|Celkem|Počet uzlů spouštění|
-|WaitingForStartTaskNodeCount|Čeká se na pro počet uzlů spuštění úloh|Počet|Celkem|Počet uzlů čekání na dokončení úlohy spustit|
-|StartTaskFailedNodeCount|Spuštění úlohy se nezdařilo počet uzlů|Počet|Celkem|Počet uzlů, kde se nezdařilo spustit úlohu|
+|WaitingForStartTaskNodeCount|Čeká se na pro počet uzlů spuštění úloh|Počet|Celkem|Počet uzlů čekání toocomplete spustit úlohu hello|
+|StartTaskFailedNodeCount|Spuštění úlohy se nezdařilo počet uzlů|Počet|Celkem|Počet uzlů, kde se nezdařilo spustit úlohu hello|
 |IdleNodeCount|Počet nečinných uzlů|Počet|Celkem|Počet nečinných uzlů|
 |OfflineNodeCount|Offline počet uzlů|Počet|Celkem|Počet offline uzlů|
 |RebootingNodeCount|Restartování počet uzlů|Počet|Celkem|Počet restartování uzlů|
 |ReimagingNodeCount|Obnovování počet uzlů|Počet|Celkem|Počet uzlů obnovování|
 |RunningNodeCount|Spuštění počet uzlů|Počet|Celkem|Počet spuštěných uzly|
-|LeavingPoolNodeCount|Opouštění počet uzlů fondu|Počet|Celkem|Počet uzlů a fondu|
+|LeavingPoolNodeCount|Opouštění počet uzlů fondu|Počet|Celkem|Počet uzlů ponechat hello fondu|
 |UnusableNodeCount|Nepoužitelná počet uzlů|Počet|Celkem|Počet nepoužitelná uzlů|
 |PreemptedNodeCount|Zrušené počet uzlů|Počet|Celkem|Počet uzlů zrušené|
 |TaskStartEvent|Úloha spuštění události|Počet|Celkem|Celkový počet úloh, které byly zahájeny|
@@ -301,11 +301,11 @@ Monitorování Azure poskytuje několik způsobů, jak pracovat s metriky, včet
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|
 |---|---|---|---|---|
-|Procento využití procesoru|Procento využití procesoru|Procento|Průměr|Procento přidělené výpočetní jednotky, které jsou aktuálně používán virtuálním počítačům|
-|Sítě v|Sítě v|Bajty|Celkem|Počet bajtů přijatých virtuální počítače (příchozí provoz) na všech síťových rozhraních|
-|Sítě Out|Sítě Out|Bajty|Celkem|Počet bajtů odhlašování na všech síťových rozhraní pomocí virtuální počítače (odchozí provoz)|
+|Procento využití procesoru|Procento využití procesoru|Procento|Průměr|Procento Hello přidělené výpočetní jednotky, které jsou aktuálně používán hello virtuální počítače|
+|Sítě v|Sítě v|Bajty|Celkem|Hello počet bajtů přijatých hello virtuální počítače (příchozí provoz) na všech síťových rozhraních|
+|Sítě Out|Sítě Out|Bajty|Celkem|Hello počet bajtů odhlašování na všech síťových rozhraní pomocí hello virtuální počítače (odchozí provoz)|
 |Bajty čtení disku|Bajty čtení disku|Bajty|Celkem|Celkový počet bajtů přečtených z disku během období sledování|
-|Bajty zápisu disku|Bajty zápisu disku|Bajty|Celkem|Celkový počet bajtů zapsaných na disk během období sledování|
+|Bajty zápisu disku|Bajty zápisu disku|Bajty|Celkem|Celkový počet bajtů zapsaných toodisk během období sledování|
 |Čtení z disku operace/s|Čtení z disku operace/s|CountPerSecond|Průměr|Čtení disku IOPS|
 |Operace zápisu disku/s|Operace zápisu disku/s|CountPerSecond|Průměr|Zápis disku IOPS|
 
@@ -313,11 +313,11 @@ Monitorování Azure poskytuje několik způsobů, jak pracovat s metriky, včet
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|
 |---|---|---|---|---|
-|Procento využití procesoru|Procento využití procesoru|Procento|Průměr|Procento přidělené výpočetní jednotky, které jsou aktuálně používán virtuálním počítačům|
-|Sítě v|Sítě v|Bajty|Celkem|Počet bajtů přijatých virtuální počítače (příchozí provoz) na všech síťových rozhraních|
-|Sítě Out|Sítě Out|Bajty|Celkem|Počet bajtů odhlašování na všech síťových rozhraní pomocí virtuální počítače (odchozí provoz)|
+|Procento využití procesoru|Procento využití procesoru|Procento|Průměr|Procento Hello přidělené výpočetní jednotky, které jsou aktuálně používán hello virtuální počítače|
+|Sítě v|Sítě v|Bajty|Celkem|Hello počet bajtů přijatých hello virtuální počítače (příchozí provoz) na všech síťových rozhraních|
+|Sítě Out|Sítě Out|Bajty|Celkem|Hello počet bajtů odhlašování na všech síťových rozhraní pomocí hello virtuální počítače (odchozí provoz)|
 |Bajty čtení disku|Bajty čtení disku|Bajty|Celkem|Celkový počet bajtů přečtených z disku během období sledování|
-|Bajty zápisu disku|Bajty zápisu disku|Bajty|Celkem|Celkový počet bajtů zapsaných na disk během období sledování|
+|Bajty zápisu disku|Bajty zápisu disku|Bajty|Celkem|Celkový počet bajtů zapsaných toodisk během období sledování|
 |Čtení z disku operace/s|Čtení z disku operace/s|CountPerSecond|Průměr|Čtení disku IOPS|
 |Operace zápisu disku/s|Operace zápisu disku/s|CountPerSecond|Průměr|Zápis disku IOPS|
 
@@ -325,11 +325,11 @@ Monitorování Azure poskytuje několik způsobů, jak pracovat s metriky, včet
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|
 |---|---|---|---|---|
-|Procento využití procesoru|Procento využití procesoru|Procento|Průměr|Procento přidělené výpočetní jednotky, které jsou aktuálně používán virtuálním počítačům|
-|Sítě v|Sítě v|Bajty|Celkem|Počet bajtů přijatých virtuální počítače (příchozí provoz) na všech síťových rozhraních|
-|Sítě Out|Sítě Out|Bajty|Celkem|Počet bajtů odhlašování na všech síťových rozhraní pomocí virtuální počítače (odchozí provoz)|
+|Procento využití procesoru|Procento využití procesoru|Procento|Průměr|Procento Hello přidělené výpočetní jednotky, které jsou aktuálně používán hello virtuální počítače|
+|Sítě v|Sítě v|Bajty|Celkem|Hello počet bajtů přijatých hello virtuální počítače (příchozí provoz) na všech síťových rozhraních|
+|Sítě Out|Sítě Out|Bajty|Celkem|Hello počet bajtů odhlašování na všech síťových rozhraní pomocí hello virtuální počítače (odchozí provoz)|
 |Bajty čtení disku|Bajty čtení disku|Bajty|Celkem|Celkový počet bajtů přečtených z disku během období sledování|
-|Bajty zápisu disku|Bajty zápisu disku|Bajty|Celkem|Celkový počet bajtů zapsaných na disk během období sledování|
+|Bajty zápisu disku|Bajty zápisu disku|Bajty|Celkem|Celkový počet bajtů zapsaných toodisk během období sledování|
 |Čtení z disku operace/s|Čtení z disku operace/s|CountPerSecond|Průměr|Čtení disku IOPS|
 |Operace zápisu disku/s|Operace zápisu disku/s|CountPerSecond|Průměr|Zápis disku IOPS|
 
@@ -407,58 +407,58 @@ Monitorování Azure poskytuje několik způsobů, jak pracovat s metriky, včet
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|
 |---|---|---|---|---|
-|d2c.telemetry.ingress.allProtocol|Pokusy o odeslání zprávy telemetrie|Počet|Celkem|Počet zařízení cloud telemetrické zprávy se pokusil odeslat do služby IoT hub|
-|d2c.telemetry.ingress.Success|Telemetrické zprávy odeslané|Počet|Celkem|Počet zařízení cloud telemetrické zprávy úspěšně odeslán do služby IoT hub|
-|c2d.Commands.egress.COMPLETE.Success|Příkazy byla dokončena|Počet|Celkem|Počet příkazů typu cloud zařízení úspěšně dokončila, a zařízení|
-|c2d.Commands.egress.Abandon.Success|Příkazy opuštění|Počet|Celkem|Počet příkazů typu cloud zařízení opuštěny v rámci zařízení|
-|c2d.Commands.egress.Reject.Success|Příkazy odmítnut|Počet|Celkem|Počet zařízení byl odmítnut příkazů typu cloud zařízení|
-|devices.totalDevices|Celkový počet zařízení|Počet|Celkem|Počet zařízení zaregistrovat do služby IoT hub|
-|devices.connectedDevices.allProtocol|Připojená zařízení|Počet|Celkem|Počet zařízení připojených ke službě IoT hub|
-|d2c.telemetry.egress.Success|Telemetrické zprávy doručit|Počet|Celkem|Počet zpráv byla úspěšně zapsána do koncových bodů (celkem)|
-|d2c.telemetry.egress.dropped|Vyřazené zprávy|Počet|Celkem|Počet zpráv vyřadit, protože koncový bod doručení byla neaktivní|
-|d2c.telemetry.egress.orphaned|Osamocené zprávy|Počet|Celkem|Počet zpráv, na které se neshodují žádné cesty, včetně záložní trasy|
-|d2c.telemetry.egress.invalid|Neplatné zprávy|Počet|Celkem|Počet zpráv, které nejsou doručeny z důvodu nekompatibility s nástrojem koncový bod|
-|d2c.telemetry.egress.Fallback|Zprávy odpovídající záložního stavu|Počet|Celkem|Počet zpráv zapsaných do záložního koncového bodu|
-|d2c.endpoints.egress.eventHubs|Zpráv doručených do koncové body centra událostí|Počet|Celkem|Počet zpráv byla úspěšně zapsána do koncové body centra událostí|
-|d2c.endpoints.latency.eventHubs|Latence zprávy pro koncové body centra událostí|počet milisekund|Průměr|Průměrná latence mezi příchozí zprávy do služby IoT hub a příchozí zprávy do koncového bodu centra událostí, v milisekundách|
-|d2c.endpoints.egress.serviceBusQueues|Doručování zpráv do fronty Service Bus koncové body|Počet|Celkem|Počet zpráv byla úspěšně zapsána do koncových bodů frontou Service Bus|
-|d2c.endpoints.latency.serviceBusQueues|Latence zprávy pro koncové body frontou Service Bus|počet milisekund|Průměr|Průměrná latence mezi příchozí zprávy do služby IoT hub a příjem příchozích dat zpráv do fronty Service Bus koncový bod, v milisekundách|
-|d2c.endpoints.egress.serviceBusTopics|Doručování zpráv do tématu Service Bus koncové body|Počet|Celkem|Počet zpráv byly úspěšně zapsána do tématu Service Bus koncové body|
-|d2c.endpoints.latency.serviceBusTopics|Latence zprávy pro koncové body témata sběrnice|počet milisekund|Průměr|Průměrná latence mezi příchozí zprávy do služby IoT hub a příchozí zprávy do tématu Service Bus koncový bod, v milisekundách|
-|d2c.endpoints.egress.builtIn.events|Zpráv doručených do vestavěným koncovým bodem (zprávy nebo události)|Počet|Celkem|Počet zpráv byla úspěšně zapsána do vestavěným koncovým bodem (zprávy nebo události)|
-|d2c.endpoints.latency.builtIn.events|Zpráva latence pro předdefinovaný koncový bod (zprávy nebo události)|počet milisekund|Průměr|Průměrná latence mezi příchozí zprávy do služby IoT hub a příjem příchozích dat zpráva do vestavěným koncovým bodem (zprávy událostí), v milisekundách |
-|d2c.Twin.Read.Success|Úspěšné twin čte ze zařízení|Počet|Celkem|Počet čtení všechny úspěšné twin spouštěná zařízení.|
-|d2c.Twin.Read.failure|Čtení twin ze zařízení se nezdařila|Počet|Celkem|Počet všech nepodařilo spouštěná zařízení twin čtení.|
-|d2c.Twin.Read.Size|Velikost odpovědi twin čtení ze zařízení|Bajty|Průměr|Průměr, min a max všechny úspěšné, spouštěná zařízení twin čtení.|
-|d2c.Twin.Update.Success|Aktualizace úspěšná twin ze zařízení|Počet|Celkem|Počet aktualizací všechny úspěšné twin spouštěná zařízení.|
-|d2c.Twin.Update.failure|Aktualizace twin ze zařízení se nezdařila|Počet|Celkem|Počet všech se nezdařila aktualizace twin spouštěná zařízení.|
-|d2c.Twin.Update.Size|Velikost twin aktualizace ze zařízení|Bajty|Průměr|Průměr, minimální a maximální velikost všech úspěšné, spouštěná zařízení twin aktualizace.|
-|c2d.Methods.Success|Volání úspěšné přímá metoda|Počet|Celkem|Počet všech úspěšných volání přímá metoda.|
-|c2d.Methods.failure|Přímá metoda volání se nezdařilo|Počet|Celkem|Počet všech se nezdařila, volání metod direct.|
-|c2d.Methods.requestSize|Žádost o velikosti volání přímá metoda|Bajty|Průměr|Průměr, min a max všechny úspěšné požadavky přímá metoda.|
-|c2d.Methods.responseSize|Velikost odpovědi volání přímá metoda|Bajty|Průměr|Průměr, min a max všechny úspěšné odpovědi přímá metoda.|
-|c2d.Twin.Read.Success|Úspěšné twin čte z back-end|Počet|Celkem|Počet všech úspěšně spustil back-end twin čtení.|
-|c2d.Twin.Read.failure|Neúspěšné twin čte z back-end|Počet|Celkem|Počet všech se nezdařilo čtení twin iniciované back-end.|
-|c2d.Twin.Read.Size|Velikost odpovědi twin čtení z back-end|Bajty|Průměr|Průměr, min a max všechny úspěšné, iniciované back-end twin čtení.|
-|c2d.Twin.Update.Success|Aktualizace úspěšná twin z back-end|Počet|Celkem|Počet aktualizací všechny úspěšné twin iniciované back-end.|
-|c2d.Twin.Update.failure|Aktualizace se nezdařila twin z back-end|Počet|Celkem|Počet všech se nezdařila aktualizace twin iniciované back-end.|
-|c2d.Twin.Update.Size|Velikost twin aktualizace z back-end|Bajty|Průměr|Průměr, minimální a maximální velikost všech úspěšné, iniciované back-end twin aktualizace.|
-|twinQueries.success|Úspěšné twin dotazy|Počet|Celkem|Počet všech úspěšné twin dotazů.|
-|twinQueries.failure|Neúspěšné twin dotazy|Počet|Celkem|Počet všechny neúspěšné twin dotazy.|
-|twinQueries.resultSize|Objem výsledků dotazů Twin|Bajty|Průměr|Průměr, minimální a maximální velikosti výsledek všechny úspěšné twin dotazy.|
-|jobs.createTwinUpdateJob.success|Úspěšné vytvoření úloh aktualizace twin|Počet|Celkem|Počet všech úspěšném vytvoření twin aktualizace úloh.|
-|jobs.createTwinUpdateJob.failure|Neúspěšné vytvoření úloh aktualizace twin|Počet|Celkem|Počet všech se nezdařilo vytvoření twin aktualizace úlohy.|
-|jobs.createDirectMethodJob.success|Úspěšné vytvoření úloh volání – metoda|Počet|Celkem|Počet všech úspěšném vytvoření přímá metoda volání úloh.|
-|jobs.createDirectMethodJob.failure|Neúspěšné vytvoření úloh volání – metoda|Počet|Celkem|Počet všech se nezdařilo vytvoření přímá metoda vyvolání úlohy.|
-|jobs.listJobs.success|Úspěšné volání do seznamu úloh|Počet|Celkem|Počet všech úspěšných volání do seznamu úloh.|
-|jobs.listJobs.failure|Volání do seznamu úloh se nezdařilo|Počet|Celkem|Počet všech selhání volání do seznamu úloh.|
-|jobs.cancelJob.success|Zrušení úloh úspěšné|Počet|Celkem|Počet všech úspěšných volání zrušení úlohy.|
-|jobs.cancelJob.failure|Informace o neúspěšné úloze zrušení|Počet|Celkem|Počet všech volání se nezdařilo zrušit úlohu.|
-|jobs.queryJobs.success|Až se úloha úspěšně dotazy|Počet|Celkem|Počet všech úspěšných volání do úlohy dotaz.|
-|jobs.queryJobs.failure|Úloha se dotazuje se nezdařilo|Počet|Celkem|Počet všech selhání volání do úlohy dotaz.|
-|jobs.completed|Dokončené úlohy|Počet|Celkem|Počet všech dokončené úlohy.|
-|jobs.Failed|Neúspěšné úlohy|Počet|Celkem|Počet všechny neúspěšné úlohy.|
-|d2c.telemetry.ingress.sendThrottle|Počet omezení chyb|Počet|Celkem|Omezí počet omezení chyb z důvodu propustnost zařízení generovaný|
+|d2c.telemetry.ingress.allProtocol|Pokusy o odeslání zprávy telemetrie|Počet|Celkem|Počet zařízení cloud telemetrické zprávy pokus o toobe odeslaných tooyour IoT hub|
+|d2c.telemetry.ingress.Success|Telemetrické zprávy odeslané|Počet|Celkem|Počet zařízení cloud telemetrické zprávy úspěšně odeslat tooyour IoT hub|
+|c2d.Commands.egress.COMPLETE.Success|Příkazy byla dokončena|Počet|Celkem|Počet příkazů typu cloud zařízení hello zařízení byla úspěšně dokončena|
+|c2d.Commands.egress.Abandon.Success|Příkazy opuštění|Počet|Celkem|Počet příkazů typu cloud zařízení opuštěny v rámci hello zařízení|
+|c2d.Commands.egress.Reject.Success|Příkazy odmítnut|Počet|Celkem|Počet příkazů typu cloud zařízení hello zařízení byl odmítnut|
+|devices.totalDevices|Celkový počet zařízení|Počet|Celkem|Počet zařízení registrovaných tooyour IoT hub|
+|devices.connectedDevices.allProtocol|Připojená zařízení|Počet|Celkem|Počet zařízení připojených tooyour IoT hub|
+|d2c.telemetry.egress.Success|Telemetrické zprávy doručit|Počet|Celkem|Počet zpráv byla úspěšně zapsána tooendpoints (celkem)|
+|d2c.telemetry.egress.dropped|Vyřazené zprávy|Počet|Celkem|Počet zpráv vyřadit, protože koncový bod hello doručení byla neaktivní|
+|d2c.telemetry.egress.orphaned|Osamocené zprávy|Počet|Celkem|Hello počet zpráv, na které se neshodují žádné cesty, včetně hello záložní trasy|
+|d2c.telemetry.egress.invalid|Neplatné zprávy|Počet|Celkem|Hello počet zpráv nejsou doručeny kvůli tooincompatibility s koncovým bodem hello|
+|d2c.telemetry.egress.Fallback|Zprávy odpovídající záložního stavu|Počet|Celkem|Počet zpráv zapsaných toohello záložní koncový bod|
+|d2c.endpoints.egress.eventHubs|Doručeny zprávy tooEvent koncové body centra|Počet|Celkem|Počet zpráv byly úspěšně napsané tooEvent koncové body centra|
+|d2c.endpoints.latency.eventHubs|Latence zprávy pro koncové body centra událostí|počet milisekund|Průměr|Průměrná latence Hello mezi zpráv příjem příchozích dat toohello IoT hub a příjem příchozích dat zprávy do koncového bodu centra událostí, v milisekundách|
+|d2c.endpoints.egress.serviceBusQueues|Doručeny zprávy tooService koncové body fronty sběrnice|Počet|Celkem|Počet zpráv byly úspěšně napsané tooService fronty sběrnice koncové body|
+|d2c.endpoints.latency.serviceBusQueues|Latence zprávy pro koncové body frontou Service Bus|počet milisekund|Průměr|Průměrná latence Hello mezi zpráv příjem příchozích dat toohello IoT hub a příjem příchozích dat zprávy do fronty Service Bus koncový bod, v milisekundách|
+|d2c.endpoints.egress.serviceBusTopics|Doručeny zprávy tooService tématu sběrnice koncové body|Počet|Celkem|Počet zpráv byly úspěšně napsané tooService tématu sběrnice koncové body|
+|d2c.endpoints.latency.serviceBusTopics|Latence zprávy pro koncové body témata sběrnice|počet milisekund|Průměr|Průměrná latence Hello mezi zpráv příjem příchozích dat toohello IoT hub a příjem příchozích dat zprávy do tématu Service Bus koncový bod, v milisekundách|
+|d2c.endpoints.egress.builtIn.events|Zpráv doručených toohello vestavěným koncovým bodem (zprávy nebo události)|Počet|Celkem|Počet zpráv byly úspěšně napsané toohello vestavěným koncovým bodem (zprávy nebo události)|
+|d2c.endpoints.latency.builtIn.events|Zpráva latence pro hello vestavěným koncovým bodem (zprávy nebo události)|počet milisekund|Průměr|Průměrná latence Hello mezi zpráv příjem příchozích dat toohello IoT hub a příjem příchozích dat zpráva do hello vestavěným koncovým bodem (zprávy událostí), v milisekundách |
+|d2c.Twin.Read.Success|Úspěšné twin čte ze zařízení|Počet|Celkem|přečte Hello počet všechny úspěšné twin spouštěná zařízení.|
+|d2c.Twin.Read.failure|Čtení twin ze zařízení se nezdařila|Počet|Celkem|Hello počet všech nepodařilo spouštěná zařízení twin čtení.|
+|d2c.Twin.Read.Size|Velikost odpovědi twin čtení ze zařízení|Bajty|Průměr|Hello průměr, min a max všechny úspěšné spouštěná zařízení twin čtení.|
+|d2c.Twin.Update.Success|Aktualizace úspěšná twin ze zařízení|Počet|Celkem|Hello počet všechny úspěšné spouštěná zařízení twin aktualizací.|
+|d2c.Twin.Update.failure|Aktualizace twin ze zařízení se nezdařila|Počet|Celkem|Hello počet všech se nezdařila aktualizace twin spouštěná zařízení.|
+|d2c.Twin.Update.Size|Velikost twin aktualizace ze zařízení|Bajty|Průměr|průměr Hello a minimální a maximální velikost všech úspěšné spouštěná zařízení twin aktualizace.|
+|c2d.Methods.Success|Volání úspěšné přímá metoda|Počet|Celkem|Hello počet všech úspěšných volání přímá metoda.|
+|c2d.Methods.failure|Přímá metoda volání se nezdařilo|Počet|Celkem|Hello počet všech se nezdařila, volání metod direct.|
+|c2d.Methods.requestSize|Žádost o velikosti volání přímá metoda|Bajty|Průměr|Hello průměr, min a max všechny úspěšné směrovat požadavky metod.|
+|c2d.Methods.responseSize|Velikost odpovědi volání přímá metoda|Bajty|Průměr|Hello průměr, min a max všechny úspěšné přímá metoda odpovědí.|
+|c2d.Twin.Read.Success|Úspěšné twin čte z back-end|Počet|Celkem|přečte Hello počet všechny úspěšné twin iniciované back-end.|
+|c2d.Twin.Read.failure|Neúspěšné twin čte z back-end|Počet|Celkem|Hello počet všech se nezdařilo čtení twin iniciované back-end.|
+|c2d.Twin.Read.Size|Velikost odpovědi twin čtení z back-end|Bajty|Průměr|Hello průměr, min a max všechny úspěšné iniciované back-end twin čtení.|
+|c2d.Twin.Update.Success|Aktualizace úspěšná twin z back-end|Počet|Celkem|Hello počet všechny úspěšně spustil back-end twin aktualizací.|
+|c2d.Twin.Update.failure|Aktualizace se nezdařila twin z back-end|Počet|Celkem|Hello počet všech se nezdařila aktualizace twin iniciované back-end.|
+|c2d.Twin.Update.Size|Velikost twin aktualizace z back-end|Bajty|Průměr|průměr Hello a minimální a maximální velikost všech úspěšně spustil back-end twin aktualizace.|
+|twinQueries.success|Úspěšné twin dotazy|Počet|Celkem|Hello počet všechny úspěšné twin dotazy.|
+|twinQueries.failure|Neúspěšné twin dotazy|Počet|Celkem|Hello počet všechny neúspěšné twin dotazy.|
+|twinQueries.resultSize|Objem výsledků dotazů Twin|Bajty|Průměr|Hello průměr, minimální a maximální velikosti výsledek hello všechny úspěšné twin dotazy.|
+|jobs.createTwinUpdateJob.success|Úspěšné vytvoření úloh aktualizace twin|Počet|Celkem|Hello počet všech úspěšném vytvoření twin aktualizace úloh.|
+|jobs.createTwinUpdateJob.failure|Neúspěšné vytvoření úloh aktualizace twin|Počet|Celkem|Hello počet všech se nezdařilo vytvoření twin aktualizace úlohy.|
+|jobs.createDirectMethodJob.success|Úspěšné vytvoření úloh volání – metoda|Počet|Celkem|Hello počet všech úspěšném vytvoření přímá metoda volání úloh.|
+|jobs.createDirectMethodJob.failure|Neúspěšné vytvoření úloh volání – metoda|Počet|Celkem|Hello počet všech se nezdařilo vytvoření přímá metoda vyvolání úlohy.|
+|jobs.listJobs.success|Úlohy toolist úspěšných volání|Počet|Celkem|Hello počet všech úloh toolist úspěšných volání.|
+|jobs.listJobs.failure|Selhání volání toolist úlohy|Počet|Celkem|Hello počet všech úloh toolist volání se nezdařilo.|
+|jobs.cancelJob.success|Zrušení úloh úspěšné|Počet|Celkem|Hello počet všechny úspěšné volání toocancel úlohu.|
+|jobs.cancelJob.failure|Informace o neúspěšné úloze zrušení|Počet|Celkem|Hello počet selhání volání toocancel všechny úlohy.|
+|jobs.queryJobs.success|Až se úloha úspěšně dotazy|Počet|Celkem|Hello počet všech úloh tooquery úspěšných volání.|
+|jobs.queryJobs.failure|Úloha se dotazuje se nezdařilo|Počet|Celkem|Hello počet všech úloh tooquery volání se nezdařilo.|
+|jobs.completed|Dokončené úlohy|Počet|Celkem|Hello počet všech dokončené úlohy.|
+|jobs.Failed|Neúspěšné úlohy|Počet|Celkem|Hello počet všechny neúspěšné úlohy.|
+|d2c.telemetry.ingress.sendThrottle|Počet omezení chyb|Počet|Celkem|Počet omezení chyb z důvodu omezení propustnosti toodevice|
 |dailyMessageQuotaUsed|Celkový počet zpráv, které používá|Počet|Průměr|Počet celkový počet zpráv v současné době používá|
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
@@ -531,12 +531,12 @@ Monitorování Azure poskytuje několik způsobů, jak pracovat s metriky, včet
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|
 |---|---|---|---|---|
-|Registration.all|Operace Registrování|Počet|Celkem|Počet všech operací úspěšnou registraci (vytváření dotazů aktualizace a odstranění). |
-|Registration.Create|Registrace vytvoření operací|Počet|Celkem|Počet vytváření všech úspěšnou registraci.|
-|Registration.Update|Operace aktualizace registrace|Počet|Celkem|Počet všech aktualizací úspěšnou registraci.|
-|Registration.Get|Operace čtení registrace|Počet|Celkem|Počet všech dotazů úspěšnou registraci.|
-|Registration.delete|Operace odstranění registrace|Počet|Celkem|Počet všech odstranění úspěšnou registraci.|
-|příchozí|Příchozí zprávy|Počet|Celkem|Počet všech úspěšné odeslání volání rozhraní API. |
+|Registration.all|Operace Registrování|Počet|Celkem|Hello počet všech operací úspěšnou registraci (vytváření dotazů aktualizace a odstranění). |
+|Registration.Create|Registrace vytvoření operací|Počet|Celkem|Hello počet vytváření všech úspěšnou registraci.|
+|Registration.Update|Operace aktualizace registrace|Počet|Celkem|Hello počet všech aktualizací úspěšnou registraci.|
+|Registration.Get|Operace čtení registrace|Počet|Celkem|Hello počet všechny dotazy úspěšnou registraci.|
+|Registration.delete|Operace odstranění registrace|Počet|Celkem|Hello počet všechna odstranění úspěšnou registraci.|
+|příchozí|Příchozí zprávy|Počet|Celkem|Hello počet všechny úspěšné odeslání volání rozhraní API. |
 |Incoming.Scheduled|Naplánované nabízená oznámení odesílaná|Počet|Celkem|Naplánované nabízená oznámení zrušena|
 |Incoming.Scheduled.Cancel|Naplánované nabízená oznámení zrušena|Počet|Celkem|Naplánované nabízená oznámení zrušena|
 |Scheduled.Pending|Čekající naplánované oznámení|Počet|Celkem|Čekající naplánované oznámení|
@@ -545,52 +545,52 @@ Monitorování Azure poskytuje několik způsobů, jak pracovat s metriky, včet
 |Installation.upsert|Vytvořit nebo aktualizovat operace instalace|Počet|Celkem|Vytvořit nebo aktualizovat operace instalace|
 |Installation.patch|Operace instalace opravy|Počet|Celkem|Operace instalace opravy|
 |Installation.delete|Instalace operace odstranění|Počet|Celkem|Instalace operace odstranění|
-|outgoing.allpns.Success|Úspěšné oznámení|Počet|Celkem|Počet všech úspěšné oznámení.|
-|outgoing.allpns.invalidpayload|Datová část chyby|Počet|Celkem|Počet oznámení, které se nezdařila, protože systém PNS vrátil chybu chybná datová část.|
-|outgoing.allpns.pnserror|Chyby systému externí oznámení|Počet|Celkem|Počet oznámení, které se nezdařila, protože došlo k potížím při komunikaci se Správou (nezahrnuje problémy ověřování).|
-|outgoing.allpns.channelerror|Kanál chyby|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože kanál byla neplatná nejsou přidružené aplikace správné omezeny nebo jeho platnost.|
-|outgoing.allpns.badorexpiredchannel|Chyby – chybný kanál nebo vypršení časového limitu kanálu|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože vypršela platnost, nebo neplatný kanál/token nebo registrationId v registraci.|
-|outgoing.wns.Success|Úspěšné oznámení WNS|Počet|Celkem|Počet všech úspěšné oznámení.|
-|outgoing.wns.invalidcredentials|Chyb autorizace WNS (Neplatné přihlašovací údaje)|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože systém PNS nebyl přijat zadané přihlašovací údaje nebo přihlašovací údaje jsou blokovány. (Windows Live nerozpoznal přihlašovací údaje).|
-|outgoing.wns.badchannel|Chyba WNS chybný kanál|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože nebyla rozpoznána ChannelURI v registraci (WNS stav: 404 nebyl nalezen).|
-|outgoing.wns.expiredchannel|WNS platnost Chyba kanálu|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože vypršela platnost ChannelURI (WNS stav: 410 Gone).|
-|outgoing.wns.throttled|WNS omezeny oznámení|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože WNS je omezení této aplikace (WNS stav: 406 Nepřijatelný).|
+|outgoing.allpns.Success|Úspěšné oznámení|Počet|Celkem|Hello počet všech úspěšné oznámení.|
+|outgoing.allpns.invalidpayload|Datová část chyby|Počet|Celkem|Hello počet nabízených oznámení, které se nezdařila, protože hello systém PNS vrácena chyba chybná datová část.|
+|outgoing.allpns.pnserror|Chyby systému externí oznámení|Počet|Celkem|Hello počet nabízených oznámení, které se nezdařila, protože došlo k problému v komunikaci s hello systém PNS (nezahrnuje problémy ověřování).|
+|outgoing.allpns.channelerror|Kanál chyby|Počet|Celkem|Hello počet nabízených oznámení, která se nezdařila, protože hello kanál byla neplatná nejsou přidružené hello správné aplikace omezení, nebo jeho platnost.|
+|outgoing.allpns.badorexpiredchannel|Chyby – chybný kanál nebo vypršení časového limitu kanálu|Počet|Celkem|Hello počet nabízených oznámení, která se nezdařila, protože hello kanál/token nebo registrationId v registraci hello vypršela platnost, nebo neplatný.|
+|outgoing.wns.Success|Úspěšné oznámení WNS|Počet|Celkem|Hello počet všech úspěšné oznámení.|
+|outgoing.wns.invalidcredentials|Chyb autorizace WNS (Neplatné přihlašovací údaje)|Počet|Celkem|Hello počet nabízených oznámení, která se nezdařila, protože nebyl přijat hello systém PNS hello, pokud jsou zablokované pověření nebo hello pověření. (Windows Live nerozpoznal hello přihlašovací údaje).|
+|outgoing.wns.badchannel|Chyba WNS chybný kanál|Počet|Celkem|Hello počet nabízených oznámení, které se nezdařila, protože nebyla rozpoznána hello ChannelURI v registraci hello (WNS stav: 404 nebyl nalezen).|
+|outgoing.wns.expiredchannel|WNS platnost Chyba kanálu|Počet|Celkem|Hello počet nabízených oznámení, které se nezdařila, protože hello ChannelURI vypršela (WNS stav: 410 Gone).|
+|outgoing.wns.throttled|WNS omezeny oznámení|Počet|Celkem|počet oznámení, které se nezdařila, protože WNS je omezení této aplikace Hello (WNS stav: 406 Nepřijatelný).|
 |outgoing.wns.tokenproviderunreachable|Chyb autorizace WNS (nedostupné)|Počet|Celkem|Windows Live není dostupný.|
-|outgoing.wns.invalidtoken|Chyb autorizace WNS (neplatný Token)|Počet|Celkem|Zadaný pro WNS token není platný (WNS stav: 401 – Neověřeno).|
-|outgoing.wns.wrongtoken|Chyb autorizace WNS (chybný Token)|Počet|Celkem|Zadaný pro WNS token je platný, ale pro jinou aplikaci (WNS stav: 403 Zakázáno). To může nastat, když ChannelURI v registraci souvisí s jinou aplikací. Zkontrolujte, jestli klientská aplikace je přidružená ke stejné aplikaci, jehož pověření se v centru oznámení.|
-|outgoing.wns.invalidnotificationformat|Formát neplatný oznámení WNS|Počet|Celkem|Formát oznámení není platný (stav WNS: 400). Všimněte si, že WNS není odmítnout všechny neplatné datové části.|
-|outgoing.wns.invalidnotificationsize|WNS – chyba neplatné velikosti oznámení|Počet|Celkem|Datová část oznámení je moc velký (WNS stav: 413).|
-|outgoing.wns.channelthrottled|Kanál WNS omezení|Počet|Celkem|Oznámení byla vyřazena, protože se omezuje ChannelURI v registraci (hlavička odpovědi WNS: X-WNS-NotificationStatus:channelThrottled).|
-|outgoing.wns.channeldisconnected|Kanál WNS odpojení|Počet|Celkem|Oznámení byla vyřazena, protože se omezuje ChannelURI v registraci (hlavička odpovědi WNS: X-WNS-DeviceConnectionStatus: odpojení).|
-|outgoing.wns.dropped|WNS vyřadit oznámení|Počet|Celkem|Oznámení byla vyřazena, protože se omezuje ChannelURI v registraci (X-WNS-NotificationStatus: vynechaných, ale není X-WNS-DeviceConnectionStatus: odpojení).|
+|outgoing.wns.invalidtoken|Chyb autorizace WNS (neplatný Token)|Počet|Celkem|Hello token zadaný tooWNS není platný (WNS stav: 401 – Neověřeno).|
+|outgoing.wns.wrongtoken|Chyb autorizace WNS (chybný Token)|Počet|Celkem|Hello token zadaný tooWNS je platný, ale pro jinou aplikaci (WNS stav: 403 Zakázáno). To může nastat, když hello ChannelURI v registraci hello souvisí s jinou aplikací. Zkontrolujte, že klientská aplikace hello souvisí s hello stejné aplikaci, jehož pověření se v centru oznámení hello.|
+|outgoing.wns.invalidnotificationformat|Formát neplatný oznámení WNS|Počet|Celkem|Formát Hello hello oznámení není platný (stav WNS: 400). Všimněte si, že WNS není odmítnout všechny neplatné datové části.|
+|outgoing.wns.invalidnotificationsize|WNS – chyba neplatné velikosti oznámení|Počet|Celkem|datová část oznámení Hello je příliš velký (WNS stav: 413).|
+|outgoing.wns.channelthrottled|Kanál WNS omezení|Počet|Celkem|Hello oznámení byla vyřazena, protože se omezuje hello ChannelURI v registraci hello (hlavička odpovědi WNS: X-WNS-NotificationStatus:channelThrottled).|
+|outgoing.wns.channeldisconnected|Kanál WNS odpojení|Počet|Celkem|Hello oznámení byla vyřazena, protože se omezuje hello ChannelURI v registraci hello (hlavička odpovědi WNS: X-WNS-DeviceConnectionStatus: odpojení).|
+|outgoing.wns.dropped|WNS vyřadit oznámení|Počet|Celkem|Hello oznámení byla vyřazena, protože se omezuje hello ChannelURI v registraci hello (X-WNS-NotificationStatus: vynechaných, ale není X-WNS-DeviceConnectionStatus: odpojení).|
 |outgoing.wns.pnserror|Chyby WNS|Počet|Celkem|Oznámení nejsou doručeny z důvodu chyby komunikace s WNS.|
 |outgoing.wns.authenticationerror|Chyby ověřování WNS|Počet|Celkem|Oznámení nejsou doručeny z důvodu chyby komunikace s Windows Live neplatné přihlašovací údaje nebo chybný token.|
-|outgoing.apns.Success|Úspěšné oznámení APNS|Počet|Celkem|Počet všech úspěšné oznámení.|
-|outgoing.apns.invalidcredentials|Chyb autorizace služby APN|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože systém PNS nebyl přijat zadané přihlašovací údaje nebo přihlašovací údaje jsou blokovány.|
-|outgoing.apns.badchannel|Chyba služby APN chybný kanál|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože token je neplatný (kód stavu služby APN: 8).|
-|outgoing.apns.expiredchannel|APNS vypršela platnost Chyba kanálu|Počet|Celkem|Počet token, který došlo ke zrušení platnosti podle kanálu zpětné vazby služby APN.|
-|outgoing.apns.invalidnotificationsize|APNS – chyba neplatné velikosti oznámení|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože byla příliš velká datová část (APNS stavový kód: 7).|
-|outgoing.apns.pnserror|Chyby služby APN|Počet|Celkem|Počet nabízených oznámení, která se nezdařila z důvodu chyb, komunikaci se službou APNS.|
-|outgoing.gcm.Success|Úspěšné oznámení GCM|Počet|Celkem|Počet všech úspěšné oznámení.|
-|outgoing.gcm.invalidcredentials|Chyb autorizace služby GCM (Neplatné přihlašovací údaje)|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože systém PNS nebyl přijat zadané přihlašovací údaje nebo přihlašovací údaje jsou blokovány.|
-|outgoing.gcm.badchannel|Chyba GCM chybný kanál|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože nebyla rozpoznána registrationId v registraci (GCM výsledek: Neplatná registrační).|
-|outgoing.gcm.expiredchannel|GCM platnost Chyba kanálu|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože platnost vypršela registrationId v registraci (GCM výsledek: NotRegistered).|
-|outgoing.gcm.throttled|Omezení oznámení GCM|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože GCM omezuje tuto aplikaci (GCM stavový kód: 501-599 nebo výsledek: není k dispozici).|
-|outgoing.gcm.invalidnotificationformat|Formát neplatný oznámení GCM|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože nebyla správně naformátována datové části (GCM výsledek: InvalidDataKey nebo InvalidTtl).|
-|outgoing.gcm.invalidnotificationsize|GCM – chyba neplatné velikosti oznámení|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože byla příliš velká datová část (GCM výsledek: MessageTooBig).|
-|outgoing.gcm.wrongchannel|Chyba GCM nesprávné kanálu|Počet|Celkem|Počet oznámení, které se nezdařila, protože není přidružen k aktuální aplikaci registrationId v registraci (GCM výsledek: InvalidPackageName).|
-|outgoing.gcm.pnserror|Chyby GCM|Počet|Celkem|Počet nabízených oznámení, která se nezdařila z důvodu chyb, komunikaci se službou GCM.|
-|outgoing.gcm.authenticationerror|Chyby ověřování GCM|Počet|Celkem|Počet oznámení, které se nezdařila, protože systém PNS nebyl přijat zadaných pověření přihlašovací údaje jsou zablokované nebo ID odesílatele není správně nakonfigurována v aplikaci (GCM výsledek: MismatchedSenderId).|
-|outgoing.mpns.Success|Úspěšné oznámení MPNS|Počet|Celkem|Počet všech úspěšné oznámení.|
-|outgoing.mpns.invalidcredentials|Neplatné přihlašovací údaje MPNS|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože systém PNS nebyl přijat zadané přihlašovací údaje nebo přihlašovací údaje jsou blokovány.|
-|outgoing.mpns.badchannel|Chyba MPNS chybný kanál|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože nebyla rozpoznána ChannelURI v registraci (MPNS stav: 404 nebyl nalezen).|
-|outgoing.mpns.throttled|MPNS omezeny oznámení|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože MPNS se omezení této aplikace (WNS MPNS: 406 Nepřijatelný).|
-|outgoing.mpns.invalidnotificationformat|Formát neplatný oznámení MPNS|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože datová část oznámení byla příliš velká.|
-|outgoing.mpns.channeldisconnected|Kanál MPNS odpojení|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože byla odpojena ChannelURI v registraci (MPNS stav: 412 nebyl nalezen).|
-|outgoing.mpns.dropped|MPNS vyřadit oznámení|Počet|Celkem|Počet oznámení, které byly vynechány podle MPNS (MPNS hlavičku odpovědi: X NotificationStatus: QueueFull nebo Suppressed).|
-|outgoing.mpns.pnserror|Chyby MPNS|Počet|Celkem|Počet nabízených oznámení, která se nezdařilo z důvodu chyby komunikace se MPNS.|
-|outgoing.mpns.authenticationerror|Chyby ověřování MPNS|Počet|Celkem|Počet nabízených oznámení, která se nezdařila, protože systém PNS nebyl přijat zadané přihlašovací údaje nebo přihlašovací údaje jsou blokovány.|
-|notificationhub.pushes|Všechny odchozí oznámení|Počet|Celkem|Všechny odchozí oznámení centra oznámení|
+|outgoing.apns.Success|Úspěšné oznámení APNS|Počet|Celkem|Hello počet všech úspěšné oznámení.|
+|outgoing.apns.invalidcredentials|Chyb autorizace služby APN|Počet|Celkem|Hello počet nabízených oznámení, která se nezdařila, protože nebyl přijat hello systém PNS hello, pokud jsou zablokované pověření nebo hello pověření.|
+|outgoing.apns.badchannel|Chyba služby APN chybný kanál|Počet|Celkem|Hello počet nabízených oznámení, které se nezdařila, protože hello token je neplatný (kód stavu služby APN: 8).|
+|outgoing.apns.expiredchannel|APNS vypršela platnost Chyba kanálu|Počet|Celkem|Hello počet token, který došlo ke zrušení platnosti podle hello APNS zpětnou vazbu kanálu.|
+|outgoing.apns.invalidnotificationsize|APNS – chyba neplatné velikosti oznámení|Počet|Celkem|Hello počet nabízených oznámení, které se nezdařila, protože byla příliš velká datová část hello (kód stavu služby APN: 7).|
+|outgoing.apns.pnserror|Chyby služby APN|Počet|Celkem|Hello počet nabízených oznámení, která se nezdařila z důvodu chyb, komunikaci se službou APNS.|
+|outgoing.gcm.Success|Úspěšné oznámení GCM|Počet|Celkem|Hello počet všech úspěšné oznámení.|
+|outgoing.gcm.invalidcredentials|Chyb autorizace služby GCM (Neplatné přihlašovací údaje)|Počet|Celkem|Hello počet nabízených oznámení, která se nezdařila, protože nebyl přijat hello systém PNS hello, pokud jsou zablokované pověření nebo hello pověření.|
+|outgoing.gcm.badchannel|Chyba GCM chybný kanál|Počet|Celkem|Hello počet nabízených oznámení, které se nezdařila, protože nebyla rozpoznána hello registrationId v registraci hello (GCM výsledek: Neplatná registrační).|
+|outgoing.gcm.expiredchannel|GCM platnost Chyba kanálu|Počet|Celkem|Hello počet nabízených oznámení, které se nezdařila, protože platnost vypršela hello registrationId v registraci hello (GCM výsledek: NotRegistered).|
+|outgoing.gcm.throttled|Omezení oznámení GCM|Počet|Celkem|Hello počet nabízených oznámení, které se nezdařila, protože GCM omezuje tuto aplikaci (GCM stavový kód: 501-599 nebo výsledek: není k dispozici).|
+|outgoing.gcm.invalidnotificationformat|Formát neplatný oznámení GCM|Počet|Celkem|počet oznámení, které se nezdařila, protože nebyla správně naformátována hello datové Hello (GCM výsledek: InvalidDataKey nebo InvalidTtl).|
+|outgoing.gcm.invalidnotificationsize|GCM – chyba neplatné velikosti oznámení|Počet|Celkem|Hello počet nabízených oznámení, které se nezdařila, protože byla příliš velká datová část hello (GCM výsledek: MessageTooBig).|
+|outgoing.gcm.wrongchannel|Chyba GCM nesprávné kanálu|Počet|Celkem|Hello počet nabízených oznámení, které se nezdařila, protože hello registrationId v registraci hello není přidružené toohello aktuální aplikaci (GCM výsledek: InvalidPackageName).|
+|outgoing.gcm.pnserror|Chyby GCM|Počet|Celkem|Hello počet nabízených oznámení, která se nezdařila z důvodu chyb, komunikaci se službou GCM.|
+|outgoing.gcm.authenticationerror|Chyby ověřování GCM|Počet|Celkem|Hello počet nabízených oznámení, které se nezdařila, protože hello systém PNS nebyl přijat hello zadané přihlašovací údaje hello přihlašovací údaje jsou zablokované nebo hello ID odesílatele není správně nakonfigurováno v aplikaci hello (GCM výsledek: MismatchedSenderId).|
+|outgoing.mpns.Success|Úspěšné oznámení MPNS|Počet|Celkem|Hello počet všech úspěšné oznámení.|
+|outgoing.mpns.invalidcredentials|Neplatné přihlašovací údaje MPNS|Počet|Celkem|Hello počet nabízených oznámení, která se nezdařila, protože nebyl přijat hello systém PNS hello, pokud jsou zablokované pověření nebo hello pověření.|
+|outgoing.mpns.badchannel|Chyba MPNS chybný kanál|Počet|Celkem|Hello počet nabízených oznámení, které se nezdařila, protože nebyla rozpoznána hello ChannelURI v registraci hello (MPNS stav: 404 nebyl nalezen).|
+|outgoing.mpns.throttled|MPNS omezeny oznámení|Počet|Celkem|počet oznámení, které se nezdařila, protože MPNS se omezení této aplikace Hello (WNS MPNS: 406 Nepřijatelný).|
+|outgoing.mpns.invalidnotificationformat|Formát neplatný oznámení MPNS|Počet|Celkem|Hello počet nabízených oznámení, která se nezdařila, protože datová část hello hello oznámení byla příliš velká.|
+|outgoing.mpns.channeldisconnected|Kanál MPNS odpojení|Počet|Celkem|Hello počet nabízených oznámení, které se nezdařila, protože byla odpojena hello ChannelURI v registraci hello (MPNS stav: 412 nebyl nalezen).|
+|outgoing.mpns.dropped|MPNS vyřadit oznámení|Počet|Celkem|Hello počet nabízených oznámení, které byly vynechány podle MPNS (MPNS hlavičku odpovědi: X NotificationStatus: QueueFull nebo Suppressed).|
+|outgoing.mpns.pnserror|Chyby MPNS|Počet|Celkem|Hello počet nabízených oznámení, která se nezdařilo z důvodu chyby komunikace se MPNS.|
+|outgoing.mpns.authenticationerror|Chyby ověřování MPNS|Počet|Celkem|Hello počet nabízených oznámení, která se nezdařila, protože nebyl přijat hello systém PNS hello, pokud jsou zablokované pověření nebo hello pověření.|
+|notificationhub.pushes|Všechny odchozí oznámení|Počet|Celkem|Všechny odchozí oznámení o hello centra oznámení|
 |Incoming.all.Requests|Všechny příchozí požadavky|Počet|Celkem|Celkový počet příchozích požadavků pro Centrum oznámení|
 |Incoming.all.failedrequests|Všechny příchozí neúspěšné požadavky|Počet|Celkem|Celkový počet příchozích neúspěšných požadavků pro Centrum oznámení|
 
@@ -604,49 +604,49 @@ Monitorování Azure poskytuje několik způsobů, jak pracovat s metriky, včet
 |SuccessfullConnectionsPerSec|Úspěšné připojení za sekundu|CountPerSecond|Průměr|Počet dokončených úspěšné připojení.|
 |TotalConnectionFailures|Chyby připojení (celkem)|Počet|Průměr|Celkový počet neúspěšných pokusů o připojení.|
 |CurrentUserSessions|Aktuální relace uživatele|Počet|Průměr|Aktuální počet uživatelských relací navázat.|
-|QueryPoolBusyThreads|Dotaz z fondu podprocesů zaneprázdněn|Počet|Průměr|Počet vytížených vláken ve fondu vláken dotazu.|
-|CommandPoolJobQueueLength|Příkaz délku fronty úloh|Počet|Průměr|Počet úloh ve frontě příkaz fondu vláken.|
-|ProcessingPoolJobQueueLength|Délka fronty úloh zpracování fondu|Počet|Průměr|Počet úloh jiný I/O ve frontě fondu zpracování vláken.|
+|QueryPoolBusyThreads|Dotaz z fondu podprocesů zaneprázdněn|Počet|Průměr|Počet vytížených vláken ve fondu vláken hello dotazu.|
+|CommandPoolJobQueueLength|Příkaz délku fronty úloh|Počet|Průměr|Počet úloh v hello frontu fondu vláken příkaz hello.|
+|ProcessingPoolJobQueueLength|Délka fronty úloh zpracování fondu|Počet|Průměr|Počet úloh jiný I/O v hello frontu hello zpracování fondu vláken.|
 |CurrentConnections|Připojení: Aktuální připojení|Počet|Průměr|Aktuální počet připojení klienta.|
-|CleanerCurrentPrice|Paměť: Čisticí aktuální cena|Počet|Průměr|Aktuální cena paměti, $a bajtů/čas, normalizovány na 1000.|
-|CleanerMemoryShrinkable|Paměť: Čisticí paměti vypočítat|Bajty|Průměr|Množství paměti v bajtech, podstoupí čisticí vyprazdňování pozadím.|
-|CleanerMemoryNonshrinkable|Paměť: Čisticí nonshrinkable paměti|Bajty|Průměr|Množství paměti v bajtech, není v souladu čisticí vyprazdňování pozadím.|
-|Parametru MemoryUsage|Paměti: Využití paměti|Bajty|Průměr|Využití paměti procesem serveru v rámci výpočet ceny čisticí paměti. Rovná se čítač Process\PrivateBytes plus velikost dat mapované paměti, ignoruje všechny paměti, které bylo namapované nebo přidělené modul xVelocity analýzy v paměti (VertiPaq) překračující modul xVelocity Limit paměti.|
+|CleanerCurrentPrice|Paměť: Čisticí aktuální cena|Počet|Průměr|Aktuální cena paměti, $a bajtů/čas, normalizovaný too1000.|
+|CleanerMemoryShrinkable|Paměť: Čisticí paměti vypočítat|Bajty|Průměr|Množství paměti, v bajtech subjektu toopurging čisticí hello pozadím.|
+|CleanerMemoryNonshrinkable|Paměť: Čisticí nonshrinkable paměti|Bajty|Průměr|Množství paměti, v bajtech, není subjektu toopurging čisticí hello pozadím.|
+|Parametru MemoryUsage|Paměti: Využití paměti|Bajty|Průměr|Využití paměti procesem server hello jako použít při výpočtu čisticí ceny paměti. Rovnat toocounter Process\PrivateBytes plus hello velikost dat mapované paměti, ignoruje všechny paměti, které bylo namapované nebo přidělené modulem hello xVelocity analýzy v paměti (VertiPaq) překračující hello xVelocity modul Limit paměti.|
 |MemoryLimitHard|Paměti: Pevný Limit paměti|Bajty|Průměr|Omezení pevné paměti z konfiguračního souboru.|
 |MemoryLimitHigh|Paměť: Omezení paměti vysoká|Bajty|Průměr|Limit velkého množství paměti, z konfiguračního souboru.|
 |MemoryLimitLow|Paměti: Nízká Limit paměti|Bajty|Průměr|Limit nedostatek paměti z konfiguračního souboru.|
 |MemoryLimitVertiPaq|Paměti: VertiPaq Limit paměti|Bajty|Průměr|Omezení v paměti z konfiguračního souboru.|
 |Kvóta|Paměť: kvóty|Bajty|Průměr|Aktuální kvótu paměti, v bajtech. Kvótu paměti se také označuje jako rezervace paměti grant nebo paměti.|
 |QuotaBlocked|Paměti: Blokované kvótu|Počet|Průměr|Aktuální počet požadavků kvóty, které jsou blokovaný, dokud jsou uvolněny kvóty další paměť.|
-|VertiPaqNonpaged|Paměť: VertiPaq nestránkovaného fondu|Bajty|Průměr|Bajtů paměti uzamčena v pracovní sadě pro použití stroj v paměti.|
+|VertiPaqNonpaged|Paměť: VertiPaq nestránkovaného fondu|Bajty|Průměr|Bajtů paměti uzamčen v hello pracovní sada pro použití hello stroj v paměti.|
 |VertiPaqPaged|Paměť: VertiPaq stránkovaného fondu|Bajty|Průměr|Bajty stránkovaného paměti používané pro data v paměti.|
 |RowsReadPerSec|Zpracování: Řádky čtení za sekundu|CountPerSecond|Průměr|Počet řádků přečíst ze všech relačních databází.|
 |RowsConvertedPerSec|Zpracování: Řádky převést za sekundu|CountPerSecond|Průměr|Počet řádků převést během zpracování.|
 |RowsWrittenPerSec|Zpracování: Řádků zapsaných za sekundu|CountPerSecond|Průměr|Počet řádků zapsaných během zpracování.|
-|CommandPoolBusyThreads|Vláken: Příkaz zaneprázdněn z fondu podprocesů|Počet|Průměr|Počet vytížených vláken ve fondu vláken příkaz.|
-|CommandPoolIdleThreads|Vláken: Příkaz nečinných vláken fondu|Počet|Průměr|Počet nečinných vláken ve fondu vláken příkaz.|
-|LongParsingBusyThreads|Vláken: Analýza zaneprázdněn vláken dlouho|Počet|Průměr|Počet vytížených vláken ve fondu vláken dlouho analýzy.|
-|LongParsingIdleThreads|Vláken: Analýza nečinných vláken dlouho|Počet|Průměr|Počet nečinných vláken ve fondu vláken dlouho analýzy.|
-|LongParsingJobQueueLength|Vláken: Analýza dlouho délka fronty úloh|Počet|Průměr|Počet úloh ve frontě dlouho analýzy fondu vláken.|
-|ProcessingPoolBusyIOJobThreads|Vláken: Fond zaneprázdněn vstupně-výstupní úlohy vláken zpracování|Počet|Průměr|Počet vláken, které jsou spuštěné úlohy vstupně-výstupních operací ve fondu zpracování vláken.|
-|ProcessingPoolBusyNonIOThreads|Vláken: Zaneprázdněný jiný I/O vláken fondu zpracování|Počet|Průměr|Počet vláken, které jsou spuštěné úlohy bez I/O ve fondu zpracování vláken.|
-|ProcessingPoolIOJobQueueLength|Vláken: Fond délka fronty vstupně-výstupní úlohy zpracování|Počet|Průměr|Počet vstupně-výstupních úloh ve frontě fondu zpracování vláken.|
-|ProcessingPoolIdleIOJobThreads|Vláken: Fond nečinnosti vstupně-výstupní úlohy vláken zpracování|Počet|Průměr|Počet vstupně-výstupních úloh ve fondu zpracování vláken nečinných vláken.|
-|ProcessingPoolIdleNonIOThreads|Vláken: Nečinnosti vláken jiný I/O fondu zpracování|Počet|Průměr|Počet nečinných vláken ve fondu zpracování vláken, který je vyhrazený pro jiný I/O úlohy.|
-|QueryPoolIdleThreads|Vláken: Dotaz nečinných vláken fondu|Počet|Průměr|Počet vstupně-výstupních úloh ve fondu zpracování vláken nečinných vláken.|
-|QueryPoolJobQueueLength|Vláken: Dotaz lengt fronty úloh fondu|Počet|Průměr|Počet úloh ve frontě fondu vláken dotazu.|
-|ShortParsingBusyThreads|Vláken: Analýza zaneprázdněn vláken krátké|Počet|Průměr|Počet vytížených vláken v krátké analýzy fondu vláken.|
-|ShortParsingIdleThreads|Vláken: Analýza nečinných vláken krátké|Počet|Průměr|Počet nečinných vláken v krátké analýzy fondu vláken.|
-|ShortParsingJobQueueLength|Vláken: Analýza délka fronty úloh krátké|Počet|Průměr|Počet úloh ve frontě krátké analýzy fondu vláken.|
+|CommandPoolBusyThreads|Vláken: Příkaz zaneprázdněn z fondu podprocesů|Počet|Průměr|Počet vytížených vláken ve fondu vláken příkaz hello.|
+|CommandPoolIdleThreads|Vláken: Příkaz nečinných vláken fondu|Počet|Průměr|Počet nečinných vláken ve fondu vláken příkaz hello.|
+|LongParsingBusyThreads|Vláken: Analýza zaneprázdněn vláken dlouho|Počet|Průměr|Počet vytížených vláken v hello dlouho analýza fondu vláken.|
+|LongParsingIdleThreads|Vláken: Analýza nečinných vláken dlouho|Počet|Průměr|Počet nečinných vláken v hello dlouho analýza fondu vláken.|
+|LongParsingJobQueueLength|Vláken: Analýza dlouho délka fronty úloh|Počet|Průměr|Počet úloh v hello frontu hello dlouho analýza fondu vláken.|
+|ProcessingPoolBusyIOJobThreads|Vláken: Fond zaneprázdněn vstupně-výstupní úlohy vláken zpracování|Počet|Průměr|Počet vláken, které jsou spuštěné úlohy vstupně-výstupních operací v hello zpracování fondu vláken.|
+|ProcessingPoolBusyNonIOThreads|Vláken: Zaneprázdněný jiný I/O vláken fondu zpracování|Počet|Průměr|Počet vláken, které jsou spuštěné jiné I/O úlohy v hello zpracování fondu vláken.|
+|ProcessingPoolIOJobQueueLength|Vláken: Fond délka fronty vstupně-výstupní úlohy zpracování|Počet|Průměr|Počet vstupně-výstupních úloh v hello frontu hello zpracování fondu vláken.|
+|ProcessingPoolIdleIOJobThreads|Vláken: Fond nečinnosti vstupně-výstupní úlohy vláken zpracování|Počet|Průměr|Počet nečinných vláken pro vstupně-výstupních úloh v hello zpracování fondu vláken.|
+|ProcessingPoolIdleNonIOThreads|Vláken: Nečinnosti vláken jiný I/O fondu zpracování|Počet|Průměr|Počet nečinných vláken ve fondu vláken zpracování hello vyhrazené toonon-I/O úlohy.|
+|QueryPoolIdleThreads|Vláken: Dotaz nečinných vláken fondu|Počet|Průměr|Počet nečinných vláken pro vstupně-výstupních úloh v hello zpracování fondu vláken.|
+|QueryPoolJobQueueLength|Vláken: Dotaz lengt fronty úloh fondu|Počet|Průměr|Počet úloh v hello frontu fondu vláken hello dotazu.|
+|ShortParsingBusyThreads|Vláken: Analýza zaneprázdněn vláken krátké|Počet|Průměr|Počet vytížených vláken v hello krátké analýza fondu vláken.|
+|ShortParsingIdleThreads|Vláken: Analýza nečinných vláken krátké|Počet|Průměr|Počet nečinných vláken v hello krátké analýza fondu vláken.|
+|ShortParsingJobQueueLength|Vláken: Analýza délka fronty úloh krátké|Počet|Průměr|Počet úloh v hello frontu hello krátké analýza fondu vláken.|
 |memory_thrashing_metric|Zahlcení paměti|Procento|Průměr|Průměrná paměti zahlcení.|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|
 |---|---|---|---|---|
-|SearchLatency|Latence vyhledávání|Sekundy|Průměr|Hledání Průměrná latence pro službu vyhledávání.|
-|SearchQueriesPerSecond|Vyhledávací dotazy za sekundu|CountPerSecond|Průměr|Vyhledávací dotazy za sekundu pro službu vyhledávání.|
-|ThrottledSearchQueriesPercentage|Procento omezenému vyhledávací dotazy|Procento|Průměr|Procento vyhledávací dotazy, které byly omezené pro službu vyhledávání.|
+|SearchLatency|Latence vyhledávání|Sekundy|Průměr|Hledání Průměrná latence pro hello vyhledávací služba|
+|SearchQueriesPerSecond|Vyhledávací dotazy za sekundu|CountPerSecond|Průměr|Vyhledávací dotazy za sekundu pro službu vyhledávání hello|
+|ThrottledSearchQueriesPercentage|Procento omezenému vyhledávací dotazy|Procento|Průměr|Procento vyhledávací dotazy, které byly omezené pro službu vyhledávání hello|
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
@@ -797,4 +797,4 @@ Monitorování Azure poskytuje několik způsobů, jak pracovat s metriky, včet
 ## <a name="next-steps"></a>Další kroky
 * [Přečtěte si informace o metriky v Azure monitorování](monitoring-overview-metrics.md)
 * [Vytvářet upozornění na metriky](insights-receive-alert-notifications.md)
-* [Export metriky pro úložiště, centra událostí nebo analýzy protokolů](monitoring-overview-of-diagnostic-logs.md)
+* [Export toostorage metriky, centra událostí nebo analýzy protokolů](monitoring-overview-of-diagnostic-logs.md)

@@ -1,6 +1,6 @@
 ---
-title: "Použití fyzického zařízení s Azure IoT hranou | Microsoft Docs"
-description: "Jak používat k odesílání dat do služby IoT hub prostřednictvím brány IoT Edge spuštěné na zařízení malin pí 3 zařízením Texas Instruments SensorTag. Brána je sestaven pomocí Azure IoT okraj."
+title: "aaaUse fyzického zařízení s hranou Azure IoT | Microsoft Docs"
+description: "Jak toouse rozbočovači Texas Instruments SensorTag zařízení toosend data tooan IoT prostřednictvím brány IoT Edge spuštěné na zařízení malin pí 3. Brána Hello vytvořená s využitím Azure IoT okraj."
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -14,147 +14,147 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2017
 ms.author: andbuc
-ms.openlocfilehash: 02962a91c739a53dfcf947bcc736e5c293b9384f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a2385accdbd99012ad094232653ee47d4e5c7839
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-azure-iot-edge-on-a-raspberry-pi-to-forward-device-to-cloud-messages-to-iot-hub"></a>Použití Azure IoT Edge na malin platformy pro předávání zpráv typu zařízení cloud do služby IoT Hub
+# <a name="use-azure-iot-edge-on-a-raspberry-pi-tooforward-device-to-cloud-messages-tooiot-hub"></a>Použití Azure IoT Edge na tooIoT zpráv typu zařízení cloud tooforward malin pí rozbočovače
 
-Tento návod [Bluetooth nízkou energie ukázka] [ lnk-ble-samplecode] ukazuje, jak používat [Azure IoT Edge] [ lnk-sdk] na:
+Tento návod hello [Bluetooth nízkou energie ukázka] [ lnk-ble-samplecode] ukazuje, jak toouse [Azure IoT Edge] [ lnk-sdk] na:
 
-* Předat dál telemetrie zařízení cloud do služby IoT Hub z fyzického zařízení.
-* Směrování příkazů ze služby IoT Hub fyzického zařízení.
+* Předat dál zařízení cloud telemetrie tooIoT centra z fyzického zařízení.
+* Směrování příkazů z fyzického zařízení IoT Hub tooa.
 
 Tento návod ilustruje:
 
-* **Architektura**: důležité architektury informace o ukázkové nízkou energie Bluetooth.
-* **Sestavení a spuštění:** Kroky potřebné k sestavení a spuštění ukázky.
+* **Architektura**: důležité architektury informace o ukázkové nízkou energie hello Bluetooth.
+* **Sestavení a spuštění**: požadované toobuild hello kroky a spusťte hello ukázková.
 
 ## <a name="architecture"></a>Architektura
 
-Průvodce ukazuje, jak sestavit a spustit bránu IoT Edge na malin pí 3, který spouští Raspbian Linux. Brána je sestaven pomocí IoT okraj. Příklad používá ke shromažďování dat teploty zařízením Texas Instruments SensorTag Bluetooth nízká energie (Povolit).
+Hello návod ukazuje, jak toobuild a spusťte IoT vstupní brána v pí 3 malin používající Raspbian Linux. Hello brány je sestaven pomocí IoT okraj. Ukázka Hello používá data teploty toocollect zařízení Texas Instruments SensorTag Bluetooth nízká energie (Povolit).
 
-Při spuštění IoT hraniční brána je:
+Když spustíte hello IoT hraniční brána je:
 
-* Připojí se k zařízení SensorTag pomocí protokolu Bluetooth nízká energie (Povolit).
-* Připojí se ke službě IoT Hub pomocí protokolu HTTP.
-* Předává telemetrie ze zařízení SensorTag pro IoT Hub.
-* Směrování příkazů ze služby IoT Hub zařízení SensorTag.
+* Připojí zařízení SensorTag tooa pomocí protokolu hello Bluetooth nízká energie (Povolit).
+* Připojí tooIoT centra pomocí protokolu hello HTTP.
+* Předává telemetrie z tooIoT zařízení SensorTag hello rozbočovače.
+* Směrování příkazů ze zařízení SensorTag toohello IoT Hub.
 
-Brána obsahuje následující moduly hraniční IoT:
+Brána Hello obsahuje hello následující moduly hraniční IoT:
 
-* A *zakázat modulu* , rozhraní se zakázat zařízení přijímat teploty data ze zařízení a odesílání příkazů do zařízení.
-* A *zakázat cloudu do zařízení modulu* který překládá JSON zprávy odeslané ze služby IoT Hub do zakázat pokyny *zakázat modulu*.
-* A *protokoly modulu* který zaznamenává všechny brány zprávy do místního souboru.
+* A *zakázat modulu* , rozhraní zakázat zařízení tooreceive teploty daty ze zařízení hello a odesílání příkazů toohello zařízení.
+* A *zakázat cloudu toodevice modulu* který překládá JSON zprávy odeslané ze služby IoT Hub do zakázat pokyny hello *zakázat modulu*.
+* A *protokoly modulu* který protokoluje všechny brány zprávy tooa místního souboru.
 * *Modulem mapování identit* který překládá mezi adresy MAC povolit zařízení a identit zařízení Azure IoT Hub.
-* *IoT Hub modulu* které odesílá telemetrická data do služby IoT hub a přijímá příkazy zařízení ze služby IoT hub.
-* A *zakázat tiskárny modulu* , interpretuje telemetrická data ze zařízení zakázat a výtisků formátovaných dat do konzoly nástroje umožňující řešení potíží a ladění.
+* *IoT Hub modulu* které odesílá telemetrická data tooan IoT hub a přijímá příkazy zařízení ze služby IoT hub.
+* A *zakázat tiskárny modulu* , interpretuje telemetrická data ze zařízení zakázat hello a vytiskne formátovaných dat toohello konzoly tooenable řešení potíží a ladění.
 
-### <a name="how-data-flows-through-the-gateway"></a>Tok dat prostřednictvím brány
+### <a name="how-data-flows-through-hello-gateway"></a>Tok dat prostřednictvím brány hello
 
-Následující blok diagram znázorňuje kanálu toku dat odesílání telemetrie:
+Hello následující Blokový diagram znázorňuje hello telemetrie nahrávání dat toku kanál:
 
 ![Kanál brány odesílání telemetrie](media/iot-hub-iot-edge-physical-device/gateway_ble_upload_data_flow.png)
 
-Kroky, které položky telemetrie trvá cestě z zakázat zařízení do služby IoT Hub jsou:
+Hello kroky, které položky telemetrie trvá, cestování z tooIoT zařízení povolit centru jsou:
 
-1. Zařízení zakázat generuje ukázku teploty a odesílá přes Bluetooth zakázat modulu v bráně.
-1. Zakázat modul přijímá vzorku a publikuje do zprostředkovatele spolu s adresa MAC zařízení.
-1. Modul mapování identit převezme tuto zprávu a používá interní tabulku přeložit adresa MAC zařízení do služby IoT Hub identity zařízení. Identita zařízení IoT Hub se skládá z ID zařízení a klíč zařízení.
-1. Modul mapování identit publikuje novou zprávu, která obsahuje teploty ukázková data, adresa MAC zařízení, ID zařízení a klíč zařízení.
-1. Modul služby IoT Hub přijímá tuto novou zprávu (generované modulem mapování identity) a publikuje do služby IoT Hub.
-1. Modul protokolovacího nástroje zaznamená všechny zprávy z zprostředkovatele do místního souboru.
+1. zařízení zakázat Hello generuje ukázku teploty a odešle přes Bluetooth toohello zakázat modulu v bráně hello.
+1. modul zakázat Hello obdrží hello ukázka a vydává je toohello zprostředkovatele spolu s hello adresa MAC zařízení hello.
+1. modul mapování identit Hello převezme tuto zprávu a používá k interní tabulce tootranslate hello adresa MAC zařízení hello do identity zařízení IoT Hub. Identita zařízení IoT Hub se skládá z ID zařízení a klíč zařízení.
+1. modul mapování identit Hello publikuje novou zprávu, která obsahuje hello teploty ukázková data, adresa MAC hello hello zařízení, hello ID zařízení a klíč zařízení hello.
+1. Hello modulu služby IoT Hub přijímá tuto novou zprávu (generované modulem mapování identit hello) a vydává je tooIoT rozbočovače.
+1. modul protokolovacího nástroje Hello zaznamená všechny zprávy z místního souboru tooa hello zprostředkovatele.
 
-Následující blok diagram znázorňuje kanálu toku dat příkaz zařízení:
+Hello následující Blokový diagram znázorňuje hello zařízení příkaz datovém toku kanálu:
 
 ![Zařízení příkaz brány kanálu](media/iot-hub-iot-edge-physical-device/gateway_ble_command_data_flow.png)
 
-1. Modul služby IoT Hub pravidelně se dotazuje službu IoT hub pro nové zprávy příkaz.
-1. Když v modulu služby IoT Hub přijme zprávu o nový příkaz, vydává je pro zprostředkovatele.
-1. Modul mapování identit převezme zprávou příkazu a používá interní tabulku přeložit ID zařízení IoT Hub, který má adresa MAC zařízení. Pak publikuje novou zprávu, která obsahuje adresu MAC cílového zařízení v mapě vlastnosti zprávy.
-1. Modul zakázat Cloud-zařízení převezme tuto zprávu a překládá do správné zakázat instrukce pro modul zakázat. Pak publikuje novou zprávu.
-1. Modul zakázat převezme tuto zprávu a provede instrukci vstupně-výstupních operací podle komunikaci se zařízením zakázat.
-1. Modul protokolovacího nástroje zaznamená všechny zprávy z zprostředkovatele do souboru na disku.
+1. Hello modulu pravidelně se dotazuje služby IoT Hub hello IoT hub pro nové zprávy příkaz.
+1. Když hello IoT Hub modulu přijme zprávu o nový příkaz, tato možnost publikuje ho toohello zprostředkovatele.
+1. modul mapování identit Hello převezme zprávou příkazu hello a používá k interní tabulce tootranslate hello IoT Hub zařízení ID tooa zařízení adresa MAC. Pak publikuje novou zprávu, která obsahuje adresu MAC hello hello cílové zařízení v mapě vlastnosti hello hello zprávy.
+1. modul zakázat Cloud-zařízení Hello převezme tuto zprávu a překládá do hello správné zakázat instrukce pro modul zakázat hello. Pak publikuje novou zprávu.
+1. modul zakázat Hello převezme tuto zprávu a provede hello vstupně-výstupních operací instrukci navázat komunikaci s hello zakázat zařízení.
+1. Hello protokoly modulu zaznamená všechny zprávy ze souboru disku tooa hello zprostředkovatele.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu potřebujete mít aktivní předplatné služby Azure.
+toocomplete tohoto kurzu potřebujete aktivní předplatné Azure.
 
 > [!NOTE]
 > Pokud nemáte účet, můžete si během několika minut vytvořit bezplatný účet zkušební. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure][lnk-free-trial].
 
-Musíte klient SSH na umožňují vzdálený přístup na příkazovém řádku pí malin stolního počítače.
+Musíte klient SSH na vaše tooenable stolní počítače můžete tooremotely hello se příkaz access řádek na hello malin pí.
 
 - Windows nezahrnuje klientem SSH. Doporučujeme používat [PuTTY](http://www.putty.org/).
-- Většina Linuxových distribucích a Mac OS, obsahují nástroj příkazového řádku SSH. Další informace najdete v tématu [SSH pomocí Linux nebo Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
+- Většina Linuxových distribucích a Mac OS, obsahují hello nástroj příkazového řádku SSH. Další informace najdete v tématu [SSH pomocí Linux nebo Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
 
 ## <a name="prepare-your-hardware"></a>Připravte svůj hardware
 
-Tento kurz předpokládá, že používáte [Texas Instruments SensorTag](http://www.ti.com/ww/en/wireless_connectivity/sensortag2015/index.html) zařízení připojené k systémem Raspbian malin pí 3.
+Tento kurz předpokládá, že používáte [Texas Instruments SensorTag](http://www.ti.com/ww/en/wireless_connectivity/sensortag2015/index.html) zařízení připojené tooa malin pí 3 systémem Raspbian.
 
 ### <a name="install-raspbian"></a>Nainstalujte Raspbian
 
-K instalaci Raspbian na vašem zařízení malin pí 3 můžete použít některý z následujících možností.
+Můžete použít buď hello následující možnosti tooinstall Raspbian na vašem zařízení malin pí 3.
 
-* Chcete-li nainstalovat nejnovější verzi Raspbian, použijte [NOOBS] [ lnk-noobs] grafické uživatelské rozhraní.
-* Ručně [Stáhnout] [ lnk-raspbian] a zapsat nejnovější bitovou kopii operačního systému Raspbian do SD karty.
+* tooinstall hello nejnovější verzi Raspbian, použijte hello [NOOBS] [ lnk-noobs] grafické uživatelské rozhraní.
+* Ručně [Stáhnout] [ lnk-raspbian] a zapsat nejnovější bitovou kopii hello hello Raspbian operačního systému tooan SD karty.
 
-### <a name="sign-in-and-access-the-terminal"></a>Přihlaste se a přístup k terminálu
+### <a name="sign-in-and-access-hello-terminal"></a>Přihlaste se a přístup k Terminálové hello
 
-Máte dvě možnosti pro přístup k Terminálové prostředí na vaše malin platformy:
+Dvě možnosti tooaccess máte na vaše platformy malin terminálu prostředí:
 
-* Pokud máte klávesnici a monitorování, které jsou připojené k vaší malin platformy, můžete použít Raspbian grafického uživatelského rozhraní pro přístup k okno terminálu.
+* Pokud máte klávesnici a sledování připojených tooyour malin platformy, můžete použít grafické uživatelské rozhraní Raspbian tooaccess hello okno terminálu.
 
-* Přístup na příkazovém řádku vaší malin pí pomocí protokolu SSH ze stolního počítače.
+* Přístup hello příkazového řádku na vaší malin pí pomocí protokolu SSH ze stolního počítače.
 
-#### <a name="use-a-terminal-window-in-the-gui"></a>Použijte okno terminálu v grafickém uživatelském rozhraní
+#### <a name="use-a-terminal-window-in-hello-gui"></a>Použijte okno terminálu v hello grafického uživatelského rozhraní
 
-Výchozí pověření pro Raspbian jsou uživatelské jméno **pí** a heslo **malin**. Na hlavním panelu v grafickém uživatelském rozhraní, můžete spustit **Terminálové** nástroj pomocí ikonu, která vypadá jako monitorování.
+uživatelské jméno jsou Hello výchozí pověření pro Raspbian **pí** a heslo **malin**. Hello hlavním panelu v hello grafického uživatelského rozhraní, můžete spustit hello **Terminálové** nástroj pomocí hello ikonu, která vypadá jako monitorování.
 
 #### <a name="sign-in-with-ssh"></a>Přihlaste se pomocí protokolu SSH
 
-SSH můžete použít pro příkazového řádku přístup k vaší malin pí. Článek [SSH (Secure Shell)] [ lnk-pi-ssh] popisuje postup konfigurace SSH na vaše malin platformy a jak se připojit z [Windows] [ lnk-ssh-windows] nebo [ Linux & Mac OS][lnk-ssh-linux].
+SSH můžete použít pro přístup přes příkazový řádek tooyour malin pí. článek Hello [SSH (Secure Shell)] [ lnk-pi-ssh] popisuje, jak tooconfigure SSH na vaše malin platformy a jak tooconnect z [Windows] [ lnk-ssh-windows] nebo [Operačního systému Linux & Mac][lnk-ssh-linux].
 
 Přihlaste se pomocí uživatelského jména **pí** a heslo **malin**.
 
 ### <a name="install-bluez-537"></a>Nainstalujte BlueZ 5.37
 
-Obraťte se na hardwaru Bluetooth prostřednictvím zásobníku BlueZ moduly zakázat. Je nutné 5.37 verzi BlueZ pro moduly fungovala správně. Tyto pokyny Ujistěte se, že je nainstalována správná verze BlueZ.
+moduly zakázat Hello komunikovat hardwaru Bluetooth toohello prostřednictvím hello BlueZ zásobníku. Potřebujete 5.37 verzi BlueZ pro hello moduly toowork správně. Tyto pokyny Ujistěte se, že je nainstalována správná verze BlueZ hello.
 
-1. Zastavte aktuální démon bluetooth:
+1. Zastavte hello aktuální démon bluetooth:
 
     ```sh
     sudo systemctl stop bluetooth
     ```
 
-1. Nainstalujte BlueZ závislosti:
+1. Nainstalujte hello BlueZ závislosti:
 
     ```sh
     sudo apt-get update
     sudo apt-get install bluetooth bluez-tools build-essential autoconf glib2.0 libglib2.0-dev libdbus-1-dev libudev-dev libical-dev libreadline-dev
     ```
 
-1. Zdrojový kód BlueZ stáhněte z bluez.org:
+1. Stáhněte hello BlueZ zdrojového kódu z bluez.org:
 
     ```sh
     wget http://www.kernel.org/pub/linux/bluetooth/bluez-5.37.tar.xz
     ```
 
-1. Rozbalte zdrojový kód:
+1. Rozbalte hello zdrojového kódu:
 
     ```sh
     tar -xvf bluez-5.37.tar.xz
     ```
 
-1. Změňte adresáře na nově vytvořená složka:
+1. Změna složky pro nově vytvořený toohello adresáře:
 
     ```sh
     cd bluez-5.37
     ```
 
-1. Konfigurovat kód BlueZ má být sestaven:
+1. Nakonfigurujte hello BlueZ kód toobe vytvořené:
 
     ```sh
     ./configure --disable-udev --disable-systemd --enable-experimental
@@ -172,50 +172,50 @@ Obraťte se na hardwaru Bluetooth prostřednictvím zásobníku BlueZ moduly zak
     sudo make install
     ```
 
-1. Změna konfigurace služby systemd pro bluetooth, odkazuje na novou démon bluetooth v souboru `/lib/systemd/system/bluetooth.service`. 'ExecStart' řádku nahraďte následujícím textem:
+1. Změna konfigurace služby systemd pro bluetooth tak odkazuje toohello nové démon bluetooth v souboru hello `/lib/systemd/system/bluetooth.service`. Nahraďte řádku 'ExecStart' hello hello následující text:
 
     ```conf
     ExecStart=/usr/local/libexec/bluetooth/bluetoothd -E
     ```
 
-### <a name="enable-connectivity-to-the-sensortag-device-from-your-raspberry-pi-3-device"></a>Povolit připojení k zařízení SensorTag ze zařízení malin pí 3
+### <a name="enable-connectivity-toohello-sensortag-device-from-your-raspberry-pi-3-device"></a>Povolit zařízení SensorTag toohello připojení ze zařízení malin pí 3
 
-Před spuštěním ukázky, je třeba ověřit, zda vaše malin pí 3 může připojit k zařízení SensorTag.
+Před spuštěné ukázkový text hello musíte tooverify, že vaše malin pí 3 se může připojit zařízení SensorTag toohello.
 
-1. Ujistěte se, `rfkill` je nainstalován nástroj:
+1. Ujistěte se, hello `rfkill` je nainstalován nástroj:
 
     ```sh
     sudo apt-get install rfkill
     ```
 
-1. Odblokování bluetooth na malin pí 3 a zkontrolujte, jestli číslo verze **5.37**:
+1. Odblokování bluetooth na hello malin pí 3 a zkontrolujte, zda text hello číslo verze **5.37**:
 
     ```sh
     sudo rfkill unblock bluetooth
     bluetoothctl --version
     ```
 
-1. Pokud chcete zadat prostředí interaktivní bluetooth, spusťte službu bluetooth a provést **bluetoothctl** příkaz:
+1. spuštění služby bluetooth hello tooenter hello interaktivní bluetooth prostředí a spusťte hello **bluetoothctl** příkaz:
 
     ```sh
     sudo systemctl start bluetooth
     bluetoothctl
     ```
 
-1. Zadejte příkaz **zapnutí** mocninu až řadičem bluetooth. Příkaz vrátí výstup podobný následujícímu:
+1. Zadejte příkaz hello **zapnutí** toopower až hello bluetooth řadiče. příkaz Hello vrátí podobné toohello následující výstup:
 
     ```sh
     [NEW] Controller 98:4F:EE:04:1F:DF C3 raspberrypi [default]
     ```
 
-1. V prostředí interaktivní bluetooth, zadejte příkaz **kontrolu** kontrolovala zařízeními bluetooth. Příkaz vrátí výstup podobný následujícímu:
+1. V prostředí hello interaktivní bluetooth, zadejte příkaz hello **kontrolu** tooscan pro zařízeními bluetooth. příkaz Hello vrátí podobné toohello následující výstup:
 
     ```sh
     Discovery started
     [CHG] Controller 98:4F:EE:04:1F:DF Discovering: yes
     ```
 
-1. Zařízení SensorTag zjistitelnost stisknutím tlačítka malé (zelený DIODU by měl flash). Pí 3 malin by měl zjistit zařízení SensorTag:
+1. Zařízení SensorTag hello zjistitelnost stisknutím tlačítka na malé hello (hello, které by měl zelená DIODU flash). Hello malin pí 3 by měl zjistit zařízení SensorTag hello:
 
     ```sh
     [NEW] Device A0:E6:F8:B5:F6:00 CC2650 SensorTag
@@ -223,19 +223,19 @@ Před spuštěním ukázky, je třeba ověřit, zda vaše malin pí 3 může př
     [CHG] Device A0:E6:F8:B5:F6:00 RSSI: -43
     ```
 
-    V tomto příkladu vidíte, že je adresa MAC zařízení SensorTag **A0:E6:F8:B5:F6:00**.
+    V tomto příkladu uvidíte, že hello adresu MAC hello zařízení SensorTag **A0:E6:F8:B5:F6:00**.
 
-1. Vypnout kontrolu tak, že zadáte **kontrolovat vypnout** příkaz:
+1. Vypnout kontrolu zadáním hello **kontrolovat vypnout** příkaz:
 
     ```sh
     [CHG] Controller 98:4F:EE:04:1F:DF Discovering: no
     Discovery stopped
     ```
 
-1. Připojení k zařízení SensorTag pomocí adresu MAC zadáním **připojit \<adresa MAC\>**. Následující ukázkový výstup je zkratka pro přehlednost:
+1. Připojení zařízení SensorTag tooyour pomocí adresu MAC zadáním **připojit \<adresa MAC\>**. Následující ukázkový výstup Hello je zkratka pro přehlednost:
 
     ```sh
-    Attempting to connect to A0:E6:F8:B5:F6:00
+    Attempting tooconnect tooA0:E6:F8:B5:F6:00
     [CHG] Device A0:E6:F8:B5:F6:00 Connected: yes
     Connection successful
     [CHG] Device A0:E6:F8:B5:F6:00 UUIDs: 00001800-0000-1000-8000-00805f9b34fb
@@ -251,32 +251,32 @@ Před spuštěním ukázky, je třeba ověřit, zda vaše malin pí 3 může př
     [CHG] Device A0:E6:F8:B5:F6:00 Modalias: bluetooth:v000Dp0000d0110
     ```
 
-    > Můžete vytvořit seznam vlastností GATT zařízení znovu s použitím **atributy seznamu** příkaz.
+    > Můžete vytvořit seznam vlastností GATT hello hello zařízení znovu s použitím hello **atributy seznamu** příkaz.
 
-1. Teď můžete odpojit ze zařízení pomocí **odpojit** příkaz a poté ukončete pomocí prostředí bluetooth **ukončení** příkaz:
+1. Teď můžete odpojit od hello zařízení pomocí hello **odpojit** příkaz a poté ukončete z prostředí bluetooth hello pomocí hello **ukončení** příkaz:
 
     ```sh
-    Attempting to disconnect from A0:E6:F8:B5:F6:00
+    Attempting toodisconnect from A0:E6:F8:B5:F6:00
     Successful disconnected
     [CHG] Device A0:E6:F8:B5:F6:00 Connected: no
     ```
 
-Nyní jste připraveni lit IoT Edge ukázku spustit na vaše malin pí 3.
+Nyní jste připravené toorun hello lit IoT Edge ukázka na vaše malin pí 3.
 
-## <a name="run-the-iot-edge-ble-sample"></a>Zakázat Edge IoT ukázku spustit
+## <a name="run-hello-iot-edge-ble-sample"></a>Spuštění ukázkové IoT Edge zakázat hello
 
-Pokud chcete zakázat Edge IoT ukázku spustit, je třeba provést tři úlohy:
+Ukázka IoT Edge zakázat hello toorun, je třeba toocomplete tři úlohy:
 
 * Nakonfigurujte dva ukázkové zařízení ve službě IoT Hub.
 * Sestavení IoT Edge ve vašem zařízení malin pí 3.
-* Nakonfigurujte a spusťte ukázkové lit na vašem zařízení malin pí 3.
+* Nakonfigurujte a spusťte ukázkové zakázat hello na vašem zařízení malin pí 3.
 
-V době psaní podporuje IoT Edge moduly zakázat pouze v brány se systémem Linux.
+V době psaní textu hello podporuje IoT Edge moduly zakázat pouze v brány se systémem Linux.
 
 ### <a name="configure-two-sample-devices-in-your-iot-hub"></a>Konfigurovat dva ukázkové zařízení ve službě IoT Hub
 
-* [Vytvoření služby IoT hub] [ lnk-create-hub] ve vašem předplatném Azure, je třeba název centra pro dokončení tohoto návodu. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].
-* Přidat jednu zařízení s názvem **SensorTag_01** do služby IoT hub a zaznamenání jeho id a zařízení klíče. Můžete použít [Průzkumníka zařízení nebo iothub-explorer] [ lnk-explorer-tools] nástroje pro přidání tohoto zařízení ke službě IoT hub, který jste vytvořili v předchozím kroku a k načítání svůj klíč. Toto zařízení do zařízení SensorTag mapy, při konfiguraci brány.
+* [Vytvoření služby IoT hub] [ lnk-create-hub] ve vašem předplatném Azure, potřebujete hello název vašeho centra toocomplete tento návod. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].
+* Přidat jednu zařízení s názvem **SensorTag_01** tooyour IoT hub a poznamenejte si jeho id a zařízení klíče. Můžete použít hello [Průzkumníka zařízení nebo iothub-explorer] [ lnk-explorer-tools] nástroje tooadd toto centrum IoT zařízení toohello jste vytvořili v předchozím kroku hello a tooretrieve svůj klíč. Toto zařízení SensorTag toohello zařízení mapy, při konfiguraci brány hello.
 
 ### <a name="build-azure-iot-edge-on-your-raspberry-pi-3"></a>Vytvoření Azure IoT Edge ve vaší Malinová pí 3
 
@@ -286,29 +286,29 @@ Nainstalujte závislosti pro hraniční Azure IoT:
 sudo apt-get install cmake uuid-dev curl libcurl4-openssl-dev libssl-dev
 ```
 
-Použijte následující příkazy ke klonování IoT okraj a všechny jeho submodules k domovskému adresáři:
+Použití hello následující příkazy tooclone IoT okraj a všechny jeho submodules tooyour domovského adresáře:
 
 ```sh
 cd ~
 git clone https://github.com/Azure/iot-edge.git
 ```
 
-Až budete mít úplnou kopii IoT Edge úložiště na vaše malin pí 3, můžete vytvořit pomocí následujícího příkazu ze složky, která obsahuje sadu SDK:
+Až budete mít úplnou kopii hello IoT Edge úložiště na vaše malin pí 3, můžete vytvořit pomocí hello následující příkaz z hello složku, která obsahuje hello SDK:
 
 ```sh
 cd ~/iot-edge
 ./tools/build.sh  --disable-native-remote-modules
 ```
 
-### <a name="configure-and-run-the-ble-sample-on-your-raspberry-pi-3"></a>Nakonfigurujte a spusťte ukázkové lit na vaše malin pí 3
+### <a name="configure-and-run-hello-ble-sample-on-your-raspberry-pi-3"></a>Nakonfigurujte a spusťte ukázkové zakázat hello na vaše malin pí 3
 
-Bootstrap a spustit ukázku, musíte nakonfigurovat každý IoT Edge modul, který se účastní v bráně. Tato konfigurace je součástí souboru JSON a je nutné nakonfigurovat pět zúčastněných moduly IoT okraj. Není k dispozici ukázkový soubor JSON v úložišti názvem **brány\_sample.json** , můžete použít jako výchozí bod pro vytváření konfiguračního souboru. Tento soubor je v **ukázky/ble_gateway/src** složky v místní kopii úložiště IoT okraj.
+toobootstrap a spuštění hello ukázková, musíte nakonfigurovat každý IoT Edge modul, který se účastní v bráně hello. Tato konfigurace je součástí souboru JSON a je nutné nakonfigurovat pět zúčastněných moduly IoT okraj. Není k dispozici ukázkový soubor JSON v úložišti hello názvem **brány\_sample.json** , můžete použít jako výchozí bod pro vytváření konfiguračního souboru hello. Tento soubor je v hello **ukázky/ble_gateway/src** složky v místní kopii hello IoT Edge úložiště.
 
-Následující části popisují, jak upravit tento konfigurační soubor pro ukázku zakázat a předpokládá, že je úložiště IoT Edge v **/home/pi/iot-edge /** složky na vaše malin pí 3. Pokud úložiště je jinde, odpovídajícím způsobem upravte cesty.
+Hello následující části popisují, jak je tooedit tato konfigurace soubor pro ukázku zakázat hello a předpokládá, že hello IoT Edge úložiště v hello **/home/pi/iot-edge /** složky na vaše malin pí 3. Pokud je úložiště hello jinde, odpovídajícím způsobem upravte hello cesty.
 
 #### <a name="logger-configuration"></a>Konfigurace protokolovacího nástroje
 
-Za předpokladu, že úložiště brány se nachází v **/home/pi/iot-edge /** složku, nakonfigurujte modul protokolovacího nástroje takto:
+Za předpokladu, že úložiště brány hello se nachází v hello **/home/pi/iot-edge /** složku, nakonfigurujte hello protokoly modulu takto:
 
 ```json
 {
@@ -328,7 +328,7 @@ Za předpokladu, že úložiště brány se nachází v **/home/pi/iot-edge /** 
 
 #### <a name="ble-module-configuration"></a>Konfigurace modulu zakázat
 
-Ukázka konfigurace zařízení zakázat předpokládá zařízením Texas Instruments SensorTag. Jakékoli standardní zakázat zařízení, které může fungovat jako GATT periferní by měla fungovat, ale pravděpodobně vyžadovat aktualizaci GATT charakteristik ID a data. Přidáte adresu MAC svého zařízení SensorTag:
+Hello Ukázková konfigurace pro zařízení zakázat hello předpokládá zařízením Texas Instruments SensorTag. Jakékoli standardní zakázat zařízení, které může fungovat jako by měla fungovat GATT periferní však můžete potřebovat tooupdate hello GATT vlastnosti ID a data. Přidáte adresu MAC hello zařízení SensorTag:
 
 ```json
 {
@@ -387,11 +387,11 @@ Ukázka konfigurace zařízení zakázat předpokládá zařízením Texas Instr
 }
 ```
 
-Pokud nepoužíváte zařízení SensorTag, přečtěte si dokumentaci k zařízení zakázat k určení, jestli je potřeba aktualizovat vlastnosti GATT ID a hodnot dat.
+Pokud nepoužíváte zařízení SensorTag, najdete v dokumentaci hello pro vaše zařízení toodetermine zakázat jestli potřebujete tooupdate hello GATT vlastnosti ID a datové hodnoty.
 
 #### <a name="iot-hub-module"></a>Modul služby IoT Hub
 
-Přidejte název služby IoT Hub. Hodnota přípony je obvykle **azure devices.net**:
+Přidáte hello název služby IoT Hub. Hodnota přípony Hello je obvykle **azure devices.net**:
 
 ```json
 {
@@ -412,7 +412,7 @@ Přidejte název služby IoT Hub. Hodnota přípony je obvykle **azure devices.n
 
 #### <a name="identity-mapping-module-configuration"></a>Konfigurace modulu mapování identit
 
-Přidat adresa MAC zařízení SensorTag a ID zařízení a klíč **SensorTag_01** zařízení, které jste přidali do služby IoT Hub:
+Přidat adresu MAC hello zařízení SensorTag a hello ID zařízení a klíč hello **SensorTag_01** zařízení, které jste přidali tooyour IoT Hub:
 
 ```json
 {
@@ -465,14 +465,14 @@ Přidat adresa MAC zařízení SensorTag a ID zařízení a klíč **SensorTag_0
 
 #### <a name="routing-configuration"></a>Konfigurace směrování
 
-Následující konfigurace zajišťuje následující směrování mezi moduly hraniční IoT:
+Hello následující konfigurace zajišťuje hello následující směrování mezi moduly hraniční IoT:
 
-* **Protokolovač** modul přijímá a zaznamenává všechny zprávy.
-* **SensorTag** modul odesílá zprávy i **mapování** a **zakázat tiskárny** moduly.
-* **Mapování** modul odesílá zprávy a pokuste se **IoTHub** modulu k odeslání služby IoT Hub.
-* **IoTHub** modul odesílá zprávy zpět do **mapování** modulu.
-* **Mapování** modul odesílá zprávy a pokuste se **BLEC2D** modulu.
-* **BLEC2D** modul odesílá zprávy zpět do **Sensortag** modulu.
+* Hello **Protokolovač** modul přijímá a zaznamenává všechny zprávy.
+* Hello **SensorTag** modul odesílá zprávy tooboth hello **mapování** a **zakázat tiskárny** moduly.
+* Hello **mapování** modul odesílá zprávy toohello **IoTHub** toobe modulu správně tooyour IoT Hub.
+* Hello **IoTHub** modul odesílá zprávy zpět toohello **mapování** modulu.
+* Hello **mapování** modul odesílá zprávy toohello **BLEC2D** modulu.
+* Hello **BLEC2D** modul odesílá zprávy zpět toohello **Sensortag** modulu.
 
 ```json
 "links" : [
@@ -486,15 +486,15 @@ Následující konfigurace zajišťuje následující směrování mezi moduly h
  ]
 ```
 
-Ke spuštění ukázky, předat konfigurační soubor JSON cestu jako parametr, který se **lit\_brány** binární. Tento příkaz předpokládá, že používáte **gateway_sample.json** konfigurační soubor. Provedení tohoto příkazu z **iot hranou** složky na malin platformy:
+Ukázka hello toorun, pass hello cesta toohello JSON konfiguračním souboru jako parametr toohello **lit\_brány** binární. Hello následující příkaz předpokládá, že používáte hello **gateway_sample.json** konfigurační soubor. Provedení tohoto příkazu z hello **iot hranou** složky na hello malin platformy:
 
 ```sh
 ./build/samples/ble_gateway/ble_gateway ./samples/ble_gateway/src/gateway_sample.json
 ```
 
-Potřebujete stiskněte tlačítko malé na zařízení SensorTag zjistitelnost před spuštěním ukázky.
+Může být nutné toopress hello malé tlačítko toomake zařízení SensorTag hello je zjistitelný před spuštěním ukázka hello.
 
-Když spustíte ukázku, můžete použít [explorer zařízení](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) nebo [iothub-explorer](https://github.com/Azure/iothub-explorer) nástroje ke sledování IoT hraniční brána předává ze zařízení SensorTag zprávy. Například pomocí iothub-explorer můžete monitorovat zpráv typu zařízení cloud pomocí následujícího příkazu:
+Když spustíte ukázkový text hello, můžete použít hello [explorer zařízení](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) nebo hello [iothub-explorer](https://github.com/Azure/iothub-explorer) nástroj toomonitor hello zprávy hello IoT hraniční brána předává ze zařízení SensorTag hello. Například pomocí iothub-explorer můžete monitorovat zpráv typu zařízení cloud pomocí hello následující příkaz:
 
 ```sh
 iothub-explorer monitor-events --login "HostName={Your iot hub name}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={Your IoT Hub key}"
@@ -502,11 +502,11 @@ iothub-explorer monitor-events --login "HostName={Your iot hub name}.azure-devic
 
 ## <a name="send-cloud-to-device-messages"></a>Odesílání zpráv z cloudu do zařízení
 
-Zakázat modul rovněž podporuje odesílání příkazů ze služby IoT Hub zařízení. Můžete použít [explorer zařízení](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) nebo [iothub-explorer](https://github.com/Azure/iothub-explorer) nástroj k odeslání zprávy JSON, které modul zakázat brány předá k zařízení zakázat.
+Hello zakázat modul rovněž podporuje odesílání příkazů z toohello zařízení IoT Hub. Můžete použít hello [explorer zařízení](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) nebo hello [iothub-explorer](https://github.com/Azure/iothub-explorer) nástroj toosend JSON zprávy Tenhle modul hello zakázat brány předá toohello zakázat zařízení.
 
-Pokud používáte zařízení Texas Instruments SensorTag, můžete zapnout červené DIODU, zelená DIODU nebo bzučák odesláním příkazů ze služby IoT Hub. Před odesláním příkazy ze služby IoT Hub, nejprve odeslat následující dvě zprávy JSON v pořadí. Potom můžete odeslat žádné příkazy zapnutí indikátory nebo bzučák.
+Pokud používáte hello Texas Instruments SensorTag zařízení, můžete zapnout hello red DIODU, zelená DIODU nebo bzučák odesláním příkazů ze služby IoT Hub. Před odesláním příkazy ze služby IoT Hub, nejprve odešlete hello následující dvě zprávy JSON v pořadí. Potom můžete odeslat všechny příkazy tooturn hello na hello indikátory nebo bzučák.
 
-1. Resetovat všechny LED a a odpověď (jejich vypnutím):
+1. Resetovat všechny LED a bzučák hello (jejich vypnutím):
 
     ```json
     {
@@ -526,9 +526,9 @@ Pokud používáte zařízení Texas Instruments SensorTag, můžete zapnout če
     }
     ```
 
-Nyní můžete odeslat žádný z následujících příkazů pro zapnutí indikátory nebo bzučák na zařízení SensorTag:
+Nyní můžete odeslat žádný z následujících příkazů tooturn na hello indikátory nebo bzučák na zařízení SensorTag hello hello:
 
-* Zapněte red DIODU:
+* Zapněte hello red DIODU:
 
     ```json
     {
@@ -538,7 +538,7 @@ Nyní můžete odeslat žádný z následujících příkazů pro zapnutí indik
     }
     ```
 
-* Zapněte zelená DIODU:
+* Zapněte hello zelená DIODU:
 
     ```json
     {
@@ -548,7 +548,7 @@ Nyní můžete odeslat žádný z následujících příkazů pro zapnutí indik
     }
     ```
 
-* Zapněte a odpověď:
+* Zapněte bzučák hello:
 
     ```json
     {
@@ -560,11 +560,11 @@ Nyní můžete odeslat žádný z následujících příkazů pro zapnutí indik
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete získat rozsáhlejšími znalostmi IoT okraj a Experimentujte s příklady kódu, přejděte na následující kurzy developer a prostředky:
+Pokud chcete toogain rozsáhlejšími znalostmi IoT okraj a experimentovat s příklady kódu, navštivte hello následující kurzy developer a prostředky:
 
 * [Azure IoT Edge][lnk-sdk]
 
-Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
+toofurther prozkoumat hello služby IoT Hub, najdete v tématu:
 
 * [Příručka vývojáře pro službu IoT Hub][lnk-devguide]
 

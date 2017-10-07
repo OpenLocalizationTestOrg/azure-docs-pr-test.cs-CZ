@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace brány Firewall webových aplikací (firewall webových aplikací) pro služby App Service Environment"
-description: "Informace o konfiguraci brány firewall webových aplikací před služby App Service Environment."
+title: "aaaConfiguring webové aplikace brány Firewall (firewall webových aplikací) pro App Service Environment"
+description: "Zjistěte, jak brány firewall tooconfigure webové aplikace před služby App Service Environment."
 services: app-service\web
 documentationcenter: 
 author: naziml
@@ -14,88 +14,88 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: naziml
-ms.openlocfilehash: 3e9e9fa4ddab60a467e8aa793ec0ca269b0bc4e0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0fcf62aea871751c9d4f294d2d24df2186fc0e7e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurace brány Firewall webových aplikací (firewall webových aplikací) pro služby App Service Environment
 ## <a name="overview"></a>Přehled
-Brány firewall webových aplikací, jako [Barracuda firewall webových aplikací pro Azure](https://www.barracuda.com/programs/azure) která je dostupná na [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) pomáhá zabezpečit zkontrolováním příchozí webové přenosy blokování vložení SQL, webových aplikací Skriptování, malwaru nahrávání & aplikace DDoS a jiným útokům. Je také zkontroluje, zda obsahuje odpovědi ze serveru back endové webové pro prevenci ztráty dat (DLP). V kombinaci s izolace a další škálování poskytované prostředí App Service, toto poskytuje ideální prostředí k hostiteli obchodní kritické webovým aplikacím, které je potřeba odolat škodlivými požadavky a vyšší objemy přenosů.
+Webové aplikace brány firewall jako hello [Barracuda firewall webových aplikací pro Azure](https://www.barracuda.com/programs/azure) která je dostupná na hello [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) pomáhá zabezpečit vaše webové aplikace zkontrolováním příchozí webové přenosy tooblock SQL injekce, skriptování, malwaru nahrávání & aplikace DDoS a jiným útokům. Je také zkontroluje, zda obsahuje hello odpovědí z hello back endové webové servery pro prevenci ztráty dat (DLP). V kombinaci s hello izolace a další škálování poskytované prostředí App Service, toto poskytuje ideální prostředí toohost obchodní kritické webové aplikace, které potřebují toowithstand škodlivými požadavky a vyšší objemy přenosů.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
 
 ## <a name="setup"></a>Nastavení
-Pro tento dokument, který bude nakonfigurujeme naše App Service Environment za několik zatížení vyvážit instancí Barracuda firewall webových aplikací, aby pouze provoz z firewall webových aplikací dosáhnout App Service Environment a nebude dostupný z hraniční síti. Azure Traffic Manager jsme bude mít i před naše instancí Barracuda firewall webových aplikací na Vyrovnávání zatížení v rámci datových center Azure a oblastech. Nejvyšší úrovni diagram instalace bude vypadat co jsou uvedeny níže.
+K tomuto dokumentu, který bude nakonfigurujeme naše App Service Environment za několik zatížení vyvážit instancí Barracuda firewall webových aplikací tak, aby pouze provoz z firewall webových aplikací hello dosáhnout hello App Service Environment a nebude dostupný z hello hraniční sítě. Azure Traffic Manager jsme bude mít i před naše vyrovnávání tooload instance Barracuda firewall webových aplikací mezi datových center Azure a oblastech. Nejvyšší úrovni diagram instalačního programu hello bude vypadat co jsou uvedeny níže.
 
 ![Architektura][Architecture] 
 
-> Poznámka: se zavedením [ILB podporu pro App Service Environment](app-service-environment-with-internal-load-balancer.md), můžete nakonfigurovat App Service Environment pro nepřístupný od DMZ a být k dispozici pro privátní sítě. 
+> Poznámka: S hello zavedení [ILB podporu pro App Service Environment](app-service-environment-with-internal-load-balancer.md), můžete nakonfigurovat toobe hello App Service Environment nejsou přístupné z hello DMZ a pouze být k dispozici toohello privátní sítě. 
 > 
 > 
 
 ## <a name="configuring-your-app-service-environment"></a>Konfigurace prostředí služby App Service
-Konfigurace služby App Service Environment najdete v tématu [naší dokumentaci](app-service-web-how-to-create-an-app-service-environment.md) na předmět. Po vytvoření služby App Service Environment máte, můžete vytvořit [webové aplikace](app-service-web-overview.md), [aplikace API](../app-service-api/app-service-api-apps-why-best-platform.md) a [Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) v tomto prostředí, které budou všechny chráněné za firewall webových aplikací jsme Nakonfigurujte v další části.
+tooconfigure služby App Service Environment odkazovat příliš[naší dokumentaci](app-service-web-how-to-create-an-app-service-environment.md) na hello subjektu. Po vytvoření služby App Service Environment máte, můžete vytvořit [webové aplikace](app-service-web-overview.md), [aplikace API](../app-service-api/app-service-api-apps-why-best-platform.md) a [Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) v tomto prostředí, které budou všechny chráněné za firewall webových aplikací hello jsme Nakonfigurujte v další části hello.
 
 ## <a name="configuring-your-barracuda-waf-cloud-service"></a>Konfigurace Barracuda firewall webových aplikací cloudové služby
-Barracuda má [podrobné článku](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure) na nasazení jeho firewall webových aplikací na virtuálním počítači v Azure. Ale vzhledem k tomu, že nám chcete redundance a není způsobit jediný bod selhání, které chcete nasadit alespoň 2 virtuální počítače instance firewall webových aplikací do stejné cloudové služby při těchto pokynů.
+Barracuda má [podrobné článku](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure) na nasazení jeho firewall webových aplikací na virtuálním počítači v Azure. Ale vzhledem k tomu, že nám chcete redundance a není způsobit jediný bod selhání, aby toodeploy minimálně 2 Firewall webových aplikací instance virtuálních počítačů do hello stejné cloudové služby při těchto pokynů.
 
-### <a name="adding-endpoints-to-cloud-service"></a>Přidání koncové body pro cloudové služby
-Jakmile máte 2 nebo více virtuálních počítačů firewall webových aplikací instancí v rámci cloudové služby můžete použít [portál Azure](https://portal.azure.com/) přidat HTTP a HTTPS koncové body, které se používají v aplikaci, jak je znázorněno na obrázku níže.
+### <a name="adding-endpoints-toocloud-service"></a>Přidání tooCloud koncové body služby
+Jakmile máte 2 nebo více virtuálních počítačů firewall webových aplikací instancí v rámci cloudové služby můžete použít hello [portál Azure](https://portal.azure.com/) tooadd HTTP a HTTPS koncových bodů, které se používají v aplikaci, jak ukazuje následující obrázek hello.
 
 ![Konfigurace koncového bodu][ConfigureEndpoint]
 
-Pokud vaše aplikace používat ostatní koncové body, ujistěte se, že jste přidejte je do tohoto seznamu také. 
+Pokud vaše aplikace používat ostatní koncové body, ujistěte se, že tooadd také tyto toothis seznamu. 
 
 ### <a name="configuring-barracuda-waf-through-its-management-portal"></a>Konfigurace Barracuda firewall webových aplikací prostřednictvím portálu pro správu
-Barracuda firewall webových aplikací používá TCP Port 8000 pro konfiguraci prostřednictvím portálu pro správu. Vzhledem k tomu, že máme několik instancí virtuálních počítačů firewall webových aplikací, budete muset sem kroky zopakujte pro každou instanci virtuálního počítače. 
+Barracuda firewall webových aplikací používá TCP Port 8000 pro konfiguraci prostřednictvím portálu pro správu. Vzhledem k tomu, že máme několik instancí virtuálních počítačů hello firewall webových aplikací je nutné toorepeat hello zde uvedených kroků pro každou instanci virtuálního počítače. 
 
-> Poznámka: Po dokončení konfigurace firewall webových aplikací odeberte koncový bod TCP/8000 ze všech firewall webových aplikací virtuálních počítačů k lepšímu zabezpečení vašeho firewall webových aplikací.
+> Poznámka: Po dokončení konfigurace firewall webových aplikací odebrání koncový bod TCP/8000 hello všechny virtuální počítače firewall webových aplikací tookeep zabezpečené vaší firewall webových aplikací.
 > 
 > 
 
-Přidáte koncový bod správy, jak je znázorněno na obrázku níže ke konfiguraci vaší Barracuda firewall webových aplikací.
+Přidáte koncový bod správy hello jak je znázorněno v následujícím tooconfigure obrázku hello vaší Barracuda firewall webových aplikací.
 
 ![Přidání koncového bodu správy][AddManagementEndpoint]
 
-Použijte prohlížeč a přejděte ke koncovému bodu správy v cloudové službě. Pokud cloudové služby je volána test.cloudapp.net, by procházením http://test.cloudapp.net:8000 přístup k tomuto koncovému bodu. Měli byste vidět přihlašovací stránky, jako níže, můžete se přihlásit pomocí přihlašovacích údajů zadaných ve fázi instalace virtuálních počítačů firewall webových aplikací.
+Pomocí prohlížeče toobrowse toohello správu koncového bodu v cloudové službě. Pokud cloudové služby je volána test.cloudapp.net, by procházením toohttp://test.cloudapp.net:8000 přístup k tomuto koncovému bodu. Měli byste vidět přihlašovací stránky, jako níže, můžete se přihlásit pomocí přihlašovacích údajů zadaných ve fázi instalace virtuálních počítačů hello firewall webových aplikací.
 
 ![Správa přihlašovací stránky][ManagementLoginPage]
 
-Po přihlášení byste měli vidět řídicí panel jako ten, který nabídne základní statistické údaje o ochranu firewall webových aplikací na obrázku níže.
+Po přihlášení byste měli vidět řídicí panel jako hello jednu v bitové kopii hello nižší, než je nabídne základní statistické údaje o hello ochrany firewall webových aplikací.
 
 ![Řídicí panel správy][ManagementDashboard]
 
-Kliknutím na kartu služby vám umožní nakonfigurovat vaše firewall webových aplikací pro služby, které chrání. Další informace o konfiguraci vašeho Barracuda firewall webových aplikací lze najít [jejich dokumentaci](https://techlib.barracuda.com/waf/getstarted1). V příkladu níže webové aplikace Azure byla nakonfigurována s provozem na protokolu HTTP a HTTPS.
+Kliknutím na kartu hello služby vám umožní nakonfigurovat vaše firewall webových aplikací pro služby, které chrání. Další informace o konfiguraci vašeho Barracuda firewall webových aplikací lze najít [jejich dokumentaci](https://techlib.barracuda.com/waf/getstarted1). V příkladu hello níže webové aplikace Azure byla nakonfigurována s provozem na protokolu HTTP a HTTPS.
 
 ![Přidání služeb správy][ManagementAddServices]
 
-> Poznámka: V závislosti na tom, jak jsou nakonfigurované vašich aplikací a jaké funkce jsou používány ve službě App Service Environment, je nutné pro přenos dat pro TCP jiné porty než 80 a 443, například pokud máte instalaci IP SSL pro webovou aplikaci. Seznam síťové porty používané v prostředí App Service naleznete v [řídící příchozí provoz dokumentaci](app-service-app-service-environment-control-inbound-traffic.md) části síťové porty.
+> Poznámka: V závislosti na tom, jak jsou nakonfigurované vašich aplikací a jaké funkce jsou používány ve službě App Service Environment, budete potřebovat tooforward provoz pro porty TCP než 80 a 443, například pokud máte instalaci IP SSL pro webovou aplikaci. Seznam síťové porty používané v prostředí App Service naleznete příliš[řídící příchozí provoz dokumentaci](app-service-app-service-environment-control-inbound-traffic.md) části síťové porty.
 > 
 > 
 
 ## <a name="configuring-microsoft-azure-traffic-manager-optional"></a>Konfigurace Microsoft Azure Traffic Manageru (volitelné)
-Pokud vaše aplikace je k dispozici v několika oblastech, pak budete chtít načíst vyvážit je za [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). K tomu můžete přidat koncový bod v [portál Azure classic](https://manage.azure.com) pomocí název cloudové služby pro vaše firewall webových aplikací v profil služby Traffic Manager, jak je znázorněno na obrázku níže. 
+Pokud vaše aplikace je k dispozici v několika oblastech, pak by chcete vyrovnávat tooload je za [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). toodo, můžete přidat koncový bod v hello [portál Azure classic](https://manage.azure.com) pomocí hello název cloudové služby pro vaše firewall webových aplikací v hello profil služby Traffic Manager, jak ukazuje následující obrázek hello. 
 
 ![Koncový bod Traffic Manager][TrafficManagerEndpoint]
 
-Pokud vaše aplikace vyžaduje ověřování, zajistěte, že abyste měli některé prostředků, která nevyžaduje žádné ověřování pro správce provozu na příkaz ping dostupnosti vaší aplikace. Adresu URL v části konfigurace můžete nakonfigurovat na [portál Azure classic](https://manage.azure.com) jak je uvedeno níže.
+Pokud vaše aplikace vyžaduje ověřování, zajistěte, že abyste měli některé prostředků, která nevyžaduje žádné ověřování pro Traffic Manager tooping hello dostupnosti vaší aplikace. Hello adresy URL v části hello část konfigurace můžete nakonfigurovat na hello [portál Azure classic](https://manage.azure.com) jak je uvedeno níže.
 
 ![Konfigurace Traffic Manageru][ConfigureTrafficManager]
 
-Předávání příkazy ping Traffic Manager z vašeho firewall webových aplikací do vaší aplikace, musíte instalační program překlady webu na vaší Barracuda firewall webových aplikací pro přenos dat do vaší aplikace, jak je znázorněno v následujícím příkladu.
+tooforward příkazy ping hello Traffic Manageru z vaší aplikace tooyour firewall webových aplikací, musíte překlady toosetup webu na firewall webových aplikací Barracuda tooforward provoz tooyour aplikace jak je znázorněno v následujícím příkladu hello.
 
 ![Překlady webu][WebsiteTranslations]
 
-## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>Zabezpečení přenosy do služby App Service Environment pomocí skupin zabezpečení sítě (NSG)
-Postupujte podle [řídící příchozí provoz dokumentaci](app-service-app-service-environment-control-inbound-traffic.md) podrobnosti o provoz směřující do služby App Service Environment z firewall webových aplikací pouze pomocí adresy VIP cloudové služby. Zde je ukázka příkazu prostředí Powershell pro provádění této úlohy pro TCP port 80.
+## <a name="securing-traffic-tooapp-service-environment-using-network-security-groups-nsg"></a>Zabezpečení provozu tooApp služby prostředí pomocí zabezpečení sítě skupiny (NSG)
+Postupujte podle hello [řídící příchozí provoz dokumentaci](app-service-app-service-environment-control-inbound-traffic.md) pro informace o omezení provozu tooyour App Service Environment z hello firewall webových aplikací pouze pomocí hello VIP adresy cloudové služby. Zde je ukázka příkazu prostředí Powershell pro provádění této úlohy pro TCP port 80.
 
     Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
 
-Nahraďte virtuální IP adresa (VIP) vaší firewall webových aplikací cloudové služby SourceAddressPrefix.
+Nahraďte hello SourceAddressPrefix hello virtuální IP adresa (VIP) vaší firewall webových aplikací cloudové služby.
 
-> Poznámka: VIP cloudové služby se změní při odstranit a znovu vytvořit Cloudovou službu. Ujistěte se, až to uděláte tak, aktualizujte IP adresu ve skupině prostředků sítě. 
+> Poznámka: hello VIP cloudové služby se změní, když je odstranit a znovu vytvořit hello cloudové služby. Ujistěte se, tooupdate hello IP adresu ve skupině prostředků sítě hello až to uděláte tak. 
 > 
 > 
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure fakturace rozhraní API Enterprise - ceník | Microsoft Docs"
-description: "Další informace o rozhraních API vytváření sestav, které umožňují zákazníkům Enterprise Azure a si vyžádá data spotřeby prostřednictvím kódu programu."
+title: "aaaAzure fakturace Enterprise rozhraní API - ceník | Microsoft Docs"
+description: "Další informace o vytváření sestav rozhraní API, která umožňují Enterprise Azure zákazníků toopull spotřeby dat prostřednictvím kódu programu hello."
 services: 
 documentationcenter: 
 author: aedwin
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: 2e7d6e883abe4cee13bc5f684baf2a1ea9c6c397
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4cfe694c63fba266d117054b046d9caacb3b7197
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reporting-apis-for-enterprise-customers---price-sheet"></a>Rozhraní API pro vytváření sestav pro podnikové zákazníky - ceníku
 
-Rozhraní API Price Sheet poskytuje použít rychlost pro každé monitorování pro danou registrace a fakturace období.
+Hello Price Sheet API poskytuje hello použít rychlost pro každé monitorování pro hello daného registrace a fakturace období.
 
 ##<a name="request"></a>Žádost
-Nejsou zadány společných vlastností hlavičky, které je třeba přidat [zde](billing-enterprise-api.md). Pokud není zadán fakturační období, je vrácena data pro aktuální fakturační období.
+Nejsou zadány společných vlastností hlavičky, které je třeba přidat toobe [zde](billing-enterprise-api.md). Pokud není zadán fakturační období, pak data pro aktuální fakturaci hello období vrácena.
 
 |Metoda | Identifikátor URI požadavku|
 |-|-|
@@ -34,7 +34,7 @@ Nejsou zadány společných vlastností hlavičky, které je třeba přidat [zde
 |GET|/billingPeriods/ https://consumption.Azure.com/v2/enrollments/ {enrollmentNumber} {billingPeriod} / ceník|
 
 > [!Note]
-> Pokud chcete používat verzi preview rozhraní API, nahraďte v2 v1 v výše uvedenou adresu URL.
+> verze preview hello toouse rozhraní API, nahraďte v2 v1 v hello výše adresy URL.
 >
 
 ## <a name="response"></a>Odpověď
@@ -68,22 +68,22 @@ Nejsou zadány společných vlastností hlavičky, které je třeba přidat [zde
     
 
 > [!Note]
->Pokud používáte rozhraní API verze Preview, meterId pole není k dispozici.
+>Pokud používáte hello Preview rozhraní API, meterId pole není k dispozici.
 >
 
 **Definice vlastností odpovědi**
 
 |Název vlastnosti| Typ| Popis
 |-|-|-|
-|id| Řetězec| Jedinečné Id, který představuje položku určitý Ceník (monitorovat pomocí fakturační období)|
-|billingPeriodId| Řetězec| Jedinečné Id, který představuje konkrétní období fakturace|
-|meterId| Řetězec| Identifikátor pro měřidla. Může být namapované na meterId využití.|
-|meterName| Řetězec| Název měřidla|
-|unitOfMeasure| Řetězec| Jednotka pro měření služby|
+|id| Řetězec| Hello jedinečné Id, který představuje položku určitý Ceník (monitorovat pomocí fakturační období)|
+|billingPeriodId| Řetězec| Hello jedinečné Id, který představuje konkrétní období fakturace|
+|meterId| Řetězec| identifikátor Hello hello měření. Může být namapované toohello meterId využití.|
+|meterName| Řetězec| Název měřidla Hello|
+|unitOfMeasure| Řetězec| Hello jednotka pro měření hello služby|
 |includedQuantity| Decimal| Množství, které je součástí |
-|partNumber| Řetězec| Výrobní číslo spojené s měřidla|
-|unitPrice| Decimal| Jednotkové ceny pro měřidla|
-|Kód měny| Řetězec| Kód měny pro pole unitPrice|
+|partNumber| Řetězec| Hello výrobní číslo spojené s hello měření|
+|unitPrice| Decimal| Hello jednotkové ceny pro měření hello|
+|Kód měny| Řetězec| Kód měny Hello pro hello unitPrice|
 <br/>
 ## <a name="see-also"></a>Viz také
 

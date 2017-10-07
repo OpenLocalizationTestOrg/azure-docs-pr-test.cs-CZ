@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s ADP eTime | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ADP eTime."
+description: "Zjistěte, jak tooconfigure jednotné přihlašování mezi Azure Active Directory a ADP eTime."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,142 +13,142 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 31fed307a32e629d00aab7cc9d5167ee16d83936
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9a5c7d14a18220f8c7a5b14055c30662ecd8f14d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp-etime"></a>Kurz: Azure Active Directory integrace s ADP eTime
 
-V tomto kurzu zjistěte, jak integrovat ADP eTime s Azure Active Directory (Azure AD).
+V tomto kurzu zjistíte, jak toointegrate ADP eTime službou Azure Active Directory (Azure AD).
 
-Integrace ADP eTime s Azure AD poskytuje následující výhody:
+Integrace ADP eTime s Azure AD poskytuje hello následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k ADP eTime
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k ADP eTime (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup tooADP eTime
+- Můžete povolit vaši uživatelé tooautomatically get přihlášeného tooADP eTime (jednotné přihlášení) s jejich účty Azure AD
+- Můžete spravovat vaše účty v jednom centrálním místě - hello portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete tooknow Další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s ADP eTime, potřebujete následující položky:
+Integrace služby Azure AD s ADP eTime tooconfigure, je třeba hello následující položky:
 
 - Předplatné služby Azure AD
 - ADP eTime jednotné přihlašování povolené předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> tootest hello kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+tootest hello kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Hello scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání ADP eTime z Galerie
+1. Přidání ADP eTime z Galerie hello
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-adp-etime-from-the-gallery"></a>Přidání ADP eTime z Galerie
-Při konfiguraci integrace ADP eTime do služby Azure AD potřebujete přidat ADP eTime z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-adp-etime-from-hello-gallery"></a>Přidání ADP eTime z Galerie hello
+tooconfigure hello integrace ADP eTime do Azure AD, je nutné tooadd ADP eTime hello Galerie tooyour seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat ADP eTime z galerie, proveďte následující kroky:**
+**eTime tooadd ADP z Galerie hello, proveďte následující kroky hello:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V hello  **[portál Azure](https://portal.azure.com)**, na levém navigačním panelu text hello, klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte příliš**podnikové aplikace, které**. Potom přejděte příliš**všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. tooadd novou aplikaci, klikněte na tlačítko **novou aplikaci** hello nahoře dialogového okna na tlačítko.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **ADP eTime**.
+4. Hello vyhledávacího pole zadejte **ADP eTime**.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_search.png)
 
-5. Na panelu výsledků vyberte **ADP eTime**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků hello vyberte **ADP eTime**a potom klikněte na **přidat** tlačítko tooadd hello aplikace.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s ADP eTime podle testovacího uživatele názvem "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v ADP eTime je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v ADP eTime musí navázat.
+Pro toowork jeden přihlašování Azure AD musí tooknow, jaké hello příslušného uživatele v ADP eTime je tooa uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské hello v ADP eTime musí toobe navázat.
 
-Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v ADP eTime.
+Přiřazením hello hodnotu hello je vytvořen vztah tento odkaz **uživatelské jméno** ve službě Azure AD jako hodnota hello hello **uživatelské jméno** v ADP eTime.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s ADP eTime, je třeba dokončit následující stavební bloky:
+tooconfigure a testu Azure AD jednotné přihlašování s ADP eTime, potřebujete následující stavební bloky hello toocomplete:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytváření testovacího uživatele ADP eTime](#creating-an-adp-etime-test-user)**  – Pokud chcete mít protějšek Britta Simon v ADP eTime propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  -tooenable toouse vaši uživatelé tuto funkci.
+2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytváření testovacího uživatele ADP eTime](#creating-an-adp-etime-test-user)**  -toohave protějšek Britta Simon v eTime ADP, která je propojená toohello Azure AD reprezentace uživatele.
+4. **[Přiřazení hello Azure AD testovacího uživatele](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD jednotné přihlašování.
+5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  -tooverify tom, zda text hello konfigurace funguje.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci eTime ADP.
+V této části můžete povolit Azure AD jednotné přihlašování v hello portál Azure a nakonfigurovat jednotné přihlašování v aplikaci eTime ADP.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s ADP eTime, proveďte následující kroky:**
+**tooconfigure Azure AD jednotné přihlašování s ADP eTime, proveďte následující kroky hello:**
 
-1. Na portálu Azure na **ADP eTime** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V portálu Azure, na hello hello **ADP eTime** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurovat jednotné přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na hello **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** tooenable jednotné přihlašování.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_samlbase.png)
 
-3. Na **ADP eTime domény a adresy URL** část, proveďte následující krok:
+3. Na hello **ADP eTime domény a adresy URL** část, proveďte následující krok hello:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<servername>.adp.com`
+    a. V hello **identifikátor** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<servername>.adp.com`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<servername>.adp.com/affwebservices/public/saml2assertionconsumer` 
+    b. V hello **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí hello následující vzoru:`https://<servername>.adp.com/affwebservices/public/saml2assertionconsumer` 
  
     > [!NOTE] 
-    > Tyto hodnoty nejsou reálné. Tyto hodnoty aktualizujte skutečná adresa URL odpovědi a identifikátor. Obraťte se na [tým podpory eTime ADP](https://www.adp.com/contact-us/overview.aspx) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečné hello. Tyto hodnoty aktualizujte hello skutečná adresa URL odpovědi a identifikátor. Obraťte se na [tým podpory eTime ADP](https://www.adp.com/contact-us/overview.aspx) tooget tyto hodnoty.
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML ve vašem počítači.
+4. Na hello **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML hello ve vašem počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_certificate.png) 
 
-5. Aplikace eTime ADP očekává SAML kontrolní výrazy ve specifickém formátu, který vyžaduje, můžete přidat mapování vlastních atributů do vaší konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje příklad pro tento. Název deklarací bude vždy **"PersonImmutableID"** a hodnoty, které jsme jsou namapovány ExtensionAttribute2, který obsahuje EmployeeID uživatele. 
+5. Hello ADP eTime aplikace očekává hello SAML kontrolní výrazy ve specifickém formátu, který vyžaduje jste tooadd vlastních atributů mapování tooyour tokenu atributy konfigurace SAML. Hello následující snímek obrazovky ukazuje příklad pro tento. Hello názvu deklarací identit budou vždy **"PersonImmutableID"** a které jsme jste namapovali tooExtensionAttribute2, který obsahuje hodnotu hello hello EmployeeID hello uživatele. 
 
-    Zde namapování uživatele z Azure AD na ADP eTime bude provedeno v EmployeeID, ale to můžete namapovat na jinou hodnotu také podle nastavení aplikace. Proto prosím práci s [tým podpory eTime ADP](https://www.adp.com/contact-us/overview.aspx) nejprve k použijte správný identifikátor uživatele a mapování danou hodnotu s **"PersonImmutableID"** deklarací identity.
+    Zde hello mapování uživatelů ze služby Azure AD tooADP eTime bude provedeno v hello EmployeeID ale můžete namapovat jinou hodnotu této tooa také podle nastavení aplikace. Proto prosím práci s [tým podpory eTime ADP](https://www.adp.com/contact-us/overview.aspx) první toouse hello správný identifikátor uživatele a mapovat danou hodnotu s hello **"PersonImmutableID"** deklarací identity.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_attribute.png)
 
-6. V **uživatelské atributy** části na **jednotného přihlašování** dialogové okno, nakonfigurujte atribut tokenu SAML, jak je znázorněno na obrázku a proveďte následující kroky:
+6. V hello **uživatelské atributy** část hello **jednotného přihlašování** dialogové okno, nakonfigurovat atribut tokenu SAML, jak je znázorněno v bitové kopii hello a provést hello následující kroky:
     
     | Název atributu | Hodnota atributu |
     | ------------------- | -------------------- |    
     | PersonImmutableID | User.extensionattribute2 |
     
-    a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
+    a. Klikněte na tlačítko **přidat atribut** tooopen hello **přidat atribut** dialogové okno.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adpetime-tutorial/tutorial_attribute_04.png)
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adpetime-tutorial/tutorial_attribute_05.png)
 
-    b. V **název** textovému poli, zadejte název atributu, který je uvedený na příslušném řádku.
+    b. V hello **název** textovému poli, název atributu pro typ hello zobrazený pro tento řádek.
 
-    c. Z **hodnotu** seznamu, zadejte hodnotu atributu, který je uvedený na příslušném řádku.
+    c. Z hello **hodnotu** seznamu, hodnota atributu hello typ zobrazený pro tento řádek.
     
     d. Klikněte na tlačítko **OK**.
 
     > [!NOTE] 
-    > Před konfigurací kontrolního výrazu SAML, budete muset kontaktovat vaše [tým podpory eTime ADP](https://www.adp.com/contact-us/overview.aspx) a požadovat hodnotu atributu jedinečný identifikátor pro vašeho klienta. Je nutné tuto hodnotu ke konfiguraci vlastních deklarací identity pro vaši aplikaci. 
+    > Před konfigurací hello kontrolního výrazu SAML, je nutné toocontact vaše [tým podpory eTime ADP](https://www.adp.com/contact-us/overview.aspx) a požadovat hello hodnotu atributu hello jedinečný identifikátor pro vašeho klienta. Je nutné tuto hodnotu tooconfigure hello vlastních deklarací identity pro vaši aplikaci. 
 
-7. Na **ADP eTime konfigurace** klikněte na tlačítko **konfigurace ADP eTime** otevřete **konfigurovat přihlášení** okno.
+7. Na hello **ADP eTime konfigurace** klikněte na tlačítko **konfigurace ADP eTime** tooopen **konfigurovat přihlášení** okno.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_configure.png) 
 
@@ -156,63 +156,63 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adpetime-tutorial/tutorial_general_400.png)
 
-9. Konfigurace jednotného přihlašování na **ADP eTime** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory eTime ADP](https://www.adp.com/contact-us/overview.aspx). 
+9. tooconfigure jednotného přihlašování na **ADP eTime** straně, je nutné stáhnout hello toosend **soubor XML s metadaty** příliš[tým podpory eTime ADP](https://www.adp.com/contact-us/overview.aspx). 
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř hello [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace hello!  Po přidání této aplikace z hello **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko hello **jednotné přihlašování** kartě a přístup hello vložených dokumentace prostřednictvím hello  **Konfigurace** části dolnímu hello. Si můžete přečíst více o hello embedded dokumentace funkci zde: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Hello cílem této části je toocreate testovacího uživatele v portálu Azure, názvem Britta Simon hello.
 
 ![Vytvořit uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**toocreate testovacího uživatele ve službě Azure AD, proveďte následující kroky hello:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V hello **portál Azure**, na levém navigačním podokně text hello, klikněte na **Azure Active Directory** ikonu.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-adpetime-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. toodisplay hello seznam uživatelů, přejděte příliš**uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-adpetime-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. tooopen hello **uživatele** dialogové okno, klikněte na tlačítko **přidat** hello nahoře hello dialogového okna.
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-adpetime-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na hello **uživatele** dialogové okno proveďte hello následující kroky:
  
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-adpetime-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V hello **název** textovému poli, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V hello **uživatelské jméno** textovému poli, typ hello **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu hello hello **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-an-adp-etime-test-user"></a>Vytvoření ADP eTime testovacího uživatele
 
-Cílem této části je vytvoření uživatele v ADP eTime nazývá Britta Simon. Práce s [tým podpory eTime ADP](https://www.adp.com/contact-us/overview.aspx) přidat uživatele do účtu eTime ADP. 
+Hello cílem této části je toocreate volal Britta Simon v ADP eTime uživatele. Práce s [tým podpory eTime ADP](https://www.adp.com/contact-us/overview.aspx) tooadd hello uživatelé v hello ADP eTime účtu. 
    
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Přiřazení hello Azure AD testovacího uživatele
 
-V této části povolíte Britta Simon chcete použít Azure jednotného přihlašování k udělení přístupu k ADP eTime.
+V této části povolíte tak, že udělíte přístup tooADP eTime toouse Britta Simon Azure jednotné přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon ADP eTime, proveďte následující kroky:**
+**tooassign eTime tooADP Britta Simon, proveďte následující kroky hello:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. V hello portálu Azure, otevřete zobrazení aplikace hello a potom přejděte toohello directory zobrazení a přejděte příliš**podnikové aplikace, které** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **ADP eTime**.
+2. V seznamu aplikace hello vyberte **ADP eTime**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce hello hello vlevo, klikněte na **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
@@ -220,7 +220,7 @@ V této části povolíte Britta Simon chcete použít Azure jednotného přihla
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelé hello.
 
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
@@ -228,14 +228,14 @@ V této části povolíte Britta Simon chcete použít Azure jednotného přihla
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí hello přístupového panelu.
 
-Když kliknete na dlaždici eTime ADP na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci eTime ADP.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
+Po kliknutí na tlačítko hello ADP eTime dlaždice v hello přístupového panelu, měli byste obdržet tooyour automaticky přihlášeného ADP eTime aplikace.
+Další informace o hello přístupového panelu najdete v tématu [toohello Úvod přístupový Panel](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů tooIntegrate SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

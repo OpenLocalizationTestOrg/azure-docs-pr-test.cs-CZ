@@ -1,6 +1,6 @@
 ---
-title: "Licencování Smooth streamování klienta Microsoft® portování Kit"
-description: "Další informace o tom k licencování Microsoft® technologie Smooth Streaming klienta portování Kit."
+title: "aaaLicensing Microsoft® technologie Smooth Streaming klienta portování Kit"
+description: "Informace o tom, jak toolicensing hello Microsoft® technologie Smooth Streaming klienta portování Kit."
 services: media-services
 documentationcenter: 
 author: xpouyat
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: xpouyat
-ms.openlocfilehash: b5a36ac6771bef220afe29446cd56c1b65a498d9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 56c3dccda73dd02207bb4dbe8109ba6fda917a6b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licencování Smooth streamování klienta Microsoft® portování Kit
 ## <a name="overview"></a>Přehled
-Microsoft technologie Smooth Streaming klienta portování Kit (**SSPK** pro zkrácení) je technologie Smooth Streaming implementace klienta, která je optimalizovaná tak, aby pomůže výrobců vložená zařízení, kabel a mobilní operátory, poskytovatelé přístupu k obsahu, telefonního sluchátka výrobců nezávislí dodavatelé softwaru (ISV) a poskytovatelé řešení k vytvoření produktů a služeb pro streamování s adaptivní streamování obsah ve formátu technologie Smooth Streaming. SSPK je na zařízení a platformy nezávislé implementace technologie Smooth Streaming klienta, který může přenést držitel licence na žádný zařízení a platformy. 
+Microsoft technologie Smooth Streaming klienta portování Kit (**SSPK** pro zkrácení) je technologie Smooth Streaming implementace klienta, která je optimalizovaná toohelp vložených výrobci zařízení, kabel a mobilní operátory, poskytovatelé přístupu k obsahu, telefonního sluchátka výrobců, nezávislí dodavatelé softwaru (ISV) a řešení zprostředkovatelé toocreate produktů a služeb pro streamování s adaptivní streamování obsah ve formátu technologie Smooth Streaming. SSPK je na zařízení a platformy nezávislé implementace technologie Smooth Streaming klienta, který může přenést hello držitel licence tooany zařízení a platformy. 
 
-Uvedeném níž je nejvyšší úrovni architektura a pole IIS technologie Smooth Streaming portování Kit je implementace klienta funkce Smooth Streaming od společnosti Microsoft a obsahuje všechny základní logiku pro přehrávání obsahu, technologie Smooth Streaming. To je poté přenést partnery pro určité zařízení nebo platformu implementací příslušná rozhraní. 
+Uvedeném níž je nejvyšší úrovni architektura a pole IIS technologie Smooth Streaming portování Kit je implementace klienta funkce Smooth Streaming hello od společnosti Microsoft a obsahuje všechny hello základní logiku pro přehrávání obsahu, technologie Smooth Streaming. To je poté přenést partnery pro určité zařízení nebo platformu implementací příslušná rozhraní. 
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
 ## <a name="description"></a>Popis
-SSPK je licencovaná podle podmínek, které nabízí vynikající obchodní hodnotu. Licence SSPK poskytuje oborový s:
+SSPK je licencovaná podle podmínek, které nabízí vynikající obchodní hodnotu. Licence SSPK poskytuje oborový hello s:
 
 * Technologie Smooth Streaming portování Kit zdroje v jazyce C++ 
   * implementuje funkce klienta funkce Smooth Streaming
@@ -37,44 +37,44 @@ SSPK je licencovaná podle podmínek, které nabízí vynikající obchodní hod
 * Aplikace přehrávače rozhraní API 
   * programovací rozhraní pro interakci s aplikací media player
 * Platforma Abstraction Layer (PAL) rozhraní 
-  * programovací rozhraní pro interakci s operačním systémem (vláken, sockets)
+  * programovací rozhraní pro interakci s hello operačního systému (vláken, sockets)
 * Hardware abstraktní vrstvu HAL rozhraní 
   * programovací rozhraní pro interakci s hardwarem A / dekodérů V (dekódování, vykreslování)
 * Rozhraní digitální Rights Management (DRM) 
-  * programovací rozhraní pro zpracování DRM prostřednictvím DRM Abstraction Layer (DAL)
+  * programovací rozhraní pro zpracování DRM prostřednictvím hello DRM Abstraction Layer (DAL)
   * Microsoft PlayReady portování Kit dodává samostatně, ale integruje prostřednictvím tohoto rozhraní. Další informace o licencování Microsoft PlayReady Device, klikněte na tlačítko [zde](http://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl).
 * Implementace ukázky 
   * Ukázka PAL implementace pro Linux
   * Ukázka HAL implementace pro GStreamer
 
 ## <a name="licensing-options"></a>Možnosti licencování
-Microsoft technologie Smooth Streaming klienta portování Kit je k dispozici pro držitele licence v rámci dvou různých licenční smlouvy: jeden pro vývoj technologie Smooth Streaming produkty klienta provizorní a druhý pro distribuci technologie Smooth Streaming klienta konečné produkty pro koncové uživatele.
+Microsoft technologie Smooth Streaming klienta portování Kit je k dispozici toolicensees provedené v dvě odlišné licenční smlouvy: jeden pro vývoj technologie Smooth Streaming produkty klienta provizorní a druhý pro distribuci technologie Smooth Streaming klienta konečné produkty tooend uživatele.
 
-* Pro čipovou sadou výrobců, integrátory nebo nezávislé softwaru dodavatelé (ISV), kteří vyžadují zdroj kódu přenosem kit vyvíjet provizorní produkty, Microsoft technologie Smooth Streaming klienta portování Kit **licenci produktu provizorní** by měl být spuštěn.
-* Pro výrobce zařízení nebo nezávislí výrobci softwaru, kteří potřebují oprávnění pro distribuční produktů technologie Smooth Streaming klienta konečné koncovým uživatelům, technologie Smooth Streaming klienta portování sadu Kit Microsoft **konečné licenci produktu** by měl být spuštěn.
+* Pro čipovou sadou výrobců, integrátory nebo nezávislé výrobce softwaru (ISV) požadující zdrojový kód – portování kit toodevelop provizorní produkty Microsoft technologie Smooth Streaming klienta portování sady **licenci produktu provizorní** by měl být spuštěn.
+* Pro výrobce zařízení nebo nezávislí výrobci softwaru, kteří potřebují distribuční oprávnění pro uživatele, technologie Smooth Streaming klienta konečné produkty tooend, hello Microsoft technologie Smooth Streaming klienta portování Kit **konečné licenci produktu** by měl být spuštěn.
 
 ### <a name="microsoft-smooth-streaming-client-porting-kit-interim-product-license"></a>Microsoft klienta funkce Smooth Streaming portování licenci produktu provizorní Kit
-V části tuto licenci společnost Microsoft nabízí technologie Smooth Streaming klienta portování sady a potřebné duševnímu vlastnictví vyvinout a distribuovat technologie Smooth Streaming produkty klienta provizorní pro držitele licence jiné technologie Smooth Streaming klienta portování Kit zařízení, Distribuujte technologie Smooth Streaming klienta konečné produkty.
+V rámci této licence Microsoft nabízí technologie Smooth Streaming klienta portování sadu pro a hello toodevelop práva potřebná duševní vlastnictví a distribuovat technologie Smooth Streaming produkty klienta provizorní tooother technologie Smooth Streaming klienta portování Kit zařízení držitele licence, Distribuujte technologie Smooth Streaming klienta konečné produkty.
 
 #### <a name="fee-structure"></a>Struktura poplatků
-Jednorázové licenční poplatek 50 000 USA Kč poskytuje přístup k sadě technologie Smooth Streaming klienta portování Kit. 
+Jednorázové licenční poplatek 50 000 USA Kč poskytuje přístup toohello technologie Smooth Streaming klienta portování Kit. 
 
 ### <a name="microsoft-smooth-streaming-client-porting-kit-final-product-license"></a>Microsoft klienta funkce Smooth Streaming portování licenci produktu konečné Kit
-V části tuto licenci společnost Microsoft nabízí všechny potřebné duševnímu vlastnictví přijímat technologie Smooth Streaming produkty klienta provizorní z jiné technologie Smooth Streaming klienta portování Kit držitele licence a distribuovat značky společnosti technologie Smooth Streaming klienta konečné Produkty pro koncové uživatele.
+Pod tuto licenci společnost Microsoft nabízí všechny potřebné duševní vlastnictví práva tooreceive technologie Smooth Streaming produkty klienta provizorní z jiných držitele licence technologie Smooth Streaming klienta portování Kit a toodistribute značky společnosti technologie Smooth Streaming klienta konečné Uživatelé tooend produkty.
 
 #### <a name="fee-structure"></a>Struktura poplatků
-Technologie Smooth Streaming konečné produktu klienta se nabízí v rámci modelu Licencovaní jako v části:
+Hello technologie Smooth Streaming konečné produkt Klient se nabízí v rámci modelu Licencovaní jako v části:
 
 * dodaný 0.10 za implementaci zařízení
-* Licencovaní je omezená na 50 000 $ každý rok
+* Licencovaní Hello je omezená na 50 000 $ každý rok
 * Žádné licencované pro prvních 10 000 zařízení implementace každý rok 
 
 ## <a name="licensing-procedure-and-sspk-access"></a>Licencování postupu a SSPK přístup
 E-mailem [ sspkinfo@microsoft.com ](mailto:sspkinfo@microsoft.com) pro všechny licencování dotazy.
 
-[SSPK distribuční portál](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) je pro držitele licence registrované provizorní dostupné.
+Hello [SSPK distribuční portál](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) je přístupný tooregistered provizorní držitele licence.
 
-Provizorní a finální SSPK držitele licence můžete odeslat technické dotazy k [ smoothpk@microsoft.com ](mailto:smoothpk@microsoft.com).
+Provizorní a finální SSPK držitele licence můžete odeslat technické dotazy příliš[smoothpk@microsoft.com](mailto:smoothpk@microsoft.com).
 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft funkce Smooth Streaming držitele licence smlouvy dočasné produktu klienta
 * Adroit obchodní řešení, Inc
