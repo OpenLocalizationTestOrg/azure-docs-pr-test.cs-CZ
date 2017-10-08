@@ -1,6 +1,6 @@
 ---
-title: "Jak začít pracovat s úložiště tabulek a Visual Studio připojené služby (ASP.NET Core) | Microsoft Docs"
-description: "Jak začít pracovat s Azure Table storage v projektu ASP.NET Core v sadě Visual Studio po připojení k účtu úložiště pomocí sady Visual Studio připojené služby"
+title: "aaaHow tooget začít s úložiště tabulek a Visual Studio připojených služeb (ASP.NET Core) | Microsoft Docs"
+description: "Jak tooget pracovat s Azure Table storage v projektu ASP.NET Core v sadě Visual Studio po připojení tooa účet úložiště pomocí sady Visual Studio připojené služby"
 services: storage
 documentationcenter: 
 author: kraigb
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
-ms.openlocfilehash: 8d05fe3ed9a5c66f186a930d4107162c1f322c05
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e3eb3f3e65456108dd3cde7e3e470f98ba456e35
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a><span data-ttu-id="3c04b-103">Jak začít pracovat s Azure Table storage a Visual Studio připojené služby</span><span class="sxs-lookup"><span data-stu-id="3c04b-103">How to get started with Azure Table storage and Visual Studio connected services</span></span>
+# <a name="how-tooget-started-with-azure-table-storage-and-visual-studio-connected-services"></a><span data-ttu-id="3d475-103">Jak tooget pracovat s Azure Table storage a Visual Studio připojených služeb</span><span class="sxs-lookup"><span data-stu-id="3d475-103">How tooget started with Azure Table storage and Visual Studio connected services</span></span>
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
-## <a name="overview"></a><span data-ttu-id="3c04b-104">Přehled</span><span class="sxs-lookup"><span data-stu-id="3c04b-104">Overview</span></span>
-<span data-ttu-id="3c04b-105">Tento článek popisuje, jak začít používat Azure Table storage v sadě Visual Studio, po vytvoření a odkazuje pomocí sady Visual Studio účet úložiště Azure v projektu ASP.NET Core **přidat připojení služby** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="3c04b-105">This article describes how get started using Azure Table storage in Visual Studio after you have created or referenced an Azure storage account in an ASP.NET Core project by using the Visual Studio **Add Connected Services** dialog.</span></span>
+## <a name="overview"></a><span data-ttu-id="3d475-104">Přehled</span><span class="sxs-lookup"><span data-stu-id="3d475-104">Overview</span></span>
+<span data-ttu-id="3d475-105">Tento článek popisuje, jak získat spuštění pomocí Azure Table storage v sadě Visual Studio po vytvoření a odkazuje pomocí účtu úložiště Azure v projektu ASP.NET Core hello Visual Studio **přidat připojení služby** dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="3d475-105">This article describes how get started using Azure Table storage in Visual Studio after you have created or referenced an Azure storage account in an ASP.NET Core project by using hello Visual Studio **Add Connected Services** dialog.</span></span>
 
-<span data-ttu-id="3c04b-106">Služba úložiště Azure Table umožňuje ukládat velké množství strukturovaná data.</span><span class="sxs-lookup"><span data-stu-id="3c04b-106">The Azure Table storage service enables you to store large amounts of structured data.</span></span> <span data-ttu-id="3c04b-107">Služba je úložiště dat typu NoSQL, která přijímá ověřených volání z uvnitř i vně cloudu Azure.</span><span class="sxs-lookup"><span data-stu-id="3c04b-107">The service is a NoSQL data store that accepts authenticated calls from inside and outside the Azure cloud.</span></span> <span data-ttu-id="3c04b-108">Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat.</span><span class="sxs-lookup"><span data-stu-id="3c04b-108">Azure tables are ideal for storing structured, non-relational data.</span></span>
+<span data-ttu-id="3d475-106">Hello služba úložiště Azure Table umožňuje toostore velkých objemů strukturovaná data.</span><span class="sxs-lookup"><span data-stu-id="3d475-106">hello Azure Table storage service enables you toostore large amounts of structured data.</span></span> <span data-ttu-id="3d475-107">Služba Hello je úložiště dat typu NoSQL, která přijímá ověřených volání z vnitřní a vnější hello cloudu Azure.</span><span class="sxs-lookup"><span data-stu-id="3d475-107">hello service is a NoSQL data store that accepts authenticated calls from inside and outside hello Azure cloud.</span></span> <span data-ttu-id="3d475-108">Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat.</span><span class="sxs-lookup"><span data-stu-id="3d475-108">Azure tables are ideal for storing structured, non-relational data.</span></span>
 
-<span data-ttu-id="3c04b-109">**Přidat připojení služby** operaci nainstaluje příslušné balíčky NuGet pro přístup k úložišti Azure ve vašem projektu a přidá připojovací řetězec pro účet úložiště v konfiguračních souborech projektu.</span><span class="sxs-lookup"><span data-stu-id="3c04b-109">The **Add Connected Services** operation installs the appropriate NuGet packages to access Azure storage in your project and adds the connection string for the storage account to your project configuration files.</span></span>
+<span data-ttu-id="3d475-109">Hello **přidat připojení služby** operaci nainstaluje hello odpovídající NuGet balíčky tooaccess úložiště Azure ve vašem projektu a přidá hello připojovací řetězec pro hello úložiště účet tooyour projektu konfigurační soubory.</span><span class="sxs-lookup"><span data-stu-id="3d475-109">hello **Add Connected Services** operation installs hello appropriate NuGet packages tooaccess Azure storage in your project and adds hello connection string for hello storage account tooyour project configuration files.</span></span>
 
-<span data-ttu-id="3c04b-110">Další obecné informace o používání Azure Table storage najdete v tématu [Začínáme s Azure Table storage pomocí rozhraní .NET](../storage/storage-dotnet-how-to-use-tables.md).</span><span class="sxs-lookup"><span data-stu-id="3c04b-110">For more general information about using Azure Table storage, see [Get started with Azure Table storage using .NET](../storage/storage-dotnet-how-to-use-tables.md).</span></span>
+<span data-ttu-id="3d475-110">Další obecné informace o používání Azure Table storage najdete v tématu [Začínáme s Azure Table storage pomocí rozhraní .NET](../storage/storage-dotnet-how-to-use-tables.md).</span><span class="sxs-lookup"><span data-stu-id="3d475-110">For more general information about using Azure Table storage, see [Get started with Azure Table storage using .NET](../storage/storage-dotnet-how-to-use-tables.md).</span></span>
 
-<span data-ttu-id="3c04b-111">Abyste mohli začít, musíte nejprve vytvořit tabulku ve vašem účtu úložiště.</span><span class="sxs-lookup"><span data-stu-id="3c04b-111">To get started, you first need to create a table in your storage account.</span></span> <span data-ttu-id="3c04b-112">Ukážeme vám postup vytvoření Azure tabulky v kódu.</span><span class="sxs-lookup"><span data-stu-id="3c04b-112">We'll show you how to create an Azure table in code.</span></span> <span data-ttu-id="3c04b-113">Jsme budete také ukazují, jak provádět základní tabulky a entity operace, jako je přidání, úprava, čtení a čtení entity tabulky.</span><span class="sxs-lookup"><span data-stu-id="3c04b-113">We'll also show you how to perform basic table and entity operations, such as adding, modifying, reading and reading table entities.</span></span> <span data-ttu-id="3c04b-114">Ukázky jsou napsané v jazyce C\# kód a použít knihovnu klienta služby Azure Storage pro .NET.</span><span class="sxs-lookup"><span data-stu-id="3c04b-114">The samples are written in C\# code and use the Azure Storage Client Library for .NET.</span></span>
+<span data-ttu-id="3d475-111">tooget spustit, musíte nejprve toocreate tabulku ve vašem účtu úložiště.</span><span class="sxs-lookup"><span data-stu-id="3d475-111">tooget started, you first need toocreate a table in your storage account.</span></span> <span data-ttu-id="3d475-112">Ukážeme vám jak toocreate Azure tabulky v kódu.</span><span class="sxs-lookup"><span data-stu-id="3d475-112">We'll show you how toocreate an Azure table in code.</span></span> <span data-ttu-id="3d475-113">Také ukážeme, jak tooperform základní tabulky a entity operace, jako je přidání, úprava, čtení a čtení tabulky entity.</span><span class="sxs-lookup"><span data-stu-id="3d475-113">We'll also show you how tooperform basic table and entity operations, such as adding, modifying, reading and reading table entities.</span></span> <span data-ttu-id="3d475-114">Hello ukázky jsou napsané v jazyce C\# kód a použít hello Klientská knihovna pro úložiště Azure pro .NET.</span><span class="sxs-lookup"><span data-stu-id="3d475-114">hello samples are written in C\# code and use hello Azure Storage Client Library for .NET.</span></span>
 
-<span data-ttu-id="3c04b-115">**Poznámka:** -některé z rozhraní API, která provádět volání se do úložiště Azure v ASP.NET Core jsou asynchronní.</span><span class="sxs-lookup"><span data-stu-id="3c04b-115">**NOTE** - Some of the APIs that perform calls out to Azure storage in ASP.NET Core are asynchronous.</span></span> <span data-ttu-id="3c04b-116">V tématu [asynchronní programování s Async a Await](http://msdn.microsoft.com/library/hh191443.aspx) Další informace.</span><span class="sxs-lookup"><span data-stu-id="3c04b-116">See [Asynchronous Programming with Async and Await](http://msdn.microsoft.com/library/hh191443.aspx) for more information.</span></span> <span data-ttu-id="3c04b-117">Následující kód předpokládá, že asynchronní programování metody jsou používány.</span><span class="sxs-lookup"><span data-stu-id="3c04b-117">The code below assumes Async programming methods are being used.</span></span>
+<span data-ttu-id="3d475-115">**Poznámka:** -některé hello rozhraní API, která provádět volání out tooAzure úložiště v ASP.NET Core jsou asynchronní.</span><span class="sxs-lookup"><span data-stu-id="3d475-115">**NOTE** - Some of hello APIs that perform calls out tooAzure storage in ASP.NET Core are asynchronous.</span></span> <span data-ttu-id="3d475-116">V tématu [asynchronní programování s Async a Await](http://msdn.microsoft.com/library/hh191443.aspx) Další informace.</span><span class="sxs-lookup"><span data-stu-id="3d475-116">See [Asynchronous Programming with Async and Await](http://msdn.microsoft.com/library/hh191443.aspx) for more information.</span></span> <span data-ttu-id="3d475-117">Následující kód Hello předpokládá, že asynchronní programování metody jsou používány.</span><span class="sxs-lookup"><span data-stu-id="3d475-117">hello code below assumes Async programming methods are being used.</span></span>
 
-## <a name="access-tables-in-code"></a><span data-ttu-id="3c04b-118">Přístup k tabulky v kódu</span><span class="sxs-lookup"><span data-stu-id="3c04b-118">Access tables in code</span></span>
-<span data-ttu-id="3c04b-119">Chcete-li získat přístup k tabulky v projektů ASP.NET Core, zahrnují následující položky pro všechny C# zdrojové soubory, které přístupu k Azure table storage.</span><span class="sxs-lookup"><span data-stu-id="3c04b-119">To access tables in ASP.NET Core projects, you need to include the following items to any C# source files that access Azure table storage.</span></span>
+## <a name="access-tables-in-code"></a><span data-ttu-id="3d475-118">Přístup k tabulky v kódu</span><span class="sxs-lookup"><span data-stu-id="3d475-118">Access tables in code</span></span>
+<span data-ttu-id="3d475-119">tooaccess tabulky v projektů ASP.NET Core, musíte tooinclude hello následující položky tooany C# zdrojové soubory, které přístupu k Azure table storage.</span><span class="sxs-lookup"><span data-stu-id="3d475-119">tooaccess tables in ASP.NET Core projects, you need tooinclude hello following items tooany C# source files that access Azure table storage.</span></span>
 
-1. <span data-ttu-id="3c04b-120">Zajistěte, aby deklarace oboru názvů v horní části souboru C# zahrnují tyto **pomocí** příkazy.</span><span class="sxs-lookup"><span data-stu-id="3c04b-120">Make sure the namespace declarations at the top of the C# file include these **using** statements.</span></span>
+1. <span data-ttu-id="3d475-120">Deklarace oborů názvů hello hello horní části souboru hello C# zahrnout tyto **pomocí** příkazy.</span><span class="sxs-lookup"><span data-stu-id="3d475-120">Make sure hello namespace declarations at hello top of hello C# file include these **using** statements.</span></span>
    
         using Microsoft.Framework.Configuration;
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Table;
         using System.Threading.Tasks;
         using LogLevel = Microsoft.Framework.Logging.LogLevel;
-2. <span data-ttu-id="3c04b-121">Získání **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště.</span><span class="sxs-lookup"><span data-stu-id="3c04b-121">Get a **CloudStorageAccount** object that represents your storage account information.</span></span> <span data-ttu-id="3c04b-122">Použít následující kód k získání připojovací řetězec úložiště a informace o účtu úložiště z konfigurace služby Azure.</span><span class="sxs-lookup"><span data-stu-id="3c04b-122">Use the following code to get the your storage connection string and storage account information from the Azure service configuration.</span></span>
+2. <span data-ttu-id="3d475-121">Získání **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště.</span><span class="sxs-lookup"><span data-stu-id="3d475-121">Get a **CloudStorageAccount** object that represents your storage account information.</span></span> <span data-ttu-id="3d475-122">Následující kód tooget hello použití hello připojovacího řetězce úložiště a informace o účtu úložiště z konfigurace služby Azure hello.</span><span class="sxs-lookup"><span data-stu-id="3d475-122">Use hello following code tooget hello your storage connection string and storage account information from hello Azure service configuration.</span></span>
    
         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
             CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
    
-    <span data-ttu-id="3c04b-123">**Poznámka:** -používat všechny výše uvedené kódu před kód v následující ukázky.</span><span class="sxs-lookup"><span data-stu-id="3c04b-123">**NOTE** - Use all of the above code in front of the code in the following samples.</span></span>
-3. <span data-ttu-id="3c04b-124">Získání **CloudTableClient** objekt, který má odkazovat na tabulku objekty v účtu úložiště.</span><span class="sxs-lookup"><span data-stu-id="3c04b-124">Get a **CloudTableClient** object to reference the table objects in your storage account.</span></span>  
+    <span data-ttu-id="3d475-123">**Poznámka:** -používat všechny hello výše kódu před hello kódu v hello následující ukázky.</span><span class="sxs-lookup"><span data-stu-id="3d475-123">**NOTE** - Use all of hello above code in front of hello code in hello following samples.</span></span>
+3. <span data-ttu-id="3d475-124">Získání **CloudTableClient** objektu tooreference hello tabulka objektů ve vašem účtu úložiště.</span><span class="sxs-lookup"><span data-stu-id="3d475-124">Get a **CloudTableClient** object tooreference hello table objects in your storage account.</span></span>  
    
-        // Create the table client.
+        // Create hello table client.
         CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-4. <span data-ttu-id="3c04b-125">Získání **CloudTable** odkaz na objekt, který chcete odkazovat na konkrétní tabulky a entity.</span><span class="sxs-lookup"><span data-stu-id="3c04b-125">Get a **CloudTable** reference object to reference a specific table and entities.</span></span>
+4. <span data-ttu-id="3d475-125">Získání **CloudTable** odkazovat na objekt tooreference určité tabulky a entity.</span><span class="sxs-lookup"><span data-stu-id="3d475-125">Get a **CloudTable** reference object tooreference a specific table and entities.</span></span>
    
-        // Get a reference to a table named "peopleTable"
+        // Get a reference tooa table named "peopleTable"
         CloudTable table = tableClient.GetTableReference("peopleTable");
 
-## <a name="create-a-table-in-code"></a><span data-ttu-id="3c04b-126">Vytvoří tabulku v kódu</span><span class="sxs-lookup"><span data-stu-id="3c04b-126">Create a table in code</span></span>
-<span data-ttu-id="3c04b-127">Pokud chcete vytvořit tabulky Azure, stačí přidat volání **CreateIfNotExistsAsync()**.</span><span class="sxs-lookup"><span data-stu-id="3c04b-127">To create the Azure table, just add a call to **CreateIfNotExistsAsync()**.</span></span>
+## <a name="create-a-table-in-code"></a><span data-ttu-id="3d475-126">Vytvoří tabulku v kódu</span><span class="sxs-lookup"><span data-stu-id="3d475-126">Create a table in code</span></span>
+<span data-ttu-id="3d475-127">toocreate hello tabulky Azure, stačí přidat volání příliš**CreateIfNotExistsAsync()**.</span><span class="sxs-lookup"><span data-stu-id="3d475-127">toocreate hello Azure table, just add a call too**CreateIfNotExistsAsync()**.</span></span>
 
-    // Create the CloudTable if it does not exist
+    // Create hello CloudTable if it does not exist
     await table.CreateIfNotExistsAsync();
 
-## <a name="add-an-entity-to-a-table"></a><span data-ttu-id="3c04b-128">Přidání entity do tabulky</span><span class="sxs-lookup"><span data-stu-id="3c04b-128">Add an entity to a table</span></span>
-<span data-ttu-id="3c04b-129">Chcete-li přidat entitu do tabulky vytvořte třídu, která definuje vlastnosti vaší entity.</span><span class="sxs-lookup"><span data-stu-id="3c04b-129">To add an entity to a table you create a class that defines the properties of your entity.</span></span> <span data-ttu-id="3c04b-130">Následující kód definuje třídu entity, která je volána **CustomerEntity** která používá jméno zákazníka jako klíč řádku a jeho příjmení jako klíč oddílu.</span><span class="sxs-lookup"><span data-stu-id="3c04b-130">The following code defines an entity class called **CustomerEntity** that uses the customer's first name as the row key and last name as the partition key.</span></span>
+## <a name="add-an-entity-tooa-table"></a><span data-ttu-id="3d475-128">Přidat tooa tabulka entity</span><span class="sxs-lookup"><span data-stu-id="3d475-128">Add an entity tooa table</span></span>
+<span data-ttu-id="3d475-129">tooadd tooa tabulka entity vytvořit třídu, která definuje hello vlastnosti vaší entity.</span><span class="sxs-lookup"><span data-stu-id="3d475-129">tooadd an entity tooa table you create a class that defines hello properties of your entity.</span></span> <span data-ttu-id="3d475-130">Hello následující kód definuje třídu entity názvem **CustomerEntity** že hello používá jméno zákazníka jako klíč řádku hello a příjmení jako klíč oddílu hello.</span><span class="sxs-lookup"><span data-stu-id="3d475-130">hello following code defines an entity class called **CustomerEntity** that uses hello customer's first name as hello row key and last name as hello partition key.</span></span>
 
     public class CustomerEntity : TableEntity
     {
@@ -85,49 +85,49 @@ ms.lasthandoff: 08/29/2017
         public string PhoneNumber { get; set; }
     }
 
-<span data-ttu-id="3c04b-131">Operace s tabulkou zahrnující entity se provádějí pomocí **CloudTable** objektu jste vytvořili dříve v "Přístup tabulky v kódu".</span><span class="sxs-lookup"><span data-stu-id="3c04b-131">Table operations involving entities are done using the **CloudTable** object you created earlier in "Access tables in code."</span></span> <span data-ttu-id="3c04b-132">**TableOperation** objekt představuje operaci provést.</span><span class="sxs-lookup"><span data-stu-id="3c04b-132">The **TableOperation** object represents the operation to be done.</span></span> <span data-ttu-id="3c04b-133">Následující příklad kódu ukazuje, jak vytvořit **CloudTable** objektu a **CustomerEntity** objektu.</span><span class="sxs-lookup"><span data-stu-id="3c04b-133">The following code example shows how to create a **CloudTable** object and a **CustomerEntity** object.</span></span> <span data-ttu-id="3c04b-134">Příprava operaci **TableOperation** se vytvoří pro vložení entity zákazníka do tabulky.</span><span class="sxs-lookup"><span data-stu-id="3c04b-134">To prepare the operation, a **TableOperation** is created to insert the customer entity into the table.</span></span> <span data-ttu-id="3c04b-135">Nakonec se operace provede voláním CloudTable.ExecuteAsync.</span><span class="sxs-lookup"><span data-stu-id="3c04b-135">Finally, the operation is executed by calling CloudTable.ExecuteAsync.</span></span>
+<span data-ttu-id="3d475-131">Operace s tabulkou zahrnující entity se provádějí pomocí hello **CloudTable** objektu jste vytvořili dříve v "Přístup tabulky v kódu".</span><span class="sxs-lookup"><span data-stu-id="3d475-131">Table operations involving entities are done using hello **CloudTable** object you created earlier in "Access tables in code."</span></span> <span data-ttu-id="3d475-132">Hello **TableOperation** objekt představuje toobe hello operaci provést.</span><span class="sxs-lookup"><span data-stu-id="3d475-132">hello **TableOperation** object represents hello operation toobe done.</span></span> <span data-ttu-id="3d475-133">Následující příklad ukazuje kód jak Hello toocreate **CloudTable** objektu a **CustomerEntity** objektu.</span><span class="sxs-lookup"><span data-stu-id="3d475-133">hello following code example shows how toocreate a **CloudTable** object and a **CustomerEntity** object.</span></span> <span data-ttu-id="3d475-134">operace hello tooprepare, **TableOperation** se vytvoří entitu zákazníka hello tooinsert do tabulky hello.</span><span class="sxs-lookup"><span data-stu-id="3d475-134">tooprepare hello operation, a **TableOperation** is created tooinsert hello customer entity into hello table.</span></span> <span data-ttu-id="3d475-135">Nakonec hello operace provede voláním CloudTable.ExecuteAsync.</span><span class="sxs-lookup"><span data-stu-id="3d475-135">Finally, hello operation is executed by calling CloudTable.ExecuteAsync.</span></span>
 
     // Create a new customer entity.
     CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
     customer1.Email = "Walter@contoso.com";
     customer1.PhoneNumber = "425-555-0101";
 
-    // Create the TableOperation that inserts the customer entity.
+    // Create hello TableOperation that inserts hello customer entity.
     TableOperation insertOperation = TableOperation.Insert(customer1);
 
-    // Execute the insert operation.
+    // Execute hello insert operation.
     await peopleTable.ExecuteAsync(insertOperation);
 
-## <a name="insert-a-batch-of-entities"></a><span data-ttu-id="3c04b-136">Vložení dávky entit</span><span class="sxs-lookup"><span data-stu-id="3c04b-136">Insert a batch of entities</span></span>
-<span data-ttu-id="3c04b-137">Do tabulky v rámci jedné zápisu operace můžete vložit více entit.</span><span class="sxs-lookup"><span data-stu-id="3c04b-137">You can insert multiple entities into a table in a single write operation.</span></span> <span data-ttu-id="3c04b-138">Následující příklad kódu vytvoří dva objekty entity ("Jeff Smith" a "Ben Smith"), se přidají do **TableBatchOperation** pomocí **vložit** metoda, a pak spustí operaci voláním CloudTable.ExecuteBatchAsync.</span><span class="sxs-lookup"><span data-stu-id="3c04b-138">The following code example creates two entity objects ("Jeff Smith" and "Ben Smith"), adds them to a **TableBatchOperation** object using the **Insert** method, and then starts the operation by calling CloudTable.ExecuteBatchAsync.</span></span>
+## <a name="insert-a-batch-of-entities"></a><span data-ttu-id="3d475-136">Vložení dávky entit</span><span class="sxs-lookup"><span data-stu-id="3d475-136">Insert a batch of entities</span></span>
+<span data-ttu-id="3d475-137">Do tabulky v rámci jedné zápisu operace můžete vložit více entit.</span><span class="sxs-lookup"><span data-stu-id="3d475-137">You can insert multiple entities into a table in a single write operation.</span></span> <span data-ttu-id="3d475-138">Hello následující příklad kódu vytvoří dva objekty entity ("Jeff Smith" a "Ben Smith"), se přidají tooa **TableBatchOperation** objekt, který používá hello **vložit** metoda a poté spustí operaci hello podle volání metody CloudTable.ExecuteBatchAsync.</span><span class="sxs-lookup"><span data-stu-id="3d475-138">hello following code example creates two entity objects ("Jeff Smith" and "Ben Smith"), adds them tooa **TableBatchOperation** object using hello **Insert** method, and then starts hello operation by calling CloudTable.ExecuteBatchAsync.</span></span>
 
-    // Create the batch operation.
+    // Create hello batch operation.
     TableBatchOperation batchOperation = new TableBatchOperation();
 
-    // Create a customer entity and add it to the table.
+    // Create a customer entity and add it toohello table.
     CustomerEntity customer1 = new CustomerEntity("Smith", "Jeff");
     customer1.Email = "Jeff@contoso.com";
     customer1.PhoneNumber = "425-555-0104";
 
-    // Create another customer entity and add it to the table.
+    // Create another customer entity and add it toohello table.
     CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
     customer2.Email = "Ben@contoso.com";
     customer2.PhoneNumber = "425-555-0102";
 
-    // Add both customer entities to the batch insert operation.
+    // Add both customer entities toohello batch insert operation.
     batchOperation.Insert(customer1);
     batchOperation.Insert(customer2);
 
-    // Execute the batch operation.
+    // Execute hello batch operation.
     await peopleTable.ExecuteBatchAsync(batchOperation);
 
-## <a name="get-all-of-the-entities-in-a-partition"></a><span data-ttu-id="3c04b-139">Získání všech entit v oddílu</span><span class="sxs-lookup"><span data-stu-id="3c04b-139">Get all of the entities in a partition</span></span>
-<span data-ttu-id="3c04b-140">Dotaz na tabulku pro všechny entity v oddílu, použijte **TableQuery** objektu.</span><span class="sxs-lookup"><span data-stu-id="3c04b-140">To query a table for all of the entities in a partition, use a **TableQuery** object.</span></span> <span data-ttu-id="3c04b-141">Následující příklad kódu určuje filtr pro entity, kde Smith je klíč oddílu.</span><span class="sxs-lookup"><span data-stu-id="3c04b-141">The following code example specifies a filter for entities where 'Smith' is the partition key.</span></span> <span data-ttu-id="3c04b-142">Tento příklad zobrazí pole každé entity z výsledků dotazu z konzoly.</span><span class="sxs-lookup"><span data-stu-id="3c04b-142">This example prints the fields of each entity in the query results to the console.</span></span>
+## <a name="get-all-of-hello-entities-in-a-partition"></a><span data-ttu-id="3d475-139">Získání všech hello entit v oddílu</span><span class="sxs-lookup"><span data-stu-id="3d475-139">Get all of hello entities in a partition</span></span>
+<span data-ttu-id="3d475-140">tooquery tabulku pro všechny hello entit v oddílu, použití **TableQuery** objektu.</span><span class="sxs-lookup"><span data-stu-id="3d475-140">tooquery a table for all of hello entities in a partition, use a **TableQuery** object.</span></span> <span data-ttu-id="3d475-141">Hello následující příklad kódu určuje filtr pro entity, kde je: Váša' klíč oddílu hello.</span><span class="sxs-lookup"><span data-stu-id="3d475-141">hello following code example specifies a filter for entities where 'Smith' is hello partition key.</span></span> <span data-ttu-id="3d475-142">Tento příklad zobrazí pole každé entity v konzole toohello výsledky dotazu hello hello.</span><span class="sxs-lookup"><span data-stu-id="3d475-142">This example prints hello fields of each entity in hello query results toohello console.</span></span>
 
-    // Construct the query operation for all customer entities where PartitionKey="Smith".
+    // Construct hello query operation for all customer entities where PartitionKey="Smith".
     TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"));
 
-    // Print the fields for each customer.
+    // Print hello fields for each customer.
     TableContinuationToken token = null;
     do
     {
@@ -141,47 +141,47 @@ ms.lasthandoff: 08/29/2017
         }
     } while (token != null);
 
-## <a name="get-a-single-entity"></a><span data-ttu-id="3c04b-143">Získat jedné entity</span><span class="sxs-lookup"><span data-stu-id="3c04b-143">Get a single entity</span></span>
-<span data-ttu-id="3c04b-144">Můžete napsat dotaz pro získání jedné konkrétní entity.</span><span class="sxs-lookup"><span data-stu-id="3c04b-144">You can write a query to get a single, specific entity.</span></span> <span data-ttu-id="3c04b-145">Následující kód používá **TableOperation** objekt, který chcete zadat zákazníka s názvem 'Ben Smith'.</span><span class="sxs-lookup"><span data-stu-id="3c04b-145">The following code uses a **TableOperation** object to specify a customer named 'Ben Smith'.</span></span> <span data-ttu-id="3c04b-146">Tato metoda vrátí pouze jednu entitu, místo do kolekce a vrácenou hodnotou při **TableResult.Result** je **CustomerEntity** objektu.</span><span class="sxs-lookup"><span data-stu-id="3c04b-146">This method returns just one entity, rather than a collection, and the returned value in **TableResult.Result** is a **CustomerEntity** object.</span></span> <span data-ttu-id="3c04b-147">Určení klíče oddílu a řádku v dotazu je nejrychlejší způsob, jak načíst jednu entitu ze **tabulky** služby.</span><span class="sxs-lookup"><span data-stu-id="3c04b-147">Specifying both partition and row keys in a query is the fastest way to retrieve a single entity from the **Table** service.</span></span>
+## <a name="get-a-single-entity"></a><span data-ttu-id="3d475-143">Získat jedné entity</span><span class="sxs-lookup"><span data-stu-id="3d475-143">Get a single entity</span></span>
+<span data-ttu-id="3d475-144">Můžete napsat dotaz tooget jedné konkrétní entity.</span><span class="sxs-lookup"><span data-stu-id="3d475-144">You can write a query tooget a single, specific entity.</span></span> <span data-ttu-id="3d475-145">Hello následující kód používá **TableOperation** objektu toospecify zákazník s názvem 'Ben Smith'.</span><span class="sxs-lookup"><span data-stu-id="3d475-145">hello following code uses a **TableOperation** object toospecify a customer named 'Ben Smith'.</span></span> <span data-ttu-id="3d475-146">Tato metoda vrátí místo kolekce pouze jednu entitu a hello vrácená hodnota v **TableResult.Result** je **CustomerEntity** objektu.</span><span class="sxs-lookup"><span data-stu-id="3d475-146">This method returns just one entity, rather than a collection, and hello returned value in **TableResult.Result** is a **CustomerEntity** object.</span></span> <span data-ttu-id="3d475-147">Určení klíče oddílu a řádku v dotazu je hello nejrychlejší způsob, jak tooretrieve jedné entity z hello **tabulky** služby.</span><span class="sxs-lookup"><span data-stu-id="3d475-147">Specifying both partition and row keys in a query is hello fastest way tooretrieve a single entity from hello **Table** service.</span></span>
 
     // Create a retrieve operation that takes a customer entity.
     TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
 
-    // Execute the retrieve operation.
+    // Execute hello retrieve operation.
     TableResult retrievedResult = await peopleTable.ExecuteAsync(retrieveOperation);
 
-    // Print the phone number of the result.
+    // Print hello phone number of hello result.
     if (retrievedResult.Result != null)
        Console.WriteLine(((CustomerEntity)retrievedResult.Result).PhoneNumber);
     else
-       Console.WriteLine("The phone number could not be retrieved.");
+       Console.WriteLine("hello phone number could not be retrieved.");
 
-## <a name="delete-an-entity"></a><span data-ttu-id="3c04b-148">Odstranění entity</span><span class="sxs-lookup"><span data-stu-id="3c04b-148">Delete an entity</span></span>
-<span data-ttu-id="3c04b-149">Entitu můžete odstranit po ji najít.</span><span class="sxs-lookup"><span data-stu-id="3c04b-149">You can delete an entity after you find it.</span></span> <span data-ttu-id="3c04b-150">Následující kód vyhledá entitu zákazníka s názvem "Ben Smith" a pokud ho najde, se odstraní.</span><span class="sxs-lookup"><span data-stu-id="3c04b-150">The following code looks for a customer entity named "Ben Smith" and if it finds it, it deletes it.</span></span>
+## <a name="delete-an-entity"></a><span data-ttu-id="3d475-148">Odstranění entity</span><span class="sxs-lookup"><span data-stu-id="3d475-148">Delete an entity</span></span>
+<span data-ttu-id="3d475-149">Entitu můžete odstranit po ji najít.</span><span class="sxs-lookup"><span data-stu-id="3d475-149">You can delete an entity after you find it.</span></span> <span data-ttu-id="3d475-150">Hello následující kód vyhledá entitu zákazníka s názvem "Ben Smith" a pokud ho najde, se odstraní.</span><span class="sxs-lookup"><span data-stu-id="3d475-150">hello following code looks for a customer entity named "Ben Smith" and if it finds it, it deletes it.</span></span>
 
     // Create a retrieve operation that expects a customer entity.
     TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
 
-    // Execute the operation.
+    // Execute hello operation.
     TableResult retrievedResult = peopleTable.Execute(retrieveOperation);
 
-    // Assign the result to a CustomerEntity object.
+    // Assign hello result tooa CustomerEntity object.
     CustomerEntity deleteEntity = (CustomerEntity)retrievedResult.Result;
 
-    // Create the Delete TableOperation and then execute it.
+    // Create hello Delete TableOperation and then execute it.
     if (deleteEntity != null)
     {
        TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
 
-       // Execute the operation.
+       // Execute hello operation.
        await peopleTable.ExecuteAsync(deleteOperation);
 
        Console.WriteLine("Entity deleted.");
     }
 
     else
-       Console.WriteLine("Couldn't delete the entity.");
+       Console.WriteLine("Couldn't delete hello entity.");
 
-## <a name="next-steps"></a><span data-ttu-id="3c04b-151">Další kroky</span><span class="sxs-lookup"><span data-stu-id="3c04b-151">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="3d475-151">Další kroky</span><span class="sxs-lookup"><span data-stu-id="3d475-151">Next steps</span></span>
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
 

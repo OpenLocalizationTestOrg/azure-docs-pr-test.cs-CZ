@@ -1,6 +1,6 @@
 ---
-title: "Vynutit zabezpečení se zásadami na virtuálních počítačích Windows v Azure | Microsoft Docs"
-description: "Tom, jak používat zásady pro správce prostředků Windows virtuální počítač Azure"
+title: "aaaEnforce zabezpečení se zásadami na virtuálních počítačích Windows v Azure | Microsoft Docs"
+description: "Jak tooapply zásad tooan virtuálního počítače Azure Resource Manager Windows"
 services: virtual-machines-windows
 documentationcenter: 
 author: singhkays
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: 246f5958478fd6d9afc9ba990413ab08429bd25d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b31c8a03ecf8eed6a929f97fe4146ea14364404f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a><span data-ttu-id="522f9-103">Použití zásad u virtuálních počítačů s Windows pomocí Azure Resource Manageru</span><span class="sxs-lookup"><span data-stu-id="522f9-103">Apply policies to Windows VMs with Azure Resource Manager</span></span>
-<span data-ttu-id="522f9-104">Pomocí zásad můžete vynutit organizaci různé konvence a pravidla v rámci podniku.</span><span class="sxs-lookup"><span data-stu-id="522f9-104">By using policies, an organization can enforce various conventions and rules throughout the enterprise.</span></span> <span data-ttu-id="522f9-105">Vynucení požadované chování může pomoci zmírnit rizika při přispívání do úspěch organizace.</span><span class="sxs-lookup"><span data-stu-id="522f9-105">Enforcement of the desired behavior can help mitigate risk while contributing to the success of the organization.</span></span> <span data-ttu-id="522f9-106">V tomto článku jsme popisují, jak lze pomocí Azure Resource Manager zásad můžete určit požadované chování pro virtuální počítače vaší organizace.</span><span class="sxs-lookup"><span data-stu-id="522f9-106">In this article, we describe how you can use Azure Resource Manager policies to define the desired behavior for your organization’s Virtual Machines.</span></span>
+# <a name="apply-policies-toowindows-vms-with-azure-resource-manager"></a><span data-ttu-id="34889-103">Použít zásady tooWindows virtuálních počítačů pomocí Azure Resource Manageru</span><span class="sxs-lookup"><span data-stu-id="34889-103">Apply policies tooWindows VMs with Azure Resource Manager</span></span>
+<span data-ttu-id="34889-104">Pomocí zásad můžete vynutit organizaci různé konvence a pravidla v rámci rozlehlé sítě hello.</span><span class="sxs-lookup"><span data-stu-id="34889-104">By using policies, an organization can enforce various conventions and rules throughout hello enterprise.</span></span> <span data-ttu-id="34889-105">Vynucení hello požadovaného chování může pomoci zmírnit rizika při přidání toohello úspěch organizace hello.</span><span class="sxs-lookup"><span data-stu-id="34889-105">Enforcement of hello desired behavior can help mitigate risk while contributing toohello success of hello organization.</span></span> <span data-ttu-id="34889-106">V tomto článku jsme popisují, jak můžete použít Azure Resource Manager zásady toodefine hello požadovaného chování pro virtuální počítače vaší organizace.</span><span class="sxs-lookup"><span data-stu-id="34889-106">In this article, we describe how you can use Azure Resource Manager policies toodefine hello desired behavior for your organization’s Virtual Machines.</span></span>
 
-<span data-ttu-id="522f9-107">Úvod do zásady, najdete v části [použití zásad ke správě prostředků a řízení přístupu](../../azure-resource-manager/resource-manager-policy.md).</span><span class="sxs-lookup"><span data-stu-id="522f9-107">For an introduction to policies, see [Use Policy to manage resources and control access](../../azure-resource-manager/resource-manager-policy.md).</span></span>
+<span data-ttu-id="34889-107">Toopolicies Úvod najdete v části [zásady používání toomanage prostředků a řízení přístupu](../../azure-resource-manager/resource-manager-policy.md).</span><span class="sxs-lookup"><span data-stu-id="34889-107">For an introduction toopolicies, see [Use Policy toomanage resources and control access](../../azure-resource-manager/resource-manager-policy.md).</span></span>
 
-## <a name="permitted-virtual-machines"></a><span data-ttu-id="522f9-108">Povolené virtuální počítače</span><span class="sxs-lookup"><span data-stu-id="522f9-108">Permitted Virtual Machines</span></span>
-<span data-ttu-id="522f9-109">Zajistit, že virtuální počítače ve vaší organizaci, jsou kompatibilní s aplikací, můžete omezit povolených operační systémy.</span><span class="sxs-lookup"><span data-stu-id="522f9-109">To ensure that virtual machines for your organization are compatible with an application, you can restrict the permitted operating systems.</span></span> <span data-ttu-id="522f9-110">V následujícím příkladu zásad můžete povolit jenom Windows serveru 2012 R2 Datacenter virtuálních počítačů, který se má vytvořit:</span><span class="sxs-lookup"><span data-stu-id="522f9-110">In the following policy example, you allow only Windows Server 2012 R2 Datacenter Virtual Machines to be created:</span></span>
+## <a name="permitted-virtual-machines"></a><span data-ttu-id="34889-108">Povolené virtuální počítače</span><span class="sxs-lookup"><span data-stu-id="34889-108">Permitted Virtual Machines</span></span>
+<span data-ttu-id="34889-109">tooensure, jestli jsou kompatibilní s aplikací virtuálních počítačů ve vaší organizaci, můžete omezit hello povolené operační systémy.</span><span class="sxs-lookup"><span data-stu-id="34889-109">tooensure that virtual machines for your organization are compatible with an application, you can restrict hello permitted operating systems.</span></span> <span data-ttu-id="34889-110">Ve hello následující ukázka zásad můžete povolit pouze virtuální počítače s Windows Server 2012 R2 Datacenter toobe vytvořit:</span><span class="sxs-lookup"><span data-stu-id="34889-110">In hello following policy example, you allow only Windows Server 2012 R2 Datacenter Virtual Machines toobe created:</span></span>
 
 ```json
 {
@@ -79,7 +79,7 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-<span data-ttu-id="522f9-111">K úpravě předchozí zásada umožnit všechny bitové kopie systému Windows Server Datacenter použijte zástupný znak:</span><span class="sxs-lookup"><span data-stu-id="522f9-111">Use a wild card to modify the preceding policy to allow any Windows Server Datacenter image:</span></span>
+<span data-ttu-id="34889-111">Použijte zástupný znak toomodify hello předcházející zásad tooallow všechny bitové kopie systému Windows Server Datacenter:</span><span class="sxs-lookup"><span data-stu-id="34889-111">Use a wild card toomodify hello preceding policy tooallow any Windows Server Datacenter image:</span></span>
 
 ```json
 {
@@ -88,7 +88,7 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-<span data-ttu-id="522f9-112">K úpravě předchozí zásada umožnit žádné Windows Server 2012 R2 Datacenter nebo vyšší bitové kopie použijte anyOf:</span><span class="sxs-lookup"><span data-stu-id="522f9-112">Use anyOf to modify the preceding policy to allow any Windows Server 2012 R2 Datacenter or higher image:</span></span>
+<span data-ttu-id="34889-112">Použijte anyOf toomodify hello předcházející zásad tooallow žádné Windows Server 2012 R2 Datacenter nebo vyšší bitové kopie:</span><span class="sxs-lookup"><span data-stu-id="34889-112">Use anyOf toomodify hello preceding policy tooallow any Windows Server 2012 R2 Datacenter or higher image:</span></span>
 
 ```json
 {
@@ -105,11 +105,11 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-<span data-ttu-id="522f9-113">Informace o polí zásad najdete v tématu [zásad aliasy](../../azure-resource-manager/resource-manager-policy.md#aliases).</span><span class="sxs-lookup"><span data-stu-id="522f9-113">For information about policy fields, see [Policy aliases](../../azure-resource-manager/resource-manager-policy.md#aliases).</span></span>
+<span data-ttu-id="34889-113">Informace o polí zásad najdete v tématu [zásad aliasy](../../azure-resource-manager/resource-manager-policy.md#aliases).</span><span class="sxs-lookup"><span data-stu-id="34889-113">For information about policy fields, see [Policy aliases](../../azure-resource-manager/resource-manager-policy.md#aliases).</span></span>
 
-## <a name="managed-disks"></a><span data-ttu-id="522f9-114">Managed Disks</span><span class="sxs-lookup"><span data-stu-id="522f9-114">Managed disks</span></span>
+## <a name="managed-disks"></a><span data-ttu-id="34889-114">Managed Disks</span><span class="sxs-lookup"><span data-stu-id="34889-114">Managed disks</span></span>
 
-<span data-ttu-id="522f9-115">Pokud chcete vyžadovat použití spravovaných disků, použijte tyto zásady:</span><span class="sxs-lookup"><span data-stu-id="522f9-115">To require the use of managed disks, use the following policy:</span></span>
+<span data-ttu-id="34889-115">toorequire hello použití spravovaných disků, použijte hello následující zásady:</span><span class="sxs-lookup"><span data-stu-id="34889-115">toorequire hello use of managed disks, use hello following policy:</span></span>
 
 ```json
 {
@@ -155,11 +155,11 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-## <a name="images-for-virtual-machines"></a><span data-ttu-id="522f9-116">Bitové kopie u virtuálních počítačů</span><span class="sxs-lookup"><span data-stu-id="522f9-116">Images for Virtual Machines</span></span>
+## <a name="images-for-virtual-machines"></a><span data-ttu-id="34889-116">Bitové kopie u virtuálních počítačů</span><span class="sxs-lookup"><span data-stu-id="34889-116">Images for Virtual Machines</span></span>
 
-<span data-ttu-id="522f9-117">Z bezpečnostních důvodů se může vyžadovat, aby byly nasazené schválené vlastní Image ve vašem prostředí.</span><span class="sxs-lookup"><span data-stu-id="522f9-117">For security reasons, you can require that only approved custom images are deployed in your environment.</span></span> <span data-ttu-id="522f9-118">Můžete zadat buď skupinu prostředků, která obsahuje Image schválené nebo konkrétní schválených bitové kopie.</span><span class="sxs-lookup"><span data-stu-id="522f9-118">You can specify either the resource group that contains the approved images, or the specific approved images.</span></span>
+<span data-ttu-id="34889-117">Z bezpečnostních důvodů se může vyžadovat, aby byly nasazené schválené vlastní Image ve vašem prostředí.</span><span class="sxs-lookup"><span data-stu-id="34889-117">For security reasons, you can require that only approved custom images are deployed in your environment.</span></span> <span data-ttu-id="34889-118">Můžete zadat buď hello skupinu prostředků, která obsahuje hello schválení bitových kopií, nebo konkrétní Image schválené hello.</span><span class="sxs-lookup"><span data-stu-id="34889-118">You can specify either hello resource group that contains hello approved images, or hello specific approved images.</span></span>
 
-<span data-ttu-id="522f9-119">Následující příklad vyžaduje bitové kopie z skupiny schválené prostředků:</span><span class="sxs-lookup"><span data-stu-id="522f9-119">The following example requires images from an approved resource group:</span></span>
+<span data-ttu-id="34889-119">Následující ukázka Hello vyžaduje bitové kopie z skupiny schválené prostředků:</span><span class="sxs-lookup"><span data-stu-id="34889-119">hello following example requires images from an approved resource group:</span></span>
 
 ```json
 {
@@ -186,7 +186,7 @@ ms.lasthandoff: 08/29/2017
 } 
 ```
 
-<span data-ttu-id="522f9-120">Následující příklad určuje ID schválené bitové kopie:</span><span class="sxs-lookup"><span data-stu-id="522f9-120">The following example specifies the approved image IDs:</span></span>
+<span data-ttu-id="34889-120">Hello následující příklad určuje hello schválení image ID:</span><span class="sxs-lookup"><span data-stu-id="34889-120">hello following example specifies hello approved image IDs:</span></span>
 
 ```json
 {
@@ -195,9 +195,9 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-## <a name="virtual-machine-extensions"></a><span data-ttu-id="522f9-121">Rozšíření virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="522f9-121">Virtual Machine extensions</span></span>
+## <a name="virtual-machine-extensions"></a><span data-ttu-id="34889-121">Rozšíření virtuálního počítače</span><span class="sxs-lookup"><span data-stu-id="34889-121">Virtual Machine extensions</span></span>
 
-<span data-ttu-id="522f9-122">Můžete chtít nezakazuje využití určitých typů rozšíření.</span><span class="sxs-lookup"><span data-stu-id="522f9-122">You may want to forbid usage of certain types of extensions.</span></span> <span data-ttu-id="522f9-123">Například rozšíření pravděpodobně není kompatibilní s obrázky určité vlastního virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="522f9-123">For example, an extension may not be compatible with certain custom virtual machine images.</span></span> <span data-ttu-id="522f9-124">Následující příklad ukazuje, jak chcete blokovat konkrétní rozšíření.</span><span class="sxs-lookup"><span data-stu-id="522f9-124">The following example shows how to block a specific extension.</span></span> <span data-ttu-id="522f9-125">Pomocí vydavatele a typ určit, které rozšíření, které chcete blokovat.</span><span class="sxs-lookup"><span data-stu-id="522f9-125">It uses publisher and type to determine which extension to block.</span></span>
+<span data-ttu-id="34889-122">Můžete chtít tooforbid využití určitých typů rozšíření.</span><span class="sxs-lookup"><span data-stu-id="34889-122">You may want tooforbid usage of certain types of extensions.</span></span> <span data-ttu-id="34889-123">Například rozšíření pravděpodobně není kompatibilní s obrázky určité vlastního virtuálního počítače.</span><span class="sxs-lookup"><span data-stu-id="34889-123">For example, an extension may not be compatible with certain custom virtual machine images.</span></span> <span data-ttu-id="34889-124">Následující příklad ukazuje, jak Hello tooblock konkrétní rozšíření.</span><span class="sxs-lookup"><span data-stu-id="34889-124">hello following example shows how tooblock a specific extension.</span></span> <span data-ttu-id="34889-125">Vydavatel a typ toodetermine používá které tooblock rozšíření.</span><span class="sxs-lookup"><span data-stu-id="34889-125">It uses publisher and type toodetermine which extension tooblock.</span></span>
 
 ```json
 {
@@ -225,9 +225,9 @@ ms.lasthandoff: 08/29/2017
 ```
 
 
-## <a name="azure-hybrid-use-benefit"></a><span data-ttu-id="522f9-126">Výhody použití Azure hybridní</span><span class="sxs-lookup"><span data-stu-id="522f9-126">Azure Hybrid Use Benefit</span></span>
+## <a name="azure-hybrid-use-benefit"></a><span data-ttu-id="34889-126">Výhody použití Azure hybridní</span><span class="sxs-lookup"><span data-stu-id="34889-126">Azure Hybrid Use Benefit</span></span>
 
-<span data-ttu-id="522f9-127">Pokud máte licenci místní, můžete uložit poplatek licence na virtuálních počítačích.</span><span class="sxs-lookup"><span data-stu-id="522f9-127">When you have an on-premise license, you can save the license fee on your virtual machines.</span></span> <span data-ttu-id="522f9-128">Pokud nemáte licenci, by měl nezakazuje možnost.</span><span class="sxs-lookup"><span data-stu-id="522f9-128">When you don't have the license, you should forbid the option.</span></span> <span data-ttu-id="522f9-129">Tyto zásady zakazuje použití Azure hybridní použití zvýhodnění (AHUB):</span><span class="sxs-lookup"><span data-stu-id="522f9-129">The following policy forbids usage of Azure Hybrid Use Benefit (AHUB):</span></span>
+<span data-ttu-id="34889-127">Pokud máte licenci místní, můžete uložit poplatek hello licence na virtuálních počítačích.</span><span class="sxs-lookup"><span data-stu-id="34889-127">When you have an on-premise license, you can save hello license fee on your virtual machines.</span></span> <span data-ttu-id="34889-128">Pokud nemáte licenci hello, by měl nezakazuje možnost hello.</span><span class="sxs-lookup"><span data-stu-id="34889-128">When you don't have hello license, you should forbid hello option.</span></span> <span data-ttu-id="34889-129">Hello následující zásady zakazuje použití Azure hybridní použití zvýhodnění (AHUB):</span><span class="sxs-lookup"><span data-stu-id="34889-129">hello following policy forbids usage of Azure Hybrid Use Benefit (AHUB):</span></span>
 
 ```json
 {
@@ -249,7 +249,7 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="522f9-130">Další kroky</span><span class="sxs-lookup"><span data-stu-id="522f9-130">Next steps</span></span>
-* <span data-ttu-id="522f9-131">Po definování zásad pravidlo (jak je znázorněno v předchozích ukázkách), musíte k vytvoření definice zásady a přiřadit obor.</span><span class="sxs-lookup"><span data-stu-id="522f9-131">After defining a policy rule (as shown in the preceding examples), you need to create the policy definition and assign it to a scope.</span></span> <span data-ttu-id="522f9-132">Obor může být předplatné, skupinu prostředků nebo prostředek.</span><span class="sxs-lookup"><span data-stu-id="522f9-132">The scope can be a subscription, resource group, or resource.</span></span> <span data-ttu-id="522f9-133">K přiřazení zásad prostřednictvím portálu, najdete v části [portálu Azure použijte přiřadit a spravovat zásady prostředků](../../azure-resource-manager/resource-manager-policy-portal.md).</span><span class="sxs-lookup"><span data-stu-id="522f9-133">To assign policies through the portal, see [Use Azure portal to assign and manage resource policies](../../azure-resource-manager/resource-manager-policy-portal.md).</span></span> <span data-ttu-id="522f9-134">K přiřazení zásad pomocí rozhraní REST API, Powershellu nebo příkazového řádku Azure CLI, najdete v části [přiřadit a spravovat zásady prostřednictvím skriptu](../../azure-resource-manager/resource-manager-policy-create-assign.md).</span><span class="sxs-lookup"><span data-stu-id="522f9-134">To assign policies through REST API, PowerShell or Azure CLI, see [Assign and manage policies through script](../../azure-resource-manager/resource-manager-policy-create-assign.md).</span></span>
-* <span data-ttu-id="522f9-135">Úvod do zásad prostředků, najdete v části [přehled zásad prostředků](../../azure-resource-manager/resource-manager-policy.md).</span><span class="sxs-lookup"><span data-stu-id="522f9-135">For an introduction to resource policies, see [Resource policy overview](../../azure-resource-manager/resource-manager-policy.md).</span></span>
-* <span data-ttu-id="522f9-136">Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](../../azure-resource-manager/resource-manager-subscription-governance.md).</span><span class="sxs-lookup"><span data-stu-id="522f9-136">For guidance on how enterprises can use Resource Manager to effectively manage subscriptions, see [Azure enterprise scaffold - prescriptive subscription governance](../../azure-resource-manager/resource-manager-subscription-governance.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="34889-130">Další kroky</span><span class="sxs-lookup"><span data-stu-id="34889-130">Next steps</span></span>
+* <span data-ttu-id="34889-131">Po definování zásad pravidlo (jak je znázorněno v předchozích příkladech hello), budete potřebovat definice zásady hello toocreate a přiřaďte ho tooa oboru.</span><span class="sxs-lookup"><span data-stu-id="34889-131">After defining a policy rule (as shown in hello preceding examples), you need toocreate hello policy definition and assign it tooa scope.</span></span> <span data-ttu-id="34889-132">obor Hello může být předplatné, skupinu prostředků nebo prostředek.</span><span class="sxs-lookup"><span data-stu-id="34889-132">hello scope can be a subscription, resource group, or resource.</span></span> <span data-ttu-id="34889-133">v tématu Zásady tooassign prostřednictvím portálu hello [Azure pomocí portálu tooassign a spravovat zásady prostředků](../../azure-resource-manager/resource-manager-policy-portal.md).</span><span class="sxs-lookup"><span data-stu-id="34889-133">tooassign policies through hello portal, see [Use Azure portal tooassign and manage resource policies](../../azure-resource-manager/resource-manager-policy-portal.md).</span></span> <span data-ttu-id="34889-134">zásady tooassign prostřednictvím REST API, Powershellu nebo příkazového řádku Azure CLI, najdete v části [přiřadit a spravovat zásady prostřednictvím skriptu](../../azure-resource-manager/resource-manager-policy-create-assign.md).</span><span class="sxs-lookup"><span data-stu-id="34889-134">tooassign policies through REST API, PowerShell or Azure CLI, see [Assign and manage policies through script](../../azure-resource-manager/resource-manager-policy-create-assign.md).</span></span>
+* <span data-ttu-id="34889-135">Úvod tooresource zásady, najdete v části [přehled zásad prostředků](../../azure-resource-manager/resource-manager-policy.md).</span><span class="sxs-lookup"><span data-stu-id="34889-135">For an introduction tooresource policies, see [Resource policy overview](../../azure-resource-manager/resource-manager-policy.md).</span></span>
+* <span data-ttu-id="34889-136">Pokyny k použití Resource Manager tooeffectively podniky můžou spravovat předplatná najdete v tématu [Azure enterprise vygenerované uživatelské rozhraní – zásady správného řízení doporučený předplatné](../../azure-resource-manager/resource-manager-subscription-governance.md).</span><span class="sxs-lookup"><span data-stu-id="34889-136">For guidance on how enterprises can use Resource Manager tooeffectively manage subscriptions, see [Azure enterprise scaffold - prescriptive subscription governance](../../azure-resource-manager/resource-manager-subscription-governance.md).</span></span>

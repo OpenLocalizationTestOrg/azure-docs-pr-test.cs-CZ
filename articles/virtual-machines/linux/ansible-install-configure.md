@@ -1,6 +1,6 @@
 ---
-title: "Instalace a konfigurace Ansible pro použití s virtuálními počítači Azure | Microsoft Docs"
-description: "Zjistěte, jak nainstalovat a nakonfigurovat Ansible pro správu prostředků Azure na SLES, Ubuntu a CentOS"
+title: "aaaInstall a konfigurace Ansible pro použití s virtuálními počítači Azure | Microsoft Docs"
+description: "Zjistěte, jak tooinstall a nakonfigurujte Ansible pro správu prostředků Azure na SLES, Ubuntu a CentOS"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -15,33 +15,33 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2017
 ms.author: iainfou
-ms.openlocfilehash: 52b763274437961dccfc862c8a45fbd57ea9fc4e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b33d1893909b6134a5474617c9af2d6e4f627c05
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a><span data-ttu-id="484f9-103">Instalace a konfigurace Ansible ke správě virtuálních počítačů v Azure</span><span class="sxs-lookup"><span data-stu-id="484f9-103">Install and configure Ansible to manage virtual machines in Azure</span></span>
-<span data-ttu-id="484f9-104">Tento článek podrobně popisuje postup instalace Ansible a požadované moduly Azure Python SDK pro některé z nejběžnějších distribucích systému Linux.</span><span class="sxs-lookup"><span data-stu-id="484f9-104">This article details how to install Ansible and required Azure Python SDK modules for some of the most common Linux distros.</span></span> <span data-ttu-id="484f9-105">Ansible můžete nainstalovat na jiné distribucích úpravou nainstalované balíčky podle vaší konkrétní platformu.</span><span class="sxs-lookup"><span data-stu-id="484f9-105">You can install Ansible on other distros by adjusting the installed packages to fit your particular platform.</span></span> <span data-ttu-id="484f9-106">Vytváření prostředků Azure zabezpečeným způsobem, můžete také zjistěte, jak vytvořit a definovat přihlašovací údaje pro Ansible používat.</span><span class="sxs-lookup"><span data-stu-id="484f9-106">To create Azure resources in a secure manner, you also learn how to create and define credentials for Ansible to use.</span></span> 
+# <a name="install-and-configure-ansible-toomanage-virtual-machines-in-azure"></a><span data-ttu-id="c41d4-103">Instalace a konfigurace Ansible toomanage virtuální počítače v Azure</span><span class="sxs-lookup"><span data-stu-id="c41d4-103">Install and configure Ansible toomanage virtual machines in Azure</span></span>
+<span data-ttu-id="c41d4-104">Tento článek podrobně popisuje, jak tooinstall Ansible a požadované moduly Azure Python SDK pro některé hello nejběžnější distribucích systému Linux.</span><span class="sxs-lookup"><span data-stu-id="c41d4-104">This article details how tooinstall Ansible and required Azure Python SDK modules for some of hello most common Linux distros.</span></span> <span data-ttu-id="c41d4-105">Můžete nainstalovat Ansible na jiné distribucích úpravou hello nainstalované balíčky toofit konkrétní platformu.</span><span class="sxs-lookup"><span data-stu-id="c41d4-105">You can install Ansible on other distros by adjusting hello installed packages toofit your particular platform.</span></span> <span data-ttu-id="c41d4-106">toocreate Azure prostředkům zabezpečené způsobem, můžete si také přečíst jak toocreate a zadejte přihlašovací údaje pro Ansible toouse.</span><span class="sxs-lookup"><span data-stu-id="c41d4-106">toocreate Azure resources in a secure manner, you also learn how toocreate and define credentials for Ansible toouse.</span></span> 
 
-<span data-ttu-id="484f9-107">Další možnosti instalace a kroky pro další platformy najdete v tématu [Průvodce instalací Ansible](https://docs.ansible.com/ansible/intro_installation.html).</span><span class="sxs-lookup"><span data-stu-id="484f9-107">For more installation options and steps for additional platforms, see the [Ansible install guide](https://docs.ansible.com/ansible/intro_installation.html).</span></span>
+<span data-ttu-id="c41d4-107">Další možnosti instalace a kroky pro další platformy najdete v tématu hello [Průvodce instalací Ansible](https://docs.ansible.com/ansible/intro_installation.html).</span><span class="sxs-lookup"><span data-stu-id="c41d4-107">For more installation options and steps for additional platforms, see hello [Ansible install guide](https://docs.ansible.com/ansible/intro_installation.html).</span></span>
 
 
-## <a name="install-ansible"></a><span data-ttu-id="484f9-108">Nainstalujte Ansible</span><span class="sxs-lookup"><span data-stu-id="484f9-108">Install Ansible</span></span>
-<span data-ttu-id="484f9-109">Nejprve vytvořte skupinu prostředků s [vytvořit skupinu az](/cli/azure/group#create).</span><span class="sxs-lookup"><span data-stu-id="484f9-109">First, create a resource group with [az group create](/cli/azure/group#create).</span></span> <span data-ttu-id="484f9-110">Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupAnsible* v *eastus* umístění:</span><span class="sxs-lookup"><span data-stu-id="484f9-110">The following example creates a resource group named *myResourceGroupAnsible* in the *eastus* location:</span></span>
+## <a name="install-ansible"></a><span data-ttu-id="c41d4-108">Nainstalujte Ansible</span><span class="sxs-lookup"><span data-stu-id="c41d4-108">Install Ansible</span></span>
+<span data-ttu-id="c41d4-109">Nejprve vytvořte skupinu prostředků s [vytvořit skupinu az](/cli/azure/group#create).</span><span class="sxs-lookup"><span data-stu-id="c41d4-109">First, create a resource group with [az group create](/cli/azure/group#create).</span></span> <span data-ttu-id="c41d4-110">Hello následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupAnsible* v hello *eastus* umístění:</span><span class="sxs-lookup"><span data-stu-id="c41d4-110">hello following example creates a resource group named *myResourceGroupAnsible* in hello *eastus* location:</span></span>
 
 ```azurecli
 az group create --name myResourceGroupAnsible --location eastus
 ```
 
-<span data-ttu-id="484f9-111">Teď vytvořte virtuální počítač a nainstalujte Ansible pro jednu z následujících distribucích:</span><span class="sxs-lookup"><span data-stu-id="484f9-111">Now create a VM and install Ansible for one of the following distros:</span></span>
+<span data-ttu-id="c41d4-111">Teď vytvořte virtuální počítač a nainstalujte Ansible pro jednu z následujících distribucích hello:</span><span class="sxs-lookup"><span data-stu-id="c41d4-111">Now create a VM and install Ansible for one of hello following distros:</span></span>
 
-- [<span data-ttu-id="484f9-112">Ubuntu 16.04 LTS</span><span class="sxs-lookup"><span data-stu-id="484f9-112">Ubuntu 16.04 LTS</span></span>](#ubuntu1604-lts)
-- [<span data-ttu-id="484f9-113">CentOS 7.3</span><span class="sxs-lookup"><span data-stu-id="484f9-113">CentOS 7.3</span></span>](#centos-73)
-- [<span data-ttu-id="484f9-114">SLES 12.2 SP2</span><span class="sxs-lookup"><span data-stu-id="484f9-114">SLES 12.2 SP2</span></span>](#sles-122-sp2)
+- [<span data-ttu-id="c41d4-112">Ubuntu 16.04 LTS</span><span class="sxs-lookup"><span data-stu-id="c41d4-112">Ubuntu 16.04 LTS</span></span>](#ubuntu1604-lts)
+- [<span data-ttu-id="c41d4-113">CentOS 7.3</span><span class="sxs-lookup"><span data-stu-id="c41d4-113">CentOS 7.3</span></span>](#centos-73)
+- [<span data-ttu-id="c41d4-114">SLES 12.2 SP2</span><span class="sxs-lookup"><span data-stu-id="c41d4-114">SLES 12.2 SP2</span></span>](#sles-122-sp2)
 
-### <a name="ubuntu-1604-lts"></a><span data-ttu-id="484f9-115">Ubuntu 16.04 LTS</span><span class="sxs-lookup"><span data-stu-id="484f9-115">Ubuntu 16.04 LTS</span></span>
-<span data-ttu-id="484f9-116">Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#create).</span><span class="sxs-lookup"><span data-stu-id="484f9-116">Create a VM with [az vm create](/cli/azure/vm#create).</span></span> <span data-ttu-id="484f9-117">Následující příklad vytvoří virtuální počítač s názvem *myVMAnsible*:</span><span class="sxs-lookup"><span data-stu-id="484f9-117">The following example creates a VM named *myVMAnsible*:</span></span>
+### <a name="ubuntu-1604-lts"></a><span data-ttu-id="c41d4-115">Ubuntu 16.04 LTS</span><span class="sxs-lookup"><span data-stu-id="c41d4-115">Ubuntu 16.04 LTS</span></span>
+<span data-ttu-id="c41d4-116">Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#create).</span><span class="sxs-lookup"><span data-stu-id="c41d4-116">Create a VM with [az vm create](/cli/azure/vm#create).</span></span> <span data-ttu-id="c41d4-117">Hello následující příklad vytvoří virtuální počítač s názvem *myVMAnsible*:</span><span class="sxs-lookup"><span data-stu-id="c41d4-117">hello following example creates a VM named *myVMAnsible*:</span></span>
 
 ```bash
 az vm create \
@@ -52,13 +52,13 @@ az vm create \
     --generate-ssh-keys
 ```
 
-<span data-ttu-id="484f9-118">SSH pro virtuální počítač pomocí `publicIpAddress` uvedeno ve výstupu z virtuálního počítače vytvořit operace:</span><span class="sxs-lookup"><span data-stu-id="484f9-118">SSH to your VM using the `publicIpAddress` noted in the output from the VM create operation:</span></span>
+<span data-ttu-id="c41d4-118">SSH tooyour virtuální počítač pomocí hello `publicIpAddress` si poznamenali v hello operace vytvoření výstup hello virtuálních počítačů:</span><span class="sxs-lookup"><span data-stu-id="c41d4-118">SSH tooyour VM using hello `publicIpAddress` noted in hello output from hello VM create operation:</span></span>
 
 ```bash
 ssh azureuser@<publicIpAddress>
 ```
 
-<span data-ttu-id="484f9-119">Na vašem virtuálním počítači nainstalujte požadované balíčky pro moduly Azure Python SDK a Ansible následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="484f9-119">On your VM, install the required packages for the Azure Python SDK modules and Ansible as follows:</span></span>
+<span data-ttu-id="c41d4-119">Na virtuální počítač nainstalujte hello požadované balíčky pro moduly Azure Python SDK hello a Ansible následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="c41d4-119">On your VM, install hello required packages for hello Azure Python SDK modules and Ansible as follows:</span></span>
 
 ```bash
 ## Install pre-requisite packages
@@ -73,11 +73,11 @@ sudo apt-add-repository -y ppa:ansible/ansible
 sudo apt-get update && sudo apt-get install -y ansible
 ```
 
-<span data-ttu-id="484f9-120">Nyní se přesunout na [přihlašovací údaje Azure vytvořit](#create-azure-credentials).</span><span class="sxs-lookup"><span data-stu-id="484f9-120">Now move on to [Create Azure credentials](#create-azure-credentials).</span></span>
+<span data-ttu-id="c41d4-120">Nyní přesunout příliš[přihlašovací údaje Azure vytvořit](#create-azure-credentials).</span><span class="sxs-lookup"><span data-stu-id="c41d4-120">Now move on too[Create Azure credentials](#create-azure-credentials).</span></span>
 
 
-### <a name="centos-73"></a><span data-ttu-id="484f9-121">CentOS 7.3</span><span class="sxs-lookup"><span data-stu-id="484f9-121">CentOS 7.3</span></span>
-<span data-ttu-id="484f9-122">Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#create).</span><span class="sxs-lookup"><span data-stu-id="484f9-122">Create a VM with [az vm create](/cli/azure/vm#create).</span></span> <span data-ttu-id="484f9-123">Následující příklad vytvoří virtuální počítač s názvem *myVMAnsible*:</span><span class="sxs-lookup"><span data-stu-id="484f9-123">The following example creates a VM named *myVMAnsible*:</span></span>
+### <a name="centos-73"></a><span data-ttu-id="c41d4-121">CentOS 7.3</span><span class="sxs-lookup"><span data-stu-id="c41d4-121">CentOS 7.3</span></span>
+<span data-ttu-id="c41d4-122">Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#create).</span><span class="sxs-lookup"><span data-stu-id="c41d4-122">Create a VM with [az vm create](/cli/azure/vm#create).</span></span> <span data-ttu-id="c41d4-123">Hello následující příklad vytvoří virtuální počítač s názvem *myVMAnsible*:</span><span class="sxs-lookup"><span data-stu-id="c41d4-123">hello following example creates a VM named *myVMAnsible*:</span></span>
 
 ```bash
 az vm create \
@@ -88,13 +88,13 @@ az vm create \
     --generate-ssh-keys
 ```
 
-<span data-ttu-id="484f9-124">SSH pro virtuální počítač pomocí `publicIpAddress` uvedeno ve výstupu z virtuálního počítače vytvořit operace:</span><span class="sxs-lookup"><span data-stu-id="484f9-124">SSH to your VM using the `publicIpAddress` noted in the output from the VM create operation:</span></span>
+<span data-ttu-id="c41d4-124">SSH tooyour virtuální počítač pomocí hello `publicIpAddress` si poznamenali v hello operace vytvoření výstup hello virtuálních počítačů:</span><span class="sxs-lookup"><span data-stu-id="c41d4-124">SSH tooyour VM using hello `publicIpAddress` noted in hello output from hello VM create operation:</span></span>
 
 ```bash
 ssh azureuser@<publicIpAddress>
 ```
 
-<span data-ttu-id="484f9-125">Na vašem virtuálním počítači nainstalujte požadované balíčky pro moduly Azure Python SDK a Ansible následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="484f9-125">On your VM, install the required packages for the Azure Python SDK modules and Ansible as follows:</span></span>
+<span data-ttu-id="c41d4-125">Na virtuální počítač nainstalujte hello požadované balíčky pro moduly Azure Python SDK hello a Ansible následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="c41d4-125">On your VM, install hello required packages for hello Azure Python SDK modules and Ansible as follows:</span></span>
 
 ```bash
 ## Install pre-requisite packages
@@ -108,11 +108,11 @@ sudo pip install "azure==2.0.0rc5" msrestazure
 sudo yum install -y ansible
 ```
 
-<span data-ttu-id="484f9-126">Nyní se přesunout na [přihlašovací údaje Azure vytvořit](#create-azure-credentials).</span><span class="sxs-lookup"><span data-stu-id="484f9-126">Now move on to [Create Azure credentials](#create-azure-credentials).</span></span>
+<span data-ttu-id="c41d4-126">Nyní přesunout příliš[přihlašovací údaje Azure vytvořit](#create-azure-credentials).</span><span class="sxs-lookup"><span data-stu-id="c41d4-126">Now move on too[Create Azure credentials](#create-azure-credentials).</span></span>
 
 
-### <a name="sles-122-sp2"></a><span data-ttu-id="484f9-127">SLES 12.2 SP2</span><span class="sxs-lookup"><span data-stu-id="484f9-127">SLES 12.2 SP2</span></span>
-<span data-ttu-id="484f9-128">Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#create).</span><span class="sxs-lookup"><span data-stu-id="484f9-128">Create a VM with [az vm create](/cli/azure/vm#create).</span></span> <span data-ttu-id="484f9-129">Následující příklad vytvoří virtuální počítač s názvem *myVMAnsible*:</span><span class="sxs-lookup"><span data-stu-id="484f9-129">The following example creates a VM named *myVMAnsible*:</span></span>
+### <a name="sles-122-sp2"></a><span data-ttu-id="c41d4-127">SLES 12.2 SP2</span><span class="sxs-lookup"><span data-stu-id="c41d4-127">SLES 12.2 SP2</span></span>
+<span data-ttu-id="c41d4-128">Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#create).</span><span class="sxs-lookup"><span data-stu-id="c41d4-128">Create a VM with [az vm create](/cli/azure/vm#create).</span></span> <span data-ttu-id="c41d4-129">Hello následující příklad vytvoří virtuální počítač s názvem *myVMAnsible*:</span><span class="sxs-lookup"><span data-stu-id="c41d4-129">hello following example creates a VM named *myVMAnsible*:</span></span>
 
 ```bash
 az vm create \
@@ -123,13 +123,13 @@ az vm create \
     --generate-ssh-keys
 ```
 
-<span data-ttu-id="484f9-130">SSH pro virtuální počítač pomocí `publicIpAddress` uvedeno ve výstupu z virtuálního počítače vytvořit operace:</span><span class="sxs-lookup"><span data-stu-id="484f9-130">SSH to your VM using the `publicIpAddress` noted in the output from the VM create operation:</span></span>
+<span data-ttu-id="c41d4-130">SSH tooyour virtuální počítač pomocí hello `publicIpAddress` si poznamenali v hello operace vytvoření výstup hello virtuálních počítačů:</span><span class="sxs-lookup"><span data-stu-id="c41d4-130">SSH tooyour VM using hello `publicIpAddress` noted in hello output from hello VM create operation:</span></span>
 
 ```bash
 ssh azureuser@<publicIpAddress>
 ```
 
-<span data-ttu-id="484f9-131">Na vašem virtuálním počítači nainstalujte požadované balíčky pro moduly Azure Python SDK a Ansible následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="484f9-131">On your VM, install the required packages for the Azure Python SDK modules and Ansible as follows:</span></span>
+<span data-ttu-id="c41d4-131">Na virtuální počítač nainstalujte hello požadované balíčky pro moduly Azure Python SDK hello a Ansible následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="c41d4-131">On your VM, install hello required packages for hello Azure Python SDK modules and Ansible as follows:</span></span>
 
 ```bash
 ## Install pre-requisite packages
@@ -141,19 +141,19 @@ sudo zypper addrepo http://download.opensuse.org/repositories/systemsmanagement/
 sudo zypper refresh && sudo zypper install ansible
 ```
 
-<span data-ttu-id="484f9-132">Nyní se přesunout na [přihlašovací údaje Azure vytvořit](#create-azure-credentials).</span><span class="sxs-lookup"><span data-stu-id="484f9-132">Now move on to [Create Azure credentials](#create-azure-credentials).</span></span>
+<span data-ttu-id="c41d4-132">Nyní přesunout příliš[přihlašovací údaje Azure vytvořit](#create-azure-credentials).</span><span class="sxs-lookup"><span data-stu-id="c41d4-132">Now move on too[Create Azure credentials](#create-azure-credentials).</span></span>
 
 
-## <a name="create-azure-credentials"></a><span data-ttu-id="484f9-133">Vytvořit přihlašovací údaje Azure</span><span class="sxs-lookup"><span data-stu-id="484f9-133">Create Azure credentials</span></span>
-<span data-ttu-id="484f9-134">Ansible komunikuje se službou Azure pomocí uživatelského jména a hesla nebo hlavní název služby.</span><span class="sxs-lookup"><span data-stu-id="484f9-134">Ansible communicates with Azure using a username and password or a service principal.</span></span> <span data-ttu-id="484f9-135">Objektu zabezpečení služby Azure je identita zabezpečení, která můžete použít s aplikací, služeb a automatizace nástroje, například Ansible.</span><span class="sxs-lookup"><span data-stu-id="484f9-135">An Azure service principal is a security identity that you can use with apps, services, and automation tools like Ansible.</span></span> <span data-ttu-id="484f9-136">Můžete řídit a definovat oprávnění, jaké operace objektu služby můžete provádět v Azure.</span><span class="sxs-lookup"><span data-stu-id="484f9-136">You control and define the permissions as to what operations the service principal can perform in Azure.</span></span> <span data-ttu-id="484f9-137">Pokud chcete zvýšit zabezpečení přes právě poskytnutí uživatelského jména a hesla, tento příklad vytvoří základní služby hlavní.</span><span class="sxs-lookup"><span data-stu-id="484f9-137">To improve security over just providing a username and password, this example creates a basic service principal.</span></span>
+## <a name="create-azure-credentials"></a><span data-ttu-id="c41d4-133">Vytvořit přihlašovací údaje Azure</span><span class="sxs-lookup"><span data-stu-id="c41d4-133">Create Azure credentials</span></span>
+<span data-ttu-id="c41d4-134">Ansible komunikuje se službou Azure pomocí uživatelského jména a hesla nebo hlavní název služby.</span><span class="sxs-lookup"><span data-stu-id="c41d4-134">Ansible communicates with Azure using a username and password or a service principal.</span></span> <span data-ttu-id="c41d4-135">Objektu zabezpečení služby Azure je identita zabezpečení, která můžete použít s aplikací, služeb a automatizace nástroje, například Ansible.</span><span class="sxs-lookup"><span data-stu-id="c41d4-135">An Azure service principal is a security identity that you can use with apps, services, and automation tools like Ansible.</span></span> <span data-ttu-id="c41d4-136">Můžete řídit a definovat hello oprávnění objektu služby hello toowhat operace můžete provádět v rámci Azure.</span><span class="sxs-lookup"><span data-stu-id="c41d4-136">You control and define hello permissions as toowhat operations hello service principal can perform in Azure.</span></span> <span data-ttu-id="c41d4-137">tooimprove zabezpečení přes právě poskytnutí uživatelského jména a hesla, tento příklad vytvoří základní služby hlavní.</span><span class="sxs-lookup"><span data-stu-id="c41d4-137">tooimprove security over just providing a username and password, this example creates a basic service principal.</span></span>
 
-<span data-ttu-id="484f9-138">Vytvoření služby hlavní s [az ad sp vytvořit pro rbac](/cli/azure/ad/sp#create-for-rbac) a výstupní přihlašovací údaje, které potřebuje Ansible:</span><span class="sxs-lookup"><span data-stu-id="484f9-138">Create a service principal with [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) and output the credentials that Ansible needs:</span></span>
+<span data-ttu-id="c41d4-138">Vytvoření služby hlavní s [az ad sp vytvořit pro rbac](/cli/azure/ad/sp#create-for-rbac) a výstup hello pověření, které potřebuje Ansible:</span><span class="sxs-lookup"><span data-stu-id="c41d4-138">Create a service principal with [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) and output hello credentials that Ansible needs:</span></span>
 
 ```azurecli
 az ad sp create-for-rbac --query [appId,password,tenant]
 ```
 
-<span data-ttu-id="484f9-139">Příklad výstupu z předchozích příkazů vypadá takto:</span><span class="sxs-lookup"><span data-stu-id="484f9-139">An example of the output from the preceding commands is as follows:</span></span>
+<span data-ttu-id="c41d4-139">Příklad výstupu hello z předchozích příkazů hello vypadá takto:</span><span class="sxs-lookup"><span data-stu-id="c41d4-139">An example of hello output from hello preceding commands is as follows:</span></span>
 
 ```json
 [
@@ -163,26 +163,26 @@ az ad sp create-for-rbac --query [appId,password,tenant]
 ]
 ```
 
-<span data-ttu-id="484f9-140">K ověření do Azure, musíte také získat svoje ID předplatného Azure s [az účet zobrazit](/cli/azure/account#show):</span><span class="sxs-lookup"><span data-stu-id="484f9-140">To authenticate to Azure, you also need to obtain your Azure subscription ID with [az account show](/cli/azure/account#show):</span></span>
+<span data-ttu-id="c41d4-140">tooauthenticate tooAzure, musíte taky tooobtain ID vašeho předplatného Azure s [az účet zobrazit](/cli/azure/account#show):</span><span class="sxs-lookup"><span data-stu-id="c41d4-140">tooauthenticate tooAzure, you also need tooobtain your Azure subscription ID with [az account show](/cli/azure/account#show):</span></span>
 
 ```azurecli
 az account show --query [id] --output tsv
 ```
 
-<span data-ttu-id="484f9-141">V dalším kroku použijete výstup z těchto dvou příkazů.</span><span class="sxs-lookup"><span data-stu-id="484f9-141">You use the output from these two commands in the next step.</span></span>
+<span data-ttu-id="c41d4-141">V dalším kroku hello používáte hello výstup z těchto dvou příkazů.</span><span class="sxs-lookup"><span data-stu-id="c41d4-141">You use hello output from these two commands in hello next step.</span></span>
 
 
-## <a name="create-ansible-credentials-file"></a><span data-ttu-id="484f9-142">Vytvořte soubor s přihlašovacími údaji Ansible</span><span class="sxs-lookup"><span data-stu-id="484f9-142">Create Ansible credentials file</span></span>
-<span data-ttu-id="484f9-143">K zadání přihlašovacích údajů k Ansible, můžete definovat proměnné prostředí nebo vytvoření přihlašovacích údajů místního souboru.</span><span class="sxs-lookup"><span data-stu-id="484f9-143">To provide credentials to Ansible, you define environment variables or create a local credentials file.</span></span> <span data-ttu-id="484f9-144">Další informace o tom, jak definovat Ansible pověření najdete v tématu [poskytování pověření moduly Azure](https://docs.ansible.com/ansible/guide_azure.html#providing-credentials-to-azure-modules).</span><span class="sxs-lookup"><span data-stu-id="484f9-144">For more information about how to define Ansible credentials, see [Providing Credentials to Azure Modules](https://docs.ansible.com/ansible/guide_azure.html#providing-credentials-to-azure-modules).</span></span> 
+## <a name="create-ansible-credentials-file"></a><span data-ttu-id="c41d4-142">Vytvořte soubor s přihlašovacími údaji Ansible</span><span class="sxs-lookup"><span data-stu-id="c41d4-142">Create Ansible credentials file</span></span>
+<span data-ttu-id="c41d4-143">tooprovide pověření tooAnsible, definujte proměnné prostředí, nebo vytvořit soubor místní přihlašovací údaje.</span><span class="sxs-lookup"><span data-stu-id="c41d4-143">tooprovide credentials tooAnsible, you define environment variables or create a local credentials file.</span></span> <span data-ttu-id="c41d4-144">Další informace o tom, najdete v části přihlašovací údaje Ansible toodefine, [poskytování pověření tooAzure moduly](https://docs.ansible.com/ansible/guide_azure.html#providing-credentials-to-azure-modules).</span><span class="sxs-lookup"><span data-stu-id="c41d4-144">For more information about how toodefine Ansible credentials, see [Providing Credentials tooAzure Modules](https://docs.ansible.com/ansible/guide_azure.html#providing-credentials-to-azure-modules).</span></span> 
 
-<span data-ttu-id="484f9-145">Vývojové prostředí, vytvářet *pověření* souboru Ansible na hostiteli virtuálního počítače takto:</span><span class="sxs-lookup"><span data-stu-id="484f9-145">For a development environment, create a *credentials* file for Ansible on your host VM as follows:</span></span>
+<span data-ttu-id="c41d4-145">Vývojové prostředí, vytvářet *pověření* souboru Ansible na hostiteli virtuálního počítače takto:</span><span class="sxs-lookup"><span data-stu-id="c41d4-145">For a development environment, create a *credentials* file for Ansible on your host VM as follows:</span></span>
 
 ```bash
 mkdir ~/.azure
 vi ~/.azure/credentials
 ```
 
-<span data-ttu-id="484f9-146">*Pověření* samotný soubor kombinuje ID předplatného s výstupem vytvoření objektu služby.</span><span class="sxs-lookup"><span data-stu-id="484f9-146">The *credentials* file itself combines the subscription ID with the output of creating a service principal.</span></span> <span data-ttu-id="484f9-147">Výstup z předchozí [az ad sp vytvořit pro rbac](/cli/azure/ad/sp#create-for-rbac) příkaz je stejné pořadí podle potřeby pro *client_id*, *tajný klíč*, a *klienta*.</span><span class="sxs-lookup"><span data-stu-id="484f9-147">Output from the previous [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) command is the same order as needed for *client_id*, *secret*, and *tenant*.</span></span> <span data-ttu-id="484f9-148">Následující příklad *pověření* soubor znázorňuje tyto hodnoty odpovídající předchozí výstup.</span><span class="sxs-lookup"><span data-stu-id="484f9-148">The following example *credentials* file shows these values matching the previous output.</span></span> <span data-ttu-id="484f9-149">Zadejte vlastní hodnoty následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="484f9-149">Enter your own values as follows:</span></span>
+<span data-ttu-id="c41d4-146">Hello *pověření* samotný soubor kombinuje ID předplatného hello výstup hello vytvoření objektu služby.</span><span class="sxs-lookup"><span data-stu-id="c41d4-146">hello *credentials* file itself combines hello subscription ID with hello output of creating a service principal.</span></span> <span data-ttu-id="c41d4-147">Výstup z předchozí hello [az ad sp vytvořit pro rbac](/cli/azure/ad/sp#create-for-rbac) příkaz je hello stejné pořadí podle potřeby pro *client_id*, *tajný klíč*, a *klienta* .</span><span class="sxs-lookup"><span data-stu-id="c41d4-147">Output from hello previous [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) command is hello same order as needed for *client_id*, *secret*, and *tenant*.</span></span> <span data-ttu-id="c41d4-148">Následující příklad Hello *pověření* soubor znázorňuje tyto hodnoty odpovídající předchozí výstup hello.</span><span class="sxs-lookup"><span data-stu-id="c41d4-148">hello following example *credentials* file shows these values matching hello previous output.</span></span> <span data-ttu-id="c41d4-149">Zadejte vlastní hodnoty následujícím způsobem:</span><span class="sxs-lookup"><span data-stu-id="c41d4-149">Enter your own values as follows:</span></span>
 
 ```bash
 [default]
@@ -193,8 +193,8 @@ tenant=72f988bf-86f1-41af-91ab-2d7cd011db47
 ```
 
 
-## <a name="use-ansible-environment-variables"></a><span data-ttu-id="484f9-150">Použití proměnných prostředí Ansible</span><span class="sxs-lookup"><span data-stu-id="484f9-150">Use Ansible environment variables</span></span>
-<span data-ttu-id="484f9-151">Pokud budete používat nástroje, například Ansible věž nebo volaných, můžete definovat proměnné prostředí následujícím způsobem.</span><span class="sxs-lookup"><span data-stu-id="484f9-151">If you are going to use tools such as Ansible Tower or Jenkins, you can define environment variables as follows.</span></span> <span data-ttu-id="484f9-152">Tyto proměnné kombinovat s výstupem vytvoření služby Hlavní ID předplatného.</span><span class="sxs-lookup"><span data-stu-id="484f9-152">These variables combine the subscription ID with the output from creating a service principal.</span></span> <span data-ttu-id="484f9-153">Výstup z předchozí [az ad sp vytvořit pro rbac](/cli/azure/ad/sp#create-for-rbac) příkaz je stejné pořadí podle potřeby pro *AZURE_CLIENT_ID*, *AZURE_SECRET*, a *AZURE_TENANT*.</span><span class="sxs-lookup"><span data-stu-id="484f9-153">Output from the previous [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) command is the same order as needed for *AZURE_CLIENT_ID*, *AZURE_SECRET*, and *AZURE_TENANT*.</span></span> 
+## <a name="use-ansible-environment-variables"></a><span data-ttu-id="c41d4-150">Použití proměnných prostředí Ansible</span><span class="sxs-lookup"><span data-stu-id="c41d4-150">Use Ansible environment variables</span></span>
+<span data-ttu-id="c41d4-151">Pokud chcete toouse nástroje, například Ansible věž nebo volaných, můžete definovat proměnné prostředí následujícím způsobem.</span><span class="sxs-lookup"><span data-stu-id="c41d4-151">If you are going toouse tools such as Ansible Tower or Jenkins, you can define environment variables as follows.</span></span> <span data-ttu-id="c41d4-152">Tyto proměnné kombinovat s výstup hello vytvoření služby hlavní hello ID předplatného.</span><span class="sxs-lookup"><span data-stu-id="c41d4-152">These variables combine hello subscription ID with hello output from creating a service principal.</span></span> <span data-ttu-id="c41d4-153">Výstup z předchozí hello [az ad sp vytvořit pro rbac](/cli/azure/ad/sp#create-for-rbac) příkaz je hello stejné pořadí podle potřeby pro *AZURE_CLIENT_ID*, *AZURE_SECRET*, a *AZURE_ KLIENTA*.</span><span class="sxs-lookup"><span data-stu-id="c41d4-153">Output from hello previous [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) command is hello same order as needed for *AZURE_CLIENT_ID*, *AZURE_SECRET*, and *AZURE_TENANT*.</span></span> 
 
 ```bash
 export AZURE_SUBSCRIPTION_ID=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -203,5 +203,5 @@ export AZURE_SECRET=8326643-f7e9-48fb-b0d5-952b68ab3def
 export AZURE_TENANT=72f988bf-86f1-41af-91ab-2d7cd011db47
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="484f9-154">Další kroky</span><span class="sxs-lookup"><span data-stu-id="484f9-154">Next steps</span></span>
-<span data-ttu-id="484f9-155">Nyní máte Ansible a požadované moduly Azure Python SDK nainstalovat a přihlašovací údaje definované pro Ansible používat.</span><span class="sxs-lookup"><span data-stu-id="484f9-155">You now have Ansible and the required Azure Python SDK modules installed, and credentials defined for Ansible to use.</span></span> <span data-ttu-id="484f9-156">Zjistěte, jak [vytvoření virtuálního počítače s Ansible](ansible-create-vm.md).</span><span class="sxs-lookup"><span data-stu-id="484f9-156">Learn how to [create a VM with Ansible](ansible-create-vm.md).</span></span> <span data-ttu-id="484f9-157">Můžete si také přečíst postup [kompletní virtuální počítače Azure můžete vytvořit a podpůrné prostředky s Ansible](ansible-create-complete-vm.md).</span><span class="sxs-lookup"><span data-stu-id="484f9-157">You can also learn how to [create a complete Azure VM and supporting resources with Ansible](ansible-create-complete-vm.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="c41d4-154">Další kroky</span><span class="sxs-lookup"><span data-stu-id="c41d4-154">Next steps</span></span>
+<span data-ttu-id="c41d4-155">Nyní máte Ansible a hello požadované moduly Azure Python SDK nainstalovat a přihlašovací údaje definované pro Ansible toouse.</span><span class="sxs-lookup"><span data-stu-id="c41d4-155">You now have Ansible and hello required Azure Python SDK modules installed, and credentials defined for Ansible toouse.</span></span> <span data-ttu-id="c41d4-156">Zjistěte, jak příliš[vytvoření virtuálního počítače s Ansible](ansible-create-vm.md).</span><span class="sxs-lookup"><span data-stu-id="c41d4-156">Learn how too[create a VM with Ansible](ansible-create-vm.md).</span></span> <span data-ttu-id="c41d4-157">Můžete si také přečíst jak příliš[kompletní virtuální počítače Azure můžete vytvořit a podpůrné prostředky s Ansible](ansible-create-complete-vm.md).</span><span class="sxs-lookup"><span data-stu-id="c41d4-157">You can also learn how too[create a complete Azure VM and supporting resources with Ansible](ansible-create-complete-vm.md).</span></span>

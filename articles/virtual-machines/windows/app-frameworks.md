@@ -1,6 +1,6 @@
 ---
-title: "Nasazení architektury aplikace na virtuálních počítačích Windows v Azure | Microsoft Docs"
-description: "Vytvoření oblíbených rozhraní aplikací na virtuálních počítačích Windows pomocí šablony Azure Resource Manager k instalaci služby Active Directory, Docker a mnoho dalších."
+title: "aaaDeploy aplikační architektury na virtuálních počítačích Windows v Azure | Microsoft Docs"
+description: "Vytvoření oblíbených rozhraní aplikací na virtuálních počítačích Windows pomocí tooinstall šablony Azure Resource Manager služby Active Directory, Docker a mnoho dalších."
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: dlepow
@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 275342413c6f4a9efc7a056bdc80b6489536576f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: cfc7f044cca36b7743d9acc25a27e2d589e866c7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-popular-application-frameworks-on-windows-using-azure-resource-manager-templates"></a><span data-ttu-id="f8c70-103">Nasazení oblíbených rozhraní aplikací do systému Windows pomocí šablony Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="f8c70-103">Deploy popular application frameworks on Windows using Azure Resource Manager templates</span></span> 
+# <a name="deploy-popular-application-frameworks-on-windows-using-azure-resource-manager-templates"></a><span data-ttu-id="c93d3-103">Nasazení oblíbených rozhraní aplikací do systému Windows pomocí šablony Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="c93d3-103">Deploy popular application frameworks on Windows using Azure Resource Manager templates</span></span> 
 
-<span data-ttu-id="f8c70-104">Zatížení obvykle vyžadují mnoho prostředků fungovat podle návrhu.</span><span class="sxs-lookup"><span data-stu-id="f8c70-104">Workloads usually require many resources to function according to design.</span></span> <span data-ttu-id="f8c70-105">Šablony Azure Resource Manager umožňují pro vám nejen definovat konfiguraci aplikace, ale taky jak se prostředky nasadí podporuje nakonfigurované aplikace.</span><span class="sxs-lookup"><span data-stu-id="f8c70-105">Azure Resource Manager templates make it possible for you to not only define how applications are configured, but also how the resources are deployed to support configured applications.</span></span> <span data-ttu-id="f8c70-106">Tento článek vás seznámí s Nejoblíbenější šablony v galerii a získáte informace pro jejich nasazení pomocí portálu Azure, Azure CLI nebo Powershellu.</span><span class="sxs-lookup"><span data-stu-id="f8c70-106">This article introduces you to the most popular templates in the gallery and gives you information for using the Azure portal, Azure CLI, or PowerShell to deploy them.</span></span>
+<span data-ttu-id="c93d3-104">Zatížení obvykle vyžadují mnoho toofunction prostředky podle toodesign.</span><span class="sxs-lookup"><span data-stu-id="c93d3-104">Workloads usually require many resources toofunction according toodesign.</span></span> <span data-ttu-id="c93d3-105">Azure Resource Manager šablony umožňují vám toonot pouze definovat, jak jsou nakonfigurované aplikace, ale také způsobu hello prostředky nasazené aplikace toosupport nakonfigurované.</span><span class="sxs-lookup"><span data-stu-id="c93d3-105">Azure Resource Manager templates make it possible for you toonot only define how applications are configured, but also how hello resources are deployed toosupport configured applications.</span></span> <span data-ttu-id="c93d3-106">Tento článek vás seznámí toohello Nejoblíbenější šablony v galerii hello a získáte informace o použití hello portálu Azure, Azure CLI nebo Powershellu toodeploy je.</span><span class="sxs-lookup"><span data-stu-id="c93d3-106">This article introduces you toohello most popular templates in hello gallery and gives you information for using hello Azure portal, Azure CLI, or PowerShell toodeploy them.</span></span>
 
 [!INCLUDE [virtual-machines-common-app-frameworks](../../../includes/virtual-machines-common-app-frameworks.md)]
 

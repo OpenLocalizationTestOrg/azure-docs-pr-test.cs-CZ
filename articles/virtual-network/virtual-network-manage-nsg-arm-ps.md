@@ -1,6 +1,6 @@
 ---
-title: "Správa skupin zabezpečení sítě - prostředí Azure PowerShell | Microsoft Docs"
-description: "Naučte se spravovat skupiny zabezpečení sítě pomocí prostředí PowerShell."
+title: "aaaManage skupin zabezpečení - sítě, prostředí Azure PowerShell | Microsoft Docs"
+description: "Zjistěte, jak toomanage sítě pomocí prostředí PowerShell skupiny zabezpečení."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,33 +16,33 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca7f4926ca4edf9d20612aca74f6ae5f0ed847b3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 930fe5e0827896ad67b24d84e41a5d3f898ba838
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-network-security-groups-using-powershell"></a><span data-ttu-id="10ef5-103">Správa skupin zabezpečení sítě pomocí prostředí PowerShell</span><span class="sxs-lookup"><span data-stu-id="10ef5-103">Manage network security groups using PowerShell</span></span>
+# <a name="manage-network-security-groups-using-powershell"></a><span data-ttu-id="c7e66-103">Správa skupin zabezpečení sítě pomocí prostředí PowerShell</span><span class="sxs-lookup"><span data-stu-id="c7e66-103">Manage network security groups using PowerShell</span></span>
 
 [!INCLUDE [virtual-network-manage-arm-selectors-include.md](../../includes/virtual-network-manage-nsg-arm-selectors-include.md)]
 
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
 > [!NOTE]
-> <span data-ttu-id="10ef5-104">Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="10ef5-104">Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="10ef5-105">Tento článek se zabývá pomocí modelu nasazení Resource Manager, které společnost Microsoft doporučuje pro většinu nových nasazení místo modelu nasazení classic.</span><span class="sxs-lookup"><span data-stu-id="10ef5-105">This article covers using the Resource Manager deployment model, which Microsoft recommends for most new deployments instead of the classic deployment model.</span></span>
+> <span data-ttu-id="c7e66-104">Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="c7e66-104">Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="c7e66-105">Tento článek se zabývá pomocí modelu nasazení Resource Manager hello, které společnost Microsoft doporučuje pro většinu nasazení nové místo hello modelu nasazení classic.</span><span class="sxs-lookup"><span data-stu-id="c7e66-105">This article covers using hello Resource Manager deployment model, which Microsoft recommends for most new deployments instead of hello classic deployment model.</span></span>
 >
 
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="retrieve-information"></a><span data-ttu-id="10ef5-106">Načtení informací o</span><span class="sxs-lookup"><span data-stu-id="10ef5-106">Retrieve Information</span></span>
-<span data-ttu-id="10ef5-107">Můžete zobrazit stávající skupiny Nsg, načíst pravidla pro existující skupiny NSG a zjistit, jaké prostředky skupinu NSG je přidružena k.</span><span class="sxs-lookup"><span data-stu-id="10ef5-107">You can view your existing NSGs, retrieve rules for an existing NSG, and find out what resources an NSG is associated to.</span></span>
+## <a name="retrieve-information"></a><span data-ttu-id="c7e66-106">Načtení informací o</span><span class="sxs-lookup"><span data-stu-id="c7e66-106">Retrieve Information</span></span>
+<span data-ttu-id="c7e66-107">Můžete zobrazit stávající skupiny Nsg, načíst pravidla pro existující skupiny NSG a zjistit, jaké prostředky skupinu NSG je přidružena k.</span><span class="sxs-lookup"><span data-stu-id="c7e66-107">You can view your existing NSGs, retrieve rules for an existing NSG, and find out what resources an NSG is associated to.</span></span>
 
-### <a name="view-existing-nsgs"></a><span data-ttu-id="10ef5-108">Zobrazit existující skupiny Nsg</span><span class="sxs-lookup"><span data-stu-id="10ef5-108">View existing NSGs</span></span>
-<span data-ttu-id="10ef5-109">Chcete-li zobrazit všechny existující skupiny Nsg v odběru, spusťte `Get-AzureRmNetworkSecurityGroup` rutiny.</span><span class="sxs-lookup"><span data-stu-id="10ef5-109">To view all existing NSGs in a subscription, run the `Get-AzureRmNetworkSecurityGroup` cmdlet.</span></span>
+### <a name="view-existing-nsgs"></a><span data-ttu-id="c7e66-108">Zobrazit existující skupiny Nsg</span><span class="sxs-lookup"><span data-stu-id="c7e66-108">View existing NSGs</span></span>
+<span data-ttu-id="c7e66-109">tooview všechny existující skupiny Nsg v předplatném, spusťte hello `Get-AzureRmNetworkSecurityGroup` rutiny.</span><span class="sxs-lookup"><span data-stu-id="c7e66-109">tooview all existing NSGs in a subscription, run hello `Get-AzureRmNetworkSecurityGroup` cmdlet.</span></span>
 
-<span data-ttu-id="10ef5-110">Očekávaný výsledek:</span><span class="sxs-lookup"><span data-stu-id="10ef5-110">Expected result:</span></span>
+<span data-ttu-id="c7e66-110">Očekávaný výsledek:</span><span class="sxs-lookup"><span data-stu-id="c7e66-110">Expected result:</span></span>
 
     Name                 : NSG-BackEnd
     ResourceGroupName    : RG-NSG
@@ -87,9 +87,9 @@ ms.lasthandoff: 07/11/2017
     Subnets              : [...]
 
 
-<span data-ttu-id="10ef5-111">Chcete-li zobrazit seznam skupin Nsg v určité skupiny zdrojů, spusťte `Get-AzureRmNetworkSecurityGroup` rutiny.</span><span class="sxs-lookup"><span data-stu-id="10ef5-111">To view the list of NSGs in a specific resource group, run the `Get-AzureRmNetworkSecurityGroup` cmdlet.</span></span>
+<span data-ttu-id="c7e66-111">tooview hello seznam skupin Nsg v určité skupiny zdrojů, spusťte hello `Get-AzureRmNetworkSecurityGroup` rutiny.</span><span class="sxs-lookup"><span data-stu-id="c7e66-111">tooview hello list of NSGs in a specific resource group, run hello `Get-AzureRmNetworkSecurityGroup` cmdlet.</span></span>
 
-<span data-ttu-id="10ef5-112">Očekávaný výstup:</span><span class="sxs-lookup"><span data-stu-id="10ef5-112">Expected output:</span></span>
+<span data-ttu-id="c7e66-112">Očekávaný výstup:</span><span class="sxs-lookup"><span data-stu-id="c7e66-112">Expected output:</span></span>
 
     Name                 : NSG-BackEnd
     ResourceGroupName    : RG-NSG
@@ -119,14 +119,14 @@ ms.lasthandoff: 07/11/2017
     NetworkInterfaces    : [...]
     Subnets              : [...]
 
-### <a name="list-all-rules-for-an-nsg"></a><span data-ttu-id="10ef5-113">Seznam všech pravidel pro skupiny NSG</span><span class="sxs-lookup"><span data-stu-id="10ef5-113">List all rules for an NSG</span></span>
-<span data-ttu-id="10ef5-114">Chcete-li zobrazit pravidla s názvem skupiny NSG **NSG front-endu**, zadejte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="10ef5-114">To view the rules of an NSG named **NSG-FrontEnd**, enter the following command:</span></span>
+### <a name="list-all-rules-for-an-nsg"></a><span data-ttu-id="c7e66-113">Seznam všech pravidel pro skupiny NSG</span><span class="sxs-lookup"><span data-stu-id="c7e66-113">List all rules for an NSG</span></span>
+<span data-ttu-id="c7e66-114">pravidla hello tooview skupinu NSG s názvem **NSG front-endu**, zadejte následující příkaz hello:</span><span class="sxs-lookup"><span data-stu-id="c7e66-114">tooview hello rules of an NSG named **NSG-FrontEnd**, enter hello following command:</span></span>
 
 ```powershell
 Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd | Select SecurityRules -ExpandProperty SecurityRules
 ```
 
-<span data-ttu-id="10ef5-115">Očekávaný výstup:</span><span class="sxs-lookup"><span data-stu-id="10ef5-115">Expected output:</span></span>
+<span data-ttu-id="c7e66-115">Očekávaný výstup:</span><span class="sxs-lookup"><span data-stu-id="c7e66-115">Expected output:</span></span>
 
     Name                     : rdp-rule
     Id                       : /subscriptions/[Subscription Id]/resourceGroups/RG-NSG/providers/                           Microsoft.Network/networkSecurityGroups/NSG-FrontEnd/securityRules/rdp-rule
@@ -157,17 +157,17 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd | S
     Direction                : Inbound
 
 > [!NOTE]
-> <span data-ttu-id="10ef5-116">Můžete také použít `Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name "NSG-FrontEnd" | Select DefaultSecurityRules -ExpandProperty DefaultSecurityRules` seznam výchozích pravidel z **NSG front-endu** NSG.</span><span class="sxs-lookup"><span data-stu-id="10ef5-116">You can also use `Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name "NSG-FrontEnd" | Select DefaultSecurityRules -ExpandProperty DefaultSecurityRules` to list the default rules from the **NSG-FrontEnd** NSG.</span></span>
+> <span data-ttu-id="c7e66-116">Můžete také použít `Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name "NSG-FrontEnd" | Select DefaultSecurityRules -ExpandProperty DefaultSecurityRules` toolist hello výchozí pravidla z hello **NSG front-endu** NSG.</span><span class="sxs-lookup"><span data-stu-id="c7e66-116">You can also use `Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name "NSG-FrontEnd" | Select DefaultSecurityRules -ExpandProperty DefaultSecurityRules` toolist hello default rules from hello **NSG-FrontEnd** NSG.</span></span>
 > 
 
-### <a name="view-nsgs-associations"></a><span data-ttu-id="10ef5-117">Zobrazte přidružení skupiny Nsg</span><span class="sxs-lookup"><span data-stu-id="10ef5-117">View NSGs associations</span></span>
-<span data-ttu-id="10ef5-118">Chcete-li zobrazit prostředky **NSG front-endu** NSG je spojený s, spusťte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="10ef5-118">To view what resources the **NSG-FrontEnd** NSG is associate with, run the following command:</span></span>
+### <a name="view-nsgs-associations"></a><span data-ttu-id="c7e66-117">Zobrazte přidružení skupiny Nsg</span><span class="sxs-lookup"><span data-stu-id="c7e66-117">View NSGs associations</span></span>
+<span data-ttu-id="c7e66-118">tooview jaké prostředky hello **NSG front-endu** NSG je spojený s, spusťte hello následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="c7e66-118">tooview what resources hello **NSG-FrontEnd** NSG is associate with, run hello following command:</span></span>
 
 ```powershell
 Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
 ```
 
-<span data-ttu-id="10ef5-119">Vyhledejte **NetworkInterfaces** a **podsítě** vlastnosti, jak je uvedeno níže:</span><span class="sxs-lookup"><span data-stu-id="10ef5-119">Look for the **NetworkInterfaces** and **Subnets** properties as shown below:</span></span>
+<span data-ttu-id="c7e66-119">Vyhledejte hello **NetworkInterfaces** a **podsítě** vlastnosti, jak je uvedeno níže:</span><span class="sxs-lookup"><span data-stu-id="c7e66-119">Look for hello **NetworkInterfaces** and **Subnets** properties as shown below:</span></span>
 
     NetworkInterfaces    : []
     Subnets              : [
@@ -177,21 +177,21 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
                              }
                            ]
 
-<span data-ttu-id="10ef5-120">V předchozím příkladu NSG není přidružen k žádné síťových rozhraní (NIC); je přidružen k podsíti s názvem **front-endu**.</span><span class="sxs-lookup"><span data-stu-id="10ef5-120">In the previous example, the NSG is not associated to any network interfaces (NICs); it is associated to a subnet named **FrontEnd**.</span></span>
+<span data-ttu-id="c7e66-120">V předchozím příkladu hello hello NSG není přidružené tooany síťových rozhraní (NIC); je přidružená tooa podsíť s názvem **front-endu**.</span><span class="sxs-lookup"><span data-stu-id="c7e66-120">In hello previous example, hello NSG is not associated tooany network interfaces (NICs); it is associated tooa subnet named **FrontEnd**.</span></span>
 
-## <a name="manage-rules"></a><span data-ttu-id="10ef5-121">Spravovat pravidla</span><span class="sxs-lookup"><span data-stu-id="10ef5-121">Manage rules</span></span>
-<span data-ttu-id="10ef5-122">Můžete přidat pravidla do existující skupiny NSG, upravit stávající pravidla a odstranit pravidla.</span><span class="sxs-lookup"><span data-stu-id="10ef5-122">You can add rules to an existing NSG, edit existing rules, and remove rules.</span></span>
+## <a name="manage-rules"></a><span data-ttu-id="c7e66-121">Spravovat pravidla</span><span class="sxs-lookup"><span data-stu-id="c7e66-121">Manage rules</span></span>
+<span data-ttu-id="c7e66-122">Můžete přidat pravidla tooan existující skupina NSG, upravit stávající pravidla a odstranit pravidla.</span><span class="sxs-lookup"><span data-stu-id="c7e66-122">You can add rules tooan existing NSG, edit existing rules, and remove rules.</span></span>
 
-### <a name="add-a-rule"></a><span data-ttu-id="10ef5-123">Přidání pravidla</span><span class="sxs-lookup"><span data-stu-id="10ef5-123">Add a rule</span></span>
-<span data-ttu-id="10ef5-124">Chcete-li přidat pravidlo, které povoluje **příchozí** přenosy na portu **443** z libovolného počítače k **NSG front-endu** NSG, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="10ef5-124">To add a rule allowing **inbound** traffic to port **443** from any machine to the **NSG-FrontEnd** NSG, complete the following steps:</span></span>
+### <a name="add-a-rule"></a><span data-ttu-id="c7e66-123">Přidání pravidla</span><span class="sxs-lookup"><span data-stu-id="c7e66-123">Add a rule</span></span>
+<span data-ttu-id="c7e66-124">pravidlo, které povoluje tooadd **příchozí** provoz tooport **443** z toohello všechny počítače **NSG front-endu** NSG, dokončení hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="c7e66-124">tooadd a rule allowing **inbound** traffic tooport **443** from any machine toohello **NSG-FrontEnd** NSG, complete hello following steps:</span></span>
 
-1. <span data-ttu-id="10ef5-125">Spusťte následující příkaz pro načtení existující skupina NSG a uložte ho do proměnné:</span><span class="sxs-lookup"><span data-stu-id="10ef5-125">Run the following command to retrieve the existing NSG and store it in a variable:</span></span>
+1. <span data-ttu-id="c7e66-125">Spusťte následující příkaz tooretrieve hello existující skupina NSG hello a uložit jako proměnnou:</span><span class="sxs-lookup"><span data-stu-id="c7e66-125">Run hello following command tooretrieve hello existing NSG and store it in a variable:</span></span>
 
     ```powershell   
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-2. <span data-ttu-id="10ef5-126">Spusťte následující příkaz pro přidání pravidla k této skupině:</span><span class="sxs-lookup"><span data-stu-id="10ef5-126">Run the following command to add a rule to the NSG:</span></span>
+2. <span data-ttu-id="c7e66-126">Spusťte následující příkaz tooadd hello toohello pravidla NSG:</span><span class="sxs-lookup"><span data-stu-id="c7e66-126">Run hello following command tooadd a rule toohello NSG:</span></span>
 
     ```powershell
     Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg `
@@ -207,12 +207,12 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     -DestinationPortRange 443
     ```
 
-3. <span data-ttu-id="10ef5-127">Pokud chcete uložit změny provedené v této skupině, spusťte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="10ef5-127">To save the changes made to the NSG, run the following command:</span></span>
+3. <span data-ttu-id="c7e66-127">toosave hello změn toohello NSG, spusťte následující příkaz hello:</span><span class="sxs-lookup"><span data-stu-id="c7e66-127">toosave hello changes made toohello NSG, run hello following command:</span></span>
 
     ```powershell
     Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
-    <span data-ttu-id="10ef5-128">Očekávaný výstup zobrazuje pouze pravidla zabezpečení:</span><span class="sxs-lookup"><span data-stu-id="10ef5-128">Expected output showing only the security rules:</span></span>
+    <span data-ttu-id="c7e66-128">Očekávaný výstup zobrazuje pouze hello pravidla zabezpečení:</span><span class="sxs-lookup"><span data-stu-id="c7e66-128">Expected output showing only hello security rules:</span></span>
    
         Name                 : NSG-FrontEnd
         ...
@@ -242,16 +242,16 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
                                  }
                                ]
 
-### <a name="change-a-rule"></a><span data-ttu-id="10ef5-129">Změna pravidla</span><span class="sxs-lookup"><span data-stu-id="10ef5-129">Change a rule</span></span>
-<span data-ttu-id="10ef5-130">Chcete-li změnit pravidlo vytvořili výše, které pokud chcete povolit příchozí přenosy z **Internet** pouze, použijte následující postup.</span><span class="sxs-lookup"><span data-stu-id="10ef5-130">To change the rule created above to allow inbound traffic from the **Internet** only, follow the steps below.</span></span>
+### <a name="change-a-rule"></a><span data-ttu-id="c7e66-129">Změna pravidla</span><span class="sxs-lookup"><span data-stu-id="c7e66-129">Change a rule</span></span>
+<span data-ttu-id="c7e66-130">pravidlo hello toochange vytvořili výše tooallow příchozí provoz z hello **Internet** pouze, postupujte podle následujících kroků hello.</span><span class="sxs-lookup"><span data-stu-id="c7e66-130">toochange hello rule created above tooallow inbound traffic from hello **Internet** only, follow hello steps below.</span></span>
 
-1. <span data-ttu-id="10ef5-131">Spusťte následující příkaz pro načtení existující skupina NSG a uložte ho do proměnné:</span><span class="sxs-lookup"><span data-stu-id="10ef5-131">Run the following command to retrieve the existing NSG and store it in a variable:</span></span>
+1. <span data-ttu-id="c7e66-131">Spusťte následující příkaz tooretrieve hello existující skupina NSG hello a uložit jako proměnnou:</span><span class="sxs-lookup"><span data-stu-id="c7e66-131">Run hello following command tooretrieve hello existing NSG and store it in a variable:</span></span>
 
     ```powershell 
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-2. <span data-ttu-id="10ef5-132">Spusťte následující příkaz s novým nastavením pravidlo:</span><span class="sxs-lookup"><span data-stu-id="10ef5-132">Run the following command with the new rule settings:</span></span>
+2. <span data-ttu-id="c7e66-132">Spusťte následující příkaz s hello nové pravidel nastavení hello:</span><span class="sxs-lookup"><span data-stu-id="c7e66-132">Run hello following command with hello new rule settings:</span></span>
 
     ```powershell
     Set-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg `
@@ -267,13 +267,13 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     -DestinationPortRange 443
     ```
 
-3. <span data-ttu-id="10ef5-133">Pokud chcete uložit změny provedené v této skupině, spusťte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="10ef5-133">To save the changes made to the NSG, run the following command:</span></span>
+3. <span data-ttu-id="c7e66-133">toosave hello změn toohello NSG, spusťte následující příkaz hello:</span><span class="sxs-lookup"><span data-stu-id="c7e66-133">toosave hello changes made toohello NSG, run hello following command:</span></span>
 
     ```powershell
     Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
 
-    <span data-ttu-id="10ef5-134">Očekávaný výstup zobrazuje pouze pravidla zabezpečení:</span><span class="sxs-lookup"><span data-stu-id="10ef5-134">Expected output showing only the security rules:</span></span>
+    <span data-ttu-id="c7e66-134">Očekávaný výstup zobrazuje pouze hello pravidla zabezpečení:</span><span class="sxs-lookup"><span data-stu-id="c7e66-134">Expected output showing only hello security rules:</span></span>
    
         Name                 : NSG-FrontEnd
         ...
@@ -303,26 +303,26 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
                                  }
                                ]
 
-### <a name="delete-a-rule"></a><span data-ttu-id="10ef5-135">Odstranění pravidla</span><span class="sxs-lookup"><span data-stu-id="10ef5-135">Delete a rule</span></span>
-1. <span data-ttu-id="10ef5-136">Spusťte následující příkaz pro načtení existující skupina NSG a uložte ho do proměnné:</span><span class="sxs-lookup"><span data-stu-id="10ef5-136">Run the following command to retrieve the existing NSG and store it in a variable:</span></span>
+### <a name="delete-a-rule"></a><span data-ttu-id="c7e66-135">Odstranění pravidla</span><span class="sxs-lookup"><span data-stu-id="c7e66-135">Delete a rule</span></span>
+1. <span data-ttu-id="c7e66-136">Spusťte následující příkaz tooretrieve hello existující skupina NSG hello a uložit jako proměnnou:</span><span class="sxs-lookup"><span data-stu-id="c7e66-136">Run hello following command tooretrieve hello existing NSG and store it in a variable:</span></span>
 
     ```powershell
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-2. <span data-ttu-id="10ef5-137">Spusťte následující příkaz pro odebrání pravidla z této skupině:</span><span class="sxs-lookup"><span data-stu-id="10ef5-137">Run the following command to remove the rule from the NSG:</span></span>
+2. <span data-ttu-id="c7e66-137">Spusťte následující příkaz tooremove hello pravidlo z hello NSG hello:</span><span class="sxs-lookup"><span data-stu-id="c7e66-137">Run hello following command tooremove hello rule from hello NSG:</span></span>
 
     ```powershell
     Remove-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name https-rule
     ```
 
-3. <span data-ttu-id="10ef5-138">Uložte změny provedené NSG, tak, že spustíte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="10ef5-138">Save the changes made to the NSG, by running the following command:</span></span>
+3. <span data-ttu-id="c7e66-138">Uložte změny provedené toohello hello NSG, spuštěním hello následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="c7e66-138">Save hello changes made toohello NSG, by running hello following command:</span></span>
 
     ```powershell
     Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
 
-    <span data-ttu-id="10ef5-139">Očekávaný výstup zobrazuje pouze pravidla zabezpečení, upozornění **https pravidlo** již není uveden:</span><span class="sxs-lookup"><span data-stu-id="10ef5-139">Expected output showing only the security rules, notice the **https-rule** is no longer listed:</span></span>
+    <span data-ttu-id="c7e66-139">Očekávaný výstup zobrazuje pouze hello pravidla zabezpečení, Všimněte si hello **https pravidlo** již není uveden:</span><span class="sxs-lookup"><span data-stu-id="c7e66-139">Expected output showing only hello security rules, notice hello **https-rule** is no longer listed:</span></span>
    
         Name                 : NSG-FrontEnd
         ...
@@ -337,37 +337,37 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
                                  }
                                ]
 
-## <a name="manage-associations"></a><span data-ttu-id="10ef5-140">Správa přidružení</span><span class="sxs-lookup"><span data-stu-id="10ef5-140">Manage associations</span></span>
-<span data-ttu-id="10ef5-141">Můžete přidružit skupiny NSG k podsítí a síťových karet.</span><span class="sxs-lookup"><span data-stu-id="10ef5-141">You can associate an NSG to subnets and NICs.</span></span> <span data-ttu-id="10ef5-142">Můžete také zrušit přidružení skupiny NSG ze všech prostředků, které je přidružené k.</span><span class="sxs-lookup"><span data-stu-id="10ef5-142">You can also dissociate an NSG from any resource it's associated to.</span></span>
+## <a name="manage-associations"></a><span data-ttu-id="c7e66-140">Správa přidružení</span><span class="sxs-lookup"><span data-stu-id="c7e66-140">Manage associations</span></span>
+<span data-ttu-id="c7e66-141">Můžete přidružit toosubnets NSG a síťových karet.</span><span class="sxs-lookup"><span data-stu-id="c7e66-141">You can associate an NSG toosubnets and NICs.</span></span> <span data-ttu-id="c7e66-142">Můžete také zrušit přidružení skupiny NSG ze všech prostředků, které je přidružené k.</span><span class="sxs-lookup"><span data-stu-id="c7e66-142">You can also dissociate an NSG from any resource it's associated to.</span></span>
 
-### <a name="associate-an-nsg-to-a-nic"></a><span data-ttu-id="10ef5-143">Přidružení skupiny NSG k síťové karty</span><span class="sxs-lookup"><span data-stu-id="10ef5-143">Associate an NSG to a NIC</span></span>
-<span data-ttu-id="10ef5-144">Pro přidružení **NSG front-endu** NSG k **TestNICWeb1** síťovou kartu, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="10ef5-144">To associate the **NSG-FrontEnd** NSG to the **TestNICWeb1** NIC, complete the following steps:</span></span>
+### <a name="associate-an-nsg-tooa-nic"></a><span data-ttu-id="c7e66-143">Přidružit NSG tooa síťový adaptér</span><span class="sxs-lookup"><span data-stu-id="c7e66-143">Associate an NSG tooa NIC</span></span>
+<span data-ttu-id="c7e66-144">tooassociate hello **NSG front-endu** NSG toohello **TestNICWeb1** síťového adaptéru, dokončení hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="c7e66-144">tooassociate hello **NSG-FrontEnd** NSG toohello **TestNICWeb1** NIC, complete hello following steps:</span></span>
 
-1. <span data-ttu-id="10ef5-145">Spusťte následující příkaz pro načtení existující skupina NSG a uložte ho do proměnné:</span><span class="sxs-lookup"><span data-stu-id="10ef5-145">Run the following command to retrieve the existing NSG and store it in a variable:</span></span>
+1. <span data-ttu-id="c7e66-145">Spusťte následující příkaz tooretrieve hello existující skupina NSG hello a uložit jako proměnnou:</span><span class="sxs-lookup"><span data-stu-id="c7e66-145">Run hello following command tooretrieve hello existing NSG and store it in a variable:</span></span>
 
     ```powershell
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-2. <span data-ttu-id="10ef5-146">Spusťte následující příkaz pro načtení stávající síťové karty a uložte ho do proměnné:</span><span class="sxs-lookup"><span data-stu-id="10ef5-146">Run the following command to retrieve the existing NIC and store it in a variable:</span></span>
+2. <span data-ttu-id="c7e66-146">Spusťte následující příkaz tooretrieve hello stávající síťovou kartu hello a uložte ho do proměnné:</span><span class="sxs-lookup"><span data-stu-id="c7e66-146">Run hello following command tooretrieve hello existing NIC and store it in a variable:</span></span>
 
     ```powershell
     $nic = Get-AzureRmNetworkInterface -ResourceGroupName RG-NSG -Name TestNICWeb1
     ```
 
-3. <span data-ttu-id="10ef5-147">Nastavte **skupinu zabezpečení sítě** vlastnost **seskupování** proměnné na hodnotu **NSG** proměnné tak, že zadáte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="10ef5-147">Set the **NetworkSecurityGroup** property of the **NIC** variable to the value of the **NSG** variable, by entering the following command:</span></span>
+3. <span data-ttu-id="c7e66-147">Sada hello **skupinu zabezpečení sítě** vlastnost hello **seskupování** hodnotu proměnné toohello hello **NSG** proměnné tak, že zadáte následující příkaz hello:</span><span class="sxs-lookup"><span data-stu-id="c7e66-147">Set hello **NetworkSecurityGroup** property of hello **NIC** variable toohello value of hello **NSG** variable, by entering hello following command:</span></span>
 
     ```powershell
     $nic.NetworkSecurityGroup = $nsg
     ```
 
-4. <span data-ttu-id="10ef5-148">Pokud chcete uložit změny provedené na síťový adaptér, spusťte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="10ef5-148">To save the changes made to the NIC, run the following command:</span></span>
+4. <span data-ttu-id="c7e66-148">toosave hello změn toohello síťového adaptéru, spusťte následující příkaz hello:</span><span class="sxs-lookup"><span data-stu-id="c7e66-148">toosave hello changes made toohello NIC, run hello following command:</span></span>
 
     ```powershell
     Set-AzureRmNetworkInterface -NetworkInterface $nic
     ```
    
-    <span data-ttu-id="10ef5-149">Očekávaný výstup zobrazuje jenom **skupinu zabezpečení sítě** vlastnost:</span><span class="sxs-lookup"><span data-stu-id="10ef5-149">Expected output showing only the **NetworkSecurityGroup** property:</span></span>
+    <span data-ttu-id="c7e66-149">Očekávaný výstup zobrazuje pouze hello **skupinu zabezpečení sítě** vlastnost:</span><span class="sxs-lookup"><span data-stu-id="c7e66-149">Expected output showing only hello **NetworkSecurityGroup** property:</span></span>
    
         NetworkSecurityGroup : {
                                  "SecurityRules": [],
@@ -377,59 +377,59 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
                                  "Id": "/subscriptions/[Subscription Id]/resourceGroups/RG-NSG/providers/Microsoft.Network/networkSecurityGroups/NSG-FrontEnd"
                                }
 
-### <a name="dissociate-an-nsg-from-a-nic"></a><span data-ttu-id="10ef5-150">Zrušit přidružení skupiny NSG z síťový adaptér</span><span class="sxs-lookup"><span data-stu-id="10ef5-150">Dissociate an NSG from a NIC</span></span>
-<span data-ttu-id="10ef5-151">Zrušení přidružení **NSG front-endu** NSG z **TestNICWeb1** síťovou kartu, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="10ef5-151">To dissociate the **NSG-FrontEnd** NSG from the **TestNICWeb1** NIC, complete the following steps:</span></span>
+### <a name="dissociate-an-nsg-from-a-nic"></a><span data-ttu-id="c7e66-150">Zrušit přidružení skupiny NSG z síťový adaptér</span><span class="sxs-lookup"><span data-stu-id="c7e66-150">Dissociate an NSG from a NIC</span></span>
+<span data-ttu-id="c7e66-151">toodissociate hello **NSG front-endu** NSG z hello **TestNICWeb1** síťového adaptéru, dokončení hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="c7e66-151">toodissociate hello **NSG-FrontEnd** NSG from hello **TestNICWeb1** NIC, complete hello following steps:</span></span>
 
-1. <span data-ttu-id="10ef5-152">Spusťte následující příkaz pro načtení stávající síťové karty a uložte ho do proměnné:</span><span class="sxs-lookup"><span data-stu-id="10ef5-152">Run the following command to retrieve the existing NIC and store it in a variable:</span></span>
+1. <span data-ttu-id="c7e66-152">Spusťte následující příkaz tooretrieve hello stávající síťovou kartu hello a uložte ho do proměnné:</span><span class="sxs-lookup"><span data-stu-id="c7e66-152">Run hello following command tooretrieve hello existing NIC and store it in a variable:</span></span>
 
     ```powershell
     $nic = Get-AzureRmNetworkInterface -ResourceGroupName RG-NSG -Name TestNICWeb1
     ```
 
-2. <span data-ttu-id="10ef5-153">Nastavte **skupinu zabezpečení sítě** vlastnost **seskupování** proměnnou **$null** spuštěním následujícího příkazu:</span><span class="sxs-lookup"><span data-stu-id="10ef5-153">Set the **NetworkSecurityGroup** property of the **NIC** variable to **$null** by running the following command:</span></span>
+2. <span data-ttu-id="c7e66-153">Sada hello **skupinu zabezpečení sítě** vlastnost hello **seskupování** proměnné příliš**$null** spuštěním hello následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="c7e66-153">Set hello **NetworkSecurityGroup** property of hello **NIC** variable too**$null** by running hello following command:</span></span>
 
     ```powershell
     $nic.NetworkSecurityGroup = $null
     ```
 
-3. <span data-ttu-id="10ef5-154">Pokud chcete uložit změny provedené na síťový adaptér, spusťte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="10ef5-154">To save the changes made to the NIC, run the following command:</span></span>
+3. <span data-ttu-id="c7e66-154">toosave hello změn toohello síťového adaptéru, spusťte následující příkaz hello:</span><span class="sxs-lookup"><span data-stu-id="c7e66-154">toosave hello changes made toohello NIC, run hello following command:</span></span>
 
     ```powershell
     Set-AzureRmNetworkInterface -NetworkInterface $nic
     ```
    
-    <span data-ttu-id="10ef5-155">Očekávaný výstup zobrazuje jenom **skupinu zabezpečení sítě** vlastnost:</span><span class="sxs-lookup"><span data-stu-id="10ef5-155">Expected output showing only the **NetworkSecurityGroup** property:</span></span>
+    <span data-ttu-id="c7e66-155">Očekávaný výstup zobrazuje pouze hello **skupinu zabezpečení sítě** vlastnost:</span><span class="sxs-lookup"><span data-stu-id="c7e66-155">Expected output showing only hello **NetworkSecurityGroup** property:</span></span>
    
         NetworkSecurityGroup : null
 
-### <a name="dissociate-an-nsg-from-a-subnet"></a><span data-ttu-id="10ef5-156">Zrušit přidružení skupiny NSG z podsítě</span><span class="sxs-lookup"><span data-stu-id="10ef5-156">Dissociate an NSG from a subnet</span></span>
-<span data-ttu-id="10ef5-157">Zrušení přidružení **NSG front-endu** NSG z **front-endu** podsíť, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="10ef5-157">To dissociate the **NSG-FrontEnd** NSG from the **FrontEnd** subnet, complete the following steps:</span></span>
+### <a name="dissociate-an-nsg-from-a-subnet"></a><span data-ttu-id="c7e66-156">Zrušit přidružení skupiny NSG z podsítě</span><span class="sxs-lookup"><span data-stu-id="c7e66-156">Dissociate an NSG from a subnet</span></span>
+<span data-ttu-id="c7e66-157">toodissociate hello **NSG front-endu** NSG z hello **front-endu** podsíť, dokončení hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="c7e66-157">toodissociate hello **NSG-FrontEnd** NSG from hello **FrontEnd** subnet, complete hello following steps:</span></span>
 
-1. <span data-ttu-id="10ef5-158">Spusťte následující příkaz pro načtení existující virtuální síť a uložte ho do proměnné:</span><span class="sxs-lookup"><span data-stu-id="10ef5-158">Run the following command to retrieve the existing VNet and store it in a variable:</span></span>
+1. <span data-ttu-id="c7e66-158">Spusťte následující příkaz tooretrieve hello existující virtuální síť hello a uložit jako proměnnou:</span><span class="sxs-lookup"><span data-stu-id="c7e66-158">Run hello following command tooretrieve hello existing VNet and store it in a variable:</span></span>
 
     ```powershell
     $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName RG-NSG -Name TestVNet
     ```
 
-2. <span data-ttu-id="10ef5-159">Spusťte následující příkaz pro načtení **front-endu** podsítě a uložte ho do proměnné:</span><span class="sxs-lookup"><span data-stu-id="10ef5-159">Run the following command to retrieve the **FrontEnd** subnet and store it in a variable:</span></span>
+2. <span data-ttu-id="c7e66-159">Spuštění hello následující příkaz tooretrieve hello **front-endu** podsítě a uložte ho do proměnné:</span><span class="sxs-lookup"><span data-stu-id="c7e66-159">Run hello following command tooretrieve hello **FrontEnd** subnet and store it in a variable:</span></span>
 
     ```powershell
     $subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name FrontEnd
     ```
  
-3. <span data-ttu-id="10ef5-160">Nastavte **skupinu zabezpečení sítě** vlastnost **podsíť** proměnnou **$null** tak, že zadáte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="10ef5-160">Set the **NetworkSecurityGroup** property of the **subnet** variable to **$null** by entering the following command:</span></span>
+3. <span data-ttu-id="c7e66-160">Sada hello **skupinu zabezpečení sítě** vlastnost hello **podsíť** proměnné příliš**$null** zadáním hello následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="c7e66-160">Set hello **NetworkSecurityGroup** property of hello **subnet** variable too**$null** by entering hello following command:</span></span>
 
     ```powershell
     $subnet.NetworkSecurityGroup = $null
     ```
 
-4. <span data-ttu-id="10ef5-161">Pokud chcete uložit změny provedené v podsíti, spusťte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="10ef5-161">To save the changes made to the subnet, run the following command:</span></span>
+4. <span data-ttu-id="c7e66-161">toosave hello změn toohello podsíť, spusťte následující příkaz hello:</span><span class="sxs-lookup"><span data-stu-id="c7e66-161">toosave hello changes made toohello subnet, run hello following command:</span></span>
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
     ```
 
-    <span data-ttu-id="10ef5-162">Očekávaný výstup zobrazuje pouze vlastnosti typu **front-endu** podsítě.</span><span class="sxs-lookup"><span data-stu-id="10ef5-162">Expected output showing only the properties of the **FrontEnd** subnet.</span></span> <span data-ttu-id="10ef5-163">Všimněte si, není k dispozici vlastnost pro **skupinu zabezpečení sítě**:</span><span class="sxs-lookup"><span data-stu-id="10ef5-163">Notice there isn't a property for **NetworkSecurityGroup**:</span></span>
+    <span data-ttu-id="c7e66-162">Očekávaný výstup zobrazuje pouze hello vlastnosti hello **front-endu** podsítě.</span><span class="sxs-lookup"><span data-stu-id="c7e66-162">Expected output showing only hello properties of hello **FrontEnd** subnet.</span></span> <span data-ttu-id="c7e66-163">Všimněte si, není k dispozici vlastnost pro **skupinu zabezpečení sítě**:</span><span class="sxs-lookup"><span data-stu-id="c7e66-163">Notice there isn't a property for **NetworkSecurityGroup**:</span></span>
    
             ...
             Subnets           : [
@@ -451,40 +451,40 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
                                     ...
                                 ]
 
-### <a name="associate-an-nsg-to-a-subnet"></a><span data-ttu-id="10ef5-164">Přidružení skupiny NSG k podsíti</span><span class="sxs-lookup"><span data-stu-id="10ef5-164">Associate an NSG to a subnet</span></span>
-<span data-ttu-id="10ef5-165">Pro přidružení **NSG front-endu** NSG k **FronEnd** podsíť znovu, proveďte následující kroky:</span><span class="sxs-lookup"><span data-stu-id="10ef5-165">To associate the **NSG-FrontEnd** NSG to the **FronEnd** subnet again, complete the following steps:</span></span>
+### <a name="associate-an-nsg-tooa-subnet"></a><span data-ttu-id="c7e66-164">Přidružení podsíť tooa NSG</span><span class="sxs-lookup"><span data-stu-id="c7e66-164">Associate an NSG tooa subnet</span></span>
+<span data-ttu-id="c7e66-165">tooassociate hello **NSG front-endu** NSG toohello **FronEnd** znovu podsíť, dokončení hello následující kroky:</span><span class="sxs-lookup"><span data-stu-id="c7e66-165">tooassociate hello **NSG-FrontEnd** NSG toohello **FronEnd** subnet again, complete hello following steps:</span></span>
 
-1. <span data-ttu-id="10ef5-166">Spusťte následující příkaz pro načtení existující virtuální síť a uložte ho do proměnné:</span><span class="sxs-lookup"><span data-stu-id="10ef5-166">Run the following command to retrieve the existing VNet and store it in a variable:</span></span>
+1. <span data-ttu-id="c7e66-166">Spusťte následující příkaz tooretrieve hello existující virtuální síť hello a uložit jako proměnnou:</span><span class="sxs-lookup"><span data-stu-id="c7e66-166">Run hello following command tooretrieve hello existing VNet and store it in a variable:</span></span>
 
     ```powershell
     $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName RG-NSG -Name TestVNet
     ```
 
-2. <span data-ttu-id="10ef5-167">Spusťte následující příkaz pro načtení **front-endu** podsítě a uložte ho do proměnné:</span><span class="sxs-lookup"><span data-stu-id="10ef5-167">Run the following command to retrieve the **FrontEnd** subnet and store it in a variable:</span></span>
+2. <span data-ttu-id="c7e66-167">Spuštění hello následující příkaz tooretrieve hello **front-endu** podsítě a uložte ho do proměnné:</span><span class="sxs-lookup"><span data-stu-id="c7e66-167">Run hello following command tooretrieve hello **FrontEnd** subnet and store it in a variable:</span></span>
 
     ```powershell
     $subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name FrontEnd
     ```
  
-3. <span data-ttu-id="10ef5-168">Spusťte následující příkaz pro načtení existující skupina NSG a uložte ho do proměnné:</span><span class="sxs-lookup"><span data-stu-id="10ef5-168">Run the following command to retrieve the existing NSG and store it in a variable:</span></span>
+3. <span data-ttu-id="c7e66-168">Spusťte následující příkaz tooretrieve hello existující skupina NSG hello a uložit jako proměnnou:</span><span class="sxs-lookup"><span data-stu-id="c7e66-168">Run hello following command tooretrieve hello existing NSG and store it in a variable:</span></span>
 
     ```powershell
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-4. <span data-ttu-id="10ef5-169">Nastavte **skupinu zabezpečení sítě** vlastnost **podsíť** proměnnou **$null** spuštěním následujícího příkazu:</span><span class="sxs-lookup"><span data-stu-id="10ef5-169">Set the **NetworkSecurityGroup** property of the **subnet** variable to **$null** by running the following command:</span></span>
+4. <span data-ttu-id="c7e66-169">Sada hello **skupinu zabezpečení sítě** vlastnost hello **podsíť** proměnné příliš**$null** spuštěním hello následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="c7e66-169">Set hello **NetworkSecurityGroup** property of hello **subnet** variable too**$null** by running hello following command:</span></span>
 
     ```powershell
     $subnet.NetworkSecurityGroup = $nsg
     ```
 
-5. <span data-ttu-id="10ef5-170">Pokud chcete uložit změny provedené v podsíti, spusťte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="10ef5-170">To save the changes made to the subnet, run the following command:</span></span>
+5. <span data-ttu-id="c7e66-170">toosave hello změn toohello podsíť, spusťte následující příkaz hello:</span><span class="sxs-lookup"><span data-stu-id="c7e66-170">toosave hello changes made toohello subnet, run hello following command:</span></span>
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
     ```
 
-    <span data-ttu-id="10ef5-171">Očekávaný výstup zobrazuje jenom **skupinu zabezpečení sítě** vlastnost **front-endu** podsítě:</span><span class="sxs-lookup"><span data-stu-id="10ef5-171">Expected output showing only the **NetworkSecurityGroup** property of the **FrontEnd** subnet:</span></span>
+    <span data-ttu-id="c7e66-171">Očekávaný výstup zobrazuje pouze hello **skupinu zabezpečení sítě** vlastnost hello **front-endu** podsítě:</span><span class="sxs-lookup"><span data-stu-id="c7e66-171">Expected output showing only hello **NetworkSecurityGroup** property of hello **FrontEnd** subnet:</span></span>
    
         ...
         "NetworkSecurityGroup": {
@@ -496,22 +496,22 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
                                 }
         ...
 
-## <a name="delete-an-nsg"></a><span data-ttu-id="10ef5-172">Odstranit skupinu NSG</span><span class="sxs-lookup"><span data-stu-id="10ef5-172">Delete an NSG</span></span>
-<span data-ttu-id="10ef5-173">Skupinu NSG můžete odstranit, pouze pokud má není přidružen k žádnému prostředku.</span><span class="sxs-lookup"><span data-stu-id="10ef5-173">You can only delete an NSG if it's not associated to any resource.</span></span> <span data-ttu-id="10ef5-174">Pokud chcete odstranit skupinu NSG, postupujte podle následujících kroků.</span><span class="sxs-lookup"><span data-stu-id="10ef5-174">To delete an NSG, follow the steps below.</span></span>
+## <a name="delete-an-nsg"></a><span data-ttu-id="c7e66-172">Odstranit skupinu NSG</span><span class="sxs-lookup"><span data-stu-id="c7e66-172">Delete an NSG</span></span>
+<span data-ttu-id="c7e66-173">Skupinu NSG můžete odstranit, pouze pokud je tooany prostředku není přiřazen.</span><span class="sxs-lookup"><span data-stu-id="c7e66-173">You can only delete an NSG if it's not associated tooany resource.</span></span> <span data-ttu-id="c7e66-174">toodelete skupina NSG, postupujte podle následujících kroků hello.</span><span class="sxs-lookup"><span data-stu-id="c7e66-174">toodelete an NSG, follow hello steps below.</span></span>
 
-1. <span data-ttu-id="10ef5-175">Chcete-li zkontrolovat prostředky přidružené k skupinu NSG, spusťte `azure network nsg show` jak je znázorněno v [přidružení skupiny Nsg zobrazení](#View-NSGs-associations).</span><span class="sxs-lookup"><span data-stu-id="10ef5-175">To check the resources associated to an NSG, run the `azure network nsg show` as shown in [View NSGs associations](#View-NSGs-associations).</span></span>
-2. <span data-ttu-id="10ef5-176">Pokud skupina NSG je přidružen k žádné síťové adaptéry, spusťte `azure network nic set` jak je znázorněno v [zrušit přidružení skupiny NSG z síťový adaptér](#Dissociate-an-NSG-from-a-NIC) pro každý síťový adaptér.</span><span class="sxs-lookup"><span data-stu-id="10ef5-176">If the NSG is associated to any NICs, run the `azure network nic set` as shown in [Dissociate an NSG from a NIC](#Dissociate-an-NSG-from-a-NIC) for each NIC.</span></span> 
-3. <span data-ttu-id="10ef5-177">Pokud je přidružen k žádné podsíti NSG, spusťte `azure network vnet subnet set` jak je znázorněno v [zrušit přidružení skupiny NSG z podsítě](#Dissociate-an-NSG-from-a-subnet) pro každou podsíť.</span><span class="sxs-lookup"><span data-stu-id="10ef5-177">If the NSG is associated to any subnet, run the `azure network vnet subnet set` as shown in [Dissociate an NSG from a subnet](#Dissociate-an-NSG-from-a-subnet) for each subnet.</span></span>
-4. <span data-ttu-id="10ef5-178">Pokud chcete odstranit NSG, spusťte následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="10ef5-178">To delete the NSG, run the following command:</span></span>
+1. <span data-ttu-id="c7e66-175">toocheck hello prostředky přidružené tooan NSG, spusťte hello `azure network nsg show` jak je znázorněno v [přidružení skupiny Nsg zobrazení](#View-NSGs-associations).</span><span class="sxs-lookup"><span data-stu-id="c7e66-175">toocheck hello resources associated tooan NSG, run hello `azure network nsg show` as shown in [View NSGs associations](#View-NSGs-associations).</span></span>
+2. <span data-ttu-id="c7e66-176">Pokud hello NSG přidružená tooany síťové adaptéry, spusťte hello `azure network nic set` jak je znázorněno v [zrušit přidružení skupiny NSG z síťový adaptér](#Dissociate-an-NSG-from-a-NIC) pro každý síťový adaptér.</span><span class="sxs-lookup"><span data-stu-id="c7e66-176">If hello NSG is associated tooany NICs, run hello `azure network nic set` as shown in [Dissociate an NSG from a NIC](#Dissociate-an-NSG-from-a-NIC) for each NIC.</span></span> 
+3. <span data-ttu-id="c7e66-177">Pokud hello NSG přidružená tooany podsíť, spusťte hello `azure network vnet subnet set` jak je znázorněno v [zrušit přidružení skupiny NSG z podsítě](#Dissociate-an-NSG-from-a-subnet) pro každou podsíť.</span><span class="sxs-lookup"><span data-stu-id="c7e66-177">If hello NSG is associated tooany subnet, run hello `azure network vnet subnet set` as shown in [Dissociate an NSG from a subnet](#Dissociate-an-NSG-from-a-subnet) for each subnet.</span></span>
+4. <span data-ttu-id="c7e66-178">hello toodelete NSG, spusťte následující příkaz hello:</span><span class="sxs-lookup"><span data-stu-id="c7e66-178">toodelete hello NSG, run hello following command:</span></span>
 
     ```powershell
     Remove-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd -Force
     ```
    
    > [!NOTE]
-   > <span data-ttu-id="10ef5-179">`-Force` Parametr zajišťuje nemusíte potvrďte odstranění.</span><span class="sxs-lookup"><span data-stu-id="10ef5-179">The `-Force` parameter ensures you don't need to confirm the deletion.</span></span>
+   > <span data-ttu-id="c7e66-179">Hello `-Force` parametr zajišťuje nepotřebujete tooconfirm hello odstranění.</span><span class="sxs-lookup"><span data-stu-id="c7e66-179">hello `-Force` parameter ensures you don't need tooconfirm hello deletion.</span></span>
    > 
 
-## <a name="next-steps"></a><span data-ttu-id="10ef5-180">Další kroky</span><span class="sxs-lookup"><span data-stu-id="10ef5-180">Next steps</span></span>
-* <span data-ttu-id="10ef5-181">[Povolit protokolování](virtual-network-nsg-manage-log.md) pro skupiny Nsg.</span><span class="sxs-lookup"><span data-stu-id="10ef5-181">[Enable logging](virtual-network-nsg-manage-log.md) for NSGs.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="c7e66-180">Další kroky</span><span class="sxs-lookup"><span data-stu-id="c7e66-180">Next steps</span></span>
+* <span data-ttu-id="c7e66-181">[Povolit protokolování](virtual-network-nsg-manage-log.md) pro skupiny Nsg.</span><span class="sxs-lookup"><span data-stu-id="c7e66-181">[Enable logging](virtual-network-nsg-manage-log.md) for NSGs.</span></span>
 
