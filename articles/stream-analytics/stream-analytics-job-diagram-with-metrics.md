@@ -1,6 +1,6 @@
 ---
-title: "Azure Stream Analytics řízené daty ladění pomocí úlohy diagram | Microsoft Docs"
-description: "Řešení potíží úlohu služby Stream Analytics pomocí úlohy diagram a metriky."
+title: "AAA Azure Stream Analytics řízené daty ladění pomocí hello úlohy diagram | Microsoft Docs"
+description: "Řešení potíží úlohu služby Stream Analytics pomocí diagram hello úlohy a metriky."
 keywords: 
 documentationcenter: 
 services: stream-analytics
@@ -15,60 +15,60 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 05/01/2017
 ms.author: jeffstok
-ms.openlocfilehash: 4e5949232e8377b7697eaebf96eacdc31c4f5422
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 1af884d485bebb06b034da01a13f7f8240516571
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="data-driven-debugging-by-using-the-job-diagram"></a>Řízené daty ladění pomocí diagram úlohy
+# <a name="data-driven-debugging-by-using-hello-job-diagram"></a>Řízené daty ladění pomocí hello úlohy diagram
 
-Diagram úlohy na **monitorování** okno na portálu Azure můžete vizualizovat vaše úlohy kanálu. Zobrazuje vstupy, výstupy a kroky dotazu. Diagram úlohy můžete použít k prozkoumání metriky pro každý krok, abyste rychleji izolovat zdroj problému při odstraňování potíží.
+diagram Hello úlohy na hello **monitorování** okno v hello portálu Azure můžete vizualizovat vaše úlohy kanálu. Zobrazuje vstupy, výstupy a kroky dotazu. Hello úlohy diagram tooexamine hello metriky můžete použít pro každý krok, toomore rychle izolovat hello zdroj problému při odstraňování potíží.
 
-## <a name="using-the-job-diagram"></a>Pomocí úlohy diagram
+## <a name="using-hello-job-diagram"></a>Pomocí úlohy diagram hello
 
-Na portálu Azure při v úloze Stream Analytics, v části **podporu + Poradce při potížích s**, vyberte **úlohy diagram**:
+V hello portálu Azure při v úloze Stream Analytics, v části **podporu + Poradce při potížích s**, vyberte **úlohy diagram**:
 
 ![Diagram úlohy s metriky - umístění](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
 
-Vyberte každý dotaz kroku najdete v části odpovídající v podokně úpravy dotazu. V dolním podokně na stránce se zobrazí metriky graf kroku.
+V dotazu úpravy podokně vyberte každý krok toosee hello odpovídající oddílů dotazu. Metriky graf pro krok hello se zobrazí v dolním podokně na stránce hello.
 
 ![Diagram úlohy s metriky – základní úlohy](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-2.png)
 
-Pokud chcete zobrazit oddíly vstupu Azure Event Hubs, vyberte **...** Zobrazí se kontextová nabídka. Také můžete zobrazit vstupních fúzí.
+Vyberte toosee hello oddíly hello vstupu Azure Event Hubs, **...** Zobrazí se kontextová nabídka. Také můžete zobrazit vstupních fúzí hello.
 
 ![Diagram úlohy s metriky - rozbalte oddíl](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-3.png)
 
-Se zobrazí metriky graf pro pouze jeden oddíl, vyberte uzel oddílu. Metriky se zobrazí v dolní části stránky.
+Graf metriky toosee hello pro pouze jeden oddíl, vyberte hello oddílu uzlu. metriky Hello se zobrazí v dolní části hello hello stránky.
 
 ![Diagram úlohy s metriky - další metriky](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-4.png)
 
-Pokud chcete zobrazit graf metriky pro spojení, vyberte uzel fúze. Následující tabulka ukazuje, že žádné události byly zrušené nebo upravena.
+Graf toosee hello metriky pro fúze, vyberte hello fúze uzlu. Hello následující graf ukazuje, že žádné události byly zrušené nebo upravena.
 
 ![Diagram úlohy s metriky - mřížky](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-5.png)
 
-Pokud chcete zobrazit podrobnosti hodnota metriky a času, přejděte na grafu.
+Podrobnosti o hello toosee hello hodnota metriky a času, bod toohello grafu.
 
 ![Úloha diagram s metriky – ukazatele](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-6.png)
 
 ## <a name="troubleshoot-by-using-metrics"></a>Řešení potíží pomocí metrik
 
-**QueryLastProcessedTime** Metrika udává, kdy konkrétní krok přijal data. Pohledem na topologii, můžete použít pracovat zpátky z výstupu procesoru zobrazíte, který krok nepřijímá data. Pokud krok není získávání dat, přejděte ke kroku dotazu před ním. Zkontrolujte, jestli má časový interval v předchozím kroku dotazu, a pokud uplynutí dostatek času pro něj na výstupní data. (Poznámka: Tento čas k hodinu jsou přichytávány systému windows.)
+Hello **QueryLastProcessedTime** Metrika udává, kdy konkrétní krok přijal data. Prohlížením hello topologie, je možné pracovat zpátky z toosee procesoru výstup hello, který krok nepřijímá data. Pokud krok není získávání dat, přejděte toohello dotazu krok těsně před. Zkontrolujte, jestli hello předchozí krok dotazu má časový interval, a pokud uplynutí dostatek času pro něj toooutput data. (Poznámka: Tento čas systému windows jsou zaseknutá toohello hodinu.)
  
-Pokud v předchozím kroku dotazu je vstupní procesoru, využít vstupní metriky odpovědí na tyto cílové otázky. Můžou pomoct určit, zda je úloha získání dat z jeho zadávání. Pokud je dotaz dělený, zkontrolujte všechny oddíly.
+Pokud hello předchozí krok dotazu vstupní procesoru, cílem použití hello vstupní metriky toohelp odpovědí hello následující otázky. Můžou pomoct určit, zda je úloha získání dat z jeho zadávání. Pokud se dotaz hello je rozdělena na oddíly, zkontrolujte každý oddíl.
  
 ### <a name="how-much-data-is-being-read"></a>Kolik dat se čte?
 
-*   **InputEventsSourcesTotal** je počet jednotek dat pro čtení. Například počet objektů BLOB.
-*   **InputEventsTotal** je počet událostí pro čtení. Tato metrika je dostupná pro jednotlivé oddíly.
-*   **InputEventsInBytesTotal** je počet přečtených bajtů.
+*   **InputEventsSourcesTotal** je hello počet jednotek dat pro čtení. Například hello počet objektů BLOB.
+*   **InputEventsTotal** je hello počet událostí pro čtení. Tato metrika je dostupná pro jednotlivé oddíly.
+*   **InputEventsInBytesTotal** je hello počet přečtených bajtů.
 *   **InputEventsLastArrivalTime** je aktualizováno každých přijatou událost čas zařazených do fronty.
  
 ### <a name="is-time-moving-forward-if-actual-events-are-read-punctuation-might-not-be-issued"></a>Je čas postoupíte? Pokud se čtou skutečné události, nemusí být vydaný interpunkce.
 
-*   **InputEventsLastPunctuationTime** udává, kdy došlo k přerušení pro zajištění dopředného běhu času. Pokud není objeví interpunkční znaménka, může zablokování datový tok.
+*   **InputEventsLastPunctuationTime** označuje interpunkce byl vydán při přesouvání čas tookeep dál. Pokud není objeví interpunkční znaménka, může zablokování datový tok.
  
-### <a name="are-there-any-errors-in-the-input"></a>Dochází k chybám ve vstupu?
+### <a name="are-there-any-errors-in-hello-input"></a>Jsou všechny chyby hello vstup?
 
 *   **InputEventsEventDataNullTotal** je počet událostí, které mají hodnotu null data.
 *   **InputEventsSerializerErrorsTotal** je počet událostí, které nelze deserializovat správně.
@@ -76,20 +76,20 @@ Pokud v předchozím kroku dotazu je vstupní procesoru, využít vstupní metri
  
 ### <a name="are-events-being-dropped-or-adjusted"></a>Jsou vyřazeny nebo upravena události?
 
-*   **InputEventsEarlyTotal** je počet událostí, které mají časové razítko aplikace před horní meze.
-*   **InputEventsLateTotal** je počet událostí, které mají časové razítko aplikace po horní meze.
-*   **InputEventsDroppedBeforeApplicationStartTimeTotal** je číslo události vyřazen dříve, než čas spuštění úlohy.
+*   **InputEventsEarlyTotal** je hello počet událostí, které mají časové razítko aplikace před hello horní meze.
+*   **InputEventsLateTotal** je hello počet událostí, které mají časové razítko aplikace po hello horní meze.
+*   **InputEventsDroppedBeforeApplicationStartTimeTotal** je číslo události hello vyřazen dříve, než čas spuštění úlohy hello.
  
 ### <a name="are-we-falling-behind-in-reading-data"></a>Jsme padají při čtení dat?
 
-*   **InputEventsSourcesBackloggedTotal** zjistíte, kolik další zprávy nutné čtení pro službu Event Hubs a Azure IoT Hub vstupy.
+*   **InputEventsSourcesBackloggedTotal** zjistíte, kolik další zprávy nutné toobe čtení pro službu Event Hubs a Azure IoT Hub vstupy.
 
 
 ## <a name="get-help"></a>Podpora
 Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další kroky
-* [Úvod do služby Stream Analytics](stream-analytics-introduction.md)
+* [Úvod tooStream Analytics](stream-analytics-introduction.md)
 * [Začínáme s Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování úlohy Stream Analytics](stream-analytics-scale-jobs.md)
 * [Referenční příručka jazyka dotazů Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx)

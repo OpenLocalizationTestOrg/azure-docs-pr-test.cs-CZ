@@ -5,7 +5,7 @@
 ## [Nejčastější dotazy](faq.md)
 
 # Začínáme
-## [Vytvoření virtuálního počítače s Linuxem pomocí portálu](createportal.md)
+## [Vytvoření virtuálního počítače s Linuxem pomocí portálu hello](createportal.md)
 ## [Instalace rozhraní příkazového řádku Azure](../../../cli-install-nodejs.md)
 ## [Vytvoření klíčů SSH](../mac-create-ssh-keys.md)
 
@@ -16,21 +16,21 @@
 ### [Použití Vzdálené plochy s virtuálním počítačem s Linuxem](remote-desktop.md)
 ### [Správa rozšíření virtuálních počítačů](manage-extensions.md)
 ### [Správa virtuálních počítačů pomocí sady Visual Studio](manage-visual-studio.md)
-### [Monitorování virtuálních počítačů pomocí diagnostického rozšíření virtuálních počítačů](../diagnostic-extension.md)
-### [Monitorování virtuálních počítačů pomocí diagnostického rozšíření virtuálních počítačů verze v2.x](diagnostic-extension-v2.md)
+### [Monitorování virtuálních počítačů pomocí hello diagnostiky rozšíření virtuálního počítače](../diagnostic-extension.md)
+### [Monitorování virtuálních počítačů pomocí v2.x hello diagnostiky rozšíření virtuálního počítače](diagnostic-extension-v2.md)
 ### [Vložení vlastních dat](inject-custom-data.md)
 ### [Resetování Linuxových hesel nebo klíčů, opravení SSH a kontrola disků](reset-access.md)
 ### [Údržba](planned-maintenance-schedule.md)
-### [Vytvoření hostitele Docker pomocí rozhraní příkazového řádku](cli-use-docker.md)
-### [Vytvoření hostitele Docker pomocí portálu](portal-use-docker.md)
-### [Jak použít Docker se Swarmem](../../virtual-machines-linux-docker-swarm.md)
+### [Vytvořit hostitele Docker pomocí hello rozhraní příkazového řádku](cli-use-docker.md)
+### [Vytvořit hostitele Docker pomocí portálu hello](portal-use-docker.md)
+### [Jak toouse Docker s Swarm](../../virtual-machines-linux-docker-swarm.md)
 
 ## Použití úložiště
 ### [Připojení datového disku](attach-disk.md)
 ### [Odpojení datového disku](detach-disk.md)
 
 ## Síť
-### [Otevření portů k virtuálnímu počítači](setup-endpoints.md)
+### [Otevřete porty tooyour virtuálních počítačů](setup-endpoints.md)
 ### [Propojení virtuálních počítačů pomocí virtuální sítě nebo cloudové služby](connect-vms.md)
 
 ## Nasazení imagí
@@ -43,7 +43,7 @@
 ### MySQL a MariaDB
 #### [Kurz clusteru MariaDB](mariadb-mysql-cluster.md)
 #### [Instalace MySQL na virtuálním počítači OpenSUSE](mysql-on-opensuse.md)
-#### [Použití sad s vyrovnáváním zatížení ke clusterizaci MySQL](mysql-cluster.md)
+#### [Pomocí vyrovnávání zatížení sítě nastaví tooclusterize MySQL](mysql-cluster.md)
 #### [Optimalizace výkonu MySQL](optimize-mysql.md)
 
 ## Spouštění aplikací
@@ -52,8 +52,8 @@
 ### [Zásobník LAMP](lamp-script.md)
 ### [Tomcat](setup-tomcat.md)
 ### [Webová aplikace pomocí sady Visual Studio](web-app-visual-studio.md)
-### [Cluster s přímým přístupem do paměti vzdáleného počítače (RDMA) pro spouštění aplikací MPI](rdma-cluster.md)
-### [Jak používat podřízený plugin Azure s Hudson CI](../../virtual-machines-azure-slave-plugin-for-hudson.md)
+### [Aplikací MPI toorun clusteru RDMA](rdma-cluster.md)
+### [Jak toouse hello Azure podřízený modul plug-in s Hudsonem CI](../../virtual-machines-azure-slave-plugin-for-hudson.md)
 ### Sada HPC Pack
 #### [Vytvoření clusteru pro linuxové úlohy](hpcpack-cluster-powershell-script.md)
 #### [Správa clusteru s linuxovými uzly](hpcpack-cluster.md)
@@ -64,7 +64,7 @@
 ## Řešení potíží
 ### [Nasazení virtuálních počítačů](troubleshoot-deployment-new-vm.md)
 ### [Restartování nebo změna velikosti virtuálního počítače](restart-resize-error-troubleshooting.md)
-### [Připojení virtuálního pevného disku pro řešení potíží s virtuálním počítačem](troubleshoot-recovery-disks-portal.md)
+### [Připojit virtuální pevný disk tootroubleshooting virtuálních počítačů](troubleshoot-recovery-disks-portal.md)
 
 # Referenční informace
 ## [PowerShell](/powershell/azure/overview)

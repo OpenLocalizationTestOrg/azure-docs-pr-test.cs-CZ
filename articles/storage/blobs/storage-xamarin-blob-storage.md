@@ -1,6 +1,6 @@
 ---
-title: "Používání úložiště Blob z Xamarin | Microsoft Docs"
-description: "Klientská knihovna pro úložiště Azure pro Xamarin umožňuje vývojářům vytvářet iOS, Android a aplikací pro Windows Store s jejich nativní uživatelská rozhraní. Tento kurz ukazuje, jak vytvořit aplikaci, která používá Azure Blob storage pomocí Xamarin."
+title: "aaaHow toouse úložiště Blob z Xamarin | Microsoft Docs"
+description: "Hello Klientská knihovna pro úložiště Azure pro Xamarin umožňuje vývojářům toocreate iOS, Android a aplikací pro Windows Store s jejich nativní uživatelská rozhraní. Tento kurz ukazuje, jak toouse Xamarin toocreate aplikaci, která používá úložiště objektů Blob v Azure."
 services: storage
 documentationcenter: xamarin
 author: michaelhauss
@@ -14,36 +14,36 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
-ms.openlocfilehash: 5ff4d86082c03dcd7098743a984a97aa70232d1d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 688484fc560b5c89ed1692f5cbf5713aa8fc90a4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-blob-storage-from-xamarin"></a>Používání úložiště Blob z Xamarin
+# <a name="how-toouse-blob-storage-from-xamarin"></a>Jak toouse úložiště Blob z Xamarin
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
 
 ## <a name="overview"></a>Přehled
-Codebase – Xamarin umožňuje vývojářům používat sdílené C# k vytvoření iOS, Android a aplikací pro Windows Store s jejich nativní uživatelského rozhraní. V tomto kurzu se dozvíte, jak používat úložiště objektů Blob Azure pomocí aplikace Xamarin. Pokud vás zajímají další informace o službě Azure Storage, než začnete kód, najdete [Úvod do Microsoft Azure Storage](../common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Xamarin umožňuje vývojářům toouse sdílené C# codebase toocreate iOS, Android a aplikací pro Windows Store s jejich nativní uživatelská rozhraní. Tento kurz ukazuje, jak toouse úložiště objektů Blob v Azure pomocí aplikace Xamarin. Pokud chcete toolearn Další informace o Azure Storage, než začnete hello kód, najdete v části [tooMicrosoft Úvod Azure Storage](../common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 [!INCLUDE [storage-mobile-authentication-guidance](../../../includes/storage-mobile-authentication-guidance.md)]
 
 ## <a name="create-a-new-xamarin-application"></a>Vytvoření nové aplikace Xamarin
-V tomto kurzu jsme budete vytvářet aplikace, která je cílena, Android, iOS a Windows. Tato aplikace bude jednoduše vytvořit kontejner a nahrát objekt blob do tohoto kontejneru. Budeme používat Visual Studio v systému Windows, ale stejné learnings lze použít při vytváření aplikace pomocí Xamarin Studio v systému macOS.
+V tomto kurzu jsme budete vytvářet aplikace, která je cílena, Android, iOS a Windows. Tato aplikace bude jednoduše vytvořit kontejner a nahrát objekt blob do tohoto kontejneru. Budeme v systému Windows, ale hello stejné learnings lze použít při vytváření aplikace pomocí Xamarin Studio v systému macOS používat Visual Studio.
 
-Postupujte podle těchto kroků můžete vytvořit aplikaci:
+Postupujte podle těchto kroků toocreate aplikace:
 
 1. Pokud jste tak ještě neučinili, stáhněte a nainstalujte [Xamarin pro Visual Studio](https://www.xamarin.com/download).
 2. Otevřete Visual Studio a vytvořit prázdnou aplikaci (nativní přenosné): **soubor > Nový > Projekt > napříč platformami > prázdné App(Native Portable)**.
-3. Klikněte pravým tlačítkem na řešení v podokně Průzkumník řešení a vyberte **spravovat balíčky NuGet pro řešení**. Vyhledejte **WindowsAzure.Storage** a nainstalujte nejnovější stabilní verze na všechny projekty v řešení.
+3. Klikněte pravým tlačítkem na řešení v podokně Průzkumník řešení hello a vyberte **spravovat balíčky NuGet pro řešení**. Vyhledejte **WindowsAzure.Storage** a nainstalujte hello nejnovější stabilní verze tooall projekty v řešení.
 4. Sestavte a spusťte projekt.
 
-Teď byste měli mít aplikaci, která umožňuje klikněte na tlačítko, které zvýší čítače.
+Teď byste měli mít aplikaci, která vám umožní tooclick tlačítko, které zvýší čítače.
 
 ## <a name="create-container-and-upload-blob"></a>Vytvoření kontejneru a nahrát objekt blob
-Části vašeho `(Portable)` projektu přidáte kód, který `MyClass.cs`. Tento kód vytvoří kontejner a odešle objekt blob do tohoto kontejneru. `MyClass.cs`by měl vypadat asi takto:
+Části vašeho `(Portable)` projektu přidáte nějaký kód příliš`MyClass.cs`. Tento kód vytvoří kontejner a odešle objekt blob do tohoto kontejneru. `MyClass.cs`by mělo vypadat jako následující hello:
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;
@@ -63,28 +63,28 @@ namespace XamarinApp
             // Retrieve storage account from connection string.
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here");
 
-            // Create the blob client.
+            // Create hello blob client.
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-            // Retrieve reference to a previously created container.
+            // Retrieve reference tooa previously created container.
             CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-            // Create the container if it doesn't already exist.
+            // Create hello container if it doesn't already exist.
             await container.CreateIfNotExistsAsync();
 
-            // Retrieve reference to a blob named "myblob".
+            // Retrieve reference tooa blob named "myblob".
             CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
 
-            // Create the "myblob" blob with the text "Hello, world!"
+            // Create hello "myblob" blob with hello text "Hello, world!"
             await blockBlob.UploadTextAsync("Hello, world!");
         }
     }
 }
 ```
 
-Ujistěte se, že "your_account_name_here" a "your_account_key_here" nahraďte skutečný název svého účtu a klíč účtu. 
+Ujistěte se, že tooreplace "your_account_name_here" a "your_account_key_here" s název skutečné účtu a klíč účtu. 
 
-Systémem iOS, Android a Windows Phone, které mají projekty všechny odkazy na přenosné projektu – což znamená, že všechny sdílené kódu můžete napsat v jednom umístění a použít napříč všemi svými projekty. Pro každý projekt, chcete-li začít využívat můžete nyní přidejte následující řádek kódu:`MyClass.performBlobOperation()`
+Vaše iOS, Android a Windows Phone projekty všechny přenosné projekt tooyour odkazy – což znamená, že všechny sdílené kódu můžete napsat v jednom umístění a použít napříč všemi svými projekty. Nyní můžete přidat následující řádek kódu tooeach projektu toostart díky hello:`MyClass.performBlobOperation()`
 
 ### <a name="xamarinappdroid--mainactivitycs"></a>XamarinApp.Droid > MainActivity.cs
 
@@ -104,11 +104,11 @@ namespace XamarinApp.Droid
         {
             base.OnCreate (bundle);
 
-            // Set our view from the "main" layout resource
+            // Set our view from hello "main" layout resource
             SetContentView (Resource.Layout.Main);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
+            // Get our button from hello layout resource,
+            // and attach an event tooit
             Button button = FindViewById<Button> (Resource.Id.myButton);
 
             button.Click += delegate {
@@ -149,7 +149,7 @@ namespace XamarinApp.iOS
             public override async void ViewDidLoad ()
             {
                 base.ViewDidLoad ();
-                // Perform any additional setup after loading the view, typically from a nib.
+                // Perform any additional setup after loading hello view, typically from a nib.
                 Button.AccessibilityIdentifier = "myButton";
                 Button.TouchUpInside += delegate {
                     var title = string.Format ("{0} clicks!", count++);
@@ -175,12 +175,12 @@ namespace XamarinApp.iOS
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
+// hello Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
 namespace XamarinApp.WinPhone
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// An empty page that can be used on its own or navigated toowithin a Frame.
     /// </summary>
     public sealed partial class MainPage : Page
     {
@@ -194,10 +194,10 @@ namespace XamarinApp.WinPhone
         }
 
         /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
+        /// Invoked when this page is about toobe displayed in a Frame.
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
+        /// This parameter is typically used tooconfigure hello page.</param>
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             int count = 1;
@@ -210,18 +210,18 @@ namespace XamarinApp.WinPhone
             }
 
             /// <summary>
-            /// Invoked when this page is about to be displayed in a Frame.
+            /// Invoked when this page is about toobe displayed in a Frame.
             /// </summary>
             /// <param name="e">Event data that describes how this page was reached.
-            /// This parameter is typically used to configure the page.</param>
+            /// This parameter is typically used tooconfigure hello page.</param>
             protected override async void OnNavigatedTo(NavigationEventArgs e)
             {
                 // TODO: Prepare page for display here.
 
                 // TODO: If your application contains multiple pages, ensure that you are
-                // handling the hardware Back button by registering for the
+                // handling hello hardware Back button by registering for the
                 // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-                // If you are using the NavigationHelper provided by some templates,
+                // If you are using hello NavigationHelper provided by some templates,
                 // this event is handled for you.
                 Button.Click += delegate {
                     var title = string.Format("{0} clicks!", count++);
@@ -235,13 +235,13 @@ namespace XamarinApp.WinPhone
 }
 ```
 
-## <a name="run-the-application"></a>Spuštění aplikace
-Teď můžete spustit tuto aplikaci v emulátoru Android nebo Windows Phone. Můžete taky spustit tuto aplikaci v emulátoru iOS, ale to bude vyžadovat macu. Pro konkrétní pokyny o tom, jak to provést, přečtěte si dokumentaci pro [připojení Visual Studio pro Mac](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/)
+## <a name="run-hello-application"></a>Spuštění aplikace hello
+Teď můžete spustit tuto aplikaci v emulátoru Android nebo Windows Phone. Můžete taky spustit tuto aplikaci v emulátoru iOS, ale to bude vyžadovat macu. Pro konkrétní pokyny, jak toodo, přečtěte si prosím dokumentaci hello [připojení Visual Studio tooa Mac](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/)
 
-Po spuštění aplikace, vytvoří kontejner `mycontainer` ve vašem účtu úložiště. Objekt blob, měl by obsahovat `myblob`, text, na kterém je `Hello, world!`. Můžete to ověřit pomocí [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
+Po spuštění aplikace, vytvoří kontejner hello `mycontainer` ve vašem účtu úložiště. Měl by obsahovat hello blob `myblob`, který má hello text, `Hello, world!`. Můžete to ověřit pomocí hello [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste zjistili, jak vytvořit aplikaci různé platformy v Xamarinu, která používá Azure Storage, konkrétně zaměřené na jeden scénář v úložišti objektů Blob. Však můžete provést mnohem víc s ne jenom úložiště objektů Blob, ale také pomocí tabulky, souboru a Queue Storage. Podrobnosti naleznete další informace v následujících článcích:
+V tomto kurzu jste se dozvěděli, jak toocreate aplikace různé platformy v Xamarinu používající Azure Storage, konkrétně zaměřené na jeden scénář v úložišti objektů Blob. Však můžete provést mnohem víc s ne jenom úložiště objektů Blob, ale také pomocí tabulky, souboru a Queue Storage. Podrobnosti naleznete v následujících článků toolearn další hello:
 
 * [Začínáme s úložištěm Azure Blob pomocí rozhraní .NET](storage-dotnet-how-to-use-blobs.md)
 * [Začínáme s úložištěm Azure Table pomocí rozhraní .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md)

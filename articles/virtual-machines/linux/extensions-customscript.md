@@ -1,6 +1,6 @@
 ---
-title: "Spustit vlastní skripty na virtuální počítače s Linuxem v Azure | Microsoft Docs"
-description: "Automatizovat úkoly konfigurace virtuálního počítače s Linuxem pomocí rozšíření vlastních skriptů"
+title: "vlastní skripty aaaRun na virtuální počítače s Linuxem v Azure | Microsoft Docs"
+description: "Automatizovat úkoly konfigurace virtuálního počítače s Linuxem pomocí hello rozšíření vlastních skriptů"
 services: virtual-machines-linux
 documentationcenter: 
 author: neilpeterson
@@ -15,28 +15,28 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: nepeters
-ms.openlocfilehash: 1dde64aac72c11ccfccf4fdb676279692befaadd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f2c273a5fbd4cd1695aea48fa4bd08e691511e5f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-the-azure-custom-script-extension-with-linux-virtual-machines"></a>Virtuální počítače s Linuxem pomocí rozšíření Azure vlastních skriptů
-Rozšíření vlastních skriptů stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci nasazení post, instalace softwaru nebo jakoukoli jinou konfiguraci, nebo úlohu správy. Skripty můžete stáhnout z úložiště Azure nebo jiné dostupné umístění v Internetu nebo zadat čas spuštění rozšíření. Rozšíření vlastních skriptů se integruje s šablon Azure Resource Manageru a můžete také spustit pomocí rozhraní příkazového řádku Azure, PowerShell, portálu Azure nebo REST API pro virtuální počítač Azure.
+# <a name="using-hello-azure-custom-script-extension-with-linux-virtual-machines"></a>Pomocí hello rozšíření vlastních skriptů Azure s virtuálním počítačům s Linuxem
+Hello rozšíření vlastních skriptů stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci nasazení post, instalace softwaru nebo jakoukoli jinou konfiguraci, nebo úlohu správy. Skripty můžete stáhnout z úložiště Azure nebo jiné dostupné umístění v Internetu nebo zadat čas spuštění rozšíření toohello. Hello rozšíření vlastních skriptů se integruje s šablon Azure Resource Manageru a můžete také spustit pomocí hello rozhraní příkazového řádku Azure, PowerShell, portálu Azure nebo hello REST API pro virtuální počítač Azure.
 
-Tento dokument podrobnosti o tom, jak používat rozšíření vlastních skriptů z rozhraní příkazového řádku Azure a šablonu Azure Resource Manager a také podrobnosti o řešení potíží v systémech Linux.
+Tato dokument podrobně popisuje, jak toouse hello rozšíření vlastních skriptů z hello rozhraní příkazového řádku Azure a šablonu Azure Resource Manager a také podrobnosti o řešení potíží s kroky v systémech Linux.
 
 ## <a name="extension-configuration"></a>Konfigurace rozšíření
-Konfigurace rozšíření vlastních skriptů určuje takové věci, jako umístění skriptu a příkaz ke spuštění. Tato konfigurace může být uložen v konfiguračních souborů, zadané na příkazovém řádku, nebo šablonu Azure Resource Manager. Citlivá data se uloží v chráněném konfigurace, který je šifrovaný a dešifrovat jenom ve virtuálním počítači. Chráněné konfigurace je užitečné při provádění příkazu zahrnuje tajné klíče, jako například heslo.
+Konfigurace rozšíření vlastních skriptů Hello určuje takové věci, jako umístění skriptu a toobe hello příkaz spustit. Tato konfigurace mohou být uloženy v konfiguračních souborech zadané na hello příkazového řádku, nebo šablonu Azure Resource Manager. Citlivá data se uloží v chráněném konfigurace, který je šifrovaný a dešifrovat jenom uvnitř hello virtuálního počítače. Hello chráněné konfigurace je užitečná při provádění příkazu hello zahrnuje tajné klíče, jako například heslo.
 
 ### <a name="public-configuration"></a>Veřejná konfigurace
 Schéma:
 
-**Poznámka:** -názvy těchto vlastností jsou velká a malá písmena. Používejte názvy, jak vidíte níže, abyste předešli problémům s nasazení.
+**Poznámka:** -názvy těchto vlastností jsou velká a malá písmena. Pomocí názvů hello, jak je vidět níže tooavoid problémy při nasazení.
 
-* **commandToExecute**: (vyžaduje se, řetězce) k provedení skriptu bodu položka
-* **fileUris**: (volitelné, pole řetězců) adresy URL pro soubory ke stažení.
-* **časové razítko** (volitelné, celé číslo) můžete do tohoto pole pouze pro aktivaci spusťte skript tím, že změníte hodnotu tohoto pole.
+* **commandToExecute**: (vyžaduje se, řetězce) hello tooexecute skriptu vstupního bodu
+* **fileUris**: (volitelné, pole řetězců) adresy URL hello toobe soubory stáhnout.
+* **časové razítko** (volitelné, celé číslo) používat tato pole pouze tootrigger opětovné spuštění skriptu hello tak, že změníte hodnotu tohoto pole.
 
 ```json
 {
@@ -48,11 +48,11 @@ Schéma:
 ### <a name="protected-configuration"></a>Chráněné konfigurace
 Schéma:
 
-**Poznámka:** -názvy těchto vlastností jsou velká a malá písmena. Používejte názvy, jak vidíte níže, abyste předešli problémům s nasazení.
+**Poznámka:** -názvy těchto vlastností jsou velká a malá písmena. Pomocí názvů hello, jak je vidět níže tooavoid problémy při nasazení.
 
-* **commandToExecute**: (volitelné, string) k provedení skriptu bodu položku. Toto pole použijte místo toho, pokud váš příkaz obsahuje tajné klíče, jako jsou hesla.
-* **storageAccountName**: (volitelné, string) název účtu úložiště. Pokud chcete zadat pověření pro úložiště, musí být všechny fileUris adresy URL pro objekty BLOB Azure.
-* **storageAccountKey**: (volitelné, string) přístupový klíč účtu úložiště.
+* **commandToExecute**: (volitelné, string) hello tooexecute skriptu vstupní bod. Toto pole použijte místo toho, pokud váš příkaz obsahuje tajné klíče, jako jsou hesla.
+* **storageAccountName**: (volitelné, string) hello název účtu úložiště. Pokud chcete zadat pověření pro úložiště, musí být všechny fileUris adresy URL pro objekty BLOB Azure.
+* **storageAccountKey**: (volitelné, string) hello přístupový klíč účtu úložiště.
 
 ```json
 {
@@ -63,13 +63,13 @@ Schéma:
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-Pokud používáte Azure CLI ke spuštění rozšíření vlastních skriptů, vytvořte konfigurační soubor nebo soubory obsahující alespoň identifikátor uri souboru a spuštění příkazu skriptu.
+Pokud používáte hello rozhraní příkazového řádku Azure toorun hello rozšíření vlastních skriptů, vytvořte konfigurační soubor nebo soubory obsahující na minimální hello souboru uri a hello příkaz provádění skriptu.
 
 ```azurecli
 az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
 ```
 
-Volitelně můžete nastavení zadané v příkazu jako řetězec formátu JSON. To umožňuje konfiguraci zadat během provádění a bez jiný konfigurační soubor.
+Volitelně hello nastavení můžete zadat v příkazu hello jako řetězec formátu JSON. To umožňuje toobe hello konfigurace zadané během provádění a bez jiný konfigurační soubor.
 
 ```azurecli
 az vm extension set '
@@ -111,7 +111,7 @@ Azure CLI příkaz:
 az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
 ```
 
-**Příklad 3** – veřejné konfigurační soubor se používá k určení souboru skriptu URI a chráněné konfigurační soubor se používá k určení příkaz, který má být proveden.
+**Příklad 3** – veřejné konfigurační soubor je soubor skriptu hello použité toospecify URI a chráněné konfigurační soubor je použité toospecify hello příkaz toobe provést.
 
 Veřejné konfigurační soubor:
 
@@ -136,7 +136,7 @@ az vm extension set --resource-group myResourceGroup --vm-name myVM --name custo
 ```
 
 ## <a name="resource-manager-template"></a>Šablona Resource Manageru
-Rozšíření vlastních skriptů Azure můžete spustit v době nasazení virtuálního počítače pomocí šablony Resource Manageru. Uděláte to tak, přidejte do šablony nasazení správně formátovaný JSON.
+Hello rozšíření vlastních skriptů Azure můžete spustit v době nasazení virtuálního počítače pomocí šablony Resource Manageru. toodo tedy přidání správně formátovaný JSON toohello nasazení šablony.
 
 ### <a name="resource-manager-examples"></a>Příklady Resource Manager
 **Příklad 1** -veřejné konfigurace.
@@ -199,32 +199,32 @@ Rozšíření vlastních skriptů Azure můžete spustit v době nasazení virtu
 }
 ```
 
-Najdete v článku .net Core Hudba úložiště ukázkové kompletní příklad - [Hudba úložiště ukázkové](https://github.com/neilpeterson/nepeters-azure-templates/tree/master/dotnet-core-music-linux-vm-sql-db).
+Najdete v části hello .net Core Hudba úložiště ukázkové kompletní příklad - [Hudba úložiště ukázkové](https://github.com/neilpeterson/nepeters-azure-templates/tree/master/dotnet-core-music-linux-vm-sql-db).
 
 ## <a name="troubleshooting"></a>Řešení potíží
-Při spuštění rozšíření vlastních skriptů, skript se vytvoří nebo stáhli do adresáře podobně jako v následujícím příkladu. Výstup příkazu je také uložen do tohoto adresáře `stdout` a `stderr` souboru.
+Po spuštění hello rozšíření vlastních skriptů hello skript se vytvoří nebo stáhli do adresáře podobné toohello následující ukázka. výstup příkazu Hello je také uložen do tohoto adresáře `stdout` a `stderr` souboru.
 
 ```bash
 /var/lib/waagent/custom-script/download/0/
 ```
 
-Přípona skriptu Azure vytvoří protokol, který je zde uveden.
+Hello rozšíření skriptů Azure vytvoří protokol, který je zde uveden.
 
 ```bash
 /var/log/azure/custom-script/handler.log
 ```
 
-Provádění stav rozšíření vlastních skriptů je také možné načíst pomocí rozhraní příkazového řádku Azure.
+také je možné načíst stav spuštění Hello hello rozšíření vlastních skriptů s hello rozhraní příkazového řádku Azure.
 
 ```azurecli
 az vm extension list -g myResourceGroup --vm-name myVM
 ```
 
-Výstup vypadá následující text:
+výstup Hello vypadá hello následující text:
 
 ```azurecli
 info:    Executing command vm extension get
-+ Looking up the VM "scripttst001"
++ Looking up hello VM "scripttst001"
 data:    Publisher                   Name                                      Version  State
 data:    --------------------------  ----------------------------------------  -------  ---------
 data:    Microsoft.Azure.Extensions  CustomScript                              2.0      Succeeded

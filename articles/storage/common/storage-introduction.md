@@ -1,6 +1,6 @@
 ---
-title: "Úvod do Azure Storage | Dokumentace Microsoftu"
-description: "Úvod do Azure Storage, datového úložiště v cloudu od Microsoftu."
+title: "aaaIntroduction tooAzure úložiště | Microsoft Docs"
+description: "Úvod tooAzure úložiště, úložiště dat společnosti Microsoft v cloudu hello."
 services: storage
 documentationcenter: 
 author: robinsh
@@ -14,88 +14,88 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/09/2017
 ms.author: robinsh
-ms.openlocfilehash: 163f35682a4fdaa971f715c7429153bfdcf6a584
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f61324f98d0a8eb24023e4344acdb4ca58bb27f8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-<!-- this is the same version that is in the MVC branch -->
-# <a name="introduction-to-microsoft-azure-storage"></a>Úvod do Microsoft Azure Storage
+<!-- this is hello same version that is in hello MVC branch -->
+# <a name="introduction-toomicrosoft-azure-storage"></a>Úvod tooMicrosoft Azure Storage
 
 Microsoft Azure Storage je cloudová služba spravovaná Microsoftem, která poskytuje vysoce dostupné, zabezpečené, odolné, škálovatelné a redundantní úložiště. Microsoft se stará o údržbu a řeší za vás kritické problémy. 
 
-Azure Storage se skládá ze tří datových služeb: Blob Storage, File Storage a Queue Storage. Blob Storage podporuje Storage úrovně Standard i Premium a Storage úrovně Premium využívají jenom SSD pro zajištění nejvyššího možného výkonu. Další funkcí je studené úložiště, které umožňuje ukládat velké objemy zřídka využívaných dat s nižšími náklady.
+Azure Storage se skládá ze tří datových služeb: Blob Storage, File Storage a Queue Storage. Úložiště objektů BLOB podporuje standard a premium úložiště pomocí SSD pouze pro nejrychlejší možné výkonu hello Storage úrovně premium. Další funkce je studeného úložiště, což vám toostorage velkých objemů málokdy načítaná data pro nižší náklady.
 
-V tomto článku jsou probrána následující témata:
-* služby Azure Storage
-* typy účtů úložiště
+V tomto článku se dozvíte o hello následující:
+* služby Azure Storage Hello
+* Hello typy účtů úložiště
 * přístup k objektům blob, frontám a souborům
 * šifrování
 * replikace 
 * přenos dat do nebo z úložiště
-* velký počet dostupných klientských knihoven pro úložiště 
+* Hello mnoho úložiště knihovny klienta k dispozici. 
 
 
 <!-- RE-ENABLE THESE AFTER MVC GOES LIVE 
-To get up and running with Azure Storage quickly, check out one of the following Quickstarts:
+tooget up and running with Azure Storage quickly, check out one of hello following Quickstarts:
 * [Create a storage account using PowerShell](storage-quick-create-storage-account-powershell.md)
 * [Create a storage account using CLI](storage-quick-create-storage-account-cli.md)
 -->
 
 
-## <a name="introducing-the-azure-storage-services"></a>Seznámení se službami Azure Storage
+## <a name="introducing-hello-azure-storage-services"></a>Představení služby Azure Storage hello
 
-Pokud chcete použít některou ze služeb, které poskytuje Azure Storage (Blob Storage, File Storage nebo Queue Storage), musíte nejdřív vytvořit účet úložiště. Potom v tomto účtu úložiště můžete přenést data do nebo z konkrétní služby. 
+toouse poskytnuté některé z hello služeb úložiště Azure – úložiště objektů Blob, úložiště File a Queue storage – můžete nejdřív vytvořit účet úložiště, a potom můžou přenášet data z specifické služby v daném účtu úložiště. 
 
 ## <a name="blob-storage"></a>Blob Storage
 
-Bloby jsou v podstatě soubory podobné těm, které ukládáte ve svém počítači (nebo tabletu, mobilním zařízení atd.). Mohou to být obrázky, soubory Microsoft Excelu, soubory HTML, virtuální pevné disky (VHD), velké objemy dat, jako jsou protokoly nebo zálohy databází – prakticky cokoli. Objekty blob se ukládají v kontejnerech, které jsou obdobou složek. 
+Bloby jsou v podstatě soubory podobné těm, které ukládáte ve svém počítači (nebo tabletu, mobilním zařízení atd.). Mohou to být obrázky, soubory Microsoft Excelu, soubory HTML, virtuální pevné disky (VHD), velké objemy dat, jako jsou protokoly nebo zálohy databází – prakticky cokoli. Objekty BLOB jsou uloženy v kontejnerech, které jsou podobné toofolders. 
 
-Když uložíte soubory ve službě Blob Storage, můžete k nim přistupovat z libovolného místa na světě pomocí adres URL, rozhraní REST nebo některé z klientských knihoven pro úložiště Azure SDK. Klientské knihovny pro úložiště jsou dostupné pro řadu jazyků, včetně Node.js, Javy, PHP, Ruby, Pythonu a .NET. 
+Po ukládání souborů do úložiště objektů Blob, které můžete k nim přistupovat odkudkoliv v hello, world pomocí adres URL, hello rozhraní REST nebo jeden z knihovny klienta úložiště Azure SDK hello. Klientské knihovny pro úložiště jsou dostupné pro řadu jazyků, včetně Node.js, Javy, PHP, Ruby, Pythonu a .NET. 
 
 Existují tři typy objektů blob – objekty blob bloku, doplňovací objekty blob a objekty blob stránky (používané jako soubory VHD).
 
-* Objekty blob bloku se používají k uložení obyčejných souborů až do velikosti 4,7 TB. 
-* Objekty blob stránky se používají k uložení souborů s náhodným přístupem až do velikosti 8 TB. Používají se pro soubory VHD, které zálohují virtuální počítače.
-* Doplňovací objekty blob jsou tvořené bloky podobně jako objekty blob bloku, ale jsou optimalizované pro doplňovací operace. Využívají se k takovým věcem, jako je protokolování informací z několika virtuálních počítačů do stejného objektu blob.
+* Objekty BLOB bloku jsou běžné soubory používané toohold až tooabout 4.7 TB. 
+* Objekty BLOB stránky jsou soubory používané toohold náhodný přístup až velikost too8 TB. Ty se používají pro hello soubory virtuálního pevného disku, které zálohování virtuálních počítačů.
+* Připojení je tvoří bloky jako objekty BLOB bloku hello objekty BLOB, ale jsou optimalizované pro doplňovací operace. Ty se používají pro položky, jako protokolování informace toohello stejný objekt blob z více virtuálních počítačů.
 
-V případě velkých datových sad, kde stahování nebo ukládání dat do Blob Storage přes internet není vzhledem k síťovým omezením reálné, můžete sadu pevných disků zaslat společnosti Microsoft, která data exportuje nebo importuje přímo v datovém centru. Další informace najdete v tématu [Přenos dat do Blob Storage pomocí služby Microsoft Azure Import/Export](../storage-import-export-service.md).
+U velkých datových sad, kde omezení sítě zkontrolujte nahrávání nebo stahování dat tooBlob úložiště přes přenosu hello reálné můžete dodávat sadu tooimport tooMicrosoft pevné disky nebo exportovat data z hello datového centra. V tématu [použít hello službu Microsoft Azure Import/Export tooTransfer Data tooBlob úložiště](../storage-import-export-service.md).
 
 ## <a name="file-storage"></a>File Storage
 
-Služba Soubory Azure umožňuje nastavit vysoce dostupné sdílené složky souborů sítě, ke kterým je možný přístup pomocí standardního protokolu SMB (Server Message Block). To znamená, že několik virtuálních počítačů může sdílet stejné soubory s oprávněním ke čtení i zápisu. Soubory můžete číst také pomocí rozhraní REST nebo klientských knihoven pro úložiště. 
+Hello službu Azure souborů umožňuje tooset až vysoce dostupné síťové sdílené složky, které jsou přístupné pomocí hello standardní protokol Server Message Block (SMB). Prostředky, které můžete sdílet víc virtuálních počítačů hello stejné soubory se pro čtení i zápis. Můžete si také přečíst hello soubory pomocí rozhraní REST hello nebo knihovny klienta úložiště hello. 
 
-Jednou z věcí, která odlišuje Azure File Storage od souborů v podnikové sdílené složce je, že k souborům můžete přistupovat odkudkoli na světě pomocí adresy URL, která odkazuje na soubor a zahrnuje token sdíleného přístupového podpisu (SAS). Můžete generovat tokeny SAS, které po určitou dobu umožňují specifický přístup k privátním prostředkům. 
+Jeden z věcí, které slouží k rozlišení Azure File storage z podnikové sdílené složky souborů je, že vám přístup k souborům hello, z libovolného místa v hello, world pomocí adresy URL, která ukazuje soubor toohello a obsahuje token sdílený přístupový podpis (SAS). Můžete vygenerovat tokeny SAS; umožňují privátní asset tooa konkrétní přístup pro určité množství času. 
 
 Sdílené složky můžete použít pro řadu běžných scénářů: 
 
-* Mnoho místních aplikací používá sdílené složky. Tato funkce usnadňuje migraci aplikací sdílejících data do Azure. Pokud připojíte sdílenou složku ke stejnému písmenu jednotky, které používá místní aplikace, část aplikace pro přístup ke sdílené složce by měla fungovat s minimálními, pokud vůbec nějakými, změnami.
+* Mnoho místních aplikací používá sdílené složky. Tato funkce umožňuje snazší toomigrate aplikací, u nichž sdílet data tooAzure. Pokud připojíte hello toohello sdílené složky souboru stejné písmeno, který hello jednotky místní aplikace používá, hello součástí aplikace, který přistupuje k hello sdílené složky by měly spolupracovat s minimální, pokud existuje, změny.
 
-* Ve sdílené složce je možné ukládat konfigurační soubory, kde k nim bude mít přístup více virtuálních počítačů. Ve sdílené složce je možné ukládat nástroje používané více vývojáři ve skupině zajistit tak, že je všichni budou moci najít a že budou používat stejnou verzi.
+* Ve sdílené složce je možné ukládat konfigurační soubory, kde k nim bude mít přístup více virtuálních počítačů. Nástroje, které používají více vývojáři ve skupině mohou být uloženy ve sdílené složce, zajistíte, že každý uživatel, najít a že používají hello stejnou verzi.
 
-* Diagnostické protokoly, metriky a výpisy stavu systému jsou jenom tři z příkladů dat, která je možné zapisovat do sdílené složky a zpracovávat nebo analyzovat později.
+* Diagnostické protokoly, metriky a výpisy stavu systému jsou jenom tři příklady data, která můžete zapsat tooa sdílené složky a zpracovat nebo analyzovat později.
 
-V současné době se nepodporuje ověřování založené na Active Directory ani seznamy ACL, někdy v budoucnu se ale podporovat budou. K ověřování přístupu ke sdílené složce se používají přihlašovací údaje účtu úložiště. To znamená, že všichni s připojenou sdílenou složkou k ní budou mít úplná oprávnění ke čtení i zápisu.
+V tento čas, ověřování založené na službě Active Directory a přístupu nejsou podporovány seznamy řízení (ACL), ale nebudou se někdy v budoucnu hello. přihlašovací údaje účtu úložiště Hello jsou použité tooprovide ověřování pro přístup k toohello sdílené složky. To znamená, každý, kdo má sdílenou složku hello připojené bude mít čtení/zápisu přístup toohello sdílené složky.
 
 ## <a name="queue-storage"></a>Queue Storage
 
-Služba front Azure se využívá k ukládání a načítání zpráv. Fronty zprávy mohou mít velikost až 64 kB a jedna fronta může obsahovat miliony zpráv. Fronty se obecně používají k ukládání seznamů zpráv, které mají být zpracovány asynchronně. 
+Hello službu front Azure je použité toostore a načtení zprávy. Zprávy fronty může být až velikost too64 KB a jedna fronta můžete obsahovat miliony zpráv. Fronty jsou obvykle použité toostore seznam zpráv toobe asynchronně. 
 
-Řekněme například, že chcete zákazníkům umožnit odesílání obrázků a pro každý obrázek chcete vytvořit miniatury. Můžete nechat zákazníky při odesílání obrázků čekat na to, až tyto miniatury vytvoříte. Alternativou může být použití fronty. Když zákazník dokončí nahrávání, zapište zprávu do fronty. Potom nechte funkci Azure Functions, aby načetla tuto zprávu z fronty a vytvořila miniatury. Jednotlivé části tohoto zpracování je možné škálovat samostatně. Získáte tak větší kontrolu při jeho vylaďování pro vaše využití.
+Řekněme například, chcete mít tooupload obrázky toobe zákazníků a chcete toocreate miniatury pro každou obrázek. Můžete mít zákazníkovi počkejte jste toocreate hello miniatur při odesílání hello obrázky. Alternativou by toouse fronty. Po dokončení jeho nahrání hello zákazníka zápisu toohello front zpráv. Pak máte funkce Azure načítat uvítací zprávu z fronty hello a vytváření miniatur hello. Jednotlivé části hello tohoto zpracování je možné rozšířit samostatně, poskytuje tak větší kontrolu při ladění pro vaše použití.
 
-<!-- this bookmark is used by other articles; you'll need to update them before this goes into production ROBIN-->
+<!-- this bookmark is used by other articles; you'll need tooupdate them before this goes into production ROBIN-->
 ## <a name="table-storage"></a>Úložiště Table
-<!-- add a link to the old table storage to this paragraph once it's moved -->
-Azure Table Storage na úrovni Standard je teď součástí Cosmos DB. Pro Azure Table Storage je ale také dostupná úroveň Premium, která nabízí tabulky optimalizované pro zvýšení propustnosti, globální distribuci a automatické sekundární indexy. Další informace a možnost vyzkoušet si nové prostředí úrovně Premium najdete na stránce [Azure Cosmos DB: Rozhraní Table API](https://aka.ms/premiumtables).
+<!-- add a link toohello old table storage toothis paragraph once it's moved -->
+Azure Table Storage na úrovni Standard je teď součástí Cosmos DB. Pro Azure Table Storage je ale také dostupná úroveň Premium, která nabízí tabulky optimalizované pro zvýšení propustnosti, globální distribuci a automatické sekundární indexy. toolearn další a zkuste se hello nové prostředí premium, zkontrolujte [Cosmos databázi Azure: Tabulka API](https://aka.ms/premiumtables).
 
 ## <a name="disk-storage"></a>Diskové úložiště
 
-Tým služby Azure Storage také vlastní disky, což zahrnuje všechny funkce spravovaných a nespravovaných disků využívaných virtuálními počítači. Další informace o těchto funkcích najdete v [dokumentaci ke Compute Services](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
+Hello Azure Storage team vlastní také disky, která obsahuje všechny hello spravovaných a nespravovaných disku možnosti používaných virtuálními počítači. Další informace o těchto funkcích najdete v tématu hello [výpočetní služby dokumentaci](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
 
 ## <a name="types-of-storage-accounts"></a>Typy účtů úložiště 
 
-Tato tabulka uvádí různé typy účtů úložiště a to, které objekty je pro ně možné využít.
+Tato tabulka obsahuje různé typy účtů úložiště a objektů, které lze použít s jednotlivými hello.
 
 |**Typ účtu úložiště**|**Standard pro obecné účely**|**Premium pro obecné účely**|**Blob Storage, horká a studená vrstva přístupu**|
 |-----|-----|-----|-----|
@@ -108,105 +108,105 @@ Existují dva typy účtů úložiště pro obecné účely.
 
 #### <a name="standard-storage"></a>Storage úrovně Standard 
 
-Nejčastěji používanými účty úložiště jsou standardní účty, které je možné použít pro všechny typy dat. Účty úložiště úrovně Standard k ukládání dat používají magnetická média.
+účty úložiště standard storage, které se dají použít pro všechny typy dat jsou účty úložiště Hello nejčastěji používá. Účty úložiště Standard storage pomocí dat toostore magnetické média.
 
 #### <a name="premium-storage"></a>Storage úrovně Premium
 
-Storage úrovně Premium poskytuje vysoce výkonné úložiště pro objekty blob stránky, které se primárně využívají pro soubory VHD. Účty úložiště úrovně Premium k ukládání dat používají SSD. Microsoft doporučuje používat Storage úrovně Premium pro všechny vaše virtuální počítače.
+Storage úrovně Premium poskytuje vysoce výkonné úložiště pro objekty blob stránky, které se primárně využívají pro soubory VHD. Prémiové účty úložiště pomocí SSD toostore data. Microsoft doporučuje používat Storage úrovně Premium pro všechny vaše virtuální počítače.
 
 ### <a name="blob-storage-accounts"></a>Účty služby Blob Storage
 
-Účet služby Blob Storage je specializovaný účet úložiště používaný k ukládání objektů blob bloku a doplňovacích objektů blob. V těchto účtech nejde ukládat objekty blob stránky, a proto nemůžete ukládat soubory VHD. Tyto účty umožňují nastavit horkou nebo studenou vrstvu přístupu. Tuto vrstvu můžete kdykoli změnit. 
+účet úložiště objektů Blob Hello je specializovaný účet úložiště používá toostore objekty BLOB bloku a doplňovací objekty BLOB. V těchto účtech nejde ukládat objekty blob stránky, a proto nemůžete ukládat soubory VHD. Tyto účty umožňují tooset tooHot úrovně přístupu nebo nástrojů; kdykoli se smí měnit úroveň Hello. 
 
-Horká vrstva přístupu se používá pro soubory, ke kterým se přistupuje často – platíte vyšší náklady na úložiště, ale náklady na přístup k objektům blob jsou mnohem nižší. U objektů blob uložených ve studené vrstvě přístupu platíte vyšší náklady na přístup, ale náklady na úložiště jsou mnohem nižší.
+úroveň přístupu aktivní Hello se používá pro soubory, které se využívají často – platíte vyšší náklady na úložiště, ale je mnohem nižší náklady hello přístupu k objektům BLOB hello. Pro objekty BLOB uložené v úroveň studeného přístupu hello platíte vyšší náklady pro přístup k objektům BLOB hello, ale je mnohem nižší hello náklady na úložiště.
 
 ## <a name="accessing-your-blobs-files-and-queues"></a>Přístup k objektům blob, frontám a souborům
 
-Každý účet úložiště má dva ověřovací klíče a každý z nich je možné použít pro libovolnou operaci. Dva klíče se používají proto, abyste je mohli příležitostně prohodit pro zvýšení zabezpečení. Je velmi důležité, aby tyto klíče byly zabezpečené, protože jejich vlastnictví spolu s názvem účtu umožňuje neomezený přístup ke všem datům v účtu úložiště. 
+Každý účet úložiště má dva ověřovací klíče a každý z nich je možné použít pro libovolnou operaci. Existují dva klíče, můžete se vrátit přes hello klíče příležitostně tooenhance zabezpečení. Je důležité, aby tyto klíče zajistit zabezpečení, protože mít k dispozici, a to společně s názvem účtu hello umožňuje neomezený přístup k datům tooall v účtu úložiště hello. 
 
-V této části se probírají dva způsoby, jak zabezpečit účet úložiště a jeho data. Podrobné informace o zabezpečení vašeho účtu úložiště a vašich dat najdete v [průvodci zabezpečením Azure Storage](storage-security-guide.md).
+Tato část vypadá dva způsoby toosecure hello úložiště účtu a jeho data. Podrobné informace o zabezpečení vašeho účtu úložiště a vaše data, najdete v části hello [Průvodce zabezpečením Azure Storage](storage-security-guide.md).
 
-### <a name="securing-access-to-storage-accounts-using-azure-ad"></a>Zabezpečení přístupu k účtům úložiště pomocí služby Azure AD
+### <a name="securing-access-toostorage-accounts-using-azure-ad"></a>Zabezpečení přístupu toostorage účty pomocí služby Azure AD
 
-Jedním ze způsobů zabezpečení přístupu k datům úložiště je řízení přístupu ke klíčům účtu úložiště. Pomocí řízení přístupu na základě role (RBAC) Resource Manageru můžete přiřazovat role uživatelů, skupinám nebo aplikacím. Tyto role jsou svázané s konkrétní sadou akcí, které jsou povolené nebo zakázané. Použití RBAC pro udělení přístupu k účtu úložiště zajišťuje pro daný účet úložiště jenom operace správy, jako je třeba změna vrstvy přístupu. RBAC se nedá použít pro udělení přístupu k datovým objektům, jako je třeba konkrétní kontejner nebo sdílená složka. Můžete ho ale použít pro udělení přístupu ke klíčům účtu úložiště, které se potom dají využít ke čtení datových objektů. 
+Jedním ze způsobů toosecure přístup tooyour úložiště dat, spočívá v kontrole klíče účtu úložiště toohello přístup. Pomocí Správce prostředků řízení přístupu na základě rolí (RBAC) můžete přiřadit toousers role, skupiny nebo aplikace. Tyto role jsou svázané tooa konkrétní sadu akcí, které jsou povolené nebo zakázané. Pomocí RBAC zpracovává účet úložiště tooa toogrant přístup jenom hello operace správy pro daný účet úložiště, jako je například změna úrovně přístupu hello. Nelze použít RBAC toogrant přístup toodata objekty jako kontejneru nebo ve sdílené složce. Můžete však RBAC toogrant přístup toohello klíče účtu úložiště, které lze poté použít tooread hello datových objektů. 
 
 ### <a name="securing-access-using-shared-access-signatures"></a>Zabezpečení přístupu pomocí sdílených přístupových podpisů 
 
-K zabezpečení vašich datových objektů můžete využít sdílené přístupové podpisy a uložené zásady přístupu. Sdílený přístupový podpis (SAS) je řetězec obsahující token zabezpečení, který je možné připojit k identifikátoru URI pro určitý prostředek, který umožňuje delegovat přístup ke konkrétním objektům úložiště a zadat omezení, jako je třeba oprávnění a datový/časový rozsah přístupu. Tato funkce má rozsáhlé možnosti. Podrobné informace najdete v tématu [Použití sdílených přístupových podpisů (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+Můžete použít sdílené přístupové podpisy a uložené toosecure zásady přístupu datových objektů. Sdílený přístupový podpis (SAS) je řetězec, který obsahuje token zabezpečení, který může být připojen toohello identifikátor URI pro určitý prostředek, který vám umožní toodelegate přístup toospecific úložiště objektů a omezení toospecify například oprávnění a rozsah hello data a času přístupu. Tato funkce má rozsáhlé možnosti. Podrobné informace najdete v části příliš[pomocí sdíleného přístupového podpisy (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 
-### <a name="public-access-to-blobs"></a>Veřejný přístup k objektům blob
+### <a name="public-access-tooblobs"></a>Tooblobs veřejný přístup
 
-Služba objektů blob umožňuje poskytnout veřejný přístup ke kontejneru a jeho objektům blob nebo ke konkrétnímu objektu blob. Když nějaký kontejner nebo objekt blob označíte jako veřejně přístupný, kdokoli si ho může anonymně přečíst bez nutnosti ověření. Příkladem, kdy se to může hodit, je situace, kdy máte web využívající obrázky, video nebo dokumenty ze služby Blob Storage. Další informace najdete v tématu [Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob](../blobs/storage-manage-access-to-resources.md). 
+Hello služby objektů Blob můžete tooprovide veřejný přístup tooa kontejner a jeho objekty BLOB nebo konkrétní objekt blob. Když nějaký kontejner nebo objekt blob označíte jako veřejně přístupný, kdokoli si ho může anonymně přečíst bez nutnosti ověření. Příklad, kdy se má toodo, to je, pokud máte web, který používá bitové kopie, videa nebo dokumenty z úložiště objektů Blob. Další informace najdete v tématu [spravovat toocontainers anonymní přístup pro čtení a objekty BLOB](../blobs/storage-manage-access-to-resources.md) 
 
 ## <a name="encryption"></a>Šifrování
 
-Pro služby Storage je dostupných několik základních druhů šifrování. 
+Nejsou k dispozici pro služby úložiště hello několika základní typy šifrování. 
 
 ### <a name="encryption-at-rest"></a>Šifrování v klidovém stavu 
 
-Šifrování služby Storage (Storage Service Encryption, SSE) můžete povolit buď ve službě Soubory (Preview), nebo ve službě Blob pro účet úložiště Azure. Pokud je povolené, všechna data zapsaná do konkrétní služby se před zápisem zašifrují. Když tato data čtete, před vrácením se dešifrují. 
+Můžete povolit šifrování služby úložiště (SSE) na službu souborů buď hello (preview) nebo hello služby objektů Blob pro účet úložiště Azure. Pokud je povoleno, všechny data zapsána toohello specifické služby zašifrována před zapsána. Při čtení hello data se dešifrují před vrácením. 
 
 ### <a name="client-side-encryption"></a>Šifrování na straně klienta
 
-Klientské knihovny pro úložiště nabízejí metody, jejichž voláním můžete programově zašifrovat data, než je odešlete sítí z klienta do Azure. Uloží se zašifrovaná a to znamená, že jsou zašifrovaná, i když jsou neaktivní. Při načítání dat zpět informace po přijetí dešifrujete. 
+Hello knihovny klienta úložiště mají metody můžete volat tooprogrammatically šifrování dat před odesláním napříč hello přenosová z klienta tooAzure hello. Uloží se zašifrovaná a to znamená, že jsou zašifrovaná, i když jsou neaktivní. Při čtení dat hello zpět, je dešifrovat hello informace po jeho přijetí. 
 
 ### <a name="encryption-in-transit-with-azure-file-shares"></a>Šifrování během přenosu s využitím sdílených složek Azure
 
-Další informace o sdílených přístupových podpisech najdete v tématu [Použití sdílených přístupových podpisů (SAS)](../storage-dotnet-shared-access-signature-part-1.md). Další informace o bezpečném přístupu k vašemu účtu úložiště najdete v tématech [Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob](../blobs/storage-manage-access-to-resources.md) a [Ověření pro služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179428.aspx).
+Další informace o sdílených přístupových podpisech najdete v tématu [Použití sdílených přístupových podpisů (SAS)](../storage-dotnet-shared-access-signature-part-1.md). V tématu [spravovat toocontainers anonymní přístup pro čtení a objekty BLOB](../blobs/storage-manage-access-to-resources.md) a [ověřování pro služby úložiště Azure hello](https://msdn.microsoft.com/library/azure/dd179428.aspx) Další informace o účtu úložiště tooyour zabezpečený přístup.
 
-Další informace o zabezpečení vašeho účtu úložiště a šifrování najdete v [průvodci zabezpečením Azure Storage](storage-security-guide.md).
+Další podrobnosti o zabezpečení účtu úložiště a šifrování najdete v tématu hello [Průvodce zabezpečením Azure Storage](storage-security-guide.md).
 
 ## <a name="replication"></a>Replikace
 
-Aby se zajistila odolnost dat, má služba Azure Storage schopnost zachovat (a spravovat) několik kopií vašich dat. Označuje se jako replikace, nebo někdy také redundance. Když nastavujete účet úložiště, vybíráte typ replikace. Ve většině případů toto nastavení můžete po vytvoření účtu úložiště změnit. 
+V pořadí tooensure vaše data byla odolná Azure Storage má možnost tookeep hello (a spravovat) více kopií vaše data. Označuje se jako replikace, nebo někdy také redundance. Když nastavujete účet úložiště, vybíráte typ replikace. Ve většině případů tato nastavení můžete změnit po vytvoření účtu úložiště hello. 
 
-Všechny účty úložiště mají **místně redundantní úložiště (LRS)**. To znamená, že Azure Storage spravuje tři kopie vašich dat v datovém centru, které bylo zadané při vytvoření účtu úložiště. Když se změny potvrdí do jedné kopie, další dvě kopie se aktualizují a teprve potom se informuje o úspěchu. To znamená, že tyto tři repliky jsou vždy synchronizované. Kromě se tyto tři kopie se nacházejí v samostatných doménách selhání. To znamená, že vaše data jsou dostupná, i když selže uzel úložiště, ve kterém jsou tato data uložená, nebo když se tento uzel převede z důvodů aktualizace do režimu offline. 
+Všechny účty úložiště mají **místně redundantní úložiště (LRS)**. To znamená, že tři kopie vaše data spravovaná službou Azure Storage v datovém centru hello zadat, když byl nastaven účet úložiště hello. Když jsou změny potvrzeny tooone kopírovat, hello další dvě kopie jsou aktualizovány před vrácením úspěch. To znamená, že hello tři repliky jsou vždy v synchronizaci. Také hello tři kopie nacházejí v domén selhání samostatné a upgradovacích domén, což znamená, že vaše data jsou k dispozici i v případě selhání uzlu úložiště, která uchovává data nebo aktualizaci přijatých toobe offline. 
 
 **Místně redundantní úložiště (LRS)**
 
-Jak jsme vysvětlili výše, při použití LRS máte tři kopie vašich dat v jednom datovém centru. To řeší problém s případnou nedostupností dat, když selže uzel úložiště nebo když se tento uzel převede do režimu offline. Nedostupnost celého datového centra se tím ale nevyřeší.
+Jak jsme vysvětlili výše, při použití LRS máte tři kopie vašich dat v jednom datovém centru. Zpracovává hello problém dat bude nedostupný, pokud uzel úložiště selže nebo je provést offline toobe aktualizovat, ale není hello případ celého datového centra bude nedostupný.
 
 **Zónově redundantní úložiště (ZRS)**
 
-Zónově redundantní úložiště (ZRS) spravuje tři místní kopie vašich dat a navíc další sadu tří kopií těchto dat. Druhá sada tří kopií se asynchronně replikuje napříč datovými centry v jedné nebo dvou oblastech. Nezapomeňte, že zónově redundantní úložiště je dostupné jenom pro objekty blob bloku v účtech úložiště pro obecné účely. Pokud vytvoříte účet úložiště a vyberete ZRS, nemůžete později přejít na jiný typ replikace, stejně tak nemůžete z jiného typu replikace přejít na ZRS.
+Zónově redundantní úložiště (ZRS) udržuje hello tři místní kopií vašich dat i další sadu tři kopie vaše data. Hello druhé sadě tři kopie se replikují asynchronně přes datových center v rámci jednoho nebo dvou oblastech. Nezapomeňte, že zónově redundantní úložiště je dostupné jenom pro objekty blob bloku v účtech úložiště pro obecné účely. Také po vytvoření účtu úložiště a vybrané ZRS, nedá se převést toouse tooany jiných typu replikace, nebo naopak.
 
 Účty ZRS poskytují větší odolnost než LRS, ale nemají možnosti protokolování nebo metrik. 
 
 **Geograficky redundantní úložiště (GRS)**
 
-Geograficky redundantní úložiště (GRS) spravuje tři místní kopie vašich dat v primární oblasti a navíc další sadu tří kopií těchto dat v sekundární oblasti, která je od primární oblasti vzdálená stovky kilometrů. V případě selhání primární oblasti převezme služby pro Azure Storage sekundární oblast. 
+Geograficky redundantní úložiště (GRS) udržuje hello tři místní kopií vašich dat v primární oblasti, plus další sadu tři kopie dat v sekundární oblasti stovky miles od primární oblasti hello. V případě selhání v primární oblasti hello hello Azure Storage bude převzetí služeb při selhání toohello sekundární oblast. 
 
 **Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)** 
 
-Geograficky redundantní úložiště s přístupem čtení je úplně stejně jako GRS, s výjimkou toho, že k datům v sekundárním umístění máte přístup pro čtení. Když je primární datové centrum dočasně nedostupné, můžete dál číst data ze sekundárního umístění. To může být velmi užitečné. Můžete například mít webovou aplikaci, která přejde do režimu jen pro čtení, odkazuje na sekundární kopii a povoluje určitý přístup, i když nejsou dostupné aktualizace. 
+Geograficky redundantní úložiště s přístupem pro čtení je úplně stejně jako GRS, s tím rozdílem, že získat přístup pro čtení toohello data v hello sekundárního umístění. Když primární datové centrum hello bude dočasně nedostupný, můžete dál tooread hello data ze sekundárního umístění hello. To může být velmi užitečné. Například můžete mít webovou aplikaci, která změní do režimu jen pro čtení a bodů toohello sekundární kopie, povolení některé přístupu, i když nejsou aktualizace k dispozici. 
 
 > [!IMPORTANT]
-> Pokud jste při vytváření účtu nezvolili replikaci ZRS, můžete způsob replikace později změnit. Pokud ale z LRS přejdete na GRS nebo RA-GRS, může se vám účtovat jednorázový poplatek za přenos dat.
+> Jak vaše data se replikují po vytvoření účtu úložiště, pokud jste zadali při vytváření účtu hello ZRS, můžete změnit. Všimněte si však, se vám účtovat poplatek za Pokud přejdete z LRS tooGRS nebo RA-GRS další jednorázové data přenos.
 >
 
 Další informace o replikaci najdete v tématu [Replikace Azure Storage](storage-redundancy.md).
 
-Informace o zotavení po havárii najdete v tématu [Co dělat v případě výpadku služby Azure Storage](storage-disaster-recovery-guidance.md).
+Informace pro obnovení po havárii, najdete v části [co toodo, když dojde k výpadku Azure Storage](storage-disaster-recovery-guidance.md).
 
-Příklad toho, jak využít úložiště RA-GRS k zajištění vysoké dostupnosti, najdete v tématu [Návrh aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md).
+Pro příklad tooleverage RA-GRS tooensure vysoká dostupnost úložiště, najdete v části [navrhování vysoce dostupné aplikace pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md).
 
-## <a name="transferring-data-to-and-from-azure-storage"></a>Přesun dat z Azure Storage a do Azure Storage
+## <a name="transferring-data-tooand-from-azure-storage"></a>Přenos dat tooand ze služby Azure Storage
 
-Pomocí nástroje příkazového řádku AzCopy můžete kopírovat objekt blob a data souboru v rámci svého účtu úložiště nebo mezi různými účty úložiště. Nápovědu získáte v jednom z těchto článků:
+Blob toocopy nástroj příkazového řádku AzCopy hello a data souborů můžete použít v rámci účtu úložiště nebo mezi různými účty úložiště. V tématu, že jedna z následujících hello články o pomoc:
 
 * [Přenos dat pomocí nástroje AzCopy pro Windows](storage-use-azcopy.md)
 * [Přenos dat pomocí nástroje AzCopy pro Linux](storage-use-azcopy-linux.md)
 
-Nástroj AzCopy je postavený na [Knihovně pro přesun dat v Azure](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/), která je aktuálně dostupná v předběžné ukázkové verzi.
+AzCopy je postavený na hello [knihovna pro přesun dat Azure](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/), která je aktuálně dostupná ve verzi preview.
 
-Službu Azure Import/Export můžete použít pro import nebo export velkých objemů dat objektů blob do nebo z účtu úložiště. Připravíte několik pevných disků a odešlete je poštou do datového centra Azure, kde se provede přenos dat z těchto pevných disků nebo na ně a odešlou se zpátky k vám. Další informace o službě Import/Export najdete v tématu [Přenos dat do Blob Storage pomocí služby Microsoft Azure Import/Export](../storage-import-export-service.md).
+Hello Azure Import/Export služby lze použít tooimport nebo export velkých objemů dat tooor objektů blob z účtu úložiště. Příprava a poštovní více pevných disků tooan datové centrum Azure, kde bude přenos dat hello z hello pevné disky a posílají hello pevné disky tooyou. Další informace o hello službu Import/Export najdete v tématu [použít hello službu Microsoft Azure Import/Export tooTransfer Data tooBlob úložiště](../storage-import-export-service.md).
 
 ## <a name="pricing"></a>Ceny
 
-Podrobné informace o cenách pro Azure Storage najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Podrobné informace o cenách pro Azure Storage najdete v tématu hello [cenová stránky](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="storage-apis-libraries-and-tools"></a>Rozhraní API, knihovny a nástroje služby Storage
-Prostředky Azure Storage jsou dostupné přes jakýkoli jazyk, který umí vytvářet požadavky HTTP/HTTPS. Azure Storage dále nabízí programovací knihovny pro několik oblíbených jazyků. Tyto knihovny zjednodušují spoustu aspektů práce s Azure Storage, protože se starají o drobnosti jako synchronní a asynchronní vyvolání, dávkování operací, řízení výjimek, automatické opakování pokusů, operační chování atd. Knihovny jsou aktuálně dostupné pro následující jazyky a platformy, další se připravují:
+Prostředky Azure Storage jsou dostupné přes jakýkoli jazyk, který umí vytvářet požadavky HTTP/HTTPS. Azure Storage dále nabízí programovací knihovny pro několik oblíbených jazyků. Tyto knihovny zjednodušují spoustu aspektů práce s Azure Storage, protože se starají o drobnosti jako synchronní a asynchronní vyvolání, dávkování operací, řízení výjimek, automatické opakování pokusů, operační chování atd. Knihovny jsou aktuálně dostupné pro hello následující jazyky a platformy, s jinými uživateli v hello kanál:
 
 ### <a name="azure-storage-data-services"></a>Datové služby Azure Storage
 * [REST API služby Storage](/rest/api/storageservices/)
@@ -227,14 +227,14 @@ Prostředky Azure Storage jsou dostupné přes jakýkoli jazyk, který umí vytv
 * [Další informace o službě Queue Storage](../queues/storage-queues-introduction.md)
 
 <!-- RE-ENABLE THESE AFTER MVC GOES LIVE 
-To get up and running with Azure Storage quickly, check out one of the following Quickstarts:
+tooget up and running with Azure Storage quickly, check out one of hello following Quickstarts:
 * [Create a storage account using PowerShell](storage-quick-create-storage-account-powershell.md)
 * [Create a storage account using CLI](storage-quick-create-storage-account-cli.md)
 -->
 
-<!-- FIGURE OUT WHAT TO DO WITH ALL THESE LINKS.
+<!-- FIGURE OUT WHAT tooDO WITH ALL THESE LINKS.
 
-Azure Storage resources can be accessed by any language that can make HTTP/HTTPS requests. Additionally, Azure Storage offers programming libraries for several popular languages. These libraries simplify many aspects of working with Azure Storage by handling details such as synchronous and asynchronous invocation, batching of operations, exception management, automatic retries, operational behavior and so forth. Libraries are currently available for the following languages and platforms, with others in the pipeline:
+Azure Storage resources can be accessed by any language that can make HTTP/HTTPS requests. Additionally, Azure Storage offers programming libraries for several popular languages. These libraries simplify many aspects of working with Azure Storage by handling details such as synchronous and asynchronous invocation, batching of operations, exception management, automatic retries, operational behavior and so forth. Libraries are currently available for hello following languages and platforms, with others in hello pipeline:
 
 ### Azure Storage data services
 * [Storage Services REST API](https://docs.microsoft.com/rest/api/storageservices/)
@@ -258,7 +258,7 @@ Azure Storage resources can be accessed by any language that can make HTTP/HTTPS
 * [Storage Data Movement Client Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
 
 ### Tools and utilities
-* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft that enables you to work visually with Azure Storage data on Windows, macOS, and Linux.
+* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft that enables you toowork visually with Azure Storage data on Windows, macOS, and Linux.
 * [Azure Storage Client Tools](../storage-explorers.md)
 * [Azure SDKs and Tools](https://azure.microsoft.com/tools/)
 * [Azure Storage Emulator](http://www.microsoft.com/download/details.aspx?id=43709)
@@ -266,14 +266,14 @@ Azure Storage resources can be accessed by any language that can make HTTP/HTTPS
 * [AzCopy Command-Line Utility](http://aka.ms/downloadazcopy)
 
 ## Next steps
-To learn more about Azure Storage, explore these resources:
+toolearn more about Azure Storage, explore these resources:
 
 ### Documentation
 * [Azure Storage Documentation](https://azure.microsoft.com/documentation/services/storage/)
 * [Create a storage account](../storage-create-storage-account.md)
 
-<!-- after our quick starts are available, replace this link with a link to one of those. 
-Had to remove this article, it refers to the VS quickstarts, and they've stopped publishing them. Robin --> 
+<!-- after our quick starts are available, replace this link with a link tooone of those. 
+Had tooremove this article, it refers toohello VS quickstarts, and they've stopped publishing them. Robin --> 
 <!--* [Get started with Azure Storage in five minutes](storage-getting-started-guide.md)
 -->
 
@@ -288,29 +288,29 @@ Had to remove this article, it refers to the VS quickstarts, and they've stopped
 * [Začínáme s úložištěm Azure File ve Windows](../storage-dotnet-how-to-use-files.md)
 
 ### <a name="for-javaandroid-developers"></a>Pro vývojáře v Javě a Androidu
-* [Používání úložiště Blob z Javy](../blobs/storage-java-how-to-use-blob-storage.md)
-* [Používání úložiště Table z Javy](../../cosmos-db/table-storage-how-to-use-java.md)
-* [Používání úložiště Queue z Javy](../storage-java-how-to-use-queue-storage.md)
-* [Používání úložiště File z Javy](../storage-java-how-to-use-file-storage.md)
+* [Jak toouse úložiště Blob z Javy](../blobs/storage-java-how-to-use-blob-storage.md)
+* [Jak toouse úložiště Table z Javy](../../cosmos-db/table-storage-how-to-use-java.md)
+* [Jak toouse úložiště Queue z Javy](../storage-java-how-to-use-queue-storage.md)
+* [Jak toouse úložiště File z Javy](../storage-java-how-to-use-file-storage.md)
 
 ### <a name="for-nodejs-developers"></a>Pro vývojáře v Node.js
-* [Používání úložiště Blob z Node.js](../blobs/storage-nodejs-how-to-use-blob-storage.md)
-* [Používání úložiště Table z Node.js](../../cosmos-db/table-storage-how-to-use-nodejs.md)
-* [Používání úložiště Queue z Node.js](../storage-nodejs-how-to-use-queues.md)
+* [Jak toouse úložiště objektů Blob z Node.js](../blobs/storage-nodejs-how-to-use-blob-storage.md)
+* [Jak toouse úložiště Table z Node.js](../../cosmos-db/table-storage-how-to-use-nodejs.md)
+* [Jak toouse úložiště Queue z Node.js](../storage-nodejs-how-to-use-queues.md)
 
 ### <a name="for-php-developers"></a>Pro vývojáře v PHP
-* [Používání úložiště Blob z PHP](../blobs/storage-php-how-to-use-blobs.md)
-* [Používání úložiště Table z PHP](../../cosmos-db/table-storage-how-to-use-php.md)
-* [Používání úložiště Queue z PHP](../storage-php-how-to-use-queues.md)
+* [Jak toouse úložiště objektů Blob z PHP](../blobs/storage-php-how-to-use-blobs.md)
+* [Jak toouse úložiště Table z PHP](../../cosmos-db/table-storage-how-to-use-php.md)
+* [Jak toouse úložiště Queue z PHP](../storage-php-how-to-use-queues.md)
 
 ### <a name="for-ruby-developers"></a>Pro vývojáře v Ruby
-* [Používání úložiště Blob z Ruby](../blobs/storage-ruby-how-to-use-blob-storage.md)
-* [Používání úložiště Table z Ruby](../../cosmos-db/table-storage-how-to-use-ruby.md)
-* [Používání úložiště Queue z Ruby](../storage-ruby-how-to-use-queue-storage.md)
+* [Jak toouse úložiště objektů Blob z Ruby](../blobs/storage-ruby-how-to-use-blob-storage.md)
+* [Jak toouse úložiště Table z Ruby](../../cosmos-db/table-storage-how-to-use-ruby.md)
+* [Jak toouse úložiště Queue z Ruby](../storage-ruby-how-to-use-queue-storage.md)
 
 ### <a name="for-python-developers"></a>Pro vývojáře v Pythonu
-* [Používání úložiště Blob z Pythonu](../blobs/storage-python-how-to-use-blob-storage.md)
-* [Používání úložiště Table z Pythonu](../../cosmos-db/table-storage-how-to-use-python.md)
-* [Používání úložiště Queue z Pythonu](../storage-python-how-to-use-queue-storage.md)   
-* [Používání File Storage z Pythonu](../storage-python-how-to-use-file-storage.md) 
+* [Jak toouse úložiště objektů Blob z Pythonu](../blobs/storage-python-how-to-use-blob-storage.md)
+* [Jak toouse úložiště Table z Pythonu](../../cosmos-db/table-storage-how-to-use-python.md)
+* [Jak toouse úložiště Queue z Pythonu](../storage-python-how-to-use-queue-storage.md)   
+* [Jak toouse úložiště File z Pythonu](../storage-python-how-to-use-file-storage.md) 
 -->
